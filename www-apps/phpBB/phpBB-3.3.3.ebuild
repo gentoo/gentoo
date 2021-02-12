@@ -15,7 +15,7 @@ REQUIRED_USE="|| ( mssql mysqli postgres sqlite )"
 
 PHP_RDEPEND="(
 	virtual/httpd-php:@SLOT@
-	dev-lang/php:@SLOT@[ftp?,gd?,json,mssql?,mysqli?,postgres?,sqlite?,xml,zlib?]
+	dev-lang/php:@SLOT@[ftp?,gd?,json(+),mssql?,mysqli?,postgres?,sqlite?,xml,zlib?]
 )"
 
 RDEPEND="|| (
