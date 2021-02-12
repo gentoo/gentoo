@@ -17717,7 +17717,7 @@ sys-process/dumb-init 1.2.0 1.2.1: A minimal init system for Linux containers
 sys-process/evisum 0.5.9 0.5.11: System and process monitor written with EFL
 sys-process/fcron 3.2.1-r1 3.2.1-r3 3.3.0_beta-r1: A command scheduler with extended capabilities over cron and anacron
 sys-process/ftop 1.0-r1: Monitor open files and filesystems
-sys-process/glances 3.1.4.1-r1 3.1.5: CLI curses based monitoring tool
+sys-process/glances 3.1.4.1-r1 3.1.5 3.1.6.2: CLI curses based monitoring tool
 sys-process/gnome-usage 3.32.0: A nice way to view information about use of system resources.
 sys-process/htop 3.0.2 3.0.4-r1 3.0.5: interactive process viewer
 sys-process/incron 0.5.12_p20191114: inotify based cron daemon
