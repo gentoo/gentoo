@@ -14,13 +14,6 @@ dev-util/ragel doc
 # bug #750032
 sys-apps/groff uchardet
 
-# Sam James <sam@gentoo.org> (2021-01-19)
-# Joonas Niilola <juippis@gentoo.org> (2021-01-10)
-# Test-dep needs keywording on multiple arches, best to just mask it
-# globally for now. Resolves issue by b5248bbb1b5
-# bug #766147
-app-text/enchant test
-
 # Joonas Niilola <juippis@gentoo.org> (2021-01-15)
 # Dependency not keyworded on this arch.
 app-text/enchant voikko
