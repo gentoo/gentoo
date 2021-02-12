@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -68,9 +68,9 @@ src_install() {
 	# do we need this sym link? need testing..
 	dosym "../../fonts/corefonts" "/usr/share/vdr/graphlcd/fonts"
 
-	dosym "../../../../usr/share/fonts/corefonts" "/etc/vdr/plugins/${VDRPLUGIN}/fonts"
-	dosym "../../../../usr/share/vdr/${VDRPLUGIN}/logos" "/etc/vdr/plugins/${VDRPLUGIN}/logos"
-	dosym "../../../etc/graphlcd.conf" "/etc/vdr/plugins/${VDRPLUGIN}/graphlcd.conf"
+	dosym ${sysroot}/usr/share/fonts/corefonts ${sysroot}/etc/vdr/plugins/"${VDRPLUGIN}"/fonts
+	dosym ${sysroot}/usr/share/vdr/"${VDRPLUGIN}"/logos ${sysroot}/etc/vdr/plugins/"${VDRPLUGIN}"/logos
+	dosym ${sysroot}/etc/graphlcd.conf ${sysroot}/etc/vdr/plugins/"${VDRPLUGIN}"/graphlcd.conf
 
 	# do we need this sym link? need testing..
 #	dosym "logonames.alias.1.3" "/etc/vdr/plugins/${VDRPLUGIN}/logonames.alias"
