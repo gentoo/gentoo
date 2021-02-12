@@ -1,11 +1,11 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 inherit go-module systemd
 GIT_COMMIT=52ec2e19f1d6e383b30a495b9bcdece315adac17
 
-DESCRIPTION="A simple and flexible workload orchestrator "
+DESCRIPTION="A simple and flexible workload orchestrator"
 HOMEPAGE="https://nomadproject.io"
 SRC_URI="https://github.com/hashicorp/nomad/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -36,7 +36,7 @@ src_install() {
 	newins dist/client.hcl client.hcl.example
 	newins dist/server.hcl server.hcl.example
 	einstalldocs
-dodoc CHANGELOG.md
+	dodoc CHANGELOG.md
 	keepdir /var/lib/nomad /var/log/nomad
 	newconfd "${FILESDIR}/nomad.confd" nomad
 	newinitd "${FILESDIR}/nomad.initd" nomad
