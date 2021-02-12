@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -43,6 +43,8 @@ RDEPEND="${DEPEND}
 	python? ( ${PYTHON_DEPS} )"
 DEPEND+="
 	dev-lang/go"
+
+PATCHES=("${FILESDIR}"/${PN}-9.0.0-limits-gcc11.patch)
 
 S=${WORKDIR}
 CMAKE_USE_DIR="${S}/boringssl"
