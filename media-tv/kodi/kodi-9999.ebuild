@@ -112,7 +112,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	)
 	!system-ffmpeg? (
 		app-arch/bzip2
-		dav1d? ( media-libs/dav1d ) 
+		dav1d? ( media-libs/dav1d )
 	)
 	mysql? ( dev-db/mysql-connector-c:= )
 	mariadb? ( dev-db/mariadb-connector-c:= )
