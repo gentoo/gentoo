@@ -24,6 +24,16 @@
 	<flag name="ccache">
 		Use <pkg>dev-util/ccache</pkg> to speed up rebuilds
 	</flag>
+	<flag name="gamepad">
+		Add support for gamepads through <pkg>dev-qt/qtgamepad</pkg>
+	</flag>
+	<flag name="headless">
+		Build a binary without GUI
+	</flag>
+	<flag name="spacenav">
+		Add support for space navigator devices through
+		<pkg>dev-libs/libspnav</pkg>
+	</flag>
 </use>
 <upstream>
 	<remote-id type="github">openscad/openscad</remote-id>
