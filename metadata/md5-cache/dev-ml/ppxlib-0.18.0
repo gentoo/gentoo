@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0/0.18.0
 SRC_URI=https://github.com/ocaml-ppx/ppxlib/archive/0.18.0.tar.gz -> ppxlib-0.18.0.tar.gz
 _eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
-_md5_=aff39455938827a1ceeab51d5598e5eb
+_md5_=cf7971181747627baed68ac39b4759f8

@@ -11,4 +11,4 @@ RDEPEND=dev-ml/sexplib0:= dev-ml/base:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/parsexp/archive/v0.14.0.tar.gz -> parsexp-0.14.0.tar.gz
 _eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
-_md5_=92915c48637a7d87006c7dd12de5ca0a
+_md5_=45e0ff5f9e529f18cc5705f42eae28d0

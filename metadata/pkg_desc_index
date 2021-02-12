@@ -11048,7 +11048,7 @@ dev-vcs/subversion 1.14.0-r1 1.14.1: Advanced version control system
 dev-vcs/svn2cl 0.12 0.14: Create a GNU-style ChangeLog from subversion's svn log --xml output
 dev-vcs/svn2git 1.0.16 1.0.17 1.0.18 9999: Tool for one-time conversion from svn to git
 dev-vcs/svneverever 1.5.0: Tool collecting path entries across SVN history
-dev-vcs/tig 2.5.1 9999: text mode interface for git
+dev-vcs/tig 2.5.1 2.5.2 9999: text mode interface for git
 dev-vcs/tkcvs 9.3.2: Tcl/Tk-based graphical interface to CVS with Subversion support
 dev-vcs/topgit 0.9-r1 0.19.12: A different patch queue manager
 dev-vcs/tortoisehg 5.5.1 5.5.2 5.6 5.6.1 9999: Set of graphical tools for Mercurial
