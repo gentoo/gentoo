@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -139,7 +139,7 @@ pkg_postinst() {
 	eselect rust update
 
 	elog "Rust installs a helper script for calling GDB now,"
-	elog "for your convenience it is installed under /usr/bin/rust-gdb-bin-${PV},"
+	elog "for your convenience it is installed under /usr/bin/rust-gdb-bin-${PV}."
 
 	if has_version app-editors/emacs; then
 		elog "install app-emacs/rust-mode to get emacs support for rust."
