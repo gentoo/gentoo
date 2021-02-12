@@ -8,7 +8,7 @@ MY_PV="${PV/_p/-}"
 
 inherit lua toolchain-funcs
 
-DESCRIPTION="Mediator pattern implementation for pub-sub management "
+DESCRIPTION="Mediator pattern implementation for pub-sub management"
 HOMEPAGE="http://olivinelabs.com/mediator_lua/"
 SRC_URI="https://github.com/Olivine-Labs/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${MY_PV}"
