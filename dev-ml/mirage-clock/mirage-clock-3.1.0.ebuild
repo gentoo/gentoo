@@ -13,3 +13,5 @@ LICENSE="ISC"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="+ocamlopt"
+
+BDEPEND="dev-ml/dune-configurator"
