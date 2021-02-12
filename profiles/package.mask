@@ -35,6 +35,7 @@
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-02-11)
 # Needs some workarounds in mozilla ebuilds
 # https://bugs.gentoo.org/768543
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1692353
 =dev-lang/rust-1.50.0
 =dev-lang/rust-bin-1.50.0
 =virtual/rust-1.50.0
