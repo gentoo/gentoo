@@ -4,11 +4,11 @@ DESCRIPTION=Unit conversion program
 EAPI=7
 HOMEPAGE=https://www.gnu.org/software/units/units.html
 IUSE=+units-cur python_targets_python3_7 python_targets_python3_8 python_targets_python3_9
-KEYWORDS=~alpha amd64 ~arm ~hppa ~ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux
+KEYWORDS=~alpha amd64 ~arm ~hppa ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux
 LICENSE=FDL-1.3 GPL-3
 RDEPEND=sys-libs/readline:= units-cur? ( python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] python_targets_python3_7? ( dev-python/future[python_targets_python3_7(-)?,-python_single_target_python3_7(-),python_targets_python3_8(-)?,-python_single_target_python3_8(-),python_targets_python3_9(-)?,-python_single_target_python3_9(-)] dev-python/requests[python_targets_python3_7(-)?,-python_single_target_python3_7(-),python_targets_python3_8(-)?,-python_single_target_python3_8(-),python_targets_python3_9(-)?,-python_single_target_python3_9(-)] ) python_targets_python3_8? ( dev-python/future[python_targets_python3_7(-)?,-python_single_target_python3_7(-),python_targets_python3_8(-)?,-python_single_target_python3_8(-),python_targets_python3_9(-)?,-python_single_target_python3_9(-)] dev-python/requests[python_targets_python3_7(-)?,-python_single_target_python3_7(-),python_targets_python3_8(-)?,-python_single_target_python3_8(-),python_targets_python3_9(-)?,-python_single_target_python3_9(-)] ) python_targets_python3_9? ( dev-python/future[python_targets_python3_7(-)?,-python_single_target_python3_7(-),python_targets_python3_8(-)?,-python_single_target_python3_8(-),python_targets_python3_9(-)?,-python_single_target_python3_9(-)] dev-python/requests[python_targets_python3_7(-)?,-python_single_target_python3_7(-),python_targets_python3_8(-)?,-python_single_target_python3_8(-),python_targets_python3_9(-)?,-python_single_target_python3_9(-)] ) )
 REQUIRED_USE=units-cur? ( || ( python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 ) )
 SLOT=0
 SRC_URI=mirror://gnu/units/units-2.21.tar.gz
 _eclasses_=multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	python-r1	4c65b35c1895b82c0f44e44166a3464f	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=886d48da8704a60685a667457d73606b
+_md5_=93d07e27d35eb991687bce5a2d0e2902

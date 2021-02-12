@@ -8710,7 +8710,7 @@ dev-python/protobuf-python 3.12.2-r1 3.12.4-r1 3.13.0-r1 3.14.0 9999: Google's P
 dev-python/prov 1.5.3: W3C provenance data dodel library
 dev-python/pslab-python 1.0.1-r1: Python library for communicating with Pocket Science Lab
 dev-python/psutil 5.7.0-r1 5.7.2-r1 5.7.3: Retrieve information on running processes and system utilization
-dev-python/psycopg 2.8.5-r1 2.8.6-r1: PostgreSQL database adapter for Python
+dev-python/psycopg 2.8.6-r1: PostgreSQL database adapter for Python
 dev-python/ptvsd 4.3.2: Visual Studio remote debugging server for Python
 dev-python/ptyprocess 0.6.0-r1 0.7.0: Run a subprocess in a pseudo terminal
 dev-python/publicsuffix 2.20191221: Get a public suffix for a domain name using the Public Suffix List.
@@ -15953,7 +15953,7 @@ sci-calculators/speedcrunch 0.12.0: Fast and usable calculator for power users
 sci-calculators/tiemu 3.03-r1: Texas Instruments hand-helds emulator
 sci-calculators/tilp2 1.18: Communication program for Texas Instruments calculators
 sci-calculators/transcalc 0.14-r2: Microwave and RF transmission line calculator
-sci-calculators/units 2.20 2.21: Unit conversion program
+sci-calculators/units 2.21: Unit conversion program
 sci-calculators/wcalc 2.5: A flexible command-line scientific calculator
 sci-chemistry/GromacsWrapper 0.8.0: Python framework for Gromacs
 sci-chemistry/MDAnalysis 1.0.0: A python library to analyze and manipulate molecular dynamics trajectories

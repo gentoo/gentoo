@@ -4,11 +4,11 @@ DESCRIPTION=Multipurpose relay (SOcket CAT)
 EAPI=7
 HOMEPAGE=http://www.dest-unreach.org/socat/ https://repo.or.cz/socat.git
 IUSE=bindist libressl ssl readline ipv6 tcpd
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos
 LICENSE=GPL-2
 RDEPEND=ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) readline? ( sys-libs/readline:= ) tcpd? ( sys-apps/tcp-wrappers )
 RESTRICT=test ssl? ( readline? ( bindist ) )
 SLOT=0
 SRC_URI=http://www.dest-unreach.org/socat/download/socat-1.7.4.1.tar.bz2
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=c0283591e6b39bd6ea351c6c5d1ad8d1
+_md5_=4b19d45d02e2018048f4d7588c25dd8e
