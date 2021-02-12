@@ -8247,7 +8247,7 @@ dev-python/flask-compress 1.8.0: Compress responses in your Flask app with gzip
 dev-python/flask-cors 3.0.9 3.0.10: A Flask extension for Cross Origin Resource Sharing (CORS)
 dev-python/flask-debug 0.4.3-r1: Flask extension that displays various debugging insights during development
 dev-python/flask-gravatar 0.5.0: Small extension for Flask to make usage of Gravatar service easy
-dev-python/flask-htmlmin 2.0.2: Minimize your flask rendered html
+dev-python/flask-htmlmin 2.0.2 2.1.0: Minimize your flask rendered html
 dev-python/flask-login 0.5.0: Login session support for Flask
 dev-python/flask-mail 0.9.1-r1: Flask extension for sending email
 dev-python/flask-migrate 2.5.2 2.5.3 2.6.0: SQLAlchemy database migrations for Flask applications using Alembic
