@@ -17502,7 +17502,7 @@ sys-fs/jfsutils 1.1.15-r1: IBM's Journaling Filesystem (JFS) Utilities
 sys-fs/jmtpfs 0.5-r1: A FUSE and libmtp based filesystem for accessing MTP devices
 sys-fs/ldapfuse 1.0-r3: A virtual filesystem for FUSE which allows navigation of an LDAP tree
 sys-fs/lde 2.6.1-r1: ext2fs and minix disk editor for linux
-sys-fs/lessfs 1.7.0-r1: A high performance inline data deduplicating filesystem
+sys-fs/lessfs 1.7.0-r2: A high performance inline data deduplicating filesystem
 sys-fs/libeatmydata 105-r2: LD_PRELOAD hack to convert sync()/msync() and the like to NO-OP
 sys-fs/libfat 0.3a-r1: Support library to access and manipulate FAT12 / FAT16 / FAT32 file systems
 sys-fs/loop-aes 3.7n-r1 3.7q-r1 3.7s: Linux kernel module to encrypt disk partitions with AES cipher
@@ -19027,7 +19027,7 @@ x11-wm/windowlab 1.40-r1: small and simple window manager of novel design
 x11-wm/windowmaker 0.95.8-r1 0.95.9-r1 0.95.9-r2 9999: The fast and light GNUstep window manager
 x11-wm/wm2 4-r1: Small, unconfigurable window manager
 x11-wm/wmfs 20180520 99999999: Window Manager From Scratch, A tiling window manager highly configurable
-x11-wm/wmii 3.9.2-r5: A dynamic window manager for X11
+x11-wm/wmii 3.9.2-r6: A dynamic window manager for X11
 x11-wm/xmonad 0.15: A tiling window manager
 x11-wm/xmonad-contrib 0.16: Third party extensions for xmonad
 x11-wm/xoat 9999: X Obstinate Asymmetric Tiler
