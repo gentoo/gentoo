@@ -9877,7 +9877,7 @@ dev-ruby/bsearch 1.5.0-r2 1.5.0-r3: A binary search library for Ruby
 dev-ruby/bson 4.9.4 4.10.0: A Ruby BSON implementation for MongoDB. (Includes binary C-based extension.)
 dev-ruby/buftok 0.2.0-r1: Statefully split input data by a specifiable token
 dev-ruby/builder 3.2.3 3.2.4: A builder to facilitate programatic generation of XML markup
-dev-ruby/bundler 2.1.4 2.2.5 2.2.6 2.2.7 2.2.8: An easy way to vendor gem dependencies
+dev-ruby/bundler 2.1.4 2.2.5 2.2.6 2.2.7 2.2.8 2.2.9: An easy way to vendor gem dependencies
 dev-ruby/bundler-audit 0.7.0.1: Provides patch-level verification for Bundled apps
 dev-ruby/bunny 2.16.1 2.17.0: Another synchronous Ruby AMQP client
 dev-ruby/c21e 1.2.1: Run cross-platform executables
