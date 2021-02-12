@@ -61,6 +61,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-20.08.3-fix-filetree_model_test.patch" # bug 769548
+)
+
 src_prepare() {
 	ecm_src_prepare
 
