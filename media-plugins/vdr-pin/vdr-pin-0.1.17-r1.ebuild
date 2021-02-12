@@ -24,10 +24,10 @@ S="${WORKDIR}/vdr-plugin-pin-${VERSION_GIT}"
 src_prepare() {
 	vdr-plugin-2_src_prepare
 
-	sed -i "s:INCLUDES += -I\$(VDRINCDIR):INCLUDES += -I\$(VDRDIR)/include:" Makefile | die "sed failed"
+	sed -i "s:INCLUDES += -I\$(VDRINCDIR):INCLUDES += -I\$(VDRDIR)/include:" Makefile || die "sed failed"
 
 	# respect LDFLAGS, bug 770172
-	sed -i "s:\$(CXXFLAGS) \$(CMDOBJS):\$(CXXFLAGS) \$(LDFLAGS) \$(CMDOBJS):" Makefile | die "sed failed"
+	sed -i "s:\$(CXXFLAGS) \$(CMDOBJS):\$(CXXFLAGS) \$(LDFLAGS) \$(CMDOBJS):" Makefile || die "sed failed"
 }
 
 src_install() {
