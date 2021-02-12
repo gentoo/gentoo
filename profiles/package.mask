@@ -210,11 +210,6 @@ games-strategy/0ad
 # Fails to compile Bug #765697.
 x11-misc/rss-glx
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2021-01-11)
-# KF5 PortingAid (from kdelibs4) without any remaining revdeps. Bug #755956
-# Masked for removal in 30 days.
-kde-frameworks/kdesignerplugin
-
 # Brian Evans <grknight@gentoo.org> (2021-01-07)
 # PHP 7.2 is security vulnerable and end-of-life
 # Please upgrade to a newer slot
