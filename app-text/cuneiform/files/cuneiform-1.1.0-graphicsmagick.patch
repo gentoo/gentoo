@@ -1,8 +1,5 @@
 Description: Use GraphicsMagick instead of ImageMagick.
 Author: Jakub Wilk <jwilk@debian.org>
-Forwarded: not-needed
-Last-Update: 2011-01-21
-
 --- a/cuneiform_src/cli/cuneiform-cli.cpp
 +++ b/cuneiform_src/cli/cuneiform-cli.cpp
 @@ -341,6 +341,10 @@
