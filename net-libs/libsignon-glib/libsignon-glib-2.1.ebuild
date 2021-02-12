@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,6 +16,8 @@ KEYWORDS="amd64 arm64 x86"
 IUSE="debug doc +introspection python test"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} introspection )"
+# needs more love
+RESTRICT="test"
 
 RDEPEND="
 	dev-libs/glib:2
@@ -27,17 +29,19 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}"
-BDEPEND="$(vala_depend)
+BDEPEND="${PYTHON_DEPS}
+	$(vala_depend)
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
 	doc? ( dev-util/gtk-doc )
 	test? ( dev-libs/check )
 "
 
-# needs more love
-RESTRICT="test"
-
 S="${WORKDIR}/${PN}-VERSION_${PV}"
+
+pkg_setup() {
+	python_setup
+}
 
 src_prepare() {
 	default
