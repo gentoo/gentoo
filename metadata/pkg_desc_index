@@ -5342,7 +5342,7 @@ dev-libs/icu-le-hb 1.0.3-r1: ICU Layout Engine API on top of HarfBuzz shaping li
 dev-libs/igraph 0.8.3 0.8.5: Creating and manipulating undirected and directed graphs
 dev-libs/iksemel 1.4-r1: eXtensible Markup Language parser library designed for Jabber applications
 dev-libs/ilbc-rfc3951 0-r1 0-r2: iLBC is a speech codec suitable for robust voice communication over IP
-dev-libs/inih 51 52 52-r1: inih (INI not invented here) simple .INI file parser
+dev-libs/inih 52 52-r1 53: inih (INI not invented here) simple .INI file parser
 dev-libs/iniparser 3.1-r2 4.1: A free stand-alone ini file parsing library
 dev-libs/injeqt 1.2.0: Dependency injection framework for Qt5
 dev-libs/input-pad 1.0.99_pre20140916: On-screen input pad to send characters with mouse
