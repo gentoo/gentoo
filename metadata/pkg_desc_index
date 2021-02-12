@@ -5189,8 +5189,8 @@ dev-lang/qu-prolog 10.6: Extended Prolog supporting quantifiers, object-variable
 dev-lang/rakudo 2020.05.1 2020.06 2020.07 2020.08.1 2020.09 2020.10 2020.11 2020.12 9999: A compiler for the Perl 6 programming language
 dev-lang/regina-rexx 3.9.1-r1: Portable Rexx interpreter
 dev-lang/ruby 2.5.8 2.5.8-r1 2.6.6-r2 2.7.2 3.0.0 3.0.0-r1: An object-oriented scripting language
-dev-lang/rust 1.46.0 1.47.0-r2 1.48.0 1.49.0: Systems programming language from Mozilla
-dev-lang/rust-bin 1.46.0 1.47.0-r1 1.48.0 1.49.0: Systems programming language from Mozilla
+dev-lang/rust 1.46.0 1.47.0-r2 1.48.0 1.49.0 1.50.0: Systems programming language from Mozilla
+dev-lang/rust-bin 1.46.0 1.47.0-r1 1.48.0 1.49.0 1.50.0: Systems programming language from Mozilla
 dev-lang/sassc 3.6.0 3.6.1: A libsass command line driver
 dev-lang/scala 2.12.4 2.12.10: The Scala Programming Language
 dev-lang/scala-bin 2.13.1: The Scala Programming Language
@@ -17556,9 +17556,9 @@ sys-fs/xfsprogs 5.4.0-r1 5.6.0 5.7.0 5.8.0 5.9.0 5.10.0-r1: xfs filesystem utili
 sys-fs/xwmfs 0.86: FUSE-based X11 Window-Manager file system
 sys-fs/yaffs2utils 0.2.9: tools for generating YAFFS images
 sys-fs/zerofree 1.1.1: Zeroes out all free space on a filesystem
-sys-fs/zfs 0.8.5 0.8.6 2.0.1 2.0.2 9999: Userland utilities for ZFS Linux kernel module
+sys-fs/zfs 0.8.6 2.0.2 2.0.3 9999: Userland utilities for ZFS Linux kernel module
 sys-fs/zfs-auto-snapshot 1.2.4 1.2.4-r1 9999: ZFS Automatic Snapshot Service for Linux
-sys-fs/zfs-kmod 0.8.5 0.8.6 2.0.1 2.0.2 9999: Linux ZFS kernel module for sys-fs/zfs
+sys-fs/zfs-kmod 0.8.6 2.0.2 2.0.3 9999: Linux ZFS kernel module for sys-fs/zfs
 sys-kernel/bliss-initramfs 8.1.0-r1 9.3.0: Boot your system's rootfs from Encrypted/OpenZFS.
 sys-kernel/bliss-kernel-bin 4.14.178 5.4.51: Precompiled Vanilla Kernel (Kernel Ready-to-Eat [KRE])
 sys-kernel/cryptodev 1.9-r1 1.11 9999: device that allows access to Linux kernel cryptographic drivers
@@ -17910,7 +17910,7 @@ virtual/qmail 1.03: Virtual for qmail
 virtual/resolvconf 1: Virtual to select between different resolvconf providers
 virtual/ruby-ssl 11: Virtual ebuild for the Ruby OpenSSL bindings
 virtual/rubygems 15 16: Virtual ebuild for rubygems
-virtual/rust 1.46.0 1.47.0 1.48.0 1.49.0: Virtual for Rust language compiler
+virtual/rust 1.46.0 1.47.0 1.48.0 1.49.0 1.50.0: Virtual for Rust language compiler
 virtual/service-manager 0 1: Virtual for various service managers
 virtual/skkserv 0: Virtual for SKK server
 virtual/ssh 0: Virtual for SSH client and server
