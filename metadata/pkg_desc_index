@@ -2425,7 +2425,7 @@ app-misc/ddccontrol-db 20190826_p20200613: DDCControl monitor database
 app-misc/ddcutil 0.9.1 0.9.5 0.9.9: Program for querying and changing monitor settings
 app-misc/delay 1.6-r2: Sleeplike program that counts down the number of seconds specified
 app-misc/detachtty 9-r1 11.0.0: Attach/detach from interactive processes across the network
-app-misc/detox 1.2.0-r3: Safely remove spaces and strange characters from filenames
+app-misc/detox 1.2.0-r3 1.4.0: Safely remove spaces and strange characters from filenames
 app-misc/devtodo 0.1.20-r3: A nice command line todo list for developers
 app-misc/dfshow 0.8.2_beta-r1 0.9.1_beta-r1: DF-SHOW is a Unix-like rewrite of some of the applications from DF-EDIT
 app-misc/digitemp 3.7.1: Temperature logging and reporting using Maxim's iButtons and 1-Wire protocol
@@ -18077,7 +18077,7 @@ www-misc/multisort 1.1-r2: Merges httpd logfiles in the Common Log Format
 www-misc/profile-sync-daemon 5.75 6.31 6.35 9999: Symlinks and syncs browser profile dirs to RAM.
 www-misc/shellinabox 2.20-r4: Export command line tools to a web based terminal emulator
 www-misc/urlwatch 2.17 2.18-r1 2.21 2.22: A tool for monitoring webpages for updates
-www-misc/vdradmin-am 3.6.10-r1: WWW Admin for the Video Disk Recorder
+www-misc/vdradmin-am 3.6.10-r1 3.6.10-r2: WWW Admin for the Video Disk Recorder
 www-misc/visitors 0.7-r2: Fast web log analyzer
 www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution and page ordering
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)

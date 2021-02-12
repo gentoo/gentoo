@@ -1,0 +1,14 @@
+BDEPEND=ssl? ( || ( dev-libs/openssl:0 dev-libs/libressl:0 ) ) virtual/pkgconfig
+DEFINED_PHASES=config install postinst preinst prepare unpack
+DEPEND=acct-group/vdradmin acct-user/vdradmin dev-lang/perl dev-perl/Authen-SASL dev-perl/CGI dev-perl/Digest-HMAC dev-perl/Locale-gettext dev-perl/Template-Toolkit dev-perl/URI dev-perl/libwww-perl virtual/perl-IO-Compress virtual/perl-libnet ipv6? ( dev-perl/IO-Socket-INET6 ) ssl? ( dev-perl/IO-Socket-SSL ) systemd? ( sys-apps/systemd )
+DESCRIPTION=WWW Admin for the Video Disk Recorder
+EAPI=7
+HOMEPAGE=http://andreas.vdr-developer.org/vdradmin-am/index.html
+IUSE=ipv6 ssl systemd ssl
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 LGPL-2.1
+RDEPEND=acct-group/vdradmin acct-user/vdradmin dev-lang/perl dev-perl/Authen-SASL dev-perl/CGI dev-perl/Digest-HMAC dev-perl/Locale-gettext dev-perl/Template-Toolkit dev-perl/URI dev-perl/libwww-perl virtual/perl-IO-Compress virtual/perl-libnet ipv6? ( dev-perl/IO-Socket-INET6 ) ssl? ( dev-perl/IO-Socket-SSL ) systemd? ( sys-apps/systemd ) virtual/tmpfiles
+SLOT=0
+SRC_URI=http://andreas.vdr-developer.org/vdradmin-am/download/vdradmin-am-3.6.10.tar.bz2
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	ssl-cert	8bf95e2477512d096a10bf218de41d5e	systemd	74b223e42834adf09a2d21fe5fe13741	tmpfiles	6170dc7770585fb3f16efdee789a3218	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=18c5eec5dca419a1702db1cd8f18945c
