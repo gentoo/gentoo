@@ -405,12 +405,12 @@ pkg_setup() {
 			[[ -z ${version_lld} ]] && die "Failed to read ld.lld version!"
 
 			# temp fix for https://bugs.gentoo.org/768543
-			# we can assume that rust 1.49.0 always uses llvm 11
+			# we can assume that rust 1.{49,50}.0 always uses llvm 11
 			local version_rust=$(rustc -Vv 2>/dev/null | grep -F -- 'release:' | awk '{ print $2 }')
 			[[ -n ${version_rust} ]] && version_rust=$(ver_cut 1-2 "${version_rust}")
 			[[ -z ${version_rust} ]] && die "Failed to read version from rustc!"
 
-			if ver_test "${version_rust}" -eq "1.49" ; then
+			if ver_test "${version_rust}" -ge "1.49" && ver_test "${version_rust}" -le "1.50" ; then
 				local version_llvm_rust="11"
 			else
 				local version_llvm_rust=$(rustc -Vv 2>/dev/null | grep -F -- 'LLVM version:' | awk '{ print $3 }')
