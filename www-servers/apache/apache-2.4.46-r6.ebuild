@@ -1,12 +1,12 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 # latest gentoo apache files
-GENTOO_PATCHSTAMP="20201230"
+GENTOO_PATCHSTAMP="20210212"
 GENTOO_DEVELOPER="polynomial-c"
-GENTOO_PATCHNAME="gentoo-apache-2.4.46-r4"
+GENTOO_PATCHNAME="gentoo-apache-2.4.46-r6"
 
 # IUSE/USE_EXPAND magic
 IUSE_MPMS_FORK="prefork"
@@ -36,7 +36,7 @@ authz_dbd authz_dbm authz_groupfile authz_host authz_owner authz_user autoindex
 brotli cache cache_disk cache_socache cern_meta charset_lite cgi cgid dav dav_fs dav_lock
 dbd deflate dir dumpio env expires ext_filter file_cache filter headers http2
 ident imagemap include info lbmethod_byrequests lbmethod_bytraffic lbmethod_bybusyness
-lbmethod_heartbeat log_config log_forensic logio macro md mime mime_magic negotiation
+lbmethod_heartbeat log_config log_forensic logio lua macro md mime mime_magic negotiation
 proxy proxy_ajp proxy_balancer proxy_connect proxy_ftp proxy_html proxy_http proxy_scgi
 proxy_http2 proxy_fcgi  proxy_wstunnel rewrite ratelimit remoteip reqtimeout
 session session_cookie session_crypto session_dbd setenvif slotmem_shm speling
@@ -102,6 +102,7 @@ MODULE_DEFINES="
 	http2:HTTP2
 	info:INFO
 	ldap:LDAP
+	lua:LUA
 	md:SSL
 	proxy:PROXY
 	proxy_ajp:PROXY
@@ -139,6 +140,10 @@ HOMEPAGE="https://httpd.apache.org/"
 LICENSE="Apache-2.0 Apache-1.1"
 SLOT="2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x64-macos ~sparc64-solaris ~x64-solaris"
+
+# FIXME! Move this to eclass once all ebuilds are EAPI-7
+RDEPEND+=" apache2_modules_lua? ( ${LUA_DEPS} )"
+REQUIRED_USE+=" apache2_modules_lua? ( ${LUA_REQUIRED_USE} )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.4.41-libressl.patch" #668060
@@ -183,7 +188,7 @@ src_install() {
 		/usr/share/man/man8/{rotatelogs.8,htcacheclean.8}
 	)
 	for i in ${apache_tools_prune_list[@]} ; do
-		rm "${ED%/}"/${i} || die "Failed to prune apache-tools bits"
+		rm "${ED}"/${i} || die "Failed to prune apache-tools bits"
 	done
 
 	# install apxs in /usr/bin (bug #502384) and put a symlink into the
@@ -205,7 +210,7 @@ src_install() {
 	doins "${FILESDIR}"/41_mod_http2.conf
 
 	# Fix path to apache libdir
-	sed "s|@LIBDIR@|$(get_libdir)|" -i "${ED%/}"/usr/sbin/apache2ctl || die
+	sed "s|@LIBDIR@|$(get_libdir)|" -i "${ED}"/usr/sbin/apache2ctl || die
 }
 
 pkg_postinst() {

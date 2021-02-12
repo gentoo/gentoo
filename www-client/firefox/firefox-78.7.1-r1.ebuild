@@ -68,7 +68,6 @@ IUSE="+clang cpu_flags_arm_neon dbus debug eme-free geckodriver +gmp-autoupdate
 
 REQUIRED_USE="debug? ( !system-av1 )
 	screencast? ( wayland )
-	x86? ( lto? ( clang ) )
 	wifi? ( dbus )"
 
 BDEPEND="${PYTHON_DEPS}
@@ -103,6 +102,9 @@ BDEPEND="${PYTHON_DEPS}
 				pgo? ( =sys-libs/compiler-rt-sanitizers-9*[profile] )
 			)
 		)
+	)
+	lto? (
+		!clang? ( sys-devel/binutils[gold] )
 	)
 	amd64? ( >=dev-lang/yasm-1.1 )
 	x86? ( >=dev-lang/yasm-1.1 )
@@ -407,12 +409,12 @@ pkg_setup() {
 			[[ -z ${version_lld} ]] && die "Failed to read ld.lld version!"
 
 			# temp fix for https://bugs.gentoo.org/768543
-			# we can assume that rust 1.49.0 always uses llvm 11
+			# we can assume that rust 1.{49,50}.0 always uses llvm 11
 			local version_rust=$(rustc -Vv 2>/dev/null | grep -F -- 'release:' | awk '{ print $2 }')
 			[[ -n ${version_rust} ]] && version_rust=$(ver_cut 1-2 "${version_rust}")
 			[[ -z ${version_rust} ]] && die "Failed to read version from rustc!"
 
-			if ver_test "${version_rust}" -eq "1.49" ; then
+			if ver_test "${version_rust}" -ge "1.49" && ver_test "${version_rust}" -le "1.50" ; then
 				local version_llvm_rust="11"
 			else
 				local version_llvm_rust=$(rustc -Vv 2>/dev/null | grep -F -- 'LLVM version:' | awk '{ print $3 }')
@@ -717,6 +719,9 @@ src_configure() {
 
 			mozconfig_add_options_ac '+lto' --enable-lto=cross
 		else
+			# Linking only works when using ld.gold when LTO is enabled
+			mozconfig_add_options_ac "forcing ld=gold due to USE=lto" --enable-linker=gold
+
 			# ThinLTO is currently broken, see bmo#1644409
 			mozconfig_add_options_ac '+lto' --enable-lto=full
 		fi
@@ -734,6 +739,8 @@ src_configure() {
 		if use clang ; then
 			# This is upstream's default
 			mozconfig_add_options_ac "forcing ld=lld due to USE=clang" --enable-linker=lld
+		elif tc-ld-is-gold ; then
+			mozconfig_add_options_ac "linker is set to gold" --enable-linker=gold
 		else
 			mozconfig_add_options_ac "linker is set to bfd" --enable-linker=bfd
 		fi
