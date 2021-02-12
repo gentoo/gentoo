@@ -12365,7 +12365,7 @@ kde-plasma/discover 5.20.5: KDE Plasma resources management GUI
 kde-plasma/drkonqi 5.20.5: Plasma crash handler, gives the user feedback if a program crashed
 kde-plasma/kactivitymanagerd 5.20.5: System service to manage user's activities, track the usage patterns etc.
 kde-plasma/kde-cli-tools 5.20.5: Tools based on KDE Frameworks 5 to better interact with the system
-kde-plasma/kde-gtk-config 5.20.5: GTK2 and GTK3 configurator for KDE Plasma
+kde-plasma/kde-gtk-config 5.20.5-r1: GTK2 and GTK3 configurator for KDE Plasma
 kde-plasma/kdecoration 5.20.5: Plugin based library to create window decorations
 kde-plasma/kdeplasma-addons 5.20.5: Extra Plasma applets and engines
 kde-plasma/kgamma 5.20.5: Screen gamma values kcontrol module
@@ -13612,7 +13612,7 @@ media-plugins/vdr-ffnetdev 0.1.2: VDR Plugin: Output device which offers OSD via
 media-plugins/vdr-filebrowser 0.2.1: VDR plugin: file manager plugin for moving or renaming files in VDR
 media-plugins/vdr-freecell 0.0.2-r3 0.0.2-r4: VDR plugin: play 'Freecell' on the On Screen Display
 media-plugins/vdr-fritzbox 1.5.3-r1: VDR Plugin: Inform about incoming phone-calls and use the fritz!box phonebook
-media-plugins/vdr-graphlcd 1.0.1: VDR Plugin: support output on Graphical LCD
+media-plugins/vdr-graphlcd 1.0.1-r1: VDR Plugin: support output on Graphical LCD
 media-plugins/vdr-imonlcd 1.0.2: VDR Plugin: shows information about the current state of VDR on iMON LCD
 media-plugins/vdr-iptv 2.2.1-r1 2.4.0: VDR plugin: Add a logical device capable of receiving IPTV
 media-plugins/vdr-joystick 0.0.3: VDR plugin: allows using a joystick as a remote control for VDR
