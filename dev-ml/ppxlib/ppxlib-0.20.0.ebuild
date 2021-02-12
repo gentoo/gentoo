@@ -5,7 +5,7 @@ EAPI=7
 
 inherit dune
 
-DESCRIPTION="Base library and tools for ppx rewriters "
+DESCRIPTION="Base library and tools for ppx rewriters"
 HOMEPAGE="https://github.com/ocaml-ppx/ppxlib"
 SRC_URI="https://github.com/ocaml-ppx/ppxlib/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
