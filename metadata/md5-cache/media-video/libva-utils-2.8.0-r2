@@ -1,0 +1,16 @@
+BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure prepare
+DEPEND=>=x11-libs/libva-2.8.0:=[drm?,wayland?,X?] wayland? ( >=dev-libs/wayland-1.0.6 ) X? ( >=x11-libs/libX11-1.6.2 )
+DESCRIPTION=Collection of utilities and tests for VA-API
+EAPI=7
+HOMEPAGE=https://01.org/linuxmedia/vaapi
+IUSE=+drm test wayland X
+KEYWORDS=~amd64 ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux
+LICENSE=MIT
+RDEPEND=>=x11-libs/libva-2.8.0:=[drm?,wayland?,X?] wayland? ( >=dev-libs/wayland-1.0.6 ) X? ( >=x11-libs/libX11-1.6.2 )
+REQUIRED_USE=|| ( drm wayland X )
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/intel/libva-utils/archive/2.8.0.tar.gz -> libva-utils-2.8.0.tar.gz
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=bf61d1007ce176705ad34919de5b639b

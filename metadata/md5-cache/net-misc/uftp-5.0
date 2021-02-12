@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=ssl? ( dev-libs/openssl:0=[-bindist] )
+DESCRIPTION=Encrypted UDP based FTP with multicast
+EAPI=7
+HOMEPAGE=http://uftp-multicast.sourceforge.net/
+IUSE=+server ssl
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3-with-openssl-exception
+RDEPEND=ssl? ( dev-libs/openssl:0=[-bindist] )
+SLOT=0
+SRC_URI=https://download.sourceforge.net/uftp-multicast/source-tar/uftp-5.0.tar.gz
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=402466ad15208d7926ca4fe2e1956e23

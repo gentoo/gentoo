@@ -787,7 +787,7 @@ app-admin/xtail 2.1-r1: Tail multiple logfiles at once, even if rotated
 app-admin/yadm 2.4.0: A dotfile manager for the config files in your home folder
 app-antivirus/clamav 0.102.4 0.103.1: Clam Anti-Virus Scanner
 app-antivirus/clamtk 6.06 6.07: A graphical front-end for ClamAV
-app-antivirus/fangfrisch 1.2.0-r1 1.3.0: Update and verify unofficial Clam Anti-Virus signatures
+app-antivirus/fangfrisch 1.3.0 1.4.0: Update and verify unofficial Clam Anti-Virus signatures
 app-arch/advancecomp 2.2_pre20190301: Recompress ZIP, PNG and MNG, considerably improving compression
 app-arch/afio 2.5.1-r2: Afio creates cpio-format archives.
 app-arch/alien 8.95-r1: Converts between the rpm, dpkg, stampede slp, and slackware tgz file formats
@@ -3666,7 +3666,7 @@ dev-embedded/lpc21isp 1.85: In-circuit programming (ISP) tool for the NXP microc
 dev-embedded/mcu8051ide 1.4.10: Graphical IDE for microcontrollers based on 8051.
 dev-embedded/mspdebug 0.24 0.25: A free debugger for use with MSP430 MCUs
 dev-embedded/nodemcu-uploader 0.4.3-r1: Simple tool for uploading files to the filesystem of an ESP8266 running NodeMCU
-dev-embedded/openocd 0.10.0 0.10.0-r1 9999: OpenOCD - Open On-Chip Debugger
+dev-embedded/openocd 0.10.0 0.10.0-r1 0.11.0_rc2 9999: OpenOCD - Open On-Chip Debugger
 dev-embedded/parapin 1.5.0 1.5.1_beta1: A parallel port pin programming library
 dev-embedded/picasm 1.14: An assembler and disassembler for 12 and 14-bit PIC chips
 dev-embedded/picp 0.6.8: A commandline interface to Microchip's PICSTART+ programmer
@@ -12453,7 +12453,7 @@ mail-client/kube 0.7.0-r1: Mail client based on KDE Frameworks
 mail-client/mailx 8.1.2.20180807: The $ mail program, which is used to send mail via shell scripts
 mail-client/mailx-support 20060102-r2: Provides lockspool utility
 mail-client/mutt 2.0.4-r1 2.0.5: A small but very powerful text-based mail client
-mail-client/mutt-wizard 3.1.1 9999: A system for automatically configuring neomutt and isync
+mail-client/mutt-wizard 3.1.1 3.2.1 9999: A system for automatically configuring neomutt and isync
 mail-client/neomutt 20201127 20201127-r1 20210205 99999999: A small but very powerful text-based mail client
 mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for Linux
 mail-client/roundcube 1.4.8 1.4.10 1.4.11 9999: A browser-based multilingual IMAP client with an application-like user interface
@@ -12894,7 +12894,7 @@ media-gfx/kphotoalbum 5.7.0: Tool for indexing, searching, and viewing images
 media-gfx/krita 4.4.1 4.4.2: Free digital painting application. Digital Painting, Creative Freedom!
 media-gfx/kuickshow 0.10.1: Image viewer based on KDE Frameworks
 media-gfx/kxstitch 2.2.0: Program to create cross stitch patterns
-media-gfx/libimagequant 2.11.7 2.12.2 2.12.3: Palette quantization library that powers pngquant and other PNG optimizers
+media-gfx/libimagequant 2.12.2 2.12.3 2.14.0: Palette quantization library that powers pngquant and other PNG optimizers
 media-gfx/librecad 2.1.3-r5 9999: Generic 2D CAD program
 media-gfx/llgal 0.13.19-r1: Command-line static web gallery generator
 media-gfx/luminance-hdr 2.6.0-r1: Graphical user interface that provides a workflow for HDR imaging
@@ -14138,7 +14138,7 @@ media-video/isight-firmware-tools 1.6-r1: Extract, load or export firmware for t
 media-video/jubler 5.1: Java subtitle editor
 media-video/kaffeine 2.0.18: Media player with digital TV support by KDE
 media-video/kino 1.3.4-r1: Kino is a non-linear DV editor for GNU/Linux
-media-video/libva-utils 2.4.0 2.8.0 2.8.0-r1 2.9.1 2.9.1-r1 2.10.0 9999: Collection of utilities and tests for VA-API
+media-video/libva-utils 2.4.0 2.8.0 2.8.0-r1 2.8.0-r2 2.9.1 2.9.1-r1 2.10.0 9999: Collection of utilities and tests for VA-API
 media-video/lsdvd 0.17: Utility for getting info out of DVDs
 media-video/luvcview 0.2.6-r1: USB Video Class grabber
 media-video/lxdvdrip 1.77: Command line tool to automate the process of ripping and burning DVDs
@@ -15348,7 +15348,7 @@ net-misc/ubridge 0.9.18: Bridge for UDP tunnels, Ethernet, TAP and VMnet interfa
 net-misc/ucarp 1.5.2-r7: Portable userland implementation of Common Address Redundancy Protocol (CARP)
 net-misc/udpcast 20200328: Multicast file transfer tool
 net-misc/udpxy 1.0.23.7-r2: Small daemon to relay multicast UDP traffic to client's TCP (HTTP) connection
-net-misc/uftp 4.10.1: Encrypted UDP based FTP with multicast
+net-misc/uftp 4.10.1 5.0: Encrypted UDP based FTP with multicast
 net-misc/unison 2.48.15_p4-r2 2.51.3_p20201024 2.51.3_p20201127: Two-way cross-platform file synchronizer
 net-misc/unix2tcp 0.8.2-r1: a connection forwarder that converts Unix sockets into TCP sockets
 net-misc/usbip 4.13-r1: Userspace utilities for a general USB device sharing system over IP networks
@@ -16488,7 +16488,7 @@ sci-misc/netlogo-bin 5.0.3-r1 6.0.2: Cross-platform multi-agent programmable mod
 sci-misc/oww 0.86.5: A one-wire weather station for Dallas Semiconductor
 sci-misc/tango 9.2.5a: Tango is an Open Source solution for SCADA and DCS
 sci-misc/vitables 3.0.0-r2: A graphical tool for browsing / editing files in both PyTables and HDF5 formats
-sci-physics/bullet 3.07: Continuous Collision Detection and Physics Library
+sci-physics/bullet 3.07 3.08: Continuous Collision Detection and Physics Library
 sci-physics/clhep 2.4.1.3-r2 2.4.4.0: High Energy Physics C++ library
 sci-physics/espresso 4.1.3 9999: Extensible Simulation Package for Research on Soft matter
 sci-physics/fastjet 3.0.6-r1: Fast implementation of several recombination jet algorithms
