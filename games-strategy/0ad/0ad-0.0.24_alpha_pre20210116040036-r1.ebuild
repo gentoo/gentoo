@@ -36,7 +36,6 @@ RESTRICT="test"
 BDEPEND="virtual/pkgconfig
 	test? ( dev-lang/perl )"
 DEPEND="
-	>=dev-lang/spidermonkey-78.6:78
 	dev-libs/boost:=
 	dev-libs/icu:=
 	dev-libs/libfmt:0=
@@ -78,14 +77,11 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	# Delete check for minor version of dev-lang/spidermonkey.
-	sed -e "/^#if MOZJS_MINOR_VERSION != [[:digit:]]\+$/,/^#endif$/d" -i source/scriptinterface/ScriptTypes.h || die
+	sed -i -e "/--build/d" libraries/source/spidermonkey/build.sh || die
 }
 
 src_configure() {
 	local myconf=(
-		--with-system-mozjs
-		--with-system-nvtt
 		--minimal-flags
 		$(usex nvtt "" "--without-nvtt")
 		$(usex pch "" "--without-pch")
@@ -124,9 +120,31 @@ src_compile() {
 	tc-export AR
 
 	# build 3rd party fcollada
+	einfo "Building bundled fcollada"
 	emake -C libraries/source/fcollada/src
 
+	# build bundled nvtt
+	# nvtt is abandoned upstream and 0ad have forked it
+	# and added fixes. Use their copy.
+	# bug #768930
+	if use nvtt ; then
+		cd libraries/source/nvtt || die
+		elog "Building bundled nvtt (bug #768930)"
+		./build.sh || die "Failed to build bundled nvtt"
+		cd "${S}" || die
+	fi
+
+	# build bundled spidermonkey
+	# We genuinely can't use the system SpiderMonkey right now.
+	# Breakages occur even on minor bumps in upstream SM,
+	# e.g. bug #768840.
+	cd libraries/source/spidermonkey || die
+	elog "Building bundled SpiderMonkey (bug #768840)"
+	XARGS="${EPREFIX}/usr/bin/xargs" ./build.sh || die "Failed to build bundled SpiderMonkey"
+	cd "${S}" || die
+
 	# build 0ad
+	elog "Building 0ad"
 	emake -C build/workspaces/gcc verbose=1
 }
 
