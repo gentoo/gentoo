@@ -842,7 +842,7 @@ app-arch/pbzip2 1.1.12 1.1.13: Parallel bzip2 (de)compressor using libbz2
 app-arch/pdlzip 1.10 1.11: Public-domain version of lzip compressor
 app-arch/pdv 1.5.1-r3: build a self-extracting and self-installing binary package
 app-arch/pet2tgz 0.3-r1: Puppy Linux .pet to .tar.gz converter
-app-arch/pigz 2.4-r1 2.5: A parallel implementation of gzip
+app-arch/pigz 2.4-r1 2.5 2.6: A parallel implementation of gzip
 app-arch/pixz 1.0.7 9999: Parallel Indexed XZ compressor
 app-arch/plzip 1.8 1.9: Parallel lzip compressor
 app-arch/pure-sfv 0.3-r1: utility to test and create .sfv files and create .par files
@@ -17372,7 +17372,7 @@ sys-devel/pmake 1.111.3.3: BSD build tool to create programs in parallel. Debian
 sys-devel/prelink 20151030-r1 99999999: Modifies ELFs to avoid runtime symbol resolutions resulting in faster load times
 sys-devel/qconf 2.5: ./configure like generator for qmake-based projects
 sys-devel/remake 4.2.1.1.4-r1: patched version of GNU make with improved error reporting, tracing and debugging
-sys-devel/rust-std 1.46.0 1.47.0 1.48.0 1.49.0: Rust standard library, standalone (for crossdev)
+sys-devel/rust-std 1.46.0 1.47.0 1.48.0 1.49.0 1.50.0: Rust standard library, standalone (for crossdev)
 sys-devel/slibtool 0.5.28 0.5.31 9999: A skinny libtool implementation, written in C
 sys-devel/smatch 1.60 9999: static analysis tool for C
 sys-devel/sparse 0.6.2 9999: C semantic parser
@@ -18645,7 +18645,7 @@ x11-misc/xtrace 1.4.0: X11 protocol trace utility
 x11-misc/xtrlock 2.12 2.13: A simplistic screen locking program for X
 x11-misc/xvfb-run 1.20.8_p2 1.20.10_p2: Run a command in a virtual X server environment
 x11-misc/xvkbd 4.1: virtual keyboard for X window system
-x11-misc/xwallpaper 0.6.2-r1 0.6.4 0.6.5 9999: Wallpaper setting utility for X
+x11-misc/xwallpaper 0.6.2-r1 0.6.4 0.6.5 0.6.6 9999: Wallpaper setting utility for X
 x11-misc/xwit 3.4_p15 3.4_p16: A collection of simple routines to call some of those X11 functions
 x11-misc/xwrits 2.26-r1: Reminds you to take wrist breaks to help you prevent repetitive stress injury
 x11-misc/xxkb 1.11.1 1.11.1-r1: eXtended XKB - assign different keymaps to different windows
