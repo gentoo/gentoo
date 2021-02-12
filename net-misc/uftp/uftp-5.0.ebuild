@@ -18,9 +18,6 @@ IUSE="+server ssl"
 DEPEND="ssl? ( dev-libs/openssl:0=[-bindist] )"
 RDEPEND="${DEPEND}"
 
-# Workaround, see #644670
-RESTRICT=test
-
 PATCHES=(
 	"${FILESDIR}/${PN}-4.10.1_makefile.patch"
 )
