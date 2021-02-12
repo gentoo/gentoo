@@ -40,7 +40,7 @@ DESCRIPTION="The extensible, customizable, self-documenting real-time display ed
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int Xaw3d xft +xpm xwidgets zlib"
+IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int Xaw3d xft +xpm xwidgets zlib"
 RESTRICT="test"
 
 RDEPEND="app-emacs/emacs-common-gentoo[games?,gui(-)?]
@@ -101,24 +101,16 @@ RDEPEND="app-emacs/emacs-common-gentoo[games?,gui(-)?]
 			)
 		)
 		!gtk? (
-			motif? (
-				>=x11-libs/motif-2.3:0
-				x11-libs/libXpm
+			Xaw3d? (
+				x11-libs/libXaw3d
 				x11-libs/libXmu
 				x11-libs/libXt
 			)
-			!motif? (
-				Xaw3d? (
-					x11-libs/libXaw3d
-					x11-libs/libXmu
-					x11-libs/libXt
-				)
-				!Xaw3d? ( athena? (
-					x11-libs/libXaw
-					x11-libs/libXmu
-					x11-libs/libXt
-				) )
-			)
+			!Xaw3d? ( athena? (
+				x11-libs/libXaw
+				x11-libs/libXmu
+				x11-libs/libXt
+			) )
 		)
 	) )"
 
@@ -222,20 +214,13 @@ src_configure() {
 				See <https://gitlab.gnome.org/GNOME/gtk/-/issues/221> and
 				<https://gitlab.gnome.org/GNOME/gtk/-/issues/2315>.
 				If you intend to use more than one display, then it is strongly
-				recommended that you compile Emacs with the Athena/Lucid or the
-				Motif toolkit instead.
+				recommended that you compile Emacs with the Athena/Lucid
+				toolkit instead.
 			EOF
 			myconf+=" --with-x-toolkit=gtk3 $(use_with xwidgets)"
-			for f in motif Xaw3d athena; do
-				use ${f} && ewarn \
-					"USE flag \"${f}\" has no effect if \"gtk\" is set."
-			done
-		elif use motif; then
-			einfo "Configuring to build with Motif toolkit"
-			myconf+=" --with-x-toolkit=motif"
 			for f in Xaw3d athena; do
 				use ${f} && ewarn \
-					"USE flag \"${f}\" has no effect if \"motif\" is set."
+					"USE flag \"${f}\" has no effect if \"gtk\" is set."
 			done
 		elif use athena || use Xaw3d; then
 			einfo "Configuring to build with Athena/Lucid toolkit"
