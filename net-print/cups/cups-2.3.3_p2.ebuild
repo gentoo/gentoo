@@ -69,6 +69,7 @@ PDEPEND=">=net-print/cups-filters-1.0.43"
 PATCHES=(
 	"${FILESDIR}/${PN}-2.2.6-fix-install-perms.patch"
 	"${FILESDIR}/${PN}-1.4.4-nostrip.patch"
+	"${FILESDIR}/${PN}-2.3.3-user-AR.patch"
 )
 
 MULTILIB_CHOST_TOOLS=(
@@ -259,7 +260,7 @@ multilib_src_install_all() {
 	fi
 
 	keepdir /usr/libexec/cups/driver /usr/share/cups/{model,profiles} \
-		/var/log/cups /var/spool/cups/tmp
+		/var/cache/cups /var/log/cups /var/spool/cups/tmp
 
 	keepdir /etc/cups/{interfaces,ppd,ssl}
 
