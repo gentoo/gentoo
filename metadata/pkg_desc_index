@@ -9106,7 +9106,7 @@ dev-python/semantic_version 2.8.5: Python library providing a few tools handling
 dev-python/semver 2.13.0: A Python module for semantic versioning
 dev-python/send2trash 1.5.0-r1: Sends files to the Trash (or Recycle Bin)
 dev-python/sentinels 1.0.0: Python Sentinels class which are objects with special meanings.
-dev-python/sentry-sdk 0.19.5 0.20.0: Python client for Sentry
+dev-python/sentry-sdk 0.19.5 0.20.1: Python client for Sentry
 dev-python/serpent 1.30.2: A simple serialization library based on ast.literal_eval
 dev-python/serverfiles 0.2.1 0.3.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0-r1: Service identity verification for pyOpenSSL
@@ -18011,7 +18011,7 @@ www-apps/nextcloud 18.0.12 18.0.13 18.0.14 19.0.6 19.0.7 19.0.8 20.0.5 20.0.6 20
 www-apps/nikola 8.0.4 8.1.0 8.1.1 8.1.1-r1 8.1.2: A static website and blog generator
 www-apps/novnc 1.1.0 1.2.0 9999: noVNC is a VNC client implemented using HTML5 technologies
 www-apps/owncloud 10.5.0 10.6.0: Web-based storage application where all your data is under your own control
-www-apps/phpBB 3.3.2: An open-source PHP-based bulletin board package
+www-apps/phpBB 3.3.3: An open-source PHP-based bulletin board package
 www-apps/phpsysinfo 3.3.2: A customizable PHP script that displays information about your system nicely
 www-apps/piwigo 2.10.2 11.2.0 11.3.0: a photo gallery software for the web
 www-apps/postfixadmin 3.2.4 3.3.5: Web Based Management tool for Postfix style virtual domains and users
