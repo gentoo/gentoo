@@ -12,7 +12,7 @@ inherit ecm kde.org
 
 DESCRIPTION="Skat game by KDE"
 HOMEPAGE="https://apps.kde.org/en/lskat
-https://games.kde.org/game.php?game=lskat"
+https://games.kde.org/games/lskat"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
