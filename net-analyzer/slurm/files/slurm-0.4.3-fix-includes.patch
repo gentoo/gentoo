@@ -1,0 +1,22 @@
+--- a/os.h
++++ b/os.h
+@@ -177,7 +177,7 @@
+ #elif defined (__linux__)             /* L I N U X */
+ #include <stdio.h>
+ #include <sys/param.h>
+-#include <sys/sysctl.h>
++#include <linux/sysctl.h>
+ #include <stdlib.h>
+ #include <stdarg.h>
+ #include <unistd.h>
+@@ -195,8 +195,8 @@
+ #include <netinet/in.h>
+ #include <net/if.h>
+ #include <arpa/inet.h>
+-#include <net/ppp_defs.h>
+-#include <net/if_ppp.h>
++#include <linux/ppp_defs.h>
++#include <linux/if_ppp.h>
+ #elif defined (__Solaris__)           /* S O L A R I S */
+ #include <stdio.h>
+ #define NO_CURSES_E	1
