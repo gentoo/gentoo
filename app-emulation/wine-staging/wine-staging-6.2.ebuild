@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,11 +7,11 @@ PLOCALES="ar ast bg ca cs da de el en en_US eo es fa fi fr he hi hr hu it ja ko 
 PLOCALE_BACKUP="en"
 
 inherit autotools eapi7-ver estack eutils flag-o-matic gnome2-utils l10n multilib multilib-minimal pax-utils toolchain-funcs virtualx xdg-utils
-
 MY_PN="${PN%%-*}"
-MY_P="${MY_PN}-${PV}"
+MY_PV="${PV/_/-}"
+MY_P="${MY_PN}-${MY_PV}"
 
-if [[ ${PV} == "9999" ]] ; then
+if [[ ${MY_PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://source.winehq.org/git/wine.git"
 	EGIT_BRANCH="master"
 	inherit git-r3
@@ -19,12 +19,16 @@ if [[ ${PV} == "9999" ]] ; then
 	#KEYWORDS=""
 else
 	MAJOR_V=$(ver_cut 1)
-	SRC_URI="https://dl.winehq.org/wine/source/${MAJOR_V}.x/${MY_P}.tar.xz"
+	MINOR_V=$(ver_cut 2)
+    if [[ ${MINOR_V} != "0" ]] ; then
+        MINOR_V="x"
+    fi
+	SRC_URI="https://dl.winehq.org/wine/source/${MAJOR_V}.${MINOR_V}/${MY_P}.tar.xz"
 	KEYWORDS="-* ~amd64 ~x86"
 fi
 S="${WORKDIR}/${MY_P}"
 
-STAGING_P="wine-staging-${PV}"
+STAGING_P="wine-staging-${MY_PV}"
 STAGING_DIR="${WORKDIR}/${STAGING_P}"
 GWP_V="20200523"
 PATCHDIR="${WORKDIR}/gentoo-wine-patches"
@@ -35,16 +39,16 @@ SRC_URI="${SRC_URI}
 	https://dev.gentoo.org/~sarnex/distfiles/wine/gentoo-wine-patches-${GWP_V}.tar.xz
 "
 
-if [[ ${PV} == "9999" ]] ; then
+if [[ ${MY_PV} == "9999" ]] ; then
 	STAGING_EGIT_REPO_URI="https://github.com/wine-staging/wine-staging.git"
 else
 	SRC_URI="${SRC_URI}
-	staging? ( https://github.com/wine-staging/wine-staging/archive/v${PV}.tar.gz -> ${STAGING_P}.tar.gz )"
+	staging? ( https://github.com/wine-staging/wine-staging/archive/v${MY_PV}.tar.gz -> ${STAGING_P}.tar.gz )"
 fi
 
 LICENSE="LGPL-2.1"
-SLOT="${PV}"
-IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc +faudio +fontconfig +gcrypt +gecko gphoto2 gsm gssapi gstreamer +jpeg kerberos kernel_FreeBSD +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss +perl pcap pipelight +png prelink pulseaudio +realtime +run-exes samba scanner sdl selinux +ssl staging test themes +threads +truetype udev +udisks +unwind v4l vaapi vkd3d vulkan +X +xcomposite xinerama +xml"
+SLOT="${MY_PV}"
+IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc +faudio +fontconfig +gcrypt +gecko gphoto2 gsm gssapi gstreamer +jpeg kerberos kernel_FreeBSD +lcms ldap mingw +mono mp3 netapi nls odbc openal opencl +opengl osmesa oss +perl pcap pipelight +png prelink pulseaudio +realtime +run-exes samba scanner sdl selinux +ssl staging test themes +threads +truetype udev +udisks +unwind usb v4l vaapi vkd3d vulkan +X +xcomposite xinerama +xml"
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
 	X? ( truetype )
 	elibc_glibc? ( threads )
@@ -86,7 +90,6 @@ COMMON_DEPEND="
 	lcms? ( media-libs/lcms:2=[${MULTILIB_USEDEP}] )
 	ldap? ( net-nds/openldap:=[${MULTILIB_USEDEP}] )
 	mp3? ( >=media-sound/mpg123-1.5.0[${MULTILIB_USEDEP}] )
-	ncurses? ( >=sys-libs/ncurses-5.2:0=[${MULTILIB_USEDEP}] )
 	netapi? ( net-fs/samba[netapi(+),${MULTILIB_USEDEP}] )
 	nls? ( sys-devel/gettext[${MULTILIB_USEDEP}] )
 	odbc? ( dev-db/unixODBC:=[${MULTILIB_USEDEP}] )
@@ -113,6 +116,7 @@ COMMON_DEPEND="
 	udev? ( virtual/libudev:=[${MULTILIB_USEDEP}] )
 	udisks? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
 	unwind? ( sys-libs/libunwind[${MULTILIB_USEDEP}] )
+	usb? ( virtual/libusb:1[${MULTILIB_USEDEP}]  )
 	v4l? ( media-libs/libv4l[${MULTILIB_USEDEP}] )
 	vaapi? ( x11-libs/libva[X,${MULTILIB_USEDEP}] )
 	vkd3d? ( >=app-emulation/vkd3d-1.2[${MULTILIB_USEDEP}] )
@@ -129,8 +133,8 @@ RDEPEND="${COMMON_DEPEND}
 	>app-eselect/eselect-wine-0.3
 	!app-emulation/wine:0
 	dos? ( >=games-emulation/dosbox-0.74_p20160629 )
-	gecko? ( app-emulation/wine-gecko:2.47.1[abi_x86_32?,abi_x86_64?] )
-	mono? ( app-emulation/wine-mono:5.1.1 )
+	gecko? ( app-emulation/wine-gecko:2.47.2[abi_x86_32?,abi_x86_64?] )
+	mono? ( app-emulation/wine-mono:6.0.0 )
 	perl? (
 		dev-lang/perl
 		dev-perl/XML-Simple
@@ -172,7 +176,7 @@ PATCHES=(
 PATCHES_BIN=()
 
 # https://bugs.gentoo.org/show_bug.cgi?id=635222
-if [[ ${#PATCHES_BIN[@]} -ge 1 ]] || [[ ${PV} == 9999 ]]; then
+if [[ ${#PATCHES_BIN[@]} -ge 1 ]] || [[ ${MY_PV} == 9999 ]]; then
 	DEPEND+=" dev-util/patchbin"
 fi
 
@@ -286,15 +290,45 @@ wine_env_vcs_vars() {
 }
 
 pkg_pretend() {
-	wine_build_environment_check || die
+	if [[ ${MERGE_TYPE} != binary ]] ; then
+		wine_build_environment_check || die
 
-	# Verify OSS support
-	if use oss && ! use kernel_FreeBSD; then
-		if ! has_version ">=media-sound/oss-4"; then
-			eerror "You cannot build wine with USE=oss without having support from a"
-			eerror "FreeBSD kernel or >=media-sound/oss-4 (only available through external repos)"
+		# Verify OSS support
+		if use oss && ! use kernel_FreeBSD; then
+			if ! has_version ">=media-sound/oss-4"; then
+				eerror "You cannot build wine with USE=oss without having support from a"
+				eerror "FreeBSD kernel or >=media-sound/oss-4 (only available through external repos)"
+				eerror
+				die
+			fi
+		fi
+
+		if use mingw && use abi_x86_32 && ! has_version "cross-i686-w64-mingw32/gcc"; then
 			eerror
-			die
+			eerror "USE=\"mingw\" is currently experimental, and requires the"
+			eerror "'cross-i686-w64-mingw32' compiler and its runtime for 32-bit builds."
+			eerror
+			eerror "These can be installed by using 'sys-devel/crossdev':"
+			eerror
+			eerror "crossdev --target i686-w64-mingw32"
+			eerror
+			eerror "For more information on setting up MinGW, see: https://wiki.gentoo.org/wiki/Mingw"
+			eerror
+			die "MinGW build was enabled, but no compiler to support it was found."
+		fi
+
+		if use mingw && use abi_x86_64 && ! has_version "cross-x86_64-w64-mingw32/gcc"; then
+			eerror
+			eerror "USE=\"mingw\" is currently experimental, and requires the"
+			eerror "'cross-x86_64-w64-mingw32' compiler and its runtime for 64-bit builds."
+			eerror
+			eerror "These can be installed by using 'sys-devel/crossdev':"
+			eerror
+			eerror "crossdev --target x86_64-w64-mingw32"
+			eerror
+			eerror "For more information on setting up MinGW, see: https://wiki.gentoo.org/wiki/Mingw"
+			eerror
+			die "MinGW build was enabled, but no compiler to support it was found."
 		fi
 	fi
 }
@@ -303,7 +337,7 @@ pkg_setup() {
 	wine_build_environment_check || die
 	wine_env_vcs_vars || die
 
-	WINE_VARIANT="${PN#wine}-${PV}"
+	WINE_VARIANT="${PN#wine}-${MY_PV}"
 	WINE_VARIANT="${WINE_VARIANT#-}"
 
 	MY_PREFIX="${EPREFIX}/usr/lib/wine-${WINE_VARIANT}"
@@ -317,7 +351,7 @@ pkg_setup() {
 }
 
 src_unpack() {
-	if [[ ${PV} == "9999" ]] ; then
+	if [[ ${MY_PV} == "9999" ]] ; then
 		EGIT_CHECKOUT_DIR="${S}" git-r3_src_unpack
 		if use staging; then
 			local CURRENT_WINE_COMMIT=${EGIT_VERSION}
@@ -420,6 +454,9 @@ src_configure() {
 
 	export LDCONFIG=/bin/true
 	use custom-cflags || strip-flags
+	if use mingw; then
+		export CROSSCFLAGS="${CFLAGS}"
+	fi
 
 	multilib-minimal_src_configure
 }
@@ -440,7 +477,6 @@ multilib_src_configure() {
 		$(use_with capi)
 		$(use_with lcms cms)
 		$(use_with cups)
-		$(use_with ncurses curses)
 		$(use_with udisks dbus)
 		$(use_with faudio)
 		$(use_with fontconfig)
@@ -455,7 +491,8 @@ multilib_src_configure() {
 		$(use_with jpeg)
 		$(use_with kerberos krb5)
 		$(use_with ldap)
-		--without-mingw # linux LDFLAGS leak in mingw32: bug #685172
+		# TODO: Will bug 685172 still need special handling?
+		$(use_with mingw)
 		$(use_enable mono mscoree)
 		$(use_with mp3 mpg123)
 		$(use_with netapi)
@@ -475,6 +512,7 @@ multilib_src_configure() {
 		$(use_with truetype freetype)
 		$(use_with udev)
 		$(use_with unwind)
+		$(use_with usb)
 		$(use_with v4l v4l2)
 		$(use_with vkd3d)
 		$(use_with vulkan)
@@ -544,12 +582,20 @@ multilib_src_install_all() {
 	fi
 
 	# Remove wineconsole if neither backend is installed #551124
-	if ! use X && ! use ncurses; then
+	if ! use X; then
 		rm "${D%/}${MY_PREFIX}"/bin/wineconsole* || die
 		rm "${D%/}${MY_MANDIR}"/man1/wineconsole* || die
-		rm_wineconsole() {
-			rm "${D%/}${MY_PREFIX}/$(get_libdir)"/wine/{,fakedlls/}wineconsole.exe* || die
-		}
+
+		if ! use mingw; then
+			rm_wineconsole() {
+				rm "${D%/}/usr/$(get_libdir)/wine-${WINE_VARIANT}"/wine/{,fakedlls/}wineconsole.exe* || die
+			}
+		else
+			rm_wineconsole() {
+				rm "${D%/}/usr/$(get_libdir)/wine-${WINE_VARIANT}"/wine/wineconsole.exe* || die
+			}
+		fi
+
 		multilib_foreach_abi rm_wineconsole
 	fi
 
@@ -576,12 +622,12 @@ multilib_src_install_all() {
 }
 
 pkg_postinst() {
-	eselect wine register ${P}
+	eselect wine register ${PN}-${MY_PV}
 	if [[ ${PN} == "wine-vanilla" ]]; then
-		eselect wine register --vanilla ${P} || die
+		eselect wine register --vanilla ${PN}-${MY_PV} || die
 	else
 		if use staging; then
-			eselect wine register --staging ${P} || die
+			eselect wine register --staging ${PN}-${MY_PV} || die
 		fi
 	fi
 
@@ -604,12 +650,12 @@ pkg_postinst() {
 }
 
 pkg_prerm() {
-	eselect wine deregister ${P}
+	eselect wine deregister ${PN}-${MY_PV}
 	if [[ ${PN} == "wine-vanilla" ]]; then
-		eselect wine deregister --vanilla ${P} || die
+		eselect wine deregister --vanilla ${PN}-${MY_PV} || die
 	else
 		if use staging; then
-			eselect wine deregister --staging ${P} || die
+			eselect wine deregister --staging  ${PN}-${MY_PV}|| die
 		fi
 	fi
 
