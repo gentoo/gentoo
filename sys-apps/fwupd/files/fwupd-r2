@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="Firmware update daemon"
+pidfile="/var/run/fwupd.pid"
+command="/usr/libexec/fwupd/fwupd"
+command_background="true"
+
+depend() {
+	need %SEAT_MANAGER% dbus
+	before display-manager
+}
