@@ -8319,7 +8319,7 @@ dev-python/grpcio 1.32.0-r1: High-performance RPC framework (python libraries)
 dev-python/grpcio-testing 1.32.0: Testing utilities for gRPC Python
 dev-python/grpcio-tools 1.32.0: Protobuf code generator for gRPC
 dev-python/gsd 1.5.3-r1 2.4.0: GSD - file format specification and a library to read and write it
-dev-python/gst-python 1.16.2: A Python Interface to GStreamer
+dev-python/gst-python 1.16.2 1.16.3: A Python Interface to GStreamer
 dev-python/guessit 3.2.0 3.3.0 3.3.1: Python library for guessing information from video filenames
 dev-python/guzzle_sphinx_theme 0.7.11-r1: Sphinx theme used by Guzzle
 dev-python/h11 0.11.0 0.12.0: A pure-Python implementation of HTTP/1.1 inspired by hyper-h2
@@ -13088,9 +13088,9 @@ media-libs/gst-plugins-bad 1.14.5 1.16.2 1.16.3: Less plugins for GStreamer
 media-libs/gst-plugins-base 1.14.5 1.14.5-r1 1.16.2 1.16.3: Basepack of plugins for gstreamer
 media-libs/gst-plugins-good 1.14.5 1.16.2 1.16.3: Basepack of plugins for GStreamer
 media-libs/gst-plugins-ugly 1.14.3 1.16.2 1.16.3: Basepack of plugins for gstreamer
-media-libs/gst-rtsp-server 1.16.2: A GStreamer based RTSP server
+media-libs/gst-rtsp-server 1.16.2 1.16.3: A GStreamer based RTSP server
 media-libs/gstreamer 1.14.5 1.16.2 1.16.3: Open source multimedia framework
-media-libs/gstreamer-editing-services 1.14.5: SDK for making video editors and more
+media-libs/gstreamer-editing-services 1.14.5 1.16.3: SDK for making video editors and more
 media-libs/guilib 1.2.1-r1: Simple widget set for SDL
 media-libs/gupnp-dlna 0.10.5: Library providing DLNA-related functionality for MediaServers
 media-libs/hamlib 3.3-r1 4.0_rc2 4.0 4.1: Ham radio backend rig control libraries
@@ -13459,7 +13459,7 @@ media-plugins/gst-plugins-jpeg 1.14.5 1.16.2 1.16.3: JPEG image encoder/decoder 
 media-plugins/gst-plugins-kate 1.14.5 1.16.2 1.16.3: Kate overlay codec suppport plugin for GStreamer
 media-plugins/gst-plugins-ladspa 1.14.5 1.16.2 1.16.3: Ladspa elements for Gstreamer
 media-plugins/gst-plugins-lame 1.14.5 1.16.2 1.16.3: MP3 encoder plugin for GStreamer
-media-plugins/gst-plugins-libav 1.14.4.4.1.3_p20190329 1.16.2-r1: FFmpeg based gstreamer plugin
+media-plugins/gst-plugins-libav 1.14.4.4.1.3_p20190329 1.16.2-r1 1.16.3: FFmpeg based gstreamer plugin
 media-plugins/gst-plugins-libde265 1.14.5 1.16.2 1.16.3: H.265 decoder plugin for GStreamer
 media-plugins/gst-plugins-libmms 1.14.5 1.16.2 1.16.3: Microsoft Multi Media Server source plugin for GStreamer
 media-plugins/gst-plugins-libnice 0.1.15-r100: GStreamer plugin for ICE (RFC 5245) support
@@ -13495,7 +13495,7 @@ media-plugins/gst-plugins-taglib 1.14.5 1.16.2 1.16.3: ID3v2/APEv2 tagger plugin
 media-plugins/gst-plugins-twolame 1.14.5 1.16.2 1.16.3: MPEG2 encoder plugin for GStreamer
 media-plugins/gst-plugins-uvch264 1.14.5 1.16.2 1.16.3: UVC compliant H264 encoding cameras plugin for GStreamer
 media-plugins/gst-plugins-v4l2 1.14.5 1.16.2 1.16.3: plugin for gstreamer
-media-plugins/gst-plugins-vaapi 1.14.5 1.16.2: Hardware accelerated video decoding through VA-API plugin for GStreamer
+media-plugins/gst-plugins-vaapi 1.14.5 1.16.2 1.16.3: Hardware accelerated video decoding through VA-API plugin for GStreamer
 media-plugins/gst-plugins-voaacenc 1.14.5 1.16.2 1.16.3: AAC encoder plugin for GStreamer
 media-plugins/gst-plugins-voamrwbenc 1.14.5 1.16.2 1.16.3: AMR-WB audio encoder plugin for GStreamer
 media-plugins/gst-plugins-vpx 1.14.5 1.16.2 1.16.3: VP8/VP9 video encoder/decoder plugin for GStreamer
