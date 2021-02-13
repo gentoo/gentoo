@@ -427,10 +427,6 @@ src_prepare() {
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		# fix install_name (soname) not to reference $D
 		sed -i -e '/install_name `pwd/s/`pwd`/\\$(shrpdir)/' Makefile.SH || die
-
-		# Upstreamed, but not in this version.
-		# Need to recognise macOS 11 / 10.16. #757249
-		eapply "${FILESDIR}/${PN}-5.30.3-darwin-macos11.patch"
 	fi
 
 	default
