@@ -1,0 +1,45 @@
+#!/sbin/openrc-run
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# TODO: description="*" and other OpenRC 0.9+ candies
+
+depend() {
+	need display-manager
+	after sshd
+}
+
+start() {
+	ebegin "Starting VirtualGL"
+	truncate --size=0 /var/lib/VirtualGL/vgl_xauth_key
+
+  set_xauth
+
+  if [ -z "$XAUTHORITY" ]; then
+
+    einfo "Waiting for xauthority..."
+
+    # wait for xauth file
+    while true; do 
+      set_xauth
+
+      if [ -e "$XAUTHORITY" ]; then
+        break;
+      fi
+
+      sleep 1
+    done 
+  fi
+
+
+	xauth -f /var/lib/VirtualGL/vgl_xauth_key add $DISPLAY . $(xauth -f $XAUTHORITY list | awk '{print $3;exit}') && \
+		chmod 644 /var/lib/VirtualGL/vgl_xauth_key
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping VirtualGL"
+	[ -f /var/lib/VirtualGL/vgl_xauth_key ] && \
+		rm /var/lib/VirtualGL/vgl_xauth_key
+	eend $?
+}
