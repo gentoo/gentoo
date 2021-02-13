@@ -12,7 +12,7 @@ inherit ecm kde.org
 
 DESCRIPTION="A little KDE game about balls and how to get rid of them"
 HOMEPAGE="https://apps.kde.org/en/klines
-https://games.kde.org/game.php?game=klines"
+https://games.kde.org/games/klines"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
