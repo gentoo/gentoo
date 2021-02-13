@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,6 @@ SRC_URI="mirror://sourceforge/g15daemon/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND=">=app-misc/g15daemon-1.9.0
 	dev-libs/libg15
@@ -41,7 +40,7 @@ src_install() {
 	rm "${D}"/usr/share/doc/${PF}/{COPYING,NEWS} || die
 
 	newconfd "${FILESDIR}/${PN}-1.9.7.confd" ${PN}
-	newinitd "${FILESDIR}/${PN}-1.9.7.initd" ${PN}
+	newinitd "${FILESDIR}/${PN}-1.9.7.initd-r1" ${PN}
 }
 
 pkg_postinst() {
