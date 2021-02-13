@@ -11,7 +11,7 @@ inherit ecm kde.org
 
 DESCRIPTION="Single player three-in-a-row game"
 HOMEPAGE="https://apps.kde.org/en/kdiamond
-https://games.kde.org/game.php?game=kdiamond"
+https://games.kde.org/games/kdiamond"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
