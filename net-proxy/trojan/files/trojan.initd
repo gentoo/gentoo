@@ -1,9 +1,9 @@
 #!/sbin/openrc-run
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-TJ_USER=nobody
-TJ_GROUP=nobody
+TJ_USER=trojan
+TJ_GROUP=trojan
 
 TJ_NAME=${SVCNAME##*.}
 if [ -n "${TJ_NAME}" -a "${SVCNAME}" != "trojan" ]; then
