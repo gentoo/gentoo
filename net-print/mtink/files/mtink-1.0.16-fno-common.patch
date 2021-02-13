@@ -1,0 +1,20 @@
+https://sources.debian.org/patches/mtink/1.0.16-11/gcc-10/
+Author: Graham Inggs <ginggs@debian.org>
+--- a/mainSrc/mtink.h
++++ b/mainSrc/mtink.h
+@@ -133,11 +133,11 @@
+ 
+ #endif
+ 
+-wConfig_data_t firstConfig;
+-wConfig_data_t newPrinter;
++extern wConfig_data_t firstConfig;
++extern wConfig_data_t newPrinter;
+ 
+-wConfig_data_t exchangeCartridge;
+-wConfig_data_t alignHead;
++extern wConfig_data_t exchangeCartridge;
++extern wConfig_data_t alignHead;
+ 
+ #if WITH_X
+ extern Widget createNoPrinterBox(char *);
