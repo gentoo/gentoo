@@ -23,6 +23,11 @@ src_configure() {
 src_install() {
 	default
 
+	local i
+	for i in udunits2 udunits2-{accepted,base,common,derived,prefixes}; do
+		dosym ../../udunits/"${i}".xml usr/share/doc/${PF}/"${i}".xml
+	done
+
 	# no static archives
 	find "${ED}" -name '*.la' -delete || die
 }
