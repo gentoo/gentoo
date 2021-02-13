@@ -12,7 +12,7 @@ inherit ecm kde.org
 
 DESCRIPTION="Space Game by KDE"
 HOMEPAGE="https://apps.kde.org/en/kspaceduel
-https://games.kde.org/game.php?game=kspaceduel"
+https://games.kde.org/games/kspaceduel"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
