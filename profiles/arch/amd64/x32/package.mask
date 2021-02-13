@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Bernd Waibel <waebbl-gentoo@posteo.net> (2021-02-13)
+# Is reverse-dependency of dev-qt/qtwebengine
+media-gfx/freecad
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-02-09)
 # Requires net-libs/nodejs, plus mask all reverse-dependencies.
 dev-qt/qtwebengine
