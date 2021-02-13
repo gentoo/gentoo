@@ -6,9 +6,9 @@ HOMEPAGE=https://tt-rss.org/
 IUSE=+acl daemon gd +mysqli postgres vhosts
 KEYWORDS=~amd64 ~arm ~mips ~x86
 LICENSE=GPL-3
-RDEPEND=daemon? ( acl? ( sys-apps/acl ) ) daemon? ( acct-user/ttrssd acct-group/ttrssd dev-lang/php:*[gd?,mysqli?,postgres?,curl,fileinfo,intl,json,pdo,unicode,xml,cli,pcntl] ) !daemon? ( dev-lang/php:*[gd?,mysqli?,postgres?,curl,fileinfo,intl,json,pdo,unicode,xml] ) virtual/httpd-php:* >=app-admin/webapp-config-1.50.15
+RDEPEND=daemon? ( acl? ( sys-apps/acl ) ) daemon? ( acct-user/ttrssd acct-group/ttrssd || ( ( virtual/httpd-php:7.4 dev-lang/php:7.4[gd?,mysqli?,postgres?,curl,fileinfo,intl,json(+),pdo,unicode,xml,cli,pcntl] ) ( virtual/httpd-php:7.3 dev-lang/php:7.3[gd?,mysqli?,postgres?,curl,fileinfo,intl,json(+),pdo,unicode,xml,cli,pcntl] ) ( virtual/httpd-php:7.2 dev-lang/php:7.2[gd?,mysqli?,postgres?,curl,fileinfo,intl,json(+),pdo,unicode,xml,cli,pcntl] ) ) ) !daemon? ( || ( ( virtual/httpd-php:7.4 dev-lang/php:7.4[gd?,mysqli?,postgres?,curl,fileinfo,intl,json(+),pdo,unicode,xml] ) ( virtual/httpd-php:7.3 dev-lang/php:7.3[gd?,mysqli?,postgres?,curl,fileinfo,intl,json(+),pdo,unicode,xml] ) ( virtual/httpd-php:7.2 dev-lang/php:7.2[gd?,mysqli?,postgres?,curl,fileinfo,intl,json(+),pdo,unicode,xml] ) ) ) >=app-admin/webapp-config-1.50.15
 REQUIRED_USE=|| ( mysqli postgres )
 SLOT=20200922
 SRC_URI=https://dev.gentoo.org/~chewi/distfiles/tt-rss-20200922.tar.gz
 _eclasses_=prefix	de7d8e2b10085ed5ff09ad70e4753e5c	webapp	1d03df021d958f89f4cc78e289d0b116
-_md5_=8a361b5f98de5e8ba29e3cf8ddb9c156
+_md5_=f81e0781c62db00149315d706f644896
