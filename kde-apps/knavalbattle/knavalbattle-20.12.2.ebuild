@@ -12,7 +12,7 @@ inherit ecm kde.org
 
 DESCRIPTION="Battleship clone by KDE"
 HOMEPAGE="https://apps.kde.org/en/knavalbattle
-https://games.kde.org/game.php?game=kbattleship"
+https://games.kde.org/games/kbattleship"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
