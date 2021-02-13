@@ -6,7 +6,6 @@
   </maintainer>
   <use>
     <flag name="exceptions">Compile with C++ exceptions</flag>
-    <flag name="man">Build and install man pages</flag>
     <flag name="qthelp">Build API documentation in QtHelp format</flag>
   </use>
   <upstream>

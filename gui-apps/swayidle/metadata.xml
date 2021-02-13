@@ -16,7 +16,6 @@
 	<use>
 		<flag name="elogind">Enable support for rootless session via elogind</flag>
 		<flag name="fish-completion">Enable fish completion support</flag>
-		<flag name="man">Build and install man pages</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">swaywm/swayidle</remote-id>

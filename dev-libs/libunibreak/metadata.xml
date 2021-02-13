@@ -11,6 +11,5 @@
 	</longdescription>
 	<use>
 		<flag name="doc">Install html API documentation.</flag>
-		<flag name="man">Generate man pages with doxygen.</flag>
 	</use>
 </pkgmetadata>

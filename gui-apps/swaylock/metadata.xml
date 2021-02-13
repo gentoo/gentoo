@@ -20,7 +20,6 @@
 	<use>
 		<flag name="fish-completion">Enable fish completion support</flag>
 		<flag name="gdk-pixbuf">Enable additional image format support via the <pkg>x11-libs/gdk-pixbuf</pkg> library</flag>
-		<flag name="man">Build and install man pages</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">swaywm/swaylock</remote-id>
