@@ -13081,7 +13081,7 @@ media-libs/glyr 1.0.10: Music related metadata searchengine, both with commandli
 media-libs/gmmlib 20.2.2 20.2.5 20.3.2 20.4.1 9999: Intel Graphics Memory Management Library
 media-libs/gmtk 1.0.9: GTK+ widget and function libraries for gnome-mplayer
 media-libs/gnonlin 1.4.0-r1: Set of GStreamer elements to ease the creation of non-linear multimedia editors
-media-libs/graphene 1.10.2: A thin layer of types for graphic libraries
+media-libs/graphene 1.10.2 1.10.2-r1: A thin layer of types for graphic libraries
 media-libs/grilo 0.3.12: A framework for easy media discovery and browsing
 media-libs/gsound 1.0.2-r1: Thin GObject wrapper around the libcanberra sound event library
 media-libs/gst-plugins-bad 1.14.5 1.16.2 1.16.3: Less plugins for GStreamer
