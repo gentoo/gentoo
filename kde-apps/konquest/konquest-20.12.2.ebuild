@@ -12,7 +12,7 @@ inherit ecm kde.org
 
 DESCRIPTION="Galactic Strategy KDE Game"
 HOMEPAGE="https://apps.kde.org/en/konquest
-https://games.kde.org/game.php?game=konquest"
+https://games.kde.org/games/konquest"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
