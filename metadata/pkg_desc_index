@@ -13992,7 +13992,7 @@ media-sound/sndio 1.7.0: small audio and MIDI framework part of the OpenBSD proj
 media-sound/sndpeek 1.41-r1: real-time audio visualization
 media-sound/solfege 3.23.4: GNU program to help practicing ear training
 media-sound/sonata 1.7_beta1_p20200212: Elegant GTK+ music client for the Music Player Daemon (MPD)
-media-sound/sonic-visualiser 4.2: Music audio files viewer and analiser
+media-sound/sonic-visualiser 4.2 4.3: Music audio files viewer and analiser
 media-sound/sooperlooper 1.7.4: Live looping sampler with immediate loop recording
 media-sound/sound-juicer 3.24.0: CD ripper for GNOME
 media-sound/soundconverter 3.0.2-r1: A simple audiofile converter application for the GNOME environment
