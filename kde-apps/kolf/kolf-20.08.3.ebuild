@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ inherit ecm kde.org
 
 DESCRIPTION="Minigolf game by KDE"
 HOMEPAGE="https://apps.kde.org/en/kolf
-https://games.kde.org/game.php?game=kolf"
+https://games.kde.org/games/kolf"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
