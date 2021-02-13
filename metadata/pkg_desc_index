@@ -3666,7 +3666,7 @@ dev-embedded/lpc21isp 1.85: In-circuit programming (ISP) tool for the NXP microc
 dev-embedded/mcu8051ide 1.4.10: Graphical IDE for microcontrollers based on 8051.
 dev-embedded/mspdebug 0.24 0.25: A free debugger for use with MSP430 MCUs
 dev-embedded/nodemcu-uploader 0.4.3-r1: Simple tool for uploading files to the filesystem of an ESP8266 running NodeMCU
-dev-embedded/openocd 0.10.0 0.10.0-r1 0.11.0_rc2 9999: OpenOCD - Open On-Chip Debugger
+dev-embedded/openocd 0.10.0-r1 0.11.0_rc2 9999: OpenOCD - Open On-Chip Debugger
 dev-embedded/parapin 1.5.0 1.5.1_beta1: A parallel port pin programming library
 dev-embedded/picasm 1.14: An assembler and disassembler for 12 and 14-bit PIC chips
 dev-embedded/picp 0.6.8: A commandline interface to Microchip's PICSTART+ programmer
@@ -7924,7 +7924,7 @@ dev-python/BitVector 3.4.9: A pure-Python memory-efficient packed representation
 dev-python/CppHeaderParser 2.7.4: Parse C++ header files and generate a data structure
 dev-python/Faker 5.6.5: a Python package that generates fake data for you
 dev-python/GitPython 3.1.11 3.1.12 3.1.13: Library used to interact with Git repositories
-dev-python/GridDataFormats 0.4.0-r1 0.5.0: Reading and writing of data on regular grids in Python
+dev-python/GridDataFormats 0.5.0: Reading and writing of data on regular grids in Python
 dev-python/MechanicalSoup 0.12.0 1.0.0: A python library for automating interaction with websites
 dev-python/PyContracts 1.8.14-r1: Declare constraints on function parameters and return values
 dev-python/PyECLib 1.6.0: Messaging API for RPC and notifications over different messaging transports
@@ -8058,7 +8058,7 @@ dev-python/cbor2 5.1.2 5.2.0: Pure Python CBOR (de)serializer with extensive tag
 dev-python/certifi 10001-r1: Thin replacement for certifi using system certificate store
 dev-python/cffi 1.14.4 1.14.5: Foreign Function Interface for Python calling C code
 dev-python/cfn-python-lint 0.44.1 0.44.2 0.44.3 0.44.4 0.44.5 0.44.6 0.44.7: CloudFormation Linter
-dev-python/cftime 1.3.0 1.4.0 1.4.1: Time-handling functionality from netcdf4-python
+dev-python/cftime 1.4.1: Time-handling functionality from netcdf4-python
 dev-python/cgroup-utils 0.8: Tools and libraries for control groups of Linux
 dev-python/chai 1.1.2: Easy to use mocking, stubbing and spying framework
 dev-python/chainmap 1.0.3: ChainMap implementation for older Python versions
@@ -8677,7 +8677,7 @@ dev-python/pipfile 0.0.2: Replacement for the existing standard pip's requiremen
 dev-python/pivy 0.6.5: Coin3D bindings for Python
 dev-python/pkgconfig 1.5.1: Interface Python with pkg-config
 dev-python/pkginfo 1.5.0.1-r1 1.6.1 1.7.0: Provides an API for querying the distutils metadata written in a PKG-INFO file
-dev-python/plotly 1.9.6 4.10.0 4.14.1 4.14.3: Browser-based graphing library for Python
+dev-python/plotly 4.14.1 4.14.3: Browser-based graphing library for Python
 dev-python/plotly-geo 1.0.0: Browser-based graphing library for Python
 dev-python/pluggy 0.13.1-r1: plugin and hook calling mechanisms for python
 dev-python/pluginbase 1.0.0: Support library for building plugins sytems in Python
@@ -9238,7 +9238,7 @@ dev-python/textdistance 4.2.0: Compute distance between the two texts
 dev-python/texttable 1.6.3: Module for creating simple ASCII tables
 dev-python/textx 1.4: Meta-language for DSL implementation inspired by Xtext
 dev-python/theano 1.0.5: Define and optimize multi-dimensional arrays mathematical expressions
-dev-python/theano-pymc 1.0.13-r1 1.0.14 1.0.15 1.1.0 1.1.1 1.1.2: Library for operating on mathematical expressions with multi-dimensional arrays
+dev-python/theano-pymc 1.0.13-r1 1.1.0 1.1.2: Library for operating on mathematical expressions with multi-dimensional arrays
 dev-python/threadpoolctl 2.1.0: Limit the number of threads used in native libs that have their own threadpool
 dev-python/three-merge 0.1.1: Simple Python library to perform a 3-way merge between strings
 dev-python/thrift 0.13.0: Python implementation of Thrift
@@ -9275,7 +9275,7 @@ dev-python/typed-ast 1.4.1 1.4.2: Python typed-ast backported
 dev-python/typing-extensions 3.7.4.3: Type Hint extensions from Python 3.8 backported
 dev-python/tzlocal 2.1: tzinfo object for the local timezone
 dev-python/u-msgpack 2.7.1: A portable, lightweight MessagePack serializer and deserializer
-dev-python/ubelt 0.9.4 0.9.5: A stdlib like feel, and extra batteries. Hashing, Caching, Timing, Progress
+dev-python/ubelt 0.9.5: A stdlib like feel, and extra batteries. Hashing, Caching, Timing, Progress
 dev-python/ujson 1.35-r1 4.0.1 4.0.2: Ultra fast JSON encoder and decoder for Python
 dev-python/uncertainties 3.1.4-r1: Python module for calculations with uncertainties
 dev-python/unicodecsv 0.14.1-r1: Drop-in replacement for python stdlib csv module supporting unicode
@@ -9329,7 +9329,7 @@ dev-python/wheel 0.36.2: A built-package format for Python
 dev-python/whichcraft 0.6.1: Cross-platform cross-python shutil.which functionality
 dev-python/whisper 1.1.5 1.1.7: Fixed size round-robin style database
 dev-python/whoosh 2.7.4-r1: Fast, pure-Python full text indexing, search and spell checking library
-dev-python/widgetsnbextension 3.5.1 3.5.1-r1: IPython HTML widgets for Jupyter
+dev-python/widgetsnbextension 3.5.1-r1: IPython HTML widgets for Jupyter
 dev-python/wrapt 1.12.1: Module for decorators, wrappers and monkey patching
 dev-python/ws4py 0.5.1-r1 9999: WebSocket client and server library for Python 2 and 3 as well as PyPy
 dev-python/wsaccel 0.6.2_p20170108 0.6.3: Accelerator for ws4py, autobahn and tornado
@@ -9343,7 +9343,7 @@ dev-python/wxpython 4.0.7 4.0.7-r1: A blending of the wxWindows C++ class librar
 dev-python/xapp 2.0.1 2.0.2: Python bindings for x11-libs/xapps
 dev-python/xarray 0.16.2: N-D labeled arrays and datasets in Python
 dev-python/xcffib 0.11.1: A drop in replacement for xpyb, an XCB python binding
-dev-python/xdoctest 0.15.0 0.15.2 0.15.3 0.15.4: A rewrite of Python's builtin doctest module but without all the weirdness
+dev-python/xdoctest 0.15.4: A rewrite of Python's builtin doctest module but without all the weirdness
 dev-python/xlrd 1.2.0: Library to extract data from Microsoft Excel spreadsheets
 dev-python/xlsxwriter 1.3.7: Python module for creating Excel XLSX files
 dev-python/xlwt 1.3.0-r1: Python library to create spreadsheet files compatible with Excel
@@ -13110,7 +13110,7 @@ media-libs/kodi-platform 9999: Kodi platform support library
 media-libs/kquickimageeditor 0.1.3: QtQuick components providing basic image editing capabilities
 media-libs/kvazaar 1.2.0-r1 2.0.0 9999: Open-source HEVC encoder
 media-libs/ladspa-sdk 1.15-r1: The Linux Audio Developer's Simple Plugin API
-media-libs/lasi 1.1.2: C++ library for postscript stream output
+media-libs/lasi 1.1.2 1.1.3: C++ library for postscript stream output
 media-libs/lastfmlib 0.4.0 0.4.0-r1: C++ library to scrobble tracks on Last.fm
 media-libs/lcms 2.11 2.12: A lightweight, speed optimized color management engine
 media-libs/lensfun 0.3.2-r1: Library for rectifying and simulating photographic lens distortions
