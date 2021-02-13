@@ -385,7 +385,6 @@ app-editors/emacs:games - Support shared score files for games
 app-editors/emacs:gconf - Use gnome-base/gconf to read the system font name
 app-editors/emacs:gfile - Use gfile (dev-libs/glib) for file notification
 app-editors/emacs:gsettings - Use gsettings (dev-libs/glib) to read the system font name
-app-editors/emacs:gtk2 - Prefer version 2 of the GIMP Toolkit to version 3 (x11-libs/gtk+)
 app-editors/emacs:gzip-el - Compress bundled Emacs Lisp source
 app-editors/emacs:harfbuzz - Use media-libs/harfbuzz as text shaping engine
 app-editors/emacs:imagemagick - Use media-gfx/imagemagick for image processing
