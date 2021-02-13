@@ -84,7 +84,7 @@ src_install() {
 	default
 
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
-	newinitd "${FILESDIR}"/${PN}.initd ${PN}
+	newinitd "${FILESDIR}"/${PN}.initd-r1 ${PN}
 	newenvd "${FILESDIR}"/${PN}.envd 99${PN}
 	systemd_dounit scripts/systemd/bumblebeed.service
 
