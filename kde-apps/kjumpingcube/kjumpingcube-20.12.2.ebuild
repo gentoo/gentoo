@@ -12,7 +12,7 @@ inherit ecm kde.org
 
 DESCRIPTION="Tactical one or two player game"
 HOMEPAGE="https://apps.kde.org/en/kjumpingcube
-https://games.kde.org/game.php?game=kjumpingcube"
+https://games.kde.org/games/kjumpingcube"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
