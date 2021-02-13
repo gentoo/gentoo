@@ -12,7 +12,7 @@ inherit ecm kde.org
 
 DESCRIPTION="Game of action and puzzle solving by KDE"
 HOMEPAGE="https://apps.kde.org/en/kgoldrunner
-https://games.kde.org/game.php?game=kgoldrunner"
+https://games.kde.org/games/kgoldrunner"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
