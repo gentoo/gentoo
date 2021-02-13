@@ -9,7 +9,6 @@
 		<flag name="dec265">Enable build of dec265 example program</flag>
 		<flag name="sdl">Enable video output of dec265 example program with <pkg>media-libs/libsdl</pkg></flag>
 		<flag name="tools">Enable installation of varous binary tools</flag>
-		<flag name="static-libs">Enable build of static libraries</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">strukturag/libde265</remote-id>
