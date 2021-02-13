@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools elisp-common eutils pam systemd
+
+inherit autotools elisp-common eutils flag-o-matic pam systemd
 
 GENTOO_THEME_VERSION="2.1"
 
@@ -48,6 +49,7 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cflags -fcommon
 	local crypto_support="--disable-crypto"
 	local emacs_support="--disable-emacs --without-lispdir"
 
