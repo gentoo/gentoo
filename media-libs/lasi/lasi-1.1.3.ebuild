@@ -44,7 +44,7 @@ src_prepare() {
 		examples/CMakeLists.txt || die
 
 	if use !examples; then
-		sed -i -e '/add_subdirectory(examples)/d' CMakeLists.txt
+		sed -i -e '/add_subdirectory(examples)/d' CMakeLists.txt || die
 	fi
 }
 
