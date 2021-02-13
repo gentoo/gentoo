@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>fatzer2@gmail.com</email>
+		<name>Alexander Golubev</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<use>
+		<flag name="doc">Include some additional documentation on how to create games for the instead engine</flag>
+		<flag name="sdl2">Use libsdl2 instead of libsdl</flag>
+	</use>
+	<longdescription lang="en">INSTEAD is a tool to make and run textographic games. The exact look and feel of such games may vary from interactive fiction and visual novels to classic point &amp; click or text-based adventures.</longdescription>
+	<longdescription lang="ru">INSTEAD это инструмент для создания и запуска текстографические игр. Жанр конкретных игр может отличаться и находится на стыке интерактивной литературы, визуальных новелл, а также классических point  &amp; click и тескстовых квестов.</longdescription>
+	<upstream>
+		<remote-id type="github">instead-hub/instead</remote-id>
+	</upstream>
+</pkgmetadata>
