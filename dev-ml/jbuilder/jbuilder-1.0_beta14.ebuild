@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-DEPEND="<=dev-lang/ocaml-4.05.0:="
+DEPEND="<dev-lang/ocaml-4.09:="
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND}
 	test? (
