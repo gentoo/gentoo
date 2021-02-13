@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="for mjpegtools for adding subtitles, pictures & effects embedded in the picture"
 HOMEPAGE="http://panteltje.com/panteltje/subtitles/"
@@ -22,6 +22,7 @@ DEPEND="${RDEPEND}"
 PATCHES=( "${FILESDIR}"/${P}-fix-build-system.patch )
 
 src_configure() {
+	append-cflags -fcommon
 	tc-export CC
 }
 
