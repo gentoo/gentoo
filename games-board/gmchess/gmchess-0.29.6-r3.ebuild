@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools flag-o-matic libtool gnome2-utils
+inherit autotools flag-o-matic xdg
 
 DESCRIPTION="Chinese chess with gtkmm and c++"
 HOMEPAGE="https://github.com/lerosua/gmchess"
@@ -38,22 +38,10 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" \
-		itlocaledir='/usr/share/locale' \
-		pixmapsdir='/usr/share/pixmaps' \
-		desktopdir='/usr/share/applications' \
+		localedir="${EPREFIX}"/usr/share/locale \
+		pixmapsdir="${EPREFIX}"/usr/share/pixmaps \
+		desktopdir="${EPREFIX}"/usr/share/applications \
 		install
 	dodoc AUTHORS NEWS README
 	find "${ED}" -name "*.la" -delete || die
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
-pkg_postinst() {
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
 }
