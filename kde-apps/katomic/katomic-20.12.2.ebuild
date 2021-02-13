@@ -12,7 +12,7 @@ inherit ecm kde.org
 
 DESCRIPTION="KDE Atomic Entertainment Game"
 HOMEPAGE="https://apps.kde.org/en/katomic
-https://games.kde.org/game.php?game=katomic"
+https://games.kde.org/games/katomic"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
