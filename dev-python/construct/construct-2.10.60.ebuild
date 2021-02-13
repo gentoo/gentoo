@@ -18,6 +18,7 @@ BDEPEND="
 	test? (
 		dev-python/arrow[${PYTHON_USEDEP}]
 		dev-python/cloudpickle[${PYTHON_USEDEP}]
+		dev-python/lz4[${PYTHON_USEDEP}]
 		>=dev-python/numpy-1.15.4[${PYTHON_USEDEP}]
 		dev-python/ruamel-yaml[${PYTHON_USEDEP}]
 	)"
