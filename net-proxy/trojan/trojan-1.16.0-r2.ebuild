@@ -3,17 +3,23 @@
 
 EAPI=7
 
+DISABLE_AUTOFORMATTING=1
+FORCE_PRINT_ELOG=1
 PYTHON_COMPAT=( python3_{7..9} )
 
-inherit cmake python-any-r1 systemd
-
+inherit cmake python-any-r1 systemd readme.gentoo-r1
 DESCRIPTION="An unidentifiable mechanism that helps you bypass GFW"
 HOMEPAGE="https://github.com/trojan-gfw/trojan"
-SRC_URI="https://github.com/trojan-gfw/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+if [[ "${PV}" == 9999 ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/trojan-gfw/trojan.git"
+else
+	SRC_URI="https://github.com/trojan-gfw/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="mysql test"
 
 # Some hiccups setting up local network server.
@@ -25,8 +31,17 @@ RDEPEND="
 	mysql? ( dev-db/mysql-connector-c:= )
 "
 DEPEND="${RDEPEND}
+	acct-group/trojan
+	acct-user/trojan
 	test? ( net-misc/curl ${PYTHON_DEPS} )
 "
+
+src_prepare() {
+	default
+	cmake_src_prepare
+	sed -i -e "/User/s/nobody/trojan/g" \
+		"${S}"/examples/trojan.service-example || die
+}
 
 src_configure() {
 	local mycmakeargs=(
@@ -40,6 +55,8 @@ src_configure() {
 src_install() {
 	cmake_src_install
 	newinitd "${FILESDIR}/trojan.initd" trojan
+
+	readme.gentoo_create_doc
 }
 
 src_test() {
@@ -47,15 +64,5 @@ src_test() {
 }
 
 pkg_postinst() {
-	elog "Running Trojan with multi instances"
-	elog ""
-
-	elog "Prepare /etc/trojan/\${blah}.json first"
-	elog "Config with Openrc"
-	elog "   ln -s /etc/init.d/trojan{,.\${blah}}"
-	elog "   rc-update add trojan.\${blah} default"
-	elog ""
-	elog "Config with Systemd"
-	elog "   systemctl enable trojan.\${blah}"
-	elog ""
+	readme.gentoo_print_elog
 }
