@@ -12598,7 +12598,7 @@ media-fonts/encodings 1.0.5-r1: X.Org font encodings
 media-fonts/essays1743 2.100: John Stracke's Essays 1743 font
 media-fonts/exljbris-free 20100320: Beautiful free fonts from exljbris Font Foundry
 media-fonts/exo 2: A geometric sans-serif font with a technological feel
-media-fonts/fantasque-sans-mono 2014.07: Functional programming font designed with some handwriting-like fuzziness
+media-fonts/fantasque-sans-mono 1.8.0: A font family with a great monospaced variant for programmers
 media-fonts/farsi-fonts 0.4: Farsi (Persian) Unicode fonts
 media-fonts/fgdc-emergency 2.20: FGDC Emergency Response Symbology Prototype
 media-fonts/fifth-leg 0.6-r1: Simplistic, technical sans serif - openSUSE font
