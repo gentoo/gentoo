@@ -33,6 +33,7 @@ src_configure() {
 
 src_install() {
 	default
+	dodoc ChangeLog.md
 
 	# no static archives
 	find "${ED}" -name '*.la' -type f -delete || die
