@@ -1,11 +1,11 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit autotools fortran-2 versionator
+inherit autotools fortran-2
 
-MV=$(get_major_version)
+MV=$(ver_cut 1)
 MY_PN=${PN}${MV}
 DOC_PV=0613
 EX_PV=6.4.18
@@ -27,12 +27,16 @@ SRC_URI="
 SLOT="6"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc examples static-libs"
+IUSE="doc examples"
+
+PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
 
 src_prepare() {
 	cp ../pythia6/tpythia6_called_from_cc.F .
 	cp ../pythia6/pythia6_common_address.c .
-	cat > configure.ac <<-EOF
+	default
+
+	cat > configure.ac <<-EOF || die
 		AC_INIT(${PN},${PV})
 		AM_INIT_AUTOMAKE
 		AC_PROG_F77
@@ -41,20 +45,21 @@ src_prepare() {
 		AC_CONFIG_FILES(Makefile)
 		AC_OUTPUT
 	EOF
-	echo >> Makefile.am "lib_LTLIBRARIES = libpythia6.la"
-	echo >> Makefile.am "libpythia6_la_SOURCES = \ "
+	echo >> Makefile.am "lib_LTLIBRARIES = libpythia6.la" || die
+	echo >> Makefile.am "libpythia6_la_SOURCES = \ " || die
 	# replace wildcard from makefile to ls in shell
 	local f
 	for f in py*.f struct*.f up*.f fh*.f; do
-		echo  >> Makefile.am "  ${f} \\"
+		echo  >> Makefile.am "  ${f} \\" || die
 	done
-	echo  >> Makefile.am "  ssmssm.f sugra.f visaje.f pdfset.f \\"
-	echo  >> Makefile.am "  tpythia6_called_from_cc.F pythia6_common_address.c"
+	echo  >> Makefile.am "  ssmssm.f sugra.f visaje.f pdfset.f \\" || die
+	echo  >> Makefile.am "  tpythia6_called_from_cc.F pythia6_common_address.c" || die
+
 	eautoreconf
 }
 
 src_configure() {
-	econf $(use_enable static-libs static)
+	econf --disable-static
 }
 
 src_install() {
@@ -62,7 +67,9 @@ src_install() {
 	dodoc update_notes.txt
 	use doc && dodoc "${DISTDIR}"/lutp${DOC_PV}man2.pdf
 	if use examples; then
-		insinto /usr/share/doc/${PF}
-		doins -r "${WORKDIR}"/examples
+		dodoc -r "${WORKDIR}"/examples
+		docompress -x /usr/share/doc/${PF}/examples
 	fi
+
+	find "${ED}" -name '*.la' -delete || die
 }
