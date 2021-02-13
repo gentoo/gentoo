@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # As upstream (and we aswell) are not allowed to redistribute scansyn,
@@ -37,6 +37,7 @@ portaudio portmidi pulseaudio python samples static-libs stk test +threads +util
 vim-syntax websocket"
 
 REQUIRED_USE="
+	alsa? ( threads )
 	linear? ( double-precision )
 	lua? ( ${LUA_REQUIRED_USE} cxx )
 	python? ( ${PYTHON_REQUIRED_USE} cxx )
