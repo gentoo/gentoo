@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/740382
+--- a/src/sh4/sh4trans.h
++++ b/src/sh4/sh4trans.h
+@@ -130,7 +130,7 @@ gboolean sh4_translate_flush_cache( void );
+  * Either returns immediately (to skip the breakpoint), or aborts the current
+  * cycle and never returns.
+  */
+-void FASTCALL sh4_translate_breakpoint_hit( sh4vma_t pc );
++extern void FASTCALL sh4_translate_breakpoint_hit( sh4vma_t pc );
+ 
+ #ifdef __cplusplus
+ }
