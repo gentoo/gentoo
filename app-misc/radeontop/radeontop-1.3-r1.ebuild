@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,11 +11,14 @@ SRC_URI="https://github.com/clbr/radeontop/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="nls"
+IUSE="nls video_cards_amdgpu video_cards_radeon"
+REQUIRED_USE="
+	|| ( video_cards_amdgpu video_cards_radeon )
+"
 
 RDEPEND="
 	sys-libs/ncurses:0=
-	x11-libs/libdrm
+	x11-libs/libdrm[video_cards_amdgpu?,video_cards_radeon?]
 	x11-libs/libpciaccess
 	x11-libs/libxcb
 	nls? (
