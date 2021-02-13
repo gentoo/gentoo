@@ -12,25 +12,20 @@ SRC_URI="mirror://sourceforge/bristol/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="alsa oss static-libs"
+IUSE="alsa oss"
 # osc : configure option but no code it seems...
 # jack: fails to build if disabled
 # pulseaudio: not fully supported
 
 BDEPEND="
-	virtual/pkgconfig
-"
+	virtual/pkgconfig"
 RDEPEND="
 	virtual/jack
 	x11-libs/libX11
-	alsa? ( media-libs/alsa-lib )
-"
+	alsa? ( media-libs/alsa-lib )"
 # osc? ( >=media-libs/liblo-0.22 )
 DEPEND="${RDEPEND}
-	x11-base/xorg-proto
-"
-
-DOCS=( AUTHORS ChangeLog HOWTO NEWS README )
+	x11-base/xorg-proto"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-cflags.patch
@@ -45,12 +40,12 @@ src_prepare() {
 }
 
 src_configure() {
-	add-flags -fcommon
+	append-cflags -fcommon
 	econf \
+		--disable-static \
 		--disable-version-check \
 		$(use_enable alsa) \
-		$(use_enable oss) \
-		$(use_enable static-libs static)
+		$(use_enable oss)
 }
 
 src_compile() {
@@ -59,5 +54,7 @@ src_compile() {
 
 src_install() {
 	default
-	find "${D}" -name '*.la' -delete || die
+	dodoc HOWTO
+
+	find "${ED}" -name '*.la' -delete || die
 }

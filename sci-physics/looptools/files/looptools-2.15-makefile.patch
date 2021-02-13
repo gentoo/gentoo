@@ -21,28 +21,28 @@
  ARGS = $(PARALLEL) \
    LIB="$(LIB)" \
    FE="$(FE)" \
-@@ -16,12 +19,12 @@
+@@ -16,12 +19,12 @@ ARGS = $(PARALLEL) \
    EXE="$(EXE)" \
    DEF="$(DEF)" \
    NOUNDERSCORE="$(NOUNDERSCORE)" \
--  XFC="$(FC$(QUADSUFFIX)) $(FFLAGS) $(FFLAGS-quad) -I." \
-+  XFC="$(FC$(QUADSUFFIX)) $(FFLAGS) $(FFLAGS-quad) -I. -fPIC" \
+-  XFC="$(FC) $(FFLAGS) -I." \
++  XFC="$(FC$(QUADSUFFIX)) $(FFLAGS) -I. -fPIC" \
    F90="$(F90)" \
    CC="$(CC)" \
--  CFLAGS="$(CFLAGS) $(CFLAGS-quad)" \
-+  CFLAGS="$(CFLAGS) $(CFLAGS-quad) -fPIC" \
+-  CFLAGS="$(CFLAGS)" \
++  CFLAGS="$(CFLAGS) -fPIC" \
    CXX="$(CXX)" \
 -  CXXFLAGS="$(CXXFLAGS)" \
 +  CXXFLAGS="$(CXXFLAGS) -fPIC" \
    ML="$(ML)" \
    MCC="$(MCC)" \
    MCFLAGS="$(MCFLAGS)" \
-@@ -32,22 +35,24 @@
+@@ -31,24 +34,23 @@ ARGS = $(PARALLEL) \
+   NM="$(NM)" \
    DLLTOOL="$(DLLTOOL)" \
    LDFLAGS="$(LDFLAGS)" \
-   LIBPATH="$(LIBPATH)" \
--  OBJS-quad="$(OBJS-quad)"
-+  OBJS-quad="$(OBJS-quad)" \
+-  LIBPATH="$(LIBPATH)"
++  LIBPATH="$(LIBPATH)" \
 +  REALNAME="$(REALNAME)"
  
  
@@ -56,17 +56,16 @@
 +	-mkdir $(DESTDIR)$(PREFIX)
  	-mkdir $(LIBDIR) $(BINDIR) $(INCLUDEDIR)
  	cp -p $(BLD)/$(LIB) $(LIBDIR)
- 	cp -p $(INCLUDE$(QUADSUFFIX)) $(INCLUDEDIR)
+ 	cp -p $(INCLUDE) $(INCLUDEDIR)
 -	strip $(BLD)/$(FE)
  	cp -p $(BLD)/fcc $(BLD)/$(FE) $(BINDIR)
  	rm -f $(BINDIR)/f++
  	ln -s fcc $(BINDIR)/f++
--	test ! -f $(BLD)/$(MFE) || { strip $(BLD)/$(MFE) ; cp -p $(BLD)/$(MFE) $(BINDIR); }
-+	test ! -f $(BLD)/$(MFE) || { cp -p $(BLD)/$(MFE) $(BINDIR); }
-+	cp -p $(BLD)/$(REALNAME) $(LIBDIR)
-+	cd $(LIBDIR) && ln -s $(REALNAME) $(LIBRARY)
- 
- force: $(BLD)/timestamp
+ 	test ! -f $(BLD)/$(MFE) || { \
+ 	  test -z "$(EXE)" || ldd $(BLD)/$(MFE) | awk '/\/usr\/bin\/cyg/ { system("cp -p " $$3 " $(BINDIR)/"); }' ; \
+-	  strip $(BLD)/$(MFE) ; \
+ 	  cp -p $(BLD)/$(MFE) $(BINDIR); \
+ 	}
  
 --- a/src/makefile
 +++ b/src/makefile
@@ -79,20 +78,22 @@
  
  frontend: lib $(FE)
  
-@@ -8,6 +8,7 @@
+@@ -8,6 +8,8 @@ mma1: lib $(MFE)
  
  mma0 lib: $(LIB) clooptools.h fcc
  
 +solib: $(REALNAME) fcc
++
  
  .SUFFIXES:
  
-@@ -243,6 +244,8 @@
- 	$(AR) cru $(LIB) $?
+@@ -245,6 +247,9 @@ $(LIB): $(OBJS)
+ 	$(AR) $(ARFLAGS) $(LIB) $?
  	-$(RANLIB) $(LIB)
  
 +$(REALNAME): $(OBJS)
 +	$(XFC) $(LDFLAGS) -shared -Wl,--soname,$(REALNAME) -o $@ $?
++
  
  $(FE): lt.F $(LTINC) $(LIB)
- 	$(XFC) -o $(FE) lt.F $(LIB) -lpthread
+ 	$(XFC) -o $(FE) lt.F $(LIB) $(LDFLAGS)

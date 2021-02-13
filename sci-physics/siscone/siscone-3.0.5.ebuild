@@ -1,22 +1,19 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="Hadron Seedless Infrared-Safe Cone jet algorithm"
-HOMEPAGE="http://siscone.hepforge.org/"
-SRC_URI="http://www.hepforge.org/archive/${PN}/${P}.tar.gz"
+HOMEPAGE="https://siscone.hepforge.org/"
+SRC_URI="https://siscone.hepforge.org/downloads/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="examples static-libs"
-
-RDEPEND=""
-DEPEND="${RDEPEND}"
+IUSE="examples"
 
 src_configure() {
-	econf $(use_enable static-libs static)
+	econf --disable-static
 }
 
 src_install() {
@@ -28,4 +25,6 @@ src_install() {
 		dodoc examples/events/*.dat
 		docompress -x /usr/share/doc/${PF}/examples
 	fi
+
+	find "${ED}" -name '*.la' -delete || die
 }
