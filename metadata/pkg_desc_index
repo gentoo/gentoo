@@ -11272,7 +11272,7 @@ games-board/four-in-a-row 3.36.4: Make lines of the same color to win
 games-board/freedoko 0.7.16 0.7.16-r1: FreeDoko is a Doppelkopf-game
 games-board/fruit 2.1-r1: UCI-only chess engine
 games-board/gambit 1.0.4-r1: Qt-based chess application + engine "gupta"
-games-board/gmchess 0.29.6-r2: Chinese chess with gtkmm and c++
+games-board/gmchess 0.29.6-r3: Chinese chess with gtkmm and c++
 games-board/gnome-chess 3.36.1: Play the classic two-player boardgame of chess
 games-board/gnome-mahjongg 3.36.2: Disassemble a pile of tiles by removing matching pairs
 games-board/gnome-mines 3.36.1: Clear hidden mines from a minefield
