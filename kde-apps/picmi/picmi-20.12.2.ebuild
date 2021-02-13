@@ -13,7 +13,7 @@ inherit ecm kde.org
 
 DESCRIPTION="Nonogram logic game by KDE"
 HOMEPAGE="https://apps.kde.org/en/picmi
-https://games.kde.org/game.php?game=picmi"
+https://games.kde.org/games/picmi"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
