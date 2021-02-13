@@ -86,7 +86,7 @@ src_install() {
 	dodir /var/lib/VirtualGL
 	fowners root:video /var/lib/VirtualGL
 	fperms 0750 /var/lib/VirtualGL
-	newinitd "${FILESDIR}/vgl.initd-r3" vgl
+	newinitd "${FILESDIR}/vgl.initd-r4" vgl
 	newconfd "${FILESDIR}/vgl.confd-r2" vgl
 
 	exeinto /usr/libexec
