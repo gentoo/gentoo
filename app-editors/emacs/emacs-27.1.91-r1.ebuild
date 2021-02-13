@@ -412,7 +412,7 @@ src_install() {
 	tc-is-cross-compiler && DOC_CONTENTS+="\\n\\nEmacs did not write
 		a portable dump file due to being cross-compiled.
 		To create this file at run time, execute the following command:
-		\\n${EMACS_SUFFIX} --batch --eval='(dump-emacs-portable
+		\\n${EMACS_SUFFIX} --batch -Q --eval='(dump-emacs-portable
 		\"/usr/libexec/emacs/${FULL_VERSION}/${CHOST}/emacs.pdmp\")'"
 	readme.gentoo_create_doc
 }
