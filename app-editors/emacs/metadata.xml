@@ -31,8 +31,6 @@
     notification</flag>
   <flag name="gsettings">Use gsettings (<pkg>dev-libs/glib</pkg>) to read the
     system font name</flag>
-  <flag name="gtk2">Prefer version 2 of the GIMP Toolkit to version 3
-    (<pkg>x11-libs/gtk+</pkg>)</flag>
   <flag name="gzip-el">Compress bundled Emacs Lisp source</flag>
   <flag name="harfbuzz">Use <pkg>media-libs/harfbuzz</pkg> as text shaping
     engine</flag>
