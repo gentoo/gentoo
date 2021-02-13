@@ -1,11 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-# no pypy{,3} support as PyQt5 does not support it at 2020-07-05 (towelday)
-# https://bitbucket.org/pypy/compatibility/wiki/Home#!gui-library-bindings
-PYTHON_COMPAT=( python3_{7,8,9} )
+# Please don't add pypy support before testing if it's actually supported. The
+# old compat matrix is no longer accessible as of 2021-02-13 but stated back
+# in 2020-07-05 that PyQt5 was explicitly not supported.
+PYTHON_COMPAT=( python3_{8,9} )
 
 inherit distutils-r1 optfeature virtualx xdg-utils
 DISTUTILS_USE_SETUPTOOLS=rdepend
@@ -23,7 +24,7 @@ if [[ ${PV} == *9999 ]]
 	else
 		SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 		KEYWORDS="~amd64 ~x86"
-		S="${WORKDIR}"/${MY_P}
+		S="${WORKDIR}/${MY_P}"
 fi
 
 LICENSE="GPL-2+"
