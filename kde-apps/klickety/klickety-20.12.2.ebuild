@@ -12,7 +12,7 @@ inherit ecm kde.org
 
 DESCRIPTION="An adaptation of the Clickomania game"
 HOMEPAGE="https://apps.kde.org/en/klickety
-https://games.kde.org/game.php?game=klickety"
+https://games.kde.org/games/klickety"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
