@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit autotools eutils flag-o-matic
+inherit autotools flag-o-matic
 
 DESCRIPTION="hub software for Direct Connect"
 HOMEPAGE="http://opendchub.sf.net"
@@ -18,14 +18,15 @@ RDEPEND="perl? ( dev-lang/perl )"
 DEPEND="${RDEPEND}"
 
 DOCS="NEWS TODO README AUTHORS Documentation/*"
+PATCHES=( "${FILESDIR}"/${P}-telnet.patch )
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-telnet.patch
+	default
 	eautoreconf
 }
 
 src_configure() {
-	add-flags -fcommon
+	append-flags -fcommon
 	use perl || myconf="--disable-perl --enable-switch_user"
 	econf ${myconf}
 }
