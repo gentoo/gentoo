@@ -12,7 +12,7 @@ inherit ecm kde.org
 
 DESCRIPTION="Board game by KDE"
 HOMEPAGE="https://apps.kde.org/en/kreversi
-https://games.kde.org/game.php?game=kreversi"
+https://games.kde.org/games/kreversi"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
