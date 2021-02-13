@@ -9808,21 +9808,21 @@ dev-ros/xmlrpcpp 1.15.8 1.15.9 9999: C++ implementation of the XML-RPC protocol
 dev-ruby/GeoRuby 2.5.2 2.5.2-r1: Ruby data holder for OGC Simple Features
 dev-ruby/abstract 1.0.0-r3: Library which enable you to define abstract method in Ruby
 dev-ruby/acme-client 2.0.6 2.0.7: A Ruby client for the letsencrypt's ACME protocol.
-dev-ruby/actioncable 5.2.4.3 5.2.4.4 6.0.3.4: Integrated WebSockets for Rails
+dev-ruby/actioncable 5.2.4.3 5.2.4.4 5.2.4.5 6.0.3.4: Integrated WebSockets for Rails
 dev-ruby/actionmailbox 6.0.3.4: Framework for designing email-service layers
-dev-ruby/actionmailer 5.2.4.3 5.2.4.4 6.0.3.4: Framework for designing email-service layers
-dev-ruby/actionpack 5.2.4.3-r1 5.2.4.4 6.0.3.4: Eases web-request routing, handling, and response
+dev-ruby/actionmailer 5.2.4.3 5.2.4.4 5.2.4.5 6.0.3.4: Framework for designing email-service layers
+dev-ruby/actionpack 5.2.4.3-r1 5.2.4.4 5.2.4.5 6.0.3.4: Eases web-request routing, handling, and response
 dev-ruby/actionpack-action_caching 1.2.1: Action caching for Action Pack (removed from core in Rails 4.0)
 dev-ruby/actionpack-xml_parser 2.0.1: XML parameters parser for Action Pack (removed from core in Rails 4.0)
 dev-ruby/actiontext 6.0.3.4: Edit and display rich text in Rails applications
-dev-ruby/actionview 5.2.4.3 5.2.4.3-r1 5.2.4.4 6.0.3.4: Simple, battle-tested conventions and helpers for building web pages
-dev-ruby/activejob 5.2.4.3 5.2.4.4 6.0.3.4: Job framework with pluggable queues
+dev-ruby/actionview 5.2.4.3 5.2.4.3-r1 5.2.4.4 5.2.4.5 6.0.3.4: Simple, battle-tested conventions and helpers for building web pages
+dev-ruby/activejob 5.2.4.3 5.2.4.4 5.2.4.5 6.0.3.4: Job framework with pluggable queues
 dev-ruby/activeldap 5.2.4 6.0.2 6.0.3 6.0.4: ActiveLDAP provides an activerecord inspired object oriented interface to LDAP
-dev-ruby/activemodel 5.2.4.3 5.2.4.4 6.0.3.4: Toolkit for building modeling frameworks like Active Record and Active Resource
+dev-ruby/activemodel 5.2.4.3 5.2.4.4 5.2.4.5 6.0.3.4: Toolkit for building modeling frameworks like Active Record and Active Resource
 dev-ruby/activemodel-serializers-xml 1.0.2: XML serialization for your Active Model objects and Active Record models
-dev-ruby/activerecord 5.2.4.3 5.2.4.4 6.0.3.4: Implements the ActiveRecord pattern (Fowler, PoEAA) for ORM
-dev-ruby/activestorage 5.2.4.3 5.2.4.4 6.0.3.4: Attach cloud and local files in Rails applications
-dev-ruby/activesupport 5.2.4.3 5.2.4.4 6.0.3.4 6.0.3.4-r1: Utility Classes and Extension to the Standard Library
+dev-ruby/activerecord 5.2.4.3 5.2.4.4 5.2.4.5 6.0.3.4: Implements the ActiveRecord pattern (Fowler, PoEAA) for ORM
+dev-ruby/activestorage 5.2.4.3 5.2.4.4 5.2.4.5 6.0.3.4: Attach cloud and local files in Rails applications
+dev-ruby/activesupport 5.2.4.3 5.2.4.4 5.2.4.5 6.0.3.4 6.0.3.4-r1: Utility Classes and Extension to the Standard Library
 dev-ruby/acts_as_list 1.0.1: Capabilities for sorting and reordering a number of objects in a list
 dev-ruby/addressable 2.6.0 2.7.0: A replacement for the URI implementation that is part of Ruby's standard library
 dev-ruby/ae 1.8.2: Assertive Expressive is an assertions library designed for reuse
@@ -10034,7 +10034,7 @@ dev-ruby/http_parser_rb 0.6.0-r1: Simple callback-based HTTP request/response pa
 dev-ruby/httparty 0.17.3 0.18.1: Makes http fun! Also, makes consuming restful web services dead easy
 dev-ruby/httpauth 0.2.1: Library implementing the full HTTP Authentication protocol (RFC 2617)
 dev-ruby/httpclient 2.8.3: 'httpclient' gives something like the functionality of libwww-perl (LWP) in Ruby
-dev-ruby/i18n 0.7.0-r3 1.7.1 1.8.2 1.8.5 1.8.6 1.8.7 1.8.8: Add Internationalization support to your Ruby application
+dev-ruby/i18n 0.7.0-r3 1.7.1 1.8.2 1.8.5 1.8.6 1.8.7 1.8.8 1.8.9: Add Internationalization support to your Ruby application
 dev-ruby/ice_nine 0.11.2: Deep Freeze Ruby Objects
 dev-ruby/idn-ruby 0.1.0: LibIDN Ruby Bindings
 dev-ruby/image_processing 1.10.3 1.11.0 1.12.0 1.12.1: High-level image processing helper methods with libvips and ImageMagick
@@ -10097,7 +10097,7 @@ dev-ruby/metasm 1.0.4: cross-architecture assembler, disassembler, linker, and d
 dev-ruby/method_source 0.9.2 1.0.0: Retrieve the source code for a method
 dev-ruby/middleware 0.1.0: Generalized implementation of the middleware abstraction for Ruby
 dev-ruby/mime-types 2.99.2 3.3.1: Provides a mailcap-like MIME Content-Type lookup for Ruby
-dev-ruby/mime-types-data 3.2019.1009 3.2020.0425 3.2020.0512 3.2020.1104: Registry for information about MIME media type definitions
+dev-ruby/mime-types-data 3.2020.0512 3.2020.1104 3.2021.0212: Registry for information about MIME media type definitions
 dev-ruby/mimemagic 0.3.4 0.3.5: Fast mime detection by extension or content
 dev-ruby/mini_magick 4.10.1 4.11.0: Manipulate images with minimal use of memory
 dev-ruby/mini_mime 1.0.1 1.0.2: A lightweight mime type lookup toy
@@ -10142,7 +10142,7 @@ dev-ruby/netrc 0.11.0: This library reads and writes .netrc files
 dev-ruby/network_interface 0.0.2: network_interface layer from metasploit pcaprub
 dev-ruby/nexpose 7.2.1: API client for Nexpose vulnerability managment product
 dev-ruby/niceogiri 1.1.2: Some wrappers around and helpers for XML manipulation using Nokogiri
-dev-ruby/nio4r 2.5.4 2.5.5: A high performance selector API for monitoring IO objects
+dev-ruby/nio4r 2.5.4 2.5.5 2.5.5-r1: A high performance selector API for monitoring IO objects
 dev-ruby/nokogiri 1.10.10 1.11.1-r1 1.11.1-r2: Nokogiri is an HTML, XML, SAX, and Reader parser
 dev-ruby/nokogiri-diff 0.2.0-r2: Calculate the differences between two XML/HTML documents
 dev-ruby/nokogumbo 2.0.2 2.0.3 2.0.4: A Nokogiri interface to the Gumbo HTML5 parser
@@ -10201,10 +10201,10 @@ dev-ruby/rack-protection 2.1.0: This gem protects against typical web attacks
 dev-ruby/rack-ssl 1.4.1: Force SSL/TLS in your app
 dev-ruby/rack-test 1.1.0: Rack::Test is a small, simple testing API for Rack apps
 dev-ruby/radius 0.7.5: Powerful tag-based template system
-dev-ruby/rails 5.2.4.3 5.2.4.4 6.0.3.4: ruby on rails is a web-application and persistance framework
+dev-ruby/rails 5.2.4.3 5.2.4.4 5.2.4.5 6.0.3.4: ruby on rails is a web-application and persistance framework
 dev-ruby/rails-dom-testing 2.0.3 2.0.3-r1: Compare doms and assert certain elements exists in doms using Nokogiri
 dev-ruby/rails-html-sanitizer 1.2.0 1.3.0 1.3.0-r1: Sanitize HTML fragments in Rails applications
-dev-ruby/railties 5.2.4.3 5.2.4.4 6.0.3.4: Tools for creating, working with, and running Rails applications
+dev-ruby/railties 5.2.4.3 5.2.4.4 5.2.4.5 6.0.3.4: Tools for creating, working with, and running Rails applications
 dev-ruby/rainbow 3.0.0: Colorize printed text on ANSI terminals
 dev-ruby/rake 12.3.3 13.0.0 13.0.1 13.0.3 13.0.3-r1: Make-like scripting in Ruby
 dev-ruby/rake-compiler 1.1.0 1.1.1: Provide a standard and simplified way to build and package Ruby extensions
@@ -10376,7 +10376,7 @@ dev-ruby/spring 2.1.0 2.1.1: Rails application preloader
 dev-ruby/sprockets 3.7.2 4.0.2: Ruby library for compiling and serving web assets
 dev-ruby/sprockets-rails 3.2.1 3.2.2: Sprockets implementation for Rails 4.x (and beyond) Asset Pipeline
 dev-ruby/spy 1.0.0 1.0.1: A simple opinionated mocking framework
-dev-ruby/sqlite3 1.3.13 1.4.1 1.4.2: An extension library to access a SQLite database from Ruby
+dev-ruby/sqlite3 1.3.13 1.4.1 1.4.2 1.4.2-r1: An extension library to access a SQLite database from Ruby
 dev-ruby/sshkey 2.0.0: SSH private and public key generator in pure Ruby
 dev-ruby/sshkit 1.21.0 1.21.1 1.21.2: SSHKit makes it easy to write structured, testable SSH commands in Ruby
 dev-ruby/stamp 0.6.0: Date and time formatting for humans
@@ -10454,7 +10454,7 @@ dev-ruby/webmock 3.7.6 3.8.3 3.11.0: Allows stubbing HTTP requests and setting e
 dev-ruby/webrick 1.7.0: An HTTP server toolkit
 dev-ruby/webrobots 0.1.2-r1: A library to help write robots.txt compliant web robots
 dev-ruby/websocket 1.2.8 1.2.9: Universal Ruby library to handle WebSocket protocol
-dev-ruby/websocket-driver 0.6.5 0.7.2 0.7.3: A complete implementation of the WebSocket protocols
+dev-ruby/websocket-driver 0.6.5 0.7.2 0.7.3 0.7.3-r1: A complete implementation of the WebSocket protocols
 dev-ruby/websocket-extensions 0.1.4 0.1.5: Generic extension manager for WebSocket connections
 dev-ruby/whole_history_rating 0.1.2-r1: A pure ruby implementation of Remi Coulom's Whole-History Rating algorithm
 dev-ruby/will_paginate 3.3.0: Most awesome pagination solution for Ruby
