@@ -12790,7 +12790,7 @@ media-gfx/aview 1.3.0_rc1-r3: An ASCII Image Viewer
 media-gfx/blender 2.83.4-r1 2.83.10 2.90.1-r1 2.91.0: 3D Creation/Animation/Publishing System
 media-gfx/cairosvg 2.5.1: CLI and library to export SVG to PDF, PostScript, and PNG
 media-gfx/cellwriter 1.3.6: Grid-entry natural handwriting input panel
-media-gfx/chafa 1.4.1: versatile and fast Unicode/ASCII/ANSI graphics renderer
+media-gfx/chafa 1.4.1 1.6.0: versatile and fast Unicode/ASCII/ANSI graphics renderer
 media-gfx/clockphoto 1.2: Adjusts photo timestamps based on clock photos
 media-gfx/colorhug-client 0.2.8: Client tools for the ColorHug display colorimeter
 media-gfx/converseen 0.9.6.2: Batch image converter and resizer based on ImageMagick
