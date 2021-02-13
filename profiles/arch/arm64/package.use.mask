@@ -62,10 +62,6 @@ media-gfx/darktable gmic
 # Available on: amd64, x86, arm{,64}.
 >=dev-lang/spidermonkey-60 -jit
 
-# Sam James <sam@gentoo.org> (2020-10-06)
-# Deprecated. See bug #741855.
-net-mail/dovecot vpopmail
-
 # Sam James <sam@gentoo.org> (2020-10-05)
 # Guile only supports JIT on some arches
 # (See 9.3.8 in the Guile manual)
