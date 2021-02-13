@@ -1,0 +1,38 @@
+Description: include <limits> to fix some GCC 11 build issues
+Origin: upstream, commits:
+ https://code.qt.io/cgit/qt/qtbase.git/commit/?id=813a928c7c3cf986
+ https://code.qt.io/cgit/qt/qtbase.git/commit/?id=9c56d4da2ff631a8
+Last-Update: 2021-01-26
+
+--- a/src/corelib/global/qendian.h
++++ b/src/corelib/global/qendian.h
+@@ -44,6 +44,8 @@
+ #include <QtCore/qfloat16.h>
+ #include <QtCore/qglobal.h>
+ 
++#include <limits>
++
+ // include stdlib.h and hope that it defines __GLIBC__ for glibc-based systems
+ #include <stdlib.h>
+ #include <string.h>
+--- a/src/corelib/global/qfloat16.h
++++ b/src/corelib/global/qfloat16.h
+@@ -43,6 +43,7 @@
+ 
+ #include <QtCore/qglobal.h>
+ #include <QtCore/qmetatype.h>
++#include <limits>
+ #include <string.h>
+ 
+ #if defined(QT_COMPILER_SUPPORTS_F16C) && defined(__AVX2__) && !defined(__F16C__)
+--- a/src/corelib/text/qbytearraymatcher.h
++++ b/src/corelib/text/qbytearraymatcher.h
+@@ -42,6 +42,8 @@
+ 
+ #include <QtCore/qbytearray.h>
+ 
++#include <limits>
++
+ QT_BEGIN_NAMESPACE
+ 
+ 

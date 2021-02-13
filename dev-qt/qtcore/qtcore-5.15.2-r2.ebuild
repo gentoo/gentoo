@@ -52,6 +52,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.15.1-timezone-{1,2}.patch # bug 737914
 	"${FILESDIR}"/${P}-fix-UB-in-QDateTime.patch # QTBUG-88656
 	"${FILESDIR}"/${P}-fix-alloc-mem-of-QByteArray.patch # QTBUG-87010
+	"${FILESDIR}"/${P}-gcc11.patch # bug 768342, 768354
 	"${WORKDIR}"/qtbase-${PV}-gcc11.patch # bug 752012
 )
 
