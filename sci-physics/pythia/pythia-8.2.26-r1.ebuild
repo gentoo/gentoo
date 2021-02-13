@@ -1,12 +1,12 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils multilib toolchain-funcs versionator
+inherit toolchain-funcs
 
-MV=$(get_major_version)
-MY_P=${PN}$(replace_all_version_separators "" ${PV})
+MV=$(ver_cut 1)
+MY_P="${PN}${PV//./}"
 LHA_VER="6.1"
 
 DESCRIPTION="Lund Monte Carlo high-energy physics event generator"
@@ -25,19 +25,24 @@ SRC_URI="http://home.thep.lu.se/~torbjorn/${PN}${MV}/${MY_P}.tgz
 SLOT="8"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc examples gzip +hepmc fastjet lhapdf root static-libs test"
+IUSE="doc examples fastjet gzip +hepmc lhapdf root test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	fastjet? ( >=sci-physics/fastjet-3 )
+	fastjet? ( sci-physics/fastjet )
 	gzip? ( sys-libs/zlib )
 	hepmc? ( sci-physics/hepmc:0= )
-	lhapdf? ( >=sci-physics/lhapdf-6:= )
-"
+	lhapdf? ( sci-physics/lhapdf:= )"
 # ROOT is used only when building related tests
 DEPEND="${RDEPEND}
-	test? ( root? ( sci-physics/root:= ) )
-"
+	test? (
+		root? ( sci-physics/root:= )
+	)"
+
+PATCHES=(
+	"${FILESDIR}"/${PF}-run-tests.patch
+	"${FILESDIR}"/${PN}8209-root-noninteractive.patch
+)
 
 S="${WORKDIR}/${MY_P}"
 
@@ -51,6 +56,8 @@ pkg_pretend() {
 src_prepare() {
 	PYTHIADIR="/usr/share/pythia8"
 	EPYTHIADIR="${EPREFIX}${PYTHIADIR}"
+
+	default
 	# set datadir for xmldor in include file
 	sed -i \
 		-e "s:../share/Pythia8/xmldoc:${EPYTHIADIR}/xmldoc:" \
@@ -84,18 +91,13 @@ src_prepare() {
 		examples/main54.cc || die
 	# ask cflags from root
 	sed -i "s:root-config:root-config --cflags:g" examples/Makefile || die
-	if ! use static-libs; then
-		sed -i \
-			-e '/TARGETS=$(LOCAL_LIB)\/libpythia8\.a/d' \
-			-e 's:libpythia8\.a$:libpythia8$(LIB_SUFFIX):g' \
-			Makefile || die
-		sed -i 's:libpythia8\.a:libpythia8$(LIB_SUFFIX):g' \
-			examples/Makefile || die
-	fi
 
-	eapply "${FILESDIR}/${PF}-run-tests.patch"
-	eapply "${FILESDIR}/${PN}8209-root-noninteractive.patch"
-	eapply_user
+	sed -i \
+		-e '/TARGETS=$(LOCAL_LIB)\/libpythia8\.a/d' \
+		-e 's:libpythia8\.a$:libpythia8$(LIB_SUFFIX):g' \
+		Makefile || die
+	sed -i 's:libpythia8\.a:libpythia8$(LIB_SUFFIX):g' \
+		examples/Makefile || die
 }
 
 # TODO: the following optional packages are out of Gentoo tree:
@@ -157,17 +159,18 @@ src_install() {
 	# make install is too broken, much easier to install manually
 	dobin bin/pythia8-config
 	doheader -r include/*
-	dolib lib/*
+	dolib.so lib/libpythia8.so
 	insinto "${PYTHIADIR}"
 	doins -r share/Pythia8/xmldoc examples/Makefile.inc
 
-	echo "PYTHIA8DATA=${EPYTHIADIR}/xmldoc" >> 99pythia8
-	doenvd 99pythia8
+	newenvd - 99pythia8 <<- _EOF_
+		PYTHIA8DATA=${EPYTHIADIR}/xmldoc
+	_EOF_
 
 	dodoc AUTHORS GUIDELINES README
 	if use doc; then
-		dodoc share/Pythia8/pdfdoc/*
-		dohtml -r share/Pythia8/htmldoc/*
+		dodoc -r share/Pythia8/pdfdoc/.
+		dodoc -r share/Pythia8/htmldoc/.
 	fi
 	if use examples; then
 		# reuse system Makefile.inc
@@ -175,7 +178,7 @@ src_install() {
 		sed -i "s:include Makefile.inc:include ${EPYTHIADIR}:" \
 			examples/Makefile || die
 
-		insinto /usr/share/doc/${PF}
+		insinto /usr/share/${PN}
 		doins -r examples
 		docompress -x /usr/share/doc/${PF}/examples
 	fi
