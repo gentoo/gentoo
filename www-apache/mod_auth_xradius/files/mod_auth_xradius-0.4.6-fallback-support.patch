@@ -1,6 +1,5 @@
-diff -uNr mod_auth_xradius-0.4.6.ORIG/src/mod_auth_xradius.c mod_auth_xradius-0.4.6/src/mod_auth_xradius.c
---- mod_auth_xradius-0.4.6.ORIG/src/mod_auth_xradius.c	2014-09-24 13:41:22.990073508 +0100
-+++ mod_auth_xradius-0.4.6/src/mod_auth_xradius.c	2014-09-24 13:50:17.204100114 +0100
+--- a/src/mod_auth_xradius.c
++++ b/src/mod_auth_xradius.c
 @@ -125,15 +125,15 @@
      rctx = xrad_auth_open();
  

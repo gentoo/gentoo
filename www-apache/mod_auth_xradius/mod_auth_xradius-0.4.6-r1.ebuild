@@ -1,27 +1,28 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
-inherit autotools eutils
+inherit autotools
 
 DESCRIPTION="Radius authentication for Apache"
 HOMEPAGE="http://www.outoforder.cc/projects/apache/mod_auth_xradius/"
 SRC_URI="http://www.outoforder.cc/downloads/${PN}/${P}.tar.bz2"
 
 LICENSE="Apache-2.0"
-KEYWORDS="~amd64"
 SLOT="0"
-IUSE=""
+KEYWORDS="~amd64"
 
 DEPEND="www-servers/apache"
-DOCFILES="README"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-obsolete-autotools-syntax.patch
+	"${FILESDIR}"/${P}-fallback-support.patch
+	"${FILESDIR}"/${P}-apache24-api-changes.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}/${PV}-obsolete-autotools-syntax.diff"
-	epatch "${FILESDIR}/${PV}-fallback-support.diff"
-	if has_version ">=www-servers/apache-2.4"; then
-		epatch "${FILESDIR}/${PV}-apache24-api-changes.diff"
-	fi
+	default
 	AT_M4DIR="m4" eautoreconf
 }

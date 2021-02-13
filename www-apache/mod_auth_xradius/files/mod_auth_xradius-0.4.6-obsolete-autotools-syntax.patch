@@ -1,5 +1,5 @@
---- configure.ac.orig	2013-06-10 09:56:06.905065330 +0100
-+++ configure.ac	2013-06-10 09:56:45.968065916 +0100
+--- a/configure.ac
++++ b/configure.ac
 @@ -4,6 +4,7 @@
  AC_PREREQ(2.53)
  AC_CONFIG_SRCDIR([src/mod_auth_xradius.c])

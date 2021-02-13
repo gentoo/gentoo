@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/707610
+--- a/include/mod_auth_xradius.h.in
++++ b/include/mod_auth_xradius.h.in
+@@ -41,7 +41,7 @@
+  */
+ #define HAVE_APR_MEMCACHE    @have_apr_memcache@
+ 
+-module AP_MODULE_DECLARE_DATA auth_xradius_module;
++extern module AP_MODULE_DECLARE_DATA auth_xradius_module;
+ 
+ #define MOD_AUTH_XRADIUS_VERSION "@MOD_AUTH_XRADIUS_VERSION@"
+ 
+--- a/src/mod_auth_xradius.c
++++ b/src/mod_auth_xradius.c
+@@ -47,6 +47,7 @@ if (rvx != 0) { \
+                       goto run_cleanup; \
+ }
+ 
++module AP_MODULE_DECLARE_DATA auth_xradius_module;
+ apr_proc_mutex_t *gmutex;
+ static int use_mutex;
+ 
