@@ -11,7 +11,7 @@ inherit ecm kde.org
 
 DESCRIPTION="Simple ball dodging game"
 HOMEPAGE="https://apps.kde.org/en/kollision
-https://games.kde.org/game.php?game=kollision"
+https://games.kde.org/games/kollision"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
