@@ -11,7 +11,7 @@ inherit ecm kde.org
 
 DESCRIPTION="KDE clone of the game squares"
 HOMEPAGE="https://apps.kde.org/en/ksquares
-https://games.kde.org/game.php?game=ksquares"
+https://games.kde.org/games/ksquares"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

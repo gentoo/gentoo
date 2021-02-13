@@ -12,7 +12,7 @@ inherit ecm kde.org
 
 DESCRIPTION="Minigolf game by KDE"
 HOMEPAGE="https://apps.kde.org/en/kolf
-https://games.kde.org/game.php?game=kolf"
+https://games.kde.org/games/kolf"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
