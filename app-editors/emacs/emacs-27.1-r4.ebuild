@@ -33,7 +33,7 @@ else
 	fi
 	SLOT="${PV%%.*}"
 	[[ ${PV} == *.*.* ]] && SLOT+="-vcs"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
 
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
@@ -413,7 +413,7 @@ src_install() {
 	tc-is-cross-compiler && DOC_CONTENTS+="\\n\\nEmacs did not write
 		a portable dump file due to being cross-compiled.
 		To create this file at run time, execute the following command:
-		\\n${EMACS_SUFFIX} --batch --eval='(dump-emacs-portable
+		\\n${EMACS_SUFFIX} --batch -Q --eval='(dump-emacs-portable
 		\"/usr/libexec/emacs/${FULL_VERSION}/${CHOST}/emacs.pdmp\")'"
 	readme.gentoo_create_doc
 }
