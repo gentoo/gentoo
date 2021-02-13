@@ -20,10 +20,9 @@ EGIT_REPO_URI="https://github.com/OSGeo/grass.git"
 
 LICENSE="GPL-2"
 SLOT="0/7.9"
-IUSE="blas cxx fftw geos lapack liblas mysql netcdf nls odbc opencl opengl openmp png postgres readline sqlite threads tiff truetype X zstd"
+IUSE="blas cxx fftw geos lapack liblas mysql netcdf nls odbc opencl openmp png postgres readline sqlite threads tiff truetype X zstd"
 REQUIRED_USE="
-	${PYTHON_REQUIRED_USE}
-	opengl? ( X )"
+	${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	${PYTHON_DEPS}
@@ -38,6 +37,7 @@ RDEPEND="
 	sci-libs/proj
 	sci-libs/xdrfile
 	sys-libs/zlib
+	media-libs/libglvnd
 	blas? (
 		virtual/cblas[eselect-ldso(+)]
 		virtual/blas[eselect-ldso(+)]
@@ -50,7 +50,6 @@ RDEPEND="
 	netcdf? ( sci-libs/netcdf )
 	odbc? ( dev-db/unixODBC )
 	opencl? ( virtual/opencl )
-	opengl? ( virtual/opengl )
 	png? ( media-libs/libpng:0= )
 	postgres? ( >=dev-db/postgresql-8.4:= )
 	readline? ( sys-libs/readline:0= )
@@ -59,7 +58,7 @@ RDEPEND="
 	truetype? ( media-libs/freetype:2 )
 	X? (
 		dev-python/wxpython:4.0
-		x11-libs/cairo[X,opengl?]
+		x11-libs/cairo[X,opengl]
 		x11-libs/libICE
 		x11-libs/libSM
 		x11-libs/libX11
@@ -152,7 +151,6 @@ src_configure() {
 		$(use_with mysql)
 		$(use_with mysql mysql-includes "${EPREFIX}"/usr/include/mysql)
 		$(use_with sqlite)
-		$(use_with opengl)
 		$(use_with odbc)
 		$(use_with fftw)
 		$(use_with blas)
