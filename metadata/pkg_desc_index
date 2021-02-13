@@ -9810,21 +9810,21 @@ dev-ros/xmlrpcpp 1.15.8 1.15.9 9999: C++ implementation of the XML-RPC protocol
 dev-ruby/GeoRuby 2.5.2 2.5.2-r1: Ruby data holder for OGC Simple Features
 dev-ruby/abstract 1.0.0-r3: Library which enable you to define abstract method in Ruby
 dev-ruby/acme-client 2.0.6 2.0.7: A Ruby client for the letsencrypt's ACME protocol.
-dev-ruby/actioncable 5.2.4.3 5.2.4.4 5.2.4.5 6.0.3.4 6.0.3.5: Integrated WebSockets for Rails
-dev-ruby/actionmailbox 6.0.3.4 6.0.3.5: Framework for designing email-service layers
-dev-ruby/actionmailer 5.2.4.3 5.2.4.4 5.2.4.5 6.0.3.4 6.0.3.5: Framework for designing email-service layers
-dev-ruby/actionpack 5.2.4.3-r1 5.2.4.4 5.2.4.5 6.0.3.4 6.0.3.5: Eases web-request routing, handling, and response
+dev-ruby/actioncable 5.2.4.3 5.2.4.4 5.2.4.5 6.0.3.4 6.0.3.5 6.1.2.1: Integrated WebSockets for Rails
+dev-ruby/actionmailbox 6.0.3.4 6.0.3.5 6.1.2.1: Framework for designing email-service layers
+dev-ruby/actionmailer 5.2.4.3 5.2.4.4 5.2.4.5 6.0.3.4 6.0.3.5 6.1.2.1: Framework for designing email-service layers
+dev-ruby/actionpack 5.2.4.3-r1 5.2.4.4 5.2.4.5 6.0.3.4 6.0.3.5 6.1.2.1: Eases web-request routing, handling, and response
 dev-ruby/actionpack-action_caching 1.2.1: Action caching for Action Pack (removed from core in Rails 4.0)
 dev-ruby/actionpack-xml_parser 2.0.1: XML parameters parser for Action Pack (removed from core in Rails 4.0)
-dev-ruby/actiontext 6.0.3.4 6.0.3.5: Edit and display rich text in Rails applications
-dev-ruby/actionview 5.2.4.3 5.2.4.3-r1 5.2.4.4 5.2.4.5 6.0.3.4 6.0.3.5: Simple, battle-tested conventions and helpers for building web pages
-dev-ruby/activejob 5.2.4.3 5.2.4.4 5.2.4.5 6.0.3.4 6.0.3.5: Job framework with pluggable queues
+dev-ruby/actiontext 6.0.3.4 6.0.3.5 6.1.2.1: Edit and display rich text in Rails applications
+dev-ruby/actionview 5.2.4.3 5.2.4.3-r1 5.2.4.4 5.2.4.5 6.0.3.4 6.0.3.5 6.1.2.1: Simple, battle-tested conventions and helpers for building web pages
+dev-ruby/activejob 5.2.4.3 5.2.4.4 5.2.4.5 6.0.3.4 6.0.3.5 6.1.2.1: Job framework with pluggable queues
 dev-ruby/activeldap 5.2.4 6.0.2 6.0.3 6.0.4: ActiveLDAP provides an activerecord inspired object oriented interface to LDAP
-dev-ruby/activemodel 5.2.4.3 5.2.4.4 5.2.4.5 6.0.3.4 6.0.3.5: Toolkit for building modeling frameworks like Active Record and Active Resource
+dev-ruby/activemodel 5.2.4.3 5.2.4.4 5.2.4.5 6.0.3.4 6.0.3.5 6.1.2.1: Toolkit for building modeling frameworks like Active Record and Active Resource
 dev-ruby/activemodel-serializers-xml 1.0.2: XML serialization for your Active Model objects and Active Record models
-dev-ruby/activerecord 5.2.4.3 5.2.4.4 5.2.4.5 6.0.3.4 6.0.3.5: Implements the ActiveRecord pattern (Fowler, PoEAA) for ORM
-dev-ruby/activestorage 5.2.4.3 5.2.4.4 5.2.4.5 6.0.3.4 6.0.3.5: Attach cloud and local files in Rails applications
-dev-ruby/activesupport 5.2.4.3 5.2.4.4 5.2.4.5 6.0.3.4 6.0.3.4-r1 6.0.3.5: Utility Classes and Extension to the Standard Library
+dev-ruby/activerecord 5.2.4.3 5.2.4.4 5.2.4.5 6.0.3.4 6.0.3.5 6.1.2.1: Implements the ActiveRecord pattern (Fowler, PoEAA) for ORM
+dev-ruby/activestorage 5.2.4.3 5.2.4.4 5.2.4.5 6.0.3.4 6.0.3.5 6.1.2.1: Attach cloud and local files in Rails applications
+dev-ruby/activesupport 5.2.4.3 5.2.4.4 5.2.4.5 6.0.3.4 6.0.3.4-r1 6.0.3.5 6.1.2.1: Utility Classes and Extension to the Standard Library
 dev-ruby/acts_as_list 1.0.1: Capabilities for sorting and reordering a number of objects in a list
 dev-ruby/addressable 2.6.0 2.7.0: A replacement for the URI implementation that is part of Ruby's standard library
 dev-ruby/ae 1.8.2: Assertive Expressive is an assertions library designed for reuse
@@ -10203,10 +10203,10 @@ dev-ruby/rack-protection 2.1.0: This gem protects against typical web attacks
 dev-ruby/rack-ssl 1.4.1: Force SSL/TLS in your app
 dev-ruby/rack-test 1.1.0: Rack::Test is a small, simple testing API for Rack apps
 dev-ruby/radius 0.7.5: Powerful tag-based template system
-dev-ruby/rails 5.2.4.3 5.2.4.4 5.2.4.5 6.0.3.4 6.0.3.5: ruby on rails is a web-application and persistance framework
+dev-ruby/rails 5.2.4.3 5.2.4.4 5.2.4.5 6.0.3.4 6.0.3.5 6.1.2.1: ruby on rails is a web-application and persistance framework
 dev-ruby/rails-dom-testing 2.0.3 2.0.3-r1: Compare doms and assert certain elements exists in doms using Nokogiri
 dev-ruby/rails-html-sanitizer 1.2.0 1.3.0 1.3.0-r1: Sanitize HTML fragments in Rails applications
-dev-ruby/railties 5.2.4.3 5.2.4.4 5.2.4.5 6.0.3.4 6.0.3.5: Tools for creating, working with, and running Rails applications
+dev-ruby/railties 5.2.4.3 5.2.4.4 5.2.4.5 6.0.3.4 6.0.3.5 6.1.2.1: Tools for creating, working with, and running Rails applications
 dev-ruby/rainbow 3.0.0: Colorize printed text on ANSI terminals
 dev-ruby/rake 12.3.3 13.0.0 13.0.1 13.0.3 13.0.3-r1: Make-like scripting in Ruby
 dev-ruby/rake-compiler 1.1.0 1.1.1: Provide a standard and simplified way to build and package Ruby extensions
@@ -13085,11 +13085,11 @@ media-libs/graphene 1.10.2: A thin layer of types for graphic libraries
 media-libs/grilo 0.3.12: A framework for easy media discovery and browsing
 media-libs/gsound 1.0.2-r1: Thin GObject wrapper around the libcanberra sound event library
 media-libs/gst-plugins-bad 1.14.5 1.16.2: Less plugins for GStreamer
-media-libs/gst-plugins-base 1.14.5 1.14.5-r1 1.16.2: Basepack of plugins for gstreamer
-media-libs/gst-plugins-good 1.14.5 1.16.2: Basepack of plugins for GStreamer
+media-libs/gst-plugins-base 1.14.5 1.14.5-r1 1.16.2 1.16.3: Basepack of plugins for gstreamer
+media-libs/gst-plugins-good 1.14.5 1.16.2 1.16.3: Basepack of plugins for GStreamer
 media-libs/gst-plugins-ugly 1.14.3 1.16.2: Basepack of plugins for gstreamer
 media-libs/gst-rtsp-server 1.16.2: A GStreamer based RTSP server
-media-libs/gstreamer 1.14.5 1.16.2: Open source multimedia framework
+media-libs/gstreamer 1.14.5 1.16.2 1.16.3: Open source multimedia framework
 media-libs/gstreamer-editing-services 1.14.5: SDK for making video editors and more
 media-libs/guilib 1.2.1-r1: Simple widget set for SDL
 media-libs/gupnp-dlna 0.10.5: Library providing DLNA-related functionality for MediaServers
@@ -13437,73 +13437,73 @@ media-plugins/gst-plugins-amr 1.14.3 1.16.2: AMRNB encoder/decoder and AMRWB dec
 media-plugins/gst-plugins-assrender 1.14.5 1.16.2: ASS/SSA rendering with effects support plugin for GStreamer
 media-plugins/gst-plugins-bluez 1.14.5 1.16.2: AVDTP source/sink and A2DP sink plugin for GStreamer
 media-plugins/gst-plugins-bs2b 1.14.5 1.16.2: bs2b elements for Gstreamer
-media-plugins/gst-plugins-cairo 1.14.5 1.16.2: Video overlay plugin based on cairo for GStreamer
+media-plugins/gst-plugins-cairo 1.14.5 1.16.2 1.16.3: Video overlay plugin based on cairo for GStreamer
 media-plugins/gst-plugins-cdio 1.14.3 1.16.2: CD Audio Source (cdda) plugin for GStreamer
-media-plugins/gst-plugins-cdparanoia 1.14.5 1.16.2: CD Audio Source (cdda) plugin for GStreamer
+media-plugins/gst-plugins-cdparanoia 1.14.5 1.16.2 1.16.3: CD Audio Source (cdda) plugin for GStreamer
 media-plugins/gst-plugins-chromaprint 1.14.5 1.16.2: Calculate Chromaprint fingerprint from audio files for GStreamer
 media-plugins/gst-plugins-colormanagement 1.14.5 1.16.2: Color management correction GStreamer plugins
 media-plugins/gst-plugins-dash 1.14.5 1.16.2: MPEG-DASH plugin for GStreamer
 media-plugins/gst-plugins-dtls 1.14.5 1.16.2: DTLS encoder/decoder with SRTP support plugin for GStreamer
 media-plugins/gst-plugins-dts 1.14.5 1.16.2: DTS audio decoder plugin for Gstreamer
-media-plugins/gst-plugins-dv 1.14.5 1.16.2: DV demuxer and decoder plugin for GStreamer
+media-plugins/gst-plugins-dv 1.14.5 1.16.2 1.16.3: DV demuxer and decoder plugin for GStreamer
 media-plugins/gst-plugins-dvb 1.14.5 1.16.2: plugin for gstreamer
 media-plugins/gst-plugins-dvdread 1.14.3 1.16.2: DVD read plugin for GStreamer
 media-plugins/gst-plugins-faac 1.14.5 1.16.2: AAC audio encoder plugin for GStreamer
 media-plugins/gst-plugins-faad 1.14.5 1.16.2: AAC audio decoder plugin.
-media-plugins/gst-plugins-flac 1.14.5 1.16.2: FLAC encoder/decoder/tagger plugin for GStreamer
-media-plugins/gst-plugins-gdkpixbuf 1.14.5 1.16.2: plugin for gstreamer
-media-plugins/gst-plugins-gtk 1.14.5 1.16.2: Video sink plugin for GStreamer that renders to a GtkWidget
+media-plugins/gst-plugins-flac 1.14.5 1.16.2 1.16.3: FLAC encoder/decoder/tagger plugin for GStreamer
+media-plugins/gst-plugins-gdkpixbuf 1.14.5 1.16.2 1.16.3: plugin for gstreamer
+media-plugins/gst-plugins-gtk 1.14.5 1.16.2 1.16.3: Video sink plugin for GStreamer that renders to a GtkWidget
 media-plugins/gst-plugins-hls 1.14.5 1.16.2: HTTP live streaming plugin for GStreamer
-media-plugins/gst-plugins-jack 1.14.5 1.16.2: plugin for gstreamer
-media-plugins/gst-plugins-jpeg 1.14.5 1.16.2: JPEG image encoder/decoder plugin for GStreamer
+media-plugins/gst-plugins-jack 1.14.5 1.16.2 1.16.3: plugin for gstreamer
+media-plugins/gst-plugins-jpeg 1.14.5 1.16.2 1.16.3: JPEG image encoder/decoder plugin for GStreamer
 media-plugins/gst-plugins-kate 1.14.5 1.16.2: Kate overlay codec suppport plugin for GStreamer
 media-plugins/gst-plugins-ladspa 1.14.5 1.16.2: Ladspa elements for Gstreamer
-media-plugins/gst-plugins-lame 1.14.5 1.16.2: MP3 encoder plugin for GStreamer
+media-plugins/gst-plugins-lame 1.14.5 1.16.2 1.16.3: MP3 encoder plugin for GStreamer
 media-plugins/gst-plugins-libav 1.14.4.4.1.3_p20190329 1.16.2-r1: FFmpeg based gstreamer plugin
 media-plugins/gst-plugins-libde265 1.14.5 1.16.2: H.265 decoder plugin for GStreamer
 media-plugins/gst-plugins-libmms 1.14.5 1.16.2: Microsoft Multi Media Server source plugin for GStreamer
 media-plugins/gst-plugins-libnice 0.1.15-r100: GStreamer plugin for ICE (RFC 5245) support
-media-plugins/gst-plugins-libpng 1.14.5 1.16.2: PNG image encoder/decoder plugin for GStreamer
-media-plugins/gst-plugins-libvisual 1.14.5 1.16.2: Visualization elements for GStreamer
+media-plugins/gst-plugins-libpng 1.14.5 1.16.2 1.16.3: PNG image encoder/decoder plugin for GStreamer
+media-plugins/gst-plugins-libvisual 1.14.5 1.16.2 1.16.3: Visualization elements for GStreamer
 media-plugins/gst-plugins-lv2 1.16.2-r1: Lv2 elements for Gstreamer
 media-plugins/gst-plugins-meta 1.14.3 1.16.2: Meta ebuild to pull in gst plugins for apps
 media-plugins/gst-plugins-modplug 1.14.5 1.16.2: MOD audio decoder plugin for GStreamer
 media-plugins/gst-plugins-mpeg2dec 1.14.3 1.16.2: MPEG2 decoder plugin for GStreamer
 media-plugins/gst-plugins-mpeg2enc 1.14.5 1.16.2: MPEG-1/2 video encoding plugin for GStreamer
-media-plugins/gst-plugins-mpg123 1.14.5 1.16.2: MP3 decoder plugin for GStreamer
+media-plugins/gst-plugins-mpg123 1.14.5 1.16.2 1.16.3: MP3 decoder plugin for GStreamer
 media-plugins/gst-plugins-mplex 1.14.5 1.16.2: MPEG/DVD/SVCD/VCD video/audio multiplexing plugin for GStreamer
 media-plugins/gst-plugins-neon 1.14.5 1.16.2: HTTP client source plugin for GStreamer
 media-plugins/gst-plugins-ofa 1.14.5 1.16.2: MusicIP audio fingerprinting plugin for GStreamer
 media-plugins/gst-plugins-opencv 1.16.2-r1: OpenCV elements for GStreamer
 media-plugins/gst-plugins-openh264 1.14.5 1.16.2: H.264 encoder/decoder plugin for GStreamer.
-media-plugins/gst-plugins-opus 1.14.5 1.16.2: Opus audio parser plugin for GStreamer
-media-plugins/gst-plugins-oss 1.14.5 1.16.2: OSS (Open Sound System) support plugin for GStreamer
-media-plugins/gst-plugins-pulse 1.14.5 1.16.2: PulseAudio sound server plugin for GStreamer
-media-plugins/gst-plugins-raw1394 1.14.5 1.16.2: Fiwewire DV/HDV capture plugin for GStreamer
+media-plugins/gst-plugins-opus 1.14.5 1.16.2 1.16.3: Opus audio parser plugin for GStreamer
+media-plugins/gst-plugins-oss 1.14.5 1.16.2 1.16.3: OSS (Open Sound System) support plugin for GStreamer
+media-plugins/gst-plugins-pulse 1.14.5 1.16.2 1.16.3: PulseAudio sound server plugin for GStreamer
+media-plugins/gst-plugins-raw1394 1.14.5 1.16.2 1.16.3: Fiwewire DV/HDV capture plugin for GStreamer
 media-plugins/gst-plugins-resindvd 1.14.5 1.16.2: DVD playback support plugin for GStreamer
 media-plugins/gst-plugins-rtmp 1.14.5 1.16.2: RTMP source/sink plugin for GStreamer
-media-plugins/gst-plugins-shout2 1.14.5 1.16.2: Icecast server sink plugin for GStreamer
+media-plugins/gst-plugins-shout2 1.14.5 1.16.2 1.16.3: Icecast server sink plugin for GStreamer
 media-plugins/gst-plugins-sidplay 1.14.3 1.16.2: Sid decoder plugin for GStreamer
 media-plugins/gst-plugins-smoothstreaming 1.14.5 1.16.2: Smooth Streaming plugin for GStreamer
 media-plugins/gst-plugins-sndio 1.8.0.1: Sndio audio sink and source for GStreamer
 media-plugins/gst-plugins-soundtouch 1.14.5 1.16.2: Beats-per-minute detection and pitch controlling plugin for GStreamer
-media-plugins/gst-plugins-soup 1.14.5 1.16.2: HTTP client source/sink plugin for GStreamer
-media-plugins/gst-plugins-speex 1.14.5 1.16.2: Speex encoder/decoder plugin for GStreamer
+media-plugins/gst-plugins-soup 1.14.5 1.16.2 1.16.3: HTTP client source/sink plugin for GStreamer
+media-plugins/gst-plugins-speex 1.14.5 1.16.2 1.16.3: Speex encoder/decoder plugin for GStreamer
 media-plugins/gst-plugins-srt 1.16.2: Secure reliable transport (SRT) transfer plugin for GStreamer
 media-plugins/gst-plugins-srtp 1.14.5 1.16.2: SRTP encoder/decoder plugin for GStreamer
-media-plugins/gst-plugins-taglib 1.14.5 1.16.2: ID3v2/APEv2 tagger plugin for GStreamer
-media-plugins/gst-plugins-twolame 1.14.5 1.16.2: MPEG2 encoder plugin for GStreamer
+media-plugins/gst-plugins-taglib 1.14.5 1.16.2 1.16.3: ID3v2/APEv2 tagger plugin for GStreamer
+media-plugins/gst-plugins-twolame 1.14.5 1.16.2 1.16.3: MPEG2 encoder plugin for GStreamer
 media-plugins/gst-plugins-uvch264 1.14.5 1.16.2: UVC compliant H264 encoding cameras plugin for GStreamer
-media-plugins/gst-plugins-v4l2 1.14.5 1.16.2: plugin for gstreamer
+media-plugins/gst-plugins-v4l2 1.14.5 1.16.2 1.16.3: plugin for gstreamer
 media-plugins/gst-plugins-vaapi 1.14.5 1.16.2: Hardware accelerated video decoding through VA-API plugin for GStreamer
 media-plugins/gst-plugins-voaacenc 1.14.5 1.16.2: AAC encoder plugin for GStreamer
 media-plugins/gst-plugins-voamrwbenc 1.14.5 1.16.2: AMR-WB audio encoder plugin for GStreamer
-media-plugins/gst-plugins-vpx 1.14.5 1.16.2: VP8/VP9 video encoder/decoder plugin for GStreamer
-media-plugins/gst-plugins-wavpack 1.14.5 1.16.2: Wavpack audio encoder/decoder plugin for GStreamer
+media-plugins/gst-plugins-vpx 1.14.5 1.16.2 1.16.3: VP8/VP9 video encoder/decoder plugin for GStreamer
+media-plugins/gst-plugins-wavpack 1.14.5 1.16.2 1.16.3: Wavpack audio encoder/decoder plugin for GStreamer
 media-plugins/gst-plugins-webrtc 1.16.2: WebRTC plugins for GStreamer
 media-plugins/gst-plugins-x264 1.14.3 1.16.2: H.264 encoder plugin for GStreamer
 media-plugins/gst-plugins-x265 1.14.5 1.16.2: H.265 encoder plugin for GStreamer
-media-plugins/gst-plugins-ximagesrc 1.14.5 1.16.2: X11 video capture stream plugin for GStreamer
+media-plugins/gst-plugins-ximagesrc 1.14.5 1.16.2 1.16.3: X11 video capture stream plugin for GStreamer
 media-plugins/gst-plugins-zbar 1.14.5 1.16.2: Bar codes detection in video streams for GStreamer
 media-plugins/gst-transcoder 1.14.1: GStreamer Transcoding API
 media-plugins/hdx-realtime-media-engine 2.9.200.2506-r1: HDX RealTime Media Engine plugin for Citrix Workspace App
