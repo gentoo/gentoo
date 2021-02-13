@@ -12,7 +12,7 @@ inherit ecm kde.org
 
 DESCRIPTION="Solitaire-like game played using the standard set of Mahjong tiles"
 HOMEPAGE="https://apps.kde.org/en/kshisen
-https://games.kde.org/game.php?game=kshisen"
+https://games.kde.org/games/kshisen"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
