@@ -37,6 +37,7 @@ portaudio portmidi pulseaudio python samples static-libs stk test +threads +util
 vim-syntax websocket"
 
 REQUIRED_USE="
+	alsa? ( threads )
 	linear? ( double-precision )
 	lua? ( ${LUA_REQUIRED_USE} cxx )
 	python? ( ${PYTHON_REQUIRED_USE} cxx )
