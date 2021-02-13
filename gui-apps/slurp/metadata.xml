@@ -5,9 +5,6 @@
         <email>bman@gentoo.org</email>
         <name>Aaron Bauman</name>
     </maintainer>
-    <use>
-        <flag name="man">Generate and install man pages.</flag>
-    </use>
     <upstream>
         <remote-id type="github">emersion/slurp</remote-id>
         <bugs-to>https://github.com/emersion/slurp/issues</bugs-to>

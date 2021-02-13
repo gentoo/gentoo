@@ -14,7 +14,6 @@
 		<flag name="fifo">Enable FIFO support (sh pipes)</flag>
 		<flag name="irc">Enable IRC protocol support</flag>
 		<flag name="logger">Enable support for logging</flag>
-		<flag name="man">Build and install man pages</flag>
 		<flag name="relay">Enable relay plugin (experimental)</flag>
 		<flag name="scripts">Build infrastructure for scripting</flag>
 		<flag name="trigger">Enable trigger plugin</flag>

@@ -12,7 +12,6 @@
     <flag name="dell">Enable Dell-specific support.</flag>
     <flag name="flashrom">Enable flashrom plugin via <pkg>sys-apps/flashrom</pkg></flag>
     <flag name="gusb">Enable <pkg>dev-libs/libgusb</pkg> support</flag>
-    <flag name="man">Build and install man pages</flag>
     <flag name="nvme">Build and install NVMe plugin</flag>
     <flag name="redfish">Install redfish plugin</flag>
     <flag name="synaptics">Install synaptics plugin</flag>

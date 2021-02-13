@@ -18,7 +18,6 @@
 	<use>
 		<flag name="dmabuf">Use dmabuf for data exchange and hardware decoding</flag>
 		<flag name="ffmpeg">Link with ffmpeg for software decoding</flag>
-		<flag name="man">Build and install man pages</flag>
 		<flag name="systemtap">Enable SystemTAP/DTrace tracing</flag>
 	</use>
 </pkgmetadata>

@@ -14,7 +14,4 @@
 		for wayland based compositors. If you can run it from
 		your shell in a TTY, greetd can start it.
 	</longdescription>
-	<use>
-		<flag name="man">Build and install man pages</flag>
-	</use>
 </pkgmetadata>
