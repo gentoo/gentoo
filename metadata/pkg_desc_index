@@ -5628,7 +5628,7 @@ dev-libs/opencryptoki 3.4.1 3.6.1: PKCS#11 provider cryptographic hardware
 dev-libs/openct 0.6.20-r4: library for accessing smart card terminals
 dev-libs/openobex 1.7.2-r1 1.7.2-r2: Implementation of the OBEX protocol used for transferring data to mobile devices
 dev-libs/opensc 0.20.0 0.21.0: Libraries and applications to access smartcards
-dev-libs/openspecfun 0.5.1: A collection of special mathematical functions
+dev-libs/openspecfun 0.5.3: A collection of special mathematical functions
 dev-libs/openssl 1.0.2u 1.1.1i: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/openssl-compat 0.9.8z_p8-r1 1.0.2u-r1: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/ossp-uuid 1.6.2-r6: An ISO-C:1999 API with CLI for generating DCE, ISO/IEC and RFC compliant UUID
@@ -13743,7 +13743,7 @@ media-sound/bladeenc 0.94.2-r1: An mp3 encoder
 media-sound/bluez-alsa 3.0.0 9999: Bluetooth Audio ALSA Backend
 media-sound/bplay 0.991: No-frills command-line buffered player and recorder
 media-sound/bpmdetect 0.7.0_pre20170810: Automatic BPM detection utility
-media-sound/bristol 0.60.11-r1: Synthesizer keyboard emulation package: Moog, Hammond and others
+media-sound/bristol 0.60.11-r2: Synthesizer keyboard emulation package: Moog, Hammond and others
 media-sound/brutefir 1.0k-r2: Software convolution engine for applying long FIR filters
 media-sound/cadence 0.9.1 9999: Collection of tools useful for audio production
 media-sound/cantata 2.4.2: Featureful and configurable Qt client for the music player daemon (MPD)
@@ -16294,7 +16294,7 @@ sci-libs/libticables2 1.3.5: Library to handle different link cables for TI calc
 sci-libs/libticalcs2 1.1.9: Library for communication with TI calculators
 sci-libs/libticonv 1.1.5: Charset conversion library for TI calculators
 sci-libs/libtifiles2 1.1.7: Library for TI calculator files
-sci-libs/libxc 2.2.3 3.0.0 5.1.0: A library of exchange-correlation functionals for use in DFT
+sci-libs/libxc 2.2.3 5.1.0: A library of exchange-correlation functionals for use in DFT
 sci-libs/linbox 1.6.3: C++ template library for integer and finite-field linear algebra
 sci-libs/linux-gpib 4.3.0 4.3.2 4.3.3 4.3.4: Driver library for GPIB (IEEE 488.2) hardware
 sci-libs/linux-gpib-modules 4.3.0-r1 4.3.2-r1 4.3.3-r1 4.3.4: Kernel modules for GPIB (IEEE 488.2) hardware
@@ -16385,7 +16385,7 @@ sci-libs/tensorflow 2.4.0: Computation framework using data flow graphs for scal
 sci-libs/tensorflow-estimator 2.3.0 2.4.0: A high-level TensorFlow API that greatly simplifies machine learning programming
 sci-libs/tnt 3.0.12: Template Numerical Toolkit: C++ headers for array and matrices
 sci-libs/trilinos 13.0.1: Scientific library collection for large scale problems
-sci-libs/udunits 2.1.24-r1 2.2.20 2.2.28: Library for manipulating units of physical quantities
+sci-libs/udunits 2.1.24-r1 2.2.28: Library for manipulating units of physical quantities
 sci-libs/ufconfig 3.7.1: Common configuration scripts for the SuiteSparse libraries
 sci-libs/umfpack 5.7.9: Unsymmetric multifrontal sparse LU factorization library
 sci-libs/volk 2.4.1: vector optimized library of kernels
@@ -16504,19 +16504,19 @@ sci-physics/herwig 6.5.21-r1: High Energy Physics Event Generator
 sci-physics/herwig++ 2.7.1-r1: High-Energy Physics event generator
 sci-physics/jaxodraw 2.0.1-r1: Java program for drawing Feynman diagrams
 sci-physics/lammps 20200303: Large-scale Atomic/Molecular Massively Parallel Simulator
-sci-physics/lhapdf 6.2.3: Les Houches Parton Density Function unified library
-sci-physics/looptools 2.8 2.12 2.13: Tools for evaluation of scalar and tensor one-loop integrals
-sci-physics/pythia 6.4.28 6.4.28-r1 8.1.86-r1 8.2.26: Lund Monte Carlo high-energy physics event generator
+sci-physics/lhapdf 6.2.3 6.3.0: Les Houches Parton Density Function unified library
+sci-physics/looptools 2.8 2.15: Tools for evaluation of scalar and tensor one-loop integrals
+sci-physics/pythia 6.4.28 6.4.28-r2 8.2.26-r1: Lund Monte Carlo high-energy physics event generator
 sci-physics/qmeq 1.0_p202004: Quantum master equation package for Quantum dot transport calculations
 sci-physics/reduze 2.2: Program for reducing Feynman integrals
 sci-physics/root 6.20.08 6.22.06 9999: C++ data analysis framework and interpreter from CERN
 sci-physics/sassena 1.4.2: Software for Calculating Scattering Diagrams on Massively Parallel Computers
-sci-physics/siscone 3.0.3: Hadron Seedless Infrared-Safe Cone jet algorithm
+sci-physics/siscone 3.0.5: Hadron Seedless Infrared-Safe Cone jet algorithm
 sci-physics/thepeg 1.9.2 2.0.0 2.0.4: Toolkit for High Energy Physics Event Generation
 sci-physics/vgm 4.8 4.9 9999: Virtual Geometry Model for High Energy Physics Experiments
 sci-physics/vmc 1.0_p3 9999: The Virtual Monte Carlo core library
 sci-physics/xfoil 6.99: Design and analysis of subsonic isolated airfoils
-sci-physics/yoda 1.7.0-r2: Yet more Objects for (High Energy Physics) Data Analysis
+sci-physics/yoda 1.8.5: Yet more Objects for (High Energy Physics) Data Analysis
 sci-visualization/circos 0.55-r1: Circular layout visualization of genomic and other data
 sci-visualization/epix 1.2.11-r2: 2- and 3-D plotter for creating images (to be used in LaTeX)
 sci-visualization/fig2sxd 0.22.1: Utility to convert files in xfig format to OpenOffice.org Draw format
