@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_7 )
-inherit distutils-r1 eutils linux-info multilib
+inherit distutils-r1 eutils linux-info multilib udev
 
 DESCRIPTION="Cloud computing fabric controller"
 HOMEPAGE="https://launchpad.net/nova"
