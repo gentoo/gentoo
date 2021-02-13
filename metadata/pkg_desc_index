@@ -9257,7 +9257,7 @@ dev-python/tox 3.20.1-r1 3.21.0 3.21.1 3.21.2 3.21.3 3.21.4: virtualenv-based au
 dev-python/tqdm 4.55.0 4.55.1 4.55.2 4.56.0 4.56.1 4.56.2: Add a progress meter to your loops in a second
 dev-python/traceback2 1.4.0-r1: Backports of the traceback module
 dev-python/traitlets 4.3.3 5.0.5: A configuration system for Python applications
-dev-python/transitions 0.8.6: A lightweight, object-oriented state machine implementation in Python
+dev-python/transitions 0.8.6 0.8.7: A lightweight, object-oriented state machine implementation in Python
 dev-python/translate-toolkit 3.2.0 3.3.0 3.3.1 3.3.2: Toolkit to convert between many translation formats
 dev-python/tree-sitter 0.2.0 0.2.1: Python bindings to the Tree-sitter parsing library
 dev-python/treq 20.9.0 21.1.0: A requests-like API built on top of twisted.web's Agent
