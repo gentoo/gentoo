@@ -2118,9 +2118,9 @@ app-emulation/virtualbox-modules 6.1.16-r1 6.1.18: Kernel Modules for Virtualbox
 app-emulation/vkd3d 1.0 1.1 1.1-r1 1.2 9999: D3D12 to Vulkan translation library
 app-emulation/wine-desktop-common 20150204-r1: Various desktop menu items and icons for wine
 app-emulation/wine-gecko 2.47-r1 2.47.1 2.47.2: A Mozilla Gecko based version of Internet Explorer for Wine
-app-emulation/wine-mono 4.6.4 4.7.0 4.7.1 4.7.3 4.7.5 4.8.0 4.8.1 4.8.3 4.9.0 4.9.2 4.9.3 4.9.4 5.0.0 5.1.0 5.1.1: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
-app-emulation/wine-staging 5.20 5.21 5.22-r2 6.0 6.1 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
-app-emulation/wine-vanilla 5.0.2 5.0.3-r1 5.20 5.21 5.22-r2 6.0 6.1 9999: Free implementation of Windows(tm) on Unix, without external patchsets
+app-emulation/wine-mono 4.6.4 4.7.0 4.7.1 4.7.3 4.7.5 4.8.0 4.8.1 4.8.3 4.9.0 4.9.2 4.9.3 4.9.4 5.0.0 5.1.0 5.1.1 6.0.0: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
+app-emulation/wine-staging 5.21 5.22-r2 6.0 6.1 6.2 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
+app-emulation/wine-vanilla 5.0.2 5.0.3-r1 5.21 5.22-r2 6.0 6.1 6.2 9999: Free implementation of Windows(tm) on Unix, without external patchsets
 app-emulation/winetricks 20200412 20201206 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4-r2: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
