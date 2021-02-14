@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,6 @@ inherit autotools eutils gnome2-utils python-any-r1 xdg-utils
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/HandBrake/HandBrake.git"
 	inherit git-r3
-	KEYWORDS=""
 else
 	MY_P="HandBrake-${PV}"
 	SRC_URI="https://download2.handbrake.fr/${PV}/${MY_P}-source.tar.bz2 -> ${P}.tar.bz2"
