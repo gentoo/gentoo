@@ -18233,7 +18233,7 @@ x11-drivers/xf86-video-nouveau 1.0.16 1.0.17: Accelerated Open Source driver for
 x11-drivers/xf86-video-nv 2.1.21: Nvidia 2D only video driver
 x11-drivers/xf86-video-omap 0.4.5: OMAP video driver
 x11-drivers/xf86-video-openchrome 0.6.0: X.Org driver for VIA/S3G cards
-x11-drivers/xf86-video-qxl 0.1.5: QEMU QXL paravirt video driver
+x11-drivers/xf86-video-qxl 0.1.5 0.1.5_p20200205: QEMU QXL paravirt video driver
 x11-drivers/xf86-video-r128 6.12.0: ATI Rage128 video driver
 x11-drivers/xf86-video-siliconmotion 1.7.9: Silicon Motion video driver
 x11-drivers/xf86-video-vboxvideo 1.0.0: VirtualBox guest video driver
