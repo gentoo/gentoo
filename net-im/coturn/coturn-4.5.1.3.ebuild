@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,6 @@ DESCRIPTION="coturn TURN server project"
 HOMEPAGE="https://github.com/coturn/coturn"
 
 if [ ${PV} = 9999 ]; then
-	KEYWORDS=""
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
 	inherit git-r3
 	DEPEND="dev-vcs/git"
