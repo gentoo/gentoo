@@ -17,7 +17,6 @@ JRE11_VER="1098.1"
 if [[ "$(ver_cut 7)"x = "prex" ]]
 then
 	# upstream EAP
-	KEYWORDS="~arm64"
 	SRC_URI="https://download.jetbrains.com/idea/${MY_PN}IC-${PV_STRING}.tar.gz"
 else
 	# upstream stable
