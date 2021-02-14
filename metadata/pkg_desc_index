@@ -10801,7 +10801,7 @@ dev-util/gtk-update-icon-cache 3.24.20 3.24.21 3.24.24: GTK update icon cache
 dev-util/gyp 20200512145953 99999999999999: GYP (Generate Your Projects) meta-build system
 dev-util/heaptrack 9999: Fast heap memory profiler
 dev-util/herdtools7 7.47 7.51: The Herd toolsuite to deal with .cat memory models
-dev-util/hermes 2.8: Lua based testing manager
+dev-util/hermes 2.8_p20180315 9999: Lua based testing manager
 dev-util/hfstospell 0.5.2-r1: HFST spell checker library and command line tool
 dev-util/hip 4.0.0 4.0.0-r1: C++ Heterogeneous-Compute Interface for Portability
 dev-util/howdoi 2.0.7 2.0.8 2.0.10: A code search tool
@@ -17289,6 +17289,7 @@ sys-cluster/legion 16.08.0-r1 16.10.0 17.02.0 17.05.0 17.08.0 17.10.0 18.02.0 18
 sys-cluster/libcircle 0.2.0_rc1 0.2.1_rc1 0.3.0: API for distributing embarrassingly parallel workloads using self-stabilization
 sys-cluster/libqb 0.17.2 1.0.5 1.9.0 2.0.1-r1: Library providing high performance logging, tracing, ipc, and poll
 sys-cluster/libquo 1.2.9 9999: run-time tuning of process binding policies made easy
+sys-cluster/lmod 8.4.20 9999: Environment Module System based on Lua
 sys-cluster/lustre 2.13.0-r1: Lustre is a parallel distributed file system
 sys-cluster/minikube 1.10.1 1.11.0 1.13.1 1.14.0 1.14.1: Single Node Kubernetes Cluster
 sys-cluster/mpe2 1.0.6_p1-r2: MPI development tools

@@ -8006,6 +8006,9 @@ sys-cluster/kronosnet:nss - Add support for tls via nss
 sys-cluster/kronosnet:openssl - Add support for tls via openssl
 sys-cluster/legion:gasnet - Enable GASNet lib support
 sys-cluster/legion:hwloc - Enable HWLoc lib support
+sys-cluster/lmod:auto-swap - enable auto swapping of compiler
+sys-cluster/lmod:cache - enable caching of modules
+sys-cluster/lmod:duplicate-paths - allow duplicate entries in path
 sys-cluster/lustre:client - Enable kernel client modules
 sys-cluster/lustre:dlc - Enable Dynamic LNET Configuration
 sys-cluster/lustre:server - Enable kernels server modules
