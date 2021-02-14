@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,7 +23,7 @@ REQUIRED_USE="?? ( elogind systemd )"
 
 DEPEND="
 	>=dev-libs/libinput-1.9.0:0=
-	>=dev-libs/wayland-1.18.0
+	>=dev-libs/wayland-1.19.0
 	>=dev-libs/wayland-protocols-1.17.0
 	media-libs/mesa[egl,gles2,gbm]
 	virtual/libudev
