@@ -40,7 +40,7 @@ DEPEND="${RDEPEND}
 	)"
 
 PATCHES=(
-	"${FILESDIR}"/${PF}-run-tests.patch
+	"${FILESDIR}"/${P}-run-tests.patch
 	"${FILESDIR}"/${PN}8209-root-noninteractive.patch
 )
 
