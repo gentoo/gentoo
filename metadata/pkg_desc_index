@@ -5586,7 +5586,7 @@ dev-libs/libxslt 1.1.34-r1: XSLT libraries and tools
 dev-libs/libyaml 0.2.2 0.2.5: YAML 1.1 parser and emitter written in C
 dev-libs/libzia 4.23 4.24 4.25: platform abstraction code for tucnak package
 dev-libs/libzip 1.7.3: Library for manipulating zip archives
-dev-libs/light 1.2.2: A program to control backlights (and other hardware lights)
+dev-libs/light 1.2.2 1.2.2-r1: A program to control backlights (and other hardware lights)
 dev-libs/link-grammar 5.8.0: A Syntactic English parser
 dev-libs/lockdev 1.0.3.1.2-r3: Library for locking devices
 dev-libs/log4cplus 1.2.0: C++ port of the Log for Java (log4j) logging library
@@ -10796,7 +10796,7 @@ dev-util/gource 0.51: A software version control visualization tool
 dev-util/gperf 3.1: A perfect hash function generator
 dev-util/gprof2dot 2019.11.30: Converts profiling output to dot graphs
 dev-util/gtk-builder-convert 2.24.32-r1: Converts Glade files to GtkBuilder XML format
-dev-util/gtk-doc 1.32-r1 1.32-r2 1.33.1-r3: GTK+ Documentation Generator
+dev-util/gtk-doc 1.32-r1 1.32-r2 1.33.1-r3 1.33.1-r4: GTK+ Documentation Generator
 dev-util/gtk-doc-am 1.32 1.33.1: Automake files from gtk-doc
 dev-util/gtk-update-icon-cache 3.24.20 3.24.21 3.24.24: GTK update icon cache
 dev-util/gyp 20200512145953 99999999999999: GYP (Generate Your Projects) meta-build system
@@ -13074,7 +13074,7 @@ media-libs/gexiv2 0.12.1 9999: GObject-based wrapper around the Exiv2 library
 media-libs/giblib 1.2.4-r1: a graphics library built on top of imlib2
 media-libs/giflib 5.2.1-r1: Library to handle, display and manipulate GIF images
 media-libs/glew 1.6.0-r100 1.10.0-r100 2.1.0-r1 2.2.0: The OpenGL Extension Wrangler Library
-media-libs/glfw 3.2.1 3.3.2: The Portable OpenGL FrameWork
+media-libs/glfw 3.3.2: The Portable OpenGL FrameWork
 media-libs/glm 0.9.9.5 0.9.9.7 0.9.9.8 0.9.9.8-r1: OpenGL Mathematics
 media-libs/glpng 1.46-r1: OpenGL PNG image library
 media-libs/glu 9.0.1 9999: The OpenGL Utility Library
@@ -13307,7 +13307,7 @@ media-libs/openh264 2.1.1: Cisco OpenH264 library and Gecko Media Plugin for Moz
 media-libs/openicc 0.1.0: Config database to store, share and manipulate colour management informations
 media-libs/openimageio 2.2.8.0-r1 2.2.9.0-r1 2.2.10.0 2.2.10.1 2.2.11.1: A library for reading and writing images
 media-libs/openjpeg 2.4.0: Open-source JPEG 2000 library
-media-libs/opensubdiv 3.3.3 3.3.3-r1 3.4.3: An Open-Source subdivision surface library
+media-libs/opensubdiv 3.4.3: An Open-Source subdivision surface library
 media-libs/opus 1.3.1-r1: Open codec for interactive speech and music transmission over the Internet
 media-libs/opusfile 0.12: A high-level decoding and seeking API for .opus files
 media-libs/osl 1.10.13 1.11.9.0: Advanced shading language for production GI renderers
