@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-02-14)
+# sci-libs/cholmod is not keyworded.
+sci-libs/umfpack cholmod
+
 # Sam James <sam@gentoo.org> (2021-02-06)
 # media-sound/sndio is not yet keyworded here
 # bug #769098, bug #769122
@@ -310,10 +314,6 @@ net-misc/networkmanager wext
 # Gilles Dartiguelongue <eva@gentoo.org> (2015-06-09)
 # dev-lua/lgi lacks alpha keyword, bug #551540
 dev-libs/libpeas lua
-
-# Michał Górny <mgorny@gentoo.org> (2015-02-22)
-# Dependency not keyworded for some reason.
-media-libs/gegl umfpack
 
 # Johannes Huber <johu@gentoo.org> (2015-01-28)
 # Missing keyword on dev-libs/botan
