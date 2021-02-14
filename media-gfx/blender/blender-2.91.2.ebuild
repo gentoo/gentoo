@@ -10,7 +10,6 @@ inherit check-reqs cmake flag-o-matic pax-utils python-single-r1 \
 
 DESCRIPTION="3D Creation/Animation/Publishing System"
 HOMEPAGE="https://www.blender.org"
-
 SRC_URI="https://download.blender.org/source/${P}.tar.xz"
 
 # Blender can have letters in the version string,
