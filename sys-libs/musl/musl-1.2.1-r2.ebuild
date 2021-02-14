@@ -11,7 +11,6 @@ if [[ ${PV} == "9999" ]] ; then
 	https://dev.gentoo.org/~blueness/musl-misc/getconf.c
 	https://dev.gentoo.org/~blueness/musl-misc/getent.c
 	https://dev.gentoo.org/~blueness/musl-misc/iconv.c"
-	KEYWORDS=""
 else
 	SRC_URI="http://www.musl-libc.org/releases/${P}.tar.gz
 	https://dev.gentoo.org/~blueness/musl-misc/getconf.c
