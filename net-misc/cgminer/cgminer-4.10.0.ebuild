@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,8 @@ IUSE="doc examples udev hardened ncurses ${HARDWARE}"
 
 REQUIRED_USE="|| ( ${HARDWARE} )"
 
-RDEPEND="net-misc/curl
+RDEPEND="
+	net-misc/curl
 	>=dev-libs/jansson-2.6
 	virtual/libusb:1[udev]
 	ncurses? ( sys-libs/ncurses:0= )
@@ -29,6 +30,7 @@ BDEPEND="virtual/pkgconfig"
 
 src_configure() {
 	use hardened && append-cflags "-no-pie"
+	append-cflags -fcommon
 
 	# PKG_CHECK_MODULES needs PKG_CONFIG for --with-system-jansson.
 	export PKG_CONFIG="$(tc-getPKG_CONFIG)"
