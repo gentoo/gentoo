@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,6 @@ HOMEPAGE="https://github.com/dmlc/dmlc-core"
 if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/dmlc/${PN}.git"
 	inherit git-r3
-	KEYWORDS=""
 else
 	EGIT_COMMIT="54db57d5d1b2a7b93319053011802888b827a539"
 	inherit vcs-snapshot
