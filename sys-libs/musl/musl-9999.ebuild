@@ -97,6 +97,9 @@ src_compile() {
 			LDFLAGS="${LDFLAGS}" \
 			VPATH="${WORKDIR}/misc"
 	fi
+
+	$(tc-getCC) ${CFLAGS} -c -o libssp_nonshared.o  "${FILESDIR}"/stack_chk_fail_local.c || die
+	$(tc-getAR) -rcs libssp_nonshared.a libssp_nonshared.o || die
 }
 
 src_install() {
