@@ -19,7 +19,6 @@ DESCRIPTION="Intel Graphics Memory Management Library"
 HOMEPAGE="https://github.com/intel/gmmlib"
 if [[ ${PV} == *9999 ]] ; then
 	SRC_URI=""
-	KEYWORDS=""
 else
 	SRC_URI="https://github.com/intel/gmmlib/archive/intel-${P}.tar.gz"
 	S="${WORKDIR}/${PN}-intel-${P}"
