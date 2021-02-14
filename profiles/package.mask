@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2021-02-14)
+# This version seems to have broken ABI.
+# Masking until investigation completed
+# upstream.
+# bug #770181
+=app-crypt/mit-krb5-1.19
+
 # Jakov Smolic <jakov.smolic@sartura.hr> (2021-02-13)
 # Fails to build with gcc-10, stuck on EAPI 5, dead upstream
 # multiple reported bugs, not touched by maintainer in years.
