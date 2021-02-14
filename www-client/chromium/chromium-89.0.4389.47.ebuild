@@ -232,6 +232,7 @@ src_prepare() {
 	local PATCHES=(
 		"${WORKDIR}/patches"
 		"${FILESDIR}/chromium-89-webcodecs-deps.patch"
+		"${FILESDIR}/chromium-89-EnumTable-crash.patch"
 		"${FILESDIR}/chromium-shim_headers.patch"
 	)
 
