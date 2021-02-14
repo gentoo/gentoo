@@ -10647,7 +10647,7 @@ dev-util/bin_replace_string 0.2: A tool to edit C strings in compiled binaries
 dev-util/bingrep 0.8.2: Binary file analysis tool
 dev-util/bitcoin-tx 0.20.1 0.21.0: Command-line Bitcoin transaction tool
 dev-util/bitrise 1.16.1 1.19.0 1.20.0 1.23.0 1.24.0: Run your Bitrise.io automations on any Mac or Linux machine
-dev-util/bless 0.6.2-r1: GTK# Hex Editor
+dev-util/bless 0.6.2-r1 0.6.3: GTK# Hex Editor
 dev-util/bloaty 0_p20170420 1.1 9999: A size profiler for binaries
 dev-util/bnfc 2.8.3: A compiler front-end generator
 dev-util/boost-build 1.74.0 1.75.0: A system for large project software construction, simple to use and powerful
