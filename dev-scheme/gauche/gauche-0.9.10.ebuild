@@ -9,7 +9,8 @@ MY_P="${P^g}"
 
 DESCRIPTION="A Unix system friendly Scheme Interpreter"
 HOMEPAGE="http://practical-scheme.net/gauche/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tgz"
+SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tgz
+	https://dev.gentoo.org/~hattya/distfiles/${P}-sys-ctermid.patch.xz"
 
 LICENSE="BSD"
 SLOT="0/$(ver_cut 1-2)7"
@@ -33,7 +34,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-rfc.tls.patch
 	"${FILESDIR}"/${PN}-xz-info.patch
 	"${FILESDIR}"/${P}-srfi-134.patch
-	"${FILESDIR}"/${P}-sys-ctermid.patch
+	"${WORKDIR}"/${P}-sys-ctermid.patch
 )
 DOCS=( AUTHORS ChangeLog HACKING.adoc README.adoc )
 
