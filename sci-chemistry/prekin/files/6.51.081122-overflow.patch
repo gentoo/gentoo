@@ -1,5 +1,3 @@
-diff --git a/PKIN.h b/PKIN.h
-index 6cb6670..c9c6b89 100755
 --- a/PKIN.h
 +++ b/PKIN.h
 @@ -533,8 +533,8 @@ EXTERN float xnext,ynext,znext,onext,Bnext,Uvalnext;
