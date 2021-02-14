@@ -1,0 +1,26 @@
+Avoid conflict with app-accessibility/julius.
+
+diff --color -Naur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2020-06-01 14:53:28.000000000 +0100
++++ b/CMakeLists.txt	2021-02-14 11:51:30.364704957 +0000
+@@ -27,7 +27,7 @@
+     endif()
+ endif()
+ 
+-set(SHORT_NAME julius)
++set(SHORT_NAME julius-game)
+ project(${SHORT_NAME} C)
+ 
+ if (VITA_BUILD)
+diff --color -Naur a/res/julius.desktop b/res/julius.desktop
+--- a/res/julius.desktop	2020-06-01 14:53:28.000000000 +0100
++++ b/res/julius.desktop	2021-02-14 11:51:45.518122772 +0000
+@@ -2,7 +2,7 @@
+ [Desktop Entry]
+ Type=Application
+ Version=1.0
+-Exec=julius
++Exec=julius-game
+ Icon=com.github.bvschaik.julius
+ Name=Julius
+ GenericName=Roman city management game
