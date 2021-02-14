@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 inherit autotools
 
 DESCRIPTION="MaCoPiX (Mascot Constructive Pilot for X) is a desktop mascot application"
-HOMEPAGE="http://rosegray.sakura.ne.jp/macopix/index-e.html"
+HOMEPAGE="http://rosegray.sakura.ne.jp/macopix/index-e.html https://github.com/chimari/MaCoPiX"
 
 BASE_URI="http://rosegray.sakura.ne.jp/macopix"
 SRC_URI="${BASE_URI}/${P}.tar.gz"
