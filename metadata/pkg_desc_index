@@ -961,7 +961,7 @@ app-benchmarks/pipebench 0.40-r2: Measures the speed of stdin/stdout communicati
 app-benchmarks/ramspeed 3.5.0-r2: Benchmarking for memory and cache
 app-benchmarks/siege 4.0.4 4.0.5 4.0.7: A HTTP regression testing and benchmarking utility
 app-benchmarks/stress 1.0.4-r2: A deliberately simple workload generator for POSIX systems
-app-benchmarks/stress-ng 0.12.02: Stress test for a computer system with various selectable ways
+app-benchmarks/stress-ng 0.12.03: Stress test for a computer system with various selectable ways
 app-benchmarks/sysbench 1.0.20-r100: A scriptable multi-threaded benchmark tool based on LuaJIT
 app-benchmarks/tiobench 0.4.2: Portable, robust, fully-threaded I/O benchmark program
 app-benchmarks/wrk 4.1.0-r100: A HTTP benchmarking tool
@@ -2038,7 +2038,7 @@ app-emulation/docker-proxy 0.8.0_p20200617 0.8.0_p20201105 0.8.0_p20201215: Dock
 app-emulation/docker-registry 2.7.1: Docker Registry 2.0
 app-emulation/docker-swarm 1.2.9: Swarm Classic: a container clustering system
 app-emulation/dosemu 1.4.1_pre20130107-r5: DOS Emulator
-app-emulation/dynamips 0.2.18 0.2.21: Cisco 7200/3600 Simulator
+app-emulation/dynamips 0.2.21: Cisco 7200/3600 Simulator
 app-emulation/edumips64 1.2: A visual and cross-platform MIPS64 CPU Simulator
 app-emulation/faudio 19.06 19.09 20.02 20.09 21.01 9999: FAudio - Accuracy-focused XAudio reimplementation for open platforms
 app-emulation/firecracker 0.21.1-r1: Secure and fast microVMs for serverless computing
@@ -2520,6 +2520,7 @@ app-misc/linuxspa 0.7.1-r2: Linux Serial Protocol Analyser
 app-misc/lirc 0.10.1-r3 0.10.1-r4: decode and send infra-red signals of many commonly used remote controls
 app-misc/livecd-tools 2.8 9999: Gentoo LiveCD tools for autoconfiguration of hardware
 app-misc/lockfile-progs 0.1.17: Programs to safely lock/unlock files and mailboxes
+app-misc/logiops 0.2.2: An unofficial userspace driver for HID++ Logitech devices
 app-misc/logitech-applet 0.4_pre1-r3: Control utility for some special features of some special Logitech USB mice!
 app-misc/logserial 0.4.2: A tool for logging raw data from a serial device
 app-misc/lsx 0.1-r1: list executables
@@ -3729,7 +3730,7 @@ dev-erlang/stun 1.0.33 1.0.38: STUN and TURN library for Erlang and Elixir
 dev-erlang/xmpp 1.4.7 1.4.9: XMPP parsing and serialization library on top of Fast XML
 dev-erlang/yconf 1.0.1 1.0.4 1.0.7: YAML configuration processor
 dev-games/KXL 1.1.7-r2: Development Library for making games for X
-dev-games/aseprite 1.1.6 1.1.7-r1 1.1.9: Animated sprite editor & pixel art tool
+dev-games/aseprite 1.1.6 1.1.9: Animated sprite editor & pixel art tool
 dev-games/cardpics 0.4-r1: set of free cards sets
 dev-games/cegui 0.8.7-r1 0.8.7-r100: Crazy Eddie's GUI System
 dev-games/clanlib 0.8.1 2.3.7 4.0.0: Multi-platform game development library
@@ -5605,7 +5606,7 @@ dev-libs/mmtf-cpp 1.0.0: The pure C++ implementation of the MMTF API, decoder an
 dev-libs/mongo-c-driver 0.98.2 1.1.2-r1 1.1.10 1.3.5 1.6.2 1.8.2 1.9.3 1.10.3 1.11.0 1.12.0 1.13.0-r1 1.13.1 1.14.0 1.15.1 1.16.2 1.17.0: Client library written in C for MongoDB
 dev-libs/mpc 1.2.1: A library for multiprecision complex arithmetic with exact rounding
 dev-libs/mpfr 4.1.0: library for multiple-precision floating-point computations with exact rounding
-dev-libs/msgpack 3.2.0 3.3.0: MessagePack is a binary-based efficient data interchange format
+dev-libs/msgpack 3.3.0: MessagePack is a binary-based efficient data interchange format
 dev-libs/mxml 3.2: A small XML parsing library that you can use to read XML data files or strings
 dev-libs/nanomsg 1.1.5: High-performance messaging interface for distributed applications
 dev-libs/ncnn 20200226 20200413 20200727: A high-performance neural network inference framework
@@ -8277,7 +8278,7 @@ dev-python/fqdn 1.5.0: RFC-compliant FQDN validation and manipulation for Python
 dev-python/freezegun 1.0.0-r1 1.1.0: Let your Python tests travel through time
 dev-python/frozen-flask 0.15: Freezes a Flask application into a set of static files
 dev-python/frozendict 1.2: A simple immutable mapping for python
-dev-python/fs 2.4.11 2.4.12: Filesystem abstraction layer
+dev-python/fs 2.4.12: Filesystem abstraction layer
 dev-python/fsspec 0.8.5: A specification that python filesystems should adhere to
 dev-python/fudge 1.1.1: Replace real objects with fakes (mocks, stubs, etc) while testing
 dev-python/funcparserlib 0.3.6-r1: Recursive descent parsing library based on functional combinators
@@ -12920,7 +12921,7 @@ media-gfx/opencsg 1.4.2-r1: The Constructive Solid Geometry rendering library
 media-gfx/openexr_viewers 2.3.0: OpenEXR Viewers
 media-gfx/openmesh 7.1: A generic data structure to represent and manipulate polygonal meshes
 media-gfx/openscad 2019.05-r3 2019.05-r4 9999: The Programmers Solid 3D CAD Modeller
-media-gfx/opentoonz 1.3.0-r1 1.4.0: An open-source full-featured 2D animation creation software
+media-gfx/opentoonz 1.4.0: An open-source full-featured 2D animation creation software
 media-gfx/openvdb 4.0.2-r4 5.2.0-r2 6.2.1-r1 7.0.0-r1 7.1.0-r1: Library for the efficient manipulation of volumetric data
 media-gfx/optipng 0.7.7 0.7.7-r1: Compress PNG files without affecting image quality
 media-gfx/panini 0.73.0: OpenGL-based panoramic image viewer
@@ -14049,7 +14050,7 @@ media-sound/wavpack 5.3.2-r1 5.4.0: Hybrid lossless audio compression tools
 media-sound/wavplay 2.0: A command line player/recorder for wav files
 media-sound/wavsplit 1.2.1-r2: Simple command line tool to split WAV files
 media-sound/whipper 0.9.0: A Python CD-DA ripper preferring accuracy over speed (forked from morituri)
-media-sound/wildmidi 0.3.13 0.4.3: MIDI processing library and player using the GUS patch set
+media-sound/wildmidi 0.4.3: MIDI processing library and player using the GUS patch set
 media-sound/wmsound-data 1.0.0: A bunch of sounds for WindowMaker Sound Server
 media-sound/xfmpc 0.3.0: Music Player Daemon (MPD) client for the Xfce desktop environment
 media-sound/xineadump 0.1-r1: Utility for Xine decoding support in transKode
@@ -14745,7 +14746,7 @@ net-irc/konversation 1.7.7-r1 20.12.2: User friendly IRC Client
 net-irc/kvirc 5.2_pre20200605155236 9999: Advanced IRC Client
 net-irc/limnoria 20191123 99999999: Python based extensible IRC infobot and channel bot
 net-irc/muh 2.2a-r1: Persistent IRC bouncer
-net-irc/ngircd 26 26.1: An IRC server written from scratch
+net-irc/ngircd 26.1: An IRC server written from scratch
 net-irc/ninja 1.5.9_pre14-r1: Ninja IRC Client
 net-irc/onis 0.8.2-r1: onis not irc stats
 net-irc/pisg 0.73-r1: Perl IRC Statistics Generator

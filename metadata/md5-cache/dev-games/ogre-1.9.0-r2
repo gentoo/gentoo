@@ -5,7 +5,7 @@ DESCRIPTION=Object-oriented Graphics Rendering Engine
 EAPI=7
 HOMEPAGE=https://www.ogre3d.org/
 IUSE=+boost cg doc double-precision examples +freeimage gl3plus gles2 gles3 ois +opengl poco profile tbb threads tools +zip
-KEYWORDS=~amd64 ~arm ~x86
+KEYWORDS=~amd64 ~arm x86
 LICENSE=MIT public-domain
 RDEPEND=media-libs/freetype:2 virtual/opengl virtual/glu x11-libs/libX11 x11-libs/libXaw x11-libs/libXrandr x11-libs/libXt boost? ( dev-libs/boost:= ) cg? ( media-gfx/nvidia-cg-toolkit ) freeimage? ( media-libs/freeimage ) gles2? ( >=media-libs/mesa-9.0.0[gles2] ) gles3? ( >=media-libs/mesa-10.0.0[gles2] ) gl3plus? ( >=media-libs/mesa-9.2.5 ) ois? ( dev-games/ois ) threads? ( poco? ( dev-libs/poco ) tbb? ( dev-cpp/tbb ) ) tools? ( dev-libs/tinyxml[stl] ) zip? ( sys-libs/zlib dev-libs/zziplib )
 REQUIRED_USE=threads? ( ^^ ( boost poco tbb ) ) examples? ( ois ) poco? ( threads ) tbb? ( threads ) gl3plus? ( !gles2 !gles3 ) gles3? ( gles2 ) gl3plus? ( opengl )
@@ -13,4 +13,4 @@ RESTRICT=test
 SLOT=0/1.9.0
 SRC_URI=https://bitbucket.org/sinbad/ogre/get/v1-9-0.tar.bz2 -> ogre-1.9.0.tar.bz2
 _eclasses_=cmake	ac7cb516f6a288b6a82bc0649ce49878	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=81a0ee7fb83c463138207ace734505ba
+_md5_=3c4b61bd51833f6332a6bf0f3738657a
