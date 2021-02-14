@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,7 +19,6 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
 IUSE="postfix ipv6 syslog"
 
 RDEPEND=">=dev-lang/perl-5.8.0
