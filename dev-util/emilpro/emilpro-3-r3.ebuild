@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,6 @@ HOMEPAGE="http://www.emilpro.com/"
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/SimonKagstrom/emilpro"
 	inherit git-r3
-	KEYWORDS=""
 	SRC_URI="!system-binutils? ( mirror://gnu/binutils/binutils-2.23.2.tar.bz2 )"
 else
 	SRC_URI="http://www.emilpro.com/${P}.tar.gz
