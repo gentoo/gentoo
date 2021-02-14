@@ -9,7 +9,6 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/crash-utility/crash.git"
 	SRC_URI="http://ftp.gnu.org/gnu/gdb/gdb-7.6.tar.gz"
 	EGIT_BRANCH="master"
-	KEYWORDS=""
 	inherit git-r3
 else
 	SRC_URI="https://github.com/crash-utility/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
