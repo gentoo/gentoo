@@ -21,7 +21,7 @@ EMULTILIB_PKG="true"
 
 LICENSE="GPL-2 NVIDIA-r2"
 SLOT="0/${PV%%.*}"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 IUSE="compat +driver +kms multilib static-libs +tools uvm wayland +X"
 REQUIRED_USE="
 	tools? ( X )
