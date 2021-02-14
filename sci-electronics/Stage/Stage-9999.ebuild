@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,7 +12,6 @@ fi
 inherit ${SCM} cmake-utils
 
 if [ "${PV#9999}" != "${PV}" ] ; then
-	KEYWORDS=""
 	SRC_URI=""
 else
 	KEYWORDS="~amd64"
