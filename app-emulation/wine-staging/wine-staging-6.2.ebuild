@@ -16,7 +16,6 @@ if [[ ${MY_PV} == "9999" ]] ; then
 	EGIT_BRANCH="master"
 	inherit git-r3
 	SRC_URI=""
-	#KEYWORDS=""
 else
 	MAJOR_V=$(ver_cut 1)
 	MINOR_V=$(ver_cut 2)
