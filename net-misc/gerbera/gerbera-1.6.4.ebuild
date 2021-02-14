@@ -7,7 +7,6 @@ inherit cmake eutils linux-info systemd tmpfiles
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/gerbera/${PN}.git"
-	KEYWORDS=""
 	SRC_URI=""
 	inherit git-r3
 else
