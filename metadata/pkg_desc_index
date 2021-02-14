@@ -813,7 +813,7 @@ app-arch/fastjar 0.98-r3: A jar program written in C
 app-arch/file-roller 3.36.3 3.38.0: Archive manager for GNOME
 app-arch/funzix 1.0: unpacker for the bogus ZIX format
 app-arch/gcab 1.4: Library and tool for working with Microsoft Cabinet (CAB) files
-app-arch/gnome-autoar 0.2.4: Automatic archives creating and extracting library
+app-arch/gnome-autoar 0.2.4 0.3.0: Automatic archives creating and extracting library
 app-arch/gtk-splitter 2.2.1-r2: Split files into smaller pieces and combine them back together
 app-arch/gzip 1.9 1.10: Standard GNU compressor
 app-arch/hardlink 0.3.2: A tool which replaces copies of a file with hardlinks
@@ -2916,7 +2916,7 @@ app-text/enchant 1.6.1-r1 2.2.8 2.2.15-r1: Spellchecker wrapping library
 app-text/enscript 1.6.6: Powerful text-to-postscript converter
 app-text/epspdf 0.6.3-r1: GUI and command-line converter for [e]ps and pdf
 app-text/epstool 3.09: Creates or extracts preview images in EPS files, fixes bounding boxes
-app-text/evince 3.36.7 3.36.9: Simple document viewer for GNOME
+app-text/evince 3.36.7 3.36.9 3.36.10: Simple document viewer for GNOME
 app-text/expander 2.0.5-r2: Expander is a utility that acts as a filter for text editors
 app-text/extract_url 1.6.2: extracts URLs from correctly-encoded MIME email messages or plain text
 app-text/fb2edit 0.1.0: Create and edit fb2 books
@@ -10854,7 +10854,7 @@ dev-util/makeheaders 0_p4: simple utility that will automatically generate heade
 dev-util/makepp 2.0.99.1 2.0.99.2: GNU make replacement
 dev-util/massif-visualizer 0.7.0-r1: Tool visualising massif data
 dev-util/mdds 1.7.0 9999: Collection of multi-dimensional data structure and indexing algorithm
-dev-util/meld 3.20.2-r1: A graphical diff and merge tool
+dev-util/meld 3.20.2-r1 3.20.3: A graphical diff and merge tool
 dev-util/memprof 0.6.2-r1: Profiling and leak detection tool
 dev-util/meson 0.55.3 0.56.2 9999: Open source build system
 dev-util/meson-format-array 0: Format shell expressions into a meson array
@@ -11882,7 +11882,7 @@ gnome-extra/gnome-contacts 3.36.2 3.38.1: GNOME contact management application
 gnome-extra/gnome-directory-thumbnailer 0.1.11: Thumbnail generator for directories
 gnome-extra/gnome-documents 3.34.0: A document manager application for GNOME
 gnome-extra/gnome-dvb-daemon 0.2.90-r1: Setup your DVB devices, record and watch TV shows and browse EPG using GStreamer
-gnome-extra/gnome-getting-started-docs 3.36.2: Help a new user get started in GNOME
+gnome-extra/gnome-getting-started-docs 3.36.3: Help a new user get started in GNOME
 gnome-extra/gnome-integration-spotify 20140907-r1: GNOME integration for Spotify
 gnome-extra/gnome-logs 3.36.0: Log viewer for the systemd journal
 gnome-extra/gnome-power-manager 3.32.0: GNOME power statistics
@@ -11921,7 +11921,7 @@ gnome-extra/seahorse-nautilus 3.11.92: Nautilus extension for encrypting and dec
 gnome-extra/sushi 3.34.0: A quick previewer for Nautilus, the GNOME file manager
 gnome-extra/synapse 0.2.99.4: A program launcher in the style of GNOME Do
 gnome-extra/yelp 3.36.0 3.36.2: Help browser for GNOME
-gnome-extra/yelp-xsl 3.34.2 3.36.0: XSL stylesheets for yelp
+gnome-extra/yelp-xsl 3.36.1: XSL stylesheets for yelp
 gnome-extra/zenity 3.32.0: Tool to display dialogs from the commandline and shell scripts
 gnustep-apps/aclock 0.4.0-r1: Analog dockapp clock for GNUstep
 gnustep-apps/addresses 0.4.8-r1: Apple Addressbook work alike (standalone and for GNUMail)
@@ -16087,7 +16087,7 @@ sci-geosciences/dcw-gmt 1.1.4: Digital Chart of the World for GMT 5 or later
 sci-geosciences/foxtrotgps 1.2.0: Easy to use, fast and lightweight mapping application (fork of tangogps)
 sci-geosciences/geocode-glib 3.26.2: GLib helper library for geocoding services
 sci-geosciences/gmt 4.5.18-r1 5.4.4: Powerful map generator
-sci-geosciences/gnome-maps 3.36.4 3.36.4.1: A map application for GNOME
+sci-geosciences/gnome-maps 3.36.4 3.36.4.1 3.36.6: A map application for GNOME
 sci-geosciences/gpsbabel 1.5.4-r1 9999: GPS waypoints, tracks and routes converter
 sci-geosciences/gpscorrelate 1.6.1-r1: Tool for adjusting EXIF tags of your photos with a recorded GPS trace
 sci-geosciences/gpsd 3.21 9999: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
