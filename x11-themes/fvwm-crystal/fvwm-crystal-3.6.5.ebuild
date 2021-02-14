@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,6 @@ case ${PV} in
 	inherit subversion
 	ESVN_REPO_URI="svn://svn.code.sf.net/p/fvwm-crystal/code"
 	SRC_URI=""
-	KEYWORDS="amd64 x86"
 	S="${WORKDIR}/${PN}"
 	src_unpack() {
 		subversion_src_unpack
