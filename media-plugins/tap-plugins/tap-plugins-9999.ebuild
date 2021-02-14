@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,6 @@ inherit eutils toolchain-funcs
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
-	KEYWORDS=""
 	EGIT_REPO_URI="git://github.com/tomszilagyi/${PN}.git"
 	EGIT_PROJECT="${PN}.git"
 else
