@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit check-reqs cuda toolchain-funcs unpacker
 
-DRIVER_PV="455.32.00"
+DRIVER_PV="460.27.04"
 
 DESCRIPTION="NVIDIA CUDA Toolkit (compiler and friends)"
 HOMEPAGE="https://developer.nvidia.com/cuda-zone"
@@ -22,20 +22,21 @@ RDEPEND="
 	<sys-devel/gcc-11_pre[cxx]
 	>=x11-drivers/nvidia-drivers-${DRIVER_PV}[X,uvm]
 	debugger? (
-		dev-libs/openssl-compat:1.0.0
+		dev-libs/openssl
 		sys-libs/libtermcap-compat
 		sys-libs/ncurses-compat:5[tinfo]
 	)
 	vis-profiler? (
-		dev-libs/openssl-compat:1.0.0
+		dev-libs/openssl
 		>=virtual/jre-1.6
 	)"
 
 S="${WORKDIR}"
 
 QA_PREBUILT="opt/cuda/*"
-
 CHECKREQS_DISK_BUILD="6800M"
+
+PATCHES=( "${FILESDIR}"/${P}-nsight-systems-launcher.patch )
 
 pkg_setup() {
 	# We don't like to run cuda_pkg_setup as it depends on us
@@ -58,6 +59,7 @@ src_prepare() {
 src_install() {
 	local cudadir=/opt/cuda
 	local ecudadir="${EPREFIX}${cudadir}"
+	local pathextradirs ldpathextradirs
 	dodir ${cudadir}
 	into ${cudadir}
 
@@ -70,13 +72,12 @@ src_install() {
 		$(usex debugger "builds/cuda_gdb" "")
 	)
 
-	local d
+	local d f
 	for d in "${builddirs[@]}"; do
 		ebegin "Installing ${d}"
 		[[ -d ${d} ]] || die "Directory does not exist: ${d}"
 
 		if [[ -d ${d}/bin ]]; then
-			local f
 			for f in ${d}/bin/*; do
 				if [[ -f ${f} ]]; then
 					dobin "${f}"
@@ -105,8 +106,7 @@ src_install() {
 	# nvml and nvvm need special handling
 	ebegin "Installing nvvm"
 	doins -r builds/cuda_nvcc/nvvm
-	exeinto ${cudadir}/nvvm/bin
-	doexe builds/cuda_nvcc/nvvm/bin/cicc
+	fperms +x ${cudadir}/nvvm/bin/cicc
 	eend
 
 	ebegin "Installing nvml"
@@ -116,20 +116,21 @@ src_install() {
 	if use sanitizer; then
 		ebegin "Installing sanitizer"
 		dobin builds/integration/Sanitizer/compute-sanitizer
-		doins -r builds/cuda_sanitizer_api/Sanitizer
+		doins -r builds/cuda_sanitizer_api/compute-sanitizer
 		# special handling for the executable
-		exeinto ${cudadir}/Sanitizer
-		doexe builds/cuda_sanitizer_api/Sanitizer/compute-sanitizer
+		fperms +x ${cudadir}/compute-sanitizer/compute-sanitizer
 		eend
 	fi
+
+	use profiler && ldpathextradirs+=":${ecudadir}/extras/CUPTI/lib64"
 
 	if use vis-profiler; then
 		ebegin "Installing libnvvp"
 		doins -r builds/cuda_nvvp/libnvvp
 		# special handling for the executable
-		exeinto ${cudadir}/libnvvp
-		doexe builds/cuda_nvvp/libnvvp/nvvp
+		fperms +x ${cudadir}/libnvvp/nvvp
 		eend
+		pathextradirs+=":${ecudadir}/libnvvp"
 	fi
 
 	if use nsight; then
@@ -138,11 +139,17 @@ src_install() {
 		mv builds/nsight_compute builds/${ncu_dir} || die
 		doins -r builds/${ncu_dir}
 
-		exeinto ${cudadir}/${ncu_dir}
-		doexe builds/${ncu_dir}/{ncu,ncu-ui,nv-nsight-cu,nv-nsight-cu-cli}
+		# check this list on every bump
+		local exes=(
+			${ncu_dir}/host/linux-desktop-glibc_2_11_3-x64/libexec/QtWebEngineProcess
+			${ncu_dir}/host/linux-desktop-glibc_2_11_3-x64/CrashReporter
+			${ncu_dir}/host/linux-desktop-glibc_2_11_3-x64/ncu-ui
+			${ncu_dir}/host/linux-desktop-glibc_2_11_3-x64/ncu-ui.bin
+			${ncu_dir}/target/linux-desktop-glibc_2_11_3-x64/TreeLauncherTargetLdPreloadHelper
+			${ncu_dir}/target/linux-desktop-glibc_2_11_3-x64/TreeLauncherSubreaper
+			${ncu_dir}/target/linux-desktop-glibc_2_11_3-x64/ncu
+		)
 
-		exeinto ${cudadir}/${ncu_dir}/host/linux-desktop-glibc_2_11_3-x64
-		doexe builds/${ncu_dir}/host/linux-desktop-glibc_2_11_3-x64/{ncu-ui,ncu-ui.bin,CrashReporter}
 		dobin builds/integration/nsight-compute/{ncu,ncu-ui,nv-nsight-cu,nv-nsight-cu-cli}
 		eend
 
@@ -150,13 +157,37 @@ src_install() {
 		ebegin "Installing ${nsys_dir}"
 		mv builds/nsight_systems builds/${nsys_dir} || die
 		doins -r builds/${nsys_dir}
-		exeinto ${cudadir}/${nsys_dir}/target-linux-x64
-		doexe builds/${nsys_dir}/target-linux-x64/nsys
 
-		exeinto ${cudadir}/${nsys_dir}/host-linux-x64
-		doexe builds/${nsys_dir}/host-linux-x64/{nsight-sys,nsight-sys.bin,nsys-ui,CrashReporter,ImportNvtxt,QdstrmImporter,ResolveSymbols}
+		# check this list on every bump
+		exes+=(
+			${nsys_dir}/host-linux-x64/nsys-ui
+			${nsys_dir}/host-linux-x64/nsys-ui.bin
+			${nsys_dir}/host-linux-x64/ResolveSymbols
+			${nsys_dir}/host-linux-x64/ImportNvtxt
+			${nsys_dir}/host-linux-x64/CrashReporter
+			${nsys_dir}/host-linux-x64/QdstrmImporter
+			${nsys_dir}/host-linux-x64/libexec/QtWebEngineProcess
+			${nsys_dir}/target-linux-x64/nsys
+			${nsys_dir}/target-linux-x64/launcher
+			${nsys_dir}/target-linux-x64/nvgpucs
+			${nsys_dir}/target-linux-x64/nsys-launcher
+			${nsys_dir}/target-linux-x64/sqlite3
+			${nsys_dir}/target-linux-x64/python/bin/python
+		)
+
 		dobin builds/integration/nsight-systems/{nsight-sys,nsys,nsys-exporter,nsys-ui}
 		eend
+
+		# nsight scripts and binaries need to have their executable bit set, #691284
+		for f in "${exes[@]}"; do
+			fperms +x ${cudadir}/${f}
+		done
+
+		# remove foreign archs (triggers SONAME warning, #749903)
+		rm -r "${ED}"/${cudadir}/${ncu_dir}/target/linux-desktop-glibc_2_19_0-ppc64le || die
+		rm -r "${ED}"/${cudadir}/${ncu_dir}/target/linux-desktop-t210-a64 || die
+		rm -r "${ED}"/${cudadir}/${nsys_dir}/target-linux-armv8 || die
+
 		# TODO: unbundle qt5
 		# TODO: unbundle boost
 		# TODO: unbundle icu
@@ -170,13 +201,13 @@ src_install() {
 	fi
 
 	# Add include and lib symlinks
-	dosym "targets/x86_64-linux/include" ${cudadir}/include
-	dosym "targets/x86_64-linux/lib" ${cudadir}/lib64
+	dosym targets/x86_64-linux/include ${cudadir}/include
+	dosym targets/x86_64-linux/lib ${cudadir}/lib64
 
 	newenvd - 99cuda <<-EOF
-		PATH=${ecudadir}/bin$(usex vis-profiler ":${ecudadir}/libnvvp" "")
+		PATH=${ecudadir}/bin${pathextradirs}
 		ROOTPATH=${ecudadir}/bin
-		LDPATH=${ecudadir}/lib64:${ecudadir}/nvvm/lib64$(usex profiler ":${ecudadir}/extras/CUPTI/lib64" "")
+		LDPATH=${ecudadir}/lib64:${ecudadir}/nvvm/lib64${ldpathextradirs}
 	EOF
 
 	# Cuda prepackages libraries, don't revdep-build on them
@@ -184,7 +215,6 @@ src_install() {
 	newins - 80${PN} <<-EOF
 		SEARCH_DIRS_MASK="${ecudadir}"
 	EOF
-	# TODO: Find a better way to add +x permission to installed executables
 	# TODO: Add pkgconfig files for installed libraries
 }
 
