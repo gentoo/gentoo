@@ -27,10 +27,7 @@ RDEPEND="${DEPEND}"
 
 DOCS=( "README" "README.Android" "TODO" "syscalls.txt" )
 
-PATCHES=(
-	"${FILESDIR}/${PN}-0.11.23-makefile.patch"
-	"${FILESDIR}/${PN}-0.12.02-fix-build-breaking-HAVE_USTAT-typo.patch"
-)
+PATCHES=( "${FILESDIR}/${PN}-0.11.23-makefile.patch" )
 
 src_compile() {
 	tc-export CC
