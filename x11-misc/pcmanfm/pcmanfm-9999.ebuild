@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,6 @@ inherit autotools eutils xdg-utils l10n readme.gentoo-r1
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="git://git.lxde.org/git/lxde/${PN}"
 	inherit git-r3
-	KEYWORDS=""
 else
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~mips ~ppc ~x86"
