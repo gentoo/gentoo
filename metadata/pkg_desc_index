@@ -8550,7 +8550,7 @@ dev-python/ndg-httpsclient 0.5.1: Provides enhanced HTTPS support for httplib an
 dev-python/neovim-remote 2.4.0 9999: A tool that helps control neovim processes
 dev-python/nest_asyncio 1.4.3 1.5.1: Patch asyncio to allow nested event loops
 dev-python/netaddr 0.8.0: Network address representation and manipulation library
-dev-python/netcdf4-python 1.2.2-r1 1.5.5 1.5.6: Python/numpy interface to the netCDF C library
+dev-python/netcdf4-python 1.5.5 1.5.6: Python/numpy interface to the netCDF C library
 dev-python/netifaces 0.10.9: Portable network interface information
 dev-python/networkx 2.5: Python tools to manipulate graphs and complex networks
 dev-python/neutron-lib 2.6.1: Neutron shared routines and utilities.
@@ -12492,7 +12492,7 @@ mail-filter/normalizemime 1.19: Helper program to normalize MIME encoded message
 mail-filter/opendkim 2.10.3-r17 2.10.3-r19 2.10.3-r26: A milter providing DKIM signing and verification
 mail-filter/opendmarc 1.3.3: Open source DMARC implementation
 mail-filter/opensmtpd-filter-rspamd 0.1.6: OpenSMTPD filter for putting emails through rspamd
-mail-filter/policyd 1.82-r3: Policy daemon for postfix and other MTAs
+mail-filter/policyd 1.82-r4: Policy daemon for postfix and other MTAs
 mail-filter/policyd-weight 0.1.15.2-r2: Weighted Policy daemon for Postfix
 mail-filter/popfile 1.1.3-r1: Anti-spam bayesian filter
 mail-filter/postforward 1.1.0 1.1.1: Postfix Sender Rewriting Scheme forwarding agent
@@ -15092,7 +15092,7 @@ net-misc/casync 2_p20190407: Content-Addressable Data Synchronization Tool
 net-misc/cbqinit 0.7.3-r3: Sets up class-based queue traffic control (QoS) with iproute2
 net-misc/cbugzilla 0.2.1: CLI and C api to get data from Bugzilla
 net-misc/cfengine 3.6.2: An automated suite of programs for configuring and maintaining Unix-like computers
-net-misc/cgminer 4.9.2 4.10.0: Bitcoin CPU/GPU/FPGA/ASIC miner in C
+net-misc/cgminer 4.10.0: Bitcoin CPU/GPU/FPGA/ASIC miner in C
 net-misc/chrome-remote-desktop 88.0.4324.33: access remote computers via Chrome!
 net-misc/chrony 4.0 4.0-r1 9999: NTP client and server programs
 net-misc/clockspeed 0.62-r7: Simple Network Time Protocol (NTP) client
@@ -15801,7 +15801,7 @@ sci-astronomy/sofa_c 20170420: Library for algorithms for models in fundamental 
 sci-astronomy/stellarium 0.20.2 0.20.3 0.20.4: 3D photo-realistic skies in real time
 sci-astronomy/stiff 2.4.0: Converts astronomical FITS images to the TIFF format
 sci-astronomy/stuff 1.26.0: Tool for automatic generation of astronomical catalogs
-sci-astronomy/swarp 2.38.0: Resample and coadd astronomical FITS images
+sci-astronomy/swarp 2.41.5: Resample and coadd astronomical FITS images
 sci-astronomy/wcslib 7.3 7.3.1: Astronomical World Coordinate System transformations library
 sci-astronomy/wcstools 3.9.5: World Coordinate System library for astronomical FITS images
 sci-astronomy/weightwatcher 1.12: Combine weight maps and polygon for astronomical images weighting
@@ -16267,7 +16267,7 @@ sci-libs/libccd 2.1 9999: Library for collision detection between two convex sha
 sci-libs/libcerf 1.5: Efficient and accurate implementation of complex error functions
 sci-libs/libcmatrix 3.11.0-r1: lite version of pNMRsim
 sci-libs/libdap 3.18.1: Implementation of a C++ SDK for DAP 2.0 and 3.2
-sci-libs/libecpint 1.0.4: Efficient evaluation of integrals over ab initio effective core potentials
+sci-libs/libecpint 1.0.4 1.0.5: Efficient evaluation of integrals over ab initio effective core potentials
 sci-libs/libexcelformat 101016: reading, writing, and editing of XLS (BIFF8 format) files using C++
 sci-libs/libgenome 1.3-r1: Library for sci-biology/mauve
 sci-libs/libgeodecomp 0.5.0_pre20201009: An auto-parallelizing library to speed up computer simulations
@@ -16329,7 +16329,7 @@ sci-libs/octomap 1.9.5 9999: An Efficient Probabilistic 3D Mapping Framework Bas
 sci-libs/ogdi 4.1.0: Open Geographical Datastore Interface, a GIS support library
 sci-libs/openblas 0.3.12-r1 0.3.13: Optimized BLAS library based on GotoBLAS2
 sci-libs/opencascade 7.4.0-r3: Development platform for CAD/CAE, 3D surface/solid modeling and data exchange
-sci-libs/openlibm 0.7.3 0.7.4: High quality system independent, open source libm
+sci-libs/openlibm 0.7.4: High quality system independent, open source libm
 sci-libs/orocos-bfl 0.8.0: Bayesian Filtering Library
 sci-libs/orocos_kdl 1.4.0 9999: Kinematics and Dynamics Library (KDL)
 sci-libs/p4est 2.2 2.2-r100 9999: Scalable Algorithms for Parallel Adaptive Mesh Refinement on Forests of Octrees

@@ -7044,6 +7044,7 @@ sci-astronomy/stellarium:deep-sky - Install extra deep sky objects catalog (may 
 sci-astronomy/stellarium:media - Enable sound and video support
 sci-astronomy/stellarium:stars - Install extra star catalogs
 sci-astronomy/stellarium:telescope - Enable telescope control via sci-libs/indilib
+sci-astronomy/swarp:cfitsio - Link with sci-libs/cfitsio
 sci-astronomy/wcslib:fits - Enable support for the FITS format through sci-libs/cfitsio
 sci-astronomy/wcslib:pgplot - Builds PGBSOX routines, needs sci-libs/pgplot library
 sci-astronomy/wcslib:tools - Builds and installs extra command line utilities for WCS checking
