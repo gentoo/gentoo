@@ -4,7 +4,7 @@
 EAPI="7"
 
 # Patch version
-FIREFOX_PATCHSET="firefox-78esr-patches-08.tar.xz"
+FIREFOX_PATCHSET="firefox-78esr-patches-09.tar.xz"
 SPIDERMONKEY_PATCHSET="spidermonkey-78-patches-03.tar.xz"
 
 LLVM_MAX_SLOT=11
