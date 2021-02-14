@@ -11,4 +11,4 @@ RDEPEND=alsa? ( media-libs/alsa-lib ) glide? ( media-libs/openglide ) opengl? ( 
 SLOT=0
 SRC_URI=glide? ( https://raw.githubusercontent.com/voyageur/openglide/841e1071597b64ead14dd08c25a03206b2d1d1b6/platform/dosbox/dosbox_glide.diff -> dosbox_glide-841e1071597b64ead14dd08c25a03206b2d1d1b6.diff )
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	desktop	7fd20552ce4cc97e8acb132a499a7dd8	edos2unix	33e347e171066657f91f8b0c72ec8773	estack	055c42df72f76a4f45ec92b35e83cd56	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	subversion	ed3498da4fb92dcfb0d6089c85d1465f	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=a2c67e3e5e16ecfddb46d29c0c20d18e
+_md5_=f81d4d5af9aa1e017c3662cb40b8513b
