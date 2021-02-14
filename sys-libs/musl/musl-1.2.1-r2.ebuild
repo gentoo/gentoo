@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit eutils flag-o-matic multilib toolchain-funcs
 if [[ ${PV} == "9999" ]] ; then
@@ -37,6 +37,10 @@ IUSE="headers-only"
 QA_SONAME="/usr/lib/libc.so"
 QA_DT_NEEDED="/usr/lib/libc.so"
 
+PATCHES=(
+	"${FILESDIR}/${P}-CVE-2020-28928.patch"
+)
+
 is_crosscompile() {
 	[[ ${CHOST} != ${CTARGET} ]]
 }
@@ -65,7 +69,7 @@ src_configure() {
 	just_headers && export CC=true
 
 	local sysroot
-	is_crosscompile && sysroot=/usr/${CTARGET}
+	is_crosscompile && sysroot="${EPREFIX}"/usr/${CTARGET}
 	./configure \
 		--target=${CTARGET} \
 		--prefix=${sysroot}/usr \
@@ -79,10 +83,16 @@ src_compile() {
 
 	emake
 	if [[ ${CATEGORY} != cross-* ]] ; then
-		$(tc-getCC) ${CFLAGS} "${DISTDIR}"/getconf.c -o "${T}"/getconf || die
-		$(tc-getCC) ${CFLAGS} "${DISTDIR}"/getent.c -o "${T}"/getent || die
-		$(tc-getCC) ${CFLAGS} "${DISTDIR}"/iconv.c -o "${T}"/iconv || die
+		emake -C "${T}" getconf getent iconv \
+			CC="$(tc-getCC)" \
+			CFLAGS="${CFLAGS}" \
+			CPPFLAGS="${CPPFLAGS}" \
+			LDFLAGS="${LDFLAGS}" \
+			VPATH="${DISTDIR}"
 	fi
+
+	$(tc-getCC) ${CFLAGS} -c -o libssp_nonshared.o  "${FILESDIR}"/stack_chk_fail_local.c || die
+	$(tc-getAR) -rcs libssp_nonshared.a libssp_nonshared.o || die
 }
 
 src_install() {
