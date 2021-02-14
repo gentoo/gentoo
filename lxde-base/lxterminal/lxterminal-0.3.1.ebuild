@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,6 @@ HOMEPAGE="https://wiki.lxde.org/en/LXTerminal"
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://git.code.sf.net/p/lxde/${PN}"
 	inherit git-r3
-	KEYWORDS="amd64 arm ppc x86"
 else
 	SRC_URI="mirror://sourceforge/lxde/${P}.tar.xz"
 	KEYWORDS="~alpha amd64 arm ~arm64 ~mips ppc x86 ~amd64-linux ~x86-linux"
