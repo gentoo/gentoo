@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,6 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="git://git.code.sf.net/p/freewrl/git"
 	S="${WORKDIR}/${P}/freex3d"
 	SRC_URI=
-	KEYWORDS=
 else
 	SRC_URI="mirror://sourceforge/freewrl/${P}.tar.bz2"
 	KEYWORDS="~amd64 ~x86"
