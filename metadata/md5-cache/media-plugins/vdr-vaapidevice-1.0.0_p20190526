@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=compile config install postinst postrm prepare setup unpack
+DEPEND=media-video/vdr media-video/ffmpeg[vaapi,X] x11-libs/libva[X] x11-libs/libva-intel-driver[X] x11-libs/libX11 x11-libs/libxcb x11-libs/xcb-util x11-libs/xcb-util-wm x11-libs/xcb-util-keysyms media-libs/alsa-lib >=media-tv/gentoo-vdr-scripts-0.4.2 virtual/linuxtv-dvb-headers
+DESCRIPTION=VDR Plugin: A VA-API output device plugin for VDR
+EAPI=7
+HOMEPAGE=https://github.com/pesintta/vdr-plugin-vaapidevice
+IUSE=debug
+KEYWORDS=~amd64 ~x86
+LICENSE=AGPL-3
+RDEPEND=media-video/vdr media-video/ffmpeg[vaapi,X] x11-libs/libva[X] x11-libs/libva-intel-driver[X] x11-libs/libX11 x11-libs/libxcb x11-libs/xcb-util x11-libs/xcb-util-wm x11-libs/xcb-util-keysyms media-libs/alsa-lib >=media-tv/gentoo-vdr-scripts-0.4.2 >=app-eselect/eselect-vdr-0.0.2
+SLOT=0
+SRC_URI=https://github.com/pesintta/vdr-plugin-vaapidevice/archive/d19657bae399e79df107e316ca40922d21393f80.tar.gz -> vdr-vaapidevice-1.0.0_p20190526.tar.gz
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	unpacker	45b49db67094fdafbb6a16a2299e894b	vdr-plugin-2	ade3484daa974237ce8f3ac2d064988f	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=ae2ba3e47335c26e0aec874af91da9fe

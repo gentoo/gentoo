@@ -13666,6 +13666,7 @@ media-plugins/vdr-svdrpservice 1.0.0: VDR Plugin: offers SVDRP connections as a 
 media-plugins/vdr-systeminfo 0.1.4: VDR Plugin: systeminfo
 media-plugins/vdr-ttxtsubs 0.3.0 0.3.0-r2: VDR Plugin: displaying, recording and replaying teletext based subtitles
 media-plugins/vdr-undelete 0.0.7 0.0.7-r1 2.3.0_pre1: VDR Plugin: Recover deleted recordings of VDR
+media-plugins/vdr-vaapidevice 1.0.0_p20190526: VDR Plugin: A VA-API output device plugin for VDR
 media-plugins/vdr-vcd 0.9-r3 0.9-r4: VDR plugin: play video cds
 media-plugins/vdr-vdrmanager 0.14: VDR Plugin: remote programming VDR using VDR-Manager running on Android devices
 media-plugins/vdr-vompserver 0.4.1 0.4.1-r1 0.5.1: VDR Plugin: server part for MediaMVP device
