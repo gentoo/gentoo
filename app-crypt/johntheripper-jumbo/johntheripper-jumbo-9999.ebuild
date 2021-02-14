@@ -13,7 +13,6 @@ MY_PN="JohnTheRipper"
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/magnumripper/${MY_PN}.git"
 	inherit git-r3
-	KEYWORDS=""
 else
 	JUMBO="jumbo-1"
 	MY_PV="${PV}-${JUMBO}"
