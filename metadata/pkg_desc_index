@@ -636,7 +636,7 @@ app-admin/dio 1.5.2-r1: A device I/O monitoring tool
 app-admin/diradm 2.9.7.1: A nearly complete nss/shadow suite for managing POSIX users/groups/data in LDAP
 app-admin/doas 6.0 6.6.1 6.8 6.8.1: Run commands as super/another user (alt sudo) (unofficial port from OpenBSD)
 app-admin/docker-bench 0.2.2: Docker Bench for Security runs the CIS Docker Benchmark
-app-admin/doctl 1.55.0 9999: A command line tool for DigitalOcean services
+app-admin/doctl 1.55.0 1.56.0 9999: A command line tool for DigitalOcean services
 app-admin/drush 6.7.0-r1: Command line shell and scripting interface for Drupal
 app-admin/ec2-ami-tools 1.5.7: Command-line tools that serve as client interface to the Amazon EC2 web service
 app-admin/eclean-kernel 0.4.3 1.99.4 2.99.1 2.99.2 9999: Remove outdated built kernels
@@ -3122,7 +3122,7 @@ app-text/xmlstarlet 1.6.1: A set of tools to transform, query, validate, and edi
 app-text/xmlto 0.0.28-r3: script for converting XML and DocBook documents to a variety of output formats
 app-text/xournal 0.4.8.2016 9999: An application for notetaking, sketching, and keeping a journal using a stylus
 app-text/xournalpp 1.0.18-r1 1.0.20 9999: Handwriting notetaking software with PDF annotation support
-app-text/xpdf 4.02-r4 4.03: The PDF viewer and tools
+app-text/xpdf 4.03: The PDF viewer and tools
 app-text/yelp-tools 3.32.2: Collection of tools for building and converting documentation
 app-text/yodl 4.02.01 4.02.02-r1 4.03.00: Your Own Document Language: a pre-document language and tools to process it
 app-text/zathura 0.4.3 0.4.4 0.4.5 0.4.7 9999: A highly customizable and functional document viewer
@@ -15515,7 +15515,7 @@ net-proxy/obfs4proxy 0.0.11-r1: An obfuscating proxy supporting Tor's pluggable 
 net-proxy/pingtunnel 0.72: Tunnel TCP over ICMP
 net-proxy/piper 1.14: A tool for manipulating SOCKS5 servers
 net-proxy/polipo 1.1.1-r4 9999: A caching web proxy
-net-proxy/privoxy 3.0.28-r1 3.0.29 3.0.31: A web proxy with advanced filtering capabilities for enhancing privacy
+net-proxy/privoxy 3.0.31: A web proxy with advanced filtering capabilities for enhancing privacy
 net-proxy/redsocks 0.5 0.5-r1 9999: Transparent redirector of any TCP connection to proxy
 net-proxy/rejik 3.2.10 3.2.11: A squid redirector used for blocking unwanted content
 net-proxy/shadowsocks-libev 3.3.5: A lightweight secured SOCKS5 proxy for embedded devices and low end boxes
