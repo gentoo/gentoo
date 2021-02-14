@@ -9235,7 +9235,7 @@ dev-python/testrepository 0.0.20: A repository of test results
 dev-python/testresources 2.0.1: A pyunit extension for managing expensive test resources
 dev-python/testscenarios 0.5.0-r1: A pyunit extension for dependency injection
 dev-python/testtools 2.4.0-r1: Extensions to the Python standard library unit testing framework
-dev-python/text-unidecode 1.3: Tthe most basic port of the Text::Unidecode Perl library
+dev-python/text-unidecode 1.3: The most basic port of the Text::Unidecode Perl library
 dev-python/textdistance 4.2.0: Compute distance between the two texts
 dev-python/texttable 1.6.3: Module for creating simple ASCII tables
 dev-python/textx 1.4: Meta-language for DSL implementation inspired by Xtext
