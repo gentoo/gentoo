@@ -11887,7 +11887,7 @@ gnome-extra/gnome-logs 3.36.0: Log viewer for the systemd journal
 gnome-extra/gnome-power-manager 3.32.0: GNOME power statistics
 gnome-extra/gnome-search-tool 3.6.0: Search tool for GNOME 3
 gnome-extra/gnome-shell-extension-appindicator 33 34: Support Ubuntu AppIndicators and KStatusNotifierItems in Gnome
-gnome-extra/gnome-shell-extension-applications-overview-tooltip 9 10: Show tooltip with full name and description
+gnome-extra/gnome-shell-extension-applications-overview-tooltip 9 10-r1: Show tooltip with full name and description
 gnome-extra/gnome-shell-extension-bing-wallpaper 27 28: Changes your wallpaper daily to the bing.com background image
 gnome-extra/gnome-shell-extension-bluetooth-quick-connect 13 16-r1: Allow to connect bluetooth paired devices from gnome control panel
 gnome-extra/gnome-shell-extension-control-blur-effect-on-lock-screen 20200713 20200901 20201211: Control the blur effect on gnome-shell lock screen
@@ -11914,7 +11914,7 @@ gnome-extra/nautilus-sendto 3.8.6: A nautilus extension for sending files to loc
 gnome-extra/nemo 4.6.5 4.8.4: A file manager for Cinnamon, forked from Nautilus
 gnome-extra/nm-applet 1.18.0 1.20.0: NetworkManager connection editor and applet
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
-gnome-extra/pch-session 3.36.3 3.38.1: Unofficial gnome based session with different default settings and extensions
+gnome-extra/pch-session 3.36.3 3.38.1 3.38.2: Unofficial gnome based session with different default settings and extensions
 gnome-extra/polkit-gnome 0.105-r2: A dbus session bus service that is used to bring up authentication dialogs
 gnome-extra/seahorse-nautilus 3.11.92: Nautilus extension for encrypting and decrypting files with GnuPG
 gnome-extra/sushi 3.34.0: A quick previewer for Nautilus, the GNOME file manager
@@ -13945,7 +13945,7 @@ media-sound/protux 0.50.100: Professional Audio Tools for GNU/Linux
 media-sound/ptabtools 0.5.0: Utilities for PowerTab Guitar files (.ptb)
 media-sound/pulseaudio 13.0 13.0-r1: A networked sound server with an advanced plugin system
 media-sound/pulseaudio-ctl 1.67 1.68: CLI utility to control PulseAudio volume
-media-sound/pulseaudio-modules-bt 1.3-r2 1.4 9999: PulseAudio modules for LDAC, aptX, aptX HD, and AAC for Bluetooth
+media-sound/pulseaudio-modules-bt 1.4 9999: PulseAudio modules for LDAC, aptX, aptX HD, and AAC for Bluetooth
 media-sound/pulseeffects 4.7.2-r1 4.8.4 5.0.0 9999: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
 media-sound/pulsemixer 1.5.1 9999: CLI and curses mixer for PulseAudio
 media-sound/pwavecat 0.4.5: concatenates any number of audio files to stdout
@@ -15977,7 +15977,7 @@ sci-chemistry/easychem 0.6-r1: Chemical structure drawing program - focused on p
 sci-chemistry/elem 1.0.3-r2: periodic table of the elements
 sci-chemistry/gelemental 2.0.0-r1: Periodic table viewer with detailed information on the chemical elements
 sci-chemistry/gmxapi 0.0.7.1-r1: Gromacs API bindings
-sci-chemistry/gnome-chemistry-utils 0.14.17: Programs and library containing GTK widgets and C++ classes related to chemistry
+sci-chemistry/gnome-chemistry-utils 0.14.17 0.14.17_p5: Programs and library containing GTK widgets and C++ classes related to chemistry
 sci-chemistry/gperiodic 3.0.3: Periodic table application for Linux
 sci-chemistry/gromacs 2018.8 2019.6 2020.4 2020.5 2020.9999 2021 2021.9999 9999: The ultimate molecular dynamics simulation package
 sci-chemistry/ksdssp 040728-r1: An open source implementation of sci-chemistry/dssp
@@ -16835,7 +16835,7 @@ sys-apps/cinit 0.2.1: a fast, small and simple init with support for profiles
 sys-apps/ckbcomp 1.164: Compile an XKB keymap for loadkeys
 sys-apps/clrngd 1.0.3: Clock randomness gathering daemon
 sys-apps/collectl 4.3.1: Performance monitoring tool capable of interactive reporting and logging to disk
-sys-apps/colorized-logs 2.4 2.5: Tools for logs with ANSI color
+sys-apps/colorized-logs 2.5: Tools for logs with ANSI color
 sys-apps/consolation 0.0.7: libinput based console mouse daemon
 sys-apps/conspy 1.16: Remote control for Linux virtual consoles
 sys-apps/coreutils 8.31-r1 8.32-r1: Standard GNU utilities (chmod, cp, dd, ls, sort, tr, head, wc, who,...)
@@ -17678,7 +17678,7 @@ sys-power/acpilight 1.2 1.2-r1: Replacement for xbacklight that uses the ACPI in
 sys-power/acpitool 0.5.1-r1: A small command line application, intended to be a replacement for the apm tool
 sys-power/apcupsd 3.14.13 3.14.14-r2: APC UPS daemon with integrated tcp/ip remote shutdown
 sys-power/athcool 0.3.12: small utility to toggle Powersaving mode for AMD Athlon/Duron processors
-sys-power/bbswitch 0.8-r4 0.8-r5 9999: Toggle discrete NVIDIA Optimus graphics card
+sys-power/bbswitch 0.8-r5 9999: Toggle discrete NVIDIA Optimus graphics card
 sys-power/cpupower 5.4: Shows and sets processor power related values
 sys-power/dptfxtract 1.4.3: Intel's Linux DPTF Extract Utility for generating thermald's thermal_conf.xml
 sys-power/hibernate-script 2.0-r6: Hibernate script supporting multiple suspend methods
@@ -18848,10 +18848,10 @@ x11-terms/tilda 1.5.2: A drop down terminal, similar to the consoles found in fi
 x11-terms/xfce4-terminal 0.8.9.2 0.8.10: A terminal emulator for the Xfce desktop environment
 x11-terms/xterm 351 363 365 366: Terminal Emulator for X Windows
 x11-terms/yeahconsole 0.3.4-r1: yeahconsole turns an xterm or rxvt-unicode into a game-like console
-x11-themes/QGnomePlatform 0.6.1-r1: A Qt Platform Theme aimed to accommodate GNOME settings
+x11-themes/QGnomePlatform 0.6.1-r1 0.7.0: A Qt Platform Theme aimed to accommodate GNOME settings
 x11-themes/adapta-gtk-theme 3.95.0.11: An adaptive Gtk+ theme based on Material Design Guidelines
 x11-themes/adwaita-icon-theme 3.32.0 3.36.1-r1 3.38.0: GNOME default icon theme
-x11-themes/adwaita-qt 1.1.1 1.1.4: A style to bend Qt applications to look like they belong into GNOME Shell
+x11-themes/adwaita-qt 1.1.4 1.2.0: A style to bend Qt applications to look like they belong into GNOME Shell
 x11-themes/arc-icon-theme 20161122: Vertex icon theme
 x11-themes/arc-theme 20201013 20210127: A flat theme with transparent elements for GTK+3, GTK+2 and GNOME Shell
 x11-themes/blueglass-xcursors 0.4: A high quality set of Xfree 4.3.0 animated mouse cursors

@@ -1,0 +1,13 @@
+BDEPEND=dev-qt/qtdbus:5= >=dev-qt/qtwidgets-5.12:5= dev-qt/qtwayland:5= dev-qt/qtx11extras:5= sys-apps/xdg-desktop-portal x11-libs/gtk+:3[X] >=x11-themes/adwaita-qt-1.2.0
+DEFINED_PHASES=configure install
+DEPEND=dev-qt/qtdbus:5= >=dev-qt/qtwidgets-5.12:5= dev-qt/qtwayland:5= dev-qt/qtx11extras:5= sys-apps/xdg-desktop-portal x11-libs/gtk+:3[X] >=x11-themes/adwaita-qt-1.2.0
+DESCRIPTION=A Qt Platform Theme aimed to accommodate GNOME settings
+EAPI=7
+HOMEPAGE=https://github.com/FedoraQt/QGnomePlatform
+KEYWORDS=~amd64 ~ppc64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=dev-qt/qtdbus:5= >=dev-qt/qtwidgets-5.12:5= dev-qt/qtwayland:5= dev-qt/qtx11extras:5= sys-apps/xdg-desktop-portal x11-libs/gtk+:3[X] >=x11-themes/adwaita-qt-1.2.0
+SLOT=0
+SRC_URI=https://github.com/FedoraQt/QGnomePlatform/archive/0.7.0.tar.gz -> QGnomePlatform-0.7.0.tar.gz
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=c26eaa057b802d0c3695e2913f8d92da
