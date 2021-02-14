@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,6 @@ MY_PN="squiddio_pi"
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/mauroc/${MY_PN}.git"
 	inherit git-r3 cmake-utils wxwidgets
-	KEYWORDS=""
 else
 	SRC_URI="
 		https://github.com/mauroc/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
