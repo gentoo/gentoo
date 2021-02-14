@@ -12,7 +12,6 @@ fi
 inherit ${SCM} cmake-utils multilib
 
 if [ "${PV#9999}" != "${PV}" ] ; then
-	KEYWORDS=""
 	SRC_URI=""
 else
 	KEYWORDS="~amd64 ~arm"
