@@ -17,7 +17,6 @@ DESCRIPTION="Cmake macros and associated python code used to build some parts of
 HOMEPAGE="https://wiki.ros.org/catkin"
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
-	KEYWORDS=""
 else
 	SRC_URI="https://github.com/ros/catkin/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm"
