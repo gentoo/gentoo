@@ -5277,7 +5277,7 @@ dev-libs/crypto++ 8.2.0-r2 8.4.0: C++ class library of cryptographic schemes
 dev-libs/cudnn 8.0.5.39: NVIDIA Accelerated Deep Learning on GPU library
 dev-libs/cvector 1.0.3.1: An ANSI C implementation of dynamic arrays (approximation of C++ vectors)
 dev-libs/cxxopts 2.2.1-r1: Lightweight C++ command line option parser
-dev-libs/cxxtools 2.2.1: Collection of general purpose C++-classes
+dev-libs/cxxtools 2.2.1 3.0: Collection of general purpose C++-classes
 dev-libs/cyberjack 3.99.5_p14-r2: REINER SCT cyberJack USB chipcard reader user space driver
 dev-libs/cyrus-sasl 2.1.27-r4: The Cyrus SASL (Simple Authentication and Security Layer)
 dev-libs/d0_blind_id 0.5 1.0: Blind-ID library for user identification using RSA blind signatures
@@ -5700,7 +5700,7 @@ dev-libs/stp 2.3.3: Simple Theorem Prover, an efficient SMT solver for bitvector
 dev-libs/template-glib 3.34.0: Templating library for GLib
 dev-libs/tinyxml 2.6.2-r3 2.6.2-r4: Simple and small C++ XML parser
 dev-libs/tinyxml2 7.1.0 8.0.0: A simple, small, efficient, C++ XML parser
-dev-libs/tntnet 2.2.1 2.2.1-r3: Modular, multithreaded web application server extensible with C++
+dev-libs/tntnet 2.2.1 2.2.1-r3 3.0: Modular, multithreaded web application server extensible with C++
 dev-libs/tomsfastmath 0.13.1 0.13.1-r1: Fast public domain large integer arithmetic library
 dev-libs/totem-pl-parser 3.26.5: Playlist parsing library
 dev-libs/tre 0.8.0-r2: Lightweight, robust, and efficient POSIX compliant regexp matching library
