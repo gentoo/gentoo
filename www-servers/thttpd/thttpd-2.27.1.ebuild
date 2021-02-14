@@ -9,7 +9,6 @@ if [[ ${PV} = 9999* ]]
 then
 	EGIT_REPO_URI="https://github.com/blueness/sthttpd.git"
 	inherit git-r3
-	KEYWORDS="amd64 arm ppc ppc64 sparc x86"
 else
 	MY_P="s${P}"
 	S="${WORKDIR}/${MY_P}"
