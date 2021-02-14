@@ -5,7 +5,7 @@ EAPI=7
 USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
 # git-r3 goes after ruby-ng so that it overrides src_unpack properly
-inherit cmake-utils eutils ruby-ng
+inherit cmake eutils ruby-ng
 
 DESCRIPTION="A cross-platform ruby library for retrieving facts from operating systems"
 HOMEPAGE="http://www.puppetlabs.com/puppet/related-projects/facter/"
@@ -61,7 +61,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 each_ruby_configure() {
@@ -77,16 +77,16 @@ src_configure() {
 		-DRUBY_LIB_INSTALL=${my_ruby_sitelibdir}
 		-DBLKID_LIBRARYDIR="${EPREFIX}/$(get_libdir)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
 	addpredict /proc/self/oom_score_adj
-	cmake-utils_src_compile
+	cmake_src_compile
 }
 
 src_test() {
-	cmake-utils_src_test
+	cmake_src_test
 }
 
 each_ruby_install() {
@@ -94,6 +94,6 @@ each_ruby_install() {
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	ruby-ng_src_install
 }
