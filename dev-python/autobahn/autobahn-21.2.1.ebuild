@@ -72,6 +72,11 @@ python_prepare_all() {
 		# remove xbr components
 		export AUTOBAHN_STRIP_XBR="True"
 	fi
+	# remove twisted plugin cache regen in setup.py
+	# to fix tinderbox sandbox issue
+	sed -e 's/# regenerate Twisted plugin cache/# DO NOT regenerate Twisted plugin cache in Gentoo\nexit()/' \
+		-i setup.py || die
+
 	distutils-r1_python_prepare_all
 }
 
@@ -87,13 +92,6 @@ python_test() {
 	pytest -vv autobahn/wamp/test/test_wamp_component_aio.py || die
 	unset USE_ASYNCIO
 	rm -r .pytest_cache || die
-}
-
-python_install_all() {
-	distutils-r1_python_install_all
-
-	# delete the dropin.cache so we don't have collisions if it exists
-	rm "${D}"/usr/lib*/python*/site-packages/twisted/plugins//dropin.cache > /dev/null
 }
 
 pkg_postinst() {
