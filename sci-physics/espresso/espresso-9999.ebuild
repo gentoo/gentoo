@@ -15,7 +15,6 @@ if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/${PN}md/${PN}.git"
 	EGIT_BRANCH="python"
 	inherit git-r3
-	KEYWORDS=""
 else
 	SRC_URI="https://github.com/${PN}md/${PN}/releases/download/${PV}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86 ~amd64-linux"
