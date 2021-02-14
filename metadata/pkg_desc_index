@@ -10866,7 +10866,7 @@ dev-util/ninja 1.10.0 1.10.1 1.10.2 1.10.2-r1 9999: A small build system similar
 dev-util/ninka 2.0_pre1_p20170402: A license identification tool for source code
 dev-util/numdiff 5.9.0: File comparision, ignoring small numeric differences and formats
 dev-util/nvidia-cuda-sdk 8.0.61 9.2.88 10.2.89: NVIDIA CUDA Software Development Kit
-dev-util/nvidia-cuda-toolkit 8.0.61 9.2.88 10.2.89-r2 11.1.1 11.2.0-r1: NVIDIA CUDA Toolkit (compiler and friends)
+dev-util/nvidia-cuda-toolkit 8.0.61 9.2.88 10.2.89-r2 11.1.1-r1 11.2.0-r2: NVIDIA CUDA Toolkit (compiler and friends)
 dev-util/objconv 2.51: object code file converted (COFF, ELF, OMF, MACHO)
 dev-util/omake 0.9.8.6.0_rc1 0.10.2 0.10.3: Make replacement
 dev-util/open-vcdiff 0.8.4-r1: An encoder/decoder for the VCDIFF (RFC3284) format
@@ -18496,7 +18496,7 @@ x11-misc/picom 8-r1 8.1-r1 8.2-r1 9999: A lightweight compositor for X11 (previo
 x11-misc/piedock 1.6.6-r1 1.6.9: A little bit like the famous OS X dock but in shape of a pie menu
 x11-misc/polybar 3.4.3 3.5.4: A fast and easy-to-use tool for creating status bars
 x11-misc/prime-run 1.0: Run programs on the discrete nVidia video card
-x11-misc/primus 0.2 0.2-r2: Faster OpenGL offloading for Bumblebee
+x11-misc/primus 0.2 0.2-r3: Faster OpenGL offloading for Bumblebee
 x11-misc/projecteur 0.8: Linux Desktop Application for the Logitech Spotlight device
 x11-misc/py3status 3.33-r1: py3status is an extensible i3status wrapper written in python
 x11-misc/qarma 1: Zenity Clone for Qt5
