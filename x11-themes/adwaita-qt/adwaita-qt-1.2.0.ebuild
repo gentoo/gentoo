@@ -21,6 +21,5 @@ DEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 "
-RDEPEND="${DEPEND}
-	gnome? ( x11-themes/QGnomePlatform )
-"
+RDEPEND="${DEPEND}"
+PDEPEND="gnome? ( x11-themes/QGnomePlatform )"
