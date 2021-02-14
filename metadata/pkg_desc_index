@@ -16092,7 +16092,7 @@ sci-geosciences/gpscorrelate 1.6.1-r1: Tool for adjusting EXIF tags of your phot
 sci-geosciences/gpsd 3.21 9999: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
 sci-geosciences/gpx-viewer 0.4.0-r1: Simple program to visualize a gpx file
 sci-geosciences/gpxsee 7.29 8.1 8.4: A viewer and analyzer that supports gpx, tcx, kml, fit, igc and nmea files
-sci-geosciences/grass 7.8.4 7.8.5: A free GIS with raster and vector functionality, as well as 3D vizualization
+sci-geosciences/grass 7.8.4 7.8.5 9999: A free GIS with raster and vector functionality, as well as 3D vizualization
 sci-geosciences/gshhg-gmt 2.3.7: Global Self-consistent, Hierarchical, High-resolution Geography Database
 sci-geosciences/gshhs 1.13: Global Self-consistent, Hierarchical, High-resolution Shoreline programs
 sci-geosciences/gshhs-data 2.2.0: Global Self-consistent, Hierarchical, High-resolution Shoreline programs data
@@ -18212,7 +18212,7 @@ x11-base/xorg-drivers 1.20-r2 9999: Meta package containing deps on all xorg dri
 x11-base/xorg-proto 2020.1 9999: X.Org combined protocol headers
 x11-base/xorg-server 1.20.10-r2 1.20.10-r3 9999: X.Org X servers
 x11-base/xorg-x11 7.4-r3: An X11 implementation maintained by the X.Org Foundation (meta package)
-x11-drivers/nvidia-drivers 390.138-r5 390.141 435.21-r7 440.100-r3 450.80.02-r1 450.102.04 455.45.01-r1 460.27.04 460.39-r1: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 390.141 450.102.04 460.39-r1: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-elographics 1.4.2: Elographics input driver
 x11-drivers/xf86-input-evdev 2.10.6: Generic Linux input driver
 x11-drivers/xf86-input-joystick 1.6.3: X.Org driver for joystick input devices
