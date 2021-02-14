@@ -44,9 +44,9 @@ src_prepare() {
 
 	# We don't have openbabel3 yet
 	sed -i -e '/openbabel-v3/d' "${WORKDIR}"/debian/patches/series || die
-        # Debian patches
-        for p in $(<"${WORKDIR}"/debian/patches/series) ; do
-        	eapply -p1 "${WORKDIR}/debian/patches/${p}"
+	# Debian patches
+	for p in $(<"${WORKDIR}"/debian/patches/series) ; do
+		eapply -p1 "${WORKDIR}/debian/patches/${p}"
 	done
 
 	eautoreconf
