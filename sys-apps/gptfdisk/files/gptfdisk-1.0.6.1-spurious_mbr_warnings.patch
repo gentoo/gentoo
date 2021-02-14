@@ -1,0 +1,71 @@
+From f063fe08e424c99f133df18bf9dce49c851bcb0a Mon Sep 17 00:00:00 2001
+From: Rod Smith <rodsmith@rodsbooks.com>
+Date: Mon, 1 Feb 2021 10:19:50 -0500
+Subject: [PATCH] Fix spurious warnings of problems on MBR disks
+
+---
+ NEWS      |  7 +++++++
+ gpt.cc    | 18 +++++++++++++-----
+ support.h |  2 +-
+ 3 files changed, 21 insertions(+), 6 deletions(-)
+
+diff --git a/NEWS b/NEWS
+index f74bad0..a7131aa 100644
+--- a/NEWS
++++ b/NEWS
+@@ -1,3 +1,10 @@
++1.0.7 (?/??/2021):
++------------------
++
++- Fixed bug that caused spurious warnings about the partition table
++  header claiming an invalid size of partition entries when reading
++  some MBR disks.
++
+ 1.0.6 (1/13/2021):
+ ------------------
+ 
+diff --git a/gpt.cc b/gpt.cc
+index 1b4e10f..842dfb1 100644
+--- a/gpt.cc
++++ b/gpt.cc
+@@ -1042,11 +1042,19 @@ int GPTData::LoadHeader(struct GPTHeader *header, DiskIO & disk, uint64_t sector
+    *crcOk = CheckHeaderCRC(&tempHeader);
+ 
+    if (tempHeader.sizeOfPartitionEntries != sizeof(GPTPart)) {
+-       cerr << "Warning: Partition table header claims that the size of partition table\n";
+-       cerr << "entries is " << tempHeader.sizeOfPartitionEntries << " bytes, but this program ";
+-       cerr << " supports only " << sizeof(GPTPart) << "-byte entries.\n";
+-       cerr << "Adjusting accordingly, but partition table may be garbage.\n";
+-       tempHeader.sizeOfPartitionEntries = sizeof(GPTPart);
++      // Print the below warning only if the CRC is OK -- but correct the
++      // problem either way. The warning is printed only on a valid CRC
++      // because otherwise this warning will display inappropriately when
++      // reading MBR disks. If the CRC is invalid, then a warning about
++      // that will be shown later, so the user will still know that
++      // something is wrong.
++      if (*crcOk) {
++         cerr << "Warning: Partition table header claims that the size of partition table\n";
++         cerr << "entries is " << tempHeader.sizeOfPartitionEntries << " bytes, but this program ";
++         cerr << " supports only " << sizeof(GPTPart) << "-byte entries.\n";
++         cerr << "Adjusting accordingly, but partition table may be garbage.\n";
++      }
++      tempHeader.sizeOfPartitionEntries = sizeof(GPTPart);
+    }
+ 
+    if (allOK && (numParts != tempHeader.numParts) && *crcOk) {
+diff --git a/support.h b/support.h
+index d87fe9a..e3e1e12 100644
+--- a/support.h
++++ b/support.h
+@@ -8,7 +8,7 @@
+ #include <stdlib.h>
+ #include <string>
+ 
+-#define GPTFDISK_VERSION "1.0.6"
++#define GPTFDISK_VERSION "1.0.6.1"
+ 
+ #if defined (__FreeBSD__) || defined (__FreeBSD_kernel__) || defined (__APPLE__)
+ // Darwin (Mac OS) & FreeBSD: disk IOCTLs are different, and there is no lseek64
+-- 
+2.30.1
+
