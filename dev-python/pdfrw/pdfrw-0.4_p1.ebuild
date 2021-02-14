@@ -15,7 +15,6 @@ if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/sarnold/hexdump.git"
 	EGIT_BRANCH="main"
 	inherit git-r3
-	KEYWORDS=""
 else
 	MY_PV="${PV/_p/-}"
 	MY_P="${PN}-${MY_PV}"
