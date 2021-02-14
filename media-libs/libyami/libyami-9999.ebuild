@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,7 +15,6 @@ DESCRIPTION="Yet Another Media Infrastructure: Media codec with hardware acceler
 HOMEPAGE="https://github.com/01org/libyami"
 
 if [ "${PV#9999}" != "${PV}" ] ; then
-	KEYWORDS=""
 	SRC_URI=""
 else
 	KEYWORDS="~amd64"
