@@ -68,6 +68,7 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cflags -fcommon
 	local myconf=""
 
 	use elibc_uclibc && myconf+=" --uclib-mode"
