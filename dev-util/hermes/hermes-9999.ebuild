@@ -22,20 +22,23 @@ LICENSE="MIT"
 SLOT="0"
 IUSE="test"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
+
 RESTRICT="!test? ( test )"
 
 RDEPEND="${LUA_DEPS}
 	$(lua_gen_cond_dep '
+		dev-lua/luafilesystem[${LUA_USEDEP}]
 		dev-lua/luaposix[${LUA_USEDEP}]
 	')
 "
+DEPEND="test? ( ${RDEPEND} )"
 
 PATCHES=( "${FILESDIR}"/${PN}-2.8-lua-shebang.patch )
 
 src_compile() {
 	sed -e "s|@LUA@|${LUA}|g" \
-	    -i lib/tool.lua \
-	    -i bin/lua_cmd || die
+		-i lib/tool.lua \
+		-i bin/lua_cmd || die
 }
 
 src_test() {
