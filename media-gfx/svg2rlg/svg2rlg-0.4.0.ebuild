@@ -14,7 +14,6 @@ if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/sarnold/svg2rlg.git"
 	EGIT_BRANCH="master"
 	inherit git-r3
-	KEYWORDS=""
 else
 	SRC_URI="https://github.com/sarnold/${PN}/archive/${PV}.tar.gz -> ${PN}-${PV}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
