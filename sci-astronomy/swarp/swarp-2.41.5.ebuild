@@ -24,7 +24,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		$(use_with cfistio) \
+		$(use_with cfitsio) \
 		$(use_enable threads)
 }
 
