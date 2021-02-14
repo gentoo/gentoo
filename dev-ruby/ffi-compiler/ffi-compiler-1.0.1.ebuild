@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/ffi/ffi/wiki"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc64 ~sparc ~x86"
 IUSE=""
 
 ruby_add_rdepend "dev-ruby/rake >=dev-ruby/ffi-1.0.0"
