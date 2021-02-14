@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils xdg
+inherit cmake xdg
 
-DESCRIPTION="tint2 is a lightweight panel/taskbar for Linux."
+DESCRIPTION="Lightweight panel/taskbar for Linux"
 HOMEPAGE="https://gitlab.com/o9000/tint2"
 SRC_URI="https://gitlab.com/o9000/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.gz"
 S=${WORKDIR}/${PN}-v${PV}
@@ -13,7 +13,7 @@ S=${WORKDIR}/${PN}-v${PV}
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
-IUSE="battery svg startup-notification tint2conf"
+IUSE="battery startup-notification svg tint2conf"
 
 DEPEND="
 	dev-libs/glib:2
@@ -33,8 +33,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	xdg_src_prepare
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -45,22 +44,5 @@ src_configure() {
 		-DENABLE_SN="$(usex startup-notification)"
 		-DENABLE_RSVG="$(usex svg)"
 	)
-
-	cmake-utils_src_configure
-}
-
-src_install() {
-	cmake-utils_src_install
-}
-
-pkg_preinst() {
-	xdg_pkg_preinst
-}
-
-pkg_postinst() {
-	xdg_pkg_postinst
-}
-
-pkg_postrm() {
-	xdg_pkg_postrm
+	cmake_src_configure
 }
