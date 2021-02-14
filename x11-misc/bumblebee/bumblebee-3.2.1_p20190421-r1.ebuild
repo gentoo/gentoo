@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,6 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/Bumblebee-Project/Bumblebee.git"
 	EGIT_BRANCH="develop"
-	KEYWORDS="amd64 x86"
 else
 	COMMIT="7aa457fe7b4fffc3b175ad36fdae00d7777065dc"
 	SRC_URI="https://github.com/Bumblebee-Project/Bumblebee/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
