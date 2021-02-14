@@ -7196,7 +7196,6 @@ sci-libs/cgnslib:legacy - Enable or disable building legacy code (3.0 compatible
 sci-libs/cgnslib:tools - A number of utility programs: cgnscheck, cgnscompress, cgnsdiff, cgnslist, cgnsnames, cgnsupdate, cgnsconvert, adf2hdf, hdf2adf.
 sci-libs/cholmod:cuda - Use nvidia cuda toolkit for speeding up computations
 sci-libs/cholmod:matrixops - Support basic sparse and dense matrix operations (add, multiply, scale, et cetera)
-sci-libs/cholmod:metis - Enable the Partition module to cholmod using sci-libs/metis
 sci-libs/cholmod:modify - Enable Cholesky-modification routines like update, downdate, row-add, and row-delete
 sci-libs/cholmod:partition - Enable graph partitioning and graph-partition-based orderings through sci-libs/metis or sci-libs/parmetis
 sci-libs/clblas:client - Build a command line clBLAS client program.

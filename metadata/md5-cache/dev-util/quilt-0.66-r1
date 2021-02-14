@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare setup
+DESCRIPTION=quilt patch manager
+EAPI=7
+HOMEPAGE=https://savannah.nongnu.org/projects/quilt
+IUSE=emacs graphviz elibc_Darwin elibc_SunOS
+KEYWORDS=~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris
+LICENSE=GPL-2
+PDEPEND=emacs? ( app-emacs/quilt-el )
+RDEPEND=sys-apps/ed dev-util/diffstat graphviz? ( media-gfx/graphviz ) elibc_Darwin? ( app-misc/getopt ) elibc_SunOS? ( app-misc/getopt ) >=sys-apps/coreutils-8.32-r1
+RESTRICT=test
+SLOT=0
+SRC_URI=https://savannah.nongnu.orgdownload/quilt/quilt-0.66.tar.gz
+_eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=f03027e15794a29d8ca232f60be7b6f8
