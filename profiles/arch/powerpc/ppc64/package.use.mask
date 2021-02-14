@@ -1,6 +1,17 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-02-14)
+# Brings in a large number of unkeyworded
+# (broad) deps. Not keywording yet.
+# bug #769956
+dev-util/diffoscope R pascal
+
+# Sam James <sam@gentoo.org> (2021-02-14)
+# Haskell isn't keyworded on ppc64
+# bug #769956, bug #583400
+dev-util/diffoscope haskell
+
 # Michał Górny <mgorny@gentoo.org> (2020-12-21)
 # Sanitizers supported on this architecture.
 sys-libs/compiler-rt-sanitizers -asan -lsan -msan -tsan
