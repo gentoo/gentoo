@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,6 @@ HOMEPAGE="https://sparse.wiki.kernel.org/index.php/Main_Page"
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/devel/${PN}/${PN}.git"
-	KEYWORDS=""
 else
 	SRC_URI="https://www.kernel.org/pub/software/devel/${PN}/dist/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
