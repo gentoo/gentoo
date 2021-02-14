@@ -7,7 +7,7 @@ LUA_COMPAT=( lua5-{1..3} )
 inherit autotools lua-single
 
 DESCRIPTION="Environment Module System based on Lua"
-HOMEPAGE="https://lmod.readthedocs.io/en/latest"
+HOMEPAGE="https://lmod.readthedocs.io/en/latest https://github.com/TACC/Lmod"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
