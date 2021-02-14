@@ -13,23 +13,28 @@ LICENSE="MIT public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
-DEPEND="sci-libs/openlibm"
+DEPEND="sci-libs/openlibm:="
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}"/${P}-static-libs.patch )
+PATCHES=( "${FILESDIR}"/${P}-Makefile.patch )
 
-src_prepare() {
-	default
-	sed -i "s:/lib:/$(get_libdir):" Make.inc || die
+src_configure() {
+	tc-export CC
 }
 
 src_compile() {
-	emake prefix="${EPREFIX}/usr" USE_OPENLIBM=1 FC="$(tc-getFC)"
+	emake \
+		prefix="${EPREFIX}"/usr \
+		libdir="${EPREFIX}"/usr/$(get_libdir) \
+		USE_OPENLIBM=1
 }
 
 src_install() {
-	emake DESTDIR="${D}" prefix="${EPREFIX}/usr" \
-		libdir="${EPREFIX}/usr/$(get_libdir)" install
+	emake \
+		prefix="${EPREFIX}"/usr \
+		libdir="${EPREFIX}"/usr/$(get_libdir) \
+		DESTDIR="${D}" \
+		install
 	einstalldocs
 
 	find "${ED}" -name '*.la' -delete || die
