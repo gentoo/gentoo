@@ -11393,7 +11393,7 @@ games-engines/residualvm 0.2.1-r1 0.3.1-r2 9999: A cross-platform 3D game interp
 games-engines/scummvm 2.1.2 2.2.0 9999: Reimplementation of the SCUMM game engine used in Lucasarts adventures
 games-engines/scummvm-tools 2.1.0 2.2.0: utilities for the SCUMM game engine
 games-engines/solarus 1.3.1-r1 1.3.1-r100: An open-source Zelda-like 2D game engine
-games-engines/stratagus 2.4.1 2.4.3 2.4.3-r100 3.0.0-r1 3.0.0-r100: A realtime strategy game engine
+games-engines/stratagus 2.4.3 2.4.3-r100 3.0.0-r1 3.0.0-r100: A realtime strategy game engine
 games-engines/xzip 1.8.2-r3: X interface to Z-code based text games
 games-engines/zoom 1.1.5-r1: A fast, clean, modern Z-code interpreter for X
 games-fps/alienarena 7.66: Fast-paced multiplayer deathmatch game
@@ -11774,7 +11774,7 @@ games-strategy/triplea 1.8.0.9-r1: An open source clone of the popular Axis and 
 games-strategy/ufoai 2.5.0_p20180603-r1: UFO: Alien Invasion - X-COM inspired strategy game
 games-strategy/uqm 0.7.0.1: The Ur-Quan Masters: Port of Star Control 2
 games-strategy/war1gus 2.4.3 3.0.0: Warcraft: Orcs & Humans for the Stratagus game engine
-games-strategy/wargus 2.4.1 2.4.3 3.0.0-r1: Warcraft II for the Stratagus game engine
+games-strategy/wargus 2.4.3 3.0.0-r1: Warcraft II for the Stratagus game engine
 games-strategy/wargus-data 0-r1: Warcraft II data for wargus (needs DOS CD)
 games-strategy/warmux 11.04.1-r1: A free Worms clone
 games-strategy/warzone2100 3.2.3 3.3.0 3.4.1: 3D real-time strategy game
@@ -11812,7 +11812,7 @@ games-util/qjoypad 4.3.1: Translate gamepad/joystick input into key strokes/mous
 games-util/qstat 2.14: Server statics collector supporting many FPS games
 games-util/sc-controller 0.4.8.1 0.4.8.2: User-mode driver and GTK-based GUI for Steam Controllers and others
 games-util/slade 3.1.12a 3.1.12a-r100: Modern editor for Doom-engine based games and source ports
-games-util/springlobby 0.266 0.267 0.269: The official lobby client for SpringRTS community games
+games-util/springlobby 0.269: The official lobby client for SpringRTS community games
 games-util/ucon64 2.0.0: The backup tool and wonderful emulator's Swiss Army knife program
 games-util/uglygs 0_rc11-r1: Quickly searches the network for game servers
 games-util/umodpack 0.5_beta16-r3: Portable (un)packer for Unreal Tournament's Umod files
