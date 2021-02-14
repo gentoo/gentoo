@@ -1,41 +1,44 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=7
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Policy daemon for postfix and other MTAs"
 HOMEPAGE="http://policyd.sf.net/"
-
-# This is not available through SF mirrors
 SRC_URI="http://policyd.sourceforge.net/${P}.tar.gz"
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~hppa x86"
-IUSE="libressl"
-DEPEND="dev-db/mysql-connector-c:0=
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:= )"
+
+DEPEND="
+	dev-db/mysql-connector-c:0=
+	dev-libs/openssl:0="
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-post182.patch"
-	"${FILESDIR}/${PN}-makefile.patch"
+	"${FILESDIR}"/${PN}-post182.patch
+	"${FILESDIR}"/${PN}-makefile.patch
 )
 
 src_prepare() {
 	default
 	sed -i -e 's/@${CC}/${CC}/' -e 's/@$(CC)/$(CC)/' Makefile
 
-	ebegin "Applying config patches"
+	# config patches
 	sed -i -e s:UID=0:UID=65534:g \
-	    -e s:GID=0:GID=65534:g \
-	    -e s:DAEMON=0:DAEMON=1:g \
-	    -e s:DEBUG=3:DEBUG=0:g \
-	    -e s:DATABASE_KEEPALIVE=0:DATABASE_KEEPALIVE=1:g \
-	    policyd.conf || die "sed failed"
-	eend
+		-e s:GID=0:GID=65534:g \
+		-e s:DAEMON=0:DAEMON=1:g \
+		-e s:DEBUG=3:DEBUG=0:g \
+		-e s:DATABASE_KEEPALIVE=0:DATABASE_KEEPALIVE=1:g \
+		policyd.conf || die
+}
+
+src_configure() {
+	append-cflags -fcommon
+	default
 }
 
 src_compile() {
@@ -44,8 +47,8 @@ src_compile() {
 
 src_install() {
 	insopts -o root -g nobody -m 0750
-	mv cleanup policyd_cleanup
-	mv stats policyd_stats
+	mv cleanup policyd_cleanup || die
+	mv stats policyd_stats || die
 
 	dosbin policyd policyd_cleanup policyd_stats
 
@@ -55,12 +58,12 @@ src_install() {
 
 	insopts -o root -g nobody -m 0700
 	exeinto /etc/cron.hourly
-	newexe "${FILESDIR}/${PN}-cleanup.cron" ${PN}-cleanup.cron
+	newexe "${FILESDIR}"/${PN}-cleanup.cron ${PN}-cleanup.cron
 
 	dodoc ChangeLog DATABASE.mysql README doc/support.txt
 
-	newinitd "${FILESDIR}/${PN}.rc" ${PN}
-	newconfd "${FILESDIR}/${PN}.confd" ${PN}
+	newinitd "${FILESDIR}"/${PN}.rc policyd
+	newconfd "${FILESDIR}"/${PN}.confd policyd
 }
 
 pkg_postinst() {
