@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 MATE_LA_PUNT="yes"
 
-PYTHON_COMPAT=( python{3_7,3_8} )
+PYTHON_COMPAT=( python{3_7,3_8,3_9} )
 
 inherit mate python-single-r1 virtualx
 
