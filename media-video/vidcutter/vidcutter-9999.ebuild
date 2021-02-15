@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit distutils-r1 xdg
 
@@ -33,6 +33,7 @@ RDEPEND="${DEPEND}
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 src_install() {
 	distutils-r1_src_install
