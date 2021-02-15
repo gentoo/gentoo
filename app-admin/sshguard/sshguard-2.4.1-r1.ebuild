@@ -3,14 +3,20 @@
 
 EAPI=7
 
-inherit systemd
+inherit autotools systemd
 DESCRIPTION="protects hosts from brute force attacks against ssh"
 HOMEPAGE="https://www.sshguard.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+
+if [[ "${PV}" == 99999 ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://bitbucket.org/${PN}/${PN}"
+else
+	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+fi
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 DEPEND="
 	sys-devel/flex
@@ -25,6 +31,7 @@ DOCS=(
 	examples/net.sshguard.plist
 	examples/whitelistfile.example
 )
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.4.1-conf.patch
 )
@@ -34,6 +41,7 @@ src_prepare() {
 	sed -i -e "/ExecStartPre/s:/usr/sbin:/sbin:g" \
 		-e "/ExecStart/s:/usr/local/sbin:/usr/sbin:g" \
 		"${S}"/examples/${PN}.service || die
+	eautoreconf
 }
 
 src_install() {
