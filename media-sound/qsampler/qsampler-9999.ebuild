@@ -18,7 +18,6 @@ HOMEPAGE="https://qsampler.sourceforge.io/ https://www.linuxsampler.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
 IUSE="debug +libgig"
 
 DEPEND="
