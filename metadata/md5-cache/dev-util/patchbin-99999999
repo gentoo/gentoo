@@ -9,4 +9,4 @@ PROPERTIES=live
 RDEPEND=app-shells/bash sys-apps/coreutils sys-apps/gawk sys-apps/grep sys-apps/util-linux sys-devel/patch
 SLOT=0
 _eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441
-_md5_=86b08a965678692fca27d4c478b70973
+_md5_=74385111f7b87043f7f76d46c5c30887

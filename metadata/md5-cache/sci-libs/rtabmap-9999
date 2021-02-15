@@ -10,4 +10,4 @@ PROPERTIES=live
 RDEPEND=media-libs/opencv:=[qt5(-)?] sci-libs/pcl:=[openni,vtk,qt5(-)?] sci-libs/vtk:=[qt5(-)?] sys-libs/zlib sci-libs/octomap:= dev-libs/boost:= ieee1394? ( media-libs/libdc1394:2= ) openni2? ( dev-libs/OpenNI2 ) qt5? ( dev-qt/qtwidgets:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtsvg:5 )
 SLOT=0
 _eclasses_=cmake-utils	77cd39e6009811bf97a59d91ffd5b54f	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	git-r3	3e7ec3d6619213460c85e2aa48398441	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=162bbab0e9b55c926af2d0b7b5fc3466
+_md5_=381247e0df2e52cf24bbd0dd038e959f

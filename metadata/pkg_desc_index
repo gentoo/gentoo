@@ -2177,7 +2177,7 @@ app-forensics/afflib 3.7.19: Library that implements the AFF image standard
 app-forensics/afl 2.56b 2.57b: american fuzzy lop - compile-time instrumentation fuzzer
 app-forensics/aide 0.16-r1 0.16.2_p20200614: AIDE (Advanced Intrusion Detection Environment) is a file integrity checker
 app-forensics/air 2.0.0-r2: A GUI front-end to dd/dc3dd
-app-forensics/chkrootkit 0.53 0.54: Tool to locally check for signs of a rootkit
+app-forensics/chkrootkit 0.54: Tool to locally check for signs of a rootkit
 app-forensics/cmospwd 5.1-r1: CmosPwd decrypts password stored in cmos used to access BIOS SETUP
 app-forensics/dfxml 20170921-r1 99999999: Digital Forensics XML
 app-forensics/examiner 0.5-r3: Utilizes the objdump command to disassemble and comment foreign binaries
@@ -5468,7 +5468,7 @@ dev-libs/libixion 0.15.0 9999: General purpose formula parser & interpreter
 dev-libs/libjcat 0.1.4 0.1.5 0.1.6: Library and tool for reading and writing Jcat files
 dev-libs/libkpass 6-r1: Libkpass is a C implementation to access KeePass 1.x format password databases
 dev-libs/libksba 1.3.5-r1 1.3.5-r2 1.4.0 1.5.0: X.509 and CMS (PKCS#7) library
-dev-libs/liblinear 241 242: A Library for Large Linear Classification
+dev-libs/liblinear 242: A Library for Large Linear Classification
 dev-libs/liblist 2.4: Generic linked-list manipulation routines, plus queues and stacks
 dev-libs/liblogging 1.0.6: Liblogging is an easy to use, portable, open source library for system logging
 dev-libs/liblognorm 2.0.6: Fast samples-based log normalization library
@@ -13274,7 +13274,7 @@ media-libs/libvorbis 1.3.7: The Ogg Vorbis sound file format library
 media-libs/libvpx 1.7.0-r1 1.9.0: WebM VP8 and VP9 Codec SDK
 media-libs/libwebp 1.1.0 1.2.0: A lossy image compression format
 media-libs/libwmf 0.2.8.4-r8: A library for reading vector images in Microsoft's Windows Metafile Format (WMF)
-media-libs/libxmi 1.3 1.3-r1: C/C++ function library for rasterizing 2-D vector graphics
+media-libs/libxmi 1.3-r1: C/C++ function library for rasterizing 2-D vector graphics
 media-libs/libxspf 1.2.0-r1: Playlist handling library
 media-libs/libxtract 0.6.6: A simple, portable, lightweight library of audio feature extraction functions
 media-libs/libyami 1.3.2 9999: Yet Another Media Infrastructure: Media codec with hardware acceleration
@@ -13331,7 +13331,7 @@ media-libs/quesoglc 0.7.2: A free implementation of the OpenGL Character Rendere
 media-libs/quvi 0.9.5: A command line tool for parsing video download links
 media-libs/raptor 2.0.15-r2: The RDF Parser Toolkit
 media-libs/raspberrypi-userland 0_pre20201022 9999: Raspberry Pi userspace tools and libraries
-media-libs/raspberrypi-userland-bin 1.20201022 1.20201201: Raspberry Pi userspace tools and libraries
+media-libs/raspberrypi-userland-bin 1.20201201: Raspberry Pi userspace tools and libraries
 media-libs/resid 0.16_p2-r1: C++ library to emulate the C64 SID chip
 media-libs/rlottie 0.2: A platform independent standalone library that plays Lottie Animations
 media-libs/rtaudio 5.1.0: A set of cross-platform C++ classes for realtime audio I/O
@@ -14553,7 +14553,7 @@ net-dns/ddclient 3.9.1: Perl client used to update dynamic DNS entries
 net-dns/djbdns 1.05-r33: Collection of DNS client/server software
 net-dns/dnrd 2.20.3-r2: A caching DNS proxy server
 net-dns/dnscap 1.10.2 1.10.3: Network capture utility designed specifically for DNS traffic
-net-dns/dnscrypt-proxy 2.0.44 2.0.45 9999: A flexible DNS proxy, with support for encrypted DNS protocols
+net-dns/dnscrypt-proxy 2.0.45 9999: A flexible DNS proxy, with support for encrypted DNS protocols
 net-dns/dnsdist 1.5.0 1.5.1 1.5.1-r100: A highly DNS-, DoS- and abuse-aware loadbalancer
 net-dns/dnshijacker 1.3-r2: a libnet/libpcap based packet sniffer and spoofer
 net-dns/dnsmasq 2.83-r1 2.83-r101 2.84 2.84-r101: Small forwarding DNS server

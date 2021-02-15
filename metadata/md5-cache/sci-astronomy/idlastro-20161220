@@ -7,4 +7,4 @@ LICENSE=BSD-2 BSD
 RDEPEND=dev-lang/gdl
 SLOT=0
 SRC_URI=https://idlastro.gsfc.nasa.gov/ftp/astron.tar.gz -> idlastro-20161220.tar.gz
-_md5_=ac474f298f79c2ce8677c6d2b4e19ce1
+_md5_=39b6e2ab852d0bf5eb696f73fdf490c2

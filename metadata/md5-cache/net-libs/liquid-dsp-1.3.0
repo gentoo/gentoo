@@ -10,4 +10,4 @@ RDEPEND=sci-libs/fftw:3.0=
 SLOT=0
 SRC_URI=https://github.com/jgaeddert/liquid-dsp/archive/v1.3.0.tar.gz -> liquid-dsp-1.3.0.tar.gz
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=f649827b11aec65c17cf77334fa60ca4
+_md5_=70685745dd35f5bc169eff14717d643d

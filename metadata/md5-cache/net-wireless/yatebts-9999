@@ -9,4 +9,4 @@ PROPERTIES=live
 RDEPEND==net-voip/yate-9999:=[gsm] bladerf? ( net-wireless/bladerf:= ) uhd? ( net-wireless/uhd ) virtual/libusb:1
 SLOT=0
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	estack	055c42df72f76a4f45ec92b35e83cd56	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	subversion	ed3498da4fb92dcfb0d6089c85d1465f	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=af2db73e86eaffef85840d4c9724ad6e
+_md5_=77a3ce1763f4193a68e0130584b263a9

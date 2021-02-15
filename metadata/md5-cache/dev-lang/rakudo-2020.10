@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://rakudo.org/dl/rakudo/rakudo-2020.10.tar.gz
 _eclasses_=java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	java-utils-2	378e4cda228ea0231a0ac283cb2ad25c
-_md5_=bf109cb3d71ad685f9965ab9ad0833c9
+_md5_=6206e6540f496f6d5f2403440c74211c

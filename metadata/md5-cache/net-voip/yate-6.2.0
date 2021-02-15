@@ -10,4 +10,4 @@ RDEPEND=postgres? ( dev-db/postgresql:* ) mysql? ( dev-db/mysql-connector-c:= ) 
 SLOT=0/6.2.0
 SRC_URI=http://voip.null.ro/tarballs/yate6/yate-6.2.0-1.tar.gz
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=78ce2d1a2ce2fcda3e0f10d2fbbc4354
+_md5_=c5b2ea32b3c46325639ea545b05c62c7

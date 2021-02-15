@@ -10,4 +10,4 @@ RDEPEND=!dev-lang/tendra
 RESTRICT=!test? ( test )
 SLOT=0
 _eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=41dbab10eeb42d56b95b11b1802f717a
+_md5_=3b1279f10cfd0e0f7bb214767c7b6f2b

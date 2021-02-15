@@ -8,4 +8,4 @@ LICENSE=LGPL-2.1
 RDEPEND=app-shells/bash sys-apps/coreutils sys-apps/gawk sys-apps/grep sys-apps/util-linux sys-devel/patch
 SLOT=0
 SRC_URI=https://github.com/wine-compholio/wine-staging/archive/4ffcf184bb71c6c3512b3a8c144dcf4a3a76d23c.tar.gz -> patchbin-20160208.tar.gz
-_md5_=8d0107fbf1e41ddb76261d9a0a576dc3
+_md5_=7189367282c7a59bb2e079d16da7d2a0

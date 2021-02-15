@@ -8,4 +8,4 @@ PROPERTIES=live
 RDEPEND=net-misc/curl sys-apps/file sys-apps/sed
 SLOT=0
 _eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441
-_md5_=6190ba0dd649ddf0c67a6da911bfe248
+_md5_=6964dc20f459f754722118ece7a23fa4

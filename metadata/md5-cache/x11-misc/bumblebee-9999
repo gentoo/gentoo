@@ -11,4 +11,4 @@ RDEPEND=dev-libs/glib:2 dev-libs/libbsd sys-apps/kmod x11-libs/libX11 virtual/op
 REQUIRED_USE=|| ( video_cards_nouveau video_cards_nvidia )
 SLOT=0
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
-_md5_=03092d8adb461eca5ec2f3b4fe793ca6
+_md5_=6d218d9fb83ef0c561e888e0a2dc7249

@@ -10,4 +10,4 @@ RDEPEND=git? ( dev-vcs/git )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/blogc/blogc/releases/download/v0.20.0/blogc-0.20.0.tar.xz
-_md5_=d9e2b844a26f3d359c9f57321545ea49
+_md5_=75ca3e91ec0e1333e094ce926516b9db

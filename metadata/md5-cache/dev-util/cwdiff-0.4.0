@@ -9,4 +9,4 @@ LICENSE=GPL-2
 RDEPEND=sys-apps/sed app-shells/bash app-text/wdiff sys-apps/diffutils mercurial? ( dev-vcs/mercurial )
 SLOT=0
 SRC_URI=https://github.com/junghans/cwdiff/archive/v0.4.0.tar.gz -> cwdiff-0.4.0.tar.gz
-_md5_=187eb5717324e350bf8ecc388d4b7741
+_md5_=5eb324ddff962777a592339ff20a76eb

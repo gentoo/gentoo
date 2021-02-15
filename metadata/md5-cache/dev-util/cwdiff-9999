@@ -9,4 +9,4 @@ PROPERTIES=live
 RDEPEND=sys-apps/sed app-shells/bash app-text/wdiff sys-apps/diffutils mercurial? ( dev-vcs/mercurial )
 SLOT=0
 _eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441
-_md5_=c2ffd5f7655170a846c6a0888424e177
+_md5_=f5f023e75b91d038c955a4c5f81db5c9

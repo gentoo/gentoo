@@ -9,4 +9,4 @@ RDEPEND=sys-power/acpi_call dev-lang/perl
 SLOT=0
 SRC_URI=https://github.com/teleshoes/tpacpi-bat/archive/v3.0.tar.gz -> tpacpi-bat-3.0.tar.gz
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=743a2a01ea7cbe2dc59a569982db9ff4
+_md5_=5ffc3dac2d1ba55d8f93bd7ee3c4044c
