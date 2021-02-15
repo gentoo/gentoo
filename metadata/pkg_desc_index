@@ -746,7 +746,7 @@ app-admin/rsyslog 8.2008.0 8.2010.0 8.2012.0 8.2012.0-r1: An enhanced multi-thre
 app-admin/sagan 1.0.0_rc3 1.0.0_rc3-r1: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617 99999999: Rules for Sagan log analyzer
 app-admin/salt 3000.5 3000.6 3001.4-r1 3002.2-r2 3002.2-r3: Salt is a remote execution and configuration manager
-app-admin/selint 1.1.0 9999: Policy Analysis Tools for SELinux
+app-admin/selint 1.1.0 1.2.0 9999: Policy Analysis Tools for SELinux
 app-admin/serf 0.8.1-r1: Service orchestration and management tool
 app-admin/setools 4.3.0 9999: Policy Analysis Tools for SELinux
 app-admin/socklog 2.1.0: small secure replacement for syslogd with automatic log rotation
