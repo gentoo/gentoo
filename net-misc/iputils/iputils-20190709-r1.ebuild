@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # For released versions, we precompile the man/html pages and store
 # them in a tarball on our mirrors.  This avoids ugly issues while
-# building stages, and reduces depedencies.
+# building stages, and reduces dependencies.
 # To regenerate man/html pages emerge iputils-99999999[doc] with
 # EGIT_COMMIT set to release tag and tar ${S}/doc folder.
 
