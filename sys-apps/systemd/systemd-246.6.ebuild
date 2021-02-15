@@ -274,6 +274,8 @@ multilib_src_configure() {
 		-Delfutils=$(meson_multilib_native_use elfutils)
 		-Dgcrypt=$(meson_use gcrypt)
 		-Dgnu-efi=$(meson_multilib_native_use gnuefi)
+		-Defi-includedir="${ESYSROOT}/usr/include/efi"
+		-Defi-ld="$(tc-getLD)"
 		-Defi-libdir="${ESYSROOT}/usr/$(get_libdir)"
 		-Dhomed=$(meson_multilib_native_use homed)
 		-Dhwdb=$(meson_multilib_native_use hwdb)
