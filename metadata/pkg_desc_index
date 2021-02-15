@@ -676,7 +676,7 @@ app-admin/helm 3.3.4 3.4.1 3.4.2: Kubernetes Package Manager
 app-admin/ide-smart 1.4-r2: A tool to read SMART information from harddiscs
 app-admin/integrit 4.1-r1: file integrity verification program
 app-admin/keepass 2.46: A free, open source, light-weight and easy-to-use password manager
-app-admin/keepassxc 2.6.2 2.6.3 2.6.4 9999: KeePassXC - KeePass Cross-platform Community Edition
+app-admin/keepassxc 2.6.2-r1 2.6.3-r1 2.6.4-r1 9999: KeePassXC - KeePass Cross-platform Community Edition
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 3.6: A command line interface to KeePass database files
 app-admin/kube-bench 0.2.3-r1: Kubernetes Bench for Security runs the CIS Kubernetes Benchmark
@@ -2405,7 +2405,7 @@ app-misc/cdircmp 0.3-r2: Compare directories and select files to copy
 app-misc/cdspeed 0.4-r2: Change the speed of your CD drive
 app-misc/cfiles 1.5 1.8: A ncurses file manager written in C with vim like keybindings
 app-misc/chkcrontab 1.7 1.7-r1: A tool to detect crontab errors
-app-misc/ckb 0.4.2-r1 0.4.3: Corsair K65/K70/K95 Driver
+app-misc/ckb 0.4.2-r2 0.4.3-r1: Corsair K65/K70/K95 Driver
 app-misc/ckermit 8.0.211-r4 9.0.302: combined serial and network communication software package
 app-misc/clockywock 0.3.1a: ncurses based analog clock
 app-misc/cmatrix 1.2a-r3 1.2a-r4 2.0-r2: An ncurses based app to show a scrolling screen from the Matrix
@@ -2567,7 +2567,7 @@ app-misc/qlcplus 4.12.2 4.12.3 5.0.0_alpha3: A software to control DMX or analog
 app-misc/radeontop 1.3-r1 9999: Utility to view Radeon GPU utilization
 app-misc/ranger 1.9.2 1.9.3 9999: A vim-inspired file manager for the console
 app-misc/razertool 0.0.7-r4: Unofficial tool for controlling the Razer Copperhead mouse
-app-misc/rbutil 1.4.1: Rockbox open source firmware manager for music players
+app-misc/rbutil 1.4.1-r1: Rockbox open source firmware manager for music players
 app-misc/realpath 1.18: Return the canonicalized absolute pathname
 app-misc/recoll 1.25.19 1.27.12 1.28.5: A personal full text search package
 app-misc/regex-markup 0.10.0-r1: A tool to color syslog files as well
@@ -11266,7 +11266,7 @@ games-board/blokish 0.9.4-r3: Open source clone of the four-player board game Bl
 games-board/camato 0.7.4-r1: A map editor for the game gnocatan
 games-board/ccgo 0.3.6.5-r1: An IGS client written in C++
 games-board/cgoban 1.9.14-r2: A Go-frontend
-games-board/chessx 1.5.4-r1: Qt5-based Chess Database Utility
+games-board/chessx 1.5.4-r2: Qt5-based Chess Database Utility
 games-board/cockatrice 20200823: An open-source multiplatform software for playing card games over a network
 games-board/crafty 24.1-r1: Bob Hyatt's strong chess engine
 games-board/domination 1.1.1.6-r1: The well-known board game, written in java
@@ -12913,7 +12913,7 @@ media-gfx/mscgen 0.20: A message sequence chart generator
 media-gfx/mypaint 2.0.1-r2: Fast and easy graphics application for digital painters
 media-gfx/mypaint-brushes 2.0.2: Default MyPaint brushes
 media-gfx/netpaint 1.1.2: curses-based drawing tool
-media-gfx/nomacs 3.16.224: Qt-based image viewer
+media-gfx/nomacs 3.16.224-r1: Qt-based image viewer
 media-gfx/nvidia-cg-toolkit 3.1.0013-r5: NVIDIA's C graphics compiler toolkit
 media-gfx/nvidia-texture-tools 2.0.8-r4 2.1.2: A set of cuda-enabled texture tools and compressors
 media-gfx/openclipart 0.20: Open Clip Art Library (openclipart.org)

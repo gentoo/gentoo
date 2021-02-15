@@ -1,15 +1,15 @@
 BDEPEND=dev-qt/linguist-tools:5 virtual/pkgconfig dev-util/ninja dev-util/cmake
 DEFINED_PHASES=compile configure install postinst postrm prepare test
-DEPEND=dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5[jpeg?] dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 media-gfx/exiv2:= opencv? ( >=media-libs/opencv-3.4:= ) raw? ( media-libs/libraw:= ) tiff? ( dev-qt/qtimageformats:5 media-libs/tiff ) zip? ( dev-libs/quazip )
+DEPEND=dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5[jpeg?] dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 media-gfx/exiv2:= opencv? ( >=media-libs/opencv-3.4:= ) raw? ( media-libs/libraw:= ) tiff? ( dev-qt/qtimageformats:5 media-libs/tiff ) zip? ( dev-libs/quazip:0 )
 DESCRIPTION=Qt-based image viewer
 EAPI=7
 HOMEPAGE=https://nomacs.org/
 IUSE=+jpeg +opencv plugins raw +tiff zip
 KEYWORDS=amd64 ~arm64 x86 ~amd64-linux
 LICENSE=GPL-3+
-RDEPEND=dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5[jpeg?] dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 media-gfx/exiv2:= opencv? ( >=media-libs/opencv-3.4:= ) raw? ( media-libs/libraw:= ) tiff? ( dev-qt/qtimageformats:5 media-libs/tiff ) zip? ( dev-libs/quazip )
+RDEPEND=dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5[jpeg?] dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 media-gfx/exiv2:= opencv? ( >=media-libs/opencv-3.4:= ) raw? ( media-libs/libraw:= ) tiff? ( dev-qt/qtimageformats:5 media-libs/tiff ) zip? ( dev-libs/quazip:0 )
 REQUIRED_USE=raw? ( opencv ) tiff? ( opencv )
 SLOT=0
 SRC_URI=https://github.com/nomacs/nomacs/archive/3.16.224.tar.gz -> nomacs-3.16.224.tar.gz plugins? ( https://github.com/nomacs/nomacs-plugins/archive/3.16.tar.gz -> nomacs-plugins-3.16.tar.gz )
 _eclasses_=cmake	ac7cb516f6a288b6a82bc0649ce49878	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=644ffccc4dd93ccd5a8f7a69712d1a79
+_md5_=7a8576519f2101861ef35531f70978db
