@@ -1,4 +1,4 @@
-BDEPEND=virtual/pkgconfig
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
 DEFINED_PHASES=install prepare
 DEPEND=sys-devel/flex
 DESCRIPTION=protects hosts from brute force attacks against ssh
@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=virtual/logger
 SLOT=0
 SRC_URI=mirror://sourceforge/sshguard/sshguard-2.4.1.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=178730da29b5845f1cb17333489f0a38
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=97e181d08fcb8b8195b54772c7735736
