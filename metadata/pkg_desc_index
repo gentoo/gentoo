@@ -869,7 +869,7 @@ app-arch/unadf 0.7.12-r1: Extract files from Amiga adf disk images
 app-arch/unar 1.10.7: Unpacker for various archiving formats, e.g. rar v3
 app-arch/unmakeself 1.1: Makeself archive extractor
 app-arch/unp 2.0_pre7_p1-r1 2.0_pre8 2.0_pre9: Script for unpacking various file formats
-app-arch/unrar 5.9.4 6.0.1 6.0.2 6.0.3: Uncompress rar files
+app-arch/unrar 6.0.3: Uncompress rar files
 app-arch/unrpa 2.3.0: Ren'Py's RPA data file extractor
 app-arch/unshield 1.4.3: InstallShield CAB file extractor
 app-arch/unzip 6.0_p25-r1: unzipper for pkzip-compressed files
@@ -2337,7 +2337,7 @@ app-metrics/alertmanager 0.18.0 0.19.0 0.21.0: Alertmanager for alerts sent by c
 app-metrics/bind_exporter 0.3.0: Prometheus exporter for BIND
 app-metrics/blackbox_exporter 0.15.1 0.16.0 0.17.0: Prometheus exporter for blackbox probing via HTTP, HTTPS, DNS, TCP and ICMP
 app-metrics/burrow_exporter 0.0.6 0.0.6-r1: Prometheus exporter for Burrow
-app-metrics/collectd 5.11.0-r3 5.12.0 5.12.0-r1: Collects system statistics and provides mechanisms to store the values
+app-metrics/collectd 5.12.0-r1: Collects system statistics and provides mechanisms to store the values
 app-metrics/consul_exporter 0.4.0 0.6.0 0.7.1: Prometheus exporter for consul metrics
 app-metrics/dnsmasq_exporter 0.2.0-r1: prometheus exporter for dnsmasq
 app-metrics/elasticsearch_exporter 1.0.2 1.0.4_rc1 1.1.0_rc1 1.1.0: Elasticsearch stats exporter for Prometheus
@@ -12870,7 +12870,7 @@ media-gfx/icc-examin 0.56_p20171007 9999: Viewer for ICC and CGATS, argyll gamut
 media-gfx/icon-slicer 0.3: utility for generating icon themes and libXcursor cursor themes
 media-gfx/icoutils 0.32.3: Tools to extract and convert images in icon and cursor files (.ico, .cur)
 media-gfx/igal 2.0-r1: Static HTML image gallery generator
-media-gfx/imagemagick 6.9.11.61-r1 7.0.10.61-r1 9999: A collection of tools and libraries for many image formats
+media-gfx/imagemagick 6.9.11.61-r1 6.9.11.62 7.0.10.61-r1 7.0.11.0 9999: A collection of tools and libraries for many image formats
 media-gfx/imageworsener 1.3.3: Utility for image scaling and processing
 media-gfx/img2pdf 0.3.6 0.4.0: Losslessly convert raster images to PDF
 media-gfx/imv 4.0.1-r2 4.1.0-r1 9999: Minimal image viewer designed for tiling window manager users
@@ -15191,7 +15191,7 @@ net-misc/jrdesktop 0.3.1.0: Java Remote Desktop (jrdesktop) for viewing and/or c
 net-misc/jwhois 4.0-r1: Advanced Internet Whois client capable of recursive queries
 net-misc/kafka-bin 2.0.1 2.1.1 2.2.1 2.3.0 2.4.0 2.4.1 2.5.0 2.5.1 2.6.0 2.6.1 2.7.0: A high-throughput distributed messaging system
 net-misc/kafkacat 1.5.0: Generic command line non-JVM Apache Kafka producer and consumer
-net-misc/kea 1.8.1-r1 1.8.2 9999: High-performance production grade DHCPv4 & DHCPv6 server
+net-misc/kea 1.8.1-r1 1.8.2 1.9.4 9999: High-performance production grade DHCPv4 & DHCPv6 server
 net-misc/keychain 2.8.5: Agent manager for OpenSSH, ssh.com, Sun SSH, and GnuPG
 net-misc/knock 0.7-r1: Simple port-knocking daemon
 net-misc/l7-filter-userspace 0.12_beta1-r1: Userspace utilities for layer 7 iptables QoS
@@ -18014,7 +18014,7 @@ www-apps/nanoc 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible stat
 www-apps/nanoc-core 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/netbox 2.7.2 2.7.6 2.7.8: IP address and data center infrastructure management tool
 www-apps/nextcloud 18.0.12 18.0.13 18.0.14 19.0.6 19.0.7 19.0.8 20.0.5 20.0.6 20.0.7: Personal cloud that runs on your own server
-www-apps/nikola 8.0.4 8.1.0 8.1.1 8.1.1-r1 8.1.2: A static website and blog generator
+www-apps/nikola 8.0.4 8.1.0 8.1.1 8.1.1-r1 8.1.2 8.1.3: A static website and blog generator
 www-apps/novnc 1.1.0 1.2.0 9999: noVNC is a VNC client implemented using HTML5 technologies
 www-apps/owncloud 10.5.0 10.6.0: Web-based storage application where all your data is under your own control
 www-apps/phpBB 3.3.3: An open-source PHP-based bulletin board package
