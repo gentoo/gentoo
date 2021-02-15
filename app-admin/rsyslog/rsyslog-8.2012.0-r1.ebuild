@@ -183,14 +183,14 @@ src_configure() {
 		$(use_enable test testbench)
 		$(use_enable test libfaketime)
 		$(use_enable test extended-tests)
-		# Input Plugins without depedencies
+		# Input Plugins without dependencies
 		--enable-imbatchreport
 		--enable-imdiag
 		--enable-imfile
 		--enable-improg
 		--enable-impstats
 		--enable-imptcp
-		# Message Modificiation Plugins without depedencies
+		# Message Modificiation Plugins without dependencies
 		--enable-mmanon
 		--enable-mmaudit
 		--enable-mmcount
