@@ -88,7 +88,7 @@ esac
 # - rdepend -- add it to BDEPEND+RDEPEND (when using entry_points)
 # - pyproject.toml -- use pyproject2setuptools to install a project
 #                     using pyproject.toml (flit, poetry...)
-# - manual -- do not add the depedency and suppress the checks
+# - manual -- do not add the dependency and suppress the checks
 #             (assumes you will take care of doing it correctly)
 #
 # This variable is effective only if DISTUTILS_OPTIONAL is disabled.
