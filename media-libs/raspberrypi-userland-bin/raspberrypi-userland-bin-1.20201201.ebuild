@@ -11,7 +11,7 @@ S="${WORKDIR}/firmware-${PV}"
 
 LICENSE="BSD GPL-2 raspberrypi-videocore-bin"
 SLOT="0"
-KEYWORDS="-* ~arm"
+KEYWORDS="-* arm"
 IUSE="+hardfp examples"
 
 RDEPEND="!media-libs/raspberrypi-userland"
