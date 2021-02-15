@@ -13,16 +13,8 @@
 # now we know our cert database is kept in sync with nss and, if need be,
 # can be sync with nss tip of tree more frequently to respond to bugs.
 
-# When triaging bugs from users, here's some handy tips:
-# - To see what cert is hitting errors, use openssl:
-#   openssl s_client -port 443 -CApath /etc/ssl/certs/ -host $HOSTNAME
-#   Focus on the errors written to stderr.
-#
-# - Look at the upstream log as to why certs were added/removed:
-#   https://hg.mozilla.org/projects/nss/log/tip/lib/ckfw/builtins/certdata.txt
-#
-# - If people want to add/remove certs, tell them to file w/mozilla:
-#   https://bugzilla.mozilla.org/enter_bug.cgi?product=NSS&component=CA%20Certificates&version=trunk
+# When triaging user reports, refer to our wiki for tips:
+# https://wiki.gentoo.org/wiki/Certificates#Debugging_certificate_issues
 
 EAPI=6
 
