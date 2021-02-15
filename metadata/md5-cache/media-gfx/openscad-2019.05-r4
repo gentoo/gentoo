@@ -11,5 +11,5 @@ RDEPEND=dev-cpp/eigen:3 dev-libs/boost:= dev-libs/double-conversion:= dev-libs/g
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/openscad/openscad/releases/download/openscad-2019.05/openscad-2019.05.src.tar.gz -> openscad-2019.05.tar.gz
-_eclasses_=elisp-common	34cc2b6f6d8914019a353fe39cff43ce	multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=elisp-common	d4b53ec63c580b993ed19445f411e1d2	multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=09cdb339a9fc1b7790bf77409e97bee5

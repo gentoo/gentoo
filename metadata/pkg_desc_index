@@ -1802,7 +1802,7 @@ app-editors/xemacs 21.4.24-r2 21.5.34-r5: highly customizable open source text e
 app-editors/xmlcopyeditor 1.2.1.3-r1: XML Copy Editor is a fast, free, validating XML editor
 app-editors/xvile 9.8t: VI Like Emacs -- yet another full-featured vi clone
 app-editors/yudit 2.9.6: Free (Y)unicode text editor for all unices
-app-editors/zile 2.3.24-r2 2.4.14 2.4.15: Zile is a small Emacs clone
+app-editors/zile 2.3.24-r2 2.4.15: Zile is a small Emacs clone
 app-emacs/actionscript-mode 7.2.2_p20180527: A major mode for GNU Emacs for editing Actionscript 3 files
 app-emacs/adaptive-wrap 0.7: Smart line-wrapping with wrap-prefix
 app-emacs/analog 1.9.99: Monitor lists of files or command output
@@ -4923,7 +4923,7 @@ dev-java/jts-core 1.14: JTS Topology Suite for Java
 dev-java/juel 2.1.0-r2: Implementation of the Unified Expression Language (EL) - JSR-245
 dev-java/jump 0.5-r1: Java-based extensible high-precision math library
 dev-java/jung 1.7.6-r1: The Java Universal Network/Graph Framework
-dev-java/junit 3.8.2-r2 4.12-r1: Simple framework to write repeatable tests
+dev-java/junit 3.8.2-r2 4.12-r1 4.13.1: Simple framework to write repeatable tests
 dev-java/junit-addons 1.4-r1: JUnit-addons is a collection of helper classes for JUnit
 dev-java/junitperf 1.9.1-r2: Simple framework to write repeatable tests
 dev-java/junrar 0.6: Unrar java implementation
@@ -8096,7 +8096,7 @@ dev-python/coloredlogs 14.0: Colored stream handler for the logging module
 dev-python/colorlog 3.1.4 4.7.2: Log formatting with colors
 dev-python/colorspacious 1.1.2: Powerful, accurate, and easy-to-use Python library for colorspace conversions
 dev-python/commonmark 0.9.1: Python parser for the CommonMark Markdown spec
-dev-python/configargparse 1.2.3: Drop-in replacement for argparse supporting config files and env variables
+dev-python/configargparse 1.2.3 1.3: Drop-in replacement for argparse supporting config files and env variables
 dev-python/configclass 0.2.0: A Python to class to hold configuration values
 dev-python/configobj 5.0.6-r1: Simple config file reader and writer
 dev-python/configshell-fb 1.1.28: A Python library for building configuration shells
@@ -8272,7 +8272,7 @@ dev-python/flit 2.1.0: Simplified packaging of Python modules
 dev-python/flit_core 2.1.0: Simplified packaging of Python modules (core module)
 dev-python/flufl-bounce 3.0.1: Email bounce detectors.
 dev-python/flufl-i18n 2.0.2 3.1.4: A high level API for Python internationalization
-dev-python/flufl-lock 5.0.1 5.0.4: NFS-safe file locking with timeouts for POSIX systems
+dev-python/flufl-lock 5.0.1 5.0.4 5.0.5: NFS-safe file locking with timeouts for POSIX systems
 dev-python/fonttools 4.18.2: Library for manipulating TrueType, OpenType, AFM and Type1 fonts
 dev-python/fqdn 1.5.0: RFC-compliant FQDN validation and manipulation for Python
 dev-python/freezegun 1.0.0-r1 1.1.0: Let your Python tests travel through time
@@ -8782,7 +8782,7 @@ dev-python/pygame_sdl2 6.99.12.4-r5 7.3.5-r1 7.3.5-r2: Reimplementation of porti
 dev-python/pyghmi 1.5.5: A pure python implementation of IPMI protocol
 dev-python/pygit2 1.4.0 1.5.0: Python bindings for libgit2
 dev-python/pyglet 1.5.13 1.5.14 1.5.15: Cross-platform windowing and multimedia library for Python
-dev-python/pygments 2.7.4: Pygments is a syntax highlighting package written in Python
+dev-python/pygments 2.7.4 2.8.0: Pygments is a syntax highlighting package written in Python
 dev-python/pygments-github-lexers 0.0.5: Pygments Github custom lexers
 dev-python/pygobject 3.34.0-r1 3.36.1-r1 3.38.0: Python bindings for GObject Introspection
 dev-python/pygpgme 0.3-r2 0.3-r3: A Python wrapper for the GPGME library
@@ -9152,7 +9152,7 @@ dev-python/soupsieve 2.1.0 2.2: A modern CSS selector implementation for Beautif
 dev-python/sparql-wrapper 1.8.5: Wrapper around a SPARQL service
 dev-python/speaklater 1.3-r1: Lazy strings for Python
 dev-python/speg 0.3-r1: A PEG-based parser interpreter with memoization
-dev-python/sphinx 2.4.4 3.3.1-r1 3.4.2-r1 3.4.3: Python documentation generator
+dev-python/sphinx 2.4.4 3.3.1-r1 3.4.2-r1 3.4.3 3.5.0: Python documentation generator
 dev-python/sphinx-aiohttp-theme 0.1.6: Sphinx theme for aiohttp
 dev-python/sphinx-bootstrap-theme 0.8.0: Sphinx theme integrates the Bootstrap CSS / JavaScript framework
 dev-python/sphinx-epytext 0.0.4: Sphinx epytext extension
@@ -10515,7 +10515,7 @@ dev-tcltk/iwidgets 4.1.1: Widget collection for incrTcl/incrTk
 dev-tcltk/mysqltcl 3.052-r1: TCL MySQL Interface
 dev-tcltk/scwoop 4.1-r1: Simple Composite Widget Object Oriented Package
 dev-tcltk/snack 2.2.10-r9: The Snack Sound Toolkit (Tcl)
-dev-tcltk/tablelist 5.8 6.3 6.8: Multi-Column Listbox Package
+dev-tcltk/tablelist 5.8 6.3 6.8 6.12: Multi-Column Listbox Package
 dev-tcltk/tcl3d 0.5.0: Tcl bindings to OpenGL and other 3D libraries
 dev-tcltk/tcllib 1.20: Tcl Standard Library
 dev-tcltk/tclperl 3.2-r1: Perl package for Tcl
@@ -13114,7 +13114,7 @@ media-libs/kquickimageeditor 0.1.3: QtQuick components providing basic image edi
 media-libs/kvazaar 1.2.0-r1 2.0.0 9999: Open-source HEVC encoder
 media-libs/ladspa-sdk 1.15-r1: The Linux Audio Developer's Simple Plugin API
 media-libs/lasi 1.1.2 1.1.3: C++ library for postscript stream output
-media-libs/lastfmlib 0.4.0 0.4.0-r1: C++ library to scrobble tracks on Last.fm
+media-libs/lastfmlib 0.4.0-r1: C++ library to scrobble tracks on Last.fm
 media-libs/lcms 2.11 2.12: A lightweight, speed optimized color management engine
 media-libs/lensfun 0.3.2-r1: Library for rectifying and simulating photographic lens distortions
 media-libs/leptonica 1.74.4 1.80.0: C library for image processing and analysis
@@ -16319,7 +16319,7 @@ sci-libs/nanoflann 1.3.2 9999: C++ header-only library for Nearest Neighbor (NN)
 sci-libs/neartree 5.1.1: Function library efficiently solving the Nearest Neighbor Problem
 sci-libs/nemesis 6.09: Enhancement to the EXODUSII finite element database model
 sci-libs/netcdf 4.3.2-r1 4.6.1-r1 4.7.4: Scientific library and interface for array oriented data access
-sci-libs/netcdf-cxx 4.2-r300 4.2.1 4.2.1-r1 4.3.0: C++ library for netCDF
+sci-libs/netcdf-cxx 4.2-r300 4.2.1 4.2.1-r1 4.3.0 4.3.1: C++ library for netCDF
 sci-libs/netcdf-fortran 4.4.3: Scientific library and interface for array oriented data access
 sci-libs/nfft 3.5.2: library for nonequispaced discrete Fourier transformations
 sci-libs/nlopt 2.6.2-r1: Non-linear optimization library

@@ -8,5 +8,5 @@ LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=app-crypt/gnupg media-gfx/qrencode >=app-text/tree-1.7.0 git? ( dev-vcs/git ) X? ( x11-misc/xclip ) elibc_Darwin? ( app-misc/getopt ) zsh-completion? ( app-shells/gentoo-zsh-completions ) fish-completion? ( app-shells/fish ) dmenu? ( x11-misc/dmenu x11-misc/xdotool ) emacs? ( >=app-editors/emacs-23.1:* )
 SLOT=0
-_eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	34cc2b6f6d8914019a353fe39cff43ce	git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	d4b53ec63c580b993ed19445f411e1d2	git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=221759e64aef54fb0c74a4cc716f6581

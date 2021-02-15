@@ -9,5 +9,5 @@ LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=emacs? ( >=app-editors/emacs-23.1:* ) history? ( sys-libs/readline:= ) xft? ( x11-libs/libXft ) xrandr? ( x11-libs/libXrandr ) virtual/perl-Pod-Parser x11-libs/libXtst
 SLOT=0
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	elisp-common	34cc2b6f6d8914019a353fe39cff43ce	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	elisp-common	d4b53ec63c580b993ed19445f411e1d2	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=cdb861ecefd8b274b54b2d8256be0f20

@@ -10,5 +10,5 @@ RDEPEND=>=dev-perl/B-Keywords-1.50.0 virtual/perl-Carp >=dev-perl/Config-Tiny-2 
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/P/PE/PETDANCE/Perl-Critic-1.130.tar.gz
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	34cc2b6f6d8914019a353fe39cff43ce	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	d4b53ec63c580b993ed19445f411e1d2	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
 _md5_=5c16ca0e191ad44195488f5fe993025d

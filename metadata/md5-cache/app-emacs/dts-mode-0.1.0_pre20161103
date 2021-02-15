@@ -8,5 +8,5 @@ LICENSE=GPL-3+
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://github.com/bgamari/dts-mode/archive/9ee0854446dcc6c53d2b8d2941051768dba50344.tar.gz -> dts-mode-0.1.0_pre20161103.tar.gz
-_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	34cc2b6f6d8914019a353fe39cff43ce
+_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	d4b53ec63c580b993ed19445f411e1d2
 _md5_=e8b695cc744fac577ee31bc10b1aff7b

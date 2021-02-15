@@ -8,5 +8,5 @@ LICENSE=GPL-2+
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://github.com/lookup2/lookup2/archive/c4f4986aac6c339e03b9e56a5dfc7c8f5c0bb5e0.tar.gz -> lookup-1.99.96_pre20180209.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	34cc2b6f6d8914019a353fe39cff43ce	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	d4b53ec63c580b993ed19445f411e1d2	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=c43429b01f078f24a86c9009de00d3f9

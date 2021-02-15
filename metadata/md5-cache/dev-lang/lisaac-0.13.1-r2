@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=vim-syntax? ( app-editors/vim ) emacs? ( >=app-editors/emacs-23.1:* )
 SLOT=0
 SRC_URI=http://isaacproject.u-strasbg.fr/download/lisaac-0.13.1.tar.gz
-_eclasses_=elisp-common	34cc2b6f6d8914019a353fe39cff43ce	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=elisp-common	d4b53ec63c580b993ed19445f411e1d2	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=869b91654ce56a5adce08ce0c225679a

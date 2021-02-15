@@ -11,5 +11,5 @@ RDEPEND=>=dev-cpp/abseil-cpp-20200923[cxx17(+)] >=dev-libs/protobuf-3.0.0:= emac
 REQUIRED_USE=|| ( emacs fcitx4 ibus )
 RESTRICT=!test? ( test )
 SLOT=0
-_eclasses_=elisp-common	34cc2b6f6d8914019a353fe39cff43ce	git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=elisp-common	d4b53ec63c580b993ed19445f411e1d2	git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=573905c3db4bc9adedf4b0cacefa8ea4

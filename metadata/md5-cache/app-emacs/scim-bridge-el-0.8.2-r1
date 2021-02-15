@@ -8,5 +8,5 @@ LICENSE=GPL-2+
 RDEPEND=app-i18n/scim >=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://launchpad.net/scim-bridge.el/0.8/0.8.2/+download/scim-bridge-el-0.8.2.tar.gz
-_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	34cc2b6f6d8914019a353fe39cff43ce
+_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	d4b53ec63c580b993ed19445f411e1d2
 _md5_=ec7289150fac0fb342c2ac2a2265461d

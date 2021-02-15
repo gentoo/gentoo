@@ -10,5 +10,5 @@ PROPERTIES=live
 RDEPEND=dev-cpp/eigen:3 dev-libs/boost:= dev-libs/double-conversion:= dev-libs/glib:2 dev-libs/gmp:0= dev-libs/hidapi dev-libs/libspnav dev-libs/libzip:= dev-libs/mpfr:0= dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5[-gles2-only] dev-qt/qtmultimedia:5 dev-qt/qtnetwork:5 dev-qt/qtopengl:5 dev-qt/qtwidgets:5 media-gfx/opencsg media-libs/fontconfig media-libs/freetype >=media-libs/glew-2.0.0:0= media-libs/harfbuzz:= media-libs/lib3mf sci-mathematics/cgal:= >=x11-libs/qscintilla-2.10.3:= emacs? ( >=app-editors/emacs-23.1:* )
 RESTRICT=test
 SLOT=0
-_eclasses_=elisp-common	34cc2b6f6d8914019a353fe39cff43ce	git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=elisp-common	d4b53ec63c580b993ed19445f411e1d2	git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=75325f0207d4328c509ed976519423e4

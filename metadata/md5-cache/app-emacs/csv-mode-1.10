@@ -8,5 +8,5 @@ LICENSE=GPL-2+
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/csv-mode-1.10.el.xz
-_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	34cc2b6f6d8914019a353fe39cff43ce
+_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	d4b53ec63c580b993ed19445f411e1d2
 _md5_=390c7770be8167c2e1b4c5ccebd8179f

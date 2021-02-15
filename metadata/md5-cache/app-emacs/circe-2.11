@@ -8,5 +8,5 @@ LICENSE=GPL-3+
 RDEPEND=>=app-editors/emacs-24:*
 SLOT=0
 SRC_URI=https://github.com/jorgenschaefer/circe/archive/v2.11.tar.gz -> circe-2.11.tar.gz
-_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	34cc2b6f6d8914019a353fe39cff43ce
+_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	d4b53ec63c580b993ed19445f411e1d2
 _md5_=1a20f4d913fa501c763de9d584c396e5

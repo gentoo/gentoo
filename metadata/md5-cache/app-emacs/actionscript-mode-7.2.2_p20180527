@@ -8,5 +8,5 @@ LICENSE=GPL-2+
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://github.com/austinhaas/actionscript-mode/archive/65abd58e198458a8e46748c5962c41d80d60c4ea.tar.gz -> actionscript-mode-7.2.2_p20180527.tar.gz
-_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	34cc2b6f6d8914019a353fe39cff43ce
+_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	d4b53ec63c580b993ed19445f411e1d2
 _md5_=e6ea45c8f98d76fd35975669c93e9def

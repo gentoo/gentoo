@@ -8,5 +8,5 @@ LICENSE=HPND MIT GPL-2+
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/nxml-gentoo-schemas-20200303.tar.xz
-_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	34cc2b6f6d8914019a353fe39cff43ce
+_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	d4b53ec63c580b993ed19445f411e1d2
 _md5_=7ccf14db5981339fbd4cd3214521d145

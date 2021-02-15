@@ -11,5 +11,5 @@ RDEPEND=dev-lang/erlang
 RESTRICT=mirror test
 SLOT=0
 SRC_URI=https://github.com/rvirding/lfe/archive/e5f20c459a13b35ed1e71b1d2667363af168e958.zip -> lfe-1.3.0_p20210112.zip
-_eclasses_=elisp-common	34cc2b6f6d8914019a353fe39cff43ce	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=elisp-common	d4b53ec63c580b993ed19445f411e1d2	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=7417a8467c4d55ea5627db32b9c4a600
