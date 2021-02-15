@@ -29,6 +29,8 @@
     font name</flag>
   <flag name="gfile">Use gfile (<pkg>dev-libs/glib</pkg>) for file
     notification</flag>
+  <flag name="gmp">Use the GNU multiple precision arithmetic library
+    (<pkg>dev-libs/gmp</pkg>) instead of the bundled mini-gmp subset</flag>
   <flag name="gsettings">Use gsettings (<pkg>dev-libs/glib</pkg>) to read the
     system font name</flag>
   <flag name="gzip-el">Compress bundled Emacs Lisp source</flag>
