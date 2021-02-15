@@ -10422,7 +10422,7 @@ dev-ruby/treetop 1.6.10 1.6.11: Treetop is a language for describing languages
 dev-ruby/trollop 2.1.3 2.9.10: Trollop is a commandline option parser for Ruby
 dev-ruby/ttfunk 1.5.1 1.6.2.1 1.7.0: A TrueType font parser written in pure ruby
 dev-ruby/tty-color 0.4.3 0.5.2 0.6.0: Terminal color capabilities detection
-dev-ruby/tty-command 0.9.0 0.10.0: Terminal color capabilities detection
+dev-ruby/tty-command 0.9.0 0.10.0 0.10.1: Terminal color capabilities detection
 dev-ruby/tty-cursor 0.7.1: Move the terminal cursor around and manipulate text using intuitive method calls
 dev-ruby/tty-file 0.7.0 0.10.0: File manipulation utility methods
 dev-ruby/tty-platform 0.3.0: Query methods for detecting different operating systems
