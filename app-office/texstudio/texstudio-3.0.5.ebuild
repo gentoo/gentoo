@@ -13,13 +13,13 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="video"
 
 COMMON_DEPEND="
 	app-text/hunspell:=
 	app-text/poppler[qt5]
-	>=dev-libs/quazip-0.7.2[qt5(+)]
+	>=dev-libs/quazip-0.7.2:0[qt5(+)]
 	dev-qt/designer:5
 	dev-qt/qtcore:5
 	dev-qt/qtconcurrent:5
