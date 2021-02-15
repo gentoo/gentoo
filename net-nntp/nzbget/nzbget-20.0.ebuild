@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,8 +31,8 @@ RDEPEND="dev-libs/libxml2:=
 DEPEND="${RDEPEND}
 	test? (
 		|| (
-			=app-arch/rar-5*
-			=app-arch/unrar-5*
+			app-arch/rar
+			app-arch/unrar
 		)
 	)
 	virtual/pkgconfig"
