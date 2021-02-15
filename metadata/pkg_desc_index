@@ -5733,7 +5733,7 @@ dev-libs/xalan-c 1.11.0_pre1153059: XSLT processor for transforming XML into HTM
 dev-libs/xapian 1.2.25 1.4.17 1.4.18: Xapian Probabilistic Information Retrieval library
 dev-libs/xapian-bindings 1.4.14 1.4.15 1.4.16 1.4.17 1.4.18-r1: SWIG and JNI bindings for Xapian
 dev-libs/xbyak 5.73: JIT assembler for x86(IA-32)/x64(AMD64, x86-64)
-dev-libs/xerces-c 3.2.3-r1 9999: A validating XML parser written in a portable subset of C++
+dev-libs/xerces-c 3.2.3-r1 3.2.3-r2 9999: A validating XML parser written in a portable subset of C++
 dev-libs/xmlrpc-c 1.39.11-r1 1.51.06 1.51.06-r2: A lightweigt RPC library based on XML and HTTP
 dev-libs/xmlsec 1.2.30 1.2.31: Command line tool for signing, verifying, encrypting and decrypting XML
 dev-libs/xxhash 0.7.3 0.8.0: Extremely fast non-cryptographic hash algorithm
