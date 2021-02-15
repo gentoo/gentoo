@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,7 +30,7 @@ src_prepare() {
 	done
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		# this undoes some of the Debian/Linux changes
-		eapply "${FILESDIR}"/${P}-darwin.patch
+		eapply "${FILESDIR}"/${PN}-1.190-darwin.patch
 	fi
 	default
 }
