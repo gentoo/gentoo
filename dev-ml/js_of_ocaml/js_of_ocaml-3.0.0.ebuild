@@ -15,7 +15,6 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 else
 	SRC_URI="https://github.com/ocsigen/js_of_ocaml/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	# Breaks dev-ml/eliom dev-ml/async_js dev-ml/ocsigen-toolkit
-	KEYWORDS=""
 	#KEYWORDS="~amd64"
 fi
 
