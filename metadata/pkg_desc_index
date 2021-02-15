@@ -13251,7 +13251,7 @@ media-libs/libsbsms 2.0.2-r1: A library for high quality time and pitch scale mo
 media-libs/libsdl 1.2.15-r9: Simple Direct Media Layer
 media-libs/libsdl2 2.0.12-r1 2.0.12-r2 2.0.14-r1: Simple Direct Media Layer
 media-libs/libsfml 2.5.1: Simple and Fast Multimedia Library (SFML)
-media-libs/libshout 2.4.3 2.4.5: library for connecting and sending data to icecast servers
+media-libs/libshout 2.4.5: library for connecting and sending data to icecast servers
 media-libs/libsidplay 1.36.59-r2 2.1.1-r5: C64 SID player library
 media-libs/libsidplayfp 1.8.8: Library for the sidplay2 fork with resid-fp
 media-libs/libsixel 1.8.6: A lightweight, fast implementation of DEC SIXEL graphics codec
@@ -13852,7 +13852,7 @@ media-sound/kmetronome 1.2.0: MIDI based metronome using ALSA sequencer
 media-sound/kmidimon 1.0.0: MIDI monitor for ALSA sequencer
 media-sound/lame 3.100-r3: LAME Ain't an MP3 Encoder
 media-sound/lash 0.5.4-r4: LASH Audio Session Handler
-media-sound/lilypond 2.21.6 2.22.0 2.23.0 9999: GNU Music Typesetter
+media-sound/lilypond 2.22.0 2.23.0 9999: GNU Music Typesetter
 media-sound/lingot 1.0.1: Accurate, easy to use, and highly configurable musical instrument tuner
 media-sound/linuxsampler 2.1.1 9999: Software audio sampler engine with professional grade features
 media-sound/litestream 1.3_rc3: Litstream is a lightweight and robust shoutcast-compatible streaming mp3 server
