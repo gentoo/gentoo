@@ -16972,7 +16972,7 @@ sys-apps/minised 1.15: a smaller, cheaper and faster sed implementation
 sys-apps/miscfiles 1.5-r3: Miscellaneous files
 sys-apps/mlocate 0.26-r2 0.26-r3: Merging locate is an utility to index and quickly search for files
 sys-apps/mlxup-bin 4.13.0: Mellanox Update and Query Utility
-sys-apps/moreutils 0.64 0.65: A collection of tools that nobody thought to write when Unix was young
+sys-apps/moreutils 0.65: A collection of tools that nobody thought to write when Unix was young
 sys-apps/most 5.0.0a-r1 5.1.0: Paging program that displays, one windowful at a time, the contents of a file
 sys-apps/mount-gtk 1.4.2 1.4.4 1.4.5.1: GTK+ based UDisks2 frontend
 sys-apps/mouseemu 0.15: Emulates scrollwheel, right- & left-click for one-button mice/touchpads
