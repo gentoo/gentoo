@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ DISTUTILS_OPTIONAL=yesplz
 DISTUTILS_SINGLE_IMPL=yesplz
 GENTOO_DEPEND_ON_PERL=no
 PATCHSET=3
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 WANT_AUTOMAKE=none
 inherit autotools distutils-r1 perl-module systemd
 
