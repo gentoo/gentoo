@@ -2813,6 +2813,33 @@
     </member>
   </project>
   <project>
+    <email>undertakers@gentoo.org</email>
+    <name>Retirement</name>
+    <url>https://wiki.gentoo.org/wiki/Project:Retirement</url>
+    <description>The Community Relations Retirement project handles developer retirement, both when developers announce their retirement as well as due to developer inactivity.</description>
+    <member>
+      <email>bman@gentoo.org</email>
+      <name>Aaron Bauman</name>
+    </member>
+    <member>
+      <email>juippis@gentoo.org</email>
+      <name>Joonas Niilola</name>
+    </member>
+    <member is-lead="1">
+      <email>mgorny@gentoo.org</email>
+      <name>Michał Górny</name>
+      <role>Lead</role>
+    </member>
+    <member>
+      <email>pacho@gentoo.org</email>
+      <name>Pacho Ramos</name>
+    </member>
+    <member>
+      <email>sam@gentoo.org</email>
+      <name>Sam James</name>
+    </member>
+  </project>
+  <project>
     <email>ruby@gentoo.org</email>
     <name>Ruby Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Ruby</url>
@@ -3332,33 +3359,6 @@
     <member>
       <email>williamh@gentoo.org</email>
       <name>William Hubbs</name>
-    </member>
-  </project>
-  <project>
-    <email>undertakers@gentoo.org</email>
-    <name>Undertakers</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Undertakers</url>
-    <description>The Community Relations Undertakers project handles developer retirement, both when developers announce their retirement as well as due to developer inactivity.</description>
-    <member>
-      <email>bman@gentoo.org</email>
-      <name>Aaron Bauman</name>
-    </member>
-    <member>
-      <email>juippis@gentoo.org</email>
-      <name>Joonas Niilola</name>
-    </member>
-    <member is-lead="1">
-      <email>mgorny@gentoo.org</email>
-      <name>Michał Górny</name>
-      <role>Lead</role>
-    </member>
-    <member>
-      <email>pacho@gentoo.org</email>
-      <name>Pacho Ramos</name>
-    </member>
-    <member>
-      <email>sam@gentoo.org</email>
-      <name>Sam James</name>
     </member>
   </project>
   <project>

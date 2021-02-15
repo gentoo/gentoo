@@ -1,4 +1,4 @@
-BDEPEND=test? ( || ( =app-arch/rar-5* =app-arch/unrar-5* ) ) virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+BDEPEND=test? ( || ( app-arch/rar app-arch/unrar ) ) virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
 DEFINED_PHASES=configure install postinst preinst prepare test
 DEPEND=dev-libs/libxml2:= ncurses? ( sys-libs/ncurses:0= ) ssl? ( gnutls? ( net-libs/gnutls:= dev-libs/nettle:= ) !gnutls? ( dev-libs/openssl:0=[-bindist] ) ) zlib? ( sys-libs/zlib:= )
 DESCRIPTION=A command-line based binary newsgrabber supporting .nzb files
@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/nzbget/nzbget/releases/download/v21.0/nzbget-21.0-src.tar.gz -> nzbget-21.0.tar.gz
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=1c9435111b64cffec59ca3f09f9c19b6
+_md5_=8d1392e0dbcaf6417a5ab4e09f5b5c2e
