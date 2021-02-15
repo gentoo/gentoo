@@ -3514,7 +3514,7 @@ dev-cpp/pangomm 2.42.1: C++ interface for pango
 dev-cpp/picojson 1.3.0: Header-file-only, JSON parser serializer in C++
 dev-cpp/pngpp 0.2.9: A simple but powerful C++ interface to libpng
 dev-cpp/popl 1.2.0 9999: Header-only C++ program options parser library
-dev-cpp/prometheus-cpp 0.9.0 0.10.0 0.11.0: Prometheus Client Library for Modern C++
+dev-cpp/prometheus-cpp 0.9.0 0.10.0 0.11.0 0.12.1: Prometheus Client Library for Modern C++
 dev-cpp/pstreams 1.0.1: C++ wrapper for the POSIX.2 functions popen(3) and pclose(3)
 dev-cpp/random123 1.09-r1: library of counter-based random number generators (CBRNGs)
 dev-cpp/range-v3 0.10.0-r1 0.11.0: Range library for C++14/17/20, basis for C++20's std::ranges
