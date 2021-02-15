@@ -18517,7 +18517,7 @@ x11-misc/rodent 5.3.16.3-r1: A fast, small and powerful file manager and graphic
 x11-misc/rofi 1.5.4-r1 1.6.0 1.6.1 99999: A window switcher, run dialog and dmenu replacement
 x11-misc/rofi-calc 1.5 1.6 2.0.0 9999: Do live calculations in rofi!
 x11-misc/rss-glx 0.9.1-r1: Really Slick OpenGL Screensavers for XScreenSaver
-x11-misc/safeeyes 2.0.9-r2 2.1.1: Linux alternative to EyeLeo
+x11-misc/safeeyes 2.0.9-r2 2.1.1 2.1.2: Linux alternative to EyeLeo
 x11-misc/screen-message 0.24 0.25: Display a multi-line message large, fullscreen, black on white
 x11-misc/screengrab 1.101 2.0.0 2.0.1 2.1.0: Qt GUI Screenshot Utility
 x11-misc/screenkey 1.3 1.4 9999: A screencast tool to display your keys inspired by Screenflick
