@@ -11694,7 +11694,7 @@ games-server/bedrock-server 1.16.201.02: The official bedrock (non-java) based s
 games-server/crossfire-server 1.71.0-r1: Server for the crossfire clients
 games-server/etqw-ded 1.5-r1: Enemy Territory: Quake Wars dedicated server
 games-server/mednafen-server 0.5.2-r1: Server for Mednafen emulator
-games-server/minecraft-server 1.16.4 1.16.5: The official server for the sandbox video game
+games-server/minecraft-server 1.16.5: The official server for the sandbox video game
 games-server/monopd 0.10.2-r1: server for atlantik games
 games-server/mtavc 0.5-r2: dedicated server for GTA3 multiplayer
 games-server/pvpgn 1.8.5-r2: A gaming server for Battle.Net compatible clients
