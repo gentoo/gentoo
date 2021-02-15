@@ -15,7 +15,7 @@ IUSE="debug"
 
 RDEPEND="
 	dev-libs/crypto++:=
-	dev-libs/quazip
+	dev-libs/quazip:0
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5

@@ -46,7 +46,7 @@ RDEPEND="
 		x11-libs/libXi
 		x11-libs/libXtst
 	)
-	keeshare? ( dev-libs/quazip )
+	keeshare? ( dev-libs/quazip:0 )
 	yubikey? ( sys-auth/ykpers )
 "
 
