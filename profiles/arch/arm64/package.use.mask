@@ -385,7 +385,7 @@ dev-java/icedtea -shenandoah
 app-portage/g-sorcery bson
 
 # Thomas Deutschmann <whissi@gentoo.org> (2017-03-01)
-# Unkeyworded depedencies
+# Unkeyworded dependencies
 app-admin/rsyslog mongodb
 
 # Michael Weber <xmw@gentoo.org> (2017-03-01)
