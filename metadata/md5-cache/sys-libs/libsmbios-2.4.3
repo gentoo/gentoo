@@ -1,16 +1,16 @@
 BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install prepare setup
-DEPEND=dev-libs/libxml2 sys-libs/zlib nls? ( virtual/libintl ) python? ( python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) ) virtual/pkgconfig doc? ( app-doc/doxygen ) graphviz? ( media-gfx/graphviz ) nls? ( sys-devel/gettext ) test? ( >=dev-util/cppunit-1.9.6 )
+DEPEND=dev-libs/libxml2 sys-libs/zlib nls? ( virtual/libintl ) python? ( python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_9? ( dev-lang/python:3.9 >=dev-lang/python-exec-2:=[python_targets_python3_9] ) ) virtual/pkgconfig doc? ( app-doc/doxygen ) graphviz? ( media-gfx/graphviz ) nls? ( sys-devel/gettext ) test? ( >=dev-util/cppunit-1.9.6 )
 DESCRIPTION=Provide access to (SM)BIOS information
 EAPI=7
 HOMEPAGE=http://linux.dell.com/files/libsmbios/
-IUSE=doc graphviz nls +python static-libs test python_single_target_python3_7 python_single_target_python3_8
+IUSE=doc graphviz nls +python static-libs test python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9
 KEYWORDS=amd64 ~arm64 ~ia64 x86
 LICENSE=GPL-2 OSL-2.0
-RDEPEND=dev-libs/libxml2 sys-libs/zlib nls? ( virtual/libintl ) python? ( python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) )
-REQUIRED_USE=python? ( ^^ ( python_single_target_python3_7 python_single_target_python3_8 ) )
+RDEPEND=dev-libs/libxml2 sys-libs/zlib nls? ( virtual/libintl ) python? ( python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_9? ( dev-lang/python:3.9 >=dev-lang/python-exec-2:=[python_targets_python3_9] ) )
+REQUIRED_USE=python? ( ^^ ( python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9 ) )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/dell/libsmbios/archive/v2.4.3.tar.gz -> libsmbios-2.4.3.tar.gz
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=0e78c5a05c5e1ebea51a4ce101e1569d
+_md5_=f1c6231db3efcd1b7d1727b33d7be085
