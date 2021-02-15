@@ -384,6 +384,7 @@ app-editors/emacs:dynamic-loading - Enable loading of dynamic libraries (modules
 app-editors/emacs:games - Support shared score files for games
 app-editors/emacs:gconf - Use gnome-base/gconf to read the system font name
 app-editors/emacs:gfile - Use gfile (dev-libs/glib) for file notification
+app-editors/emacs:gmp - Use the GNU multiple precision arithmetic library (dev-libs/gmp) instead of the bundled mini-gmp subset
 app-editors/emacs:gsettings - Use gsettings (dev-libs/glib) to read the system font name
 app-editors/emacs:gzip-el - Compress bundled Emacs Lisp source
 app-editors/emacs:harfbuzz - Use media-libs/harfbuzz as text shaping engine
