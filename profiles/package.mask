@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (2021-02-15)
+# Mask development versions now that they were bumped...
+=net-misc/kea-1.9*
+
 # Sam James <sam@gentoo.org> (2021-02-14)
 # This version seems to have broken ABI.
 # Masking until investigation completed
