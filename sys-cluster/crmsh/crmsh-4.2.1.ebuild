@@ -6,7 +6,6 @@ EAPI=6
 PYTHON_COMPAT=( python3_{7,8,9} )
 
 AUTOTOOLS_AUTORECONF=true
-KEYWORDS=""
 SRC_URI=""
 
 if [[ ${PV} == *9999 ]]; then

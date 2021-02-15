@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,6 @@ DESCRIPTION="Standalone Python library for the ROS package system"
 HOMEPAGE="https://wiki.ros.org/rospkg"
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
-	KEYWORDS=""
 	# Needed for tests
 	S="${WORKDIR}/${PN}"
 	EGIT_CHECKOUT_DIR="${S}"

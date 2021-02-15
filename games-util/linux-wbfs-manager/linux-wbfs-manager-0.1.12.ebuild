@@ -9,7 +9,6 @@ if [[ "${PV}" == "9999" ]]; then
 	ESVN_REPO_URI="https://linux-wbfs-manager.googlecode.com/svn/trunk/"
 	inherit subversion
 	SRC_URI=""
-	#KEYWORDS=""
 else
 	SRC_URI="https://linux-wbfs-manager.googlecode.com/files/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"

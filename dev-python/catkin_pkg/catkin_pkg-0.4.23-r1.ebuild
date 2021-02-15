@@ -17,7 +17,6 @@ DESCRIPTION="Standalone Python library for the catkin package system"
 HOMEPAGE="https://wiki.ros.org/catkin_pkg"
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
-	KEYWORDS=""
 else
 	SRC_URI="https://github.com/ros-infrastructure/catkin_pkg/archive/${PV}.tar.gz -> ${P}-gh.tar.gz"
 	KEYWORDS="~amd64 ~arm"
