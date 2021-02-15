@@ -10,4 +10,4 @@ RDEPEND=!elibc_Darwin? ( dev-libs/libbsd ) !net-analyzer/netcat !net-analyzer/ne
 SLOT=0
 SRC_URI=http://http.debian.net/debian/pool/main/n/netcat-openbsd/netcat-openbsd_1.195.orig.tar.gz http://http.debian.net/debian/pool/main/n/netcat-openbsd/netcat-openbsd_1.195-2.debian.tar.xz
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=ca28a64edfa2be41f59f01b8f16c9a36
+_md5_=eba5f863dba3d93dc9cf2ad03c8c3207
