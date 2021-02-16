@@ -25,7 +25,10 @@ BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 	introspection? ( dev-libs/gobject-introspection )
-	test? ( ${PYTHON_DEPS} )
+	test? (
+		${PYTHON_DEPS}
+		glib? ( $(python_gen_any_dep 'dev-python/pygobject:3[${PYTHON_USEDEP}]') )
+	)
 	vala? ( $(vala_depend) )
 "
 COMMON_DEPEND="
@@ -49,6 +52,10 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.0.4-tests.patch"
 	"${FILESDIR}/${PN}-3.0.5-pkgconfig-libdir.patch"
 )
+
+python_check_deps() {
+	has_version "dev-python/pygobject:3[${PYTHON_USEDEP}]"
+}
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
