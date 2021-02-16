@@ -257,23 +257,6 @@ virtual/httpd-php:7.2
 sys-power/pm-utils
 sys-power/pm-quirks
 
-# Michał Górny <mgorny@gentoo.org> (2021-01-05)
-# The portable version has been discontinued upstream (i.e. it is now
-# available only as tightly coupled part of OpenBSD).  The current
-# version relies on dev-libs/libressl implementation details, and can
-# not be easily ported to dev-libs/openssl.  Reported to fail to build
-# with gcc-10.  There are multiple alternative ACME clients available.
-# Removal in 30 days.  Bug #762310.
-app-crypt/acme-client
-
-# Jaco Kroon <jaco@uls.co.za> (2021-01-04)
-# media-libs/libilbc is (for every package I manage) a drop-in for
-# dev-libs/ilbc-rfc3951. The latter had net-misc/asterisk,
-# net-libs/pjproject and net-voip/yate as dependencies.
-# (All of which has been bumped to no longer have this dependency.)
-# Removal in 30 days, bug #444470
-dev-libs/ilbc-rfc3951
-
 # Lars Wendler <polynomial-c@gentoo.org> (2020-12-09)
 # Masked until most broken packages have been fixed (bug #732648)
 >=sys-devel/autoconf-2.70
