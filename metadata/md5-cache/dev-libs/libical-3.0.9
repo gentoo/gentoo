@@ -1,4 +1,4 @@
-BDEPEND=dev-lang/perl virtual/pkgconfig doc? ( app-doc/doxygen ) introspection? ( dev-libs/gobject-introspection ) test? ( || ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 ) ) vala? ( || ( dev-lang/vala:0.50[vapigen(+)] dev-lang/vala:0.48[vapigen(+)] dev-lang/vala:0.46[vapigen(+)] dev-lang/vala:0.44[vapigen(+)] dev-lang/vala:0.40[vapigen(+)] dev-lang/vala:0.36[vapigen(+)] ) ) dev-util/ninja dev-util/cmake
+BDEPEND=dev-lang/perl virtual/pkgconfig doc? ( app-doc/doxygen ) introspection? ( dev-libs/gobject-introspection ) test? ( || ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 ) glib? ( || ( ( dev-lang/python:3.9 dev-python/pygobject:3[python_targets_python3_9(-),-python_single_target_python3_9(-)] ) ( dev-lang/python:3.8 dev-python/pygobject:3[python_targets_python3_8(-),-python_single_target_python3_8(-)] ) ( dev-lang/python:3.7 dev-python/pygobject:3[python_targets_python3_7(-),-python_single_target_python3_7(-)] ) ) ) ) vala? ( || ( dev-lang/vala:0.50[vapigen(+)] dev-lang/vala:0.48[vapigen(+)] dev-lang/vala:0.46[vapigen(+)] dev-lang/vala:0.44[vapigen(+)] dev-lang/vala:0.40[vapigen(+)] dev-lang/vala:0.36[vapigen(+)] ) ) dev-util/ninja dev-util/cmake
 DEFINED_PHASES=compile configure install prepare setup test
 DEPEND=dev-libs/icu:= berkdb? ( sys-libs/db:= ) glib? ( dev-libs/glib:2 ) glib? ( dev-libs/libxml2:2 )
 DESCRIPTION=An implementation of basic iCAL protocols
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0/3
 SRC_URI=https://github.com/libical/libical/releases/download/v3.0.9/libical-3.0.9.tar.gz
 _eclasses_=cmake	ac7cb516f6a288b6a82bc0649ce49878	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	vala	5fab64090cefe75c5df431cefa0b653d	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=6c4865bb4e67f712a29304ad281b752c
+_md5_=b03dc3ca72190136ca11f8c666d6ce28
