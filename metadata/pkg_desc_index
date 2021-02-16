@@ -8040,7 +8040,7 @@ dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.20.1 0.21: Syntax highlighting and autocompletion for the Python interpreter
 dev-python/bracex 2.0.1 2.1.0 2.1.1: Bash style brace expansion for Python
 dev-python/braintree 4.4.0: Braintree Python Library
-dev-python/breathe 4.25.1-r1 4.26.1: Sphinx Doxygen renderer
+dev-python/breathe 4.25.1-r1 4.26.1 4.27.0: Sphinx Doxygen renderer
 dev-python/brotlicffi 0.8.0 1.0.9.1: Python binding to the Brotli library
 dev-python/brotlipy 0.7.0-r3: Python binding to the Brotli library
 dev-python/brython 3.7.3 3.7.4: A Python 3 implementation for client-side web programming
@@ -8084,7 +8084,7 @@ dev-python/click-default-group 1.2.2: Extends click. Group to invoke a command w
 dev-python/click-log 0.3.2: Logging integration for Click.
 dev-python/click-plugins 1.0.3 1.1.1: Module for click to enable registering CLI commands via setuptools entry-points
 dev-python/click-threading 0.4.4: Multithreaded Click apps made easy.
-dev-python/cliff 3.5.0 3.6.0: Command Line Interface Formulation Framework
+dev-python/cliff 3.5.0 3.6.0 3.7.0: Command Line Interface Formulation Framework
 dev-python/clikit 0.6.2: Group of utilities to build beautiful and testable command line interfaces
 dev-python/clint 0.5.1-r3: Python Command-line Application Tools
 dev-python/cloudpickle 1.6.0: Extended pickling support for Python objects
@@ -8802,7 +8802,7 @@ dev-python/pylatex 1.4.1: A Python library for creating LaTeX files and snippets
 dev-python/pylev 1.2.0: Python Levenshtein implementation
 dev-python/pylibacl 0.6.0: POSIX ACLs (Access Control Lists) for Python
 dev-python/pylibmc 1.6.1-r1: Libmemcached wrapper written as a Python extension
-dev-python/pylint 2.6.0 2.6.1: Python code static checker
+dev-python/pylint 2.6.0 2.6.1 2.6.2: Python code static checker
 dev-python/pylru 1.2.0: A least recently used (LRU) cache for Python
 dev-python/pyls-black 0.4.6: Black plugin for the Python Language Server
 dev-python/pyls-spyder 0.3.0 0.3.2: Spyder extensions for the python language server
@@ -8988,7 +8988,7 @@ dev-python/python-senlinclient 2.1.1: A client for the OpenStack Senlin API
 dev-python/python-sense-hat 2.2.0-r2: Raspberry Pi Sense HAT python library
 dev-python/python-slip 0.6.5 0.6.5-r1: Miscellaneous convenience, extension and workaround code for Python
 dev-python/python-slugify 1.2.6 4.0.1: A Python Slugify application that handles Unicode
-dev-python/python-socks 1.1.2 1.2.0: SOCKS4, SOCKS5, HTTP tunneling functionality for Python
+dev-python/python-socks 1.1.2 1.2.0 1.2.1: SOCKS4, SOCKS5, HTTP tunneling functionality for Python
 dev-python/python-sshpubkeys 3.1.0 3.2.1 3.3.0 3.3.1: OpenSSH public key parser for Python
 dev-python/python-stdnum 1.14 1.15 1.16: A module to handle standardized numbers and codes
 dev-python/python-swiftclient 3.10.1: Python bindings to the OpenStack Object Storage API
@@ -9152,7 +9152,7 @@ dev-python/soupsieve 2.1.0 2.2: A modern CSS selector implementation for Beautif
 dev-python/sparql-wrapper 1.8.5: Wrapper around a SPARQL service
 dev-python/speaklater 1.3-r1: Lazy strings for Python
 dev-python/speg 0.3-r1: A PEG-based parser interpreter with memoization
-dev-python/sphinx 2.4.4 3.3.1-r1 3.4.2-r1 3.4.3 3.5.0: Python documentation generator
+dev-python/sphinx 2.4.4 3.3.1-r1 3.4.2-r1 3.4.3 3.5.0 3.5.1: Python documentation generator
 dev-python/sphinx-aiohttp-theme 0.1.6: Sphinx theme for aiohttp
 dev-python/sphinx-bootstrap-theme 0.8.0: Sphinx theme integrates the Bootstrap CSS / JavaScript framework
 dev-python/sphinx-epytext 0.0.4: Sphinx epytext extension
@@ -9256,7 +9256,7 @@ dev-python/toml 0.10.2: Python library for handling TOML files
 dev-python/toolz 0.11.1: List processing tools and functional utilities
 dev-python/tooz 2.7.1: Library centralizing the most common distributed primitives
 dev-python/towncrier 19.2.0: Building newsfiles for your project
-dev-python/tox 3.20.1-r1 3.21.0 3.21.1 3.21.2 3.21.3 3.21.4: virtualenv-based automation of test activities
+dev-python/tox 3.20.1-r1 3.21.0 3.21.1 3.21.2 3.21.3 3.21.4 3.22.0: virtualenv-based automation of test activities
 dev-python/tqdm 4.55.0 4.55.1 4.55.2 4.56.0 4.56.1 4.56.2: Add a progress meter to your loops in a second
 dev-python/traceback2 1.4.0-r1: Backports of the traceback module
 dev-python/traitlets 4.3.3 5.0.5: A configuration system for Python applications

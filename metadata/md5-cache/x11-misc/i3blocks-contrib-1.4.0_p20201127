@@ -1,4 +1,4 @@
-DEFINED_PHASES=install prepare unpack
+DEFINED_PHASES=install postinst prepare unpack
 DESCRIPTION=A set of scripts for i3blocks, contributed by the community
 EAPI=7
 HOMEPAGE=https://github.com/vivien/i3blocks-contrib
@@ -7,5 +7,5 @@ LICENSE=GPL-3
 RDEPEND=!<x11-misc/i3blocks-1.5 >=x11-misc/i3blocks-1.5
 SLOT=0
 SRC_URI=https://github.com/vivien/i3blocks-contrib/archive/154001e5713c26c70063446022919225b6f916f0.tar.gz -> i3blocks-contrib-1.4.0_p20201127.tar.gz
-_eclasses_=vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
-_md5_=a77f594eabe042447ae77af28b8b1c4b
+_eclasses_=optfeature	6a2add34e06e5a05d88471a33ccdd73e	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
+_md5_=b4abc7d7e5571f8aa4d7bd1ceaab5aab
