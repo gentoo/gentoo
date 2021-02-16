@@ -13,7 +13,7 @@ SRC_URI="https://github.com/kdudka/${PN}/releases/download/${P}/${P}.tar.xz"
 
 LICENSE="MPL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ia64 ~ppc ~ppc64 ~sparc"
+KEYWORDS="~amd64 ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc"
 IUSE=""
 
 BDEPEND=" >=dev-libs/nss-3.50-r1 "
