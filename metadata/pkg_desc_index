@@ -16850,7 +16850,7 @@ sys-apps/daemonize 1.7.8: Runs a command as a Unix daemon
 sys-apps/daisydog 2014.05.30: A very simple /dev/watchdog daemon
 sys-apps/darwin-miscutils 6-r1 8 9 10 11 12: Miscellaneous commands used on macOS, High Sierra 10.13
 sys-apps/dbus 1.12.20-r1: A message bus system, a simple way for applications to talk to each other
-sys-apps/dbus-broker 24 25 9999: Linux D-Bus Message Broker
+sys-apps/dbus-broker 25 27 9999: Linux D-Bus Message Broker
 sys-apps/dcfldd 1.3.4.1-r1 1.5 1.6 1.7: enhanced dd with features for forensics and security
 sys-apps/dchroot 0.12.1: Utility for managing chroots for non-root users
 sys-apps/debianutils 4.11.1 4.11.2: A selection of tools from Debian
@@ -18045,7 +18045,7 @@ www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 78.7.0 78.7.1-r1 85.0.2-r1: Firefox Web Browser
 www-client/firefox-bin 78.7.1 85.0.2: Firefox Web Browser
-www-client/google-chrome 88.0.4324.150: The web browser from Google
+www-client/google-chrome 88.0.4324.182: The web browser from Google
 www-client/google-chrome-beta 89.0.4389.47: The web browser from Google
 www-client/google-chrome-unstable 90.0.4412.3: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
@@ -18059,7 +18059,7 @@ www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.10-r4: a free, open source web browser
 www-client/opera 74.0.3911.107: A fast and secure web browser
 www-client/opera-beta 74.0.3911.22 74.0.3911.42 74.0.3911.63: A fast and secure web browser
-www-client/opera-developer 75.0.3925.0 75.0.3932.0 75.0.3939.0 75.0.3946.0 75.0.3953.0 75.0.3960.0: A fast and secure web browser
+www-client/opera-developer 75.0.3953.0 75.0.3960.0 75.0.3967.0: A fast and secure web browser
 www-client/otter 1.0.01-r1 1.0.02 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qutebrowser 1.14.0 1.14.1 2.0.2 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
@@ -18089,7 +18089,7 @@ www-misc/visitors 0.7-r2: Fast web log analyzer
 www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution and page ordering
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-plugins/browserpass 3.0.7: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 88.0.4324.150 89.0.4389.47_beta 90.0.4412.3_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 88.0.4324.182 89.0.4389.47_beta 90.0.4412.3_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/google-talkplugin 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1 0.8.3 0.8.4: High performance flash player
 www-plugins/passff-host 1.2.1-r1: Host app for the PassFF WebExtension
