@@ -8986,7 +8986,7 @@ dev-python/python-redmine 2.3.0: Python interface to the Redmine REST API
 dev-python/python-saharaclient 3.2.1: This is a client for the OpenStack Sahara API, aka HADOOP
 dev-python/python-senlinclient 2.1.1: A client for the OpenStack Senlin API
 dev-python/python-sense-hat 2.2.0-r2: Raspberry Pi Sense HAT python library
-dev-python/python-slip 0.6.5: Miscellaneous convenience, extension and workaround code for Python
+dev-python/python-slip 0.6.5 0.6.5-r1: Miscellaneous convenience, extension and workaround code for Python
 dev-python/python-slugify 1.2.6 4.0.1: A Python Slugify application that handles Unicode
 dev-python/python-socks 1.1.2 1.2.0: SOCKS4, SOCKS5, HTTP tunneling functionality for Python
 dev-python/python-sshpubkeys 3.1.0 3.2.1 3.3.0 3.3.1: OpenSSH public key parser for Python
@@ -14691,7 +14691,7 @@ net-im/librvp 0.9.7: An RVP (Microsoft Exchange Instant Messaging) plugin for Pi
 net-im/mattermost-desktop-bin 4.5.1 4.5.2 4.6.1: Mattermost Desktop application
 net-im/mcabber 1.1.2 9999: A small Jabber console client with various features, like MUC, SSL, PGP
 net-im/minbif 1.0.5-r2: IRC gateway to IM networks
-net-im/neochat 1.0.1: Client for Matrix, the decentralized communication protocol
+net-im/neochat 1.0.1-r1: Client for Matrix, the decentralized communication protocol
 net-im/openmittsu 0.9.13.46 0.9.15.0: An open source chat client for Threema-style end-to-end encrypted chat networks
 net-im/pidgin 2.14.1: GTK Instant Messenger client
 net-im/poezio 0.13.1-r1 9999: Console XMPP client that looks like most famous IRC clients
