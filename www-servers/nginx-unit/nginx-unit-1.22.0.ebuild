@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=(python3_{7,8,9})
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit flag-o-matic python-single-r1 toolchain-funcs
 
@@ -11,6 +11,7 @@ MY_P="unit-${PV}"
 DESCRIPTION="Dynamic web and application server"
 HOMEPAGE="https://unit.nginx.org"
 SRC_URI="https://unit.nginx.org/download/${MY_P}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -32,7 +33,6 @@ DEPEND="perl? ( dev-lang/perl:= )
 	)
 	ssl? ( dev-libs/openssl:0 )"
 RDEPEND="${DEPEND}"
-S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -52,17 +52,21 @@ src_configure() {
 		--prefix=/usr
 		--state=/var/lib/${PN}
 	)
+
 	use ssl && opt+=( --openssl )
 	export AR="$(tc-getAR)"
 	export CC="$(tc-getCC)"
 	./configure ${opt[@]} --ld-opt="${LDFLAGS}" || die "Core configuration failed"
+
 	# Modules require position-independent code
 	append-cflags $(test-flags-CC -fPIC)
+
 	for flag in ${MY_USE} ; do
 		if use ${flag} ; then
 			./configure ${flag} || die "Module configuration failed: ${flag}"
 		fi
 	done
+
 	for flag in ${MY_USE_PHP} ; do
 		if use ${flag} ; then
 			local php_slot="/usr/$(get_libdir)/${flag/-/.}"
@@ -76,6 +80,7 @@ src_configure() {
 
 src_install() {
 	default
+
 	diropts -m 0770
 	keepdir /var/lib/${PN}
 	newinitd "${FILESDIR}/${PN}.initd" ${PN}
