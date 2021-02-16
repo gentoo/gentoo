@@ -10334,7 +10334,7 @@ dev-ruby/rubyntlm 0.6.2 0.6.3: Ruby/NTLM provides message creator and parser for
 dev-ruby/rubypants 0.7.0 0.7.1: A Ruby port of the SmartyPants PHP library
 dev-ruby/rubytest 0.8.1: Ruby Test is a universal test harness for Ruby
 dev-ruby/rubytest-cli 0.2.0: Rubytest CLI is a command-line interface for Rubytest
-dev-ruby/rubytter 1.5.1-r1: Rubytter is a simple twitter library
+dev-ruby/rubytter 1.5.1-r1 1.5.1-r2: Rubytter is a simple twitter library
 dev-ruby/rubyzip 1.3.0 2.2.0 2.3.0: A ruby library for reading and writing zip files
 dev-ruby/safe_yaml 1.0.5 1.0.5-r1: Parse YAML safely, alternative implementation of YAML.load
 dev-ruby/sanitize 5.2.1 5.2.2 5.2.3: Sanitize is a whitelist-based HTML sanitizer
