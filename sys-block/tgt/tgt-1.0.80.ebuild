@@ -4,8 +4,6 @@
 EAPI=7
 inherit toolchain-funcs systemd
 
-MY_TREE="6bd8382"
-
 DESCRIPTION="Linux SCSI target framework (tgt)"
 HOMEPAGE="http://stgt.sourceforge.net"
 SRC_URI="https://github.com/fujita/tgt/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -27,8 +25,6 @@ DEPEND="
 RDEPEND="${DEPEND}
 	dev-libs/libaio
 	sys-apps/sg3_utils"
-
-S=${WORKDIR}/fujita-tgt-${MY_TREE}
 
 pkg_setup() {
 	tc-export CC
