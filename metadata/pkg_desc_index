@@ -12019,13 +12019,13 @@ java-virtuals/servlet-api 2.3 2.4 2.5-r2 3.0-r2 3.1-r1: Virtual for servlet api
 java-virtuals/stax-api 1-r4: Virtual for Streaming API for XML (StAX)
 java-virtuals/transaction-api 1.1: Virtual for Transaction API (javax.transaction)
 java-virtuals/xmlrpc-api 0: Virtual for XML RPC API (javax.xml.rpc)
-kde-apps/akonadi 20.08.3 20.12.2 20.12.2-r1: Storage service for PIM data and libraries for PIM apps
+kde-apps/akonadi 20.08.3 20.12.2-r1: Storage service for PIM data and libraries for PIM apps
 kde-apps/akonadi-calendar 20.08.3 20.12.2: Library for akonadi calendar integration
 kde-apps/akonadi-contacts 20.08.3 20.12.2: Library for akonadi contact integration
 kde-apps/akonadi-import-wizard 20.08.3 20.12.2: Assistant to import PIM data from other applications into Akonadi
 kde-apps/akonadi-mime 20.08.3 20.12.2: Library for akonadi mime types
 kde-apps/akonadi-notes 20.08.3 20.12.2: Library for akonadi notes integration
-kde-apps/akonadi-search 20.08.3 20.12.2: Libraries and daemons to implement searching in Akonadi
+kde-apps/akonadi-search 20.08.3 20.12.2-r1: Libraries and daemons to implement searching in Akonadi
 kde-apps/akonadiconsole 20.08.3 20.12.2: Application for debugging Akonadi Resources
 kde-apps/akregator 20.08.3 20.12.2: News feed aggregator
 kde-apps/analitza 20.08.3 20.12.2: KDE library for mathematical features
