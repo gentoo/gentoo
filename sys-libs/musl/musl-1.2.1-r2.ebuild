@@ -123,9 +123,8 @@ src_install() {
 		dobin "${T}"/iconv
 		echo 'LDPATH="include ld.so.conf.d/*.conf"' > "${T}"/00musl || die
 		doenvd "${T}"/00musl
+		dolib.a libssp_nonshared.a
 	fi
-
-	dolib.a libssp_nonshared.a
 }
 
 pkg_postinst() {
