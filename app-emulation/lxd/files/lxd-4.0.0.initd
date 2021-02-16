@@ -4,7 +4,6 @@
 
 DAEMON=/usr/sbin/lxd
 PIDFILE=/run/lxd.pid
-TIMEOUT=10
 
 depend() {
 	need net
@@ -29,8 +28,12 @@ start() {
 }
 
 stop() {
-	ebegin "Stopping lxd service (but not containers)."
-	start-stop-daemon --stop --quiet -R TERM/45 -p ${PIDFILE}
-	rm -f ${PIDFILE}
-	eend ${?}
+	if [[ ${RC_GOINGDOWN} = YES ]] || [[ ${RC_REBOOT} = YES ]]; then
+		"${DAEMON}" shutdown
+		rm -f ${PIDFILE}
+	else
+		ebegin "Stopping lxd service (but not containers)."
+		start-stop-daemon --stop --quiet -R TERM/45 -p ${PIDFILE}
+		eend ${?}
+	fi
 }
