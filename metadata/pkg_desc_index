@@ -12277,7 +12277,7 @@ kde-frameworks/kdeclarative 5.77.0 5.79.0: Framework providing integration of QM
 kde-frameworks/kded 5.77.0 5.79.0: Central daemon of KDE workspaces
 kde-frameworks/kdelibs4support 5.77.0 5.79.0: Framework easing the development transition from KDELibs 4 to KF 5
 kde-frameworks/kdesu 5.77.0 5.79.0: Framework to handle super user actions
-kde-frameworks/kdnssd 5.77.0 5.79.0: Framework for network service discovery using Zeroconf
+kde-frameworks/kdnssd 5.77.0 5.79.1: Framework for network service discovery using Zeroconf
 kde-frameworks/kdoctools 5.77.0 5.79.0: Tools to generate documentation in various formats from DocBook files
 kde-frameworks/kemoticons 5.77.0 5.79.0: Framework for converting text emoticons to graphical representations
 kde-frameworks/kf-env 5: Environment setting required for all KDE Frameworks apps to run
@@ -13369,7 +13369,7 @@ media-libs/suil 0.10.8 0.10.10: Lightweight C library for loading and wrapping L
 media-libs/svgalib 1.9.25-r7 1.9.25-r8: A library for running svga graphics on the console
 media-libs/svt-av1 0.8.6 9999: Scalable Video Technology for AV1 (SVT-AV1 Encoder and Decoder)
 media-libs/t1lib 5.1.2-r2: A Type 1 Font Rasterizer Library for UNIX/X11
-media-libs/taglib 1.11.1_p20190920-r1: Library for reading and editing audio meta data
+media-libs/taglib 1.11.1_p20190920-r1 1.12: Library for reading and editing audio meta data
 media-libs/taglib-extras 1.0.1-r1: Unofficial taglib plugins maintained by the Amarok team
 media-libs/tg_owt 0_pre20201105 0_pre20201112: WebRTC build for Telegram
 media-libs/theoraplay 0_pre20180524: Simple library to make decoding of Ogg Theora videos easier
