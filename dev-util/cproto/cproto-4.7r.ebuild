@@ -9,7 +9,7 @@ SRC_URI="ftp://ftp.invisible-island.net/cproto/${P}.tgz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 DEPEND="sys-devel/flex
 	virtual/yacc"
