@@ -15376,7 +15376,7 @@ net-misc/websocat 1.6.0 1.6.0-r1: Command-line client for WebSockets, like netca
 net-misc/wget 1.20.3-r3 1.21-r1 1.21.1: Network utility to retrieve files from the WWW
 net-misc/wget2 1.99.2 9999: GNU Wget2 is a file and recursive website downloader
 net-misc/whatmask 1.2-r1: little C program to compute different subnet mask notations
-net-misc/whois 5.5.6-r1 5.5.7 9999: improved Whois Client
+net-misc/whois 5.5.6-r1 5.5.7 5.5.8 9999: improved Whois Client
 net-misc/wol 0.7.1-r2: Implements Wake On LAN (Magic Paket) functionality in a small program
 net-misc/wput 0.6.1-r1 0.6.2: Tiny program like wget, to upload files/whole directories via FTP
 net-misc/x11-ssh-askpass 1.2.4.1-r2: X11-based passphrase dialog for use with OpenSSH
