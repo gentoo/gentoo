@@ -1,15 +1,16 @@
-BDEPEND=app-text/asciidoc >=dev-util/meson-0.54.0 >=dev-util/ninja-1.8.2 dev-util/meson-format-array >=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=compile configure install postinst postrm preinst prepare test unpack
+BDEPEND=app-text/asciidoc >=dev-util/meson-0.54.0 >=dev-util/ninja-1.8.2 dev-util/meson-format-array
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
 DEPEND=dev-libs/icu:= dev-libs/inih media-libs/libglvnd[X?] x11-libs/libxkbcommon[X?] x11-libs/pango X? ( x11-libs/libX11 x11-libs/libxcb:= ) freeimage? ( media-libs/freeimage ) gif? ( media-libs/libnsgif ) heif? ( media-libs/libheif:= ) jpeg? ( media-libs/libjpeg-turbo:= ) png? ( media-libs/libpng:= ) svg? ( >=gnome-base/librsvg-2.44 ) tiff? ( media-libs/tiff ) wayland? ( dev-libs/wayland ) !sys-apps/renameutils test? ( dev-util/cmocka ) dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=Minimal image viewer designed for tiling window manager users
 EAPI=7
 HOMEPAGE=https://github.com/eXeC64/imv
 IUSE=+X +freeimage gif heif jpeg png svg test tiff wayland
+KEYWORDS=~amd64 ~x86
 LICENSE=MIT-with-advertising
-PROPERTIES=live
 RDEPEND=dev-libs/icu:= dev-libs/inih media-libs/libglvnd[X?] x11-libs/libxkbcommon[X?] x11-libs/pango X? ( x11-libs/libX11 x11-libs/libxcb:= ) freeimage? ( media-libs/freeimage ) gif? ( media-libs/libnsgif ) heif? ( media-libs/libheif:= ) jpeg? ( media-libs/libjpeg-turbo:= ) png? ( media-libs/libpng:= ) svg? ( >=gnome-base/librsvg-2.44 ) tiff? ( media-libs/tiff ) wayland? ( dev-libs/wayland ) !sys-apps/renameutils
 REQUIRED_USE=|| ( X wayland )
 RESTRICT=!test? ( test )
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	meson	e43eef9331f54965a573ed380854ff47	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=533ed6704d2a5bd1b254e0b7103287a9
+SRC_URI=https://github.com/eXeC64/imv/archive/v4.2.0.tar.gz -> imv-4.2.0.tar.gz
+_eclasses_=meson	e43eef9331f54965a573ed380854ff47	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=1e17d67beb36142595e56c918ff554e3
