@@ -31,5 +31,6 @@ start() {
 stop() {
 	ebegin "Stopping lxd service (but not containers)."
 	start-stop-daemon --stop --quiet -R TERM/45 -p ${PIDFILE}
+	rm -f ${PIDFILE}
 	eend ${?}
 }
