@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,9 +30,11 @@ _test_charmap() {
 src_prepare() {
 	default
 
-	_test_charmap
-
-	convmv --notest --replace -f iso-8859-1 -t utf-8 -r "${S}"/
+	# bug 715684
+	if [[ ${CHOST} != *-musl* ]] ; then
+		_test_charmap
+	fi
+		convmv --notest --replace -f iso-8859-1 -t utf-8 -r "${S}"/
 }
 
 src_install() {
