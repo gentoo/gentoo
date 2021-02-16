@@ -5,7 +5,7 @@ DESCRIPTION=Modern music player and library organizer based on Clementine and Qt
 EAPI=7
 HOMEPAGE=https://www.strawbs.org/
 IUSE=cdda +dbus debug +gstreamer ipod mtp pulseaudio +udisks vlc test
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 ~ppc64 ~x86
 LICENSE=GPL-3
 RDEPEND=app-crypt/qca:2[qt5(+)] dev-db/sqlite:= dev-libs/glib:2 dev-libs/libxml2 dev-libs/protobuf:= dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5[ssl] dev-qt/qtsql:5[sqlite] dev-qt/qtwidgets:5 media-libs/alsa-lib media-libs/chromaprint:= >=media-libs/libmygpo-qt-1.0.9[qt5(+)] >=media-libs/taglib-1.11.1_p20181028 sys-libs/zlib virtual/glu x11-libs/libX11 cdda? ( dev-libs/libcdio:= ) dbus? ( dev-qt/qtdbus:5 ) gstreamer? ( media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 ) ipod? ( >=media-libs/libgpod-0.8.0 ) mtp? ( >=media-libs/libmtp-1.0.0 ) pulseaudio? ( media-sound/pulseaudio ) vlc? ( media-video/vlc ) gstreamer? ( media-plugins/gst-plugins-meta:1.0 media-plugins/gst-plugins-soup:1.0 media-plugins/gst-plugins-taglib:1.0 ) mtp? ( gnome-base/gvfs[mtp] ) udisks? ( sys-fs/udisks:2 )
 REQUIRED_USE=|| ( gstreamer vlc )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/jonaski/strawberry/releases/download/0.8.5/strawberry-0.8.5.tar.xz
 _eclasses_=cmake	ac7cb516f6a288b6a82bc0649ce49878	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	virtualx	7e60d3b10c791ab996f717bc1f30072f	wrapper	4251d4c84c25f59094fd557e0063a974	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=c19f8c6c9fd19d4bb1b914e6c32dee75
+_md5_=5e2bcea4cf468f23316743dc784b7e5e

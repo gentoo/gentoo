@@ -2072,7 +2072,7 @@ app-emulation/libvirt-glib 1.0.0-r1 2.0.0 3.0.0: GLib and GObject mappings for l
 app-emulation/libvirt-snmp 0.0.4: Provides SNMP functionality for libvirt
 app-emulation/lxc 4.0.6: A userspace interface for the Linux kernel containment features
 app-emulation/lxc-templates 3.0.4: Old style template scripts for LXC
-app-emulation/lxd 4.0.4-r5: Fast, dense and secure container management
+app-emulation/lxd 4.0.4-r6: Fast, dense and secure container management
 app-emulation/nemu 2.2.1 9999: ncurses interface for QEMU
 app-emulation/open-vm-tools 11.2.0_p16938113-r1 11.2.5_p17337674: Opensourced tools for VMware guests
 app-emulation/pcem 17: A PC emulator that specializes in running old operating systems and software
@@ -5187,7 +5187,7 @@ dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.30.3 5.30.3-r1 5.30.3-r2 5.32.0-r1 5.32.1: Larry Wall's Practical Extraction and Report Language
 dev-lang/php 7.2.34-r1 7.2.34-r2 7.3.25 7.3.26 7.3.26-r1 7.3.27 7.4.13 7.4.14 7.4.14-r1 7.4.15 8.0.0 8.0.1-r1 8.0.2: The PHP language runtime engine
 dev-lang/polyml 5.6 5.8: Poly/ML is a full implementation of Standard ML
-dev-lang/python 2.7.18-r5 2.7.18-r6 2.7.18_p7 3.6.12-r1 3.6.12-r2 3.6.12_p3 3.7.9-r1 3.7.9-r2 3.7.9_p3 3.8.6-r1 3.8.7-r1 3.8.7_p2 3.9.0-r1 3.9.1-r1 3.9.1_p2 3.10.0_alpha3-r1 3.10.0_alpha4 3.10.0_alpha5 3.10.0_alpha5_p1: An interpreted, interactive, object-oriented programming language
+dev-lang/python 2.7.18-r5 2.7.18-r6 2.7.18_p7 3.6.12-r1 3.6.12-r2 3.6.12_p3 3.6.13 3.7.9-r1 3.7.9-r2 3.7.9_p3 3.7.10 3.8.6-r1 3.8.7-r1 3.8.7_p2 3.9.0-r1 3.9.1-r1 3.9.1_p2 3.10.0_alpha3-r1 3.10.0_alpha4 3.10.0_alpha5 3.10.0_alpha5_p1: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6-r2 2.4.6-r3 2.4.6-r4: Python script wrapper
 dev-lang/python-exec-conf 2.4.6: Configuration file for dev-lang/python-exec
 dev-lang/qu-prolog 10.6: Extended Prolog supporting quantifiers, object-variables and substitutions
@@ -8804,10 +8804,10 @@ dev-python/pylatex 1.4.1: A Python library for creating LaTeX files and snippets
 dev-python/pylev 1.2.0: Python Levenshtein implementation
 dev-python/pylibacl 0.6.0: POSIX ACLs (Access Control Lists) for Python
 dev-python/pylibmc 1.6.1-r1: Libmemcached wrapper written as a Python extension
-dev-python/pylint 2.6.0: Python code static checker
+dev-python/pylint 2.6.0 2.6.1: Python code static checker
 dev-python/pylru 1.2.0: A least recently used (LRU) cache for Python
 dev-python/pyls-black 0.4.6: Black plugin for the Python Language Server
-dev-python/pyls-spyder 0.3.0: Spyder extensions for the python language server
+dev-python/pyls-spyder 0.3.0 0.3.2: Spyder extensions for the python language server
 dev-python/pymad 0.10: Python wrapper for libmad MP3 decoding in python
 dev-python/pymdown-extensions 8.0.1 8.1.1: Extensions for Python Markdown.
 dev-python/pymdown-lexers 0_pre20180905: Additional lexers for use in Pygments
