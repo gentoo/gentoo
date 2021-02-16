@@ -4,7 +4,6 @@
 
 DAEMON=/usr/sbin/lxd
 PIDFILE=/run/lxd.pid
-TIMEOUT=10
 
 depend() {
 	need net
