@@ -19,6 +19,13 @@ DEPEND="dev-lang/tcl:0=
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
+src_prepare() {
+	default
+	sed -i \
+		-e "/TCLRL_LIBDIR/s|/usr/lib|/usr/$(get_libdir)|" \
+		configure || die
+}
+
 src_configure() {
 	local myConf=--with-tcl="${EPREFIX}/usr/$(get_libdir)"
 	if ! use tk; then
