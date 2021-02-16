@@ -1,0 +1,20 @@
+compiling with CC="clang" CXX="clang++" we get the message
+
+   svdrp.c:76:3: error: no matching member function for call to 'Set'
+     Set(INADDR_ANY, 0);
+     ^~~
+
+this patch fixes it
+
+Signed-off-by: Martin Dummer <martin.dummer@gmx.net> ( 2020/02/15 )
+--- a/svdrp.c	2021-02-14 00:00:30.417157252 +0100
++++ b/svdrp.c	2021-02-14 00:00:55.636995544 +0100
+@@ -73,7 +73,7 @@
+ 
+ cIpAddress::cIpAddress(void)
+ {
+-  Set(INADDR_ANY, 0);
++  Set((const char *)INADDR_ANY, 0);
+ }
+ 
+ cIpAddress::cIpAddress(const char *Address, int Port)
