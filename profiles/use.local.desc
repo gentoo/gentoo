@@ -3944,7 +3944,6 @@ media-gfx/darktable:gmic - Use the G'MIC image-processing framework (media-gfx/g
 media-gfx/darktable:kwallet - Enable encrypted storage of passwords with kde-frameworks/kwallet
 media-gfx/darktable:lto - Enable link-time optimisations in the RawSpeed library
 media-gfx/darktable:opencl - Enable opencl support
-media-gfx/darktable:system-lua - Use dev-lang/lua instead of the bundled liblua
 media-gfx/darktable:tools - Install tools for generating base curves and noise profiles
 media-gfx/digikam:addressbook - Enable akonadi contact integration
 media-gfx/digikam:heif - Enable support for ISO/IEC 23008-12:2017 HEIF files using media-libs/x265
