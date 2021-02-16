@@ -17,16 +17,19 @@ HOMEPAGE="https://community.kde.org/KDE_PIM/akonadi"
 LICENSE="LGPL-2.1+"
 SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
-IUSE="+kaccounts +mariadb postgres sqlite tools xml"
+IUSE="+kaccounts +mysql postgres sqlite tools xml"
 
-REQUIRED_USE="|| ( mariadb postgres sqlite ) test? ( tools )"
+REQUIRED_USE="|| ( mysql postgres sqlite ) test? ( tools )"
+
+# some akonadi tests time out, that probably needs more work as it's ~700 tests
+RESTRICT+=" test"
 
 COMMON_DEPEND="
 	app-arch/xz-utils
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtnetwork-${QTMIN}:5
-	>=dev-qt/qtsql-${QTMIN}:5[postgres?]
+	>=dev-qt/qtsql-${QTMIN}:5[mysql?,postgres?]
 	>=dev-qt/qtwidgets-${QTMIN}:5
 	>=dev-qt/qtxml-${QTMIN}:5
 	>=kde-frameworks/kconfig-${KFMIN}:5
@@ -45,7 +48,6 @@ COMMON_DEPEND="
 		>=kde-apps/kaccounts-integration-20.08.3:5
 		net-libs/accounts-qt
 	)
-	mariadb? ( >=dev-qt/qtsql-${QTMIN}:5[mysql] )
 	sqlite? (
 		dev-db/sqlite:3
 		>=dev-qt/qtsql-${QTMIN}:5=[sqlite]
@@ -58,24 +60,24 @@ DEPEND="${COMMON_DEPEND}
 	test? ( sys-apps/dbus )
 "
 RDEPEND="${COMMON_DEPEND}
-	mariadb? ( >=dev-db/mariadb-10.4:* )
+	mysql? ( virtual/mysql )
 	postgres? ( dev-db/postgresql )
 "
 
-# some akonadi tests time out, that probably needs more work as it's ~700 tests
-RESTRICT+=" test"
-
-PATCHES=( "${FILESDIR}/${PN}-18.12.2-mysql56-crash.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-18.12.2-mysql56-crash.patch"
+	"${FILESDIR}/${P}-mysql8-conf.patch" # bug 709812
+)
 
 pkg_setup() {
-	# Set default storage backend in order: MariaDB, PostgreSQL, SQLite
+	# Set default storage backend in order: MySQL, PostgreSQL, SQLite
 	# reverse driver check to keep the order
 	use sqlite && DRIVER="QSQLITE3"
 	use postgres && DRIVER="QPSQL"
-	use mariadb && DRIVER="QMYSQL"
+	use mysql && DRIVER="QMYSQL"
 
-	if use mariadb && has_version ">=dev-db/mariadb-10.4"; then
-		ewarn "If an existing Akonadi MariaDB database is being upgraded using"
+	if use mysql && has_version ">=dev-db/mariadb-10.4"; then
+		ewarn "If an existing Akonadi QMYSQL database is being upgraded using"
 		ewarn ">=dev-db/mariadb-10.4 and KMail stops fetching and sending mail,"
 		ewarn "check ~/.local/share/akonadi/akonadiserver.error for errors like:"
 		ewarn "  \"Cannot add or update a child row: a foreign key constraint fails\""
@@ -88,15 +90,8 @@ pkg_setup() {
 
 	if use sqlite || has_version "<${CATEGORY}/${P}[sqlite]"; then
 		ewarn "We strongly recommend you change your Akonadi database backend to"
-		ewarn "either MariaDB or PostgreSQL in your user configuration."
+		ewarn "either MariaDB/MySQL or PostgreSQL in your user configuration."
 		ewarn "In particular, kde-apps/kmail does not work properly with the sqlite backend."
-	fi
-
-	if has_version "kde-apps/akonadi[mysql]"; then
-		ewarn "Due to configuration incompatibilities we are unable to provide"
-		ewarn "the option to use dev-db/mysql. You must switch to dev-db/mariadb."
-		ewarn "  https://bugs.gentoo.org/709812"
-		ewarn "  https://bugs.kde.org/show_bug.cgi?id=421922"
 	fi
 
 	ecm_pkg_setup
@@ -130,7 +125,7 @@ pkg_postinst() {
 	ecm_pkg_postinst
 	elog "You can select the storage backend in ~/.config/akonadi/akonadiserverrc."
 	elog "Available drivers are:"
-	use mariadb && elog "  QMYSQL"
+	use mysql && elog "  QMYSQL"
 	use postgres && elog "  QPSQL"
 	use sqlite && elog "  QSQLITE3"
 	elog "${DRIVER} has been set as your default akonadi storage backend."
