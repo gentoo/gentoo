@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Utility to find btrfs compression type/ratio on a file or set of files"
 HOMEPAGE="https://github.com/kilobyte/compsize"
@@ -29,6 +29,8 @@ src_prepare() {
 }
 
 src_configure() {
+	tc-export CC
+
 	use debug && append-cflags -Wall -DDEBUG -g
 	default
 }
