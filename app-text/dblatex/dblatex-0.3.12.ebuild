@@ -1,19 +1,19 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_7 )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit distutils-r1
 
 DESCRIPTION="Transform DocBook using TeX macros"
 HOMEPAGE="http://dblatex.sourceforge.net/"
-SRC_URI="https://downloads.sourceforge.net/project/dblatex/dblatex/${P}/${P}py3.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/project/dblatex/dblatex/${P}/${PN}3-${PV}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 arm x86"
+KEYWORDS="~amd64 ~arm ~ia64 ~ppc64 ~sparc ~x86"
 IUSE="inkscape"
 
 RDEPEND="
@@ -35,20 +35,21 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-S="${WORKDIR}/${P}py3"
+S="${WORKDIR}/${PN}3-${PV}"
 
 PATCHES=(
-	 "${FILESDIR}/${P}-path-logging.patch"
-	 "${FILESDIR}/${P}-setup.patch"
+	 "${FILESDIR}/${PN}-0.3.11-path-logging.patch"
+	 "${FILESDIR}/${PN}-0.3.11-setup.patch"
+	 "${FILESDIR}/${PN}-0.3.11-encode.patch"
 )
 
 python_prepare_all() {
 	# Manual page is precomressed, but we will use our own compression later.
 	gunzip docs/manpage/dblatex.1.gz || die
 	# If we dont have inkscape we need to use an alternative SVG converter
-	use inkscape || eapply "${FILESDIR}/${P}-no-inkscape-dependency.patch"
-	# We need to fix version information in the docs and some metadata
-	grep -l -I -R "0.3.11py3" | xargs -n1 sed -i -e "s/${PV}py3/${PV}/" || die
+	use inkscape || eapply "${FILESDIR}/${PN}-0.3.11-no-inkscape-dependency.patch"
+	# If we use inscape however we want to make dblatex compatible with v1.0
+	use inkscape && eapply "${FILESDIR}/${PN}-0.3.11-inkscape-1.0.patch"
 	distutils-r1_python_prepare_all
 }
 
