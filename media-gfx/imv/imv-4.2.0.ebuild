@@ -67,9 +67,9 @@ src_prepare() {
 }
 
 src_configure() {
-	local WINDOWS=all
-	use X || WINDOWS=wayland
-	use wayland || WINDOWS=x11
+	local windows=all
+	use X || windows=wayland
+	use wayland || windows=x11
 
 	local emesonargs=(
 		$(meson_feature freeimage)
@@ -80,7 +80,7 @@ src_configure() {
 		$(meson_feature svg librsvg)
 		$(meson_feature test)
 		$(meson_feature tiff libtiff)
-		-Dwindows=$WINDOWS
+		-Dwindows=${windows}
 	)
 	meson_src_configure
 }
