@@ -45,5 +45,5 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-libs/boost
-	test? ( >=kde-apps/akonadi-${PVCUT}:5[mariadb,postgres,sqlite] )
+	test? ( >=kde-apps/akonadi-${PVCUT}:5[mysql,postgres,sqlite] )
 "
