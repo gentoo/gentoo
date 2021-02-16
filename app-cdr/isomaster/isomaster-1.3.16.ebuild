@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit toolchain-funcs xdg-utils
 
@@ -11,17 +11,17 @@ SRC_URI="http://littlesvr.ca/${PN}/releases/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="nls"
 
-RDEPEND=">=dev-libs/iniparser-3.0.0:0
+RDEPEND=">=dev-libs/iniparser-4.1:4
 	x11-libs/gtk+:2"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nls? ( >=sys-devel/gettext-0.19.1 )"  # bug 512448
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.3.9-iniparser-3.0.0.patch #399629
+	"${FILESDIR}"/${PN}-1.3.14-include-path.patch
 )
 
 pkg_setup() {
@@ -29,6 +29,7 @@ pkg_setup() {
 		DEFAULT_EDITOR=leafpad
 		MYDOCPATH=/usr/share/doc/${PF}/bkisofs
 		USE_SYSTEM_INIPARSER=1
+		LIB_INIPARSER=iniparser4
 		PREFIX=/usr
 		)
 
@@ -38,11 +39,11 @@ pkg_setup() {
 src_prepare() {
 	default
 	rm -f configure || die #274361
-	rm -R iniparser-2.17 || die
+	rm -R iniparser-4.1 || die
 }
 
 src_compile() {
-	tc-export CC
+	tc-export AR CC
 	emake "${myisoconf[@]}"
 }
 
