@@ -9828,7 +9828,7 @@ dev-ruby/activemodel-serializers-xml 1.0.2: XML serialization for your Active Mo
 dev-ruby/activerecord 5.2.4.3 5.2.4.4 5.2.4.5 6.0.3.4 6.0.3.5 6.1.2.1: Implements the ActiveRecord pattern (Fowler, PoEAA) for ORM
 dev-ruby/activestorage 5.2.4.3 5.2.4.4 5.2.4.5 6.0.3.4 6.0.3.5 6.1.2.1: Attach cloud and local files in Rails applications
 dev-ruby/activesupport 5.2.4.3 5.2.4.4 5.2.4.5 6.0.3.4 6.0.3.4-r1 6.0.3.5 6.1.2.1: Utility Classes and Extension to the Standard Library
-dev-ruby/acts_as_list 1.0.1: Capabilities for sorting and reordering a number of objects in a list
+dev-ruby/acts_as_list 1.0.1 1.0.3: Capabilities for sorting and reordering a number of objects in a list
 dev-ruby/addressable 2.6.0 2.7.0: A replacement for the URI implementation that is part of Ruby's standard library
 dev-ruby/ae 1.8.2: Assertive Expressive is an assertions library designed for reuse
 dev-ruby/afm 0.2.2 0.2.2-r1: A very simple library to read Adobe Font Metrics files
@@ -9843,7 +9843,7 @@ dev-ruby/annoy 0.5.6-r1: Like your annoying friend that asks you questions all t
 dev-ruby/ansi 1.5.0: The Ruby ANSI project is collection of ANSI escape codes for Ruby
 dev-ruby/archive-tar-minitar 0.8: Provides POSIX tarchive management from Ruby programs
 dev-ruby/arel 9.0.0: Arel is a Relational Algebra for Ruby
-dev-ruby/arel-helpers 2.11.0: Tools to help construct database queries
+dev-ruby/arel-helpers 2.11.0 2.12.0: Tools to help construct database queries
 dev-ruby/ascii85 1.0.3 1.1.0: Methods for encoding/decoding Adobe's binary-to-text encoding of the same name
 dev-ruby/asciidoctor 2.0.10 2.0.11 2.0.12: Processor for converting AsciiDoc into HTML 5, DocBook 4.5 and other formats
 dev-ruby/asciidoctor-diagram 1.5.19 2.0.2 2.0.3 2.0.5: A set of Asciidoctor extensions that enable you to add diagrams
@@ -10455,7 +10455,7 @@ dev-ruby/virtus 1.0.5: Attributes on Steroids for Plain Old Ruby Objects
 dev-ruby/vlad 2.7.0 2.7.1: Pragmatic application deployment automation, without mercy
 dev-ruby/warden 1.2.9: General Rack Authentication Framework
 dev-ruby/web-console 3.7.0 4.0.1 4.0.4: A debugging tool for your Ruby on Rails applications
-dev-ruby/webmock 3.7.6 3.8.3 3.11.0: Allows stubbing HTTP requests and setting expectations on HTTP requests
+dev-ruby/webmock 3.7.6 3.8.3 3.11.0 3.11.2: Allows stubbing HTTP requests and setting expectations on HTTP requests
 dev-ruby/webrick 1.7.0: An HTTP server toolkit
 dev-ruby/webrobots 0.1.2-r1: A library to help write robots.txt compliant web robots
 dev-ruby/websocket 1.2.8 1.2.9: Universal Ruby library to handle WebSocket protocol
