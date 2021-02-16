@@ -1015,7 +1015,6 @@ app-cdr/xcdroast 0.98_alpha16-r3: Lightweight cdrtools front-end for CD and DVD 
 app-cdr/xfburn 0.6.2: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
 app-crypt/acme 1.10.1 1.11.0 1.12.0 9999: An implementation of the ACME protocol
-app-crypt/acme-client 0.1.16: a secure ACME client
 app-crypt/acme-sh 2.8.8-r1 9999: A pure Unix shell script implementing ACME client protocol
 app-crypt/acme-tiny 4.1.0 9999: A tiny, auditable script for Let's Encrypt's ACME Protocol
 app-crypt/acr38u 1.7.11-r3: Non CCID driver for ACR38 AC1038-based Smart Card Reader
@@ -5346,7 +5345,6 @@ dev-libs/icu-layoutex 68.2: External layout part of International Components for
 dev-libs/icu-le-hb 1.0.3-r1: ICU Layout Engine API on top of HarfBuzz shaping library
 dev-libs/igraph 0.8.3 0.8.5: Creating and manipulating undirected and directed graphs
 dev-libs/iksemel 1.4-r1: eXtensible Markup Language parser library designed for Jabber applications
-dev-libs/ilbc-rfc3951 0-r1 0-r2: iLBC is a speech codec suitable for robust voice communication over IP
 dev-libs/inih 52 52-r1 53: inih (INI not invented here) simple .INI file parser
 dev-libs/iniparser 3.1-r2 4.1: A free stand-alone ini file parsing library
 dev-libs/injeqt 1.2.0: Dependency injection framework for Qt5
