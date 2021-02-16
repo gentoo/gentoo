@@ -3610,10 +3610,12 @@ kde-plasma/plasma-desktop:kaccounts - Build the OpenDesktop integration plugin
 kde-plasma/plasma-desktop:policykit - Build the Users KCM using sys-apps/accountsservice and sys-auth/polkit
 kde-plasma/plasma-desktop:scim - Enable applets that use app-i18n/scim
 kde-plasma/plasma-meta:browser-integration - Enable integration with Chrome/Firefox with browser extensions
+kde-plasma/plasma-meta:colord - Enable kde-plasma/kwin color management via x11-misc/colord
 kde-plasma/plasma-meta:crypt - Pull in kde-plasma/plasma-vault for encrypted vaults integration
 kde-plasma/plasma-meta:desktop-portal - Enable sys-apps/xdg-desktop-portal backend implementation for Plasma
 kde-plasma/plasma-meta:discover - Pull in resources management GUI; a centralised GHNS alternative and optional sys-apps/fwupd frontend
 kde-plasma/plasma-meta:display-manager - Pull in a graphical display manager
+kde-plasma/plasma-meta:firewall - Pull in kde-plasma/plasma-firewall for system firewall administration
 kde-plasma/plasma-meta:grub - Pull in Breeze theme for sys-boot/grub
 kde-plasma/plasma-meta:gtk - Enable Breeze widget style and system settings module for GTK+
 kde-plasma/plasma-meta:kwallet - Enable support for KWallet auto-unlocking via kde-plasma/kwallet-pam
