@@ -11,13 +11,15 @@ SRC_URI="ftp://ftp.tvdr.de/vdr/${P}.tar.bz2
 	mainmenuhooks? ( http://vdr.websitec.de/download/${PN}/${PN}-2.4.1/${PN}-2.4.1_mainmenuhook-1.0.1.patch.bz2 )
 	menuorg? ( https://projects.vdr-developer.org/projects/plg-menuorg/repository/revisions/master/raw/vdr-patch/vdr-menuorg-2.3.x.diff )
 	naludump? ( http://www.udo-richter.de/vdr/files/vdr-2.1.5-naludump-0.1.diff )
-	ttxtsubs? ( http://vdr.websitec.de/download/${PN}/${P}/${P}_ttxtsubs.patch.bz2 )"
+	pinplugin? ( http://vdr.websitec.de/download/${PN}/${P}/${P}_pinplugin.patch.bz2 )
+	ttxtsubs? ( http://vdr.websitec.de/download/${PN}/${P}/${P}_ttxtsubs_v2.patch.bz2 )
+	permashift? ( http://vdr.websitec.de/download/${PN}/${P}/vdr-2.4-patch-for-permashift.diff.bz2 )"
 
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
-IUSE="bidi debug demoplugins html keyboard mainmenuhooks menuorg naludump systemd ttxtsubs verbose"
-# use-flag permashift, pinplugin tmp droped
+IUSE="bidi debug demoplugins html keyboard mainmenuhooks menuorg naludump permashift pinplugin systemd ttxtsubs verbose"
+
 COMMON_DEPEND="
 	virtual/jpeg:*
 	sys-libs/libcap
@@ -33,9 +35,8 @@ RDEPEND="${COMMON_DEPEND}
 	systemd? ( sys-apps/systemd )"
 BDEPEND="sys-devel/gettext"
 
-# permashift, pinplugin tmp droped
-#REQUIRED_USE="pinplugin? ( !mainmenuhooks )"
-#	permashift? ( !naludump !pinplugin )"
+REQUIRED_USE="pinplugin? ( !mainmenuhooks )
+	permashift? ( !naludump !pinplugin )"
 
 CONF_DIR="/etc/vdr"
 CAP_FILE="${S}/capabilities.sh"
@@ -132,10 +133,13 @@ src_prepare() {
 	use demoplugins || eapply "${FILESDIR}/vdr-2.4_remove_plugins.patch"
 	eapply "${FILESDIR}/${P}_makefile-variables.patch"
 
+	# fix clang/LLVM compile
+	eapply "${FILESDIR}/${P}_clang.patch"
+
 	use naludump && eapply "${DISTDIR}/${PN}-2.1.5-naludump-0.1.diff"
-# tmp droped,	use permashift && eapply "${DISTDIR}/${PN}-2.4-patch-for-permashift.diff"
-# tmp droped,	use pinplugin && eapply "${WORKDIR}/${PN}-2.4.1_pinplugin.patch"
-	use ttxtsubs && eapply "${WORKDIR}/${P}_ttxtsubs.patch"
+	use permashift && eapply "${WORKDIR}/${PN}-2.4-patch-for-permashift.diff"
+	use pinplugin && eapply "${WORKDIR}/${P}_pinplugin.patch"
+	use ttxtsubs && eapply "${WORKDIR}/${P}_ttxtsubs_v2.patch"
 	use menuorg && eapply "${DISTDIR}/vdr-menuorg-2.3.x.diff"
 	use mainmenuhooks && eapply "${WORKDIR}/${PN}-2.4.1_mainmenuhook-1.0.1.patch"
 
