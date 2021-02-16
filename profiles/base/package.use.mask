@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Thomas Deutschmann <whissi@gentoo.org> (2021-02-17)
+# PCRE JIT support via dev-libs/libpcre2[jit] is only available for certain architectures
+dev-lang/php jit
+
 # Sam James <sam@gentoo.org> (2021-02-09)
 # We plan to remove dev-ml/js_of_ocaml
 # but right now, this drags in plenty
