@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ IUSE=""
 
 DEPEND=">=media-video/vdr-2.0.0[menuorg]
 	dev-cpp/libxmlpp:2.6
-	dev-cpp/glibmm"
+	dev-cpp/glibmm:2"
 RDEPEND="${DEPEND}"
 
 src_compile() {

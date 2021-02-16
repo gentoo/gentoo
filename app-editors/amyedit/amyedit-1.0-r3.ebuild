@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,7 +13,7 @@ KEYWORDS="amd64 ppc x86"
 IUSE=""
 RDEPEND=">=dev-cpp/gtkmm-2.6:2.4
 	>=dev-cpp/glibmm-2.14:2
-	>=dev-libs/libsigc++-2.2
+	>=dev-libs/libsigc++-2.2:2
 	x11-libs/gtksourceview:2.0
 	dev-cpp/gtksourceviewmm:2.0
 	app-text/aspell"

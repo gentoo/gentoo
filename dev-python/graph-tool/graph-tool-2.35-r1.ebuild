@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,7 +31,7 @@ RDEPEND="
 	dev-python/scipy[${PYTHON_USEDEP}]
 	sci-mathematics/cgal:=
 	cairo? (
-		dev-cpp/cairomm
+		dev-cpp/cairomm:0
 		dev-python/pycairo[${PYTHON_USEDEP}]
 	)
 	dev-python/matplotlib[${PYTHON_USEDEP}]"
