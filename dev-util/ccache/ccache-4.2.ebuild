@@ -37,6 +37,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.5-nvcc-test.patch
 	"${FILESDIR}"/${PN}-4.0-objdump.patch
 	"${FILESDIR}"/${PN}-4.1-avoid-run-user.patch
+	"${FILESDIR}"/${PN}-4.2-atomic.patch
 )
 
 src_prepare() {
