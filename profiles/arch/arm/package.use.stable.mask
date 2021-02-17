@@ -6,10 +6,6 @@
 # bug #769767, bug #769764
 mail-client/claws-mail gdata
 
-# Michał Górny <mgorny@gentoo.org> (2021-02-07)
-# app-text/libgepub is not yet stable here, and it has huuuge deps.
-xfce-extra/tumbler epub
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-10-05)
 # media-libs/libffado is not stable yet, which itself has unstable and
 # unmaintained/broken dependencies. bug #746722
