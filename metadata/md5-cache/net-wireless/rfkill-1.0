@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=Tool to read and control rfkill status through /dev/rfkill
+EAPI=6
+HOMEPAGE=https://wireless.kernel.org/en/users/Documentation/rfkill
+KEYWORDS=~amd64 ~arm ~mips ~ppc ~ppc64 ~x86
+LICENSE=ISC
+RDEPEND=!>=sys-apps/util-linux-2.31_rc1
+SLOT=0
+SRC_URI=https://www.kernel.org/pub/software/network/rfkill/rfkill-1.0.tar.xz
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=7fc9ac9af62be4c7804f757049eb9e89
