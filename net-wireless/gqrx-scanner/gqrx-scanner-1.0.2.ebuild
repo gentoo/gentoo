@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="frequency scanner for Gqrx Software Defined Radio receiver"
 HOMEPAGE="https://github.com/neural75/gqrx-scanner"
