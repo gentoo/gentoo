@@ -9880,7 +9880,7 @@ dev-ruby/bsearch 1.5.0-r2 1.5.0-r3: A binary search library for Ruby
 dev-ruby/bson 4.9.4 4.10.0: A Ruby BSON implementation for MongoDB. (Includes binary C-based extension.)
 dev-ruby/buftok 0.2.0-r1: Statefully split input data by a specifiable token
 dev-ruby/builder 3.2.3 3.2.4: A builder to facilitate programatic generation of XML markup
-dev-ruby/bundler 2.1.4 2.2.5 2.2.6 2.2.7 2.2.8 2.2.9: An easy way to vendor gem dependencies
+dev-ruby/bundler 2.1.4 2.2.5 2.2.6 2.2.7 2.2.8 2.2.9 2.2.10: An easy way to vendor gem dependencies
 dev-ruby/bundler-audit 0.7.0.1: Provides patch-level verification for Bundled apps
 dev-ruby/bunny 2.16.1 2.17.0: Another synchronous Ruby AMQP client
 dev-ruby/c21e 1.2.1: Run cross-platform executables
@@ -9916,7 +9916,7 @@ dev-ruby/compass-import-once 1.0.5: Speed up your Sass compilation by making @im
 dev-ruby/concurrent-ruby 1.0.5 1.1.7 1.1.8: Modern concurrency tools including agents, futures, promises, thread pools, more
 dev-ruby/connection_pool 2.2.2 2.2.3: Generic connection pooling for Ruby
 dev-ruby/contracts 0.16.0: provides contracts for Ruby
-dev-ruby/coolio 1.6.0 1.7.0: A high performance event framework for Ruby which uses the libev C library
+dev-ruby/coolio 1.6.0 1.7.0 1.7.1: A high performance event framework for Ruby which uses the libev C library
 dev-ruby/countdownlatch 1.0.0-r1: Synchronization aid to allow threads to wait for operations in other threads
 dev-ruby/crack 0.4.3-r2 0.4.4: Really simple JSON and XML parsing, ripped from Merb and Rails
 dev-ruby/crass 1.0.6: Ruby CSS parser that's fully compliant with the CSS Syntax Level 3 specification
@@ -10046,7 +10046,7 @@ dev-ruby/inflecto 0.0.2: Inflector for ruby
 dev-ruby/instance_storage 1.0.0: Manage class instances with dictionary
 dev-ruby/instantiator 0.0.7: Instantiate an arbitrary Ruby class
 dev-ruby/introspection 0.0.4: Dynamic inspection of the hierarchy of method definitions on a Ruby object
-dev-ruby/iobuffer 1.1.2-r3: IO::Buffer is a byte queue which is intended for non-blocking I/O applications
+dev-ruby/iobuffer 1.1.2-r3 1.1.2-r4: IO::Buffer is a byte queue which is intended for non-blocking I/O applications
 dev-ruby/itextomml 1.6.0: Native Ruby bindings to itex2MML, which converts itex equations to MathML
 dev-ruby/jbuilder 2.10.0 2.10.1 2.11.0 2.11.2: Create JSON structures via a Builder-style DSL
 dev-ruby/jmespath 1.4.0: Implements JMESPath for Ruby
