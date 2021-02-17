@@ -225,7 +225,7 @@ media-plugins/vdr-atscepg
 # and we're doing only the minimal patching to make it not explode
 # immediately.  No revdeps left.
 # Removal on 2021-02-18.  Bug #718688.
-dev-python/pdfrw
+#dev-python/pdfrw
 
 # Sam James <sam@gentoo.org> (2021-01-18)
 # Older versions: need Python 2
