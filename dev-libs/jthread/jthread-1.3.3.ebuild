@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
+CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
 DESCRIPTION="JThread provides some classes to make use of threads easy on different platforms"
@@ -22,5 +23,5 @@ src_prepare() {
 	if ! use static-libs; then
 		sed -i -e '/jthread-static/d' src/CMakeLists.txt || die 'sed on src/CMakeLists.txt failed'
 	fi
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
