@@ -26,7 +26,7 @@ amd64		default/linux/amd64/17.1/desktop/gnome			stable
 amd64		default/linux/amd64/17.1/desktop/gnome/systemd		stable
 amd64		default/linux/amd64/17.1/desktop/plasma			stable
 amd64		default/linux/amd64/17.1/desktop/plasma/systemd		stable
-amd64		default/linux/amd64/17.1/desktop/systemd		dev
+amd64		default/linux/amd64/17.1/desktop/systemd		stable
 amd64		default/linux/amd64/17.1/developer			stable
 amd64		default/linux/amd64/17.1/no-multilib			stable
 amd64		default/linux/amd64/17.1/no-multilib/hardened		stable
