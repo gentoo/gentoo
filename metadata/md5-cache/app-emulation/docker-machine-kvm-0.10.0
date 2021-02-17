@@ -9,5 +9,5 @@ RDEPEND=app-emulation/libvirt:=[qemu,virt-network]
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/dhiltgen/docker-machine-kvm/archive/v0.10.0.tar.gz -> docker-machine-kvm-0.10.0.tar.gz https://github.com/docker/machine/archive/v0.10.0.tar.gz -> github.com-docker-machine-v0.10.0.tar.gz https://github.com/libvirt/libvirt-go/archive/c3209e4ba8b8dda65c85ca0ac04302e55895caf7.tar.gz -> github.com-libvirt-libvirt-go-c3209e4ba8b8dda65c85ca0ac04302e55895caf7.tar.gz
-_eclasses_=golang-base	027b7c82ab637d596b1a18ffcefa0ae4	golang-build	91472d4e18894e738c69b415e236a664	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec
+_eclasses_=golang-base	904cd4c642d6923795b9bd99b6fe0e74	golang-build	91472d4e18894e738c69b415e236a664	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec
 _md5_=824d434c472198a061c0bd8aacf9d5b3

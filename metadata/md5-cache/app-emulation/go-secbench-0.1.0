@@ -8,5 +8,5 @@ LICENSE=Apache-2.0
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/qnib/go-secbench/archive/v0.1.0.tar.gz -> go-secbench-0.1.0.tar.gz
-_eclasses_=golang-base	027b7c82ab637d596b1a18ffcefa0ae4	golang-build	91472d4e18894e738c69b415e236a664	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec
+_eclasses_=golang-base	904cd4c642d6923795b9bd99b6fe0e74	golang-build	91472d4e18894e738c69b415e236a664	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec
 _md5_=0f5428b9773d4719747479a551455b6f

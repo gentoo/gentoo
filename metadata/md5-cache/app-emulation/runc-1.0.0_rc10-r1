@@ -11,5 +11,5 @@ RDEPEND=seccomp? ( sys-libs/libseccomp ) !app-emulation/docker-runc apparmor? ( 
 RESTRICT=strip test
 SLOT=0
 SRC_URI=https://github.com/opencontainers/runc/archive/vdc9208a3303feef5b3839f4323d9beb36df0a9dd.tar.gz -> runc-1.0.0_rc10.tar.gz
-_eclasses_=golang-base	027b7c82ab637d596b1a18ffcefa0ae4	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=golang-base	904cd4c642d6923795b9bd99b6fe0e74	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=61443e2ee6b0fe8381b4257f785f3d6c

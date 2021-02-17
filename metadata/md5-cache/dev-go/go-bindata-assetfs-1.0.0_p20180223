@@ -9,5 +9,5 @@ RDEPEND=dev-go/go-bindata
 RESTRICT=strip
 SLOT=0/1.0.0_p20180223
 SRC_URI=https://github.com/elazarl/go-bindata-assetfs/archive/38087fe4dafb822e541b3f7955075cc1c30bd294.tar.gz -> go-bindata-assetfs-1.0.0_p20180223.tar.gz
-_eclasses_=golang-base	027b7c82ab637d596b1a18ffcefa0ae4	golang-build	91472d4e18894e738c69b415e236a664	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec
+_eclasses_=golang-base	904cd4c642d6923795b9bd99b6fe0e74	golang-build	91472d4e18894e738c69b415e236a664	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec
 _md5_=82f8be752d44ce3e9a563bc1a84175d8

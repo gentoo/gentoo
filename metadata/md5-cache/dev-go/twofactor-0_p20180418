@@ -8,5 +8,5 @@ LICENSE=MIT
 RESTRICT=strip
 SLOT=0/0_p20180418
 SRC_URI=https://github.com/gokyle/twofactor/archive/bbc82ff8de72400ce39a13077627531d9841ad62.tar.gz -> twofactor-0_p20180418.tar.gz
-_eclasses_=golang-base	027b7c82ab637d596b1a18ffcefa0ae4	golang-build	91472d4e18894e738c69b415e236a664	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec
+_eclasses_=golang-base	904cd4c642d6923795b9bd99b6fe0e74	golang-build	91472d4e18894e738c69b415e236a664	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec
 _md5_=2e17f183d63ccb56c5ed617e1728cc6a

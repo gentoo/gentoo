@@ -8,5 +8,5 @@ LICENSE=MIT MPL-2.0
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/Barzahlen/cronlocker/archive/c0ac605.tar.gz -> cronlocker-0.4.0_p20180710.tar.gz
-_eclasses_=golang-base	027b7c82ab637d596b1a18ffcefa0ae4	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec
+_eclasses_=golang-base	904cd4c642d6923795b9bd99b6fe0e74	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec
 _md5_=db5b2db1efd4386476c920c48e72a05f

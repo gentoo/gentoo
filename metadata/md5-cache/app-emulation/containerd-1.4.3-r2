@@ -11,5 +11,5 @@ RDEPEND=btrfs? ( sys-fs/btrfs-progs ) seccomp? ( sys-libs/libseccomp ) ~app-emul
 RESTRICT=strip strip test
 SLOT=0
 SRC_URI=https://github.com/containerd/containerd/archive/269548fa27e0089a8b8278fc4fc781d7f65a939b.tar.gz -> containerd-1.4.3.gh.tar.gz
-_eclasses_=golang-base	027b7c82ab637d596b1a18ffcefa0ae4	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=golang-base	904cd4c642d6923795b9bd99b6fe0e74	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=c30d7e7b241d87f91d61046f00605a9e

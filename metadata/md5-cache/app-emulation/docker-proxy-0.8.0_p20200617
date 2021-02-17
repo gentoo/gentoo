@@ -8,5 +8,5 @@ LICENSE=Apache-2.0
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/docker/libnetwork/archive/026aabaa659832804b01754aaadd2c0f420c68b6.tar.gz -> docker-proxy-0.8.0_p20200617.tar.gz
-_eclasses_=golang-base	027b7c82ab637d596b1a18ffcefa0ae4	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec
+_eclasses_=golang-base	904cd4c642d6923795b9bd99b6fe0e74	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec
 _md5_=f718eeda5818baa66c151a3bb5605768

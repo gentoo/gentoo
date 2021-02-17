@@ -9,5 +9,5 @@ RDEPEND=sys-devel/crossdev dev-embedded/avrdude dev-embedded/arduino-ctags
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/arduino/arduino-builder/archive/1.3.25.tar.gz -> arduino-builder-1.3.25.tar.gz https://github.com/go-errors/errors/archive/a41850380601eeb43f4350f7d17c6bbd8944aaf8.tar.gz -> github.com-go-errors-errors-a41850380601eeb43f4350f7d17c6bbd8944aaf8.tar.gz https://github.com/jstemmer/go-junit-report/archive/833f8ea2b99d36d5f018698333834f3df200a0c2.tar.gz -> github.com-jstemmer-go-junit-report-833f8ea2b99d36d5f018698333834f3df200a0c2.tar.gz https://github.com/stretchr/testify/archive/1661650f989674e3e5bcdcb805536e5d31481526.tar.gz -> github.com-stretchr-testify-1661650f989674e3e5bcdcb805536e5d31481526.tar.gz
-_eclasses_=golang-base	027b7c82ab637d596b1a18ffcefa0ae4	golang-build	91472d4e18894e738c69b415e236a664	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec
+_eclasses_=golang-base	904cd4c642d6923795b9bd99b6fe0e74	golang-build	91472d4e18894e738c69b415e236a664	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec
 _md5_=40c15e3f58dca92ded79077783d0d8e6

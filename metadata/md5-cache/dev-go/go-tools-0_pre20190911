@@ -8,5 +8,5 @@ LICENSE=BSD
 RESTRICT=strip
 SLOT=0/0_pre20190911
 SRC_URI=https://github.com/golang/tools/archive/6bfd74cf029c99138aa1bb5b7e0d6b57c9d4eb49.tar.gz -> go-tools-0_pre20190911.tar.gz https://github.com/golang/net/archive/3b0461eec859c4b73bb64fdc8285971fd33e3938.tar.gz -> github.com-golang-net-3b0461eec859c4b73bb64fdc8285971fd33e3938.tar.gz https://github.com/golang/sync/archive/112230192c580c3556b8cee6403af37a4fc5f28c.tar.gz -> github.com-golang-sync-112230192c580c3556b8cee6403af37a4fc5f28c.tar.gz https://github.com/golang/xerrors/archive/a985d3407aa71f30cf86696ee0a2f409709f22e1.tar.gz -> github.com-golang-xerrors-a985d3407aa71f30cf86696ee0a2f409709f22e1.tar.gz mirror://gentoo/go-favicon-20181103162401.ico https://dev.gentoo.org/~zmedico/distfiles/go-favicon-20181103162401.ico
-_eclasses_=golang-base	027b7c82ab637d596b1a18ffcefa0ae4	golang-build	91472d4e18894e738c69b415e236a664	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec
+_eclasses_=golang-base	904cd4c642d6923795b9bd99b6fe0e74	golang-build	91472d4e18894e738c69b415e236a664	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec
 _md5_=612e93b04d93bb7c83b6d1129fc9977a

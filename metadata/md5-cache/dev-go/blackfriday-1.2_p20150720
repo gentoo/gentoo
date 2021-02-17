@@ -8,5 +8,5 @@ LICENSE=BSD-2
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/russross/blackfriday/archive/8cec3a8.tar.gz -> blackfriday-1.2_p20150720.tar.gz
-_eclasses_=golang-base	027b7c82ab637d596b1a18ffcefa0ae4	golang-build	91472d4e18894e738c69b415e236a664	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec
+_eclasses_=golang-base	904cd4c642d6923795b9bd99b6fe0e74	golang-build	91472d4e18894e738c69b415e236a664	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec
 _md5_=f79ccb72741de6ca18a6cb9acbe19b5f

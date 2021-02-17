@@ -9,5 +9,5 @@ LICENSE=Apache-2.0 BSD ISC LGPL-3 MIT
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/coreos/flannel/archive/v0.11.0.tar.gz -> flannel-0.11.0.tar.gz
-_eclasses_=golang-base	027b7c82ab637d596b1a18ffcefa0ae4	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+_eclasses_=golang-base	904cd4c642d6923795b9bd99b6fe0e74	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
 _md5_=d1fd8e26a569ff8cca9c8809c3cbe437

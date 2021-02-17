@@ -8,5 +8,5 @@ LICENSE=Apache-2.0
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/klausman/golop/archive/v0.0.1.tar.gz -> golop-0.0.1.tar.gz
-_eclasses_=golang-base	027b7c82ab637d596b1a18ffcefa0ae4	golang-build	91472d4e18894e738c69b415e236a664	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec	prefix	de7d8e2b10085ed5ff09ad70e4753e5c
+_eclasses_=golang-base	904cd4c642d6923795b9bd99b6fe0e74	golang-build	91472d4e18894e738c69b415e236a664	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec	prefix	de7d8e2b10085ed5ff09ad70e4753e5c
 _md5_=b6bd001be12f9e6e4c265569ed25443a

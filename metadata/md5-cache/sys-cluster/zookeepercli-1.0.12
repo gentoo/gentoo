@@ -9,5 +9,5 @@ LICENSE=Apache-2.0 BSD
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/outbrain/zookeepercli/archive/v1.0.12.tar.gz -> zookeepercli-1.0.12.tar.gz https://github.com/outbrain/golib/archive/ab954725f502c2be1491afadbbc66da2f99a45ae.tar.gz -> github.com-outbrain-golib-ab954725f502c2be1491afadbbc66da2f99a45ae.tar.gz https://github.com/samuel/go-zookeeper/archive/c4fab1ac1bec58281ad0667dc3f0907a9476ac47.tar.gz -> github.com-samuel-go-zookeeper-c4fab1ac1bec58281ad0667dc3f0907a9476ac47.tar.gz
-_eclasses_=golang-base	027b7c82ab637d596b1a18ffcefa0ae4	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec
+_eclasses_=golang-base	904cd4c642d6923795b9bd99b6fe0e74	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec
 _md5_=e968169a9c0d6d6f63f41220823a5e57
