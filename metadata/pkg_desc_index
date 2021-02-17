@@ -2711,7 +2711,7 @@ app-office/scribus 1.5.6.1 9999: Desktop publishing (DTP) and layout program
 app-office/skrooge 2.24.6: Personal finances manager, aiming at being simple and intuitive
 app-office/texmacs 1.99.11: Wysiwyg text processor with high-quality maths
 app-office/texmaker 5.0.3 5.0.4: A nice LaTeX-IDE
-app-office/texstudio 3.0.4-r1 3.0.5 9999: Free cross-platform LaTeX editor (fork from texmakerX)
+app-office/texstudio 3.0.4-r1 3.0.5 3.1.0 9999: Free cross-platform LaTeX editor (fork from texmakerX)
 app-office/unoconv 0.9.0: Convert between document formats supported by LibreOffice
 app-office/upwork 5.4.5.1: Project collaboration and tracking software for upwork.com
 app-office/worklog-assistant-bin 2.1.3580: Hassle-free time tracking for JIRA self-hosted and OnDemand
@@ -5440,7 +5440,7 @@ dev-libs/libg15 1.2.7-r1 9999: The libg15 library gives low-level access to the 
 dev-libs/libg15render 1.2-r2: Small library for display text and graphics on a Logitech G15 keyboard
 dev-libs/libgamin 0.1.10-r6: Library providing the FAM File Alteration Monitor API
 dev-libs/libgaminggear 0.15.1: Provides functionality for gaming input devices
-dev-libs/libgcrypt 1.8.6 1.8.7 1.9.1-r1: General purpose crypto library based on the code used in GnuPG
+dev-libs/libgcrypt 1.8.6 1.8.7 1.9.1-r1 1.9.2: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgcrypt-compat 1.5.6: Old version of libgcrypt needed by some binaries
 dev-libs/libgdata 0.17.12 0.17.13: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.20.3: GObject-based interfaces and classes for commonly used data structures
@@ -8200,7 +8200,7 @@ dev-python/duecredit 0.7.0 0.8.0: Publications (and donations) tracer
 dev-python/dulwich 0.20.6 0.20.15 0.20.18 0.20.19: Pure-Python implementation of the Git file formats and protocols
 dev-python/easy-thumbnails 2.7 2.7.1: Easy thumbnails for Django
 dev-python/easyprocess 0.3: Easy to use Python subprocess interface
-dev-python/ebuildtester 0.1.16 0.1.16-r1: A dockerized approach to test a Gentoo package within a clean stage3 container
+dev-python/ebuildtester 0.1.16 0.1.16-r1 0.1.27: A dockerized approach to test a Gentoo package within a clean stage3 container
 dev-python/ecdsa 0.16.1: ECDSA cryptographic signature library in pure Python
 dev-python/editorconfig-core-py 0.12.0 0.12.3-r1: Clone of EditorConfig core written in Python
 dev-python/elasticsearch-curator 5.8.1-r2: Tending time-series indices in Elasticsearch
