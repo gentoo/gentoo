@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,6 +24,7 @@ REQUIRED_USE="^^ ( pulseaudio portaudio gr-audio )"
 DEPEND=">=net-wireless/gnuradio-3.7_rc:=[audio,analog,filter]
 	>=net-wireless/gr-osmosdr-0.1.0:=
 	dev-libs/boost:=
+	dev-libs/log4cpp:=
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
