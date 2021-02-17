@@ -9,4 +9,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/docker/libnetwork/archive/55e924b8a84231a065879156c0de95aefc5f5435.tar.gz -> docker-proxy-0.8.0_p20201105.tar.gz
 _eclasses_=golang-base	027b7c82ab637d596b1a18ffcefa0ae4	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec
-_md5_=431611e59db4e179c1fb020b8d72d84c
+_md5_=6212b87034b6ce76590ade7dc2fb1fac
