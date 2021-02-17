@@ -1,11 +1,14 @@
+BDEPEND=sys-devel/m4
 DEFINED_PHASES=configure install prepare
-DEPEND=sys-devel/gcc sys-devel/m4 sys-libs/gdbm[berkdb]
+DEPEND=sys-libs/gdbm[berkdb]
 DESCRIPTION=Phil Budne's port of Macro SNOBOL4 in C, for modern machines
-EAPI=5
+EAPI=7
 HOMEPAGE=http://www.snobol4.org/csnobol4/
 IUSE=doc
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD-2
+RDEPEND=sys-libs/gdbm[berkdb]
 SLOT=0
 SRC_URI=ftp://ftp.snobol4.org/snobol/old/snobol4-1.4.1.tar.gz
-_md5_=c7de38384f0fabec6980e7730aa22c5c
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=1df8dcad21446e561dec333e07ab6785

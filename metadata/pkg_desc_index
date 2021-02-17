@@ -1698,7 +1698,7 @@ app-doc/doxygen 1.8.17-r1 1.8.20 1.9.1 9999: Documentation system for most progr
 app-doc/e16-docs 0.16.8.0.2: The E16 online help
 app-doc/eclass-manpages 20200913 20210104 99999999: Collection of Gentoo eclass manpages
 app-doc/elisp-manual 18.1.03 19.2.4.2 20.2.5 21.2.8-r2 22.2.9 23.4 24.5 25.3 26.3: The GNU Emacs Lisp Reference Manual
-app-doc/geant-docs 4.10.6 4.10.6c 4.10.7: User documentation for Geant4 physics simulation toolkit
+app-doc/geant-docs 4.10.6c 4.10.7: User documentation for Geant4 physics simulation toolkit
 app-doc/gimp-help 2.10.0-r1: GNU Image Manipulation Program help files
 app-doc/gnucash-docs 4.2 4.4: Documentation package for GnuCash
 app-doc/halibut 1.2: yet another free document preparation system
@@ -2861,7 +2861,7 @@ app-text/barcode 0.99: barcode generator
 app-text/bdf2psf 1.155: Converter to generate console fonts from BDF source fonts
 app-text/bibclean 2.17 3.04: BibTeX bibliography prettyprinter and syntax checker
 app-text/bibletime 3.0: Qt Bible-study application using the SWORD library
-app-text/bibutils 6.7: Interconverts between various bibliography formats using common XML intermediate
+app-text/bibutils 6.7 6.10: Interconverts between various bibliography formats using common XML intermediate
 app-text/binfind 0.0.3: Search files for a byte sequence specified on the command line
 app-text/blahtexml 0.9: TeX-to-MathML converter
 app-text/blogc 0.20.0 9999: A blog compiler
@@ -3517,12 +3517,12 @@ dev-cpp/pngpp 0.2.9: A simple but powerful C++ interface to libpng
 dev-cpp/popl 1.2.0 9999: Header-only C++ program options parser library
 dev-cpp/prometheus-cpp 0.9.0 0.10.0 0.11.0 0.12.1: Prometheus Client Library for Modern C++
 dev-cpp/pstreams 1.0.1: C++ wrapper for the POSIX.2 functions popen(3) and pclose(3)
-dev-cpp/random123 1.09-r1: library of counter-based random number generators (CBRNGs)
+dev-cpp/random123 1.13.2: library of counter-based random number generators (CBRNGs)
 dev-cpp/range-v3 0.10.0-r1 0.11.0: Range library for C++14/17/20, basis for C++20's std::ranges
 dev-cpp/robin-map 0.6.3 9999: C++ fast hash map and hash set using robin hood hashing
 dev-cpp/rttr 0.9.6: Run Time Type Reflection - library adding reflection to C++
 dev-cpp/sourcetrail 2018.3.55-r1 2019.1.11 2019.2.39 2019.3.46 2019.3.46-r2: A cross-platform source explorer for C/C++ and Java
-dev-cpp/sparsehash 2.0.3-r1 2.0.4: An extremely memory-efficient hash_map implementation
+dev-cpp/sparsehash 2.0.4: An extremely memory-efficient hash_map implementation
 dev-cpp/string-theory 3.3 3.4: A flexible modern C++ library for string manipulation and storage
 dev-cpp/tbb 2019.8 2020.2 2020.3: High level abstract threading library
 dev-cpp/tclap 1.2.2: Simple templatized C++ library for parsing command line arguments
@@ -3648,7 +3648,7 @@ dev-embedded/arduino-ctags 20161123: Arduino private fork of dev-util/ctags
 dev-embedded/arduino-listserialportsc 1.4.0: Arduino helper library to list serial ports
 dev-embedded/avarice 2.14: Interface for GDB to Atmel AVR JTAGICE in circuit emulator
 dev-embedded/avr-libc 2.0.0: C library for Atmel AVR microcontrollers
-dev-embedded/avra 1.4.1 1.4.2: Atmel AVR Assembler
+dev-embedded/avra 1.4.2: Atmel AVR Assembler
 dev-embedded/avrdude 6.3 9999: AVR Downloader/UploaDEr
 dev-embedded/cpik 0.7.4_p4: C compiler for PIC18 devices
 dev-embedded/dc-tool-ip 1.0.4: Ethernet program loader for the Dreamcast
@@ -5199,7 +5199,7 @@ dev-lang/sassc 3.6.0 3.6.1: A libsass command line driver
 dev-lang/scala 2.12.4 2.12.10: The Scala Programming Language
 dev-lang/scala-bin 2.13.1: The Scala Programming Language
 dev-lang/smlnj 110.82: Standard ML of New Jersey compiler and libraries
-dev-lang/snobol 1.4.1: Phil Budne's port of Macro SNOBOL4 in C, for modern machines
+dev-lang/snobol 1.4.1-r1: Phil Budne's port of Macro SNOBOL4 in C, for modern machines
 dev-lang/spark 2018-r1 2019: Software development for high-reliability applications.
 dev-lang/spidermonkey 1.8.5-r9 52.9.1_pre1-r2 60.5.2_p0-r4 68.12.0 78.6.0 78.7.1: SpiderMonkey is Mozilla's JavaScript engine written in C and C++
 dev-lang/squirrel 3.1_p20200612: A interpreted language mainly used for games
@@ -10880,7 +10880,7 @@ dev-util/patchelf 0.10 0.11 0.12: Small utility to modify the dynamic linker and
 dev-util/patchutils 0.3.3 0.3.4: A collection of tools that operate on patch files
 dev-util/patdiff 0.9.0: Colored patience diffs with word-level refinement
 dev-util/peg 0.1.18: Recursive-descent parser generators for C
-dev-util/perf 5.4.20 5.7-r1 5.8 5.9.9 5.10.16 5.11: Userland tools for Linux Performance Counters
+dev-util/perf 5.8 5.9.9 5.10.16 5.11: Userland tools for Linux Performance Counters
 dev-util/pkgcheck 0.7.7-r1 0.7.9-r1 0.7.9-r2 0.8.1 0.8.2 9999: pkgcore-based QA utility for ebuild repos
 dev-util/pkgconf 1.6.3 1.7.2 1.7.3-r1 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
 dev-util/pkgconfig 0.28-r2 0.28-r3 0.29.1 0.29.2 9999: Package config system that manages compile/link flags
@@ -11760,7 +11760,7 @@ games-strategy/majesty-demo 1.0.0-r1: Control your own kingdom in this simulatio
 games-strategy/maxr 0.2.9: Mechanized Assault and Exploration Reloaded
 games-strategy/megaglest 3.11.1-r100 3.13.0: Cross-platform 3D realtime strategy game
 games-strategy/megaglest-data 3.11.1-r1 3.13.0: Data files for the cross-platform 3D realtime strategy game MegaGlest
-games-strategy/naev 0.6.1-r1 0.7.0 0.7.0-r100: A 2D space trading and combat game, in a similar vein to Escape Velocity
+games-strategy/naev 0.7.0-r100 0.8.1: A 2D space trading and combat game, in a similar vein to Escape Velocity
 games-strategy/netherearth 0.52-r1: A remake of the SPECTRUM game Nether Earth
 games-strategy/openra 20190314 20190314-r100: A free RTS engine supporting games like Command & Conquer, Red Alert and Dune2k
 games-strategy/s25rttr 0.9.0_pre20200723 0.9.0_pre20200723-r100: Open source remake of The Settlers II: Gold Edition (needs original data files)
@@ -13284,7 +13284,7 @@ media-libs/libzen 0.4.38: Shared library for libmediainfo and mediainfo
 media-libs/libzmf 0.0.2 9999: Library for parsing Zoner Callisto/Draw documents
 media-libs/lilv 0.24.10-r1 0.24.12: Library to make the use of LV2 plugins as simple as possible for applications
 media-libs/lsp-plugins 1.1.22 1.1.24 1.1.29 9999: Linux Studio Plugins
-media-libs/lv2 1.18.0 1.18.2: A simple but extensible successor of LADSPA
+media-libs/lv2 1.18.2: A simple but extensible successor of LADSPA
 media-libs/lvtk 1.2.0-r1: A set of C++ wrappers around the LV2 C API
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
 media-libs/mesa 20.2.6 20.3.3 20.3.4 21.0.0_rc3 9999: OpenGL-like graphic library for Linux
@@ -16298,7 +16298,7 @@ sci-libs/libticables2 1.3.5: Library to handle different link cables for TI calc
 sci-libs/libticalcs2 1.1.9: Library for communication with TI calculators
 sci-libs/libticonv 1.1.5: Charset conversion library for TI calculators
 sci-libs/libtifiles2 1.1.7: Library for TI calculator files
-sci-libs/libxc 2.2.3 5.1.0: A library of exchange-correlation functionals for use in DFT
+sci-libs/libxc 2.2.3 5.1.0 5.1.1: A library of exchange-correlation functionals for use in DFT
 sci-libs/linbox 1.6.3: C++ template library for integer and finite-field linear algebra
 sci-libs/linux-gpib 4.3.0 4.3.2 4.3.3 4.3.4: Driver library for GPIB (IEEE 488.2) hardware
 sci-libs/linux-gpib-modules 4.3.0-r1 4.3.2-r1 4.3.3-r1 4.3.4: Kernel modules for GPIB (IEEE 488.2) hardware
@@ -17265,7 +17265,7 @@ sys-cluster/cluster-glue 1.0.11 1.0.12 1.0.12-r1: Library pack for Heartbeat / P
 sys-cluster/corosync 3.1.0: OSI Certified implementation of a complete cluster engine
 sys-cluster/crmsh 4.2.1: Pacemaker command line interface for management and configuration
 sys-cluster/csync2 2.0 2.0-r2: Cluster synchronization tool
-sys-cluster/drbd-utils 8.9.6-r1: mirror/replicate block-devices across a network-connection
+sys-cluster/drbd-utils 8.9.6-r1 9.15.1: mirror/replicate block-devices across a network-connection
 sys-cluster/fake 1.1.10: Switch in backup servers on a LAN
 sys-cluster/galera 25.3.28-r1 25.3.32 26.4.6 26.4.7: Synchronous multi-master replication engine that provides the wsrep API
 sys-cluster/ganglia 3.7.1-r2: A scalable distributed monitoring system for clusters and grids
