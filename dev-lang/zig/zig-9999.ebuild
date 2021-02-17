@@ -27,9 +27,9 @@ ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]}
 
 RDEPEND="
-	sys-devel/llvm:9
+	sys-devel/llvm:11
 	!experimental? ( sys-devel/llvm:9[${LLVM_TARGET_USEDEPS// /,}] )
-	sys-devel/clang:9
+	sys-devel/clang:11
 "
 
 DEPEND="${RDEPEND}"
