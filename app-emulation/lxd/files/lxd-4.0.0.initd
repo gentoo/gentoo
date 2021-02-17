@@ -28,12 +28,20 @@ start() {
 }
 
 stop() {
-	if [[ ${RC_GOINGDOWN} = YES ]] || [[ ${RC_REBOOT} = YES ]]; then
-		"${DAEMON}" shutdown
-		rm -f ${PIDFILE}
+	if [[ "${RC_CMD}" = restart ]]; then
+		ebegin "Stopping lxd service (but not containers)"
+		# start-stop-daemon sends SIGTERM with a timeout of 5s by default.
+		# SIGTERM indicates to LXD that it will be stopped temporarily.
+		# Instances will keep running.
+		start-stop-daemon --stop --quiet -p "${PIDFILE}"
+		eend ${?}
 	else
-		ebegin "Stopping lxd service (but not containers)."
-		start-stop-daemon --stop --quiet -R TERM/45 -p ${PIDFILE}
+		ebegin "Stopping lxd service and containers, waiting 40s"
+		# SIGPWR indicates to LXD that the host is going down.
+		# LXD will do a clean shutdown of all instances.
+		# After 30s all remaining instances will be killed.
+		# We wait up to 40s for LXD.
+		start-stop-daemon --stop --quiet -R SIGPWR/40 -p "${PIDFILE}"
 		eend ${?}
 	fi
 }
