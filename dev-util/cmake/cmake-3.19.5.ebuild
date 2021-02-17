@@ -149,6 +149,8 @@ src_prepare() {
 			Source/cmStandardLexer.h \
 			Source/cmSystemTools.cxx \
 			Source/cmTimestamp.cxx
+		sed -i -e 's/^#if !defined(_POSIX_C_SOURCE) && !defined(_WIN32) && !defined(__sun)/& \&\& !defined(__APPLE__)/' \
+			Source/cmStandardLexer.h
 	fi
 
 	# Add gcc libs to the default link paths
