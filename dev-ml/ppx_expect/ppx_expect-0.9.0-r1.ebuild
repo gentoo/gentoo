@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -30,7 +30,7 @@ DEPEND="
 	dev-ml/ppx_variants_conv:=
 	dev-ml/stdio:=
 	dev-ml/ocaml-migrate-parsetree:=
-	dev-ml/ocaml-re:=
+	dev-ml/re:=
 "
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND} dev-ml/jbuilder"
