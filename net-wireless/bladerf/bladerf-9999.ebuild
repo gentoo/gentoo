@@ -37,8 +37,8 @@ CDEPEND=">=dev-libs/libusb-1.0.16
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
 RDEPEND="${CDEPEND}"
-PDEPEND=">=net-wireless/bladerf-firmware-2.3.2
-	>=net-wireless/bladerf-fpga-0.11.0"
+PDEPEND=">=net-wireless/bladerf-firmware-2.4.0
+	>=net-wireless/bladerf-fpga-0.12.0"
 
 src_unpack() {
 	if [ "${PV}" = "9999" ]; then
