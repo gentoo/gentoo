@@ -1802,6 +1802,7 @@ dev-lang/php:gd - Adds support for gd (bundled with PHP)
 dev-lang/php:hash - Enable the hash extension
 dev-lang/php:inifile - Add dbm support for .ini files
 dev-lang/php:intl - Enables the intl extension for extended internalization support
+dev-lang/php:jit - Enable PCRE JIT support
 dev-lang/php:json - Enable JSON support
 dev-lang/php:ldap-sasl - Add SASL support for the PHP LDAP extension
 dev-lang/php:lmdb - Enable support for dev-db/lmdb db backend
