@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
-inherit flag-o-matic eutils multilib versionator toolchain-funcs
+inherit flag-o-matic eutils multilib toolchain-funcs
 
 PATCHLEVEL="9"
 MY_P="${P/_/-}"
@@ -25,13 +25,18 @@ RDEPEND="
 	spacetime? ( sys-libs/libunwind:= )
 	X? ( x11-libs/libX11 )
 	!dev-ml/num"
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/pkgconfig"
-
 PDEPEND="emacs? ( app-emacs/ocaml-mode )
 	xemacs? ( app-xemacs/ocaml )"
 
 S="${WORKDIR}/${MY_P}"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-4.04.2-tinfo.patch" #459512
+	"${FILESDIR}"/${P}-gcc10.patch
+)
+
 pkg_setup() {
 	# dev-lang/ocaml creates its own objects but calls gcc for linking, which will
 	# results in relocations if gcc wants to create a PIE executable
@@ -45,8 +50,8 @@ pkg_setup() {
 
 src_prepare() {
 	EPATCH_SUFFIX="patch" epatch "${WORKDIR}/patches"
-	epatch "${FILESDIR}/${PN}-4.04.2-tinfo.patch" #459512
-	epatch "${FILESDIR}"/${P}-gcc10.patch
+	default
+
 }
 
 src_configure() {
@@ -104,7 +109,7 @@ src_test() {
 	if use ocamlopt ; then
 		emake -j1 tests
 	else
-		ewarn "${PN} testsuite requires ocamlopt useflag"
+		ewarn "${PN} was built without 'ocamlopt' USE flag; skipping tests."
 	fi
 }
 
@@ -116,16 +121,14 @@ src_install() {
 
 	# Symlink the headers to the right place
 	dodir /usr/include
-	dosym /usr/$(get_libdir)/ocaml/caml /usr/include/caml
-
+	# Create symlink for header files
+	dosym "../$(get_libdir)/ocaml/caml" /usr/include/caml
 	dodoc Changes README.adoc
-
-	# Create and envd entry for latex input files
+	# Create envd entry for latex input files
 	if use latex ; then
-		echo "TEXINPUTS=${EPREFIX}/usr/$(get_libdir)/ocaml/ocamldoc:" > "${T}"/99ocamldoc
-		doenvd "${T}"/99ocamldoc
+		echo "TEXINPUTS=\"${EPREFIX}/usr/$(get_libdir)/ocaml/ocamldoc:\"" > "${T}/99ocamldoc"
+		doenvd "${T}/99ocamldoc"
 	fi
-
 	# Install ocaml-rebuild portage set
 	insinto /usr/share/portage/config/sets
 	doins "${FILESDIR}/ocaml.conf"
