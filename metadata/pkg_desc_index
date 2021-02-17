@@ -12291,7 +12291,7 @@ kde-frameworks/kiconthemes 5.77.0 5.79.0: Framework for icon theming and configu
 kde-frameworks/kidletime 5.77.0 5.79.0: Framework for detection and notification of device idle time
 kde-frameworks/kimageformats 5.77.0 5.79.0: Framework providing additional format plugins for Qt's image I/O system
 kde-frameworks/kinit 5.77.0 5.79.0: Helper library to speed up start of applications on KDE work spaces
-kde-frameworks/kio 5.77.0-r1 5.77.0-r2 5.79.0: Framework providing transparent file and data management
+kde-frameworks/kio 5.77.0-r2 5.79.0: Framework providing transparent file and data management
 kde-frameworks/kirigami 5.77.0 5.77.0-r1 5.79.0: Lightweight user interface framework for mobile and convergent applications
 kde-frameworks/kitemmodels 5.77.0 5.79.0: Framework providing data models to help with tasks such as sorting and filtering
 kde-frameworks/kitemviews 5.77.0 5.79.0: Framework providing additional widgets for item models
@@ -12379,18 +12379,18 @@ kde-plasma/kscreen 5.20.5 5.21.0: KDE Plasma screen management
 kde-plasma/kscreenlocker 5.20.5 5.21.0: Library and components for secure lock screen architecture
 kde-plasma/ksshaskpass 5.20.5 5.21.0: Implementation of ssh-askpass with KDE Wallet integration
 kde-plasma/ksysguard 5.20.5 5.21.0: Network-enabled task manager and system monitor
-kde-plasma/kwallet-pam 5.20.5 5.20.5-r1 5.21.0: PAM module to not enter KWallet password again after login
+kde-plasma/kwallet-pam 5.20.5-r1 5.21.0: PAM module to not enter KWallet password again after login
 kde-plasma/kwayland-integration 5.20.5 5.21.0: Provides integration plugins for various KDE frameworks for Wayland
 kde-plasma/kwayland-server 5.20.5 5.21.0: Wayland Server Components built on KDE Frameworks
 kde-plasma/kwin 5.20.5-r1 5.21.0: Flexible, composited Window Manager for windowing systems on Linux
 kde-plasma/kwrited 5.20.5 5.21.0: KDE Plasma daemon listening for wall and write messages
 kde-plasma/libkscreen 5.20.5 5.21.0: Plasma screen management library
-kde-plasma/libksysguard 5.20.5 5.21.0: Task management and system monitoring library
+kde-plasma/libksysguard 5.20.5 5.21.0-r1: Task management and system monitoring library
 kde-plasma/libkworkspace 5.20.5 5.21.0: Workspace library to interact with the Plasma session manager
 kde-plasma/milou 5.20.5 5.21.0: Dedicated search application built on top of Baloo
 kde-plasma/oxygen 5.20.5 5.21.0: Oxygen visual style for the Plasma desktop
 kde-plasma/plasma-browser-integration 5.20.5 5.21.0: Integrate Chrome/Firefox better into Plasma through browser extensions
-kde-plasma/plasma-desktop 5.20.5 5.20.5-r1 5.21.0: KDE Plasma desktop
+kde-plasma/plasma-desktop 5.20.5-r1 5.21.0: KDE Plasma desktop
 kde-plasma/plasma-disks 5.20.5 5.21.0: Monitors S.M.A.R.T. capable devices for imminent failure
 kde-plasma/plasma-firewall 5.21.0: Plasma frontend for Firewalld or UFW
 kde-plasma/plasma-integration 5.20.5 5.21.0: Qt Platform Theme integration plugins for the Plasma workspaces
@@ -12401,7 +12401,7 @@ kde-plasma/plasma-sdk 5.20.5 5.21.0: Useful applications for Plasma development
 kde-plasma/plasma-systemmonitor 5.20.0-r1 5.21.0: New version of KSysGuard built on top of the new KStats daemon and using QML
 kde-plasma/plasma-thunderbolt 5.20.5 5.21.0: Plasma integration for controlling Thunderbolt devices
 kde-plasma/plasma-vault 5.20.5 5.21.0: Plasma applet and services for creating encrypted vaults
-kde-plasma/plasma-workspace 5.20.5-r3 5.20.5-r4 5.21.0: KDE Plasma workspace
+kde-plasma/plasma-workspace 5.20.5-r4 5.21.0: KDE Plasma workspace
 kde-plasma/plasma-workspace-wallpapers 5.20.5 5.21.0: Wallpapers for the Plasma workspace
 kde-plasma/plymouth-kcm 5.20.5 5.21.0: KDE Plasma control module for Plymouth
 kde-plasma/polkit-kde-agent 5.20.5 5.21.0: PolKit agent module for KDE Plasma
@@ -14943,7 +14943,7 @@ net-libs/rtrlib 0.7.0: An open-source C implementation of the RPKI/Router Protoc
 net-libs/serf 1.3.9-r2: HTTP client library
 net-libs/shairplay 0_pre20170118 0_pre20180824 0_pre20180824-r1 9999: Apple airplay and raop protocol server
 net-libs/signon-oauth2 0.25: OAuth2 plugin for Signon daemon
-net-libs/signon-ui 0.15_p20171022 0.15_p20171022-r1: Online accounts signon UI
+net-libs/signon-ui 0.15_p20171022-r1: Online accounts signon UI
 net-libs/signond 8.60-r2: Signon daemon for libaccounts-glib
 net-libs/socket_wrapper 1.2.3: A library passing all socket communications through unix sockets
 net-libs/sofia-sip 1.12.11: RFC3261 compliant SIP User-Agent library
@@ -17092,7 +17092,7 @@ sys-apps/watchdog 5.15 5.16: A software watchdog and /dev/watchdog daemon
 sys-apps/which 2.21: Prints out location of specified executables that are in your path
 sys-apps/x86info 1.30_p20190617: Dave Jones' handy, informative x86 CPU diagnostic utility
 sys-apps/xdg-dbus-proxy 0.1.2: Filtering proxy for D-Bus connections
-sys-apps/xdg-desktop-portal 1.8.0 1.8.0-r1: Desktop integration portal
+sys-apps/xdg-desktop-portal 1.8.0-r1: Desktop integration portal
 sys-apps/xdg-desktop-portal-gtk 1.8.0: portal backend implementation that is using GTK+ and various pieces of GNOME
 sys-apps/xinetd 2.3.15-r3 2.3.15.3 2.3.15.3-r2 2.3.15.4: powerful replacement for inetd
 sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System
@@ -18636,7 +18636,7 @@ x11-misc/xscreensaver-app 2.3-r3 2.3-r4: XScreenSaver dockapp for the Window Mak
 x11-misc/xsel 1.2.0-r1 9999: Command-line program for getting and setting the contents of the X selection
 x11-misc/xsensors 0.80: A hardware health information viewer, interface to lm-sensors
 x11-misc/xsetleds 0.1.3-r1 0.1.3-r2: small tool to report and change the keyboard LED states of an X display
-x11-misc/xsettingsd 1.0.0 1.0.2: Provides settings to X11 applications via the XSETTINGS specification
+x11-misc/xsettingsd 1.0.2: Provides settings to X11 applications via the XSETTINGS specification
 x11-misc/xsnap 1.5.15-r1 1.5.15-r2: Program to interactively take a 'snapshot' of a region of the screen
 x11-misc/xsnow 3.0.7 3.2.2: let it snow on your desktop and windows
 x11-misc/xsr 1.0.0: X Steps Recorder
