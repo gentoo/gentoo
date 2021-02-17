@@ -5173,7 +5173,7 @@ dev-lang/mono 6.6.0.161 6.10.0.104: Mono runtime and class libraries, a C# compi
 dev-lang/mono-basic 4.8: Visual Basic Compiler and Runtime
 dev-lang/mozart 2.0.1: Advanced development platform for intelligent, distributed applications
 dev-lang/mozart-stdlib 2.0.1: The Mozart Standard Library
-dev-lang/mujs 1.0.9: An embeddable Javascript interpreter in C.
+dev-lang/mujs 1.0.9 1.1.0: An embeddable Javascript interpreter in C.
 dev-lang/nasm 2.15.05: groovy little assembler
 dev-lang/nim 1.4.2: compiled, garbage-collected systems programming language
 dev-lang/nqp 2020.05 2020.06 2020.07 2020.08 2020.09 2020.10 2020.11 2020.12 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
