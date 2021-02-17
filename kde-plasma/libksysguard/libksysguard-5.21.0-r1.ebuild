@@ -52,7 +52,10 @@ DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )
 "
 
-PATCHES=( "${FILESDIR}/${PN}-5.16.0-no-detailed-mem-message.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-5.16.0-no-detailed-mem-message.patch" # downstream info
+	"${FILESDIR}/${P}-fix-non-systemd-crash.patch" # bug 766755
+)
 
 src_configure() {
 	local mycmakeargs=(

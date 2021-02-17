@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools flag-o-matic multilib-minimal toolchain-funcs
 
 DESCRIPTION="General purpose crypto library based on the code used in GnuPG"
-HOMEPAGE="http://www.gnupg.org/"
+HOMEPAGE="https://www.gnupg.org/"
 SRC_URI="mirror://gnupg/${PN}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1 MIT"
@@ -19,7 +19,6 @@ DEPEND="${RDEPEND}"
 BDEPEND="doc? ( virtual/texi2dvi )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.6.1-uscore.patch
 	"${FILESDIR}"/${PN}-multilib-syspath.patch
 )
 
