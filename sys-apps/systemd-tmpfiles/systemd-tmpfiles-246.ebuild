@@ -53,6 +53,7 @@ src_prepare() {
 	# musl patchset from:
 	# http://cgit.openembedded.org/openembedded-core/tree/meta/recipes-core/systemd/systemd
 	use elibc_musl && eapply "${WORKDIR}/${P}-musl"
+	use elibc_musl && eapply "${FILESDIR}/musl-1.2.2.patch" # https://bugs.gentoo.org/766833
 	default
 }
 
