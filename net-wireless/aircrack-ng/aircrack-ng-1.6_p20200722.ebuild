@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 DISTUTILS_OPTIONAL=1
 
 inherit toolchain-funcs distutils-r1 flag-o-matic autotools
@@ -19,7 +19,7 @@ else
 	COMMIT="5a02ac4818b30d2e87b3e18e497a5f9e5319394f"
 	SRC_URI="https://github.com/aircrack-ng/aircrack-ng/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${COMMIT}"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 arm ~arm64 ~ppc x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="GPL-2"
