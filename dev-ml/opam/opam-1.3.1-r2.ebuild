@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -23,7 +23,7 @@ fi
 RDEPEND="dev-lang/ocaml:=
 	|| ( net-misc/wget net-misc/curl )
 	dev-ml/extlib:=
-	dev-ml/ocaml-re:=
+	dev-ml/re:=
 	dev-ml/ocamlgraph:=
 	dev-ml/cmdliner:=
 	dev-ml/cudf:=
