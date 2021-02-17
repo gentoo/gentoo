@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -21,7 +21,7 @@ IUSE="+ppx +camlp4"
 DEPEND="
 	>=dev-ml/uutf-1.0:=
 	dev-ml/uchar:=
-	dev-ml/ocaml-re:=
+	dev-ml/re:=
 	ppx? ( >=dev-ml/ppx_tools-5:= dev-ml/markup:= )
 	camlp4? ( dev-ml/camlp4:= )"
 RDEPEND="${DEPEND}"
