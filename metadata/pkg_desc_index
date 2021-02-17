@@ -5843,7 +5843,7 @@ dev-ml/csexp 1.3.2-r1: Parsing and printing of S-expressions in Canonical form
 dev-ml/csv 1.7: A pure OCaml library to read and write CSV files
 dev-ml/cudf 0.9: Library to parse, pretty print, and evaluate CUDF documents
 dev-ml/deriving 0.7.1: A deriving library for Ocsigen
-dev-ml/dns 1.0.0: A pure OCaml implementation of the DNS protocol
+dev-ml/dns 1.0.0-r1: A pure OCaml implementation of the DNS protocol
 dev-ml/dose3 5.0.1-r2 5.0.1_p16-r2: Library to perform analysis on package repositories
 dev-ml/dune 2.1.0 2.7.1 2.8.2: A composable build system for OCaml
 dev-ml/dune-configurator 2.7.1 2.8.2-r1: A composable build system for OCaml
@@ -5890,7 +5890,7 @@ dev-ml/oasis 0.4.10: Tool to integrate a configure, build and install system in 
 dev-ml/ocaml-augeas 0.5: Ocaml bindings for Augeas
 dev-ml/ocaml-autoconf 1.1-r1: autoconf macros to support configuration of OCaml programs and libraries
 dev-ml/ocaml-base64 2.2.0 3.5.0: Library for radix-64 representation (de)coding
-dev-ml/ocaml-cohttp 0.22.0: Very lightweight HTTP server using Lwt or Async
+dev-ml/ocaml-cohttp 0.22.0-r1: Very lightweight HTTP server using Lwt or Async
 dev-ml/ocaml-compiler-libs 0.9.0 0.12.3: Repackage the OCaml compiler libs so they do not expose everything at toplevel
 dev-ml/ocaml-conduit 0.15.4: Dereference URIs into communication channels for Async or Lwt
 dev-ml/ocaml-cstruct 3.1.1: Map OCaml arrays onto C-like structs
