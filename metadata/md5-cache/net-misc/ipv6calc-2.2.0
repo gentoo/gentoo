@@ -4,10 +4,10 @@ DESCRIPTION=IPv6 address calculator
 EAPI=7
 HOMEPAGE=https://www.deepspace6.net/projects/ipv6calc.html
 IUSE=geoip libressl test
-KEYWORDS=~alpha ~amd64 ~hppa ~ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux
+KEYWORDS=~alpha ~amd64 ~hppa ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=!libressl? ( dev-libs/openssl:= ) libressl? ( dev-libs/libressl:= ) geoip? ( >=dev-libs/geoip-1.4.7 )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/pbiering/ipv6calc/archive/2.2.0.tar.gz -> ipv6calc-2.2.0.tar.gz
-_md5_=92a2dc080a8f1177e75bb77bd3f51983
+_md5_=d5adf8b7aaccac4eac0dcda6f907a311
