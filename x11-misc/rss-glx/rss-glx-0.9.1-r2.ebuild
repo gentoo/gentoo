@@ -1,8 +1,8 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools eutils multilib
+EAPI=7
+inherit autotools
 
 MY_P=${PN}_${PV}
 
@@ -29,8 +29,11 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	x11-base/xorg-proto
-	virtual/pkgconfig
+"
+BDEPEND="
 	sys-apps/sed
+	virtual/pkgconfig
+	bzip2? ( app-arch/bzip2 )
 "
 
 DOCS="ChangeLog README*"
@@ -59,15 +62,20 @@ src_configure() {
 		$(use_enable bzip2) \
 		$(use_enable openal sound) \
 		$(use_with quesoglc) \
-		--bindir=/usr/$(get_libdir)/misc/xscreensaver \
-		--enable-shared \
-		--with-configdir=/usr/share/xscreensaver/config
+		--bindir="${EPREFIX}/usr/$(get_libdir)/misc/xscreensaver" \
+		--enable-shared --disable-static \
+		--with-configdir="${EPREFIX}/usr/share/xscreensaver/config"
+}
+
+src_install() {
+	default
+	rm -f "${ED}/usr/$(get_libdir)"/*.la
 }
 
 pkg_postinst() {
-	local xssconf="${ROOT}usr/share/X11/app-defaults/XScreenSaver"
+	local xssconf="${EROOT}/usr/share/X11/app-defaults/XScreenSaver"
 
-	if [ -f ${xssconf} ]; then
+	if [ -f "${xssconf}" ]; then
 		sed -e '/*programs:/a\
 		GL:       \"Cyclone\"  cyclone --root     \\n\\\
 		GL:      \"Euphoria\"  euphoria --root    \\n\\\
@@ -82,8 +90,8 @@ pkg_postinst() {
 		GL:     \"Skyrocket\"  skyrocket --root   \\n\\\
 		GL:    \"Solarwinds\"  solarwinds --root  \\n\\\
 		GL:     \"Colorfire\"  colorfire --root   \\n\\\
-		GL:   \"Hufos Smoke\"  hufo_smoke --root  \\n\\\
-		GL:  \"Hufos Tunnel\"  hufo_tunnel --root \\n\\\
+		GL:  \"Hufo\x27s Smoke\"  hufo_smoke --root  \\n\\\
+		GL: \"Hufo\x27s Tunnel\"  hufo_tunnel --root \\n\\\
 		GL:    \"Sundancer2\"  sundancer2 --root  \\n\\\
 		GL:          \"BioF\"  biof --root        \\n\\\
 		GL:   \"BusySpheres\"  busyspheres --root \\n\\\
@@ -92,14 +100,14 @@ pkg_postinst() {
 		GL:        \"Lorenz\"  lorenz --root      \\n\\\
 		GL:      \"Drempels\"  drempels --root    \\n\\\
 		GL:      \"Feedback\"  feedback --root    \\n\\' \
-			-i ${xssconf} || die
+			-i "${xssconf}" || die
 	fi
 }
 
 pkg_postrm() {
-	local xssconf="${ROOT}usr/share/X11/app-defaults/XScreenSaver"
+	local xssconf="${EROOT}/usr/share/X11/app-defaults/XScreenSaver"
 
-	if [ -f ${xssconf} ]; then
+	if [ -f "${xssconf}" ]; then
 		sed \
 			-e '/\"Cyclone\"  cyclone/d' \
 			-e '/\"Euphoria\"  euphoria/d' \
@@ -114,8 +122,8 @@ pkg_postrm() {
 			-e '/\"Skyrocket\"  skyrocket/d' \
 			-e '/\"Solarwinds\"  solarwinds/d' \
 			-e '/\"Colorfire\"  colorfire/d' \
-			-e '/\"Hufos Smoke\"  hufo_smoke/d' \
-			-e '/\"Hufos Tunnel\"  hufo_tunnel/d' \
+			-e '/\"Hufo.*Smoke\"  hufo_smoke/d' \
+			-e '/\"Hufo.*Tunnel\"  hufo_tunnel/d' \
 			-e '/\"Sundancer2\"  sundancer2/d' \
 			-e '/\"BioF\"  biof/d' \
 			-e '/\"BusySpheres\"  busyspheres/d' \
@@ -124,6 +132,6 @@ pkg_postrm() {
 			-e '/\"Lorenz\"  lorenz/d' \
 			-e '/\"Drempels\"  drempels/d' \
 			-e '/\"Feedback\"  feedback/d' \
-			-i ${xssconf} || die
+			-i "${xssconf}" || die
 	fi
 }
