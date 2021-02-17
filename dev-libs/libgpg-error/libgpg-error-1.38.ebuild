@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools libtool multilib-minimal toolchain-funcs prefix
 
 DESCRIPTION="Contains error handling functions used by GnuPG software"
-HOMEPAGE="http://www.gnupg.org/related_software/libgpg-error"
+HOMEPAGE="https://www.gnupg.org/related_software/libgpg-error"
 SRC_URI="mirror://gnupg/${PN}/${P}.tar.bz2
 	https://git.gnupg.org/cgi-bin/gitweb.cgi?p=libgpg-error.git;a=blob_plain;f=src/gen-lock-obj.sh;hb=libgpg-error-1.38 -> gen-lock-obj-1.38.sh"
 
