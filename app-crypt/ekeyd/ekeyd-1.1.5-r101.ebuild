@@ -49,6 +49,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-remove-werror.patch
 	"${FILESDIR}"/${P}-misc.patch
 	"${FILESDIR}"/${P}-makefile-lua-libs.patch
+	"${FILESDIR}"/${P}-luasocket.patch
 )
 
 src_compile() {
