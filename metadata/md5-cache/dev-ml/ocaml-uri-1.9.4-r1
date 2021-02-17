@@ -1,0 +1,14 @@
+DEFINED_PHASES=install
+DEPEND=dev-ml/re:= dev-ml/sexplib:= dev-ml/ppx_sexp_conv:= dev-ml/ppx_core:= dev-ml/ppx_type_conv:= dev-ml/stringext:= dev-ml/type-conv:= test? ( >=dev-ml/ounit-1.0.2 ) dev-ml/jbuilder >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-4:= dev-ml/opam-installer
+DESCRIPTION=RFC3986 URI parsing library for OCaml
+EAPI=5
+HOMEPAGE=https://github.com/mirage/ocaml-uri https://mirage.io
+IUSE=test
+KEYWORDS=~amd64
+LICENSE=ISC
+RDEPEND=dev-ml/re:= dev-ml/sexplib:= dev-ml/ppx_sexp_conv:= dev-ml/ppx_core:= dev-ml/ppx_type_conv:= dev-ml/stringext:= dev-ml/type-conv:= >=dev-lang/ocaml-4:=
+RESTRICT=!test? ( test )
+SLOT=0/1.9.4
+SRC_URI=https://github.com/mirage/ocaml-uri/archive/v1.9.4.tar.gz -> ocaml-uri-1.9.4.tar.gz
+_eclasses_=findlib	9674d5e3d151793fecab20e2bb73e6c6	opam	b4de444efce371928602cbf4cd91307e
+_md5_=c7333f9b05c9b7581ce4d510c7e12ebb

@@ -5911,7 +5911,7 @@ dev-ml/ocaml-migrate-parsetree 1.0.5 1.0.6 1.0.7 1.8.0 2.0.0 2.1.0: Convert OCam
 dev-ml/ocaml-re 1.7.1: Regular expression library for OCaml
 dev-ml/ocaml-sqlite3 4.3.0-r1 5.0.2: A package for ocaml that provides access to SQLite databases
 dev-ml/ocaml-ssl 0.5.3-r1 0.5.9 0.5.10: OCaml bindings for OpenSSL
-dev-ml/ocaml-uri 1.9.4: RFC3986 URI parsing library for OCaml
+dev-ml/ocaml-uri 1.9.4-r1: RFC3986 URI parsing library for OCaml
 dev-ml/ocamlbuild 0.11.0 0.14.0-r1: Generic build tool with built-in rules for building OCaml library and programs
 dev-ml/ocamlgraph 1.8.7-r1 1.8.8-r1 2.0.0: O'Caml Graph library
 dev-ml/ocamlify 0.0.2: OCamlify creates OCaml code by including files into strings or string lists
@@ -5923,7 +5923,7 @@ dev-ml/ocplib-endian 1.0 1.1-r1: Functions to read and write int16/32/64 from st
 dev-ml/ocplib-simplex 0.3 0.4: A library implementing a simplex algorithm
 dev-ml/octavius 1.1.0 1.2.2: ocamldoc comment syntax parser
 dev-ml/ocurl 0.7.10 0.9.1: OCaml interface to the libcurl library
-dev-ml/opam 1.3.1-r1 2.0.7-r1 2.0.8-r1: A source-based package manager for OCaml
+dev-ml/opam 1.3.1-r2 2.0.7-r1 2.0.8-r1: A source-based package manager for OCaml
 dev-ml/opam-client 2.0.7-r1 2.0.8: opam client libraries
 dev-ml/opam-core 2.0.7 2.0.8-r1: Core libraries for opam
 dev-ml/opam-file-format 2.1.0 2.1.2: Parser and printer for the opam file syntax
@@ -5939,7 +5939,7 @@ dev-ml/parmap 1.0_rc8 1.1.1 1.2: Library to exploit multicore architectures for 
 dev-ml/parsexp 0.14.0: S-expression parsing library
 dev-ml/patience_diff 0.9.0: Tool and library implementing patience diff
 dev-ml/pcre-ocaml 7.2.3 7.4.6-r1: Perl Compatibility Regular Expressions for O'Caml
-dev-ml/pgocaml 2.3: PG'OCaml is a set of OCaml bindings for the PostgreSQL database
+dev-ml/pgocaml 2.3-r1: PG'OCaml is a set of OCaml bindings for the PostgreSQL database
 dev-ml/ppx_assert 0.9.0 0.14.0: Assert-like extension nodes that raise useful errors on failure
 dev-ml/ppx_ast 0.9.1: AST used in Jane Street ppx rewriters
 dev-ml/ppx_base 0.9.0 0.14.0: Base set of ppx rewriters
@@ -5953,7 +5953,7 @@ dev-ml/ppx_derivers 1.0 1.2.1: Shared [@@deriving] plugin registry
 dev-ml/ppx_deriving 4.5 5.2: Type-driven code generation for OCaml
 dev-ml/ppx_driver 0.9.1-r1 0.11.0: Feature-full driver for OCaml AST transformers
 dev-ml/ppx_enumerate 0.9.0 0.14.0: Generate a list containing all values of a finite type
-dev-ml/ppx_expect 0.9.0 0.14.0: Cram like framework for OCaml
+dev-ml/ppx_expect 0.9.0-r1 0.14.0: Cram like framework for OCaml
 dev-ml/ppx_fail 0.9.0 0.14.0: Add location to calls to failwiths
 dev-ml/ppx_fields_conv 0.9.0-r1 0.14.1: Generation of accessor and iteration functions for ocaml records
 dev-ml/ppx_fixed_literal 0.14.0: Simpler notation for fixed point literals
@@ -6004,7 +6004,7 @@ dev-ml/timezone 0.14.0: Time-zone handling for OCaml
 dev-ml/topkg 0.9.0 0.9.1 1.0.3: The transitory OCaml software packager
 dev-ml/type-conv 113.00.02: Mini library required for some other preprocessing libraries
 dev-ml/typerep 0.9.0 0.14.0: Library for creating runtime representation of OCaml types
-dev-ml/tyxml 4.1.0: A libary to build xml trees typechecked by OCaml
+dev-ml/tyxml 4.1.0-r1: A libary to build xml trees typechecked by OCaml
 dev-ml/uchar 0.0.2: Uchar compatibility library
 dev-ml/unidecode 0.4.0: Convert unicode strings into its ASCII representation
 dev-ml/uucp 13.0.0-r2: Unicode character properties for OCaml
