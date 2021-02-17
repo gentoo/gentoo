@@ -6,7 +6,7 @@ EAPI=7
 inherit libtool
 
 DESCRIPTION="IPC library used by GnuPG and GPGME"
-HOMEPAGE="http://www.gnupg.org/related_software/libassuan/index.en.html"
+HOMEPAGE="https://www.gnupg.org/related_software/libassuan/index.en.html"
 SRC_URI="mirror://gnupg/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-3 LGPL-2.1"
