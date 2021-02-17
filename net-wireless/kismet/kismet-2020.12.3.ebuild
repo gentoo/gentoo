@@ -17,16 +17,8 @@ else
 	MY_P=${MY_P/./-R}
 	S=${WORKDIR}/${MY_P/BETA/beta}
 
-	#normally we want an official release
 	SRC_URI="https://www.kismetwireless.net/code/${MY_P}.tar.xz"
 
-	#but sometimes we want a git commit
-	#COMMIT="9ca7e469cf115469f392db7436816151867e1654"
-	#SRC_URI="https://github.com/kismetwireless/kismet/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-	#S="${WORKDIR}/${PN}-${COMMIT}"
-
-	#Desired (minimum) keywords
-	#KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 fi
 
