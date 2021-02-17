@@ -4861,7 +4861,6 @@ media-tv/tvheadend:vpx - Enable transcoding with the VP8/VP9 video codecs
 media-tv/tvheadend:x264 - Enable transcoding with the H.264 video codec
 media-tv/tvheadend:x265 - Enable transcoding with the HEVC video codec
 media-tv/tvheadend:xmltv - Use media-tv/xmltv
-media-tv/v4l-dvb-saa716x:firmware - Install firmware
 media-tv/v4l-utils:bpf - Enables support for IR BPF decoders.
 media-tv/xmltv:ar - Argentina tv listing grabber
 media-tv/xmltv:ch-search - Grabber for Switzerland

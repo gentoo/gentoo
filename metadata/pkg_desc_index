@@ -3621,7 +3621,7 @@ dev-db/sqlcipher 3.4.2 4.0.1: Full Database Encryption for SQLite
 dev-db/sqlcl-bin 20.4.1.351.1718: Oracle SQLcl is the new SQL*Plus
 dev-db/sqldeveloper 4.2.0.17.089.1709 20.2.0.175.1842 20.4.0.379.2205: Oracle SQL Developer is a graphical tool for database development
 dev-db/sqlite 3.33.0 3.34.0: SQL database engine
-dev-db/sqlitebrowser 3.11.1-r1: SQLite Database Browser
+dev-db/sqlitebrowser 3.11.1-r1 3.12.1 9999: A light GUI editor for SQLite databases
 dev-db/sqliteman 1.2.2-r4: Powerful GUI manager for the Sqlite3 database
 dev-db/sqlitestudio 3.2.1-r1: Powerful cross-platform SQLite database manager
 dev-db/textsearch_ja 9.0.0: Integrated Full-Text-Search for Japanese language using morphological analyze
@@ -14080,7 +14080,7 @@ media-tv/shoutcast2vdr 0.0.8-r1: VDR script: generate shoutcast playlists
 media-tv/tvbrowser-bin 4.2.2: Themeable and easy to use TV Guide - written in Java
 media-tv/tvheadend 4.2.8-r1 9999: Tvheadend is a TV streaming server and digital video recorder
 media-tv/tvnamer 2.5: Automatic TV episode file renamer, data from thetvdb.com
-media-tv/v4l-dvb-saa716x 0.0.1_p20170225-r3 0.0.1_p20170225-r4 0.0.1_p20170225-r5: driver for saa716x based dvb cards like TT S2-6400 or Skystar 2 eXpress HD
+media-tv/v4l-dvb-saa716x 0.0.1_p20170225-r5: driver for saa716x based dvb cards like TT S2-6400 or Skystar 2 eXpress HD
 media-tv/v4l-utils 1.20.0: Separate utilities ebuild from upstream v4l-utils package
 media-tv/w_scan 20170107: Scan DVB-C/DVB-T/DVB-S channels
 media-tv/xmltv 0.5.70 0.6.1: Set of utilities to manage TV listings stored in the XMLTV format
