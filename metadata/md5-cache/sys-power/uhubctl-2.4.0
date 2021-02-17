@@ -7,6 +7,6 @@ KEYWORDS=~amd64 ~arm ~x86
 LICENSE=GPL-2
 RDEPEND=virtual/libusb:1
 SLOT=0
-SRC_URI=https://github.com/mvp/uhubctl/archive/v2.3.0.tar.gz -> uhubctl-2.3.0.tar.gz
+SRC_URI=https://github.com/mvp/uhubctl/archive/v2.4.0.tar.gz -> uhubctl-2.4.0.tar.gz
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=326356aeac9c3cf3e45c1e9deccbfb30
