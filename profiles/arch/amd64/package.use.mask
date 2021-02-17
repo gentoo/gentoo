@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (2021-02-17)
+# Unmask PCRE JIT support where dev-libs/libpcre2[jit] is available
+dev-lang/php -jit
+
 # Jaco Kroon <jaco@uls.co.za> (2021-01-08)
 # blocksruntime (clang -fblocks requirement) for asterisk is available on this
 # architecture.
