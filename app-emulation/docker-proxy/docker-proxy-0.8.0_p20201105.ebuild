@@ -26,7 +26,8 @@ S=${WORKDIR}/${P}/src/${EGO_PN}
 RESTRICT="test"
 
 src_compile() {
-	GOPATH="${WORKDIR}/${P}" go build -o "bin/docker-proxy" ./cmd/proxy || die
+	GO111MODULE=auto GOPATH="${WORKDIR}/${P}" \
+		go build -o "bin/docker-proxy" ./cmd/proxy || die
 }
 
 src_install() {
