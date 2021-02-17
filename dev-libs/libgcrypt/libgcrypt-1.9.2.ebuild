@@ -19,7 +19,6 @@ DEPEND="${RDEPEND}"
 BDEPEND="doc? ( virtual/texi2dvi )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.6.1-uscore.patch
 	"${FILESDIR}"/${PN}-multilib-syspath.patch
 )
 
