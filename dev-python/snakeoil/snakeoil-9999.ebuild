@@ -20,6 +20,9 @@ HOMEPAGE="https://github.com/pkgcore/snakeoil"
 LICENSE="BSD BSD-2 MIT"
 SLOT="0"
 
+RDEPEND="
+	dev-python/lazy-object-proxy[${PYTHON_USEDEP}]"
+
 [[ ${PV} == 9999 ]] && BDEPEND+=" dev-python/cython[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
