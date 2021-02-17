@@ -1,0 +1,14 @@
+diff --git a/meson.build b/meson.build
+index bea9935..03b40f2 100644
+--- a/meson.build
++++ b/meson.build
+@@ -510,7 +510,8 @@ foreach ident : [
+                                  #include <sys/stat.h>
+                                  #include <unistd.h>'''],
+         ['explicit_bzero' ,   '''#include <string.h>'''],
+-        ['reallocarray',      '''#include <malloc.h>'''],
++        ['reallocarray',      '''#include <malloc.h>
++                                 #include <stdlib.h>'''],
+         ['set_mempolicy',     '''#include <stdlib.h>
+                                  #include <unistd.h>'''],
+         ['get_mempolicy',     '''#include <stdlib.h>
