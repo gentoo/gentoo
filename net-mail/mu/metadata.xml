@@ -18,7 +18,6 @@
 		<flag name="mug">Install the mug toy client, not for normal use</flag>
 	</use>
 	<upstream>
-		<remote-id type="google-code">mu0</remote-id>
 		<remote-id type="github">djcb/mu</remote-id>
 	</upstream>
 </pkgmetadata>
