@@ -15621,7 +15621,7 @@ net-wireless/iw 5.4 5.9: nl80211 configuration utility for wireless devices usin
 net-wireless/iwd 1.10 1.11 1.12 9999: Wireless daemon for linux
 net-wireless/iwgtk 0.4: Lightweight, graphical wifi management utility for Linux
 net-wireless/jackit 0.0_p20170918-r1: Exploit Code for Mousejack
-net-wireless/kismet 2020.09.4 2020.12.3 9999: IEEE 802.11 wireless LAN sniffer
+net-wireless/kismet 2020.12.3 9999: IEEE 802.11 wireless LAN sniffer
 net-wireless/kismet-rest 2019.05.02 9999: Kismet REST Python API
 net-wireless/kismetdb 2019.05.05 9999: Kismetdb database log helper library
 net-wireless/kismetmobiledashboard 1.5_beta1-r2 9999: Mobile UI for kismet
