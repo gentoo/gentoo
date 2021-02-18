@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2021-02-18)
+# Requires dev-lang/vala to be stable
+gnome-base/librsvg vala
+
 # Rolf Eike Beer <eike@sf-mail.de> (2021-01-26)
 # The following packages have no stable keywords on hppa:
 #       openntpd: net-misc/openntpd
