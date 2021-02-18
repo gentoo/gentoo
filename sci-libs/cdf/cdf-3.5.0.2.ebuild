@@ -25,7 +25,7 @@ SRC_URI="${SRC_BASE}/${MY_P}-dist-${PN}.tar.gz
 
 LICENSE="CDF"
 SLOT="0"
-KEYWORDS="~amd64 ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples java ncurses static-libs"
 
 RDEPEND="
