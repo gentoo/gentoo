@@ -1,0 +1,7 @@
+# Copyright 2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (2021-02-19)
+# We have ready-to-use configs here.
+sys-kernel/gentoo-kernel -savedconfig
+sys-kernel/vanilla-kernel -savedconfig
