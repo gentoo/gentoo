@@ -19,6 +19,7 @@ REQUIRED_USE="guionly? ( gtk )"
 
 RDEPEND="dev-lang/perl
 	dev-ml/camlp4:=
+	net-analyzer/netcat
 	gd? ( media-libs/gd[truetype] )
 	gtk? (
 		gnome-base/librsvg
@@ -137,7 +138,7 @@ src_install() {
 		done
 		use bittorrent && newbin "make_torrent${myext}" make_torrent
 
-		newconfd "${FILESDIR}/mldonkey.confd-2.8" mldonkey
+		newconfd "${FILESDIR}/mldonkey.confd" mldonkey
 		fperms 600 /etc/conf.d/mldonkey
 		newinitd "${FILESDIR}/mldonkey.initd" mldonkey
 	fi
