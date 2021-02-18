@@ -233,6 +233,7 @@ src_prepare() {
 		"${WORKDIR}/patches"
 		"${FILESDIR}/chromium-89-webcodecs-deps.patch"
 		"${FILESDIR}/chromium-89-EnumTable-crash.patch"
+		"${FILESDIR}/chromium-89-empty-map-crash.patch"
 		"${FILESDIR}/chromium-shim_headers.patch"
 	)
 
