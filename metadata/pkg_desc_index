@@ -1149,7 +1149,7 @@ app-crypt/swtpm 0.5.2: Libtpms-based TPM emulator
 app-crypt/tc-play 2.0-r1: a free, pretty much fully featured and stable TrueCrypt implementation
 app-crypt/tpm-emulator 0.7.5-r3: Emulator driver for tpm
 app-crypt/tpm-tools 1.3.9.1-r1 1.3.9.2: TrouSerS' support tools for the Trusted Platform Modules
-app-crypt/tpm2-abrmd 2.3.3: TPM2 Access Broker & Resource Manager
+app-crypt/tpm2-abrmd 2.4.0: TPM2 Access Broker & Resource Manager
 app-crypt/tpm2-pkcs11 1.5.0: A PKCS#11 interface for TPM2 hardware
 app-crypt/tpm2-tools 4.3.0-r1 5.0-r1: Tools for the TPM 2.0 TSS
 app-crypt/tpm2-totp 0.3.0: Attest the trustworthiness of a device against a human using time-based OTP
@@ -11054,7 +11054,7 @@ dev-vcs/svneverever 1.5.0: Tool collecting path entries across SVN history
 dev-vcs/tig 2.5.1 2.5.2 9999: text mode interface for git
 dev-vcs/tkcvs 9.3.2: Tcl/Tk-based graphical interface to CVS with Subversion support
 dev-vcs/topgit 0.9-r1 0.19.12: A different patch queue manager
-dev-vcs/tortoisehg 5.5.1 5.5.2 5.6 5.6.1 9999: Set of graphical tools for Mercurial
+dev-vcs/tortoisehg 5.5.1 5.5.2 5.6 5.6.1 5.7 9999: Set of graphical tools for Mercurial
 dev-vcs/vcsh 1.20151229.1: Manage config files in $HOME via fake bare git repositories
 games-action/0verkill 0.16-r4: A bloody 2D action deathmatch-like game in ASCII-ART
 games-action/abuse 0.9_p20181213-r1: Port of Abuse by Crack Dot Com
@@ -15567,7 +15567,7 @@ net-vpn/openconnect 8.09-r1 8.09-r3 8.10 8.10-r1 9999: Free client for Cisco Any
 net-vpn/openfortivpn 1.13.2 1.13.3 1.15.0: Fortinet compatible VPN client
 net-vpn/openvpn 2.4.9 2.5.0-r1 9999: Robust and highly flexible tunneling application compatible with many OSes
 net-vpn/pptpd 1.4.0-r3: Linux Point-to-Point Tunnelling Protocol Server
-net-vpn/protonvpn-cli 2.2.2 2.2.4: A VPN command-line tool from protonvpn - python rewrite
+net-vpn/protonvpn-cli 2.2.2 2.2.4 2.2.6: A VPN command-line tool from protonvpn - python rewrite
 net-vpn/strongswan 5.9.0 5.9.1: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
 net-vpn/tailscale 1.2.10-r1 1.4.0 1.4.1: Tailscale vpn client
 net-vpn/tinc 1.0.35-r2 1.0.36 1.1_pre17-r1: tinc is an easy to configure VPN implementation
@@ -16332,7 +16332,7 @@ sci-libs/oce 0.18.3-r2: Development platform for CAD/CAE, 3D surface/solid model
 sci-libs/octomap 1.9.5 9999: An Efficient Probabilistic 3D Mapping Framework Based on Octrees
 sci-libs/ogdi 4.1.0: Open Geographical Datastore Interface, a GIS support library
 sci-libs/openblas 0.3.12-r1 0.3.13: Optimized BLAS library based on GotoBLAS2
-sci-libs/opencascade 7.4.0-r3: Development platform for CAD/CAE, 3D surface/solid modeling and data exchange
+sci-libs/opencascade 7.4.0-r4: Development platform for CAD/CAE, 3D surface/solid modeling and data exchange
 sci-libs/openlibm 0.7.4: High quality system independent, open source libm
 sci-libs/orocos-bfl 0.8.0: Bayesian Filtering Library
 sci-libs/orocos_kdl 1.4.0 9999: Kinematics and Dynamics Library (KDL)
