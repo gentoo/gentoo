@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>kaiboma06@gmail.com</email>
+		<name>Kaibo Ma</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">JetBrains/kotlin</remote-id>
+		<bugs-to>https://youtrack.jetbrains.com/issues/KT</bugs-to>
+		<changelog>https://github.com/JetBrains/kotlin/blob/master/ChangeLog.md</changelog>
+		<doc>https://kotlinlang.org/docs/home.html</doc>
+		<maintainer status="active">
+			<name>JetBrains</name>
+		</maintainer>
+	</upstream>
+	<longdescription>
+	Kotlin is a multiplatform, statically typed, general-purpose programming language. Currently, as of version 1.4, it supports compilation to the following platforms.
+
+		- JVM (Java Virtual Machine)
+		- JS (JavaScript)
+		- Native (native binaries for various architectures)
+
+	Furthermore, it supports transparent interoperability between different platforms via its Kotlin Multiplatform Project (Kotlin MPP) feature.
+
+	The type system of Kotlin distinguishes at compile time between nullable and not-nullable types, achieving null-safety, i.e., guaranteeing the absence of runtime errors caused by the absence of value (i.e., null value). Kotlin also extends its static type system with elements of gradual and flow typing, for better interoperability with other languages and ease of development.
+
+	Kotlin is an object-oriented language which also has a lot of functional programming elements. From the object-oriented side, it supports nominal subtyping with bounded parametric polymorphism (akin to generics) and mixed-site variance. From the functional programming side, it has first-class support for higher-order functions and lambda literals.
+	</longdescription>
+	
+</pkgmetadata>
