@@ -82,12 +82,12 @@ multilib_src_configure() {
 }
 
 multilib_src_compile() {
-	emake sepermitlockdir="${EPREFIX}/run/sepermit"
+	emake sepermitlockdir="/run/sepermit"
 }
 
 multilib_src_install() {
 	emake DESTDIR="${D}" install \
-		sepermitlockdir="${EPREFIX}/run/sepermit"
+		sepermitlockdir="/run/sepermit"
 
 	gen_usr_ldscript -a pam pam_misc pamc
 }
