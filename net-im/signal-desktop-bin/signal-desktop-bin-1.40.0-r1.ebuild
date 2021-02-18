@@ -44,6 +44,7 @@ RDEPEND="
 	x11-libs/libXrender
 	x11-libs/libXScrnSaver
 	x11-libs/libXtst
+	x11-libs/libxkbcommon
 	x11-libs/pango
 	sound? (
 		|| (
