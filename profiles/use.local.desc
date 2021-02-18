@@ -194,7 +194,7 @@ app-admin/ulogd:pcap - Build PCAP output plugin to save packets in libpcap file 
 app-admin/ulogd:ulog - Build ULOG input plugin to support deprecated packet-based logging via ULOG target
 app-admin/vault:webui - Enable the Web UI
 app-admin/webalizer:xtended - Include the 404 extension
-app-admin/webapp-config:portage - Propagete python_targets dependencies to sys-apps/portage
+app-admin/webapp-config:portage - Propagate python_targets dependencies to sys-apps/portage
 app-antivirus/clamav:clamdtop - A Top like tool which shows what clamd is currently scanning amongst other things
 app-antivirus/clamav:clamonacc - Build the clamonacc on-access scanner
 app-antivirus/clamav:clamsubmit - A tool to submit false positives / negatives
