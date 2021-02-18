@@ -32,7 +32,9 @@ case "${EAPI:-0}" in
 		;;
 esac
 
-inherit savedconfig toolchain-funcs kernel-install
+PYTHON_COMPAT=( python3_{7..9} )
+
+inherit python-any-r1 savedconfig toolchain-funcs kernel-install
 
 BDEPEND="
 	sys-devel/bc
