@@ -38,8 +38,6 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/wsjtx
 
 PATCHES=( "${FILESDIR}/${PN}-2.0.1-hamlib.patch"
-		  "${FILESDIR}/${PN}-fix-unicode.patch"
-		  "${FILESDIR}/${PN}-drop-docs.patch"
 		  "${FILESDIR}/${PN}-2.1.2-qt_helpers.patch"
 		  "${FILESDIR}/${PN}-2.2.0-werror.patch"
 		  "${FILESDIR}/${PN}-clang.patch" )
@@ -59,8 +57,6 @@ src_prepare() {
 }
 
 src_configure() {
-	cmake_comment_add_subdirectory debian
-
 	local mycmakeargs=(
 		-DWSJT_GENERATE_DOCS="$(usex doc)"
 		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}"
