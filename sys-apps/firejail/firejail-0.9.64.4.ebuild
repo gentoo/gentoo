@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{7..9} )
 inherit toolchain-funcs python-single-r1 linux-info
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 ~x86"
 	SRC_URI="https://github.com/netblue30/${PN}/releases/download/${PV}/${P}.tar.xz"
 else
 	inherit git-r3
@@ -22,7 +22,9 @@ HOMEPAGE="https://firejail.wordpress.com/"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="X apparmor +chroot contrib +dbusproxy +file-transfer +globalcfg +network +private-home +suid test +userns +whitelist"
-RESTRICT="!test? ( test )"
+# Needs a lot of work to function within sandbox/portage
+# bug #769731
+RESTRICT="test"
 
 RDEPEND="!sys-apps/firejail-lts
 	apparmor? ( sys-libs/libapparmor )
