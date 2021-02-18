@@ -5,7 +5,7 @@ EAPI=7
 
 MY_PN="${PN/-bin/}"
 
-inherit optfeature pax-utils unpacker xdg
+inherit pax-utils unpacker xdg
 
 DESCRIPTION="Allows you to send and receive messages of Signal Messenger on your computer"
 HOMEPAGE="https://signal.org/
@@ -17,7 +17,6 @@ SLOT="0"
 KEYWORDS="-* ~amd64"
 IUSE="+sound"
 
-BDEPEND="app-admin/chrpath"
 RDEPEND="
 	app-accessibility/at-spi2-atk
 	app-accessibility/at-spi2-core
@@ -62,15 +61,18 @@ QA_PREBUILT="opt/Signal/signal-desktop
 	opt/Signal/libnode.so
 	opt/Signal/libVkICD_mock_icd.so
 	opt/Signal/libvk_swiftshader.so
+	opt/Signal/libvulkan.so
 	opt/Signal/swiftshader/libGLESv2.so
 	opt/Signal/resources/app.asar.unpacked/node_modules/curve25519-n/build/Release/curve.node
-	opt/Signal/resources/app.asar.unpacked/node_modules/@journeyapps/sqlcipher/lib/binding/electron-v8.5-linux-x64/node_sqlite3.node
+	opt/Signal/resources/app.asar.unpacked/node_modules/libsignal-client/build/libsignal_client_linux.node
+	opt/Signal/resources/app.asar.unpacked/node_modules/@journeyapps/sqlcipher/lib/binding/napi-v6-linux-x64/node_sqlite3.node
 	opt/Signal/resources/app.asar.unpacked/node_modules/zkgroup/node_modules/ref-napi/build/Release/binding.node
 	opt/Signal/resources/app.asar.unpacked/node_modules/ref-napi/build/Release/binding.node
 	opt/Signal/resources/app.asar.unpacked/node_modules/ringrtc/build/linux/libringrtc.node
 	opt/Signal/resources/app.asar.unpacked/node_modules/ffi-napi/build/Release/ffi_bindings.node
 	opt/Signal/resources/app.asar.unpacked/node_modules/sharp/build/Release/sharp.node
-	opt/Signal/resources/app.asar.unpacked/node_modules/sharp/vendor/lib/*
+	opt/Signal/resources/app.asar.unpacked/node_modules/sharp/vendor/8.10.5/lib/libvips-cpp.so.42
+	opt/Signal/resources/app.asar.unpacked/node_modules/sharp/vendor/8.10.5/lib/libvips.so.42
 	opt/Signal/resources/app.asar.unpacked/node_modules/zkgroup/libzkgroup.so"
 
 RESTRICT="splitdebug"
@@ -79,13 +81,9 @@ S="${WORKDIR}"
 
 src_prepare() {
 	default
-	sed -e 's|\("/opt/Signal/signal-desktop"\)|\1 --start-in-tray|g' \
-		-e 's| --no-sandbox||g' \
+	sed -e 's| --no-sandbox||g' \
 		-i usr/share/applications/signal-desktop.desktop || die
 	unpack usr/share/doc/signal-desktop/changelog.gz
-	# Fix Bug 706352
-	chrpath opt/Signal/resources/app.asar.unpacked/node_modules/sharp/vendor/lib/libjpeg.so.8.2.2 -r '$ORIGIN:/target/lib' || die
-	chrpath opt/Signal/resources/app.asar.unpacked/node_modules/sharp/vendor/lib/libffi.so.6.0.4 -d || die
 }
 
 src_install() {
@@ -95,7 +93,7 @@ src_install() {
 	insinto /usr/share
 
 	if has_version media-sound/apulse[-sdk] && ! has_version media-sound/pulseaudio; then
-		sed -i 's/Exec=/Exec=apulse /g' usr/share/applications/signal-desktop.desktop
+		sed -i 's/Exec=/Exec=apulse /g' usr/share/applications/signal-desktop.desktop || die
 	fi
 
 	doins -r usr/share/applications
@@ -111,5 +109,6 @@ src_install() {
 
 pkg_postinst() {
 	xdg_pkg_postinst
-	optfeature "using the tray icon in Xfce desktop environments" xfce-extra/xfce4-statusnotifier-plugin
+	elog "For using the tray icon on compatible desktop environments,"
+	elog "start Signal with '--start-in-tray' or '--use-tray-icon'."
 }
