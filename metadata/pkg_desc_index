@@ -9880,7 +9880,7 @@ dev-ruby/bsearch 1.5.0-r2 1.5.0-r3: A binary search library for Ruby
 dev-ruby/bson 4.9.4 4.10.0: A Ruby BSON implementation for MongoDB. (Includes binary C-based extension.)
 dev-ruby/buftok 0.2.0-r1: Statefully split input data by a specifiable token
 dev-ruby/builder 3.2.3 3.2.4: A builder to facilitate programatic generation of XML markup
-dev-ruby/bundler 2.1.4 2.2.5 2.2.6 2.2.7 2.2.8 2.2.9 2.2.10: An easy way to vendor gem dependencies
+dev-ruby/bundler 2.1.4 2.2.5 2.2.6 2.2.7 2.2.8 2.2.9 2.2.10 2.2.11: An easy way to vendor gem dependencies
 dev-ruby/bundler-audit 0.7.0.1: Provides patch-level verification for Bundled apps
 dev-ruby/bunny 2.16.1 2.17.0: Another synchronous Ruby AMQP client
 dev-ruby/c21e 1.2.1: Run cross-platform executables
@@ -10348,7 +10348,7 @@ dev-ruby/selenium-webdriver 3.142.6 3.142.7 3.142.7-r1: This gem provides Ruby b
 dev-ruby/semantic_puppet 1.0.2 1.0.3: Library of tools for working with Semantic Versions and module dependencies
 dev-ruby/semver2 3.4.2: maintain versions as per http://semver.org
 dev-ruby/serialport 1.3.1: a library for serial port (rs232) access in ruby
-dev-ruby/serverengine 2.2.1 2.2.2: A framework to implement robust multiprocess servers
+dev-ruby/serverengine 2.2.1 2.2.2 2.2.3: A framework to implement robust multiprocess servers
 dev-ruby/session 3.2.0: A set of classes to drive external programs via pipe
 dev-ruby/settingslogic 2.0.9: A simple configuration / settings solution that uses an ERB enabled YAML file
 dev-ruby/sexp_processor 4.15.0 4.15.1 4.15.2: Processor for s-expressions created as part of the ParseTree project

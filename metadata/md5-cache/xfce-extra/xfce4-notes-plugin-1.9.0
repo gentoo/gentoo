@@ -4,10 +4,10 @@ DEPEND=>=dev-libs/glib-2.30:2 >=x11-libs/gtk+-3.22:3 >=xfce-base/libxfce4ui-4.14
 DESCRIPTION=Xfce4 panel sticky notes plugin
 EAPI=7
 HOMEPAGE=https://goodies.xfce.org/projects/panel-plugins/xfce4-notes-plugin
-KEYWORDS=~alpha amd64 ~arm ~hppa ~ia64 ~ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux
+KEYWORDS=~alpha amd64 arm ~hppa ~ia64 ~ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2+
 RDEPEND=>=dev-libs/glib-2.30:2 >=x11-libs/gtk+-3.22:3 >=xfce-base/libxfce4ui-4.14:= >=xfce-base/libxfce4util-4.14:= >=xfce-base/xfce4-panel-4.14:= >=xfce-base/xfconf-4.14:=
 SLOT=0
 SRC_URI=https://archive.xfce.org/src/panel-plugins/xfce4-notes-plugin/1.9/xfce4-notes-plugin-1.9.0.tar.bz2
 _eclasses_=xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=3025a646e30b22946758d3a334a57d3e
+_md5_=1e0f85f543bc0994a8bd18b2f5985a6e
