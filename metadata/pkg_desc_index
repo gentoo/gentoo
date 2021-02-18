@@ -10776,7 +10776,7 @@ dev-util/fuzz 0.6-r1: Stress-tests programs by giving them random input
 dev-util/gcovr 4.2: A Python script for summarizing gcov data
 dev-util/gdbus-codegen 2.62.6 2.64.5 2.66.0 2.66.3 2.66.4 2.66.7: GDBus code and documentation generator
 dev-util/geany 1.36 1.37 1.37.1 9999: GTK+ based fast and lightweight IDE
-dev-util/geany-plugins 1.36-r2 1.37 1.37-r100: A collection of different plugins for Geany
+dev-util/geany-plugins 1.36-r2 1.37 1.37-r100 1.37-r101: A collection of different plugins for Geany
 dev-util/gengetopt 2.23: A tool to write command line option parsing code for C programs
 dev-util/gertty 1.6.0-r1 9999: Gertty is a console-based interface to the Gerrit Code Review system.
 dev-util/git-delta 0.5.1 0.6.0: A syntax-highlighting pager for git
