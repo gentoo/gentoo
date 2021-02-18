@@ -352,5 +352,5 @@ src_install() {
 		rm -rf "${ED}"/usr/share/doc/${PF}/kodi-eventclients-dev || die
 	fi
 
-	python_optimize "${ED}$(python_get_sitedir)"
+	python_optimize "${D}$(python_get_sitedir)"
 }
