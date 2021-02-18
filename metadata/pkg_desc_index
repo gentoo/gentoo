@@ -8964,7 +8964,7 @@ dev-python/python-libevdev 0.8 0.9: Python wrappers for the libevdev library
 dev-python/python-linux-procfs 0.6.1 0.6.3: Python classes to extract information from the Linux kernel /proc files
 dev-python/python-ly 0.9.6: Tool and library for manipulating LilyPond files
 dev-python/python-lzo 1.12-r1: Python interface to lzo
-dev-python/python-magic 0.4.18 0.4.19 0.4.20: Access the libmagic file type identification library
+dev-python/python-magic 0.4.18 0.4.19 0.4.20 0.4.22: Access the libmagic file type identification library
 dev-python/python-magnumclient 3.2.1: A client for the OpenStack Magnum API
 dev-python/python-manilaclient 2.3.0: A client for the OpenStack Manila API
 dev-python/python-markdown-math 0.7: Math extension for Python-Markdown
