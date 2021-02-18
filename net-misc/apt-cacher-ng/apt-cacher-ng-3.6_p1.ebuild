@@ -8,13 +8,12 @@ inherit cmake
 DESCRIPTION="Yet another caching HTTP proxy for Debian/Ubuntu software packages"
 HOMEPAGE="https://www.unix-ag.uni-kl.de/~bloch/acng/
 	https://packages.qa.debian.org/a/apt-cacher-ng.html"
-SRC_URI="mirror://debian/pool/main/a/${PN}/${PN}_${PV/_*}.orig.tar.xz
-	mirror://debian/pool/main/a/${PN}/${PN}_${PV/_p/-}.debian.tar.xz"
+SRC_URI="mirror://debian/pool/main/a/${PN}/${PN}_${PV/_*}.orig.tar.xz"
 
 LICENSE="BSD-4 ZLIB public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc fuse tcpd"
+IUSE="doc fuse systemd tcpd"
 
 DEPEND="acct-user/apt-cacher-ng
 	acct-group/apt-cacher-ng
@@ -23,6 +22,7 @@ DEPEND="acct-user/apt-cacher-ng
 	dev-libs/openssl:0=
 	sys-libs/zlib
 	fuse? ( sys-fs/fuse:0 )
+	systemd? ( sys-apps/systemd )
 	tcpd? ( sys-apps/tcp-wrappers )"
 BDEPEND="virtual/pkgconfig"
 RDEPEND="${DEPEND}
@@ -31,7 +31,7 @@ RDEPEND="${DEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-3.3.1-flags.patch"
 	"${FILESDIR}/${PN}-3.5-perl-syntax.patch"
-	"${WORKDIR}/debian/patches/debian-changes"
+	"${FILESDIR}/${PN}-3.6-optional-systemd.patch"
 )
 
 S="${WORKDIR}/${P/_*}"
@@ -47,6 +47,7 @@ src_prepare() {
 		-e "/install.*acng\.conf/s/)$/ RENAME ${PN}.conf)/" \
 		-e "/file/s/)$/ \"*hooks\" \"backends_debian\")/" -i conf/CMakeLists.txt || die
 	sed -ie "/INSTALL.*acngtool/s/LIBDIR/CMAKE_INSTALL_SBINDIR/" source/CMakeLists.txt || die
+
 	cmake_src_prepare
 }
 
@@ -54,15 +55,8 @@ src_configure() {
 	local mycmakeargs=(
 		"-DHAVE_FUSE_25=$(usex fuse)"
 		"-DHAVE_LIBWRAP=$(usex tcpd)"
-		# Unconditionally install systemd service file
-		"-DSDINSTALL=1"
+		"-DSDINSTALL=$(usex systemd)"
 	)
-
-	if tc-ld-is-gold; then
-		mycmakeargs+=( "-DUSE_GOLD=yes" )
-	else
-		mycmakeargs+=( "-DUSE_GOLD=no" )
-	fi
 
 	cmake_src_configure
 
@@ -70,6 +64,12 @@ src_configure() {
 }
 
 src_install() {
+	# README is a symlink to doc/README and README automatically gets
+	# installed, leading to a broken symlink installed. Fix this by removing
+	# the symlink then installing the actual README. https://bugs.gentoo.org/770046
+	rm README || die
+	dodoc doc/README
+
 	newinitd "${FILESDIR}/initd-r3" "${PN}"
 	newconfd "${FILESDIR}/confd-r2" "${PN}"
 

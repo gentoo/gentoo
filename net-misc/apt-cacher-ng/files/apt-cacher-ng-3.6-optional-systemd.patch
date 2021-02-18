@@ -1,0 +1,62 @@
+commit f73ba7b31712c1c5543da5a6dab554cac48d2904
+Author: John Helmert III <jchelmert3@posteo.net>
+Date:   Fri Feb 19 10:59:51 2021 -0600
+
+    Make systemd fully optional
+    
+    Avoid linking to systemd without SDINSTALL set. Unconditionally install
+    systemd files with SDTYPE=notify because <systemd-209 is long gone.
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3c99864..5bafc45 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -228,14 +228,16 @@ CHECK_CXX_SOURCE_COMPILES("${TESTSRC}" HAVE_PREAD)
+ FILE(READ ${TESTKITDIR}/HAVE_DAEMON.cc TESTSRC)
+ CHECK_CXX_SOURCE_COMPILES("${TESTSRC}" HAVE_DAEMON)
+ 
+-pkg_check_modules(lsd "libsystemd>=209")
+-# either part of the big library nowadays or in the helper library on older systems
+-if(NOT lsd_FOUND)
+-pkg_check_modules(lsd libsystemd-daemon)
++if(SDINSTALL)
++	pkg_check_modules(lsd "libsystemd>=209")
++	# either part of the big library nowadays or in the helper library on older systems
++	if(NOT lsd_FOUND)
++	pkg_check_modules(lsd libsystemd-daemon)
++	endif()
++	_append(CFLAGS_DAEMON ${lsd_CFLAGS})
++	_append(LDFLAGS_DAEMON ${lsd_LDFLAGS})
++	set(HAVE_SD_NOTIFY ${lsd_FOUND})
+ endif()
+-_append(CFLAGS_DAEMON ${lsd_CFLAGS})
+-_append(LDFLAGS_DAEMON ${lsd_LDFLAGS})
+-set(HAVE_SD_NOTIFY ${lsd_FOUND})
+ 
+ SET(CMAKE_REQUIRED_LIBRARIES dl)
+ FILE(READ ${TESTKITDIR}/HAVE_DLOPEN.cc TESTSRC)
+diff --git a/systemd/CMakeLists.txt b/systemd/CMakeLists.txt
+index 850f9b8..6ba333f 100644
+--- a/systemd/CMakeLists.txt
++++ b/systemd/CMakeLists.txt
+@@ -1,17 +1,10 @@
+ cmake_minimum_required(VERSION 3.1)
+ 
+ unset(SDTYPE)
+-if(HAVE_SD_NOTIFY)
+-	set(SDTYPE notify)
+-else()
+-	set(SDTYPE simple)
+-endif()
++set(SDTYPE notify)
+ CONFIGURE_FILE(apt-cacher-ng.service.in apt-cacher-ng.service)
+ CONFIGURE_FILE(apt-cacher-ng.conf.in apt-cacher-ng.conf)
+ unset(SDTYPE)
+ 
+-# this is experimental and is supposed to match LSB
+-if(SDINSTALL)
+-	install(FILES ${CMAKE_CURRENT_BINARY_DIR}/apt-cacher-ng.conf DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/tmpfiles.d/)
+-	install(FILES ${CMAKE_CURRENT_BINARY_DIR}/apt-cacher-ng.service DESTINATION /lib/systemd/system)
+-endif()
++install(FILES ${CMAKE_CURRENT_BINARY_DIR}/apt-cacher-ng.conf DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/tmpfiles.d/)
++install(FILES ${CMAKE_CURRENT_BINARY_DIR}/apt-cacher-ng.service DESTINATION /lib/systemd/system)
