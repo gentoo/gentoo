@@ -13,7 +13,7 @@ SRC_URI="https://files.pythonhosted.org/packages/source/${MY_PN::1}/${MY_PN}/${M
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 S="${WORKDIR}/${MY_PN}-${PV}"
 
