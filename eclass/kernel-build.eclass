@@ -37,6 +37,7 @@ PYTHON_COMPAT=( python3_{7..9} )
 inherit python-any-r1 savedconfig toolchain-funcs kernel-install
 
 BDEPEND="
+	${PYTHON_DEPS}
 	sys-devel/bc
 	sys-devel/flex
 	virtual/libelf
