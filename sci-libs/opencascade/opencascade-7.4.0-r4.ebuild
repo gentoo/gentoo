@@ -16,7 +16,8 @@ SRC_URI="https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/ta
 
 LICENSE="|| ( Open-CASCADE-LGPL-2.1-Exception-1.0 LGPL-2.1 )"
 SLOT="${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
+# gl2ps
 IUSE="debug doc examples ffmpeg freeimage gles2 inspector java optimize qt5 tbb +vtk"
 
 REQUIRED_USE="
