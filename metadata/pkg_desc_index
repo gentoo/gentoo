@@ -3073,9 +3073,9 @@ app-text/tabler 2-r1: A utility to create text art tables from delimited input
 app-text/talkfilters 2.3.8-r1: Convert ordinary English text into text that mimics a stereotyped dialect
 app-text/teckit 2.5.6 2.5.10: Text Encoding Conversion toolkit
 app-text/teseq 1.1.1: A tool for analyzing files that contain control characters and sequences
-app-text/tessdata_best 4.0.0: Most accurate trained models for app-text/tesseract
-app-text/tessdata_fast 4.0.0: Fast integer versions of trained models for app-text/tesseract
-app-text/tessdata_legacy 4.0.0: Trained models for app-text/tesseract compatible with the legacy engine
+app-text/tessdata_best 4.0.0 4.1.0: Most accurate trained models for app-text/tesseract
+app-text/tessdata_fast 4.0.0 4.1.0: Fast integer versions of trained models for app-text/tesseract
+app-text/tessdata_legacy 4.0.0 4.1.0: Trained models for app-text/tesseract compatible with the legacy engine
 app-text/tesseract 3.05.02 4.1.0-r1 4.1.1 9999: An OCR Engine, originally developed at HP, now open source.
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
 app-text/texlive 2020-r9: A complete TeX distribution
