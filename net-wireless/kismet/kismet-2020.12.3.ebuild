@@ -19,7 +19,7 @@ else
 
 	SRC_URI="https://www.kismetwireless.net/code/${MY_P}.tar.xz"
 
-	KEYWORDS="~amd64 arm ~arm64 ~ppc ~x86"
+	KEYWORDS="amd64 arm ~arm64 ~ppc x86"
 fi
 
 DESCRIPTION="IEEE 802.11 wireless LAN sniffer"
