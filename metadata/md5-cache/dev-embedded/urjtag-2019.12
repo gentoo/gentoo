@@ -4,9 +4,9 @@ DESCRIPTION=Tool for communicating over JTAG with flash chips, CPUs, and many mo
 EAPI=7
 HOMEPAGE=http://urjtag.sourceforge.net/
 IUSE=ftdi ftd2xx readline usb
-KEYWORDS=~amd64 ppc sparc x86
+KEYWORDS=amd64 ppc sparc x86
 LICENSE=GPL-2
 RDEPEND=ftdi? ( dev-embedded/libftdi:1= ) ftd2xx? ( dev-embedded/libftd2xx ) readline? ( sys-libs/readline:= ) usb? ( virtual/libusb:1 ) !dev-embedded/jtag
 SLOT=0
 SRC_URI=mirror://sourceforge/urjtag/urjtag-2019.12.tar.xz
-_md5_=03a6ca33047688281abb42a258509e0d
+_md5_=865efb7f24ff266586f2ba9b7e714647
