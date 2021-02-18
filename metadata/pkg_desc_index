@@ -12390,7 +12390,7 @@ kde-plasma/libkworkspace 5.20.5 5.21.0: Workspace library to interact with the P
 kde-plasma/milou 5.20.5 5.21.0: Dedicated search application built on top of Baloo
 kde-plasma/oxygen 5.20.5 5.21.0: Oxygen visual style for the Plasma desktop
 kde-plasma/plasma-browser-integration 5.20.5 5.21.0: Integrate Chrome/Firefox better into Plasma through browser extensions
-kde-plasma/plasma-desktop 5.20.5-r1 5.21.0: KDE Plasma desktop
+kde-plasma/plasma-desktop 5.20.5-r1 5.21.0-r1: KDE Plasma desktop
 kde-plasma/plasma-disks 5.20.5 5.21.0: Monitors S.M.A.R.T. capable devices for imminent failure
 kde-plasma/plasma-firewall 5.21.0: Plasma frontend for Firewalld or UFW
 kde-plasma/plasma-integration 5.20.5 5.21.0: Qt Platform Theme integration plugins for the Plasma workspaces
