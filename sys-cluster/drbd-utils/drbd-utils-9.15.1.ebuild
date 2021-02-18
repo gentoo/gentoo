@@ -84,7 +84,7 @@ src_install() {
 	# https://bugs.gentoo.org/698304
 	dodir lib/drbd
 	local i
-	for i in drbd drbdadm-83 drbdadm-84 drbdsetup-83 drbdsetup-84; do
+	for i in drbdadm-83 drbdadm-84 drbdsetup-83 drbdsetup-84; do
 		dosym ../../lib64/drbd/"${i}" lib/drbd/"${i}"
 	done
 }
