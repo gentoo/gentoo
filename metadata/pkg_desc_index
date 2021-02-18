@@ -2045,7 +2045,7 @@ app-emulation/faudio 19.06 19.09 20.02 20.09 21.01 9999: FAudio - Accuracy-focus
 app-emulation/firecracker 0.21.1-r1: Secure and fast microVMs for serverless computing
 app-emulation/firecracker-bin 0.23.0 0.23.1 0.24.1: Secure and fast microVMs for serverless computing (static build)
 app-emulation/flannel 0.11.0: An etcd backed network fabric for containers
-app-emulation/free42 2.0.20 2.5.22 2.5.24 2.5.25: An HP-42S Calculator Simulator
+app-emulation/free42 2.5.24 2.5.25: An HP-42S Calculator Simulator
 app-emulation/fs-uae 3.0.5: Integrates the most accurate Amiga emulation code available from WinUAE
 app-emulation/fs-uae-launcher 3.0.5: PyQt5-based launcher for FS-UAE
 app-emulation/fuse 1.5.7: Free Unix Spectrum Emulator by Philip Kendall
@@ -19032,7 +19032,7 @@ x11-wm/treewm 0.4.5-r2: WindowManager that arranges the windows in a tree (not i
 x11-wm/twm 1.0.11: X.Org Tab Window Manager
 x11-wm/vtwm 5.4.7-r2: TWM descendant that implements a Virtual Desktop
 x11-wm/windowlab 1.40-r1: small and simple window manager of novel design
-x11-wm/windowmaker 0.95.8-r1 0.95.9-r1 0.95.9-r2 9999: The fast and light GNUstep window manager
+x11-wm/windowmaker 0.95.9-r2 9999: The fast and light GNUstep window manager
 x11-wm/wm2 4-r1: Small, unconfigurable window manager
 x11-wm/wmfs 20180520 99999999: Window Manager From Scratch, A tiling window manager highly configurable
 x11-wm/wmii 3.9.2-r6: A dynamic window manager for X11
