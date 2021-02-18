@@ -24,6 +24,8 @@ src_prepare() {
 		-e "s/^GIT_VERSION/#&/" \
 		Makefile \
 		|| die
+
+	tc-export PKG_CONFIG
 }
 
 src_compile() {
