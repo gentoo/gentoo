@@ -4,8 +4,9 @@
 
 command="/usr/bin/salt-api"
 command_args="${SALT_OPTS}"
-pidfile="/var/run/salt-api.pid"
-command_args_background="--daemon --pid-file=\"${pidfile}\""
+pidfile="/var/run/supervisor-salt-api.pid"
+daemon_pidfile="/var/run/salt-api.pid"
+command_args_background="--daemon --pid-file=\"${daemon_pidfile}\""
 name="SALT API daemon"
 retry="20"
 
