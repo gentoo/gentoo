@@ -9,7 +9,7 @@ inherit autotools optfeature python-single-r1 readme.gentoo-r1
 
 DESCRIPTION="A plain text human readable/writable document format"
 HOMEPAGE="https://asciidoc.org/ https://github.com/asciidoc/asciidoc-py3/"
-SRC_URI="https://github.com/${PN}/${PN}-py3/archive/${PV/_/}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/asciidoc-py/asciidoc-py/releases/download/${PV}/${P}.tar.gz -> ${P}.new.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -45,8 +45,6 @@ REQUISITES for a list of runtime dependencies.
 DOCS=( BUGS.txt CHANGELOG.txt README.asciidoc
 	   docbook-xsl/asciidoc-docbook-xsl.txt dblatex/dblatex-readme.txt
 	   filters/code/code-filter-readme.txt )
-
-S="${WORKDIR}/${PN}-py3-${PV/_/}"
 
 src_prepare() {
 	default
