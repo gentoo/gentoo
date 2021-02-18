@@ -4,8 +4,9 @@
 
 command="/usr/bin/salt-syndic"
 command_args="${SALT_OPTS}"
-pidfile="/var/run/salt-syndic.pid"
-command_args_background="--daemon --pid-file=\"${pidfile}\""
+pidfile="/var/run/supervisor-salt-syndic.pid"
+daemon_pidfile="/var/run/salt-syndic.pid"
+command_args_background="--daemon --pid-file=\"${daemon_pidfile}\""
 name="SALT syndic daemon"
 retry="20"
 
