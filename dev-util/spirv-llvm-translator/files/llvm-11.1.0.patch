@@ -1,0 +1,10 @@
+--- a/CMakeLists.txt	2021-02-18 14:52:20.079691789 +0000
++++ b/CMakeLists.txt	2021-02-18 14:47:43.773873042 +0000
+@@ -1,6 +1,6 @@
+ cmake_minimum_required(VERSION 3.3)
+ 
+-set (BASE_LLVM_VERSION 11.0.0)
++set (BASE_LLVM_VERSION 11.1.0)
+ set(LLVM_SPIRV_VERSION ${BASE_LLVM_VERSION}.0)
+ 
+ option(LLVM_SPIRV_INCLUDE_TESTS
