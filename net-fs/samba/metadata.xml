@@ -16,12 +16,16 @@
 		<flag name="client">Enables the client part</flag>
 		<flag name="cluster">Enable support for clustering</flag>
 		<flag name="dmapi">Enable support for DMAPI. This currently works only in combination with XFS.</flag>
+		<flag name="glusterfs">Enable support for Glusterfs filesystem via <pkg>sys-cluster/glusterfs</pkg></flag>
 		<flag name="gpg">Use <pkg>app-crypt/gpgme</pkg> for AD DC</flag>
 		<flag name="json">Enable json audit support through <pkg>dev-libs/jansson</pkg></flag>
 		<flag name="iprint">Enabling iPrint technology by Novell</flag>
+		<flag name="ntvfs">Enable support for NTVFS fileserver</flag>
 		<flag name="profiling-data">Enables support for collecting profiling data</flag>
 		<flag name="quota">Enables support for user quotas</flag>
+		<flag name="regedit">Enable support for regedit command-line tool</flag>
 		<flag name="snapper">Enable vfs_snapper module (requires <pkg>sys-apps/dbus</pkg>)</flag>
+		<flag name="spotlight">Enable support for spotlight backend</flag>
 		<flag name="system-heimdal">Use <pkg>app-crypt/heimdal</pkg> instead of
 			bundled heimdal.</flag>
 		<flag name="system-mitkrb5">Use <pkg>app-crypt/mit-krb5</pkg> instead of
