@@ -24,6 +24,7 @@ RDEPEND="
 	dev-ml/cmdliner:=
 "
 DEPEND="${RDEPEND}
+	dev-ml/dune
 	dev-ml/cppo"
 
 S="${WORKDIR}/opam-${PV/_/-}"
