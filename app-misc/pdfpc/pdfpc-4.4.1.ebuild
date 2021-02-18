@@ -16,7 +16,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 #       https://github.com/pdfpc/pdfpc/commit/2a2c9b71467db801a3a0c6e5aabc8794004216bb
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="+gstreamer"
 
 RDEPEND="
