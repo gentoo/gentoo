@@ -13,7 +13,7 @@ SRC_URI="https://ftp.postgresql.org/pub/pgadmin/${PN}/v${PV}/source/${P}.tar.gz"
 
 LICENSE="POSTGRESQL"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="doc"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
