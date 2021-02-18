@@ -17,7 +17,6 @@ SLOT="0"
 KEYWORDS="-* ~amd64"
 IUSE="+sound"
 
-BDEPEND="app-admin/chrpath"
 RDEPEND="
 	app-accessibility/at-spi2-atk
 	app-accessibility/at-spi2-core
@@ -94,7 +93,7 @@ src_install() {
 	insinto /usr/share
 
 	if has_version media-sound/apulse[-sdk] && ! has_version media-sound/pulseaudio; then
-		sed -i 's/Exec=/Exec=apulse /g' usr/share/applications/signal-desktop.desktop
+		sed -i 's/Exec=/Exec=apulse /g' usr/share/applications/signal-desktop.desktop || die
 	fi
 
 	doins -r usr/share/applications
@@ -110,5 +109,6 @@ src_install() {
 
 pkg_postinst() {
 	xdg_pkg_postinst
-	elog "For using the tray icon on compatible desktop environments, start Signal with '--start-in-tray' or '--use-tray-icon'."
+	elog "For using the tray icon on compatible desktop environments,"
+	elog "start Signal with '--start-in-tray' or '--use-tray-icon'."
 }
