@@ -13894,7 +13894,7 @@ media-sound/mp3val 0.1.8: Validate and fix MPEG audio files
 media-sound/mp3wrap 0.5: Command-line utility that wraps multiple mp3 files into one large playable mp3
 media-sound/mpc 0.33: Commandline client for Music Player Daemon (media-sound/mpd)
 media-sound/mpck 0.15: Checks MP3s for errors
-media-sound/mpd 0.21.26 0.22.3 0.22.4-r1: The Music Player Daemon (mpd)
+media-sound/mpd 0.21.26 0.22.3 0.22.4-r1 0.22.5 0.22.6: The Music Player Daemon (mpd)
 media-sound/mpdas 0.4.2: AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22 9999: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.8.1-r2: Music Player For Console
@@ -14071,7 +14071,7 @@ media-tv/gentoo-vdr-scripts 2.8: Scripts necessary for use of VDR as a set-top-b
 media-tv/gtk-v4l 0.4: A control application for Video 4 Linux (based on C and GTK+)
 media-tv/ivtv-utils 1.4.1: IVTV utilities for Hauppauge PVR PCI cards
 media-tv/ivtvplayer 0.1.3-r2: Simple IVTV command line TV and radio player with support of LIRC
-media-tv/kodi 19.0_rc1-r2 19.9999 9999: A free and open source media-player and entertainment hub
+media-tv/kodi 19.0_rc1-r2 19.0_rc1-r3 19.9999 9999: A free and open source media-player and entertainment hub
 media-tv/linuxtv-dvb-apps 1.1.1.20140321-r1: Small utils for DVB to scan, zap, view signal strength
 media-tv/mythtv 31.0-r5: Open Source DVR and media center hub
 media-tv/mythtv-status 0.10.4: Displays the current status of MythTV at the command prompt

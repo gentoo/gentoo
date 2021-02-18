@@ -4802,24 +4802,28 @@ media-sound/yarock:vlc - Enable media-video/vlc backend
 media-sound/yoshimi:lv2 - Add support for Ladspa V2
 media-sound/zynaddsubfx:dssi - Enable support for DSSI Soft Synth Interface
 media-tv/kodi:airplay - enable AirPlay support
+media-tv/kodi:bluetooth - Enable JSON-RPC over BT for remote control connected via bluetooth
 media-tv/kodi:bluray - Enable playback of Blu-ray filesystems
 media-tv/kodi:caps - Use sys-libs/libcap to bind to privileged ports as non-root
 media-tv/kodi:cec - Enable support for HDMI-CEC devices via libcec
 media-tv/kodi:dav1d - Enables AV1 decoding via media-libs/dav1d
-media-tv/kodi:dvd - Enable optical (CD/DVD drive) support
+media-tv/kodi:eventclients - Install full set of Kodi python evenclients and evenclients examples
 media-tv/kodi:gbm - Use the Graphics Buffer Manager for EGL on KMS.
-media-tv/kodi:gles - Enable support for GLES
+media-tv/kodi:gles - Use simplified OpenGLES instead of full-scale OpenGL
 media-tv/kodi:libusb - Use virtual/libusb for usb device hotplug support. This flag should only be enabled if you're running a non-Linux kernel or you don't want to use sys-fs/udev.
 media-tv/kodi:lirc - Enable support for IR remote controls using app-misc/lirc
-media-tv/kodi:mariadb - Add MariaDB support
+media-tv/kodi:mariadb - Enable support store of media library metadata on local or remote MariaDB
+media-tv/kodi:mysql - Enable support store of media library metadata on local or remote MySQL
 media-tv/kodi:nfs - Enable NFS client support
+media-tv/kodi:optical - Enable Audio CD playback, optical disks detection and reading (CD-ROM, Video CD, and others), and ISO optical disk images direct reading. DVD disks may require additional 'udf' flag.
 media-tv/kodi:power-control - Enable control of shutdown, reboot, suspend, and hibernate
 media-tv/kodi:raspberry-pi - Enable support for the Raspberry Pi
 media-tv/kodi:system-ffmpeg - Use system ffmpeg instead of the bundled one
 media-tv/kodi:udev - Use sys-fs/udev rules to handle devices' permissions and hotplug support. Unless you know what you're doing do not disable this flag on Linux kernels. This is provided as an option for completeness.
 media-tv/kodi:udf - Enable UDF support. Required for playing blurays.
+media-tv/kodi:upower - Use sys-power/upower to get battery level and active power source
 media-tv/kodi:webserver - Enable internal webserver
-media-tv/kodi:xslt - Enable XSLT support using dev-libs/libxslt
+media-tv/kodi:xslt - Enable metadata XSLT scrapers support with dev-libs/libxslt
 media-tv/linuxtv-dvb-apps:alevt - Build videotext decoder
 media-tv/mythtv:alsa - Allows MythTV to directly output sound to ALSA devices
 media-tv/mythtv:asi - Support for DVEO ASI recorder
