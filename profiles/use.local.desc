@@ -7988,7 +7988,6 @@ sys-cluster/ceph:system-boost - Use system dev-libs/boost instead of the bundled
 sys-cluster/ceph:uring - Build with support for sys-libs/liburing
 sys-cluster/ceph:xfs - Add xfs support
 sys-cluster/ceph:zfs - Add zfs support
-sys-cluster/charliecloud:ch-grow - Build the internal builder ch-grow
 sys-cluster/charliecloud:ch-image - Build the internal builder ch-image (previously named ch-grow)
 sys-cluster/charm:ampi - Build implementation of MPI on top of Charm++
 sys-cluster/charm:charmdebug - Enable the charm debugger
