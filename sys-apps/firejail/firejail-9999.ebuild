@@ -22,7 +22,9 @@ HOMEPAGE="https://firejail.wordpress.com/"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="X apparmor +chroot contrib +dbusproxy +file-transfer +globalcfg +network +private-home +suid test +userns +whitelist"
-RESTRICT="!test? ( test )"
+# Needs a lot of work to function within sandbox/portage
+# bug #769731
+RESTRICT="test"
 
 RDEPEND="!sys-apps/firejail-lts
 	apparmor? ( sys-libs/libapparmor )
