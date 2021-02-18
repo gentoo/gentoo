@@ -7655,7 +7655,6 @@ sys-apps/firejail:dbusproxy - Enable DBus proxying to filter access in supportin
 sys-apps/firejail:file-transfer - Enable file transfers between sandboxes and the host system
 sys-apps/firejail:globalcfg - Enable global config file
 sys-apps/firejail:network - Enable networking features
-sys-apps/firejail:overlayfs - Enable overlayfs
 sys-apps/firejail:private-home - Enable private home feature
 sys-apps/firejail:userns - Enable attaching a new user namespace to a sandbox (--noroot option)
 sys-apps/firejail:whitelist - Enable whitelist
