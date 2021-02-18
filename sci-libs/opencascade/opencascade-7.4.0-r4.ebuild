@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # TODO:
@@ -17,7 +17,6 @@ SRC_URI="https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/ta
 LICENSE="|| ( Open-CASCADE-LGPL-2.1-Exception-1.0 LGPL-2.1 )"
 SLOT="${PV}"
 KEYWORDS="~amd64 ~x86"
-# gl2ps
 IUSE="debug doc examples ffmpeg freeimage gles2 inspector java optimize qt5 tbb +vtk"
 
 REQUIRED_USE="
@@ -25,7 +24,6 @@ REQUIRED_USE="
 	?? ( optimize tbb )
 "
 
-#	gl2ps? ( x11-libs/gl2ps )
 RDEPEND="
 	app-eselect/eselect-opencascade
 	dev-cpp/eigen
@@ -74,6 +72,8 @@ S="${WORKDIR}/occt-V${MY_PV}"
 PATCHES=(
 	"${FILESDIR}/${P}-find-qt.patch"
 	"${FILESDIR}/${P}-fix-install.patch"
+	"${FILESDIR}/${P}-fix-issue-with-cmake-path-variables.patch"
+	"${FILESDIR}/${P}-Gentoo-specific-avoid-pre-stripping-files.patch"
 )
 
 pkg_setup() {
@@ -84,8 +84,6 @@ pkg_setup() {
 src_prepare() {
 	cmake_src_prepare
 	use java && java-pkg-opt-2_src_prepare
-	sed -e 's/\/lib\$/\/'$(get_libdir)'\$/' \
-		-i adm/templates/OpenCASCADEConfig.cmake.in || die
 }
 
 src_configure() {
@@ -97,18 +95,17 @@ src_configure() {
 		-DCMAKE_INSTALL_PREFIX="/usr/$(get_libdir)/${P}/ros"
 		-DINSTALL_DIR_DOC="/usr/share/doc/${PF}"
 		-DINSTALL_DIR_CMAKE="/usr/$(get_libdir)/cmake"
-#		-DINSTALL_DOC_Overview=$(usex doc)
 		-DINSTALL_SAMPLES=$(usex examples)
 		-DINSTALL_TEST_CASES=NO
 		-DUSE_D3D=no
 		-DUSE_FFMPEG=$(usex ffmpeg)
 		-DUSE_FREEIMAGE=$(usex freeimage)
-#		-DUSE_GL2PS=$(usex gl2ps)
 		-DUSE_GLES2=$(usex gles2)
 		-DUSE_TBB=$(usex tbb)
 		-DUSE_VTK=$(usex vtk)
 	)
 
+	use doc && mycmakeargs+=( -DINSTALL_DOC_Overview=ON )
 	use examples && mycmakeargs+=( -DBUILD_SAMPLES_QT=$(usex qt5) )
 
 	cmake_src_configure
