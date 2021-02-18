@@ -57,7 +57,7 @@ PDEPEND="
 	default-lld? ( sys-devel/lld )"
 
 LLVM_COMPONENTS=( clang clang-tools-extra )
-LLVM_MANPAGES=build
+LLVM_MANPAGES=pregenerated
 LLVM_TEST_COMPONENTS=(
 	llvm/lib/Testing/Support
 	llvm/utils/{lit,llvm-lit,unittest}
