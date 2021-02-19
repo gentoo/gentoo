@@ -6,8 +6,8 @@ EAPI=7
 inherit meson desktop xdg
 
 DESCRIPTION="Music audio files viewer and analiser"
-HOMEPAGE="https://www.sonicvisualiser.org/"
-SRC_URI="https://code.soundsoftware.ac.uk/attachments/download/2755/${P}.tar.gz"
+HOMEPAGE="https://www.sonicvisualiser.org/ https://github.com/sonic-visualiser/sonic-visualiser"
+SRC_URI="https://github.com/${PN}/${PN}/archive/sv_v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
