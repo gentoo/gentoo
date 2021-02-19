@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 FORTRAN_STANDARD="95"
 FORTRAN_NEEDED=fortran
-inherit autotools fortran-2
+inherit autotools fortran-2 flag-o-matic
 
 DESCRIPTION="Reference implementation of the Dirfile, format for time-ordered binary data"
 HOMEPAGE="http://getdata.sourceforge.net/"
@@ -31,6 +31,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# GCC 10 workaround
+	# bug #723076
+	append-fflags $(test-flags-FC -fallow-argument-mismatch)
+
 	econf \
 		--disable-idl \
 		--disable-matlab \
