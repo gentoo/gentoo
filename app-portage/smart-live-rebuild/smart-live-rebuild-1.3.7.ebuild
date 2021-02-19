@@ -14,7 +14,7 @@ SRC_URI="https://github.com/mgorny/smart-live-rebuild/archive/v${PV}.tar.gz -> $
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 arm ~arm64 ~mips x86"
+KEYWORDS="amd64 arm ~arm64 ~mips x86"
 IUSE=""
 
 RDEPEND=">=app-portage/gentoopm-0.2.1[${PYTHON_USEDEP}]"
