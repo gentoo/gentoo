@@ -13,7 +13,7 @@ SRC_URI="https://github.com/mjs/imapclient/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc examples"
 
 RDEPEND="dev-python/six[${PYTHON_USEDEP}]"
