@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Robert Siebeck <gentoo.2019@r123.de> (2021-02-19)
+# This version seems broken on some systems. Masking until this is resolved.
+# bug #771363
+=net-im/signal-desktop-bin-1.40.0-r1
+
 # Michał Górny <mgorny@gentoo.org> (2021-02-19)
 # Xfce 4.16 has the same functionality built-in, rendering the plugin
 # redundant.
