@@ -45,6 +45,7 @@ RDEPEND="
 		dev-python/python-magic[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
+		dev-python/lxml[${PYTHON_USEDEP}]
 	')
 	gnome-base/gnome-desktop:3[introspection]
 	media-sound/fluid-soundfont
@@ -55,6 +56,7 @@ RDEPEND="
 	x11-apps/xrandr
 	x11-libs/gtk+:3[introspection]
 	x11-libs/libnotify[introspection]
+	x11-libs/gdk-pixbuf[jpeg]
 "
 
 python_install_all() {
