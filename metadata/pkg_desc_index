@@ -2551,7 +2551,7 @@ app-misc/ondir 0.2.4: Automatically execute scripts as you traverse directories
 app-misc/oneko 1.2-r2 1.2_p5 1.2_p6_p14-r1: A cat, dog and others which chase the mouse or windows around the screen
 app-misc/pal 0.4.3-r2: Command-line calendar program
 app-misc/pax-utils 1.2.6 1.2.8 1.2.9: ELF utils that can check files for security relevant properties
-app-misc/pdfpc 4.3.0 4.4.0 4.4.1: Presenter console with multi-monitor support for PDF files
+app-misc/pdfpc 4.4.1: Presenter console with multi-monitor support for PDF files
 app-misc/perltrash 0.3-r1: Command-line trash can emulation
 app-misc/pet 0.3.6 0.3.6-r1: Simple command-line snippet manager
 app-misc/pfm 2.12.3-r1: A terminal-based file manager written in Perl
@@ -3508,7 +3508,7 @@ dev-cpp/libxsd-frontend 2.0.0: A compiler frontend for the W3C XML Schema defini
 dev-cpp/lucene++ 3.0.7-r2: C++ port of Lucene library, a high-performance, full-featured text search engine
 dev-cpp/metslib 0.5.3: Metaheuristic modeling framework and optimization toolkit
 dev-cpp/mm-common 1.0.1 1.0.2: Build infrastructure and utilities for GNOME C++ bindings
-dev-cpp/ms-gsl 2.0.0 2.1.0 3.1.0 9999: Guideline Support Library implementation by Microsoft
+dev-cpp/ms-gsl 3.1.0 9999: Guideline Support Library implementation by Microsoft
 dev-cpp/muParser 2.2.6.1: Library for parsing mathematical expressions
 dev-cpp/nlohmann_json 3.6.1-r1 3.7.0 3.7.3 3.9.1: JSON for Modern C++
 dev-cpp/pangomm 2.42.1-r1 2.42.2: C++ interface for pango
