@@ -10,10 +10,10 @@ SRC_URI="https://github.com/vapier/liblzw/releases/download/v${PV}/${P}.tar.xz"
 LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~m68k ~s390 ~x86"
-IUSE="static"
+IUSE="static-libs"
 
 src_configure() {
-	econf --disable-werror $(use_enable static)
+	econf --disable-werror $(use_enable static{-libs,})
 }
 
 src_install() {
