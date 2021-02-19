@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst postrm preinst prepare unpack
+DEPEND=dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Allows you to send and receive messages of Signal Messenger on your computer
+EAPI=7
+HOMEPAGE=https://signal.org/ https://github.com/signalapp/Signal-Desktop
+IUSE=+sound
+KEYWORDS=-* ~amd64
+LICENSE=GPL-3 MIT MIT-with-advertising BSD-1 BSD-2 BSD Apache-2.0 ISC openssl ZLIB APSL-2 icu Artistic-2 LGPL-2.1
+RDEPEND=app-accessibility/at-spi2-atk app-accessibility/at-spi2-core dev-libs/atk dev-libs/expat dev-libs/glib dev-libs/nspr dev-libs/nss media-libs/alsa-lib media-libs/mesa[X(+)] net-print/cups sys-apps/dbus[X] x11-libs/cairo x11-libs/gdk-pixbuf x11-libs/gtk+:3[X] x11-libs/libX11 x11-libs/libxcb x11-libs/libxkbcommon x11-libs/libXcomposite x11-libs/libXcursor x11-libs/libXdamage x11-libs/libXext x11-libs/libXfixes x11-libs/libXi x11-libs/libXrandr x11-libs/libXrender x11-libs/libXScrnSaver x11-libs/libXtst x11-libs/pango sound? ( || ( media-sound/pulseaudio media-sound/apulse ) )
+RESTRICT=splitdebug
+SLOT=0
+SRC_URI=https://updates.signal.org/desktop/apt/pool/main/s/signal-desktop/signal-desktop_1.40.0_amd64.deb
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	unpacker	45b49db67094fdafbb6a16a2299e894b	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=1698b581bf644730c56e0e8320a58493
