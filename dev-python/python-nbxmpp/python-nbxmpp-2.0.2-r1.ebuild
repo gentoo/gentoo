@@ -18,7 +18,10 @@ LICENSE="GPL-3"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
+	dev-libs/gobject-introspection
+	net-libs/libsoup[introspection]
 	dev-python/idna[${PYTHON_USEDEP}]
-	dev-python/precis-i18n[${PYTHON_USEDEP}]"
+	dev-python/precis-i18n[${PYTHON_USEDEP}]
+	dev-python/pygobject[${PYTHON_USEDEP}]"
 
 distutils_enable_tests unittest
