@@ -4,11 +4,6 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
-# Sam James <sam@gentoo.org> (2021-01-19)
-# app-text/dblatex not yet keyworded
-# bug #766186
-dev-util/ragel doc
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-01-19)
 # uchardet not stable/keyworded yet on this arch
 # bug #750032
