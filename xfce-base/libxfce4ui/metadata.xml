@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>xfce@gentoo.org</email>
-    <name>XFCE Team</name>
-  </maintainer>
-  <use>
-    <flag name="glade">Build support for Glade 3's GtkBuilder implementation</flag>
-    <flag name="gtk2">Build deprecated GTK+2 libxfce4ui-1 library.</flag>
-    <flag name="system-info">Enable system information in xfce4-about.</flag>
-  </use>
+	<maintainer type="project">
+		<email>xfce@gentoo.org</email>
+		<name>XFCE Team</name>
+	</maintainer>
+	<use>
+		<flag name="glade">Build support for Glade 3's GtkBuilder implementation</flag>
+		<flag name="system-info">Enable system information in xfce4-about.</flag>
+	</use>
 </pkgmetadata>
