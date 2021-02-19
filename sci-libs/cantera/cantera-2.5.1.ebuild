@@ -117,6 +117,9 @@ src_install() {
 		# Run the byte-compile of modules
 		python_optimize "${D}/$(python_get_sitedir)/${PN}"
 	fi
+
+	# We install static libs unconditionally here
+	# See https://github.com/gentoo/gentoo/pull/10017#discussion_r229210565
 }
 
 pkg_postinst() {
