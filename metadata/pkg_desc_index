@@ -9138,7 +9138,7 @@ dev-python/slimit 0.8.1-r1: A JavaScript minifier written in Python
 dev-python/slixmpp 1.4.2 1.5.2 1.7.0 9999: Python 3 library for XMPP
 dev-python/smartypants 2.0.1 9999: ASCII quote-dot-dash to HTML entity converter
 dev-python/smmap 3.0.4 3.0.5 4.0.0: A pure Python implementation of a sliding window memory map manager
-dev-python/snakeoil 0.8.8 0.8.9 0.9.0 0.9.1 0.9.2 9999: misc common functionality and useful optimizations
+dev-python/snakeoil 0.8.8 0.8.9 0.9.0 0.9.1 0.9.2-r1 9999: misc common functionality and useful optimizations
 dev-python/snaketrace 0.1.1: An strace-like tool for Python audit events
 dev-python/snappy 0.5.1-r1 0.6.0: Python library for the snappy compression library from Google
 dev-python/snapshottest 0.5.1: Snapshot Testing utils for Python
@@ -15127,7 +15127,7 @@ net-misc/drive 0.3.9.1 0.3.9.1-r1: Google Drive client for the commandline
 net-misc/dropbear 2020.80-r2 2020.81-r2: small SSH 2 client/server designed for small memory environments
 net-misc/dropbox 114.4.426 115.4.601 116.4.368: Dropbox daemon (pretends to be GUI-less)
 net-misc/dropbox-cli 2020.03.04 2020.03.04-r1: Cli interface for dropbox (python), part of nautilus-dropbox
-net-misc/econnman 1.1-r1: ConnMan User Interface written with EFL & python
+net-misc/econnman 1.1-r2: ConnMan User Interface written with EFL & python
 net-misc/efax 0.9a_p19_p1: A simple fax program for single-user systems
 net-misc/electron-cash 4.0.2-r2 4.2.3: Lightweight Bitcoin Cash client (BCH fork of Electrum)
 net-misc/electrum 4.0.9-r1 4.0.9-r2: User friendly Bitcoin client
