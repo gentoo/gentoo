@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..8} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit python-single-r1
 
@@ -27,4 +27,7 @@ RDEPEND="${DEPEND}
 src_prepare() {
 	default
 	python_fix_shebang econnman-bin.in
+	sed -e \
+		's/Categories=Network;Settings;Enlightenment;/Categories=Network;Settings;Dialup;Monitor;/g' \
+		-i data/desktop/econnman{.desktop,-agent.desktop} || die
 }
