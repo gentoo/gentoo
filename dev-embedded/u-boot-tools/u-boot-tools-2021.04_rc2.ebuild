@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -12,9 +12,11 @@ SRC_URI="ftp://ftp.denx.de/pub/u-boot/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 IUSE=""
 
+RDEPEND="dev-libs/openssl:0="
+DEPEND="${RDEPEND}"
 BDEPEND="
 	sys-devel/bison
 	sys-devel/flex
@@ -25,13 +27,13 @@ S=${WORKDIR}/${MY_P}
 src_prepare() {
 	default
 	sed -i 's:\bpkg-config\b:${PKG_CONFIG}:g' \
-		scripts/kconfig/lxdialog/check-lxdialog.sh \
+		scripts/kconfig/{g,m,n,q}conf-cfg.sh \
 		scripts/kconfig/Makefile \
 		tools/Makefile || die
 }
 
 src_configure() {
-	tc-export CC PKG_CONFIG
+	tc-export AR CC PKG_CONFIG
 }
 
 src_compile() {
@@ -40,6 +42,7 @@ src_compile() {
 
 	emake \
 		V=1 \
+		AR="${AR}" \
 		CC="${CC}" \
 		HOSTCC="${CC}" \
 		HOSTCFLAGS="${CFLAGS} ${CPPFLAGS}"' $(HOSTCPPFLAGS)' \
@@ -51,6 +54,7 @@ src_compile() {
 		NO_SDL=1 \
 		HOSTSTRIP=: \
 		STRIP=: \
+		AR="${AR}" \
 		CC="${CC}" \
 		HOSTCC="${CC}" \
 		HOSTCFLAGS="${CFLAGS} ${CPPFLAGS}"' $(HOSTCPPFLAGS)' \
