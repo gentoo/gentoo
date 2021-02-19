@@ -8,7 +8,7 @@ KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=!build? ( dev-lang/perl sys-devel/bc sys-devel/bison sys-devel/flex sys-devel/make >=sys-libs/ncurses-5.2 virtual/libelf virtual/pkgconfig )
 RESTRICT=binchecks strip
-SLOT=5.10.6
-SRC_URI=https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.10.tar.xz https://dev.gentoo.org/~alicef/dist/genpatches/genpatches-5.10-1.base.tar.xz https://dev.gentoo.org/~mpagano/dist/genpatches/genpatches-5.10-1.base.tar.xz https://dev.gentoo.org/~whissi/dist/genpatches/genpatches-5.10-1.base.tar.xz https://dev.gentoo.org/~alicef/dist/genpatches/genpatches-5.10-1.extras.tar.xz https://dev.gentoo.org/~mpagano/dist/genpatches/genpatches-5.10-1.extras.tar.xz https://dev.gentoo.org/~whissi/dist/genpatches/genpatches-5.10-1.extras.tar.xz https://github.com/zen-kernel/zen-kernel/releases/download/v5.10.6-zen1/v5.10.6-zen1.patch.xz
+SLOT=5.11
+SRC_URI=https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.11.tar.xz https://dev.gentoo.org/~alicef/dist/genpatches/genpatches-5.11-1.base.tar.xz https://dev.gentoo.org/~mpagano/dist/genpatches/genpatches-5.11-1.base.tar.xz https://dev.gentoo.org/~whissi/dist/genpatches/genpatches-5.11-1.base.tar.xz https://dev.gentoo.org/~alicef/dist/genpatches/genpatches-5.11-1.extras.tar.xz https://dev.gentoo.org/~mpagano/dist/genpatches/genpatches-5.11-1.extras.tar.xz https://dev.gentoo.org/~whissi/dist/genpatches/genpatches-5.11-1.extras.tar.xz https://github.com/zen-kernel/zen-kernel/releases/download/v5.11-zen2/v5.11-zen2.patch.xz
 _eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	estack	055c42df72f76a4f45ec92b35e83cd56	kernel-2	29b0ddf528a34e7e8c7c179cfbdb5c26	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=f8bb216e718225a26e69b38539a7f01a
+_md5_=4f24b131978600c8e8ce0a7a177ecfee
