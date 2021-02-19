@@ -4,9 +4,9 @@ DEPEND=dev-db/sqlite:3 dev-libs/openssl:0= dev-libs/xapian:= net-mail/notmuch:=
 DESCRIPTION=Synchronizes mail messages and notmuch tags across machines
 EAPI=7
 HOMEPAGE=http://www.muchsync.org/
-KEYWORDS=~amd64
+KEYWORDS=amd64
 LICENSE=GPL-2+
 RDEPEND=dev-db/sqlite:3 dev-libs/openssl:0= dev-libs/xapian:= net-mail/notmuch:= net-misc/openssh
 SLOT=0
 SRC_URI=http://www.muchsync.org/src/muchsync-6.tar.gz
-_md5_=45a1c6aba985ef899088d241cf1ac905
+_md5_=7b0c5f40a360c806b7cb523df496c26f
