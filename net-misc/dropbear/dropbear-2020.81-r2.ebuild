@@ -12,7 +12,7 @@ SRC_URI="https://matt.ucc.asn.au/dropbear/releases/${P}.tar.bz2
 
 LICENSE="MIT GPL-2" # (init script is GPL-2 #426056)
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="bsdpty minimal multicall pam +shadow static +syslog zlib"
 
 LIB_DEPEND="
