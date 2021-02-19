@@ -16,7 +16,7 @@ IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	dev-ml/result:=[ocamlopt=]
+	>=dev-ml/result-1.5:=[ocamlopt=]
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
