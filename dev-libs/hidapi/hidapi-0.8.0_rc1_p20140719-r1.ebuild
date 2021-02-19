@@ -18,7 +18,7 @@ SRC_URI="https://github.com/signal11/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}
 
 LICENSE="|| ( BSD GPL-3 HIDAPI )"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
 IUSE="doc fox"
 
 RDEPEND="
