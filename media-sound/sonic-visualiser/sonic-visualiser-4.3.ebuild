@@ -7,7 +7,7 @@ inherit meson desktop xdg
 
 DESCRIPTION="Music audio files viewer and analiser"
 HOMEPAGE="https://www.sonicvisualiser.org/ https://github.com/sonic-visualiser/sonic-visualiser"
-SRC_URI="https://github.com/${PN}/${PN}/archive/sv_v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~fordfrog/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
