@@ -830,7 +830,7 @@ app-arch/lxqt-archiver 0.2.0 0.3.0: Qt GUI File Archiver
 app-arch/lz4 1.9.3: Extremely Fast Compression algorithm
 app-arch/lz5 2.0: An efficient compressor with very fast decompression
 app-arch/lzip 1.21 1.22: lossless data compressor based on the LZMA algorithm
-app-arch/lziprecover 1.21 1.22: Lziprecover is a data recovery tool and decompressor for lzip compressed files
+app-arch/lziprecover 1.22: Lziprecover is a data recovery tool and decompressor for lzip compressed files
 app-arch/lzlib 1.11 1.12: Library for lzip compression
 app-arch/lzma 9.20-r1 19.00: LZMA Stream Compressor from the SDK
 app-arch/lzop 1.04: Utility for fast (even real-time) compression/decompression
@@ -1769,7 +1769,7 @@ app-editors/levee 3.5a: Really tiny vi clone, for things like rescue disks
 app-editors/lpe 1.2.6.13: a lightweight programmers editor
 app-editors/mg 20200215 20200723: MicroGnuEmacs, a port from the BSDs
 app-editors/moe 1.9 1.10 1.11: A powerful and user-friendly console text editor
-app-editors/mousepad 0.4.2 0.4.90 0.5.0 0.5.1 0.5.2: GTK+-based editor for the Xfce Desktop Environment
+app-editors/mousepad 0.5.2: GTK+-based editor for the Xfce Desktop Environment
 app-editors/nano 4.9.3 5.3-r1 5.4 5.5 9999: GNU GPL'd Pico clone with more functionality
 app-editors/ne 3.1.1 3.3.0: the nice editor, easy to use for the beginner and powerful for the wizard
 app-editors/nedit 5.6-r1 5.6-r2 5.7: Multi-purpose text editor for the X Window System
@@ -2790,7 +2790,7 @@ app-portage/pram 10: Tool to ease merging Pull Requests and git patches
 app-portage/prefix-toolkit 8 9: Utilities for users of Gentoo Prefix
 app-portage/repo-commit 0.4.1-r1 9999: A repository commit helper
 app-portage/repoman 2.3.23 3.0.1 3.0.2 9999: Repoman is a Quality Assurance tool for Gentoo ebuilds
-app-portage/smart-live-rebuild 1.3.6 1.3.6-r1 1.3.7 9999: Check live packages for updates and emerge them as necessary
+app-portage/smart-live-rebuild 1.3.7 9999: Check live packages for updates and emerge them as necessary
 app-portage/splat 0.08-r1: Simple Portage Log Analyzer Tool
 app-portage/tatt 0.7-r1 0.8 9999: Arch testing tool
 app-portage/ufed 0.96 9999: Gentoo Linux USE flags editor
@@ -8028,7 +8028,7 @@ dev-python/blessed 1.17.11 1.17.12: Library for making terminal apps using color
 dev-python/blessings 1.7-r1: A thin, practical wrapper around terminal coloring, styling, and positioning
 dev-python/blinker 1.4-r2: Fast, simple object-to-object and broadcast signaling
 dev-python/blockdiag 2.0.1: Generate block-diagram image from text
-dev-python/blosc 1.10.1 1.10.2: High performance compressor optimized for binary data
+dev-python/blosc 1.10.2: High performance compressor optimized for binary data
 dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutines
 dev-python/blurb 1.0.7 1.0.8: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
@@ -8944,7 +8944,7 @@ dev-python/python-efl 1.25.0: Python bindings for Enlightenment Foundation Libra
 dev-python/python-email-validator 1.1.2: A robust email syntax and deliverability validation library
 dev-python/python-engineio 3.12.1: Python implementation of the Engine.IO realtime server.
 dev-python/python-etcd 0.4.5-r1: A python client for etcd
-dev-python/python-evdev 1.3.0 1.4.0: Python library for evdev bindings
+dev-python/python-evdev 1.4.0: Python library for evdev bindings
 dev-python/python-fastimport 0.9.8-r1: Library for parsing the fastimport VCS serialization format
 dev-python/python-gammu 2.11: Python bindings for Gammu
 dev-python/python-gflags 3.1.2-r1: Google's Python argument parsing library
@@ -9009,13 +9009,13 @@ dev-python/python3-saml 1.9.0 1.10.0 1.10.1: OneLogin's SAML Python Toolkit
 dev-python/python_orocos_kdl 1.4.0-r1 9999: Python bindings for KDL
 dev-python/pythondialog 3.5.1: A Python module for making simple text/console-mode user interfaces
 dev-python/pytidylib 0.3.2-r1: Python wrapper for HTML Tidy (tidylib)
-dev-python/pytools 2020.4.4 2021.1 9999: Collection of tools missing from the Python standard library
+dev-python/pytools 2021.1 9999: Collection of tools missing from the Python standard library
 dev-python/pytrie 0.4.0: A pure Python implementation of the trie data structure
 dev-python/pytz 2020.5 2021.1: World timezone definitions for Python
 dev-python/pytzdata 2020.1: The Olson timezone database for Python
 dev-python/pyu2f 0.1.4-r1: Python based U2F host library
 dev-python/pyudev 0.22.0: Python binding to libudev
-dev-python/pyusb 1.1.0 1.1.1: USB support for Python
+dev-python/pyusb 1.1.1: USB support for Python
 dev-python/pyvirtualdisplay 1.3.2: Python wrapper for Xvfb, Xephyr and Xvnc
 dev-python/pywavelets 1.1.1: Discrete Wavelet Transforms in Python
 dev-python/pyx 0.15: Python package for the generation of encapsulated PostScript figures
@@ -9152,7 +9152,7 @@ dev-python/soupsieve 2.1.0 2.2: A modern CSS selector implementation for Beautif
 dev-python/sparql-wrapper 1.8.5: Wrapper around a SPARQL service
 dev-python/speaklater 1.3-r1: Lazy strings for Python
 dev-python/speg 0.3-r1: A PEG-based parser interpreter with memoization
-dev-python/sphinx 2.4.4 3.4.3 3.5.1: Python documentation generator
+dev-python/sphinx 3.4.3 3.5.1: Python documentation generator
 dev-python/sphinx-aiohttp-theme 0.1.6: Sphinx theme for aiohttp
 dev-python/sphinx-bootstrap-theme 0.8.0: Sphinx theme integrates the Bootstrap CSS / JavaScript framework
 dev-python/sphinx-epytext 0.0.4: Sphinx epytext extension
@@ -9241,7 +9241,7 @@ dev-python/textdistance 4.2.0: Compute distance between the two texts
 dev-python/texttable 1.6.3: Module for creating simple ASCII tables
 dev-python/textx 1.4: Meta-language for DSL implementation inspired by Xtext
 dev-python/theano 1.0.5: Define and optimize multi-dimensional arrays mathematical expressions
-dev-python/theano-pymc 1.0.13-r1 1.1.0 1.1.2: Library for operating on mathematical expressions with multi-dimensional arrays
+dev-python/theano-pymc 1.1.0 1.1.2: Library for operating on mathematical expressions with multi-dimensional arrays
 dev-python/threadpoolctl 2.1.0: Limit the number of threads used in native libs that have their own threadpool
 dev-python/three-merge 0.1.1: Simple Python library to perform a 3-way merge between strings
 dev-python/thrift 0.13.0: Python implementation of Thrift
@@ -9355,7 +9355,7 @@ dev-python/xmltodict 0.12.0-r1: Makes working with XML feel like you are working
 dev-python/xvfbwrapper 0.2.9: Python wrapper for running a display inside X virtual framebuffer
 dev-python/xxhash 2.0.0: Python binding for the xxHash library
 dev-python/yapf 0.30.0: A formatter for Python files
-dev-python/yappi 1.2.5-r1 1.3.0-r1 1.3.2: Yet Another Python Profiler
+dev-python/yappi 1.3.0-r1 1.3.2: Yet Another Python Profiler
 dev-python/yapsy 1.12.2: A fat-free DIY Python plugin management toolkit
 dev-python/yaql 1.1.3: YAQL: Yet Another Query Language
 dev-python/yarl 1.6.3: Yet another URL library
@@ -10673,7 +10673,7 @@ dev-util/cargo-c 0.6.2 0.7.2: Helper program to build and install c-like librari
 dev-util/cargo-ebuild 0.2.0 0.3.0 0.3.1: Generates an ebuild for a package using the in-tree eclasses.
 dev-util/cargo-license 0.3.0: Cargo subcommand to see license of dependencies
 dev-util/catalyst 3.0.14 3.0.15 9999: Release metatool used for creating releases based on Gentoo Linux
-dev-util/catfish 1.4.13 4.15.0 4.16.0: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
+dev-util/catfish 4.16.0: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/catkin 0.8.9 9999: Cmake macros and associated python code used to build some parts of ROS
 dev-util/cbindgen 0.16.0 0.17.0: A tool for generating C bindings to Rust code
 dev-util/ccache 4.1 4.2: fast compiler cache
@@ -14177,7 +14177,7 @@ media-video/ogmrip 1.0.1: Graphical frontend and libraries for ripping DVDs and 
 media-video/openshot 2.4.4-r1 2.5.1 2.5.1_p20210103: Award-winning free and open-source video editor
 media-video/orion 1.6.7: Cross-platform Twitch client
 media-video/oxine 0.7.1-r2: OSD frontend for Xine
-media-video/parole 1.0.5 4.15.0 4.16.0: A simple Xfce4 media player using GStreamer
+media-video/parole 4.16.0: A simple Xfce4 media player using GStreamer
 media-video/peek 1.4.0-r1 1.5.1: Simple animated Gif screen recorder
 media-video/pgmfindclip 1.13: automatically find a clipping border for a sequence of pgm images
 media-video/pipewire 0.3.18 0.3.20 0.3.21: Multimedia processing graphs
@@ -15063,7 +15063,7 @@ net-misc/aget 0.4.1-r2: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Perform two optimisations on a list of prefixes to reduce the length of the list
 net-misc/anydesk 5.5.6-r1 6.0.0-r1 6.0.1 6.1.0: Feature rich multi-platform remote desktop application
 net-misc/apt-cacher-ng 3.5_p3 9999: Yet another caching HTTP proxy for Debian/Ubuntu software packages
-net-misc/aria2 1.34.0-r2 1.35.0: A download utility with segmented downloading with BitTorrent support
+net-misc/aria2 1.35.0: A download utility with segmented downloading with BitTorrent support
 net-misc/arpd 0.2-r1: ARP server claiming all unassigned addresses (for network monitoring/simulation)
 net-misc/arpsponge 3.17.11: Sweeps up stray ARP queries from a peering LAN
 net-misc/asterisk 13.38.1-r2 16.15.1-r2: Asterisk: A Modular Open Source PBX System

@@ -410,7 +410,6 @@ app-editors/gvim:racket - Enable support for Scheme using dev-scheme/racket
 app-editors/jasspa-microemacs:nanoemacs - Build NanoEmacs instead of MicroEmacs
 app-editors/joe:xterm - Enable full xterm clipboard support
 app-editors/leafpad:emacs - Enable Emacs key theme
-app-editors/mousepad:gtk3 - Use GTK+3 instead of GTK+2
 app-editors/nano:debug - Enable debug messages and assert warnings. Note that these will all be sent straight to stderr rather than some logging facility.
 app-editors/nano:justify - Enable justify/unjustify functions for text formatting.
 app-editors/nano:magic - Add magic file support (sys-apps/file) to automatically detect appropriate syntax highlighting
