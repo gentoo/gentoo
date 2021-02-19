@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-3 GPL-3 Boost-1.0"
 SLOT="0/14"
-KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples +gmp mpfi ntl qt5"
 
 RDEPEND="
