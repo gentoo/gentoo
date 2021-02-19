@@ -5,7 +5,7 @@ EAPI=7
 
 FORTRAN_NEEDED=fortran
 
-inherit fortran-2
+inherit fortran-2 flag-o-matic
 
 DESCRIPTION="Astronomical World Coordinate System transformations library"
 HOMEPAGE="https://www.atnf.csiro.au/people/mcalabre/WCS/"
@@ -24,12 +24,17 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_configure() {
+	# GCC 10 workaround
+	# bug #764548
+	append-fflags $(test-flags-FC -fallow-argument-mismatch)
+
 	local myconf=(
 		--docdir="${EPREFIX}"/usr/share/doc/${PF}
 		--htmldir="${EPREFIX}"/usr/share/doc/${PF}
 		$(use_enable fortran)
 		$(use_enable tools utils)
 	)
+
 	# hacks because cfitsio and pgplot directories are hard-coded
 	if use fits; then
 		myconf+=(
