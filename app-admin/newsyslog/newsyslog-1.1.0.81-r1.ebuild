@@ -9,7 +9,7 @@ SRC_URI="http://download.openpkg.org/components/cache/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~mips ppc ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~hppa ~mips ppc ppc64 ~sparc x86"
 
 BDEPEND="sys-apps/groff"
 RDEPEND="
