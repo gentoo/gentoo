@@ -38,6 +38,7 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.2.7.4-torrc.sample.patch
+	"${FILESDIR}"/${PN}-0.4.5.5_rc1-LDFLAGS-typo.patch
 )
 
 DOCS=()
