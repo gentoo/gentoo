@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>xfce@gentoo.org</email>
-    <name>XFCE Team</name>
-  </maintainer>
-  <use>
-    <flag name="gtk2">Build the garcon-gtk2-1 library (required
-      for <pkg>xfce-base/xfce4-panel</pkg> &lt; 4.13 only).</flag>
-  </use>
+	<maintainer type="project">
+		<email>xfce@gentoo.org</email>
+		<name>XFCE Team</name>
+	</maintainer>
 </pkgmetadata>
