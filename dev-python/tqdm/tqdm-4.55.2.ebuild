@@ -28,6 +28,7 @@ BDEPEND="
 	dev-python/toml[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
+		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 	)"
 
 distutils_enable_tests pytest
