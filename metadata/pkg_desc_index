@@ -8150,7 +8150,7 @@ dev-python/dissononce 0.34.3-r1: A python implementation for Noise Protocol Fram
 dev-python/distlib 0.3.1-r1: Low-level components of distutils2/packaging
 dev-python/distro 1.5.0-r1: Reliable machine-readable Linux distribution information for Python
 dev-python/dj-database-url 0.5.0: Use Database URLs in your Django Application
-dev-python/django 2.2.18 3.0.12 3.1.6: High-level Python web framework
+dev-python/django 2.2.18 2.2.19 3.0.12 3.0.13 3.1.6 3.1.7: High-level Python web framework
 dev-python/django-allauth 0.42.0: Django 3rd party (social) account authentication
 dev-python/django-appconf 1.0.4: A helper class for handling configuration defaults of packaged apps gracefully.
 dev-python/django-auth-ldap 2.1.0 2.2.0 2.3.0: Django LDAP authentication backend
@@ -14707,7 +14707,7 @@ net-im/sendxmpp 1.24: A perl-script to send xmpp (jabber), similar to what mail(
 net-im/signal-cli-bin 0.7.4: Send and receive messages of Signal Messenger over a command line interface
 net-im/signal-desktop-bin 1.39.6 1.40.0-r1: Allows you to send and receive messages of Signal Messenger on your computer
 net-im/skype-dbus-mock 0_pre20181011: Mocked systemd dbus interface for skype 8.30+
-net-im/skypeforlinux 8.67.0.96 8.68.0.100: Instant messaging client, with support for audio and video
+net-im/skypeforlinux 8.69.0.77: Instant messaging client, with support for audio and video
 net-im/slack 4.4.2 4.4.3 4.11.3 4.12.2: Team collaboration tool
 net-im/spectrum2 2.0.13-r2: An open source instant messaging transport
 net-im/swift 4.0.2-r102: An elegant, secure, adaptable and intuitive XMPP Client
