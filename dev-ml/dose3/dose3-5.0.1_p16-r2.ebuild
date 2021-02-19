@@ -27,7 +27,7 @@ RDEPEND="
 	>=dev-ml/extlib-1.7.0:=[ocamlopt=]
 	>=dev-ml/ocamlgraph-1.8.6:=[ocamlopt=]
 	<dev-ml/ocamlgraph-1.8.9:=[ocamlopt=]
-	dev-ml/re:=[ocamlopt=]
+	>=dev-ml/re-1.9.0:=[ocamlopt=]
 	parmap? ( dev-ml/parmap:=[ocamlopt=] )
 	zip? ( dev-ml/camlzip:=[ocamlopt=] )
 	bzip2? ( dev-ml/camlbz2:= )
