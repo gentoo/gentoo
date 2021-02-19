@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc x86"
 
 ### This version is compatible with both 0.X and 1.X versions of libusb
 DEPEND="virtual/libusb:="
