@@ -29,7 +29,7 @@ RUBY_S="rails-${PV}/${PN}"
 ruby_add_rdepend "
 	~dev-ruby/activesupport-${PV}
 	~dev-ruby/actionview-${PV}
-	|| ( dev-ruby/rack:2.2 dev-ruby/rack:2.1 >=dev-ruby/rack-2.0.8:2.0 )
+	dev-ruby/rack:2.2
 	>=dev-ruby/rack-test-0.6.3:*
 	>=dev-ruby/rails-html-sanitizer-1.2.0:1
 	dev-ruby/rails-dom-testing:2
