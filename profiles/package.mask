@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2021-02-19)
+# Xfce 4.16 has the same functionality built-in, rendering the plugin
+# redundant.
+# Removal on 2021-03-21.  Bug #767412.
+xfce-extra/xfce4-statusnotifier-plugin
+
 # Sam James <sam@gentoo.org> (2021-02-18)
 # 0.9.27 included a regression wrt deletes
 # bug #768948
