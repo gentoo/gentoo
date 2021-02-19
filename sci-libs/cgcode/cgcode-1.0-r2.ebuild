@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils fortran-2 toolchain-funcs
+inherit eutils fortran-2 flag-o-matic toolchain-funcs
 
 DESCRIPTION="Conjugate gradient Codes for large sparse linear systems"
 HOMEPAGE="http://fetk.org/codes/cgcode/index.html"
@@ -22,6 +22,10 @@ S="${WORKDIR}"/${PN}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PV}-gentoo.patch
+
+	# GCC 10 workaround
+	# bug #722000
+	append-fflags $(test-flags-FC -fallow-argument-mismatch)
 
 	cat >> make.inc <<- EOF
 	F77 = $(tc-getFC)
