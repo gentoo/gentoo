@@ -5,10 +5,10 @@ DESCRIPTION=Library for capturing video (dv or mpeg2) over the IEEE 1394 bus
 EAPI=7
 HOMEPAGE=https://ieee1394.wiki.kernel.org/index.php/Libraries#libiec61883
 IUSE=examples abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_s390_32 abi_s390_64
-KEYWORDS=~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 sparc ~x86
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 sparc x86
 LICENSE=|| ( LGPL-2.1 GPL-2 )
 RDEPEND=>=sys-libs/libraw1394-2.1.0-r1[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?]
 SLOT=0
 SRC_URI=https://www.kernel.org/pub/linux/libs/ieee1394/libiec61883-1.2.0.tar.xz
 _eclasses_=multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=d5c2b4d975fcf19b886724198d8d8de7
+_md5_=e8063048442d08a6cf9300b48670d9a6
