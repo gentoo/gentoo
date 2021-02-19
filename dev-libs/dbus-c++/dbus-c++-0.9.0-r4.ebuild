@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/dbus-cplusplus/lib${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="doc ecore glib test"
 RESTRICT="!test? ( test )"
 
