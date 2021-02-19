@@ -10,7 +10,7 @@ SRC_URI="https://archive.xfce.org/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 
 RDEPEND=">=dev-libs/glib-2.52
 	>=xfce-base/xfconf-4.12:=
