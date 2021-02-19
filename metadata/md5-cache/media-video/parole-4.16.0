@@ -5,10 +5,10 @@ DESCRIPTION=A simple Xfce4 media player using GStreamer
 EAPI=7
 HOMEPAGE=https://docs.xfce.org/apps/parole/start
 IUSE=libnotify taglib
-KEYWORDS=~amd64 ~mips x86
+KEYWORDS=amd64 ~mips x86
 LICENSE=GPL-2+
 RDEPEND=>=dev-libs/dbus-glib-0.100 >=dev-libs/glib-2.32:2 media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 sys-apps/dbus >=x11-libs/gtk+-3.20:3 x11-libs/libX11 >=xfce-base/libxfce4ui-4.11:=[gtk3(+)] >=xfce-base/libxfce4util-4.11:= >=xfce-base/xfconf-4.10:= libnotify? ( >=x11-libs/libnotify-0.7 ) taglib? ( >=media-libs/taglib-1.6:0= ) media-plugins/gst-plugins-meta:1.0
 SLOT=0
 SRC_URI=https://archive.xfce.org/src/apps/parole/4.16/parole-4.16.0.tar.bz2
 _eclasses_=xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=24c911cfdfc4d300c057aeeaeba15e9a
+_md5_=617547cda66ba98af29705c0f16706b6

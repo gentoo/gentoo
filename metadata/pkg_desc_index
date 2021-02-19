@@ -16161,7 +16161,7 @@ sci-libs/brial 1.2.10: A C++ library for polynomials over boolean rings
 sci-libs/btf 1.2.6: Algorithm for matrix permutation into block triangular form
 sci-libs/buddy 2.4-r1: Binary Decision Diagram Package
 sci-libs/camd 2.4.6 2.4.6-r1: Library to order a sparse matrix prior to Cholesky factorization
-sci-libs/cantera 2.4.0-r5 2.5.0: Object-oriented tool suite for chemical kinetics, thermodynamics, and transport
+sci-libs/cantera 2.4.0-r5 2.5.0 2.5.1: Object-oriented tool suite for chemical kinetics, thermodynamics, and transport
 sci-libs/cartopy 0.18.0: Python package for geospatial data processing and analysis
 sci-libs/cbflib 0.9.3.3: Library providing a simple mechanism for accessing CBF files and imgCIF files
 sci-libs/ccfits 2.5: C++ interface for cfitsio

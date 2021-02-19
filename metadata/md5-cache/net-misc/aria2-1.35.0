@@ -5,7 +5,7 @@ DESCRIPTION=A download utility with segmented downloading with BitTorrent suppor
 EAPI=7
 HOMEPAGE=https://aria2.github.io/
 IUSE=adns bittorrent +gnutls jemalloc libuv +libxml2 metalink +nettle nls sqlite scripts ssh ssl tcmalloc test xmlrpc
-KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux
+KEYWORDS=amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2+-with-openssl-exception
 RDEPEND=sys-libs/zlib:0= adns? ( >=net-dns/c-ares-1.5.0:0= ) jemalloc? ( dev-libs/jemalloc ) libuv? ( >=dev-libs/libuv-1.13:0= ) metalink? ( libxml2? ( >=dev-libs/libxml2-2.6.26:2= ) !libxml2? ( dev-libs/expat:0= ) ) sqlite? ( dev-db/sqlite:3= ) ssh? ( net-libs/libssh2:= ) ssl? ( app-misc/ca-certificates gnutls? ( >=net-libs/gnutls-1.2.9:0= nettle? ( >=dev-libs/nettle-2.4:0= bittorrent? ( >=dev-libs/nettle-2.4:0=[gmp] >=dev-libs/gmp-6:0= ) ) !nettle? ( >=dev-libs/libgcrypt-1.2.2:0= ) ) !gnutls? ( dev-libs/openssl:0= ) ) !ssl? ( nettle? ( >=dev-libs/nettle-2.4:0= bittorrent? ( >=dev-libs/nettle-2.4:0=[gmp] >=dev-libs/gmp-6:0= ) ) !nettle? ( >=dev-libs/libgcrypt-1.2.2:0= ) ) tcmalloc? ( dev-util/google-perftools ) xmlrpc? ( libxml2? ( >=dev-libs/libxml2-2.6.26:2= ) !libxml2? ( dev-libs/expat:0= ) ) nls? ( virtual/libiconv virtual/libintl ) scripts? ( dev-lang/ruby )
 REQUIRED_USE=?? ( jemalloc tcmalloc ) metalink? ( xmlrpc )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/aria2/aria2/releases/download/release-1.35.0/aria2-1.35.0.tar.xz
 _eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=bca7cb64f4465ecdef23d4a809776d5b
+_md5_=6f12868661cd9325d9430db997185164
