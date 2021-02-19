@@ -30,8 +30,6 @@ BDEPEND="
 "
 RDEPEND="
 	>=media-libs/alsa-lib-1.1.7
-	sdl? ( media-libs/libsdl2 )
-	sndfile? ( >=media-libs/libsndfile-1.0.20 )
 	sys-apps/dbus
 	virtual/libudev
 	bluetooth? (
@@ -45,6 +43,8 @@ RDEPEND="
 		media-libs/gst-plugins-base:1.0
 	)
 	jack? ( >=media-sound/jack2-1.9.10:2 )
+	sdl? ( media-libs/libsdl2 )
+	sndfile? ( >=media-libs/libsndfile-1.0.20 )
 	systemd? ( sys-apps/systemd )
 	vulkan? ( media-libs/vulkan-loader )
 	X? ( x11-libs/libX11 )
@@ -82,8 +82,6 @@ src_configure() {
 		--buildtype=$(usex debug debugoptimized plain)
 		# alsa plugin and jack emulation
 		-Dpipewire-alsa=true
-		$(meson_feature sdl sdl2)
-		$(meson_feature sndfile)
 		$(meson_use jack pipewire-jack)
 		# spa-plugins
 		# we install alsa support unconditionally
@@ -96,6 +94,8 @@ src_configure() {
 		$(meson_use doc docs)
 		$(meson_use gstreamer)
 		$(meson_use gstreamer gstreamer-device-provider)
+		$(meson_feature sdl sdl2)
+		$(meson_feature sndfile)
 		$(meson_use systemd)
 		$(meson_use test test)
 		$(meson_use test tests)
