@@ -34,6 +34,7 @@ REQUIRED_USE="${LUA_REQUIRED_USE}
 	drm? ( gles2-only )
 	examples? ( eet svg )
 	gles2-only? ( || ( wayland X ) )
+	ibus? ( glib )
 	pulseaudio? ( sound )
 	wayland? ( gles2-only !opengl )
 	xim? ( X )
