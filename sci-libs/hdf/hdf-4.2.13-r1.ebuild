@@ -45,6 +45,8 @@ src_prepare() {
 
 src_configure() {
 	[[ $(tc-getFC) = *gfortran ]] && append-fflags -fno-range-check
+	# GCC 10 workaround
+	# bug #723014
 	append-fflags $(test-flags-FC -fallow-argument-mismatch)
 
 	econf \
