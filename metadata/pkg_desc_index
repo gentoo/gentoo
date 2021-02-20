@@ -8678,7 +8678,7 @@ dev-python/pip 20.3.3 21.0 21.0.1: Installs python packages -- replacement for e
 dev-python/pipenv 2020.11.4 2020.11.15: Python Development Workflow for Humans
 dev-python/pipfile 0.0.2: Replacement for the existing standard pip's requirements.txt file
 dev-python/pivy 0.6.5: Coin3D bindings for Python
-dev-python/pkgconfig 1.5.1: Interface Python with pkg-config
+dev-python/pkgconfig 1.5.1 1.5.2: Interface Python with pkg-config
 dev-python/pkginfo 1.7.0: Provides an API for querying the distutils metadata written in a PKG-INFO file
 dev-python/plotly 4.14.1 4.14.3: Browser-based graphing library for Python
 dev-python/plotly-geo 1.0.0: Browser-based graphing library for Python
