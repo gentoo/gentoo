@@ -7,7 +7,7 @@ MY_PV="${PV/_/-}"
 inherit cmake fcaps flag-o-matic multilib toolchain-funcs wxwidgets
 
 DESCRIPTION="A PlayStation 2 emulator"
-HOMEPAGE="https://www.pcsx2.net"
+HOMEPAGE="https://pcsx2.net/"
 SRC_URI="https://github.com/PCSX2/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
