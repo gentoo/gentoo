@@ -11,4 +11,4 @@ RDEPEND=app-arch/libarchive dev-libs/icu:= !clang? ( dev-cpp/libxmlpp:2.6 dev-li
 SLOT=0
 SRC_URI=https://github.com/hfst/hfst-ospell/archive/v0.5.2.tar.gz -> hfstospell-0.5.2.tar.gz
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=db83ceac64fceff2952c4292d9c51137
+_md5_=691781ce5b374b4d9202449555625eb9
