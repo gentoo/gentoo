@@ -53,7 +53,6 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
 DOCS=( ABOUT-NLS AUTHORS COPYING COPYING.LESSER ChangeLog INSTALL NEWS README THANKS TODO )
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.5-add-include.patch
-	"${FILESDIR}"/${PN}-3.10-get_size.patch
 )
 
 pkg_setup() {
@@ -73,7 +72,8 @@ src_configure() {
 	append-flags -fno-strict-aliasing
 
 	# maildir is the Gentoo default
-	econf MU_DEFAULT_SCHEME=maildir \
+	econf \
+		MU_DEFAULT_SCHEME=maildir \
 		CURSES_LIBS="$($(tc-getPKG_CONFIG) --libs ncurses)" \
 		$(use_with berkdb berkeley-db) \
 		$(use_with bidi fribidi) \
