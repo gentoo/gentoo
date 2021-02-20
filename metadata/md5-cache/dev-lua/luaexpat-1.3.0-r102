@@ -3,7 +3,7 @@ DEFINED_PHASES=compile install prepare
 DEPEND=dev-libs/expat lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 )
 DESCRIPTION=LuaExpat is a SAX XML parser based on the Expat library
 EAPI=7
-HOMEPAGE=https://matthewwild.co.uk/projects/luaexpat/
+HOMEPAGE=https://matthewwild.co.uk/projects/luaexpat/ https://code.matthewwild.co.uk/lua-expat
 IUSE=lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3
 KEYWORDS=amd64 arm arm64 ~hppa ~mips ppc ppc64 sparc x86
 LICENSE=MIT
@@ -12,4 +12,4 @@ REQUIRED_USE=|| ( lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_t
 SLOT=0
 SRC_URI=https://matthewwild.co.uk/projects/luaexpat/luaexpat-1.3.0.tar.gz
 _eclasses_=lua	117840f7c4855d27ccde1c6cca990331	lua-utils	736947973cfbc9de01fdb8548f942f82	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=a5ec9f6b04156d6be1f9366c55121aeb
+_md5_=d9ba367933241f0d2bcbf754846d0061
