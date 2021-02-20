@@ -18,7 +18,10 @@ RESTRICT="!test? ( test )"
 # NOTE: If not testing, we don't need non-native libgcrypt
 RDEPEND="tools? ( dev-libs/libgcrypt )"
 DEPEND="${RDEPEND}
-	test? ( dev-libs/libgcrypt[${MULTILIB_USEDEP}] )
+	test? (
+		app-editors/vim-core
+		dev-libs/libgcrypt[${MULTILIB_USEDEP}]
+	)
 "
 
 src_prepare() {
