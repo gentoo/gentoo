@@ -1,6 +1,5 @@
-diff -ur wulfware-2.6.0.orig/libwulf/Makefile.am wulfware-2.6.0/libwulf/Makefile.am
---- wulfware-2.6.0.orig/libwulf/Makefile.am	2007-07-12 00:58:25.000000000 +0300
-+++ wulfware-2.6.0/libwulf/Makefile.am	2008-05-22 16:25:18.000000000 +0300
+--- a/libwulf/Makefile.am
++++ b/libwulf/Makefile.am
 @@ -48,14 +48,14 @@
  # Define parameters and directives needed in compile/link steps.
  #========================================================================
@@ -28,9 +27,8 @@ diff -ur wulfware-2.6.0.orig/libwulf/Makefile.am wulfware-2.6.0/libwulf/Makefile
  	install -d $(includedir)/wulfware; \
  	install -m 644 ../include/wulfware/*.h $(includedir)/wulfware; \
  	install -d $(prefix)/share/man/man3; \
-diff -ur wulfware-2.6.0.orig/wulf2html/Makefile.am wulfware-2.6.0/wulf2html/Makefile.am
---- wulfware-2.6.0.orig/wulf2html/Makefile.am	2007-07-12 00:58:25.000000000 +0300
-+++ wulfware-2.6.0/wulf2html/Makefile.am	2008-05-22 12:52:36.000000000 +0300
+--- a/wulf2html/Makefile.am
++++ b/wulf2html/Makefile.am
 @@ -62,8 +62,7 @@
  	echo "Clean does nothing"
  
@@ -41,9 +39,8 @@ diff -ur wulfware-2.6.0.orig/wulf2html/Makefile.am wulfware-2.6.0/wulf2html/Make
  	install -m 755 $(PROGRAM) $(prefix)/bin; \
  	install -d $(sysconfdir); \
  	install -d $(sysconfdir)/init.d; \
-diff -ur wulfware-2.6.0.orig/wulflogger/Makefile.am wulfware-2.6.0/wulflogger/Makefile.am
---- wulfware-2.6.0.orig/wulflogger/Makefile.am	2007-07-12 00:58:25.000000000 +0300
-+++ wulfware-2.6.0/wulflogger/Makefile.am	2008-05-22 16:25:14.000000000 +0300
+--- a/wulflogger/Makefile.am
++++ b/wulflogger/Makefile.am
 @@ -54,13 +54,13 @@
  # Define parameters and directives needed in compile/link steps.
  #========================================================================
@@ -71,9 +68,8 @@ diff -ur wulfware-2.6.0.orig/wulflogger/Makefile.am wulfware-2.6.0/wulflogger/Ma
  	install -m 755 $(PROGRAM) $(prefix)/bin; \
  	install -d $(prefix)/share/man/man1; \
  	gzip -c -9 $(PROGRAM).1 > $(PROGRAM).1.gz; \
-diff -ur wulfware-2.6.0.orig/wulfstat/Makefile.am wulfware-2.6.0/wulfstat/Makefile.am
---- wulfware-2.6.0.orig/wulfstat/Makefile.am	2007-07-12 00:58:25.000000000 +0300
-+++ wulfware-2.6.0/wulfstat/Makefile.am	2008-05-22 16:23:57.000000000 +0300
+--- a/wulfstat/Makefile.am
++++ b/wulfstat/Makefile.am
 @@ -54,13 +54,13 @@
  # Define parameters and directives needed in compile/link steps.
  #========================================================================
@@ -101,9 +97,8 @@ diff -ur wulfware-2.6.0.orig/wulfstat/Makefile.am wulfware-2.6.0/wulfstat/Makefi
  	install -m 755 $(PROGRAM) $(prefix)/bin; \
  	install -d $(prefix)/share/man/man1; \
  	gzip -c -9 $(PROGRAM).1 > $(PROGRAM).1.gz; \
-diff -ur wulfware-2.6.0.orig/xmlsysd/Makefile.am wulfware-2.6.0/xmlsysd/Makefile.am
---- wulfware-2.6.0.orig/xmlsysd/Makefile.am	2007-07-12 00:58:25.000000000 +0300
-+++ wulfware-2.6.0/xmlsysd/Makefile.am	2008-05-22 16:28:30.000000000 +0300
+--- a/xmlsysd/Makefile.am
++++ b/xmlsysd/Makefile.am
 @@ -60,13 +60,13 @@
  # Define parameters and directives needed in compile/link steps.
  #========================================================================
