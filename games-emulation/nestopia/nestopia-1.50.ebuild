@@ -18,14 +18,16 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="doc"
+IUSE="ao doc gui jack"
 
 RDEPEND="
 	app-arch/libarchive:=
 	media-libs/libepoxy
 	media-libs/libsdl2[sound,joystick,video]
 	sys-libs/zlib
-	x11-libs/gtk+:3"
+	ao? ( media-libs/libao )
+	gui? ( x11-libs/gtk+:3 )
+	jack? ( virtual/jack )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
@@ -35,5 +37,9 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_enable doc)
+	econf \
+		$(use_with ao) \
+		$(use_with jack) \
+		$(use_enable doc) \
+		$(use_enable gui)
 }
