@@ -15219,6 +15219,7 @@ net-misc/modemmanager 1.8.2-r1 1.10.0 1.14.8: Modem and mobile broadband managem
 net-misc/monmotha 2.3.8-r1: MonMotha IPTables-based firewall script
 net-misc/mosh 1.3.2 9999: Mobile shell that supports roaming and intelligent local echo
 net-misc/mrouted 3.9.8 4.2: IP multicast routing daemon
+net-misc/mstpd 0.0.9: Multiple spanning tree protocol daemon
 net-misc/mulk 0.7.0-r1: Download agent similar to wget/curl
 net-misc/nat-traverse 0.6: Traverse NAT gateways with the Use of UDP
 net-misc/ncman 0.0.1_p20190327-r2 9999: An ncurses UI for connman, forked from connman-json-client
