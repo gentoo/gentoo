@@ -34,6 +34,8 @@ src_configure() {
 	# https://github.com/hfst/hfst-ospell/issues/48
 	if tc-is-clang; then
 		econf --without-libxmlpp --without-tinyxml2
+	elif use clang; then
+		econf --without-libxmlpp --without-tinyxml2
 	else
 		default
 	fi
