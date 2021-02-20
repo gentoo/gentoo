@@ -1,0 +1,14 @@
+
+diff --git a/igal2.css b/igal2.css
+index 0e5f44b..758dd1b 100644
+--- a/igal2.css
++++ b/igal2.css
+@@ -11,7 +11,7 @@
+ body {
+   font-family: verdana, sans-serif;
+   color: #555555;
+-  background-color: white;
++  background-color: a1b2c3;
+ }
+ 
+ a:link, a:visited {
