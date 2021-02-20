@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare setup test unpack
+DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 )
+DESCRIPTION=Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
+EAPI=6
+HOMEPAGE=https://gitlab.com/post-factum/pf-kernel/-/wikis/README https://dev.gentoo.org/~mpagano/genpatches/
+IUSE=symlink build
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=!build? ( dev-lang/perl sys-devel/bc sys-devel/bison sys-devel/flex sys-devel/make >=sys-libs/ncurses-5.2 virtual/libelf virtual/pkgconfig )
+RESTRICT=binchecks strip
+SLOT=5.11_p2
+SRC_URI=https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.11.tar.xz https://github.com/pfactum/pf-kernel/compare/v5.11...v5.11-pf2.diff -> pf-sources-5.11_p2.patch https://dev.gentoo.org/~mpagano/genpatches/tarballs/genpatches-5.11-1.base.tar.xz https://dev.gentoo.org/~mpagano/genpatches/tarballs/genpatches-5.11-1.extras.tar.xz
+_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	estack	055c42df72f76a4f45ec92b35e83cd56	kernel-2	29b0ddf528a34e7e8c7c179cfbdb5c26	multilib	d410501a125f99ffb560b0c523cd3d1e	optfeature	6a2add34e06e5a05d88471a33ccdd73e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=3a842db0f7b35847a080bea51186ad87
