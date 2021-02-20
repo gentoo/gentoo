@@ -61,7 +61,7 @@ BDEPEND="
 	ccache? ( dev-util/ccache )
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-2.6.4-quazip1.patch ) # pending upstream PR#5511
+PATCHES=( "${FILESDIR}"/${P}-quazip1.patch ) # pending upstream PR#5511
 
 src_prepare() {
 	 use test || \
