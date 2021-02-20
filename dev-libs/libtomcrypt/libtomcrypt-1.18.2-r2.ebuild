@@ -17,7 +17,7 @@ LICENSE="|| ( WTFPL-2 public-domain )"
 # Helpful site:
 # https://abi-laboratory.pro/index.php?view=timeline&l=libtomcrypt
 SLOT="0/1"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~s390 sparc x86 ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~x64-macos"
 IUSE="+gmp +libtommath tomsfastmath"
 
 BDEPEND="
