@@ -18,7 +18,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~
 IUSE="cpu_flags_x86_aes doc +keyutils lmdb nls openldap +pkinit selinux +threads test xinetd"
 
 # Test suite requires network access
-#RESTRICT="test"
+RESTRICT="test"
 
 DEPEND="
 	!!app-crypt/heimdal
