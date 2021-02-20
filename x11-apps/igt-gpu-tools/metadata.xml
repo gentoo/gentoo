@@ -7,7 +7,6 @@
 </maintainer>
 <use>
  <flag name="chamelium">Enables support for building Chamelium tests</flag>
- <flag name="man">Build and install man pages</flag>
  <flag name="overlay">Build the intel-gpu-overlay utility</flag>
  <flag name="runner">Build the test runner</flag>
  <flag name="tests">Build and install tests</flag>

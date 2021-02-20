@@ -7,7 +7,6 @@
     </maintainer>
     <use>
         <flag name="jpeg">Enable JPEG support.</flag>
-        <flag name="man">Generate and install man pages.</flag>
     </use>
     <upstream>
         <remote-id type="github">emersion/grim</remote-id>
