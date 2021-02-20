@@ -24,3 +24,9 @@ src_configure() {
 		--with-systemdunitdir="$(systemd_get_systemunitdir)" \
 		--localstatedir="${EPREFIX}"/var
 }
+
+src_install() {
+	default
+	dosym ../../sbin/bridge-stp /lib/mstpctl-utils/mstpctl_restart_config
+	dosym bridge-stp /sbin/mstp_restart
+}
