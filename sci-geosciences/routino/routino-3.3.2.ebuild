@@ -1,32 +1,41 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7,8} )
+
+DISTUTILS_USE_SETUPTOOLS=no
+PYTHON_COMPAT=( python3_{7,8,9} )
 inherit toolchain-funcs distutils-r1
 
 DESCRIPTION="Routing application based on openstreetmap data"
-HOMEPAGE="http://www.routino.org/"
-SRC_URI="http://www.routino.org/download/${P}.tgz"
+HOMEPAGE="https://routino.org/"
+SRC_URI="https://routino.org/download/${P}.tgz"
+
 LICENSE="AGPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="python test"
+
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-DEPEND="python? ( ${PYTHON_DEPS}
-	dev-lang/swig )"
+
+DEPEND="
+	python? (
+		${PYTHON_DEPS}
+		dev-lang/swig
+	)
+"
 RDEPEND="python? ( ${PYTHON_DEPS} )"
 
+PATCHES=( "${FILESDIR}"/${P}.patch )
+
 src_prepare() {
-	eapply "${FILESDIR}"/${P}.patch
+	default
 
 	sed -i -e "s@libdir=\(.*\)@libdir=\$(prefix)/$(get_libdir)@" \
 		-e "s@CC=gcc@CC=$(tc-getCC)@" \
 		-e "s@LD=gcc@LD=$(tc-getCC)@" \
 		Makefile.conf || die "failed sed"
-
-	eapply_user
 }
 
 src_compile() {
@@ -36,7 +45,7 @@ src_compile() {
 	if use python; then
 		pushd python > /dev/null
 		python_compile() {
-			rm -f build/.timestamp
+			rm -f build/.timestamp || die
 			emake PYTHON=${EPYTHON}
 		}
 		python_foreach_impl python_compile
