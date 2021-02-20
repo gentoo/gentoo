@@ -227,10 +227,6 @@ media-video/mpv -sdl
 media-video/transcode -sdl
 >=x11-libs/wxGTK-3 -sdl
 
-# Virgil Dupras <vdupras@gentoo.org> (2018-09-06)
-# sci-libs/opencascade not yet keyworded
-sci-electronics/kicad occ
-
 # Michał Górny <mgorny@gentoo.org> (2018-07-07)
 # Unkeyworded dependencies.
 net-libs/gnome-online-accounts gnome
