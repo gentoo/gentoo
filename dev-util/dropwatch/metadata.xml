@@ -2,4 +2,14 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
+	<longdescription>
+	Utility to diagnose problems in the Linux Networking stack, specifically
+	where packets are getting dropped.
+	</longdescription>
+	<use>
+		<flag name="bfd">Add support for Binary File Descriptor</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">nhorman/dropwatch</remote-id>
+	</upstream>
 </pkgmetadata>
