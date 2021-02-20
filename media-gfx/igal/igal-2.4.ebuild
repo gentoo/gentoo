@@ -26,7 +26,7 @@ ${FILESDIR}/igal-2.4.patch
 
 src_prepare() {
 	default
-	eapply ${FILESDIR}/igal-2.4.patch
+${FILESDIR}/igal-2.4.patch
 	sed -e "s:/usr/local/lib/igal2:/usr/share/igal2:g" \
 		-i igal2 -i igal2.1 || die
 	sed -i -e "s:/usr/local/bin/igal2:/usr/bin/igal2:" \
