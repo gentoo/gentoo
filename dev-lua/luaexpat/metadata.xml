@@ -13,7 +13,4 @@
 		<email>conikost@gentoo.org</email>
 		<name>Conrad Kostecki</name>
 	</maintainer>
-	<upstream>
-		<remote-id type="github">tomasguisasola/luaexpat</remote-id>
-	</upstream>
 </pkgmetadata>
