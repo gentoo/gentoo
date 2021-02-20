@@ -219,10 +219,9 @@ media-video/transcode -sdl
 >=x11-libs/wxGTK-3 -sdl
 
 # Virgil Dupras <vdupras@gentoo.org> (2018-09-06)
-# sci-electronics/ngspice not yet keyworded, bug #665416
 # sci-libs/opencascade not yet keyworded
 # sci-libs/oce not yet keyworded
-sci-electronics/kicad occ oce ngspice
+sci-electronics/kicad occ oce
 
 # Michał Górny <mgorny@gentoo.org> (2018-07-07)
 # Unkeyworded dependencies.
