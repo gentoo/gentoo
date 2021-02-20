@@ -25,11 +25,11 @@ CDEPEND="
 
 RDEPEND="
 	${CDEPEND}
-	>=virtual/jre-1.6"
+	>=virtual/jre-1.8"
 
 DEPEND="
 	${CDEPEND}
-	>=virtual/jdk-1.6
+	>=virtual/jdk-1.8
 	app-arch/unzip"
 
 JAVA_GENTOO_CLASSPATH="
