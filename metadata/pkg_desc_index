@@ -4965,7 +4965,7 @@ dev-java/mockito 1.9.5-r1: A mocking framework for Java
 dev-java/mojarra 2.2.12-r1: Project Mojarra - GlassFish's Implementation for JavaServer Faces API
 dev-java/moshi 1.1.0: A modern JSON library for Android and Java
 dev-java/msv 20130601: Multi-Schema XML Validator, a Java tool for validating XML documents
-dev-java/myfaces-api 2.2.8: Apache MyFaces API - Core package
+dev-java/myfaces-api 2.2.8 2.2.14: Apache MyFaces API - Core package
 dev-java/myfaces-builder-annotations 1.0.9: Apache MyFaces API - Builder annotations package
 dev-java/nachocalendar 0.23-r1: Flexible Calendar component to the Java Platform
 dev-java/nanoxml 2.2.3-r4: NanoXML is a small non-validating parser for Java
@@ -13399,7 +13399,7 @@ media-libs/xvid 1.3.7: High performance/quality MPEG-4 video de-/encoding soluti
 media-libs/zimg 2.8 2.9.2 3.0.1 9999: Scaling, colorspace conversion, and dithering library
 media-libs/zita-alsa-pcmi 0.3.2: Provides easy access to ALSA PCM devices
 media-libs/zita-convolver 4.0.3: C++ library implementing a real-time convolution matrix
-media-libs/zita-resampler 1.6.2 1.8.0: C++ library for real-time resampling of audio signals
+media-libs/zita-resampler 1.8.0: C++ library for real-time resampling of audio signals
 media-libs/zmusic 1.1.4: GZDoom's music system as a standalone library
 media-libs/zvbi 0.2.35-r1: VBI Decoding Library for Zapping
 media-libs/zxing-cpp 1.1.1: C++ Multi-format 1D/2D barcode image processing library
@@ -17583,7 +17583,7 @@ sys-kernel/kergen 0.1.5: Kernel config generator
 sys-kernel/kpatch 0.6.3-r1 0.7.1-r1 9999: Dynamic kernel patching for Linux
 sys-kernel/linux-docs 5.10.17: Developer documentation generated from the Linux kernel
 sys-kernel/linux-firmware 20200316 20200421 20200519 20200619 20200721 20200817 20200918 20201022-r3 20201218 20210208 99999999: Linux firmware files
-sys-kernel/linux-headers 3.18 4.4 4.9 4.14-r1 4.19 5.4 5.4-r1 5.9 5.10 5.11: Linux system headers
+sys-kernel/linux-headers 3.18 4.4 4.9 4.14-r1 4.19 5.4-r1 5.9 5.10 5.11: Linux system headers
 sys-kernel/mips-sources 4.14.221 4.19.176 5.4.99: Kernel.org sources for MIPS-based machines
 sys-kernel/pf-sources 5.9_p7 5.10_p2 5.10_p3 5.10_p4 5.10_p5 5.10_p6 5.10_p7 5.10_p8 5.10_p9 5.10_p10 5.10_p11 5.10_p12 5.11_p1: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.79_p20201201 5.10.11_p20210201 9999: Raspberry Pi (all versions) kernel and modules
@@ -17640,7 +17640,7 @@ sys-libs/libstatgrab 0.91: A tool to provide access to statistics about the syst
 sys-libs/libstdc++-v3 3.3.6-r2: Compatibility package for binaries linked against a pre gcc 3.4 libstdc++
 sys-libs/libtermcap-compat 2.0.8-r4: Compatibility package for old termcap-based programs
 sys-libs/libudev-compat 186-r1: Wrapper around libudev.so.1 for packages needing the old libudev.so.0
-sys-libs/libunwind 1.5.0 1.5.0-r1: Portable and efficient API to determine the call-chain of a program
+sys-libs/libunwind 1.5.0-r1: Portable and efficient API to determine the call-chain of a program
 sys-libs/liburing 0.6 0.7-r1 9999: Efficient I/O with io_uring
 sys-libs/libutempter 1.1.6-r3 1.2.0 1.2.1: Library that allows non-privileged apps to write utmp (login) info
 sys-libs/libuuid 1.0.3: Portable uuid C library
@@ -17671,7 +17671,7 @@ sys-libs/talloc 2.3.1 2.3.2: Samba talloc library
 sys-libs/tapi 1.30 2.0.0: Text-based Application Programming Interface
 sys-libs/tdb 1.4.3: Simple database API
 sys-libs/tevent 0.10.2: Samba tevent library
-sys-libs/timezone-data 2020e 2020f 2021a: Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)
+sys-libs/timezone-data 2020f 2021a: Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)
 sys-libs/uclibc-ng 1.0.30-r1 1.0.32 1.0.33 1.0.35 9999: C library for developing embedded Linux systems
 sys-libs/uid_wrapper 1.2.7 1.2.8: Wrapper to fake privilege separation
 sys-libs/zlib 1.2.11-r2 1.2.11-r3: Standard (de)compression library
