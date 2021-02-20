@@ -271,11 +271,6 @@ sys-power/pm-quirks
 >=sys-devel/autoconf-2.70
 >=sys-devel/autoconf-wrapper-14
 
-# Thomas Deutschmann <whissi@gentoo.org> (2020-12-08)
-# Fails to validate certificates which have multiple trusted
-# paths.
-=net-libs/gnutls-3.7.0
-
 # Michał Górny <mgorny@gentoo.org> (2020-11-10)
 # This old Kodi version requires vulnerable dev-python/pillow
 # and prevents users from upgrading.  Masked for the time being.
