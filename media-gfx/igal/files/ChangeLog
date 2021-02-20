@@ -1,0 +1,178 @@
+2020-10-11  Johnny A. Solbu <johnny@solbu.net>
+
+	* Version 2.4
+	* Makefile: Don't assume bash is installed.
+
+2019-11-23  Johnny A. Solbu <johnny@solbu.net>
+
+	* Version 2.3
+	* Makefile: 
+	  default install folders can be changed by using 
+	  «make DESTDIR=/blah/bleh PREFIX=/usr install». This will also change
+	  the paths used in the various files. No more need for distro
+	  patches.
+
+2019-11-15  Johnny A. Solbu <johnny@solbu.net>
+
+	* Generate mobile-friendly html-pages
+	* Switch from ISO-8859-1 to UTF-8 encoding
+
+Thu, June 2, 2016: Wolfgang Trexler
+	* Version 2.2 - minor changes
+	* removed define(@array) as this is deprecated in newer perl versions
+	* Added better explanations if ImageMagick or GraphicsMagick files can not be found
+Mon, May 28, 2012: Alexander Zangerl, Wolfgang Trexler
+	* Version 2.1
+	* igal now supports EXIF data with option -e
+	* Perl Module Image::ExifTools is needed if this option is used
+	* Thanks to Daniel Weuthen for the initial contribution
+	* Files: igal2.css, slidetemplate2.html changed to support EXIF data
+Mon, Nov 16, 2008: Wolfgang Trexler
+	* Version 2.0
+	* changed name to igal2
+	* changed default installation directory to /usr/local/lib/igal2
+	* igal2 now supports paging, that means if there a more than a given number of fotos
+	  several index pages are generated. ie. index.html, 1index.html, 2index.html, etc.
+	  see help for parameter "-pagination <n>"
+	* added version information in indextemplate2
+	* changed utilities/igal2.sh to force paging after 50 fotos
+Wed, Feb 27, 2008: Riku Kalinen
+	* Version 1.4.7-wt
+	* Riku repaired option "--xy" which should now be working as promised
+	Attention: Due to the bug (missing implemenation) option --xy did the same as -y,
+	so if you used --xy please be aware that the outcome now may be surprising ;-)
+	* Changed utilities/igal.sh to use -y instead of -xy
+Thu, Nov 22, 2007: Stewart Addison (contactsxa@gmail.com)
+        * Version 1.4.6-wt
+	* bug fixing - option -s the css file isn't
+	copied across so you don't get the tiles displayed.
+        * -m <file>
+	Automatically add watermark to each image - this works well with a
+	transparent .gif, but anything can be used - edit the "composite" line
+	later on to adjust visibility/position of mark if required Originals
+	will be left with a .unmarked extension
+	* -o <dir>
+	Root URL of alternate location for the links to full size images. Use
+	this if your indexes will be in a different location/server from the
+	back end images 
+Mon, Jul 11, 2006: (Wolfgang Trexler)
+	* igal enhanced 1.4.5-wt contains bug-fix in "option -n" to 1.4.4-wt
+	* line 422 - with option -n handle filenames with more than one dot "." correct
+Mon, Jan 3, 2005: (Wolfgang Trexler)
+	* igal enhanced 1.4.4-wt contains improvements and bug-fixes to 1.4.1-wt
+	* igal now also generates indexes for directories containing only 1 image
+	* minor code cleanup
+Fri, April 11, 2003:
+	* igal enhanced 1.4.1-wt is an enhanced version of original igal 1.4
+	* This release was done by Wolfgang Trexler <wt-igal@@trexler.at>
+	* Support for image filenames with international characters and special
+	  characters like \, <, >, #, %, " or  white space.
+	  igal no longer renames your files if they contain characters that are
+	  not URL conform. Instead igal will escape (%xx) them inside the HTML 
+	  code.
+	* Option --dest <dir>
+	  Before this version igal placed all igal helper files (thumbnails, 
+	  slidefiles, CSS, etc) in the directory where the image files reside.
+	  With this option these files can be placed in a subdirectory of the
+	  image directory.
+	* Option --AddSubdir
+	  If igal finds subdirectories below your image directory it can add
+	  links to this directories in the index.html file
+	  Note: igal will not work recursively, it just adds links.
+Mon, Feb 3, 2003:
+	* igal 1.4 released
+Sun, Feb 2, 2003:
+	* write useful navigation info (e.g next/prev image name, captions)
+	  inside TITLE tags which will show as pop-up info on most browsers
+	* the small tile graphic is now tile.png (was tile.gif)
+	* enable PNG support in igal!  (if ImageMagick is installed)
+	* eliminate -e option
+	* updated man page
+Tue, Jan 14, 2003:
+	* igal 1.4 released on the website only, for beta testing
+	* thanks for beta testing:  Ken ???
+Mon, Jan 13, 2003:
+	* HUGE speed improvement with ImageMagick (almost 3x faster):
+	  convert now internally uses -scale (not -geometry) to resize
+	  thumbs and medium-size slides (when --bigy is used).  Output
+	  quality of scaled-down images is about the same, but igal runs
+	  *much* faster.  As a consequence, igal now uses ImageMagick
+	  tools first if available, else it falls back onto cjpeg/djpeg
+	* igal now writes out the command line options with which it was
+	  invoked inside a META tag at the top of the index.html file
+Tue, Jan 07, 2003:
+	* when --bigy is given don't re-generate the medium-size slides
+	  if they already exist, unless the -f switch is given
+	* updated man page
+Mon, Jan 06, 2003:
+	* make use of convert instead of mogrify to rescale images
+	* new option --con to pass command line options to convert or cjpeg
+	  (for controlling thumbnail quality, adding noise, etc.)
+	* downscaled tile.gif image from 20x28 to 15x21 (extensive research
+	  and comparisons with 35mm film has shown that this makes it more
+	  true to scale next to thumbnails of default height 75)
+	* option -t now can adjust (mogrify) the tile.gif size on the fly
+	* eliminated option -b since thumbnail background is now set w/CSS
+Sun, Jan 05, 2003:
+	* constrict output of identify by forcing -format switch, this should
+	  help igal deal w/future changes in ImageMagick's command identify
+	* divide by 1024, not 1000 to get image sizes from bytes to kilobytes
+	* obscure bug fixed:  when -c and -y were used together sometimes igal
+	  would incorrectly think it had havelj = 0 (thanks Per Starback)
+	* introduced CSS!  style settings are in the igal.css template
+	* index AND slide template are HTML 4.01 compliant (validator.w3.org)
+
+Mon, Nov 19, 2001:
+	* version 1.3 released
+Sun, Nov 18, 2001:
+	* fixed error with newer ImageMagick packages (5.3.x)
+	* fixed pre-loading of unscaled image when --bigy is used
+	* fixed case-sensitive distinction between -c and -C
+	* added option -u to put image captions (or names) under
+	  thumbnails on main index page
+	* re-ordered options list alphabetically when igal -h is called
+	* acknowledge option -r and don't look to find .tile.gif
+	* noted URI spec page moved to http://www.ietf.org/rfc/rfc2396.txt
+	* updated man page
+	
+Wed, Aug 23, 2000:
+	* version 1.2 released
+Tue, Aug 22, 2000:
+	* updated man page
+	* made --www into a post-processing option, e.g it's run at the end.
+Mon, Aug 21, 2000:
+	* added option -C to preserve file names as captions in .captions file
+	* added ability to mix JPG and GIF files in the same slide show.
+	* sort the mixed JPG and GIF files alphabetically
+	* improved user warnings.
+Wed, Aug 16, 2000:
+	* added support for a $HOME/.igal directory with user templates
+	* added ability to shrink huge slides on the fly (option --bigy)
+Mon, Aug 14, 2000:
+	* added ability to include image size information on the main index
+	  page, underneath the thumbnails (options -a, --ad and --as)
+	* switched to support GIF images only if ImageMagick is installed
+	* fixed bug in regexp when reading the image size info from identify
+	
+Wed, Aug 09, 2000:
+	* version 1.1 released
+Tue, Aug 08, 2000:
+	* added checks to make sure file names conform to the URI specs from
+	  http://info.internet.isi.edu/in-notes/rfc/files/rfc2396.txt
+	  before they are included in the HTML slides or index.  According to
+	  section 2.4.3 of that document, URIs may not contain delimiters such
+	  as <, >, #, %, " or white space.
+	* added three ways of dealing with these malformed file names.
+	  (suppress symbols/replace spaces with underscores, replace all with
+	  underscores or just suppress all).
+	* added version number in --help output.
+Sun, Aug 06, 2000:
+	* bugfix:  enabled -i option
+	* added double quotes around all internal references to file names
+	  being used in system calls (to handle file names with symbols)
+	* bugfix:  fixed small bug with -k and -n options
+Sat, Aug 05, 2000:
+	* added code to convert spaces to underscores in image file names
+
+Fri, Aug 04, 2000:
+	* version 1.0 released

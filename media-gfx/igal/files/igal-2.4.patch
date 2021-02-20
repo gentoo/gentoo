@@ -1,0 +1,33 @@
+diff: igal-2.0-r1.ebuild: No such file or directory
+diff: igal-2.4.ebuild: No such file or directory
+docmain ~/GIT/gentoo-fork/media-gfx/igal/files # cd ..
+docmain ~/GIT/gentoo-fork/media-gfx/igal # diff -aurN igal-2.0-r1.ebuild igal-2.4.ebuild
+--- igal-2.0-r1.ebuild  2021-02-07 16:18:56.246262650 -0500
++++ igal-2.4.ebuild     2021-02-20 14:47:23.893747576 -0500
+@@ -7,11 +7,11 @@
+ 
+ DESCRIPTION="Static HTML image gallery generator"
+ HOMEPAGE="https://igal.trexler.at"
+-SRC_URI="https://${PN}.trexler.at/${MY_P}.tar.gz"
++SRC_URI="https://github.com/solbu/igal2/archive/v2.4.tar.gz"
+ 
+ LICENSE="GPL-2"
+ SLOT="0"
+-KEYWORDS="~alpha amd64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
++KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+ IUSE=""
+ 
+ RDEPEND="
+@@ -22,10 +22,11 @@
+ 
+ S="${WORKDIR}/${MY_P}"
+ 
+-PATCHES=( "${FILESDIR}"/igal-2.0-no-defined.patch )
++${FILESDIR}/igal-2.4.patch
+ 
+ src_prepare() {
+        default
++${FILESDIR}/igal-2.4.patch
+        sed -e "s:/usr/local/lib/igal2:/usr/share/igal2:g" \
+                -i igal2 -i igal2.1 || die
+        sed -i -e "s:/usr/local/bin/igal2:/usr/bin/igal2:" \
