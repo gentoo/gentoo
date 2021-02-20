@@ -24,10 +24,9 @@ BDEPEND="virtual/pkgconfig"
 src_prepare() {
 	default
 
-	# Respect FLAGS
-	sed -i \
-		-e '/CXXFLAGS/s/= -O3/+=/' \
-		-e 's/ -Werror//' \
+	# Respect FLAGS, remove Werror
+	sed -i  -e '/CXXFLAGS/s/= -O3/+=/' \
+		-e '/CXXFLAGS/s/ -Werror//' \
 		-e '/LDFLAGS/s/=/+=/' Makefile || die "sed failed for Makefile"
 
 	if ! use test ; then
