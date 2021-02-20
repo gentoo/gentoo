@@ -5974,7 +5974,7 @@ dev-ml/ppx_sexp_value 0.9.0 0.14.0: Standard library for ppx rewriters
 dev-ml/ppx_stable 0.14.1: Stable types conversions generator
 dev-ml/ppx_string 0.14.1: Ppx extension for string interpolation
 dev-ml/ppx_tools 6.2: Tools for authors of ppx rewriters
-dev-ml/ppx_tools_versioned 5.0.1: Tools for authors of ppx rewriters
+dev-ml/ppx_tools_versioned 5.0.1 5.2.2: Tools for authors of ppx rewriters
 dev-ml/ppx_traverse 0.9.0: Automatic generation of open recursion classes
 dev-ml/ppx_traverse_builtins 0.9.0: Builtins for ppx_traverse
 dev-ml/ppx_type_conv 0.9.0: Support Library for type-driven code generators
@@ -8344,7 +8344,7 @@ dev-python/humanize 3.2.0: Common humanization utilities
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 21.0.0: A featureful, correct URL for Python
-dev-python/hypothesis 6.0.2 6.1.1 6.2.0: A library for property based testing
+dev-python/hypothesis 6.0.2 6.1.1 6.2.0 6.3.0: A library for property based testing
 dev-python/icalendar 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/idna 2.10-r1 3.0 3.1: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0-r1: Patch ssl.match_hostname for Unicode(idna) domains support
@@ -13947,7 +13947,7 @@ media-sound/pragha 1.3.99.1: A lightweight music player (for Xfce)
 media-sound/protux 0.50.100: Professional Audio Tools for GNU/Linux
 media-sound/ptabtools 0.5.0: Utilities for PowerTab Guitar files (.ptb)
 media-sound/pulseaudio 13.0 13.0-r1: A networked sound server with an advanced plugin system
-media-sound/pulseaudio-ctl 1.67 1.68: CLI utility to control PulseAudio volume
+media-sound/pulseaudio-ctl 1.67 1.68 1.69: CLI utility to control PulseAudio volume
 media-sound/pulseaudio-modules-bt 1.4 9999: PulseAudio modules for LDAC, aptX, aptX HD, and AAC for Bluetooth
 media-sound/pulseeffects 4.7.2-r2 4.8.4-r1 5.0.0-r1 5.0.1 9999: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
 media-sound/pulsemixer 1.5.1 9999: CLI and curses mixer for PulseAudio
