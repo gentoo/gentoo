@@ -6004,7 +6004,7 @@ dev-ml/timezone 0.14.0: Time-zone handling for OCaml
 dev-ml/topkg 0.9.0 0.9.1 1.0.3: The transitory OCaml software packager
 dev-ml/type-conv 113.00.02: Mini library required for some other preprocessing libraries
 dev-ml/typerep 0.9.0 0.14.0: Library for creating runtime representation of OCaml types
-dev-ml/tyxml 4.1.0-r1 4.2.0: A libary to build xml trees typechecked by OCaml
+dev-ml/tyxml 4.2.0: A libary to build xml trees typechecked by OCaml
 dev-ml/uchar 0.0.2: Uchar compatibility library
 dev-ml/unidecode 0.4.0: Convert unicode strings into its ASCII representation
 dev-ml/uucp 13.0.0-r2: Unicode character properties for OCaml
