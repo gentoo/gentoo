@@ -10,15 +10,10 @@ SRC_URI="https://github.com/voretaq7/radmind/releases/download/${P}/${P}.tar.gz"
 LICENSE="HPND"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="libressl"
 
-DEPEND="
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
-"
+DEPEND="dev-libs/openssl:0="
 RDEPEND="${DEPEND}
-	!dev-util/repo
-"
+	!dev-util/repo"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.0-gentoo.patch
