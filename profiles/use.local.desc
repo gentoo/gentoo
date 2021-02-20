@@ -538,7 +538,6 @@ app-emulation/libvirt:wireshark-plugins - Build the net-analyzer/wireshark plugi
 app-emulation/libvirt:xen - Support management of Xen virtualisation (app-emulation/xen)
 app-emulation/libvirt:zfs - Enable ZFS backend storage sys-fs/zfs
 app-emulation/lxc:apparmor - Enable AppArmor support
-app-emulation/lxc:man - Build manpages
 app-emulation/lxc:tools - Build and install additional command line tools
 app-emulation/lxd:apparmor - Enable AppArmor support
 app-emulation/nemu:network-map - Adds possibility of exporting network map to SVG
@@ -913,7 +912,6 @@ app-misc/tracker-miners:iso - Enable extraction of metadata from ISO disk images
 app-misc/tracker-miners:playlist - Add support for playlists
 app-misc/tracker-miners:xps - Add support for XPS file format through app-text/libgxps.
 app-misc/unfoo:minimal - Do not install all support archive binaries
-app-misc/vcontrold:man - Build the manpages
 app-misc/vcontrold:vclient - Build the vclient helper program to talk to vcontrold
 app-misc/vcontrold:vsim - Build the vsim helper program (simulates the heating's answers, for development and debugging)
 app-misc/vifm:developer - Enable features of interest to developers
@@ -1218,7 +1216,6 @@ dev-cpp/eigen:c++11 - Build using the C++11 standard
 dev-cpp/eigen:cuda - Build with cuda support
 dev-cpp/glog:gflags - Use dev-cpp/gflags for flag parsing
 dev-cpp/glog:unwind - Use sys-libs/libunwind for stack unwinding instead of glibc/gcc (may be more reliable on x86_64)
-dev-cpp/libcmis:man - Build and install man pages
 dev-cpp/libcmis:tools - Build client tool for testing and viewing features
 dev-cpp/libjson-rpc-cpp:http-client - Build support for HTTP client using net-misc/curl
 dev-cpp/libjson-rpc-cpp:http-server - Build support for HTTP server using net-libs/libmicrohttpd
@@ -1229,7 +1226,6 @@ dev-cpp/sourcetrail:examples - Install example projects.
 dev-db/etcd:server - Installs etcd daemon
 dev-db/firebird:server - Install the server components of Firebird, not just the client
 dev-db/firebird:xinetd - Install ClassicServer
-dev-db/influxdb:man - Build and install man pages
 dev-db/mariadb:backup - Build mariadb-backup which supports SST and hot backup of InnoDB, Aria and MyISAM including compression and encryption
 dev-db/mariadb:client-libs - Build the client libraries from the server package instead of the C Connector packages
 dev-db/mariadb:columnstore - Build the ColumnStore storage engine
@@ -1284,7 +1280,6 @@ dev-db/mysql-cluster:test - Install upstream testsuites for end use.
 dev-db/mysql-cluster:yassl - Enable SSL connections and crypto functions using the bundled yaSSL
 dev-db/mysql-connector-c++:gcov - Build coverage support
 dev-db/mysql-connector-c++:legacy - Build the legacy 1.x API as well as the DevX API
-dev-db/opendbx:man - Build and install man pages
 dev-db/oracle-instantclient:jdbc - Support for XA, Internationalization, and RowSet operations under JDBC
 dev-db/oracle-instantclient:odbc - Libraries for enabling ODBC applications
 dev-db/oracle-instantclient:precomp - "proc" binary and related files to precompile a Pro*C application
@@ -2083,7 +2078,6 @@ dev-libs/libisoburn:launch-frontend - Enable the tcl gui for xorriso
 dev-libs/libisoburn:launch-frontend-setuid - Enable the tcl gui for xorriso under setuid
 dev-libs/libisofs:verbose-debug - Enable verbose debug messages
 dev-libs/libjcat:gpg - Enable GPG verification support via app-crypt/gpgme
-dev-libs/libjcat:man - Generate and install man pages
 dev-libs/libjcat:pkcs7 - Enable PKCS7 verification support via net-libs/gnutls
 dev-libs/liblogging:rfc3195 - Enables RFC 3195 protocol (aka syslog-reliable) support. If you don't know what this is, you don't need it!
 dev-libs/liblogging:stdlog - Enables liblogging's core component (think of it as a the next version of the syslog(3) API).
@@ -2141,7 +2135,6 @@ dev-libs/libucl:sign - Enable signatures check
 dev-libs/libucl:urls - Enable URLs fetch
 dev-libs/libucl:utils - Install utils for checking other configs
 dev-libs/libunibreak:doc - Install html API documentation.
-dev-libs/libunibreak:man - Generate man pages with doxygen.
 dev-libs/libverto:glib - Support event loops using dev-libs/glib
 dev-libs/libverto:libev - Support event loops using dev-libs/libev
 dev-libs/libverto:libevent - Support event loops using dev-libs/libevent
@@ -2943,7 +2936,6 @@ dev-vcs/gitolite:contrib - Install user-contributed files
 dev-vcs/gitolite:tools - Install tools to e.g. convert a Gitosis config to gitolite or one to check if your setup is gitolite >= 3.x compatible
 dev-vcs/gitolite-gentoo:contrib - Install user-contributed files
 dev-vcs/gitolite-gentoo:tools - Install tools to e.g. convert a Gitosis config to gitolite or one to check if your setup is gitolite >= 3.x compatible
-dev-vcs/kdesvn:man - Build and install man pages
 dev-vcs/mercurial:chg - Support Mercurial command server client
 dev-vcs/mercurial:gpg - Support signing with GnuPG.
 dev-vcs/mercurial:rust - Use Rust extensions.
@@ -3261,7 +3253,6 @@ games-strategy/warzone2100:discord - Enable Discord presence/join integration
 games-strategy/warzone2100:vulkan - Enable vulkan backend
 games-strategy/wesnoth:fribidi - Support for right-to-left languages
 games-strategy/wesnoth:server - Enable compilation of server
-games-util/deutex:man - Build and install man pages
 games-util/gslist:web - Enable the web interface
 games-util/lgogdownloader:gui - Enable GUI login support for passing reCAPTCHA
 games-util/slade:fluidsynth - Enable MIDI software synthesis using media-sound/fluidsynth
@@ -3348,20 +3339,12 @@ gnustep-base/gnustep-make:libobjc2 - Enables use of the GNUstep Objective-C runt
 gnustep-base/gnustep-make:native-exceptions - Enables use of the native Objective-C exception support (@try/@catch/@finally) built-in objective-c exceptions with compilers that support it
 gnustep-base/libobjc2:boehm-gc - Enable Hans Boehm's garbage collector (dev-libs/boehm-gc). Not recommended by upstream
 gui-apps/grim:jpeg - Enable JPEG support.
-gui-apps/grim:man - Generate and install man pages.
 gui-apps/gtkgreet:layershell - Enable layer shell support
-gui-apps/gtkgreet:man - Build and install man pages
-gui-apps/kanshi:man - build and install man pages
-gui-apps/lavalauncher:man - Build and install man pages
 gui-apps/mako:icons - Enable support for icons
-gui-apps/slurp:man - Generate and install man pages.
-gui-apps/swaybg:man - Build and install man pages
 gui-apps/swayidle:elogind - Enable support for rootless session via elogind
 gui-apps/swayidle:fish-completion - Enable fish completion support
-gui-apps/swayidle:man - Build and install man pages
 gui-apps/swaylock:fish-completion - Enable fish completion support
 gui-apps/swaylock:gdk-pixbuf - Enable additional image format support via the x11-libs/gdk-pixbuf library
-gui-apps/swaylock:man - Build and install man pages
 gui-apps/waybar:mpd - Enable support for the Music Player Daemon
 gui-apps/waybar:network - Enable libnl support for network related features
 gui-apps/waybar:popups - Enable popup support with gtk-layer-shell
@@ -3370,13 +3353,10 @@ gui-apps/waybar:tray - Enable support for tray
 gui-apps/waybar:wifi - Enable support for wifi/rfkill
 gui-apps/waypipe:dmabuf - Use dmabuf for data exchange and hardware decoding
 gui-apps/waypipe:ffmpeg - Link with ffmpeg for software decoding
-gui-apps/waypipe:man - Build and install man pages
 gui-apps/waypipe:systemtap - Enable SystemTAP/DTrace tracing
 gui-apps/wayvnc:gbm - enable GPU-side screencopy (experimental)
 gui-apps/wayvnc:tracing - Trace kernel and memory calls
-gui-apps/wf-recorder:man - Build and install man pages
 gui-apps/wf-recorder:opencl - Enable OpenCL
-gui-libs/greetd:man - Build and install man pages
 gui-libs/libhandy:glade - Install module and catalog for dev-util/glade
 gui-libs/neatvnc:examples - Build and install examples
 gui-libs/neatvnc:jpeg - Enable fast encodings
@@ -3394,7 +3374,6 @@ gui-wm/hikari:virtual-io - enable virtual input/output support, needed for remot
 gui-wm/sway:X - Enable support for X11 applications (XWayland)
 gui-wm/sway:elogind - Enable support for rootless session via elogind
 gui-wm/sway:fish-completion - Enable fish completion support
-gui-wm/sway:man - Build and install man pages
 gui-wm/sway:seatd - Enable support for rootless session via sys-auth/seatd
 gui-wm/sway:swaybar - Install 'swaybar': sway's status bar component
 gui-wm/sway:swaybg - Install 'swaybg': allows to set a desktop background image
@@ -3468,7 +3447,6 @@ kde-apps/kdeutils-meta:gpg - Install kde-apps/kgpg which depends on kde-apps/ako
 kde-apps/kdeutils-meta:lrz - Install app-arch/lrzip for LRZ archive support in kde-apps/ark
 kde-apps/kdeutils-meta:rar - Install one of app-arch/rar, app-arch/unrar or app-arch/unar for RAR archive support in kde-apps/ark
 kde-apps/kdeutils-meta:webengine - Enable kde-apps/kimagemapeditor, requiring dev-qt/qtwebengine
-kde-apps/keditbookmarks:man - Build and install man pages
 kde-apps/kget:bittorrent - Enable bittorrent transfer plugin through net-libs/libktorrent
 kde-apps/kget:gpg - Enable signature verification by GpgME++ via app-crypt/gpgme
 kde-apps/kget:mms - Enable MMS (Microsoft Media Server) plugin through media-libs/libmms
@@ -3549,15 +3527,12 @@ kde-apps/umbrello:php - Enable PHP import support using dev-util/kdevelop and de
 kde-apps/yakuake:absolute-position - Use kde-frameworks/kwayland for absolute window positioning in KWin
 kde-frameworks/kcompletion:designer - Build plugins for dev-qt/designer
 kde-frameworks/kconfigwidgets:designer - Build plugins for dev-qt/designer
-kde-frameworks/kconfigwidgets:man - Build and install man pages
-kde-frameworks/kded:man - Build and install man pages
 kde-frameworks/kfilemetadata:epub - Enable support for reading EPUB ebook metadata
 kde-frameworks/kfilemetadata:office - Enable support for reading ODF and OOXML metadata
 kde-frameworks/kiconthemes:designer - Build plugins for dev-qt/designer
 kde-frameworks/kimageformats:avif - Support the AVIF image file format
 kde-frameworks/kimageformats:eps - Support the EPS graphics file format
 kde-frameworks/kinit:caps - Capabilities support for improved security and better OOM handling
-kde-frameworks/kinit:man - Build and install man pages
 kde-frameworks/kio:designer - Build plugins for dev-qt/designer
 kde-frameworks/kio:kwallet - Enable permanent storage of passwords for kpasswdserver with kde-frameworks/kwallet
 kde-frameworks/kitemmodels:qml - Enable QML support via dev-qt/qtdeclarative
@@ -3565,14 +3540,11 @@ kde-frameworks/kitemviews:designer - Build plugins for dev-qt/designer
 kde-frameworks/knotifications:phonon - Play notification sounds via media-libs/phonon instead of media-libs/libcanberra
 kde-frameworks/knotifications:speech - Enable text-to-speech notification support
 kde-frameworks/knotifyconfig:phonon - Add sound support via media-libs/phonon
-kde-frameworks/kpackage:man - Build and install man pages
 kde-frameworks/kplotting:designer - Build plugins for dev-qt/designer
-kde-frameworks/kservice:man - Build and install man pages
 kde-frameworks/ktexteditor:editorconfig - Enable support for EditorConfig configuration files
 kde-frameworks/ktextwidgets:designer - Build plugins for dev-qt/designer
 kde-frameworks/ktextwidgets:speech - Enable text-to-speech support
 kde-frameworks/kwallet:gpg - Support wallets with GnuPG encryption in addition to the default blowfish-encrypted file
-kde-frameworks/kwallet:man - Build and install man pages
 kde-frameworks/kwidgetsaddons:designer - Build plugins for dev-qt/designer
 kde-frameworks/kxmlgui:designer - Build plugins for dev-qt/designer
 kde-frameworks/networkmanager-qt:teamd - Enable Teamd control support
@@ -3920,7 +3892,6 @@ media-gfx/blender:dds - Adds DDS textures support to Blender.
 media-gfx/blender:elbeem - Adds surface fluid simulation to Blender using El'Beem library.
 media-gfx/blender:headless - Build without graphical support (renderfarm, server mode only).
 media-gfx/blender:llvm - Enable features depending on llvm.
-media-gfx/blender:man - Build and install man pages.
 media-gfx/blender:ndof - Enable NDOF input devices (SpaceNavigator and friends).
 media-gfx/blender:opencl - Allow OpenCL Graphics Acceleration. This may require extra graphics card drivers.
 media-gfx/blender:openimageio - Enable OpenImageIO Support
@@ -4116,7 +4087,6 @@ media-libs/cogl:gles2 - Enable OpenGL ES 2.0 support
 media-libs/cogl:kms - Enable KMS support.
 media-libs/cogl:pango - Build cogl-pango library for x11-libs/pango integration
 media-libs/coin:exceptions - Compile with C++ exceptions
-media-libs/coin:man - Build and install man pages
 media-libs/coin:qthelp - Build API documentation in QtHelp format
 media-libs/dav1d:10bit - Add support for building 10-bit and 12-bit AV1.
 media-libs/dav1d:8bit - Add support for decoding 8-bit AV1.
@@ -4336,7 +4306,6 @@ media-libs/phonon-gstreamer:network - Enable network streaming support via libso
 media-libs/portmidi:test-programs - Install various example programs
 media-libs/qtav:gui - Build a video player gui
 media-libs/quarter:designer - Install plugin for dev-qt/designer
-media-libs/quarter:man - Build and install man pages
 media-libs/quarter:qthelp - Build API documentation in QtHelp format
 media-libs/quvi:json - Enable support for JSON output
 media-libs/raptor:json - Enable support for JSON parsing
@@ -4504,7 +4473,6 @@ media-sound/audiotools:dvda - Enable DVD-Audio support
 media-sound/audiotools:twolame - Enable twolame support (MPEG Audio Layer 2 encoder)
 media-sound/bluez-alsa:hcitop - Enable top-like monitoring tool for HCI
 media-sound/bluez-alsa:ldac - Enable support for AOSP media-libs/libldac dispatcher
-media-sound/bluez-alsa:man - Generate (and install) man pages with app-text/pandoc
 media-sound/bluez-alsa:mpg123 - Enable support for MPEG audio playback via media-sound/mpg123
 media-sound/bluez-alsa:ofono - Enable ofono elephony support
 media-sound/cadence:a2jmidid - Enables support for legacy ALSA sequencer applications in JACK MIDI system
@@ -5933,7 +5901,6 @@ net-irc/weechat:fifo - Enable FIFO support (sh pipes)
 net-irc/weechat:fset - Enable fast set plugin
 net-irc/weechat:irc - Enable IRC protocol support
 net-irc/weechat:logger - Enable support for logging
-net-irc/weechat:man - Build and install man pages
 net-irc/weechat:relay - Enable relay plugin (experimental)
 net-irc/weechat:scripts - Build infrastructure for scripting
 net-irc/weechat:trigger - Enable trigger plugin
@@ -6008,7 +5975,6 @@ net-libs/libproxy:gnome - Enable support for reading proxy settings from GNOME
 net-libs/libproxy:kde - Enable support for reading proxy settings from KDE
 net-libs/libproxy:spidermonkey - Use libmozjs from dev-lang/spidermonkey for PAC parsing
 net-libs/libproxy:webkit - Use libjavascriptcoregtk from net-libs/webkit-gtk for PAC parsing
-net-libs/libpsl:man - Build man-pages
 net-libs/libqmi:mbim - Support QMI over Mobile Broadband Interface Model (MBIM)
 net-libs/libsoup:brotli - Enable brotli decompression support
 net-libs/libsoup:gssapi - Enable GSSAPI support
@@ -6262,7 +6228,6 @@ net-misc/bfgminer:zeusminer - Enable support for mining with ZeusMiner units
 net-misc/bfgminer:ztex - Enable support for mining with Ztex FPGAs
 net-misc/bird:client - Build the ncurses/readline full featured CLI
 net-misc/casync:fuse - Enable fuse support
-net-misc/casync:man - Build and install man pages
 net-misc/cfengine:libvirt - Enable support for virtual machine management through app-emulation/libvirt
 net-misc/cfengine:masterfiles - Install the Masterfiles Policy Framework
 net-misc/cfengine:qdbm - Use dev-db/qdbm as database backend
@@ -6910,7 +6875,6 @@ net-vpn/strongswan:strongswan_plugins_vici - Enable support for the vici plugin
 net-vpn/strongswan:strongswan_plugins_whitelist - Enable support for the whitelist plugin
 net-vpn/tinc:uml - Enable support for User Mode Linux Sockets
 net-vpn/tinc:vde - Enable Virtual Distributed Ethernet (VDE) based networking
-net-vpn/tor:man - Build and install man pages
 net-vpn/tor:scrypt - Use app-crypt/libscrypt for the scrypt algorithm
 net-vpn/tor:server - Enable tor's relay module so it can operate as a relay/bridge/authority
 net-vpn/tor:tor-hardening - Compile tor with hardening on vanilla compilers/linkers
@@ -7706,7 +7670,6 @@ sys-apps/fwupd:archive - Use app-arch/libarchive for archives support
 sys-apps/fwupd:dell - Enable Dell-specific support.
 sys-apps/fwupd:flashrom - Enable flashrom plugin via sys-apps/flashrom
 sys-apps/fwupd:gusb - Enable dev-libs/libgusb support
-sys-apps/fwupd:man - Build and install man pages
 sys-apps/fwupd:nvme - Build and install NVMe plugin
 sys-apps/fwupd:redfish - Install redfish plugin
 sys-apps/fwupd:synaptics - Install synaptics plugin
@@ -7893,7 +7856,6 @@ sys-auth/ssh-ldap-pubkey:schema - Install a copy of the LPK schema, only needed 
 sys-auth/sssd:acl - Build and use the cifsidmap plugin
 sys-auth/sssd:autofs - Build helper to let net-fs/autofs use sssd provided information
 sys-auth/sssd:locator - Install sssd's Kerberos plugin
-sys-auth/sssd:man - Build man pages with dev-libs/libxslt
 sys-auth/sssd:manpages - Build man pages with dev-libs/libxslt
 sys-auth/sssd:netlink - Add support for netlink protocol via dev-libs/libnl
 sys-auth/sssd:nfsv4 - Add support for the nfsv4 idmapd plugin provided by net-libs/libnfsidmap
@@ -8702,7 +8664,6 @@ www-servers/xsp:net40 - use .NET 4.0 Framework
 www-servers/xsp:net45 - use .NET 4.5 Framework
 x11-apps/igt-gpu-tools:X - Enable intel-gpu-overlay xlib/cairo backend
 x11-apps/igt-gpu-tools:chamelium - Enables support for building Chamelium tests
-x11-apps/igt-gpu-tools:man - Build and install man pages
 x11-apps/igt-gpu-tools:overlay - Build the intel-gpu-overlay utility
 x11-apps/igt-gpu-tools:runner - Build the test runner
 x11-apps/igt-gpu-tools:tests - Build and install tests
@@ -8868,7 +8829,6 @@ x11-misc/xscreensaver:gdm - Use gdmflexiserver from gnome-base/gdm instead of x1
 x11-misc/xscreensaver:locking - Compile in support for locking the display
 x11-misc/xscreensaver:new-login - Enable user switching support using gdmflexiserver (x11-misc/lightdm)
 x11-misc/xsr:cursor - Capture mouse cursor using x11-misc/xdotool, and place them on the screenshots using media-gfx/imagemagick
-x11-misc/xss-lock:man - Build and install man pages
 x11-misc/yabar:playerctl - Uses media-sound/playerctl to retrieve the name of the currently played song
 x11-plugins/bfm:gkrellm - Enable building of app-admin/gkrellm module
 x11-plugins/e16-epplets:cdaudio - Enable CD Audio support using media-libs/libcdaudio
