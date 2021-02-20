@@ -96,6 +96,8 @@ src_configure() {
 	${MID_INSTALL}/preinstall -a || die "preinstallation failed"
 	${MID_INSTALL}/install2 || die "configuration failed"
 	chmod 755 ${MID_HOME}/local/make_shared
+	append-fflags -fallow-argument-mismatch
+	append-cflags -fcommon
 }
 
 src_compile() {
