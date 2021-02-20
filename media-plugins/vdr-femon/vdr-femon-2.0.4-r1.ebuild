@@ -11,9 +11,9 @@ SRC_URI="https://github.com/rofafor/vdr-plugin-femon/archive/v${PV}.tar.gz -> ${
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~x86"
 
-DEPEND=">=media-video/vdr-2.4.0"
+DEPEND=">=media-video/vdr-2.0.0"
 RDEPEND="${DEPEND}"
 
 QA_FLAGS_IGNORED="
