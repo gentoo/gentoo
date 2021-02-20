@@ -31,7 +31,7 @@ BDEPEND="
 "
 RDEPEND="${PYTHON_DEPS}
 	dev-libs/boost:=
-	dev-libs/quazip
+	dev-libs/quazip:0=
 	$(python_gen_cond_dep '
 		dev-python/PyQt5[${PYTHON_MULTI_USEDEP}]
 		dev-python/sip[${PYTHON_MULTI_USEDEP}]
@@ -90,6 +90,7 @@ RESTRICT+=" test"
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.3.1-tests-optional.patch
 	"${WORKDIR}"/${PN}-4.2.9-patchset/${PN}-4.2.9-ecm-findopenexr.patch
+	"${FILESDIR}"/${P}-quazip1.patch
 )
 
 pkg_setup() {
