@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # EAPI Version
@@ -7,10 +7,11 @@ EAPI="6"
 #//------------------------------------------------------------------------------
 
 # Version Data
-GENPATCHREV="3"				# Tarball revision for patches
+GITDATE="20180128"			# Date of diff between kernel.org and lmo GIT
+GENPATCHREV="2"				# Tarball revision for patches
 
 # Directories
-S="${WORKDIR}/linux-${OKV}"
+S="${WORKDIR}/linux-${OKV}-${GITDATE}"
 MIPS_PATCHES="${WORKDIR}/mips-patches"
 
 # Kernel-2 Vars
@@ -18,7 +19,7 @@ K_SECURITY_UNSUPPORTED="yes"
 K_NOUSENAME="yes"
 K_NOSETEXTRAVERSION="yes"
 K_NOUSEPR="yes"
-K_BASE_VER="5.3"
+K_BASE_VER="4.13"
 K_FROM_GIT="yes"
 ETYPE="sources"
 
@@ -28,7 +29,7 @@ detect_version
 
 # Version Data
 F_KV="${PVR}"
-BASE_KV="$(ver_cut 1-2)"
+BASE_KV="$(ver_cut 1-2).0"
 [[ "${EXTRAVERSION}" = -rc* ]] && KVE="${EXTRAVERSION}"
 
 # Portage Vars
@@ -37,8 +38,8 @@ KEYWORDS="-* ~mips"
 IUSE="experimental ip27 ip28 ip30"
 RDEPEND=""
 DEPEND="${RDEPEND}
-	>=sys-devel/gcc-6.5.0
-	>=sys-devel/patch-2.7.6"
+	>=sys-devel/gcc-4.7.0
+	>=sys-devel/patch-2.7.4"
 
 # Specify any patches or patch familes to NOT apply here.
 # Use only the 4-digit number followed by a '*'.
@@ -47,20 +48,24 @@ P_EXCLUDE=""
 # Machine Support Control Variables
 DO_IP22="test"				# If "yes", enable IP22 support		(SGI Indy, Indigo2 R4x00)
 DO_IP27="yes"				# 		   IP27 support		(SGI Origin)
-DO_IP28="no"				# 		   IP28 support		(SGI Indigo2 Impact R10000)
+DO_IP28="test"				# 		   IP28 support		(SGI Indigo2 Impact R10000)
 DO_IP30="yes"				# 		   IP30 support		(SGI Octane)
 DO_IP32="yes"				# 		   IP32 support		(SGI O2, R5000/RM5200 Only)
 
 # Machine Stable Version Variables
 SV_IP22=""				# If set && DO_IP22 == "no", indicates last "good" IP22 version
 SV_IP27=""				# 	    DO_IP27 == "no", 			   IP27
-SV_IP28="4.19.x"			# 	    DO_IP28 == "no", 			   IP28
+SV_IP28=""				# 	    DO_IP28 == "no", 			   IP28
 SV_IP30=""				# 	    DO_IP30 == "no", 			   IP30
 SV_IP32=""				# 	    DO_IP32 == "no", 			   IP32
 
-DESCRIPTION="Kernel.org sources for MIPS-based machines"
+DESCRIPTION="Linux-Mips GIT sources for MIPS-based machines, dated ${GITDATE}"
 SRC_URI="${KERNEL_URI}
+	https://dev.gentoo.org/~kumba/distfiles/mipsgit-${BASE_KV}${KVE}-${GITDATE}.diff.xz
 	https://dev.gentoo.org/~kumba/distfiles/${PN}-${BASE_KV}-patches-v${GENPATCHREV}.tar.xz"
+
+UNIPATCH_STRICTORDER="yes"
+UNIPATCH_LIST="${DISTDIR}/mipsgit-${BASE_KV}${KVE}-${GITDATE}.diff.xz"
 
 #//------------------------------------------------------------------------------
 
@@ -188,8 +193,10 @@ show_ip22_info() {
 
 show_ip27_info() {
 	echo -e ""
-	ewarn "IP27 Origin 2k/Onyx2 systems may be prone to sudden hard lockups."
-	ewarn "The exact trigger is unknown at this time."
+	ewarn "Heavy disk I/O on recent kernels may randomly trigger a VM_BUG_ON_PAGE()"
+	ewarn "in move_freepages() in mm/page_alloc.c.  The exact trigger cause is"
+	ewarn "unknown at this time.  Please report any oops messages from this"
+	ewarn "bug to bugs.gentoo.org (assign to mips@gentoo.org)"
 	echo -e ""
 }
 
@@ -314,20 +321,15 @@ src_unpack() {
 	# Rename the source tree to match the linux-mips git checkout date and
 	# machine type.
 	local fkv="${F_KV%-*}"
-	local v="${fkv}"
+	local v="${fkv}-${GITDATE}"
 	for x in {ip27,ip28,ip30}; do
 		use ${x} && v="${v}.${x}" && break
 	done
-
-	local old="${WORKDIR}/linux-${fkv/_/-}"
-	local new="${WORKDIR}/linux-${v}"
-	if [ "${old}" != "${new}" ]; then
-		mv "${old}" "${new}" || die
-	fi
-	S="${new}"
+	mv "${WORKDIR}/linux-${fkv/_/-}" "${WORKDIR}/linux-${v}" || die
+	S="${WORKDIR}/linux-${v}"
 
 	# Set the EXTRAVERSION to linux-VERSION-mipsgit-GITDATE
-	EXTRAVERSION="${EXTRAVERSION}-gentoo-mips"
+	EXTRAVERSION="${EXTRAVERSION}-mipsgit-${GITDATE}"
 	unpack_set_extraversion
 }
 
