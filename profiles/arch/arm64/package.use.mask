@@ -1,6 +1,15 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Roy Bamford <neddyseagoon@gentoo.org> (2021-02-20)
+# sci-libs/hdf does not build on arm64 bug #771648
+sci-libs/netcdf hdf
+
+# Roy Bamford <neddyseagoon@gentoo.org> (2021-02-20)
+# all-modules needs sci-libs/kissfft not yet in gentoo bug #754684
+# build fails with USE=java
+sci-libs/vtk all-modules java
+
 # Thomas Deutschmann <whissi@gentoo.org> (2021-02-17)
 # Unmask PCRE JIT support where dev-libs/libpcre2[jit] is available
 dev-lang/php -jit
