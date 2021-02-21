@@ -37,10 +37,6 @@ www-client/seamonkey lto
 # http://httpd.apache.org/docs/current/mod/mod_lua.html
 www-servers/apache apache2_modules_lua
 
-# Michał Górny <mgorny@gentoo.org> (2021-01-19)
-# Requires masked media-sound/mp3_check.
-app-cdr/burncdda mp3
-
 # Brian Evans <grknight@gentoo.org> (2021-01-07)
 # Block test deps on packages until they can be updated
 # Old phpunit does not work with new PHP and last is vulnerable
