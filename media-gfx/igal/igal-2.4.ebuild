@@ -11,7 +11,7 @@ SRC_URI="https://github.com/solbu/igal2/archive/v2.4.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE=""
 
 RDEPEND="
@@ -22,11 +22,10 @@ DEPEND=""
 
 S="${WORKDIR}/${MY_P}"
 
-${FILESDIR}/igal-2.4.patch
+PATCHES=( "${FILESDIR}"/igal-2.0-no-defined.patch )
 
 src_prepare() {
 	default
-${FILESDIR}/igal-2.4.patch
 	sed -e "s:/usr/local/lib/igal2:/usr/share/igal2:g" \
 		-i igal2 -i igal2.1 || die
 	sed -i -e "s:/usr/local/bin/igal2:/usr/bin/igal2:" \
