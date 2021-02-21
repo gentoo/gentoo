@@ -13,7 +13,7 @@ SRC_URI="https://github.com/mchehab/zbar/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 
 IUSE="dbus graphicsmagick gtk +imagemagick introspection java jpeg nls python qt5 static-libs test +threads v4l X xv"
 REQUIRED_USE="
