@@ -8635,7 +8635,7 @@ dev-python/pafy 0.5.5 9999: Python library to retrieve YouTube content and metad
 dev-python/paho-mqtt 1.5.0 1.5.1: A client class with support for MQTT v5.0, v3.1.1, and v3.1
 dev-python/pallets-sphinx-themes 1.1.2: Sphinx themes for Pallets and related projects
 dev-python/pandas 1.1.5 1.2.1 1.2.2: Powerful data structures for data analysis and statistics
-dev-python/pandas-datareader 0.8.1: Pandas DataFrame extraction from a wide range of Internet sources
+dev-python/pandas-datareader 0.9.0: Pandas DataFrame extraction from a wide range of Internet sources
 dev-python/pandocfilters 1.4.3: Utilities for writing pandoc filters in python
 dev-python/parameterized 0.7.4 0.7.5 0.8.1: Parameterized testing with any Python test framework
 dev-python/paramiko 2.7.2: SSH2 protocol library
@@ -14215,7 +14215,7 @@ media-video/transcode 1.1.7-r5: Utilities for transcoding video and audio codecs
 media-video/tsmuxer 2.6.11-r1: Utility to create and demux TS and M2TS files
 media-video/ttcut 0.19.6_p1-r1: Tool for cutting MPEG files especially for removing commercials
 media-video/unifi-video 3.10.13-r2: UniFi Video Server
-media-video/ushare 1.1a_p20200824: uShare is a UPnP (TM) A/V & DLNA Media Server
+media-video/ushare 1.1a_p20200824 1.1a_p20210221: uShare is a UPnP (TM) A/V & DLNA Media Server
 media-video/v4l2loopback 0.12.5-r1 9999: v4l2 loopback device whose output is its own input
 media-video/vamps 0.99.2-r2: Very fast requantisizing tool for backup DVDs
 media-video/vcdimager 2.0.1: GNU VCDimager

@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig virtual/pkgconfig
+DEFINED_PHASES=configure install postinst
+DEPEND=>=net-libs/libupnp-1.14
+DESCRIPTION=uShare is a UPnP (TM) A/V & DLNA Media Server
+EAPI=7
+HOMEPAGE=https://github.com/ddugovic/uShare/
+IUSE=nls
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=acct-user/ushare >=net-libs/libupnp-1.14
+SLOT=0
+SRC_URI=https://github.com/ddugovic/uShare/archive/79b0d6e41fd9af73c2ef7ee6b110f9b367295a76.tar.gz -> ushare-1.1a_p20210221.tar.gz
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=885178675e6f7586c7e9695633466f45
