@@ -1,15 +1,16 @@
-BDEPEND=python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-)]
+BDEPEND=test? ( >=dev-libs/boost-1.70:=[python,threads,python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] >=media-libs/taglib-1.8 >=dev-python/pytest-4.5.0[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] ) python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] >=dev-python/setuptools-42.0.2[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)]
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=>=dev-libs/boost-1.70:=[python,threads,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-)] >=media-libs/taglib-1.8
+DEPEND=>=dev-libs/boost-1.70:=[python,threads,python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] >=media-libs/taglib-1.8
 DESCRIPTION=Python Bindings for TagLib
 EAPI=7
 HOMEPAGE=https://mathema.tician.de//software/tagpy https://pypi.org/project/tagpy/
-IUSE=examples python_targets_python3_7 python_targets_python3_8
+IUSE=examples test python_targets_python3_7 python_targets_python3_8 python_targets_python3_9
 KEYWORDS=amd64 ppc ppc64 ~sparc x86
 LICENSE=BSD
-RDEPEND=>=dev-libs/boost-1.70:=[python,threads,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-)] >=media-libs/taglib-1.8 python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-)]
-REQUIRED_USE=|| ( python_targets_python3_7 python_targets_python3_8 )
+RDEPEND=>=dev-libs/boost-1.70:=[python,threads,python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] >=media-libs/taglib-1.8 python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)]
+REQUIRED_USE=|| ( python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 )
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://pypi/t/tagpy/tagpy-2018.1.tar.gz
 _eclasses_=distutils-r1	c166cdc9bfdc0fee3ea2100e01fdcdd3	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	4c65b35c1895b82c0f44e44166a3464f	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=e6ff02a4e10a085c8efcf5457f9abce9
+_md5_=4a3f1df3f5ca914dde1a24578ae664dd
