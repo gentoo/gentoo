@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 inherit cmake-utils
 
-DESCRIPTION="Soapy SDR plugin for the Blade RF "
+DESCRIPTION="Soapy SDR plugin for the Blade RF"
 HOMEPAGE="https://github.com/pothosware/SoapyBladeRF"
 
 if [ "${PV}" = "9999" ]; then
