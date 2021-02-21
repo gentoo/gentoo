@@ -3,27 +3,17 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_7 )
-
-if [[ $PV = *9999* ]]; then
-	scm_eclass=git-r3
-	EGIT_REPO_URI="https://github.com/Becksteinlab/${PN}.git"
-	EGIT_BRANCH="develop"
-	SRC_URI=""
-else
-	scm_eclass=vcs-snapshot
-	SRC_URI="https://github.com/Becksteinlab/${PN}/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
-fi
-
-inherit eutils distutils-r1 ${scm_eclass}
+PYTHON_COMPAT=( python3_{7..9} )
+inherit distutils-r1
 
 DESCRIPTION="Numerical first aid kit (with numpy/scipy)"
 HOMEPAGE="https://numkit.readthedocs.io"
+S="${WORKDIR}/${PN}-release-${PV}"
+SRC_URI="https://github.com/Becksteinlab/${PN}/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE=""
+KEYWORDS="~amd64 ~x86"
 
 BDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
