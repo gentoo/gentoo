@@ -38,6 +38,8 @@ pkg_setup() {
 	get_version
 	CONFIG_CHECK="NETFILTER"
 	ERROR_NETFILTER="ipset requires NETFILTER support in your kernel."
+	CONFIG_CHECK+=" NETFILTER_NETLINK"
+	ERROR_NETFILTER_NETLINK="ipset requires NETFILTER_NETLINK support in your kernel."
 	# It does still build without NET_NS, but it may be needed in future.
 	#CONFIG_CHECK="${CONFIG_CHECK} NET_NS"
 	#ERROR_NET_NS="ipset requires NET_NS (network namespace) support in your kernel."
