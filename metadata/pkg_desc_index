@@ -10742,7 +10742,7 @@ dev-util/devhelp 3.36.2 3.38.1: An API documentation browser for GNOME
 dev-util/dialog 1.3.20170131 1.3.20200228 1.3.20200327: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1-r2: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3-r1: Filter files out of unified diffs using POSIX extended regular expressions
-dev-util/diffoscope 166: Will try to get to the bottom of what makes files or directories different
+dev-util/diffoscope 166 167: Will try to get to the bottom of what makes files or directories different
 dev-util/diffstat 1.63 1.64: Display a histogram of diff changes
 dev-util/diffuse 0.5.0_alpha7-r1 0.6.0: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r3: A tool for differing and merging directories
@@ -18725,7 +18725,7 @@ x11-plugins/pidgintex 1.1.2_p20170107: Pidgin plugin to render LaTeX expressions
 x11-plugins/purple-facebook 20170608 20170831 20190113: Facebook protocol plugin for libpurple
 x11-plugins/purple-hangouts 0_p20181202 0_p20200710: Hangouts Plugin for libpurple
 x11-plugins/purple-libnotify-plus 2.99.1: Provide libnotify interface to Pidgin and Finch
-x11-plugins/purple-mattermost 1.2-r1: A libpurple/Pidgin plugin for Mattermost
+x11-plugins/purple-mattermost 1.2-r1 2.0: A libpurple/Pidgin plugin for Mattermost
 x11-plugins/vicious 2.3.1 2.5.0: Modular widget library for x11-wm/awesome
 x11-plugins/wmCalClock 1.25-r3: WMaker DockApp: A Calendar clock with antialiased text
 x11-plugins/wmDownload 0.1.2a-r3: dockapp that displays how much data you've received on each eth and ppp device

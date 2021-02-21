@@ -1,0 +1,12 @@
+DEFINED_PHASES=prepare
+DEPEND=app-text/discount dev-libs/glib dev-libs/json-glib net-im/pidgin
+DESCRIPTION=A libpurple/Pidgin plugin for Mattermost
+EAPI=7
+HOMEPAGE=https://github.com/EionRobb/purple-mattermost
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=app-text/discount dev-libs/glib dev-libs/json-glib net-im/pidgin
+SLOT=0
+SRC_URI=https://github.com/EionRobb/purple-mattermost/archive/v2.0.tar.gz -> purple-mattermost-2.0.tar.gz
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=ccff155fd2f96bde1883b4ba48aad813
