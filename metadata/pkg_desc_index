@@ -13240,7 +13240,7 @@ media-libs/libplacebo 2.43.0 2.43.1 2.72.2 9999: Reusable library for GPU-accele
 media-libs/libpng 1.6.37-r2: Portable Network Graphics library
 media-libs/libpng-compat 1.2.59 1.5.30: Portable Network Graphics library
 media-libs/libpqstego 0.0.1: Library for Perturbed Quantization Steganography
-media-libs/libprojectm 2.1.0-r2 3.1.8 3.1.8-r1 3.1.11 9999: A graphical music visualization plugin similar to milkdrop
+media-libs/libprojectm 2.1.0-r2 3.1.8 3.1.8-r1 3.1.11 3.1.12 9999: A graphical music visualization plugin similar to milkdrop
 media-libs/libqaccessibilityclient 0.4.1: Library for writing accessibility clients such as screen readers
 media-libs/libquicktime 1.2.4-r3: An enhanced version of the quicktime4linux library
 media-libs/libquvi 0.9.4-r100: Library for parsing video download links
@@ -13553,7 +13553,7 @@ media-plugins/kodi-pvr-pctv 5.0.0 6.0.0 9999: Kodi's PCTV client addon
 media-plugins/kodi-pvr-stalker 6.0.0 6.0.1 6.0.2 7.0.0 9999: Kodi's Stalker client addon
 media-plugins/kodi-pvr-vbox 7.0.0 7.0.1 7.0.2 7.0.3 8.0.0 9999: Kodi's VBox Home TV Gateway PVR client addon
 media-plugins/kodi-pvr-vdr-vnsi 8.2.2 9999: Kodi PVR addon VNSI
-media-plugins/kodi-pvr-vuplus 7.3.2 9999: Kodi's VuPlus client addon
+media-plugins/kodi-pvr-vuplus 7.3.3 9999: Kodi's VuPlus client addon
 media-plugins/kodi-pvr-wmc 6.1.1 9999: Kodi's Windows Media Center client addon
 media-plugins/kodi-screensaver-asteroids 2.4.2-r1 9999: Asteroids screensaver for Kodi
 media-plugins/kodi-screensaver-biogenesis 2.3.2-r1 9999: Biogenesis screensaver for Kodi
