@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ inherit autotools flag-o-matic linux-info multilib-minimal python-single-r1 pam 
 
 DESCRIPTION="System Security Services Daemon provides access to identity and authentication"
 HOMEPAGE="https://github.com/SSSD/sssd"
-SRC_URI="https://github.com/SSSD/sssd/releases/download/${PN}-${PV//./_}/${P}.tar.gz"
+SRC_URI="https://github.com/SSSD/sssd/releases/download/${PV}/${P}.tar.gz"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 
 LICENSE="GPL-3"
@@ -18,7 +18,8 @@ IUSE="acl doc +locator +netlink nfsv4 nls +man pac python samba selinux sudo sys
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="pac? ( samba )
-	python? ( ${PYTHON_REQUIRED_USE} )"
+	python? ( ${PYTHON_REQUIRED_USE} )
+	test? ( sudo )"
 
 DEPEND="
 	>=app-crypt/mit-krb5-1.10.3
