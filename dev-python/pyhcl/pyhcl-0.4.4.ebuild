@@ -6,7 +6,7 @@ EAPI=7
 # tag:
 # git describe --tags --long
 LONG_VERSION=0.4.4-0-g314cd32
-PYTHON_COMPAT=( python3_8 )
+PYTHON_COMPAT=( python3_8 python3_9 )
 inherit distutils-r1
 
 DESCRIPTION="HCL configuration parser for python"
