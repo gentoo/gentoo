@@ -31,6 +31,7 @@ else
 fi
 RDEPEND+="
 	dev-python/chardet[${PYTHON_USEDEP}]
+	dev-python/lazy-object-proxy[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
 	dev-python/pathspec[${PYTHON_USEDEP}]
 	dev-python/tree-sitter[${PYTHON_USEDEP}]
