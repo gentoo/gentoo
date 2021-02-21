@@ -5,4 +5,5 @@
     <email>shell-tools@gentoo.org</email>
     <name>Gentoo Shell Tools Project</name>
   </maintainer>
+  <stabilize-allarches/>
 </pkgmetadata>
