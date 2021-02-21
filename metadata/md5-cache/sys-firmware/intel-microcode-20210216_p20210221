@@ -1,0 +1,15 @@
+BDEPEND=>=sys-apps/iucode_tool-2.3
+DEFINED_PHASES=install postinst postrm preinst prepare prerm pretend setup
+DESCRIPTION=Intel IA32/IA64 microcode update data
+EAPI=7
+HOMEPAGE=https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files http://inertiawar.com/microcode/
+IUSE=hostonly initramfs +split-ucode vanilla kernel_linux
+KEYWORDS=-* amd64 x86
+LICENSE=intel-ucode
+RDEPEND=hostonly? ( sys-apps/iucode_tool )
+REQUIRED_USE=|| ( initramfs split-ucode )
+RESTRICT=binchecks bindist mirror strip
+SLOT=0
+SRC_URI=https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/archive/microcode-20210216.tar.gz https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/raw/437f382b1be4412b9d03e2bbdcda46d83d581242/intel-ucode/06-4e-03 -> intel-ucode-sig_0x406e3-rev_0xd6.bin https://dev.gentoo.org/~whissi/dist/intel-microcode/intel-microcode-collection-20210221.tar.xz
+_eclasses_=linux-info	c90a203b1c14cfa77bd3e37a0e96c955	mount-boot	060ced4c5e0fd737db17cbb609bbf557	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=58ad5fc2332b379a591fb60b044db65e
