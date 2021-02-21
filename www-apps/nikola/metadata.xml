@@ -12,9 +12,6 @@
     <flag name="charts">
       Support chart generation through <pkg>dev-python/pygal</pkg>
     </flag>
-    <flag name="ghpages">
-      Add support for direct uploading to github pages
-    </flag>
     <flag name="hyphenation">
       Add hyphenation support through <pkg>dev-python/pyphen</pkg>
     </flag>
@@ -34,9 +31,6 @@
     <flag name="webmedia">
       Use <pkg>dev-python/micawber</pkg> to extract metadata from web media
       links
-    </flag>
-    <flag name="websocket">
-      Add websocket support thru <pkg>dev-python/ws4py</pkg>
     </flag>
   </use>
   <upstream>
