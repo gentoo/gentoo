@@ -313,7 +313,7 @@ _cmake_modify-cmakelists() {
 
 # @FUNCTION: cmake_src_prepare
 # @DESCRIPTION:
-# Apply ebuild and user patches.
+# Apply ebuild and user patches. *MUST* be run or cmake_src_configure will fail.
 cmake_src_prepare() {
 	debug-print-function ${FUNCNAME} "$@"
 
