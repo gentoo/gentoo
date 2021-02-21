@@ -4,7 +4,7 @@
 EAPI=7
 
 COMMIT=0c807e593f7571a654ad055cb126652d7f3a698d
-PYTHON_COMPAT=( python3_7 )
+PYTHON_COMPAT=( python3_{7..9} )
 DISTUTILS_SINGLE_IMPL="true"
 DISTUTILS_USE_SETUPTOOLS="rdepend"
 inherit desktop distutils-r1
@@ -19,8 +19,7 @@ KEYWORDS="amd64 ~ppc x86"
 IUSE="dbus taglib"
 
 BDEPEND="
-	virtual/pkgconfig
-"
+	virtual/pkgconfig"
 RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
@@ -32,8 +31,10 @@ RDEPEND="
 
 S="${WORKDIR}/${PN}-${COMMIT}"
 
+distutils_enable_tests unittest
+
 src_install() {
 	distutils-r1_src_install
 	doicon -s 128 sonata/pixmaps/sonata.png
-	rm -r "${D}"/usr/share/sonata || die
+	rm -r "${ED}"/usr/share/sonata || die
 }
