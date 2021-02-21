@@ -219,11 +219,6 @@ net-wireless/irda-utils
 dev-go/qt
 
 # Michał Górny <mgorny@gentoo.org> (2021-01-19)
-# Fails to build.  Last release in 2000.
-# Removal on 2021-02-18.  Bug #722204.
-media-sound/mp3_check
-
-# Michał Górny <mgorny@gentoo.org> (2021-01-19)
 # Discontinued.  Last release in 2017.  The code is broken with py3.7
 # and we're doing only the minimal patching to make it not explode
 # immediately.  No revdeps left.
