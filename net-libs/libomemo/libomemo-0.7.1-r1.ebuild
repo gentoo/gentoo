@@ -10,7 +10,7 @@ SRC_URI="https://github.com/gkdr/libomemo/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="static-libs"
 
 RDEPEND="
 	dev-db/sqlite
@@ -43,4 +43,8 @@ src_install() {
 	fi
 
 	einstalldocs
+
+	if ! use static-libs ; then
+		rm "${D}/usr/${libdir}/libomemo.a" || die
+	fi
 }
