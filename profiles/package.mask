@@ -221,11 +221,6 @@ dev-go/qt
 games-strategy/0ad
 ~games-strategy/0ad-data-0.0.24_alpha_pre20210116040036
 
-# Jonas Stein <jstein@gentoo.org> (2021-01-17)
-# Removal in 30 days.
-# Fails to compile Bug #765697.
-x11-misc/rss-glx
-
 # Brian Evans <grknight@gentoo.org> (2021-01-07)
 # PHP 7.2 is security vulnerable and end-of-life
 # Please upgrade to a newer slot
