@@ -6,11 +6,6 @@
 # where available
 dev-lang/php -jit
 
-# Sam James <sam@gentoo.org> (2021-02-06)
-# media-sound/sndio is not yet keyworded here
-# bug #769098, bug #769122
-media-libs/openal sndio
-
 # Jonathan Davies <jpds@protonmail.com> (2021-01-27)
 # No SELinux on ARM
 net-im/prosody selinux
