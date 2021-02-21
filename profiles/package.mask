@@ -481,13 +481,6 @@ sys-devel/automake:1.10
 <sys-devel/binutils-2.34
 <sys-devel/binutils-hppa64-2.34
 
-# Michał Górny <mgorny@gentoo.org> (2017-05-20)
-# Old versions of CUDA and their reverse dependencies. They do not
-# support GCC 5+, and are really old.
-# (updated 2017-12-27 with cuda < 8 because of gcc < 5 mask)
-<dev-util/nvidia-cuda-sdk-8
-<dev-util/nvidia-cuda-toolkit-8
-
 # Michael Orlitzky <mjo@gentoo.org> (2017-01-07)
 # This package has some dangerous quality and security issues, but
 # people may still find it useful. It is masked to prevent accidental
