@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{7..9} )
 inherit toolchain-funcs python-single-r1 linux-info
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~x86"
 	SRC_URI="https://github.com/netblue30/${PN}/releases/download/${PV}/${P}.tar.xz"
 else
 	inherit git-r3
