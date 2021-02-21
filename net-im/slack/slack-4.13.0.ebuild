@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 MULTILIB_COMPAT=( abi_x86_64 )
 
-inherit desktop multilib-build optfeature pax-utils unpacker xdg-utils
+inherit desktop multilib-build optfeature pax-utils unpacker xdg
 
 DESCRIPTION="Team collaboration tool"
 HOMEPAGE="https://www.slack.com"
@@ -28,23 +28,19 @@ RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
 	media-libs/mesa:0[${MULTILIB_USEDEP}]
 	net-print/cups:0[${MULTILIB_USEDEP}]
 	sys-apps/dbus:0[${MULTILIB_USEDEP}]
-	sys-apps/util-linux:0[${MULTILIB_USEDEP}]
 	x11-libs/cairo:0[${MULTILIB_USEDEP}]
 	x11-libs/gdk-pixbuf:2[${MULTILIB_USEDEP}]
 	x11-libs/gtk+:3[${MULTILIB_USEDEP}]
+	x11-libs/libdrm:0[${MULTILIB_USEDEP}]
 	x11-libs/libX11:0[${MULTILIB_USEDEP}]
 	x11-libs/libxcb:0/1.12[${MULTILIB_USEDEP}]
 	x11-libs/libXcomposite:0[${MULTILIB_USEDEP}]
-	x11-libs/libXcursor:0[${MULTILIB_USEDEP}]
 	x11-libs/libXdamage:0[${MULTILIB_USEDEP}]
 	x11-libs/libXext:0[${MULTILIB_USEDEP}]
 	x11-libs/libXfixes:0[${MULTILIB_USEDEP}]
-	x11-libs/libXi:0[${MULTILIB_USEDEP}]
+	x11-libs/libxkbcommon:0[${MULTILIB_USEDEP}]
 	x11-libs/libxkbfile:0[${MULTILIB_USEDEP}]
 	x11-libs/libXrandr:0[${MULTILIB_USEDEP}]
-	x11-libs/libXrender:0[${MULTILIB_USEDEP}]
-	x11-libs/libXScrnSaver:0[${MULTILIB_USEDEP}]
-	x11-libs/libXtst:0[${MULTILIB_USEDEP}]
 	x11-libs/pango:0[${MULTILIB_USEDEP}]
 	appindicator? ( dev-libs/libappindicator:3[${MULTILIB_USEDEP}] )"
 
@@ -52,12 +48,15 @@ QA_PREBUILT="/opt/slack/chrome-sandbox
 	/opt/slack/libEGL.so
 	/opt/slack/libffmpeg.so
 	/opt/slack/libGLESv2.so
+	/opt/slack/libvk_swiftshader.so
+	/opt/slack/libvulkan.so
 	/opt/slack/resources/app.asar.unpacked/node_modules/*/*/build/Release/*.node
 	/opt/slack/resources/app.asar.unpacked/node_modules/*/build/Release/*.node
+	/opt/slack/resources/app.asar.unpacked/node_modules/*/*/bin/linux-x64-85/*.node
+	/opt/slack/resources/app.asar.unpacked/node_modules/*/bin/linux-x64-85/*.node
 	/opt/slack/slack
 	/opt/slack/swiftshader/libEGL.so
-	/opt/slack/swiftshader/libGLESv2.so
-	/opt/slack/swiftshader/libvk_swiftshader.so"
+	/opt/slack/swiftshader/libGLESv2.so"
 
 S="${WORKDIR}"
 
@@ -75,6 +74,9 @@ src_prepare() {
 			usr/share/applications/slack.desktop \
 			|| die "sed failed for slack.desktop"
 	fi
+
+	rm usr/lib/slack/LICENSE{,S-linux.json} \
+		|| die "rm licenses failed"
 }
 
 src_install() {
@@ -82,18 +84,8 @@ src_install() {
 	doicon -s 512 usr/share/pixmaps/slack.png
 	domenu usr/share/applications/slack.desktop
 
-	insinto /opt/slack
-	doins -r usr/lib/slack/.
-
-	# this really should be done a better way than trying to parse
-	# the QA_PREBUILT variable
-	local path
-	for path in ${QA_PREBUILT}; do
-		local -a paths=(${D}/${path})
-		for path in "${paths[@]}"; do
-			fperms +x "${path#${D}/}"
-		done
-	done
+	insinto /opt # wrt 720134
+	cp -a usr/lib/slack "${ED}"/opt || die "cp failed"
 
 	use suid && fperms u+s /opt/slack/chrome-sandbox # wrt 713094
 	dosym ../../opt/slack/slack usr/bin/slack
@@ -104,13 +96,5 @@ src_install() {
 pkg_postinst() {
 	optfeature "storing passwords via gnome-keyring" app-crypt/libsecret
 
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-	xdg_mimeinfo_database_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-	xdg_mimeinfo_database_update
+	xdg_pkg_postinst
 }
