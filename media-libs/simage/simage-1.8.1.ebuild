@@ -13,7 +13,7 @@ if [[ ${PV} = *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/coin3d/simage.git"
 else
 	SRC_URI="https://github.com/coin3d/simage/releases/download/v${PV}/${P}-src.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
 	S="${WORKDIR}/${PN}"
 fi
 

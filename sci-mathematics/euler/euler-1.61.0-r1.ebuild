@@ -1,12 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-AUTOTOOLS_AUTORECONF=1
-AUTOTOOLS_IN_SOURCE_BUILD=1
-
-inherit autotools-utils
+inherit autotools
 
 DESCRIPTION="Mathematical programming environment"
 HOMEPAGE="http://euler.sourceforge.net/"
@@ -14,13 +11,13 @@ SRC_URI="mirror://sourceforge/euler/${P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc -sparc x86 ~amd64-linux ~x86-linux"
-IUSE=""
 
-DEPEND="x11-libs/gtk+:2
-	virtual/pkgconfig"
-
-RDEPEND="x11-libs/gtk+:2
-	x11-misc/xdg-utils"
+BDEPEND="virtual/pkgconfig"
+DEPEND="x11-libs/gtk+:2"
+RDEPEND="
+	${DEPEND}
+	x11-misc/xdg-utils
+"
 
 PATCHES=(
 	"${FILESDIR}"/configure-gentoo.patch
@@ -31,6 +28,8 @@ PATCHES=(
 )
 
 src_prepare() {
+	default
+
 	# gentoo specific stuff
 	sed -i -e '/COPYING/d' -e '/INSTALL/d' Makefile.am || die
 	sed -i \
@@ -38,5 +37,6 @@ src_prepare() {
 		Makefile.am docs/Makefile.am \
 		docs/*/Makefile.am docs/*/images/Makefile.am src/main.c  \
 		|| die "sed for docs failed"
-	autotools-utils_src_prepare
+
+	eautoreconf
 }
