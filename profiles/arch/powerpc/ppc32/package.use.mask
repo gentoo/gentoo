@@ -1,17 +1,6 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Sam James <sam@gentoo.org> (2021-01-19)
-# app-text/dblatex not yet keyworded
-# bug #766186
-dev-util/ragel doc
-
-# Florian Schmaus <flo@geekplace.eu> (2020-12-03)
-# Rubber's testsuite depends on media-gfx/asymptote and
-# dev-tex/pythontex which are not keyworded on ppc.
-# bug #766150
-dev-tex/rubber test
-
 # Cédric Krier <cedk@gentoo.org> (2020-11-10)
 # virtual/rust has no ppc keyword
 dev-vcs/mercurial rust

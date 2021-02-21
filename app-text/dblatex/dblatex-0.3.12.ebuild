@@ -13,7 +13,7 @@ SRC_URI="https://downloads.sourceforge.net/project/dblatex/dblatex/${P}/${PN}3-$
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="inkscape"
 
 RDEPEND="
