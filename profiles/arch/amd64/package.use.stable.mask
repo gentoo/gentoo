@@ -17,10 +17,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Marek Szuba <marecki@gentoo.org> (2020-12-24)
-# No stable dev-lang/lua:5.3 ebuilds yet
-media-gfx/darktable	system-lua
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-10-05)
 # REQUIRED_USE="base? ( firebird )", dev-db/firebird is not stable
 app-office/libreoffice base
