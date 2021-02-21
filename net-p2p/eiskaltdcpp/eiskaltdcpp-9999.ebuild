@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/eiskaltdcpp/eiskaltdcpp"
 
 LICENSE="GPL-2 GPL-3"
 SLOT="0"
-IUSE="cli daemon dbus +dht examples -gold -gtk idn -javascript +json libcanberra libnotify lua +minimal pcre +qt5 spell sqlite upnp -xmlrpc"
+IUSE="cli daemon dbus +dht examples gold gtk idn javascript +json libcanberra libnotify lua +minimal pcre +qt5 spell sqlite upnp xmlrpc"
 
 REQUIRED_USE="
 	?? ( json xmlrpc )
@@ -156,6 +156,11 @@ src_configure() {
 			-DLUA_SCRIPT=ON
 			-DWITH_LUASCRIPTS=$(usex examples)
 			-DLUA_VERSION=$(ver_cut 1-2 $(lua_get_version))
+		)
+	else
+		mycmakeargs+=(
+			-DLUA_SCRIPT=OFF
+			-DWITH_LUASCRIPTS=OFF
 		)
 	fi
 	if use qt5 || use gtk; then
