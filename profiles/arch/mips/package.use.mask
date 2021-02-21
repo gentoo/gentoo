@@ -17,10 +17,6 @@ app-text/enchant test
 # Dependency not keyworded on this arch.
 app-text/enchant voikko
 
-# Matt Turner <mattst88@gentoo.org> (2020-12-05)
-# dev-python/parameterized is not keyworded
-dev-util/gtk-doc test
-
 # Matt Turner <mattst88@gentoo.org> (2020-08-11)
 # No drivers on this architecture support Vulkan
 media-libs/mesa vulkan vulkan-overlay zink
