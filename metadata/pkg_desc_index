@@ -8127,7 +8127,7 @@ dev-python/cvxopt 1.2.5-r1 1.2.6: Python package for convex optimization
 dev-python/cwcwidth 0.1.1 0.1.2 0.1.4: Python bindings for wc(s)width
 dev-python/cx_Freeze 6.4.2 6.5.3: Create standalone executables from Python scripts
 dev-python/cycler 0.10.0-r1: Composable style cycles
-dev-python/cython 0.29.21 0.29.21-r1: A Python to C compiler
+dev-python/cython 0.29.21 0.29.21-r1 0.29.22: A Python to C compiler
 dev-python/daemonize 2.5.0: Library for writing system daemons in Python
 dev-python/dask 2.30.0 2021.1.0 2021.1.1 2021.2.0: Task scheduling and blocked algorithms for parallel processing
 dev-python/dbus-python 1.2.16-r1: Python bindings for the D-Bus messagebus
