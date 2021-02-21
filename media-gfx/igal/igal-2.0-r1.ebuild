@@ -7,7 +7,7 @@ MY_P=${PN}-${PV}
 
 DESCRIPTION="Static HTML image gallery generator"
 HOMEPAGE="https://igal.trexler.at"
-SRC_URI="http://mirror.umd.edu/gentoo/distfiles/igal2-2.0.tar.gz"
+SRC_URI="https://github.com/solbu/igal2/releases/tag/v2.4"
 
 LICENSE="GPL-2"
 SLOT="0"
