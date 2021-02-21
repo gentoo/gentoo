@@ -1,0 +1,11 @@
+--- a/build/cmake/Modules/FindLibSSH.cmake.~1~	2020-12-17 06:22:25.000000000 +0100
++++ b/build/cmake/Modules/FindLibSSH.cmake	2021-02-21 10:38:52.773491295 +0100
+@@ -51,7 +51,7 @@
+   find_library(LibSSH_LIBRARY NAMES ${LibSSH_NAMES})
+ endif()
+ 
+-set(LibSSH_HEADER_FILE ${LibSSH_INCLUDE_DIR}/libssh/libssh.h)
++set(LibSSH_HEADER_FILE ${LibSSH_INCLUDE_DIR}/libssh/libssh_version.h)
+ file(STRINGS ${LibSSH_HEADER_FILE} LibSSH_VERSION_LINE_MAJOR REGEX "#define LIBSSH_VERSION_MAJOR[ ]+[0-9]+")
+ if (LibSSH_VERSION_LINE_MAJOR)
+   file(STRINGS ${LibSSH_HEADER_FILE} LibSSH_VERSION_LINE_MINOR REGEX "#define LIBSSH_VERSION_MINOR[ ]+[0-9]+")
