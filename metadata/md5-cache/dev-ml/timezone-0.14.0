@@ -5,10 +5,10 @@ DESCRIPTION=Time-zone handling for OCaml
 EAPI=7
 HOMEPAGE=https://github.com/janestreet/timezone
 IUSE=ocamlopt
-KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
 LICENSE=MIT
 RDEPEND=dev-ml/core_kernel:= dev-ml/ppx_jane:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/timezone/archive/v0.14.0.tar.gz -> timezone-0.14.0.tar.gz
 _eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
-_md5_=acdf9828da4838790e4bbbaef1434e1a
+_md5_=50de95f5ee32c9e9510b9a29b72073cb

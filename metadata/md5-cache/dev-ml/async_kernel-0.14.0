@@ -5,10 +5,10 @@ DESCRIPTION=Jane Street Capital's asynchronous execution library (core)
 EAPI=7
 HOMEPAGE=https://github.com/janestreet/async_kernel
 IUSE=+ocamlopt
-KEYWORDS=~amd64 ~arm ~ppc64 ~x86
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86
 LICENSE=MIT
 RDEPEND=dev-ml/core_kernel:= dev-ml/ppx_jane:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/async_kernel/archive/v0.14.0.tar.gz -> async_kernel-0.14.0.tar.gz
 _eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
-_md5_=a05c8c584717818e36d208033b714deb
+_md5_=8336946f8701cf9aa88648819cc57b1e
