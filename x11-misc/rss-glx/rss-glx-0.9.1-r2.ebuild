@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools eutils multilib
+EAPI=7
+
+inherit autotools
 
 MY_P=${PN}_${PV}
 
@@ -12,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc ~ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="+bzip2 openal quesoglc"
 
 RDEPEND="
@@ -24,21 +25,21 @@ RDEPEND="
 	>=x11-misc/xscreensaver-5.08-r2
 	bzip2? ( app-arch/bzip2 )
 	openal? ( >=media-libs/freealut-1.1.0-r1 )
-	quesoglc? ( media-libs/quesoglc )
-"
+	quesoglc? ( media-libs/quesoglc )"
 DEPEND="
 	${RDEPEND}
-	x11-base/xorg-proto
+	x11-base/xorg-proto"
+BDEPEND="
 	virtual/pkgconfig
-	sys-apps/sed
-"
+	bzip2? ( app-arch/bzip2 )"
 
-DOCS="ChangeLog README*"
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
+
 PATCHES=(
 	"${FILESDIR}"/${P}-quesoglc.patch
 	"${FILESDIR}"/${P}-asneeded.patch
 	"${FILESDIR}"/${P}-imagemagick-7.patch
+	"${FILESDIR}"/${P}-c++11-narrowing.patch
 )
 
 src_prepare() {
@@ -49,24 +50,31 @@ src_prepare() {
 		-e '/CXXFLAGS=/s:-O2:${CXXFLAGS}:' \
 		-e 's|AM_CONFIG_HEADER|AC_CONFIG_HEADERS|g' \
 		configure.in || die
+	mv configure.{in,ac} || die
 
 	eautoreconf
 }
 
 src_configure() {
 	econf \
+		--disable-static \
+		--enable-shared \
 		$(use_enable bzip2) \
 		$(use_enable openal sound) \
 		$(use_with quesoglc) \
-		--bindir=/usr/$(get_libdir)/misc/xscreensaver \
-		--enable-shared \
-		--with-configdir=/usr/share/xscreensaver/config
+		--bindir="${EPREFIX}"/usr/$(get_libdir)/misc/xscreensaver \
+		--with-configdir="${EPREFIX}"/usr/share/xscreensaver/config
+}
+
+src_install() {
+	default
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
-	local xssconf="${ROOT}usr/share/X11/app-defaults/XScreenSaver"
+	local xssconf="${EROOT}"/usr/share/X11/app-defaults/XScreenSaver
 
-	if [ -f ${xssconf} ]; then
+	if [[ -f ${xssconf} ]]; then
 		sed -e '/*programs:/a\
 		GL:       \"Cyclone\"  cyclone --root     \\n\\\
 		GL:      \"Euphoria\"  euphoria --root    \\n\\\
@@ -81,8 +89,8 @@ pkg_postinst() {
 		GL:     \"Skyrocket\"  skyrocket --root   \\n\\\
 		GL:    \"Solarwinds\"  solarwinds --root  \\n\\\
 		GL:     \"Colorfire\"  colorfire --root   \\n\\\
-		GL:   \"Hufos Smoke\"  hufo_smoke --root  \\n\\\
-		GL:  \"Hufos Tunnel\"  hufo_tunnel --root \\n\\\
+		GL:  \"Hufo\x27s Smoke\"  hufo_smoke --root  \\n\\\
+		GL: \"Hufo\x27s Tunnel\"  hufo_tunnel --root \\n\\\
 		GL:    \"Sundancer2\"  sundancer2 --root  \\n\\\
 		GL:          \"BioF\"  biof --root        \\n\\\
 		GL:   \"BusySpheres\"  busyspheres --root \\n\\\
@@ -91,14 +99,14 @@ pkg_postinst() {
 		GL:        \"Lorenz\"  lorenz --root      \\n\\\
 		GL:      \"Drempels\"  drempels --root    \\n\\\
 		GL:      \"Feedback\"  feedback --root    \\n\\' \
-			-i ${xssconf} || die
+			-i "${xssconf}" || die
 	fi
 }
 
 pkg_postrm() {
-	local xssconf="${ROOT}usr/share/X11/app-defaults/XScreenSaver"
+	local xssconf="${EROOT}"/usr/share/X11/app-defaults/XScreenSaver
 
-	if [ -f ${xssconf} ]; then
+	if [[ -f ${xssconf} ]]; then
 		sed \
 			-e '/\"Cyclone\"  cyclone/d' \
 			-e '/\"Euphoria\"  euphoria/d' \
@@ -113,8 +121,8 @@ pkg_postrm() {
 			-e '/\"Skyrocket\"  skyrocket/d' \
 			-e '/\"Solarwinds\"  solarwinds/d' \
 			-e '/\"Colorfire\"  colorfire/d' \
-			-e '/\"Hufos Smoke\"  hufo_smoke/d' \
-			-e '/\"Hufos Tunnel\"  hufo_tunnel/d' \
+			-e '/\"Hufo.*Smoke\"  hufo_smoke/d' \
+			-e '/\"Hufo.*Tunnel\"  hufo_tunnel/d' \
 			-e '/\"Sundancer2\"  sundancer2/d' \
 			-e '/\"BioF\"  biof/d' \
 			-e '/\"BusySpheres\"  busyspheres/d' \
@@ -123,6 +131,6 @@ pkg_postrm() {
 			-e '/\"Lorenz\"  lorenz/d' \
 			-e '/\"Drempels\"  drempels/d' \
 			-e '/\"Feedback\"  feedback/d' \
-			-i ${xssconf} || die
+			-i "${xssconf}" || die
 	fi
 }

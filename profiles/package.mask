@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2021-02-21)
+# Drive-by addition, never maintained by maintainer, tests failing,
+# missing dependencies, python3.7 only, no reverse dependencies.
+# Removal on 2021-03-23.  Bug #738004, #751316, #766989.
+dev-python/moviepy
+
 # Robert Siebeck <gentoo.2019@r123.de> (2021-02-19)
 # This version seems broken on some systems. Masking until this is resolved.
 # bug #771363
@@ -220,11 +226,6 @@ dev-go/qt
 # bug #735352
 games-strategy/0ad
 ~games-strategy/0ad-data-0.0.24_alpha_pre20210116040036
-
-# Jonas Stein <jstein@gentoo.org> (2021-01-17)
-# Removal in 30 days.
-# Fails to compile Bug #765697.
-x11-misc/rss-glx
 
 # Brian Evans <grknight@gentoo.org> (2021-01-07)
 # PHP 7.2 is security vulnerable and end-of-life
