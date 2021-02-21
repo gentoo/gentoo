@@ -14633,7 +14633,7 @@ net-fs/libnfs 4.0.0 9999: Client library for accessing NFS shares over a network
 net-fs/mc 2019.07.31.19.17.35 2021.01.16.02.45.34: Minio client provides alternatives for ls, cat on cloud storage and filesystems
 net-fs/minio 2021.01.16.02.19.44-r2 2021.02.07.01.31.02: An Amazon S3 compatible object storage server
 net-fs/netatalk 3.1.12-r1: Open Source AFP server
-net-fs/nfs-utils 2.5.1 2.5.2: NFS client and server daemons
+net-fs/nfs-utils 2.5.1 2.5.2 2.5.3: NFS client and server daemons
 net-fs/nfs4-acl-tools 0.3.5 0.3.7: Commandline and GUI tools that deal directly with NFSv4 ACLs
 net-fs/openafs 1.8.7: The OpenAFS distributed file system
 net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS installation
@@ -17546,7 +17546,7 @@ sys-fs/squashfs-tools 4.4_p1: tools to create and extract Squashfs filesystems
 sys-fs/squashfs-tools-ng 1.0.3 1.0.4 9999: A new set of tools for working with SquashFS images
 sys-fs/squashfuse 0.1.100 0.1.103: FUSE filesystem to mount squashfs archives
 sys-fs/static-dev 0.1: A skeleton, statically managed /dev
-sys-fs/sysfsutils 2.1.0: System Utilities Based on Sysfs
+sys-fs/sysfsutils 2.1.0 2.1.1: System Utilities Based on Sysfs
 sys-fs/tmsu 0.7.4 0.7.5: Files tagger and virtual tag-based filesystem
 sys-fs/treesize 0.54.1-r1: A disk consumption analyzing tool
 sys-fs/udev 243-r2 245.5-r1 246-r1 247.2 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
