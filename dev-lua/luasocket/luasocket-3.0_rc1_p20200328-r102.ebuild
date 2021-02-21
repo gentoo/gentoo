@@ -4,7 +4,7 @@
 EAPI=7
 
 EGIT_COMMIT="5b18e475f38fcf28429b1cc4b17baee3b9793a62"
-LUA_COMPAT=( lua5-{1..3} luajit )
+LUA_COMPAT=( lua5-{1..4} luajit )
 MY_P="${PN}-${EGIT_COMMIT}"
 
 inherit flag-o-matic lua toolchain-funcs
