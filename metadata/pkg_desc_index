@@ -5855,7 +5855,7 @@ dev-ml/extlib 1.7.7 1.7.8: Standard library extensions for O'Caml
 dev-ml/facile 1.1.3: OCaml constraint programming library on integer & integer set finite domains
 dev-ml/fieldslib 0.9.0 0.14.0: Folding over record fields
 dev-ml/findlib 1.8.1-r2: OCaml tool to find/use non-standard packages
-dev-ml/fmt 0.8.4 0.8.9: Combinators to devise OCaml Format pretty-printing functions
+dev-ml/fmt 0.8.4 0.8.9-r1: Combinators to devise OCaml Format pretty-printing functions
 dev-ml/fpath 0.7.2: File system paths for OCaml
 dev-ml/gen 0.4.0.1: Simple, efficient iterators for OCaml
 dev-ml/graphics 5.1.1: The OCaml graphics library

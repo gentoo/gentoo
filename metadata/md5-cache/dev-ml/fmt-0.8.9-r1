@@ -1,15 +1,15 @@
 BDEPEND=>=dev-ml/topkg-0.9 dev-ml/ocamlbuild dev-ml/findlib dev-ml/opam-installer dev-lang/ocaml
 DEFINED_PHASES=compile install test
-DEPEND=dev-ml/result:=[ocamlopt] dev-lang/ocaml:=[ocamlopt] dev-ml/uchar:=[ocamlopt] dev-ml/cmdliner:=[ocamlopt] >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-4:=
+DEPEND=dev-ml/cmdliner:=[ocamlopt] dev-lang/ocaml:=[ocamlopt] dev-ml/result:=[ocamlopt] dev-ml/stdlib-shims:=[ocamlopt] dev-ml/uchar:=[ocamlopt] >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-4:=
 DESCRIPTION=Combinators to devise OCaml Format pretty-printing functions
 EAPI=7
 HOMEPAGE=https://erratique.ch/software/fmt https://github.com/dbuenzli/fmt
 IUSE=test
 KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
 LICENSE=ISC
-RDEPEND=dev-ml/result:=[ocamlopt] dev-lang/ocaml:=[ocamlopt] dev-ml/uchar:=[ocamlopt] dev-ml/cmdliner:=[ocamlopt] >=dev-lang/ocaml-4:=
+RDEPEND=dev-ml/cmdliner:=[ocamlopt] dev-lang/ocaml:=[ocamlopt] dev-ml/result:=[ocamlopt] dev-ml/stdlib-shims:=[ocamlopt] dev-ml/uchar:=[ocamlopt] >=dev-lang/ocaml-4:=
 RESTRICT=!test? ( test )
 SLOT=0/0.8.9
 SRC_URI=https://erratique.ch/software/fmt/releases/fmt-0.8.9.tbz
 _eclasses_=findlib	9674d5e3d151793fecab20e2bb73e6c6	opam	b4de444efce371928602cbf4cd91307e
-_md5_=9b5c2a6f3419d75ac9ab8f0065cc977b
+_md5_=d159ad92e3706f47246bf040e6370a27

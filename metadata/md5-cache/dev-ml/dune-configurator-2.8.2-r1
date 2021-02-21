@@ -5,11 +5,11 @@ DESCRIPTION=A composable build system for OCaml
 EAPI=7
 HOMEPAGE=https://github.com/ocaml/dune
 IUSE=+ocamlopt test
-KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
 LICENSE=MIT
 RDEPEND=~dev-ml/dune-private-libs-2.8.2:=[ocamlopt=] dev-ml/csexp:=[ocamlopt=] dev-ml/result:=[ocamlopt=] >=dev-lang/ocaml-4:=[ocamlopt?]
 RESTRICT=!test? ( test )
 SLOT=0/2.8.2
 SRC_URI=https://github.com/ocaml/dune/archive/2.8.2.tar.gz -> dune-2.8.2.tar.gz
 _eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
-_md5_=f5a43c3b5702d7a6ea8ca256b4f27e7f
+_md5_=908510dfe820b8963696d9576385a093

@@ -5,11 +5,11 @@ DESCRIPTION=Transform DocBook using TeX macros
 EAPI=7
 HOMEPAGE=http://dblatex.sourceforge.net/
 IUSE=inkscape python_targets_python3_7 python_targets_python3_8 python_targets_python3_9
-KEYWORDS=~amd64 ~arm ~hppa ~ia64 ~ppc64 ~sparc ~x86
+KEYWORDS=~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=GPL-2+
 RDEPEND=app-text/docbook-xml-dtd:4.5 dev-libs/kpathsea dev-libs/libxslt dev-libs/libxslt dev-texlive/texlive-fontutils dev-texlive/texlive-latex dev-texlive/texlive-latexextra dev-texlive/texlive-latexrecommended dev-texlive/texlive-mathscience dev-texlive/texlive-pictures dev-texlive/texlive-xetex gnome-base/librsvg media-gfx/imagemagick media-gfx/transfig inkscape? ( media-gfx/inkscape ) python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)]
 REQUIRED_USE=|| ( python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 )
 SLOT=0
 SRC_URI=https://downloads.sourceforge.net/project/dblatex/dblatex/dblatex-0.3.12/dblatex3-0.3.12.tar.bz2
 _eclasses_=distutils-r1	c166cdc9bfdc0fee3ea2100e01fdcdd3	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	4c65b35c1895b82c0f44e44166a3464f	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=87b4b491ffcd4342a9918be3a3ecb8e1
+_md5_=214e3456a209b225fd7e20dc7215146c
