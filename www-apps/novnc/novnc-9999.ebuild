@@ -3,14 +3,13 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_7 )
-
+PYTHON_COMPAT=( python3_{7..9} )
 inherit distutils-r1
 
 DESCRIPTION="noVNC is a VNC client implemented using HTML5 technologies"
 HOMEPAGE="https://kanaka.github.com/noVNC/"
 
-if [[ ${PV} == 9999 ]] ; then
+if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/kanaka/noVNC.git"
 else
@@ -21,10 +20,8 @@ fi
 
 LICENSE="LGPL-3"
 SLOT="0"
-IUSE=""
 
-DEPEND=""
-RDEPEND="${DEPEND}
+RDEPEND="
 	dev-python/websockify[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]"
 
