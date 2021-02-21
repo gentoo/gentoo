@@ -13,7 +13,7 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86
 IUSE=""
 
 # File collisions. #540246
-RDEPEND="!=gnome-base/gnome-common-3.14.0
+RDEPEND="!=gnome-base/gnome-common-3.14.0-r0
 	!>=gnome-base/gnome-common-3.14.0-r1[-autoconf-archive(+)]"
 DEPEND=""
 
