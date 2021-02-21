@@ -1,16 +1,16 @@
-BDEPEND=virtual/pkgconfig test? ( !dev-lua/luaossl !dev-lua/luasec libressl? ( dev-libs/libressl:0= ) !libressl? ( dev-libs/openssl:0=[-bindist] ) lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 ) )
+BDEPEND=virtual/pkgconfig test? ( !dev-lua/luaossl !dev-lua/luasec libressl? ( dev-libs/libressl:0= ) !libressl? ( dev-libs/openssl:0=[-bindist] ) lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 ) lua_targets_lua5-4? ( dev-lang/lua:5.4 ) )
 DEFINED_PHASES=compile install prepare test
-DEPEND=!dev-lua/luaossl !dev-lua/luasec libressl? ( dev-libs/libressl:0= ) !libressl? ( dev-libs/openssl:0=[-bindist] ) lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 )
+DEPEND=!dev-lua/luaossl !dev-lua/luasec libressl? ( dev-libs/libressl:0= ) !libressl? ( dev-libs/openssl:0=[-bindist] ) lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 ) lua_targets_lua5-4? ( dev-lang/lua:5.4 )
 DESCRIPTION=OpenSSL binding for Lua
 EAPI=7
 HOMEPAGE=https://github.com/zhaozg/lua-openssl
-IUSE=libressl test lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3
+IUSE=libressl test lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3 lua_targets_lua5-4
 KEYWORDS=~amd64 ~arm ~arm64 ~x86
 LICENSE=MIT openssl PHP-3
-RDEPEND=!dev-lua/luaossl !dev-lua/luasec libressl? ( dev-libs/libressl:0= ) !libressl? ( dev-libs/openssl:0=[-bindist] ) lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 )
-REQUIRED_USE=|| ( lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3 )
+RDEPEND=!dev-lua/luaossl !dev-lua/luasec libressl? ( dev-libs/libressl:0= ) !libressl? ( dev-libs/openssl:0=[-bindist] ) lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 ) lua_targets_lua5-4? ( dev-lang/lua:5.4 )
+REQUIRED_USE=|| ( lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3 lua_targets_lua5-4 )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/zhaozg/lua-openssl/archive/0.7.8-0.tar.gz -> lua-openssl-0.7.8_p0.tar.gz https://github.com/zhaozg/lua-auxiliar/archive/8d09895473b73e4fb72b7573615f69c36e1860a2.tar.gz -> lua-auxiliar-8d09895473b73e4fb72b7573615f69c36e1860a2.tar.gz https://github.com/keplerproject/lua-compat-5.3/archive/v0.10.tar.gz -> lua-compat-5.3-0.10.tar.gz
 _eclasses_=lua	117840f7c4855d27ccde1c6cca990331	lua-utils	736947973cfbc9de01fdb8548f942f82	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=629d09d91954561ab80a9b936a2c6621
+_md5_=852e588fd2b7172d168a398d6ef9d4ad

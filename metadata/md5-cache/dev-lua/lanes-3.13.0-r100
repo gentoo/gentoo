@@ -1,16 +1,16 @@
-BDEPEND=virtual/pkgconfig test? ( lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 ) )
+BDEPEND=virtual/pkgconfig test? ( lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 ) lua_targets_lua5-4? ( dev-lang/lua:5.4 ) )
 DEFINED_PHASES=compile install prepare test
-DEPEND=lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 )
+DEPEND=lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 ) lua_targets_lua5-4? ( dev-lang/lua:5.4 )
 DESCRIPTION=Lightweight, native, lazy evaluating multithreading library
 EAPI=7
 HOMEPAGE=https://github.com/LuaLanes/lanes
-IUSE=test lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3
+IUSE=test lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3 lua_targets_lua5-4
 KEYWORDS=amd64 ~arm ~arm64 ~x86
 LICENSE=MIT
-RDEPEND=lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 )
-REQUIRED_USE=|| ( lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3 )
+RDEPEND=lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 ) lua_targets_lua5-4? ( dev-lang/lua:5.4 )
+REQUIRED_USE=|| ( lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3 lua_targets_lua5-4 )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/LuaLanes/lanes/archive/v3.13.0.tar.gz -> lanes-3.13.0.tar.gz
 _eclasses_=lua	117840f7c4855d27ccde1c6cca990331	lua-utils	736947973cfbc9de01fdb8548f942f82	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=c7098be03d25930126eca8baf9d05613
+_md5_=5cca0ed3274b3fc52ebe4a280807c0b4

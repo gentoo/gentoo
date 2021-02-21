@@ -1,15 +1,15 @@
 BDEPEND=virtual/pkgconfig
 DEFINED_PHASES=compile install prepare
-DEPEND=dev-libs/openssl:0[-bindist] !dev-lua/lua-openssl !dev-lua/luasec lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 )
+DEPEND=dev-libs/openssl:0[-bindist] !dev-lua/lua-openssl !dev-lua/luasec lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 ) lua_targets_lua5-4? ( dev-lang/lua:5.4 )
 DESCRIPTION=Most comprehensive OpenSSL module in the Lua universe
 EAPI=7
 HOMEPAGE=https://github.com/wahern/luaossl
-IUSE=examples lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3
+IUSE=examples lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3 lua_targets_lua5-4
 KEYWORDS=~amd64 ~arm ~arm64 ~x86
 LICENSE=MIT
-RDEPEND=dev-libs/openssl:0[-bindist] !dev-lua/lua-openssl !dev-lua/luasec lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 )
-REQUIRED_USE=|| ( lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3 )
+RDEPEND=dev-libs/openssl:0[-bindist] !dev-lua/lua-openssl !dev-lua/luasec lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 ) lua_targets_lua5-4? ( dev-lang/lua:5.4 )
+REQUIRED_USE=|| ( lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3 lua_targets_lua5-4 )
 SLOT=0
 SRC_URI=https://github.com/wahern/luaossl/archive/rel-20200709.tar.gz -> luaossl-rel-20200709.tar.gz
 _eclasses_=lua	117840f7c4855d27ccde1c6cca990331	lua-utils	736947973cfbc9de01fdb8548f942f82	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=aa7fbaa1d7cda1b36f36ee5631d90f66
+_md5_=8b3c7aaa380af3f98ef2cad79ed58109

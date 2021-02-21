@@ -1,15 +1,15 @@
 BDEPEND=dev-util/ninja dev-util/cmake
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=sys-libs/zlib lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 )
+DEPEND=sys-libs/zlib lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 ) lua_targets_lua5-4? ( dev-lang/lua:5.4 )
 DESCRIPTION=Simple streaming interface to zlib for Lua
 EAPI=7
 HOMEPAGE=https://github.com/brimworks/lua-zlib
-IUSE=lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3
+IUSE=lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3 lua_targets_lua5-4
 KEYWORDS=amd64 arm arm64 x86
 LICENSE=MIT
-RDEPEND=sys-libs/zlib lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 )
-REQUIRED_USE=|| ( lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3 )
+RDEPEND=sys-libs/zlib lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 ) lua_targets_lua5-4? ( dev-lang/lua:5.4 )
+REQUIRED_USE=|| ( lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3 lua_targets_lua5-4 )
 SLOT=0
 SRC_URI=https://github.com/brimworks/lua-zlib/archive/v1.2.tar.gz -> lua-zlib-1.2.tar.gz
 _eclasses_=cmake	314a813be2f09820e8978cdee941e501	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	lua	117840f7c4855d27ccde1c6cca990331	lua-utils	736947973cfbc9de01fdb8548f942f82	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=a9357527805f9954a7dca42a9c2a6c09
+_md5_=2e0bd54c3016e83346951fc20c5846e0

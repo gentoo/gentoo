@@ -1,16 +1,16 @@
 BDEPEND=virtual/pkgconfig
 DEFINED_PHASES=compile install prepare
-DEPEND=lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 )
+DEPEND=lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 ) lua_targets_lua5-4? ( dev-lang/lua:5.4 )
 DESCRIPTION=Networking support library for the Lua language
 EAPI=7
 HOMEPAGE=http://www.tecgraf.puc-rio.br/~diego/professional/luasocket/ https://github.com/diegonehab/luasocket
-IUSE=lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3
+IUSE=lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3 lua_targets_lua5-4
 KEYWORDS=amd64 arm arm64 ~hppa ~mips ppc ppc64 sparc x86
 LICENSE=MIT
-RDEPEND=lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 )
-REQUIRED_USE=|| ( lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3 )
+RDEPEND=lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 ) lua_targets_lua5-4? ( dev-lang/lua:5.4 )
+REQUIRED_USE=|| ( lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3 lua_targets_lua5-4 )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/diegonehab/luasocket/archive/5b18e475f38fcf28429b1cc4b17baee3b9793a62.tar.gz -> luasocket-3.0_rc1_p20200328.tar.gz
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	lua	117840f7c4855d27ccde1c6cca990331	lua-utils	736947973cfbc9de01fdb8548f942f82	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=b225917c325eee7c1224bb3157455fa1
+_md5_=54190387b0bf7a7c7a2ea8538205b415
