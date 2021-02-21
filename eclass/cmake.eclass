@@ -562,8 +562,8 @@ cmake_src_configure() {
 
 # @FUNCTION: cmake_src_compile
 # @DESCRIPTION:
-# General function for compiling with cmake.
-# Automatically detects the build type. All arguments are passed to emake.
+# General function for compiling with cmake. All arguments are passed
+# to cmake_build.
 cmake_src_compile() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -573,7 +573,8 @@ cmake_src_compile() {
 # @FUNCTION: cmake_build
 # @DESCRIPTION:
 # Function for building the package. Automatically detects the build type.
-# All arguments are passed to emake.
+# All arguments are passed to eninja (default) or emake depending on the value
+# of CMAKE_MAKEFILE_GENERATOR.
 cmake_build() {
 	debug-print-function ${FUNCNAME} "$@"
 
