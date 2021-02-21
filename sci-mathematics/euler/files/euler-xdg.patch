@@ -1,5 +1,5 @@
---- docs/doc.html.orig	2008-01-07 23:11:25.490634852 +0000
-+++ docs/doc.html	2008-01-07 23:13:57.652980222 +0000
+--- a/docs/doc.html
++++ b/docs/doc.html
 @@ -184,7 +184,8 @@
  <div align=center><img src="images/pref3.gif"></div>
  
@@ -10,8 +10,8 @@
  You can also reset the preferences to the default values.</p>
  <div align=center><img src="images/pref4.gif"></div>
  
---- src/rc.h.orig	2008-01-07 23:15:36.617118688 +0000
-+++ src/rc.h	2008-01-07 23:15:54.097371330 +0000
+--- a/src/rc.h
++++ b/src/rc.h
 @@ -26,7 +26,7 @@
  #define E_GSTACK_DEFAULT		4*1024l
  #define E_GLINES_DEFAULT		40
