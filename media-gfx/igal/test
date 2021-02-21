@@ -1,7 +1,0 @@
-[igal 30b9ecbb920] patch for new perl
- 5 files changed, 56 insertions(+)
- create mode 100644 media-gfx/igal/files/igal-4.old
- create mode 100644 media-gfx/igal/files/igal2-2.4.patch
- create mode 100644 media-gfx/igal/files/igal4.old
- create mode 100644 media-gfx/igal/filesigal-2.4.patch
-
