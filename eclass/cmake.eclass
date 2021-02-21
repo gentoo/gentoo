@@ -127,29 +127,6 @@ if [[ ${PN} != cmake ]]; then
 	BDEPEND+=" dev-util/cmake"
 fi
 
-# @FUNCTION: _cmake_banned_func
-# @INTERNAL
-# @DESCRIPTION:
-# Banned functions are banned.
-_cmake_banned_func() {
-	die "${FUNCNAME[1]} is banned. use -D$1<related_CMake_variable>=\"\$(usex $2)\" instead"
-}
-
-# @FUNCTION: _cmake_check_build_dir
-# @INTERNAL
-# @DESCRIPTION:
-# Determine using IN or OUT source build
-_cmake_check_build_dir() {
-	: ${CMAKE_USE_DIR:=${S}}
-	if [[ -n ${CMAKE_IN_SOURCE_BUILD} ]]; then
-		# we build in source dir
-		BUILD_DIR="${CMAKE_USE_DIR}"
-	fi
-
-	mkdir -p "${BUILD_DIR}" || die
-	einfo "Working in BUILD_DIR: \"$BUILD_DIR\""
-}
-
 # @FUNCTION: cmake_run_in
 # @USAGE: <working dir> <run command>
 # @DESCRIPTION:
@@ -193,18 +170,6 @@ comment_add_subdirectory() {
 	die "comment_add_subdirectory is banned. Use cmake_comment_add_subdirectory instead"
 }
 
-# @FUNCTION: cmake-utils_use_with
-# @INTERNAL
-# @DESCRIPTION:
-# Banned. Use -DWITH_FOO=$(usex foo) instead.
-cmake-utils_use_with() { _cmake_banned_func WITH_ "$@" ; }
-
-# @FUNCTION: cmake-utils_use_enable
-# @INTERNAL
-# @DESCRIPTION:
-# Banned. Use -DENABLE_FOO=$(usex foo) instead.
-cmake-utils_use_enable() { _cmake_banned_func ENABLE_ "$@" ; }
-
 # @FUNCTION: cmake_use_find_package
 # @USAGE: <USE flag> <package name>
 # @DESCRIPTION:
@@ -222,6 +187,26 @@ cmake_use_find_package() {
 
 	echo "-DCMAKE_DISABLE_FIND_PACKAGE_$2=$(use $1 && echo OFF || echo ON)"
 }
+
+# @FUNCTION: _cmake_banned_func
+# @INTERNAL
+# @DESCRIPTION:
+# Banned functions are banned.
+_cmake_banned_func() {
+	die "${FUNCNAME[1]} is banned. use -D$1<related_CMake_variable>=\"\$(usex $2)\" instead"
+}
+
+# @FUNCTION: cmake-utils_use_with
+# @INTERNAL
+# @DESCRIPTION:
+# Banned. Use -DWITH_FOO=$(usex foo) instead.
+cmake-utils_use_with() { _cmake_banned_func WITH_ "$@" ; }
+
+# @FUNCTION: cmake-utils_use_enable
+# @INTERNAL
+# @DESCRIPTION:
+# Banned. Use -DENABLE_FOO=$(usex foo) instead.
+cmake-utils_use_enable() { _cmake_banned_func ENABLE_ "$@" ; }
 
 # @FUNCTION: cmake-utils_use_disable
 # @INTERNAL
@@ -270,6 +255,21 @@ cmake-utils_use() { _cmake_banned_func "" "$@" ; }
 # @DESCRIPTION:
 # Banned. Use -DNOFOO=$(usex !foo) instead.
 cmake-utils_useno() { _cmake_banned_func "" "$@" ; }
+
+# @FUNCTION: _cmake_check_build_dir
+# @INTERNAL
+# @DESCRIPTION:
+# Determine using IN or OUT source build
+_cmake_check_build_dir() {
+	: ${CMAKE_USE_DIR:=${S}}
+	if [[ -n ${CMAKE_IN_SOURCE_BUILD} ]]; then
+		# we build in source dir
+		BUILD_DIR="${CMAKE_USE_DIR}"
+	fi
+
+	mkdir -p "${BUILD_DIR}" || die
+	einfo "Working in BUILD_DIR: \"$BUILD_DIR\""
+}
 
 # @FUNCTION: _cmake_modify-cmakelists
 # @INTERNAL
