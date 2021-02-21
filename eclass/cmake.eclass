@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cmake.eclass
@@ -358,25 +358,20 @@ cmake_src_prepare() {
 	_CMAKE_SRC_PREPARE_HAS_RUN=1
 }
 
-# @VARIABLE: mycmakeargs
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# Optional cmake defines as a bash array. Should be defined before calling
-# src_configure.
-# @CODE
-# src_configure() {
-# 	local mycmakeargs=(
-# 		$(cmake_use_with openconnect)
-# 	)
-#
-# 	cmake_src_configure
-# }
-# @CODE
-
 # @FUNCTION: cmake_src_configure
 # @DESCRIPTION:
 # General function for configuring with cmake. Default behaviour is to start an
 # out-of-source build.
+# Passes arguments to cmake by reading from an optionally pre-defined local
+# mycmakeargs bash array.
+# @CODE
+# src_configure() {
+# 	local mycmakeargs=(
+# 		$(cmake_use_find_package foo LibFoo)
+# 	)
+# 	cmake_src_configure
+# }
+# @CODE
 cmake_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
