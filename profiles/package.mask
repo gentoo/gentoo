@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2021-02-21)
+# Drive-by addition, never maintained by maintainer, tests failing,
+# missing dependencies, python3.7 only, no reverse dependencies.
+# Removal on 2021-03-23.  Bug #738004, #751316, #766989.
+dev-python/moviepy
+
 # Robert Siebeck <gentoo.2019@r123.de> (2021-02-19)
 # This version seems broken on some systems. Masking until this is resolved.
 # bug #771363
