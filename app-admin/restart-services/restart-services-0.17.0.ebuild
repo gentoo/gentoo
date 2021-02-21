@@ -9,7 +9,7 @@ SRC_URI="https://dev.gentoo.org/~mschiff/src/${PN}/${P}.tgz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~sparc x86"
 IUSE=""
 
 DEPEND=""

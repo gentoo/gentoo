@@ -1,6 +1,12 @@
 # Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-02-21)
+# Avoid pulling in a large unkeyworded dep
+# which is largely a desktop application
+# bug #766051
+app-text/dblatex inkscape
+
 # Sam James <sam@gentoo.org> (2020-01-18)
 # net-libs/mbedtls is not stable on sparc
 # see also: package.use entry to allow
