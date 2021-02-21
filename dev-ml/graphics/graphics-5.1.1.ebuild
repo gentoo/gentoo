@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ocaml/${PN}/releases/download/${PV}/${P}.tbz"
 
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
 RDEPEND="dev-ml/dune-configurator:=[ocamlopt?]
 	>=dev-lang/ocaml-4.09

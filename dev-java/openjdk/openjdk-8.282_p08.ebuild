@@ -175,6 +175,7 @@ src_configure() {
 			--with-zlib=system
 			--with-native-debug-symbols=$(usex debug internal none)
 			$(usex headless-awt --disable-headful '')
+			$(tc-is-clang && echo "--with-toolchain-type=clang")
 		)
 
 	# PaX breaks pch, bug #601016
