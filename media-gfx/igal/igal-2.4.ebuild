@@ -7,8 +7,7 @@ MY_P=${PN}2-${PV}
 
 DESCRIPTION="Static HTML image gallery generator"
 HOMEPAGE="https://igal.trexler.at"
-SRC_URI="https://github.com/solbu/igal2/archive/v2.4.tar.gz"
-
+SRC_URI="https://github.com/solbu/igal2/tags"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
