@@ -16,16 +16,15 @@
 # When triaging user reports, refer to our wiki for tips:
 # https://wiki.gentoo.org/wiki/Certificates#Debugging_certificate_issues
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python3_{7..9} )
 
-inherit eutils python-any-r1
+inherit python-any-r1
 
 if [[ ${PV} == *.* ]] ; then
 	# Compile from source ourselves.
 	PRECOMPILED=false
-	inherit eapi7-ver
 
 	DEB_VER=$(ver_cut 1)
 	NSS_VER=$(ver_cut 2-)
@@ -45,7 +44,7 @@ else
 	SRC_URI="mirror://debian/pool/main/c/${PN}/${PN}_${DEB_VER}${NMU_PR:++nmu}${NMU_PR}.tar.xz
 		https://archive.mozilla.org/pub/security/nss/releases/${RTM_NAME}/src/nss-${NSS_VER}.tar.gz
 		cacert? (
-			https://dev.gentoo.org/~axs/distfiles/nss-cacert-class1-class3.patch
+			https://dev.gentoo.org/~whissi/dist/ca-certificates/nss-cacert-class1-class3-r1.patch
 		)"
 fi
 
@@ -55,19 +54,23 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~
 IUSE=""
 ${PRECOMPILED} || IUSE+=" cacert"
 
+# c_rehash: we run `c_rehash`
+# debianutils: we run `run-parts`
+CDEPEND="app-misc/c_rehash
+	sys-apps/debianutils"
+
+BDEPEND="${CDEPEND}"
+if ! ${PRECOMPILED} ; then
+	BDEPEND+=" ${PYTHON_DEPS}"
+fi
+
 DEPEND=""
 if ${PRECOMPILED} ; then
 	DEPEND+=" !<sys-apps/portage-2.1.10.41"
 fi
-# c_rehash: we run `c_rehash`
-# debianutils: we run `run-parts`
-RDEPEND="${DEPEND}
-	app-misc/c_rehash
-	sys-apps/debianutils"
 
-if ! ${PRECOMPILED}; then
-	DEPEND+=" ${PYTHON_DEPS}"
-fi
+RDEPEND="${CDEPEND}
+	${DEPEND}"
 
 S=${WORKDIR}
 
@@ -79,12 +82,12 @@ pkg_setup() {
 }
 
 src_unpack() {
-	if ! ${PRECOMPILED}; then
+	if ! ${PRECOMPILED} ; then
 		default
 		# Initial 20200601 deb release had bad naming inside the debian source tarball.
 		DEB_S="${WORKDIR}/${PN}-${DEB_VER}"
 		DEB_BAD_S="${WORKDIR}/work"
-		if [[ -d "${DEB_BAD_S}" ]] && [[ ! -d "${DEB_S}" ]]; then
+		if [[ -d "${DEB_BAD_S}" ]] && [[ ! -d "${DEB_S}" ]] ; then
 			mv "${DEB_BAD_S}" "${DEB_S}"
 		fi
 	fi
@@ -106,7 +109,7 @@ src_prepare() {
 
 		if use cacert ; then
 			pushd "${S}"/nss-${NSS_VER} >/dev/null || die
-			eapply -p0 "${DISTDIR}"/nss-cacert-class1-class3.patch
+			eapply "${DISTDIR}"/nss-cacert-class1-class3-r1.patch
 			popd >/dev/null || die
 		fi
 	fi
@@ -137,8 +140,10 @@ src_compile() {
 			|| die
 		if use cacert ; then
 			mkdir -p "${c}"/cacert.org || die
-			mv "${d}"/CAcert_Inc..crt \
-				"${c}"/cacert.org/cacert.org_root.crt || die
+			mv "${d}"/CA_Cert_Signing_Authority.crt \
+				"${c}"/cacert.org/cacert.org_class1.crt || die
+			mv "${d}"/CAcert_Class_3_Root.crt \
+				"${c}"/cacert.org/cacert.org_class3.crt || die
 		fi
 		mv "${d}"/*.crt "${c}"/mozilla/ || die
 	else
@@ -169,16 +174,16 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [[ -d "${EROOT%/}/usr/local/share/ca-certificates" ]] ; then
+	if [[ -d "${EROOT}/usr/local/share/ca-certificates" ]] ; then
 		# if the user has local certs, we need to rebuild again
 		# to include their stuff in the db.
 		# However it's too overzealous when the user has custom certs in place.
 		# --fresh is to clean up dangling symlinks
-		"${EROOT%/}"/usr/sbin/update-ca-certificates --root "${ROOT}"
+		"${EROOT}"/usr/sbin/update-ca-certificates --root "${ROOT}"
 	fi
 
-	if [[ -n "$(find -L "${EROOT%/}"/etc/ssl/certs/ -type l)" ]] ; then
+	if [[ -n "$(find -L "${EROOT}"/etc/ssl/certs/ -type l)" ]] ; then
 		ewarn "Removing the following broken symlinks:"
-		ewarn "$(find -L "${EROOT%/}"/etc/ssl/certs/ -type l -printf '%p -> %l\n' -delete)"
+		ewarn "$(find -L "${EROOT}"/etc/ssl/certs/ -type l -printf '%p -> %l\n' -delete)"
 	fi
 }
