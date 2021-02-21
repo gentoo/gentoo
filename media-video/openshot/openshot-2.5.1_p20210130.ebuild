@@ -7,12 +7,12 @@ PYTHON_COMPAT=( python3_{7,8,9} )
 PYTHON_REQ_USE=xml
 DISTUTILS_SINGLE_IMPL=1
 
-COMMIT=2463d0ee137bfe3cbb097319173898849e26a2ba
+COMMIT=14ecc519d8390d6fa76cdc03e0d79a0fb5ca12a7
 MY_PN="${PN}-qt"
 inherit distutils-r1 xdg
 
 DESCRIPTION="Award-winning free and open-source video editor"
-HOMEPAGE="https://www.openshot.org/"
+HOMEPAGE="https://openshot.org/"
 SRC_URI="https://github.com/OpenShot/${MY_PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_PN}-${COMMIT}"
 
