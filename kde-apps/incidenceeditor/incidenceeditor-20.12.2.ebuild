@@ -17,7 +17,7 @@ SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE=""
 
-DEPEND="
+RDEPEND="
 	dev-libs/kdiagram:5
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
@@ -52,4 +52,18 @@ DEPEND="
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	test? ( >=kde-apps/akonadi-${PVCUT}:5[postgres,sqlite] )
+"
+BDEPEND="
+	test? ( >=kde-apps/akonadi-${PVCUT}:5[tools] )
+"
+
+src_test() {
+	# Paths exceed unix domain socket limit, bug 770775
+	local myctestargs=(
+		-E "(akonadi-pgsql-incidencedatetimetest|akonadi-sqlite-incidencedatetimetest)"
+	)
+
+	ecm_src_test
+}
