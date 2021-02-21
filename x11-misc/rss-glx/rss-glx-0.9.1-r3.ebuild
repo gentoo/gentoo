@@ -40,6 +40,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-asneeded.patch
 	"${FILESDIR}"/${P}-imagemagick-7.patch
 	"${FILESDIR}"/${P}-c++11-narrowing.patch
+	"${FILESDIR}"/${P}-hang.patch
 )
 
 src_prepare() {
