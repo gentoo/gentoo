@@ -5,11 +5,6 @@
 # Unmask PCRE JIT support where dev-libs/libpcre2[jit] is available
 dev-lang/php -jit
 
-# Sam James <sam@gentoo.org> (2021-02-06)
-# media-sound/sndio is not yet keyworded here
-# bug #769098, bug #769122
-media-libs/openal sndio
-
 # Sam James <sam@gentoo.org> (2021-02-05)
 # Requires pandoc. We don't yet have Haskell
 # on arm64. bug #768738, bug #622786.
