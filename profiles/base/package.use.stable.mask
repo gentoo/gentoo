@@ -4,6 +4,13 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Mart Raudsepp <leio@gentoo.org> (2021-02-21)
+# Enabling sysprof causes consumers to include sysprof-capture-4
+# headers, but we still have stable consumers that themselves want
+# to include sysprof-capture-3 headers, leading to issue.
+# Bug #771777
+dev-libs/glib sysprof
+
 # Sam James <sam@gentoo.org> (2021-02-10)
 # dev-embedded/libftd2xx is not marked stable
 # bug #769923

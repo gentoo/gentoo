@@ -195,39 +195,16 @@ app-text/csvfix
 # Removal in 30 days. Bug #688066
 net-analyzer/jffnms
 
-# Aisha Tammy <gentoo@aisha.cc> (2021-01-24)
-# Dead package, wrongly named, only installs
-# really old scikit-examples.
-# Removal in 14 days
-sci-libs/scikits
-
 # Jakov Smolic <jakov.smolic@sartura.hr> (2021-01-24)
 # Last release in 2004. Fails to build with gcc-10 and openssl-1.1.
 # Removal on 2021-02-23.  Bugs #707004, #677170, #562724
 app-crypt/sign
-
-# Conrad Kostecki <conikost@gentoo.org> (2020-01-21)
-# All kernels >= 4.17 removed IrDA drivers and support,
-# the package has also multiple bugs open and is unmaintained.
-# Removal in 30 days.
-net-wireless/irda-utils
 
 # Marek Szuba <marecki@gentoo.org> (2021-01-21)
 # Masked for testing and further work - the golang-vcs-snapshot variant
 # seems to be incompatible with revdeps using go-module, the variant
 # using the latter is still broken.
 dev-go/qt
-
-# Michał Górny <mgorny@gentoo.org> (2021-01-19)
-# Fails to build.  Last release in 2000.
-# Removal on 2021-02-18.  Bug #722204.
-media-sound/mp3_check
-
-# Michał Górny <mgorny@gentoo.org> (2021-01-19)
-# Does not build against vdr-2.4.  Last release in 2009.  Upstream
-# repository is gone.
-# Removal on 2021-02-18.  Bug #710814.
-media-plugins/vdr-atscepg
 
 # Michał Górny <mgorny@gentoo.org> (2021-01-19)
 # Discontinued.  Last release in 2017.  The code is broken with py3.7
@@ -257,14 +234,6 @@ virtual/httpd-php:7.2
 =dev-php/phpunit-5.7.15-r3
 =dev-php/PHP_CodeCoverage-4.0.7-r2
 =dev-php/PHP_TokenStream-1.4.11-r1
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2021-01-06)
-# Abandoned upstream, countless bugs. Replaced by builtin functions in elogind
-# or systemd. Alternatives: sys-power/suspend, sys-power/hibernate-script.
-# See also: https://wiki.gentoo.org/wiki/Suspend_and_hibernate
-# Removal on 2021-02-19. Bugs #659616, #764773
-sys-power/pm-utils
-sys-power/pm-quirks
 
 # Lars Wendler <polynomial-c@gentoo.org> (2020-12-09)
 # Masked until most broken packages have been fixed (bug #732648)

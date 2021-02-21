@@ -75,7 +75,7 @@ pkg_postinst() {
 	elog "Popular supported softwares are:"
 	elog "- x11-misc/xdg-user-dirs (the gtk USE is not needed) to"
 	elog "  get localized XDG user directories support"
-	elog "- sys-power/pm-utils or sys-apps/systemd for hibernate/resume support"
+	elog "- sys-apps/systemd for hibernate/resume support"
 	elog "- media-sound/jack-audio-connection-kit for a professional sound server"
 	elog "- several media players"
 }
