@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -6,8 +6,8 @@ MODULES_OPTIONAL_USE=modules
 inherit autotools linux-info linux-mod systemd
 
 DESCRIPTION="IPset tool for iptables, successor to ippool"
-HOMEPAGE="http://ipset.netfilter.org/"
-SRC_URI="http://ipset.netfilter.org/${P}.tar.bz2"
+HOMEPAGE="https://ipset.netfilter.org/"
+SRC_URI="https://ipset.netfilter.org/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
