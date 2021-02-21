@@ -8254,7 +8254,7 @@ dev-python/flask-gravatar 0.5.0: Small extension for Flask to make usage of Grav
 dev-python/flask-htmlmin 2.0.2 2.1.0: Minimize your flask rendered html
 dev-python/flask-login 0.5.0: Login session support for Flask
 dev-python/flask-mail 0.9.1-r1: Flask extension for sending email
-dev-python/flask-migrate 2.5.2 2.5.3 2.6.0: SQLAlchemy database migrations for Flask applications using Alembic
+dev-python/flask-migrate 2.5.2 2.5.3 2.6.0 2.7.0: SQLAlchemy database migrations for Flask applications using Alembic
 dev-python/flask-mongoengine 1.0.0: Flask support for MongoDB and with WTF model forms
 dev-python/flask-nav 0.6-r2: Easily create navigation for Flask applications.
 dev-python/flask-paginate 0.7.0 0.8.0 0.8.1: Pagination support for flask
@@ -9189,7 +9189,7 @@ dev-python/sphinxcontrib-spelling 7.1.0: Sphinx spelling extension
 dev-python/sphinxcontrib-websupport 1.2.4: Sphinx websupport extension
 dev-python/spur 0.3.22: Run commands locally or over SSH using the same interface
 dev-python/spyder 4.2.0 4.2.1: The Scientific Python Development Environment
-dev-python/spyder-kernels 1.10.0 1.10.1: Kernels used by spyder on its ipython console
+dev-python/spyder-kernels 1.10.0 1.10.1 1.10.2: Kernels used by spyder on its ipython console
 dev-python/spyder-line-profiler 0.2.1: Plugin to run the python line profiler from within the spyder editor
 dev-python/spyder-memory-profiler 0.2.1: Plugin to run the python memory_profiler from within the spyder editor
 dev-python/spyder-notebook 0.3.1: Jupyter notebook integration with Spyder
