@@ -829,7 +829,7 @@ app-arch/lrzip 0.631_p20190619: Long Range ZIP or Lzma RZIP optimized for compre
 app-arch/lxqt-archiver 0.2.0 0.3.0: Qt GUI File Archiver
 app-arch/lz4 1.9.3: Extremely Fast Compression algorithm
 app-arch/lz5 2.0: An efficient compressor with very fast decompression
-app-arch/lzip 1.21 1.22: lossless data compressor based on the LZMA algorithm
+app-arch/lzip 1.22: lossless data compressor based on the LZMA algorithm
 app-arch/lziprecover 1.22: Lziprecover is a data recovery tool and decompressor for lzip compressed files
 app-arch/lzlib 1.11 1.12: Library for lzip compression
 app-arch/lzma 9.20-r1 19.00: LZMA Stream Compressor from the SDK
@@ -5252,7 +5252,7 @@ dev-libs/boost-mpl-cartesian_product 20161205: an extension to the Boost.MPL lib
 dev-libs/botan 2.17.3: C++ crypto library
 dev-libs/boxfort 0.0.1_pre20200110 0.0.1_pre20200902: Convenient & cross-platform sandboxing C library
 dev-libs/busybee 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
-dev-libs/c-blosc 1.20.1 1.21.0: Blocking, shuffling and lossless compression library
+dev-libs/c-blosc 1.21.0: Blocking, shuffling and lossless compression library
 dev-libs/c-capnproto 0.3: C library/compiler for the Cap'n Proto serialization/RPC protocol
 dev-libs/caliper 1.5.0: Application Introspection System
 dev-libs/capnproto 0.7.0 0.8.0: RPC/Serialization system with capabilities support
@@ -7959,7 +7959,7 @@ dev-python/aiorpcX 0.18.4-r1 0.18.5 0.19 0.19.1: Generic async RPC implementatio
 dev-python/aiosmtpd 1.2 1.2.2 1.2.4 1.3.2: asyncio based SMTP server
 dev-python/alabaster 0.7.12: A configurable sidebar-enabled Sphinx theme
 dev-python/alagitpull 0.0.23-r1: alabaster sub-theme used on git-pull docs
-dev-python/alembic 1.5.1 1.5.4: database migrations tool, written by the author of SQLAlchemy
+dev-python/alembic 1.5.1 1.5.4 1.5.5: database migrations tool, written by the author of SQLAlchemy
 dev-python/ament_package 0.9.2: Parser for the manifest files in the ament buildsystem
 dev-python/amodem 1.15.1-r1: Transmit data between two computers using audio
 dev-python/aniso8601 8.0.0 8.1.1 9.0.0: A library for parsing ISO 8601 strings
@@ -8103,7 +8103,7 @@ dev-python/configshell-fb 1.1.28: A Python library for building configuration sh
 dev-python/confuse 1.0.0 1.4.0: Confuse is a configuration library for Python that uses YAML
 dev-python/consonance 0.1.3-r1: WhatsApp's handshake implementation using Noise Protocol
 dev-python/constantly 15.1.0-r1: Symbolic constants in Python
-dev-python/construct 2.10.56 2.10.57 2.10.58 2.10.59 2.10.60: A powerful declarative parser for binary data
+dev-python/construct 2.10.56 2.10.57 2.10.58 2.10.59 2.10.60 2.10.61: A powerful declarative parser for binary data
 dev-python/contextlib2 0.6.0_p1-r1: Backports and enhancements for the contextlib module
 dev-python/cookies 2.2.1-r1: Friendlier RFC 6265-compliant cookie parser/renderer
 dev-python/coreapi 2.3.3-r1: Python client library for Core API
@@ -8471,13 +8471,13 @@ dev-python/logutils 0.3.5: The logutils package provides a set of handlers for t
 dev-python/loky 2.9.0: Robust and reusable Executor for joblib
 dev-python/lunr 0.5.6 0.5.8: A Python implementation of Lunr.js
 dev-python/lxml 4.6.2-r1: A Pythonic binding for the libxml2 and libxslt libraries
-dev-python/lz4 3.1.1 3.1.2 3.1.3: LZ4 Bindings for Python
+dev-python/lz4 3.1.3: LZ4 Bindings for Python
 dev-python/m2crypto 0.35.2-r1 0.36.0-r1 0.37.1: A Python crypto and SSL toolkit
 dev-python/m2r 0.2.1: Markdown to reStructuredText converter
 dev-python/mako 1.1.3-r1 1.1.4: A Python templating language
 dev-python/mamba 0.11.1: Python test runner born under the banner of Behavior Driven Development
 dev-python/mando 0.6.4: Create Python CLI apps with little to no effort at all!
-dev-python/manuel 1.9.0 1.10.1: Lets you mix and match traditional doctests with custom test syntax
+dev-python/manuel 1.10.1: Lets you mix and match traditional doctests with custom test syntax
 dev-python/markdown 2.6.11 3.3.3: Python implementation of the markdown markup language
 dev-python/markdown2 2.4.0: Python Markdown language reimplementation
 dev-python/markups 3.0.0-r1 3.1.0: A wrapper around various text markups
@@ -8834,7 +8834,7 @@ dev-python/pyparted 3.11.7: Python bindings for sys-block/parted
 dev-python/pypax 0.9.5 9999: Python module to get or set either PT_PAX and/or XATTR_PAX flags
 dev-python/pypcap 1.2.3-r1: Simplified object-oriented Python extension module for libpcap
 dev-python/pypeg2 2.15.2-r1: An intrinsic PEG Parser-Interpreter for Python
-dev-python/pyperclip 1.7.0: A cross-platform clipboard module for Python.
+dev-python/pyperclip 1.7.0 1.8.2: A cross-platform clipboard module for Python.
 dev-python/pyphen 0.10.0: Python module for hyphenation using hunspell dictionaries
 dev-python/pypiserver 1.4.2: Minimal PyPI server
 dev-python/pypng 0.0.20: Pure Python PNG image encoder/decoder
