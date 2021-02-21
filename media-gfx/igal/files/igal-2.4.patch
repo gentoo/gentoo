@@ -1,7 +1,7 @@
 diff: igal-2.0-r1.ebuild: No such file or directory
 diff: igal-2.4.ebuild: No such file or directory
 docmain ~/GIT/gentoo-fork/media-gfx/igal/files # cd ..
-docmain ~/GIT/gentoo-fork/media-gfx/igal # diff -aurN igal-2.0-r1.ebuild igal-2.4.ebuild
+docmain ~/GIT/gentoo-fork/media-gfx/igal # diff -urN igal-2.0-r1.ebuild igal-2.4.ebuild
 --- igal-2.0-r1.ebuild  2021-02-07 16:18:56.246262650 -0500
 +++ igal-2.4.ebuild     2021-02-20 14:47:23.893747576 -0500
 @@ -7,11 +7,11 @@
