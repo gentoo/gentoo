@@ -10799,7 +10799,7 @@ dev-util/goland 2020.3.2: Golang IDE by JetBrains
 dev-util/google-perftools 2.7-r1 2.8: Fast, multi-threaded malloc() and nifty performance analysis tools
 dev-util/gource 0.51: A software version control visualization tool
 dev-util/gperf 3.1: A perfect hash function generator
-dev-util/gprof2dot 2019.11.30: Converts profiling output to dot graphs
+dev-util/gprof2dot 2019.11.30 2021.02.21: Converts profiling output to dot graphs
 dev-util/gtk-builder-convert 2.24.32-r1: Converts Glade files to GtkBuilder XML format
 dev-util/gtk-doc 1.32-r1 1.32-r2 1.33.1-r3 1.33.1-r4: GTK+ Documentation Generator
 dev-util/gtk-doc-am 1.32 1.33.1: Automake files from gtk-doc
@@ -12446,7 +12446,7 @@ lxqt-base/lxqt-qtplugin 0.15.1 0.16.0: LXQt system integration plugin for Qt
 lxqt-base/lxqt-runner 0.15.0 0.16.0: LXQt quick launcher
 lxqt-base/lxqt-session 0.15.0 0.16.0: LXQt Session Manager
 lxqt-base/lxqt-sudo 0.15.0 0.16.0: LXQt GUI frontend for sudo
-mail-client/aerc 0.4.0 0.5.2 9999: Email client for your terminal
+mail-client/aerc 0.5.2 9999: Email client for your terminal
 mail-client/alot 0.9 0.9.1 9999: Experimental terminal UI for net-mail/notmuch written in Python
 mail-client/alpine 2.24: An easy to use text-based based mail and news client
 mail-client/balsa 2.6.1: Email client for GNOME
