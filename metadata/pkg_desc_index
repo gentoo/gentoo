@@ -744,7 +744,7 @@ app-admin/rcm 1.3.3 1.3.4: rc file (dotfile) management
 app-admin/reportmagic 2.21: Makes usable statistics from your web site log file analysis
 app-admin/restart-services 0.15.2 0.16.0 0.16.1 0.17.0: Tool to manage OpenRC and systemd services that need to be restarted
 app-admin/rex 1.13.0 1.13.1 9999: (R)?ex, the friendly automation framework
-app-admin/rsyslog 8.2008.0 8.2010.0 8.2012.0 8.2012.0-r1: An enhanced multi-threaded syslogd with database support and more
+app-admin/rsyslog 8.2008.0 8.2010.0 8.2012.0 8.2012.0-r1 8.2102.0: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 1.0.0_rc3 1.0.0_rc3-r1: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617 99999999: Rules for Sagan log analyzer
 app-admin/salt 3000.5 3000.6 3001.4-r1 3002.2-r2 3002.2-r4: Salt is a remote execution and configuration manager
@@ -5520,7 +5520,7 @@ dev-libs/libpy 0.2.5-r1: Utilities for writing C++ extension modules
 dev-libs/libqtxdg 3.5.0 3.6.0: Qt Implementation of XDG Standards
 dev-libs/libratbag 0.15: Library to configure gaming mice
 dev-libs/librdkafka 1.4.4 1.5.0 1.5.2 1.5.3 1.6.0: Apache Kafka C/C++ client library
-dev-libs/librelp 1.7.0 1.8.0 1.9.0: An easy to use library for the RELP protocol
+dev-libs/librelp 1.7.0 1.8.0 1.9.0 1.10.0: An easy to use library for the RELP protocol
 dev-libs/librep 0.92.7: Shared library implementing a Lisp dialect
 dev-libs/libreport 2.13.1: Generic library for reporting software bugs
 dev-libs/libressl 2.9.2 3.0.2 3.1.3 3.1.4 3.1.5 3.2.0 3.2.1 3.2.3 3.3.0 3.3.1: Free version of the SSL/TLS protocol forked from OpenSSL
@@ -5616,7 +5616,7 @@ dev-libs/nmeap 0.3-r1: Extensible NMEA-0183 (GPS) data parser in standard C
 dev-libs/npth 1.6-r1: New GNU Portable Threads Library
 dev-libs/nsgenbind 0.6-r2 0.7-r1 0.8-r1: Generate Javascript-to-DOM bindings from w3c webidl files
 dev-libs/nspr 4.26 4.27 4.28 4.29: Netscape Portable Runtime
-dev-libs/nss 3.58-r2 3.60.1 3.61: Mozilla's Network Security Services library that implements PKI support
+dev-libs/nss 3.58-r2 3.60.1 3.61 3.62: Mozilla's Network Security Services library that implements PKI support
 dev-libs/nss-pem 1.0.5 1.0.6 1.0.7: PEM file reader for Network Security Services (NSS)
 dev-libs/nsync 1.20.1: A C library that exports various synchronization primitives, such as mutexes
 dev-libs/ntl 11.4.3: High-performance and portable C++ number theory library
@@ -14607,7 +14607,7 @@ net-firewall/firewalld 0.7.1-r3 0.7.3-r1 0.9.1: A firewall daemon with D-BUS int
 net-firewall/fwbuilder 5.3.7: GUI management for iptables, PF, Cisco ASA/PIX/FWSM, Cisco router ACL and more
 net-firewall/fwknop 2.6.10-r2: Single Packet Authorization and Port Knocking application
 net-firewall/ipkungfu 0.6.1-r1: A nice iptables firewall script
-net-firewall/ipset 6.29-r1 6.38-r1 7.5-r1 7.6-r1 7.7 7.9 7.10: IPset tool for iptables, successor to ippool
+net-firewall/ipset 6.38-r1 7.10 7.11: IPset tool for iptables, successor to ippool
 net-firewall/ipt_netflow 2.5.1-r1 9999: Netflow iptables module
 net-firewall/iptables 1.8.5 1.8.6 1.8.7: Linux kernel (2.4+) firewall, NAT and packet mangling tools
 net-firewall/itval 1.2_p20121104-r1: Iptables policy testing and validation tool
@@ -17332,7 +17332,7 @@ sys-cluster/zetcd 0.0.4: A ZooKeeper personality for etcd
 sys-cluster/zookeeper-bin 3.4.13-r1 3.5.9 3.6.2: A high-performance coordination service for distributed applications.
 sys-cluster/zookeepercli 1.0.12: Simple, lightweight, dependable CLI for ZooKeeper
 sys-devel/autoconf 2.13-r1 2.64-r1 2.69-r4 2.69-r5 2.70-r2 2.71-r1 9999: Used to create autoconfiguration files
-sys-devel/autoconf-archive 2018.03.13 2019.01.06: GNU Autoconf Macro Archive
+sys-devel/autoconf-archive 2018.03.13 2019.01.06 2021.02.19: GNU Autoconf Macro Archive
 sys-devel/autoconf-wrapper 13-r1 14 15: wrapper for autoconf to manage multiple autoconf versions
 sys-devel/autogen 5.18.16-r1: Program and text file generation
 sys-devel/automake 1.4_p6-r2 1.5-r2 1.6.3-r2 1.7.9-r3 1.8.5-r5 1.9.6-r5 1.10.3-r3 1.11.6-r3 1.12.6-r2 1.13.4-r2 1.14.1-r2 1.15.1-r2 1.16.2-r1 1.16.3-r1 9999: Used to generate Makefile.in from Makefile.am
@@ -18108,7 +18108,7 @@ www-servers/h2o 2.2.6 9999: H2O - the optimized HTTP/1, HTTP/2 server
 www-servers/lighttpd 1.4.55-r100 1.4.58: Lightweight high-performance web server
 www-servers/mongrel2 1.11.0-r1: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.6.9-r1 9999: A small, fast, and scalable web server
-www-servers/nginx 1.18.0-r2 1.19.2-r1 1.19.3 1.19.4 1.19.5 1.19.5-r1 1.19.6 1.19.6-r100: Robust, small and high performance http and reverse proxy server
+www-servers/nginx 1.18.0-r2 1.19.2-r1 1.19.3 1.19.4 1.19.5 1.19.5-r1 1.19.6 1.19.6-r100 1.19.7: Robust, small and high performance http and reverse proxy server
 www-servers/nginx-unit 1.21.0 1.22.0: Dynamic web and application server
 www-servers/ocsigenserver 2.8 9999: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pound 2.7f-r1: A http/https reverse-proxy and load-balancer

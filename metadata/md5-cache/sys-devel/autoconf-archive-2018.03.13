@@ -4,7 +4,7 @@ EAPI=6
 HOMEPAGE=https://www.gnu.org/software/autoconf-archive/
 KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-3
-RDEPEND=!=gnome-base/gnome-common-3.14.0 !>=gnome-base/gnome-common-3.14.0-r1[-autoconf-archive(+)]
+RDEPEND=!=gnome-base/gnome-common-3.14.0-r0 !>=gnome-base/gnome-common-3.14.0-r1[-autoconf-archive(+)]
 SLOT=0
 SRC_URI=mirror://gnu/autoconf-archive/autoconf-archive-2018.03.13.tar.xz
-_md5_=c2eb85262fd0ee9f03782ec2ee1f0307
+_md5_=db0790b5be8449b40008609d6268ec65
