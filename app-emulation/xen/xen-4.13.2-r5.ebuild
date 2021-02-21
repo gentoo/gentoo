@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ if [[ $PV == *9999 ]]; then
 	SRC_URI=""
 else
 	KEYWORDS="~amd64 ~arm -x86"
-	UPSTREAM_VER=
+	UPSTREAM_VER=4
 	SECURITY_VER=
 	GENTOO_VER=
 
@@ -98,7 +98,7 @@ src_prepare() {
 	# Gentoo's patchset
 	[[ -n ${GENTOO_VER} ]] && eapply "${WORKDIR}"/patches-gentoo
 
-	eapply "${FILESDIR}"/${PN}-4.14-efi.patch
+	eapply "${FILESDIR}"/${PN}-4.11-efi.patch
 
 	# Drop .config
 	sed -e '/-include $(XEN_ROOT)\/.config/d' -i Config.mk || die "Couldn't	drop"
@@ -138,7 +138,7 @@ src_install() {
 		mkdir -p "${D}"${EFI_MOUNTPOINT}/efi/${EFI_VENDOR} || die
 	fi
 
-	emake LDFLAGS="$(raw-ldflags)" DESTDIR="${D}" -C xen ${myopt} install
+	emake LDFLAGS="$(raw-ldflags)" LD="$(tc-getLD)" DESTDIR="${D}" -C xen ${myopt} install
 
 	# make install likes to throw in some extra EFI bits if it built
 	use efi || rm -rf "${D}/usr/$(get_libdir)/efi"
