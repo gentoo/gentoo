@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_8 )
+PYTHON_COMPAT=( python3_8 python3_9 )
 inherit distutils-r1
 
 DESCRIPTION="JSON Web Token library for python 3"
@@ -19,9 +19,8 @@ fi
 LICENSE="Apache-2.0"
 SLOT="0"
 
-DEPEND="dev-python/cryptography[${PYTHON_USEDEP}]
-test? ( dev-python/freezegun[${PYTHON_USEDEP}] )"
-RDEPEND="${DEPEND}"
+BDEPEND="test? ( dev-python/freezegun[${PYTHON_USEDEP}] )"
+RDEPEND="dev-python/cryptography[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
 
