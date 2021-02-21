@@ -11,7 +11,7 @@ SRC_URI="https://taskwarrior.org/download/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86 ~x64-macos"
+KEYWORDS="~amd64 ~arm ~x86 ~x64-macos"
 IUSE="+sync"
 
 DEPEND="
@@ -19,11 +19,6 @@ DEPEND="
 "
 
 RDEPEND="${DEPEND}"
-
-PATCHES=(
-	"${FILESDIR}/0001-TW-1778-Unicode-strings-are-truncated-in-task-descri.patch"
-	"${FILESDIR}/${P}-clang-build-system.patch"
-)
 
 src_prepare() {
 	cmake_src_prepare
@@ -37,6 +32,7 @@ src_configure() {
 		-DENABLE_SYNC=$(usex sync)
 		-DTASK_DOCDIR=share/doc/${PF}
 		-DTASK_RCDIR=share/${PN}/rc
+		-DBUILD_SHARED_LIBS=off  # bug 764224
 	)
 
 	cmake_src_configure
