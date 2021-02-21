@@ -1,4 +1,4 @@
-BDEPEND=>=dev-libs/wayland-protocols-1.17 >=dev-util/meson-0.54.0 virtual/pkgconfig filecaps? ( sys-libs/libcap ) >=dev-util/meson-0.54.0 >=dev-util/ninja-1.8.2 dev-util/meson-format-array >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=>=dev-libs/wayland-protocols-1.17 >=dev-util/meson-0.56.0 virtual/pkgconfig filecaps? ( sys-libs/libcap ) >=dev-util/meson-0.54.0 >=dev-util/ninja-1.8.2 dev-util/meson-format-array >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile configure install postinst test unpack
 DEPEND=>=dev-libs/libinput-1.9.0:0= >=dev-libs/wayland-1.19.0 >=dev-libs/wayland-protocols-1.17.0 media-libs/mesa[egl,gles2,gbm] virtual/libudev x11-libs/libdrm x11-libs/libxkbcommon x11-libs/pixman elogind? ( >=sys-auth/elogind-237 ) icccm? ( x11-libs/xcb-util-wm ) seatd? ( sys-auth/seatd:= ) systemd? ( >=sys-apps/systemd-237 ) x11-backend? ( x11-libs/libxcb:0= ) X? ( x11-base/xorg-server[wayland] x11-libs/libxcb:0= x11-libs/xcb-util-image )
 DESCRIPTION=Pluggable, composable, unopinionated modules for building a Wayland compositor
@@ -11,4 +11,4 @@ RDEPEND=>=dev-libs/libinput-1.9.0:0= >=dev-libs/wayland-1.19.0 >=dev-libs/waylan
 REQUIRED_USE=?? ( elogind systemd )
 SLOT=0/9999
 _eclasses_=fcaps	da689a8e04bbbb3518888ff668fee45b	git-r3	3e7ec3d6619213460c85e2aa48398441	meson	e43eef9331f54965a573ed380854ff47	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=018a0092c6be6465fb918f0b9eae2429
+_md5_=7c993a5e9dab716b5871521aa3d1d9a7
