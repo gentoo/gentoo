@@ -1,8 +1,9 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_7 )
+
+PYTHON_COMPAT=( python3_{7..9} )
 inherit python-any-r1
 
 DESCRIPTION="BLAS-like Library Instantiation Software Framework"
@@ -12,19 +13,23 @@ SRC_URI="https://github.com/flame/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
-IUSE="openmp pthread serial static-libs eselect-ldso doc 64bit-index"
-REQUIRED_USE="?? ( openmp pthread serial ) ?? ( eselect-ldso 64bit-index )"
+IUSE="doc eselect-ldso openmp pthread serial 64bit-index"
+REQUIRED_USE="
+	?? ( openmp pthread serial )
+	?? ( eselect-ldso 64bit-index )"
 
-RDEPEND="eselect-ldso? ( !app-eselect/eselect-cblas
-						 >=app-eselect/eselect-blas-0.2 )"
+DEPEND="
+	eselect-ldso? (
+		!app-eselect/eselect-cblas
+		>=app-eselect/eselect-blas-0.2
+	)"
 
-DEPEND="${RDEPEND}
-	${PYTHON_DEPS}
-"
+RDEPEND="${DEPEND}"
+BDEPEND="${PYTHON_DEPS}"
 
 PATCHES=(
-	"${FILESDIR}/${P}-rpath.patch"
-	"${FILESDIR}/${P}-blas-provider.patch"
+	"${FILESDIR}"/${P}-rpath.patch
+	"${FILESDIR}"/${P}-blas-provider.patch
 )
 
 src_configure() {
@@ -53,7 +58,7 @@ src_configure() {
 		--enable-verbose-make \
 		--prefix="${BROOT}"/usr \
 		--libdir="${BROOT}"/usr/$(get_libdir) \
-		$(use_enable static-libs static) \
+		--disable-static \
 		--enable-blas \
 		--enable-cblas \
 		"${BLIS_FLAGS[@]}" \
@@ -63,8 +68,8 @@ src_configure() {
 
 src_compile() {
 	DEB_LIBBLAS=libblas.so.3 DEB_LIBCBLAS=libcblas.so.3 \
-			   LDS_BLAS="${FILESDIR}"/blas.lds LDS_CBLAS="${FILESDIR}"/cblas.lds \
-			   default
+	LDS_BLAS="${FILESDIR}"/blas.lds LDS_CBLAS="${FILESDIR}"/cblas.lds \
+	default
 }
 
 src_test() {
