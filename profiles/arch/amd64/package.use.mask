@@ -345,10 +345,6 @@ dev-qt/qtwebkit -jit
 # sys-devel/llvm is keyworded on amd64
 media-libs/mesa -llvm
 
-# Tomáš Chvátal <scarabeus@gentoo.org> (2010-04-04)
-# x86 platforms works
-sys-power/pm-utils -video_cards_intel -video_cards_radeon
-
 # Jean-Noël Rivasseau <elvanor@gentoo.org> (2009-09-23)
 # X use flag only for amd64/x86, bug 285951.
 media-gfx/iscan -X
