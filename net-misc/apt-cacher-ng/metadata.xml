@@ -2,12 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-			<email>jchelmert3@posteo.net</email>
-			<name>John Helmert III</name>
-	</maintainer>
-	<maintainer type="project">
-			<email>proxy-maint@gentoo.org</email>
-			<name>Proxy Maintainers</name>
+		<email>ajak@gentoo.org</email>
+		<name>John Helmert III</name>
 	</maintainer>
 	<use>
 		<flag name="fuse">Install the <pkg>sys-fs/fuse</pkg> based acngfs, to use a userspace filesystem for the apt cache.</flag>

@@ -2,11 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-			<email>jchelmert3@posteo.net</email>
-			<name>John Helmert III</name>
-	</maintainer>
-	<maintainer type="project">
-			<email>proxy-maint@gentoo.org</email>
-			<name>Proxy Maintainers</name>
+		<email>ajak@gentoo.org</email>
+		<name>John Helmert III</name>
 	</maintainer>
 </pkgmetadata>
