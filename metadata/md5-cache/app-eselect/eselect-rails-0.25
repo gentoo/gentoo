@@ -1,0 +1,10 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=Manages Ruby on Rails symlinks
+EAPI=7
+HOMEPAGE=https://gitweb.gentoo.org/proj/ruby-scripts.git/tree/eselect-rails
+KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=GPL-2
+RDEPEND=>=app-admin/eselect-1.2.0
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~graaff/ruby-team/eselect-rails-0.25.tar.xz
+_md5_=8e0d8b5f384cc1fd5dd6efde2eb53139
