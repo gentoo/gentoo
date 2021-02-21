@@ -972,7 +972,7 @@ app-cdr/bashburn 3.1.0-r1: A shell script for burning optical media
 app-cdr/bchunk 1.2.2: Convert CD images from bin/cue to iso+wav/cdr
 app-cdr/bin2iso 19b-r2: converts RAW format (.bin/.cue) files to ISO/WAV format
 app-cdr/brasero 3.12.2-r1: CD/DVD burning application for the GNOME desktop
-app-cdr/burncdda 1.8.3: Console app for copying burning audio cds
+app-cdr/burncdda 1.8.3-r1: Console app for copying burning audio cds
 app-cdr/ccd2iso 0.3: Convert CD images from ccd (CloneCD) to iso
 app-cdr/cdck 0.7.0-r2: Measure the read time per sector on CD or DVD to check the quality
 app-cdr/cddetect 2.1: Tool for detecting the type of a CD/DVD without mounting it
@@ -3575,6 +3575,7 @@ dev-db/mysql-connector-c 8.0.22 8.0.23: C client library for MariaDB/MySQL
 dev-db/mysql-connector-c++ 1.1.12-r1 8.0.19 8.0.20 8.0.21 8.0.22 8.0.23: MySQL database connector for C++ (mimics JDBC 4.0 API)
 dev-db/mysql-init-scripts 2.3-r3: Gentoo MySQL init scripts.
 dev-db/mysql-super-smack 1.3-r4: Benchmarking, stress testing, and load generation tool for MySQL & PostGreSQL
+dev-db/mysql-workbench 8.0.23: MySQL Workbench
 dev-db/mysqltuner 1.6.18 1.7.13 1.7.15 1.7.17: MySQLTuner is a high-performance MySQL tuning script
 dev-db/mytop 1.9.1: mytop - a top clone for mysql
 dev-db/ocp 0.2 0.3 9999: Oracle copy tool
@@ -10146,7 +10147,7 @@ dev-ruby/network_interface 0.0.2: network_interface layer from metasploit pcapru
 dev-ruby/nexpose 7.2.1: API client for Nexpose vulnerability managment product
 dev-ruby/niceogiri 1.1.2: Some wrappers around and helpers for XML manipulation using Nokogiri
 dev-ruby/nio4r 2.5.4 2.5.5 2.5.5-r1: A high performance selector API for monitoring IO objects
-dev-ruby/nokogiri 1.10.10 1.11.1-r1 1.11.1-r2: Nokogiri is an HTML, XML, SAX, and Reader parser
+dev-ruby/nokogiri 1.11.1-r1 1.11.1-r2: Nokogiri is an HTML, XML, SAX, and Reader parser
 dev-ruby/nokogiri-diff 0.2.0-r2: Calculate the differences between two XML/HTML documents
 dev-ruby/nokogumbo 2.0.2 2.0.3 2.0.4: A Nokogiri interface to the Gumbo HTML5 parser
 dev-ruby/notify 0.5.2-r1: A function to notify on cross platform
@@ -10824,7 +10825,7 @@ dev-util/itstool 2.0.6-r1: Translation tool for XML documents that uses gettext 
 dev-util/japi-compliance-checker 2.4 9999: Java API compliance checker
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jconfig 2.9: Utility that provides a simple API for the management of properties
-dev-util/jenkins-bin 2.263.3-r1 2.263.4 2.279: Extensible continuous integration server
+dev-util/jenkins-bin 2.263.3-r1 2.263.4 2.280: Extensible continuous integration server
 dev-util/jfrog-cli 1.35.3: Command line utility foroperations on container images and image repositories
 dev-util/kbuild 0.1.9998.3407 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
@@ -13588,7 +13589,6 @@ media-plugins/vamp-aubio-plugins 0.5.0 0.5.1-r1: Onset detection, pitch tracking
 media-plugins/vamp-libxtract-plugins 0.6.6.20121204: Vamp plugin encapsulating many of the functions of the LibXtract library
 media-plugins/vco-plugins 0.3.0-r1: SAW-VCO ladspa plugin package. Anti-aliased oscillators
 media-plugins/vdr-actuator 1.2.1 2.4.1_pre20181025: VDR plugin: control an hor. or ver. actuator attached trough the parallel port
-media-plugins/vdr-atscepg 0.3.0-r1: VDR plugin: receive schedule and event information from ATSC broadcasts
 media-plugins/vdr-avards 0.2.4 0.2.6: VDR Plugin: Automatic Video Aspect Ratio Detection and Signaling
 media-plugins/vdr-beep 0.1.2: VDR plugin: Use the PC speaker to signalize some events (shutdown, cut done ...)
 media-plugins/vdr-bgprocess 0.1.0: VDR plugin: Collect information about background process status
@@ -13877,7 +13877,6 @@ media-sound/mmix 0.3-r1: A soundcard mixer for the OSS driver
 media-sound/moc 2.5.2-r1 2.6_alpha3-r2: Music On Console - ncurses interface for playing audio files
 media-sound/modplugtools 0.5.3: libmodplug based module players modplug123 and modplugplay
 media-sound/mp32ogg 0.11-r6: A perl script to convert MP3 files to Ogg Vorbis files
-media-sound/mp3_check 1.98-r1: MP3 consistency checker
 media-sound/mp3asm 0.1.3-r2: A command line tool to clean and edit mp3 files
 media-sound/mp3blaster 3.2.6: Text console based program for playing audio files
 media-sound/mp3c 0.31-r1: console based mp3 ripper, with cddb support
@@ -15617,7 +15616,6 @@ net-wireless/horst 5.1 9999: Small 802.11 wireless LAN analyzer
 net-wireless/hostap-utils 0.4.7-r1: Utilities for Intersil Prism2/2.5/3 based IEEE 802.11b wireless LAN products
 net-wireless/hostapd 2.9-r3 9999: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/inspectrum 0.2.3 9999: Tool for analysing captured signals from software-defined radio receivers
-net-wireless/irda-utils 0.9.18-r6: IrDA management and handling utilities
 net-wireless/iw 5.4 5.9: nl80211 configuration utility for wireless devices using the mac80211 stack
 net-wireless/iwd 1.10 1.11 1.12 9999: Wireless daemon for linux
 net-wireless/iwgtk 0.4: Lightweight, graphical wifi management utility for Linux
@@ -16365,7 +16363,6 @@ sci-libs/scalapack 2.1.0: Subset of LAPACK routines redesigned for heterogenous 
 sci-libs/scikit-image 0.17.2: Image processing routines for SciPy
 sci-libs/scikit-learn 0.22.2_p1-r1 0.23.2: Machine learning library for Python
 sci-libs/scikit-optimize 0.8.1: Sequential model-based optimization library
-sci-libs/scikits 0.1-r2: Common files for python scikits
 sci-libs/scotch 6.0.4-r2: Software for graph, mesh and hypergraph partitioning
 sci-libs/shapelib 1.5.0: Library for manipulating ESRI Shapefiles
 sci-libs/shapely 1.7.1: Geometric objects, predicates, and operations
@@ -17693,10 +17690,8 @@ sys-power/ncpufreqd 2.4: Daemon controlling CPU speed and temperature
 sys-power/nut 2.7.4-r6: Network-UPS Tools
 sys-power/nvclock 0.8_p20110102-r2: NVIDIA Overclocking Utility
 sys-power/nvram-reboot 2004.10.03-r1: PowerOff Boot-Images for nvram-wakeup (not needed for GRUB)
-sys-power/pm-quirks 20100619-r1: Video Quirks database for pm-utils
-sys-power/pm-utils 1.4.1-r7: Suspend and hibernation utilities
 sys-power/pmtools 20110323-r1: Collection of tools for ACPI and power management
-sys-power/powermgmt-base 1.31-r1: Script to test whether computer is running on AC power
+sys-power/powermgmt-base 1.31-r2: Script to test whether computer is running on AC power
 sys-power/powernowd 1.00-r4 1.00-r5: Daemon to control the speed and voltage of CPUs
 sys-power/powerstat 0.02.21 0.02.22 9999: Laptop power measuring tool
 sys-power/powertop 2.13-r1 9999: tool to diagnose issues with power consumption and power management
