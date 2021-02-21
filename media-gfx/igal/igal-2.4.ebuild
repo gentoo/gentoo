@@ -22,7 +22,7 @@ DEPEND=""
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=( "${FILESDIR}"/igal-2.0-no-defined.patch )
+PATCHES=( "${FILESDIR}"/igal-2.4.patch )
 
 src_prepare() {
 	default

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-MY_P=${PN}2-${PV}
+MY_P=${PN}-${PV}
 
 DESCRIPTION="Static HTML image gallery generator"
 HOMEPAGE="https://igal.trexler.at"
