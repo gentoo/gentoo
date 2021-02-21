@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,16 +32,3 @@ distutils_enable_sphinx docs \
 	">=dev-python/jaraco-packaging-3.2" \
 	">=dev-python/rst-linker-1.9"
 distutils_enable_tests pytest
-
-python_test() {
-	# Override pytest options to skip flake8
-	PYTHONPATH=. pytest -vv --override-ini="addopts=--doctest-modules" \
-		|| die "tests failed with ${EPYTHON}"
-}
-
-# https://wiki.gentoo.org/wiki/Project:Python/Namespace_packages#File_collisions_between_pkgutil-style_packages
-python_install() {
-	rm "${BUILD_DIR}"/lib/jaraco/__init__.py || die
-	# note: eclass may default to --skip-build in the future
-	distutils-r1_python_install --skip-build
-}
