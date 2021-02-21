@@ -605,6 +605,7 @@ app-admin/ansible 2.10.5 2.10.6 9999: Model-driven deployment, config management
 app-admin/ansible-base 2.10.4 2.10.5: Model-driven deployment, config management, and command execution framework
 app-admin/ansible-cmdb 1.28 1.30: Ansible Configuration Management Database
 app-admin/ansible-lint 4.0.1 4.1.0: Checks ansible playbooks for practices and behaviour that can be improved
+app-admin/ansible-modules-hashivault 4.6.2: Ansible module for hashicorp vault
 app-admin/apache-tools 2.4.41 2.4.43 2.4.46: Useful Apache tools - htdigest, htpasswd, ab, htdbm
 app-admin/apachetop 0.19.7: A realtime Apache log analyzer
 app-admin/apg 2.3.0b_p20150129: Another Password Generator
@@ -8342,6 +8343,7 @@ dev-python/httplib2 0.19.0-r1: A comprehensive HTTP client library
 dev-python/httpretty 1.0.5: HTTP client mock for Python
 dev-python/humanfriendly 8.2 9.1: Human friendly output for text interfaces using Python
 dev-python/humanize 3.2.0: Common humanization utilities
+dev-python/hvac 0.10.8: hashicorp vault client in python
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 21.0.0: A featureful, correct URL for Python
@@ -8791,6 +8793,7 @@ dev-python/pygraphviz 1.6: Python wrapper for the Graphviz Agraph data structure
 dev-python/pygresql 5.2.2: A Python interface for the PostgreSQL database
 dev-python/pyh2o 1: Python API for sci-libs/libh2o
 dev-python/pyhamcrest 2.0.2: Hamcrest framework for matcher objects
+dev-python/pyhcl 0.4.4: HCL configuration parser for python
 dev-python/pyilmbase 2.5.2-r1 2.5.4 2.5.5: IlmBase Python bindings
 dev-python/pyinotify 0.9.6: Python module used for monitoring filesystems events
 dev-python/pyjwt 1.7.1-r1 2.0.1: JSON Web Token implementation in Python
@@ -8956,6 +8959,7 @@ dev-python/python-iptables 1.0.0-r1: Python bindings for iptables
 dev-python/python-ironicclient 4.1.0 4.4.0: Python bindings for the Ironic API
 dev-python/python-jose 3.2.0-r1: A JavaScript Object Signing and Encryption (JOSE) implementation in Python
 dev-python/python-jsonrpc-server 0.4.0-r1: A Python 2 and 3 asynchronous JSON RPC server
+dev-python/python-jwt 1.2.0: JSON Web Token library for python 3
 dev-python/python-keystoneclient 4.1.1: Client Library for OpenStack Identity
 dev-python/python-language-server 0.36.2: An implementation of the Language Server Protocol for Python
 dev-python/python-ldap 3.3.1 9999: Various LDAP-related Python modules
@@ -14818,6 +14822,7 @@ net-libs/libaccounts-glib 1.25-r2: Accounts SSO (Single Sign-On) management libr
 net-libs/libad9361-iio 0.1-r2 9999: IIO AD9361 library for filter design and handling, multi-chip sync, etc.
 net-libs/libasr 1.0.4: Async Resolver Library from OpenBSD/OpenSMTPD
 net-libs/libasyncns 0.8-r4: C library for executing name service queries asynchronously
+net-libs/libaxc 0.3.4: Client library for libsignal-protocol-c
 net-libs/libbitcoinconsensus 0.20.1 0.21.0: Bitcoin Core consensus library
 net-libs/libblkmaker 0.3.2 0.4.3 0.5.3 0.6.0: C implementation of Bitcoin's getblocktemplate interface
 net-libs/libbloom 1.5-r2 1.6: A simple and small bloom filter implementation in plain C.
@@ -14875,6 +14880,7 @@ net-libs/libnsl 0-r1 1.3.0-r1: Public client interface for NIS(YP) and NIS+ in a
 net-libs/libntlm 1.6: Microsoft's NTLM authentication (libntlm) library
 net-libs/libnxml 0.18.3-r1: A C-library for parsing and writing XML 1.0/1.1 files or streams
 net-libs/liboauth 1.0.3-r1: C library implementing the OAuth secure authentication protocol
+net-libs/libomemo 0.7.1: Implementation of OMEMO (XEP-0384) in C
 net-libs/liboping 1.10.0-r2: Protocol independent ANSI-C ping library and command line utility
 net-libs/libosmo-dsp 0.3 9999: A library with SDR DSP primitives
 net-libs/libosmocore 0.10.2 9999: Utility functions for OsmocomBB, OpenBSC and related projects
@@ -15383,7 +15389,7 @@ net-misc/x2goclient 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.1039_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.1432 0.4.1500: utility to download media contents from the web
-net-misc/youtube-dl 2021.01.16 2021.01.24.1 2021.02.04 2021.02.04.1 2021.02.10 9999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2021.01.16 2021.01.24.1 2021.02.04 2021.02.04.1 2021.02.10 2021.02.22 9999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r2 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.4.6 1.6.2 1.6.3: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -18697,7 +18703,7 @@ x11-plugins/gkwebmon 0.2-r2: A web monitor plugin for GKrellM2
 x11-plugins/guifications 2.16: Guifications is a graphical notification plugin for pidgin
 x11-plugins/hexchat-javascript 0.3.2: Javascript interface for HexChat
 x11-plugins/i8krellm 2.5-r2: GKrellM2 Plugin for the Dell Inspiron and Latitude notebooks
-x11-plugins/lurch 0.6.8 0.6.8-r1 0.6.8-r2: OMEMO encryption for libpurple (XEP-0384)
+x11-plugins/lurch 0.6.8-r2 0.7.0: OMEMO encryption for libpurple (XEP-0384)
 x11-plugins/pidgin-birthday-reminder 1.7-r1: Plugin for Pidgin that reminds you of your buddies birthdays
 x11-plugins/pidgin-bot-sentry 1.3.0: Bot Sentry is a Pidgin plugin to prevent Instant Message (IM) spam
 x11-plugins/pidgin-encryption 3.1-r1: Pidgin IM Encryption PlugIn

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile prepare
+DEPEND=dev-db/sqlite dev-libs/glib dev-libs/libgcrypt:= dev-libs/libxml2 dev-libs/mxml net-im/pidgin:= net-libs/libaxc net-libs/libomemo >=net-libs/libsignal-protocol-c-2.3.2 virtual/pkgconfig
+DESCRIPTION=OMEMO encryption for libpurple (XEP-0384)
+EAPI=7
+HOMEPAGE=https://github.com/gkdr/lurch
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-db/sqlite dev-libs/glib dev-libs/libgcrypt:= dev-libs/libxml2 dev-libs/mxml net-im/pidgin:= net-libs/libaxc net-libs/libomemo >=net-libs/libsignal-protocol-c-2.3.2
+SLOT=0
+SRC_URI=https://github.com/gkdr/lurch/archive/v0.7.0.tar.gz -> lurch-0.7.0.tar.gz
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=8b9d72ffe656cf1adb8f076250f3c9e5
