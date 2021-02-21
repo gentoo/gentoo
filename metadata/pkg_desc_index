@@ -8385,11 +8385,11 @@ dev-python/isodate 0.6.0-r1: ISO 8601 date/time/duration parser and formatter
 dev-python/isort 5.7.0: A python utility/library to sort imports
 dev-python/itsdangerous 1.1.0-r1: Various helpers to pass trusted data to untrusted environments and back
 dev-python/itypes 1.1.0: basic immutable container types for python
-dev-python/jaraco-classes 3.1.0-r1 3.2.0: Classes used by other projects by developer jaraco
+dev-python/jaraco-classes 3.1.0-r1 3.2.0 3.2.1: Classes used by other projects by developer jaraco
 dev-python/jaraco-collections 3.0.0-r1 3.1.0 3.2.0: Models and classes to supplement the stdlib collections module
 dev-python/jaraco-context 3.0.0-r1 4.0.0: Context managers by jaraco
 dev-python/jaraco-envs 2.1.0: Classes for orchestrating Python (virtual) environments.
-dev-python/jaraco-functools 3.0.1-r1 3.1.0 3.2.0: Additional functions used by other projects by developer jaraco
+dev-python/jaraco-functools 3.0.1-r1 3.2.0 3.2.1: Additional functions used by other projects by developer jaraco
 dev-python/jaraco-itertools 5.0.0-r1: Tools for working with iterables. Complements itertools and more_itertools
 dev-python/jaraco-logging 3.0.0-r2 3.1.0: Additional facilities to supplement Python's stdlib logging module
 dev-python/jaraco-packaging 8.1.1-r1 8.2.0: Tools to supplement packaging Python releases
