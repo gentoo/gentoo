@@ -7,7 +7,7 @@ DESCRIPTION="Command-line interface to various pastebins"
 HOMEPAGE="http://wgetpaste.zlin.dk/"
 
 COMMIT_HASH="f9b08c50009485817e8b44300f79a92e37fe9f22"
-SRC_URI="https://github.com/zlin/wgetpaste/archive/${COMMIT_HASH}.tar.gz"
+SRC_URI="https://github.com/zlin/wgetpaste/archive/${COMMIT_HASH}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
