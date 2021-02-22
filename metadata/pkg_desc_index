@@ -8701,7 +8701,7 @@ dev-python/pony 0.7.14: Python ORM with beautiful query syntax
 dev-python/pooch 1.2.0: manages your Python library's sample data files
 dev-python/portend 2.7.0 2.7.1: TCP port monitoring utilities
 dev-python/poyo 0.5.0: A lightweight YAML Parser for Python
-dev-python/precis-i18n 1.0.2: Internationalized Usernames and Passwords
+dev-python/precis-i18n 1.0.2 1.0.3: Internationalized Usernames and Passwords
 dev-python/pretend 1.0.9-r1: A library for stubbing in Python
 dev-python/pretty-yaml 20.4.0: PyYAML-based module to produce pretty and readable YAML-serialized data
 dev-python/prettytable 0.7.2-r1 2.0.0: Easily displaying tabular data in a visually appealing ASCII table format
