@@ -1,6 +1,15 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Roy Bamford <neddyseagoon@gentoo.org> (2021-02-20)
+# sci-libs/hdf does not build on arm64 bug #771648
+sci-libs/netcdf hdf
+
+# Roy Bamford <neddyseagoon@gentoo.org> (2021-02-20)
+# all-modules needs sci-libs/kissfft not yet in gentoo bug #754684
+# build fails with USE=java
+sci-libs/vtk all-modules java
+
 # Thomas Deutschmann <whissi@gentoo.org> (2021-02-17)
 # Unmask PCRE JIT support where dev-libs/libpcre2[jit] is available
 dev-lang/php -jit
@@ -218,12 +227,6 @@ media-video/mpv -sdl
 media-video/transcode -sdl
 >=x11-libs/wxGTK-3 -sdl
 
-# Virgil Dupras <vdupras@gentoo.org> (2018-09-06)
-# sci-electronics/ngspice not yet keyworded, bug #665416
-# sci-libs/opencascade not yet keyworded
-# sci-libs/oce not yet keyworded
-sci-electronics/kicad occ oce ngspice
-
 # Michał Górny <mgorny@gentoo.org> (2018-07-07)
 # Unkeyworded dependencies.
 net-libs/gnome-online-accounts gnome
@@ -294,10 +297,6 @@ sys-libs/libblockdev dmraid
 # Mart Raudsepp <leio@gentoo.org> (2018-02-13)
 # USE=upnp-av requires net-misc/dleyna-server that is not keyworded yet.
 >=media-plugins/grilo-plugins-0.3.5 upnp-av
-
-# Mart Raudsepp <leio@gentoo.org> (2018-02-13)
-# USE=vtk requires sci-libs/vtk that is not keyworded yet.
-media-libs/opencv vtk
 
 # Mart Raudsepp <leio@gentoo.org> (2018-02-13)
 # USE=lua requires dev-lua/lgi that is not keyworded yet.
