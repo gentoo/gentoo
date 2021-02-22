@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,7 +31,7 @@ S="${WORKDIR}/${P/_*}"
 PATCHES=(
 	"${FILESDIR}/${PN}-2.86-kexec.patch" #80220
 	"${FILESDIR}/${PN}-2.94_beta-shutdown-single.patch" #158615
-	"${FILESDIR}/${PN}-2.95_beta-shutdown-h.patch" #449354
+	"${FILESDIR}/${PN}-2.99-shutdown-h.patch" #449354
 )
 
 src_prepare() {
@@ -62,7 +62,7 @@ src_prepare() {
 
 	# Mung inittab for specific architectures
 	cd "${WORKDIR}" || die
-	cp "${FILESDIR}"/inittab-2.98 inittab || die "cp inittab"
+	cp "${FILESDIR}"/inittab-2.98-r1 inittab || die "cp inittab"
 	local insert=()
 	use ppc && insert=( '#psc0:12345:respawn:/sbin/agetty 115200 ttyPSC0 linux' )
 	use arm && insert=( '#f0:12345:respawn:/sbin/agetty 9600 ttyFB0 vt100' )
