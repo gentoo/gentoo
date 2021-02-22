@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<maintainer type="person">
+		<email>zmedico@gentoo.org</email>
+		<name>Zac Medico</name>
+	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">pyghmi</remote-id>
 		<remote-id type="github">openstack/pyghmi</remote-id>
 	</upstream>
-	<maintainer type="person">
-		<email>zmedico@gentoo.org</email>
-	</maintainer>
 </pkgmetadata>
