@@ -482,4 +482,4 @@ dev-qt/qtscript -jit
 dev-qt/qtwebkit -jit
 
 # missing keywords
-media-plugins/gst-plugins-meta aac dts dv lame libvisual modplug taglib vcd wavpack dvd
+media-plugins/gst-plugins-meta aac dts dv lame libvisual modplug vcd wavpack
