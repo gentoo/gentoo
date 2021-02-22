@@ -1,0 +1,14 @@
+BDEPEND=>=dev-lang/go-1.15 >=dev-lang/go-1.12 app-arch/unzip
+DEFINED_PHASES=compile install postinst unpack
+DESCRIPTION=Kubernetes Proxy service
+EAPI=7
+HOMEPAGE=https://github.com/kubernetes/kubernetes https://kubernetes.io
+IUSE=hardened
+KEYWORDS=~amd64 ~arm64
+LICENSE=Apache-2.0
+RDEPEND=net-firewall/conntrack-tools !sys-cluster/kubernetes
+RESTRICT=strip test
+SLOT=0
+SRC_URI=https://github.com/kubernetes/kubernetes/archive/v1.20.4.tar.gz -> kubernetes-1.20.4.tar.gz
+_eclasses_=go-module	92660621959e7fab813173772987588b
+_md5_=0fe281a765d94ad243504314573ecafe
