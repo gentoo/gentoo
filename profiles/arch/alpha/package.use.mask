@@ -5,10 +5,11 @@
 # sci-libs/cholmod is not keyworded.
 sci-libs/umfpack cholmod
 
-# Sam James <sam@gentoo.org> (2021-02-06)
+# Sam James <sam@gentoo.org> (2021-02-22)
 # media-sound/sndio is not yet keyworded here
 # bug #769098, bug #769122
 media-libs/openal sndio
+media-video/ffmpeg sndio
 
 # Sam James <sam@gentoo.org> (2021-01-19)
 # Avoid pulling in a large unkeyworded dep
