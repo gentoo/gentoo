@@ -1,0 +1,23 @@
+docmain ~/GIT/gentoo-fork/media-gfx/igal # repoman commit
+
+RepoMan scours the neighborhood...
+>>> Creating Manifest for /root/GIT/gentoo-fork/media-gfx/igal
+
+Note: use --include-dev (-d) to check dependencies for 'dev' profiles
+
+* 1 files being committed... 
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+  (commit or discard the untracked or modified content in submodules)
+        modified:   igal2 (modified content, untracked content)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        ../../os-prober/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+!!! Exiting on git (shell) error code: 1
