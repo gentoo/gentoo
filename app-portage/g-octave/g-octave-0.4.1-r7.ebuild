@@ -1,19 +1,17 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_7 )
+PYTHON_COMPAT=( python3_{7..9} )
 DISTUTILS_USE_SETUPTOOLS=no
+inherit distutils-r1
 
 DB_COMMIT="bdf02cbf0a8d017c6c1bddeffd6f03d5d90695ed"
 DB_DIR="rafaelmartins-${PN}-db-${DB_COMMIT:0:7}"
 
-inherit distutils-r1 eutils
-
 DESCRIPTION="A tool that generates and installs ebuilds for Octave-Forge"
 HOMEPAGE="https://github.com/rafaelmartins/g-octave"
-
 SRC_URI="https://github.com/downloads/rafaelmartins/${PN}/${P}.tar.gz
 	https://github.com/rafaelmartins/${PN}-db/archive/${DB_COMMIT}.tar.gz ->
 		${PN}-db-${DB_COMMIT:0:7}.tar.gz
@@ -22,23 +20,20 @@ SRC_URI="https://github.com/downloads/rafaelmartins/${PN}/${P}.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc test"
-RESTRICT="!test? ( test )"
+IUSE="doc"
 
-DEPEND="doc? ( >=dev-python/sphinx-1.0 )"
+BDEPEND="doc? ( >=dev-python/sphinx-1.0 )"
 RDEPEND="sys-apps/portage"
 
 python_prepare_all() {
-	eapply "${WORKDIR}/${PN}-patches-${PVR}"
+	eapply "${WORKDIR}"/${PN}-patches-${PVR}
 	sed -i -e 's/^has_fetch.*$/has_fetch = False/' scripts/g-octave \
 		|| die 'failed to patch the g-octave main script'
 	distutils-r1_python_prepare_all
 }
 
 python_compile_all() {
-	if use doc; then
-		emake -C docs html
-	fi
+	use doc && emake -C docs html
 }
 
 python_install_all() {
@@ -49,7 +44,7 @@ python_install_all() {
 		HTML_DOCS+=( docs/_build/sphinx )
 	fi
 	insinto /usr/share/g-octave
-	doins "${DISTDIR}/${PN}-db-${DB_COMMIT:0:7}.tar.gz"
+	doins "${DISTDIR}"/${PN}-db-${DB_COMMIT:0:7}.tar.gz
 	distutils-r1_python_install_all
 }
 
