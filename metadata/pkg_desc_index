@@ -14669,7 +14669,7 @@ net-ftp/uftpd 2.13: The no nonsense TFTP/FTP server
 net-ftp/vsftpd 3.0.3-r3: Very Secure FTP Daemon written with speed, size and security in mind
 net-ftp/yafc 1.3.7: Console ftp client with a lot of nifty features
 net-im/bitlbee 3.6-r1 9999: irc to IM gateway that support multiple IM protocols
-net-im/bitlbee-facebook 1.2.0 1.2.1 9999: Facebook protocol plugin for BitlBee
+net-im/bitlbee-facebook 1.2.0 1.2.2 9999: Facebook protocol plugin for BitlBee
 net-im/bitlbee-steam 1.4.2 9999: Steam protocol plugin for BitlBee
 net-im/centerim 5.0.1-r1: Ncurses ICQ/Yahoo!/AIM/IRC/MSN/Jabber/GaduGadu/RSS/LiveJournal client
 net-im/choqok 1.7.0: Free/Open Source micro-blogging client by KDE
@@ -17012,7 +17012,7 @@ sys-apps/pmount 0.9.99_alpha-r6: Policy based mounter that gives the ability to 
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
 sys-apps/pnputils 0.1: Plug and Play BIOS utilities
 sys-apps/policycoreutils 3.1-r2 9999: SELinux core utilities
-sys-apps/portage 2.3.99-r2 3.0.12 3.0.13 3.0.14 9999: Portage is the package management and distribution system for Gentoo
+sys-apps/portage 2.3.99-r2 3.0.12 3.0.13 3.0.14 3.0.15 9999: Portage is the package management and distribution system for Gentoo
 sys-apps/powerpc-utils 1.1.3.18-r4: PowerPC utilities and additional OldWorld apps
 sys-apps/prctl 1.6-r1: Tool to query and modify process behavior
 sys-apps/preload 0.6.4-r3: Adaptive readahead daemon
