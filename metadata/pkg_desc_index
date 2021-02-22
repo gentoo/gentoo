@@ -15285,7 +15285,7 @@ net-misc/ps3mediaserver 1.90.1: DLNA compliant UPNP server for streaming media t
 net-misc/pssh 2.3.4-r1: PSSH provides parallel versions of OpenSSH and related tools
 net-misc/ptpd 2.3.1-r1 2.3.1-r2: Precision Time Protocol daemon
 net-misc/puf 1.0.0-r1: A download tool for UNIX-like systems
-net-misc/pulseaudio-dlna 0.6.0_pre20200114 9999: A lightweight DLNA/UPNP/Chromecast streaming server for PulseAudio
+net-misc/pulseaudio-dlna 9999: A lightweight DLNA/UPNP/Chromecast streaming server for PulseAudio
 net-misc/putty 0.74 9999: A Free Telnet/SSH Client
 net-misc/pyhoca-cli 0.6.1.1 0.6.1.2: X2Go command line client
 net-misc/pyhoca-gui 0.6.1.0 0.6.1.1: X2Go graphical client applet
