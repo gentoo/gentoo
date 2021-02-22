@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_7 )
+PYTHON_COMPAT=( python3_{7..9} )
 inherit distutils-r1
 
 DESCRIPTION="X2Go client-side Python API"
@@ -13,11 +13,10 @@ SRC_URI="http://code.x2go.org/releases/source/${PN}/${P}.tar.gz"
 LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 # TODO: minimal USE flag in net-misc/nx, we only need nxproxy/nxcomp
-DEPEND="dev-python/gevent[${PYTHON_USEDEP}]
+RDEPEND="
+	dev-python/gevent[${PYTHON_USEDEP}]
 	dev-python/paramiko[${PYTHON_USEDEP}]
 	dev-python/python-xlib[${PYTHON_USEDEP}]
 	net-misc/nx"
-RDEPEND="${DEPEND}"
