@@ -1,0 +1,14 @@
+BDEPEND=dev-texlive/texlive-latex
+DEFINED_PHASES=compile install postinst postrm prepare
+DEPEND=virtual/latex-base >=sys-apps/texinfo-4.2-r5
+DESCRIPTION=LaTeX class for creating presentations using a video projector
+EAPI=7
+HOMEPAGE=https://github.com/josephwright/beamer
+IUSE=doc
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris
+LICENSE=GPL-2 FDL-1.2 LPPL-1.3c
+RDEPEND=>=dev-tex/pgf-1.10 dev-texlive/texlive-latexrecommended !dev-tex/translator virtual/latex-base
+SLOT=0
+SRC_URI=https://github.com/josephwright/beamer/archive/v3.61.tar.gz -> latex-beamer-3.61.tar.gz
+_eclasses_=latex-package	e5f296c98696dd02059bc6a5a03282e2
+_md5_=4df380c38fb13d407330d6fbe8b8a7c8

@@ -826,7 +826,7 @@ app-arch/lcab 1.0_beta12: CAB file creation tool
 app-arch/lha 114i_p20201004: Utility for creating and opening lzh archives
 app-arch/libarchive 3.5.1: Multi-format archive and compression library
 app-arch/libpar2 0.4: A library for par2, extracted from par2cmdline
-app-arch/lrzip 0.631_p20190619: Long Range ZIP or Lzma RZIP optimized for compressing large files
+app-arch/lrzip 0.631_p20190619 0.640: Long Range ZIP or Lzma RZIP optimized for compressing large files
 app-arch/lxqt-archiver 0.2.0 0.3.0: Qt GUI File Archiver
 app-arch/lz4 1.9.3: Extremely Fast Compression algorithm
 app-arch/lz5 2.0: An efficient compressor with very fast decompression
@@ -5480,7 +5480,7 @@ dev-libs/liblzw 0.2-r1 0.3: small C library for reading LZW compressed files (.Z
 dev-libs/libmaa 1.3.2: Library with low-level data structures which are helpful for writing compilers
 dev-libs/libmanette 0.2.4 0.2.5: Simple GObject game controller library
 dev-libs/libmateweather 1.24.0-r1 1.24.1: MATE library to access weather information from online services
-dev-libs/libmaxminddb 1.4.3 1.5.0-r1 9999: C library for the MaxMind DB file format
+dev-libs/libmaxminddb 1.4.3 1.5.0-r1 1.5.2 9999: C library for the MaxMind DB file format
 dev-libs/libmba 0.9.1-r3: A library of generic C modules
 dev-libs/libmcrypt 2.5.8-r4: libmcrypt provides uniform interface to access several encryption algorithms
 dev-libs/libmelf 0.4.0-r1: libmelf is a library interface for manipulating ELF object files
@@ -10562,7 +10562,7 @@ dev-tex/hevea 2.31 2.35: HeVeA is a quite complete and fast LaTeX to HTML transl
 dev-tex/html2latex 1.1-r1: Perl script to convert HTML files into formatted LaTeX
 dev-tex/hyphen_show 20000425-r1: Show hyphenations in DVI files
 dev-tex/ivritex 1.1.2: Hebrew support for TeX
-dev-tex/latex-beamer 3.59 3.60: LaTeX class for creating presentations using a video projector
+dev-tex/latex-beamer 3.59 3.60 3.61: LaTeX class for creating presentations using a video projector
 dev-tex/latex-calendar 3.1: LaTeX package used to create Calendars. Very flexible and robust
 dev-tex/latex2html 2015 2017.2-r2 2021: Convertor written in Perl that converts LATEX documents to HTML
 dev-tex/latex2rtf 2.3.11 2.3.15: LaTeX to RTF converter
@@ -14128,7 +14128,7 @@ media-video/dvdstyler 3.0.4: A cross-platform free DVD authoring application
 media-video/dvgrab 3.5-r1: Digital Video (DV) grabber for GNU/Linux
 media-video/ffcast 2.4.8: Record screencasts using ffmpeg
 media-video/ffdiaporama 2.2_pre20140701-r2: Movie creator from photos and video clips
-media-video/ffmpeg 4.2.4 4.3.1 9999: Complete solution to record/convert/stream audio and video. Includes libavcodec
+media-video/ffmpeg 4.2.4 4.3.1 4.3.2 9999: Complete solution to record/convert/stream audio and video. Includes libavcodec
 media-video/ffmpeg2theora 0.30-r1: A simple converter to create Ogg Theora files
 media-video/ffmpegthumbnailer 2.2.0-r1 2.2.2: Lightweight video thumbnailer that can be used by file managers
 media-video/flvstreamer 2.1c: Open source command-line RTMP client intended to stream audio or video flash content
@@ -15319,7 +15319,7 @@ net-misc/sgopherd 18.08: Small Gopher Server written in GNU Bash
 net-misc/shigofumi 0.3-r1 9999: Command line client for ISDS
 net-misc/shmux 1.0.2 1.0.2-r1: run the same command across many hosts in parallel
 net-misc/sipcalc 1.1.6: Sipcalc is an advanced console-based IP subnet calculator
-net-misc/sipp 3.6.0: A free Open Source test tool / traffic generator for the SIP protocol
+net-misc/sipp 3.6.0 3.6.1: A free Open Source test tool / traffic generator for the SIP protocol
 net-misc/sipsak 0.9.8: small command line tool for testing SIP applications and devices
 net-misc/sitecopy 0.16.6-r1: Maintain remote web sites with ease
 net-misc/sks 1.1.6-r2 1.1.6_p20200624: An OpenPGP keyserver which is decentralized with highly reliable synchronization
@@ -17589,7 +17589,7 @@ sys-kernel/linux-docs 5.10.17: Developer documentation generated from the Linux 
 sys-kernel/linux-firmware 20200316 20200421 20200519 20200619 20200721 20200817 20200918 20201022-r3 20201218 20210208 99999999: Linux firmware files
 sys-kernel/linux-headers 3.18 4.4 4.9 4.14-r1 4.19 5.4-r1 5.9 5.10 5.11: Linux system headers
 sys-kernel/mips-sources 4.14.221 4.19.176 5.4.99: Kernel.org sources for MIPS-based machines
-sys-kernel/pf-sources 5.9_p7 5.10_p2 5.10_p3 5.10_p4 5.10_p5 5.10_p6 5.10_p7 5.10_p8 5.10_p9 5.10_p10 5.10_p11 5.10_p12 5.11_p1 5.11_p2: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
+sys-kernel/pf-sources 5.9_p7 5.10_p12 5.11_p1 5.11_p2: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.79_p20201201 5.10.11_p20210201 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.79_p20201201 5.4.9999 5.10.11_p20210201: Raspberry Pi kernel sources
 sys-kernel/rt-sources 4.4.240_p209 4.4.245_p211 4.4.249_p212 4.9.240_p155 4.9.247_p162 4.14.206_p99 4.14.209_p101 4.14.214_p104 4.19.148_p64 4.19.160_p69 4.19.165_p70 5.4.70_p40 5.4.84_p47 5.10.1_p20 5.10.4_p22: Full Linux 5.10 kernel sources with the CONFIG_PREEMPT_RT patch
@@ -18405,7 +18405,7 @@ x11-misc/compton 0.1_beta2-r1: A compositor for X, and a fork of xcompmgr-dana
 x11-misc/copyq 3.13.0: Clipboard manager with advanced features
 x11-misc/dclock 2.2.2_p9 2.2.2_p12: Digital clock for the X window system
 x11-misc/devilspie 0.23 0.23-r1: A Window Matching utility similar to Sawfish's Matched Windows feature
-x11-misc/devilspie2 0.42 0.43 0.43-r100: Devilspie like window matching utility, using LUA for scripting
+x11-misc/devilspie2 0.43-r100: Devilspie like window matching utility, using LUA for scripting
 x11-misc/dex 0.8.0: DesktopEntry eXecution - tool to manage and launch autostart entries
 x11-misc/dmenu 4.6 4.8 4.9 5.0 9999: a generic, highly customizable, and efficient menu for the X Window System
 x11-misc/dunst 1.4.1 1.5.0 9999: Customizable and lightweight notification-daemon
