@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_7 )
+PYTHON_COMPAT=( python3_7 python3_8 python3_9 )
 
-inherit distutils-r1
+inherit desktop distutils-r1
 
 DESCRIPTION="A lightweight DLNA/UPNP/Chromecast streaming server for PulseAudio"
 HOMEPAGE="https://github.com/masmu/pulseaudio-dlna"
@@ -42,11 +42,10 @@ RDEPEND=">=dev-python/protobuf-python-2.5.0[${PYTHON_USEDEP}]
 	x11-libs/gtk+:3[introspection]
 	|| (
 		|| (
-			media-video/ffmpeg[encode,faac,mp3,opus,vorbis]
+			media-video/ffmpeg[encode,mp3,opus,vorbis]
 			media-video/ffmpeg[encode,fdk,mp3,opus,vorbis]
 		)
 		(
-			media-libs/faac
 			media-libs/flac
 			media-sound/lame
 			media-sound/opus-tools
@@ -70,6 +69,5 @@ python_prepare_all() {
 src_install() {
 	distutils-r1_src_install
 
-	insinto /usr/share/applications
-	doins "${FILESDIR}/${PN}.desktop"
+	domenu "${FILESDIR}/${PN}.desktop"
 }
