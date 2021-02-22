@@ -11,7 +11,7 @@ SRC_URI="https://github.com/gkdr/axc/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"  # not GPL-3+
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="static-libs"
 
 RDEPEND="
 	dev-db/sqlite
@@ -51,4 +51,8 @@ src_install() {
 	fi
 
 	einstalldocs
+
+	if ! use static-libs ; then
+		rm "${D}/usr/${libdir}/libaxc.a" || die
+	fi
 }
