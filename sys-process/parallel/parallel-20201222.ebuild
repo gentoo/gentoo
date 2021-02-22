@@ -4,7 +4,7 @@
 EAPI="7"
 
 DESCRIPTION="A shell tool for executing jobs in parallel locally or on remote machines"
-HOMEPAGE="https://www.gnu.org/software/parallel/ https://git.savannah.gnu.org/cgit/parallel.git"
+HOMEPAGE="https://www.gnu.org/software/parallel/ https://git.savannah.gnu.org/cgit/parallel.git/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-3+"
