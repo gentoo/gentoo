@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=configure install
+DEPEND=>=dev-libs/libburn-1.5.4 >=dev-libs/libisofs-1.5.4 readline? ( sys-libs/readline:0= ) !readline? ( libedit? ( dev-libs/libedit ) ) acl? ( virtual/acl ) xattr? ( sys-apps/attr ) zlib? ( sys-libs/zlib ) launch-frontend? ( dev-lang/tcl:0 dev-lang/tk:0 ) launch-frontend-setuid? ( dev-lang/tcl:0 dev-lang/tk:0 ) frontend-optional? ( dev-tcltk/bwidget )
+DESCRIPTION=Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn
+EAPI=7
+HOMEPAGE=https://dev.lovelyhq.com/libburnia/web/wikis/home
+IUSE=acl debug external-filters external-filters-setuid frontend-optional launch-frontend launch-frontend-setuid libedit readline static-libs xattr zlib
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2 GPL-3
+RDEPEND=>=dev-libs/libburn-1.5.4 >=dev-libs/libisofs-1.5.4 readline? ( sys-libs/readline:0= ) !readline? ( libedit? ( dev-libs/libedit ) ) acl? ( virtual/acl ) xattr? ( sys-apps/attr ) zlib? ( sys-libs/zlib ) launch-frontend? ( dev-lang/tcl:0 dev-lang/tk:0 ) launch-frontend-setuid? ( dev-lang/tcl:0 dev-lang/tk:0 ) frontend-optional? ( dev-tcltk/bwidget )
+REQUIRED_USE=frontend-optional? ( || ( launch-frontend launch-frontend-setuid ) )
+SLOT=0
+SRC_URI=http://files.libburnia-project.org/releases/libisoburn-1.5.4.tar.gz
+_md5_=eb3a749dd62bc496910957db3fcc8764
