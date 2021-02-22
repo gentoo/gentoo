@@ -15,7 +15,7 @@ S=${WORKDIR}/${MY_P}
 
 SLOT="0"
 LICENSE="GPL-3"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 
 RDEPEND="
 	dev-libs/gobject-introspection
