@@ -1,12 +1,13 @@
-DEFINED_PHASES=compile install prepare
-DEPEND=dev-db/sqlite dev-libs/glib dev-libs/libgcrypt net-libs/libsignal-protocol-c virtual/pkgconfig
+DEFINED_PHASES=compile install prepare test
+DEPEND=dev-db/sqlite dev-libs/glib dev-libs/libgcrypt net-libs/libsignal-protocol-c virtual/pkgconfig test? ( dev-util/cmocka )
 DESCRIPTION=Client library for libsignal-protocol-c
 EAPI=7
 HOMEPAGE=https://github.com/gkdr/axc
-IUSE=static-libs
+IUSE=static-libs test
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
 RDEPEND=dev-db/sqlite dev-libs/glib dev-libs/libgcrypt net-libs/libsignal-protocol-c
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/gkdr/axc/archive/v0.3.4.tar.gz -> libaxc-0.3.4.tar.gz
-_md5_=4c9e5625f38163aa8f4c007fe7b3dd3c
+_md5_=9fdb2b1370c55faf7a5a51a983ab45a7
