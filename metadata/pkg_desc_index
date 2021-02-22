@@ -5170,7 +5170,7 @@ dev-lang/mercury-extras 20.06: Additional libraries and tools that are not part 
 dev-lang/micropython 1.11: Python implementation for microcontrollers
 dev-lang/mlton 20130715 20180207: Standard ML optimizing compiler and libraries
 dev-lang/mmix 20160804-r1: Donald Knuth's MMIX Assembler and Simulator
-dev-lang/moarvm 2020.05 2020.06 2020.07 2020.08 2020.09 2020.10 2020.11 2020.12 9999: A 6model-based VM for NQP and Rakudo Perl 6
+dev-lang/moarvm 2020.05 2020.06 2020.07 2020.08 2020.09 2020.10 2020.11 2020.12 2021.02 9999: A 6model-based VM for NQP and Rakudo Perl 6
 dev-lang/mono 6.6.0.161 6.10.0.104: Mono runtime and class libraries, a C# compiler/interpreter
 dev-lang/mono-basic 4.8: Visual Basic Compiler and Runtime
 dev-lang/mozart 2.0.1: Advanced development platform for intelligent, distributed applications
@@ -5178,7 +5178,7 @@ dev-lang/mozart-stdlib 2.0.1: The Mozart Standard Library
 dev-lang/mujs 1.0.9 1.1.0: An embeddable Javascript interpreter in C.
 dev-lang/nasm 2.15.05: groovy little assembler
 dev-lang/nim 1.4.2: compiled, garbage-collected systems programming language
-dev-lang/nqp 2020.05 2020.06 2020.07 2020.08 2020.09 2020.10 2020.11 2020.12 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
+dev-lang/nqp 2020.05 2020.06 2020.07 2020.08 2020.09 2020.10 2020.11 2020.12 2021.02 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
 dev-lang/nwcc 0.8.3: Nils Weller's C Compiler
 dev-lang/ocaml 4.05.0-r3 4.09.0 4.10.0 4.10.2 4.11.1: Programming language supporting functional, imperative & object-oriented styles
 dev-lang/open-cobol 1.1: an open-source COBOL compiler
@@ -5192,7 +5192,7 @@ dev-lang/python 2.7.18-r6 2.7.18_p7 3.6.12-r2 3.6.12_p3 3.6.13 3.7.9-r2 3.7.9_p3
 dev-lang/python-exec 2.4.6-r2 2.4.6-r3 2.4.6-r4: Python script wrapper
 dev-lang/python-exec-conf 2.4.6: Configuration file for dev-lang/python-exec
 dev-lang/qu-prolog 10.6: Extended Prolog supporting quantifiers, object-variables and substitutions
-dev-lang/rakudo 2020.05.1 2020.06 2020.07 2020.08.1 2020.09 2020.10 2020.11 2020.12 9999: A compiler for the Perl 6 programming language
+dev-lang/rakudo 2020.05.1 2020.06 2020.07 2020.08.1 2020.09 2020.10 2020.11 2020.12 2021.02 9999: A compiler for the Perl 6 programming language
 dev-lang/regina-rexx 3.9.1-r1: Portable Rexx interpreter
 dev-lang/ruby 2.5.8 2.5.8-r1 2.6.6-r2 2.7.2 3.0.0 3.0.0-r1: An object-oriented scripting language
 dev-lang/rust 1.46.0 1.47.0-r2 1.48.0 1.49.0 1.50.0: Systems programming language from Mozilla
