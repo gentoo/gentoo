@@ -50,6 +50,8 @@ src_install() {
 	local libdir="$(get_libdir)"
 	if [[ ${libdir} != lib ]]; then
 		mv "${D}"/usr/{lib,${libdir}} || die
+		sed "s|^libdir=.*|libdir=\${prefix}/${libdir}|" \
+				-i "${D}/usr/${libdir}/pkgconfig/libaxc.pc" || die
 	fi
 
 	einstalldocs
