@@ -25,7 +25,6 @@
 +
 +S="${WORKDIR}/${MY_P}"
 +
-+PATCHES=( "${FILESDIR}"/igal-2.0-no-defined.patch )
 +
 +src_prepare() {
 +       default
@@ -33,6 +32,7 @@
 +               -i igal2 -i igal2.1 || die
 +       sed -i -e "s:/usr/local/bin/igal2:/usr/bin/igal2:" \
 +               utilities/igal2.sh || die
++
 +}
 +
 +src_compile() { :; }
@@ -43,4 +43,4 @@
 +       doman igal2.1
 +       dodoc ChangeLog README
 +       insinto /usr/share/igal2
-+       doins *.html tile.png igal2.cs
++       doins *.html tile.png igal2.css
