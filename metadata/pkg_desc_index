@@ -17300,7 +17300,7 @@ sys-cluster/libqb 0.17.2 1.0.5 1.9.0 2.0.1-r1: Library providing high performanc
 sys-cluster/libquo 1.2.9 9999: run-time tuning of process binding policies made easy
 sys-cluster/lmod 8.4.20 9999: Environment Module System based on Lua
 sys-cluster/lustre 2.13.0-r1: Lustre is a parallel distributed file system
-sys-cluster/minikube 1.10.1 1.11.0 1.13.1 1.14.0 1.14.1: Single Node Kubernetes Cluster
+sys-cluster/minikube 1.10.1 1.11.0 1.13.1 1.14.0 1.14.1 1.17.1: Single Node Kubernetes Cluster
 sys-cluster/mpe2 1.0.6_p1-r2: MPI development tools
 sys-cluster/mpich 3.0.4 3.3-r1: A high performance and portable MPI implementation
 sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
