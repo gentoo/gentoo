@@ -170,7 +170,16 @@ if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
 	tc_version_is_at_least 6.5 &&
 		IUSE+=" graphite" TC_FEATURES+=(graphite)
 	tc_version_is_between 4.9 8 && IUSE+=" cilk"
-	tc_version_is_at_least 4.9 && IUSE+=" ada +vtv"
+	tc_version_is_at_least 4.9 && IUSE+=" ada"
+
+	# Don't enable USE=vtv starting from gcc-10. Once gcc-10
+	# stable everywhere disable by default on older versions
+	# as well.
+	if tc_version_is_at_least 10; then
+		IUSE+=" vtv"
+	elif tc_version_is_at_least 4.9; then
+		IUSE+=" +vtv"
+	fi
 	tc_version_is_at_least 5.0 && IUSE+=" jit"
 	tc_version_is_between 5.0 9 && IUSE+=" mpx"
 	tc_version_is_at_least 6.0 && IUSE+=" +pie +ssp +pch"
