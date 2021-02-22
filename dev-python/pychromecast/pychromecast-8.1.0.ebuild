@@ -15,8 +15,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-RDEPEND="${DEPEND}
+RDEPEND="
+	>=dev-python/casttube-0.2.0[${PYTHON_USEDEP}]
 	>=dev-python/protobuf-python-3.0.0[${PYTHON_USEDEP}]
-	>=dev-python/zeroconf-0.25.1[${PYTHON_USEDEP}]
-	>=dev-python/casttube-0.2.0[${PYTHON_USEDEP}]"
+	>=dev-python/zeroconf-0.25.1[${PYTHON_USEDEP}]"
