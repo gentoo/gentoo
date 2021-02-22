@@ -32,6 +32,7 @@ media-libs/openal sndio
 media-video/ffmpeg sndio
 media-sound/moc sndio
 media-sound/mpd sndio
+media-libs/libsdl2 sndio
 
 # Sam James <sam@gentoo.org> (2021-01-19)
 # Avoid pulling in a large unkeyworded dep

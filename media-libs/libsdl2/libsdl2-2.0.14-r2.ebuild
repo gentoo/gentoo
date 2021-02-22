@@ -14,7 +14,7 @@ LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
-IUSE="alsa aqua cpu_flags_ppc_altivec cpu_flags_x86_3dnow cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 custom-cflags dbus fcitx4 gles1 gles2 haptic ibus jack +joystick kms libsamplerate nas opengl oss pulseaudio +sound static-libs +threads udev +video video_cards_vc4 vulkan wayland X xinerama xscreensaver"
+IUSE="alsa aqua cpu_flags_ppc_altivec cpu_flags_x86_3dnow cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 custom-cflags dbus fcitx4 gles1 gles2 haptic ibus jack +joystick kms libsamplerate nas opengl oss pulseaudio sndio +sound static-libs +threads udev +video video_cards_vc4 vulkan wayland X xinerama xscreensaver"
 REQUIRED_USE="
 	alsa? ( sound )
 	fcitx4? ( dbus )
@@ -25,6 +25,7 @@ REQUIRED_USE="
 	nas? ( sound )
 	opengl? ( video )
 	pulseaudio? ( sound )
+	sndio? ( sound )
 	vulkan? ( video )
 	wayland? ( gles2 )
 	xinerama? ( X )
@@ -52,6 +53,7 @@ CDEPEND="
 		>=virtual/glu-9.0-r1[${MULTILIB_USEDEP}]
 	)
 	pulseaudio? ( >=media-sound/pulseaudio-2.1-r1[${MULTILIB_USEDEP}] )
+	sndio? ( media-sound/sndio:=[${MULTILIB_USEDEP}] )
 	udev? ( >=virtual/libudev-208:=[${MULTILIB_USEDEP}] )
 	wayland? (
 		>=dev-libs/wayland-1.0.6[${MULTILIB_USEDEP}]
@@ -154,7 +156,7 @@ multilib_src_configure() {
 		$(use_enable libsamplerate)
 		$(use_enable nas)
 		--disable-nas-shared
-		--disable-sndio
+		$(use_enable sndio)
 		--disable-sndio-shared
 		$(use_enable sound diskaudio)
 		$(use_enable sound dummyaudio)
