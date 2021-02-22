@@ -3671,7 +3671,7 @@ dev-embedded/libjaylink 0.1.0 0.2.0 9999: Library to access J-Link devices
 dev-embedded/lpc21isp 1.85: In-circuit programming (ISP) tool for the NXP microcontrollers
 dev-embedded/mcu8051ide 1.4.10: Graphical IDE for microcontrollers based on 8051.
 dev-embedded/mspdebug 0.24 0.25: A free debugger for use with MSP430 MCUs
-dev-embedded/nodemcu-uploader 0.4.3-r1: Simple tool for uploading files to the filesystem of an ESP8266 running NodeMCU
+dev-embedded/nodemcu-uploader 1.0.0: Simple tool for uploading files to the filesystem of an ESP8266 running NodeMCU
 dev-embedded/openocd 0.10.0-r1 0.11.0_rc2 9999: OpenOCD - Open On-Chip Debugger
 dev-embedded/parapin 1.5.0 1.5.1_beta1: A parallel port pin programming library
 dev-embedded/picasm 1.14: An assembler and disassembler for 12 and 14-bit PIC chips
@@ -8169,7 +8169,7 @@ dev-python/django-mptt 0.11.0: utilities for modified preorder tree traversal an
 dev-python/django-otp 1.0.2: Django framework adding two-factor authentication using one-time passwords
 dev-python/django-pglocks 1.0.4: PostgreSQL locking context managers and functions for Django
 dev-python/django-picklefield 3.0.1: Pickled object field for Django.
-dev-python/django-prometheus 2.0.0: Library to export django metrics for prometheus
+dev-python/django-prometheus 2.1.0: Library to export Django metrics for Prometheus
 dev-python/django-q 1.3.3: A multiprocessing distributed task queue for Django
 dev-python/django-redis 4.10.0: Full featured redis cache backend for Django
 dev-python/django-rq 2.3.2 2.4.0: An app that provides django integration for RQ (Redis Queue)
@@ -8750,7 +8750,7 @@ dev-python/pycapnp 0.6.4: Python wrapping of the Cap'n Proto library
 dev-python/pycares 3.1.1: Python interface for c-ares
 dev-python/pycdio 2.1.0: Python OO interface to libcdio (CD Input and Control library)
 dev-python/pychm 0.8.6: Python bindings for the chmlib library
-dev-python/pychromecast 4.1.0: Python module to talk to Google Chromecast
+dev-python/pychromecast 8.1.0: Python module to talk to Google Chromecast
 dev-python/pychroot 0.10.4 9999: a python library and cli tool that simplify chroot handling
 dev-python/pyclipper 1.2.0 1.2.1: Cython wrapper for the C++ translation of the Angus Johnson's Clipper library
 dev-python/pycodestyle 2.6.0: Python style guide checker (fka pep8)
@@ -8782,7 +8782,7 @@ dev-python/pyftpdlib 1.5.6-r1: Python FTP server library
 dev-python/pygal 2.4.0-r1: A python SVG charts generator
 dev-python/pygame 1.9.6-r1 2.0.0_pre10 2.0.0 2.0.1 9999: Python bindings for SDL multimedia library
 dev-python/pygame_sdl2 6.99.12.4-r5 7.3.5-r1 7.3.5-r2: Reimplementation of portions of the pygame API using SDL2
-dev-python/pyghmi 1.5.5: A pure python implementation of IPMI protocol
+dev-python/pyghmi 1.5.22: A pure python implementation of IPMI protocol
 dev-python/pygit2 1.4.0 1.5.0: Python bindings for libgit2
 dev-python/pyglet 1.5.13 1.5.14 1.5.15: Cross-platform windowing and multimedia library for Python
 dev-python/pygments 2.7.4 2.8.0: Pygments is a syntax highlighting package written in Python
@@ -8894,8 +8894,8 @@ dev-python/pytest-django 4.1.0: A Django plugin for py.test
 dev-python/pytest-expect 1.1.0-r1: py.test plugin that stores test expectations by saving the set of failing tests
 dev-python/pytest-faulthandler 1.6.0 2.0.1: Pytest plugin that activates the fault handler module for tests
 dev-python/pytest-fixture-config 1.7.0-r1: Virtualenv fixture for py.test
-dev-python/pytest-flake8 0.9.1: py.test plugin for flake8
-dev-python/pytest-flakes 4.0.0: Collection of small Python functions & classes
+dev-python/pytest-flake8 0.9.1 1.0.7: py.test plugin for flake8
+dev-python/pytest-flakes 4.0.2: Collection of small Python functions & classes
 dev-python/pytest-forked 1.3.0-r1: run tests in isolated forked subprocesses
 dev-python/pytest-freezegun 0.4.2: Easily freeze time in pytest test + fixtures
 dev-python/pytest-helpers-namespace 2019.1.8-r1: Provides a helpers pytest namespace
@@ -8917,7 +8917,7 @@ dev-python/pytest-services 2.2.1: Collection of fixtures and utility functions t
 dev-python/pytest-shutil 1.7.0-r1: A goodie-bag of unix shell and environment tools for py.test
 dev-python/pytest-subtesthack 0.1.1: A hack for test fixtures, needed for hypothesis inside py.test
 dev-python/pytest-tempdir 2019.10.12: Pytest plugin to support for a predictable and repeatable temporary directory
-dev-python/pytest-testmon 0.9.15: take TDD to a new level with py.test and testmon
+dev-python/pytest-testmon 1.0.3: Take TDD to a new level with py.test and testmon
 dev-python/pytest-timeout 1.4.2-r1: py.test plugin to abort hanging tests
 dev-python/pytest-virtualenv 1.7.0-r1: Virtualenv fixture for py.test
 dev-python/pytest-xdist 1.34.0-r1 2.2.0-r1 2.2.1: Distributed testing and loop-on-failing modes
@@ -15289,7 +15289,7 @@ net-misc/pulseaudio-dlna 0.6.0_pre20200114 9999: A lightweight DLNA/UPNP/Chromec
 net-misc/putty 0.74 9999: A Free Telnet/SSH Client
 net-misc/pyhoca-cli 0.6.1.1 0.6.1.2: X2Go command line client
 net-misc/pyhoca-gui 0.6.1.0 0.6.1.1: X2Go graphical client applet
-net-misc/python-x2go 0.6.1.1 0.6.1.2 0.6.1.3: X2Go client-side Python API
+net-misc/python-x2go 0.6.1.3: X2Go client-side Python API
 net-misc/qtm 1.3.19: Qt blogging client
 net-misc/quagga 1.2.4: A free routing daemon replacing Zebra supporting RIP, OSPF and BGP
 net-misc/r8168 8.048.03-r1: r8168 driver for Realtek 8111/8168 PCI-E NICs

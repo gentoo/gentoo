@@ -1,16 +1,14 @@
-BDEPEND=python_targets_python3_7? ( dev-lang/python:3.7 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,-python_single_target_python3_7(-)]
+BDEPEND=doc? ( >=dev-python/sphinx-1.0 ) python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)]
 DEFINED_PHASES=compile config configure install postinst prepare test
-DEPEND=doc? ( >=dev-python/sphinx-1.0 )
 DESCRIPTION=A tool that generates and installs ebuilds for Octave-Forge
 EAPI=7
 HOMEPAGE=https://github.com/rafaelmartins/g-octave
-IUSE=doc test python_targets_python3_7
+IUSE=doc python_targets_python3_7 python_targets_python3_8 python_targets_python3_9
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=sys-apps/portage python_targets_python3_7? ( dev-lang/python:3.7 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,-python_single_target_python3_7(-)]
-REQUIRED_USE=|| ( python_targets_python3_7 )
-RESTRICT=!test? ( test )
+RDEPEND=sys-apps/portage python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)]
+REQUIRED_USE=|| ( python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 )
 SLOT=0
 SRC_URI=https://github.com/downloads/rafaelmartins/g-octave/g-octave-0.4.1.tar.gz https://github.com/rafaelmartins/g-octave-db/archive/bdf02cbf0a8d017c6c1bddeffd6f03d5d90695ed.tar.gz -> g-octave-db-bdf02cb.tar.gz https://dev.gentoo.org/~rafaelmartins/distfiles/g-octave-patches-0.4.1-r7.tar.xz
-_eclasses_=distutils-r1	c166cdc9bfdc0fee3ea2100e01fdcdd3	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	4c65b35c1895b82c0f44e44166a3464f	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=1416919d6bf5d58c0285320096deebdf
+_eclasses_=distutils-r1	c166cdc9bfdc0fee3ea2100e01fdcdd3	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	4c65b35c1895b82c0f44e44166a3464f	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=c7a7c79a7a17c5040fab45061c493004
