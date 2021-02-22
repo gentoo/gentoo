@@ -42,9 +42,17 @@ src_prepare() {
 	rm "${S}"/po/{ca_ES,da_DK,el_GR,et_EE,hr_HR,hu_HU,nn_NO,pl_PL,pt_PT,ro_RO,ru_RU,sl_SI,sv_SE,tr_TR}.po \
 		|| die "cannot remove untranslated .po files"
 
-	use conflictcheckonly || sed -e "s:install-\$(PLUGIN3)::" -i Makefile || die "cannot modify Makefile"
-	use epgsearchonly || sed -e "s:install-\$(PLUGIN2)::" -i Makefile || die "cannot modify Makefile"
-	use quicksearch || sed -e "s:install-\$(PLUGIN4)::" -i Makefile || die "cannot modify Makefile"
+	if use conflictcheckonly; then
+		sed -e "s:install-\$(PLUGIN3)::" -i Makefile || die "cannot modify Makefile"
+	fi
+
+	if use epgsearchonly; then
+		sed -e "s:install-\$(PLUGIN2)::" -i Makefile || die "cannot modify Makefile"
+	fi
+
+	if use quicksearch; then
+		sed -e "s:install-\$(PLUGIN4)::" -i Makefile || die "cannot modify Makefile"
+	fi
 
 	vdr-plugin-2_src_prepare
 
