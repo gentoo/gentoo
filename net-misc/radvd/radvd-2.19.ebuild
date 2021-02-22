@@ -47,8 +47,8 @@ src_compile() {
 src_install() {
 	default
 
-	insinto /usr/share/doc/${PF}/html
-	doins INTRO.html
+	docinto /usr/share/doc/${PF}/html
+	dodoc INTRO.html
 
 	newinitd "${FILESDIR}"/${PN}-2.15.init ${PN}
 	newconfd "${FILESDIR}"/${PN}.conf ${PN}
