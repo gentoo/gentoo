@@ -3,10 +3,10 @@ DEPEND=>=dev-lang/tcl-8.6:0=
 DESCRIPTION=Object Oriented Enhancements for Tcl/Tk
 EAPI=7
 HOMEPAGE=http://incrtcl.sourceforge.net/
-KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux
+KEYWORDS=~alpha ~amd64 ~arm64 ~ia64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux
 LICENSE=BSD
 RDEPEND=>=dev-lang/tcl-8.6:0=
 SLOT=0
 SRC_URI=mirror://sourceforge/project/incrtcl/%5Bincr%20Tcl_Tk%5D-4-source/itcl%204.2.0/itcl4.2.0.tar.gz
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=b9290c95cc02b9f457509cdf8e78175e
+_md5_=8ef0aa6fb25bac74c5a2eb1ec15a78f3

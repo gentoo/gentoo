@@ -5,11 +5,11 @@ DESCRIPTION=Object Oriented Enhancements for Tcl/Tk
 EAPI=7
 HOMEPAGE=http://incrtcl.sourceforge.net/
 IUSE=test
-KEYWORDS=amd64 ~ia64 ppc sparc x86 ~amd64-linux ~x86-linux
+KEYWORDS=amd64 ~arm64 ~ia64 ppc sparc x86 ~amd64-linux ~x86-linux
 LICENSE=BSD
 RDEPEND=>=dev-lang/tk-8.6:= >=dev-tcltk/itcl-4.1
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://sourceforge/project/incrtcl/%5Bincr%20Tcl_Tk%5D-4-source/itk%204.1.0/itk4.1.0.tar.gz
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	virtualx	7e60d3b10c791ab996f717bc1f30072f
-_md5_=2e3992b5c466d8b3bc9b6a543a89debf
+_md5_=244e8d4ddf9508af69a9f24ccfe53f37
