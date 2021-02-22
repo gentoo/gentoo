@@ -2818,7 +2818,7 @@ app-shells/kshdb 1.1.0: Korn Shell Debugger
 app-shells/localshell 1.3.4-r1: Localshell allows per-user/group local control of shell execution
 app-shells/loksh 6.8 6.8.1: Linux port of OpenBSD's ksh
 app-shells/mcfly 0.3.6 0.5.2 0.5.3: Context-aware bash history search replacement (ctrl-r)
-app-shells/mksh 59 59c 9999: MirBSD Korn Shell
+app-shells/mksh 59c 9999: MirBSD Korn Shell
 app-shells/mpibash 1.3-r1 9999: Parallel scripting right from the Bourne-Again Shell (Bash)
 app-shells/pdmenu 1.3.6: A simple console menu program
 app-shells/pdsh 2.26-r1: A high-performance, parallel remote shell utility
@@ -13612,7 +13612,7 @@ media-plugins/vdr-dvbhddevice 2.1.3_p20140115 2.2.0_p20180420-r1: VDR Plugin: ou
 media-plugins/vdr-dvbsddevice 2.0.0 2.2.0: VDR Plugin: output device for the 'Full Featured' SD DVB Card
 media-plugins/vdr-dvd 0.3.7_pre20090106-r1: VDR Plugin: DVD-Player
 media-plugins/vdr-dvdswitch 0.2.2 0.2.3: VDR Plugin: to play dvds and dvd file structures
-media-plugins/vdr-epgsearch 1.0.1_p20141227-r1 2.2.0 2.4.0 2.4.0_p20191202: VDR plugin: create timers from epg content based on saved search expressions
+media-plugins/vdr-epgsearch 1.0.1_p20141227-r1 2.2.0 2.4.0 2.4.0_p20191202 2.4.0_p20200402: VDR plugin: create timers from epg content based on saved search expressions
 media-plugins/vdr-epgsync 1.0.1 1.0.1-r1: VDR Plugin: Import the EPG of another VDR via vdr-svdrpservice
 media-plugins/vdr-exec 0.0.3: VDR plugin: Exec commands like timers at defined times
 media-plugins/vdr-extrecmenu 1.2.4 1.2.4-r1: VDR Plugin: Extended recordings menu
@@ -15428,7 +15428,7 @@ net-nntp/slrn 1.0.3: A s-lang based newsreader
 net-nntp/suck 4.3.3-r1 4.3.4: Grab news from a remote NNTP server and feed them to another
 net-nntp/tin 2.4.5: A threaded NNTP and spool based UseNet newsreader
 net-p2p/airdcpp-webclient 2.10.1 2.11.0: Cross-platform Direct Connect client
-net-p2p/amule 2.3.2-r5 9999: aMule, the all-platform eMule p2p client
+net-p2p/amule 2.3.2-r5 2.3.3 9999: aMule, the all-platform eMule p2p client
 net-p2p/automatic 0.8.3 0.8.3-r1: RSS downloader for Tranmission
 net-p2p/bitcoin-cli 0.20.1 0.21.0: Command-line JSON-RPC client specifically for interfacing with bitcoind
 net-p2p/bitcoin-qt 0.20.1 0.21.0: An end-user Qt GUI for the Bitcoin crypto-currency
@@ -15950,7 +15950,7 @@ sci-biology/velvet 1.2.10: A sequence assembler for very short reads
 sci-biology/wgs-assembler 7.0-r2: The Celera de novo whole-genome shotgun DNA sequence assembler, aka CABOG
 sci-biology/wise 2.4.0_alpha: Intelligent algorithms for DNA searches
 sci-biology/yass 1.14-r2: Genomic similarity search with multiple transition constrained spaced seeds
-sci-calculators/bc-gh 3.2.3 3.2.6: Implementation of POSIX bc with GNU extensions
+sci-calculators/bc-gh 3.2.3 3.2.6 3.3.0: Implementation of POSIX bc with GNU extensions
 sci-calculators/calcoo 1.3.18-r1: Scientific calculator designed to provide maximum usability
 sci-calculators/datamash 1.7: command-line program for basic numeric, textual and statistical operations
 sci-calculators/galculator 2.1.4-r1: GTK+ based algebraic and RPN calculator
@@ -16432,7 +16432,7 @@ sci-mathematics/geogebra-bin 5.0.604.0-r2: Mathematics software for geometry
 sci-mathematics/geomview 1.9.5-r1: Interactive Geometry Viewer
 sci-mathematics/gfan 0.6.2: Compute Groebner fans and tropical varieties
 sci-mathematics/ggnfs 0.77.1-r2: A suite of algorithms to help factoring large integers
-sci-mathematics/gimps 30.3.6 30.4.8: The Great Internet Mersenne Prime Search
+sci-mathematics/gimps 30.3.6 30.4.9: The Great Internet Mersenne Prime Search
 sci-mathematics/ginac 1.7.11: C++ library and tools for symbolic calculations
 sci-mathematics/glpk 4.65 5.0: GNU Linear Programming Kit
 sci-mathematics/gmm 5.1 5.3: Generic C++ template library for sparse, dense and skyline matrices
@@ -17950,7 +17950,7 @@ www-apache/mod_extract_forwarded 2.0.3_pre2015052015: Rewrites X-Forwarded-For t
 www-apache/mod_fastcgi_handler 0.6-r1: A simple FastCGI handler module
 www-apache/mod_fcgid 2.3.9-r1: Binary-compatible alternative to mod_fastcgi with better process management
 www-apache/mod_gnutls 0.8.2-r2 0.11.0: mod_gnutls uses GnuTLS for SSL/TLS encryption in Apache2 (compare to mod_ssl)
-www-apache/mod_h2 1.15.16 9999: HTTP/2 module for Apache
+www-apache/mod_h2 1.15.16 1.15.17 9999: HTTP/2 module for Apache
 www-apache/mod_jk 1.2.42: JK module for connecting Tomcat and Apache using the ajp13 protocol
 www-apache/mod_ldap_userdir 1.1.19: Look up Apache ~user directories in an LDAP directory
 www-apache/mod_limitipconn 0.24-r3: Limit the number of simultaneous apache connections
