@@ -15389,7 +15389,7 @@ net-misc/x2goclient 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.1039_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.1432 0.4.1500: utility to download media contents from the web
-net-misc/youtube-dl 2021.01.16 2021.01.24.1 2021.02.04 2021.02.04.1 2021.02.10 2021.02.22 9999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2021.02.10 2021.02.22 9999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r2 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.4.6 1.6.2 1.6.3: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -17740,7 +17740,7 @@ sys-process/minit 0.10-r1: a small yet feature-complete init
 sys-process/nmon 16g 16i 16j 16m: Nigel's performance MONitor for CPU, memory, network, disks, etc...
 sys-process/numactl 2.0.12 2.0.13 2.0.14 9999: Utilities and libraries for NUMA systems
 sys-process/numad 0.5-r3 9999: The NUMA daemon that manages application locality
-sys-process/parallel 20201222 20210122: A shell tool for executing jobs in parallel locally or on remote machines
+sys-process/parallel 20201222 20210122 20210222: A shell tool for executing jobs in parallel locally or on remote machines
 sys-process/pkill-darwin 1.0: pgrep(1) and pkill(1) for Darwin
 sys-process/prll 0.6.4: A utility for parallelizing execution of shell functions
 sys-process/procenv 0.51: command-line utility to show process environment
