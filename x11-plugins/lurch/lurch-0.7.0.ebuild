@@ -12,7 +12,7 @@ SRC_URI="https://github.com/gkdr/lurch/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"  # likely not GPL-3+, https://github.com/gkdr/lurch/issues/165
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="test"
 
 # NOTE: Some of these dependencies seem like leftovers in the build system
 #       and can probably be dropped with lurch >=0.7.1
@@ -31,7 +31,10 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
+	test? ( dev-util/cmocka )
 	"
+
+RESTRICT="!test? ( test )"
 
 src_prepare() {
 	rm -Rv lib/{axc,libomemo} || die  # unbundle

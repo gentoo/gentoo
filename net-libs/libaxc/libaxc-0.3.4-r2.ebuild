@@ -3,31 +3,41 @@
 
 EAPI=7
 
-DESCRIPTION="Implementation of OMEMO (XEP-0384) in C"
-HOMEPAGE="https://github.com/gkdr/libomemo"
-SRC_URI="https://github.com/gkdr/libomemo/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+MY_P="axc-${PV}"
+DESCRIPTION="Client library for libsignal-protocol-c"
+HOMEPAGE="https://github.com/gkdr/axc"
+SRC_URI="https://github.com/gkdr/axc/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="MIT"
+LICENSE="GPL-3"  # not GPL-3+
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="static-libs"
+IUSE="static-libs test"
 
 RDEPEND="
 	dev-db/sqlite
 	dev-libs/glib
 	dev-libs/libgcrypt
-	dev-libs/mxml
+	net-libs/libsignal-protocol-c
 	"
 DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
+	test? ( dev-util/cmocka )
 	"
+
+S="${WORKDIR}"/${MY_P}
+RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-so-symlinks.patch
 )
 
 DOCS=( CHANGELOG.md README.md )
+
+src_prepare() {
+	rm -R lib || die  # unbundle libsignal-protocol-c
+	default
+}
 
 src_compile() {
 	emake PREFIX=/usr
@@ -40,11 +50,17 @@ src_install() {
 	local libdir="$(get_libdir)"
 	if [[ ${libdir} != lib ]]; then
 		mv "${D}"/usr/{lib,${libdir}} || die
+		sed "s|^libdir=.*|libdir=\${prefix}/${libdir}|" \
+				-i "${D}/usr/${libdir}/pkgconfig/libaxc.pc" || die
 	fi
 
 	einstalldocs
 
 	if ! use static-libs ; then
-		rm "${D}/usr/${libdir}/libomemo.a" || die
+		rm "${D}/usr/${libdir}/libaxc.a" || die
 	fi
+}
+
+src_test() {
+	emake -j1 test
 }
