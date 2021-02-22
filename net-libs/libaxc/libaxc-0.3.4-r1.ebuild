@@ -11,7 +11,7 @@ SRC_URI="https://github.com/gkdr/axc/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"  # not GPL-3+
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="static-libs"
+IUSE="static-libs test"
 
 RDEPEND="
 	dev-db/sqlite
@@ -22,9 +22,11 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
+	test? ( dev-util/cmocka )
 	"
 
 S="${WORKDIR}"/${MY_P}
+RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-so-symlinks.patch
@@ -55,4 +57,8 @@ src_install() {
 	if ! use static-libs ; then
 		rm "${D}/usr/${libdir}/libaxc.a" || die
 	fi
+}
+
+src_test() {
+	emake -j1 test
 }
