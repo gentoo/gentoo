@@ -32,6 +32,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Matthew Thode <prometheanfire@gentoo.org> (2021-02-22)
+# Removing unneeded packages from tree Bug #772200
+# Removal on 2021-03-22
+dev-python/mox3
+dev-python/nosexcover
+dev-python/oslo-sphinx
+dev-python/os-diskconfig-python-novaclient-ext
+
 # David Seifert <soap@gentoo.org> (2021-02-21)
 # Drive-by addition, never maintained by maintainer, tests failing,
 # missing dependencies, python3.7 only, no reverse dependencies.
