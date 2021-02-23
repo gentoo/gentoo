@@ -14,6 +14,8 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 
-RDEPEND="dev-python/pytest[${PYTHON_USEDEP}]"
+RDEPEND="
+	dev-python/pyflakes[${PYTHON_USEDEP}]
+	dev-python/pytest[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
