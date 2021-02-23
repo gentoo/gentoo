@@ -8,5 +8,5 @@ KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=LGPL-3
 RDEPEND=dev-lang/php:*[unicode]
 SLOT=0
-SRC_URI=https://github.com/smarty-php/smarty/archive/v3.1.36.tar.gz -> smarty-3.1.36.tar.gz doc? ( https://www.smarty.net/files/docs/manual-en.3.1.14.zip )
-_md5_=900e2febeb55dd803e926e44400513a6
+SRC_URI=https://github.com/smarty-php/smarty/archive/v3.1.39.tar.gz -> smarty-3.1.39.tar.gz doc? ( https://www.smarty.net/files/docs/manual-en.3.1.14.zip )
+_md5_=89ed0768a4d5571b9f0f34578534156e
