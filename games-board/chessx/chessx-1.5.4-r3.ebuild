@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
-	>=dev-libs/quazip-0.9.1:0
+	>=dev-libs/quazip-0.9.1:0=
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5
@@ -40,6 +40,13 @@ PATCHES=(
 	"${FILESDIR}"/${P}-missing-translations.patch
 	"${FILESDIR}"/${P}-install.patch
 )
+
+src_prepare() {
+	xdg_src_prepare
+	if has_version "<dev-libs/quazip-1.0"; then
+		sed -e "/^PKGCONFIG/s/quazip1-qt5/quazip/" -i chessx.pro || die
+	fi
+}
 
 src_configure() {
 	eqmake5

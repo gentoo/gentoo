@@ -20,6 +20,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
+	dev-libs/quazip:0=
+	dev-libs/libgit2:=
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
@@ -30,27 +32,27 @@ RDEPEND="
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
-	dev-libs/quazip:0
-	dev-libs/libgit2:=
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}
 	dev-libs/boost
 "
 
 S="${WORKDIR}/${PN}-app-${MY_PV}"
 
-DOCS=( "README.md" )
+DOCS=( README.md )
 
 PATCHES=(
 	"${FILESDIR}/${P}-fix-libgit2-version.patch"
 	"${FILESDIR}/${P}-move-parts-db-path.patch"
+	"${FILESDIR}/${P}-quazip1.patch"
 )
 
 src_prepare() {
-	# fix build with newer quazip - bug #597988
-	sed -i -e "s/#include <quazip/&5/" src/utils/folderutils.cpp || die
-	sed -i -e "s|/usr/include/quazip|&5|" -e "s/-lquazip/&5/" phoenix.pro || die
+	xdg_src_prepare
+
+	if has_version "<dev-libs/quazip-1.0"; then
+		sed -e "/^PKGCONFIG/s/quazip/quazip1-qt5/" -i phoenix.pro || die
+	fi
 
 	# Get a rid of the bundled libs
 	# Bug 412555 and
@@ -65,8 +67,6 @@ src_prepare() {
 
 	# Add correct git version
 	sed -i -e "s:GIT_VERSION = \$\$system.*$:GIT_VERSION = ${MY_PV}:" pri/gitversion.pri || die
-
-	default
 }
 
 src_configure() {

@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
-	dev-libs/quazip
+	dev-libs/quazip:0=
 	dev-qt/designer:5
 	dev-qt/qtdbus:5
 	dev-qt/qtdeclarative:5[widgets]
@@ -34,10 +34,19 @@ BDEPEND="dev-qt/linguist-tools:5"
 
 S="${WORKDIR}"/${PN}-V_${PV}
 
+PATCHES=( "${S}"/FindPROJ4.patch )
+
 src_prepare() {
-	eapply FindPROJ4.patch
 	cmake_src_prepare
-	xdg_environment_reset
+
+	# TODO: upstream
+	if has_version ">=dev-libs/quazip-1.0"; then
+		sed -e "/^find_package(QuaZip5/s/5          /-Qt5 CONFIG/" \
+			-i CMakeLists.txt || die
+
+		sed -e "s/\${QUAZIP_LIBRARIES}/QuaZip::QuaZip/" \
+			-i src/qmapshack/CMakeLists.txt || die
+	fi
 }
 
 src_install() {

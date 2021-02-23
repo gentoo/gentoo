@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-02-23)
+# Slotted mistakenly
+dev-libs/quazip:1
+
 # Matthew Thode <prometheanfire@gentoo.org> (2021-02-22)
 # Removing unneeded packages from tree Bug #772200
 # Removal on 2021-03-22

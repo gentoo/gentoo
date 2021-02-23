@@ -3,9 +3,9 @@
 
 EAPI=7
 
-inherit desktop git-r3 prefix qmake-utils xdg
-
 MY_PV="${PV/_/}"
+inherit desktop git-r3 qmake-utils xdg
+
 DESCRIPTION="Free cross-platform LaTeX editor (fork from texmakerX)"
 HOMEPAGE="https://www.texstudio.org https://github.com/texstudio-org/texstudio"
 EGIT_REPO_URI="https://github.com/texstudio-org/texstudio.git"
@@ -15,10 +15,10 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="video"
 
-COMMON_DEPEND="
+DEPEND="
 	app-text/hunspell:=
 	app-text/poppler[qt5]
-	>=dev-libs/quazip-0.7.2:0[qt5(+)]
+	>=dev-libs/quazip-1.0:0=
 	dev-qt/designer:5
 	dev-qt/qtcore:5
 	dev-qt/qtconcurrent:5
@@ -34,30 +34,30 @@ COMMON_DEPEND="
 	sys-libs/zlib
 	x11-libs/libX11
 	x11-libs/libXext
-	video? ( media-libs/phonon[qt5(+)] )"
-RDEPEND="${COMMON_DEPEND}
+	video? ( >=media-libs/phonon-4.11.0 )
+"
+RDEPEND="${DEPEND}
 	app-text/ghostscript-gpl
 	app-text/psutils
 	media-libs/netpbm
-	virtual/latex-base"
-DEPEND="${COMMON_DEPEND}"
-
+	virtual/latex-base
+"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}/${PN}-3.0.5-quazip1.patch" ) # TODO: upstream
+
 src_prepare() {
-	default
+	xdg_src_prepare
+
+	rm -r src/quazip || die
 	# TODO: find hunspell quazip utilities/poppler-data qtsingleapplication -delete || die
 
 	if use video; then
 		sed "/^PHONON/s:$:true:g" -i ${PN}.pro || die
 	fi
 
-	sed \
-		-e '/qtsingleapplication.pri/d' \
+	sed -e "/qtsingleapplication.pri/s/.*/CONFIG += qtsingleapplication/" \
 		-i ${PN}.pro || die
-
-	cp "${FILESDIR}"/texmakerx_my.pri ${PN}.pri || die
-	eprefixify ${PN}.pri
 }
 
 src_configure() {

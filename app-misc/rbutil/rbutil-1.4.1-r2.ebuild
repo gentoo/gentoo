@@ -8,6 +8,7 @@ inherit desktop qmake-utils xdg
 DESCRIPTION="Rockbox open source firmware manager for music players"
 HOMEPAGE="https://www.rockbox.org/wiki/RockboxUtility"
 SRC_URI="https://download.rockbox.org/${PN}/source/RockboxUtility-v${PV}-src.tar.bz2"
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
@@ -15,7 +16,7 @@ IUSE="debug"
 
 RDEPEND="
 	dev-libs/crypto++:=
-	dev-libs/quazip:0
+	dev-libs/quazip:0=
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
@@ -24,20 +25,28 @@ RDEPEND="
 	media-libs/speexdsp
 	virtual/libusb:1
 "
-
 DEPEND="${RDEPEND}"
-BDEPEND="dev-qt/linguist-tools:5"
+BDEPEND="
+	dev-qt/linguist-tools:5
+	virtual/pkgconfig
+"
 
 S="${WORKDIR}/RockboxUtility-v${PV}"
 QTDIR="${PN}/${PN}qt"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.4.1-quazip.patch
+	"${FILESDIR}"/${P}-quazip1.patch
 	"${FILESDIR}"/0001-imxtools-sbtools-fix-compilation-with-gcc-10.patch
+	"${FILESDIR}"/${P}-fix-versionstring.patch # bug 734178
 )
 
 src_prepare() {
 	xdg_src_prepare
+
+	if has_version "<dev-libs/quazip-1.0"; then
+		sed -e "/^PKGCONFIG/s/quazip1-qt5/quazip/" -i ${QTDIR}/${PN}qt.pro || die
+	fi
+
 	rm -rv "${QTDIR}"/{quazip,zlib}/ || die
 }
 

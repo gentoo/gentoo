@@ -26,6 +26,8 @@ LICENSE="LGPL-2.1 GPL-2 GPL-3"
 SLOT="0"
 IUSE="autotype browser ccache keeshare +network test yubikey"
 
+RESTRICT="!test? ( test )"
+
 RDEPEND="
 	app-crypt/argon2:=
 	dev-libs/libgcrypt:=
@@ -46,7 +48,7 @@ RDEPEND="
 		x11-libs/libXi
 		x11-libs/libXtst
 	)
-	keeshare? ( dev-libs/quazip:0 )
+	keeshare? ( dev-libs/quazip:0= )
 	yubikey? ( sys-auth/ykpers )
 "
 
@@ -59,7 +61,7 @@ BDEPEND="
 	ccache? ( dev-util/ccache )
 "
 
-RESTRICT="!test? ( test )"
+PATCHES=( "${FILESDIR}"/${PN}-2.6.4-quazip1.patch ) # pending upstream PR#5511
 
 src_prepare() {
 	 use test || \

@@ -36,7 +36,7 @@ RDEPEND="
 		dev-qt/qtimageformats:5
 		media-libs/tiff
 	)
-	zip? ( dev-libs/quazip:0 )
+	zip? ( dev-libs/quazip:0= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -47,6 +47,8 @@ BDEPEND="
 S="${WORKDIR}/${P}/ImageLounge"
 
 DOCS=( src/changelog.txt )
+
+PATCHES=( "${FILESDIR}"/${P}-quazip1.patch )
 
 src_prepare() {
 	if use plugins ; then

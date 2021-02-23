@@ -3,9 +3,8 @@
 
 EAPI=7
 
-inherit desktop toolchain-funcs unpacker xdg-utils
-
 MY_PV="${PV/_/-}"
+inherit desktop toolchain-funcs unpacker xdg-utils
 
 DESCRIPTION="A client software for quality voice communication via the internet"
 HOMEPAGE="https://www.teamspeak.com/"
@@ -14,23 +13,21 @@ SRC_URI="
 	x86? ( https://files.teamspeak-services.com/releases/client/${PV}/TeamSpeak3-Client-linux_x86-${MY_PV}.run )
 "
 
-KEYWORDS="-* amd64 x86"
 LICENSE="teamspeak3 || ( GPL-2 GPL-3 LGPL-3 )"
 SLOT="3"
+KEYWORDS="-* amd64 x86"
 IUSE="+alsa pulseaudio system-libcxx"
+
 REQUIRED_USE="|| ( alsa pulseaudio )"
+RESTRICT="bindist mirror"
 
 BDEPEND=">=dev-util/patchelf-0.10"
-
 RDEPEND="
 	app-arch/snappy:0/1
 	dev-libs/openssl:0
-	dev-libs/quazip:0
+	dev-libs/quazip:0=
 	dev-qt/qtcore:5
-	|| (
-		dev-qt/qtgui:5[accessibility,dbus,X(-)]
-		dev-qt/qtgui:5[accessibility,dbus,xcb(-)]
-	)
+	dev-qt/qtgui:5[accessibility,dbus,X(-)]
 	dev-qt/qtnetwork:5
 	dev-qt/qtsql:5[sqlite]
 	dev-qt/qtsvg:5
@@ -45,8 +42,6 @@ RDEPEND="
 	pulseaudio? ( media-sound/pulseaudio )
 	system-libcxx? ( sys-libs/libcxx[libcxxabi] )
 "
-
-RESTRICT="bindist mirror"
 
 S="${WORKDIR}"
 
@@ -65,20 +60,24 @@ src_prepare() {
 	default
 
 	if ! use alsa; then
-		rm -f soundbackends/libalsa_linux_*.so || die
+		rm soundbackends/libalsa_linux_*.so || die
 	fi
 
 	if ! use pulseaudio ; then
-		rm -f soundbackends/libpulseaudio_linux_*.so || die
+		rm soundbackends/libpulseaudio_linux_*.so || die
 	fi
 
 	mv ts3client_linux_* ts3client || die
 
 	# Fixes QA Notice: Unresolved soname dependencies.
 	# Since this is a binary only package, it must be patched.
+	local quazip_so="libquazip1-qt5.so"
+	if has_version "<dev-libs/quazip-1.0"; then
+		quazip_so="libquazip5.so.1"
+	fi
 	local soname_files=( "error_report" "ts3client" )
 	for soname_file in ${soname_files[@]}; do
-		patchelf --replace-needed libquazip.so libquazip5.so.1 "${soname_file}" || die
+		patchelf --replace-needed libquazip.so "${quazip_so}" "${soname_file}" || die
 	done
 
 	tc-export CXX

@@ -7,21 +7,32 @@ inherit desktop eapi8-dosym readme.gentoo-r1 wrapper xdg-utils
 
 DESCRIPTION="Video conferencing and web conferencing service"
 HOMEPAGE="https://zoom.us/"
-SRC_URI="https://zoom.us/client/${PV}/${PN}_x86_64.tar.xz -> ${P}_x86_64.tar.xz"
+SRC_URI="amd64? ( https://zoom.us/client/${PV}/${PN}_x86_64.tar.xz -> ${P}_x86_64.tar.xz )
+	x86? ( https://zoom.us/client/${PV}/${PN}_i686.tar.xz -> ${P}_i686.tar.xz )"
 S="${WORKDIR}/${PN}"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="-* ~amd64"
-IUSE="bundled-libjpeg-turbo +bundled-qt pulseaudio wayland"
+KEYWORDS="-* ~amd64 ~x86"
+IUSE="bundled-libjpeg-turbo pulseaudio"
 RESTRICT="mirror bindist strip"
 
 RDEPEND="!games-engines/zoom
 	dev-libs/glib:2
-	dev-libs/quazip
-	media-libs/fdk-aac:0/2
-	media-libs/fontconfig
-	media-libs/freetype
+	dev-libs/icu
+	dev-libs/quazip:0=
+	dev-qt/qtcore:5
+	dev-qt/qtdbus:5
+	dev-qt/qtdeclarative:5[widgets]
+	dev-qt/qtdiag:5
+	dev-qt/qtgraphicaleffects:5
+	dev-qt/qtgui:5
+	dev-qt/qtlocation:5
+	dev-qt/qtnetwork:5
+	dev-qt/qtquickcontrols:5[widgets]
+	dev-qt/qtscript:5
+	dev-qt/qtsvg:5
+	dev-qt/qtwidgets:5
 	media-sound/mpg123
 	sys-apps/dbus
 	sys-apps/util-linux
@@ -30,32 +41,12 @@ RDEPEND="!games-engines/zoom
 	x11-libs/libxcb
 	x11-libs/libXext
 	x11-libs/libXfixes
-	x11-libs/libxkbcommon[X]
-	x11-libs/libXrender
 	x11-libs/libXtst
 	x11-libs/xcb-util-image
 	x11-libs/xcb-util-keysyms
+	!bundled-libjpeg-turbo? ( media-libs/libjpeg-turbo )
 	pulseaudio? ( media-sound/pulseaudio )
-	!pulseaudio? ( media-libs/alsa-lib )
-	wayland? ( dev-libs/wayland )
-	!bundled-libjpeg-turbo? ( >=media-libs/libjpeg-turbo-2.0.5 )
-	!bundled-qt? (
-		dev-libs/icu
-		dev-qt/qtcore:5
-		dev-qt/qtdbus:5
-		dev-qt/qtdeclarative:5[widgets]
-		dev-qt/qtdiag:5
-		dev-qt/qtgraphicaleffects:5
-		dev-qt/qtgui:5
-		dev-qt/qtlocation:5
-		dev-qt/qtnetwork:5
-		dev-qt/qtquickcontrols:5[widgets]
-		dev-qt/qtquickcontrols2:5
-		dev-qt/qtscript:5
-		dev-qt/qtsvg:5
-		dev-qt/qtwidgets:5
-		wayland? ( dev-qt/qtwayland )
-	)"
+	!pulseaudio? ( media-libs/alsa-lib )"
 
 BDEPEND="dev-util/bbe
 	bundled-libjpeg-turbo? ( dev-util/patchelf )"
@@ -88,11 +79,15 @@ src_install() {
 	insinto /opt/zoom
 	exeinto /opt/zoom
 	doins -r json ringtone sip timezones translations
-	doins *.pcm *.sh Embedded.properties version.txt
-	doexe zoom zopen ZoomLauncher
+	doins *.pcm *.pem *.sh Embedded.properties version.txt
+	doexe zoom zoom.sh zopen ZoomLauncher
 	dosym8 -r {"/usr/$(get_libdir)",/opt/zoom}/libmpg123.so
-	dosym8 -r {"/usr/$(get_libdir)",/opt/zoom}/libquazip.so
-	dosym8 -r "/usr/$(get_libdir)/libfdk-aac.so.2" /opt/zoom/libfdkaac2.so
+
+	local quazip_so="libquazip1-qt5.so"
+	if has_version "<dev-libs/quazip-1.0"; then
+		quazip_so="libquazip5.so"
+	fi
+	dosym8 -r "/usr/$(get_libdir)/${quazip_so}" /opt/zoom/libquazip.so
 
 	if use bundled-libjpeg-turbo; then
 		doexe libturbojpeg.so
@@ -100,28 +95,7 @@ src_install() {
 		dosym8 -r {"/usr/$(get_libdir)",/opt/zoom}/libturbojpeg.so
 	fi
 
-	if use bundled-qt; then
-		doexe libicu*.so.56 libQt5*.so.5
-		doins qt.conf
-
-		local dirs="Qt* generic iconengines imageformats \
-			platforminputcontexts platforms wayland* xcbglintegrations"
-		doins -r ${dirs}
-		find ${dirs} -type f '(' -name '*.so' -o -name '*.so.*' ')' \
-			-printf '/opt/zoom/%p\0' | xargs -0 -r fperms 0755 || die
-
-		(	# Remove libs and plugins with unresolved soname dependencies
-			cd "${ED}"/opt/zoom || die
-			rm -r Qt/labs/location QtQml/RemoteObjects \
-				QtQuick/LocalStorage QtQuick/Particles.2 QtQuick/Scene2D \
-				QtQuick/Scene3D QtQuick/Shapes QtQuick/XmlListModel \
-				platforms/libqeglfs.so platforms/libqlinuxfb.so || die
-			use wayland || rm -r libQt5Wayland*.so* QtWayland wayland* \
-				platforms/libqwayland*.so || die
-		)
-	fi
-
-	make_wrapper zoom /opt/zoom{/zoom,} $(usex bundled-qt /opt/zoom "")
+	make_wrapper zoom /opt/zoom{/zoom,}
 	make_desktop_entry "zoom %U" Zoom zoom-videocam "" \
 		"MimeType=x-scheme-handler/zoommtg;application/x-zoom;"
 	doicon zoom-videocam.svg
