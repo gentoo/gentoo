@@ -4631,7 +4631,11 @@ dev-java/appframework 1.03-r5: Set of Java classes to build desktop applications
 dev-java/apple-java-extensions-bin 1.5-r1: Apple eAWT and eIO APIs for Java on Mac OS X
 dev-java/apt-mirror 1.0-r1: Annotation processing apt mirror API introduced in J2SE 5.0
 dev-java/args4j 2.32 2.33: args4j is a Java command line arguments parser
-dev-java/asm 3.3.1-r1 5.0.3 5.1: Bytecode manipulation framework for Java
+dev-java/asm 3.3.1-r1 5.0.3 5.1 6.2.1 7.3.1 8.0.1 9.1: Bytecode manipulation framework for Java
+dev-java/asm-analysis 6.2.1 7.3.1 8.0.1 9.1: Bytecode manipulation framework for Java (Static code analysis API)
+dev-java/asm-commons 6.2.1 7.3.1 8.0.1 9.1: Bytecode manipulation framework for Java (Common class adaptors)
+dev-java/asm-tree 6.2.1 7.3.1 8.0.1 9.1: Bytecode manipulation framework for Java (Tree API)
+dev-java/asm-util 6.2.1 7.3.1 8.0.1 9.1: Bytecode manipulation framework for Java (Utilities)
 dev-java/aspectj 1.7.3-r1 1.7.4: A seamless aspect-oriented extension to the Java programming language
 dev-java/assertj-core 2.3.0: Java library that provides a fluent interface for writing assertions
 dev-java/avalon-framework 4.1.5-r2 4.2.0-r2: Avalon Framework
@@ -14708,7 +14712,7 @@ net-im/qtox 1.16.3-r1 9999: Most feature-rich GUI for net-libs/tox using Qt5
 net-im/ricochet 1.1.4 9999: Privacy-focused instant messaging through Tor hidden services
 net-im/sendxmpp 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
 net-im/signal-cli-bin 0.7.4: Send and receive messages of Signal Messenger over a command line interface
-net-im/signal-desktop-bin 1.39.6 1.40.0-r1: Allows you to send and receive messages of Signal Messenger on your computer
+net-im/signal-desktop-bin 1.39.6 1.40.0-r1 1.40.0-r2: Allows you to send and receive messages of Signal Messenger on your computer
 net-im/skype-dbus-mock 0_pre20181011: Mocked systemd dbus interface for skype 8.30+
 net-im/skypeforlinux 8.69.0.77: Instant messaging client, with support for audio and video
 net-im/slack 4.11.3 4.12.2 4.13.0: Team collaboration tool
