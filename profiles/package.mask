@@ -51,6 +51,7 @@ dev-python/moviepy
 # bug #771363
 =net-im/signal-desktop-bin-1.40.0-r1
 =net-im/signal-desktop-bin-1.40.0-r2
+=net-im/signal-desktop-bin-1.40.0-r3
 
 # Michał Górny <mgorny@gentoo.org> (2021-02-19)
 # Xfce 4.16 has the same functionality built-in, rendering the plugin
