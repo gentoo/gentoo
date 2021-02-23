@@ -18,7 +18,7 @@ DEPEND="${RDEPEND}"
 
 pkg_setup() {
 	QA_FLAGS_IGNORED="/$(get_libdir)/security/pam_passwdqc.so
-		 /usr/$(get_libdir)/libpasswdqc.so.0"
+		 /usr/$(get_libdir)/libpasswdqc.so.1"
 }
 
 src_prepare() {
