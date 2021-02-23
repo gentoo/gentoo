@@ -7703,8 +7703,10 @@ sys-apps/ipmicfg:uefi - Install compatible UEFI file for boot.
 sys-apps/ipmitool:openbmc - Enable OpenBMC D-Bus interface
 sys-apps/ipmitool:openipmi - Use the system OpenIPMI implementation.
 sys-apps/iproute2:berkdb - build programs that use berkdb (just arpd)
+sys-apps/iproute2:bpf - Use dev-libs/libbpf
 sys-apps/iproute2:elf - support loading eBPF programs from ELFs (e.g. LLVM's eBPF backend)
 sys-apps/iproute2:iptables - include support for iptables filtering
+sys-apps/iproute2:libbsd - Use dev-libs/libbsd instead of internal funcs
 sys-apps/iproute2:minimal - only install ip and tc programs, without eBPF support
 sys-apps/irqbalance:numa - Support balancing IRQs across NUMA nodes
 sys-apps/irqbalance:tui - Enable build of irqbalance terminal user interface

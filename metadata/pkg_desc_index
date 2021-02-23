@@ -15498,7 +15498,7 @@ net-print/foomatic-db-engine 4.0.12: Generates ppds out of xml foomatic printer 
 net-print/foomatic-db-ppds 4.0.20170331 4.0.20180126 4.0.20190226: linuxprinting.org PPD files for postscript printers
 net-print/gtklp 1.3.1: A GUI for cupsd
 net-print/gutenprint 5.3.3-r1 5.3.3-r2: Ghostscript and cups printer drivers
-net-print/hplip 3.20.9-r3 3.20.11 3.20.11-r1: HP Linux Imaging and Printing - Print, scan, fax drivers and service tools
+net-print/hplip 3.20.9-r3 3.20.11 3.20.11-r1 3.21.2: HP Linux Imaging and Printing - Print, scan, fax drivers and service tools
 net-print/hplip-plugin 3.20.9 3.20.11: Proprietary plugins and firmware for HPLIP
 net-print/ink 0.5.1 0.5.2: A command line utility to display the ink level of your printer
 net-print/kyocera-1x2x-mfp-driver 1.1203-r1: Printer descriptions (PPDs) and filters for Kyocera 1x2x MFP
@@ -16940,7 +16940,7 @@ sys-apps/iotools 1.5: Simple commands to access hardware device registers
 sys-apps/ipmicfg 1.32.0.200910: An in-band utility for configuring Supermicro IPMI devices
 sys-apps/ipmitool 1.8.18_p20201004-r1 1.8.18_p20201004-r2 1.8.18_p20201004-r3: Utility for controlling IPMI enabled devices.
 sys-apps/ipmiutil 3.0.6 3.0.9 3.1.6 3.1.7: IPMI Management Utilities
-sys-apps/iproute2 5.7.0 5.10.0 9999: kernel routing and traffic control utilities
+sys-apps/iproute2 5.7.0 5.10.0 5.10.0-r1 5.11.0 9999: kernel routing and traffic control utilities
 sys-apps/irqbalance 1.6.0-r1 1.7.0: Distribute hardware interrupts across processors on a multiprocessor system
 sys-apps/isapnptools 1.27: Tools for configuring ISA PnP devices
 sys-apps/iucode_tool 2.3.1-r1: tool to manipulate Intel X86 and X86-64 processor microcode update collections
@@ -17583,7 +17583,7 @@ sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh 
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.80 5.4.80-r1 5.4.83 5.4.88 5.4.91 5.4.92 5.4.93 5.4.94 5.4.95 5.4.96 5.4.97 5.4.98 5.4.99 5.10.9 5.10.10 5.10.11 5.10.12 5.10.13 5.10.14 5.10.15 5.10.16 5.10.17: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.80-r2 5.4.83 5.4.83-r1 5.4.88 5.4.88-r1 5.4.91 5.4.91-r1 5.4.92 5.4.92-r1 5.4.93 5.4.93-r1 5.4.94 5.4.94-r1 5.4.95 5.4.95-r1 5.4.96 5.4.96-r1 5.4.97 5.4.97-r1 5.4.98 5.4.98-r1 5.4.99 5.4.99-r1 5.10.9 5.10.9-r1 5.10.10 5.10.10-r1 5.10.11 5.10.11-r1 5.10.12 5.10.12-r1 5.10.13 5.10.13-r1 5.10.14 5.10.14-r1 5.10.15 5.10.15-r1 5.10.16 5.10.16-r1 5.10.17 5.10.17-r1: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.246 4.4.255 4.4.256 4.4.257 4.9.246 4.9.255 4.9.256 4.9.257 4.14.209 4.14.219 4.14.220 4.14.221 4.19.160 4.19.173 4.19.174 4.19.175 4.19.176 5.4.80-r1 5.4.97 5.4.98 5.4.99 5.10.14 5.10.15 5.10.16 5.10.17 5.11.0: Full sources including the Gentoo patchset for the 5.11 kernel tree
+sys-kernel/gentoo-sources 4.4.246 4.4.255 4.4.256 4.4.257 4.4.258 4.9.246 4.9.255 4.9.256 4.9.257 4.14.209 4.14.219 4.14.220 4.14.221 4.19.160 4.19.173 4.19.174 4.19.175 4.19.176 5.4.80-r1 5.4.97 5.4.98 5.4.99 5.10.14 5.10.15 5.10.16 5.10.17 5.11.0: Full sources including the Gentoo patchset for the 5.11 kernel tree
 sys-kernel/git-sources 5.11_rc1 5.11_rc2 5.11_rc3 5.11_rc4 5.11_rc5 5.11_rc6 5.11_rc7: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
