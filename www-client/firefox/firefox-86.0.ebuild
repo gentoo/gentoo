@@ -72,7 +72,7 @@ REQUIRED_USE="debug? ( !system-av1 )
 BDEPEND="${PYTHON_DEPS}
 	app-arch/unzip
 	app-arch/zip
-	>=dev-util/cbindgen-0.15.0
+	>=dev-util/cbindgen-0.16.0
 	>=net-libs/nodejs-10.22.1
 	virtual/pkgconfig
 	>=virtual/rust-1.47.0
