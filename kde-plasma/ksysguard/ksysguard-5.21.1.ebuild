@@ -4,6 +4,7 @@
 EAPI=7
 
 ECM_HANDBOOK="forceoptional"
+ECM_TEST="forceoptional"
 KFMIN=5.78.0
 PVCUT=$(ver_cut 1-3)
 QTMIN=5.15.2
@@ -15,9 +16,10 @@ DESCRIPTION="Network-enabled task manager and system monitor"
 LICENSE="GPL-2+"
 SLOT="5"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE="lm-sensors +network networkmanager"
+IUSE="lm-sensors networkmanager"
 
 DEPEND="
+	dev-libs/libnl:3
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
@@ -39,13 +41,10 @@ DEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	>=kde-frameworks/solid-${KFMIN}:5
 	>=kde-plasma/libksysguard-${PVCUT}:5
+	net-libs/libpcap
+	sys-libs/libcap
 	virtual/libudev:=
 	lm-sensors? ( sys-apps/lm-sensors:= )
-	network? (
-		dev-libs/libnl:3
-		net-libs/libpcap
-		sys-libs/libcap
-	)
 	networkmanager? ( >=kde-frameworks/networkmanager-qt-${KFMIN}:5 )
 "
 RDEPEND="${DEPEND}"
@@ -54,8 +53,6 @@ src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package lm-sensors Sensors)
 		$(cmake_use_find_package networkmanager KF5NetworkManagerQt)
-		$(cmake_use_find_package network libpcap)
-		$(cmake_use_find_package network NL)
 	)
 
 	ecm_src_configure

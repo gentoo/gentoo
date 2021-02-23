@@ -120,7 +120,6 @@ RDEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	"${WORKDIR}/${XORGHDRS}/override-include-dirs.patch" # downstream patch
-	"${FILESDIR}/${P}-keyboard-repeat.patch"
 )
 
 src_prepare() {
