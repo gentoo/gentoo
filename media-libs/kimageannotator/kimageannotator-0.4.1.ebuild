@@ -23,7 +23,7 @@ RDEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5[png]
-	>=media-libs/kcolorpicker-0.1.4
+	>=media-libs/kcolorpicker-0.1.5
 	x11-libs/libX11
 "
 DEPEND="${RDEPEND}
@@ -32,10 +32,6 @@ DEPEND="${RDEPEND}
 BDEPEND="
 	dev-qt/linguist-tools:5
 "
-PATCHES=(
-	# https://github.com/ksnip/kImageAnnotator/pull/195
-	"${FILESDIR}/${P}-fix-static-test-library-PR195.patch"
-)
 
 S="${WORKDIR}/${MY_P}"
 
