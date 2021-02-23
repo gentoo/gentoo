@@ -4580,6 +4580,7 @@ media-sound/mixxx:qtkeychain - Enable Secure credential storage support via dev-
 media-sound/mixxx:shout - Enable broadcasting support via media-libs/libshout
 media-sound/moc:cache - Enable tags caching support
 media-sound/moc:sid - Build with SID (Commodore 64 Audio) support
+media-sound/moc:sndio - Enable support for the media-sound/sndio backend
 media-sound/moc:tremor - Build vorbis support using an integer implementation of the vorbis library (media-libs/tremor)
 media-sound/mp3blaster:sid - Build with SID (Commodore 64 Audio) support
 media-sound/mpd:cdio - Use libcdio for ISO9660 parsing support
