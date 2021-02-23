@@ -17,8 +17,8 @@ IUSE="doc examples"
 
 RDEPEND="
 	>=dev-python/pyasn1-0.2.3[${PYTHON_USEDEP}]
-	dev-python/pysmi[${PYTHON_USEDEP}]
 	dev-python/pycryptodome[${PYTHON_USEDEP}]"
+PDEPEND="dev-python/pysmi[${PYTHON_USEDEP}]"
 
 distutils_enable_sphinx docs/source
 
