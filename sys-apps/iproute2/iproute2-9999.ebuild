@@ -64,7 +64,7 @@ src_prepare() {
 	# Fix version if necessary
 	local versionfile="include/version.h"
 	if [[ "${PV}" != 9999 ]] && ! grep -Fq "${PV}" ${versionfile} ; then
-		elog "Fixing version string"
+		einfo "Fixing version string"
 		sed "s@\"[[:digit:]\.]\+\"@\"${PV}\"@" \
 			-i ${versionfile} || die
 	fi
