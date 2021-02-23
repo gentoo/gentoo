@@ -1,0 +1,10 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=Dependency Manager for PHP
+EAPI=7
+HOMEPAGE=https://github.com/composer/composer
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=dev-lang/php:*[curl] >=dev-php/ca-bundle-1.0 dev-php/fedora-autoloader >=dev-php/jsonlint-1.4 >=dev-php/json-schema-5.2.10 >=dev-php/phar-utils-1.0 >=dev-php/psr-log-1.0 >=dev-php/reactphp-promise-2.7 >=dev-php/semver-3.0 >=dev-php/spdx-licenses-1.2 >=dev-php/symfony-console-2.8.52 >=dev-php/symfony-filesystem-2.8.52 >=dev-php/symfony-finder-2.8.52 >=dev-php/symfony-process-2.8.52 >=dev-php/xdebug-handler-1.1
+SLOT=0
+SRC_URI=https://github.com/composer/composer/archive/2.0.10.tar.gz -> composer-2.0.10.tar.gz
+_md5_=a9f7d142a7110aeda4158bf11197803e
