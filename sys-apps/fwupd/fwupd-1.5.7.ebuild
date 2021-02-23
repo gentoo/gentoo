@@ -14,11 +14,12 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE="agent amt dell gtk-doc elogind flashrom minimal introspection +man nvme policykit synaptics systemd test thunderbolt tpm uefi"
+IUSE="agent amt archive bluetooth dell gnutls gtk-doc gusb elogind flashrom minimal introspection +man nvme policykit synaptics systemd test thunderbolt tpm uefi"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	^^ ( elogind minimal systemd )
 	dell? ( uefi )
 	minimal? ( !introspection )
+	uefi? ( gnutls )
 "
 RESTRICT="!test? ( test )"
 
@@ -35,15 +36,13 @@ BDEPEND="$(vala_depend)
 		net-libs/gnutls[tools]
 	)
 "
-CDEPEND="${PYTHON_DEPS}
+COMMON_DEPEND="${PYTHON_DEPS}
 	>=app-arch/gcab-1.0
-	app-arch/libarchive:=
 	dev-db/sqlite
 	>=dev-libs/glib-2.45.8:2
 	dev-libs/json-glib
 	dev-libs/libgpg-error
 	dev-libs/libgudev:=
-	>=dev-libs/libgusb-0.3.5[introspection?]
 	>=dev-libs/libjcat-0.1.0[gpg,pkcs7]
 	>=dev-libs/libxmlb-0.1.13:=
 	$(python_gen_cond_dep '
@@ -55,16 +54,18 @@ CDEPEND="${PYTHON_DEPS}
 	net-misc/curl
 	virtual/libelf:0=
 	virtual/udev
+	archive? ( app-arch/libarchive:= )
 	dell? ( >=sys-libs/libsmbios-2.4.0 )
 	elogind? ( >=sys-auth/elogind-211 )
 	flashrom? ( >=sys-apps/flashrom-1.2-r3 )
+	gnutls? ( net-libs/gnutls )
+	gusb? ( >=dev-libs/libgusb-0.3.5[introspection?] )
 	policykit? ( >=sys-auth/polkit-0.103 )
 	systemd? ( >=sys-apps/systemd-211 )
 	tpm? ( app-crypt/tpm2-tss )
 	uefi? (
 		media-libs/fontconfig
 		media-libs/freetype
-		net-libs/gnutls
 		sys-boot/gnu-efi
 		sys-boot/efibootmgr
 		sys-fs/udisks
@@ -75,17 +76,17 @@ CDEPEND="${PYTHON_DEPS}
 # Block sci-chemistry/chemical-mime-data for bug #701900
 RDEPEND="
 	!<sci-chemistry/chemical-mime-data-0.1.94-r4
-	${CDEPEND}
+	${COMMON_DEPEND}
 	sys-apps/dbus
 "
 
 DEPEND="
-	${CDEPEND}
+	${COMMON_DEPEND}
 	x11-libs/pango[introspection]
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.3.9-logind_plugin.patch"
+	"${FILESDIR}/${PN}-1.5.7-logind_plugin.patch"
 )
 
 pkg_setup() {
@@ -111,19 +112,25 @@ src_configure() {
 		-Dbuild="$(usex minimal standalone all)"
 		$(meson_use agent)
 		$(meson_use amt plugin_amt)
+		$(meson_use archive libarchive)
+		$(meson_use bluetooth bluez)
 		$(meson_use dell plugin_dell)
 		$(meson_use elogind)
 		$(meson_use flashrom plugin_flashrom)
+		$(meson_use gnutls)
 		$(meson_use gtk-doc gtkdoc)
+		$(meson_use gusb)
+		$(meson_use gusb plugin_altos)
 		$(meson_use man)
 		$(meson_use nvme plugin_nvme)
 		$(meson_use introspection)
 		$(meson_use policykit polkit)
-		$(meson_use synaptics plugin_synaptics)
+		$(meson_use synaptics plugin_synaptics_mst)
+		$(meson_use synaptics plugin_synaptics_rmi)
 		$(meson_use systemd)
 		$(meson_use test tests)
 		$(meson_use thunderbolt plugin_thunderbolt)
-		$(meson_use tpm)
+		$(meson_use tpm plugin_tpm)
 		$(meson_use uefi plugin_uefi_capsule)
 		$(meson_use uefi plugin_uefi_pk)
 		-Dconsolekit="false"
@@ -132,6 +139,7 @@ src_configure() {
 		-Dplugin_modem_manager="false"
 	)
 	use ppc64 && emesonargs+=( -Dplugin_msr="false" )
+	use uefi && emesonargs+=( -Defi_os_dir="gentoo" )
 	export CACHE_DIRECTORY="${T}"
 	meson_src_configure
 }
