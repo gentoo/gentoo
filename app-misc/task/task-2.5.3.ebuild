@@ -7,7 +7,8 @@ inherit bash-completion-r1 cmake
 
 DESCRIPTION="Taskwarrior is a command-line todo list manager"
 HOMEPAGE="https://taskwarrior.org/"
-SRC_URI="https://taskwarrior.org/download/${P}.tar.gz"
+SRC_URI="https://github.com/GothenburgBitFactory/taskwarrior/releases/download/v2.5.3/task-2.5.3.tar.gz
+https://github.com/GothenburgBitFactory/taskwarrior/releases/download/v2.5.3/tests-2.5.3.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -21,6 +22,9 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_prepare() {
+	# move test directory into source directory
+	mv "${WORKDIR}"/test "${WORKDIR}"/"$P" || die
+
 	cmake_src_prepare
 
 	# don't automatically install scripts
@@ -36,6 +40,12 @@ src_configure() {
 	)
 
 	cmake_src_configure
+}
+
+src_test() {
+	cd "${WORKDIR}"/"${P}"_build
+
+	eninja test
 }
 
 src_install() {
