@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>desktop-misc@gentoo.org</email>
-    <name>Gentoo Desktop Miscellaneous Project</name>
-  </maintainer>
-  <longdescription>Dzen is a general purpose messaging, notification and menuing
-  program for X11. It was designed to be scriptable in any language and
-  integrate well with window managers like dwm, wmii and xmonad though it will
-  work with any window manager.</longdescription>
-  <upstream>
-    <remote-id type="github">robm/dzen</remote-id>
-  </upstream>
+	<maintainer type="person">
+		<email>sudinave@gmail.com</email>
+		<name>Ionen Wolkens</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">robm/dzen</remote-id>
+	</upstream>
 </pkgmetadata>
