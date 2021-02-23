@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="pypi">uvicorn</remote-id>
+		<remote-id type="github">encode/uvicorn</remote-id>
+		<bugs-to>https://github.com/encode/uvicorn/issues</bugs-to>
+	</upstream>
+</pkgmetadata>
