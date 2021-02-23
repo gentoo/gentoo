@@ -10238,7 +10238,7 @@ dev-ruby/redcarpet 3.5.1: A Ruby wrapper for Upskirt
 dev-ruby/redcloth 4.3.2-r1: A module for using Textile in Ruby
 dev-ruby/redis 4.0.1 4.1.4: A Ruby client library for Redis
 dev-ruby/ref 2.0.0: Implements weak, soft, and strong references in Ruby
-dev-ruby/regexp_parser 0.5.0 1.7.1 1.8.2 2.0.0 2.0.3: A library for tokenizing, lexing, and parsing Ruby regular expressions
+dev-ruby/regexp_parser 0.5.0 1.7.1 1.8.2 2.0.0 2.0.3 2.1.0: A library for tokenizing, lexing, and parsing Ruby regular expressions
 dev-ruby/regexp_property_values 1.0.0: See which property values are supported by the regular expression engine
 dev-ruby/request_store 1.5.0: Per-request global storage for Rack
 dev-ruby/rest-client 2.1.0: Simple Simple HTTP and REST client for Ruby
@@ -15555,7 +15555,7 @@ net-vpn/i2pd 2.33.0 2.34.0 2.35.0: A C++ daemon for accessing the I2P anonymous 
 net-vpn/iodine 0.7.0-r2: IP over DNS tunnel
 net-vpn/ipsec-tools 0.8.2-r6: A port of KAME's IPsec utilities to the Linux-2.6 IPsec implementation
 net-vpn/isatapd 0.9.7-r2: Creates and maintains an ISATAP tunnel (rfc5214)
-net-vpn/libreswan 3.32 3.32-r1 4.1 4.1-r1 4.2: IPsec implementation for Linux, fork of Openswan
+net-vpn/libreswan 3.32 3.32-r1 4.1 4.1-r1 4.2 4.3: IPsec implementation for Linux, fork of Openswan
 net-vpn/logmein-hamachi 2.1.0.198 2.1.0.203: LogMeIn Hamachi VPN tunneling engine
 net-vpn/mullvad-netns 0.2 9999: Script to run a command within a Mullvad network namespace
 net-vpn/networkmanager-fortisslvpn 1.2.8-r2 1.2.10: NetworkManager Fortinet SSLVPN compatible plugin
