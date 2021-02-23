@@ -12250,7 +12250,7 @@ kde-apps/poxml 20.08.3 20.12.2: KDE utility to translate DocBook XML files using
 kde-apps/print-manager 20.08.3 20.12.2: Manage print jobs and printers in Plasma
 kde-apps/rocs 20.08.3 20.12.2: Interface to work with Graph Theory
 kde-apps/signon-kwallet-extension 20.08.3 20.12.2: KWallet extension for signond
-kde-apps/spectacle 20.08.3 20.12.2: Screenshot capture utility
+kde-apps/spectacle 20.08.3 20.12.2-r1: Screenshot capture utility
 kde-apps/step 20.08.3 20.12.2: Interactive physics simulator
 kde-apps/svgpart 20.08.3 20.12.2: Kpart for viewing SVGs
 kde-apps/sweeper 20.08.3 20.12.2: Privacy settings widget to clean unwanted traces on the system
@@ -13118,8 +13118,8 @@ media-libs/intel-mediasdk 18.3.0 18.4.1 9999: Intel Media SDK
 media-libs/jbig2dec 0.18 0.19: A decoder implementation of the JBIG2 image compression format
 media-libs/jbig2enc 0.28-r1: JBIG2 Encoder and libs
 media-libs/jbigkit 2.1: data compression algorithm for bi-level high-resolution images
-media-libs/kcolorpicker 0.1.4: Qt based color picker with popup menu
-media-libs/kimageannotator 0.4.0: Tool for annotating images
+media-libs/kcolorpicker 0.1.5: Qt based color picker with popup menu
+media-libs/kimageannotator 0.4.1: Tool for annotating images
 media-libs/kodi-platform 9999: Kodi platform support library
 media-libs/kquickimageeditor 0.1.3: QtQuick components providing basic image editing capabilities
 media-libs/kvazaar 1.2.0-r1 2.0.0 9999: Open-source HEVC encoder
