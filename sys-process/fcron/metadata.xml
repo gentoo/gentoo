@@ -31,4 +31,7 @@
 			respected.
 		</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">yo8192/fcron</remote-id>
+	</upstream>
 </pkgmetadata>
