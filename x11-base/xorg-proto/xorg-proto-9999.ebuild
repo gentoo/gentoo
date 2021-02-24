@@ -1,7 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+PYTHON_COMPAT=( python3_{7..9} )
 
 MY_PN="${PN/xorg-/xorg}"
 MY_P="${MY_PN}-${PV}"
@@ -12,7 +13,7 @@ if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-r3"
 fi
 
-inherit ${GIT_ECLASS} meson
+inherit ${GIT_ECLASS} meson python-any-r1
 
 DESCRIPTION="X.Org combined protocol headers"
 HOMEPAGE="https://gitlab.freedesktop.org/xorg/proto/xorgproto"
@@ -26,4 +27,22 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE=""
+IUSE="test"
+RESTRICT="!test? ( test )"
+
+DEPEND="
+	test? (
+		$(python_gen_any_dep '
+			dev-python/python-libevdev[${PYTHON_USEDEP}]
+		')
+	)
+"
+RDEPEND=""
+
+python_check_deps() {
+	has_version -b "dev-python/python-libevdev[${PYTHON_USEDEP}]"
+}
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
