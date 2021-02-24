@@ -30,7 +30,7 @@ RDEPEND="${DEPEND}"
 src_prepare() {
 	cmake_src_prepare
 
-	sed -e "s,lib/lib,$(get_libdir)/lib,g" "${FILESDIR}/odbcinst.ini" > odbcinst.ini || die
+	sed -e "s,lib/lib,$(get_libdir)/lib,g" "${FILESDIR}/odbcinst2.ini" > odbcinst.ini || die
 }
 
 multilib_src_configure() {
@@ -39,8 +39,8 @@ multilib_src_configure() {
 		-DWITH_SSL=$(usex ssl OPENSSL OFF)
 		-DMARIADB_LINK_DYNAMIC=YES
 		-DUSE_SYSTEM_INSTALLED_LIB=YES
-		-DINSTALL_DOCDIR="/usr/share/doc/${P}"
-		-DINSTALL_LICENSEDIR="/usr/share/doc/${P}"
+		-DINSTALL_DOCDIR="/usr/share/doc/${PF}"
+		-DINSTALL_LICENSEDIR="/usr/share/doc/${PF}"
 		#-DCMAKE_C_FLAGS="$(mariadb_config --cflags)"
 	)
 	cmake_src_configure
