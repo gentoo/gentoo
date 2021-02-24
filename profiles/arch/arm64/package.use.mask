@@ -445,6 +445,3 @@ gnome-extra/sushi office
 # Temporary mask-in-base, unmask-in-arch for dev-python/mako keywording for
 # gobject-introspection[doctool], bug #411761
 dev-libs/gobject-introspection -doctool
-
-# missing keywords
-media-plugins/gst-plugins-meta aac dts dv lame libvisual taglib vcd wavpack
