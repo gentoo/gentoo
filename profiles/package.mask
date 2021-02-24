@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (2021-02-24)
+# Has very annoying bug where tabs cannot be closed after a while. See
+# bug #726802. Expect a new snapshot soon or use the older one.
+=www-client/vivaldi-snapshot-3.7.2202.3
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-02-23)
 # Slotted mistakenly
 dev-libs/quazip:1
