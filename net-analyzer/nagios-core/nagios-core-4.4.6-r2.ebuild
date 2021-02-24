@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit systemd toolchain-funcs
 
 MY_P="${PN/-core}-${PV}"
 DESCRIPTION="Nagios core - monitoring daemon, web GUI, and documentation"
@@ -108,6 +108,9 @@ src_configure() {
 		fi
 	fi
 
+	# We pass "unknown" as the init type because we don't want it to
+	# guess. Later on, we'll manually install both OpenRC and systemd
+	# services.
 	econf ${myconf} \
 		--prefix="${EPREFIX}/usr" \
 		--bindir="${EPREFIX}/usr/sbin" \
@@ -115,7 +118,8 @@ src_configure() {
 		--sysconfdir="${EPREFIX}/etc/nagios" \
 		--libexecdir="${EPREFIX}/usr/$(get_libdir)/nagios/plugins" \
 		--with-cgibindir="${EPREFIX}/usr/$(get_libdir)/nagios/cgi-bin" \
-		--with-webdir="${EPREFIX}/usr/share/nagios/htdocs"
+		--with-webdir="${EPREFIX}/usr/share/nagios/htdocs" \
+		--with-init-type="unknown"
 
 	# The paths in the web server configuration files need to match
 	# those passed to econf above.
@@ -198,7 +202,13 @@ src_install() {
 		doins "${WORKDIR}/${GENTOO_ICONS}"/*.*
 	fi
 
+	# The ./configure script for nagios detects the init system on the
+	# build host, which is wrong for all sorts of reasons. We've gone
+	# to great lengths above to avoid running "install-init" -- even
+	# indirectly -- and so now we must install whatever service files
+	# we need by hand.
 	newinitd startup/openrc-init nagios
+	systemd_newunit startup/default-service nagios.service
 
 	if use web ; then
 		if use apache2 ; then
