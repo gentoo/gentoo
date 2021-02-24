@@ -15,7 +15,7 @@ SRC_URI="https://download.bleachbit.org/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 
 RDEPEND="
 	$(python_gen_cond_dep '
