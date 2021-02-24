@@ -102,7 +102,7 @@ SRC_URI+=" $(cargo_crate_uris ${CRATES})"
 
 LICENSE="public-domain SFI-SCLA"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="cdinstall editor ru-gold test"
 # Run with ja2 --unittest
 # Needs data files?
