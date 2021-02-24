@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm setup unpack
+DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
+DESCRIPTION=Font designed for aircraft cockpit displays
+EAPI=7
+HOMEPAGE=https://b612-font.com/
+IUSE=X
+KEYWORDS=amd64 arm arm64 ppc ppc64 x86
+LICENSE=EPL-1.0 BSD OFL-1.1
+SLOT=0
+SRC_URI=https://git.polarsys.org/c/b612/b612.git/snapshot/b612-bd14fde2544566e620eab106eb8d6f2b7fb1347e.tar.bz2 -> polarsys-b612-fonts-1.003.tar.bz2
+_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
+_md5_=79abb206adb69a7f0219d8c94439aa42
