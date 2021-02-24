@@ -24,6 +24,8 @@ DEPEND="${RDEPEND}"
 DOCS="CHANGELOG.md README.md"
 
 src_prepare() {
+	sed -i -e 's/-Werror//' Makefile.am || die
+
 	eapply_user
 	eautoreconf
 }
