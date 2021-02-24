@@ -5,4 +5,9 @@
 	<email>base-system@gentoo.org</email>
 	<name>Gentoo Base System</name>
 </maintainer>
+<upstream>
+	<doc>https://ezix.org/src/pkg/lshw/wiki</doc>
+	<bugs-to>https://ezix.org/project/newticket?component=lshw</bugs-to>
+	<changelog>https://www.ezix.org/project/wiki/HardwareLiSter#Changes</changelog>
+</upstream>
 </pkgmetadata>
