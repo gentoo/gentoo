@@ -51,7 +51,7 @@ src_prepare() {
 	xdg_src_prepare
 
 	if has_version "<dev-libs/quazip-1.0"; then
-		sed -e "/^PKGCONFIG/s/quazip/quazip1-qt5/" -i phoenix.pro || die
+		sed -e "/PKGCONFIG/s/quazip1-qt5/quazip/" -i phoenix.pro || die
 	fi
 
 	# Get a rid of the bundled libs
