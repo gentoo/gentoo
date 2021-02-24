@@ -22,7 +22,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
 
-DEPEND="
+BDEPEND="
 	test? (
 		dev-python/js2py
 		dev-python/pytest
