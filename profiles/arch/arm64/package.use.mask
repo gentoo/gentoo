@@ -1,6 +1,13 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Roy Bamford <neddyseagoon@gentoo.org> (2021-02-24)
+# Invert the theme-manager mask as it bouilds and tests here 
+# Originaly set by Julian Ospald <hasufell@gentoo.org> (2013-03-31)
+# but its in base now.
+net-irc/hexchat -theme-manager
+
+
 # Roy Bamford <neddyseagoon@gentoo.org> (2021-02-20)
 # sci-libs/hdf does not build on arm64 bug #771648
 sci-libs/netcdf hdf
@@ -426,10 +433,6 @@ media-libs/devil allegro nvtt
 # Andreas K. Huettel <dilfridge@gentoo.org> (2013-05-27)
 # Firmware loader not keyworded yet
 sci-libs/linux-gpib firmware
-
-# Julian Ospald <hasufell@gentoo.org> (2013-03-31)
-# depends on mono
->=net-irc/hexchat-2.9.4-r1 theme-manager
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-02-20)
 # Mask flags of calligra and dependencies due to lack of keywords
