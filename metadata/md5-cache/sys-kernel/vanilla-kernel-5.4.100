@@ -1,0 +1,15 @@
+BDEPEND=debug? ( dev-util/dwarves ) verify-sig? ( app-crypt/openpgp-keys-kernel ) test? ( dev-tcltk/expect sys-apps/coreutils sys-kernel/dracut sys-fs/e2fsprogs amd64? ( app-emulation/qemu[qemu_softmmu_targets_x86_64] ) arm64? ( app-emulation/qemu[qemu_softmmu_targets_aarch64] ) ppc64? ( app-emulation/qemu[qemu_softmmu_targets_ppc64] ) x86? ( app-emulation/qemu[qemu_softmmu_targets_i386] ) ) || ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 ) sys-devel/bc sys-devel/flex virtual/libelf virtual/yacc verify-sig? ( app-crypt/gnupg >=app-portage/gemato-16 )
+DEFINED_PHASES=compile config configure install postinst postrm preinst prepare prerm pretend setup test unpack
+DESCRIPTION=Linux kernel built from vanilla upstream sources
+EAPI=7
+HOMEPAGE=https://www.kernel.org/
+IUSE=debug savedconfig +initramfs test verify-sig
+KEYWORDS=~amd64 ~arm64 ~x86
+LICENSE=GPL-2
+PDEPEND=>=virtual/dist-kernel-5.4.100
+RDEPEND=!sys-kernel/vanilla-kernel-bin:5.4.100 || ( sys-kernel/installkernel-gentoo sys-kernel/installkernel-systemd-boot ) initramfs? ( >=sys-kernel/dracut-049-r3 )
+RESTRICT=!test? ( test ) test? ( userpriv ) arm? ( test )
+SLOT=5.4.100
+SRC_URI=https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.100.tar.xz https://github.com/mgorny/gentoo-kernel-config/archive/v5.4.89.tar.gz -> gentoo-kernel-config-5.4.89.tar.gz verify-sig? ( https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.100.tar.sign ) amd64? ( https://src.fedoraproject.org/rpms/kernel/raw/2809b7faa6a8cb232cd825096c146b7bdc1e08ea/f/kernel-x86_64.config -> kernel-x86_64.config.5.4.21 ) arm64? ( https://src.fedoraproject.org/rpms/kernel/raw/2809b7faa6a8cb232cd825096c146b7bdc1e08ea/f/kernel-aarch64.config -> kernel-aarch64.config.5.4.21 ) ppc64? ( https://src.fedoraproject.org/rpms/kernel/raw/2809b7faa6a8cb232cd825096c146b7bdc1e08ea/f/kernel-ppc64le.config -> kernel-ppc64le.config.5.4.21 ) x86? ( https://src.fedoraproject.org/rpms/kernel/raw/2809b7faa6a8cb232cd825096c146b7bdc1e08ea/f/kernel-i686.config -> kernel-i686.config.5.4.21 )
+_eclasses_=dist-kernel-utils	ba761317b3fcd25e34c3fb8e5bf1e45f	kernel-build	b34a23faa4245fd914731f4abd7f70d4	kernel-install	bbb93bcf3858afee3412c25be17786e7	mount-boot	060ced4c5e0fd737db17cbb609bbf557	multilib	d410501a125f99ffb560b0c523cd3d1e	portability	b2e405b5a3f051d58b50c9ffc6b883cf	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	69861348186337fa4b269de5826004b3	savedconfig	0bc45cb0429003c9abc73bae24a0d5bd	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	verify-sig	40b4f4f782cf67118f594ce604cc4c0a
+_md5_=b68de0306115050957ea18536f1a44b4
