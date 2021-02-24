@@ -2044,7 +2044,7 @@ app-emulation/dynamips 0.2.21: Cisco 7200/3600 Simulator
 app-emulation/edumips64 1.2: A visual and cross-platform MIPS64 CPU Simulator
 app-emulation/faudio 19.06 19.09 20.02 20.09 21.01 9999: FAudio - Accuracy-focused XAudio reimplementation for open platforms
 app-emulation/firecracker 0.21.1-r1: Secure and fast microVMs for serverless computing
-app-emulation/firecracker-bin 0.23.0 0.23.1 0.24.1: Secure and fast microVMs for serverless computing (static build)
+app-emulation/firecracker-bin 0.24.1 0.24.2: Secure and fast microVMs for serverless computing (static build)
 app-emulation/flannel 0.11.0: An etcd backed network fabric for containers
 app-emulation/free42 2.5.24 2.5.25: An HP-42S Calculator Simulator
 app-emulation/fs-uae 3.0.5: Integrates the most accurate Amiga emulation code available from WinUAE
@@ -8414,6 +8414,7 @@ dev-python/jinja2_pluralize 0.3.0: Jinja2 pluralize filters
 dev-python/jmespath 0.10.0: JSON Matching Expressions
 dev-python/joblib 1.0.0 1.0.1: Tools to provide lightweight pipelining in Python
 dev-python/josepy 1.4.0 1.5.0 1.6.0 1.7.0: JOSE protocol implementation in Python
+dev-python/js2py 0.70_p20210218: JavaScript to Python Translator & JavaScript interpreter in Python
 dev-python/jsmin 2.2.2: JavaScript minifier
 dev-python/json-rpc 1.13.0: JSON-RPC transport implementation for python
 dev-python/jsondiff 1.2.0: Diff JSON and JSON-like structures in Python
@@ -8802,6 +8803,7 @@ dev-python/pyhamcrest 2.0.2: Hamcrest framework for matcher objects
 dev-python/pyhcl 0.4.4: HCL configuration parser for python
 dev-python/pyilmbase 2.5.2-r1 2.5.4 2.5.5: IlmBase Python bindings
 dev-python/pyinotify 0.9.6: Python module used for monitoring filesystems events
+dev-python/pyjsparser 2.7.1_p20190421: Fast javascript parser based on esprima.js
 dev-python/pyjwt 1.7.1-r1 2.0.1: JSON Web Token implementation in Python
 dev-python/pykerberos 1.3.0-r1 1.3.1: A high-level Python wrapper for Kerberos/GSSAPI operations
 dev-python/pykka 2.0.2 2.0.3: A Python implementation of the actor model
@@ -11807,7 +11809,7 @@ games-util/etswitch 0.1.14-r1: *nix minimizer for a few games
 games-util/eureka 1.27b: Graphical map editor for games using the DOOM engine
 games-util/fteqcc 2501: QC compiler
 games-util/game-device-udev-rules 20201209: udev rules for various game hardware devices
-games-util/gamemode 1.6 9999: Optimise Linux system performance on demand
+games-util/gamemode 1.6.1 9999: Optimise Linux system performance on demand
 games-util/gamepick 0.35-r1: Launch opengl games with custom graphic settings
 games-util/glbsp 2.24: A node builder specially designed for OpenGL ports of the DOOM game engine
 games-util/grfcodec 6.0.6: A suite of programs to modify openttd/Transport Tycoon Deluxe's GRF files
@@ -14715,7 +14717,7 @@ net-im/purple-events 0.99.1: Allows a fine-grained control over libpurple events
 net-im/qtox 1.16.3-r1 9999: Most feature-rich GUI for net-libs/tox using Qt5
 net-im/ricochet 1.1.4 9999: Privacy-focused instant messaging through Tor hidden services
 net-im/sendxmpp 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
-net-im/signal-cli-bin 0.7.4: Send and receive messages of Signal Messenger over a command line interface
+net-im/signal-cli-bin 0.7.4 0.8.0: Send and receive messages of Signal Messenger over a command line interface
 net-im/signal-desktop-bin 1.39.6 1.40.0-r1 1.40.0-r2 1.40.0-r3: Allows you to send and receive messages of Signal Messenger on your computer
 net-im/skype-dbus-mock 0_pre20181011: Mocked systemd dbus interface for skype 8.30+
 net-im/skypeforlinux 8.69.0.77: Instant messaging client, with support for audio and video
@@ -15158,7 +15160,7 @@ net-misc/fatrat 1.2.0_beta2_p20161204: Qt5-based download/upload manager
 net-misc/felix 3.1.3: Calico's per-host agent, responsible for programming routes and security policy
 net-misc/freerdp 2.2.0 2.9999 9999: Free implementation of the Remote Desktop Protocol
 net-misc/frr 7.5: The FRRouting Protocol Suite
-net-misc/gallery-dl 1.15.2-r1 1.15.3 1.16.0 1.16.3 9999: Download image galleries and collections from several image hosting sites
+net-misc/gallery-dl 1.16.0 1.16.3 1.16.5 9999: Download image galleries and collections from several image hosting sites
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
 net-misc/geoipupdate 2.3.1 3.1.0 3.1.1 4.0.3-r1 4.0.4 4.3.0: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
 net-misc/geomyidae 0.34: A daemon to serve the gopher protocol
@@ -15559,7 +15561,7 @@ net-vpn/corkscrew 2.0-r1: a tool for tunneling SSH through HTTP proxies
 net-vpn/frp 0.34.3: A reverse proxy that exposes a local server behind a NAT or firewall to the internet
 net-vpn/httptunnel 3.3_p20180119: httptunnel can create IP tunnels through firewalls/proxies using HTTP
 net-vpn/i2p 0.9.47 0.9.48: A privacy-centric, anonymous network
-net-vpn/i2pd 2.33.0 2.34.0 2.35.0: A C++ daemon for accessing the I2P anonymous network
+net-vpn/i2pd 2.34.0 2.35.0 2.36.0: A C++ daemon for accessing the I2P anonymous network
 net-vpn/iodine 0.7.0-r2: IP over DNS tunnel
 net-vpn/ipsec-tools 0.8.2-r6: A port of KAME's IPsec utilities to the Linux-2.6 IPsec implementation
 net-vpn/isatapd 0.9.7-r2: Creates and maintains an ISATAP tunnel (rfc5214)

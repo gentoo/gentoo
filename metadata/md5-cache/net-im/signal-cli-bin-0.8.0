@@ -1,0 +1,12 @@
+BDEPEND=app-text/asciidoc
+DEFINED_PHASES=compile install postinst unpack
+DEPEND=|| ( dev-java/openjdk-jre-bin:11 dev-java/openjdk:11 dev-java/openjdk-bin:11 )
+DESCRIPTION=Send and receive messages of Signal Messenger over a command line interface
+EAPI=7
+HOMEPAGE=https://github.com/AsamK/signal-cli/wiki
+KEYWORDS=~amd64
+LICENSE=GPL-3
+RDEPEND=|| ( dev-java/openjdk-jre-bin:11 dev-java/openjdk:11 dev-java/openjdk-bin:11 )
+SLOT=0
+SRC_URI=https://github.com/AsamK/signal-cli/releases/download/v0.8.0/signal-cli-0.8.0.tar.gz -> signal-cli-bin-0.8.0.tar.gz https://github.com/AsamK/signal-cli/raw/v0.8.0/README.md -> signal-cli-bin-0.8.0.README.md https://github.com/AsamK/signal-cli/raw/v0.8.0/man/signal-cli.1.adoc -> signal-cli-bin-0.8.0.signal-cli.1.adoc
+_md5_=fbb9a793c0c11579ee4398f113a16875
