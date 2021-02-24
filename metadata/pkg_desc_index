@@ -14374,7 +14374,7 @@ net-analyzer/nagios-check_multiple 0.0.1: A Nagios plugin to execute multiple ch
 net-analyzer/nagios-check_mysql_health 2.2.2: A nagios plugin for checking MySQL server health
 net-analyzer/nagios-check_pidfile 1: A nagios plugin for checking daemons via pidfiles
 net-analyzer/nagios-check_rbl 1.4.1: Monitor whether or not a host is blacklisted
-net-analyzer/nagios-core 4.4.6 4.4.6-r1: Nagios core - monitoring daemon, web GUI, and documentation
+net-analyzer/nagios-core 4.4.6 4.4.6-r2: Nagios core - monitoring daemon, web GUI, and documentation
 net-analyzer/nagios-icinga-openvpn 0.0.1-r1: A Nagios plugin to check whether an OpenVPN server is alive
 net-analyzer/nagios-plugin-check_lm_sensors 4.1.1_p20191028: Nagios plugin to monitor the values of onboard sensors and disk temperatures
 net-analyzer/nagios-plugin-check_raid 4.0.8 4.0.10: Nagios/Icinga plugin to check current server's RAID status

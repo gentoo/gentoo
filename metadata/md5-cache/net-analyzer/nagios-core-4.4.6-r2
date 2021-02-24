@@ -1,4 +1,4 @@
-BDEPEND=acct-group/nagios acct-user/nagios virtual/mailx perl? ( dev-lang/perl:= ) apache2? ( acct-group/apache ) lighttpd? ( acct-group/lighttpd ) web? ( app-arch/unzip )
+BDEPEND=acct-group/nagios acct-user/nagios virtual/mailx perl? ( dev-lang/perl:= ) apache2? ( acct-group/apache ) lighttpd? ( acct-group/lighttpd ) web? ( app-arch/unzip ) virtual/pkgconfig
 DEFINED_PHASES=compile configure install postinst
 DEPEND=dev-libs/libltdl:0
 DESCRIPTION=Nagios core - monitoring daemon, web GUI, and documentation
@@ -11,5 +11,5 @@ RDEPEND=acct-group/nagios acct-user/nagios virtual/mailx perl? ( dev-lang/perl:=
 REQUIRED_USE=apache2? ( !lighttpd )
 SLOT=0
 SRC_URI=mirror://sourceforge/nagios/nagios-4.4.6.tar.gz web? ( https://dev.gentoo.org/~mjo/distfiles/nagios-core-gentoo-icons-20141125.tar )
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=daae104fd2a626d034eb48fee4345bc3
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=9bad894a8b6c81c9b55469a6a60cf1de
