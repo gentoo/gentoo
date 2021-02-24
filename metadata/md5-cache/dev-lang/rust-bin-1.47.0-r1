@@ -3,11 +3,11 @@ DESCRIPTION=Systems programming language from Mozilla
 EAPI=7
 HOMEPAGE=https://www.rust-lang.org/
 IUSE=clippy cpu_flags_x86_sse2 doc rls rustfmt abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_s390_32 abi_s390_64
-KEYWORDS=amd64 ~arm ~arm64 ppc64 x86
+KEYWORDS=amd64 arm arm64 ppc64 x86
 LICENSE=|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA
 RDEPEND=>=app-eselect/eselect-rust-20190311
 REQUIRED_USE=x86? ( cpu_flags_x86_sse2 )
 SLOT=stable
 SRC_URI=abi_x86_64? ( elibc_glibc? ( https://static.rust-lang.org/dist/rust-1.47.0-x86_64-unknown-linux-gnu.tar.xz ) elibc_musl? ( https://static.rust-lang.org/dist/rust-1.47.0-x86_64-unknown-linux-musl.tar.xz ) ) arm? ( https://static.rust-lang.org/dist/rust-1.47.0-arm-unknown-linux-gnueabi.tar.xz https://static.rust-lang.org/dist/rust-1.47.0-arm-unknown-linux-gnueabihf.tar.xz https://static.rust-lang.org/dist/rust-1.47.0-armv7-unknown-linux-gnueabihf.tar.xz ) arm64? ( https://static.rust-lang.org/dist/rust-1.47.0-aarch64-unknown-linux-gnu.tar.xz ) mips? ( https://static.rust-lang.org/dist/rust-1.47.0-mips-unknown-linux-gnu.tar.xz https://static.rust-lang.org/dist/rust-1.47.0-mipsel-unknown-linux-gnu.tar.xz https://static.rust-lang.org/dist/rust-1.47.0-mips64-unknown-linux-gnuabi64.tar.xz ) ppc? ( https://static.rust-lang.org/dist/rust-1.47.0-powerpc-unknown-linux-gnu.tar.xz ) ppc64? ( https://static.rust-lang.org/dist/rust-1.47.0-powerpc64-unknown-linux-gnu.tar.xz https://static.rust-lang.org/dist/rust-1.47.0-powerpc64le-unknown-linux-gnu.tar.xz ) s390? ( https://static.rust-lang.org/dist/rust-1.47.0-s390x-unknown-linux-gnu.tar.xz ) abi_x86_32? ( https://static.rust-lang.org/dist/rust-1.47.0-i686-unknown-linux-gnu.tar.xz )
 _eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	rust-toolchain	9535ce5fa1388d814251dbd7663f0942	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=9f5b06f89cce6e7267f5eb6170c5a588
+_md5_=db3cb9429b085c85cbb7960afde16930
