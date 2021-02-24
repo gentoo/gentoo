@@ -197,11 +197,6 @@ dev-libs/libressl
 # Removal in 30 days. Bug #744019
 sys-power/ncpufreqd
 
-# Azamat H. Hackimov <azamat.hackimov@gmail.com> (2021-01-26)
-# Dead upstream, no live HOMEPAGE and SRC_URI.
-# Removal in 30 days. Bug #744013
-app-text/csvfix
-
 # Marek Szuba <marecki@gentoo.org> (2021-01-21)
 # Masked for testing and further work - the golang-vcs-snapshot variant
 # seems to be incompatible with revdeps using go-module, the variant
