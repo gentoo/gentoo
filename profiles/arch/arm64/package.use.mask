@@ -1,3 +1,4 @@
+
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
@@ -346,11 +347,6 @@ media-gfx/pstoedit emf
 # zfs does not build on arm64 (yet?)
 app-emulation/libvirt zfs
 sys-cluster/ceph zfs
-
-# Alexis Ballier <aballier@gentoo.org> (2017-07-11)
-# dev-libs/botan:0 fails with 'ERROR: Unknown or unidentifiable processor
-# "aarch64"'
-app-crypt/qca botan
 
 # Alexis Ballier <aballier@gentoo.org> (2017-07-10)
 # openvz-sources are likely too old for any proper arm64 usage
