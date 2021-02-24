@@ -3025,7 +3025,7 @@ app-text/pdfgrep 2.0.1 2.1.2: A tool similar to grep which searches text in PDFs
 app-text/pdfjam 2.08-r1: pdfnup, pdfjoin and pdf90
 app-text/pdfminer 20191020: Python tool for extracting information from PDF documents
 app-text/pdfsandwich 0.1.7: generator of sandwich OCR pdf files
-app-text/pdftk 3.0.0 3.0.8 9999: gcj-free version of pdftk written in Java
+app-text/pdftk 3.0.0 3.0.8 3.2.2 9999: gcj-free version of pdftk written in Java
 app-text/pelican 4.2.0-r1 4.5.1-r1 4.5.3 9999: A tool to generate a static blog, with restructured text or markdown input files
 app-text/pep 2.8-r2: General purpose filter and file cleaning program
 app-text/pinfo 0.6.13 99999: Hypertext info and man viewer based on (n)curses
@@ -3592,7 +3592,7 @@ dev-db/percona-xtrabackup 2.4.15 2.4.20 2.4.21 8.0.13 8.0.22.15: Hot backup util
 dev-db/percona-xtrabackup-bin 2.4.13: MySQL hot backup software. non-blocking backups for InnoDB/XtraDB databases
 dev-db/pg_activity 1.6.2: Realtime PostgreSQL database server monitoring tool
 dev-db/pg_top 4.0.0-r1: 'top' for PostgreSQL
-dev-db/pgadmin4 4.26 4.29 4.30: GUI administration and development platform for PostgreSQL
+dev-db/pgadmin4 4.29 4.30: GUI administration and development platform for PostgreSQL
 dev-db/pgagent 4.0.0-r1: pgAgent is a job scheduler for PostgreSQL
 dev-db/pgbadger 11.0 11.3 11.4: pgBadger is a PostgreSQL log analyzer.
 dev-db/pgbouncer 1.15.0: Lightweight connection pooler for PostgreSQL
@@ -13738,7 +13738,7 @@ media-sound/amsynth 1.8.0: Virtual analogue synthesizer
 media-sound/apetag 1.12-r3: Command-line ape 2.0 tagger
 media-sound/apulse 0.1.13: PulseAudio emulation for ALSA
 media-sound/aqualung 1.0-r5 1.1-r1 1.1-r101: Music player for a wide range of formats designed for gapless playback
-media-sound/ardour 6.5-r2 9999: Digital Audio Workstation
+media-sound/ardour 6.5-r2 6.6 9999: Digital Audio Workstation
 media-sound/ario 1.6: GTK client for MPD inspired by Rhythmbox but much lighter and faster
 media-sound/aseqview 0.2.8: ALSA sequencer event viewer/filter
 media-sound/asunder 2.9.3-r1 2.9.5 2.9.6: Graphical Audio CD ripper and encoder with support for many output formats
