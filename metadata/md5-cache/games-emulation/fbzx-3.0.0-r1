@@ -8,5 +8,5 @@ LICENSE=GPL-3+
 RDEPEND=media-libs/libsdl[video] media-sound/pulseaudio media-libs/alsa-lib
 SLOT=0
 SRC_URI=https://github.com/rastersoft/fbzx/archive/3.0.0.tar.gz -> fbzx-3.0.0.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28
 _md5_=34b8ad3379d74e63b272024ae661fa9b

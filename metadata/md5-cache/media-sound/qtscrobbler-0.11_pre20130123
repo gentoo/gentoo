@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtsql:5 dev-qt/qtwidgets:5 media-libs/libmtp:= net-misc/curl
 SLOT=0
 SRC_URI=https://sourceforge.net/code-snapshots/git/q/qt/qtscrob/code.git/qtscrob-code-33ed278b9b543554fd6a556fd391eb4c78faab07.zip -> qtscrobbler-0.11_pre20130123.zip
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=8dc8609acdaab2d5ab4d53ae078da800

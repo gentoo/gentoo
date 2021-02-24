@@ -11,5 +11,5 @@ RDEPEND=>=sys-libs/ncurses-5.7-r6:= media-libs/fontconfig x11-libs/libX11 x11-li
 RESTRICT=test
 SLOT=0
 SRC_URI=http://dist.schmorp.de/rxvt-unicode/Attic/rxvt-unicode-9.22.tar.bz2 https://dev.gentoo.org/~marecki/dists/rxvt-unicode/rxvt-unicode-9.22_24-bit-color_cpixl-20201108.patch.xz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	desktop	7fd20552ce4cc97e8acb132a499a7dd8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	desktop	c0d27bf73aa08ca05b663dbd31fbef28	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=b3ffff25cec1b630d3d2794ac0880c7f

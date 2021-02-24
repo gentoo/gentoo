@@ -11,5 +11,5 @@ RDEPEND=python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3
 REQUIRED_USE=|| ( python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 )
 SLOT=0
 SRC_URI=https://github.com/multiSnow/mcomix3/archive/cdcb27533dc7ee2ebf7b0a8ab5ba10e61c0b8ff8.tar.gz -> mcomix-1.3.0_pre20201123.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	python-r1	4c65b35c1895b82c0f44e44166a3464f	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	python-r1	4c65b35c1895b82c0f44e44166a3464f	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=de43e1a812a3e43ebad27d037e09f761

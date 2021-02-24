@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/libsdl[sound,video] x11-libs/libXpm
 SLOT=0
 SRC_URI=mirror://gentoo/amphetamine-0.8.10.tar.bz2 mirror://gentoo/amphetamine-data-0.8.6.tar.bz2
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28
 _md5_=2074ebe9f578d923e5bc94b1810036ab

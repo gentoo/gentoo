@@ -8,5 +8,5 @@ LICENSE=ZLIB
 RDEPEND=media-libs/libsdl media-libs/sdl-image[png] media-libs/sdl-mixer[mod]
 SLOT=0
 SRC_URI=http://mordred.dir.bg/biniax/biniax2-1.30-fullsrc.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28
 _md5_=45bf1bd59dfbe0011583d41638962045

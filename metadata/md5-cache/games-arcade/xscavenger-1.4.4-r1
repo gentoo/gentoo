@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/libXext
 SLOT=0
 SRC_URI=http://www.xdr.com/dash/xscavenger-1.4.4.tgz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	e8f1ec13660dc2f44b32775765d85e42	estack	055c42df72f76a4f45ec92b35e83cd56	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	epatch	e8f1ec13660dc2f44b32775765d85e42	estack	055c42df72f76a4f45ec92b35e83cd56	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=e38c46e6377921db4994ae8bc9b816cc

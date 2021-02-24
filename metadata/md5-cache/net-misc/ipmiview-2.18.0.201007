@@ -11,5 +11,5 @@ RDEPEND=net-misc/stunnel sys-libs/ncurses-compat:5 virtual/jre:1.8 >=dev-java/ja
 RESTRICT=bindist mirror
 SLOT=0
 SRC_URI=https://www.supermicro.com/wftp/utility/IPMIView/Linux/IPMIView_2.18.0_build.201007_bundleJRE_Linux_x64.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	378e4cda228ea0231a0ac283cb2ad25c	prefix	de7d8e2b10085ed5ff09ad70e4753e5c
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	378e4cda228ea0231a0ac283cb2ad25c	prefix	de7d8e2b10085ed5ff09ad70e4753e5c
 _md5_=fd7c0db70cd3f1fabb62d1ca61fa27a0

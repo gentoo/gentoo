@@ -11,5 +11,5 @@ RDEPEND=dev-lang/perl dev-libs/libxml2:2 gnome-base/libglade:2.0 x11-libs/gtk+:2
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://download.sourceforge.net/rox/rox-filer-2.11.tar.bz2
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	virtualx	7e60d3b10c791ab996f717bc1f30072f
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	virtualx	7e60d3b10c791ab996f717bc1f30072f
 _md5_=431307242cee5c2ae4e1aa0f2456f5ec

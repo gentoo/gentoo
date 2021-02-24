@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=gnome-base/libglade:2.0 sys-libs/zlib virtual/fam x11-libs/gtk+:2 x11-libs/libX11
 SLOT=0
 SRC_URI=mirror://sourceforge/purify/pureadmin-0.4.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=7dcacfba3c85ee8a45b497c7e1fa5d98

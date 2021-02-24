@@ -8,5 +8,5 @@ LICENSE=LGPL-2.1
 RDEPEND=x11-libs/libX11 x11-libs/libXpm x11-libs/libXxf86vm x11-libs/libXext media-libs/libpng:0= sys-libs/zlib
 SLOT=0
 SRC_URI=https://github.com/quadra-game/quadra/archive/v1.2.0.tar.gz -> quadra-1.2.0.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28
 _md5_=f5aee0ddbf294a2c4d921eb20e92c6ce

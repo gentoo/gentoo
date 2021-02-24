@@ -9,5 +9,5 @@ RDEPEND=app-accessibility/at-spi2-atk app-crypt/libsecret dev-libs/atk dev-libs/
 RESTRICT=bindist mirror splitdebug test
 SLOT=0
 SRC_URI=https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams/teams_1.3.00.25560_amd64.deb
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	unpacker	45b49db67094fdafbb6a16a2299e894b	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	unpacker	45b49db67094fdafbb6a16a2299e894b	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=d2b04a36dc7df7c8af34278ae9c8903f

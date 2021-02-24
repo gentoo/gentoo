@@ -9,5 +9,5 @@ LICENSE=GPL-2 worldofpadman
 RDEPEND=sys-libs/zlib !dedicated? ( >=media-libs/speex-1.2.0 media-libs/speexdsp virtual/jpeg:0 media-libs/libsdl[opengl,video,X] virtual/opengl virtual/glu openal? ( media-libs/openal ) curl? ( net-misc/curl ) vorbis? ( media-libs/libvorbis ) theora? ( media-libs/libtheora media-libs/libogg ) )
 SLOT=0
 SRC_URI=mirror://sourceforge/worldofpadman/wop-1.5-unified.zip mirror://sourceforge/worldofpadman/wop-1.5.x-to-1.6-patch-unified.zip
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28
 _md5_=3e228d968719510d8a45ea5c01290ca2

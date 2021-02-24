@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=app-text/poppler[qt5] dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtnetwork:5[ssl] dev-qt/qtprintsupport:5 dev-qt/qtwidgets:5
 SLOT=0
 SRC_URI=http://rhig.physics.yale.edu/~ullrich/software/xyscan/Distributions/4.30/xyscan-4.30-src.tgz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=26ff272bf583be28055f4ee8fa3bc8ba

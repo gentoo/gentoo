@@ -11,5 +11,5 @@ RDEPEND=sdl? ( >=media-libs/libsdl-1.2.0[opengl?,sound?,video] ) !sdl? ( sys-lib
 REQUIRED_USE=opengl? ( sdl )
 SLOT=0
 SRC_URI=https://github.com/atari800/atari800/releases/download/ATARI800_4_2_0/atari800-4.2.0-src.tgz https://sourceforge.net/projects/atari800/files/ROM/Original%20XL%20ROM/xf25.zip
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	desktop	7fd20552ce4cc97e8acb132a499a7dd8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	desktop	c0d27bf73aa08ca05b663dbd31fbef28	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=4f249dc756272e7a2ef2ea4bcb7714af

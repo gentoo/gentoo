@@ -10,5 +10,5 @@ RDEPEND=python_single_target_python3_7? ( dev-python/random2[python_targets_pyth
 REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9 )
 SLOT=0
 SRC_URI=https://github.com/shlomif/PySolFC/archive/pysolfc-2.6.4.tar.gz extra-cardsets? ( mirror://sourceforge/pysolfc/PySolFC-Cardsets/PySolFC-Cardsets-2.0/PySolFC-Cardsets-2.0.tar.bz2 ) !extra-cardsets? ( mirror://sourceforge/pysolfc/PySolFC-Cardsets/minimal/PySolFC-Cardsets--Minimal-2.0.1.tar.xz )
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	distutils-r1	c166cdc9bfdc0fee3ea2100e01fdcdd3	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	distutils-r1	c166cdc9bfdc0fee3ea2100e01fdcdd3	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=78305cefd07f4c975a91dcd1c449fda4

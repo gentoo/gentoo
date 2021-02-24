@@ -10,5 +10,5 @@ RDEPEND=app-antivirus/clamav dev-perl/File-chdir dev-perl/Gtk3 dev-perl/JSON dev
 REQUIRED_USE=nautilus? ( ^^ ( python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9 ) )
 SLOT=0
 SRC_URI=https://bitbucket.org/davem_/clamtk-gtk3/downloads/clamtk-6.06.tar.xz kde? ( https://bitbucket.org/davem_/clamtk-kde/downloads/clamtk-kde-0.18.tar.xz ) nautilus? ( https://bitbucket.org/davem_/clamtk-gnome/downloads/clamtk-gnome-0.05.tar.xz ) nemo? ( https://bitbucket.org/davem_/nemo-sendto-clamtk/downloads/nemo-sendto-clamtk-0.04.tar.xz ) thunar? ( https://bitbucket.org/davem_/thunar-sendto-clamtk/downloads/thunar-sendto-clamtk-0.06.tar.xz )
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multilib	d410501a125f99ffb560b0c523cd3d1e	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	multilib	d410501a125f99ffb560b0c523cd3d1e	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=8bf52e584c03e919fb3a962b2ed0ab10

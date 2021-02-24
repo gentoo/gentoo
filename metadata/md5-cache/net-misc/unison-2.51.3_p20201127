@@ -11,5 +11,5 @@ RDEPEND=gtk? ( dev-ml/lablgtk:2= || ( net-misc/x11-ssh-askpass net-misc/ssh-askp
 RESTRICT=!ocamlopt? ( strip )
 SLOT=2.51
 SRC_URI=https://github.com/bcpierce00/unison/archive/4713e608d2f9c998ba4412fee53b94dc9bef98b9.tar.gz -> unison-2.51.3_p20201127.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=5a491edf7e53fda44a4089e63e67e4e2

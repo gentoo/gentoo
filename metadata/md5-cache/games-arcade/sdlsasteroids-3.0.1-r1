@@ -8,5 +8,5 @@ LICENSE=sdlsasteroids GPL-2+ public-domain
 RDEPEND=virtual/opengl media-libs/sdl-mixer media-libs/libsdl[sound,joystick,video] media-libs/sdl-image[png] media-libs/sdl-ttf
 SLOT=0
 SRC_URI=mirror://sourceforge/sdlsas/SDLSasteroids-3.0.1.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28
 _md5_=924c53ea548b8ad50b4b0b18962c2fe0

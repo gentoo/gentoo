@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=virtual/opengl media-libs/libsdl media-libs/sdl-image[png] media-libs/sdl-mixer
 SLOT=0
 SRC_URI=http://gcsociety.sp.cs.cmu.edu/~frenzy/sdb-1.0.2.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28
 _md5_=e32355ad287f5341d66f0fb43b4fda1f

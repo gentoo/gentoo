@@ -7,5 +7,5 @@ LICENSE=GPL-3
 RDEPEND=dev-lang/perl dev-perl/gnome2-canvas dev-perl/gnome2-wnck dev-perl/libxml-perl dev-perl/libwww-perl dev-perl/Glib-Object-Introspection dev-perl/Gtk2-Unique dev-perl/Gtk2-ImageView dev-perl/File-DesktopEntry dev-perl/File-HomeDir dev-perl/File-Which dev-perl/JSON dev-perl/File-Copy-Recursive dev-perl/File-MimeInfo dev-perl/Locale-gettext dev-perl/Net-DBus dev-perl/Number-Bytes-Human dev-perl/Proc-Simple dev-perl/Proc-ProcessTable dev-perl/Sort-Naturally dev-perl/WWW-Mechanize dev-perl/X11-Protocol dev-perl/XML-Simple virtual/imagemagick-tools[perl]
 SLOT=0
 SRC_URI=https://github.com/shutter-project/shutter/archive/af237e7f415a5fa20402703490c6190dc1af9b20.tar.gz -> shutter-0.94.3_p20200621.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	optfeature	6a2add34e06e5a05d88471a33ccdd73e	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	optfeature	6a2add34e06e5a05d88471a33ccdd73e	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=00dedbd7fad9ee5d3ca7d00c4209ce55

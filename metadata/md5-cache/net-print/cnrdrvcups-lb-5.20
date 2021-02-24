@@ -9,5 +9,5 @@ LICENSE=Canon-UFR-II GPL-2 MIT
 RDEPEND=dev-libs/libxml2:2 gnome-base/libglade:2.0 media-libs/jbigkit net-print/cups x11-libs/gtk+:2 !net-print/cndrvcups-common-lb !net-print/cndrvcups-lb
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~juippis/distfiles/linux-UFRII-drv-v520-uken-05.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	desktop	7fd20552ce4cc97e8acb132a499a7dd8	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
 _md5_=bf1310d4e47337036bbe78681cd03a83

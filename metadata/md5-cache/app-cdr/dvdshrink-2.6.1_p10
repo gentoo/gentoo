@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=app-cdr/cdrtools >=app-cdr/dvd+rw-tools-6.1 >=app-text/gocr-0.40 >=media-video/dvdauthor-0.6.11 >=media-video/mjpegtools-1.8.0-r1 >=media-video/subtitleripper-0.3.4-r1 >=media-video/transcode-1.0.2-r2[dvd] gtk? ( >=dev-perl/Gtk2-1.104 )
 SLOT=0
 SRC_URI=mirror://sourceforge/dvdshrink/dvdshrink-2.6.1-10mdk.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28
 _md5_=1fa864303735d65bd84cc666cdc9cae5

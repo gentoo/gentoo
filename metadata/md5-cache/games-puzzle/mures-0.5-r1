@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/libsdl media-libs/sdl-image media-libs/sdl-net media-libs/sdl-ttf opengl? ( virtual/opengl )
 SLOT=0
 SRC_URI=mirror://sourceforge/mures/mures-0.5.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	desktop	7fd20552ce4cc97e8acb132a499a7dd8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	desktop	c0d27bf73aa08ca05b663dbd31fbef28	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=a245161e37c9edff6e0e9b4cf4c4c806

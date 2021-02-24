@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=media-libs/plib-1.8.0 x11-libs/libX11 x11-libs/libICE x11-libs/libSM x11-libs/libXext x11-libs/libXi x11-libs/libXmu virtual/opengl
 SLOT=0
 SRC_URI=mirror://sourceforge/tuxkart/tuxkart-0.4.0.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=d53231935b1020c1d32ce1201ac04ec5

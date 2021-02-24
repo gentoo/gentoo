@@ -9,5 +9,5 @@ RDEPEND=dev-java/java-config || ( dev-java/openjdk:8[javafx] dev-java/openjdk:11
 RESTRICT=test
 SLOT=0
 SRC_URI=https://download.geogebra.org/installers/5.0/GeoGebra-Linux-Portable-5-0-604-0.tar.bz2 https://dev.gentoo.org/~gyakovlev/distfiles/Geogebra.svg
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=1ad1c05f1b19001232df01c4ba399f96

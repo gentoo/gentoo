@@ -8,5 +8,5 @@ LICENSE=GPL-2 BitstreamVera
 RDEPEND=media-libs/libsdl[sound,video,joystick] media-libs/sdl-image[png] media-libs/sdl-mixer[vorbis] media-libs/sdl-ttf
 SLOT=0
 SRC_URI=mirror://sourceforge/gnurobbo/gnurobbo-0.68-source.tar.gz https://salsa.debian.org/games-team/gnurobbo/-/raw/debian/0.68+dfsg-5/debian/patches/single-variable-declarations.patch?inline=false -> gnurobbo-0.68-single-variable-declarations.patch
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=c906090ab4143c1a922311ca050ece76

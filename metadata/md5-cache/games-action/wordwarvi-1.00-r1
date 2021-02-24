@@ -9,5 +9,5 @@ LICENSE=GPL-2 CC-BY-2.0 CC-BY-SA-3.0
 RDEPEND=x11-libs/gtk+:2 portaudio? ( media-libs/libvorbis >=media-libs/portaudio-19_pre1 )
 SLOT=0
 SRC_URI=mirror://sourceforge/wordwarvi/wordwarvi-1.00.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28
 _md5_=da0959988f4c3cf4028752b78bd9c342

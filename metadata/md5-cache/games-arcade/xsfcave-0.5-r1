@@ -8,5 +8,5 @@ LICENSE=public-domain
 RDEPEND=x11-libs/libXext x11-libs/libSM
 SLOT=0
 SRC_URI=mirror://sourceforge/scrap/xsfcave-0.5.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28
 _md5_=bb64dd003b2d8cd69882acb0f0c8415b

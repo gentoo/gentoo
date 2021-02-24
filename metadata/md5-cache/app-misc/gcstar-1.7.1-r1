@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-lang/perl dev-perl/Archive-Zip dev-perl/DateTime-Format-Strptime dev-perl/Gtk2 dev-perl/HTML-Parser dev-perl/libwww-perl dev-perl/URI dev-perl/XML-Parser dev-perl/XML-Simple virtual/perl-Archive-Tar virtual/perl-Encode virtual/perl-Getopt-Long virtual/perl-File-Path virtual/perl-File-Spec virtual/perl-File-Temp virtual/perl-IO-Compress virtual/perl-libnet virtual/perl-Storable virtual/perl-Time-Piece cddb? ( dev-perl/Net-FreeDB ) mp3? ( dev-perl/MP3-Info dev-perl/MP3-Tag ) spell? ( dev-perl/gtk2-spell ) stats? ( dev-perl/Date-Calc dev-perl/GD[png,truetype] ) tellico? ( virtual/perl-Digest-MD5 virtual/perl-MIME-Base64 ) vorbis? ( dev-perl/Ogg-Vorbis-Header-PurePerl )
 SLOT=0
 SRC_URI=https://launchpad.net/gcstar/1.7/1.7.1/+download/gcstar-1.7.1.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=49d73b4a1109b332767367b24c0add5d

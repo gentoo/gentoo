@@ -11,5 +11,5 @@ RDEPEND=mssql? ( dev-java/jtds:1.3 ) mysql? ( dev-java/jdbc-mysql:0 ) postgres? 
 RESTRICT=fetch
 SLOT=0
 SRC_URI=sqldeveloper-20.2.0.175.1842-no-jre.zip
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	378e4cda228ea0231a0ac283cb2ad25c
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	378e4cda228ea0231a0ac283cb2ad25c
 _md5_=3b88d0c7ab4da080c9cedda0daad05b3

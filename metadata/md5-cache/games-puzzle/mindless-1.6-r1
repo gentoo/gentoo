@@ -9,5 +9,5 @@ RDEPEND=x11-libs/gtk+:2 media-fonts/font-schumacher-misc
 RESTRICT=mirror
 SLOT=0
 SRC_URI=mirror://sourceforge/mindless/mindless-1.6.tar.gz http://www.wizards.com/dci/oracle/OracleAll_050523.txt http://mindless.sourceforge.net/images/logo.png -> mindless.png
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
 _md5_=27140614cc9cf4cccdb3d4fe45d8994f

@@ -11,5 +11,5 @@ RDEPEND=dev-libs/expat dev-qt/qtcore:5 sci-libs/shapelib:= sys-libs/zlib[minizip
 RESTRICT=test
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~asturm/gpsbabel-1.5.4.tar.gz doc? ( https://www.gpsbabel.org/style3.css -> gpsbabel.org-style3.css )
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	desktop	7fd20552ce4cc97e8acb132a499a7dd8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	desktop	c0d27bf73aa08ca05b663dbd31fbef28	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=1975a0298cca17704b1ae5082963dae4

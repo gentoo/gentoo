@@ -11,5 +11,5 @@ RDEPEND=dev-perl/Data-Dump dev-perl/JSON dev-perl/libwww-perl[ssl] dev-perl/Term
 REQUIRED_USE=gtk2? ( gtk )
 SLOT=0
 SRC_URI=https://github.com/trizen/youtube-viewer/archive/3.7.4.tar.gz -> youtube-viewer-3.7.4.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multiprocessing	cac3169468f893670dac3e7cb940e045	optfeature	6a2add34e06e5a05d88471a33ccdd73e	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	multiprocessing	cac3169468f893670dac3e7cb940e045	optfeature	6a2add34e06e5a05d88471a33ccdd73e	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=a2f9d7b796c3b2d50fe45d4688ef1295

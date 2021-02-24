@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/libsdl media-libs/libv4l x11-libs/libX11
 SLOT=0
 SRC_URI=mirror://debian/pool/main/l/luvcview/luvcview_0.2.6.orig.tar.gz mirror://debian/pool/main/l/luvcview/luvcview_0.2.6-4.diff.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=19dd3ac1aeee4b72951035068a32c254

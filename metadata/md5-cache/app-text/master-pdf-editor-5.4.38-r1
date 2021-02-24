@@ -8,5 +8,5 @@ RDEPEND=>=media-gfx/sane-backends-1.0
 RESTRICT=mirror
 SLOT=0
 SRC_URI=https://code-industry.net/public/master-pdf-editor-5.4.38-qt5-all.amd64.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=efd691f4e94865c4ed0bd5d0ab6e82d9

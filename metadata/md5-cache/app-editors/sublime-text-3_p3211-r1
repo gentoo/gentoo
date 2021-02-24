@@ -9,5 +9,5 @@ RDEPEND=dev-libs/glib:2 x11-libs/gtk+:3 x11-libs/libX11 dbus? ( sys-apps/dbus )
 RESTRICT=bindist mirror strip
 SLOT=0
 SRC_URI=amd64? ( https://download.sublimetext.com/sublime_text_3_build_3211_x64.tar.bz2 ) x86? ( https://download.sublimetext.com/sublime_text_3_build_3211_x32.tar.bz2 )
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=4040d29bab395c9993d0942cd2e452da

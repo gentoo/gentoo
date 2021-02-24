@@ -11,5 +11,5 @@ RDEPEND=app-arch/cabextract app-arch/p7zip app-arch/unzip net-misc/wget virtual/
 RESTRICT=!test? ( test ) x86? ( test )
 SLOT=0
 SRC_URI=https://github.com/Winetricks/winetricks/archive/20200412.tar.gz -> winetricks-20200412.tar.gz gtk? ( https://dev.gentoo.org/~chiitoo/distfiles/winetricks-gentoo-2012.11.24.tar.bz2 ) kde? ( https://dev.gentoo.org/~chiitoo/distfiles/winetricks-gentoo-2012.11.24.tar.bz2 )
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=1c3206f5b87634d5d9052b06c8ea1fe2

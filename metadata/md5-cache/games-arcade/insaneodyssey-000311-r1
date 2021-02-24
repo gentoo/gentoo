@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/libsdl[sound,video] media-libs/sdl-mixer media-libs/sdl-image
 SLOT=0
 SRC_URI=mirror://gentoo/io000311.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	desktop	7fd20552ce4cc97e8acb132a499a7dd8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	desktop	c0d27bf73aa08ca05b663dbd31fbef28	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=7b9dc7cba327b50ec4b621d8261c521a

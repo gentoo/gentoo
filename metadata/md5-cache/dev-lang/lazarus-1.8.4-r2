@@ -10,5 +10,5 @@ RDEPEND=>=dev-lang/fpc-3.0.4[source] net-misc/rsync x11-libs/gtk+:2 >=sys-devel/
 RESTRICT=strip
 SLOT=0
 SRC_URI=python? ( https://github.com/Alexey-T/Python-for-Lazarus/archive/586eec1a5ea609ef9df2bf586be06825d9fbd50f.tar.gz -> lazarus-1.8.4-python.tar.gz ) https://sourceforge.net/projects/lazarus/files/Lazarus%20Zip%20_%20GZip/Lazarus%201.8.4/lazarus-1.8.4.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28
 _md5_=057f4f030d330899ae5c8afd8f6b34ce

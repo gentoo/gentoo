@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/libsdl[sound,video] media-libs/sdl-net media-libs/sdl-image[png] media-libs/sdl-ttf media-libs/sdl-mixer[vorbis] sys-libs/ncurses:0 sys-libs/readline:0
 SLOT=0
 SRC_URI=http://kombat.kajaani.net/dl/kajaani-kombat-0.7.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28
 _md5_=7fbb187ac6e5f03aeccea345cefee540

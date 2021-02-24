@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/libsdl[sound,video] media-libs/sdl-image media-libs/sdl-mixer media-libs/sdl-sound media-libs/sge
 SLOT=0
 SRC_URI=http://braingames.bugreport.nl/stransball2/stransball2-v15-linux.zip mirror://debian/pool/main/s/supertransball2/supertransball2_1.5-8.debian.tar.xz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	e8f1ec13660dc2f44b32775765d85e42	estack	055c42df72f76a4f45ec92b35e83cd56	versionator	d3fb3ba33acc3bbbdc4d7970227c100d
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	epatch	e8f1ec13660dc2f44b32775765d85e42	estack	055c42df72f76a4f45ec92b35e83cd56	versionator	d3fb3ba33acc3bbbdc4d7970227c100d
 _md5_=4279602bd829efabc14fb04463324e14

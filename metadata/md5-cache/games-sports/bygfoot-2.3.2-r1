@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=app-arch/zip media-libs/freetype:2 x11-libs/gtk+:2 virtual/libintl
 SLOT=0
 SRC_URI=mirror://sourceforge/bygfoot/bygfoot-2.3.2.tar.bz2
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
 _md5_=7dc1178ca3d754850be44891415bf592

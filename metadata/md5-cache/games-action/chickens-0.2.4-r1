@@ -9,5 +9,5 @@ RDEPEND=acct-group/gamestat <media-libs/allegro-5
 RESTRICT=mirror bindist
 SLOT=0
 SRC_URI=http://www.chickensforlinux.com/ChickensForLinux-Linux-0.2.4.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28
 _md5_=bdf0d59c0c5d913b213cf05753772505

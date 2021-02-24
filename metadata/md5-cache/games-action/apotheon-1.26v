@@ -8,5 +8,5 @@ RDEPEND=dev-lang/mono media-libs/libsdl2[joystick,opengl,threads,video] media-li
 RESTRICT=bindist fetch splitdebug
 SLOT=0
 SRC_URI=apotheon-12302015-bin
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	unpacker	45b49db67094fdafbb6a16a2299e894b	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	unpacker	45b49db67094fdafbb6a16a2299e894b	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=f7e716b73ba01a1b8cbe92a63422431a

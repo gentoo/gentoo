@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) dev-libs/expat net-libs/netwib qt5? ( dev-qt/qtcharts:5 dev-qt/qtgui:5 ) tables? ( app-crypt/ophcrack-tables )
 SLOT=0
 SRC_URI=https://downloads.sourceforge.net/project/ophcrack/ophcrack/3.8.0/ophcrack-3.8.0.tar.bz2
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=34fcf324571978b3a557c0deeabcb4f8

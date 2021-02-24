@@ -10,5 +10,5 @@ RDEPEND=python_single_target_python3_7? ( dev-lang/python:3.7[ipv6,sqlite,ssl] >
 REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_8 )
 SLOT=0
 SRC_URI=https://download.calibre-ebook.com/5.4.2/calibre-5.4.2.tar.xz https://dev.gentoo.org/~zmedico/dist/calibre-5.4.2-SIP-v4.patch.xz
-_eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	desktop	7fd20552ce4cc97e8acb132a499a7dd8	multilib	d410501a125f99ffb560b0c523cd3d1e	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	desktop	c0d27bf73aa08ca05b663dbd31fbef28	multilib	d410501a125f99ffb560b0c523cd3d1e	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=e2ef04c3f9403ff160ead6eb27b1f370

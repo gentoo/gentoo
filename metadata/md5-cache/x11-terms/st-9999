@@ -9,5 +9,5 @@ LICENSE=MIT-with-advertising
 PROPERTIES=live
 RDEPEND=>=sys-libs/ncurses-6.0:0= media-libs/fontconfig x11-libs/libX11 x11-libs/libXft
 SLOT=0
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	d410501a125f99ffb560b0c523cd3d1e	portability	b2e405b5a3f051d58b50c9ffc6b883cf	savedconfig	0bc45cb0429003c9abc73bae24a0d5bd	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	d410501a125f99ffb560b0c523cd3d1e	portability	b2e405b5a3f051d58b50c9ffc6b883cf	savedconfig	0bc45cb0429003c9abc73bae24a0d5bd	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=d23864ea1166311df653225ae4ecc590

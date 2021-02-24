@@ -10,5 +10,5 @@ RDEPEND=!dev-util/idea-community:14 !dev-util/idea-community:15 || ( dev-java/op
 RESTRICT=splitdebug
 SLOT=0
 SRC_URI=https://download.jetbrains.com/idea/ideaIC-2021.3.1-no-jbr.tar.gz -> ideaIC-3.1.203.6682.168.tar.gz amd64? ( https://bintray.com/jetbrains/intellij-jbr/download_file?file_path=jbr-11_0_8-linux-x64-b1098.1.tar.gz -> jbr-11_0_8-linux-x64-b1098.1.tar.gz )
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974
 _md5_=4a20f6dd08215d53aa5e8538f2ab1f32

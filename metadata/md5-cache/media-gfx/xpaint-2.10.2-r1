@@ -10,5 +10,5 @@ LICENSE=GPL-3
 RDEPEND=media-libs/fontconfig media-libs/freetype:2 media-libs/libpng:0= x11-libs/libICE x11-libs/libX11 >=x11-libs/libXaw3dXft-1.6.2c[unicode] x11-libs/libXext x11-libs/libXft x11-libs/libXmu x11-libs/libXpm x11-libs/libXt sys-libs/zlib media-libs/libjpeg-turbo:= pgf? ( media-libs/libpgf ) tiff? ( media-libs/jbigkit:0= media-libs/tiff:0 )
 SLOT=0
 SRC_URI=mirror://sourceforge/sf-xpaint/xpaint-2.10.2.tar.bz2
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=eee0fbca5747825f046d6ec9f2ecf27e

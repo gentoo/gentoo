@@ -9,5 +9,5 @@ RDEPEND=media-libs/libpng-compat:1.2 media-libs/libsdl2[opengl,video] sys-libs/z
 RESTRICT=bindist fetch splitdebug strip
 SLOT=0
 SRC_URI=Deponia4_1.2.0267_DEB_Full_Multi_Daedalic_ESD.tar
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	wrapper	4251d4c84c25f59094fd557e0063a974
 _md5_=ddd62d90c6b5dfff49f08f3454ac2ae6

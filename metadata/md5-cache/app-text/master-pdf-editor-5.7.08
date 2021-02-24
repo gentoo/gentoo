@@ -9,5 +9,5 @@ RDEPEND=dev-libs/nss >=dev-qt/qtcore-5.12.9:5 >=dev-qt/qtgui-5.12.9:5 >=dev-qt/q
 RESTRICT=mirror
 SLOT=0
 SRC_URI=https://code-industry.net/public/master-pdf-editor-5.7.08-qt5.x86_64.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=2d3ce1fd5ac00e4cfb6173e86061bf6b

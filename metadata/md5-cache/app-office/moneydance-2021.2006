@@ -10,5 +10,5 @@ RDEPEND=|| ( >=dev-java/openjdk-bin-11.0 >=dev-java/openjdk-11.0 ) >=dev-java/ja
 RESTRICT=bindist mirror
 SLOT=0
 SRC_URI=https://infinitekind.com/stabledl/2021_2006/Moneydance_linux_amd64.tar.gz -> moneydance-2021.2006-amd64.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	378e4cda228ea0231a0ac283cb2ad25c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	378e4cda228ea0231a0ac283cb2ad25c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=0a4b7baef7ce60a86ff8a3c44ffc3dd4

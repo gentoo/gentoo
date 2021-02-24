@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/imlib2[X] >=x11-libs/gtk+-2.12:2 exif? ( media-libs/libexif ) lcms? ( media-libs/lcms:2 media-libs/tiff:0 virtual/jpeg:0 ) magic? ( sys-apps/file )
 SLOT=0
 SRC_URI=https://spiegl.de/qiv/download/qiv-2.3.2.tgz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=97260abb8069c09a4fb137a496b5db5f

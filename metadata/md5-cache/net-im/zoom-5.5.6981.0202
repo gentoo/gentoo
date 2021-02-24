@@ -10,5 +10,5 @@ RDEPEND=!games-engines/zoom dev-libs/glib:2 dev-libs/quazip media-libs/fontconfi
 RESTRICT=mirror bindist strip
 SLOT=0
 SRC_URI=https://zoom.us/client/5.5.6981.0202/zoom_x86_64.tar.xz -> zoom-5.5.6981.0202_x86_64.tar.xz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	eapi8-dosym	cd7d420bb5be5ee079f27239ce76b8f5	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	eapi8-dosym	cd7d420bb5be5ee079f27239ce76b8f5	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=df875861c17eb6505b4f7b45576edc41

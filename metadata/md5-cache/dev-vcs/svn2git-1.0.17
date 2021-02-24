@@ -8,5 +8,5 @@ LICENSE=GPL-3
 RDEPEND=dev-qt/qtcore:5 dev-vcs/subversion dev-vcs/git
 SLOT=0
 SRC_URI=https://github.com/svn-all-fast-export/svn2git/archive/1.0.17.tar.gz -> svn2git-1.0.17.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=c40c53aa1d819be9f05c3151f793af31

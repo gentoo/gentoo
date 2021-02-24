@@ -11,5 +11,5 @@ RDEPEND=>=dev-java/openjdk-8:*[javafx] >=virtual/jre-1.8:* mssql? ( dev-java/jtd
 RESTRICT=fetch
 SLOT=0
 SRC_URI=sqldeveloper-20.4.0.379.2205-no-jre.zip
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	378e4cda228ea0231a0ac283cb2ad25c
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	378e4cda228ea0231a0ac283cb2ad25c
 _md5_=b3bb5dcfbd28ce16d1388139662ee594

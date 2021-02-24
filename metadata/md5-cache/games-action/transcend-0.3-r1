@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/freeglut media-libs/portaudio x11-libs/libXi x11-libs/libXmu virtual/glu virtual/opengl
 SLOT=0
 SRC_URI=mirror://sourceforge/transcend/Transcend_0.3_UnixSource.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28
 _md5_=40c345577f64098763ef311ae04f04ff

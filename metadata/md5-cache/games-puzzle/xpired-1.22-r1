@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/sdl-gfx media-libs/sdl-image[jpeg] media-libs/sdl-mixer[mod]
 SLOT=0
 SRC_URI=mirror://sourceforge/xpired/xpired-1.22-linux_source.tar.gz
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28
 _md5_=ea1131c8817277602d817515c4d45821

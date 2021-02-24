@@ -8,5 +8,5 @@ LICENSE=LGPL-2
 RDEPEND=>=media-libs/libsdl-1.2.6
 SLOT=0
 SRC_URI=http://rohanpm.net/files/old/spout-unix-1.3.tar.bz2
-_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
 _md5_=1046a4e0cded08a22b969a360e502332
