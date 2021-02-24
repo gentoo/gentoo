@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install unpack
+DEPEND=dev-util/xdelta:3
+DESCRIPTION=LibreOffice, a full office productivity suite. Binary package, debug info
+EAPI=7
+HOMEPAGE=https://www.libreoffice.org
+IUSE=gnome java kde
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=LGPL-3
+RDEPEND=~app-office/libreoffice-bin-6.4.7.2_p3[gnome=,java=,kde=]
+RESTRICT=test strip
+SLOT=0
+SRC_URI=amd64? ( https://tamiko.43-1.org/distfiles/amd64-debug-libreoffice-6.4.7.2_p3.tar.xz kde? ( !java? ( https://tamiko.43-1.org/distfiles/amd64-debug-libreoffice-kde-6.4.7.2_p3.xd3 ) java? ( https://tamiko.43-1.org/distfiles/amd64-debug-libreoffice-kde-java-6.4.7.2_p3.xd3 ) ) gnome? ( !java? ( https://tamiko.43-1.org/distfiles/amd64-debug-libreoffice-gnome-6.4.7.2_p3.xd3 ) java? ( https://tamiko.43-1.org/distfiles/amd64-debug-libreoffice-gnome-java-6.4.7.2_p3.xd3 ) ) !kde? ( !gnome? ( java? ( https://tamiko.43-1.org/distfiles/amd64-debug-libreoffice-java-6.4.7.2_p3.xd3 ) ) ) ) x86? ( https://tamiko.43-1.org/distfiles/x86-debug-libreoffice-6.4.7.2_p3.tar.xz kde? ( !java? ( https://tamiko.43-1.org/distfiles/x86-debug-libreoffice-kde-6.4.7.2_p3.xd3 ) java? ( https://tamiko.43-1.org/distfiles/x86-debug-libreoffice-kde-java-6.4.7.2_p3.xd3 ) ) gnome? ( !java? ( https://tamiko.43-1.org/distfiles/x86-debug-libreoffice-gnome-6.4.7.2_p3.xd3 ) java? ( https://tamiko.43-1.org/distfiles/x86-debug-libreoffice-gnome-java-6.4.7.2_p3.xd3 ) ) !kde? ( !gnome? ( java? ( https://tamiko.43-1.org/distfiles/x86-debug-libreoffice-java-6.4.7.2_p3.xd3 ) ) ) )
+_md5_=ca8fde99d72fbb0822450a006fa66b2a
