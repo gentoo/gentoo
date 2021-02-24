@@ -15,6 +15,7 @@
     notebooks. There is also a JSON schema for notebook format
     versions &gt;= 3.
   </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">nbformat</remote-id>
     <remote-id type="github">jupyter/nbformat</remote-id>
