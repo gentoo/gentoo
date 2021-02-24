@@ -440,8 +440,3 @@ media-gfx/pstoedit emf
 # requires app-office/unoconv, which requires virtual/ooo, which is not
 # keyworded here. Remove mask if this situation changes.
 gnome-extra/sushi office
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (2012-04-12)
-# Temporary mask-in-base, unmask-in-arch for dev-python/mako keywording for
-# gobject-introspection[doctool], bug #411761
-dev-libs/gobject-introspection -doctool
