@@ -83,7 +83,12 @@ prefix_src_archives() {
 
 TARBALL_PV=${PV}
 SRC_URI="mirror://gentoo/${PN}-${TARBALL_PV}.tar.bz2
-	$(prefix_src_archives ${PN}-${TARBALL_PV}.tar.bz2)"
+	$(prefix_src_archives ${PN}-${TARBALL_PV}.tar.bz2)
+	https://github.com/gentoo/portage/commit/3e5ef19d5d6b26fde08da463d730ff90edf6eb29.patch -> ${P}-bug-772386-fetch.patch"
+
+PATCHES=(
+	"${DISTDIR}/${P}-bug-772386-fetch.patch"
+)
 
 pkg_pretend() {
 	local CONFIG_CHECK="~IPC_NS ~PID_NS ~NET_NS ~UTS_NS"
