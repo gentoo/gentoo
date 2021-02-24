@@ -10,4 +10,8 @@
 		<name>Patrick McLean</name>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">GehirnInc/python-jwt</remote-id>
+		<remote-id type="pypi">jwt</remote-id>
+	</upstream>
 </pkgmetadata>
