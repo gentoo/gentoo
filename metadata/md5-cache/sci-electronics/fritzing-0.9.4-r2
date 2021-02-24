@@ -9,4 +9,4 @@ RDEPEND=dev-libs/quazip:0= dev-libs/libgit2:= dev-qt/qtconcurrent:5 dev-qt/qtcor
 SLOT=0
 SRC_URI=https://github.com/fritzing/fritzing-app/archive/CD-498.tar.gz -> fritzing-0.9.4.tar.gz https://github.com/fritzing/fritzing-parts/archive/e79a69765026f3fda8aab1b3e7a4952c28047a62.tar.gz -> fritzing-parts-0.9.4.tar.gz
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=9677f8652759e3f7552d797c90811220
+_md5_=d4f354326a7d6c47fa8d336b8325a373
