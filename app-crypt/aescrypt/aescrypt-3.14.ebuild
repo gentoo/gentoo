@@ -10,7 +10,7 @@ HOMEPAGE="https://www.aescrypt.com/"
 SRC_URI="https://www.aescrypt.com/download/v$(ver_cut 1)/linux/${P}.tgz"
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="static X"
 RDEPEND="X? (
 		|| ( gnome-extra/zenity kde-apps/kdialog )
