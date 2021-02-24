@@ -10,4 +10,8 @@
 		<name>Patrick McLean</name>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">virtuald/pyhcl</remote-id>
+		<remote-id type="pypi">pyhcl</remote-id>
+	</upstream>
 </pkgmetadata>
