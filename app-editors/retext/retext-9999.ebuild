@@ -9,7 +9,6 @@ EAPI=7
 PYTHON_COMPAT=( python3_{8,9} )
 
 inherit distutils-r1 optfeature virtualx xdg-utils
-DISTUTILS_USE_SETUPTOOLS=rdepend
 
 MY_PN="ReText"
 MY_P="${MY_PN}-${PV/_/~}"
