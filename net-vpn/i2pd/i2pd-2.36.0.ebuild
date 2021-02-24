@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -36,7 +36,9 @@ CMAKE_USE_DIR="${S}/build"
 
 DOCS=( README.md contrib/i2pd.conf contrib/tunnels.conf )
 
-PATCHES=( "${FILESDIR}/i2pd-2.25.0-lib-path.patch" )
+PATCHES=(
+	"${FILESDIR}/i2pd-2.25.0-lib-path.patch"
+)
 
 pkg_pretend() {
 	if use i2p-hardening && ! tc-is-gcc; then
@@ -47,7 +49,6 @@ pkg_pretend() {
 src_configure() {
 	mycmakeargs=(
 		-DWITH_AESNI=$(usex cpu_flags_x86_aes ON OFF)
-		-DWITH_AVX=$(usex cpu_flags_x86_avx ON OFF)
 		-DWITH_HARDENING=$(usex i2p-hardening ON OFF)
 		-DWITH_PCH=OFF
 		-DWITH_STATIC=$(usex static ON OFF)

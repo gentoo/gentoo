@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ IUSE="debug"
 DEPEND="${PYTHON_DEPS}"
 
 PATCHES=(
-	"${FILESDIR}"/kitty-terminfo-setup-0.19.1.patch
+	"${FILESDIR}"/kitty-terminfo-setup-9999.patch
 )
 
 # kitty-terminfo is a split package from kitty that only installs the terminfo

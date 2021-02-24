@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,12 +9,10 @@ DESCRIPTION="Secure and fast microVMs for serverless computing (static build)"
 HOMEPAGE="https://firecracker-microvm.github.io https://github.com/firecracker-microvm/firecracker"
 SRC_URI="
 	amd64? (
-		https://github.com/firecracker-microvm/firecracker/releases/download/v${PV}/firecracker-v${PV}-x86_64
-		https://github.com/firecracker-microvm/firecracker/releases/download/v${PV}/jailer-v${PV}-x86_64
+		https://github.com/firecracker-microvm/firecracker/releases/download/v${PV}/firecracker-v${PV}-x86_64.tgz
 	)
 	arm64? (
-		https://github.com/firecracker-microvm/firecracker/releases/download/v${PV}/firecracker-v${PV}-aarch64
-		https://github.com/firecracker-microvm/firecracker/releases/download/v${PV}/jailer-v${PV}-aarch64
+		https://github.com/firecracker-microvm/firecracker/releases/download/v${PV}/firecracker-v${PV}-aarch64.tgz
 	)"
 
 LICENSE="|| ( Apache-2.0 MIT Apache-2.0-with-LLVM-exceptions ) MPL-2.0"
@@ -67,7 +65,6 @@ pkg_pretend() {
 	fi
 }
 
-src_unpack() { :; }
 src_compile() { :; }
 
 src_install() {
@@ -77,6 +74,6 @@ src_install() {
 		my_arch=aarch64
 	fi
 
-	newbin "${DISTDIR}/firecracker-v${PV}-${my_arch}" firecracker
-	newbin "${DISTDIR}/jailer-v${PV}-${my_arch}" jailer
+	newbin "firecracker-v${PV}-${my_arch}" firecracker
+	newbin "jailer-v${PV}-${my_arch}" jailer
 }
