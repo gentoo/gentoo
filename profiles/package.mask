@@ -202,12 +202,6 @@ sys-power/ncpufreqd
 # Removal in 30 days. Bug #744013
 app-text/csvfix
 
-# Brian Evans <grknight@gentoo.org> (2021-01-25)
-# Dead upstream. Relies on soon to be removed wddx support in PHP.
-# wddx in general failed overall as a protocol. No real maintainer.
-# Removal in 30 days. Bug #688066
-net-analyzer/jffnms
-
 # Marek Szuba <marecki@gentoo.org> (2021-01-21)
 # Masked for testing and further work - the golang-vcs-snapshot variant
 # seems to be incompatible with revdeps using go-module, the variant
