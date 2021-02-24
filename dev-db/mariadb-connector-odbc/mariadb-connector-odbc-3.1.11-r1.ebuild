@@ -39,8 +39,8 @@ multilib_src_configure() {
 		-DWITH_SSL=$(usex ssl OPENSSL OFF)
 		-DMARIADB_LINK_DYNAMIC=YES
 		-DUSE_SYSTEM_INSTALLED_LIB=YES
-		-DINSTALL_DOCDIR="/usr/share/doc/${P}"
-		-DINSTALL_LICENSEDIR="/usr/share/doc/${P}"
+		-DINSTALL_DOCDIR="/usr/share/doc/${PF}"
+		-DINSTALL_LICENSEDIR="/usr/share/doc/${PF}"
 		#-DCMAKE_C_FLAGS="$(mariadb_config --cflags)"
 	)
 	cmake_src_configure
