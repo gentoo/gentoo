@@ -4646,7 +4646,7 @@ dev-java/bcel 6.0_rc3: The Byte Code Engineering Library: analyze, create, manip
 dev-java/bcmail 1.38-r6 1.45-r5 1.50-r3 1.52-r3: Java cryptography APIs
 dev-java/bcpg 1.50-r1 1.50-r2 1.52-r1 1.52-r2: Java cryptography APIs
 dev-java/bcpkix 1.50-r2 1.52-r1: Java cryptography APIs
-dev-java/bcprov 1.38-r4 1.45-r2 1.50-r2 1.50-r4 1.52-r1 1.52-r2 1.52-r3 1.54 1.66: Java cryptography APIs
+dev-java/bcprov 1.38-r4 1.45-r2 1.50-r2 1.50-r4 1.52-r1 1.52-r2 1.52-r3 1.54 1.66 1.68: Java cryptography APIs
 dev-java/bctsp 1.45-r1: Java cryptography APIs
 dev-java/beansbinding 1.2.1-r3: Implementation of JSR295
 dev-java/blowfishj 2.14-r3: Blowfish implementation in Java
