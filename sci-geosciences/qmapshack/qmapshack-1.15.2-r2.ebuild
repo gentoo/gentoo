@@ -34,7 +34,10 @@ BDEPEND="dev-qt/linguist-tools:5"
 
 S="${WORKDIR}"/${PN}-V_${PV}
 
-PATCHES=( "${S}"/FindPROJ4.patch )
+PATCHES=(
+	"${S}"/FindPROJ4.patch
+	"${FILESDIR}"/${P}-no-hacks-kthxbye.patch
+)
 
 src_prepare() {
 	cmake_src_prepare
