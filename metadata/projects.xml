@@ -74,6 +74,10 @@
       <role>Security bugs primarily</role>
     </member>
     <member>
+      <email>ajak@gentoo.org</email>
+      <name>John Helmert III</name>
+    </member>
+    <member>
       <email>alicef@gentoo.org</email>
       <name>Alice Ferrazzi</name>
       <role>Kernel</role>
@@ -104,7 +108,7 @@
       <name>Steve Arnold</name>
       <role>Kernel</role>
     </member>
-    <member>
+    <member is-lead="1">
       <email>sam@gentoo.org</email>
       <name>Sam James</name>
     </member>
@@ -112,7 +116,7 @@
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
     </member>
-    <member is-lead="1">
+    <member>
       <email>zerochaos@gentoo.org</email>
       <name>Rick Farina</name>
     </member>
@@ -3082,6 +3086,10 @@
     <description>The Security Project's mission is to ensure that vulnerabilities in software accessible through the Portage tree are found and fixed in a timely manner, so that our users remain protected against known vulnerabilities.</description>
     <subproject ref="security-audit@gentoo.org"/>
     <subproject ref="security-kernel@gentoo.org"/>
+    <member>
+      <email>ajak@gentoo.org</email>
+      <name>John Helmert III</name>
+    </member>
     <member>
       <email>bman@gentoo.org</email>
       <name>Aaron Bauman</name>
