@@ -208,11 +208,6 @@ app-text/csvfix
 # Removal in 30 days. Bug #688066
 net-analyzer/jffnms
 
-# Jakov Smolic <jakov.smolic@sartura.hr> (2021-01-24)
-# Last release in 2004. Fails to build with gcc-10 and openssl-1.1.
-# Removal on 2021-02-23.  Bugs #707004, #677170, #562724
-app-crypt/sign
-
 # Marek Szuba <marecki@gentoo.org> (2021-01-21)
 # Masked for testing and further work - the golang-vcs-snapshot variant
 # seems to be incompatible with revdeps using go-module, the variant
