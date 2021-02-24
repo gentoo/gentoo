@@ -14,7 +14,7 @@ HOMEPAGE="https://apps.kde.org/en/kontact"
 
 LICENSE="LGPL-2.1+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 x86"
 IUSE=""
 
 DEPEND="
