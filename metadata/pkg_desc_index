@@ -8144,7 +8144,7 @@ dev-python/debtcollector 2.2.0: Python deprecation patterns and strategies that 
 dev-python/decorator 4.4.2-r1: Simplifies the usage of decorators for the average programmer
 dev-python/defcon 0.6.0-r1 0.7.2: A set of UFO based objects for use in font editing applications
 dev-python/defusedxml 0.7.0_rc1: XML bomb protection for Python stdlib modules, an xml serialiser
-dev-python/denonavr 0.9.7 0.9.8 0.9.9 0.9.10: Automation Library for Denon AVR receivers
+dev-python/denonavr 0.9.9 0.9.10 0.10.1: Automation Library for Denon AVR receivers
 dev-python/deprecated 1.2.11: Python @deprecated decorator to deprecate old API
 dev-python/deprecation 2.1.0: A library to handle automated deprecations
 dev-python/dicttoxml 1.7.4-r1: Converts a Python dictionary or other data type to a valid XML string
@@ -8343,8 +8343,10 @@ dev-python/httmock 1.2.5: A mocking library for requests
 dev-python/http-parser 0.9.0: HTTP request/response parser for python in C
 dev-python/httpauth 0.3: A WSGI middleware that secures routes using HTTP Digest Authentication
 dev-python/httpbin 0.7.0-r2: HTTP Request and Response Service
+dev-python/httpcore 0.12.3: A minimal low-level HTTP client
 dev-python/httplib2 0.19.0-r1: A comprehensive HTTP client library
 dev-python/httpretty 1.0.5: HTTP client mock for Python
+dev-python/httpx 0.16.1: Fully-featured HTTP client which provides sync and async APIs
 dev-python/humanfriendly 8.2 9.1: Human friendly output for text interfaces using Python
 dev-python/humanize 3.2.0: Common humanization utilities
 dev-python/hvac 0.10.8: hashicorp vault client in python
@@ -8905,6 +8907,7 @@ dev-python/pytest-freezegun 0.4.2: Easily freeze time in pytest test + fixtures
 dev-python/pytest-helpers-namespace 2019.1.8-r1: Provides a helpers pytest namespace
 dev-python/pytest-html 1.22.1: Plugin for generating HTML reports for py.test results
 dev-python/pytest-httpbin 1.0.0-r1: Easily test your HTTP library against a local copy of httpbin
+dev-python/pytest-httpx 0.10.1: Send responses to HTTPX using pytest
 dev-python/pytest-lazy-fixture 0.6.3: It helps to use fixtures in pytest.mark.parametrize
 dev-python/pytest-localserver 0.5.0: Py.test plugin to test server connections locally
 dev-python/pytest-metadata 1.8.0: A plugin for pytest that provides access to test session metadata
@@ -9302,6 +9305,7 @@ dev-python/urllib3 1.25.11 1.26.2 1.26.2-r1 1.26.2-r2 1.26.2-r3 1.26.3-r1: HTTP 
 dev-python/urwid 2.1.1: Curses-based user interface library for Python
 dev-python/urwidtrees 1.0.3: Tree widgets for urwid
 dev-python/utidylib 0.6-r1: TidyLib Python wrapper
+dev-python/uvicorn 0.13.4: Lightning-fast ASGI server implementation
 dev-python/uvloop 0.14.0 0.15.0 0.15.1 0.15.2: Ultra-fast implementation of asyncio event loop on top of libuv
 dev-python/validators 0.18.2: Python Data Validation for Humans
 dev-python/vcrpy 4.1.1: Automatically mock your HTTP interactions to simplify and speed up testing
