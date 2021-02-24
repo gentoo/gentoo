@@ -14,6 +14,6 @@ SRC_URI="https://gitlab.com/lv2/${PN}/-/archive/v${PV}/{PN}-v${PV}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
 
 S="${WORKDIR}/${PN}-v${PV}-${COMMIT}"
