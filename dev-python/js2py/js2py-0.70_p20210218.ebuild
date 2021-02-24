@@ -36,9 +36,11 @@ python_test() {
 	pushd ./tests >/dev/null || die
 
 	# Tests require "node_failed.txt" file where the logs are kept
-	[ -f ./node_failed.txt ] && rm ./node_failed.txt
-	touch ./node_failed.txt || die
+	if [[ -f ./node_failed.txt ]]; then
+		rm ./node_failed.txt || die
+	fi
 
+	touch ./node_failed.txt || die
 	"${EPYTHON}" ./run.py || die "tests failed with ${EPYTHON}"
 
 	popd >/dev/null || die
