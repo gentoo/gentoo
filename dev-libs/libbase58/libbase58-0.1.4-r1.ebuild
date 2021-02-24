@@ -11,7 +11,7 @@ LICENSE="MIT"
 
 SRC_URI="https://github.com/luke-jr/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 SLOT="0/0"
-KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~mips ~ppc ~ppc64 x86"
 IUSE="test tools"
 RESTRICT="!test? ( test )"
 
