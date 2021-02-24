@@ -11,7 +11,7 @@ LICENSE="MIT"
 
 SRC_URI="https://github.com/bitcoin/${PN}/archive/v${PV}.tar.gz -> ${P}-github.tgz"
 SLOT="0/7"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
