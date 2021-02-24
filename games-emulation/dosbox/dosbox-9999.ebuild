@@ -24,7 +24,7 @@ case "${PV}" in
 	;;
 esac
 
-GLIDE_PATCH=841e1071597b64ead14dd08c25a03206b2d1d1b6
+GLIDE_PATCH=6a01f554fad979cf34d3ff07c9579192c88086c3
 SRC_URI+=" glide? ( https://raw.githubusercontent.com/voyageur/openglide/${GLIDE_PATCH}/platform/dosbox/dosbox_glide.diff -> dosbox_glide-${GLIDE_PATCH}.diff )"
 
 DESCRIPTION="DOS emulator"
