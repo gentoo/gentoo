@@ -26,3 +26,13 @@ BDEPEND="
 	)"
 
 distutils_enable_tests pytest
+
+python_test() {
+	local deselect=(
+		# require Internet
+		tests/test_socks.py::TestSOCKSProxy::test_create_connection_resolve_good
+	)
+
+	pytest -vv ${deselect[@]/#/--deselect } ||
+		die "Tests failed with ${EPYTHON}"
+}
