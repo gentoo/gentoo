@@ -191,12 +191,6 @@ dev-libs/libressl
 ~app-editors/emacs-27.1.92
 ~app-editors/emacs-27.1.93
 
-# Azamat H. Hackimov <azamat.hackimov@gmail.com> (2021-01-26)
-# Dead upstream (last release 2007), unmaintained, multiple issues,
-# no reverse dependencies.
-# Removal in 30 days. Bug #744019
-sys-power/ncpufreqd
-
 # Marek Szuba <marecki@gentoo.org> (2021-01-21)
 # Masked for testing and further work - the golang-vcs-snapshot variant
 # seems to be incompatible with revdeps using go-module, the variant
