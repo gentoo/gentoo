@@ -75,6 +75,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-fix-install.patch"
 	"${FILESDIR}/${P}-fix-issue-with-cmake-path-variables.patch"
 	"${FILESDIR}/${P}-Gentoo-specific-avoid-pre-stripping-files.patch"
+	"${FILESDIR}/${P}-fix-flow-control-nesting.patch"
 )
 
 pkg_setup() {

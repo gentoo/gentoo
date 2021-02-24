@@ -1,0 +1,31 @@
+From e69c42386239bcc08143607df12b8bb3f1ff14ba Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Wed, 24 Feb 2021 20:06:02 +0100
+Subject: [PATCH] adm/cmake/vtk.cmake: fix flow control nesting
+
+Fix an unbalanced nesting of flow control statements
+for >=cmake-3.20.0
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+---
+ adm/cmake/vtk.cmake | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/adm/cmake/vtk.cmake b/adm/cmake/vtk.cmake
+index c5692fd6..00b7ff4a 100644
+--- a/adm/cmake/vtk.cmake
++++ b/adm/cmake/vtk.cmake
+@@ -156,8 +156,8 @@ if (VTK_FOUND)
+             endif()
+           endif()
+         endif()
+-      endif()
+-    endforeach()
++      endforeach()
++    endif()
+   endif()
+ 
+   if (3RDPARTY_VTK_INCLUDE_DIRS)
+-- 
+2.30.1
+
