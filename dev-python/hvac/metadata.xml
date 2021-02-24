@@ -10,4 +10,8 @@
 		<name>Patrick McLean</name>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">hvac/hvac</remote-id>
+		<remote-id type="pypi">hvac</remote-id>
+	</upstream>
 </pkgmetadata>
