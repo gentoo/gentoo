@@ -1,0 +1,85 @@
+From a22553a612ade8a5e3f90c84166e9fdda16635c9 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sat, 20 Feb 2021 12:22:24 +0000
+Subject: [PATCH] Unbundle the DUMB library
+
+---
+ src/Application/App.cpp   | 2 +-
+ src/Audio/ModMusic.cpp    | 2 +-
+ src/CMakeLists.txt        | 4 +++-
+ thirdparty/CMakeLists.txt | 2 --
+ 4 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/Application/App.cpp b/src/Application/App.cpp
+index 3d4dcc1d..d2c3e583 100644
+--- a/src/Application/App.cpp
++++ b/src/Application/App.cpp
+@@ -60,7 +60,7 @@
+ #include "UI/WxUtils.h"
+ #include "Utility/StringUtils.h"
+ #include "Utility/Tokenizer.h"
+-#include "thirdparty/dumb/dumb.h"
++#include <dumb.h>
+ #include <filesystem>
+ 
+ using namespace slade;
+diff --git a/src/Audio/ModMusic.cpp b/src/Audio/ModMusic.cpp
+index cb8eef8c..2d368fdb 100644
+--- a/src/Audio/ModMusic.cpp
++++ b/src/Audio/ModMusic.cpp
+@@ -32,7 +32,7 @@
+ // -----------------------------------------------------------------------------
+ #include "Main.h"
+ #include "ModMusic.h"
+-#include "thirdparty/dumb/dumb.h"
++#include <dumb.h>
+ 
+ using namespace slade;
+ using namespace audio;
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 802598f6..222e6040 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -110,6 +110,7 @@ endif()
+ pkg_check_modules(fmt REQUIRED fmt>=6)
+ include_directories(${fmt_INCLUDE_DIRS})
+ find_package(MPG123 REQUIRED)
++pkg_check_modules(DUMB REQUIRED dumb>=1.0)
+ include_directories(
+ 	${FREEIMAGE_INCLUDE_DIR}
+ 	${SFML_INCLUDE_DIR}
+@@ -118,9 +119,9 @@ include_directories(
+ 	${CURL_INCLUDE_DIR}
+ 	${LUA_INCLUDE_DIR}
+ 	${MPG123_INCLUDE_DIR}
++	${DUMB_INCLUDE_DIRS}
+ 	.
+ 	..
+-	../thirdparty/dumb
+ 	./Application
+ 	)
+ 
+@@ -200,6 +201,7 @@ target_link_libraries(slade
+ 	${CURL_LIBRARIES}
+ 	${LUA_LIBRARIES}
+ 	${MPG123_LIBRARIES}
++	${DUMB_LIBRARIES}
+ 	${fmt_LIBRARIES}
+ 	-lstdc++fs
+ )
+diff --git a/thirdparty/CMakeLists.txt b/thirdparty/CMakeLists.txt
+index 6b0eb504..a3757c91 100644
+--- a/thirdparty/CMakeLists.txt
++++ b/thirdparty/CMakeLists.txt
+@@ -12,8 +12,6 @@ set(EXTERNAL_SOURCES
+ file(GLOB_RECURSE EXTERNAL_SOURCES
+ 	*.cpp
+ 	*.cxx
+-	dumb/*.c
+-	lua/*.c
+ 	lzma/C/LzmaDec.c
+ 	fmt/*.cc
+ 	${SLADE_HEADERS}
+-- 
+2.30.0
+

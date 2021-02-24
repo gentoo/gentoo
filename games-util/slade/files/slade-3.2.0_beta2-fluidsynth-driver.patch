@@ -1,0 +1,27 @@
+From dc0057d1200f9bb6b67f1b1a2094b7e402d1d370 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sat, 20 Feb 2021 12:28:48 +0000
+Subject: [PATCH] Don't force FluidSynth to use ALSA on Linux
+
+---
+ src/Audio/MIDIPlayer.cpp | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/src/Audio/MIDIPlayer.cpp b/src/Audio/MIDIPlayer.cpp
+index bb001339..f33ffe67 100644
+--- a/src/Audio/MIDIPlayer.cpp
++++ b/src/Audio/MIDIPlayer.cpp
+@@ -344,10 +344,6 @@ public:
+ 		fs_initialised_ = false;
+ 		file_           = "";
+ 
+-		// Set fluidsynth driver to alsa in linux (no idea why it defaults to jack)
+-		if (app::platform() == app::Platform::Linux && fs_driver.value.empty())
+-			fs_driver = "alsa";
+-
+ 		// Init soundfont path
+ 		if (fs_soundfont_path.value.empty())
+ 		{
+-- 
+2.30.0
+
