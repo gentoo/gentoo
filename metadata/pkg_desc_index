@@ -3072,7 +3072,7 @@ app-text/sword-modules 2.2: All the unlocked modules for app-text/sword, grouped
 app-text/t1utils 1.41-r2: Type 1 Font utilities
 app-text/tabler 2-r1: A utility to create text art tables from delimited input
 app-text/talkfilters 2.3.8-r1: Convert ordinary English text into text that mimics a stereotyped dialect
-app-text/teckit 2.5.6 2.5.10: Text Encoding Conversion toolkit
+app-text/teckit 2.5.10: Text Encoding Conversion toolkit
 app-text/teseq 1.1.1: A tool for analyzing files that contain control characters and sequences
 app-text/tessdata_best 4.0.0 4.1.0: Most accurate trained models for app-text/tesseract
 app-text/tessdata_fast 4.0.0 4.1.0: Fast integer versions of trained models for app-text/tesseract
@@ -14534,7 +14534,7 @@ net-dialup/dial 1.2-r2: A simple client for DWUN
 net-dialup/dwun 0.96e-r4: Dialer Without a Useful Name (DWUN)
 net-dialup/fbgetty 0.1.698-r1: An extended getty for the framebuffer console
 net-dialup/freeradius 3.0.20-r1 3.0.21-r1: Highly configurable free RADIUS server
-net-dialup/freeradius-client 1.1.7 1.1.7-r1: FreeRADIUS Client framework
+net-dialup/freeradius-client 1.1.7-r1: FreeRADIUS Client framework
 net-dialup/isdn-firmware 2005.8.15.2: ISDN firmware for active ISDN cards (AVM, Eicon, etc.)
 net-dialup/kpnadsl4linux 1.11: ADSL4Linux, a PPTP start/stop/etc. program especially for Dutch users
 net-dialup/linux-atm 2.5.2: Tools for ATM
