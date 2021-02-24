@@ -19,7 +19,11 @@ IUSE="doc gtk qt5"
 
 BDEPEND="
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen )
+	doc? (
+		app-doc/doxygen
+		dev-python/sphinx
+		dev-python/sphinx_lv2_theme
+	)
 "
 CDEPEND="
 	media-libs/lv2
