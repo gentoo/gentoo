@@ -1,14 +1,13 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit cmake desktop xdg
 
-MY_PV=$(ver_rs 4 "um+git")
 DESCRIPTION="An enhanced clone of the classic first-person shooter Doom"
 HOMEPAGE="https://github.com/coelckers/prboom-plus/"
-SRC_URI="http://deb.debian.org/debian/pool/main/p/prboom-plus/${PN}_${MY_PV}.orig.tar.gz -> ${P}.tar.gz"
+SRC_URI="http://deb.debian.org/debian/pool/main/p/prboom-plus/${PN}_${PV}um.orig.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+ GPL-3+ BSD BSD-2 BSD-with-disclosure CC-BY-3.0 CC0-1.0 LGPL-2.1+ MIT public-domain"
 SLOT="0"
@@ -30,11 +29,10 @@ DEPEND="
 	zlib? ( sys-libs/zlib )"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/${PN}-master/prboom2"
+S="${WORKDIR}/${P}um/prboom2"
 
 src_prepare() {
-	eapply -p2 "${FILESDIR}"/prboom-plus-2.5.1.7.82-Add-CMake-install-targets.patch
-	eapply -p2 "${FILESDIR}"/prboom-plus-2.5.1.7.82-Add-install-rules-for-prboom-plus-documentation.patch
+	eapply -p2 "${FILESDIR}/${P}-Set-CMAKE_INSTALL_DOCDIR-as-a-cache-entry.patch"
 	cmake_src_prepare
 }
 
@@ -52,7 +50,7 @@ src_configure() {
 		-DWITH_VORBISFILE="$(usex vorbis)"
 		-DWITH_PORTMIDI="$(usex portmidi)"
 		-DDOOMWADDIR="${EPREFIX}/usr/share/doom"
-		-DWAD_INSTALL_PATH="${EPREFIX}/usr/share/doom"
+		-DWAD_DATA_PATH="${EPREFIX}/usr/share/doom"
 		-DBUILD_SERVER="$(usex server)"
 	)
 	cmake_src_configure

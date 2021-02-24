@@ -1,9 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake xdg
+LUA_COMPAT=( luajit )
+
+inherit cmake lua-single xdg
 
 DESCRIPTION="A free open-source voxel game engine with easy modding and game creation"
 HOMEPAGE="https://www.minetest.net"
@@ -13,12 +15,14 @@ LICENSE="LGPL-2.1+ CC-BY-SA-3.0 OFL-1.1 Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+client +curl doc +leveldb ncurses nls postgres prometheus redis +server +sound spatial test +truetype"
-REQUIRED_USE="|| ( client server )"
+REQUIRED_USE="
+	${LUA_REQUIRED_USE}
+	|| ( client server )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	${LUA_DEPS}
 	dev-db/sqlite:3
-	dev-lang/luajit:2
 	dev-libs/gmp:0=
 	dev-libs/jsoncpp:=
 	sys-libs/zlib
