@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ DESCRIPTION="An IRC bot extensible with C or TCL"
 HOMEPAGE="https://www.eggheads.org/"
 SRC_URI="https://ftp.eggheads.org/pub/eggdrop/source/${PV:0:3}/${P}.tar.gz"
 
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ppc ~sparc ~x86"
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="debug doc ipv6 ssl static"
