@@ -1,4 +1,4 @@
-BDEPEND=virtual/pkgconfig doc? ( app-doc/doxygen )
+BDEPEND=virtual/pkgconfig doc? ( app-doc/doxygen dev-python/sphinx dev-python/sphinx_lv2_theme )
 DEFINED_PHASES=compile configure install prepare setup
 DEPEND=media-libs/lv2 gtk? ( x11-libs/gtk+:2 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 ) || ( dev-lang/python:3.9[threads(+)] dev-lang/python:3.8[threads(+)] dev-lang/python:3.7[threads(+)] )
 DESCRIPTION=Lightweight C library for loading and wrapping LV2 plugin UIs
@@ -11,4 +11,4 @@ RDEPEND=media-libs/lv2 gtk? ( x11-libs/gtk+:2 ) qt5? ( dev-qt/qtcore:5 dev-qt/qt
 SLOT=0
 SRC_URI=http://download.drobilla.net/suil-0.10.10.tar.bz2
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	waf-utils	0a6e492cdcbd52b1304cfcd9eba5abc6	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=5a96e4cdd8135aff9861368525a9d552
+_md5_=f33084cdacb4b6f5bb2efa16c8819285
