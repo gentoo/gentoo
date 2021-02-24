@@ -8,5 +8,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="gitlab">lv2/sphinx_lv2_theme</remote-id>
+    <remote-id type="pypi">sphinx-lv2-theme</remote-id>
   </upstream>
 </pkgmetadata>
