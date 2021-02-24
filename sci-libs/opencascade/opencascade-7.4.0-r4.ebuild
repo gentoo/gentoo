@@ -49,7 +49,10 @@ RDEPEND="
 		dev-qt/qtxml:5
 	)
 	tbb? ( dev-cpp/tbb )
-	vtk? ( >=sci-libs/vtk-8.1.0[rendering] )
+	vtk? (
+		>=sci-libs/vtk-8.1.0[rendering]
+		<sci-libs/vtk-9
+	)
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
