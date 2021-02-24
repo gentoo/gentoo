@@ -3614,7 +3614,7 @@ dev-db/qdbm 1.8.78-r2: Quick Database Manager
 dev-db/qt5-sqlcipher 1.0.11: Qt SQL driver plugin for SQLCipher
 dev-db/redis 5.0.9-r1 5.0.10 6.0.9 6.0.9-r1 6.0.9-r100 6.0.10: A persistent caching system, key-value and data structures database
 dev-db/repmgr 5.1.0: PostgreSQL Replication Manager
-dev-db/rqlite 5.2.0: Replicated SQLite using the Raft consensus protocol
+dev-db/rqlite 5.2.0 5.10.2: Replicated SQLite using the Raft consensus protocol
 dev-db/sadisplay 0.4.9: SqlAlchemy schema display script
 dev-db/slony1 2.2.10: A replication system for the PostgreSQL Database Management System
 dev-db/spatialite 4.3.0a: A complete Spatial DBMS in a nutshell built upon sqlite
