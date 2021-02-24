@@ -14719,7 +14719,7 @@ net-im/qtox 1.16.3-r1 9999: Most feature-rich GUI for net-libs/tox using Qt5
 net-im/ricochet 1.1.4 9999: Privacy-focused instant messaging through Tor hidden services
 net-im/sendxmpp 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
 net-im/signal-cli-bin 0.7.4 0.8.0: Send and receive messages of Signal Messenger over a command line interface
-net-im/signal-desktop-bin 1.39.6 1.40.0-r1 1.40.0-r2 1.40.0-r3: Allows you to send and receive messages of Signal Messenger on your computer
+net-im/signal-desktop-bin 1.39.6 1.40.0-r3: Allows you to send and receive messages of Signal Messenger on your computer
 net-im/skype-dbus-mock 0_pre20181011: Mocked systemd dbus interface for skype 8.30+
 net-im/skypeforlinux 8.69.0.77: Instant messaging client, with support for audio and video
 net-im/slack 4.11.3 4.12.2 4.13.0: Team collaboration tool
