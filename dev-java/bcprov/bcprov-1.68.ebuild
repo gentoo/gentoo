@@ -52,12 +52,3 @@ src_prepare() {
 		rm -v "${RM_TEST_FILES[@]}" || die
 	fi
 }
-
-src_compile() {
-	java-pkg-simple_src_compile
-}
-
-src_install() {
-	java-pkg-simple_src_install
-	use source && java-pkg_dosrc org
-}
