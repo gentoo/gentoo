@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=dev-libs/glib:= systemd? ( sys-apps/systemd:= ) dev-go/go-md2man
+DESCRIPTION=An OCI container runtime monitor
+EAPI=7
+HOMEPAGE=https://github.com/containers/conmon
+IUSE=systemd
+KEYWORDS=~amd64 ~arm64
+LICENSE=Apache-2.0
+RDEPEND=dev-libs/glib:= systemd? ( sys-apps/systemd:= )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/containers/conmon/archive/0e155c83aa739ef0a0540ec9f9d265f57f68038b.tar.gz -> conmon-2.0.26.tar.gz
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=6fefe9715aac8c42f0d73a8e410f5f14
