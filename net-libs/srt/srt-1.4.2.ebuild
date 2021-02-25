@@ -3,6 +3,7 @@
 
 EAPI=7
 
+CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
 DESCRIPTION="Secure Reliable Transport (SRT) library and tools"
@@ -37,7 +38,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	sed -i -e "s:hcrypt_ut.c::" "${S}"/haicrypt/*.maf || die
 }
 
