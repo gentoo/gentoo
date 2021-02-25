@@ -21,6 +21,7 @@ RDEPEND="
 	dev-python/pikepdf[${PYTHON_USEDEP}]
 	dev-python/pycairo[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP},cairo]
+	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	x11-libs/gtk+:3[introspection]
 	x11-libs/pango[introspection]
 "
