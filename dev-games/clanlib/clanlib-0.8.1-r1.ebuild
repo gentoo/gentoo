@@ -49,7 +49,7 @@ PATCHES=(
 
 DOCS=(
 	CODING_STYLE CREDITS NEWS PATCHES
-	README.{,anjuta,distros,kdevelop,sdl,upgrade} INSTALL.linux
+	README{,.anjuta,.distros,.kdevelop,.sdl,.upgrade} INSTALL.linux
 )
 
 src_prepare() {
