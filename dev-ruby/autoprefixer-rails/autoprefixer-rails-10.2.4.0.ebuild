@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -35,6 +35,5 @@ all_ruby_prepare() {
 	sed -i -e "/bundler/d" -e "/BUNDLE/d" spec/app/config/boot.rb || die
 	sed -i -e "/Bundler/ s:^:#:" \
 		-e '/config.sass/ s:^:#:' spec/app/config/application.rb || die
-	sed -i -e '1igem "tzinfo", "~>1.0"' spec/spec_helper.rb || die
 	rm -f spec/rails_spec.rb || die
 }
