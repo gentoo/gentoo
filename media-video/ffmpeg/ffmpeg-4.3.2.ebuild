@@ -424,8 +424,8 @@ multilib_src_configure() {
 		break
 	done
 
-	# LTO support, bug #566282
-	is-flagq "-flto*" && myconf+=( "--enable-lto" )
+	# LTO support, bug #566282, #772887
+	( is-flagq "-flto*" && ! is-flagq "-fno-lto" ) && myconf+=( "--enable-lto" )
 
 	# Mandatory configuration
 	myconf=(
