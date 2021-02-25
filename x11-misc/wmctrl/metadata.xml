@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
-	<longdescription>
-		The wmctrl program is a command line tool to interact with an
-		EWMH/NetWM compatible X Window Manager. It provides command line
-		access to almost all the features defined in the EWMH specification.
-		Using it, it's possible to, for example, obtain information about the
-		window manager, get a detailed list of desktops and managed windows,
-		switch and resize desktops, change number of desktops, make windows
-		full-screen, always-above or sticky, and activate, close, move,
-		resize, maximize and minimize them.
-	</longdescription>
+	<maintainer type="person">
+		<email>sudinave@gmail.com</email>
+		<name>Ionen Wolkens</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 </pkgmetadata>
