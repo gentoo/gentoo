@@ -5,6 +5,7 @@
 		<email>pinkbyte@gentoo.org</email>
 		<name>Sergey Popov</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">tehmaze/ansi</remote-id>
 		<remote-id type="pypi">ansi</remote-id>
