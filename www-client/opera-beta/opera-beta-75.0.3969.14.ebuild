@@ -30,7 +30,7 @@ else
 	MY_PN=${PN}
 fi
 
-FFMPEG_VERSION="88.0.4324.27"
+FFMPEG_VERSION="89.0.4381.8"
 
 SRC_URI="${SRC_URI_BASE[@]/%//${PV}/linux/${MY_PN}_${PV}_amd64.deb}
 	proprietary-codecs? (
