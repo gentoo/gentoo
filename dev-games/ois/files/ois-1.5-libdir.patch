@@ -1,0 +1,31 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a5da3b7..90a8b77 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -210,8 +210,7 @@ if (OIS_BUILD_DEMOS)
+ 
+ endif()
+ 
+-set(LIB_INSTALL_DIR "lib")
+-set(OIS_LIB_DIRECTORY ${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_DIR})
++set(OIS_LIB_DIRECTORY ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR})
+ 
+ file(GLOB PUBLIC_HEADERS "${CMAKE_SOURCE_DIR}/includes/*.h")
+ 
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 90a8b77..3c1fe95 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -219,9 +219,9 @@ install(FILES ${PUBLIC_HEADERS}
+ )
+ 
+ install(TARGETS OIS
+-  RUNTIME DESTINATION bin
+-  LIBRARY DESTINATION lib
+-  ARCHIVE DESTINATION lib
++  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
++  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+   FRAMEWORK DESTINATION Library/Frameworks
+ )
+ 
