@@ -1,9 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: opam.eclass
 # @MAINTAINER:
 # Mark Wright <gienah@gentoo.org>
+# ML <ml@gentoo.org>
 # @AUTHOR:
 # Alexis Ballier <aballier@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6 7

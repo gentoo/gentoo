@@ -1,10 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: dune.eclass
 # @MAINTAINER:
 # rkitover@gmail.com
 # Mark Wright <gienah@gentoo.org>
+# ML <ml@gentoo.org>
 # @AUTHOR:
 # Rafael Kitover <rkitover@gmail.com>
 # @SUPPORTED_EAPIS: 5 6 7

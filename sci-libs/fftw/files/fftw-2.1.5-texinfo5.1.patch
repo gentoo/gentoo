@@ -1,0 +1,21 @@
+ doc/fftw.texi | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/doc/fftw.texi b/doc/fftw.texi
+index 90e8bb6..85a7a53 100644
+--- a/doc/fftw.texi
++++ b/doc/fftw.texi
+@@ -46,10 +46,10 @@ approved by the Free Software Foundation.
+ @titlepage
+ @sp 10
+ @comment The title is printed in a large font.
+-@title{FFTW User's Manual}
++@title FFTW User's Manual
+ @subtitle For version @value{VERSION}, @value{UPDATED}
+-@author{Matteo Frigo}
+-@author{Steven G. Johnson}
++@author Matteo Frigo
++@author Steven G. Johnson
+ 
+ @c The following two commands start the copyright page.
+ @page
