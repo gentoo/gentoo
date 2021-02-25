@@ -1041,7 +1041,7 @@ app-crypt/codecrypt 1.7.2-r1 1.8-r2: Post-quantum cryptography tool
 app-crypt/codegroup 20080907-r1: encode / decode binary file as five letter codegroups
 app-crypt/coolkey 1.1.0-r7: Linux Driver support for the CoolKey and CAC products
 app-crypt/crackpkcs12 0.2.10: multithreaded program to crack PKCS#12 files
-app-crypt/debian-archive-keyring 2018.1 2019.1 2019.1-r1: GnuPG archive keys of the Debian archive
+app-crypt/debian-archive-keyring 2019.1-r1 2021.1: GnuPG archive keys of the Debian archive
 app-crypt/dehydrated 0.7.0: A client for signing certificates with an ACME-server
 app-crypt/dieharder 3.31.1-r3: An advanced suite for testing the randomness of RNG's
 app-crypt/easy-rsa 3.0.4 3.0.5 3.0.6 3.0.7 3.0.8: Small RSA key management package, based on OpenSSL
@@ -14974,8 +14974,8 @@ net-libs/usrsctp 0.9.3.0_p20201102: A cross-platform userland SCTP stack
 net-libs/wandio 1.0.5 4.0.0 4.1.2 4.2.0 4.2.1 4.2.3_p1-r1: C library for simple and efficient file IO
 net-libs/webkit-gtk 2.30.5: Open source web browser engine
 net-libs/wvstreams 4.6.1_p14-r1 99999: A network programming library in C++
-net-libs/xrootd 4.12.4 4.12.5 5.0.2 5.0.3: Extended ROOT remote file server
-net-libs/xrootd-ceph 4.12.4 4.12.5 5.0.2 5.0.3: xrootd OSS plug-in for interfacing with Ceph storage platform
+net-libs/xrootd 4.12.4 4.12.5 5.0.2 5.0.3 5.1.0: Extended ROOT remote file server
+net-libs/xrootd-ceph 4.12.4 4.12.5 5.0.2 5.0.3 5.1.0: xrootd OSS plug-in for interfacing with Ceph storage platform
 net-libs/zeromq 4.3.3 4.3.4: A brokerless kernel
 net-libs/zmqpp 4.2.0: ZeroMQ 'highlevel' C++ bindings
 net-mail/altermime 0.3.11: alterMIME is a small program which is used to alter your mime-encoded mailpacks
