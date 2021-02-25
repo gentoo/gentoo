@@ -6,6 +6,7 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">wgois/OIS</remote-id>
 		<remote-id type="sourceforge">wgois</remote-id>
 	</upstream>
 </pkgmetadata>
