@@ -12,7 +12,6 @@
 	<use>
 		<flag name="adl">Enable support for controlling fans and overclocking on AMD cards with AMD Display Library</flag>
 		<flag name="alchemist">Enable support for mining with AlcheMist</flag>
-		<flag name="antminer">Enable support for mining with AntMiner U1 sticks</flag>
 		<flag name="avalon">Enable support for mining with Avalon 1 ASIC modules</flag>
 		<flag name="avalonmm">Enable support for mining with Avalon 2/3 ASIC modules</flag>
 		<flag name="bifury">Enable support for mining with Bi*fury USB sticks</flag>
