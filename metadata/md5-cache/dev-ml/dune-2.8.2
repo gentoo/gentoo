@@ -1,12 +1,14 @@
 DEFINED_PHASES=compile configure install
-DEPEND=>=dev-lang/ocaml-4.08:= !dev-ml/jbuilder dev-ml/findlib
+DEPEND=>=dev-lang/ocaml-4.08:= !dev-ml/jbuilder dev-ml/findlib test? ( dev-ml/core_bench dev-ml/ppx_bench dev-ml/ppx_expect )
 DESCRIPTION=A composable build system for OCaml
 EAPI=7
 HOMEPAGE=https://github.com/ocaml/dune
+IUSE=test
 KEYWORDS=~amd64 ~arm ~arm64 ppc ~ppc64 ~x86
 LICENSE=MIT
 RDEPEND=>=dev-lang/ocaml-4.08:= !dev-ml/jbuilder
+RESTRICT=!test? ( test )
 SLOT=0/2.8.2
 SRC_URI=https://github.com/ocaml/dune/archive/2.8.2.tar.gz -> dune-2.8.2.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045
-_md5_=f41d861db95174fcf70a7aac0ab5a35d
+_md5_=fd1f921d560627b2da531461c54f5db1
