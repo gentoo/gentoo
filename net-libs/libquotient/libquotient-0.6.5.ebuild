@@ -24,10 +24,9 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-use-after-free.patch # 0.6.x branch
 	# downstream patches
-	"${FILESDIR}"/${P}-no-android.patch
-	"${FILESDIR}"/${P}-no-tests.patch
+	"${FILESDIR}"/${PN}-0.6.3-no-android.patch
+	"${FILESDIR}"/${PN}-0.6.3-no-tests.patch
 )
 
 src_configure() {
