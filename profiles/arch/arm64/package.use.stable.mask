@@ -1,6 +1,12 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-02-25)
+# Roy Bamford <neddyseagoon@gentoo.org> (2021-02-25)
+# Dependencies not yet stable, migrated from p.u.m.
+app-crypt/qca botan
+gnome-extra/sushi office
+
 # Sam James <sam@gentoo.org> (2021-02-05)
 # Thomas Deutschmann <whissi@gentoo.org> (2017-02-14)
 # No lua stable for this arch yet
