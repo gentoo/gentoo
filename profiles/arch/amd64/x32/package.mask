@@ -60,7 +60,6 @@ kde-apps/kontact:5
 kde-apps/korganizer:5
 kde-apps/ktp-accounts-kcm:5
 kde-apps/ktp-text-ui:5
-<kde-apps/libkgapi-20.12.0:5
 kde-apps/libksieve:5
 kde-apps/mailcommon:5
 kde-apps/messagelib:5
