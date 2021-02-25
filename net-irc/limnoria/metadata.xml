@@ -5,6 +5,7 @@
 		<email>NP-Hardass@gentoo.org</email>
 		<name>NP-Hardass</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<use>
 		<flag name="crypt">Enables user authentication with GPG</flag>
 	</use>
