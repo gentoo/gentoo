@@ -9,6 +9,7 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription lang="en">
 Bluelet is a simple, pure-Python solution for writing intelligible asynchronous socket applications. It uses PEP 342 coroutines to make concurrent I/O look and act like sequential programming.
 
