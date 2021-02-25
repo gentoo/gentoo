@@ -1,5 +1,13 @@
+
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Roy Bamford <neddyseagoon@gentoo.org> (2021-02-24)
+# Invert the theme-manager mask as it bouilds and tests here 
+# Originaly set by Julian Ospald <hasufell@gentoo.org> (2013-03-31)
+# but its in base now.
+net-irc/hexchat -theme-manager
+
 
 # Roy Bamford <neddyseagoon@gentoo.org> (2021-02-20)
 # sci-libs/hdf does not build on arm64 bug #771648
@@ -340,11 +348,6 @@ media-gfx/pstoedit emf
 app-emulation/libvirt zfs
 sys-cluster/ceph zfs
 
-# Alexis Ballier <aballier@gentoo.org> (2017-07-11)
-# dev-libs/botan:0 fails with 'ERROR: Unknown or unidentifiable processor
-# "aarch64"'
-app-crypt/qca botan
-
 # Alexis Ballier <aballier@gentoo.org> (2017-07-10)
 # openvz-sources are likely too old for any proper arm64 usage
 app-emulation/libvirt openvz
@@ -356,13 +359,6 @@ media-libs/devil nvtt
 # Alexis Ballier <aballier@gentoo.org> (2017-07-10)
 # Virtualbox is x86 only
 app-emulation/libvirt virtualbox
-
-# Alexis Ballier <aballier@gentoo.org> (2017-07-07)
-# nautilus pulls in gnome-extra/sushi -> dev-libs/gjs -> dev-lang/spidermonkey:24
-# Older spidermonkey does not work on arm64.
-# This should be revised when gjs is updated.
-gnome-base/nautilus previewer
-app-crypt/libsecret test
 
 # Alexis Ballier <aballier@gentoo.org> (2017-06-21)
 # net-fs/openafs-kernel does not recognize arm64 properly
@@ -395,10 +391,6 @@ x11-libs/gtk+ cloudprint
 # Chromium uses an internal tcmalloc that doesn't support this arch yet.
 www-client/chromium tcmalloc
 
-# Roy Bamford <neddyseagoon@gentoo.org> (2017-01-26)
-# gcj-6.3 won't bootstrap icedtea 7
->=sys-devel/gcc-6 gcj
-
 # Markus Meier <maekke@gentoo.org> (2013-12-26)
 # Unkeyworded deps, bug #488724
 app-office/gnumeric libgda
@@ -427,24 +419,7 @@ media-libs/devil allegro nvtt
 # Firmware loader not keyworded yet
 sci-libs/linux-gpib firmware
 
-# Julian Ospald <hasufell@gentoo.org> (2013-03-31)
-# depends on mono
->=net-irc/hexchat-2.9.4-r1 theme-manager
-
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-02-20)
 # Mask flags of calligra and dependencies due to lack of keywords
 app-office/calligra spacenav
 media-gfx/pstoedit emf
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-31)
-# requires app-office/unoconv, which requires virtual/ooo, which is not
-# keyworded here. Remove mask if this situation changes.
-gnome-extra/sushi office
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (2012-04-12)
-# Temporary mask-in-base, unmask-in-arch for dev-python/mako keywording for
-# gobject-introspection[doctool], bug #411761
-dev-libs/gobject-introspection -doctool
-
-# missing keywords
-media-plugins/gst-plugins-meta aac dts dv lame libvisual taglib vcd wavpack
