@@ -11,7 +11,7 @@ SRC_URI="https://archive.xfce.org/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm64 ~ppc ~ppc64 x86"
+KEYWORDS="~alpha amd64 ~arm64 ppc ~ppc64 x86"
 IUSE="elogind +locking opengl pam systemd"
 
 # Xrandr: optional but automagic
