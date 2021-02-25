@@ -11,7 +11,7 @@ SRC_URI="https://github.com/g-truc/glm/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( HappyBunny MIT )"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ppc ~ppc64 sparc x86"
+KEYWORDS="amd64 ~arm arm64 ppc ppc64 sparc x86"
 IUSE="test cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_avx cpu_flags_x86_avx2"
 RESTRICT="!test? ( test )"
 
