@@ -1,0 +1,95 @@
+diff --git a/Sources/Display/graphic_context.cpp b/Sources/Display/graphic_context.cpp
+index 42545ea..52220e2 100644
+--- a/Sources/Display/graphic_context.cpp
++++ b/Sources/Display/graphic_context.cpp
+@@ -237,18 +237,18 @@ void CL_GraphicContext::fill_triangle(
+ 		grad.bottom_left.get_alpha()/256.0};
+ */
+ 	unsigned char color_array[] = {
+-		grad.top_left.get_red(),
+-		grad.top_left.get_green(),
+-		grad.top_left.get_blue(),
+-		grad.top_left.get_alpha(),
+-		grad.top_right.get_red(),
+-		grad.top_right.get_green(),
+-		grad.top_right.get_blue(),
+-		grad.top_right.get_alpha(),
+-		grad.bottom_left.get_red(),
+-		grad.bottom_left.get_green(),
+-		grad.bottom_left.get_blue(),
+-		grad.bottom_left.get_alpha()};
++		static_cast<unsigned char>(grad.top_left.get_red()),
++		static_cast<unsigned char>(grad.top_left.get_green()),
++		static_cast<unsigned char>(grad.top_left.get_blue()),
++		static_cast<unsigned char>(grad.top_left.get_alpha()),
++		static_cast<unsigned char>(grad.top_right.get_red()),
++		static_cast<unsigned char>(grad.top_right.get_green()),
++		static_cast<unsigned char>(grad.top_right.get_blue()),
++		static_cast<unsigned char>(grad.top_right.get_alpha()),
++		static_cast<unsigned char>(grad.bottom_left.get_red()),
++		static_cast<unsigned char>(grad.bottom_left.get_green()),
++		static_cast<unsigned char>(grad.bottom_left.get_blue()),
++		static_cast<unsigned char>(grad.bottom_left.get_alpha())};
+ 
+ 	params.count = 1;
+ 	params.vertices = vertice_array;
+diff --git a/Sources/GL/graphic_context_opengl.cpp b/Sources/GL/graphic_context_opengl.cpp
+index 78bc87d..68da072 100644
+--- a/Sources/GL/graphic_context_opengl.cpp
++++ b/Sources/GL/graphic_context_opengl.cpp
+@@ -355,8 +355,8 @@ void CL_GraphicContext_OpenGL::draw_quad(const CL_Quad &quad, const CL_Color &co
+ 	state.blendfunc[3] = blend_one_minus_src_alpha;
+ 	state.fillmode = fillmode_line;
+ 
+-	double qx[4] = { quad.x1, quad.x2, quad.x3, quad.x4 };
+-	double qy[4] = { quad.y1, quad.y2, quad.y3, quad.y4 };
++	double qx[4] = { static_cast<double>(quad.x1), static_cast<double>(quad.x2), static_cast<double>(quad.x3), static_cast<double>(quad.x4) };
++	double qy[4] = { static_cast<double>(quad.y1), static_cast<double>(quad.y2), static_cast<double>(quad.y3), static_cast<double>(quad.y4) };
+ 	int tx[4] = { quad.x1, quad.x2, quad.x3, quad.x4 };
+ 	int ty[4] = { quad.y1, quad.y2, quad.y3, quad.y4 };
+ 
+@@ -380,8 +380,8 @@ void CL_GraphicContext_OpenGL::fill_quad(const CL_Quad &quad, const CL_Color &co
+ 	state.blendfunc[3] = blend_one_minus_src_alpha;
+ 	state.fillmode = fillmode_solid;
+ 
+-	double qx[4] = { quad.x1, quad.x2, quad.x3, quad.x4 };
+-	double qy[4] = { quad.y1, quad.y2, quad.y3, quad.y4 };
++	double qx[4] = { static_cast<double>(quad.x1), static_cast<double>(quad.x2), static_cast<double>(quad.x3), static_cast<double>(quad.x4) };
++	double qy[4] = { static_cast<double>(quad.y1), static_cast<double>(quad.y2), static_cast<double>(quad.y3), static_cast<double>(quad.y4) };
+ 	int tx[4] = { quad.x1, quad.x2, quad.x3, quad.x4 };
+ 	int ty[4] = { quad.y1, quad.y2, quad.y3, quad.y4 };
+ 
+diff --git a/Sources/SDL/graphic_context_sdl.cpp b/Sources/SDL/graphic_context_sdl.cpp
+index 8093e03..c15b399 100644
+--- a/Sources/SDL/graphic_context_sdl.cpp
++++ b/Sources/SDL/graphic_context_sdl.cpp
+@@ -410,7 +410,7 @@ void CL_GraphicContext_SDL::update_cliprect()
+         }
+         else
+         {
+-                SDL_Rect crect = {rect.left,rect.top,rect.get_width(),rect.get_height()};
++                SDL_Rect crect = {static_cast<Sint16>(rect.left),static_cast<Sint16>(rect.top),static_cast<Uint16>(rect.get_width()),static_cast<Uint16>(rect.get_height())};
+                 SDL_SetClipRect(SDL_GetVideoSurface(),&crect);                
+ 	}
+ }
+diff --git a/Sources/SDL/surface_sdl.cpp b/Sources/SDL/surface_sdl.cpp
+index ff6e36f..532db84 100644
+--- a/Sources/SDL/surface_sdl.cpp
++++ b/Sources/SDL/surface_sdl.cpp
+@@ -259,13 +259,13 @@ void CL_Surface_SDL::draw(
+ 	CL_Surface_TargetDrawParams1 *t_params1,
+ 	CL_GraphicContext *context)
+ {
+-	SDL_Rect source = {params2.srcX, params2.srcY, params2.srcWidth, params2.srcHeight};
++	SDL_Rect source = {static_cast<Sint16>(params2.srcX), static_cast<Sint16>(params2.srcY), static_cast<Uint16>(params2.srcWidth), static_cast<Uint16>(params2.srcHeight)};
+ 
+ 	SDL_Rect dst = {
+ 		static_cast<Sint16>(t_params1->pixDestX + context->get_modelview().get_origin_x()), 
+ 		static_cast<Sint16>(t_params1->pixDestY + context->get_modelview().get_origin_y()), 
+-		static_cast<Sint16>(t_params1->destWidth), 
+-		static_cast<Sint16>(t_params1->destHeight) 
++		static_cast<Uint16>(t_params1->destWidth),
++		static_cast<Uint16>(t_params1->destHeight)
+ 	};
+ 
+ 	if (t_params1->destWidth == params2.srcWidth && t_params1->destHeight == params2.srcHeight)
