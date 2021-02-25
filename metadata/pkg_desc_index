@@ -14854,7 +14854,7 @@ net-libs/libhackrf 2018.01.1 9999: library for communicating with HackRF SDR pla
 net-libs/libhtp 0.5.35 0.5.36: security-aware parser for the HTTP protocol and the related bits and pieces
 net-libs/libhubbub 0.3.6 0.3.6-r2 0.3.7: HTML5 compliant parsing library, written in C
 net-libs/libident 0.32-r1: A small library to interface to the Ident protocol server
-net-libs/libiio 0.15-r1 9999: Library for interfacing with IIO devices
+net-libs/libiio 0.21 9999: Library for interfacing with IIO devices
 net-libs/libircclient 1.10: Small but powerful library implementing the client-server IRC protocol
 net-libs/libiscsi 1.18.0 9999: iscsi client library and utilities
 net-libs/libisds 0.11.1 9999: Client library for accessing ISDS Soap services
