@@ -17,6 +17,7 @@ configure different types of notifications for pre-defined events.
   </longdescription>
   <use>
     <flag name="agent">Enable zabbix agent (for to-be-monitored machines)</flag>
+    <flag name="agent2">Enable go-based zabbix agent 2 (for to-be-monitored machines)</flag>
     <flag name="frontend">Enable zabbix web frontend</flag>
     <flag name="ipv6">Turn on support of IPv6</flag>
     <flag name="proxy">Enable proxy support</flag>
