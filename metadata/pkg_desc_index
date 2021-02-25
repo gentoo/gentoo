@@ -8834,7 +8834,7 @@ dev-python/pynput 1.6.8 9999: Sends virtual input commands
 dev-python/pynvim 0.4.2: Python client for Neovim
 dev-python/pyocr 0.7.2 0.8: An optical character recognition (OCR) tool wrapper
 dev-python/pyopencl 2020.3.1: Python wrapper for OpenCL
-dev-python/pyopengl 3.1.0-r1 3.1.5: Python OpenGL bindings
+dev-python/pyopengl 3.1.5: Python OpenGL bindings
 dev-python/pyopengl_accelerate 3.1.5: Accelerate module for PyOpenGL
 dev-python/pyopenssl 19.1.0-r1 20.0.0-r1 20.0.1: Python interface to the OpenSSL library
 dev-python/pyotherside 1.5.9: Asynchronous Python 3 Bindings for Qt 5

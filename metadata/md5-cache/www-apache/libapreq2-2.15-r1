@@ -4,11 +4,11 @@ DESCRIPTION=A library for manipulating client request data via the Apache API
 EAPI=6
 HOMEPAGE=https://httpd.apache.org/apreq/
 IUSE=perl test
-KEYWORDS=amd64 ~ppc ~ppc64 x86
+KEYWORDS=amd64 ~ppc ppc64 x86
 LICENSE=Apache-2.0
 RDEPEND=|| ( dev-libs/apr-util[openssl] dev-libs/apr-util[libressl] dev-libs/apr-util[nss] ) perl? ( >=dev-perl/ExtUtils-XSBuilder-0.23 virtual/perl-version >=www-apache/mod_perl-2 ) =www-servers/apache-2* dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=2
 SRC_URI=mirror://apache/httpd/libapreq/libapreq2-2.15.tar.gz
 _eclasses_=apache-module	b40f49b22e6e55c4a17f7ecded4f0425	depend.apache	94458fe4e9466f4803360408e60e11fd	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=95cc8dfbe0ea6f69f08b56d36dda1d30
+_md5_=7e8020c147239f50049396c51b0b8690

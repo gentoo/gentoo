@@ -5,11 +5,11 @@ DESCRIPTION=A utility to see if a specific IP is taken and what MAC owns it
 EAPI=7
 HOMEPAGE=http://www.habets.pp.se/synscan/programs.php?prog=arping
 IUSE=test +filecaps
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=net-libs/libpcap net-libs/libnet:1.1 !net-misc/iputils[arping(+)] filecaps? ( sys-libs/libcap )
 RESTRICT=!test? ( test )
 SLOT=2
 SRC_URI=https://github.com/ThomasHabets/arping/archive/arping-2.21.tar.gz
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	fcaps	da689a8e04bbbb3518888ff668fee45b	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=68094b7ef867be93cbbc15796eca0950
+_md5_=f5335e8cd47ef3abdbe300bcfebe7aef
