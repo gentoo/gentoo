@@ -3,8 +3,6 @@
 
 EAPI=7
 
-# needs itoa-0.3.4 for tests
-# added bincode-1.2.0 manually
 CRATES="
 addr2line-0.14.1
 adler-0.2.3
