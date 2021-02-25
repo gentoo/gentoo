@@ -5,10 +5,10 @@ DESCRIPTION=Pulseaudio Volume Control, GTK based mixer for Pulseaudio
 EAPI=7
 HOMEPAGE=https://freedesktop.org/software/pulseaudio/pavucontrol/
 IUSE=nls
-KEYWORDS=amd64 ~arm ~arm64 ~hppa ppc ~ppc64 ~sparc x86
+KEYWORDS=amd64 arm ~arm64 ~hppa ppc ~ppc64 ~sparc x86
 LICENSE=GPL-2
 RDEPEND=>=dev-cpp/gtkmm-3.0:3.0[X] >=dev-libs/libsigc++-2.2:2 >=media-libs/libcanberra-0.16[gtk3] >=media-sound/pulseaudio-5[glib] virtual/freedesktop-icon-theme
 SLOT=0
 SRC_URI=https://freedesktop.org/software/pulseaudio/pavucontrol/pavucontrol-4.0.tar.xz
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=c7a41c801a0eb814e6008c1613d6540b
+_md5_=8f5a1c8b2e6b7ebbf5c60dda859008e3
