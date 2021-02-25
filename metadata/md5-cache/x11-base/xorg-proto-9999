@@ -1,10 +1,13 @@
 BDEPEND=>=dev-vcs/git-1.8.2.1[curl] >=dev-util/meson-0.54.0 >=dev-util/ninja-1.8.2 dev-util/meson-format-array
-DEFINED_PHASES=compile configure install test unpack
+DEFINED_PHASES=compile configure install setup test unpack
+DEPEND=test? ( || ( ( dev-lang/python:3.9 dev-python/python-libevdev[python_targets_python3_9(-),-python_single_target_python3_9(-)] ) ( dev-lang/python:3.8 dev-python/python-libevdev[python_targets_python3_8(-),-python_single_target_python3_8(-)] ) ( dev-lang/python:3.7 dev-python/python-libevdev[python_targets_python3_7(-),-python_single_target_python3_7(-)] ) ) )
 DESCRIPTION=X.Org combined protocol headers
 EAPI=7
 HOMEPAGE=https://gitlab.freedesktop.org/xorg/proto/xorgproto
+IUSE=test
 LICENSE=MIT
 PROPERTIES=live
+RESTRICT=!test? ( test )
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	meson	e43eef9331f54965a573ed380854ff47	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=aeef9359005b66c58dfd27165b295472
+_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	meson	e43eef9331f54965a573ed380854ff47	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=3af7e743695e0275ac01960883dab628
