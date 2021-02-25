@@ -11,7 +11,7 @@ SRC_URI="https://github.com/mattthias/slurm/archive/upstream/${PN}.tar.gz -> ${P
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~ppc ~sparc x86"
 
 RDEPEND="sys-libs/ncurses:="
 DEPEND="${RDEPEND}"
