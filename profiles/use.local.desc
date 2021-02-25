@@ -3069,6 +3069,7 @@ games-emulation/snes9x:libretro - Build libretro port
 games-emulation/snes9x:netplay - Enable playing ROMs over the network (not recommended)
 games-emulation/vbam:link - Enable GBA linking functionality
 games-emulation/zsnes:debug - Enable the builtin debugger
+games-engines/devilutionx:hellfire - Enable support for Diablo Hellfire Expansion
 games-engines/devilutionx:lto - Build with link time optimization enabled
 games-engines/exult:fluidsynth - Compile with support for FluidSynth
 games-engines/exult:sdl2 - Use libsdl2 instead of libsdl
