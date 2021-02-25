@@ -18358,7 +18358,7 @@ x11-libs/scw 0.4.7-r2: A GTK+ widget set specifically designed for chat programs
 x11-libs/snorenotify 0.7.0-r1: Multi platform Qt notification framework
 x11-libs/spread-sheet-widget 0.3-r1 0.6: GNU Spread Sheet Widget
 x11-libs/startup-notification 0.12-r1: Application startup notification and feedback library
-x11-libs/tslib 1.21: Touchscreen Access Library
+x11-libs/tslib 1.21 1.22: Touchscreen Access Library
 x11-libs/vte 0.28.2-r209 0.60.3 0.62.1 0.62.2: Library providing a virtual terminal emulator widget
 x11-libs/wxGTK 3.0.4-r2 3.0.4-r302: GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit
 x11-libs/xapps 1.8.9 2.0.6: Cross-desktop libraries and common resources
