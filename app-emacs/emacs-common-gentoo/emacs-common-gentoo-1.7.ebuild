@@ -11,8 +11,8 @@ SRC_URI="https://dev.gentoo.org/~ulm/emacs/${P}.tar.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x86-solaris"
-IUSE="games X"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x86-solaris"
+IUSE="games gui"
 
 RDEPEND="games? ( acct-group/gamestat )"
 DEPEND="${RDEPEND}"
@@ -20,7 +20,8 @@ PDEPEND=">=app-editors/emacs-23.1:*"
 
 src_install() {
 	insinto "${SITELISP}"
-	doins subdirs.el
+	sed -e "s:@libdir@:$(get_libdir):g" subdirs.el.in | newins - subdirs.el
+	assert
 	newins site-gentoo.el{,.orig}
 
 	keepdir /etc/emacs
@@ -33,7 +34,7 @@ src_install() {
 		fperms g+w /var/games/emacs
 	fi
 
-	if use X; then
+	if use gui; then
 		local i
 		domenu emacs.desktop emacsclient.desktop
 
@@ -87,7 +88,7 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	if use X; then
+	if use gui; then
 		xdg_desktop_database_update
 		xdg_icon_cache_update
 	fi
@@ -95,7 +96,7 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	if use X; then
+	if use gui; then
 		xdg_desktop_database_update
 		xdg_icon_cache_update
 	fi
