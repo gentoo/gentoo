@@ -84,10 +84,12 @@ prefix_src_archives() {
 TARBALL_PV=${PV}
 SRC_URI="mirror://gentoo/${PN}-${TARBALL_PV}.tar.bz2
 	$(prefix_src_archives ${PN}-${TARBALL_PV}.tar.bz2)
-	https://github.com/gentoo/portage/commit/3e5ef19d5d6b26fde08da463d730ff90edf6eb29.patch -> ${P}-bug-772386-fetch.patch"
+	https://github.com/gentoo/portage/commit/3e5ef19d5d6b26fde08da463d730ff90edf6eb29.patch -> ${P}-bug-772386-fetch.patch
+	https://github.com/gentoo/portage/commit/48226b2df1408cf1944cb7c6128c73710c740dd3.patch -> ${P}-bug-772386-fetch-48226b2df140.patch"
 
 PATCHES=(
 	"${DISTDIR}/${P}-bug-772386-fetch.patch"
+	"${DISTDIR}/${P}-bug-772386-fetch-48226b2df140.patch"
 )
 
 pkg_pretend() {
