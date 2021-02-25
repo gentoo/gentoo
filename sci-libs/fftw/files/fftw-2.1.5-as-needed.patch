@@ -1,0 +1,112 @@
+--- a/rfftw/Makefile.am
++++ b/rfftw/Makefile.am
+@@ -18,6 +18,7 @@
+ 					 rfftw.h                   
+ 
+ lib@FFTW_PREFIX@rfftw_la_LDFLAGS = -version-info @SHARED_VERSION_INFO@
++lib@FFTW_PREFIX@rfftw_la_LIBADD = ../fftw/lib@FFTW_PREFIX@fftw.la
+ MAINTAINERCLEANFILES = $(CODELETS) rconfig.c
+ DISTCLEANFILES = srfftw.h drfftw.h
+ 
+--- a/threads/Makefile.am
++++ b/threads/Makefile.am
+@@ -28,6 +28,10 @@
+                              -version-info @SHARED_VERSION_INFO@ \
+                              -rpath $(libdir)
+ 
++lib@FFTW_PREFIX@fftw_threads_la_LIBADD = \
++                          $(FFTWDIR)/lib@FFTW_PREFIX@fftw.la \
++	 		  @THREADLIBS@
++
+ @FFTW_PREFIX1@fftw_threads.h: fftw_threads.h
+ 	rm -f $@
+ 	sed 's/\"fftw/\"@FFTW_PREFIX@fftw/g;s/\"rfftw/\"@FFTW_PREFIX@rfftw/g' $(srcdir)/fftw_threads.h > $@
+@@ -49,6 +53,11 @@
+                               -version-info @SHARED_VERSION_INFO@ \
+                               -rpath $(libdir)
+ 
++lib@FFTW_PREFIX@rfftw_threads_la_LIBADD = \
++                          $(RFFTWDIR)/lib@FFTW_PREFIX@rfftw.la \
++                          $(FFTWDIR)/lib@FFTW_PREFIX@fftw.la \
++			  @THREADLIBS@
++
+ @FFTW_PREFIX1@rfftw_threads.h: rfftw_threads.h
+ 	rm -f $@
+ 	sed 's/\"fftw/\"@FFTW_PREFIX@fftw/g;s/\"rfftw/\"@FFTW_PREFIX@rfftw/g' $(srcdir)/rfftw_threads.h > $@
+--- a/mpi/Makefile.am
++++ b/mpi/Makefile.am
+@@ -28,6 +28,9 @@
+                          -version-info @SHARED_VERSION_INFO@ \
+                          -rpath $(libdir)
+ 
++lib@FFTW_PREFIX@fftw_mpi_la_LIBADD = \
++                    @MPILIBS@ $(FFTWDIR)/lib@FFTW_PREFIX@fftw.la
++
+ @FFTW_PREFIX1@fftw_mpi.h: fftw_mpi.h
+ 	rm -f $@
+ 	sed 's/\"fftw/\"@FFTW_PREFIX@fftw/g;s/\"rfftw/\"@FFTW_PREFIX@rfftw/g' $(srcdir)/fftw_mpi.h > $@
+@@ -39,32 +42,38 @@
+                           -version-info @SHARED_VERSION_INFO@ \
+                           -rpath $(libdir)
+ 
+-@FFTW_PREFIX1@rfftw_mpi.h: rfftw_mpi.h
++lib@FFTW_PREFIX@rfftw_mpi_la_LIBADD = \
++                       @MPILIBS@ \
++		        $(RFFTWDIR)/lib@FFTW_PREFIX@rfftw.la \
++                       $(FFTWDIR)/lib@FFTW_PREFIX@fftw.la
++
++@FFTW_PREFIX1@rfftw_mpi.h: rfftw_mpi.h 	
+ 	rm -f $@
+ 	sed 's/\"fftw/\"@FFTW_PREFIX@fftw/g;s/\"rfftw/\"@FFTW_PREFIX@rfftw/g' $(srcdir)/rfftw_mpi.h > $@
+ 
+ CLEANFILES = @FFTW_PREFIX1@fftw_mpi.h @FFTW_PREFIX1@rfftw_mpi.h
+ 
+ test_sched_SOURCES = test_sched.c
+-test_sched_LDADD = lib@FFTW_PREFIX@fftw_mpi.la \
+-                   $(FFTWDIR)/lib@FFTW_PREFIX@fftw.la @MPILIBS@
++test_sched_LDADD =  @MPILIBS@ lib@FFTW_PREFIX@fftw_mpi.la \
++                   $(FFTWDIR)/lib@FFTW_PREFIX@fftw.la
+ 
+ test_transpose_mpi_SOURCES = test_transpose_mpi.c
+-test_transpose_mpi_LDADD = lib@FFTW_PREFIX@fftw_mpi.la \
+-                           $(FFTWDIR)/lib@FFTW_PREFIX@fftw.la @MPILIBS@
++test_transpose_mpi_LDADD = @MPILIBS@ lib@FFTW_PREFIX@fftw_mpi.la \
++                           $(FFTWDIR)/lib@FFTW_PREFIX@fftw.la
+ 
+ fftw_mpi_test_SOURCES = fftw_mpi_test.c
+ fftw_mpi_test_LDADD = ../tests/test_main.o \
++		      @MPILIBS@ \
+                       lib@FFTW_PREFIX@fftw_mpi.la \
+-                      $(FFTWDIR)/lib@FFTW_PREFIX@fftw.la @MPILIBS@
++                      $(FFTWDIR)/lib@FFTW_PREFIX@fftw.la
+ 
+ rfftw_mpi_test_SOURCES = rfftw_mpi_test.c
+ rfftw_mpi_test_LDADD = ../tests/test_main.o \
++		      @MPILIBS@ \
+                        lib@FFTW_PREFIX@rfftw_mpi.la \
+                        lib@FFTW_PREFIX@fftw_mpi.la \
+ 		       $(RFFTWDIR)/lib@FFTW_PREFIX@rfftw.la \
+-                       $(FFTWDIR)/lib@FFTW_PREFIX@fftw.la \
+-                       @MPILIBS@
++                       $(FFTWDIR)/lib@FFTW_PREFIX@fftw.la
+ 
+ # for some reason, automake tries to use autoheader in order to
+ # generate config.h.in, and fails because config.h.in is GNU-lly
+--- a/mpi/test_sched.c
++++ b/mpi/test_sched.c
+@@ -27,6 +27,8 @@
+      int **sched;
+      int npes = -1, sortpe = -1, steps;
+ 
++     /* needed to link with proper mpi libs */
++     MPI_Init(&argc,&argv);
+      if (argc >= 2) {
+ 	  npes = atoi(argv[1]);
+ 	  if (npes <= 0) {
+@@ -121,5 +123,6 @@
+ 	  }
+      }
+ 
++     MPI_Finalize();
+      return 0;
+ }
