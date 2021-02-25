@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit systemd toolchain-funcs
+inherit systemd toolchain-funcs flag-o-matic
 
 MY_PV="${PV//_alpha/a}"
 MY_PV="${MY_PV//_beta/b}"
@@ -18,7 +18,7 @@ SRC_URI="ftp://ftp.isc.org/isc/dhcp/${MY_P}.tar.gz
 
 LICENSE="MPL-2.0 BSD SSLeay GPL-2" # GPL-2 only for init script
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86"
 IUSE="+client ipv6 kernel_linux ldap libressl selinux +server ssl vim-syntax"
 
 DEPEND="
@@ -162,6 +162,11 @@ src_configure() {
 	#define _PATH_DHCRELAY6_PID  "${r}/dhcrelay6.pid"
 	EOF
 
+	# https://bugs.gentoo.org/720806
+	if use ppc || use arm || use hppa; then
+		append-libs -latomic
+	fi
+
 	local myeconfargs=(
 		--enable-paranoia
 		--enable-early-chroot
@@ -170,6 +175,7 @@ src_configure() {
 		$(use_enable ipv6 dhcpv6)
 		$(use_with ldap)
 		$(use ldap && use_with ssl ldapcrypto || echo --without-ldapcrypto)
+		LIBS="${LIBS}"
 	)
 	econf "${myeconfargs[@]}"
 
