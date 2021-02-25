@@ -44,7 +44,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-cpp/gtest )"
 
 FILECAPS=(
-	"CAP_NET_RAW+eip CAP_NET_ADMIN+eip" usr/bin/PCSX2
+	-m 755 "CAP_NET_RAW+eip CAP_NET_ADMIN+eip" usr/bin/PCSX2
 )
 
 pkg_setup() {
