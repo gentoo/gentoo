@@ -11,21 +11,19 @@ SRC_URI="https://github.com/facebook/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_sse4_2 jemalloc static-libs"
 
-COMMON_DEPEND="
+DEPEND="
 	app-arch/bzip2:=
 	app-arch/lz4:=
 	app-arch/snappy:=
+	dev-cpp/gflags
 	dev-python/zstandard:=
 	sys-libs/zlib:=
 	jemalloc? ( dev-libs/jemalloc:= )
 "
-DEPEND="${COMMON_DEPEND}
-	dev-cpp/gflags
-"
-RDEPEND="${COMMON_DEPEND}"
+RDEPEND="${DEPEND}"
 
 src_configure() {
 	mycmakeargs=(
