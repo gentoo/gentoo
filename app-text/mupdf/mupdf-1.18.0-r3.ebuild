@@ -12,7 +12,7 @@ S="${WORKDIR}/${P}-source"
 
 LICENSE="AGPL-3"
 SLOT="0/${PV}"
-KEYWORDS="~alpha ~amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~s390 x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~s390 x86"
 IUSE="X +javascript libressl opengl ssl"
 REQUIRED_USE="opengl? ( javascript )"
 
