@@ -11,7 +11,7 @@ SRC_URI="https://gitlab.com/libxc/libxc/-/archive/${PV}/${P}.tar.gz"
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux"
+KEYWORDS="~amd64 x86 ~amd64-linux"
 IUSE="fortran test"
 RESTRICT="!test? ( test )"
 
