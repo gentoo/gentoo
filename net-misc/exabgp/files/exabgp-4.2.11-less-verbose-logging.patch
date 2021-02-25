@@ -1,0 +1,44 @@
+diff --git a/lib/exabgp/application/healthcheck.py b/lib/exabgp/application/healthcheck.py
+index a4f6b8d1..d8195074 100644
+--- a/lib/exabgp/application/healthcheck.py
++++ b/lib/exabgp/application/healthcheck.py
+@@ -159,7 +159,16 @@ def setup_logging(debug, silent, name, syslog_facility, syslog):
+     enable_syslog = syslog and not debug
+     # To syslog
+     if enable_syslog:
+-        facility = getattr(logging.handlers.SysLogHandler, "LOG_{0}".format(syslog_facility.upper()))
++        if isinstance(syslog_facility, int) or syslog_facility.isdigit():
++            for log_facility, value in sorted(logging.handlers.SysLogHandler.facility_names.items(), key=lambda x: x[1]):
++                if value >= int(syslog_facility):
++                    facility = log_facility
++                    break
++        elif hasattr(logging.handlers.SysLogHandler, "LOG_{0}".format(syslog_facility.upper())):
++            facility = getattr(logging.handlers.SysLogHandler, "LOG_{0}".format(syslog_facility.upper()))
++        else:
++            facility = logging.handlers.SysLogHandler.LOG_DAEMON
++
+         sh = logging.handlers.SysLogHandler(address=str(syslog_address()), facility=facility)
+         if name:
+             healthcheck_name = "healthcheck-{0}".format(name)
+diff --git a/lib/exabgp/reactor/api/command/announce.py b/lib/exabgp/reactor/api/command/announce.py
+index 3c9091d2..e21cbe95 100644
+--- a/lib/exabgp/reactor/api/command/announce.py
++++ b/lib/exabgp/reactor/api/command/announce.py
+@@ -6,6 +6,7 @@ Created by Thomas Mangin on 2017-07-01.
+ Copyright (c) 2009-2017 Exa Networks. All rights reserved.
+ License: 3-clause BSD. (See the COPYRIGHT file)
+ """
++import logging
+ 
+ from exabgp.reactor.api.command.command import Command
+ from exabgp.reactor.api.command.limit import match_neighbors
+@@ -50,7 +51,8 @@ def announce_route(self, reactor, service, line):
+                 change.nlri.action = OUT.ANNOUNCE
+                 reactor.configuration.inject_change(peers, change)
+                 self.log_message(
+-                    'route added to %s : %s' % (', '.join(peers) if peers else 'all peers', change.extensive())
++                    'route added to %s : %s' % (', '.join(peers) if peers else 'all peers', change.extensive()),
++                    level=logging.WARNING
+                 )
+                 yield False
+ 
