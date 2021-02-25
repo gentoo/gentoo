@@ -1,0 +1,14 @@
+diff -Naur ../transifex-client-0.14.2.orig/tests/test_project.py ./tests/test_project.py
+--- ../transifex-client-0.14.2.orig/tests/test_project.py	2020-06-19 14:48:52.000000000 +0200
++++ ./tests/test_project.py	2021-02-25 22:08:29.353477306 +0100
+@@ -717,8 +717,8 @@
+                 )
+                 self.assertEqual(res, True)
+ 
+-                # "Recent" timestamp (in the future - 2100)
+-                ts_mock.return_value = 4111417171
++                # "Recent" timestamp (in the future - 2038)
++                ts_mock.return_value = 2147483000
+                 res = self.p._should_download(
+                     'pt', self.stats, os.path.abspath(__file__), False,
+                     use_git_timestamps=True
