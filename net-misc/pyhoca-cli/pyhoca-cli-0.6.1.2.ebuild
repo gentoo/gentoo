@@ -3,21 +3,26 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_7 )
+PYTHON_COMPAT=( python3_{7..9} )
 inherit distutils-r1
 
 DESCRIPTION="X2Go command line client"
 HOMEPAGE="http://www.x2go.org"
 SRC_URI="http://code.x2go.org/releases/source/${PN}/${P}.tar.gz"
 
-LICENSE="AGPL-3"
+LICENSE="AGPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-DEPEND="dev-python/setproctitle[${PYTHON_USEDEP}]
+RDEPEND="
+	dev-python/setproctitle[${PYTHON_USEDEP}]
 	>=net-misc/python-x2go-0.6.1.1[${PYTHON_USEDEP}]"
-RDEPEND="${DEPEND}"
+
+python_prepare_all() {
+	# we don't need setuptools at runtime
+	sed -i -e '/install_requires/d' setup.py || die
+	distutils-r1_python_prepare_all
+}
 
 python_install() {
 	distutils-r1_python_install
