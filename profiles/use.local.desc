@@ -6188,7 +6188,6 @@ net-misc/asterisk-moh-opsound:ulaw - Install the sounds files for the ulaw codec
 net-misc/asterisk-moh-opsound:wav - Install the sounds files for the wav codec.
 net-misc/bfgminer:adl - Enable support for controlling fans and overclocking on AMD cards with AMD Display Library
 net-misc/bfgminer:alchemist - Enable support for mining with AlcheMist
-net-misc/bfgminer:antminer - Enable support for mining with AntMiner U1 sticks
 net-misc/bfgminer:avalon - Enable support for mining with Avalon 1 ASIC modules
 net-misc/bfgminer:avalonmm - Enable support for mining with Avalon 2/3 ASIC modules
 net-misc/bfgminer:bfsb - Enable support for mining on BFSB host Raspberry Pi
