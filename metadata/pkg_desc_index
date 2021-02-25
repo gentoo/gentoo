@@ -14890,7 +14890,7 @@ net-libs/libnxml 0.18.3-r1: A C-library for parsing and writing XML 1.0/1.1 file
 net-libs/liboauth 1.0.3-r1: C library implementing the OAuth secure authentication protocol
 net-libs/libomemo 0.7.1-r2: Implementation of OMEMO (XEP-0384) in C
 net-libs/liboping 1.10.0-r2: Protocol independent ANSI-C ping library and command line utility
-net-libs/libosmo-dsp 0.3 9999: A library with SDR DSP primitives
+net-libs/libosmo-dsp 0.4.0 9999: A library with SDR DSP primitives
 net-libs/libosmocore 0.10.2 9999: Utility functions for OsmocomBB, OpenBSC and related projects
 net-libs/libotr 4.1.1: (OTR) Messaging allows you to have private conversations over instant messaging
 net-libs/libpcap 1.9.1-r3 1.10.0 9999: A system-independent library for user-level network packet capture
@@ -17619,7 +17619,7 @@ sys-libs/fortify-headers 0.6 0.7 9999: A standalone implementation of fortify so
 sys-libs/freeipmi 1.5.7 1.6.6 1.6.7: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
 sys-libs/fts-standalone 0.2-r1 1.2.7: Standalone fts library for use with musl
 sys-libs/gdbm 1.18.1-r1 1.19: Standard GNU database libraries
-sys-libs/glibc 2.19-r2 2.25-r11 2.30-r9 2.31-r7 2.32-r2 2.32-r3 2.32-r5 2.32-r6 2.32-r7 2.33 9999: GNU libc C library
+sys-libs/glibc 2.19-r2 2.25-r11 2.30-r9 2.31-r7 2.32-r6 2.32-r7 2.33 9999: GNU libc C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 5.4.1-r1: Multi-platform helper library for other libraries
 sys-libs/kpmcore 4.2.0 20.12.2: Library for managing partitions
