@@ -22,7 +22,6 @@ DEPEND="${RDEPEND}"
 
 src_prepare() {
 	sed -i -e "s:"${CMAKE_INSTALL_PREFIX}/lib":"${CMAKE_INSTALL_PREFIX}/$(get_libdir)":g" CMakeLists.txt || die
-	eapply "${FILESDIR}/7206bb2a9b655be3bdb66c6cf03aa504817ed240.patch"
 	cmake-utils_src_prepare
 	eapply_user
 }
