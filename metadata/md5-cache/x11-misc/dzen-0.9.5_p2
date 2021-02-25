@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=compile install prepare
+DEPEND=x11-libs/libX11 x11-libs/libXft xinerama? ( x11-libs/libXinerama ) xpm? ( x11-libs/libXpm ) x11-base/xorg-proto
+DESCRIPTION=General purpose messaging, notification, and menu utility
+EAPI=7
+HOMEPAGE=https://github.com/robm/dzen
+IUSE=xinerama xpm
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=x11-libs/libX11 x11-libs/libXft xinerama? ( x11-libs/libXinerama ) xpm? ( x11-libs/libXpm )
+SLOT=2
+SRC_URI=https://github.com/robm/dzen/archive/488ab66019f475e35e067646621827c18a879ba1.tar.gz -> dzen-0.9.5_p2.tar.gz
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=187b084b5bf59041539370ab85e67f92

@@ -1,7 +1,7 @@
 BDEPEND=app-text/asciidoc virtual/pkgconfig
-DEFINED_PHASES=compile
-DEPEND=dev-libs/libev x11-libs/libX11 x11-libs/libXfixes x11-libs/libXi !x11-misc/unclutter
-DESCRIPTION=A rewrite of unclutter using the x11-xfixes extension
+DEFINED_PHASES=compile install
+DEPEND=dev-libs/libev x11-libs/libX11 x11-libs/libXfixes x11-libs/libXi !x11-misc/unclutter x11-base/xorg-proto
+DESCRIPTION=Hides mouse pointer while not in use (rewrite of unclutter)
 EAPI=7
 HOMEPAGE=https://github.com/Airblader/unclutter-xfixes
 KEYWORDS=~amd64 ~x86
@@ -10,4 +10,4 @@ RDEPEND=dev-libs/libev x11-libs/libX11 x11-libs/libXfixes x11-libs/libXi !x11-mi
 SLOT=0
 SRC_URI=https://github.com/Airblader/unclutter-xfixes/archive/v1.5.tar.gz -> unclutter-xfixes-1.5.tar.gz
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=302fd1fcf2ffe1323642ffa5de80abd9
+_md5_=95b3e79d8d54520326e929446e2c1f8a

@@ -1,11 +1,12 @@
+BDEPEND=virtual/pkgconfig
 DEFINED_PHASES=-
-DEPEND=>=dev-libs/glib-2:2 x11-libs/libX11 x11-libs/libXt x11-libs/libXmu virtual/pkgconfig x11-base/xorg-proto
-DESCRIPTION=command line tool to interact with an EWMH/NetWM compatible X Window Manager
+DEPEND=dev-libs/glib:2 x11-libs/libX11 x11-libs/libXmu x11-libs/libXt x11-base/xorg-proto
+DESCRIPTION=Command line tool to interact with an EWMH/NetWM compatible X Window Manager
 EAPI=7
 HOMEPAGE=http://sweb.cz/tripie/utils/wmctrl
 KEYWORDS=amd64 arm64 ppc ~ppc64 ~sparc x86 ~x86-linux
 LICENSE=GPL-2
-RDEPEND=>=dev-libs/glib-2:2 x11-libs/libX11 x11-libs/libXt x11-libs/libXmu
+RDEPEND=dev-libs/glib:2 x11-libs/libX11 x11-libs/libXmu x11-libs/libXt
 SLOT=0
 SRC_URI=http://sweb.cz/tripie/utils/wmctrl/dist/wmctrl-1.07.tar.gz
-_md5_=442d4c08148daebfa74dfd510ebc6f59
+_md5_=5e0cce063677b87a29c20b6900121877
