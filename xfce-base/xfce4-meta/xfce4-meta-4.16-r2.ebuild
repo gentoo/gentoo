@@ -9,7 +9,7 @@ SRC_URI=""
 
 LICENSE="metapackage"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~ia64 ~ppc ppc64 x86"
+KEYWORDS="amd64 arm ~arm64 ~ia64 ppc ppc64 x86"
 IUSE="minimal pulseaudio +svg upower"
 
 RDEPEND="x11-themes/hicolor-icon-theme
