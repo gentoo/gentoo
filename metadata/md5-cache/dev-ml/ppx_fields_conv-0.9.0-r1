@@ -8,5 +8,5 @@ LICENSE=Apache-2.0
 RDEPEND=dev-ml/ppx_core:= dev-ml/ppx_driver:= dev-ml/ppx_metaquot:= dev-ml/ppx_type_conv:= dev-ml/fieldslib:= dev-ml/ocaml-migrate-parsetree:= dev-ml/ppx_traverse_builtins:= >=dev-lang/ocaml-4:=
 SLOT=0/0.9.0
 SRC_URI=https://github.com/janestreet/ppx_fields_conv/archive/v0.9.0.tar.gz -> ppx_fields_conv-0.9.0.tar.gz
-_eclasses_=opam	b4de444efce371928602cbf4cd91307e
+_eclasses_=opam	b2f22dc6e8db7cf1649d72fd9ee5a986
 _md5_=553274bc3d71f529cb5de9b8bcd16d7b

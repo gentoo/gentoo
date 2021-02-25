@@ -11,5 +11,5 @@ RDEPEND=>=dev-ml/base-0.11.0:= dev-ml/findlib:= >=dev-ml/ocaml-compiler-libs-0.1
 RESTRICT=!test? ( test )
 SLOT=0/0.18.0
 SRC_URI=https://github.com/ocaml-ppx/ppxlib/archive/0.18.0.tar.gz -> ppxlib-0.18.0.tar.gz
-_eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
+_eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
 _md5_=cf7971181747627baed68ac39b4759f8

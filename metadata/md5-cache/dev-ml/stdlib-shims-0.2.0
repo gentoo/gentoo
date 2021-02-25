@@ -10,5 +10,5 @@ LICENSE=LGPL-2.1-with-linking-exception
 RDEPEND=>=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0
 SRC_URI=https://github.com/ocaml/stdlib-shims/releases/download/0.2.0/stdlib-shims-0.2.0.tbz
-_eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
+_eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
 _md5_=ea48d76da887e15f4d9032b5b2b2bd82

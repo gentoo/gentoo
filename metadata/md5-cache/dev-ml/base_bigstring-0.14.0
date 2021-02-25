@@ -10,5 +10,5 @@ LICENSE=MIT
 RDEPEND=>=dev-lang/ocaml-4.08.0:=[ocamlopt=] dev-ml/base:= dev-ml/ppx_jane:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/base_bigstring/archive/v0.14.0.tar.gz -> base_bigstring-0.14.0.tar.gz
-_eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
+_eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
 _md5_=6ab4ec0132bc0f1f1d52548c77a714e5

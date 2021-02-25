@@ -8,5 +8,5 @@ LICENSE=ISC
 RDEPEND=dev-ml/result:= >=dev-lang/ocaml-4:=
 SLOT=0/0.5.0
 SRC_URI=https://erratique.ch/software/rresult/releases/rresult-0.5.0.tbz
-_eclasses_=opam	b4de444efce371928602cbf4cd91307e
+_eclasses_=opam	b2f22dc6e8db7cf1649d72fd9ee5a986
 _md5_=a9ddede575de757ac0c8b23dc94394cc

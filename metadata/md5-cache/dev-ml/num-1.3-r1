@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1-with-linking-exception
 RDEPEND=>=dev-lang/ocaml-4.09.0:=[ocamlopt] >=dev-ml/findlib-1.8.1[ocamlopt]
 SLOT=0
 SRC_URI=https://github.com/ocaml/num/archive/v1.3.tar.gz -> num-1.3.tar.gz
-_eclasses_=findlib	9674d5e3d151793fecab20e2bb73e6c6	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=findlib	3d3de4bef686774baeeabfa2b916631c	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=0e54dbc3282afa47cd47bcfd8dbc518e

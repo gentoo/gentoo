@@ -10,5 +10,5 @@ LICENSE=LGPL-2.1-with-linking-exception
 RDEPEND=>=dev-libs/libpcre-4.5 >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/7.4.6
 SRC_URI=https://github.com/mmottl/pcre-ocaml/releases/download/7.4.6/pcre-7.4.6.tbz -> pcre-ocaml-7.4.6.tbz
-_eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
+_eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
 _md5_=2922ec4d67382fb6b7ea84defd5e74ee

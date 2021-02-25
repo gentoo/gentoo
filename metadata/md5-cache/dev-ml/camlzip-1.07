@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=>=dev-lang/ocaml-4.05:=[ocamlopt?] >=sys-libs/zlib-1.1.3
 SLOT=1/1.07
 SRC_URI=https://github.com/xavierleroy/camlzip/archive/rel107.tar.gz -> camlzip-1.07.tar.gz
-_eclasses_=findlib	9674d5e3d151793fecab20e2bb73e6c6
+_eclasses_=findlib	3d3de4bef686774baeeabfa2b916631c
 _md5_=bdad819faab23d7db378f2401e6ae287

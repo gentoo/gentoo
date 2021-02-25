@@ -9,5 +9,5 @@ LICENSE=GPL-2 LGPL-2-with-linking-exception
 RDEPEND=>=dev-lang/ocaml-4.02:=[ocamlopt?]
 SLOT=0/20181006
 SRC_URI=http://gallium.inria.fr/~fpottier/menhir/menhir-20181006.tar.gz
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	findlib	9674d5e3d151793fecab20e2bb73e6c6	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	findlib	3d3de4bef686774baeeabfa2b916631c	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974
 _md5_=12c53d41328fb34a71231502078b10af

@@ -3,9 +3,9 @@ DEPEND=dev-libs/openssl:0=
 DESCRIPTION=Command-line tools and server to remotely administer multiple Unix filesystems
 EAPI=7
 HOMEPAGE=https://github.com/Radmind https://sourceforge.net/projects/radmind/
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 x86
 LICENSE=HPND
 RDEPEND=dev-libs/openssl:0= !dev-util/repo
 SLOT=0
 SRC_URI=https://github.com/voretaq7/radmind/releases/download/radmind-1.15.3/radmind-1.15.3.tar.gz
-_md5_=7f09285e34eaa3545a8e1ba80e33a86a
+_md5_=1526b5c9a6694a142c027541694bd4ac

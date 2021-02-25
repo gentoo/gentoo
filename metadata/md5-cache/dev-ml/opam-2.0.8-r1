@@ -10,5 +10,5 @@ LICENSE=LGPL-2.1-with-linking-exception
 RDEPEND=dev-ml/cmdliner:= dev-ml/cudf:= dev-ml/dose3:= dev-ml/extlib:= ~dev-ml/opam-client-2.0.8:= dev-ml/opam-file-format:= dev-ml/re:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/2.0.8
 SRC_URI=https://github.com/ocaml/opam/archive/2.0.8.tar.gz -> opam-2.0.8.tar.gz
-_eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
+_eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
 _md5_=d33e5a6fbeb3b39b79379ee723937328

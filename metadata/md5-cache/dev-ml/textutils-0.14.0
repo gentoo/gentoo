@@ -10,5 +10,5 @@ LICENSE=MIT
 RDEPEND=dev-ml/core:= dev-ml/core_kernel:= dev-ml/ppx_jane:= dev-ml/uutf:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/textutils/archive/v0.14.0.tar.gz -> textutils-0.14.0.tar.gz
-_eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
+_eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
 _md5_=c4e96de3b86743aede20dfe4d6ff8269

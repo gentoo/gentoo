@@ -10,5 +10,5 @@ LICENSE=LGPL-2.1
 RDEPEND=dev-ml/cmdliner:= ~dev-ml/opam-repository-2.0.7:= ~dev-ml/opam-state-2.0.7:= ~dev-ml/opam-solver-2.0.7:= dev-ml/opam-file-format:= dev-ml/re:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/2.0.7
 SRC_URI=https://github.com/ocaml/opam/archive/2.0.7.tar.gz -> opam-2.0.7.tar.gz
-_eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
+_eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
 _md5_=17458fd707733a4a8d791797aba78695

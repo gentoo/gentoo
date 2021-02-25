@@ -10,5 +10,5 @@ RDEPEND=>=dev-lang/ocaml-4:=
 RESTRICT=!test? ( test )
 SLOT=0/2.2.0
 SRC_URI=https://github.com/mirage/ocaml-base64/archive/v2.2.0.tar.gz -> ocaml-base64-2.2.0.tar.gz
-_eclasses_=findlib	9674d5e3d151793fecab20e2bb73e6c6	opam	b4de444efce371928602cbf4cd91307e
+_eclasses_=findlib	3d3de4bef686774baeeabfa2b916631c	opam	b2f22dc6e8db7cf1649d72fd9ee5a986
 _md5_=f0d607f5775ed53b334dd4e6437651f1

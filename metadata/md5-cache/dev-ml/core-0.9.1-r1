@@ -8,5 +8,5 @@ LICENSE=Apache-2.0
 RDEPEND=dev-ml/base:= dev-ml/configurator:= dev-ml/core_kernel:= dev-ml/ppx_assert:= dev-ml/ppx_driver:= dev-ml/ppx_jane:= dev-ml/sexplib:= dev-ml/spawn:= dev-ml/stdio:= dev-ml/ocaml-migrate-parsetree:= >=dev-lang/ocaml-4:=
 SLOT=0/0.9.1
 SRC_URI=https://github.com/janestreet/core/archive/v0.9.1.tar.gz -> core-0.9.1.tar.gz
-_eclasses_=opam	b4de444efce371928602cbf4cd91307e
+_eclasses_=opam	b2f22dc6e8db7cf1649d72fd9ee5a986
 _md5_=df4572d1e1b80028c10da6de7016e9ff

@@ -11,5 +11,5 @@ RDEPEND=>=dev-lang/ocaml-4:=
 RESTRICT=!test? ( test )
 SLOT=0/1.2.1
 SRC_URI=http://erratique.ch/software/react/releases/react-1.2.1.tbz
-_eclasses_=opam	b4de444efce371928602cbf4cd91307e
+_eclasses_=opam	b2f22dc6e8db7cf1649d72fd9ee5a986
 _md5_=3007a5fac3a875f151c803759ab02f9b

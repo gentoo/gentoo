@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1-with-linking-exception
 RDEPEND=>=dev-lang/ocaml-4.05:=[ocamlopt?] !mpir? ( dev-libs/gmp:0= ) mpir? ( sci-libs/mpir )
 SLOT=0/1.10
 SRC_URI=https://github.com/ocaml/Zarith/archive/release-1.10.tar.gz -> zarith-1.10.tar.gz
-_eclasses_=findlib	9674d5e3d151793fecab20e2bb73e6c6	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=findlib	3d3de4bef686774baeeabfa2b916631c	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=1a17282d2e2c40218bae253d9e765d45

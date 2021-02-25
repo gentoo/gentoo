@@ -11,5 +11,5 @@ RDEPEND=dev-ml/async_extra:= dev-ml/async_kernel:= dev-ml/async_unix:= dev-ml/co
 RESTRICT=test
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/async/archive/v0.14.0.tar.gz -> async-0.14.0.tar.gz
-_eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
+_eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
 _md5_=eed16425e4f52f9642689d25748723f0

@@ -11,5 +11,5 @@ RDEPEND=>=dev-ml/result-1.5:=[ocamlopt=] >=dev-lang/ocaml-4:=[ocamlopt?]
 RESTRICT=!test? ( test )
 SLOT=0/1.3.2
 SRC_URI=https://github.com/ocaml-dune/csexp/releases/download/1.3.2/csexp-1.3.2.tbz
-_eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
+_eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
 _md5_=4c339f7edd4ee3840054008a335bff9d

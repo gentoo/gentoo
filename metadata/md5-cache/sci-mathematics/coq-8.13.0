@@ -10,5 +10,5 @@ RDEPEND=dev-ml/zarith || ( dev-ml/num <dev-lang/ocaml-4.09.0[ocamlopt?] ) gtk? (
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/coq/coq/archive/V8.13.0.tar.gz -> coq-8.13.0.tar.gz
-_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	findlib	9674d5e3d151793fecab20e2bb73e6c6
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	findlib	3d3de4bef686774baeeabfa2b916631c
 _md5_=fe020940e6d28a9f5b56f25fd781902c

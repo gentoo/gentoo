@@ -10,5 +10,5 @@ LICENSE=Apache-2.0
 RDEPEND=dev-ml/base:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/variantslib/archive/v0.14.0.tar.gz -> variantslib-0.14.0.tar.gz
-_eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
+_eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
 _md5_=a69c528c22c72bb1b193fb158abda763

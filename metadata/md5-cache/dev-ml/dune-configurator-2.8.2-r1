@@ -11,5 +11,5 @@ RDEPEND=~dev-ml/dune-private-libs-2.8.2:=[ocamlopt=] dev-ml/csexp:=[ocamlopt=] d
 RESTRICT=!test? ( test )
 SLOT=0/2.8.2
 SRC_URI=https://github.com/ocaml/dune/archive/2.8.2.tar.gz -> dune-2.8.2.tar.gz
-_eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
+_eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
 _md5_=908510dfe820b8963696d9576385a093

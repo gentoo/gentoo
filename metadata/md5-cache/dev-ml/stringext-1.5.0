@@ -10,5 +10,5 @@ RDEPEND=>=dev-lang/ocaml-4:=
 RESTRICT=!test? ( test )
 SLOT=0/1.5.0
 SRC_URI=https://github.com/rgrinberg/stringext/archive/1.5.0.tar.gz -> stringext-1.5.0.tar.gz
-_eclasses_=opam	b4de444efce371928602cbf4cd91307e
+_eclasses_=opam	b2f22dc6e8db7cf1649d72fd9ee5a986
 _md5_=6c33702dec8e27042484c71df5e0e8c1

@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=dev-lang/perl virtual/mysql virtual/perl-Getopt-Long
+DESCRIPTION=MySQLTuner is a high-performance MySQL tuning script
+EAPI=7
+HOMEPAGE=https://github.com/major/MySQLTuner-perl
+KEYWORDS=amd64 x86
+LICENSE=GPL-3+
+RDEPEND=dev-lang/perl virtual/mysql virtual/perl-Getopt-Long
+SLOT=0
+SRC_URI=https://github.com/major/MySQLTuner-perl/archive/1.7.21.tar.gz -> mysqltuner-1.7.21.tar.gz
+_md5_=d5fa7c23ae2e358e7ddc8fb7a0cb6bc0

@@ -10,5 +10,5 @@ RDEPEND=<dev-lang/ocaml-4.09:= >=dev-lang/ocaml-4:=
 RESTRICT=!test? ( test )
 SLOT=0/1.0_beta14
 SRC_URI=https://github.com/janestreet/jbuilder/archive/1.0+beta14.tar.gz -> jbuilder-1.0-beta14.tar.gz
-_eclasses_=opam	b4de444efce371928602cbf4cd91307e
+_eclasses_=opam	b2f22dc6e8db7cf1649d72fd9ee5a986
 _md5_=9385c9d461b5b7c3f028ba468e7dd928

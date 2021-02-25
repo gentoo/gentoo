@@ -11,5 +11,5 @@ RDEPEND=>=dev-lang/ocaml-4:=[ocamlopt?]
 RESTRICT=!test? ( test )
 SLOT=0/3.5.0
 SRC_URI=https://github.com/mirage/ocaml-base64/archive/v3.5.0.tar.gz -> ocaml-base64-3.5.0.tar.gz
-_eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
+_eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
 _md5_=73527751fd7a397897b6aeaf960f6f99

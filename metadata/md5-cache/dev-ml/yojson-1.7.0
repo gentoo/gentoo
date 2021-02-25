@@ -11,5 +11,5 @@ RDEPEND=>=dev-lang/ocaml-4.02.3:=[ocamlopt=] dev-ml/easy-format:=[ocamlopt=] >=d
 RESTRICT=!test? ( test )
 SLOT=0/1.7.0
 SRC_URI=https://github.com/ocaml-community/yojson/archive/1.7.0.tar.gz -> yojson-1.7.0.tar.gz
-_eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
+_eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
 _md5_=b5ee693f8b0511151203aaff0757e6f9

@@ -7230,6 +7230,7 @@ sci-libs/eccodes:extra-test - Install full set of test data (large).
 sci-libs/eccodes:memfs - Enable memory based access to definition/sample files (conflicts with tests).
 sci-libs/fcl:octomap - OctoMap library support
 sci-libs/fcl:profiling - Enable profiling
+sci-libs/fftw:float - Link default library to single precision instead of double (symlinks only and fftw-2.1)
 sci-libs/fftw:zbus - Adds support for ZBus cycle-counter of mips
 sci-libs/flann:cuda - Enable support for nVidia CUDA
 sci-libs/flann:octave - Add bindings for sci-mathematics/octave

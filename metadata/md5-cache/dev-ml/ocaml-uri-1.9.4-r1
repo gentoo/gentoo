@@ -10,5 +10,5 @@ RDEPEND=dev-ml/re:= dev-ml/sexplib:= dev-ml/ppx_sexp_conv:= dev-ml/ppx_core:= de
 RESTRICT=!test? ( test )
 SLOT=0/1.9.4
 SRC_URI=https://github.com/mirage/ocaml-uri/archive/v1.9.4.tar.gz -> ocaml-uri-1.9.4.tar.gz
-_eclasses_=findlib	9674d5e3d151793fecab20e2bb73e6c6	opam	b4de444efce371928602cbf4cd91307e
+_eclasses_=findlib	3d3de4bef686774baeeabfa2b916631c	opam	b2f22dc6e8db7cf1649d72fd9ee5a986
 _md5_=c7333f9b05c9b7581ce4d510c7e12ebb

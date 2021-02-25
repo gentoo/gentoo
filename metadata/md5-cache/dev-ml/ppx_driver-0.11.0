@@ -9,5 +9,5 @@ LICENSE=Apache-2.0
 RDEPEND=dev-ml/ppx_core:= dev-ml/stdio:= dev-ml/ppx_optcomp:= dev-ml/ocaml-migrate-parsetree:= dev-ml/ocamlbuild:= >=dev-lang/ocaml-4:=
 SLOT=0/0.11.0
 SRC_URI=https://github.com/janestreet/ppx_driver/archive/v0.11.0.tar.gz -> ppx_driver-0.11.0.tar.gz
-_eclasses_=opam	b4de444efce371928602cbf4cd91307e
+_eclasses_=opam	b2f22dc6e8db7cf1649d72fd9ee5a986
 _md5_=b0cc73f0c63fea2e202bedba30439459

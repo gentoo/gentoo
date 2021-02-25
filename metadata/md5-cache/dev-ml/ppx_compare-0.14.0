@@ -11,5 +11,5 @@ RDEPEND=>=dev-ml/base-0.14.0:= dev-ml/findlib:= >=dev-ml/ppxlib-0.18.0:= >=dev-m
 RESTRICT=test
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/ppx_compare/archive/v0.14.0.tar.gz -> ppx_compare-0.14.0.tar.gz
-_eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
+_eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
 _md5_=442c070de2827b26268f396419efae46

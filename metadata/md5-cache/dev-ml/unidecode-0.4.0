@@ -11,5 +11,5 @@ RDEPEND=>=dev-lang/ocaml-4:=[ocamlopt?]
 RESTRICT=!test? ( test )
 SLOT=0/0.4.0
 SRC_URI=https://github.com/geneweb/unidecode/archive/v0.4.0.tar.gz -> unidecode-0.4.0.tar.gz
-_eclasses_=dune	47ad7c3f0508f77304c2d036ca24bcfa
+_eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
 _md5_=fe0c254a6c43769d0db47918ff517fb9

@@ -9,5 +9,5 @@ LICENSE=ISC
 RDEPEND=dev-ml/topkg dev-ml/uutf dev-ml/cmdliner >=dev-lang/ocaml-4:=
 SLOT=0/13.0.0
 SRC_URI=https://erratique.ch/software/uunf/releases/uunf-13.0.0.tbz
-_eclasses_=opam	b4de444efce371928602cbf4cd91307e
+_eclasses_=opam	b2f22dc6e8db7cf1649d72fd9ee5a986
 _md5_=09cf9731d7519c29ec45e0f9e07ee340

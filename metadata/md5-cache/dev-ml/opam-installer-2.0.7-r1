@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=>=dev-lang/ocaml-4.02.3 dev-ml/cmdliner:= ~dev-ml/opam-format-2.0.7 >=dev-lang/ocaml-4:=
 SLOT=0/2.0.7
 SRC_URI=https://github.com/ocaml/opam/releases/download/2.0.7/opam-full-2.0.7.tar.gz
-_eclasses_=opam	b4de444efce371928602cbf4cd91307e
+_eclasses_=opam	b2f22dc6e8db7cf1649d72fd9ee5a986
 _md5_=8b9fc978a335f6b70ac5e4b2dccdc515
