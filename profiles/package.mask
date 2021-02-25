@@ -201,40 +201,11 @@ dev-libs/libressl
 ~app-editors/emacs-27.1.92
 ~app-editors/emacs-27.1.93
 
-# Azamat H. Hackimov <azamat.hackimov@gmail.com> (2021-01-26)
-# Dead upstream (last release 2007), unmaintained, multiple issues,
-# no reverse dependencies.
-# Removal in 30 days. Bug #744019
-sys-power/ncpufreqd
-
-# Azamat H. Hackimov <azamat.hackimov@gmail.com> (2021-01-26)
-# Dead upstream, no live HOMEPAGE and SRC_URI.
-# Removal in 30 days. Bug #744013
-app-text/csvfix
-
-# Brian Evans <grknight@gentoo.org> (2021-01-25)
-# Dead upstream. Relies on soon to be removed wddx support in PHP.
-# wddx in general failed overall as a protocol. No real maintainer.
-# Removal in 30 days. Bug #688066
-net-analyzer/jffnms
-
-# Jakov Smolic <jakov.smolic@sartura.hr> (2021-01-24)
-# Last release in 2004. Fails to build with gcc-10 and openssl-1.1.
-# Removal on 2021-02-23.  Bugs #707004, #677170, #562724
-app-crypt/sign
-
 # Marek Szuba <marecki@gentoo.org> (2021-01-21)
 # Masked for testing and further work - the golang-vcs-snapshot variant
 # seems to be incompatible with revdeps using go-module, the variant
 # using the latter is still broken.
 dev-go/qt
-
-# Michał Górny <mgorny@gentoo.org> (2021-01-19)
-# Discontinued.  Last release in 2017.  The code is broken with py3.7
-# and we're doing only the minimal patching to make it not explode
-# immediately.  No revdeps left.
-# Removal on 2021-02-18.  Bug #718688.
-#dev-python/pdfrw
 
 # Sam James <sam@gentoo.org> (2021-01-18)
 # Older versions: need Python 2
