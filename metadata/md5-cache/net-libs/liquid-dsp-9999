@@ -1,7 +1,8 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=configure install prepare unpack
-DEPEND=sci-libs/fftw:3.0= >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+DEPEND=sci-libs/fftw:3.0=
 DESCRIPTION=digital signal processing library for software-defined radios
-EAPI=6
+EAPI=7
 HOMEPAGE=https://liquidsdr.org
 IUSE=static-libs
 LICENSE=MIT
@@ -9,4 +10,4 @@ PROPERTIES=live
 RDEPEND=sci-libs/fftw:3.0=
 SLOT=0
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=1d1949aa510d2da4f0db114811dccfdd
+_md5_=4bb4b1517925630d56efe789103b0ece
