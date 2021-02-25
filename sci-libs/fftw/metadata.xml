@@ -18,6 +18,7 @@
     <flag name="zbus">Adds support for ZBus cycle-counter of mips</flag>
   </use>
   <upstream>
+    <remote-id type="github">FFTW/fftw3</remote-id>
     <remote-id type="freecode">fftw</remote-id>
   </upstream>
 </pkgmetadata>
