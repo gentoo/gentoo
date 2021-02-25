@@ -8831,7 +8831,7 @@ dev-python/pymysql 1.0.2: Pure-Python MySQL Driver
 dev-python/pynacl 1.4.0: Python binding to the Networking and Cryptography (NaCl) library
 dev-python/pynest2d 4.8.0: Python bindings for libnest2d
 dev-python/pynput 1.6.8 9999: Sends virtual input commands
-dev-python/pynvim 0.4.2: Python client for Neovim
+dev-python/pynvim 0.4.2 0.4.3: Python client for Neovim
 dev-python/pyocr 0.7.2 0.8: An optical character recognition (OCR) tool wrapper
 dev-python/pyopencl 2020.3.1: Python wrapper for OpenCL
 dev-python/pyopengl 3.1.5: Python OpenGL bindings
@@ -9127,7 +9127,7 @@ dev-python/serpent 1.30.2: A simple serialization library based on ast.literal_e
 dev-python/serverfiles 0.2.1 0.3.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0-r1: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.2.1 1.2.2: Allow customization of the process title
-dev-python/setuptools 51.3.3 53.0.0: Collection of extensions to Distutils
+dev-python/setuptools 51.3.3 53.0.0 53.1.0: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2-r2: Setuptools revision control system plugin for Git
 dev-python/setuptools_scm 4.1.2-r1 5.0.0 5.0.1: Manage versions by scm tags via setuptools
 dev-python/setuptools_scm_git_archive 1.1: A setuptools_scm plugin for git archives
@@ -9270,7 +9270,7 @@ dev-python/toolz 0.11.1: List processing tools and functional utilities
 dev-python/tooz 2.7.1: Library centralizing the most common distributed primitives
 dev-python/towncrier 19.2.0: Building newsfiles for your project
 dev-python/tox 3.21.2 3.21.4 3.22.0: virtualenv-based automation of test activities
-dev-python/tqdm 4.55.2 4.56.2 4.57.0: Add a progress meter to your loops in a second
+dev-python/tqdm 4.55.2 4.56.2 4.57.0 4.58.0: Add a progress meter to your loops in a second
 dev-python/traceback2 1.4.0-r1: Backports of the traceback module
 dev-python/traitlets 4.3.3 5.0.5: A configuration system for Python applications
 dev-python/transitions 0.8.6 0.8.7: A lightweight, object-oriented state machine implementation in Python
@@ -15166,8 +15166,8 @@ net-misc/gerbera 1.6.4 9999: UPnP Media Server
 net-misc/getdate 1.2-r2: Network Date/Time Query and Set Local Date/Time Utility
 net-misc/gnome-online-miners 3.34.0: Crawls through your online content
 net-misc/gnome-remote-desktop 0.1.7 0.1.8 0.1.9: Remote desktop daemon for GNOME using pipewire
-net-misc/gns3-gui 2.2.11 2.2.17: Graphical Network Simulator
-net-misc/gns3-server 2.2.11 2.2.17: GNS3 server to asynchronously manage emulators
+net-misc/gns3-gui 2.2.17: Graphical Network Simulator
+net-misc/gns3-server 2.2.17: GNS3 server to asynchronously manage emulators
 net-misc/gofish 1.2: Gofish gopher server
 net-misc/grdesktop 0.23-r2: Gtk3 frontend for rdesktop
 net-misc/grive 0.5.1_pre20171005 0.5.1 0.5.1-r1 0.5.2_pre20200205: An open source Linux client for Google Drive
@@ -18023,7 +18023,7 @@ www-apps/nanoblogger 3.5_rc1-r1: Small and simple weblog engine written in Bash 
 www-apps/nanoc 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/nanoc-core 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/netbox 2.7.2 2.7.6 2.7.8: IP address and data center infrastructure management tool
-www-apps/nextcloud 18.0.12 18.0.13 18.0.14 19.0.6 19.0.7 19.0.8 20.0.5 20.0.6 20.0.7: Personal cloud that runs on your own server
+www-apps/nextcloud 19.0.6 19.0.7 19.0.8 20.0.5 20.0.6 20.0.7: Personal cloud that runs on your own server
 www-apps/nikola 8.1.3: A static website and blog generator
 www-apps/novnc 1.1.0 1.2.0 9999: noVNC is a VNC client implemented using HTML5 technologies
 www-apps/owncloud 10.5.0 10.6.0: Web-based storage application where all your data is under your own control

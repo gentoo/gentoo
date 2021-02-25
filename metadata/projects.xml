@@ -2972,7 +2972,7 @@
     <email>samba@gentoo.org</email>
     <name>Samba</name>
     <url>https://wiki.gentoo.org/wiki/Project:Samba</url>
-    <description>This project maintains packages related to Samba suit.</description>
+    <description>This project maintains packages related to Samba suite.</description>
     <member>
       <email>bkohler@gentoo.org</email>
       <name>Ben Kohler</name>
