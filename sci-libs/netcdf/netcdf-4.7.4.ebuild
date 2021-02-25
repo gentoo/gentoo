@@ -8,10 +8,11 @@ inherit cmake
 DESCRIPTION="Scientific library and interface for array oriented data access"
 HOMEPAGE="https://www.unidata.ucar.edu/software/netcdf/"
 SRC_URI="https://github.com/Unidata/netcdf-c/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-c-${PV}"
 
 LICENSE="UCAR-Unidata"
 SLOT="0/18"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="+dap doc examples hdf +hdf5 mpi szip test tools"
 RESTRICT="!test? ( test )"
 
@@ -33,7 +34,10 @@ REQUIRED_USE="
 	szip? ( hdf5 )
 	mpi? ( hdf5 )"
 
-S="${WORKDIR}/${PN}-c-${PV}"
+PATCHES=(
+	"${FILESDIR}/${PN}-4.7.4-big-endian-build.patch"
+	"${FILESDIR}/${PN}-4.7.4-big-endian-test.patch"
+)
 
 src_prepare() {
 	# skip test that requires network
