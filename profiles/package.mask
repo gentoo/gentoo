@@ -226,15 +226,6 @@ dev-go/qt
 games-strategy/0ad
 ~games-strategy/0ad-data-0.0.24_alpha_pre20210116040036
 
-# Brian Evans <grknight@gentoo.org> (2021-01-07)
-# PHP 7.2 is security vulnerable and end-of-life
-# Please upgrade to a newer slot
-dev-lang/php:7.2
-virtual/httpd-php:7.2
-=dev-php/phpunit-5.7.15-r3
-=dev-php/PHP_CodeCoverage-4.0.7-r2
-=dev-php/PHP_TokenStream-1.4.11-r1
-
 # Lars Wendler <polynomial-c@gentoo.org> (2020-12-09)
 # Masked until most broken packages have been fixed (bug #732648)
 >=sys-devel/autoconf-2.70
