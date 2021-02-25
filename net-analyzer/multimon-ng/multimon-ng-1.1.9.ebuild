@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="a fork of multimon, decodes multiple digital transmission modes"
 HOMEPAGE="https://github.com/EliasOenal/multimon-ng"
@@ -23,9 +23,10 @@ IUSE="pulseaudio X"
 DEPEND="pulseaudio? ( media-sound/pulseaudio )
 		X? ( x11-libs/libX11 )"
 RDEPEND="${DEPEND}"
+PDEPEND="media-sound/sox"
 
 src_prepare() {
 	use pulseaudio || sed -i '/find_package( PulseAudio )/d' CMakeLists.txt
 	use X || sed -i '/find_package( X11 )/d' CMakeLists.txt
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
