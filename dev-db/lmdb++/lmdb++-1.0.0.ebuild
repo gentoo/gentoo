@@ -7,8 +7,8 @@ MY_P="${P/lmdb++/lmdbxx}"
 S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="C++11 wrapper for the LMDB database library"
-HOMEPAGE="http://lmdbxx.sourceforge.net/"
-SRC_URI="mirror://sourceforge/lmdbxx/${PV}/${MY_P}.tar.gz"
+HOMEPAGE="https://github.com/hoytech/lmdbxx"
+SRC_URI="https://github.com/hoytech/lmdbxx/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
@@ -19,5 +19,5 @@ RDEPEND="dev-db/lmdb"
 
 src_install() {
 	emake PREFIX="${D}/usr" install
-	dodoc AUTHORS CREDITS INSTALL README TODO UNLICENSE
+	dodoc AUTHORS CREDITS INSTALL README.md TODO UNLICENSE
 }
