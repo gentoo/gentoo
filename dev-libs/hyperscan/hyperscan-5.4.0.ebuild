@@ -38,6 +38,9 @@ src_configure() {
 	use cpu_flags_x86_ssse3 && append-flags -mssse3
 	use cpu_flags_x86_avx2  && append-flags -mavx2
 
+	# Temporary, see #772086#c1 and associated PR
+	CMAKE_BUILD_TYPE="Release"
+
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=$(usex static-libs OFF ON)
 		-DBUILD_STATIC_AND_SHARED=$(usex static-libs ON OFF)
