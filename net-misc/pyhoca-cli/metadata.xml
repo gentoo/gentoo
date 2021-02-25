@@ -5,6 +5,7 @@
 		<email>voyageur@gentoo.org</email>
 		<name>Bernard Cafarelli</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 PyHoca-CLI is a client implementation for X2Go using the project's Python API (Python module). PyHoca-CLI can be operated completely from the command line and the goal is to reflect the full functionality spectrum of Python X2Go.
 	</longdescription>
