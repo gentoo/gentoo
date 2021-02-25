@@ -3605,7 +3605,7 @@ dev-db/phpmyadmin 4.9.6 5.0.3: Web-based administration for MySQL database in PH
 dev-db/phppgadmin 7.12.1 7.13.0: Web-based administration for Postgres database in php
 dev-db/plr 8.3.0.17 8.4.1: R language extension for postgresql database
 dev-db/postgis 3.0.3-r2 3.1.0 9999: Geographic Objects for PostgreSQL
-dev-db/postgresql 9.5.24 9.5.25 9.6.20 9.6.21 10.15 10.16 11.10 11.11 12.5 12.6 13.1 13.2 9999: PostgreSQL RDBMS
+dev-db/postgresql 9.5.25 9.6.21 10.16 11.11 12.6 13.2 9999: PostgreSQL RDBMS
 dev-db/pspg 3.1.5: A better pager for psql and mysql
 dev-db/psqlodbc 11.01.0000 13.00.0000: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r2: Quick Database Manager
@@ -5568,7 +5568,7 @@ dev-libs/libunistring 0.9.10: Library for manipulating Unicode and C strings acc
 dev-libs/libusb 1.0.23-r1 1.0.24-r1: Userspace access to USB devices
 dev-libs/libusb-compat 0.1.5-r2 0.1.5-r3: Userspace access to USB devices (libusb-0.1 compat wrapper)
 dev-libs/libusbhp 1.0.2: Usb Hotplug Library
-dev-libs/libutf8proc 2.2.0_p1-r1 2.4.0 2.5.0: A clean C Library for processing UTF-8 Unicode data
+dev-libs/libutf8proc 2.2.0_p1-r1 2.4.0 2.5.0 2.6.1: A clean C Library for processing UTF-8 Unicode data
 dev-libs/libuv 1.40.0 9999: Cross-platform asychronous I/O
 dev-libs/libvarlink 16 18 19: C implementation of the Varlink protocol and command line tool
 dev-libs/libverto 0.3.1-r1: Main event loop abstraction library
