@@ -25,7 +25,7 @@ fi
 LICENSE="public-domain"
 SLOT="0"
 
-IUSE="debug lto"
+IUSE="debug +hellfire lto"
 
 RDEPEND="
 	dev-libs/libsodium
@@ -50,11 +50,15 @@ src_configure() {
 		-DDISABLE_LTO="$(usex !lto)"
 		-DDIST="ON"
 		-DUBSAN="OFF"
+		-DHELLFIRE="$(usex hellfire)"
 	)
 	cmake_src_configure
 
-	# Build system still doesn't reliably set release version in the build
-	sed "/PROJECT_VERSION/s@-@${PV}@" -i "${BUILD_DIR}/config.h" || die
+	if [[ "${PV}" != 9999 ]] ; then
+		# Build system still doesn't reliably set release version
+		sed "/PROJECT_VERSION/s@-@${PV}@" -i "${BUILD_DIR}/config.h" \
+			|| die
+	fi
 }
 
 pkg_postinst() {
