@@ -5,11 +5,11 @@ DESCRIPTION=Rapid spam filtering system
 EAPI=7
 HOMEPAGE=https://rspamd.com https://github.com/rspamd/rspamd
 IUSE=blas cpu_flags_x86_ssse3 jemalloc +jit libressl pcre2 lua_single_target_luajit lua_single_target_lua5-1 lua_single_target_lua5-2 lua_single_target_lua5-3
-KEYWORDS=~amd64 x86
+KEYWORDS=amd64 x86
 LICENSE=Apache-2.0 Boost-1.0 BSD BSD-1 BSD-2 CC0-1.0 LGPL-3 MIT public-domain unicode ZLIB
 RDEPEND=lua_single_target_luajit? ( dev-lang/luajit:= ) lua_single_target_lua5-1? ( dev-lang/lua:5.1 ) lua_single_target_lua5-2? ( dev-lang/lua:5.2 ) lua_single_target_lua5-3? ( dev-lang/lua:5.3 ) lua_single_target_lua5-1? ( dev-lua/LuaBitOp[lua_targets_lua5-1(-)] ) lua_single_target_lua5-2? ( dev-lua/LuaBitOp[lua_targets_lua5-2(-)] ) acct-group/rspamd acct-user/rspamd app-arch/zstd dev-db/sqlite:3 dev-libs/glib:2 dev-libs/icu:= dev-libs/libev dev-libs/libsodium dev-libs/snowball-stemmer net-libs/libnsl sys-apps/file blas? ( virtual/blas virtual/lapack ) cpu_flags_x86_ssse3? ( dev-libs/hyperscan ) jemalloc? ( dev-libs/jemalloc ) !libressl? ( dev-libs/openssl:0=[-bindist] ) libressl? ( dev-libs/libressl:0= ) pcre2? ( dev-libs/libpcre2[jit=] ) !pcre2? ( dev-libs/libpcre[jit=] ) virtual/tmpfiles
 REQUIRED_USE=^^ ( lua_single_target_luajit lua_single_target_lua5-1 lua_single_target_lua5-2 lua_single_target_lua5-3 ) jit? ( lua_single_target_luajit )
 SLOT=0
 SRC_URI=https://github.com/rspamd/rspamd/archive/2.7.tar.gz -> rspamd-2.7.tar.gz
 _eclasses_=cmake	314a813be2f09820e8978cdee941e501	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	lua-single	f91b5656f00869c220a6e35ae0521c54	lua-utils	736947973cfbc9de01fdb8548f942f82	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	systemd	74b223e42834adf09a2d21fe5fe13741	tmpfiles	6170dc7770585fb3f16efdee789a3218	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=d095291edf6230b4a4ef9ffbbde217ad
+_md5_=d5246ab4ac658c0097cde898b71ffa9e
