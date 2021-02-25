@@ -1,0 +1,186 @@
+From 9b992a0f7f160dd6c75f20a4dcfcf7c60a4894df Mon Sep 17 00:00:00 2001
+From: Ivan Donchevskii <ivan.donchevskii@qt.io>
+Date: Fri, 12 Oct 2018 08:19:25 +0200
+Subject: [clang-format] Introduce the flag which allows not to shrink lines
+
+https://reviews.llvm.org/D53072
+
+Currently there's no way to prevent to lines optimization even
+if you have intentionally put <CR> to split the line.
+
+In general case it's fine. So I would prefer to have such option
+which you can enable in special cases (for me it's an IDE related use case).
+
+Revert this change if upstream clang-format offers better solution.
+
+Reviewed-by; Marco Bubke <marco.bubke@qt.io>
+
+Cherry picked from commit
+clang.git/fa1b9053729ec6a4425a44ec5502dd388928274a.
+
+Change-Id: I92296dd177c811593ebba7d4b5c3c5f472af10a2
+Reviewed-by: Cristian Adam <cristian.adam@qt.io>
+---
+ clang/include/clang/Format/Format.h         | 13 +++++++++++++
+ clang/lib/Format/Format.cpp                 |  4 ++++
+ clang/lib/Format/UnwrappedLineFormatter.cpp |  9 +++++----
+ clang/lib/Format/UnwrappedLineParser.cpp    |  2 ++
+ clang/unittests/Format/FormatTest.cpp       | 16 ++++++++++++++++
+ 5 files changed, 40 insertions(+), 4 deletions(-)
+
+NB! Line numbers adjusted manually to get perfect patch.
+
+diff --git a/clang/include/clang/Format/Format.h b/clang/include/clang/Format/Format.h
+index 3549ec9e..1e6a4869 100755
+--- a/clang/include/clang/Format/Format.h
++++ b/clang/include/clang/Format/Format.h
+@@ -21,6 +21,8 @@
+ #include "llvm/Support/Regex.h"
+ #include <system_error>
+ 
++#define KEEP_LINE_BREAKS_FOR_NON_EMPTY_LINES_BACKPORTED
++
+ namespace llvm {
+ namespace vfs {
+ class FileSystem;
+@@ -1666,6 +1668,16 @@ struct FormatStyle {
+   bool JavaScriptWrapImports;
+   // clang-format on
+ 
++  /// If true, no line breaks are optimized out (works only with ColumnLimit = 0)
++  /// \code
++  ///    true:                                  false:
++  ///    int foo(int a,                 vs.     int foo(int a, int b) {
++  ///            int b) {
++  ///      bar();                                 bar();
++  ///    }                                      }
++  /// \endcode
++  bool KeepLineBreaksForNonEmptyLines;
++
+   /// If true, the empty line at the start of blocks is kept.
+   /// \code
+   ///    true:                                  false:
+@@ -2358,6 +2370,7 @@ struct FormatStyle {
+            JavaImportGroups == R.JavaImportGroups &&
+            JavaScriptQuotes == R.JavaScriptQuotes &&
+            JavaScriptWrapImports == R.JavaScriptWrapImports &&
++           KeepLineBreaksForNonEmptyLines == R.KeepLineBreaksForNonEmptyLines &&
+            KeepEmptyLinesAtTheStartOfBlocks ==
+                R.KeepEmptyLinesAtTheStartOfBlocks &&
+            MacroBlockBegin == R.MacroBlockBegin &&
+diff --git a/clang/lib/Format/Format.cpp b/clang/lib/Format/Format.cpp
+index 0d277a64..7875838b 100644
+--- a/clang/lib/Format/Format.cpp
++++ b/clang/lib/Format/Format.cpp
+@@ -532,6 +532,8 @@ template <> struct MappingTraits<FormatStyle> {
+     IO.mapOptional("JavaImportGroups", Style.JavaImportGroups);
+     IO.mapOptional("JavaScriptQuotes", Style.JavaScriptQuotes);
+     IO.mapOptional("JavaScriptWrapImports", Style.JavaScriptWrapImports);
++    IO.mapOptional("KeepLineBreaksForNonEmptyLines",
++                   Style.KeepLineBreaksForNonEmptyLines);
+     IO.mapOptional("KeepEmptyLinesAtTheStartOfBlocks",
+                    Style.KeepEmptyLinesAtTheStartOfBlocks);
+     IO.mapOptional("MacroBlockBegin", Style.MacroBlockBegin);
+@@ -889,6 +891,7 @@ FormatStyle getLLVMStyle(FormatStyle::LanguageKind Language) {
+   LLVMStyle.JavaScriptWrapImports = true;
+   LLVMStyle.TabWidth = 8;
+   LLVMStyle.MaxEmptyLinesToKeep = 1;
++  LLVMStyle.KeepLineBreaksForNonEmptyLines = false;
+   LLVMStyle.KeepEmptyLinesAtTheStartOfBlocks = true;
+   LLVMStyle.NamespaceIndentation = FormatStyle::NI_None;
+   LLVMStyle.ObjCBinPackProtocolList = FormatStyle::BPS_Auto;
+@@ -973,6 +976,7 @@ FormatStyle getGoogleStyle(FormatStyle::LanguageKind Language) {
+   GoogleStyle.IncludeStyle.IncludeIsMainRegex = "([-_](test|unittest))?$";
+   GoogleStyle.IncludeStyle.IncludeBlocks = tooling::IncludeStyle::IBS_Regroup;
+   GoogleStyle.IndentCaseLabels = true;
++  GoogleStyle.KeepLineBreaksForNonEmptyLines = false;
+   GoogleStyle.KeepEmptyLinesAtTheStartOfBlocks = false;
+   GoogleStyle.ObjCBinPackProtocolList = FormatStyle::BPS_Never;
+   GoogleStyle.ObjCSpaceAfterProperty = false;
+diff --git a/clang/lib/Format/UnwrappedLineFormatter.cpp b/clang/lib/Format/UnwrappedLineFormatter.cpp
+index 22f27a66..5060b04f 100644
+--- a/clang/lib/Format/UnwrappedLineFormatter.cpp
++++ b/clang/lib/Format/UnwrappedLineFormatter.cpp
+@@ -732,7 +732,7 @@ public:
+   LineFormatter(ContinuationIndenter *Indenter, WhitespaceManager *Whitespaces,
+                 const FormatStyle &Style,
+                 UnwrappedLineFormatter *BlockFormatter)
+-      : Indenter(Indenter), Whitespaces(Whitespaces), Style(Style),
++      : Indenter(Indenter), Style(Style), Whitespaces(Whitespaces),
+         BlockFormatter(BlockFormatter) {}
+   virtual ~LineFormatter() {}
+ 
+@@ -773,7 +773,8 @@ protected:
+       // assert so that we can simply call this function for all tokens.
+       return true;
+ 
+-    if (NewLine) {
++    if (NewLine || (Previous.Children[0]->First->MustBreakBefore &&
++                    Style.KeepLineBreaksForNonEmptyLines)) {
+       int AdditionalIndent = State.Stack.back().Indent -
+                              Previous.Children[0]->Level * Style.IndentWidth;
+ 
+@@ -819,10 +820,10 @@ protected:
+   }
+ 
+   ContinuationIndenter *Indenter;
++  const FormatStyle &Style;
+ 
+ private:
+   WhitespaceManager *Whitespaces;
+-  const FormatStyle &Style;
+   UnwrappedLineFormatter *BlockFormatter;
+ };
+ 
+@@ -845,7 +846,7 @@ public:
+     while (State.NextToken) {
+       bool Newline =
+           Indenter->mustBreak(State) ||
+-          (Indenter->canBreak(State) && State.NextToken->NewlinesBefore > 0);
++          (State.NextToken->NewlinesBefore > 0 && Indenter->canBreak(State));
+       unsigned Penalty = 0;
+       formatChildren(State, Newline, /*DryRun=*/false, Penalty);
+       Indenter->addTokenToState(State, Newline, /*DryRun=*/false);
+diff --git a/clang/lib/Format/UnwrappedLineParser.cpp b/clang/lib/Format/UnwrappedLineParser.cpp
+index a3738642..f80c1116 100644
+--- a/clang/lib/Format/UnwrappedLineParser.cpp
++++ b/clang/lib/Format/UnwrappedLineParser.cpp
+@@ -2942,6 +2942,8 @@ void UnwrappedLineParser::nextToken(int LevelDifference) {
+   else
+     readTokenWithJavaScriptASI();
+   FormatTok->Previous = Previous;
++  if (FormatTok->NewlinesBefore && Style.KeepLineBreaksForNonEmptyLines)
++    FormatTok->MustBreakBefore = true;
+ }
+ 
+ void UnwrappedLineParser::distributeComments(
+diff --git a/clang/unittests/Format/FormatTest.cpp b/clang/unittests/Format/FormatTest.cpp
+index 17d302f0..48971623 100644
+--- a/clang/unittests/Format/FormatTest.cpp
++++ b/clang/unittests/Format/FormatTest.cpp
+@@ -393,6 +393,22 @@ TEST_F(FormatTest, RemovesEmptyLines) {
+                    "  void funk() {}\n"
+                    "};",
+                    Style));
++
++  Style.KeepLineBreaksForNonEmptyLines = true;
++  Style.ColumnLimit = 0;
++  EXPECT_EQ("int foo(int a,\n"
++            "        int b)\n"
++            "{\n"
++            "}",
++            format("int foo(int a,\n"
++                   "int b) {}",
++                   Style));
++
++  EXPECT_EQ("[]() {\n"
++            "  foo(); }",
++            format("[]() {\n"
++                   "foo(); }",
++                   Style));
+ }
+ 
+ TEST_F(FormatTest, RecognizesBinaryOperatorKeywords) {
+-- 
+2.26.2
+
