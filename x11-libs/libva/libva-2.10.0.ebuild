@@ -14,7 +14,7 @@ if [[ ${PV} = *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/intel/libva"
 else
 	SRC_URI="https://github.com/intel/libva/releases/download/${PV}/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="MIT"
