@@ -26,7 +26,7 @@ SRC_URI="
 
 SLOT="6"
 LICENSE="public-domain"
-KEYWORDS="~amd64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples"
 
 PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
