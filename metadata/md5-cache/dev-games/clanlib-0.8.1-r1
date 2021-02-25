@@ -9,4 +9,4 @@ LICENSE=ZLIB
 RDEPEND=media-libs/alsa-lib media-libs/libpng:0 virtual/jpeg:0 virtual/glu virtual/opengl x11-libs/libXi x11-libs/libXmu x11-libs/libXxf86vm mikmod? ( media-libs/libmikmod ) sdl? ( media-libs/libsdl[X] media-libs/sdl-gfx ) vorbis? ( media-libs/libvorbis )
 SLOT=0.8
 SRC_URI=http://clanlib.org/download/releases-0.8/ClanLib-0.8.1.tgz
-_md5_=df3d4bf12c7ab0356d47fe26ceff060f
+_md5_=e8d35f1d989dc3de88fb2604bfcd7847
