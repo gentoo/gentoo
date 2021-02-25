@@ -1,0 +1,105 @@
+Fix failure of parallel test suite. This is due to
+misspecification of the test suite, which requires
+first compiling $(check_PROGRAMS) and only then
+running $(TESTS):
+
+* check-am: all-am
+*         $(MAKE) $(AM_MAKEFLAGS) $(check_PROGRAMS)
+*         $(MAKE) $(AM_MAKEFLAGS) check-TESTS
+
+The old build system never specified $(TESTS) and
+erroneously made the check target depend on the
+two tests.
+See also: https://bugs.gentoo.org/show_bug.cgi?id=603352
+
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -12,22 +12,7 @@
+ rfftw_test_LDADD = $(RFFTWDIR)/lib@FFTW_PREFIX@rfftw.la \
+                    $(FFTWDIR)/lib@FFTW_PREFIX@fftw.la
+ 
+-check: fftw-tests rfftw-tests 
++TESTS = myfftwtests.sh myrfftwtests.sh
+ 
+-fftw-tests: fftw_test
+-	./fftw_test -p 0
+-	./fftw_test -x 128 -a 0
+-	./fftw_test -x 32 -a 2
+-	./fftw_test -x 100 -r 0
+-	@echo "--------------------------------------------------------------"
+-	@echo "         FFTW complex-complex transforms passed tests!"
+-	@echo "--------------------------------------------------------------"
+-
+-rfftw-tests: rfftw_test
+-	./rfftw_test -p 0
+-	./rfftw_test -x 128 -a 0
+-	./rfftw_test -x 32 -a 2
+-	./rfftw_test -x 100 -r 0
+-	@echo "--------------------------------------------------------------"
+-	@echo "          RFFTW real-complex transforms passed tests!"
+-	@echo "--------------------------------------------------------------"
++TEST_EXTENSIONS = .sh
++SH_LOG_COMPILER = $(SHELL)
+--- a/tests/myfftwtests.sh
++++ b/tests/myfftwtests.sh
+@@ -0,0 +1,4 @@
++./fftw_test -p 0 && \
++./fftw_test -x 128 -a 0 && \
++./fftw_test -x 32 -a 2 && \
++./fftw_test -x 100 -r 0
+--- a/tests/myrfftwtests.sh
++++ b/tests/myrfftwtests.sh
+@@ -0,0 +1,4 @@
++./rfftw_test -p 0 && \
++./rfftw_test -x 128 -a 0 && \
++./rfftw_test -x 32 -a 2 && \
++./rfftw_test -x 100 -r 0
+--- a/threads/fftw_threads_test_check.sh
++++ b/threads/fftw_threads_test_check.sh
+@@ -0,0 +1,4 @@
++./fftw_threads_test 1 -x 100 -r 0 && \
++./fftw_threads_test 2 -x 100 -r 0 && \
++./fftw_threads_test 3 -x 100 -r 0 && \
++./fftw_threads_test 10 -x 100 -r 0
+--- a/threads/Makefile.am
++++ b/threads/Makefile.am
+@@ -78,29 +78,7 @@
+ # incorrect.  Just disable autoheader
+ AUTOHEADER=echo
+ 
+-check: @FFTW_THREADS_PROGLIST@
+-	@set fnord $(MAKEFLAGS); amf=$$2; \
+-        list='@FFTW_THREADS_PROGLIST@'; for prog in $$list; do \
+-          target="$$prog""-check"; \
+-          echo "Making $$target"; \
+-          ($(MAKE) $$target) \
+-           || case "$$amf" in *=*) exit 1;; *k*) fail=yes;; *) exit 1;; esac; \
+-        done && test -z "$$fail"
++TESTS = fftw_threads_test_check.sh rfftw_threads_test_check.sh
+ 
+-fftw_threads_test-check: fftw_threads_test
+-	./fftw_threads_test 1 -x 100 -r 0
+-	./fftw_threads_test 2 -x 100 -r 0
+-	./fftw_threads_test 3 -x 100 -r 0
+-	./fftw_threads_test 10 -x 100 -r 0
+-	@echo "--------------------------------------------------------------"
+-	@echo "    FFTW complex-complex threads transforms passed tests!"
+-	@echo "--------------------------------------------------------------"
+-
+-rfftw_threads_test-check: rfftw_threads_test
+-	./rfftw_threads_test 1 -x 100 -r 0
+-	./rfftw_threads_test 2 -x 100 -r 0
+-	./rfftw_threads_test 3 -x 100 -r 0
+-	./rfftw_threads_test 10 -x 100 -r 0
+-	@echo "--------------------------------------------------------------"
+-	@echo "     RFFTW real-complex threads transforms passed tests!"
+-	@echo "--------------------------------------------------------------"
++TEST_EXTENSIONS = .sh
++SH_LOG_COMPILER = $(SHELL)
+--- a/threads/rfftw_threads_test_check.sh
++++ b/threads/rfftw_threads_test_check.sh
+@@ -0,0 +1,4 @@
++./rfftw_threads_test 1 -x 100 -r 0 && \
++./rfftw_threads_test 2 -x 100 -r 0 && \
++./rfftw_threads_test 3 -x 100 -r 0 && \
++./rfftw_threads_test 10 -x 100 -r 0
