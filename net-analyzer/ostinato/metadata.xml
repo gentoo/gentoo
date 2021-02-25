@@ -6,6 +6,6 @@
 		<name>Rick Farina</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="google-code">ostinato</remote-id>
+		<remote-id type="github">pstavirs/ostinato</remote-id>
 	</upstream>
 </pkgmetadata>

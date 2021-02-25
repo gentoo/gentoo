@@ -1,18 +1,17 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-COMMIT=9a4e7e7550c6b20a8f0f1393a55036492c1b7703
 inherit qmake-utils
 
 DESCRIPTION="Packet generator and analyzer"
 HOMEPAGE="https://ostinato.org/"
-SRC_URI="https://github.com/pstavirs/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/pstavirs/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-#KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 #https://github.com/pstavirs/ostinato/issues/173
@@ -27,11 +26,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/${PN}-${COMMIT}"
-
 PATCHES=(
-	"${FILESDIR}/${P}-buildfix.patch"
-	"${FILESDIR}/${P}-no-modeltest.patch"
+	"${FILESDIR}/${PN}-0.9_p20180522-no-modeltest.patch"
 )
 
 src_configure() {
