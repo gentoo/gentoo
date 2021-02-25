@@ -21,8 +21,7 @@ if [[ ${PV} = 9999* ]]; then
 	SRC_URI=""
 else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
-	SRC_URI="https://xorg.freedesktop.org/archive/individual/proto/${MY_P}.tar.gz
-			 https://cgit.freedesktop.org/xorg/proto/xorgproto/plain/scripts/keysym-generator.py?id=7b6836f0d5ba44d94abb7b3163ef715d023b270c -> keysym-generator.py"
+	SRC_URI="https://xorg.freedesktop.org/archive/individual/proto/${MY_P}.tar.gz"
 	S="${WORKDIR}/${MY_P}"
 fi
 
@@ -46,10 +45,4 @@ python_check_deps() {
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
-}
-
-src_unpack() {
-	default
-	mkdir "${S}"/scripts
-	mv "${DISTDIR}"/keysym-generator.py "${S}/scripts"
 }
