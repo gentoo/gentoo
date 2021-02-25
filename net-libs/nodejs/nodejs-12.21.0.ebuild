@@ -3,55 +3,64 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..8} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit bash-completion-r1 flag-o-matic pax-utils python-any-r1 toolchain-funcs xdg-utils
 
 DESCRIPTION="A JavaScript runtime built on Chrome's V8 JavaScript engine"
 HOMEPAGE="https://nodejs.org/"
-SRC_URI="https://nodejs.org/dist/v${PV}/node-v${PV}.tar.xz"
+SRC_URI="
+	https://nodejs.org/dist/v${PV}/node-v${PV}.tar.xz
+"
 
 LICENSE="Apache-1.1 Apache-2.0 BSD BSD-2 MIT"
 SLOT="0/$(ver_cut 1)"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x64-macos"
-
-IUSE="cpu_flags_x86_sse2 debug doc +icu inspector +npm pax_kernel +snapshot +ssl system-icu +system-ssl systemtap test"
-REQUIRED_USE="inspector? ( icu ssl )
+IUSE="cpu_flags_x86_sse2 debug doc icu inspector +npm +snapshot +ssl +system-ssl systemtap test"
+REQUIRED_USE="
+	inspector? ( icu ssl )
 	npm? ( ssl )
-	system-icu? ( icu )
-	system-ssl? ( ssl )"
+	system-ssl? ( ssl )
+"
 
-# FIXME: test-fs-mkdir fails with "no such file or directory". Investigate.
-RESTRICT="test"
-
-RDEPEND=">=app-arch/brotli-1.0.9
-	>=dev-libs/libuv-1.40.0:=
-	>=net-dns/c-ares-1.17.0
-	>=net-libs/nghttp2-1.41.0
+RDEPEND="
+	>=app-arch/brotli-1.0.9
+	>=dev-libs/libuv-1.39.0:=
+	>=net-dns/c-ares-1.16.0
+	>=net-libs/http-parser-2.9.3:=
+	>=net-libs/nghttp2-1.40.0
 	sys-libs/zlib
-	system-icu? ( >=dev-libs/icu-67:= )
-	system-ssl? ( >=dev-libs/openssl-1.1.1:0= )"
-BDEPEND="${PYTHON_DEPS}
+	icu? ( >=dev-libs/icu-64.2:= )
+	system-ssl? ( >=dev-libs/openssl-1.1.1:0= )
+"
+BDEPEND="
+	${PYTHON_DEPS}
 	sys-apps/coreutils
 	systemtap? ( dev-util/systemtap )
 	test? ( net-misc/curl )
-	pax_kernel? ( sys-apps/elfix )"
-DEPEND="${RDEPEND}"
-
+"
+DEPEND="
+	${RDEPEND}
+"
 PATCHES=(
-	"${FILESDIR}"/${PN}-15.2.0-global-npm-config.patch
+	"${FILESDIR}"/${PN}-10.3.0-global-npm-config.patch
+	"${FILESDIR}"/${PN}-12.20.1-fix_ppc64_crashes.patch
+	"${FILESDIR}"/${PN}-99999999-llhttp.patch
 )
-
+RESTRICT="test"
 S="${WORKDIR}/node-v${PV}"
 
 pkg_pretend() {
 	(use x86 && ! use cpu_flags_x86_sse2) && \
 		die "Your CPU doesn't support the required SSE2 instruction."
+
+	( [[ ${MERGE_TYPE} != "binary" ]] && ! test-flag-CXX -std=c++11 ) && \
+		die "Your compiler doesn't support C++11. Use GCC 4.8, Clang 3.3 or newer."
 }
 
 src_prepare() {
-	tc-export AR CC CXX PKG_CONFIG
+	tc-export CC CXX PKG_CONFIG
 	export V=1
 	export BUILDTYPE=Release
 
@@ -85,9 +94,6 @@ src_prepare() {
 		BUILDTYPE=Debug
 	fi
 
-	# We need to disable mprotect on two files when it builds Bug 694100.
-	use pax_kernel && PATCHES+=( "${FILESDIR}"/${PN}-13.8.0-paxmarking.patch )
-
 	default
 }
 
@@ -97,18 +103,13 @@ src_configure() {
 	local myconf=(
 		--shared-brotli
 		--shared-cares
+		--shared-http-parser
 		--shared-libuv
 		--shared-nghttp2
 		--shared-zlib
 	)
 	use debug && myconf+=( --debug )
-	if use system-icu; then
-		myconf+=( --with-intl=system-icu )
-	elif use icu; then
-		myconf+=( --with-intl=full-icu )
-	else
-		myconf+=( --with-intl=none )
-	fi
+	use icu && myconf+=( --with-intl=system-icu ) || myconf+=( --with-intl=none )
 	use inspector || myconf+=( --without-inspector )
 	use npm || myconf+=( --without-npm )
 	use snapshot || myconf+=( --without-node-snapshot )
@@ -140,6 +141,8 @@ src_configure() {
 }
 
 src_compile() {
+	emake -C out mksnapshot
+	pax-mark m "out/${BUILDTYPE}/mksnapshot"
 	emake -C out
 }
 
@@ -162,12 +165,17 @@ src_install() {
 	fi
 
 	if use npm; then
-		keepdir /etc/npm
+		dodir /etc/npm
 
 		# Install bash completion for `npm`
+		# We need to temporarily replace default config path since
+		# npm otherwise tries to write outside of the sandbox
+		local npm_config="usr/$(get_libdir)/node_modules/npm/lib/config/core.js"
+		sed -i -e "s|'/etc'|'${ED}/etc'|g" "${ED}/${npm_config}" || die
 		local tmp_npm_completion_file="$(TMPDIR="${T}" mktemp -t npm.XXXXXXXXXX)"
 		"${ED}/usr/bin/npm" completion > "${tmp_npm_completion_file}"
 		newbashcomp "${tmp_npm_completion_file}" npm
+		sed -i -e "s|'${ED}/etc'|'/etc'|g" "${ED}/${npm_config}" || die
 
 		# Move man pages
 		doman "${LIBDIR}"/node_modules/npm/man/man{1,5,7}/*
@@ -198,5 +206,14 @@ src_install() {
 
 src_test() {
 	out/${BUILDTYPE}/cctest || die
-	"${EPYTHON}" tools/test.py --mode=${BUILDTYPE,,} -J message parallel sequential || die
+	"${PYTHON}" tools/test.py --mode=${BUILDTYPE,,} -J message parallel sequential || die
+}
+
+pkg_postinst() {
+	elog "The global npm config lives in /etc/npm. This deviates slightly"
+	elog "from upstream which otherwise would have it live in /usr/etc/."
+	elog ""
+	elog "Protip: When using node-gyp to install native modules, you can"
+	elog "avoid having to download extras by doing the following:"
+	elog "$ node-gyp --nodedir /usr/include/node <command>"
 }
