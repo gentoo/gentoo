@@ -43,6 +43,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-gcc44.patch"
 	"${FILESDIR}/${P}-gcc47.patch"
 	"${FILESDIR}/${P}-gcc6.patch"
+	"${FILESDIR}/${P}-llvm.patch"
 	"${FILESDIR}/${P}-libpng15.patch"
 	"${FILESDIR}/${P}-docbuilder.patch"
 )
