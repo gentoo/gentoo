@@ -30,7 +30,7 @@ RDEPEND="${DEPEND}"
 src_prepare() {
 	cmake_src_prepare
 
-	sed -e "s,lib/lib,$(get_libdir)/lib,g" "${FILESDIR}/odbcinst2.ini" > odbcinst.ini || die
+	sed -e "s,/lib/,/$(get_libdir)/,g" "${FILESDIR}/odbcinst2.ini" > odbcinst.ini || die
 }
 
 multilib_src_configure() {
