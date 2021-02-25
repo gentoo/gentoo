@@ -4,7 +4,7 @@ DESCRIPTION=PDF file reader/writer library
 EAPI=7
 HOMEPAGE=https://github.com/sarnold/pdfrw
 IUSE=crypt test test python_targets_python3_7 python_targets_python3_8
-KEYWORDS=~alpha amd64 arm ~arm64 ~hppa ppc ppc64 sparc x86
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86
 LICENSE=BSD MIT
 RDEPEND=python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-)]
 REQUIRED_USE=|| ( python_targets_python3_7 python_targets_python3_8 )
@@ -12,4 +12,4 @@ RESTRICT=!test? ( test ) !test? ( test )
 SLOT=0
 SRC_URI=https://github.com/sarnold/pdfrw/archive/0.4-1.tar.gz -> pdfrw-0.4-1.tar.gz test? ( https://github.com/pmaupin/static_pdfs/archive/d646009a0e3e71daf13a52ab1029e2230920ebf4.tar.gz -> pdfrw-static_pdfs-d646009a0e3e71daf13a52ab1029e2230920ebf4.tar.gz )
 _eclasses_=distutils-r1	c166cdc9bfdc0fee3ea2100e01fdcdd3	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	4c65b35c1895b82c0f44e44166a3464f	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=70ac2f03a59adbe205c83f925c0d578d
+_md5_=4402e2f083ef1e7353f9c0f463633a23
