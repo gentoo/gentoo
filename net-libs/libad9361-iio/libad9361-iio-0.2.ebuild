@@ -21,7 +21,8 @@ RDEPEND="net-libs/libiio:="
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-	sed -i -e "s:"${CMAKE_INSTALL_PREFIX}/lib":"${CMAKE_INSTALL_PREFIX}/$(get_libdir)":g" CMakeLists.txt || die
+	sed -i -e "s:"${CMAKE_INSTALL_PREFIX}/lib":"${CMAKE_INSTALL_PREFIX}/$(get_libdir)":g" \
+		-e "s:\${PROJECT_NAME}\${LIBAD9361_VERSION_MAJOR}-doc:${P}:" CMakeLists.txt || die
 	cmake_src_prepare
 	eapply_user
 }
