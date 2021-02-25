@@ -1,37 +1,41 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-DESCRIPTION="multi-platform game development library"
+DESCRIPTION="Multi-platform game development library"
 HOMEPAGE="http://www.clanlib.org/"
 SRC_URI="http://clanlib.org/download/releases-${PV:0:3}/ClanLib-${PV}.tgz"
+S="${WORKDIR}"/ClanLib-${PV}
 
 LICENSE="ZLIB"
 SLOT="0.8"
-KEYWORDS="~amd64 ~x86" #not big endian safe #82779
+# Not big endian safe! #82779
+KEYWORDS="~amd64 ~x86"
 IUSE="doc ipv6 mikmod opengl sdl static-libs vorbis"
 
 # opengl keyword does not drop the GL/GLU requirement.
 # Autoconf files need to be fixed
-RDEPEND="media-libs/libpng:0
+RDEPEND="
+	media-libs/alsa-lib
+	media-libs/libpng:0
 	virtual/jpeg:0
 	virtual/glu
 	virtual/opengl
+	x11-libs/libXi
+	x11-libs/libXmu
+	x11-libs/libXxf86vm
+	mikmod? ( media-libs/libmikmod )
 	sdl? (
 		media-libs/libsdl[X]
 		media-libs/sdl-gfx
 	)
-	x11-libs/libXi
-	x11-libs/libXmu
-	x11-libs/libXxf86vm
-	media-libs/alsa-lib
-	mikmod? ( media-libs/libmikmod )
-	vorbis? ( media-libs/libvorbis )"
-DEPEND="${RDEPEND}
-	x11-base/xorg-proto"
-
-S=${WORKDIR}/ClanLib-${PV}
+	vorbis? ( media-libs/libvorbis )
+"
+DEPEND="
+	${RDEPEND}
+	x11-base/xorg-proto
+"
 
 PATCHES=(
 	"${FILESDIR}/${P}-ndebug.patch"
@@ -42,7 +46,11 @@ PATCHES=(
 	"${FILESDIR}/${P}-libpng15.patch"
 	"${FILESDIR}/${P}-docbuilder.patch"
 )
-DOCS="CODING_STYLE CREDITS NEWS PATCHES README* INSTALL.linux"
+
+DOCS=(
+	CODING_STYLE CREDITS NEWS PATCHES
+	README.{,anjuta,distros,kdevelop,sdl,upgrade} INSTALL.linux
+)
 
 src_prepare() {
 	default
@@ -52,9 +60,9 @@ src_prepare() {
 }
 
 src_configure() {
-	#clanSound only controls mikmod/vorbis so there's
+	# clanSound only controls mikmod/vorbis so there's
 	# no need to pass --{en,dis}able-clanSound ...
-	#clanDisplay only controls X, SDL, OpenGL plugins
+	# clanDisplay only controls X, SDL, OpenGL plugins
 	# so no need to pass --{en,dis}able-clanDisplay
 	# also same reason why we don't have to use clanGUI
 	econf \
@@ -72,11 +80,13 @@ src_configure() {
 
 src_install() {
 	default
+
 	if use doc ; then
 		dodir /usr/share/doc/${PF}/html
 		mv "${D}"/usr/share/doc/clanlib/* "${D}"/usr/share/doc/${PF}/html/ || die
 		rm -rf "${D}"/usr/share/doc/clanlib
 		cp -r Examples Resources "${D}"/usr/share/doc/${PF}/ || die
 	fi
+
 	find "${ED}" -name '*.la' -delete || die
 }
