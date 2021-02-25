@@ -2992,7 +2992,7 @@ app-text/lout 3.40: High-level language for document formatting
 app-text/lv 4.51-r4: Powerful Multilingual File Viewer
 app-text/mandoc 1.14.5 1.14.5-r1: Suite of tools compiling mdoc and man
 app-text/manpager 1: Enable colorization of man pages
-app-text/master-pdf-editor 5.3.22 5.4.38-r1 5.6.80 5.7.08: A complete solution for viewing and editing PDF files
+app-text/master-pdf-editor 5.3.22 5.4.38-r1 5.6.80 5.7.08 5.7.20: A complete solution for viewing and editing PDF files
 app-text/mathtex 1.04: Lets you easily embed LaTeX math in your own html pages, blogs, wikis, etc
 app-text/mecab 0.996-r1: Yet Another Part-of-Speech and Morphological Analyzer
 app-text/mpage 2.5.6-r1: Many to one page printing utility
@@ -14223,7 +14223,7 @@ media-video/subtitleripper 0.3.4-r4: DVD Subtitle Ripper for Linux
 media-video/super_demux 0.3: DVB transport stream TS to ES demultiplexer
 media-video/tcmplex-panteltje 0.4.7-r1: Audio video multiplexer for 8 audio channels
 media-video/tivodecode 0.2_pre4: TiVo File Decoder
-media-video/totem 3.34.1: Media player for GNOME
+media-video/totem 3.34.1 3.34.1-r1: Media player for GNOME
 media-video/transcode 1.1.7-r5: Utilities for transcoding video and audio codecs in different containers
 media-video/tsmuxer 2.6.11-r1: Utility to create and demux TS and M2TS files
 media-video/ttcut 0.19.6_p1-r1: Tool for cutting MPEG files especially for removing commercials

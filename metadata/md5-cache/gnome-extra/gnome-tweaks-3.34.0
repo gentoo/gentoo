@@ -1,15 +1,15 @@
 BDEPEND=>=sys-devel/gettext-0.19.8 app-arch/xz-utils >=dev-util/meson-0.54.0 >=dev-util/ninja-1.8.2 dev-util/meson-format-array
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test
-DEPEND=python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) dev-util/desktop-file-utils x11-misc/shared-mime-info
+DEPEND=python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_9? ( dev-lang/python:3.9 >=dev-lang/python-exec-2:=[python_targets_python3_9] ) dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=Customize advanced GNOME 3 options
 EAPI=7
 HOMEPAGE=https://wiki.gnome.org/Apps/Tweaks
-IUSE=python_single_target_python3_7 python_single_target_python3_8
+IUSE=python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9
 KEYWORDS=amd64 ~arm ~arm64 ~ppc ~ppc64 x86
 LICENSE=GPL-3+ CC0-1.0
-RDEPEND=python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_7? ( >=dev-python/pygobject-3.10.2:3[python_targets_python3_7(-)] ) python_single_target_python3_8? ( >=dev-python/pygobject-3.10.2:3[python_targets_python3_8(-)] ) >=gnome-base/gnome-settings-daemon-3 x11-themes/sound-theme-freedesktop >=dev-libs/glib-2.58:2 >=x11-libs/gtk+-3.12:3[introspection] >=gnome-base/gnome-desktop-3.30:3[introspection] gui-libs/libhandy:0.0[introspection] net-libs/libsoup:2.4[introspection] x11-libs/libnotify[introspection] >=gnome-base/gsettings-desktop-schemas-3.33.0 >=gnome-base/gnome-shell-3.24 x11-wm/mutter
-REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_8 )
+RDEPEND=python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_9? ( dev-lang/python:3.9 >=dev-lang/python-exec-2:=[python_targets_python3_9] ) python_single_target_python3_7? ( >=dev-python/pygobject-3.10.2:3[python_targets_python3_7(-)] ) python_single_target_python3_8? ( >=dev-python/pygobject-3.10.2:3[python_targets_python3_8(-)] ) python_single_target_python3_9? ( >=dev-python/pygobject-3.10.2:3[python_targets_python3_9(-)] ) >=gnome-base/gnome-settings-daemon-3 x11-themes/sound-theme-freedesktop >=dev-libs/glib-2.58:2 >=x11-libs/gtk+-3.12:3[introspection] >=gnome-base/gnome-desktop-3.30:3[introspection] gui-libs/libhandy:0.0[introspection] net-libs/libsoup:2.4[introspection] x11-libs/libnotify[introspection] >=gnome-base/gsettings-desktop-schemas-3.33.0 >=gnome-base/gnome-shell-3.24 x11-wm/mutter
+REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9 )
 SLOT=0
 SRC_URI=mirror://gnome/sources/gnome-tweaks/3.34/gnome-tweaks-3.34.0.tar.xz
 _eclasses_=gnome.org	532d56d07b9eace4831aaa817d2b756a	meson	e43eef9331f54965a573ed380854ff47	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=37afcc8b6e8566f829d6f55e879ebcce
+_md5_=93009974941810845fdfc230cc97c71a
