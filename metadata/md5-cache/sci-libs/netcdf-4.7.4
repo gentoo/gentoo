@@ -5,7 +5,7 @@ DESCRIPTION=Scientific library and interface for array oriented data access
 EAPI=7
 HOMEPAGE=https://www.unidata.ucar.edu/software/netcdf/
 IUSE=+dap doc examples hdf +hdf5 mpi szip test tools
-KEYWORDS=~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux
+KEYWORDS=amd64 ~arm ~arm64 ~ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux
 LICENSE=UCAR-Unidata
 RDEPEND=dap? ( net-misc/curl:0= ) hdf? ( sci-libs/hdf:0= sci-libs/hdf5:0= virtual/jpeg ) hdf5? ( sci-libs/hdf5:0=[hl(+),mpi=,szip=,zlib] )
 REQUIRED_USE=test? ( tools ) szip? ( hdf5 ) mpi? ( hdf5 )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0/18
 SRC_URI=https://github.com/Unidata/netcdf-c/archive/v4.7.4.tar.gz -> netcdf-4.7.4.tar.gz
 _eclasses_=cmake	314a813be2f09820e8978cdee941e501	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=9ed06c107daa4878a0bff624a9536ad5
+_md5_=fb2b34f91a1205da6634d6a8be5853d4
