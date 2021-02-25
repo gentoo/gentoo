@@ -1,5 +1,5 @@
---- ois-v1-3/configure.ac
-+++ ois-v1-3/configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -5,7 +5,7 @@
  
  AC_CANONICAL_TARGET

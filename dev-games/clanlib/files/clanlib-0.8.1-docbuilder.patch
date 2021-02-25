@@ -1,0 +1,30 @@
+diff --git a/Documentation/Utilities/webbuilder.pl.in b/Documentation/Utilities/webbuilder.pl.in
+index ea9de63..c000432 100644
+--- a/Documentation/Utilities/webbuilder.pl.in
++++ b/Documentation/Utilities/webbuilder.pl.in
+@@ -68,11 +68,7 @@ sub convert
+ sub print_head
+ {
+ 	my ($xml_head, $file) = @ARG;
+-	my $ml, $buffer;
+-
+-	# Don't know what this does, but Perceps does it:
+-	if ($*) { $ml=1; }
+-	else { $ml=0; }
++	my $buffer;
+ 	
+ 	# Read theme from disk and execute it:
+ 	if ( -e $file )
+@@ -93,11 +89,7 @@ sub print_head
+ sub print_body
+ {
+ 	my ($xml_body, $file) = @ARG;
+-	my $ml, $buffer;
+-
+-	# Don't know what this does, but Perceps does it:
+-	if ($*) { $ml=1; }
+-	else { $ml=0; }
++	my $buffer;
+ 	
+ 	# Read theme from disk and execute it:
+ 	if ( -e $file )
