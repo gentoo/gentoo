@@ -32,6 +32,17 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2021-02-25)
+# Unmaintained, python 3.7 only, relies on wrong libgd, which isn't
+# packaged.  Removal on 2021-03-27.  Bug #683358, #696476, #741936.
+sys-auth/authenticator
+
+# David Seifert <soap@gentoo.org> (2021-02-25)
+# Last release in 2006, no other distro carries this anymore,
+# blocks sci-libs/fftw:2.1 removal, no revdeps.
+# Removal on 2021-03-27.  Bug #731038, #772812.
+media-gfx/videorbits
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-02-24)
 # Completely dissolved and moved into other PIM libraries upstream.
 # Masked for removal on 2021-03-10.
