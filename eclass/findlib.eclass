@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: findlib.eclass
 # @MAINTAINER:
-# maintainer-needed@gentoo.org
+# ML <ml@gentoo.org>
 # @AUTHOR:
 # Original author: Matthieu Sozeau <mattam@gentoo.org> (retired)
 # @BLURB: ocamlfind (a.k.a. findlib) eclass
