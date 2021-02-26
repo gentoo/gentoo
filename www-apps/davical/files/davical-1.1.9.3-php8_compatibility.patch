@@ -1,0 +1,58 @@
+From f376be164eacf51d7354c728094e697ee2336218 Mon Sep 17 00:00:00 2001
+From: Jan Hicken <jan.hicken@posteo.de>
+Date: Sun, 31 Jan 2021 11:46:32 +0100
+Subject: [PATCH 1/2] Use brackets instead of curly braces for string offset
+ access
+
+Curly braces have been deprecated in PHP 7.4 and unsupported in PHP 8.0.
+---
+ inc/check_UTF8.php | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/inc/check_UTF8.php b/inc/check_UTF8.php
+index e3c93dbf..62dbfc00 100644
+--- a/inc/check_UTF8.php
++++ b/inc/check_UTF8.php
+@@ -67,7 +67,7 @@ function utf8ToUnicode(&$str)
+ 
+   $len = strlen($str);
+   for($i = 0; $i < $len; $i++) {
+-    $in = ord($str{$i});
++    $in = ord($str[$i]);
+     if (0 == $mState) {
+       // When mState is zero we expect either a US-ASCII character or a
+       // multi-octet sequence.
+-- 
+GitLab
+
+
+From 6cdbfcf226f0235a00206edfd119fcc90465a2b8 Mon Sep 17 00:00:00 2001
+From: Jan Hicken <jan.hicken@posteo.de>
+Date: Sun, 31 Jan 2021 11:47:41 +0100
+Subject: [PATCH 2/2] Add default value for errcontext variable in error
+ handler function
+
+This variable is no longer passed in PHP 8.0.
+
+It cannot be removed however, because it would not be backwards
+compatible.
+---
+ htdocs/setup.php | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/htdocs/setup.php b/htdocs/setup.php
+index 8b13d0ad..2a82dbf3 100644
+--- a/htdocs/setup.php
++++ b/htdocs/setup.php
+@@ -13,7 +13,7 @@ function log_setup_error($errno , $errstr , $errfile , $errline) {
+   error_log('DAViCal setup.php: Informational: '.$errfile.'('.$errline.'): ['.$errno.'] '.$errstr);
+ }
+ 
+-function catch_setup_errors($errno , $errstr , $errfile , $errline , $errcontext ) {
++function catch_setup_errors($errno , $errstr , $errfile , $errline , $errcontext = null ) {
+   if ( $errno == 2 ) {
+     // A working installation will regularly fail to include_once() for several files as it searches for the location
+     log_setup_error($errno , $errstr , $errfile , $errline);
+-- 
+GitLab
+
