@@ -1,6 +1,12 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-02-26)
+# dev-libs/efl not keyworded here
+# and is a desktop application mainly
+# bug #773178
+app-crypt/pinentry efl
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-02-14)
 # sci-libs/cholmod is not keyworded.
 sci-libs/umfpack cholmod

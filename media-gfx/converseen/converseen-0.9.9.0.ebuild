@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Batch image converter and resizer based on ImageMagick"
 HOMEPAGE="https://converseen.fasterland.net/
@@ -24,10 +24,15 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	media-gfx/imagemagick:=[cxx]
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-qt/linguist-tools:5
 "
 
 S="${WORKDIR}/${P^}"
 
-PATCHES=( "${FILESDIR}/${P}-gnuinstalldirs.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-gnuinstalldirs.patch"
+	"${FILESDIR}/${P}-appdata-path.patch"
+	"${FILESDIR}/${P}-no-update.patch"
+)
