@@ -7,6 +7,6 @@ KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86
 LICENSE=GPL-2+
 RDEPEND=dev-libs/libaio dev-libs/libbsd dev-libs/libgcrypt:0= sys-apps/attr sys-apps/keyutils:= sys-libs/libcap sys-libs/zlib
 SLOT=0
-SRC_URI=https://kernel.ubuntu.com/~cking/tarballs/stress-ng/stress-ng-0.12.03.tar.xz
+SRC_URI=https://kernel.ubuntu.com/~cking/tarballs/stress-ng/stress-ng-0.12.04.tar.xz
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	optfeature	6a2add34e06e5a05d88471a33ccdd73e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=ab63240e7f51849c1be8e5ef3b845776
