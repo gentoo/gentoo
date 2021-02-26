@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=(python3_{7..8})
+PYTHON_COMPAT=(python3_{7..9})
 inherit distutils-r1
 
 DESCRIPTION="Automated Reasoning Engine and Flow Based Programming Framework"
@@ -27,6 +27,7 @@ BDEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/ioflo-1.7.8-network-test.patch"
+	"${FILESDIR}/ioflo-2.0.2-python39.patch"
 )
 
 distutils_enable_tests pytest
