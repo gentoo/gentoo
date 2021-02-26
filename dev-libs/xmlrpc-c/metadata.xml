@@ -9,7 +9,6 @@
 		<flag name="abyss">Build the Abyss mini web-server.</flag>
 		<flag name="libxml2">Use dev-libs/libxml2 to parse XML instead of the internal expat library.</flag>
 		<flag name="threads">Controls whether to build the Abyss web-server with pthreads or fork 'threading'.</flag>
-		<flag name="tools">Build the xmlrpc* tools.</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">xmlrpc-c</remote-id>
