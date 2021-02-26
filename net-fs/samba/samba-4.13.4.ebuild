@@ -22,9 +22,10 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="acl addc addns ads ceph client cluster cups debug dmapi fam gpg iprint
-json ldap pam profiling-data python quota selinux snapper syslog
-system-heimdal +system-mitkrb5 systemd test winbind zeroconf"
+IUSE="acl addc addns ads ceph client cluster cups debug dmapi fam glusterfs
+gpg iprint json ldap ntvfs pam profiling-data python quota +regedit selinux
+snapper spotlight syslog system-heimdal +system-mitkrb5 systemd test winbind
+zeroconf"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	addc? ( python json winbind )
@@ -32,6 +33,8 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	ads? ( acl ldap winbind )
 	cluster? ( ads )
 	gpg? ( addc )
+	ntvfs? ( addc )
+	spotlight? ( json )
 	test? ( python )
 	!ads? ( !addc )
 	?? ( system-heimdal system-mitkrb5 )
@@ -57,7 +60,7 @@ MULTILIB_WRAPPED_HEADERS=(
 COMMON_DEPEND="
 	>=app-arch/libarchive-3.1.2[${MULTILIB_USEDEP}]
 	dev-lang/perl:=
-	dev-libs/icu:=[${MULTILIB_USEDEP}]
+	spotlight? ( dev-libs/icu:=[${MULTILIB_USEDEP}] )
 	dev-libs/libbsd[${MULTILIB_USEDEP}]
 	dev-libs/libtasn1[${MULTILIB_USEDEP}]
 	dev-libs/popt[${MULTILIB_USEDEP}]
@@ -113,6 +116,7 @@ DEPEND="${COMMON_DEPEND}
 		net-libs/rpcsvc-proto
 		<sys-libs/glibc-2.26[rpc(+)]
 	)
+	spotlight? ( dev-libs/glib )
 	test? (
 		!system-mitkrb5? (
 			>=net-dns/resolv_wrapper-1.1.4
@@ -209,12 +213,16 @@ multilib_src_configure() {
 		$(multilib_native_use_enable cups)
 		$(multilib_native_use_with dmapi)
 		$(multilib_native_use_with fam)
+		$(multilib_native_use_enable glusterfs)
 		$(multilib_native_use_with gpg gpgme)
 		$(multilib_native_use_with json)
 		$(multilib_native_use_enable iprint)
+		$(multilib_native_use_with ntvfs ntvfs-fileserver)
 		$(multilib_native_use_with pam)
 		$(multilib_native_usex pam "--with-pammodulesdir=${EPREFIX}/$(get_libdir)/security" '')
 		$(multilib_native_use_with quota quotas)
+		$(multilib_native_use_with regedit)
+		$(multilib_native_use_enable spotlight)
 		$(multilib_native_use_with syslog)
 		$(multilib_native_use_with systemd)
 		--systemd-install-services
