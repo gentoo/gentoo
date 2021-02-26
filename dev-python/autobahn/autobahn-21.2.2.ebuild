@@ -96,7 +96,7 @@ python_test() {
 	pytest -vv autobahn/wamp/test/test_wamp_component_aio.py || die
 	unset USE_ASYNCIO
 	rm -r .pytest_cache || die
-	rm "${BUILD_DIR}"/lib/twisted/plugins/dropin.cache || die
+	rm -f "${BUILD_DIR}"/lib/twisted/plugins/dropin.cache || die
 }
 
 pkg_postinst() {
