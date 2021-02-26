@@ -11,7 +11,7 @@ SRC_URI="https://projects.vdr-developer.org/git/vdr-plugin-${VDRPLUGIN}.git/snap
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="+conflictcheckonly +epgsearchonly pcre +quicksearch tre"
 
 DEPEND="=media-video/vdr-2.2*

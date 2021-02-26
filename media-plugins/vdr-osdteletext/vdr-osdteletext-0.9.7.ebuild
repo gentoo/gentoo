@@ -13,7 +13,7 @@ SRC_URI="https://projects.vdr-developer.org/attachments/download/${VERSION}/${P}
 
 LICENSE="GPL-2+ public-domain" #teletext2.ttf, not copyrightable
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="media-video/vdr"
 RDEPEND="${DEPEND}"
