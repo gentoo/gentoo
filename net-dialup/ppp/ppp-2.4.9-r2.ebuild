@@ -15,7 +15,7 @@ SRC_URI="https://github.com/paulusmack/ppp/archive/${P}.tar.gz
 LICENSE="BSD GPL-2"
 SLOT="0/${PV}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="activefilter atm dhcp gtk ipv6 libressl pam radius"
+IUSE="activefilter atm dhcp +eap-tls gtk ipv6 libressl pam radius"
 
 DEPEND="
 	activefilter? ( net-libs/libpcap )
@@ -67,6 +67,14 @@ src_prepare() {
 		sed \
 			-e '/^SUBDIRS :=/s:$: dhcp:' \
 			-i pppd/plugins/Makefile.linux || die
+	fi
+
+	if ! use eap-tls ; then
+		einfo "Disabling EAP-TLS pppd auth support"
+		sed -i '/^USE_EAPTLS=y/s:^:#:' pppd/Makefile.linux || die
+		einfo "Disabling EAP-TLS plugin support"
+		sed -i '/^CFLAGS += -DUSE_EAPTLS=1/s:^:#:' \
+			pppd/plugins/Makefile.linux || die
 	fi
 
 	# Set correct libdir
