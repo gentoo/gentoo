@@ -15623,7 +15623,7 @@ net-wireless/gqrx 2.14.4 9999: Software defined radio receiver powered by GNU Ra
 net-wireless/gqrx-scanner 1.0.2: frequency scanner for Gqrx Software Defined Radio receiver
 net-wireless/gr-ieee802154 0.0_p20200812 9999: IEEE 802.15.4 ZigBee Transceiver
 net-wireless/gr-iio 0.3_p20191219-r2 9999: GNU Radio IIO Blocks
-net-wireless/gr-iqbal 0.38.1 9999: gnuradio I/Q balancing
+net-wireless/gr-iqbal 0.38.2 9999: gnuradio I/Q balancing
 net-wireless/gr-m2k 9999: A C++ library for interfacing with the ADALM2000
 net-wireless/gr-osmosdr 0.2.0 0.2.3 9999: GNU Radio source block for OsmoSDR and rtlsdr and hackrf
 net-wireless/gr-paint 0.0_p20200517-r1 9999: Paints monochrome images into the waterfall of a receiver
@@ -15672,9 +15672,9 @@ net-wireless/sigutils 0.1.0-r1: signal processing library for blind signal analy
 net-wireless/soapy_power 1.6.1-r1 9999: Obtain power spectrum from SoapySDR devices
 net-wireless/soapybladerf 0.4.1 9999: Soapy SDR plugin for the Blade RF
 net-wireless/soapyhackrf 0.3.3-r1 9999: SoapySDR HackRF module
-net-wireless/soapyplutosdr 0.2.0 9999: Soapy SDR plugin for the Pluto SDR
+net-wireless/soapyplutosdr 0.2.1 9999: Soapy SDR plugin for the Pluto SDR
 net-wireless/soapyremote 0.5.0 9999: Soapy SDR remote module
-net-wireless/soapyrtlsdr 0.3.0 9999: SoapySDR RTL-SDR Support Module
+net-wireless/soapyrtlsdr 0.3.2 9999: SoapySDR RTL-SDR Support Module
 net-wireless/soapysdr 0.7.2 9999: vendor and platform neutral SDR support library
 net-wireless/soapysdrplay 0.1.0 0.2.0 9999: Soapy SDR plugin for SDRPlay
 net-wireless/soapyuhd 0.4.1 9999: Soapy SDR plugins for UHD supported SDR devices
