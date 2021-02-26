@@ -15,11 +15,9 @@ HOMEPAGE="https://github.com/eiskaltdcpp/eiskaltdcpp"
 
 LICENSE="GPL-2 GPL-3"
 SLOT="0"
-IUSE="cli daemon dbus +dht examples gold gtk idn javascript +json libcanberra libnotify lua +minimal pcre +qt5 spell sqlite upnp xmlrpc"
+IUSE="cli daemon dbus +dht examples gold gtk idn javascript libcanberra libnotify lua +minimal pcre +qt5 spell sqlite upnp"
 
 REQUIRED_USE="
-	?? ( json xmlrpc )
-	cli? ( ^^ ( json xmlrpc ) )
 	dbus? ( qt5 )
 	javascript? ( qt5 )
 	libcanberra? ( gtk )
@@ -49,12 +47,10 @@ RDEPEND="
 		dev-perl/Data-Dump
 		dev-perl/Term-ShellUI
 		virtual/perl-Getopt-Long
-		json? ( dev-perl/JSON-RPC )
-		xmlrpc? ( dev-perl/RPC-XML )
+		dev-perl/JSON-RPC
 	)
 	daemon? (
-		json? ( dev-libs/jsoncpp:= )
-		xmlrpc? ( dev-libs/xmlrpc-c[abyss,cxx] )
+		dev-libs/jsoncpp:=
 	)
 	gtk? (
 		dev-libs/glib:2
@@ -140,19 +136,9 @@ src_configure() {
 		-DBUILD_STATIC=OFF
 		-DINSTALL_QT_TRANSLATIONS=OFF
 		-DCOMPRESS_MANPAGES=OFF
+		-DUSE_CLI_JSONRPC=$(usex cli)
+		-DJSONRPC_DAEMON=$(usex daemon)
 	)
-	if use cli; then
-		mycmakeargs+=(
-			-DUSE_CLI_JSONRPC=$(usex json)
-			-DUSE_CLI_XMLRPC=$(usex xmlrpc)
-		)
-	fi
-	if use daemon; then
-		mycmakeargs+=(
-			-DJSONRPC_DAEMON=$(usex json)
-			-DXMLRPC_DAEMON=$(usex xmlrpc)
-		)
-	fi
 	if use lua; then
 		mycmakeargs+=(
 			-DLUA_SCRIPT=ON
