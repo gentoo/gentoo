@@ -2,6 +2,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Patrick McLean <chutzpah@gentoo.org> (2021-02-25)
+# Requires unkeyworded dev-libs/pmdk, mask until keyworded
+sys-cluster/ceph pmdk rbd-rwl
+
 # Roy Bamford <neddyseagoon@gentoo.org> (2021-02-24)
 # Invert the theme-manager mask as it bouilds and tests here 
 # Originaly set by Julian Ospald <hasufell@gentoo.org> (2013-03-31)

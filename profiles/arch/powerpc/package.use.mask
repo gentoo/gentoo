@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Patrick McLean <chutzpah@gentoo.org> (2021-02-25)
+# Requires unkeyworded dev-libs/pmdk, mask until keyworded
+sys-cluster/ceph pmdk rbd-rwl
+
 # Sam James <sam@gentoo.org> (2021-02-17)
 # Unmask dev-libs/libpcre2[jit] support on PHP
 # where available
