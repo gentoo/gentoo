@@ -1,5 +1,3 @@
-diff --git a/configure.ac b/configure.ac
-index d82b184..b8c5321 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -397,12 +397,14 @@ AC_SUBST(rl_inc)
