@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm preinst prepare
+DEPEND=x11-libs/gtk+:3 x11-libs/cairo >=x11-libs/pango-1.16 dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Display a multi-line message large, fullscreen, black on white
+EAPI=7
+HOMEPAGE=http://www.joachim-breitner.de/projects#screen-message
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=x11-libs/gtk+:3 x11-libs/cairo >=x11-libs/pango-1.16
+SLOT=0
+SRC_URI=mirror://debian/pool/main/s/screen-message/screen-message_0.26.orig.tar.gz
+_eclasses_=xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=4354f6fc9d19f5abf6fa4a096ac11e4d
