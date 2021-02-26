@@ -13,7 +13,7 @@ HOMEPAGE="https://www.hyperscan.io/ https://github.com/intel/hyperscan"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="cpu_flags_x86_avx2 +cpu_flags_x86_ssse3 static-libs"
 
 RDEPEND="dev-libs/boost:="
