@@ -12,7 +12,7 @@ SRC_URI="https://github.com/AcademySoftwareFoundation/openexr/archive/v${PV}.tar
 
 LICENSE="BSD"
 SLOT="0/25"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="exceptions +numpy test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
