@@ -11,7 +11,7 @@ KEYWORDS="~amd64 ~x86"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="machine-interface nls test"
+IUSE="machine-interface nls static-libs test"
 
 RESTRICT="!test? ( test )"
 
@@ -38,5 +38,14 @@ src_configure() {
 		--disable-gui \
 		--disable-libnbd \
 		$(use_enable machine-interface mi) \
-		$(use_enable nls)
+		$(use_enable nls) \
+		$(use_enable static-libs static)
+}
+
+src_install() {
+	default
+
+	if ! use static-libs; then
+		find "${ED}" -name '*.la' -delete || die
+	fi
 }

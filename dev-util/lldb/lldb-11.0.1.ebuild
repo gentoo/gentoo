@@ -11,7 +11,7 @@ HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 x86"
+KEYWORDS="amd64 arm arm64 x86"
 IUSE="libedit lzma ncurses +python test"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 RESTRICT="test"
