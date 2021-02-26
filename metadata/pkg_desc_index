@@ -788,7 +788,7 @@ app-admin/watchfolder 0.3.3-r1: watches directories and processes files
 app-admin/webalizer 2.23.08: Webserver log file analyzer
 app-admin/webapp-config 1.55-r1 9999: Gentoo's installer for web-based applications
 app-admin/whowatch 1.8.6 99999: Displays information about users currently logged on in real time
-app-admin/xkcdpass 1.17.3-r1 1.17.6: Password generator inspired by XKCD 936
+app-admin/xkcdpass 1.17.3-r1 1.17.6 1.17.6-r1: Password generator inspired by XKCD 936
 app-admin/xstow 1.0.1: replacement for GNU stow with extensions
 app-admin/xtail 2.1-r1: Tail multiple logfiles at once, even if rotated
 app-admin/yadm 2.4.0: A dotfile manager for the config files in your home folder
@@ -12014,7 +12014,7 @@ gui-apps/wf-recorder 0.2.1-r1 9999: Screen recorder for wlroots-based compositor
 gui-apps/wf-shell 0.5.0 0.6.1 0.7.0 9999: A compiz like 3D wayland compositor
 gui-apps/wl-clipboard 1.0.0 2.0.0 9999: Wayland clipboard utilities
 gui-libs/amtk 5.0.2 5.2.0: Actions, Menus and Toolbars Kit for GTK+ applications
-gui-libs/display-manager-init 1.0-r1 1.0-r2: RC init files for starting display and login managers
+gui-libs/display-manager-init 1.0-r3: RC init files for starting display and login managers
 gui-libs/greetd 0.6.1 0.7.0: ipc based login daemon
 gui-libs/gtk-layer-shell 0.1.0-r1: Library to create desktop components for Wayland using the Layer Shell protocol
 gui-libs/libhandy 0.0.13 1.0.2 1.0.3: Building blocks for modern adaptive GNOME apps
