@@ -25,8 +25,7 @@ src_install() {
 	newinitd "${FILESDIR}"/display-manager.initd-r1 display-manager
 	newinitd "${FILESDIR}"/xdm.initd xdm
 	newconfd "${FILESDIR}"/display-manager.confd display-manager
-	exeinto /usr/bin
-	doexe "${FILESDIR}"/startDM
+	newbin "${FILESDIR}"/startDM-r1 startDM
 	# backwards compatibility
 	dosym "${ESYSROOT}"/usr/bin/startDM /etc/X11/startDM.sh
 }
