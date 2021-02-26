@@ -1,0 +1,15 @@
+BDEPEND=app-text/asciidoc app-text/xmlto sys-devel/libtool virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare test
+DEPEND=sys-apps/kmod:= virtual/libudev:= sys-apps/util-linux:= dev-libs/json-c:= systemd? ( sys-apps/systemd:= )
+DESCRIPTION=Helper tools and libraries for managing non-volatile memory on Linux
+EAPI=7
+HOMEPAGE=https://github.com/pmem/ndctl
+IUSE=bash-completion systemd test
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 LGPL-2.1 MIT CC0-1.0
+RDEPEND=sys-apps/kmod:= virtual/libudev:= sys-apps/util-linux:= dev-libs/json-c:= systemd? ( sys-apps/systemd:= )
+RESTRICT=!test? ( test ) test
+SLOT=0/6
+SRC_URI=https://github.com/pmem/ndctl/archive/v71.1.tar.gz -> ndctl-71.1.tar.gz
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	bash-completion-r1	be99724bde4274de21e581204e9d164a	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=c9d5772e6f027c368c37774f5d40c7ee

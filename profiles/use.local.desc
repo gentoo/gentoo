@@ -7891,6 +7891,11 @@ sys-block/gparted:reiserfs - Include ReiserFS support (sys-fs/reiserfsprogs)
 sys-block/gparted:udf - Include UDF support (sys-fs/udftools)
 sys-block/gparted:wayland - Enable interim workaround to allow running GParted under Wayland by granting permission to the X11 display using x11-apps/xhost.
 sys-block/gparted:xfs - Include XFS support (sys-fs/xfsprogs, sys-fs/xfsdump)
+sys-block/libfabric:cuda - Enable for CUDA provider
+sys-block/libfabric:efa - Enable Amazon EC2 Elastic Fabric Adapter provider
+sys-block/libfabric:rocr - Enable Radeon Open Compute provider
+sys-block/libfabric:usnic - Enable Cisco VIC (virtualized NIC) hardware on Cisco UCS server provider
+sys-block/libfabric:verbs - Enable Linux Infiniband verbs provider
 sys-block/nbd:netlink - Add support for netlink protocol via dev-libs/libnl
 sys-block/open-iscsi:rdma - Support iSCSI over RDMA
 sys-block/open-iscsi:tcp - Support iSCSI over TCP

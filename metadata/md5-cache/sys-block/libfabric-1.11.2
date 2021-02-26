@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure prepare
+DEPEND=rocr? ( dev-libs/rocr-runtime:= ) usnic? ( dev-libs/libnl:= ) verbs? ( sys-fabric/libibverbs:= )
+DESCRIPTION=The Open Fabrics Interfaces (OFI) framework
+EAPI=7
+HOMEPAGE=http://libfabric.org/ https://github.com/ofiwg/libfabric
+IUSE=cuda efa usnic rocr verbs
+KEYWORDS=~amd64
+LICENSE=BSD GPL-2
+RDEPEND=rocr? ( dev-libs/rocr-runtime:= ) usnic? ( dev-libs/libnl:= ) verbs? ( sys-fabric/libibverbs:= ) cuda? ( dev-util/nvidia-cuda-sdk )
+SLOT=0/1
+SRC_URI=https://github.com/ofiwg/libfabric/releases/download/v1.11.2/libfabric-1.11.2.tar.bz2
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=e615eb0d0545162f94f5c714d1658361
