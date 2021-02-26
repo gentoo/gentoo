@@ -16,7 +16,7 @@ IUSE="machine-interface nls test"
 RESTRICT="!test? ( test )"
 
 # TODO: libnbd: not packaged in gentoo yet
-# TODO: gui: tcl/json not packaged in gentoo yet
+# TODO: gui: does not see to do anything :)
 RDEPEND="
 	dev-libs/boehm-gc:=
 	sys-devel/gettext
@@ -37,5 +37,6 @@ src_configure() {
 	econf \
 		--disable-gui \
 		--disable-libnbd \
-		$(use_enable machine-interface mi)
+		$(use_enable machine-interface mi) \
+		$(use_enable nls)
 }
