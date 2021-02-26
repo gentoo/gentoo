@@ -68,6 +68,8 @@ BDEPEND="
 
 RESTRICT="!test? ( test )"
 
+PATCHES=("${FILESDIR}"/${PN}-2.35.1-cet.patch)
+
 MY_BUILDDIR=${WORKDIR}/build
 
 src_unpack() {

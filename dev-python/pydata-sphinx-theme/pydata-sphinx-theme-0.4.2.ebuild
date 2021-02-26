@@ -13,7 +13,7 @@ SRC_URI="https://github.com/pandas-dev/pydata-sphinx-theme/archive/v${PV}.tar.gz
 
 LICENSE="BSD-with-disclosure"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 BDEPEND="
 	test? (
