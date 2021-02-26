@@ -14,7 +14,7 @@ SRC_URI="http://www.geospiza.com/finchtv/download/programs/linux/${MY_P}.tar.gz"
 
 LICENSE="finchtv"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 x86 ~amd64-linux ~x86-linux"
 
 S="${WORKDIR}/${MY_P}"
 
