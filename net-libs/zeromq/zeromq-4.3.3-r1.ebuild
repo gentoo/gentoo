@@ -18,8 +18,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	!elibc_Darwin? ( unwind? ( sys-libs/libunwind ) )
 	libbsd? ( dev-libs/libbsd:= )
-	sodium? ( dev-libs/libsodium:= )
-	pgm? ( ~net-libs/openpgm-5.2.122 )"
+	sodium? ( dev-libs/libsodium:= )"
 DEPEND="${RDEPEND}
 	!elibc_Darwin? ( sys-apps/util-linux )
 	doc? (
@@ -39,12 +38,12 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		--enable-shared
+		--without-pgm
 		$(use_enable drafts)
 		$(use_enable libbsd)
 		$(use_enable static-libs static)
 		$(use_enable unwind libunwind)
 		$(use_with sodium libsodium)
-		$(use_with pgm)
 		$(use_with doc docs)
 	)
 	econf "${myeconfargs[@]}"
