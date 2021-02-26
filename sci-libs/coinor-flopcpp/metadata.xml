@@ -14,4 +14,7 @@
 		preserved, while embedding linear optimization models in software
 		applications is facilitated.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">coin-or/FlopCpp</remote-id>
+	</upstream>
 </pkgmetadata>
