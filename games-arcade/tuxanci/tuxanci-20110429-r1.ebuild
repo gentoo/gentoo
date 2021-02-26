@@ -38,6 +38,8 @@ BDEPEND="
 	nls? ( sys-devel/gettext )
 "
 
+PATCHES=( "${FILESDIR}/${P}-glu.patch" ) # bug 715132
+
 src_configure() {
 	local mycmakeargs=(
 		-DWITH_AUDIO=$(usex sound)
