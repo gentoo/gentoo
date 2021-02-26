@@ -1,15 +1,14 @@
-BDEPEND=python_targets_python3_7? ( dev-lang/python:3.7 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,-python_single_target_python3_7(-)] >=dev-python/setuptools-42.0.2[python_targets_python3_7(-)?,-python_single_target_python3_7(-)]
+BDEPEND=dev-python/python-distutils-extra[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] >=dev-python/setuptools-42.0.2[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)]
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=dev-python/python-distutils-extra[python_targets_python3_7(-)?,-python_single_target_python3_7(-)]
 DESCRIPTION=X2Go graphical client applet
 EAPI=7
 HOMEPAGE=http://www.x2go.org
-IUSE=python_targets_python3_7
+IUSE=python_targets_python3_7 python_targets_python3_8 python_targets_python3_9
 KEYWORDS=~amd64 ~x86
-LICENSE=AGPL-3
-RDEPEND=dev-python/pycups[python_targets_python3_7(-)?,-python_single_target_python3_7(-)] dev-python/setproctitle[python_targets_python3_7(-)?,-python_single_target_python3_7(-)] dev-python/wxpython[python_targets_python3_7(-)?,-python_single_target_python3_7(-)] >=net-misc/python-x2go-0.6.1.1[python_targets_python3_7(-)?,-python_single_target_python3_7(-)] x11-libs/libnotify python_targets_python3_7? ( dev-lang/python:3.7 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,-python_single_target_python3_7(-)]
-REQUIRED_USE=|| ( python_targets_python3_7 )
+LICENSE=AGPL-3+
+RDEPEND=dev-python/pycups[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] dev-python/setproctitle[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] dev-python/wxpython[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] >=net-misc/python-x2go-0.6.1.1[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] x11-libs/libnotify python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)]
+REQUIRED_USE=|| ( python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 )
 SLOT=0
 SRC_URI=http://code.x2go.org/releases/source/pyhoca-gui/pyhoca-gui-0.6.1.1.tar.gz
 _eclasses_=distutils-r1	c166cdc9bfdc0fee3ea2100e01fdcdd3	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	4c65b35c1895b82c0f44e44166a3464f	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=160db9997d49cd4c27a4648c9981fc14
+_md5_=d4f2f42eef69ca56b3b5a81ac6c88902
