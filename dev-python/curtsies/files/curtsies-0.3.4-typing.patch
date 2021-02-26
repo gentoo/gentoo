@@ -1,9 +1,0 @@
-diff -r -U2 curtsies-0.3.4.orig/setup.py curtsies-0.3.4/setup.py
---- curtsies-0.3.4.orig/setup.py	2020-07-16 03:17:08.000000000 +0700
-+++ curtsies-0.3.4/setup.py	2020-12-01 15:39:28.331241501 +0700
-@@ -27,5 +27,4 @@
-         "blessings>=1.5",
-         "wcwidth>=0.1.4",
--        'typing; python_version<"3.5"',
-     ],
-     tests_require=["mock", "pyte", "nose",],
