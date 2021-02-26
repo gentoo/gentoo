@@ -10936,7 +10936,7 @@ dev-util/rustup 1.22.1-r2 1.23.0 9999: Rust toolchain installer
 dev-util/sasm 3.10.1: Simple crossplatform IDE for NASM assembly language
 dev-util/scala-ide 4.7.0: The Scala IDE
 dev-util/scanmem 0.17: Locate and modify variables in executing processes
-dev-util/sccache 0.2.13 9999: ccache/distcc like tool with support for rust and cloud storage
+dev-util/sccache 0.2.13 0.2.15 9999: ccache/distcc like tool with support for rust and cloud storage
 dev-util/schroot 1.6.10_p7: Utility to execute commands in a chroot environment
 dev-util/scons 4.0.1 4.1.0-r1: Extensible Python-based build utility
 dev-util/sel 0.08.4-r2: A filemanager for shell scripts
