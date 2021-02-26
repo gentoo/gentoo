@@ -5,11 +5,11 @@ DESCRIPTION=A command-line based binary newsgrabber supporting .nzb files
 EAPI=7
 HOMEPAGE=https://nzbget.net/
 IUSE=debug gnutls ncurses +parcheck ssl test zlib
-KEYWORDS=~amd64 ~arm ppc ~x86
+KEYWORDS=~amd64 ~arm ppc x86
 LICENSE=GPL-2+
 RDEPEND=dev-libs/libxml2:= ncurses? ( sys-libs/ncurses:0= ) ssl? ( gnutls? ( net-libs/gnutls:= dev-libs/nettle:= ) !gnutls? ( dev-libs/openssl:0=[-bindist] ) ) zlib? ( sys-libs/zlib:= ) acct-user/nzbget acct-group/nzbget
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/nzbget/nzbget/releases/download/v21.0/nzbget-21.0-src.tar.gz -> nzbget-21.0.tar.gz
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=0d1133b6e37c2dfdc0429c66f109d531
+_md5_=9b7351544d63e8a38c80faad9bc06d9e

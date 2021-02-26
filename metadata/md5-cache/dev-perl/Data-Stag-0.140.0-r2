@@ -4,10 +4,10 @@ DEPEND=dev-lang/perl
 DESCRIPTION=Structured Tags datastructures
 EAPI=7
 HOMEPAGE=http://stag.sourceforge.net/ https://metacpan.org/release/Data-Stag
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/IO-String dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/C/CM/CMUNGALL/Data-Stag-0.14.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=06c2d9abee4b3e96758bb3e8c0c2d6c3
+_md5_=0eda1bc62b30d8e8048858dcfeb487da
