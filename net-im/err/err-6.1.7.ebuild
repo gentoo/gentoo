@@ -1,41 +1,42 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_7 )
+PYTHON_COMPAT=( python3_{7..9} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
+inherit distutils-r1
 
 MY_PN="errbot"
 MY_P="${MY_PN}-${PV}"
 
-inherit distutils-r1 user
-
 DESCRIPTION="Multiprotocol chatbot designed to be easily deployable and maintainable"
 HOMEPAGE="https://errbot.readthedocs.io/en/latest/"
-SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
+SRC_URI="https://github.com/errbotio/errbot/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 KEYWORDS="~amd64"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="irc +xmpp"
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-RDEPEND="
+DEPEND="
+	acct-group/err
+	acct-user/err"
+RDEPEND="${DEPEND}
 	dev-python/ansi[${PYTHON_USEDEP}]
 	dev-python/bottle[${PYTHON_USEDEP}]
 	dev-python/colorlog[${PYTHON_USEDEP}]
 	dev-python/cryptography[${PYTHON_USEDEP}]
 	dev-python/daemonize[${PYTHON_USEDEP}]
-	dev-python/dnspython[${PYTHON_USEDEP}]
-	>=dev-python/dulwich-0.19.16[${PYTHON_USEDEP}]
+	dev-python/deepmerge[${PYTHON_USEDEP}]
+	dev-python/dulwich[${PYTHON_USEDEP}]
 	dev-python/flask[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
-	<dev-python/markdown-3.0[${PYTHON_USEDEP}]
+	dev-python/markdown[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/pyopenssl[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/webtest[${PYTHON_USEDEP}]
-	dev-python/yapsy[${PYTHON_USEDEP}]
 	irc? (
 		dev-python/irc[${PYTHON_USEDEP}]
 	)
@@ -45,10 +46,9 @@ RDEPEND="
 		dev-python/slixmpp[${PYTHON_USEDEP}]
 	)
 "
-
-PATCHES=( "${FILESDIR}/${P}-slixmpp.patch" )
-
 S="${WORKDIR}/${MY_P}"
+
+distutils_enable_tests pytest
 
 # NOTES:
 # 1. Support for BOT_SENTRY option is missing, cause
@@ -57,21 +57,24 @@ S="${WORKDIR}/${MY_P}"
 # 3. Internal web server is temporarily removed (rocket-err from requires.txt)
 # 4. pygments-markdown-lexer dependency(needed only for debugging?) is temporarily removed (pygments-markdown-lexer from requires.txt)
 
-pkg_setup() {
-	ebegin "Creating err group and user"
-	enewgroup 'err'
-	enewuser 'err' -1 -1 -1 'err'
-	eend ${?}
-}
-
 python_prepare_all() {
-	sed -i \
-		-e '/rocket-errbot/d' \
-		-e 's/dnspython3/dnspython/' \
-		-e '/pygments-markdown-lexer/d' \
-		setup.py || die
+	sed -i -e '/pygments-markdown-lexer/d' setup.py || die
+
+	# NameError: name 'slack' is not defined
+	rm tests/backend_tests/slack_test.py || die
 
 	distutils-r1_python_prepare_all
+}
+
+python_test() {
+	local deselect=(
+		--deselect tests/commands_test.py::test_plugin_cycle
+		--deselect tests/commands_test.py::test_broken_plugin
+		--deselect tests/commands_test.py::test_backup
+		--deselect tests/plugin_management_test.py::test_check_dependencies_requi
+	)
+
+	pytest -vv "${deselect[@]}" || die "Tests failed with ${EPYTHON}"
 }
 
 python_install_all() {

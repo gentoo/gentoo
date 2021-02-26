@@ -1,3 +1,2 @@
 #!/sbin/openrc-run
 command="sndiod"
-command_user="sndiod"
