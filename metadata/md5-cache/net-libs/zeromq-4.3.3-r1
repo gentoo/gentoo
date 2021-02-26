@@ -1,15 +1,15 @@
 BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install prepare test
-DEPEND=!elibc_Darwin? ( unwind? ( sys-libs/libunwind ) ) sodium? ( dev-libs/libsodium:= ) pgm? ( ~net-libs/openpgm-5.2.122 ) !elibc_Darwin? ( sys-apps/util-linux ) doc? ( app-text/asciidoc app-text/xmlto ) pgm? ( virtual/pkgconfig )
+DEPEND=!elibc_Darwin? ( unwind? ( sys-libs/libunwind ) ) libbsd? ( dev-libs/libbsd:= ) sodium? ( dev-libs/libsodium:= ) !elibc_Darwin? ( sys-apps/util-linux ) doc? ( app-text/asciidoc app-text/xmlto ) pgm? ( virtual/pkgconfig )
 DESCRIPTION=A brokerless kernel
 EAPI=7
 HOMEPAGE=https://zeromq.org/
-IUSE=doc drafts pgm +sodium static-libs test unwind elibc_Darwin
+IUSE=doc drafts +libbsd pgm +sodium static-libs test unwind elibc_Darwin
 KEYWORDS=amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x64-macos
 LICENSE=LGPL-3
-RDEPEND=!elibc_Darwin? ( unwind? ( sys-libs/libunwind ) ) sodium? ( dev-libs/libsodium:= ) pgm? ( ~net-libs/openpgm-5.2.122 )
+RDEPEND=!elibc_Darwin? ( unwind? ( sys-libs/libunwind ) ) libbsd? ( dev-libs/libbsd:= ) sodium? ( dev-libs/libsodium:= )
 RESTRICT=!test? ( test )
 SLOT=0/5
 SRC_URI=https://github.com/zeromq/libzmq/releases/download/v4.3.3/zeromq-4.3.3.tar.gz
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=092f68dc9863aacf2029f3d070e5c323
+_md5_=67ea8e86e0babf3791234d5fb163564f
