@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -41,7 +41,9 @@ src_install() {
 
 	insinto /etc/default
 	newins earlyoom.default earlyoom
+	insinto /etc/conf.d
+	ln -s ../default/earlyoom "${ED}/etc/conf.d/earlyoom"
 
-	doinitd "${FILESDIR}/${PN}"
+	newinitd "${FILESDIR}/${PN}-r1" "${PN}"
 	use systemd && systemd_dounit earlyoom.service
 }
