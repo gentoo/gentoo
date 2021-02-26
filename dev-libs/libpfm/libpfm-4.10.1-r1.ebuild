@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit multilib toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Hardware-based performance monitoring interface for Linux"
 HOMEPAGE="http://perfmon2.sourceforge.net"
@@ -13,9 +13,6 @@ LICENSE="GPL-2 MIT"
 SLOT="0/4"
 KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv x86"
 IUSE="static-libs"
-
-DEPEND=""
-RDEPEND="${DEPEND}"
 
 src_prepare() {
 	default
