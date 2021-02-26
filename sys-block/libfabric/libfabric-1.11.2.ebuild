@@ -41,7 +41,8 @@ src_prepare() {
 }
 
 src_configure() {
-	local -a myeconfargs=(
+	local myeconfargs=(
+		--disable-static
 		# let's try to avoid automagic deps
 		--enable-bgq=no
 		--enable-cuda-dlopen=$(usex cuda yes no)
@@ -67,4 +68,11 @@ src_configure() {
 		--enable-xpmem=no
 	)
 	econf "${myeconfargs[@]}"
+}
+
+src_install() {
+	default
+
+	# no static archives
+	find "${ED}" -name '*.la' -delete || die
 }
