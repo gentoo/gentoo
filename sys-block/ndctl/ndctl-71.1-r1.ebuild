@@ -15,10 +15,11 @@ KEYWORDS="~amd64 ~x86"
 IUSE="bash-completion systemd test"
 
 DEPEND="
-	sys-apps/kmod:=
-	virtual/libudev:=
-	sys-apps/util-linux:=
 	dev-libs/json-c:=
+	sys-apps/keyutils:=
+	sys-apps/kmod:=
+	sys-apps/util-linux:=
+	virtual/libudev:=
 	systemd? ( sys-apps/systemd:= )
 "
 RDEPEND="${DEPEND}"
