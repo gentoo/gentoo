@@ -5,7 +5,7 @@ DESCRIPTION=A fast, multi-threaded, multi-user SQL database server
 EAPI=7
 HOMEPAGE=https://www.mysql.com/
 IUSE=cjk cracklib debug jemalloc latin1 libressl numa +perl profiling router selinux +server tcmalloc test kernel_linux
-KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris ~x86-solaris
+KEYWORDS=amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris ~x86-solaris
 LICENSE=GPL-2
 PDEPEND=perl? ( >=dev-perl/DBD-mysql-2.9004 )
 RDEPEND=>=app-arch/lz4-0_p131:= app-arch/zstd:= sys-libs/ncurses:0= >=sys-libs/zlib-1.2.3:0= libressl? ( dev-libs/libressl:0= ) !libressl? ( >=dev-libs/openssl-1.0.0:0= ) server? ( dev-libs/icu:= dev-libs/libevent:=[ssl,threads] >=dev-libs/protobuf-3.8:= net-libs/libtirpc:= cjk? ( app-text/mecab:= ) jemalloc? ( dev-libs/jemalloc:0= ) kernel_linux? ( dev-libs/libaio:0= sys-process/procps:0= ) numa? ( sys-process/numactl ) tcmalloc? ( dev-util/google-perftools:0= ) ) !dev-db/mariadb !dev-db/mariadb-galera !dev-db/percona-server !dev-db/mysql-cluster !dev-db/mysql:0 !dev-db/mysql:5.7 selinux? ( sec-policy/selinux-mysql ) !prefix? ( acct-group/mysql acct-user/mysql dev-db/mysql-init-scripts )
@@ -14,4 +14,4 @@ RESTRICT=!test? ( test ) libressl? ( test )
 SLOT=8.0
 SRC_URI=https://cdn.mysql.com/Downloads/MySQL-8.0/mysql-boost-8.0.23.tar.gz https://cdn.mysql.com/archives/mysql-8.0/mysql-boost-8.0.23.tar.gz http://downloads.mysql.com/archives/MySQL-8.0/mysql-boost-8.0.23.tar.gz https://dev.gentoo.org/~whissi/dist/mysql/mysql-8.0.23-patches-01.tar.xz
 _eclasses_=check-reqs	7e3fd1855a5e1b50bb9e80827b3f672d	cmake	314a813be2f09820e8978cdee941e501	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=b2ce1f797ea9c23a190ed653d59712f6
+_md5_=157922eea8d2fbde413d3089e7e180b5

@@ -1,7 +1,7 @@
 DEFINED_PHASES=-
 DESCRIPTION=Virtual to depend on any Distribution Kernel
 EAPI=7
-KEYWORDS=~amd64 ~arm64 ppc64 ~x86
+KEYWORDS=amd64 ~arm64 ppc64 ~x86
 RDEPEND=|| ( ~sys-kernel/gentoo-kernel-5.4.97 ~sys-kernel/gentoo-kernel-bin-5.4.97 ~sys-kernel/vanilla-kernel-5.4.97 )
 SLOT=0/5.4.97
-_md5_=fbd9cdacb9673c96feaf6d5ab26b7101
+_md5_=106121f8fa8d285bf7f4d99435170c9f
