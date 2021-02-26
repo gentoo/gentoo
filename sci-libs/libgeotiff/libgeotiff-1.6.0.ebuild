@@ -11,7 +11,7 @@ SRC_URI="https://download.osgeo.org/geotiff/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/5"
-KEYWORDS="~amd64 ~arm arm64 ~ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 ~arm arm64 ~ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="debug doc static-libs"
 
 BDEPEND="
