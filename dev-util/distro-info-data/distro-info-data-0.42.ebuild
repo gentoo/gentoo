@@ -10,7 +10,7 @@ SRC_URI="mirror://debian/pool/main/d/${PN}/${PN}_${PV}.tar.xz"
 LICENSE="ISC"
 SLOT="0"
 
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 # Package provides only csv data and test script
 # written in python
