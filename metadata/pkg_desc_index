@@ -780,7 +780,7 @@ app-admin/tripwire 2.4.3.7: Open Source File Integrity Checker and IDS
 app-admin/ulogd 2.0.7-r1: A userspace logging daemon for netfilter/iptables related logging
 app-admin/undertaker-scripts 1: Scripts to help retiring Gentoo developers
 app-admin/usbview 2.0: Display the topology of devices on the USB bus
-app-admin/vault 1.5.6 1.6.1: A tool for managing secrets
+app-admin/vault 1.5.6 1.5.7 1.6.1 1.6.3: A tool for managing secrets
 app-admin/verynice 1.1-r3: A tool for dynamically adjusting the nice-level of processes
 app-admin/watchfolder 0.3.3-r1: watches directories and processes files
 app-admin/webalizer 2.23.08: Webserver log file analyzer
@@ -1041,7 +1041,7 @@ app-crypt/codecrypt 1.7.2-r1 1.8-r2: Post-quantum cryptography tool
 app-crypt/codegroup 20080907-r1: encode / decode binary file as five letter codegroups
 app-crypt/coolkey 1.1.0-r7: Linux Driver support for the CoolKey and CAC products
 app-crypt/crackpkcs12 0.2.10: multithreaded program to crack PKCS#12 files
-app-crypt/debian-archive-keyring 2019.1-r1 2021.1: GnuPG archive keys of the Debian archive
+app-crypt/debian-archive-keyring 2019.1-r1 2021.1 2021.1.1: GnuPG archive keys of the Debian archive
 app-crypt/dehydrated 0.7.0: A client for signing certificates with an ACME-server
 app-crypt/dieharder 3.31.1-r3: An advanced suite for testing the randomness of RNG's
 app-crypt/easy-rsa 3.0.4 3.0.5 3.0.6 3.0.7 3.0.8: Small RSA key management package, based on OpenSSL
