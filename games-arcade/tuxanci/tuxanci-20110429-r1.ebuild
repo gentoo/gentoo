@@ -42,6 +42,7 @@ PATCHES=( "${FILESDIR}/${P}-glu.patch" ) # bug 715132
 
 src_configure() {
 	local mycmakeargs=(
+		-DENABLE_DEBUG=OFF
 		-DWITH_AUDIO=$(usex sound)
 		-DBUILD_SERVER=$(usex dedicated)
 		-DWITH_NLS=$(usex nls)
