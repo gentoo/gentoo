@@ -32,6 +32,10 @@
 			Build draft API, which may change at any time without any notice, and
 			is therefore not recommended for normal use.
 		</flag>
+		<flag name="libbsd">
+			Use strlcpy() from <pkg>dev-libs/libbsd</pkg> instead of internal
+			implementation.
+		</flag>
 		<flag name="pgm">
 			Build PGM (Pragmatic General Multicast)extention, a protocol for reliable 
 			multicast transport of data over IP networks.
