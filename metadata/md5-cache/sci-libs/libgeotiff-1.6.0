@@ -5,10 +5,10 @@ DESCRIPTION=Library for reading TIFF files with embedded tags for geographic inf
 EAPI=7
 HOMEPAGE=https://trac.osgeo.org/geotiff/ https://github.com/OSGeo/libgeotiff
 IUSE=debug doc static-libs
-KEYWORDS=~amd64 ~arm arm64 ~ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos
+KEYWORDS=amd64 ~arm arm64 ~ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos
 LICENSE=GPL-2
 RDEPEND=>=media-libs/tiff-3.9.1:0 >=sci-libs/proj-6.0.0:= sys-libs/zlib virtual/jpeg:=
 SLOT=0/5
 SRC_URI=https://download.osgeo.org/geotiff/libgeotiff/libgeotiff-1.6.0.tar.gz
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=6d2bb9624d361c049962a562adc0412f
+_md5_=2e855660fbe2eebf77db207677d17b36
