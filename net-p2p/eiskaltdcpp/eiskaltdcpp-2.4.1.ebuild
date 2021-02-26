@@ -98,6 +98,7 @@ DOCS=( AUTHORS ChangeLog.txt )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.2.10-cmake_lua_version.patch"
+	"${FILESDIR}/${P}-fix_upnp_compilation.patch"
 )
 
 CMAKE_REMOVE_MODULES_LIST="FindLua"
