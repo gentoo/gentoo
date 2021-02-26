@@ -22,7 +22,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/cached-property-1.2.0[${PYTHON_USEDEP}]
 	>=dev-python/distro-1.5.0[${PYTHON_USEDEP}]
-	>=dev-python/docker-py-4.4.2[${PYTHON_USEDEP}]
+	>=dev-python/docker-py-4.4.4[${PYTHON_USEDEP}]
 	>=dev-python/dockerpty-0.4.1[${PYTHON_USEDEP}]
 	>=dev-python/docopt-0.6.1[${PYTHON_USEDEP}]
 	>=dev-python/python-dotenv-0.13.0[${PYTHON_USEDEP}]
@@ -46,7 +46,7 @@ S="${WORKDIR}/compose-${MY_PV}"
 PATCHES=(
 	# Bug #679968 -- https://bugs.gentoo.org/679968
 	# Bug #681002 -- https://bugs.gentoo.org/681002
-	"${FILESDIR}"/${PN}-1.28.0_rc2-setup-py.patch
+	"${FILESDIR}"/${PN}-1.28.5-setup-py.patch
 )
 
 DOCS=( CHANGELOG.md README.md )
