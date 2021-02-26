@@ -7,7 +7,7 @@ DESCRIPTION="Free implementation of the DVB Common Scrambling Algorithm - DVB/CS
 HOMEPAGE="https://www.videolan.org/developers/libdvbcsa.html"
 SRC_URI="https://download.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.gz"
 
-KEYWORDS="~amd64 ~arm ~arm64 x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="debug cpu_flags_x86_mmx cpu_flags_x86_sse2 static-libs"
