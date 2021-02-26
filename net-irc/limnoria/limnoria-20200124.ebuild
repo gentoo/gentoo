@@ -23,7 +23,7 @@ fi
 
 DESCRIPTION="Python based extensible IRC infobot and channel bot"
 HOMEPAGE="https://docs.limnoria.net"
-LICENSE="BSD GPL-2+"
+LICENSE="BSD GPL-2 GPL-2+"
 SLOT="0"
 IUSE="crypt ssl test"
 RESTRICT=" !test? ( test )"

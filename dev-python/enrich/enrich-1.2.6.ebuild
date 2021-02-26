@@ -16,6 +16,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-python/rich[${PYTHON_USEDEP}]"
-BDEPEND="dev-python/setuptools_scm[${PYTHON_USEDEP}]"
+BDEPEND="
+	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	test? ( dev-python/pytest-mock[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest

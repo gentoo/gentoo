@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{7..9} )
 DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 inherit distutils-r1 optfeature
 
-DESCRIPTION="Validate configuration and produce human readable error messages"
+DESCRIPTION="Python library for renrering rich text, tables, etc. to the terminal"
 HOMEPAGE="https://github.com/willmcgugan/rich"
 SRC_URI="https://github.com/willmcgugan/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
