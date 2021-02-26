@@ -29,8 +29,8 @@ src_prepare() {
 	default
 
 	# Respect users CFLAGS
-	# Add '-DLUA_32BITS' for fixing compilation with lua5.3
-	sed -e 's/-O2/-DLUA_32BITS/g' -i Makefile || die
+	# Remove '-ansi' to compile with newer lua versions
+	sed -e 's/-O2//g' -e 's/-ansi//g' -i Makefile || die
 
 	lua_copy_sources
 }

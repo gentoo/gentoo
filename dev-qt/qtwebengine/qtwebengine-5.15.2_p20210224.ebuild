@@ -20,7 +20,7 @@ fi
 # patchset based on https://github.com/chromium-ppc64le releases
 SRC_URI+=" ppc64? ( https://dev.gentoo.org/~gyakovlev/distfiles/${PN}-5.15.2-ppc64.tar.xz )"
 
-IUSE="alsa bindist designer geolocation kerberos pulseaudio +system-ffmpeg +system-icu widgets"
+IUSE="alsa bindist designer geolocation +jumbo-build kerberos pulseaudio +system-ffmpeg +system-icu widgets"
 REQUIRED_USE="designer? ( widgets )"
 
 RDEPEND="
@@ -71,7 +71,7 @@ RDEPEND="
 	kerberos? ( virtual/krb5 )
 	pulseaudio? ( media-sound/pulseaudio:= )
 	system-ffmpeg? ( media-video/ffmpeg:0= )
-	system-icu? ( >=dev-libs/icu-60.2:= )
+	system-icu? ( >=dev-libs/icu-68.2:= )
 	widgets? (
 		~dev-qt/qtdeclarative-${QTVER}[widgets]
 		~dev-qt/qtwidgets-${QTVER}
@@ -87,7 +87,11 @@ DEPEND="${RDEPEND}
 	sys-devel/bison
 "
 
-PATCHES=( "${FILESDIR}/${PN}-5.15.0-disable-fatal-warnings.patch" ) # bug 695446
+PATCHES=(
+	"${FILESDIR}/${PN}-5.15.0-disable-fatal-warnings.patch" # bug 695446
+	"${FILESDIR}/${P}-chromium-87-v8-icu68.patch" # bug 757606
+	"${FILESDIR}/${P}-disable-git.patch" # downstream snapshot fix
+)
 
 src_prepare() {
 	if [[ ${PV} == ${QTVER}_p* ]]; then
@@ -99,11 +103,11 @@ src_prepare() {
 		sed -e "/^MODULE_VERSION/s/5.*/${QTVER}/" -i .qmake.conf || die
 	fi
 
-	# QTBUG-88657 - jumbo-build is broken
-	#if ! use jumbo-build; then
+	# QTBUG-88657 - jumbo-build could still make trouble
+	if ! use jumbo-build; then
 		sed -i -e 's|use_jumbo_build=true|use_jumbo_build=false|' \
 			src/buildtools/config/common.pri || die
-	#fi
+	fi
 
 	# bug 630834 - pass appropriate options to ninja when building GN
 	sed -e "s/\['ninja'/&, '-j$(makeopts_jobs)', '-l$(makeopts_loadavg "${MAKEOPTS}" 0)', '-v'/" \
@@ -143,11 +147,7 @@ src_prepare() {
 		mkdir -vp source/config/linux/ppc64 || die
 		mkdir -p source/libvpx/test || die
 		touch source/libvpx/test/test.mk || die
-		# generate_gni.sh runs git at the end of process, prevent it.
-		git() {	: ; }
-		export -f git
 		./generate_gni.sh || die
-		unset git
 		popd >/dev/null || die
 	fi
 }
