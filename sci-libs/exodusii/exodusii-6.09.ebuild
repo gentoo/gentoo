@@ -1,22 +1,24 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
+CMAKE_MAKEFILE_GENERATOR="emake"
 FORTRAN_NEEDED="test"
-inherit cmake-utils fortran-2
-
 MY_PN="${PN%ii}"
 MY_P="${MY_PN}-${PV}"
+inherit cmake fortran-2
 
 DESCRIPTION="Model developed to store and retrieve transient data for finite element analyses"
 HOMEPAGE="https://github.com/certik/exodus"
 SRC_URI="https://dev.gentoo.org/~asturm/distfiles/${MY_P}.tar.gz"
+S="${WORKDIR}"/${MY_P}/${MY_PN}
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux"
 IUSE="static-libs test"
+
 RESTRICT="!test? ( test )"
 
 RDEPEND="sci-libs/netcdf[hdf5]"
@@ -24,12 +26,10 @@ DEPEND="${RDEPEND}
 	test? ( app-shells/tcsh )
 "
 
-S="${WORKDIR}"/${MY_P}/${MY_PN}
-
 PATCHES=( "${FILESDIR}"/${P}-multilib.patch )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	if ! use test; then
 		sed -e 's:Fortran::g' -i CMakeLists.txt || die
@@ -46,7 +46,7 @@ src_configure() {
 		-DBUILD_TESTING=$(usex test)
 	)
 	export NETCDF_DIR="${EPREFIX}/usr/"
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {
