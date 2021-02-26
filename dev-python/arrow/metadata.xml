@@ -7,7 +7,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">crsmithdev/arrow</remote-id>
+		<remote-id type="github">arrow-py/arrow</remote-id>
 		<remote-id type="pypi">arrow</remote-id>
 	</upstream>
 </pkgmetadata>
