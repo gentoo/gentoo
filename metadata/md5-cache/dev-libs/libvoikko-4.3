@@ -1,16 +1,16 @@
 BDEPEND=verify-sig? ( app-crypt/openpgp-keys-voikko ) verify-sig? ( app-crypt/gnupg >=app-portage/gemato-16 )
 DEFINED_PHASES=configure install unpack
-DEPEND=python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-)] hfst? ( >=dev-util/hfstospell-0.5.0 )
+DEPEND=python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] hfst? ( >=dev-util/hfstospell-0.5.0 )
 DESCRIPTION=Spell checking, hyphenation and morphological analysis tool for Finnish language
 EAPI=7
 HOMEPAGE=https://voikko.puimula.org/
-IUSE=+expvfst +hfst verify-sig python_targets_python3_7 python_targets_python3_8 verify-sig
+IUSE=+expvfst +hfst verify-sig python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 verify-sig
 KEYWORDS=amd64 x86
 LICENSE=GPL-2+
-RDEPEND=python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-)] hfst? ( >=dev-util/hfstospell-0.5.0 )
-REQUIRED_USE=|| ( python_targets_python3_7 python_targets_python3_8 )
+RDEPEND=python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] hfst? ( >=dev-util/hfstospell-0.5.0 )
+REQUIRED_USE=|| ( python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://www.puimula.org/voikko-sources/libvoikko/libvoikko-4.3.tar.gz verify-sig? ( https://www.puimula.org/voikko-sources/libvoikko/libvoikko-4.3.tar.gz.asc )
 _eclasses_=multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	python-r1	4c65b35c1895b82c0f44e44166a3464f	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	verify-sig	40b4f4f782cf67118f594ce604cc4c0a
-_md5_=28bd3b4d82a516af37df32f8a9a7129f
+_md5_=64898926989b8ef0871ea1046769bb21
