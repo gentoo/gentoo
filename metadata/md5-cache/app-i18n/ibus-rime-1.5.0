@@ -1,0 +1,12 @@
+BDEPEND=dev-util/cmake virtual/pkgconfig
+DEFINED_PHASES=prepare
+DEPEND=app-i18n/ibus app-i18n/librime app-i18n/rime-data x11-libs/libnotify
+DESCRIPTION=Chinese Rime Input Method Engine for IBus
+EAPI=7
+HOMEPAGE=https://rime.im/ https://github.com/rime/ibus-rime
+KEYWORDS=~amd64 ~arm64 ~x86
+LICENSE=GPL-3+
+RDEPEND=app-i18n/ibus app-i18n/librime app-i18n/rime-data x11-libs/libnotify
+SLOT=0
+SRC_URI=https://github.com/rime/ibus-rime/archive/1.5.0.tar.gz -> ibus-rime-1.5.0.tar.gz
+_md5_=39922037986705650fd7eed7afe80a2b

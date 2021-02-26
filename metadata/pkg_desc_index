@@ -2237,7 +2237,7 @@ app-i18n/ibus-kkc 1.5.22: Japanese Kana Kanji conversion engine for IBus
 app-i18n/ibus-libpinyin 1.11.1-r1 1.11.92-r1: Intelligent Pinyin and Bopomofo input methods based on LibPinyin for IBus
 app-i18n/ibus-m17n 1.4.2 1.4.3: M17N engine for IBus
 app-i18n/ibus-pinyin 1.5.0-r4: Chinese Pinyin and Bopomofo engines for IBus
-app-i18n/ibus-rime 1.4.0: Chinese Rime Input Method Engine for IBus
+app-i18n/ibus-rime 1.4.0 1.5.0: Chinese Rime Input Method Engine for IBus
 app-i18n/ibus-skk 1.4.2 1.4.3: Japanese SKK engine for IBus
 app-i18n/ibus-sunpinyin 2.0.4_pre20200306162733: Chinese SunPinyin engine for IBus
 app-i18n/ibus-table 1.9.21-r2 1.11.0 1.12.0 1.12.1: Tables engines for IBus
@@ -2263,7 +2263,7 @@ app-i18n/libchewing 0.5.1 9999: Intelligent phonetic (Zhuyin/Bopomofo) input met
 app-i18n/libhangul 0.1.0: Library for hangul input method logic, hanja dictionary
 app-i18n/libkkc 0.3.6_pre20190809104047 9999: Japanese Kana Kanji conversion input method library
 app-i18n/libpinyin 2.3.0 9999: Libraries for handling of Hanyu Pinyin and Zhuyin Fuhao
-app-i18n/librime 1.5.3-r1 1.6.0 1.6.1: RIME (Rime Input Method Engine) core library
+app-i18n/librime 1.5.3-r1 1.6.0 1.6.1 1.7.3: RIME (Rime Input Method Engine) core library
 app-i18n/librime-lua 20201011103348 99999999999999: Lua support for RIME
 app-i18n/libskk 1.0.2 1.0.5: GObject-based library to deal with Japanese kana-to-kanji conversion method
 app-i18n/libtabe 0.2.6.1.2: Libtabe provides bimsphone support for xcin-2.5+
