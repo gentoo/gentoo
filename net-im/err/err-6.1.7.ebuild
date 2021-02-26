@@ -13,6 +13,7 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Multiprotocol chatbot designed to be easily deployable and maintainable"
 HOMEPAGE="https://errbot.readthedocs.io/en/latest/"
 SRC_URI="https://github.com/errbotio/errbot/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 KEYWORDS="~amd64"
 LICENSE="GPL-3"
@@ -44,18 +45,10 @@ RDEPEND="${DEPEND}
 		dev-python/pyasn1[${PYTHON_USEDEP}]
 		dev-python/pyasn1-modules[${PYTHON_USEDEP}]
 		dev-python/slixmpp[${PYTHON_USEDEP}]
-	)
-"
-S="${WORKDIR}/${MY_P}"
+	)"
+BDEPEND="test? ( dev-python/mock[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest
-
-# NOTES:
-# 1. Support for BOT_SENTRY option is missing, cause
-#    we do not have apropriate packages in portage yet
-# 2. Currently only XMPP is supported(IRC still untested)
-# 3. Internal web server is temporarily removed (rocket-err from requires.txt)
-# 4. pygments-markdown-lexer dependency(needed only for debugging?) is temporarily removed (pygments-markdown-lexer from requires.txt)
 
 python_prepare_all() {
 	sed -i -e '/pygments-markdown-lexer/d' setup.py || die
