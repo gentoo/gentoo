@@ -27,6 +27,7 @@ LICENSE="LGPL-2+"
 SLOT="0"
 
 DEPEND="
+	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/pycairo[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	media-gfx/graphviz
