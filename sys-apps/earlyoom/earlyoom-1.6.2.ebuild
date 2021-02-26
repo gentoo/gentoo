@@ -41,7 +41,7 @@ src_install() {
 
 	insinto /etc/default
 	newins earlyoom.default earlyoom
-	insinto /etc/conf.d
+	dodir /etc/conf.d
 	ln -s ../default/earlyoom "${ED}/etc/conf.d/earlyoom"
 
 	newinitd "${FILESDIR}/${PN}-r1" "${PN}"
