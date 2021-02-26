@@ -1,0 +1,14 @@
+diff --git a/raet/lane/paging.py b/raet/lane/paging.py
+index 5a2f480..32c8f95 100644
+--- a/raet/lane/paging.py
++++ b/raet/lane/paging.py
+@@ -162,8 +162,7 @@ class TxBody(Body):
+                 if not msgpack:
+                     emsg = "Msgpack not installed."
+                     raise raeting.PacketError(emsg)
+-                self.packed = msgpack.dumps(self.data,
+-                                            encoding='utf-8')
++                self.packed = msgpack.dumps(self.data)
+         else:
+             emsg = "Unrecognized message pack kind '{0}'\n".format(pk)
+             console.terse(emsg)
