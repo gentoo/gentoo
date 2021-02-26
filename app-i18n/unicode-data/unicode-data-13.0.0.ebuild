@@ -10,7 +10,7 @@ SRC_URI="https://unicode.org/Public/zipped/${PV}/UCD.zip -> ${P}-UCD.zip
 
 LICENSE="unicode"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86"
 IUSE=""
 
 DEPEND="app-arch/unzip"

@@ -12,7 +12,7 @@ SRC_URI="https://github.com/AcademySoftwareFoundation/openexr/archive/v${PV}.tar
 
 LICENSE="BSD"
 SLOT="0/25" # based on SONAME
-KEYWORDS="amd64 ~arm arm64 ~hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
+KEYWORDS="amd64 ~arm arm64 hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
 IUSE="cpu_flags_x86_avx doc examples static-libs utils test"
 RESTRICT="!test? ( test )"
 
