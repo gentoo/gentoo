@@ -13,5 +13,8 @@
   function values, CppAD generates an algorithm that computes
   corresponding derivative values (of arbitrary order using either
   forward or reverse mode).
-</longdescription>
+  </longdescription>
+  <upstream>
+    <remote-id type="github">coin-or/CppAD</remote-id>
+  </upstream>
 </pkgmetadata>
