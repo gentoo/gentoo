@@ -11,4 +11,4 @@ RDEPEND=dev-libs/boehm-gc:= sys-devel/gettext sys-libs/readline:= machine-interf
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://gnu/poke/poke-1.0.tar.gz
-_md5_=765d19e9d2b4f1a9aeb2f336af051cda
+_md5_=1305a1f7a94ce73adaf1b84aa71ebc10
