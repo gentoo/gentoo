@@ -1,6 +1,11 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-02-25)
+# depends on ring crate, which is not so portable
+# https://github.com/briansmith/ring/issues/389
+dev-util/sccache dist-server
+
 # Sam James <sam@gentoo.org> (2021-02-14)
 # Brings in a large number of unkeyworded
 # (broad) deps. Not keywording yet.
