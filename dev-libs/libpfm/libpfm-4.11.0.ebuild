@@ -12,6 +12,7 @@ SRC_URI="mirror://sourceforge/perfmon2/${PN}4/${P}.tar.gz"
 LICENSE="GPL-2 MIT"
 SLOT="0/4"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+IUSE="static-libs"
 
 src_prepare() {
 	default
@@ -31,8 +32,7 @@ src_install() {
 	emake DESTDIR="${D}" LDCONFIG=true PREFIX="${EPREFIX}/usr" install
 	dodoc README
 
-	find "${ED}" -name '*.a' -delete || die
-
-	# Note: dev-libs/papi uses .la files to detect this package, so
-	# don't remove them.
+	if ! use static-libs ; then
+		find "${ED}" -name '*.la' -delete || die
+	fi
 }
