@@ -2864,6 +2864,7 @@ dev-util/perf:systemtap - Add support to define SDT event in perf tools.
 dev-util/perf:unwind - Use sys-libs/libunwind for frame unwinding support.
 dev-util/pkgconf:pkg-config - Install as a replacement for dev-util/pkgconfig
 dev-util/pkgconfig:internal-glib - Use internal copy of dev-libs/glib
+dev-util/poke:machine-interface - enable machine-interface protocol using dev-libs/json-c
 dev-util/pycharm-community:bundled-jdk - Use bundled jdk
 dev-util/pycharm-professional:bundled-jdk - Use bundled jdk
 dev-util/scanmem:gui - Enable the GameConqueror GUI
