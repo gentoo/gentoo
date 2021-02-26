@@ -11,6 +11,6 @@ RDEPEND=acct-user/munin acct-user/munin-async acct-group/munin dev-lang/perl:=[b
 REQUIRED_USE=cgi? ( !minimal ) apache2? ( cgi )
 RESTRICT=!test? ( test )
 SLOT=0
-SRC_URI=https://github.com/munin-monitoring/munin/archive/2.0.64.tar.gz -> munin-2.0.64.tar.gz https://dev.gentoo.org/~graaff/munin/munin-2.0.64-gentoo-1.tar.xz
+SRC_URI=https://github.com/munin-monitoring/munin/archive/2.0.67.tar.gz -> munin-2.0.67.tar.gz https://dev.gentoo.org/~graaff/munin/munin-2.0.67-gentoo-1.tar.xz
 _eclasses_=java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	java-utils-2	378e4cda228ea0231a0ac283cb2ad25c	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=4403ac53b9496cefc084ba20a8dc5615
+_md5_=f4cbc9a31613b71c5fb3847a63292bcd
