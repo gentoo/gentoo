@@ -13,4 +13,7 @@
   <use>
     <flag name="glpk">Undocumented USE</flag>
   </use>
+  <upstream>
+    <remote-id type="github">coin-or/Bonmin</remote-id>
+  </upstream>
 </pkgmetadata>
