@@ -12,4 +12,7 @@
 		Programming (MINLP) problems. The purpose of Couenne is to find global
 		optima of nonconvex MINLPs.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">coin-or/Couenne</remote-id>
+	</upstream>
 </pkgmetadata>
