@@ -1,0 +1,45 @@
+From 72d8189b942f6e95d8c946fea2faaee9a74f4b35 Mon Sep 17 00:00:00 2001
+From: nilninull <nilninull@gmail.com>
+Date: Wed, 3 Jan 2018 16:32:27 +0900
+Subject: [PATCH] FIX: default XDG_CONFIG_DIRS directory
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 38605f2..7677e43 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -25,7 +25,7 @@ ELSE ()
+ ENDIF ()
+ 
+ add_executable(pamix ${pamix_SRC})
+-install(FILES pamix.conf DESTINATION /etc)
++install(FILES pamix.conf DESTINATION /etc/xdg)
+ install(TARGETS pamix DESTINATION bin)
+ install(FILES man/pamix.1 DESTINATION share/man/man1)
+ 
+From e3bf53d9a841c3559880863c8c29c2919ab5b425 Mon Sep 17 00:00:00 2001
+From: Joshua Jensch <jenschjoshua@gmail.com>
+Date: Sat, 6 Jan 2018 07:05:23 +0100
+Subject: [PATCH] change default XDG_CONFIG_DIRS value when searching config
+ file
+
+---
+ src/pamix.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/pamix.cpp b/src/pamix.cpp
+index 3ea2730..d5f7ead 100644
+--- a/src/pamix.cpp
++++ b/src/pamix.cpp
+@@ -130,7 +130,7 @@ void loadConfiguration() {
+ 
+ 	char *xdg_config_dirs = getenv("XDG_CONFIG_DIRS");
+ 
+-	path = xdg_config_dirs ? xdg_config_dirs : "/etc";
++	path = xdg_config_dirs ? xdg_config_dirs : "/etc/xdg";
+ 	path += "/pamix.conf";
+ 	size_t cpos = path.find(':');
+ 	while (cpos != std::string::npos) {
