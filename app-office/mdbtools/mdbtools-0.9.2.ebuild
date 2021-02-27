@@ -32,7 +32,7 @@ DOCS=( AUTHORS HACKING NEWS README.md )
 
 PATCHES=(
 	# bug #697568
-	"${FILESDIR}/${PN}-0.9.2-unixODBC-respect-libdir.patch"
+	"${FILESDIR}/${P}-unixODBC-respect-libdir.patch"
 )
 
 src_prepare() {

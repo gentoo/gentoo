@@ -11,7 +11,7 @@ DESCRIPTION="Structured Tags datastructures"
 HOMEPAGE="http://stag.sourceforge.net/ https://metacpan.org/release/Data-Stag"
 
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="dev-perl/IO-String"
 BDEPEND="${RDEPEND}
