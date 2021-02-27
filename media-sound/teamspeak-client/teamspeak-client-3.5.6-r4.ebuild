@@ -71,7 +71,7 @@ src_prepare() {
 
 	# Fixes QA Notice: Unresolved soname dependencies.
 	# Since this is a binary only package, it must be patched.
-	local quazip_so="libquazip1-qt5.so"
+	local quazip_so="libquazip1-qt5.so.1.0.0"
 	if has_version "<dev-libs/quazip-1.0"; then
 		quazip_so="libquazip5.so.1"
 	fi

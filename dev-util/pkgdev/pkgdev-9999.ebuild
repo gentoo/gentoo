@@ -22,11 +22,16 @@ LICENSE="BSD MIT"
 SLOT="0"
 
 if [[ ${PV} == *9999 ]] ; then
+	# https://github.com/pkgcore/pkgdev/blob/main/requirements/dev.txt
 	RDEPEND="
 		~dev-python/snakeoil-9999[${PYTHON_USEDEP}]
+		~dev-util/pkgcheck-9999[${PYTHON_USEDEP}]
+		dev-vcs/git
 		~sys-apps/pkgcore-9999[${PYTHON_USEDEP}]
 	"
 fi
+
+# Releases (in future): https://github.com/pkgcore/pkgdev/blob/main/requirements/install.txt
 
 distutils_enable_sphinx doc
 
