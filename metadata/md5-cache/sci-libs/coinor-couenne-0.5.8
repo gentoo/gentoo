@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig doc? ( app-doc/doxygen[dot] virtual/latex-base )
+DEFINED_PHASES=compile configure install prepare setup
+DEPEND=sci-libs/coinor-bonmin:= sci-libs/coinor-cbc:= sci-libs/coinor-cgl:= sci-libs/coinor-clp:= sci-libs/coinor-osi:= sci-libs/coinor-utils:= sci-libs/ipopt:= virtual/blas virtual/fortran
+DESCRIPTION=COIN-OR Convex Over and Under ENvelopes for Nonlinear Estimation
+EAPI=7
+HOMEPAGE=https://projects.coin-or.org/Couenne/
+IUSE=doc
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=EPL-1.0
+RDEPEND=sci-libs/coinor-bonmin:= sci-libs/coinor-cbc:= sci-libs/coinor-cgl:= sci-libs/coinor-clp:= sci-libs/coinor-osi:= sci-libs/coinor-utils:= sci-libs/ipopt:= virtual/blas virtual/fortran
+SLOT=0/1
+SRC_URI=https://github.com/coin-or/Couenne/archive/releases/0.5.8.tar.gz -> coinor-couenne-0.5.8.tar.gz
+_eclasses_=fortran-2	b4796813ccda91c9c0d3463fc90aa969	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=82f3102745137f6f38e0a95b7dd16116

@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig doc? ( app-doc/doxygen[dot] virtual/latex-base ) test? ( sci-libs/coinor-sample )
+DEFINED_PHASES=compile configure install test
+DEPEND=sci-libs/coinor-cbc:= sci-libs/coinor-cgl:= sci-libs/coinor-clp:= sci-libs/coinor-osi:= sci-libs/coinor-utils:= sci-libs/ipopt:= virtual/blas
+DESCRIPTION=COIN-OR Basic Open-source Nonlinear Mixed INteger programming
+EAPI=7
+HOMEPAGE=https://projects.coin-or.org/Bonmin/
+IUSE=doc test
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=EPL-1.0
+RDEPEND=sci-libs/coinor-cbc:= sci-libs/coinor-cgl:= sci-libs/coinor-clp:= sci-libs/coinor-osi:= sci-libs/coinor-utils:= sci-libs/ipopt:= virtual/blas
+RESTRICT=!test? ( test )
+SLOT=0/4
+SRC_URI=https://github.com/coin-or/Bonmin/archive/releases/1.8.8.tar.gz -> coinor-bonmin-1.8.8.tar.gz
+_md5_=a382a617a1e006594f06841a358277af

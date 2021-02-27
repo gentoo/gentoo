@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig doc? ( app-doc/doxygen[dot] ) test? ( sci-libs/coinor-cgl )
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=sci-libs/coinor-utils:=
+DESCRIPTION=COIN-OR Framework for implementing parallel graph search algorithms
+EAPI=7
+HOMEPAGE=https://projects.coin-or.org/CHiPPS/
+IUSE=doc test
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=EPL-1.0
+RDEPEND=sci-libs/coinor-utils:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/coin-or/CHiPPS-ALPS/archive/releases/1.5.7.tar.gz -> coinor-alps-1.5.7.tar.gz
+_md5_=807497b75772b70c310f9b44477fcea7

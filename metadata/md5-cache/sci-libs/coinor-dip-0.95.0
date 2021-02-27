@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig doc? ( app-doc/doxygen[dot] ) test? ( sci-libs/coinor-sample )
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=sci-libs/coinor-alps:= sci-libs/coinor-cbc:= sci-libs/coinor-cgl:= sci-libs/coinor-clp:= sci-libs/coinor-osi:= sci-libs/coinor-utils:=
+DESCRIPTION=COIN-OR Decomposition in Integer Programming library
+EAPI=7
+HOMEPAGE=https://projects.coin-or.org/Dip/
+IUSE=doc test
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=EPL-1.0
+RDEPEND=sci-libs/coinor-alps:= sci-libs/coinor-cbc:= sci-libs/coinor-cgl:= sci-libs/coinor-clp:= sci-libs/coinor-osi:= sci-libs/coinor-utils:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/coin-or/Dip/archive/releases/0.95.0.tar.gz -> coinor-dip-0.95.0.tar.gz
+_md5_=8b597d42c768c45ed014d8f84aa9fff2

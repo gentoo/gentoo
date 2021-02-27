@@ -7199,11 +7199,13 @@ sci-libs/clblas:client - Build a command line clBLAS client program.
 sci-libs/clblas:ktest - A command line tool for testing single clBLAS kernel.
 sci-libs/clblas:performance - Copy performance scripts that can measure and graph performance.
 sci-libs/clblast:client - Enable compilation of the clients to test and compare performance with reference libraries
-sci-libs/coinor-bonmin:glpk - Undocumented USE
 sci-libs/coinor-clp:glpk - Enable GNU Linear Programming Kit sci-mathematics/glpk support
 sci-libs/coinor-clp:metis - Enable partitioning with sci-libs/metis
 sci-libs/coinor-clp:mumps - Enable sci-libs/mumps support
 sci-libs/coinor-clp:sparse - Enable support for sparse matrix with sci-libs/cholmod
+sci-libs/coinor-cppad:adolc - Add support for ADOL-C (sci-libs/adolc)
+sci-libs/coinor-cppad:eigen - Add support for Eigen (dev-cpp/eigen)
+sci-libs/coinor-cppad:ipopt - Add support for IPOPT (sci-libs/ipopt)
 sci-libs/coinor-symphony:glpk - Enable GNU Linear Programming Kit sci-mathematics/glpk support
 sci-libs/coinor-utils:glpk - Enable GNU Linear Programming Kit sci-mathematics/glpk support
 sci-libs/dealii:adolc - Adds support for ADOL-C (sci-libs/adolc)

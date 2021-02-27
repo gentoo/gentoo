@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig doc? ( app-doc/doxygen[dot] ) test? ( sci-libs/coinor-cgl sci-libs/coinor-sample )
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=sci-libs/coinor-alps:= sci-libs/coinor-utils:=
+DESCRIPTION=COIN-OR BiCePS data handling library
+EAPI=7
+HOMEPAGE=https://projects.coin-or.org/CHiPPS/
+IUSE=doc test
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=EPL-1.0
+RDEPEND=sci-libs/coinor-alps:= sci-libs/coinor-utils:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/coin-or/CHiPPS-BiCePS/archive/releases/0.94.5.tar.gz -> coinor-bcps-0.94.5.tar.gz
+_md5_=57d72b3687aafa4e99bdccb6ad14440c

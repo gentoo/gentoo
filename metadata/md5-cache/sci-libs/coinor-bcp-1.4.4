@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig doc? ( app-doc/doxygen[dot] ) test? ( sci-libs/coinor-sample )
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=sci-libs/coinor-clp:= sci-libs/coinor-osi:= sci-libs/coinor-utils:= sci-libs/coinor-vol:=
+DESCRIPTION=COIN-OR Branch-Cut-Price Framework
+EAPI=7
+HOMEPAGE=https://projects.coin-or.org/Bcp/
+IUSE=doc test
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=CPL-1.0
+RDEPEND=sci-libs/coinor-clp:= sci-libs/coinor-osi:= sci-libs/coinor-utils:= sci-libs/coinor-vol:=
+RESTRICT=!test? ( test )
+SLOT=0/1
+SRC_URI=https://github.com/coin-or/Bcp/archive/releases/1.4.4.tar.gz -> coinor-bcp-1.4.4.tar.gz
+_md5_=13fae926193be1ac2a560419806d0561
