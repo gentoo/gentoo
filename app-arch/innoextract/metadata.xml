@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>chewi@gentoo.org</email>
+		<name>James Le Cuirot</name>
+	</maintainer>
 	<use>
 		<flag name="debug">Enable debug logging and the --debug command-line option</flag>
 		<flag name="lzma">Enable support for extracting lzma-compressed installers using <pkg>app-arch/xz-utils</pkg></flag>
