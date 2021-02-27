@@ -44,7 +44,7 @@ src_install() {
 }
 
 src_test() {
-	cp "${EPREFIX}"/usr/share/unicode-data/{Normalization,auxiliary/GraphemeBreak}Test.txt data || die
+	cp "${EPREFIX}"/usr/share/unicode-data/{DerivedCoreProperties,{Normalization,auxiliary/GraphemeBreak}Test}.txt data || die
 
 	emake CC="$(tc-getCC)" check
 }
