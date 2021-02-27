@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,8 +7,7 @@ inherit vdr-plugin-2
 
 DESCRIPTION="VDR plugin: create timers from epg content based on saved search expressions"
 HOMEPAGE="http://winni.vdr-developer.org/epgsearch/index_eng.html"
-GIT_COMMIT_ID="602d66c55964998ce25c6c57b302949a9517f149"
-SRC_URI="http://projects.vdr-developer.org/git/vdr-plugin-epgsearch.git/snapshot/vdr-plugin-epgsearch-${GIT_COMMIT_ID}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://projects.vdr-developer.org/git/vdr-plugin-${VDRPLUGIN}.git/snapshot/vdr-plugin-${VDRPLUGIN}-${PV}.tar.gz -> ${P}.tgz"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -17,7 +16,7 @@ IUSE="conflictcheckonly epgsearchonly pcre quicksearch tre"
 REQUIRED_USE="?? ( pcre tre )"
 
 DEPEND="
-	>=media-video/vdr-2.4
+	=media-video/vdr-2.2*
 	pcre? ( dev-libs/libpcre )
 	tre? ( dev-libs/tre )"
 RDEPEND="${DEPEND}"
@@ -29,22 +28,30 @@ QA_FLAGS_IGNORED="
 	usr/lib/vdr/plugins/libvdr-.*
 	usr/lib64/vdr/plugins/libvdr-.*
 	usr/bin/createcats"
-S="${WORKDIR}/vdr-plugin-epgsearch-${GIT_COMMIT_ID}"
+S="${WORKDIR}/vdr-plugin-${VDRPLUGIN}-${PV}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2.4.0_makefile.patch"
-	"${FILESDIR}/${PN}-2.4.0_docsrc2man-no-gzip.patch"
-	"${FILESDIR}/${PN}-2.4.0_fix-docs.patch"
-	)
+	"${FILESDIR}/${P}_makefile.patch"
+	"${FILESDIR}/${P}_docsrc2man-no-gzip.patch"
+	"${FILESDIR}/${P}_clang.patch"
+)
 
 src_prepare() {
 	# remove untranslated .po files
 	rm "${S}"/po/{ca_ES,da_DK,el_GR,et_EE,hr_HR,hu_HU,nn_NO,pl_PL,pt_PT,ro_RO,ru_RU,sl_SI,sv_SE,tr_TR}.po \
 		|| die "cannot remove untranslated .po files"
 
-	use conflictcheckonly || sed -e "s:install-\$(PLUGIN3)::" -i Makefile || die "cannot modify Makefile"
-	use epgsearchonly || sed -e "s:install-\$(PLUGIN2)::" -i Makefile || die "cannot modify Makefile"
-	use quicksearch || sed -e "s:install-\$(PLUGIN4)::" -i Makefile || die "cannot modify Makefile"
+	if ! use conflictcheckonly; then
+		sed -e "s:install-\$(PLUGIN3)::" -i Makefile || die "cannot modify Makefile"
+	fi
+
+	if ! use epgsearchonly; then
+		sed -e "s:install-\$(PLUGIN2)::" -i Makefile || die "cannot modify Makefile"
+	fi
+
+	if ! use quicksearch; then
+		sed -e "s:install-\$(PLUGIN4)::" -i Makefile || die "cannot modify Makefile"
+	fi
 
 	vdr-plugin-2_src_prepare
 
@@ -58,7 +65,7 @@ src_prepare() {
 }
 
 src_compile() {
-	BUILD_PARAMS="SENDMAIL=/usr/bin/sendmail AUTOCONFIG=0"
+	BUILD_PARAMS="SENDMAIL=/usr/sbin/sendmail AUTOCONFIG=0"
 
 	if use pcre; then
 		BUILD_PARAMS+=" REGEXLIB=pcre"
