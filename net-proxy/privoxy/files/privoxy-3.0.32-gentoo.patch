@@ -1,0 +1,121 @@
+diff --git a/GNUmakefile.in b/GNUmakefile.in
+index fcd44c4f..8cf2364a 100644
+--- a/GNUmakefile.in
++++ b/GNUmakefile.in
+@@ -62,8 +62,8 @@ MAN_DIR      = @mandir@
+ MAN_DEST     = $(MAN_DIR)/man8
+ MAN_PAGE     = privoxy.8
+ SHARE_DEST   = @datadir@
+-DOC_DEST     = $(SHARE_DEST)/doc/privoxy
+-VAR_DEST     = @localstatedir@
++DOC_DEST     = @docdir@
++VAR_DEST     = /var
+ LOGS_DEST    = $(VAR_DEST)/log/privoxy
+ PIDS_DEST    = $(VAR_DEST)/run
+ 
+@@ -892,8 +892,6 @@ install: CONF_DEST LOG_DEST PID_DEST check_doc GROUP_T
+ 		$(INSTALL) $(INSTALL_T) $(DOK_WEB)/man-page/*html $(DESTDIR)$$DOC/man-page;\
+ 		$(INSTALL) $(INSTALL_T) $(DOK_WEB)/privoxy-index.html $(DESTDIR)$$DOC/index.html;\
+ 		$(INSTALL) $(INSTALL_T) AUTHORS $(DESTDIR)$$DOC;\
+-		$(INSTALL) $(INSTALL_T) LICENSE $(DESTDIR)$$DOC;\
+-		$(INSTALL) $(INSTALL_T) LICENSE.GPLv3 $(DESTDIR)$$DOC;\
+ 		$(INSTALL) $(INSTALL_T) README $(DESTDIR)$$DOC;\
+ 		$(INSTALL) $(INSTALL_T) ChangeLog $(DESTDIR)$$DOC;\
+ 		$(INSTALL) $(INSTALL_T) $(DOK_WEB)/p_doc.css $(DESTDIR)$$DOC;\
+@@ -964,34 +962,8 @@ install: CONF_DEST LOG_DEST PID_DEST check_doc GROUP_T
+ 	fi ;\
+ 	$(ECHO) Installing configuration files to $(DESTDIR)$(CONF_DEST);\
+ 	for i in $(CONFIGS); do \
+-		if [ "$$i" = "default.action" ] || [ "$$i" = "default.filter" ] ; then \
+-			$(RM) $(DESTDIR)$(CONF_DEST)/$$i ;\
+-			$(ECHO) Installing fresh $$i;\
+ 			$(INSTALL) $$INSTALL_CONF $$i $(DESTDIR)$(CONF_DEST) || exit 1;\
+-		elif [ -s "$(DESTDIR)$(CONF_DEST)/$$i" ]; then \
+-			$(ECHO) Installing $$i as $$i.new ;\
+-			$(INSTALL) $$INSTALL_CONF $$i $(DESTDIR)$(CONF_DEST)/$$i.new || exit 1;\
+-			NEW=1;\
+-		else \
+-			$(INSTALL) $$INSTALL_CONF $$i $(DESTDIR)$(CONF_DEST) || exit 1;\
+-		fi ;\
+ 	done ;\
+-	if [ -n "$$NEW" ]; then \
+-		$(CHMOD) $(RWD_MODE) $(DESTDIR)$(CONF_DEST)/*.new || exit 1 ;\
+-		$(ECHO) "Warning: Older config files are preserved. Check new versions for changes!" ;\
+-	fi ;\
+-	[ ! -f $(DESTDIR)$(LOG_DEST)/logfile ] && $(ECHO) Creating logfiles in $(DESTDIR)$(LOG_DEST) || \
+-		$(ECHO) Checking logfiles in $(DESTDIR)$(LOG_DEST) ;\
+-		$(TOUCH) $(DESTDIR)$(LOG_DEST)/logfile || exit 1 ;\
+-	if [ x$$USER != x ]; then \
+-		$(CHOWN) $$USER $(DESTDIR)$(LOG_DEST)/logfile || \
+-		$(ECHO) "** WARNING ** current install user different from configured user. Logging may fail!!" ;\
+-	fi ;\
+-	if [ x$$GROUP_T != x ]; then \
+-		$(CHGRP) $$GROUP_T $(DESTDIR)$(LOG_DEST)/logfile || \
+-		$(ECHO) "** WARNING ** current install user different from configured user. Logging may fail!!" ;\
+-	fi ;\
+-	$(CHMOD) $(RWD_MODE) $(DESTDIR)$(LOG_DEST)/logfile || exit 1 ;\
+ 	if [ "$(prefix)" = "/usr/local" ] || [ "$(prefix)" = "/usr" ]; then \
+ 		if [ -f /etc/slackware-version ] && [ -d /etc/rc.d/ ] && [ -w /etc/rc.d/ ] ; then \
+                $(SED) 's+%PROGRAM%+$(PROGRAM)+' slackware/rc.privoxy.in | \
+diff --git a/config b/config
+index da6d6b75..aefb55e1 100644
+--- a/config
++++ b/config
+@@ -259,7 +259,7 @@
+ #
+ #      No trailing "/", please.
+ #
+-confdir .
++confdir /etc/privoxy
+ #
+ #  2.2. templdir
+ #  ==============
+@@ -344,7 +344,7 @@ confdir .
+ #
+ #      No trailing "/", please.
+ #
+-logdir .
++logdir /var/log/privoxy
+ #
+ #  2.5. actionsfile
+ #  =================
+@@ -478,7 +478,7 @@ filterfile user.filter      # User customizations
+ #      require additional software to do it. For details, please
+ #      refer to the documentation for your operating system.
+ #
+-logfile logfile
++logfile privoxy.log
+ #
+ #  2.8. trustfile
+ #  ===============
+diff --git a/default.action.master b/default.action.master
+index 632984eb..8338431c 100644
+--- a/default.action.master
++++ b/default.action.master
+@@ -559,7 +559,7 @@ allow-ads   = -block -filter{banners-by-size} -filter{banners-by-link}
+ +client-header-tagger{image-requests} \
+ +client-header-tagger{range-requests} \
+ +hide-from-header{block} \
+-+set-image-blocker{pattern} \
+++set-image-blocker{blank} \
+ }
+ standard.Cautious
+ 
+@@ -582,7 +582,7 @@ standard.Cautious
+ +hide-from-header{block} \
+ +hide-referrer{conditional-block} \
+ +session-cookies-only \
+-+set-image-blocker{pattern} \
+++set-image-blocker{blank} \
+ }
+ standard.Medium
+ 
+@@ -622,7 +622,7 @@ standard.Medium
+ +hide-referrer{conditional-block} \
+ +limit-connect{,} \
+ +overwrite-last-modified{randomize} \
+-+set-image-blocker{pattern} \
+++set-image-blocker{blank} \
+ }
+ standard.Advanced
+ 
