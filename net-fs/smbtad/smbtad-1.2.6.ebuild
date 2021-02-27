@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit cmake-utils
+inherit cmake-utils flag-o-matic
 
 DESCRIPTION="Data receiver of the SMB Traffic Analyzer project"
 HOMEPAGE="https://github.com/hhetter/smbtad"
@@ -27,6 +27,9 @@ DOCS=( README AUTHORS )
 
 src_prepare() {
 	cmake-utils_src_prepare
+
+	# bug #707778
+	append-cflags -fcommon
 
 	sed -i \
 		-e '/CMAKE_C_FLAGS/d' \

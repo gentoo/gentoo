@@ -33,6 +33,8 @@ src_install() {
 	dodoc README
 
 	if ! use static-libs ; then
-		find "${ED}" -name '*.la' -delete || die
+		find "${ED}" -name '*.a' -delete || die
 	fi
+
+	find "${ED}" -name '*.la' -delete || die
 }
