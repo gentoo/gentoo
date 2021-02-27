@@ -1,0 +1,107 @@
+From: hasufell <julian.ospald@googlemail.com>
+Date: Sat Apr 28 16:38:56 UTC 2012
+Subject: build system
+
+use allegro-config
+remove "-O2" from pre-defined CFLAGS
+make paths modifiable
+add rules for icon, desktop-file and game-wrapper
+fix compilation for as-needed
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -35,16 +35,14 @@
+ MESSAGE("Using CFLAGS='${CFLAGS}'")
+ 
+ IF(UNIX)
+-  SET(ALLEGRO_UNIX_LIBS "$ENV{_ALLEGRO_LIBS}")
++  exec_program(allegro-config ARGS --libs OUTPUT_VARIABLE ALLEGRO_LIBRARY)
++  SET(ALLEGRO_UNIX_LIBS "${ALLEGRO_LIBRARY}")
+   IF(NOT ALLEGRO_UNIX_LIBS)
+-    MESSAGE(FATAL_ERROR "Please do not invoke CMake directly. Run ./configure instead.")
++	  MESSAGE(FATAL_ERROR "Allegro libs not found!")
+   ENDIF(NOT ALLEGRO_UNIX_LIBS)
+ ENDIF(UNIX)
+ 
+ 
+-
+-
+-
+ # Finding the required libraries:
+ 
+ # Allegro: liballeg
+@@ -53,7 +51,8 @@
+   MESSAGE(FATAL_ERROR "Fatal error: couldn't find the Allegro game programming library (liballeg)! ${RTFM}")
+ ELSE(NOT LALLEG)
+   IF(UNIX)
+-    SET(ALLEGRO_UNIX_VERSION "$ENV{_ALLEGRO_VERSION}")
++    exec_program(allegro-config ARGS --version OUTPUT_VARIABLE ALLEGRO_VERSION)
++    SET(ALLEGRO_UNIX_VERSION "${ALLEGRO_VERSION}")
+     IF(NOT ALLEGRO_UNIX_VERSION STREQUAL ALLEGRO_RECOMMENDED_VERSION)
+       MESSAGE("\nWARNING: your Allegro version is ${ALLEGRO_UNIX_VERSION}. The recommended version is ${ALLEGRO_RECOMMENDED_VERSION}.\n         ${GAME_NAME} may not compile properly!.\n")
+     ENDIF(NOT ALLEGRO_UNIX_VERSION STREQUAL ALLEGRO_RECOMMENDED_VERSION)
+@@ -249,9 +248,8 @@
+ IF(UNIX)
+   SET(GAME_SRCS ${GAME_SRCS} src/misc/iconlin.c)
+   ADD_EXECUTABLE(${GAME_UNIXNAME} ${GAME_SRCS})
+-  SET_TARGET_PROPERTIES(${GAME_UNIXNAME} PROPERTIES LINK_FLAGS ${ALLEGRO_UNIX_LIBS})
+-  TARGET_LINK_LIBRARIES(${GAME_UNIXNAME} m logg vorbisfile vorbis ogg jpgalleg z png loadpng)
+-  SET_TARGET_PROPERTIES(${GAME_UNIXNAME} PROPERTIES COMPILE_FLAGS "-Wall -O2 ${CFLAGS} ${CFLAGS_EXTRA}")
++  TARGET_LINK_LIBRARIES(${GAME_UNIXNAME} m logg vorbisfile vorbis ogg jpgalleg z png loadpng ${ALLEGRO_UNIX_LIBS})
++  SET_TARGET_PROPERTIES(${GAME_UNIXNAME} PROPERTIES COMPILE_FLAGS "-Wall")
+ ENDIF(UNIX)
+ 
+ 
+@@ -407,19 +405,43 @@
+ SET_TARGET_PROPERTIES(${GAME_UNIXNAME} PROPERTIES PROJECT_NAME "${GAME_NAME}")
+ 
+ 
+-
+ # Installing on *nix
+ IF(UNIX)
+-  SET(GAME_INSTALL_DIR "/usr/share/${GAME_UNIXNAME}")
+-  SET(GAME_FINAL_DIR "/usr/bin")
++  SET(GAME_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/share/${GAME_UNIXNAME}" CACHE PATH "")
++  SET(GAME_FINAL_DIR "bin" CACHE PATH "")
++  SET(GAME_LIBDIR "games/lib" CACHE PATH "")
++  SET(GAME_DOCDIR "share/doc/${GAME_UNIXNAME}-${GAME_VERSION}" CACHE PATH "")
++  SET(GAME_HTMLDIR "share/doc/${GAME_UNIXNAME}-${GAME_VERSION}/html" CACHE PATH "")
++  SET(GAME_ICONDIR "share/pixmaps" CACHE PATH "")
++  SET(GAME_DESKTOPDIR "share/applications" CACHE PATH "")
++
++  FILE(WRITE ${GAME_UNIXNAME}.sh
++"#!/bin/sh
++cd ${GAME_LIBDIR}
++exec ./${GAME_UNIXNAME} \"$@\"
++"
++)
+ 
+-  INSTALL(CODE "MESSAGE(\"Installing ${GAME_NAME} ${GAME_VERSION}... Make sure you have root privileges.\")")
+-  INSTALL(TARGETS ${GAME_UNIXNAME} RUNTIME DESTINATION ${GAME_INSTALL_DIR})
+-  INSTALL(FILES license.txt readme.html DESTINATION ${GAME_INSTALL_DIR})
+-  INSTALL(DIRECTORY objects sprites config images levels licenses musics quests samples screenshots themes languages DESTINATION ${GAME_INSTALL_DIR} PATTERN ".svn" EXCLUDE)
++  FILE(WRITE ${GAME_UNIXNAME}.desktop
++"[Desktop Entry]
++Name=${GAME_NAME}
++Type=Application
++Comment=A free open-source clone of the Sonic the Hedgehog universe
++Exec=${GAME_UNIXNAME}
++TryExec=${GAME_UNIXNAME}
++Icon=${GAME_UNIXNAME}
++Categories=Game;ArcadeGame;
++"
++)
+ 
+-  INSTALL(CODE "MESSAGE(\"Creating files at ${GAME_FINAL_DIR}...\")")
+-  INSTALL(CODE "EXECUTE_PROCESS(COMMAND \"cmake\" \"-E\" \"copy\" \"${GAME_INSTALL_DIR}/${GAME_UNIXNAME}\" \"${GAME_FINAL_DIR}/${GAME_UNIXNAME}\")")
++  INSTALL(CODE "MESSAGE(\"Installing ${GAME_NAME} ${GAME_VERSION}... Make sure you have root privileges.\")")
++  INSTALL(TARGETS ${GAME_UNIXNAME} RUNTIME DESTINATION ${GAME_LIBDIR})
++#  INSTALL(FILES license.txt DESTINATION ${GAME_DOCDIR})
++  INSTALL(FILES readme.html DESTINATION ${GAME_HTMLDIR})
++  INSTALL(FILES icon.png DESTINATION ${GAME_ICONDIR} RENAME ${GAME_UNIXNAME}.png)
++  INSTALL(FILES ${GAME_UNIXNAME}.desktop DESTINATION ${GAME_DESKTOPDIR})
++  INSTALL(DIRECTORY objects sprites config images levels musics quests samples themes languages DESTINATION ${GAME_INSTALL_DIR} PATTERN ".svn" EXCLUDE)
++  INSTALL(PROGRAMS ${GAME_UNIXNAME}.sh DESTINATION ${GAME_FINAL_DIR} RENAME ${GAME_UNIXNAME})
+ 
+   INSTALL(CODE "MESSAGE(\"Done! Please run ${GAME_UNIXNAME} to start ${GAME_NAME}.\")")
+ ENDIF(UNIX)
