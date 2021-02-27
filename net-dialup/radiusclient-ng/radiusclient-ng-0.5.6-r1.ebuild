@@ -41,3 +41,9 @@ src_configure() {
 
 	econf
 }
+
+src_install() {
+	default
+
+	find "${ED}" -name '*.a' -delete || die
+}
