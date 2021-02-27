@@ -35,6 +35,11 @@
 # Bernd Waibel <waebbl-gentoo@posteo.net> (2021-02-27)
 # Mask until removal of media-gfx/openexr_viewers.
 # Version has several vulnerabilities. See #717474
+=media-libs/ilmbase-2.3.0
+
+# Bernd Waibel <waebbl-gentoo@posteo.net> (2021-02-27)
+# Mask until removal of media-gfx/openexr_viewers.
+# Version has several vulnerabilities. See #717474
 =media-libs/openexr-2.3.0
 
 # Bernd Waibel <waebbl-gentoo@posteo.net> (2021-02-27)
