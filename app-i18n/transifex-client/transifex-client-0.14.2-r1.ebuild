@@ -25,10 +25,15 @@ RDEPEND="dev-python/GitPython[${PYTHON_USEDEP}]
 	<dev-python/six-2.0.0[${PYTHON_USEDEP}]
 	dev-python/urllib3[${PYTHON_USEDEP}]"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-0.14.2-r1-timestamp.patch"
+)
+
 distutils_enable_tests setup.py
 
 src_prepare() {
-	eapply_user
+	default
+
 	sed -i -e 's:test_fetch_timestamp_from_git_tree:_&:' \
 		tests/test_utils.py || die
 	sed -i '/tests_require=\["mock>=3.0.5,<4.0"\]/d' setup.py || die

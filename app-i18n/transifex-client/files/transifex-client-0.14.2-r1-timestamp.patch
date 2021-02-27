@@ -1,6 +1,8 @@
-diff -Naur ../transifex-client-0.14.2.orig/tests/test_project.py ./tests/test_project.py
---- ../transifex-client-0.14.2.orig/tests/test_project.py	2020-06-19 14:48:52.000000000 +0200
-+++ ./tests/test_project.py	2021-02-25 22:08:29.353477306 +0100
+https://github.com/transifex/transifex-client/pull/316
+https://bugs.gentoo.org/771660
+Fix tests on 32-bit systems
+--- a/tests/test_project.py
++++ b/tests/test_project.py
 @@ -717,8 +717,8 @@
                  )
                  self.assertEqual(res, True)
