@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ FORTRAN_NEEDED=fortran
 FORTRAN_STANDARD="77 90"
 # if FFLAGS and FCFLAGS are set then should be equal
 
-inherit cmake fortran-2 toolchain-funcs
+inherit cmake fortran-2 toolchain-funcs flag-o-matic
 
 DESCRIPTION="Suite of nonlinear solvers"
 HOMEPAGE="https://computation.llnl.gov/projects/sundials"
@@ -36,6 +36,13 @@ pkg_setup() {
 		ewarn "OpenMP is not available in your current selected gcc"
 		die "need openmp capable gcc"
 	fi
+}
+
+src_prepare() {
+	# bug #707240
+	append-cflags -fcommon
+
+	cmake_src_prepare
 }
 
 src_configure() {
