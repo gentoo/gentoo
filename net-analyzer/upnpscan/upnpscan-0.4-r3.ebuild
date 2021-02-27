@@ -1,23 +1,27 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-AUTOTOOLS_AUTORECONF=1
-AUTOTOOLS_IN_SOURCE_BUILD=1
+inherit autotools
 
-inherit autotools-utils
-
-DESCRIPTION="Scans the network for UPNP capable devices"
+DESCRIPTION="Scans the network for UPnP capable devices"
 HOMEPAGE="http://www.cqure.net/wp/upnpscan/"
 SRC_URI="http://www.cqure.net/tools/${PN}-v${PV}-src.tgz"
+S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-S=${WORKDIR}/${PN}
-
 DOCS=( AUTHORS ChangeLog NEWS README TODO )
 
-PATCHES=( "${FILESDIR}"/${P}-r2-cflags.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-r2-cflags.patch
+)
+
+src_prepare() {
+	default
+
+	eautoreconf
+}
