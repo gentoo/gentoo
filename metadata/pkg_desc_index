@@ -2306,7 +2306,7 @@ app-i18n/tomoe 0.6.0-r6: Japanese handwriting recognition engine
 app-i18n/tomoe-gtk 0.6.0-r6: Tomoe GTK+ interface widget library
 app-i18n/transifex-client 0.13.9 0.14.2-r1: A command line interface for Transifex
 app-i18n/translate-shell 0.9.6.11 0.9.6.12: Online command-line translator
-app-i18n/uchardet 0.0.6-r2 0.0.7 9999: An encoding detector library
+app-i18n/uchardet 0.0.7 9999: An encoding detector library
 app-i18n/uim 1.8.8: A multilingual input method framework
 app-i18n/uim-tomoe-gtk 0.6.0: Japanese input method Tomoe IMEngine for uim
 app-i18n/unicode-cldr 33.0 35.1 37.0: Unicode Common Locale Data Repository
@@ -5581,7 +5581,7 @@ dev-libs/libvterm 0.0_pre20181126 0.1.1 0.1.2 0.1.3: An abstract library impleme
 dev-libs/libvterm-neovim 0.0_pre20150309 0.0_pre20150621: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
 dev-libs/libwacom 1.1 1.7: Library for identifying Wacom tablets and their model-specific features
 dev-libs/libwapcaplet 0.4.1-r2 0.4.2-r1 0.4.3-r1: string internment library, written in C
-dev-libs/libwbxml 0.11.2 0.11.6 0.11.7: Library and tools to parse, encode and handle WBXML documents
+dev-libs/libwbxml 0.11.7: Library and tools to parse, encode and handle WBXML documents
 dev-libs/libx86 1.1-r4: A hardware-independent library for executing real-mode x86 code
 dev-libs/libx86emu 1.1: A library for emulating x86
 dev-libs/libxdg-basedir 1.2.0-r1: Small library to access XDG Base Directories Specification paths
@@ -9005,7 +9005,7 @@ dev-python/python-redmine 2.3.0: Python interface to the Redmine REST API
 dev-python/python-saharaclient 3.2.1: This is a client for the OpenStack Sahara API, aka HADOOP
 dev-python/python-senlinclient 2.1.1: A client for the OpenStack Senlin API
 dev-python/python-sense-hat 2.2.0-r2: Raspberry Pi Sense HAT python library
-dev-python/python-slip 0.6.5 0.6.5-r1: Miscellaneous convenience, extension and workaround code for Python
+dev-python/python-slip 0.6.5-r1: Miscellaneous convenience, extension and workaround code for Python
 dev-python/python-slugify 1.2.6 4.0.1: A Python Slugify application that handles Unicode
 dev-python/python-socks 1.2.0 1.2.1: SOCKS4, SOCKS5, HTTP tunneling functionality for Python
 dev-python/python-sshpubkeys 3.3.0 3.3.1: OpenSSH public key parser for Python
@@ -12919,7 +12919,7 @@ media-gfx/jpegtoavi 1.5: JPEG to AVI/MJPEG animation command-line conversion too
 media-gfx/kcoloredit 2.0.0_p20171121-r1: Tool for editing color palettes
 media-gfx/kgraphviewer 2.4.3-r1: Graphviz dot graph file viewer
 media-gfx/kphotoalbum 5.7.0: Tool for indexing, searching, and viewing images
-media-gfx/krita 4.4.1 4.4.2: Free digital painting application. Digital Painting, Creative Freedom!
+media-gfx/krita 4.4.2: Free digital painting application. Digital Painting, Creative Freedom!
 media-gfx/kuickshow 0.10.1: Image viewer based on KDE Frameworks
 media-gfx/kxstitch 2.2.0: Program to create cross stitch patterns
 media-gfx/libimagequant 2.12.2 2.12.3 2.14.0: Palette quantization library that powers pngquant and other PNG optimizers
