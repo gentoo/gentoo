@@ -31,7 +31,7 @@ RDEPEND="
 	virtual/jpeg:0
 	x11-libs/gtk+:2"
 DEPEND="${RDEPEND}"
-BDEPEBD="
+BDEPEND="
 	app-arch/unzip
 	dev-util/ftjam
 	virtual/pkgconfig"
