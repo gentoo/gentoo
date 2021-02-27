@@ -5421,7 +5421,7 @@ dev-libs/libdivsufsort 2.0.1-r1: Suffix-sorting library (for BWT)
 dev-libs/libdnet 1.14-r1 1.14-r2: simplified, portable interface to several low-level networking routines
 dev-libs/libdnsres 0.1a-r3: A non-blocking DNS resolver library
 dev-libs/libdshconfig 0.20.13: Library for parsing dsh.style configuration files
-dev-libs/libdynd 0.7.2: C++ dynamic multi-dimensionnal array library with Python exposure
+dev-libs/libdynd 0.7.2-r1: C++ dynamic multi-dimensionnal array library with Python exposure
 dev-libs/libe 0.11.0: Hyperdex libe support library
 dev-libs/libebml 1.4.2: Extensible binary format library (kinda like XML)
 dev-libs/libedit 20191211.3.1: BSD replacement for libreadline
@@ -14925,7 +14925,7 @@ net-libs/libtelnet 0.23 9999: Simple RFC-complient TELNET implementation as a C 
 net-libs/libtirpc 1.2.6 1.3.1: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.7 0.13.7-r1 0.13.8: BitTorrent library written in C++ for *nix
 net-libs/libtorrent-rasterbar 1.2.6 1.2.9 1.2.10 1.2.11: C++ BitTorrent implementation focusing on efficiency and scalability
-net-libs/libtrace 4.0.10_p1 4.0.11_p1 4.0.12_p1 4.0.13_p1 4.0.14_p1 99999: A library and tools for trace processing
+net-libs/libtrace 4.0.14_p1 4.0.15_p1 9999: A library and tools for trace processing
 net-libs/libupnp 1.6.21 1.6.25 1.8.7 1.12.1 1.14.0: An Portable Open Source UPnP Development Kit
 net-libs/libupnpp 0.20.1: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
 net-libs/libvncserver 0.9.13: library for creating vnc servers
@@ -14979,7 +14979,7 @@ net-libs/tox 0.2.11-r1 0.2.12-r1 9999: Encrypted P2P, messaging, and audio/video
 net-libs/udns 0.4: Async-capable DNS stub resolver library
 net-libs/uhttpmock 0.5.1: HTTP web service mocking library
 net-libs/usrsctp 0.9.3.0_p20201102: A cross-platform userland SCTP stack
-net-libs/wandio 1.0.5 4.0.0 4.1.2 4.2.0 4.2.1 4.2.3_p1-r1: C library for simple and efficient file IO
+net-libs/wandio 4.2.3_p1-r1: C library for simple and efficient file IO
 net-libs/webkit-gtk 2.30.5: Open source web browser engine
 net-libs/wvstreams 4.6.1_p14-r1 99999: A network programming library in C++
 net-libs/xrootd 4.12.4 4.12.5 5.0.2 5.0.3 5.1.0: Extended ROOT remote file server
