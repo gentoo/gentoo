@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils fortran-2 toolchain-funcs autotools
+inherit autotools fortran-2 flag-o-matic toolchain-funcs
 
 #     YEAR         MONTH    DAY
 MY_PV=${PV:0:4}_${PV:4:2}_${PV:6:2}
@@ -17,6 +17,7 @@ HOMEPAGE="https://www.itl.nist.gov/div898/software/dataplot/"
 SRC_URI="
 	ftp://ftp.nist.gov/pub/dataplot/unix/${MY_P}.tar.gz
 	ftp://ftp.nist.gov/pub/dataplot/unix/${MY_P_AUX}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 SLOT="0"
 LICENSE="public-domain"
@@ -34,7 +35,6 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	X? ( x11-misc/xdg-utils )"
 
-S="${WORKDIR}/${MY_P}"
 S_AUX="${WORKDIR}/${MY_P_AUX}"
 
 PATCHES=( "${FILESDIR}"/${PN}-20090821-opengl.patch )
@@ -43,9 +43,11 @@ src_unpack() {
 	# unpacking and renaming because
 	# upstream does not use directories
 	mkdir "${S_AUX}" || die
+
 	pushd "${S_AUX}" > /dev/null || die
 	unpack ${MY_P_AUX}.tar.gz
 	popd > /dev/null || die
+
 	mkdir ${MY_P} || die
 	cd "${S}" || die
 	unpack ${MY_P}.tar.gz
@@ -53,11 +55,21 @@ src_unpack() {
 
 src_prepare() {
 	default
+
+	# bug #707176
+	append-cflags -fcommon
+	# bug #722208
+	append-fflags $(test-flags-FC -fallow-invalid-boz)
+	# another Fortran issue
+	append-fflags $(test-flags-FC -fallow-argument-mismatch)
+
 	cp "${FILESDIR}"/Makefile.am.${PV} Makefile.am || die
 	cp "${FILESDIR}"/configure.ac.${PV} configure.ac || die
+
 	sed -e "s:IHOST1='SUN':IHOST1='@HOST@:" \
 		-e "s:/usr/local/lib:@datadir@:g" \
 		dp1_linux.f > dp1_linux.f.in || die
+
 	sed -e "s/(MAXOBV=.*)/(MAXOBV=@MAXOBV@)/" \
 		-e "s:/usr/local/lib:@datadir@:g" \
 		DPCOPA.INC > DPCOPA.INC.in || die
@@ -76,9 +88,10 @@ src_install() {
 	default
 
 	if use examples; then
-		insinto /usr/share/doc/${PF}/examples
-		doins -r "${S_AUX}"/data/*
+		docinto examples
+		dodoc -r "${S_AUX}"/data/*
 	fi
+
 	insinto /usr/share/dataplot
 	doins "${S_AUX}"/dp{mes,sys,log}f.tex
 	doenvd "${FILESDIR}"/90${PN}
