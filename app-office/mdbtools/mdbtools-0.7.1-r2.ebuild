@@ -34,6 +34,9 @@ PATCHES=( "${FILESDIR}/${P}-parallel-make.patch" )
 src_prepare() {
 	default
 
+	# bug #697568
+	sed -i -e "s:/lib\":/$(get_libdir)\":" configure.ac || die
+
 	eautoreconf
 }
 
