@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit distutils-r1
 
@@ -33,19 +33,20 @@ RDEPEND="
 	>=dev-python/twisted-18.4[${PYTHON_USEDEP}]
 	net-mail/mailbase
 	net-mail/notmuch[crypt,python]
-	"
+"
 DEPEND="
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
+	doc? (
+		dev-python/sphinx[${PYTHON_USEDEP}]
+	)
 	test? (
-		${RDEPEND}
 		dev-python/mock[${PYTHON_USEDEP}]
 	)
-	"
+"
 
 PATCHES=(
 	"${FILESDIR}/${PV}-0001-remove-non-working-test.patch"
 	"${FILESDIR}/${PV}-0002-update-reference-to-envelope-body.patch"
-	)
+)
 
 distutils_enable_tests setup.py
 
