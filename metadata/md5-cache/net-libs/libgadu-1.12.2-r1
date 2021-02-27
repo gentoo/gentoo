@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/wojtekka/libgadu/releases/download/1.12.2/libgadu-1.12.2.tar.gz
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=955dfdc7e01494d2357c3ce066181c23
+_md5_=7026600840975b457a6e5de2ac4c72cc
