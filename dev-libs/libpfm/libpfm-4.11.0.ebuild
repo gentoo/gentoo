@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/perfmon2/${PN}4/${P}.tar.gz"
 
 LICENSE="GPL-2 MIT"
 SLOT="0/4"
-KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="static-libs"
 
 src_prepare() {
@@ -29,7 +29,10 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" LDCONFIG=true PREFIX="${EPREFIX}/usr"  install
-	use static-libs || find "${ED}" -name '*.a' -exec rm -f '{}' +
+	emake DESTDIR="${D}" LDCONFIG=true PREFIX="${EPREFIX}/usr" install
 	dodoc README
+
+	if ! use static-libs ; then
+		find "${ED}" -name '*.la' -delete || die
+	fi
 }

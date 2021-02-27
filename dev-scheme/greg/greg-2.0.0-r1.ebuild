@@ -1,11 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-AUTOTOOLS_AUTORECONF=true
-
-inherit autotools-utils
+inherit autotools
 
 DESCRIPTION="Testing-Framework for guile"
 HOMEPAGE="http://gna.org/projects/greg/"
@@ -14,15 +12,18 @@ SRC_URI="http://download.gna.org/${PN}/${P}.tar.gz"
 SLOT="0"
 KEYWORDS="amd64 x86"
 LICENSE="GPL-2"
-IUSE="static-libs"
 
 RDEPEND=">=dev-scheme/guile-1.8"
-DEPEND=""
 
 PATCHES=(
 	"${FILESDIR}"/${P}-test.patch
 	"${FILESDIR}"/${P}-guile2.patch
-	)
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_test() {
 	cd test || die

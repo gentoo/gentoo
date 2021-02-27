@@ -250,7 +250,7 @@ pkg_preinst() {
 		PYTHONPATH="${D}${sitedir}${PYTHONPATH:+:${PYTHONPATH}}" \
 		"${PYTHON}" -m portage._compat_upgrade.default_locations || die
 
-	env -u BINPKG_COMPRESS \
+	env -u BINPKG_COMPRESS -u PORTAGE_REPOSITORIES \
 		PYTHONPATH="${D}${sitedir}${PYTHONPATH:+:${PYTHONPATH}}" \
 		"${PYTHON}" -m portage._compat_upgrade.binpkg_compression || die
 
