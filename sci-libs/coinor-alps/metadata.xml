@@ -13,4 +13,7 @@
 		layer of a hierarchy consisting of implementations of various tree
 		search algorithms for specific problem types.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">coin-or/CHiPPS-ALPS</remote-id>
+	</upstream>
 </pkgmetadata>

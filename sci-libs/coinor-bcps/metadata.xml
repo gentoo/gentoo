@@ -13,4 +13,7 @@
 		management layer built on top of ALPS for implementing
 		relaxation-based branch and bound algorithms.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">coin-or/CHiPPS-BiCePS</remote-id>
+	</upstream>
 </pkgmetadata>

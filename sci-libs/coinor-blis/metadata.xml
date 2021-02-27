@@ -12,4 +12,7 @@
 		layers. The BiCePS Linear Integer Solver (BLIS) is a concretization
 		of the BiCePS layer for solving mixed-integer linear programs.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">coin-or/CHiPPS-BLIS</remote-id>
+	</upstream>
 </pkgmetadata>
