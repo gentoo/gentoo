@@ -1,13 +1,14 @@
-BDEPEND=nls? ( sys-devel/gettext )
-DEFINED_PHASES=configure install
+BDEPEND=nls? ( sys-devel/gettext ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare
 DEPEND=sys-libs/zlib nls? ( virtual/libintl )
 DESCRIPTION=EB is a C library and utilities for accessing CD-ROM books
 EAPI=7
-HOMEPAGE=http://www.sra.co.jp/people/m-kasahr/eb/
+HOMEPAGE=https://web.archive.org/web/20120330123930/http://www.sra.co.jp/people/m-kasahr/eb/
 IUSE=ipv6 nls threads
 KEYWORDS=~alpha amd64 ~arm ~hppa ~ia64 ppc ppc64 sparc x86
 LICENSE=BSD
 RDEPEND=sys-libs/zlib nls? ( virtual/libintl )
 SLOT=0
 SRC_URI=ftp://ftp.sra.co.jp/pub/misc/eb/eb-4.4.1.tar.lzma
-_md5_=a80271c4210d38357bee1d115393b92f
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=715081613a1b4697c2546049b5c8d4de
