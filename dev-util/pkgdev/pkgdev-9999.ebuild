@@ -34,6 +34,7 @@ fi
 # Releases (in future): https://github.com/pkgcore/pkgdev/blob/main/requirements/install.txt
 
 distutils_enable_sphinx doc
+distutils_enable_tests pytest
 
 python_install_all() {
 	# We'll generate man pages ourselves
