@@ -33,8 +33,6 @@ BDEPEND="doc? ( app-doc/doxygen )"
 
 DOCS=( README.md )
 
-PATCHES=( "${FILESDIR}/${P}-mandir.patch" ) # TODO: GNUInstallDirs
-
 src_compile() {
 	cmake_src_compile
 	use doc && cmake_build doxygen
