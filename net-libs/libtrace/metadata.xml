@@ -10,5 +10,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">LibtraceTeam/libtrace</remote-id>
+		<changelog>https://github.com/LibtraceTeam/libtrace/wiki/ChangeLog</changelog>
 	</upstream>
 </pkgmetadata>
