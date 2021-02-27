@@ -238,6 +238,10 @@ pkg_preinst() {
 		PYTHONPATH="${D}${sitedir}${PYTHONPATH:+:${PYTHONPATH}}" \
 		"${PYTHON}" -m portage._compat_upgrade.binpkg_compression || die
 
+	env -u FEATURES -u PORTAGE_REPOSITORIES \
+		PYTHONPATH="${D}${sitedir}${PYTHONPATH:+:${PYTHONPATH}}" \
+		"${PYTHON}" -m portage._compat_upgrade.binpkg_multi_instance || die
+
 	# elog dir must exist to avoid logrotate error for bug #415911.
 	# This code runs in preinst in order to bypass the mapping of
 	# portage:portage to root:root which happens after src_install.
