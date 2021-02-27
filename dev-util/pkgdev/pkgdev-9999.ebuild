@@ -21,8 +21,30 @@ HOMEPAGE="https://github.com/pkgcore/pkgdev"
 LICENSE="BSD MIT"
 SLOT="0"
 
-if [[ ${PV} == *9999 ]]; then
+if [[ ${PV} == *9999 ]] ; then
 	RDEPEND="
 		~dev-python/snakeoil-9999[${PYTHON_USEDEP}]
-		~sys-apps/pkgcore-9999[${PYTHON_USEDEP}]"
+		~sys-apps/pkgcore-9999[${PYTHON_USEDEP}]
+	"
 fi
+
+distutils_enable_sphinx doc
+
+python_install_all() {
+	# We'll generate man pages ourselves
+	# Revisit when a release is made
+	# to pregenerate them, making USE=doc
+	# for generating the real HTML docs only.
+	if use doc ; then
+		cd doc || die
+		emake man
+		doman _build/man/*
+	fi
+
+	cd .. || die
+
+	# HTML pages only
+	sphinx_compile_all
+
+	distutils-r1_python_install_all
+}
