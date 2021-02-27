@@ -1,0 +1,40 @@
+https://bugs.gentoo.org/729224
+https://github.com/net-snmp/net-snmp/commit/5a18e300bd085c6ba5967d7b00cc3f57fe83f665
+
+From 5a18e300bd085c6ba5967d7b00cc3f57fe83f665 Mon Sep 17 00:00:00 2001
+From: Bart Van Assche <bvanassche@acm.org>
+Date: Thu, 8 Oct 2020 20:12:44 -0700
+Subject: [PATCH] HOST-RESOURCES-MIB: Add support for f2fs
+
+See also https://github.com/net-snmp/net-snmp/issues/111 .
+---
+ agent/mibgroup/hardware/fsys/fsys_mntent.c | 1 +
+ agent/mibgroup/hardware/fsys/mnttypes.h    | 3 +++
+ 2 files changed, 4 insertions(+)
+
+diff --git a/agent/mibgroup/hardware/fsys/fsys_mntent.c b/agent/mibgroup/hardware/fsys/fsys_mntent.c
+index abdc63ed6..75e2782f7 100644
+--- a/agent/mibgroup/hardware/fsys/fsys_mntent.c
++++ b/agent/mibgroup/hardware/fsys/fsys_mntent.c
+@@ -146,6 +146,7 @@ _fsys_type( char *typename )
+               !strcmp(typename, MNTTYPE_CVFS) ||
+               !strcmp(typename, MNTTYPE_SIMFS) ||
+               !strcmp(typename, MNTTYPE_BTRFS) ||
++              !strcmp(typename, MNTTYPE_F2FS) ||
+               !strcmp(typename, MNTTYPE_ZFS) ||
+               !strcmp(typename, MNTTYPE_NVMFS) ||
+               !strcmp(typename, MNTTYPE_ACFS) ||
+diff --git a/agent/mibgroup/hardware/fsys/mnttypes.h b/agent/mibgroup/hardware/fsys/mnttypes.h
+index cda42420d..3540cf31b 100644
+--- a/agent/mibgroup/hardware/fsys/mnttypes.h
++++ b/agent/mibgroup/hardware/fsys/mnttypes.h
+@@ -154,6 +154,9 @@
+ #ifndef MNTTYPE_BTRFS
+ #define MNTTYPE_BTRFS     "btrfs"
+ #endif
++#ifndef MNTTYPE_F2FS
++#define MNTTYPE_F2FS      "f2fs"
++#endif
+ #ifndef MNTTYPE_ZFS
+ #define MNTTYPE_ZFS       "zfs"
+ #endif
