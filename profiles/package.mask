@@ -33,8 +33,15 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2021-02-27)
+# Fails to build with GCC 10, out of date.
+# bug #723192, bug #737058
+# Removal in 30 days
+dev-lang/ats
+
+# Sam James <sam@gentoo.org> (2021-02-27)
 # Broken with newer(?) dev-scheme/guile, dead upstream
 # bug #642736, bug #773196
+# Removal in 30 days
 dev-scheme/greg
 
 # David Seifert <soap@gentoo.org> (2021-02-25)
