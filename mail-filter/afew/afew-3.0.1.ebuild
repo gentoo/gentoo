@@ -27,9 +27,16 @@ RDEPEND="
 BDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/sphinx[${PYTHON_USEDEP}]
-	')"
+	')
+	test? (
+		$(python_gen_cond_dep '
+			dev-python/freezegun[${PYTHON_USEDEP}]
+		')
+	)"
 
 DOCS=( "README.rst" )
+
+distutils_enable_tests pytest
 
 python_prepare_all() {
 	sed -r \
