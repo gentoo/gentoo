@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="
-	dev-libs/libpfm
+	dev-libs/libpfm[static-libs]
 	virtual/mpi
 "
 RDEPEND="${DEPEND}"
