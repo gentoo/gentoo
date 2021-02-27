@@ -5338,7 +5338,7 @@ dev-libs/gom 0.4: GObject to SQLite object mapper library
 dev-libs/gost-engine 1.1.0.3_p20181031-r1 9999: A reference implementation of the Russian GOST crypto algorithms for OpenSSL
 dev-libs/granite 5.2.5-r1 5.5.0: Elementary OS library that extends GTK+
 dev-libs/grantlee 5.2.0: C++ string template engine based on the Django template system
-dev-libs/gtx 0.2.2: Small collection of functions intended to enhance the GLib testing framework
+dev-libs/gtx 0.2.2 0.2.2-r1: Small collection of functions intended to enhance the GLib testing framework
 dev-libs/gumbo 0.10.1: The HTML5 parsing algorithm implemented as a pure C99 library
 dev-libs/hidapi 0.8.0_rc1_p20140719-r1: A multi-platform library for USB and Bluetooth HID-Class devices
 dev-libs/hiredis 0.14.1 1.0.0: Minimalistic C client library for the Redis database
@@ -5513,7 +5513,7 @@ dev-libs/libpcre 8.44: Perl-compatible regular expression library
 dev-libs/libpcre-debian 8-r2: libpcre(posix).so.3 symlinks for compatibility with Debian
 dev-libs/libpcre2 10.35 10.36 10.36-r1: Perl-compatible regular expression library
 dev-libs/libpeas 1.26.0 1.26.0-r100 1.28.0 1.28.0-r100: A GObject plugins library
-dev-libs/libpfm 4.10.1-r1: Hardware-based performance monitoring interface for Linux
+dev-libs/libpfm 4.10.1-r1 4.11.0: Hardware-based performance monitoring interface for Linux
 dev-libs/libpipeline 1.5.2 1.5.3: a pipeline manipulation library
 dev-libs/libplatform 2.1.0.1-r1 9999: Platform support library used by libCEC and binary add-ons for Kodi
 dev-libs/libpo6 0.8.0: Hyperdex libpo6 support library
@@ -5640,7 +5640,7 @@ dev-libs/openssl 1.0.2u 1.1.1i 1.1.1j: full-strength general purpose cryptograph
 dev-libs/openssl-compat 0.9.8z_p8-r1 1.0.2u-r1: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/ossp-uuid 1.6.2-r6: An ISO-C:1999 API with CLI for generating DCE, ISO/IEC and RFC compliant UUID
 dev-libs/pakchois 0.4-r2: PaKChoiS - PKCS #11 wrapper library
-dev-libs/papi 5.3.0 5.4.0 5.5.1: Performance Application Programming Interface
+dev-libs/papi 5.5.1 6.0.0.1: Performance Application Programming Interface
 dev-libs/pcc-libs 1.1.0 9999: pcc compiler support libs
 dev-libs/pcl 1.12-r1: Portable Coroutine Library
 dev-libs/pegtl 2.8.3-r1 3.2.0: Header-only library for creating parsers according to Parsing Expression Grammar
@@ -13128,7 +13128,7 @@ media-libs/imlib 1.9.15-r5: Image loading and rendering library
 media-libs/imlib2 1.6.1 1.7.1: Version 2 of an advanced replacement library for libraries like libXpm
 media-libs/intel-mediasdk 18.3.0 18.4.1 9999: Intel Media SDK
 media-libs/jbig2dec 0.18 0.19: A decoder implementation of the JBIG2 image compression format
-media-libs/jbig2enc 0.28-r1: JBIG2 Encoder and libs
+media-libs/jbig2enc 0.28-r1 0.29: JBIG2 Encoder and libs
 media-libs/jbigkit 2.1: data compression algorithm for bi-level high-resolution images
 media-libs/kcolorpicker 0.1.5: Qt based color picker with popup menu
 media-libs/kimageannotator 0.4.1: Tool for annotating images
@@ -13283,7 +13283,7 @@ media-libs/libsndfile 1.0.30 1.0.31 9999: C library for reading and writing file
 media-libs/libsoundio 2.0.0: C library for cross-platform real-time audio input and output
 media-libs/libsoundtouch 2.1.2: Audio processing library for changing tempo, pitch and playback rates
 media-libs/libsvgtiny 0.1.7-r2: framebuffer abstraction library, written in C
-media-libs/libtaginfo 0.2.1: a library for reading media metadata
+media-libs/libtaginfo 0.2.1: A library for reading media metadata
 media-libs/libtgvoip 2.4.4_p20201030: VoIP library for Telegram clients
 media-libs/libtheora 1.1.1-r2: The Theora Video Compression Codec
 media-libs/libtiger 0.3.4-r1: A rendering library for Kate streams using Pango and Cairo
@@ -14520,7 +14520,7 @@ net-analyzer/traceroute-nanog 6.4.2_p1: Traceroute with AS lookup, TOS support, 
 net-analyzer/trafshow 5.2.3-r1: Full screen visualization of the network traffic
 net-analyzer/tsung 1.7.0: Erlang's multi-protocol distributed load testing tool
 net-analyzer/ttcp 1.12-r2: Tool to test TCP and UDP throughput
-net-analyzer/upnpscan 0.4-r3: Scans the network for UPNP capable devices
+net-analyzer/upnpscan 0.4-r3: Scans the network for UPnP capable devices
 net-analyzer/vnstat 1.17 2.6 9999: Console-based network traffic monitor that keeps statistics of network usage
 net-analyzer/wapiti 3.0.3 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r2: Poor man's web vulnerability scanner
@@ -14879,8 +14879,8 @@ net-libs/libndp 1.7: Library for Neighbor Discovery Protocol
 net-libs/libnet 1.0.2a-r7 1.2 1.2.9999: library providing an API for commonly used low-level network functions
 net-libs/libnetfilter_acct 1.0.2 1.0.3: library providing interface to extended accounting infrastructure
 net-libs/libnetfilter_conntrack 1.0.6 1.0.7 1.0.8: programming interface (API) to the in-kernel connection tracking state table
-net-libs/libnetfilter_cthelper 1.0.0 1.0.0-r1: userspace library that provides the programming interface to the user-space helper infrastructure
-net-libs/libnetfilter_cttimeout 1.0.0 1.0.0-r1: netlink interface to the connection tracking timeout infrastructure in the kernel packet filter
+net-libs/libnetfilter_cthelper 1.0.0 1.0.0-r1: Userspace library for interface to user-space helper for conntrack
+net-libs/libnetfilter_cttimeout 1.0.0 1.0.0-r1: netlink interface for conntrack timeout infrastructure in kernel's packet filter
 net-libs/libnetfilter_log 1.0.1: Interface to packets that have been logged by the kernel packet filter
 net-libs/libnetfilter_queue 1.0.3 1.0.4 1.0.5: API to packets that have been queued by the kernel packet filter
 net-libs/libnfnetlink 1.0.1: the low-level library for netfilter related kernel/userspace communication
@@ -17657,7 +17657,7 @@ sys-libs/libsemanage 3.1-r1 9999: SELinux kernel and policy management library
 sys-libs/libsepol 3.1 9999: SELinux binary policy representation library
 sys-libs/libservicelog 1.1.18: Provides a library for logging service-related events
 sys-libs/libsmbios 2.4.3: Provide access to (SM)BIOS information
-sys-libs/libstatgrab 0.91: A tool to provide access to statistics about the system on which it's run
+sys-libs/libstatgrab 0.91 0.92: A tool to provide access to statistics about the system on which it's run
 sys-libs/libstdc++-v3 3.3.6-r2: Compatibility package for binaries linked against a pre gcc 3.4 libstdc++
 sys-libs/libtermcap-compat 2.0.8-r4: Compatibility package for old termcap-based programs
 sys-libs/libudev-compat 186-r1: Wrapper around libudev.so.1 for packages needing the old libudev.so.0
