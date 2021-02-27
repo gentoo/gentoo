@@ -11,7 +11,7 @@ SRC_URI="https://github.com/divVerent/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="static-libs"
 
 RDEPEND="dev-libs/gmp:0"
