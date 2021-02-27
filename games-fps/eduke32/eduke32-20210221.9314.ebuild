@@ -75,7 +75,7 @@ BDEPEND="
 	x86? ( dev-lang/nasm )
 "
 
-PDEDEND="duke3d? ( games-fps/duke3d-data )"
+PDEPEND="duke3d? ( games-fps/duke3d-data )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-20190820.8043-log-to-tmpdir.patch"
