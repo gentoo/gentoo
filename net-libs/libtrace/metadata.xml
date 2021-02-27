@@ -8,4 +8,7 @@
 	<use>
 		<flag name="numa">Use <pkg>sys-process/numactl</pkg></flag>
 	</use>
+	<upstream>
+		<remote-id type="github">LibtraceTeam/libtrace</remote-id>
+	</upstream>
 </pkgmetadata>
