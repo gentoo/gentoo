@@ -31,8 +31,8 @@ distutils_enable_sphinx doc
 
 python_install_all() {
 	# We'll generate man pages ourselves
-	# Reevisit when a release is made
-	# so we can pregenerate some, making USE=doc
+	# Revisit when a release is made
+	# to pregenerate them, making USE=doc
 	# for generating the real HTML docs only.
 	if use doc ; then
 		cd doc || die
