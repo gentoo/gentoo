@@ -9,26 +9,27 @@ GENTOO_DEPEND_ON_PERL=no
 PYTHON_COMPAT=( python3_{7,8,9} )
 WANT_AUTOMAKE=none
 
-inherit autotools distutils-r1 git-r3 perl-module systemd
+inherit autotools distutils-r1 perl-module systemd
 
 DESCRIPTION="Software for generating and retrieving SNMP data"
 HOMEPAGE="http://www.net-snmp.org/"
-EGIT_REPO_URI="https://github.com/net-snmp/net-snmp"
-SRC_URI="https://dev.gentoo.org/~jer/${PN}-5.7.3-patches-3.tar.xz"
+SRC_URI="
+	https://dev.gentoo.org/~jer/${PN}-5.7.3-patches-3.tar.xz
+	https://dev.gentoo.org/~jer/${P}.tar.xz
+"
 
 # GPL-2 for the init scripts
 LICENSE="HPND BSD GPL-2"
 SLOT="0/40"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="
 	X bzip2 doc elf kmem ipv6 libressl lm-sensors mfd-rewrites minimal mysql
 	netlink pcap pci perl python rpm selinux smux ssl tcpd ucd-compat zlib
 "
-
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 	rpm? ( bzip2 zlib )
 "
-
 RESTRICT="test"
 
 COMMON_DEPEND="
@@ -76,16 +77,12 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.8.1-net-snmp-config-libdir.patch
 	"${FILESDIR}"/${PN}-5.8.1-mysqlclient.patch
 	"${FILESDIR}"/${PN}-5.9-MakeMaker.patch
+	"${FILESDIR}"/${PN}-5.9-r3-f2fs.patch
 	"${FILESDIR}"/${PN}-99999999-tinfo.patch
 )
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
-}
-
-src_unpack() {
-	default
-	git-r3_src_unpack
 }
 
 src_prepare() {
