@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2021-02-27)
+# Broken with newer(?) dev-scheme/guile, dead upstream
+# bug #642736, bug #773196
+dev-scheme/greg
+
 # David Seifert <soap@gentoo.org> (2021-02-25)
 # Unmaintained, python 3.7 only, relies on wrong libgd, which isn't
 # packaged.  Removal on 2021-03-27.  Bug #683358, #696476, #741936.
