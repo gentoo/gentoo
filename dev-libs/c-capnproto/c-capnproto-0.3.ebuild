@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit autotools-utils
+inherit autotools
 
 DESCRIPTION="C library/compiler for the Cap'n Proto serialization/RPC protocol"
 HOMEPAGE="https://github.com/opensourcerouting/c-capnproto"
@@ -12,9 +12,5 @@ SRC_URI="https://github.com/opensourcerouting/c-capnproto/releases/download/${P}
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 arm arm64"
-IUSE="static-libs"
 
-RDEPEND=""
-DEPEND="${RDEPEND}
-	app-arch/xz-utils
-"
+BDEPEND="app-arch/xz-utils"
