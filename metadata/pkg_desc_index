@@ -5289,7 +5289,7 @@ dev-libs/cxxopts 2.2.1-r1: Lightweight C++ command line option parser
 dev-libs/cxxtools 2.2.1 3.0: Collection of general purpose C++-classes
 dev-libs/cyberjack 3.99.5_p14-r2: REINER SCT cyberJack USB chipcard reader user space driver
 dev-libs/cyrus-sasl 2.1.27-r4: The Cyrus SASL (Simple Authentication and Security Layer)
-dev-libs/d0_blind_id 0.5 1.0: Blind-ID library for user identification using RSA blind signatures
+dev-libs/d0_blind_id 1.0: Blind-ID library for user identification using RSA blind signatures
 dev-libs/darts 0.32 0.32h_pre20181117064816 9999: Darts-clone (Double-ARray Trie System) C++ library
 dev-libs/date 3.0.0: A date and time library based on the C++11/14/17 <chrono> header
 dev-libs/dbus-c++ 0.9.0-r4: Provides a C++ API for D-BUS
