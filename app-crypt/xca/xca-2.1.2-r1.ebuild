@@ -37,35 +37,30 @@ src_configure() {
 		STRIP=true
 }
 
-src_prepare() {
-	sed '/^CFLAGS/s@-O2 -ggdb@@' -i Local.mak.in || die
-	default
-}
-
 src_compile() {
 	# enforce all to avoid the automatic silent rules
 	emake all
 }
 
 src_install() {
-	default
+	# non standard destdir
+	emake install destdir="${ED}"
+	einstalldocs
 
 	insinto /etc/xca
 	doins misc/*.txt
 
 	ewarn "Make a backup copy of your database!"
-	ewarn "Version 2 completely changes the database format to SQL(ite)"
+	ewarn "This version completely changes the database format to SQL(ite)"
 	ewarn "Don't try to open it with older versions of XCA (< 1.4.0). They will corrupt the database."
 }
 
 pkg_postinst() {
-	xdg_icon_cache_update
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
 }
 
 pkg_postrm() {
-	xdg_icon_cache_update
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
 }
