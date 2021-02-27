@@ -52,6 +52,9 @@ src_prepare() {
 		-e '/git_describe/d' \
 		-e '/dirty/d' \
 		-i CMakeLists.txt || die
+
+	# fix libdir, bug #701474
+	sed -i -e "s|/lib|/$(get_libdir)|" libdynd-config.in || die
 }
 
 src_configure() {
