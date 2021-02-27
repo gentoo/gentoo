@@ -16,7 +16,7 @@ SLOT="0"
 RDEPEND=">=dev-util/rocminfo-$(ver_cut 1-2)
 		 =dev-util/hip-$(ver_cut 1-2)*
 		 =sci-libs/rocSPARSE-${PV}*"
-DEPEND="${RDPEND}"
+DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/hipSPARSE-rocm-${PV}"
 
