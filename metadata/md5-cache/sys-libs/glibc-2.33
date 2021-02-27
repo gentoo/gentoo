@@ -10,6 +10,6 @@ PDEPEND=!vanilla? ( sys-libs/timezone-data )
 RDEPEND=gd? ( media-libs/gd:2= ) nscd? ( selinux? ( audit? ( sys-process/audit ) caps? ( sys-libs/libcap ) ) ) suid? ( caps? ( sys-libs/libcap ) ) selinux? ( sys-libs/libselinux ) systemtap? ( dev-util/systemtap ) !<net-misc/openssh-8.1_p1-r2 app-arch/gzip sys-apps/grep virtual/awk sys-apps/gentoo-functions >=net-dns/libidn2-2.3.0 vanilla? ( !sys-libs/timezone-data )
 RESTRICT=!test? ( test )
 SLOT=2.2
-SRC_URI=mirror://gnu/glibc/glibc-2.33.tar.xz https://dev.gentoo.org/~dilfridge/distfiles/glibc-2.33-patches-1.tar.xz https://gitweb.gentoo.org/proj/locale-gen.git/snapshot/locale-gen-2.10.tar.gz multilib-bootstrap? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-20201208.tar.xz )
+SRC_URI=mirror://gnu/glibc/glibc-2.33.tar.xz https://dev.gentoo.org/~dilfridge/distfiles/glibc-2.33-patches-2.tar.xz https://gitweb.gentoo.org/proj/locale-gen.git/snapshot/locale-gen-2.10.tar.gz multilib-bootstrap? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-20201208.tar.xz )
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	gnuconfig	f9125410be4c062f2fcefc8ec59fc223	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	69861348186337fa4b269de5826004b3	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=55dcc990d2470845d0e7f3959612d8b7
+_md5_=894b2f7753f0e6d4713c1ffa8a9773d4
