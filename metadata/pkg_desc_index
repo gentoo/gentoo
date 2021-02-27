@@ -6249,7 +6249,7 @@ dev-perl/Config-Properties 1.800.0-r1: Configuration using Java style properties
 dev-perl/Config-Simple 4.590.0-r1 4.590.0-r2: Simple configuration file class
 dev-perl/Config-Tiny 2.230.0 2.240.0: Read/Write .ini style files with as little code as possible
 dev-perl/ConfigReader 0.500.0-r2: Read directives from a configuration file
-dev-perl/Const-Fast 0.14.0-r1 0.14.0-r2: Facility for creating read-only scalars, arrays, and hashes
+dev-perl/Const-Fast 0.14.0-r2: Facility for creating read-only scalars, arrays, and hashes
 dev-perl/Context-Preserve 0.30.0: Return chained, modified values from subs, without losing context
 dev-perl/Contextual-Return 0.4.14: Create context-sensitive return values
 dev-perl/Convert-ASCII-Armour 1.400.0-r1 1.400.0-r2: Convert binary octets into ASCII armoured messages
@@ -6361,7 +6361,7 @@ dev-perl/Data-Random 0.120.0 0.130.0: A module used to generate random data
 dev-perl/Data-Section 0.200.7: read multiple hunks of data out of your DATA section
 dev-perl/Data-Serializer 0.650.0: Modules that serialize data structures
 dev-perl/Data-ShowTable 4.600.0 4.600.0-r1: routines to display tabular data in several formats
-dev-perl/Data-Stag 0.140.0-r1 0.140.0-r2: Structured Tags datastructures
+dev-perl/Data-Stag 0.140.0-r2: Structured Tags datastructures
 dev-perl/Data-Stream-Bulk 0.110.0-r2: N at a time iteration API
 dev-perl/Data-Structure-Util 0.160.0 0.160.0-r1: Change nature of data within a structure
 dev-perl/Data-Types 0.90.0 0.170.0: Validate and convert data types.
@@ -6569,7 +6569,7 @@ dev-perl/File-KeePass 2.30.0-r1: Interface to KeePass V1 and V2 database files
 dev-perl/File-LibMagic 1.150.0 1.230.0: Perl wrapper for libmagic
 dev-perl/File-Listing 6.40.0-r1 6.40.0-r2 6.70.0: Parse directory listings
 dev-perl/File-MMagic 1.300.0-r1 1.300.0-r2: The Perl Image-Info Module
-dev-perl/File-Map 0.640.0 0.670.0: Memory mapping made simple and safe
+dev-perl/File-Map 0.670.0: Memory mapping made simple and safe
 dev-perl/File-MimeInfo 0.280.0 0.290.0: Determine file type
 dev-perl/File-NCopy 0.360.0-r2: Copy file, file Copy file[s] | dir[s], dir
 dev-perl/File-NFSLock 1.270.0 1.290.0: perl module to do NFS (or not) locking
@@ -6587,7 +6587,7 @@ dev-perl/File-ShareDir-ProjectDistDir 1.0.9: Simple set-and-forget using of a '/
 dev-perl/File-Slurp 9999.270.0 9999.320.0: Simple and Efficient Reading/Writing/Modifying of Complete Files
 dev-perl/File-Slurp-Tiny 0.4.0 0.4.0-r1: A simple, sane and efficient file slurper
 dev-perl/File-Slurper 0.10.0 0.12.0: A simple, sane and efficient module to slurp a file
-dev-perl/File-Sort 1.10.0-r1 1.10.0-r2: Sort a file or merge sort multiple files
+dev-perl/File-Sort 1.10.0-r2: Sort a file or merge sort multiple files
 dev-perl/File-Spec-Native 1.4.0: Use native OS implementation of File::Spec from a subclass
 dev-perl/File-Stat-Bits 1.10.0-r1 1.10.0-r2: File stat bit mask constants
 dev-perl/File-Sync 0.110.0 0.110.0-r1: Perl access to fsync() and sync() function calls
@@ -7163,7 +7163,7 @@ dev-perl/Perl-Tidy 20171214.0.0 20190915.0.0: Perl script indenter and beautifie
 dev-perl/Perl-Unsafe-Signals 0.30.0-r1: Allow unsafe handling of signals in selected blocks
 dev-perl/Perl-Version 1.13.0: Parse and manipulate Perl version strings
 dev-perl/Perl6-Junction 1.600.0: Perl6 style Junction operators in Perl5
-dev-perl/PerlIO-Layers 0.11.0 0.11.0-r1: Querying your filehandle's capabilities
+dev-perl/PerlIO-Layers 0.11.0-r1: Querying your filehandle's capabilities
 dev-perl/PerlIO-eol 0.160.0: PerlIO layer for normalizing line endings
 dev-perl/PerlIO-gzip 0.200.0: PerlIO layer to gzip/gunzip
 dev-perl/PerlIO-utf8_strict 0.7.0: Fast and correct UTF-8 IO
@@ -15890,7 +15890,7 @@ sci-biology/express 1.5.1: Streaming RNA-Seq Analysis
 sci-biology/fasta 36.3.5e: FASTA is a DNA and Protein sequence alignment software package
 sci-biology/fasttree 2.1.8: Fast inference of approximately-maximum-likelihood phylogenetic trees
 sci-biology/fastx_toolkit 0.0.14: Tools for Short Read FASTA/FASTQ file processing
-sci-biology/finchtv 1.3.1-r2 1.3.1-r3: Graphical viewer for chromatogram files
+sci-biology/finchtv 1.3.1-r3: Graphical viewer for chromatogram files
 sci-biology/foldingathome 7.6.13: Folding@Home is a distributed computing project for protein folding
 sci-biology/gatk 2.4: The Genome Analysis Toolkit
 sci-biology/gibbs 3.1: Identify motifs, conserved regions, in DNA or protein sequences
@@ -15977,7 +15977,7 @@ sci-calculators/hexcalc 1.11-r3: A simple hex calculator for X
 sci-calculators/keurocalc 1.3.0: Universal currency converter and calculator
 sci-calculators/orpie 1.5.2-r1: A fullscreen RPN calculator for the console
 sci-calculators/pcalc 3-r1 4: the programmers calculator
-sci-calculators/qalculate-gtk 3.15.0 3.16.0: Modern multi-purpose calculator
+sci-calculators/qalculate-gtk 3.16.0: Modern multi-purpose calculator
 sci-calculators/speedcrunch 0.12.0: Fast and usable calculator for power users
 sci-calculators/tiemu 3.03-r1: Texas Instruments hand-helds emulator
 sci-calculators/tilp2 1.18: Communication program for Texas Instruments calculators
@@ -16057,7 +16057,7 @@ sci-electronics/drawtiming 0.7.1-r2: Command line tool for drawing timing diagra
 sci-electronics/eagle 7.3.0-r1 7.7.0-r1: CadSoft EAGLE schematic and printed circuit board (PCB) layout editor
 sci-electronics/electric 9.03: Complete Electronic Design Automation system for many forms of circuit design
 sci-electronics/electronics-menu 1.0-r1: Creates an "Electronics" desktop menu
-sci-electronics/espresso-ab 1.0-r1 1.0-r2: POSIX compliant version of the espresso logic minimization tool
+sci-electronics/espresso-ab 1.0-r2: POSIX compliant version of the espresso logic minimization tool
 sci-electronics/fasthenry 3.0.20.07.17: Three dimensional inductance computation program, Whiteley Research version
 sci-electronics/freehdl 0.0.8: A free VHDL simulator
 sci-electronics/fritzing 0.9.4-r2: Electronic Design Automation
@@ -16310,7 +16310,7 @@ sci-libs/libnova 0.16.0: Celestial Mechanics and Astronomical Calculation Librar
 sci-libs/liborigin 3.0.0: Library for reading OriginLab OPJ project files
 sci-libs/libpdb 991112-r1: PDB Record I/O Libraries -- c version
 sci-libs/libpdb++ 040728-r1: PDB Record I/O Libraries -- c++ version
-sci-libs/libqalculate 3.15.0-r1 3.16.1: A modern multi-purpose calculator library
+sci-libs/libqalculate 3.16.1: A modern multi-purpose calculator library
 sci-libs/libsc 2.2-r100 9999: Support for parallel scientific applications
 sci-libs/libsigrok 0.5.2 0.5.2-r1 9999: Basic hardware drivers for logic analyzers and input/output file format support
 sci-libs/libsigrokdecode 0.5.3 9999: Provide (streaming) protocol decoding functionality
@@ -16320,7 +16320,7 @@ sci-libs/libticables2 1.3.5: Library to handle different link cables for TI calc
 sci-libs/libticalcs2 1.1.9: Library for communication with TI calculators
 sci-libs/libticonv 1.1.5: Charset conversion library for TI calculators
 sci-libs/libtifiles2 1.1.7: Library for TI calculator files
-sci-libs/libxc 2.2.3 5.1.0 5.1.1: A library of exchange-correlation functionals for use in DFT
+sci-libs/libxc 5.1.0 5.1.1: A library of exchange-correlation functionals for use in DFT
 sci-libs/linbox 1.6.3: C++ template library for integer and finite-field linear algebra
 sci-libs/linux-gpib 4.3.3 4.3.4: Driver library for GPIB (IEEE 488.2) hardware
 sci-libs/linux-gpib-modules 4.3.3-r1 4.3.4: Kernel modules for GPIB (IEEE 488.2) hardware
@@ -16410,7 +16410,7 @@ sci-libs/tensorflow 2.4.0: Computation framework using data flow graphs for scal
 sci-libs/tensorflow-estimator 2.3.0 2.4.0: A high-level TensorFlow API that greatly simplifies machine learning programming
 sci-libs/tnt 3.0.12: Template Numerical Toolkit: C++ headers for array and matrices
 sci-libs/trilinos 13.0.1: Scientific library collection for large scale problems
-sci-libs/udunits 2.1.24-r1 2.2.28: Library for manipulating units of physical quantities
+sci-libs/udunits 2.2.28: Library for manipulating units of physical quantities
 sci-libs/ufconfig 3.7.1: Common configuration scripts for the SuiteSparse libraries
 sci-libs/umfpack 5.7.9: Unsymmetric multifrontal sparse LU factorization library
 sci-libs/volk 2.4.1: vector optimized library of kernels
@@ -16421,7 +16421,7 @@ sci-libs/xdmf2 1.0_p141226-r4: eXtensible Data Model and Format
 sci-libs/xdrfile 1.1.4: Library to read gromacs trajectory and topology files
 sci-libs/xgks-pmel 2.5.5: PMEL fork of XGKS, an X11-based version of the ANSI Graphical Kernel System
 sci-libs/xylib 1.6: Experimental x-y data reading library
-sci-mathematics/4ti2 1.6.6 1.6.7: Software package for algebraic, geometric and combinatorial problems
+sci-mathematics/4ti2 1.6.7: Software package for algebraic, geometric and combinatorial problems
 sci-mathematics/agda 2.6.1.2: A dependently typed functional programming language and proof assistant
 sci-mathematics/agda-stdlib 2.6.1.2.1.4: Agda standard library
 sci-mathematics/alt-ergo 2.3.0: Automatic theorem prover
