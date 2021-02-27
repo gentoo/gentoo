@@ -1,0 +1,48 @@
+From d41a46ac32038055bfc9fe9a907e199ed74e371c Mon Sep 17 00:00:00 2001
+From: Pino Toscano <toscano.pino@tiscali.it>
+Date: Fri, 17 Apr 2020 13:25:12 +0200
+Subject: [PATCH] Include <stdexcept> for std::runtime_error
+
+It was implicitly pulled before, and in GCC 10 it will not be anymore.
+---
+ src/game/openaloggdata.cpp | 1 +
+ src/game/openalsource.cpp  | 1 +
+ src/game/openalwavdata.cpp | 1 +
+ 3 files changed, 3 insertions(+)
+
+diff --git a/src/game/openaloggdata.cpp b/src/game/openaloggdata.cpp
+index 56634c20..4a2ab882 100644
+--- a/src/game/openaloggdata.cpp
++++ b/src/game/openaloggdata.cpp
+@@ -19,6 +19,7 @@
+ 
+ #include <vector>
+ #include <cstdio>
++#include <stdexcept>
+ 
+ #include <vorbis/vorbisfile.h>
+ 
+diff --git a/src/game/openalsource.cpp b/src/game/openalsource.cpp
+index 9d2bb7f5..37a4272a 100644
+--- a/src/game/openalsource.cpp
++++ b/src/game/openalsource.cpp
+@@ -19,6 +19,7 @@
+ #include <AL/alc.h>
+ 
+ #include <memory>
++#include <stdexcept>
+ 
+ static bool checkError()
+ {
+diff --git a/src/game/openalwavdata.cpp b/src/game/openalwavdata.cpp
+index 3a9fc20a..015a11d3 100644
+--- a/src/game/openalwavdata.cpp
++++ b/src/game/openalwavdata.cpp
+@@ -25,6 +25,7 @@
+ 
+ #include <cstdio>
+ #include <AL/alc.h>
++#include <stdexcept>
+ 
+ static bool checkError()
+ {
