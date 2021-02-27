@@ -1,31 +1,31 @@
+https://github.com/wgois/OIS/pull/69
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index a5da3b7..90a8b77 100644
+index 56b1c49..c4ce5a8 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -210,8 +210,7 @@ if (OIS_BUILD_DEMOS)
+@@ -229,7 +229,13 @@ if (OIS_BUILD_DEMOS)
  
  endif()
  
 -set(LIB_INSTALL_DIR "lib")
--set(OIS_LIB_DIRECTORY ${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_DIR})
-+set(OIS_LIB_DIRECTORY ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR})
++if(UNIX)
++	include(GNUInstallDirs)
++	set(LIB_INSTALL_DIR ${CMAKE_INSTALL_LIBDIR})
++else()
++	set(LIB_INSTALL_DIR "lib")
++endif()
++
+ set(OIS_LIB_DIRECTORY ${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_DIR})
  
- file(GLOB PUBLIC_HEADERS "${CMAKE_SOURCE_DIR}/includes/*.h")
- 
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 90a8b77..3c1fe95 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -219,9 +219,9 @@ install(FILES ${PUBLIC_HEADERS}
- )
+ file(GLOB PUBLIC_HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/includes/*.h")
+@@ -240,8 +246,8 @@ install(FILES ${PUBLIC_HEADERS}
  
  install(TARGETS OIS
--  RUNTIME DESTINATION bin
+   RUNTIME DESTINATION bin
 -  LIBRARY DESTINATION lib
 -  ARCHIVE DESTINATION lib
-+  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-+  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-+  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  LIBRARY DESTINATION ${LIB_INSTALL_DIR}
++  ARCHIVE DESTINATION ${LIB_INSTALL_DIR}
    FRAMEWORK DESTINATION Library/Frameworks
  )
  
