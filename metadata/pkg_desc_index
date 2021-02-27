@@ -5921,7 +5921,7 @@ dev-ml/ocaml-sqlite3 4.3.0-r1 5.0.2: A package for ocaml that provides access to
 dev-ml/ocaml-ssl 0.5.3-r1 0.5.9 0.5.10: OCaml bindings for OpenSSL
 dev-ml/ocaml-uri 1.9.4-r1: RFC3986 URI parsing library for OCaml
 dev-ml/ocamlbuild 0.11.0 0.14.0-r1: Generic build tool with built-in rules for building OCaml library and programs
-dev-ml/ocamlgraph 1.8.7-r1 1.8.8-r1 2.0.0: O'Caml Graph library
+dev-ml/ocamlgraph 1.8.7-r1 1.8.8-r1 2.0.0 2.0.0-r1: O'Caml Graph library
 dev-ml/ocamlify 0.0.2: OCamlify creates OCaml code by including files into strings or string lists
 dev-ml/ocamlmod 0.0.9: Generate OCaml modules from source files
 dev-ml/ocamlnet 4.1.2 4.1.8 4.1.8-r1: Modules for OCaml application-level Internet protocols
