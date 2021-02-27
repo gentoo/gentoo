@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_7 python3_8 )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit distutils-r1
 
@@ -26,8 +26,7 @@ RDEPEND="
 	dev-python/pip[${PYTHON_USEDEP}]
 	>=dev-python/virtualenv-20.0.35[${PYTHON_USEDEP}]
 	dev-python/virtualenv-clone[${PYTHON_USEDEP}]
-	"
-
+"
 BDEPEND="
 	${RDEPEND}
 	test? (
@@ -35,7 +34,8 @@ BDEPEND="
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]
-	)"
+	)
+"
 
 src_prepare() {
 	# remove vendored version of PyYAML that is backported to Python2
