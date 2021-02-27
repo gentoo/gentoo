@@ -1,0 +1,18 @@
+Fix linking with BUILD_SHARED_LIBS=ON default in EAPI-7
+
+--- a/src/common_netplay/CMakeLists.txt
++++ b/src/common_netplay/CMakeLists.txt
+@@ -1,4 +1,4 @@
+ 
+ if(NOT NO_NETWORK)
+-    add_library(NetplayFiles platform_enet/NetPeerENet.cpp)
++    add_library(NetplayFiles STATIC platform_enet/NetPeerENet.cpp)
+ endif()
+--- a/src/common/CMakeLists.txt
++++ b/src/common/CMakeLists.txt
+@@ -39,4 +39,4 @@
+     list(APPEND COMMON_SRCS src/savepng.cpp)
+ endif()
+ 
+-add_library(CommonFiles ${COMMON_SRCS})
++add_library(CommonFiles STATIC ${COMMON_SRCS})
