@@ -12,7 +12,7 @@ if [[ "${PV}" == *9999 ]] ; then
 	EGIT_REPO_URI="https://anongit.freedesktop.org/git/libreoffice/cppunit.git"
 else
 	SRC_URI="https://dev-www.libreoffice.org/src/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
 LICENSE="LGPL-2.1"
 SLOT="0/1.15"
