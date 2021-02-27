@@ -50,4 +50,7 @@ src_install() {
 	default
 
 	dodoc ../RE*
+
+	find "${ED}" -name '*.a' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }
