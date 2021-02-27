@@ -7988,7 +7988,7 @@ dev-python/arpeggio 1.10.0: Parser interpreter based on PEG grammars
 dev-python/arrow 0.17.0 1.0.0: Better dates and times for Python
 dev-python/asgiref 3.3.1: ASGI utilities (successor to WSGI)
 dev-python/asn1crypto 1.4.0: Python ASN.1 library with a focus on performance and a pythonic API
-dev-python/asteval 0.9.21 0.9.22: Evaluator of Python expression using ast module
+dev-python/asteval 0.9.21 0.9.22 0.9.23: Evaluator of Python expression using ast module
 dev-python/astor 0.8.1: Read/rewrite/write Python ASTs
 dev-python/astroid 2.4.2-r1 2.5: Abstract Syntax Tree for logilab packages
 dev-python/asttokens 2.0.4: Annotate Python AST trees with source text and token information
@@ -8041,8 +8041,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7 1.0.8: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r3 2.49.0-r4: Amazon Web Services API
-dev-python/boto3 1.16.43 1.16.50 1.16.56 1.16.60 1.16.61 1.16.62 1.16.63 1.17.0 1.17.1 1.17.2 1.17.3 1.17.4 1.17.5 1.17.6 1.17.7 1.17.8 1.17.9 1.17.10 1.17.11 1.17.12 1.17.13 1.17.14 1.17.15 1.17.16 9999: The AWS SDK for Python
-dev-python/botocore 1.19.43 1.19.50 1.19.56 1.19.60 1.19.61 1.19.62 1.19.63 1.20.0 1.20.1 1.20.2 1.20.3 1.20.4 1.20.5 1.20.6 1.20.7 1.20.8 1.20.9 1.20.10 1.20.11 1.20.12 1.20.13 1.20.14 1.20.15 1.20.16 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.16.43 1.16.50 1.16.56 1.16.60 1.16.61 1.16.62 1.16.63 1.17.0 1.17.1 1.17.2 1.17.3 1.17.4 1.17.5 1.17.6 1.17.7 1.17.8 1.17.9 1.17.10 1.17.11 1.17.12 1.17.13 1.17.14 1.17.15 1.17.16 1.17.17 9999: The AWS SDK for Python
+dev-python/botocore 1.19.43 1.19.50 1.19.56 1.19.60 1.19.61 1.19.62 1.19.63 1.20.0 1.20.1 1.20.2 1.20.3 1.20.4 1.20.5 1.20.6 1.20.7 1.20.8 1.20.9 1.20.10 1.20.11 1.20.12 1.20.13 1.20.14 1.20.15 1.20.16 1.20.17 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.20.1 0.21: Syntax highlighting and autocompletion for the Python interpreter
@@ -8283,7 +8283,7 @@ dev-python/flit_core 2.1.0: Simplified packaging of Python modules (core module)
 dev-python/flufl-bounce 3.0.1: Email bounce detectors.
 dev-python/flufl-i18n 2.0.2 3.1.4 3.1.5: A high level API for Python internationalization
 dev-python/flufl-lock 5.0.1 5.0.4 5.0.5: NFS-safe file locking with timeouts for POSIX systems
-dev-python/fonttools 4.18.2: Library for manipulating TrueType, OpenType, AFM and Type1 fonts
+dev-python/fonttools 4.18.2 4.21.1: Library for manipulating TrueType, OpenType, AFM and Type1 fonts
 dev-python/fqdn 1.5.0: RFC-compliant FQDN validation and manipulation for Python
 dev-python/freezegun 1.0.0-r1 1.1.0: Let your Python tests travel through time
 dev-python/frozen-flask 0.15: Freezes a Flask application into a set of static files
@@ -8389,7 +8389,7 @@ dev-python/ipdb 0.10.3-r1: IPython-enabled pdb
 dev-python/ipy 1.01: Class and tools for handling of IPv4 and IPv6 addresses and networks
 dev-python/ipykernel 5.4.3 5.5.0: IPython Kernel for Jupyter
 dev-python/ipyparallel 6.3.0-r1: Interactive Parallel Computing with IPython
-dev-python/ipython 7.19.0-r1 7.20.0: Advanced interactive shell for Python
+dev-python/ipython 7.19.0-r1 7.20.0 7.21.0: Advanced interactive shell for Python
 dev-python/ipython_genutils 0.2.0-r1: Vestigial utilities from IPython
 dev-python/ipywidgets 7.5.1-r1 7.6.2 7.6.3: IPython HTML widgets for Jupyter
 dev-python/irc 19.0.1: IRC client framework written in Python
@@ -8445,7 +8445,7 @@ dev-python/kaptan 0.5.12-r1: Configuration manager in your pocket
 dev-python/kazoo 2.8.0: A high-level Python library that makes it easier to use Apache Zookeeper
 dev-python/kconfiglib 14.1.0: A flexible Python Kconfig implementation
 dev-python/keep 2.10 2.10.1: Personal shell command keeper and snippets manager
-dev-python/keyring 22.0.0 22.0.1: Provides access to the system keyring service
+dev-python/keyring 22.0.0 22.0.1 22.2.0: Provides access to the system keyring service
 dev-python/keystoneauth 4.2.1: This package contains tools for authenticating to an OpenStack-based cloud.
 dev-python/keystonemiddleware 9.1.0: A middleware for the OpenStack Keystone API
 dev-python/kiwisolver 1.3.1: An efficient C++ implementation of the Cassowary constraint solving algorithm
