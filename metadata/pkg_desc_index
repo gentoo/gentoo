@@ -2186,7 +2186,7 @@ app-forensics/dfxml 20170921-r1 99999999: Digital Forensics XML
 app-forensics/examiner 0.5-r3: Utilizes the objdump command to disassemble and comment foreign binaries
 app-forensics/foremost 1.5.7-r3: Console program to recover files based on their headers and footers
 app-forensics/galleta 20040505_p1: IE Cookie Parser
-app-forensics/honggfuzz 2.3.1: A general purpose fuzzer with feedback support
+app-forensics/honggfuzz 2.3.1 2.4: A general purpose fuzzer with feedback support
 app-forensics/libewf 20171104-r1: Implementation of the EWF (SMART and EnCase) image format
 app-forensics/lynis 3.0.3: Security and system auditing tool
 app-forensics/mac-robber 1.02: mac-robber is a digital forensics and incident response tool that collects data
@@ -5138,7 +5138,7 @@ dev-lang/crystal 0.36.1: The Crystal Programming Language
 dev-lang/cxprolog 0.98.2: A WAM based Prolog system
 dev-lang/duktape 2.4.0 2.5.0-r1 2.6.0: Embeddable Javascript engine
 dev-lang/elixir 1.10.4 1.11.3: Elixir programming language
-dev-lang/erlang 23.0.4 23.2.2 23.2.3 23.2.4 23.2.5: Erlang programming language, runtime environment and libraries (OTP)
+dev-lang/erlang 23.0.4 23.2.2 23.2.3 23.2.4 23.2.5 23.2.6: Erlang programming language, runtime environment and libraries (OTP)
 dev-lang/esco 0.512: Combine interpreter of esoteric languages
 dev-lang/execline 2.1.1.0 2.3.0.3 2.3.0.4 2.5.0.1 2.5.1.0 2.5.3.0 2.6.1.1: A non-interactive scripting language
 dev-lang/f2c 20100827-r1: Fortran to C converter
@@ -7985,7 +7985,7 @@ dev-python/argh 0.26.2-r2: A simple argparse wrapper
 dev-python/argon2-cffi 20.1.0: CFFI bindings to the Argon2 password hashing library
 dev-python/argparse-manpage 1.4 1.5: Automatically build man-pages for your Python project
 dev-python/arpeggio 1.10.0: Parser interpreter based on PEG grammars
-dev-python/arrow 0.17.0 1.0.0: Better dates and times for Python
+dev-python/arrow 0.17.0 1.0.0 1.0.1: Better dates and times for Python
 dev-python/asgiref 3.3.1: ASGI utilities (successor to WSGI)
 dev-python/asn1crypto 1.4.0: Python ASN.1 library with a focus on performance and a pythonic API
 dev-python/asteval 0.9.21 0.9.22 0.9.23: Evaluator of Python expression using ast module
@@ -8239,7 +8239,7 @@ dev-python/fasteners 0.16: Python package that provides useful locks
 dev-python/fastjsonschema 2.14.5 2.15.0: Fast JSON schema validator for Python
 dev-python/fcl 0.0.12-r1: Python bindings for the Flexible Collision Library
 dev-python/feedgenerator 1.9.1-r1: Standalone version of django.utils.feedgenerator
-dev-python/feedparser 5.2.1 5.2.1-r1 6.0.2: Parse RSS and Atom feeds in Python
+dev-python/feedparser 5.2.1-r1 6.0.2: Parse RSS and Atom feeds in Python
 dev-python/fido2 0.7.3 0.8.1: Python based FIDO 2.0 library
 dev-python/fields 5.0.0-r2: Container class boilerplate killer
 dev-python/filelock 3.0.12-r1: A platform independent file lock for Python
@@ -8445,7 +8445,7 @@ dev-python/kaptan 0.5.12-r1: Configuration manager in your pocket
 dev-python/kazoo 2.8.0: A high-level Python library that makes it easier to use Apache Zookeeper
 dev-python/kconfiglib 14.1.0: A flexible Python Kconfig implementation
 dev-python/keep 2.10 2.10.1: Personal shell command keeper and snippets manager
-dev-python/keyring 22.0.0 22.0.1 22.2.0: Provides access to the system keyring service
+dev-python/keyring 22.0.0 22.0.1 22.2.0 22.3.0: Provides access to the system keyring service
 dev-python/keystoneauth 4.2.1: This package contains tools for authenticating to an OpenStack-based cloud.
 dev-python/keystonemiddleware 9.1.0: A middleware for the OpenStack Keystone API
 dev-python/kiwisolver 1.3.1: An efficient C++ implementation of the Cassowary constraint solving algorithm
@@ -10762,7 +10762,7 @@ dev-util/devhelp 3.36.2 3.38.1: An API documentation browser for GNOME
 dev-util/dialog 1.3.20170131 1.3.20200228 1.3.20200327: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1-r2: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3-r1: Filter files out of unified diffs using POSIX extended regular expressions
-dev-util/diffoscope 167: Will try to get to the bottom of what makes files or directories different
+dev-util/diffoscope 167 168: Will try to get to the bottom of what makes files or directories different
 dev-util/diffstat 1.63 1.64: Display a histogram of diff changes
 dev-util/diffuse 0.5.0_alpha7-r1 0.6.0: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r3: A tool for differing and merging directories
