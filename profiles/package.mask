@@ -220,7 +220,7 @@ app-office/orage
 xfce-extra/multiload-nandhp
 xfce-extra/xfce4-embed-plugin
 xfce-extra/xfce4-equake-plugin
-xfce-extra/xfce4-kbdleds-plugin
+<xfce-extra/xfce4-kbdleds-plugin-0.2.3
 xfce-extra/xfce4-windowck-plugin
 
 # Michał Górny <mgorny@gentoo.org> (2021-02-07)
