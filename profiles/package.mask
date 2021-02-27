@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2021-02-27)
+# Fails to build with GCC 10 (or otherwise!)
+# bug #708508, bug #728026, bug #542280
+# Removal in 30 days
+sci-mathematics/ggnfs
+
+# Sam James <sam@gentoo.org> (2021-02-27)
 # Fails to build with GCC 10, out of date.
 # bug #723192, bug #737058
 # Removal in 30 days
