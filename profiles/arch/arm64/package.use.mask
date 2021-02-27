@@ -12,7 +12,6 @@ sys-cluster/ceph pmdk rbd-rwl
 # but its in base now.
 net-irc/hexchat -theme-manager
 
-
 # Roy Bamford <neddyseagoon@gentoo.org> (2021-02-20)
 # sci-libs/hdf does not build on arm64 bug #771648
 sci-libs/netcdf hdf
