@@ -1,14 +1,14 @@
-BDEPEND=doc? ( || ( ( dev-lang/python:3.8 dev-python/sphinx[python_targets_python3_8(-),-python_single_target_python3_8(-)] ) ( dev-lang/python:3.7 dev-python/sphinx[python_targets_python3_7(-),-python_single_target_python3_7(-)] ) ) ) python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-)] >=dev-python/setuptools-42.0.2[python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-)]
+BDEPEND=doc? ( || ( ( dev-lang/python:3.9 dev-python/sphinx[python_targets_python3_9(-),-python_single_target_python3_9(-)] ) ( dev-lang/python:3.8 dev-python/sphinx[python_targets_python3_8(-),-python_single_target_python3_8(-)] ) ( dev-lang/python:3.7 dev-python/sphinx[python_targets_python3_7(-),-python_single_target_python3_7(-)] ) ) ) python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] >=dev-python/setuptools-42.0.2[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)]
 DEFINED_PHASES=compile configure install prepare test
 DESCRIPTION=Tree widgets for urwid
 EAPI=7
 HOMEPAGE=https://github.com/pazz/urwidtrees
-IUSE=doc python_targets_python3_7 python_targets_python3_8
+IUSE=doc python_targets_python3_7 python_targets_python3_8 python_targets_python3_9
 KEYWORDS=amd64 ~x86
 LICENSE=GPL-3
-RDEPEND=>=dev-python/urwid-1.1.0[python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-)] python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-)]
-REQUIRED_USE=|| ( python_targets_python3_7 python_targets_python3_8 )
+RDEPEND=>=dev-python/urwid-1.1.0[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)]
+REQUIRED_USE=|| ( python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 )
 SLOT=0
 SRC_URI=https://github.com/pazz/urwidtrees/archive/1.0.3.tar.gz -> urwidtrees-1.0.3.tar.gz
 _eclasses_=distutils-r1	c166cdc9bfdc0fee3ea2100e01fdcdd3	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	4c65b35c1895b82c0f44e44166a3464f	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=b1d744dc76679f94825fb1e936c62198
+_md5_=a747e7c465eec9ce9825c598f2483acd
