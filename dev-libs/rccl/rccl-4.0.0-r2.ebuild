@@ -14,7 +14,7 @@ KEYWORDS="~amd64"
 SLOT="0"
 
 RDEPEND="=dev-util/hip-$(ver_cut 1-2)*"
-DEPEND="${RDPEND}
+DEPEND="${RDEPEND}
 	dev-util/rocm-cmake"
 
 S="${WORKDIR}/rccl-rocm-${PV}"
