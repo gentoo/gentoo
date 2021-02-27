@@ -41,6 +41,7 @@ dev-lang/ats
 # Sam James <sam@gentoo.org> (2021-02-27)
 # Broken with newer(?) dev-scheme/guile, dead upstream
 # bug #642736, bug #773196
+# Removal in 30 days
 dev-scheme/greg
 
 # David Seifert <soap@gentoo.org> (2021-02-25)
