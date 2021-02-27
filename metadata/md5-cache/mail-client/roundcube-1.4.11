@@ -4,11 +4,11 @@ DESCRIPTION=A browser-based multilingual IMAP client with an application-like us
 EAPI=7
 HOMEPAGE=https://roundcube.net
 IUSE=change-password enigma ldap mysql postgres sqlite ssl spell vhosts
-KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=amd64 arm ~hppa ppc ppc64 sparc x86
 LICENSE=GPL-3 BSD PHP-2.02 PHP-3 MIT public-domain
 RDEPEND=|| ( virtual/httpd-cgi virtual/httpd-fastcgi ) >=dev-lang/php-5.4.0[filter,gd,iconv,json(+),ldap?,pdo,postgres?,session,sqlite?,ssl?,unicode,xml] virtual/httpd-php change-password? ( dev-lang/php[sockets] ) enigma? ( app-crypt/gnupg ) mysql? ( || ( dev-lang/php[mysql] dev-lang/php[mysqli] ) ) spell? ( dev-lang/php[curl,spell] ) >=app-admin/webapp-config-1.50.15
 REQUIRED_USE=|| ( mysql postgres sqlite )
 SLOT=1.4.11
 SRC_URI=https://github.com/roundcube/roundcubemail/releases/download/1.4.11/roundcubemail-1.4.11-complete.tar.gz
 _eclasses_=webapp	1d03df021d958f89f4cc78e289d0b116
-_md5_=6ad90ddd99b8bc0c943618acd9252e91
+_md5_=82de7098c919d67921d988577048732f
