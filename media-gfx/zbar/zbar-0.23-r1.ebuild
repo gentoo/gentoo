@@ -78,6 +78,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.10-errors.patch"
+	"${FILESDIR}/${PN}-0.23-r1-nonbash.patch"
 	"${FILESDIR}/${P}_create_correct_pkconfig_file_for_zbar-qt5.patch"
 	"${FILESDIR}/${P}_fix_detection_of_errors_in_the_v4l_read.patch"
 	"${FILESDIR}/${P}_fix_python_detect.patch"
