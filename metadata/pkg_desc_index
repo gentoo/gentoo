@@ -788,7 +788,7 @@ app-admin/watchfolder 0.3.3-r1: watches directories and processes files
 app-admin/webalizer 2.23.08: Webserver log file analyzer
 app-admin/webapp-config 1.55-r1 9999: Gentoo's installer for web-based applications
 app-admin/whowatch 1.8.6 99999: Displays information about users currently logged on in real time
-app-admin/xkcdpass 1.17.3-r1 1.17.6 1.17.6-r1: Password generator inspired by XKCD 936
+app-admin/xkcdpass 1.17.6-r1: Password generator inspired by XKCD 936
 app-admin/xstow 1.0.1: replacement for GNU stow with extensions
 app-admin/xtail 2.1-r1: Tail multiple logfiles at once, even if rotated
 app-admin/yadm 2.4.0: A dotfile manager for the config files in your home folder
@@ -896,7 +896,7 @@ app-backup/amanda 3.5.1-r3: The Advanced Maryland Automatic Network Disk Archive
 app-backup/attic 0.16-r1 9999: Attic is a deduplicating backup program written in Python.
 app-backup/backintime 1.2.1 9999: Backup system inspired by TimeVault and FlyBack
 app-backup/backup-manager 0.7.14 0.7.14-r1: Backup Manager is a command line backup tool for GNU/Linux
-app-backup/backupninja 1.1.0 1.2.0 1.2.1: lightweight, extensible meta-backup system
+app-backup/backupninja 1.2.1: lightweight, extensible meta-backup system
 app-backup/backuppc 3.3.1-r5: High-performance backups to a server's disk
 app-backup/bacula 9.6.5 9.6.6 9.6.7: Featureful client/server network backup suite
 app-backup/bareos 17.2.10 18.2.10 19.2.9: Featureful client/server network backup suite
@@ -17577,7 +17577,7 @@ sys-fs/treesize 0.54.1-r1: A disk consumption analyzing tool
 sys-fs/udev 243-r2 245.5-r1 246-r1 247.2 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
 sys-fs/udev-init-scripts 33 34 9999: udev startup scripts for openrc
 sys-fs/udftools 2.1 2.2 2.3: Ben Fennema's tools for packet writing and the UDF filesystem
-sys-fs/udiskie 2.2.0 2.3.0 2.3.2: An automatic disk mounting service using udisks
+sys-fs/udiskie 2.3.2: An automatic disk mounting service using udisks
 sys-fs/udisks 2.9.1 2.9.2: Daemon providing interfaces to work with storage devices
 sys-fs/unionfs-fuse 2.1 9999: Self-syncing tree-merging file system based on FUSE
 sys-fs/vhba 20200106-r1: Virtual (SCSI) Host Bus Adapter kernel module for the CDEmu suite
