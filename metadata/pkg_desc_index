@@ -13630,7 +13630,7 @@ media-plugins/vdr-dvbhddevice 2.1.3_p20140115 2.2.0_p20180420-r1: VDR Plugin: ou
 media-plugins/vdr-dvbsddevice 2.0.0 2.2.0: VDR Plugin: output device for the 'Full Featured' SD DVB Card
 media-plugins/vdr-dvd 0.3.7_pre20090106-r1: VDR Plugin: DVD-Player
 media-plugins/vdr-dvdswitch 0.2.2 0.2.3: VDR Plugin: to play dvds and dvd file structures
-media-plugins/vdr-epgsearch 1.0.1_p20141227-r1 2.2.0 2.4.0 2.4.0_p20191202 2.4.0_p20200402: VDR plugin: create timers from epg content based on saved search expressions
+media-plugins/vdr-epgsearch 2.2.0 2.2.0-r1 2.4.0_p20200402 2.4.0_p20200402-r1: VDR plugin: create timers from epg content based on saved search expressions
 media-plugins/vdr-epgsync 1.0.1 1.0.1-r1: VDR Plugin: Import the EPG of another VDR via vdr-svdrpservice
 media-plugins/vdr-exec 0.0.3: VDR plugin: Exec commands like timers at defined times
 media-plugins/vdr-extrecmenu 1.2.4 1.2.4-r1: VDR Plugin: Extended recordings menu
