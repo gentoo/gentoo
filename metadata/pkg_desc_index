@@ -66,6 +66,7 @@ acct-group/epmd 0-r1: Group for Erlang Portmapper Daemon
 acct-group/err 0: System group: err
 acct-group/etcd 0-r1: System group: etcd
 acct-group/exabgp 0-r1: System group: exabgp
+acct-group/fax 0: A group for net-dialup/mgetty
 acct-group/fetchmail 0-r1: Group for net-mail/fetchmail
 acct-group/fhem 0-r1: A group for the FHEM perl server for house automation
 acct-group/fingerprint 0-r1: System group: fingerprint
@@ -364,6 +365,7 @@ acct-user/epmd 0-r1: User for Erlang Portmapper Daemon
 acct-user/err 0: System user: err
 acct-user/etcd 0-r1: User for etcd
 acct-user/exabgp 0-r1: User for net-misc/exabgp
+acct-user/fax 0: A user for net-dialup/mgetty
 acct-user/fetchmail 0-r1: User for net-mail/fetchmail
 acct-user/fhem 0-r1: A user for the FHEM perl server for house automation
 acct-user/flatpak 0: System user: flatpak
