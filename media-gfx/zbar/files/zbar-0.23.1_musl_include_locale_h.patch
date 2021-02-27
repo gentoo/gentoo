@@ -1,5 +1,4 @@
-diff --git a/zbarcam/zbarcam.c b/zbarcam/zbarcam.c
-index f7ea281..2452613 100644
+https://github.com/mchehab/zbar/pull/115
 --- a/zbarcam/zbarcam.c
 +++ b/zbarcam/zbarcam.c
 @@ -37,6 +37,7 @@
@@ -10,8 +9,6 @@ index f7ea281..2452613 100644
  # define _(string) gettext(string)
  #else
  # define _(string) string
-diff --git a/zbarimg/zbarimg.c b/zbarimg/zbarimg.c
-index 0796fd8..3192ec1 100644
 --- a/zbarimg/zbarimg.c
 +++ b/zbarimg/zbarimg.c
 @@ -42,6 +42,7 @@
