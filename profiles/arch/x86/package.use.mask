@@ -311,10 +311,6 @@ media-libs/libmikmod cpu_flags_x86_sse2
 # Boost.Context can be built on x86
 dev-libs/boost	-context
 
-# Christoph Junghans <junghans@gentoo.org> (2013-09-08)
-# restrict USE=quad for x86 as there are too less registers
-sci-libs/fftw quad
-
 # Tim Harder <radhermit@gentoo.org> (2013-08-13)
 # dev-lang/luajit keyworded for x86 (masked in base)
 # dev-scheme/racket keyworded for amd64 (masked in base)
