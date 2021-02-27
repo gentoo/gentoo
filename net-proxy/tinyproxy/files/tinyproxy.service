@@ -1,9 +1,0 @@
-[Unit]
-Description=Tinyproxy Web Proxy Server
-After=network.target
-
-[Service]
-ExecStart=/usr/sbin/tinyproxy -d -c /etc/tinyproxy.conf
-
-[Install]
-WantedBy=multi-user.target
