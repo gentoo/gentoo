@@ -8978,7 +8978,7 @@ dev-python/python-keystoneclient 4.1.1: Client Library for OpenStack Identity
 dev-python/python-language-server 0.36.2: An implementation of the Language Server Protocol for Python
 dev-python/python-ldap 3.3.1 9999: Various LDAP-related Python modules
 dev-python/python-levenshtein 0.12.1: Functions for fast computation of Levenshtein distance, and edit operations
-dev-python/python-lhafile 0.2.2: LHA archive support for Python
+dev-python/python-lhafile 0.2.2 0.3.0: LHA archive support for Python
 dev-python/python-libevdev 0.8 0.9: Python wrappers for the libevdev library
 dev-python/python-linux-procfs 0.6.1 0.6.3: Python classes to extract information from the Linux kernel /proc files
 dev-python/python-ly 0.9.6: Tool and library for manipulating LilyPond files
