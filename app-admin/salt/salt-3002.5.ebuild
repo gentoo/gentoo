@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..8} )
+PYTHON_COMPAT=( python3_{7..9} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit systemd distutils-r1
 
@@ -100,11 +100,13 @@ PATCHES=(
 	"${FILESDIR}/salt-2019.2.0-skip-tests-that-oom-machine.patch"
 	"${FILESDIR}/salt-3002-dont-realpath-on-tmpdir.patch"
 	"${FILESDIR}/salt-3002-tests.patch"
+	"${FILESDIR}/salt-3002.5-tests.patch"
 )
 
 python_prepare_all() {
-	# remove tests with external dependencies that may not be available
-	rm tests/unit/{test_zypp_plugins.py,utils/test_extend.py} || die
+	# remove tests with external dependencies that may not be available, and
+	# tests that don't work in sandbox
+	rm tests/unit/{test_{zypp_plugins,module_names},utils/test_{extend,cache}}.py || die
 	rm tests/unit/modules/test_{file,boto_{vpc,secgroup,elb}}.py || die
 	rm tests/unit/states/test_boto_vpc.py || die
 	rm tests/support/gitfs.py tests/unit/runners/test_git_pillar.py || die
@@ -159,7 +161,7 @@ python_test() {
 		addwrite "${tempdir}"
 		ln -s "$(realpath --relative-to=/tmp "${T}/$(basename "${tempdir}")")" "${tempdir}" || die
 
-		USE_SETUPTOOLS=1 SHELL="/bin/bash" \
+		USE_SETUPTOOLS=1 NO_INTERNET=1 SHELL="/bin/bash" \
 			TMPDIR="${tempdir}" \
 			${EPYTHON} tests/runtests.py \
 			--unit-tests --no-report --verbose \
