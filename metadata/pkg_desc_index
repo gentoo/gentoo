@@ -14848,7 +14848,7 @@ net-libs/libcorkipset 1.1.1.20150311_p8: A small C helper library for storing se
 net-libs/libcrafter 1.0 9999: A high level C++ network packet sniffing and crafting library
 net-libs/libdmapsharing 2.9.39: A library that implements the DMAP family of protocols
 net-libs/libdom 0.3.3-r2 0.4.0-r1 0.4.1-r1: implementation of the W3C DOM, written in C
-net-libs/libecap 1.0.0: API for implementing ICAP content analysis and adaptation
+net-libs/libecap 1.0.0 1.0.1: API for implementing ICAP content analysis and adaptation
 net-libs/libesmtp 1.0.6-r3 9999: lib that implements the client side of the SMTP protocol
 net-libs/libetpan 1.9.4-r1: A portable, efficient middleware for different kinds of mail access
 net-libs/libflowmanager 3.0.0-r1: A library that measures and reports on packet flows
