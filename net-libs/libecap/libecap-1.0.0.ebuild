@@ -1,18 +1,17 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
-inherit autotools-utils eutils toolchain-funcs
+inherit autotools toolchain-funcs
 
 DESCRIPTION="API for implementing ICAP content analysis and adaptation"
-HOMEPAGE="http://www.e-cap.org/"
+HOMEPAGE="https://www.e-cap.org/"
 SRC_URI="http://www.measurement-factory.com/tmp/ecap/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="1"
 KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86"
-IUSE="static-libs"
 
 RDEPEND="!net-libs/libecap:0
 	!net-libs/libecap:0.2"
@@ -24,4 +23,13 @@ src_prepare() {
 
 	# Respect AR. (bug #457734)
 	tc-export AR
+
+	mv configure.{in,ac} || die
+
+	eautoreconf
+}
+
+src_configure() {
+	# Horrific autotools failure in generated config.h w/o Bash
+	CONFIG_SHELL="${EPREFIX}/bin/bash" econf
 }
