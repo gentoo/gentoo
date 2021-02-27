@@ -1,0 +1,15 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DEFINED_PHASES=configure install postinst prepare pretend
+DEPEND=acct-group/privoxy acct-user/privoxy dev-libs/libpcre brotli? ( app-arch/brotli ) ssl? ( mbedtls? ( net-libs/mbedtls ) openssl? ( dev-libs/openssl ) ) zlib? ( sys-libs/zlib )
+DESCRIPTION=A web proxy with advanced filtering capabilities for enhancing privacy
+EAPI=7
+HOMEPAGE=https://www.privoxy.org https://sourceforge.net/projects/ijbswa/
+IUSE=+acl brotli client-tags compression editor extended-host-patterns extended-statistics external-filters +fast-redirects +force fuzz graceful-termination +image-blocking ipv6 lfs +mbedtls openssl png-images selinux ssl +stats +threads toggle tools whitelists +zlib
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2+
+RDEPEND=acct-group/privoxy acct-user/privoxy dev-libs/libpcre brotli? ( app-arch/brotli ) ssl? ( mbedtls? ( net-libs/mbedtls ) openssl? ( dev-libs/openssl ) ) zlib? ( sys-libs/zlib ) extended-host-patterns? ( dev-lang/perl ) selinux? ( sec-policy/selinux-privoxy ) tools? ( net-misc/curl dev-lang/perl )
+REQUIRED_USE=client-tags? ( threads ) toggle? ( editor ) compression? ( zlib ) brotli? ( zlib ) fuzz? ( zlib ) ssl? ( ^^ ( mbedtls openssl ) threads )
+SLOT=0
+SRC_URI=mirror://sourceforge/ijbswa/privoxy-3.0.32-stable-src.tar.gz
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=9d1f7c464d36945a971fcae68012a959
