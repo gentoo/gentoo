@@ -36,6 +36,10 @@ src_prepare() {
 	# bug #770019
 	sed -i -e 's/-Werror//' configure.ac || die
 
+	# bug #697568
+	# TODO: upstream with autotools fix
+	sed -i -e "s:/lib\":/$(get_libdir)\":" configure.ac || die
+
 	eautoreconf
 }
 
