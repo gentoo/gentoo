@@ -1,0 +1,16 @@
+BDEPEND=test? ( dev-python/lit ) dev-util/ninja dev-util/cmake
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=sys-devel/clang:11=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] !!sys-devel/llvm:0
+DESCRIPTION=Bi-directional translator between SPIR-V and LLVM IR
+EAPI=7
+HOMEPAGE=https://github.com/KhronosGroup/SPIRV-LLVM-Translator
+IUSE=test tools abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_s390_32 abi_s390_64
+KEYWORDS=~amd64
+LICENSE=UoI-NCSA
+RDEPEND=sys-devel/clang:11=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?]
+REQUIRED_USE=test? ( tools )
+RESTRICT=test
+SLOT=11
+SRC_URI=https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/677b40cdab276a0b15e048f4d6c7d20d8968dfac.tar.gz -> spirv-llvm-translator-11.1.0_pre20210212.tar.gz
+_eclasses_=cmake	314a813be2f09820e8978cdee941e501	cmake-multilib	b396704c8c04bb210b7b45dff5c67fea	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	llvm	96482dd3973a93c32659252dfeba1433	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=060dea635b490f5ff81470a12bd60ca2
