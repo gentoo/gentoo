@@ -12,4 +12,4 @@ RESTRICT=bindist mirror
 SLOT=3
 SRC_URI=amd64? ( https://files.teamspeak-services.com/releases/client/3.5.6/TeamSpeak3-Client-linux_amd64-3.5.6.run ) x86? ( https://files.teamspeak-services.com/releases/client/3.5.6/TeamSpeak3-Client-linux_x86-3.5.6.run )
 _eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	unpacker	45b49db67094fdafbb6a16a2299e894b	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=a6d887e37f5e5218cb136e27471b8706
+_md5_=33ee86a5108e1662aaf16840284070e1
