@@ -11,7 +11,7 @@ SRC_URI="http://www.mpir.org/${P}.tar.bz2"
 
 LICENSE="LGPL-3"
 SLOT="0/23"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 s390 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 s390 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="+cxx cpudetection static-libs"
 
 DEPEND="
