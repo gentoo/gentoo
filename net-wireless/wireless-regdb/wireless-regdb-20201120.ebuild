@@ -5,7 +5,7 @@ EAPI=7
 
 MY_P="wireless-regdb-${PV:0:4}.${PV:4:2}.${PV:6:2}"
 DESCRIPTION="Binary regulatory database for CRDA"
-HOMEPAGE="https://wireless.kernel.org/en/developers/Regulatory"
+HOMEPAGE="https://wireless.wiki.kernel.org/en/developers/regulatory/wireless-regdb"
 SRC_URI="https://www.kernel.org/pub/software/network/${PN}/${MY_P}.tar.xz"
 
 LICENSE="ISC"

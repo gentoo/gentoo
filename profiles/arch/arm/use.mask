@@ -73,7 +73,6 @@ sid
 mms
 mtp
 ieee1394
-pm-utils
 darcs
 ggi
 nut

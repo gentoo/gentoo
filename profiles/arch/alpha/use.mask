@@ -78,7 +78,6 @@ wifi
 apm
 battery
 dmi
-pm-utils
 
 # Stuff that doesn't work on alpha, or not tested
 clang

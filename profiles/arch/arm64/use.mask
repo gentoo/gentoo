@@ -96,7 +96,6 @@ zvbi
 sid
 mms
 ieee1394
-pm-utils
 darcs
 bs2b
 ladspa

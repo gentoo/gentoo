@@ -170,10 +170,6 @@ sci-geosciences/qgis grass
 # CMake checks will only allow on amd64 & x86
 dev-db/mariadb columnstore
 
-# Michał Górny <mgorny@gentoo.org> (2020-07-30)
-# Forces downgrade of dev-python/ws4py and its revdeps.
-www-apps/nikola websocket
-
 # Michał Górny <mgorny@gentoo.org> (2020-07-27)
 # These packages require Python 2 support in dev-python/sphinx.
 # They are generally fixable by adding py3 support and using
@@ -389,10 +385,6 @@ games-fps/ut2003 dedicated
 # Alfredo Tupone <tupone@gentoo.org> (2018-11-18)
 # go brokes build of gnat-gpl
 dev-lang/gnat-gpl go
-
-# Pacho Ramos <pacho@gentoo.org> (2018-11-11)
-# pm-utils will be removed, bug #659616
-sys-power/powermgmt-base pm-utils
 
 # Alfredo Tupone <tupone@gentoo.org> (2018-10-24)
 # jit brokes build of gnat-gpl
