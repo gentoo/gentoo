@@ -3,7 +3,7 @@
 
 EAPI=7
 
-DESCRIPTION="script for converting XML and DocBook documents to a variety of output formats"
+DESCRIPTION="Script for converting XML and DocBook documents to a variety of output formats"
 HOMEPAGE="https://pagure.io/xmlto"
 SRC_URI="https://releases.pagure.org/${PN}/${P}.tar.bz2"
 
@@ -21,9 +21,11 @@ RDEPEND="app-text/docbook-xsl-stylesheets
 # We only depend on flex when we patch the input lexer.
 DEPEND="${RDEPEND}"
 
-DOCS="AUTHORS ChangeLog FAQ NEWS README THANKS"
+DOCS=( AUTHORS ChangeLog FAQ NEWS README THANKS )
 
-PATCHES=( "${FILESDIR}"/${PN}-0.0.22-format_fo_passivetex_check.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.0.22-format_fo_passivetex_check.patch
+)
 
 src_prepare() {
 	default
@@ -36,7 +38,8 @@ src_prepare() {
 
 src_configure() {
 	# We don't want the script to detect /bin/sh if it is bash.
-	export ac_cv_path_BASH=${BASH}
+	export ac_cv_path_BASH="${BASH}"
 	has_version sys-apps/util-linux || export GETOPT=getopt-long
+
 	econf
 }
