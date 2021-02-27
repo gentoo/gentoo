@@ -2597,7 +2597,7 @@ app-misc/sl 5.02: sophisticated graphical program which corrects your miss typin
 app-misc/slmon 0.5.13: Colored text-based system performance monitor
 app-misc/smtm 1.6.10-r1: Stock ticker, profit/loss calculator and chart tool
 app-misc/socnetv 2.2: Qt Social Network Visualizer
-app-misc/solaar 1.0.1-r1 1.0.2 1.0.3_rc1 9999: A Linux device manager for Logitech's Unifying Receiver peripherals
+app-misc/solaar 1.0.1-r1 1.0.2 1.0.3_rc1 1.0.5 9999: Linux Device Manager for Logitech Unifying Receivers and Paired Devices
 app-misc/sonypid 1.9: tool to use the Sony Vaios jog-dial as a mouse-wheel
 app-misc/spacenavd 0.7.1 0.8: The spacenavd daemon provides free alternative to the 3dxserv daemon
 app-misc/sphinx 2.2.11 2.2.11-r1 2.2.11-r2: Full-text search engine with support for MySQL and PostgreSQL
@@ -5670,7 +5670,7 @@ dev-libs/raft 0.9.25: C implementation of the Raft consensus protocol
 dev-libs/rapidjson 1.1.0-r2 1.1.0-r3 9999: A fast JSON parser/generator for C++ with both SAX/DOM style API
 dev-libs/rapidxml 1.13 1.13-r1: Fast XML parser
 dev-libs/rasqal 0.9.33: Library that handles Resource Description Framework (RDF)
-dev-libs/rccl 4.0.0-r1: ROCm Communication Collectives Library (RCCL)
+dev-libs/rccl 4.0.0-r2: ROCm Communication Collectives Library (RCCL)
 dev-libs/re2 0.2020.11.01: An efficient, principled regular expression library
 dev-libs/redland 1.0.17-r2: High-level interface for the Resource Description Framework
 dev-libs/redland-bindings 1.0.17.1-r1 1.0.17.1-r100: Language bindings for Redland
@@ -16263,7 +16263,7 @@ sci-libs/h5part 1.6.6: Portable High Performance Parallel Data Interface to HDF5
 sci-libs/hdf 4.2.13-r1: General purpose library and format for storing scientific data
 sci-libs/hdf5 1.10.5 1.10.5-r1: General purpose library and file format for storing scientific data
 sci-libs/hipCUB 4.0.0-r1: A thin wrapper library on top of rocPRIM or CUB
-sci-libs/hipSPARSE 4.0.0-r1: ROCm SPARSE marshalling library
+sci-libs/hipSPARSE 4.0.0-r2: ROCm SPARSE marshalling library
 sci-libs/htslib 1.10.2: C library for high-throughput sequencing data formats
 sci-libs/hypre 2.18.2: Parallel matrix preconditioners library
 sci-libs/idlcoyote 20161220 99999999: GDL library from D. Fannings IDL courses
@@ -17630,7 +17630,7 @@ sys-libs/fortify-headers 0.6 0.7 9999: A standalone implementation of fortify so
 sys-libs/freeipmi 1.5.7 1.6.6 1.6.7: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
 sys-libs/fts-standalone 0.2-r1 1.2.7: Standalone fts library for use with musl
 sys-libs/gdbm 1.18.1-r1 1.19: Standard GNU database libraries
-sys-libs/glibc 2.19-r2 2.25-r11 2.30-r9 2.31-r7 2.32-r6 2.32-r7 2.33 9999: GNU libc C library
+sys-libs/glibc 2.19-r2 2.25-r11 2.30-r9 2.31-r7 2.32-r6 2.32-r7 2.32-r8 2.33 9999: GNU libc C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 5.4.1-r1: Multi-platform helper library for other libraries
 sys-libs/kpmcore 4.2.0 20.12.2: Library for managing partitions
