@@ -83,6 +83,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/${P}_fix_leftover_on_shell_compatibility.patch"
 	"${FILESDIR}/${P}_fix_unittest.patch"
+	"${FILESDIR}/${P}_musl_include_locale_h.patch"
 	"${FILESDIR}/zbar-0.23_fix_Qt5X11Extras_detect.patch"
 	"${FILESDIR}/zbar-0.23_fix_python_detect.patch"
 )
