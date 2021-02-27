@@ -10206,10 +10206,10 @@ dev-ruby/pluggaloid 1.2.0 1.3.1 1.4.0 1.4.1 1.5.0: Pluggaloid is extensible plug
 dev-ruby/podcast 0.0.4-r2: A pure Ruby library for generating podcasts from mp3 files
 dev-ruby/polyglot 0.3.5: Polyglot provides support for fully-custom DSLs
 dev-ruby/posix-spawn 0.3.14 0.3.15: Library that implements a subset of the Ruby 1.9 Process::spawn
-dev-ruby/power_assert 1.1.5 1.1.6 1.1.7 1.2.0: Shows each value of variables and method calls in the expression
-dev-ruby/prawn 2.2.2: Fast, Nimble PDF Generation For Ruby
+dev-ruby/power_assert 1.1.5 1.1.6 1.1.7 1.2.0 2.0.0: Shows each value of variables and method calls in the expression
+dev-ruby/prawn 2.2.2 2.4.0: Fast, Nimble PDF Generation For Ruby
 dev-ruby/prawn-table 0.2.2-r1: Provides support for tables in Prawn
-dev-ruby/pry 0.13.1: Pry is a powerful alternative to the standard IRB shell for Ruby
+dev-ruby/pry 0.13.1 0.14.0: Pry is a powerful alternative to the standard IRB shell for Ruby
 dev-ruby/public_suffix 3.1.1 4.0.5 4.0.6: Parse and decompose a domain name into top level domain, domain and subdomains
 dev-ruby/pundit 2.1.0: Object oriented authorization for Rails applications
 dev-ruby/puppet_forge 2.3.3 2.3.4: Tools to access Forge API information on Modules, Users, and Releases
