@@ -1,3 +1,4 @@
+BDEPEND=virtual/pkgconfig
 DEFINED_PHASES=compile configure install postinst prepare
 DEPEND=dev-lang/perl sys-apps/groff sys-apps/texinfo virtual/awk fax? ( !net-misc/efax )
 DESCRIPTION=A programm for sending and receiving fax and voice
@@ -9,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=dev-lang/perl sys-apps/groff sys-apps/texinfo virtual/awk fax? ( !net-misc/efax ) acct-group/fax acct-user/fax fax? ( app-text/ghostscript-gpl media-libs/netpbm )
 SLOT=0
 SRC_URI=ftp://mgetty.greenie.net/pub/mgetty/source/1.2/mgetty-1.2.1.tar.gz
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=b8ac4a4d801ee4e232e50873c21c1308
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=806359ffd358a4e11ecb8162888d71b9
