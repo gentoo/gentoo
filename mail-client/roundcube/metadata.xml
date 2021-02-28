@@ -25,6 +25,10 @@
 			Add dependencies to support server-side GnuPG signing
 			and/or encryption through the enigma plugin
 		</flag>
+		<flag name="fileinfo">
+			Use the dev-lang/php fileinfo extension to guess the 
+			mime_type of attachments
+		</flag>
 		<flag name="ldap">
 			Add dependencies to support connecting to an LDAP address
 			book server
