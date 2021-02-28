@@ -2884,7 +2884,7 @@ app-text/cmigemo 1.3c-r3: Migemo library implementation in C
 app-text/code2html 0.9.1-r2: Converts source files to colored HTML output
 app-text/convertlit 1.8-r3: CLit converts MS ebook .lit files to .opf (xml+html+png+jpg)
 app-text/convmv 2.04 2.05 2.05-r1: convert filenames to utf8 or any other charset
-app-text/coolreader 3.2.2.1-r2 3.2.50 3.2.51 3.2.53: CoolReader - reader of eBook files (fb2,epub,htm,rtf,txt)
+app-text/coolreader 3.2.2.1-r2 3.2.50 3.2.51 3.2.53 3.2.54: CoolReader - reader of eBook files (fb2,epub,htm,rtf,txt)
 app-text/cpdf 2.3.1: A command line tool for manipulating PDF files
 app-text/crf++ 0.58: Yet Another CRF toolkit for segmenting/labelling sequential data
 app-text/crm114 20100106-r1: A powerful text processing tool, mainly used for spam filtering
@@ -16119,7 +16119,7 @@ sci-geosciences/gpsbabel 1.5.4-r1 9999: GPS waypoints, tracks and routes convert
 sci-geosciences/gpscorrelate 1.6.1-r1: Tool for adjusting EXIF tags of your photos with a recorded GPS trace
 sci-geosciences/gpsd 3.21 9999: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
 sci-geosciences/gpx-viewer 0.4.0-r1: Simple program to visualize a gpx file
-sci-geosciences/gpxsee 8.1 8.4: A viewer and analyzer that supports gpx, tcx, kml, fit, igc and nmea files
+sci-geosciences/gpxsee 8.1 8.4 8.7: A viewer and analyzer that supports gpx, tcx, kml, fit, igc and nmea files
 sci-geosciences/grass 7.8.4 7.8.5 9999: A free GIS with raster and vector functionality, as well as 3D vizualization
 sci-geosciences/gshhg-gmt 2.3.7: Global Self-consistent, Hierarchical, High-resolution Geography Database
 sci-geosciences/gshhs 1.13: Global Self-consistent, Hierarchical, High-resolution Shoreline programs
