@@ -32,6 +32,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2021-02-28)
+# games-strategy/0ad-data has been merged
+# into games-strategy/0ad for simplicity.
+# Note that in most cases, the latter uses
+# upstream pre-built assets anyway.
+# Nothing should really be using this.
+# bug #735352, bug #768930
+# Removal in 14 days.
+games-strategy/0ad-data
+
 # Bernd Waibel <waebbl-gentoo@posteo.net> (2021-02-27)
 # Mask until removal of media-gfx/openexr_viewers.
 # Version has several vulnerabilities. See #717474
@@ -246,14 +256,6 @@ dev-libs/libressl
 # seems to be incompatible with revdeps using go-module, the variant
 # using the latter is still broken.
 dev-go/qt
-
-# Sam James <sam@gentoo.org> (2021-01-18)
-# Older versions: need Python 2
-# Newer versions: ported to Python 3, but need
-# testing on real hardware.
-# bug #735352
-games-strategy/0ad
-~games-strategy/0ad-data-0.0.24_alpha_pre20210116040036
 
 # Lars Wendler <polynomial-c@gentoo.org> (2020-12-09)
 # Masked until most broken packages have been fixed (bug #732648)

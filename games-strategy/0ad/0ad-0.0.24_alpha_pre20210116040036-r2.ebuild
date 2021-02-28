@@ -27,7 +27,10 @@ else
 	SRC_URI="http://releases.wildfiregames.com/${MY_P}-unix-build.tar.xz"
 fi
 
-LICENSE="CC-BY-SA-3.0 GPL-2 LGPL-2.1 MIT ZLIB"
+# merged with 0ad-data
+# addresses comment #3
+# bug #771147
+LICENSE="CC-BY-SA-3.0 GPL-2 LGPL-2.1 MIT ZLIB BitstreamVera LPPL-1.3c"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="editor +lobby nvtt pch test"
@@ -35,6 +38,10 @@ RESTRICT="test"
 
 BDEPEND="virtual/pkgconfig
 	test? ( dev-lang/perl )"
+
+# remove dependency on nvtt
+# as we use the bundled one
+# bug #768930
 DEPEND="
 	dev-libs/boost:=
 	dev-libs/icu:=
@@ -52,11 +59,13 @@ DEPEND="
 	virtual/opengl
 	x11-libs/libX11
 	editor? ( x11-libs/wxGTK:${WX_GTK_VER}[X,opengl] )
-	lobby? ( >=net-libs/gloox-1.0.20 )
-	nvtt? ( >=media-gfx/nvidia-texture-tools-2.1.0 )"
+	lobby? ( >=net-libs/gloox-1.0.20 )"
 
-RDEPEND="${DEPEND}"
-PDEPEND="~games-strategy/0ad-data-${PV}"
+# add block on 0ad-data, as it is no longer needed.
+# addresses comment #3
+# bug #771147
+RDEPEND="${DEPEND}
+	!games-strategy/0ad-data"
 
 if [[ ${PV} == 9999 ]]; then
 	S="${WORKDIR}/${P}"
@@ -78,6 +87,11 @@ src_prepare() {
 	default
 
 	sed -i -e "/--build/d" libraries/source/spidermonkey/build.sh || die
+
+	# merged from 0ad-data
+	# addresses comment #3
+	# bug #771147
+	rm binaries/data/tools/fontbuilder/fonts/*.txt || die
 }
 
 src_configure() {
@@ -146,6 +160,37 @@ src_compile() {
 	# build 0ad
 	elog "Building 0ad"
 	emake -C build/workspaces/gcc verbose=1
+
+	# merged from 0ad-data
+	# addresses comment #3
+	# bug #771147
+	if [[ ${PV} == 9999 || ${PV} == *_pre* ]]; then
+		# source/lib/sysdep/os/linux/ldbg.cpp:debug_SetThreadName() tries to open /proc/self/task/${TID}/comm for writing.
+		addpredict /proc/self/task
+
+		# Based on source/tools/dist/build-archives.sh used by source/tools/dist/build.sh.
+		local archivebuild_input archivebuild_output mod_name
+		for archivebuild_input in binaries/data/mods/[A-Za-z0-9]*; do
+			mod_name="${archivebuild_input##*/}"
+			archivebuild_output="archives/${mod_name}"
+
+			mkdir -p "${archivebuild_output}"
+
+			einfo pyrogenesis -archivebuild="${archivebuild_input}" -archivebuild-output="${archivebuild_output}/${mod_name}.zip"
+			LD_LIBRARY_PATH="binaries/system" binaries/system/pyrogenesis -archivebuild="${archivebuild_input}" -archivebuild-output="${archivebuild_output}/${mod_name}.zip" || die
+
+			if [[ -f "${archivebuild_input}/mod.json" ]]; then
+				cp "${archivebuild_input}/mod.json" "${archivebuild_output}"
+			fi
+
+			rm -r "${archivebuild_input}" || die
+			mv "${archivebuild_output}" "${archivebuild_input}" || die
+		done
+
+		# Based on source/tools/dist/build-unix-win32.sh used by source/tools/dist/build.sh.
+		rm binaries/data/config/dev.cfg || die
+		rm -r binaries/data/mods/_test.* || die
+	fi
 }
 
 src_test() {
@@ -157,11 +202,20 @@ src_install() {
 	newbin binaries/system/pyrogenesis 0ad
 	use editor && newbin binaries/system/ActorEditor 0ad-ActorEditor
 
+	# merged with 0ad-data
+	# addresses comment #3
+	# bug #771147
 	insinto /usr/share/${PN}
-	doins -r binaries/data/l10n
+	doins -r binaries/data/{l10n,config,mods,tools}
 
+	# merged with 0ad-data
+	# addresses comment #3
+	# bug #771147
+	# install bundled SpiderMonkey and nvtt
+	# fixes comment #1
+	# bug #771147
 	exeinto /usr/$(get_libdir)/${PN}
-	doexe binaries/system/libCollada.so
+	doexe binaries/system/{libCollada,libmozjs78-ps-release,libnvtt,libnvcore,libnvimage,libnvmath}.so
 	use editor && doexe binaries/system/libAtlasUI.so
 
 	dodoc binaries/system/readme.txt
