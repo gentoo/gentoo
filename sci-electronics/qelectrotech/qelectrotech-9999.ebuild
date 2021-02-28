@@ -8,9 +8,9 @@ inherit qmake-utils xdg
 DESCRIPTION="Qt5 application to design electric diagrams"
 HOMEPAGE="https://qelectrotech.org/"
 
-if [[ ${PV} = *9999* ]]; then
-	inherit subversion
-	ESVN_REPO_URI="svn://svn.tuxfamily.org/svnroot/qet/qet/trunk"
+if [[ ${PV} == *9999* ]]; then
+	EGIT_REPO_URI="https://git.tuxfamily.org/qet/qet.git/"
+	inherit git-r3
 else
 	MY_P=${PN}-${PV%0}-src
 	SRC_URI="https://download.tuxfamily.org/qet/tags/20180823/${MY_P}.tar.gz"
