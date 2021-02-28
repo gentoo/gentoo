@@ -211,9 +211,15 @@ kernel-install_test() {
 
 	local qemu_arch=$(kernel-install_get_qemu_arch)
 
+	# NB: if you pass a path that does not exist or is not a regular
+	# file/directory, dracut will silently ignore it and use the default
+	# https://github.com/dracutdevs/dracut/issues/1136
+	> "${T}"/empty-file || die
+	mkdir -p "${T}"/empty-directory || die
+
 	dracut \
-		--conf /dev/null \
-		--confdir /dev/null \
+		--conf "${T}"/empty-file \
+		--confdir "${T}"/empty-directory \
 		--no-hostonly \
 		--kmoddir "${modules}" \
 		"${T}/initrd" "${version}" || die
