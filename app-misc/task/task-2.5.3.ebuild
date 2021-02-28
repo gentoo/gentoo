@@ -7,8 +7,8 @@ inherit bash-completion-r1 cmake
 
 DESCRIPTION="Taskwarrior is a command-line todo list manager"
 HOMEPAGE="https://taskwarrior.org/"
-SRC_URI="https://github.com/GothenburgBitFactory/taskwarrior/releases/download/v2.5.3/task-2.5.3.tar.gz
-https://github.com/GothenburgBitFactory/taskwarrior/releases/download/v2.5.3/tests-2.5.3.tar.gz"
+SRC_URI="https://github.com/GothenburgBitFactory/taskwarrior/releases/download/v${PV}/${P}.tar.gz
+	https://github.com/GothenburgBitFactory/taskwarrior/releases/download/v${PV}/tests-${PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
