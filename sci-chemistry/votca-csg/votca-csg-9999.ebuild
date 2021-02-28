@@ -3,59 +3,59 @@
 
 EAPI=7
 
-CMAKE_MAKEFILE_GENERATOR="ninja"
+inherit bash-completion-r1 cmake
 
-inherit bash-completion-r1 cmake multilib
-
-IUSE="doc examples extras +gromacs hdf5"
-if [ "${PV}" != "9999" ]; then
+if [[ ${PV} == *9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/${PN/-//}.git"
+else
 	SRC_URI="https://github.com/${PN/-//}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		examples? (	https://github.com/${PN/-//}-tutorials/archive/v${PV}.tar.gz -> ${PN}-tutorials-${PV}.tar.gz )"
 	KEYWORDS="~amd64 ~x86 ~amd64-linux"
 	S="${WORKDIR}/${P#votca-}"
-else
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/${PN/-//}.git"
 fi
 
 DESCRIPTION="Votca coarse-graining engine"
-HOMEPAGE="http://www.votca.org"
+HOMEPAGE="https://www.votca.org/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
+IUSE="doc examples extras +gromacs hdf5"
 
 RDEPEND="
-	~sci-libs/votca-tools-${PV}
+	app-shells/bash:*
 	>=dev-cpp/eigen-3.3
+	dev-lang/perl
+	~sci-libs/votca-tools-${PV}
 	gromacs? ( sci-chemistry/gromacs:= )
 	hdf5? ( sci-libs/hdf5 )
-	dev-lang/perl
-	app-shells/bash:*"
-
-DEPEND="${RDEPEND}
+"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	>=app-text/txt2tags-2.5
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 DOCS=( README.rst NOTICE.rst CHANGELOG.rst )
 
 src_unpack() {
-	if [[ ${PV} != *9999 ]]; then
-		default
-	else
+	if [[ ${PV} == *9999 ]]; then
 		git-r3_src_unpack
 		if use examples; then
 			EGIT_REPO_URI="https://github.com/${PN/-//}-tutorials.git"
 			EGIT_BRANCH="master"
-			EGIT_CHECKOUT_DIR="${WORKDIR}/${PN#votca-}-tutorials"\
+			EGIT_CHECKOUT_DIR="${WORKDIR}/${PN#votca-}-tutorials" \
 				git-r3_src_unpack
 		fi
+	else
+		default
 	fi
 }
 
 src_configure() {
-	mycmakeargs=(
+	local mycmakeargs=(
 		-DWITH_GMX=$(usex gromacs)
-		-DCMAKE_DISABLE_FIND_PACKAGE_HDF5=$(usex '!hdf5')
+		-DCMAKE_DISABLE_FIND_PACKAGE_HDF5=$(usex !hdf5)
 		-DWITH_RC_FILES=OFF
 		-DBUILD_CSGAPPS=ON
 	)

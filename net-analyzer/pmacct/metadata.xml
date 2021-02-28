@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-<email>netmon@gentoo.org</email>
-<name>Gentoo network monitoring and analysis project</name>
-</maintainer>
-<use>
-<flag name="64bit">Use 64bit counters instead of 32bit ones</flag>
-<flag name="bgp-bins">Link BGP daemon binaries</flag>
-<flag name="bmp-bins">Link BMP daemon binaries</flag>
-<flag name="geoipv2">Enable support for GeoIP2 through <pkg>dev-libs/libmaxminddb</pkg></flag>
-<flag name="jansson">Enable support for JSON through <pkg>dev-libs/jansson</pkg></flag>
-<flag name="kafka">Enable support for Apache Kafka through <pkg>dev-libs/librdkafka</pkg></flag>
-<flag name="l2">Enable Layer-2 features and support</flag>
-<flag name="mongodb">Enable support for MongoDB through <pkg>dev-libs/mongo-c-driver</pkg></flag>
-<flag name="ndpi">Enable support for nDPI through <pkg>net-libs/nDPI</pkg></flag>
-<flag name="nflog">Enable support for NFLOG through uacctd</flag>
-<flag name="plabel">Enable IP prefix labels</flag>
-<flag name="rabbitmq">Enable support for RabbitMQ through <pkg>net-libs/rabbitmq-c</pkg></flag>
-<flag name="st-bins">Link Streaming Telemetry daemon binaries</flag>
-<flag name="traffic-bins">Link IPv4/IPv6 traffic accounting binaries</flag>
-<flag name="zmq">Enable support for ZeroMQ through <pkg>net-libs/zeromq</pkg></flag>
-</use>
+	<maintainer type="project">
+		<email>netmon@gentoo.org</email>
+		<name>Gentoo network monitoring and analysis project</name>
+	</maintainer>
+	<use>
+		<flag name="bgp-bins">Link BGP daemon binaries</flag>
+		<flag name="bmp-bins">Link BMP daemon binaries</flag>
+		<flag name="geoipv2">Enable support for GeoIP2 through <pkg>dev-libs/libmaxminddb</pkg></flag>
+		<flag name="jansson">Enable support for JSON through <pkg>dev-libs/jansson</pkg></flag>
+		<flag name="kafka">Enable support for Apache Kafka through <pkg>dev-libs/librdkafka</pkg></flag>
+		<flag name="l2">Enable Layer-2 features and support</flag>
+		<flag name="ndpi">Enable support for nDPI through <pkg>net-libs/nDPI</pkg></flag>
+		<flag name="nflog">Enable support for NFLOG through uacctd</flag>
+		<flag name="plabel">Enable IP prefix labels</flag>
+		<flag name="rabbitmq">Enable support for RabbitMQ through <pkg>net-libs/rabbitmq-c</pkg></flag>
+		<flag name="st-bins">Link Streaming Telemetry daemon binaries</flag>
+		<flag name="traffic-bins">Link IPv4/IPv6 traffic accounting binaries</flag>
+		<flag name="zmq">Enable support for ZeroMQ through <pkg>net-libs/zeromq</pkg></flag>
+	</use>
 </pkgmetadata>
