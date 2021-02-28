@@ -5,20 +5,22 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8} )
 
-MY_PV=$(ver_cut 1)
-
 inherit eutils flag-o-matic python-any-r1 qmake-utils readme.gentoo-r1 systemd user-info
+
+MY_COMMIT="b6ddf202a496dac180218a6581344251804f2086"
 
 DESCRIPTION="Open Source DVR and media center hub"
 HOMEPAGE="https://www.mythtv.org https://github.com/MythTV/mythtv"
-if [[ "${PV}" == *9999 ]] ; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/MythTV/mythtv"
-	EGIT_BRANCH="fixes/${MY_PV}"
+if [[ $(ver_cut 3) == "p" ]] ; then
+	SRC_URI="https://github.com/MythTV/mythtv/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
+	# mythtv and mythplugins are separate builds in the github MythTV project
+	S="${WORKDIR}/mythtv-${MY_COMMIT}/mythtv"
 else
 	SRC_URI="https://github.com/MythTV/mythtv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	# mythtv and mythplugins are separate builds in the github mythtv project
+	S="${WORKDIR}/${P}/mythtv"
 fi
+KEYWORDS="~amd64 ~x86"
 LICENSE="GPL-2+"
 SLOT="0"
 
@@ -158,9 +160,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-30.0_p20190808-respect_LDFLAGS.patch"
 )
 
-# mythtv and mythplugins are separate builds in the github mythtv project
-S="${WORKDIR}/${P}/mythtv"
-
 DISABLE_AUTOFORMATTING="yes"
 DOC_CONTENTS="
 Support for metadata lookup changes is added. User configuration required.
@@ -220,11 +219,6 @@ src_prepare() {
 	sed -e "s:pure_install:pure_install INSTALLDIRS=vendor:" \
 		-i "${S}"/bindings/perl/Makefile || die "Cannot convert site_perl to vendor_perl!"
 
-	# Fix up the version info when using the fixes/${PV} branch
-#	echo "SOURCE_VERSION=\"v${MY_PV}\"" > "${S}"/VERSION
-#	echo "BRANCH=\"${MYTHTV_BRANCH}\"" >> "${S}"/VERSION
-#	echo "SOURCE_VERSION=\"${BACKPORTS}\"" > "${S}"/EXPORTED_VERSION
-#	echo "BRANCH=\"${MYTHTV_BRANCH}\"" >> "${S}"/EXPORTED_VERSION
 }
 
 src_configure() {
