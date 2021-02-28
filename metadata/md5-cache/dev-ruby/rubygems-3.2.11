@@ -1,0 +1,17 @@
+BDEPEND=ruby_targets_ruby25? ( test? ( dev-ruby/json[ruby_targets_ruby25(-)] dev-ruby/minitest:5[ruby_targets_ruby25(-)] dev-ruby/rake[ruby_targets_ruby25(-)] dev-ruby/rdoc[ruby_targets_ruby25(-)] dev-ruby/webrick[ruby_targets_ruby25(-)] ) ) ruby_targets_ruby26? ( test? ( dev-ruby/json[ruby_targets_ruby26(-)] dev-ruby/minitest:5[ruby_targets_ruby26(-)] dev-ruby/rake[ruby_targets_ruby26(-)] dev-ruby/rdoc[ruby_targets_ruby26(-)] dev-ruby/webrick[ruby_targets_ruby26(-)] ) ) ruby_targets_ruby27? ( test? ( dev-ruby/json[ruby_targets_ruby27(-)] dev-ruby/minitest:5[ruby_targets_ruby27(-)] dev-ruby/rake[ruby_targets_ruby27(-)] dev-ruby/rdoc[ruby_targets_ruby27(-)] dev-ruby/webrick[ruby_targets_ruby27(-)] ) ) ruby_targets_ruby30? ( test? ( dev-ruby/json[ruby_targets_ruby30(-)] dev-ruby/minitest:5[ruby_targets_ruby30(-)] dev-ruby/rake[ruby_targets_ruby30(-)] dev-ruby/rdoc[ruby_targets_ruby30(-)] dev-ruby/webrick[ruby_targets_ruby30(-)] ) ) ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_targets_ruby26? ( dev-lang/ruby:2.6 ) ruby_targets_ruby27? ( dev-lang/ruby:2.7 ) ruby_targets_ruby30? ( dev-lang/ruby:3.0 )
+DEFINED_PHASES=compile configure install postinst prepare setup test unpack
+DEPEND=ruby_targets_ruby25? ( virtual/ruby-ssl[ruby_targets_ruby25(-)] ) ruby_targets_ruby26? ( virtual/ruby-ssl[ruby_targets_ruby26(-)] ) ruby_targets_ruby27? ( virtual/ruby-ssl[ruby_targets_ruby27(-)] ) ruby_targets_ruby30? ( virtual/ruby-ssl[ruby_targets_ruby30(-)] ) ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_targets_ruby26? ( dev-lang/ruby:2.6 ) ruby_targets_ruby27? ( dev-lang/ruby:2.7 ) ruby_targets_ruby30? ( dev-lang/ruby:3.0 )
+DESCRIPTION=Centralized Ruby extension management system
+EAPI=7
+HOMEPAGE=https://rubygems.org/
+IUSE=server test ruby_targets_ruby25 ruby_targets_ruby26 ruby_targets_ruby27 ruby_targets_ruby30
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=GPL-2 || ( Ruby MIT )
+PDEPEND=server? ( =dev-ruby/builder-3* )
+RDEPEND=ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_targets_ruby26? ( dev-lang/ruby:2.6 ) ruby_targets_ruby27? ( dev-lang/ruby:2.7 ) ruby_targets_ruby30? ( dev-lang/ruby:3.0 )
+REQUIRED_USE=|| ( ruby_targets_ruby25 ruby_targets_ruby26 ruby_targets_ruby27 ruby_targets_ruby30 )
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://rubygems.org/rubygems/rubygems-3.2.11.tgz
+_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	multilib	d410501a125f99ffb560b0c523cd3d1e	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	ruby-ng	676004cfb6cdf3dedf1c778d56346624	ruby-utils	03dfa7f54d59d740c2964dc7256d2820	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=a6c303378ab9b795edd953c1d3cbe68d

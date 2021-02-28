@@ -10350,7 +10350,7 @@ dev-ruby/ruby2ruby 2.4.2 2.4.4: Generates readable ruby from ParseTree
 dev-ruby/ruby_gntp 0.3.4: Ruby library for GNTP(Growl Notification Transport Protocol)
 dev-ruby/ruby_parser 3.14.2 3.15.0 3.15.1: A ruby parser written in pure ruby
 dev-ruby/ruby_smb 1.1.0: pure Ruby implementation of the SMB Protocol Family
-dev-ruby/rubygems 2.7.10 2.7.11 3.0.3 3.0.9 3.1.6 3.2.6 3.2.7: Centralized Ruby extension management system
+dev-ruby/rubygems 2.7.10 2.7.11 3.0.3 3.0.9 3.1.6 3.2.6 3.2.7 3.2.11: Centralized Ruby extension management system
 dev-ruby/rubyntlm 0.6.2 0.6.3: Ruby/NTLM provides message creator and parser for the NTLM authentication.
 dev-ruby/rubypants 0.7.0 0.7.1: A Ruby port of the SmartyPants PHP library
 dev-ruby/rubytest 0.8.1: Ruby Test is a universal test harness for Ruby
@@ -17326,7 +17326,7 @@ sys-cluster/mpe2 1.0.6_p1-r2: MPI development tools
 sys-cluster/mpich 3.0.4 3.3-r1: A high performance and portable MPI implementation
 sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
-sys-cluster/neutron 16.2.0 16.3.0 17.0.0 17.1.0 2020.1.9999 2020.2.9999: A virtual network service for Openstack
+sys-cluster/neutron 16.3.0 17.1.0 2020.1.9999 2020.2.9999: A virtual network service for Openstack
 sys-cluster/nomad 0.12.8 1.0.1 1.0.4: A simple and flexible workload orchestrator
 sys-cluster/nova 21.1.1 21.1.2 22.0.1 22.1.0 2020.1.9999 2020.2.9999: Cloud computing fabric controller
 sys-cluster/nullmpi 0.7: MPI substitute library
