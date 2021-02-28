@@ -19,7 +19,8 @@ RDEPEND="
 	>=dev-python/google-api-python-client-1.7.12[${PYTHON_USEDEP}]
 	>=dev-python/simplejson-3.16.0[${PYTHON_USEDEP}]
 	>=dev-python/oauth2client-1.5.0[${PYTHON_USEDEP}]
-	<dev-python/oauth2client-5[${PYTHON_USEDEP}]"
+	<dev-python/oauth2client-5[${PYTHON_USEDEP}]
+	dev-python/xdg[${PYTHON_USEDEP}]"
 
 DISABLE_AUTOFORMATTING=1
 DOC_CONTENTS="
