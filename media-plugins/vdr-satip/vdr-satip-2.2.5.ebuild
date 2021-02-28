@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,8 +6,8 @@ EAPI=7
 inherit vdr-plugin-2
 
 DESCRIPTION="VDR Plugin: integrates SAT>IP network devices seamlessly into VDR"
-HOMEPAGE="http://www.saunalahti.fi/~rahrenbe/vdr/satip/"
-SRC_URI="http://www.saunalahti.fi/~rahrenbe/vdr/satip/files/${P}.tgz"
+HOMEPAGE="https://github.com/rofafor/vdr-plugin-satip"
+SRC_URI=" https://github.com/rofafor/vdr-plugin-satip/archive/v${PV}.tar.gz -> ${P}.tgz"
 
 KEYWORDS="~amd64 ~arm ~x86"
 SLOT="0"

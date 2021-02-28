@@ -89,16 +89,26 @@ src_install() {
 	cargo_src_install
 
 	insinto "/usr/share/${PN}"
-	doins "${PN}.bash"
+	doins "${PN}".{bash,fish,zsh}
 
 	einstalldocs
 }
 
 pkg_postinst() {
-	local p="${EPREFIX}/usr/share/${PN}/${PN}.bash"
 
-	elog "To start using ${PN}"
-	elog "Add the following to your ~/.bashrc"
+	elog "To start using ${PN}, add the following to your shell:"
 	elog
+	elog "~/.bashrc"
+	local p="${EPREFIX}/usr/share/${PN}/${PN}.bash"
+	elog "[[ -f ${p} ]] && source ${p}"
+	elog
+	elog "~/.config/fish/config.fish"
+	local p="${EPREFIX}/usr/share/${PN}/${PN}.fish"
+	elog "if test -r ${p}"
+	elog "    source ${p}"
+	elog "    mcfly_key_bindings"
+	elog
+	elog "~/.zsh"
+	local p="${EPREFIX}/usr/share/${PN}/${PN}.zsh"
 	elog "[[ -f ${p} ]] && source ${p}"
 }
