@@ -8821,7 +8821,7 @@ dev-python/pylatex 1.4.1: A Python library for creating LaTeX files and snippets
 dev-python/pylev 1.2.0: Python Levenshtein implementation
 dev-python/pylibacl 0.6.0: POSIX ACLs (Access Control Lists) for Python
 dev-python/pylibmc 1.6.1-r1: Libmemcached wrapper written as a Python extension
-dev-python/pylint 2.6.0 2.6.1 2.6.2: Python code static checker
+dev-python/pylint 2.6.0 2.6.1 2.6.2 2.7.1: Python code static checker
 dev-python/pylru 1.2.0: A least recently used (LRU) cache for Python
 dev-python/pyls-black 0.4.6: Black plugin for the Python Language Server
 dev-python/pyls-spyder 0.3.0 0.3.2: Spyder extensions for the python language server
