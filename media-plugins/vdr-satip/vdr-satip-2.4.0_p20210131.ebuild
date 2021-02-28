@@ -19,8 +19,7 @@ KEYWORDS="~amd64 ~arm ~x86"
 DEPEND="
 	>=media-video/vdr-2.4.0
 	>=net-misc/curl-7.36
-	|| ( dev-libs/tinyxml
-		dev-libs/pugixml )"
+	|| ( dev-libs/tinyxml dev-libs/pugixml )"
 RDEPEND="${DEPEND}"
 
 QA_FLAGS_IGNORED="
