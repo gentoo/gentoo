@@ -2482,7 +2482,7 @@ app-misc/gnuit 4.9.5-r2: GNU Interactive Tools - increase speed and efficiency o
 app-misc/gnutu 2.9: GNU Student's Timetable for polish users
 app-misc/go-jira 1.0.23 1.0.26 1.0.27: A simple JIRA commandline client in Go
 app-misc/golly 4.0: simulator for Conway's Game of Life and other cellular automata
-app-misc/goobook 3.4-r1 3.5.1: Access your Google contacts from the command line
+app-misc/goobook 3.4-r1 3.5.1-r1: Access your Google contacts from the command line
 app-misc/grabcartoons 2.8.4_p20141112 9999: Comic-summarizing utility
 app-misc/gramps 5.1.3: Genealogical Research and Analysis Management Programming System
 app-misc/graphlcd-base 2.0.2: Contains the lowlevel lcd drivers for GraphLCD
@@ -9369,6 +9369,7 @@ dev-python/wxpython 4.0.7 4.0.7-r1: A blending of the wxWindows C++ class librar
 dev-python/xapp 2.0.1 2.0.2: Python bindings for x11-libs/xapps
 dev-python/xarray 0.16.2 0.17.0: N-D labeled arrays and datasets in Python
 dev-python/xcffib 0.11.1: A drop in replacement for xpyb, an XCB python binding
+dev-python/xdg 5.0.1: Implementation of the XDG Base Directory Specification in Python
 dev-python/xdoctest 0.15.4: A rewrite of Python's builtin doctest module but without all the weirdness
 dev-python/xlrd 1.2.0: Library to extract data from Microsoft Excel spreadsheets
 dev-python/xlsxwriter 1.3.7: Python module for creating Excel XLSX files
@@ -18059,7 +18060,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.6.2: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 88.0.4324.182 89.0.4389.58 90.0.4427.5: Open-source version of Google Chrome web browser
+www-client/chromium 88.0.4324.182 89.0.4389.69 90.0.4427.5: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5-r3 3.1_pre20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.13.4-r1 0.13.5 0.13.5-r100 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.34.4 3.36.4: GNOME webbrowser based on Webkit
