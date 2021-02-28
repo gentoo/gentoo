@@ -17350,7 +17350,7 @@ sys-cluster/spark-bin 2.4.3 2.4.7-r1 3.0.1-r2: Lightning-fast unified analytics 
 sys-cluster/swift 2.25.1 2.26.0 2020.1.9999 2020.2.9999: A highly available, distributed, and eventually consistent object/blob store
 sys-cluster/teleport 4.0.9 4.0.10 4.1.1 4.1.4 9999: Modern SSH server for teams managing distributed infrastructure
 sys-cluster/torque 4.1.7-r1 4.2.10-r1 6.0.4-r1: Resource manager and queuing system based on OpenPBS
-sys-cluster/ucx 1.2.2-r1 1.3.0 1.5.2 1.9.0: Unified Communication X
+sys-cluster/ucx 1.2.2-r1 1.3.0 1.5.2 1.9.0 1.10.0_rc5: Unified Communication X
 sys-cluster/vzctl 4.9.4: OpenVZ ConTainers control utility
 sys-cluster/wulfware 2.6.0: Applications to monitor on a beowulf- or GRID-style clusters
 sys-cluster/zetcd 0.0.4: A ZooKeeper personality for etcd

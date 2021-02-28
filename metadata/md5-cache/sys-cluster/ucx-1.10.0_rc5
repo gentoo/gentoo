@@ -1,0 +1,14 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=compile configure prepare
+DEPEND=sys-libs/binutils-libs:= numa? ( sys-process/numactl )
+DESCRIPTION=Unified Communication X
+EAPI=7
+HOMEPAGE=https://www.openucx.org
+IUSE=+numa +openmp
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=BSD
+RDEPEND=sys-libs/binutils-libs:= numa? ( sys-process/numactl )
+SLOT=0
+SRC_URI=https://github.com/openucx/ucx/archive/v1.10.0-rc5.tar.gz -> ucx-1.10.0_rc5.tar.gz
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=261426aa21165870ffc2480d69cf3185
