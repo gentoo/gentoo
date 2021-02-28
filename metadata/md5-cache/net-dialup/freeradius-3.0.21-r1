@@ -5,7 +5,7 @@ DESCRIPTION=Highly configurable free RADIUS server
 EAPI=7
 HOMEPAGE=http://www.freeradius.org/
 IUSE=debug firebird iodbc kerberos ldap libressl memcached mysql mongodb odbc oracle pam pcap postgres python readline redis rest samba sqlite ssl systemd python_single_target_python3_7 python_single_target_python3_8
-KEYWORDS=~amd64 ~arm arm64 ~ppc ~ppc64 ~sparc x86
+KEYWORDS=amd64 ~arm arm64 ~ppc ~ppc64 ~sparc x86
 LICENSE=GPL-2
 RDEPEND=acct-group/radius acct-user/radius !net-dialup/cistronradius dev-lang/perl:= sys-libs/gdbm:= sys-libs/talloc firebird? ( dev-db/firebird ) iodbc? ( dev-db/libiodbc ) kerberos? ( virtual/krb5 ) ldap? ( net-nds/openldap ) memcached? ( dev-libs/libmemcached ) mysql? ( dev-db/mysql-connector-c ) mongodb? ( >=dev-libs/mongo-c-driver-1.13.0-r1 ) odbc? ( dev-db/unixODBC ) oracle? ( dev-db/oracle-instantclient-basic ) pam? ( sys-libs/pam ) pcap? ( net-libs/libpcap ) postgres? ( dev-db/postgresql:= ) python? ( python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) ) readline? ( sys-libs/readline:0= ) redis? ( dev-libs/hiredis:= ) rest? ( dev-libs/json-c:= ) samba? ( net-fs/samba ) sqlite? ( dev-db/sqlite:3 ) ssl? ( !libressl? ( dev-libs/openssl:0=[-bindist] ) libressl? ( dev-libs/libressl:0= ) ) systemd? ( sys-apps/systemd )
 REQUIRED_USE=python? ( ^^ ( python_single_target_python3_7 python_single_target_python3_8 ) )
@@ -13,4 +13,4 @@ RESTRICT=test firebird? ( bindist )
 SLOT=0
 SRC_URI=ftp://ftp.freeradius.org/pub/radius/freeradius-server-3.0.21.tar.gz ftp://ftp.freeradius.org/pub/radius/old/freeradius-server-3.0.21.tar.gz
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	pam	b097695df28f3974e3af860d6704d4f2	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	69861348186337fa4b269de5826004b3	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=309296c6409900239a00b92213da529d
+_md5_=04a079bea93c7752daf181423640fb50
