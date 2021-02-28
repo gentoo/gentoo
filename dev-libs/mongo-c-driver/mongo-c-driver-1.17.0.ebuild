@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Client library written in C for MongoDB"
 HOMEPAGE="https://github.com/mongodb/mongo-c-driver"
@@ -14,6 +14,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~hppa ~s390 ~x86"
 IUSE="debug examples icu libressl sasl ssl static-libs test"
 REQUIRED_USE="test? ( static-libs )"
+
+# No tests on x86 because tests require dev-db/mongodb which don't support
+# x86 anymore (bug #645994)
+RESTRICT="x86? ( test )
+	!test? ( test )"
 
 RDEPEND="app-arch/snappy:=
 	app-arch/zstd:=
@@ -32,11 +37,6 @@ DEPEND="${RDEPEND}
 		dev-libs/libbson[static-libs]
 	)"
 
-# No tests on x86 because tests require dev-db/mongodb which don't support
-# x86 anymore (bug #645994)
-RESTRICT="x86? ( test )
-	!test? ( test )"
-
 PATCHES=(
 	"${FILESDIR}/${PN}-1.14.0-no-docs.patch"
 	"${FILESDIR}/${PN}-1.16.2-enable-tests.patch" # enable tests with system libbson
@@ -44,7 +44,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# copy private headers for tests since we don't build libbson
 	if use test; then
@@ -72,7 +72,7 @@ src_configure() {
 		-DENABLE_ZSTD=ON
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 # FEATURES="test -network-sandbox" USE="static-libs" emerge dev-libs/mongo-c-driver
@@ -90,5 +90,5 @@ src_install() {
 		dodoc src/libmongoc/examples/*.c
 	fi
 
-	cmake-utils_src_install
+	cmake_src_install
 }
