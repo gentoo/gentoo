@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt	2011-04-29 00:29:40.000000000 +0200
++++ b/CMakeLists.txt	2021-02-27 00:48:05.172582259 +0100
+@@ -187,7 +187,7 @@
+ 	pkg_check_modules(FONTCONFIG REQUIRED fontconfig)
+ 	INCLUDE_DIRECTORIES ( ${FONTCONFIG_INCLUDE_DIRS} )
+ 	IF ( WITH_OPENGL )
+-		pkg_check_modules(OPENGL REQUIRED gl>=7.5)
++		pkg_check_modules(OPENGL REQUIRED glu>=7.5)
+ 		INCLUDE_DIRECTORIES ( ${OPENGL_INCLUDE_DIRS} )
+ 	ENDIF ( WITH_OPENGL )
+ 	pkg_check_modules(SDL REQUIRED sdl)

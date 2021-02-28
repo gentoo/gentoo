@@ -1,5 +1,5 @@
---- freesynd-0.7.1/CMakeLists.txt
-+++ freesynd-0.7.1/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
 @@ -34,6 +34,13 @@
  set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${EXTRA_C_FLAGS}")
  set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${EXTRA_CXX_FLAGS}")
@@ -18,7 +18,7 @@
  	message (FATAL_ERROR "Unable to locate PNG")
  endif ()
  
--if (NOT CMAKE_BUILD_TYPE OR CMAKE_BUILD_TYPE STREQUAL "debug")
+-if (CMAKE_BUILD_TYPE STREQUAL "debug" OR CMAKE_BUILD_TYPE STREQUAL "Debug")
 -	set (BUILD_DEV_TOOLS TRUE)
 -else ()
 -	set (BUILD_DEV_TOOLS FALSE)

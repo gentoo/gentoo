@@ -1,10 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-# CMAKE_IN_SOURCE_BUILD="1"
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Qt blogging client"
 HOMEPAGE="http://qtm.blogistan.co.uk"
@@ -17,7 +16,8 @@ KEYWORDS="amd64 x86"
 IUSE="dbus debug"
 RESTRICT="strip"
 
-RDEPEND="dev-lang/perl
+RDEPEND="
+	dev-lang/perl
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
@@ -27,17 +27,23 @@ RDEPEND="dev-lang/perl
 	dbus? ( dev-qt/qtdbus:5 )"
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto
-	virtual/pkgconfig"
+"
+BDEPEND="
+	virtual/pkgconfig
+"
 
 DOCS=( Changelog README )
 
-PATCHES=( "${FILESDIR}/${P}-qt-5.11.patch" ) # TODO: upstream
+PATCHES=(
+	"${FILESDIR}/${P}-qt-5.11.patch" # TODO: upstream
+	"${FILESDIR}/${P}-nomancompress.patch" # bug 740784
+)
 
 src_prepare() {
-	# bug 463810
-	sed -i -e '/Categories/s/Application;//' qtm-desktop.sh || die 'sed on qtm-desktop.sh failed'
+	cmake_src_prepare
 
-	cmake-utils_src_prepare
+	# bug 463810
+	sed -i -e '/Categories/s/Application;//' qtm-desktop.sh || die
 }
 
 src_configure() {
@@ -50,6 +56,5 @@ src_configure() {
 		-DDONT_USE_DBUS=$(usex !dbus)
 		-DQDEBUG=$(usex debug)
 	)
-
-	cmake-utils_src_configure
+	cmake_src_configure
 }

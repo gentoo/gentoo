@@ -1,18 +1,15 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-CMAKE_REMOVE_MODULES="yes"
-CMAKE_REMOVE_MODULES_LIST="FindALSA FindBoost FindFreetype FindGettext FindJpeg FindPng FindTiff FindZ"
-inherit cmake-utils desktop gnome2-utils
-
-MY_PN="Performous"
-MY_P="${MY_PN}-${PV}"
-SONGS_PN="ultrastar-songs"
+CMAKE_REMOVE_MODULES_LIST=( FindALSA FindBoost FindFreetype FindGettext FindJpeg FindPng FindTiff FindZ )
+inherit cmake desktop xdg-utils
 
 DESCRIPTION="SingStar GPL clone"
 HOMEPAGE="https://performous.org/"
+
+SONGS_PN="ultrastar-songs"
 SRC_URI="https://github.com/performous/performous/archive/${PV}.tar.gz -> ${P}.tar.gz
 	songs? (
 		mirror://sourceforge/performous/${SONGS_PN}-restricted-3.zip
@@ -22,8 +19,7 @@ SRC_URI="https://github.com/performous/performous/archive/${PV}.tar.gz -> ${P}.t
 	)
 "
 
-LICENSE="GPL-2 songs? ( CC-BY-NC-SA-2.5 CC-BY-NC-ND-2.5 )
-"
+LICENSE="GPL-2 songs? ( CC-BY-NC-SA-2.5 CC-BY-NC-ND-2.5 )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="midi songs tools webcam"
@@ -52,7 +48,8 @@ RDEPEND="
 	midi? ( media-libs/portmidi )
 	webcam? ( media-libs/opencv )
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	sys-apps/help2man
 	sys-devel/gettext
 	songs? ( app-arch/unzip )
@@ -66,10 +63,12 @@ PATCHES=(
 	"${FILESDIR}"/${P}-nomancompress.patch
 	"${FILESDIR}"/${P}-jpeg-9c.patch
 	"${FILESDIR}"/${P}-boost-1.70.patch
+	"${FILESDIR}"/${P}-boost-1.73.patch
+	"${FILESDIR}"/${P}-pango-use-pkgconfig.patch
 )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	sed -i \
 		-e "s:@GENTOO_BINDIR@:/usr/bin:" \
@@ -89,11 +88,11 @@ src_configure() {
 		-DCMAKE_VERBOSE_MAKEFILE=TRUE
 		-DSHARE_INSTALL="/usr/share/${PN}"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	if use songs ; then
 		insinto "/usr/share/${PN}"
 		doins -r "${WORKDIR}/songs"
@@ -103,9 +102,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }

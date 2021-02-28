@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
-DESCRIPTION="Tuxanci is first tux shooter inspired by game Bulanci"
+DESCRIPTION="First Tux shooter multi-player network game inspired by Bulanci"
 HOMEPAGE="https://repo.or.cz/w/tuxanci.git"
 
 if [[ ${PV} = *9999 ]]; then
@@ -25,22 +25,24 @@ RDEPEND="
 	!dedicated? (
 		>=media-libs/fontconfig-2.7.0
 		media-libs/libsdl[X,opengl?]
-		media-libs/sdl-ttf[X]
 		>=media-libs/sdl-image-1.2.10[png]
-		sound? (
-			>=media-libs/sdl-mixer-1.2.11[vorbis]
-		)
+		media-libs/sdl-ttf[X]
+		sound? ( >=media-libs/sdl-mixer-1.2.11[vorbis] )
 	)
 	physfs? ( dev-games/physfs[zip] )
 	!physfs? ( >=dev-libs/libzip-0.9 )
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 "
 
+PATCHES=( "${FILESDIR}/${P}-glu.patch" ) # bug 715132
+
 src_configure() {
 	local mycmakeargs=(
+		-DENABLE_DEBUG=OFF
 		-DWITH_AUDIO=$(usex sound)
 		-DBUILD_SERVER=$(usex dedicated)
 		-DWITH_NLS=$(usex nls)
@@ -55,5 +57,5 @@ src_configure() {
 		-DCMAKE_DOC_PATH="${EPREFIX}"/usr/share/doc/${PF}
 		-DCMAKE_CONF_PATH="${EPREFIX}"/etc
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

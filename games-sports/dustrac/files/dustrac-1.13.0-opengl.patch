@@ -1,0 +1,91 @@
+From acde4499b4a4d014d95668269797a272fd53bf86 Mon Sep 17 00:00:00 2001
+From: Jussi Lind <jussi.lind@iki.fi>
+Date: Thu, 15 Nov 2018 01:35:58 +0200
+Subject: [PATCH] CMake: Default to GLVND, use the recommended way to link to
+ GL
+
+---
+ CMakeLists.txt                       | 7 +++++++
+ src/game/CMakeLists.txt              | 2 +-
+ src/game/MiniCore/src/CMakeLists.txt | 2 +-
+ 3 files changed, 9 insertions(+), 2 deletions(-)
+
+From 7d6d2213d10ea96d25b5b9f18b42cace5bf0fbfd Mon Sep 17 00:00:00 2001
+From: Jussi Lind <jussi.lind@iki.fi>
+Date: Sun, 18 Nov 2018 21:12:20 +0200
+Subject: [PATCH] Fix linking to OpenGL libs on CMake < 3.11.0
+
+---
+ CMakeLists.txt                       | 5 +++++
+ src/game/CMakeLists.txt              | 4 +---
+ src/game/MiniCore/CMakeLists.txt     | 5 +++++
+ src/game/MiniCore/src/CMakeLists.txt | 2 +-
+ 4 files changed, 12 insertions(+), 4 deletions(-)
+
+From edc1825110f80377af51226a686731bf17d1de52 Mon Sep 17 00:00:00 2001
+From: Jussi Lind <jussi.lind@iki.fi>
+Date: Tue, 30 Jul 2019 23:14:20 +0300
+Subject: [PATCH] Use OpenGL::GL instead of OpenGL::OpenGL
+
+- For more info: https://cmake.org/cmake/help/v3.10/module/FindOpenGL.html
+---
+ CMakeLists.txt                   | 2 +-
+ src/game/MiniCore/CMakeLists.txt | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff -u a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -3,6 +3,8 @@
+ cmake_minimum_required(VERSION 2.8.12)
+ cmake_policy(VERSION 2.8.12)
+ 
++# Use cmake --help-policy [POLICY] for more information about these:
++
+ if(POLICY CMP0005)
+     cmake_policy(SET CMP0005 NEW)
+ endif()
+@@ -11,6 +13,11 @@
+     cmake_policy(SET CMP0020 NEW)
+ endif()
+ 
++# Default to GLVND
++if(POLICY CMP0072)
++    cmake_policy(SET CMP0072 OLD)
++endif()
++
+ # Global game version
+ set(VERSION_MAJOR "2")
+ set(VERSION_MINOR "0")
+diff -u a/src/game/CMakeLists.txt b/src/game/CMakeLists.txt
+--- a/src/game/CMakeLists.txt
++++ b/src/game/CMakeLists.txt
+@@ -157,15 +157,13 @@
+     MiniCore
+     MTFH
+     STFH
+-    ${OPENGL_gl_LIBRARY}
+-    ${OPENGL_glu_LIBRARY}
+     ${OPENAL_LIBRARY}
+     ${VORBISFILE_LIBRARIES}
+     ${VORBISFILE_LIB} # Valid only with MSVC
+     ${VORBIS_LIB}     # Valid only with MSVC
+     ${OGG_LIB})       # Valid only with MSVC
+ 
+-target_link_libraries(${GAME_BINARY_NAME} ${COMMON_LIBS} Qt5::OpenGL Qt5::Xml)
++target_link_libraries(${GAME_BINARY_NAME} ${COMMON_LIBS} Qt5::OpenGL Qt5::Xml OpenGL::GL)
+ 
+ foreach(TS_FILE ${TS})
+     # Make targets to copy generated qm files to data dir. This is done the hard
+diff -u a/src/game/MiniCore/CMakeLists.txt b/src/game/MiniCore/CMakeLists.txt
+--- a/src/game/MiniCore/CMakeLists.txt
++++ b/src/game/MiniCore/CMakeLists.txt
+@@ -88,7 +88,7 @@
+ 
+ add_library(MiniCore ${MiniCoreSRC})
+ 
+-target_link_libraries(MiniCore Qt5::OpenGL Qt5::Xml)
++target_link_libraries(MiniCore Qt5::Core Qt5::OpenGL Qt5::Xml OpenGL::GL)
+ 
+ if(BUILD_TESTING)
+     add_subdirectory(UnitTests)

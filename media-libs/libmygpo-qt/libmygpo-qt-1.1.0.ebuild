@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Qt/C++ library wrapping the gpodder.net webservice"
 HOMEPAGE="http://wiki.gpodder.org/wiki/Libmygpo-qt"
@@ -21,12 +21,14 @@ SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+BDEPEND="
+	virtual/pkgconfig
+"
 RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtnetwork:5
 "
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
 	test? ( dev-qt/qttest:5 )
 "
 
@@ -38,7 +40,7 @@ src_configure() {
 		-DMYGPO_BUILD_TESTS=$(usex test)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {
@@ -47,5 +49,5 @@ src_test() {
 		-E "(JsonCreatorTest-test)"
 	)
 
-	cmake-utils_src_test
+	cmake_src_test
 }

@@ -1,10 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit cmake-utils eapi7-ver
+EAPI=7
 
-MY_P="SFML-${PV}"
+inherit cmake
 
 DESCRIPTION="Simple and Fast Multimedia Library (SFML)"
 HOMEPAGE="https://www.sfml-dev.org/ https://github.com/SFML/SFML"
@@ -33,21 +32,21 @@ RDEPEND="
 		x11-libs/xcb-util-image
 	)
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	doc? ( app-doc/doxygen )
 "
 
 DOCS=( changelog.md readme.md )
 
-S="${WORKDIR}/${MY_P}"
+S="${WORKDIR}/SFML-${PV}"
 
 src_prepare() {
 	sed -i "s:DESTINATION .*:DESTINATION /usr/share/doc/${PF}:" \
 		doc/CMakeLists.txt || die
 
 	find examples -name CMakeLists.txt -delete || die
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -59,11 +58,11 @@ src_configure() {
 	if use kernel_Winnt; then
 		mycmakeargs+=( -DSFML_USE_SYSTEM_DEPS=TRUE )
 	fi
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	insinto /usr/share/cmake/Modules
 	doins cmake/SFMLConfig.cmake.in

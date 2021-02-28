@@ -1,18 +1,20 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils ltprune multilib-minimal
+EAPI=7
 
 MY_P=${P/sdl-/SDL_}
+inherit multilib-minimal
+
 DESCRIPTION="Simple Direct Media Layer Mixer Library"
-HOMEPAGE="http://www.libsdl.org/projects/SDL_mixer/"
-SRC_URI="http://www.libsdl.org/projects/SDL_mixer/release/${MY_P}.tar.gz"
+HOMEPAGE="https://www.libsdl.org/projects/SDL_mixer/"
+SRC_URI="https://www.libsdl.org/projects/SDL_mixer/release/${MY_P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
 IUSE="flac fluidsynth mad midi mikmod mod modplug mp3 playtools smpeg static-libs timidity vorbis +wav"
+
 REQUIRED_USE="
 	midi? ( || ( timidity fluidsynth ) )
 	timidity? ( midi )
@@ -23,60 +25,65 @@ REQUIRED_USE="
 	mod? ( || ( mikmod modplug ) )
 	mikmod? ( mod )
 	modplug? ( mod )
-	"
+"
 
-RDEPEND=">=media-libs/libsdl-1.2.15-r4[${MULTILIB_USEDEP}]
+RDEPEND="
+	>=media-libs/libsdl-1.2.15-r4[${MULTILIB_USEDEP}]
 	flac? ( >=media-libs/flac-1.2.1-r5[${MULTILIB_USEDEP}] )
 	midi? (
 		fluidsynth? ( >=media-sound/fluidsynth-1.1.6-r1:=[${MULTILIB_USEDEP}] )
 		timidity? ( media-sound/timidity++ )
 	)
+	mod? (
+		mikmod? ( >=media-libs/libmikmod-3.3.6-r1[${MULTILIB_USEDEP}] )
+		modplug? ( >=media-libs/libmodplug-0.8.8.4-r1[${MULTILIB_USEDEP}] )
+	)
 	mp3? (
 		mad? ( >=media-libs/libmad-0.15.1b-r8[${MULTILIB_USEDEP}] )
 		smpeg? ( >=media-libs/smpeg-0.4.4-r10[${MULTILIB_USEDEP}] )
 	)
-	mod? (
-		modplug? ( >=media-libs/libmodplug-0.8.8.4-r1[${MULTILIB_USEDEP}] )
-		mikmod? ( >=media-libs/libmikmod-3.3.6-r1[${MULTILIB_USEDEP}] )
-	)
 	vorbis? (
-		>=media-libs/libvorbis-1.3.3-r1[${MULTILIB_USEDEP}]
 		>=media-libs/libogg-1.3.0[${MULTILIB_USEDEP}]
-	)"
-DEPEND=${RDEPEND}
+		>=media-libs/libvorbis-1.3.3-r1[${MULTILIB_USEDEP}]
+	)
+"
+DEPEND="${RDEPEND}"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-wav.patch
+	"${FILESDIR}"/${P}-clang.patch
+	"${FILESDIR}"/${P}-Fix-compiling-against-libmodplug-0.8.8.5.patch
+	"${FILESDIR}"/${P}-mikmod-r58{7,8}.patch # bug 445980
+)
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-wav.patch \
-		"${FILESDIR}"/${P}-clang.patch \
-		"${FILESDIR}"/${P}-Fix-compiling-against-libmodplug-0.8.8.5.patch \
-		"${FILESDIR}"/${P}-mikmod-r58{7,8}.patch #445980
-	sed -i \
-		-e '/link.*play/s/-o/$(LDFLAGS) -o/' \
-		Makefile.in || die
+	default
+	sed -e '/link.*play/s/-o/$(LDFLAGS) -o/' -i Makefile.in || die
 }
 
 multilib_src_configure() {
+	local myeconfargs=(
+		--disable-music-flac-shared
+		--disable-music-fluidsynth-shared
+		--disable-music-mod-shared
+		--disable-music-mp3-shared
+		--disable-music-ogg-shared
+		$(use_enable wav music-wave)
+		$(use_enable vorbis music-ogg)
+		$(use_enable mikmod music-mod)
+		$(use_enable modplug music-mod-modplug)
+		$(use_enable flac music-flac)
+		$(use_enable static-libs static)
+		$(use_enable smpeg music-mp3)
+		$(use_enable mad music-mp3-mad-gpl)
+		$(use_enable timidity music-timidity-midi)
+		$(use_enable fluidsynth music-fluidsynth-midi)
+		LIBMIKMOD_CONFIG="${EPREFIX}"/usr/bin/${CHOST}-libmikmod-config
+	)
 	ECONF_SOURCE=${S} \
-	econf \
-		--disable-music-flac-shared \
-		--disable-music-fluidsynth-shared \
-		--disable-music-mod-shared \
-		--disable-music-mp3-shared \
-		--disable-music-ogg-shared \
-		$(use_enable wav music-wave) \
-		$(use_enable vorbis music-ogg) \
-		$(use_enable mikmod music-mod) \
-		$(use_enable modplug music-mod-modplug) \
-		$(use_enable flac music-flac) \
-		$(use_enable static-libs static) \
-		$(use_enable smpeg music-mp3) \
-		$(use_enable mad music-mp3-mad-gpl) \
-		$(use_enable timidity music-timidity-midi) \
-		$(use_enable fluidsynth music-fluidsynth-midi) \
-		LIBMIKMOD_CONFIG=${EPREFIX}/usr/bin/${CHOST}-libmikmod-config
+		econf "${myeconfargs[@]}"
 }
 
 multilib_src_install() {
@@ -88,7 +95,7 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	dodoc CHANGES README
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {

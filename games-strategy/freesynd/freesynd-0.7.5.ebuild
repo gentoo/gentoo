@@ -1,13 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 CMAKE_IN_SOURCE_BUILD=1
-inherit cmake-utils desktop gnome2-utils readme.gentoo-r1
+inherit cmake desktop xdg-utils readme.gentoo-r1
 
-DESCRIPTION="Portable reimplementation of engine for the classic Bullfrog game, Syndicate"
-HOMEPAGE="http://freesynd.sourceforge.net/"
+DESCRIPTION="Portable engine reimplementation for the classic Bullfrog game Syndicate"
+HOMEPAGE="https://freesynd.sourceforge.io/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
@@ -35,10 +35,9 @@ DOC_CONTENTS="
 "
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
-	sed \
-		-e "s:#freesynd_data_dir = /usr/share/freesynd/data:freesynd_data_dir = /usr/share/${PN}/data:" \
+	sed -e "s:#freesynd_data_dir = /usr/share/freesynd/data:freesynd_data_dir = /usr/share/${PN}/data:" \
 		-i ${PN}.ini || die
 }
 
@@ -47,8 +46,7 @@ src_configure() {
 		-DWITH_DEBUG=$(usex debug)
 		-DBUILD_DEV_TOOLS=$(usex devtools)
 	)
-
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
@@ -63,7 +61,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	if use debug ; then
 		ewarn "Debug build is not meant for regular playing,"
 		ewarn "game speed is higher."
@@ -72,5 +70,5 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
