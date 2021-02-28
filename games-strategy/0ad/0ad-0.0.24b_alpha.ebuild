@@ -5,7 +5,7 @@ EAPI=7
 
 WX_GTK_VER="3.0-gtk3"
 
-inherit desktop toolchain-funcs wxwidgets xdg
+inherit desktop toolchain-funcs multiprocessing wxwidgets xdg
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -145,7 +145,7 @@ src_compile() {
 	if use nvtt ; then
 		cd libraries/source/nvtt || die
 		elog "Building bundled nvtt (bug #768930)"
-		./build.sh JOBS="-j3" || die "Failed to build bundled nvtt"
+		./build.sh JOBS="-j$(makeopts_jobs)" || die "Failed to build bundled nvtt"
 		cd "${S}" || die
 	fi
 
@@ -155,12 +155,12 @@ src_compile() {
 	# e.g. bug #768840.
 	cd libraries/source/spidermonkey || die
 	elog "Building bundled SpiderMonkey (bug #768840)"
-	XARGS="${EPREFIX}/usr/bin/xargs" ./build.sh JOBS="-j3" || die "Failed to build bundled SpiderMonkey"
+	XARGS="${EPREFIX}/usr/bin/xargs" ./build.sh JOBS="-j(makeopts_jobs)" || die "Failed to build bundled SpiderMonkey"
 	cd "${S}" || die
 
 	# build 0ad
 	elog "Building 0ad"
-	emake -C build/workspaces/gcc verbose=1 JOBS="-j3"
+	emake -C build/workspaces/gcc verbose=1 JOBS="-j$(makeopts_jobs)"
 
 	# Merged from 0ad-data
 	# bug #771147 (comment 3)
