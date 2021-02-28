@@ -21,26 +21,26 @@ fi
 DESCRIPTION="A free, real-time strategy game"
 HOMEPAGE="https://play0ad.com/"
 if [[ ${PV} == 9999 ]]; then
-	SRC_URI=""
+	S="${WORKDIR}/${P}"
 elif [[ ${PV} == *_pre* ]]; then
 	SRC_URI="https://github.com/0ad/0ad/archive/${ZEROAD_GIT_REVISION}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-${ZEROAD_GIT_REVISION}"
 else
 	SRC_URI="http://releases.wildfiregames.com/${MY_P}-unix-build.tar.xz"
 	SRC_URI+=" https://releases.wildfiregames.com/${MY_P}-unix-data.tar.xz"
+	S="${WORKDIR}/${MY_P}"
 fi
 
-# merged with 0ad-data
-# addresses comment #3
-# bug #771147
 LICENSE="CC-BY-SA-3.0 GPL-2 LGPL-2.1 MIT ZLIB BitstreamVera LPPL-1.3c"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="editor +lobby nvtt pch test"
 RESTRICT="test"
 
-BDEPEND="virtual/pkgconfig
-	test? ( dev-lang/perl )"
-
+BDEPEND="
+	virtual/pkgconfig
+	test? ( dev-lang/perl )
+"
 # Removed dependency on nvtt as we use the bundled one
 # bug #768930
 DEPEND="
@@ -60,21 +60,12 @@ DEPEND="
 	virtual/opengl
 	x11-libs/libX11
 	editor? ( x11-libs/wxGTK:${WX_GTK_VER}[X,opengl] )
-	lobby? ( >=net-libs/gloox-1.0.20 )"
-
-# add block on 0ad-data, as it is no longer needed.
-# addresses comment #3
-# bug #771147
-RDEPEND="${DEPEND}
-	!games-strategy/0ad-data"
-
-if [[ ${PV} == 9999 ]]; then
-	S="${WORKDIR}/${P}"
-elif [[ ${PV} == *_pre* ]]; then
-	S="${WORKDIR}/${PN}-${ZEROAD_GIT_REVISION}"
-else
-	S="${WORKDIR}/${MY_P}"
-fi
+	lobby? ( >=net-libs/gloox-1.0.20 )
+"
+RDEPEND="
+	${DEPEND}
+	!games-strategy/0ad-data
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.0.24_alpha_pre20210116040036-build.patch"
@@ -87,11 +78,11 @@ pkg_setup() {
 src_prepare() {
 	default
 
+	# SpiderMonkey's configure no longer recognises --build for
+	# the build tuple
 	sed -i -e "/--build/d" libraries/source/spidermonkey/build.sh || die
 
-	# merged from 0ad-data
-	# addresses comment #3
-	# bug #771147
+	# Originally from 0ad-data
 	rm binaries/data/tools/fontbuilder/fonts/*.txt || die
 }
 
@@ -110,18 +101,18 @@ src_configure() {
 
 	tc-export CC CXX
 
-	# stock premake5 does not work, use the shipped one
+	# Stock premake5 does not work, use the shipped one
 	emake -C "${S}"/build/premake/premake5/build/gmake2.unix
 
-	# regenerate scripts.c so our patch applies
+	# Regenerate scripts.c so our patch applies
 	cd "${S}"/build/premake/premake5 || die
 	"${S}"/build/premake/premake5/bin/release/premake5 embed || die
 
-	# rebuild premake again... this is the most stupid build system
+	# Rebuild premake again
 	emake -C "${S}"/build/premake/premake5/build/gmake2.unix clean
 	emake -C "${S}"/build/premake/premake5/build/gmake2.unix
 
-	# run premake to create build scripts
+	# Run premake to create build scripts
 	cd "${S}"/build/premake || die
 	"${S}"/build/premake/premake5/bin/release/premake5 \
 		--file="premake5.lua" \
@@ -135,23 +126,22 @@ src_configure() {
 src_compile() {
 	tc-export AR
 
-	# build 3rd party fcollada
+	# Build 3rd party fcollada
 	einfo "Building bundled fcollada"
 	emake -C libraries/source/fcollada/src
 
-	# build bundled nvtt
-	# nvtt is abandoned upstream and 0ad have forked it
-	# and added fixes. Use their copy.
-	# bug #768930
+	# Build bundled NVTT
+	# nvtt is abandoned upstream and 0ad have forked it and added fixes.
+	# Use their copy. bug #768930
 	if use nvtt ; then
 		cd libraries/source/nvtt || die
-		elog "Building bundled nvtt (bug #768930)"
-		./build.sh JOBS="-j$(makeopts_jobs)" || die "Failed to build bundled nvtt"
+		elog "Building bundled NVTT (bug #768930)"
+		./build.sh JOBS="-j$(makeopts_jobs)" || die "Failed to build bundled NVTT"
 		cd "${S}" || die
 	fi
 
-	# build bundled spidermonkey
-	# We genuinely can't use the system SpiderMonkey right now.
+	# Build bundled SpiderMonkey
+	# We really can't use the system SpiderMonkey right now.
 	# Breakages occur even on minor bumps in upstream SM,
 	# e.g. bug #768840.
 	cd libraries/source/spidermonkey || die
@@ -159,14 +149,14 @@ src_compile() {
 	XARGS="${EPREFIX}/usr/bin/xargs" ./build.sh JOBS="-j(makeopts_jobs)" || die "Failed to build bundled SpiderMonkey"
 	cd "${S}" || die
 
-	# build 0ad
+	# Build 0ad itself!
 	elog "Building 0ad"
 	emake -C build/workspaces/gcc verbose=1 JOBS="-j$(makeopts_jobs)"
 
-	# Merged from 0ad-data
-	# bug #771147 (comment 3)
-	# We're building the assets from source if we're not using a release
-	# Warning: fragile
+	# Build assets
+	# (We only do this if we're using a snapshot/non-release)
+	# See bug #771147 (comment 3) and the old 0ad-data ebuild
+	# Warning: fragile!
 	if [[ ${PV} == 9999 || ${PV} == *_pre* ]]; then
 		# source/lib/sysdep/os/linux/ldbg.cpp:debug_SetThreadName() tries to open /proc/self/task/${TID}/comm for writing.
 		addpredict /proc/self/task
