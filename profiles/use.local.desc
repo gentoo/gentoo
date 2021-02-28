@@ -6681,7 +6681,7 @@ net-p2p/deluge:webinterface - Install dependencies needed for the web interface
 net-p2p/eiskaltdcpp:cli - Enable sample cli based on readline
 net-p2p/eiskaltdcpp:daemon - Enable eiskaltdcpp-daemon
 net-p2p/eiskaltdcpp:dht - Enable DHT (distributed hash table) support for libeiskaltdcpp
-net-p2p/eiskaltdcpp:json - Enable JSON for cli and daemon
+net-p2p/eiskaltdcpp:gold - Use gold.ld instead of ld
 net-p2p/eiskaltdcpp:libcanberra - Enable sound notifications support over libcanberra in EiskaltDC++ Gtk
 net-p2p/eiskaltdcpp:minimal - Don't install headers
 net-p2p/fms:frost - Add support for frost boards
