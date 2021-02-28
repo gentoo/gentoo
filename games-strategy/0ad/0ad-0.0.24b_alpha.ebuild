@@ -164,6 +164,8 @@ src_compile() {
 
 	# Merged from 0ad-data
 	# bug #771147 (comment 3)
+	# We're building the assets from source if we're not using a release
+	# Warning: fragile
 	if [[ ${PV} == 9999 || ${PV} == *_pre* ]]; then
 		# source/lib/sysdep/os/linux/ldbg.cpp:debug_SetThreadName() tries to open /proc/self/task/${TID}/comm for writing.
 		addpredict /proc/self/task
@@ -174,13 +176,16 @@ src_compile() {
 			mod_name="${archivebuild_input##*/}"
 			archivebuild_output="archives/${mod_name}"
 
-			mkdir -p "${archivebuild_output}"
+			mkdir -p "${archivebuild_output}" || die
 
 			einfo pyrogenesis -archivebuild="${archivebuild_input}" -archivebuild-output="${archivebuild_output}/${mod_name}.zip"
-			LD_LIBRARY_PATH="binaries/system" binaries/system/pyrogenesis -archivebuild="${archivebuild_input}" -archivebuild-output="${archivebuild_output}/${mod_name}.zip" || die
+			LD_LIBRARY_PATH="binaries/system" binaries/system/pyrogenesis \
+				-archivebuild="${archivebuild_input}" \
+				-archivebuild-output="${archivebuild_output}/${mod_name}.zip" \
+			|| die "Failed to build assets"
 
 			if [[ -f "${archivebuild_input}/mod.json" ]]; then
-				cp "${archivebuild_input}/mod.json" "${archivebuild_output}"
+				cp "${archivebuild_input}/mod.json" "${archivebuild_output}" || die
 			fi
 
 			rm -r "${archivebuild_input}" || die
