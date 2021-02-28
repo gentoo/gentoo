@@ -6,7 +6,6 @@
 <name>Gentoo network monitoring and analysis project</name>
 </maintainer>
 <use>
-<flag name="64bit">Use 64bit counters instead of 32bit ones</flag>
 <flag name="bgp-bins">Link BGP daemon binaries</flag>
 <flag name="bmp-bins">Link BMP daemon binaries</flag>
 <flag name="geoipv2">Enable support for GeoIP2 through <pkg>dev-libs/libmaxminddb</pkg></flag>
