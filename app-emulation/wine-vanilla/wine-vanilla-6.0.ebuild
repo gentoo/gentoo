@@ -19,7 +19,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	MAJOR_V=$(ver_cut 1)
 	SRC_URI="https://dl.winehq.org/wine/source/${MAJOR_V}.0/${MY_P}.tar.xz"
-	KEYWORDS="-* ~amd64 ~x86"
+	KEYWORDS="-* amd64 x86"
 fi
 S="${WORKDIR}/${MY_P}"
 

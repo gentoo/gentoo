@@ -20,6 +20,7 @@ RDEPEND="
 	sci-libs/coinor-cgl:=
 	sci-libs/coinor-clp:=
 	sci-libs/coinor-osi:=
+	>=sci-libs/coinor-symphony-5.6:=
 	sci-libs/coinor-utils:="
 DEPEND="${RDEPEND}"
 BDEPEND="
