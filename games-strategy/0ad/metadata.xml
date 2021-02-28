@@ -14,6 +14,7 @@
 			(might be needed for some mods)</flag>
 	</use>
 	<upstream>
+		<remote-id type="github">0ad/0ad</remote-id>
 		<remote-id type="sourceforge">zero-ad</remote-id>
 	</upstream>
 </pkgmetadata>
