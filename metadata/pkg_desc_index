@@ -8876,7 +8876,7 @@ dev-python/pyre2 1.0.7: Python bindings for dev-libs/re2
 dev-python/pyrfc3339 1.1: Generates and parses RFC 3339 timestamps
 dev-python/pyro 4.80: Distributed object middleware for Python (RPC)
 dev-python/pyroute2 0.5.14: A pure Python netlink and Linux network configuration library.
-dev-python/pyrqlite 2.0: Python client for rqlite
+dev-python/pyrqlite 2.0 2.1: Python client for rqlite
 dev-python/pyrsistent 0.17.3: Persistent/Functional/Immutable data structures
 dev-python/pysaml2 6.1.0: Python implementation of SAML Version 2 to be used in a WSGI environment
 dev-python/pyscard 1.9.9 2.0.0: Smart cards support in python
@@ -16432,7 +16432,7 @@ sci-mathematics/arb 2.17.0 2.18.1: C library for arbitrary-precision interval ar
 sci-mathematics/bertini 1.4: Software for Numerical Algebraic Geometry
 sci-mathematics/calc 2.12.5.4: Arbitrary precision C-like arithmetic system
 sci-mathematics/cgal 5.1 5.2: C++ library for geometric algorithms and data structures
-sci-mathematics/cliquer 1.21: C routines for finding cliques in an arbitrary weighted graph
+sci-mathematics/cliquer 1.21 1.22: C routines for finding cliques in an arbitrary weighted graph
 sci-mathematics/coq 8.6.1-r1 8.9.1-r1 8.11.2 8.12.0-r1 8.13.0: Proof assistant written in O'Caml
 sci-mathematics/cvc4 1.7-r1: automatic theorem prover for satisfiability modulo theories (SMT) problems
 sci-mathematics/dataplot 20131220: Program for scientific visualization and statistical analyis
