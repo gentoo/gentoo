@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic toolchain-funcs
+inherit flag-o-matic systemd toolchain-funcs
 
 DESCRIPTION="A programm for sending and receiving fax and voice"
 HOMEPAGE="http://mgetty.greenie.net/"
@@ -38,6 +38,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.37-qa-fixes.patch
 	"${FILESDIR}"/${PN}-1.2.1-Lucent.c.patch
 	"${FILESDIR}"/${PN}-1.2.1-gentoo.patch
+	"${FILESDIR}"/${PN}-1.2.1-aarch64.patch
 )
 
 src_prepare() {
@@ -167,6 +168,8 @@ src_install() {
 		keepdir /var/spool/fax/outgoing/locks
 		keepdir /var/spool/fax/incoming
 	fi
+
+	systemd_newunit "${FILESDIR}"/mgetty.service mgetty@.service
 }
 
 pkg_postinst() {
