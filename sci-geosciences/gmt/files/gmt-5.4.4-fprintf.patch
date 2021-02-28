@@ -1,0 +1,11 @@
+--- gmt-5.4.4/src/common_sighandler.c.orig	2021-01-04 12:21:10.244387584 +0100
++++ gmt-5.4.4/src/common_sighandler.c	2021-01-04 12:21:14.121048586 +0100
+@@ -187,7 +187,7 @@
+ 		return;
+ 	}
+ 	else {
+-		fprintf (stderr, "ERROR: Caught signal number %d (%s) at\n", sig_num, sys_siglist[sig_num]);
++		fprintf (stderr, "ERROR: Caught signal number %d (%s) at\n", sig_num, strsignal(sig_num));
+ 		backtrace_symbols_fd (array, 2, STDERR_FILENO); /* print function with faulting instruction */
+ 		size = backtrace (array, 50); /* get void*'s for all entries on the stack */
+ 		fprintf (stderr, "Stack backtrace:\n");

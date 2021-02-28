@@ -33,6 +33,10 @@ RDEPEND="${DEPEND}
 	sci-geosciences/gshhg-gmt
 "
 
+PATCHES=(
+        "${FILESDIR}"/${PN}-5.4.4-fprintf.patch
+)
+
 src_prepare() {
 	cmake_src_prepare
 	# Rename man pages to avoid a name conflict with gmt4
