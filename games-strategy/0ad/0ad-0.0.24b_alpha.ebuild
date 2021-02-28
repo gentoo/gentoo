@@ -41,8 +41,7 @@ RESTRICT="test"
 BDEPEND="virtual/pkgconfig
 	test? ( dev-lang/perl )"
 
-# remove dependency on nvtt
-# as we use the bundled one
+# Removed dependency on nvtt as we use the bundled one
 # bug #768930
 DEPEND="
 	dev-libs/boost:=
@@ -163,9 +162,8 @@ src_compile() {
 	elog "Building 0ad"
 	emake -C build/workspaces/gcc verbose=1 JOBS="-j3"
 
-	# merged from 0ad-data
-	# addresses comment #3
-	# bug #771147
+	# Merged from 0ad-data
+	# bug #771147 (comment 3)
 	if [[ ${PV} == 9999 || ${PV} == *_pre* ]]; then
 		# source/lib/sysdep/os/linux/ldbg.cpp:debug_SetThreadName() tries to open /proc/self/task/${TID}/comm for writing.
 		addpredict /proc/self/task
@@ -204,18 +202,13 @@ src_install() {
 	newbin binaries/system/pyrogenesis 0ad
 	use editor && newbin binaries/system/ActorEditor 0ad-ActorEditor
 
-	# merged with 0ad-data
-	# addresses comment #3
-	# bug #771147
+	# Merged from 0ad-data
+	# bug #771147 (comment 3)
 	insinto /usr/share/${PN}
 	doins -r binaries/data/{l10n,config,mods,tools}
 
-	# merged with 0ad-data
-	# addresses comment #3
-	# bug #771147
-	# install bundled SpiderMonkey and nvtt
-	# fixes comment #1
-	# bug #771147
+	# Install bundled SpiderMonkey and nvtt
+	# bug #771147 (comment 1)
 	exeinto /usr/$(get_libdir)/${PN}
 	doexe binaries/system/{libCollada,libmozjs78-ps-release,libnvtt,libnvcore,libnvimage,libnvmath}.so
 	use editor && doexe binaries/system/libAtlasUI.so
