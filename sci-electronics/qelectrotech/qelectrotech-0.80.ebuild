@@ -45,8 +45,8 @@ DEPEND="${RDEPEND}"
 DOCS=( CREDIT ChangeLog README )
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.80-fix-paths.patch"
-	"${FILESDIR}/${PN}-0.80-nomancompress.patch"
+	"${FILESDIR}/${P}-fix-paths.patch"
+	"${FILESDIR}/${P}-nomancompress.patch"
 )
 
 src_prepare() {
