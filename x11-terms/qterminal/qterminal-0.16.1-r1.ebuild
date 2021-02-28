@@ -33,7 +33,7 @@ RDEPEND="${DEPEND}
 	!lxqt-base/lxqt-l10n
 "
 
-PATCHES=( "${FILESDIR}/${PN}-0.16.1-appdata.patch" )
+PATCHES=( "${FILESDIR}/${P}-appdata.patch" )
 
 pkg_postinst() {
 	xdg_icon_cache_update
