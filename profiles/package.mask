@@ -38,7 +38,7 @@
 # Note that in most cases, the latter uses
 # upstream pre-built assets anyway.
 # Nothing should really be using this.
-# bug #735352
+# bug #735352, bug #768930
 # Removal in 14 days.
 games-strategy/0ad-data
 
