@@ -1,0 +1,32 @@
+From c138881767262b9f5c64a465a0e1e46ffcfc5899 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Sun, 28 Feb 2021 16:51:30 +0100
+Subject: [PATCH] [Gentoo specific] Disable ccache building
+
+On Gentoo, we use a USE flag to determine whether ccache
+should be used for building.
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+---
+ openscad.pro | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/openscad.pro b/openscad.pro
+index b76ca76..678e08d 100755
+--- a/openscad.pro
++++ b/openscad.pro
+@@ -211,11 +211,6 @@ mdi {
+   DEFINES += ENABLE_MDI
+ }
+ 
+-system("ccache -V >/dev/null 2>/dev/null") {
+-  CONFIG += ccache
+-  message("Using ccache")
+-}
+-
+ include(common.pri)
+ 
+ # mingw has to come after other items so OBJECT_DIRS will work properly
+-- 
+2.30.1
+
