@@ -30,7 +30,10 @@ BDEPEND="
 		dev-texlive/texlive-latexextra
 		virtual/latex-base
 	)
-	test? ( sci-libs/coinor-sample )"
+	test? (
+		sci-libs/coinor-netlib
+		sci-libs/coinor-sample
+	)"
 
 src_prepare() {
 	default
@@ -48,7 +51,10 @@ src_configure() {
 src_compile() {
 	default
 	if use doc; then
-		pushd Doc && pdflatex Walkthrough && pdflatex man && popd || die
+		pushd Doc &&
+			pdflatex Walkthrough &&
+			pdflatex man &&
+			popd || die
 	fi
 }
 
@@ -63,7 +69,7 @@ src_install() {
 
 	# Other coinor-* use lowercase e, stay in-line with them.
 	docinto examples
-	dodoc -r Examples/*
+	dodoc -r Examples/.
 
 	# Duplicate or irrelevant files.
 	rm -r "${ED}"/usr/share/coin/doc || die
