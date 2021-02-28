@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit autotools elisp-common latex-package python-r1
 
@@ -13,8 +13,9 @@ SRC_URI="mirror://sourceforge/asymptote/${P}.src.tgz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="+boehm-gc doc emacs examples fftw gsl +imagemagick latex offscreen +opengl python sigsegv svg test vim-syntax X"
+KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+IUSE="+boehm-gc curl doc emacs examples fftw gsl +imagemagick latex offscreen +opengl python sigsegv svg test vim-syntax"
+# FIXME: xasy is currently broken
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -25,8 +26,9 @@ REQUIRED_USE="
 RDEPEND="
 	>=sys-libs/ncurses-5.4-r5:0=
 	>=sys-libs/readline-4.3-r5:0=
+	net-libs/libtirpc
 	imagemagick? ( media-gfx/imagemagick[png] )
-	opengl? ( media-libs/mesa[X(+)] media-libs/freeglut media-libs/glew:0 media-libs/glm )
+	opengl? ( media-libs/mesa media-libs/freeglut media-libs/glew:0 media-libs/glm )
 	offscreen? ( media-libs/mesa[osmesa] )
 	svg? ( app-text/dvisvgm )
 	sigsegv? ( dev-libs/libsigsegv )
@@ -34,13 +36,7 @@ RDEPEND="
 	fftw? ( >=sci-libs/fftw-3.0.1 )
 	gsl? ( sci-libs/gsl )
 	python? ( ${PYTHON_DEPS} )
-	X? (
-		${PYTHON_DEPS}
-		dev-python/PyQt5[${PYTHON_USEDEP},gui,widgets,svg]
-		dev-python/numpy
-		dev-python/pycson
-		>=gnome-base/librsvg-2.40
-		)
+	curl? ( net-misc/curl )
 	latex? (
 		virtual/latex-base
 		>=dev-texlive/texlive-latexextra-2013
@@ -83,6 +79,7 @@ src_configure() {
 		CFLAGS="${CXXFLAGS}" \
 		--disable-gc-debug \
 		$(use_enable boehm-gc gc system) \
+		$(use_enable curl) \
 		$(use_enable fftw) \
 		$(use_enable gsl) \
 		$(use_enable opengl gl) \
@@ -123,29 +120,26 @@ src_install() {
 
 	# .asy files
 	insinto /usr/share/${PN}
-	doins base/*.asy
+	doins -r base/*.asy base/shaders base/webgl
 
 	# documentation
 	dodoc BUGS ChangeLog README ReleaseNotes TODO
 	doman doc/asy.1
-
-	# X GUI
-	if use X; then
-		insinto /usr/share/${PN}
-		doins -r GUI
-		chmod +x "${D}"/usr/share/${PN}/GUI/xasy.py
-		dosym ../share/${PN}/GUI/xasy.py /usr/bin/xasy
-		doman doc/xasy.1x
-	fi
 
 	# examples
 	if use examples; then
 		insinto /usr/share/${PN}/examples
 		doins \
 			examples/*.asy \
+			examples/*.views \
+			examples/*.dat \
+			examples/*.bib \
+			examples/piicon.png \
+			examples/100d.pdb1 \
 			doc/*.asy \
 			doc/*.csv \
 			doc/*.dat \
+			doc/pixel.pdf \
 			doc/extra/*.asy
 		insinto /usr/share/${PN}/examples/animations
 		doins examples/animations/*.asy
@@ -158,7 +152,7 @@ src_install() {
 		doins ${PN}.sty asycolors.sty
 		if use examples; then
 			insinto /usr/share/${PN}/examples
-			doins latexusage.tex
+			doins latexusage.tex externalprc.tex
 			insinto /usr/share/${PN}/examples/animations
 			doins ../examples/animations/*.tex
 		fi
@@ -172,7 +166,7 @@ src_install() {
 
 	# emacs mode
 	if use emacs; then
-		elisp-install ${PN} base/*.el base/*.elc
+		elisp-install ${PN} base/*.el base/*.elc asy-keywords.el
 		elisp-site-file-install "${FILESDIR}"/64${PN}-gentoo.el
 	fi
 
@@ -181,7 +175,7 @@ src_install() {
 		insinto /usr/share/vim/vimfiles/syntax
 		doins base/asy.vim
 		insinto /usr/share/vim/vimfiles/ftdetect
-		doins "${FILESDIR}"/asy-ftd.vim
+		doins base/asy_filetype.vim
 	fi
 
 	# extra documentation

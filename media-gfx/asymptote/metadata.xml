@@ -20,10 +20,12 @@
 	</longdescription>
 	<use>
 		<flag name="boehm-gc">Enables using the Boehm-Demers-Weiser conservative garbage collector</flag>
+		<flag name="curl">Enables running remote programs via <pkg>net-misc/curl</pkg></flag>
 		<flag name="sigsegv">Enables using <pkg>dev-libs/libsigsegv</pkg></flag>
 		<flag name="offscreen">Enables off-screen rendering</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">asymptote</remote-id>
+		<remote-id type="github">vectorgraphics/asymptote</remote-id>
 	</upstream>
 </pkgmetadata>

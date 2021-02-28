@@ -1,18 +1,19 @@
-Index: asymptote-2.65/settings.cc
+Только в asymptote-2.67.orig: .pc
+Index: asymptote-2.69/settings.cc
 ===================================================================
---- asymptote-2.65.orig/settings.cc
-+++ asymptote-2.65/settings.cc
-@@ -100,13 +100,13 @@ string defaultPSViewer="open";
+--- asymptote-2.69.orig/settings.cc
++++ asymptote-2.69/settings.cc
+@@ -101,13 +101,13 @@ string defaultPSViewer="open";
  string defaultPDFViewer="open";
  string defaultHTMLViewer="open";
- #else  
+ #else
 -string defaultPSViewer="gv";
 -string defaultPDFViewer="acroread";
 -string defaultHTMLViewer="google-chrome";
 +string defaultPSViewer="xdg-open";
 +string defaultPDFViewer="xdg-open";
 +string defaultHTMLViewer="xdg-open";
- #endif  
+ #endif
  string defaultGhostscript="gs";
  string defaultGhostscriptLibrary="";
 -string defaultDisplay="display";
