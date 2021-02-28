@@ -112,7 +112,10 @@ RDEPEND="${COMMON_DEPEND}
 	>=acct-user/systemd-timesync-0-r1
 	>=sys-apps/baselayout-2.2
 	selinux? ( sec-policy/selinux-base-policy[systemd] )
-	sysv-utils? ( !sys-apps/sysvinit )
+	sysv-utils? (
+		!sys-apps/openrc[sysv-utils(-)]
+		!sys-apps/sysvinit
+	)
 	!sysv-utils? ( sys-apps/sysvinit )
 	resolvconf? ( !net-dns/openresolv )
 	!build? ( || (
