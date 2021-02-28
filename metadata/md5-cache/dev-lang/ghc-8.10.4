@@ -1,0 +1,16 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare prerm pretend setup test unpack
+DEPEND=>=dev-lang/perl-5.6.1 dev-libs/gmp:0= sys-libs/ncurses:0=[unicode] elfutils? ( dev-libs/elfutils ) !ghcmakebinary? ( dev-libs/libffi:= ) numa? ( sys-process/numactl ) binary? ( !prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.17 ) ) sys-libs/ncurses:0/6 ) doc? ( app-text/docbook-xml-dtd:4.2 app-text/docbook-xml-dtd:4.5 app-text/docbook-xsl-stylesheets dev-python/sphinx >=dev-libs/libxslt-1.1.2 ) !ghcbootstrap? ( !prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.17 ) ) )
+DESCRIPTION=The Glasgow Haskell Compiler
+EAPI=7
+HOMEPAGE=https://www.haskell.org/ghc/
+IUSE=big-endian doc elfutils ghcbootstrap ghcmakebinary +gmp numa profile test binary
+LICENSE=BSD
+PDEPEND=!ghcbootstrap? ( >=app-admin/haskell-updater-1.2 )
+RDEPEND=>=dev-lang/perl-5.6.1 dev-libs/gmp:0= sys-libs/ncurses:0=[unicode] elfutils? ( dev-libs/elfutils ) !ghcmakebinary? ( dev-libs/libffi:= ) numa? ( sys-process/numactl ) binary? ( !prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.17 ) ) sys-libs/ncurses:0/6 )
+REQUIRED_USE=?? ( ghcbootstrap binary ) ?? ( profile binary )
+RESTRICT=!test? ( test )
+SLOT=0/8.10.4
+SRC_URI=!binary? ( https://downloads.haskell.org/ghc/8.10.4/ghc-8.10.4-src.tar.xz test? ( https://downloads.haskell.org/ghc/8.10.4/ghc-8.10.4-testsuite.tar.xz ) ) !ghcbootstrap? ( amd64? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-8.10.4-x86_64-pc-linux-gnu.tbz2 ) x86? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-8.10.4-i686-pc-linux-gnu.tbz2 ) )
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	bash-completion-r1	be99724bde4274de21e581204e9d164a	check-reqs	7e3fd1855a5e1b50bb9e80827b3f672d	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	ghc-package	e3a4a688accbd5f1226e46b379cc1c3e	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=7329f57faeffdcde082f7ddcf6e8a0e1
