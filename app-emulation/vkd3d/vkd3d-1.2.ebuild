@@ -9,7 +9,7 @@ if [[ "${PV}" == "9999" ]]; then
 	EGIT_REPO_URI="https://source.winehq.org/git/vkd3d.git"
 	inherit git-r3
 else
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	SRC_URI="https://dl.winehq.org/vkd3d/source/${P}.tar.xz"
 fi
 
