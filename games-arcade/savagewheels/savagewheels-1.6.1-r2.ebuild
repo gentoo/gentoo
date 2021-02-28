@@ -41,7 +41,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_DATADIR="${EPREFIX}"/usr/share/${PN}
 		-DCMAKE_INSTALL_LIBEXECDIR="${EPREFIX}"/usr/libexec/${PN}
-		-DSOUND=$(usex sound)
+		-DSOUND=$(usex sound YES NO) # yes, 'NO' is important here. bug 773439
 	)
 	cmake_src_configure
 }
