@@ -5283,14 +5283,12 @@ net-analyzer/ossec-hids:local - Build "local" installation target
 net-analyzer/ossec-hids:server - Build "server" installation target
 net-analyzer/pinger:gtk2 - Install the gtkpinger GUI utility based on x11-libs/gtk+:2
 net-analyzer/pinger:gtk3 - Install the gtkpinger GUI utility based on x11-libs/gtk+:3
-net-analyzer/pmacct:64bit - Use 64bit counters instead of 32bit ones
 net-analyzer/pmacct:bgp-bins - Link BGP daemon binaries
 net-analyzer/pmacct:bmp-bins - Link BMP daemon binaries
 net-analyzer/pmacct:geoipv2 - Enable support for GeoIP2 through dev-libs/libmaxminddb
 net-analyzer/pmacct:jansson - Enable support for JSON through dev-libs/jansson
 net-analyzer/pmacct:kafka - Enable support for Apache Kafka through dev-libs/librdkafka
 net-analyzer/pmacct:l2 - Enable Layer-2 features and support
-net-analyzer/pmacct:mongodb - Enable support for MongoDB through dev-libs/mongo-c-driver
 net-analyzer/pmacct:ndpi - Enable support for nDPI through net-libs/nDPI
 net-analyzer/pmacct:nflog - Enable support for NFLOG through uacctd
 net-analyzer/pmacct:plabel - Enable IP prefix labels

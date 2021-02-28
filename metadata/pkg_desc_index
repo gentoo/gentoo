@@ -5397,7 +5397,7 @@ dev-libs/libbase58 0.1.4-r1: C implementation of Bitcoin's base58 encoding
 dev-libs/libbpf 0.0.6 0.0.7 0.0.8 0.0.9-r1 0.1.0-r1 0.1.1 0.2 0.3 9999: Stand-alone build of libbpf from the Linux kernel
 dev-libs/libbrahe 1.1.0-r1: A Heterogenous C Library of Numeric Functions
 dev-libs/libbsd 0.10.0: An library to provide useful functions commonly found on BSD systems
-dev-libs/libbson 0.98.0 1.1.2 1.1.10 1.3.5 1.3.6 1.6.2 1.8.2 1.9.3 1.10.3 1.11.0 1.12.0 1.13.0 1.13.1 1.14.0 1.15.1 1.16.2 1.17.0: Library routines related to building,parsing and iterating BSON documents
+dev-libs/libbson 1.16.2 1.17.0: Library routines related to building,parsing and iterating BSON documents
 dev-libs/libbulletml 0.0.6: A Library of Bullet Markup Language
 dev-libs/libburn 1.5.2_p1 1.5.4: Open-source library for reading, mastering and writing optical discs
 dev-libs/libbytesize 2.3 2.4 2.5: Tiny library providing a C "class" for working with arbitrary big sizes in bytes
@@ -5612,7 +5612,7 @@ dev-libs/mimetic 0.9.8: C++ MIME library designed to be easy to use and integrat
 dev-libs/miniz 2.1.0-r2 9999: A lossless, high performance data compression library
 dev-libs/mm 1.4.2-r2: Shared Memory Abstraction Library
 dev-libs/mmtf-cpp 1.0.0: The pure C++ implementation of the MMTF API, decoder and encoder
-dev-libs/mongo-c-driver 0.98.2 1.1.2-r1 1.1.10 1.3.5 1.6.2 1.8.2 1.9.3 1.10.3 1.11.0 1.12.0 1.13.0-r1 1.13.1 1.14.0 1.15.1 1.16.2 1.17.0: Client library written in C for MongoDB
+dev-libs/mongo-c-driver 1.16.2 1.17.0: Client library written in C for MongoDB
 dev-libs/mpc 1.2.1: A library for multiprecision complex arithmetic with exact rounding
 dev-libs/mpfr 4.1.0: library for multiple-precision floating-point computations with exact rounding
 dev-libs/msgpack 3.3.0: MessagePack is a binary-based efficient data interchange format
@@ -14447,7 +14447,7 @@ net-analyzer/pathload 1.3.2-r1: Non-intrusive utility for estimation of availabl
 net-analyzer/pbnj 2.04-r1: A tool for running Nmap scans and diff'ing the results
 net-analyzer/pinger 0.33: Cyclic multi ping utility for selected adresses using GTK/ncurses
 net-analyzer/pktstat 1.8.5-r1: A network monitoring tool with bandwidth tracking
-net-analyzer/pmacct 1.7.4 1.7.4_p1 1.7.5 999999: A network tool to gather IP traffic information
+net-analyzer/pmacct 1.7.5 999999: A network tool to gather IP traffic information
 net-analyzer/pnp4nagios 0.6.26-r9: A performance data analyzer for nagios
 net-analyzer/poink 2.03: TCP/IP-based ping implementation
 net-analyzer/portmon 2.0-r1: Portmon is a network service monitoring daemon
@@ -16418,7 +16418,7 @@ sci-libs/ufconfig 3.7.1: Common configuration scripts for the SuiteSparse librar
 sci-libs/umfpack 5.7.9: Unsymmetric multifrontal sparse LU factorization library
 sci-libs/volk 2.4.1: vector optimized library of kernels
 sci-libs/voro++ 0.4.6-r1: A 3D Voronoi cell software library
-sci-libs/votca-tools 1.4 1.4.1 1.5 1.5.1 1.6_rc1 1.6 1.6.1 1.6.2 1.6.3 1.6.4 9999: Votca tools library
+sci-libs/votca-tools 1.5.1 1.6 1.6.2 1.6.4 9999: Votca tools library
 sci-libs/vtk 8.2.0 8.2.0-r1: The Visualization Toolkit
 sci-libs/xdmf2 1.0_p141226-r4: eXtensible Data Model and Format
 sci-libs/xdrfile 1.1.4: Library to read gromacs trajectory and topology files

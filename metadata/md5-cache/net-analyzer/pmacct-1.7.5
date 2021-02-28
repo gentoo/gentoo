@@ -1,6 +1,6 @@
-BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install prepare
-DEPEND=net-libs/libpcap geoip? ( dev-libs/geoip ) geoipv2? ( dev-libs/libmaxminddb ) jansson? ( dev-libs/jansson ) kafka? ( dev-libs/librdkafka ) mysql? ( dev-db/mysql-connector-c:0= ) ndpi? ( >=net-libs/nDPI-3.2:= ) nflog? ( net-libs/libnetfilter_log ) postgres? ( dev-db/postgresql:* ) rabbitmq? ( net-libs/rabbitmq-c ) sqlite? ( =dev-db/sqlite-3* ) zmq? ( >=net-libs/zeromq-4.2.0:= ) virtual/pkgconfig
+DEPEND=net-libs/libpcap geoip? ( dev-libs/geoip ) geoipv2? ( dev-libs/libmaxminddb ) jansson? ( dev-libs/jansson ) kafka? ( dev-libs/librdkafka ) mysql? ( dev-db/mysql-connector-c:0= ) ndpi? ( >=net-libs/nDPI-3.2:= ) nflog? ( net-libs/libnetfilter_log ) postgres? ( dev-db/postgresql:* ) rabbitmq? ( net-libs/rabbitmq-c ) sqlite? ( =dev-db/sqlite-3* ) zmq? ( >=net-libs/zeromq-4.2.0:= )
 DESCRIPTION=A network tool to gather IP traffic information
 EAPI=7
 HOMEPAGE=http://www.pmacct.net/
@@ -12,4 +12,4 @@ REQUIRED_USE=?? ( geoip geoipv2 ) kafka? ( jansson ) rabbitmq? ( jansson )
 SLOT=0
 SRC_URI=https://github.com/pmacct/pmacct/archive/v1.7.5.tar.gz -> pmacct-1.7.5.tar.gz
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=8a09da44c2ab395d5eb4e414b22281b2
+_md5_=62dc4e4e712b6a358897acb4890155ff
