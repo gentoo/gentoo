@@ -247,14 +247,6 @@ dev-libs/libressl
 # using the latter is still broken.
 dev-go/qt
 
-# Sam James <sam@gentoo.org> (2021-01-18)
-# Older versions: need Python 2
-# Newer versions: ported to Python 3, but need
-# testing on real hardware.
-# bug #735352
-games-strategy/0ad
-~games-strategy/0ad-data-0.0.24_alpha_pre20210116040036
-
 # Lars Wendler <polynomial-c@gentoo.org> (2020-12-09)
 # Masked until most broken packages have been fixed (bug #732648)
 >=sys-devel/autoconf-2.70
