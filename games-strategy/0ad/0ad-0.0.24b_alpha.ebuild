@@ -128,7 +128,8 @@ src_configure() {
 		--outpath="../workspaces/gcc/" \
 		--os=linux \
 		"${myconf[@]}" \
-		gmake2 || die "Premake failed"
+		gmake2 \
+	|| die "Premake failed"
 }
 
 src_compile() {
@@ -200,7 +201,7 @@ src_compile() {
 
 src_test() {
 	cd binaries/system || die
-	./test -libdir "${S}/binaries/system" || die "test phase failed"
+	./test -libdir "${S}/binaries/system" || die "Failed tests"
 }
 
 src_install() {
