@@ -1,12 +1,15 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit cmake-utils eutils gnome2-utils
+EAPI=7
 
-DESCRIPTION="A free 2D Zelda fangame"
-HOMEPAGE="http://www.solarus-games.org/"
-SRC_URI="http://www.zelda-solarus.com/downloads/${PN}/${P}.tar.gz"
+CMAKE_MAKEFILE_GENERATOR=emake
+inherit cmake desktop xdg
+
+DESCRIPTION="Free 2D Zelda fangame"
+HOMEPAGE="https://www.solarus-games.org/"
+SRC_URI="https://gitlab.com/solarus-games/${PN}/-/archive/${PN}-${PV}/${PN}-${PN}-${PV}.tar.gz"
+S="${WORKDIR}/${PN}-${PN}-${PV}"
 
 LICENSE="all-rights-reserved CC-BY-SA-3.0 GPL-3"
 SLOT="0"
@@ -20,34 +23,28 @@ RDEPEND="
 "
 DEPEND="app-arch/zip"
 
+DOCS=( ChangeLog readme.txt )
+
+src_prepare() {
+	cmake_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DSOLARUS_INSTALL_DATAROOTDIR="/usr/share"
 		-DSOLARUS_INSTALL_BINDIR="/usr/bin"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	newicon -s 48 build/icons/${PN}_icon_48.png ${PN}.png
 	newicon -s 256 build/icons/${PN}_icon_256.png ${PN}.png
 
 	# install proper wrapper script
-	rm -f "${ED}"/usr/bin/${PN}
+	rm "${ED}"/usr/bin/${PN} || die
 	make_wrapper ${PN} "solarus \"/usr/share/solarus/${PN}\""
 
 	make_desktop_entry "${PN}" "Zelda: Mystery of Solarus DX"
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
-pkg_postinst() {
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
 }
