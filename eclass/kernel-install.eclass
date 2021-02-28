@@ -58,6 +58,12 @@ RDEPEND="
 		sys-kernel/installkernel-systemd-boot
 	)
 	initramfs? ( >=sys-kernel/dracut-049-r3 )"
+# needed by objtool that is installed along with the kernel and used
+# to build external modules
+# NB: linux-mod.eclass also adds this dep but it's cleaner to have
+# it here, and resolves QA warnings: https://bugs.gentoo.org/732210
+RDEPEND+="
+	virtual/libelf"
 BDEPEND="
 	test? (
 		dev-tcltk/expect
@@ -211,9 +217,15 @@ kernel-install_test() {
 
 	local qemu_arch=$(kernel-install_get_qemu_arch)
 
+	# NB: if you pass a path that does not exist or is not a regular
+	# file/directory, dracut will silently ignore it and use the default
+	# https://github.com/dracutdevs/dracut/issues/1136
+	> "${T}"/empty-file || die
+	mkdir -p "${T}"/empty-directory || die
+
 	dracut \
-		--conf /dev/null \
-		--confdir /dev/null \
+		--conf "${T}"/empty-file \
+		--confdir "${T}"/empty-directory \
 		--no-hostonly \
 		--kmoddir "${modules}" \
 		"${T}/initrd" "${version}" || die
