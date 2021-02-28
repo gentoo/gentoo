@@ -1,18 +1,18 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
-DESCRIPTION="Streaming audio processing library."
+DESCRIPTION="Streaming audio processing library"
 HOMEPAGE="https://github.com/andrewrk/libgroove"
 SRC_URI="https://github.com/andrewrk/libgroove/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/4"
 KEYWORDS="~amd64"
-IUSE="+chromaprint +loudness +sound static-libs"
+IUSE="+chromaprint +loudness +sound"
 
 DEPEND="
 	media-video/ffmpeg:=
@@ -34,13 +34,10 @@ src_configure() {
 		-DDISABLE_LOUDNESS=$(usex !loudness)
 		-DDISABLE_PLAYER=$(usex !sound)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
-
-	if ! use static-libs ; then
-		rm "${ED%/}"/usr/$(get_libdir)/*.a || die "failed to remove static libs"
-	fi
+	cmake_src_install
+	rm "${ED}"/usr/$(get_libdir)/*.a || die "failed to remove static libs"
 }
