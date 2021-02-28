@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 inherit distutils-r1
 
 DESCRIPTION="Python wrapper for jikan.moe API."
@@ -15,8 +15,20 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
+BDEPEND="
+	test? ( dev-python/vcrpy )
+"
+
 RDEPEND="
 	dev-python/aiohttp[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/simplejson[${PYTHON_USEDEP}]
 "
+
+distutils_enable_tests pytest
+
+src_install() {
+	distutils-r1_src_install
+
+	rm "$D"/usr/CHANGELOG.md
+}
