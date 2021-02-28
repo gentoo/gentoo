@@ -11,7 +11,6 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 
 	EGIT_REPO_URI="https://github.com/0ad/0ad"
-	ZEROAD_GIT_REVISION=""
 elif [[ ${PV} == *_pre* ]]; then
 	ZEROAD_GIT_REVISION="c7d07d3979f969b969211a5e5748fa775f6768a7"
 else
@@ -20,6 +19,7 @@ fi
 
 DESCRIPTION="A free, real-time strategy game"
 HOMEPAGE="https://play0ad.com/"
+
 if [[ ${PV} == 9999 ]]; then
 	S="${WORKDIR}/${P}"
 elif [[ ${PV} == *_pre* ]]; then
@@ -104,6 +104,7 @@ src_configure() {
 	tc-export CC CXX
 
 	# Stock premake5 does not work, use the shipped one
+	# TODO: revisit this, see above BDEPEND note re premake5
 	emake -C "${S}"/build/premake/premake5/build/gmake2.unix
 
 	# Regenerate scripts.c so our patch applies

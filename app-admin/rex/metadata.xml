@@ -9,10 +9,6 @@
 		<email>patrick@gentoo.org</email>
 		<name>Patrick Lauer</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>kentnl@gentoo.org</email>
-		<name>Kent Fredric</name>
-	</maintainer>
 	<upstream>
 		<remote-id type="github">RexOps/Rex</remote-id>
 		<remote-id type="cpan">Rex</remote-id>
