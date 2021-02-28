@@ -1,0 +1,24 @@
+Subject: [PATCH] adjust to include order deoendency
+
+---
+ autopano-sift-C-2.5.1/KeypointXML.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/autopano-sift-C-2.5.1/KeypointXML.c b/autopano-sift-C-2.5.1/KeypointXML.c
+index 9da70a8..30c35e1 100644
+--- a/KeypointXML.c
++++ b/KeypointXML.c
+@@ -13,10 +13,9 @@
+  * (C) Copyright 2004 -- Sebastian Nowozin (nowozin@cs.tu-berlin.de)
+  */
+ 
+-#include "AutoPanoSift.h"
+-
+ #include <libxml/xmlreader.h>
+ #include <libxml/xmlwriter.h>
++#include "AutoPanoSift.h"
+ 
+ KeypointXMLList* KeypointXMLReader_ReadComplete (char* filename)
+ {
+-- 
+2.26.2
