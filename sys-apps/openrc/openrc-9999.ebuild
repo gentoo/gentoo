@@ -42,7 +42,10 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	bash? ( app-shells/bash )
 	!prefix? (
-		sysv-utils? ( !sys-apps/sysvinit )
+		sysv-utils? (
+			!sys-apps/systemd[sysv-utils(-)]
+			!sys-apps/sysvinit
+		)
 		!sysv-utils? ( >=sys-apps/sysvinit-2.86-r6[selinux?] )
 		virtual/tmpfiles
 	)
