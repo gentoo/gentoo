@@ -26,8 +26,12 @@ IUSE="doc appindicator libnotify"
 RDEPEND="
 	acct-group/plugdev
 	$(python_gen_cond_dep '
+		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
+		dev-python/python-xlib[${PYTHON_USEDEP}]
 		>=dev-python/pyudev-0.13[${PYTHON_USEDEP}]
+		dev-python/pyyaml[${PYTHON_USEDEP}]
+
 	')
 	x11-libs/gtk+:3[introspection]
 	appindicator? ( dev-libs/libappindicator:3[introspection] )
