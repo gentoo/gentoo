@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="freedist"
 SLOT="0"
-KEYWORDS="~amd64 ppc ~ppc64 sparc x86"
+KEYWORDS="~amd64 ppc ppc64 sparc x86"
 
 RDEPEND="
 	dev-libs/glib:2
