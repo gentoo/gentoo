@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Daniel Novomesky <dnovomesky@gmail.com> (2021-02-24)
+# Depends on media-libs/svt-av1, which is unavailable on x86
+media-libs/libavif svt-av1
+
 # Thomas Deutschmann <whissi@gentoo.org> (2021-02-17)
 # Unmask PCRE JIT support where dev-libs/libpcre2[jit] is available
 dev-lang/php -jit
