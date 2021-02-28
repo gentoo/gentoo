@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,6 @@ EAPI=5
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/MediaCrush/MediaCrush-cli.git"
 	SRC_URI=""
-	KEYWORDS=""
 	inherit git-r3
 else
 	SRC_URI="https://github.com/MediaCrush/MediaCrush-cli/archive/${PV}.tar.gz -> ${P}.tar.gz"

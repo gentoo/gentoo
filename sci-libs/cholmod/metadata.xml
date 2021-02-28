@@ -11,9 +11,6 @@
       Support basic sparse and dense matrix operations (add, multiply,
       scale, et cetera)
     </flag>
-    <flag name="metis">
-      Enable the Partition module to cholmod using <pkg>sci-libs/metis</pkg>
-    </flag>
     <flag name="modify">
       Enable Cholesky-modification routines like update, downdate,
       row-add, and row-delete

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ SRC_URI="https://www.scintilla.org/${PN}${PV//./}.tgz -> ${P}.tgz"
 
 LICENSE="HPND lua? ( MIT )"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="amd64 ppc x86 ~amd64-linux ~arm-linux ~x86-linux"
 IUSE="lua"
 
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
@@ -51,6 +51,10 @@ pkg_pretend() {
 	else
 		die "Either gcc or clang should be configured for building scite"
 	fi
+}
+
+pkg_setup() {
+	use lua && lua-single_pkg_setup
 }
 
 src_prepare() {

@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/707456
+--- a/src/wepfilter.c
++++ b/src/wepfilter.c
+@@ -30,7 +30,7 @@
+ #include "config.h"
+ #include "misc.h"
+ 
+-int server_mode;
++extern int server_mode;
+ static int capture_successfull = 0;
+ static wlan_packet_list* head = NULL;
+ 

@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
 PHP_EXT_NAME="libvirt-php"
 PHP_EXT_SKIP_PHPIZE="yes"
-USE_PHP="php5-6 php7-0 php7-1 php7-2 php7-3"
+USE_PHP="php7-3 php7-4"
 PHP_EXT_ECONF_ARGS=()
 
 inherit php-ext-source-r3 git-r3 autotools
@@ -26,7 +26,6 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( app-text/xhtml1 )"
 
-RESTRICT="test"
 DOCS=( ChangeLog NEWS README )
 # Remove the insane check for pecl-imagick which is only used in examples
 # and is not called upon in any build
@@ -62,4 +61,11 @@ src_install() {
 		docinto /usr/share/doc/${PF}/html
 		dodoc -r docs/*
 	fi
+}
+
+src_test() {
+	for slot in $(php_get_slots); do
+		php_init_slot_env ${slot}
+		default
+	done
 }

@@ -50,8 +50,3 @@ media-libs/libmediaart gtk -qt5
 
 # For net-misc/vinagre-3.4 and gnome-boxes
 net-misc/spice-gtk gtk3
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (2015-02-19)
-# Set reasonable default toolkit for gnome users to prevent emerge error
-# when USE=tools
-x11-drivers/nvidia-drivers gtk3

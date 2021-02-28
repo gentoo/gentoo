@@ -34,9 +34,7 @@ gcl
 
 # Pacho Ramos <pacho@gentoo.org> (2014-04-13)
 # Not going to be stabilized on this arch
-colord
 devhelp
 eds
 gdm
 gnome-online-accounts
-gusb

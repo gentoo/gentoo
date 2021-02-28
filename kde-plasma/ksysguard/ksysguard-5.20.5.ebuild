@@ -4,6 +4,7 @@
 EAPI=7
 
 ECM_HANDBOOK="forceoptional"
+ECM_TEST="forceoptional"
 KFMIN=5.74.0
 PVCUT=$(ver_cut 1-3)
 QTMIN=5.15.1
@@ -14,7 +15,7 @@ DESCRIPTION="Network-enabled task manager and system monitor"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 IUSE="lm-sensors +network networkmanager"
 
 DEPEND="

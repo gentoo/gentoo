@@ -36,7 +36,7 @@ COMMON_DEPEND="
 DEPEND="
 	${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}
-	!<app-emulation/libpod-1.3.2-r1"
+	!<app-emulation/podman-1.3.2-r1"
 
 src_prepare() {
 	default

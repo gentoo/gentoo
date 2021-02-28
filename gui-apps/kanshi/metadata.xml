@@ -15,7 +15,4 @@
 		For instance, this can be used to turn a laptop's
 		internal screen off when docked.
 	</longdescription>
-	<use>
-		<flag name="man">build and install man pages</flag>
-	</use>
 </pkgmetadata>

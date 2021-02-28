@@ -5,7 +5,7 @@ EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS="rdepend"
 EGIT_COMMIT="d022243f6c7b23674d3c87a09819f00b10df1165"
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit distutils-r1
 

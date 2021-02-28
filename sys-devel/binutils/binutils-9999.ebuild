@@ -8,7 +8,7 @@ inherit eutils libtool flag-o-matic gnuconfig multilib toolchain-funcs
 DESCRIPTION="Tools necessary to build programs"
 HOMEPAGE="https://sourceware.org/binutils/"
 LICENSE="GPL-3+"
-IUSE="default-gold doc +gold multitarget +nls +plugins static-libs test vanilla"
+IUSE="cet default-gold doc +gold multitarget +nls +plugins static-libs test vanilla"
 REQUIRED_USE="default-gold? ( gold )"
 
 # Variables that can be set here  (ignored for live ebuilds)
@@ -57,7 +57,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	doc? ( sys-apps/texinfo )
-	test? ( dev-util/dejagnu )
+	test? (
+		dev-util/dejagnu
+		sys-devel/bc
+	)
 	nls? ( sys-devel/gettext )
 	sys-devel/flex
 	virtual/yacc
@@ -262,6 +265,11 @@ src_configure() {
 		# avoid automagic dependency on (currently prefix) systems
 		# systems with debuginfod library, bug #754753
 		--without-debuginfod
+
+		# Allow user to opt into CET for host libraries.
+		# Ideally we would like automagic-or-disabled here.
+		# But the check does not quite work on i686: bug #760926.
+		$(use_enable cet)
 	)
 	echo ./configure "${myconf[@]}"
 	"${S}"/configure "${myconf[@]}" || die

@@ -1,13 +1,3 @@
-diff --git a/lib/tool.lua b/lib/tool.lua
-index a9124f3..8c39911 100755
---- a/lib/tool.lua
-+++ b/lib/tool.lua
-@@ -1,4 +1,4 @@
--#!/usr/bin/env lua
-+#!@LUA@
- 
- require("strict")
- function tool()
 diff --git a/bin/lua_cmd b/bin/lua_cmd
 index fabc5d5..32c8e13 100755
 --- a/bin/lua_cmd
@@ -21,3 +11,13 @@ index fabc5d5..32c8e13 100755
  fi
  
  export LUA_PATH="$execLuaPath$extra"
+diff --git a/lib/tool.lua b/lib/tool.lua
+index 01acca1..bec5e8d 100755
+--- a/lib/tool.lua
++++ b/lib/tool.lua
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env lua
++#!@LUA@
+ _DEBUG      = false
+ local posix = require("posix")
+ 

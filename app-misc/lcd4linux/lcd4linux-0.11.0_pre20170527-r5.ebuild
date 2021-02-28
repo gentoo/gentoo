@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit autotools flag-o-matic python-single-r1
 
@@ -142,11 +142,7 @@ src_prepare() {
 		rm ax_python_devel.m4
 
 		# Use correct python version.
-		if use python_single_target_python3_6 || use python_single_target_python3_7; then
-			append-libs "-lpython${EPYTHON#python}m"
-		else
-			append-libs "-lpython${EPYTHON#python}"
-		fi
+		append-libs "-lpython${EPYTHON#python}$(usex python_single_target_python3_7 'm' '')"
 	fi
 
 	eautoreconf

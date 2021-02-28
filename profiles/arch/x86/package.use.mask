@@ -1,6 +1,15 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Thomas Deutschmann <whissi@gentoo.org> (2021-02-17)
+# Unmask PCRE JIT support where dev-libs/libpcre2[jit] is available
+dev-lang/php -jit
+
+# Jaco Kroon <jaco@uls.co.za> (2021-01-22)
+# blocksruntime (clang -fblocks requirement) for asterisk is available on this
+# architecture.
+net-misc/asterisk -blocks
+
 # Nils Freydank <holgersson@posteo.de> (2021-01-18)
 # Depends on media-plugins/gst-plugins-cairo, which isn't keyworded on x86.
 app-misc/pdfpc gstreamer
@@ -97,6 +106,7 @@ www-client/firefox -eme-free
 x11-wm/mutter -sysprof
 dev-libs/gjs -sysprof
 dev-libs/glib -sysprof
+gnome-extra/cjs -sysprof
 x11-libs/gtk+ -sysprof
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
@@ -301,10 +311,6 @@ media-libs/libmikmod cpu_flags_x86_sse2
 # Boost.Context can be built on x86
 dev-libs/boost	-context
 
-# Christoph Junghans <junghans@gentoo.org> (2013-09-08)
-# restrict USE=quad for x86 as there are too less registers
-sci-libs/fftw quad
-
 # Tim Harder <radhermit@gentoo.org> (2013-08-13)
 # dev-lang/luajit keyworded for x86 (masked in base)
 # dev-scheme/racket keyworded for amd64 (masked in base)
@@ -369,15 +375,9 @@ www-client/links -suid
 # sys-devel/llvm is keyworded on x86
 media-libs/mesa -llvm
 
-# Tomáš Chvátal <scarabeus@gentoo.org> (2010-04-04)
-# x86 platforms works
-sys-power/pm-utils -video_cards_intel -video_cards_radeon
-
 # Jean-Noël Rivasseau <elvanor@gentoo.org> (2009-09-23)
 # X use flag only for amd64/x86, bug 285951.
 media-gfx/iscan -X
-
-x11-terms/eterm cpu_flags_x86_sse2
 
 # Steve Dibb <beandog@gentoo.org> (2008-09-29)
 media-video/mplayer -cpudetection

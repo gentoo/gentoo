@@ -14,7 +14,6 @@
   <use>
     <flag name="fdk">Enable libfdk support for AAC encoding.</flag>
     <flag name="imagemagick">Use ImageMagick for image loading instead of FFmpeg.</flag>
-    <flag name="luajit">Build support for scripting via Luajit.</flag>
     <flag name="nvenc">Enable NVENC encoding for nVidia video cards.</flag>
     <flag name="python">Build support for scripting via Python 3.</flag>
     <flag name="speex">Enable noise suppression filter support via

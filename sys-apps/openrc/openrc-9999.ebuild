@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -42,7 +42,10 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	bash? ( app-shells/bash )
 	!prefix? (
-		sysv-utils? ( !sys-apps/sysvinit )
+		sysv-utils? (
+			!sys-apps/systemd[sysv-utils(-)]
+			!sys-apps/sysvinit
+		)
 		!sysv-utils? ( >=sys-apps/sysvinit-2.86-r6[selinux?] )
 		virtual/tmpfiles
 	)
@@ -125,9 +128,11 @@ src_install() {
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/openrc.logrotate openrc
 
-	# install gentoo pam.d files
-	newpamd "${FILESDIR}"/start-stop-daemon.pam start-stop-daemon
-	newpamd "${FILESDIR}"/start-stop-daemon.pam supervise-daemon
+	if use pam; then
+		# install gentoo pam.d files
+		newpamd "${FILESDIR}"/start-stop-daemon.pam start-stop-daemon
+		newpamd "${FILESDIR}"/start-stop-daemon.pam supervise-daemon
+	fi
 
 	# install documentation
 	dodoc ChangeLog *.md

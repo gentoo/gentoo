@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-GNOME2_LA_PUNT="yes"
+EAPI=7
+GNOME2_EAUTORECONF="yes"
 VALA_USE_DEPEND="vapigen"
 
-inherit autotools bash-completion-r1 check-reqs gnome2 user systemd udev vala multilib-minimal
+inherit bash-completion-r1 check-reqs gnome2 systemd udev vala multilib-minimal toolchain-funcs
 
 DESCRIPTION="System service to accurately color manage input and output devices"
 HOMEPAGE="https://www.freedesktop.org/software/colord/"
@@ -13,7 +13,7 @@ SRC_URI="https://www.freedesktop.org/software/colord/releases/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0/2" # subslot = libcolord soname version
-KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~sparc x86"
 
 # We prefer policykit enabled by default, bug #448058
 IUSE="argyllcms examples extra-print-profiles +gusb +introspection +policykit scanner systemd +udev vala"
@@ -23,7 +23,7 @@ REQUIRED_USE="
 	vala? ( introspection )
 "
 
-COMMON_DEPEND="
+DEPEND="
 	dev-db/sqlite:3=[${MULTILIB_USEDEP}]
 	>=dev-libs/glib-2.44.0:2[${MULTILIB_USEDEP}]
 	>=media-libs/lcms-2.6:2=[${MULTILIB_USEDEP}]
@@ -33,19 +33,24 @@ COMMON_DEPEND="
 	policykit? ( >=sys-auth/polkit-0.104 )
 	scanner? (
 		media-gfx/sane-backends
-		sys-apps/dbus )
+		sys-apps/dbus
+	)
 	systemd? ( >=sys-apps/systemd-44:0= )
 	udev? (
 		dev-libs/libgudev:=[${MULTILIB_USEDEP}]
-		virtual/udev
 		virtual/libudev:=[${MULTILIB_USEDEP}]
+		virtual/udev
 	)
 "
-RDEPEND="${COMMON_DEPEND}
-	!media-gfx/shared-color-profiles
+RDEPEND="${DEPEND}
+	acct-group/colord
+	acct-user/colord
 	!<=media-gfx/colorhug-client-0.1.13
+	!media-gfx/shared-color-profiles
 "
-DEPEND="${COMMON_DEPEND}
+BDEPEND="
+	acct-group/colord
+	acct-user/colord
 	dev-libs/libxslt
 	>=dev-util/gtk-doc-am-1.9
 	>=dev-util/intltool-0.35
@@ -53,6 +58,11 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	extra-print-profiles? ( media-gfx/argyllcms )
 	vala? ( $(vala_depend) )
+"
+# These dependencies are required to build native build-time programs.
+BDEPEND="${BDEPEND}
+	dev-libs/glib:2
+	media-libs/lcms
 "
 
 # FIXME: needs pre-installed dbus service files
@@ -68,8 +78,6 @@ pkg_pretend() {
 
 pkg_setup() {
 	use extra-print-profiles && check-reqs_pkg_setup
-	enewgroup colord
-	enewuser colord -1 -1 /var/lib/colord colord
 }
 
 src_prepare() {
@@ -78,13 +86,21 @@ src_prepare() {
 		src/sensors/cd-sensor-argyll.c \
 		configure.ac || die
 
-	eautoreconf
 	use vala && vala_src_prepare
 	gnome2_src_prepare
 	multilib_copy_sources
 }
 
 multilib_src_configure() {
+	if multilib_is_native_abi && tc-is-cross-compiler; then
+		mkdir -p "${S}-native"
+		pushd "${S}-native" >/dev/null 2>&1 || die
+		ECONF_SOURCE="${S}" econf_build --enable-static \
+			--disable-{argyllcms-sensor,print-profiles,shared,udev} \
+			{BASH_COMPLETION,GUDEV,GUSB,POLKIT,SQLITE,UDEV}_{CFLAG,LIB}S=-DSKIP
+		popd >/dev/null 2>&1 || die
+	fi
+
 	# Reverse tools require gusb
 	# bash-completion test does not work on gentoo
 	local myconf=(
@@ -115,7 +131,15 @@ multilib_src_configure() {
 
 multilib_src_compile() {
 	if multilib_is_native_abi; then
-		gnome2_src_compile
+		if tc-is-cross-compiler; then
+			emake -C "${S}-native/lib/colord" libcolord.la
+			emake -C "${S}-native/client" cd-create-profile cd-it8
+			emake \
+				CD_CREATE_PROFILE="${S}-native/client/cd-create-profile" \
+				CD_IT8="${S}-native/client/cd-it8"
+		else
+			emake
+		fi
 	else
 		emake -C lib/colord
 		use gusb && emake -C lib/colorhug

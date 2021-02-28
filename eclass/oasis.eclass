@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: oasis.eclass
 # @MAINTAINER:
-# maintainer-needed@gentoo.org
+# ML <ml@gentoo.org>
 # @AUTHOR:
 # Original Author: Alexis Ballier <aballier@gentoo.org>
 # @SUPPORTED_EAPIS: 3 4 5

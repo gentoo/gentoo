@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,7 +13,7 @@ SRC_URI="https://forge.ocamlcore.org/frs/download.php/1627/${P}.tar.gz"
 LICENSE="LGPL-2.1-with-linking-exception examples? ( lablgtk-examples )"
 
 RDEPEND=">=x11-libs/gtk+-2.10:2
-	>=dev-lang/ocaml-3.10:=[ocamlopt?]
+	<dev-lang/ocaml-4.09:=[ocamlopt?]
 	svg? ( >=gnome-base/librsvg-2.2:2 )
 	glade? ( >=gnome-base/libglade-2.0.1 )
 	gnomecanvas? ( >=gnome-base/libgnomecanvas-2.2 )
@@ -25,7 +25,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 SLOT="2/${PV}"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 
 src_configure() {
 	econf $(use_enable debug) \

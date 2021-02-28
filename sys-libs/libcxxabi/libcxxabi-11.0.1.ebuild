@@ -4,7 +4,7 @@
 EAPI=7
 
 CMAKE_ECLASS=cmake
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 inherit cmake-multilib llvm llvm.org python-any-r1 toolchain-funcs
 
 DESCRIPTION="Low level support for a standard C++ library"
@@ -12,8 +12,8 @@ HOMEPAGE="https://libcxxabi.llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86 ~x64-macos"
-IUSE="+libunwind +static-libs test elibc_musl"
+KEYWORDS="amd64 arm arm64 ~riscv x86 ~x64-macos"
+IUSE="+libunwind static-libs test elibc_musl"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -81,6 +81,7 @@ multilib_src_configure() {
 		mycmakeargs+=(
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
 			-DLLVM_LIT_ARGS="$(get_lit_flags);--param=cxx_under_test=${clang_path}"
+			-DPython3_EXECUTABLE="${PYTHON}"
 		)
 	fi
 	cmake_src_configure

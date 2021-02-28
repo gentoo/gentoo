@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit cmake flag-o-matic python-any-r1
 
@@ -13,7 +13,7 @@ HOMEPAGE="https://www.hyperscan.io/ https://github.com/intel/hyperscan"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="cpu_flags_x86_avx2 +cpu_flags_x86_ssse3 static-libs"
 
 RDEPEND="dev-libs/boost:="
@@ -37,6 +37,9 @@ src_prepare() {
 src_configure() {
 	use cpu_flags_x86_ssse3 && append-flags -mssse3
 	use cpu_flags_x86_avx2  && append-flags -mavx2
+
+	# Temporary, see #772086#c1 and associated PR
+	CMAKE_BUILD_TYPE="Release"
 
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=$(usex static-libs OFF ON)

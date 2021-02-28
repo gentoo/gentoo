@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -170,6 +170,9 @@ src_prepare() {
 
 	# correct installation for plugins to mode 0755 (bug #725946)
 	sed -i -e "s/(INSTALL_PROGRAM) /(INSTALL_LIB) /" src/plugins/fd/Makefile.in ||die
+
+	# fix database locking code for bacula-9.6.4 ... -9.6.x (bug #766195)
+	eapply -p0 "${FILESDIR}"/${PN}-9.6.x-fix-race-condition.patch
 
 	# fix bundled libtool (bug 466696)
 	# But first move directory with M4 macros out of the way.

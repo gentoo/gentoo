@@ -113,6 +113,7 @@ bazel_setup_bazelrc() {
 
 		build --define=PREFIX=${EPREFIX%/}/usr
 		build --define=LIBDIR=\$(PREFIX)/$(get_libdir)
+		build --define=INCLUDEDIR=\$(PREFIX)/include
 		EOF
 
 	if tc-is-cross-compiler; then

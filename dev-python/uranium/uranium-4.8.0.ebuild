@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_SINGLE_IMPL=1
-PYTHON_COMPAT=(python3_{6..8})
+PYTHON_COMPAT=(python3_{7..8})
 
 inherit cmake distutils-r1
 

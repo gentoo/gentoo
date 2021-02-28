@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,6 @@ EXTERNAL_PROGS="
 	https://raw.githubusercontent.com/ament/ament_lint/${AMENT_LINT_VER}/ament_cpplint/ament_cpplint/cpplint.py -> ${P}-ament-${AMENT_LINT_VER}-cpplint.py
 "
 if [ "${PV#9999}" != "${PV}" ] ; then
-	KEYWORDS=""
 	SRC_URI="${EXTERNAL_PROGS}"
 else
 	KEYWORDS="~amd64 ~arm"

@@ -9,7 +9,7 @@ SRC_URI="http://www.muchsync.org/src/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 BDEPEND="virtual/pkgconfig"
 DEPEND="dev-db/sqlite:3

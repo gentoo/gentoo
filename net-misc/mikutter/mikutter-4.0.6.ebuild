@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,6 @@ if [ "${PV}" = "9999" ]; then
 		https://github.com/toshia/twitter_api_keys.git"
 	inherit git-r3
 	SRC_URI="https://raw.githubusercontent.com/toshia/twitter_api_keys/${PLUGIN_HASH}/twitter_api_keys.rb"
-	KEYWORDS=""
 	EGIT_CHECKOUT_DIR="${WORKDIR}/all"
 else
 	SRC_URI="http://mikutter.hachune.net/bin/${P}.tar.gz

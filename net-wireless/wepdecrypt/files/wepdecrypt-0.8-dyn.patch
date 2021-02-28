@@ -1,5 +1,3 @@
-diff --git a/src/Makefile b/src/Makefile
-index a779cb7..f32e65e 100644
 --- a/src/Makefile
 +++ b/src/Makefile
 @@ -8,7 +8,7 @@ wepdecrypt: 	wepdecrypt.o rc4.o wepfilter.o log.o modes.o misc.o verify.o keygen

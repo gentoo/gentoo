@@ -51,9 +51,6 @@
 		<flag name="llvm">
 			Enable features depending on llvm.
 		</flag>
-		<flag name="man">
-			Build and install man pages.
-		</flag>
 		<flag name="ndof">
 			Enable NDOF input devices (SpaceNavigator and friends).
 		</flag>

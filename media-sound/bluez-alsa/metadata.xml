@@ -11,7 +11,6 @@
   <use>
     <flag name="hcitop">Enable top-like monitoring tool for HCI</flag>
     <flag name="ldac">Enable support for AOSP <pkg>media-libs/libldac</pkg> dispatcher</flag>
-    <flag name="man">Generate (and install) man pages with <pkg>app-text/pandoc</pkg></flag>
     <flag name="mpg123">Enable support for MPEG audio playback via <pkg>media-sound/mpg123</pkg></flag>
     <flag name="ofono">Enable ofono elephony support</flag>
   </use>

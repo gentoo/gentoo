@@ -9,6 +9,7 @@
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="github">sdispater/clikit</remote-id>
     <remote-id type="github">clikit</remote-id>

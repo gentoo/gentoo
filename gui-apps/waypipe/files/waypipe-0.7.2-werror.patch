@@ -1,0 +1,12 @@
+diff --git a/meson.build b/meson.build
+index d023f1f..372f0e3 100644
+--- a/meson.build
++++ b/meson.build
+@@ -6,7 +6,6 @@ project(
+ 	default_options: [
+ 		'c_std=c11',
+ 		'warning_level=3',
+-		'werror=true',
+ 	],
+ 	version: '0.7.2',
+ )

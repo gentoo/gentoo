@@ -524,16 +524,18 @@ python_gen_impl_dep() {
 }
 
 # @FUNCTION: python_gen_any_dep
-# @USAGE: <dependency-block> [<impl-pattern>...]
+# @USAGE: [<dependency-block> [<impl-pattern>...]]
 # @DESCRIPTION:
 # Generate an any-of dependency that enforces a version match between
-# the Python interpreter and Python packages. <dependency-block> needs
-# to list one or more dependencies with verbatim '${PYTHON_USEDEP}'
+# the Python interpreter and Python packages. <dependency-block> may
+# list one or more dependencies with verbatim '${PYTHON_USEDEP}'
 # or '${PYTHON_SINGLE_USEDEP}' references (quoted!) that will get
-# expanded inside the function. Optionally, patterns may be specified
-# to restrict the dependency to a subset of Python implementations
-# supported by the ebuild.
+# expanded inside the function. If <dependency-block> is an empty string
+# (or no arguments are passed), a pure dependency on any Python
+# interpreter will be generated.
 #
+# Optionally, patterns may be specified to restrict the dependency to
+# a subset of Python implementations supported by the ebuild.
 # The patterns can be either fnmatch-style patterns (matched via bash
 # == operator against PYTHON_COMPAT values) or '-2' / '-3' to indicate
 # appropriately all enabled Python 2/3 implementations (alike
@@ -587,7 +589,6 @@ python_gen_any_dep() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	local depstr=${1}
-	[[ ${depstr} ]] || die "No dependency string provided"
 	shift
 
 	local i PYTHON_PKG_DEP out=

@@ -1,0 +1,64 @@
+#!/sbin/openrc-run
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# default arguments
+: "${EXABGP_ARGS:=--env=/etc/${RC_SVCNAME}/exabgp.env /etc/${RC_SVCNAME}/exabgp.conf}"
+
+command="capsh"
+command_args="
+	--uid=${EXABGP_USER:=exabgp}
+	--gid=${EXABGP_GROUP:=exabgp}
+	--caps='cap_net_admin+epi cap_setuid+ep-i cap_setgid+ep-i'
+	-- -c \"/usr/bin/exabgp ${EXABGP_ARGS}\""
+
+supervisor=supervise-daemon
+
+: "${pidfile:=/run/exabgp/${RC_SVCNAME}-supervisor.pid}"
+: "${output_log:=/var/log/${RC_SVCNAME}/exabgp.log}"
+: "${error_log:=/var/log/${RC_SVCNAME}/exabgp.log}"
+
+extra_started_commands="routes sessions"
+extra_commands="checkconfig"
+
+depend() {
+	need net
+}
+
+start_pre() {
+	checkpath -q -d -m 0755 -o "${EXABGP_USER}:${EXABGP_GROUP}" \
+		/run/exabgp || return
+
+	checkpath -q -p -m 0600 -o "${EXABGP_USER}:${EXABGP_GROUP}" \
+		/run/exabgp/${RC_SVCNAME}.{in,out} || return
+
+	checkpath -q -d -m 0755 -o "${EXABGP_USER}:${EXABGP_GROUP}" \
+		"/var/log/${RC_SVCNAME}" || return
+
+	checkconfig || return
+}
+
+stop_pre() {
+	# don't restart if the configuration is bad
+	if [ "${RC_CMD}" = restart ]; then
+		checkconfig || return
+	fi
+}
+
+checkconfig() {
+	ebegin "Checking configuration for ${RC_SVCNAME}"
+	exabgp -t ${EXABGP_ARGS}
+	eend ${?} "Invalid configuration"
+}
+
+sessions() {
+	ebegin "Querying sessions"
+	exabgpcli --env /etc/${RC_SVCNAME}/exabgp.env show neighbor summary
+	eend ${?} "exabgpcli failed"
+}
+
+routes() {
+	ebegin "Querying routes"
+	exabgpcli --env /etc/${RC_SVCNAME}/exabgp.env show adj-rib out
+	eend ${?} "exabgpcli failed"
+}

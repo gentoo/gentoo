@@ -1,38 +1,47 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-AUTOTOOLS_IN_SOURCE_BUILD=1
-inherit autotools-utils fortran-2 versionator
+inherit autotools fortran-2
 
 DESCRIPTION="Performance Application Programming Interface"
 HOMEPAGE="http://icl.cs.utk.edu/papi/"
 SRC_URI="http://icl.cs.utk.edu/projects/${PN}/downloads/${P}.tar.gz"
+S="${WORKDIR}/${PN}-$(ver_cut 1-3)/src"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="static-libs"
 
 DEPEND="
-	dev-libs/libpfm[static-libs]
+	dev-libs/libpfm
 	virtual/mpi
 "
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/${PN}-$(get_version_component_range 1-3)/src"
+src_prepare() {
+	default
+
+	mv configure.{in,ac} || die
+	eautoreconf
+}
 
 src_configure() {
 	local myeconfargs=(
 		--with-shlib
 		--with-perf-events
 		--with-pfm-prefix="${EPREFIX}/usr"
+		--with-pfm-libdir="${EPREFIX}/usr/$(get_libdir)"
+		--with-shared-lib=yes
+		--with-static-lib=no
 	)
-	autotools-utils_src_configure
+
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
-	autotools-utils_src_install
+	default
+
 	dodoc ../RE*
 }

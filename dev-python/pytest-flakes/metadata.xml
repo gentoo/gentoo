@@ -5,7 +5,7 @@
 		<email>chainsaw@gentoo.org</email>
 		<name>Tony Vroon</name>
 	</maintainer>
-
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">pytest-flakes</remote-id>
 	</upstream>

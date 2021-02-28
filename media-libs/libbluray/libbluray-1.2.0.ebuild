@@ -54,6 +54,10 @@ DOCS=(
 
 src_prepare() {
 	default
+
+	# bug #714610
+	append-cflags -fcommon
+
 	eautoreconf
 }
 

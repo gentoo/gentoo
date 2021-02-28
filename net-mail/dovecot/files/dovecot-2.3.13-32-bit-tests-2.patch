@@ -1,0 +1,27 @@
+https://bugs.gentoo.org/764713
+https://github.com/dovecot/core/commit/01366bd18ea98bf6979328ff8580488920a33f0c
+
+From 01366bd18ea98bf6979328ff8580488920a33f0c Mon Sep 17 00:00:00 2001
+From: Aki Tuomi <aki.tuomi@open-xchange.com>
+Date: Thu, 4 Feb 2021 08:44:46 +0200
+Subject: [PATCH] lib: test-time-util - Use correct types for test case
+
+Fixes type mismatch on 32-bit systems.
+---
+ src/lib/test-time-util.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/lib/test-time-util.c b/src/lib/test-time-util.c
+index cfa322048e..139db0ec5d 100644
+--- a/src/lib/test-time-util.c
++++ b/src/lib/test-time-util.c
+@@ -358,7 +358,8 @@ static void test_str_to_timeval(void)
+ {
+ 	struct {
+ 		const char *str;
+-		unsigned int tv_sec, tv_usec;
++		time_t tv_sec;
++		suseconds_t tv_usec;
+ 	} tests[] = {
+ 		{ "0", 0, 0 },
+ 		{ "0.0", 0, 0 },

@@ -1,39 +1,42 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-AUTOTOOLS_AUTORECONF=frob
-inherit autotools-utils
+inherit autotools
 
 DESCRIPTION="A tool to provide access to statistics about the system on which it's run"
 HOMEPAGE="https://www.i-scream.org/libstatgrab/"
 SRC_URI="https://www.mirrorservice.org/sites/ftp.i-scream.org/pub/i-scream/libstatgrab/${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 LGPL-2.1 )"
-SLOT=0
+SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ia64 ppc x86"
-IUSE="doc examples static-libs"
+IUSE="doc examples"
 
 RDEPEND="sys-libs/ncurses"
 DEPEND="${RDEPEND}"
 
 DOCS=( ChangeLog PLATFORMS NEWS AUTHORS README )
 
-PATCHES=( "${FILESDIR}"/${P}-tinfo.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-tinfo.patch
+)
 
 src_configure() {
 	local myeconfargs=(
 		--disable-setgid-binaries
 		--disable-setuid-binaries
 		--with-ncurses
-		$(use_enable static-libs static)
+		--disable-static
 	)
-	autotools-utils_src_configure
+
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
-	autotools-utils_src_install
+	default
+
 	if use examples; then
 		docompress -x /usr/share/doc/${PF}/examples
 		insinto /usr/share/doc/${PF}/examples

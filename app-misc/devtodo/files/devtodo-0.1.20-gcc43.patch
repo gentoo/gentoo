@@ -1,5 +1,5 @@
---- devtodo-0.1.20.orig/src/todoterm.cc
-+++ devtodo-0.1.20/src/todoterm.cc
+--- a/src/todoterm.cc
++++ b/src/todoterm.cc
 @@ -2,6 +2,7 @@
  #include "todoterm.h"
  

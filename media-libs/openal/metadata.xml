@@ -5,4 +5,10 @@
 		<email>sound@gentoo.org</email>
 		<name>Gentoo Sound project</name>
 	</maintainer>
+	<use>
+		<flag name="sndio">Enable support for the <pkg>media-sound/sndio</pkg> backend</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">kcat/openal-soft</remote-id>
+	</upstream>
 </pkgmetadata>

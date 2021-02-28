@@ -9,6 +9,7 @@
     <email>titanofold@gentoo.org</email>
     <name>Aaron W. Swenson</name>
   </maintainer>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">pytest-flake8</remote-id>
     <remote-id type="github">tholo/pytest-flake8</remote-id>

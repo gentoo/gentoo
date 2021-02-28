@@ -1,0 +1,84 @@
+From cb46ae4bc4c9684010b433eec3a35fc4fa1ebc5d Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 20 Feb 2021 22:53:46 +0100
+Subject: [PATCH] Use CTest module provided BUILD_TESTING (default: ON)
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 38 +++++++++++++++++---------------------
+ 1 file changed, 17 insertions(+), 21 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c314fe1..bac3699 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -16,7 +16,7 @@ if(NOT CMAKE_BUILD_TYPE)
+ 	set(CMAKE_BUILD_TYPE RELEASE)
+ endif()
+ 
+-enable_testing()
++include(CTest)
+ set(CMAKE_AUTOMOC ON)
+ set(CMAKE_INCLUDE_CURRENT_DIR ON)
+ set(CMAKE_DEBUG_POSTFIX d)
+@@ -27,33 +27,29 @@ set(QUAZIP_LIB_FILE_NAME quazip${QuaZip_VERSION_MAJOR}-qt${QUAZIP_QT_MAJOR_VERSI
+ set(QUAZIP_LIB_TARGET_NAME QuaZip)
+ set(QUAZIP_DIR_NAME QuaZip-Qt${QUAZIP_QT_MAJOR_VERSION}-${QUAZIP_LIB_VERSION})
+ set(QUAZIP_PACKAGE_NAME QuaZip-Qt${QUAZIP_QT_MAJOR_VERSION})
+-set(QUAZIP_ENABLE_TESTS OFF)
+ if(QUAZIP_QT_MAJOR_VERSION EQUAL 6)
+-	find_package(Qt6 REQUIRED COMPONENTS Core Core5Compat
+-                         OPTIONAL_COMPONENTS Network Test)
++    find_package(Qt6 REQUIRED COMPONENTS Core Core5Compat)
+ 	set(QUAZIP_LIB_QT_LIBRARIES Qt6::Core Qt6::Core5Compat)
+-	set(QUAZIP_TEST_QT_LIBRARIES Qt6::Core Qt6::Core5Compat Qt6::Network Qt6::Test)
+ 	set(QUAZIP_PKGCONFIG_REQUIRES Qt6Core)
+-	if (Qt6Network_FOUND AND Qt6Test_FOUND)
+-                set(QUAZIP_ENABLE_TESTS ON)
+-        endif()
++    if (BUILD_TESTING)
++        find_package(Qt6 REQUIRED COMPONENTS Network Test)
++        set(QUAZIP_TEST_QT_LIBRARIES Qt6::Core Qt6::Core5Compat Qt6::Network Qt6::Test)
++    endif()
+ elseif(QUAZIP_QT_MAJOR_VERSION EQUAL 5)
+-	find_package(Qt5 REQUIRED COMPONENTS Core
+-                         OPTIONAL_COMPONENTS Network Test)
++    find_package(Qt5 REQUIRED COMPONENTS Core)
+ 	set(QUAZIP_LIB_QT_LIBRARIES Qt5::Core)
+-	set(QUAZIP_TEST_QT_LIBRARIES Qt5::Core Qt5::Network Qt5::Test)
+ 	set(QUAZIP_PKGCONFIG_REQUIRES Qt5Core)
+-        if (Qt5Network_FOUND AND Qt5Test_FOUND)
+-                set(QUAZIP_ENABLE_TESTS ON)
+-        endif()
++    if (BUILD_TESTING)
++        find_package(Qt5 REQUIRED COMPONENTS Network Test)
++        set(QUAZIP_TEST_QT_LIBRARIES Qt5::Core Qt5::Network Qt5::Test)
++    endif()
+ elseif(QUAZIP_QT_MAJOR_VERSION EQUAL 4)
+-	find_package(Qt4 4.5.0 REQUIRED COMPONENTS QtCore
+-                           OPTIONAL_COMPONENTS QtNetwork QtTest)
++    find_package(Qt4 4.5.0 REQUIRED COMPONENTS QtCore)
+ 	set(QUAZIP_LIB_QT_LIBRARIES Qt4::QtCore)
+-	set(QUAZIP_TEST_QT_LIBRARIES Qt4::QtCore Qt4::QtNetwork Qt4::QtTest)
+ 	set(QUAZIP_PKGCONFIG_REQUIRES QtCore)
+-    if (QT_QTNETWORK_FOUND AND QT_QTTEST_FOUND)
+-            set(QUAZIP_ENABLE_TESTS ON)
++    if (BUILD_TESTING)
++        find_package(Qt4 REQUIRED COMPONENTS Network Test)
++        set(QUAZIP_TEST_QT_LIBRARIES Qt4::QtCore Qt4::QtNetwork Qt4::QtTest)
+     endif()
+ else()
+ 	message(FATAL_ERROR "Qt version ${QUAZIP_QT_MAJOR_VERSION} is not supported")
+@@ -69,7 +65,7 @@ endif()
+ 
+ add_subdirectory(quazip)
+ 
+-if(QUAZIP_ENABLE_TESTS)
+-        add_subdirectory(qztest EXCLUDE_FROM_ALL)
++if(BUILD_TESTING)
++    add_subdirectory(qztest EXCLUDE_FROM_ALL)
+ endif()
+ 
+-- 
+2.30.1
+

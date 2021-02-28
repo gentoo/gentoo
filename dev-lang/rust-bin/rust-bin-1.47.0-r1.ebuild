@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ SRC_URI="$(rust_all_arch_uris ${MY_P})"
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
 SLOT="stable"
-KEYWORDS="amd64 ~arm ~arm64 ppc64 x86"
+KEYWORDS="amd64 arm arm64 ppc64 x86"
 IUSE="clippy cpu_flags_x86_sse2 doc rls rustfmt"
 
 DEPEND=""
@@ -140,7 +140,7 @@ pkg_postinst() {
 	eselect rust update
 
 	elog "Rust installs a helper script for calling GDB now,"
-	elog "for your convenience it is installed under /usr/bin/rust-gdb-bin-${PV},"
+	elog "for your convenience it is installed under /usr/bin/rust-gdb-bin-${PV}."
 
 	if has_version app-editors/emacs; then
 		elog "install app-emacs/rust-mode to get emacs support for rust."

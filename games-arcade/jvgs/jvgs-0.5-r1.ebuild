@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,8 +26,14 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${P}-src
 PATCHES=( "${FILESDIR}"/${PN}-0.5-fix-build-system.patch )
 
+src_prepare() {
+	sed -i "s:main.lua:/usr/share/${PN}/&:" src/main.cpp
+	default
+	eapply_user
+}
+
 src_install() {
-	dobin src/${PN}
+	dobin ${BUILD_DIR}/src/${PN}
 
 	insinto /usr/share/${PN}
 	doins -r main.lua resources

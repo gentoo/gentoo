@@ -16,7 +16,6 @@ if [ "${PV}" != "9999" ]; then
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/${PN/-//}.git"
-	KEYWORDS=""
 fi
 
 DESCRIPTION="Votca coarse-graining engine"

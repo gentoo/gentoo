@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -35,8 +35,7 @@ IUSE="doc java cxx tcl test"
 # the entire testsuite needs the TCL functionality
 DEPEND="tcl? ( >=dev-lang/tcl-8.4 )
 	test? ( >=dev-lang/tcl-8.4 )
-	java? ( >=virtual/jdk-1.5 )
-	>=sys-devel/binutils-2.16.1"
+	java? ( >=virtual/jdk-1.5 )"
 RDEPEND="tcl? ( dev-lang/tcl )
 	java? ( >=virtual/jre-1.5 )"
 

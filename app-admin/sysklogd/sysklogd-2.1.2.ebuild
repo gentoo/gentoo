@@ -27,7 +27,8 @@ DEPEND="
 		!>=sys-apps/util-linux-2.34-r3[logger]
 	)
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	logrotate? ( app-admin/logrotate )"
 
 DOCS=( ChangeLog.md README.md )
 

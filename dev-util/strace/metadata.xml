@@ -17,6 +17,7 @@
     </flag>
   </use>
   <upstream>
+    <remote-id type="github">strace/strace</remote-id>
     <remote-id type="sourceforge">strace</remote-id>
   </upstream>
 </pkgmetadata>

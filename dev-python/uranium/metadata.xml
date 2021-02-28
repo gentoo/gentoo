@@ -29,6 +29,8 @@
 		<subslots>soname major version number</subslots>
 	</slots>
 	<upstream>
+		<bugs-to>https://github.com/Ultimaker/Uranium/issues</bugs-to>
+		<doc>https://github.com/Ultimaker/Uranium/blob/master/docs/mainpage.md</doc>
 		<remote-id type="github">Ultimaker/Uranium</remote-id>
 		<remote-id type="pypi">uranium</remote-id>
 	</upstream>

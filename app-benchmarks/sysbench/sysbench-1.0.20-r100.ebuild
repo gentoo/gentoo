@@ -4,7 +4,7 @@
 EAPI=7
 
 LUA_COMPAT=( luajit )
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit autotools lua-single python-single-r1
 
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/akopytov/sysbench/archive/${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="+aio attachsql drizzle +largefile mysql postgres test"
 REQUIRED_USE="
 	${LUA_REQUIRED_USE}

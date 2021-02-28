@@ -118,8 +118,8 @@ src_install() {
 
 pkg_postinst() {
 	if use daemon || use update-drivedb; then
-		local initial_db_file="${EROOT}/usr/share/${PN}/drivedb.h"
-		local db_path="${EROOT}/var/db/${PN}"
+		local initial_db_file="${EROOT}usr/share/${PN}/drivedb.h"
+		local db_path="${EROOT}var/db/${PN}"
 
 		if [[ ! -f "${db_path}/drivedb.h" ]] ; then
 			# No initial database found

@@ -39,20 +39,33 @@ SLOT="0"
 # use flag is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
-IUSE="airplay alsa bluetooth bluray caps cec +css dbus dvd gbm gles lcms libressl libusb lirc mariadb mysql nfs +opengl pulseaudio raspberry-pi samba systemd +system-ffmpeg test udf udev udisks upnp upower vaapi vdpau wayland webserver +X +xslt zeroconf"
+IUSE="airplay alsa bluetooth bluray caps cec +css dav1d dbus eventclients gbm gles lcms libressl libusb lirc mariadb mysql nfs +optical power-control pulseaudio raspberry-pi samba +system-ffmpeg test udf udev udisks upnp upower vaapi vdpau wayland webserver +X +xslt zeroconf"
+IUSE="${IUSE} cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_arm_neon"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
-	|| ( gles opengl )
 	|| ( gbm wayland X )
 	?? ( mariadb mysql )
 	bluray? ( udf )
 	udev? ( !libusb )
 	udisks? ( dbus )
 	upower? ( dbus )
+	power-control? ( dbus )
+	vdpau? (
+		X
+		!gles
+		!gbm
+	)
+	zeroconf? ( dbus )
 "
 RESTRICT="!test? ( test )"
 
-COMMON_DEPEND="${PYTHON_DEPS}
+COMMON_DEPEND="
+	>=dev-libs/lzo-2.04
+	>=dev-libs/flatbuffers-1.11.0
+	>=media-libs/libjpeg-turbo-2.0.4:=
+	>=media-libs/libpng-1.6.26:0=
+"
+COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	airplay? (
 		>=app-pda/libplist-2.0.0
 		net-libs/shairplay
@@ -63,24 +76,24 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	caps? ( sys-libs/libcap )
 	dbus? ( sys-apps/dbus )
 	dev-db/sqlite
-	dev-libs/expat
-	>=dev-libs/flatbuffers-1.11.0
+	dev-libs/crossguid
 	>=dev-libs/fribidi-1.0.5
 	cec? ( >=dev-libs/libcec-4.0[raspberry-pi?] )
 	dev-libs/libpcre[cxx]
-	>=dev-libs/libinput-1.10.5
-	>=dev-libs/libxml2-2.9.4
-	>=dev-libs/lzo-2.04
 	>=dev-libs/spdlog-1.5.0:=
 	dev-libs/tinyxml[stl]
 	$(python_gen_cond_dep '
 		dev-python/pillow[${PYTHON_MULTI_USEDEP}]
 		dev-python/pycryptodome[${PYTHON_MULTI_USEDEP}]
 	')
-	>=dev-libs/libcdio-2.1.0
+	>=dev-libs/libcdio-2.1.0[cxx]
 	>=dev-libs/libfmt-6.1.2
 	dev-libs/libfstrcmp
-	gbm? (	media-libs/mesa[gbm] )
+	gbm? (
+		>=dev-libs/libinput-1.10.5
+		media-libs/mesa[gbm]
+		x11-libs/libxkbcommon
+	)
 	gles? (
 		!raspberry-pi? ( media-libs/mesa[gles2] )
 	)
@@ -88,22 +101,24 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	libusb? ( virtual/libusb:1 )
 	virtual/ttf-fonts
 	media-fonts/roboto
-	media-libs/dav1d
-	>=media-libs/fontconfig-2.13.1
 	>=media-libs/freetype-2.10.1
 	>=media-libs/libass-0.13.4
 	!raspberry-pi? ( media-libs/mesa[egl] )
 	>=media-libs/taglib-1.11.1
 	system-ffmpeg? (
-		>=media-video/ffmpeg-${FFMPEG_VERSION}:=[dav1d,encode,postproc]
+		>=media-video/ffmpeg-${FFMPEG_VERSION}:=[dav1d?,encode,postproc]
 		libressl? ( media-video/ffmpeg[libressl,-openssl] )
 		!libressl? ( media-video/ffmpeg[-libressl,openssl] )
+	)
+	!system-ffmpeg? (
+		app-arch/bzip2
+		dav1d? ( media-libs/dav1d )
 	)
 	mysql? ( dev-db/mysql-connector-c:= )
 	mariadb? ( dev-db/mariadb-connector-c:= )
 	>=net-misc/curl-7.68.0[http2]
 	nfs? ( >=net-fs/libnfs-2.0.0:= )
-	opengl? ( media-libs/glu )
+	!gles? ( media-libs/glu )
 	!libressl? ( >=dev-libs/openssl-1.0.2l:0= )
 	libressl? ( dev-libs/libressl:0= )
 	raspberry-pi? (
@@ -116,7 +131,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	udev? ( virtual/udev )
 	vaapi? (
 		x11-libs/libva:=
-		opengl? ( x11-libs/libva[opengl] )
+		!gles? ( x11-libs/libva[opengl] )
 		system-ffmpeg? ( media-video/ffmpeg[vaapi] )
 		vdpau? ( x11-libs/libva[vdpau] )
 		wayland? ( x11-libs/libva[wayland] )
@@ -131,40 +146,43 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		>=dev-cpp/waylandpp-0.2.3:=
 		media-libs/mesa[wayland]
 		>=dev-libs/wayland-protocols-1.7
+		>=x11-libs/libxkbcommon-0.4.1
 	)
 	webserver? ( >=net-libs/libmicrohttpd-0.9.55[messages(+)] )
 	X? (
 		media-libs/mesa[X]
+		!gles? ( media-libs/libglvnd[X] )
 		x11-libs/libX11
 		x11-libs/libXrandr
 		x11-libs/libXrender
 		system-ffmpeg? ( media-video/ffmpeg[X] )
 	)
 	x11-libs/libdrm
-	>=x11-libs/libxkbcommon-0.4.1
-	xslt? ( dev-libs/libxslt )
+	xslt? (
+		dev-libs/libxslt
+		>=dev-libs/libxml2-2.9.4
+	)
 	zeroconf? ( net-dns/avahi[dbus] )
 "
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${COMMON_DEPEND} ${COMMON_TARGET_DEPEND}
 	lirc? ( app-misc/lirc )
+	power-control? ( || ( sys-apps/systemd sys-auth/elogind ) )
 	udisks? ( sys-fs/udisks:2 )
 	upower? ( sys-power/upower )
 "
-DEPEND="${COMMON_DEPEND}
-	app-arch/bzip2
-	app-arch/xz-utils
-	dev-lang/swig
-	dev-libs/crossguid
+DEPEND="${COMMON_DEPEND} ${COMMON_TARGET_DEPEND}
 	dev-libs/rapidjson
+	test? ( >=dev-cpp/gtest-1.10.0 )
+"
+BDEPEND="${COMMON_DEPEND}
+	dev-lang/swig
 	dev-util/cmake
-	dev-util/gperf
 	media-libs/giflib
+	>=dev-libs/flatbuffers-1.11.0
 	>=media-libs/libjpeg-turbo-2.0.4:=
 	>=media-libs/libpng-1.6.26:0=
-	test? ( >=dev-cpp/gtest-1.10.0 )
 	virtual/pkgconfig
 	virtual/jre
-	x86? ( dev-lang/nasm )
 "
 
 CONFIG_CHECK="~IP_MULTICAST"
@@ -222,7 +240,16 @@ src_configure() {
 	use X && platform+=( x11 )
 	local core_platform_name="${platform[@]}"
 	local mycmakeargs=(
+		-DENABLE_SSE=$(usex cpu_flags_x86_sse)
+		-DENABLE_SSE2=$(usex cpu_flags_x86_sse2)
+		-DENABLE_SSE3=$(usex cpu_flags_x86_sse3)
+		-DENABLE_SSE4_1=$(usex cpu_flags_x86_sse4_1)
+		-DENABLE_SSE4_2=$(usex cpu_flags_x86_sse4_2)
+		-DENABLE_AVX=$(usex cpu_flags_x86_avx)
+		-DENABLE_AVX2=$(usex cpu_flags_x86_avx2)
+		-DENABLE_NEON=$(usex cpu_flags_arm_neon)
 		-Ddocdir="${EPREFIX}/usr/share/doc/${PF}"
+		-DVERBOSE=ON
 		-DENABLE_LDGOLD=OFF # https://bugs.gentoo.org/show_bug.cgi?id=606124
 		-DENABLE_ALSA=$(usex alsa)
 		-DENABLE_AIRTUNES=$(usex airplay)
@@ -230,27 +257,39 @@ src_configure() {
 		-DENABLE_BLUETOOTH=$(usex bluetooth)
 		-DENABLE_BLURAY=$(usex bluray)
 		-DENABLE_CCACHE=OFF
+		-DENABLE_CLANGFORMAT=OFF
+		-DENABLE_CLANGTIDY=OFF
+		-DENABLE_CPPCHECK=OFF
+		-DENABLE_ISO9660PP=$(usex optical)
 		-DENABLE_CEC=$(usex cec)
 		-DENABLE_DBUS=$(usex dbus)
 		-DENABLE_DVDCSS=$(usex css)
+		-DENABLE_EVENTCLIENTS=ON # alway enable to have 'kodi-send' and filter extra staff in 'src_install()'
 		-DENABLE_INTERNAL_CROSSGUID=OFF
+		-DENABLE_INTERNAL_RapidJSON=OFF
+		-DENABLE_INTERNAL_FMT=OFF
 		-DENABLE_INTERNAL_FFMPEG="$(usex !system-ffmpeg)"
 		-DENABLE_INTERNAL_FSTRCMP=OFF
+		-DENABLE_INTERNAL_FLATBUFFERS=OFF
+		-DENABLE_INTERNAL_DAV1D=OFF
 		-DENABLE_INTERNAL_GTEST=OFF
 		-DENABLE_INTERNAL_UDFREAD=OFF
+		-DENABLE_INTERNAL_SPDLOG=OFF
 		-DENABLE_CAP=$(usex caps)
 		-DENABLE_LCMS2=$(usex lcms)
 		-DENABLE_LIRCCLIENT=$(usex lirc)
 		-DENABLE_MARIADBCLIENT=$(usex mariadb)
+		-DENABLE_MDNS=OFF # used only on Android
 		-DENABLE_MICROHTTPD=$(usex webserver)
 		-DENABLE_MYSQLCLIENT=$(usex mysql)
 		-DENABLE_NFS=$(usex nfs)
 		-DENABLE_OPENGLES=$(usex gles)
-		-DENABLE_OPENGL=$(usex opengl)
-		-DENABLE_OPTICAL=$(usex dvd)
+		-DENABLE_OPENGL=$(usex !gles)
+		-DENABLE_OPTICAL=$(usex optical)
 		-DENABLE_PLIST=$(usex airplay)
 		-DENABLE_PULSEAUDIO=$(usex pulseaudio)
 		-DENABLE_SMBCLIENT=$(usex samba)
+		-DENABLE_SNDIO=OFF
 		-DENABLE_TESTING=$(usex test)
 		-DENABLE_UDEV=$(usex udev)
 		-DENABLE_UDFREAD=$(usex udf)
@@ -263,16 +302,23 @@ src_configure() {
 		-Dlibdvdcss_URL="${DISTDIR}/libdvdcss-${LIBDVDCSS_VERSION}.tar.gz"
 		-DPYTHON_INCLUDE_DIR="$(python_get_includedir)"
 		-DPYTHON_LIBRARY="$(python_get_library_path)"
-		-DAPP_RENDER_SYSTEM="$(usex opengl gl gles)"
+		-DAPP_RENDER_SYSTEM="$(usex gles gles gl)"
 		-DCORE_PLATFORM_NAME="${core_platform_name}"
 	)
 
-	use libusb && mycmakeargs+=( -DENABLE_LIBUSB=$(usex libusb) )
+	use !udev && mycmakeargs+=( -DENABLE_LIBUSB=$(usex libusb) )
+
+	use X && use !gles && mycmakeargs+=( -DENABLE_GLX=ON )
 
 	if use system-ffmpeg; then
 		mycmakeargs+=( -DWITH_FFMPEG="yes" )
 	else
 		mycmakeargs+=( -DFFMPEG_URL="${DISTDIR}/ffmpeg-${PN}-${FFMPEG_VERSION}-${CODENAME}-${FFMPEG_KODI_VERSION}.tar.gz" )
+	fi
+
+	if ! echo "${CFLAGS}" | grep -Fwqe '-DNDEBUG' - && ! echo "${CFLAGS}" | grep -Fwqe '-D_DEBUG' - ; then
+		CFLAGS+=' -DNDEBUG' # Kodi requires one of the 'NDEBUG' or '_DEBUG' defines
+		CXXFLAGS+=' -DNDEBUG'
 	fi
 
 	cmake_src_configure
@@ -298,6 +344,13 @@ src_install() {
 	dosym ../../../../fonts/roboto/Roboto-Thin.ttf \
 		usr/share/kodi/addons/skin.estuary/fonts/Roboto-Thin.ttf
 
-	python_domodule tools/EventClients/lib/python/xbmcclient.py
-	python_newscript "tools/EventClients/Clients/KodiSend/kodi-send.py" kodi-send
+	if use !eventclients ; then
+		rm -f "${ED}"/usr/bin/kodi-ps3remote || die
+		rm -f "${D}"$(python_get_sitedir)/kodi/ps3_remote.py || die
+		rm -rf "${D}"$(python_get_sitedir)/kodi/ps3 || die
+		rm -rf "${D}"$(python_get_sitedir)/kodi/bt || die
+		rm -rf "${ED}"/usr/share/doc/${PF}/kodi-eventclients-dev || die
+	fi
+
+	python_optimize "${D}$(python_get_sitedir)"
 }

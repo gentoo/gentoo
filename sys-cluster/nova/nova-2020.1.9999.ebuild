@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PYTHON_COMPAT=( python3_7 )
-inherit distutils-r1 eutils linux-info multilib
+inherit distutils-r1 eutils linux-info multilib udev
 
 DESCRIPTION="Cloud computing fabric controller"
 HOMEPAGE="https://launchpad.net/nova"
@@ -87,7 +87,7 @@ RDEPEND="
 	>=dev-python/oslo-cache-1.26.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-concurrency-3.29.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-config-6.1.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-context-2.21.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-context-2.22.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-log-3.36.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-reports-1.18.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-serialization-1.21.0[${PYTHON_USEDEP}]

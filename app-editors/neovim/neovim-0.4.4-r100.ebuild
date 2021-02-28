@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/neovim/neovim.git"
 else
 	SRC_URI="https://github.com/neovim/neovim/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 
 LICENSE="Apache-2.0 vim"
@@ -61,7 +61,8 @@ RDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.4.4-cmake_lua_version.patch
+	"${FILESDIR}/${PN}-0.4.4-cmake_lua_version.patch"
+	"${FILESDIR}/${PN}-0.4.4-cmake-release-type.patch"
 )
 
 src_prepare() {

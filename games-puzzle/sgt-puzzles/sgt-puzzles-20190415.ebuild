@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,6 @@ if [[ ${PV} == "99999999" ]] ; then
 	EGIT_REPO_URI="https://git.tartarus.org/simon/puzzles.git"
 	GENTOO_ICONS="20160315"
 	SRC_URI="https://dev.gentoo.org/~np-hardass/distfiles/${PN}/${PN}-icons-${GENTOO_ICONS}.tar.xz"
-	KEYWORDS=""
 else
 	MAGIC=e2135d5
 	SRC_URI="https://www.chiark.greenend.org.uk/~sgtatham/puzzles/puzzles-${PV}.${MAGIC}.tar.gz"

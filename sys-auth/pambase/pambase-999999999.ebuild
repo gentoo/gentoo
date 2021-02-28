@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,13 +15,13 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/gentoo/pambase.git"
 else
 	SRC_URI="https://github.com/gentoo/pambase/archive/${P}.tar.gz"
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86"
 	S="${WORKDIR}/${PN}-${P}"
 fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="caps debug elogind gnome-keyring minimal mktemp +nullok pam_krb5 pam_ssh +passwdqc pwhistory pwquality securetty selinux +sha512 systemd"
+IUSE="caps debug elogind gnome-keyring homed minimal mktemp +nullok pam_krb5 pam_ssh +passwdqc pwhistory pwquality securetty selinux +sha512 systemd"
 
 RESTRICT="binchecks"
 
@@ -29,6 +29,8 @@ REQUIRED_USE="
 	?? ( elogind systemd )
 	?? ( passwdqc pwquality )
 	pwhistory? ( || ( passwdqc pwquality ) )
+	homed? ( !pam_krb5 )
+	pam_krb5? ( !homed )
 "
 
 MIN_PAM_REQ=1.4.0
@@ -48,6 +50,7 @@ RDEPEND="
 	pwquality? ( dev-libs/libpwquality[pam] )
 	selinux? ( sys-libs/pam[selinux] )
 	sha512? ( >=sys-libs/pam-${MIN_PAM_REQ} )
+	homed? ( sys-apps/systemd[homed] )
 	systemd? ( sys-apps/systemd[pam] )
 "
 
@@ -65,6 +68,7 @@ src_configure() {
 		$(usex debug '--debug' '') \
 		$(usex elogind '--elogind' '') \
 		$(usex gnome-keyring '--gnome-keyring' '') \
+		$(usex homed '--homed' '') \
 		$(usex minimal '--minimal' '') \
 		$(usex mktemp '--mktemp' '') \
 		$(usex nullok '--nullok' '') \

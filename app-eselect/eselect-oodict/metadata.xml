@@ -5,4 +5,5 @@
 		<email>office@gentoo.org</email>
 		<name>Gentoo Office project</name>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: llvm.eclass
@@ -85,7 +85,7 @@ DEPEND="!!sys-devel/llvm:0"
 # @INTERNAL
 # @DESCRIPTION:
 # Correct values of LLVM slots, newest first.
-declare -g -r _LLVM_KNOWN_SLOTS=( {12..8} )
+declare -g -r _LLVM_KNOWN_SLOTS=( {13..8} )
 
 # @FUNCTION: get_llvm_prefix
 # @USAGE: [-b|-d] [<max_slot>]

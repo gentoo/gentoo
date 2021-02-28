@@ -1,0 +1,50 @@
+diff -dupr a/setup.py b/setup.py
+--- a/setup.py	2021-02-09 13:49:46.356455141 +0100
++++ b/setup.py	2021-02-09 13:50:49.351076275 +0100
+@@ -367,13 +367,15 @@ ext_modules = [
+         sources=["src/CAST.c"],
+         py_limited_api=True),
+     Extension("Crypto.Cipher._raw_des",
+-        include_dirs=['src/', 'src/libtom/'],
++        include_dirs=['src/'],
+         sources=["src/DES.c"],
+-        py_limited_api=True),
++        py_limited_api=True,
++        extra_link_args=["-ltomcrypt"]),
+     Extension("Crypto.Cipher._raw_des3",
+-        include_dirs=['src/', 'src/libtom/'],
++        include_dirs=['src/'],
+         sources=["src/DES3.c"],
+-        py_limited_api=True),
++        py_limited_api=True,
++        extra_link_args=["-ltomcrypt"]),
+     Extension("Crypto.Util._cpuid_c",
+         include_dirs=['src/'],
+         sources=['src/cpuid.c'],
+@@ -410,9 +412,10 @@ ext_modules = [
+         sources=["src/ARC4.c"],
+         py_limited_api=True),
+     Extension("Crypto.Cipher._Salsa20",
+-        include_dirs=['src/', 'src/libtom/'],
++        include_dirs=['src/'],
+         sources=["src/Salsa20.c"],
+-        py_limited_api=True),
++        py_limited_api=True,
++        extra_link_args=["-ltomcrypt"]),
+     Extension("Crypto.Cipher._chacha20",
+         include_dirs=['src/'],
+         sources=["src/chacha20.c"],
+Only in b: setup.py.orig
+Only in b: setup.py.rej
+diff -dupr a/src/DES.c b/src/DES.c
+--- a/src/DES.c	2021-02-09 13:49:46.336454729 +0100
++++ b/src/DES.c	2021-02-09 13:50:02.640123617 +0100
+@@ -39,7 +39,7 @@ FAKE_INIT(raw_des3)
+ 
+ /* Include the actial DES implementation */
+ #define LTC_NO_PROTOTYPES
+-#include "libtom/tomcrypt_des.c"
++#include <tomcrypt.h>
+ 
+ struct block_state {
+     symmetric_key sk;

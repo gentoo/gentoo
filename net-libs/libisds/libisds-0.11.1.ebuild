@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 DESCRIPTION="Client library for accessing ISDS Soap services"
 HOMEPAGE="http://xpisar.wz.cz/libisds/"
 SRC_URI="http://xpisar.wz.cz/${PN}/dist/${P}.tar.xz"
-KEYWORDS="~amd64 ~mips ~x86"
+KEYWORDS="amd64 ~mips x86"
 
 LICENSE="LGPL-3"
 SLOT="0"

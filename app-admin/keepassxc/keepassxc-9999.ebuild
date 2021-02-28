@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake xdg
+inherit cmake flag-o-matic xdg
 
 DESCRIPTION="KeePassXC - KeePass Cross-platform Community Edition"
 HOMEPAGE="https://keepassxc.org"
@@ -26,6 +26,8 @@ LICENSE="LGPL-2.1 GPL-2 GPL-3"
 SLOT="0"
 IUSE="autotype browser ccache keeshare +network test yubikey"
 
+RESTRICT="!test? ( test )"
+
 RDEPEND="
 	app-crypt/argon2:=
 	dev-libs/libgcrypt:=
@@ -46,7 +48,7 @@ RDEPEND="
 		x11-libs/libXi
 		x11-libs/libXtst
 	)
-	keeshare? ( dev-libs/quazip )
+	keeshare? ( dev-libs/quazip:0= )
 	yubikey? ( sys-auth/ykpers )
 "
 
@@ -59,7 +61,7 @@ BDEPEND="
 	ccache? ( dev-util/ccache )
 "
 
-RESTRICT="!test? ( test )"
+PATCHES=( "${FILESDIR}"/${PN}-2.6.4-quazip1.patch ) # pending upstream PR#5511
 
 src_prepare() {
 	 use test || \
@@ -69,6 +71,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# https://github.com/keepassxreboot/keepassxc/issues/5801
+	filter-flags -flto*
+
 	local mycmakeargs=(
 		-DWITH_CCACHE="$(usex ccache)"
 		-DWITH_GUI_TESTS=OFF

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}-rel$(ver_rs 1- '')"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ppc ppc64 x86"
 IUSE="doc +ocamlopt"
 
 DEPEND="
@@ -37,6 +37,7 @@ src_configure() {
 }
 
 src_compile() {
+	ulimit -s 11530000
 	emake out
 	if use ocamlopt; then
 		emake opt

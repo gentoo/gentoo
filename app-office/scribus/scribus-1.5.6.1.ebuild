@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 PYTHON_REQ_USE="tk?"
 COMMIT=aa84120d97003a03d883db33ea9a6ad28550e59a
 inherit cmake desktop flag-o-matic python-single-r1 xdg

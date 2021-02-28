@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -11,9 +11,10 @@ SRC_URI="https://erratique.ch/software/uutf/releases/${P}.tbz"
 
 LICENSE="ISC"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ppc ~ppc64 x86"
 IUSE="doc utftrip +ocamlopt test"
 RESTRICT="!test? ( test )"
+REQUIRED_USE="utftrip? ( ocamlopt )"
 
 RDEPEND=">=dev-lang/ocaml-3.12:=[ocamlopt?]
 	dev-ml/uchar:=

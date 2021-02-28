@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools
 
@@ -14,15 +14,18 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE="debug"
 
-DEPEND=">=net-im/pidgin-2.0.0[gtk]
-	>=dev-libs/dbus-glib-0.73
+DEPEND="
+	dev-libs/dbus-glib
 	dev-libs/libpcre
-	>=sys-devel/gettext-0.17"
+	net-im/pidgin[gtk]"
 RDEPEND="${DEPEND}"
+BDEPEND="sys-devel/gettext"
+
+PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
 
 src_prepare() {
 	default
-	sed -i -e "s/DOMAIN/PACKAGE/g" po/Makefile.in.in || die "sed failed"
+	sed -i -e "s/DOMAIN/PACKAGE/g" po/Makefile.in.in || die
 	eautoreconf
 }
 
@@ -34,5 +37,5 @@ src_configure() {
 
 src_install() {
 	default
-	find "${D}" -name "*.la" -delete || die "error cleaning la file."
+	find "${ED}" -name '*.la' -delete || die
 }

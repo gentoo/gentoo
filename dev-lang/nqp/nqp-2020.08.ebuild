@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,6 @@ inherit java-pkg-opt-2 multibuild
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/perl6/${PN}.git"
 	inherit git-r3
-	KEYWORDS=""
 else
 	SRC_URI="https://github.com/perl6/${PN}/releases/download/${PV}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"

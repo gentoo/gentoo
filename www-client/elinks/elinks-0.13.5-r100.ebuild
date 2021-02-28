@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 LUA_COMPAT=( lua5-{1,2} )
 
 inherit autotools lua-single python-any-r1
@@ -15,7 +15,7 @@ S="${WORKDIR}/felinks-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="bittorrent brotli bzip2 debug finger ftp gopher gnutls gpm guile idn ipv6
 	libressl lua +mouse nls nntp perl ruby samba ssl tre unicode X xml zlib zstd"
 

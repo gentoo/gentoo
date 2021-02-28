@@ -1,0 +1,40 @@
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -528,7 +528,7 @@ installed_TESTS_ENVIRONMENT = libdir=$(DESTDIR)$(libdir); \
+ 			      export LC_ALL; export LANG; export VALGRIND_CMD; \
+ 			      unset DEBUGINFOD_URLS; \
+ 			      NM=$(NM); export NM; \
+-			      CC=$(CC); export CC;
++			      CC="$(CC)"; export CC;
+ installed_LOG_COMPILER = $(abs_srcdir)/test-wrapper.sh \
+ 			 installed $(tests_rpath) \
+ 			 '$(program_transform_name)'
+@@ -540,7 +540,7 @@ TESTS_ENVIRONMENT = LC_ALL=C; LANG=C; VALGRIND_CMD=$(valgrind_cmd); \
+ 		    export LC_ALL; export LANG; export VALGRIND_CMD; \
+ 		    unset DEBUGINFOD_URLS; \
+ 		    NM=$(NM); export NM; \
+-		    CC=$(CC); export CC;
++		    CC="$(CC)"; export CC;
+ LOG_COMPILER = $(abs_srcdir)/test-wrapper.sh \
+ 	       $(abs_top_builddir)/libdw:$(abs_top_builddir)/backends:$(abs_top_builddir)/libelf:$(abs_top_builddir)/libasm:$(abs_top_builddir)/debuginfod
+ 
+--- a/tests/Makefile.in
++++ b/tests/Makefile.in
+@@ -1568,7 +1568,7 @@ installed_TESTS_ENVIRONMENT = libdir=$(DESTDIR)$(libdir); \
+ 			      export LC_ALL; export LANG; export VALGRIND_CMD; \
+ 			      unset DEBUGINFOD_URLS; \
+ 			      NM=$(NM); export NM; \
+-			      CC=$(CC); export CC;
++			      CC="$(CC)"; export CC;
+ 
+ installed_LOG_COMPILER = $(abs_srcdir)/test-wrapper.sh \
+ 			 installed $(tests_rpath) \
+@@ -1582,7 +1582,7 @@ TESTS_ENVIRONMENT = LC_ALL=C; LANG=C; VALGRIND_CMD=$(valgrind_cmd); \
+ 		    export LC_ALL; export LANG; export VALGRIND_CMD; \
+ 		    unset DEBUGINFOD_URLS; \
+ 		    NM=$(NM); export NM; \
+-		    CC=$(CC); export CC;
++		    CC="$(CC)"; export CC;
+ 
+ LOG_COMPILER = $(abs_srcdir)/test-wrapper.sh \
+ 	       $(abs_top_builddir)/libdw:$(abs_top_builddir)/backends:$(abs_top_builddir)/libelf:$(abs_top_builddir)/libasm:$(abs_top_builddir)/debuginfod

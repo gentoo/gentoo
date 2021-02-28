@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 WX_GTK_VER=3.0-gtk3
 FORTRAN_NEEDED=fortran
 LUA_COMPAT=( lua5-1 )
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 
 inherit cmake flag-o-matic fortran-2 java-pkg-opt-2 lua-single python-single-r1 toolchain-funcs virtualx wxwidgets
 
@@ -122,7 +122,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	use wxwidgets && need-wxwidgets unicode
+	use wxwidgets && setup-wxwidgets
 	cmake_src_prepare
 
 	# avoid installing license

@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake desktop xdg
+inherit cmake desktop xdg flag-o-matic
 
 DESCRIPTION="A modder-friendly OpenGL source port based on the DOOM engine"
 HOMEPAGE="https://zdoom.org"
@@ -14,7 +14,7 @@ LICENSE="Apache-2.0 BSD BZIP2 GPL-3 LGPL-2.1+ LGPL-3 MIT
 	non-free? ( Activision ChexQuest3 DOOM-COLLECTORS-EDITION freedist WidePix )"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="gtk gtk2 +non-free openmp"
+IUSE="debug gtk +non-free openmp"
 
 DEPEND="
 	app-arch/bzip2
@@ -23,10 +23,7 @@ DEPEND="
 	media-libs/zmusic
 	sys-libs/zlib
 	virtual/jpeg:0
-	gtk? (
-		gtk2? ( x11-libs/gtk+:2 )
-		!gtk2? ( x11-libs/gtk+:3 )
-	)"
+	gtk? ( x11-libs/gtk+:3 )"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}-g${PV}"
@@ -58,6 +55,9 @@ src_configure() {
 		-DNO_OPENMP="$(usex !openmp)"
 		-DBUILD_NONFREE="$(usex non-free)"
 	)
+
+	use debug || append-cppflags -DNDEBUG
+
 	cmake_src_configure
 }
 

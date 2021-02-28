@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 inherit cmake flag-o-matic llvm llvm.org python-any-r1 toolchain-funcs
 
 DESCRIPTION="Compiler runtime library for clang (built-in part)"
@@ -11,7 +11,7 @@ HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="$(ver_cut 1-3)"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~ppc64 ~riscv x86 ~amd64-linux ~ppc-macos ~x64-macos"
 IUSE="+clang test"
 RESTRICT="!test? ( test ) !clang? ( test )"
 
@@ -32,7 +32,7 @@ LLVM_COMPONENTS=( compiler-rt )
 llvm.org_set_globals
 
 PATCHES=(
-	"${FILESDIR}/9999/${PN}-prefix-paths.patch"
+	"${FILESDIR}/11.1.0/${PN}-prefix-paths.patch"
 )
 
 python_check_deps() {

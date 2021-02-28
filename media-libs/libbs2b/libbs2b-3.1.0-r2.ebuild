@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit multilib-minimal
+inherit autotools multilib-minimal
 
 DESCRIPTION="Bauer stereophonic-to-binaural DSP library"
 HOMEPAGE="http://bs2b.sourceforge.net/"
@@ -17,7 +17,15 @@ RDEPEND=">=media-libs/libsndfile-1.0.25-r1[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}"/${PV}-format-security.patch )
+PATCHES=(
+	"${FILESDIR}"/${PV}-format-security.patch
+	"${FILESDIR}"/${PV}-configure-ac-use-dist-xz.patch #526712
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" \

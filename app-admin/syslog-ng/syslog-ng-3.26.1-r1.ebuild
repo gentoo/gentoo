@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 inherit autotools python-single-r1 systemd
 
 MY_PV_MM=$(ver_cut 1-2)

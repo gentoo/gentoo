@@ -1,0 +1,9 @@
+--- a/build/ks.desktop.cmake
++++ b/build/ks.desktop.cmake
+@@ -1,5 +1,5 @@
+ [Desktop Entry]
+-Version=@KS_VERSION_STRING@
++Version=1.2
+ Type=Application
+ Name=Kernel Shark
+ GenericName=Kernel Shark

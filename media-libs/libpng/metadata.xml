@@ -5,6 +5,10 @@
 		<email>base-system@gentoo.org</email>
 		<name>Gentoo Base System</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>codec@gentoo.org</email>
+		<name>Codec project</name>
+	</maintainer>
 	<use>
 		<flag name="apng">support unofficial APNG (Animated PNG) spec</flag>
 	</use>

@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ SRC_URI="https://github.com/flightaware/tclreadline/archive/v${PV}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ppc ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="tk"
 
 DEPEND="dev-lang/tcl:0=
@@ -18,6 +18,13 @@ DEPEND="dev-lang/tcl:0=
 	tk? ( dev-lang/tk:0= )"
 RDEPEND="${DEPEND}"
 BDEPEND=""
+
+src_prepare() {
+	default
+	sed -i \
+		-e "/TCLRL_LIBDIR/s|/usr/lib|/usr/$(get_libdir)|" \
+		configure || die
+}
 
 src_configure() {
 	local myConf=--with-tcl="${EPREFIX}/usr/$(get_libdir)"

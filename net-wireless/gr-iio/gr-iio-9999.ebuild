@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit cmake python-single-r1
 
@@ -13,7 +13,6 @@ if [ "${PV}" = "9999" ]; then
 	EGIT_REPO_URI="https://github.com/analogdevicesinc/gr-iio"
 	EGIT_BRANCH="upgrade-3.8"
 	inherit git-r3
-	KEYWORDS=""
 else
 	COMMIT="733c8a05e74b7d10fbaef502cc82d025ae35a1fb"
 	SRC_URI="https://github.com/analogdevicesinc/gr-iio/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"

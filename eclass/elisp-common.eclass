@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: elisp-common.eclass
@@ -234,6 +234,8 @@ elisp-emacs-version() {
 	rm -f "${T}"/emacs-version.el
 	if [[ ${ret} -ne 0 ]]; then
 		eerror "elisp-emacs-version: Failed to run ${EMACS}"
+		[[ $(realpath ${EMACS} 2>/dev/null) == */emacs* ]] \
+			|| eerror "This package needs GNU Emacs"
 		return ${ret}
 	fi
 	if [[ -z ${version} ]]; then

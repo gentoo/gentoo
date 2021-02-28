@@ -4,7 +4,7 @@
 EAPI=7
 
 EGIT_COMMIT="2ab5040d5633"
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit optfeature python-single-r1 toolchain-funcs
 

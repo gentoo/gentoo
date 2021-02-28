@@ -1,0 +1,91 @@
+From 6c2e91fb79177f64eae875e1091d35ad94a74f5a Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Thu, 28 Jan 2021 23:14:22 +0000
+Subject: [PATCH] build: Fix building with Inkscape 1.0
+
+This wasn't matching the >1.0.0 version check.
+---
+ common/gtk-2.0/dark/meson.build  | 2 +-
+ common/gtk-2.0/light/meson.build | 2 +-
+ common/gtk-3.0/meson.build       | 4 ++--
+ common/xfwm4/dark/meson.build    | 2 +-
+ common/xfwm4/light/meson.build   | 2 +-
+ 5 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/common/gtk-2.0/dark/meson.build b/common/gtk-2.0/dark/meson.build
+index 869beda9..c13608a8 100644
+--- a/common/gtk-2.0/dark/meson.build
++++ b/common/gtk-2.0/dark/meson.build
+@@ -8,7 +8,7 @@ foreach asset : gtk2_asset_names
+     command : [
+       inkscape,
+       '--export-id-only',
+-      inkscape_ver.version_compare('>1.0.0') ? '--export-filename=@OUTPUT@' : '--export-png=@OUTPUT@',
++      inkscape_ver.version_compare('>=1.0') ? '--export-filename=@OUTPUT@' : '--export-png=@OUTPUT@',
+       '--export-id=' + asset,
+       '--export-dpi=96',
+       '@INPUT@'
+diff --git a/common/gtk-2.0/light/meson.build b/common/gtk-2.0/light/meson.build
+index 3df389a0..4dd32c63 100644
+--- a/common/gtk-2.0/light/meson.build
++++ b/common/gtk-2.0/light/meson.build
+@@ -8,7 +8,7 @@ foreach asset : gtk2_asset_names
+     command : [
+       inkscape,
+       '--export-id-only',
+-      inkscape_ver.version_compare('>1.0.0') ? '--export-filename=@OUTPUT@' : '--export-png=@OUTPUT@',
++      inkscape_ver.version_compare('>=1.0') ? '--export-filename=@OUTPUT@' : '--export-png=@OUTPUT@',
+       '--export-id=' + asset,
+       '--export-dpi=96',
+       '@INPUT@'
+diff --git a/common/gtk-3.0/meson.build b/common/gtk-3.0/meson.build
+index fcb2e074..085bb739 100644
+--- a/common/gtk-3.0/meson.build
++++ b/common/gtk-3.0/meson.build
+@@ -50,7 +50,7 @@ foreach asset : gtk3_asset_names
+     command : [
+       inkscape,
+       '--export-id-only',
+-      inkscape_ver.version_compare('>1.0.0') ? '--export-filename=@OUTPUT@' : '--export-png=@OUTPUT@',
++      inkscape_ver.version_compare('>=1.0') ? '--export-filename=@OUTPUT@' : '--export-png=@OUTPUT@',
+       '--export-id=' + asset,
+       '--export-dpi=96',
+       '@INPUT@'
+@@ -65,7 +65,7 @@ foreach asset : gtk3_asset_names
+     command : [
+       inkscape,
+       '--export-id-only',
+-      inkscape_ver.version_compare('>1.0.0') ? '--export-filename=@OUTPUT@' : '--export-png=@OUTPUT@',
++      inkscape_ver.version_compare('>=1.0') ? '--export-filename=@OUTPUT@' : '--export-png=@OUTPUT@',
+       '--export-id=' + asset,
+       '--export-dpi=192',
+       '@INPUT@'
+diff --git a/common/xfwm4/dark/meson.build b/common/xfwm4/dark/meson.build
+index a2820df2..9bb7d46b 100644
+--- a/common/xfwm4/dark/meson.build
++++ b/common/xfwm4/dark/meson.build
+@@ -8,7 +8,7 @@ foreach asset : xfwm_asset_names
+     command : [
+       inkscape,
+       '--export-id-only',
+-      inkscape_ver.version_compare('>1.0.0') ? '--export-filename=@OUTPUT@' : '--export-png=@OUTPUT@',
++      inkscape_ver.version_compare('>=1.0') ? '--export-filename=@OUTPUT@' : '--export-png=@OUTPUT@',
+       '--export-id=' + asset,
+       '--export-dpi=96',
+       '@INPUT@'
+diff --git a/common/xfwm4/light/meson.build b/common/xfwm4/light/meson.build
+index c65b891b..6ee79fc4 100644
+--- a/common/xfwm4/light/meson.build
++++ b/common/xfwm4/light/meson.build
+@@ -8,7 +8,7 @@ foreach asset : xfwm_asset_names
+     command : [
+       inkscape,
+       '--export-id-only',
+-      inkscape_ver.version_compare('>1.0.0') ? '--export-filename=@OUTPUT@' : '--export-png=@OUTPUT@',
++      inkscape_ver.version_compare('>=1.0') ? '--export-filename=@OUTPUT@' : '--export-png=@OUTPUT@',
+       '--export-id=' + asset,
+       '--export-dpi=96',
+       '@INPUT@'
+-- 
+2.26.2
+

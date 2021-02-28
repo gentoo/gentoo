@@ -12,8 +12,6 @@
 		<flag name="mod">basic support for MOD files</flag>
 		<flag name="playtools">Install playwave and playmus tools (useful
 			for testing)</flag>
-		<flag name="smpeg">Use <pkg>media-libs/smpeg</pkg> for MP3 support
-		</flag>
 		<flag name="tremor">enable OGG Vorbis music via libtremor</flag>
 		<flag name="wav">support WAVE files</flag>
 	</use>

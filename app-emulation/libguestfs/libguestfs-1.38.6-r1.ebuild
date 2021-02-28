@@ -10,8 +10,8 @@ MY_PV_2="$(ver_cut 2)"
 [[ $(( ${MY_PV_2} % 2 )) -eq 0 ]] && SD="stable" || SD="development"
 
 DESCRIPTION="Tools for accessing, inspect  and modifying virtual machine (VM) disk images"
-HOMEPAGE="http://libguestfs.org/"
-SRC_URI="http://libguestfs.org/download/${MY_PV_1}-${SD}/${P}.tar.gz"
+HOMEPAGE="https://libguestfs.org/"
+SRC_URI="https://libguestfs.org/download/${MY_PV_1}-${SD}/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0/"${MY_PV_1}""
@@ -86,7 +86,10 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/gperf
 	>=dev-lang/ocaml-4.03[ocamlopt]
 	dev-ml/findlib[ocamlopt]
-	dev-ml/ocaml-gettext
+	|| (
+		<dev-ml/ocaml-gettext-0.4.2
+		dev-ml/ocaml-gettext-stub
+	)
 	>=dev-ml/ounit-2
 	doc? ( app-text/po4a )
 	ruby? ( dev-lang/ruby virtual/rubygems dev-ruby/rake )

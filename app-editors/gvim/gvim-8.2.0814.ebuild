@@ -3,7 +3,7 @@
 
 EAPI=7
 VIM_VERSION="8.2"
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 PYTHON_REQ_USE="threads(+)"
 USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 

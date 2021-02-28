@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="Live Source Client For IceCast"
 HOMEPAGE="http://star.arm.ac.uk/~spm/software/liveice.html"
@@ -13,15 +13,13 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 x86"
 
-RDEPEND="media-sound/lame
+RDEPEND="
+	media-sound/lame
 	media-sound/mpg123"
-DEPEND=""
+DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${PN}"
-
-PATCHES=(
-	"${FILESDIR}/${P}-build.patch"
-)
+PATCHES=( "${FILESDIR}"/${P}-build.patch )
 
 src_prepare() {
 	default
@@ -29,7 +27,12 @@ src_prepare() {
 	tc-export CC
 }
 
+src_configure() {
+	append-flags -fcommon
+	default
+}
+
 src_install() {
 	dobin liveice
-	dodoc liveice.cfg README.liveice README.quickstart README_new_mixer.txt Changes.txt
+	dodoc liveice.cfg README.{liveice,quickstart} README_new_mixer.txt Changes.txt
 }

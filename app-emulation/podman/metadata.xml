@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zmedico@gentoo.org</email>
+		<name>Zac Medico</name>
+	</maintainer>
+	<longdescription lang="en">
+		Podman (the POD MANager) is a tool for managing containers
+		and images, volumes mounted into those containers, and pods
+		made from groups of containers. Podman is based on libpod,
+		a library for container lifecycle management that is also
+		contained in this repository. The libpod library provides
+		APIs for managing containers, pods, container images,
+		and volumes.
+	</longdescription>
+	<use>
+		<flag name="apparmor">
+			Enable AppArmor support.
+		</flag>
+		<flag name="btrfs">
+			Enables dependencies for the "btrfs" graph driver, including
+			necessary kernel flags.
+		</flag>
+		<flag name="fuse">
+			Enables fuse dependencies (fuse-overlayfs is especially useful
+			for rootless mode).
+		</flag>
+		<flag name="rootless">
+			Enables dependencies for running in rootless mode.
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">containers/podman</remote-id>
+	</upstream>
+</pkgmetadata>

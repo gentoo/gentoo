@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit autotools toolchain-funcs
 
 MY_P=${P/graphicsm/GraphicsM}
 DESCRIPTION="Collection of tools and libraries for many image formats"
-HOMEPAGE="http://www.graphicsmagick.org/"
+HOMEPAGE="http://www.graphicsmagick.org/ http://hg.code.sf.net/p/graphicsmagick/code/"
 LICENSE="MIT"
 SLOT="0/${PV%.*}"
 

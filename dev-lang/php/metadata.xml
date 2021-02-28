@@ -28,6 +28,7 @@
     <flag name="gd">Adds support for gd (bundled with PHP)</flag>
     <flag name="hash">Enable the hash extension</flag>
     <flag name="inifile">Add dbm support for .ini files</flag>
+    <flag name="jit">Enable PCRE JIT support</flag>
     <flag name="json">Enable JSON support</flag>
     <flag name="ldap-sasl">Add SASL support for the PHP LDAP extension</flag>
     <flag name="lmdb">Enable support for <pkg>dev-db/lmdb</pkg> db backend</flag>

@@ -8,6 +8,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">smmap</remote-id>
-    <remote-id type="github">Byron/smmap</remote-id>
+    <remote-id type="github">gitpython-developers/smmap</remote-id>
   </upstream>
 </pkgmetadata>

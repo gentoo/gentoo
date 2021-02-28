@@ -11,7 +11,7 @@ SRC_URI="https://github.com/libtom/libtommath/releases/download/v${PV}/ltm-${PV}
 
 LICENSE="Unlicense"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="doc examples static-libs"
 
 BDEPEND="sys-devel/libtool"
@@ -64,6 +64,11 @@ src_test() {
 
 src_install() {
 	_emake -f makefile.shared install
+
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		local path="usr/$(get_libdir)/libtommath.${PV}.dylib"
+		install_name_tool -id "${EPREFIX}/${path}" "${ED}/${path}" || die "Failed to adjust install_name"
+	fi
 
 	# We only link against -lc, so drop the .la file.
 	find "${ED}" -name '*.la' -delete || die

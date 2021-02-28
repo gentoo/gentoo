@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	MY_PV=${PV/_rc/-rc}
 	SRC_URI="https://github.com/swaywm/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 arm64 ~ppc64 x86"
 	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 
@@ -22,7 +22,7 @@ LICENSE="MIT"
 SLOT="0"
 IUSE="elogind fish-completion +man +swaybar +swaybg +swayidle +swaylock +swaymsg +swaynag seatd systemd tray wallpapers X zsh-completion"
 REQUIRED_USE="?? ( elogind systemd )
-	tray? ( || ( elogind systemd ) )"
+	tray? ( || ( elogind seatd systemd ) )"
 
 DEPEND="
 	>=dev-libs/json-c-0.13:0=
@@ -34,7 +34,7 @@ DEPEND="
 	x11-libs/pango
 	x11-libs/pixman
 	media-libs/mesa[gles2,libglvnd(+)]
-	elogind? ( >=sys-auth/elogind-239[policykit] )
+	elogind? ( >=sys-auth/elogind-239 )
 	swaybar? ( x11-libs/gdk-pixbuf:2 )
 	swaybg? ( gui-apps/swaybg )
 	swayidle? ( gui-apps/swayidle )
@@ -106,9 +106,6 @@ pkg_preinst() {
 
 pkg_postinst() {
 	if ! use systemd && ! use elogind && ! use seatd; then
-		elog ""
-		elog "If you use ConsoleKit2, remember to launch sway using:"
-		elog "exec ck-launch-session sway"
 		elog ""
 		elog "If your system does not set the XDG_RUNTIME_DIR environment"
 		elog "variable, you must set it manually to run Sway. See wiki"

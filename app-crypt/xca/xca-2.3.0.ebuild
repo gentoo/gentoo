@@ -27,6 +27,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.0.0-desktop.patch"
+	"${FILESDIR}/${P}-bug-733000.patch"
 )
 
 src_configure() {

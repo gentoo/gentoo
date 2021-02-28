@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 MY_PN="estimator"
 MY_PV=${PV/_rc/-rc}
 MY_P=${MY_PN}-${MY_PV}

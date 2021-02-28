@@ -5,4 +5,7 @@
 		<email>sci-astronomy@gentoo.org</email>
 		<name>Gentoo Astronomy Project</name>
 	</maintainer>
+	<use>
+		<flag name="cfitsio">Link with <pkg>sci-libs/cfitsio</pkg></flag>
+	</use>
 </pkgmetadata>

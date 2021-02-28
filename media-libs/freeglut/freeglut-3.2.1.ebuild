@@ -3,6 +3,7 @@
 
 EAPI=7
 
+CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
 DESCRIPTION="A free OpenGL utility toolkit, the open-sourced alternative to the GLUT library"
@@ -32,6 +33,7 @@ HTML_DOCS=( doc/. )
 
 src_configure() {
 	local mycmakeargs=(
+		"-DOpenGL_GL_PREFERENCE=GLVND" # bug 721006
 		"-DFREEGLUT_GLES=OFF"
 		"-DFREEGLUT_BUILD_DEMOS=OFF"
 		"-DFREEGLUT_BUILD_STATIC_LIBS=$(usex static-libs ON OFF)"
@@ -41,6 +43,6 @@ src_configure() {
 }
 
 multilib_src_install() {
-	cmake-utils_src_install
-	cp "${D}"/usr/$(get_libdir)/pkgconfig/{,free}glut.pc
+	cmake_src_install
+	cp "${D}"/usr/$(get_libdir)/pkgconfig/{,free}glut.pc || die
 }

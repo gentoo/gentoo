@@ -2,12 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>ramage.lucas@protonmail.com</email>
-		<name>Lucas Ramage</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
+		<email>tupone@gentoo.org</email>
+		<name>Tupone Alfredo</name>
 	</maintainer>
 	<upstream>
 		<changelog>https://sourceforge.net/p/flawfinder/code/ci/master/tree/ChangeLog</changelog>

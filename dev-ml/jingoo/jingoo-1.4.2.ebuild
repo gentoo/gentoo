@@ -16,10 +16,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-ml/ppx_deriving
-	dev-ml/uucp
-	dev-ml/uutf
-	dev-ml/re
-	dev-ml/menhir"
+RDEPEND="dev-ml/ppx_deriving:=
+	dev-ml/uucp:=
+	dev-ml/uutf:=
+	dev-ml/re:=
+	dev-ml/menhir:="
 DEPEND="${RDEPEND}
 	test? ( dev-ml/ounit )"

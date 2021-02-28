@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit autotools
+
 DESCRIPTION="Daemon protecting your computer against BadUSB"
 HOMEPAGE="https://github.com/USBGuard/usbguard"
 SRC_URI="https://github.com/USBGuard/usbguard/releases/download/${P}/${P}.tar.gz"
@@ -10,12 +12,16 @@ SRC_URI="https://github.com/USBGuard/usbguard/releases/download/${P}/${P}.tar.gz
 LICENSE="GPL-2+"
 SLOT="0/1"  # due to libusbguard.so.<1>.0.0
 KEYWORDS="~amd64 ~x86"
-IUSE="bash-completion dbus ldap policykit static-libs systemd"
+IUSE="bash-completion dbus ldap policykit static-libs systemd test"
 
 REQUIRED_USE="policykit? ( dbus )"
 
+# https://github.com/USBGuard/usbguard/issues/449
+# https://bugs.gentoo.org/769692
+REQUIRED_USE+=" test? ( static-libs )"
+
 CDEPEND="
-	dev-libs/pegtl
+	<dev-libs/pegtl-3
 	>=dev-libs/libsodium-0.4.5:=
 	>=dev-libs/protobuf-2.5.0:=
 	>=sys-cluster/libqb-0.16.0:=
@@ -44,6 +50,17 @@ DEPEND="${CDEPEND}
 		dev-util/gdbus-codegen
 	)
 	"
+
+RESTRICT="!test? ( test )"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.0.0-pthreads-link.patch
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	local myargs=(

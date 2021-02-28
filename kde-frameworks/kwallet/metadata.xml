@@ -7,6 +7,5 @@
 	</maintainer>
 	<use>
 		<flag name="gpg">Support wallets with GnuPG encryption in addition to the default blowfish-encrypted file</flag>
-		<flag name="man">Build and install man pages</flag>
 	</use>
 </pkgmetadata>

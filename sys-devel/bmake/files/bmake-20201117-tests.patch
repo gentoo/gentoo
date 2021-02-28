@@ -16,3 +16,19 @@
  TESTS+=		shell-custom
  .if exists(/bin/ksh)
  TESTS+=		shell-ksh
+@@ -287,7 +285,6 @@
+ TESTS+=		var-op-assign
+ TESTS+=		var-op-default
+ TESTS+=		var-op-expand
+-TESTS+=		var-op-shell
+ TESTS+=		var-op-sunsh
+ TESTS+=		var-recursive
+ TESTS+=		varcmd
+@@ -300,7 +297,6 @@
+ TESTS+=		varmod-edge
+ TESTS+=		varmod-exclam-shell
+ TESTS+=		varmod-extension
+-TESTS+=		varmod-gmtime
+ TESTS+=		varmod-hash
+ TESTS+=		varmod-head
+ TESTS+=		varmod-ifelse

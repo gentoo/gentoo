@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..8} )
+PYTHON_COMPAT=( python3_{7..8} )
 inherit cmake-utils python-any-r1
 
 DESCRIPTION="Fast Library for Number Theory"
@@ -12,7 +12,7 @@ SRC_URI="http://www.flintlib.org/${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/14"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc ~x86"
 IUSE="doc ntl test"
 
 RESTRICT="!test? ( test )"

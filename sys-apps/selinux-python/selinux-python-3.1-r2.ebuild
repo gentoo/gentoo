@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 PYTHON_REQ_USE="xml"
 
 inherit python-r1 toolchain-funcs
@@ -25,7 +25,7 @@ if [[ ${PV} == 9999 ]] ; then
 	S="${WORKDIR}/${MY_P}/${PN#selinux-}"
 else
 	SRC_URI="https://github.com/SELinuxProject/selinux/releases/download/${MY_RELEASEDATE}/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~mips ~x86"
+	KEYWORDS="amd64 ~arm64 ~mips x86"
 	S="${WORKDIR}/${MY_P}"
 fi
 

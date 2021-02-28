@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( python3_{6,7,8,9} pypy3 )
+PYTHON_COMPAT=( python3_{7,8,9} pypy3 )
 PYTHON_REQ_USE="xml(+),threads(+)"
 
 EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/gentoolkit.git"

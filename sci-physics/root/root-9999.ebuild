@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 # ninja does not work due to fortran
 CMAKE_MAKEFILE_GENERATOR=emake
 FORTRAN_NEEDED="fortran"
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 
 inherit cmake cuda elisp-common fortran-2 prefix python-single-r1 toolchain-funcs
 
@@ -22,7 +22,6 @@ RESTRICT="!test? ( test )"
 
 if [[ ${PV} =~ "9999" ]] ; then
 	inherit git-r3
-	KEYWORDS=""
 	EGIT_REPO_URI="https://github.com/root-project/root.git"
 	if [[ ${PV} == "9999" ]]; then
 		SLOT="0"

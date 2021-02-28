@@ -1,10 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-AUTOTOOLS_AUTORECONF=1
-inherit autotools-utils
+inherit autotools
 
 DESCRIPTION="A Heterogenous C Library of Numeric Functions"
 HOMEPAGE="http://www.coyotegulch.com/products/brahe/"
@@ -14,7 +13,19 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
 
-IUSE="static-libs"
-
 DOCS=( AUTHORS ChangeLog NEWS )
-PATCHES=( "${FILESDIR}/${PV}-missing_libs.patch" )
+
+PATCHES=(
+	"${FILESDIR}/${PV}-missing_libs.patch"
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
+
+src_install() {
+	default
+
+	find "${ED}" -name '*.a' -delete || die
+}

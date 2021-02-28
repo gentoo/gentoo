@@ -1,5 +1,5 @@
---- configure.ac.bak	2010-05-25 17:12:14.756245990 +0000
-+++ configure.ac	2010-05-25 17:11:51.629581723 +0000
+--- a/configure.ac
++++ b/configure.ac
 @@ -79,11 +79,10 @@
  		 CFLAGS="$OPT_CFLAGS $TRY_CFLAGS $CFLAGS"
  		 AC_MSG_CHECKING([if <altivec.h> is needed])

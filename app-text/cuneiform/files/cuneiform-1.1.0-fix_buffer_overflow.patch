@@ -1,8 +1,5 @@
 Description: Fix buffer overflow during crash when using user supplied image.
 Author: Sławomir Nizio
-Forwarded: no
-Last-Update: 2017-04-05
-
 --- a/cuneiform_src/Kern/rstr/src/acc_tabs.c	
 +++ b/cuneiform_src/Kern/rstr/src/acc_tabs.c	
 @@ -1233,7 +1233,7 @@ if(is_cen_language(language))

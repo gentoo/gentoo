@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -39,7 +39,10 @@ DEPEND="${RDEPEND}
 	)
 "
 
-PATCHES=( "${FILESDIR}/${PN}-disable-pgp-test.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-disable-pgp-test.patch"
+	"${FILESDIR}/${P}-gcc11.patch" # bug 764047
+)
 
 qca_plugin_use() {
 	echo -DWITH_${2:-$1}_PLUGIN=$(usex "$1")

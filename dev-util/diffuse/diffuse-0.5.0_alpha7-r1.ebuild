@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 PLOCALES="cs de es it ja ko pl pt ru sv th zh_CN zh_TW"
 inherit python-single-r1 l10n xdg-utils
 

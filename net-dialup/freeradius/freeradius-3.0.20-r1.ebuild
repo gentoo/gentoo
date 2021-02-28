@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 inherit autotools pam python-single-r1 systemd
 
 MY_P="${PN}-server-${PV}"
@@ -226,7 +226,9 @@ src_install() {
 		R="${D}" \
 		install
 
-	pamd_mimic_system radiusd auth account password session
+	if use pam; then
+		pamd_mimic_system radiusd auth account password session
+	fi
 
 	# fix #711756
 	fowners -R radius:radius /etc/raddb

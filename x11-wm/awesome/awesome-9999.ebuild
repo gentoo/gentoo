@@ -76,11 +76,14 @@ PATCHES=(
 )
 
 src_configure() {
-	# Compression of manpages is handled by portage
+	# Compression of manpages is handled by portage.
+	# WITH_DBUS uses AutoOption.cmake which currently does not
+	# understand yes/no (or indeed any values other than ON, OFF
+	# or AUTO).
 	local mycmakeargs=(
 		-DSYSCONFDIR="${EPREFIX}"/etc
 		-DCOMPRESS_MANPAGES=OFF
-		-DWITH_DBUS=$(usex dbus)
+		-DWITH_DBUS=$(usex dbus ON OFF)
 		-DGENERATE_DOC=$(usex doc)
 		-DAWESOME_DOC_PATH="${EPREFIX}"/usr/share/doc/${PF}
 		-DLUA_INCLUDE_DIR="$(lua_get_include_dir)"

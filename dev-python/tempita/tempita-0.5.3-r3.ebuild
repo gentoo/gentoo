@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python3_{6,7,8,9} )
+PYTHON_COMPAT=( pypy3 python3_{7,8,9} )
 # The package uses pkg_resources
 DISTUTILS_USE_SETUPTOOLS=manual
 

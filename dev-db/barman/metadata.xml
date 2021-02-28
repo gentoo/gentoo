@@ -6,6 +6,8 @@
 		<name>Patrick Lauer</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">downloads</remote-id>
+		<remote-id type="github">2ndquadrant-it/barman</remote-id>
+		<remote-id type="sourceforge">pgbarman</remote-id>
+		<bugs-to>https://sourceforge.net/p/pgbarman/tickets/</bugs-to>
 	</upstream>
 </pkgmetadata>

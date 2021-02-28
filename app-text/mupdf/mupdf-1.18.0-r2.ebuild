@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit desktop flag-o-matic toolchain-funcs xdg
 
 DESCRIPTION="A lightweight PDF viewer and toolkit written in portable C"
-HOMEPAGE="https://mupdf.com/"
+HOMEPAGE="https://mupdf.com/ https://git.ghostscript.com/?p=mupdf.git"
 SRC_URI="https://mupdf.com/downloads/archive/${P}-source.tar.xz"
 S="${WORKDIR}/${P}-source"
 

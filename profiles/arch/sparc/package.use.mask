@@ -1,6 +1,12 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-02-26)
+# dev-libs/efl not keyworded here
+# and is a desktop application mainly
+# bug #773178
+app-crypt/pinentry efl
+
 # Joonas Niilola <juippis@gentoo.org> (2021-01-15)
 # Dependency not keyworded on this arch.
 app-text/enchant voikko
@@ -191,12 +197,6 @@ dev-lang/spidermonkey jit
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-04-20)
 # No ffmpeg keywords on sparc
 media-sound/dir2ogg aac wma
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2018-09-28)
-# No stable nftables yet. Let new iptables stabilization
-# to pick nftables up. Meanwhile keep old iptables off
-# nftables.
-<net-firewall/iptables-1.6.2 nftables
 
 # Virgil Dupras <vdupras@gentoo.org> (2018-10-08)
 # app-text/mupdf sparc keyword was dropped in bug #631970

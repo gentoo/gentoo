@@ -35,7 +35,8 @@ inherit multilib-build
 rust_abi() {
 	local CTARGET=${1:-${CHOST}}
 	case ${CTARGET%%*-} in
-		aarch64*)	  echo aarch64-unknown-linux-gnu;;
+		aarch64*gnu)  echo aarch64-unknown-linux-gnu;;
+		aarch64*musl) echo aarch64-unknown-linux-musl;;
 		mips64*)	  echo mips64-unknown-linux-gnuabi64;;
 		powerpc64le*) echo powerpc64le-unknown-linux-gnu;;
 		powerpc64*)   echo powerpc64-unknown-linux-gnu;;

@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>waebbl@gmail.com</email>
+		<email>waebbl-gentoo@posteo.net</email>
 		<name>Bernd Waibel</name>
 	</maintainer>
 	<maintainer type="project">
@@ -10,11 +10,11 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
-		<flag restrict="&gt;dev-libs/tvision-2.2.1-r4" name="gpm">
+		<flag name="gpm">
 			Support text mode mouse through <pkg>sys-libs/gpm</pkg>
 		</flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">tvision</remote-id>
+		<remote-id type="github">set-soft/tvision</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -13,6 +13,10 @@
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
+  <maintainer type="project">
+    <!-- tight dependency of dev-python/stripe -->
+    <email>python@gentoo.org</email>
+  </maintainer>
   <upstream>
     <remote-id type="github">stripe/stripe-mock</remote-id>
   </upstream>

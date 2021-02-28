@@ -28,7 +28,6 @@
 	<use>
 		<flag name="elogind">Enable support for rootless session via elogind</flag>
 		<flag name="fish-completion">Enable fish completion support</flag>
-		<flag name="man">Build and install man pages</flag>
 		<flag name="seatd">Enable support for rootless session via <pkg>sys-auth/seatd</pkg></flag>
 		<flag name="swaybar">Install 'swaybar': sway's status bar component</flag>
 		<flag name="swaybg">Install 'swaybg': allows to set a desktop background image</flag>

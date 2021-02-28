@@ -23,7 +23,7 @@ IUSE=""
 ruby_add_rdepend "
 	dev-ruby/concurrent-ruby:1
 	>=dev-ruby/rack-1:* <dev-ruby/rack-3:*
-	!!<dev-ruby/sprockets-3.7.2-r1:3"
+	!<dev-ruby/sprockets-3.7.2-r1:3"
 
 ruby_add_bdepend "test? (
 		dev-ruby/json

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # As upstream (and we aswell) are not allowed to redistribute scansyn,
@@ -8,7 +8,7 @@
 EAPI=7
 
 LUA_COMPAT=( lua5-1 luajit )
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit cmake lua-single python-single-r1 toolchain-funcs
 
@@ -22,7 +22,7 @@ else
 			https://github.com/csound/csound/releases/download/${PV}/${DOC_P}_manual_pdf.zip
 			https://github.com/csound/csound/releases/download/${PV}/${DOC_P}_manual_html.zip
 		)"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="Sound design and signal processing system for composition and performance"
@@ -37,6 +37,7 @@ portaudio portmidi pulseaudio python samples static-libs stk test +threads +util
 vim-syntax websocket"
 
 REQUIRED_USE="
+	alsa? ( threads )
 	linear? ( double-precision )
 	lua? ( ${LUA_REQUIRED_USE} cxx )
 	python? ( ${PYTHON_REQUIRED_USE} cxx )

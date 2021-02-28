@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 XPP_COMMIT="044e69d05db7f89339bda1ccd1efe0263b01c8f6"
 I3IPCPP_COMMIT="cb008b30fc5f3febfe467884cb0211ee3c16386b"
 
@@ -63,6 +63,8 @@ src_configure() {
 		-DENABLE_MPD="$(usex mpd)"
 		-DENABLE_NETWORK="$(usex network)"
 		-DENABLE_PULSEAUDIO="$(usex pulseaudio)"
+		# Bug 767949
+		-DENABLE_CCACHE="OFF"
 	)
 
 	cmake_src_configure

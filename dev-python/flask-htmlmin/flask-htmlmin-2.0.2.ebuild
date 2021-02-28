@@ -6,7 +6,7 @@ EAPI=7
 MY_PN="Flask-HTMLmin"
 MY_P=${MY_PN}-${PV}
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 inherit distutils-r1
 
 DESCRIPTION="Minimize your flask rendered html"

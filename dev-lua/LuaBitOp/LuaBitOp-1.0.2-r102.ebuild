@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ SRC_URI="http://bitop.luajit.org/download/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 arm ~arm64 ~hppa ~mips ppc ppc64 sparc x86"
 IUSE="test"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
@@ -72,7 +72,8 @@ src_test() {
 lua_src_install() {
 	pushd "${BUILD_DIR}" || die
 
-	exeinto $(lua_get_cmod_dir)
+	mycmoddir="$(lua_get_cmod_dir)"
+	exeinto "${mycmoddir#$EPREFIX}"
 	doexe bit.so
 
 	popd

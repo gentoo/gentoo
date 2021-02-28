@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_6 python3_7 )
+PYTHON_COMPAT=( python3_7 python3_8 python3_9 )
 
-inherit distutils-r1
+inherit desktop distutils-r1
 
 DESCRIPTION="A lightweight DLNA/UPNP/Chromecast streaming server for PulseAudio"
 HOMEPAGE="https://github.com/masmu/pulseaudio-dlna"
@@ -14,7 +14,6 @@ if [[ ${PV} == *9999 ]];then
 	SRC_URI=""
 	EGIT_REPO_URI="https://github.com/masmu/pulseaudio-dlna"
 	EGIT_BRANCH="python3"
-	KEYWORDS=""
 else
 	SRC_URI="https://github.com/masmu/pulseaudio-dlna/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
@@ -43,11 +42,10 @@ RDEPEND=">=dev-python/protobuf-python-2.5.0[${PYTHON_USEDEP}]
 	x11-libs/gtk+:3[introspection]
 	|| (
 		|| (
-			media-video/ffmpeg[encode,faac,mp3,opus,vorbis]
+			media-video/ffmpeg[encode,mp3,opus,vorbis]
 			media-video/ffmpeg[encode,fdk,mp3,opus,vorbis]
 		)
 		(
-			media-libs/faac
 			media-libs/flac
 			media-sound/lame
 			media-sound/opus-tools
@@ -71,6 +69,5 @@ python_prepare_all() {
 src_install() {
 	distutils-r1_src_install
 
-	insinto /usr/share/applications
-	doins "${FILESDIR}/${PN}.desktop"
+	domenu "${FILESDIR}/${PN}.desktop"
 }

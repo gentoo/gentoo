@@ -5,6 +5,7 @@ EAPI=7
 
 inherit autotools
 
+# NOTE: Please bump with net-misc/gsasl
 DESCRIPTION="The GNU SASL library"
 HOMEPAGE="https://www.gnu.org/software/gsasl/"
 SRC_URI="mirror://gnu/${PN/lib}/${P}.tar.gz"

@@ -4,6 +4,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2021-02-01)
+# dev-libs/libressl is masked for removal.
+libressl
+curl_ssl_libressl
+
 # Brian Evans <grknight@gentoo.org> (2021-01-07)
 # PHP 7.2 is security vulnerable and end-of-life
 # Please upgrade to a newer slot
@@ -20,10 +25,6 @@ ros_messages_eus
 # Hans de Graaff <graaff@gentoo.org> (2020-06-13)
 # Mask Ruby 2.4 as EOL
 ruby_targets_ruby24
-
-# Matt Turner <mattst88@gentoo.org> (2020-03-25)
-# media-libs/libav is masked for removal
-libav
 
 # Brian Evans <grknight@gentoo.org> (2019-12-19)
 # PHP 7.1 is end of life and has security issues Bug 703326

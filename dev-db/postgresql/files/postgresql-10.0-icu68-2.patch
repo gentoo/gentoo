@@ -1,0 +1,11 @@
+tardiff /usr/portage/distfiles/postgresql-10.15.tar.bz2 -upN
+--- postgresql-10.15/src/include/utils/pg_locale.h
++++ postgresql-10.15/src/include/utils/pg_locale.h	2021-02-09 12:03:19.403549986 -0800
+@@ -17,6 +17,7 @@
+ #endif
+ #ifdef USE_ICU
+ #include <unicode/ucol.h>
++#undef bool
+ #endif
+ 
+ #include "utils/guc.h"

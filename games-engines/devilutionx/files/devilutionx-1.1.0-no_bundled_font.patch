@@ -38,6 +38,17 @@ https://bugs.gentoo.org/704508
  
      # -G DEB
      set(CPACK_PACKAGE_CONTACT "anders@jenbo.dk")
+--- devilutionX-1.1.0/SourceX/DiabloUI/fonts.cpp
++++ devilutionX-1.1.0/SourceX/DiabloUI/fonts.cpp
+@@ -69,7 +69,7 @@
+ #ifdef __linux__
+ 	if (!FileExists(ttf_font_path))
+ 	{
+-		ttf_font_path = "/usr/share/fonts/truetype/" TTF_FONT_NAME;
++		ttf_font_path = "/usr/share/fonts/" TTF_FONT_NAME;
+ 	}
+ #endif
+ 	font = TTF_OpenFont(ttf_font_path, 17);
 --- devilutionX-1.1.0/SourceX/DiabloUI/fonts.h
 +++ devilutionX-1.1.0/SourceX/DiabloUI/fonts.h
 @@ -11,7 +11,7 @@
@@ -45,7 +56,7 @@ https://bugs.gentoo.org/704508
  
  #ifndef TTF_FONT_NAME
 -#define TTF_FONT_NAME "CharisSILB.ttf"
-+#define TTF_FONT_NAME "CharisSIL-B.ttf"
++#define TTF_FONT_NAME "sil-charis/CharisSIL-B.ttf"
  #endif
  
  namespace dvl {

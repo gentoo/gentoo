@@ -9,4 +9,5 @@
 		<email>bircoph@gentoo.org</email>
 		<name>Andrew Savchenko</name>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>

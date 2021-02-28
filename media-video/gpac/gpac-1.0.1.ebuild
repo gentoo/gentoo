@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/gpac/gpac"
 else
 	SRC_URI="https://github.com/gpac/gpac/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha amd64 ~ppc ~ppc64 ~sparc x86"
+	KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
 fi
 
 inherit flag-o-matic toolchain-funcs ${SCM} xdg
@@ -98,7 +98,6 @@ src_configure() {
 	tc-export CC CXX AR RANLIB
 
 	local myeconfargs=(
-		--extra-cflags="${CFLAGS} $(usex cpu_flags_x86_sse2 '-msse2' '-mno-sse2')"
 		--cc="$(tc-getCC)"
 		--libdir="$(get_libdir)"
 		--verbose
@@ -134,6 +133,18 @@ src_configure() {
 		$(my_use vorbis)
 		$(my_use xvid)
 	)
+
+	if use amd64 || use x86 ; then
+		# Don't pass -mno-sse2 on non amd64/x86
+		myeconfargs+=(
+			--extra-cflags="${CFLAGS} $(usex cpu_flags_x86_sse2 '-msse2' '-mno-sse2')"
+		)
+	else
+		myeconfargs+=(
+			--extra-cflags="${CFLAGS}"
+		)
+	fi
+
 	econf "${myeconfargs[@]}"
 }
 

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 inherit autotools python-any-r1 xdg-utils
 
 DESCRIPTION="Xfce plugin puts the maximized window title and windows buttons on the panel"

@@ -12,6 +12,7 @@
 		OpenGL and GLSL, and many core functions for matrix manipulation which make Eigen feel a lot more like MATLAB.
 	</longdescription>
 	<upstream>
+		<bugs-to>https://github.com/libigl/libigl/issues</bugs-to>
 		<remote-id type="github">libigl/libigl</remote-id>
 	</upstream>
 </pkgmetadata>

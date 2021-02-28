@@ -5,6 +5,7 @@
 		<email>pacho@gentoo.org</email>
 		<name>Pacho Ramos</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">robotools/defcon</remote-id>
 		<remote-id type="pypi">defcon</remote-id>

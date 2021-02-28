@@ -5,4 +5,5 @@
 	<email>eselect@gentoo.org</email>
 	<name>eselect configuration and management tool</name>
 </maintainer>
+<stabilize-allarches/>
 </pkgmetadata>

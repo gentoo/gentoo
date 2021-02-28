@@ -17,12 +17,21 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (2021-02-17)
+# Unmask PCRE JIT support where dev-libs/libpcre2[jit] is available
+dev-lang/php -jit
+
+# Jaco Kroon <jaco@uls.co.za> (2021-01-08)
+# blocksruntime (clang -fblocks requirement) for asterisk is available on this
+# architecture.
+net-misc/asterisk -blocks
+
 # Michał Górny <mgorny@gentoo.org> (2020-12-21)
 # Sanitizers supported on this architecture.
 sys-libs/compiler-rt-sanitizers -asan -dfsan -lsan -msan -hwasan -tsan
 sys-libs/compiler-rt-sanitizers -ubsan -safestack -cfi -scudo
 sys-libs/compiler-rt-sanitizers -gwp-asan
-sys-libs/compiler-rt-sanitizers -libfuzzer -profile -xray
+sys-libs/compiler-rt-sanitizers -libfuzzer -memprof -profile -xray
 
 # Sam James <sam@gentoo.org> (2020-10-24)
 # asm redc is only available on amd64,
@@ -85,6 +94,7 @@ www-client/firefox -eme-free
 x11-wm/mutter -sysprof
 dev-libs/gjs -sysprof
 dev-libs/glib -sysprof
+gnome-extra/cjs -sysprof
 x11-libs/gtk+ -sysprof
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
@@ -335,10 +345,6 @@ dev-qt/qtwebkit -jit
 # sys-devel/llvm is keyworded on amd64
 media-libs/mesa -llvm
 
-# Tomáš Chvátal <scarabeus@gentoo.org> (2010-04-04)
-# x86 platforms works
-sys-power/pm-utils -video_cards_intel -video_cards_radeon
-
 # Jean-Noël Rivasseau <elvanor@gentoo.org> (2009-09-23)
 # X use flag only for amd64/x86, bug 285951.
 media-gfx/iscan -X
@@ -372,7 +378,6 @@ app-crypt/johntheripper cpu_flags_x86_mmx
 media-libs/libfame cpu_flags_x86_mmx
 media-libs/sdl-gfx cpu_flags_x86_mmx
 media-libs/smpeg cpu_flags_x86_mmx
-x11-terms/eterm cpu_flags_x86_mmx
 
 # x86_64 opts are enabled with USE sse. so masking the rest
 media-sound/mpg123 cpu_flags_x86_mmx cpu_flags_x86_3dnow cpu_flags_x86_3dnowext

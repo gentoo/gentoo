@@ -102,7 +102,7 @@ FFMPEG_ENCODER_FLAG_MAP=(
 )
 
 IUSE="
-	alsa chromium doc +encode oss pic static-libs test v4l
+	alsa chromium doc +encode oss pic sndio static-libs test v4l
 	${FFMPEG_FLAG_MAP[@]%:*}
 	${FFMPEG_ENCODER_FLAG_MAP[@]%:*}
 "
@@ -241,6 +241,7 @@ RDEPEND="
 	rubberband? ( >=media-libs/rubberband-1.8.1-r1[${MULTILIB_USEDEP}] )
 	samba? ( >=net-fs/samba-3.6.23-r1[client,${MULTILIB_USEDEP}] )
 	sdl? ( media-libs/libsdl2[sound,video,${MULTILIB_USEDEP}] )
+	sndio? ( media-sound/sndio:=[${MULTILIB_USEDEP}] )
 	speex? ( >=media-libs/speex-1.2_rc1-r1[${MULTILIB_USEDEP}] )
 	srt? ( >=net-libs/srt-1.3.0[${MULTILIB_USEDEP}] )
 	ssh? ( >=net-libs/libssh-0.5.5[${MULTILIB_USEDEP}] )
@@ -364,12 +365,12 @@ multilib_src_configure() {
 
 	# Indevs
 	use v4l || myconf+=( --disable-indev=v4l2 --disable-outdev=v4l2 )
-	for i in alsa oss jack ; do
+	for i in alsa oss jack sndio ; do
 		use ${i} || myconf+=( --disable-indev=${i} )
 	done
 
 	# Outdevs
-	for i in alsa oss ; do
+	for i in alsa oss sndio ; do
 		use ${i} || myconf+=( --disable-outdev=${i} )
 	done
 

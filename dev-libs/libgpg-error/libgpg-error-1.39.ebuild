@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools libtool multilib-minimal toolchain-funcs prefix
 
 DESCRIPTION="Contains error handling functions used by GnuPG software"
-HOMEPAGE="http://www.gnupg.org/related_software/libgpg-error"
+HOMEPAGE="https://www.gnupg.org/related_software/libgpg-error"
 SRC_URI="mirror://gnupg/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"

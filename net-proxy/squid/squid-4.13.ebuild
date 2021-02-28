@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -256,7 +256,10 @@ src_install() {
 	newdoc src/acl/external/kerberos_ldap_group/README README.kerberos_ldap_group
 	dodoc RELEASENOTES.html
 
-	newpamd "${FILESDIR}/squid.pam" squid
+	if use pam; then
+		newpamd "${FILESDIR}/squid.pam" squid
+	fi
+
 	newconfd "${FILESDIR}/squid.confd-r2" squid
 	newinitd "${FILESDIR}/squid.initd-r5" squid
 	if use logrotate; then

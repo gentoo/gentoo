@@ -37,7 +37,7 @@ src_prepare() {
 		-e 's/^PREFIX/PREFIX?/' \
 		Makefile || die
 
-	sed -i -e "/^ExecStart=/ s:=/opt/endlessh:=${EPREFIX}/usr/bin:" \
+	sed -i -e "/^ExecStart=/ s:=/usr/local:=${EPREFIX}/usr:" \
 		util/endlessh.service || die
 }
 

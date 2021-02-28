@@ -1,5 +1,5 @@
---- liveice/configure.in
-+++ liveice/configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -39,6 +39,7 @@
  
  dnl Replace `main' with a function in -lresolv:
@@ -8,8 +8,8 @@
  
  
  dnl Checks for header files.
---- liveice/Makefile.in
-+++ liveice/Makefile.in
+--- a/Makefile.in
++++ b/Makefile.in
 @@ -1,6 +1,6 @@
  CC = @CC@
  CFLAGS = @CFLAGS@

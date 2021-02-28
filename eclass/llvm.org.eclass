@@ -1,4 +1,4 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: llvm.org.eclass
@@ -44,7 +44,7 @@ esac
 # @DESCRIPTION:
 # The major version of current LLVM trunk.  Used to determine
 # the correct branch to use.
-_LLVM_MASTER_MAJOR=12
+_LLVM_MASTER_MAJOR=13
 
 # @ECLASS-VARIABLE: _LLVM_SOURCE_TYPE
 # @INTERNAL

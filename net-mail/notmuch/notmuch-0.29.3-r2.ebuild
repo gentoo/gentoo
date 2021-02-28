@@ -5,7 +5,7 @@ EAPI=7
 
 DISTUTILS_OPTIONAL=1
 NEED_EMACS="24.1"
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_7 )
 
 inherit bash-completion-r1 distutils-r1 elisp-common eutils flag-o-matic \
 	pax-utils readme.gentoo-r1 toolchain-funcs

@@ -8,6 +8,7 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription lang="en">
 		stestr is a fork of testrepository that concentrates on being a dedicated test runner for python projects
 	</longdescription>

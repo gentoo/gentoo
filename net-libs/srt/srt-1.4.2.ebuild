@@ -3,6 +3,7 @@
 
 EAPI=7
 
+CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
 DESCRIPTION="Secure Reliable Transport (SRT) library and tools"
@@ -13,7 +14,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/Haivision/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 -sparc ~x86 ~ppc-macos ~x64-macos"
+	KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ppc ppc64 -sparc x86 ~ppc-macos ~x64-macos"
 fi
 
 LICENSE="MPL-2.0"
@@ -37,7 +38,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	sed -i -e "s:hcrypt_ut.c::" "${S}"/haicrypt/*.maf || die
 }
 

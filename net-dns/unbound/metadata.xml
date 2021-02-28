@@ -32,4 +32,7 @@
     <flag name="http2">Enable HTTP/2 support for DoH<pkg>net-libs/nghttp2</pkg></flag>
     <flag name="redis">Enable cache db backend which uses <pkg>dev-libs/hiredis</pkg></flag>
   </use>
+  <upstream>
+    <remote-id type="github">NLnetLabs/unbound</remote-id>
+  </upstream>
 </pkgmetadata>

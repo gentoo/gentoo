@@ -10,6 +10,8 @@
 		Mahotas-imread is a simple module with a small number of functions.
 	</longdescription>
 	<upstream>
+		<bugs-to>https://github.com/luispedro/imread</bugs-to>
+		<doc>https://imread.readthedocs.io/</doc>
 		<remote-id type="github">luispedro/imread</remote-id>
 		<remote-id type="pypi">imread</remote-id>
 	</upstream>

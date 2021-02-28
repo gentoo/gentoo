@@ -1,8 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils toolchain-funcs games
+
+inherit eutils flag-o-matic toolchain-funcs games
 
 FILE_STEM="QuDos-${PV}-src"
 PK3_FILE="QuDos-${PV}.pk3"
@@ -106,6 +107,11 @@ src_prepare() {
 	epatch \
 		"${FILESDIR}"/${P}-libpng15.patch \
 		"${FILESDIR}"/${P}-gnusource.patch
+}
+
+src_configure() {
+	append-cflags -fcommon
+	default
 }
 
 src_compile() {

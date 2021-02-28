@@ -1,9 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit linux-info systemd toolchain-funcs
+PYTHON_COMPAT=( python3_{8,9} )
+
+inherit linux-info python-any-r1 systemd toolchain-funcs
 
 DESCRIPTION="Tvheadend is a TV streaming server and digital video recorder"
 HOMEPAGE="https://tvheadend.org/"
@@ -16,8 +18,10 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="+capmt +constcw +cwc dbus debug dvbcsa dvben50221 +dvb +ffmpeg hdhomerun +imagecache +inotify iptv libressl satip systemd +timeshift uriparser xmltv zeroconf zlib"
 
 BDEPEND="
+	${PYTHON_DEPS}
 	sys-devel/gettext
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 RDEPEND="
 	acct-user/tvheadend
@@ -31,15 +35,18 @@ RDEPEND="
 	libressl? ( dev-libs/libressl:= )
 	uriparser? ( dev-libs/uriparser )
 	zeroconf? ( net-dns/avahi )
-	zlib? ( sys-libs/zlib )"
+	zlib? ( sys-libs/zlib )
+"
 
 DEPEND="
 	${RDEPEND}
-	dvb? ( virtual/linuxtv-dvb-headers )"
+	dvb? ( virtual/linuxtv-dvb-headers )
+"
 
 RDEPEND+="
 	dvb? ( media-tv/dtv-scan-tables )
-	xmltv? ( media-tv/xmltv )"
+	xmltv? ( media-tv/xmltv )
+"
 
 REQUIRED_USE="dvbcsa? ( || ( capmt constcw cwc dvben50221 ) )"
 
@@ -59,6 +66,8 @@ PATCHES=(
 DOCS=( README.md )
 
 pkg_setup() {
+	python-any-r1_pkg_setup
+
 	use inotify &&
 		CONFIG_CHECK="~INOTIFY_USER" linux-info_pkg_setup
 }

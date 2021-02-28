@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake desktop qmake-utils xdg-utils
+inherit cmake desktop qmake-utils xdg
 
 DESCRIPTION="Qt application to control FluidSynth"
 HOMEPAGE="https://qsynth.sourceforge.io/"
@@ -33,8 +33,6 @@ DEPEND="
 	media-sound/fluidsynth:=[jack?,alsa?,pulseaudio?]
 "
 RDEPEND="${DEPEND}"
-
-PATCHES=( "${FILESDIR}/${P}-cmake-no-git-version.patch" )
 
 src_prepare() {
 	cmake_src_prepare
@@ -68,12 +66,4 @@ src_install() {
 	fi
 
 	make_desktop_entry "${cmd}" Qsynth qsynth
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }

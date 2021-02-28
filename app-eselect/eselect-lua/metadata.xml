@@ -9,4 +9,5 @@
 		<email>mva@gentoo.org</email>
 		<name>Vadim Misbakh-Soloviov</name>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>

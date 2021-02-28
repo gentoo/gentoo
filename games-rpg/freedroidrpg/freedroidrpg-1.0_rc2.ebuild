@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 inherit autotools flag-o-matic desktop python-any-r1 xdg
 
 MY_PV=$(ver_rs 2 '')

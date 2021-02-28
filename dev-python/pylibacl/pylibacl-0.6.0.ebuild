@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit distutils-r1
 
@@ -18,7 +18,7 @@ SRC_URI="
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~ia64 ~mips ppc ~ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm ~ia64 ~mips ppc ppc64 sparc x86"
 
 RDEPEND="sys-apps/acl"
 DEPEND=${RDEPEND}

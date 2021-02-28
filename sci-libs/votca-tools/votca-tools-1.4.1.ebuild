@@ -9,12 +9,11 @@ inherit cmake-utils eutils multilib
 
 if [ "${PV}" != "9999" ]; then
 	SRC_URI="https://github.com/${PN/-//}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86 ~amd64-linux"
 	S="${WORKDIR}/${P#votca-}"
+	KEYWORDS="~amd64 ~x86 ~amd64-linux"
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/${PN/-//}.git"
-	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="Votca tools library"

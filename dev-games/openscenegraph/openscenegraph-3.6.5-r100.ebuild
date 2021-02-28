@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ SRC_URI="https://github.com/${PN}/${MY_PN}/archive/${MY_P}.tar.gz"
 
 LICENSE="wxWinLL-3 LGPL-2.1"
 SLOT="0/161" # NOTE: CHECK WHEN BUMPING! Subslot is SOVERSION
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~hppa ~ppc ~ppc64 x86"
 IUSE="curl dicom debug doc egl examples ffmpeg fltk fox gdal gif glut
 gstreamer jpeg las lua openexr openinventor osgapps pdf png sdl sdl2
 svg tiff truetype vnc wxwidgets xrandr +zlib"

@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils fortran-2 toolchain-funcs
+inherit eutils fortran-2 flag-o-matic toolchain-funcs
 
 MY_P="${PN}${PV//.}"
 
@@ -78,6 +78,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# GCC 10 workaround
+	# bug #722190
+	append-fflags $(test-flags-FC -fallow-argument-mismatch)
+
 	./makemake . linux
 	# post makefile creation prefix hack
 	sed -i -e "s|/usr|${EPREFIX}/usr|g" makefile || die

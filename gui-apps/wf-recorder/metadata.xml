@@ -10,7 +10,6 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
-		<flag name="man">Build and install man pages</flag>
 		<flag name="opencl">Enable OpenCL</flag>
 	</use>
 	<upstream>

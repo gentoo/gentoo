@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 GNOME2_EAUTORECONF="yes"
 inherit flag-o-matic gnome2
 
@@ -11,14 +11,15 @@ SRC_URI+=" https://dev.gentoo.org/~leio/distfiles/${P}-patchset.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="2/11" # libgtop soname version
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86"
 IUSE="+introspection"
 
 RDEPEND="
 	>=dev-libs/glib-2.26:2
 	introspection? ( >=dev-libs/gobject-introspection-0.6.7:= )
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	>=dev-util/gtk-doc-am-1.4
 	>=sys-devel/gettext-0.19.6
 	virtual/pkgconfig

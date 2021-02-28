@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 PYTHON_COMPAT=( python3_{8..9} )
 PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1
@@ -19,14 +19,10 @@ HOMEPAGE="https://github.com/pkgcore/snakeoil"
 
 LICENSE="BSD BSD-2 MIT"
 SLOT="0"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
-"
-[[ ${PV} == 9999 ]] && DEPEND+=" dev-python/cython[${PYTHON_USEDEP}]"
+RDEPEND="
+	dev-python/lazy-object-proxy[${PYTHON_USEDEP}]"
 
-python_test() {
-	esetup.py test
-}
+[[ ${PV} == 9999 ]] && BDEPEND+=" dev-python/cython[${PYTHON_USEDEP}]"
+
+distutils_enable_tests pytest

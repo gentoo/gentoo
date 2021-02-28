@@ -6,7 +6,8 @@
 # rust@gentoo.org
 # @AUTHOR:
 # Doug Goldstein <cardoe@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7
+# Georgy Yakovlev <gyakovlev@genotoo.org>
+# @SUPPORTED_EAPIS: 7
 # @BLURB: common functions and variables for cargo builds
 
 if [[ -z ${_CARGO_ECLASS} ]]; then
@@ -51,7 +52,7 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # other src_ functions of this eclass.
 # note that cargo_gen_config is automatically called by cargo_src_unpack.
 
-# @VARIABLE: myfeatures
+# @ECLASS_VARIABLE: myfeatures
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Optional cargo features defined as bash array.
@@ -119,7 +120,7 @@ cargo_crate_uris() {
 # Cargo can also be configured through environment variables in addition to the TOML syntax below.
 # For each configuration key below of the form foo.bar the environment variable CARGO_FOO_BAR
 # can also be used to define the value.
-# Environment variables will take precedent over TOML configuration,
+# Environment variables will take precedence over TOML configuration,
 # and currently only integer, boolean, and string keys are supported.
 # For example the build.jobs key can also be defined by CARGO_BUILD_JOBS.
 # Or setting CARGO_TERM_VERBOSE=false in make.conf will make build quieter.

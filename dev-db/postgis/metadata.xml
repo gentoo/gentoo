@@ -16,9 +16,6 @@
 		<flag name="gtk">
 			Build graphical interface for shp2pgsql (shp2pgsql-gui)
 		</flag>
-		<flag name="mapbox">
-			Add capability to transform geometry into Mapbox Vector Tile
-		</flag>
 		<flag name="topology">
 			Build topology spatial types and functions
 		</flag>

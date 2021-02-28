@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,13 +14,12 @@ SENDMAIL_VER=8.16.1
 DESCRIPTION="The Sendmail Filter API (Milter)"
 HOMEPAGE="http://www.sendmail.org/"
 SRC_URI="ftp://ftp.sendmail.org/pub/sendmail/sendmail.${SENDMAIL_VER}.tar.gz"
+S="${WORKDIR}/sendmail-${SENDMAIL_VER}"
 
 LICENSE="Sendmail"
 SLOT="0/${PV}"
 #KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="ipv6 poll"
-
-S="${WORKDIR}/sendmail-${SENDMAIL_VER}"
 
 # build system patch copied from sendmail ebuild
 PATCHES=(
@@ -32,7 +31,8 @@ src_prepare() {
 	default
 
 	local CC="$(tc-getCC)"
-	local ENVDEF="-DNETUNIX -DNETINET"
+	local ENVDEF="-DNETUNIX -DNETINET -DHAS_GETHOSTBYNAME2=1"
+
 	use ipv6 && ENVDEF="${ENVDEF} -DNETINET6"
 	use poll && ENVDEF="${ENVDEF} -DSM_CONF_POLL=1"
 
@@ -70,4 +70,6 @@ src_install() {
 
 	dodoc libmilter/README
 	dodoc libmilter/docs/*
+
+	find "${ED}" -name '*.a' -delete || die
 }

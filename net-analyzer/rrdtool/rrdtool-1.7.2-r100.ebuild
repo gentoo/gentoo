@@ -7,7 +7,7 @@ DISTUTILS_OPTIONAL=true
 DISTUTILS_SINGLE_IMPL=true
 GENTOO_DEPEND_ON_PERL=no
 LUA_COMPAT=( lua5-{1..4} luajit )
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit autotools lua perl-module distutils-r1 flag-o-matic multilib
 
@@ -19,7 +19,7 @@ SRC_URI="https://oss.oetiker.ch/rrdtool/pub/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/8.0.0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="dbi doc graph lua perl python rados rrdcgi ruby static-libs tcl tcpd test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )

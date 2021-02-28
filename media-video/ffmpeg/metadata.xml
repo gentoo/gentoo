@@ -50,6 +50,7 @@
 	<flag name="rav1e">Enables AV1 encoding support via <pkg>media-video/rav1e</pkg>.</flag>
 	<flag name="rubberband">Adds time-stretching and pitch-shifting audio filter based on <pkg>media-libs/rubberband</pkg>.</flag>
 	<flag name="snappy">Enable <pkg>app-arch/snappy</pkg> support. Required for e.g. Vidvox Hap encoder.</flag>
+	<flag name="sndio">Enable support for the <pkg>media-sound/sndio</pkg> backend</flag>
 	<flag name="srt">Enable support for Secure Reliable Transport (SRT) via <pkg>net-libs/srt</pkg></flag>
 	<flag name="ssh">Enable SSH/sftp support via <pkg>net-libs/libssh</pkg>.</flag>
 	<flag name="twolame">Enables MP2 encoding via <pkg>media-sound/twolame</pkg> as an alternative to the internal encoder.</flag>

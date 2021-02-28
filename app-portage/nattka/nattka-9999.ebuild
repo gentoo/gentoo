@@ -28,7 +28,6 @@ RDEPEND="
 	)"
 BDEPEND="
 	test? (
-		dev-python/freezegun[${PYTHON_USEDEP}]
 		dev-python/networkx[${PYTHON_USEDEP}]
 		dev-python/vcrpy[${PYTHON_USEDEP}]
 	)"

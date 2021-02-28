@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,8 +11,8 @@ SRC_URI="https://github.com/dmtx/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
-IUSE="static-libs"
+KEYWORDS="amd64 ~arm arm64 ppc ppc64 x86"
+IUSE=""
 
 src_prepare() {
 	#bug 663346
@@ -24,7 +24,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		$(use_enable static-libs static)
+		--disable-static
 }
 
 src_install() {

@@ -1,7 +1,7 @@
 https://bugs.gentoo.org/764902
 
---- ClanLib-2.3.7/configure.ac
-+++ ClanLib-2.3.7/configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -342,7 +342,7 @@
  	echo "=============================="
  	CLANLIB_CHECK_LIB(png,  [`cat $srcdir/Setup/Tests/png.cpp`],  clanDisplay, [ *** Cannot find png (See http://www.libpng.org ) (Try libpng12-dev or better) ], [-lz -lpng])

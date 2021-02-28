@@ -5,10 +5,6 @@
 		<email>mpagano@gentoo.org</email>
 		<name>Mike Pagano</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>alicef@gentoo.org</email>
-		<name>Ferrazzi Alice</name>
-	</maintainer>
 	<longdescription lang="en">
 	Excel at enterprise, mobile and web development with Java, Scala and Groovy, with all the latest modern technologies and frameworks available out of the box.
 	</longdescription>

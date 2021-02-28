@@ -4,7 +4,7 @@
 EAPI=7
 
 FONT_PN=OpenImageIO
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 inherit cmake font python-single-r1
 
 DESCRIPTION="A library for reading and writing images"

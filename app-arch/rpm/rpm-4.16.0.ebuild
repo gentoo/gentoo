@@ -4,7 +4,7 @@
 EAPI=7
 
 LUA_COMPAT=( lua5-2 )
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit autotools flag-o-matic lua-single perl-module python-single-r1
 

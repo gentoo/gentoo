@@ -1,4 +1,4 @@
-# Copyright 2003-2020 Gentoo Authors
+# Copyright 2003-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -27,7 +27,7 @@ fi
 # LICENSE="BSD-1 GPL-2+ LGPL-2+ MIT qt4? ( BSD )"
 LICENSE="BSD-1 GPL-2+ LGPL-2+ MIT"
 SLOT="4"
-KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~hppa ppc ppc64 x86"
 IUSE="+X +autostart +cairo debug +enchant gtk2 +gtk3 +introspection lua nls opencc +pango +table test +xkb"
 REQUIRED_USE="cairo? ( X )
 	lua? ( ${LUA_REQUIRED_USE} )

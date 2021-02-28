@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
@@ -16,7 +16,6 @@ DESCRIPTION="Command-line tools for maintaining a workspace of projects for ROS"
 HOMEPAGE="https://wiki.ros.org/rosinstall https://wiki.ros.org/roslocate"
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
-	KEYWORDS=""
 else
 	SRC_URI="http://download.ros.org/downloads/${PN}/${P}.tar.gz
 		https://github.com/vcstools/rosinstall/archive/${PV}.tar.gz -> ${P}.tar.gz

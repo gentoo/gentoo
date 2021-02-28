@@ -18,6 +18,7 @@
         corresponding to any such methods it finds.
     </longdescription>
     <upstream>
+        <bugs-to>https://github.com/kalekundert/autoprop/issues</bugs-to>
         <remote-id type="github">kalekundert/autoprop</remote-id>
         <remote-id type="pypi">autoprop</remote-id>
     </upstream>

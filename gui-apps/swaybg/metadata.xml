@@ -13,9 +13,6 @@
 		Sway's wallpaper utility, compatible with any Wayland compositor
 		which implements the wlr-layer-shell, xdg-output and xdg-shell protocols.
 	</longdescription>
-	<use>
-		<flag name="man">Build and install man pages</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">swaywm/swaybg</remote-id>
 		<maintainer status="active">

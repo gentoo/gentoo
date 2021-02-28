@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ inherit ecm kde.org
 
 DESCRIPTION="Port of the board game risk"
 HOMEPAGE="https://apps.kde.org/en/ksirk
-https://games.kde.org/game.php?game=ksirk"
+https://games.kde.org/games/ksirk"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

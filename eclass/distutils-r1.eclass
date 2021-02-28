@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: distutils-r1.eclass
@@ -88,7 +88,7 @@ esac
 # - rdepend -- add it to BDEPEND+RDEPEND (when using entry_points)
 # - pyproject.toml -- use pyproject2setuptools to install a project
 #                     using pyproject.toml (flit, poetry...)
-# - manual -- do not add the depedency and suppress the checks
+# - manual -- do not add the dependency and suppress the checks
 #             (assumes you will take care of doing it correctly)
 #
 # This variable is effective only if DISTUTILS_OPTIONAL is disabled.
@@ -316,22 +316,25 @@ distutils_enable_sphinx() {
 	_DISTUTILS_SPHINX_PLUGINS=( "${@}" )
 
 	local deps autodoc=1 d
+	deps="dev-python/sphinx[\${PYTHON_USEDEP}]"
 	for d; do
 		if [[ ${d} == --no-autodoc ]]; then
 			autodoc=
 		else
 			deps+="
 				${d}[\${PYTHON_USEDEP}]"
+			if [[ ! ${autodoc} ]]; then
+				die "${FUNCNAME}: do not pass --no-autodoc if external plugins are used"
+			fi
 		fi
 	done
 
-	if [[ ! ${autodoc} && -n ${deps} ]]; then
-		die "${FUNCNAME}: do not pass --no-autodoc if external plugins are used"
-	fi
 	if [[ ${autodoc} ]]; then
-		deps="$(python_gen_any_dep "
-			dev-python/sphinx[\${PYTHON_USEDEP}]
-			${deps}")"
+		if [[ ${DISTUTILS_SINGLE_IMPL} ]]; then
+			deps="$(python_gen_cond_dep "${deps}")"
+		else
+			deps="$(python_gen_any_dep "${deps}")"
+		fi
 
 		python_check_deps() {
 			use doc || return 0
@@ -515,12 +518,20 @@ distutils_enable_tests() {
 esetup.py() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	[[ -n ${EPYTHON} ]] || die "EPYTHON unset, invalid call context"
+
 	local die_args=()
 	[[ ${EAPI} != [45] ]] && die_args+=( -n )
 
 	[[ ${BUILD_DIR} ]] && _distutils-r1_create_setup_cfg
 
-	set -- "${EPYTHON:-python}" setup.py "${mydistutilsargs[@]}" "${@}"
+	local setup_py=( setup.py )
+	if [[ ${DISTUTILS_USE_SETUPTOOLS} == pyproject.toml ]]; then
+		# TODO: remove '.main' when we require v10
+		setup_py=( -m pyproject2setuppy.main )
+	fi
+
+	set -- "${EPYTHON}" "${setup_py[@]}" "${mydistutilsargs[@]}" "${@}"
 
 	echo "${@}" >&2
 	"${@}" || die "${die_args[@]}"
@@ -547,11 +558,11 @@ esetup.py() {
 # For most of the packages, tests built in BUILD_DIR are good enough.
 #
 # The function supports two install modes.  The current default is
-# the legacy --via-home mode.  However, it has problems with newer
-# versions of setuptools (50.3.0+).  The --via-root mode generally
-# works for these packages, and it will probably become the default
-# in the future, once we test all affected packages.  Please note
-# that proper testing sometimes requires unmerging the package first.
+# --via-root mode.  Previously, the function defaulted to --via-home
+# mode but it has been broken by new versions of setuptools (50.3.0+).
+# If you find that --via-root does not work but --via-home does, please
+# file a bug to let us know.  Please note that proper testing sometimes
+# requires unmerging the package first.
 distutils_install_for_testing() {
 	debug-print-function ${FUNCNAME} "${@}"
 
@@ -572,7 +583,7 @@ distutils_install_for_testing() {
 	PATH=${bindir}:${PATH}
 	PYTHONPATH=${libdir}:${PYTHONPATH}
 
-	local install_method=home
+	local install_method=root
 	case ${1} in
 		--via-home)
 			install_method=home
@@ -629,14 +640,7 @@ _distutils-r1_disable_ez_setup() {
 # Generate setup.py for pyproject.toml if requested.
 _distutils-r1_handle_pyproject_toml() {
 	if [[ ! -f setup.py && -f pyproject.toml ]]; then
-		if [[ ${DISTUTILS_USE_SETUPTOOLS} == pyproject.toml ]]; then
-			cat > setup.py <<-EOF || die
-				#!/usr/bin/env python
-				from pyproject2setuppy.main import main
-				main()
-			EOF
-			chmod +x setup.py || die
-		else
+		if [[ ${DISTUTILS_USE_SETUPTOOLS} != pyproject.toml ]]; then
 			eerror "No setup.py found but pyproject.toml is present.  In order to enable"
 			eerror "pyproject.toml support in distutils-r1, set:"
 			eerror "  DISTUTILS_USE_SETUPTOOLS=pyproject.toml"
@@ -777,23 +781,14 @@ distutils-r1_python_compile() {
 
 	_distutils-r1_copy_egg_info
 
-	local build_args=()
 	# distutils is parallel-capable since py3.5
-	# to avoid breaking stable ebuilds, enable it only if either:
-	# a. we're dealing with EAPI 7
-	# b. we're dealing with Python 3.7 or PyPy3
-	if python_is_python3 && [[ ${EPYTHON} != python3.4 ]]; then
-		if [[ ${EAPI} != [56] || ${EPYTHON} != python3.[56] ]]; then
-			local jobs=$(makeopts_jobs "${MAKEOPTS}" INF)
-			if [[ ${jobs} == INF ]]; then
-				local nproc=$(get_nproc)
-				jobs=$(( nproc + 1 ))
-			fi
-			build_args+=( -j "${jobs}" )
-		fi
+	local jobs=$(makeopts_jobs "${MAKEOPTS}" INF)
+	if [[ ${jobs} == INF ]]; then
+		local nproc=$(get_nproc)
+		jobs=$(( nproc + 1 ))
 	fi
 
-	esetup.py build "${build_args[@]}" "${@}"
+	esetup.py build -j "${jobs}" "${@}"
 }
 
 # @FUNCTION: _distutils-r1_wrap_scripts
@@ -866,9 +861,8 @@ distutils-r1_python_install() {
 	# python likes to compile any module it sees, which triggers sandbox
 	# failures if some packages haven't compiled their modules yet.
 	addpredict "${EPREFIX}/usr/lib/${EPYTHON}"
-	addpredict "${EPREFIX}/usr/$(get_libdir)/${EPYTHON}"
-	addpredict /usr/lib/pypy2.7
 	addpredict /usr/lib/pypy3.6
+	addpredict /usr/lib/pypy3.7
 	addpredict /usr/lib/portage/pym
 	addpredict /usr/local # bug 498232
 

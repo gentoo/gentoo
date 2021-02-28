@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cmake.eclass
@@ -127,26 +127,6 @@ if [[ ${PN} != cmake ]]; then
 	BDEPEND+=" dev-util/cmake"
 fi
 
-# @FUNCTION: _cmake_banned_func
-# @INTERNAL
-# @DESCRIPTION:
-# Banned functions are banned.
-_cmake_banned_func() {
-	die "${FUNCNAME[1]} is banned. use -D$1<related_CMake_variable>=\"\$(usex $2)\" instead"
-}
-
-# Determine using IN or OUT source build
-_cmake_check_build_dir() {
-	: ${CMAKE_USE_DIR:=${S}}
-	if [[ -n ${CMAKE_IN_SOURCE_BUILD} ]]; then
-		# we build in source dir
-		BUILD_DIR="${CMAKE_USE_DIR}"
-	fi
-
-	mkdir -p "${BUILD_DIR}" || die
-	einfo "Working in BUILD_DIR: \"$BUILD_DIR\""
-}
-
 # @FUNCTION: cmake_run_in
 # @USAGE: <working dir> <run command>
 # @DESCRIPTION:
@@ -190,18 +170,6 @@ comment_add_subdirectory() {
 	die "comment_add_subdirectory is banned. Use cmake_comment_add_subdirectory instead"
 }
 
-# @FUNCTION: cmake-utils_use_with
-# @INTERNAL
-# @DESCRIPTION:
-# Banned. Use -DWITH_FOO=$(usex foo) instead.
-cmake-utils_use_with() { _cmake_banned_func WITH_ "$@" ; }
-
-# @FUNCTION: cmake-utils_use_enable
-# @INTERNAL
-# @DESCRIPTION:
-# Banned. Use -DENABLE_FOO=$(usex foo) instead.
-cmake-utils_use_enable() { _cmake_banned_func ENABLE_ "$@" ; }
-
 # @FUNCTION: cmake_use_find_package
 # @USAGE: <USE flag> <package name>
 # @DESCRIPTION:
@@ -219,6 +187,26 @@ cmake_use_find_package() {
 
 	echo "-DCMAKE_DISABLE_FIND_PACKAGE_$2=$(use $1 && echo OFF || echo ON)"
 }
+
+# @FUNCTION: _cmake_banned_func
+# @INTERNAL
+# @DESCRIPTION:
+# Banned functions are banned.
+_cmake_banned_func() {
+	die "${FUNCNAME[1]} is banned. use -D$1<related_CMake_variable>=\"\$(usex $2)\" instead"
+}
+
+# @FUNCTION: cmake-utils_use_with
+# @INTERNAL
+# @DESCRIPTION:
+# Banned. Use -DWITH_FOO=$(usex foo) instead.
+cmake-utils_use_with() { _cmake_banned_func WITH_ "$@" ; }
+
+# @FUNCTION: cmake-utils_use_enable
+# @INTERNAL
+# @DESCRIPTION:
+# Banned. Use -DENABLE_FOO=$(usex foo) instead.
+cmake-utils_use_enable() { _cmake_banned_func ENABLE_ "$@" ; }
 
 # @FUNCTION: cmake-utils_use_disable
 # @INTERNAL
@@ -268,6 +256,24 @@ cmake-utils_use() { _cmake_banned_func "" "$@" ; }
 # Banned. Use -DNOFOO=$(usex !foo) instead.
 cmake-utils_useno() { _cmake_banned_func "" "$@" ; }
 
+# @FUNCTION: _cmake_check_build_dir
+# @INTERNAL
+# @DESCRIPTION:
+# Determine using IN or OUT source build
+_cmake_check_build_dir() {
+	: ${CMAKE_USE_DIR:=${S}}
+	if [[ -n ${CMAKE_IN_SOURCE_BUILD} ]]; then
+		# we build in source dir
+		BUILD_DIR="${CMAKE_USE_DIR}"
+	fi
+
+	mkdir -p "${BUILD_DIR}" || die
+	einfo "Working in BUILD_DIR: \"$BUILD_DIR\""
+}
+
+# @FUNCTION: _cmake_modify-cmakelists
+# @INTERNAL
+# @DESCRIPTION:
 # Internal function for modifying hardcoded definitions.
 # Removes dangerous definitions that override Gentoo settings.
 _cmake_modify-cmakelists() {
@@ -307,7 +313,7 @@ _cmake_modify-cmakelists() {
 
 # @FUNCTION: cmake_src_prepare
 # @DESCRIPTION:
-# Apply ebuild and user patches.
+# Apply ebuild and user patches. *MUST* be run or cmake_src_configure will fail.
 cmake_src_prepare() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -358,25 +364,20 @@ cmake_src_prepare() {
 	_CMAKE_SRC_PREPARE_HAS_RUN=1
 }
 
-# @VARIABLE: mycmakeargs
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# Optional cmake defines as a bash array. Should be defined before calling
-# src_configure.
-# @CODE
-# src_configure() {
-# 	local mycmakeargs=(
-# 		$(cmake_use_with openconnect)
-# 	)
-#
-# 	cmake_src_configure
-# }
-# @CODE
-
 # @FUNCTION: cmake_src_configure
 # @DESCRIPTION:
 # General function for configuring with cmake. Default behaviour is to start an
 # out-of-source build.
+# Passes arguments to cmake by reading from an optionally pre-defined local
+# mycmakeargs bash array.
+# @CODE
+# src_configure() {
+# 	local mycmakeargs=(
+# 		$(cmake_use_find_package foo LibFoo)
+# 	)
+# 	cmake_src_configure
+# }
+# @CODE
 cmake_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -561,8 +562,8 @@ cmake_src_configure() {
 
 # @FUNCTION: cmake_src_compile
 # @DESCRIPTION:
-# General function for compiling with cmake.
-# Automatically detects the build type. All arguments are passed to emake.
+# General function for compiling with cmake. All arguments are passed
+# to cmake_build.
 cmake_src_compile() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -572,7 +573,8 @@ cmake_src_compile() {
 # @FUNCTION: cmake_build
 # @DESCRIPTION:
 # Function for building the package. Automatically detects the build type.
-# All arguments are passed to emake.
+# All arguments are passed to eninja (default) or emake depending on the value
+# of CMAKE_MAKEFILE_GENERATOR.
 cmake_build() {
 	debug-print-function ${FUNCNAME} "$@"
 

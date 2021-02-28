@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 EGIT_COMMIT_AUX="8d09895473b73e4fb72b7573615f69c36e1860a2"
-LUA_COMPAT=( lua5-{1..3} luajit )
+LUA_COMPAT=( lua5-{1..4} luajit )
 MY_PN_AUX="lua-auxiliar"
 MY_PN_COMPAT="lua-compat-5.3"
 MY_PV="${PV//_p/-}"

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 PYTHON_REQ_USE="sqlite"  # bug 572440
 WANT_AUTOCONF="2.1"
 WX_GTK_VER="3.0-gtk3"

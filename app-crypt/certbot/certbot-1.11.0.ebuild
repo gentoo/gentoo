@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=(python{3_6,3_7,3_8,3_9})
+PYTHON_COMPAT=(python{3_7,3_8,3_9})
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 if [[ ${PV} == 9999* ]]; then
@@ -10,7 +10,7 @@ if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 fi
 S=${WORKDIR}/${P}/${PN}
 

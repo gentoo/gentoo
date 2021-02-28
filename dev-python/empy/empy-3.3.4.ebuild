@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( python3_{6,7,8,9} pypy3 )
+PYTHON_COMPAT=( python3_{7,8,9} pypy3 )
 
 inherit distutils-r1
 
@@ -26,13 +26,14 @@ python_test() {
 
 python_install_all() {
 	distutils-r1_python_install_all
+
 	if use doc; then
-		dodir /usr/share/doc/"${PF}"/examples
-		insinto /usr/share/doc/"${PF}"/examples
-		doins sample.em sample.bench
-		#3.3 has the html in this funny place. Fix in later version:
-		dohtml doc/home/max/projects/empy/doc/em/*
-		dohtml doc/home/max/projects/empy/doc/em.html
-		dohtml doc/index.html
+		docinto examples
+		dodoc sample.em sample.bench
+		# 3.3 has the html in this funny place. Fix in later version:
+		docinto html
+		dodoc doc/home/max/projects/empy/doc/em/*
+		dodoc doc/home/max/projects/empy/doc/em.html
+		dodoc doc/index.html
 	fi
 }

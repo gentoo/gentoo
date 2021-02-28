@@ -5,7 +5,9 @@
     <email>robbat2@gentoo.org</email>
     <name>Robin H. Johnson</name>
   </maintainer>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="github">insanum/gcalcli</remote-id>
+    <remote-id type="pypi">gcalcli</remote-id>
   </upstream>
 </pkgmetadata>

@@ -5,7 +5,7 @@ EAPI=7
 
 MY_PN=Vulkan-Loader
 CMAKE_ECLASS="cmake"
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 inherit flag-o-matic cmake-multilib python-any-r1 toolchain-funcs
 
 if [[ ${PV} == *9999* ]]; then

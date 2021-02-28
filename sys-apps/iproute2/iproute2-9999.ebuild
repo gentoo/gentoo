@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,18 +18,19 @@ HOMEPAGE="https://wiki.linuxfoundation.org/networking/iproute2"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="atm berkdb caps elf +iptables ipv6 minimal selinux"
+IUSE="atm berkdb bpf caps elf +iptables ipv6 libbsd minimal selinux"
 
 # We could make libmnl optional, but it's tiny, so eh
 RDEPEND="
 	!net-misc/arpd
-	dev-libs/libbsd
 	!minimal? ( net-libs/libmnl )
+	atm? ( net-dialup/linux-atm )
+	berkdb? ( sys-libs/db:= )
+	bpf? ( dev-libs/libbpf )
 	caps? ( sys-libs/libcap )
 	elf? ( virtual/libelf )
 	iptables? ( >=net-firewall/iptables-1.4.20:= )
-	berkdb? ( sys-libs/db:= )
-	atm? ( net-dialup/linux-atm )
+	libbsd? ( dev-libs/libbsd )
 	selinux? ( sys-libs/libselinux )
 "
 # We require newer linux-headers for ipset support #549948 and some defines #553876
@@ -46,8 +47,9 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.0-mtu.patch #291907
-	"${FILESDIR}"/${PN}-4.20.0-configure-nomagic.patch # bug 643722
-	"${FILESDIR}"/${PN}-5.1.0-portability.patch
+	"${FILESDIR}"/${PN}-5.11.0-configure-nomagic.patch # bug 643722
+	#"${FILESDIR}"/${PN}-5.1.0-portability.patch
+	"${FILESDIR}"/${PN}-5.7.0-mix-signal.h-include.patch
 )
 
 src_prepare() {
@@ -58,6 +60,14 @@ src_prepare() {
 	fi
 
 	default
+
+	# Fix version if necessary
+	local versionfile="include/version.h"
+	if [[ "${PV}" != 9999 ]] && ! grep -Fq "${PV}" ${versionfile} ; then
+		einfo "Fixing version string"
+		sed "s@\"[[:digit:]\.]\+\"@\"${PV}\"@" \
+			-i ${versionfile} || die
+	fi
 
 	# echo -n is not POSIX compliant
 	sed 's@echo -n@printf@' -i configure || die
@@ -92,6 +102,7 @@ src_configure() {
 	popd >/dev/null
 
 	# run "configure" script first which will create "config.mk"...
+	LIBBPF_FORCE="$(usex bpf on off)" \
 	econf
 
 	# ...now switch on/off requested features via USE flags
@@ -109,7 +120,8 @@ src_configure() {
 	HAVE_SELINUX  := $(usex selinux y n)
 	IP_CONFIG_SETNS := ${setns}
 	# Use correct iptables dir, #144265 #293709
-	IPT_LIB_DIR := $(use iptables && ${PKG_CONFIG} xtables --variable=xtlibdir)
+	IPT_LIB_DIR   := $(use iptables && ${PKG_CONFIG} xtables --variable=xtlibdir)
+	HAVE_LIBBSD   := $(usex libbsd y n)
 	EOF
 }
 

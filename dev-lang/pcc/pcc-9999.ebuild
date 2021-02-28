@@ -12,7 +12,6 @@ if [[ ${PV} = 9999 ]]; then
 	inherit cvs
 	ECVS_SERVER="pcc.ludd.ltu.se:/cvsroot"
 	ECVS_MODULE="${PN}"
-	KEYWORDS=""
 	S="${WORKDIR}/${PN}"
 else
 	SRC_URI="ftp://pcc.ludd.ltu.se/pub/pcc-releases/${P}.tgz"

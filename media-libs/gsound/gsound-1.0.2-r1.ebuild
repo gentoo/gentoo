@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 VALA_USE_DEPEND="vapigen"
 
 inherit gnome2 vala
@@ -20,7 +20,8 @@ RDEPEND="
 	media-libs/libcanberra
 	introspection? ( >=dev-libs/gobject-introspection-1.2.9:= )
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	>=dev-util/gtk-doc-am-1.20
 	virtual/pkgconfig
 	vala? ( $(vala_depend) )

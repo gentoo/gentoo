@@ -13,7 +13,6 @@
 		<flag name="acl"> Build and use the cifsidmap plugin</flag>
 		<flag name="autofs">Build helper to let <pkg>net-fs/autofs</pkg> use sssd provided information</flag>
 		<flag name="locator">Install sssd's Kerberos plugin</flag>
-		<flag name="man">Build man pages with <pkg>dev-libs/libxslt</pkg></flag>
 		<flag name="manpages">Build man pages with <pkg>dev-libs/libxslt</pkg></flag>
 		<flag name="netlink">Add support for netlink protocol via <pkg>dev-libs/libnl</pkg></flag>
 		<flag name="nfsv4">Add support for the nfsv4 idmapd plugin provided by <pkg>net-libs/libnfsidmap</pkg></flag>

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -33,8 +33,7 @@ IUSE="tcl java doc cxx"
 RESTRICT="!test? ( test )"
 
 DEPEND="tcl? ( >=dev-lang/tcl-8.4 )
-	java? ( >=virtual/jdk-1.4 )
-	>=sys-devel/binutils-2.16.1"
+	java? ( >=virtual/jdk-1.4 )"
 RDEPEND="tcl? ( dev-lang/tcl )
 	java? ( >=virtual/jre-1.4 )"
 

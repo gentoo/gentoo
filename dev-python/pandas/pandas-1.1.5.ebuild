@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 PYTHON_REQ_USE="threads(+)"
 
 VIRTUALX_REQUIRED="manual"
@@ -17,7 +17,7 @@ S="${WORKDIR}/${P/_/}"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~amd64 ~arm ~arm64 x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="doc full-support minimal test X"
 RESTRICT="!test? ( test )"
 

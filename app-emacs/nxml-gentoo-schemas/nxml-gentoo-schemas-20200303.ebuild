@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ DESCRIPTION="Extension for nxml-mode with Gentoo-specific schemas"
 HOMEPAGE="https://gitweb.gentoo.org/proj/nxml-gentoo-schemas.git/"
 SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 
-LICENSE="HPND"
+LICENSE="HPND MIT GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
 

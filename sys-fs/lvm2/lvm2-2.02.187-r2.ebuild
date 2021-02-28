@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -37,7 +37,6 @@ RDEPEND="${DEPEND_COMMON}
 	thin? ( >=sys-block/thin-provisioning-tools-0.3.0 )"
 # note: thin- 0.3.0 is required to avoid --disable-thin_check_needs_check
 DEPEND="${DEPEND_COMMON}
-	>=sys-devel/binutils-2.20.1-r1
 	static? (
 		selinux? ( sys-libs/libselinux[static-libs] )
 		>=sys-apps/util-linux-2.16[static-libs]

@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 LUA_COMPAT=( lua5-{1..2} )
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit fcaps flag-o-matic lua-single python-any-r1 qmake-utils xdg-utils cmake
 
@@ -14,7 +14,7 @@ SRC_URI="https://www.wireshark.org/download/src/all-versions/${P/_/}.tar.xz"
 LICENSE="GPL-2"
 
 SLOT="0/${PV}"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc64 ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc64 x86"
 IUSE="
 	androiddump bcg729 brotli +capinfos +captype ciscodump +dftest doc dpauxmon
 	+dumpcap +editcap http2 ilbc kerberos libxml2 lto lua lz4 maxminddb

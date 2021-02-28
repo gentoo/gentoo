@@ -1,9 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: opam.eclass
 # @MAINTAINER:
 # Mark Wright <gienah@gentoo.org>
+# ML <ml@gentoo.org>
 # @AUTHOR:
 # Alexis Ballier <aballier@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6 7
@@ -16,6 +17,9 @@ case ${EAPI:-0} in
 	5|6|7) ;;
 	*) die "${ECLASS}: EAPI ${EAPI} not supported" ;;
 esac
+
+# Do not complain about CFLAGS etc since ml projects do not use them.
+QA_FLAGS_IGNORED='.*'
 
 # @ECLASS-VARIABLE: OPAM_INSTALLER_DEP
 # @DESCRIPTION:

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -9,7 +9,6 @@ if [[ ${PV} = 9999* ]]
 then
 	EGIT_REPO_URI="https://github.com/blueness/sthttpd.git"
 	inherit git-r3
-	KEYWORDS=""
 else
 	MY_P="s${P}"
 	S="${WORKDIR}/${MY_P}"
@@ -18,7 +17,7 @@ else
 fi
 
 DESCRIPTION="Fork of thttpd, a small, fast, multiplexing webserver"
-HOMEPAGE="http://opensource.dyc.edu/sthttpd"
+HOMEPAGE="https://github.com/blueness/sthttpd http://opensource.dyc.edu/sthttpd"
 
 LICENSE="BSD GPL-2"
 SLOT="0"

@@ -4,7 +4,7 @@
 EAPI=7
 
 AT_M4DIR="config"
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 DISTUTILS_OPTIONAL=1
 inherit autotools distutils-r1
 

@@ -18,7 +18,6 @@
 	</longdescription>
 	<use>
 		<flag name="gpg">Enable GPG verification support via <pkg>app-crypt/gpgme</pkg></flag>
-		<flag name="man">Generate and install man pages</flag>
 		<flag name="pkcs7">Enable PKCS7 verification support via <pkg>net-libs/gnutls</pkg></flag>
 	</use>
 	<upstream>

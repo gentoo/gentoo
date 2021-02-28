@@ -8,7 +8,4 @@
   <upstream>
     <remote-id type="github">rockdaboot/libpsl</remote-id>
   </upstream>
-  <use>
-    <flag name="man">Build man-pages</flag>
-  </use>
 </pkgmetadata>

@@ -70,7 +70,8 @@ src_prepare() {
 		"${FILESDIR}"/${P}-x11_soft.patch \
 		"${FILESDIR}"/${P}-x11_mouse.patch \
 		"${FILESDIR}"/${P}-alsa.patch \
-		"${FILESDIR}"/${P}-ia64.patch
+		"${FILESDIR}"/${P}-ia64.patch \
+		"${FILESDIR}"/${P}-fno-common.patch
 
 	if use xatrix ; then
 		epatch "${FILESDIR}/${P}"-gcc41.patch

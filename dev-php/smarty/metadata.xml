@@ -18,4 +18,5 @@
   <upstream>
     <remote-id type="github">smarty-php/smarty</remote-id>
   </upstream>
+  <stabilize-allarches/>
 </pkgmetadata>

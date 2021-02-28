@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,7 +27,7 @@ USE_RUBY="ruby25 ruby26" ruby_add_bdepend "
 		dev-ruby/webmock
 	)"
 
-RDEPEND+=" !!<dev-ruby/thor-0.20.3-r1:0"
+RDEPEND+=" !<dev-ruby/thor-0.20.3-r1:0"
 
 all_ruby_prepare() {
 	# Remove rspec default options (as we might not have the last

@@ -4,7 +4,7 @@
 EAPI=7
 
 # this is backport, please do not add 3.8+
-PYTHON_COMPAT=( python3_{6..7} )
+PYTHON_COMPAT=( python3_7 )
 
 inherit distutils-r1
 

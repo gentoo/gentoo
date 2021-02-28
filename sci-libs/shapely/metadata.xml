@@ -11,6 +11,8 @@
     Shapely is not concerned with data formats or coordinate systems, but can be readily integrated with packages that are.
   </longdescription>
   <upstream>
+    <bugs-to>https://github.com/Toblerity/Shapely/issues</bugs-to>
+    <doc>https://shapely.readthedocs.io</doc>
     <remote-id type="github">Toblerity/Shapely</remote-id>
     <remote-id type="pypi">Shapely</remote-id>
   </upstream>

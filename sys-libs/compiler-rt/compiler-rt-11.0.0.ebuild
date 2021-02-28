@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 inherit cmake flag-o-matic llvm llvm.org python-any-r1 toolchain-funcs
 
 DESCRIPTION="Compiler runtime library for clang (built-in part)"
@@ -30,7 +30,7 @@ BDEPEND="
 	${PYTHON_DEPS}"
 
 PATCHES=(
-	"${FILESDIR}/9999/${PN}-prefix-paths.patch"
+	"${FILESDIR}/11.1.0/${PN}-prefix-paths.patch"
 )
 
 python_check_deps() {

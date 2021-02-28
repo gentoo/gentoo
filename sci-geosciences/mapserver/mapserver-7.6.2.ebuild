@@ -11,7 +11,7 @@ PHP_EXT_NAME="php_mapscriptng"
 PHP_EXT_SKIP_PHPIZE="yes"
 
 USE_PHP="php7-2 php7-3 php7-4"
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 WEBAPP_MANUAL_SLOT=yes
 WEBAPP_OPTIONAL=yes

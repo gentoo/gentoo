@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{6,7,8,9} pypy3 )
+PYTHON_COMPAT=( python3_{7,8,9} pypy3 )
 PYTHON_REQ_USE="threads(+),sqlite"
 
 inherit distutils-r1 eutils multiprocessing optfeature
@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}-${PN}-python-${PV}/${PN}-python"
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
 IUSE="cli test"
 RESTRICT="!test? ( test )"
 

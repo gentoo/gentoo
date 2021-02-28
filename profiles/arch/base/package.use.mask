@@ -1,12 +1,16 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Jaco Kroon <jaco@uls.co.za> (2021-01-08)
+# blocksruntime (clang -fblocks) isn't available on all arches.
+net-misc/asterisk blocks
+
 # Michał Górny <mgorny@gentoo.org> (2020-12-21)
 # Mask all sanitizers by default, unmask on arches supporting them.
 sys-libs/compiler-rt-sanitizers asan dfsan lsan msan hwasan tsan
 sys-libs/compiler-rt-sanitizers ubsan safestack cfi scudo
 sys-libs/compiler-rt-sanitizers shadowcallstack gwp-asan
-sys-libs/compiler-rt-sanitizers libfuzzer profile xray
+sys-libs/compiler-rt-sanitizers libfuzzer memprof profile xray
 
 # Sam James <sam@gentoo.org> (2020-10-24)
 # asm redc is only available on amd64,
@@ -63,6 +67,7 @@ sys-libs/glibc static-pie
 x11-wm/mutter sysprof
 dev-libs/gjs sysprof
 dev-libs/glib sysprof
+gnome-extra/cjs sysprof
 x11-libs/gtk+ sysprof
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
@@ -306,10 +311,6 @@ www-client/links suid
 # Robin H. Johnson <robbat2@gentoo.org> (2011-07-10)
 # PPS should work on all arches, but only keyworded on amd64/x86
 >=net-misc/ntp-4.2.6_p3-r1 parse-clocks
-
-# Tomáš Chvátal <scarabeus@gentoo.org> (2010-04-04)
-# Masked because tools pulled in are not supported on most archs.
-sys-power/pm-utils video_cards_intel video_cards_radeon
 
 # Jean-Noël Rivasseau <elvanor@gentoo.org> (2009-09-23)
 # X use flag only for amd64/x86, bug 285951.

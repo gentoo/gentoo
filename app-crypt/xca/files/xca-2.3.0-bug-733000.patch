@@ -1,0 +1,28 @@
+diff --git a/doc/Makefile b/doc/Makefile
+index d481c5a..dc5b49a 100644
+--- a/doc/Makefile
++++ b/doc/Makefile
+@@ -5,13 +5,9 @@ endif
+ 
+ DELFILES=xca*.html xca.1.gz changelog.html database_schema.html
+ 
+-doc: xca.1.gz xca.html changelog.html database_schema.html
++doc: xca.1 xca.html changelog.html database_schema.html
+ include $(TOPDIR)/Rules.mak
+ 
+-%.1.gz: %.1
+-	@$(PRINT) "  MAN    [$(BASENAME)] $@"
+-	gzip -9 <$^ >$@
+-
+ xca.html: xca.sgml
+ 	rm -f xca*.html
+ 	echo 'The documentation for XCA can be viewed online at: <a href="http://hohnstaedt.de/documentation">http://hohnstaedt.de/documentation</a>.' > $@
+@@ -23,7 +19,7 @@ install: $(doc)
+ 	$(ENABLE_DOC)install -m 755 -d $(DESTDIR)$(htmldir)
+ 	$(ENABLE_DOC)install -m 644 xca*.html $(DESTDIR)$(htmldir)
+ 	install -m 755 -d $(DESTDIR)$(mandir)/man1
+-	install -m 644 *.1.gz $(DESTDIR)/$(mandir)/man1
++	install -m 644 *.1 $(DESTDIR)/$(mandir)/man1
+ 
+ app: xca.html
+ 	mkdir -p $(APPDIR)/Resources

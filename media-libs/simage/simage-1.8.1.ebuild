@@ -13,7 +13,7 @@ if [[ ${PV} = *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/coin3d/simage.git"
 else
 	SRC_URI="https://github.com/coin3d/simage/releases/download/v${PV}/${P}-src.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="amd64 ~arm ~hppa ~ia64 ppc ppc64 ~sparc x86"
 	S="${WORKDIR}/${PN}"
 fi
 
@@ -51,36 +51,39 @@ BDEPEND="test? ( media-libs/libsndfile )"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-0001-Gentoo-specific-remove-RELEASE-flag-from-pkg-config.patch
+	"${FILESDIR}"/${PN}-1.8.1-fail-on-missing-quicktime.patch
 )
 
 DOCS=(AUTHORS ChangeLog NEWS README)
 
 src_configure() {
 	local mycmakeargs=(
-		-DSIMAGE_BUILD_DOCUMENTATION=OFF
-		-DSIMAGE_BUILD_EXAMPLES=OFF
 		-DSIMAGE_BUILD_SHARED_LIBS=ON
+		-DSIMAGE_BUILD_EXAMPLES=OFF
 		-DSIMAGE_BUILD_TESTS=$(usex test)
-		-DSIMAGE_EPS_SUPPORT=ON
-		-DSIMAGE_GIF_SUPPORT=$(usex gif)
-		-DSIMAGE_JPEG_SUPPORT=$(usex jpeg)
-		-DSIMAGE_LIBSNDFILE_SUPPORT=$(usex sndfile)
-		-DSIMAGE_MPEG2ENC_SUPPORT=ON
-		-DSIMAGE_OGGVORBIS_SUPPORT=$(usex vorbis)
-		-DSIMAGE_PIC_SUPPORT=ON
-		-DSIMAGE_PNG_SUPPORT=$(usex png)
-		-DSIMAGE_RGB_SUPPORT=ON
-		-DSIMAGE_TGA_SUPPORT=ON
-		-DSIMAGE_TIFF_SUPPORT=$(usex tiff)
+		-DSIMAGE_BUILD_DOCUMENTATION=OFF
 		-DSIMAGE_USE_AVIENC=OFF # Windows only
+		-DSIMAGE_USE_GDIPLUS=OFF # Windows
 		-DSIMAGE_USE_CGIMAGE=OFF # OS X only
-		-DSIMAGE_USE_GDIPLUS=OFF # Windows only
+		-DSIMAGE_USE_QUICKTIME=OFF # OS X only
 		-DSIMAGE_USE_QIMAGE=$(usex qt5)
 		-DSIMAGE_USE_QT5=$(usex qt5)
-		-DSIMAGE_USE_QUICKTIME=OFF # OS X only
+		-DSIMAGE_USE_CPACK=OFF
+		-DSIMAGE_USE_STATIC_LIBS=OFF
+		-DSIMAGE_LIBJASPER_SUPPORT=OFF
+		-DSIMAGE_LIBSNDFILE_SUPPORT=$(usex sndfile)
+		-DSIMAGE_OGGVORBIS_SUPPORT=$(usex vorbis)
+		-DSIMAGE_EPS_SUPPORT=ON
+		-DSIMAGE_MPEG2ENC_SUPPORT=ON
+		-DSIMAGE_PIC_SUPPORT=ON
+		-DSIMAGE_RGB_SUPPORT=ON
+		-DSIMAGE_TGA_SUPPORT=ON
 		-DSIMAGE_XWD_SUPPORT=ON
 		-DSIMAGE_ZLIB_SUPPORT=$(usex zlib)
+		-DSIMAGE_GIF_SUPPORT=$(usex gif)
+		-DSIMAGE_JPEG_SUPPORT=$(usex jpeg)
+		-DSIMAGE_PNG_SUPPORT=$(usex png)
+		-DSIMAGE_TIFF_SUPPORT=$(usex tiff)
 	)
-
 	cmake_src_configure
 }

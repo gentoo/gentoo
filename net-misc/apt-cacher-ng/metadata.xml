@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
-<use>
-<flag name="fuse">Install the <pkg>sys-fs/fuse</pkg> based acngfs, to use a userspace filesystem for the apt cache.</flag>
-</use>
+	<maintainer type="person">
+		<email>ajak@gentoo.org</email>
+		<name>John Helmert III</name>
+	</maintainer>
+	<use>
+		<flag name="fuse">Install the <pkg>sys-fs/fuse</pkg> based acngfs, to use a userspace filesystem for the apt cache.</flag>
+	</use>
 </pkgmetadata>

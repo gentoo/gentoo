@@ -1,11 +1,5 @@
-#!/sbin/openrc-run
+#!/sbin/runscript
 #
-# chkconfig: - 91 35
-# description: Starts and stops dbmail-pop3d
-#
-
-
-PROGRAM=dbmail-pop3d
 
 BIN_DIR=/usr/sbin
 PID_DIR=/run/dbmail
@@ -18,51 +12,37 @@ CONFIG=/etc/dbmail/dbmail.conf
 #extra_started_commands="reload"
 
 depend() {
-        need net
-        # This won't cause a hard failure if neither is installed, however.
-        use mysql
-        use pgsql
-        after mta
+	need net
+	use mysql
+	use pgsql
+	after mta
 }
 
-initService() {
-    # Avoid using root's TMPDIR
-    unset TMPDIR
-
-    # Check that config file exists.
-    if [ ! -e $CONFIG ]; then
-        eerror "Config file not found ($CONFIG)"
-        eerror "An example config can be found in /etc/dbmail/dbmail.conf.dist"
-        return 1
-    fi
-
-    checkpath -d $PID_DIR -m 750 -o dbmail:dbmail
-
-    RETVAL=0
+checkconfig() {
+	if [ ! -e "/etc/dbmail/dbmail.conf" ]; then
+		eerror "You need to create apropriate config"
+		eerror "in /etc/dbmail/ . Example can be found in /etc/dbmail/dbmail.conf.dist"
+		return 1
+	fi
+	# Avoid using root's TMPDIR
+	unset TMPDIR
 }
+
 
 start() {
-	initService
-        ebegin "Starting DBMail POP3 daemon ($PROGRAM)"
-            start-stop-daemon --start --quiet \
-                --pidfile $PID_DIR/$PROGRAM.$PID \
-                --exec $BIN_DIR/$PROGRAM \
-                --name $PROGRAM \
-                -- -f $CONFIG -p $PID_DIR/$PROGRAM.$PID 2>&1
-        eend $?
-}
+	checkconfig && \
+	ebegin "Starting DBMail POP3 daemon"
+	    start-stop-daemon --start --quiet \
+		--exec /usr/sbin/dbmail-pop3d \
+		--name dbmail-pop3d \
+		-- -p ${PIDFILE} -f /etc/dbmail/dbmail.conf 2>&1
+	eend $?
+}	
 
 stop() {
-        ebegin "Stopping DBMail POP3 daemon ($PROGRAM)"
-            start-stop-daemon --stop --quiet --retry 15 \
-                --pidfile $PID_DIR/$PROGRAM.$PID
-        eend $?
-}
+	ebegin "Stopping DBMail POP3 daemon"
+	    start-stop-daemon --stop --quiet --retry 5 \
+		--pidfile ${PIDFILE}
+	eend $?
+}	
 
-## not in 3.1.x yet
-#reload() {#
-#       ebegin "Reloading DBMail POP3 daemon ($PROGRAM)"
-#           start-stop-daemon --quiet --signal HUP \
-#               --pidfile $PID_DIR/$PROGRAM.$PID
-#       eend $?
-#}

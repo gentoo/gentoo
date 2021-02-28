@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,6 @@ SRC_URI="https://www.hedgewars.org/download/releases/${MY_P}.tar.bz2"
 LICENSE="GPL-2 Apache-2.0 FDL-1.3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="server"
 
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
@@ -46,21 +45,6 @@ RDEPEND="${DEPEND}
 	media-fonts/wqy-zenhei"
 BDEPEND="
 	dev-qt/linguist-tools:5
-	server? (
-		>=dev-lang/ghc-6.10
-		dev-haskell/entropy
-		dev-haskell/hslogger
-		>=dev-haskell/mtl-2
-		>=dev-haskell/network-2.3
-		dev-haskell/random
-		dev-haskell/regex-tdfa
-		dev-haskell/sandi
-		dev-haskell/sha
-		dev-haskell/vector
-		dev-haskell/utf8-string
-		dev-haskell/yaml
-		>=dev-haskell/zlib-0.5.3 <dev-haskell/zlib-0.6
-	)
 	!x86? ( >=dev-lang/fpc-2.4 )
 	x86? (
 		>=dev-lang/ghc-6.10
@@ -80,7 +64,7 @@ src_configure() {
 		-DDATA_INSTALL_DIR="${EPREFIX}/usr/share/${PN}"
 		-Dtarget_binary_install_dir="${EPREFIX}/usr/bin"
 		-Dtarget_library_install_dir="${EPREFIX}/usr/$(get_libdir)"
-		-DNOSERVER=$(usex !server)
+		-DNOSERVER=TRUE
 		-DBUILD_ENGINE_C=$(usex x86)
 		-DNOVIDEOREC=$(usex !x86)
 		-DCMAKE_VERBOSE_MAKEFILE=TRUE

@@ -1,0 +1,59 @@
+--- a/byterun/caml/intext.h	2021-01-28 22:46:20.400224678 +0100
++++ b/byterun/caml/intext.h	2021-01-28 22:46:49.312751054 +0100
+@@ -196,7 +196,7 @@
+ 
+ CAMLextern struct code_fragment * caml_extern_find_code(char *addr);
+ 
+-struct ext_table caml_code_fragments_table;
++extern struct ext_table caml_code_fragments_table;
+ 
+ #endif /* CAML_INTERNALS */
+ 
+--- a/byterun/caml/major_gc.h	2021-01-28 22:44:12.193323457 +0100
++++ b/byterun/caml/major_gc.h	2021-01-28 22:45:20.918198701 +0100
+@@ -64,9 +64,9 @@
+ extern char *caml_gc_sweep_hp;
+ 
+ extern int caml_major_window;
+-double caml_major_ring[Max_major_window];
+-int caml_major_ring_index;
+-double caml_major_work_credit;
++extern double caml_major_ring[Max_major_window];
++extern int caml_major_ring_index;
++extern double caml_major_work_credit;
+ extern double caml_gc_clock;
+ 
+ /* [caml_major_gc_hook] is called just between the end of the mark
+--- a/byterun/meta.c	2021-01-28 22:47:34.148016359 +0100
++++ b/byterun/meta.c	2021-01-28 22:47:56.048657393 +0100
+@@ -32,6 +32,8 @@
+ #include "caml/prims.h"
+ #include "caml/stacks.h"
+ 
++struct ext_table caml_code_fragments_table;
++
+ #ifndef NATIVE_CODE
+ 
+ CAMLprim value caml_get_global_data(value unit)
+--- a/byterun/backtrace.c	2021-01-28 22:50:25.275226598 +0100
++++ b/byterun/backtrace.c	2021-01-28 22:50:37.541027290 +0100
+@@ -28,7 +28,7 @@
+ #include "caml/fail.h"
+ 
+ /* The table of debug information fragments */
+-struct ext_table caml_debug_info;
++extern struct ext_table caml_debug_info;
+ 
+ CAMLexport int32_t caml_backtrace_active = 0;
+ CAMLexport int32_t caml_backtrace_pos = 0;
+--- a/asmrun/startup.c	2021-01-28 23:02:50.526072662 +0100
++++ b/asmrun/startup.c	2021-01-28 23:03:09.977754311 +0100
+@@ -44,7 +44,7 @@
+ #endif
+ 
+ extern int caml_parser_trace;
+-CAMLexport header_t caml_atom_table[256];
++CAMLextern header_t caml_atom_table[256];
+ char * caml_code_area_start, * caml_code_area_end;
+ 
+ /* Initialize the atom table and the static data and code area limits. */

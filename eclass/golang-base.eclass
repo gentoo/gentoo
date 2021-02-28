@@ -36,6 +36,9 @@ QA_FLAGS_IGNORED='.*'
 # Upstream does not support stripping go packages
 RESTRICT="strip"
 
+# force GO111MODULE to be auto for bug https://bugs.gentoo.org/771129
+export GO111MODULE=auto
+
 # @ECLASS-VARIABLE: EGO_PN
 # @REQUIRED
 # @DESCRIPTION:

@@ -3,7 +3,9 @@
 
 EAPI=7
 
-inherit xdg-utils
+LUA_COMPAT=( lua5-{1..3} luajit )
+
+inherit lua-single xdg-utils
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
@@ -14,15 +16,15 @@ else
 fi
 
 DESCRIPTION="A framework for 2D games in Lua"
-HOMEPAGE="http://love2d.org/"
+HOMEPAGE="https://love2d.org/"
 
 LICENSE="ZLIB"
 SLOT="0"
-IUSE="+luajit"
+
+REQUIRED_USE="${LUA_REQUIRED_USE}"
 
 RDEPEND="sys-libs/zlib
-	!luajit? ( dev-lang/lua:0 )
-	luajit? ( dev-lang/luajit:2 )
+	${LUA_DEPS}
 	media-libs/freetype
 	media-libs/libmodplug
 	media-libs/libsdl2[joystick,opengl]
@@ -44,7 +46,8 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --with-lua=$(usex luajit luajit lua)
+	econf --with-lua=$(usex lua_single_target_luajit luajit lua) \
+		--with-luaversion=$(ver_cut 1-2 $(lua_get_version))
 }
 
 src_install() {

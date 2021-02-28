@@ -6,10 +6,7 @@ EAPI=7
 inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="An embeddable Javascript interpreter in C."
-HOMEPAGE="
-	https://mujs.com/
-	https://github.com/ccxvii/mujs/
-"
+HOMEPAGE="https://mujs.com/ https://github.com/ccxvii/mujs"
 SRC_URI="https://github.com/ccxvii/mujs/archive/${PV}.tar.gz -> ${P}.tar.gz"
 # Not available right now.
 #SRC_URI="https://mujs.com/downloads/${P}.tar.xz"

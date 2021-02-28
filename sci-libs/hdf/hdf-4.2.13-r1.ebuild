@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -41,10 +41,14 @@ src_prepare() {
 	default
 	sed -i -e 's/-R/-L/g' config/commence.am || die #rpath
 	eautoreconf
-	[[ $(tc-getFC) = *gfortran ]] && append-fflags -fno-range-check
 }
 
 src_configure() {
+	[[ $(tc-getFC) = *gfortran ]] && append-fflags -fno-range-check
+	# GCC 10 workaround
+	# bug #723014
+	append-fflags $(test-flags-FC -fallow-argument-mismatch)
+
 	econf \
 		--enable-shared \
 		--enable-production=gentoo \

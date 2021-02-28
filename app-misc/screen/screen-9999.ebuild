@@ -129,7 +129,9 @@ src_install() {
 	insinto /etc
 	doins "${FILESDIR}"/screenrc
 
-	pamd_mimic_system screen auth
+	if use pam; then
+		pamd_mimic_system screen auth
+	fi
 
 	dodoc "${DOCS[@]}"
 }

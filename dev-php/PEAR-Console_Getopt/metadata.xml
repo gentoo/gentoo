@@ -8,4 +8,5 @@
 	<upstream>
 		<remote-id type="pear">Console_Getopt</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>

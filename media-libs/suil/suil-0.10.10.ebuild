@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 PYTHON_REQ_USE='threads(+)'
 
 inherit flag-o-matic python-any-r1 waf-utils
@@ -19,7 +19,11 @@ IUSE="doc gtk qt5"
 
 BDEPEND="
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen )
+	doc? (
+		app-doc/doxygen
+		dev-python/sphinx
+		dev-python/sphinx_lv2_theme
+	)
 "
 CDEPEND="
 	media-libs/lv2

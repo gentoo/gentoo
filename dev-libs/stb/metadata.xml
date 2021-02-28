@@ -14,6 +14,7 @@
 		<name>Mathy Vanvoorden</name>
 	</maintainer>
 	<upstream>
+		<bugs-to>https://github.com/nothings/stb/issues</bugs-to>
 		<remote-id type="github">nothings/stb</remote-id>
 	</upstream>
 </pkgmetadata>

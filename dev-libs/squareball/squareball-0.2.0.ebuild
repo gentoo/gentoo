@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,10 +14,10 @@ DESCRIPTION="A general-purpose library for C99"
 HOMEPAGE="https://github.com/rafaelmartins/squareball"
 
 SRC_URI="https://github.com/rafaelmartins/${PN}/releases/download/v${PV}/${P}.tar.xz"
-KEYWORDS="~amd64 ~x86"
 if [[ ${PV} = *9999* ]]; then
 	SRC_URI=""
-	KEYWORDS=""
+else
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="BSD"

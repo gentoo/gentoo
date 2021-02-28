@@ -4,7 +4,7 @@
 EAPI=7
 
 LUA_COMPAT=( luajit )
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit cmake linux-info llvm lua-single python-r1
 

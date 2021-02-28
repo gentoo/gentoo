@@ -169,6 +169,7 @@ _meson_create_cross_file() {
 	llvm-config = '$(tc-getPROG LLVM_CONFIG llvm-config)'
 	nm = $(_meson_env_array "$(tc-getNM)")
 	objc = $(_meson_env_array "$(tc-getPROG OBJC cc)")
+	objcopy = $(_meson_env_array "$(tc-getOBJCOPY)")
 	objcpp = $(_meson_env_array "$(tc-getPROG OBJCXX c++)")
 	pkgconfig = '$(tc-getPKG_CONFIG)'
 	strip = $(_meson_env_array "$(tc-getSTRIP)")
@@ -220,6 +221,7 @@ _meson_create_native_file() {
 	llvm-config = '$(tc-getBUILD_PROG LLVM_CONFIG llvm-config)'
 	nm = $(_meson_env_array "$(tc-getBUILD_NM)")
 	objc = $(_meson_env_array "$(tc-getBUILD_PROG OBJC cc)")
+	objcopy = $(_meson_env_array "$(tc-getBUILD_OBJCOPY)")
 	objcpp = $(_meson_env_array "$(tc-getBUILD_PROG OBJCXX c++)")
 	pkgconfig = '$(tc-getBUILD_PKG_CONFIG)'
 	strip = $(_meson_env_array "$(tc-getBUILD_STRIP)")

@@ -1,31 +1,27 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7..9} )
 
-inherit autotools python-single-r1 xdg
-
 MY_P=${P/_/-}
+inherit autotools python-single-r1 xdg
 
 DESCRIPTION="A GTK HTML editor for the experienced web designer or programmer"
 HOMEPAGE="http://bluefish.openoffice.nl/"
 SRC_URI="https://www.bennewitz.com/bluefish/stable/source/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 SLOT="0"
-IUSE="+gtk3 gucharmap nls python spell"
+IUSE="gucharmap nls python spell"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	sys-libs/zlib
-	!gtk3? ( x11-libs/gtk+:2 )
-	gtk3? (
-		x11-libs/gtk+:3
-		gucharmap? ( gnome-extra/gucharmap:2.90 )
-	)
+	x11-libs/gtk+:3
+	gucharmap? ( gnome-extra/gucharmap:2.90 )
 	python? ( ${PYTHON_DEPS} )
 	spell? ( >=app-text/enchant-1.4:0 )"
 DEPEND="${RDEPEND}
@@ -44,17 +40,10 @@ S="${WORKDIR}/${MY_P}"
 RESTRICT="test"
 
 pkg_setup() {
-	if ! use gtk3 && use gucharmap ; then
-		ewarn "gucharmap USE flag requires the gtk3 USE flag being enabled."
-		ewarn "Disabling charmap plugin."
-	fi
-
 	use python && python-single-r1_pkg_setup
 }
 
-PATCHES=(
-	"${FILESDIR}/${PN}-2.2.9-charmap_configure.patch"
-)
+PATCHES=( "${FILESDIR}/${PN}-2.2.9-charmap_configure.patch" )
 
 # eautoreconf seems to no longer kill translation files.
 src_prepare() {
@@ -68,8 +57,8 @@ src_configure() {
 		--disable-update-databases \
 		--disable-xml-catalog-update \
 		--with-freedesktop_org-appdata="${EPREFIX}"/usr/share/metainfo \
-		$(use_with !gtk3 gtk2) \
-		$(usex gtk3 "$(use_with gucharmap charmap)" '--without-charmap') \
+		--without-gtk2 \
+		$(use_with gucharmap charmap) \
 		$(use_enable nls) \
 		$(use_enable spell spell-check) \
 		$(use_enable python)

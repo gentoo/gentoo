@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -10,7 +10,7 @@ HOMEPAGE="https://aria2.github.io/"
 SRC_URI="https://github.com/aria2/${PN}/releases/download/release-${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2+-with-openssl-exception"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 SLOT="0"
 IUSE="adns bittorrent +gnutls jemalloc libuv +libxml2 metalink +nettle nls sqlite scripts ssh ssl tcmalloc test xmlrpc"
 # xmlrpc has no explicit switch, it's turned out by any XML library

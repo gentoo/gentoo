@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake xdg
+inherit xdg cmake
 
 DESCRIPTION="Feature-faithful open source re-implementation of Caesar III"
 HOMEPAGE="https://github.com/bvschaik/julius"
@@ -18,19 +18,18 @@ DEPEND="
 	media-libs/libsdl2[joystick,video,sound]
 	media-libs/sdl2-mixer
 "
-RDEPEND="${DEPEND}"
+RDEPEND="
+	${DEPEND}
+"
 
-src_prepare() {
-	cmake_src_prepare
-	xdg_src_prepare
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.4.1-rename.patch
+)
 
 src_install() {
 	insinto /etc/profile.d
 	doins "${FILESDIR}"/90julius.sh
 	cmake_src_install
-	mv "${ED}"/usr/bin/julius  "${ED}"/usr/bin/julius-game ||
-		die "Failed to rename executable (required as per conflict with app-accessibility/julius)"
 }
 
 pkg_postinst() {

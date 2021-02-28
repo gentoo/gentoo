@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit autotools linux-info python-r1 systemd
 
@@ -39,6 +39,10 @@ BDEPEND="
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
+
+PATCHES=(
+	"${FILESDIR}/${PN}-0.9.8-slibtool.patch"
+)
 
 python_make() {
 	emake \

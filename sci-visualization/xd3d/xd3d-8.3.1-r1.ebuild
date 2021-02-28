@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit fortran-2 toolchain-funcs
+inherit fortran-2 flag-o-matic toolchain-funcs
 
 DESCRIPTION="Scientific visualization tool"
 HOMEPAGE="http://www.cmap.polytechnique.fr/~jouve/xd3d/"
@@ -40,6 +40,10 @@ src_prepare() {
 
 src_configure() {
 	tc-export CC
+	# GCC 10 workaround
+	# bug #722426
+	append-fflags $(test-flags-FC -fallow-argument-mismatch)
+
 	./configure -arch=gentoo || die "configure failed."
 }
 

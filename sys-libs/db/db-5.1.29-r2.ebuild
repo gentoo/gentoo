@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -37,8 +37,7 @@ REQUIRED_USE="test? ( tcl )"
 # the entire testsuite needs the TCL functionality
 DEPEND="tcl? ( >=dev-lang/tcl-8.4:0 )
 	test? ( >=dev-lang/tcl-8.4:0 )
-	java? ( >=virtual/jdk-1.5 )
-	>=sys-devel/binutils-2.16.1"
+	java? ( >=virtual/jdk-1.5 )"
 RDEPEND="tcl? ( dev-lang/tcl:0 )
 	java? ( >=virtual/jre-1.5 )"
 
@@ -128,7 +127,7 @@ src_configure() {
 		$(use_enable test)
 	)
 
-	tc-ld-disable-gold #470634
+	tc-ld-force-bfd #470634 #729510
 
 	# compilation with -O0 fails on amd64, see bug #171231
 	if use amd64; then

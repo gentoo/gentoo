@@ -1,34 +1,35 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-DISTUTILS_OPTIONAL=yesplz
-DISTUTILS_SINGLE_IMPL=yesplz
+
+DISTUTILS_OPTIONAL=yes
+DISTUTILS_SINGLE_IMPL=yes
 GENTOO_DEPEND_ON_PERL=no
-PATCHSET=3
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 WANT_AUTOMAKE=none
+
 inherit autotools distutils-r1 git-r3 perl-module systemd
 
 DESCRIPTION="Software for generating and retrieving SNMP data"
 HOMEPAGE="http://www.net-snmp.org/"
 EGIT_REPO_URI="https://github.com/net-snmp/net-snmp"
-SRC_URI="
-	https://dev.gentoo.org/~jer/${PN}-5.7.3-patches-3.tar.xz
-"
+SRC_URI="https://dev.gentoo.org/~jer/${PN}-5.7.3-patches-3.tar.xz"
 
 # GPL-2 for the init scripts
 LICENSE="HPND BSD GPL-2"
 SLOT="0/40"
-KEYWORDS=""
 IUSE="
 	X bzip2 doc elf kmem ipv6 libressl lm-sensors mfd-rewrites minimal mysql
 	netlink pcap pci perl python rpm selinux smux ssl tcpd ucd-compat zlib
 "
+
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 	rpm? ( bzip2 zlib )
 "
+
+RESTRICT="test"
 
 COMMON_DEPEND="
 	bzip2? ( app-arch/bzip2 )
@@ -41,7 +42,7 @@ COMMON_DEPEND="
 	perl? ( dev-lang/perl:= )
 	python? (
 		$(python_gen_cond_dep '
-			dev-python/setuptools[${PYTHON_MULTI_USEDEP}]
+			dev-python/setuptools[${PYTHON_USEDEP}]
 		')
 		${PYTHON_DEPS}
 	)
@@ -56,10 +57,8 @@ COMMON_DEPEND="
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
 	zlib? ( >=sys-libs/zlib-1.1.4 )
 "
-DEPEND="
-	${COMMON_DEPEND}
-	doc? ( app-doc/doxygen )
-"
+BDEPEND="doc? ( app-doc/doxygen )"
+DEPEND="${COMMON_DEPEND}"
 RDEPEND="
 	${COMMON_DEPEND}
 	perl? (
@@ -68,7 +67,7 @@ RDEPEND="
 	)
 	selinux? ( sec-policy/selinux-snmp )
 "
-RESTRICT=test
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.7.3-include-limits.patch
 	"${FILESDIR}"/${PN}-5.8-do-not-conflate-LDFLAGS-and-LIBS.patch
@@ -138,7 +137,7 @@ src_configure() {
 		--with-logfile="/var/log/net-snmpd.log" \
 		--with-mib-modules="${mibs}" \
 		--with-persistent-directory="/var/lib/net-snmp" \
-		--with-sys-contact="root@Unknown" \
+		--with-sys-contact="root@unknown" \
 		--with-sys-location="Unknown"
 }
 

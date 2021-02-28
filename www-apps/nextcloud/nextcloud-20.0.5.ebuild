@@ -10,7 +10,7 @@ HOMEPAGE="https://nextcloud.com/"
 SRC_URI="https://download.nextcloud.com/server/releases/${P}.tar.bz2"
 LICENSE="AGPL-3"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="+curl +imagemagick mysql postgres +sqlite"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
@@ -36,6 +36,8 @@ src_install() {
 	webapp_serverowned -R "${MY_HTDOCSDIR}"/data
 	webapp_serverowned -R "${MY_HTDOCSDIR}"/config
 	webapp_configfile "${MY_HTDOCSDIR}"/.htaccess
+
+	webapp_postinst_txt en "${FILESDIR}"/php-argon2-en.txt
 
 	webapp_src_install
 }

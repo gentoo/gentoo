@@ -1,0 +1,14 @@
+clang-11 needs explicit cast
+
+https://bugs.gentoo.org/739284
+--- a/BPGame.cpp
++++ b/BPGame.cpp
+@@ -1507,7 +1507,7 @@ int BPGame::DivRem(int Num, int Div, int* Rem) {
+ }
+ 
+ void BPGame::DrawLine(int fromx, int fromy, int tox, int toy, Colour* col, float width) {	
+-	GLfloat vertices[] = { fromx, fromy, tox, toy }; 
++	GLfloat vertices[] = { (GLfloat)fromx, (GLfloat)fromy, (GLfloat)tox, (GLfloat)toy }; 
+ 
+ 	glDisable(GL_TEXTURE_2D);
+ 	glLineWidth(width);

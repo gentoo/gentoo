@@ -1,0 +1,46 @@
+diff --git a/setup.py b/setup.py
+index 115739fc..b933165c 100755
+--- a/setup.py
++++ b/setup.py
+@@ -906,6 +906,14 @@ def create_linux_bundle_gunk(ddir: str, libdir_name: str) -> None:
+     os.makedirs(os.path.dirname(in_src_launcher), exist_ok=True)
+     os.symlink(os.path.relpath(launcher, os.path.dirname(in_src_launcher)), in_src_launcher)
+ 
++def terminfo(args):
++    ddir = args.prefix
++    libdir = os.path.join(ddir, args.libdir_name.strip('/'), 'kitty')
++    build_terminfo = runpy.run_path('build-terminfo', run_name='import_build')
++    for x in (libdir, os.path.join(ddir, 'share')):
++        odir = os.path.join(x, 'terminfo')
++        safe_makedirs(odir)
++        build_terminfo['compile_terminfo'](odir)
+ 
+ def macos_info_plist() -> bytes:
+     import plistlib
+@@ -1093,7 +1101,7 @@ def safe_remove(*entries: str) -> None:
+ 
+     safe_remove(
+         'build', 'compile_commands.json', 'link_commands.json',
+-        'linux-package', 'kitty.app', 'asan-launcher',
++        'linux-package', 'linux-terminfo', 'kitty.app', 'asan-launcher',
+         'kitty-profile', 'kitty/launcher')
+     exclude = ('.git',)
+     for root, dirs, files in os.walk('.', topdown=True):
+@@ -1116,7 +1124,7 @@ def option_parser() -> argparse.ArgumentParser:  # {{{
+         'action',
+         nargs='?',
+         default=Options.action,
+-        choices='build test linux-package kitty.app linux-freeze macos-freeze build-launcher build-frozen-launcher clean export-ci-bundles'.split(),
++        choices='build test linux-package linux-terminfo kitty.app linux-freeze macos-freeze build-launcher build-frozen-launcher clean export-ci-bundles'.split(),
+         help='Action to perform (default is build)'
+     )
+     p.add_argument(
+@@ -1246,6 +1254,8 @@ def main() -> None:
+         elif args.action == 'linux-package':
+             build(args, native_optimizations=False)
+             package(args, bundle_type='linux-package')
++        elif args.action == 'linux-terminfo':
++            terminfo(args)
+         elif args.action == 'linux-freeze':
+             build(args, native_optimizations=False)
+             package(args, bundle_type='linux-freeze')

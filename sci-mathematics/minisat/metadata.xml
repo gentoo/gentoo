@@ -5,9 +5,6 @@
 		<email>sci@gentoo.org</email>
 		<name>Gentoo Science Project</name>
 	</maintainer>
-	<use>
-		<flag name="extended-solver">Build extended version of SAT solver with additional features.</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">niklasso/minisat</remote-id>
 	</upstream>

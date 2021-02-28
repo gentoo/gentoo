@@ -7,7 +7,5 @@
   </maintainer>
   <use>
     <flag name="jack-dbus">Use Jack via D-Bus instead of libjack</flag>
-    <flag name="session">Include experimental Jack session management
-      (save/restore) support</flag>
   </use>
 </pkgmetadata>

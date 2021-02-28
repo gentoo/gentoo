@@ -8,10 +8,6 @@
     <email>slashbeast@gentoo.org</email>
     <name>Piotr Karbowski</name>
   </maintainer>
-  <maintainer type="project">
-    <email>desktop-misc@gentoo.org</email>
-    <name>Gentoo Desktop Miscellaneous Project</name>
-  </maintainer>
   <use>
     <flag name="geoclue">Control dependency on <pkg>app-misc/geoclue</pkg></flag>
   </use>

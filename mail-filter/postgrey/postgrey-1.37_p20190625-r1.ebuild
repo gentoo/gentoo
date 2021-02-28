@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,13 +7,13 @@ inherit systemd
 
 COMMIT="eb420c5dee57dd54e6f63bad5d74e85f5cc9535d"
 DESCRIPTION="Postgrey is a Postfix policy server implementing greylisting"
-HOMEPAGE="http://postgrey.schweikert.ch/"
+HOMEPAGE="https://postgrey.schweikert.ch/"
 SRC_URI="https://github.com/schweikert/postgrey/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~hppa ~ppc ppc64 x86"
 
 DEPEND="
 	acct-group/postgrey

@@ -5,13 +5,13 @@ EAPI=7
 
 inherit dune
 
-DESCRIPTION="Base library and tools for ppx rewriters "
+DESCRIPTION="Base library and tools for ppx rewriters"
 HOMEPAGE="https://github.com/ocaml-ppx/ppxlib"
 SRC_URI="https://github.com/ocaml-ppx/ppxlib/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 

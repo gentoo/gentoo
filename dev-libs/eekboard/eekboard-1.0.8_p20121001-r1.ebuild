@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 VALA_USE_DEPEND="vapigen"
 
 inherit autotools gnome2-utils python-any-r1 vala vcs-snapshot virtualx xdg

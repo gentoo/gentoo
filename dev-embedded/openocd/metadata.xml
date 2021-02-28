@@ -10,6 +10,7 @@
 		<name>Paul Fertser</name>
 	</maintainer>
 	<use>
+		<flag name="capstone">Use <pkg>dev-libs/capstone</pkg> for disassembly support</flag>
 		<flag name="cmsis-dap">Support for CMSIS-DAP compliant adapters</flag>
 		<flag name="dummy">Build the dummy port driver</flag>
 		<flag name="jlink"> Build the SEGGER J-Link driver</flag>

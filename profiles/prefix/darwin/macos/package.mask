@@ -6,8 +6,3 @@
 # gnulib/malloc/dynarray-skeleton.c
 =net-misc/wget-1.21.1
 =sys-apps/findutils-4.8.0
-
-# Fabian Groffen <grobian@gentoo.org> (2020-11-23)
-# no symbols from libopenbsd-compat
-=net-misc/openssh-8.3_p1-r5
-=net-misc/openssh-8.4_p1-r2

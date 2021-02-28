@@ -181,14 +181,6 @@ src_install()
 	# install the @golang-rebuild set for Portage
 	insinto /usr/share/portage/config/sets
 	newins "${FILESDIR}"/go-sets.conf go.conf
-
-	# fix install_name for test object (binutils_test) on Darwin, it
-	# is never used in real circumstances
-	if [[ ${CHOST} == *-darwin* ]] ; then
-		local libmac64="${EPREFIX}"/usr/lib/go/src/cmd/vendor/github.com/
-		      libmac64+=google/pprof/internal/binutils/testdata/lib_mac_64
-		install_name_tool -id "${libmac64}" "${D}${libmac64}"
-	fi
 }
 
 pkg_postinst() {

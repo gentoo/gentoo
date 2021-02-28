@@ -1,0 +1,30 @@
+From 2ddba09ea491ae5d18b074a2d1126d44c0a2b1f6 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Tue, 9 Feb 2021 22:26:14 +0100
+Subject: [PATCH] [Gentoo-specific] avoid pre-stripping files
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+---
+ adm/cmake/occt_defs_flags.cmake | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/adm/cmake/occt_defs_flags.cmake b/adm/cmake/occt_defs_flags.cmake
+index 5484c675..4e513ab5 100644
+--- a/adm/cmake/occt_defs_flags.cmake
++++ b/adm/cmake/occt_defs_flags.cmake
+@@ -137,12 +137,6 @@ elseif (DEFINED CMAKE_COMPILER_IS_GNUCXX)
+   set (CMAKE_CXX_FLAGS "-std=c++0x ${CMAKE_CXX_FLAGS}")
+ endif()
+ 
+-# Optimize size of binaries
+-if (CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX OR MINGW)
+-  set (CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -s")
+-  set (CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -s")
+-endif()
+-
+ if (BUILD_RELEASE_DISABLE_EXCEPTIONS)
+   set (CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -DNo_Exception")
+   set (CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -DNo_Exception")
+-- 
+2.30.0
+

@@ -5,4 +5,7 @@
 	<email>base-system@gentoo.org</email>
 	<name>Gentoo Base System</name>
 </maintainer>
+<use>
+	<flag name="uchardet">Enable automatic encoding detection via <pkg>app-i18n/uchardet</pkg></flag>
+</use>
 </pkgmetadata>

@@ -1,17 +1,23 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-EGIT_REPO_URI="https://git.code.sf.net/p/qsampler/code"
-inherit qmake-utils xdg autotools git-r3
+inherit cmake qmake-utils xdg
+
+if [[ ${PV} == *9999* ]]; then
+	EGIT_REPO_URI="https://git.code.sf.net/p/qsampler/code"
+	inherit git-r3
+else
+	SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+fi
 
 DESCRIPTION="Graphical frontend to the LinuxSampler engine"
 HOMEPAGE="https://qsampler.sourceforge.io/ https://www.linuxsampler.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
 IUSE="debug +libgig"
 
 DEPEND="
@@ -21,34 +27,27 @@ DEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	media-libs/alsa-lib
-	>=media-libs/liblscp-0.5.6:=
+	media-libs/liblscp:=
 	x11-libs/libX11
-	libgig? ( >=media-libs/libgig-3.3.0:= )
+	libgig? ( media-libs/libgig:= )
 "
 RDEPEND="${DEPEND}
-	>=media-sound/linuxsampler-0.5
+	media-sound/linuxsampler
 "
 BDEPEND="dev-qt/linguist-tools:5"
 
 DOCS=( AUTHORS ChangeLog README TODO TRANSLATORS )
 
-PATCHES=( "${FILESDIR}"/${P}-Makefile.patch )
-
 src_prepare() {
-	default
+	cmake_src_prepare
 
-	emake -f Makefile.git
-	eautoreconf
+	sed -e "/^find_package.*QT/s/Qt6 //" -i CMakeLists.txt || die
 }
 
 src_configure() {
-	local myeconfargs=(
-		$(use_enable debug)
-		$(use_enable libgig)
+	local mycmakeargs=(
+		-DCONFIG_DEBUG=$(usex debug 1 0)
+		-DCONFIG_LIBGIG=$(usex libgig 1 0)
 	)
-	ac_qmake="$(qt5_get_bindir)/qmake" \
-		econf "${myeconfargs[@]}"
-
-	cd src || die
-	eqmake5 src.pro -o Makefile
+	cmake_src_configure
 }

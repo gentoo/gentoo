@@ -1,0 +1,8 @@
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2021-02-05)
+# libpcre2 has JIT support for s390x (not s390)
+# but it doesn't seem to build right now?
+dev-libs/libpcre2 jit
+dev-vcs/git pcre-jit

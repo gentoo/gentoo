@@ -15,6 +15,8 @@ LICENSE="LGPL-2+"
 KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 IUSE="libressl X"
 
+RESTRICT+=" test"
+
 BDEPEND="
 	dev-lang/perl
 	dev-perl/URI
@@ -76,9 +78,7 @@ RDEPEND="${COMMON_DEPEND}
 	=kde-frameworks/kitemmodels-${PVCUT}*:5
 "
 
-RESTRICT+=" test"
-
-PATCHES=( "${FILESDIR}/${PN}-5.77.0-no-kdesignerplugin.patch" )
+PATCHES=( "${FILESDIR}"/${P}-no-kdesignerplugin{,-1}.patch )
 
 src_prepare() {
 	ecm_src_prepare

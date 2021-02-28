@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 LUA_COMPAT=( lua5-{1,2} )
 
 inherit autotools git-r3 lua-single python-any-r1

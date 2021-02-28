@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -47,6 +47,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.7.3-pid_t.patch #713428
 	"${FILESDIR}"/${PN}-0.7.3-tuple-tests.patch
 	"${FILESDIR}"/${PN}-0.7.3-CXX-for-tests.patch
+	"${FILESDIR}"/${PN}-0.7.3-test-glibc-2.33.patch
 )
 
 src_prepare() {

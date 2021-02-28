@@ -1,11 +1,13 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
+inherit autotools flag-o-matic
+
 DESCRIPTION="An advanced suite for testing the randomness of RNG's"
-HOMEPAGE="http://www.phy.duke.edu/~rgb/General/dieharder.php"
-SRC_URI="http://www.phy.duke.edu/~rgb/General/${PN}/${P}.tgz"
+HOMEPAGE="https://www.phy.duke.edu/~rgb/General/dieharder.php"
+SRC_URI="https://www.phy.duke.edu/~rgb/General/${PN}/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -14,30 +16,22 @@ IUSE="doc"
 RESTRICT="test" # Way too long
 
 RDEPEND="sci-libs/gsl"
-DEPEND="${RDEPEND}
-	doc? ( dev-tex/latex2html )"
-
-DOCS=(
-	NOTES
-)
-HTML_DOCS=()
+DEPEND="${RDEPEND}"
+BDEPEND=" doc? ( dev-tex/latex2html )"
 
 PATCHES=(
-	"${FILESDIR}/${P}-build.patch"
-	"${FILESDIR}/${P}-urandom-64bit.patch"
+	"${FILESDIR}"/${P}-build.patch
+	"${FILESDIR}"/${P}-urandom-64bit.patch
+	"${FILESDIR}"/${P}-cross-compile.patch
 )
 
-pkg_setup() {
-	use doc && DOCS+=(
-		ChangeLog
-		manual/dieharder.pdf manual/dieharder.ps
-	)
-	use doc && HTML_DOCS+=(
-		dieharder.html
-	)
+src_prepare() {
+	default
+	eautoreconf
 }
 
 src_configure() {
+	append-flags -fcommon
 	econf --disable-static
 }
 
@@ -46,17 +40,18 @@ src_compile() {
 	use doc && emake -C manual
 }
 
-src_test() {
-	"${S}/dieharder/dieharder" -g 501 -a
-}
-
 src_install() {
+	if use doc; then
+		DOCS=( ChangeLog manual/dieharder.pdf manual/dieharder.ps)
+		HTML_DOCS=( dieharder.html )
+	fi
+
 	default
 
-	docinto "dieharder"
-	dodoc dieharder/README dieharder/NOTES
-	docinto "libdieharder"
-	dodoc libdieharder/README libdieharder/NOTES
+	docinto dieharder
+	dodoc dieharder/{NOTES,README}
+	docinto libdieharder
+	dodoc libdieharder/{NOTES,README}
 
 	find "${ED}" -name '*.la' -delete || die
 }

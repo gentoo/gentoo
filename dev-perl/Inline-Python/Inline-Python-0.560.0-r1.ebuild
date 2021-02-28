@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_6 python3_7 python3_8 )
+PYTHON_COMPAT=( python3_7 python3_8 )
 # Feel free to add more targets after testing.
 
 DIST_AUTHOR=NINE

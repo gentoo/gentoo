@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 CMAKE_MAKEFILE_GENERATOR="emake"
 
 inherit cmake python-single-r1 savedconfig
@@ -15,7 +15,6 @@ if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/${PN}md/${PN}.git"
 	EGIT_BRANCH="python"
 	inherit git-r3
-	KEYWORDS=""
 else
 	SRC_URI="https://github.com/${PN}md/${PN}/releases/download/${PV}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86 ~amd64-linux"
