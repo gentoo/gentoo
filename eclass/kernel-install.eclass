@@ -58,6 +58,12 @@ RDEPEND="
 		sys-kernel/installkernel-systemd-boot
 	)
 	initramfs? ( >=sys-kernel/dracut-049-r3 )"
+# needed by objtool that is installed along with the kernel and used
+# to build external modules
+# NB: linux-mod.eclass also adds this dep but it's cleaner to have
+# it here, and resolves QA warnings: https://bugs.gentoo.org/732210
+RDEPEND+="
+	virtual/libelf"
 BDEPEND="
 	test? (
 		dev-tcltk/expect
