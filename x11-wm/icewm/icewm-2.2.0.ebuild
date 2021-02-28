@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,13 +11,14 @@ LICENSE="GPL-2"
 SRC_URI="https://github.com/ice-wm/icewm/releases/download/${PV}/${P}.tar.lz"
 
 SLOT="0"
-KEYWORDS="amd64 ppc sparc x86"
-IUSE="+alsa ao bidi debug +gdk-pixbuf nls truetype uclibc xinerama"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
+IUSE="+alsa ao bidi debug +gdk-pixbuf imlib nls truetype uclibc xinerama"
 
 # Tests broken in all versions, patches welcome, bug #323907, #389533
 RESTRICT="test"
 
 REQUIRED_USE="|| ( alsa ao )"
+#?? ( gdk-pixbuf imlib )
 
 #fix for icewm preversion package names
 S="${WORKDIR}/${P/_}"
@@ -36,6 +37,7 @@ CORE_DEPEND="
 
 RDEPEND="
 	${CORE_DEPEND}
+	dev-libs/glib:2
 	x11-libs/libICE
 	x11-libs/libSM
 	x11-libs/libXft
@@ -55,15 +57,20 @@ RDEPEND="
 		>=x11-libs/gdk-pixbuf-2.42.0:2
 	)
 	!gdk-pixbuf? (
-		media-libs/libpng:0=
-		virtual/jpeg
+		imlib? (
+			gnome-base/librsvg:2
+			media-libs/imlib2
+		)
+		!imlib? (
+			media-libs/libpng:0=
+			virtual/jpeg
+		)
 	)
 	xinerama? ( x11-libs/libXinerama )
 "
 DEPEND="
 	${RDEPEND}
 	$(unpacker_src_uri_depends)
-	dev-libs/glib:2
 	x11-base/xorg-proto
 	gdk-pixbuf? ( gnome-base/librsvg:2 )
 "
@@ -74,10 +81,15 @@ BDEPEND="
 	nls? ( >=sys-devel/gettext-0.19.8 )
 "
 
-src_prepare() {
-	# Fix bug #486710 - TODO: Still needed?
-	#use uclibc && PATCHES+=( "${FILESDIR}/${PN}-1.3.8-uclibc.patch" )
+pkg_pretend() {
+	if use gdk-pixbuf && use imlib ; then
+		einfo 'Confilcting USE flags have been enabled:'
+		einfo '"gdk-pixbuf" and "imlib" exclude each other!'
+		einfo 'Using "gdk-pixbuf".'
+	fi
+}
 
+src_prepare() {
 	default
 	eautoreconf
 }
@@ -103,6 +115,7 @@ src_configure() {
 		$(use_enable debug)
 		$(use_enable debug logevents)
 		$(use_enable gdk-pixbuf)
+		$(use_enable imlib imlib2)
 		$(use_enable nls i18n)
 		$(use_enable nls)
 		$(use_enable xinerama)
@@ -120,8 +133,10 @@ src_configure() {
 
 	econf "${myconf[@]}"
 
-	sed -i "s:/icewm-\$(VERSION)::" src/Makefile || die
-	sed -i "s:ungif:gif:" src/Makefile || die "libungif fix failed"
+	sed \
+		-e "s:/icewm-\$(VERSION)::" \
+		-e "s:ungif:gif:" \
+		-i src/Makefile || die
 }
 
 src_install() {
