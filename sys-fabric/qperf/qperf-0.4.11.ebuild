@@ -1,34 +1,24 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=7
 
-inherit eutils autotools
+inherit autotools
 
-HOMEPAGE="https://www.openfabrics.org/"
-LICENSE="|| ( GPL-2 BSD-2 )"
-
-SRC_URI="https://github.com/linux-rdma/qperf/archive/v0.4.11.tar.gz -> ${P}.tar.gz"
 DESCRIPTION="Measure RDMA and IP performance"
-KEYWORDS="~amd64 ~x86 ~amd64-linux"
-IUSE=""
+HOMEPAGE="https://www.openfabrics.org/"
+SRC_URI="https://github.com/linux-rdma/qperf/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-SLOT=0
-DEPEND="
-	sys-cluster/rdma-core
-	"
+LICENSE="|| ( GPL-2 BSD-2 )"
+SLOT="0"
+KEYWORDS="~amd64 ~x86 ~amd64-linux"
+
+DEPEND="sys-cluster/rdma-core"
 RDEPEND="
-		!sys-fabric/openib-userspace"
+	${DEPEND}
+	!sys-fabric/openib-userspace"
 
 src_prepare() {
+	default
 	eautoreconf
-	eapply_user
-}
-
-src_compile() {
-	emake
-}
-
-src_install() {
-	emake install DESTDIR="${D}"
 }
