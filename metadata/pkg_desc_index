@@ -5148,7 +5148,7 @@ dev-lang/ferite 1.1.17-r1: A clean, lightweight, object oriented scripting langu
 dev-lang/fpc 3.0.4: Free Pascal Compiler
 dev-lang/gdl 1.0.0_rc3: GNU Data Language
 dev-lang/gforth 0.7.3-r1: GNU Forth is a fast and portable implementation of the ANSI Forth language
-dev-lang/ghc 7.8.4 7.10.3 8.0.2 8.2.1 8.2.2 8.4.1 8.4.2 8.4.3 8.6.4 8.6.5 8.8.1 8.8.2 8.8.3 8.8.4 8.10.1 8.10.2 8.10.3 8.10.4: The Glasgow Haskell Compiler
+dev-lang/ghc 7.8.4 7.10.3 8.0.2 8.2.1 8.2.2 8.4.1 8.4.2 8.4.3 8.6.4 8.6.5 8.8.1 8.8.2 8.8.3 8.8.4 8.10.1 8.10.2 8.10.3 8.10.4 9.0.1: The Glasgow Haskell Compiler
 dev-lang/gnat-gpl 2016-r4 2017-r1 2018-r3 2019-r2: GNAT Ada Compiler - GPL version
 dev-lang/gnuprologjava 0.2.6-r1: GNU Prolog for Java is an implementation of ISO Prolog as a Java library
 dev-lang/go 1.14.14 1.14.15 1.15.7 1.15.8 1.16 9999: A concurrent garbage collected and typesafe programming language
@@ -9219,7 +9219,7 @@ dev-python/spyder-unittest 0.4.1: Plugin for Spyder to run tests and view the re
 dev-python/spyder-vim 0_pre20201026: Plugin for Spyder to enable Vim keybindings
 dev-python/sqlalchemy 1.3.17 1.3.20 1.3.21 1.3.22 1.3.23: Python SQL toolkit and Object Relational Mapper
 dev-python/sqlalchemy-migrate 0.13.0: SQLAlchemy Schema Migration Tools
-dev-python/sqlalchemy-rqlite 1.0 1.1 9999: A SQLAlchemy dialect for rqlite
+dev-python/sqlalchemy-rqlite 1.1: A SQLAlchemy dialect for rqlite
 dev-python/sqlparse 0.3.1 0.4.1: A non-validating SQL parser module for Python
 dev-python/sshtunnel 0.3.1: Pure Python SSH tunnels
 dev-python/ssl-fetch 0.4 9999: A small convenience library for fetching files securely
