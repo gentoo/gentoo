@@ -13323,7 +13323,7 @@ media-libs/netpbm 10.70.00 10.76.00: A set of utilities for converting to/from t
 media-libs/noise-suppression-for-voice 0.9_p20200705 0.91 9999: A real-time noise suppression plugin for voice
 media-libs/nv-codec-headers 8.1.24.2 9.0.18.1 9.1.23.1 10.0.26.0 10.0.26.1: FFmpeg version of headers required to interface with Nvidias codec APIs
 media-libs/openal 1.21.0 1.21.1-r1: A software implementation of the OpenAL 3D audio API
-media-libs/opencollada 1.6.63-r1 1.6.68: Stream based read/write library for COLLADA files
+media-libs/opencollada 1.6.68: Stream based read/write library for COLLADA files
 media-libs/opencolorio 1.1.1: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.5-r1: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
 media-libs/openctm 1.0.3-r1: OpenCTM - the Open Compressed Triangle Mesh.
