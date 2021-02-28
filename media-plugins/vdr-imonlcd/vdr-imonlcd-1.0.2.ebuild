@@ -20,6 +20,9 @@ RDEPEND="
 	virtual/udev"
 DEPEND="${RDEPEND}
 	media-video/vdr"
+QA_FLAGS_IGNORED="
+	usr/lib/vdr/plugins/libvdr-.*
+	usr/lib64/vdr/plugins/libvdr-.*"
 
 DOCS=(
 	HISTORY
