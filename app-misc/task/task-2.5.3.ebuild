@@ -43,7 +43,7 @@ src_configure() {
 }
 
 src_test() {
-	cd "${WORKDIR}"/"${P}"_build
+	cd "${WORKDIR}"/"${P}"_build || die
 
 	eninja test
 }
