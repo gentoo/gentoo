@@ -14,10 +14,6 @@ dev-lang/php -jit
 # Dependency not keyworded on this arch.
 app-text/enchant voikko
 
-# Matt Turner <mattst88@gentoo.org> (2020-12-31)
-# dev-python/pyudev is not keyworded
-dev-libs/libwacom test
-
 # Sam James <sam@gentoo.org> (2020-12-27)
 # dev-embedded/libftd2xx unavailable here
 dev-embedded/urjtag ftd2xx
