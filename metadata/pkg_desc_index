@@ -6799,7 +6799,7 @@ dev-perl/LWPx-ParanoidAgent 1.120.0: Subclass of LWP::UserAgent that protects yo
 dev-perl/LaTeX-Driver 0.300.2: Perl encapsulation of invoking the Latex programs
 dev-perl/LaTeX-Encode 0.92.0: Encode characters for LaTeX formatting
 dev-perl/LaTeX-Table 1.0.6-r1: Perl extension for the automatic generation of LaTeX tables
-dev-perl/Lab-Measurement 3.721 3.740 9999: Measurement control and automation with Perl
+dev-perl/Lab-Measurement 3.740 3.741 9999: Measurement control and automation with Perl
 dev-perl/Lab-VXI11 0.20.0: Perl interface to the VXI-11 Test&Measurement backend
 dev-perl/Lab-Zhinst 0.30.0 0.50.0 1.20.0 9999: Perl bindings to the LabOne API of Zurich Instruments
 dev-perl/Lchown 1.10.0-r2 1.10.0-r3: Use the lchown(2) system call from Perl
@@ -7961,7 +7961,7 @@ dev-python/absl-py 0.10.0: Abseil Python Common Libraries
 dev-python/abydos 0.5.0: Abydos NLP/IR library
 dev-python/aiodns 2.0.0-r1: Simple DNS resolver for asyncio
 dev-python/aiofiles 0.5.0: File support for asyncio
-dev-python/aiohttp 3.6.2-r1 3.7.1-r1 3.7.2-r1 3.7.3 3.7.4: http client/server for asyncio
+dev-python/aiohttp 3.7.4: http client/server for asyncio
 dev-python/aiohttp-cors 0.7.0-r1: Implements CORS support for aiohttp asyncio-powered asynchronous HTTP server
 dev-python/aiohttp-jinja2 0.15.0: jinja2 template renderer for aiohttp.web
 dev-python/aiohttp-socks 0.5.5: SOCKS proxy connector for aiohttp
@@ -15816,7 +15816,7 @@ sci-astronomy/gasgano 2.4.8: ESO astronomical data file organizer
 sci-astronomy/gnuastro 0.3: GNU Astronomy Utilities
 sci-astronomy/healpix 3.31: Hierarchical Equal Area isoLatitude Pixelization of a sphere
 sci-astronomy/idlastro 20161220 99999999: Astronomical user routines for IDL
-sci-astronomy/kstars 3.4.3 3.5.1: Desktop Planetarium
+sci-astronomy/kstars 3.5.1: Desktop Planetarium
 sci-astronomy/missfits 2.8.0: Performs basic maintenance and packaging tasks on FITS files
 sci-astronomy/montage 5.0: Toolkit for assembling FITS images into mosaics
 sci-astronomy/pal 0.9.7: Positional Astronomy Library
@@ -16097,7 +16097,7 @@ sci-electronics/pcb 4.2.2: GPL Electronic Design Automation: Printed Circuit Boa
 sci-electronics/petrify 4.2-r1: Synthesize Petri nets into asynchronous circuits
 sci-electronics/puff 20100127-r1: microwave CAD software
 sci-electronics/pulseview 0.4.2 9999: Qt based logic analyzer GUI for sigrok
-sci-electronics/qelectrotech 0.70 9999: Qt5 application to design electric diagrams
+sci-electronics/qelectrotech 0.70 0.80 9999: Qt5 application to design electric diagrams
 sci-electronics/quartus-prime-lite 15.1.0.185-r2 15.1.0.185-r3: Full-featured EDA product for altera devices
 sci-electronics/sigrok-cli 0.7.1-r1 9999: Command-line client for the sigrok logic analyzer software
 sci-electronics/spice 3.5.5-r2: general-purpose circuit simulation program
