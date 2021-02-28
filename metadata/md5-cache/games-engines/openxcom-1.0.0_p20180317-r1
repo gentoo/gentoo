@@ -1,0 +1,14 @@
+BDEPEND=doc? ( app-doc/doxygen ) dev-util/ninja dev-util/cmake
+DEFINED_PHASES=compile configure install postinst postrm prepare test
+DEPEND=>=dev-cpp/yaml-cpp-0.5.1 media-libs/libsdl[opengl,video] media-libs/sdl-gfx media-libs/sdl-image[png] media-libs/sdl-mixer[flac,mikmod,vorbis]
+DESCRIPTION=Open-source reimplementation of the popular UFO: Enemy Unknown
+EAPI=7
+HOMEPAGE=https://openxcom.org/
+IUSE=doc
+KEYWORDS=~amd64 ~arm64 ~x86
+LICENSE=GPL-3+ CC-BY-SA-4.0
+RDEPEND=>=dev-cpp/yaml-cpp-0.5.1 media-libs/libsdl[opengl,video] media-libs/sdl-gfx media-libs/sdl-image[png] media-libs/sdl-mixer[flac,mikmod,vorbis]
+SLOT=0
+SRC_URI=https://github.com/SupSuper/OpenXcom/archive/ea9ac466221f8b4f8974d2db1c42dc4ad6126564.tar.gz -> openxcom-1.0.0_p20180317.tar.gz
+_eclasses_=cmake	314a813be2f09820e8978cdee941e501	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=9b8702f4936565345e699624207af45b

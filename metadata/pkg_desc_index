@@ -2884,7 +2884,7 @@ app-text/cmigemo 1.3c-r3: Migemo library implementation in C
 app-text/code2html 0.9.1-r2: Converts source files to colored HTML output
 app-text/convertlit 1.8-r3: CLit converts MS ebook .lit files to .opf (xml+html+png+jpg)
 app-text/convmv 2.04 2.05 2.05-r1: convert filenames to utf8 or any other charset
-app-text/coolreader 3.2.2.1-r2 3.2.50 3.2.51 3.2.53 3.2.54: CoolReader - reader of eBook files (fb2,epub,htm,rtf,txt)
+app-text/coolreader 3.2.50 3.2.53 3.2.54: CoolReader - reader of eBook files (fb2,epub,htm,rtf,txt)
 app-text/cpdf 2.3.1: A command line tool for manipulating PDF files
 app-text/crf++ 0.58: Yet Another CRF toolkit for segmenting/labelling sequential data
 app-text/crm114 20100106-r1: A powerful text processing tool, mainly used for spam filtering
@@ -11168,7 +11168,7 @@ games-arcade/aop 0.6-r1: Ambassador of Pain is a curses based game with only 64 
 games-arcade/apricots 0.2.6-r2: Fly a plane around bomb/shoot the enemy. Port of Planegame from Amiga
 games-arcade/aquaria 1.1.3-r1: A 2D scroller set in a massive ocean world
 games-arcade/ascii-invaders 0.1b-r1: Space invaders clone, using ncurses library
-games-arcade/asteroid 1.2.1: A modern version of the arcade classic that uses OpenGL
+games-arcade/asteroid 1.2.1: Modern version of the arcade classic that uses OpenGL
 games-arcade/balloonchase 0.9.6-r1: Fly a hot air balloon and try to blow the other player out of the screen
 games-arcade/barbarian-bin 1.01-r1: Save Princess Mariana through one-on-one battles with demonic barbarians
 games-arcade/batrachians 0.1.6-r1: A fly-eating frog video game
@@ -11214,7 +11214,7 @@ games-arcade/jardinains 2.0-r1: Arkanoid with Gnomes
 games-arcade/jazz2 0.6.6: Open source reimplementation of Jazz Jackrabbit 2
 games-arcade/jazz2-data 0-r20200327: Jazz Jackrabbit 2 data files imported for games-arcade/jazz2
 games-arcade/jumpnbump 1.50-r2: A funny multiplayer game about cute little fluffy bunnies
-games-arcade/jvgs 0.5-r1 0.5-r100: An open-source platform game with a sketched and minimalistic look
+games-arcade/jvgs 0.5-r100: An open-source platform game with a sketched and minimalistic look
 games-arcade/kajaani-kombat 0.7-r1: A rampart-like game set in space
 games-arcade/kobodeluxe 0.5.1-r2: An SDL port of xkobo, a addictive space shoot-em-up
 games-arcade/komi 1.04-r1: Komi the Space Frog - simple SDL game of collection
@@ -11234,7 +11234,7 @@ games-arcade/nottetris2 1-r1: The spiritual successor of the classic Tetris mixe
 games-arcade/open-supaplex 7.1.2: OSS reimplementation of Supaplex in C and SDL
 games-arcade/openbubbles 1.2-r1: A clone of Evan Bailey's game Bubbles
 games-arcade/openmortal 0.7-r2: A spoof of the famous Mortal Kombat game
-games-arcade/opensonic 0.1.4-r2: A free open-source game based on the Sonic the Hedgehog universe
+games-arcade/opensonic 0.1.4-r3: Free open-source game based on the Sonic the Hedgehog universe
 games-arcade/opentyrian 2.1.20130907-r2: Open-source port of the DOS game Tyrian, vertical scrolling shooter
 games-arcade/orthorobot 0-r1 0-r2: Perspective based puzzle game, where you flatten the view to move across gaps
 games-arcade/oshu 2.0.1 9999: Lightweight osu! port
@@ -11249,7 +11249,7 @@ games-arcade/ri-li 2.0.1-r1: Drive a toy wood engine and collect all the coaches
 games-arcade/rockdodger 0.6.0a-r1: Dodge the rocks for as long as possible until you die
 games-arcade/rocksndiamonds 4.1.0.0 4.1.4.1: A Boulderdash clone
 games-arcade/sable 1.0-r1: A frantic 3D space shooter
-games-arcade/savagewheels 1.6.1-r1: 2D car crashing game similar to the old classic Destruction Derby.
+games-arcade/savagewheels 1.6.1-r2: 2D car crashing game similar to the old classic Destruction Derby
 games-arcade/sdb 1.0.2-r1: A 2D top-down action game; escape a facility full of walking death machines
 games-arcade/sdl-sopwith 1.7.5-r2: Port of the classic Sopwith game using LibSDL
 games-arcade/sdlroids 1.3.4-r4: Asteroids Clone for X using SDL
@@ -11267,7 +11267,7 @@ games-arcade/tecnoballz 0.92: An exciting Brick Breaker
 games-arcade/thinktanks-demo 1.1-r3: Tank combat game with lighthearted, fast paced pandemonium
 games-arcade/tomatoes 1.55-r2: How many tomatoes can you smash in ten short minutes?
 games-arcade/trailblazer 0.9-r1: Guide a ball through a succession of levels while avoiding holes
-games-arcade/tuxanci 20110429-r1 99999999: Tuxanci is first tux shooter inspired by game Bulanci
+games-arcade/tuxanci 20110429-r1: First Tux shooter multi-player network game inspired by Bulanci
 games-arcade/tuxdash 0.8-r1: A simple BoulderDash clone
 games-arcade/tuxpuck 0.8.2-r2: Hover hockey
 games-arcade/vor 0.5.7-r1: Variations on Rockdodger: Dodge the rocks until you die
@@ -11413,12 +11413,12 @@ games-engines/love 0.7.2-r100 0.8.0-r100 11.3-r100 9999: A framework for 2D game
 games-engines/nazghul 0.7.1-r1: A computer role-playing game (CRPG) engine with game called HaximA
 games-engines/odamex 0.8.3: Online multiplayer free software engine for DOOM
 games-engines/openmw 0.46.0 9999: Open source reimplementation of TES III: Morrowind
-games-engines/openxcom 1.0.0_p20180317 9999: An open-source reimplementation of the popular UFO: Enemy Unknown
+games-engines/openxcom 1.0.0_p20180317-r1 9999: Open-source reimplementation of the popular UFO: Enemy Unknown
 games-engines/qtads 3.0.0: Multimedia interpreter for TADS text adventures
 games-engines/residualvm 0.2.1-r1 0.3.1-r2 9999: A cross-platform 3D game interpreter for play LucasArts' LUA-based 3D adventures
 games-engines/scummvm 2.1.2 2.2.0 9999: Reimplementation of the SCUMM game engine used in Lucasarts adventures
 games-engines/scummvm-tools 2.1.0 2.2.0: utilities for the SCUMM game engine
-games-engines/solarus 1.3.1-r1 1.3.1-r100: An open-source Zelda-like 2D game engine
+games-engines/solarus 1.3.1-r100: An open-source Zelda-like 2D game engine
 games-engines/stratagus 2.4.3 2.4.3-r100 3.0.0-r1 3.0.0-r100: A realtime strategy game engine
 games-engines/xzip 1.8.2-r3: X interface to Z-code based text games
 games-engines/zoom 1.1.5-r1: A fast, clean, modern Z-code interpreter for X
@@ -11708,14 +11708,14 @@ games-rpg/openglad 0.98-r1: An SDL clone of Gladiator, a classic RPG game
 games-rpg/pcgen 6.04.01-r1: D&D character generator
 games-rpg/queen 1-r1: Flight of the Amazon Queen - 2D point-and-click adventure game set in the 1940s
 games-rpg/soltys 1.0-r2: Classic adventure game
-games-rpg/sumwars 0.5.8-r1 0.5.8-r100: a multi-player, 3D action role-playing game
+games-rpg/sumwars 0.5.8-r100: a multi-player, 3D action role-playing game
 games-rpg/to-the-moon 0: Two doctors traversing the memories of a dying man to fulfill his last wish
 games-rpg/vendetta-online-bin 1.8.296-r1: Space-based MMORPG
 games-rpg/wasteland2 1.9.0.13: Sequel to 1988 Wasteland, post-apocalyptic computer RPG inspiration for Fallout
 games-rpg/wastesedge 0.3.8: Role playing game to showcase the adonthell engine
 games-rpg/xu4 0.9-r1: A remake of the computer game Ultima IV
-games-rpg/zsdx 1.9.0-r1: A free 2D Zelda fangame
-games-rpg/zsxd 1.9.0-r1: A free 2D Zelda fangame parody
+games-rpg/zsdx 1.9.0-r1: Free 2D Zelda fangame
+games-rpg/zsxd 1.9.0-r1: Free 2D Zelda fangame parody
 games-server/bedrock-server 1.16.201.02 1.16.201.03: The official bedrock (non-java) based server for the sandbox video game
 games-server/crossfire-server 1.71.0-r1: Server for the crossfire clients
 games-server/etqw-ded 1.5-r1: Enemy Territory: Quake Wars dedicated server
@@ -11749,7 +11749,7 @@ games-simulation/slime-rancher 1.4.1c_p34605: Cute game where you cultivate slim
 games-simulation/train-valley 1.3.31403: Build railroads in order to connect cities, tunnels, and bridges
 games-sports/billardgl 1.75-r2: an OpenGL billards game
 games-sports/bygfoot 2.3.2-r1: GTK+2 Soccer Management Game
-games-sports/dustrac 1.11.0-r1: Tile-based, cross-platform 2D racing game
+games-sports/dustrac 1.13.0: Tile-based, cross-platform 2D racing game
 games-sports/foobillard 3.0a-r1: 8ball, 9ball, snooker and carambol game
 games-sports/gracer 0.1.5-r2: 3D motor sports simulator
 games-sports/speed-dreams 1.4.0-r1: A fork of the famous open racing car simulator TORCS
@@ -11773,7 +11773,7 @@ games-strategy/dunelegacy 0.96.4: Updated clone of Westood Studios' Dune II
 games-strategy/freeciv 2.5.12 2.6.2: multiplayer strategy game (Civilization Clone)
 games-strategy/freecol 0.11.6-r1: An open source clone of the game Colonization
 games-strategy/freeorion 0.4.10.1-r1 9999: A free turn-based space empire and galactic conquest game
-games-strategy/freesynd 0.7.1-r1: Portable reimplementation of engine for the classic Bullfrog game, Syndicate
+games-strategy/freesynd 0.7.5: Portable engine reimplementation for the classic Bullfrog game Syndicate
 games-strategy/galaxyhack 1.74-r1: Multiplayer AI script based strategy game
 games-strategy/hedgewars 1.0.0-r100: A turn-based strategy, artillery, action and comedy game
 games-strategy/ja2-stracciatella 0.12.1_p7072 0.17.0: An improved, cross-platform, stable Jagged Alliance 2 runtime
@@ -12892,7 +12892,7 @@ media-gfx/gthumb 3.10.0 3.10.2: Image viewer and browser for Gnome
 media-gfx/gtkam 1.0-r1: A frontend for gPhoto 2
 media-gfx/gtkimageview 1.6.4: A simple image viewer widget for GTK
 media-gfx/hp2xx 3.4.4-r1: Convert Hewlett-Packard's HP-GL plotter language to other graphics formats
-media-gfx/hugin 2019.2.0 2020.0.0-r1 9999: GUI for the creation & processing of panoramic images
+media-gfx/hugin 2020.0.0-r1 9999: GUI for the creation & processing of panoramic images
 media-gfx/icc-examin 0.56_p20171007 9999: Viewer for ICC and CGATS, argyll gamut vrml visualisations and GPU gamma tables
 media-gfx/icon-slicer 0.3: utility for generating icon themes and libXcursor cursor themes
 media-gfx/icoutils 0.32.3: Tools to extract and convert images in icon and cursor files (.ico, .cur)
@@ -13038,7 +13038,7 @@ media-libs/SoQt 1.6.0: GUI binding for using Coin/Open Inventor with Qt
 media-libs/SoXt 1.4.0: GUI binding for using Coin/Open Inventor with Xt/Motif
 media-libs/a52dec 0.7.4-r8: library for decoding ATSC A/52 streams used in DVD
 media-libs/aalib 1.4_rc5-r9: A ASCII-Graphics Library
-media-libs/aften 0.0.8-r2: An A/52 (AC-3) audio encoder
+media-libs/aften 0.0.8-r2: A/52 (AC-3) audio encoder
 media-libs/allegro 4.4.3.1 5.2.6.0: Cross-platform library aimed at video game and multimedia programming
 media-libs/alsa-lib 1.2.2-r1 1.2.3.2-r1 1.2.4: Advanced Linux Sound Architecture Library
 media-libs/alsa-oss 1.1.8: Advanced Linux Sound Architecture OSS compatibility layer
@@ -13946,7 +13946,7 @@ media-sound/ogmtools 1.5-r2: Information, extraction or creation for OGG media s
 media-sound/openmpt123 0.5.5: libopenmpt-based command line player for tracked music files (modules)
 media-sound/opus-tools 0.2: Royalty-free, highly versatile audio codec
 media-sound/orpheus 1.6-r3: Command line MP3 player
-media-sound/pamix 1.5 1.6 9999: A PulseAudio NCurses mixer
+media-sound/pamix 1.6 1.6-r1 9999: A PulseAudio NCurses mixer
 media-sound/paprefs 1.1-r1: PulseAudio Preferences, configuration dialog for PulseAudio
 media-sound/pasystray 0.6.0-r2 0.7.0 0.7.1: PulseAudio system tray
 media-sound/patchage 1.0.4: Modular patch bay for JACK-based audio and MIDI systems
@@ -13961,7 +13961,7 @@ media-sound/pitchtune 0.0.4: Precise Instrument Tweaking for Crispy Harmony - tu
 media-sound/pithos 1.5.0: Pandora.com client for the GNOME desktop
 media-sound/playerctl 2.0.2 2.2.1 2.3.1: A CLI utility to control media players over MPRIS
 media-sound/pms 0.42_p20170508 9999: Practical Music Search: an open source ncurses client for mpd, written in C++
-media-sound/pnmixer 0.7.2 9999: Volume mixer for the system tray
+media-sound/pnmixer 0.7.2 0.7.2-r1: Volume mixer for the system tray
 media-sound/poc 0.4.1: mp3 and ogg streamer (include mp3cue and mp3cut)
 media-sound/podcatcher 3.1.6: Podcast client for the command-line written in Ruby
 media-sound/podget 0.7.14 0.8.1 0.8.2: A simple podcast aggregator optimized for running as a scheduled job
@@ -15310,7 +15310,7 @@ net-misc/putty 0.74 9999: A Free Telnet/SSH Client
 net-misc/pyhoca-cli 0.6.1.2: X2Go command line client
 net-misc/pyhoca-gui 0.6.1.1: X2Go graphical client applet
 net-misc/python-x2go 0.6.1.3: X2Go client-side Python API
-net-misc/qtm 1.3.19: Qt blogging client
+net-misc/qtm 1.3.19-r1: Qt blogging client
 net-misc/quagga 1.2.4: A free routing daemon replacing Zebra supporting RIP, OSPF and BGP
 net-misc/r8168 8.048.03-r1: r8168 driver for Realtek 8111/8168 PCI-E NICs
 net-misc/rabbitmq-server 3.8.7: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
@@ -15981,7 +15981,7 @@ sci-calculators/keurocalc 1.3.0: Universal currency converter and calculator
 sci-calculators/orpie 1.5.2-r1: A fullscreen RPN calculator for the console
 sci-calculators/pcalc 3-r1 4: the programmers calculator
 sci-calculators/qalculate-gtk 3.16.0: Modern multi-purpose calculator
-sci-calculators/speedcrunch 0.12.0: Fast and usable calculator for power users
+sci-calculators/speedcrunch 0.12.0-r1: Fast and usable calculator for power users
 sci-calculators/tiemu 3.03-r1: Texas Instruments hand-helds emulator
 sci-calculators/tilp2 1.18: Communication program for Texas Instruments calculators
 sci-calculators/transcalc 0.14-r2: Microwave and RF transmission line calculator

@@ -4,10 +4,10 @@ DEPEND=dev-libs/openssl:0=
 DESCRIPTION=utilities for working with Das U-Boot
 EAPI=7
 HOMEPAGE=https://www.denx.de/wiki/U-Boot/WebHome
-KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86
 LICENSE=GPL-2
 RDEPEND=dev-libs/openssl:0=
 SLOT=0
 SRC_URI=ftp://ftp.denx.de/pub/u-boot/u-boot-2021.04-rc2.tar.bz2
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=ad12be91b5ec19f23c8cc6aabb4334c2
+_md5_=c703020b641880a6e70421a9f53ba7c5

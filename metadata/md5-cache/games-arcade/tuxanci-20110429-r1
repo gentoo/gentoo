@@ -1,13 +1,14 @@
+BDEPEND=virtual/pkgconfig nls? ( sys-devel/gettext ) dev-util/ninja dev-util/cmake
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=!dedicated? ( >=media-libs/fontconfig-2.7.0 media-libs/libsdl[X,opengl?] media-libs/sdl-ttf[X] >=media-libs/sdl-image-1.2.10[png] sound? ( >=media-libs/sdl-mixer-1.2.11[vorbis] ) ) physfs? ( dev-games/physfs[zip] ) !physfs? ( >=dev-libs/libzip-0.9 ) virtual/pkgconfig nls? ( sys-devel/gettext ) sys-devel/make >=dev-util/cmake-3.9.6
-DESCRIPTION=Tuxanci is first tux shooter inspired by game Bulanci
-EAPI=6
+DEPEND=!dedicated? ( >=media-libs/fontconfig-2.7.0 media-libs/libsdl[X,opengl?] >=media-libs/sdl-image-1.2.10[png] media-libs/sdl-ttf[X] sound? ( >=media-libs/sdl-mixer-1.2.11[vorbis] ) ) physfs? ( dev-games/physfs[zip] ) !physfs? ( >=dev-libs/libzip-0.9 )
+DESCRIPTION=First Tux shooter multi-player network game inspired by Bulanci
+EAPI=7
 HOMEPAGE=https://repo.or.cz/w/tuxanci.git
 IUSE=debug dedicated +ipv6 nls opengl physfs +sound
 KEYWORDS=~amd64 ~ppc64 ~x86
 LICENSE=GPL-2
-RDEPEND=!dedicated? ( >=media-libs/fontconfig-2.7.0 media-libs/libsdl[X,opengl?] media-libs/sdl-ttf[X] >=media-libs/sdl-image-1.2.10[png] sound? ( >=media-libs/sdl-mixer-1.2.11[vorbis] ) ) physfs? ( dev-games/physfs[zip] ) !physfs? ( >=dev-libs/libzip-0.9 )
+RDEPEND=!dedicated? ( >=media-libs/fontconfig-2.7.0 media-libs/libsdl[X,opengl?] >=media-libs/sdl-image-1.2.10[png] media-libs/sdl-ttf[X] sound? ( >=media-libs/sdl-mixer-1.2.11[vorbis] ) ) physfs? ( dev-games/physfs[zip] ) !physfs? ( >=dev-libs/libzip-0.9 )
 SLOT=0
 SRC_URI=mirror://gentoo/tuxanci-20110429.tar.xz
-_eclasses_=cmake-utils	77cd39e6009811bf97a59d91ffd5b54f	desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	epatch	e8f1ec13660dc2f44b32775765d85e42	estack	055c42df72f76a4f45ec92b35e83cd56	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=cc8edc7fd1d2432ebabe44769a78d79a
+_eclasses_=cmake	314a813be2f09820e8978cdee941e501	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=f023e1096e650777ba252c5d98edcbc2
