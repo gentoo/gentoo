@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Library routines related to building,parsing and iterating BSON documents"
 HOMEPAGE="https://github.com/mongodb/mongo-c-driver/tree/master/src/libbson"
@@ -34,7 +34,7 @@ src_configure() {
 		-DENABLE_UNINSTALL=OFF
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
@@ -43,5 +43,5 @@ src_install() {
 		dodoc src/libbson/examples/*.c
 	fi
 
-	cmake-utils_src_install
+	cmake_src_install
 }
