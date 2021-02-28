@@ -10,7 +10,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/xournalpp/xournalpp.git"
 	unset SRC_URI
 else
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 	SRC_URI="https://github.com/xournalpp/xournalpp/archive/${PV}.tar.gz -> ${P}.tgz"
 fi
 
@@ -26,7 +26,7 @@ COMMONDEPEND="
 	dev-libs/glib
 	dev-libs/libxml2
 	dev-libs/libzip:=
-	media-libs/portaudio
+	media-libs/portaudio[cxx]
 	media-libs/libsndfile
 	sys-libs/zlib:=
 	x11-libs/gtk+:3
