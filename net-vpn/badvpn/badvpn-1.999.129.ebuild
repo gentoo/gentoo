@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/ambrop72/badvpn https://code.google.com/p/badvpn/"
 SRC_URI="https://github.com/ambrop72/badvpn/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 arm x86"
 SLOT="0"
 TARGETS="+client +ncd +server +tun2socks +udpgw"
 IUSE="${TARGETS} debug"
