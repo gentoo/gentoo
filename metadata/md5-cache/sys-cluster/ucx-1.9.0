@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure
+DEPEND=sys-libs/binutils-libs:= numa? ( sys-process/numactl )
+DESCRIPTION=Unified Communication X
+EAPI=7
+HOMEPAGE=https://www.openucx.org
+IUSE=+numa +openmp
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=BSD
+RDEPEND=sys-libs/binutils-libs:= numa? ( sys-process/numactl )
+SLOT=0
+SRC_URI=https://github.com/openucx/ucx/releases/download/v1.9.0/ucx-1.9.0.tar.gz
+_md5_=953e64e9b4fe8179fded0f80a55eedd8
