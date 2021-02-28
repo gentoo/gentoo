@@ -99,6 +99,10 @@ PATCHES=(
 
 CMAKE_REMOVE_MODULES_LIST="FindLua"
 
+pkg_setup() {
+	use lua && lua-single_pkg_setup
+}
+
 src_prepare() {
 	cmake_src_prepare
 	l10n_find_plocales_changes 'eiskaltdcpp-qt/translations' '' '.ts'
