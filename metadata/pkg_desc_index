@@ -6031,7 +6031,7 @@ dev-perl/Algorithm-Annotate 0.100.0-r2: Represent a series of changes in annotat
 dev-perl/Algorithm-C3 0.100.0 0.110.0: A module for merging hierarchies using the C3 algorithm
 dev-perl/Algorithm-ClusterPoints 0.80.0-r1: Find clusters inside a set of points
 dev-perl/Algorithm-Dependency 1.112.0: Toolkit for implementing dependency systems
-dev-perl/Algorithm-Diff 1.190.300-r1: Compute intelligent differences between two files / lists
+dev-perl/Algorithm-Diff 1.190.300-r1 1.201.0: Compute intelligent differences between two files / lists
 dev-perl/Algorithm-Munkres 0.80.0-r2: Munkres solution to classical Assignment problem
 dev-perl/Alien-Base-ModuleBuild 1.150.0: A Module::Build subclass for building Alien:: modules and their libraries
 dev-perl/Alien-Build 2.230.0 2.320.0 2.330.0 2.380.0: Build external dependencies for use in CPAN
