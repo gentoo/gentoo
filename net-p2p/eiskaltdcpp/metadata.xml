@@ -1,18 +1,25 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>klondike@gentoo.org</email>
+		<name>Francisco Blas (klondike) Izquierdo Riera</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<longdescription lang="en">
-	EiskaltDC++ is a multi-platform program that uses the Direct Connect and
-	ADC protocol. It is compatible with other DC clients, such as the original DC
-	from Neomodus, DC++ and derivatives. EiskaltDC++ also interoperates with all
+	EiskaltDC++ is a cross-platform program that uses the Direct Connect and
+	Advanced Direct Connect protocols. It is compatible with DC++, AirDC++,
+	FlylinkDC++ and other DC clients. EiskaltDC++ also interoperates with all
 	common DC hub software.
 	</longdescription>
 	<use>
 		<flag name="cli">Enable sample cli based on readline</flag>
 		<flag name="daemon">Enable eiskaltdcpp-daemon</flag>
 		<flag name="dht">Enable DHT (distributed hash table) support for libeiskaltdcpp</flag>
-		<flag name="json">Enable JSON for cli and daemon</flag>
+		<flag name="gold">Use gold.ld instead of ld</flag>
 		<flag name="libcanberra">Enable sound notifications support over libcanberra in EiskaltDC++ Gtk</flag>
 		<flag name="minimal">Don't install headers</flag>
 	</use>

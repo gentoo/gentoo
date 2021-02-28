@@ -3,11 +3,11 @@
 
 EAPI=7
 
-LUA_COMPAT=( lua5-1 )
+LUA_COMPAT=( lua5-1 lua5-2 )
 
 PLOCALES="be bg cs de el en es eu fr hu it pl pt_BR ru sk sr sr@latin sv_SE tr uk vi zh_CN"
 
-inherit cmake l10n lua-single xdg-utils
+inherit cmake l10n lua-single xdg-utils toolchain-funcs
 [[ ${PV} = *9999* ]] && inherit git-r3
 
 DESCRIPTION="Qt/DC++ based client for DirectConnect and ADC protocols"
@@ -15,11 +15,9 @@ HOMEPAGE="https://github.com/eiskaltdcpp/eiskaltdcpp"
 
 LICENSE="GPL-2 GPL-3"
 SLOT="0"
-IUSE="cli daemon dbus +dht examples -gtk idn -javascript json libcanberra libnotify lua +minimal pcre +qt5 spell sqlite upnp -xmlrpc"
+IUSE="cli daemon dbus +dht examples gold gtk idn javascript libcanberra libnotify lua +minimal pcre +qt5 spell sqlite upnp"
 
 REQUIRED_USE="
-	?? ( json xmlrpc )
-	cli? ( ^^ ( json xmlrpc ) )
 	dbus? ( qt5 )
 	javascript? ( qt5 )
 	libcanberra? ( gtk )
@@ -30,15 +28,15 @@ REQUIRED_USE="
 "
 
 if [[ ${PV} != *9999* ]]; then
-	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="mirror://sourceforge/project/${PN}/Sources/${P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
 else
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
+	KEYWORDS=""
 fi
 
 RDEPEND="
 	app-arch/bzip2
-	dev-libs/boost:=
 	dev-libs/openssl:0=
 	sys-apps/attr
 	sys-libs/zlib
@@ -49,10 +47,11 @@ RDEPEND="
 		dev-perl/Data-Dump
 		dev-perl/Term-ShellUI
 		virtual/perl-Getopt-Long
-		json? ( dev-perl/JSON-RPC )
-		xmlrpc? ( dev-perl/RPC-XML )
+		dev-perl/JSON-RPC
 	)
-	daemon? ( xmlrpc? ( dev-libs/xmlrpc-c[abyss,cxx] ) )
+	daemon? (
+		dev-libs/jsoncpp:=
+	)
 	gtk? (
 		dev-libs/glib:2
 		x11-libs/gtk+:3
@@ -82,6 +81,9 @@ RDEPEND="
 	)
 	upnp? ( net-libs/miniupnpc )
 "
+BDEPEND="
+	gold? ( sys-devel/binutils[gold] )
+"
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig
@@ -89,6 +91,11 @@ DEPEND="${RDEPEND}
 "
 
 DOCS=( AUTHORS ChangeLog.txt )
+
+PATCHES=(
+	"${FILESDIR}/${PN}-2.2.10-cmake_lua_version.patch"
+	"${FILESDIR}/${P}-fix_upnp_compilation.patch"
+)
 
 CMAKE_REMOVE_MODULES_LIST="FindLua"
 
@@ -101,7 +108,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DLIB_INSTALL_DIR="$(get_libdir)"
 		-Dlinguas="$(l10n_get_locales)"
-		-DLOCAL_MINIUPNP=OFF
+		-DCREATE_MO=ON
 		-DUSE_GTK=OFF
 		-DUSE_LIBGNOME2=OFF
 		-DUSE_QT=OFF
@@ -119,26 +126,29 @@ src_configure() {
 		-DPERL_REGEX=$(usex pcre)
 		-DUSE_QT5=$(usex qt5)
 		-DUSE_ASPELL=$(usex spell)
+		-DLOCAL_ASPELL_DATA=OFF
 		-DUSE_QT_SQLITE=$(usex sqlite)
 		-DUSE_MINIUPNP=$(usex upnp)
+		-DFORCE_XDG=ON
+		-DENABLE_STACKTRACE=OFF
+		-DUSE_GOLD=$(usex gold)
+		-DLOCAL_JSONCPP=OFF
+		-DBUILD_STATIC=OFF
+		-DINSTALL_QT_TRANSLATIONS=OFF
+		-DCOMPRESS_MANPAGES=OFF
+		-DUSE_CLI_JSONRPC=$(usex cli)
+		-DJSONRPC_DAEMON=$(usex daemon)
 	)
-	if use cli; then
-		mycmakeargs+=(
-			-DUSE_CLI_JSONRPC=$(usex json)
-			-DUSE_CLI_XMLRPC=$(usex xmlrpc)
-		)
-	fi
-	if use daemon; then
-		mycmakeargs+=(
-			-DJSONRPC_DAEMON=$(usex json)
-			-DXMLRPC_DAEMON=$(usex xmlrpc)
-		)
-	fi
 	if use lua; then
 		mycmakeargs+=(
 			-DLUA_SCRIPT=ON
-			-DWITH_LUASCRIPTS=ON
+			-DWITH_LUASCRIPTS=$(usex examples)
 			-DLUA_VERSION=$(ver_cut 1-2 $(lua_get_version))
+		)
+	else
+		mycmakeargs+=(
+			-DLUA_SCRIPT=OFF
+			-DWITH_LUASCRIPTS=OFF
 		)
 	fi
 	if use qt5 || use gtk; then
