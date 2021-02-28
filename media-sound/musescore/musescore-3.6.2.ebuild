@@ -63,6 +63,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.0.1-man-pages.patch"
+	"${FILESDIR}/${PN}-3.6.1-rename-audioitem.patch"
 )
 
 src_unpack() {
