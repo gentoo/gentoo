@@ -6,7 +6,6 @@
 		<name>Gentoo Vim Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">vim</remote-id>
-		<remote-id type="bitbucket">sjl/splice.vim</remote-id>
+		<remote-id type="github">sjl/splice.vim</remote-id>
 	</upstream>
 </pkgmetadata>
