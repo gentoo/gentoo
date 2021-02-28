@@ -26,7 +26,7 @@ COMMONDEPEND="
 	dev-libs/glib
 	dev-libs/libxml2
 	dev-libs/libzip:=
-	media-libs/portaudio
+	media-libs/portaudio[cxx]
 	media-libs/libsndfile
 	sys-libs/zlib:=
 	x11-libs/gtk+:3
