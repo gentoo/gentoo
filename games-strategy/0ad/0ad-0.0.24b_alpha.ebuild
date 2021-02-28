@@ -37,6 +37,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE="editor +lobby nvtt pch test"
 RESTRICT="test"
 
+# TODO: Unbundle premake5
+# See bug #773472 which may help (bump for it)
 BDEPEND="
 	virtual/pkgconfig
 	test? ( dev-lang/perl )
