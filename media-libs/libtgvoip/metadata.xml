@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>gyakovlev@gentoo.org</email>
-		<name>Georgy Yakovlev</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="dsp">Enable signal processing (echo cancellation, noise suppression, and automatic gain control)</flag>
 	</use>
