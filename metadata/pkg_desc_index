@@ -16841,7 +16841,7 @@ sys-apps/apply-default-acl 0.4.4: Apply default POSIX ACLs to files and director
 sys-apps/arrayprobe 2.0-r2: Utility to report status of an HP (Compaq) array controller (both IDA & CCISS)
 sys-apps/attr 2.4.48-r4 2.4.48-r5 9999: Extended attributes tools
 sys-apps/audio-entropyd 2.0.3-r1: Audio-entropyd generates entropy-data for the /dev/random device
-sys-apps/baobab 3.34.1: Disk usage browser for GNOME
+sys-apps/baobab 3.34.1 3.38.0: Disk usage browser for GNOME
 sys-apps/bar 1.11.1: Console Progress Bar
 sys-apps/baselayout 2.4.1-r2 2.6-r1 2.7 2.7-r1 9999: Filesystem baselayout and init scripts
 sys-apps/baselayout-java 0.1.0-r1: Baselayout for Java
@@ -19026,7 +19026,7 @@ x11-wm/goomwwm 1.0.0-r1 9999: Get out of my way, Window Manager!
 x11-wm/herbstluftwm 0.7.2-r1 0.9.1 9999: A manual tiling window manager for X
 x11-wm/i3 4.18 4.18.3 4.19-r1 4.19.1 9999: An improved dynamic tiling window manager
 x11-wm/i3-gaps 4.18.2 4.19 4.19.1: i3 fork with gaps and some more features
-x11-wm/icewm 1.9.2 2.0.1 2.1.1 2.1.2: Ice Window Manager with Themes
+x11-wm/icewm 2.0.1 2.1.2 2.2.0: Ice Window Manager with Themes
 x11-wm/jwm 2.3.2 2.3.7: Very fast and lightweight still powerful window manager for X
 x11-wm/larswm 7.5.3-r2: Tiling window manager for X11, based on 9wm by David Hogan
 x11-wm/lumina 1.6.0 9999: Lumina desktop environment
