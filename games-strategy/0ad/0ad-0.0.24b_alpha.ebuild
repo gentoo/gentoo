@@ -37,10 +37,12 @@ KEYWORDS="~amd64 ~x86"
 IUSE="editor +lobby nvtt pch test"
 RESTRICT="test"
 
+# virtual/rust is for bundled SpiderMonkey
 # TODO: Unbundle premake5
 # See bug #773472 which may help (bump for it)
 BDEPEND="
 	virtual/pkgconfig
+	virtual/rust
 	test? ( dev-lang/perl )
 "
 # Removed dependency on nvtt as we use the bundled one
