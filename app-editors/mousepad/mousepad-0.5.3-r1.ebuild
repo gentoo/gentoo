@@ -23,6 +23,10 @@ BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/mousepad-0.5.2-select-all.patch
+)
+
 pkg_postinst() {
 	gnome2_schemas_update
 	xdg_desktop_database_update

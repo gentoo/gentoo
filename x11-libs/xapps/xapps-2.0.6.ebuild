@@ -47,12 +47,15 @@ BDEPEND="
 "
 
 src_prepare() {
-	xdg_environment_reset
 	vala_src_prepare
 	default
 
 	# don't install distro specific tools
 	sed -i "/subdir('scripts')/d" meson.build || die
+
+	# Fix meson helpers
+	python_setup
+	python_fix_shebang meson-scripts
 }
 
 src_configure() {

@@ -3,7 +3,9 @@
 
 EAPI=7
 
-inherit meson gnome2-utils xdg
+PYTHON_COMPAT=( python3_{7,8,9} )
+
+inherit meson gnome2-utils python-any-r1 xdg
 
 DESCRIPTION="Cinnamon's settings daemon"
 HOMEPAGE="https://projects.linuxmint.com/cinnamon/ https://github.com/linuxmint/cinnamon-settings-daemon"
@@ -56,6 +58,7 @@ DEPEND="
 	x11-base/xorg-proto
 "
 BDEPEND="
+	${PYTHON_DEPS}
 	dev-util/glib-utils
 	dev-util/gdbus-codegen
 	>=dev-util/intltool-0.37.1
@@ -67,6 +70,11 @@ PATCHES=(
 	# https://github.com/linuxmint/cinnamon-settings-daemon/pull/314
 	"${FILESDIR}/${PN}-4.8.5-build-fixes.patch"
 )
+
+src_prepare() {
+	default
+	python_fix_shebang install-scripts
+}
 
 src_configure() {
 	# gudev not optional on Linux platforms

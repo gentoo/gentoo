@@ -45,9 +45,12 @@ BDEPEND="
 "
 
 src_prepare() {
-	xdg_environment_reset
 	vala_src_prepare
 	default
+
+	# Fix meson helpers
+	python_setup
+	python_fix_shebang meson-scripts schemas
 }
 
 src_configure() {

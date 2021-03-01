@@ -57,9 +57,8 @@ BDEPEND="
 "
 
 src_prepare() {
-	xdg_environment_reset
 	default
-	python_fix_shebang files/usr/share/nemo/actions
+	python_fix_shebang files/usr/share/nemo/actions install-scripts
 }
 
 src_configure() {

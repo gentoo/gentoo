@@ -59,7 +59,6 @@ BDEPEND="
 "
 
 src_prepare() {
-	xdg_environment_reset
 	default
 	eautoreconf
 	gnome2_disable_deprecation_warning
