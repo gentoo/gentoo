@@ -209,7 +209,9 @@ src_install() {
 	# Install bundled SpiderMonkey and nvtt
 	# bug #771147 (comment 1)
 	exeinto /usr/$(get_libdir)/${PN}
-	doexe binaries/system/{libCollada,libmozjs78-ps-release,libnvtt,libnvcore,libnvimage,libnvmath}.so
+	doexe binaries/system/{libCollada,libmozjs78-ps-release}
+
+	use nvtt && doexe /binaries/system/{libnvtt,libnvcore,libnvimage,libnvmath}.so
 	use editor && doexe binaries/system/libAtlasUI.so
 
 	dodoc binaries/system/readme.txt
