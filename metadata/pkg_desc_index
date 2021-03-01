@@ -15378,6 +15378,7 @@ net-misc/tiers 1.1: Random network topography generator
 net-misc/tigervnc 1.9.0-r1 1.11.0-r2: Remote desktop viewer display system
 net-misc/tipcutils 2.0.3: Utilities for TIPC (Transparent Inter-Process Communication)
 net-misc/ttytter 2.1.00: A multi-functional, console-based Twitter client
+net-misc/turbovnc 2.2.6: A fast replacement for TigerVNC
 net-misc/ubridge 0.9.18: Bridge for UDP tunnels, Ethernet, TAP and VMnet interfaces
 net-misc/ucarp 1.5.2-r7: Portable userland implementation of Common Address Redundancy Protocol (CARP)
 net-misc/udpcast 20200328: Multicast file transfer tool
@@ -17342,7 +17343,7 @@ sys-cluster/ploop 1.14.1: openvz tool and a library to control ploop block devic
 sys-cluster/pmix 2.1.1: The Process Management Interface (PMI) Exascale
 sys-cluster/poolmon 0.5 0.6: A director mailserver pool monitoring script for Dovecot
 sys-cluster/projections 6.2.1: Projections Performance Analysis Framework for Charm++ Applications
-sys-cluster/rdma-core 30.0-r2 31.0 32.0 33.0 9999: Userspace components for the Linux Kernel's drivers/infiniband subsystem
+sys-cluster/rdma-core 30.0-r2 31.0 32.0 32.0-r1 33.0 33.0-r1 9999: Userspace components for the Linux Kernel's drivers/infiniband subsystem
 sys-cluster/resource-agents 3.9.6 4.0.1 4.6.1: Resources pack for Heartbeat / Pacemaker
 sys-cluster/sanlock 3.8.2: shared storage lock manager
 sys-cluster/singularity 3.6.4 3.7.0 3.7.1: Application containers for Linux
