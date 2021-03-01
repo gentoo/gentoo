@@ -23,7 +23,9 @@ RESTRICT="!test? ( test )"
 # ruby? ( ruby_targets_${USE_RUBY} )
 REQUIRED_USE=""
 
-COMMON_DEPEND="imlib? ( >=media-libs/imlib2-1.4.6-r2[${MULTILIB_USEDEP}] )
+# ruby? (  $(ruby_implementations_depend) )
+DEPEND="
+	imlib? ( >=media-libs/imlib2-1.4.6-r2[${MULTILIB_USEDEP}] )
 	mono? ( dev-lang/mono )
 	ncurses? ( >=sys-libs/ncurses-5.9-r3:0=[${MULTILIB_USEDEP}] )
 	opengl? (
@@ -33,11 +35,13 @@ COMMON_DEPEND="imlib? ( >=media-libs/imlib2-1.4.6-r2[${MULTILIB_USEDEP}] )
 		truetype? ( >=media-libs/ftgl-2.1.3_rc5 )
 	)
 	slang? ( >=sys-libs/slang-2.2.4-r1[${MULTILIB_USEDEP}] )
-	X? ( >=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}] >=x11-libs/libXt-1.1.4[${MULTILIB_USEDEP}] )"
-#	ruby? (  $(ruby_implementations_depend) )
-RDEPEND="${COMMON_DEPEND}
-	java? ( >=virtual/jre-1.5 )"
-DEPEND="${COMMON_DEPEND}
+	X? (
+		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
+		>=x11-libs/libXt-1.1.4[${MULTILIB_USEDEP}]
+	)
+"
+RDEPEND="java? ( >=virtual/jre-1.5 )"
+BDEPEND="
 	virtual/pkgconfig
 	doc? (
 		app-doc/doxygen
@@ -47,7 +51,8 @@ DEPEND="${COMMON_DEPEND}
 		dev-texlive/texlive-latexrecommended
 	)
 	java? ( >=virtual/jdk-1.5 )
-	test? ( dev-util/cppunit )"
+	test? ( dev-util/cppunit )
+"
 
 DOCS=( AUTHORS ChangeLog NEWS NOTES README THANKS )
 
