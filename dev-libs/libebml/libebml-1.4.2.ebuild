@@ -13,6 +13,11 @@ LICENSE="LGPL-2.1"
 SLOT="0/5" # subslot = soname major version
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
+src_prepare() {
+	eapply "${FILESDIR}/${P}-header-fixes-for-gcc11.patch"
+	cmake_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=YES
