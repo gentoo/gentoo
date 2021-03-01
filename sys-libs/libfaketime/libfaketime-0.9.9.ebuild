@@ -42,6 +42,11 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
+	if has usersandbox ${FEATURES} ; then
+		# Tests are using LD_PRELOAD which clashes with FEATURES=usersandbox
+		ewarn "Tests are known to fail with usersandbox enabled."
+	fi
+
 	multilib_is_native_abi && emake CC="$(tc-getCC)" test
 }
 
