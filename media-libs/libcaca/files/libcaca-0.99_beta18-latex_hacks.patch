@@ -1,8 +1,8 @@
 Hack it a bit differently so that it works with texlive 2013, see http://bugs.gentoo.org/480862
 Turns out this patch is required also for texlive 2012, see http://bugs.gentoo.org/517474
 
---- doc/Makefile.am
-+++ doc/Makefile.am
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
 @@ -29,7 +29,7 @@ if BUILD_DOCUMENTATION
  if USE_LATEX
  	rm -f latex/libcaca.tex latex/libcaca.pdf
