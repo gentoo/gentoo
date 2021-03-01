@@ -1692,7 +1692,7 @@ app-doc/NaturalDocs 1.52-r1: Extensible, multi-language source code documentatio
 app-doc/abs-guide 10: An in-depth exploration of the art of shell scripting
 app-doc/autobook 1.5: GNU Autoconf, Automake and Libtool
 app-doc/blas-docs 3.1.1: Documentation reference and man pages for blas implementations
-app-doc/cantera-docs 2.4.0: Documentation API reference for Cantera package libraries
+app-doc/cantera-docs 2.4.0 2.5.1: Documentation API reference for Cantera package libraries
 app-doc/casting-spels-emacs 19-r2: Casting SPELs in Lisp - A Comic Book (Emacs Lisp Edition)
 app-doc/cppman 0.5.1: C++ man pages for Linux, with source from cplusplus.com and cppreference.com
 app-doc/csound-manual 6.15-r1: The Csound reference manual
@@ -7987,12 +7987,12 @@ dev-python/argh 0.26.2-r2: A simple argparse wrapper
 dev-python/argon2-cffi 20.1.0: CFFI bindings to the Argon2 password hashing library
 dev-python/argparse-manpage 1.4 1.5: Automatically build man-pages for your Python project
 dev-python/arpeggio 1.10.0: Parser interpreter based on PEG grammars
-dev-python/arrow 0.17.0 1.0.0 1.0.1: Better dates and times for Python
+dev-python/arrow 0.17.0 1.0.0 1.0.1 1.0.2: Better dates and times for Python
 dev-python/asgiref 3.3.1: ASGI utilities (successor to WSGI)
 dev-python/asn1crypto 1.4.0: Python ASN.1 library with a focus on performance and a pythonic API
 dev-python/asteval 0.9.21 0.9.22 0.9.23: Evaluator of Python expression using ast module
 dev-python/astor 0.8.1: Read/rewrite/write Python ASTs
-dev-python/astroid 2.4.2-r1 2.5: Abstract Syntax Tree for logilab packages
+dev-python/astroid 2.4.2-r1 2.5 2.5.1: Abstract Syntax Tree for logilab packages
 dev-python/asttokens 2.0.4: Annotate Python AST trees with source text and token information
 dev-python/astunparse 1.6.3: Astun parser for python
 dev-python/async-lru 1.0.2_p20201029: Simple lru_cache for asyncio
@@ -8119,7 +8119,7 @@ dev-python/cookies 2.2.1-r1: Friendlier RFC 6265-compliant cookie parser/rendere
 dev-python/coreapi 2.3.3-r1: Python client library for Core API
 dev-python/coreschema 0.0.4: Core Schema
 dev-python/cov-core 1.15.0-r2: plugin core for use by pytest-cov, nose-cov and nose2-cov
-dev-python/coverage 4.5.4 5.3.1 5.4: Code coverage measurement for Python
+dev-python/coverage 4.5.4 5.3.1 5.4 5.5: Code coverage measurement for Python
 dev-python/cppy 1.1.0: C++ header library which makes it easier to write Python extension modules
 dev-python/crashtest 0.3.1: Python library that makes exceptions handling and inspection easier
 dev-python/crcmod 1.7-r4: Python CRC Generator module
@@ -8373,7 +8373,7 @@ dev-python/imapclient 2.2.0: easy-to-use, pythonic, and complete IMAP client lib
 dev-python/iminuit 1.3.8 2.2.1 2.3.0: Minuit numerical function minimization in Python
 dev-python/immutables 0.14 0.15: A high-performance immutable mapping type for Python
 dev-python/importlib_metadata 3.3.0 3.4.0 3.5.0 3.6.0 3.7.0: Read metadata from Python packages
-dev-python/importlib_resources 3.3.0 4.1.1 5.0.0 5.1.0: Read resources from Python packages
+dev-python/importlib_resources 3.3.0 4.1.1 5.0.0 5.1.0 5.1.1: Read resources from Python packages
 dev-python/imread 0.7.3-r1: Read Image Files
 dev-python/incremental 17.5.0: Incremental is a small library that versions your Python projects
 dev-python/indexed_gzip 0.8.10: Fast random access of gzip files in Python
@@ -8689,7 +8689,7 @@ dev-python/pickleshare 0.7.5: A small 'shelve' like datastore with concurrency s
 dev-python/pid 3.0.4: Pidfile featuring stale detection and file-locking
 dev-python/piexif 1.1.3-r1: Exif manipulation with pure Python
 dev-python/pika 1.1.0: Pure-Python implementation of the AMQP
-dev-python/pikepdf 2.5.2 2.6.0 2.7.0: Python library to work with pdf files based on qpdf
+dev-python/pikepdf 2.5.2 2.6.0 2.7.0 2.8.0: Python library to work with pdf files based on qpdf
 dev-python/pilkit 2.0: A collection of utilities and processors for the Python Imaging Libary
 dev-python/pillow 8.1.0: Python Imaging Library (fork)
 dev-python/pip 21.0 21.0.1: Installs python packages -- replacement for easy_install
@@ -8822,7 +8822,7 @@ dev-python/pylatex 1.4.1: A Python library for creating LaTeX files and snippets
 dev-python/pylev 1.2.0: Python Levenshtein implementation
 dev-python/pylibacl 0.6.0: POSIX ACLs (Access Control Lists) for Python
 dev-python/pylibmc 1.6.1-r1: Libmemcached wrapper written as a Python extension
-dev-python/pylint 2.6.0 2.6.1 2.6.2 2.7.1: Python code static checker
+dev-python/pylint 2.6.0 2.6.1 2.6.2 2.7.1 2.7.2: Python code static checker
 dev-python/pylru 1.2.0: A least recently used (LRU) cache for Python
 dev-python/pyls-black 0.4.6: Black plugin for the Python Language Server
 dev-python/pyls-spyder 0.3.0 0.3.2: Spyder extensions for the python language server
@@ -8917,7 +8917,7 @@ dev-python/pytest-freezegun 0.4.2: Easily freeze time in pytest test + fixtures
 dev-python/pytest-helpers-namespace 2019.1.8-r1: Provides a helpers pytest namespace
 dev-python/pytest-html 1.22.1: Plugin for generating HTML reports for py.test results
 dev-python/pytest-httpbin 1.0.0-r1: Easily test your HTTP library against a local copy of httpbin
-dev-python/pytest-httpx 0.10.1: Send responses to HTTPX using pytest
+dev-python/pytest-httpx 0.10.1 0.11.0: Send responses to HTTPX using pytest
 dev-python/pytest-lazy-fixture 0.6.3: It helps to use fixtures in pytest.mark.parametrize
 dev-python/pytest-localserver 0.5.0: Py.test plugin to test server connections locally
 dev-python/pytest-metadata 1.8.0: A plugin for pytest that provides access to test session metadata
@@ -10771,8 +10771,8 @@ dev-util/diffstat 1.63 1.64: Display a histogram of diff changes
 dev-util/diffuse 0.5.0_alpha7-r1 0.6.0: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r3: A tool for differing and merging directories
 dev-util/dissembler 0.9-r1: polymorphs bytecode to a printable ASCII string
-dev-util/distro-info 0.22: Provides information about the Debian distributions' releases
-dev-util/distro-info-data 0.29 0.32 0.42: Information about the Debian distributions' releases (data files)
+dev-util/distro-info 0.22 1.0: Provides information about the Debian distributions' releases
+dev-util/distro-info-data 0.29 0.42 0.46: Information about the Debian distributions' releases (data files)
 dev-util/dmake 4.12.2: Improved make
 dev-util/docker-distribution-pruner 0_p20170401: Clean all old container revisions from registry
 dev-util/docker-ls 0.3.1: Tools for browsing and manipulating docker registries
@@ -11393,7 +11393,7 @@ games-emulation/mupen64plus-video-rice 2.5.9-r2: A fork of Mupen64 Nintendo 64 e
 games-emulation/nestopia 1.50 9999: A portable Nintendo Entertainment System emulator written in C++
 games-emulation/nestra 0.66-r3: NES emulation for Linux/x86
 games-emulation/openmsx 16.0-r1: MSX emulator that aims for perfection
-games-emulation/pcsx2 1.6.0-r1 9999: A PlayStation 2 emulator
+games-emulation/pcsx2 1.6.0-r1 1.6.0-r2 9999: A PlayStation 2 emulator
 games-emulation/pcsxr 1.9.94_p20190306 9999: PCSX-Reloaded: a fork of PCSX, the discontinued Playstation emulator
 games-emulation/ppsspp 1.10.3 1.11: A PSP emulator written in C++
 games-emulation/snes9x 1.59.2 1.60: Super Nintendo Entertainment System (SNES) emulator
@@ -12474,7 +12474,7 @@ mail-client/alpine 2.24: An easy to use text-based based mail and news client
 mail-client/balsa 2.6.1: Email client for GNOME
 mail-client/bower 0.12: Curses terminal client for the Notmuch email system
 mail-client/claws-mail 3.17.7 3.17.8 9999: An email client (and news reader) based on GTK+
-mail-client/clawsker 1.1.0 1.3.1: Applet to edit Claws Mail's hidden preferences
+mail-client/clawsker 1.1.0 1.3.1 1.3.4: Applet to edit Claws Mail's hidden preferences
 mail-client/cone 1.0: CONE: COnsole News reader and Emailer
 mail-client/etpan-ng 0.7.1-r1: etPan is a console mail client that is based on libEtPan
 mail-client/evolution 3.36.5 3.38.2 3.38.3 3.38.4: Integrated mail, addressbook and calendaring functionality
@@ -16187,7 +16187,7 @@ sci-libs/brial 1.2.10: A C++ library for polynomials over boolean rings
 sci-libs/btf 1.2.6: Algorithm for matrix permutation into block triangular form
 sci-libs/buddy 2.4-r1: Binary Decision Diagram Package
 sci-libs/camd 2.4.6 2.4.6-r1: Library to order a sparse matrix prior to Cholesky factorization
-sci-libs/cantera 2.4.0-r5 2.5.0 2.5.1: Object-oriented tool suite for chemical kinetics, thermodynamics, and transport
+sci-libs/cantera 2.4.0-r5 2.5.1: Object-oriented tool suite for chemical kinetics, thermodynamics, and transport
 sci-libs/cartopy 0.18.0: Python package for geospatial data processing and analysis
 sci-libs/cbflib 0.9.3.3: Library providing a simple mechanism for accessing CBF files and imgCIF files
 sci-libs/ccfits 2.5: C++ interface for cfitsio
@@ -18007,7 +18007,7 @@ www-apps/cgit 1.2.3-r100 1.2.3-r200 9999: a fast web-interface for git repositor
 www-apps/cgp 1_p20190510-r1: A graphical web-based front-end for visualizing RRD collected by collectd
 www-apps/chromedriver-bin 88.0.4324.96: WebDriver for Chrome
 www-apps/cvsweb 3.0.6-r1: WWW interface to a CVS tree
-www-apps/davical 1.1.9.3: A CalDAV and CardDAV Server
+www-apps/davical 1.1.9.3 1.1.9.3-r1: A CalDAV and CardDAV Server
 www-apps/dokuwiki 20180422a 20180422b 20200729: DokuWiki is a simple to use Wiki aimed at a small company's documentation needs.
 www-apps/dotproject 2.1.7-r1: dotProject is a PHP web-based project management framework
 www-apps/drupal 7.78 8.9.13 9.0.11 9.1.3: PHP-based open-source platform and content management system
@@ -18566,7 +18566,7 @@ x11-misc/splatmoji 1.1.1 1.2.0: Quickly look up and input emoji and/or emoticons
 x11-misc/spnavcfg 0.3 0.3.1: GTK-based GUI to configure a space navigator device
 x11-misc/sprop 0.1-r1: a simple X property utility
 x11-misc/sselp 0.2-r1 9999: Simple X selection printer
-x11-misc/stalonetray 0.8.3: System tray utility including support for KDE system tray icons
+x11-misc/stalonetray 0.8.3 0.8.4: System tray utility including support for KDE system tray icons
 x11-misc/sunflower 0.4_p20200716-r1: Small and highly customizable twin-panel file manager with plugin-support
 x11-misc/superswitcher 0.6-r1: A more feature-full replacement of the Alt-Tab window switching behavior
 x11-misc/sux 1.0-r4 1.0.1: "su" wrapper which transfers X credentials

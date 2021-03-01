@@ -8806,7 +8806,7 @@ x11-misc/rss-glx:quesoglc - Enable support for OpenGL Character Renderer
 x11-misc/sddm:elogind - Use sys-auth/elogind for session tracking.
 x11-misc/sent:savedconfig - Without a saved config.h, this package depends on media-gfx/farbfeld for image conversions
 x11-misc/spacefm:video-thumbnails - Support video thumbnails with media-video/ffmpegthumbnailer
-x11-misc/stalonetray:graceful-exit - use non-portable hack to exit gracefuly on signal
+x11-misc/stalonetray:graceful-exit - use non-portable hack to exit gracefully on signal
 x11-misc/tint2:battery - Enable battery status plugin
 x11-misc/tint2:tint2conf - Build/Install tint2conf as well
 x11-misc/urxvt-perls:deprecated - Install scripts which have been marked as deprecated by upstream

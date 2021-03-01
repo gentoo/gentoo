@@ -1,6 +1,6 @@
 BDEPEND=test? ( dev-cpp/gtest ) dev-util/ninja dev-util/cmake filecaps? ( sys-libs/libcap ) >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile configure install postinst prepare setup test unpack
-DEPEND=app-arch/bzip2 app-arch/xz-utils dev-cpp/yaml-cpp:= dev-libs/libaio dev-libs/libfmt:= dev-libs/libxml2:2 media-libs/alsa-lib media-libs/libpng:= media-libs/libsamplerate media-libs/libsdl2[haptic,joystick,sound] media-libs/libsoundtouch media-libs/portaudio net-libs/libpcap sys-libs/zlib virtual/libudev virtual/opengl x11-libs/gtk+:3 x11-libs/libICE x11-libs/libX11 x11-libs/libXext x11-libs/wxGTK:3.0-gtk3[X] dev-cpp/pngpp dev-cpp/sparsehash
+DEPEND=app-arch/bzip2 app-arch/xz-utils dev-cpp/yaml-cpp:= dev-libs/libaio dev-libs/libfmt:= dev-libs/libxml2:2 media-libs/alsa-lib media-libs/libpng:= media-libs/libsamplerate media-libs/libsdl2[haptic,joystick,sound] media-libs/libsoundtouch media-libs/portaudio net-libs/libpcap sys-libs/zlib virtual/libudev virtual/opengl x11-libs/gtk+:3 x11-libs/libICE x11-libs/libX11 x11-libs/libXext x11-libs/wxGTK:3.0-gtk3[X]
 DESCRIPTION=A PlayStation 2 emulator
 EAPI=7
 HOMEPAGE=https://pcsx2.net/
@@ -11,4 +11,4 @@ RDEPEND=app-arch/bzip2 app-arch/xz-utils dev-cpp/yaml-cpp:= dev-libs/libaio dev-
 RESTRICT=!test? ( test )
 SLOT=0
 _eclasses_=cmake	314a813be2f09820e8978cdee941e501	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	fcaps	da689a8e04bbbb3518888ff668fee45b	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	git-r3	3e7ec3d6619213460c85e2aa48398441	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	wxwidgets	e1e6e1eb5b3d911b3abd712f611e2312	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=2555d343bb0a7d86bd756945d801c017
+_md5_=b21a6882637ead1bbd3562cca93631da

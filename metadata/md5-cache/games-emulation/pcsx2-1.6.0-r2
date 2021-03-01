@@ -1,0 +1,14 @@
+BDEPEND=dev-util/ninja dev-util/cmake filecaps? ( sys-libs/libcap )
+DEFINED_PHASES=compile configure install postinst prepare setup test
+DEPEND=app-arch/bzip2[abi_x86_32(-)] app-arch/xz-utils[abi_x86_32(-)] dev-libs/libaio[abi_x86_32(-)] dev-libs/libxml2:2[abi_x86_32(-)] media-libs/alsa-lib[abi_x86_32(-)] media-libs/libpng:=[abi_x86_32(-)] media-libs/libsdl2[abi_x86_32(-),haptic,joystick,sound] media-libs/libsoundtouch[abi_x86_32(-)] media-libs/portaudio[abi_x86_32(-)] net-libs/libpcap[abi_x86_32(-)] sys-libs/zlib[abi_x86_32(-)] virtual/libudev[abi_x86_32(-)] virtual/opengl[abi_x86_32(-)] x11-libs/gtk+:3[abi_x86_32(-)] x11-libs/libICE[abi_x86_32(-)] x11-libs/libX11[abi_x86_32(-)] x11-libs/libXext[abi_x86_32(-)] >=x11-libs/wxGTK-3.0.4-r301:3.0-gtk3[abi_x86_32(-),X]
+DESCRIPTION=A PlayStation 2 emulator
+EAPI=7
+HOMEPAGE=https://pcsx2.net/
+IUSE=+filecaps
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=app-arch/bzip2[abi_x86_32(-)] app-arch/xz-utils[abi_x86_32(-)] dev-libs/libaio[abi_x86_32(-)] dev-libs/libxml2:2[abi_x86_32(-)] media-libs/alsa-lib[abi_x86_32(-)] media-libs/libpng:=[abi_x86_32(-)] media-libs/libsdl2[abi_x86_32(-),haptic,joystick,sound] media-libs/libsoundtouch[abi_x86_32(-)] media-libs/portaudio[abi_x86_32(-)] net-libs/libpcap[abi_x86_32(-)] sys-libs/zlib[abi_x86_32(-)] virtual/libudev[abi_x86_32(-)] virtual/opengl[abi_x86_32(-)] x11-libs/gtk+:3[abi_x86_32(-)] x11-libs/libICE[abi_x86_32(-)] x11-libs/libX11[abi_x86_32(-)] x11-libs/libXext[abi_x86_32(-)] >=x11-libs/wxGTK-3.0.4-r301:3.0-gtk3[abi_x86_32(-),X] filecaps? ( sys-libs/libcap )
+SLOT=0
+SRC_URI=https://github.com/PCSX2/pcsx2/archive/v1.6.0.tar.gz -> pcsx2-1.6.0.tar.gz
+_eclasses_=cmake	314a813be2f09820e8978cdee941e501	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	fcaps	da689a8e04bbbb3518888ff668fee45b	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	wxwidgets	e1e6e1eb5b3d911b3abd712f611e2312	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=f57fd6432be28424c9cc3682a6556fea
