@@ -8,7 +8,7 @@ ansi_term-0.11.0
 atty-0.2.14
 autocfg-1.0.1
 bitflags-1.2.1
-cbindgen-0.16.0
+cbindgen-0.18.0
 cfg-if-0.1.10
 clap-2.33.3
 cloudabi-0.0.3
@@ -63,6 +63,6 @@ HOMEPAGE="https://github.com/eqrion/cbindgen/"
 SRC_URI="$(cargo_crate_uris ${CRATES})"
 LICENSE="MIT MPL-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 RESTRICT="test"
 QA_FLAGS_IGNORED="usr/bin/cbindgen"
