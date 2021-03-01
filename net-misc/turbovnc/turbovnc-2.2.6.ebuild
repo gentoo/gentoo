@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake
+inherit cmake java-pkg-opt-2
 
 DESCRIPTION="A fast replacement for TigerVNC"
 HOMEPAGE="https://www.turbovnc.org/"
@@ -13,24 +13,50 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
 
-DEPEND="virtual/jdk:1.8
+DEPEND="
 	>=media-libs/libjpeg-turbo-2.0.0[java]
-	!net-misc/tigervnc"
-RDEPEND="${DEPEND}
-	x11-apps/xkbcomp"
+	virtual/jdk:1.8
+	!net-misc/tigervnc
+"
+RDEPEND="
+	${DEPEND}
+	x11-apps/xkbcomp
+"
+
+src_prepare() {
+	use java && java-pkg-opt-2_src_prepare
+	cmake_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(
-		-DTJPEG_JAR="${EPREFIX}/usr/share/java/turbojpeg.jar"
-		-DTJPEG_JNILIBRARY="${EPREFIX}/usr/$(get_libdir)/libturbojpeg.so"
+		-DTVNC_SYSTEMX11=ON
+		-DTVNC_SYSTEMLIBS=ON
+		-DTVNC_BUILDJAVA=$(usex java)
 		-DXKB_BIN_DIRECTORY=/usr/bin
 		-DXKB_DFLT_RULES=base
 	)
+
+	if use java ; then
+		export JAVACFLAGS="$(java-pkg_javac-args)"
+		export JNI_CFLAGS="$(java-pkg_get-jni-cflags)"
+
+		mycmakeargs+=(
+			-DTJPEG_JAR="${EPREFIX}/usr/share/java/turbojpeg.jar"
+			-DTJPEG_JNILIBRARY="${EPREFIX}/usr/$(get_libdir)/libturbojpeg.so"
+		)
+	fi
+
 	cmake_src_configure
 }
 
 src_install() {
 	cmake_src_install
+
+	if use java ; then
+		java-pkg_dojar "${BUILD_DIR}"/java/VncViewer.jar
+	fi
+
 	find "${ED}/usr/share/man/man1/" -name Xserver.1\* -print0 | xargs -0 rm || die
 	einstalldocs
 }
