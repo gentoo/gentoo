@@ -21,9 +21,14 @@ DEPEND="
 	sys-libs/zlib
 	virtual/jdk:1.8
 	virtual/opengl
+	x11-libs/libfontenc
 	x11-libs/libX11
+	x11-libs/libXau
+	x11-libs/libXdmcp
 	x11-libs/libXext
 	x11-libs/libXfont2
+	x11-libs/libxkbfile
+	x11-libs/pixman
 	ssl? (
 		!gnutls? ( dev-libs/openssl:= )
 		gnutls? ( net-libs/gnutls:= )
