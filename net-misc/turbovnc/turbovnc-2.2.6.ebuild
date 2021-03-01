@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake java-pkg-opt-2
+inherit desktop cmake java-pkg-opt-2
 
 DESCRIPTION="A fast replacement for TigerVNC"
 HOMEPAGE="https://www.turbovnc.org/"
@@ -55,6 +55,7 @@ src_install() {
 
 	if use java ; then
 		java-pkg_dojar "${BUILD_DIR}"/java/VncViewer.jar
+		make_desktop_entry vncviewer "TurboVNC Viewer" /usr/share/icons/hicolor/48x48/apps/turbovnc.png
 	fi
 
 	find "${ED}/usr/share/man/man1/" -name Xserver.1\* -print0 | xargs -0 rm || die
