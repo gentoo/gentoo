@@ -58,6 +58,10 @@ src_install() {
 		make_desktop_entry vncviewer "TurboVNC Viewer" /usr/share/icons/hicolor/48x48/apps/turbovnc.png
 	fi
 
+	# Don't install incompatible init script
+	rm -rf "${ED}"/etc/init.d/ || die
+	rm -rf "${ED}"/etc/sysconfig/ || die
+
 	find "${ED}/usr/share/man/man1/" -name Xserver.1\* -print0 | xargs -0 rm || die
 	einstalldocs
 }
