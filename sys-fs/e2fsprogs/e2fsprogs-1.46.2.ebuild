@@ -32,7 +32,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.42.13-fix-build-cflags.patch #516854
 
 	# Upstream patches (can usually removed with next version bump)
-	"${FILESDIR}/${P}-pthreads_build.patch"
 )
 
 src_prepare() {
