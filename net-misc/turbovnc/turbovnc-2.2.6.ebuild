@@ -55,7 +55,7 @@ src_install() {
 
 	if use java ; then
 		java-pkg_dojar "${BUILD_DIR}"/java/VncViewer.jar
-		make_desktop_entry vncviewer "TurboVNC Viewer" /usr/share/icons/hicolor/48x48/apps/turbovnc.png
+		make_desktop_entry vncviewer "TurboVNC Viewer" /usr/share/icons/hicolor/48x48/apps/${PN}.png
 	fi
 
 	# Don't install incompatible init script
