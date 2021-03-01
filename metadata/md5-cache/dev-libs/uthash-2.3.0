@@ -1,0 +1,13 @@
+BDEPEND=test? ( dev-lang/perl )
+DEFINED_PHASES=install test
+DESCRIPTION=An easy-to-use hash implementation for C programmers
+EAPI=7
+HOMEPAGE=https://troydhanson.github.io/uthash/index.html
+IUSE=test
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86
+LICENSE=BSD-1
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/troydhanson/uthash/archive/v2.3.0.tar.gz -> uthash-2.3.0.tar.gz
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=499f98298f6923d248127f30bf29ea8a
