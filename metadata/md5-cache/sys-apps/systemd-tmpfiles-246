@@ -1,4 +1,4 @@
-BDEPEND=app-text/docbook-xml-dtd:4.2 app-text/docbook-xml-dtd:4.5 app-text/docbook-xsl-stylesheets dev-libs/libxslt:0 >=dev-util/meson-0.46 >=dev-util/intltool-0.50 >=sys-apps/coreutils-8.16 sys-devel/m4 virtual/pkgconfig test? ( || ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 ) ) >=dev-util/meson-0.54.0 >=dev-util/ninja-1.8.2 dev-util/meson-format-array
+BDEPEND=|| ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 ) app-text/docbook-xml-dtd:4.2 app-text/docbook-xml-dtd:4.5 app-text/docbook-xsl-stylesheets dev-libs/libxslt:0 >=dev-util/meson-0.46 >=dev-util/intltool-0.50 >=sys-apps/coreutils-8.16 sys-devel/m4 virtual/pkgconfig >=dev-util/meson-0.54.0 >=dev-util/ninja-1.8.2 dev-util/meson-format-array
 DEFINED_PHASES=compile configure install postinst prepare setup test
 DEPEND=sys-apps/acl:0= >=sys-apps/util-linux-2.30:0= >=sys-kernel/linux-headers-3.11 sys-libs/libcap:0= selinux? ( sys-libs/libselinux:0= )
 DESCRIPTION=Creates, deletes and cleans up volatile and temporary files and directories
@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/systemd/systemd/archive/v246.tar.gz -> systemd-246.tar.gz elibc_musl? ( https://dev.gentoo.org/~gyakovlev/distfiles/systemd-tmpfiles-246-musl.tar.xz )
 _eclasses_=meson	e43eef9331f54965a573ed380854ff47	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=f15c752c924a4533a25069ee8bfc5214
+_md5_=d200fc26db83a54783e28f76b5f15bf5

@@ -1,0 +1,14 @@
+BDEPEND=dev-util/bbe bundled-libjpeg-turbo? ( dev-util/patchelf )
+DEFINED_PHASES=install postinst postrm prepare
+DESCRIPTION=Video conferencing and web conferencing service
+EAPI=7
+HOMEPAGE=https://zoom.us/
+IUSE=bundled-libjpeg-turbo +bundled-qt pulseaudio wayland
+KEYWORDS=-* ~amd64
+LICENSE=all-rights-reserved
+RDEPEND=!games-engines/zoom dev-libs/glib:2 dev-libs/quazip:0= media-libs/fdk-aac:0/2 media-libs/fontconfig media-libs/freetype media-sound/mpg123 sys-apps/dbus sys-apps/util-linux virtual/opengl x11-libs/libX11 x11-libs/libxcb x11-libs/libXext x11-libs/libXfixes x11-libs/libxkbcommon[X] x11-libs/libXrender x11-libs/libXtst x11-libs/xcb-util-image x11-libs/xcb-util-keysyms pulseaudio? ( media-sound/pulseaudio ) !pulseaudio? ( media-libs/alsa-lib ) wayland? ( dev-libs/wayland ) !bundled-libjpeg-turbo? ( >=media-libs/libjpeg-turbo-2.0.5 ) !bundled-qt? ( dev-libs/icu dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtdeclarative:5[widgets] dev-qt/qtdiag:5 dev-qt/qtgraphicaleffects:5 dev-qt/qtgui:5 dev-qt/qtlocation:5 dev-qt/qtnetwork:5 dev-qt/qtquickcontrols:5[widgets] dev-qt/qtquickcontrols2:5 dev-qt/qtscript:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 wayland? ( dev-qt/qtwayland ) )
+RESTRICT=mirror bindist strip
+SLOT=0
+SRC_URI=https://zoom.us/client/5.5.7938.0228/zoom_x86_64.tar.xz -> zoom-5.5.7938.0228_x86_64.tar.xz
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	eapi8-dosym	cd7d420bb5be5ee079f27239ce76b8f5	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=8c917b1b8f25ea7d4222ae429073023c
