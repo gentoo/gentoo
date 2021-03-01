@@ -17433,7 +17433,7 @@ sys-fabric/libocrdma 1.0.2: OpenIB userspace driver for Emulex OneConnect RDMA
 sys-fabric/librdmacm 1.0.18 1.0.18-r1: OpenIB userspace RDMA CM library
 sys-fabric/mstflint 4.10.0_p3 4.11.0_p5 4.13.3_p2 4.14.0_p3: Mstflint - an open source version of MFT (Mellanox Firmware Tools)
 sys-fabric/ofed 3.12_rc1: OpenIB system files
-sys-fabric/opensm 3.3.17-r1: OpenSM - InfiniBand Subnet Manager and Administration for OpenIB
+sys-fabric/opensm 3.3.17-r1 3.3.23: OpenSM - InfiniBand Subnet Manager and Administration for OpenIB
 sys-fabric/perftest 2.0 4.4.0.37: OpenIB uverbs micro-benchmarks
 sys-fabric/qperf 0.4.9 0.4.11: Measure RDMA and IP performance
 sys-fabric/rds-tools 2.0.4-r3: OpenIB userspace rds-tools
