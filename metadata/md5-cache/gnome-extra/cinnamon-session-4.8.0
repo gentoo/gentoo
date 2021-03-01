@@ -1,6 +1,6 @@
-BDEPEND=>=dev-util/intltool-0.40.6 virtual/pkgconfig doc? ( app-text/xmlto dev-libs/libxslt ) >=dev-util/meson-0.54.0 >=dev-util/ninja-1.8.2 dev-util/meson-format-array
-DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
-DEPEND=>=dev-libs/glib-2.37.3:2 media-libs/libcanberra[pulseaudio] virtual/opengl x11-libs/cairo x11-libs/gdk-pixbuf:2 >=x11-libs/gtk+-3:3 x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXau x11-libs/libXcomposite x11-libs/libXext x11-libs/libXrender x11-libs/libXtst x11-libs/pango[X] >=x11-libs/xapps-1.0.4 systemd? ( >=sys-apps/systemd-183 ) !systemd? ( sys-auth/elogind[policykit] ) dev-util/desktop-file-utils x11-misc/shared-mime-info
+BDEPEND=|| ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 ) >=dev-util/intltool-0.40.6 virtual/pkgconfig doc? ( app-text/xmlto dev-libs/libxslt ) >=dev-util/meson-0.54.0 >=dev-util/ninja-1.8.2 dev-util/meson-format-array
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test
+DEPEND=>=dev-libs/glib-2.37.3:2 media-libs/libcanberra[pulseaudio] virtual/opengl x11-libs/cairo x11-libs/gdk-pixbuf:2 >=x11-libs/gtk+-3:3 x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXau x11-libs/libXcomposite x11-libs/libXext x11-libs/libXrender x11-libs/libXtst x11-libs/pango[X] >=x11-libs/xapps-1.0.4 systemd? ( >=sys-apps/systemd-183 ) !systemd? ( sys-auth/elogind[policykit] )
 DESCRIPTION=Cinnamon session manager
 EAPI=7
 HOMEPAGE=https://projects.linuxmint.com/cinnamon/ https://github.com/linuxmint/cinnamon-session
@@ -10,5 +10,5 @@ LICENSE=GPL-2+ FDL-1.1+ LGPL-2+
 RDEPEND=>=dev-libs/glib-2.37.3:2 media-libs/libcanberra[pulseaudio] virtual/opengl x11-libs/cairo x11-libs/gdk-pixbuf:2 >=x11-libs/gtk+-3:3 x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXau x11-libs/libXcomposite x11-libs/libXext x11-libs/libXrender x11-libs/libXtst x11-libs/pango[X] >=x11-libs/xapps-1.0.4 systemd? ( >=sys-apps/systemd-183 ) !systemd? ( sys-auth/elogind[policykit] ) >=gnome-extra/cinnamon-desktop-4.8
 SLOT=0
 SRC_URI=https://github.com/linuxmint/cinnamon-session/archive/4.8.0.tar.gz -> cinnamon-session-4.8.0.tar.gz
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3	l10n	8cdd85e169b835d518bc2fd59f780d8e	meson	e43eef9331f54965a573ed380854ff47	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=d2110697cc4d9f8a7635ac999521a40b
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3	l10n	8cdd85e169b835d518bc2fd59f780d8e	meson	e43eef9331f54965a573ed380854ff47	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=5dab8ee704512efe0dc529b999d5c95e

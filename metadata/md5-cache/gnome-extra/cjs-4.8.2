@@ -1,5 +1,5 @@
-BDEPEND=virtual/pkgconfig >=dev-util/meson-0.54.0 >=dev-util/ninja-1.8.2 dev-util/meson-format-array test? ( x11-base/xorg-server[xvfb] x11-apps/xhost )
-DEFINED_PHASES=compile configure install test
+BDEPEND=|| ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 ) virtual/pkgconfig >=dev-util/meson-0.54.0 >=dev-util/ninja-1.8.2 dev-util/meson-format-array test? ( x11-base/xorg-server[xvfb] x11-apps/xhost )
+DEFINED_PHASES=compile configure install prepare setup test
 DEPEND=dev-lang/spidermonkey:78 >=dev-libs/glib-2.58.0:2 >=dev-libs/gobject-introspection-1.58.3:= >=dev-libs/libffi-3.2.1:0= cairo? ( x11-libs/cairo[glib,X] ) readline? ( sys-libs/readline:0= ) sysprof? ( >=dev-util/sysprof-capture-3.38.1:4 ) test? ( sys-apps/dbus gtk? ( x11-libs/gtk+:3[introspection] ) )
 DESCRIPTION=Linux Mint's fork of gjs for Cinnamon
 EAPI=7
@@ -11,5 +11,5 @@ RDEPEND=dev-lang/spidermonkey:78 >=dev-libs/glib-2.58.0:2 >=dev-libs/gobject-int
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/linuxmint/cjs/archive/4.8.2.tar.gz -> cjs-4.8.2.tar.gz
-_eclasses_=meson	e43eef9331f54965a573ed380854ff47	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	virtualx	7e60d3b10c791ab996f717bc1f30072f
-_md5_=b1e254f5dc05e7fbd43b1741119e3a26
+_eclasses_=meson	e43eef9331f54965a573ed380854ff47	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	virtualx	7e60d3b10c791ab996f717bc1f30072f
+_md5_=7e5e67136b1da15de89f865f74ede94a
