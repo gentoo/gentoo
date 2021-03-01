@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND="
-	>=media-libs/libjpeg-turbo-2.0.0[java]
+	>=media-libs/libjpeg-turbo-2.0.0[java?]
 	virtual/jdk:1.8
 	!net-misc/tigervnc
 "
@@ -33,6 +33,7 @@ src_configure() {
 		-DTVNC_SYSTEMX11=ON
 		-DTVNC_SYSTEMLIBS=ON
 		-DTVNC_BUILDJAVA=$(usex java)
+		-DTVNC_BUILDNATIVE=ON
 		-DXKB_BIN_DIRECTORY=/usr/bin
 		-DXKB_DFLT_RULES=base
 	)
