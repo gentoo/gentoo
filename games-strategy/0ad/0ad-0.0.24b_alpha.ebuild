@@ -74,7 +74,8 @@ RDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.0.24_alpha_pre20210116040036-build.patch"
+	"${FILESDIR}"/${PN}-0.0.24_alpha_pre20210116040036-build.patch
+	"${FILESDIR}"/${PN}-0.0.24b_alpha-rust-1.50.patch
 )
 
 pkg_setup() {
