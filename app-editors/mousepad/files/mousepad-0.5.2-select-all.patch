@@ -1,0 +1,28 @@
+From 8473653ad37a32375ff416205c0f44f771f380df Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Mon, 1 Mar 2021 13:36:33 +0100
+Subject: [PATCH] Fix missing parameter to "select-all" signal
+
+Add missing "select" parameter to the "select-all" signal.  This fixes
+undefined behavior reported in https://bugs.gentoo.org/772245.
+Thanks to Mart Raudsepp for figuring out the problem.
+---
+ mousepad/mousepad-window.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mousepad/mousepad-window.c b/mousepad/mousepad-window.c
+index 2f901b2..9ba6223 100644
+--- a/mousepad/mousepad-window.c
++++ b/mousepad/mousepad-window.c
+@@ -5223,7 +5223,7 @@ mousepad_window_action_select_all (GSimpleAction *action,
+   g_return_if_fail (MOUSEPAD_IS_DOCUMENT (window->active));
+ 
+   /* select everything in the document */
+-  g_signal_emit_by_name (window->active->textview, "select-all");
++  g_signal_emit_by_name (window->active->textview, "select-all", TRUE);
+ }
+ 
+ 
+-- 
+GitLab
+
