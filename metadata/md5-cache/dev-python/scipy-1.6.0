@@ -5,7 +5,7 @@ DESCRIPTION=Scientific algorithms library for Python
 EAPI=7
 HOMEPAGE=https://www.scipy.org/
 IUSE=doc sparse test python_targets_python3_7 python_targets_python3_8 python_targets_python3_9
-KEYWORDS=~amd64 ~arm ~arm64 ~ppc ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos
+KEYWORDS=amd64 ~arm ~arm64 ~ppc ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=BSD LGPL-2
 RDEPEND=>=dev-python/numpy-1.16.5[lapack,python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] sci-libs/arpack:0= virtual/cblas virtual/lapack sparse? ( sci-libs/umfpack:0= ) dev-python/pillow[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] virtual/fortran python_targets_python3_7? ( dev-lang/python:3.7[threads(+)] ) python_targets_python3_8? ( dev-lang/python:3.8[threads(+)] ) python_targets_python3_9? ( dev-lang/python:3.9[threads(+)] ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)]
 REQUIRED_USE=|| ( python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://pypi/s/scipy/scipy-1.6.0.tar.gz doc? ( https://docs.scipy.org/doc/scipy-1.6.0/scipy-html-1.6.0.zip -> scipy-1.6.0-html.zip https://docs.scipy.org/doc/scipy-1.6.0/scipy-ref-1.6.0.pdf -> scipy-1.6.0-ref.pdf )
 _eclasses_=distutils-r1	c166cdc9bfdc0fee3ea2100e01fdcdd3	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	fortran-2	b4796813ccda91c9c0d3463fc90aa969	l10n	8cdd85e169b835d518bc2fd59f780d8e	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	4c65b35c1895b82c0f44e44166a3464f	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=427eeb99c1327fa309153b997b6265da
+_md5_=60a5c1ef1c4667dc97eb80d19460e3d2
