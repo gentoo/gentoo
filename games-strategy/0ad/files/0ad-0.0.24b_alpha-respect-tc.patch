@@ -1,0 +1,32 @@
+--- a/libraries/source/fcollada/src/Makefile
++++ b/libraries/source/fcollada/src/Makefile
+@@ -7,6 +7,7 @@
+ 	PIC_FLAGS ?= -fpic
+ endif
+ 
++AR? ?= ar
+ CXX ?= g++
+ CXXFLAGS += -fvisibility=hidden -W -Wall -Wno-unused-parameter -Wno-unused-function $(OS_DEFINE) $(PIC_FLAGS) $(CPPFLAGS)
+ CXXFLAGS_DEBUG := -D_DEBUG -DRETAIL
+@@ -16,6 +17,7 @@
+ LIBS += `pkg-config libxml-2.0 --libs`
+ INCLUDES += -IFCollada `pkg-config libxml-2.0 --cflags`
+ INCLUDES_TEST := -IFCollada/FColladaTest $(INCLUDES)
++RANLIB ?= ranlib
+ 
+ # FCollada is not aliasing-safe, so disallow dangerous optimisations
+ # (TODO: It'd be nice to fix FCollada, but that looks hard)
+@@ -246,11 +248,11 @@
+ 
+ output/libFColladaSD.a: $(OBJECTS_DEBUG) | output_dirs
+ 	@echo "$@"
+-	@ar -cr $@ $(OBJECTS_DEBUG); ranlib $@
++	@$(AR) -cr $@ $(OBJECTS_DEBUG); $(RANLIB) $@
+ 
+ output/libFColladaSR.a: $(OBJECTS_RELEASE) | output_dirs
+ 	@echo "$@"
+-	@ar -cr $@ $(OBJECTS_RELEASE); ranlib $@
++	@$(AR) -cr $@ $(OBJECTS_RELEASE); $(RANLIB) $@
+ 
+ output/FColladaTest: $(OBJECTS_TEST) | output_dirs
+ 	$(CXX) -o $@  $(OBJECTS_TEST) $(LIBS) $(LDFLAGS_TEST)

@@ -76,6 +76,7 @@ RDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.0.24_alpha_pre20210116040036-build.patch
 	"${FILESDIR}"/${PN}-0.0.24b_alpha-rust-1.50.patch
+	"${FILESDIR}"/${PN}-0.0.24b_alpha-respect-tc.patch
 )
 
 pkg_setup() {
@@ -106,7 +107,7 @@ src_configure() {
 		--datadir="/usr/share/${PN}"
 	)
 
-	tc-export CC CXX
+	tc-export AR CC CXX RANLIB
 
 	# Stock premake5 does not work, use the shipped one
 	# TODO: revisit this, see above BDEPEND note re premake5
@@ -132,8 +133,6 @@ src_configure() {
 }
 
 src_compile() {
-	tc-export AR
-
 	# Build 3rd party fcollada
 	einfo "Building bundled fcollada"
 	emake -C libraries/source/fcollada/src
