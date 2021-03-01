@@ -10,7 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>
-		TurboVNC is a derivative of VNC (Virtual Network Computing) that is tuned to provide peak performance for 3D and video workloads. By The VirtualGL Project.
+		TurboVNC is a derivative of VNC (Virtual Network Computing) that is tuned to provide peak performance for 3D and video workloads.
+		By The VirtualGL Project.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">TurboVNC/turbovnc</remote-id>
