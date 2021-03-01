@@ -58,8 +58,8 @@ src_configure() {
 			# we catch e.g. ABI change
 			# (i.e. don't dlopen it)
 			mycmakeargs+=(
-				-DTVNC_USETLS=ON
-				-DTVNC_DLOPENSSL=0
+				-DTVNC_USETLS="OpenSSL"
+				-DTVNC_DLOPENSSL=OFF
 			)
 		fi
 	else
