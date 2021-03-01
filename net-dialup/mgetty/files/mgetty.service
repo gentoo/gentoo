@@ -1,0 +1,12 @@
+[Unit]
+Description=Smart Modem Getty
+Documentation=man:mgetty(8)
+
+[Service]
+ExecStart=/usr/sbin/mgetty /dev/%i
+Restart=always
+PIDFile=/run/mgetty.%i.pid
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
