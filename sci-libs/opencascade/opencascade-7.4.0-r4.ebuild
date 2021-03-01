@@ -49,7 +49,10 @@ RDEPEND="
 		dev-qt/qtxml:5
 	)
 	tbb? ( dev-cpp/tbb )
-	vtk? ( >=sci-libs/vtk-8.1.0[rendering] )
+	vtk? (
+		>=sci-libs/vtk-8.1.0[rendering]
+		<sci-libs/vtk-9
+	)
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -75,6 +78,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-fix-install.patch"
 	"${FILESDIR}/${P}-fix-issue-with-cmake-path-variables.patch"
 	"${FILESDIR}/${P}-Gentoo-specific-avoid-pre-stripping-files.patch"
+	"${FILESDIR}/${P}-fix-flow-control-nesting.patch"
 )
 
 pkg_setup() {

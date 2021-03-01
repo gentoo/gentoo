@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="Information about the Debian distributions' releases (data files)"
 HOMEPAGE="https://debian.org/"
@@ -15,5 +15,3 @@ IUSE=""
 # Package provides only csv data and test script
 # written in python
 RESTRICT="test"
-
-S="${WORKDIR}/${PN}"

@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>jaco@uls.co.za</email>
+		<name>Jaco Kroon</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<use>
-		<flag name="graceful-exit">use non-portable hack to exit gracefuly on signal</flag>
+		<flag name="graceful-exit">use non-portable hack to exit gracefully on signal</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">stalonetray</remote-id>
