@@ -98,7 +98,7 @@ src_install() {
 	# easier to install by hand than trying to make sense of the Makefile.
 	dobin dd_rescue
 	dodir /usr/$(get_libdir)/${PN}
-	cp -pPR libddr_*.so "${ED%/}"/usr/$(get_libdir)/${PN}/ || die
+	cp -pPR libddr_*.so "${ED}"/usr/$(get_libdir)/${PN}/ || die
 	dodoc README.dd_rescue
 	doman dd_rescue.1
 	use lzo && doman ddr_lzo.1
