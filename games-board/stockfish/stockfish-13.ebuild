@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,10 @@ inherit toolchain-funcs
 DESCRIPTION="Free UCI chess engine, claimed to be the strongest in the world"
 HOMEPAGE="https://stockfishchess.org/"
 
-SRC_URI="https://github.com/official-stockfish/Stockfish/archive/sf_${PV}.tar.gz -> ${P}.tar.gz"
+NNUE_FILE="nn-62ef826d1a6d.nnue"
+
+SRC_URI="https://github.com/official-stockfish/Stockfish/archive/sf_${PV}.tar.gz -> ${P}.tar.gz
+	https://tests.stockfishchess.org/api/nn/${NNUE_FILE} -> ${P}-${NNUE_FILE}"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -22,6 +25,8 @@ S="${WORKDIR}/Stockfish-sf_${PV}/src"
 
 src_prepare() {
 	default
+
+	cp "${DISTDIR}"/${P}-${NNUE_FILE} ${NNUE_FILE} || die "copying the nnue file failed"
 
 	# prevent pre-stripping
 	sed -e 's:-strip $(BINDIR)/$(EXE)::' -i Makefile \
@@ -65,5 +70,5 @@ src_compile() {
 
 src_install() {
 	dobin "${PN}"
-	dodoc ../AUTHORS ../Readme.md
+	dodoc ../AUTHORS ../README.md
 }
