@@ -23,6 +23,7 @@ BDEPEND="
 "
 RDEPEND="
 	>app-text/opensp-1.5
+	app-text/openjade
 	>=dev-cpp/libxmlpp-2.40.1:2.6
 	>=net-misc/curl-7.9.7
 	virtual/libiconv
@@ -37,8 +38,10 @@ src_prepare() {
 	# Use correct location for docs
 	sed -i -e 's:doc/libofx:doc/${PF}:' Makefile.am doc/Makefile.am || die
 
+	# bug #566456
+	append-cxxflags -std=c++14
+
 	eautoreconf
-	append-cxxflags -std=c++14 # bug #566456
 }
 
 src_configure() {
