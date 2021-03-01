@@ -4,8 +4,8 @@
 EAPI=7
 
 WX_GTK_VER="3.0-gtk3"
-
-inherit desktop toolchain-funcs multiprocessing wxwidgets xdg
+PYTHON_COMPAT=( python3_{7..9} )
+inherit desktop toolchain-funcs multiprocessing python-any-r1 wxwidgets xdg
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -37,10 +37,14 @@ KEYWORDS="~amd64 ~x86"
 IUSE="editor +lobby nvtt pch test"
 RESTRICT="test"
 
+# virtual/rust is for bundled SpiderMonkey
+# Build-time Python dependency is for SM too
 # TODO: Unbundle premake5
 # See bug #773472 which may help (bump for it)
 BDEPEND="
+	${PYTHON_DEPS}
 	virtual/pkgconfig
+	virtual/rust
 	test? ( dev-lang/perl )
 "
 # Removed dependency on nvtt as we use the bundled one
@@ -70,7 +74,9 @@ RDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.0.24_alpha_pre20210116040036-build.patch"
+	"${FILESDIR}"/${PN}-0.0.24_alpha_pre20210116040036-build.patch
+	"${FILESDIR}"/${PN}-0.0.24b_alpha-rust-1.50.patch
+	"${FILESDIR}"/${PN}-0.0.24b_alpha-respect-tc.patch
 )
 
 pkg_setup() {
@@ -101,7 +107,7 @@ src_configure() {
 		--datadir="/usr/share/${PN}"
 	)
 
-	tc-export CC CXX
+	tc-export AR CC CXX RANLIB
 
 	# Stock premake5 does not work, use the shipped one
 	# TODO: revisit this, see above BDEPEND note re premake5
@@ -127,8 +133,6 @@ src_configure() {
 }
 
 src_compile() {
-	tc-export AR
-
 	# Build 3rd party fcollada
 	einfo "Building bundled fcollada"
 	emake -C libraries/source/fcollada/src
@@ -209,7 +213,9 @@ src_install() {
 	# Install bundled SpiderMonkey and nvtt
 	# bug #771147 (comment 1)
 	exeinto /usr/$(get_libdir)/${PN}
-	doexe binaries/system/{libCollada,libmozjs78-ps-release,libnvtt,libnvcore,libnvimage,libnvmath}.so
+	doexe binaries/system/{libCollada,libmozjs78-ps-release}
+
+	use nvtt && doexe /binaries/system/{libnvtt,libnvcore,libnvimage,libnvmath}.so
 	use editor && doexe binaries/system/libAtlasUI.so
 
 	dodoc binaries/system/readme.txt

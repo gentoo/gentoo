@@ -5,6 +5,10 @@
 		<email>gyakovlev@gentoo.org</email>
 		<name>Georgy Yakovlev</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
 	<use>
 		<flag name="kernel-builtin">Disable dependency on sys-fs/zfs-kmod under the assumption that ZFS is part of the kernel source tree</flag>
 		<flag name="minimal">Don't install python scripts (arcstat, dbufstat etc) and avoid dependency on <pkg>dev-lang/python</pkg></flag>
