@@ -1,0 +1,14 @@
+BDEPEND=dev-ml/dune dev-lang/ocaml
+DEFINED_PHASES=compile install test
+DEPEND=>=dev-lang/ocaml-4:=[ocamlopt?]
+DESCRIPTION=Tool and library implementing patience diff
+EAPI=7
+HOMEPAGE=https://github.com/janestreet/patience_diff
+IUSE=+ocamlopt
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=dev-ml/base:= dev-ml/core_kernel:= dev-ml/ppx_jane:= >=dev-lang/ocaml-4:=[ocamlopt?]
+SLOT=0/0.14
+SRC_URI=https://github.com/janestreet/patience_diff/archive/v0.14.0.tar.gz -> patience_diff-0.14.0.tar.gz
+_eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
+_md5_=f1f5c00286b366bd86a6b4ef500a1362
