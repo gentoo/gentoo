@@ -136,10 +136,6 @@
       <role>Catalyst builds for systemd and musl</role>
     </member>
     <member>
-      <email>kentnl@gentoo.org</email>
-      <name>Kent Fredric</name>
-    </member>
-    <member>
       <email>leio@gentoo.org</email>
       <name>Mart Raudsepp</name>
     </member>
@@ -2135,11 +2131,6 @@
       <name>Andreas K. Hüttel</name>
       <role>Lead</role>
     </member>
-    <member is-lead="1">
-      <email>kentnl@gentoo.org</email>
-      <name>Kent Fredric</name>
-      <role>Lead</role>
-    </member>
     <member>
       <email>monsieurp@gentoo.org</email>
       <name>Patrice Clement</name>
@@ -2882,10 +2873,6 @@
     <member>
       <email>gyakovlev@gentoo.org</email>
       <name>Georgy Yakovlev</name>
-    </member>
-    <member>
-      <email>kentnl@gentoo.org</email>
-      <name>Kent Fredric</name>
     </member>
     <member>
       <email>williamh@gentoo.org</email>
