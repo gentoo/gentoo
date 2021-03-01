@@ -12,10 +12,21 @@ SRC_URI="https://sourceforge.net/projects/turbovnc/files/${PV}/${P}.tar.gz/downl
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="+ssl gnutls"
 
 DEPEND="
+	app-arch/bzip2
+	media-libs/freetype
 	>=media-libs/libjpeg-turbo-2.0.0[java?]
+	sys-libs/zlib
 	virtual/jdk:1.8
+	virtual/opengl
+	x11-libs/libX11
+	x11-libs/libXext
+	ssl? (
+		!gnutls? ( dev-libs/openssl:= )
+		gnutls? ( net-libs/gnutls:= )
+	)
 	!net-misc/tigervnc
 "
 RDEPEND="
@@ -37,6 +48,23 @@ src_configure() {
 		-DXKB_BIN_DIRECTORY=/usr/bin
 		-DXKB_DFLT_RULES=base
 	)
+
+	if use ssl ; then
+		# We prefer OpenSSL, so default to that if SSL is enabled
+		if use gnutls ; then
+			mycmakeargs+=( -DTVNC_USETLS="GnuTLS" )
+		else
+			# Link properly against OpenSSL to ensure
+			# we catch e.g. ABI change
+			# (i.e. don't dlopen it)
+			mycmakeargs+=(
+				-DTVNC_USETLS=ON
+				-DTVNC_DLOPENSSL=0
+			)
+		fi
+	else
+		mycmakeargs+=( -DTVNC_USETLS=OFF )
+	fi
 
 	if use java ; then
 		export JAVACFLAGS="$(java-pkg_javac-args)"
