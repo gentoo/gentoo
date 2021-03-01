@@ -414,8 +414,7 @@ kernel-install_pkg_prerm() {
 
 # @FUNCTION: kernel-install_pkg_postrm
 # @DESCRIPTION:
-# No-op at the moment.  Will be used to remove obsolete kernels
-# in the future.
+# Clean up the generated initramfs from the removed kernel directory.
 kernel-install_pkg_postrm() {
 	debug-print-function ${FUNCNAME} "${@}"
 
@@ -423,7 +422,7 @@ kernel-install_pkg_postrm() {
 		local ver="${PV}${KV_LOCALVERSION}"
 		local image_path=$(dist-kernel_get_image_path)
 		ebegin "Removing initramfs"
-		rm -f "${EROOT}/usr/src/linux-${ver}/${image_path%/*}/initrd" &&
+		rm -f "${EROOT}/usr/src/linux-${ver}/${image_path%/*}"/initrd{,.uefi} &&
 			find "${EROOT}/usr/src/linux-${ver}" -depth -type d -empty -delete
 		eend ${?}
 	fi
