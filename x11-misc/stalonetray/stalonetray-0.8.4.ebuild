@@ -14,9 +14,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug +graceful-exit"
 
-RDEPEND="x11-libs/libX11
-	x11-libs/libICE
+RDEPEND="x11-libs/libICE
 	x11-libs/libSM
+	x11-libs/libX11
 	x11-libs/libXpm"
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
