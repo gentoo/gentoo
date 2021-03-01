@@ -18,7 +18,8 @@ RESTRICT="mirror bindist strip"
 
 RDEPEND="!games-engines/zoom
 	dev-libs/glib:2
-	dev-libs/quazip
+	dev-libs/quazip:0=
+	media-libs/fdk-aac:0/2
 	media-libs/fontconfig
 	media-libs/freetype
 	media-sound/mpg123
@@ -90,7 +91,13 @@ src_install() {
 	doins *.pcm *.sh Embedded.properties version.txt
 	doexe zoom zopen ZoomLauncher
 	dosym8 -r {"/usr/$(get_libdir)",/opt/zoom}/libmpg123.so
-	dosym8 -r {"/usr/$(get_libdir)",/opt/zoom}/libquazip.so
+	dosym8 -r "/usr/$(get_libdir)/libfdk-aac.so.2" /opt/zoom/libfdkaac2.so
+
+	local quazip_so="libquazip1-qt5.so"
+	if has_version "<dev-libs/quazip-1.0"; then
+		quazip_so="libquazip5.so"
+	fi
+	dosym8 -r "/usr/$(get_libdir)/${quazip_so}" /opt/zoom/libquazip.so
 
 	if use bundled-libjpeg-turbo; then
 		doexe libturbojpeg.so
