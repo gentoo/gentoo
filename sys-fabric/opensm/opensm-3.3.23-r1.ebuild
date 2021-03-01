@@ -38,7 +38,7 @@ src_configure() {
 src_install() {
 	default
 	newconfd "${FILESDIR}/opensm.conf.d" opensm
-	newinitd "${FILESDIR}/opensm.init.d" opensm
+	newinitd "${FILESDIR}/opensm.init.d.2" opensm
 	insinto /etc/logrotate.d
 	newins "${S}/scripts/opensm.logrotate" opensm
 	# we dont need this int script
