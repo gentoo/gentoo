@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit cmake
+inherit cmake flag-o-matic
 
 MY_P=${P/_/-}
 
@@ -15,7 +15,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
-RDEPEND="dev-qt/qtcore:5
+RDEPEND="
+	dev-libs/boost[python]
+	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5
 	dev-qt/qtnetwork:5
@@ -23,9 +25,10 @@ RDEPEND="dev-qt/qtcore:5
 	dev-qt/qtconcurrent:5
 	dev-qt/qtserialport:5
 	dev-qt/qtsql:5
+	dev-qt/qttest:5
 	dev-qt/qtprintsupport:5
 	virtual/libusb:1
-	media-libs/hamlib
+	>=media-libs/hamlib-4.0
 	media-libs/portaudio
 	sci-libs/fftw:3.0[threads,fortran]
 	virtual/fortran
@@ -38,6 +41,7 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/wsjtx
 
 PATCHES=( "${FILESDIR}/${PN}-2.0.1-hamlib.patch"
+		  "${FILESDIR}/${PN}-2.3.0-drop-docs.patch"
 		  "${FILESDIR}/${PN}-2.1.2-qt_helpers.patch"
 		  "${FILESDIR}/${PN}-2.2.0-werror.patch"
 		  "${FILESDIR}/${PN}-clang.patch" )
@@ -61,6 +65,7 @@ src_configure() {
 		-DWSJT_GENERATE_DOCS="$(usex doc)"
 		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}"
 	)
+	append-ldflags -no-pie
 	cmake_src_configure
 }
 
