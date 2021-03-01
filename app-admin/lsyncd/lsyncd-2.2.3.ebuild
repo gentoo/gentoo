@@ -30,7 +30,7 @@ BDEPEND="${CDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.2.3-cmake_lua_version.patch
-	"${FILESDIR}"/${PN}-2.3.3-mandir.patch
+	"${FILESDIR}"/${PN}-2.2.3-mandir.patch
 )
 
 S=${WORKDIR}/${PN}-release-${PV}
