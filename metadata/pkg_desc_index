@@ -13571,7 +13571,7 @@ media-plugins/kodi-pvr-dvblink 8.0.0 9.0.0 9.0.1 9999: Kodi's DVBLink client add
 media-plugins/kodi-pvr-dvbviewer 6.0.6 6.0.7 7.0.0 7.1.0 9999: Kodi's DVBViewer client addon
 media-plugins/kodi-pvr-filmon 5.1.0 6.0.0 9999: Kodi's Filmon client addon
 media-plugins/kodi-pvr-hts 8.2.2 9999: Tvheadend Live TV and Radio PVR client addon for Kodi
-media-plugins/kodi-pvr-iptvsimple 7.4.2 9999: Kodi's IPTVSimple client addon
+media-plugins/kodi-pvr-iptvsimple 7.4.2 7.4.3 9999: Kodi's IPTVSimple client addon
 media-plugins/kodi-pvr-mediaportal-tvserver 6.0.1 8.0.0 9999: Kodi's MediaPortal TVServer client addon
 media-plugins/kodi-pvr-mythtv 7.1.1 7.2.0 9999: MythTV PVR for Kodi
 media-plugins/kodi-pvr-nextpvr 8.2.1 9999: Kodi's NextPVR client addon
@@ -13580,7 +13580,7 @@ media-plugins/kodi-pvr-pctv 5.0.0 6.0.0 9999: Kodi's PCTV client addon
 media-plugins/kodi-pvr-stalker 6.0.0 6.0.1 6.0.2 7.0.0 9999: Kodi's Stalker client addon
 media-plugins/kodi-pvr-vbox 7.0.0 7.0.1 7.0.2 7.0.3 8.0.0 9999: Kodi's VBox Home TV Gateway PVR client addon
 media-plugins/kodi-pvr-vdr-vnsi 8.2.2 9999: Kodi PVR addon VNSI
-media-plugins/kodi-pvr-vuplus 7.3.3 9999: Kodi's VuPlus client addon
+media-plugins/kodi-pvr-vuplus 7.3.3 7.4.0 9999: Kodi's VuPlus client addon
 media-plugins/kodi-pvr-wmc 6.1.1 9999: Kodi's Windows Media Center client addon
 media-plugins/kodi-screensaver-asteroids 2.4.2-r1 9999: Asteroids screensaver for Kodi
 media-plugins/kodi-screensaver-biogenesis 2.3.2-r1 9999: Biogenesis screensaver for Kodi
@@ -13720,12 +13720,12 @@ media-radio/fsync-mdc1200-decode 1.0 9999: Linux Fleetsync / MDC1200 decoder
 media-radio/gpredict 2.2.1: Real-time satellite tracking and orbit prediction application
 media-radio/grig 0.8.1: A tool for controlling amateur radios
 media-radio/ibp 0.21-r1: Shows currently transmitting beacons of the International Beacon Project (IBP)
-media-radio/js8call 1.0.0 1.1.0 2.0.0-r1 2.1.0 2.1.1 2.2.0: Weak signal ham radio communication
+media-radio/js8call 2.2.0: Weak signal ham radio communication
 media-radio/qrq 0.3.3: Yet another CW trainer for Linux/Unix
 media-radio/qsstv 9.4.4: Amateur radio SSTV software
 media-radio/svxlink 17.12.1 17.12.2: Multi Purpose Voice Services System, including Qtel for EchoLink
 media-radio/tlf 1.4.1: Console-mode amateur radio contest logger
-media-radio/tqsl 2.3.1 2.4.1 2.4.3 2.5.1: ARRL Logbook of the World
+media-radio/tqsl 2.5.1: ARRL Logbook of the World
 media-radio/tucnak 4.23 4.24 4.25: Amateur Radio VHF Contest Logbook
 media-radio/unixcw 3.5.1-r1: A package of programs that fit together to form a morse code tutor program
 media-radio/wsjtx 2.2.2 2.3.0: Weak signal ham radio communication
