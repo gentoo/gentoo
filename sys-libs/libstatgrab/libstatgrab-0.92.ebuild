@@ -12,7 +12,7 @@ SRC_URI="https://www.mirrorservice.org/sites/ftp.i-scream.org/pub/i-scream/libst
 LICENSE="|| ( GPL-2 LGPL-2.1 )"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~x86"
-IUSE="doc examples"
+IUSE="examples"
 
 RDEPEND="sys-libs/ncurses"
 DEPEND="${RDEPEND}"
@@ -36,7 +36,7 @@ src_install() {
 	if use examples; then
 		docompress -x /usr/share/doc/${PF}/examples
 		docinto examples
-		doins -r examples/*
+		dodoc -r examples/*
 	fi
 
 	find "${ED}" -name '*.la' -delete || die
