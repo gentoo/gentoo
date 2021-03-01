@@ -23,6 +23,7 @@ DEPEND="
 	virtual/opengl
 	x11-libs/libX11
 	x11-libs/libXext
+	x11-libs/libXfont2
 	ssl? (
 		!gnutls? ( dev-libs/openssl:= )
 		gnutls? ( net-libs/gnutls:= )
