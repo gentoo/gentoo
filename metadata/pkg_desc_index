@@ -11335,7 +11335,7 @@ games-board/pysolfc 2.6.4-r1: An exciting collection of more than 1000 solitaire
 games-board/scid 4.6.2-r1: a free chess database application
 games-board/simsu 1.3.9: Basic sudoku game
 games-board/sjeng 11.2_p8_p1: Console based chess interface
-games-board/stockfish 10 11: Free UCI chess engine, claimed to be the strongest in the world
+games-board/stockfish 10 13: Free UCI chess engine, claimed to be the strongest in the world
 games-board/tablebase-syzygy 0_pre20131213 0_pre20131213-r100: Syzygy chess endgame tablebases for up to 6 pieces
 games-board/tali 3.36.4 3.38.2 3.38.3: Beat the odds in a poker-style dice game
 games-board/tetzle 2.1.3: Jigsaw puzzle game that uses tetrominoes for the pieces
