@@ -16,6 +16,7 @@ KEYWORDS="~amd64"
 DEPEND="
 	>=media-libs/libjpeg-turbo-2.0.0[java?]
 	virtual/jdk:1.8
+	virtual/opengl
 	!net-misc/tigervnc
 "
 RDEPEND="
