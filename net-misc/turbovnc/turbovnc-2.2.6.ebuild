@@ -14,9 +14,14 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND="
+	app-arch/bzip2
+	media-libs/freetype
 	>=media-libs/libjpeg-turbo-2.0.0[java?]
+	sys-libs/zlib
 	virtual/jdk:1.8
 	virtual/opengl
+	x11-libs/libX11
+	x11-libs/libXext
 	!net-misc/tigervnc
 "
 RDEPEND="
