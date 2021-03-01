@@ -24,8 +24,10 @@ SANITIZER_FLAGS=(
 IUSE+=" ${SANITIZER_FLAGS[@]/#/+}"
 REQUIRED_USE="
 	|| ( ${SANITIZER_FLAGS[*]} libfuzzer profile xray )
-	gwp-asan? ( scudo )
-	ubsan? ( cfi )"
+	test? (
+		cfi? ( ubsan )
+		gwp-asan? ( scudo )
+	)"
 RESTRICT="!test? ( test ) !clang? ( test )"
 
 CLANG_SLOT=${SLOT%%.*}
@@ -86,9 +88,12 @@ src_prepare() {
 		fi
 	done
 
+	# TODO: fix these tests to be skipped upstream
 	if use asan && ! use profile; then
-		# TODO: fix these tests to be skipped upstream
 		rm test/asan/TestCases/asan_and_llvm_coverage_test.cpp || die
+	fi
+	if use ubsan && ! use cfi; then
+		> test/cfi/CMakeLists.txt || die
 	fi
 
 	llvm.org_src_prepare
