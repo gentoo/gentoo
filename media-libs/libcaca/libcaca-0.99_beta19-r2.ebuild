@@ -56,7 +56,7 @@ PATCHES=(
 	# patch before wrt #517474
 	"${FILESDIR}"/${PN}-0.99_beta18-latex_hacks.patch
 	# Fix out of source tests
-        "${FILESDIR}"/${PN}-0.99_beta18-fix-tests.patch
+	"${FILESDIR}"/${PN}-0.99_beta18-fix-tests.patch
 )
 
 pkg_setup() {
