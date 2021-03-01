@@ -69,7 +69,7 @@ src_compile() {
 }
 
 src_install() {
-	emake PERL_VENDORLIB=$(perl -e 'require Config; print "$Config::Config{'vendorlib'}\n";') \
+	emake PERL_VENDORLIB=$(perl -e 'require Config; print "$Config::Config{'vendorlib'}\n";' || die) \
 		DESTDIR="${D}" install
 
 	if use python; then
