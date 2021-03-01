@@ -1,15 +1,15 @@
-BDEPEND=dev-ml/dune dev-lang/ocaml
+BDEPEND=>=dev-ml/dune-2.8 dev-ml/dune dev-lang/ocaml
 DEFINED_PHASES=compile install test
-DEPEND=test? ( dev-ml/cinaps:= dev-ml/re:= ) >=dev-lang/ocaml-4:=[ocamlopt?]
+DEPEND=test? ( dev-ml/findlib:= >=dev-ml/base-0.11.0:= dev-ml/cinaps:= dev-ml/re:= >=dev-ml/stdio-0.11.0:= ) >=dev-lang/ocaml-4:=[ocamlopt?]
 DESCRIPTION=Base library and tools for ppx rewriters
 EAPI=7
 HOMEPAGE=https://github.com/ocaml-ppx/ppxlib
 IUSE=+ocamlopt test
 KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
 LICENSE=Apache-2.0
-RDEPEND=>=dev-ml/base-0.11.0:= dev-ml/findlib:= >=dev-ml/ocaml-compiler-libs-0.11.0:= >=dev-ml/ocaml-migrate-parsetree-2.1.0:= dev-ml/sexplib0:= dev-ml/stdlib-shims:= >=dev-ml/ppx_derivers-1.2.1:= >=dev-ml/stdio-0.11.0:= !dev-libs/nss[utils] >=dev-lang/ocaml-4:=[ocamlopt?]
+RDEPEND=>=dev-ml/ocaml-compiler-libs-0.11.0:= >=dev-ml/ocaml-migrate-parsetree-2.1.0:= dev-ml/sexplib0:= dev-ml/stdlib-shims:= >=dev-ml/ppx_derivers-1.2.1:= !dev-libs/nss[utils] >=dev-lang/ocaml-4:=[ocamlopt?]
 RESTRICT=!test? ( test )
 SLOT=0/0.22.0
 SRC_URI=https://github.com/ocaml-ppx/ppxlib/archive/0.22.0.tar.gz -> ppxlib-0.22.0.tar.gz
 _eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
-_md5_=3a50695a76b959288f572d14ff7ff590
+_md5_=9c202b8cd28827ccb471ea7a52778523
