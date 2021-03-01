@@ -153,7 +153,7 @@ src_compile() {
 	# e.g. bug #768840.
 	cd libraries/source/spidermonkey || die
 	elog "Building bundled SpiderMonkey (bug #768840)"
-	XARGS="${EPREFIX}/usr/bin/xargs" ./build.sh JOBS="-j(makeopts_jobs)" || die "Failed to build bundled SpiderMonkey"
+	XARGS="${EPREFIX}/usr/bin/xargs" ./build.sh JOBS="-j$(makeopts_jobs)" || die "Failed to build bundled SpiderMonkey"
 	cd "${S}" || die
 
 	# Build 0ad itself!
