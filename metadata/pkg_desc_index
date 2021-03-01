@@ -7964,7 +7964,7 @@ dev-python/aiofiles 0.5.0: File support for asyncio
 dev-python/aiohttp 3.7.4: http client/server for asyncio
 dev-python/aiohttp-cors 0.7.0-r1: Implements CORS support for aiohttp asyncio-powered asynchronous HTTP server
 dev-python/aiohttp-jinja2 0.15.0: jinja2 template renderer for aiohttp.web
-dev-python/aiohttp-socks 0.5.5: SOCKS proxy connector for aiohttp
+dev-python/aiohttp-socks 0.5.5 0.6.0: SOCKS proxy connector for aiohttp
 dev-python/aiorpcX 0.18.5 0.19 0.19.1: Generic async RPC implementation, including JSON-RPC
 dev-python/aiosmtpd 1.2 1.2.2 1.2.4 1.3.2 1.4.0: asyncio based SMTP server
 dev-python/alabaster 0.7.12: A configurable sidebar-enabled Sphinx theme
@@ -8217,7 +8217,7 @@ dev-python/ecdsa 0.16.1: ECDSA cryptographic signature library in pure Python
 dev-python/editorconfig-core-py 0.12.0 0.12.3-r1: Clone of EditorConfig core written in Python
 dev-python/elasticsearch-curator 5.8.1-r2: Tending time-series indices in Elasticsearch
 dev-python/elasticsearch-py 7.7.0: Official Python low-level client for Elasticsearch
-dev-python/elementpath 2.1.2 2.1.4: XPath 1.0/2.0 parsers and selectors for ElementTree and lxml
+dev-python/elementpath 2.1.2 2.1.4 2.2.0: XPath 1.0/2.0 parsers and selectors for ElementTree and lxml
 dev-python/emcee 3.0.2: Python ensemble sampling toolkit for affine-invariant MCMC
 dev-python/emoji 0.5.4: Emoji for Python
 dev-python/empy 3.3.4: A powerful and robust templating system for Python
@@ -9010,7 +9010,7 @@ dev-python/python-senlinclient 2.1.1: A client for the OpenStack Senlin API
 dev-python/python-sense-hat 2.2.0-r2: Raspberry Pi Sense HAT python library
 dev-python/python-slip 0.6.5-r1: Miscellaneous convenience, extension and workaround code for Python
 dev-python/python-slugify 1.2.6 4.0.1: A Python Slugify application that handles Unicode
-dev-python/python-socks 1.2.0 1.2.1: SOCKS4, SOCKS5, HTTP tunneling functionality for Python
+dev-python/python-socks 1.2.0 1.2.1 1.2.2: SOCKS4, SOCKS5, HTTP tunneling functionality for Python
 dev-python/python-sshpubkeys 3.3.0 3.3.1: OpenSSH public key parser for Python
 dev-python/python-stdnum 1.14 1.15 1.16: A module to handle standardized numbers and codes
 dev-python/python-swiftclient 3.10.1: Python bindings to the OpenStack Object Storage API
