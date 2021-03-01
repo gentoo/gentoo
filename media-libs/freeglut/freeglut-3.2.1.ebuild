@@ -33,7 +33,7 @@ HTML_DOCS=( doc/. )
 
 src_configure() {
 	local mycmakeargs=(
-		"-DOpenGL_GL_PREFERENCE=GLVND" # bug 721006
+#		"-DOpenGL_GL_PREFERENCE=GLVND" # bug 721006
 		"-DFREEGLUT_GLES=OFF"
 		"-DFREEGLUT_BUILD_DEMOS=OFF"
 		"-DFREEGLUT_BUILD_STATIC_LIBS=$(usex static-libs ON OFF)"
