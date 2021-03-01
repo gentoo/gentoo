@@ -143,7 +143,7 @@ src_compile() {
 	if use nvtt ; then
 		cd libraries/source/nvtt || die
 		elog "Building bundled NVTT (bug #768930)"
-		./build.sh JOBS="-j$(makeopts_jobs)" || die "Failed to build bundled NVTT"
+		JOBS="-j$(makeopts_jobs)" ./build.sh || die "Failed to build bundled NVTT"
 		cd "${S}" || die
 	fi
 
@@ -153,12 +153,16 @@ src_compile() {
 	# e.g. bug #768840.
 	cd libraries/source/spidermonkey || die
 	elog "Building bundled SpiderMonkey (bug #768840)"
-	XARGS="${EPREFIX}/usr/bin/xargs" ./build.sh JOBS="-j$(makeopts_jobs)" || die "Failed to build bundled SpiderMonkey"
+	XARGS="${EPREFIX}/usr/bin/xargs" \
+		JOBS="-j$(makeopts_jobs)" \
+		./build.sh \
+	|| die "Failed to build bundled SpiderMonkey"
+
 	cd "${S}" || die
 
 	# Build 0ad itself!
 	elog "Building 0ad"
-	emake -C build/workspaces/gcc verbose=1 JOBS="-j$(makeopts_jobs)"
+	JOBS="-j$(makeopts_jobs)" emake -C build/workspaces/gcc verbose=1
 
 	# Build assets
 	# (We only do this if we're using a snapshot/non-release)
