@@ -19,7 +19,7 @@ SRC_URI="https://github.com/PiotrDabkowski/${PN}/archive/${MY_COMMIT}.tar.gz -> 
 RESTRICT="!test? ( test )"
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 BDEPEND="
