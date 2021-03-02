@@ -46,6 +46,8 @@ src_prepare() {
 	eapply "${FILESDIR}/${P}-py38.patch"
 	# gcc-10 fix, #707502
 	eapply "${FILESDIR}/${P}-gcc-10-fix.patch"
+	# unbreak CHOST prefix, https://bugs.gentoo.org/773652
+	eapply "${FILESDIR}/${P}-no-rewrite-chost.patch"
 	eapply_user
 
 	# Bugs #120001, #167844 and probably more. See patch for description.
