@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{7..9} )
 
 inherit meson python-any-r1
 
-DESCRIPTION="transparent network proxy for Wayland compositors"
+DESCRIPTION="Transparent network proxy for Wayland compositors"
 HOMEPAGE="https://gitlab.freedesktop.org/mstoeckl/waypipe"
 
 if [[ ${PV} == 9999 ]]; then
@@ -16,14 +16,20 @@ if [[ ${PV} == 9999 ]]; then
 else
 	SRC_URI="https://gitlab.freedesktop.org/mstoeckl/waypipe/-/archive/v${PV}/${PN}-v${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/${PN}-v${PV}
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
 LICENSE="MIT"
 SLOT="0"
 
-CPU_FLAGS_X86=( "avx2" "avx512f" "sse3" )
-IUSE="dmabuf ffmpeg lz4 man neon systemtap test vaapi zstd ${CPU_FLAGS_X86[@]/#/cpu_flags_x86_}"
+WAYPIPE_FLAG_MAP_X86=( avx2:with_avx2 avx512f:with_avx512f sse3:with_sse3 )
+WAYPIPE_FLAG_MAP_ARM=( neon:with_neon_opts )
+WAYPIPE_FLAG_MAP=(
+	"${WAYPIPE_FLAG_MAP_X86[@]/#/cpu_flags_x86_}"
+	"${WAYPIPE_FLAG_MAP_ARM[@]/#/cpu_flags_arm_}"
+)
+
+IUSE="dmabuf ffmpeg lz4 man neon systemtap test vaapi zstd ${WAYPIPE_FLAG_MAP[@]%:*}"
 REQUIRED_USE="vaapi? ( ffmpeg )"
 RESTRICT="!test? ( test )"
 
@@ -45,17 +51,13 @@ BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig
 	man? ( app-text/scdoc )
-	test? ( dev-libs/weston[wayland-compositor,screen-sharing] )
+	test? ( dev-libs/weston[examples,headless,remoting,screen-sharing,wayland-compositor] )
 "
 
-PATCHES=(
-	"${FILESDIR}"/waypipe-0.7.2-werror.patch
-)
-
 src_configure() {
-	local mymesonargs=(
+	local emesonargs=(
+		-Dwerror=false
 		$(meson_use systemtap with_systemtap)
-		$(meson_use neon with_neon_opts)
 		$(meson_feature dmabuf with_dmabuf)
 		$(meson_feature ffmpeg with_video)
 		$(meson_feature lz4 with_lz4)
@@ -64,8 +66,8 @@ src_configure() {
 		$(meson_feature zstd with_zstd)
 	)
 	local fl
-	for fl in "${CPU_FLAGS_X86[@]}"; do
-		mymesonargs+=( $(meson_use cpu_flags_x86_$fl with_$fl ) )
+	for fl in "${WAYPIPE_FLAG_MAP[@]}"; do
+		emesonargs+=( $(meson_use "${fl%:*}" "${fl#*:}") )
 	done
 	meson_src_configure
 }
