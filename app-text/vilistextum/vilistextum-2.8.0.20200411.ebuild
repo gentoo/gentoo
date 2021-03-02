@@ -17,15 +17,17 @@ KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos 
 IUSE="unicode"
 
 DEPEND="virtual/libiconv"
-RDEPEND=""
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.8.0-prefix.patch
+	"${FILESDIR}"/${PN}-2.8.0.20200411-blockquote.patch
+	"${FILESDIR}"/${PN}-2.8.0-towlower.patch
+	"${FILESDIR}"/${PN}-2.8.0.20200411-list-alignment.patch
+	"${FILESDIR}"/${P}-static.patch
+)
 
 src_prepare() {
-	eapply "${FILESDIR}/${PN}-2.8.0-prefix.patch"
-	eapply "${FILESDIR}/${PN}-2.8.0.20200411-blockquote.patch"
-	eapply "${FILESDIR}/${PN}-2.8.0-towlower.patch"
-	eapply "${FILESDIR}/${PN}-2.8.0.20200411-list-alignment.patch"
-
-	eapply_user
+	default
 	eautoreconf
 
 	# wcscasecmp needs extensions, which aren't enabled
