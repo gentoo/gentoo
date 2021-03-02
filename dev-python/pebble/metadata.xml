@@ -4,6 +4,7 @@
 	<maintainer type="project">
 		<email>python@gentoo.org</email>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">Pebble</remote-id>
 		<remote-id type="github">noxdafox/pebble</remote-id>
