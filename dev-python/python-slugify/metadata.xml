@@ -12,6 +12,7 @@
 	<maintainer type="project">
 		<email>python@gentoo.org</email>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">python-slugify</remote-id>
 		<remote-id type="github">un33k/python-slugify</remote-id>
