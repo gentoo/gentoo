@@ -8,4 +8,7 @@
 	<use>
 		<flag name="europe">Install the PROJ collection of European grids and init-files</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">OSGeo/PROJ</remote-id>
+	</upstream>
 </pkgmetadata>
