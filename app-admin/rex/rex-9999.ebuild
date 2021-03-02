@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -134,7 +134,7 @@ dzil_src_prep() {
 		-e '/^\[Test::MinimumVersion\]/{N;d}' \
 		-i dist.ini || die "Can't patch dist.ini"
 
-	# Removals/additons have to be tracked by git or dzil build fails
+	# Removals/additions have to be tracked by git or dzil build fails
 	# Spurious warning during src_prepare
 	git rm -f xt/author/critic-progressive.t || die "Can't rm author/critic-progressive.t"
 	# Spurious warning during src_prepare
