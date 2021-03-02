@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
-DEB_P=${PN}_${PV}
+DEB_P="${PN}_${PV}"
 DEB_PR=3.1
 
 DESCRIPTION="Satellite tracking and orbital prediction"
@@ -18,14 +18,15 @@ SLOT="0"
 IUSE="doc gtk nls xforms xplanet"
 KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux"
 
-RDEPEND="sys-libs/ncurses:0=
+RDEPEND="
+	sys-libs/ncurses:0=
 	gtk? ( x11-libs/gtk+:2 )
 	xforms? ( x11-libs/xforms )
 	xplanet? ( x11-misc/xplanet[truetype] )"
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/"${P}"-earthtrack.patch
+	"${FILESDIR}"/${P}-earthtrack.patch
 	"${WORKDIR}"/${DEB_P}-${DEB_PR}.diff
 )
 
@@ -74,6 +75,7 @@ AC_SEARCH_LIBS([dlclose], [dl])' \
 }
 
 src_configure() {
+	append-cflags -fcommon
 	if use gtk; then
 		cd "${S}"/clients/gsat-* || die
 		econf $(use_enable nls)
