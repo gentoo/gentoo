@@ -7972,7 +7972,7 @@ dev-python/alagitpull 0.0.23-r1: alabaster sub-theme used on git-pull docs
 dev-python/alembic 1.5.1 1.5.4 1.5.5: database migrations tool, written by the author of SQLAlchemy
 dev-python/ament_package 0.9.2: Parser for the manifest files in the ament buildsystem
 dev-python/amodem 1.15.1-r1: Transmit data between two computers using audio
-dev-python/aniso8601 8.0.0 8.1.1 9.0.0: A library for parsing ISO 8601 strings
+dev-python/aniso8601 8.0.0 8.1.1 9.0.0 9.0.1: A library for parsing ISO 8601 strings
 dev-python/ansi 0.2.0: ANSI cursor movement and graphics in Python
 dev-python/ansi2html 1.6.0: Convert text with ANSI color codes to HTML
 dev-python/ansicolor 0.2.6-r1 9999: Produce ansi color output and colored highlighting and diffing
@@ -8042,7 +8042,7 @@ dev-python/blosc 1.10.2: High performance compressor optimized for binary data
 dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutines
 dev-python/blurb 1.0.7 1.0.8: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
-dev-python/boto 2.49.0-r3 2.49.0-r4: Amazon Web Services API
+dev-python/boto 2.49.0-r4: Amazon Web Services API
 dev-python/boto3 1.16.43 1.16.50 1.16.56 1.16.60 1.16.61 1.16.62 1.16.63 1.17.0 1.17.1 1.17.2 1.17.3 1.17.4 1.17.5 1.17.6 1.17.7 1.17.8 1.17.9 1.17.10 1.17.11 1.17.12 1.17.13 1.17.14 1.17.15 1.17.16 1.17.17 1.17.18 9999: The AWS SDK for Python
 dev-python/botocore 1.19.43 1.19.50 1.19.56 1.19.60 1.19.61 1.19.62 1.19.63 1.20.0 1.20.1 1.20.2 1.20.3 1.20.4 1.20.5 1.20.6 1.20.7 1.20.8 1.20.9 1.20.10 1.20.11 1.20.12 1.20.13 1.20.14 1.20.15 1.20.16 1.20.17 1.20.18 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
@@ -8372,10 +8372,10 @@ dev-python/imagesize 1.2.0: Pure Python module for getting image size from png/j
 dev-python/imapclient 2.2.0: easy-to-use, pythonic, and complete IMAP client library
 dev-python/iminuit 1.3.8 2.2.1 2.3.0: Minuit numerical function minimization in Python
 dev-python/immutables 0.14 0.15: A high-performance immutable mapping type for Python
-dev-python/importlib_metadata 3.3.0 3.4.0 3.5.0 3.6.0 3.7.0: Read metadata from Python packages
-dev-python/importlib_resources 3.3.0 4.1.1 5.0.0 5.1.0 5.1.1: Read resources from Python packages
+dev-python/importlib_metadata 3.4.0 3.7.0: Read metadata from Python packages
+dev-python/importlib_resources 5.1.0 5.1.1: Read resources from Python packages
 dev-python/imread 0.7.3-r1: Read Image Files
-dev-python/incremental 17.5.0: Incremental is a small library that versions your Python projects
+dev-python/incremental 17.5.0 21.3.0: Incremental is a small library that versions your Python projects
 dev-python/indexed_gzip 0.8.10: Fast random access of gzip files in Python
 dev-python/inflect 5.0.2 5.2.0: Correctly inflect words and numbers
 dev-python/inflection 0.5.1: A port of Ruby on Rails' inflector to Python
@@ -8396,19 +8396,19 @@ dev-python/ipython 7.19.0-r1 7.20.0 7.21.0: Advanced interactive shell for Pytho
 dev-python/ipython_genutils 0.2.0-r1: Vestigial utilities from IPython
 dev-python/ipywidgets 7.5.1-r1 7.6.2 7.6.3: IPython HTML widgets for Jupyter
 dev-python/irc 19.0.1: IRC client framework written in Python
-dev-python/iso8601 0.1.12-r1 0.1.13 0.1.14: Simple module to parse ISO 8601 dates
+dev-python/iso8601 0.1.13 0.1.14: Simple module to parse ISO 8601 dates
 dev-python/isodate 0.6.0-r1: ISO 8601 date/time/duration parser and formatter
 dev-python/isort 5.7.0: A python utility/library to sort imports
 dev-python/itsdangerous 1.1.0-r1: Various helpers to pass trusted data to untrusted environments and back
 dev-python/itypes 1.1.0: basic immutable container types for python
 dev-python/jaraco-classes 3.2.0 3.2.1: Classes used by other projects by developer jaraco
-dev-python/jaraco-collections 3.0.0-r1 3.1.0 3.2.0: Models and classes to supplement the stdlib collections module
+dev-python/jaraco-collections 3.1.0 3.2.0: Models and classes to supplement the stdlib collections module
 dev-python/jaraco-context 3.0.0-r1 4.0.0: Context managers by jaraco
 dev-python/jaraco-envs 2.1.0: Classes for orchestrating Python (virtual) environments.
 dev-python/jaraco-functools 3.0.1-r1 3.2.0 3.2.1: Additional functions used by other projects by developer jaraco
 dev-python/jaraco-itertools 5.0.0-r1: Tools for working with iterables. Complements itertools and more_itertools
 dev-python/jaraco-logging 3.0.0-r2 3.1.0: Additional facilities to supplement Python's stdlib logging module
-dev-python/jaraco-packaging 8.1.1-r1 8.2.0: Tools to supplement packaging Python releases
+dev-python/jaraco-packaging 8.2.0: Tools to supplement packaging Python releases
 dev-python/jaraco-stream 3.0.0-r1: Routines for handling streaming data
 dev-python/jaraco-text 3.2.0-r1 3.4.0 3.5.0: Text utilities used by other projects by developer jaraco
 dev-python/jdcal 1.4.1: Julian dates from proleptic Gregorian and Julian calendars
@@ -8448,7 +8448,7 @@ dev-python/kaptan 0.5.12-r1: Configuration manager in your pocket
 dev-python/kazoo 2.8.0: A high-level Python library that makes it easier to use Apache Zookeeper
 dev-python/kconfiglib 14.1.0: A flexible Python Kconfig implementation
 dev-python/keep 2.10 2.10.1: Personal shell command keeper and snippets manager
-dev-python/keyring 22.0.0 22.0.1 22.2.0 22.3.0: Provides access to the system keyring service
+dev-python/keyring 22.0.1 22.3.0: Provides access to the system keyring service
 dev-python/keystoneauth 4.2.1: This package contains tools for authenticating to an OpenStack-based cloud.
 dev-python/keystonemiddleware 9.1.0: A middleware for the OpenStack Keystone API
 dev-python/kiwisolver 1.3.1: An efficient C++ implementation of the Cassowary constraint solving algorithm
@@ -8492,7 +8492,7 @@ dev-python/lxml 4.6.2-r1: A Pythonic binding for the libxml2 and libxslt librari
 dev-python/lz4 3.1.3: LZ4 Bindings for Python
 dev-python/m2crypto 0.35.2-r1 0.36.0-r1 0.37.1: A Python crypto and SSL toolkit
 dev-python/m2r 0.2.1: Markdown to reStructuredText converter
-dev-python/mako 1.1.3-r1 1.1.4: A Python templating language
+dev-python/mako 1.1.4: A Python templating language
 dev-python/mamba 0.11.1: Python test runner born under the banner of Behavior Driven Development
 dev-python/mando 0.6.4: Create Python CLI apps with little to no effort at all!
 dev-python/manuel 1.10.1: Lets you mix and match traditional doctests with custom test syntax
@@ -15411,7 +15411,7 @@ net-misc/x2goclient 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.1039_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.1432 0.4.1500: utility to download media contents from the web
-net-misc/youtube-dl 2021.02.10 2021.02.22 2021.03.02 9999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2021.02.22 2021.03.02 9999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r2 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.4.6 1.6.2 1.6.3: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
