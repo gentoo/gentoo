@@ -48,6 +48,7 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	export GO111MODULE=auto
 	local econf_args=(
 		--disable-static
 		$(multilib_is_native_abi && use go || echo --disable-go)
