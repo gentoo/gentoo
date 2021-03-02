@@ -24,7 +24,7 @@ else
 fi
 S="${WORKDIR}/${MY_P}"
 
-GWP_V="20200523"
+GWP_V="20210302"
 PATCHDIR="${WORKDIR}/gentoo-wine-patches"
 
 DESCRIPTION="Free implementation of Windows(tm) on Unix, without external patchsets"
@@ -144,6 +144,7 @@ PATCHES=(
 	"${PATCHDIR}/patches/${MY_PN}-4.7-multilib-portage.patch" #395615
 	"${PATCHDIR}/patches/${MY_PN}-2.0-multislot-apploader.patch" #310611
 	"${PATCHDIR}/patches/${MY_PN}-5.9-Revert-makedep-Install-also-generated-typelib-for-in.patch"
+	"${PATCHDIR}/patches/${MY_PN}-6.3-Fix-nine.patch"
 )
 PATCHES_BIN=()
 
