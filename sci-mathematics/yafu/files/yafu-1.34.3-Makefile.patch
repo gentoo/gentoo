@@ -1,5 +1,5 @@
---- Makefile.orig	2013-03-17 11:20:40.248683894 +0400
-+++ Makefile	2013-03-17 11:20:47.352683657 +0400
+--- a/Makefile
++++ b/Makefile
 @@ -87,7 +87,7 @@ ifeq ($(CC),icc)
  	CFLAGS += -mtune=core2 -march=core2
  endif
