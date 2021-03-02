@@ -1,5 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2021-03-02)
+# Java build is extremely sensitive to environment
+# Previously stable-masked but moved here
+# Then: bug #483372, bug #508564
+# Now: bug #773913 (exposed by having a new ~arch ebuild)
+media-libs/libcaca java mono
 
 # Jaco Kroon <jaco@uls.co.za> (2021-01-08)
 # blocksruntime (clang -fblocks) isn't available on all arches.
