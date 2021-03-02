@@ -1,0 +1,15 @@
+BDEPEND=app-text/asciidoc app-text/docbook-xml-dtd:4.5 >=app-text/docbook-xsl-stylesheets-1.75.2 >=dev-libs/libxslt-1.1.26 virtual/pkgconfig virtual/pkgconfig
+DEFINED_PHASES=configure install postinst setup
+DEPEND=>=sys-apps/kmod-23 elibc_musl? ( sys-libs/fts-standalone )
+DESCRIPTION=Generic initramfs generation tool
+EAPI=7
+HOMEPAGE=https://dracut.wiki.kernel.org
+IUSE=selinux kernel_linux
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=app-arch/cpio >=app-shells/bash-4.0:0 sys-apps/coreutils[xattr(-)] >=sys-apps/kmod-23[tools] || ( >=sys-apps/sysvinit-2.87-r3 sys-apps/openrc[sysv-utils(-),selinux?] sys-apps/systemd[sysv-utils] ) >=sys-apps/util-linux-2.21 virtual/pkgconfig virtual/udev elibc_musl? ( sys-libs/fts-standalone ) selinux? ( sec-policy/selinux-dracut sys-libs/libselinux sys-libs/libsepol )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://www.kernel.org/pub/linux/utils/boot/dracut/dracut-053.tar.xz
+_eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	optfeature	6a2add34e06e5a05d88471a33ccdd73e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=f08ac309b3d460f84b61e93ce6f6cdc7
