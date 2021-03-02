@@ -202,11 +202,6 @@ dev-db/mariadb sst-xtrabackup
 # bug #539212
 app-emulation/vice ffmpeg
 
-# Jeroen Roovers <jer@gentoo.org> (2015-04-26)
-# mongodb support is nice, but dev-libs/mongo-c-driver upstream is not ready
-# yet (bug #542210)
-net-analyzer/pmacct mongodb
-
 # Ben de Groot <yngwin@gentoo.org>
 # Mask experimental feature on stable. This also needs not yet stable mupdf.
 app-text/qpdfview fitz
@@ -223,13 +218,6 @@ media-libs/opencv vtk
 # Mikle Kolyada <zlogene@gentoo.org> (2014-08-16)
 # Not yet stabilized dependency, need more testing
 >=dev-perl/PDL-2.4.11 pdl2 pgplot
-
-# Samuli Suominen <ssuominen@gentoo.org> (2014-08-01)
-# Optional (not required by anything in gentoo-x86) and fragile (based on
-# host system, like Java JRE version). Keep masked indefinately until
-# something starts requiring these.
-# https://bugs.gentoo.org/483372 and https://bugs.gentoo.org/508564
-media-libs/libcaca java mono
 
 # Alon Bar-Lev <alonbl@gentoo.org> (2014-07-21)
 # dev-libs/opencryptoki will not be stabile any time soon (bug#510204)
