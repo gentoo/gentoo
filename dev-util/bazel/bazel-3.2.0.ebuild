@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,8 @@ SRC_URI="https://github.com/bazelbuild/bazel/releases/download/${PV}/${P}-dist.z
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="examples tools"
+IUSE="examples tools prefix static-libs"
+REQUIRED_USE="prefix? ( static-libs )"
 # strip corrupts the bazel binary
 # test fails with network-sandbox: An error occurred during the fetch of repository 'io_bazel_skydoc' (bug 690794)
 RESTRICT="strip test"
@@ -67,6 +68,9 @@ src_prepare() {
 
 src_compile() {
 	export EXTRA_BAZEL_ARGS="--jobs=$(makeopts_jobs) $(bazel-get-flags) --host_javabase=@local_jdk//:jdk"
+	if use static-libs; then
+		export BAZEL_LINKOPTS=-static-libs:-static-libgcc BAZEL_LINKLIBS=-l%:libstdc++.a:-lm
+	fi
 	VERBOSE=yes ./compile.sh || die
 
 	./scripts/generate_bash_completion.sh \
