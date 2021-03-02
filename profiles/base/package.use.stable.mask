@@ -202,11 +202,6 @@ dev-db/mariadb sst-xtrabackup
 # bug #539212
 app-emulation/vice ffmpeg
 
-# Jeroen Roovers <jer@gentoo.org> (2015-04-26)
-# mongodb support is nice, but dev-libs/mongo-c-driver upstream is not ready
-# yet (bug #542210)
-net-analyzer/pmacct mongodb
-
 # Ben de Groot <yngwin@gentoo.org>
 # Mask experimental feature on stable. This also needs not yet stable mupdf.
 app-text/qpdfview fitz
