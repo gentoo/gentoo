@@ -15,7 +15,9 @@ SLOT="0"
 LICENSE="BSD"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
-RDEPEND="
+DEPEND="
+	app-arch/zstd:="
+RDEPEND="${DEPEND}
 	$(python_gen_cond_dep '>=dev-python/cffi-1.14.0-r2:=[${PYTHON_USEDEP}]' 'python*')
 "
 BDEPEND="
