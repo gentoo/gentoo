@@ -9,7 +9,7 @@ MY_PN="${PN/plus/}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Enterprise client-server fax package for class 1 and 2 fax modems"
-HOMEPAGE="https://hylafax.sourceforge.net"
+HOMEPAGE="http://hylafax.sourceforge.net"
 SRC_URI="mirror://sourceforge/hylafax/${MY_P}.tar.gz"
 
 SLOT="0"
