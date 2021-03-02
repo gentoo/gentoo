@@ -3611,7 +3611,7 @@ dev-db/phppgadmin 7.12.1 7.13.0: Web-based administration for Postgres database 
 dev-db/plr 8.3.0.17 8.4.1: R language extension for postgresql database
 dev-db/postgis 3.0.3-r2 3.1.0 3.1.1 9999: Geographic Objects for PostgreSQL
 dev-db/postgresql 9.5.25 9.6.21 10.16 11.11 12.6 13.2 9999: PostgreSQL RDBMS
-dev-db/pspg 3.1.5: A better pager for psql and mysql
+dev-db/pspg 3.1.5 4.3.0: A better pager for psql and mysql
 dev-db/psqlodbc 11.01.0000 13.00.0000: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r2: Quick Database Manager
 dev-db/qt5-sqlcipher 1.0.11: Qt SQL driver plugin for SQLCipher
