@@ -11,10 +11,11 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Enterprise client-server fax package for class 1 and 2 fax modems"
 HOMEPAGE="http://hylafax.sourceforge.net"
 SRC_URI="mirror://sourceforge/hylafax/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 SLOT="0"
 LICENSE="hylafaxplus"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="html jbig lcms ldap mgetty pam"
 
 DEPEND="
@@ -36,15 +37,12 @@ RDEPEND="${DEPEND}
 	net-mail/metamail
 "
 
-S="${WORKDIR}/${MY_P}"
-
 CONFIG_PROTECT="${CONFIG_PROTECT} /var/spool/fax/etc /usr/lib/fax"
 CONFIG_PROTECT_MASK="${CONFIG_PROTECT_MASK} /var/spool/fax/etc/xferfaxlog"
 
 PATCHES=(
 	"${FILESDIR}/ldconfig-patch"
-	"${FILESDIR}/${PN}-CVE-2020-1539x.patch"
-	"${FILESDIR}/${PN}-7.0.2-tiff-4.2.patch"
+	"${FILESDIR}"/${PN}-7.0.2-tiff-4.2.patch
 )
 
 src_prepare() {
@@ -72,7 +70,8 @@ src_configure() {
 		# eval required for quoting in ${my_conf} to work properly, better way?
 		eval ./configure --nointeractive ${1} || die "./configure failed"
 	}
-	local my_conf="
+
+	local my_conf=(
 		--with-DIR_BIN=/usr/bin
 		--with-DIR_SBIN=/usr/sbin
 		--with-DIR_LIB=/usr/$(get_libdir)
@@ -82,38 +81,41 @@ src_configure() {
 		--with-DIR_LOCKS=/var/lock
 		--with-DIR_MAN=/usr/share/man
 		--with-DIR_SPOOL=/var/spool/fax
-		--with-DIR_HTML=/usr/share/doc/${P}/html
+		--with-DIR_HTML=/usr/share/doc/${PF}/html
 		--with-DIR_CGI="${WORKDIR}"
 		--with-PATH_DPSRIP=/var/spool/fax/bin/ps2fax
-		--with-PATH_IMPRIP=\"\"
+		--with-PATH_IMPRIP=""
 		--with-SYSVINIT=no
 		--with-REGEX=yes
 		--with-LIBTIFF=\"-ltiff -ljpeg -lz\"
 		--with-OPTIMIZER=\"${CFLAGS}\"
 		--with-DSO=auto
-		--with-HTML=$(usex html)"
+		--with-HTML=$(usex html)
+	)
 
 	if use mgetty; then
-		my_conf="${my_conf} \
-			--with-PATH_GETTY=/sbin/mgetty \
-			--with-PATH_EGETTY=/sbin/mgetty \
-			--with-PATH_VGETTY=/usr/sbin/vgetty"
+		my_conf+=(
+			--with-PATH_GETTY=/sbin/mgetty
+			--with-PATH_EGETTY=/sbin/mgetty
+			--with-PATH_VGETTY=/usr/sbin/vgetty
+		)
 	else
 		# GETTY defaults to /sbin/agetty
-		my_conf="${my_conf} \
-			--with-PATH_EGETTY=/bin/false \
-			--with-PATH_VGETTY=/bin/false"
+		my_conf+=(
+			--with-PATH_EGETTY=/bin/false
+			--with-PATH_VGETTY=/bin/false
+		)
 	fi
 
 	#--enable-pam isn't valid
-	use pam || my_conf="${my_conf} $(use_enable pam)"
-	use lcms || my_conf="${my_conf} $(use_enable lcms)"
-	use ldap || my_conf="${my_conf} $(use_enable ldap)"
-	use jbig || my_conf="${my_conf} $(use_enable jbig)"
+	use pam || my_conf+=( $(use_enable pam) )
+	use lcms || my_conf+=( $(use_enable lcms) )
+	use ldap || my_conf+=( $(use_enable ldap) )
+	use jbig || my_conf+=( $(use_enable jbig) )
 
 	tc-export CC CXX AR RANLIB
 
-	do_configure "${my_conf}"
+	do_configure "${my_conf[*]}"
 }
 
 src_compile() {
