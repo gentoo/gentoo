@@ -138,6 +138,7 @@ kernel_asm_arch() {
 }
 
 src_configure() {
+	append-cflags -fcommon
 	if use usbip; then
 		pushd tools/usb/usbip/ || die
 		econf \
