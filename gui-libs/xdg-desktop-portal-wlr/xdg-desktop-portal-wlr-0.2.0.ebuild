@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/emersion/${PN}.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/emersion/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/emersion/${PN}/releases/download/v${PV}/${P}.tar.gz"
 	#KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
 
@@ -43,11 +43,5 @@ src_configure() {
 	local emesonargs=(
 		"-Dwerror=false"
 	)
-	if use systemd; then
-		emesonargs+=("-DHAVE_SYSTEMD=1")
-	else
-		emesonargs+=("-DHAVE_ELOGIND=1")
-	fi
-
 	meson_src_configure
 }

@@ -5,6 +5,7 @@
 		<email>sbraz@gentoo.org</email>
 		<name>Louis Sautier</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">jaraco.logging</remote-id>
 		<remote-id type="github">jaraco/jaraco.logging</remote-id>
