@@ -19,7 +19,7 @@ HOMEPAGE="https://github.com/strukturag/libheif"
 LICENSE="GPL-3"
 SLOT="0/1.10"
 IUSE="+aom gdk-pixbuf go libde265 rav1e test +threads x265"
-REQUIRED_USE="test? ( go )"
+REQUIRED_USE="test? ( go libde265 )"
 RESTRICT="!test? ( test )"
 
 BDEPEND="test? ( dev-lang/go )"
