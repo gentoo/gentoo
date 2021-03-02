@@ -3539,7 +3539,7 @@ dev-db/apgdiff 2.4: A simple PostgreSQL diff tool that is useful for schema upgr
 dev-db/barman 2.10 2.12: Administration tool for disaster recovery of PostgreSQL servers
 dev-db/bucardo 5.4.1: An asynchronous PostgreSQL replication system
 dev-db/cdb 0.75-r4: Fast, reliable, simple package for creating and reading constant databases
-dev-db/citus 9.5.2: Open-source postgresql extension for clustering/multi-node setups
+dev-db/citus 9.5.2 9.5.4 10.0.1: Open-source postgresql extension for clustering/multi-node setups
 dev-db/cockroach 2.1.5 19.1.1: open source database for building cloud services
 dev-db/cpp-driver 2.9.0 2.11.0: DataStax C/C++ Driver for Cassandra
 dev-db/datadraw 3.1.1: feature rich database generator for high performance C applications
@@ -3609,7 +3609,7 @@ dev-db/pgxnclient 1.3-r2 1.3.1: PostgreSQL Extension Network Client
 dev-db/phpmyadmin 4.9.6 5.0.3: Web-based administration for MySQL database in PHP
 dev-db/phppgadmin 7.12.1 7.13.0: Web-based administration for Postgres database in php
 dev-db/plr 8.3.0.17 8.4.1: R language extension for postgresql database
-dev-db/postgis 3.0.3-r2 3.1.0 9999: Geographic Objects for PostgreSQL
+dev-db/postgis 3.0.3-r2 3.1.0 3.1.1 9999: Geographic Objects for PostgreSQL
 dev-db/postgresql 9.5.25 9.6.21 10.16 11.11 12.6 13.2 9999: PostgreSQL RDBMS
 dev-db/pspg 3.1.5: A better pager for psql and mysql
 dev-db/psqlodbc 11.01.0000 13.00.0000: Official ODBC driver for PostgreSQL
@@ -3630,7 +3630,7 @@ dev-db/sqlitebrowser 3.11.1-r1 3.12.1 9999: A light GUI editor for SQLite databa
 dev-db/sqliteman 1.2.2-r4: Powerful GUI manager for the Sqlite3 database
 dev-db/sqlitestudio 3.2.1-r1: Powerful cross-platform SQLite database manager
 dev-db/textsearch_ja 9.0.0: Integrated Full-Text-Search for Japanese language using morphological analyze
-dev-db/timescaledb 2.0.1-r1: Open-source time-series SQL database
+dev-db/timescaledb 2.0.1-r1 2.0.2 2.1.0: Open-source time-series SQL database
 dev-db/tinycdb 0.77-r2 0.78: A very fast and simple package for creating and reading constant data bases
 dev-db/tokyocabinet 1.4.48-r1: A library of routines for managing a database
 dev-db/tora 3.2-r1 9999: SQL IDE for Oracle, MySQL and PostgreSQL dbs
@@ -8676,13 +8676,13 @@ dev-python/pbr 5.5.1: Inject some useful and sensible default behaviors into set
 dev-python/pdfrw 0.4_p1: PDF file reader/writer library
 dev-python/pebble 4.6.0: Threading and multiprocessing eye-candy
 dev-python/pecan 1.3.3-r2 1.4.0: A WSGI object-dispatching web framework, lean, fast, with few dependencies.
-dev-python/peewee 3.13.2 3.14.0 3.14.1: Small Python ORM
+dev-python/peewee 3.14.0 3.14.1: Small Python ORM
 dev-python/pelican-minify 0.9: An HTML minification plugin for Pelican, the static site generator.
 dev-python/pendulum 2.1.2-r1: Drop-in replacement for the standard datetime class
 dev-python/pep8 1.7.1: Python style guide checker
 dev-python/pexpect 4.8.0-r1: Python module for spawning child apps and responding to expected patterns
 dev-python/pgspecial 1.11.10 1.12.1: Python implementation of PostgreSQL meta commands
-dev-python/phonenumbers 8.12.15 8.12.16 8.12.17 8.12.18: Python port of Google's libphonenumber
+dev-python/phonenumbers 8.12.17 8.12.18: Python port of Google's libphonenumber
 dev-python/phply 1.2.5: Lexer and parser for PHP source implemented using PLY
 dev-python/picklemagic 0.0_pre20160415: A library for analysing python pickles safely
 dev-python/pickleshare 0.7.5: A small 'shelve' like datastore with concurrency support
@@ -8779,7 +8779,7 @@ dev-python/pycups 1.9.73-r2: Python bindings for the CUPS API
 dev-python/pycurl 7.43.0.6: python binding for curl/libcurl
 dev-python/pycxx 7.1.2-r2: Set of facilities to extend Python with C++
 dev-python/pydantic 1.6.1: Data parsing and validation using Python type hints
-dev-python/pydata-sphinx-theme 0.4.2 0.4.3: Bootstrap-based Sphinx theme from the PyData community
+dev-python/pydata-sphinx-theme 0.4.3: Bootstrap-based Sphinx theme from the PyData community
 dev-python/pydecomp 0.3-r1 9999: A python library of common (de)compression and contents handling
 dev-python/pydiff 0.2-r1: Diffs two Python files at the bytecode level
 dev-python/pydispatcher 2.1.2: Multi-producer-multi-consumer signal dispatching mechanism
@@ -8815,7 +8815,7 @@ dev-python/pyjsparser 2.7.1_p20190421: Fast javascript parser based on esprima.j
 dev-python/pyjwt 1.7.1-r1 2.0.1: JSON Web Token implementation in Python
 dev-python/pykerberos 1.3.0-r1 1.3.1: A high-level Python wrapper for Kerberos/GSSAPI operations
 dev-python/pykka 2.0.2 2.0.3: A Python implementation of the actor model
-dev-python/pykwalify 1.7.0 1.8.0: Python lib/cli for JSON/YAML schema validation
+dev-python/pykwalify 1.8.0: Python lib/cli for JSON/YAML schema validation
 dev-python/pylama 7.7.1-r1: Code audit tool for python
 dev-python/pylast 4.1.0: Python interface to last.fm and other api-compatible websites
 dev-python/pylatex 1.4.1: A Python library for creating LaTeX files and snippets
@@ -8880,7 +8880,7 @@ dev-python/pyroute2 0.5.14: A pure Python netlink and Linux network configuratio
 dev-python/pyrqlite 2.1: Python client for rqlite
 dev-python/pyrsistent 0.17.3: Persistent/Functional/Immutable data structures
 dev-python/pysaml2 6.1.0: Python implementation of SAML Version 2 to be used in a WSGI environment
-dev-python/pyscard 1.9.9 2.0.0: Smart cards support in python
+dev-python/pyscard 2.0.0: Smart cards support in python
 dev-python/pyscreenshot 2.2: Python screenshot library
 dev-python/pyserial 3.5: Python Serial Port extension
 dev-python/pyside2 5.15.1: Python bindings for the Qt framework
@@ -8926,7 +8926,7 @@ dev-python/pytest-ordering 0.6: pytest plugin to run your tests in a specific or
 dev-python/pytest-pep8 1.0.6-r1: pytest plugin to check PEP8 requirements
 dev-python/pytest-pylint 0.17.0: pytest plugin to check source code with pylint
 dev-python/pytest-qt 3.3.0: pytest plugin for PyQt4 or PyQt5 applications
-dev-python/pytest-regressions 2.1.1 2.2.0: Easy to use fixtures to write regression tests
+dev-python/pytest-regressions 2.2.0: Easy to use fixtures to write regression tests
 dev-python/pytest-rerunfailures 9.1.1: pytest plugin to re-run tests to eliminate flaky failures
 dev-python/pytest-salt 2020.1.27-r1: PyTest Salt Plugin
 dev-python/pytest-salt-factories 0.121.1: The new generation of the pytest-salt Plugin
@@ -8943,7 +8943,7 @@ dev-python/pytest-xvfb 2.0.0: A pytest plugin to run Xvfb for tests
 dev-python/python-augeas 1.1.0: Python bindings for Augeas
 dev-python/python-axolotl 0.2.3-r1: A python module for the axolotl protocol
 dev-python/python-axolotl-curve25519 0.4.1_p2-r1: A python wrapper for the curve25519 library with ed25519 signatures
-dev-python/python-backoff 1.6.0 1.10.0: Function decoration for backoff and retry
+dev-python/python-backoff 1.10.0: Function decoration for backoff and retry
 dev-python/python-barbicanclient 4.8.1 5.0.1: Client library for Barbican API.
 dev-python/python-blazarclient 3.1.1: This is a client for the OpenStack Blazar API
 dev-python/python-bugzilla 3.0.2: A python module for interacting with Bugzilla over XMLRPC
@@ -9106,7 +9106,7 @@ dev-python/ropemode 0.5: A helper for using rope refactoring library in IDEs
 dev-python/rosdistro 0.8.3 9999: Tools to work with catkinized rosdistro files
 dev-python/rospkg 1.2.8-r1 9999: Standalone Python library for the ROS package system
 dev-python/routes 2.5.1: A re-implementation of Rails routes system, mapping URLs to Controllers/Actions
-dev-python/rply 0.7.7-r1 0.7.8: Pure python parser generator that also works with RPython
+dev-python/rply 0.7.8: Pure python parser generator that also works with RPython
 dev-python/rpy 2.9.0 3.4.2: Python interface to the R Programming Language
 dev-python/rpyc 4.1.5 5.0.0 5.0.1: Remote Python Call (RPyC), a transparent and symmetric RPC library
 dev-python/rq 1.7.0: simple, lightweight library for creating and processing background jobs
@@ -9117,7 +9117,7 @@ dev-python/rtslib-fb 2.1.74: A Python object API for managing the Linux LIO kern
 dev-python/ruamel-yaml 0.16.12-r1: YAML parser/emitter that supports roundtrip comment preservation
 dev-python/ruamel-yaml-clib 0.2.2-r1: C-based reader/scanner and emitter for dev-python/ruamel-yaml
 dev-python/ryu 4.34: Component-based Software-defined Networking Framework
-dev-python/s3transfer 0.3.3 0.3.4: An Amazon S3 Transfer Manager
+dev-python/s3transfer 0.3.4: An Amazon S3 Transfer Manager
 dev-python/sabyenc 4.0.2: Module providing raw yEnc encoding/decoding for SABnzbd
 dev-python/sarge 0.1.5: wrapper for subprocess which provides command pipeline functionality
 dev-python/scandir 1.10.0-r2: A better directory iterator and faster os.walk()
@@ -9158,7 +9158,7 @@ dev-python/sip 4.19.24 4.19.25: Python extension module generator for C and C++ 
 dev-python/six 1.15.0-r1: Python 2 and 3 compatibility library
 dev-python/slackclient 2.5.0: Client for Slack supporting the Slack Web and Real Time Messaging API
 dev-python/slimit 0.8.1-r1: A JavaScript minifier written in Python
-dev-python/slixmpp 1.4.2 1.5.2 1.7.0 9999: Python 3 library for XMPP
+dev-python/slixmpp 1.7.0 9999: Python 3 library for XMPP
 dev-python/smartypants 2.0.1 9999: ASCII quote-dot-dash to HTML entity converter
 dev-python/smmap 3.0.5 4.0.0: A pure Python implementation of a sliding window memory map manager
 dev-python/snakeoil 0.8.8 0.8.9 0.9.0 0.9.1 0.9.2-r1 9999: misc common functionality and useful optimizations
@@ -16175,7 +16175,7 @@ sci-libs/ViSP 3.3.0: Visual Servoing Platform: visual tracking and visual servoi
 sci-libs/adolc 2.7.2 9999: Automatic differentiation system for C/C++
 sci-libs/alglib 3.10.0-r1: Numerical analysis and data processing library
 sci-libs/amd 2.4.6 2.4.6-r1: Library to order a sparse matrix prior to Cholesky factorization
-sci-libs/armadillo 8.300.2 9.850.1 10.2.0: Streamlined C++ linear algebra library
+sci-libs/armadillo 10.2.0: Streamlined C++ linear algebra library
 sci-libs/arpack 3.8.0 9999: Arnoldi package library to solve large scale eigenvalue problems
 sci-libs/arprec 2.2.19: Arbitrary precision float arithmetics and functions
 sci-libs/atlas 3.10.2: Automatically Tuned Linear Algebra Software
@@ -16255,7 +16255,7 @@ sci-libs/galib 2.4.7-r1: Library for genetic algorithms in C++ programs
 sci-libs/gamer 1.5-r2: Geometry-preserving Adaptive MeshER
 sci-libs/gaul-devel 0.1849-r2: Genetic Algorithm Utility Library
 sci-libs/gdal 3.2.1-r1: Translator library for raster geospatial data formats (includes OGR support)
-sci-libs/geos 3.8.1 3.9.0-r2: Geometry engine library for Geographic Information Systems
+sci-libs/geos 3.8.1 3.9.0-r2 3.9.1: Geometry engine library for Geographic Information Systems
 sci-libs/gerris 20131206-r1: Gerris Flow Solver
 sci-libs/getdata 0.9.0-r3: Reference implementation of the Dirfile, format for time-ordered binary data
 sci-libs/ginkgo 1.1.1-r1 9999: Numerical linear algebra software package
@@ -16559,7 +16559,7 @@ sci-visualization/gnuplot 5.4.1-r1 5.5.9999-r1: Command-line driven interactive 
 sci-visualization/gr 0.50.0-r2 0.53.0: Universal framework for cross-platform visualization applications
 sci-visualization/grace 5.1.25_p7 5.1.25_p9: Motif based XY-plotting tool
 sci-visualization/gri 2.12.23-r1: Language for scientific graphics programming
-sci-visualization/gwyddion 2.55-r4 2.56: Framework for Scanning Mode Microscopy data analysis
+sci-visualization/gwyddion 2.56: Framework for Scanning Mode Microscopy data analysis
 sci-visualization/kst 2.0.8: Fast real-time large-dataset viewing and plotting tool
 sci-visualization/labplot 2.8.1 9999: Scientific data analysis and visualisation based on KDE Frameworks
 sci-visualization/opendx 4.4.4-r7: 3D data visualization tool
