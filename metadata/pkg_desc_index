@@ -3474,7 +3474,7 @@ dev-ada/libgpr 2019-r1 2020: Ada library to handle GPRbuild project files
 dev-ada/xmlada 2019-r1 2020: Set of modules that provide a simple manipulation of XML streams
 dev-cpp/ETL 0.04.15-r1: Multi-platform class and template library
 dev-cpp/abseil-cpp 20200225.2 20200923.2: Abseil Common Libraries (C++), LTS Branch
-dev-cpp/aixlog 1.4.0 9999: Header-only C++ logging library
+dev-cpp/aixlog 1.5.0 9999: Header-only C++ logging library
 dev-cpp/amqp-cpp 4.3.10: AMQP-CPP is a C++ library for communicating with a RabbitMQ message broker
 dev-cpp/antlr-cpp 2.7.7-r1 4.7.2: The ANTLR 4 C++ Runtime
 dev-cpp/argparse 2.1: Argument Parser for Modern C++
@@ -13207,7 +13207,7 @@ media-libs/libgpod 0.8.3-r3: Shared library to access the contents of an iPod
 media-libs/libgroove 4.3.0-r1: Streaming audio processing library
 media-libs/libharu 2.3.0-r2: C/C++ library for PDF generation
 media-libs/libhdhomerun 20190621 20200521: SiliconDust HDHomeRun Utilties
-media-libs/libheif 1.9.1 1.10.0 9999: ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
+media-libs/libheif 1.9.1 1.10.0 1.11.0 9999: ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
 media-libs/libicns 0.8.1-r1: A library for manipulating MacOS X .icns icon format
 media-libs/libid3tag 0.15.1b-r4: The MAD id3tag library
 media-libs/libiec61883 1.2.0-r2: Library for capturing video (dv or mpeg2) over the IEEE 1394 bus
