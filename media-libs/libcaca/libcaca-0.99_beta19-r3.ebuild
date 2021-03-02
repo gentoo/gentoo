@@ -6,7 +6,7 @@ EAPI=7
 RUBY_OPTIONAL=yes
 #USE_RUBY=ruby20
 
-inherit autotools ruby-ng flag-o-matic mono-env java-pkg-opt-2 multilib-minimal toolchain-funcs
+inherit autotools ruby-ng flag-o-matic java-pkg-opt-2 mono-env toolchain-funcs multilib-minimal
 
 MY_P=${P/_/.}
 DESCRIPTION="A library that creates colored ASCII-art graphics"
@@ -158,6 +158,7 @@ multilib_src_test() {
 multilib_src_install() {
 	emake V=1 DESTDIR="${D}" install
 
+	# Note: broken, see bug #508564 and bug #773913
 	if multilib_is_native_abi && use java; then
 		java-pkg_newjar java/libjava.jar
 	fi
