@@ -3,9 +3,8 @@
 
 EAPI=7
 
-VCS_INHERIT=""
 if [[ "${PV}" == 9999 ]] ; then
-	VCS_INHERIT="git-r3"
+	inherit git-r3
 	EGIT_REPO_URI="https://github.com/MariaDB/mariadb-connector-c.git"
 else
 	MY_PN=${PN#mariadb-}
@@ -15,7 +14,8 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
 fi
 
-inherit cmake-utils multilib-minimal toolchain-funcs ${VCS_INHERIT}
+CMAKE_ECLASS=cmake
+inherit cmake-multilib toolchain-funcs
 
 MULTILIB_CHOST_TOOLS=( /usr/bin/mariadb_config )
 
@@ -49,15 +49,13 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}"/gentoo-layout-3.0.patch
 	"${FILESDIR}"/${PN}-3.1.3-fix-pkconfig-file.patch
+	"${FILESDIR}"/${PN}-3.1.11-fix-flow-control-statement.patch
 )
 
-src_configure() {
+multilib_src_configure() {
 	# bug 508724 mariadb cannot use ld.gold
 	tc-ld-disable-gold
-	multilib-minimal_src_configure
-}
 
-multilib_src_configure() {
 	local mycmakeargs=(
 		-DWITH_EXTERNAL_ZLIB=ON
 		-DWITH_SSL:STRING=$(usex ssl $(usex gnutls GNUTLS OPENSSL) OFF)
@@ -71,19 +69,11 @@ multilib_src_configure() {
 		-DINSTALL_BINDIR=bin
 		-DWITH_UNIT_TESTS=$(usex test ON OFF)
 	)
-	cmake-utils_src_configure
-}
-
-multilib_src_compile() {
-	cmake-utils_src_compile
-}
-
-multilib_src_install() {
-	cmake-utils_src_install
+	cmake_src_configure
 }
 
 multilib_src_install_all() {
 	if ! use static-libs ; then
-		find "${D}" -name "*.a" -delete || die
+		find "${ED}" -name "*.a" -delete || die
 	fi
 }
