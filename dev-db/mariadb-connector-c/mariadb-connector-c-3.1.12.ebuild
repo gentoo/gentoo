@@ -49,6 +49,7 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}"/gentoo-layout-3.0.patch
 	"${FILESDIR}"/${PN}-3.1.3-fix-pkconfig-file.patch
+	"${FILESDIR}"/${PN}-3.1.11-fix-flow-control-statement.patch
 )
 
 src_configure() {
