@@ -14,7 +14,7 @@ SRC_URI="https://github.com/martanne/vis/releases/download/v${PV}/${P}.tar.gz
 	test? ( https://github.com/martanne/vis-test/releases/download/v${MY_PTV}/vis-test-${MY_PTV}.tar.gz )"
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm x86"
 IUSE="+ncurses +lua selinux test tre"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
