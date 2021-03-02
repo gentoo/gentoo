@@ -22,7 +22,7 @@ RDEPEND="
 	sci-libs/coinor-clp:=
 	sci-libs/coinor-osi:=
 	sci-libs/coinor-utils:=
-	sci-libs/ipopt:=
+	sci-libs/ipopt:=[lapack]
 	virtual/blas"
 DEPEND="${RDEPEND}"
 BDEPEND="
