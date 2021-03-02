@@ -10,7 +10,7 @@ SRC_URI="https://marginalhacks.com/bin/album.versions/${P}.tar.gz
 
 LICENSE="marginalhacks"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~ppc ~ppc64 x86"
 IUSE="doc ffmpeg plugins themes"
 
 DEPEND=""
