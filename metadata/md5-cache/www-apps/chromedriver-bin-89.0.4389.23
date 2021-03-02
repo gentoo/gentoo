@@ -8,5 +8,5 @@ LICENSE=google-chrome
 RDEPEND=!www-client/chromium www-client/google-chrome
 RESTRICT=bindist mirror strip
 SLOT=0
-SRC_URI=amd64? ( https://chromedriver.storage.googleapis.com/88.0.4324.96/chromedriver_linux64.zip -> chromedriver-bin-88.0.4324.96.linux64.zip )
+SRC_URI=amd64? ( https://chromedriver.storage.googleapis.com/89.0.4389.23/chromedriver_linux64.zip -> chromedriver-bin-89.0.4389.23.linux64.zip )
 _md5_=a854a51b003b667b5d0639d83e11ab7f
