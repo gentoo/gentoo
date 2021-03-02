@@ -28,6 +28,10 @@ RDEPEND="
 #	test? ( app-admin/salt[${PYTHON_USEDEP}] )
 #"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-2020.1.27-r2.patch"
+)
+
 # tests need network access
 RESTRICT="test"
 
