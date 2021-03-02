@@ -8,7 +8,7 @@ PHP_EXT_SKIP_PHPIZE="yes"
 USE_PHP="php5-6 php7-0 php7-1 php7-2 php7-3"
 PHP_EXT_ECONF_ARGS=()
 
-inherit php-ext-source-r3 autotools
+inherit php-ext-source-r3 autotools flag-o-matic
 
 DESCRIPTION="PHP bindings for libvirt"
 HOMEPAGE="http://libvirt.org/php/"
@@ -48,6 +48,11 @@ src_prepare() {
 		php_init_slot_env "${slot}"
 		eautoreconf
 	done
+}
+
+src_configure() {
+	append-cflags -fcommon
+	php-ext-source-r3_src_configure
 }
 
 src_install() {
