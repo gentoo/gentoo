@@ -18504,7 +18504,7 @@ x11-misc/menumaker 0.99.11 0.99.12: Utility that scans through the system and ge
 x11-misc/mgm 1.2-r1: Moaning Goat Meter: load and status meter written in Perl
 x11-misc/mixer_app 1.8.0-r1: mixer_app has volume controllers that can be configured to handle sound sources
 x11-misc/mozo 1.24.0 1.24.0-r1: Mozo menu editor for MATE
-x11-misc/mugshot 0.4.2-r1 0.4.3: A lightweight user-configuration application
+x11-misc/mugshot 0.4.3: A lightweight user-configuration application
 x11-misc/netwmpager 2.05: Pager that works with Openbox and other EWMH compliant window managers
 x11-misc/nitrogen 1.6.1 1.6.1-r1 99999: A background browser and setter for X
 x11-misc/notification-daemon 3.20.0 3.20.0-r1: Notification daemon
