@@ -10,14 +10,14 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>
-		waypipe is a proxy for wayland clients to allow streaming.
-		sessions over tcp. It forwards Wayland messages and
-		serializes changes to shared memory buffers over a single socket.
-		This makes application forwarding similar to ssh -X feasible.
+		Waypipe is a proxy for all Wayland clients to allow streaming
+		sessions over tcp. It forwards Wayland messages and serializes
+		changes to shared memory buffers over a single socket, to allow
+		application forwarding similar to ssh -X.
 	</longdescription>
 	<use>
-		<flag name="dmabuf">Use dmabuf for data exchange and hardware decoding</flag>
-		<flag name="ffmpeg">Link with ffmpeg for software decoding</flag>
+		<flag name="dmabuf">Use DMABUFs for data exchange and hardware decoding</flag>
+		<flag name="ffmpeg">Link with ffmpeg to allow buffer displays using video streams</flag>
 		<flag name="systemtap">Enable SystemTAP/DTrace tracing</flag>
 	</use>
 </pkgmetadata>
