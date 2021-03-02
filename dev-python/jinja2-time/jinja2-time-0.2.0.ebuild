@@ -18,8 +18,8 @@ RDEPEND="dev-python/arrow[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/freezegun[${PYTHON_USEDEP}] )"
 
-distutils_enable_tests pytest
-
 PATCHES=(
 	"${FILESDIR}"/${P}-arrow-compat.patch
 )
+
+distutils_enable_tests pytest
