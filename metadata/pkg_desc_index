@@ -18522,7 +18522,7 @@ x11-misc/pcmanfm-qt 0.15.1 0.16.0: Qt GUI Tabbed Filemanager
 x11-misc/peksystray 0.4.0: A system tray dockapp for window managers supporting docking
 x11-misc/picom 8-r1 8.1-r1 8.2-r1 9999: A lightweight compositor for X11 (previously a compton fork)
 x11-misc/piedock 1.6.6-r1 1.6.9: A little bit like the famous OS X dock but in shape of a pie menu
-x11-misc/polybar 3.4.3 3.5.4: A fast and easy-to-use tool for creating status bars
+x11-misc/polybar 3.4.3 3.5.5: A fast and easy-to-use tool for creating status bars
 x11-misc/prime-run 1.0: Run programs on the discrete nVidia video card
 x11-misc/primus 0.2 0.2-r3: Faster OpenGL offloading for Bumblebee
 x11-misc/projecteur 0.8 0.9.1: Linux Desktop Application for the Logitech Spotlight device
