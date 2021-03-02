@@ -19091,7 +19091,7 @@ xfce-extra/xfce4-alsa-plugin 0.3.0: Simple ALSA volume control for xfce4-panel
 xfce-extra/xfce4-battery-plugin 1.1.3: A battery monitor panel plugin for the Xfce desktop environment
 xfce-extra/xfce4-calculator-plugin 0.7.1: A calculator plugin for the Xfce4 panel
 xfce-extra/xfce4-clipman-plugin 1.6.1: A clipboard manager plug-in for the Xfce panel
-xfce-extra/xfce4-cpufreq-plugin 1.2.4: A panel plugin for showing information about cpufreq settings
+xfce-extra/xfce4-cpufreq-plugin 1.2.4 1.2.5: A panel plugin for showing information about cpufreq settings
 xfce-extra/xfce4-cpugraph-plugin 1.2.1 1.2.2 1.2.3: A system load plug-in for the Xfce panel
 xfce-extra/xfce4-datetime-plugin 0.8.1: A panel plug-in with date, time and embedded calender
 xfce-extra/xfce4-dict 0.8.4: A dict.org querying application and panel plug-in for the Xfce desktop
