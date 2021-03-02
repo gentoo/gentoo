@@ -1,17 +1,24 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit bash-completion-r1 git-r3 elisp-common
+inherit bash-completion-r1 elisp-common
+
+if [[ ${PV} = 9999* ]]; then
+	EGIT_REPO_URI="https://git.zx2c4.com/password-store"
+	inherit git-r3
+else
+	SRC_URI="https://git.zx2c4.com/password-store/snapshot/password-store-${PV}.tar.xz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+	S="${WORKDIR}/password-store-${PV}"
+fi
 
 DESCRIPTION="Stores, retrieves, generates, and synchronizes passwords securely"
 HOMEPAGE="https://www.passwordstore.org/"
-EGIT_REPO_URI="https://git.zx2c4.com/password-store"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS=""
 IUSE="+git X zsh-completion fish-completion emacs dmenu importers elibc_Darwin"
 
 RDEPEND="
@@ -24,10 +31,12 @@ RDEPEND="
 	zsh-completion? ( app-shells/gentoo-zsh-completions )
 	fish-completion? ( app-shells/fish )
 	dmenu? ( x11-misc/dmenu x11-misc/xdotool )
-	emacs? ( >=app-editors/emacs-23.1:* )
+	emacs? ( >=app-editors/emacs-23.1:* >=app-emacs/f-0.11.0 >=app-emacs/s-1.9.0 >=app-emacs/with-editor-2.5.11 )
 "
 
 src_prepare() {
+	default
+
 	use elibc_Darwin || return
 	# use coreutils'
 	sed -i -e 's/openssl base64/base64/g' src/platform/darwin.sh || die
@@ -38,7 +47,7 @@ src_prepare() {
 }
 
 src_compile() {
-	:;
+	use emacs && elisp-compile contrib/emacs/*.el
 }
 
 src_install() {
@@ -51,7 +60,7 @@ src_install() {
 		WITH_FISHCOMP=$(usex fish-completion)
 	use dmenu && dobin contrib/dmenu/passmenu
 	if use emacs; then
-		elisp-install ${PN} contrib/emacs/*.el
+		elisp-install ${PN} contrib/emacs/*.{el,elc}
 		elisp-site-file-install "${FILESDIR}/50${PN}-gentoo.el"
 	fi
 	if use importers; then
