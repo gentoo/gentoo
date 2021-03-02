@@ -9,6 +9,7 @@
 		<email>azamat.hackimov@gmail.com</email>
 		<name>Azamat H. Hackimov</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">construct/construct</remote-id>
 		<remote-id type="pypi">construct</remote-id>
