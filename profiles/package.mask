@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Alfredo Tupone <tupone@gentoo.org> (2021-03-03)
+# no package uses it
+# Removal on 2021-04-02
+dev-ml/core_extended
+
 # Sam James <sam@gentoo.org> (2021-03-01)
 # Mask new proj 8.x as it removes deprecated
 # API. Likely to break several consumers
