@@ -42,6 +42,12 @@ python_test() {
 	nosetests --verbosity=3 -e test_format_flake8 || die
 }
 
+# https://dev.gentoo.org/~mgorny/python-guide/concept.html#packaging-pkgutil-style-namespaces-in-gentoo
+python_install() {
+	rm "${BUILD_DIR}"/lib/bin/__init__.py || die
+	distutils-r1_python_install
+}
+
 pkg_postinst() {
 	optfeature "Make picture of Theano computation graph" dev-python/pydot-ng
 	optfeature "Required for GPU/CPU code generation" dev-python/pygpu
