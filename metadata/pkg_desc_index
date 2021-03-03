@@ -1019,7 +1019,7 @@ app-cdr/xbiso 0.6.1-r2 0.6.1-r3: Xbox xdvdfs ISO extraction utility
 app-cdr/xcdroast 0.98_alpha16-r3: Lightweight cdrtools front-end for CD and DVD writing
 app-cdr/xfburn 0.6.2: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
-app-crypt/acme 1.10.1 1.11.0 1.12.0 1.13.0 9999: An implementation of the ACME protocol
+app-crypt/acme 1.12.0 1.13.0 9999: An implementation of the ACME protocol
 app-crypt/acme-sh 2.8.8-r1 9999: A pure Unix shell script implementing ACME client protocol
 app-crypt/acme-tiny 4.1.0 9999: A tiny, auditable script for Let's Encrypt's ACME Protocol
 app-crypt/acr38u 1.7.11-r3: Non CCID driver for ACR38 AC1038-based Smart Card Reader
@@ -1034,10 +1034,10 @@ app-crypt/bsign 0.4.5-r1: embed secure hashes (SHA1) and digital signatures (GNU
 app-crypt/cardpeek 0.8.4: Tool to read the contents of smartcards
 app-crypt/ccid 1.4.33 1.4.34: CCID free software driver
 app-crypt/ccrypt 1.11 1.11-r1: Encryption and decryption
-app-crypt/certbot 1.10.1 1.11.0 1.12.0 1.13.0 9999: Let's encrypt client to automate deployment of X.509 certificates
-app-crypt/certbot-apache 1.10.1 1.11.0 1.12.0 1.13.0 9999: Apache plugin for certbot (Let's Encrypt Client)
+app-crypt/certbot 1.12.0 1.13.0 9999: Let's encrypt client to automate deployment of X.509 certificates
+app-crypt/certbot-apache 1.12.0 1.13.0 9999: Apache plugin for certbot (Let's Encrypt Client)
 app-crypt/certbot-dns-nsone 0.39.0-r1: NS1 DNS Authenticator plugin for Certbot (Let's Encrypt Client)
-app-crypt/certbot-nginx 1.10.1 1.11.0 1.12.0 1.13.0 9999: Nginx plugin for certbot (Let's Encrypt Client)
+app-crypt/certbot-nginx 1.12.0 1.13.0 9999: Nginx plugin for certbot (Let's Encrypt Client)
 app-crypt/cfssl 1.4.1: Cloudflare's PKI and TLS toolkit
 app-crypt/chntpw 140201: Offline Windows NT Password & Registry Editor
 app-crypt/ckpass 0.2-r1: ncurses based password database client compatible with KeePass 1.x databases
@@ -2028,7 +2028,7 @@ app-emulation/cri-tools 1.18.0: CLI and validation tools for Kubelet Container R
 app-emulation/crossover-bin 19.0.1-r1 19.0.2 20.0.2-r1: Commercial version of app-emulation/wine with paid support
 app-emulation/crun 0.16 0.17: A fast and low-memory footprint OCI Container Runtime fully written in C
 app-emulation/dinero 4.7-r1: Cache simulator
-app-emulation/diskimage-builder 3.5.0 3.7.0 9999: Golden Disk Image builder.
+app-emulation/diskimage-builder 3.7.0 9999: Golden Disk Image builder.
 app-emulation/distrobuilder 1.1: System container image builder for LXC and LXD
 app-emulation/dlx 1.0.0 1.5.20: DLX Simulator
 app-emulation/docker 19.03.15 20.10.3: The core functions you need to create Docker images and run Docker containers
@@ -15537,7 +15537,7 @@ net-proxy/adzapper 20110915-r2: Redirector for squid to intercept advertising, p
 net-proxy/cntlm 0.93_beta5-r2: Cntlm is an NTLM/NTLMv2 authenticating HTTP proxy
 net-proxy/dante 1.4.1-r2: A free socks4,5 and msproxy implementation
 net-proxy/dnsproxy 1.17: The dnsproxy daemon is a proxy for DNS queries
-net-proxy/haproxy 1.8.28 2.0.14-r2 2.0.20 2.0.9999 2.1.4-r2 2.1.11 2.1.9999 2.2.5-r1 2.2.8 2.2.9 2.2.9999 2.3.4 2.3.5 2.3.6 2.3.9999: A TCP/HTTP reverse proxy for high availability environments
+net-proxy/haproxy 1.8.28 2.0.14-r2 2.0.20 2.0.9999 2.1.4-r2 2.1.11 2.1.9999 2.2.5-r1 2.2.8 2.2.9 2.2.10 2.2.9999 2.3.4 2.3.5 2.3.6 2.3.9999: A TCP/HTTP reverse proxy for high availability environments
 net-proxy/haproxy-dataplaneapi 2.2.0: haproxy dataplane api / sidecar
 net-proxy/hatop 0.8.0: Ncurses client and real-time monitoring and displaying of HAProxy status
 net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
@@ -17333,7 +17333,7 @@ sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
 sys-cluster/neutron 16.3.0 17.1.0 2020.1.9999 2020.2.9999: A virtual network service for Openstack
 sys-cluster/nomad 1.0.4: A simple and flexible workload orchestrator
-sys-cluster/nova 21.1.1 21.1.2 22.0.1 22.1.0 2020.1.9999 2020.2.9999: Cloud computing fabric controller
+sys-cluster/nova 21.1.2 22.1.0 2020.1.9999 2020.2.9999: Cloud computing fabric controller
 sys-cluster/nullmpi 0.7: MPI substitute library
 sys-cluster/onesis 2.0.2: Diskless computing made easy
 sys-cluster/openmpi 1.4.5 1.6.5-r1 1.7.5-r1 1.8.8 1.10.7 2.0.4 2.1.6 3.0.4 3.1.4 4.0.2 4.0.3 4.0.4 4.0.5: A high-performance message passing library (MPI)
