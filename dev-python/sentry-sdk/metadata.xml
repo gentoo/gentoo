@@ -10,6 +10,7 @@
 		<name>Python</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">getsentry/sentry-python</remote-id>
 		<remote-id type="pypi">sentry-sdk</remote-id>
 	</upstream>
 	<stabilize-allarches/>
