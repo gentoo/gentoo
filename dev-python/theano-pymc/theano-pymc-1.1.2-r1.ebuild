@@ -23,7 +23,8 @@ RDEPEND="
 	dev-python/filelock[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	dev-python/scipy[${PYTHON_USEDEP}]"
+	dev-python/scipy[${PYTHON_USEDEP}]
+	!dev-python/theano[${PYTHON_USEDEP}]"
 BDEPEND="
 	test? (
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
@@ -53,6 +54,12 @@ python_test() {
 	pytest -vv ${exclude[@]/#/--deselect } \
 		-n "$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")" ||
 		die "Tests fail with ${EPYTHON}"
+}
+
+# https://dev.gentoo.org/~mgorny/python-guide/concept.html#packaging-pkgutil-style-namespaces-in-gentoo
+python_install() {
+	rm "${BUILD_DIR}"/lib/bin/__init__.py || die
+	distutils-r1_python_install
 }
 
 pkg_postinst() {
