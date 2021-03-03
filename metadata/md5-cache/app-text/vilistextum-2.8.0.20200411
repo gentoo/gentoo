@@ -10,4 +10,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=https://github.com/bhaak/vilistextum/archive/06cc8a637efd9097af4f138b1b7c755120ffaa88.tar.gz -> vilistextum-2.8.0.20200411.tar.gz
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=cf80e7a9534967fa1a7a7d0c5a077fe6
+_md5_=66453dba7181f49ce8e056d8814bbd88

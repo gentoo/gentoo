@@ -1,13 +1,14 @@
-DEFINED_PHASES=compile install prepare
-DEPEND=dev-libs/gmp:0= sci-mathematics/gmp-ecm sieve? ( sci-mathematics/msieve sci-mathematics/ggnfs )
+BDEPEND=app-arch/unzip
+DEFINED_PHASES=compile configure install prepare
+DEPEND=dev-libs/gmp:0= sci-mathematics/gmp-ecm sieve? ( sci-mathematics/ggnfs sci-mathematics/msieve )
 DESCRIPTION=Yet another factoring utility
-EAPI=5
+EAPI=7
 HOMEPAGE=https://sourceforge.net/projects/yafu/
 IUSE=+sieve
 KEYWORDS=~amd64 ~x86
 LICENSE=public-domain
-RDEPEND=dev-libs/gmp:0= sci-mathematics/gmp-ecm sieve? ( sci-mathematics/msieve sci-mathematics/ggnfs )
+RDEPEND=dev-libs/gmp:0= sci-mathematics/gmp-ecm sieve? ( sci-mathematics/ggnfs sci-mathematics/msieve )
 SLOT=0
 SRC_URI=mirror://sourceforge/yafu/1.34/yafu-1.34-src.zip
-_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	epatch	e8f1ec13660dc2f44b32775765d85e42	estack	055c42df72f76a4f45ec92b35e83cd56	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	multilib	d410501a125f99ffb560b0c523cd3d1e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	d3fb3ba33acc3bbbdc4d7970227c100d	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=dcb36ae9fd135af7c9542395f5187327
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=3890a971afc0846df33a1dddb80ccfc3

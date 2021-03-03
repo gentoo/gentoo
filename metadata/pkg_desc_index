@@ -16974,7 +16974,7 @@ sys-apps/lcdsplash 0.3: splash Gentoo boot information on LCD's
 sys-apps/lcdutils 0.2-r1: (Sun) Cobalt Qube/RaQ button reading and LCD writing utilities
 sys-apps/less 563-r1: Excellent text file viewer
 sys-apps/likwid 4.3.4: A performance-oriented tool suite for x86 multicore environments
-sys-apps/linux-misc-apps 5.6 5.8: Misc tools bundled with kernel sources
+sys-apps/linux-misc-apps 5.8: Misc tools bundled with kernel sources
 sys-apps/lm-sensors 3.5.0 3.5.0_p20190505 3.6.0: Hardware Monitoring user-space utilities
 sys-apps/lmctfy 0.5.0-r1: Linux application container management from Google
 sys-apps/lnxhc 1.2-r1: Linux Health Checker
