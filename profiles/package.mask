@@ -32,7 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
-# Sam James <sam@gentoo.org> (2021-02-03)
+# Sam James <sam@gentoo.org> (2021-03-03)
+# Declared abandoned upstream and stuck
+# on Python 3.7.
+# Removal in 30 days.
+app-office/moneyguru
+
+# Sam James <sam@gentoo.org> (2021-03-03)
 # Doesn't seem to sync clock correctly
 # in some cases.
 # bug #772998
