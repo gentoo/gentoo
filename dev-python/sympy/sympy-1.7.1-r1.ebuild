@@ -20,6 +20,8 @@ IUSE="examples imaging ipython latex mathml opengl pdf png pyglet symengine test
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
+PATCHES=( "${FILESDIR}"/${P}-theano-pymc.patch )
+
 BDEPEND="test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 RDEPEND="dev-python/mpmath[${PYTHON_USEDEP}]
 	dev-python/pexpect[${PYTHON_USEDEP}]
