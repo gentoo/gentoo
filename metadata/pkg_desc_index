@@ -7959,7 +7959,7 @@ dev-python/WSME 0.10.0: Simplify the writing of REST APIs, and extend them with 
 dev-python/XenAPI 2.14: Xen API SDK, for communication with Citrix XenServer and Xen Cloud Platform
 dev-python/absl-py 0.10.0: Abseil Python Common Libraries
 dev-python/abydos 0.5.0: Abydos NLP/IR library
-dev-python/aesara 2.0.1: Library for operating on mathematical expressions with multi-dimensional arrays
+dev-python/aesara 2.0.1-r1: Library for operating on mathematical expressions with multi-dimensional arrays
 dev-python/aiodns 2.0.0-r1: Simple DNS resolver for asyncio
 dev-python/aiofiles 0.5.0: File support for asyncio
 dev-python/aiohttp 3.7.4: http client/server for asyncio
@@ -9265,8 +9265,8 @@ dev-python/text-unidecode 1.3: The most basic port of the Text::Unidecode Perl l
 dev-python/textdistance 4.2.0: Compute distance between the two texts
 dev-python/texttable 1.6.3: Module for creating simple ASCII tables
 dev-python/textx 1.4: Meta-language for DSL implementation inspired by Xtext
-dev-python/theano 1.0.5: Define and optimize multi-dimensional arrays mathematical expressions
-dev-python/theano-pymc 1.1.0 1.1.2: Library for operating on mathematical expressions with multi-dimensional arrays
+dev-python/theano 1.0.5-r1: Define and optimize multi-dimensional arrays mathematical expressions
+dev-python/theano-pymc 1.1.0 1.1.2-r1: Library for operating on mathematical expressions with multi-dimensional arrays
 dev-python/threadpoolctl 2.1.0: Limit the number of threads used in native libs that have their own threadpool
 dev-python/three-merge 0.1.1: Simple Python library to perform a 3-way merge between strings
 dev-python/thrift 0.13.0: Python implementation of Thrift
@@ -14472,7 +14472,7 @@ net-analyzer/sarg 2.4.0: Squid Analysis Report Generator
 net-analyzer/sbd 1.37-r1: Netcat-clone, designed to be portable and offer strong encryption
 net-analyzer/scanlogd 2.2.7: a port scan detection tool
 net-analyzer/scanssh 2.1.2: network scanner that gathers info on SSH protocols and versions
-net-analyzer/scapy 2.4.4 9999: A Python interactive packet manipulation program for mastering the network
+net-analyzer/scapy 2.4.4-r1 9999: A Python interactive packet manipulation program for mastering the network
 net-analyzer/scli 0.4.0-r1: SNMP Command Line Interface
 net-analyzer/sec 2.8.3: Simple Event Correlator
 net-analyzer/sflowtool 5.06: sflowtool is a utility for collecting and processing sFlow data
