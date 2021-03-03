@@ -9290,7 +9290,7 @@ dev-python/tree-sitter 0.2.0 0.2.1 0.2.2: Python bindings to the Tree-sitter par
 dev-python/treq 20.9.0 21.1.0: A requests-like API built on top of twisted.web's Agent
 dev-python/trustme 0.6.0-r1 0.7.0: #1 quality TLS certs while you wait, for the discerning tester
 dev-python/tubes 0.2.0-r1: Flow control and backpressure for event-driven applications
-dev-python/tvdb_api 2.0-r1: Python interface to thetvdb.com API
+dev-python/tvdb_api 2.0-r1 3.0.2: Python interface to thetvdb.com API
 dev-python/twine 3.3.0: Collection of utilities for publishing packages on PyPI
 dev-python/twisted 19.10.0 20.3.0 21.2.0: An asynchronous networking framework written in Python
 dev-python/twython 3.7.0: An easy way to access Twitter data with Python
@@ -14105,7 +14105,7 @@ media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
 media-tv/shoutcast2vdr 0.0.8-r1: VDR script: generate shoutcast playlists
 media-tv/tvbrowser-bin 4.2.2: Themeable and easy to use TV Guide - written in Java
 media-tv/tvheadend 4.2.8-r1 9999: Tvheadend is a TV streaming server and digital video recorder
-media-tv/tvnamer 2.5: Automatic TV episode file renamer, data from thetvdb.com
+media-tv/tvnamer 2.5 3.0.2: Automatic TV episode file renamer, data from thetvdb.com
 media-tv/v4l-dvb-saa716x 0.0.1_p20170225-r5: driver for saa716x based dvb cards like TT S2-6400 or Skystar 2 eXpress HD
 media-tv/v4l-utils 1.20.0: Separate utilities ebuild from upstream v4l-utils package
 media-tv/w_scan 20170107: Scan DVB-C/DVB-T/DVB-S channels
