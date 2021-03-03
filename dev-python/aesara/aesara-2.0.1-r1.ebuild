@@ -53,6 +53,12 @@ python_test() {
 		die "Tests fail with ${EPYTHON}"
 }
 
+# https://dev.gentoo.org/~mgorny/python-guide/concept.html#packaging-pkgutil-style-namespaces-in-gentoo
+python_install() {
+	rm "${BUILD_DIR}"/lib/bin/__init__.py || die
+	distutils-r1_python_install
+}
+
 pkg_postinst() {
 	optfeature "GPU code generation/execution on NVIDIA gpus" dev-util/nvidia-cuda-toolkit dev-util/nvidia-cuda-sdk
 	optfeature "GPU/CPU code generation on CUDA and OpenCL devices" dev-libs/libgpuarray dev-python/pycuda
