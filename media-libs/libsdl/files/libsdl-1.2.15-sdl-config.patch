@@ -2,8 +2,8 @@ Only output -L -rpath cruft if using a non-standard install location.
 
 Makes ABI / cross-compiling easier on the soul.
 
---- sdl-config.in
-+++ sdl-config.in
+--- a/sdl-config.in
++++ b/sdl-config.in
 @@ -44,7 +44,12 @@
        echo -I@includedir@/SDL @SDL_CFLAGS@
        ;;
