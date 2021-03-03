@@ -8120,7 +8120,7 @@ dev-python/cookies 2.2.1-r1: Friendlier RFC 6265-compliant cookie parser/rendere
 dev-python/coreapi 2.3.3-r1: Python client library for Core API
 dev-python/coreschema 0.0.4: Core Schema
 dev-python/cov-core 1.15.0-r2: plugin core for use by pytest-cov, nose-cov and nose2-cov
-dev-python/coverage 4.5.4 5.3.1 5.4 5.5: Code coverage measurement for Python
+dev-python/coverage 4.5.4 5.4 5.5: Code coverage measurement for Python
 dev-python/cppy 1.1.0: C++ header library which makes it easier to write Python extension modules
 dev-python/crashtest 0.3.1: Python library that makes exceptions handling and inspection easier
 dev-python/crcmod 1.7-r4: Python CRC Generator module
@@ -8233,7 +8233,7 @@ dev-python/eventlet 0.30.0: Highly concurrent networking library
 dev-python/exam 0.10.6: Helpers for better testing
 dev-python/exdown 0.7.1 0.8.0 0.8.2 0.8.5 0.8.6: Extract code blocks from markdown
 dev-python/execnet 1.8.0: Rapid multi-Python deployment
-dev-python/executing 0.5.3 0.5.4: Get information about what a Python frame is currently doing
+dev-python/executing 0.5.4: Get information about what a Python frame is currently doing
 dev-python/expects 0.9.0: Expressive and extensible TDD/BDD assertion library for Python
 dev-python/extras 1.0.0-r1: Useful extra bits for Python that should be in the standard library
 dev-python/eyeD3 0.9.6: Module for manipulating ID3 (v1 + v2) tags in Python
@@ -8328,7 +8328,7 @@ dev-python/google-reauth-python 0.1.0-r1 0.1.1: Python based U2F host library
 dev-python/googleapis-common-protos 1.52.0 1.53.0: python classes generated from the common protos in the googleapis repository
 dev-python/graph-tool 2.35-r1 9999: An efficient python module for manipulation and statistical analysis of graphs
 dev-python/graphviz 0.16: Simple Python interface for Graphviz
-dev-python/greenlet 0.4.17 1.0.0: Lightweight in-process concurrent programming
+dev-python/greenlet 1.0.0: Lightweight in-process concurrent programming
 dev-python/greenstalk 1.0.1: A Python 3 client for the beanstalkd work queue
 dev-python/grpcio 1.32.0-r1: High-performance RPC framework (python libraries)
 dev-python/grpcio-testing 1.32.0: Testing utilities for gRPC Python
