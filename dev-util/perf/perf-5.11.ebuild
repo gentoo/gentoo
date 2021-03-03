@@ -198,6 +198,7 @@ perf_make() {
 		NO_ZLIB= \
 		WERROR=0 \
 		LIBDIR="/usr/libexec/perf-core" \
+		libdir="${EPREFIX}/usr/$(get_libdir)" \
 		"$@"
 }
 
