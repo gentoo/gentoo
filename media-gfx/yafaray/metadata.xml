@@ -10,13 +10,23 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-		YafaRay is a raytracing open source render engine. Raytracing is a rendering technique for generating realistic images by tracing the path of light through a 3D scene.
-		An render engine consists of a "faceless" computer program that interacts with a host 3D application to provide very specific raytracing capabilties "on demand". Blender 3D is the host application of YafaRay.
+		YafaRay is a raytracing open source render engine. Raytracing is a
+		rendering technique for generating realistic images by tracing the
+		path of light through a 3D scene.
+		An render engine consists of a "faceless" computer program that
+		interacts with a host 3D application to provide very specific
+		raytracing capabilties "on demand".
 	</longdescription>
 	<use>
-		<flag name="fastmath">Enable mathematic approximations to make code faster</flag>
-		<flag name="fasttrig">Enable trigonometric approximations to make code faster</flag>
-		<flag name="opencv">Use <pkg>media-libs/opencv</pkg></flag>
+		<flag name="fastmath">
+			Enable mathematic approximations to make code faster
+		</flag>
+		<flag name="fasttrig">
+			Enable trigonometric approximations to make code faster
+		</flag>
+		<flag name="opencv">
+			Add support for <pkg>media-libs/opencv</pkg> image processing.
+		</flag>
 	</use>
 </pkgmetadata>
 
