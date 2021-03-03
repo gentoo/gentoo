@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
+USE_RUBY="ruby25 ruby26 ruby27"
 
-inherit toolchain-funcs
+inherit ruby-single toolchain-funcs
 
 DESCRIPTION="A clean C Library for processing UTF-8 Unicode data"
 HOMEPAGE="https://github.com/JuliaStrings/utf8proc"
@@ -16,7 +17,10 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x64-cyg
 IUSE="cjk static-libs test"
 RESTRICT="!test? ( test )"
 
-BDEPEND="test? ( =app-i18n/unicode-data-13.0* )"
+BDEPEND="test? (
+		=app-i18n/unicode-data-13.0*
+		${RUBY_DEPS}
+	)"
 S="${WORKDIR}/${P#lib}"
 
 src_prepare() {
