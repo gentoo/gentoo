@@ -19,5 +19,6 @@
 	</longdescription>
 	<use>
 		<flag name="tools">Install extra bazel tools to build from sources</flag>
+		<flag name="static-libs">Link libstdc++ statically</flag>
 	</use>
 </pkgmetadata>
