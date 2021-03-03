@@ -9,7 +9,7 @@ SRC_URI="https://www.jwz.org/xdaliclock/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ppc ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 ~x86"
 
 RDEPEND="
 	x11-libs/libX11
