@@ -9,7 +9,7 @@ SRC_URI="https://www.gaia-gis.it/gaia-sins/${PN}-sources/${P}.tar.gz"
 
 LICENSE="|| ( MPL-1.1 GPL-2+ LGPL-2.1+ )"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ia64 ppc ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ~ia64 ppc ppc64 x86"
 
 DEPEND="virtual/libiconv"
 RDEPEND="${DEPEND}"
