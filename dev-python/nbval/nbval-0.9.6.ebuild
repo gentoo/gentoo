@@ -20,7 +20,9 @@ RDEPEND="
 	dev-python/jupyter_client[${PYTHON_USEDEP}]
 	dev-python/nbformat[${PYTHON_USEDEP}]
 	dev-python/pytest[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]"
+	dev-python/six[${PYTHON_USEDEP}]
+"
+BDEPEND="test? ( dev-python/sympy[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest
 
