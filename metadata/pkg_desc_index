@@ -3621,7 +3621,7 @@ dev-db/rqlite 5.10.2: Replicated SQLite using the Raft consensus protocol
 dev-db/sadisplay 0.4.9: SqlAlchemy schema display script
 dev-db/slony1 2.2.10: A replication system for the PostgreSQL Database Management System
 dev-db/spatialite 4.3.0a 5.0.1: A complete Spatial DBMS in a nutshell built upon sqlite
-dev-db/spatialite-tools 4.3.0-r1 5.0.1: A collection of CLI tools supporting SpatiaLite
+dev-db/spatialite-tools 4.3.0-r1 5.0.1-r1: A collection of CLI tools supporting SpatiaLite
 dev-db/sqlcipher 3.4.2 4.0.1: Full Database Encryption for SQLite
 dev-db/sqlcl-bin 20.4.1.351.1718: Oracle SQLcl is the new SQL*Plus
 dev-db/sqldeveloper 4.2.0.17.089.1709 20.2.0.175.1842 20.4.0.379.2205: Oracle SQL Developer is a graphical tool for database development
@@ -16220,7 +16220,7 @@ sci-libs/coinor-bonmin 1.8.8: COIN-OR Basic Open-source Nonlinear Mixed INteger 
 sci-libs/coinor-cbc 2.10.5: COIN-OR branch-and-cut mixed integer program solver
 sci-libs/coinor-cgl 0.60.3: COIN-OR cut-generation library
 sci-libs/coinor-clp 1.17.6: COIN-OR linear programming solver
-sci-libs/coinor-couenne 0.5.8: COIN-OR Convex Over and Under ENvelopes for Nonlinear Estimation
+sci-libs/coinor-couenne 0.5.8-r1: COIN-OR Convex Over and Under ENvelopes for Nonlinear Estimation
 sci-libs/coinor-cppad 20210000.5: COIN-OR C++ Algorithmic Differentiation
 sci-libs/coinor-csdp 6.1.1-r1: COIN-OR C Library for Semi-Definite Programming
 sci-libs/coinor-dip 0.95.0-r1: COIN-OR Decomposition in Integer Programming library

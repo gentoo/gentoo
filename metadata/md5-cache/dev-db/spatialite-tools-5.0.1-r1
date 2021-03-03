@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure
+DEPEND=dev-db/sqlite:3[extensions(+)] >=dev-db/spatialite-5.0.1[iconv,geos,xls] dev-libs/expat dev-libs/libxml2 >=sci-geosciences/readosm-1.1.0 sci-libs/geos sci-libs/proj readline? ( sys-libs/ncurses:= sys-libs/readline:= )
+DESCRIPTION=A collection of CLI tools supporting SpatiaLite
+EAPI=7
+HOMEPAGE=https://www.gaia-gis.it/spatialite
+IUSE=readline
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+
+RDEPEND=dev-db/sqlite:3[extensions(+)] >=dev-db/spatialite-5.0.1[iconv,geos,xls] dev-libs/expat dev-libs/libxml2 >=sci-geosciences/readosm-1.1.0 sci-libs/geos sci-libs/proj readline? ( sys-libs/ncurses:= sys-libs/readline:= )
+SLOT=0
+SRC_URI=https://www.gaia-gis.it/gaia-sins/spatialite-tools-sources/spatialite-tools-5.0.1.tar.gz
+_md5_=fdfcf2f5c8cff8f2c80770a4c09d848b
