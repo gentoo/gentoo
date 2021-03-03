@@ -41,6 +41,10 @@ src_configure() {
 		s390)       PLATFORM="linux-S390";;
 		*)          PLATFORM="linux-${ARCH}";;
 	esac
+
+	# makefile uses $(GCC) in a few places, probably
+	# by mistake.
+	export GCC=$(tc-getCC)
 }
 
 src_compile() {
