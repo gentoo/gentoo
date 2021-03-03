@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -40,6 +40,12 @@ src_prepare() {
 python_test() {
 	distutils_install_for_testing
 	nosetests --verbosity=3 -e test_format_flake8 || die
+}
+
+# https://dev.gentoo.org/~mgorny/python-guide/concept.html#packaging-pkgutil-style-namespaces-in-gentoo
+python_install() {
+	rm "${BUILD_DIR}"/lib/bin/__init__.py || die
+	distutils-r1_python_install
 }
 
 pkg_postinst() {

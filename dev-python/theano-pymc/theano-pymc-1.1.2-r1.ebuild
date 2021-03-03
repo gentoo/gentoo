@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,21 +7,24 @@ DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{7..9} )
 inherit distutils-r1 optfeature
 
-MY_P=aesara-rel-${PV}
+MY_P=Theano-PyMC-rel-${PV}
 DESCRIPTION="Library for operating on mathematical expressions with multi-dimensional arrays"
-HOMEPAGE="https://github.com/pymc-devs/aesara"
-SRC_URI="https://github.com/pymc-devs/aesara/archive/rel-${PV}.tar.gz -> ${MY_P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
+HOMEPAGE="https://github.com/pymc-devs/Theano-PyMC"
+SRC_URI="
+	https://github.com/pymc-devs/Theano-PyMC/archive/rel-${PV}.tar.gz
+		-> ${MY_P}.tar.gz"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 
 RDEPEND="
 	dev-python/filelock[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	dev-python/scipy[${PYTHON_USEDEP}]"
+	dev-python/scipy[${PYTHON_USEDEP}]
+	!dev-python/theano[${PYTHON_USEDEP}]"
 BDEPEND="
 	test? (
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
@@ -51,6 +54,12 @@ python_test() {
 	pytest -vv ${exclude[@]/#/--deselect } \
 		-n "$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")" ||
 		die "Tests fail with ${EPYTHON}"
+}
+
+# https://dev.gentoo.org/~mgorny/python-guide/concept.html#packaging-pkgutil-style-namespaces-in-gentoo
+python_install() {
+	rm "${BUILD_DIR}"/lib/bin/__init__.py || die
+	distutils-r1_python_install
 }
 
 pkg_postinst() {

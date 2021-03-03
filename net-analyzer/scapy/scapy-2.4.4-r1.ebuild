@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,6 +28,8 @@ Scapy has optional support for the following packages:
 
 	See also ""${EPREFIX}/usr/share/doc/${PF}/installation.rst""
 "
+
+PATCHES=("${FILESDIR}/${P}-libc.patch")
 
 src_prepare() {
 	if ! [[ -f ${PN}/VERSION ]]; then
