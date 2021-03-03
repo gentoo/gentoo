@@ -8229,7 +8229,7 @@ dev-python/enzyme 0.4.1-r2 9999: Python video metadata parser
 dev-python/eradicate 2.0.0: Removes commented-out code from Python files
 dev-python/errorhandler 2.0.1: Logging framework handler
 dev-python/et_xmlfile 1.0.1: An implementation of lxml.xmlfile for the standard library
-dev-python/eventlet 0.30.0: Highly concurrent networking library
+dev-python/eventlet 0.30.0 0.30.2: Highly concurrent networking library
 dev-python/exam 0.10.6: Helpers for better testing
 dev-python/exdown 0.7.1 0.8.0 0.8.2 0.8.5 0.8.6: Extract code blocks from markdown
 dev-python/execnet 1.8.0: Rapid multi-Python deployment
@@ -9134,7 +9134,7 @@ dev-python/semantic_version 2.8.5: Python library providing a few tools handling
 dev-python/semver 2.13.0: A Python module for semantic versioning
 dev-python/send2trash 1.5.0-r1: Sends files to the Trash (or Recycle Bin)
 dev-python/sentinels 1.0.0: Python Sentinels class which are objects with special meanings.
-dev-python/sentry-sdk 0.19.5 0.20.1 0.20.2 0.20.3: Python client for Sentry
+dev-python/sentry-sdk 0.19.5 0.20.1 0.20.2 0.20.3 1.0.0: Python client for Sentry
 dev-python/serpent 1.30.2: A simple serialization library based on ast.literal_eval
 dev-python/serverfiles 0.2.1 0.3.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0-r1: Service identity verification for pyOpenSSL
@@ -17605,7 +17605,7 @@ sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh 
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.94 5.4.97 5.4.99 5.4.100 5.4.101 5.10.17 5.10.18 5.10.19 5.11.2: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.94 5.4.94-r1 5.4.97 5.4.97-r1 5.4.99 5.4.99-r1 5.4.100 5.4.100-r1 5.4.101 5.4.101-r1 5.4.101-r2 5.10.17 5.10.17-r1 5.10.18 5.10.18-r1 5.10.19 5.10.19-r1 5.10.19-r2 5.11.2 5.11.2-r1 5.11.2-r2: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.246 4.4.255 4.4.256 4.4.257 4.4.258 4.9.246 4.9.255 4.9.256 4.9.257 4.9.258 4.14.209 4.14.219 4.14.220 4.14.221 4.14.222 4.19.160 4.19.173 4.19.174 4.19.175 4.19.176 4.19.177 5.4.80-r1 5.4.97 5.4.98 5.4.99 5.4.100 5.4.101 5.10.14 5.10.15 5.10.16 5.10.17 5.10.18 5.10.19 5.11.0 5.11.1 5.11.2: Full sources including the Gentoo patchset for the 5.11 kernel tree
+sys-kernel/gentoo-sources 4.4.246 4.4.255 4.4.256 4.4.257 4.4.258 4.4.259 4.9.246 4.9.255 4.9.256 4.9.257 4.9.258 4.9.259 4.14.209 4.14.219 4.14.220 4.14.221 4.14.222 4.19.160 4.19.173 4.19.174 4.19.175 4.19.176 4.19.177 5.4.80-r1 5.4.97 5.4.98 5.4.99 5.4.100 5.4.101 5.10.14 5.10.15 5.10.16 5.10.17 5.10.18 5.10.19 5.11.0 5.11.1 5.11.2: Full sources including the Gentoo patchset for the 5.11 kernel tree
 sys-kernel/git-sources 5.12_rc1: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
