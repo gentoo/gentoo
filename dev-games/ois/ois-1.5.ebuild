@@ -20,5 +20,5 @@ DEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.5-libdir.patch"
+	"${FILESDIR}/${P}-libdir.patch"
 )

@@ -1,6 +1,4 @@
-https://github.com/wgois/OIS/pull/69
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 56b1c49..c4ce5a8 100644
+https://github.com/wgois/OIS/commit/0536741549a157627d4306f6e19f1cc5cb52cef8
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -229,7 +229,13 @@ if (OIS_BUILD_DEMOS)
@@ -28,4 +26,3 @@ index 56b1c49..c4ce5a8 100644
 +  ARCHIVE DESTINATION ${LIB_INSTALL_DIR}
    FRAMEWORK DESTINATION Library/Frameworks
  )
- 
