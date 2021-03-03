@@ -22,4 +22,4 @@ DEPEND="${RDEPEND}
 
 DOCS=( HISTORY.txt )
 
-distutils_enable_tests setup.py
+distutils_enable_tests unittest
