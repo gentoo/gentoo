@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -30,7 +30,12 @@ S="${WORKDIR}/kent"
 
 src_prepare() {
 	default
+
 	use server && webapp_src_preinst
+
+	# bug #708064
+	append-flags -fcommon
+
 	sed \
 		-e 's/-Werror//' \
 		-e "/COPT/s:=.*$:=${LDFLAGS}:g" \
