@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit bash-completion-r1 cmake
+inherit bash-completion-r1 cmake flag-o-matic
 
 DESCRIPTION="Powerful map generator"
 HOMEPAGE="https://gmt.soest.hawaii.edu/"
@@ -33,6 +33,8 @@ RDEPEND="${DEPEND}
 	sci-geosciences/gshhg-gmt
 "
 
+PATCHES=( "${FILESDIR}"/${P}-sighandler.patch )
+
 src_prepare() {
 	cmake_src_prepare
 	# Rename man pages to avoid a name conflict with gmt4
@@ -57,6 +59,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# https://bugs.gentoo.org/710088
+	# drop on version bump
+	append-cflags -fcommon
 	local mycmakeargs=(
 		-DGMT_DATADIR="share/${P}"
 		-DGMT_DOCDIR="share/doc/${PF}"
