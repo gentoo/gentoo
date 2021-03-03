@@ -14,7 +14,7 @@ IUSE="readline"
 
 RDEPEND="
 	dev-db/sqlite:3[extensions(+)]
-	>=dev-db/spatialite-3.0.1[geos,xls]
+	>=dev-db/spatialite-5.0.1[iconv,geos,xls]
 	dev-libs/expat
 	dev-libs/libxml2
 	>=sci-geosciences/readosm-1.1.0
