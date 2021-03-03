@@ -1,9 +1,12 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2021-01-16)
-# NVTT support required for building games-strategy/0ad-data.
-=games-strategy/0ad-0.0.24_alpha_pre* nvtt
+# Sam James <sam@gentoo.org> (2021-03-03)
+# A large number of packages still need /usr/bin/python{,2,3}
+# including meson.eclass consumers.
+# This is largely a QA smoketesting flag, and as such, should
+# not be enabled by users.
+dev-lang/python-exec native-symlinks
 
 # Lars Wendler <polynomial-c@gentoo.org> (2020-12-31)
 # Force-enable unicode. We're in 2020 and this should really be available
