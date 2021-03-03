@@ -2,6 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">patrys/httmock</remote-id>
 		<remote-id type="pypi">httmock</remote-id>
