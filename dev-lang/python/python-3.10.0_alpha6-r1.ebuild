@@ -168,6 +168,11 @@ src_configure() {
 		# a chance for users rebuilding python before glibc
 		ac_cv_header_stropts_h=no
 
+		# disable use of vfork() for subprocess spawning as it is broken
+		# inside sandbox
+		# https://bugs.gentoo.org/774054
+		ac_cv_func_vfork=no
+
 		--enable-shared
 		--without-static-libpython
 		$(use_enable ipv6)
