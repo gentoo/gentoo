@@ -8378,7 +8378,7 @@ dev-python/importlib_resources 5.1.0 5.1.1: Read resources from Python packages
 dev-python/imread 0.7.3-r1: Read Image Files
 dev-python/incremental 17.5.0 21.3.0: Incremental is a small library that versions your Python projects
 dev-python/indexed_gzip 0.8.10: Fast random access of gzip files in Python
-dev-python/inflect 5.0.2 5.2.0: Correctly inflect words and numbers
+dev-python/inflect 5.0.2 5.2.0 5.3.0: Correctly inflect words and numbers
 dev-python/inflection 0.5.1: A port of Ruby on Rails' inflector to Python
 dev-python/influxdb 5.3.0-r1: InfluxDB client
 dev-python/iniconfig 1.1.1: Brain-dead simple config-ini parsing
@@ -8517,7 +8517,7 @@ dev-python/microversion-parse 1.0.1: A simple parser for OpenStack microversion 
 dev-python/mimerender 0.6.0: RESTful HTTP Content Negotiation for Flask, Bottle, web.py and webapp2
 dev-python/minidb 2.0.4: Simple SQLite-based object store
 dev-python/minimock 1.2.8-r1: The simplest possible mock library
-dev-python/miniupnpc 2.2.1: Python bindings for UPnP client library
+dev-python/miniupnpc 2.2.1 2.2.2: Python bindings for UPnP client library
 dev-python/misaka 2.1.1: A CFFI binding for Hoedown, a markdown parsing library
 dev-python/mistune 0.8.4-r1: The fastest markdown parser in pure Python
 dev-python/mkautodoc 0.1.0: Auto documentation for MkDocs
@@ -9347,7 +9347,7 @@ dev-python/webassets 2.0: Asset management for Python web development
 dev-python/webcolors 1.11.1: Color names and value formats defined by the HTML and CSS specifications
 dev-python/webencodings 0.5.1-r1: Character encoding aliases for legacy web content
 dev-python/webob 1.8.6 1.8.7: WSGI request and response object
-dev-python/websocket-client 0.57.0: WebSocket client for python with hybi13 support
+dev-python/websocket-client 0.57.0 0.58.0: WebSocket client for python with hybi13 support
 dev-python/websockets 8.1: Library for building WebSocket servers and clients in Python
 dev-python/websockify 0.9.0 0.9.0-r1: WebSockets support for any application/server
 dev-python/webtest 2.0.35: Helper to test WSGI applications
@@ -14942,7 +14942,7 @@ net-libs/liquid-dsp 1.3.2 9999: digital signal processing library for software-d
 net-libs/loudmouth 1.5.3-r1 1.5.3-r2 1.5.3-r3: Lightweight C Jabber library
 net-libs/mbedtls 2.16.8 2.16.9 2.24.0 2.25.0: Cryptographic library for embedded systems
 net-libs/meanwhile 1.0.2-r1: Meanwhile (Sametime protocol) library
-net-libs/miniupnpc 2.2.1: UPnP client library and a simple UPnP client
+net-libs/miniupnpc 2.2.1 2.2.2: UPnP client library and a simple UPnP client
 net-libs/nDPI 3.0-r1 3.0-r2 3.2-r1 3.2-r2 3.4 9999: Open Source Deep Packet Inspection Software Toolkit
 net-libs/nativebiginteger 0.9.47 0.9.48: jbigi library used by net-vpn/i2p
 net-libs/neon 0.30.2 0.31.0 0.31.1 0.31.2: HTTP and WebDAV client library
@@ -15412,7 +15412,7 @@ net-misc/x2goclient 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.1039_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.1432 0.4.1500: utility to download media contents from the web
-net-misc/youtube-dl 2021.02.22 2021.03.02 9999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2021.02.22 2021.03.02 2021.03.03 9999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r2 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.4.6 1.6.2 1.6.3: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
