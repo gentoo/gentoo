@@ -8043,8 +8043,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7 1.0.8: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r4: Amazon Web Services API
-dev-python/boto3 1.16.63 1.17.7 1.17.12 1.17.17 1.17.18 9999: The AWS SDK for Python
-dev-python/botocore 1.19.63 1.20.7 1.20.12 1.20.17 1.20.18 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.16.63 1.17.7 1.17.12 1.17.17 1.17.18 1.17.19 9999: The AWS SDK for Python
+dev-python/botocore 1.19.63 1.20.7 1.20.12 1.20.17 1.20.18 1.20.19 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.21: Syntax highlighting and autocompletion for the Python interpreter
@@ -8123,7 +8123,7 @@ dev-python/coverage 4.5.4 5.3.1 5.4 5.5: Code coverage measurement for Python
 dev-python/cppy 1.1.0: C++ header library which makes it easier to write Python extension modules
 dev-python/crashtest 0.3.1: Python library that makes exceptions handling and inspection easier
 dev-python/crcmod 1.7-r4: Python CRC Generator module
-dev-python/croniter 1.0.2 1.0.6: Python module to provide iteration for datetime object
+dev-python/croniter 1.0.2 1.0.6 1.0.7: Python module to provide iteration for datetime object
 dev-python/cryptography 3.2.1 3.3.1 3.3.2: Library providing cryptographic recipes and primitives
 dev-python/css-parser 1.0.4-r1: A CSS Cascading Style Sheets library (fork of cssutils)
 dev-python/cssselect 1.1.0-r1: parses CSS3 Selectors and translates them to XPath 1.0
@@ -8362,7 +8362,7 @@ dev-python/hvac 0.10.8: hashicorp vault client in python
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 21.0.0: A featureful, correct URL for Python
-dev-python/hypothesis 6.1.1 6.2.0 6.3.4: A library for property based testing
+dev-python/hypothesis 6.1.1 6.2.0 6.3.4 6.4.0: A library for property based testing
 dev-python/icalendar 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/idna 2.10-r1 3.0 3.1: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0-r1: Patch ssl.match_hostname for Unicode(idna) domains support
@@ -8429,7 +8429,7 @@ dev-python/json-rpc 1.13.0: JSON-RPC transport implementation for python
 dev-python/jsondiff 1.2.0: Diff JSON and JSON-like structures in Python
 dev-python/jsonext 0.4.2: Well-structured helpers for serializing commonly encountered structures to JSON.
 dev-python/jsonmerge 1.6.0 1.8.0: Merge a series of JSON documents
-dev-python/jsonpatch 1.28: Apply JSON-Patches like http://tools.ietf.org/html/draft-pbryan-json-patch-04
+dev-python/jsonpatch 1.28 1.30: Apply JSON-Patches like http://tools.ietf.org/html/draft-pbryan-json-patch-04
 dev-python/jsonpickle 1.5.0 1.5.2 2.0.0: Python library for serializing any arbitrary object graph into JSON
 dev-python/jsonpointer 2.0-r1: Identify specific nodes in a JSON document (according to draft 08)
 dev-python/jsonref 0.1: An implementation of JSON Reference for Python
@@ -8683,7 +8683,7 @@ dev-python/pendulum 2.1.2-r1: Drop-in replacement for the standard datetime clas
 dev-python/pep8 1.7.1: Python style guide checker
 dev-python/pexpect 4.8.0-r1: Python module for spawning child apps and responding to expected patterns
 dev-python/pgspecial 1.11.10 1.12.1: Python implementation of PostgreSQL meta commands
-dev-python/phonenumbers 8.12.17 8.12.18: Python port of Google's libphonenumber
+dev-python/phonenumbers 8.12.17 8.12.18 8.12.19: Python port of Google's libphonenumber
 dev-python/phply 1.2.5: Lexer and parser for PHP source implemented using PLY
 dev-python/picklemagic 0.0_pre20160415: A library for analysing python pickles safely
 dev-python/pickleshare 0.7.5: A small 'shelve' like datastore with concurrency support
@@ -8720,7 +8720,7 @@ dev-python/poyo 0.5.0: A lightweight YAML Parser for Python
 dev-python/precis-i18n 1.0.2 1.0.3: Internationalized Usernames and Passwords
 dev-python/pretend 1.0.9-r1: A library for stubbing in Python
 dev-python/pretty-yaml 20.4.0: PyYAML-based module to produce pretty and readable YAML-serialized data
-dev-python/prettytable 0.7.2-r1 2.0.0: Easily displaying tabular data in a visually appealing ASCII table format
+dev-python/prettytable 0.7.2-r1 2.0.0 2.1.0: Easily displaying tabular data in a visually appealing ASCII table format
 dev-python/priority 1.3.0: A pure-Python implementation of the HTTP/2 priority tree
 dev-python/process-tests 2.1.1: Tools for testing processes
 dev-python/progress 1.5: Easy to use progress bars
@@ -8933,7 +8933,7 @@ dev-python/pytest-salt 2020.1.27-r1: PyTest Salt Plugin
 dev-python/pytest-salt-factories 0.121.1: The new generation of the pytest-salt Plugin
 dev-python/pytest-services 2.2.1: Collection of fixtures and utility functions to run service processes for pytest
 dev-python/pytest-shutil 1.7.0-r1: A goodie-bag of unix shell and environment tools for py.test
-dev-python/pytest-subtesthack 0.1.1: A hack for test fixtures, needed for hypothesis inside py.test
+dev-python/pytest-subtesthack 0.1.1 0.1.2: A hack for test fixtures, needed for hypothesis inside py.test
 dev-python/pytest-tempdir 2019.10.12: Pytest plugin to support for a predictable and repeatable temporary directory
 dev-python/pytest-testmon 1.0.3: Take TDD to a new level with py.test and testmon
 dev-python/pytest-timeout 1.4.2-r1: py.test plugin to abort hanging tests
