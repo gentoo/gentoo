@@ -1,7 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools git-r3
 
 DESCRIPTION="A Tool for network monitoring and data acquisition"
@@ -87,5 +88,5 @@ src_install() {
 }
 
 pkg_postinst() {
-	use suid && elog "To let normal users run tcpdump add them to the pcap group."
+	use suid && elog "To let normal users run tcpdump, add them to the pcap group."
 }
