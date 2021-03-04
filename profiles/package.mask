@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Pagano <mpagano@gentoo.org> (2021-03-04)
+# This kernel version could corrupt your
+# filesystem by overwritting it with 
+# random swap data 
+=sys-kernel/git-sources-5.12_rc1
+
 # Sam James <sam@gentoo.org> (2021-03-03)
 # Declared abandoned upstream and stuck
 # on Python 3.7.
