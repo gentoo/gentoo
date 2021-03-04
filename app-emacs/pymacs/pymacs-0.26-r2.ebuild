@@ -2,8 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7,8} )
 
+PYTHON_COMPAT=( python3_{7,8} )
+DISTUTILS_IN_SOURCE_BUILD=1
+DISTUTILS_USE_SETUPTOOLS="no"
 inherit elisp distutils-r1
 
 DESCRIPTION="A tool that allows both-side communication beetween Python and Emacs Lisp"
@@ -21,8 +23,7 @@ BDEPEND="doc? (
 	)"
 
 S="${WORKDIR}/${P^}"
-DISTUTILS_IN_SOURCE_BUILD=1
-DISTUTILS_USE_SETUPTOOLS="no"
+
 SITEFILE="50${PN}-gentoo.el"
 
 # called by distutils-r1 for every python implementation
