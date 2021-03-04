@@ -10,7 +10,7 @@ PYPY_PV=${PV%_p37}
 MY_P=pypy3.7-v${PYPY_PV/_/}
 
 DESCRIPTION="A fast, compliant alternative implementation of the Python (3.7) language"
-HOMEPAGE="https://pypy.org/"
+HOMEPAGE="https://www.pypy.org/"
 SRC_URI="https://buildbot.pypy.org/pypy/${MY_P}-src.tar.bz2"
 S="${WORKDIR}/${MY_P}-src"
 
