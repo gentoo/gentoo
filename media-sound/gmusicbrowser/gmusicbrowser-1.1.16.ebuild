@@ -30,12 +30,7 @@ RDEPEND="dev-lang/perl
 	)
 	extras? ( dev-perl/gnome2-wnck )
 	libnotify? ( dev-perl/Gtk2-Notify )"
-DEPEND="sys-devel/gettext
-	doc? ( dev-perl/Text-Markdown )"
-
-src_compile() {
-	emake MARKDOWN=$(usex doc "Markdown.pl" "echo")
-}
+DEPEND="${RDEPEND}"
 
 src_prepare() {
 	default
