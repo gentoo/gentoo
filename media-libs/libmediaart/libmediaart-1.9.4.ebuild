@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -13,7 +13,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/libmediaart"
 
 LICENSE="LGPL-2.1+"
 SLOT="2.0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="gtk +introspection qt5 vala"
 REQUIRED_USE="
 	?? ( gtk qt5 )
