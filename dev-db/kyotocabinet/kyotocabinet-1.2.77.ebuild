@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=7
 
 inherit autotools toolchain-funcs
 
@@ -57,13 +57,12 @@ src_install() {
 		find "${ED}" -name '*.a' -delete || die
 	fi
 
-	if use examples; then
-		insinto /usr/share/${PF}/example
-		doins example/*
+	if use doc; then
+		dodoc -r doc/*
 	fi
 
-	if use doc; then
-		insinto /usr/share/doc/${PF}
-		doins -r doc/*
+	if use examples; then
+		docinto example
+		dodoc example/*
 	fi
 }
