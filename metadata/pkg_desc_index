@@ -8064,7 +8064,7 @@ dev-python/cachetools 4.2.1: Extensible memoizing collections and decorators
 dev-python/cairocffi 1.2.0: CFFI-based drop-in replacement for Pycairo
 dev-python/cangjie 1.3-r1: Python wrapper for libcangjie
 dev-python/capturer 3.0: Easily capture stdout/stderr of the current process and subprocesses
-dev-python/carbon 1.1.5: Backend data caching and persistence daemon for Graphite
+dev-python/carbon 1.1.5 1.1.7: Backend data caching and persistence daemon for Graphite
 dev-python/case 1.5.3: Python unittest Utilities
 dev-python/castellan 1.2.2 3.6.0: Generic Key Manager interface for OpenStack
 dev-python/casttube 0.2.0: casttube provides a way to interact with the Youtube Chromecast api.
