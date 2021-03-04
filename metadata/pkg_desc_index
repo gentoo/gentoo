@@ -3615,7 +3615,7 @@ dev-db/pspg 3.1.5 4.3.0: A better pager for psql and mysql
 dev-db/psqlodbc 11.01.0000 13.00.0000: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r2: Quick Database Manager
 dev-db/qt5-sqlcipher 1.0.11: Qt SQL driver plugin for SQLCipher
-dev-db/redis 5.0.12 6.0.9-r100 6.0.12: A persistent caching system, key-value and data structures database
+dev-db/redis 5.0.9-r1 5.0.12 6.0.9-r100 6.0.12 6.2.1: A persistent caching system, key-value and data structures database
 dev-db/repmgr 5.1.0: PostgreSQL Replication Manager
 dev-db/rqlite 5.10.2: Replicated SQLite using the Raft consensus protocol
 dev-db/sadisplay 0.4.9: SqlAlchemy schema display script
