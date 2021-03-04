@@ -11,7 +11,7 @@ MY_P=pypy2.7-v${PYPY_PV}
 PATCHSET="pypy2.7-gentoo-patches-${PV}"
 
 DESCRIPTION="PyPy executable (build from source)"
-HOMEPAGE="https://pypy.org/"
+HOMEPAGE="https://www.pypy.org/"
 SRC_URI="https://buildbot.pypy.org/pypy/${MY_P}-src.tar.bz2
 	https://dev.gentoo.org/~mgorny/dist/python/${PATCHSET}.tar.xz"
 S="${WORKDIR}/${MY_P}-src"
