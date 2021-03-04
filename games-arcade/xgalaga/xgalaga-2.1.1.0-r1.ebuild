@@ -1,8 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils games
+EAPI=7
+
+inherit autotools desktop toolchain-funcs
 
 DESCRIPTION="A clone of the classic game Galaga for the X Window System"
 HOMEPAGE="https://sourceforge.net/projects/xgalaga"
@@ -11,44 +12,63 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~x86"
-IUSE=""
 
-RDEPEND="x11-libs/libX11
+RDEPEND="
+	x11-libs/libX11
 	x11-libs/libXmu
 	x11-libs/libXpm
 	x11-libs/libXext
-	x11-libs/libXt"
-DEPEND="${RDEPEND}
-	x11-base/xorg-proto"
+	x11-libs/libXt
+"
+DEPEND="
+	${RDEPEND}
+	x11-base/xorg-proto
+"
 
 src_prepare() {
+	default
+
 	sed -i \
 		-e "/LEVELDIR\|SOUNDDIR/ s:prefix:datadir/${PN}:" \
 		-e "/\/scores/ s:prefix:localstatedir/${PN}:" \
 		configure \
 		|| die "sed configure failed"
+
 	sed -i \
 		-e "/SOUNDDEFS/ s:(SOUNDSRVDIR):(SOUNDSRVDIR)/bin:" \
 		-e 's:make ;:$(MAKE) ;:' \
 		Makefile.in \
 		|| die "sed Makefile.in failed"
+
+	sed -i \
+		-e "s/AR = ar/AR ?= ar/" \
+		libsprite/Makefile.in \
+		|| die "sed to respect AR failed"
+
+	mv configure.{in,ac} || die
+
+	eautoreconf
+}
+
+src_configure() {
+	tc-export AR
+	econf
 }
 
 src_install() {
-	dogamesbin xgalaga xgal.sndsrv.oss xgalaga-hyperspace
+	dobin xgalaga xgal.sndsrv.oss xgalaga-hyperspace
 	dodoc README README.SOUND CHANGES
 	newman xgalaga.6x xgalaga.6
 
-	insinto "${GAMES_DATADIR}/${PN}/sounds"
+	insinto /usr/share/${PN}/sounds
 	doins sounds/*.raw
 
-	insinto "${GAMES_DATADIR}/${PN}/levels"
+	insinto /usr/share/${PN}/levels
 	doins levels/*.xgl
 
 	make_desktop_entry ${PN} XGalaga
 
-	dodir "${GAMES_STATEDIR}/${PN}"
-	touch "${D}${GAMES_STATEDIR}/${PN}/scores"
-	fperms 660 "${GAMES_STATEDIR}/${PN}/scores"
-	prepgamesdirs
+	dodir /var/lib/${PN}
+	touch "${ED}"/var/lib/${PN}/scores || die
+	fperms 660 /var/lib/${PN}/scores
 }
