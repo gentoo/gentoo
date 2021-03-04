@@ -54,6 +54,7 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
+	emake WAYLAND=$(usex wayland 1 0) SYSTEMD=0 \
+	      DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
 	systemd_dounit dunst.service
 }
