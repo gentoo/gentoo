@@ -7,7 +7,6 @@ ECM_HANDBOOK="forceoptional"
 ECM_TEST="optional"
 KDE_ORG_CATEGORY="network"
 KDE_RELEASE_SERVICE="true"
-PVCUT=$(ver_cut 1-3)
 KFMIN=5.75.0
 QTMIN=5.15.2
 inherit ecm kde.org
@@ -29,14 +28,14 @@ COMMON_DEPEND="
 	>=kde-frameworks/ki18n-${KFMIN}:5
 	>=kde-frameworks/kio-${KFMIN}:5
 	>=kde-frameworks/knotifications-${KFMIN}:5
-	kaccounts? ( >=kde-apps/kaccounts-integration-${PVCUT}:5 )
+	kaccounts? ( >=kde-apps/kaccounts-integration-20.08.3:5 )
 	!kaccounts? ( dev-libs/qtkeychain:=[qt5(+)] )
 "
 DEPEND="${COMMON_DEPEND}
 	>=dev-qt/qtnetwork-${QTMIN}:5
 "
 RDEPEND="${COMMON_DEPEND}
-	kaccounts? ( >=kde-apps/kaccounts-providers-${PVCUT}:5 )
+	kaccounts? ( >=kde-apps/kaccounts-providers-20.08.3:5 )
 "
 
 DOCS=( README.md )
