@@ -10,4 +10,4 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/gtk+:2 virtual/libintl:0 crypt? ( >=app-crypt/mhash-0.8:0 )
 SLOT=0
 SRC_URI=mirror://sourceforge/gtk-splitter/gtk-splitter-2.2.1.tar.gz
-_md5_=00fa5e4c09d97aaa868b1ea64a80f9b4
+_md5_=be10a5a6ddd71ca4973019feb89c17e1

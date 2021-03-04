@@ -14996,7 +14996,7 @@ net-libs/usrsctp 0.9.3.0_p20201102: A cross-platform userland SCTP stack
 net-libs/wandio 4.2.3_p1-r1: C library for simple and efficient file IO
 net-libs/webkit-gtk 2.30.5: Open source web browser engine
 net-libs/wvstreams 4.6.1_p14-r1 99999: A network programming library in C++
-net-libs/xrootd 4.12.4 4.12.5 5.0.2 5.0.3 5.1.0: Extended ROOT remote file server
+net-libs/xrootd 5.0.3 5.1.0: Extended ROOT remote file server
 net-libs/xrootd-ceph 4.12.4 4.12.5 5.0.2 5.0.3 5.1.0: xrootd OSS plug-in for interfacing with Ceph storage platform
 net-libs/zeromq 4.3.3-r1 4.3.4-r1: A brokerless kernel
 net-libs/zmqpp 4.2.0: ZeroMQ 'highlevel' C++ bindings
@@ -16548,7 +16548,7 @@ sci-physics/looptools 2.8 2.15: Tools for evaluation of scalar and tensor one-lo
 sci-physics/pythia 6.4.28-r2 8.2.26-r1: Lund Monte Carlo high-energy physics event generator
 sci-physics/qmeq 1.0_p202004: Quantum master equation package for Quantum dot transport calculations
 sci-physics/reduze 2.2: Program for reducing Feynman integrals
-sci-physics/root 6.20.08 6.22.06 9999: C++ data analysis framework and interpreter from CERN
+sci-physics/root 6.22.06 9999: C++ data analysis framework and interpreter from CERN
 sci-physics/sassena 1.4.2: Software for Calculating Scattering Diagrams on Massively Parallel Computers
 sci-physics/siscone 3.0.5: Hadron Seedless Infrared-Safe Cone jet algorithm
 sci-physics/thepeg 1.9.2 2.0.0 2.0.4: Toolkit for High Energy Physics Event Generation
