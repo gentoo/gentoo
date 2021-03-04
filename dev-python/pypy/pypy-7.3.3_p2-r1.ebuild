@@ -23,8 +23,8 @@ IUSE="bzip2 gdbm +jit libressl ncurses sqlite tk"
 
 RDEPEND="
 	|| (
-		dev-python/pypy-exe:${PYPY_PV}[bzip2?,ncurses?]
-		dev-python/pypy-exe-bin:${PYPY_PV}
+		>=dev-python/pypy-exe-${PV}:${PYPY_PV}[bzip2?,ncurses?]
+		>=dev-python/pypy-exe-bin-${PV}:${PYPY_PV}
 	)
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
