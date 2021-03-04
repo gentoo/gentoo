@@ -10,7 +10,7 @@ MY_P=pypy2.7-v${PV/_/}
 PATCHSET="python-gentoo-patches-2.7.18-r1"
 
 DESCRIPTION="A fast, compliant alternative implementation of the Python language"
-HOMEPAGE="https://pypy.org/"
+HOMEPAGE="https://www.pypy.org/"
 SRC_URI="https://buildbot.pypy.org/pypy/${MY_P}-src.tar.bz2
 	https://dev.gentoo.org/~mgorny/dist/python/${PATCHSET}.tar.xz"
 S="${WORKDIR}/${MY_P}-src"
