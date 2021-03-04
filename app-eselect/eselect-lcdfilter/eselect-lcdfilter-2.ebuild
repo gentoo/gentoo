@@ -1,17 +1,17 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit vcs-snapshot readme.gentoo-r1
 
 DESCRIPTION="Eselect module to choose Freetype infinality-enhanced LCD filtering settings"
 HOMEPAGE="https://github.com/yngwin/eselect-lcdfilter"
-SRC_URI="https://github.com/yngwin/eselect-lcdfilter/tarball/v${PV} -> ${P}.tar.gz"
+SRC_URI="https://github.com/yngwin/eselect-lcdfilter/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
 RDEPEND="app-admin/eselect"
 PDEPEND="media-libs/freetype[infinality]"
