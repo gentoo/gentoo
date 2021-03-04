@@ -1,7 +1,8 @@
+BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install prepare
-DEPEND=sci-libs/atlas:0[lapack,threads=] sci-libs/fftw:3.0 plplot? ( sci-libs/plplot:= ) virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=sci-libs/atlas:0[lapack,threads=] sci-libs/fftw:3.0 plplot? ( sci-libs/plplot:= )
 DESCRIPTION=Extracts models of the Point Spread Function from FITS images
-EAPI=6
+EAPI=7
 HOMEPAGE=http://www.astromatic.net/software/psfex
 IUSE=doc threads plplot
 KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
@@ -9,5 +10,5 @@ LICENSE=GPL-3
 RDEPEND=sci-libs/atlas:0[lapack,threads=] sci-libs/fftw:3.0 plplot? ( sci-libs/plplot:= )
 SLOT=0
 SRC_URI=http://www.astromatic.net/download/psfex/psfex-3.17.1.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=0a1a4d632389a7d05d007fe27e2797bf
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=88dafe338093574b241d3d498dbb7a8a
