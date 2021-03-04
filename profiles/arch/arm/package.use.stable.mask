@@ -1,6 +1,11 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-03-04)
+# Dependencies not yet stable, drags in
+# large amount of fabric. bug #763954
+sys-block/open-iscsi infiniband
+
 # Sam James <sam@gentoo.org> (2021-02-09)
 # dev-libs/libgdata is not (yet?) stable on arm
 # bug #769767, bug #769764
