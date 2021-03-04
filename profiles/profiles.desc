@@ -1,3 +1,6 @@
+# Copyright 2003-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
 #############################################
 # This is a list of valid profiles for each architecture.  This file is used by
 # repoman when doing a repoman scan or repoman full.
