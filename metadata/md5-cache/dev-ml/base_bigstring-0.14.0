@@ -5,10 +5,10 @@ DESCRIPTION=String type based on Bigarray, for use in I/O and C-bindings
 EAPI=7
 HOMEPAGE=https://github.com/janestreet/base_bigstring
 IUSE=+ocamlopt
-KEYWORDS=~amd64 ~arm ~arm64 ppc ~ppc64 x86
+KEYWORDS=amd64 ~arm ~arm64 ppc ~ppc64 x86
 LICENSE=MIT
 RDEPEND=>=dev-lang/ocaml-4.08.0:=[ocamlopt=] dev-ml/base:= dev-ml/ppx_jane:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/base_bigstring/archive/v0.14.0.tar.gz -> base_bigstring-0.14.0.tar.gz
 _eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
-_md5_=72f5719a8e695917fc9f1fcc1642ec1c
+_md5_=9088394404339e376fe3ab878ccc8021

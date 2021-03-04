@@ -5,11 +5,11 @@ DESCRIPTION=Spawning sub-processes
 EAPI=7
 HOMEPAGE=https://github.com/janestreet/spawn
 IUSE=ocamlopt test
-KEYWORDS=~amd64 ~arm ~arm64 ppc ~ppc64 x86
+KEYWORDS=amd64 ~arm ~arm64 ppc ~ppc64 x86
 LICENSE=MIT
 RDEPEND=>=dev-lang/ocaml-4:=[ocamlopt?]
 RESTRICT=!test? ( test )
 SLOT=0/0.13.0
 SRC_URI=https://github.com/janestreet/spawn/archive/v0.13.0.tar.gz -> spawn-0.13.0.tar.gz
 _eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
-_md5_=3a6c8be2c233de9d0d42bda8eacb03f7
+_md5_=3459558e0f5763f6306ee82f220f7a82

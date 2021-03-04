@@ -5,10 +5,10 @@ DESCRIPTION=Text output utilities
 EAPI=7
 HOMEPAGE=https://github.com/janestreet/textutils
 IUSE=ocamlopt
-KEYWORDS=~amd64 ~arm ~arm64 ppc ~ppc64 x86
+KEYWORDS=amd64 ~arm ~arm64 ppc ~ppc64 x86
 LICENSE=MIT
 RDEPEND=dev-ml/core:= dev-ml/core_kernel:= dev-ml/ppx_jane:= dev-ml/uutf:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/textutils/archive/v0.14.0.tar.gz -> textutils-0.14.0.tar.gz
 _eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
-_md5_=9423667504217711e92183f0e5a287b2
+_md5_=d80705bd6949cd98ddf50aaadfb408b4

@@ -5,10 +5,10 @@ DESCRIPTION=Core libraries for opam
 EAPI=7
 HOMEPAGE=https://opam.ocaml.org/ https://github.com/ocaml/opam
 IUSE=+ocamlopt
-KEYWORDS=~amd64 ~arm ~arm64 ppc ~ppc64 x86
+KEYWORDS=amd64 ~arm ~arm64 ppc ~ppc64 x86
 LICENSE=LGPL-2.1
 RDEPEND=~dev-ml/opam-core-2.0.8:= dev-ml/re:= dev-ml/opam-file-format:= dev-ml/dose3:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/2.0.8
 SRC_URI=https://github.com/ocaml/opam/archive/2.0.8.tar.gz -> opam-2.0.8.tar.gz
 _eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
-_md5_=d29d865490a15e835701425c66fafc59
+_md5_=92234b031fc1ee195e23100b0dae2380
