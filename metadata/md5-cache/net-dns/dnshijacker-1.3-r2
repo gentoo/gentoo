@@ -1,12 +1,12 @@
 DEFINED_PHASES=configure install
-DEPEND=net-libs/libpcap >=net-libs/libnet-1.0.2a-r3:1.0
+DEPEND=>=net-libs/libnet-1.0.2a-r3:1.0 net-libs/libpcap
 DESCRIPTION=a libnet/libpcap based packet sniffer and spoofer
 EAPI=7
-HOMEPAGE=http://pedram.redhive.com/projects.php
+HOMEPAGE=http://pedram.redhive.com/code/dns_hijacker/
 KEYWORDS=~amd64 x86
 LICENSE=GPL-2
-RDEPEND=net-libs/libpcap >=net-libs/libnet-1.0.2a-r3:1.0
+RDEPEND=>=net-libs/libnet-1.0.2a-r3:1.0 net-libs/libpcap
 SLOT=0
 SRC_URI=http://pedram.redhive.com/downloads/dnshijacker-1.3.tar.gz
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=3d971709184a1174b69be40a4002065a
+_md5_=68e39891e946b09bbe22d8c8148ec86c

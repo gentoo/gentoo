@@ -15482,7 +15482,7 @@ net-p2p/go-ipfs-bin 0.4.22 0.7.0: Main implementation of IPFS
 net-p2p/gtk-gnutella 1.2.0-r1: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
 net-p2p/ktorrent 5.2.0-r1 20.12.3: Powerful BitTorrent client based on KDE Frameworks
-net-p2p/litecoind 0.10.4.0: P2P Internet currency based on Bitcoin but easier to mine
+net-p2p/litecoind 0.10.4.0: The offical daemon to run your own (full) Litecoin node
 net-p2p/mktorrent 1.1_p20180912: Simple command line utility to create BitTorrent metainfo files
 net-p2p/mldonkey 3.1.7-r1: Multi-network P2P application written in Ocaml, with Gtk, web & telnet interface
 net-p2p/ncdc 1.22.1 9999: ncurses directconnect client
