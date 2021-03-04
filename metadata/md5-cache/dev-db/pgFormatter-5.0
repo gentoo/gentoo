@@ -1,0 +1,13 @@
+BDEPEND=dev-lang/perl
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl
+DESCRIPTION=PostgreSQL SQL syntax beautifier
+EAPI=7
+HOMEPAGE=https://github.com/darold/pgFormatter
+KEYWORDS=~amd64
+LICENSE=BSD
+RDEPEND=dev-lang/perl:=
+SLOT=0
+SRC_URI=https://github.com/darold/pgFormatter/archive/v5.0.tar.gz -> pgFormatter-5.0.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_md5_=6346c8cf097217b62bc807ec5ac1c996
