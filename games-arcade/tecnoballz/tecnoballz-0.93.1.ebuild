@@ -1,7 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools desktop
 
 DESCRIPTION="An exciting Brick Breaker"
@@ -22,10 +23,13 @@ RDEPEND="${DEPEND}"
 
 src_prepare() {
 	default
+
 	mkdir man/fr || die
 	mv man/${PN}.fr.6 man/fr/${PN}.6 || die
+
 	sed -i -e 's:\$(prefix)/games:\$(prefix)/bin:' src/Makefile.am || die
 	sed -i -e '/CXXFLAGS=/d' -e '/^else/d' configure.ac || die
+
 	eautoreconf
 }
 
