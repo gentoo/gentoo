@@ -6,7 +6,8 @@ EAPI=7
 inherit dune
 
 DESCRIPTION="GLib integration for Lwt"
-SRC_URI="https://github.com/ocsigen/lwt_ssl/archive/${PV}.tar.gz"
+SRC_URI="https://github.com/ocsigen/lwt_ssl/archive/${PV}.tar.gz
+	-> ${P}.tar.gz"
 HOMEPAGE="http://ocsigen.org/lwt_ssl"
 
 IUSE="+ocamlopt"
