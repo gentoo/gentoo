@@ -1,0 +1,14 @@
+BDEPEND=dev-ml/dune dev-lang/ocaml
+DEFINED_PHASES=compile install test
+DEPEND=dev-ml/async_unix:= dev-ml/bigarray-compat:= >=dev-ml/ppx_tools_versioned-5.4.0:= >=dev-lang/ocaml-4:=[ocamlopt?]
+DESCRIPTION=Map OCaml arrays onto C-like structs
+EAPI=7
+HOMEPAGE=https://github.com/mirage/ocaml-cstruct https://mirage.io
+IUSE=+ocamlopt
+KEYWORDS=~amd64
+LICENSE=ISC
+RDEPEND=dev-ml/async_unix:= dev-ml/bigarray-compat:= >=dev-ml/ppx_tools_versioned-5.4.0:= >=dev-lang/ocaml-4:=[ocamlopt?]
+SLOT=0/5.2.0
+SRC_URI=https://github.com/mirage/ocaml-cstruct/releases/download/v5.2.0/cstruct-v5.2.0.tbz
+_eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
+_md5_=3aa3509542e95d6d1ee013daa642ae62

@@ -5854,6 +5854,7 @@ dev-ml/core_kernel 0.9.0 0.9.1 0.14.1-r3: System-independent part of Core
 dev-ml/cppo 1.4.1 1.5.0 1.6.6 1.6.7: An equivalent of the C preprocessor for OCaml programs
 dev-ml/cryptokit 1.10 1.11 1.16.1-r1: Cryptographic primitives library for Objective Caml
 dev-ml/csexp 1.3.2-r1: Parsing and printing of S-expressions in Canonical form
+dev-ml/cstruct 5.2.0: Map OCaml arrays onto C-like structs
 dev-ml/csv 1.7: A pure OCaml library to read and write CSV files
 dev-ml/cudf 0.9: Library to parse, pretty print, and evaluate CUDF documents
 dev-ml/deriving 0.7.1: A deriving library for Ocsigen
@@ -8321,12 +8322,12 @@ dev-python/github3 1.3.0: A wrapper for the GitHub API written in python
 dev-python/glance_store 2.3.0: A library for glance
 dev-python/glooey 0.3.4: An object-oriented GUI library for pyglet
 dev-python/gmpy 2.0.8-r2: Python bindings for GMP, MPC, MPFR and MPIR libraries
-dev-python/google-api-core 1.25.1 1.26.0: Core Library for Google Client Libraries
+dev-python/google-api-core 1.25.1 1.26.0 1.26.1: Core Library for Google Client Libraries
 dev-python/google-api-python-client 1.8.3-r1 2.0.0: Google API Client for Python
 dev-python/google-apitools 0.5.31: Python library to manipulate Google APIs
-dev-python/google-auth 1.24.0 1.25.0 1.26.1 1.27.0: Google Authentication Library
-dev-python/google-auth-httplib2 0.0.4: httplib2 Transport for Google Auth
-dev-python/google-auth-oauthlib 0.4.1-r1: Google Authentication Library
+dev-python/google-auth 1.24.0 1.25.0 1.26.1 1.27.0 1.27.1: Google Authentication Library
+dev-python/google-auth-httplib2 0.0.4 0.1.0: httplib2 Transport for Google Auth
+dev-python/google-auth-oauthlib 0.4.1-r1 0.4.3: Google Authentication Library
 dev-python/google-pasta 0.1.1 0.2.0: AST-based Python refactoring library
 dev-python/google-reauth-python 0.1.0-r1 0.1.1: Python based U2F host library
 dev-python/googleapis-common-protos 1.52.0 1.53.0: python classes generated from the common protos in the googleapis repository
@@ -8379,7 +8380,7 @@ dev-python/imapclient 2.2.0: easy-to-use, pythonic, and complete IMAP client lib
 dev-python/iminuit 1.3.8 2.2.1 2.3.0: Minuit numerical function minimization in Python
 dev-python/immutables 0.14 0.15: A high-performance immutable mapping type for Python
 dev-python/importlib_metadata 3.4.0 3.7.0: Read metadata from Python packages
-dev-python/importlib_resources 5.1.0 5.1.1: Read resources from Python packages
+dev-python/importlib_resources 5.1.0 5.1.1 5.1.2: Read resources from Python packages
 dev-python/imread 0.7.3-r1: Read Image Files
 dev-python/incremental 17.5.0 21.3.0: Incremental is a small library that versions your Python projects
 dev-python/indexed_gzip 0.8.10: Fast random access of gzip files in Python
@@ -8434,7 +8435,7 @@ dev-python/json-rpc 1.13.0: JSON-RPC transport implementation for python
 dev-python/jsondiff 1.2.0: Diff JSON and JSON-like structures in Python
 dev-python/jsonext 0.4.2: Well-structured helpers for serializing commonly encountered structures to JSON.
 dev-python/jsonmerge 1.6.0 1.8.0: Merge a series of JSON documents
-dev-python/jsonpatch 1.28 1.30: Apply JSON-Patches like http://tools.ietf.org/html/draft-pbryan-json-patch-04
+dev-python/jsonpatch 1.28 1.30 1.31: Apply JSON-Patches like http://tools.ietf.org/html/draft-pbryan-json-patch-04
 dev-python/jsonpickle 1.5.0 1.5.2 2.0.0: Python library for serializing any arbitrary object graph into JSON
 dev-python/jsonpointer 2.0-r1: Identify specific nodes in a JSON document (according to draft 08)
 dev-python/jsonref 0.1: An implementation of JSON Reference for Python
@@ -17609,8 +17610,8 @@ sys-kernel/cryptodev 1.9-r1 1.11 9999: device that allows access to Linux kernel
 sys-kernel/dracut 050-r2 051-r1 053 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
-sys-kernel/gentoo-kernel 5.4.94 5.4.97 5.4.99 5.4.100 5.4.101 5.10.17 5.10.18 5.10.19 5.11.2: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.94 5.4.94-r1 5.4.97 5.4.97-r1 5.4.99 5.4.99-r1 5.4.100 5.4.100-r1 5.4.101 5.4.101-r1 5.4.101-r2 5.10.17 5.10.17-r1 5.10.18 5.10.18-r1 5.10.19 5.10.19-r1 5.10.19-r2 5.11.2 5.11.2-r1 5.11.2-r2: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel 5.4.94 5.4.97 5.4.99 5.4.100 5.4.101 5.4.102 5.10.17 5.10.18 5.10.19 5.10.20 5.11.2 5.11.3: Linux kernel built with Gentoo patches
+sys-kernel/gentoo-kernel-bin 5.4.94 5.4.94-r1 5.4.97 5.4.97-r1 5.4.99 5.4.99-r1 5.4.100 5.4.100-r1 5.4.101 5.4.101-r1 5.4.101-r2 5.4.102 5.10.17 5.10.17-r1 5.10.18 5.10.18-r1 5.10.19 5.10.19-r1 5.10.19-r2 5.10.20 5.11.2 5.11.2-r1 5.11.2-r2 5.11.3: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.246 4.4.255 4.4.256 4.4.257 4.4.258 4.4.259 4.9.246 4.9.255 4.9.256 4.9.257 4.9.258 4.9.259 4.14.209 4.14.219 4.14.220 4.14.221 4.14.222 4.14.223 4.19.160 4.19.173 4.19.174 4.19.175 4.19.176 4.19.177 4.19.178 5.4.80-r1 5.4.97 5.4.98 5.4.99 5.4.100 5.4.101 5.4.102 5.10.14 5.10.15 5.10.16 5.10.17 5.10.18 5.10.19 5.10.20 5.11.0 5.11.1 5.11.2 5.11.3: Full sources including the Gentoo patchset for the 5.11 kernel tree
 sys-kernel/git-sources 5.12_rc1: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
@@ -17625,7 +17626,7 @@ sys-kernel/pf-sources 5.9_p7 5.10_p12 5.11_p1 5.11_p2: Linux kernel fork that in
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.79_p20201201 5.10.11_p20210201 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.79_p20201201 5.4.9999 5.10.11_p20210201: Raspberry Pi kernel sources
 sys-kernel/rt-sources 4.4.240_p209 4.4.245_p211 4.4.249_p212 4.9.240_p155 4.9.247_p162 4.14.206_p99 4.14.209_p101 4.14.214_p104 4.19.148_p64 4.19.160_p69 4.19.165_p70 5.4.70_p40 5.4.84_p47 5.10.1_p20 5.10.4_p22: Full Linux 5.10 kernel sources with the CONFIG_PREEMPT_RT patch
-sys-kernel/vanilla-kernel 5.4.94 5.4.97 5.4.99 5.4.100 5.4.101 5.10.17 5.10.18 5.10.19 5.11.2: Linux kernel built from vanilla upstream sources
+sys-kernel/vanilla-kernel 5.4.94 5.4.97 5.4.99 5.4.100 5.4.101 5.4.102 5.10.17 5.10.18 5.10.19 5.10.20 5.11.2 5.11.3: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-sources 4.4.259 4.9.259 4.14.223 4.19.178 5.4.102 5.10.20 5.11.3: Full sources for the Linux kernel
 sys-kernel/zen-sources 5.10.16 5.11: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
@@ -17803,7 +17804,7 @@ virtual/commonlisp 0: Virtual for Common Lisp
 virtual/cron 0-r2: Virtual for cron
 virtual/daemontools 0: Virtual for daemontools
 virtual/dev-manager 0-r2: Virtual for the device filesystem manager
-virtual/dist-kernel 5.4.94 5.4.97 5.4.99 5.4.100 5.4.101 5.10.17 5.10.18 5.10.19 5.11.2: Virtual to depend on any Distribution Kernel
+virtual/dist-kernel 5.4.94 5.4.97 5.4.99 5.4.100 5.4.101 5.4.102 5.10.17 5.10.18 5.10.19 5.10.20 5.11.2 5.11.3: Virtual to depend on any Distribution Kernel
 virtual/editor 0-r3: Virtual for editor
 virtual/eject 0-r1: Virtual for the eject command
 virtual/fam 0-r1: A virtual package to choose between gamin and fam
@@ -18360,7 +18361,7 @@ x11-libs/libva-vdpau-driver 0.7.4-r5: VDPAU Backend for Video Acceleration (VA) 
 x11-libs/libvdpau 1.4 99999: VDPAU wrapper and trace libraries
 x11-libs/libwnck 2.31.0 3.36.0: A window navigation construction kit
 x11-libs/libxcb 1.14: X C-language Bindings library
-x11-libs/libxkbcommon 1.0.3: keymap handling library for toolkits and window systems
+x11-libs/libxkbcommon 1.0.3 1.1.0: keymap handling library for toolkits and window systems
 x11-libs/libxkbfile 1.1.0: X.Org xkbfile library
 x11-libs/libxklavier 5.4: A library for the X Keyboard Extension (high-level API)
 x11-libs/libxshmfence 1.3-r2: Shared memory fences using futexes
