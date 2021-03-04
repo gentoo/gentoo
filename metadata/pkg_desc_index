@@ -5987,7 +5987,7 @@ dev-ml/ppx_sexp_value 0.9.0 0.14.0: Standard library for ppx rewriters
 dev-ml/ppx_stable 0.14.1: Stable types conversions generator
 dev-ml/ppx_string 0.14.1: Ppx extension for string interpolation
 dev-ml/ppx_tools 6.2: Tools for authors of ppx rewriters
-dev-ml/ppx_tools_versioned 5.0.1 5.2.2: Tools for authors of ppx rewriters
+dev-ml/ppx_tools_versioned 5.0.1 5.2.2 5.4.0: Tools for authors of ppx rewriters
 dev-ml/ppx_traverse 0.9.0: Automatic generation of open recursion classes
 dev-ml/ppx_traverse_builtins 0.9.0: Builtins for ppx_traverse
 dev-ml/ppx_type_conv 0.9.0: Support Library for type-driven code generators
