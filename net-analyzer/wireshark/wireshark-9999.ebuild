@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -98,7 +98,7 @@ RESTRICT="!test? ( test )"
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.6.0-redhat.patch
 	"${FILESDIR}"/${PN}-3.4.2-cmake-lua-version.patch
-	"${FILESDIR}"/${PN}-99999999-ui-needs-wiretap.patch
+	"${FILESDIR}"/${PN}-9999-ui-needs-wiretap.patch
 )
 
 pkg_setup() {
