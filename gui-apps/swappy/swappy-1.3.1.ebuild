@@ -21,20 +21,20 @@ SLOT="0"
 
 DEPEND="
 	dev-libs/glib:2
-	x11-libs/gtk+:3
 	x11-libs/cairo
+	x11-libs/gtk+:3
 	x11-libs/pango
 "
 RDEPEND="${DEPEND}
 	media-fonts/fontawesome[otf]
 "
 BDEPEND="
-	virtual/pkgconfig
 	app-text/scdoc
+	virtual/pkgconfig
 "
 
 src_prepare() {
-	eapply_user
+	default
 
 	# See https://github.com/jtheoof/swappy/pull/99
 	sed -i -e 's/Utility;Graphics;Annotation;/Utility;Graphics;/'  src/po/swappy.desktop.in || die "Sed failed!"
@@ -44,8 +44,4 @@ pkg_postinst() {
 	xdg_pkg_postinst
 
 	optfeature "persisting clipboard after closing" gui-apps/wl-clipboard
-}
-
-pkg_postrm() {
-	xdg_pkg_postrm
 }
