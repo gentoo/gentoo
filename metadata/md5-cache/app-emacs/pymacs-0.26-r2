@@ -1,4 +1,4 @@
-BDEPEND=doc? ( >=dev-python/docutils-0.7 virtual/latex-base ) >=app-editors/emacs-23.1:* python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-)] >=dev-python/setuptools-42.0.2[python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-)]
+BDEPEND=doc? ( >=dev-python/docutils-0.7 virtual/latex-base ) >=app-editors/emacs-23.1:* python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-)]
 DEFINED_PHASES=compile configure install postinst postrm prepare setup test unpack
 DESCRIPTION=A tool that allows both-side communication beetween Python and Emacs Lisp
 EAPI=7
@@ -11,4 +11,4 @@ REQUIRED_USE=|| ( python_targets_python3_7 python_targets_python3_8 )
 SLOT=0
 SRC_URI=https://github.com/dgentry/Pymacs/archive/v0.26.tar.gz -> pymacs-0.26.tar.gz
 _eclasses_=distutils-r1	c166cdc9bfdc0fee3ea2100e01fdcdd3	elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	d4b53ec63c580b993ed19445f411e1d2	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	4c65b35c1895b82c0f44e44166a3464f	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=5cae9ff88ab3772b4c4f9a49053ccc6b
+_md5_=a009d977c61dada9a802dd6da1bf6f85
