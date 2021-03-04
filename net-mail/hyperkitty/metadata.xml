@@ -6,5 +6,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">hyperkitty</remote-id>
+		<remote-id type="gitlab">mailman/hyperkitty</remote-id>
 	</upstream>
 </pkgmetadata>
