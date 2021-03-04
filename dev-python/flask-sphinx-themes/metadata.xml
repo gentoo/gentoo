@@ -7,8 +7,8 @@
   </maintainer>
   <stabilize-allarches/>
   <upstream>
-    <remote-id type="pypi">Flask-Sphinx-Themes</remote-id>
-    <remote-id type="github">pallets/flask-sphinx-themes</remote-id>
-    <bugs-to>https://github.com/pallets/flask-sphinx-themes/issues</bugs-to>
+    <remote-id type="pypi">Pallets-Sphinx-Themes</remote-id>
+    <remote-id type="github">pallets/pallets-sphinx-themes</remote-id>
+    <bugs-to>https://github.com/pallets/pallets-sphinx-themes/issues</bugs-to>
   </upstream>
 </pkgmetadata>
