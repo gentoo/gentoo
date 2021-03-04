@@ -1,0 +1,112 @@
+diff --git a/readconf.c b/readconf.c
+index 724974b7..97a1ffd8 100644
+--- a/readconf.c
++++ b/readconf.c
+@@ -161,6 +161,7 @@ typedef enum {
+ 	oClearAllForwardings, oNoHostAuthenticationForLocalhost,
+ 	oEnableSSHKeysign, oRekeyLimit, oVerifyHostKeyDNS, oConnectTimeout,
+ 	oAddressFamily, oGssAuthentication, oGssDelegateCreds,
++	oGssTrustDns,
+ 	oServerAliveInterval, oServerAliveCountMax, oIdentitiesOnly,
+ 	oSendEnv, oSetEnv, oControlPath, oControlMaster, oControlPersist,
+ 	oHashKnownHosts,
+@@ -206,9 +207,11 @@ static struct {
+ #if defined(GSSAPI)
+ 	{ "gssapiauthentication", oGssAuthentication },
+ 	{ "gssapidelegatecredentials", oGssDelegateCreds },
++	{ "gssapitrustdns", oGssTrustDns },
+ # else
+ 	{ "gssapiauthentication", oUnsupported },
+ 	{ "gssapidelegatecredentials", oUnsupported },
++	{ "gssapitrustdns", oUnsupported },
+ #endif
+ #ifdef ENABLE_PKCS11
+ 	{ "pkcs11provider", oPKCS11Provider },
+@@ -1083,6 +1086,10 @@ parse_time:
+ 		intptr = &options->gss_deleg_creds;
+ 		goto parse_flag;
+ 
++	case oGssTrustDns:
++		intptr = &options->gss_trust_dns;
++		goto parse_flag;
++
+ 	case oBatchMode:
+ 		intptr = &options->batch_mode;
+ 		goto parse_flag;
+@@ -2183,6 +2190,7 @@ initialize_options(Options * options)
+ 	options->challenge_response_authentication = -1;
+ 	options->gss_authentication = -1;
+ 	options->gss_deleg_creds = -1;
++	options->gss_trust_dns = -1;
+ 	options->password_authentication = -1;
+ 	options->kbd_interactive_authentication = -1;
+ 	options->kbd_interactive_devices = NULL;
+@@ -2340,6 +2348,8 @@ fill_default_options(Options * options)
+ 		options->gss_authentication = 0;
+ 	if (options->gss_deleg_creds == -1)
+ 		options->gss_deleg_creds = 0;
++	if (options->gss_trust_dns == -1)
++		options->gss_trust_dns = 0;
+ 	if (options->password_authentication == -1)
+ 		options->password_authentication = 1;
+ 	if (options->kbd_interactive_authentication == -1)
+diff --git a/readconf.h b/readconf.h
+index 2fba866e..da3ce87a 100644
+--- a/readconf.h
++++ b/readconf.h
+@@ -42,6 +42,7 @@ typedef struct {
+ 					/* Try S/Key or TIS, authentication. */
+ 	int     gss_authentication;	/* Try GSS authentication */
+ 	int     gss_deleg_creds;	/* Delegate GSS credentials */
++	int	gss_trust_dns;		/* Trust DNS for GSS canonicalization */
+ 	int     password_authentication;	/* Try password
+ 						 * authentication. */
+ 	int     kbd_interactive_authentication; /* Try keyboard-interactive auth. */
+diff --git a/ssh_config.5 b/ssh_config.5
+index f8119189..e0fd0d76 100644
+--- a/ssh_config.5
++++ b/ssh_config.5
+@@ -783,6 +783,16 @@ The default is
+ Forward (delegate) credentials to the server.
+ The default is
+ .Cm no .
++Note that this option applies to protocol version 2 connections using GSSAPI.
++.It Cm GSSAPITrustDns
++Set to
++.Dq yes to indicate that the DNS is trusted to securely canonicalize
++the name of the host being connected to. If
++.Dq no, the hostname entered on the
++command line will be passed untouched to the GSSAPI library.
++The default is
++.Dq no .
++This option only applies to protocol version 2 connections using GSSAPI.
+ .It Cm HashKnownHosts
+ Indicates that
+ .Xr ssh 1
+diff --git a/sshconnect2.c b/sshconnect2.c
+index 059c9480..ab6f6832 100644
+--- a/sshconnect2.c
++++ b/sshconnect2.c
+@@ -770,6 +770,13 @@ userauth_gssapi(struct ssh *ssh)
+ 	OM_uint32 min;
+ 	int r, ok = 0;
+ 	gss_OID mech = NULL;
++	const char *gss_host;
++
++	if (options.gss_trust_dns) {
++		extern const char *auth_get_canonical_hostname(struct ssh *ssh, int use_dns);
++		gss_host = auth_get_canonical_hostname(ssh, 1);
++	} else
++		gss_host = authctxt->host;
+ 
+ 	/* Try one GSSAPI method at a time, rather than sending them all at
+ 	 * once. */
+@@ -784,7 +791,7 @@ userauth_gssapi(struct ssh *ssh)
+ 		    elements[authctxt->mech_tried];
+ 		/* My DER encoding requires length<128 */
+ 		if (mech->length < 128 && ssh_gssapi_check_mechanism(&gssctxt,
+-		    mech, authctxt->host)) {
++		    mech, gss_host)) {
+ 			ok = 1; /* Mechanism works */
+ 		} else {
+ 			authctxt->mech_tried++;
