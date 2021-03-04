@@ -26,8 +26,8 @@ RESTRICT="test"
 
 RDEPEND="
 	|| (
-		dev-python/pypy3-exe:${PV%_p*}[bzip2?,ncurses?]
-		dev-python/pypy3-exe-bin:${PV%_p*}
+		>=dev-python/pypy3-exe-${PV}:${PV%_p*}[bzip2?,ncurses?]
+		>=dev-python/pypy3-exe-bin-${PV}:${PV%_p*}
 	)
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
