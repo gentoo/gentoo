@@ -116,9 +116,6 @@ src_install() {
 	# not a real man page
 	rm -r "${ED}"/usr/share/Lmod/share/man || die
 	doenvd "${FILESDIR}"/99lmod
-	insinto /etc/profile.d
-	newins "${ED}"/usr/share/Lmod/init/profile lmod.sh
-	newins "${ED}"/usr/share/Lmod/init/profile.fish lmod.fish
 	keepdir /etc/modulefiles
 	keepdir /etc/lmod_cache
 }
