@@ -1,8 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils games
+EAPI=7
+
+inherit desktop toolchain-funcs
 
 DATA_PV=1.5
 DESCRIPTION="How many tomatoes can you smash in ten short minutes?"
@@ -13,50 +14,57 @@ SRC_URI="mirror://sourceforge/tomatoes/tomatoes-linux-src-${PV}.tar.bz2
 LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
-IUSE=""
 
-DEPEND="virtual/opengl
-	virtual/glu
+DEPEND="
 	media-libs/libsdl[sound,video]
 	media-libs/sdl-image[jpeg,png]
-	media-libs/sdl-mixer[mod]"
+	media-libs/sdl-mixer[mod]
+	virtual/opengl
+	virtual/glu
+"
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-c_str.patch
+	"${FILESDIR}"/${P}-underlink.patch
+	"${FILESDIR}"/${P}-gcc43.patch
+)
 
 src_prepare() {
 	mv ../tomatoes-1.5/* . || die "mv failed"
 	mv icon.png ${PN}.png
 
-	epatch \
-		"${FILESDIR}"/${P}-c_str.patch \
-		"${FILESDIR}"/${P}-underlink.patch \
-		"${FILESDIR}"/${P}-gcc43.patch
+	default
 
 	sed -i \
-		-e "/^MPKDIR = /s:./:${GAMES_DATADIR}/${PN}/:" \
-		-e "/^MUSICDIR = /s:./music/:${GAMES_DATADIR}/${PN}/music/:" \
-		-e "/^HISCOREDIR = /s:./:${GAMES_STATEDIR}/${PN}/:" \
-		-e "/^CONFIGDIR = /s:./:${GAMES_SYSCONFDIR}/${PN}/:" \
-		-e "/^OVERRIDEDIR = /s:./data/:${GAMES_DATADIR}/${PN}/data/:" \
+		-e "/^MPKDIR = /s:./:/usr/share/${PN}/:" \
+		-e "/^MUSICDIR = /s:./music/:/usr/share/${PN}/music/:" \
+		-e "/^HISCOREDIR = /s:./:/var/lib/${PN}/:" \
+		-e "/^CONFIGDIR = /s:./:$/etc/${PN}/:" \
+		-e "/^OVERRIDEDIR = /s:./data/:/usr/share/${PN}/data/:" \
 		makefile \
 		|| die "sed failed"
 }
 
+src_configure() {
+	tc-export CXX
+}
+
 src_install() {
-	dogamesbin tomatoes
+	dobin tomatoes
+
 	dodoc README README-src
 
-	insinto "${GAMES_DATADIR}"/${PN}
+	insinto /usr/share/${PN}
 	doins -r tomatoes.mpk music
 
 	doicon ${PN}.png
 	make_desktop_entry tomatoes "I Have No Tomatoes"
 
-	dodir "${GAMES_STATEDIR}"/${PN}
-	touch "${D}${GAMES_STATEDIR}"/${PN}/hiscore.lst || die "touch failed"
-	fperms 660 "${GAMES_STATEDIR}"/${PN}/hiscore.lst
+	dodir /var/lib/${PN}
+	touch "${ED}"/var/lib/${PN}/hiscore.lst || die "touch failed"
+	fperms 660 /var/lib/${PN}/hiscore.lst
 
-	insinto "${GAMES_SYSCONFDIR}"/${PN}
+	insinto /etc/${PN}
 	doins config.cfg
-
-	prepgamesdirs
 }
