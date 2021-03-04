@@ -3002,7 +3002,7 @@ app-text/mecab 0.996-r1: Yet Another Part-of-Speech and Morphological Analyzer
 app-text/mpage 2.5.6-r1: Many to one page printing utility
 app-text/msort 8.53: A program for sorting files in sophisticated ways
 app-text/multitail 6.4.2: Tail with multiple windows
-app-text/mupdf 1.18.0-r2 1.18.0-r3: A lightweight PDF viewer and toolkit written in portable C
+app-text/mupdf 1.18.0-r3: A lightweight PDF viewer and toolkit written in portable C
 app-text/mythes 1.2.4-r1: A simple thesaurus for Libreoffice
 app-text/namazu 2.0.21 2.0.22_pre7: Namazu is a full-text search engine
 app-text/nfoview 1.27.1 1.28 9999: Simple viewer for NFO files, which are ASCII art in the CP437 codepage
@@ -5344,7 +5344,7 @@ dev-libs/grantlee 5.2.0: C++ string template engine based on the Django template
 dev-libs/gtx 0.2.2 0.2.2-r1: Small collection of functions intended to enhance the GLib testing framework
 dev-libs/gumbo 0.10.1: The HTML5 parsing algorithm implemented as a pure C99 library
 dev-libs/hidapi 0.8.0_rc1_p20140719-r1: A multi-platform library for USB and Bluetooth HID-Class devices
-dev-libs/hiredis 0.14.1 1.0.0: Minimalistic C client library for the Redis database
+dev-libs/hiredis 1.0.0: Minimalistic C client library for the Redis database
 dev-libs/http-fetcher 1.1.0-r1: Library for downloading files via HTTP using the GET method
 dev-libs/hyperleveldb 1.2.2-r1: Hyperdex fork/extension of leveldb
 dev-libs/hyperscan 5.3.0 5.4.0: High-performance regular expression matching library
@@ -5712,7 +5712,7 @@ dev-libs/template-glib 3.34.0: Templating library for GLib
 dev-libs/tinyxml 2.6.2-r3 2.6.2-r4: Simple and small C++ XML parser
 dev-libs/tinyxml2 7.1.0 8.0.0: A simple, small, efficient, C++ XML parser
 dev-libs/tntnet 2.2.1 2.2.1-r3 3.0: Modular, multithreaded web application server extensible with C++
-dev-libs/tomsfastmath 0.13.1 0.13.1-r1: Fast public domain large integer arithmetic library
+dev-libs/tomsfastmath 0.13.1-r1: Fast public domain large integer arithmetic library
 dev-libs/totem-pl-parser 3.26.5: Playlist parsing library
 dev-libs/tre 0.8.0-r2: Lightweight, robust, and efficient POSIX compliant regexp matching library
 dev-libs/tree-sitter 0.18.2 0.18.3 0.19.0 9999: Tree-sitter is a parser generator tool and an incremental parsing library.
@@ -14425,7 +14425,7 @@ net-analyzer/ngrep 1.47: A grep for network layers
 net-analyzer/nikto 2.1.6_p20200901: Web server vulnerability scanner
 net-analyzer/nipper 0.12.0: Router configuration security analysis tool
 net-analyzer/nload 0.7.4-r1: Real time network traffic monitor for the command line interface
-net-analyzer/nmap 7.80-r1 7.80-r2 7.91 7.91-r1 9999: Network exploration tool and security / port scanner
+net-analyzer/nmap 7.80-r2 7.91-r1 9999: Network exploration tool and security / port scanner
 net-analyzer/nmapsi 0.5_alpha2: Qt frontend to nmap
 net-analyzer/nmbscan 1.2.5-r1: Scans the shares of a SMB/NetBIOS network
 net-analyzer/nrpe 4.0.0 4.0.2: Nagios Remote Plugin Executor
@@ -14532,7 +14532,7 @@ net-analyzer/upnpscan 0.4-r3: Scans the network for UPnP capable devices
 net-analyzer/vnstat 1.17 2.6 9999: Console-based network traffic monitor that keeps statistics of network usage
 net-analyzer/wapiti 3.0.3 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r2: Poor man's web vulnerability scanner
-net-analyzer/wireshark 3.4.2-r100 3.4.3 99999999: A network protocol analyzer formerly known as ethereal
+net-analyzer/wireshark 3.4.3 9999: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3-r1: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.8.2 9999: A framework for layer 2 attacks
@@ -14908,7 +14908,7 @@ net-libs/liboping 1.10.0-r2: Protocol independent ANSI-C ping library and comman
 net-libs/libosmo-dsp 0.4.0 9999: A library with SDR DSP primitives
 net-libs/libosmocore 0.10.2 9999: Utility functions for OsmocomBB, OpenBSC and related projects
 net-libs/libotr 4.1.1: (OTR) Messaging allows you to have private conversations over instant messaging
-net-libs/libpcap 1.9.1-r3 1.10.0 9999: A system-independent library for user-level network packet capture
+net-libs/libpcap 1.10.0 9999: A system-independent library for user-level network packet capture
 net-libs/libpcapnav 0.8-r1: Libpcap wrapper library to navigate to arbitrary packets in a tcpdump trace file
 net-libs/libpri 1.6.0: Primary Rate ISDN (PRI) library
 net-libs/libprotoident 2.0.14_p1 9999: A library that performs application layer protocol identification for flows
