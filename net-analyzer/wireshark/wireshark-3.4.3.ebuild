@@ -100,7 +100,7 @@ RESTRICT="test"
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.6.0-redhat.patch
 	"${FILESDIR}"/${PN}-3.4.2-cmake-lua-version.patch
-	"${FILESDIR}"/${PN}-99999999-ui-needs-wiretap.patch
+	"${FILESDIR}"/${PN}-9999-ui-needs-wiretap.patch
 )
 
 pkg_setup() {
