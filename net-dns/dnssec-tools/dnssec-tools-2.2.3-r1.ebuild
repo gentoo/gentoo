@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ DESCRIPTION="Tools to ease the deployment of DNSSEC related technologies"
 HOMEPAGE="https://dnssec-tools.org/"
 SRC_URI="https://github.com/DNSSEC-Tools/DNSSEC-Tools/archive/${P}.tar.gz"
 
-LICENSE="BSD"
+LICENSE="BSD GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="static-libs"
