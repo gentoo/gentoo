@@ -9,7 +9,7 @@ inherit check-reqs pax-utils python-any-r1 toolchain-funcs
 
 MY_P=pypy3.6-v${PV/_/}
 DESCRIPTION="PyPy3 executable (build from source)"
-HOMEPAGE="https://pypy.org/"
+HOMEPAGE="https://www.pypy.org/"
 SRC_URI="https://buildbot.pypy.org/pypy/${MY_P}-src.tar.bz2"
 S="${WORKDIR}/${MY_P}-src"
 

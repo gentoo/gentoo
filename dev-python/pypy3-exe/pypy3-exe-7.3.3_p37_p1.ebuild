@@ -12,7 +12,7 @@ MY_P=pypy3.7-v${PYPY_PV/_/}
 PATCHSET="pypy3.7-gentoo-patches-${PV/_p37}"
 
 DESCRIPTION="PyPy3 executable (build from source)"
-HOMEPAGE="https://pypy.org/"
+HOMEPAGE="https://www.pypy.org/"
 SRC_URI="https://buildbot.pypy.org/pypy/${MY_P}-src.tar.bz2
 	https://dev.gentoo.org/~mgorny/dist/python/${PATCHSET}.tar.xz"
 S="${WORKDIR}/${MY_P}-src"

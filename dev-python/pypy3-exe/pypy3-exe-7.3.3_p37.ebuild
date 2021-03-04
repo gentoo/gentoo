@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ inherit check-reqs pax-utils python-any-r1 toolchain-funcs
 PYPY_PV=${PV%_p37}
 MY_P=pypy3.7-v${PYPY_PV/_/}
 DESCRIPTION="PyPy3 executable (build from source)"
-HOMEPAGE="https://pypy.org/"
+HOMEPAGE="https://www.pypy.org/"
 SRC_URI="https://buildbot.pypy.org/pypy/${MY_P}-src.tar.bz2"
 S="${WORKDIR}/${MY_P}-src"
 
