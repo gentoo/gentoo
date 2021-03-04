@@ -4,7 +4,7 @@ DESCRIPTION=Evolution groupware backend
 EAPI=6
 HOMEPAGE=https://wiki.gnome.org/Apps/Evolution
 IUSE=berkdb +gnome-online-accounts +gtk gtk-doc +introspection ipv6 ldap kerberos oauth vala +weather test
-KEYWORDS=~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x86-solaris
+KEYWORDS=~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x86-solaris
 LICENSE=|| ( LGPL-2 LGPL-3 ) BSD Sleepycat
 RDEPEND=>=app-crypt/gcr-3.4 >=app-crypt/libsecret-0.5[crypt] >=dev-db/sqlite-3.7.17:= >=dev-libs/glib-2.46:2 >=dev-libs/libical-3.0.8:=[glib,introspection?] >=dev-libs/libxml2-2 >=dev-libs/nspr-4.4:= >=dev-libs/nss-3.9:= >=net-libs/libsoup-2.58:2.4 dev-libs/icu:= sys-libs/zlib:= virtual/libiconv berkdb? ( >=sys-libs/db-4:= ) gtk? ( >=app-crypt/gcr-3.4[gtk] >=x11-libs/gtk+-3.10:3 >=media-libs/libcanberra-0.25[gtk3] ) oauth? ( >=dev-libs/json-glib-1.0.4 >=net-libs/webkit-gtk-2.11.91:4 >=dev-libs/libgdata-0.17.7:= ) gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.8:= >=dev-libs/libgdata-0.17.7:= ) introspection? ( >=dev-libs/gobject-introspection-0.9.12:= ) kerberos? ( virtual/krb5:= ) ldap? ( >=net-nds/openldap-2:= ) weather? ( >=dev-libs/libgweather-3.10:2= )
 REQUIRED_USE=vala? ( introspection )
@@ -12,4 +12,4 @@ RESTRICT=test !test? ( test )
 SLOT=0/62-24-20
 SRC_URI=mirror://gnome/sources/evolution-data-server/3.36/evolution-data-server-3.36.5.tar.xz
 _eclasses_=cmake-utils	77cd39e6009811bf97a59d91ffd5b54f	db-use	5b886219e6035ca01d8b1c58eba91679	desktop	c0d27bf73aa08ca05b663dbd31fbef28	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	edos2unix	33e347e171066657f91f8b0c72ec8773	epatch	e8f1ec13660dc2f44b32775765d85e42	estack	055c42df72f76a4f45ec92b35e83cd56	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	gnome.org	532d56d07b9eace4831aaa817d2b756a	gnome2	c156bb2ac81c822dd861424ce19bc168	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	preserve-libs	ef207dc62baddfddfd39a164d9797648	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	vala	5fab64090cefe75c5df431cefa0b653d	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	d3fb3ba33acc3bbbdc4d7970227c100d	virtualx	7e60d3b10c791ab996f717bc1f30072f	wrapper	4251d4c84c25f59094fd557e0063a974	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=b0461fe48a8240aaaf608305c9f43739
+_md5_=14fec666dc4bc6fe6bba124b8a34730d

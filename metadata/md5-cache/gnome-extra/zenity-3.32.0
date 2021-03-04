@@ -5,10 +5,10 @@ DESCRIPTION=Tool to display dialogs from the commandline and shell scripts
 EAPI=7
 HOMEPAGE=https://wiki.gnome.org/Projects/Zenity
 IUSE=debug libnotify webkit
-KEYWORDS=~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux
+KEYWORDS=~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux
 LICENSE=LGPL-2+
 RDEPEND=>=dev-libs/glib-2.8:2 x11-libs/gdk-pixbuf:2 >=x11-libs/gtk+-3:3[X] x11-libs/libX11 x11-libs/pango libnotify? ( >=x11-libs/libnotify-0.6.1:= ) webkit? ( >=net-libs/webkit-gtk-2.8.1:4 )
 SLOT=0
 SRC_URI=mirror://gnome/sources/zenity/3.32/zenity-3.32.0.tar.xz
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	gnome.org	532d56d07b9eace4831aaa817d2b756a	gnome2	c156bb2ac81c822dd861424ce19bc168	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=d38a9225d5caf90a4316cd685114e467
+_md5_=ad647bd79bcdbeb0cc2d3cb283dae5c5

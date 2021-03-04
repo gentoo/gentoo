@@ -4,9 +4,9 @@ DESCRIPTION=System settings D-Bus service for OpenRC
 EAPI=7
 HOMEPAGE=https://gitweb.gentoo.org/proj/openrc-settingsd.git
 IUSE=systemd
-KEYWORDS=~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86
+KEYWORDS=~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~sparc x86
 LICENSE=GPL-2+
 RDEPEND=>=dev-libs/glib-2.30:2 dev-libs/libdaemon:0= sys-apps/dbus sys-apps/openrc:= sys-auth/polkit systemd? ( >=sys-apps/systemd-197 ) !systemd? ( sys-auth/nss-myhostname !sys-apps/systemd )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~tetromino/distfiles/openrc-settingsd/openrc-settingsd-1.0.1.tar.xz
-_md5_=07f8d05021146f64433c994e1314abde
+_md5_=8f219b0263baaaff7f94b879120a1205
