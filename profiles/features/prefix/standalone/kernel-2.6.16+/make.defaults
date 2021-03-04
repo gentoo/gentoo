@@ -1,3 +1,6 @@
+# Copyright 2018-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
 # This profile is supporting >=linux-2.6.16[a] and <linux-2.6.32[b].
 
 # a. https://sourceware.org/ml/libc-announce/2012/msg00001.html

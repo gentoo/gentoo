@@ -1,4 +1,7 @@
 # -*- mode: shell-script; -*-
+# Copyright 2018-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
 # RAP specific patches pending upstream:
 # binutils: http://article.gmane.org/gmane.comp.gnu.binutils/67593
 # gcc: https://gcc.gnu.org/ml/gcc-patches/2014-12/msg00331.html
