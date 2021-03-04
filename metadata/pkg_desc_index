@@ -2239,7 +2239,7 @@ app-i18n/ibus-hangul 1.5.3-r1 1.5.4: Korean Hangul engine for IBus
 app-i18n/ibus-input-pad 1.4.99_pre20140916: Input Pad for IBus
 app-i18n/ibus-kkc 1.5.22: Japanese Kana Kanji conversion engine for IBus
 app-i18n/ibus-libpinyin 1.11.1-r1 1.11.92-r1: Intelligent Pinyin and Bopomofo input methods based on LibPinyin for IBus
-app-i18n/ibus-m17n 1.4.2 1.4.3: M17N engine for IBus
+app-i18n/ibus-m17n 1.4.3 1.4.4: M17N engine for IBus
 app-i18n/ibus-pinyin 1.5.0-r4: Chinese Pinyin and Bopomofo engines for IBus
 app-i18n/ibus-rime 1.4.0 1.5.0: Chinese Rime Input Method Engine for IBus
 app-i18n/ibus-skk 1.4.2 1.4.3: Japanese SKK engine for IBus
