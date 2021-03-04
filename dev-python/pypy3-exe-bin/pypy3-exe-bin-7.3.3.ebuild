@@ -7,7 +7,7 @@ inherit pax-utils
 
 MY_P=pypy3-exe-${PV}-1
 DESCRIPTION="PyPy3 executable (pre-built version)"
-HOMEPAGE="https://pypy.org/"
+HOMEPAGE="https://www.pypy.org/"
 SRC_URI="
 	amd64? (
 		https://dev.gentoo.org/~mgorny/binpkg/amd64/pypy/dev-python/pypy3-exe/${MY_P}.xpak
