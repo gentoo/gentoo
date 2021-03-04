@@ -1,2 +1,3 @@
 slotmove >=sys-auth/libfprint-1.90 0 2
 move app-emulation/libpod app-emulation/podman
+move app-laptop/radeontool sys-apps/radeontool
