@@ -1,12 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7,8} )
 
+PYTHON_COMPAT=( python3_{7,8,9} )
 DISTUTILS_USE_SETUPTOOLS="rdepend"
 
-inherit distutils-r1
+inherit distutils-r1 optfeature
 
 DESCRIPTION="Generate block-diagram image from text"
 HOMEPAGE="http://blockdiag.com/ https://pypi.org/project/blockdiag/ https://github.com/blockdiag/blockdiag/"
@@ -25,7 +25,6 @@ RDEPEND="
 "
 DEPEND="
 	test? (
-		${RDEPEND}
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/reportlab[${PYTHON_USEDEP}]
@@ -33,6 +32,8 @@ DEPEND="
 		media-fonts/ja-ipafonts
 	)
 "
+
+distutils_enable_tests setup.py
 
 python_prepare_all() {
 	sed -i -e /build-base/d setup.cfg || die
@@ -48,14 +49,10 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 }
 
-python_test() {
-	esetup.py test
-}
-
 pkg_postinst() {
+	# TODO: Better descriptions!
 	einfo "For additional functionality, install the following optional packages:"
-	einfo "    dev-python/reportlab for pdf format"
-	einfo "    media-gfx/imagemagick"
-	einfo "    wand: https://pypi.org/project/Wand"
-	einfo "          Ctypes-based simple MagickWand API binding for Python"
+	optfeature "for PDF format" dev-python/reportlab
+	optfeature "misc extra support" media-gfx/imagemagick
+	optfeature "Ctypes-based simple MagickWand API binding for Python" dev-python/wand
 }

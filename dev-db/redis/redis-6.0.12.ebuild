@@ -55,7 +55,7 @@ REQUIRED_USE="?? ( jemalloc tcmalloc )
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.2.3-config.patch
 	"${FILESDIR}"/${PN}-5.0-shared.patch
-	"${FILESDIR}"/${PN}-6.0.9-sharedlua.patch
+	"${FILESDIR}"/${PN}-6.0.12-sharedlua.patch
 	"${FILESDIR}"/${PN}-5.0.8-ppc-atomic.patch
 	"${FILESDIR}"/${PN}-sentinel-5.0-config.patch
 )
