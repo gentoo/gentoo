@@ -1,6 +1,5 @@
-diff -ur Makefile.in Makefile.in
---- Makefile.in	2009-08-04 09:37:52.000000000 +0200
-+++ Makefile.in	2009-09-30 23:45:28.000000000 +0200
+--- a/Makefile.in
++++ b/Makefile.in
 @@ -54,8 +54,8 @@
  LDFLAGS = @MYLDFLAGS@
  CMDLDFLAGS = @MYCMDLDFLAGS@
@@ -12,9 +11,8 @@ diff -ur Makefile.in Makefile.in
  POSTCMD = @MYPOSTCMD@
  
  
-diff -ur configure.in configure.in
---- configure.in	2009-08-31 11:36:58.000000000 +0200
-+++ configure.in	2009-09-30 23:45:28.000000000 +0200
+--- a/configure.in
++++ b/configure.in
 @@ -31,25 +31,15 @@
  MYPCFILES="tokyocabinet.pc"
  
@@ -44,9 +42,8 @@ diff -ur configure.in configure.in
  
  #================================================================
  # Options
-diff -ur tokyocabinet.pc.in tokyocabinet.pc.in
---- tokyocabinet.pc.in	2008-02-18 08:25:18.000000000 +0100
-+++ tokyocabinet.pc.in	2009-09-30 23:45:28.000000000 +0200
+--- a/tokyocabinet.pc.in
++++ b/tokyocabinet.pc.in
 @@ -10,5 +10,5 @@
  Name: Tokyo Cabinet
  Description: a modern implementation of DBM
