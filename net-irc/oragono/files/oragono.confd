@@ -1,0 +1,3 @@
+# /etc/conf.d/oragono: config file for /etc/init.d/oragono
+ORAGONO_CONFIGFILE="/etc/oragono/ircd.yaml"
+
