@@ -11,4 +11,4 @@ RDEPEND=dev-libs/nettle:= net-mail/ytnef sys-libs/zlib:= x11-libs/cairo x11-libs
 REQUIRED_USE=appindicator? ( notification ) libcanberra? ( notification ) libnotify? ( notification ) networkmanager? ( dbus ) smime? ( pgp )
 SLOT=0
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	desktop	c0d27bf73aa08ca05b663dbd31fbef28	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=2c37ea96aef30fd32a8f85e6eb379bfe
+_md5_=9ef7362f25d711d61258a44d74021188
