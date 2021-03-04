@@ -5,10 +5,6 @@
     <email>amadio@gentoo.org</email>
     <name>Guilherme Amadio</name>
   </maintainer>
-  <maintainer type="project">
-    <email>sci-physics@gentoo.org</email>
-    <name>Gentoo Physics Project</name>
-  </maintainer>
   <longdescription lang="en">
   Geant simulates the passage of subatomic particles through matter, for
   instance, particle detectors. Geant 3 simulations are performed by
