@@ -1,0 +1,14 @@
+BDEPEND=dev-ml/dune dev-lang/ocaml
+DEFINED_PHASES=compile install test
+DEPEND=>=dev-lang/ocaml-4:=[ocamlopt?]
+DESCRIPTION=Compatibility library to use Stdlib.Bigarray when possible
+EAPI=7
+HOMEPAGE=https://github.com/mirage/bigarray-compat
+IUSE=+ocamlopt
+KEYWORDS=~amd64 ~x86
+LICENSE=ISC
+RDEPEND=>=dev-lang/ocaml-4:=[ocamlopt?]
+SLOT=0
+SRC_URI=https://github.com/mirage/bigarray-compat/archive/v1.0.0.tar.gz -> bigarray-compat-1.0.0.tar.gz
+_eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
+_md5_=ce6d5d9dccb2a19dc4320443beca2ee1
