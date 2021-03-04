@@ -5907,7 +5907,7 @@ dev-ml/ocaml-base64 2.2.0 3.5.0: Library for radix-64 representation (de)coding
 dev-ml/ocaml-cohttp 0.22.0-r1: Very lightweight HTTP server using Lwt or Async
 dev-ml/ocaml-compiler-libs 0.9.0 0.12.3: Repackage the OCaml compiler libs so they do not expose everything at toplevel
 dev-ml/ocaml-conduit 0.15.4: Dereference URIs into communication channels for Async or Lwt
-dev-ml/ocaml-cstruct 3.1.1 5.2.0: Map OCaml arrays onto C-like structs
+dev-ml/ocaml-cstruct 3.1.1: Map OCaml arrays onto C-like structs
 dev-ml/ocaml-ctypes 0.11.2 0.17.1: Library for binding to C libraries using pure OCaml
 dev-ml/ocaml-data-notation 0.0.11-r1: Use type-conv to dump OCaml data structure using OCaml data notation
 dev-ml/ocaml-dispatch 0.4.0: Path-based dispatching for client- and server-side applications
