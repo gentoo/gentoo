@@ -7,11 +7,14 @@ PYTHON_COMPAT=( python3_{7..9} )
 
 inherit distutils-r1
 
-MY_PN="google-auth-library-python-httplib2"
+MY_P="google-auth-library-python-httplib2-${PV}"
 DESCRIPTION="httplib2 Transport for Google Auth"
-HOMEPAGE="https://pypi.org/project/google-auth-httplib2/ https://github.com/GoogleCloudPlatform/google-auth-library-python-httplib2"
-SRC_URI="https://github.com/GoogleCloudPlatform/google-auth-library-python-httplib2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${MY_PN}-${PV}"
+HOMEPAGE="https://pypi.org/project/google-auth-httplib2/
+	https://github.com/googleapis/google-auth-library-python-httplib2"
+SRC_URI="
+	https://github.com/googleapis/google-auth-library-python-httplib2/archive/v${PV}.tar.gz
+		-> ${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
