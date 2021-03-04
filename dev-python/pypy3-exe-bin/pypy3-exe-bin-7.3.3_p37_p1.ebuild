@@ -20,8 +20,8 @@ SRC_URI="
 S="${WORKDIR}"
 
 LICENSE="MIT"
-SLOT="${PV}"
-KEYWORDS="amd64 x86"
+SLOT="${PV%_p*}"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND=">=sys-libs/zlib-1.1.3:0/1
 	dev-libs/libffi:0/7
@@ -29,10 +29,11 @@ RDEPEND=">=sys-libs/zlib-1.1.3:0/1
 	dev-libs/expat:0/0
 	app-arch/bzip2:0/1
 	sys-libs/ncurses:0/6
-	!dev-python/pypy-exe:${PV}"
+	!dev-python/pypy-exe:${SLOT}"
 
+PYPY_PV=${SLOT%_p*}
 QA_PREBUILT="
-	usr/lib/pypy3.6/pypy3-c-${SLOT}"
+	usr/lib/pypy3.7/pypy3-c-${PYPY_PV}"
 
 src_unpack() {
 	ebegin "Unpacking ${MY_P}.${ARCH}.xpak"
@@ -43,6 +44,6 @@ src_unpack() {
 src_install() {
 	insinto /
 	doins -r usr
-	fperms +x "/usr/lib/pypy3.6/pypy3-c-${SLOT}"
-	pax-mark m "${ED}/usr/lib/pypy3.6/pypy3-c-${SLOT}"
+	fperms +x "/usr/lib/pypy3.7/pypy3-c-${PYPY_PV}"
+	pax-mark m "${ED}/usr/lib/pypy3.7/pypy3-c-${PYPY_PV}"
 }

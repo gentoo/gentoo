@@ -3,19 +3,22 @@
 
 EAPI=7
 
-# pypy3 needs to be built using python 2
 PYTHON_COMPAT=( python2_7 )
 inherit check-reqs pax-utils python-any-r1 toolchain-funcs
 
-MY_P=pypy3.6-v${PV/_/}
-DESCRIPTION="PyPy3 executable (build from source)"
+PYPY_PV=${PV%_p*}
+MY_P=pypy2.7-v${PYPY_PV}
+PATCHSET="pypy2.7-gentoo-patches-${PV}"
+
+DESCRIPTION="PyPy executable (build from source)"
 HOMEPAGE="https://www.pypy.org/"
-SRC_URI="https://buildbot.pypy.org/pypy/${MY_P}-src.tar.bz2"
+SRC_URI="https://buildbot.pypy.org/pypy/${MY_P}-src.tar.bz2
+	https://dev.gentoo.org/~mgorny/dist/python/${PATCHSET}.tar.xz"
 S="${WORKDIR}/${MY_P}-src"
 
 LICENSE="MIT"
-SLOT="${PV}"
-KEYWORDS="amd64 ~arm64 ~ppc64 x86 ~amd64-linux ~x86-linux"
+SLOT="${PYPY_PV}"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="bzip2 +jit low-memory ncurses cpu_flags_x86_sse2"
 
 RDEPEND=">=sys-libs/zlib-1.1.3:0=
@@ -24,10 +27,11 @@ RDEPEND=">=sys-libs/zlib-1.1.3:0=
 	dev-libs/expat:0=
 	bzip2? ( app-arch/bzip2:0= )
 	ncurses? ( sys-libs/ncurses:0= )
-	!dev-python/pypy3-exe-bin:${PV}"
+	!dev-python/pypy-exe-bin:${PYPY_PV}"
+# don't enforce the dep on pypy with USE=low-memory since it's going
+# to cause either collisions or circular dep on itself
 DEPEND="${RDEPEND}"
 BDEPEND="
-	low-memory? ( dev-python/pypy )
 	!low-memory? (
 		|| (
 			dev-python/pypy
@@ -37,6 +41,18 @@ BDEPEND="
 
 check_env() {
 	if use low-memory; then
+		if ! has_version -b dev-python/pypy &&
+				! has_version -b dev-python/pypy-bin
+		then
+			eerror "USE=low-memory requires a (possibly old) version of dev-python/pypy"
+			eerror "being installed. Please install it using e.g.:"
+			eerror
+			eerror "  $ emerge -1v dev-python/pypy dev-python/pypy-exe-bin"
+			eerror
+			eerror "before attempting to build dev-python/pypy-exe[low-memory]."
+			die "dev-python/pypy needs to be installed for USE=low-memory"
+		fi
+
 		CHECKREQS_MEMORY="1750M"
 		use amd64 && CHECKREQS_MEMORY="3500M"
 	else
@@ -55,21 +71,27 @@ pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		check_env
 
-		# unset to allow forcing pypy below :)
 		use low-memory && EPYTHON=
 		if [[ ! ${EPYTHON} || ${EPYTHON} == pypy ]] &&
 				{ has_version -b dev-python/pypy ||
 				has_version -b dev-python/pypy-bin; }
 		then
-			einfo "Using PyPy to perform the translation."
+			einfo "Using already-installed PyPy to perform the translation."
 			EPYTHON=pypy
 		else
-			einfo "Using ${EPYTHON:-python2} to perform the translation. Please note that upstream"
-			einfo "recommends using PyPy for that. If you wish to do so, please install"
-			einfo "dev-python/pypy and ensure that EPYTHON variable is unset."
+			einfo "Using ${EPYTHON} to perform the translation. Please note that upstream"
+			einfo "recommends using PyPy for that. If you wish to do so, please unset"
+			einfo "the EPYTHON variable."
 			python-any-r1_pkg_setup
 		fi
 	fi
+}
+
+src_prepare() {
+	local PATCHES=(
+		"${WORKDIR}/${PATCHSET}"
+	)
+	default
 }
 
 src_configure() {
@@ -147,10 +169,10 @@ src_compile() {
 }
 
 src_install() {
-	local dest=/usr/lib/pypy3.6
+	local dest=/usr/lib/pypy2.7
 	exeinto "${dest}"
-	newexe "${T}"/usession*-0/testing_1/pypy3-c pypy3-c-${PV}
-	insinto "${dest}"/include/${PV}
+	newexe "${T}"/usession*-0/testing_1/pypy-c pypy-c-${PYPY_PV}
+	insinto "${dest}"/include/${PYPY_PV}
 	doins include/pypy_*
-	pax-mark m "${ED}${dest}/pypy3-c-${PV}"
+	pax-mark m "${ED}${dest}/pypy-c-${PYPY_PV}"
 }

@@ -7,15 +7,19 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 )
 inherit check-reqs pax-utils python-any-r1 toolchain-funcs
 
-MY_P=pypy3.6-v${PV/_/}
+PYPY_PV=${PV%_p37*}
+MY_P=pypy3.7-v${PYPY_PV/_/}
+PATCHSET="pypy3.7-gentoo-patches-${PV/_p37}"
+
 DESCRIPTION="PyPy3 executable (build from source)"
 HOMEPAGE="https://www.pypy.org/"
-SRC_URI="https://buildbot.pypy.org/pypy/${MY_P}-src.tar.bz2"
+SRC_URI="https://buildbot.pypy.org/pypy/${MY_P}-src.tar.bz2
+	https://dev.gentoo.org/~mgorny/dist/python/${PATCHSET}.tar.xz"
 S="${WORKDIR}/${MY_P}-src"
 
 LICENSE="MIT"
-SLOT="${PV}"
-KEYWORDS="amd64 ~arm64 ~ppc64 x86 ~amd64-linux ~x86-linux"
+SLOT="${PV%_p*}"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="bzip2 +jit low-memory ncurses cpu_flags_x86_sse2"
 
 RDEPEND=">=sys-libs/zlib-1.1.3:0=
@@ -24,7 +28,7 @@ RDEPEND=">=sys-libs/zlib-1.1.3:0=
 	dev-libs/expat:0=
 	bzip2? ( app-arch/bzip2:0= )
 	ncurses? ( sys-libs/ncurses:0= )
-	!dev-python/pypy3-exe-bin:${PV}"
+	!dev-python/pypy3-exe-bin:${PV%_p*}"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	low-memory? ( dev-python/pypy )
@@ -70,6 +74,13 @@ pkg_setup() {
 			python-any-r1_pkg_setup
 		fi
 	fi
+}
+
+src_prepare() {
+	local PATCHES=(
+		"${WORKDIR}/${PATCHSET}"
+	)
+	default
 }
 
 src_configure() {
@@ -147,10 +158,10 @@ src_compile() {
 }
 
 src_install() {
-	local dest=/usr/lib/pypy3.6
+	local dest=/usr/lib/pypy3.7
 	exeinto "${dest}"
-	newexe "${T}"/usession*-0/testing_1/pypy3-c pypy3-c-${PV}
-	insinto "${dest}"/include/${PV}
+	newexe "${T}"/usession*-0/testing_1/pypy3-c pypy3-c-${PYPY_PV}
+	insinto "${dest}"/include/${PYPY_PV}
 	doins include/pypy_*
-	pax-mark m "${ED}${dest}/pypy3-c-${PV}"
+	pax-mark m "${ED}${dest}/pypy3-c-${PYPY_PV}"
 }
