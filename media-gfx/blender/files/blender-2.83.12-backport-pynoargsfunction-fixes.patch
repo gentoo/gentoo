@@ -1,0 +1,137 @@
+diff -Naur a/source/blender/python/mathutils/mathutils_Matrix.c b/source/blender/python/mathutils/mathutils_Matrix.c
+--- a/source/blender/python/mathutils/mathutils_Matrix.c	2021-03-04 14:33:25.115842707 +1100
++++ b/source/blender/python/mathutils/mathutils_Matrix.c	2021-03-04 14:37:33.866627077 +1100
+@@ -42,7 +42,8 @@
+ static PyObject *Matrix_copy(MatrixObject *self);
+ static PyObject *Matrix_deepcopy(MatrixObject *self, PyObject *args);
+ static int Matrix_ass_slice(MatrixObject *self, int begin, int end, PyObject *value);
+-static PyObject *matrix__apply_to_copy(PyNoArgsFunction matrix_func, MatrixObject *self);
++static PyObject *matrix__apply_to_copy(PyObject *(*matrix_func)(MatrixObject *),
++                                       MatrixObject *self);
+ static PyObject *MatrixAccess_CreatePyObject(MatrixObject *matrix, const eMatrixAccess_t type);
+ 
+ static int matrix_row_vector_check(MatrixObject *mat, VectorObject *vec, int row)
+@@ -395,14 +396,15 @@
+   return NULL;
+ }
+ 
+-static PyObject *matrix__apply_to_copy(PyNoArgsFunction matrix_func, MatrixObject *self)
++static PyObject *matrix__apply_to_copy(PyObject *(*matrix_func)(MatrixObject *),
++                                       MatrixObject *self)
+ {
+   PyObject *ret = Matrix_copy(self);
+   if (ret) {
+-    PyObject *ret_dummy = matrix_func(ret);
++    PyObject *ret_dummy = matrix_func((MatrixObject *)ret);
+     if (ret_dummy) {
+       Py_DECREF(ret_dummy);
+-      return (PyObject *)ret;
++      return ret;
+     }
+     else { /* error */
+       Py_DECREF(ret);
+@@ -1737,7 +1739,7 @@
+     "   .. note:: When the matrix cant be adjugated a :exc:`ValueError` exception is raised.\n");
+ static PyObject *Matrix_adjugated(MatrixObject *self)
+ {
+-  return matrix__apply_to_copy((PyNoArgsFunction)Matrix_adjugate, self);
++  return matrix__apply_to_copy(Matrix_adjugate, self);
+ }
+ 
+ PyDoc_STRVAR(
+@@ -1945,7 +1947,7 @@
+              "   :rtype: :class:`Matrix`\n");
+ static PyObject *Matrix_transposed(MatrixObject *self)
+ {
+-  return matrix__apply_to_copy((PyNoArgsFunction)Matrix_transpose, self);
++  return matrix__apply_to_copy(Matrix_transpose, self);
+ }
+ 
+ /*---------------------------matrix.normalize() ------------------*/
+@@ -1991,7 +1993,7 @@
+              "   :rtype: :class:`Matrix`\n");
+ static PyObject *Matrix_normalized(MatrixObject *self)
+ {
+-  return matrix__apply_to_copy((PyNoArgsFunction)Matrix_normalize, self);
++  return matrix__apply_to_copy(Matrix_normalize, self);
+ }
+ 
+ /*---------------------------matrix.zero() -----------------------*/
+diff -Naur a/source/blender/python/mathutils/mathutils_Quaternion.c b/source/blender/python/mathutils/mathutils_Quaternion.c
+--- a/source/blender/python/mathutils/mathutils_Quaternion.c	2021-03-04 14:33:25.115842707 +1100
++++ b/source/blender/python/mathutils/mathutils_Quaternion.c	2021-03-04 14:39:40.397027378 +1100
+@@ -34,7 +34,8 @@
+ 
+ #define QUAT_SIZE 4
+ 
+-static PyObject *quat__apply_to_copy(PyNoArgsFunction quat_func, QuaternionObject *self);
++static PyObject *quat__apply_to_copy(PyObject *(*quat_func)(QuaternionObject *),
++                                     QuaternionObject *self);
+ static void quat__axis_angle_sanitize(float axis[3], float *angle);
+ static PyObject *Quaternion_copy(QuaternionObject *self);
+ static PyObject *Quaternion_deepcopy(QuaternionObject *self, PyObject *args);
+@@ -463,7 +464,7 @@
+              "   :rtype: :class:`Quaternion`\n");
+ static PyObject *Quaternion_normalized(QuaternionObject *self)
+ {
+-  return quat__apply_to_copy((PyNoArgsFunction)Quaternion_normalize, self);
++  return quat__apply_to_copy(Quaternion_normalize, self);
+ }
+ 
+ PyDoc_STRVAR(Quaternion_invert_doc,
+@@ -490,7 +491,7 @@
+              "   :rtype: :class:`Quaternion`\n");
+ static PyObject *Quaternion_inverted(QuaternionObject *self)
+ {
+-  return quat__apply_to_copy((PyNoArgsFunction)Quaternion_invert, self);
++  return quat__apply_to_copy(Quaternion_invert, self);
+ }
+ 
+ PyDoc_STRVAR(Quaternion_identity_doc,
+@@ -553,7 +554,7 @@
+              "   :rtype: :class:`Quaternion`\n");
+ static PyObject *Quaternion_conjugated(QuaternionObject *self)
+ {
+-  return quat__apply_to_copy((PyNoArgsFunction)Quaternion_conjugate, self);
++  return quat__apply_to_copy(Quaternion_conjugate, self);
+ }
+ 
+ PyDoc_STRVAR(Quaternion_copy_doc,
+@@ -1385,10 +1386,10 @@
+   return Quaternion_CreatePyObject(quat, type);
+ }
+ 
+-static PyObject *quat__apply_to_copy(PyNoArgsFunction quat_func, QuaternionObject *self)
++static PyObject *quat__apply_to_copy(PyObject *(*quat_func)(QuaternionObject *), QuaternionObject *self)
+ {
+   PyObject *ret = Quaternion_copy(self);
+-  PyObject *ret_dummy = quat_func(ret);
++  PyObject *ret_dummy = quat_func((QuaternionObject *)ret);
+   if (ret_dummy) {
+     Py_DECREF(ret_dummy);
+     return ret;
+diff -Naur a/source/blender/python/mathutils/mathutils_Vector.c b/source/blender/python/mathutils/mathutils_Vector.c
+--- a/source/blender/python/mathutils/mathutils_Vector.c	2021-03-04 14:33:25.115842707 +1100
++++ b/source/blender/python/mathutils/mathutils_Vector.c	2021-03-04 14:40:38.457211283 +1100
+@@ -96,10 +96,10 @@
+   return Vector_CreatePyObject_alloc(vec, size, type);
+ }
+ 
+-static PyObject *vec__apply_to_copy(PyNoArgsFunction vec_func, VectorObject *self)
++static PyObject *vec__apply_to_copy(PyObject *(*vec_func)(VectorObject *), VectorObject *self)
+ {
+   PyObject *ret = Vector_copy(self);
+-  PyObject *ret_dummy = vec_func(ret);
++  PyObject *ret_dummy = vec_func((VectorObject *)ret);
+   if (ret_dummy) {
+     Py_DECREF(ret_dummy);
+     return (PyObject *)ret;
+@@ -376,7 +376,7 @@
+              "   :rtype: :class:`Vector`\n");
+ static PyObject *Vector_normalized(VectorObject *self)
+ {
+-  return vec__apply_to_copy((PyNoArgsFunction)Vector_normalize, self);
++  return vec__apply_to_copy(Vector_normalize, self);
+ }
+ 
+ PyDoc_STRVAR(Vector_resize_doc,
