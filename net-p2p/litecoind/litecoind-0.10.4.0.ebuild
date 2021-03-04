@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ MyPV="${PV/_/-}"
 MyPN="litecoin"
 MyP="${MyPN}-${MyPV}"
 
-DESCRIPTION="P2P Internet currency based on Bitcoin but easier to mine"
+DESCRIPTION="The offical daemon to run your own (full) Litecoin node"
 HOMEPAGE="https://litecoin.org/"
 SRC_URI="https://github.com/${MyPN}-project/${MyPN}/archive/v${MyPV}.tar.gz -> ${MyP}.tar.gz"
 
