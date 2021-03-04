@@ -2525,7 +2525,7 @@ app-misc/lfm 3.1: Last File Manager is a powerful file manager for the console
 app-misc/linux-logo 5.11-r4 5.11-r5 6.0: A utility that displays an ANSI/ASCII logo and some system information
 app-misc/linuxspa 0.7.1-r2: Linux Serial Protocol Analyser
 app-misc/lirc 0.10.1-r3 0.10.1-r4: decode and send infra-red signals of many commonly used remote controls
-app-misc/livecd-tools 2.8 9999: Gentoo LiveCD tools for autoconfiguration of hardware
+app-misc/livecd-tools 2.8 2.9 9999: Gentoo LiveCD tools for autoconfiguration of hardware
 app-misc/lockfile-progs 0.1.17: Programs to safely lock/unlock files and mailboxes
 app-misc/logiops 0.2.2 0.2.2_p20200108: An unofficial userspace driver for HID++ Logitech devices
 app-misc/logitech-applet 0.4_pre1-r3: Control utility for some special features of some special Logitech USB mice!
@@ -8868,11 +8868,11 @@ dev-python/pyproj 2.6.1_p1: Python interface to the PROJ library
 dev-python/pyproject2setuppy 9 10: Cheap setup.py hack to install flit & poetry-based projects
 dev-python/pypugjs 5.9.5 5.9.8: Pug (Jade) syntax adapter for Django, Jinja2 and Mako templates
 dev-python/pypy 7.3.3 7.3.3_p2: A fast, compliant alternative implementation of the Python language
-dev-python/pypy-exe 7.3.3: PyPy executable (build from source)
-dev-python/pypy-exe-bin 7.3.3: PyPy executable (pre-built version)
+dev-python/pypy-exe 7.3.3 7.3.3_p2: PyPy executable (build from source)
+dev-python/pypy-exe-bin 7.3.3 7.3.3_p2: PyPy executable (pre-built version)
 dev-python/pypy3 7.3.3 7.3.3_p37-r1 7.3.3_p37_p1: A fast, compliant alternative implementation of the Python (3.7) language
-dev-python/pypy3-exe 7.3.3 7.3.3_p37: PyPy3 executable (build from source)
-dev-python/pypy3-exe-bin 7.3.3 7.3.3_p37: PyPy3 executable (pre-built version)
+dev-python/pypy3-exe 7.3.3 7.3.3_p37 7.3.3_p37_p1: PyPy3 executable (build from source)
+dev-python/pypy3-exe-bin 7.3.3 7.3.3_p37 7.3.3_p37_p1: PyPy3 executable (pre-built version)
 dev-python/pyqrcode 1.2.1-r1: A pure Python QR code generator with SVG, EPS, PNG and terminal output
 dev-python/pyqt-distutils 0.7.3: distutils extension to work with PyQt applications and UI files
 dev-python/pyqtgraph 0.11.0_rc0: A pure-python graphics and GUI library built on PyQt and numpy
@@ -10701,7 +10701,7 @@ dev-util/cargo-audit 0.13.1: Audit Cargo.lock for security vulnerabilities
 dev-util/cargo-c 0.6.2 0.7.2: Helper program to build and install c-like libraries
 dev-util/cargo-ebuild 0.2.0 0.3.0 0.3.1: Generates an ebuild for a package using the in-tree eclasses.
 dev-util/cargo-license 0.3.0: Cargo subcommand to see license of dependencies
-dev-util/catalyst 3.0.14 3.0.15-r1 9999: Release metatool used for creating releases based on Gentoo Linux
+dev-util/catalyst 3.0.14 3.0.15-r1 3.0.17 9999: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 4.16.0: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/catkin 0.8.9 9999: Cmake macros and associated python code used to build some parts of ROS
 dev-util/cbindgen 0.17.0 0.18.0: A tool for generating C bindings to Rust code
@@ -10756,7 +10756,7 @@ dev-util/cucumber-wire 0.0.1-r1: Executable feature scenarios
 dev-util/cunit 2.1_p3: C Unit Test Framework
 dev-util/cutils 1.6-r4: C language utilities
 dev-util/cutter 1.12.0: A Qt and C++ GUI for radare2 reverse engineering framework
-dev-util/cvise 1.9.0 2.0.0 2.1.0: Super-parallel Python port of the C-Reduce
+dev-util/cvise 1.9.0 2.0.0 2.1.0 2.2.0: Super-parallel Python port of the C-Reduce
 dev-util/cwdiff 0.4.0 9999: A script that wraps wdiff to support directories and colorize the output
 dev-util/d-feet 0.3.14-r1: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 19.04.0-r1: Run executables under a new DBus session for testing
@@ -12558,7 +12558,7 @@ mail-mta/notqmail 1.08-r3 9999: qmail -- a secure, reliable, efficient, simple m
 mail-mta/nullmailer 2.2-r1: Simple relay-only local mail transport agent
 mail-mta/opensmtpd 6.7.1_p1 6.8.0_p2: Lightweight but featured SMTP daemon from OpenBSD
 mail-mta/postfix 3.5.8-r1 3.5.9-r1 3.6_pre20210224: A fast and secure drop-in replacement for sendmail
-mail-mta/protonmail-bridge 1.5.4 1.5.7 1.6.3: Serves ProtonMail to IMAP/SMTP clients
+mail-mta/protonmail-bridge 1.6.3 1.6.6: Serves ProtonMail to IMAP/SMTP clients
 mail-mta/protonmail-bridge-bin 1.4.5 1.5.0 1.5.2: Serves ProtonMail to IMAP/SMTP clients
 mail-mta/qpsmtpd 0.84-r2 0.95 9999: qpsmtpd is a flexible smtpd daemon written in Perl
 mail-mta/sendmail 8.15.2-r2 8.16.1: Widely-used Mail Transport Agent (MTA)
@@ -14503,7 +14503,7 @@ net-analyzer/ssldump 0.9_beta3 1.1: An SSLv3/TLS network protocol analyzer
 net-analyzer/sslscan 1.11.13-r1 2.0.6 2.0.7 2.0.8: Fast SSL configuration scanner
 net-analyzer/sslsplit 0.5.4 0.5.5 9999: Transparent SSL/TLS interception
 net-analyzer/ssmping 0.9.1: Tool for testing multicast connectivity
-net-analyzer/suricata 5.0.5-r1 6.0.1-r100: High performance Network IDS, IPS and Network Security Monitoring engine
+net-analyzer/suricata 5.0.6 6.0.2: High performance Network IDS, IPS and Network Security Monitoring engine
 net-analyzer/symon 2.88: Performance and information monitoring tool
 net-analyzer/synscan 5.02: A fast asynchronous half-open TCP portscanner
 net-analyzer/syweb 0.65: Web frontend to symon
@@ -14870,7 +14870,7 @@ net-libs/libgrss 0.5.0-r1 0.7.0: LibGRSS is a library for easy management of RSS
 net-libs/libgsasl 1.8.0-r1 1.8.1 1.10.0: The GNU SASL library
 net-libs/libgssglue 0.4-r1: Exports a gssapi interface which calls other random gssapi libraries
 net-libs/libhackrf 2018.01.1 9999: library for communicating with HackRF SDR platform
-net-libs/libhtp 0.5.35 0.5.36: security-aware parser for the HTTP protocol and the related bits and pieces
+net-libs/libhtp 0.5.37: security-aware parser for the HTTP protocol and the related bits and pieces
 net-libs/libhubbub 0.3.6 0.3.6-r2 0.3.7: HTML5 compliant parsing library, written in C
 net-libs/libident 0.32-r1: A small library to interface to the Ident protocol server
 net-libs/libiio 0.21 9999: Library for interfacing with IIO devices
@@ -14956,7 +14956,7 @@ net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP pr
 net-libs/nghttp2 1.41.0 1.42.0 1.43.0 9999: HTTP/2 C Library
 net-libs/nghttp3 0_pre20190912 9999: HTTP/3 library written in C
 net-libs/ngtcp2 0_pre20190912 9999: Implementation of the IETF QUIC Protocol
-net-libs/nodejs 12.21.0 14.16.0 15.10.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 12.21.0 14.16.0 15.11.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/ntirpc 3.3 3.4: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
@@ -15489,7 +15489,7 @@ net-p2p/qbittorrent 4.3.1 4.3.3 9999: BitTorrent client in C++ and Qt
 net-p2p/resilio-sync 2.6.1 2.6.3: Resilient, fast and scalable file synchronization tool
 net-p2p/retroshare 0.6.5 0.6.5-r2: P2P private sharing application
 net-p2p/rtorrent 0.9.7 0.9.7-r1 0.9.8: BitTorrent Client using libtorrent
-net-p2p/syncthing 1.10.0 1.12.1 1.13.1: Open Source Continuous File Synchronization
+net-p2p/syncthing 1.10.0 1.13.1 1.14.0: Open Source Continuous File Synchronization
 net-p2p/syrep 0.9: A generic file repository synchronization tool
 net-p2p/torrentinfo 1.8.6-r2: A torrent file parser
 net-p2p/transmission 3.00-r1 9999: A fast, easy, and free BitTorrent client
@@ -19137,4 +19137,4 @@ xfce-extra/xfce4-weather-plugin 0.10.2 0.11.0: A weather plug-in for the Xfce de
 xfce-extra/xfce4-whiskermenu-plugin 2.5.3: Alternate application launcher for Xfce
 xfce-extra/xfce4-windowck-plugin 0.4.6-r3: Xfce plugin puts the maximized window title and windows buttons on the panel
 xfce-extra/xfce4-xkb-plugin 0.8.2: XKB layout switching panel plug-in for the Xfce desktop environment
-xfce-extra/xfdashboard 0.8.0: Maybe a GNOME shell like dashboard for the Xfce desktop environment
+xfce-extra/xfdashboard 0.8.0 0.8.1: Maybe a GNOME shell like dashboard for the Xfce desktop environment
