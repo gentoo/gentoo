@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ HOMEPAGE="https://suricata-ids.org/"
 SRC_URI="https://www.openinfosecfoundation.org/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
-SLOT="0"
+SLOT="0/6"
 KEYWORDS="~amd64 ~x86"
 IUSE="+af-packet bpf control-socket cuda debug +detection geoip hardened logrotate lua lz4 nflog +nfqueue redis systemd test"
 
@@ -36,7 +36,7 @@ RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 	')
-	>=net-libs/libhtp-0.5.36
+	>=net-libs/libhtp-0.5.37
 	net-libs/libpcap
 	sys-apps/file
 	sys-libs/libcap-ng
