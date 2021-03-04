@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}-${COMMIT_HASH}"
 
 LICENSE="MIT CC-BY-3.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 x86 ~amd64-linux ~x64-macos"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 x86 ~amd64-linux ~x64-macos"
 IUSE="+oniguruma static-libs test"
 
 ONIGURUMA_MINPV='>=dev-libs/oniguruma-6.1.3' # Keep this in sync with bundled modules/oniguruma/
