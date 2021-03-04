@@ -10,7 +10,7 @@ HOMEPAGE="https://developer.gnome.org/libwnck/stable/"
 
 LICENSE="LGPL-2+"
 SLOT="3"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris ~x86-solaris"
 
 IUSE="gtk-doc +introspection startup-notification tools"
 
