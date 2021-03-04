@@ -4353,6 +4353,8 @@ media-libs/xine-lib:gtk - Build the gdkpixbuf-based image decoder plugin.
 media-libs/xine-lib:imagemagick - Build the ImageMagick-based image decoder plugin.
 media-libs/xine-lib:mad - Build the media-libs/libmad based mp3 decoder. This mp3 decoder has superior support compared to the one coming from FFmpeg that is used as a fallback. If you experience any bad behaviour with mp3 files (skipping, distorted sound) make sure you enabled this USE flag.
 media-libs/xine-lib:mmap - Use mmap() function while reading file from local disks. Using mmap() will use more virtual memory space, but leaves to the Kernel the task of caching the file's data. mmap() access should be faster, but might misbehave if the device where the file resides in is removed during playback.
+media-libs/xine-lib:nfs - Allow accessing NFS shares via net-fs/libnfs.
+media-libs/xine-lib:sftp - Use net-libs/libssh2 to access SFTP servers.
 media-libs/xine-lib:truetype - Use media-libs/freetype for font rendering and media-libs/fontconfig for font discovery. Enabling this USE flag will allow OSD (such as subtitles) to use more advanced font and to more easily select which font to use. The support for TrueType fonts in xine-lib is still experimental, and might not be as good looking as the bitmap fonts used with this USE flag disabled.
 media-libs/xine-lib:vdr - Build the VDR plugin
 media-libs/xine-lib:vidix - Enable support for vidix video output.
