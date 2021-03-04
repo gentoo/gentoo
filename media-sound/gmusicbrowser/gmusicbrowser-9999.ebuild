@@ -13,6 +13,8 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE="dbus doc extras gstreamer libnotify mplayer"
 
+BDEPEND="sys-devel/gettext
+	doc? ( dev-perl/Text-Markdown )"
 RDEPEND="dev-lang/perl
 	dev-perl/Gtk3
 	virtual/perl-MIME-Base64
@@ -29,8 +31,7 @@ RDEPEND="dev-lang/perl
 	)
 	extras? ( dev-perl/gnome2-wnck )
 	libnotify? ( dev-perl/Gtk2-Notify )"
-DEPEND="sys-devel/gettext
-	doc? ( dev-perl/Text-Markdown )"
+DEPEND="${RDEPEND}"
 
 src_compile() {
 	emake MARKDOWN=$(usex doc "Markdown.pl" "echo")
