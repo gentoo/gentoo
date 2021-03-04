@@ -1,9 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+LUA_COMPAT=( lua5-1 )
+PYTHON_COMPAT=( python3_{7,8,9} )
 PYTHON_REQ_USE="threads(+)"
 
 RUBY_OPTIONAL="yes"
@@ -12,19 +13,19 @@ USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 PHP_EXT_INI="no"
 PHP_EXT_NAME="dummy"
 PHP_EXT_OPTIONAL_USE="php"
-USE_PHP="php7-2 php7-3 php7-4" # deps must be registered separately below
+USE_PHP="php7-3 php7-4" # deps must be registered separately below
 
 MY_P="${P/_/-}"
 
-inherit eapi7-ver eutils flag-o-matic multilib pax-utils php-ext-source-r3 python-r1 ruby-ng
+inherit flag-o-matic lua-single pax-utils php-ext-source-r3 python-r1 ruby-ng
 
 DESCRIPTION="uWSGI server for Python web applications"
-HOMEPAGE="http://projects.unbit.it/uwsgi/"
+HOMEPAGE="https://projects.unbit.it/uwsgi/"
 SRC_URI="https://github.com/unbit/uwsgi/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm x86 ~amd64-linux"
+KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux"
 
 UWSGI_PLUGINS_STD=( ping cache carbon nagios rpc rrdtool
 	http ugreen signal syslog rsyslog
@@ -67,6 +68,7 @@ REQUIRED_USE="|| ( ${LANG_SUPPORT_SIMPLE[@]} ${LANG_SUPPORT_EXTENDED[@]} )
 	uwsgi_plugins_emperor_zeromq? ( zeromq )
 	uwsgi_plugins_forkptyrouter? ( uwsgi_plugins_corerouter )
 	uwsgi_plugins_router_xmldir? ( xml !expat )
+	lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	python-asyncio? ( || ( $(python_gen_useflags -3) ) )
 	python-gevent? ( python )
@@ -111,12 +113,11 @@ CDEPEND="
 	uwsgi_plugins_webdav? ( dev-libs/libxml2 )
 	uwsgi_plugins_xslt? ( dev-libs/libxslt )
 	go? ( sys-devel/gcc:=[go] )
-	lua? ( dev-lang/lua:0= )
+	lua? ( ${LUA_DEPS} )
 	mono? ( dev-lang/mono:= )
 	perl? ( dev-lang/perl:= )
 	php? (
 		net-libs/libnsl
-		php_targets_php7-2? ( dev-lang/php:7.2[embed] )
 		php_targets_php7-3? ( dev-lang/php:7.3[embed] )
 		php_targets_php7-4? ( dev-lang/php:7.4[embed] )
 	)
@@ -124,11 +125,11 @@ CDEPEND="
 	python-asyncio? ( virtual/python-greenlet[${PYTHON_USEDEP}] )
 	python-gevent? ( >=dev-python/gevent-1.3.5[${PYTHON_USEDEP}] )
 	ruby? ( $(ruby_implementations_depend) )"
-DEPEND="${CDEPEND}
-	virtual/pkgconfig"
+DEPEND="${CDEPEND}"
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-uwsgi )
 	uwsgi_plugins_rrdtool? ( net-analyzer/rrdtool )"
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -139,6 +140,7 @@ src_unpack() {
 
 pkg_setup() {
 	python_setup
+	use lua && lua-single_pkg_setup
 	use ruby && ruby-ng_pkg_setup
 }
 
@@ -274,8 +276,8 @@ src_compile() {
 	fi
 
 	if use lua ; then
-		# setting the name for the pkg-config file to lua, since we don't have
-		# slotted lua
+		# setting the name for the pkg-config file to lua, since that is the name
+		# provided by the wrapper from Lua eclasses
 		UWSGICONFIG_LUAPC="lua" python uwsgiconfig.py --plugin plugins/lua gentoo || die "building plugin for lua failed"
 	fi
 

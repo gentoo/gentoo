@@ -13,7 +13,7 @@ USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 PHP_EXT_INI="no"
 PHP_EXT_NAME="dummy"
 PHP_EXT_OPTIONAL_USE="php"
-USE_PHP="php7-2 php7-3 php7-4" # deps must be registered separately below
+USE_PHP="php7-3 php7-4" # deps must be registered separately below
 
 MY_P="${P/_/-}"
 
@@ -118,7 +118,6 @@ CDEPEND="
 	perl? ( dev-lang/perl:= )
 	php? (
 		net-libs/libnsl
-		php_targets_php7-2? ( dev-lang/php:7.2[embed] )
 		php_targets_php7-3? ( dev-lang/php:7.3[embed] )
 		php_targets_php7-4? ( dev-lang/php:7.4[embed] )
 	)
