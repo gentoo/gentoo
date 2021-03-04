@@ -1,0 +1,14 @@
+BDEPEND=dev-util/ninja dev-util/cmake
+DEFINED_PHASES=compile configure install prepare test
+DESCRIPTION=Toolkit for simulation of passage of particles through matter
+EAPI=7
+HOMEPAGE=https://geant4.web.cern.ch/
+IUSE=+c++11 c++14 c++17 +data dawn doc examples freetype gdml geant3 hdf5 inventor motif opengl qt5 raytracerx static-libs threads vrml
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=geant4
+RDEPEND=dev-libs/expat >=sci-physics/clhep-2.4.4.0:2=[threads?] data? ( ~sci-physics/geant-data-4.10.7.1 ) dawn? ( media-gfx/dawn ) doc? ( =app-doc/geant-docs-4.10.7* ) gdml? ( dev-libs/xerces-c ) hdf5? ( sci-libs/hdf5[threads?] ) inventor? ( media-libs/SoXt ) motif? ( x11-libs/motif:0 ) opengl? ( virtual/opengl ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtprintsupport:5 dev-qt/qtwidgets:5 opengl? ( dev-qt/qtopengl:5 ) ) raytracerx? ( x11-libs/libX11 x11-libs/libXmu )
+REQUIRED_USE=^^ ( c++11 c++14 c++17 ) inventor? ( opengl ) motif? ( opengl ) qt5? ( opengl )
+SLOT=4
+SRC_URI=https://geant4-data.web.cern.ch/geant4-data/releases/geant4.10.07.p01.tar.gz
+_eclasses_=cmake	314a813be2f09820e8978cdee941e501	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=c599f1a8349202d01d4c2a603cccdf6b
