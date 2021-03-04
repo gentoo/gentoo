@@ -15651,7 +15651,7 @@ net-wireless/horst 5.1 9999: Small 802.11 wireless LAN analyzer
 net-wireless/hostap-utils 0.4.7-r1: Utilities for Intersil Prism2/2.5/3 based IEEE 802.11b wireless LAN products
 net-wireless/hostapd 2.9-r3 9999: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/inspectrum 0.2.3 9999: Tool for analysing captured signals from software-defined radio receivers
-net-wireless/iw 5.4 5.9: nl80211 configuration utility for wireless devices using the mac80211 stack
+net-wireless/iw 5.9: nl80211 configuration utility for wireless devices using the mac80211 stack
 net-wireless/iwd 1.11 1.12 9999: Wireless daemon for linux
 net-wireless/iwgtk 0.4: Lightweight, graphical wifi management utility for Linux
 net-wireless/jackit 0.0_p20170918-r1: Exploit Code for Mousejack
@@ -18089,7 +18089,7 @@ www-client/microsoft-edge-dev 90.0.796.0 90.0.803.0 90.0.810.1: The web browser 
 www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.10-r4: a free, open source web browser
-www-client/opera 74.0.3911.160: A fast and secure web browser
+www-client/opera 74.0.3911.203: A fast and secure web browser
 www-client/opera-beta 75.0.3969.14: A fast and secure web browser
 www-client/opera-developer 75.0.3967.0 76.0.3974.0 76.0.3981.0: A fast and secure web browser
 www-client/otter 1.0.01-r1 1.0.02 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
