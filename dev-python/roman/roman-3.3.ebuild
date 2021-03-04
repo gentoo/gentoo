@@ -4,9 +4,8 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7..9} )
-
-inherit distutils-r1
 DISTUTILS_USE_SETUPTOOLS=rdepend
+inherit distutils-r1
 
 DESCRIPTION="An Integer to Roman numerals converter"
 HOMEPAGE="https://pypi.org/project/roman/"
