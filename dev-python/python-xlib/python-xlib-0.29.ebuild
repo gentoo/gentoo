@@ -19,7 +19,9 @@ IUSE="doc"
 RDEPEND="dev-python/six[${PYTHON_USEDEP}]"
 BDEPEND="${RDEPEND}
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
-	doc? ( sys-apps/texinfo )"
+	doc? ( sys-apps/texinfo )
+	test? ( dev-python/mock[${PYTHON_USEDEP}] )
+"
 
 distutils_enable_tests unittest
 
