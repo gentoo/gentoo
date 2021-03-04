@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,7 +24,7 @@ HOMEPAGE="http://xine.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="1"
-IUSE="a52 aac aalib +alsa altivec bluray +css dts dvb dxr3 fbcon flac gtk imagemagick ipv6 jack jpeg libcaca mad +mmap mng modplug musepack opengl oss pulseaudio samba sdl speex theora truetype v4l vaapi vcd vdpau vdr vidix +vis vorbis vpx wavpack +X xinerama +xv xvmc ${NLS_IUSE}"
+IUSE="a52 aac aalib +alsa altivec bluray +css dts dvb dxr3 fbcon flac gtk imagemagick ipv6 jack jpeg libcaca mad +mmap mng modplug musepack nfs opengl oss pulseaudio samba sftp sdl speex theora truetype v4l vaapi vcd vdpau vdr vidix +vis vorbis vpx wavpack wayland +X xinerama +xv xvmc ${NLS_IUSE}"
 
 BDEPEND="
 	app-arch/xz-utils
@@ -55,12 +55,14 @@ RDEPEND="${NLS_RDEPEND}
 	mng? ( media-libs/libmng:= )
 	modplug? ( >=media-libs/libmodplug-0.8.8.1 )
 	musepack? ( >=media-sound/musepack-tools-444 )
+	nfs? ( net-fs/libnfs:= )
 	opengl? (
 		virtual/glu
 		virtual/opengl
 	)
 	pulseaudio? ( media-sound/pulseaudio )
 	samba? ( net-fs/samba )
+	sftp? ( net-libs/libssh2 )
 	sdl? ( media-libs/libsdl )
 	speex? (
 		media-libs/libogg
@@ -87,6 +89,7 @@ RDEPEND="${NLS_RDEPEND}
 	)
 	vpx? ( media-libs/libvpx:0= )
 	wavpack? ( media-sound/wavpack )
+	wayland? ( dev-libs/wayland )
 	X? (
 		x11-libs/libX11
 		x11-libs/libXext
@@ -172,10 +175,12 @@ src_configure() {
 		$(use_enable mng)
 		$(use_enable modplug)
 		$(use_enable musepack)
+		$(use_enable nfs)
 		$(use_enable opengl)
 		$(use_enable opengl glu)
 		$(use_enable oss)
 		$(use_enable samba)
+		$(use_enable sftp)
 		$(use_enable v4l libv4l)
 		$(use_enable v4l v4l2)
 		$(use_enable vaapi)
@@ -187,6 +192,7 @@ src_configure() {
 		$(use_enable vcd)
 		$(use_enable vdr)
 		$(use_enable vpx)
+		$(use_enable wayland)
 		$(use_with alsa)
 		$(use_with flac libflac)
 		$(use_with imagemagick)
