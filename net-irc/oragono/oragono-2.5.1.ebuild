@@ -13,6 +13,10 @@ LICENSE="Apache-2.0 BSD-2 BSD ISC MIT MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
+# No test files are included in release tarballs
+# We may even want to package irctest
+RESTRICT="test"
+
 BDEPEND=">=dev-lang/go-1.14"
 RDEPEND="
 	acct-user/oragono
