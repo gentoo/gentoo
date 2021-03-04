@@ -7935,7 +7935,7 @@ dev-php/zetacomponents-ConsoleTools 1.7.2: A set of classes to do different acti
 dev-python/3to2 1.1.1-r1: Tool to refactor valid 3.x syntax into valid 2.x syntax
 dev-python/APScheduler 3.6.3: In-process task scheduler with Cron-like capabilities
 dev-python/Babel 2.8.1 2.9.0: Collection of tools for internationalizing Python applications
-dev-python/BitVector 3.4.9: A pure-Python memory-efficient packed representation for bit arrays
+dev-python/BitVector 3.4.9 3.4.9-r1: A pure-Python memory-efficient packed representation for bit arrays
 dev-python/CppHeaderParser 2.7.4: Parse C++ header files and generate a data structure
 dev-python/Faker 5.6.5 6.4.1: a Python package that generates fake data for you
 dev-python/GitPython 3.1.12 3.1.13 3.1.14: Library used to interact with Git repositories
@@ -8739,7 +8739,7 @@ dev-python/psycopg 2.8.6-r1: PostgreSQL database adapter for Python
 dev-python/ptvsd 4.3.2: Visual Studio remote debugging server for Python
 dev-python/ptyprocess 0.7.0: Run a subprocess in a pseudo terminal
 dev-python/publicsuffix 2.20191221: Get a public suffix for a domain name using the Public Suffix List.
-dev-python/pudb 2019.2: A full-screen, console-based Python debugger
+dev-python/pudb 2019.2 2020.1: A full-screen, console-based Python debugger
 dev-python/pushbullet-py 0.12.0: A simple python client for pushbullet.com
 dev-python/pweave 0.30.3-r1: Scientific report generator and literate programming tool
 dev-python/py 1.10.0: library with cross-python path, ini-parsing, io, code, log facilities
@@ -10720,7 +10720,7 @@ dev-util/cligh 0.3 9999: Command-line interface to GitHub
 dev-util/clinfo 3.0.21.02.21 9999: A tool to display info about the system's OpenCL capabilities
 dev-util/clion 2020.3.2: A complete toolset for C and C++ development
 dev-util/cloc 1.84 1.86 1.88: Count Lines of Code
-dev-util/cmake 3.13.5 3.18.5 3.19.5 3.19.6 3.20.0_rc2: Cross platform Make
+dev-util/cmake 3.13.5 3.18.5 3.19.5 3.19.6 3.20.0_rc3: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
 dev-util/cmocka 1.1.5: Unit testing framework for C
 dev-util/codeblocks 17.12-r303 17.12-r304 20.03-r1 20.03-r2 9999: The open source, cross platform, free C, C++ and Fortran IDE
