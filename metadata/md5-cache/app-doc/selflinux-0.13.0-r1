@@ -1,0 +1,10 @@
+BDEPEND=media-gfx/pngcrush
+DEFINED_PHASES=prepare
+DESCRIPTION=A german-language hypertext tutorial about Linux
+EAPI=7
+HOMEPAGE=https://www.selflinux.org/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=FDL-1.1+
+SLOT=0
+SRC_URI=https://www.selflinux.org/download/SelfLinux-0.13.0/SelfLinux-0.13.0-html.tar.gz
+_md5_=7626471d3ba1f716b3559be8db930ab4

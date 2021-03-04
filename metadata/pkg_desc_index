@@ -1724,7 +1724,7 @@ app-doc/pms 5_p20120920 7_p20180430-r1 9999: Gentoo Package Manager Specificatio
 app-doc/pms-bin 5_p20120920 7_p20180430: Gentoo Package Manager Specification
 app-doc/psmark 2.1: Prints watermark-like text on any PostScript document
 app-doc/selfhtml 8.1.2: "The" German HTML/XHTML/CSS/XML/DHTML/CGI/Perl/JavaScript Documentation
-app-doc/selflinux 0.13.0: german-language hypertext tutorial about Linux
+app-doc/selflinux 0.13.0 0.13.0-r1: A german-language hypertext tutorial about Linux
 app-doc/single-unix-specification 4_p2: The Single UNIX Specification, Version 4, 2016 Edition
 app-doc/tldp-howto 20120707: The Linux Documentation Project HOWTOs
 app-doc/vilearn 1.0: An interactive vi tutorial comprised of 5 tutorials for the vi-impaired
@@ -14182,7 +14182,7 @@ media-video/lsdvd 0.17: Utility for getting info out of DVDs
 media-video/luvcview 0.2.6-r1: USB Video Class grabber
 media-video/lxdvdrip 1.77: Command line tool to automate the process of ripping and burning DVDs
 media-video/m2vrequantizer 0.0.2_pre20060306-r1: Tool to requantize mpeg2 videos
-media-video/makemkv 1.16.0: Tool for ripping and streaming Blu-ray, HD-DVD and DVD discs
+media-video/makemkv 1.16.1: Tool for ripping and streaming Blu-ray, HD-DVD and DVD discs
 media-video/matroxset 0.4: Matrox utility to switch output modes (activate tvout)
 media-video/mediainfo 20.09: MediaInfo supplies technical and tag information about media files
 media-video/mjpegtools 2.1.0-r4: Tools for MJPEG video
