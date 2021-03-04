@@ -4,11 +4,11 @@ DEPEND=|| ( virtual/httpd-basic virtual/httpd-cgi virtual/httpd-fastcgi ) >=app-
 DESCRIPTION=A CalDAV and CardDAV Server
 EAPI=7
 HOMEPAGE=https://www.davical.org/
-IUSE=ldap vhosts
+IUSE=vhosts
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2 GPL-2+ GPL-3+ LGPL-2.1+ LGPL-3+
-RDEPEND=app-admin/pwgen dev-lang/php[calendar,curl,iconv,imap,ldap?,nls,pdo,postgres,xml] dev-perl/DBD-Pg dev-perl/DBI dev-perl/YAML >=dev-php/awl-0.61 virtual/httpd-php >=app-admin/webapp-config-1.50.15
+RDEPEND=app-admin/pwgen dev-lang/php[calendar,curl,iconv,imap,nls,pdo,postgres,xml] dev-perl/DBD-Pg dev-perl/DBI dev-perl/YAML >=dev-php/awl-0.61 virtual/httpd-php >=app-admin/webapp-config-1.50.15
 SLOT=1.1.9.3-r1
 SRC_URI=https://www.davical.org/downloads/davical_1.1.9.3.orig.tar.xz -> davical-1.1.9.3.tar.xz
-_eclasses_=webapp	1d03df021d958f89f4cc78e289d0b116
-_md5_=3d2c17ec9123d488f58162fd3ba7f505
+_eclasses_=optfeature	6a2add34e06e5a05d88471a33ccdd73e	webapp	1d03df021d958f89f4cc78e289d0b116
+_md5_=e49a4ead0749e6f54b0ee2666657fa9e
