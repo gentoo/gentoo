@@ -66,7 +66,7 @@ src_install() {
 	use examples && doins examples/*.cc
 
 	if use python; then
-		cd "${S}"/wrappers/python || die 
+		cd "${S}"/wrappers/python || die
 		distutils-r1_src_install
 	fi
 
