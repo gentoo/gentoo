@@ -10,4 +10,4 @@ RDEPEND=sys-apps/pciutils sys-cluster/rdma-core
 SLOT=0
 SRC_URI=https://github.com/linux-rdma/perftest/archive/v4.4-0.37.tar.gz -> perftest-4.4.0.37.tar.gz
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=dc05d070d60ef69909c4a30c113de6b3
+_md5_=f3bdaf0140a380f63fc8b853ff6175e0
