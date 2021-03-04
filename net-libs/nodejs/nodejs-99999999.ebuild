@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 PYTHON_REQ_USE="threads(+)"
 inherit bash-completion-r1 flag-o-matic git-r3 pax-utils python-any-r1 toolchain-funcs xdg-utils
 

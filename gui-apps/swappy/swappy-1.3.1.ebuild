@@ -40,6 +40,14 @@ src_prepare() {
 	sed -i -e 's/Utility;Graphics;Annotation;/Utility;Graphics;/'  src/po/swappy.desktop.in || die "Sed failed!"
 }
 
+src_configure() {
+	local emesonargs=(
+		-Dwerror=false
+		-Dman-pages=enabled
+	)
+	meson_src_configure
+}
+
 pkg_postinst() {
 	xdg_pkg_postinst
 
