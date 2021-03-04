@@ -16,6 +16,6 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~sparc ~x86"
 
 BDEPEND="dev-python/cython[${PYTHON_USEDEP}]"
