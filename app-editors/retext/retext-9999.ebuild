@@ -61,7 +61,7 @@ pkg_postinst() {
 	einfo "Starting with retext-7.0.4 the markdown-math plugin is installed."
 	einfo "Note that you can use different math delimiters, e.g. \(...\) for inline math."
 	einfo "For more details take a look at:"
-	einfo "https://github.com/mitya57/python-markdown-math#math-delimiters"	
+	einfo "https://github.com/mitya57/python-markdown-math#math-delimiters"
 }
 
 pkg_postrm() {
