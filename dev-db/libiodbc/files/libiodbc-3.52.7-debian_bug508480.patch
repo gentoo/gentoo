@@ -1,7 +1,5 @@
-Index: libiodbc2-3.52.7/iodbcinst/inifile.c
-===================================================================
---- libiodbc2-3.52.7.orig/iodbcinst/inifile.c	2010-06-26 21:29:43.000000000 +0200
-+++ libiodbc2-3.52.7/iodbcinst/inifile.c	2010-06-26 21:30:07.000000000 +0200
+--- a/iodbcinst/inifile.c
++++ b/iodbcinst/inifile.c
 @@ -1023,7 +1023,8 @@
  
    if (!_iodbcdm_cfg_find (pCfg, lpszSection, NULL))
