@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -41,12 +41,13 @@ RESTRICT="test"
 src_prepare() {
 	# Column metadata added due to bug #670346
 	append-cflags -DSQLITE_HAS_CODEC -DSQLITE_ENABLE_COLUMN_METADATA
-	default_src_prepare
+
+	default
 	eautoreconf
 }
 
 multilib_src_configure() {
-	ECONF_SOURCE=${S} \
+	ECONF_SOURCE="${S}" \
 	econf \
 		--enable-fts3 \
 		--enable-fts4 \
