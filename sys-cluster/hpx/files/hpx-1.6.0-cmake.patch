@@ -1,7 +1,7 @@
-From 8bee06baabf24c4b8f48766dba5c76d1979c8ea6 Mon Sep 17 00:00:00 2001
+From 240f55e4bc57215e26fc0b0ae0ac0eca2eb93d65 Mon Sep 17 00:00:00 2001
 From: Kurt Kanzenbach <kurt@kmk-computers.de>
 Date: Sat, 19 Sep 2020 13:19:42 +0200
-Subject: [PATCH] tests: Remove unused cmake options
+Subject: [PATCH 2/3] tests: Remove unused cmake options
 
 This fixes the following warnings:
 
@@ -15,10 +15,10 @@ Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/tests/unit/build/CMakeLists.txt b/tests/unit/build/CMakeLists.txt
-index a4db8d4c927f..43bb766aced5 100644
+index 3798549da0a8..7d3bfea1044e 100644
 --- a/tests/unit/build/CMakeLists.txt
 +++ b/tests/unit/build/CMakeLists.txt
-@@ -57,7 +57,7 @@ function(create_cmake_test name using_install_dir hpx_dir setup_type test_dir)
+@@ -54,7 +54,7 @@ function(create_cmake_test name using_install_dir hpx_dir setup_type test_dir)
      ${name}.make_configure
      COMMAND
        "${CMAKE_COMMAND}" -E chdir "${build_dir}" "${CMAKE_COMMAND}" ${test_dir}
@@ -28,5 +28,5 @@ index a4db8d4c927f..43bb766aced5 100644
        -DCMAKE_BUILD_TYPE=$<CONFIGURATION>
      VERBATIM
 -- 
-2.26.2
+2.30.1
 

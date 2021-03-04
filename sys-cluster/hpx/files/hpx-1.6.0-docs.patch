@@ -1,7 +1,7 @@
-From 785ade96043ab6fff85646a841996ccf6dfd0b62 Mon Sep 17 00:00:00 2001
+From 1de9f65fac6c4b65ff280501d60b9b6dd46c6a8c Mon Sep 17 00:00:00 2001
 From: Kurt Kanzenbach <kurt@kmk-computers.de>
-Date: Wed, 28 Oct 2020 18:37:31 +0100
-Subject: [PATCH] static_reinit: Remove export macro
+Date: Mon, 22 Feb 2021 20:36:14 +0100
+Subject: [PATCH 3/3] static_reinit: Remove export macro
 
 This macro leads to doc generation fail:
 
@@ -47,17 +47,17 @@ Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
  .../hpx/static_reinit/reinitializable_static.hpp   | 14 ++------------
  1 file changed, 2 insertions(+), 12 deletions(-)
 
-diff --git a/libs/static_reinit/include/hpx/static_reinit/reinitializable_static.hpp b/libs/static_reinit/include/hpx/static_reinit/reinitializable_static.hpp
-index 08980b9e269e..3c99400b9553 100644
---- a/libs/static_reinit/include/hpx/static_reinit/reinitializable_static.hpp
-+++ b/libs/static_reinit/include/hpx/static_reinit/reinitializable_static.hpp
-@@ -17,14 +17,6 @@
+diff --git a/libs/core/static_reinit/include/hpx/static_reinit/reinitializable_static.hpp b/libs/core/static_reinit/include/hpx/static_reinit/reinitializable_static.hpp
+index 51ccbf2481b2..b8661d1c84cb 100644
+--- a/libs/core/static_reinit/include/hpx/static_reinit/reinitializable_static.hpp
++++ b/libs/core/static_reinit/include/hpx/static_reinit/reinitializable_static.hpp
+@@ -18,14 +18,6 @@
  #include <mutex>
  #include <type_traits>
  
 -// clang-format off
 -#if !defined(HPX_WINDOWS)
--#  define HPX_EXPORT_REINITIALIZABLE_STATIC HPX_EXPORT
+-#  define HPX_EXPORT_REINITIALIZABLE_STATIC HPX_CORE_EXPORT
 -#else
 -#  define HPX_EXPORT_REINITIALIZABLE_STATIC
 -#endif
@@ -66,7 +66,7 @@ index 08980b9e269e..3c99400b9553 100644
  namespace hpx { namespace util {
      ///////////////////////////////////////////////////////////////////////////
      //  Provides thread-safe initialization of a single static instance of T.
-@@ -39,11 +31,11 @@ namespace hpx { namespace util {
+@@ -40,11 +32,11 @@ namespace hpx { namespace util {
      //  functions used by the HPX runtime system to reinitialize the held data
      //  structures.
      template <typename T, typename Tag = T, std::size_t N = 1>
@@ -80,12 +80,12 @@ index 08980b9e269e..3c99400b9553 100644
      {
      public:
          HPX_NON_COPYABLE(reinitializable_static);
-@@ -157,5 +149,3 @@ namespace hpx { namespace util {
+@@ -160,5 +152,3 @@ namespace hpx { namespace util {
      template <typename T, typename Tag, std::size_t N>
      std::once_flag reinitializable_static<T, Tag, N>::constructed_;
  }}    // namespace hpx::util
 -
 -#undef HPX_EXPORT_REINITIALIZABLE_STATIC
 -- 
-2.26.2
+2.30.1
 

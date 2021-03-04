@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -35,7 +35,7 @@ BDEPEND="
 		$(python_gen_cond_dep '
 			dev-python/sphinx[${PYTHON_MULTI_USEDEP}]
 			dev-python/sphinx_rtd_theme[${PYTHON_MULTI_USEDEP}]
-			>=dev-python/breathe-4.22[${PYTHON_MULTI_USEDEP}]
+			dev-python/breathe[${PYTHON_MULTI_USEDEP}]
 		')
 	)
 	test? ( ${PYTHON_DEPS} )
