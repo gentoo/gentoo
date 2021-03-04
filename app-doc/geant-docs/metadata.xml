@@ -5,9 +5,5 @@
     <email>amadio@gentoo.org</email>
     <name>Guilherme Amadio</name>
   </maintainer>
-  <maintainer type="project">
-    <email>sci-physics@gentoo.org</email>
-    <name>Gentoo Physics Project</name>
-  </maintainer>
   <stabilize-allarches/>
 </pkgmetadata>
