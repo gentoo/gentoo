@@ -174,6 +174,7 @@ acct-group/openrct2 0-r1: A group for the OpenRCT2 dedicated server
 acct-group/openvpn 0-r1: System group: openvpn
 acct-group/openvpn_exporter 0-r1: System group: openvpn_exporter
 acct-group/oprofile 0-r1: A group for dev-util/oprofile JIT code processing
+acct-group/oragono 0: Group for the Oragono IRC server
 acct-group/ossec 0-r1: Group for net-analyzer/ossec-hids
 acct-group/p2p 0: Group for mldonkey
 acct-group/pcap 0: Group for capturing network traffic
@@ -459,6 +460,7 @@ acct-user/openrct2 0-r1: A user for the OpenRCT2 dedicated server
 acct-user/openvpn 0-r1: User for net-vpn/openvpn
 acct-user/openvpn_exporter 0-r1: user for openvpn_exporter
 acct-user/oprofile 0-r1: A user for dev-util/oprofile JIT code processing
+acct-user/oragono 0: User for the Oragono IRC server
 acct-user/ossec 0-r1: net-analyzer/ossec-hids (agentlessd, analysisd, monitord)
 acct-user/ossecm 0-r1: net-analyzer/ossec-hids (csyslogd, maild)
 acct-user/ossecr 0-r1: net-analyzer/ossec-hids (remoted)
@@ -12010,6 +12012,7 @@ gui-apps/lavalauncher 1.7.1 2.0.0 9999: Simple launcher for wayland
 gui-apps/mako 1.4.1 9999: A lightweight notification daemon for Wayland. Works on Sway.
 gui-apps/nm-tray 0.4.3-r1: A simple Qt-based NetworkManager front-end
 gui-apps/slurp 1.2.0 9999: Select a region in a Wayland compositor and print it to the standard output.
+gui-apps/swappy 1.3.1 9999: A Wayland native snapshot and editor tool, inspired by Snappy on macOS
 gui-apps/swaybg 1.0 9999: A wallpaper utility for Wayland
 gui-apps/swayidle 1.6 9999: Idle management daemon for Wayland
 gui-apps/swaylock 1.3 1.5 9999: Screen locker for Wayland
@@ -13628,7 +13631,7 @@ media-plugins/vdr-cinebars 0.0.5: VDR Plugin: Show black bars to hide station lo
 media-plugins/vdr-clock 1.0.0-r2: VDR Plugin: Tea clock, clock
 media-plugins/vdr-cpumon 0.0.6_p1: VDR Plugin: Show cpu-usage on OSD
 media-plugins/vdr-ddci2 1.0.4 1.0.5 9999: VDR plugin: DDCI2 - Digital Devices CI support
-media-plugins/vdr-devstatus 0.4.1 0.4.1-r1: VDR plugin: display the usage status of the available DVB devices
+media-plugins/vdr-devstatus 0.4.1-r1: VDR plugin: display the usage status of the available DVB devices
 media-plugins/vdr-dummydevice 2.0.0: VDR Plugin: dummy output device ,for recording server without any output devices
 media-plugins/vdr-duplicates 0.0.5 0.0.5-r1 0.1.0 1.0.1: VDR Plugin: show duplicated records
 media-plugins/vdr-dvbapi 2.2.4 2.2.5: VDR Plugin: allows connect VDR to OScam
@@ -13661,7 +13664,7 @@ media-plugins/vdr-mplayer 0.10.2: VDR Plugin: Play video files not supported by 
 media-plugins/vdr-newsticker 0.0.4: VDR plugin: Show rdf Newsticker on TV
 media-plugins/vdr-noepg 0.0.4 0.0.5: VDR Plugin: will replace the noepg-patch with the new cEpgHandler
 media-plugins/vdr-osdserver 0.1.2 0.1.3: VDR plugin: VDR OSD access for ext. programs through a TCP/IP socket connection
-media-plugins/vdr-osdteletext 0.9.4-r1 0.9.5 0.9.7: VDR Plugin: Osd-Teletext displays the teletext on the OSD
+media-plugins/vdr-osdteletext 0.9.7: VDR Plugin: Osd-Teletext displays the teletext on the OSD
 media-plugins/vdr-peer 0.0.1: VDR Plugin: peer-to-peer between multiple VDRs
 media-plugins/vdr-permashift 1.0.1-r1 1.0.4_pre20200301: VDR Plugin: permanent timeshift by recording live TV on RAM
 media-plugins/vdr-pilot 0.0.9-r1: VDR plugin: Another way for viewing EPG and zap to channels
@@ -14777,6 +14780,7 @@ net-irc/muh 2.2a-r1: Persistent IRC bouncer
 net-irc/ngircd 26.1: An IRC server written from scratch
 net-irc/ninja 1.5.9_pre14-r1: Ninja IRC Client
 net-irc/onis 0.8.2-r1: onis not irc stats
+net-irc/oragono 2.5.1: A modern IRC server written in Go
 net-irc/pisg 0.73-r1: Perl IRC Statistics Generator
 net-irc/polari 3.36.3: An IRC client for Gnome
 net-irc/psybnc 2.3.2.9-r3: A multi-user and multi-server gateway to IRC networks
@@ -15465,7 +15469,7 @@ net-p2p/ctorrent 3.3.2-r4: Enhanced CTorrent is a BitTorrent console client writ
 net-p2p/dbhub 0.451-r1: Hub software for Direct Connect, fork of opendchub
 net-p2p/deluge 2.0.3-r4 2.0.3-r5 2.0.3-r6 2.0.3-r7 2.0.3-r8 9999: BitTorrent client with a client/server model
 net-p2p/ed2k_hash 0.4.0-r2: Tool for generating eDonkey2000 links
-net-p2p/eiskaltdcpp 2.4.1 9999: Qt/DC++ based client for DirectConnect and ADC protocols
+net-p2p/eiskaltdcpp 2.4.2 9999: Qt/DC++ based client for DirectConnect and ADC protocols
 net-p2p/fms 0.3.82: A spam-resistant message board application for Freenet
 net-p2p/freenet 0.7.5_p1484 0.7.5_p1486 0.7.5_p1488: An encrypted network without censorship
 net-p2p/gnut 0.4.28-r1: Text-mode gnutella client

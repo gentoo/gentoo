@@ -1,0 +1,7 @@
+DEFINED_PHASES=install preinst pretend
+DESCRIPTION=Group for the Oragono IRC server
+EAPI=7
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+SLOT=0
+_eclasses_=acct-group	207adc497ea35d11dcf8959e7546a459	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+_md5_=4b24a680b04f011e7371e64533c32951

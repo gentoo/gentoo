@@ -1,0 +1,12 @@
+BDEPEND=app-text/scdoc virtual/pkgconfig >=dev-util/meson-0.54.0 >=dev-util/ninja-1.8.2 dev-util/meson-format-array >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test unpack
+DEPEND=dev-libs/glib:2 x11-libs/cairo x11-libs/gtk+:3 x11-libs/pango dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=A Wayland native snapshot and editor tool, inspired by Snappy on macOS
+EAPI=7
+HOMEPAGE=https://github.com/jtheoof/swappy
+LICENSE=MIT
+PROPERTIES=live
+RDEPEND=dev-libs/glib:2 x11-libs/cairo x11-libs/gtk+:3 x11-libs/pango media-fonts/fontawesome[otf]
+SLOT=0
+_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	meson	e43eef9331f54965a573ed380854ff47	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	optfeature	6a2add34e06e5a05d88471a33ccdd73e	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=b4127a4444a99e48fd713647158cf1e0
