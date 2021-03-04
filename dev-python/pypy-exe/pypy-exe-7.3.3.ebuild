@@ -8,7 +8,7 @@ inherit check-reqs pax-utils python-any-r1 toolchain-funcs
 
 MY_P=pypy2.7-v${PV/_/}
 DESCRIPTION="PyPy executable (build from source)"
-HOMEPAGE="https://pypy.org/"
+HOMEPAGE="https://www.pypy.org/"
 SRC_URI="https://buildbot.pypy.org/pypy/${MY_P}-src.tar.bz2"
 S="${WORKDIR}/${MY_P}-src"
 
