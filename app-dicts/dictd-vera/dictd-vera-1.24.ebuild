@@ -9,7 +9,7 @@ SRC_URI="mirror://gnu/vera/vera-${PV}.tar.gz"
 
 SLOT="0"
 LICENSE="FDL-1.3"
-KEYWORDS="amd64 ~ppc ~ppc64 sparc x86"
+KEYWORDS="amd64 ppc ppc64 sparc x86"
 
 DEPEND=">=app-text/dictd-1.5.5"
 RDEPEND="${DEPEND}"
