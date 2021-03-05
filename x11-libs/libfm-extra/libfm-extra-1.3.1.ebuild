@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ DESCRIPTION="A library for file management"
 HOMEPAGE="https://wiki.lxde.org/en/PCManFM"
 SRC_URI="https://github.com/lxde/libfm/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
 
-KEYWORDS="~alpha amd64 arm ~arm64 ~mips ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~mips ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 LICENSE="GPL-2"
 SLOT="0/5.2.1" #copy ABI_VERSION because it seems upstream change it randomly
 IUSE=""
