@@ -6,9 +6,9 @@ HOMEPAGE=https://nextcloud.com/
 IUSE=+curl +imagemagick mysql postgres +sqlite vhosts
 KEYWORDS=~amd64 ~arm ~arm64 ~x86
 LICENSE=AGPL-3
-RDEPEND=dev-lang/php[curl?,filter,gd,hash(+),intl,json,mysql?,pdo,posix,postgres?,session,simplexml,sqlite?,truetype,xmlreader,xmlwriter,zip] imagemagick? ( dev-php/pecl-imagick ) virtual/httpd-php >=app-admin/webapp-config-1.50.15
+RDEPEND=<dev-lang/php-8[curl?,filter,gd,hash(+),intl,json,mysql?,pdo,posix,postgres?,session,simplexml,sqlite?,truetype,xmlreader,xmlwriter,zip] imagemagick? ( dev-php/pecl-imagick ) virtual/httpd-php >=app-admin/webapp-config-1.50.15
 REQUIRED_USE=|| ( mysql postgres sqlite )
 SLOT=19.0.9
 SRC_URI=https://download.nextcloud.com/server/releases/nextcloud-19.0.9.tar.bz2
 _eclasses_=webapp	1d03df021d958f89f4cc78e289d0b116
-_md5_=76fc7db22f06d7571ad48463fe4515dc
+_md5_=ada5b7b008320626c71b7bf99484af75
