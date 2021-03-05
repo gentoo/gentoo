@@ -9304,7 +9304,7 @@ dev-python/txAMQP 0.8.2: Python library for communicating with AMQP peers using 
 dev-python/txaio 20.12.1 21.2.1: Compatibility API between asyncio/Twisted/Trollius
 dev-python/txgithub 15.0.0-r1: GitHub API client implemented using Twisted
 dev-python/txrequests 0.9.6: Asynchronous Python HTTP for Humans
-dev-python/typed-ast 1.4.1 1.4.2: Python typed-ast backported
+dev-python/typed-ast 1.4.2: Python typed-ast backported
 dev-python/typing-extensions 3.7.4.3: Type Hint extensions from Python 3.8 backported
 dev-python/tzlocal 2.1: tzinfo object for the local timezone
 dev-python/u-msgpack 2.7.1: A portable, lightweight MessagePack serializer and deserializer
