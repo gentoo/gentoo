@@ -36,6 +36,7 @@
 # unbuildable
 # Removal on 2021-04-0r52
 www-servers/ocsigenserver
+dev-ml/eliom
 
 # Conrad Kostecki <conikost@gentoo.org> (2021-03-05)
 # Deprecated by upstream and unsupported due EOL.
