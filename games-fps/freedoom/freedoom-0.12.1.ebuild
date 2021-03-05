@@ -6,7 +6,7 @@ EAPI=7
 DESCRIPTION="A complete free-content single-player focused game based on the Doom engine"
 HOMEPAGE="https://freedoom.github.io"
 
-LICENSE="BSD"
+LICENSE="metapackage"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 
