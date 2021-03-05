@@ -22,6 +22,8 @@ BDEPEND="
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
+		dev-python/pandas[${PYTHON_USEDEP}]
+		dev-python/xarray[${PYTHON_USEDEP}]
 		sci-libs/shapely[${PYTHON_USEDEP}]
 	)"
 
