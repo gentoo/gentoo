@@ -4,7 +4,7 @@ DESCRIPTION=a framework for package management
 EAPI=7
 HOMEPAGE=https://github.com/pkgcore/pkgcore
 IUSE=test python_targets_python3_8 python_targets_python3_9
-KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 sparc x86 ~x64-macos
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ppc64 ~s390 sparc x86 ~x64-macos
 LICENSE=BSD MIT
 RDEPEND=dev-python/lxml[python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_8(-),-python_single_target_python3_9(-)] >=dev-python/snakeoil-0.9.2[python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_8(-),-python_single_target_python3_9(-)] python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_8(-),-python_single_target_python3_9(-)]
 REQUIRED_USE=|| ( python_targets_python3_8 python_targets_python3_9 )
@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://pypi/p/pkgcore/pkgcore-0.11.2.tar.gz
 _eclasses_=distutils-r1	c166cdc9bfdc0fee3ea2100e01fdcdd3	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	4c65b35c1895b82c0f44e44166a3464f	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=a8fc2eae6c655529a3259a213573b228
+_md5_=2ce8178b9345239b8e8b463a158d350d
