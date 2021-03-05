@@ -1,0 +1,32 @@
+From ecdd0538dded7d2ba9e73a51f4f52030dd3f5a3b Mon Sep 17 00:00:00 2001
+From: Albert Astals Cid <aacid@kde.org>
+Date: Fri, 5 Feb 2021 17:43:45 +0100
+Subject: [PATCH] Fix CMSut::signverify_message_invalid failing "randomly"
+
+Once in a blue moon it happens that signedResult1[signedResult1.size() -
+2] is a 0, so setting it to 0 doesn't break the signature validation, so
+   check if it's a 0 and if it is, set it to 1
+---
+ unittest/cms/cms.cpp | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/unittest/cms/cms.cpp b/unittest/cms/cms.cpp
+index 4901221e..9b541789 100644
+--- a/unittest/cms/cms.cpp
++++ b/unittest/cms/cms.cpp
+@@ -499,7 +499,11 @@ void CMSut::signverify_message_invalid()
+ 
+             // This is just to break things
+             // signedResult1[30] = signedResult1[30] + 1;
+-            signedResult1[signedResult1.size() - 2] = 0x00;
++            if (signedResult1.at(signedResult1.size() - 2) != 0) {
++                signedResult1[signedResult1.size() - 2] = 0x00;
++            } else {
++                signedResult1[signedResult1.size() - 2] = 0x01;
++            }
+ 
+             msg.startVerify();
+             msg.update(signedResult1);
+-- 
+GitLab
+

@@ -39,7 +39,11 @@ DEPEND="${RDEPEND}
 	)
 "
 
-PATCHES=( "${FILESDIR}/${PN}-disable-pgp-test.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-disable-pgp-test.patch"
+	"${FILESDIR}/${P}-openssl-1.1.1i-empty-msg-verification.patch" # bug 766932
+	"${FILESDIR}/${P}-cmsut-signverify_message_invalid-fails-randomly.patch"
+)
 
 qca_plugin_use() {
 	echo -DWITH_${2:-$1}_PLUGIN=$(usex "$1")
