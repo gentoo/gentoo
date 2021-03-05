@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/qpdf/${P}.tar.gz"
 LICENSE="|| ( Apache-2.0 Artistic-2 )"
 # subslot = libqpdf soname version
 SLOT="0/28"
-KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ~ia64 ~mips ppc ~ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris"
+KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris"
 IUSE="doc examples libressl ssl test"
 RESTRICT="!test? ( test )"
 
