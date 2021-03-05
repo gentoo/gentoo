@@ -438,7 +438,7 @@ src_install() {
 
 	# https://bugs.gentoo.org/733802
 	if ! use scp; then
-		rm "${ED}"/usr/{bin/scp,share/man/man1/scp.1} \
+		rm -f "${ED}"/usr/{bin/scp,share/man/man1/scp.1} \
 			|| die "failed to remove scp"
 	fi
 
