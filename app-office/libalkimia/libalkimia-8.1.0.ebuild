@@ -54,7 +54,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${P}-cmake.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-cmake.patch"
+	"${FILESDIR}/${P}-missing-header.patch" # bug 774321
+)
 
 src_configure() {
 	local mycmakeargs=(
