@@ -9,4 +9,4 @@ RDEPEND=!minimal? ( dev-php/PEAR-Text_Highlighter ) >=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://pear.php.net/get/PHP_Debug-1.0.3.tgz
 _eclasses_=php-pear-r2	04ac1c3f5c35d8296eb969ef31e8477c
-_md5_=34eb23b1860e8f8021b827632db6c434
+_md5_=203077d504289321afd6010c35caade1

@@ -1,6 +1,6 @@
 DEFINED_PHASES=install postinst postrm prepare
 DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
-DESCRIPTION=vim plugin:
+DESCRIPTION=vim plugin: nftables syntax and indent
 EAPI=7
 HOMEPAGE=https://github.com/nfnty/vim-nftables
 KEYWORDS=~amd64 ~x86
@@ -9,4 +9,4 @@ RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 SLOT=0
 SRC_URI=https://github.com/nfnty/vim-nftables/archive/26f8a506c6f3e41f1e4a8d6aa94c9a79a666bbff.tar.gz -> vim-nftables-0_pre20200629.tar.gz
 _eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	vim-doc	dd0828b15877b2a09c07f4719e45891f	vim-plugin	3160d9cb05ef44497be1485db0fe7590
-_md5_=081181819e88c3fb09a9e217576cd587
+_md5_=c22982623487f27650fc65361f2bbb88
