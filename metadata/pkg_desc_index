@@ -3597,7 +3597,7 @@ dev-db/percona-xtrabackup-bin 2.4.13: MySQL hot backup software. non-blocking ba
 dev-db/pgFormatter 5.0: PostgreSQL SQL syntax beautifier
 dev-db/pg_activity 1.6.2: Realtime PostgreSQL database server monitoring tool
 dev-db/pg_top 4.0.0-r1: 'top' for PostgreSQL
-dev-db/pgadmin4 4.29 4.30: GUI administration and development platform for PostgreSQL
+dev-db/pgadmin4 4.29-r1 4.30-r1: GUI administration and development platform for PostgreSQL
 dev-db/pgagent 4.0.0-r1: pgAgent is a job scheduler for PostgreSQL
 dev-db/pgbadger 11.0 11.3 11.4 11.5: pgBadger is a PostgreSQL log analyzer.
 dev-db/pgbouncer 1.15.0: Lightweight connection pooler for PostgreSQL
@@ -8279,7 +8279,7 @@ dev-python/flask-paranoid 0.2.0-r1: Simple user session protection extension for
 dev-python/flask-principal 0.4.0-r1: Identity management for flask
 dev-python/flask-restful 0.3.8: Simple framework for creating REST APIs
 dev-python/flask-script 2.0.6: Flask support for writing external scripts
-dev-python/flask-security 4.0.0: Simple security for Flask apps
+dev-python/flask-security 3.4.4 3.4.5 4.0.0: Simple security for Flask apps
 dev-python/flask-sphinx-themes 1.0.2: Sphinx Themes for Flask related projects and Flask itself
 dev-python/flask-sqlalchemy 2.4.4: SQLAlchemy support for Flask applications
 dev-python/flask-wtf 0.14.3: Simple integration of Flask and WTForms
@@ -8508,7 +8508,7 @@ dev-python/markdown2 2.4.0: Python Markdown language reimplementation
 dev-python/markups 3.0.0-r1 3.1.0: A wrapper around various text markups
 dev-python/markupsafe 1.1.1-r1: Implements a XML/HTML/XHTML Markup safe string for Python
 dev-python/marshmallow 3.5.1 3.10.0: A lightweight library for converting complex datatypes to and from native Python datatypes.
-dev-python/matplotlib 3.3.3-r1 3.3.4: Pure python plotting library with matlab like syntax
+dev-python/matplotlib 3.3.4: Pure python plotting library with matlab like syntax
 dev-python/matterhook 0.2 0.2-r1: Interact with Mattermost incoming webhooks easily
 dev-python/mccabe 0.6.1-r1 0.6.1-r2: flake8 plugin: McCabe complexity checker
 dev-python/mdx_gh_links 0.2: An extension which adds links to GitHub users, repositories, issues and commits
@@ -15393,7 +15393,7 @@ net-misc/ucarp 1.5.2-r7: Portable userland implementation of Common Address Redu
 net-misc/udpcast 20200328: Multicast file transfer tool
 net-misc/udpxy 1.0.23.7-r2: Small daemon to relay multicast UDP traffic to client's TCP (HTTP) connection
 net-misc/uftp 4.10.1 5.0: Encrypted UDP based FTP with multicast
-net-misc/unison 2.48.15_p4-r2 2.51.3_p20201024 2.51.3_p20201127: Two-way cross-platform file synchronizer
+net-misc/unison 2.48.15_p4-r2 2.51.3_p20201024 2.51.3_p20201127 2.51.4_rc1: Two-way cross-platform file synchronizer
 net-misc/unix2tcp 0.8.2-r1: a connection forwarder that converts Unix sockets into TCP sockets
 net-misc/usbip 4.13-r1: Userspace utilities for a general USB device sharing system over IP networks
 net-misc/utelnetd 0.1.11-r2: A small Telnet daemon, derived from the Axis tools
