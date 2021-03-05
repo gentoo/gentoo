@@ -17,11 +17,16 @@ KEYWORDS="amd64 x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
-RDEPEND=">=dev-python/requests-1.1.0[${PYTHON_USEDEP}]
-	|| ( >=dev-python/pykerberos-1.1.8[${PYTHON_USEDEP}] <dev-python/pykerberos-2[${PYTHON_USEDEP}] )"
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+RDEPEND="
+	dev-python/cryptography[${PYTHON_USEDEP}]
+	>=dev-python/requests-1.1.0[${PYTHON_USEDEP}]
+	|| (
+		<dev-python/pykerberos-2[${PYTHON_USEDEP}]
+		>=dev-python/pykerberos-1.1.8[${PYTHON_USEDEP}]
+	)"
+BDEPEND="
 	test? ( dev-python/mock[${PYTHON_USEDEP}] )"
 
 python_test() {
-	${PYTHON} tests/test_requests_kerberos.py || die
+	"${EPYTHON}" tests/test_requests_kerberos.py -v || die
 }
