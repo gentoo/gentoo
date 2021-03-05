@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>arsen@aarsen.me</email>
+		<name>Arsen Arsenović</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>jeffrey@icurse.nl</email>
+		<name>Jeffrey Lin</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="io-uring">Enable efficient I/O via <pkg>sys-libs/liburing</pkg>.</flag>
+	</use>
+	<longdescription>
+plocate works by creating an inverted index over trigrams (combinations of
+three bytes) in the search strings, which allows it to rapidly narrow down the
+set of candidates to a very small list, instead of linearly scanning through
+every entry. It does nearly all I/O asynchronously using io_uring if available
+(Linux 5.1+), which reduces the impact of seek latency on systems without SSDs.
+Like mlocate and slocate, the returned file set is user-dependent, ie. a user
+will only see a file if find(1) would list it (all directories from the root
+have +rx permissions).
+	</longdescription>
+</pkgmetadata>
