@@ -92,6 +92,9 @@ src_prepare() {
 	# bug #745162
 	eapply "${FILESDIR}"/${PN}-2.9.8-python3-unicode-errors.patch
 
+	# https://gitlab.gnome.org/GNOME/libxml2/-/issues/178
+	eapply "${FILESDIR}"/${PN}-2.9.10-xmllint-utf8.patch
+
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		# Avoid final linking arguments for python modules
 		sed -i -e '/PYTHON_LIBS/s/ldflags/libs/' configure.ac || die
