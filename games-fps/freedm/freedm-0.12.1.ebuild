@@ -6,7 +6,7 @@ EAPI=7
 DESCRIPTION="A 32-level game designed for competitive deathmatch play."
 HOMEPAGE="https://freedoom.github.io"
 
-LICENSE="BSD"
+LICENSE="metapackage"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 
