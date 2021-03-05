@@ -60,6 +60,8 @@ src_compile() {
 }
 
 lua_src_test() {
+	pushd "${BUILD_DIR}" || die
+
 	# "[  FAILED  ] test.lua @ 279: mpack should not leak memory"
 	# It doesn't seem upstream actually support LuaJIT so were this up to me
 	# I would drop it from LUA_COMPAT, unfortunately there are packages in the
@@ -70,6 +72,8 @@ lua_src_test() {
 	fi
 
 	busted --lua="${ELUA}" test.lua || die
+
+	popd
 }
 
 src_test() {
