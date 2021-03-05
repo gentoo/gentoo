@@ -1,15 +1,16 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools ltprune multilib-minimal
+inherit autotools multilib-minimal
 
 MY_PN="iODBC"
 
 DESCRIPTION="ODBC Interface for Linux"
 HOMEPAGE="http://www.iodbc.org/"
-SRC_URI="https://github.com/openlink/${MY_PN}/archive/v${PV}.zip -> ${P}.zip"
+SRC_URI="https://github.com/openlink/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 LICENSE="|| ( LGPL-2 BSD )"
@@ -21,15 +22,13 @@ DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS NEWS README )
 
-S="${WORKDIR}/${MY_PN}-${PV}"
-
 MULTILIB_CHOST_TOOLS=( /usr/bin/iodbc-config )
 
 PATCHES=(
-	"${FILESDIR}"/libiodbc-3.52.12-multilib.patch
-	"${FILESDIR}"/libiodbc-3.52.7-debian_bug501100.patch
-	"${FILESDIR}"/libiodbc-3.52.7-debian_bug508480.patch
-	"${FILESDIR}"/libiodbc-3.52.7-unicode_includes.patch
+	"${FILESDIR}"/${PN}-3.52.12-multilib.patch
+	"${FILESDIR}"/${PN}-3.52.7-debian_bug501100.patch
+	"${FILESDIR}"/${PN}-3.52.7-debian_bug508480.patch
+	"${FILESDIR}"/${PN}-3.52.7-unicode_includes.patch
 	"${FILESDIR}"/fix-runpaths-r1.patch
 )
 
@@ -58,7 +57,8 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	einstalldocs
-	prune_libtool_files
+
+	find "${ED}" -name '*.la' -delete || die
 
 	# Install lintian overrides
 	insinto /usr/share/lintian/overrides
