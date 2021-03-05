@@ -13,7 +13,7 @@ SRC_URI="https://ftp.postgresql.org/pub/pgadmin/${PN}/v${PV}/source/${P}.tar.gz"
 
 LICENSE="POSTGRESQL"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -47,7 +47,6 @@ RDEPEND="${COMMON_DEPEND}
 	$(python_gen_cond_dep '
 		>=dev-python/blinker-1.4[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/flask-1.0.2[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/flask-babelex-0.9.4[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/flask-compress-1.4.0[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/flask-gravatar-0.5.0[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/flask-login-0.4.1[${PYTHON_MULTI_USEDEP}]
@@ -55,7 +54,7 @@ RDEPEND="${COMMON_DEPEND}
 		>=dev-python/flask-migrate-2.4.0[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/flask-paranoid-0.2.0[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/flask-principal-0.4.0[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/flask-security-3.0.0[${PYTHON_MULTI_USEDEP}]
+		<dev-python/flask-security-4.0.0[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/flask-sqlalchemy-2.4.1[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/flask-wtf-0.14.3[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/ldap3-2.5.1[${PYTHON_MULTI_USEDEP}]
@@ -74,7 +73,6 @@ RDEPEND="${COMMON_DEPEND}
 		>=dev-python/wtforms-2.2.1[${PYTHON_MULTI_USEDEP}]
 		dev-python/bcrypt[${PYTHON_MULTI_USEDEP}]
 		dev-python/cryptography[${PYTHON_MULTI_USEDEP}]
-		dev-python/gssapi[${PYTHON_MULTI_USEDEP}]
 		dev-python/python-email-validator[${PYTHON_MULTI_USEDEP}]
 	')
 "
