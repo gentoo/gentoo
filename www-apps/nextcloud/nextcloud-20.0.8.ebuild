@@ -10,7 +10,7 @@ HOMEPAGE="https://nextcloud.com/"
 SRC_URI="https://download.nextcloud.com/server/releases/${P}.tar.bz2"
 LICENSE="AGPL-3"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="+curl +imagemagick mysql postgres +sqlite"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
