@@ -1,32 +1,31 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit desktop epatch toolchain-funcs
+EAPI=7
+
+inherit desktop toolchain-funcs
 
 DEB_PATCH_VER="13"
 DESCRIPTION="Mille Bournes card game"
 HOMEPAGE="http://www.milleborne.info/"
 SRC_URI="mirror://debian/pool/main/x/xmille/${PN}_${PV}.orig.tar.gz
 	mirror://debian/pool/main/x/xmille/${PN}_${PV}-${DEB_PATCH_VER}.diff.gz"
+S="${WORKDIR}/${P}.orig"
 
 LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-RDEPEND="x11-libs/libXext"
-DEPEND="${RDEPEND}
+BDEPEND="
 	app-text/rman
 	x11-misc/imake
 "
-
-S="${WORKDIR}/${P}.orig"
+RDEPEND="x11-libs/libXext"
+DEPEND="${RDEPEND}"
 
 src_prepare() {
 	default
-	epatch "${WORKDIR}"/${PN}_${PV}-${DEB_PATCH_VER}.diff
-
+	eapply "${WORKDIR}"/${PN}_${PV}-${DEB_PATCH_VER}.diff
 }
 
 src_configure() {
