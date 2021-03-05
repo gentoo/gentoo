@@ -29,9 +29,15 @@ if [[ ${PV} == *9999 ]] ; then
 		dev-vcs/git
 		~sys-apps/pkgcore-9999[${PYTHON_USEDEP}]
 	"
+else
+	# https://github.com/pkgcore/pkgdev/blob/main/requirements/install.txt
+	RDEPEND="
+		>=dev-python/snakeoil-0.9.3[${PYTHON_USEDEP}]
+		>=dev-util/pkgcore-0.11.4[${PYTHON_USEDEP}]
+		dev-vcs/git
+		>=sys-apps/pkgcore-0.9.1[${PYTHON_USEDEP}]
+	"
 fi
-
-# Releases (in future): https://github.com/pkgcore/pkgdev/blob/main/requirements/install.txt
 
 distutils_enable_sphinx doc
 distutils_enable_tests pytest
