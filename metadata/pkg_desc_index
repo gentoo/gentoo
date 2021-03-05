@@ -2768,7 +2768,7 @@ app-portage/gander 0.0.1: Statistic submission client for Goose (anser.gentoo.or
 app-portage/gemato 15.2 16.1 16.2 9999: Stand-alone Manifest generation & verification tool
 app-portage/genlop 0.30.9-r1 0.30.10-r1 0.30.10-r2 9999: A nice emerge.log parser
 app-portage/gentoolkit 0.5.0-r2 0.5.1 9999: Collection of administration scripts for Gentoo
-app-portage/gentoopm 0.3.2 0.3.2-r1 9999: A common interface to Gentoo package managers
+app-portage/gentoopm 0.3.2-r1 9999: A common interface to Gentoo package managers
 app-portage/getdelta 0.7.9-r2: dynamic deltup client
 app-portage/golop 0.0.1 0.0.1-r1 9999: A pure Go re-implementation of genlop
 app-portage/gpyutils 0.4.5 9999: Utitilies for maintaining Python packages
@@ -9104,7 +9104,7 @@ dev-python/rfc3339-validator 0.1.2: A pure python RFC3339 validator
 dev-python/rfc3986 1.4.0: Validating URI References per RFC 3986
 dev-python/rfc3986-validator 0.1.1: Pure python RFC3986 validator
 dev-python/rfc3987 1.3.8-r1: Parsing and validation of URIs (RFC 3986) and IRIs (RFC 3987)
-dev-python/rich 9.11.1: Python library for renrering rich text, tables, etc. to the terminal
+dev-python/rich 9.11.1 9.12.4: Python library for renrering rich text, tables, etc. to the terminal
 dev-python/rjsmin 1.1.0: Javascript minifier written in python.
 dev-python/robot-detection 0.4.0: Module to detect if a given HTTP User Agent is a web crawler.
 dev-python/roman 3.3: An Integer to Roman numerals converter
