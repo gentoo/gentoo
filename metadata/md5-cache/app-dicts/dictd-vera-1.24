@@ -3,9 +3,9 @@ DEPEND=>=app-text/dictd-1.5.5
 DESCRIPTION=V.E.R.A. -- Virtual Entity of Relevant Acronyms for dict
 EAPI=7
 HOMEPAGE=http://home.snafu.de/ohei/vera/vueber-e.html
-KEYWORDS=amd64 ~ppc ~ppc64 sparc x86
+KEYWORDS=amd64 ppc ppc64 sparc x86
 LICENSE=FDL-1.3
 RDEPEND=>=app-text/dictd-1.5.5
 SLOT=0
 SRC_URI=mirror://gnu/vera/vera-1.24.tar.gz
-_md5_=c3291e842d9b4b2cad912d7d703e25d2
+_md5_=1ee6983bf48d700e3a8b4cf00f862230
