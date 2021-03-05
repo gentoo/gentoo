@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/libmpack/libmpack-lua/archive/1.0.8.tar.gz -> mpack-1.0.8.tar.gz
 _eclasses_=lua	117840f7c4855d27ccde1c6cca990331	lua-utils	736947973cfbc9de01fdb8548f942f82	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=aa9cfe0b71561d2cb1960e568ab8606f
+_md5_=ca56e2b9f2979a100ee32f82246cd975
