@@ -322,3 +322,9 @@ x64-winnt		prefix/windows/winnt/x64			exp
 x64-cygwin		prefix/windows/cygwin/x64			exp
 
 # vim: set ts=8 noet ft=conf:
+
+# Local Variables:
+# mode: conf-space
+# tab-width: 8
+# indent-tabs-mode: t
+# End:

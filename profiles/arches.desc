@@ -43,3 +43,9 @@ x86-winnt	testing
 x64-cygwin	testing
 
 # vim: set ts=8 noet ft=conf:
+
+# Local Variables:
+# mode: conf-space
+# tab-width: 8
+# indent-tabs-mode: t
+# End:
