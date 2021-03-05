@@ -3045,7 +3045,7 @@ app-text/pstotext 1.9-r4: Extract ASCII text from a PostScript or PDF file
 app-text/psutils 1.17-r3: PostScript Utilities
 app-text/pytextile 3.0.3 4.0.1: A Python port of Textile, A humane web text generator
 app-text/q-text-as-data 2.0.10: A CLI tool that allows direct execution of SQL-like queries on text
-app-text/qpdf 10.0.4 10.1.0 10.2.0: Command-line tool for structural, content-preserving transformation of PDF files
+app-text/qpdf 10.0.4 10.1.0 10.2.0 10.3.0: Command-line tool for structural, content-preserving transformation of PDF files
 app-text/qpdfview 0.4.18 0.4.18_p1: A tabbed document viewer
 app-text/rarian 0.8.1-r3: A documentation metadata library
 app-text/recode 3.7.6-r1 3.7.8: Convert files between various character sets
@@ -11046,7 +11046,7 @@ dev-vcs/fossil 2.12.1 2.13 2.14: Simple, high-reliability, source control manage
 dev-vcs/git 2.26.2 2.28.0 2.29.2 2.30.0 2.30.1 2.31.0_rc1 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
 dev-vcs/git-annex 8.20200810: manage files with git, without checking their contents into git
 dev-vcs/git-big-picture 1.0.0 1.1.1: Visualization tool for Git repositories
-dev-vcs/git-cola 3.5-r1 3.8: The highly caffeinated git GUI
+dev-vcs/git-cola 3.5-r1 3.8 3.9: The highly caffeinated git GUI
 dev-vcs/git-crypt 0.6.0: transparent file encryption in git
 dev-vcs/git-deploy 6.0.1_p20131024-r1: make deployments so easy that you'll let new hires do them on their first day
 dev-vcs/git-flow 1.12.3: Git extensions to provide high-level repository operations

@@ -5,7 +5,7 @@ DESCRIPTION=Library for the efficient manipulation of volumetric data
 EAPI=7
 HOMEPAGE=https://www.openvdb.org
 IUSE=cpu_flags_x86_avx cpu_flags_x86_sse4_2 doc numpy python static-libs test utils abi5-compat abi6-compat +abi7-compat python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9
-KEYWORDS=amd64 ~arm ~x86
+KEYWORDS=amd64 ~arm ~arm64 ~x86
 LICENSE=MPL-2.0
 RDEPEND=dev-cpp/tbb dev-libs/boost:= dev-libs/c-blosc:= dev-libs/jemalloc:= dev-libs/log4cplus:= media-libs/glfw media-libs/glu media-libs/ilmbase:= media-libs/openexr:= sys-libs/zlib:= x11-libs/libXcursor x11-libs/libXi x11-libs/libXinerama x11-libs/libXrandr python? ( python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_9? ( dev-lang/python:3.9 >=dev-lang/python-exec-2:=[python_targets_python3_9] ) python_single_target_python3_7? ( dev-libs/boost:=[numpy?,python?,python_targets_python3_7(-)] numpy? ( dev-python/numpy[python_targets_python3_7(-)] ) ) python_single_target_python3_8? ( dev-libs/boost:=[numpy?,python?,python_targets_python3_8(-)] numpy? ( dev-python/numpy[python_targets_python3_8(-)] ) ) python_single_target_python3_9? ( dev-libs/boost:=[numpy?,python?,python_targets_python3_9(-)] numpy? ( dev-python/numpy[python_targets_python3_9(-)] ) ) )
 REQUIRED_USE=numpy? ( python ) ^^ ( abi5-compat abi6-compat abi7-compat ) python? ( ^^ ( python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9 ) )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/AcademySoftwareFoundation/openvdb/archive/v7.0.0.tar.gz -> openvdb-7.0.0.tar.gz
 _eclasses_=cmake	314a813be2f09820e8978cdee941e501	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=74ea67d3980a6a5bd0b05c33593d0b2e
+_md5_=8714e57e50a99a3354ebc5cf9da31eec
