@@ -3559,7 +3559,7 @@ dev-db/kdb 3.2.0: Database connectivity and creation framework for various vendo
 dev-db/kyotocabinet 1.2.77: A straightforward implementation of DBM
 dev-db/libdbi 0.9.0: A database-independent abstraction layer in C
 dev-db/libdbi-drivers 0.9.0-r1: The libdbi-drivers project maintains drivers for libdbi
-dev-db/libiodbc 3.52.12: ODBC Interface for Linux
+dev-db/libiodbc 3.52.12-r1: ODBC Interface for Linux
 dev-db/libodbc++ 0.2.5-r2: Provides a subset of the well-known JDBC 2.0(tm) and runs on top of ODBC
 dev-db/libzdb 3.1-r1: A thread safe high level multi-database connection pool library
 dev-db/lmdb 0.9.23 0.9.24 0.9.26 0.9.27 0.9.28: An ultra-fast, ultra-compact key-value embedded data store
@@ -11271,7 +11271,7 @@ games-arcade/stardork 0.7-r1: An ncurses-based space shooter
 games-arcade/supertransball2 1.5-r1: Thrust clone
 games-arcade/supertux 0.6.2-r1: A game similar to Super Mario Bros.
 games-arcade/syobon 1.0.1-r1: Syobon Action (also known as Cat Mario or Neko Mario)
-games-arcade/tecnoballz 0.92: An exciting Brick Breaker
+games-arcade/tecnoballz 0.93.1: An exciting Brick Breaker
 games-arcade/thinktanks-demo 1.1-r3: Tank combat game with lighthearted, fast paced pandemonium
 games-arcade/tomatoes 1.55-r2: How many tomatoes can you smash in ten short minutes?
 games-arcade/trailblazer 0.9-r1: Guide a ball through a succession of levels while avoiding holes
@@ -11287,7 +11287,7 @@ games-arcade/xbubble 0.5.8-r1: A Puzzle Bobble clone similar to Frozen-Bubble
 games-arcade/xgalaga 2.1.1.0: A clone of the classic game Galaga for the X Window System
 games-arcade/xjump 2.7.5: An X game where one tries to jump up as many levels as possible
 games-arcade/xrick 021212-r2: Clone of the Rick Dangerous adventure game from the 80's
-games-arcade/xscavenger 1.4.4-r1: Lode-Runner-like arcade game
+games-arcade/xscavenger 1.4.4-r2: Lode-Runner-like arcade game
 games-arcade/xsfcave 0.5-r1: A X11 sfcave clone
 games-arcade/xtux 20030306-r1: Multiplayer Gauntlet-style arcade game
 games-arcade/yarsrevenge 0.99-r1: Remake of the Atari 2600 classic Yar's Revenge
@@ -11350,7 +11350,7 @@ games-board/xboard 4.9.1: GUI for gnuchess and for internet chess servers
 games-board/xfreecell 1.0.5b-r1: A freecell game for X
 games-board/xgammon 0.98-r2: very nice backgammon game for X
 games-board/xmahjongg 3.7-r1: friendly GUI version of xmahjongg
-games-board/xmille 2.0-r3: Mille Bournes card game
+games-board/xmille 2.0-r4: Mille Bournes card game
 games-board/xscrabble 2.10-r2: An X11 clone of the well-known Scrabble
 games-board/xskat 4.0-r1: Famous german card game
 games-emulation/advancemame 3.9: GNU/Linux port of the MAME emulator with GUI menu

@@ -1,0 +1,13 @@
+BDEPEND=app-text/rman x11-misc/imake
+DEFINED_PHASES=compile configure install prepare
+DEPEND=x11-libs/libXext
+DESCRIPTION=Mille Bournes card game
+EAPI=7
+HOMEPAGE=http://www.milleborne.info/
+KEYWORDS=~amd64 ~x86
+LICENSE=public-domain
+RDEPEND=x11-libs/libXext
+SLOT=0
+SRC_URI=mirror://debian/pool/main/x/xmille/xmille_2.0.orig.tar.gz mirror://debian/pool/main/x/xmille/xmille_2.0-13.diff.gz
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=8c17ff358eda5af195b27c8ab8a9c643

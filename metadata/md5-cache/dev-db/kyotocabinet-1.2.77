@@ -11,4 +11,4 @@ RDEPEND=sys-libs/zlib[static-libs?] lzma? ( app-arch/xz-utils:=[static-libs?] ) 
 SLOT=0
 SRC_URI=https://fallabs.com/kyotocabinet/pkg/kyotocabinet-1.2.77.tar.gz
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=0387e3151ac4464b58a8eb76c84baa62
+_md5_=d0a22950100108e3a956d2b4a4e622ab
