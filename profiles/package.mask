@@ -31,6 +31,12 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Conrad Kostecki <conikost@gentoo.org> (2021-03-05)
+# Dead upstream, multiple bugs open and unmaintained.
+# Removal in 30 days.
+net-misc/capi4hylafax
+
 # Conrad Kostecki <conikost@gentoo.org> (2021-03-05)
 # Dead upstream and unmaintained.
 # Removal in 30 days.
