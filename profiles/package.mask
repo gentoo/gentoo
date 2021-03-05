@@ -35,6 +35,11 @@
 # Conrad Kostecki <conikost@gentoo.org> (2021-03-05)
 # Dead upstream, multiple bugs open and unmaintained.
 # Removal in 30 days.
+app-mobilephone/smsclient
+
+# Conrad Kostecki <conikost@gentoo.org> (2021-03-05)
+# Dead upstream, multiple bugs open and unmaintained.
+# Removal in 30 days.
 net-misc/capi4hylafax
 
 # Conrad Kostecki <conikost@gentoo.org> (2021-03-05)
