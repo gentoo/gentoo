@@ -929,7 +929,7 @@ app-backup/mkstage4 0.1 0.2 0.3 9999: Bash Utility for Creating Stage 4 Tarballs
 app-backup/mylvmbackup 0.14: Tool for creating backups of MySQL server's data files using LVM snapshots
 app-backup/pdumpfs 1.3-r2: A daily backup system similar to Plan9's dumpfs
 app-backup/rdedup 1.0.2: data deduplication with compression and public key encryption
-app-backup/rdiff-backup 2.0.0 2.0.5 2.0.5-r1: Local/remote mirroring+incremental backup
+app-backup/rdiff-backup 2.0.0 2.0.5-r1: Local/remote mirroring+incremental backup
 app-backup/rdumpfs 0.1: a rsync-based dump file system backup tool
 app-backup/rdup 1.1.15: Generate a file list suitable for full or incremental backups
 app-backup/rear 2.4 2.6: Relax-and-Recover is a setup-and-forget bare metal disaster recovery solution
@@ -8571,7 +8571,7 @@ dev-python/nbconvert 6.0.7: Converting Jupyter Notebooks
 dev-python/nbdime 2.0.0-r1: Diff and merge of Jupyter Notebooks
 dev-python/nbformat 5.1.2-r1: Reference implementation of the Jupyter Notebook format
 dev-python/nbsphinx 0.7.1-r1 0.8.2: Jupyter Notebook Tools for Sphinx
-dev-python/nbval 0.9.1-r1 0.9.6: A py.test plugin to validate Jupyter notebooks
+dev-python/nbval 0.9.6: A py.test plugin to validate Jupyter notebooks
 dev-python/ndg-httpsclient 0.5.1: Provides enhanced HTTPS support for httplib and urllib2 using PyOpenSSL
 dev-python/neovim-remote 2.4.0 9999: A tool that helps control neovim processes
 dev-python/nest_asyncio 1.5.1: Patch asyncio to allow nested event loops
@@ -14536,7 +14536,7 @@ net-analyzer/tsung 1.7.0: Erlang's multi-protocol distributed load testing tool
 net-analyzer/ttcp 1.12-r2: Tool to test TCP and UDP throughput
 net-analyzer/upnpscan 0.4-r3: Scans the network for UPnP capable devices
 net-analyzer/vnstat 1.17 2.6 9999: Console-based network traffic monitor that keeps statistics of network usage
-net-analyzer/wapiti 3.0.3 9999: Web-application vulnerability scanner
+net-analyzer/wapiti 3.0.3 3.0.4 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r2: Poor man's web vulnerability scanner
 net-analyzer/wireshark 3.4.3 9999: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
@@ -14713,7 +14713,7 @@ net-im/ekg2 0.4_pre20190315 9999: Text-based, multi-protocol instant messenger
 net-im/element-desktop-bin 1.7.18: A glossy Matrix collaboration client for desktop (binary package)
 net-im/empathy 3.12.14: Telepathy instant messaging and video/audio call client for GNOME
 net-im/err 6.1.7: Multiprotocol chatbot designed to be easily deployable and maintainable
-net-im/gajim 1.2.1 1.2.2 1.3.0: Jabber client written in PyGTK
+net-im/gajim 1.2.1 1.2.2 1.3.0 1.3.1: Jabber client written in PyGTK
 net-im/gg-transport 2.2.6: Gadu-Gadu transport for Jabber
 net-im/gitter-bin 4.1.0-r1 5.0.1: Chat and network platform
 net-im/jabber-base 0.01-r2: Base layout package for various jabber services
@@ -14997,7 +14997,7 @@ net-libs/wandio 4.2.3_p1-r1: C library for simple and efficient file IO
 net-libs/webkit-gtk 2.30.5: Open source web browser engine
 net-libs/wvstreams 4.6.1_p14-r1 99999: A network programming library in C++
 net-libs/xrootd 5.0.3 5.1.0: Extended ROOT remote file server
-net-libs/xrootd-ceph 4.12.4 4.12.5 5.0.2 5.0.3 5.1.0: xrootd OSS plug-in for interfacing with Ceph storage platform
+net-libs/xrootd-ceph 5.0.3 5.1.0: xrootd OSS plug-in for interfacing with Ceph storage platform
 net-libs/zeromq 4.3.3-r1 4.3.4-r1: A brokerless kernel
 net-libs/zmqpp 4.2.0: ZeroMQ 'highlevel' C++ bindings
 net-mail/altermime 0.3.11: alterMIME is a small program which is used to alter your mime-encoded mailpacks
