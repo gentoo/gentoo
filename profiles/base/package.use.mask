@@ -323,7 +323,6 @@ media-video/mplayer nut
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-07)
 # media-libs/fmod is slated for removal.
-games-arcade/savagewheels fmod
 games-fps/doomsday fmod
 
 # Thomas Deutschmann <whissi88@gentoo.org> (2019-09-02)
