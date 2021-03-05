@@ -7974,7 +7974,7 @@ dev-python/aiorpcX 0.18.5 0.19 0.19.1: Generic async RPC implementation, includi
 dev-python/aiosmtpd 1.2 1.2.2 1.2.4 1.3.2 1.4.0 1.4.1: asyncio based SMTP server
 dev-python/alabaster 0.7.12: A configurable sidebar-enabled Sphinx theme
 dev-python/alagitpull 0.0.23-r1: alabaster sub-theme used on git-pull docs
-dev-python/alembic 1.5.1 1.5.4 1.5.5: database migrations tool, written by the author of SQLAlchemy
+dev-python/alembic 1.5.1 1.5.4 1.5.5 1.5.6: database migrations tool, written by the author of SQLAlchemy
 dev-python/ament_package 0.9.2: Parser for the manifest files in the ament buildsystem
 dev-python/amodem 1.15.1-r1: Transmit data between two computers using audio
 dev-python/aniso8601 8.1.1 9.0.0 9.0.1: A library for parsing ISO 8601 strings
@@ -8505,7 +8505,7 @@ dev-python/mando 0.6.4: Create Python CLI apps with little to no effort at all!
 dev-python/manuel 1.10.1: Lets you mix and match traditional doctests with custom test syntax
 dev-python/markdown 2.6.11 3.3.3 3.3.4: Python implementation of the markdown markup language
 dev-python/markdown2 2.4.0: Python Markdown language reimplementation
-dev-python/markups 3.0.0-r1 3.1.0: A wrapper around various text markups
+dev-python/markups 3.0.0-r1 3.1.0 3.1.1: A wrapper around various text markups
 dev-python/markupsafe 1.1.1-r1: Implements a XML/HTML/XHTML Markup safe string for Python
 dev-python/marshmallow 3.5.1 3.10.0: A lightweight library for converting complex datatypes to and from native Python datatypes.
 dev-python/matplotlib 3.3.4: Pure python plotting library with matlab like syntax
@@ -8765,7 +8765,7 @@ dev-python/pyaudio 0.2.11-r1: Python bindings for PortAudio
 dev-python/pybind11 2.6.1 2.6.2: AST-based Python refactoring library
 dev-python/pybluez 0.23: Python bindings for Bluez Bluetooth Stack
 dev-python/pybtex 0.23.0 0.24.0: BibTeX-compatible bibliography processor
-dev-python/pybtex-docutils 0.2.2: A docutils backend for pybtex
+dev-python/pybtex-docutils 0.2.2 1.0.0: A docutils backend for pybtex
 dev-python/pycadf 2.9.0-r1 3.1.1: python implementation of DMTF Cloud Audit (CADF) data model
 dev-python/pycairo 1.20.0: Python bindings for the cairo library
 dev-python/pycapnp 0.6.4: Python wrapping of the Cap'n Proto library
@@ -9080,7 +9080,7 @@ dev-python/reflink 0.2.1-r1: Python wrapper around the reflink system calls
 dev-python/regex 2020.4.4-r1: Alternative regular expression module to replace re
 dev-python/rencode 1.0.6: similar to bencode from the BitTorrent project
 dev-python/reno 3.2.0-r1: Release notes manager, storing release notes in a git repo and building docs
-dev-python/reportlab 3.5.60: Tools for generating printable PDF documents from any data source
+dev-python/reportlab 3.5.60 3.5.63: Tools for generating printable PDF documents from any data source
 dev-python/repoze-lru 0.7-r1: A tiny LRU cache implementation and decorator
 dev-python/repoze-sphinx-autointerface 0.8: Sphinx extension: auto-generates API docs from Zope interfaces
 dev-python/requests 2.24.0-r1 2.25.0 2.25.1-r1: HTTP library for human beings
@@ -9121,7 +9121,7 @@ dev-python/rsa 4.7 4.7.1 4.7.2: Pure-Python RSA implementation
 dev-python/rst-linker 2.1.1: Sphinx plugin to add links and timestamps to the changelog
 dev-python/rtimulib 7.2.1-r1: Python Binding for RTIMULib, a versatile IMU library
 dev-python/rtslib-fb 2.1.74: A Python object API for managing the Linux LIO kernel target
-dev-python/ruamel-yaml 0.16.12-r1: YAML parser/emitter that supports roundtrip comment preservation
+dev-python/ruamel-yaml 0.16.12-r1 0.16.13: YAML parser/emitter that supports roundtrip comment preservation
 dev-python/ruamel-yaml-clib 0.2.2-r1: C-based reader/scanner and emitter for dev-python/ruamel-yaml
 dev-python/ryu 4.34: Component-based Software-defined Networking Framework
 dev-python/s3transfer 0.3.4: An Amazon S3 Transfer Manager
@@ -9144,7 +9144,7 @@ dev-python/serpent 1.30.2: A simple serialization library based on ast.literal_e
 dev-python/serverfiles 0.2.1 0.3.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0-r1: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.2.2: Allow customization of the process title
-dev-python/setuptools 51.3.3 53.0.0 53.1.0 54.0.0: Collection of extensions to Distutils
+dev-python/setuptools 51.3.3 53.0.0 53.1.0 54.0.0 54.1.0: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2-r2: Setuptools revision control system plugin for Git
 dev-python/setuptools_scm 5.0.1 5.0.2: Manage versions by scm tags via setuptools
 dev-python/setuptools_scm_git_archive 1.1: A setuptools_scm plugin for git archives
@@ -9201,7 +9201,7 @@ dev-python/sphinx_rtd_theme 0.5.1: ReadTheDocs.org theme for Sphinx
 dev-python/sphinx_selective_exclude 1.0.3: Sphinx selective rendition extensions
 dev-python/sphinxcontrib-applehelp 1.0.2: Sphinx extension which outputs Apple help book
 dev-python/sphinxcontrib-asyncio 0.2.0-r2: sphinx extension to support coroutines in markup
-dev-python/sphinxcontrib-bibtex 2.0.0: Sphinx extensions for BibTeX style citations
+dev-python/sphinxcontrib-bibtex 2.0.0 2.2.0: Sphinx extensions for BibTeX style citations
 dev-python/sphinxcontrib-blockdiag 2.0.0: A sphinx extension for embedding block diagrams using blockdiag
 dev-python/sphinxcontrib-devhelp 1.0.2: Sphinx extension which outputs Devhelp documents
 dev-python/sphinxcontrib-doxylink 1.6.1: Extension to link to external Doxygen API documentation
@@ -10913,7 +10913,7 @@ dev-util/patchutils 0.3.3 0.3.4: A collection of tools that operate on patch fil
 dev-util/patdiff 0.14.0: Colored patience diffs with word-level refinement
 dev-util/peg 0.1.18: Recursive-descent parser generators for C
 dev-util/perf 5.8 5.9.9 5.10.16 5.11: Userland tools for Linux Performance Counters
-dev-util/pkgcheck 0.7.7-r1 0.7.9-r1 0.7.9-r2 0.8.1 0.8.2 0.9.0 9999: pkgcore-based QA utility for ebuild repos
+dev-util/pkgcheck 0.7.7-r1 0.7.9-r1 0.7.9-r2 0.8.1 0.8.2 0.9.0 0.9.1 9999: pkgcore-based QA utility for ebuild repos
 dev-util/pkgconf 1.6.3 1.7.2 1.7.3-r1 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
 dev-util/pkgconfig 0.28-r2 0.28-r3 0.29.1 0.29.2 9999: Package config system that manages compile/link flags
 dev-util/pkgdev 9999: Collection of tools for Gentoo development
@@ -15674,7 +15674,7 @@ net-wireless/madwimax 0.1.1-r1: Reverse-engineered driver for WiMAX devices base
 net-wireless/mdk 3.6-r1: Wireless injection tool with various functions
 net-wireless/mfoc 0.10.7-r1: Mifare Classic Offline Cracker
 net-wireless/nanovna-saver 0.3.8 9999: tool for reading, displaying and saving data from the NanoVNA
-net-wireless/neard 0.15-r1: Near Field Communication (NFC) management daemon
+net-wireless/neard 0.16: Near Field Communication (NFC) management daemon
 net-wireless/osmo-fl2k 0.1.1 9999: turns FL2000-based USB 3.0 to VGA adapters into low cost DACs
 net-wireless/portapack-firmware 20190405: Firmware and scripts for controlling the Portapack from Sharebrained
 net-wireless/portapack-havoc 0.0_p20180612: Custom firmware for the HackRF SDR + PortaPack H1 addon
@@ -17038,7 +17038,7 @@ sys-apps/pcsc-lite 1.8.25-r1 1.8.26 1.9.0: PC/SC Architecture smartcard middlewa
 sys-apps/pcsc-slb-rf72-drv 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Reader
 sys-apps/pcsc-tools 1.5.6 1.5.7: PC/SC Architecture smartcard tools
 sys-apps/pick 3.0.1 4.0.0: a fuzzy search tool for the command-line
-sys-apps/pkgcore 0.10.13-r1 0.10.14 0.10.14-r1 0.11.0 0.11.1 0.11.2 0.11.3 9999: a framework for package management
+sys-apps/pkgcore 0.10.13-r1 0.10.14 0.10.14-r1 0.11.0 0.11.1 0.11.2 0.11.3 0.11.4 9999: a framework for package management
 sys-apps/pmount 0.9.99_alpha-r6: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
 sys-apps/pnputils 0.1: Plug and Play BIOS utilities

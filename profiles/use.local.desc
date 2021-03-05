@@ -6960,7 +6960,7 @@ net-wireless/kismet:rtlsdr - Enable rtlsdr based kismet capture sources
 net-wireless/kismet:suid - Install a setuid root helper binary with limited functionality; this allows running kismet as a normal user, significantly reducing security risks
 net-wireless/kismet:ubertooth - Enable capture source for ubertooth to sniff bluetooth low energy
 net-wireless/libxtrxll:usb3380 - support xtrx usb model
-net-wireless/neard:tools - build and install extra helper utilities
+net-wireless/neard:tools - Build and install 'nfctool' for further NFC debugging
 net-wireless/rtl-sdr:zerocopy - may cause a bus error on some ARM systems
 net-wireless/rtl_433:rtlsdr - Build with Realtek RTL2832U (rtlsdr) support
 net-wireless/rtl_433:soapysdr - Build with SoapySDR support
