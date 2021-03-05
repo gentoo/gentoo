@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ inherit autotools desktop flag-o-matic toolchain-funcs
 CANON_REL="05"
 MY_PV="${PV//\./}"
 
-DESCRIPTION="Canon UFR II / LIPSLX Printer Driver for Linux "
+DESCRIPTION="Canon UFR II / LIPSLX Printer Driver for Linux"
 HOMEPAGE="https://www.canon-europe.com/support/products/imagerunner/"
 SRC_URI="https://dev.gentoo.org/~juippis/distfiles/linux-UFRII-drv-v${MY_PV}-uken-${CANON_REL}.tar.gz"
 
