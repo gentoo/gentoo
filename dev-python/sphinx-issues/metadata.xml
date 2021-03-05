@@ -8,5 +8,6 @@
   <upstream>
     <remote-id type="pypi">sphinx-issues</remote-id>
     <remote-id type="github">sloria/sphinx-issues</remote-id>
+    <bugs-to>https://github.com/sloria/sphinx-issues/issues</bugs-to>
   </upstream>
 </pkgmetadata>
