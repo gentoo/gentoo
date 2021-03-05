@@ -5,10 +5,9 @@ EAPI=7
 
 inherit desktop xdg-utils
 
-MY_COMMIT="4713e608d2f9c998ba4412fee53b94dc9bef98b9"
 DESCRIPTION="Two-way cross-platform file synchronizer"
 HOMEPAGE="https://www.seas.upenn.edu/~bcpierce/unison/"
-SRC_URI="https://github.com/bcpierce00/unison/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/bcpierce00/unison/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="$(ver_cut 1-2)"
@@ -25,8 +24,6 @@ DEPEND="gtk? ( dev-ml/lablgtk:2= )"
 RDEPEND="gtk? ( dev-ml/lablgtk:2=
 	|| ( net-misc/x11-ssh-askpass net-misc/ssh-askpass-fullscreen ) )
 	>=app-eselect/eselect-unison-0.4"
-
-S="${WORKDIR}/${PN}-${MY_COMMIT}"
 
 DOCS=( BUGS.txt CONTRIB INSTALL NEWS README ROADMAP.txt TODO.txt )
 
