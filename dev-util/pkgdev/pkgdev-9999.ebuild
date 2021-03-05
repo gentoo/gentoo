@@ -15,7 +15,7 @@ else
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 fi
 
-DESCRIPTION="pkgcore-based git QA tool"
+DESCRIPTION="Collection of tools for Gentoo development"
 HOMEPAGE="https://github.com/pkgcore/pkgdev"
 
 LICENSE="BSD MIT"
