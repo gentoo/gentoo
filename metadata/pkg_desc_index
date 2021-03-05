@@ -10916,7 +10916,7 @@ dev-util/perf 5.8 5.9.9 5.10.16 5.11: Userland tools for Linux Performance Count
 dev-util/pkgcheck 0.7.7-r1 0.7.9-r1 0.7.9-r2 0.8.1 0.8.2 0.9.0 0.9.1 9999: pkgcore-based QA utility for ebuild repos
 dev-util/pkgconf 1.6.3 1.7.2 1.7.3-r1 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
 dev-util/pkgconfig 0.28-r2 0.28-r3 0.29.1 0.29.2 9999: Package config system that manages compile/link flags
-dev-util/pkgdev 9999: Collection of tools for Gentoo development
+dev-util/pkgdev 0.1 9999: Collection of tools for Gentoo development
 dev-util/pkgdiff 1.7.2 9999: Package Changes Analyzer (pkgdiff)
 dev-util/plan9port 0_pre20200526 9999: Port of many Plan 9 programs and libraries
 dev-util/ply 2.1.1-r1: Dynamic instrumentation of the Linux kernel with BPF and kprobes
@@ -18100,7 +18100,7 @@ www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qutebrowser 1.14.0 1.14.1 2.0.2 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
 www-client/seamonkey 2.53.6: Seamonkey Web Browser
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
-www-client/surfraw 2.3.0-r1 2.3.0-r2 2.3.0-r3 99999: A fast unix command line interface to WWW
+www-client/surfraw 2.3.0-r3 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.1 9999: Download manager using gtk+ and libcurl
 www-client/vivaldi 3.6.2165.36 3.6.2165.40: A browser for our friends
 www-client/vivaldi-snapshot 3.6.2165.32 3.7.2209.3: A browser for our friends
