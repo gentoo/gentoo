@@ -1,9 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} )
-inherit python-single-r1
+
+PYTHON_COMPAT=( python3_{7,8,9} )
+inherit python-single-r1 flag-o-matic toolchain-funcs
 
 DESCRIPTION="A funny multiplayer game about cute little fluffy bunnies"
 HOMEPAGE="https://libregames.gitlab.io/jumpnbump"
@@ -21,7 +22,8 @@ DEPEND="
 	media-libs/libsdl2
 	media-libs/sdl2-net
 "
-RDEPEND="${DEPEND}
+RDEPEND="
+	${DEPEND}
 	gtk? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
@@ -33,6 +35,10 @@ RDEPEND="${DEPEND}
 "
 
 src_compile() {
+	tc-export AR CC RANLIB
+
+	append-flags -fcommon
+
 	emake PREFIX="${EPREFIX}/usr"
 	use gtk && emake PREFIX="${EPREFIX}/usr" jnbmenu
 }
