@@ -222,7 +222,7 @@ exportmakeopts() {
 			NEEDS_LIBICONV=YesPlease
 			HAVE_CLOCK_MONOTONIC=1
 		)
-		if grep -q getdelim "${EROOT}"/usr/include/stdio.h ; then
+		if grep -Fq getdelim "${EROOT}"/usr/include/stdio.h ; then
 			myopts+=( HAVE_GETDELIM=1 )
 		fi
 	fi
@@ -243,7 +243,7 @@ exportmakeopts() {
 }
 
 src_unpack() {
-	if [[ ${PV} != *9999 ]]; then
+	if [[ ${PV} != *9999 ]] ; then
 		unpack ${MY_P}.tar.${SRC_URI_SUFFIX}
 		cd "${S}" || die
 		unpack ${PN}-manpages-${DOC_VER}.tar.${SRC_URI_SUFFIX}
@@ -320,9 +320,7 @@ src_compile() {
 	fi
 
 	if use perl && use cgi ; then
-		git_emake \
-			gitweb \
-			|| die "emake gitweb (cgi) failed"
+		git_emake gitweb || die "emake gitweb (cgi) failed"
 	fi
 
 	if [[ ${CHOST} == *-darwin* ]]; then
@@ -334,16 +332,13 @@ src_compile() {
 
 	pushd Documentation &>/dev/null || die
 	if [[ ${PV} == *9999 ]] ; then
-		git_emake man \
-			|| die "emake man failed"
+		git_emake man || die "emake man failed"
 		if use doc ; then
-			git_emake info html \
-				|| die "emake info html failed"
+			git_emake info html || die "emake info html failed"
 		fi
 	else
 		if use doc ; then
-			git_emake info \
-				|| die "emake info html failed"
+			git_emake info || die "emake info html failed"
 		fi
 	fi
 	popd &>/dev/null || die
@@ -355,18 +350,18 @@ src_compile() {
 	fi
 
 	pushd contrib/subtree &>/dev/null || die
-	git_emake git-subtree
+	git_emake git-subtree || die
 	# git-subtree.1 requires the full USE=doc dependency stack
 	use doc && git_emake git-subtree.html git-subtree.1
 	popd &>/dev/null || die
 
 	pushd contrib/diff-highlight &>/dev/null || die
-	git_emake
+	git_emake || die
 	popd &>/dev/null || die
 
 	if use mediawiki ; then
 		pushd contrib/mw-to-git &>/dev/null || die
-		git_emake
+		git_emake || die
 		popd &>/dev/null || die
 
 	fi
@@ -504,9 +499,8 @@ src_install() {
 		newdoc  "${S}"/gitweb/README README.gitweb
 
 		for d in "${ED}"/usr/lib{,64}/perl5/ ; do
-			if test -d "${d}" ; then find "${d}" \
-				-name .packlist \
-				-delete || die
+			if [[ -d "${d}" ]] ; then
+				find "${d}" -name .packlist -delete || die
 			fi
 		done
 	else
@@ -523,10 +517,11 @@ src_install() {
 		newins "${FILESDIR}"/git-daemon.xinetd git-daemon
 	fi
 
-	if use !prefix ; then
+	if ! use prefix ; then
 		newinitd "${FILESDIR}"/git-daemon-r1.initd git-daemon
 		newconfd "${FILESDIR}"/git-daemon.confd git-daemon
-		systemd_newunit "${FILESDIR}/git-daemon_at-r1.service" "git-daemon@.service"
+		systemd_newunit "${FILESDIR}/git-daemon_at-r1.service" \
+			"git-daemon@.service"
 		systemd_dounit "${FILESDIR}/git-daemon.socket"
 	fi
 
@@ -536,7 +531,7 @@ src_install() {
 	# we could remove sources in src_prepare, but install does not
 	# handle missing locale dir well
 	rm_loc() {
-		if [[ -e "${ED}/usr/share/locale/${1}" ]]; then
+		if [[ -e "${ED}/usr/share/locale/${1}" ]] ; then
 			rm -r "${ED}/usr/share/locale/${1}" || die
 		fi
 	}
@@ -586,8 +581,8 @@ src_test() {
 
 	local cvs=0
 	use cvs && let cvs=${cvs}+1
-	if [[ ${EUID} -eq 0 ]]; then
-		if [[ ${cvs} -eq 1 ]]; then
+	if [[ ${EUID} -eq 0 ]] ; then
+		if [[ ${cvs} -eq 1 ]] ; then
 			ewarn "Skipping CVS tests because CVS does not work as root!"
 			ewarn "You should retest with FEATURES=userpriv!"
 			disabled+=( ${tests_cvs[@]} )
@@ -601,7 +596,7 @@ src_test() {
 		[[ ${cvs} -gt 1 ]] && \
 			has_version "dev-vcs/cvs[server]" && \
 			let cvs=${cvs}+1
-		if [[ ${cvs} -lt 3 ]]; then
+		if [[ ${cvs} -lt 3 ]] ; then
 			einfo "Disabling CVS tests (needs dev-vcs/cvs[USE=server])"
 			disabled+=( ${tests_cvs[@]} )
 		fi
@@ -623,12 +618,13 @@ src_test() {
 	done
 	einfo "Disabled tests:"
 	for i in ${disabled[@]} ; do
-		[[ -f "${i}" ]] && mv -f "${i}" "${i}.DISABLED" && einfo "Disabled ${i}"
+		if [[ -f "${i}" ]] ; then
+			mv -f "${i}" "${i}.DISABLED" && einfo "Disabled ${i}"
+		fi
 	done
 
 	# Avoid the test system removing the results because we want them ourselves
-	sed -e '/^[[:space:]]*$(MAKE) clean/s,^,#,g' \
-		-i Makefile || die
+	sed -e '/^[[:space:]]*$(MAKE) clean/s,^,#,g' -i Makefile || die
 
 	# Clean old results first, must always run
 	nonfatal git_emake clean
