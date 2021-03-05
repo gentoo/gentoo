@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://www.kernel.org/pub/software/scm/git/testing/git-2.31.0.rc1.tar.xz https://www.kernel.org/pub/software/scm/git/testing/git-manpages-2.31.0.rc1.tar.xz doc? ( https://www.kernel.org/pub/software/scm/git/testing/git-htmldocs-2.31.0.rc1.tar.xz )
 _eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	elisp-common	d4b53ec63c580b993ed19445f411e1d2	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	69861348186337fa4b269de5826004b3	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=8ae154e79e634f8bcb7e1a42e003fbc0
+_md5_=cd06fd5fa2c5c9c50f6330a167094d65
