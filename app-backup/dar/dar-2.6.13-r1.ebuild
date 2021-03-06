@@ -100,4 +100,7 @@ src_install() {
 	if ! use static-libs ; then
 		find "${ED}" -name '*.a' -delete || die
 	fi
+
+	# Bug 729150
+	rm "${ED}/usr/share/doc/${PF}/html/samples/MyBackup.sh.tar.gz" || die
 }
