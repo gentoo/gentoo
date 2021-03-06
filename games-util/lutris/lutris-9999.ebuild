@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -39,6 +39,7 @@ RDEPEND="
 	app-arch/unzip
 	$(python_gen_cond_dep '
 		dev-python/dbus-python[${PYTHON_USEDEP}]
+		dev-python/lxml[${PYTHON_USEDEP}]
 		dev-python/pillow[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
 		dev-python/python-evdev[${PYTHON_USEDEP}]
@@ -53,8 +54,9 @@ RDEPEND="
 	x11-apps/mesa-progs
 	x11-apps/xgamma
 	x11-apps/xrandr
-	x11-libs/gtk+:3[introspection]
 	x11-libs/libnotify[introspection]
+	x11-libs/gtk+:3[introspection]
+	x11-libs/gdk-pixbuf[jpeg]
 "
 
 python_install_all() {

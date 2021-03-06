@@ -27,6 +27,10 @@ BDEPEND="virtual/pkgconfig"
 
 REQUIRED_USE="|| ( aom dav1d )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-pkg-config.patch"
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=ON
