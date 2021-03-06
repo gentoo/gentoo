@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index a3988e15..93ca9de5 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -271,7 +271,7 @@ add_c_flag([-D_GNU_SOURCE], [AC_MSG_ERROR([Cannot enable -D_GNU_SOURCE])])
+ # Best attempt compiler options that are on newer versions of GCC that
+ # we can't widely enforce without killing other peoples builds.
+ # Works with gcc only. Needs to be disabled on BSD and clang
+-AS_IF([test "$HOSTOS" = "Linux"],
++AS_IF([test "$HOSTOS" = "Linux" -a ! "$CC" = "clang"],
+       [add_c_flag([-Wstringop-overflow=4])
+        add_c_flag([-Wstringop-truncation])
+        add_c_flag([-Wduplicated-branches])
