@@ -15,7 +15,7 @@ SRC_URI="https://github.com/mirage/ocaml-cohttp/archive/v${PV}.tar.gz -> ${P}.ta
 LICENSE="ISC"
 SLOT="0/${PV}"
 KEYWORDS="~amd64"
-IUSE="async javascript +lwt"
+IUSE="async +lwt"
 
 DEPEND="
 	dev-ml/re:=
@@ -39,9 +39,6 @@ DEPEND="
 		dev-ml/ocaml-magic-mime:=
 		dev-ml/fmt:=
 	)
-	javascript? (
-		dev-ml/js_of_ocaml:=[ppx]
-	)
 "
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND}
@@ -56,7 +53,6 @@ src_configure() {
 	local oasis_configure_opts="
 		$(use_enable lwt) $(use_enable lwt lwt-unix)
 		$(use_enable async)
-		$(use_enable javascript js)
 	"
 	oasis_src_configure
 }
