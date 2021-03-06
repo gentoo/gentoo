@@ -1076,7 +1076,7 @@ app-crypt/hmaccalc 0.9.14: Tools for computing and checking HMAC values for file
 app-crypt/ima-evm-utils 1.1-r1 9999: Supporting tools for IMA and EVM
 app-crypt/jacksum 1.7.0: Java utility for computing and verifying checksums: CRC*, MD*, etc.
 app-crypt/jetring 0.27 0.30: GPG keyring maintenance using changesets
-app-crypt/jitterentropy 2.1.2 2.2.0: Hardware RNG based on CPU timing jitter
+app-crypt/jitterentropy 2.2.0 3.0.1: Hardware RNG based on CPU timing jitter
 app-crypt/jitterentropy-rngd 1.1.0: Jitter RNG daemon
 app-crypt/johntheripper 1.8.0: fast password cracker
 app-crypt/johntheripper-jumbo 1.8.0 1.9.0 9999: fast password cracker
@@ -2202,7 +2202,7 @@ app-forensics/radamsa 0.6: A general purpose fuzzer
 app-forensics/rifiuti 20040505_p1: Recycle Bin Analyzer
 app-forensics/rkhunter 1.4.6-r1: Rootkit Hunter scans for known and unknown rootkits, backdoors, and sniffers
 app-forensics/scalpel 2.0: A high performance file carver
-app-forensics/sleuthkit 4.9.0 4.10.1: A collection of file system and media management forensic analysis tools
+app-forensics/sleuthkit 4.9.0 4.10.1-r1: A collection of file system and media management forensic analysis tools
 app-forensics/unhide 20130526: A forensic tool to find hidden processes and TCP/UDP ports by rootkits/LKMs
 app-forensics/yasat 848: Security and system auditing tool
 app-forensics/zzuf 0.15-r1: Transparent application input fuzzer
@@ -12942,7 +12942,7 @@ media-gfx/lximage-qt 0.15.0 0.16.0: Qt Image Viewer
 media-gfx/maim 5.6.3 9999: Commandline tool to take screenshots of the desktop
 media-gfx/mandelbulber 2.12-r1: Tool to render 3D fractals
 media-gfx/mcomix 1.3.0_pre20200206 1.3.0_pre20201123 9999: GTK image viewer for comic book archives
-media-gfx/meshlab 2020.12: A system for processing and editing unstructured 3D triangular meshes
+media-gfx/meshlab 2020.12 2020.12-r1: A system for processing and editing unstructured 3D triangular meshes
 media-gfx/metapixel 1.0.2-r1: a program for generating photomosaics
 media-gfx/mkgallery 1.1-r1: Creates thumbnails and a HTML index file for a directory of jpg files
 media-gfx/monica 3.7: Monica is a Monitor Calibration Tool
@@ -17063,7 +17063,7 @@ sys-apps/restartd 0.2.2-r1: A daemon for checking your running and not running p
 sys-apps/restorecond 3.1 9999: Daemon to watch for creation and set default SELinux fcontexts
 sys-apps/ripgrep 12.1.1: a search tool that combines the usability of ag with the raw speed of grep
 sys-apps/rkflashtool 6.1: Tool for flashing Rockchip devices
-sys-apps/rng-tools 6.10-r1 6.11: Daemon to use hardware random number generators
+sys-apps/rng-tools 6.10-r1 6.11-r1: Daemon to use hardware random number generators
 sys-apps/roccat-tools 5.7.0 5.9.0 5.9.0-r100: Utility for advanced configuration of Roccat devices
 sys-apps/rtl-entropy 0.1.2_p20180118-r1: An entropy generator using SDR peripherals, including rtl-sdr and BladeRF
 sys-apps/s390-tools 2.9.0 2.12.0: User space utilities for the zSeries (s390) Linux kernel and device drivers
