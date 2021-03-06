@@ -11,7 +11,7 @@ HOMEPAGE="https://www.linbit.com/drbd"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="pacemaker +udev xen"
 
 DEPEND="
