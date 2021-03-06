@@ -2660,7 +2660,7 @@ app-misc/zygrib 8.0.1-r1: GRIB File Viewer - Weather data visualization
 app-mobilephone/adb-sync 0_p20181127-r1 0_p20190101: Synchronize files between a PC and an Android device using ADB
 app-mobilephone/anyremote 6.5: Bluetooth, infrared or cable remote control service
 app-mobilephone/dfu-util 0.9 9999: implements the Host (PC) side of the USB DFU (Device Firmware Upgrade) protocol
-app-mobilephone/gammu 1.38.5 1.39.0-r1 1.40.0 1.41.0: A tool to handle your cellular phone
+app-mobilephone/gammu 1.41.0: A tool to handle your cellular phone
 app-mobilephone/gnocky 0.0.7: GTK-2 version of gnokii
 app-mobilephone/gnokii 0.6.31-r1 0.6.31-r2 0.6.31-r3 9999: User space driver and tools for use with mobile phones
 app-mobilephone/heimdall 1.4.2 9999: Tool suite used to flash firmware onto Samsung Galaxy S devices
@@ -16216,7 +16216,7 @@ sci-libs/clashscore-db 3.17: Clashscore-db for clashlist
 sci-libs/clblas 2.12: Library containing BLAS routines for OpenCL
 sci-libs/clblast 0.10.0: Tuned OpenCL BLAS
 sci-libs/cln 1.3.6: Class library (C++) for numbers
-sci-libs/cminpack 1.3.5: C implementation of the MINPACK nonlinear optimization library
+sci-libs/cminpack 1.3.8: C implementation of the MINPACK nonlinear optimization library
 sci-libs/cmpfit 1.2-r1: MINPACK-1 Least Squares Fitting Library in C
 sci-libs/coinhsl 2015.06.23: HSL mathematical software library for IPOPT
 sci-libs/coinor-alps 1.5.7: COIN-OR Framework for implementing parallel graph search algorithms
@@ -16428,7 +16428,7 @@ sci-libs/udunits 2.2.28: Library for manipulating units of physical quantities
 sci-libs/ufconfig 3.7.1: Common configuration scripts for the SuiteSparse libraries
 sci-libs/umfpack 5.7.9: Unsymmetric multifrontal sparse LU factorization library
 sci-libs/volk 2.4.1: vector optimized library of kernels
-sci-libs/voro++ 0.4.6-r1: A 3D Voronoi cell software library
+sci-libs/voro++ 0.4.6-r1: 3D Voronoi cell software library
 sci-libs/votca-tools 1.5.1 1.6 1.6.2 1.6.4 9999: Votca tools library
 sci-libs/vtk 8.2.0 8.2.0-r1: The Visualization Toolkit
 sci-libs/xdmf2 1.0_p141226-r4: eXtensible Data Model and Format
