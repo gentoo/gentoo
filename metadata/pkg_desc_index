@@ -5708,7 +5708,7 @@ dev-libs/spsdeclib 5.1-r1: Kryoflux SPS Decoder Library
 dev-libs/squareball 0.2.0 9999: A general-purpose library for C99
 dev-libs/starpu 1.2.6-r1: Unified runtime system for heterogeneous multicore architectures
 dev-libs/stb 20200713: single-file public domain (or MIT licensed) libraries for C/C++
-dev-libs/stfl 0.24-r2 0.24-r3: A library which implements a curses-based widget set for text terminals
+dev-libs/stfl 0.24-r3: A library which implements a curses-based widget set for text terminals
 dev-libs/stp 2.3.3: Simple Theorem Prover, an efficient SMT solver for bitvectors
 dev-libs/template-glib 3.34.0: Templating library for GLib
 dev-libs/tinyxml 2.6.2-r3 2.6.2-r4: Simple and small C++ XML parser
@@ -11066,7 +11066,7 @@ dev-vcs/gitsh 0.11.2: An interactive shell for git
 dev-vcs/gitstats 0_pre20201124: Statistics generator for git
 dev-vcs/gti 9999: A silly git launcher, basically. Inspired by sl
 dev-vcs/guilt 0.36-r1: A series of bash scripts which add a quilt-like interface to git
-dev-vcs/hg-evolve 10.1.0 10.2.0: enables the changeset evolution feature of Mercurial
+dev-vcs/hg-evolve 10.2.0: enables the changeset evolution feature of Mercurial
 dev-vcs/hg-git 0.9.0_rc1-r1 0.9.0: push to and pull from a Git repository using Mercurial
 dev-vcs/hub 2.14.2: Command-line wrapper for git that makes you better at GitHub
 dev-vcs/kdesvn 2.1.0: A frontend to the subversion vcs
