@@ -27,6 +27,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${P}-docdir.patch
 	"${FILESDIR}"/${P}-python3.patch
+	"${FILESDIR}"/${P}-uninitialized-variable.patch
 )
 
 src_prepare() {

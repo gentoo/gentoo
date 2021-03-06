@@ -1,0 +1,22 @@
+From cce390dd61996e569bd8a3bca78e7aa4b286d6df Mon Sep 17 00:00:00 2001
+From: Vivek Thampi <vivek.mt@gmail.com>
+Date: Sun, 22 Sep 2013 12:13:05 -0700
+Subject: [PATCH] Minor fix for an uninitialized var
+
+---
+ libudis86/decode.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libudis86/decode.c b/libudis86/decode.c
+index 3dab9ad..55638bd 100644
+--- a/libudis86/decode.c
++++ b/libudis86/decode.c
+@@ -228,7 +228,7 @@ static int
+ decode_prefixes(struct ud *u)
+ {
+   int done = 0;
+-  uint8_t curr, last = 0;
++  uint8_t curr = 0, last = 0;
+   UD_RETURN_ON_ERROR(u);
+ 
+   do {
