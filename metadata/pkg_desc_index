@@ -848,7 +848,7 @@ app-arch/ncompress 4.2.4.5 4.2.4.6 5.0: Classic compress & uncompress programs f
 app-arch/p7zip 16.02-r4 16.02-r5 16.02-r6: Port of 7-Zip archiver for Unix
 app-arch/par2cmdline 0.7.3 0.7.4 0.8.0: A PAR-2.0 file verification and repair tool
 app-arch/patool 1.12: Portable archive file manager
-app-arch/pax 20161104 20201030: pax (Portable Archive eXchange) is the POSIX standard archive tool
+app-arch/pax 20201030: pax (Portable Archive eXchange) is the POSIX standard archive tool
 app-arch/pbzip2 1.1.12 1.1.13: Parallel bzip2 (de)compressor using libbz2
 app-arch/pdlzip 1.10 1.11: Public-domain version of lzip compressor
 app-arch/pdv 1.5.1-r3: build a self-extracting and self-installing binary package
@@ -2190,7 +2190,7 @@ app-forensics/dfxml 20170921-r1 99999999: Digital Forensics XML
 app-forensics/examiner 0.5-r3: Utilizes the objdump command to disassemble and comment foreign binaries
 app-forensics/foremost 1.5.7-r3: Console program to recover files based on their headers and footers
 app-forensics/galleta 20040505_p1: IE Cookie Parser
-app-forensics/honggfuzz 2.3.1 2.4: A general purpose fuzzer with feedback support
+app-forensics/honggfuzz 2.4: A general purpose fuzzer with feedback support
 app-forensics/libewf 20171104-r1: Implementation of the EWF (SMART and EnCase) image format
 app-forensics/lynis 3.0.3: Security and system auditing tool
 app-forensics/mac-robber 1.02: mac-robber is a digital forensics and incident response tool that collects data
@@ -5142,7 +5142,7 @@ dev-lang/crystal 0.36.1: The Crystal Programming Language
 dev-lang/cxprolog 0.98.2: A WAM based Prolog system
 dev-lang/duktape 2.4.0 2.5.0-r1 2.6.0: Embeddable Javascript engine
 dev-lang/elixir 1.10.4 1.11.3: Elixir programming language
-dev-lang/erlang 23.0.4 23.2.2 23.2.3 23.2.4 23.2.5 23.2.6 23.2.7: Erlang programming language, runtime environment and libraries (OTP)
+dev-lang/erlang 23.0.4 23.2.3 23.2.7: Erlang programming language, runtime environment and libraries (OTP)
 dev-lang/esco 0.512: Combine interpreter of esoteric languages
 dev-lang/execline 2.1.1.0 2.3.0.3 2.3.0.4 2.5.0.1 2.5.1.0 2.5.3.0 2.6.1.1: A non-interactive scripting language
 dev-lang/f2c 20100827-r1: Fortran to C converter
@@ -10773,7 +10773,7 @@ dev-util/devhelp 3.36.2 3.38.1: An API documentation browser for GNOME
 dev-util/dialog 1.3.20170131 1.3.20200228 1.3.20200327: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1-r2: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3-r1: Filter files out of unified diffs using POSIX extended regular expressions
-dev-util/diffoscope 167 168: Will try to get to the bottom of what makes files or directories different
+dev-util/diffoscope 168: Will try to get to the bottom of what makes files or directories different
 dev-util/diffstat 1.63 1.64: Display a histogram of diff changes
 dev-util/diffuse 0.5.0_alpha7-r1 0.6.0: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r3: A tool for differing and merging directories
@@ -16328,7 +16328,7 @@ sci-libs/libqalculate 3.16.1: A modern multi-purpose calculator library
 sci-libs/libsc 2.2-r100 9999: Support for parallel scientific applications
 sci-libs/libsigrok 0.5.2 0.5.2-r1 9999: Basic hardware drivers for logic analyzers and input/output file format support
 sci-libs/libsigrokdecode 0.5.3 9999: Provide (streaming) protocol decoding functionality
-sci-libs/libspatialindex 1.9.3: C++ implementation of R*-tree, an MVR-tree and a TPR-tree with C API
+sci-libs/libspatialindex 1.9.3 1.9.3-r1: C++ implementation of R*-tree, an MVR-tree and a TPR-tree with C API
 sci-libs/libsvm 3.24: Library for Support Vector Machines
 sci-libs/libticables2 1.3.5: Library to handle different link cables for TI calculators
 sci-libs/libticalcs2 1.1.9: Library for communication with TI calculators
@@ -17709,7 +17709,7 @@ sys-libs/talloc 2.3.1 2.3.2: Samba talloc library
 sys-libs/tapi 1.30 2.0.0: Text-based Application Programming Interface
 sys-libs/tdb 1.4.3: Simple database API
 sys-libs/tevent 0.10.2: Samba tevent library
-sys-libs/timezone-data 2020f 2021a: Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)
+sys-libs/timezone-data 2021a: Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)
 sys-libs/uclibc-ng 1.0.30-r1 1.0.32 1.0.33 1.0.35 9999: C library for developing embedded Linux systems
 sys-libs/uid_wrapper 1.2.7 1.2.8: Wrapper to fake privilege separation
 sys-libs/zlib 1.2.11-r3: Standard (de)compression library
@@ -18087,7 +18087,7 @@ www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browse
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
 www-client/links 2.21: A fast and lightweight web browser running in both graphics and text mode
 www-client/luakit 2.2.1-r100 9999: A fast, extensible, and customizable web browser
-www-client/lynx 2.9.0_pre5 2.9.0_pre6-r1: An excellent console-based web browser with ssl support
+www-client/lynx 2.9.0_pre6-r1: An excellent console-based web browser with ssl support
 www-client/microsoft-edge-dev 90.0.796.0 90.0.803.0 90.0.810.1: The web browser from Microsoft
 www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
