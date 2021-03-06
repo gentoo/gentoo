@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -43,6 +43,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	epatch "${FILESDIR}/${P}-fno-common.patch"
+
 	# Using MPICH2LIB_LDFLAGS doesn't seem to full work.
 	sed -i 's| *@WRAPPER_LDFLAGS@ *||' \
 		src/packaging/pkgconfig/mpich2.pc.in \
