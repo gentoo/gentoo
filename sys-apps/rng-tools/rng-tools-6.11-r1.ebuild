@@ -63,9 +63,9 @@ src_configure() {
 
 src_install() {
 	default
-	newinitd "${FILESDIR}"/rngd-initd-6.7-r1 rngd
-	newconfd "${FILESDIR}"/rngd-confd-6.7 rngd
-	systemd_dounit "${FILESDIR}"/rngd.service
+	newinitd "${FILESDIR}"/rngd-initd-6.11 rngd
+	newconfd "${FILESDIR}"/rngd-confd-6.11 rngd
+	systemd_dounit "${S}"/rngd.service
 
 	if use pkcs11; then
 		local DISABLE_AUTOFORMATTING=1
