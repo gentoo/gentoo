@@ -26,7 +26,6 @@ S="${WORKDIR}/${P}/src/${EGO_PN}"
 src_prepare() {
 	default
 	sed -i 's@dockerd\?\.exe@@g' contrib/completion/bash/docker || die
-	sed -i 's@md2man@go-md2man@' man/md2man-all.sh || die
 }
 
 src_compile() {
