@@ -10,7 +10,7 @@ inherit multiprocessing python-any-r1 qt5-build
 DESCRIPTION="Library for rendering dynamic web content in Qt5 C++ and QML applications"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 	if [[ ${PV} == ${QTVER}_p* ]]; then
 		SRC_URI="https://dev.gentoo.org/~asturm/distfiles/${P}.tar.xz"
 		S="${WORKDIR}/${P}"
