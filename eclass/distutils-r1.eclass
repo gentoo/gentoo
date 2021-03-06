@@ -435,11 +435,11 @@ distutils_enable_tests() {
 			if [[ ${do_install} ]]; then
 				python_test() {
 					distutils_install_for_testing --via-root
-					pytest -vv || die "Tests fail with ${EPYTHON}"
+					epytest
 				}
 			else
 				python_test() {
-					pytest -vv || die "Tests fail with ${EPYTHON}"
+					epytest
 				}
 			fi
 			;;
