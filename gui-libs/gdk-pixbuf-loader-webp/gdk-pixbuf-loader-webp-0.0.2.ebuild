@@ -15,10 +15,10 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND=">x11-libs/gdk-pixbuf-2.22.0:2[${MULTILIB_USEDEP}]
-	>media-libs/libwebp-0.4.3:=[${MULTILIB_USEDEP}]
-	"
-RDEPEND="${DEPEND}"
+RDEPEND=">x11-libs/gdk-pixbuf-2.22.0:2[${MULTILIB_USEDEP}]
+	>media-libs/libwebp-0.4.3:=[${MULTILIB_USEDEP}]"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
