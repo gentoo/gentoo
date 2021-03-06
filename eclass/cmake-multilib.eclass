@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cmake-multilib.eclass
@@ -6,7 +6,7 @@
 # gx86-multilib team <multilib@gentoo.org>
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 7
 # @BLURB: cmake-utils wrapper for multilib builds
 # @DESCRIPTION:
 # The cmake-multilib.eclass provides a glue between cmake-utils.eclass(5)
@@ -26,7 +26,7 @@
 : ${CMAKE_ECLASS:=cmake-utils}
 
 case ${EAPI:-0} in
-	[67]) ;;
+	7) ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
