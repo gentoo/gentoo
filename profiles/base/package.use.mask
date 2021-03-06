@@ -6,6 +6,15 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2021-03-06)
+# LLVM 9 has been removed.
+dev-lang/julia system-llvm
+dev-util/perf clang
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-03-06)
+# Needs last-rited dev-libs/klibc
+sys-fs/dmraid klibc
+
 # Sam James <sam@gentoo.org> (2021-02-27)
 # Needs last-rited sci-mathematics/ggnfs
 sci-mathematics/yafu sieve
@@ -256,10 +265,6 @@ dev-python/zeep tornado
 # Michał Górny <mgorny@gentoo.org> (2020-01-27)
 # Requires old split dev-python/twisted-*.
 net-irc/telepathy-idle test
-
-# Michał Górny <mgorny@gentoo.org> (2020-01-12)
-# libcxxrt is unmaintained and it's going to be removed.
-sys-libs/libcxx libcxxrt
 
 # Alexey Shvetsov <alexxy@gentoo.org> (2019-12-24)
 # Gromacs python module install br0ken

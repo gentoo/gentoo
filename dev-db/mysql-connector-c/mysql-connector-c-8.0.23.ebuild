@@ -3,6 +3,7 @@
 
 EAPI=7
 
+CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
 # wrap the config script
@@ -10,12 +11,11 @@ MULTILIB_CHOST_TOOLS=( /usr/bin/mysql_config )
 
 DESCRIPTION="C client library for MariaDB/MySQL"
 HOMEPAGE="https://dev.mysql.com/downloads/"
-LICENSE="GPL-2"
-
 SRC_URI="https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-boost-${PV}.tar.gz"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 sparc ~x86"
 
+LICENSE="GPL-2"
 SLOT="0/21"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 sparc ~x86"
 IUSE="ldap libressl static-libs"
 
 RDEPEND="
@@ -25,7 +25,7 @@ RDEPEND="
 	ldap? ( dev-libs/cyrus-sasl:=[${MULTILIB_USEDEP}] )
 	libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
 	!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
-	"
+"
 DEPEND="${RDEPEND}"
 
 # Avoid file collisions, #692580
@@ -48,7 +48,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	sed -i -e 's/CLIENT_LIBS/CONFIG_CLIENT_LIBS/' "${S}/scripts/CMakeLists.txt" || die
+	sed -i -e 's/CLIENT_LIBS/CONFIG_CLIENT_LIBS/' "scripts/CMakeLists.txt" || die
 
 	# All these are for the server only.
 	# Disable rpm call which would trigger sandbox, #692368
@@ -73,7 +73,7 @@ src_prepare() {
 		echo > libmysql/authentication_ldap/CMakeLists.txt || die
 	fi
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 multilib_src_configure() {
@@ -93,11 +93,7 @@ multilib_src_configure() {
 		-DCMAKE_POSITION_INDEPENDENT_CODE=ON
 		-DWITHOUT_SERVER=ON
 	)
-	cmake-utils_src_configure
-}
-
-multilib_src_install() {
-	cmake-utils_src_install
+	cmake_src_configure
 }
 
 multilib_src_install_all() {
