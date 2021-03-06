@@ -49,6 +49,7 @@ DEPEND="${RDEPEND}
 			>=dev-lang/nasm-0.98.39-r3
 		)
 	)"
+BDEPEND="pulseaudio? ( virtual/pkgconfig )"
 
 S=${WORKDIR}/SDL-1.2-${MY_COMMIT}
 
