@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Sam James <sam@gentoo.org> (2021-03-06)
+# media-libs/libheif isn't keyworded here
+media-libs/gd heif
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-01-19)
 # uchardet not stable/keyworded yet on this arch
 # bug #750032
