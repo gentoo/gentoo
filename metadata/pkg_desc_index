@@ -12552,7 +12552,7 @@ mail-filter/spamprobe 1.4d-r1: Fast, intelligent, automatic spam detector using 
 mail-filter/spf-engine 2.0.2-r1 2.9.2: Policy daemon and milter for Postfix SPF verification
 mail-filter/sqlgrey 1.7.6-r2 1.8.0: A postfix policy service implementing a grey-listing policy
 mail-filter/zdkimfilter 1.8 2.1 2.2: DKIM filter for Courier-MTA
-mail-mta/courier 1.0.5 1.0.13 1.0.14: An MTA designed specifically for maildirs
+mail-mta/courier 1.0.5 1.0.13 1.0.14 1.0.17: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2-r1: User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
 mail-mta/exim 4.93.0.4-r2 4.94-r2: A highly configurable, drop-in replacement for sendmail
 mail-mta/msmtp 1.8.7-r1 1.8.12 1.8.13 1.8.14: An SMTP client and SMTP plugin for mail user agents such as Mutt
@@ -14811,8 +14811,8 @@ net-libs/balde-markdown 0.1: A balde extension that adds Markdown support
 net-libs/biblesync 2.1.0: A multicast protocol to support Bible software shared co-navigation
 net-libs/c-client 2007f-r6: UW IMAP c-client library
 net-libs/canlock 2b: A library for creating and verifying Usenet cancel locks
-net-libs/courier-authlib 0.69.0-r1 0.70.0 0.71.0: Courier authentication library
-net-libs/courier-unicode 2.1 2.1-r1: Unicode library used by the courier mail server
+net-libs/courier-authlib 0.69.0-r1 0.70.0 0.71.0 0.71.1: Courier authentication library
+net-libs/courier-unicode 2.1 2.1-r1 2.1.2: Unicode library used by the courier mail server
 net-libs/cppzmq 4.6.0: High-level CPP Binding for ZeroMQ
 net-libs/cvm 0.96-r1 0.97: Credential Validation Modules by Bruce Guenter
 net-libs/czmq 4.2.0: High-level C Binding for ZeroMQ
