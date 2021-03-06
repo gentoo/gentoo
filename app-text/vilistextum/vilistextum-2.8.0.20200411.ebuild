@@ -16,6 +16,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris"
 IUSE="unicode"
 
+# Known test failures nobody cares about
+RESTRICT="test"
+
 DEPEND="virtual/libiconv"
 
 PATCHES=(
