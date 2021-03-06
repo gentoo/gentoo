@@ -181,9 +181,8 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${ED}" \
-		INST_DIR="${ED}"/usr/$(get_libdir)/${MY_PM} \
-		prefix="${ED}"/usr/ BINDIR="${ED}"/usr/bin \
-		PREFIX="${ED}"/usr/ \
+		INST_DIR=/usr/$(get_libdir)/${MY_PM} \
+		prefix=/usr/ BINDIR=/usr/bin \
 		install
 
 	pushd "${ED}"/usr/$(get_libdir)/${MY_PM} >/dev/null || die
