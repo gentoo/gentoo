@@ -1,6 +1,10 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-03-06)
+# media-libs/libheif isn't keyworded here
+media-libs/gd heif
+
 # Sam James <sam@gentoo.org> (2021-02-26)
 # dev-libs/efl not keyworded here
 # and is a desktop application mainly
