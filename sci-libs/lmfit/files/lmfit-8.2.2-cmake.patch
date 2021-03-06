@@ -42,7 +42,7 @@ index dbb571e..279f06a 100644
  configure_file("lmfit.pc.in" "lmfit.pc" @ONLY)
  install(FILES "${CMAKE_CURRENT_BINARY_DIR}/lmfit.pc"
 -    DESTINATION "${destination}/lib/pkgconfig/")
-+	DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig/")
++    DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig/")
  
  add_subdirectory(lib)
  add_subdirectory(demo)
@@ -76,7 +76,7 @@ index d4595fd..5505713 100644
      install(
          FILES ${CMAKE_CURRENT_BINARY_DIR}/${pname}.html
 -        DESTINATION "${CMAKE_INSTALL_PREFIX}/share/doc/lmfit/html"
-+	DESTINATION "${CMAKE_INSTALL_DOCDIR}-${CMAKE_PROJECT_VERSION}/html"
++	     DESTINATION "${CMAKE_INSTALL_DOCDIR}/html"
          )
  endfunction()
  
