@@ -4,10 +4,10 @@ DESCRIPTION=Portable Network Graphics (PNG) optimizing utility
 EAPI=6
 HOMEPAGE=https://pmt.sourceforge.io/pngcrush/
 IUSE=+system-libs
-KEYWORDS=~alpha amd64 ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos
+KEYWORDS=~alpha amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=pngcrush
 RDEPEND=system-libs? ( media-libs/libpng:0= sys-libs/zlib:= )
 SLOT=0
 SRC_URI=system-libs? ( mirror://sourceforge/pmt/pngcrush-1.8.13-nolib.tar.xz ) !system-libs? ( mirror://sourceforge/pmt/pngcrush-1.8.13.tar.xz )
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=d73e37c1c11970805da4dc5757924b2d
+_md5_=4f0277fdd96f06223def6f1d67c1029f
