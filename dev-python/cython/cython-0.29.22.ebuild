@@ -31,7 +31,7 @@ BDEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.29.14-sphinx-update.patch"
-	"${FILESDIR}/${PN}-0.29.21-spawn-multiprocessing.patch"
+	"${FILESDIR}/${PN}-0.29.22-spawn-multiprocessing.patch"
 )
 
 SITEFILE=50cython-gentoo.el
