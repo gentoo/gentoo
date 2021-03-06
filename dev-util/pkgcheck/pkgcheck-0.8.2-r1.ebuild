@@ -33,7 +33,7 @@ RDEPEND+="
 	dev-python/chardet[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
 	dev-python/pathspec[${PYTHON_USEDEP}]
-	dev-python/tree-sitter[${PYTHON_USEDEP}]
+	<dev-python/tree-sitter-0.19.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
