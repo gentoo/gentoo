@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-03-06)
+# media-libs/libheif isn't keyworded here
+media-libs/gd heif
+
 # Akinori Hattori <hattya@gentoo.org> (2021-03-03)
 # dev-lang/ruby is not keyworded
 >=dev-libs/libutf8proc-2.6.0 test
