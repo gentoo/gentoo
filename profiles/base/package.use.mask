@@ -217,7 +217,7 @@ net-fs/samba test
 dev-util/meson test
 
 # Alfredo Tupone <tupone@gentoo.org> (2020-04-04)
-# Ada support is not yet ready for sys-deve/gcc
+# Ada support is not yet ready for sys-devel/gcc
 sys-devel/gcc ada
 
 # Joshua Kinard <kumba@gentoo.org> (2020-03-28)
