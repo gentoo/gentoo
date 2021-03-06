@@ -7968,7 +7968,7 @@ dev-python/aiohttp 3.7.4: http client/server for asyncio
 dev-python/aiohttp-cors 0.7.0-r1: Implements CORS support for aiohttp asyncio-powered asynchronous HTTP server
 dev-python/aiohttp-jinja2 0.15.0: jinja2 template renderer for aiohttp.web
 dev-python/aiohttp-socks 0.5.5 0.6.0: SOCKS proxy connector for aiohttp
-dev-python/aiorpcX 0.18.5 0.19 0.19.1: Generic async RPC implementation, including JSON-RPC
+dev-python/aiorpcX 0.18.5 0.19 0.19.1 0.20.1: Generic async RPC implementation, including JSON-RPC
 dev-python/aiosmtpd 1.2 1.2.2 1.2.4 1.3.2 1.4.0 1.4.1: asyncio based SMTP server
 dev-python/alabaster 0.7.12: A configurable sidebar-enabled Sphinx theme
 dev-python/alagitpull 0.0.23-r1: alabaster sub-theme used on git-pull docs
@@ -8126,7 +8126,7 @@ dev-python/coverage 4.5.4 5.4 5.5: Code coverage measurement for Python
 dev-python/cppy 1.1.0: C++ header library which makes it easier to write Python extension modules
 dev-python/crashtest 0.3.1: Python library that makes exceptions handling and inspection easier
 dev-python/crcmod 1.7-r4: Python CRC Generator module
-dev-python/croniter 1.0.2 1.0.6 1.0.7: Python module to provide iteration for datetime object
+dev-python/croniter 1.0.2 1.0.6 1.0.7 1.0.8: Python module to provide iteration for datetime object
 dev-python/cryptography 3.2.1 3.3.1 3.3.2: Library providing cryptographic recipes and primitives
 dev-python/css-parser 1.0.4-r1: A CSS Cascading Style Sheets library (fork of cssutils)
 dev-python/cssselect 1.1.0-r1: parses CSS3 Selectors and translates them to XPath 1.0
@@ -8290,7 +8290,7 @@ dev-python/flufl-bounce 3.0.1: Email bounce detectors.
 dev-python/flufl-i18n 2.0.2 3.1.4 3.1.5: A high level API for Python internationalization
 dev-python/flufl-lock 5.0.1 5.0.4 5.0.5: NFS-safe file locking with timeouts for POSIX systems
 dev-python/fonttools 4.18.2 4.21.1: Library for manipulating TrueType, OpenType, AFM and Type1 fonts
-dev-python/fqdn 1.5.0: RFC-compliant FQDN validation and manipulation for Python
+dev-python/fqdn 1.5.0-r1: RFC-compliant FQDN validation and manipulation for Python
 dev-python/freezegun 1.1.0: Let your Python tests travel through time
 dev-python/frozen-flask 0.15: Freezes a Flask application into a set of static files
 dev-python/frozendict 1.2: A simple immutable mapping for python
@@ -8341,7 +8341,7 @@ dev-python/gst-python 1.16.3: A Python Interface to GStreamer
 dev-python/guessit 3.2.0 3.3.0 3.3.1: Python library for guessing information from video filenames
 dev-python/guzzle_sphinx_theme 0.7.11-r1: Sphinx theme used by Guzzle
 dev-python/h11 0.11.0 0.12.0: A pure-Python implementation of HTTP/1.1 inspired by hyper-h2
-dev-python/h5py 2.10.0-r1: Simple Python interface to HDF5 files
+dev-python/h5py 2.10.0-r1 3.2.1: Simple Python interface to HDF5 files
 dev-python/hacking 2.0.0: A client for the OpenStack Nova API
 dev-python/hcloud-python 1.10.0: Official Hetzner Cloud python library
 dev-python/helpdev 0.7.1: Helping users and developers to get information about the environment
@@ -8679,7 +8679,7 @@ dev-python/patsy 0.5.1: Python module to describe statistical models and design 
 dev-python/pbkdf2 1.3-r1: Implementation of PBKDF2, specified in RSA PKCS#5 v2.0
 dev-python/pbr 5.5.1: Inject some useful and sensible default behaviors into setuptools
 dev-python/pdfrw 0.4_p1: PDF file reader/writer library
-dev-python/pebble 4.6.0: Threading and multiprocessing eye-candy
+dev-python/pebble 4.6.0 4.6.1: Threading and multiprocessing eye-candy
 dev-python/pecan 1.3.3-r2 1.4.0: A WSGI object-dispatching web framework, lean, fast, with few dependencies.
 dev-python/peewee 3.14.0 3.14.1 3.14.2: Small Python ORM
 dev-python/pelican-minify 0.9: An HTML minification plugin for Pelican, the static site generator.
@@ -8694,7 +8694,7 @@ dev-python/pickleshare 0.7.5: A small 'shelve' like datastore with concurrency s
 dev-python/pid 3.0.4: Pidfile featuring stale detection and file-locking
 dev-python/piexif 1.1.3-r1: Exif manipulation with pure Python
 dev-python/pika 1.1.0: Pure-Python implementation of the AMQP
-dev-python/pikepdf 2.5.2 2.6.0 2.7.0 2.8.0: Python library to work with pdf files based on qpdf
+dev-python/pikepdf 2.5.2 2.6.0 2.7.0 2.8.0 2.8.0_p1: Python library to work with pdf files based on qpdf
 dev-python/pilkit 2.0: A collection of utilities and processors for the Python Imaging Libary
 dev-python/pillow 8.1.1 8.1.2: Python Imaging Library (fork)
 dev-python/pip 21.0.1: Installs python packages -- replacement for easy_install
@@ -9180,7 +9180,7 @@ dev-python/soupsieve 2.1.0 2.2: A modern CSS selector implementation for Beautif
 dev-python/sparql-wrapper 1.8.5: Wrapper around a SPARQL service
 dev-python/speaklater 1.3-r1: Lazy strings for Python
 dev-python/speg 0.3-r1 0.3-r2: A PEG-based parser interpreter with memoization
-dev-python/sphinx 3.4.3 3.5.1: Python documentation generator
+dev-python/sphinx 3.4.3 3.5.1 3.5.2: Python documentation generator
 dev-python/sphinx-aiohttp-theme 0.1.6: Sphinx theme for aiohttp
 dev-python/sphinx-bootstrap-theme 0.8.0: Sphinx theme integrates the Bootstrap CSS / JavaScript framework
 dev-python/sphinx-epytext 0.0.4: Sphinx epytext extension
