@@ -13165,7 +13165,7 @@ media-libs/libao 1.2.2-r1: The Audio Output library
 media-libs/libaom 1.0.0-r2 2.0.0 2.0.1 9999: Alliance for Open Media AV1 Codec SDK
 media-libs/libart_lgpl 2.3.21-r3: A LGPL version of libart
 media-libs/libass 0.15.0: Library for SSA/ASS subtitles rendering
-media-libs/libavif 0.8.4 0.9.0 9999: Library for encoding and decoding .avif files
+media-libs/libavif 0.8.4 0.9.0-r1 9999: Library for encoding and decoding .avif files
 media-libs/libbdplus 0.1.2-r1 9999: Blu-ray library for BD+ decryption
 media-libs/libbluray 1.2.0 1.2.1 9999: Blu-ray playback libraries
 media-libs/libbs2b 3.1.0-r2: Bauer stereophonic-to-binaural DSP library
@@ -14766,7 +14766,7 @@ net-irc/emech 3.0.99_p3: UNIX compatible IRC bot programmed in the C language
 net-irc/epic5 2.0.1: Epic5 IRC Client
 net-irc/hexchat 2.14.3 2.14.3-r100 9999: Graphical IRC client based on XChat
 net-irc/ii 1.8 9999: A minimalist FIFO and filesystem-based IRC client
-net-irc/inspircd 3.8.1: Inspire IRCd - The Stable, High-Performance Modular IRCd
+net-irc/inspircd 3.8.1 3.9.0: Inspire IRCd - The Stable, High-Performance Modular IRCd
 net-irc/irccloud-desktop-bin 0.15.0: IRCCloud Desktop Client
 net-irc/ircii 20190117: An IRC and ICB client that runs under most UNIX platforms
 net-irc/ircmap 0.99-r1: Scripts to treate diagrams of IRC networks using the LINKS command
