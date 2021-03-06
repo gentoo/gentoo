@@ -1,0 +1,41 @@
+https://github.com/libofx/libofx/pull/40
+
+From 379745ff481f2cc99f96836de0307b8074bf0788 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 6 Mar 2021 06:09:11 +0000
+Subject: [PATCH] Makefile.am, doc/Makefile.am: don't override docdir
+
+'docdir' is already provided by autotools. By not overriding it,
+we allow the directory to be easily overriden at build time.
+
+By default, docdir is /usr/share/doc/libofx, so no change!
+
+e.g. In Gentoo, we prefer to use --docdir=/usr/share/doc/${PF}
+where ${PF} represents the upstream version combined with any
+internal distribution changes made.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -6,8 +6,6 @@ endif
+ DIST_SUBDIRS = m4 inc dtd lib doc . ofx2qif ofxdump ofxconnect
+ SUBDIRS = m4 inc dtd lib doc . ofx2qif ofxdump $(MAYBE_OFXCONNECT)
+ 
+-docdir = $(datadir)/doc/libofx
+-
+ doc_DATA = \
+   AUTHORS \
+   COPYING \
+diff --git a/doc/Makefile.am b/doc/Makefile.am
+index 23e9d34..bd0a04d 100644
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -1,7 +1,5 @@
+ SUBDIRS =
+ 
+-docdir = ${prefix}/share/doc/libofx
+-
+ EXTRA_DIST = \
+ 	doxygen.cfg \
+ 	ofx_sample_files \
