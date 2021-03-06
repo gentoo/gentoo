@@ -12,7 +12,7 @@ DESCRIPTION="Network exploration tool and security / port scanner"
 HOMEPAGE="https://nmap.org/"
 SRC_URI="https://nmap.org/dist/${P}.tar.bz2"
 
-LICENSE="NPSL"
+LICENSE="|| ( NPSL GPL-2 )"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="ipv6 libressl libssh2 ncat nping +nse ssl +system-lua"
