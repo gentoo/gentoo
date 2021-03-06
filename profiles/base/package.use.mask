@@ -216,10 +216,6 @@ net-fs/samba test
 # Tests are very sensitive to the host environment.
 dev-util/meson test
 
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# Requires dev-vcs/ghp-import that is masked for removal.
-www-apps/nikola ghpages
-
 # Alfredo Tupone <tupone@gentoo.org> (2020-04-04)
 # Ada support is not yet ready for sys-deve/gcc
 sys-devel/gcc ada
