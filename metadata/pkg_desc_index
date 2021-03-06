@@ -5338,7 +5338,7 @@ dev-libs/go-usb 9999: CGO bindings for libusb
 dev-libs/gobject-introspection 1.62.0-r1 1.64.1-r1 1.66.1: Introspection system for GObject-based libraries
 dev-libs/gobject-introspection-common 1.62.0 1.64.1 1.66.1: Build infrastructure for GObject Introspection
 dev-libs/gom 0.4: GObject to SQLite object mapper library
-dev-libs/gost-engine 1.1.0.3_p20181031-r1 9999: A reference implementation of the Russian GOST crypto algorithms for OpenSSL
+dev-libs/gost-engine 1.1.0.3_p20181031-r2 9999: A reference implementation of the Russian GOST crypto algorithms for OpenSSL
 dev-libs/granite 5.2.5-r1 5.5.0: Elementary OS library that extends GTK+
 dev-libs/grantlee 5.2.0: C++ string template engine based on the Django template system
 dev-libs/gtx 0.2.2-r1: Small collection of functions intended to enhance the GLib testing framework
@@ -5715,7 +5715,7 @@ dev-libs/tntnet 2.2.1 2.2.1-r3 3.0: Modular, multithreaded web application serve
 dev-libs/tomsfastmath 0.13.1-r1: Fast public domain large integer arithmetic library
 dev-libs/totem-pl-parser 3.26.5: Playlist parsing library
 dev-libs/tre 0.8.0-r2: Lightweight, robust, and efficient POSIX compliant regexp matching library
-dev-libs/tree-sitter 0.18.2 0.18.3 0.19.0 9999: Tree-sitter is a parser generator tool and an incremental parsing library.
+dev-libs/tree-sitter 0.19.0 0.19.2 9999: Tree-sitter is a parser generator tool and an incremental parsing library.
 dev-libs/tvision 2.1.0_pre2-r4 2.2.1.4: Text User Interface that implements the well known CUA widgets
 dev-libs/tvmet 1.7.2-r2: Tiny Vector Matrix library using Expression Templates
 dev-libs/ucl 1.03-r1: the UCL Compression Library
