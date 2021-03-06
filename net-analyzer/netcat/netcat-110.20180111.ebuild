@@ -7,7 +7,7 @@ inherit toolchain-funcs flag-o-matic
 
 MY_P="nc${PV}"
 DESCRIPTION="the network swiss army knife"
-HOMEPAGE="http://nc110.sourceforge.net/"
+HOMEPAGE="https://nc110.sourceforge.io"
 SRC_URI="mirror://sourceforge/nc110/${MY_P}.tar.xz"
 
 LICENSE="netcat"
