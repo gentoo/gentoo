@@ -10,6 +10,6 @@ LICENSE=LGPL-2.1+
 RDEPEND=app-arch/cabextract app-arch/p7zip app-arch/unzip net-misc/wget virtual/wine x11-misc/xdg-utils gtk? ( gnome-extra/zenity ) kde? ( kde-apps/kdialog ) rar? ( app-arch/unrar )
 RESTRICT=!test? ( test ) x86? ( test )
 SLOT=0
-SRC_URI=https://github.com/Winetricks/winetricks/archive/20201206.tar.gz -> winetricks-20201206.tar.gz gtk? ( https://dev.gentoo.org/~chiitoo/distfiles/winetricks-gentoo-2012.11.24.tar.bz2 ) kde? ( https://dev.gentoo.org/~chiitoo/distfiles/winetricks-gentoo-2012.11.24.tar.bz2 )
+SRC_URI=https://github.com/Winetricks/winetricks/archive/20210206.tar.gz -> winetricks-20210206.tar.gz gtk? ( https://dev.gentoo.org/~chiitoo/distfiles/winetricks-gentoo-2012.11.24.tar.bz2 ) kde? ( https://dev.gentoo.org/~chiitoo/distfiles/winetricks-gentoo-2012.11.24.tar.bz2 )
 _eclasses_=xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=252e13ab1b32134248251600d5f6ff3d
