@@ -287,18 +287,6 @@ xfce-extra/xfce4-statusnotifier-plugin
 # Mask development versions now that they were bumped...
 =net-misc/kea-1.9*
 
-# Jakov Smolic <jakov.smolic@sartura.hr> (2021-02-13)
-# Fails to build with gcc-10, stuck on EAPI 5, dead upstream
-# multiple reported bugs, not touched by maintainer in years.
-# Removal in 30 days. Bug #762904
-dev-db/4store
-
-# Jakov Smolic <jakov.smolic@sartura.hr> (2021-02-13)
-# Fails to build with gcc-10, no maintainer, last release in 2004,
-# no reverse dependencies.
-# Removal in 30 days.  Bug #707504.
-app-misc/slmon
-
 # Sam James <sam@gentoo.org> (2021-02-10)
 # Causes circular dep with opam
 # seq -> opam-installer -> opam-format -> re -> seq
