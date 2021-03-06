@@ -1,0 +1,21 @@
+--- a/src/pm/hydra/pm/pmiserv/pmip_cb.c
++++ b/src/pm/hydra/pm/pmiserv/pmip_cb.c
+@@ -12,7 +12,6 @@
+ #include "topo.h"
+ #include "hydt_ftb.h"
+ 
+-struct HYD_pmcd_pmip HYD_pmcd_pmip;
+ struct HYD_pmcd_pmip_pmi_handle *HYD_pmcd_pmip_pmi_handle = { 0 };
+ 
+ static int storage_len = 0;
+--- a/src/pm/hydra/pm/pmiserv/pmip.c
++++ b/src/pm/hydra/pm/pmiserv/pmip.c
+@@ -11,8 +11,6 @@
+ #include "topo.h"
+ #include "hydt_ftb.h"
+ 
+-struct HYD_pmcd_pmip HYD_pmcd_pmip;
+-
+ static HYD_status init_params(void)
+ {
+     HYD_status status = HYD_SUCCESS;
