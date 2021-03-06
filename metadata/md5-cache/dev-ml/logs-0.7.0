@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile install prepare test
-DEPEND=dev-ml/result:=[ocamlopt] dev-lang/ocaml:=[ocamlopt] javascript? ( dev-ml/js_of_ocaml:= ) fmt? ( dev-ml/fmt:= ) cli? ( dev-ml/cmdliner:=[ocamlopt] ) lwt? ( dev-ml/lwt:= ) dev-ml/opam dev-ml/topkg dev-ml/ocamlbuild dev-ml/findlib test? ( dev-ml/mtime ) >=dev-ml/findlib-1.0.4-r1
+DEPEND=dev-ml/result:=[ocamlopt] dev-lang/ocaml:=[ocamlopt] fmt? ( dev-ml/fmt:= ) cli? ( dev-ml/cmdliner:=[ocamlopt] ) lwt? ( dev-ml/lwt:= ) dev-ml/opam dev-ml/topkg dev-ml/ocamlbuild dev-ml/findlib test? ( dev-ml/mtime ) >=dev-ml/findlib-1.0.4-r1
 DESCRIPTION=Logging infrastructure for OCaml
 EAPI=7
 HOMEPAGE=https://erratique.ch/software/logs https://github.com/dbuenzli/logs
-IUSE=javascript +fmt cli +lwt test
+IUSE=+fmt cli +lwt test
 KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
 LICENSE=ISC
-RDEPEND=dev-ml/result:=[ocamlopt] dev-lang/ocaml:=[ocamlopt] javascript? ( dev-ml/js_of_ocaml:= ) fmt? ( dev-ml/fmt:= ) cli? ( dev-ml/cmdliner:=[ocamlopt] ) lwt? ( dev-ml/lwt:= )
+RDEPEND=dev-ml/result:=[ocamlopt] dev-lang/ocaml:=[ocamlopt] fmt? ( dev-ml/fmt:= ) cli? ( dev-ml/cmdliner:=[ocamlopt] ) lwt? ( dev-ml/lwt:= )
 RESTRICT=!test? ( test )
 SLOT=0/0.7.0
 SRC_URI=https://erratique.ch/software/logs/releases/logs-0.7.0.tbz
 _eclasses_=findlib	3d3de4bef686774baeeabfa2b916631c
-_md5_=fbd047baae070655ded9501c53664742
+_md5_=1d05a0be8cbe50c665e825f05a32c3ff
