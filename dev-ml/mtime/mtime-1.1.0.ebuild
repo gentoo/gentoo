@@ -12,11 +12,10 @@ SRC_URI="https://erratique.ch/software/mtime/releases/${P}.tbz"
 LICENSE="ISC"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
-IUSE="javascript test"
+IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-lang/ocaml:=[ocamlopt]
-	javascript? ( dev-ml/js_of_ocaml:= )
 "
 DEPEND="${RDEPEND}
 	dev-ml/topkg
@@ -25,7 +24,7 @@ DEPEND="${RDEPEND}
 
 src_compile() {
 	ocaml pkg/pkg.ml build \
-		--with-js_of_ocaml $(usex javascript true false) \
+		--with-js_of_ocaml false \
 		--tests $(usex test true false) \
 		|| die
 }
