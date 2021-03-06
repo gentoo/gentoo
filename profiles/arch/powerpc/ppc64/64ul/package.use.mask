@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2021-03-06)
+# LLVM 9 has been removed.
+dev-util/perf clang
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-01-19)
 # dev-java/openjdk:11 is not keyworded
 >=app-office/libreoffice-7 java
