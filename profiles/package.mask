@@ -47,6 +47,7 @@ dev-libs/klibc
 # Removal on 2021-04-0r52
 www-servers/ocsigenserver
 dev-ml/eliom
+dev-ml/js_of_ocaml
 
 # Conrad Kostecki <conikost@gentoo.org> (2021-03-05)
 # Deprecated by upstream and unsupported due EOL.
