@@ -1,9 +1,9 @@
 Index: CMakeLists.txt
 ===================================================================
---- a/CMakeLists.txt	(revision 0)
-+++ b/CMakeLists.txt	(working copy)
-@@ -0,0 +1,109 @@
-+cmake_minimum_required(VERSION 2.6)
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -0,0 +1,98 @@
++cmake_minimum_required(VERSION 2.8.12)
 +
 +project(voro++)
 +
@@ -28,18 +28,9 @@ Index: CMakeLists.txt
 +include(CheckCXXCompilerFlag)
 +
 +########################################################################
-+# User input options                                                   #
++# Standard install paths                                               #
 +########################################################################
-+option(BUILD_SHARED_LIBS "Build shared libs" ON)
-+if (NOT DEFINED LIB)
-+  set(LIB "lib")
-+endif(NOT DEFINED LIB)
-+if (NOT DEFINED MAN)
-+  set(MAN "share/man")
-+endif(NOT DEFINED MAN)
-+if (NOT DEFINED DATA)
-+  set(DATA "share/voro++")
-+endif(NOT DEFINED DATA)
++include(GNUInstallDirs)
 +
 +########################################################################
 +#Find external packages
@@ -78,14 +69,14 @@ Index: CMakeLists.txt
 +set_target_properties(voro++ PROPERTIES 
 +  LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/src"
 +  SOVERSION ${SOVERSION})
-+install(TARGETS voro++ LIBRARY DESTINATION ${LIB} ARCHIVE DESTINATION ${LIB})
++install(TARGETS voro++ LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
 +
 +add_executable(cmd_line src/cmd_line.cc)
 +target_link_libraries(cmd_line voro++)
 +#cannot have two target with the same name
 +set_target_properties(cmd_line PROPERTIES OUTPUT_NAME voro++ 
 +  RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/src") 
-+install(TARGETS cmd_line RUNTIME DESTINATION bin)
++install(TARGETS cmd_line RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 +
 +#for voto++.hh
 +include_directories(${CMAKE_SOURCE_DIR}/src)
@@ -102,40 +93,11 @@ Index: CMakeLists.txt
 +endforeach(SOURCE)
 +
 +file(GLOB_RECURSE VORO_HEADERS src/*.hh)
-+install(FILES ${VORO_HEADERS} DESTINATION include/voro++)
-+install(FILES ${CMAKE_SOURCE_DIR}/man/voro++.1 DESTINATION ${MAN}/man1)
++install(FILES ${VORO_HEADERS} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/voro++)
++install(FILES ${CMAKE_SOURCE_DIR}/man/voro++.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
 +
 +if (DOXYGEN_FOUND)
-+  add_custom_target(help COMMAND ${DOXYGEN_EXECUTABLE} src/Doxyfile 
++  add_custom_target(doxygen COMMAND ${DOXYGEN_EXECUTABLE} src/Doxyfile
 +    COMMENT "Build doxygen documentation")
 +endif (DOXYGEN_FOUND)
-+
-+configure_file(${CMAKE_MODULE_PATH}/cmake_uninstall.cmake.in ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake IMMEDIATE @ONLY)
-+add_custom_target(uninstall COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake)
-Index: CMakeModules/cmake_uninstall.cmake.in
-===================================================================
---- a/CMakeModules/cmake_uninstall.cmake.in	(revision 0)
-+++ b/CMakeModules/cmake_uninstall.cmake.in	(working copy)
-@@ -0,0 +1,22 @@
-+IF(NOT EXISTS "@CMAKE_CURRENT_BINARY_DIR@/install_manifest.txt")
-+  MESSAGE(FATAL_ERROR "Cannot find install manifest: \"@CMAKE_CURRENT_BINARY_DIR@/install_manifest.txt\"")
-+ENDIF(NOT EXISTS "@CMAKE_CURRENT_BINARY_DIR@/install_manifest.txt")
-+
-+FILE(READ "@CMAKE_CURRENT_BINARY_DIR@/install_manifest.txt" files)
-+STRING(REGEX REPLACE "\n" ";" files "${files}")
-+FOREACH(file ${files})
-+  MESSAGE(STATUS "Uninstalling \"$ENV{DESTDIR}${file}\"")
-+  IF(EXISTS "$ENV{DESTDIR}${file}")
-+    EXEC_PROGRAM(
-+      "@CMAKE_COMMAND@" ARGS "-E remove \"$ENV{DESTDIR}${file}\""
-+      OUTPUT_VARIABLE rm_out
-+      RETURN_VALUE rm_retval
-+      )
-+    IF(NOT "${rm_retval}" STREQUAL 0)
-+      MESSAGE(FATAL_ERROR "Problem when removing \"$ENV{DESTDIR}${file}\"")
-+    ENDIF(NOT "${rm_retval}" STREQUAL 0)
-+  ELSE(EXISTS "$ENV{DESTDIR}${file}")
-+    MESSAGE(STATUS "File \"$ENV{DESTDIR}${file}\" does not exist.")
-+  ENDIF(EXISTS "$ENV{DESTDIR}${file}")
-+ENDFOREACH(file)
 +
