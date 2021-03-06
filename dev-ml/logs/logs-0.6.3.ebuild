@@ -12,13 +12,12 @@ SRC_URI="https://erratique.ch/software/logs/releases/${P}.tbz"
 LICENSE="ISC"
 SLOT="0/${PV}"
 KEYWORDS="~amd64"
-IUSE="javascript +fmt cli +lwt test"
+IUSE="+fmt cli +lwt test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-ml/result:=[ocamlopt]
 	dev-lang/ocaml:=[ocamlopt]
-	javascript? ( dev-ml/js_of_ocaml:= )
 	fmt? ( dev-ml/fmt:= )
 	cli? ( dev-ml/cmdliner:=[ocamlopt] )
 	lwt? ( dev-ml/lwt:= )
@@ -33,7 +32,7 @@ DEPEND="${RDEPEND}
 
 src_compile() {
 	ocaml pkg/pkg.ml build \
-		--with-js_of_ocaml $(usex javascript true false) \
+		--with-js_of_ocaml false \
 		--with-fmt $(usex fmt true false) \
 		--with-cmdliner $(usex cli true false) \
 		--with-lwt $(usex fmt true false) \
