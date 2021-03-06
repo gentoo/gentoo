@@ -2990,6 +2990,7 @@ games-arcade/jazz2:server - Build the multiplayer game server
 games-arcade/jazz2-data:cc - Install The Christmas Chronicles additional data
 games-arcade/jazz2-data:demo - Use the free demo data instead of the full retail game data
 games-arcade/jazz2-data:gles2-only - Use GLES 2.0 or later instead of full OpenGL 2.1
+games-arcade/jumpnbump:gtk - Install Python-based GTK menu
 games-arcade/jumpnbump:music - Enable playing of background music
 games-arcade/lbreakout2:themes - Install additional themes
 games-arcade/moleinvasion:music - Download and install the music files
