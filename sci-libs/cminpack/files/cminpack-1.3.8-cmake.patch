@@ -1,0 +1,10 @@
+--- a/CMakeLists.txt	2021-02-10 06:05:42.000000000 +0100
++++ b/CMakeLists.txt	2021-03-06 11:51:15.594882519 +0100
+@@ -175,6 +175,6 @@
+ 
+ endforeach ()
+ 
+-install (EXPORT CMinpackConfig DESTINATION share/cminpack NAMESPACE cminpack::)
++install (EXPORT CMinpackConfig DESTINATION ${CMINPACK_LIB_INSTALL_DIR}/cmake/cminpack NAMESPACE cminpack::)
+ 
+ add_subdirectory (examples)
