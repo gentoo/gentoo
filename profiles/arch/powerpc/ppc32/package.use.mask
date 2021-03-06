@@ -112,7 +112,6 @@ net-vpn/tor seccomp
 # Michał Górny <mgorny@gentoo.org> (2017-03-23)
 # Most of clang runtimes are not supported here
 sys-devel/clang-runtime openmp sanitize
-sys-libs/libcxx libcxxrt
 
 # Michael Weber <xmw@gentoo.org> (2017-03-15)
 # Cannot test non-free dependency dev-libs/device-atlas-api-c
