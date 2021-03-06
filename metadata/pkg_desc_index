@@ -721,7 +721,7 @@ app-admin/op-cli-bin 1.7.0: command line interface for the 1password password ma
 app-admin/openrc-settingsd 1.0.1-r1: System settings D-Bus service for OpenRC
 app-admin/pass 1.7.3 9999: Stores, retrieves, generates, and synchronizes passwords securely
 app-admin/pass-otp 1.2.0: A pass extension for managing one-time-password (OTP) tokens.
-app-admin/passwordsafe 1.12.0-r1: Password manager with wxGTK based frontend
+app-admin/passwordsafe 1.12.0-r1 1.13.0: Password manager with wxGTK based frontend
 app-admin/paxtest 0.9.15-r1: PaX regression test suite
 app-admin/perl-cleaner 2.27 2.28 9999: User land tool for cleaning up old perl installs
 app-admin/petrovich 1.0.0-r1: Filesystem Integrity Checker
@@ -3031,7 +3031,7 @@ app-text/pdftk 3.0.0 3.0.8 3.2.2 9999: gcj-free version of pdftk written in Java
 app-text/pelican 4.2.0-r1 4.5.1-r1 4.5.3 9999: A tool to generate a static blog, with restructured text or markdown input files
 app-text/pep 2.8-r2: General purpose filter and file cleaning program
 app-text/pinfo 0.6.13 99999: Hypertext info and man viewer based on (n)curses
-app-text/po4a 0.57 0.61-r1 0.62: Tools to ease the translation of documentation
+app-text/po4a 0.57 0.62 0.63: Tools to ease the translation of documentation
 app-text/podofo 0.9.6_p20190928 0.9.6_p20190928-r100: PoDoFo is a C++ library to work with the PDF file format
 app-text/poppler 20.11.0 21.02.0 21.03.0 9999: PDF rendering library based on the xpdf-3.0 code base
 app-text/poppler-data 0.4.10: Data files for poppler to support uncommon encodings without xpdfrc
