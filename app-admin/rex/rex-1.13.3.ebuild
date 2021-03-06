@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -65,7 +65,7 @@ RDEPEND="
 	virtual/perl-MIME-Base64
 	dev-perl/Net-OpenSSH
 	dev-perl/Net-SFTP-Foreign
-	virtual/perl-Scalar-List-Utils
+	>=virtual/perl-Scalar-List-Utils-1.450.0
 	dev-perl/Parallel-ForkManager
 	dev-perl/Sort-Naturally
 	dev-perl/String-Escape
@@ -81,7 +81,7 @@ RDEPEND="
 	dev-perl/YAML
 	virtual/perl-version
 "
-
+# NB: would add test? !minimal? Test-mysqld, but I can't get that to work
 BDEPEND="
 	${RDEPEND}
 	>=virtual/perl-CPAN-Meta-Requirements-2.120.620
@@ -89,6 +89,9 @@ BDEPEND="
 	>=dev-perl/File-ShareDir-Install-0.60.0
 	virtual/perl-Module-Metadata
 	test? (
+		!minimal? (
+			dev-perl/File-LibMagic
+		)
 		virtual/perl-File-Temp
 		dev-perl/Test-Deep
 		dev-perl/Test-Output
@@ -130,6 +133,12 @@ dzil_src_prep() {
 		-e '/^\[OptionalFeature/,/^$/d' \
 		-e '/^\[Test::MinimumVersion\]/{N;d}' \
 		-i dist.ini || die "Can't patch dist.ini"
+
+	# Removals/additions have to be tracked by git or dzil build fails
+	# Spurious warning during src_prepare
+	git rm -f xt/author/critic-progressive.t || die "Can't rm author/critic-progressive.t"
+	# Spurious warning during src_prepare
+	git rm -f xt/author/perltidy.t || die "Can't rm author/perltidy.t"
 }
 dzil_env_setup() {
 	# NextRelease noise :(
@@ -146,7 +155,7 @@ dzil_to_distdir() {
 
 	cd "${dzil_root}" || die "Can't enter git workdir '${dzil_root}'";
 
-	dzil_src_prep
+	S="${dzil_root}" dzil_src_prep
 	dzil_env_setup
 
 	dzil_version="$(dzil version)" || die "Error invoking 'dzil version'"
@@ -190,6 +199,13 @@ src_prepare() {
 		dzil_to_distdir "${EGIT_CHECKOUT_DIR}" "${S}"
 	fi
 	cd "${S}" || die "Can't enter build dir"
+
+	# If you DIY installed Test::mysqld, but didn't patch
+	# it to handle the fact on Gentoo, mysql_install_db is NOT in PATH
+	# tests fail. So this test is patched out if mysql_install_db is not in PATH
+	if perl_has_module "Test::mysqld" && ! type -P mysql_install_db >/dev/null; then
+		perl_rm_files "t/db.t"
+	fi
 	perl-module_src_prepare
 }
 
