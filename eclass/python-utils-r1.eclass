@@ -1294,7 +1294,7 @@ epytest() {
 	local die_args=()
 	[[ ${EAPI} != [45] ]] && die_args+=( -n )
 
-	set -- "${EPYTHON}" -m pytest -vv "${@}"
+	set -- "${EPYTHON}" -m pytest -vv -ra "${@}"
 
 	echo "${@}" >&2
 	"${@}" || die "${die_args[@]}" "pytest failed with ${EPYTHON}"
