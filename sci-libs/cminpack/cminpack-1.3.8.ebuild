@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="C implementation of the MINPACK nonlinear optimization library"
 HOMEPAGE="http://devernay.free.fr/hacks/cminpack/"
@@ -13,22 +13,23 @@ LICENSE="minpack"
 SLOT="0/1"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc test"
+
 RESTRICT="!test? ( test )"
 
-PATCHES=( "${FILESDIR}"/${P}-underlinking.patch )
+DOCS=( README.md readme.txt )
+
+PATCHES=( "${FILESDIR}"/${P}-cmake.patch )
 
 src_configure() {
 	local mycmakeargs=(
+		-DUSE_BLAS=OFF # TODO: pick it up if you want to
 		-DCMINPACK_LIB_INSTALL_DIR=$(get_libdir)
-		-DBUILD_SHARED_LIBS=ON
 		-DBUILD_EXAMPLES=$(usex test)
 	)
-	cmake-utils_src_configure
-	use test && export LD_LIBRARY_PATH="${BUILD_DIR}:${LD_LIBRARY_PATH}"
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
-	dodoc readme*
-	use doc && dodoc -r doc/*
+	use doc && local HTML_DOCS=( docs/. )
+	cmake_src_install
 }

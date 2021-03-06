@@ -42,7 +42,9 @@ RDEPEND="
 	)"
 DEPEND="${RDEPEND}
 	nas? ( x11-base/xorg-proto )
-	X? ( x11-base/xorg-proto )
+	X? ( x11-base/xorg-proto )"
+BDEPEND="
+	pulseaudio? ( virtual/pkgconfig )
 	x86? (
 		|| (
 			>=dev-lang/yasm-0.6.0
