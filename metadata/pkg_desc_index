@@ -2597,7 +2597,6 @@ app-misc/scrub 2.5.2 2.6.1: Overwrite files with iterative patterns.
 app-misc/selecta 0.0.7 9999: A fuzzy text selector for files and anything else you need to select
 app-misc/skim 0.9.3: Command-line fuzzy finder
 app-misc/sl 5.02: sophisticated graphical program which corrects your miss typing
-app-misc/slmon 0.5.13: Colored text-based system performance monitor
 app-misc/smtm 1.6.10-r1: Stock ticker, profit/loss calculator and chart tool
 app-misc/socnetv 2.2: Qt Social Network Visualizer
 app-misc/solaar 1.0.1-r1 1.0.2 1.0.3_rc1 1.0.5-r2 9999: Linux Device Manager for Logitech Unifying Receivers and Paired Devices
@@ -3535,7 +3534,6 @@ dev-cpp/tree 2.81: An STL-like tree class
 dev-cpp/waylandpp 0.2.3 0.2.4 0.2.5 0.2.6 0.2.7 0.2.8 9999: Wayland C++ bindings
 dev-cpp/websocketpp 0.8.1-r1: C++/Boost Asio based websocket client/server library
 dev-cpp/yaml-cpp 0.6.3-r3: YAML parser and emitter in C++
-dev-db/4store 1.1.5-r1: 4store is an efficient, scalable and stable RDF database
 dev-db/apgdiff 2.4: A simple PostgreSQL diff tool that is useful for schema upgrades
 dev-db/barman 2.10 2.12: Administration tool for disaster recovery of PostgreSQL servers
 dev-db/bucardo 5.4.1: An asynchronous PostgreSQL replication system
