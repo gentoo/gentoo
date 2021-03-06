@@ -10,7 +10,7 @@ SRC_URI="https://github.com/Unidata/netcdf-cxx4/archive/v${PV}.tar.gz -> ${P}.ta
 
 LICENSE="UCAR-Unidata"
 SLOT="0/1"
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="examples"
 # 6 out of 9 fail, reported upstream
 RESTRICT="test"
