@@ -12,7 +12,7 @@ HOMEPAGE="https://luaposix.github.io/luaposix/ https://github.com/luaposix/luapo
 SRC_URI="https://github.com/luaposix/luaposix/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 SLOT="0"
 LICENSE="MIT"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 
 IUSE="doc"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
