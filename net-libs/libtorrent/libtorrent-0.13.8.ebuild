@@ -21,16 +21,16 @@ KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86
 IUSE="debug libressl ssl test"
 RESTRICT="!test? ( test )"
 
+# cppunit dependency - https://github.com/rakshasa/libtorrent/issues/182
 RDEPEND="
+	dev-util/cppunit:=
 	sys-libs/zlib
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:= )
 	)"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	dev-util/cppunit"
-# cppunit dependency - https://github.com/rakshasa/libtorrent/issues/182
+	virtual/pkgconfig"
 
 src_configure() {
 	# bug 518582
