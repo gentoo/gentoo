@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=compile install pretend setup
+DEPEND=dev-lang/tcl sys-power/acpi
+DESCRIPTION=Dell Inspiron and Latitude utilities
+EAPI=7
+HOMEPAGE=https://launchpad.net/i8kutils
+IUSE=kernel_linux
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-lang/tcl sys-power/acpi
+SLOT=0
+SRC_URI=https://launchpad.net/i8kutils/trunk/1.43/+download/i8kutils_1.43.tar.xz -> i8kutils-1.43.tar.xz
+_eclasses_=linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=0a823005325d9dfea95d694eca9ee49d

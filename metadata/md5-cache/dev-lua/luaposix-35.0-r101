@@ -5,7 +5,7 @@ DESCRIPTION=Bindings for POSIX APIs
 EAPI=7
 HOMEPAGE=https://luaposix.github.io/luaposix/ https://github.com/luaposix/luaposix
 IUSE=doc lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3 lua_targets_lua5-4
-KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+KEYWORDS=~amd64 ~sparc ~x86 ~amd64-linux ~x86-linux
 LICENSE=MIT
 RDEPEND=lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 ) lua_targets_lua5-4? ( dev-lang/lua:5.4 ) lua_targets_lua5-1? ( dev-lua/lua-bit32[lua_targets_lua5-1(-)] ) lua_targets_luajit? ( dev-lua/lua-bit32[lua_targets_luajit(-)] )
 REQUIRED_USE=|| ( lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3 lua_targets_lua5-4 )
@@ -13,4 +13,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/luaposix/luaposix/archive/v35.0.tar.gz -> luaposix-35.0.tar.gz
 _eclasses_=lua	117840f7c4855d27ccde1c6cca990331	lua-utils	736947973cfbc9de01fdb8548f942f82	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=11afe45c39e16c2c714c0546849921f1
+_md5_=6af497d9ac81e575592b629255ab061b
