@@ -12,13 +12,14 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0/10"
 KEYWORDS="amd64 ~arm64 ppc ppc64 x86"
-IUSE="test"
+IUSE="doc test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
 	dev-util/gengetopt
 	sys-apps/help2man
 	virtual/pkgconfig
+	doc? ( app-doc/doxygen )
 	test? ( app-crypt/gnupg )
 "
 RDEPEND="
@@ -30,13 +31,16 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/libofx-0.10.1-opensp-libdir.patch
+	"${FILESDIR}"/libofx-0.10.1-docdir.patch
+)
+
 src_prepare() {
 	default
 
 	# Not included in the tarball
 	sed -i -e '/INSTALL/d' Makefile.am || die
-	# Use correct location for docs
-	sed -i -e 's:doc/libofx:doc/${PF}:' Makefile.am doc/Makefile.am || die
 
 	# bug #566456
 	append-cxxflags -std=c++14
@@ -45,11 +49,17 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --disable-static
+	econf \
+		$(use_enable doc html-docs) \
+		--disable-static
 }
 
 src_compile() {
 	emake -j1
+
+	if use doc ; then
+		emake doc
+	fi
 }
 
 src_install() {
