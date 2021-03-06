@@ -14,7 +14,7 @@ SRC_URI="https://downloads.sourceforge.net/project/deng/Doomsday%20Engine/${PV}/
 LICENSE="GPL-3+ LGPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="demo fmod freedoom fluidsynth openal tools"
+IUSE="demo freedoom fluidsynth openal tools"
 
 RDEPEND="
 	dev-qt/qtcore:5=
@@ -26,7 +26,6 @@ RDEPEND="
 	media-libs/assimp
 	net-misc/curl
 	sys-libs/zlib
-	fmod? ( media-libs/fmod:1 )
 	fluidsynth? ( media-sound/fluidsynth:= )
 	openal? ( media-libs/openal )
 	tools? ( sys-libs/ncurses:0= )
