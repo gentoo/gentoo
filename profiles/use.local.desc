@@ -8908,7 +8908,6 @@ x11-themes/gtk-engines-murrine:animation-rtl - Progressbar animation from right 
 x11-themes/gtk-engines-murrine:themes - Pull in themes via x11-themes/murrine-themes
 x11-themes/gtk-engines-nodoka:animation-rtl - Progressbar animation from right to left
 x11-themes/kfaenza:additional - Install additional KFaenza icons. See third homepage for details
-x11-themes/light-themes:gtk3 - Support GTK 3.x, too
 x11-themes/mate-themes-meta:gtk2-only - Allow dependency-resolution for a system without GTK+3
 x11-themes/redhat-artwork:audacious - Install media-sound/audacious theme
 x11-themes/redhat-artwork:cursors - Install Bluecurve cursors
