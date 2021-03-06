@@ -15144,7 +15144,7 @@ net-misc/connman-gtk 1.1.1 1.1.1-r1: GTK GUI for Connman
 net-misc/connman-json-client 1.0_p20150721-r2: An ncurses UI for connman
 net-misc/connman-notify 0_pre20191003-r2: Desktop notification integration for connman
 net-misc/connman-ui 0_p20150622 9999: A full-featured GTK based trayicon UI for ConnMan
-net-misc/croc 8.6.7 8.6.8: Easily and securely send things from one computer to another
+net-misc/croc 8.6.8 8.6.9: Easily and securely send things from one computer to another
 net-misc/csync 0.50.0-r1: lightweight file synchronizer utility
 net-misc/curl 7.74.0-r2 7.74.0-r4 7.75.0: A Client that groks URLs
 net-misc/dahdi 3.1.0-r2 3.1.0-r3: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
