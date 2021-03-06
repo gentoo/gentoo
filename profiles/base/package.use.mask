@@ -6,6 +6,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2021-03-06)
+# LLVM 9 has been removed.
+dev-lang/julia system-llvm
+dev-util/perf clang
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-03-06)
 # Needs last-rited dev-libs/klibc
 sys-fs/dmraid klibc
