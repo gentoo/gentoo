@@ -26,21 +26,26 @@ if [[ ${PV} == *9999 ]]; then
 		~sys-apps/pkgcore-9999[${PYTHON_USEDEP}]"
 else
 	RDEPEND="
-		>=dev-python/snakeoil-0.9.0[${PYTHON_USEDEP}]
-		>=sys-apps/pkgcore-0.11.1[${PYTHON_USEDEP}]"
+		>=dev-python/snakeoil-0.9.3[${PYTHON_USEDEP}]
+		>=sys-apps/pkgcore-0.11.4[${PYTHON_USEDEP}]"
 fi
 RDEPEND+="
 	dev-python/chardet[${PYTHON_USEDEP}]
 	dev-python/lazy-object-proxy[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
 	dev-python/pathspec[${PYTHON_USEDEP}]
-	dev-python/tree-sitter[${PYTHON_USEDEP}]
+	<dev-python/tree-sitter-0.19.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
 "
 
 distutils_enable_tests setup.py
+
+src_test() {
+	local -x PYTHONDONTWRITEBYTECODE=
+	distutils-r1_src_test
+}
 
 python_install_all() {
 	local DOCS=( NEWS.rst )
