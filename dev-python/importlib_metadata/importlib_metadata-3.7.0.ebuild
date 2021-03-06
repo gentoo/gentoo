@@ -3,9 +3,9 @@
 
 EAPI=7
 
-# Included in Python >= 3.8
-PYTHON_COMPAT=( pypy3 python3_{7,8} )
-
+# NB: this package extends beyond built-in importlib stuff in py3.8+
+# new entry_point API not yet included in cpython release
+PYTHON_COMPAT=( pypy3 python3_{7..9} )
 inherit distutils-r1
 
 DESCRIPTION="Read metadata from Python packages"
@@ -23,9 +23,11 @@ RDEPEND="
 BDEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? (
-		>=dev-python/importlib_resources-1.3.0[${PYTHON_USEDEP}]
 		dev-python/packaging[${PYTHON_USEDEP}]
 		dev-python/pyfakefs[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/importlib_resources[${PYTHON_USEDEP}]
+		' pypy3 python3_{7,8})
 	)
 "
 
