@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2021-03-06)
+# Unmaintained, abandoned upstream, tests fail, broken USE=doc, no revdeps
+# in tree. Removal on 2021-04-03.  Bug #623488, #697804, #774447.
+dev-libs/libgpuarray
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-03-06)
 # Fails to build, multiple bugs, outdated, nontrival, unmaintained
 # Bug 729876 and several others; removal in 30days
