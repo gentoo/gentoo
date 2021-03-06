@@ -1,0 +1,30 @@
+diff --git a/configure.ac b/configure.ac
+index 7b5c2196..4d402959 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -217,7 +217,6 @@ AS_IF([test x"$enable_hardening" != x"no"], [
+   add_hardened_c_flag([-Wstack-protector])
+   add_hardened_c_flag([-fstack-protector-all])
+   add_hardened_c_flag([-Wstrict-overflow=5])
+-  add_hardened_c_flag([-Wbool-compare])
+ 
+   add_hardened_c_flag([-O2])
+   AX_ADD_FORTIFY_SOURCE
+@@ -249,10 +248,13 @@ add_c_flag([-D_GNU_SOURCE], [AC_MSG_ERROR([Cannot enable -D_GNU_SOURCE])])
+ 
+ # Best attempt compiler options that are on newer versions of GCC that
+ # we can't widely enforce without killing other peoples builds
+-add_c_flag([-Wstringop-overflow=4])
+-add_c_flag([-Wstringop-truncation])
+-add_c_flag([-Wduplicated-branches])
+-add_c_flag([-Wduplicated-cond])
++
++AS_IF([test "$HOSTOS" = "Linux" -a ! "$CC" = "clang"],
++	[add_c_flag([-Wstringop-overflow=4])
++	 add_c_flag([-Wstringop-truncation])
++	 add_c_flag([-Wduplicated-branches])
++	 add_c_flag([-Wduplicated-cond])
++	 add_hardened_c_flag([-Wbool-compare])],[])
+ 
+ # Best attempt, strip unused stuff from the binary to reduce size.
+ # Rather than nesting these and making them ugly just use a counter.

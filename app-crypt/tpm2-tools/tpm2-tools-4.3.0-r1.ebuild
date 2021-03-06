@@ -29,6 +29,7 @@ BDEPEND="virtual/pkgconfig
 PATCHES=(
 	"${FILESDIR}/${PN}-4.3.0-libressl.patch"
 	"${FILESDIR}/${PN}-4.3.0-Remove-WError.patch"
+	"${FILESDIR}/${PN}-4.3.0-Remove-clang-warnings.patch"
 )
 
 src_prepare() {
