@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools eutils multilib user systemd
+inherit autotools eutils multilib user systemd tmpfiles
 
 DESCRIPTION="A powerful latency measurement tool"
 HOMEPAGE="https://oss.oetiker.ch/smokeping/"
@@ -79,7 +79,7 @@ src_install() {
 	default
 
 	newinitd "${FILESDIR}"/${PN}.init.5 ${PN}
-	systemd_dotmpfilesd "${FILESDIR}"/"${PN}".conf
+	dotmpfiles "${FILESDIR}"/"${PN}".conf
 	systemd_dounit "${FILESDIR}"/"${PN}".service
 
 	mv "${D}/etc/smokeping/basepage.html.dist" "${D}/etc/smokeping/basepage.html"
