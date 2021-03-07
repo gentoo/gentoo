@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-inherit autotools bash-completion-r1 pam perl-module prefix toolchain-funcs systemd ${INHERIT_GIT}
+inherit autotools bash-completion-r1 pam perl-module prefix toolchain-funcs systemd ${INHERIT_GIT} tmpfiles
 
 DESCRIPTION="A Highly Scalable Resource Manager"
 HOMEPAGE="https://www.schedmd.com https://github.com/SchedMD/slurm"
@@ -205,7 +205,7 @@ src_install() {
 		sreport sacctmgr squeue scancel sshare sbcast sinfo \
 		sprio sacct salloc sbatch srun sattach sdiag sstat
 	# install systemd files
-	systemd_newtmpfilesd "${FILESDIR}/slurm.tmpfiles" slurm.conf
+	newtmpfiles "${FILESDIR}/slurm.tmpfiles" slurm.conf
 	systemd_dounit etc/slurmd.service etc/slurmctld.service etc/slurmdbd.service
 }
 
