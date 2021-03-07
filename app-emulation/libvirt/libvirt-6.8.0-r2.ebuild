@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit meson bash-completion-r1 eutils linux-info python-any-r1 readme.gentoo-r1 systemd
+inherit meson bash-completion-r1 eutils linux-info python-any-r1 readme.gentoo-r1 tmpfiles
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
@@ -312,7 +312,7 @@ src_install() {
 	use libvirtd || return 0
 	# From here, only libvirtd-related instructions, be warned!
 
-	systemd_newtmpfilesd "${FILESDIR}"/libvirtd.tmpfiles.conf libvirtd.conf
+	newtmpfiles "${FILESDIR}"/libvirtd.tmpfiles.conf libvirtd.conf
 
 	newinitd "${S}/libvirtd.init" libvirtd
 	newinitd "${FILESDIR}/libvirt-guests.init-r4" libvirt-guests
