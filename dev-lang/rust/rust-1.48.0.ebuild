@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7..9} )
 
-inherit bash-completion-r1 check-reqs estack flag-o-matic llvm multiprocessing multilib-build python-any-r1 rust-toolchain toolchain-funcs
+inherit prefix bash-completion-r1 check-reqs estack flag-o-matic llvm multiprocessing multilib-build python-any-r1 rust-toolchain toolchain-funcs
 
 if [[ ${PV} = *beta* ]]; then
 	betaver=${PV//*beta}
@@ -73,6 +73,7 @@ BOOTSTRAP_DEPEND="||
 "
 
 BDEPEND="${PYTHON_DEPS}
+	prefix? ( !system-bootstrap? ( dev-util/patchelf ) )
 	app-eselect/eselect-rust
 	|| (
 		>=sys-devel/gcc-4.7
@@ -215,6 +216,31 @@ src_prepare() {
 
 		"${WORKDIR}/${rust_stage0}"/install.sh --disable-ldconfig \
 			--destdir="${rust_stage0_root}" --prefix=/ || die
+
+		if use prefix; then
+			interpreter=`ldconfig -p | grep ld-linux | awk '{print $NF}' || die "Cannot find your ld.so, why?"`
+			ebegin "Changing interpreter to $interpreter for Gentoo prefix"
+			for f in `ls -Ud ${rust_stage0_root}/bin/*  || die "Cannot find binary of rust_stage0, why?"`; do
+				if file $f | grep -q ELF; then
+					einfo "$f's interpreter changed"
+					patchelf $f --set-interpreter $interpreter || die "Cannot patchelf, why?"
+				else
+					hprefixify $f
+				fi
+			done
+			eend $?
+
+			RPATH=${EPREFIX}/usr/$(get_libdir)
+			ebegin "Changing rparh to ${RPATH} for Gentoo prefix"
+			for f in `ls -Ud ${rust_stage0_root}/lib/*  || die "Cannot find lib of rust_stage0, why?"`; do
+				if file $f | grep -q ELF; then
+					einfo "$f's rpath changed"
+					patchelf $f --remove-rpath || die "Cannot patchelf, why?"
+					patchelf $f --set-rpath ${RPATH} || die "Cannot patchelf, why?"
+				fi
+			done
+			eend $?
+		fi
 	fi
 
 	default
