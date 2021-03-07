@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit systemd toolchain-funcs
+inherit systemd toolchain-funcs tmpfiles
 
 DESCRIPTION="A modern version of the Layer 2 Tunneling Protocol (L2TP) daemon"
 HOMEPAGE="https://github.com/xelerance/xl2tpd"
@@ -37,7 +37,7 @@ src_install() {
 	newinitd "${FILESDIR}"/xl2tpd-init-r1 xl2tpd
 
 	systemd_dounit "${FILESDIR}"/xl2tpd.service
-	systemd_dotmpfilesd "${FILESDIR}"/xl2tpd.conf
+	dotmpfiles "${FILESDIR}"/xl2tpd.conf
 
 	einstalldocs
 
