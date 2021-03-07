@@ -1,0 +1,11 @@
+--- a/dlls/ntdll/unix/signal_x86_64.c
++++ b/dlls/ntdll/unix/signal_x86_64.c
+@@ -1390,7 +1390,7 @@ static NTSTATUS libunwind_virtual_unwind
+     unw_proc_info_t info;
+     int rc;
+ 
+-#ifdef __APPLE__
++#if defined(__APPLE__) || defined(____LIBUNWIND_CONFIG_H__)
+     rc = unw_getcontext( &unw_context );
+     if (rc == UNW_ESUCCESS)
+         rc = unw_init_local( &cursor, &unw_context );

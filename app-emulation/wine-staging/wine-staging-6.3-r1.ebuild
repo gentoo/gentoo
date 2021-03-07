@@ -20,9 +20,9 @@ if [[ ${MY_PV} == "9999" ]] ; then
 else
 	MAJOR_V=$(ver_cut 1)
 	MINOR_V=$(ver_cut 2)
-    if [[ ${MINOR_V} != "0" ]] ; then
-        MINOR_V="x"
-    fi
+	if [[ ${MINOR_V} != "0" ]] ; then
+		MINOR_V="x"
+	fi
 	SRC_URI="https://dl.winehq.org/wine/source/${MAJOR_V}.${MINOR_V}/${MY_P}.tar.xz"
 	KEYWORDS="-* ~amd64 ~x86"
 fi
@@ -115,7 +115,12 @@ COMMON_DEPEND="
 	truetype? ( >=media-libs/freetype-2.0.0[${MULTILIB_USEDEP}] )
 	udev? ( virtual/libudev:=[${MULTILIB_USEDEP}] )
 	udisks? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
-	unwind? ( sys-libs/libunwind[${MULTILIB_USEDEP}] )
+	unwind? (
+		|| (
+			sys-libs/libunwind[${MULTILIB_USEDEP}]
+			sys-libs/llvm-libunwind[${MULTILIB_USEDEP}]
+		)
+	)
 	usb? ( virtual/libusb:1[${MULTILIB_USEDEP}]  )
 	v4l? ( media-libs/libv4l[${MULTILIB_USEDEP}] )
 	vaapi? ( x11-libs/libva[X,${MULTILIB_USEDEP}] )
@@ -173,6 +178,7 @@ PATCHES=(
 	"${PATCHDIR}/patches/${MY_PN}-2.0-multislot-apploader.patch" #310611
 	"${PATCHDIR}/patches/${MY_PN}-5.9-Revert-makedep-Install-also-generated-typelib-for-in.patch"
 	"${PATCHDIR}/patches/${MY_PN}-6.3-Fix-nine.patch"
+	"${FILESDIR}/${PN}-6.3-llvm-libunwind.patch"
 )
 PATCHES_BIN=()
 
