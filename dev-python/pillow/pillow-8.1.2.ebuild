@@ -20,7 +20,7 @@ LICENSE="HPND"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="examples imagequant jpeg jpeg2k lcms test tiff tk truetype webp xcb zlib"
-REQUIRED_USE="test? ( jpeg tiff )"
+REQUIRED_USE="test? ( jpeg jpeg2k tiff )"
 RESTRICT="!test? ( test )"
 
 DEPEND="
