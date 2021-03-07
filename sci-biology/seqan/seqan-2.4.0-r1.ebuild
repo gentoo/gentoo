@@ -1,14 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-: ${CMAKE_MAKEFILE_GENERATOR:=ninja}
-
-inherit cmake-utils multibuild toolchain-funcs
+inherit cmake multibuild toolchain-funcs
 
 DESCRIPTION="C++ Sequence Analysis Library"
-HOMEPAGE="http://www.seqan.de/"
+HOMEPAGE="https://www.seqan.de/"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -17,8 +15,7 @@ if [[ ${PV} == *9999 ]]; then
 else
 	SRC_URI="https://github.com/seqan/seqan/archive/seqan-v${PV}.tar.gz"
 	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-
-	S=${WORKDIR}/seqan-seqan-v${PV}
+	S="${WORKDIR}"/seqan-seqan-v${PV}
 fi
 
 LICENSE="BSD GPL-3"
@@ -28,30 +25,29 @@ REQUIRED_USE="cpu_flags_x86_sse4_1"
 
 RDEPEND="
 	app-arch/bzip2:=
-	sys-libs/zlib:=
+	sys-libs/zlib
 	!!sci-biology/seqan:2.0
 	!!sci-biology/seqan:2.1
 	!!sci-biology/seqan:2.2"
-DEPEND="
-	${RDEPEND}"
+DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${PN}-2.4.0-fix-pthread.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-pthread.patch
+	"${FILESDIR}"/${P}-installpaths.patch
+	"${FILESDIR}"/${P}-cmake-add_library-static.patch
+)
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		use tools && tc-check-openmp
 
-		MULTIBUILD_VARIANTS=(
-			$(usev tools)
-			library
-		)
+		MULTIBUILD_VARIANTS=( $(usev tools) library )
 	fi
 }
 
 src_configure() {
 	my_configure() {
 		local mycmakeargs=(
-			-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}"
 			-DSEQAN_NO_DOX=ON
 		)
 		case "${MULTIBUILD_ID}" in
@@ -69,15 +65,15 @@ src_configure() {
 				die "${MULTIBUILD_ID} is not recognized"
 				;;
 		esac
-		cmake-utils_src_configure
+		cmake_src_configure
 	}
 	multibuild_foreach_variant my_configure
 }
 
 src_compile() {
-	multibuild_foreach_variant cmake-utils_src_compile
+	multibuild_foreach_variant cmake_src_compile
 }
 
 src_install() {
-	multibuild_foreach_variant cmake-utils_src_install
+	multibuild_foreach_variant cmake_src_install
 }

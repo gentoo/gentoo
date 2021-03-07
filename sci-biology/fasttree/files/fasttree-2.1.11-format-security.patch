@@ -1,10 +1,10 @@
- FastTreeUPGMA-2.1.8.c | 4 ++--
+ FastTreeUPGMA-2.1.11.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/FastTreeUPGMA-2.1.8.c b/FastTreeUPGMA-2.1.8.c
+diff --git a/FastTreeUPGMA-2.1.11.c b/FastTreeUPGMA-2.1.11.c
 index af76cb1..4065f42 100644
---- a/FastTreeUPGMA-2.1.8.c
-+++ b/FastTreeUPGMA-2.1.8.c
+--- a/FastTreeUPGMA-2.1.11.c
++++ b/FastTreeUPGMA-2.1.11.c
 @@ -535,7 +535,7 @@ int main(int argc, char **argv) {
        break;
    }
