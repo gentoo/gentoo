@@ -76,6 +76,7 @@ dev-ml/re2
 dev-ml/bin-prot
 dev-ml/configurator
 dev-ml/ppx_traverse
+dev-ml/ppx_type_conv
 
 # Conrad Kostecki <conikost@gentoo.org> (2021-03-05)
 # Deprecated by upstream and unsupported due EOL.
