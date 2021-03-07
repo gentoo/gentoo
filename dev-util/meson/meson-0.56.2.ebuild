@@ -78,6 +78,9 @@ python_test() {
 		# test_cross_file_system_paths
 		unset XDG_DATA_HOME
 
+		# 'test cases/unit/73 summary' expects 80 columns
+		export COLUMNS=80
+
 		${EPYTHON} -u run_tests.py
 	) || die "Testing failed with ${EPYTHON}"
 }
