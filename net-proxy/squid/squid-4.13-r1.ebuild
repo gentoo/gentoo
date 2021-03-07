@@ -5,7 +5,7 @@ EAPI=7
 
 WANT_AUTOMAKE="1.15"
 
-inherit autotools flag-o-matic linux-info pam toolchain-funcs
+inherit autotools flag-o-matic linux-info pam systemd toolchain-funcs
 
 DESCRIPTION="A full-featured web proxy cache"
 HOMEPAGE="http://www.squid-cache.org/"
@@ -25,7 +25,7 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~sparc x86"
 IUSE="caps gnutls ipv6 pam ldap samba sasl kerberos nis radius ssl snmp selinux logrotate test \
 	ecap esi ssl-crtd \
-	mysql postgres sqlite \
+	mysql postgres sqlite systemd \
 	perl qos tproxy \
 	+htcp +wccp +wccpv2 \
 	pf-transparent ipf-transparent kqueue \
@@ -46,6 +46,7 @@ COMMON_DEPEND="acct-group/squid
 		!gnutls? ( dev-libs/openssl:0 )
 		dev-libs/nettle:= )
 	sasl? ( dev-libs/cyrus-sasl )
+	systemd? ( sys-apps/systemd:= )
 	ecap? ( net-libs/libecap:1 )
 	esi? ( dev-libs/expat dev-libs/libxml2 )
 	gnutls? ( >=net-libs/gnutls-3.1.5 )
@@ -104,6 +105,8 @@ src_prepare() {
 		src/ipc/Makefile.am || die
 	sed -i -e 's:_LTDL_SETUP:LTDL_INIT([installable]):' \
 		libltdl/configure.ac || die
+
+	 sed -i 's:/var/run/:/run/:g' tools/systemd/squid.service || die
 
 	eapply_user
 	eautoreconf
@@ -211,6 +214,7 @@ src_configure() {
 		$(use_with ssl nettle) \
 		$(use_with gnutls) \
 		$(use_enable ssl-crtd) \
+		$(use_with systemd) \
 		$(use_enable ecap) \
 		$(use_enable esi) \
 		$(use_enable htcp) \
@@ -222,6 +226,8 @@ src_configure() {
 
 src_install() {
 	default
+
+	systemd_dounit "tools/systemd/squid.service"
 
 	# need suid root for looking into /etc/shadow
 	fowners root:squid /usr/libexec/squid/basic_ncsa_auth
