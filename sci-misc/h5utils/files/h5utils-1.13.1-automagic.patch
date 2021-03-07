@@ -19,24 +19,7 @@
 -	H4TOH5="h4toh5"
 -	H5TOH4="h5toh4"
 -fi
-+AC_ARG_WITH([hdf], AS_HELP_STRING([--with-hdf], [build hdf4 utils even if h4toh5 and h5toh4 are present]))
-+
-+AS_IF([test "x$with_hdf" = "xyes"], [
-+  AC_CHECK_HEADERS(hdf.h hdf/hdf.h)
-+  AC_CHECK_LIB(jpeg, jpeg_start_compress,
-+      [AC_CHECK_LIB(df, DFSDgetdata,
-+         [H4_LIBS="-ldf -ljpeg"; HDF4=yes],
-+         [AC_MSG_WARN([can't find libdf (HDF4): won't be able to compile h5fromh4 or h4fromh5])], -ljpeg)],
-+      [AC_MSG_WARN([can't find libjpeg: won't be able to compile h5fromh4 or h4fromh5])])
-+  if test $HDF4 = yes; then
-+      MORE_H5UTILS="h5fromh4\$(EXEEXT) $MORE_H5UTILS"
-+      MORE_H5UTILS_MANS="h5fromh4.1 $MORE_H5UTILS_MANS"
-+      MORE_H5UTILS="h4fromh5\$(EXEEXT) $MORE_H5UTILS"
-+  fi
-+
-+  AC_SUBST(H4_LIBS)
-+])
- 
+-
 -HDF4=no
 -if test "x$H4TOH5" != xh4toh5 -o "x$H5TOH4" != xh5toh4; then
 -	AC_CHECK_LIB(jpeg, jpeg_start_compress,
@@ -57,6 +40,24 @@
 -	fi
 -fi
 -AC_CHECK_HEADERS(hdf.h hdf/hdf.h)
++AC_ARG_WITH([hdf], AS_HELP_STRING([--with-hdf], [build hdf4 utils even if h4toh5 and h5toh4 are present]))
++
++AS_IF([test "x$with_hdf" = "xyes"], [
++  AC_CHECK_HEADERS(hdf.h hdf/hdf.h)
++  AC_CHECK_LIB(jpeg, jpeg_start_compress,
++      [AC_CHECK_LIB(df, DFSDgetdata,
++         [H4_LIBS="-ldf -ljpeg"; HDF4=yes],
++         [AC_MSG_WARN([can't find libdf (HDF4): won't be able to compile h5fromh4 or h4fromh5])], -ljpeg)],
++      [AC_MSG_WARN([can't find libjpeg: won't be able to compile h5fromh4 or h4fromh5])])
++  if test $HDF4 = yes; then
++      MORE_H5UTILS="h5fromh4\$(EXEEXT) $MORE_H5UTILS"
++      MORE_H5UTILS_MANS="doc/man/h5fromh4.1 $MORE_H5UTILS_MANS"
++      MORE_H5UTILS="h4fromh5\$(EXEEXT) $MORE_H5UTILS"
++  fi
++
++  AC_SUBST(H4_LIBS)
++])
++
  
 -AC_SUBST(H4_LIBS)
  
