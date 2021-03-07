@@ -1,17 +1,15 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit desktop
+EAPI=7
 
-DESCRIPTION="A fast paced action game"
-HOMEPAGE="http://icculus.org/excido/"
-SRC_URI="http://icculus.org/excido/${P}-src.tar.bz2"
+DESCRIPTION="Fast paced action game"
+HOMEPAGE="https://icculus.org/excido/"
+SRC_URI="https://icculus.org/excido/${P}-src.tar.bz2"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 DEPEND="dev-games/physfs
 	media-libs/libsdl[opengl]
