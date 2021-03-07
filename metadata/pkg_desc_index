@@ -2140,7 +2140,7 @@ app-eselect/eselect-audicle 1.0.1-r1: Manages the /usr/bin/audicle symlink
 app-eselect/eselect-awk 0.3: Manages the {,/usr}/bin/awk symlink
 app-eselect/eselect-blas 0.1 0.2: BLAS/CBLAS module for eselect
 app-eselect/eselect-cblas 0.1: C-language BLAS module for eselect
-app-eselect/eselect-cdparanoia 0.1: Manage /usr/bin/cdparanoia symlink
+app-eselect/eselect-cdparanoia 0.1 0.1-r1: Manage /usr/bin/cdparanoia symlink
 app-eselect/eselect-chuck 1.0.2: Manages the /usr/bin/chuck symlink
 app-eselect/eselect-ctags 1.18: Manages ctags implementations
 app-eselect/eselect-emacs 1.18: Manage multiple Emacs versions on one system
@@ -2155,7 +2155,7 @@ app-eselect/eselect-lib-bin-symlink 0.1.1-r1 9999: An eselect library to manage 
 app-eselect/eselect-lua 4-r1: Lua eselect module
 app-eselect/eselect-luajit 1: Manages LuaJIT symlinks
 app-eselect/eselect-miniaudicle 1.0.1-r2: Manages the /usr/bin/miniAudicle symlink
-app-eselect/eselect-mpg123 0.1: Manage /usr/bin/mpg123 symlink
+app-eselect/eselect-mpg123 0.1 0.1-r1: Manage /usr/bin/mpg123 symlink
 app-eselect/eselect-notify-send 0.1: Manage /usr/bin/notify-send symlink
 app-eselect/eselect-oodict 20100228: Manages configuration of dictionaries for OpenOffice.Org
 app-eselect/eselect-opencascade 1: Manages opencascade env file
@@ -8805,7 +8805,7 @@ dev-python/pygame_sdl2 6.99.12.4-r5 7.3.5-r1 7.3.5-r2: Reimplementation of porti
 dev-python/pyghmi 1.5.22: A pure python implementation of IPMI protocol
 dev-python/pygit2 1.5.0: Python bindings for libgit2
 dev-python/pyglet 1.5.13 1.5.14 1.5.15: Cross-platform windowing and multimedia library for Python
-dev-python/pygments 2.7.4 2.8.0: Pygments is a syntax highlighting package written in Python
+dev-python/pygments 2.7.4 2.8.0 2.8.1: Pygments is a syntax highlighting package written in Python
 dev-python/pygments-github-lexers 0.0.5: Pygments Github custom lexers
 dev-python/pygobject 3.34.0-r1 3.36.1-r1 3.38.0: Python bindings for GObject Introspection
 dev-python/pygpgme 0.3-r2 0.3-r3: A Python wrapper for the GPGME library
