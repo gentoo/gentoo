@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit flag-o-matic git-r3 linux-info multilib pam prefix python-single-r1 \
-		systemd
+		systemd tmpfiles
 
 KEYWORDS=""
 
@@ -209,7 +209,7 @@ src_install() {
 		sed -e "s|@SLOT@|${SLOT}|g" -e "s|@LIBDIR@|$(get_libdir)|g" \
 			"${FILESDIR}/${PN}.service-9.6-r1" | \
 			systemd_newunit - ${PN}-${SLOT}.service
-		systemd_newtmpfilesd "${FILESDIR}"/${PN}.tmpfiles ${PN}-${SLOT}.conf
+		newtmpfiles "${FILESDIR}"/${PN}.tmpfiles ${PN}-${SLOT}.conf
 	fi
 
 	newbin "${FILESDIR}"/${PN}-check-db-dir ${PN}-${SLOT}-check-db-dir
@@ -293,7 +293,7 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	use systemd && systemd_tmpfiles_create ${PN}-${SLOT}.conf
+	use systemd && tmpfiles_process ${PN}-${SLOT}.conf
 	postgresql-config update
 
 	elog "If you need a global psqlrc-file, you can place it in:"
