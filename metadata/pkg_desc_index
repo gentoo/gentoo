@@ -5849,7 +5849,7 @@ dev-ml/configurator 0.9.1: Helper library for gathering system configuration
 dev-ml/core 0.14.0-r3: Jane Street's alternative to the standard library
 dev-ml/core_bench 0.14.0: Micro-benchmarking library for OCaml
 dev-ml/core_extended 0.9.0: Jane Street's alternative to the standard library
-dev-ml/core_kernel 0.9.0 0.9.1 0.14.1-r3: System-independent part of Core
+dev-ml/core_kernel 0.14.1-r3: System-independent part of Core
 dev-ml/cppo 1.4.1 1.5.0 1.6.6 1.6.7: An equivalent of the C preprocessor for OCaml programs
 dev-ml/cryptokit 1.10 1.11 1.16.1-r1: Cryptographic primitives library for Objective Caml
 dev-ml/csexp 1.3.2-r1: Parsing and printing of S-expressions in Canonical form
@@ -5958,7 +5958,7 @@ dev-ml/ppx_assert 0.14.0: Assert-like extension nodes that raise useful errors o
 dev-ml/ppx_ast 0.9.1: AST used in Jane Street ppx rewriters
 dev-ml/ppx_base 0.14.0: Base set of ppx rewriters
 dev-ml/ppx_bench 0.14.1: Syntax extension for writing in-line benchmarks in ocaml code
-dev-ml/ppx_bin_prot 0.9.0 0.14.0: Generation of bin_prot readers and writers from types
+dev-ml/ppx_bin_prot 0.14.0: Generation of bin_prot readers and writers from types
 dev-ml/ppx_cold 0.14.0: Expands [@cold] into [@inline never][@specialise never][@local never]
 dev-ml/ppx_compare 0.9.0-r1 0.14.0: Generation of comparison functions from types
 dev-ml/ppx_core 0.9.0-r1: Standard library for ppx rewriters
