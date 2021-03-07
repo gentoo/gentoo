@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit flag-o-matic linux-info multilib pam prefix python-single-r1 systemd
+inherit flag-o-matic linux-info multilib pam prefix python-single-r1 systemd tmpfiles
 
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
@@ -256,7 +256,7 @@ src_install() {
 				"${FILESDIR}/${PN}.service-9.6-r1" | \
 				systemd_newunit - ${PN}-${SLOT}.service
 			newbin "${FILESDIR}"/${PN}-check-db-dir ${PN}-${SLOT}-check-db-dir
-			systemd_newtmpfilesd "${FILESDIR}"/${PN}.tmpfiles ${PN}-${SLOT}.conf
+			newtmpfiles "${FILESDIR}"/${PN}.tmpfiles ${PN}-${SLOT}.conf
 		fi
 
 		use pam && pamd_mimic system-auth ${PN}-${SLOT} auth account session
@@ -269,7 +269,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	use server && use systemd && systemd_tmpfiles_create ${PN}-${SLOT}.conf
+	use server && use systemd && tmpfiles_process ${PN}-${SLOT}.conf
 	postgresql-config update
 
 	elog "If you need a global psqlrc-file, you can place it in:"
