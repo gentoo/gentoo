@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{7,8,9} )
 DISTUTILS_SINGLE_IMPL=1
 
-inherit bash-completion-r1 distutils-r1 systemd
+inherit bash-completion-r1 distutils-r1 systemd tmpfiles
 
 DESCRIPTION="scans log files and bans IPs that show malicious signs"
 HOMEPAGE="https://www.fail2ban.org/"
@@ -58,7 +58,7 @@ python_install_all() {
 	newinitd files/gentoo-initd ${PN}
 	sed -e "s:@BINDIR@:${EPREFIX}/usr/bin:g" files/${PN}.service.in > "${T}/${PN}.service" || die
 	systemd_dounit "${T}/${PN}.service"
-	systemd_dotmpfilesd files/${PN}-tmpfiles.conf
+	dotmpfiles files/${PN}-tmpfiles.conf
 	doman man/*.{1,5}
 
 	# Use INSTALL_MASK if you do not want to touch /etc/logrotate.d.
