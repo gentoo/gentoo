@@ -10,9 +10,8 @@ WX_GTK_VER="3.0-gtk3"
 
 inherit autotools desktop flag-o-matic git-r3 python-single-r1 toolchain-funcs wxwidgets xdg
 
-PV="7.9"
-MY_PM=${PN}$(ver_cut 1-2 ${PV})
-MY_PM=${MY_PM/.}
+MY_P="${PN}7.9"
+MY_PM="${MY_P/.}"
 
 DESCRIPTION="A free GIS with raster and vector functionality, as well as 3D vizualization"
 HOMEPAGE="https://grass.osgeo.org/"
