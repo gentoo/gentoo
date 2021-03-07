@@ -1,0 +1,81 @@
+From a64b26c6e5c6c49e5842280a8690ec0d31832ce8 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 7 Mar 2021 18:20:11 +0100
+Subject: [PATCH] Use GNUInstallDirs, add ENABLE_EXAMPLES option
+
+---
+ CMakeLists.txt                  | 17 +++++++++++------
+ reduze/CMakeLists.txt           |  2 +-
+ tools/reduze1to2/CMakeLists.txt |  2 +-
+ 3 files changed, 13 insertions(+), 8 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e6207bd..a0cab4b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -29,11 +29,10 @@
+ # - 'make package_source' creates the source tarball
+ # - 'make doc'            creates the source code documentation using Doxygen
+ 
+-message (STATUS "Configuring package Reduze")
+-cmake_minimum_required (VERSION 2.6)
++cmake_minimum_required (VERSION 2.8.12)
+ 
+ project (Reduze)
+-list (APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake-modules")
++set (CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake-modules")
+ include (GetGitRevisionDescription)
+ #git_describe_new (GIT_TAG)
+ git_describe(GIT_TAG)
+@@ -76,6 +75,9 @@ if (NOT HAVE_TUTORIAL_PDF)
+    message (FATAL_ERROR "File ${TUTORIAL_PDF} not found")
+ endif (NOT HAVE_TUTORIAL_PDF)
+ 
++include(GNUInstallDirs)
++
++option (ENABLE_EXAMPLES "Install tools, examples" ON)
+ 
+ # include configured file with git tag in source package
+ # NOTE1: make sure to build before pack (make; make package_source) !
+@@ -89,9 +91,12 @@ add_subdirectory ("reduze")
+ add_subdirectory ("tools/reduze1to2")
+ add_subdirectory ("check")
+ add_subdirectory ("doc/code")
+-install (FILES "doc/tutorial/reduze2-tutorial.pdf" DESTINATION share/reduze/tutorial)
+-install (FILES "tools/reduze-mma.m" DESTINATION share/reduze/tools)
+-install (DIRECTORY "example" DESTINATION share/reduze PATTERN ".git" EXCLUDE)
++install (FILES "doc/tutorial/reduze2-tutorial.pdf" DESTINATION ${CMAKE_INSTALL_DOCDIR})
++
++if (ENABLE_EXAMPLES)
++  install (FILES "tools/reduze-mma.m" DESTINATION ${CMAKE_INSTALL_DOCDIR}/examples)
++  install (DIRECTORY "example" DESTINATION ${CMAKE_INSTALL_DOCDIR}/examples PATTERN ".git" EXCLUDE)
++endif ()
+ 
+ include (CPack)
+ 
+diff --git a/reduze/CMakeLists.txt b/reduze/CMakeLists.txt
+index b296081..a76c307 100644
+--- a/reduze/CMakeLists.txt
++++ b/reduze/CMakeLists.txt
+@@ -201,5 +201,5 @@ target_link_libraries (reduze yaml-cpp)
+ # installation
+ #------------------------------------------------------------------------------
+ 
+-install (TARGETS reduze DESTINATION bin)
++install (TARGETS reduze DESTINATION ${CMAKE_INSTALL_BINDIR})
+ 
+diff --git a/tools/reduze1to2/CMakeLists.txt b/tools/reduze1to2/CMakeLists.txt
+index d1d4bd5..4822910 100644
+--- a/tools/reduze1to2/CMakeLists.txt
++++ b/tools/reduze1to2/CMakeLists.txt
+@@ -9,6 +9,6 @@ add_executable (reduze1to2 ${reduze1to2_SOURCES})
+ 
+ set (CMAKE_CXX_FLAGS "-Wall -pedantic -Wno-long-long")
+ 
+-install (TARGETS reduze1to2 DESTINATION bin)
++install (TARGETS reduze1to2 DESTINATION ${CMAKE_INSTALL_BINDIR})
+ 
+ message (STATUS "Added build target 'reduze1to2'")
+-- 
+2.30.1
+
