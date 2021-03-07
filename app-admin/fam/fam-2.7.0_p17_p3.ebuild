@@ -8,7 +8,7 @@ FAM_PV="${PV/_p*/}"
 DEBIAN_PATCH="${PV#*_p}"
 DEBIAN_PATCH="${DEBIAN_PATCH/_p/.}"
 DESCRIPTION="FAM, the File Alteration Monitor"
-HOMEPAGE="http://oss.sgi.com/projects/fam/"
+HOMEPAGE="https://tracker.debian.org/pkg/fam"
 SRC_URI="
 	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${FAM_PV}.orig.tar.gz
 	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${FAM_PV}-${DEBIAN_PATCH}.diff.gz
