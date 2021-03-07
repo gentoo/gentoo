@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/${PN}/VeraCrypt/archive/VeraCrypt_${MY_PV}.tar.gz ->
 # For this reason, we don't have to worry about their licenses
 LICENSE="Apache-2.0 BSD truecrypt-3.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="+asm cpu_flags_x86_sse2 cpu_flags_x86_sse4_1 cpu_flags_x86_ssse3 doc X"
 RESTRICT="bindist mirror"
 
