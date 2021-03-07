@@ -25,13 +25,17 @@ REQUIRED_USE="cpu_flags_x86_sse4_1"
 
 RDEPEND="
 	app-arch/bzip2:=
-	sys-libs/zlib:=
+	sys-libs/zlib
 	!!sci-biology/seqan:2.0
 	!!sci-biology/seqan:2.1
 	!!sci-biology/seqan:2.2"
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${PN}-2.4.0-fix-pthread.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-pthread.patch
+	"${FILESDIR}"/${P}-installpaths.patch
+	"${FILESDIR}"/${P}-cmake-add_library-static.patch
+)
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
@@ -44,7 +48,6 @@ pkg_setup() {
 src_configure() {
 	my_configure() {
 		local mycmakeargs=(
-			-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}"
 			-DSEQAN_NO_DOX=ON
 		)
 		case "${MULTIBUILD_ID}" in
