@@ -37,10 +37,12 @@ else
 	"
 fi
 
+# Uses pytest but we want to use the setup.py runner to get generated modules
+BDEPEND+="test? ( dev-python/pytest )"
 RDEPEND+="dev-vcs/git"
 
 distutils_enable_sphinx doc
-distutils_enable_tests pytest
+distutils_enable_tests setup.py
 
 python_install_all() {
 	# We'll generate man pages ourselves
