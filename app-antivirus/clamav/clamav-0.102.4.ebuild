@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools flag-o-matic systemd
+inherit autotools flag-o-matic systemd tmpfiles
 
 DESCRIPTION="Clam Anti-Virus Scanner"
 HOMEPAGE="https://www.clamav.net/"
@@ -118,7 +118,7 @@ src_install() {
 		newinitd "${FILESDIR}"/clamd.initd-r6 clamd
 		newconfd "${FILESDIR}"/clamd.conf-r1 clamd
 
-		systemd_dotmpfilesd "${FILESDIR}/tmpfiles.d/clamav.conf"
+		dotmpfiles "${FILESDIR}/tmpfiles.d/clamav.conf"
 		systemd_newunit "${FILESDIR}/clamd_at.service" "clamd@.service"
 		systemd_dounit "${FILESDIR}/clamd.service"
 		systemd_dounit "${FILESDIR}/freshclamd.service"
