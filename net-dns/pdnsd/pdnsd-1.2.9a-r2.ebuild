@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit systemd
+inherit systemd tmpfiles
 
 DESCRIPTION="Proxy DNS server with permanent caching"
 HOMEPAGE="http://members.home.nl/p.a.rombouts/pdnsd/"
@@ -53,7 +53,7 @@ src_install() {
 	newconfd "${FILESDIR}/pdnsd.confd" pdnsd
 	newinitd "${FILESDIR}/pdnsd.online.2" pdnsd-online
 	newconfd "${FILESDIR}/pdnsd-online.confd" pdnsd-online
-	systemd_newtmpfilesd "${FILESDIR}/pdnsd.tmpfiles" pdnsd.conf
+	newtmpfiles "${FILESDIR}/pdnsd.tmpfiles" pdnsd.conf
 	systemd_dounit "${FILESDIR}/pdnsd.service"
 }
 
