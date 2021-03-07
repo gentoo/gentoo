@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{7,8} )
 PYTHON_REQ_USE="tk"
 
-inherit python-single-r1 systemd toolchain-funcs autotools
+inherit python-single-r1 systemd toolchain-funcs autotools tmpfiles
 
 DESCRIPTION="the legendary remote-mail retrieval and forwarding utility"
 HOMEPAGE="https://www.fetchmail.info/"
@@ -88,7 +88,7 @@ src_install() {
 
 	systemd_dounit  "${FILESDIR}"/${PN}.service
 	systemd_newunit "${FILESDIR}"/${PN}_at.service "${PN}@.service"
-	systemd_dotmpfilesd "${FILESDIR}"/${PN}.conf
+	dotmpfiles "${FILESDIR}"/${PN}.conf
 
 	docinto contrib
 	local f
