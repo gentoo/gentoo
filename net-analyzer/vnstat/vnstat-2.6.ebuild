@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit systemd user
+inherit systemd user tmpfiles
 
 DESCRIPTION="Console-based network traffic monitor that keeps statistics of network usage"
 HOMEPAGE="https://humdi.net/vnstat/"
@@ -61,7 +61,7 @@ src_install() {
 	newinitd "${FILESDIR}"/vnstatd.initd-r2 vnstatd
 
 	systemd_newunit "${FILESDIR}"/vnstatd.systemd vnstatd.service
-	systemd_newtmpfilesd "${FILESDIR}"/vnstatd.tmpfile vnstatd.conf
+	newtmpfiles "${FILESDIR}"/vnstatd.tmpfile vnstatd.conf
 
 	use gd && doman man/vnstati.1
 	doman man/vnstat.1 man/vnstatd.8
