@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-inherit ssl-cert multilib systemd user
+inherit ssl-cert multilib systemd user tmpfiles
 
 DESCRIPTION="TLS/SSL - Port Wrapper"
 HOMEPAGE="https://www.stunnel.org/index.html"
@@ -79,7 +79,7 @@ src_install() {
 	doenvd "${T}"/20stunnel
 
 	systemd_dounit "${S}/tools/stunnel.service"
-	systemd_newtmpfilesd "${FILESDIR}"/stunnel.tmpfiles.conf stunnel.conf
+	newtmpfiles "${FILESDIR}"/stunnel.tmpfiles.conf stunnel.conf
 }
 
 pkg_postinst() {

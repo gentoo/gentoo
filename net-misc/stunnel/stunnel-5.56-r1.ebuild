@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit ssl-cert multilib systemd
+inherit ssl-cert multilib systemd tmpfiles
 
 DESCRIPTION="TLS/SSL - Port Wrapper"
 HOMEPAGE="https://www.stunnel.org/index.html"
@@ -73,7 +73,7 @@ src_install() {
 	doenvd "${T}"/20stunnel
 
 	systemd_dounit "${S}/tools/stunnel.service"
-	systemd_newtmpfilesd "${FILESDIR}"/stunnel.tmpfiles.conf stunnel.conf
+	newtmpfiles "${FILESDIR}"/stunnel.tmpfiles.conf stunnel.conf
 }
 
 pkg_postinst() {
