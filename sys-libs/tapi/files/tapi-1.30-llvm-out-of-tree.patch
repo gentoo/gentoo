@@ -1,0 +1,10 @@
+--- libtapi-1.30/CMakeLists.txt.orig	2017-02-11 21:04:56.000000000 +0100
++++ libtapi-1.30/CMakeLists.txt	2017-02-11 21:05:12.000000000 +0100
+@@ -34,6 +34,7 @@
+   ${CMAKE_CURRENT_SOURCE_DIR}/include/tapi/Version.inc.in
+   ${CMAKE_CURRENT_BINARY_DIR}/include/tapi/Version.inc)
+ 
++include(AddLLVM)
+ macro(add_tapi_library name)
+   cmake_parse_arguments(ARG
+     "SHARED"

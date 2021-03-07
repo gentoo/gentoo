@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>cedk@gentoo.org</email>
+	</maintainer>
+	<longdescription lang="en">
+		STFL is a library which implements a curses-based widget set for text
+		terminals.
+
+		The STFL API can be used from C, SPL, Python, Perl and Ruby. Since the
+		API is only 14 simple function calls big and there are already generic
+		SWIG bindings it is very easy to port STFL to additional scripting
+		languages.
+
+		A special language (the Structured Terminal Forms Language) is used to
+		describe STFL GUIs. The language is designed to be easy and fast to
+		write so an application programmer does not need to spend ages fiddling
+		around with the GUI and can concentrate on the more interesting
+		programming tasks.
+	</longdescription>
+</pkgmetadata>

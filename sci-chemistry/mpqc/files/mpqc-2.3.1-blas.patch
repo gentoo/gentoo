@@ -1,0 +1,55 @@
+ configure.in |   36 +++---------------------------------
+ 1 files changed, 3 insertions(+), 33 deletions(-)
+
+diff --git a/configure.in b/configure.in
+index ee82977..caae1f9 100644
+--- a/configure.in
++++ b/configure.in
+@@ -1487,44 +1487,14 @@ AC_LANG_CPLUSPLUS
+ LIBSSAV="$LIBS"
+ LIBS="$LIBSSAV $FLIBS"
+ 
+-LIBBLAS=""
+-F77_DGEMM=`$PERL $srcdir/bin/mkf77sym.pl.in -method $F77_SYMBOLS DAXPY`
+-AC_CHECK_FUNC($F77_DGEMM,HAVE_BLAS=yes,[
+-  AC_CHECK_LIB(essl,$F77_DGEMM,[HAVE_BLAS=yes;LIBBLAS="-lessl"],
+-    AC_CHECK_LIB(blas,$F77_DGEMM,[HAVE_BLAS=yes;LIBBLAS="-lblas"])
+-  )]
+-)
+-if test X$HAVE_BLAS != Xyes; then
+-  LIBSSAV2="$LIBS"
+-  LIBS="-latlas $LIBS"
+-  AC_CHECK_LIB(f77blas,$F77_DGEMM,[HAVE_BLAS=yes;LIBBLAS="-lf77blas -latlas"],
+-               LIBS="$LIBSSAV2")
+-fi
+-AC_SUBST(HAVE_BLAS)
+-if test X$HAVE_BLAS != Xyes; then
+-  echo "WARNING: Could not link to the BLAS library.  It can be obtained at"
+-  echo "http://www.netlib.org/blas.  Use --with-libdirs and/or --with-libs"
+-  echo "to specify the name of the library."
+-  AC_MSG_ERROR([BLAS is required to complete the build])
+-fi
++PKG_CHECK_MODULES([BLAS], [blas], [LIBBLAS="${BLAS_LIBS}"])
+ 
+ LIBS="$LIBSSAV $LIBBLAS $FLIBS"
+ 
+-LIBLAPACK=""
+-F77_DGESVD=`$PERL $srcdir/bin/mkf77sym.pl.in -method $F77_SYMBOLS DGESVD`
+-AC_CHECK_FUNC($F77_DGESVD,HAVE_LAPACK=yes,[
+-  AC_CHECK_LIB(lapack,$F77_DGESVD,[HAVE_LAPACK=yes;LIBLAPACK="-llapack"]
+-  )]
+-)
+-AC_SUBST(HAVE_LAPACK)
+-if test X$HAVE_LAPACK != Xyes; then
+-  echo "Could not link to the LAPACK library.  It can be obtained at"
+-  echo "http://www.netlib.org/lapack.  Use --with-libdirs and/or --with-libs"
+-  echo "to specify the name of the library."
+-  AC_MSG_ERROR([LAPACK is required to complete the build])
+-fi
++PKG_CHECK_MODULES([LAPACK], [lapack], [LIBLAPACK="${LAPACK_LIBS}"])
+ 
+ FLIBS="$LIBLAPACK $LIBBLAS $FLIBS"
++
+ AC_LANG_RESTORE
+ 
+ dnl ----------- check for Scalable BLAS library --------------

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Font-AFM</remote-id>
+    <remote-id type="cpan-module">Font::AFM</remote-id>
+    <remote-id type="cpan-module">Font::Metrics::Courier</remote-id>
+    <remote-id type="cpan-module">Font::Metrics::CourierBold</remote-id>
+    <remote-id type="cpan-module">Font::Metrics::CourierBoldOblique</remote-id>
+    <remote-id type="cpan-module">Font::Metrics::CourierOblique</remote-id>
+    <remote-id type="cpan-module">Font::Metrics::Helvetica</remote-id>
+    <remote-id type="cpan-module">Font::Metrics::HelveticaBold</remote-id>
+    <remote-id type="cpan-module">Font::Metrics::HelveticaBoldOblique</remote-id>
+    <remote-id type="cpan-module">Font::Metrics::HelveticaOblique</remote-id>
+    <remote-id type="cpan-module">Font::Metrics::TimesBold</remote-id>
+    <remote-id type="cpan-module">Font::Metrics::TimesBoldItalic</remote-id>
+    <remote-id type="cpan-module">Font::Metrics::TimesItalic</remote-id>
+    <remote-id type="cpan-module">Font::Metrics::TimesRoman</remote-id>
+  </upstream>
+</pkgmetadata>

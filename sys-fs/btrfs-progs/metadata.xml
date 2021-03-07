@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>base-system@gentoo.org</email>
+    <name>Gentoo Base System</name>
+  </maintainer>
+  <use>
+    <flag name="convert">Build ext2 conversion utility (btrfs-convert)</flag>
+    <flag name="reiserfs">Enable reiserfs support in btrfs-convert tool.</flag>
+    <flag name="static">Build static binaries in addition to the dynamic ones</flag>
+  </use>
+</pkgmetadata>

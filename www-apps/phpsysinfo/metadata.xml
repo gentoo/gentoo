@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>web-apps@gentoo.org</email>
+		<name>Gentoo Webapps</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/phpsysinfo/phpsysinfo/issues</bugs-to>
+		<remote-id type="github">rk4an/phpsysinfo</remote-id>
+	</upstream>
+</pkgmetadata>

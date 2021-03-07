@@ -1,0 +1,16 @@
+--- mosh-1.2.5/Makefile.am
++++ mosh-1.2.5/Makefile.am
+@@ -8,12 +8,7 @@
+ 
+ VERSION:
+ 	@echo @PACKAGE_STRING@ > VERSION.dist
+-	@set -e; if git describe --dirty --always > VERSION.git 2>&1 && \
+-		[ -z `git rev-parse --show-prefix` ]; then \
+-		if ! diff -q VERSION.git VERSION > /dev/null 2>&1; then \
+-			mv -f VERSION.git VERSION; \
+-		fi; \
+-	elif ! diff -q VERSION.dist VERSION > /dev/null 2>&1; then \
++	@set -e; if ! diff -q VERSION.dist VERSION > /dev/null 2>&1; then \
+ 		mv -f VERSION.dist VERSION; \
+ 	fi
+ 	@rm -f VERSION.dist VERSION.git

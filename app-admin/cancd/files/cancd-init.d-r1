@@ -1,0 +1,22 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/sbin/cancd"
+command_args="-p ${CANCD_PORT}
+              -l ${CANCD_LOG_DIR}
+              -o ${CANCD_LOG_FORMAT}"
+command_user="cancd"
+
+# cancd daemonizes itself, but doesn't write a PID file and doesn't
+# have an option to run in the foreground. So the best we can do
+# is try to match the process name when stopping it.
+procname="cancd"
+
+depend() {
+    need net
+}
+
+start_pre() {
+    checkpath --directory --owner cancd --mode 0700 "${CANCD_LOG_DIR}"
+}

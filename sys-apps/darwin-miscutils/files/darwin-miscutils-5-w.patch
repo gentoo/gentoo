@@ -1,0 +1,10 @@
+--- shell_cmds-118/w/w.c
++++ shell_cmds-118/w/w.c
+@@ -75,7 +75,6 @@
+ #include <kvm.h>
+ #endif
+ #include <langinfo.h>
+-#include <libutil.h>
+ #include <limits.h>
+ #include <locale.h>
+ #include <netdb.h>

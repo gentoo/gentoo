@@ -1,0 +1,11 @@
+--- a/xgnokii/xgnokii.desktop.in
++++ b/xgnokii/xgnokii.desktop.in
+@@ -2,7 +2,7 @@
+ _Name=Xgnokii
+ _GenericName=Mobile Phone Suite
+ _Comment=Manage your mobile phone
+-Icon=phone
++Icon=xgnokii
+ Exec=xgnokii
+ Terminal=false
+ Type=Application

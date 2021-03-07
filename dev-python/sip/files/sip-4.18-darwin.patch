@@ -1,0 +1,30 @@
+diff -ru sip-4.18.orig/siputils.py sip-4.18/siputils.py
+--- sip-4.18.orig/siputils.py	2016-04-16 22:38:22.662502890 +0200
++++ sip-4.18/siputils.py	2016-04-16 22:38:39.881551111 +0200
+@@ -946,8 +946,6 @@
+         """
+         if self.generator in ("MSVC", "MSVC.NET", "MSBUILD", "BMAKE"):
+             plib = clib + ".lib"
+-        elif sys.platform == "darwin" and framework:
+-            plib = "-framework " + clib
+         else:
+             plib = "-l" + clib
+ 
+@@ -962,8 +960,6 @@
+         """
+         if self.generator in ("MSVC", "MSVC.NET", "MSBUILD", "BMAKE"):
+             prl_name = os.path.join(self.config.qt_lib_dir, clib + ".prl")
+-        elif sys.platform == "darwin" and framework:
+-            prl_name = os.path.join(self.config.qt_lib_dir, clib + ".framework", clib + ".prl")
+         else:
+             prl_name = os.path.join(self.config.qt_lib_dir, "lib" + clib + ".prl")
+ 
+@@ -1639,7 +1635,7 @@
+             if sys.platform == "win32":
+                 ext = "pyd"
+             elif sys.platform == "darwin":
+-                ext = "so"
++                ext = "bundle"
+             elif sys.platform == "cygwin":
+                 ext = "dll"
+             else:

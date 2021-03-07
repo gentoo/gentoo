@@ -1,0 +1,16 @@
+ src/include/refcount_ptr.h |    2 ++
+ 1 files changed, 2 insertions(+), 0 deletions(-)
+
+diff --git a/src/include/refcount_ptr.h b/src/include/refcount_ptr.h
+index 4645769..ebabd58 100644
+--- a/src/include/refcount_ptr.h
++++ b/src/include/refcount_ptr.h
+@@ -1,6 +1,8 @@
+ #ifndef	REFCOUNT_PTR_H
+ #define	REFCOUNT_PTR_H
+ 
++#include <stddef.h>
++
+ /*
+  *  Copyright (C) 2007-2010  Anders Gavare.  All rights reserved.
+  *

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>mozilla@gentoo.org</email>
+		<name>Gentoo Mozilla Team</name>
+	</maintainer>
+	<use>
+		<flag name="gmp-autoupdate">
+			Allow Gecko Media Plugins (binary blobs) to be automatically
+			downloaded and kept up-to-date in user profiles
+		</flag>
+	</use>
+</pkgmetadata>

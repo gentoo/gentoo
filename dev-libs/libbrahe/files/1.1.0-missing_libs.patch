@@ -1,0 +1,7 @@
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -14,3 +14,4 @@
+ 
+ AM_CFLAGS = -std=gnu99 -pedantic -Wall -Wno-format
+ DEFS = -I. -I$(srcdir)
++LIBS = -lm

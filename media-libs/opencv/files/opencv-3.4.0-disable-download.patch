@@ -1,0 +1,29 @@
+--- a/CMakeLists.txt	2018-05-13 20:47:11.635871328 +0200
++++ b/CMakeLists.txt	2018-05-13 20:47:49.289872617 +0200
+@@ -187,6 +187,7 @@
+ # ----------------------------------------------------------------------------
+ 
+ OCV_OPTION(OPENCV_ENABLE_NONFREE "Enable non-free algorithms" OFF)
++OCV_OPTION(ENABLE_DOWNLOAD "Enable download during configure" ON)
+ 
+ # 3rd party libs
+ OCV_OPTION(BUILD_ZLIB               "Build zlib from source"             WIN32 OR APPLE)
+
+--- a/cmake/OpenCVDownload.cmake	2018-05-13 21:22:14.966943336 +0200
++++ b/cmake/OpenCVDownload.cmake	2018-05-13 21:23:15.959945424 +0200
+@@ -32,6 +32,7 @@
+ 
+ 
+ function(ocv_download)
++ if(ENABLE_DOWNLOAD)
+   cmake_parse_arguments(DL "UNPACK;RELATIVE_URL" "FILENAME;HASH;DESTINATION_DIR;ID;STATUS" "URL" ${ARGN})
+ 
+   macro(ocv_download_log)
+@@ -236,4 +237,7 @@
+   if(OCV_DOWNLOAD_HASH_NAME)
+     set(${OCV_DOWNLOAD_HASH_NAME} "${DL_HASH}" CACHE INTERNAL "")
+   endif()
++ else()
++  message( "Download was disabled during configure phase by ENABLE_DOWNLOAD=OFF" )
++ endif()
+ endfunction()

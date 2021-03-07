@@ -1,0 +1,81 @@
+diff -ru src.orig/Constante.cpp src/Constante.cpp
+--- src.orig/Constante.cpp	2008-03-22 05:40:33.000000000 -0400
++++ src/Constante.cpp	2008-06-11 23:16:46.000000000 -0400
+@@ -27,6 +27,7 @@
+ #define DATADIR_BRIQUOLO "./"
+ #define PACKAGE "briquolo"
+ #endif
++#include <cstdlib>
+ 
+ #ifdef WIN32
+ #define WIN32_LEAN_AND_MEAN
+diff -ru src.orig/MOGL/MOGL_EnsembleObjet.cpp src/MOGL/MOGL_EnsembleObjet.cpp
+--- src.orig/MOGL/MOGL_EnsembleObjet.cpp	2008-03-24 09:12:36.000000000 -0400
++++ src/MOGL/MOGL_EnsembleObjet.cpp	2008-06-11 23:17:11.000000000 -0400
+@@ -24,7 +24,8 @@
+ #include "MOGL_Armature.h"
+ #include "MOGL_Peau.h"
+ //#include
+-#include <stdio.h>
++#include <cstdio>
++#include <cstring>
+ 
+ //#include <mmsystem.h>
+ 
+diff -ru src.orig/MOGL/MOGL_GestionnaireObjet.cpp src/MOGL/MOGL_GestionnaireObjet.cpp
+--- src.orig/MOGL/MOGL_GestionnaireObjet.cpp	2008-03-24 08:56:13.000000000 -0400
++++ src/MOGL/MOGL_GestionnaireObjet.cpp	2008-06-11 23:18:45.000000000 -0400
+@@ -21,6 +21,7 @@
+  *****************************************************************************/
+ #include "../I18n.h"
+ #include "MOGL_GestionnaireObjet.h"
++#include <cstring>
+ 
+ bool MOGL_GestionnaireObjet::ChargerObjetASCTriangle(const char * p_NomFichier, const MOGL_GestionnaireTexture & p_GM,
+                                                      MOGL_Objet & p_Objet)
+diff -ru src.orig/MOGL/MOGL_GestionnaireObjet.h src/MOGL/MOGL_GestionnaireObjet.h
+--- src.orig/MOGL/MOGL_GestionnaireObjet.h	2006-03-07 15:31:24.000000000 -0500
++++ src/MOGL/MOGL_GestionnaireObjet.h	2008-06-11 23:20:07.000000000 -0400
+@@ -24,7 +24,8 @@
+ 
+ #include <vector>
+ #include <iostream>
+-#include <stdio.h>
++#include <cstdio>
++#include <cstring>
+ 
+ #include "MOGL_Triangle.h"
+ #include "MOGL_Objet.h"
+diff -ru src.orig/MOGL/MOGL_Image.h src/MOGL/MOGL_Image.h
+--- src.orig/MOGL/MOGL_Image.h	2006-03-07 15:53:11.000000000 -0500
++++ src/MOGL/MOGL_Image.h	2008-06-11 23:20:51.000000000 -0400
+@@ -24,6 +24,7 @@
+ 
+ #include "MOGL_Structure.h"
+ #include <string>
++#include <cstring>
+ 
+ using namespace std;
+ 
+diff -ru src.orig/MOGL/MOGL_Objet.cpp src/MOGL/MOGL_Objet.cpp
+--- src.orig/MOGL/MOGL_Objet.cpp	2006-03-07 15:31:24.000000000 -0500
++++ src/MOGL/MOGL_Objet.cpp	2008-06-11 23:21:05.000000000 -0400
+@@ -20,6 +20,7 @@
+  *
+  *****************************************************************************/
+ #include "MOGL_Objet.h"
++#include <cstdlib>
+ 
+ //MOGL_Objet::MOGL_Objet(): MOGL_ObjetAbstrait(), MOGL_ElementArbre()
+ MOGL_Objet::MOGL_Objet(): MOGL_Noeud(), _ModifieTriangle(true), _ModifieStrip(true),
+diff -ru src.orig/MOGL/MOGL_Peau.cpp src/MOGL/MOGL_Peau.cpp
+--- src.orig/MOGL/MOGL_Peau.cpp	2006-03-07 15:31:24.000000000 -0500
++++ src/MOGL/MOGL_Peau.cpp	2008-06-11 23:21:17.000000000 -0400
+@@ -20,6 +20,7 @@
+  *
+  *****************************************************************************/
+ #include "MOGL_Peau.h"
++#include <cstdlib>
+ 
+ MOGL_Peau::MOGL_Peau(): MOGL_Noeud(), _ModifieTriangle(true)
+ {

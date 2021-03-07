@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+		This program helps manage the verification of checksums related to
+		Shorten (SHN) and FLAC audio files. This script provides a convenient
+		way to verify shn/flac files in bulk. 
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">shnflacverify</remote-id>
+	</upstream>
+</pkgmetadata>

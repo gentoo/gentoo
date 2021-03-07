@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+	</maintainer>
+	<longdescription>
+		This library is for working with .tar@ archive files. It
+		can read and write a range of common variations of archive
+		format including V7, USTAR, POSIX and GNU formats. It provides
+		support for packing and unpacking portable archives. This
+		makes it suitable for distribution but not backup because
+		details like file ownership and exact permissions are not
+		preserved.
+	</longdescription>
+</pkgmetadata>

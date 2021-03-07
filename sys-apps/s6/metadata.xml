@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>samuel@sholland.org</email>
+		<name>Samuel Holland</name>
+	</maintainer>
+	<longdescription lang="en">
+		S6 is a small suite of programs for UNIX designed to allow
+		service supervision similar to daemontools or runit.
+	</longdescription>
+	<use>
+		<flag name="execline">enable support for <pkg>dev-lang/execline</pkg></flag>
+	</use>
+</pkgmetadata>

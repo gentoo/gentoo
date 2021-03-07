@@ -1,0 +1,36 @@
+From 0e7ee937e01b764a6bde28875a3bf0169dbfafa6 Mon Sep 17 00:00:00 2001
+From: John Tsiombikas <nuclear@member.fsf.org>
+Date: Sat, 8 Feb 2020 05:23:02 +0200
+Subject: [PATCH] dev.c should conditionally include proto_x11.h, only if
+ USE_X11 is defined. Closes github bug #22.
+
+---
+ src/dev.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/dev.c b/src/dev.c
+index 2074895..8a1b315 100644
+--- a/src/dev.c
++++ b/src/dev.c
+@@ -1,6 +1,6 @@
+ /*
+ spacenavd - a free software replacement driver for 6dof space-mice.
+-Copyright (C) 2007-2019 John Tsiombikas <nuclear@member.fsf.org>
++Copyright (C) 2007-2020 John Tsiombikas <nuclear@member.fsf.org>
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+@@ -25,7 +25,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ #include "dev_serial.h"
+ #include "event.h" /* remove pending events upon device removal */
+ #include "spnavd.h"
++
++#ifdef USE_X11
+ #include "proto_x11.h"
++#endif
+ 
+ static struct device *add_device(void);
+ static struct device *dev_path_in_use(char const * dev_path);
+-- 
+2.26.1
+

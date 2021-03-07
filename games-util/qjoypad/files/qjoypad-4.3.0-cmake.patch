@@ -1,0 +1,14 @@
+--- a/CMakeLists.txt	2016-04-03 01:17:15.000000000 +0200
++++ b/CMakeLists.txt	2019-11-08 21:38:16.713130838 +0100
+@@ -39,11 +39,6 @@
+ 	add_definitions(-DPLAIN_KEYS)
+ endif()
+ 
+-if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
+-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror -pedantic -Wno-variadic-macros")
+-	set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3")
+-endif()
+-
+ set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -D_DEBUG")
+ 
+ # for config.h

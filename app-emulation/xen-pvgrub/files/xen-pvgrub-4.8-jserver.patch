@@ -1,0 +1,13 @@
+diff --git a/tools/firmware/vgabios/Makefile b/tools/firmware/vgabios/Makefile
+index 3284812..ef242b3 100644
+--- a/tools/firmware/vgabios/Makefile
++++ b/tools/firmware/vgabios/Makefile
+@@ -30,7 +30,7 @@ distclean: clean
+ 
+ .PHONY: release
+ release: 
+-	VGABIOS_VERS=\"-DVGABIOS_VERS=\\\"$(RELVERS)\\\"\" make bios cirrus-bios
++	VGABIOS_VERS=\"-DVGABIOS_VERS=\\\"$(RELVERS)\\\"\" $(MAKE) bios cirrus-bios
+ 	/bin/rm -f  *.o *.s *.ld86 \
+           temp.awk.* vgabios.*.orig _vgabios_.*.c core *.bak .#*
+ 	cp VGABIOS-lgpl-latest.bin ../$(RELEASE).bin

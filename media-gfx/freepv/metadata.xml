@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>voyageur@gentoo.org</email>
+		<name>Bernard Cafarelli</name>
+	</maintainer>
+	<longdescription>OpenGL accelerated panorama viewer and browser plugin (supports Quicktime, PangeaVR and GLPanoView panoramas)</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">freepv</remote-id>
+	</upstream>
+</pkgmetadata>

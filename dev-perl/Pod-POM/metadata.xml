@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Pod-POM</remote-id>
+    <remote-id type="cpan-module">Pod::POM</remote-id>
+    <remote-id type="cpan-module">Pod::POM::Constants</remote-id>
+    <remote-id type="cpan-module">Pod::POM::Node</remote-id>
+    <remote-id type="cpan-module">Pod::POM::Node::Begin</remote-id>
+    <remote-id type="cpan-module">Pod::POM::Node::Code</remote-id>
+    <remote-id type="cpan-module">Pod::POM::Node::Content</remote-id>
+    <remote-id type="cpan-module">Pod::POM::Node::For</remote-id>
+    <remote-id type="cpan-module">Pod::POM::Node::Head1</remote-id>
+    <remote-id type="cpan-module">Pod::POM::Node::Head2</remote-id>
+    <remote-id type="cpan-module">Pod::POM::Node::Head3</remote-id>
+    <remote-id type="cpan-module">Pod::POM::Node::Head4</remote-id>
+    <remote-id type="cpan-module">Pod::POM::Node::Item</remote-id>
+    <remote-id type="cpan-module">Pod::POM::Node::Over</remote-id>
+    <remote-id type="cpan-module">Pod::POM::Node::Pod</remote-id>
+    <remote-id type="cpan-module">Pod::POM::Node::Sequence</remote-id>
+    <remote-id type="cpan-module">Pod::POM::Node::Text</remote-id>
+    <remote-id type="cpan-module">Pod::POM::Node::Verbatim</remote-id>
+    <remote-id type="cpan-module">Pod::POM::Nodes</remote-id>
+    <remote-id type="cpan-module">Pod::POM::Test</remote-id>
+    <remote-id type="cpan-module">Pod::POM::View</remote-id>
+    <remote-id type="cpan-module">Pod::POM::View::HTML</remote-id>
+    <remote-id type="cpan-module">Pod::POM::View::Pod</remote-id>
+    <remote-id type="cpan-module">Pod::POM::View::Text</remote-id>
+  </upstream>
+</pkgmetadata>

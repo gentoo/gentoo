@@ -1,0 +1,11 @@
+--- a/configure
++++ b/configure
+@@ -150,7 +150,7 @@
+ 	my $size = shift;
+ 	my $zoom_factor = $size / 90;
+ 	return "$target: $source\n" .
+-	       "\trsvg -x $zoom_factor -y $zoom_factor $source $target";
++	       "\trsvg-convert -x $zoom_factor -y $zoom_factor $source -o $target";
+ }
+ 
+ sub usage {

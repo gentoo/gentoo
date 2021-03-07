@@ -1,0 +1,11 @@
+--- a/plugins/nd/src/backend.h
++++ b/plugins/nd/src/backend.h
+@@ -37,7 +37,7 @@
+     _EVENTD_ND_BACKENDS_SIZE
+ } EventdNdBackends;
+ 
+-const gchar *eventd_nd_backends_names[_EVENTD_ND_BACKENDS_SIZE];
++extern const gchar *eventd_nd_backends_names[_EVENTD_ND_BACKENDS_SIZE];
+ 
+ typedef struct {
+     EventdNdContext *context;

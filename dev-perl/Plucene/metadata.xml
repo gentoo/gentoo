@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Plucene</remote-id>
+    <remote-id type="cpan-module">Plucene</remote-id>
+    <remote-id type="cpan-module">Plucene::Analysis::Analyzer</remote-id>
+    <remote-id type="cpan-module">Plucene::Analysis::CharTokenizer</remote-id>
+    <remote-id type="cpan-module">Plucene::Analysis::LetterTokenizer</remote-id>
+    <remote-id type="cpan-module">Plucene::Analysis::LowerCaseFilter</remote-id>
+    <remote-id type="cpan-module">Plucene::Analysis::LowerCaseTokenizer</remote-id>
+    <remote-id type="cpan-module">Plucene::Analysis::PorterStemFilter</remote-id>
+    <remote-id type="cpan-module">Plucene::Analysis::SimpleAnalyzer</remote-id>
+    <remote-id type="cpan-module">Plucene::Analysis::Standard::StandardAnalyzer</remote-id>
+    <remote-id type="cpan-module">Plucene::Analysis::Standard::StandardTokenizer</remote-id>
+    <remote-id type="cpan-module">Plucene::Analysis::StopAnalyzer</remote-id>
+    <remote-id type="cpan-module">Plucene::Analysis::StopFilter</remote-id>
+    <remote-id type="cpan-module">Plucene::Analysis::Token</remote-id>
+    <remote-id type="cpan-module">Plucene::Analysis::TokenFilter</remote-id>
+    <remote-id type="cpan-module">Plucene::Analysis::Tokenizer</remote-id>
+    <remote-id type="cpan-module">Plucene::Analysis::WhitespaceAnalyzer</remote-id>
+    <remote-id type="cpan-module">Plucene::Analysis::WhitespaceTokenizer</remote-id>
+    <remote-id type="cpan-module">Plucene::Bitvector</remote-id>
+    <remote-id type="cpan-module">Plucene::Document</remote-id>
+    <remote-id type="cpan-module">Plucene::Document::DateSerializer</remote-id>
+    <remote-id type="cpan-module">Plucene::Document::Field</remote-id>
+    <remote-id type="cpan-module">Plucene::Index::DocumentWriter</remote-id>
+    <remote-id type="cpan-module">Plucene::Index::FieldInfos</remote-id>
+    <remote-id type="cpan-module">Plucene::Index::FieldsReader</remote-id>
+    <remote-id type="cpan-module">Plucene::Index::FieldsWriter</remote-id>
+    <remote-id type="cpan-module">Plucene::Index::Norm</remote-id>
+    <remote-id type="cpan-module">Plucene::Index::Posting</remote-id>
+    <remote-id type="cpan-module">Plucene::Index::Reader</remote-id>
+    <remote-id type="cpan-module">Plucene::Index::SegmentInfo</remote-id>
+    <remote-id type="cpan-module">Plucene::Index::SegmentInfos</remote-id>
+    <remote-id type="cpan-module">Plucene::Index::SegmentMergeInfo</remote-id>
+    <remote-id type="cpan-module">Plucene::Index::SegmentMerger</remote-id>
+    <remote-id type="cpan-module">Plucene::Index::SegmentReader</remote-id>
+    <remote-id type="cpan-module">Plucene::Index::SegmentTermDocs</remote-id>
+    <remote-id type="cpan-module">Plucene::Index::SegmentTermEnum</remote-id>
+    <remote-id type="cpan-module">Plucene::Index::SegmentTermPositions</remote-id>
+    <remote-id type="cpan-module">Plucene::Index::SegmentsReader</remote-id>
+    <remote-id type="cpan-module">Plucene::Index::SegmentsTermDocs</remote-id>
+    <remote-id type="cpan-module">Plucene::Index::SegmentsTermEnum</remote-id>
+    <remote-id type="cpan-module">Plucene::Index::SegmentsTermPositions</remote-id>
+    <remote-id type="cpan-module">Plucene::Index::Term</remote-id>
+    <remote-id type="cpan-module">Plucene::Index::TermInfo</remote-id>
+    <remote-id type="cpan-module">Plucene::Index::TermInfosReader</remote-id>
+    <remote-id type="cpan-module">Plucene::Index::TermInfosWriter</remote-id>
+    <remote-id type="cpan-module">Plucene::Index::Writer</remote-id>
+    <remote-id type="cpan-module">Plucene::QueryParser</remote-id>
+    <remote-id type="cpan-module">Plucene::QueryParser::Phrase</remote-id>
+    <remote-id type="cpan-module">Plucene::QueryParser::Prefix</remote-id>
+    <remote-id type="cpan-module">Plucene::QueryParser::Subquery</remote-id>
+    <remote-id type="cpan-module">Plucene::QueryParser::Term</remote-id>
+    <remote-id type="cpan-module">Plucene::QueryParser::TopLevel</remote-id>
+    <remote-id type="cpan-module">Plucene::Search::BooleanClause</remote-id>
+    <remote-id type="cpan-module">Plucene::Search::BooleanQuery</remote-id>
+    <remote-id type="cpan-module">Plucene::Search::BooleanScorer</remote-id>
+    <remote-id type="cpan-module">Plucene::Search::BucketCollector</remote-id>
+    <remote-id type="cpan-module">Plucene::Search::BucketTable</remote-id>
+    <remote-id type="cpan-module">Plucene::Search::DateFilter</remote-id>
+    <remote-id type="cpan-module">Plucene::Search::Filter</remote-id>
+    <remote-id type="cpan-module">Plucene::Search::HitCollector</remote-id>
+    <remote-id type="cpan-module">Plucene::Search::HitDoc</remote-id>
+    <remote-id type="cpan-module">Plucene::Search::Hits</remote-id>
+    <remote-id type="cpan-module">Plucene::Search::IndexSearcher</remote-id>
+    <remote-id type="cpan-module">Plucene::Search::PhrasePositions</remote-id>
+    <remote-id type="cpan-module">Plucene::Search::PhraseQuery</remote-id>
+    <remote-id type="cpan-module">Plucene::Search::PhraseScorer</remote-id>
+    <remote-id type="cpan-module">Plucene::Search::PhraseScorer::Exact</remote-id>
+    <remote-id type="cpan-module">Plucene::Search::PhraseScorer::Sloppy</remote-id>
+    <remote-id type="cpan-module">Plucene::Search::PrefixQuery</remote-id>
+    <remote-id type="cpan-module">Plucene::Search::Query</remote-id>
+    <remote-id type="cpan-module">Plucene::Search::Scorer</remote-id>
+    <remote-id type="cpan-module">Plucene::Search::Searcher</remote-id>
+    <remote-id type="cpan-module">Plucene::Search::Similarity</remote-id>
+    <remote-id type="cpan-module">Plucene::Search::TermQuery</remote-id>
+    <remote-id type="cpan-module">Plucene::Search::TermScorer</remote-id>
+    <remote-id type="cpan-module">Plucene::Search::TopDocs</remote-id>
+    <remote-id type="cpan-module">Plucene::Store::InputStream</remote-id>
+    <remote-id type="cpan-module">Plucene::Store::OutputStream</remote-id>
+    <remote-id type="cpan-module">Plucene::TestCase</remote-id>
+    <remote-id type="cpan-module">Plucene::Utils</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,28 @@
+From 1c0241847e845a8da265aa89f297d3db6ae483b1 Mon Sep 17 00:00:00 2001
+From: Bert Huijben <rhuijben@apache.org>
+Date: Wed, 4 Oct 2017 14:56:22 +0000
+Subject: [PATCH] Fix syntax of a print() in the scons file to unbreak building
+ with most recent scons version.
+
+* SConstruct
+  Use Python 3.0 valid syntax to make Scons 3.0.0 happy on both python 3.0
+  and 2.7.
+
+git-svn-id: https://svn.apache.org/repos/asf/serf/trunk@1811083 13f79535-47bb-0310-9956-ffa450edef68
+---
+ SConstruct | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/SConstruct b/SConstruct
+index e5d407b..fab9828 100644
+--- a/SConstruct
++++ b/SConstruct
+@@ -199,7 +199,7 @@ CALLOUT_OKAY = not (env.GetOption('clean') or env.GetOption('help'))
+ 
+ unknown = opts.UnknownVariables()
+ if unknown:
+-  print 'Warning: Used unknown variables:', ', '.join(unknown.keys())
++  print('Warning: Used unknown variables:', ', '.join(unknown.keys()))
+ 
+ apr = str(env['APR'])
+ apu = str(env['APU'])

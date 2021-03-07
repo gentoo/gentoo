@@ -1,0 +1,14 @@
+Needed so that lvconfig.h gets the correct define for amd64.
+
+Index: libvisual-0.4.0/configure.ac
+===================================================================
+--- libvisual-0.4.0.orig/configure.ac
++++ libvisual-0.4.0/configure.ac
+@@ -780,6 +780,7 @@ echo >>$outfile
+    lv_alpha=$lv_alpha
+    lv_sparc=$lv_sparc
+    lv_ix86=$lv_ix86
++   lv_x86_64=$lv_x86_64
+    lv_powerpc=$lv_powerpc
+    lv_arch_unknown=$lv_arch_unknown
+ 

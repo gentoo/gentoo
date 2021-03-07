@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+	</maintainer>
+	<maintainer type="person">
+		<email>graaff@gentoo.org</email>
+		<description>Puppet 5.x only</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>sysadmin@gentoo.org</email>
+		<name>Gentoo Sysadmin Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>ruby@gentoo.org</email>
+		<name>Gentoo Ruby Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Centralised configuration management for networks
+		Puppet lets you centrally manage every important aspect of your system
+		using a cross-platform specification language that manages all the
+		separate elements normally aggregated in different files, like users,
+		cron jobs, and hosts, along with obviously discrete elements like
+		packages, services, and files.
+
+		Puppet's simple declarative specification language provides powerful
+		classing abilities for drawing out the similarities between hosts while
+		allowing them to be as specific as necessary, and it handles dependency
+		and prerequisite relationships between objects clearly and explicitly.
+	</longdescription>
+	<use>
+<!--		<flag name='puppetdb'>Enable puppetdb support</flag> -->
+		<flag name="augeas">Enable augeas support</flag>
+		<flag name="diff">Enable diff support</flag>
+		<flag name="rrdtool">Enable rrdtool support</flag>
+		<flag name="shadow">Enable shadow support</flag>
+	</use>
+</pkgmetadata>

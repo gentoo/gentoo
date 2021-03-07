@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>thebitpit@austincustomerrands.com</email>
+		<name>Wilson Michaels</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="alsa">Allows MythTV to directly output sound to ALSA devices</flag>
+		<flag name="asi">Support for DVEO ASI recorder</flag>
+		<flag name="autostart">Use a custom autostart configuration</flag>
+		<flag name="bluray">Use the system libbluray for BluRay support</flag>
+		<flag name="cec">Allows control of CEC enabled TVs via HDMI</flag>
+		<flag name="ceton">Ceton InfiniTV 4 a CableCARD-enabled tuner support</flag>
+		<flag name="debug">Instructs Qt to use the 'debug' target</flag>
+		<flag name="egl">EGL video output support</flag>
+		<flag name="fftw">Support visualizations via <pkg>sci-libs/fftw</pkg></flag>
+		<flag name="hdhomerun">Silicondust USA Inc.network-attached tuner support</flag>
+		<flag name="hdpvr">Hauppauge HD-PVR?</flag>
+		<flag name="ieee1394">Firewire enabled Cable boxe support</flag>
+		<flag name="ivtv">Support kernel driver for the iTVC15 family of MPEG codecs</flag>
+		<flag name="jack">Allows MythTV to use JACK as your sound output device</flag>
+		<flag name="java">BD-J support for Blu-ray discs</flag>
+		<flag name="lcd">Enable use of <pkg>app-misc/lcdproc</pkg> data display</flag>
+		<flag name="lirc">LIRC remote control device support</flag>
+		<flag name="nvdec">Enable NVDEC (NVCUVID) hardware accelerated video decoding</flag>
+		<flag name="perl">Build the perl bindings for MythTV</flag>
+		<flag name="vbox">V@Box Communications network-attached tuner devices support</flag>
+		<flag name="vpx">Enable VP8/VP9 support for <pkg>media-libs/libvpx</pkg></flag>
+		<flag name="wrapper">Use Ubuntu mythtfrontend wrapper</flag>
+		<flag name="x265">Enable h265 encoding using x265</flag>
+		<flag name="xmltv">Support <pkg>media-tv/xmltv</pkg> TV listing - not used by Schedules Direct]</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">MythTV/mythtv</remote-id>
+	</upstream>
+</pkgmetadata>

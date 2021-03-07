@@ -1,0 +1,31 @@
+From 13ff34d408cf69339ce1f28756f5c7b5ad5f528b Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Mon, 18 Apr 2016 18:36:09 -0400
+Subject: [PATCH] include sys/sysmacros.h for major/minor funcs
+
+These functions are not part of any official spec, and glibc has always
+kept them in sys/sysmacros.h.  As glibc moves to conform to POSIX, and
+more alternative C libraries come up, we need to include this header
+explicitly to get the prototypes.  Otherwise we fail to build like:
+
+sg_map26.o: In function 'nd_match_scandir_select':
+sg_map26.c:(.text+0x37b): undefined reference to 'major'
+---
+ include/sg_lib.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/include/sg_lib.h b/include/sg_lib.h
+index b3e741b..a0e483c 100644
+--- a/include/sg_lib.h
++++ b/include/sg_lib.h
+@@ -32,6 +32,7 @@
+ 
+ #include <stdio.h>
+ #include <stdint.h>
++#include <sys/sysmacros.h>
+ 
+ #ifdef __cplusplus
+ extern "C" {
+-- 
+2.7.4
+

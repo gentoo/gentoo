@@ -1,0 +1,30 @@
+Fix building with C++14, where destructors are noexcept(true) by default.
+See also: https://bugs.gentoo.org/show_bug.cgi?id=597342
+
+--- a/PACC/Threading/Thread.cpp
++++ b/PACC/Threading/Thread.cpp
+@@ -79,6 +79,9 @@
+ \attention If the destructor in the derived thread class (e.g. MyThread above) does not wait for thread termination, the potential hazardous situation is that the runtime system will have deleted all of its members before calling this destructor (in C++, class destructors are called in reversed sequence). Thus, the still running thread could access deleted data members with unpredictable and unexpected results. So beware!
+ */
+ Threading::Thread::~Thread(void)
++#if __cplusplus >= 201103L
++	noexcept(false)
++#endif
+ {
+ 	lock();
+ 	if(mThread) {
+--- a/PACC/Threading/Thread.hpp
++++ b/PACC/Threading/Thread.hpp
+@@ -53,7 +53,11 @@
+ 		class Thread : public Condition {
+ 		 public:
+ 			Thread(void);
+-			virtual ~Thread(void);
++			virtual ~Thread(void)
++#if __cplusplus >= 201103L
++			noexcept(false)
++#endif
++			;
+ 			
+ 			void cancel(void);
+ 			bool isRunning(void) const;

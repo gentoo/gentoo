@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The sys-libs category contains various system-level libraries.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría sys-libs contiene varias librerías del sistema.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie sys-libs enthält verschiedene Systembibliotheken.
+	</longdescription>
+	<longdescription lang="ja">
+		sys-libsカテゴリには様々なシステムレベルライブラリが含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De sys-libs categorie bevat verschillende systeembibliotheken.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm sys-libs chứa các thư viện cấp hệ thống.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria sys-libs contiene varie librerie di sistema.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria sys-libs contém várias bibliotecas de sistema.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria sys-libs zawiera biblioteki systemowe.
+	</longdescription>
+</catmetadata>
+

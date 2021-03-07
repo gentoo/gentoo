@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>monsieurp@gentoo.org</email>
+    <name>Patrice Clement</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>bkohler@gentoo.org</email>
+    <name>Ben Kohler</name>
+  </maintainer>
+<use>
+  <flag name="brotli">Enable <pkg>app-arch/brotli</pkg> support</flag>
+  <flag name="freetype">Enable <pkg>media-libs/freetype</pkg> support</flag>
+  <flag name="libevent">Enable <pkg>dev-libs/libevent</pkg> support</flag>
+  <flag name="lzip">Enable <pkg>app-arch/lzip</pkg> support</flag>
+</use>
+</pkgmetadata>

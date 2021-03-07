@@ -1,0 +1,10 @@
+--- rtpbreak-1.3a/src/common.h.orig	2009-02-05 14:49:50.000000000 +0100
++++ rtpbreak-1.3a/src/common.h	2009-02-05 14:49:57.000000000 +0100
+@@ -30,6 +30,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <errno.h>
++#include <limits.h>
+ 
+ 
+ /* const */

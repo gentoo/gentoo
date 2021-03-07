@@ -1,0 +1,29 @@
+# Copyright 1999-2020 Gentoo Authors.
+# Distributed under the terms of the GNU General Public License v2
+
+# James Le Cuirot <chewi@gentoo.org> (2020-05-16)
+# execinfo.h is required for debug.
+dev-games/cegui debug
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-03-19)
+# check does not work on musl, bug #713138
+dev-lang/gforth check
+
+# See bug #604542
+net-misc/iputils idn
+
+# See bug #504200, #723370
+sys-devel/gcc sanitize nls vtv
+
+# These cause collisions with <libintl.h>
+# even with --without-included-gettext
+sys-devel/gettext nls
+sys-fs/e2fsprogs nls
+
+# bash-malloc relies on sbrk which is implemented
+# as a fail-only stub in musl. breaks horribly if enabled.
+# bash: xmalloc: locale.c:81: cannot allocate 18 bytes (0 bytes allocated)
+app-shells/bash mem-scramble
+
+# static linking works with musl
+app-shells/mksh -static

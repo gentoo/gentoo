@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Log-Log4perl</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::Appender</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::Appender::Buffer</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::Appender::DBI</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::Appender::File</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::Appender::Limit</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::Appender::RRDs</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::Appender::Screen</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::Appender::ScreenColoredLevels</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::Appender::Socket</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::Appender::String</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::Appender::Synchronized</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::Appender::TestArrayBuffer</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::Appender::TestBuffer</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::Appender::TestFileCreeper</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::Catalyst</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::Config</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::Config::BaseConfigurator</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::Config::DOMConfigurator</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::Config::PropertyConfigurator</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::Config::Watch</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::DateFormat</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::Filter</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::Filter::Boolean</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::Filter::LevelMatch</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::Filter::LevelRange</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::Filter::MDC</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::Filter::StringMatch</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::InternalDebug</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::JavaMap</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::JavaMap::ConsoleAppender</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::JavaMap::FileAppender</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::JavaMap::JDBCAppender</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::JavaMap::NTEventLogAppender</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::JavaMap::RollingFileAppender</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::JavaMap::SyslogAppender</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::JavaMap::TestBuffer</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::Layout</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::Layout::NoopLayout</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::Layout::PatternLayout</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::Layout::PatternLayout::Multiline</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::Layout::SimpleLayout</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::Level</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::Logger</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::MDC</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::NDC</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::Resurrector</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::Util</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::Util::Semaphore</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::Util::TimeTracker</remote-id>
+    <remote-id type="sourceforge">log4perl</remote-id>
+  </upstream>
+</pkgmetadata>

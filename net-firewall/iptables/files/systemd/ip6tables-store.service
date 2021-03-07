@@ -1,0 +1,11 @@
+[Unit]
+Description=Store ip6tables firewall rules
+Before=shutdown.target
+DefaultDependencies=No
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c "/sbin/ip6tables-save --counters > /var/lib/ip6tables/rules-save"
+
+[Install]
+WantedBy=shutdown.target

@@ -1,0 +1,26 @@
+Install man files in /usr/share/man, not /usr/man
+
+--- gcstar/install	2008-03-04 22:56:00.000000000 -0500
++++ gcstar-1.4.0/install	2008-06-06 18:16:17.819918815 -0400
+@@ -107,7 +107,7 @@
+     }
+     
+     unlink $baseDir.'/bin/'.$binName;
+-    unlink $baseDir.'/man/man1/'.$binName.'.1.gz';
++    unlink $baseDir.'/share/man/man1/'.$binName.'.1.gz';
+ 
+     # remove menu and mime items
+ 
+@@ -187,9 +187,9 @@
+     mkpath $baseDir.'/bin';
+     copy 'bin/gcstar', $baseDir.'/bin/'.$binName;
+     
+-    verbosePrint $lang{InstallCopyDirectory}, $baseDir.'/man/man1';
+-    mkpath $baseDir.'/man/man1';
+-    my $manPage = "$baseDir/man/man1/$binName.1";
++    verbosePrint $lang{InstallCopyDirectory}, $baseDir.'/share/man/man1';
++    mkpath $baseDir.'/share/man/man1';
++    my $manPage = "$baseDir/share/man/man1/$binName.1";
+     copy 'man/gcstar.1', $manPage;
+     `gzip -f $manPage 2>&1 >/dev/null`;
+     

@@ -1,0 +1,33 @@
+Description: Fix FTBFS with libmail-mbox-messageparser-perl 1.5002
+ From 1.5002, it does not return "No data on standard input" anymore.
+Author: Vincent Legout <vincent@legout.info>
+Last-Update: 2010-04-28
+Bug-Debian: http://bugs.debian.org/549782
+Bug-Gentoo: https://bugs.gentoo.org/296657
+
+--- grepmail/t/nonexistent_mailbox.t
++++ grepmail/t/nonexistent_mailbox.t
+@@ -13,21 +13,15 @@
+   => ['none','no_such_file'],
+ "$^X -MExtUtils::Command -e cat no_such_file 2>" . devnull() .
+   " | grepmail pattern"
+-  => ['none','no_data'],
++  => ['none','none'],
+ "grepmail -E $single_quote\$email =~ /pattern/$single_quote no_such_file"
+   => ['none','no_such_file'],
+ "$^X -MExtUtils::Command -e cat no_such_file 2>" . devnull() .
+   " | grepmail -E $single_quote\$email =~ /pattern/$single_quote"
+-  => ['none','no_data'],
++  => ['none','none'],
+ );
+ 
+ my %expected_errors = (
+-"$^X -MExtUtils::Command -e cat no_such_file 2>" . devnull() .
+-  " | grepmail pattern"
+-  => 1,
+-"$^X -MExtUtils::Command -e cat no_such_file 2>" . devnull() .
+-  " | grepmail -E $single_quote\$email =~ /pattern/$single_quote"
+-  => 1,
+ );
+ 
+ my %localization = (

@@ -1,0 +1,131 @@
+From 62a7b879051f2029fe46618f8bf9a019bdb96845 Mon Sep 17 00:00:00 2001
+From: Lisandro Dalcin <dalcinl@gmail.com>
+Date: Fri, 25 Oct 2019 12:22:41 +0300
+Subject: [PATCH] mpi4py.futures: Fixes to support Python 3.8
+
+---
+ demo/futures/test_futures.py   |  7 +++++--
+ src/mpi4py/futures/__init__.py | 10 ++++++++++
+ src/mpi4py/futures/_base.py    | 25 +++++++++++++++++++++++--
+ 3 files changed, 38 insertions(+), 4 deletions(-)
+
+diff --git a/demo/futures/test_futures.py b/demo/futures/test_futures.py
+index 925544d..7e03003 100644
+--- a/demo/futures/test_futures.py
++++ b/demo/futures/test_futures.py
+@@ -1157,7 +1157,9 @@ class ThenTest(unittest.TestCase):
+         def transform(a):
+             try:
+                 f = chain.pop(0)
+-                f.set_result(transform(a))
++                r = transform(a)
++                f.__init__()
++                f.set_result(r)
+                 return f
+             except IndexError:
+                 return 42
+@@ -1176,7 +1178,8 @@ class ThenTest(unittest.TestCase):
+         self.assert_(new_f.exception())
+         with self.assertRaises(RuntimeError) as catcher:
+             new_f.result()
+-        assert 'Circular future chain detected' in catcher.exception.args[0]
++        self.assert_('Circular future chain detected'
++                     in catcher.exception.args[0])
+ 
+ 
+ SKIP_POOL_TEST = False
+diff --git a/src/mpi4py/futures/__init__.py b/src/mpi4py/futures/__init__.py
+index d8c00bc..0518d7a 100644
+--- a/src/mpi4py/futures/__init__.py
++++ b/src/mpi4py/futures/__init__.py
+@@ -15,6 +15,14 @@ try:
+         wait,
+         as_completed,
+     )
++    try:  # Python 3.7
++        from concurrent.futures import BrokenExecutor
++    except ImportError:  # pragma: no cover
++        BrokenExecutor = RuntimeError
++    try:  # Python 3.8
++        from concurrent.futures import InvalidStateError
++    except ImportError:  # pragma: no cover
++        InvalidStateError = CancelledError.__base__
+ except ImportError:  # pragma: no cover
+     from ._base import (
+         FIRST_COMPLETED,
+@@ -22,6 +30,8 @@ except ImportError:  # pragma: no cover
+         ALL_COMPLETED,
+         CancelledError,
+         TimeoutError,
++        InvalidStateError,
++        BrokenExecutor,
+         Future,
+         Executor,
+         wait,
+diff --git a/src/mpi4py/futures/_base.py b/src/mpi4py/futures/_base.py
+index cfbd2c0..3eaa512 100644
+--- a/src/mpi4py/futures/_base.py
++++ b/src/mpi4py/futures/_base.py
+@@ -1,4 +1,4 @@
+-# Backport of concurrent.futures._base from Python 3.7
++# Backport of concurrent.futures._base from Python 3.8
+ # pylint: skip-file
+ 
+ # Copyright 2009 Brian Quinlan. All Rights Reserved.
+@@ -61,6 +61,10 @@ class TimeoutError(Error):
+     """The operation exceeded the given deadline."""
+     pass
+ 
++class InvalidStateError(Error):
++    """The operation is not allowed in this state."""
++    pass
++
+ class _Waiter(object):
+     """Provides the event that wait() and as_completed() block on."""
+     def __init__(self):
+@@ -414,7 +418,14 @@ class Future(object):
+             if self._state not in [CANCELLED, CANCELLED_AND_NOTIFIED, FINISHED]:
+                 self._done_callbacks.append(fn)
+                 return
+-        fn(self)
++        try:
++            fn(self)
++        except Exception:
++            LOGGER.exception('exception calling callback for %r', self)
++        except BaseException:
++            raise
++        except:  # old-style exception objects
++            LOGGER.exception('exception calling callback for %r', self)
+ 
+     def result(self, timeout=None):
+         """Return the result of the call that the future represents.
+@@ -527,6 +538,8 @@ class Future(object):
+         Should only be used by Executor implementations and unit tests.
+         """
+         with self._condition:
++            if self._state in {CANCELLED, CANCELLED_AND_NOTIFIED, FINISHED}:
++                raise InvalidStateError('{}: {!r}'.format(self._state, self))
+             self._result = result
+             self._state = FINISHED
+             for waiter in self._waiters:
+@@ -540,6 +553,8 @@ class Future(object):
+         Should only be used by Executor implementations and unit tests.
+         """
+         with self._condition:
++            if self._state in {CANCELLED, CANCELLED_AND_NOTIFIED, FINISHED}:
++                raise InvalidStateError('{}: {!r}'.format(self._state, self))
+             self._exception = exception
+             self._state = FINISHED
+             for waiter in self._waiters:
+@@ -625,3 +640,9 @@ class Executor(object):
+     def __exit__(self, exc_type, exc_val, exc_tb):
+         self.shutdown(wait=True)
+         return False
++
++
++class BrokenExecutor(RuntimeError):
++    """
++    Raised when a executor has become non-functional after a severe failure.
++    """
+-- 
+2.10.5

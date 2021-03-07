@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>polynomial-c@gentoo.org</email>
+		<name>Lars Wendler</name>
+	</maintainer>
+	<longdescription>
+		The jfsutils package contains administration and debugging
+		tools for IBM's journaled file system.
+
+		IBM's journaled file system technology, currently used in IBM enterprise servers,
+		is designed for high-throughput server environments, key to running intranet and
+		other high-performance e-business file servers.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">jfs</remote-id>
+	</upstream>
+</pkgmetadata>

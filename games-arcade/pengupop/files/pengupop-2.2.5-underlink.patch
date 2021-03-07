@@ -1,0 +1,20 @@
+--- a/Makefile.am.old	2011-06-14 21:44:40.242317771 +0200
++++ b/Makefile.am	2011-06-14 21:44:49.216882568 +0200
+@@ -17,7 +17,7 @@
+ nodist_pengupop_SOURCES = images.h
+ 
+ if LINUX
+-pengupop_LDADD = -lSDL -lz
++pengupop_LDADD = -lSDL -lz -lm
+ 
+ endif
+ if WIN32
+@@ -25,7 +25,7 @@
+ endif
+ if DARWIN
+ pengupop_LDFLAGS = -framework Carbon -framework CoreServices -framework AudioUnit -framework QuickTime -framework Cocoa -framework IOKit -framework OpenGL -framework SDL SDLMain.m
+-pengupop_LDADD = -lz -lstdc++
++pengupop_LDADD = -lz -lstdc++ -lm
+ 
+ all-local: Pengupop.dmg
+ 

@@ -1,0 +1,15 @@
+Point to where the headers are really installed.
+
+--- a/oauth.prf
++++ b/oauth.prf
+@@ -1,9 +1,6 @@
+-QOAUTH_INCDIR = $$[QT_INSTALL_HEADERS]
++QOAUTH_INCDIR = $$[QT_INSTALL_HEADERS]/..
+ QOAUTH_LIBDIR = $$[QT_INSTALL_LIBS]
+ 
+-QOAUTH_INCDIR ~= s!/qt4*!!
+-QOAUTH_LIBDIR ~= s!/qt4*!!
+-
+ CONFIG *= qt
+ CONFIG += crypto
+ 

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>java@gentoo.org</email>
+	<name>Java</name>
+</maintainer>
+<use>
+	<flag name="native">Build a native binary along with the jar. Provides faster execution time, but needs about 1G memory and some patience to compile.</flag>
+</use>
+</pkgmetadata>

@@ -1,0 +1,56 @@
+From 2fb8c6a62b52aa85266f1cf0e8cf6dfa1a7f194f Mon Sep 17 00:00:00 2001
+From: Adrien Plazas <kekun.plazas@laposte.net>
+Date: Mon, 11 May 2020 13:38:36 +0200
+Subject: [PATCH 2/2] glade: Support both 3.24 and 3.36
+
+leio: Backported to 0.0.13
+---
+ glade/glade-hdy-header-group.c |  9 +++++++++
+ glade/glade-hdy-swipe-group.c  | 11 +++++++++++
+ 2 files changed, 20 insertions(+)
+
+diff --git a/glade/glade-hdy-header-group.c b/glade/glade-hdy-header-group.c
+index aa83c6b..bd620ad 100644
+--- a/glade/glade-hdy-header-group.c
++++ b/glade/glade-hdy-header-group.c
+@@ -14,6 +14,15 @@
+ #include <glib/gi18n-lib.h>
+ #include <gladeui/glade.h>
+ 
++/* Guess wether we are using a Glade version older than 3.36.
++ *
++ * If yes, redefine some symbols which got renamed.
++ */
++#ifndef GLADE_PROPERTY_DEF_OBJECT_DELIMITER
++#define GLADE_PROPERTY_DEF_OBJECT_DELIMITER GPC_OBJECT_DELIMITER
++#define glade_widget_action_get_def glade_widget_action_get_class
++#endif
++
+ #define GLADE_TAG_HEADERGROUP_WIDGETS "headerbars"
+ #define GLADE_TAG_HEADERGROUP_WIDGET  "headerbar"
+ 
+diff --git a/glade/glade-hdy-swipe-group.c b/glade/glade-hdy-swipe-group.c
+index ff909b0..5b165a2 100644
+--- a/glade/glade-hdy-swipe-group.c
++++ b/glade/glade-hdy-swipe-group.c
+@@ -15,6 +15,17 @@
+ #include <glib/gi18n-lib.h>
+ #include <gladeui/glade.h>
+ 
++/* Guess wether we are using a Glade version older than 3.36.
++ *
++ * If yes, redefine some symbols which got renamed.
++ */
++#ifndef GLADE_PROPERTY_DEF_OBJECT_DELIMITER
++#define GLADE_PROPERTY_DEF_OBJECT_DELIMITER GPC_OBJECT_DELIMITER
++#define glade_widget_action_get_def glade_widget_action_get_class
++#endif
++
++#define GLADE_TAG_HEADERGROUP_WIDGETS "headerbars"
++#define GLADE_TAG_HEADERGROUP_WIDGET  "headerbar"
+ #define PROP_SWIPEABLES "swipeables"
+ #define GLADE_TAG_SWIPEGROUP_SWIPEABLES "swipeables"
+ #define GLADE_TAG_SWIPEGROUP_SWIPEABLE "swipeable"
+-- 
+2.20.1
+

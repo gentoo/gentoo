@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>qt@gentoo.org</email>
+		<name>Gentoo Qt Project</name>
+	</maintainer>
+	<use>
+		<flag name="designer">Build plugin for Qt Designer</flag>
+	</use>
+	<upstream>
+		<maintainer status="active">
+			<email>phil@riverbankcomputing.com</email>
+			<name>Phil Thompson</name>
+		</maintainer>
+		<doc>https://www.riverbankcomputing.com/static/Docs/QScintilla/</doc>
+		<bugs-to>mailto:qscintilla@riverbankcomputing.com</bugs-to>
+	</upstream>
+</pkgmetadata>

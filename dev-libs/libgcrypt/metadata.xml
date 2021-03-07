@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>zlogene@gentoo.org</email>
+    <name>Mikle Kolyada</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:gnupg:libgcrypt</remote-id>
+</upstream>
+<use>
+  <flag name="asm">Enable assembly for optimization</flag>
+  <flag name="o-flag-munging">Enable O-flag mangling during build</flag>
+</use>
+</pkgmetadata>

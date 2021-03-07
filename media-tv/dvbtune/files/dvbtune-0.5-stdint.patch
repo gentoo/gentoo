@@ -1,0 +1,10 @@
+--- dvbtune-0.5/dvbtune.c	2017-12-03 12:24:12.222743908 +0100
++++ dvbtune-0.5/dvbtune.c	2017-12-03 12:24:37.951429997 +0100
+@@ -37,6 +37,7 @@
+ */
+ 
+ // Linux includes:
++#include <stdint.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>

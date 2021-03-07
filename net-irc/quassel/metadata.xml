@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>patrick@gentoo.org</email>
+		<name>Patrick Lauer</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>johu@gentoo.org</email>
+		<name>Johannes Huber</name>
+	</maintainer>
+	<use>
+		<flag name="bundled-icons">
+			Use icon themes bundled with Quassel, rather than depending on system packages.
+		</flag>
+		<flag name="crypt">
+			Support core-&gt;network per-channel and per-query blowfish
+			encryption via <pkg>app-crypt/qca</pkg> SLOT 2.
+		</flag>
+		<flag name="dbus">
+			Support desktop notifications via the StatusNotifier D-Bus service
+			(used by most modern desktop environments).
+		</flag>
+		<flag name="monolithic">
+			Build standalone client with integrated core, no external
+			quasselcore needed. Only useful if you don't want to use Quassel's
+			client/server model. The server and X flags are not needed in this
+			case but it is possible to enable them too.
+		</flag>
+		<flag name="oxygen">
+			Support the Oxygen icon set that was the default for KDE4.
+		</flag>
+		<flag name="server">
+			Build the server binary. If this USE flag is disabled, the
+			'core' server binary for quassel is not built, and cannot be
+			used. You need this enabled on the server, but you might want to
+			disable it on the client.
+		</flag>
+		<flag name="snorenotify">
+			Support for Snore notification framework.
+		</flag>
+		<flag name="urlpreview">
+			Use QtWebEngine rendering engine for showing URL thumbnails.
+		</flag>
+		<flag name="X">
+			Build the Qt5 GUI client for quassel. If this USE flag is
+			disabled, the GUI is not built, and cannot be used. You might
+			want to disable this on the server, but you need it enabled on
+			the client.
+		</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,37 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Check for OpenRC/Baselayout 2 - see bug #270646
+is_openrc() {
+    [ -f /lib/librc.so -o -f /etc/init.d/sysfs -o -f /lib/rc/version ]
+}
+
+start() {
+	ebegin "Starting FMS"
+	if is_openrc; then
+		start-stop-daemon -S -u freenet:freenet -d /var/freenet/fms -b -x /usr/bin/fms
+		eend $?
+	else
+		cd /var/freenet/fms
+		su -s /bin/sh -c "fms --daemon" freenet
+		eend $?
+	fi
+}
+
+stop() {
+	ebegin "Stopping FMS"
+	if is_openrc; then
+		start-stop-daemon -K -u freenet:freenet -d /var/freenet/fms /usr/bin/fms
+		eend $?
+	else
+		pkill -u freenet -f "fms --daemon"
+		eend 0
+	fi
+	if [[ $RC_CMD == "restart" ]]; then
+		ebegin "Waiting a few seconds to be sure FMS is ready for restart"
+		sleep 10
+		#give fms time to stop and release the nntp port
+	fi
+}
+

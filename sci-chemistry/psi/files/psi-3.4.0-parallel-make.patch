@@ -1,0 +1,19 @@
+diff --git a/src/lib/libipv1/Makefile.in b/src/lib/libipv1/Makefile.in
+index eafe8e2..141bf3b 100644
+--- a/src/lib/libipv1/Makefile.in
++++ b/src/lib/libipv1/Makefile.in
+@@ -33,10 +33,12 @@ LIBOBJ = $(ALLCSRC:%.c=%.o) $(ALLCXXSRC:%.cc=%.o)
+ 
+ include ../MakeRules
+ 
+-y.tab.c y.tab.h: parse.y
++y.tab.h: y.tab.c
++
++y.tab.c: parse.y
+ 	$(YACC) -v -d $<
+ 
+-scan.c: scan.l
++scan.c: scan.l y.tab.h
+ 	$(LEX) -t $^ > scan.c
+ 
+ install_inc:: $(ALLINCLUDE)

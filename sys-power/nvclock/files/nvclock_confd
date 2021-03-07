@@ -1,0 +1,9 @@
+# Config file for /etc/init.d/nvclock
+
+# Set the core clock speed after -n and the memory clock speed after -m
+# Check your current speeds by running 'nvclock -s' at the command line
+# so you don't overclock too much and burn out the card
+# Test out your overclocking before adding this to the bootup!
+
+CLOCKOPTS="-s"
+#CLOCKOPTS="-n <corespeed> -m <memspeed>"

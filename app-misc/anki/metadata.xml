@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>patrick@gentoo.org</email>
+		<name>Patrick Lauer</name>
+	</maintainer>
+	<longdescription lang="en">
+		Anki is a program designed to help you remember facts
+		(such as words and phrases in a foreign language) as
+		quickly, easily and efficiently as possible.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">ankitects/anki</remote-id>
+	</upstream>
+</pkgmetadata>

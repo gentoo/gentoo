@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">DateTime-Set</remote-id>
+    <remote-id type="cpan-module">DateTime::Set</remote-id>
+    <remote-id type="cpan-module">DateTime::Span</remote-id>
+    <remote-id type="cpan-module">DateTime::SpanSet</remote-id>
+    <remote-id type="cpan-module">Set::Infinite::_recurrence</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+    <name>Michael Orlitzky</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sysadmin@gentoo.org</email>
+    <name>Gentoo Sysadmin Project</name>
+  </maintainer>
+  <longdescription>
+    Nagios is a host and service monitor designed to inform you of
+    network problems before your clients, end-users or managers do. It
+    has been designed to run under the Linux operating system, but
+    works fine under most *NIX variants as well. The monitoring daemon
+    runs intermittent checks on hosts and services you specify using
+    external "plugins" which return status information to Nagios. When
+    problems are encountered, the daemon can send notifications out to
+    administrative contacts in a variety of different ways (email,
+    instant message, SMS, etc.). Current status information,
+    historical logs, and reports can all be accessed via a web
+    browser.
+  </longdescription>
+</pkgmetadata>

@@ -1,0 +1,12 @@
+--- updatedd-2.6/src/updatedd.c.orig	2008-04-01 19:00:30.000000000 +1100
++++ updatedd-2.6/src/updatedd.c	2008-04-01 19:01:17.000000000 +1100
+@@ -272,7 +272,8 @@
+ 		int c, option_index = 0;
+ 		static struct option long_options[] = {
+ 			{ "help",	0, 0, 'h' },
+-			{ "version",	0, 0, 'v' }
++			{ "version",	0, 0, 'v' },
++			{ 0,    0, 0, 0 }
+ 		};
+ 
+ 		c = getopt_long(argc, argv, "LY",

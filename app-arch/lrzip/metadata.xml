@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!--maintainer-needed-->
+	<longdescription>
+	This is a compression program optimised for large files. The larger the
+	file and the more memory you have, the better the compression advantage
+	this will provide, especially once the files are larger than 100MB.
+	The advantage can be chosen to be either size (much smaller than bzip2)
+	or speed (much faster than bzip2).
+	</longdescription>
+	<upstream>
+		<remote-id type="github">ckolivas/lrzip</remote-id>
+	</upstream>
+</pkgmetadata>

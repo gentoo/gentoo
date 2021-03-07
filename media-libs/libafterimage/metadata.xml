@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-physics@gentoo.org</email>
+		<name>Gentoo Physics Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		libAfterImage is a generic image manipulation library.
+		It was initially implemented to address AfterStep Window Manager's needs for
+		image handling, but it evolved into software suitable for project
+		that has needs for handling images. Most of the popular image formats are
+		supported using standard libraries, with XCF, XPM, PPM/PNM, BMP, ICO,
+		TGA and GIF being supported internally. PNG, JPEG and TIFF formats are
+		supported via standard libraries. Text rendering capabilities
+		included, providing support for TrueType fonts using FreeType library,
+		and anti-aliasing of standard fonts from X window system.
+	</longdescription>
+	<use>
+		<flag name="shaping">Use MIT shaped X windows extention.</flag>
+		<flag name="shm">Use MIT shared memory extention for X image transfer.</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<!-- maintainer-needed -->
+  <upstream>
+    <remote-id type="google-code">wvstreams</remote-id>
+  </upstream>
+  <use>
+    <flag name="boost">
+      Use <pkg>dev-libs/boost</pkg> to provide TR1-compatible
+      functional interface. This USE flag is only needed with GCC
+      earlier than version 4.1, or with other compilares not providing
+      said interface.
+    </flag>
+  </use>
+</pkgmetadata>

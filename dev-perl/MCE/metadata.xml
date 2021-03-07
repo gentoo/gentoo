@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <use>
+    <flag name="sereal">Install <pkg>dev-perl/Sereal-Encoder</pkg> and decoder for faster worker IPC</flag>
+  </use>
+  <upstream>
+    <remote-id type="cpan">MCE</remote-id>
+    <remote-id type="cpan-module">MCE</remote-id>
+    <remote-id type="cpan-module">MCE::Candy</remote-id>
+    <remote-id type="cpan-module">MCE::Core::Input::Generator</remote-id>
+    <remote-id type="cpan-module">MCE::Core::Input::Handle</remote-id>
+    <remote-id type="cpan-module">MCE::Core::Input::Iterator</remote-id>
+    <remote-id type="cpan-module">MCE::Core::Input::Request</remote-id>
+    <remote-id type="cpan-module">MCE::Core::Input::Sequence</remote-id>
+    <remote-id type="cpan-module">MCE::Core::Manager</remote-id>
+    <remote-id type="cpan-module">MCE::Core::Validation</remote-id>
+    <remote-id type="cpan-module">MCE::Core::Worker</remote-id>
+    <remote-id type="cpan-module">MCE::Flow</remote-id>
+    <remote-id type="cpan-module">MCE::Grep</remote-id>
+    <remote-id type="cpan-module">MCE::Loop</remote-id>
+    <remote-id type="cpan-module">MCE::Map</remote-id>
+    <remote-id type="cpan-module">MCE::Mutex</remote-id>
+    <remote-id type="cpan-module">MCE::Mutex::Channel</remote-id>
+    <remote-id type="cpan-module">MCE::Mutex::Flock</remote-id>
+    <remote-id type="cpan-module">MCE::Queue</remote-id>
+    <remote-id type="cpan-module">MCE::Relay</remote-id>
+    <remote-id type="cpan-module">MCE::Signal</remote-id>
+    <remote-id type="cpan-module">MCE::Step</remote-id>
+    <remote-id type="cpan-module">MCE::Stream</remote-id>
+    <remote-id type="cpan-module">MCE::Subs</remote-id>
+    <remote-id type="cpan-module">MCE::Util</remote-id>
+  </upstream>
+</pkgmetadata>

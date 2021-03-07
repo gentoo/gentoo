@@ -1,0 +1,119 @@
+From: Mike Swanson <mikeonthecomputer@gmail.com>
+Date: Sat, 7 Sep 2019 10:43:57 -0700
+Subject: [PATCH] Update to latest AppStream (formerly AppData) standards
+
+Install files into ${prefix}/share/metainfo rather than
+${prefix}/share/appdata, name files by reverse-DNS and suffixed
+.metainfo.xml.
+
+"appstream-util validate" still complains about a missing
+update_contact tag and issues with the caption tags being either short
+or long, but the specification at
+https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html
+says these are not errors.
+---
+ configure.ac                                  |  8 +++---
+ ...om.appdata.xml.in => Doom.metainfo.xml.in} |  0
+ ...appdata.xml.in => Heretic.metainfo.xml.in} |  0
+ ...n.appdata.xml.in => Hexen.metainfo.xml.in} |  0
+ src/Makefile.am                               | 28 +++++++++----------
+ ....appdata.xml.in => Strife.metainfo.xml.in} |  0
+ 7 files changed, 19 insertions(+), 19 deletions(-)
+ rename src/{doom.appdata.xml.in => Doom.metainfo.xml.in} (100%)
+ rename src/{heretic.appdata.xml.in => Heretic.metainfo.xml.in} (100%)
+ rename src/{hexen.appdata.xml.in => Hexen.metainfo.xml.in} (100%)
+ rename src/{strife.appdata.xml.in => Strife.metainfo.xml.in} (100%)
+
+diff --git a/configure.ac b/configure.ac
+index 5ec9dfbf..8a3e1bbc 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -167,14 +167,14 @@ pkg/osx/Info.plist
+ rpm.spec
+ data/Makefile
+ src/Makefile
+-src/doom.appdata.xml
++src/Doom.metainfo.xml
+ src/doom.desktop
+ src/doom-screensaver.desktop
+ src/doom/Makefile
+-src/heretic.appdata.xml
++src/Heretic.metainfo.xml
+ src/heretic.desktop
+ src/heretic/Makefile
+-src/hexen.appdata.xml
++src/Hexen.metainfo.xml
+ src/hexen.desktop
+ src/hexen/Makefile
+ src/resource.rc
+@@ -182,7 +182,7 @@ src/setup-res.rc
+ src/setup/Makefile
+ src/setup/setup.desktop
+ src/setup/setup-manifest.xml
+-src/strife.appdata.xml
++src/Strife.metainfo.xml
+ src/strife.desktop
+ src/strife/Makefile
+ textscreen/Makefile
+diff --git a/src/doom.appdata.xml.in b/src/Doom.metainfo.xml.in
+similarity index 100%
+rename from src/doom.appdata.xml.in
+rename to src/Doom.metainfo.xml.in
+diff --git a/src/heretic.appdata.xml.in b/src/Heretic.metainfo.xml.in
+similarity index 100%
+rename from src/heretic.appdata.xml.in
+rename to src/Heretic.metainfo.xml.in
+diff --git a/src/hexen.appdata.xml.in b/src/Hexen.metainfo.xml.in
+similarity index 100%
+rename from src/hexen.appdata.xml.in
+rename to src/Hexen.metainfo.xml.in
+diff --git a/src/Makefile.am b/src/Makefile.am
+index e54aeead..6880bd3c 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -220,24 +220,24 @@ EXTRA_DIST =                        \
+         doom-screensaver.desktop.in \
+         manifest.xml
+ 
+-appdatadir = $(prefix)/share/metainfo
+-appdata_DATA =                              \
+-        @PROGRAM_PREFIX@doom.appdata.xml    \
+-        @PROGRAM_PREFIX@heretic.appdata.xml \
+-        @PROGRAM_PREFIX@hexen.appdata.xml   \
+-        @PROGRAM_PREFIX@strife.appdata.xml
++metainfodir = $(prefix)/share/metainfo
++metainfo_DATA =                             \
++        @PACKAGE_RDNS@.Doom.metainfo.xml    \
++        @PACKAGE_RDNS@.Heretic.metainfo.xml \
++        @PACKAGE_RDNS@.Hexen.metainfo.xml   \
++        @PACKAGE_RDNS@.Strife.metainfo.xml
+ 
+-@PROGRAM_PREFIX@doom.appdata.xml : doom.appdata.xml
+-	cp doom.appdata.xml $@
++@PACKAGE_RDNS@.Doom.metainfo.xml : Doom.metainfo.xml
++	cp Doom.metainfo.xml $@
+ 
+-@PROGRAM_PREFIX@heretic.appdata.xml : heretic.appdata.xml
+-	cp heretic.appdata.xml $@
++@PACKAGE_RDNS@.Heretic.metainfo.xml : Heretic.metainfo.xml
++	cp Heretic.metainfo.xml $@
+ 
+-@PROGRAM_PREFIX@hexen.appdata.xml : hexen.appdata.xml
+-	cp hexen.appdata.xml $@
++@PACKAGE_RDNS@.Hexen.metainfo.xml : Hexen.metainfo.xml
++	cp Hexen.metainfo.xml $@
+ 
+-@PROGRAM_PREFIX@strife.appdata.xml : strife.appdata.xml
+-	cp strife.appdata.xml $@
++@PACKAGE_RDNS@.Strife.metainfo.xml : Strife.metainfo.xml
++	cp Strife.metainfo.xml $@
+ 
+ appdir = $(prefix)/share/applications
+ app_DATA =                                 \
+diff --git a/src/strife.appdata.xml.in b/src/Strife.metainfo.xml.in
+similarity index 100%
+rename from src/strife.appdata.xml.in
+rename to src/Strife.metainfo.xml.in
+-- 
+2.26.2
+

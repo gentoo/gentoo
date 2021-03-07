@@ -1,0 +1,26 @@
+diff --git a/Makefile.am b/Makefile.am
+index 587cfa7..498abfb 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -177,7 +177,7 @@ EXTRA_DIST += rpmpopt.in
+ 
+ usrsrcdir = $(prefix)/src
+ 
+-rpmvardir = $(localstatedir)/lib/rpm
++rpmvardir = $(localstatedir)/rpm
+ rpmvar_DATA =
+ 
+ install-exec-hook:
+diff --git a/macros.in b/macros.in
+index ae46fcb..213b53c 100644
+--- a/macros.in
++++ b/macros.in
+@@ -155,7 +155,7 @@
+ %_bzip2bin		%{__bzip2}
+ 
+ #	The location of the rpm database file(s).
+-%_dbpath		%{_var}/lib/rpm
++%_dbpath		%{_var}/rpm
+ 
+ #	The location of the rpm database file(s) after "rpm --rebuilddb".
+ %_dbpath_rebuild	%{_dbpath}

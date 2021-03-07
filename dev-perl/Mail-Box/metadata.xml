@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>perl@gentoo.org</email>
+		<name>Gentoo Perl Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpan">Mail-Box</remote-id>
+		<remote-id type="cpan-module">Mail::Box</remote-id>
+		<remote-id type="cpan-module">Mail::Box::Collection</remote-id>
+		<remote-id type="cpan-module">Mail::Box::Dir</remote-id>
+		<remote-id type="cpan-module">Mail::Box::Dir::Message</remote-id>
+		<remote-id type="cpan-module">Mail::Box::File</remote-id>
+		<remote-id type="cpan-module">Mail::Box::File::Message</remote-id>
+		<remote-id type="cpan-module">Mail::Box::Identity</remote-id>
+		<remote-id type="cpan-module">Mail::Box::Locker</remote-id>
+		<remote-id type="cpan-module">Mail::Box::Locker::DotLock</remote-id>
+		<remote-id type="cpan-module">Mail::Box::Locker::FcntlLock</remote-id>
+		<remote-id type="cpan-module">Mail::Box::Locker::Flock</remote-id>
+		<remote-id type="cpan-module">Mail::Box::Locker::Multi</remote-id>
+		<remote-id type="cpan-module">Mail::Box::Locker::Mutt</remote-id>
+		<remote-id type="cpan-module">Mail::Box::Locker::NFS</remote-id>
+		<remote-id type="cpan-module">Mail::Box::Locker::POSIX</remote-id>
+		<remote-id type="cpan-module">Mail::Box::MH</remote-id>
+		<remote-id type="cpan-module">Mail::Box::MH::Index</remote-id>
+		<remote-id type="cpan-module">Mail::Box::MH::Labels</remote-id>
+		<remote-id type="cpan-module">Mail::Box::MH::Message</remote-id>
+		<remote-id type="cpan-module">Mail::Box::Maildir</remote-id>
+		<remote-id type="cpan-module">Mail::Box::Maildir::Message</remote-id>
+		<remote-id type="cpan-module">Mail::Box::Manage::User</remote-id>
+		<remote-id type="cpan-module">Mail::Box::Manager</remote-id>
+		<remote-id type="cpan-module">Mail::Box::Mbox</remote-id>
+		<remote-id type="cpan-module">Mail::Box::Mbox::Message</remote-id>
+		<remote-id type="cpan-module">Mail::Box::Message</remote-id>
+		<remote-id type="cpan-module">Mail::Box::Message::Destructed</remote-id>
+		<remote-id type="cpan-module">Mail::Box::Net</remote-id>
+		<remote-id type="cpan-module">Mail::Box::Net::Message</remote-id>
+		<remote-id type="cpan-module">Mail::Box::Search</remote-id>
+		<remote-id type="cpan-module">Mail::Box::Search::Grep</remote-id>
+		<remote-id type="cpan-module">Mail::Box::Search::SpamAssassin</remote-id>
+		<remote-id type="cpan-module">Mail::Box::Test</remote-id>
+		<remote-id type="cpan-module">Mail::Box::Thread::Manager</remote-id>
+		<remote-id type="cpan-module">Mail::Box::Thread::Node</remote-id>
+		<remote-id type="cpan-module">Mail::Box::Tie</remote-id>
+		<remote-id type="cpan-module">Mail::Box::Tie::ARRAY</remote-id>
+		<remote-id type="cpan-module">Mail::Box::Tie::HASH</remote-id>
+		<remote-id type="cpan-module">Mail::Message::Body::Delayed</remote-id>
+		<remote-id type="cpan-module">Mail::Message::Dummy</remote-id>
+		<remote-id type="cpan-module">Mail::Message::Head::Delayed</remote-id>
+		<remote-id type="cpan-module">Mail::Message::Head::Subset</remote-id>
+		<remote-id type="cpan-module">Mail::Message::Wrapper::SpamAssassin</remote-id>
+		<remote-id type="cpan-module">Mail::Server</remote-id>
+	</upstream>
+</pkgmetadata>

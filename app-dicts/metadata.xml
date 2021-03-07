@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The app-dicts category contains dictionary and word-list packages.
+	</longdescription>
+	<longdescription lang="de">
+		The Kategorie app-dicts enthält Wörterbücher und Wortlisten.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría app-dicts contiene paquetes de diccionarios y 
+		para listar palabras.
+	</longdescription>
+	<longdescription lang="ja">
+		app-dictsカテゴリには辞書とワードリスとパッケージが含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De app-dict categorie bevat woordenboeken en andere woordlijsten.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm app-dicts chứa các gói về từ điển.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria app-dicts contiene pacchetti di dizionari ed elenchi di parole.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria app-dicts contém pacotes relacionados a dicionários e
+		listas de palavras.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria app-dicts zawiera słowniki oraz listy wyrazów.
+	</longdescription>
+</catmetadata>
+

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription>
+		Mandelbulber is an easy to use, handy but experimental application 
+		designed to help you render 3D Mandelbrot fractals called Mandelbulb 
+		and some other kind of 3D fractals like Mandelbox, Bulbbox, Juliabulb, 
+		Menger Sponge.
+	</longdescription>
+	<use>
+		<flag name="opencl">Enable GPU rendering support using OpenCL</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">mandelbulber</remote-id>
+	</upstream>
+</pkgmetadata>

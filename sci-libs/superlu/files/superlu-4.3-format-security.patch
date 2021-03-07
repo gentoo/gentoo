@@ -1,0 +1,16 @@
+ SRC/util.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/SRC/util.c b/SRC/util.c
+index 858fbbc..c038ccf 100644
+--- a/SRC/util.c
++++ b/SRC/util.c
+@@ -29,7 +29,7 @@
+ 
+ void superlu_abort_and_exit(char* msg)
+ {
+-    fprintf(stderr, msg);
++    fprintf(stderr, "%s", msg);
+     exit (-1);
+ }
+ 

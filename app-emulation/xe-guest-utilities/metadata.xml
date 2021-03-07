@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>chicago@blkid.net</email>
+	<name>Chicago</name>
+</maintainer>
+<maintainer type="person">
+	<email>robbat2@gentoo.org</email>
+</maintainer>
+<maintainer type="project">
+	<email>openstack@gentoo.org</email>
+	<name>Openstack</name>
+</maintainer>
+<maintainer type="project">
+	<email>virtualization@gentoo.org</email>
+	<name>Gentoo Virtualization Project</name>
+</maintainer>
+<maintainer type="project">
+	<email>xen@gentoo.org</email>
+	<name>Gentoo Xen Project</name>
+</maintainer>
+<use>
+	<flag name="xenstore">Use xenstore binaries bundled by Citrix instead of building app-emulation/xen-tools</flag>
+</use>
+</pkgmetadata>

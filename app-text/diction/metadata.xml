@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+		GNU diction and style are free implementations of old standard unix
+		commands, that are not available on many modern systems, because they
+		have been unbundled. Diction prints wordy and commonly misused phrases.
+		Style analyses surface characteristics of a document, e.g. sentence
+		length and various readability measures, but unlike the original code,
+		it lacks sentence type, word usage and most sentence beginning
+		processing.
+
+		Both commands support English and German documents.
+	</longdescription>
+</pkgmetadata>

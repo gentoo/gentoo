@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+OpenLibm is an effort to have a high quality, portable, standalone C
+mathematical library (libm). It can be used standalone in applications
+and programming language implementations.
+The project was born out of a need to have a good libm for the Julia
+programming langage that worked consistently across compilers and
+operating systems, and in 32-bit and 64-bit environments.
+</longdescription>
+  <upstream>
+    <remote-id type="github">JuliaLang/openlibm</remote-id>
+  </upstream>
+</pkgmetadata>

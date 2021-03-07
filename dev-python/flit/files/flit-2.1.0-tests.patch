@@ -1,0 +1,8 @@
+diff --git a/tests/test_inifile.py b/tests/test_inifile.py
+index 150fa47..53ce597 100644
+--- a/tests/test_inifile.py
++++ b/tests/test_inifile.py
+@@ -7,2 +7,3 @@ samples_dir = Path(__file__).parent / 'samples'
+ 
++@pytest.mark.skip("Needs internet access")
+ def test_invalid_classifier():

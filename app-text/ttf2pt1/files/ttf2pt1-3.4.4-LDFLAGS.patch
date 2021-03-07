@@ -1,0 +1,22 @@
+diff --git a/Makefile b/Makefile
+index 2616d46..cf72cba 100644
+--- a/Makefile
++++ b/Makefile
+@@ -179,7 +179,7 @@ app/RPM/ttf2pt1.spec: app/RPM/ttf2pt1.spec.src version.h
+ 	sed 's/^Version:.*/Version: '`grep TTF2PT1_VERSION version.h| cut -d\" -f2`'/' <app/RPM/ttf2pt1.spec.src  >$@
+ 
+ t1asm: t1asm.c
+-	$(CC) $(CFLAGS) -o t1asm -DSTANDALONE t1asm.c $(LIBS)
++	$(CC) $(CFLAGS) -o t1asm -DSTANDALONE t1asm.c $(LDFLAGS) $(LIBS)
+ 
+ ttf2pt1.o: ttf2pt1.c ttf.h pt1.h global.h version.h
+ 	$(CC) $(CFLAGS) -c ttf2pt1.c
+@@ -203,7 +203,7 @@ runt1asm.o: runt1asm.c global.h
+ 	$(CC) $(CFLAGS) $(CFLAGS_EXTT1ASM) -c runt1asm.c
+ 
+ ttf2pt1:	ttf2pt1.o pt1.o runt1asm.o ttf.o ft.o bdf.o bitmap.o
+-	$(CC) $(CFLAGS) -o ttf2pt1 ttf2pt1.o pt1.o runt1asm.o ttf.o ft.o bdf.o bitmap.o $(LIBS)
++	$(CC) $(CFLAGS) -o ttf2pt1 ttf2pt1.o pt1.o runt1asm.o ttf.o ft.o bdf.o bitmap.o $(LDFLAGS) $(LIBS)
+ 
+ CHANGES: CHANGES.html
+ 	scripts/unhtml <CHANGES.html >CHANGES

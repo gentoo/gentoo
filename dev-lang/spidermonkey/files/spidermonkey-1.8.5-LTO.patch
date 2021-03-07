@@ -1,0 +1,58 @@
+From 6ff7ad09daf98e5b804cf73c066c382a76e74e8c Mon Sep 17 00:00:00 2001
+From: Alexander Miller <alex.miller@gmx.de>
+Date: Wed, 12 Jun 2019 00:29:23 -0500
+Subject: [PATCH] Fix breakage with lto builds
+
+<artificial>:(.text+0x7a): undefined reference to `PopActiveVMFrame'
+collect2: error: ld returned 1 exit status
+
+Signed-off-by: Alexander Miller <alex.miller@gmx.de>
+---
+ js/src/methodjit/InvokeHelpers.cpp | 2 +-
+ js/src/methodjit/MethodJIT.cpp     | 6 +++---
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/js/src/methodjit/InvokeHelpers.cpp b/js/src/methodjit/InvokeHelpers.cpp
+index d017c2a..abde396 100644
+--- a/js/src/methodjit/InvokeHelpers.cpp
++++ b/js/src/methodjit/InvokeHelpers.cpp
+@@ -500,7 +500,7 @@ stubs::PutActivationObjects(VMFrame &f)
+     js::PutActivationObjects(f.cx, f.fp());
+ }
+ 
+-extern "C" void *
++extern "C" void * __attribute__((used))
+ js_InternalThrow(VMFrame &f)
+ {
+     JSContext *cx = f.cx;
+diff --git a/js/src/methodjit/MethodJIT.cpp b/js/src/methodjit/MethodJIT.cpp
+index 4feefbc..66099e6 100644
+--- a/js/src/methodjit/MethodJIT.cpp
++++ b/js/src/methodjit/MethodJIT.cpp
+@@ -120,20 +120,20 @@ static uint32 StubCallsForOp[STUB_CALLS_FOR_OP_COUNT];
+ 
+ extern "C" void JaegerTrampolineReturn();
+ 
+-extern "C" void JS_FASTCALL
++extern "C" void JS_FASTCALL __attribute__((used))
+ PushActiveVMFrame(VMFrame &f)
+ {
+     f.entryfp->script()->compartment->jaegerCompartment->pushActiveFrame(&f);
+     f.regs.fp->setNativeReturnAddress(JS_FUNC_TO_DATA_PTR(void*, JaegerTrampolineReturn));
+ }
+ 
+-extern "C" void JS_FASTCALL
++extern "C" void JS_FASTCALL __attribute__((used))
+ PopActiveVMFrame(VMFrame &f)
+ {
+     f.entryfp->script()->compartment->jaegerCompartment->popActiveFrame();
+ }
+ 
+-extern "C" void JS_FASTCALL
++extern "C" void JS_FASTCALL __attribute__((used))
+ SetVMFrameRegs(VMFrame &f)
+ {
+     f.cx->setCurrentRegs(&f.regs);
+-- 
+2.22.0
+

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription>
+		A toolkit for dealing with the qmail queue directory structure; it can create a
+		new queue, move and properly rename a queue, dynamically change the conf-split
+		value, convert big-todo queues to non-big-todo and vice versa, and repair a
+		corrupted queue.
+	</longdescription>
+	<stabilize-allarches/>
+</pkgmetadata>

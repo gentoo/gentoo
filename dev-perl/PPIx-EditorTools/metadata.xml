@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">PPIx-EditorTools</remote-id>
+    <remote-id type="cpan-module">PPIx::EditorTools</remote-id>
+    <remote-id type="cpan-module">PPIx::EditorTools::FindUnmatchedBrace</remote-id>
+    <remote-id type="cpan-module">PPIx::EditorTools::FindVariableDeclaration</remote-id>
+    <remote-id type="cpan-module">PPIx::EditorTools::IntroduceTemporaryVariable</remote-id>
+    <remote-id type="cpan-module">PPIx::EditorTools::Lexer</remote-id>
+    <remote-id type="cpan-module">PPIx::EditorTools::Outline</remote-id>
+    <remote-id type="cpan-module">PPIx::EditorTools::RenamePackage</remote-id>
+    <remote-id type="cpan-module">PPIx::EditorTools::RenamePackageFromPath</remote-id>
+    <remote-id type="cpan-module">PPIx::EditorTools::RenameVariable</remote-id>
+    <remote-id type="cpan-module">PPIx::EditorTools::ReturnObject</remote-id>
+  </upstream>
+</pkgmetadata>

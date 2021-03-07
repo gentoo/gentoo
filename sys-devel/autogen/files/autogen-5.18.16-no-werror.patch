@@ -1,0 +1,14 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -200,3 +200,3 @@ test "X${GCC}" = Xyes && {
+   CFLAGS="$CFLAGS -Wno-format-contains-nul -fno-strict-aliasing"
+-  WARN_CFLAGS="$CFLAGS "`echo -Wall -Werror -Wcast-align -Wmissing-prototypes \
++  WARN_CFLAGS="$CFLAGS "`echo -Wall -Wcast-align -Wmissing-prototypes \
+ 	-Wpointer-arith -Wshadow -Wstrict-prototypes -Wwrite-strings \
+--- a/configure
++++ b/configure
+@@ -18926,3 +18926,3 @@ test "X${GCC}" = Xyes && {
+   CFLAGS="$CFLAGS -Wno-format-contains-nul -fno-strict-aliasing"
+-  WARN_CFLAGS="$CFLAGS "`echo -Wall -Werror -Wcast-align -Wmissing-prototypes \
++  WARN_CFLAGS="$CFLAGS "`echo -Wall -Wcast-align -Wmissing-prototypes \
+ 	-Wpointer-arith -Wshadow -Wstrict-prototypes -Wwrite-strings \

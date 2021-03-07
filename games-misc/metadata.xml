@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The games-misc category contains miscellaneous games which do not fit into other games- categories.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie games-misc enthält verschiedenste Spiele die sich nicht in andere Kategorien einordnen lassen.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría games-misc contiene juegos que no encajan en ninguna de las otras categorías games-.
+	</longdescription>
+	<longdescription lang="ja">
+		games-miscカテゴリーには他のgame-カテゴリーに分類されない多種多様なゲームが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De games-misc categorie bevat spellen die niet in een van de andere categorieen ingedeeld konden worden.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm games-misc chứa các trò chơi linh tinh không thích hợp với các nhóm games- khác.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria games-misc contiene giochi che non ricadono in altre categorie games-.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria games-misc contém jogos que não se encaixam em nenhuma das outras categorias games-.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria games-misc zawiera gry, które nie pasowały do pozostałych kategorii.
+	</longdescription>
+</catmetadata>

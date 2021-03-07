@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  The libticonv package is a library which handles the various TI
+  charsets and conversion to/from UTF-8/16 through a set of functions
+  which constitutes a common API.
+</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">tilp</remote-id>
+  </upstream>
+</pkgmetadata>

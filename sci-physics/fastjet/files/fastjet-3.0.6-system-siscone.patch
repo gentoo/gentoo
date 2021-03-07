@@ -1,0 +1,74 @@
+diff -Nur fastjet-3.0.6.orig/configure.ac fastjet-3.0.6/configure.ac
+--- fastjet-3.0.6.orig/configure.ac	2014-05-06 10:29:55.240632504 -0700
++++ fastjet-3.0.6/configure.ac	2014-05-06 10:36:20.156246416 -0700
+@@ -261,6 +261,12 @@
+ fi
+ 
+ dnl SISCone
++AC_ARG_WITH(bundle-siscone,
++	[  --with-bundle-siscone  Build the bundled SISCone library [default=no]],
++	[bundle_siscone=$withval],
++	[bundle_siscone=no])
++AM_CONDITIONAL(BUNDLE_SISCONE, test x$bundle_siscone != xno)
++
+ ACX_CHECK_PLUGIN(SISCone, siscone, SISCONE, yes,
+ 	         [CONFIG_LIBS_PLUGINS=${CONFIG_LIBS_PLUGINS}" -lsiscone_spherical -lsiscone"
+                   CONFIG_LIBS_PLUGINS_STATIC=${CONFIG_LIBS_PLUGINS_STATIC}" \${installationdir}/lib/libsiscone.a \${installationdir}/lib/libsiscone_spherical.a"])
+diff -Nur fastjet-3.0.6.orig/example/Makefile.am fastjet-3.0.6/example/Makefile.am
+--- fastjet-3.0.6.orig/example/Makefile.am	2014-05-06 10:29:55.239632499 -0700
++++ fastjet-3.0.6/example/Makefile.am	2014-05-06 10:36:20.156246416 -0700
+@@ -43,7 +43,7 @@
+ 03_plugin_CXXFLAGS = $(AM_CXXFLAGS) $(CGAL_CPPFLAGS) -I$(srcdir)/../include
+ 03_plugin_LDADD = ../src/libfastjet.la $(CGAL_LIBS)
+ 03_plugin_CXXFLAGS += -I$(srcdir)/../plugins/SISCone -I$(srcdir)/../plugins/SISCone/siscone
+-03_plugin_LDADD += ../plugins/SISCone/libSISConePlugin.la ../plugins/SISCone/siscone/siscone/libsiscone.la ../plugins/SISCone/siscone/siscone/spherical/libsiscone_spherical.la
++03_plugin_LDADD += ../plugins/SISCone/libSISConePlugin.la
+ else
+ EXTRA_DIST += 03-plugin.cc
+ endif
+@@ -125,7 +125,7 @@
+ fastjet_areas_LDADD = ../src/libfastjet.la $(CGAL_LIBS)
+ if BUILD_PLUGIN_SISCONE
+ fastjet_areas_CXXFLAGS += -I$(srcdir)/../plugins/SISCone -I$(srcdir)/../plugins/SISCone/siscone
+-fastjet_areas_LDADD += ../plugins/SISCone/libSISConePlugin.la ../plugins/SISCone/siscone/siscone/libsiscone.la ../plugins/SISCone/siscone/siscone/spherical/libsiscone_spherical.la
++fastjet_areas_LDADD += ../plugins/SISCone/libSISConePlugin.la
+ endif
+ 
+ fastjet_timing_plugins_SOURCES = fastjet_timing_plugins.cc CmdLine.cc
+@@ -135,7 +135,7 @@
+ fastjet_timing_plugins_LDADD += ../tools/libfastjettools.la 
+ if BUILD_PLUGIN_SISCONE
+ fastjet_timing_plugins_CXXFLAGS += -I$(srcdir)/../plugins/SISCone -I$(srcdir)/../plugins/SISCone/siscone
+-fastjet_timing_plugins_LDADD += ../plugins/SISCone/libSISConePlugin.la ../plugins/SISCone/siscone/siscone/libsiscone.la ../plugins/SISCone/siscone/siscone/spherical/libsiscone_spherical.la
++fastjet_timing_plugins_LDADD += ../plugins/SISCone/libSISConePlugin.la
+ endif
+ if BUILD_PLUGIN_CDFCONES
+ fastjet_timing_plugins_CXXFLAGS += -I$(srcdir)/../plugins/CDFCones
+diff -Nur fastjet-3.0.6.orig/plugins/SISCone/Makefile.am fastjet-3.0.6/plugins/SISCone/Makefile.am
+--- fastjet-3.0.6.orig/plugins/SISCone/Makefile.am	2014-05-06 10:29:55.250632584 -0700
++++ fastjet-3.0.6/plugins/SISCone/Makefile.am	2014-05-06 10:36:20.156246416 -0700
+@@ -1,11 +1,22 @@
+-SUBDIRS = siscone fastjet .
++SUBDIRS = fastjet .
+ 
+ if MONOLITHIC_PLUGINS
+ noinst_LTLIBRARIES = libSISConePlugin.la
+ else
+ lib_LTLIBRARIES = libSISConePlugin.la
+ endif
+-libSISConePlugin_la_CXXFLAGS = $(AM_CXXFLAGS) -I$(srcdir) -I$(srcdir)/siscone -I$(srcdir)/../../include
++libSISConePlugin_la_CXXFLAGS = $(AM_CXXFLAGS) -I$(srcdir) -I$(srcdir)/../../include
++
++if BUNDLE_SISCONE
++SUBDIRS += siscone
++libSISConePlugin_la_CXXFLAGS += -I$(srcdir)/siscone
++libSISConePlugin_la_LIBADD = \
++	$(top_builddir)/plugins/SISCone/siscone/siscone/libsiscone.la \
++	$(top_builddir)/plugins/SISCone/siscone/siscone/spherical/libsiscone_spherical.la
++else
++libSISConePlugin_la_LIBADD = -lsiscone -lsiscone_spherical
++endif
++
+ libSISConePlugin_la_SOURCES = SISConePlugin.cc SISConeSphericalPlugin.cc
+ 
+ EXTRA_DIST = makefile.static

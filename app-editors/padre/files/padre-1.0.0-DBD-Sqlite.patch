@@ -1,0 +1,35 @@
+From a9fb73f6b0ba76370f60300edfaf03f50e8326e0 Mon Sep 17 00:00:00 2001
+From: Charlie Gonzalez <itcharlie@gmail.com>
+Date: Wed, 17 Feb 2016 00:36:08 -0500
+Subject: [PATCH] =?UTF-8?q?Applying=20Petr=20P=C3=ADsa=C5=99=20=20fix=20?=
+ =?UTF-8?q?=20for=20DBD::SQLite=20error?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This fix corrects test failures for DBD::SQLite  inside Padre.
+---
+ lib/Padre/Locker.pm | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/lib/Padre/Locker.pm b/lib/Padre/Locker.pm
+index 7eaf919..e0db4e8 100644
+--- a/lib/Padre/Locker.pm
++++ b/lib/Padre/Locker.pm
+@@ -102,7 +102,7 @@ sub shutdown {
+ sub db_increment {
+ 	my $self = shift;
+ 	unless ( $self->{db_depth}++ ) {
+-		Padre::DB->begin;
++		
+ 
+ 		# Database operations we lock on are the most likely to
+ 		# involve writes. So opportunistically prevent blocking
+@@ -111,6 +111,7 @@ sub db_increment {
+ 		# corruption if (and only if) there is a power outage,
+ 		# operating system crash, or catastrophic hardware failure.
+ 		Padre::DB->pragma( synchronous => 0 );
++		Padre::DB->begin;
+ 	}
+ 	return;
+ }

@@ -1,0 +1,19 @@
+--- a/doc_crosslinks/generate_cross_link_data.py	(original)
++++ b/doc_crosslinks/generate_cross_link_data.py	(refactored)
+@@ -17,14 +17,14 @@
+         if match:
+             with codecs.open(join(apiDefinitionsPath, file), 'rb', 'utf-8') as api_definition:
+                 api_content = json.loads(api_definition.read())
+-                if "uid" in api_content["metadata"].keys():
++                if "uid" in list(api_content["metadata"].keys()):
+                     sdks[api_content["metadata"]["uid"]] = getServiceNameFromMetadata(api_content["metadata"])
+            
+     return sdks
+     
+ def getServiceNameFromMetadata(metadataNode):
+     toSanitize = ""
+-    if "serviceAbbreviation" in metadataNode.keys():
++    if "serviceAbbreviation" in list(metadataNode.keys()):
+         toSanitize = metadataNode["serviceAbbreviation"]
+     else: 
+         toSanitize = metadataNode["serviceFullName"]

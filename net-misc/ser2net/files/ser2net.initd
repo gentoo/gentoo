@@ -1,0 +1,54 @@
+#!/sbin/openrc-run
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+description="Serial to network proxy (${RC_SVCNAME#*.})"
+pidfile="/var/run/${RC_SVCNAME}.pid"
+command="/usr/sbin/ser2net"
+name="${RC_SVCNAME}"
+
+extra_started_commands="reload"
+description_reload="Reread configuration file and make the appropriate changes"
+start_stop_daemon_args="--quiet --exec ${command} --name ${name} --pidfile ${pidfile}"
+
+depend() {
+	use logger
+	need net
+}
+
+config_check() {
+	command_args="${EXTRA_OPTS}"
+	CONFIG_FILE_DEFAULT="/etc/ser2net.conf"
+
+	yesno "${CISCO_IOS:-no}" && command_args="${SER2NET_OPTS} -b"
+	yesno "${UUCP_LOCKS:-yes}" || command_args="${command_args} -u"
+	[ -z "${CONFIG_FILE}" ] && CONFIG_FILE="${CONFIG_FILE_DEFAULT}"
+	[ -n "${CONTROL_PORT}" ] && command_args="${command_args} -p ${CONTROL_PORT}"
+	[ "${CONFIG_FILE}" != "${CONFIG_FILE_DEFAULT}" ] && command_args="${command_args} -c ${CONFIG_FILE}"
+
+	if [ ! -f "${CONFIG_FILE}" ]; then
+		eerror "Please create ${CONFIG_FILE}"
+		eerror "Sample conf: ${CONFIG_FILE_DEFAULT}.dist"
+		return 1
+	fi
+	return 0
+}
+
+start() {
+	config_check || return ${?}
+	ebegin "Starting ${description}"
+	start-stop-daemon --start ${start_stop_daemon_args} -- ${command_args} -P "${pidfile}"
+	eend ${?}
+}
+
+stop() {
+	ebegin "Stopping ${description}"
+	start-stop-daemon --stop ${start_stop_daemon_args}
+	eend ${?}
+}
+
+reload() {
+	ebegin "Reloading ${description}"
+	start-stop-daemon --signal HUP ${start_stop_daemon_args}
+	eend ${?}
+}

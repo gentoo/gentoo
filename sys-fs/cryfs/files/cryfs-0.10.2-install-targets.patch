@@ -1,0 +1,36 @@
+From 18503b00bd16d95dd2cf8a9047446f8be7289082 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 16 Jun 2019 19:35:49 +0200
+Subject: [PATCH 3/3] Don't limit install on Release/Debug/RelWithDebInfo
+ CONFIGURATIONS
+
+---
+ src/cryfs-cli/CMakeLists.txt     | 1 -
+ src/cryfs-unmount/CMakeLists.txt | 3 +--
+ 2 files changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/src/cryfs-cli/CMakeLists.txt b/src/cryfs-cli/CMakeLists.txt
+index 90edb227..e8c03916 100644
+--- a/src/cryfs-cli/CMakeLists.txt
++++ b/src/cryfs-cli/CMakeLists.txt
+@@ -27,6 +27,5 @@ target_enable_style_warnings(${PROJECT_NAME}_bin)
+ target_activate_cpp14(${PROJECT_NAME}_bin)
+ 
+ install(TARGETS ${PROJECT_NAME}_bin
+-        CONFIGURATIONS Debug Release RelWithDebInfo
+         DESTINATION ${CMAKE_INSTALL_BINDIR}
+ )
+diff --git a/src/cryfs-unmount/CMakeLists.txt b/src/cryfs-unmount/CMakeLists.txt
+index 0a246a7f..c5f096ab 100644
+--- a/src/cryfs-unmount/CMakeLists.txt
++++ b/src/cryfs-unmount/CMakeLists.txt
+@@ -19,6 +19,5 @@ target_enable_style_warnings(${PROJECT_NAME}_bin)
+ target_activate_cpp14(${PROJECT_NAME}_bin)
+ 
+ install(TARGETS ${PROJECT_NAME}_bin
+-		CONFIGURATIONS Debug Release RelWithDebInfo
+-		DESTINATION ${CMAKE_INSTALL_BINDIR}
++        DESTINATION ${CMAKE_INSTALL_BINDIR}
+ )
+-- 
+2.22.0

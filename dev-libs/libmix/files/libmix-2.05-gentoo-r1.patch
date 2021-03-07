@@ -1,0 +1,287 @@
+Fix install paths, respect user flags, build shared libs with -fPIC,
+make static libs optional, convert use "--with/without-net2" instead
+"--without-no-net2"
+
+http://bugs.gentoo.org/268444
+
+Thanks to Doktor Notor <notordoktor@gmail.com>
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -1,16 +1,18 @@
+-INSTALL_INCLUDES_IN = /usr/include
+-INSTALL_LIBRARY_IN = /usr/lib
+-INSTALL_MANPAGE_IN = /usr/local/man
+-
+-# Compiler to produce C/C++ libraries with (autodetected)
+-GCC = @CCAUTO@
+-GPP = @CXAUTO@
++prefix = @prefix@
++exec_prefix = @exec_prefix@
++libdir = @libdir@
++includedir = @includedir@
++mandir = @mandir@
++BUILD_STATIC = @BUILD_STATIC@
+ 
+ RANLIB = @RANLIB@
+ AR = @AR@
+ INSTALL = @INSTALL@
+ 
+ CFLAGS = @CFLAGS@
++CXXFLAGS = @CXXFLAGS@
++LDFLAGS = @LDFLAGS@
++CCOPTS = @CCOPTS@
+ CLIB = @CLIB@
+ 
+ AESOBJ = aes/aes.o aes/cast-256.o aes/mars.o aes/saferp.o aes/twofish.o aes/rijndael.o aes/md5.o
+@@ -21,120 +19,80 @@
+ NETOBJPP = net/net++.o net/net2++.o
+ MISCOBJPP = misc/misc++.o misc/exclude++.o
+ 
+-all: libmix.a libmix.so libmix++.a libmix++.so
++OBJS_C  = $(AESOBJ) $(NETOBJ) $(MISCOBJ)
++OBJS_PP = $(AESOBJPP) $(NETOBJPP) $(MISCOBJPP)
++
++OBJS_C_A  = $(OBJS_C:%.o=%.lo)
++OBJS_PP_A = $(OBJS_PP:%.o=%.lo)
++
++TARGETS = libmix.so libmix++.so
++ifdef BUILD_STATIC
++TARGETS += libmix.a libmix++.a
++endif
++
++all: $(TARGETS)
+ 	@echo ""
+ 	@echo Check the install location in the Makefile, and type 'make install'.
+ 	@echo You may also want to run './libtest' to see all functions work reliably.
+ 	@echo "Attention: libmix for C++ is now called libmix++[.so|.a]. The original libmix.[so|.a] name will be a plain C library."
+ 	@echo ""
+ 
+-libmix.so: mix/net.h ${AESOBJ} ${NETOBJ} ${MISCOBJ}
+-	${GCC} ${CFLAGS} -shared ${AESOBJ} ${NETOBJ} ${MISCOBJ} -o libmix.so ${CLIB}
++libmix.so: $(OBJS_C)
++	$(CC) $(CFLAGS) $(LDFLAGS) -shared $^ -o $@ -Wl,-soname,$@ $(CLIB)
+ 
+-libmix.a: mix/net.h ${AESOBJ} ${NETOBJ} ${MISCOBJ}
+-	${AR} -cr libmix.a ${AESOBJ} ${NETOBJ} ${MISCOBJ}
+-	${RANLIB} libmix.a
++libmix.a: $(OBJS_C_A)
++	$(AR) -cr $@ $^
++	$(RANLIB) $@
+ 
+-libmix++.so: mix/net.h ${AESOBJPP} ${NETOBJPP} ${MISCOBJPP}
+-	${GPP} ${CFLAGS} -shared ${AESOBJPP} ${NETOBJPP} ${MISCOBJPP} -o libmix++.so ${CLIB}
++libmix++.so: $(OBJS_PP)
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -shared $^ -o $@ -Wl,-soname,$@ $(CLIB)
+ 
+-libmix++.a: mix/net.h ${AESOBJPP} ${NETOBJPP} ${MISCOBJPP}
+-	${AR} -cr libmix++.a ${AESOBJPP} ${NETOBJPP} ${MISCOBJPP}
+-	${RANLIB} libmix++.a
++libmix++.a: $(OBJS_PP_A)
++	$(AR) -cr $@ $^
++	$(RANLIB) $@
+ 
+ libtest: libtest.o
+-	${GPP} ${CFLAGS} -static -I. -L. libtest++.o -o libtest -lmix++ @LIBS@ ${CLIB}
++	$(CXX) $(CXXFLAGS) $(CCOPTS) -static -I. -L. $^ -o $@ -lmix++ $(CLIB)
+ 
+ libtest.o:
+-	${GPP} ${CFLAGS} -c libtest.c -o libtest.o
+-	${GPP} ${CFLAGS} -c libtest.c -o libtest++.o
+-
+-aes/aes++.o:
+-	${GPP} ${CFLAGS} -c aes/aes.c -o aes/aes++.o
+-
+-aes/cast-256++.o:
+-	${GPP} ${CFLAGS} -c aes/cast-256.c -o aes/cast-256++.o
+-
+-aes/mars++.o:
+-	${GPP} ${CFLAGS} -c aes/mars.c -o aes/mars++.o
+-
+-aes/saferp++.o:
+-	${GPP} ${CFLAGS} -c aes/saferp.c -o aes/saferp++.o
+-
+-aes/twofish++.o:
+-	${GPP} ${CFLAGS} -c aes/twofish.c -o aes/twofish++.o
+-
+-aes/rijndael++.o:
+-	${GPP} ${CFLAGS} -c aes/rijndael.c -o aes/rijndael++.o
+-
+-aes/md5++.o:
+-	${GPP} ${CFLAGS} -c aes/md5.c -o aes/md5++.o
+-
+-net/net++.o:
+-	${GPP} ${CFLAGS} -c net/net.c -o net/net++.o
+-
+-net/net2++.o:
+-	${GPP} ${CFLAGS} -c net/net2.c -o net/net2++.o
+-
+-misc/misc++.o:
+-	${GPP} ${CFLAGS} -c misc/misc.c -o misc/misc++.o
+-
+-misc/exclude++.o:
+-	${GPP} ${CFLAGS} -c misc/exclude.c -o misc/exclude++.o
+-
+-aes/aes.o:
+-	${GCC} ${CFLAGS} -c aes/aes.c -o aes/aes.o
+-
+-aes/cast-256.o:
+-	${GCC} ${CFLAGS} -c aes/cast-256.c -o aes/cast-256.o
+-
+-aes/mars.o:
+-	${GCC} ${CFLAGS} -c aes/mars.c -o aes/mars.o
+-
+-aes/saferp.o:
+-	${GCC} ${CFLAGS} -c aes/saferp.c -o aes/saferp.o
+-
+-aes/twofish.o:
+-	${GCC} ${CFLAGS} -c aes/twofish.c -o aes/twofish.o
+-
+-aes/rijndael.o:
+-	${GCC} ${CFLAGS} -c aes/rijndael.c -o aes/rijndael.o
+-
+-aes/md5.o:
+-	${GCC} ${CFLAGS} -c aes/md5.c -o aes/md5.o
+-
+-net/net.o:
+-	${GCC} ${CFLAGS} -c net/net.c -o net/net.o
+-
+-net/net2.o:
+-	${GCC} ${CFLAGS} -c net/net2.c -o net/net2.o
++	$(CC) $(CCOPTS) $(CFLAGS) -c libtest.c -o libtest.o
++	$(CXX) $(CCOPTS) $(CXXFLAGS) -c libtest.c -o libtest++.o
+ 
+-misc/misc.o:
+-	${GCC} ${CFLAGS} -c misc/misc.c -o misc/misc.o
+ 
+-misc/exclude.o:
+-	${GCC} ${CFLAGS} -c misc/exclude.c -o misc/exclude.o
++%++.o: %.c
++	$(CXX) $(CCOPTS) $(CXXFLAGS) -fPIC -c $< -o $@
+ 
+-install: mix/mix.h mix/net.h mix/aes.h mix/misc.h libmix.so libmix.a
+-	${INSTALL} -d ${INSTALL_INCLUDES_IN}/mix/
+-	${INSTALL} -d ${INSTALL_LIBRARY_IN}/
+-	${INSTALL} -d ${INSTALL_MANPAGE_IN}/man3/
+-	${INSTALL} -m 0644 libmix.3 ${INSTALL_MANPAGE_IN}/man3/libmix.3
+-	${INSTALL} -m 0644 mix/misc.h ${INSTALL_INCLUDES_IN}/mix/misc.h
+-	${INSTALL} -m 0644 mix/net.h ${INSTALL_INCLUDES_IN}/mix/net.h
+-	${INSTALL} -m 0644 mix/aes.h ${INSTALL_INCLUDES_IN}/mix/aes.h
+-	${INSTALL} -m 0644 mix/mix.h ${INSTALL_INCLUDES_IN}/mix/mix.h
+-	${INSTALL} -m 0644 mix/lmconfig.h ${INSTALL_INCLUDES_IN}/mix/lmconfig.h
+-	${INSTALL} -m 0755 libmix.so ${INSTALL_LIBRARY_IN}/libmix.so
+-	${INSTALL} -m 0755 libmix.a ${INSTALL_LIBRARY_IN}/libmix.a
+-	${INSTALL} -m 0755 libmix++.so ${INSTALL_LIBRARY_IN}/libmix++.so
+-	${INSTALL} -m 0755 libmix++.a ${INSTALL_LIBRARY_IN}/libmix++.a
++%++.lo: %.c
++	$(CXX) $(CCOPTS) $(CXXFLAGS) -c $< -o $@
++
++%.o: %.c
++	$(CC) $(CCOPTS) $(CFLAGS) -fPIC -c $< -o $@
++
++%.lo: %.c
++	$(CC) $(CCOPTS) $(CFLAGS) -c $< -o $@
++
++install: mix/mix.h mix/net.h mix/aes.h mix/misc.h $(TARGETS)
++	${INSTALL} -d $(DESTDIR)/$(includedir)/mix/
++	${INSTALL} -d $(DESTDIR)/$(libdir)/
++	${INSTALL} -d $(DESTDIR)/$(mandir)/man3/
++	${INSTALL} -m 0644 libmix.3 $(DESTDIR)/$(mandir)/man3/libmix.3
++	${INSTALL} -m 0644 mix/misc.h $(DESTDIR)/$(includedir)/mix/misc.h
++	${INSTALL} -m 0644 mix/net.h $(DESTDIR)/$(includedir)/mix/net.h
++	${INSTALL} -m 0644 mix/aes.h $(DESTDIR)/$(includedir)/mix/aes.h
++	${INSTALL} -m 0644 mix/mix.h $(DESTDIR)/$(includedir)/mix/mix.h
++	${INSTALL} -m 0644 mix/lmconfig.h $(DESTDIR)/$(includedir)/mix/lmconfig.h
++	${INSTALL} -m 0755 libmix.so $(DESTDIR)/$(libdir)/libmix.so
++	${INSTALL} -m 0755 libmix++.so $(DESTDIR)/$(libdir)/libmix++.so
++ifdef BUILD_STATIC
++	${INSTALL} -m 0755 libmix.a $(DESTDIR)/$(libdir)/libmix.a
++	${INSTALL} -m 0755 libmix++.a $(DESTDIR)/$(libdir)/libmix++.a
++endif
+ 	@echo ""
+ 	@echo "Installation complete."
+ 	@echo ""
+ 
+ uninstall:
+-	rm -fr /usr/include/mix /usr/lib/libmix* /usr/local/man/man3/libmix.3
++	rm -fr $(includedir)/mix $(libdir)/libmix* $(mandir)/man3/libmix.3
+ 
+ cleanobj:
+ 	rm -f ${AESOBJPP} ${NETOBJPP} ${MISCOBJPP} ${AESOBJ} ${NETOBJ} ${MISCOBJ} */core */*~ core *~ *.o libtest
+--- a/configure.in
++++ b/configure.in
+@@ -4,7 +4,6 @@
+ AC_CONFIG_HEADER(mix/lmconfig.h)
+ 
+ compileas="0"
+-net2="1"
+ 
+ dnl AC_ARG_WITH(libraries-as-c, 
+ dnl 	[  --with-libraries-as-c         Generate LibMix binaries with GCC ],
+@@ -24,30 +23,33 @@
+ dnl         ]
+ dnl )
+ 
+-AC_ARG_WITH(no-net2,
+-	[  --with-no-net2		Don't use net2 functions, don't require libnet/libpcap.],
+-	[
+-		if test "x$withval" != "$xno" ; then
+-			net2="0"
+-		fi
+-	]
+-)
++AC_ARG_WITH([net2],
++	AS_HELP_STRING([--with-net2], [Use net2 functions from libnet/libpcap.]))
++AS_IF([test "x$with_net2" = "xyes"], [
++  AC_DEFINE(LM_USE_NET2)
++  CLIB="-lnet-1.0 -lpcap"
++], [CLIB=""])
++
++AC_ARG_ENABLE([static],
++	AS_HELP_STRING([--enable-static], [Build static libs]))
++AS_IF([test "x$enable_static" = "xyes"], [
++	BUILD_STATIC=1
++	AC_SUBST(BUILD_STATIC)
++])
+ 
+ AC_PROG_CC
+ AC_MSG_CHECKING(accepted compiler flags)
+ if test $ac_cv_prog_gcc = yes; then
+-    CCOPTS='-I. -Wall -O3 -funroll-loops -ansi -D_LIBMIX_'
++    CCOPTS='-I. -Wall -ansi -D_LIBMIX_'
+     AC_MSG_RESULT(GNU CC/ANSI (good))
+ else
+     CCOPTS='-I. -D_LIBMIX_'
+     AC_MSG_RESULT(crappy :P)
+ fi
+-    CFLAGS="$CCOPTS"
+ 
+ AC_PROG_CXX
+ 
+ CXAUTO="null"
+-CLIB=""
+ 
+ CCAUTO=$CC
+ CXAUTO=$CXX
+@@ -60,10 +62,6 @@
+ dnl  CXAUTO=$CXX
+ dnl fi
+ 
+-if test $net2 = "1"; then
+-  AC_DEFINE(LM_USE_NET2)
+-  CLIB="-lnet -lpcap"
+-fi
+ 
+ if test $CXAUTO = "null"; then
+   AC_MSG_ERROR( *** Please use either ./configure --with-libraries-as-c
+@@ -74,6 +72,11 @@
+ AC_SUBST(CXAUTO)
+ AC_SUBST(AR)
+ AC_SUBST(CLIB)
++AC_SUBST(LDFLAGS)
++AC_SUBST(libdir)
++AC_SUBST(mandir)
++AC_SUBST(includedir)
++AC_SUBST(CCOPTS)
+ AC_CHECK_PROGS(AR, ar, @true)
+ AC_PROG_RANLIB
+ AC_PROG_INSTALL

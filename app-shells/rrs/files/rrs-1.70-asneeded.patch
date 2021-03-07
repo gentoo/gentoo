@@ -1,0 +1,38 @@
+--- a/Makefile	2004-05-30 02:14:14.000000000 +0200
++++ b/Makefile	2009-01-03 15:02:19.253460887 +0100
+@@ -8,8 +8,8 @@
+ # if your system doesn't have GNU's getopt_long(), add -DWITHOUT_GNU_GETOPT
+ CFLAGS=-I/usr/local/include -Wall -O2
+ # openpty() is in libutil on most Unix-like operating systems
+-LDFLAGS=-L/usr/local/lib -s -lstdc++ -lm -lutil -lssl -lcrypto
+-LDFLAGSNOSSL=-s -lstdc++ -lm -lutil
++LDFLAGS=-L/usr/local/lib -lstdc++ -lm -lutil -lssl -lcrypto
++LDFLAGSNOSSL=-lstdc++ -lm -lutil
+ 
+ PREFIX=/usr/local
+ BINDIR=bin
+@@ -36,9 +36,9 @@
+ generic-nossl: clean compile-generic-nossl
+ 
+ qnx: clean
+-	$(MAKE) LDFLAGS="-L/usr/local/lib -s -lsocket -lssl -lcrypto" compile-qnx
++	$(MAKE) LDFLAGS="-L/usr/local/lib -lsocket -lssl -lcrypto" compile-qnx
+ qnx-nossl: clean
+-	$(MAKE) LDFLAGSNOSSL="-s -lsocket" compile-qnx-nossl
++	$(MAKE) LDFLAGSNOSSL="-lsocket" compile-qnx-nossl
+ 
+ distclean: clean
+ 
+@@ -47,10 +47,10 @@
+ 
+ ## generic
+ compile-generic:
+-	$(CC) $(CFLAGS) $(LDFLAGS) $(LDEXTRA) -o $(out) rrs.c md5.c sha1.c farm9crypt.cc twofish2.cc
++	$(CC) $(CFLAGS) $(LDEXTRA) -o $(out) rrs.c md5.c sha1.c farm9crypt.cc twofish2.cc $(LDFLAGS)
+ 
+ compile-generic-nossl:
+-	$(CC) -DWITHOUT_SSL $(CFLAGS) $$CFLAGS $(LDFLAGSNOSSL) $(LDEXTRA) -o $(out) rrs.c md5.c sha1.c farm9crypt.cc twofish2.cc
++	$(CC) -DWITHOUT_SSL $(CFLAGS) $$CFLAGS $(LDEXTRA) -o $(out) rrs.c md5.c sha1.c farm9crypt.cc twofish2.cc $(LDFLAGSNOSSL)
+ 
+ ## qnx
+ compile-qnx:

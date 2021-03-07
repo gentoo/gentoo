@@ -1,0 +1,16 @@
+Bug-Debian: http://bugs.debian.org/652165
+Author: Julien Cristau <jcristau@debian.org>
+
+use pkg-config to get the glib include path, not hardcode it.
+
+--- gnet-2.0.8.orig/gnet-2.0.pc.in
++++ gnet-2.0.8/gnet-2.0.pc.in
+@@ -6,5 +6,6 @@
+ Name: Gnet
+ Description: A network compatibility layer library
+ Version: @VERSION@
+-Libs: -L${libdir} -lgnet-@GNET_MAJOR_VERSION@.@GNET_MINOR_VERSION@ @GLIB_LIBS@ @GTHREAD_LIBS@
+-Cflags: -I${includedir}/gnet-@GNET_MAJOR_VERSION@.@GNET_MINOR_VERSION@ -I${libdir}/gnet-@GNET_MAJOR_VERSION@.@GNET_MINOR_VERSION@/include/ @GLIB_CFLAGS@ @GTHREAD_CFLAGS@
++Libs: -L${libdir} -lgnet-@GNET_MAJOR_VERSION@.@GNET_MINOR_VERSION@
++Requires.private: glib-2.0 gthread-2.0
++Cflags: -I${includedir}/gnet-@GNET_MAJOR_VERSION@.@GNET_MINOR_VERSION@ -I${libdir}/gnet-@GNET_MAJOR_VERSION@.@GNET_MINOR_VERSION@/include/

@@ -1,0 +1,40 @@
+--- testsrc/build.xml.orig	2015-08-05 23:41:56.815000000 +0000
++++ testsrc/build.xml	2015-08-05 23:46:10.026000000 +0000
+@@ -46,15 +46,8 @@
+   -->
+   <property name="test.vm.mx" value="256m" />
+ 
+-  <target name="get-junit" unless="offline">
+-    <mkdir dir="lib"/>
+-    <get src="${test.junit.url}" dest="lib/junit.jar" usetimestamp="true"/>
+-    <get src="${test.hamcrest.url}" dest="lib/hamcrest.jar" usetimestamp="true"/>
+-  </target>
+-
+   <target name="junit-compile">
+     <mkdir dir="${test.classes}" />
+-    <antcall target="get-junit"/>
+     <javac
+       destdir="${test.classes}" debug="true"
+       encoding="UTF-8"
+@@ -75,7 +68,6 @@
+ 
+   <target name="compile">
+     <mkdir dir="${test.classes}" />
+-	<antcall target="get-junit"/>
+     <javac
+       srcdir="testsrc"
+       destdir="${test.classes}" debug="true"
+@@ -105,12 +97,7 @@
+     <delete dir="${test.classes}" />
+   </target>
+ 
+-  <target name="get-emma" unless="offline">
+-    <get src="${test.emma.url}" dest="lib/emma.jar" usetimestamp="true"/>
+-    <get src="${test.emma_ant.url}" dest="lib/emma_ant.jar" usetimestamp="true"/>
+-  </target>
+-
+-  <target name="coverage-instrument" depends="get-emma">
++  <target name="coverage-instrument">
+     <property name="coverage.dir" location="${build.dir}/coverage"/>
+     <property name="coverage.classes.dir" location="${build.dir}/coverage/classes"/>
+     <mkdir dir="${coverage.classes.dir}"/>

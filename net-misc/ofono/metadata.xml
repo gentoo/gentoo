@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>dlan@gentoo.org</email>
+    <name>Yixun Lan</name>
+  </maintainer>
+  <use>
+    <flag name="atmodem">ETSI AT modem support.</flag>
+    <flag name="isimodem">Enable PhoNet/ISI modem support.</flag>
+    <flag name="cdmamodem">Enable CDMA modem support.</flag>
+    <flag name="datafiles">Enable install configuration and data files.</flag>
+    <flag name="dundee">Enable BlueTooth DUN deamon support.</flag>
+    <flag name="bluetooth">Enable Bluetooth modem support using <pkg>net-wireless/bluez</pkg>.</flag>
+    <flag name="phonesim">Enable phone Simulator support</flag>
+    <flag name="provision">Enable GPRS provisioning support</flag>
+    <flag name="qmimodem">Enable Qualcomm QMI modem support</flag>
+    <flag name="tools">Enable testing tools</flag>
+  </use>        
+</pkgmetadata>

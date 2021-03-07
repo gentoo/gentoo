@@ -1,0 +1,26 @@
+From 505a55f7899ee2eb41418e753a1290252202ecd3 Mon Sep 17 00:00:00 2001
+From: Jiri Slaby <jslaby@suse.cz>
+Date: Tue, 15 Sep 2020 08:50:48 +0200
+Subject: [PATCH] tests: strutil, use ck_assert
+
+We pass no message, so use ck_assert instead of ck_assert_msg. This
+results in an error with check 0.15:
+tests/strutil.c:157:2: error: too few arguments to function '_ck_assert_failed'
+  157 |  ck_assert_msg(saved_locale != NULL);
+---
+ tests/strutil.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/strutil.c b/tests/strutil.c
+index fca70eaae..ec2233329 100644
+--- a/tests/strutil.c
++++ b/tests/strutil.c
+@@ -154,7 +154,7 @@ START_TEST(test_locale)
+ 	fprintf(stderr, "Old locale = %s\n", old_locale);
+ 	/* Copy the name so it won’t be clobbered by setlocale. */
+ 	saved_locale = g_strdup(old_locale);
+-	ck_assert_msg(saved_locale != NULL);
++	ck_assert(saved_locale != NULL);
+ 
+ #ifdef _WIN32
+ 	/*

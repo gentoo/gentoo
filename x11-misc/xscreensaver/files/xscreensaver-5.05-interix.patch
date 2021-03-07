@@ -1,0 +1,32 @@
+diff -ru xscreensaver-5.05.orig/driver/prefs.c xscreensaver-5.05/driver/prefs.c
+--- xscreensaver-5.05.orig/driver/prefs.c	2006-05-24 00:03:47 +0200
++++ xscreensaver-5.05/driver/prefs.c	2008-03-11 09:20:58 +0100
+@@ -951,9 +951,12 @@
+ 	{
+ 	  p->init_file_date = write_date;
+ 
++/* Interix has no sync() or alike. */
++#ifndef __INTERIX
+ 	  /* Since the .xscreensaver file is used for IPC, let's try and make
+ 	     sure that the bits actually land on the disk right away. */
+ 	  sync ();
++#endif
+ 
+           status = 0;    /* wrote and renamed successfully! */
+ 	}
+diff -ru xscreensaver-5.05.orig/driver/setuid.c xscreensaver-5.05/driver/setuid.c
+--- xscreensaver-5.05.orig/driver/setuid.c	2006-02-09 03:33:29 +0100
++++ xscreensaver-5.05/driver/setuid.c	2008-03-11 09:22:59 +0100
+@@ -136,9 +136,12 @@
+   if (uid == (uid_t) -1) uid = (uid_t) -2;
+ 
+   errno = 0;
++
++#ifndef __INTERIX
+   if (setgroups_needed_p (gid) &&
+       setgroups (1, &gid) < 0)
+     sgs_errno = errno ? errno : -1;
++#endif
+ 
+   errno = 0;
+   if (setgid (gid) != 0)

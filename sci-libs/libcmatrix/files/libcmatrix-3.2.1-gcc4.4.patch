@@ -1,0 +1,12 @@
+diff --git a/include/DynamicList.h b/include/DynamicList.h
+index f8c1346..05a7b10 100755
+--- a/include/DynamicList.h
++++ b/include/DynamicList.h
+@@ -4,6 +4,7 @@
+ #include "BaseList.h"
+ #include "lcm_basethreads.h"
+ #include "Warnings.h"
++#include <cstdio>
+ 
+ namespace libcmatrix {
+   

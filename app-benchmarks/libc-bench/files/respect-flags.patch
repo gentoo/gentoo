@@ -1,0 +1,23 @@
+diff -Naur libc-bench-20110206.orig//Makefile libc-bench-20110206/Makefile
+--- libc-bench-20110206.orig//Makefile	2011-01-31 02:13:00.000000000 -0500
++++ libc-bench-20110206/Makefile	2012-08-09 22:12:24.000000000 -0400
+@@ -2,8 +2,7 @@
+ SRCS = $(sort $(wildcard *.c))
+ OBJS = $(SRCS:.c=.o)
+ 
+-CFLAGS = -Os
+-LDFLAGS = -static
++LDFLAGS += -static
+ LIBS = -lpthread -lrt -lpthread
+ 
+ 
+@@ -12,9 +11,6 @@
+ clean:
+ 	rm -f $(OBJS) libc-bench
+ 
+-test: all
+-	./libc-bench
+-
+ libc-bench: $(OBJS)
+ 	$(CC) $(LDFLAGS) -o $@ $(OBJS) $(LIBS)
+ 

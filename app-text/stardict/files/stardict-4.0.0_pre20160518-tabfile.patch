@@ -1,0 +1,38 @@
+From adb01aafd94b6bd5b5cc49889f4f09d483ee5ac4 Mon Sep 17 00:00:00 2001
+From: Nikolay Korotkiy <sikmir@gmail.com>
+Date: Thu, 1 Sep 2016 14:11:41 +0300
+Subject: [PATCH] tabfile: incorrectly handles whitespace in file name
+
+Signed-off-by: Andrew Savchenko <bircoph@gmail.com>
+---
+ tools/src/libtabfile.cpp | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/tools/src/libtabfile.cpp b/tools/src/libtabfile.cpp
+index dda256a..2ee9dfd 100644
+--- a/tools/src/libtabfile.cpp
++++ b/tools/src/libtabfile.cpp
+@@ -22,6 +22,7 @@
+ #include <cstring>
+ #include <cstdlib>
+ #include <string>
++#include <sstream>
+ #include <glib/gstdio.h>
+ #include <glib.h>
+ 
+@@ -228,9 +229,10 @@ static bool write_dictionary(const char *filename, GArray *array)
+ 	g_message("%s wordcount: %d.", get_impl(basefilename), array->len);
+ 
+ #ifndef _WIN32
+-	std::string command(std::string("dictzip ") + dicfilename);
++	std::stringstream command;
++	command << "dictzip \"" << dicfilename << "\"";
+ 	int result;
+-	result = system(command.c_str());
++	result = system(command.str().c_str());
+ 	if (result == -1) {
+ 		g_print("system() error!\n");
+ 	}
+-- 
+2.10.2
+

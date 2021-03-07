@@ -1,0 +1,13 @@
+diff --git a/buckets/ssl_buckets.c b/buckets/ssl_buckets.c
+index b01e535..6fadb0c 100644
+--- a/buckets/ssl_buckets.c
++++ b/buckets/ssl_buckets.c
+@@ -1156,7 +1156,7 @@ static void init_ssl_libraries(void)
+         }
+ #endif
+ 
+-#ifdef USE_OPENSSL_1_1_API
++#if defined(USE_OPENSSL_1_1_API) && !defined(LIBRESSL_VERSION_NUMBER)
+         OPENSSL_malloc_init();
+ #else
+         CRYPTO_malloc_init();

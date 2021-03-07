@@ -1,0 +1,14 @@
+--- test/test_upload.rb	2018-01-22 08:15:30.996002204 +0100
++++ test/test_upload.rb.1	2018-01-22 08:18:09.328002581 +0100
+@@ -155,8 +155,9 @@
+     expect_scp_session("-t /path/to/remote") do |channel|
+       channel.gets_ok
+     end
+-
+-    assert_raises(Net::SCP::Error) { scp.upload!("/path/to/local", "/path/to/remote") }
++    Net::SSH::Test::Extensions::IO.with_test_extension do
++      assert_raises(Net::SCP::Error) { scp.upload!("/path/to/local", "/path/to/remote") }
++    end
+   end
+ 
+   def test_upload_empty_directory_should_create_directory_and_finish

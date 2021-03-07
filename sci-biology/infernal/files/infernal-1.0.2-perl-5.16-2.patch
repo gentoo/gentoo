@@ -1,0 +1,147 @@
+ benchmarks/cmsearch-rmark/sre.pl   | 4 +---
+ easel/devkit/autodoc               | 4 ++--
+ easel/devkit/esl-dependencies      | 4 ++--
+ easel/devkit/sqc                   | 7 +++----
+ easel/testsuite/coverage_report.pl | 4 ++--
+ easel/testsuite/driver_report.pl   | 4 ++--
+ easel/testsuite/valgrind_report.pl | 4 ++--
+ 7 files changed, 14 insertions(+), 17 deletions(-)
+
+diff --git a/benchmarks/cmsearch-rmark/sre.pl b/benchmarks/cmsearch-rmark/sre.pl
+index 9136717..e4df233 100644
+--- a/benchmarks/cmsearch-rmark/sre.pl
++++ b/benchmarks/cmsearch-rmark/sre.pl
+@@ -6,8 +6,6 @@
+ 
+ package SRE_perlstuff;
+ 
+-require "importenv.pl";
+-
+ # Function: tempname
+ #
+ # Returns a unique temporary filename. 
+@@ -26,7 +24,7 @@ require "importenv.pl";
+ #
+ sub main'tempname {
+     local ($dir, $name);
+-    if ($TMPDIR) { $dir = $TMPDIR; } else {$dir = "/tmp";}
++    if ($ENV{TMPDIR}) { $dir = $ENV{TMPDIR}; } else {$dir = "/tmp";}
+ 
+     foreach $suffix ("aa".."zz") {
+ 	$name = "$dir/sre$suffix$$";
+diff --git a/easel/devkit/autodoc b/easel/devkit/autodoc
+old mode 100755
+new mode 100644
+index 045ce36..22268f6
+--- a/easel/devkit/autodoc
++++ b/easel/devkit/autodoc
+@@ -49,8 +49,8 @@
+ #
+ # SRE, Tue Nov 30 19:43:47 2004
+ 
+-require  "getopts.pl";
+-&Getopts('n:t');
++use Getopt::Std;
++getopts('n:t');
+ $cfile = shift;
+ 
+ if ($opt_t) { $show_api_table = 1; }
+diff --git a/easel/devkit/esl-dependencies b/easel/devkit/esl-dependencies
+old mode 100755
+new mode 100644
+index a4dc126..b61fa7a
+--- a/easel/devkit/esl-dependencies
++++ b/easel/devkit/esl-dependencies
+@@ -13,8 +13,8 @@
+ # SRE, Mon Jun 11 11:15:31 2007
+ # SVN $Id$
+ 
+-require "getopts.pl"
+-&Getopts('1afr');
++use Getopt::Std;
++getopts('1afr');
+ 
+ if ($opt_1) { $show_summary_table = 1; }
+ if ($opt_a) { $list_augfiles      = 1; }
+diff --git a/easel/devkit/sqc b/easel/devkit/sqc
+old mode 100755
+new mode 100644
+index 81d03de..6201d3d
+--- a/easel/devkit/sqc
++++ b/easel/devkit/sqc
+@@ -176,12 +176,11 @@
+ # SRE, Tue Aug  6 11:16:39 2002
+ # SVN $Id: sqc 1796 2007-01-03 22:36:44Z eddys $
+ 
+-require "getopts.pl";
+-require "importenv.pl";
++use Getopt::Std;
+ 
+ # Parse our command line
+ #
+-&Getopts('mp:r:v');
++getopts('mp:r:v');
+ if ($opt_m) { $do_memtest = 1;    }
+ if ($opt_p) { push @prepdirs, $opt_p; }
+ if ($opt_r) { push @olddirs,  $opt_r; }
+@@ -510,7 +509,7 @@ check_ccmalloc_status
+ #
+ sub tempname {
+     my ($dir, $name, $suffix);
+-    if ($TMPDIR) { $dir = $TMPDIR."/"; } else {$dir = "";}
++    if ($ENV{TMPDIR}) { $dir = $ENV{TMPDIR}."/"; } else {$dir = "";}
+ 
+     foreach $suffix ("aa".."zz") {
+         $name = "$dir"."esltmp".$suffix.$$;
+diff --git a/easel/testsuite/coverage_report.pl b/easel/testsuite/coverage_report.pl
+old mode 100755
+new mode 100644
+index 9c77791..024ed34
+--- a/easel/testsuite/coverage_report.pl
++++ b/easel/testsuite/coverage_report.pl
+@@ -16,9 +16,9 @@
+ #
+ # SRE, Thu Mar  1 19:22:57 2007 (Janelia)
+ # SVN $Id: coverage_report.pl 231 2008-03-25 14:43:57Z eddys $
+-require  "getopts.pl";
++use Getopt::Std;
+ $have_sloccount = 1;
+-&Getopts('cs');
++getopts('cs');
+ if ($opt_c) { $do_recompile     = 1; }
+ if ($opt_s) { $have_sloccount   = 0; }
+ 
+diff --git a/easel/testsuite/driver_report.pl b/easel/testsuite/driver_report.pl
+old mode 100755
+new mode 100644
+index d1b4a9a..db4378f
+--- a/easel/testsuite/driver_report.pl
++++ b/easel/testsuite/driver_report.pl
+@@ -19,8 +19,8 @@
+ # SRE, Fri Mar  2 10:01:44 2007 (Janelia)
+ # SVN $Id: driver_report.pl 231 2008-03-25 14:43:57Z eddys $
+ 
+-require  "getopts.pl";
+-&Getopts('c');
++use Getopt::Std;
++getopts('c');
+ if ($opt_c) { $do_recompile = 1; }
+ 
+ if ($ENV{'CC'}     ne "") { $CC     = $ENV{'CC'};     } else { $CC       = "gcc"; } 
+diff --git a/easel/testsuite/valgrind_report.pl b/easel/testsuite/valgrind_report.pl
+old mode 100755
+new mode 100644
+index 186a392..07026a0
+--- a/easel/testsuite/valgrind_report.pl
++++ b/easel/testsuite/valgrind_report.pl
+@@ -10,8 +10,8 @@
+ #
+ # SRE, Fri Mar  2 08:37:48 2007 [Janelia]
+ # SVN $Id: valgrind_report.pl 231 2008-03-25 14:43:57Z eddys $
+-require  "getopts.pl";
+-&Getopts('c');
++use Getopt::Std;
++getopts('c');
+ if ($opt_c) { $do_recompile = 1; }
+ 
+ if ($ENV{'CC'}     ne "") { $CC     = $ENV{'CC'};     } else { $CC       = "gcc"; } 

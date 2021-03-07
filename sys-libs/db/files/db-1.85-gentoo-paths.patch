@@ -1,0 +1,29 @@
+--- a/PORT/linux/Makefile
++++ b/PORT/linux/Makefile
+@@ -1,12 +1,12 @@
+ #	@(#)Makefile	8.9 (Berkeley) 7/14/94
+ 
+-LIBDB=	libdb.a
+-LIBDBSO=libdb.so
++LIBDB=	libdb1.a
++LIBDBSO=libdb1.so
+ SOVER=2
+ SONAME=$(LIBDBSO).$(SOVER)
+ LIBNDBM=libndbm.a
+ LIBNDBMSO=libndbm.so
+-PROG=	db_dump185
++PROG=	db1_dump185
+ OBJ1=	hash.o hash_bigkey.o hash_buf.o hash_func.o hash_log2.o hash_page.o \
+ 	ndbm.o
+ OBJ2=	bt_close.o bt_conv.o bt_debug.o bt_delete.o bt_get.o bt_open.o \
+@@ -27,8 +27,8 @@
+ DESTDIR =
+ prefix = /usr
+ bindir = $(prefix)/bin
+-libdir = $(prefix)/lib
+-includedir = $(prefix)/include
++libdir = $(prefix)/@GENTOO_LIBDIR@
++includedir = $(prefix)/include/db1
+ 
+ all: $(LIBDB) $(LIBDBSO) $(PROG)
+ 

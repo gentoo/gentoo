@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  Gri is a language for scientific graphics programming. The word
+  "language" is important: Gri is command-driven, not
+  point/click. Some users liken Gri to LaTeX, since both provide
+  extensive power in exchange for patience in learning syntax. Gri can
+  make x-y graphs, contour graphs, and image graphs, in PostScript and
+  (someday) SVG formats. Control is provided over all aspects of
+  drawing, e.g. line widths, colors, and fonts. A TeX-like syntax
+  provides common mathematical symbols.
+</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">gri</remote-id>
+  </upstream>
+</pkgmetadata>

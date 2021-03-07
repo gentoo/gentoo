@@ -1,0 +1,56 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2021-01-27)
+# Requires PAM
+gnome-base/gdm elogind fprint
+lxde-base/lxdm elogind
+
+# Fabian Groffen <grobian@gentoo.org> (2020-10-15)
+# Requires PAM
+x11-base/xorg-server elogind
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-21)
+# depends on systemd
+sys-apps/ipmitool openbmc
+
+# Benda Xu <heroxbd@gentoo.org> (2019-08-20)
+# avoid gnome-extra/gnome-user-share, which depends on systemd.
+gnome-base/gnome-extra-apps share
+
+# Benda Xu <heroxbd@gentoo.org> (2019-08-20)
+# avoid sys-apps/systemd
+net-analyzer/wireshark sdjournal
+sys-apps/dbus-broker launcher
+www-servers/uwsgi uwsgi_plugins_systemd_logger
+
+# Benda Xu <heroxbd@gentoo.org> (2016-07-28)
+# Needs root privilege.
+sys-fs/eudev hwdb kmod
+
+# Fabian Groffen <grobian@gentoo.org> (2011-12-08)
+# USE=vanilla produces a broken compiler for Prefix.  Only use this flag
+# when you're absolutely sure what you're doing.  Do NOT report bugs
+# about failing packages when using a vanilla compiler!
+sys-devel/gcc vanilla
+
+# Rafael Goncalves Martins <rafaelmartins@gentoo.org> (2010-09-29)
+# dev-libs/judy without prefix keywords
+# (amd64-linux and x86-linux)
+sci-electronics/gtkwave judy
+
+# Christian Faulhammer <fauli@gentoo.org> (2010-01-09)
+# m17n-lib is not available in Prefix
+app-editors/emacs m17n-lib
+
+# Jeremy Olexa <darkside@gentoo.org> (2009-09-30)
+# berkdb has hardcoded paths all over, breaks on linux at least. Use flag
+# disappearing in next bump: prefix can be early and force it to be not used to
+# save headaches.
+# NOTE to prefix devs: if it needs to not be a global mask, talk to me because
+# it currently causes failures on linux. It can be made a "less global" mask.
+dev-lang/python berkdb
+
+# Elias Pipping <pipping@gentoo.org> (2007-11-15)
+# pkg_postinst tries to create/delete a user, fails
+dev-libs/cyrus-sasl berkdb gdbm

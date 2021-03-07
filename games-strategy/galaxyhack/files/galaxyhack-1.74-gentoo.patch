@@ -1,0 +1,28 @@
+--- a/Makefile.old	2009-02-11 22:21:26.000000000 +0100
++++ b/Makefile	2009-02-11 22:20:58.000000000 +0100
+@@ -6,12 +6,11 @@
+ # James Gregory and Everton da Silva Marques <evertonsm@yahoo.com.br>
+ #
+ 
+-INSTALL_DIR=/usr/local/share
+-INSTALL_BIN_DIR=/usr/local/bin
++INSTALL_DIR="${GAMES_DATADIR}"
++INSTALL_BIN_DIR="${GAMES_BINDIR}"
+ 
+-CXX = g++
+-CXXFLAGS = $(shell sdl-config --cflags) -O3
+-LDFLAGS = $(shell sdl-config --libs) -lSDL_image -lSDL_mixer -lboost_filesystem
++CXXFLAGS += $(shell sdl-config --cflags)
++LDLIBS = $(shell sdl-config --libs) -lSDL_image -lSDL_mixer -lboost_filesystem -lboost_system -lm
+ 
+ OBJS = AIInterpreter.o AutoFireUnit.o BCCompiler.o DerivedGroups.o DragWindow.o \
+ 	ForceSelect.o ForceSelectWin.o GenWindow.o GenWindow_Base.o GFX.o Globals.o \
+@@ -40,7 +39,7 @@
+ 	install $(TARGET) $(INSTALL_BIN_DIR)
+ 
+ $(TARGET): $(OBJS)
+-	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@ $^
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@ $^ $(LDLIBS)
+ 
+ %.o: %.cpp
+ 	$(CXX) $(CXXFLAGS) -c $< -o $@

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>netmon@gentoo.org</email>
+		<name>Gentoo network monitoring and analysis project</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>oleg.derevenetz@gmail.com</email>
+			<name>Oleg Derevenetz</name>
+		</maintainer>
+		<remote-id type="github">oleg-derevenetz/bwping</remote-id>
+		<remote-id type="sourceforge">bwping</remote-id>
+	</upstream>
+	<longdescription>
+	A tool to measure bandwidth and response times between two hosts using
+	Internet Control Message Protocol (ICMP) echo request/echo reply mechanism.
+	</longdescription>
+</pkgmetadata>

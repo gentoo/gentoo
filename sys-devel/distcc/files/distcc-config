@@ -1,0 +1,180 @@
+#!/usr/bin/env python
+# Copyright 1999-2018 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+import os, re, signal, subprocess, sys
+
+options=[
+	'--get-hosts',
+	'--set-hosts',
+	'--get-verbose',
+	'--set-verbose',
+	'--get-log',
+	'--set-log',
+	'--update-masquerade',
+	'--update-masquerade-with-crossdev',
+	'--help',
+	'--get-env',
+	'--set-env'
+]
+
+tmpcmdline=sys.argv[1:]
+cmdline=[]
+
+eprefix = '@EPREFIX@'
+bindir = os.path.join(eprefix, 'usr', 'bin')
+sbindir = os.path.join(eprefix, 'usr', 'sbin')
+libdir = os.path.join(eprefix, '@libdir@')
+sysconfdir = os.path.join(eprefix, 'etc')
+
+gcc_config = os.path.join(bindir, 'gcc-config')
+env_update = os.path.join(sbindir, 'env-update')
+envfile = os.path.join(sysconfdir, 'env.d', '02distcc')
+default_distcc_dir = os.path.join(sysconfdir, 'distcc')
+hostfile = os.path.join(default_distcc_dir, 'hosts')
+distcc_path = os.path.join(bindir, 'distcc')
+dccc_dir = os.path.join(libdir, 'distcc', 'bin')
+
+def exithandler(foo,bar):
+	os.kill(0,signal.SIGKILL)
+	sys.exit(1)
+
+signal.signal(signal.SIGINT,exithandler)
+
+def isroot(ret=0):
+	if os.getuid() != 0:
+		if ret == 0:
+			print('!!! %s %s must be run as root' % (sys.argv[:1][0],tmpcmdline[0]))
+			sys.exit(1)
+		else:
+			retval = 0
+	else:
+		retval = 1
+	return retval
+
+def writeenv(var,value):
+	isroot()
+	distcc_env    = []
+	distcc_env    = open(envfile, 'r').readlines()
+	distcc_env_new = open(envfile, 'w')
+	for i in range(len(distcc_env)):
+		if re.compile(var+'="(.*)"').match(distcc_env[i]):
+			distcc_env[i] = var+'="'+value+'"\n'
+		distcc_env_new.write(distcc_env[i])
+	#print('Set %s to: %s ' % (var,value))
+	subprocess.Popen(env_update, shell=True)
+	print('If you want to use these new settings in an existing shell,')
+	print('you need to "source /etc/profile" to get the changes.')
+
+def readenv(var):
+	distcc_env = open(envfile, 'r').read()
+	match = re.compile(var+'="(.*)"').search(distcc_env)
+	if match:
+		print(var+'='+match.group(1))
+	else:
+		print(var,'not set.')
+
+def installlink(chost='', version=''):
+	for file in ['gcc', 'cc', 'c++', 'g++']:
+		if not chost == '':
+			file = '%s-%s' % (chost,file)
+		if not version == '':
+			file = '%s-%s' % (file,version)
+		path = os.path.join(dccc_dir,file)
+		if os.path.exists(os.path.join(bindir,file)):
+			if not os.path.exists(path):
+				print('Creating %s symlink...' % (path))
+				os.symlink(distcc_path,path)
+			#else:
+			#	print('Already exists. Skipping...')
+
+def installlinks():
+	p = subprocess.Popen([gcc_config+" -C -l"], shell=True, stdout=subprocess.PIPE)
+	lines = p.stdout.read().decode().rstrip().split('\n')
+	for line in lines:
+		columns = line.split()
+		if len(columns) >= 2:
+			matches = re.match("(.*)-(.*)", columns[1])
+			chost = matches.group(1)
+			version = matches.group(2)
+			installlink(chost)
+			installlink(chost, version)
+
+def uninstalllinks():
+	for root, dirs, files in os.walk(dccc_dir):
+		for file in files:
+			os.remove(os.path.join(root, file))
+
+def createdistccdir(dir):
+	if not os.path.exists(dir):
+		os.mkdir(dir)
+		os.chmod(dir, 0o755)
+
+for x in tmpcmdline:
+	if not x:
+		continue
+	if x[0:2]=="--":
+		if not x in options:
+			print("!!! Error: %s is an invalid option." % (x))
+			sys.exit(1)
+	else:
+		cmdline = x
+
+if '--get-hosts' in tmpcmdline:
+	HOSTS_ENV  = os.environ.get('DISTCC_HOSTS')
+	HOSTS_HOME = os.path.join(os.environ.get('HOME'), '.distcc', 'hosts')
+	if HOSTS_ENV:
+		print(HOSTS_ENV)
+	elif os.path.isfile(HOSTS_HOME) and os.path.getsize(HOSTS_HOME) != 0:
+		print(HOSTS_HOME)
+	elif os.path.exists(hostfile):
+		print(open(hostfile, 'r').read().rstrip())
+	else:
+		print('No configuration file found. Setup your hosts with --set-hosts.')
+elif '--set-hosts' in tmpcmdline:
+	if isroot(1):
+		PATH = default_distcc_dir
+	else:
+		PATH = os.path.join(os.environ.get('HOME'), '.distcc')
+	createdistccdir(PATH)
+	open(os.path.join(PATH, 'hosts'), 'w').write(cmdline + '\n')
+elif '--get-verbose' in tmpcmdline:
+	readenv('DISTCC_VERBOSE')
+elif '--set-verbose' in tmpcmdline:
+	writeenv('DISTCC_VERBOSE',tmpcmdline[1])
+elif '--get-log' in tmpcmdline:
+	readenv('DISTCC_LOG')
+elif '--set-log' in tmpcmdline:
+	writeenv('DISTCC_LOG',tmpcmdline[1])
+elif '--update-masquerade' in tmpcmdline:
+	isroot()
+	uninstalllinks()
+	print('Creating symlinks...')
+	installlink()
+	installlinks()
+elif '--update-masquerade-with-crossdev' in tmpcmdline:
+	isroot()
+	uninstalllinks()
+	print('Creating symlinks...')
+	installlinks()
+elif '--get-env' in tmpcmdline:
+	if len(tmpcmdline) == 1:
+		print(open(envfile, 'r').read().rstrip())
+	elif len(tmpcmdline) == 2:
+		readenv(tmpcmdline[1])
+	else:
+		print('!!! Error: Specify only one variable.')
+elif '--set-env' in tmpcmdline:
+	if len(tmpcmdline) > 2 and len(tmpcmdline) <= 3:
+		isroot()
+		writeenv(tmpcmdline[1],tmpcmdline[2])
+	else:
+		print('!!! Error: Awaiting two parameters.')
+else:
+	cmd = sys.argv[:1][0]
+	print('Usage: %s --set-hosts DISTCC_HOSTS | --get-hosts' % (cmd))
+	print('       %s --set-verbose { 0 | 1 }  | --get-verbose' % (cmd))
+	print('       %s --set-log FILE           | --get-log' % (cmd))
+	print('       %s --set-env VARIABLE VALUE | --get-env [VARIABLE]' % (cmd))
+	print('       %s --update-masquerade' % (cmd))
+	print('       %s --update-masquerade-with-crossdev' % (cmd))

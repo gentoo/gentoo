@@ -1,0 +1,119 @@
+* Modify Makefile.am's to be compliant with GNU and Gentoo filesystem conventions
+* Use redefinable variables instead of hard-replacing @VAR@-style variables
+* Replace abuse of 'libdir' install path variables
+
+--- a/docs/Makefile.am
++++ b/docs/Makefile.am
+@@ -3,19 +3,17 @@
+ man_MANS = jpilot.1 jpilot-dial.1 jpilot-sync.1 jpilot-dump.1 jpilot-merge.1
+ 
+ # Install the standard GNU doc files
+-miscdir = $(datadir)/doc/$(PACKAGE)
++miscdir = $(docdir)
+ misc_DATA = \
+ 	../BUGS \
+ 	../ChangeLog \
+-	../COPYING \
+ 	../AUTHORS \
+-	../INSTALL \
+ 	../README \
+ 	../TODO
+ 
+ # Install the manual docs
+-docdir = $(miscdir)/manual
+-doc_DATA = \
++manualdir = $(htmldir)
++manual_DATA = \
+ 	manual.html \
+ 	plugin.html \
+ 	jpilot-address.png \
+--- a/Expense/Makefile.am
++++ b/Expense/Makefile.am
+@@ -1,11 +1,11 @@
+-libdir = @libdir@/@PACKAGE@/plugins
++pluginsdir = $(libdir)/$(PACKAGE)/plugins
+ 
+ if MAKE_EXPENSE
+ 
+-lib_LTLIBRARIES = libexpense.la
++plugins_LTLIBRARIES = libexpense.la
+ libexpense_la_SOURCES = expense.c
+-libexpense_la_CFLAGS = @PILOT_FLAGS@ @GTK_CFLAGS@ -I$(top_srcdir)
++libexpense_la_CFLAGS = $(PILOT_FLAGS) $(GTK_CFLAGS) -I$(top_srcdir)
+ libexpense_la_LDFLAGS = -module -avoid-version
+-libexpense_la_LIBADD = @GTK_LIBS@
++libexpense_la_LIBADD = $(GTK_LIBS)
+ 
+ endif
+--- a/icons/Makefile.am
++++ b/icons/Makefile.am
+@@ -1,4 +1,4 @@
+-icondir = $(datadir)/doc/$(PACKAGE)/icons
++icondir = $(docdir)/icons
+ icon_DATA = \
+ 	jpilot-icon1.xpm \
+ 	jpilot-icon2.xpm \
+--- a/KeyRing/Makefile.am
++++ b/KeyRing/Makefile.am
+@@ -1,13 +1,13 @@
+-libdir = @libdir@/@PACKAGE@/plugins
++pluginsdir = $(libdir)/$(PACKAGE)/plugins
+ 
+ EXTRA_DIST = README
+ 
+ if MAKE_KEYRING
+ 
+-lib_LTLIBRARIES = libkeyring.la
++plugins_LTLIBRARIES = libkeyring.la
+ libkeyring_la_SOURCES = keyring.c
+-libkeyring_la_CFLAGS = @PILOT_FLAGS@ @GTK_CFLAGS@ @LIBGCRYPT_CFLAGS@ -I$(top_srcdir)
++libkeyring_la_CFLAGS = $(PILOT_FLAGS) $(GTK_CFLAGS) $(LIBGCRYPT_CFLAGS) -I$(top_srcdir)
+ libkeyring_la_LDFLAGS = -module -avoid-version
+-libkeyring_la_LIBADD = @OPENSSL_LIBS@ @GTK_LIBS@ @LIBGCRYPT_LIBS@
++libkeyring_la_LIBADD = $(OPENSSL_LIBS) $(GTK_LIBS) $(LIBGCRYPT_LIBS)
+ 
+ endif
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -161,18 +161,17 @@
+ ACLOCAL_AMFLAGS = -I m4
+ 
+ # Add i18n support
+-localedir = $(datadir)/locale
+ I18NDEFS = -DLOCALEDIR=\"$(localedir)\"
+ 
+-AM_CFLAGS= @PILOT_FLAGS@ @GTK_CFLAGS@ ${I18NDEFS}
++AM_CFLAGS= $(PILOT_FLAGS) $(GTK_CFLAGS) $(I18NDEFS)
+ 
+ # Add linkflags
+ jpilot_LDFLAGS = -export-dynamic
+-jpilot_LDADD=@LIBS@ @PILOT_LIBS@ @GTK_LIBS@
+-jpilot_dump_LDADD=@LIBS@ @PILOT_LIBS@ @GTK_LIBS@
++jpilot_LDADD=$(LIBS) $(PILOT_LIBS) $(GTK_LIBS)
++jpilot_dump_LDADD=$(LIBS) $(PILOT_LIBS) $(GTK_LIBS)
+ jpilot_sync_LDFLAGS = -export-dynamic
+-jpilot_sync_LDADD=@LIBS@ @PILOT_LIBS@ @GTK_LIBS@
+-jpilot_merge_LDADD=@LIBS@ @PILOT_LIBS@ @GTK_LIBS@
++jpilot_sync_LDADD=$(LIBS) $(PILOT_LIBS) $(GTK_LIBS)
++jpilot_merge_LDADD=$(LIBS) $(PILOT_LIBS) $(GTK_LIBS)
+ 
+ ################################################################################
+ ## The rest of the file is copied over to the Makefile with only variable
+--- a/SyncTime/Makefile.am
++++ b/SyncTime/Makefile.am
+@@ -1,11 +1,11 @@
+-libdir = @libdir@/@PACKAGE@/plugins
++pluginsdir = $(libdir)/$(PACKAGE)/plugins
+ 
+ if MAKE_SYNCTIME
+ 
+-lib_LTLIBRARIES = libsynctime.la
++plugins_LTLIBRARIES = libsynctime.la
+ libsynctime_la_SOURCES = synctime.c
+-libsynctime_la_CFLAGS = @PILOT_FLAGS@ @GTK_CFLAGS@ -I$(top_srcdir)
++libsynctime_la_CFLAGS = $(PILOT_FLAGS) $(GTK_CFLAGS) -I$(top_srcdir)
+ libsynctime_la_LDFLAGS = -module -avoid-version
+-libsynctime_la_LIBADD = @GTK_LIBS@
++libsynctime_la_LIBADD = $(GTK_LIBS)
+ 
+ endif

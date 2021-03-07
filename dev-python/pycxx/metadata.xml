@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+		PyCXX is a set of C++ facilities to make it easier to write Python
+		extensions.  The chief way in which PyCXX makes it easier to write
+		Python extensions is that it increases the probability that
+		your program will not make a reference-counting error and will not
+		have to continually check error returns from the Python C API.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">cxx</remote-id>
+		<remote-id type="pypi">pycxx</remote-id>
+	</upstream>
+</pkgmetadata>

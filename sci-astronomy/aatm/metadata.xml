@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-astronomy@gentoo.org</email>
+    <name>Gentoo Astronomy Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  ATmospheric Modeling for ALMA is a library of routines for modelling
+  transmission of cm/mm/sub-mm wavelength radiation through the Earths
+  atmosphere. It is designed to simulate both the absorption/emission
+  of radiation and the dispersion (i.e., the frequency dependent
+  refractive index of the atmosphere).
+</longdescription>
+  <upstream>
+    <remote-id type="launchpad">aatm</remote-id>
+  </upstream>
+</pkgmetadata>

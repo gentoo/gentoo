@@ -1,0 +1,11 @@
+--- a/rman.c
++++ b/rman.c
+@@ -1372,7 +1372,7 @@ HTML(enum command cmd) {
+ 		break;
+ 	   case BEGINSECTION:	break;
+ 	   case ENDSECTION:
+-		if (sectheadid==NAME && message!=NULL) printf(message);
++		if (sectheadid==NAME && message!=NULL) printf("%s", message);
+ 		break;
+ 	   case BEGINSUBSECTION:	break;
+ 	   case ENDSUBSECTION:	break;

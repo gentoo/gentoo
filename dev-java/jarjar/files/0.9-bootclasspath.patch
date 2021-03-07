@@ -1,0 +1,11 @@
+--- build.xml	2008-09-13 13:55:40.000000000 +0200
++++ build.xml	2009-10-06 20:51:53.000000000 +0200
+@@ -48,7 +48,7 @@
+             </copy>
+             <javac srcdir="src/@{module}" destdir="build/@{module}"
+               source="${compile.source}"
+-              target="${compile.target}" bootclasspath="@{bootclasspath}" extdirs="${compile.extdirs}"
++              target="${compile.target}" extdirs="${compile.extdirs}"
+               debug="${compile.debug}" optimize="${compile.optimize}" deprecation="${compile.deprecation}">
+                  <classpath refid="@{refid}"/>
+                  <compilerarg value="-Xlint"/>

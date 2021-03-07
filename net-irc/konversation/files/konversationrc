@@ -1,0 +1,24 @@
+[Channel 0]
+Name=#gentoo
+
+[Channel 1]
+Name=#gentoo-desktop
+
+[Channel 2]
+Name=#gentoo-kde
+
+[Channel 3]
+Name=#gentoo-xfce
+
+[Server 0]
+Port=8001
+SSLEnabled=false
+Server=chat.freenode.net
+
+[ServerGroup 0]
+AutoConnect=false
+AutoJoinChannels=Channel 0,Channel 1,Channel 2,Channel 3
+EnableNotifications=true
+Expanded=false
+Name=Freenode
+ServerList=Server 0

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-electronics@gentoo.org</email>
+    <name>Gentoo Electronics Project</name>
+  </maintainer>
+  <upstream>
+    <maintainer status="active">
+      <email>tim@opencircuitdesign.com</email>
+      <name>Timothy Edwards</name>
+    </maintainer>
+    <changelog>http://www.opencircuitdesign.com/netgen/history.html</changelog>
+    <doc lang="en">http://www.opencircuitdesign.com/netgen/reference.html</doc>
+    <bugs-to>mailto:tim@opencircuitdesign.com</bugs-to>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,30 @@
+--- a/lib/Makefile.linux
++++ b/lib/Makefile.linux
+@@ -33,7 +33,11 @@
+ RM = rm -f
+ DEPEND = $(CPP) -MM
+
+-DYNAMICLIB = libopenctm.so
++VERSION = 1.0.3
++SOVERSION = 1
++LIBNAME = libopenctm.so
++SONAME = $(LIBNAME).$(SOVERSION)
++DYNAMICLIB = $(LIBNAME).$(VERSION)
+
+ OBJS = openctm.o \
+        stream.o \
+@@ -64,10 +68,12 @@
+ all: $(DYNAMICLIB)
+
+ clean:
+-	$(RM) $(DYNAMICLIB) $(OBJS) $(LZMA_OBJS)
++	$(RM) $(DYNAMICLIB) $(SONAME) $(LIBNAME) $(OBJS) $(LZMA_OBJS)
+
+ $(DYNAMICLIB): $(OBJS) $(LZMA_OBJS)
+-	gcc -shared -s -Wl,-soname,$@ -o $@ $(OBJS) $(LZMA_OBJS) -lm
++	gcc -shared -s -Wl,-soname,$(SONAME) -o $@ $(OBJS) $(LZMA_OBJS) -lm
++	ln -s $(DYNAMICLIB) $(SONAME)
++	ln -s $(DYNAMICLIB) $(LIBNAME)
+
+ %.o: %.c
+ 	$(CC) $(CFLAGS) $<

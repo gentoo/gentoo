@@ -1,0 +1,26 @@
+#!/sbin/openrc-run
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+    need snmpd
+    use snmptrapd
+    use libvirtd
+}
+
+start() {
+    ebegin "Starting libvirt subagent"
+    start-stop-daemon --start \
+        --env LIBVIRT_DEFAULT_URI="${LIBVIRT_DEFAULT_URI}" \
+        --exec /usr/bin/libvirtMib_subagent \
+        -- ${LIBVIRT_SNMP_OPTIONS}
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping libvirt subagent"
+    # "--exec /usr/bin/libvirtMib_subagent" does not work and the name gets truncated
+    start-stop-daemon --stop \
+        --name libvirtMib_suba
+    eend $?
+}

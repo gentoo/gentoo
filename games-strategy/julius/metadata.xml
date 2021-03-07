@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>gentoo@chymera.eu</email>
+		<name>Horea Christian</name>
+	</maintainer>
+	<longdescription lang="en">
+		The aim of this project is to create an open-source version of
+		Caesar 3, with the same logic as the original, but with some UI
+		enhancements, that is able to be played on multiple platforms.
+		The same logic means that the saved games are 100% compatible,
+		and any gameplay bugs present in the original Caesar 3 game will
+		also be present in Julius. It is meant as a drop-in replacement
+		for Caesar 3, with the same look and feel, so there will be no
+		major UI changes.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">bvschaik/julius</remote-id>
+	</upstream>
+</pkgmetadata>

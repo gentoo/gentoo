@@ -1,0 +1,11 @@
+--- a/1.0.0.rc16/lib/metadata/metadata.c	2009-11-27 21:57:50.182129589 -0800
++++ b/1.0.0.rc16/lib/metadata/metadata.c	2009-11-27 21:57:58.950964293 -0800
+@@ -839,7 +839,7 @@
+ 		 */
+ 		if (T_GROUP(rs)) {
+ 			_discover_partitions(lc, &rs->sets);
+-			return;
++			continue;
+ 		}
+ 
+ 		/*

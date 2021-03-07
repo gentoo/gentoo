@@ -1,0 +1,66 @@
+From e2e35bfda75a2f4950408c93ede72fabfe86360e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jan=20Kundr=C3=A1t?= <jkt@kde.org>
+Date: Wed, 19 Oct 2016 22:15:16 +0200
+Subject: [PATCH] cmake: Speed up cmake by using native features for enforcing
+ C++11
+
+This saves about 8 seconds in my (limited) testing with a 2016-era
+laptop with plenty of RAM and a fast SSD.
+
+We still attempt to support ancient pre-3.1 CMake by adding that blurb
+into CXXFLAGS, maybe it even works.
+
+I should probably start tracking time I spend supporting old
+environments and evaluate whether this is worth the effort. Once we are
+ready to distribute flatpaks/appimages/whatevers, I suspect that my life
+will become much easier.
+
+Change-Id: Ibbbe3d8440a7d29ef27440a99938d313bfe9699f
+---
+ CMakeLists.txt                                |  26 ++--
+ 24 files changed, 8 insertions(+), 468 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9393b19c..92a682f7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -18,6 +18,14 @@ if(POLICY CMP0043)
+     cmake_policy(SET CMP0043 OLD)
+ endif()
+ 
++if(CMAKE_VERSION VERSION_LESS "3.1")
++    # If you aren't using and old Linux with an old GCC and old CMake, please just upgrade.
++    set(CMAKE_CXX_FLAGS "--std=c++11 ${CMAKE_CXX_FLAGS}")
++else()
++    set(CMAKE_CXX_STANDARD 11)
++    set(CMAKE_CXX_STANDARD_REQUIRED ON)
++endif()
++
+ # Set a default build type if none was specified. This was shamelessly stolen
+ # from VTK's cmake setup because these guys produce both CMake and a project that
+ # manipulates this variable, and the web is full of posts where people say that
+@@ -34,24 +42,6 @@ endif()
+ 
+ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+ 
+-include(FindCXXFeatures)
+-if(NOT CXXFeatures_auto_FOUND)
+-    message(SEND_ERROR "Your compiler doesn't support C++11's auto")
+-endif()
+-if(NOT CXXFeatures_static_assert_FOUND)
+-    message(SEND_ERROR "Your compiler doesn't support C++11's static_assert")
+-endif()
+-if(NOT CXXFeatures_alignof_FOUND)
+-    message(SEND_ERROR "Your compiler doesn't support C++11's alignof")
+-endif()
+-if(NOT CXXFeatures_nullptr_FOUND)
+-    message(SEND_ERROR "Your compiler doesn't support C++11's nullptr")
+-endif()
+-if(NOT CXXFeatures_lambda_FOUND)
+-    message(SEND_ERROR "Your compiler doesn't support C++11's lambda functions")
+-endif()
+-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CXX11_COMPILER_FLAGS}")
+-
+ include(TrojitaOption)
+ 
+ trojita_option(WITH_DESKTOP "Build desktop version" ON)

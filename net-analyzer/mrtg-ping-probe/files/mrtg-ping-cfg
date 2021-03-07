@@ -1,0 +1,84 @@
+#!/bin/sh
+#
+# mrtg-ping-cfg { ping | loss } <device> <"Title of page">
+#
+# This creates the mrtg.cfg configurations to do pings to devices.
+# Makes use of mrt-ping-probe by Peter W. Osel <pwo@guug.de> (see below)
+#
+# leewm@sgp.hp.com
+# Hewlett Packard Singapore
+# IT Site Infrastructure Services
+# modifed by "Molchanov Alexander <xorader@mail.ru>"
+
+# location of mrtg ping probe
+PING_PROBE=/usr/bin/mrtg-ping-probe
+
+if [ $# -ne 3 ]
+then
+	head -n 11 $0
+	exit
+fi
+
+if   [ $1 == "ping" ] ; then
+	target="$2.ping"
+	MaxBytes=5000
+	AbsMax=10000
+	Unscaled=""
+	YLegend="Round Trip Time"
+	ShortLegend="ms"
+	Legend1="Maximum Round Trip Time in Milli Second"
+	Legend2="Minimum Round Trip Time in Milli Second"
+	Legend3="Maximal 5 Minute Maximum Round Trip Time"
+	Legend4="Maximal 5 Minute Minimum Round Trip Time"
+	LegendI="&nbsp;Max:"
+	LegendO="&nbsp;Min:"
+	PageTop="<H1>$3</H1><P>Actually we are measuring the ping time between our web server and $2."
+elif [ $1 == "loss" ] ; then
+	target="$2.loss"
+	PING_PROBE="$PING_PROBE -p loss/loss"
+	MaxBytes=100
+	AbsMax=101
+	Unscaled="Unscaled[$target]: dwmy"
+	YLegend="% Packet Loss"
+	ShortLegend="%"
+	Legend1="% Packet Loss"
+	Legend2="% Packet Loss"
+	Legend3="Maximal 5 Minute % Packet Loss"
+	Legend4="Maximal 5 Minute % Packet Loss"
+	LegendI="&nbsp;% loss:"
+	LegendO="&nbsp;% loss:"
+	PageTop="<H1>$3</H1><P>Actually we are packet loss between our web server and $2."
+else
+	echo "enter first argument 'ping' or 'loss'" >&2
+	head -n 11 $0
+	exit
+fi
+
+cat <<EOF
+#############################################################
+# $1 stats for $2
+# $3
+
+Title[$target]: $3
+MaxBytes[$target]: $MaxBytes
+AbsMax[$target]: $AbsMax
+Options[$target]: gauge
+Target[$target]: \`$PING_PROBE $2\`
+PageTop[$target]: $PageTop
+YLegend[$target]: $YLegend
+ShortLegend[$target]: $ShortLegend
+Legend1[$target]: $Legend1
+Legend2[$target]: $Legend2
+Legend3[$target]: $Legend3
+Legend4[$target]: $Legend4
+LegendI[$target]: $LegendI
+LegendO[$target]: $LegendO
+WithPeak[$target]: ymwd
+$Unscaled
+
+#-------------------------------------------------------------------
+
+EOF
+
+exit
+

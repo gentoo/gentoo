@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<longdescription>
+Urwid is a curses-based user interface library.  It includes many features
+useful for text console application developers including:
+
+- Fluid interface resizing (xterm window resizing / fbset on Linux console)
+- Web application display mode using Apache and CGI [Live Demo]
+- Support for UTF-8, simple 8-bit and CJK encodings
+- Multiple text alignment and wrapping modes built-in
+- Ability create user-defined text layout classes
+- Simple markup for setting text attributes
+- Powerful list box that handles scrolling between different widget types
+- List box contents may be managed with a user-defined class
+- Flexible edit box for editing many different types of text
+- Buttons, check boxes and radio boxes
+- Customizable layout for all widgets
+- Easy interface for creating HTML screen shots
+	</longdescription>
+	<upstream>
+		<remote-id type="pypi">urwid</remote-id>
+		<remote-id type="github">urwid/urwid</remote-id>
+	</upstream>
+</pkgmetadata>

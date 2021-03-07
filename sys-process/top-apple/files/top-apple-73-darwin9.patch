@@ -1,0 +1,40 @@
+--- libtop.c.orig	2012-05-03 14:35:48.000000000 +0200
++++ libtop.c	2012-05-03 14:41:36.000000000 +0200
+@@ -23,6 +23,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <limits.h>
++#include <inttypes.h>
+ #include <sys/types.h>
+ #include <mach/bootstrap.h>
+ #include <mach/host_priv.h>
+@@ -1458,6 +1459,7 @@
+ libtop_pinfo_update_kernmem_info(task_t task, libtop_pinfo_t* pinfo) {
+ 	kern_return_t kr;
+ 	
++#ifdef TASK_KERNELMEMORY_INFO_COUNT
+ 	mach_msg_type_number_t count = TASK_KERNELMEMORY_INFO_COUNT;
+ 
+ 	pinfo->psamp.p_palloc = pinfo->psamp.palloc;
+@@ -1466,6 +1468,9 @@
+ 	pinfo->psamp.p_sfree = pinfo->psamp.sfree;
+ 	
+ 	kr = task_info(task, TASK_KERNELMEMORY_INFO, (task_info_t)&pinfo->psamp.palloc, &count);
++#else
++	memset(&pinfo->psamp.palloc, 0, sizeof(pinfo->psamp.palloc));
++#endif
+ 	return kr;
+ }
+ 
+@@ -1630,9 +1635,11 @@
+ 		}
+ 
+ 		switch (info.share_mode) {
++#ifdef SM_LARGE_PAGE
+ 			case SM_LARGE_PAGE:
+ 				// Treat SM_LARGE_PAGE the same as SM_PRIVATE
+ 				// since they are not shareable and are wired.
++#endif
+ 			case SM_PRIVATE:
+ 				rprvt += info.private_pages_resident * pagesize;
+ 				rprvt += info.shared_pages_resident * pagesize;

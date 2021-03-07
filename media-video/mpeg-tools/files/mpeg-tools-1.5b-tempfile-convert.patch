@@ -1,0 +1,169 @@
+--- convert/eyuvtojpeg.c
++++ convert/eyuvtojpeg.c
+@@ -25,6 +25,7 @@
+ #include <string.h>
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <unistd.h>
+ #include <malloc.h>
+ 
+ typedef unsigned char uint8;
+@@ -47,8 +48,9 @@
+ int	main(int argc, char **argv)
+ {
+     FILE *fpointer;
+-    char command[256];
+-    char src[256], dest[256];
++    char command[4096];
++    char src[4096], dest[4096], tempfile[4096];
++    int ret;
+ 
+     if ((strcmp(argv[1],"-?") == 0) ||
+ 	(strcmp(argv[1],"-h") == 0) ||
+@@ -99,14 +101,16 @@
+     YUVtoPPM();
+ 
+     fprintf(stdout, "Writing PPM\n");
+-    fpointer = fopen("/tmp/foobar", "w");
++    sprintf(tempfile, "%s.tmp", dest);
++    fpointer = fopen(tempfile, "w");
+     WritePPM(fpointer);
+     fclose(fpointer);
+ 
+     fprintf(stdout, "Converting to JPEG %s\n", dest);
+-    sprintf(command, "cjpeg /tmp/foobar > %s", dest);
+-    system(command);
+-    return 0;
++    sprintf(command, "cjpeg %s > %s", tempfile, dest);
++    ret = system(command);
++    unlink(tempfile);
++    return ret;
+ }
+ 
+ 
+--- convert/vidtoeyuv.c
++++ convert/vidtoeyuv.c
+@@ -125,9 +125,9 @@
+   XImage *ximage;
+   char *tdata;
+   char *obase;
+-  char ofname[256];
++  char ofname[4096], tempfile[4096];
+   int height, width;
+-  char command[256];
++  char command[4096];
+   int nth;
+ 
+   if ((argc != 7) && (argc != 8))usage (argv[0]);
+@@ -223,9 +223,11 @@
+ 
+ 
+     sprintf(ofname, "%s%d.yuv", obase, i);
+-    outFile = fopen("/tmp/foobar", "w");
++    sprintf(tempfile, "%s%d.yuv.tmp", obase, i);
++    outFile = fopen(tempfile, "w");
+     if (!outFile) {
+       perror("Couldn't open output file.");
++      exit(1);
+     }
+ 
+     for (r=0; r<height; r++) {
+@@ -241,9 +243,10 @@
+ 
+     free(tdata);
+ 
+-    sprintf(command, "rawtoppm %d %d < /tmp/foobar | ppmtoyuv > %s",
+-	    width, height, ofname);
++    sprintf(command, "rawtoppm %d %d < %s | ppmtoyuv > %s",
++	    width, height, tempfile, ofname);
+     system(command);
++    unlink(tempfile);
+ 
+       for (j=0; j<nth-1; j++) {
+ 	if (read (fd, &image, sizeof(image)) != sizeof(image)) {
+--- convert/vidtojpeg.c
++++ convert/vidtojpeg.c
+@@ -123,9 +123,9 @@
+   XImage *ximage;
+   char *tdata;
+   char *obase;
+-  char ofname[256];
++  char ofname[4096], tempfile[4096];
+   int height, width;
+-  char command[256];
++  char command[4096];
+ 
+ 
+   if ((argc != 7) && (argc != 8))usage (argv[0]);
+@@ -221,9 +221,11 @@
+ 
+ 
+     sprintf(ofname, "%s.%d.jpeg", obase, i);
+-    outFile = fopen("/tmp/foobar", "w");
++    sprintf(tempfile, "%s.%d.jpeg.tmp", obase, i);
++    outFile = fopen(tempfile, "w");
+     if (!outFile) {
+       perror("Couldn't open output file.");
++      exit(1);
+     }
+ 
+     for (r=0; r<height; r++) {
+@@ -239,9 +241,10 @@
+ 
+     free(tdata);
+ 
+-    sprintf(command, "rawtoppm %d %d < /tmp/foobar | cjpeg > %s",
+-	    width, height, ofname);
++    sprintf(command, "rawtoppm %d %d < %s | cjpeg > %s",
++	    width, height, tempfile, ofname);
+     system(command);
++    unlink(tempfile);
+   }
+ }
+ 
+--- convert/vidtoppm.c
++++ convert/vidtoppm.c
+@@ -220,9 +220,11 @@
+ 
+ 
+     sprintf(ofname, "%s%d.ppm", obase, i);
+-    outFile = fopen("/tmp/foobar", "w");
++    sprintf(tempfile, "%s%d.ppm.tmp", obase, i);
++    outFile = fopen(tempfile, "w");
+     if (!outFile) {
+       perror("Couldn't open output file.");
++      exit(1);
+     }
+ 
+     for (r=0; r<height; r++) {
+@@ -238,8 +240,9 @@
+ 
+     free(tdata);
+ 
+-    sprintf(command, "rawtoppm %d %d < /tmp/foobar > %s",
+-	    width, height, ofname);
++    sprintf(command, "rawtoppm %d %d < %s > %s",
++	    width, height, tempfile, ofname);
+     system(command);
++    unlink(tempfile);
+   }
+ }
+--- convert/eyuvtoppm.c
++++ convert/eyuvtoppm.c
+@@ -100,13 +100,9 @@
+     fpointer = fopen(dest, "w");
+     if (fpointer == NULL) {
+       fprintf(stderr, "Problems opening %s!\n", dest);
+-      fprintf(stderr, "Trying /tmp/foobar instead\n");
+-      strcpy(dest, "/tmp/foobar");
+-      fpointer = fopen(dest, "w");
+-      if (fpointer == NULL) {
+-	fprintf(stderr, "Nope, exiting.\n");
+-	exit(1);
+-      }}
++      perror("");
++      exit(1);
++    }
+ 
+     WritePPM(fpointer);
+     fclose(fpointer);

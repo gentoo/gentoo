@@ -1,0 +1,69 @@
+diff -Naur vdr-live-0.3.0_p20130504.orig/pages/recordings.ecpp vdr-live-0.3.0_p20130504/pages/recordings.ecpp
+--- vdr-live-0.3.0_p20130504.orig/pages/recordings.ecpp	2013-10-23 03:28:13.746493449 +0200
++++ vdr-live-0.3.0_p20130504/pages/recordings.ecpp	2013-10-23 03:29:48.779832793 +0200
+@@ -79,7 +79,11 @@
+ deletions.clear();
+ 
+ int FreeMB, UsedMB;
++#if APIVERSNUM > 20101
++int Percent = cVideoDirectory::VideoDiskSpace(&FreeMB, &UsedMB);
++#else
+ int Percent = VideoDiskSpace(&FreeMB, &UsedMB);
++#endif
+ int Minutes = int(double(FreeMB) / MB_PER_MINUTE);
+ int Hours = Minutes / 60;
+ Minutes %= 60;
+diff -Naur vdr-live-0.3.0_p20130504.orig/recman.cpp vdr-live-0.3.0_p20130504/recman.cpp
+--- vdr-live-0.3.0_p20130504.orig/recman.cpp	2013-10-23 03:28:13.756493450 +0200
++++ vdr-live-0.3.0_p20130504/recman.cpp	2013-10-23 03:31:25.813172263 +0200
+@@ -112,7 +112,11 @@
+ 		if (found == string::npos)
+ 			return false;
+ 
++#if APIVERSNUM > 20101
++		string newname = string(cVideoDirectory::Name()) + "/" + name + oldname.substr(found);
++#else
+ 		string newname = string(VideoDirectory) + "/" + name + oldname.substr(found);
++#endif
+ 
+ 		if (!MoveDirectory(oldname.c_str(), newname.c_str(), copy)) {
+ 			esyslog("[LIVE]: renaming failed from '%s' to '%s'", oldname.c_str(), newname.c_str());
+diff -Naur vdr-live-0.3.0_p20130504.orig/tools.cpp vdr-live-0.3.0_p20130504/tools.cpp
+--- vdr-live-0.3.0_p20130504.orig/tools.cpp	2013-10-23 03:28:13.799826786 +0200
++++ vdr-live-0.3.0_p20130504/tools.cpp	2013-10-23 03:34:29.146517191 +0200
+@@ -365,7 +365,11 @@
+ 			stat(source.c_str(), &st1);
+ 			stat(target.c_str(),&st2);
+ 			if (!copy && (st1.st_dev == st2.st_dev)) {
++#if APIVERSNUM > 20101
++				if (!cVideoDirectory::RenameVideoFile(source.c_str(), target.c_str())) {
++#else
+ 				if (!RenameVideoFile(source.c_str(), target.c_str())) {
++#endif
+ 					esyslog("[LIVE]: rename failed from %s to %s", source.c_str(), target.c_str());
+ 					return false;
+ 				}
+@@ -461,7 +465,11 @@
+ 						size_t found = source.find_last_of(delim);
+ 						if (found != std::string::npos) {
+ 							source = source.substr(0, found);
++#if APIVERSNUM > 20101
++							while (source != cVideoDirectory::Name()) {
++#else
+ 							while (source != VideoDirectory) {
++#endif
+ 								found = source.find_last_of(delim);
+ 								if (found == std::string::npos)
+ 									break;
+@@ -478,7 +486,11 @@
+ 					size_t found = target.find_last_of(delim);
+ 					if (found != std::string::npos) {
+ 						target = target.substr(0, found);
++#if APIVERSNUM > 20101
++						while (target != cVideoDirectory::Name()) {
++#else
+ 						while (target != VideoDirectory) {
++#endif
+ 							found = target.find_last_of(delim);
+ 							if (found == std::string::npos)
+ 								break;

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>base-system@gentoo.org</email>
+  <name>Gentoo Base System</name>
+</maintainer>
+<use>
+  <flag name="bashlogger">Log ALL commands typed into bash; should ONLY be
+    used in restricted environments such as honeypots</flag>
+  <flag name="mem-scramble">Build with custom malloc/free overwriting allocated/freed memory</flag>
+  <flag name="net">Enable /dev/tcp/host/port redirection</flag>
+  <flag name="plugins">Add support for loading builtins at runtime via
+    'enable'</flag>
+</use>
+<upstream>
+  <remote-id type="cpe">cpe:/a:gnu:bash</remote-id>
+</upstream>
+</pkgmetadata>

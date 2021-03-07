@@ -1,0 +1,48 @@
+From ef7dcbf8495d03c8cf96d4fb30adf38b15e1ca74 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Mon, 29 Aug 2016 20:44:45 -0400
+Subject: [PATCH 1/1] Clean up variable usage in Makefile to support LDFLAGS
+ and friends.
+
+---
+ Makefile | 18 +++++++-----------
+ 1 file changed, 7 insertions(+), 11 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index b422e79..d89977f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -3,23 +3,19 @@
+ 
+ PLUGIN_DIR = /usr/local/lib/gkrellm2/plugins
+ 
+-GTK_INCLUDE = `pkg-config gtk+-2.0 --cflags`
+-GTK_LIB = `pkg-config gtk+-2.0 --libs`
++GTK_INCLUDE = $(shell pkg-config gtk+-2.0 --cflags)
++GTK_LIB = $(shell pkg-config gtk+-2.0 --libs)
+ 
+ 
+-#FLAGS = -O2 -Wall -fPIC -std=c99 -pedantic $(GTK_INCLUDE)
+-FLAGS = -O2 -Wall -fPIC $(GTK_INCLUDE)
+-LIBS = $(GTK_LIB)
+-
+-LFLAGS = -shared -lssl -lpthread
+-
+-CC = gcc $(CFLAGS) $(FLAGS)
+-#CC = gcc -DDEBUG $(CFLAGS) $(FLAGS)
++CFLAGS += -Wall -fPIC
++CPPFLAGS += $(GTK_INCLUDE)
++LDLIBS += $(GTK_LIB) -lssl -lpthread
++LDFLAGS += -shared
+ 
+ OBJS = webmon.o gk.o
+ 
+ gkwebmon.so: $(OBJS)
+-	$(CC) $(OBJS) -o gkwebmon.so $(LFLAGS) $(LIBS)
++	$(CC) $(OBJS) -o $(@) $(LDFLAGS) $(LDLIBS)
+ 
+ install: gkwebmon.so
+ 	install gkwebmon.so $(PLUGIN_DIR)
+-- 
+2.7.3
+

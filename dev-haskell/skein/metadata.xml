@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name="big-endian">When manually selecting the endianness, use big-endian (default is little-endian).</flag>
+		<flag name="force-endianness">Use a manually selected endian when compiling (see flag 'big-endian').</flag>
+		<flag name="reference">Use the reference implementation instead of the optimized one.</flag>
+	</use>
+	<longdescription>
+		Skein (&lt;http://www.skein-hash.info/&gt;) is a family of fast
+		secure cryptographic hash functions designed by Niels
+		Ferguson, Stefan Lucks, Bruce Schneier, Doug Whiting, Mihir
+		Bellare, Tadayoshi Kohno, Jon Callas and Jesse Walker.
+		
+		This package uses bindings to the optimized C implementation
+		of Skein.  We provide a high-level interface (see module
+		&quot;Crypto.Skein&quot;) to some of the Skein use cases.  We also
+		provide a low-level interface (see module
+		&quot;Crypto.Skein.Internal&quot;) should you need to use Skein in a
+		different way.
+		
+		Currently we have support for Skein as cryptographic hash
+		function as Skein as a message authentication code
+		(Skein-MAC).  For examples of how to use this package, see
+		&quot;Crypto.Skein&quot; module documentation.
+		
+		This package includes Skein v1.3. Versions of this package
+		before 1.0.0 implemented Skein v1.1.
+	</longdescription>
+</pkgmetadata>

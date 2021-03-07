@@ -1,0 +1,146 @@
+diff -ur wm2-4/Border.C wm2-4.new/Border.C
+--- wm2-4/Border.C	1997-03-21 12:12:30.000000000 +0100
++++ wm2-4.new/Border.C	2007-06-30 16:56:10.000000000 +0200
+@@ -183,7 +183,7 @@
+ 
+     if (m_label) free(m_label);
+     m_label = m_client->iconName() ?
+-	NewString(m_client->iconName()) : NewString("incognito");
++	NewString(m_client->iconName()) : NewString(CONFIG_INCOGNITO);
+ 
+     int len = strlen(m_label);
+     m_tabHeight = XRotTextWidth(m_tabFont, m_label, len) + 6 + m_tabWidth;
+diff -ur wm2-4/Buttons.C wm2-4.new/Buttons.C
+--- wm2-4/Buttons.C	1997-03-21 12:12:30.000000000 +0100
++++ wm2-4.new/Buttons.C	2007-06-30 16:56:10.000000000 +0200
+@@ -139,7 +139,11 @@
+ 		       (allowExit && ((n) > clients.count())) ? "[Exit wm2]" \
+ 		       : clients.item((n)-1)->label())
+ 
++#ifdef CONFIG_MENU_REVERSE
++    for (i = m_hiddenClients.count() - 1; i>=0; --i) {
++#else
+     for (i = 0; i < m_hiddenClients.count(); ++i) {
++#endif
+ 	clients.append(m_hiddenClients.item(i));
+     }
+     int nh = clients.count() + 1;
+diff -ur wm2-4/Client.C wm2-4.new/Client.C
+--- wm2-4/Client.C	1997-03-21 12:12:30.000000000 +0100
++++ wm2-4.new/Client.C	2007-06-30 16:56:10.000000000 +0200
+@@ -4,7 +4,7 @@
+ 
+ #include <X11/Xutil.h>
+ 
+-const char *const Client::m_defaultLabel = "incognito";
++const char *const Client::m_defaultLabel = CONFIG_INCOGNITO;
+ 
+ 
+ 
+@@ -400,7 +400,7 @@
+ }
+ 
+ 
+-int Client::getAtomProperty(Atom a, Atom type)
++uintptr_t Client::getAtomProperty(Atom a, Atom type)
+ {
+     char **p, *x;
+     if (getProperty_aux(display(), m_window, a, type, 1L,
+@@ -410,7 +410,7 @@
+ 
+     x = *p;
+     XFree((void *)p);
+-    return (int)x;
++    return (uintptr_t)x;
+ }
+ 
+ 
+diff -ur wm2-4/Client.h wm2-4.new/Client.h
+--- wm2-4/Client.h	1997-03-21 12:12:30.000000000 +0100
++++ wm2-4.new/Client.h	2007-06-30 16:56:10.000000000 +0200
+@@ -2,6 +2,8 @@
+ #ifndef _CLIENT_H_
+ #define _CLIENT_H_
+ 
++#include <inttypes.h>
++
+ #include "General.h"
+ #include "Manager.h"
+ #include "Border.h"
+@@ -125,7 +127,7 @@
+     WindowManager *const m_windowManager;
+ 
+     char *getProperty(Atom);
+-    int getAtomProperty(Atom, Atom);
++    uintptr_t getAtomProperty(Atom, Atom);
+     int getIntegerProperty(Atom);
+ 
+     // accessors 
+diff -ur wm2-4/Config.h wm2-4.new/Config.h
+--- wm2-4/Config.h	1997-03-21 12:12:30.000000000 +0100
++++ wm2-4.new/Config.h	2007-06-30 16:56:10.000000000 +0200
+@@ -39,6 +39,9 @@
+ 
+ #define CONFIG_FRAME_THICKNESS    7
+ 
++#define CONFIG_INCOGNITO	  "incognito"
++#define CONFIG_MENU_REVERSE
++
+ // If CONFIG_PROD_SHAPE is True, all frame element shapes will be
+ // recalculated afresh every time their focus changes.  This will
+ // probably slow things down hideously, but has been reported as
+@@ -46,4 +49,3 @@
+ #define CONFIG_PROD_SHAPE False
+ 
+ #endif
+-
+diff -ur wm2-4/General.h wm2-4.new/General.h
+--- wm2-4/General.h	1997-03-21 12:12:30.000000000 +0100
++++ wm2-4.new/General.h	2007-06-30 16:56:10.000000000 +0200
+@@ -32,7 +32,7 @@
+ #define NewString(x) (strcpy((char *)malloc(strlen(x)+1),(x)))
+ 
+ #ifndef SIGNAL_CALLBACK_TYPE
+-#define SIGNAL_CALLBACK_TYPE (void (*)(...))
++#define SIGNAL_CALLBACK_TYPE (void (*)(int))
+ #endif
+ 
+ #define signal(x,y)     \
+diff -ur wm2-4/Makefile wm2-4.new/Makefile
+--- wm2-4/Makefile	1997-03-21 12:12:30.000000000 +0100
++++ wm2-4.new/Makefile	2007-06-30 16:56:10.000000000 +0200
+@@ -1,8 +1,8 @@
+ 
+-LIBS	=  -L/usr/X11/lib -lXext -lX11 -lXmu -lm
++LIBS	=  -L/usr/X11R6/lib -lXext -lX11 -lXmu -lm
+ 
+ CC	= gcc
+-CCC	= gcc
++CCC	= g++
+ CFLAGS	= -O2
+ OBJECTS	= Border.o Buttons.o Client.o Events.o Main.o Manager.o Rotated.o
+ 
+diff -ur wm2-4/Manager.C wm2-4.new/Manager.C
+--- wm2-4/Manager.C	1997-03-21 12:12:30.000000000 +0100
++++ wm2-4.new/Manager.C	2007-06-30 16:56:10.000000000 +0200
+@@ -368,7 +368,7 @@
+     return m_currentTime;
+ }
+ 
+-void WindowManager::sigHandler()
++void WindowManager::sigHandler(int n)
+ {
+     m_signalled = True;
+ }
+diff -ur wm2-4/Manager.h wm2-4.new/Manager.h
+--- wm2-4/Manager.h	1997-03-21 12:12:30.000000000 +0100
++++ wm2-4.new/Manager.h	2007-06-30 16:56:10.000000000 +0200
+@@ -85,7 +85,7 @@
+ 
+     static Boolean m_initialising;
+     static int errorHandler(Display *, XErrorEvent *);
+-    static void sigHandler();
++    static void sigHandler(int);
+     static int m_signalled;
+ 
+     void initialiseScreen();

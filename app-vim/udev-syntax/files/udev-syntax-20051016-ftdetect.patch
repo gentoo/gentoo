@@ -1,0 +1,6 @@
+diff -ru udev-syntax-20051016/ftdetect/udev.vim udev-syntax-20051016/ftdetect/udev.vim
+--- udev-syntax-20051016/ftdetect/udev.vim	2007-01-10 16:11:32.876871120 +0100
++++ udev-syntax-20051016/ftdetect/udev.vim	2007-01-10 16:12:04.412703024 +0100
+@@ -1,4 +1,4 @@
+-au BufNewFile,BufRead *udev.rules* set filetype=udev
++au BufNewFile,BufRead *udev/rules.d* set filetype=udev

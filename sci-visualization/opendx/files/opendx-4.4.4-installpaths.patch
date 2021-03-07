@@ -1,0 +1,330 @@
+diff -up dx-4.4.4/bin/dx.in.r dx-4.4.4/bin/dx.in
+--- dx-4.4.4/bin/dx.in.r	2004-05-31 18:12:05.000000000 +0200
++++ dx-4.4.4/bin/dx.in	2009-01-26 23:57:11.000000000 +0100
+@@ -60,14 +60,7 @@ exit 1
+ #
+ longhelp() {
+ 
+-if test -f "$dxroot/man/catl/dx.l" ; then
+-    more "$dxroot/man/catl/dx.l"
+-else
+-    echo "cannot find $dxroot/man/catl/dx.l"
+-    echo "set the DXROOT environment variable to the root of the"
+-    echo "dx installation tree and try again."
+-fi
+-exit 1
++man dx
+ 
+ cat << EOFlonghelp
+ command line parameters:
+@@ -286,7 +279,7 @@ fi
+ 
+ 
+ if [ -z "$DXROOT" ]; then
+-  prefix=@prefix@
++  prefix=@libdir@
+   DXROOT=$prefix/dx
+ fi
+ export DXROOT
+@@ -507,7 +507,7 @@ export DXARCH
+ 
+ # default to running locally, from @prefix@/dx  
+ exhost=$thishost
+-dxroot=@prefix@/dx
++dxroot=@libdir@/dx
+ startup=1   # run the startup window by default
+ 
+ 
+diff -up dx-4.4.4/bin/Makefile.am.r dx-4.4.4/bin/Makefile.am
+--- dx-4.4.4/bin/Makefile.am.r	2003-07-12 02:11:37.000000000 +0200
++++ dx-4.4.4/bin/Makefile.am	2009-01-26 23:57:11.000000000 +0100
+@@ -1,6 +1,6 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+-dxbindir = $(prefix)/dx/bin
++dxbindir = $(libdir)/dx/bin
+ bindir = $(prefix)/bin
+ 
+ EXTRA_SCRIPTS = mdf2c dx
+diff -up dx-4.4.4/bin/mdf2c.in.r dx-4.4.4/bin/mdf2c.in
+--- dx-4.4.4/bin/mdf2c.in.r	1999-12-14 05:13:04.000000000 +0100
++++ dx-4.4.4/bin/mdf2c.in	2009-01-26 23:57:11.000000000 +0100
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ # Configure is looking for the following line
+-prefix=@prefix@
++prefix=@libdir@
+ DFLTROOT=$prefix/dx
+ root=${DXROOT=${DXEXECROOT=$DFLTROOT}}
+ 
+diff -up dx-4.4.4/doc/Makefile.am.r dx-4.4.4/doc/Makefile.am
+--- dx-4.4.4/doc/Makefile.am.r	1999-04-05 13:57:03.000000000 +0200
++++ dx-4.4.4/doc/Makefile.am	2009-01-26 23:57:11.000000000 +0100
+@@ -1,6 +1,6 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+-docdir = $(prefix)/dx/doc
++docdir = $(datadir)/dx/doc
+ 
+ doc_DATA = \
+ 	README README_SMP README_alphax README_aviion README_hp700 \
+diff -up dx-4.4.4/fonts/Makefile.am.r dx-4.4.4/fonts/Makefile.am
+--- dx-4.4.4/fonts/Makefile.am.r	2003-07-12 02:11:37.000000000 +0200
++++ dx-4.4.4/fonts/Makefile.am	2009-01-26 23:57:11.000000000 +0100
+@@ -1,6 +1,6 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+-fontdir = $(prefix)/dx/fonts
++fontdir = $(libdir)/dx/fonts
+ 
+ font_DATA = \
+ 	README area.dx cyril_d.dx \
+diff -up dx-4.4.4/help/Makefile.am.r dx-4.4.4/help/Makefile.am
+--- dx-4.4.4/help/Makefile.am.r	2003-07-12 02:11:37.000000000 +0200
++++ dx-4.4.4/help/Makefile.am	2009-01-26 23:57:11.000000000 +0100
+@@ -1,6 +1,6 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+-helpdir = $(prefix)/dx/help
++helpdir = $(libdir)/dx/help
+ 
+ EXTRA_DIST = $(helpfiles1) $(helpfiles2) $(helpfiles3) $(helpfiles4) $(helpfiles5)  \
+ 	$(helpfiles6) $(helpfiles7) $(helpfiles8) $(helpfiles9) $(helpfiles10)  \
+diff -up dx-4.4.4/html/images/Makefile.am.r dx-4.4.4/html/images/Makefile.am
+--- dx-4.4.4/html/images/Makefile.am.r	2002-04-01 10:51:13.000000000 +0200
++++ dx-4.4.4/html/images/Makefile.am	2009-01-26 23:57:11.000000000 +0100
+@@ -1,5 +1,5 @@
+ 
+-imagesdir = $(prefix)/dx/html/images
++imagesdir = $(libdir)/dx/html/images
+ 
+ images1 = \
+ 	3dcurs.gif adctlpt.gif arch.gif autoax.gif autoexp.gif		\
+diff -up dx-4.4.4/html/Makefile.am.r dx-4.4.4/html/Makefile.am
+--- dx-4.4.4/html/Makefile.am.r	2003-07-12 02:11:39.000000000 +0200
++++ dx-4.4.4/html/Makefile.am	2009-01-26 23:57:11.000000000 +0100
+@@ -1,6 +1,6 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+-htmldir = $(prefix)/dx/html
++htmldir = $(libdir)/dx/html
+ 
+ SUBDIRS = pages images
+ 
+diff -up dx-4.4.4/html/pages/Makefile.am.r dx-4.4.4/html/pages/Makefile.am
+--- dx-4.4.4/html/pages/Makefile.am.r	2002-06-20 06:38:03.000000000 +0200
++++ dx-4.4.4/html/pages/Makefile.am	2009-01-26 23:57:11.000000000 +0100
+@@ -1,4 +1,4 @@
+-pagesdir = $(prefix)/dx/html/pages
++pagesdir = $(libdir)/dx/html/pages
+ 
+ pages1 = \
+ 	insgu002.htm insgu003.htm insgu004.htm insgu005.htm insgu006.htm \
+diff -up dx-4.4.4/include/dx/Makefile.am.r dx-4.4.4/include/dx/Makefile.am
+--- dx-4.4.4/include/dx/Makefile.am.r	1999-05-26 01:35:16.000000000 +0200
++++ dx-4.4.4/include/dx/Makefile.am	2009-01-26 23:57:11.000000000 +0100
+@@ -1,6 +1,6 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+-dxincdir = $(prefix)/dx/include/dx
++dxincdir = $(prefix)/include/dx
+  
+ dxinc_HEADERS = \
+ 	UserInteractors.h advanced.h arch.h array.h arrayhandles.h \
+diff -up dx-4.4.4/include/Makefile.am.r dx-4.4.4/include/Makefile.am
+--- dx-4.4.4/include/Makefile.am.r	2006-04-09 05:44:49.000000000 +0200
++++ dx-4.4.4/include/Makefile.am	2009-01-26 23:57:11.000000000 +0100
+@@ -1,4 +1,4 @@
+-dxincdir = $(prefix)/dx/include
++dxincdir = $(prefix)/include
+ SUBDIRS = dx
+ dxinc_HEADERS = dxl.h dxstereo.h
+ nodist_dxinc_HEADERS = dxconfig.h
+diff -up dx-4.4.4/lib/Makefile.am.r dx-4.4.4/lib/Makefile.am
+--- dx-4.4.4/lib/Makefile.am.r	2003-08-22 01:22:13.000000000 +0200
++++ dx-4.4.4/lib/Makefile.am	2009-01-26 23:57:11.000000000 +0100
+@@ -1,4 +1,4 @@
+-libsdir = $(prefix)/dx/lib
++libsdir = $(libdir)/dx/lib
+ 
+ libs_DATA = colors.txt dxexec.def dxexec.exp dxexec.imp dxexec.ifs \
+ 	dxfSaveCurrentImage.net dxrc mdf2c.awk messages outboard.c
+diff -up dx-4.4.4/man/Makefile.am.r dx-4.4.4/man/Makefile.am
+--- dx-4.4.4/man/Makefile.am.r	1999-04-03 18:31:28.000000000 +0200
++++ dx-4.4.4/man/Makefile.am	2009-01-26 23:57:11.000000000 +0100
+@@ -1,4 +1,4 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+-SUBDIRS = manl catl
++SUBDIRS = manl
+ 
+diff -up dx-4.4.4/man/manl/Makefile.am.r dx-4.4.4/man/manl/Makefile.am
+--- dx-4.4.4/man/manl/Makefile.am.r	2002-05-20 06:47:06.000000000 +0200
++++ dx-4.4.4/man/manl/Makefile.am	2009-01-26 23:57:11.000000000 +0100
+@@ -1,6 +1,6 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+-mandir = $(prefix)/dx/man
++mandir = $(datadir)/man
+ 
+ man_MANS = dx.l
+ EXTRA_DIST = $(man_MANS)
+diff -up dx-4.4.4/src/exec/dxexec/Makefile.am.r dx-4.4.4/src/exec/dxexec/Makefile.am
+--- dx-4.4.4/src/exec/dxexec/Makefile.am.r	2006-01-11 17:24:39.000000000 +0100
++++ dx-4.4.4/src/exec/dxexec/Makefile.am	2009-01-26 23:57:11.000000000 +0100
+@@ -9,7 +9,7 @@ noinst_LTLIBRARIES = libDXEXEC.la
+ libDXEXEC_la_SOURCES = main.c
+ libDXEXEC_la_CFLAGS = $(AM_CFLAGS)
+ 
+-bindir = $(prefix)/dx/bin_@ARCH@
++bindir = $(libdir)/dx/bin_@ARCH@
+ bin_PROGRAMS = dxexec
+ 
+ dxexec_LDADD = ../dpexec/libDPEXEC.la ../dxmods/libDXMODS.la ../dxmods/user.lo \
+diff -up dx-4.4.4/src/exec/dxmods/Makefile.am.r dx-4.4.4/src/exec/dxmods/Makefile.am
+--- dx-4.4.4/src/exec/dxmods/Makefile.am.r	2003-08-19 00:51:10.000000000 +0200
++++ dx-4.4.4/src/exec/dxmods/Makefile.am	2009-01-26 23:57:11.000000000 +0100
+@@ -1,8 +1,8 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+ INCLUDES = -I${top_srcdir}/include -I${srcdir}/../dpexec -I$(BUILDBASE)/include -D@ARCH@
+ 
+-dxmdfdir = $(prefix)/dx/lib
++dxmdfdir = $(libdir)/dx/lib
+ noinst_LTLIBRARIES = libDXMODS.la libusercm.la libuser.la libDXMODSN.la
+ SUFFIXES = .c .y .c .s .h .o 
+ 
+@@ -13,6 +14,8 @@ DISTCLEANFILES = dx.mdf dxcm.mdf user.c 
+ 
+ dxmdf_DATA = dx.mdf
+ 
++user.c: dx.mdf
++
+ _complex.o: _compparse.h
+ 
+ HEADERS1 = \
+diff -up dx-4.4.4/src/exec/libdx/Makefile.am.r dx-4.4.4/src/exec/libdx/Makefile.am
+--- dx-4.4.4/src/exec/libdx/Makefile.am.r	2006-03-27 20:56:53.000000000 +0200
++++ dx-4.4.4/src/exec/libdx/Makefile.am	2009-01-26 23:57:11.000000000 +0100
+@@ -7,7 +7,7 @@ MICRO_VERSION=@MICRO_VERSION@
+ #INCLUDES = -I../../../include  -D@ARCH@
+ INCLUDES = -I${top_srcdir}/include  -D@ARCH@
+ 
+-dxlibdir = $(prefix)/dx/lib_@ARCH@
++dxlibdir = $(libdir)/dx/lib_@ARCH@
+ 
+ noinst_LTLIBRARIES = libLIBDX.la libcallm.la libmem.la
+ #dxlib_LIBRARIES = libDXlite.a 
+diff -up dx-4.4.4/src/exec/Makefile.am.r dx-4.4.4/src/exec/Makefile.am
+--- dx-4.4.4/src/exec/Makefile.am.r	2003-09-17 00:40:40.000000000 +0200
++++ dx-4.4.4/src/exec/Makefile.am	2009-01-26 23:57:11.000000000 +0100
+@@ -1,6 +1,6 @@
+ SUBDIRS = libdx dxmods hwrender dpexec dxexec
+ 
+-dxlibdir = $(prefix)/dx/lib_@ARCH@
++dxlibdir = $(libdir)/dx/lib_@ARCH@
+ 
+ MAJOR_VERSION=@MAJOR_VERSION@
+ MINOR_VERSION=@MINOR_VERSION@
+diff -up dx-4.4.4/src/misc/Makefile.am.r dx-4.4.4/src/misc/Makefile.am
+--- dx-4.4.4/src/misc/Makefile.am.r	2003-07-12 02:12:13.000000000 +0200
++++ dx-4.4.4/src/misc/Makefile.am	2009-01-26 23:57:11.000000000 +0100
+@@ -4,7 +4,7 @@ INCLUDES = -I${top_srcdir}/include -D@AR
+ 
+ dxbindir = $(prefix)/bin
+ noinst_PROGRAMS = dxlocal
+-archmakdir = $(prefix)/dx/lib_$(ARCH)
++archmakdir = $(libdir)/dx/lib_$(ARCH)
+ archmak_DATA = arch.mak
+ 
+ dxlocal_SOURCES = dx.c utils.c
+@@ -15,5 +15,5 @@ install-exec-local: 
+ 	if test ! -z "@INSTALL_BIN_PROGRAM@" ; then		         \
+ 		$(mkinstalldirs) $(prefix)/bin ;                	         \
+ 		$(INSTALL) dxlocal@EXEEXT@ 				         \
+-		$(prefix)/dx/bin_$(ARCH)/@INSTALL_BIN_PROGRAM@@EXEEXT@ ; \
++		$(libdir)/dx/bin_$(ARCH)/@INSTALL_BIN_PROGRAM@@EXEEXT@ ; \
+ 	fi
+diff -up dx-4.4.4/src/uipp/dxl/Makefile.am.r dx-4.4.4/src/uipp/dxl/Makefile.am
+--- dx-4.4.4/src/uipp/dxl/Makefile.am.r	2003-07-12 02:12:16.000000000 +0200
++++ dx-4.4.4/src/uipp/dxl/Makefile.am	2009-01-26 23:57:11.000000000 +0100
+@@ -7,7 +7,7 @@ MICRO_VERSION=@MICRO_VERSION@
+ 
+ INCLUDES = -I${top_srcdir}/include  -D@ARCH@
+ 
+-dxlibdir = $(prefix)/dx/lib_@ARCH@
++dxlibdir = $(libdir)/dx/lib_@ARCH@
+ 
+ noinst_HEADERS = \
+ 	dxlP.h \
+diff -up dx-4.4.4/src/uipp/dxui/Makefile.am.r dx-4.4.4/src/uipp/dxui/Makefile.am
+--- dx-4.4.4/src/uipp/dxui/Makefile.am.r	2003-07-12 02:12:17.000000000 +0200
++++ dx-4.4.4/src/uipp/dxui/Makefile.am	2009-01-26 23:57:11.000000000 +0100
+@@ -2,7 +2,7 @@
+ 
+ INCLUDES = -I${srcdir}/../base -I${top_srcdir}/include -I${srcdir}/../dxuilib -D@ARCH@
+ 
+-dxbindir = $(prefix)/dx/bin_@ARCH@
++dxbindir = $(libdir)/dx/bin_@ARCH@
+ dxbin_PROGRAMS = dxui
+ 
+ 
+diff -up dx-4.4.4/src/uipp/mb/Makefile.am.r dx-4.4.4/src/uipp/mb/Makefile.am
+--- dx-4.4.4/src/uipp/mb/Makefile.am.r	2003-08-20 16:21:33.000000000 +0200
++++ dx-4.4.4/src/uipp/mb/Makefile.am	2009-01-26 23:57:11.000000000 +0100
+@@ -2,7 +2,7 @@
+ 
+ INCLUDES = -I${top_srcdir}/include -I${srcdir}/../base -I${srcdir}/../widgets -D@ARCH@
+ 
+-dxbindir = $(prefix)/dx/bin_@ARCH@
++dxbindir = $(libdir)/dx/bin_@ARCH@
+ 
+ dxbin_PROGRAMS = builder
+ 
+diff -up dx-4.4.4/src/uipp/prompter/Makefile.am.r dx-4.4.4/src/uipp/prompter/Makefile.am
+--- dx-4.4.4/src/uipp/prompter/Makefile.am.r	2003-11-04 05:20:14.000000000 +0100
++++ dx-4.4.4/src/uipp/prompter/Makefile.am	2009-01-26 23:57:11.000000000 +0100
+@@ -2,7 +2,7 @@
+ 
+ INCLUDES =  -I${srcdir}/../base -I${top_srcdir}/include -D@ARCH@
+ 
+-dxbindir = $(prefix)/dx/bin_@ARCH@
++dxbindir = $(libdir)/dx/bin_@ARCH@
+ 
+ dxbin_PROGRAMS = prompter
+ 
+diff -up dx-4.4.4/src/uipp/startup/Makefile.am.r dx-4.4.4/src/uipp/startup/Makefile.am
+--- dx-4.4.4/src/uipp/startup/Makefile.am.r	2003-07-12 02:12:29.000000000 +0200
++++ dx-4.4.4/src/uipp/startup/Makefile.am	2009-01-26 23:57:11.000000000 +0100
+@@ -2,7 +2,7 @@
+ 
+ INCLUDES =  -I${top_srcdir}/include -I${srcdir}/../base -D@ARCH@
+ 
+-dxbindir = $(prefix)/dx/bin_@ARCH@
++dxbindir = $(libdir)/dx/bin_@ARCH@
+ 
+ dxbin_PROGRAMS = startupui
+ 
+diff -up dx-4.4.4/src/uipp/tutor/Makefile.am.r dx-4.4.4/src/uipp/tutor/Makefile.am
+--- dx-4.4.4/src/uipp/tutor/Makefile.am.r	2003-07-12 02:12:29.000000000 +0200
++++ dx-4.4.4/src/uipp/tutor/Makefile.am	2009-01-26 23:57:11.000000000 +0100
+@@ -2,7 +2,7 @@
+ 
+ INCLUDES = -I${top_srcdir}/include -I${srcdir}/../base -D@ARCH@
+ 
+-dxbindir = $(prefix)/dx/bin_@ARCH@
++dxbindir = $(libdir)/dx/bin_@ARCH@
+ 
+ dxbin_PROGRAMS = tutor
+ 
+diff -up dx-4.4.4/src/uipp/ui/Makefile.am.r dx-4.4.4/src/uipp/ui/Makefile.am
+--- dx-4.4.4/src/uipp/ui/Makefile.am.r	2001-04-12 16:29:02.000000000 +0200
++++ dx-4.4.4/src/uipp/ui/Makefile.am	2009-01-26 23:57:11.000000000 +0100
+@@ -1,6 +1,6 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+-uidatadir = $(prefix)/dx/ui
++uidatadir = $(libdir)/dx/ui
+ 
+ DATA1 = \
+ 	icon50.dat icon50.xpm logo.dat logo.xpm ui.mdf Basic2D.cfg Basic2D.net \

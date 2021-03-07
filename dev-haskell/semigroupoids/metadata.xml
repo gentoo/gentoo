@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Provides a wide array of semigroupoids and operations for working with semigroupds.
+
+		A Semigroupoid is a Category without the requirement of identity arrows for every object in the category.
+
+		When working with comonads you often have the @\&lt;*\&gt;@ portion of an @Applicative@, but
+		not the @pure@. This was captured in Uustalu and Vene's \"Essence of Dataflow Programming\"
+		in the form of the @ComonadZip@ class in the days before @Applicative@. Apply provides a weaker invariant, but for the comonads used for data flow programming (found in the streams package), this invariant is preserved. Applicative function composition forms a semigroupoid.
+
+		Similarly many structures are nearly a comonad, but not quite, for instance lists provide a reasonable 'extend' operation in the form of 'tails', but do not always contain a value.
+
+
+		Ideally the following relationships would hold:
+
+		&gt; Traversable &lt;---- Foldable &lt;--- Functor ------&gt; Alt ---------&gt; Plus           Semigroupoid
+		&gt;      |               |            |                              |                  |
+		&gt;      v               v            v                              v                  v
+		&gt; Traversable1 &lt;--- Foldable1     Apply --------&gt; Applicative -&gt; Alternative      Category
+		&gt;                                   |               |              |                  |
+		&gt;                                   v               v              v                  v
+		&gt;                                 Bind ---------&gt; Monad -------&gt; MonadPlus          Arrow
+		&gt;
+
+		Apply, Bind, and Extract give rise the Static, Kleisli and Cokleisli semigroupoids respectively.
+
+		This lets us remove many of the restrictions from various monad transformers
+		as in many cases the binding operation or @\&lt;*\&gt;@ operation does not require them.
+
+		Finally, to work with these weaker structures it is beneficial to have containers
+		that can provide stronger guarantees about their contents, so versions of 'Traversable'
+		and 'Foldable' that can be folded with just a 'Semigroup' are added.
+	</longdescription>
+	<use>
+		<flag name="comonad">
+			You can disable the use of the `comonad` package using
+			`-f-comonad`. Disabling this is an unsupported configuration, but it may be
+			useful for accelerating builds in sandboxes for expert users. If disabled we
+			will not supply instances of `Comonad`
+		</flag>
+		<flag name="containers">
+			You can disable the use of the `containers` package
+			using `-f-containers`. Disabing this is an unsupported configuration, but it
+			may be useful for accelerating builds in sandboxes for expert users.
+		</flag>
+		<flag name="contravariant">
+			You can disable the use of the `contravariant`
+			package using `-f-contravariant`. Disabling this is an unsupported
+			configuration, but it may be useful for accelerating builds in sandboxes for
+			expert users. If disabled we will not supply instances of `Contravariant`
+		</flag>
+		<flag name="distributive">
+			You can disable the use of the `distributive`
+			package using `-f-distributive`. Disabling this is an unsupported
+			configuration, but it may be useful for accelerating builds in sandboxes for
+			expert users. If disabled we will not supply instances of `Distributive`
+		</flag>
+		<flag name="tagged">
+			You can disable the use of the `tagged` package
+			using `-f-tagged`. Disabing this is an unsupported
+			configuration, but it may be useful for accelerating builds in
+			sandboxes for expert users.
+		</flag>
+		<flag name="unordered-containers">
+			Enable the use of the `unordered-containers` package (and also its
+			dependency `hashable`). Disabling this is an unsupported configuration,
+			but it may be useful for accelerating builds in sandboxes for expert users.
+		</flag>
+
+	</use>
+	<upstream>
+		<remote-id type="github">ekmett/semigroupoids</remote-id>
+	</upstream>
+</pkgmetadata>

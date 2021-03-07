@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="camlp4">Build with camlp4 syntax extensions.</flag>
+		<flag name="deriving">Enable <pkg>dev-ml/deriving</pkg> support for improving the type safety.</flag>
+		<flag name="lwt">Enable <pkg>dev-ml/lwt</pkg> support.</flag>
+		<flag name="ppx">Enables the ppx syntax extension</flag>
+		<flag name="react">Enable functionnal reactive programming support.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">ocsigen/js_of_ocaml</remote-id>
+	</upstream>
+</pkgmetadata>

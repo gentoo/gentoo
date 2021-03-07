@@ -1,0 +1,14 @@
+Index: e4rat-0.2.2/src/CMakeLists.txt
+===================================================================
+--- e4rat-0.2.2.orig/src/CMakeLists.txt
++++ e4rat-0.2.2/src/CMakeLists.txt
+@@ -170,8 +170,7 @@ endif(NOT BUILD_CORE_LIBRARY_STATIC)
+ 
+ INSTALL(TARGETS ${${PROJECT_NAME}_TARGETS}
+         RUNTIME DESTINATION "sbin"
+-        LIBRARY DESTINATION "lib"
+-        ARCHIVE DESTINATION "lib"
++        LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+ )
+ 
+ INSTALL(DIRECTORY DESTINATION "/var/lib/${PROJECT_NAME}")

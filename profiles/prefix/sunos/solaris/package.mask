@@ -1,0 +1,15 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Fabian Groffen <grobian@gentoo.org> (2014-01-14)
+# util-linux has no business on Solaris systems
+sys-apps/util-linux
+
+# Fabian Groffen <grobian@gentoo.org> (2012-05-09)
+# Installing libelf will hurt your system.  In particular libkvm needs
+# the system libelf to function properly.
+dev-libs/libelf
+
+# Fabian Groffen <grobian@gentoo.org> (2007-01-21)
+# doesn't understand arguments on Solaris
+=dev-vcs/cvs-1.12.12*

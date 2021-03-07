@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		This package normalizes variations in the interface for
+		inspecting datatype information via Template Haskell
+		so that packages and support a single, easier to use
+		informational datatype while supporting many versions
+		of Template Haskell.
+	</longdescription>
+</pkgmetadata>

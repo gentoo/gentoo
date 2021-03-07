@@ -1,0 +1,56 @@
+From 7ae03a19b3ca895ba5f97a6bd4f9539d8daa6e0a Mon Sep 17 00:00:00 2001
+From: Matt Taylor <liverbugg@rinux.org>
+Date: Mon, 11 May 2020 15:26:41 -0400
+Subject: [PATCH] build: add configure option to control vfs_snapper build
+
+vfs_snapper is currently built if dbus development headers / libraries
+are detected during configure. This commit adds new --disable-snapper
+and --enable-snapper (default) configure parameters. When enabled,
+configure will fail if the dbus development headers / libraries are
+missing.
+
+Signed-off-by: Matt Taylor <liverbugg@rinux.org>
+Reviewed-by: David Disseldorp <ddiss@samba.org>
+Reviewed-by: Andrew Bartlett <abartlet@samba.org>
+
+Autobuild-User(master): Andrew Bartlett <abartlet@samba.org>
+Autobuild-Date(master): Mon May 25 01:16:46 UTC 2020 on sn-devel-184
+---
+ source3/wscript | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/source3/wscript b/source3/wscript
+index 07991806c63..24ade3b0a2b 100644
+--- a/source3/wscript
++++ b/source3/wscript
+@@ -74,6 +74,7 @@ def options(opt):
+ 
+     opt.samba_add_onoff_option('glusterfs', with_name="enable", without_name="disable", default=True)
+     opt.samba_add_onoff_option('cephfs', with_name="enable", without_name="disable", default=True)
++    opt.samba_add_onoff_option('snapper', with_name="enable", without_name="disable", default=True)
+ 
+     opt.add_option('--enable-vxfs',
+                   help=("enable support for VxFS (default=no)"),
+@@ -1752,11 +1753,16 @@ main() {
+     if Options.options.enable_vxfs:
+         conf.DEFINE('HAVE_VXFS', '1')
+ 
+-    if conf.CHECK_CFG(package='dbus-1', args='--cflags --libs',
++    if Options.options.with_snapper:
++        if conf.CHECK_CFG(package='dbus-1', args='--cflags --libs',
+                       msg='Checking for dbus', uselib_store="DBUS-1"):
+-        if (conf.CHECK_HEADERS('dbus/dbus.h', lib='dbus-1')
++            if (conf.CHECK_HEADERS('dbus/dbus.h', lib='dbus-1')
+                                       and conf.CHECK_LIB('dbus-1', shlib=True)):
+-            conf.DEFINE('HAVE_DBUS', '1')
++                conf.DEFINE('HAVE_DBUS', '1')
++        else:
++            conf.fatal("vfs_snapper is enabled but prerequisite DBUS libraries "
++                       "or headers not found. Use --disable-snapper to disable "
++                       "vfs_snapper support.");
+ 
+     if conf.CHECK_CFG(package='liburing', args='--cflags --libs',
+                       msg='Checking for liburing package', uselib_store="URING"):
+-- 
+2.26.2
+

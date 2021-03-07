@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Python</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  The numexpr package evaluates multiple-operator array expressions
+  many times faster than NumPy can. It accepts the expression as a
+  string, analyzes it, rewrites it more efficiently, and compiles it
+  to faster Python code on the fly. It's the next best thing to
+  writing the expression in C and compiling it with a specialized
+  just-in-time (JIT) compiler, i.e. it does not require a compiler at
+  runtime.
+</longdescription>
+  <use>
+    <flag name="mkl">Enable support for Intel Vector Math Library, part of
+  <pkg>sci-libs/mkl</pkg>.</flag>
+  </use>
+  <upstream>
+    <remote-id type="pypi">numexpr</remote-id>
+    <remote-id type="github">pydata/numexpr</remote-id>
+  </upstream>
+</pkgmetadata>

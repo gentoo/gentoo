@@ -1,0 +1,24 @@
+# owner of amuleweb process (must be existing)
+AMULEUSER="amule"
+
+# home directory for amuleweb (from where to read configuration) (must be existing)
+AMULEHOME="/var/lib/amule"
+
+# log file (/dev/null for nowhere)
+LOG=/var/log/amuleweb.log
+
+# aMule password (note: not your webserver password, but the external
+# connection one)
+AMULEPWD="secret"
+
+# Full (admin) access password for webserver
+WEBPWD="secret2"
+
+# aMule host (this could be a remote host or usually localhost)
+AMULEHOST="localhost"
+
+# aMule external connection port
+AMULEPORT="4712"
+
+# aMuleweb template (default, php-default, chicane)
+TEMPLATE="default"

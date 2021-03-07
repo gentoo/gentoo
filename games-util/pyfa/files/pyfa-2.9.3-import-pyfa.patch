@@ -1,0 +1,28 @@
+From c12e4c1358025940aa1fbdf0e17f85e3821e7230 Mon Sep 17 00:00:00 2001
+From: Andreas Zuber <zuber@puzzle.ch>
+Date: Mon, 30 Oct 2017 09:52:32 +0100
+Subject: [PATCH] import pyfa
+
+Append $(python_get_sitedir)/pyfa to import path
+
+Ensures that pyfa's import statements continue to work for systemwide
+installation.
+---
+ pyfa.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/pyfa.py b/pyfa.py
+index d73ef097..dbf73db2 100755
+--- a/pyfa.py
++++ b/pyfa.py
+@@ -22,6 +22,7 @@
+ import datetime
+ import os
+ import sys
++sys.path.append(os.path.join("%%SITEDIR%%", "pyfa"))
+ from optparse import AmbiguousOptionError, BadOptionError, OptionParser
+
+ import config
+--
+2.21.0
+

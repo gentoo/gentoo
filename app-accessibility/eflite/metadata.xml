@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>williamh@gentoo.org</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>accessibility@gentoo.org</email>
+		<name>Gentoo Accessibility Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>sound@gentoo.org</email>
+		<name>Gentoo Sound project</name>
+	</maintainer>
+	<use>
+		<flag name="16k_voice">Use a higher-quality voice.</flag>
+	</use>
+	<longdescription lang="en">
+	EFlite is a speech server for Emacspeak and other screen readers
+	that allows	them to interface with Festival Lite, a free 
+	text-to-speech engine developed at the CMU Speech Center as an 
+	off-shoot of Festival.
+</longdescription>
+	<longdescription lang="ja">
+	EFliteはEmacspeakと他のスクリーン読取り装置のスピーチサーバ。この
+	サーバーで前のプログラムはFestival Lite(CMU Speech Centerで開発した
+	Festivalのようにスピーチにテキストを変わるエンジン。)と
+	インタフェスすることが出来る。
+</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">eflite</remote-id>
+	</upstream>
+</pkgmetadata>

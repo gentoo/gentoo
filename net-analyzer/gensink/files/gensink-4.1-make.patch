@@ -1,0 +1,10 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,4 @@
+ PROGS = gen4 sink4 tub4
+-CC = gcc
+-CFLAGS = -O2 -g -Wall
+-LDFLAGS = -O -g
+ 
+ all: $(PROGS)
+ 

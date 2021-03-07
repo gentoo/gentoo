@@ -1,0 +1,4 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+USE="colord eds evo gnome gnome-keyring gnome-online-accounts gstreamer introspection libsecret nautilus networkmanager pulseaudio sysprof tracker wayland"

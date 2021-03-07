@@ -1,0 +1,43 @@
+ configure.ac | 28 ++++++++++++++++------------
+ 1 file changed, 16 insertions(+), 12 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 0bfca01..2d8ec3b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -183,19 +183,23 @@ AC_CHECK_FUNCS(strcasecmp)
+ 
+ if test x$(uname) != xDarwin;
+ then 
+-AC_CHECK_HEADER(pcreposix.h,
+-  AC_CHECK_LIB(pcre, pcre_info,[
+-  LIBS="$LIBS -lpcreposix -lpcre"
+-  no_comp_check=yes],
+-  AC_MSG_ERROR([*** unable to locate pcre library ***])),
+-  AC_MSG_ERROR([*** unable to locate pcreposix.h include file ***]))
++PKG_CHECK_MODULES([PCRE],
++  [libpcre libpcreposix libpcrecpp],
++  [LIBS="${LIBS} ${PCRE_LIBS}" no_comp_check=yes], [
++    AC_CHECK_HEADER(pcreposix.h,
++      AC_CHECK_LIB(pcre, pcre_version,[
++      LIBS="$LIBS -lpcreposix -lpcre"
++      no_comp_check=yes],
++      AC_MSG_ERROR([*** unable to locate pcre library ***])),
++      AC_MSG_ERROR([*** unable to locate pcreposix.h include file ***]))
+ 
+-AC_CHECK_HEADER(pcrecpp.h,
+-  AC_CHECK_LIB(pcrecpp,pcre_compile,[
+-  LIBS="$LIBS -lpcrecpp"
+-  no_comp_check=yes],
+-  AC_MSG_ERROR([*** unable to locate pcrecpp library ***])),
+-  AC_MSG_ERROR([*** unable to locate pcrecpp.h include file ***])) 
++    AC_CHECK_HEADER(pcrecpp.h,
++      AC_CHECK_LIB(pcrecpp,pcre_compile,[
++      LIBS="$LIBS -lpcrecpp"
++      no_comp_check=yes],
++      AC_MSG_ERROR([*** unable to locate pcrecpp library ***])),
++      AC_MSG_ERROR([*** unable to locate pcrecpp.h include file ***])) 
++  ])
+ fi
+ 
+ 

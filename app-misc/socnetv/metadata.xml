@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+		Social Networks Visualizer (SocNetV) is a flexible and user-friendly tool for 
+		the analysis and visualization of Social Networks. It lets you construct networks 
+		(mathematical graphs) with a few clicks on a virtual canvas or load networks of 
+		various formats (GraphViz, GraphML, Adjacency, Pajek, UCINET, etc) and modify them 
+		to suit your needs. SocNetV also offers a built-in web crawler, allowing you to 
+		automatically create networks from all links found in a given initial URL.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">socnetv</remote-id>
+	</upstream>
+</pkgmetadata>

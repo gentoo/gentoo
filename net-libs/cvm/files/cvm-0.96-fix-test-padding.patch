@@ -1,0 +1,25 @@
+The Debian packaging of cvm is maintained using dgit.  For the sake
+of an efficient workflow, Debian modifications to the upstream
+source are squashed into a single diff, rather than a series of
+quilt patches.  To obtain a patch queue for package version
+0.97-0.1:
+
+    # apt-get install dgit
+    % dgit clone cvm
+    % cd foo
+    % git log --oneline 0.97-0.1..debian/0.97 -- . ':!debian'
+--- a/tests.sh
++++ b/tests.sh
+@@ -674,9 +674,9 @@ system directory: @TMPDIR@/home
+ domain:           test.tld
+ mailbox path:     @TMPDIR@/home/virt
+ 
+-0000000: 020a 0108 0100 2430 2470 6173 7300 2e2f  ......\$0\$pass../
+-0000010: 7669 7274 0000 002d 002d 002d 002d 0031  virt...-.-.-.-.1
+-0000020: 3031 3637 3331 3335 3800 2d00            016731358.-.
++00000000: 020a 0108 0100 2430 2470 6173 7300 2e2f  ......\$0\$pass../
++00000010: 7669 7274 0000 002d 002d 002d 002d 0031  virt...-.-.-.-.1
++00000020: 3031 3637 3331 3335 3800 2d00            016731358.-.
+ END_OF_TEST_RESULTS
+ 
+ 

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>scheme@gentoo.org</email>
+	<name>Gentoo Scheme Project</name>
+</maintainer>
+<longdescription>
+CHICKEN is a compiler for the Scheme programming language. CHICKEN produces
+portable, efficient C, supports almost all of the current Scheme language
+standard, the Revised5 Report on the Algorithmic Language Scheme (R5RS ), and
+includes many enhancements and extensions. CHICKEN runs on MacOS X, Windows, and
+many Unix flavours.
+</longdescription>
+</pkgmetadata>

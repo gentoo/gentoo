@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>bman@gentoo.org</email>
+		<name>Aaron Bauman</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>web-apps@gentoo.org</email>
+		<name>Gentoo Webapps</name>
+	</maintainer>
+	<longdescription lang="en">
+	cgit - cgi for git
+
+	This is an attempt to create a fast web interface for the git scm, using a
+	builtin cache to decrease server io-pressure.
+	</longdescription>
+	<use>
+		<flag name="highlight">Enable source code highlighting</flag>
+		<flag name="lua">Enable support for Lua scripting</flag>
+	</use>
+</pkgmetadata>

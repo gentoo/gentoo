@@ -1,0 +1,11 @@
+--- a/snort.pc.in
++++ b/snort.pc.in
+@@ -12,6 +12,5 @@ Name: Snort
+ Description: Snort dynamic plugins/detection/rules
+ URL: www.snort.org
+ Version: @VERSION@
+-Libs: -L${libdir} -lcurl @LDFLAGS@ @LIBS@
+-Cflags: @CFLAGS@ @CPPFLAGS@
+-
++Libs: -L${libdir} -lcurl @LIBS@
++Cflags: -I${includedir} @CPPFLAGS@

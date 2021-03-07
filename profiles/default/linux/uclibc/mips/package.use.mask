@@ -1,0 +1,14 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Felix Janda <felix.janda@posteo.de> (2016-09-24)
+# net-libs/libnetfilter_conntrack is not keyworded on mips
+net-dns/dnsmasq conntrack
+
+# Davide Pesavento <pesa@gentoo.org> (2015-10-26)
+# Tests require non-keyworded qt5
+dev-qt/qtchooser test
+
+# Matthias Maier <tamiko@gentoo.org> (2014-12-24)
+# sys-devel/clang is not keyworded on mips.
+app-doc/doxygen clang

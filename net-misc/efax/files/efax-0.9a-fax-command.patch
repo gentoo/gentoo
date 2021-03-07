@@ -1,0 +1,10 @@
+--- a/fax
++++ b/fax
+@@ -773,6 +773,7 @@
+ 		$GS -q -sDEVICE=tiffg3 -r$RES -dNOPAUSE -dSAFER \
+ 		-sOutputFile=$BASENAME.%03d \
+ 		-sPAPERSIZE=$PAGE \
++		-dMaxStripSize=0 \
+ 		$BASENAME </dev/null >/dev/null )
+ 		;;
+ 	II*|MM*|P4*)

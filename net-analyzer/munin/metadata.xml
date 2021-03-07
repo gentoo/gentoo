@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sysadmin@gentoo.org</email>
+    <name>Gentoo Sysadmin Project</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>graaff@gentoo.org</email>
+    <name>Hans de Graaff</name>
+  </maintainer>
+  <longdescription lang="en">
+    Munin the tool surveys all your computers and remembers what it saw. It
+    presents all the information in in graphs through a web interface. Its
+    emphasis is on plug and play capabilities. After completing a installation a
+    high number of monitoring plugins will be playing with no more effort. Using
+    Munin you can easily monitor the performance of your computers, networks,
+    SANs, and quite possibly applications as well. It makes it easy to determine
+    "what's different today" when a performance problem crops up. It makes it
+    easy to see how you're doing capacity wise on all limited resources.
+  </longdescription>
+  <use>
+    <flag name="mysql">
+      Install the packages required for monitoring MySQL. Disabling
+      the flag does not remove any plugin files.
+    </flag>
+    <flag name="postgres">
+      Install the packages required for monitoring
+      PostgreSQL. Disabling the flag does not remove any plugin files.
+    </flag>
+    <flag name="asterisk">
+      Install the packages required for monitoring Asterisk. Disabling
+      the flag does not remove any plugin files.
+    </flag>
+    <flag name="irc">
+      Install the packages required for monitoring IRC. Disabling the
+      flag does not remove any plugin files.
+    </flag>
+    <flag name="memcached">
+      Install the packages required for memcached
+      monitoring. Disabling the flag does not remove any plugin files.
+    </flag>
+    <flag name="ipmi">
+      Install <pkg>sys-apps/ipmitool</pkg> required for monitoring
+      IPMI sensors. Disabling the flag does not remove any plugin
+      file.
+    </flag>
+    <flag name="http">
+      Install <pkg>dev-perl/libwww-perl</pkg> required for monitoring
+      HTTP-based services such as Apache and nginx. Disabling the flag
+      does not remove any plugin file.
+    </flag>
+    <flag name="dhcpd">
+      Install <pkg>dev-perl/Net-IP</pkg>,
+      <pkg>dev-perl/HTTP-Date</pkg> and <pkg>net-misc/dhcp</pkg> to
+      monitor DHCP lease usage. This only works if the server is on
+      the same system as the node, so the server is also brought
+      in. Disabling the flag does not remove any plugin file.
+    </flag>
+    <flag name="java">
+      Build the Java-based plugins to monitor JMX-compatible
+      applications. Disabling the flag removes the jmx monitoring
+      plugins.
+    </flag>
+    <flag name="minimal">
+      Only install munin-node and its plugins. This excludes the
+      scripts to generate the web pages and the graphs.
+    </flag>
+    <flag name="cgi">
+      Install the CGI-compatible scripts for on-the-fly generation of
+      web pages and graphs. This is only meaningful if the minimal USE
+      flag is disabled.
+    </flag>
+    <flag name="ipv6">
+      Add support for IPv6 in munin-node. IPv6 support for the master
+      is always enabled, but the node requires a newer version of
+    <pkg>dev-perl/Net-Server</pkg>, capable of listening to IPv6
+      sockets.
+    </flag>
+    <flag name="syslog">
+      Configure the node by default to log on syslog. This requires
+      the presence of <pkg>virtual/perl-Sys-Syslog</pkg>. As of
+      version 2.0.2, the master scripts only log to file, and not to
+      syslog.
+    </flag>
+    <flag name="doc">
+      Build and install a local copy of the HTML documentation for the
+      whole software. This requires <pkg>dev-python/sphinx</pkg> to
+      process the documentation sources.
+    </flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">munin</remote-id>
+  </upstream>
+</pkgmetadata>

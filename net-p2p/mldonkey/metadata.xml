@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>gentoo@chuso.net</email>
+    <name>Jesus Perez Rey</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <use>
+    <flag name="bittorrent">enable bittorrent support</flag>
+    <flag name="fasttrack">enable fasttrack support</flag>
+    <flag name="gnutella">enable gnutella and gnutella2 support</flag>
+    <flag name="guionly">enable client build only</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">mldonkey</remote-id>
+    <remote-id type="github">ygrek/mldonkey</remote-id>
+  </upstream>
+</pkgmetadata>

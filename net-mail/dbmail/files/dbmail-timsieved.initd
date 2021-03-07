@@ -1,0 +1,51 @@
+#!/sbin/runscript
+#
+# chkconfig: - 91 35
+# description: Starts and stops dbmail-timsieved
+#
+
+PROGRAM=dbmail-timsieved
+
+BIN_DIR=/usr/sbin
+PID_DIR=/run/dbmail
+PID=pid
+
+# Where is the dbmail.conf file located?
+CONFIG=/etc/dbmail/dbmail.conf
+
+PIDFILE="/run/dbmail-timsieved.pid"
+
+depend() {
+	need net
+	use mysql
+	use pgsql
+	after mta
+}
+
+checkconfig() {
+	if [ ! -e "/etc/dbmail/dbmail.conf" ]; then
+		eerror "You need to create apropriate config"
+		eerror "in /etc/dbmail/ . Example can be found in /etc/dbmail/dbmail.conf.dist"
+		return 1
+	fi
+	# Avoid using root's TMPDIR
+	unset TMPDIR
+}
+
+
+start() {
+	checkconfig && \
+	ebegin "Starting DBMail SIEVE daemon"
+	    start-stop-daemon --start --quiet \
+		--exec /usr/sbin/dbmail-timsieved \
+		-- -p ${PIDFILE} -f /etc/dbmail/dbmail.conf 2>&1
+	eend $?
+}	
+
+stop() {
+	ebegin "Stopping DBMail SIEVE daemon"
+	    start-stop-daemon --stop --quiet --retry 5 \
+		--pidfile ${PIDFILE}
+	eend $?
+}	
+

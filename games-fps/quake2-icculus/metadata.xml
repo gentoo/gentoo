@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>games@gentoo.org</email>
+    <name>Gentoo Games Project</name>
+  </maintainer>
+  <use>
+    <flag name="demo">Install the demo files (quake2-demodata) and configure for use</flag>
+    <flag name="qmax">Build the pretty version (quake max)</flag>
+    <flag name="rogue">Build support for the 'Ground Zero' Mission Pack (rogue)</flag>
+    <flag name="xatrix">Build support for the 'The Reckoning' Mission Pack (xatrix)</flag>
+  </use>
+</pkgmetadata>

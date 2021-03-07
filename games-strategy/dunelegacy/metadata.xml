@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">dunelegacy</remote-id>
+	</upstream>
+	<longdescription lang="en">
+		Dune Legacy is an effort by a handful of developers to revitalize
+		the first-ever real-time strategy game. The original game was the
+		basis for the hugely successful Command and Conquer series, and the
+		gameplay has been replicated an extended to a wide variety of
+		storylines and series.
+
+		Lead one of three interplanetary houses, Atreides, Harkonnen or
+		Ordos, in an attempt to harvest the largest amount of spice from
+		the sand dunes. Exchange your spice stockpiles for credits through
+		refinement and build an army capable of thwarting attempts of the
+		other houses to stop your harvesting! 
+	</longdescription>
+</pkgmetadata>

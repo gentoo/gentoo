@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-geosciences@gentoo.org</email>
+		<name>Gentoo Geosciences Project</name>
+	</maintainer>
+	<longdescription lang="en">
+	Quantum GIS (QGIS) is a user friendly Open Source Geographic
+	Information System (GIS). QGIS supports vector, raster, and database
+	formats. QGIS lets you browse and create map data on your
+	computer. It supports many common spatial data formats (e.g. ESRI
+	ShapeFile, geotiff). QGIS supports plugins to do things like display
+	tracks from your GPS.
+	</longdescription>
+	<use>
+		<flag name="3d">Build QGIS 3D library using <pkg>dev-qt/qt3d</pkg></flag>
+		<flag name="georeferencer">Determines whether georeferencer plugin should be built</flag>
+		<flag name="grass">Add support for grass</flag>
+		<flag name="hdf5">Enable MDAL support for <pkg>sci-libs/hdf5</pkg></flag>
+		<flag name="mapserver">Determines whether mapserver should be built</flag>
+		<flag name="netcdf">Enable MDAL support for GRIB and XMDF formats</flag>
+		<flag name="opencl">Enable OpenCL support</flag>
+		<flag name="polar">Enable support for the polar coordinate system via <pkg>x11-libs/qwtpolar</pkg></flag>
+		<flag name="qml">Enable support Qml-based plugins using <pkg>dev-qt/qtdeclarative</pkg></flag>
+	</use>
+</pkgmetadata>

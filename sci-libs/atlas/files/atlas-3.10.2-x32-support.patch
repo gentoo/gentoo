@@ -1,0 +1,93 @@
+--- ATLAS/CONFIG/src/SpewMakeInc.c.orig	2012-05-24 00:56:27.000000000 +0200
++++ ATLAS/CONFIG/src/SpewMakeInc.c	2012-06-06 15:17:40.000000000 +0200
+@@ -370,7 +370,7 @@
+    }
+    *f2cdefs = fdefs;
+    *ecdefs = cdefs;
+-   if (*ptrbits != 32 && *ptrbits != 64)
++   if (*ptrbits != 32 && *ptrbits != 64 && *ptrbits != 48)
+       *ptrbits = 0;
+ }
+ char *GetPtrbitsFlag(enum OSTYPE OS, enum MACHTYPE arch, int ptrbits,
+@@ -418,6 +418,8 @@
+          sp = "-m64";
+        else if (ptrbits == 32)
+          sp = "-m32";
++       else if (ptrbits == 48 && MachIsX86(arch))
++         sp = "-mx32";
+    }
+    return(sp);
+ }
+--- ATLAS/CONFIG/src/gnuccw.c.orig	2012-06-06 15:30:05.000000000 +0200
++++ ATLAS/CONFIG/src/gnuccw.c	2012-06-06 15:33:29.000000000 +0200
+@@ -363,7 +363,7 @@
+  *          -m64/32 args get passed to comp, asm & linker
+  */
+             else if (at->len == 4 &&
+-                     (!strcmp(at->arg, "-m64") || !strcmp(at->arg, "-m32")))
++                     (!strcmp(at->arg, "-m64") || !strcmp(at->arg, "-m32") || !strcmp(at->arg, "-mx32")))
+             {
+                if (at->arg[2] == '6')
+                   *BITS = 64;
+--- ATLAS/CONFIG/src/gcc3p.c.orig	2012-06-06 15:29:38.000000000 +0200
++++ ATLAS/CONFIG/src/gcc3p.c	2012-06-06 15:31:17.000000000 +0200
+@@ -352,7 +352,7 @@
+  *          -m64/32 args get passed to comp, asm & linker
+  */
+             else if (at->len == 4 &&
+-                     (!strcmp(at->arg, "-m64") || !strcmp(at->arg, "-m32")))
++                     (!strcmp(at->arg, "-m64") || !strcmp(at->arg, "-m32") || !strcmp(at->arg, "-mx32")))
+             {
+                if (at->arg[2] == '6')
+                {
+--- ATLAS/CONFIG/src/gnuf90w.c.orig	2012-06-06 15:29:28.000000000 +0200
++++ ATLAS/CONFIG/src/gnuf90w.c	2012-06-06 15:30:36.000000000 +0200
+@@ -363,7 +363,7 @@
+  *          -m64/32 args get passed to comp, asm & linker
+  */
+             else if (at->len == 4 &&
+-                     (!strcmp(at->arg, "-m64") || !strcmp(at->arg, "-m32")))
++                     (!strcmp(at->arg, "-m64") || !strcmp(at->arg, "-m32") || !strcmp(at->arg, "-mx32")))
+             {
+                if (at->arg[2] == '6')
+                   *BITS = 64;
+--- ATLAS/CONFIG/src/probe_comp.c.orig	2012-06-06 15:29:51.000000000 +0200
++++ ATLAS/CONFIG/src/probe_comp.c	2012-06-06 15:32:50.000000000 +0200
+@@ -614,6 +614,8 @@
+          sp = "-m64";
+        else if (ptrbits == 32)
+          sp = "-m32";
++       else if (ptrbits == 48)
++         sp = "-mx32";
+    }
+    return(sp);
+ }
+@@ -1691,7 +1693,7 @@
+          }
+       }
+    }
+-   if (*ptrbits != 32 && *ptrbits != 64)
++   if (*ptrbits != 32 && *ptrbits != 64 && *ptrbits != 48)
+       *ptrbits = 0;
+ }
+ 
+--- ATLAS/CONFIG/src/config.c.orig	2012-06-06 15:59:53.000000000 +0200
++++ ATLAS/CONFIG/src/config.c	2012-06-06 16:00:07.000000000 +0200
+@@ -183,7 +183,7 @@
+    i = sprintf(ln, "make IRun_comp args=\"-v %d -o atlconf.txt -O %d -A %d -Si nof77 %d -V %d %s %s",
+                verb, OS, arch, nof77, vecext, targarg, flags);
+    free(flags);
+-   if (ptrbits == 64 || ptrbits == 32)
++   if (ptrbits == 64 || ptrbits == 32 || ptrbits == 48)
+    {
+       sprintf(stmp, "-b %d", ptrbits);
+       ln = NewAppendedString(ln, stmp);
+@@ -1272,7 +1272,7 @@
+    }
+    *f2cdefs = fdefs;
+    *ecdefs = cdefs;
+-   if (*ptrbits != 32 && *ptrbits != 64)
++   if (*ptrbits != 32 && *ptrbits != 64 && *ptrbits != 48)
+       *ptrbits = 0;
+ }
+ 

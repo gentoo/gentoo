@@ -1,0 +1,128 @@
+From e14d5b53ad588e45b2bcffb778563daf2fead5df Mon Sep 17 00:00:00 2001
+From: Ian Kumlien <ian.kumlien@gmail.com>
+Date: Fri, 7 Aug 2020 15:57:17 +0200
+Subject: [PATCH] replace deprecated CK?_NETSCAPE_? constants
+
+... with the corresponding CK?_NSS_? constants
+
+Fixes: https://github.com/kdudka/nss-pem/issues/6
+Closes: https://github.com/kdudka/nss-pem/pull/7
+---
+ pfind.c   | 16 ++++++++--------
+ pinst.c   |  8 ++++----
+ pobject.c | 10 +++++-----
+ 3 files changed, 17 insertions(+), 17 deletions(-)
+
+diff --git a/pfind.c b/pfind.c
+index 83d5b89..fa5dd4d 100644
+--- a/pfind.c
++++ b/pfind.c
+@@ -276,18 +276,18 @@ collect_objects(CK_ATTRIBUTE_PTR pTemplate,
+         type = pemBareKey;
+         plog("CKO_PRIVATE_KEY\n");
+         break;
+-    case CKO_NETSCAPE_TRUST:
++    case CKO_NSS_TRUST:
+         type = pemTrust;
+-        plog("CKO_NETSCAPE_TRUST\n");
++        plog("CKO_NSS_TRUST\n");
+         break;
+-    case CKO_NETSCAPE_CRL:
+-        plog("CKO_NETSCAPE_CRL\n");
++    case CKO_NSS_CRL:
++        plog("CKO_NSS_CRL\n");
+         goto done;
+-    case CKO_NETSCAPE_SMIME:
+-        plog("CKO_NETSCAPE_SMIME\n");
++    case CKO_NSS_SMIME:
++        plog("CKO_NSS_SMIME\n");
+         goto done;
+-    case CKO_NETSCAPE_BUILTIN_ROOT_LIST:
+-        plog("CKO_NETSCAPE_BUILTIN_ROOT_LIST\n");
++    case CKO_NSS_BUILTIN_ROOT_LIST:
++        plog("CKO_NSS_BUILTIN_ROOT_LIST\n");
+         goto done;
+     case CK_INVALID_HANDLE:
+         type = pemAll; /* look through all objectclasses - ignore the type field */
+diff --git a/pinst.c b/pinst.c
+index ef2d955..564458e 100644
+--- a/pinst.c
++++ b/pinst.c
+@@ -236,7 +236,7 @@ CreateObject(CK_OBJECT_CLASS objClass,
+         /* more unique nicknames - https://bugzilla.redhat.com/689031#c66 */
+         nickname = filename;
+         break;
+-    case CKO_NETSCAPE_TRUST:
++    case CKO_NSS_TRUST:
+         plog("Creating trust nick %s id %ld in slot %ld\n", nickname, objid, slotID);
+         memset(&o->u.trust, 0, sizeof(o->u.trust));
+         break;
+@@ -265,7 +265,7 @@ CreateObject(CK_OBJECT_CLASS objClass,
+ 
+     switch (objClass) {
+     case CKO_CERTIFICATE:
+-    case CKO_NETSCAPE_TRUST:
++    case CKO_NSS_TRUST:
+         if (SECSuccess != GetCertFields(o->derCert->data, o->derCert->len,
+                                         &issuer, &serial, &derSN, &subject,
+                                         &valid, &subjkey))
+@@ -344,7 +344,7 @@ derEncodingsMatch(CK_OBJECT_CLASS objClass, pemInternalObject * obj,
+ 
+     switch (objClass) {
+     case CKO_CERTIFICATE:
+-    case CKO_NETSCAPE_TRUST:
++    case CKO_NSS_TRUST:
+         result = SECITEM_CompareItem(obj->derCert, certDER);
+         break;
+ 
+@@ -497,7 +497,7 @@ AddCertificate(char *certfile, char *keyfile, PRBool cacert,
+                                    nickname, 0, slotID, NULL);
+             if (o != NULL) {
+                 /* Add the CA trust object */
+-                o = AddObjectIfNeeded(CKO_NETSCAPE_TRUST, pemTrust, objs[i], NULL,
++                o = AddObjectIfNeeded(CKO_NSS_TRUST, pemTrust, objs[i], NULL,
+                                        nickname, 0, slotID, NULL);
+             }
+             if (o == NULL) {
+diff --git a/pobject.c b/pobject.c
+index f613678..a97f3e2 100644
+--- a/pobject.c
++++ b/pobject.c
+@@ -149,8 +149,8 @@ static const CK_KEY_TYPE ckk_rsa = CKK_RSA;
+ static const CK_OBJECT_CLASS cko_certificate = CKO_CERTIFICATE;
+ static const CK_OBJECT_CLASS cko_private_key = CKO_PRIVATE_KEY;
+ static const CK_OBJECT_CLASS cko_public_key = CKO_PUBLIC_KEY;
+-static const CK_OBJECT_CLASS cko_trust = CKO_NETSCAPE_TRUST;
+-static const CK_TRUST ckt_netscape_trusted = CKT_NETSCAPE_TRUSTED_DELEGATOR;
++static const CK_OBJECT_CLASS cko_trust = CKO_NSS_TRUST;
++static const CK_TRUST ckt_netscape_trusted = CKT_NSS_TRUSTED_DELEGATOR;
+ static const NSSItem pem_trueItem = {
+     (void *) &ck_true, (PRUint32) sizeof(CK_BBOOL)
+ };
+@@ -578,7 +578,7 @@ pem_FetchAttribute
+         return pem_FetchCertAttribute(io, type);
+     case CKO_PRIVATE_KEY:
+         return pem_FetchPrivKeyAttribute(io, type, pError);
+-    case CKO_NETSCAPE_TRUST:
++    case CKO_NSS_TRUST:
+         return pem_FetchTrustAttribute(io, type);
+     case CKO_PUBLIC_KEY:
+         return pem_FetchPubKeyAttribute(io, type);
+@@ -775,7 +775,7 @@ pem_mdObject_GetAttributeCount
+         return pubKeyAttrsCount;
+     case CKO_PRIVATE_KEY:
+         return privKeyAttrsCount;
+-    case CKO_NETSCAPE_TRUST:
++    case CKO_NSS_TRUST:
+         return trustAttrsCount;
+     default:
+         break;
+@@ -1168,7 +1168,7 @@ pem_CreateObject
+                 if (listItem->io != NULL) {
+                     /* Add the trust object */
+                     APPEND_LIST_ITEM(listItem);
+-                    listItem->io = AddObjectIfNeeded(CKO_NETSCAPE_TRUST, pemTrust,
++                    listItem->io = AddObjectIfNeeded(CKO_NSS_TRUST, pemTrust,
+                                                     derlist[c], NULL, nickname, 0,
+                                                      slotID, NULL);
+                 }

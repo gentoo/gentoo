@@ -1,0 +1,16 @@
+Fix build with gcc 4.5
+https://bugs.gentoo.org/show_bug.cgi?id=321293
+
+Index: amyedit-1.0/src/Preferences.cc
+===================================================================
+--- amyedit-1.0.orig/src/Preferences.cc
++++ amyedit-1.0/src/Preferences.cc
+@@ -211,7 +211,7 @@ int Preferences::run()
+ }
+ 
+ void Preferences::edit_latex_commands(){
+-	EditLatexCommands::EditLatexCommands dialog(this);
++	EditLatexCommands dialog(this);
+ 	dialog.run();
+ 	Amy::populate_text_list_model_from_list(previewoptionslist->get_model(), PrefStruct::instance()->get_keys("Commands"), true);
+ 	previewoptionslist->select(PrefStruct::instance()->get<Glib::ustring>("General", "preview_combo"));

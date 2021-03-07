@@ -1,0 +1,19 @@
+--- a/SConscript.bak	2019-08-01 12:45:16.937878393 -0500
++++ b/SConscript	2019-08-01 12:46:13.648803035 -0500
+@@ -126,12 +126,12 @@
+     def configure_end(self):
+         self.env = self.conf.Finish()
+ 
+-        print "Reports:"
+-        print self.reports
++        print("Reports:")
++        print(self.reports)
+ 
+         if not self.fatal_error == "":
+-            print "Fatal Errors:"
+-            print self.fatal_error
++            print("Fatal Errors:")
++            print(self.fatal_error)
+             Exit(1)
+ 
+     def configure_gxx(self): 

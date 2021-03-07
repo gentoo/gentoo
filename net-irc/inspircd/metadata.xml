@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription lang="en">
+		InspIRCd is a modular Internet Relay Chat (IRC) server written in C++
+		for Linux, BSD, Windows and Mac OS X systems which was created from
+		scratch to be stable, modern and lightweight.
+	</longdescription>
+	<longdescription lang="es">
+		InspIRCd es un servidor Internet Relay Chat (IRC) escrito en C++
+		para sistemas Linux, BSD, Windows y Mac OS X que se creó desde cero
+		para ser estable, moderno y ligero.
+	</longdescription>
+	<use>
+		<flag name="gnutls">Enable TLS support</flag>
+		<flag name="ldap">Enable LDAP support</flag>
+		<flag name="maxminddb">Add support for geolocation using libMaxMindDB</flag>
+		<flag name="mbedtls">Add support for TLS using the mbedTLS library</flag>
+		<flag name="mysql">Enable MySQL database backend</flag>
+		<flag name="postgres">Enable PostgreSQL database backend</flag>
+		<flag name="re2">Add support for Google RE2 regular expressions library</flag>
+		<flag name="regex-posix">Add support for POSIX Regular Expressions</flag>
+		<flag name="regex-stdlib">Add support for C++ stdlib regular expressions</flag>
+		<flag name="sqlite">Enable Sqlite database backend</flag>
+		<flag name="ssl">Enable SSL support</flag>
+		<flag name="sslrehashsignal">Enable rehashing SSL module by SIGUSR1</flag>
+		<flag name="tre">Enable support for TRE, a lightweight, robust, and efficient POSIX compliant regexp matching library</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">inspircd/inspircd</remote-id>
+	</upstream>
+	<maintainer type="person">
+		<email>wadecline@hotmail.com</email>
+		<name>Wade Cline</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+</pkgmetadata>

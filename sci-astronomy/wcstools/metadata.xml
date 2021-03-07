@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-astronomy@gentoo.org</email>
+		<name>Gentoo Astronomy Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Astronomers often need to relate positions on an image of the sky to
+		positions on the real sky to identify catalogued objects in images,
+		tell other people where to look to find an identified object, or to
+		compute motions of planets, satellites, asteroids, or comets. WCSTools
+		is a package of programs and a library of utility subroutines for
+		setting and using the world coordinate systems (WCS) in the headers of
+		the most common astronomical image formats, FITS and IRAF .imh, to
+		relate image pixels to sky coordinates.
+		The Gentoo package is using GNU autotools to produce portable shared
+		and static libraried.
+	</longdescription>
+</pkgmetadata>

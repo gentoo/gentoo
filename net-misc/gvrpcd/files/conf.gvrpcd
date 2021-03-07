@@ -1,0 +1,6 @@
+# On which interfaces should listen gvrpcd?
+INTERFACES="eth0"
+
+# Extra arguments. See gvrpcd -h for additional info.
+EXTRA_ARGS=""
+

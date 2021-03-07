@@ -1,0 +1,22 @@
+diff -ur opendnssec-2.0.1.orig/Makefile.am opendnssec-2.0.1/Makefile.am
+--- opendnssec-2.0.1.orig/Makefile.am	2016-07-21 16:15:00.000000000 +0200
++++ opendnssec-2.0.1/Makefile.am	2016-08-23 14:01:50.618393034 +0200
+@@ -30,12 +30,12 @@
+ 
+ install-data-hook:
+ 	$(INSTALL) -d $(DESTDIR)$(localstatedir)
+-	$(INSTALL) -d $(DESTDIR)$(localstatedir)/opendnssec
+-	$(INSTALL) -d $(DESTDIR)$(localstatedir)/opendnssec/signer
+-	$(INSTALL) -d $(DESTDIR)$(localstatedir)/opendnssec/enforcer
+-	$(INSTALL) -d $(DESTDIR)$(localstatedir)/opendnssec/signconf
+-	$(INSTALL) -d $(DESTDIR)$(localstatedir)/opendnssec/unsigned
+-	$(INSTALL) -d $(DESTDIR)$(localstatedir)/opendnssec/signed
++	$(INSTALL) -d $(DESTDIR)$(localstatedir)/lib/opendnssec
++	$(INSTALL) -d $(DESTDIR)$(localstatedir)/lib/opendnssec/signer
++	$(INSTALL) -d $(DESTDIR)$(localstatedir)/lib/opendnssec/enforcer
++	$(INSTALL) -d $(DESTDIR)$(localstatedir)/lib/opendnssec/signconf
++	$(INSTALL) -d $(DESTDIR)$(localstatedir)/lib/opendnssec/unsigned
++	$(INSTALL) -d $(DESTDIR)$(localstatedir)/lib/opendnssec/signed
+ 	$(INSTALL) -d $(DESTDIR)$(localstatedir)/run
+ 	$(INSTALL) -d $(DESTDIR)$(localstatedir)/run/opendnssec
+ 

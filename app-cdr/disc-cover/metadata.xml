@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <!-- maintainer-needed -->
+  <longdescription>
+    This is the disc-cover CLI only. For the web application,
+    see www-apps/disc-cover. These two packages are tightly
+    bound by the fact that they come from the same source package.
+    That's why the web application ebuild is manually slotted to 0.
+  </longdescription>
+</pkgmetadata>

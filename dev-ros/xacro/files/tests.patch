@@ -1,0 +1,21 @@
+Index: xacro-1.14.1/test/test-cmake.sh
+===================================================================
+--- xacro-1.14.1.orig/test/test-cmake.sh
++++ xacro-1.14.1/test/test-cmake.sh
+@@ -15,6 +15,7 @@
+ test -d $1 || exit 2
+ test -r $1/CMakeLists.txt || exit 2
+ 
++basedir=`pwd`/../
+ dir=`basename $1`
+ 
+ # redirect stdout and stderr to $dir.log
+@@ -26,7 +27,7 @@ mkdir $dir
+ cd $dir
+ 
+ echo "*** running cmake ***"
+-cmake -DCATKIN_DEVEL_PREFIX=devel -DCMAKE_INSTALL_PREFIX=install $1 || exit $?
++cmake -DCATKIN_DEVEL_PREFIX="${basedir}/devel" -DCMAKE_INSTALL_PREFIX=install $1 || exit $?
+ 
+ echo
+ echo "*** running make ***"

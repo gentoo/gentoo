@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>whissi@gentoo.org</email>
+		<name>Thomas Deutschmann</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/edenhill/librdkafka/issues</bugs-to>
+		<remote-id type="github">edenhill/librdkafka</remote-id>
+	</upstream>
+	<use>
+		<flag name="lz4">Enable support for Kafka's LZ4 compression based on KIP-57 (uses <pkg>app-arch/lz4</pkg>)</flag>
+	</use>
+</pkgmetadata>

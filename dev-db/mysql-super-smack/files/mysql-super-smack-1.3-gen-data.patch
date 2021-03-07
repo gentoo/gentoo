@@ -1,0 +1,45 @@
+diff -Nuar super-smack-1.3.orig/smacks/select-key.smack super-smack-1.3/smacks/select-key.smack
+--- super-smack-1.3.orig/smacks/select-key.smack	2005-05-30 03:04:38.000000000 -0700
++++ super-smack-1.3/smacks/select-key.smack	2008-11-13 22:27:48.125627179 -0800
+@@ -24,7 +24,7 @@
+   min_rows "90000"; // the table must have at least that many rows
+   data_file "words.dat"; // if the table is empty, load the data from
+ //this file
+-  gen_data_file "gen-data -n 90000 -f %12-12s%n,%25-25s,%n,%d";
++  gen_data_file "super-smack-gen-data -n 90000 -f %12-12s%n,%25-25s,%n,%d";
+ // if the file above does not exist, generate it with the above shell command
+ // you can replace this command with anything that prints comma-delimited
+ // data to stdout, just make sure you have the right number of columns
+diff -Nuar super-smack-1.3.orig/smacks/update-select.smack super-smack-1.3/smacks/update-select.smack
+--- super-smack-1.3.orig/smacks/update-select.smack	2005-05-30 03:04:51.000000000 -0700
++++ super-smack-1.3/smacks/update-select.smack	2008-11-13 22:27:45.070167829 -0800
+@@ -24,7 +24,7 @@
+   min_rows "90000"; // the table must have at least that many rows
+   data_file "words.dat"; // if the table is empty, load the data from
+ //this file
+-  gen_data_file "gen-data -n 90000 -f %12-12s%n,%25-25s,%n,%d";
++  gen_data_file "super-smack-gen-data -n 90000 -f %12-12s%n,%25-25s,%n,%d";
+ // if the file above does not exist, generate it with the above command
+ }
+ 
+diff -Nuar super-smack-1.3.orig/src/Makefile.am super-smack-1.3/src/Makefile.am
+--- super-smack-1.3.orig/src/Makefile.am	2001-02-24 03:44:30.000000000 -0800
++++ super-smack-1.3/src/Makefile.am	2008-11-13 22:27:37.693573246 -0800
+@@ -19,7 +19,7 @@
+ INCLUDES = @MYSQL_INCLUDE@ @PGSQL_INCLUDE@ @ORACLE_INCLUDE@
+ 
+ noinst_PROGRAMS=test-dictionary test-client test_tcp_client
+-bin_PROGRAMS=super-smack gen-data
++bin_PROGRAMS=super-smack super-smack-gen-data
+ test_dictionary_SOURCES=test-dictionary.cc \
+ 	dictionary.cc dictionary.h \
+ 	die.cc die.h \
+@@ -57,7 +57,7 @@
+ 	tcp_client.h tcp_client.cc
+ super_smack_LDADD = @MYSQL_LIB@ @PGSQL_LIB@ @ORACLE_LIB@
+ 
+-gen_data_SOURCES=gen-data.cc die.cc die.h
++super_smack_gen_data_SOURCES=gen-data.cc die.cc die.h
+ 
+ # yacc needs to generate a y.tab.h
+ YFLAGS = -d

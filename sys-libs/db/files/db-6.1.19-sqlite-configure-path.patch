@@ -1,0 +1,10 @@
+--- db-6.1.19/dist/aclocal/sql.m4
++++ db-6.1.19/dist/aclocal/sql.m4
+@@ -96,6 +96,6 @@
+ if test "$db_cv_build_cryptography" = "yes"; then
+ 	CPPFLAGS="$CPPFLAGS -DSQLITE_HAS_CODEC=1"
+ fi
+-(cd sql && eval "\$SHELL ../$sqlite_dir/configure --disable-option-checking $ac_sub_configure_args CPPFLAGS=\"-I.. $CPPFLAGS\" --enable-amalgamation=$db_cv_sql_amalgamation --enable-readline=$with_readline " && cat build_config.h >> config.h) || exit 1
++(cd sql && eval "\$SHELL $sqlite_dir/configure --disable-option-checking $ac_sub_configure_args CPPFLAGS=\"-I.. $CPPFLAGS\" --enable-amalgamation=$db_cv_sql_amalgamation --enable-readline=$with_readline " && cat build_config.h >> config.h) || exit 1
+ 
+ # Configure JDBC if --enable-jdbc

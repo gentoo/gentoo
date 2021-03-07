@@ -1,0 +1,13 @@
+--- Makefile_old.am	2013-07-30 09:11:50.033962122 +0400
++++ Makefile.am	2013-07-30 09:12:20.843574793 +0400
+@@ -1,10 +1,2 @@
+ SUBDIRS=build man src test tools scripts packaging lib
+ ACLOCAL_AMFLAGS += -I build/m4
+-
+-if UNITTESTS
+-SUBDIRS += unittests
+-endif
+-
+-if BUILD_DOCS
+-SUBDIRS += docs
+-endif

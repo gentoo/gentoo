@@ -1,0 +1,11 @@
+--- a/src/smb/ADMsmb.c
++++ b/src/smb/ADMsmb.c
+@@ -123,7 +123,7 @@
+     {
+       usleep (100000);
+ 
+-      if (recvfrom (socket_client, buffer2, sizeof (buffer2), 0, (struct sockaddr *) &sin_dst, &(int) longueur) != -1)
++      if (recvfrom (socket_client, buffer2, sizeof (buffer2), 0, (struct sockaddr *) &sin_dst, (int *) &longueur) != -1)
+ 	{
+ 
+ 	  if (nmb2->rep_num != 0)

@@ -1,0 +1,11 @@
+--- a/Makefile.rules.in
++++ b/Makefile.rules.in
+@@ -1,7 +1,7 @@
+ CC	= @CC@
+ CFLAGS	= -Wall @CPPFLAGS@ @CFLAGS@ -I$(TOPSRCDIR)
+ LIBS	= @LIBS@
+-LD_R	= ld -r
++LD_R	= $(LD) -r
+ RM	= rm -f
+ LDFLAGS = @LDFLAGS@
+ 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<longdescription>
+  quilt-el is an Emacs minor mode for quilt. By using this, it becomes easy to
+  edit files controlled by quilt. The main features are as follows:
+    * Automatically detects files that are in a quilt hierarchy and enables
+      itself.
+    * Only files in topmost patch can be writable.
+    * Some handy shortcut keys of quilt commands.
+</longdescription>
+<stabilize-allarches/>
+</pkgmetadata>

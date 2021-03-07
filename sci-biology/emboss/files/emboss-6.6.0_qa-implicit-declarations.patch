@@ -1,0 +1,74 @@
+--- EMBOSS-6.6.0/ajax/core/ajfeatread.c
++++ EMBOSS-6.6.0/ajax/core/ajfeatread.c
+@@ -45,6 +45,7 @@
+ 
+ #include <limits.h>
+ #include <math.h>
++#include <string.h>
+ #include <errno.h>
+ 
+ #ifdef WIN32
+--- EMBOSS-6.6.0/ajax/core/ajfeatwrite.c
++++ EMBOSS-6.6.0/ajax/core/ajfeatwrite.c
+@@ -43,7 +43,7 @@
+ 
+ #include <limits.h>
+ #include <math.h>
+-
++#include <string.h>
+ 
+ static AjPRegexp featoutRegUfoFmt = NULL;
+ static AjPRegexp featoutRegUfoFile = NULL;
+--- EMBOSS-6.6.0/ajax/core/ajpdbio.c
++++ EMBOSS-6.6.0/ajax/core/ajpdbio.c
+@@ -37,7 +37,7 @@
+ 
+ #include <limits.h>
+ #include <math.h>
+-
++#include <string.h>
+ 
+ 
+ 
+--- EMBOSS-6.6.0/ajax/core/ajreg.c
++++ EMBOSS-6.6.0/ajax/core/ajreg.c
+@@ -32,6 +32,7 @@
+ #include "ajlib.h"
+ 
+ #include "ajreg.h"
++#include <string.h>
+ 
+ 
+ 
+--- EMBOSS-6.6.0/ajax/core/ajseqtype.c
++++ EMBOSS-6.6.0/ajax/core/ajseqtype.c
+@@ -32,7 +32,7 @@
+ #include "ajfeat.h"
+ #include "ajfile.h"
+ #include "ajreg.h"
+-
++#include <string.h>
+ 
+ 
+ 
+--- EMBOSS-6.6.0/nucleus/embindex.c
++++ EMBOSS-6.6.0/nucleus/embindex.c
+@@ -35,6 +35,7 @@
+ #include "ajnam.h"
+ 
+ #include <errno.h>
++#include <string.h>
+ 
+ #define BTENTRYFILE     ".ent"
+ #define KWLIMIT 12
+--- EMBOSS-6.6.0/nucleus/embword.c
++++ EMBOSS-6.6.0/nucleus/embword.c
+@@ -36,7 +36,7 @@
+ #include "ajutil.h"
+ 
+ #include <math.h>
+-
++#include <string.h>
+ 
+ 
+ 

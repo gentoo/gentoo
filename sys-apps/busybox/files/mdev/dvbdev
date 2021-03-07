@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# MDEV=dvb0.demux1 -> ADAPTER=dvb0 -> N=0
+ADAPTER=${MDEV%.*}
+N=${ADAPTER#dvb}
+# MDEV=dvb0.demux1 -> DEVB_DEV=demux1
+DVB_DEV=${MDEV#*.}
+
+case "$ACTION" in
+	add|"")
+		mkdir -p dvb/adapter${N}
+		mv ${MDEV} dvb/adapter${N}/${DVB_DEV}
+		;;
+	remove)
+		rm -f dvb/adapter${N}/${DVB_DEV}
+		rmdir dvb/adapter${N} 2>/dev/null
+		rmdir dvb/ 2>/dev/null
+esac

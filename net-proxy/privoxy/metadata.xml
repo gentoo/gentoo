@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>bircoph@gentoo.org</email>
+	</maintainer>
+	<longdescription>
+		Privoxy is a non-caching web proxy with advanced filtering
+		capabilities for enhancing privacy, modifying web page data
+		and HTTP headers, controlling access, and removing ads and
+		other obnoxious Internet junk. Privoxy has a flexible
+		configuration and can be customized to suit individual
+		needs and tastes. It has application for both stand-alone
+		systems and multi-user networks.
+	</longdescription>
+	<use>
+		<flag name="brotli">Decompress brotli compressed data using <pkg>app-arch/brotli</pkg> before filtering</flag>
+		<flag name="client-tags">Enable support for client-specific tags</flag>
+		<flag name="compression">Allow privoxy to compress buffered content before sending to the client, if it supports it</flag>
+		<flag name="editor">Enable the web-based actions file editor</flag>
+		<flag name="extended-host-patterns">Enable and require PCRE syntax in host patterns. You must convert action files to PCRE, see privoxy-url-pattern-translator.pl (see tools USE flag). Use at your own risk!</flag>
+		<flag name="extended-statistics">Gather extended statistics</flag>
+		<flag name="external-filters">Allow to filter content with scripts and programs. Experimental</flag>
+		<flag name="fast-redirects">Support fast redirects</flag>
+		<flag name="force">Allow single-page disable (force load)</flag>
+		<flag name="fuzz">Exposes Privoxy internals to input from files or stdout. Intended for fuzzing testing</flag>
+		<flag name="graceful-termination">Allow to shutdown Privoxy through the webinterface</flag>
+		<flag name="image-blocking">Allows the +handle-as-image action, to send "blocked" images instead of HTML</flag>
+		<flag name="lfs">Support large files (&gt;2GB) on 32-bit systems</flag>
+		<flag name="mbedtls">Use <pkg>net-libs/mbedtls</pkg> for HTTPS filtering</flag>
+		<flag name="openssl">Use <pkg>dev-libs/openssl</pkg> for HTTPS filtering</flag>
+		<flag name="png-images">Use PNG format instead of GIF for built-in images</flag>
+		<flag name="ssl">HTTPS inspection support. Enables privoxy to perform SSL MITM filtering, see docs, use with care</flag>
+		<flag name="stats">Keep statistics</flag>
+		<flag name="toggle">Support temporary disable toggle via web interface</flag>
+		<flag name="tools">Install log parser, regression tester and user agent generator tools</flag>
+		<flag name="whitelists">Support trust files (white lists)</flag>
+		<flag name="zlib">Decompress zlib compressed data using <pkg>sys-libs/zlib</pkg> before filtering</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">ijbswa</remote-id>
+	</upstream>
+</pkgmetadata>

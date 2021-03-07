@@ -1,0 +1,11 @@
+--- a/src/CMakeLists.txt	2019-04-04 06:51:41.509647160 +0200
++++ b/src/CMakeLists.txt	2019-04-04 06:52:08.413646804 +0200
+@@ -263,7 +263,7 @@
+     add_definitions(${LLVM_DEFINITIONS})
+     llvm_map_components_to_libnames(llvm_libs support core option)
+     target_compile_definitions(doxygen PRIVATE ${LLVM_DEFINITIONS})
+-    set(CLANG_LIBS libclang clangTooling ${llvm_libs})
++    set(CLANG_LIBS libclang clangTooling clangBasic clangLex ${llvm_libs})
+ endif()
+ 
+ target_link_libraries(doxygen

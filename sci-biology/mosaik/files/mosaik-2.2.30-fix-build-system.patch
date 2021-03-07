@@ -1,0 +1,226 @@
+- Make build system verbose by default, as required by Gentoo policy
+  See also: https://bugs.gentoo.org/show_bug.cgi?id=429308
+- Remove CFLAGS and CXXFLAGS defaults
+- Fix order of flags and honour CPPFLAGS for LFS support
+  and LDFLAGS for --as-needed, respectively
+
+--- a/CommonSource/DataStructures/Makefile
++++ b/CommonSource/DataStructures/Makefile
+@@ -22,7 +22,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(CXXFLAGS) $(PLATFORM_FLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(PLATFORM_FLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/CommonSource/ExternalReadFormats/Makefile
++++ b/CommonSource/ExternalReadFormats/Makefile
+@@ -22,7 +22,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(CXXFLAGS) $(PLATFORM_FLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(PLATFORM_FLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/CommonSource/MosaikReadFormat/Makefile
++++ b/CommonSource/MosaikReadFormat/Makefile
+@@ -22,7 +22,7 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(CXXFLAGS) $(PLATFORM_FLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(PLATFORM_FLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/CommonSource/PairwiseAlignment/Makefile
++++ b/CommonSource/PairwiseAlignment/Makefile
+@@ -26,11 +26,11 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(CXXFLAGS) $(PLATFORM_FLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(PLATFORM_FLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ $(CBUILT_OBJECTS): $(CSOURCES)
+ 	@echo "  * compiling" $(*F).c
+-	@$(CC) -c -o $@ $(*F).c -O3 $(PLATFORM_FLAGS) $(INCLUDES)
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(PLATFORM_FLAGS) $(INCLUDES) -c -o $@ $(*F).c
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/CommonSource/Utilities/Makefile
++++ b/CommonSource/Utilities/Makefile
+@@ -48,11 +48,11 @@
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(CXXFLAGS) $(PLATFORM_FLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(PLATFORM_FLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ $(CBUILT_OBJECTS): $(CSOURCES)
+ 	@echo "  * compiling" $(*F).c
+-	@$(CC) -c -o $@ $(*F).c -O3 -w -DSQLITE_OMIT_LOAD_EXTENSION $(PLATFORM_FLAGS) $(INCLUDES)
++	$(CC) $(CFLAGS) $(CPPFLAGS) -DSQLITE_OMIT_LOAD_EXTENSION $(PLATFORM_FLAGS) $(INCLUDES) -c -o $@ $(*F).c
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/fann-2.1.0/Makefile
++++ b/fann-2.1.0/Makefile
+@@ -12,7 +12,7 @@
+ 
+ $(CBUILT_OBJECTS): $(CSOURCES)
+ 	@echo "  * compiling" $(*F).c
+-	@$(CC) -c -o $@ $(*F).c -O3 $(PLATFORM_FLAGS) -I$(INCLUDES) 
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(PLATFORM_FLAGS) -I$(INCLUDES) -c -o $@ $(*F).c
+ 
+ clean:
+ 	@echo "Cleaning up."
+--- a/Makefile
++++ b/Makefile
+@@ -4,8 +4,8 @@
+ # ==========================
+ 
+ # define our object and binary directories
+-export OBJ_DIR = ../obj
+-export BIN_DIR = ../bin
++export OBJ_DIR = ./obj
++export BIN_DIR = ./bin
+ 
+ # define our common source directories
+ export ASSEMBLY_DIR = CommonSource/AssemblyFormats
+@@ -16,20 +16,6 @@
+ export PAIRWISE_DIR = CommonSource/PairwiseAlignment
+ export UTILITIES_DIR = CommonSource/Utilities
+ 
+-# define some default flags
+-FLAGS = -Wall -Wno-char-subscripts -ansi -O3
+-#FLAGS = -Wall -Wno-char-subscripts -ansi -g -D VERBOSE_DEBUG #gdb debugging
+-#FLAGS = -Wall -Wno-char-subscripts -ansi -O3 -D VERBOSE_DEBUG #enables verbose debugging
+-CFLAGS =
+-CXXFLAGS =
+-#CXXFLAGS = -ansi -pedantic -Wextra -Weffc++
+-CFLAGS += $(FLAGS)
+-CXXFLAGS += $(FLAGS)
+-export CFLAGS
+-export CXXFLAGS
+-#export LDFLAGS = -Wl
+-export CXX ?= g++
+-
+ # define our platform
+ export BLD_PLATFORM ?= linux
+ include includes/$(BLD_PLATFORM).inc
+--- a/MosaikAligner/Makefile
++++ b/MosaikAligner/Makefile
+@@ -68,11 +68,11 @@
+ 
+ $(PROGRAM): $(BUILT_OBJECTS) $(EXT_OBJECTS)
+ 	@echo "  * linking $(PROGRAM)"
+-	@$(CXX) $(LDFLAGS) $(CXXFLAGS) $(PLATFORM_FLAGS) -o $(TD)$(BIN_DIR)/$@ $^ $(LIBS)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(LDFLAGS) $(PLATFORM_FLAGS) -o $(TD)$(BIN_DIR)/$@ $^ $(LIBS)
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(CXXFLAGS) $(PLATFORM_FLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(PLATFORM_FLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ $(EXT_OBJECTS):
+ 	@$(MAKE) --no-print-directory -C $(TD)$(DATA_STRUCT_DIR)
+--- a/MosaikBuild/Makefile
++++ b/MosaikBuild/Makefile
+@@ -26,11 +26,11 @@
+ 
+ $(PROGRAM): $(BUILT_OBJECTS) $(EXT_OBJECTS)
+ 	@echo "  * linking $(PROGRAM)"
+-	@$(CXX) $(LDFLAGS) $(CXXFLAGS) $(PLATFORM_FLAGS) -o $(TD)$(BIN_DIR)/$@ $^ $(LIBS)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(LDFLAGS) $(PLATFORM_FLAGS) -o $(TD)$(BIN_DIR)/$@ $^ $(LIBS)
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(CXXFLAGS) $(PLATFORM_FLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(PLATFORM_FLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ $(EXT_OBJECTS):
+ 	@$(MAKE) --no-print-directory -C $(TD)$(DATA_STRUCT_DIR)
+--- a/MosaikJump/Makefile
++++ b/MosaikJump/Makefile
+@@ -26,11 +26,11 @@
+ 
+ $(PROGRAM): $(BUILT_OBJECTS) $(EXT_OBJECTS)
+ 	@echo "  * linking $(PROGRAM)"
+-	@$(CXX) $(LDFLAGS) $(CXXFLAGS) $(PLATFORM_FLAGS) -o $(TD)$(BIN_DIR)/$@ $^ $(LIBS)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(LDFLAGS) $(PLATFORM_FLAGS) -o $(TD)$(BIN_DIR)/$@ $^ $(LIBS)
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(CXXFLAGS) $(PLATFORM_FLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(PLATFORM_FLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ $(EXT_OBJECTS):
+ 	@$(MAKE) --no-print-directory -C $(TD)$(MOSAIKREAD_DIR)
+--- a/MosaikText/Makefile
++++ b/MosaikText/Makefile
+@@ -26,11 +26,11 @@
+ 
+ $(PROGRAM): $(BUILT_OBJECTS) $(EXT_OBJECTS)
+ 	@echo "  * linking $(PROGRAM)"
+-	@$(CXX) $(LDFLAGS) $(CXXFLAGS) $(PLATFORM_FLAGS) -o $(TD)$(BIN_DIR)/$@ $^ $(LIBS)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(LDFLAGS) $(PLATFORM_FLAGS) -o $(TD)$(BIN_DIR)/$@ $^ $(LIBS)
+ 
+ $(BUILT_OBJECTS): $(SOURCES)
+ 	@echo "  * compiling" $(*F).cpp
+-	@$(CXX) -c -o $@ $(*F).cpp $(CXXFLAGS) $(PLATFORM_FLAGS) $(INCLUDES)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(PLATFORM_FLAGS) $(INCLUDES) -c -o $@ $(*F).cpp
+ 
+ $(EXT_OBJECTS):
+ 	@$(MAKE) --no-print-directory -C $(TD)$(MOSAIKREAD_DIR)
+--- a/networkFile/retrainCode/attachXC/Makefile
++++ b/networkFile/retrainCode/attachXC/Makefile
+@@ -3,12 +3,11 @@
+ # (c) 2012 Wan-Ping Lee
+ # ==========================
+ 
+-FLAGS = -Wall -O3
+ 
+ 
+ all: xc_pe.cpp xc_se.cpp
+-	@$(CXX) $(FLAGS) xc_pe.cpp -o xc_pe
+-	@$(CXX) $(FLAGS) xc_se.cpp -o xc_se
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(LDFLAGS) xc_pe.cpp -o xc_pe
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(LDFLAGS) xc_se.cpp -o xc_se
+ 
+ .PHONY: all
+ 
+--- a/networkFile/retrainCode/trainNetwork/Makefile
++++ b/networkFile/retrainCode/trainNetwork/Makefile
+@@ -5,8 +5,6 @@
+ 
+ OBJ_DIR = ./obj
+ 
+-FLAGS =  -Wall -O3
+-CFLAGS = -O3
+ FANN=../../../fann-2.1.0
+ 
+ SOURCES = sam_parser_float.cpp parameter_parser_float.cpp mq_train_float.cpp
+@@ -15,12 +13,12 @@
+ all: $(FANN)/floatfann.c $(SOURCES)
+ 	@test -d $(OBJ_DIR) || mkdir $(OBJ_DIR)
+ 	@echo "  * compiling ......"
+-	@$(CC) $(CFLAGS) -c -o $(OBJ_DIR)/floatfann.o $(FANN)/floatfann.c -I$(FANN)/include
+-	@$(CXX) -c $(FLAGS) -o $(OBJ_DIR)/sam_parser_float.o sam_parser_float.cpp
+-	@$(CXX) -c $(FLAGS) -o $(OBJ_DIR)/parameter_parser_float.o parameter_parser_float.cpp
+-	@$(CXX) -c $(FLAGS) -o $(OBJ_DIR)/mq_train_float.o mq_train_float.cpp -I$(FANN)/include
++	$(CC)  $(CFLAGS)   $(CPPFLAGS) -c -o $(OBJ_DIR)/floatfann.o $(FANN)/floatfann.c -I$(FANN)/include
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -c -o $(OBJ_DIR)/sam_parser_float.o sam_parser_float.cpp
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -c -o $(OBJ_DIR)/parameter_parser_float.o parameter_parser_float.cpp
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -c -o $(OBJ_DIR)/mq_train_float.o mq_train_float.cpp -I$(FANN)/include
+ 	@echo "  * linking ......"
+-	@$(CXX) $(FLAGS) $(OBJ_DIR)/*.o -o $(PROGRAM)
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(OBJ_DIR)/*.o -o $(PROGRAM)
+ 
+ .PHONY: all
+ 

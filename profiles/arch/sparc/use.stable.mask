@@ -1,0 +1,43 @@
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# This file requires eapi 5 or later. New entries go on top.
+# Please use the same syntax as in use.mask
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-14)
+# media-libs/gstreamer is not stable for sparc
+gstreamer
+
+# Ben Kohler <bkohler@gentoo.org> (2019-06-11)
+# Pulls in net-libs/axtls which is not stable for sparc
+curl_ssl_axtls
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-02-02)
+# No stable app-arch/rpm on sparc.
+rpm
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-04-23)
+openal
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-02-02)
+# clamav has no stable versions yet
+clamav
+
+# Andrey Grozin <grozin@gentoo.org> (2014-06-25)
+# no stable version on sparc
+ecls
+sbcl
+
+# Pacho Ramos <pacho@gentoo.org> (2014-04-17)
+# Dropped stable keywords after the discussion caused by
+# Gnome 3.8/3.10 stabilization on this arch   
+devhelp
+dia
+eds
+gnumeric
+upnp
+upnp-av
+
+# Pacho Ramos <pacho@gentoo.org> (2014-04-13)
+# Not going to be stabilized on this arch
+gnome-online-accounts

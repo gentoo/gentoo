@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!--
+  This is the example metadata file.
+  The root element of this file is <pkgmetadata>. Within this element a
+  number of subelements are allowed, the most common being maintainer.
+
+  For a full description look at:
+  https://devmanual.gentoo.org/ebuild-writing/misc-files/metadata/
+
+  Before committing, please remove the comments from this file. They are
+  not relevant for general metadata.xml files.
+-->
+<pkgmetadata>
+  <maintainer type="person">
+    <email>exampledev@gentoo.org</email>
+    <description>Primary maintainer</description>
+  </maintainer>
+  <maintainer type="project">
+    <email>exampleproject@gentoo.org</email>
+    <name>Gentoo Example Project</name>
+  </maintainer>
+  <longdescription>
+    Long description of the package. Note that long description should be long.
+    This section doesn't have to exist, if it doesn't differ from ebuild's
+    DESCRIPTION.
+
+    Using either spaces or tabs to indent is allowed. However mixing both in
+    a single metadata.xml file is not.
+  </longdescription>
+  <use>
+    <flag name="aspell">Uses <pkg>app-text/aspell</pkg> for spell checking.
+      Requires an installed dictionary from <cat>app-dicts</cat></flag>
+    <flag name="flag">Description of how USE='flag' affects this package</flag>
+    <flag name="userland_GNU">Description of how USERLAND='GNU' affects this
+      package</flag>
+  </use>
+</pkgmetadata>

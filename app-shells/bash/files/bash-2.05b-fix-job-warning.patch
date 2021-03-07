@@ -1,0 +1,14 @@
+fix obvious error:
+common.c:247:5: warning: format '%s' expects a matching 'char *' argument [-Wformat=]
+
+--- a/builtins/common.c
++++ b/builtins/common.c
+@@ -244,7 +244,7 @@
+      char *s;
+ {
+   if (s)
+-    builtin_error ("%s: no job control");
++    builtin_error ("%s: no job control", s);
+   else
+     builtin_error ("no job control");
+ }

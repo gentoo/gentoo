@@ -1,0 +1,13 @@
+Prefix' Darwin systems are single arch, hijack Darwin7 case which assumes this setup
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -1860,7 +1860,7 @@
+ 	if test "$enable_universal" != "no"; then
+ 		case "$host_os" in
+ 
+-		darwin[[0-7]].*)
++		darwin**)
+ 			#
+ 			# Pre-Tiger.  Build only for 32-bit PowerPC; no
+ 			# need for any special compiler or linker flags.

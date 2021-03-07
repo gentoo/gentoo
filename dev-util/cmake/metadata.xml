@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<use>
+		<flag name="system-jsoncpp">Use system copy of <pkg>dev-libs/jsoncpp</pkg> instead of bundled one.</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:cmake_project:cmake</remote-id>
+	</upstream>
+</pkgmetadata>

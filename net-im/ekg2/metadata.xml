@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
+
+	<use>
+		<flag name="gadu">Enable Gadu-Gadu protocol support (requires
+			<pkg>net-libs/libgadu</pkg>).</flag>
+		<flag name="gpg">Enable jabber message encryption through
+			<pkg>app-crypt/gpgme</pkg>.</flag>
+		<flag name="minimal">Disable building extra plugins with no additional
+			deps.</flag>
+		<flag name="openssl">Support encryption in sim plugin, using OpenSSL.</flag>
+		<flag name="sqlite">Support logging messages into SQLite3 database.</flag>
+	</use>
+</pkgmetadata>

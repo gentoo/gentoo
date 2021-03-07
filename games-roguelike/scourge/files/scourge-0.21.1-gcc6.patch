@@ -1,0 +1,34 @@
+Bug: https://bugs.gentoo.org/610492
+Upstream ticket: https://sourceforge.net/p/scourge/patches/3/
+
+--- a/src/equip.cpp
++++ b/src/equip.cpp
+@@ -595,7 +595,7 @@
+ 		}
+ 	}
+ 	if ( !found ) {
+-		specialSkill = false;
++		specialSkill = NULL;
+ 		canvas->setTooltip( "" );
+ 	}
+ 	glDisable( GL_BLEND );
+--- a/src/render/map.cpp
++++ b/src/render/map.cpp
+@@ -3154,7 +3154,7 @@
+ 			if ( shape )
+ 				return shape;
+ 		}
+-		return false;
++		return NULL;
+ 	}
+ 	if ( y1 == y2 ) {
+ 		if ( x1 > x2 ) SWAP( x1, x2 );
+@@ -3163,7 +3163,7 @@
+ 			if ( shape )
+ 				return shape;
+ 		}
+-		return false;
++		return NULL;
+ 	}
+ 
+ 

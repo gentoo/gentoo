@@ -1,0 +1,12 @@
+diff --git a/configure.ac b/configure.ac
+index 58feccb..86dbe49 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -24,6 +24,7 @@ gl_INIT
+ 
+ # Gettext
+ AM_GNU_GETTEXT([external])
++AM_GNU_GETTEXT_VERSION(0.18)
+ 
+ # Checks for libraries.
+ OL_LIB_READLINE

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Parse-RecDescent</remote-id>
+    <remote-id type="cpan-module">Parse::RecDescent</remote-id>
+    <remote-id type="cpan-module">Parse::RecDescent::Action</remote-id>
+    <remote-id type="cpan-module">Parse::RecDescent::ColCounter</remote-id>
+    <remote-id type="cpan-module">Parse::RecDescent::Directive</remote-id>
+    <remote-id type="cpan-module">Parse::RecDescent::Error</remote-id>
+    <remote-id type="cpan-module">Parse::RecDescent::Expectation</remote-id>
+    <remote-id type="cpan-module">Parse::RecDescent::InterpLit</remote-id>
+    <remote-id type="cpan-module">Parse::RecDescent::LineCounter</remote-id>
+    <remote-id type="cpan-module">Parse::RecDescent::Literal</remote-id>
+    <remote-id type="cpan-module">Parse::RecDescent::OffsetCounter</remote-id>
+    <remote-id type="cpan-module">Parse::RecDescent::Operator</remote-id>
+    <remote-id type="cpan-module">Parse::RecDescent::Production</remote-id>
+    <remote-id type="cpan-module">Parse::RecDescent::Repetition</remote-id>
+    <remote-id type="cpan-module">Parse::RecDescent::Result</remote-id>
+    <remote-id type="cpan-module">Parse::RecDescent::Rule</remote-id>
+    <remote-id type="cpan-module">Parse::RecDescent::Subrule</remote-id>
+    <remote-id type="cpan-module">Parse::RecDescent::Token</remote-id>
+    <remote-id type="cpan-module">Parse::RecDescent::UncondReject</remote-id>
+  </upstream>
+</pkgmetadata>

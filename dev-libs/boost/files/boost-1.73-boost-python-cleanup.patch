@@ -1,0 +1,107 @@
+From c1cae8e6b0480e046ea627679a3afe488ed02dc1 Mon Sep 17 00:00:00 2001
+From: David Seifert <soap@gentoo.org>
+Date: Wed, 25 Dec 2019 12:37:35 +0100
+Subject: [PATCH] Remove Boost.Python-specific python-tag code
+
+---
+ libs/python/Jamfile       | 68 ---------------------------------------------------
+ libs/python/build/Jamfile |  4 +--
+ 2 files changed, 2 insertions(+), 70 deletions(-)
+ delete mode 100644 Jamfile
+
+diff --git a/libs/python/Jamfile b/libs/python/Jamfile
+deleted file mode 100644
+index 32e87d80f..000000000
+--- a/libs/python/Jamfile
++++ /dev/null
+@@ -1,68 +0,0 @@
+-# Copyright (c) 2018 Stefan Seefeld
+-# All rights reserved.
+-#
+-# Distributed under the Boost Software License, Version 1.0.
+-# (See accompanying file LICENSE_1_0.txt or copy at
+-# http://www.boost.org/LICENSE_1_0.txt)
+-
+-import option ;
+-import regex ;
+-import python ;
+-
+-#
+-# The `version-suffix` rule really belongs into python.jam, and
+-# should be moved there. `split-version` is only duplicated here
+-# as a prerequisite. (See https://github.com/boostorg/build/pull/290)
+-#
+-
+-
+-# Validate the version string and extract the major/minor part we care about.
+-#
+-local rule split-version ( version )
+-{
+-    local major-minor = [ MATCH "^([0-9]+)\.([0-9]+)(.*)$" : $(version) : 1 2 3 ] ;
+-    if ! $(major-minor[2]) || $(major-minor[3])
+-    {
+-        ECHO "Warning: \"using python\" expects a two part (major, minor) version number; got" $(version) instead ;
+-
+-        # Add a zero to account for the missing digit if necessary.
+-        major-minor += 0 ;
+-    }
+-
+-    return $(major-minor[1]) $(major-minor[2]) ;
+-}
+-
+-# Define a version suffix for libraries depending on Python.
+-# For example, Boost.Python built for Python 2.7 uses the suffix "27"
+-rule version-suffix ( version )
+-{
+-    local major-minor = [ split-version $(version) ] ;
+-    local suffix = $(major-minor:J="") ;
+-    return $(suffix) ;
+-}
+-
+-
+-# Python build id (for Python libraries only).
+-python-id = [ option.get "python-buildid" ] ;
+-if $(python-id)
+-{
+-    PYTHON_ID = [ regex.replace $(python-id) "[*\\/:.\"\']" _ ] ;
+-}
+-
+-rule python-tag ( name : type ? : property-set )
+-{
+-    local result = $(name) ;
+-    if $(type) in STATIC_LIB SHARED_LIB IMPORT_LIB
+-    {
+-        local version = [ $(property-set).get <python> ] ;
+-        local lib-suffix = [ version-suffix $(version) ] ;
+-        result = $(result)$(lib-suffix) ;
+-    }
+-    if $(type) in STATIC_LIB SHARED_LIB IMPORT_LIB && $(PYTHON_ID)
+-    {
+-        result = $(result)-$(PYTHON_ID) ;
+-    }
+-
+-    # forward to the boost tagging rule
+-    return  [ tag $(result) : $(type) : $(property-set) ] ;
+-}
+diff --git a/libs/python/build/Jamfile b/libs/python/build/Jamfile
+index d03d4dd08..dbc9fb203 100644
+--- a/libs/python/build/Jamfile
++++ b/libs/python/build/Jamfile
+@@ -95,7 +95,7 @@
+         <dependency>config-warning
+         <python-debugging>on:<define>BOOST_DEBUG_PYTHON
+         -<tag>@$(BOOST_JAMROOT_MODULE)%$(BOOST_JAMROOT_MODULE).tag
+-        <tag>@$(__name__).python-tag
++        <tag>@python-tag
+         <conditional>@python.require-py
+ 
+     :   # default build
+@@ -123,7 +123,7 @@
+         <library>boost_python
+         <python-debugging>on:<define>BOOST_DEBUG_PYTHON
+         -<tag>@$(BOOST_JAMROOT_MODULE)%$(BOOST_JAMROOT_MODULE).tag
+-	<tag>@$(__name__).python-tag
++        <tag>@python-tag
+         <conditional>@python.require-py
+ 
+     :   # default build

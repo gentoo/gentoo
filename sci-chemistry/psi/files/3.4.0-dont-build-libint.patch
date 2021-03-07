@@ -1,0 +1,13 @@
+diff --git a/src/lib/Makefile.in b/src/lib/Makefile.in
+index 42e025d..b098a36 100644
+--- a/src/lib/Makefile.in
++++ b/src/lib/Makefile.in
+@@ -2,7 +2,7 @@
+ .PHONY:	default all install depend clean dclean targetclean
+ 
+ subdirs = libipv1 libciomr libchkpt libqt libpsio libiwl libdpd libutil \
+-          liboptions libmoinfo libint libderiv libr12 libbasis libmints
++          liboptions libmoinfo libbasis libmints
+ 
+ all: default
+ 

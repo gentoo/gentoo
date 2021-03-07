@@ -1,0 +1,169 @@
+From 167b71421f113e2210e4deefef5020402492e5be Mon Sep 17 00:00:00 2001
+From: Felix Schwarz <felix.schwarz@oss.schwarz.eu>
+Date: Tue, 5 May 2020 09:58:01 +0200
+Subject: [PATCH] stop using deprecated ElementTree methods "getchildren()" and
+ "getiterator()"
+
+Both methods were removed in Python 3.9 as mentioned in the release notes:
+
+> Methods getchildren() and getiterator() of classes ElementTree and Element in
+> the ElementTree module have been removed. They were deprecated in Python 3.2.
+> Use iter(x) or list(x) instead of x.getchildren() and x.iter() or
+> list(x.iter()) instead of x.getiterator().
+---
+ scripts/import_cldr.py | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/scripts/import_cldr.py b/scripts/import_cldr.py
+index 8993b68e..2ed3af91 100755
+--- a/scripts/import_cldr.py
++++ b/scripts/import_cldr.py
+@@ -598,7 +598,7 @@ def parse_calendar_months(data, calendar):
+         for width in ctxt.findall('monthWidth'):
+             width_type = width.attrib['type']
+             widths = ctxts.setdefault(width_type, {})
+-            for elem in width.getiterator():
++            for elem in width.iter():
+                 if elem.tag == 'month':
+                     _import_type_text(widths, elem, int(elem.attrib['type']))
+                 elif elem.tag == 'alias':
+@@ -616,7 +616,7 @@ def parse_calendar_days(data, calendar):
+         for width in ctxt.findall('dayWidth'):
+             width_type = width.attrib['type']
+             widths = ctxts.setdefault(width_type, {})
+-            for elem in width.getiterator():
++            for elem in width.iter():
+                 if elem.tag == 'day':
+                     _import_type_text(widths, elem, weekdays[elem.attrib['type']])
+                 elif elem.tag == 'alias':
+@@ -634,7 +634,7 @@ def parse_calendar_quarters(data, calendar):
+         for width in ctxt.findall('quarterWidth'):
+             width_type = width.attrib['type']
+             widths = ctxts.setdefault(width_type, {})
+-            for elem in width.getiterator():
++            for elem in width.iter():
+                 if elem.tag == 'quarter':
+                     _import_type_text(widths, elem, int(elem.attrib['type']))
+                 elif elem.tag == 'alias':
+@@ -649,7 +649,7 @@ def parse_calendar_eras(data, calendar):
+     for width in calendar.findall('eras/*'):
+         width_type = NAME_MAP[width.tag]
+         widths = eras.setdefault(width_type, {})
+-        for elem in width.getiterator():
++        for elem in width.iter():
+             if elem.tag == 'era':
+                 _import_type_text(widths, elem, type=int(elem.attrib.get('type')))
+             elif elem.tag == 'alias':
+@@ -676,7 +676,7 @@ def parse_calendar_periods(data, calendar):
+ def parse_calendar_date_formats(data, calendar):
+     date_formats = data.setdefault('date_formats', {})
+     for format in calendar.findall('dateFormats'):
+-        for elem in format.getiterator():
++        for elem in format.iter():
+             if elem.tag == 'dateFormatLength':
+                 type = elem.attrib.get('type')
+                 if _should_skip_elem(elem, type, date_formats):
+@@ -696,7 +696,7 @@ def parse_calendar_date_formats(data, calendar):
+ def parse_calendar_time_formats(data, calendar):
+     time_formats = data.setdefault('time_formats', {})
+     for format in calendar.findall('timeFormats'):
+-        for elem in format.getiterator():
++        for elem in format.iter():
+             if elem.tag == 'timeFormatLength':
+                 type = elem.attrib.get('type')
+                 if _should_skip_elem(elem, type, time_formats):
+@@ -717,7 +717,7 @@ def parse_calendar_datetime_skeletons(data, calendar):
+     datetime_formats = data.setdefault('datetime_formats', {})
+     datetime_skeletons = data.setdefault('datetime_skeletons', {})
+     for format in calendar.findall('dateTimeFormats'):
+-        for elem in format.getiterator():
++        for elem in format.iter():
+             if elem.tag == 'dateTimeFormatLength':
+                 type = elem.attrib.get('type')
+                 if _should_skip_elem(elem, type, datetime_formats):
+@@ -880,7 +880,7 @@ def parse_interval_formats(data, tree):
+             interval_formats[None] = elem.text
+         elif elem.tag == "intervalFormatItem":
+             skel_data = interval_formats.setdefault(elem.attrib["id"], {})
+-            for item_sub in elem.getchildren():
++            for item_sub in elem:
+                 if item_sub.tag == "greatestDifference":
+                     skel_data[item_sub.attrib["id"]] = split_interval_pattern(item_sub.text)
+                 else:
+@@ -903,7 +903,7 @@ def parse_currency_formats(data, tree):
+                     type = '%s:%s' % (type, curr_length_type)
+                 if _should_skip_elem(elem, type, currency_formats):
+                     continue
+-                for child in elem.getiterator():
++                for child in elem.iter():
+                     if child.tag == 'alias':
+                         currency_formats[type] = Alias(
+                             _translate_alias(['currency_formats', elem.attrib['type']],
+From 7bdaa28a55e8d8228d5434effa4b1473ab7b3669 Mon Sep 17 00:00:00 2001
+From: Felix Schwarz <felix.schwarz@oss.schwarz.eu>
+Date: Tue, 5 May 2020 08:05:56 +0000
+Subject: [PATCH] fix tests when using Python 3.9a6
+
+In Python 3.9a6 integer values for future flags were changed to prevent
+collision with compiler flags. We need to retrieve these at runtime so
+the test suite works with Python <= 3.8 as well as Python 3.9.
+---
+ tests/test_util.py | 17 ++++++++++++-----
+ 1 file changed, 12 insertions(+), 5 deletions(-)
+
+diff --git a/tests/test_util.py b/tests/test_util.py
+index a6a4450c..b9343aaa 100644
+--- a/tests/test_util.py
++++ b/tests/test_util.py
+@@ -11,6 +11,7 @@
+ # individuals. For the exact contribution history, see the revision
+ # history and logs, available at http://babel.edgewall.org/log/.
+ 
++import __future__
+ import unittest
+ 
+ import pytest
+@@ -20,6 +21,12 @@
+ from babel.util import parse_future_flags
+ 
+ 
++class _FF:
++    division         = __future__.division.compiler_flag
++    print_function   = __future__.print_function.compiler_flag
++    with_statement   = __future__.with_statement.compiler_flag
++    unicode_literals = __future__.unicode_literals.compiler_flag
++
+ def test_distinct():
+     assert list(util.distinct([1, 2, 1, 3, 4, 4])) == [1, 2, 3, 4]
+     assert list(util.distinct('foobar')) == ['f', 'o', 'b', 'a', 'r']
+@@ -70,25 +77,25 @@ def test_parse_encoding_non_ascii():
+ from __future__ import print_function,
+     division, with_statement,
+     unicode_literals
+-''', 0x10000 | 0x2000 | 0x8000 | 0x20000),
++''', _FF.print_function | _FF.division | _FF.with_statement | _FF.unicode_literals),
+     ('''
+ from __future__ import print_function, division
+ print('hello')
+-''', 0x10000 | 0x2000),
++''', _FF.print_function | _FF.division),
+     ('''
+ from __future__ import print_function, division, unknown,,,,,
+ print 'hello'
+-''', 0x10000 | 0x2000),
++''', _FF.print_function | _FF.division),
+     ('''
+ from __future__ import (
+     print_function,
+     division)
+-''', 0x10000 | 0x2000),
++''', _FF.print_function | _FF.division),
+     ('''
+ from __future__ import \\
+     print_function, \\
+     division
+-''', 0x10000 | 0x2000),
++''', _FF.print_function | _FF.division),
+ ])
+ def test_parse_future(source, result):
+     fp = BytesIO(source.encode('latin-1'))

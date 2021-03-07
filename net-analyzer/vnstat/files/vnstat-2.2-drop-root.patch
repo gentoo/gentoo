@@ -1,0 +1,15 @@
+--- a/cfg/vnstat.conf
++++ b/cfg/vnstat.conf
+@@ -69,10 +69,10 @@
+ ##
+ 
+ # switch to given user when started as root (leave empty to disable)
+-DaemonUser ""
++DaemonUser "vnstat"
+ 
+ # switch to given group when started as root (leave empty to disable)
+-DaemonGroup ""
++DaemonGroup "vnstat"
+ 
+ # try to detect interface maximum bandwidth, 0 = disable feature
+ # MaxBandwidth will be used as fallback value when enabled

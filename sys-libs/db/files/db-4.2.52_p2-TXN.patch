@@ -1,0 +1,68 @@
+This patch is intended to be applied to Berkeley DB 4.2.52 and,
+if applied, will automatically be used by slapd(8) back-bdb/hdb.
+Without this patch the BDB DB_LOG_AUTOREMOVE option will not work,
+nor will db_archive allow any transaction log files to be removed
+while slapd is running.
+
+The patch can be applied to the BDB source using patch(1) as follows
+	cd db-4.2.52
+	patch -p0 < openldap-src/build/BerkeleyDB42.patch
+
+(modify directory paths as necessary), then recompile and reinstall
+the BerkeleyDB 4.2 library, and then build and install OpenLDAP
+Software.
+
+The patch should not be applied to Berkeley DB 4.3.
+
+
+Index: dbinc/db.in
+===================================================================
+RCS file: /var/CVSROOT/bdb42/dbinc/db.in,v
+retrieving revision 1.1.1.1
+retrieving revision 1.2
+diff -u -r1.1.1.1 -r1.2
+--- a/dbinc/db.in	25 Nov 2003 21:58:02 -0000	1.1.1.1
++++ b/dbinc/db.in	17 Jul 2004 16:07:23 -0000	1.2
+@@ -839,6 +839,7 @@
+ #define	TXN_NOWAIT	0x040		/* Do not wait on locks. */
+ #define	TXN_RESTORED	0x080		/* Transaction has been restored. */
+ #define	TXN_SYNC	0x100		/* Sync on prepare and commit. */
++#define	TXN_NOLOG	0x200		/* Do not log this transaction. */
+ 	u_int32_t	flags;
+ };
+ 
+Index: txn/txn.c
+===================================================================
+RCS file: /var/CVSROOT/bdb42/txn/txn.c,v
+retrieving revision 1.1.1.2
+retrieving revision 1.2
+diff -u -r1.1.1.2 -r1.2
+--- a/txn/txn.c	17 Dec 2003 21:43:53 -0000	1.1.1.2
++++ b/txn/txn.c	17 Jul 2004 16:07:27 -0000	1.2
+@@ -127,7 +127,7 @@
+ 	if ((ret = __db_fchk(dbenv,
+ 	    "txn_begin", flags,
+ 	    DB_DIRTY_READ | DB_TXN_NOWAIT |
+-	    DB_TXN_NOSYNC | DB_TXN_SYNC)) != 0)
++	    DB_TXN_NOSYNC | DB_TXN_SYNC | DB_TXN_NOT_DURABLE)) != 0)
+ 		return (ret);
+ 	if ((ret = __db_fcchk(dbenv,
+ 	    "txn_begin", flags, DB_TXN_NOSYNC, DB_TXN_SYNC)) != 0)
+@@ -193,6 +193,8 @@
+ 		F_SET(txn, TXN_SYNC);
+ 	if (LF_ISSET(DB_TXN_NOWAIT))
+ 		F_SET(txn, TXN_NOWAIT);
++	if (LF_ISSET(DB_TXN_NOT_DURABLE))
++		F_SET(txn, TXN_NOLOG);
+ 
+ 	if ((ret = __txn_begin_int(txn, 0)) != 0)
+ 		goto err;
+@@ -328,7 +330,7 @@
+ 	 * We should set this value when we write the first log record, not
+ 	 * here.
+ 	 */
+-	if (DBENV_LOGGING(dbenv))
++	if (DBENV_LOGGING(dbenv) && !F_ISSET(txn, TXN_NOLOG))
+ 		__log_txn_lsn(dbenv, &begin_lsn, NULL, NULL);
+ 	else
+ 		ZERO_LSN(begin_lsn);

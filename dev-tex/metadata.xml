@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The dev-tex category contains libraries and tools useful when working
+		with TeX and TeX-based environments such as LaTeX.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie dev-tex enthält Bibliotheken und Werkzeuge für TeX und
+		TeX-basierte Umgebungen wie beispielsweise LaTeX.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría dev-tex contiene librerias y herramientas útiles para
+		trabajar con TeX y ambientes basados en TeX como LaTeX.
+	</longdescription>
+	<longdescription lang="ja">
+		dev-texカテゴリーにはTeXやLaTeXの様なTeXを基礎にした環境下での作業に
+		便利なライブラリーとツールが含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De dev-tex categorie bevat bibliotheken en hulpmiddelen voor het werken met
+		TeX en op TeX gebaseerde omgevingen zoals LaTeX.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm dev-tex chứa các thư viện và tiện ích liên quan
+		đến ngôn ngữ lập trình TeX và các môi trường dựa trên
+		TeX như LaTeX.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria dev-tex contiene librerie e utilità utili in ambiente TeX e LaTeX.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria dev-tex contém bibliotecas e ferramentas úteis para
+		trabalhar com TeX e ambientes baseados em TeX como LaTeX.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria dev-tex zawiera biblioteki i narzędzia przydatne w pracy z
+		TeX-em i środowiskami na nim opartymi, takimi jak np. LaTeX.
+	</longdescription>
+</catmetadata>
+

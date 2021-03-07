@@ -1,0 +1,258 @@
+--- a/src/fchaos.c
++++ b/src/fchaos.c
+@@ -985,7 +985,7 @@
+   SLremove(mylist, tbf->mysles[i]);
+ }
+ 
+-inline int CHmatchscore(unsigned char a, unsigned char b) {
++static inline int CHmatchscore(unsigned char a, unsigned char b) {
+   return substmatrix[a][b];
+   /*
+   if (translated)
+--- a/src/multial.c
++++ b/src/multial.c
+@@ -59,16 +59,16 @@
+ int normf;
+ int normprev;
+ 
+-inline int ismatch(char a, char b) {
++static inline int ismatch(char a, char b) {
+   return (a == b);
+ }
+ 
+-inline int isGap(align* ali, int seqn, int loc) {
++static inline int isGap(align* ali, int seqn, int loc) {
+   int i = !((ali->algn[loc] >> seqn) & 1);
+   return i;
+ }
+ 
+-inline int scoreLocal(int which, align* ali, int loc) {
++static inline int scoreLocal(int which, align* ali, int loc) {
+   int i, lets = 0;
+   for (i=0; i < 4; i++)
+     lets += ali->cnts[i][loc];
+@@ -83,7 +83,7 @@
+     return lets+ali->cnts[CNTS_GS][loc] * gapcont;
+ }
+ 
+-inline hll* reverseHLL(hll* tbr) {
++static inline hll* reverseHLL(hll* tbr) {
+   hll *nn, *prev=0;
+   while (tbr) {
+     nn = tbr->next;
+@@ -171,7 +171,7 @@
+   return res;
+ }
+ 
+-inline void reverse (long long int* a, int length) {
++static inline void reverse (long long int* a, int length) {
+   long long int lft;
+   int i;
+   for (i=0; i < length/2; i++) {
+@@ -409,7 +409,7 @@
+   */
+ }
+ 
+-inline int scoreGap(int numgs, int numgc, int numge, int numseq) {
++static inline int scoreGap(int numgs, int numgc, int numge, int numseq) {
+   return (MIN2(numgc, numseq-numgc) * gapcont) +
+     (MIN2(numgs, numseq-numgs) * gapstart) +
+     (MIN2(numge, numseq-numge) * gapend);
+@@ -493,7 +493,7 @@
+   fclose (file);
+ }
+ 
+-inline int chmatchscore (unsigned char a, unsigned char b, int substmatrix[256][256]) {
++static inline int chmatchscore (unsigned char a, unsigned char b, int substmatrix[256][256]) {
+   return substmatrix[a][b];
+ }
+ 
+@@ -539,14 +539,14 @@
+   // printcache();
+ }
+ 
+-inline int v (int y){
++static inline int v (int y){
+   if (y >= 0 && y <= MAX_SEQ) return y;
+   fprintf(stderr, "Got %d in v\n", y);
+   assert (0);
+   return 0;
+ }
+ 
+-inline int matchscore (align*a, int ai, align *b, int bi){
++static inline int matchscore (align*a, int ai, align *b, int bi){
+   
+   return
+     matchcache[v(a->cnts[0][ai] + b->cnts[0][bi]) | 
+@@ -559,30 +559,30 @@
+ 	    (v(a->numseq + b->numseq - (a->cnts[CNTS_CB][ai] + b->cnts[CNTS_CB][bi])) << 18)];
+ }
+ 
+-inline int scoreOpp (align *other, int ow, int oppnum){
++static inline int scoreOpp (align *other, int ow, int oppnum){
+   return matchcache[v(other->cnts[0][ow]) | 
+ 		   (v(other->cnts[1][ow]) << 6) |
+ 		   (v(other->cnts[2][ow]) << 12) |
+ 		   (v(other->cnts[3][ow]) << 18)];
+ }
+ 
+-inline int endGap0 (align* a, int ai, align* b, int bi){
++static inline int endGap0 (align* a, int ai, align* b, int bi){
+   return gapcache[(v(a->cnts[CNTS_GE][ai]+b->cnts[CNTS_GE][bi])<<12) | 
+ 		  (v(a->numseq + b->numseq-(b->cnts[CNTS_CB][bi]+a->cnts[CNTS_CB][ai])) << 18)];
+ }
+ 
+-inline int endGap1 (align* a, int ai, align* b, int bi){
++static inline int endGap1 (align* a, int ai, align* b, int bi){
+ 
+   return gapcache[(v((b->numseq - b->cnts[CNTS_GS][bi] - b->cnts[CNTS_GC][bi]) + a->cnts[CNTS_GE][ai]) << 12) | 
+ 		  (v(a->numseq + b->numseq - (b->cnts[CNTS_CB][bi]+a->cnts[CNTS_CB][ai])) << 18)];
+ }
+ 
+-inline int endGap2 (align* a, int ai, align* b, int bi){
++static inline int endGap2 (align* a, int ai, align* b, int bi){
+   return gapcache[(v((a->numseq - a->cnts[CNTS_GS][ai] - a->cnts[CNTS_GC][ai]) + b->cnts[CNTS_GE][bi])<<12) | 
+ 		  (v(a->numseq + b->numseq - (b->cnts[CNTS_CB][bi]+a->cnts[CNTS_CB][ai])) << 18)];
+ }
+ 
+-inline int contGap(align* ali, int myw, align* other, int ow, int *sopp) {
++static inline int contGap(align* ali, int myw, align* other, int ow, int *sopp) {
+   return gapcache[(v(other->cnts[CNTS_GS][ow])) |
+ 		  (v(ali->numseq + other->cnts[CNTS_GC][ow]) << 6) |
+ 		  (v(other->cnts[CNTS_GE][ow]) << 12) |
+@@ -590,7 +590,7 @@
+     sopp[ow];
+ }
+ 
+-inline int openGap(align* ali, int w, align* other, int ow, int *sopp, char *desc) {
++static inline int openGap(align* ali, int w, align* other, int ow, int *sopp, char *desc) {
+   int alopen, pen, sav, i;
+ 
+   alopen = ali->cnts[CNTS_GC][w] + ali->cnts[CNTS_GE][w];
+--- a/src/order.c
++++ b/src/order.c
+@@ -454,11 +454,11 @@
+ }
+ 
+ 
+-inline int ismatch(char a, char b) {
++static inline int ismatch(char a, char b) {
+   return a == b;
+ }
+ 
+-inline int matchscore (unsigned char a, unsigned char b) {
++static inline int matchscore (unsigned char a, unsigned char b) {
+   return substmatrix[a][b];
+   /*
+     
+--- a/src/utils/cstat.c
++++ b/src/utils/cstat.c
+@@ -121,7 +121,7 @@
+   return res;
+ }
+ 
+-inline int getScore (align* a, int i){
++static inline int getScore (align* a, int i){
+   return
+     ((a->cnts[0][i] * (a->cnts[0][i] - 1)) +
+      (a->cnts[1][i] * (a->cnts[1][i] - 1)) +
+--- a/src/utils/getbounds.c
++++ b/src/utils/getbounds.c
+@@ -6,8 +6,8 @@
+ 
+ #define EXPAND 2
+ 
+-inline int max (int a, int b){ if (a > b) return a; return b; }
+-inline int min (int a, int b){ if (a < b) return a; return b; }
++static inline int max (int a, int b){ if (a > b) return a; return b; }
++static inline int min (int a, int b){ if (a < b) return a; return b; }
+ 
+ int getLength (char *filename){
+   FILE *file;
+--- a/src/utils/scorealign.c
++++ b/src/utils/scorealign.c
+@@ -18,17 +18,17 @@
+ int matchscore[256][256];
+ int gapopen = -1500, gapcont = -50;
+ 
+-inline int min (int a, int b){
++static inline int min (int a, int b){
+   if (a < b) return a;
+   return b;
+ }
+ 
+-inline int max (int a, int b){
++static inline int max (int a, int b){
+   if (a > b) return a;
+   return b;
+ }
+ 
+-inline int scoreMatch (char c, char d){
++static inline int scoreMatch (char c, char d){
+   if (c == '-' && d == '-') return 0;
+   if (c == '-' || d == '-') return gapcont;
+   return matchscore[(unsigned char) c][(unsigned char) d];
+@@ -235,7 +235,7 @@
+   }
+ }
+ 
+-inline int issymbol (char ch){
++static inline int issymbol (char ch){
+   return ch == 'A' || ch == 'C' || ch == 'G' || ch == 'T' || ch == 'N' || ch == '.' || ch == '-';
+ }
+ 
+--- a/src/utils/scorecontigs.c
++++ b/src/utils/scorecontigs.c
+@@ -133,7 +133,7 @@
+   return res;
+ }
+ 
+-inline int getstate (char c, char d){
++static inline int getstate (char c, char d){
+   if (c == '-' || d == '-') return 2;
+   if (c == 'N' || d == 'N') return 3;
+   return c == d;
+@@ -235,7 +235,7 @@
+   return r;
+ }
+ 
+-inline int getdata (rangelist **ranges, int *offs, int j, int i){
++static inline int getdata (rangelist **ranges, int *offs, int j, int i){
+   i -= offs[j];
+   if (i >= 0 && i < ranges[j]->seqlen)
+     return ranges[j]->score[i];
+@@ -243,14 +243,14 @@
+ }
+ 
+ 
+-inline int match (rangelist **ranges, int numContigs, int i, int j, int *offs){
++static inline int match (rangelist **ranges, int numContigs, int i, int j, int *offs){
+   int k;
+   for (k = 0; k < numContigs; k++)
+     if ((getdata (ranges, offs, k, i) != 0) != (getdata (ranges, offs, k, j) != 0)) return 0;
+   return 1;
+ }
+ 
+-inline int allzeroes (rangelist **ranges, int numContigs, int pos, int *offs){
++static inline int allzeroes (rangelist **ranges, int numContigs, int pos, int *offs){
+   int i;
+ 
+   for (i = 0; i < numContigs; i++)
+@@ -258,7 +258,7 @@
+   return 1;
+ }
+ 
+-inline void print (int start, int end, int *score, int numContigs){
++static inline void print (int start, int end, int *score, int numContigs){
+   int j;
+ 
+   printf ("(%7d %7d)", start, end);
+@@ -303,7 +303,7 @@
+   free (pattern);
+ }
+ 
+-inline double scoregap (int gaplen){
++static inline double scoregap (int gaplen){
+   if (gaplen == 0) return 0;
+   //return (gaplen - 1) * -1 - 50;
+   return (log (gaplen) / log (10) + 1) * scoreGapOpen;

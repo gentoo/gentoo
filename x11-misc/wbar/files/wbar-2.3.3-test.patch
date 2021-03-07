@@ -1,0 +1,7 @@
+--- a/po/POTFILES.in
++++ b/po/POTFILES.in
+@@ -1,3 +1,4 @@
++etc/wbar.desktop.in
+ share/wbar.desktop.in
+ share/wbar.glade
+ src/config/Functions.cc

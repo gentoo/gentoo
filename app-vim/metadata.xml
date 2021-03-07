@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The app-vim category contains plugins, syntax file and spelling
+		packages for the Vim text editor.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie app-vim enthält Plugins und
+		Syntax-Pakete für den Vim Texteditor.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría app-vim contiene extensiones y paquetes
+		de syntaxis para el editor de texto Vim.
+	</longdescription>
+	<longdescription lang="nl">
+		De app-vim categorie bevat plugins en syntax-bestanden
+		voor de vim text editor.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm app-vim chứa các plugin và các gói syntax cho
+		trình soạn thảo văn bản Vim.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria app-vim contiene estensioni e pacchetti di sintassi
+		per l'editor di testo Vim.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria app-vim contém plugins e pacotes de sintaxe e grafia
+		para o editor de texto Vim.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria app-vim zawiera rozszerzenia, schematy podświetlania składni
+		oraz dodatki służące do sprawdzania pisowni dla edytora tekstu Vim.
+	</longdescription>
+</catmetadata>
+

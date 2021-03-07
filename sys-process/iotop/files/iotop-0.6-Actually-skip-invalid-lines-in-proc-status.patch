@@ -1,0 +1,26 @@
+From 7c51ce0e29bd135c216f18e18f0c4ab769af0d6f Mon Sep 17 00:00:00 2001
+From: Paul Wise <pabs3@bonedaddy.net>
+Date: Fri, 25 May 2018 15:20:44 +0800
+Subject: [PATCH 2/2] Actually skip invalid lines in /proc/*/status
+
+Fixes: commit 0392b205b5c3973a326721c2e9f97f0fa2eefa82
+---
+ iotop/data.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/iotop/data.py b/iotop/data.py
+index e0387f0..3874974 100644
+--- a/iotop/data.py
++++ b/iotop/data.py
+@@ -214,7 +214,7 @@ def parse_proc_pid_status(pid):
+                 # Ignore lines that are not formatted correctly as
+                 # some downstream kernels may have weird lines and
+                 # the needed fields are probably formatted correctly.
+-                pass
++                continue
+             result_dict[key] = value.strip()
+     except IOError:
+         pass  # No such process
+-- 
+2.20.1.97.g81188d93c3-goog
+

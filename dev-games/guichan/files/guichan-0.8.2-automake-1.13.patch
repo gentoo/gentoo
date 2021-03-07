@@ -1,0 +1,11 @@
+--- guichan-0.8.2/configure.in
++++ guichan-0.8.2/configure.in
+@@ -38,7 +38,7 @@
+ AC_SUBST(LT_AGE)
+ 
+ AM_INIT_AUTOMAKE(guichan, $GUICHAN_VERSION)
+-AM_CONFIG_HEADER([include/config.hpp])
++AC_CONFIG_HEADERS([include/config.hpp])
+ 
+ AC_CONFIG_SRCDIR([src/gui.cpp])
+ 

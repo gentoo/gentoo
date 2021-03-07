@@ -1,0 +1,8 @@
+diff -r -U1 gsl-shell.orig/Makefile gsl-shell/Makefile
+--- gsl-shell.orig/Makefile	2012-09-12 01:13:31.000000000 +0700
++++ gsl-shell/Makefile	2012-09-26 16:13:56.000000000 +0700
+@@ -109,4 +109,2 @@
+ 	cp fox-gui/$(GSL_SHELL_GUI) $(INSTALL_BIN_DIR)
+-	strip $(INSTALL_BIN_DIR)/$(GSL_SHELL)
+-	strip $(INSTALL_BIN_DIR)/$(GSL_SHELL_GUI)
+ 	mkdir -p $(INSTALL_LIB_DIR)

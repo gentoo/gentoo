@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		IGMPproxy is a simple multicast router using only the IGMP protocol.
+		It is intended for forwarding of multicast traffic between networks,
+		like used by IPTV.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/pali/igmpproxy/issues</bugs-to>
+		<remote-id type="github">pali/igmpproxy</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,6 @@
+[Unit]
+Description=Store and restore iptables firewall rules
+
+[Install]
+Also=iptables-store.service
+Also=iptables-restore.service

@@ -1,0 +1,112 @@
+http://lists.gnu.org/archive/html/bug-bash/2012-11/msg00034.html
+
+From 530d4988afd68ea9d2cf1b0267d4dc821d0d204f Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Mon, 19 Nov 2012 17:58:51 -0500
+Subject: [PATCH] bash: speed up `read -N`
+
+Rather than using 1 byte reads, use the existing cache read logic.
+This could be sped up more, but this change is not as invasive and
+should (hopefully) be fairly safe.
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ builtins/read.def | 21 ++++++++++++++++-----
+ externs.h         |  1 +
+ lib/sh/zread.c    | 15 +++++++++++++--
+ 3 files changed, 30 insertions(+), 7 deletions(-)
+
+diff --git a/builtins/read.def b/builtins/read.def
+index e32dec7..81a1b3f 100644
+--- a/builtins/read.def
++++ b/builtins/read.def
+@@ -457,7 +457,10 @@ read_builtin (list)
+   interrupt_immediately++;
+   terminate_immediately++;
+ 
+-  unbuffered_read = (nchars > 0) || (delim != '\n') || input_is_pipe;
++  if ((nchars > 0) && !input_is_tty && ignore_delim)
++    unbuffered_read = 2;
++  else if ((nchars > 0) || (delim != '\n') || input_is_pipe)
++    unbuffered_read = 1;
+ 
+   if (prompt && edit == 0)
+     {
+@@ -505,10 +508,18 @@ read_builtin (list)
+ 	  print_ps2 = 0;
+ 	}
+ 
+-      if (unbuffered_read)
+-	retval = zread (fd, &c, 1);
+-      else
+-	retval = zreadc (fd, &c);
++      switch (unbuffered_read)
++	{
++	case 2:
++	  retval = zreadcn (fd, &c, nchars - nr);
++	  break;
++	case 1:
++	  retval = zread (fd, &c, 1);
++	  break;
++	default:
++	  retval = zreadc (fd, &c);
++	  break;
++	}
+ 
+       if (retval <= 0)
+ 	{
+diff --git a/externs.h b/externs.h
+index 09244fa..a5ad645 100644
+--- a/externs.h
++++ b/externs.h
+@@ -479,6 +479,7 @@ extern ssize_t zread __P((int, char *, size_t));
+ extern ssize_t zreadretry __P((int, char *, size_t));
+ extern ssize_t zreadintr __P((int, char *, size_t));
+ extern ssize_t zreadc __P((int, char *));
++extern ssize_t zreadcn __P((int, char *, int));
+ extern ssize_t zreadcintr __P((int, char *));
+ extern void zreset __P((void));
+ extern void zsyncfd __P((int));
+diff --git a/lib/sh/zread.c b/lib/sh/zread.c
+index 5db21a9..af7d02b 100644
+--- a/lib/sh/zread.c
++++ b/lib/sh/zread.c
+@@ -101,15 +101,18 @@ static char lbuf[128];
+ static size_t lind, lused;
+ 
+ ssize_t
+-zreadc (fd, cp)
++zreadcn (fd, cp, len)
+      int fd;
+      char *cp;
++     int len;
+ {
+   ssize_t nr;
+ 
+   if (lind == lused || lused == 0)
+     {
+-      nr = zread (fd, lbuf, sizeof (lbuf));
++      if (len > sizeof (lbuf))
++	len = sizeof (lbuf);
++      nr = zread (fd, lbuf, len);
+       lind = 0;
+       if (nr <= 0)
+ 	{
+@@ -123,6 +126,14 @@ zreadc (fd, cp)
+   return 1;
+ }
+ 
++ssize_t
++zreadc (fd, cp)
++     int fd;
++     char *cp;
++{
++  return zreadcn (fd, cp, sizeof (lbuf));
++}
++
+ /* Don't mix calls to zreadc and zreadcintr in the same function, since they
+    use the same local buffer. */
+ ssize_t
+-- 
+1.7.12.4
+

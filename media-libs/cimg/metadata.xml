@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<upstream>
+		<remote-id type="github">dtschump/CImg</remote-id>
+		<remote-id type="sourceforge">cimg</remote-id>
+		<remote-id type="cpe">cpe:/a:cimg:cimg</remote-id>
+	</upstream>
+</pkgmetadata>

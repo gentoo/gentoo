@@ -1,0 +1,49 @@
+diff -Nur XOM/build.xml XOM_patched/build.xml
+--- XOM/build.xml	2010-06-21 06:03:14.000000000 +0300
++++ XOM_patched/build.xml	2011-03-13 07:05:01.000000000 +0200
+@@ -21,7 +21,6 @@
+ subject line. The XOM home page is http://www.xom.nu/
+ -->
+ <project name="XOM" default="help" basedir=".">
+-
+     <description>
+       Build XOM
+     </description>
+@@ -71,7 +70,7 @@
+     <property name="jaxen.dir"       value="${build.dir}/jaxen-classes"/>
+ 
+     <property name="xml-apis.jar"   value="${lib.dir}/xml-apis.jar"/>
+-    <property name="parser.jar"     value="${lib.dir}/dtd-xercesImpl.jar"/>
++    <property name="parser.jar"     value="${lib.dir}/xercesImpl.jar"/>
+     <property name="xslt.jar"       value="${lib.dir}/xalan.jar"/>
+     <property name="serializer.jar" value="${lib.dir}/serializer.jar"/>
+     <property name="tagsoup.jar"    value="${lib2.dir}/tagsoup-1.2.jar"/>
+@@ -226,7 +225,7 @@
+            encoding="UTF-8"
+     	   fork="true"
+            includeAntRuntime="false"
+-           excludes="nu/xom/pantry/* nu/xom/tools/* nu/xom/samples/*Servlet.java">
++excludes="nu/xom/pantry/* nu/xom/tools/* nu/xom/samples/">
+        <classpath refid="compile.class.path"/>
+     </javac>
+     <copy file="${build.src}/nu/xom/characters.dat" tofile="${build.dest}/nu/xom/characters.dat"/>
+@@ -323,7 +322,7 @@
+ 
+   <target name="jar" depends="compile" description="Create xom.jar">
+   	<taskdef name="jarjar" classname="com.tonicsystems.jarjar.JarJarTask"
+-  	        classpath="${lib.dir}/jarjar-1.0.jar"/>
++  	        classpath="${lib.dir}/jarjar.jar"/>
+     <jarjar jarfile="${build.dir}/${name}-${version}.jar"
+          basedir="${build.dest}"
+          index="no"
+@@ -862,8 +861,8 @@
+   </target>
+ 
+ 
+-  <target name="compile-jaxen" description="Compile Jaxen" depends="get-jaxen">
+-    <javac srcdir="${build.dir}/jaxen-${jaxenversion}/src/java/main"
++  <target name="compile-jaxen" description="Compile Jaxen">
++    <javac srcdir="lib/jaxen-${jaxenversion}/src/java/main"
+            destdir="${build.dir}/jaxen-classes"
+            debug="${debug}"
+            optimize="${optimize}"

@@ -1,0 +1,13 @@
+--- a/scanpci.c
++++ b/scanpci.c
+@@ -11,8 +11,8 @@
+ 
+ #define	die	printf
+ 
+-struct pci_filter	filter;
+-struct pci_access	*pacc;
++extern struct pci_filter	filter;
++extern struct pci_access	*pacc;
+ static int		show_hex = 0;
+ 
+ static struct device	*scan_device( struct pci_dev *p )

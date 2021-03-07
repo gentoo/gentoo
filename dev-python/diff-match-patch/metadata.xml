@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<longdescription lang="en">The Diff Match and Patch libraries offer robust algorithms to perform
+		the operations required for synchronizing plain text.
+		Diff: Compare two blocks of plain text and efficiently return a list of
+		differences.
+		Match: Given a search string, find its best fuzzy match in a block of
+		plain text. Weighted for both accuracy and location.
+		Patch: Apply a list of patches onto plain text. Use best-effort to apply
+		patch even when the underlying text doesn't match.
+		Diff Match and Patch libraries are currently available in Java,
+		JavaScript, C++, C#, Objective C, Lua and Python, although this package
+		contains only Python implementation.  Regardless of language, each
+		library features the same API and the same functionality.  All versions
+		also have comprehensive test harnesses.</longdescription>
+	<upstream>
+		<remote-id type="pypi">diff-match-patch</remote-id>
+	</upstream>
+</pkgmetadata>

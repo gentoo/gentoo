@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The dev-games category contains libraries and utilities relevant to
+		games programming.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie dev-games enthält Bibliotheken und Werkzeuge für die 
+		Spieleprogrammierung.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría dev-games contiene librerias y utilidades referentes 
+		a la programación de juegos.
+	</longdescription>
+	<longdescription lang="ja">
+		dev-gamesカテゴリーにはゲーム・プログラミングに関連したライブラリーと
+		ユーティリティが含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De dev-games categorie bevat bibliotheken en hulpmiddelen voor het
+		ontwikkelen van spellen.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm dev-games chứa các thư viện và tiện ích liên quan
+		đến lập trình trò chơi.
+	</longdescription>
+	<longdescription lang="sk">
+		Kategória dev-games obsahuje knižnice a utility pre programovanie hier.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria dev-games contiene librerie ed utilità per lo sviluppo di giochi.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria dev-games contém bibliotecas e utilitários
+		referentes a programação de jogos.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria dev-games zawiera biblioteki i narzędzia związane z
+		programowaniem gier.
+	</longdescription>
+</catmetadata>
+

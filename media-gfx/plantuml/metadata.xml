@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
+	<longdescription lang="en">
+	PlantUMLis a component that allows to quickly write: sequence diagram, use
+	case diagram, class diagram, activity diagram, component diagram, state
+	diagram, object diagram and wireframe graphical interface.
+
+	Diagrams are defined in a text file using a simple and intuitive language.
+	This can be used within many other tools. Images can be generated in PNG
+	or SVG format. It is also possible to generate ASCII art diagrams (only for
+	sequence diagrams).
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">plantuml</remote-id>
+	</upstream>
+</pkgmetadata>

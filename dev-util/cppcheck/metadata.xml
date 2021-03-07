@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tamiko@gentoo.org</email>
+		<name>Matthias Maier</name>
+	</maintainer>
+	<use>
+		<flag name="htmlreport">install cppcheck-htmlreport</flag>
+		<flag name="z3">
+			Enable support for <pkg>sci-mathematics/z3</pkg> backend
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">cppcheck</remote-id>
+	</upstream>
+</pkgmetadata>

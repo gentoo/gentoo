@@ -1,0 +1,43 @@
+Author: Peter Volkov <pva@gentoo.org>
+Fixes: https://bugs.gentoo.org/show_bug.cgi?id=335592
+
+i686-pc-linux-gnu-gcc -DIPCAD_VERSION=\"3.7.2\" -DCONFIG_FILE=\"/etc/ipcad.conf\" -DHAVE_CONFIG_H -D_REENTRANT -D_THREAD_SAFE -DPSRC_pcap -DIFST_linux -O2 -pipe -O2 -pipe -I/usr/local/include -DHAVE_CONFIG_H -W -Wall -o dump.o -c dump.c
+In file included from ipcad.h:33:0,
+                 from disp.c:29:
+		 psrc.h:93:23: error: field ‘peer’ has incomplete type
+
+--- a/configure.in
++++ b/configure.in
+@@ -155,17 +155,29 @@
+ #endif
+ ])
+ 
+-AC_CHECK_HEADERS(asm/types.h)
+-AC_CHECK_HEADERS(linux/in.h)
++AC_CHECK_HEADERS(asm/types.h sys/socket.h)
++AC_CHECK_HEADERS(linux/in.h linux/in6.h,,,
++[#ifdef HAVE_SYS_SOCKET_H
++#include <sys/socket.h>
++#endif])
+ AC_CHECK_HEADERS(linux/socket.h)
+ AC_CHECK_HEADERS(linux/netlink.h,,,
+ [#ifdef HAVE_LINUX_SOCKET_H
+ #include <linux/socket.h>
++#endif
++#ifdef HAVE_SYS_SOCKET_H
++#include <sys/socket.h>
+ #endif])
+ AC_CHECK_HEADERS(linux/netfilter.h,,,
+ [#ifdef HAVE_LINUX_SOCKET_H
+ #include <linux/socket.h>
+ #endif
++#ifdef HAVE_SYS_SOCKET_H
++#include <sys/socket.h>
++#endif
++#ifdef HAVE_LINUX_IN6_H
++#include <linux/in6.h>
++#endif
+ #ifdef HAVE_LINUX_IN_H
+ #include <linux/in.h>
+ #endif])
+

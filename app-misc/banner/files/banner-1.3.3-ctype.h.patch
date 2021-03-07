@@ -1,0 +1,11 @@
+--- a/banner.c
++++ b/banner.c
+@@ -126,6 +126,8 @@
+    #include <string.h>
+ #endif
+ 
++#include <ctype.h> /* isspace() toupper() */
++
+ #include "letters.h"
+ 
+ 

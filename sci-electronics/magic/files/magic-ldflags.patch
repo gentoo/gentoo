@@ -1,0 +1,40 @@
+diff -r -u magic-7.5.202.orig/scripts/configure.in magic-7.5.202/scripts/configure.in
+--- magic-7.5.202.orig/scripts/configure.in	2010-03-08 14:33:07.000000000 +0100
++++ magic-7.5.202/scripts/configure.in	2010-07-02 22:15:50.814199319 +0200
+@@ -1350,7 +1350,6 @@
+       if test "x${loader_run_path}" != "x" ; then
+         LD_RUN_PATH="${LD_RUN_PATH} -Wl,-rpath,${loader_run_path}"
+       fi
+-      LDFLAGS=""
+       EXTRA_LIB_SPECS="-ldl"
+       ;;
+ 
+diff -r -u magic-7.5.202.orig/scripts/defs.mak.in magic-7.5.202/scripts/defs.mak.in
+--- magic-7.5.202.orig/scripts/defs.mak.in	2010-03-08 14:33:07.000000000 +0100
++++ magic-7.5.202/scripts/defs.mak.in	2010-07-02 22:15:50.814199319 +0200
+@@ -53,7 +53,7 @@
+ M4		       = @M4@
+ RANLIB                 = @RANLIB@
+ SHDLIB_EXT             = @SHDLIB_EXT@
+-LDDL_FLAGS             = @LDDL_FLAGS@
++LDDL_FLAGS             = ${LDFLAGS} @LDDL_FLAGS@
+ LD_RUN_PATH	       = @LD_RUN_PATH@
+ LIB_SPECS	       = @LIB_SPECS@
+ WISH_EXE	       = @WISH_EXE@
+diff -r -u magic-7.5.202.orig/tcltk/Makefile magic-7.5.202/tcltk/Makefile
+--- magic-7.5.202.orig/tcltk/Makefile	2009-05-29 15:54:55.000000000 +0200
++++ magic-7.5.202/tcltk/Makefile	2010-07-02 22:16:30.916202298 +0200
+@@ -41,11 +41,11 @@
+ 	(cd $(DESTDIR)${TCLDIR}; chmod 0755 tkcon.tcl tkshell.tcl)
+ 
+ magicexec: magicexec.c
+-	${CC} ${CFLAGS} -pg ${CPPFLAGS} ${DFLAGS} magicexec.c -o magicexec \
++	${CC} ${CFLAGS} -pg ${CPPFLAGS} ${DFLAGS} ${LDFLAGS} magicexec.c -o magicexec \
+ 		${LD_RUN_PATH} ${LIBS} ${LIB_SPECS}
+ 
+ magicdnull: magicdnull.c
+-	${CC} ${CFLAGS} ${CPPFLAGS} ${DFLAGS} magicdnull.c -o magicdnull \
++	${CC} ${CFLAGS} ${CPPFLAGS} ${DFLAGS} ${LDFLAGS} magicdnull.c -o magicdnull \
+ 		${LD_RUN_PATH} ${LIBS} ${LIB_SPECS}
+ 
+ magic.tcl: magic.tcl.in ${MAGICDIR}/defs.mak

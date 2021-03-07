@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>gnustep@gentoo.org</email>
+	<name>Gentoo GNUstep Project</name>
+</maintainer> 
+<longdescription>FTP is a file transfer application (RFC 765) featuring a compact and easy interface. As most applications in GAP it tries to work on both GNUstep and MacOS X and retain the utmost possible simlilarity among the two version to ease working in both environments.
+
+Two panes manage local (left) and remote (right) resources.
+Transfer of single files as well as multiple selection is possible, recursive upload (directories and sub-directories) is performed transparently.</longdescription>
+</pkgmetadata>

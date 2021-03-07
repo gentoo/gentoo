@@ -1,0 +1,12 @@
+# Setup aliases from ip-over-ib devices to the ip-over-ib kernel module.
+# Add to this list if you have more infiniband ports.  Or you can set
+# IPOIB_LOAD=yes to have the ip-over-ib interfaces brought up by init.d/openib
+alias ib0 ib_ipoib
+alias ib1 ib_ipoib
+alias ib2 ib_ipoib
+alias ib3 ib_ipoib
+
+alias net-pf-27 ib_sdp
+
+#options ib_mthca msi_x=1
+

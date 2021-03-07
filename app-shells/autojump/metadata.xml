@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>mattst88@gentoo.org</email>
+		<name>Matt Turner</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/joelthelion/autojump/issues</bugs-to>
+		<remote-id type="github">joelthelion/autojump</remote-id>
+	</upstream>
+	<use>
+		<flag name="ipython">Add support for <pkg>dev-python/ipython</pkg></flag>
+	</use>
+</pkgmetadata>

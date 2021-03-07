@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<longdescription lang="en">
+		This program forms part of the required functionality of
+		the LSB (Linux Standard Base) specification.
+
+		The program queries the installed state of the distribution
+		to display certain properties such as the version of the
+		LSB against which the distribution claims compliance as
+		well. It can also attempt to display the name and release
+		of the distribution along with an identifier of who produces
+		the distribution.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">lsb</remote-id>
+	</upstream>
+</pkgmetadata>

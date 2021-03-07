@@ -1,0 +1,23 @@
+From 7edb7171dc09e2cb6157724ebeaa45eeb07d8d4b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Andreas=20K=2E=20H=C3=BCttel?= <dilfridge@gentoo.org>
+Date: Tue, 4 Jul 2017 09:19:37 +1200
+Subject: Add build fix for Perl 5.26
+
+Bug: https://bugs.gentoo.org/623090
+---
+ Makefile.PL | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index 422966a..fea6408 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -1,4 +1,4 @@
+-use inc::Module::Install;
++use lib q[.]; use inc::Module::Install;
+ name('Regexp-Common-net-CIDR');
+ version_from('lib/Regexp/Common/net/CIDR.pm');
+ license('perl');
+-- 
+2.15.1
+

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>hattya@gentoo.org</email>
+		<name>Akinori Hattori</name>
+	</maintainer>
+	<use>
+		<flag name="oniguruma">Use <pkg>dev-libs/oniguruma</pkg> for regular expression</flag>
+	</use>
+</pkgmetadata>

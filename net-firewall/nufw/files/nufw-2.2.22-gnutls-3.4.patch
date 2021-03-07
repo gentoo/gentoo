@@ -1,0 +1,103 @@
+From cbe4cfe90322e5add59433d9dd8394f46e341fab Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Sat, 4 Mar 2017 01:00:40 +0200
+Subject: [PATCH] ssl: drop call of deprecated
+ gnutls_certificate_type_set_priority()
+
+CTYPE-X.509 is the default value. Closes: #624077
+
+Signed-off-by: Alon Bar-Lev <alon.barlev@gmail.com>
+---
+ src/clients/lib/libnuclient.c | 15 ++-------------
+ src/nufw/tls.c                | 14 --------------
+ 2 files changed, 2 insertions(+), 27 deletions(-)
+
+diff --git a/src/clients/lib/libnuclient.c b/src/clients/lib/libnuclient.c
+index 917e75a..6e78c96 100644
+--- a/src/clients/lib/libnuclient.c
++++ b/src/clients/lib/libnuclient.c
+@@ -62,9 +62,6 @@ GCRY_THREAD_OPTION_PTHREAD_IMPL;
+ #  define DH_BITS 1024
+ #endif
+ 
+-static const int cert_type_priority[3] = { GNUTLS_CRT_X509, 0 };
+-
+-
+ void nu_exit_clean(nuauth_session_t * session)
+ {
+ 	if (session->ct) {
+@@ -270,7 +267,7 @@ int check_key_perms(const char* filename)
+ 	return 1;
+ }
+ 
+-static int _cb_request_cert(gnutls_session_t session, const gnutls_datum_t* req_ca_dn, int nreqs, const gnutls_pk_algorithm_t* pk_algos, int pk_algos_length, gnutls_retr_st* st)
++static int _cb_request_cert(gnutls_session_t session, const gnutls_datum_t* req_ca_dn, int nreqs, const gnutls_pk_algorithm_t* pk_algos, int pk_algos_length, gnutls_retr2_st* st)
+ {
+ 	printf("TLS error: server requests certificate, none configured\n");
+ 	return 0;
+@@ -518,7 +515,7 @@ int nu_client_setup_tls(nuauth_session_t * session,
+ 			SET_ERROR(err, INTERNAL_ERROR, FILE_ACCESS_ERR);
+ 			return 0;
+ 		}
+-		gnutls_certificate_client_set_retrieve_function(session->cred,
++		gnutls_certificate_set_retrieve_function(session->cred,
+ 				&_cb_request_cert);
+ 	}
+ 
+@@ -604,12 +601,6 @@ int nu_client_reset_tls(nuauth_session_t *session)
+ 		return 0;
+ 	}
+ 
+-	ret =
+-	    gnutls_certificate_type_set_priority(session->tls,
+-						 cert_type_priority);
+-	if (ret < 0) {
+-		return 0;
+-	}
+ 	return 1;
+ }
+ 
+@@ -776,8 +767,6 @@ void nu_client_reset(nuauth_session_t * session)
+ 	gnutls_deinit(session->tls);
+ 	gnutls_init(&session->tls, GNUTLS_CLIENT);
+ 	gnutls_set_default_priority(session->tls);
+-	gnutls_certificate_type_set_priority(session->tls,
+-					     cert_type_priority);
+ 	session->need_set_cred = 1;
+ 
+ 	/* close socket */
+diff --git a/src/nufw/tls.c b/src/nufw/tls.c
+index e7223eb..2d46820 100644
+--- a/src/nufw/tls.c
++++ b/src/nufw/tls.c
+@@ -506,8 +506,6 @@ void tls_connect()
+ 	gnutls_session *tls_session;
+ 	int tls_socket, ret;
+ #if USE_X509
+-	const int cert_type_priority[3] = { GNUTLS_CRT_X509, 0 };
+-
+ 	tls.session = NULL;
+ 
+ 	/* compute patch key_file */
+@@ -655,18 +653,6 @@ void tls_connect()
+ 		return;
+ 	}
+ #if USE_X509
+-	ret = gnutls_certificate_type_set_priority(*(tls_session),
+-						   cert_type_priority);
+-	if (ret < 0) {
+-		log_area_printf(DEBUG_AREA_MAIN, DEBUG_LEVEL_WARNING,
+-				"TLS: gnutls_certificate_type_set_priority() failed: %s",
+-				gnutls_strerror(ret));
+-		gnutls_certificate_free_credentials(tls.xcred);
+-		gnutls_deinit(*tls_session);
+-		free(tls_session);
+-		return;
+-	}
+-
+ 	/* put the x509 credentials to the current session */
+ 	ret = gnutls_credentials_set(*(tls_session), GNUTLS_CRD_CERTIFICATE,
+ 				   tls.xcred);
+-- 
+2.10.2
+

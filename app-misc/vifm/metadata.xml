@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>monsieurp@gentoo.org</email>
+		<name>Patrice Clement</name>
+	</maintainer>
+	<longdescription>
+	Vifm is a ncurses based file manager with vi like keybindings. If you
+	use vi, vifm gives you complete keyboard control over your files without
+	having to learn a new set of commands.
+	</longdescription>
+	<longdescription lang="es">
+	Vifm es un gestor de ficheros basado en ncurses con definiciones de
+	teclas estilo vi. Si utiliza vi, vifm le ofrece un control completo
+	de sus ficheros utilizando el teclado si tener que aprender un nuevo
+	conjunto de órdenes.
+	</longdescription>
+	<use>
+		<flag name="developer">Enable features of interest to developers</flag>
+		<flag name="extended-keys">Support for extended keys (arrows, home etc)</flag>
+		<flag name="gtk">Use gtk+ to determine mimetypes</flag>
+		<flag name="vim">Install the vifm vim plugin and vim-compatible documentation</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">vifm</remote-id>
+	</upstream>
+</pkgmetadata>

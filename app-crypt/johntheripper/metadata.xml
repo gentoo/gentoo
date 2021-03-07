@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>zerochaos@gentoo.org</email>
+    <name>Rick Farina</name>
+    <description>Any and all help appreciated</description>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">magnumripper/JohnTheRipper</remote-id>
+  </upstream>
+</pkgmetadata>

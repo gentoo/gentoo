@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chainsaw@gentoo.org</email>
+		<name>Tony Vroon</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="pypi">ansible-lint</remote-id>
+		<remote-id type="github">ansible-community/ansible-lint</remote-id>
+		<bugs-to>https://github.com/ansible-community/ansible-lint/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,33 @@
+--- bastet-0.43.2/Makefile
++++ bastet-0.43.2/Makefile
+@@ -2,8 +2,10 @@
+ MAIN=main.cpp
+ TESTS=Test.cpp
+ PROGNAME=bastet
++PKG_CONFIG?=pkg-config
+ BOOST_PO?=-lboost_program_options
+-LDFLAGS+=-lncurses $(BOOST_PO)
++NCURSES_LIBS=$(shell $(PKG_CONFIG) --libs ncurses)
++LIBS=$(NCURSES_LIBS) $(BOOST_PO)
+ #CXXFLAGS+=-ggdb -Wall
+ CXXFLAGS+=-DNDEBUG -Wall
+ #CXXFLAGS+=-pg
+@@ -12,15 +14,15 @@
+ all: $(PROGNAME) $(TESTS:.cpp=)
+ 
+ Test: $(SOURCES:.cpp=.o) $(TESTS:.cpp=.o)
+-	$(CXX) -ggdb -o $(TESTS:.cpp=) $(SOURCES:.cpp=.o) $(TESTS:.cpp=.o) $(LDFLAGS) 
++	$(CXX) $(CXXFLAGS) -o $(TESTS:.cpp=) $(SOURCES:.cpp=.o) $(TESTS:.cpp=.o) $(LDFLAGS) $(LIBS)
+ 
+ depend: *.hpp $(SOURCES) $(MAIN) $(TESTS)
+ 	$(CXX) -MM $(SOURCES) $(MAIN) $(TESTS)> depend
+ 
+-include depend
++-include depend
+ 
+ $(PROGNAME): $(SOURCES:.cpp=.o) $(MAIN:.cpp=.o)
+-	$(CXX) -ggdb -o $(PROGNAME) $(SOURCES:.cpp=.o) $(MAIN:.cpp=.o) $(LDFLAGS) 
++	$(CXX) $(CXXFLAGS) -o $(PROGNAME) $(SOURCES:.cpp=.o) $(MAIN:.cpp=.o) $(LDFLAGS) $(LIBS)
+ 
+ clean:
+ 	rm -f $(SOURCES:.cpp=.o) $(TESTS:.cpp=.o) $(MAIN:.cpp=.o) $(PROGNAME)

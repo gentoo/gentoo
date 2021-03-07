@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <!-- maintainer-needed -->
+  <use>
+    <flag name="authlib">Add courier-authlib support</flag>
+    <flag name="dovecot">Add dovecot authentication support</flag>
+    <flag name="tools">Install maildirmake and deliverquota tools</flag>
+    <flag name="trashquota">Count deleted messages as part of the maildir quota</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">courier</remote-id>
+  </upstream>
+</pkgmetadata>

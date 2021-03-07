@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
+	<use>
+		<flag name="audio-sdl">Enable SDL audio plugin.</flag>
+		<flag name="input-sdl">Enable SDL input plugin.</flag>
+		<flag name="rsp-hle">Enable HLE RSP plugin.</flag>
+		<flag name="ui-console">Enable default console UI.</flag>
+		<flag name="ui-m64py">Enable PyQt5 UI using <pkg>games-emulation/m64py</pkg>.</flag>
+		<flag name="video-glide64mk2">Enable Glide64mk2 video plugin.</flag>
+		<flag name="video-rice">Enable Rice video plugin.</flag>
+	</use>
+	<longdescription>Mupen64Plus is a plugin-based N64 emulator for Linux which is capable of accurately playing many games.
+Included are four MIPS R4300 CPU emulators, with dynamic recompilers for 32-bit x86 and 64-bit amd64 systems,
+and necessary plugins for audio, graphical rendering (RDP), signal co-processor (RSP), and input.
+There are 3 OpenGL video plugins included: glN64, RiceVideoLinux, and Glide64.</longdescription>
+	<upstream>
+		<remote-id type="google-code">mupen64plus</remote-id>
+	</upstream>
+</pkgmetadata>

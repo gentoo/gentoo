@@ -1,0 +1,10 @@
+[Unit]
+Description=Exim Mail Transfer Agent (message submission)
+Conflicts=exim.service
+
+[Socket]
+ListenStream=587
+Accept=yes
+
+[Install]
+WantedBy=sockets.target

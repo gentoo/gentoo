@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<longdescription>
+		Testpath is a collection of utilities for Python code working with
+		files and commands. It contains functions to check things on the
+		filesystem, and tools for mocking system commands and recording
+		calls to those.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">jupyter/testpath</remote-id>
+		<remote-id type="pypi">testpath</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,33 @@
+From ef01ebf5401419a0e98dfe32efa9a0bc8564e26f Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Wed, 3 Apr 2019 18:35:28 +0200
+Subject: [PATCH] Don't install pingus executable into libexec
+
+This doesn't really make any sense.
+---
+ CMakeLists.txt | 9 ---------
+ 1 file changed, 9 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f3a92be64..fa835236d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -213,15 +213,6 @@ if(BUILD_TESTS)
+ endif(BUILD_TESTS)
+ 
+ install(TARGETS pingus
+-  RUNTIME DESTINATION ${CMAKE_INSTALL_LIBEXECDIR})
+-
+-configure_file(
+-  ${CMAKE_CURRENT_SOURCE_DIR}/pingus.sh.in
+-  ${CMAKE_BINARY_DIR}/pingus.sh)
+-
+-install(FILES
+-  ${CMAKE_BINARY_DIR}/pingus.sh
+-  RENAME pingus
+   PERMISSIONS OWNER_EXECUTE OWNER_READ OWNER_WRITE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
+   DESTINATION ${CMAKE_INSTALL_BINDIR})
+ 
+-- 
+2.21.0
+

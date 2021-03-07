@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>grobian@gentoo.org</email>
+  </maintainer>
+  <use>
+    <flag name="lz4">add support for LZ4 compressed transport</flag>
+    <flag name="snappy">add support for Snappy compressed transport</flag>
+    <flag name="pcre2">use <pkg>dev-libs/libpcre2</pkg> as regex implementation</flag>
+    <flag name="oniguruma">use <pkg>dev-libs/oniguruma</pkg> as regex implementation</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">grobian/carbon-c-relay</remote-id>
+  </upstream>
+</pkgmetadata>

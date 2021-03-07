@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The app-shells category contains shells and their extensions.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie app-shells enthält Kommandozeileninterpreter (Shells)
+		sowie deren Erweiterungen.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría app-shells contiene shells y sus extensiones.
+	</longdescription>
+	<longdescription lang="nl">
+		De app-shells categorie bevat opdrachtverwerkers (shells) en hun uitbreidingen.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm app-shells chứa các loại shell và các phần mở
+		rộng của shell.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria app-shells contiene shells e loro estensioni.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria app-shells contém shells e suas extensões.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria app-shells zawiera interpretery poleceń (powłoki) oraz ich
+		rozszerzenia.
+	</longdescription>
+</catmetadata>
+

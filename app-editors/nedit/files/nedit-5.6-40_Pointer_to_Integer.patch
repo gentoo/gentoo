@@ -1,0 +1,261 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+# Description: fix warning: cast from pointer to integer of different size
+# Origin: https://sourceforge.net/tracker/download.php?group_id=11005&atid=311005&file_id=340993&aid=2846694
+# Bug: https://sourceforge.net/tracker/?func=detail&atid=311005&aid=2846694&group_id=11005
+# Author: Jack Howarth <jwhowarth@users.sourceforge.net>
+
+@DPATCH@
+diff -urNad nedit-5.6~cvs20081118~/Xlt/SlideC.c nedit-5.6~cvs20081118/Xlt/SlideC.c
+--- nedit-5.6~cvs20081118~/Xlt/SlideC.c	2009-09-15 21:27:12.000000000 +0200
++++ nedit-5.6~cvs20081118/Xlt/SlideC.c	2009-09-15 22:05:42.000000000 +0200
+@@ -28,6 +28,7 @@
+ #endif
+ 
+ #include <Xm/XmP.h>
++#include <stdint.h>
+ 
+ #include "SlideCP.h"
+ 
+@@ -116,14 +117,14 @@
+ /* notify that initialize called    XtArgsProc        */ NULL,
+ /* NULL                             XtProc            */ NULL,
+ /* NULL                             XtPointer         */ NULL,
+-/* NULL                             Cardinal          */ (Cardinal)NULL,
++/* NULL                             Cardinal          */ (Cardinal)(uintptr_t)NULL,
+ /* resources for subclass fields    XtResourceList    */ resources,
+ /* number of entries in resources   Cardinal          */ XtNumber(resources),
+ /* resource class quarkified        XrmClass          */ NULLQUARK,
+-/* NULL                             Boolean           */ (Boolean)NULL,
+-/* NULL                             XtEnum            */ (XtEnum)NULL,
+-/* NULL				    Boolean           */ (Boolean)NULL,
+-/* NULL                             Boolean           */ (Boolean)NULL,
++/* NULL                             Boolean           */ (Boolean)(uintptr_t)NULL,
++/* NULL                             XtEnum            */ (XtEnum)(uintptr_t)NULL,
++/* NULL				    Boolean           */ (Boolean)(uintptr_t)NULL,
++/* NULL                             Boolean           */ (Boolean)(uintptr_t)NULL,
+ /* free data for subclass pointers  XtWidgetProc      */ destroy,
+ /* NULL                             XtProc            */ NULL,
+ /* NULL			            XtProc            */ NULL,
+diff -urNad nedit-5.6~cvs20081118~/source/file.c nedit-5.6~cvs20081118/source/file.c
+--- nedit-5.6~cvs20081118~/source/file.c	2009-09-15 21:27:12.000000000 +0200
++++ nedit-5.6~cvs20081118/source/file.c	2009-09-15 22:06:42.000000000 +0200
+@@ -52,6 +52,7 @@
+ #include <limits.h>
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <stdint.h>
+ #include <string.h>
+ #include <unistd.h>
+ 
+@@ -1914,7 +1915,7 @@
+     if (XmToggleButtonGetState(w)) {
+         XtPointer userData;
+         XtVaGetValues(w, XmNuserData, &userData, NULL);
+-        *(int*) clientData = (int) userData;
++        *(int*) clientData = (int) (uintptr_t) userData;
+     }
+ }
+ 
+diff -urNad nedit-5.6~cvs20081118~/source/highlight.c nedit-5.6~cvs20081118/source/highlight.c
+--- nedit-5.6~cvs20081118~/source/highlight.c	2009-09-15 21:27:12.000000000 +0200
++++ nedit-5.6~cvs20081118/source/highlight.c	2009-09-15 22:07:06.000000000 +0200
+@@ -49,6 +49,7 @@
+ #include <limits.h>
+ #include <math.h>
+ #include <stdlib.h>
++#include <stdint.h>
+ #include <string.h>
+ #ifdef VMS
+ #include "../util/VMSparam.h"
+@@ -512,7 +513,7 @@
+     if (!pattern) {
+ 	return NULL;
+     }
+-    return (void*)pattern->userStyleIndex;    
++    return (void*)(uintptr_t)pattern->userStyleIndex;    
+ }
+     
+ /*
+diff -urNad nedit-5.6~cvs20081118~/source/macro.c nedit-5.6~cvs20081118/source/macro.c
+--- nedit-5.6~cvs20081118~/source/macro.c	2009-09-15 21:27:12.000000000 +0200
++++ nedit-5.6~cvs20081118/source/macro.c	2009-09-15 22:07:27.000000000 +0200
+@@ -60,6 +60,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <stdint.h>
+ #include <string.h>
+ #include <ctype.h>
+ #include <errno.h>
+@@ -2924,7 +2925,7 @@
+         readStringArg(argList[i], &btnLabel, btnStorage, errMsg);
+     	btn = XtVaCreateManagedWidget("mdBtn", xmPushButtonWidgetClass, dialog,
+     	    	XmNlabelString, s1=XmStringCreateSimple(btnLabel),
+-    	    	XmNuserData, (XtPointer)(i+1), NULL);
++    	    	XmNuserData, (XtPointer)(uintptr_t)(i+1), NULL);
+     	XtAddCallback(btn, XmNactivateCallback, dialogBtnCB, window);
+     	XmStringFree(s1);
+     }
+@@ -2965,7 +2966,7 @@
+     	return; /* shouldn't happen */
+     if (XtClass(w) == xmPushButtonWidgetClass) {
+ 	XtVaGetValues(w, XmNuserData, &userData, NULL);
+-	retVal.val.n = (int)userData;
++	retVal.val.n = (int)(uintptr_t)userData;
+     } else
+     	retVal.val.n = 1;
+     retVal.tag = INT_TAG;
+@@ -3101,7 +3102,7 @@
+         readStringArg(argList[i], &btnLabel, btnStorage, errMsg);
+     	btn = XtVaCreateManagedWidget("mdBtn", xmPushButtonWidgetClass, dialog,
+     	    	XmNlabelString, s1=XmStringCreateSimple(btnLabel),
+-    	    	XmNuserData, (XtPointer)(i+1), NULL);
++    	    	XmNuserData, (XtPointer)(uintptr_t)(i+1), NULL);
+     	XtAddCallback(btn, XmNactivateCallback, stringDialogBtnCB, window);
+     	XmStringFree(s1);
+     }
+@@ -3155,7 +3156,7 @@
+        returned in w. */
+     if (XtClass(w) == xmPushButtonWidgetClass) {
+ 	XtVaGetValues(w, XmNuserData, &userData, NULL);
+-	btnNum = (int)userData;
++	btnNum = (int)(uintptr_t)userData;
+     } else
+     	btnNum = 1;
+     
+@@ -3680,7 +3681,7 @@
+       readStringArg(argList[i], &btnLabel, btnStorage, errMsg);
+       btn = XtVaCreateManagedWidget("mdBtn", xmPushButtonWidgetClass, dialog,
+               XmNlabelString, s1=XmStringCreateSimple(btnLabel),
+-              XmNuserData, (XtPointer)(i+1), NULL);
++              XmNuserData, (XtPointer)(uintptr_t)(i+1), NULL);
+       XtAddCallback(btn, XmNactivateCallback, listDialogBtnCB, window);
+       XmStringFree(s1);
+     }
+@@ -3760,7 +3761,7 @@
+        returned in w. */
+     if (XtClass(w) == xmPushButtonWidgetClass) {
+       XtVaGetValues(w, XmNuserData, &userData, NULL);
+-      btnNum = (int)userData;
++      btnNum = (int)(uintptr_t)userData;
+     } else
+       btnNum = 1;
+     
+diff -urNad nedit-5.6~cvs20081118~/source/preferences.c nedit-5.6~cvs20081118/source/preferences.c
+--- nedit-5.6~cvs20081118~/source/preferences.c	2009-09-15 21:27:12.000000000 +0200
++++ nedit-5.6~cvs20081118/source/preferences.c	2009-09-15 22:07:47.000000000 +0200
+@@ -58,6 +58,7 @@
+ #include <ctype.h>
+ #include <pwd.h>
+ #include <stdlib.h>
++#include <stdint.h>
+ #include <string.h>
+ #include <stdio.h>
+ #include <unistd.h>
+@@ -2296,7 +2297,7 @@
+ 	XtVaGetValues(menu, XmNchildren, &items, XmNnumChildren, &nItems, NULL);
+ 	for (n=0; n<(int)nItems; n++) {
+     	    XtVaGetValues(items[n], XmNuserData, &userData, NULL);
+-    	    XmToggleButtonSetState(items[n], (int)userData == mode, False);
++    	    XmToggleButtonSetState(items[n], (int)(uintptr_t)userData == mode, False);
+ 	}
+     }
+ }
+@@ -5148,7 +5149,7 @@
+             	xmToggleButtonGadgetClass, menu,
+             	XmNlabelString, s1=XmStringCreateSimple(LanguageModes[i]->name),
+  	    	XmNmarginHeight, 0,
+-   		XmNuserData, (void *)i,
++   		XmNuserData, (void *)(uintptr_t)i,
+     		XmNset, window->languageMode==i, NULL);
+         XmStringFree(s1);
+ 	XtAddCallback(btn, XmNvalueChangedCallback, setLangModeCB, window);
+@@ -5169,14 +5170,14 @@
+     XtVaGetValues(w, XmNuserData, &mode, NULL);
+     
+     /* If the mode didn't change, do nothing */
+-    if (window->languageMode == (int)mode)
++    if (window->languageMode == (int)(uintptr_t)mode)
+     	return;
+     
+     /* redo syntax highlighting word delimiters, etc. */
+ /*
+     reapplyLanguageMode(window, (int)mode, False);
+ */
+-    params[0] = (((int)mode) == PLAIN_LANGUAGE_MODE) ? "" : LanguageModes[(int)mode]->name;
++    params[0] = (((int)(uintptr_t)mode) == PLAIN_LANGUAGE_MODE) ? "" : LanguageModes[(int)(uintptr_t)mode]->name;
+     XtCallActionProc(window->textArea, "set_language_mode", NULL, params, 1);
+ }
+ 
+diff -urNad nedit-5.6~cvs20081118~/source/regularExp.c nedit-5.6~cvs20081118/source/regularExp.c
+--- nedit-5.6~cvs20081118~/source/regularExp.c	2009-09-15 21:27:12.000000000 +0200
++++ nedit-5.6~cvs20081118/source/regularExp.c	2009-09-15 22:08:16.000000000 +0200
+@@ -88,6 +88,7 @@
+ #include <limits.h>
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <stdint.h>
+ #include <string.h>
+ 
+ #ifdef HAVE_DEBUG_H
+@@ -4157,7 +4158,7 @@
+       table [*c] = 1;
+    }
+ 
+-   table [(int) NULL] = 1; /* These       */
++   table [(int)(uintptr_t) NULL] = 1; /* These       */
+    table [(int) '\t'] = 1; /* characters  */
+    table [(int) '\n'] = 1; /* are always  */
+    table [(int) ' ' ] = 1; /* delimiters. */
+diff -urNad nedit-5.6~cvs20081118~/source/userCmds.c nedit-5.6~cvs20081118/source/userCmds.c
+--- nedit-5.6~cvs20081118~/source/userCmds.c	2009-09-15 21:27:12.000000000 +0200
++++ nedit-5.6~cvs20081118/source/userCmds.c	2009-09-15 22:08:47.000000000 +0200
+@@ -49,6 +49,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <stdint.h>
+ #include <string.h>
+ #include <ctype.h>
+ #ifdef VMS
+@@ -1116,7 +1117,7 @@
+ 	    	XtVaGetValues(items[n], XmNsubMenuId, &subMenu, NULL);
+ 		dimSelDepItemsInMenu(subMenu, menuList, nMenuItems, sensitive);
+ 	    } else {
+-		index = (int)userData - 10;
++		index = (int)(uintptr_t)userData - 10;
+ 		if (index <0 || index >= nMenuItems)
+     		    return;
+ 		if (menuList[index]->input == FROM_SELECTION)
+@@ -1928,7 +1929,7 @@
+     	    XmNlabelString, st1,
+     	    XmNacceleratorText, st2,
+     	    XmNmnemonic, f->mnemonic,
+-    	    XmNuserData, (XtPointer)(index+10), NULL);
++    	    XmNuserData, (XtPointer)(uintptr_t)(index+10), NULL);
+     XtAddCallback(btn, XmNactivateCallback, cbRtn, cbArg);
+     XmStringFree(st1);
+     XmStringFree(st2);
+diff -urNad nedit-5.6~cvs20081118~/util/prefFile.c nedit-5.6~cvs20081118/util/prefFile.c
+--- nedit-5.6~cvs20081118~/util/prefFile.c	2009-09-15 21:27:12.000000000 +0200
++++ nedit-5.6~cvs20081118/util/prefFile.c	2009-09-15 22:04:14.000000000 +0200
+@@ -38,6 +38,7 @@
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <string.h>
++#include <stdint.h>
+ #ifdef VMS
+ #include "VMSparam.h"
+ #else
+@@ -353,9 +354,9 @@
+       	*(int *)rsrcDescrip->valueAddr = 0;
+     	return False;
+       case PREF_STRING:
+-	if ((int)strlen(string) >= (int)rsrcDescrip->arg)
++	if ((int)strlen(string) >= (int)(uintptr_t)rsrcDescrip->arg)
+       	    return False;
+-	strncpy(rsrcDescrip->valueAddr, string, (int)rsrcDescrip->arg);
++	strncpy(rsrcDescrip->valueAddr, string, (int)(uintptr_t)rsrcDescrip->arg);
+       	return True;
+       case PREF_ALLOC_STRING:
+       	*(char **)rsrcDescrip->valueAddr = XtMalloc(strlen(string) + 1);

@@ -1,0 +1,14 @@
+--- a/Makefile.in	2018-09-25 09:12:56.269163896 +0200
++++ b/Makefile.in	2018-09-25 09:14:27.437130443 +0200
+@@ -101,9 +101,9 @@
+ 
+ 
+ html-doc:
+-	$(TCLSH_PROG) `$(CYGPATH) $(srcdir)/sak.tcl` html
++	$(TCLSH_PROG) `$(CYGPATH) $(srcdir)/sak.tcl` doc html
+ nroff-doc:
+-	$(TCLSH_PROG) `$(CYGPATH) $(srcdir)/sak.tcl` nroff
++	$(TCLSH_PROG) `$(CYGPATH) $(srcdir)/sak.tcl` doc nroff
+ tmml-doc:
+ 	$(TCLSH_PROG) `$(CYGPATH) $(srcdir)/sak.tcl` tmml
+ wiki-doc:

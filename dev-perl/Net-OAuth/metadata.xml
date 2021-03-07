@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Net-OAuth</remote-id>
+    <remote-id type="cpan-module">Net::OAuth</remote-id>
+    <remote-id type="cpan-module">Net::OAuth::AccessToken</remote-id>
+    <remote-id type="cpan-module">Net::OAuth::AccessTokenRequest</remote-id>
+    <remote-id type="cpan-module">Net::OAuth::AccessTokenResponse</remote-id>
+    <remote-id type="cpan-module">Net::OAuth::Client</remote-id>
+    <remote-id type="cpan-module">Net::OAuth::ConsumerRequest</remote-id>
+    <remote-id type="cpan-module">Net::OAuth::Message</remote-id>
+    <remote-id type="cpan-module">Net::OAuth::ProtectedResourceRequest</remote-id>
+    <remote-id type="cpan-module">Net::OAuth::Request</remote-id>
+    <remote-id type="cpan-module">Net::OAuth::RequestTokenRequest</remote-id>
+    <remote-id type="cpan-module">Net::OAuth::RequestTokenResponse</remote-id>
+    <remote-id type="cpan-module">Net::OAuth::Response</remote-id>
+    <remote-id type="cpan-module">Net::OAuth::SignatureMethod::HMAC_SHA1</remote-id>
+    <remote-id type="cpan-module">Net::OAuth::SignatureMethod::HMAC_SHA256</remote-id>
+    <remote-id type="cpan-module">Net::OAuth::SignatureMethod::PLAINTEXT</remote-id>
+    <remote-id type="cpan-module">Net::OAuth::SignatureMethod::RSA_SHA1</remote-id>
+    <remote-id type="cpan-module">Net::OAuth::UserAuthRequest</remote-id>
+    <remote-id type="cpan-module">Net::OAuth::UserAuthResponse</remote-id>
+    <remote-id type="cpan-module">Net::OAuth::V1_0A::AccessTokenRequest</remote-id>
+    <remote-id type="cpan-module">Net::OAuth::V1_0A::RequestTokenRequest</remote-id>
+    <remote-id type="cpan-module">Net::OAuth::V1_0A::RequestTokenResponse</remote-id>
+    <remote-id type="cpan-module">Net::OAuth::V1_0A::UserAuthResponse</remote-id>
+    <remote-id type="cpan-module">Net::OAuth::XauthAccessTokenRequest</remote-id>
+    <remote-id type="cpan-module">Net::OAuth::YahooAccessTokenRefreshRequest</remote-id>
+  </upstream>
+</pkgmetadata>

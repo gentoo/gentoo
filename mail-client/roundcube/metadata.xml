@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>titanofold@gentoo.org</email>
+		<name>Aaron W. Swenson</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>candrews@gentoo.org</email>
+		<name>Craig Andrews</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>web-apps@gentoo.org</email>
+		<name>Gentoo Webapps</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">roundcubemail</remote-id>
+		<remote-id type="github">roundcube/roundcubemail</remote-id>
+	</upstream>
+	<use>
+		<flag name="change-password">
+			Allow users to change passwords through Roundcube
+		</flag>
+		<flag name="enigma">
+			Add dependencies to support server-side GnuPG signing
+			and/or encryption through the enigma plugin
+		</flag>
+		<flag name="ldap">
+			Add dependencies to support connecting to an LDAP address
+			book server
+		</flag>
+	</use>
+	<stabilize-allarches/>
+</pkgmetadata>

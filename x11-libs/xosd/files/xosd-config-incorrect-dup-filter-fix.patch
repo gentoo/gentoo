@@ -1,0 +1,15 @@
+https://bugs.gentoo.org/show_bug.cgi?id=286632
+
+This patch disables reordering and duplicate removing for non-libs arguments, thus --param and alike gcc options may be used safe now.
+
+written by Andrew Savchenko
+--- script/xosd-config.in.orig
++++ script/xosd-config.in
+@@ -161,7 +161,6 @@
+         fi;;
+     *)
+         case " $af_other_flags " in
+-        *\ $i\ *) ;;                                  # already there
+         *) af_other_flags="$af_other_flags $i" ;;     # add it to output
+         esac ;;
+     esac

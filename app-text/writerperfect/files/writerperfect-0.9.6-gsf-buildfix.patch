@@ -1,0 +1,14 @@
+fix build with libgsf
+Authored by: David Tardon 2017-12-14
+
+--- a/src/lib/OutputFileHelper.cxx
++++ b/src/lib/OutputFileHelper.cxx
+@@ -57,7 +57,7 @@
+ OutputFileHelperImpl::~OutputFileHelperImpl()
+ {
+ #ifdef USE_GSF_OUTPUT
+-	if (mpOutfile && !gsf_output_close((GsfOutput *) mpOutfile.get()))
++	if (mpOutfile && !gsf_output_close((GsfOutput *) mpOutfile))
+ 		fprintf(stderr, "ERROR : Couldn't close outfile\n");
+ 
+ 	if (mpOutfile)

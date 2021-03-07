@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sbraz@gentoo.org</email>
+		<name>Louis Sautier</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">airdcpp-web/airdcpp-webclient</remote-id>
+		<bugs-to>https://github.com/airdcpp-web/airdcpp-webclient/issues</bugs-to>
+	</upstream>
+	<longdescription lang="en">
+		AirDC++ Web Client is a cross-platform peer-to-peer file sharing client which allows sharing files with groups of people. 
+	</longdescription>
+	<use>
+		<flag name="nat-pmp">Enable support for the NAT-PMP protocol</flag>
+		<flag name="tbb">Enable support of the TBB library to improve performance</flag>
+		<flag name="webui">Enable the Web UI</flag>
+	</use>
+</pkgmetadata>

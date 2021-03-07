@@ -1,0 +1,192 @@
+From b0a7f5691113534c2cf771f2dd3cece5e93bc7d4 Mon Sep 17 00:00:00 2001
+From: Frank Tang <ftang@chromium.org>
+Date: Tue, 03 Nov 2020 23:20:37 -0800
+Subject: [PATCH] Update to ICU68-1
+
+ICU68-1 change the output skeleton format. So we need to change
+resolvedOptions code for 68 migration.
+
+Chromium roll
+https://chromium-review.googlesource.com/c/chromium/src/+/2474093
+
+Bug: v8:10945
+Change-Id: I3b2c7fbe8abb22df8fa51287c498ca3245b8c55b
+Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2477431
+Commit-Queue: Frank Tang <ftang@chromium.org>
+Reviewed-by: Jakob Kummerow <jkummerow@chromium.org>
+Reviewed-by: Shu-yu Guo <syg@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#70972}
+
+(ported to work with <ICU-68.1 and rebased chromium)
+---
+
+diff --git a/src/3rdparty/chromium/v8/src/objects/js-number-format.cc b/src/3rdparty/chromium/v8/src/objects/js-number-format.cc
+index 45b0eab..d18b133 100644
+--- a/src/3rdparty/chromium/v8/src/objects/js-number-format.cc
++++ b/src/3rdparty/chromium/v8/src/objects/js-number-format.cc
+@@ -389,17 +389,20 @@ Handle<String> CurrencySignString(Isolate* isolate,
+ Handle<String> UnitDisplayString(Isolate* isolate,
+                                  const icu::UnicodeString& skeleton) {
+   // Ex: skeleton as
+-  // "measure-unit/length-meter .### rounding-mode-half-up unit-width-full-name"
++  // <ICU-68.1:  "measure-unit/length-meter .### rounding-mode-half-up unit-width-full-name".
++  // >=ICU-68.1: "unit/length-meter .### rounding-mode-half-up unit-width-full-name"
+   if (skeleton.indexOf("unit-width-full-name") >= 0) {
+     return ReadOnlyRoots(isolate).long_string_handle();
+   }
+   // Ex: skeleton as
+-  // "measure-unit/length-meter .### rounding-mode-half-up unit-width-narrow".
++  // <ICU-68.1:  "measure-unit/length-meter .### rounding-mode-half-up unit-width-narrow".
++  // >=ICU-68.1: "unit/length-meter .### rounding-mode-half-up unit-width-narrow".
+   if (skeleton.indexOf("unit-width-narrow") >= 0) {
+     return ReadOnlyRoots(isolate).narrow_string_handle();
+   }
+   // Ex: skeleton as
+-  // "measure-unit/length-foot .### rounding-mode-half-up"
++  // <ICU-68.1:  "measure-unit/length-foot .### rounding-mode-half-up"
++  // >=ICU-68.1: "unit/length-foot .### rounding-mode-half-up"
+   return ReadOnlyRoots(isolate).short_string_handle();
+ }
+ 
+@@ -422,7 +425,8 @@ Notation NotationFromSkeleton(const icu::UnicodeString& skeleton) {
+     return Notation::COMPACT;
+   }
+   // Ex: skeleton as
+-  // "measure-unit/length-foot .### rounding-mode-half-up"
++  // <ICU-68.1:  "measure-unit/length-foot .### rounding-mode-half-up"
++  // >=ICU-68.1: "unit/length-foot .### rounding-mode-half-up"
+   return Notation::STANDARD;
+ }
+ 
+@@ -562,14 +566,23 @@ namespace {
+ 
+ // Ex: percent .### rounding-mode-half-up
+ // Special case for "percent"
+-// Ex: "measure-unit/length-kilometer per-measure-unit/duration-hour .###
+-// rounding-mode-half-up" should return "kilometer-per-unit".
+-// Ex: "measure-unit/duration-year .### rounding-mode-half-up" should return
+-// "year".
++// <ICU-68.1:
++//   Ex: "measure-unit/length-kilometer per-measure-unit/duration-hour .###
++//   rounding-mode-half-up" should return "kilometer-per-unit".
++//   Ex: "measure-unit/duration-year .### rounding-mode-half-up" should return
++// >=ICU-68.1:
++//   Ex: "unit/milliliter-per-acre .### rounding-mode-half-up"
++//   should return "milliliter-per-acre".
++//   Ex: "unit/year .### rounding-mode-half-up" should return
++//   "year".
+ std::string UnitFromSkeleton(const icu::UnicodeString& skeleton) {
+   std::string str;
+   str = skeleton.toUTF8String<std::string>(str);
++#if U_ICU_VERSION_MAJOR_NUM < 68
+   std::string search("measure-unit/");
++#else
++  std::string search("unit/");
++#endif
+   size_t begin = str.find(search);
+   if (begin == str.npos) {
+     // Special case for "percent".
+@@ -578,20 +591,41 @@ std::string UnitFromSkeleton(const icu::UnicodeString& skeleton) {
+     }
+     return "";
+   }
++#if U_ICU_VERSION_MAJOR_NUM < 68
+   // Skip the type (ex: "length").
+   // "measure-unit/length-kilometer per-measure-unit/duration-hour"
+   //                     b
+   begin = str.find("-", begin + search.size());
++#else
++  // Ex:
++  // "unit/acre .### rounding-mode-half-up"
++  //       b
++  // Ex:
++  // "unit/milliliter-per-acre .### rounding-mode-half-up"
++  //       b
++  begin += search.size();
++#endif
+   if (begin == str.npos) {
+     return "";
+   }
++#if U_ICU_VERSION_MAJOR_NUM < 68
+   begin++;  // Skip the '-'.
++#endif
+   // Find the end of the subtype.
+   size_t end = str.find(" ", begin);
+-  // "measure-unit/length-kilometer per-measure-unit/duration-hour"
+-  //                      b        e
++  // <ICU-68.1:
++  //   "measure-unit/length-kilometer per-measure-unit/duration-hour"
++  //                        b        e
++  // >=ICU-68.1:
++  //   Ex:
++  //   "unit/acre .### rounding-mode-half-up"
++  //         b   e
++  //   Ex:
++  //   "unit/milliliter-per-acre .### rounding-mode-half-up"
++  //         b                  e
+   if (end == str.npos) {
+     end = str.size();
++#if U_ICU_VERSION_MAJOR_NUM < 68
+     return str.substr(begin, end - begin);
+   }
+   // "measure-unit/length-kilometer per-measure-unit/duration-hour"
+@@ -625,17 +659,36 @@ std::string UnitFromSkeleton(const icu::UnicodeString& skeleton) {
+   // "measure-unit/length-kilometer per-measure-unit/duration-hour"
+   //                      [result ]                           b   e
+   return result + "-per-" + str.substr(begin, end - begin);
++#else
++  }
++  return str.substr(begin, end - begin);
++#endif
+ }
+ 
+ Style StyleFromSkeleton(const icu::UnicodeString& skeleton) {
+   if (skeleton.indexOf("currency/") >= 0) {
+     return Style::CURRENCY;
+   }
++#if U_ICU_VERSION_MAJOR_NUM < 68
+   if (skeleton.indexOf("measure-unit/") >= 0) {
+     if (skeleton.indexOf("scale/100") >= 0 &&
+         skeleton.indexOf("measure-unit/concentr-percent") >= 0) {
++#else
++  if (skeleton.indexOf("percent") >= 0) {
++    // percent precision-integer rounding-mode-half-up scale/100
++    if (skeleton.indexOf("scale/100") >= 0) {
++#endif
+       return Style::PERCENT;
++#if U_ICU_VERSION_MAJOR_NUM >= 68
++    } else {
++      return Style::UNIT;
++#endif
+     }
++#if U_ICU_VERSION_MAJOR_NUM >= 68
++  }
++  // Before ICU68: "measure-unit/", since ICU68 "unit/"
++  if (skeleton.indexOf("unit/") >= 0) {
++#endif
+     return Style::UNIT;
+   }
+   return Style::DECIMAL;
+diff --git a/src/3rdparty/chromium/v8/src/objects/js-relative-time-format.cc b/src/3rdparty/chromium/v8/src/objects/js-relative-time-format.cc
+index 267343aaae..64d56a1c12 100644
+--- a/src/3rdparty/chromium/v8/src/objects/js-relative-time-format.cc
++++ b/src/3rdparty/chromium/v8/src/objects/js-relative-time-format.cc
+@@ -195,9 +195,18 @@ MaybeHandle<JSRelativeTimeFormat> JSRelativeTimeFormat::New(
+     }
+   }
+ 
++#if U_ICU_VERSION_MAJOR_NUM < 68
+   icu::DecimalFormat* decimal_format =
+       static_cast<icu::DecimalFormat*>(number_format);
+   decimal_format->setMinimumGroupingDigits(-2);
++#else
++  if (number_format->getDynamicClassID() ==
++      icu::DecimalFormat::getStaticClassID()) {
++    icu::DecimalFormat* decimal_format =
++        static_cast<icu::DecimalFormat*>(number_format);
++    decimal_format->setMinimumGroupingDigits(-2);
++  }
++#endif
+ 
+   // Change UDISPCTX_CAPITALIZATION_NONE to other values if
+   // ECMA402 later include option to change capitalization.

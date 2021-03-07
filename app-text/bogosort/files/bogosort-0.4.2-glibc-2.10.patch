@@ -1,0 +1,41 @@
+diff -ur bogosort-0.4.2.orig/getlines.c bogosort-0.4.2/getlines.c
+--- bogosort-0.4.2.orig/getlines.c	2002-05-04 23:22:22.000000000 +0300
++++ bogosort-0.4.2/getlines.c	2009-08-06 14:32:22.000000000 +0300
+@@ -49,7 +49,7 @@
+     char **ss = NULL;
+ 
+     /* read all lines available */
+-    while ((s = getline(stream)) != NULL) {
++    while ((s = get_line(stream)) != NULL) {
+ 	if (numlines == allocated)		/* make more room if needed */
+ 	    ss = (char **)xrealloc(ss,
+ 		    (allocated += LINESTEP) * sizeof (char *));
+@@ -81,7 +81,7 @@
+     allocated = numlines + 1;	/* this is a lie, but it's close enough */
+ 
+     /* read all lines available */
+-    while ((s = getline(stream)) != NULL) {
++    while ((s = get_line(stream)) != NULL) {
+ 	if (numlines == allocated)		/* make more room if needed */
+ 	    ss = (char **)xrealloc(ss,
+ 		    (allocated += LINESTEP) * sizeof (char *));
+@@ -100,7 +100,7 @@
+  * line in stream, return NULL on EOF
+  */
+ char *
+-getline(FILE *stream)
++get_line(FILE *stream)
+ {
+     int c, numchars = 0, allocated = 0;
+     char *s = NULL;
+diff -ur bogosort-0.4.2.orig/getlines.h bogosort-0.4.2/getlines.h
+--- bogosort-0.4.2.orig/getlines.h	2002-03-16 00:04:38.000000000 +0200
++++ bogosort-0.4.2/getlines.h	2009-08-06 14:32:48.000000000 +0300
+@@ -39,6 +39,6 @@
+  * getline: return a pointer to a newly allocated string containing the next
+  * line in stream
+  */
+-char *getline(FILE *stream);
++char *get_line(FILE *stream);
+ 
+ #endif /* GETLINES_H */

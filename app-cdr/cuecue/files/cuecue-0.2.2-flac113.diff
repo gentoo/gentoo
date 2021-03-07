@@ -1,0 +1,129 @@
+--- a/src/libcuecue/flac.c
++++ b/src/libcuecue/flac.c
+@@ -27,6 +27,12 @@
+ #include "cuecue.h"
+ #include "cuecue_internal.h"
+ 
++#if !defined(FLAC_API_VERSION_CURRENT) || FLAC_API_VERSION_CURRENT <= 7
++#define LEGACY_FLAC
++#else
++#undef LEGACY_FLAC
++#endif
++
+ typedef struct Internal
+ {
+ 	FILE *dst;
+@@ -38,7 +44,11 @@
+ } Internal;
+ 
+ 
++#ifdef LEGACY_FLAC
+ void error(const FLAC__FileDecoder *decoder, FLAC__StreamDecoderErrorStatus status, void *client_data)
++#else
++void error(const FLAC__StreamDecoder *decoder, FLAC__StreamDecoderErrorStatus status, void *client_data)
++#endif
+ {
+ 	Internal *internal = client_data;
+ 	switch (status) {
+@@ -52,11 +62,21 @@
+ 			strcpy(cuecue_error,"CRC Mismatch: FLAC file corrupted");
+ 			internal->error=1;
+ 			break;
++#ifndef LEGACY_FLAC
++		case FLAC__STREAM_DECODER_ERROR_STATUS_UNPARSEABLE_STREAM:
++			strcpy(cuecue_error,"Unparseable stream");
++			internal->error=1;
++			break;
++#endif
+ 	}
+ }
+ 
+ 
++#ifdef LEGACY_FLAC
+ void metadata(const FLAC__FileDecoder *decoder, const FLAC__StreamMetadata *metadata, void *client_data)
++#else
++void metadata(const FLAC__StreamDecoder *decoder, const FLAC__StreamMetadata *metadata, void *client_data)
++#endif
+ {
+ 	if(metadata->type == FLAC__METADATA_TYPE_STREAMINFO) {
+ 		/* get size of the file, for progress callback */
+@@ -66,7 +86,11 @@
+ }
+ 
+ 
++#ifdef LEGACY_FLAC
+ FLAC__StreamDecoderWriteStatus write(const FLAC__FileDecoder *decoder, const FLAC__Frame *frame, const FLAC__int32 * const buffer[], void *client_data)
++#else
++FLAC__StreamDecoderWriteStatus write(const FLAC__StreamDecoder *decoder, const FLAC__Frame *frame, const FLAC__int32 * const buffer[], void *client_data)
++#endif
+ {
+ 	Internal *internal = client_data;
+ 	unsigned int samples = frame->header.blocksize;
+@@ -126,7 +150,11 @@
+ {
+ 	FILE *dst;
+ 	Internal internal;
++#ifdef LEGACY_FLAC
+ 	FLAC__FileDecoder *decoder;
++#else
++	FLAC__StreamDecoder *decoder;
++#endif
+ 
+ 	dst = fopen(file_destination, "wb");
+ 
+@@ -141,7 +169,11 @@
+ 	internal.error=0;
+ 	internal.dst=dst;
+ 
++#ifdef LEGACY_FLAC
+ 	decoder = FLAC__file_decoder_new();
++#else
++	decoder = FLAC__stream_decoder_new();
++#endif
+ 
+ 	if (decoder==NULL) {
+ 		snprintf(cuecue_error,CUECUE_ERROR_LENGTH,"Cannot create FLAC decoder! memory error ?");
+@@ -150,6 +182,7 @@
+ 
+ 	internal.buffer = malloc(BUFFER_SIZE);
+ 
++#ifdef LEGACY_FLAC
+ 	FLAC__file_decoder_set_md5_checking(decoder, true);
+ 	FLAC__file_decoder_set_filename(decoder, file_source);
+ 
+@@ -162,8 +195,20 @@
+ 		snprintf(cuecue_error,1024,"Cannot open '%s'",file_source);
+ 		internal.error=1;
+ 	}
++#else
++	FLAC__stream_decoder_set_md5_checking(decoder, true);
++	if(FLAC__stream_decoder_init_file(decoder, file_source, write, metadata, error, &internal) != FLAC__STREAM_DECODER_INIT_STATUS_OK) {
++		snprintf(cuecue_error,1024,"Cannot open '%s'",file_source);
++		internal.error=1;
++	}
++#endif
+ 
+-	if(!FLAC__file_decoder_process_until_end_of_file(decoder)) {
++#ifdef LEGACY_FLAC
++	if(!FLAC__file_decoder_process_until_end_of_file(decoder))
++#else
++	if(!FLAC__stream_decoder_process_until_end_of_stream(decoder))
++#endif
++	{
+ 		if (!internal.error) {
+ 			/* early error, not even the time to decode metadata :) */
+ 			snprintf(cuecue_error,CUECUE_ERROR_LENGTH,"Cannot open '%s'",file_source);
+@@ -171,8 +216,13 @@
+ 		internal.error=1;
+ 	}
+ 
++#ifdef LEGACY_FLAC
+ 	FLAC__file_decoder_finish(decoder);
+ 	FLAC__file_decoder_delete(decoder);
++#else
++	FLAC__stream_decoder_finish(decoder);
++	FLAC__stream_decoder_delete(decoder);
++#endif
+ 
+ 	fclose(dst);
+ 	free(internal.buffer);

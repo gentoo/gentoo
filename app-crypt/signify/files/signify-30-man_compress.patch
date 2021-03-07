@@ -1,0 +1,18 @@
+diff --git a/Makefile b/Makefile
+index f908451..1537eb6 100644
+--- a/Makefile
++++ b/Makefile
+@@ -224,11 +224,11 @@ sha512_256hl.c:	helper.c
+ 	    -e 's/HASH/SHA512_256/g' \
+ 	    -e 's/SHA512_256_CTX/SHA2_CTX/g' $< > $@
+ 
+-install: signify signify.1.gz
++install: signify
+ 	install -m 755 -d $(DESTDIR)$(PREFIX)/bin
+ 	install -m 755 -t $(DESTDIR)$(PREFIX)/bin signify
+ 	install -m 755 -d $(DESTDIR)$(PREFIX)/share/man/man1
+-	install -m 644 -t $(DESTDIR)$(PREFIX)/share/man/man1 signify.1.gz
++	install -m 644 -t $(DESTDIR)$(PREFIX)/share/man/man1 signify.1
+ 
+ .PHONY: install
+ 

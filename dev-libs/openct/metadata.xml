@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="pcsc-lite">
+			Build a driver library for <pkg>sys-apps/pcsc-lite</pkg>,
+			providing PC/SC API access to devices supported by OpenCT.
+		</flag>
+		<flag name="debug">
+			Add debug output to the driver library for pcsc-lite.
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">OpenSC/openct</remote-id>
+		<remote-id type="sourceforge">opensc</remote-id>
+	</upstream>
+</pkgmetadata>

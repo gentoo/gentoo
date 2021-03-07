@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>titanofold@gentoo.org</email>
+		<name>Aaron W. Swenson</name>
+	</maintainer>
+	<use>
+		<flag name="aqbanking">
+			Connect to some internet banks via AqBanking
+		</flag>
+		<flag name="quotes">Enable Online Stock Quote retrieval</flag>
+		<flag name="register2">Use the new register (Experimental)</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">gnucash</remote-id>
+	</upstream>
+</pkgmetadata>

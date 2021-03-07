@@ -1,0 +1,30 @@
+From aae2ea107b543fa908956f2fdcdf6db684e4a2e6 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@chromium.org>
+Date: Fri, 24 Apr 2015 23:06:37 -0400
+Subject: [PATCH] filan: fix depend list
+
+The link line contains more objects than the depend line; sync them like
+procan does.  Otherwise, parallel builds randomly fail.
+---
+ Makefile.in | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index f2a6edb..0c00459 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -118,8 +118,9 @@ PROCAN_OBJS=procan_main.o procan.o procan-cdefs.o hostan.o error.o sycls.o sysut
+ procan: $(PROCAN_OBJS)
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(PROCAN_OBJS) $(CLIBS)
+ 
+-filan: filan_main.o filan.o fdname.o error.o sycls.o sysutils.o utils.o
+-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ filan_main.o filan.o fdname.o error.o sycls.o sysutils.o utils.o vsnprintf_r.o snprinterr.o $(CLIBS)
++FILAN_OBJS=filan_main.o filan.o fdname.o error.o sycls.o sysutils.o utils.o vsnprintf_r.o snprinterr.o
++filan: $(FILAN_OBJS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(FILAN_OBJS) $(CLIBS)
+ 
+ libxio.a: $(XIOOBJS) $(UTLOBJS)
+ 	$(AR) r $@ $(XIOOBJS) $(UTLOBJS)
+-- 
+2.3.5
+

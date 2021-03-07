@@ -1,0 +1,49 @@
+--- a/mod_bw.c	2010-07-20 18:14:30.000000000 +0200
++++ b/mod_bw.c	2014-03-31 14:36:27.064883758 +0200
+@@ -105,6 +105,10 @@ Changelog :
+     #define apr_atomic_set32 apr_atomic_set
+ #endif
+ 
++#define APACHE_VERSION_AT_LEAST(major,minor)                              \
++(((major) < AP_SERVER_MAJORVERSION_NUMBER)                                \
++ || ((major) == AP_SERVER_MAJORVERSION_NUMBER && (minor) <= AP_SERVER_MINORVERSION_NUMBER))
++
+ /* Enum types of "from address" */
+ enum from_type {
+     T_ALL,
+@@ -564,7 +568,11 @@ static long get_bw_rate(request_rec * r,
+             return e[i].rate;
+ 
+         case T_IP:
++#if APACHE_VERSION_AT_LEAST(2,4)
++            if (apr_ipsubnet_test(e[i].x.ip, r->useragent_addr)) {
++#else
+             if (apr_ipsubnet_test(e[i].x.ip, r->connection->remote_addr)) {
++#endif
+                 return e[i].rate;
+             }
+             break;
+@@ -655,7 +663,11 @@ static int get_maxconn(request_rec * r,
+             return e[i].max;
+ 
+         case T_IP:
++#if APACHE_VERSION_AT_LEAST(2,4)
++            if (apr_ipsubnet_test(e[i].x.ip, r->useragent_addr)) {
++#else
+             if (apr_ipsubnet_test(e[i].x.ip, r->connection->remote_addr)) {
++#endif
+                 return e[i].max;
+             }
+             break;
+@@ -706,7 +718,11 @@ static int get_sid(request_rec * r, apr_
+             return e[i].sid;
+ 
+         case T_IP:
++#if APACHE_VERSION_AT_LEAST(2,4)
++            if (apr_ipsubnet_test(e[i].x.ip, r->useragent_addr)) {
++#else
+             if (apr_ipsubnet_test(e[i].x.ip, r->connection->remote_addr)) {
++#endif
+                 return e[i].sid;
+             }
+             break;

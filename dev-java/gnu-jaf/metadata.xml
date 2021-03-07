@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>java@gentoo.org</email>
+	<name>Java</name>
+</maintainer>
+
+<longdescription>
+GNU JAF is a framework for declaring what beans operate on what MIME
+type data. Content handler beans can be defined to handle particular
+MIME content. The JAF unites internet standards for declaring content
+with JavaBeans™.
+
+The JAF defines two mechanisms within the framework. The first, the
+file type map, specifies the MIME content type for a given file. The
+default implementation of this uses the UNIX mime.types format to map
+filename extensions to MIME types. The second mechanism, the command
+map, specifies the actions that can be applied to a given MIME content
+type. The default implementation of this uses the standard mailcap format
+to map actions to JavaBean™ classes. These beans can then view, edit,
+print, or perform whatever other action is required on the underlying
+resource.
+</longdescription>
+
+</pkgmetadata>

@@ -1,0 +1,11 @@
+--- cpio-2.12/src/cpiohdr.h
++++ cpio-2.12/src/cpiohdr.h
+@@ -25,6 +25,8 @@
+ 
+ # ifdef HAVE_ATTRIB_PACKED
+ #  define ATTRIB_PACKED __attribute__((packed))
++# else
++#  define ATTRIB_PACKED
+ # endif
+ 
+ # ifdef HAVE_PRAGMA_PACK

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>perl@gentoo.org</email>
+		<name>Gentoo Perl Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpan">Stream-Buffered</remote-id>
+		<remote-id type="cpan-module">Stream::Buffered</remote-id>
+		<remote-id type="cpan-module">Stream::Buffered::Auto</remote-id>
+		<remote-id type="cpan-module">Stream::Buffered::File</remote-id>
+		<remote-id type="cpan-module">Stream::Buffered::PerlIO</remote-id>
+	</upstream>
+</pkgmetadata>

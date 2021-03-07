@@ -1,0 +1,213 @@
+diff -uNr meanwhile-1.0.2/src/channel.c meanwhile-1.0.2-r1/src/channel.c
+--- meanwhile-1.0.2/src/channel.c	2005-12-08 23:04:46.000000000 +0100
++++ meanwhile-1.0.2-r1/src/channel.c	2012-03-20 21:15:03.000000000 +0100
+@@ -19,8 +19,6 @@
+ */
+ 
+ #include <glib.h>
+-#include <glib/ghash.h>
+-#include <glib/glist.h>
+ #include <string.h>
+ 
+ #include "mw_channel.h"
+diff -uNr meanwhile-1.0.2/src/mw_debug.c meanwhile-1.0.2-r1/src/mw_debug.c
+--- meanwhile-1.0.2/src/mw_debug.c	2005-12-03 04:46:10.000000000 +0100
++++ meanwhile-1.0.2-r1/src/mw_debug.c	2012-03-20 21:12:09.000000000 +0100
+@@ -19,7 +19,7 @@
+ */
+ 
+ 
+-#include <glib/gstring.h>
++#include <glib.h>
+ 
+ #include "mw_debug.h"
+ 
+diff -uNr meanwhile-1.0.2/src/mw_message.h meanwhile-1.0.2-r1/src/mw_message.h
+--- meanwhile-1.0.2/src/mw_message.h	2005-12-15 01:30:28.000000000 +0100
++++ meanwhile-1.0.2-r1/src/mw_message.h	2012-03-20 21:06:28.000000000 +0100
+@@ -22,7 +22,7 @@
+ #define _MW_MESSAGE_H
+ 
+ 
+-#include <glib/glist.h>
++#include <glib.h>
+ #include "mw_common.h"
+ 
+ 
+diff -uNr meanwhile-1.0.2/src/mw_srvc_conf.h meanwhile-1.0.2-r1/src/mw_srvc_conf.h
+--- meanwhile-1.0.2/src/mw_srvc_conf.h	2005-12-15 01:30:28.000000000 +0100
++++ meanwhile-1.0.2-r1/src/mw_srvc_conf.h	2012-03-20 21:08:01.000000000 +0100
+@@ -22,7 +22,7 @@
+ #define _MW_SRVC_CONF_H
+ 
+ 
+-#include <glib/glist.h>
++#include <glib.h>
+ #include "mw_common.h"
+ 
+ 
+diff -uNr meanwhile-1.0.2/src/mw_srvc_dir.h meanwhile-1.0.2-r1/src/mw_srvc_dir.h
+--- meanwhile-1.0.2/src/mw_srvc_dir.h	2005-12-15 01:30:28.000000000 +0100
++++ meanwhile-1.0.2-r1/src/mw_srvc_dir.h	2012-03-20 21:08:23.000000000 +0100
+@@ -22,7 +22,6 @@
+ 
+ 
+ #include <glib.h>
+-#include <glib/glist.h>
+ 
+ 
+ #ifdef __cplusplus
+diff -uNr meanwhile-1.0.2/src/mw_srvc_place.h meanwhile-1.0.2-r1/src/mw_srvc_place.h
+--- meanwhile-1.0.2/src/mw_srvc_place.h	2005-12-15 01:30:28.000000000 +0100
++++ meanwhile-1.0.2-r1/src/mw_srvc_place.h	2012-03-20 21:09:51.000000000 +0100
+@@ -22,7 +22,7 @@
+ #define _MW_SRVC_PLACE_H
+ 
+ 
+-#include <glib/glist.h>
++#include <glib.h>
+ #include "mw_common.h"
+ 
+ 
+diff -uNr meanwhile-1.0.2/src/mw_srvc_resolve.h meanwhile-1.0.2-r1/src/mw_srvc_resolve.h
+--- meanwhile-1.0.2/src/mw_srvc_resolve.h	2005-12-15 01:30:28.000000000 +0100
++++ meanwhile-1.0.2-r1/src/mw_srvc_resolve.h	2012-03-20 21:10:54.000000000 +0100
+@@ -23,7 +23,6 @@
+ 
+ 
+ #include <glib.h>
+-#include <glib/glist.h>
+ 
+ 
+ #ifdef __cplusplus
+diff -uNr meanwhile-1.0.2/src/mw_st_list.h meanwhile-1.0.2-r1/src/mw_st_list.h
+--- meanwhile-1.0.2/src/mw_st_list.h	2005-12-15 01:30:28.000000000 +0100
++++ meanwhile-1.0.2-r1/src/mw_st_list.h	2012-03-20 21:11:27.000000000 +0100
+@@ -30,7 +30,6 @@
+ 
+ 
+ #include <glib.h>
+-#include <glib/glist.h>
+ #include "mw_common.h"
+ 
+ 
+diff -uNr meanwhile-1.0.2/src/mw_util.h meanwhile-1.0.2-r1/src/mw_util.h
+--- meanwhile-1.0.2/src/mw_util.h	2004-12-28 21:41:26.000000000 +0100
++++ meanwhile-1.0.2-r1/src/mw_util.h	2012-03-20 21:06:54.000000000 +0100
+@@ -23,8 +23,6 @@
+ 
+ 
+ #include <glib.h>
+-#include <glib/ghash.h>
+-#include <glib/glist.h>
+ 
+ 
+ #define map_guint_new() \
+diff -uNr meanwhile-1.0.2/src/srvc_aware.c meanwhile-1.0.2-r1/src/srvc_aware.c
+--- meanwhile-1.0.2/src/srvc_aware.c	2005-12-08 23:02:11.000000000 +0100
++++ meanwhile-1.0.2-r1/src/srvc_aware.c	2012-03-20 21:07:22.000000000 +0100
+@@ -19,8 +19,6 @@
+ */
+ 
+ #include <glib.h>
+-#include <glib/ghash.h>
+-#include <glib/glist.h>
+ #include <string.h>
+ 
+ #include "mw_channel.h"
+diff -uNr meanwhile-1.0.2/src/srvc_conf.c meanwhile-1.0.2-r1/src/srvc_conf.c
+--- meanwhile-1.0.2/src/srvc_conf.c	2005-12-28 03:46:54.000000000 +0100
++++ meanwhile-1.0.2-r1/src/srvc_conf.c	2012-03-20 21:07:42.000000000 +0100
+@@ -19,8 +19,6 @@
+ */
+ 
+ #include <glib.h>
+-#include <glib/ghash.h>
+-#include <glib/glist.h>
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
+diff -uNr meanwhile-1.0.2/src/srvc_dir.c meanwhile-1.0.2-r1/src/srvc_dir.c
+--- meanwhile-1.0.2/src/srvc_dir.c	2005-09-15 22:30:20.000000000 +0200
++++ meanwhile-1.0.2-r1/src/srvc_dir.c	2012-03-20 21:08:44.000000000 +0100
+@@ -18,7 +18,7 @@
+   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ */
+ 
+-#include <glib/ghash.h>
++#include <glib.h>
+ 
+ #include "mw_channel.h"
+ #include "mw_common.h"
+diff -uNr meanwhile-1.0.2/src/srvc_ft.c meanwhile-1.0.2-r1/src/srvc_ft.c
+--- meanwhile-1.0.2/src/srvc_ft.c	2005-09-15 22:30:37.000000000 +0200
++++ meanwhile-1.0.2-r1/src/srvc_ft.c	2012-03-20 21:09:05.000000000 +0100
+@@ -19,7 +19,7 @@
+ */
+ 
+ 
+-#include <glib/glist.h>
++#include <glib.h>
+ 
+ #include "mw_channel.h"
+ #include "mw_common.h"
+diff -uNr meanwhile-1.0.2/src/srvc_im.c meanwhile-1.0.2-r1/src/srvc_im.c
+--- meanwhile-1.0.2/src/srvc_im.c	2005-12-28 03:46:54.000000000 +0100
++++ meanwhile-1.0.2-r1/src/srvc_im.c	2012-03-20 21:09:31.000000000 +0100
+@@ -19,7 +19,6 @@
+ */
+ 
+ #include <glib.h>
+-#include <glib/glist.h>
+ #include <string.h>
+ 
+ #include "mw_channel.h"
+diff -uNr meanwhile-1.0.2/src/srvc_place.c meanwhile-1.0.2-r1/src/srvc_place.c
+--- meanwhile-1.0.2/src/srvc_place.c	2005-12-03 03:00:29.000000000 +0100
++++ meanwhile-1.0.2-r1/src/srvc_place.c	2012-03-20 21:10:05.000000000 +0100
+@@ -19,8 +19,7 @@
+ */
+ 
+ #include <glib.h>
+-#include <glib/ghash.h>
+-#include <glib/glist.h>
++
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
+diff -uNr meanwhile-1.0.2/src/srvc_resolve.c meanwhile-1.0.2-r1/src/srvc_resolve.c
+--- meanwhile-1.0.2/src/srvc_resolve.c	2005-10-27 02:10:06.000000000 +0200
++++ meanwhile-1.0.2-r1/src/srvc_resolve.c	2012-03-20 21:10:21.000000000 +0100
+@@ -18,7 +18,7 @@
+   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ */
+ 
+-#include <glib/ghash.h>
++#include <glib.h>
+ 
+ #include "mw_channel.h"
+ #include "mw_common.h"
+diff -uNr meanwhile-1.0.2/src/srvc_store.c meanwhile-1.0.2-r1/src/srvc_store.c
+--- meanwhile-1.0.2/src/srvc_store.c	2005-11-19 02:52:42.000000000 +0100
++++ meanwhile-1.0.2-r1/src/srvc_store.c	2012-03-20 21:11:13.000000000 +0100
+@@ -18,7 +18,7 @@
+   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ */
+ 
+-#include <glib/glist.h>
++#include <glib.h>
+ 
+ #include "mw_channel.h"
+ #include "mw_debug.h"
+diff -uNr meanwhile-1.0.2/src/st_list.c meanwhile-1.0.2-r1/src/st_list.c
+--- meanwhile-1.0.2/src/st_list.c	2005-12-08 23:01:27.000000000 +0100
++++ meanwhile-1.0.2-r1/src/st_list.c	2012-03-20 21:11:44.000000000 +0100
+@@ -20,7 +20,7 @@
+ 
+ #include <stdio.h>
+ #include <string.h>
+-#include <glib/gstring.h>
++#include <glib.h>
+ 
+ #include "mw_debug.h"
+ #include "mw_util.h"

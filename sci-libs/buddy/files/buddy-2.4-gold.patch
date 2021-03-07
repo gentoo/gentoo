@@ -1,0 +1,16 @@
+ examples/cmilner/Makefile.in |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/examples/cmilner/Makefile.in b/examples/cmilner/Makefile.in
+index 9b49e9d..f7a9b8a 100644
+--- a/examples/cmilner/Makefile.in
++++ b/examples/cmilner/Makefile.in
+@@ -217,7 +217,7 @@ clean-checkPROGRAMS:
+ 	done
+ cmilner$(EXEEXT): $(cmilner_OBJECTS) $(cmilner_DEPENDENCIES) 
+ 	@rm -f cmilner$(EXEEXT)
+-	$(LINK) $(cmilner_LDFLAGS) $(cmilner_OBJECTS) $(cmilner_LDADD) $(LIBS)
++	$(LINK) $(cmilner_LDFLAGS) $(cmilner_OBJECTS) $(cmilner_LDADD) $(LIBS) -lm
+ 
+ mostlyclean-compile:
+ 	-rm -f *.$(OBJEXT)

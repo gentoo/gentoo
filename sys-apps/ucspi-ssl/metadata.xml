@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<upstream>
+		<bugs-to>mailto:feh@fehcom.de</bugs-to>
+	</upstream>
+	<longdescription>
+		sslserver, sslclient, and sslhandle are command-line tools for
+		building SSL client-server applications. They conform to the UNIX
+		Client-Server Program Interface, UCSPI.
+	</longdescription>
+	<use>
+		<flag name="bindist">Disable EC/RC5 algorithms in OpenSSL for patent reasons.</flag>
+	</use>
+</pkgmetadata>

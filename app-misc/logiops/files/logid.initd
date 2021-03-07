@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+logid_config="/etc/logid.cfg"
+name="Logitech Configuration Daemon"
+pidfile="${RC_PREFIX}/run/logid.pid"
+
+command="${RC_PREFIX}/usr/bin/logid"
+command_background="true"
+command_args="-c ${logid_config}"
+
+start_pre() {
+	if [ ! -f "${logid_config}" ]; then
+		eerror "The file '${logid_config}' could not be found!"
+		eerror "Please create one before you start the daemon."
+		exit 1
+	fi
+}

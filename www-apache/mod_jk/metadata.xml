@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
+	<longdescription>
+		mod_jk is a connector used to connect Tomcat JSP/Servlet 
+		container with web servers such as Apache, Netscape, 
+		Iplanet, SunOne and even IIS using the AJP protocol.
+	</longdescription>
+</pkgmetadata>

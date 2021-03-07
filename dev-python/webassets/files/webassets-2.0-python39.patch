@@ -1,0 +1,23 @@
+https://github.com/miracle2k/webassets/commit/a563935df6702ff5e38e5b84a262c295e4cdf455.patch
+From a563935df6702ff5e38e5b84a262c295e4cdf455 Mon Sep 17 00:00:00 2001
+From: Karthikeyan Singaravelan <tir.karthi@gmail.com>
+Date: Wed, 22 Jan 2020 00:49:31 +0530
+Subject: [PATCH] Use is_alive instead of isAlive for Python 3.9 compatibility.
+
+---
+ tests/test_script.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_script.py b/tests/test_script.py
+index a83bc07f..d17a83bb 100644
+--- a/tests/test_script.py
++++ b/tests/test_script.py
+@@ -192,7 +192,7 @@ def start_watching(self):
+ 
+     def stop_watching(self):
+         """Stop the watch command thread."""
+-        assert self.t.isAlive() # If it has already ended, something is wrong
++        assert self.t.is_alive() # If it has already ended, something is wrong
+         self.stopped = True
+         self.t.join(1)
+ 

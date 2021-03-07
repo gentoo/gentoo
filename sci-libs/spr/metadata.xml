@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-physics@gentoo.org</email>
+    <name>Gentoo Physics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    The package implements a variety of tools for categorization of
+    multivariate data such as boosted decision trees, bagging and
+    random forest, bump hunting, a multi-class learner and others.
+    It is used mostly in High Energy Physics.
+  </longdescription>
+  <use>
+    <flag name="root">Add <pkg>sci-physics/root</pkg> graphics and i/o
+    support</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">statpatrec</remote-id>
+  </upstream>
+</pkgmetadata>

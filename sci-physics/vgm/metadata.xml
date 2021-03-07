@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>o.freyermuth@googlemail.com</email>
+    <name>Oliver Freyermuth</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>amadio@gentoo.org</email>
+    <name>Guilherme Amadio</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <use>
+    <flag name="c++11">Build using the C++11 standard</flag>
+    <flag name="c++14">Build using the C++14 standard</flag>
+    <flag name="c++17">Build using the C++17 standard</flag>
+    <flag name="geant4">Enable interaction with Geant4(<pkg>sci-physics/geant</pkg>:4)</flag>
+    <flag name="root">Enable interaction with ROOT (<pkg>sci-physics/root</pkg>)</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">vmc-project/vgm</remote-id>
+  </upstream>
+</pkgmetadata>

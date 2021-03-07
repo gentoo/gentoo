@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+		<email>zlogene@gentoo.org</email>
+		<name>Mikle Kolyada</name>
+		</maintainer>
+	<longdescription>
+		Fluxbox is yet another windowmanager for X. Originally based upon the
+		Blackbox 0.61.1 code, Fluxbox has been extended to include a new tabbed
+		window handling mechanism, an improved configurable window title bar,
+		better KDE and GNOME integration, an integrated key grabber and
+		countless additional features.
+	</longdescription>
+	<use>
+		<flag name="slit">Enables the Fluxbox slit (or dock)</flag>
+		<flag name="systray">Enables the system tray in the Fluxbox toolbar</flag>
+		<flag name="toolbar">Enables the Fluxbox toolbar</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">fluxbox</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,24 @@
+From 6d28e03e9c5bc92ddfb92d2787af6a7d3baff24d Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Wed, 15 Jul 2020 23:59:05 +1200
+Subject: Disable autoinstall and sign functionality
+
+These aren't helpful for Gentoo
+---
+ Makefile.PL | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index c3d895e..ea29f9b 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -13,6 +13,4 @@ requires('Class::Accessor');
+ requires('Text::vFile::asData');
+ requires('MIME::QuotedPrint');
+ requires('Class::ReturnValue');
+-auto_install();
+-sign();
+ WriteAll;
+-- 
+2.27.0
+

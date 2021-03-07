@@ -1,0 +1,36 @@
+https://github.com/libofx/libofx/pull/40
+https://bugs.gentoo.org/693458
+
+From a647c1db417459bded7fb47af69dff375eae83c1 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 6 Mar 2021 05:57:49 +0000
+Subject: [PATCH] configure.ac: Respect --libdir for OpenSP
+
+When searching for OpenSP, we want to use
+the libdir passed in to autotools (--libdir)
+to ensure that we find the library
+for the correct ABI.
+
+It is possible that we pick up the wrong
+copy from e.g. /usr/lib/ where a 32-bit
+copy of OpenSP exists
+when we're in the middle of a 64-bit build.
+
+Use ${libdir} to ensure we respect
+any preferences/information given and
+search for OpenSP in the right place.
+
+Bug: https://bugs.gentoo.org/693458
+Signed-off-by: Sam James <sam@gentoo.org>
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -112,7 +112,7 @@ AC_ARG_WITH(opensp-libs,
+ [  --with-opensp-libs=PATH         specify where to look for libosp
+                                   - default is /usr/lib],
+ 			OPENSPLIBPATH="$with_opensp_libs",
+-			OPENSPLIBPATH="/usr/lib")
++			OPENSPLIBPATH="${libdir}")
+ 
+ 			echo $OPENSPLIBPATH
+ for d in /usr/include/OpenSP /usr/local/include/OpenSP /usr/include/sp/generic /usr/local/include/sp/generic; do

@@ -1,0 +1,64 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Enable automatic non-native program execution by the kernel.
+
+# Defaulting to OC should be safe because it comes down to:
+#  - do we trust the interp itself to not be malicious?  yes; we built it.
+#  - do we trust the programs we're running?  ish; same permission as native
+#    binaries apply.  so if user can do bad stuff natively, cross isn't worse.
+: ${QEMU_BINFMT_FLAGS:=OC}
+
+depend() {
+	after procfs
+}
+
+start() {
+	ebegin "Registering qemu-user binaries (flags: ${QEMU_BINFMT_FLAGS})"
+
+	if [ ! -d /proc/sys/fs/binfmt_misc ] ; then
+		modprobe -q binfmt_misc
+	fi
+
+	if [ ! -d /proc/sys/fs/binfmt_misc ] ; then
+		eend 1 "You need support for 'misc binaries' in your kernel!"
+		return
+	fi
+
+	if [ ! -f /proc/sys/fs/binfmt_misc/register ] ; then
+		mount -t binfmt_misc -o nodev,noexec,nosuid \
+			binfmt_misc /proc/sys/fs/binfmt_misc >/dev/null 2>&1
+		eend $? || return
+	fi
+
+	# Probe the native cpu type so we don't try registering them.
+	local cpu="$(uname -m)"
+	case "${cpu}" in
+	armv[4-9]*)
+		cpu="arm"
+		;;
+	i386|i486|i586|i686|i86pc|BePC|x86_64)
+		cpu="i386"
+		;;
+	m68k)
+		cpu="m68k"
+		;;
+	mips*)
+		cpu="mips"
+		;;
+	"Power Macintosh"|ppc|ppc64)
+		cpu="ppc"
+		;;
+	s390*)
+		cpu="s390"
+		;;
+	sh*)
+		cpu="sh"
+		;;
+	sparc*)
+		cpu="sparc"
+		;;
+	esac
+
+	# Register the interpreter for each cpu except for the native one.

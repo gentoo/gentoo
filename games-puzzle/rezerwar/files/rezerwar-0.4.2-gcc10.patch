@@ -1,0 +1,12 @@
+diff -r 3f22f3a0051b src/events.c
+--- a/src/events.c	Sat Oct 03 14:42:28 2020 +0000
++++ b/src/events.c	Sat Oct 03 14:42:42 2020 +0000
+@@ -38,7 +38,7 @@
+ 
+ extern Board *board;
+ extern Configuration *conf;
+-SDL_Surface *screen;
++extern SDL_Surface *screen;
+ Cube *speedy;			// currently accelerated cube
+ 
+ 

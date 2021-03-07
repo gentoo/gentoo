@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>whissi@gentoo.org</email>
+		<name>Thomas Deutschmann</name>
+	</maintainer>
+	<use>
+		<flag name="7za">Add support for extracting 7za files</flag>
+		<flag name="rar">Add support for extracting rar files</flag>
+		<flag name="unzip">Add support for extracting zip files</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">sabnzbd/sabnzbd</remote-id>
+	</upstream>
+</pkgmetadata>

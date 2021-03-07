@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tommy@gentoo.org</email>
+		<name>Thomas Sachau (Tommy[D])</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">freenet/fred</remote-id>
+	</upstream>
+	<use>
+		<flag name="nss">Use nss for crypto operations, if it is the fastest way</flag>
+	</use>
+</pkgmetadata>

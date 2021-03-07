@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -87,7 +87,7 @@ ifeq ($(CC),icc)
+ 	CFLAGS += -mtune=core2 -march=core2
+ endif
+ 
+-LIBS += -lecm -lgmp
++LIBS += -lecm -lgmp -lgomp
+ 
+ CFLAGS += $(OPT_FLAGS) $(WARN_FLAGS) $(INC)
+ 	

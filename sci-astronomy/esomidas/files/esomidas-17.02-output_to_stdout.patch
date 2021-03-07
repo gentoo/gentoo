@@ -1,0 +1,42 @@
+From: Ole Streicher <debian@liska.ath.cx>
+Date: Wed, 1 Mar 2017 09:31:31 +0100
+Subject: Run compilation in foreground and write log to stdout instead of a
+ file.
+
+---
+ install/unix/install3 | 14 ++------------
+ 1 file changed, 2 insertions(+), 12 deletions(-)
+
+diff --git a/install/unix/install3 b/install/unix/install3
+index ef2a415..1cc0b4e 100755
+--- a/install/unix/install3
++++ b/install/unix/install3
+@@ -112,8 +112,6 @@ fi
+ 
+ echo ""
+ echo "WARNING: MIDAS installation will delete all dependent files."
+-echo "         It will run in background and the output will be sent to"
+-echo "         the file <$MID_HOME/tmp/install.$$>"
+ echo ""
+ echo "Do you want to continue [yn]? (y): " $SV_NONL
+ unset answ
+@@ -138,17 +136,9 @@ fi
+ 
+ # do we have the 'time' command?
+ if [ $CMND_YES = 2 ] ; then
+-   /bin/bash $MID_INSTALL/install -i > $MID_HOME/tmp/install.$$ 2>&1 &
++   /bin/bash $MID_INSTALL/install -i
+ else
+-   time /bin/bash $MID_INSTALL/install -i > $MID_HOME/tmp/install.$$ 2>&1 &
++   time /bin/bash $MID_INSTALL/install -i
+ fi
+ 
+-echo "Running install in background"
+-echo "Results are coming in $MID_HOME/tmp/install.$$"
+-if [ "$1" = "-a" ]; then 
+-  echo "Waiting for MIDAS installation to finish..."  $SV_NONL
+-  wait
+-  echo "Finished."
+-  echo ""
+-fi
+ exit 0

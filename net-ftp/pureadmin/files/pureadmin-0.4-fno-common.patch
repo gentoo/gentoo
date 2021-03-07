@@ -1,0 +1,42 @@
+https://bugs.gentoo.org/707206
+--- a/src/globals.h
++++ b/src/globals.h
+@@ -90,7 +90,7 @@ typedef enum {
+ 	RUNMODE_INETD    /* Running through inetd or similar */
+ } ftp_runmode_t;
+ 
+-ftp_runmode_t ftp_runmode;
++extern ftp_runmode_t ftp_runmode;
+ 
+ void exit_program (void);
+ 
+--- a/src/gui_helper.c
++++ b/src/gui_helper.c
+@@ -39,6 +39,7 @@
+ #include "binreloc.h"
+ #include "system_accounts.h"
+ 
++extern ftp_runmode_t ftp_runmode;
+ EggStatusIcon *status_icon = NULL;
+ 
+ static gchar *sec_to_time (gulong sec)
+--- a/src/main.c
++++ b/src/main.c
+@@ -53,6 +53,7 @@
+ gboolean timeout_update_activity (gpointer data);
+ gboolean timeout_check_for_availability (gpointer data);
+ 
++ftp_runmode_t ftp_runmode;
+ static ftp_runmode_t get_ftp_runmode (void);
+ static void activity_show_error_message (const gchar *errmsg);
+ static void activity_show_welcome_message (void);
+--- a/src/mainwin_cb.c
++++ b/src/mainwin_cb.c
+@@ -46,6 +46,7 @@
+ 
+ popup_src_t popup_source;
+ 
++extern ftp_runmode_t ftp_runmode;
+ gboolean usermanager_initialized = FALSE;
+ 
+ static void update_adv_info (void)

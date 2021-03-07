@@ -1,0 +1,55 @@
+Adds an autotools build system to fix the many issues with the custom build
+system (ignoring CC, CFLAGS, DESTDIR, not installing the .so file properly).
+
+Contributed by Nick Fortino (nfortino@gmail.com) 2/1/2009
+
+Updated by Jonathan Callen <abcd@gentoo.org> 2009-09-11
+
+--- Makefile.am
++++ Makefile.am
+@@ -0,0 +1,20 @@
++include_HEADERS = src/lockdev.h src/ttylock.h
++
++lib_LTLIBRARIES = liblockdev.la
++liblockdev_la_SOURCES = src/lockdev.c
++liblockdev_version = -version-info $(LOCKDEV_CURRENT_INTERFACE):$(LOCKDEV_INTERFACE_AGE):$(LOCKDEV_BINARY_AGE)
++liblockdev_la_LDFLAGS = $(liblockdev_version)
++
++man_MANS = docs/lockdev.3
++
++manpage_links = \
++	dev_lock.3 \
++	dev_unlock.3 \
++	dev_relock.3 \
++	dev_testlock.3 \
++	liblockdev.3
++
++install-data-hook:
++	for page in $(manpage_links); do \
++		$(LN_S) -f lockdev.3 $(DESTDIR)$(man3dir)/$${page} ; \
++	done
+--- configure.ac
++++ configure.ac
+@@ -0,0 +1,22 @@
++AC_INIT([lockdev], [1.0.3], [BUG-REPORT-ADDRESS])
++AC_CONFIG_AUX_DIR([scripts])
++AM_INIT_AUTOMAKE
++
++LOCKDEV_CURRENT_INTERFACE=1
++LOCKDEV_INTERFACE_AGE=0
++LOCKDEV_BINARY_AGE=0
++
++AC_SUBST([LOCKDEV_CURRENT_INTERFACE])
++AC_SUBST([LOCKDEV_INTERFACE_AGE])
++AC_SUBST([LOCKDEV_BINARY_AGE])
++
++LT_INIT([disable-static])
++
++AC_CANONICAL_BUILD
++AC_CANONICAL_HOST
++
++# Checks for programs.
++AC_PROG_LN_S
++
++AC_CONFIG_FILES([Makefile])
++AC_OUTPUT

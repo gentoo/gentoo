@@ -1,0 +1,20 @@
+--- cxprolog-0.98.2.orig/pl/test_io.pl	2016-01-23 22:07:48.000000000 +0100
++++ cxprolog-0.98.2/pl/test_io.pl	2020-07-18 21:26:20.911026745 +0200
+@@ -17,7 +17,7 @@
+ 	concat([X,'.\n'],T).
+ 
+ test_file_io(L,Encoding) :-
+-	FileName = 'test_file_io_1.txt',
++	FileName = '/tmp/test_file_io_1.txt',
+ 	open(FileName,write,S1,[encoding(Encoding),bom(true)]),
+ 	name(T,L),
+ 	write(S1,T),
+@@ -25,7 +25,7 @@
+ 	open(FileName,read,S2),    % relies on bom
+ 	read(S2,X),
+ 	close(S2),
+-	%fs_delete(FileName),
++	fs_delete(FileName),
+ 	concat([X,'.\n'],T).
+ 
+ :-	current_prolog_flag(encoding,Curr),

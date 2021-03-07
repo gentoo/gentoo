@@ -1,0 +1,43 @@
+#!/sbin/openrc-run
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+: ${CFGFILE:=/etc/quagga/${SVCNAME}.conf}
+
+pidfile=/run/quagga/${SVCNAME}.pid
+
+command=/usr/sbin/${SVCNAME}
+command_args="-d -f ${CFGFILE} ${EXTRA_OPTS} --pid_file ${pidfile}"
+
+get_service_config() {
+	[ -e "$CFGFILE" ] || return
+
+	awk '$1 == "'$1'" { s=$2 } END { print s }' "$CFGFILE"
+}
+
+depend() {
+	config "$CFGFILE"
+
+    [ ${SVCNAME} = "zebra" ] && need net || need zebra
+
+	[ "$(get_service_config log)" = "syslog" ] && \
+		use logger
+}
+
+start_pre() {
+    if [ ! -e "${CFGFILE}" ] ; then
+        eerror "Before starting ${SVCNAME} you have to configure it, by creating"
+        eerror "a ${CFGFILE} file."
+        eerror ""
+        eerror "A sample file has been installed in `echo /usr/share/doc/quagga-*/samples/${SVCNAME}.conf.sample*`"
+        return 1
+    fi
+
+	checkpath -d -m 0750 -o quagga:quagga /run/quagga
+
+	if [ ${SVCNAME} = "zebra" ]; then
+		ebegin "Cleaning up stale zebra routes..."
+		ip route flush proto zebra
+		eend $?
+	fi
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>zlogene@gentoo.org</email>
+	<name>Mikle Kolyada</name>
+</maintainer>
+<use>
+	<flag name="berkdb">
+		Build the pam_userdb module, that allows to authenticate users
+		against a Berkeley DB file. Please note that enabling this USE
+		flag will create a PAM module that links to the Berkeley DB (as
+		provided by <pkg>sys-libs/db</pkg>) installed in /usr/lib and
+		will thus not work for boot-critical services authentication.
+	</flag>
+		</use>
+<upstream>
+	<remote-id type="github">linux-pam/linux-pam</remote-id>
+	<remote-id type="cpe">cpe:/a:kernel:linux-pam</remote-id>
+</upstream>
+</pkgmetadata>

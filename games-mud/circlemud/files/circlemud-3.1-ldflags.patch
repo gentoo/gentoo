@@ -1,0 +1,65 @@
+--- src/Makefile.in.old	2010-09-16 12:19:26.000000000 +0200
++++ src/Makefile.in	2010-09-16 12:19:41.000000000 +0200
+@@ -54,7 +54,7 @@
+ 	$(MAKE) $(BINDIR)/circle
+ 
+ $(BINDIR)/circle : $(OBJFILES)
+-	$(CC) -o $(BINDIR)/circle $(PROFILE) $(OBJFILES) $(LIBS)
++	$(CC) $(LDFLAGS) -o $(BINDIR)/circle $(PROFILE) $(OBJFILES) $(LIBS)
+ 
+ clean:
+ 	rm -f *.o
+--- src/util/Makefile.in.old	2010-09-16 12:31:01.000000000 +0200
++++ src/util/Makefile.in	2010-09-16 12:32:08.000000000 +0200
+@@ -52,40 +52,40 @@
+ 
+ $(BINDIR)/autowiz: autowiz.c $(INCDIR)/conf.h $(INCDIR)/sysdep.h \
+ 	$(INCDIR)/structs.h $(INCDIR)/utils.h $(INCDIR)/db.h
+-	$(CC) $(CFLAGS) -o $(BINDIR)/autowiz autowiz.c
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $(BINDIR)/autowiz autowiz.c
+ 
+ $(BINDIR)/delobjs: delobjs.c $(INCDIR)/conf.h $(INCDIR)/sysdep.h \
+ 	$(INCDIR)/structs.h $(INCDIR)/utils.h
+-	$(CC) $(CFLAGS) -o $(BINDIR)/delobjs delobjs.c
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $(BINDIR)/delobjs delobjs.c
+ 
+ $(BINDIR)/listrent: listrent.c $(INCDIR)/conf.h $(INCDIR)/sysdep.h \
+ 	$(INCDIR)/structs.h
+-	$(CC) $(CFLAGS) -o $(BINDIR)/listrent listrent.c
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $(BINDIR)/listrent listrent.c
+ 
+ $(BINDIR)/mudpasswd: mudpasswd.c $(INCDIR)/conf.h $(INCDIR)/sysdep.h \
+ 	$(INCDIR)/structs.h $(INCDIR)/utils.h
+-	$(CC) $(CFLAGS) -o $(BINDIR)/mudpasswd mudpasswd.c @CRYPTLIB@
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $(BINDIR)/mudpasswd mudpasswd.c @CRYPTLIB@
+ 
+ $(BINDIR)/play2to3: play2to3.c $(INCDIR)/conf.h $(INCDIR)/sysdep.h
+-	$(CC) $(CFLAGS) -o $(BINDIR)/play2to3 play2to3.c
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $(BINDIR)/play2to3 play2to3.c
+ 
+ $(BINDIR)/purgeplay: purgeplay.c $(INCDIR)/conf.h $(INCDIR)/sysdep.h \
+ 	$(INCDIR)/structs.h $(INCDIR)/utils.h
+-	$(CC) $(CFLAGS) -o $(BINDIR)/purgeplay purgeplay.c
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $(BINDIR)/purgeplay purgeplay.c
+ 
+ $(BINDIR)/shopconv: shopconv.c $(INCDIR)/conf.h $(INCDIR)/sysdep.h \
+ 	$(INCDIR)/structs.h $(INCDIR)/db.h $(INCDIR)/utils.h $(INCDIR)/shop.h
+-	$(CC) $(CFLAGS) -o $(BINDIR)/shopconv shopconv.c
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $(BINDIR)/shopconv shopconv.c
+ 
+ $(BINDIR)/showplay: showplay.c $(INCDIR)/conf.h $(INCDIR)/sysdep.h \
+ 	$(INCDIR)/structs.h
+-	$(CC) $(CFLAGS) -o $(BINDIR)/showplay showplay.c
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $(BINDIR)/showplay showplay.c
+ 
+ $(BINDIR)/sign: sign.c $(INCDIR)/conf.h $(INCDIR)/sysdep.h
+-	$(CC) $(CFLAGS) -o $(BINDIR)/sign sign.c @NETLIB@
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $(BINDIR)/sign sign.c @NETLIB@
+ 
+ $(BINDIR)/split: split.c $(INCDIR)/conf.h $(INCDIR)/sysdep.h
+-	$(CC) $(CFLAGS) -o $(BINDIR)/split split.c
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $(BINDIR)/split split.c
+ 
+ $(BINDIR)/wld2html: wld2html.c $(INCDIR)/conf.h $(INCDIR)/sysdep.h
+-	$(CC) $(CFLAGS) -o $(BINDIR)/wld2html wld2html.c
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $(BINDIR)/wld2html wld2html.c

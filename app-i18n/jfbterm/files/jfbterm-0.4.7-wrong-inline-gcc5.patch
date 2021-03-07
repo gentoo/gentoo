@@ -1,0 +1,24 @@
+Source: http://pkgs.fedoraproject.org/cgit/rpms/jfbterm.git/plain/jfbterm-0.4.7-wrong-inline-gcc5.patch
+
+--- jfbterm-0.4.7/pen.c.inline_gcc5	2003-08-30 03:48:16.000000000 +0900
++++ jfbterm-0.4.7/pen.c	2015-02-09 10:36:47.182751545 +0900
+@@ -62,7 +62,7 @@
+ 	p->attr = q->attr;
+ }
+ 
+-inline void tpen_off_all_attribute(TPen* p)
++void tpen_off_all_attribute(TPen* p)
+ {
+ 	p->bcol = 0;
+ 	p->fcol = 7;
+--- jfbterm-0.4.7/pen.h.inline_gcc5	2002-07-17 01:21:23.000000000 +0900
++++ jfbterm-0.4.7/pen.h	2015-02-09 10:36:52.058705503 +0900
+@@ -58,7 +58,7 @@
+ void tpen_init(TPen* p);
+ void tpen_final(TPen* p);
+ void tpen_copy(TPen* p, TPen* q);
+-inline void tpen_off_all_attribute(TPen* p);
++void tpen_off_all_attribute(TPen* p);
+ void tpen_higlight(TPen* p);
+ void tpen_dehiglight(TPen* p);
+ void tpen_underline(TPen* p);

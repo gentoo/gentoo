@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="project">
+        <email>perl@gentoo.org</email>
+        <name>Gentoo Perl Project</name>
+    </maintainer>
+    <upstream>
+        <remote-id type="cpan">Perl-Tags</remote-id>
+        <remote-id type="cpan-module">App::Perl::Tags</remote-id>
+        <remote-id type="cpan-module">Perl::Tags</remote-id>
+        <remote-id type="cpan-module">Perl::Tags::Hybrid</remote-id>
+        <remote-id type="cpan-module">Perl::Tags::Naive</remote-id>
+        <remote-id type="cpan-module">Perl::Tags::Naive::Lib</remote-id>
+        <remote-id type="cpan-module">Perl::Tags::Naive::Moose</remote-id>
+        <remote-id type="cpan-module">Perl::Tags::Naive::Spiffy</remote-id>
+        <remote-id type="cpan-module">Perl::Tags::PPI</remote-id>
+        <remote-id type="cpan-module">Perl::Tags::Tag</remote-id>
+        <remote-id type="cpan-module">Perl::Tags::Tag::After</remote-id>
+        <remote-id type="cpan-module">Perl::Tags::Tag::Around</remote-id>
+        <remote-id type="cpan-module">Perl::Tags::Tag::Augment</remote-id>
+        <remote-id type="cpan-module">Perl::Tags::Tag::Before</remote-id>
+        <remote-id type="cpan-module">Perl::Tags::Tag::Class</remote-id>
+        <remote-id type="cpan-module">Perl::Tags::Tag::Constant</remote-id>
+        <remote-id type="cpan-module">Perl::Tags::Tag::Field</remote-id>
+        <remote-id type="cpan-module">Perl::Tags::Tag::Has</remote-id>
+        <remote-id type="cpan-module">Perl::Tags::Tag::Label</remote-id>
+        <remote-id type="cpan-module">Perl::Tags::Tag::Method</remote-id>
+        <remote-id type="cpan-module">Perl::Tags::Tag::Override</remote-id>
+        <remote-id type="cpan-module">Perl::Tags::Tag::Package</remote-id>
+        <remote-id type="cpan-module">Perl::Tags::Tag::Recurse</remote-id>
+        <remote-id type="cpan-module">Perl::Tags::Tag::Role</remote-id>
+        <remote-id type="cpan-module">Perl::Tags::Tag::Stub</remote-id>
+        <remote-id type="cpan-module">Perl::Tags::Tag::Sub</remote-id>
+        <remote-id type="cpan-module">Perl::Tags::Tag::Var</remote-id>
+        <remote-id type="cpan-module">Test::Perl::Tags</remote-id>
+    </upstream>
+</pkgmetadata>

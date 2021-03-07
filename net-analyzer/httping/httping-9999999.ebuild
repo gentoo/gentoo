@@ -1,0 +1,70 @@
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=7
+inherit git-r3 toolchain-funcs
+
+DESCRIPTION="like ping but for HTTP requests"
+HOMEPAGE="https://www.vanheusden.com/httping/"
+EGIT_REPO_URI="https://github.com/flok99/httping"
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS=""
+IUSE="debug fftw libressl l10n_nl ncurses ssl +tfo"
+
+RDEPEND="
+	fftw? ( sci-libs/fftw:3.0 )
+	ncurses? ( sys-libs/ncurses:0= )
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)
+"
+DEPEND="
+	${RDEPEND}
+	ncurses? ( virtual/pkgconfig )
+"
+
+# This would bring in test? ( dev-util/cppcheck ) but unlike
+# upstream we should only care about compile/run time testing
+RESTRICT="test"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.2.1-flags.patch
+)
+
+src_prepare() {
+	default
+
+	# doman does not get PN-LANG.CAT so we move things around and then point at
+	# it later
+	if use l10n_nl; then
+		mkdir nl || die
+		mv httping-nl.1 nl/httping.1 || die
+	fi
+}
+
+src_configure() {
+	# not an autotools script
+	echo > makefile.inc || die
+
+	use ncurses && LDFLAGS+=" $( $( tc-getPKG_CONFIG ) --libs ncurses )"
+}
+
+src_compile() {
+	emake \
+		CC="$(tc-getCC)" \
+		FW=$(usex fftw) \
+		DEBUG=$(usex debug) \
+		NC=$(usex ncurses) \
+		SSL=$(usex ssl) \
+		TFO=$(usex tfo)
+}
+
+src_install() {
+	dobin httping
+	doman httping.1
+
+	use l10n_nl && doman -i18n=nl nl/httping.1
+}

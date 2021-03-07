@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">XML-Compile</remote-id>
+    <remote-id type="cpan-module">XML::Compile</remote-id>
+    <remote-id type="cpan-module">XML::Compile::Iterator</remote-id>
+    <remote-id type="cpan-module">XML::Compile::Schema</remote-id>
+    <remote-id type="cpan-module">XML::Compile::Schema::BuiltInFacets</remote-id>
+    <remote-id type="cpan-module">XML::Compile::Schema::BuiltInTypes</remote-id>
+    <remote-id type="cpan-module">XML::Compile::Schema::Instance</remote-id>
+    <remote-id type="cpan-module">XML::Compile::Schema::NameSpaces</remote-id>
+    <remote-id type="cpan-module">XML::Compile::Schema::Specs</remote-id>
+    <remote-id type="cpan-module">XML::Compile::Translate</remote-id>
+    <remote-id type="cpan-module">XML::Compile::Translate::Reader</remote-id>
+    <remote-id type="cpan-module">XML::Compile::Translate::Template</remote-id>
+    <remote-id type="cpan-module">XML::Compile::Translate::Writer</remote-id>
+    <remote-id type="cpan-module">XML::Compile::Util</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>vdr@gentoo.org</email>
+		<name>Gentoo VDR Project</name>
+	</maintainer>
+	<use>
+		<flag name="client">
+			Compile the VDR plugin vdr-streamdev-client
+			that acts like a dvb-budget card
+		</flag>
+		<flag name="server">
+			Compile the VDR plugin vdr-streamdev-server
+			that allows remote systems to access the
+			DVB cards used for the local VDR
+		</flag>
+	</use>
+</pkgmetadata>

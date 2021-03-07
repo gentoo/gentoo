@@ -1,0 +1,11 @@
+--- sipp-3.6.0/Makefile.am.o	2019-12-22 10:40:37.766229344 +0200
++++ sipp-3.6.0/Makefile.am	2019-12-22 10:42:09.006266083 +0200
+@@ -172,7 +172,7 @@
+ 
+ # Ensure that after a reconfigure the source is cleaned.
+ .autoclean: Makefile
+-	make clean
++	$(MAKE) clean
+ 	echo > .autoclean
+ BUILT_SOURCES = .autoclean
+ 

@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Haskeline provides a user interface for line input in command-line
+		programs.  This library is similar in purpose to readline, but since
+		it is written in Haskell it is (hopefully) more easily used in other
+		Haskell programs.
+		
+		Haskeline runs both on POSIX-compatible systems and on Windows.
+	</longdescription>
+	<use>
+		<flag name="terminfo">Use the terminfo package for POSIX consoles.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">judah/haskeline</remote-id>
+	</upstream>
+</pkgmetadata>

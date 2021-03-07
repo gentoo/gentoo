@@ -1,0 +1,79 @@
+Fix -Wformat-security issues, as we do not want to install potentially
+dangerous example C++ files on user systems:
+* ex18.C: In function ‘int main(int, char**)’:
+* ex18.C:92:27: warning: format not a string literal and no format arguments [-Wformat-security]
+*   sprintf(filename, argv[i]);
+
+--- a/examples/ex18.C
++++ b/examples/ex18.C
+@@ -89,7 +89,7 @@
+         exit(1);
+       }
+       else{
+-	sprintf(filename, argv[i]);
++	sprintf(filename, "%s", argv[i]);
+         continue;
+       }
+     }
+--- a/examples/ex3.C
++++ b/examples/ex3.C
+@@ -71,7 +71,7 @@
+         exit(1);
+       }
+       else{
+-	sprintf(filename, argv[i]);
++	sprintf(filename, "%s", argv[i]);
+         continue;
+       }
+     }
+--- a/examples/ex5.C
++++ b/examples/ex5.C
+@@ -308,7 +308,7 @@
+         exit(1);
+       }
+       else{
+-        sprintf(filename1, argv[i]);
++        sprintf(filename1, "%s", argv[i]);
+         continue;
+       }
+     }
+@@ -318,7 +318,7 @@
+         exit(1);
+       }
+       else{
+-        sprintf(filename2, argv[i]);
++        sprintf(filename2, "%s", argv[i]);
+         continue;
+       }
+     }
+--- a/examples/ex7.C
++++ b/examples/ex7.C
+@@ -68,7 +68,7 @@
+         exit(1);
+       }
+       else{
+-	sprintf(datafile, argv[i]);
++	sprintf(datafile, "%s", argv[i]);
+         continue;
+       }
+     }
+@@ -78,7 +78,7 @@
+         exit(1);
+       }
+       else{
+-	sprintf(parmfile, argv[i]);
++	sprintf(parmfile, "%s", argv[i]);
+ 	params.read(parmfile);
+         continue;
+       }
+--- a/ga/gaerror.C
++++ b/ga/gaerror.C
+@@ -21,7 +21,7 @@
+ static STD_OSTREAM *__gaErrStream = & STD_CERR;
+ #endif
+ static GABoolean __gaErrFlag = gaTrue;
+-static char *__gaErrStr[] = {
++static const char *__gaErrStr[] = {
+   "error reading from file: ",
+   "error writing to file: ",
+   "unexpected EOF encountered during read.",

@@ -1,0 +1,34 @@
+From 885891cf60371674406cdff16b395e25cc13d8ae Mon Sep 17 00:00:00 2001
+From: Sebastian Keller <sebastian-keller@gmx.de>
+Date: Tue, 28 Jul 2020 22:50:53 +0200
+Subject: [PATCH] Don't drop the last model when updating the selector table
+
+The last assigned model in the Obj vector was at position modelCnt.
+Resizing the vector to modelCnt removes the last model, which later
+results in a crash when trying to access it.
+
+See https://github.com/schrodinger/pymol-open-source/issues/119
+---
+ layer3/Selector.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/layer3/Selector.cpp b/layer3/Selector.cpp
+index 546725b..637cd60 100644
+--- a/layer3/Selector.cpp
++++ b/layer3/Selector.cpp
+@@ -7284,11 +7284,11 @@ static sele_array_t SelectorUpdateTableSingleObject(PyMOLGlobals * G, ObjectMole
+           result[obj->SeleBase + at] = tag;
+         }
+       }
+     }
+   }
+-  I->Obj.resize(modelCnt);
++  I->Obj.resize(modelCnt + 1);
+   I->Table.resize(c);
+ 
+   PRINTFD(G, FB_Selector)
+     "SelectorUpdateTableSingleObject-Debug: leaving...\n" ENDFD;
+ 
+--
+libgit2 1.0.1
+

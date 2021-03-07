@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>office@gentoo.org</email>
+    <name>Gentoo Office project</name>
+  </maintainer>
+  <longdescription>LibreOffice is the successor of OpenOffice.org. 
+This ebuild allows you to compile it yourself. Unfortunately this 
+compilation can take up to a day depending on the speed of your 
+computer. It will however make a snappier LibreOffice than the binary 
+version</longdescription>
+  <use>
+    <flag name="base">Enable full support for LibreOffice Base databases (involves additional bundled libs)</flag>
+    <flag name="clang">Use Clang compiler instead of GCC</flag>
+    <flag name="coinmp">Use sci-libs/coinor-mp as alternative solver</flag>
+    <flag name="googledrive">Enable support for remote files on Google Drive</flag>
+    <flag name="mariadb">Prefer mariadb connector over mysql connector</flag>
+    <flag name="odk">Build the Office Development Kit</flag>
+    <flag name="pdfimport">Enable PDF import via the Poppler library</flag>
+    <flag name="vulkan">Enable Vulkan usage via the skia library (clang recommended)</flag>
+  </use>
+</pkgmetadata>

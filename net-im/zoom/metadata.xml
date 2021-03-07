@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>ulm@gentoo.org</email>
+  </maintainer>
+  <maintainer type="person">
+    <email>dilfridge@gentoo.org</email>
+  </maintainer>
+  <maintainer type="person">
+    <email>mva@gentoo.org</email>
+  </maintainer>
+  <use>
+    <flag name="bundled-libjpeg-turbo">Use bundled libturbojpeg
+      instead of <pkg>media-libs/libjpeg-turbo</pkg></flag>
+    <flag name="bundled-qt">Use bundled Qt and icu instead of
+      system-wide libs</flag>
+  </use>
+</pkgmetadata>

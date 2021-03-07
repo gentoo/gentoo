@@ -1,0 +1,44 @@
+--- a/libutil/args.c
++++ b/libutil/args.c
+@@ -39,7 +39,7 @@
+ #define ARGS_GFIND	3
+ #define ARGS_BOTH	4
+ 
+-int type;
++static int type;
+ const char **argslist;
+ FILE *ip;
+ GFIND *gp;
+--- a/libutil/convert.c
++++ b/libutil/convert.c
+@@ -46,7 +46,7 @@
+ 
+ #include "convert.h"
+ static int debug = 0;
+-int flags;
++static int flags;
+ 
+ /**
+  * This module converts records before output.
+--- a/libutil/gpathop.c
++++ b/libutil/gpathop.c
+@@ -49,7 +49,7 @@
+ static int opened;
+ static int created;
+ 
+-int openflags;
++static int openflags;
+ void
+ set_gpath_flags(int flags) {
+ 	openflags = flags;
+--- a/libutil/version.c
++++ b/libutil/version.c
+@@ -30,7 +30,7 @@
+ #endif
+ #include "version.h"
+ 
+-const char *copy = "\
++static const char *copy = "\
+ Copyright (c) %s Tama Communications Corporation\n\
+ License GPLv3+: GNU GPL version 3 or later <http://www.gnu.org/licenses/gpl.html>\n\
+ This is free software; you are free to change and redistribute it.\n\

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription lang="en">
+		Minecraft is a sandbox video game created and designed
+		by Swedish game designer Markus "Notch" Persson,
+		and later fully developed and published by Mojang.
+		This is the headless server for Minecraft.
+	</longdescription>
+	<longdescription lang="fr">
+		Minecraft est un jeu vidéo bac à sable créé et conçu par
+		le développeur Markus Person (alias "Notch"), et plus
+		tard, pleinement maintenu et édité par Mojang.
+		Ceci est le serveur "headless" pour Minecraft.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://bugs.mojang.com/projects/MC/issues</bugs-to>
+		<maintainer status="active">
+			<name>Mojang</name>
+		</maintainer>
+	</upstream>
+</pkgmetadata>

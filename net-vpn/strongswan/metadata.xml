@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>patrick@gentoo.org</email>
+		<name>Patrick Lauer</name>
+	</maintainer>
+	<longdescription lang="en">
+		StrongSwan is direct descendant of the discontinued FreeS/WAN project.
+		As an IPsec based VPN solution which is focused on security and ease of
+		use, it fully implements the IKEv1/IKEv2 protocols, MOBIKE, NAT-Traversal
+		via UDP encapsulation (incl. port floating) and Dead Peer Detection. It
+		also fully supports the Linux 2.6 IPsec stack, IPv6, certificates/keys on
+		Smartcards and virtual IP address pools.
+	</longdescription>
+	<use>
+		<flag name="constraints">Enable advanced X.509 constraint checking plugin</flag>
+		<flag name="dhcp">Enable server support for querying virtual IP addresses for clients from a DHCP server. (IKEv2 only)</flag>
+		<flag name="eap">Enable support for the different EAP modules that are supported</flag>
+		<flag name="farp">Enable faking of ARP responses for virtual IP addresses assigned to clients (IKEv2 only)</flag>
+		<flag name="gcrypt">Enable <pkg>dev-libs/libgcrypt</pkg> plugin which provides 3DES, AES, Blowfish, Camellia, CAST, DES, Serpent and Twofish ciphers along with MD4, MD5 and SHA1/2 hash algorithms, RSA and DH groups 1,2,5,14-18 and 22-24(4.4+). Also includes a software random number generator.</flag>
+		<flag name="non-root">Force IKEv1/IKEv2 daemons to normal user privileges. This might impose some restrictions mainly to the IKEv1 daemon. Disable only if you really require superuser privileges.</flag>
+		<flag name="openssl">Enable <pkg>dev-libs/openssl</pkg> plugin which is required for Elliptic Curve Cryptography (DH groups 19-21,25,26) and ECDSA. Also provides 3DES, AES, Blowfish, Camellia, CAST, DES, IDEA and RC5 ciphers along with MD2, MD4, MD5 and SHA1/2 hash algorithms, RSA and DH groups 1,2,5,14-18 and 22-24(4.4+) <pkg>dev-libs/openssl</pkg> has to be compiled with USE="-bindist".</flag>
+		<flag name="pkcs11">Enable pkcs11 support</flag>
+		<flag name="strongswan_plugins_aesni">Enable support for Intel AES-NI crypto plugin</flag>
+		<flag name="strongswan_plugins_bypass-lan">Enable support for the bypass-lan plugin</flag>
+		<flag name="strongswan_plugins_chapoly">Enable ChaCha20/Poly1305 AEAD implementation and ChaCha20 XOF plugin</flag>
+		<flag name="strongswan_plugins_forecast">Enable multicast and broadcast forwarding plugin</flag>
+		<flag name="strongswan_plugins_led">Enable support for the led plugin</flag>
+		<flag name="strongswan_plugins_lookip">Enable support for the lookip plugin</flag>
+		<flag name="strongswan_plugins_systime-fix">Enable support for the systime-fix plugin</flag>
+		<flag name="strongswan_plugins_unity">Enable support for the unity plugin</flag>
+		<flag name="strongswan_plugins_vici">Enable support for the vici plugin</flag>
+		<flag name="strongswan_plugins_blowfish">Enable support for the blowfish plugin</flag>
+		<flag name="strongswan_plugins_ccm">Enable support for the ccm plugin</flag>
+		<flag name="strongswan_plugins_ctr">Enable support for the ctr plugin</flag>
+		<flag name="strongswan_plugins_gcm">Enable support for the gcm plugin</flag>
+		<flag name="strongswan_plugins_ha">Enable support for the ha plugin</flag>
+		<flag name="strongswan_plugins_ipseckey">Enable support for the ipseckey plugin</flag>
+		<flag name="strongswan_plugins_newhope">Enable plugin that allows key exchange based on post-quantum computer New Hope algorithm</flag>
+		<flag name="strongswan_plugins_ntru">Enable support for the ntru plugin</flag>
+		<flag name="strongswan_plugins_padlock">Enable support for the padlock plugin</flag>
+		<flag name="strongswan_plugins_rdrand">Enable support for the rdrand plugin</flag>
+		<flag name="strongswan_plugins_save-keys">Enable plugin that saves IKE and/or ESP keys to files compatible with Wireshark (for debugging)</flag>
+		<flag name="strongswan_plugins_unbound">Enable support for the unbound plugin</flag>
+		<flag name="strongswan_plugins_whitelist">Enable support for the whitelist plugin</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:strongswan:strongswan</remote-id>
+	</upstream>
+</pkgmetadata>

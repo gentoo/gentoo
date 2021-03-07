@@ -1,0 +1,18 @@
+--- flexbackup	2005-06-16 20:28:04.577086588 -0700
++++ flexbackup	2005-06-16 22:21:14.787322560 -0700
+@@ -5396,10 +5396,10 @@
+ 	    my $shell = $1;
+ 	    my $ver = $2;
+ 	    if ($shell eq 'bash') {
+-		if ($ver =~ m/^2/) {
+-		    $::shelltype{$host} = 'bash2';
+-		} else {
++		if ($ver =~ m/^1/) {
+ 		    $::shelltype{$host} = 'bash1';
++		} else {
++		    $::shelltype{$host} = 'bash2';
+ 		}
+ 	    } else {
+ 		$::shelltype{$host} = $shell;
+
+ 	  	 

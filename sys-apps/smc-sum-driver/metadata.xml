@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		This is the kernel module for the Supermicro Update Manager (SUM).
+		It's needed to access specific low level elements, like BIOS.
+		Supermicro SuperDoctor5 will also need this kernel module.
+	</longdescription>
+</pkgmetadata>

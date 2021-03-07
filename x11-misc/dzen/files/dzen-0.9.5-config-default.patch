@@ -1,0 +1,95 @@
+--- a/config.mk
++++ b/config.mk
+@@ -4,7 +4,7 @@
+ # Customize below to fit your system
+ 
+ # paths
+-PREFIX = /usr/local
++PREFIX = /usr
+ MANPREFIX = ${PREFIX}/share/man
+ 
+ X11INC = /usr/X11R6/include
+@@ -19,55 +19,12 @@
+ # Comment  : Add # to the beginning of the respective lines
+ 
+ ## Option 1: No Xinerama no XPM no XFT
+-#LIBS = -L/usr/lib -lc -L${X11LIB} -lX11
+-#CFLAGS = -Wall -Os ${INCS} -DVERSION=\"${VERSION}\"
+-
+-
+-## Option 2: No Xinerama with XPM
+-#LIBS = -L/usr/lib -lc -L${X11LIB} -lX11 -lXpm
+-#CFLAGS = -Wall -Os ${INCS} -DVERSION=\"${VERSION}\" -DDZEN_XPM
+-
+-
+-# Option 3: With Xinerama no XPM
+-#LIBS = -L/usr/lib -lc -L${X11LIB} -lX11 -lXinerama
+-#CFLAGS = -Wall -Os ${INCS} -DVERSION=\"${VERSION}\" -DDZEN_XINERAMA
+-
+-
+-## Option 4: With Xinerama and XPM
+-#LIBS = -L/usr/lib -lc -L${X11LIB} -lX11 -lXinerama -lXpm
+-#CFLAGS = -Wall -Os ${INCS} -DVERSION=\"${VERSION}\" -DDZEN_XINERAMA -DDZEN_XPM
+-
+-
+-## Option 5: With XFT
+-LIBS = -L/usr/lib -lc -L${X11LIB} -lX11 `pkg-config --libs xft`
+-CFLAGS = -Wall -Os ${INCS} -DVERSION=\"${VERSION}\" -DDZEN_XFT `pkg-config --cflags xft`
+-
+-
+-## Option 6: With XPM and XFT
+-#LIBS = -L/usr/lib -lc -L${X11LIB} -lX11 -lXpm `pkg-config --libs xft`
+-#CFLAGS = -Wall -Os ${INCS} -DVERSION=\"${VERSION}\" -DDZEN_XPM -DDZEN_XFT `pkg-config --cflags xft`
+-
+-
+-## Option 7: With Xinerama and XPM and XFT
+-#LIBS = -L/usr/lib -lc -L${X11LIB} -lX11 -lXinerama -lXpm `pkg-config --libs xft`
+-#CFLAGS = -Wall -Os ${INCS} -DVERSION=\"${VERSION}\" -DDZEN_XINERAMA -DDZEN_XPM -DDZEN_XFT `pkg-config --cflags xft`
+-
+-
++LIBS = -lX11
++CFLAGS += -Wall ${INCS} -DVERSION=\"${VERSION}\"
+ 
+ # END of feature configuration
+ 
+-
+-LDFLAGS = ${LIBS}
+-
+-# Solaris, uncomment for Solaris
+-#CFLAGS = -fast ${INCS} -DVERSION=\"${VERSION}\"
+-#LDFLAGS = ${LIBS}
+-#CFLAGS += -xtarget=ultra
+-
+-# Debugging
+-#CFLAGS = ${INCS} -DVERSION=\"${VERSION}\" -std=gnu89 -pedantic -Wall -W -Wundef -Wendif-labels -Wshadow -Wpointer-arith -Wbad-function-cast -Wcast-align -Wwrite-strings -Wstrict-prototypes -Wmissing-prototypes -Wnested-externs -Winline -Wdisabled-optimization -O2 -pipe -DDZEN_XFT `pkg-config --cflags xft`
+-#LDFLAGS = ${LIBS}
++LDFLAGS += ${LIBS}
+ 
+ # compiler and linker
+-CC = gcc
+-LD = ${CC}
++LD = $(CC)
+--- a/gadgets/config.mk
++++ b/gadgets/config.mk
+@@ -1,7 +1,7 @@
+ # Customize below to fit your system
+ 
+ # paths
+-PREFIX = /usr/local
++PREFIX = /usr
+ MANPREFIX = ${PREFIX}/share/man
+ 
+ X11INC = /usr/X11R6/include
+@@ -10,9 +10,8 @@
+ X11LIB = /usr/X11R6/lib
+ LIBS = -L/usr/lib 
+ 
+-CFLAGS = -Os ${INCS} 
+-LDFLAGS = ${LIBS}
++CFLAGS += ${INCS} 
++LDFLAGS += ${LIBS}
+ 
+ # compiler and linker
+-CC = gcc
+-LD = ${CC}
++LD = $(CC)

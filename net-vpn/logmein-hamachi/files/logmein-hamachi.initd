@@ -1,0 +1,77 @@
+#!/sbin/openrc-run
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+DAEMON=/opt/logmein-hamachi/bin/hamachid
+PIDFILE=/var/run/logmein-hamachi/hamachid.pid
+
+depend() {
+	need net
+}
+
+checktun() {
+	[ $(uname -s) = "Linux" ] || return 0
+        [ -e /dev/net/tun ] && return 0
+        modprobe tun && return 0
+
+	eerror "TUN/TAP support is not available in the running kernel"
+	return 1
+}
+
+start_pre() {
+	checkpath -d /var/run/logmein-hamachi
+}
+
+start()
+{
+	# returns
+	#   0 if daemon has been started
+	#   1 if daemon was already running
+	#   2 if daemon could not be started
+
+	checktun || return 2
+
+	ebegin "Starting hamachi"
+
+	start-stop-daemon --quiet --start --exec "${DAEMON}" \
+		--pidfile "${PIDFILE}" -- -c "${CONFDIR}"
+	result=$?
+
+	if [ ${result} -eq 0 ] && [ -n "${NICKNAME}" ]; then
+		# it fails logging in immediately
+		sleep ${WAIT}
+		/usr/bin/hamachi login
+		if [ -z "$(/usr/bin/hamachi | grep 'logged in')" ]; then
+			start-stop-daemon --quiet --stop \
+			--exec "${DAEMON}" --pidfile "${PIDFILE}"
+			result=1
+		else
+			/usr/bin/hamachi set-nick "${NICKNAME}"
+		fi
+	fi
+
+	eend ${result}
+}
+
+stop()
+{
+	# returns
+	#   0 if daemon has been stopped
+	#   1 if daemon was already stopped
+	#   2 if daemon could not be stopped
+	#   other if a failure occurred
+
+	ebegin "Stopping hamachi"
+
+	/usr/bin/hamachi logout
+	start-stop-daemon --quiet --stop --exec "${DAEMON}" \
+		--pidfile "${PIDFILE}"
+
+	eend $?
+}
+
+status() {
+        service_started "${SVCNAME}" || return 1
+        /usr/bin/hamachi
+        /usr/bin/hamachi list
+}

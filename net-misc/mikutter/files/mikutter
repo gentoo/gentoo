@@ -1,0 +1,6 @@
+#!/bin/bash
+
+EPREFIX=${0%/usr/bin/mikutter}
+
+DISABLE_BUNDLER_SETUP=1 $EPREFIX/usr/bin/ruby19 $EPREFIX/usr/share/mikutter/mikutter.rb $*
+

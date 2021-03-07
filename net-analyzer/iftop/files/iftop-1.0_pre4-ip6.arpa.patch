@@ -1,0 +1,48 @@
+From 35af3cf65f17961d173b31fd3b00166ec095c226 Mon Sep 17 00:00:00 2001
+From: Paul Warren <pdw@mythic-beasts.com>
+Date: Mon, 6 Feb 2017 21:35:37 +0000
+Subject: [PATCH] Fix bug with DNS resolution. https://bugzilla.redhat.com/show_bug.cgi?id=1120254
+
+---
+ resolver.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/resolver.c b/resolver.c
+index adddbc1..a3123bd 100644
+--- a/resolver.c
++++ b/resolver.c
+@@ -438,11 +438,11 @@ void resolver_worker(void* ptr) {
+ 		    char **ch_pp;
+ 		    void **void_pp;
+ 		} u_old = { &old };
+-                if(hash_find(ns_hash, &addr, u_old.void_pp) == HASH_STATUS_OK) {
++                if(hash_find(ns_hash, &addr.as_addr6, u_old.void_pp) == HASH_STATUS_OK) {
+                     hash_delete(ns_hash, &addr);
+                     xfree(old);
+                 }
+-                hash_insert(ns_hash, &addr, (void*)hostname);
++                hash_insert(ns_hash, &addr.as_addr6, (void*)hostname);
+             }
+ 
+         }
+@@ -488,7 +488,7 @@ void resolve(int af, void* addr, char* result, int buflen) {
+ 
+         pthread_mutex_lock(&resolver_queue_mutex);
+ 
+-        if(hash_find(ns_hash, raddr, u_hostname.void_pp) == HASH_STATUS_OK) {
++        if(hash_find(ns_hash, &raddr->as_addr6, u_hostname.void_pp) == HASH_STATUS_OK) {
+             /* Found => already resolved, or on the queue, no need to keep
+ 	     * it around */
+             free(raddr);
+@@ -497,7 +497,7 @@ void resolve(int af, void* addr, char* result, int buflen) {
+             hostname = xmalloc(INET6_ADDRSTRLEN);
+             inet_ntop(af, &raddr->addr, hostname, INET6_ADDRSTRLEN);
+ 
+-            hash_insert(ns_hash, raddr, hostname);
++            hash_insert(ns_hash, &raddr->as_addr6, hostname);
+ 
+             if(((head + 1) % RESOLVE_QUEUE_LENGTH) == tail) {
+                 /* queue full */
+--
+libgit2 0.26.0
+

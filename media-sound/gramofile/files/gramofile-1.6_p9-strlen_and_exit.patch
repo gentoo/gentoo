@@ -1,0 +1,20 @@
+--- a/gramofile.c
++++ b/gramofile.c
+@@ -11,6 +11,7 @@
+ #include "splashscr.h"
+ #include <signal.h>
+ #include <unistd.h>
++#include <stdlib.h>
+ #include <string.h>
+ #ifndef OLD_CURSES
+ #include <ncurses.h>
+--- a/signpr_cmf3.c
++++ b/signpr_cmf3.c
+@@ -33,6 +33,7 @@
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <math.h>
++#include <string.h>
+ #ifndef OLD_CURSES
+ #include <ncurses.h>
+ #else

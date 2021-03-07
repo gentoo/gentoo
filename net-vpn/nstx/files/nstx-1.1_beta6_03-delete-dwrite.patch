@@ -1,0 +1,18 @@
+diff -ru nstx-1.1-beta6.orig/nstx_util.c nstx-1.1-beta6/nstx_util.c
+--- nstx-1.1-beta6.orig/nstx_util.c	2009-03-17 00:08:18.000000000 +0000
++++ nstx-1.1-beta6/nstx_util.c	2009-03-17 00:08:37.000000000 +0000
+@@ -44,14 +44,6 @@
+    return x;
+ }
+ 
+-void dwrite (char *path, char *buf, int len) {
+-   int fd;
+-   
+-   fd = open(path, O_RDWR|O_CREAT|O_TRUNC, 0600);
+-   write(fd, buf, len);
+-   close(fd);
+-}
+-
+ static int iface_addr(const char * name, in_addr_t * result) {
+     int r, s;
+     struct ifreq ifr;

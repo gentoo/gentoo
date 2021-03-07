@@ -1,0 +1,13 @@
+--- a/src/native/Makefile.org	2004-09-07 16:43:16.703100016 +0200
++++ b/src/native/Makefile	2004-09-07 16:43:28.804919625 +0200
+@@ -45,8 +45,8 @@
+ CFLAGS=-DWIN32=$(WIN32) -D__IBMC__
+ else
+ INCLUDES          = -I $(JAVAINCLUDE) -I $(JAVANATINC)
+-LIBPATH           = -L/usr/lib/termcap 
+-JavaReadline_LIBS = -lreadline -ltermcap -lhistory
++LIBPATH           = 
++JavaReadline_LIBS = -lreadline -lncurses -lhistory
+ JavaEditline_LIBS = -ledit -ltermcap
+ ifeq (cygwin,$(WIN32))
+ JavaGetline_LIBS = -lcygwin

@@ -1,0 +1,24 @@
+Use system recastnavigation instead of bundled one
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d69352c94..cfb53dc5b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -596,7 +596,16 @@ endif(WIN32)
+ # Extern
+ set(RECASTNAVIGATION_STATIC ON CACHE BOOL "Build recastnavigation static libraries")
+ 
+-add_subdirectory (extern/recastnavigation EXCLUDE_FROM_ALL)
++add_library(RecastNavigation::DebugUtils SHARED IMPORTED)
++add_library(RecastNavigation::Detour SHARED IMPORTED)
++add_library(RecastNavigation::Recast SHARED IMPORTED)
++set_target_properties(RecastNavigation::DebugUtils PROPERTIES
++	IMPORTED_LOCATION GENTOO_RECAST_LIBDIR/libDebugUtils.so)
++set_target_properties(RecastNavigation::Detour PROPERTIES
++	IMPORTED_LOCATION GENTOO_RECAST_LIBDIR/libDetour.so)
++set_target_properties(RecastNavigation::Recast PROPERTIES
++	IMPORTED_LOCATION GENTOO_RECAST_LIBDIR/libRecast.so)
++
+ add_subdirectory (extern/osg-ffmpeg-videoplayer)
+ add_subdirectory (extern/oics)
+ if (BUILD_OPENCS)

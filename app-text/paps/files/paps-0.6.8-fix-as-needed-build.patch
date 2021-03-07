@@ -1,0 +1,36 @@
+--- paps-0.6.8/configure.in
++++ paps-0.6.8/configure.in
+@@ -18,4 +18,6 @@
+ 
+ DX_INIT_DOXYGEN(libpaps, doxygen.cfg, doxygen-doc)
+ 
++PKG_CHECK_MODULES([PANGO], [pangoft2])
++
+ AC_OUTPUT(Makefile src/Makefile)
+--- paps-0.6.8/src/Makefile.am
++++ paps-0.6.8/src/Makefile.am
+@@ -7,21 +7,19 @@
+ bin_PROGRAMS = paps
+ paps_CFLAGS  = -Wall 
+ paps_SOURCES = paps.c
+-paps_LDADD = $(lib_LIBRARIES) $(all_libraries)
+-paps_LDFLAGS = `pkg-config --libs pangoft2`
++paps_LDADD = $(lib_LIBRARIES) $(all_libraries) $(PANGO_LIBS)
+ paps_DEPENDENCIES = $(lib_LIBRARIES)
+ 
+ EXTRA_DIST = test_libpaps.c paps.1
+ 
+ # set the include path found by configure
+-INCLUDES= $(all_includes) `pkg-config --cflags pangoft2`
++INCLUDES= $(all_includes) $(PANGO_CFLAGS)
+ 
+ # Test program
+ noinst_PROGRAMS = test_libpaps
+ 
+ 
+ test_libpaps_SOURCES = test_libpaps.c
+-test_libpaps_LDADD = $(lib_LIBRARIES) $(all_libraries)
+-test_libpaps_LDFLAGS = `pkg-config --libs pangoft2`
++test_libpaps_LDADD = $(lib_LIBRARIES) $(all_libraries) $(PANGO_LIBS)
+ test_libpaps_DEPENDENCIES = $(lib_LIBRARIES) 
+ 

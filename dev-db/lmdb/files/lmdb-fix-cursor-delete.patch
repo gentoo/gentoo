@@ -1,0 +1,48 @@
+From 40585b483976d9062e6c971df285f911512ecd5e Mon Sep 17 00:00:00 2001
+From: Howard Chu <hyc@openldap.org>
+Date: Tue, 9 Feb 2021 23:38:06 +0000
+Subject: [PATCH] ITS#9461 refix ITS#9376
+
+Was setting C_DEL flag gratuitously
+---
+ libraries/liblmdb/mdb.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libraries/liblmdb/mdb.c b/libraries/liblmdb/mdb.c
+index 621cbcfa..e6cae8ed 100644
+--- a/mdb.c
++++ b/mdb.c
+@@ -8527,10 +8527,10 @@ mdb_cursor_del0(MDB_cursor *mc)
+ 					}
+ 					m3->mc_xcursor->mx_cursor.mc_flags |= C_DEL;
+ 				}
+-				m3->mc_flags |= C_DEL;
+ 			}
+ 		}
+ 	}
++	m3->mc_flags |= C_DEL;
+ 
+ fail:
+ 	if (rc)
+From f9c5b46651c4ecd699643c4d90bb3ab7725a6167 Mon Sep 17 00:00:00 2001
+From: Howard Chu <hyc@openldap.org>
+Date: Thu, 11 Feb 2021 11:34:57 +0000
+Subject: [PATCH] ITS#9461 fix typo
+
+---
+ libraries/liblmdb/mdb.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libraries/liblmdb/mdb.c b/libraries/liblmdb/mdb.c
+index e6cae8ed..4062664b 100644
+--- a/mdb.c
++++ b/mdb.c
+@@ -8530,7 +8530,7 @@ mdb_cursor_del0(MDB_cursor *mc)
+ 			}
+ 		}
+ 	}
+-	m3->mc_flags |= C_DEL;
++	mc->mc_flags |= C_DEL;
+ 
+ fail:
+ 	if (rc)

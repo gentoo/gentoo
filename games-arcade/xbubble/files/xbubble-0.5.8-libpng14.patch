@@ -1,0 +1,13 @@
+http://bugs.gentoo.org/show_bug.cgi?id=308731
+
+--- a/src/loadpng.c
++++ b/src/loadpng.c
+@@ -55,7 +55,7 @@ unsigned char * load_png_file( const cha
+   }
+   /* ensure that we opened a PNG file */
+   fread( header, 1, 8, fd );
+-  if ( ! png_check_sig( header, 8 ) ) {
++  if ( png_sig_cmp( header, 0, 8 ) ) {
+     fclose(fd);
+     fprintf(stderr,_("File %s does not have a valid PNG signature.\n"), file);
+     return NULL;

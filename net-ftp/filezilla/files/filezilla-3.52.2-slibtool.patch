@@ -1,0 +1,24 @@
+This fixes compilation with slibtool instead of GNU libtool
+
+--- filezilla-3.52.2/src/engine/Makefile.am
++++ filezilla-3.52.2/src/engine/Makefile.am
+@@ -146,6 +146,8 @@
+ libfzclient_private_la_LDFLAGS += $(LIBFILEZILLA_LIBS)
+ libfzclient_private_la_LDFLAGS += $(IDN_LIB)
+ 
++libfzclient_private_la_LIBADD = $(PUGIXML_LIBS)
++
+ dist_noinst_DATA = engine.vcxproj
+ 
+ CLEANFILES = filezilla.h.gch
+--- filezilla-3.52.2/src/interface/Makefile.am
++++ filezilla-3.52.2/src/interface/Makefile.am
+@@ -309,7 +309,7 @@
+ 
+ if HAVE_DBUS
+ filezilla_DEPENDENCIES += ../dbus/libfzdbus.a
+-filezilla_LDFLAGS += ../dbus/libfzdbus.a $(LIBDBUS_LIBS)
++filezilla_LDADD = ../dbus/libfzdbus.a $(LIBDBUS_LIBS)
+ endif
+ 
+ filezilla_LDFLAGS += $(WX_LIBS)

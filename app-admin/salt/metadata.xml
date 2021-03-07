@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>chutzpah@gentoo.org</email>
+    <name>Patrick McLean</name>
+  </maintainer>
+  <longdescription lang="en">
+Salt is a powerful remote execution manager that can be used to administer
+servers in a fast and efficient way.
+
+Salt allows commands to be executed across large groups of servers. This means
+systems can be easily managed, but data can also be easily gathered. Quick
+introspection into running systems becomes a reality.
+
+Remote execution is usually used to set up a certain state on a remote system.
+Salt addresses this problem as well, the salt state system uses salt state
+files to define the state a server needs to be in.
+
+Between the remote execution system, and state management Salt addresses the
+backbone of cloud and data center management.
+  </longdescription>
+  <use>
+    <flag name="cheetah">Enable support for <pkg>dev-python/cheetah3</pkg></flag>
+    <flag name="cherrypy">Enable support for using cherrypy.</flag>
+    <flag name="libcloud">Enable salt-cloud support via libcloud.</flag>
+    <flag name="libvirt">Support managing virtual machines with app-emulation/libvirt.</flag>
+    <flag name="genshi">Enable support for <pkg>dev-python/genshi</pkg></flag>
+    <flag name="gnupg">Enable support for gnupg via python-gnupg.</flag>
+    <flag name="keyring">Enable support for keyrings via python-keyring.</flag>
+    <flag name="mako">Add support for using the mako template engine for parsing salt states.</flag>
+    <flag name="mongodb">Support returning data to a mongodb server.</flag>
+    <flag name="neutron">Support the OpenStack neutron network service.</flag>
+    <flag name="nova">Enable support for the OpenStack Nova API</flag>
+    <flag name="openssl">Add support for using TLS via OpenSSL.</flag>
+    <flag name="portage">Add support for package state enforcement using sys-apps/portage</flag>
+    <flag name="raet">Add support for the new RAET transport.</flag>
+    <flag name="redis">Support returning data to a redis database.</flag>
+    <flag name="zeromq">Add support for the zeromq transport.</flag>
+  </use>
+  <upstream>
+    <remote-id type="pypi">salt</remote-id>
+    <remote-id type="github">saltstack/salt-vim</remote-id>
+  </upstream>
+</pkgmetadata>

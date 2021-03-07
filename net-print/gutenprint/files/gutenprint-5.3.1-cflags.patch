@@ -1,0 +1,23 @@
+--- gutenprint-5.3.1/configure.ac
++++ gutenprint-5.3.1/configure.ac
+@@ -714,20 +714,6 @@
+   if test x${USE_MAINTAINER_MODE} = xyes ; then
+     STP_ADD_COMPILER_ARGS([-D_POSIX_C_SOURCE=200809L -std=c99 -pedantic -Waggregate-return -Wcast-qual -Wshadow -Wredundant-decls],, [GNUCFLAGS])
+   fi
+-  if test x$ENABLE_DEBUG = xyes ; then
+-    STP_ADD_COMPILER_ARG([-g])
+-  else
+-    STP_ADD_FIRST_COMPILER_ARG([-O3 -O2 -O1 -O])
+-  fi
+-else
+-  if test x$ENABLE_DEBUG = xyes ; then
+-    STP_ADD_COMPILER_ARG([-g])
+-  else
+-    STP_ADD_FIRST_COMPILER_ARG([-O])
+-  fi
+-fi
+-if test x$ENABLE_PROFILE = xyes ; then
+-  STP_ADD_COMPILER_ARG([-pg])
+ fi
+ AC_SUBST(GNUCFLAGS)
+ 

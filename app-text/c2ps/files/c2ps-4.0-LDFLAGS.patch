@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -45,7 +45,7 @@
+ 	install -m 644 c2ps.1 $(MAN)
+ 
+ compile:	c2ps.c
+-	$(CC) $(PREP_OPTIONS) $(CCFLAGS) -o c2ps c2ps.c
++	$(CC) $(LDFLAGS) $(PREP_OPTIONS) $(CCFLAGS) -o c2ps c2ps.c $(LIBS)
+ 
+ clean:
+ 	$(RM) c2ps *.o core *~

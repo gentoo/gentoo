@@ -1,0 +1,110 @@
+ Makefile           | 27 ++++++++++++++++-----------
+ src/tools/Makefile |  6 +++---
+ 2 files changed, 19 insertions(+), 14 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 7f240db..222c4f1 100644
+--- a/Makefile
++++ b/Makefile
+@@ -771,17 +771,17 @@ all
+ "PIC=$(PIC_$(OS)_$(ENV))" \
+ "CCx=$(CC_$(OS)_$(ENV))" \
+ "LDx=$(LD_$(OS)_$(ENV))" \
+-"COPTIONS=$(UCOPTIONS) $(COPTIONS_$(OS)_$(ENV))" \
++"COPTIONS=$(CFLAGS) $(COPTIONS_$(OS)_$(ENV))" \
+ "SYSLIBS=$(SYSLIBSshr_$(OS)_$(ENV))" \
+ "SHAREDEXT=$(SHAREDEXT_$(OS))" \
+-"LDOPTIONS=$(LDOPTIONS_$(OS)_$(ENV))" \
++"LDOPTIONS=$(LDFLAGS) $(LDOPTIONS_$(OS)_$(ENV))" \
+ "AROPTIONS=$(AROPTIONS_$(OS))" \
+ "RANLIB=$(RANLIB_$(OS))" \
+ all
+ 	@cd $(TOOLSsrcDIR); $(MAKE) \
+ "CURSES=$(AND.$(CURSES).$(CURSES_$(OS)_$(ENV)))" \
+ "CCx=$(CC_$(OS)_$(ENV))" \
+-"COPTIONS=$(COPTIONS_$(OS)_$(ENV))" \
++"COPTIONS=$(CFLAGS) $(COPTIONS_$(OS)_$(ENV))" \
+ "COPTIONSld=$(COPTIONSld_$(OS)_$(ENV))" \
+ "SYSLIBS=$(SYSLIBSexe_$(OS)_$(ENV))" \
+ "CURSESLIB=$(CURSESLIB_$(OS)_$(ENV))" \
+@@ -791,9 +791,9 @@ all
+ "FCx=$(FC_$(OS))" \
+ "CCx=$(CC_$(OS)_$(ENV))" \
+ "SHARED=$(AND.$(SHARED).$(SHARED_$(OS)))" \
+-"FOPTIONS=$(FOPTIONS_$(OS)) $(FOPTIONS_$(OS)_$(ENV))" \
++"FOPTIONS=$(FFLAGS) $(FOPTIONS_$(OS)) $(FOPTIONS_$(OS)_$(ENV))" \
+ "FOPTIONSld=$(FOPTIONSld_$(OS)) $(FOPTIONSld_$(OS)_$(ENV))" \
+-"COPTIONS=$(COPTIONS_$(OS)_$(ENV))" \
++"COPTIONS=$(CFLAGS) $(COPTIONS_$(OS)_$(ENV))" \
+ "COPTIONSld=$(COPTIONSld_$(OS)_$(ENV))" \
+ "SYSLIBS=$(SYSLIBSexe_$(OS)_$(ENV))" \
+ "SHAREDEXT=$(SHAREDEXT_$(OS))" \
+@@ -829,12 +829,17 @@ install: install.$(PART)
+ install.all: install.definitions install.include install.lib \
+ 	     install.tools install.help_ notify.user copy.leapseconds
+ 
+-install.definitions: create.bin copy.definitions change.definitions
++install.definitions: create.bin
+ install.include: create.include copy.include
+ install.tools: create.bin copy.tools
+ install.help_: create.help copy.help
+ 
+ install.lib: create.lib copy.lib.a
++	@if [ -f $(LIBsrcDIR)/libcdf.$(SHAREDEXT) ] ; then \
++	   $(MAKE) "INSTALLDIR=$(INSTALLDIR)" install.lib.so ; \
++	 else \
++	   $(NULL) ; \
++	 fi
+ 	@if [ -f $(LIBsrcDIR)/libcdf.so ] ; then \
+ 	   $(MAKE) "INSTALLDIR=$(INSTALLDIR)" install.lib.so ; \
+ 	 else \
+@@ -940,8 +945,8 @@ copy.include:
+ 	      cp $(INCsrcDIR)/cdfconfig.h $(INSTALLDIR)/include
+ 
+ copy.lib.so:
+-	@echo cp $(LIBsrcDIR)/libcdf.so $(INSTALLDIR)/lib
+-	      cp $(LIBsrcDIR)/libcdf.so $(INSTALLDIR)/lib
++	@echo cp $(LIBsrcDIR)/libcdf.$(SHAREDEXT) $(INSTALLDIR)/lib
++	      cp $(LIBsrcDIR)/libcdf.$(SHAREDEXT) $(INSTALLDIR)/lib
+ 
+ copy.lib.sl:
+ 	@echo cp $(LIBsrcDIR)/libcdf.sl $(INSTALLDIR)/lib
+@@ -2128,15 +2133,15 @@ show.posix.alphaI: show.supported
+ show.supported:
+ 	@echo SHARED is $(SUPPORTED.$(SHARED_$(OS)))
+ 	@echo CURSES is $(SUPPORTED.$(CURSES_$(OS)_$(ENV)))
+-	@echo FOPTIONS=$(FOPTIONS_$(OS))
++	@echo FOPTIONS=$(FFLAGS) $(FOPTIONS_$(OS))
+ 	@echo FOPTIONSld=$(FOPTIONSld_$(OS))
+ 	@echo SHAREDEXT=$(SHAREDEXT_$(OS))
+-	@echo LDOPTIONSlibcdf=$(LDOPTIONS_$(OS)_$(ENV))
++	@echo LDOPTIONSlibcdf=$(LDFLAGS) $(LDOPTIONS_$(OS)_$(ENV))
+ 	@echo RANLIB=$(RANLIB_$(OS))
+ 	@echo FCx=$(FC_$(OS))
+ 	@echo CCx=$(CC_$(OS)_$(ENV))
+ 	@echo PIC=$(PIC_$(OS)_$(ENV))
+-	@echo COPTIONS=$(COPTIONS_$(OS)_$(ENV))
++	@echo COPTIONS=$(CFLAGS) $(COPTIONS_$(OS)_$(ENV))
+ 	@echo COPTIONSld=$(COPTIONSld_$(OS)_$(ENV))
+ 	@echo CURSESLIB=$(CURSESLIB_$(OS)_$(ENV))
+ 	@echo SYSLIBSexe=$(SYSLIBSexe_$(OS)_$(ENV))
+diff --git a/src/tools/Makefile b/src/tools/Makefile
+index 3773c0c..1cabf61 100644
+--- a/src/tools/Makefile
++++ b/src/tools/Makefile
+@@ -40,12 +40,12 @@ CURSESLIB=-lncurses
+ INCLUDEcdf= ../include
+ 
+ CC=$(CCx)
+-CFLAGS=$(COPTIONS) -I$(INCLUDEcdf)
+-CFLAGSld=$(COPTIONSld)
++CFLAGS:=$(CFLAGS) $(COPTIONS) -I$(INCLUDEcdf)
++CFLAGSld=$(LDFLAGS) $(COPTIONSld)
+ 
+ WHICHOS=$(shell uname -a | cut -f1 -d" ")
+ ifeq ("$(WHICHOS)","Darwin")
+-  LIBCDFa=../lib/libcdf.a
++  LIBCDFa=../lib/libcdf.so.3
+ else
+   WHICHOS=$(shell uname -a | cut -f7 -d" ")
+   ifeq ("$(WHICHOS)","Cygwin")

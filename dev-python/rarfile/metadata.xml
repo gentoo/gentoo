@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>thev00d00@gentoo.org</email>
+    <name>Ian Whyman</name>
+  </maintainer>
+  <use>
+    <flag name="compressed">Enables the module to support compressed v3 archives by calling the <pkg>app-arch/unrar</pkg>.</flag>
+  </use>
+  <upstream>
+    <remote-id type="pypi">rarfile</remote-id>
+    <remote-id type="github">markokr/rarfile</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,43 @@
+--- AMB-plugins-0.8.1/Makefile.old	2010-12-28 02:37:00.828999995 +0000
++++ AMB-plugins-0.8.1/Makefile	2010-12-28 02:39:14.333999996 +0000
+@@ -15,35 +15,35 @@
+ #    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ 
+ 
+-CPPFLAGS += -I. -fPIC -D_REENTRANT -Wall -O3
++CPPFLAGS += -I. -fPIC -D_REENTRANT -Wall
+ 
+ 
+ all:	ambisonic0.so ambisonic1.so ambisonic2.so ambisonic3.so
+ 
+ 
+ ambisonic0.so:	ambisonic0.o ambisonic0_if.o virtmic.o allpass.o
+-	g++ -shared -o $@ ambisonic0.o ambisonic0_if.o virtmic.o allpass.o
++	$(CXX) $(LDFLAGS) -shared -o $@ ambisonic0.o ambisonic0_if.o virtmic.o allpass.o
+ 
+ ambisonic0.o:	ladspaplugin.h ambisonic0.h
+ ambisonic0_if.o:	ladspaplugin.h ambisonic0.h
+ 
+ 
+ ambisonic1.so:	ambisonic1.o ambisonic1_if.o filter1.o
+-	g++ -shared -o $@ ambisonic1.o ambisonic1_if.o filter1.o
++	$(CXX) $(LDFLAGS) -shared -o $@ ambisonic1.o ambisonic1_if.o filter1.o
+ 
+ ambisonic1.o:	ladspaplugin.h ambisonic1.h filter1.h
+ ambisonic1_if.o:	ladspaplugin.h ambisonic1.h
+ 
+ 
+ ambisonic2.so:	ambisonic2.o ambisonic2_if.o 
+-	g++ -shared -o $@ ambisonic2.o ambisonic2_if.o
++	$(CXX) $(LDFLAGS) -shared -o $@ ambisonic2.o ambisonic2_if.o
+ 
+ ambisonic2.o:	ladspaplugin.h ambisonic2.h
+ ambisonic2_if.o:	ladspaplugin.h ambisonic2.h
+ 
+ 
+ ambisonic3.so:	ambisonic3.o ambisonic3_if.o 
+-	g++ -shared -o $@ ambisonic3.o ambisonic3_if.o
++	$(CXX) $(LDFLAGS) -shared -o $@ ambisonic3.o ambisonic3_if.o
+ 
+ ambisonic3.o:	ladspaplugin.h ambisonic3.h
+ ambisonic3_if.o:	ladspaplugin.h ambisonic3.h

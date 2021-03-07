@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>common-lisp@gentoo.org</email>
+		<name>Gentoo Common Lisp Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		CLX provides an implementation of the X Window System protocol to
+		Lisp graphics library[ies] and applications. It is the Common Lisp
+		equivalent of Xlib. 
+	</longdescription>
+	<longdescription lang="es">
+		CLX ofrece una implementación del protocolo del sistema X Window
+		a las librerías y aplicaciones gráficas escritas en Lisp. Es el
+		equivamente en Common Lisp a Xlib. 
+	</longdescription>
+	<use>
+		<flag name="doc">Builds documentation</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">sharplispers/clx</remote-id>
+	</upstream>
+</pkgmetadata>

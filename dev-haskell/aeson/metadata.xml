@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		A JSON parsing and encoding library optimized for ease of use
+		and high performance.
+
+		/Note/: if you use GHCi or Template Haskell, please see the
+		@README@ file for important details about building this package,
+		and other packages that depend on it:
+		&lt;https://github.com/mailrank/aeson#readme&gt;
+
+		Parsing performance on a late 2010 MacBook Pro (2.66GHz Core i7),
+		for mostly-English tweets from Twitter's JSON search API:
+
+		* 0.8 KB, 32-bit GHC 6.12.3: 30538 msg\/sec (24.9 MB\/sec)
+
+		* 0.8 KB, 64-bit GHC 7.0.3: 31204 msg\/sec (25.4 MB\/sec)
+
+		* 6.4 KB, 32-bit GHC 6.12.3: 6731 msg\/sec (42.3 MB\/sec)
+
+		* 6.4 KB, 64-bit GHC 7.0.3: 6627 msg\/sec (41.7 MB\/sec)
+
+		* 11.8 KB, 32-bit GHC 6.12.3: 3751 msg\/sec (43.2 MB\/sec)
+
+		* 11.8 KB, 64-bit GHC 7.0.3: 3381 msg\/sec (38.9 MB\/sec)
+
+		* 31.2 KB, 32-bit GHC 6.12.3: 1306 msg\/sec (39.8 MB\/sec)
+
+		* 31.2 KB, 64-bit GHC 7.0.3: 1132 msg\/sec (34.5 MB\/sec)
+
+		* 61.5 KB, 32-bit GHC 6.12.3: 616 msg\/sec (37.0 MB\/sec)
+
+		* 61.5 KB, 64-bit GHC 7.0.3: 534 msg\/sec (32.1 MB\/sec)
+
+		Handling heavily-escaped text is a little more work.  Here is
+		parsing performance with Japanese tweets, where much of the text
+		is entirely Unicode-escaped.
+
+		* 14.6 KB, 32-bit GHC 6.12.3: 2315 msg\/sec (33.1 MB\/sec)
+
+		* 14.6 KB, 64-bit GHC 7.0.3: 1986 msg\/sec (28.4 MB\/sec)
+
+		* 44.1 KB, 32-bit GHC 6.12.3: 712 msg\/sec (30.7 MB\/sec)
+
+		* 44.1 KB, 64-bit GHC 7.0.3: 634 msg\/sec (27.3 MB\/sec)
+
+		* 82.9 KB, 32-bit GHC 6.12.3: 377 msg\/sec (30.5 MB\/sec)
+
+		* 82.9 KB, 64-bit GHC 7.0.3: 332 msg\/sec (26.9 MB\/sec)
+
+		Encoding performance on the same machine and data:
+
+		* English, 854 bytes: 43439 msg\/sec (35.4 MB/sec)
+
+		* English, 6.4 KB: 7127 msg\/sec (44.8 MB/sec)
+
+		* Engish, 61.5 KB: 765 msg\/sec (46.0 MB/sec)
+
+		* Japanese, 14.6 KB: 4727 msg\/sec (67.5 MB/sec)
+
+		* Japanese, 44.1 KB: 1505 msg\/sec (64.8 MB/sec)
+
+		(A note on naming: in Greek mythology, Aeson was the father of Jason.)
+	</longdescription>
+	<use>
+		<flag name="cffi">Controls whether to include c-ffi bits or pure haskell. Default to False for security.</flag>
+		<flag name="fast">compile without optimizations</flag>
+	</use>
+</pkgmetadata>

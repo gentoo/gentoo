@@ -1,0 +1,14 @@
+Index: libaom-9999/CMakeLists.txt
+===================================================================
+--- libaom-9999.orig/CMakeLists.txt
++++ libaom-9999/CMakeLists.txt
+@@ -575,6 +575,9 @@
+   include("${AOM_ROOT}/build/cmake/exports.cmake")
+   setup_exports_target()
+   set_target_properties(aom PROPERTIES SOVERSION 0)
++  if(HAVE_PTHREAD_H AND CONFIG_MULTITHREAD)
++    target_link_libraries(aom ${AOM_LIB_LINK_TYPE} Threads::Threads)
++  endif()
+ endif()
+ 
+ # Handle user supplied compile and link flags last to ensure they're obeyed.

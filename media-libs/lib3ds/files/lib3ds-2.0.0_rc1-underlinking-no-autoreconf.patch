@@ -1,0 +1,45 @@
+commit 562d1412a705b6667bc9fa594133366fb7e787ab
+Author: hasufell <hasufell@gentoo.org>
+Date:   Thu Sep 26 20:49:44 2013 +0200
+
+    avoid autoreconf
+
+diff --git a/examples/3ds2obj/Makefile.in b/examples/3ds2obj/Makefile.in
+index 1b5b1fe..d2fda8a 100644
+--- a/examples/3ds2obj/Makefile.in
++++ b/examples/3ds2obj/Makefile.in
+@@ -180,7 +180,7 @@ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+ INCLUDES = -I$(top_srcdir)/src
+ 3ds2obj_SOURCES = 3ds2obj.c
+-LDADD = $(top_builddir)/src/lib3ds.la 
++LDADD = $(top_builddir)/src/lib3ds.la -lm
+ EXTRA_DIST = 3ds2obj.vcproj
+ all: all-am
+ 
+diff --git a/examples/3dsdump/Makefile.in b/examples/3dsdump/Makefile.in
+index 4c915cc..f9f7bba 100644
+--- a/examples/3dsdump/Makefile.in
++++ b/examples/3dsdump/Makefile.in
+@@ -180,7 +180,7 @@ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+ INCLUDES = -I$(top_srcdir)/src
+ 3dsdump_SOURCES = 3dsdump.c
+-LDADD = $(top_builddir)/src/lib3ds.la 
++LDADD = $(top_builddir)/src/lib3ds.la -lm
+ EXTRA_DIST = 3dsdump.vcproj
+ all: all-am
+ 
+diff --git a/examples/cube/Makefile.in b/examples/cube/Makefile.in
+index 76b7946..1c4b5b6 100644
+--- a/examples/cube/Makefile.in
++++ b/examples/cube/Makefile.in
+@@ -180,7 +180,7 @@ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+ INCLUDES = -I$(top_srcdir)/src 
+ cube_SOURCES = cube.c
+-LDADD = $(top_builddir)/src/lib3ds.la 
++LDADD = $(top_builddir)/src/lib3ds.la -lm
+ EXTRA_DIST = cube.vcproj cube.tga 
+ all: all-am
+ 

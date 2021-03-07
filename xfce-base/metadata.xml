@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The xfce-base category contains base XFCE packages.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie XFCE enthält die Basispakete des XFCE-Desktops.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría xfce-base contiene los paquetes base de XFCE.
+	</longdescription>
+	<longdescription lang="ja">
+		xfce-baseカテゴリーにはXFCEのコア・パッケージが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De xfce-base categorie bevat de basispakketten van XFCE.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm xfce-base chứa các gói XFCE cơ sở.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria xfce-base contiene i pacchetti essenziali di XFCE.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria xfce-base contém pacotes de base de XFCE.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria xfce-base zawiera podstawowe pakiety środowiska XFCE.
+	</longdescription>
+</catmetadata>
+

@@ -1,0 +1,14 @@
+# default: off
+# description: Vsftpd is an FTP server, designed to be secure.
+
+service ftp
+{
+	socket_type     = stream
+	wait            = no
+	user            = root
+	server          = /usr/sbin/vsftpd
+	server_args     = /etc/vsftpd/vsftpd.conf
+	log_on_success  += DURATION 
+	nice            = 10
+	disable         = yes
+}

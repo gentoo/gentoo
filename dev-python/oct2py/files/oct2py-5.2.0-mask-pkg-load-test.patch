@@ -1,0 +1,10 @@
+--- a/oct2py/tests/test_usage.py
++++ b/oct2py/tests/test_usage.py
+@@ -338,6 +338,7 @@
+         with pytest.raises(Oct2PyError, match=exp):
+             self.oc.pyeval_like_error3(1)
+ 
++    @pytest.mark.skip(reason="requires octave 'signal' package to be installed")
+     def test_pkg_load(self):
+         self.oc.eval('pkg load signal')
+         t = np.linspace(0, 1, num=100)

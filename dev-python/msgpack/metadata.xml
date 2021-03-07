@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">msgpack/msgpack-python</remote-id>
+		<remote-id type="pypi">msgpack</remote-id>
+	</upstream>
+	<use>
+		<flag name="native-extensions">
+			Compiles native "C" extensions (speedups, instead of using python
+			fallback code).
+		</flag>
+	</use>
+</pkgmetadata>

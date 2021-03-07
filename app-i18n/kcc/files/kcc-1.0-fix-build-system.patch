@@ -1,0 +1,24 @@
+--- a/Makefile
++++ b/Makefile
+@@ -10,11 +10,9 @@
+           BINPATH = /usr/local/bin
+           MANPATH = /usr/local/man
+           JMANDIR = japanese
+-           CFLAGS = -O
+ 
+             SHELL = /bin/sh
+                CP = cp
+-             MAKE = make
+           INSTALL = install
+ 
+              CMDS = kcc
+@@ -23,9 +21,6 @@
+ 
+ all:	kcc
+ 
+-kcc:	kcc.o
+-	$(CC) $(CFLAGS) -o kcc kcc.o
+-
+ install: $(BINPATH)/kcc
+ 	@echo "\`make install' done."
+ 	@echo "Run \`make install.man' to install a manual."

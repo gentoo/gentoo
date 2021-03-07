@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>vowstar@gmail.com</email>
+		<name>Huang Rui</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>sci-electronics@gentoo.org</email>
+		<name>Gentoo Electronics Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">accellera-official/systemc</remote-id>
+	</upstream>
+	<longdescription lang="en">
+		SystemC provides hardware-oriented constructs within the context of C++
+		as a class library implemented in standard C++. Its use spans design and
+		verification from concept to implementation in hardware and software.
+		SystemC provides an interoperable modeling platform which enables the
+		development and exchange of very fast system-level C++ models. It also
+		provides a stable platform for development of system-level tools.
+	</longdescription>
+</pkgmetadata>

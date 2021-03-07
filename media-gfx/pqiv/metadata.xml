@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <!-- maintainer-needed -->
+  <upstream>
+    <maintainer>
+      <email>phillip.berndt@googlemail.com</email>
+      <name>Phillip Berndt</name>
+    </maintainer>
+    <remote-id type="github">phillipberndt/pqiv</remote-id>
+  </upstream>
+  <use>
+    <flag name="archive">Enable support for images in archives and cbX comic book files</flag>
+  </use>
+</pkgmetadata>

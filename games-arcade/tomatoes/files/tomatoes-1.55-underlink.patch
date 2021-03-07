@@ -1,0 +1,38 @@
+--- makefile.old	2011-06-18 17:35:38.947020335 +0200
++++ makefile	2011-06-18 17:37:42.337811088 +0200
+@@ -48,7 +47,7 @@
+ LDFLAGS = `sdl-config --libs` -lSDL_image -lSDL_mixer -lGL -lGLU -pg
+ else
+ CFLAGS = -MMD -O3 -march=$(MARCH) -Wall $(SDL_FLAGS)
+-LDFLAGS = `sdl-config --libs` -lSDL_image -lSDL_mixer -lGL -lGLU -s
++LDLIBS = `sdl-config --libs` -lSDL_image -lSDL_mixer -lGL -lGLU -lm
+ endif
+ endif
+ 
+@@ -58,7 +57,7 @@
+ OBJS := $(subst src/,obj/,$(OBJS))
+ 
+ # Include directories
+-INCLUDES = -I./include
++INCLUDES = -I./include $(SDL_FLAGS)
+ 
+ 
+ # Targets
+@@ -69,7 +68,7 @@
+ -include $(DEPS)
+ 
+ $(TARGET): $(OBJS)
+-	$(CC) -o $(TARGET) $(OBJS) $(LDFLAGS)
++	$(CXX) -o $(TARGET) $(OBJS) $(LDFLAGS) $(LDLIBS)
+ 
+ clean:
+ 	rm -f $(OBJS) $(TARGET)
+@@ -80,7 +79,7 @@
+ rebuild: veryclean all
+ 
+ obj/%.o: src/%.cpp
+-	$(CC) $(CFLAGS) $(INCLUDES) $(DIR_DEFINES) -c $< -o $@
++	$(CXX) $(CXXFLAGS) $(INCLUDES) $(DIR_DEFINES) -c $< -o $@
+ 
+ # Compress the exe with UPX
+ compress: $(TARGET)

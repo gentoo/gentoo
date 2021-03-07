@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>kensington@gentoo.org</email>
+  </maintainer>
+  <use>
+    <flag name="templates">Install template scripts to be used with tatt</flag>
+  </use>
+  <longdescription lang="en">
+Tatt arch testing tool can be use to automatically generate scripts for various boring tasks during arch work.  
+It aims at developers. If you are a normal user you will not need tatt.
+</longdescription>
+  <upstream>
+    <remote-id type="github">gentoo/tatt</remote-id>
+  </upstream>
+  <stabilize-allarches/>
+</pkgmetadata>

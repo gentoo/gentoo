@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<longdescription>
+		fusepy is a Python module that provides a simple interface to FUSE and
+		MacFUSE. It's just one file and is implemented using ctypes.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">fusepy/fusepy</remote-id>
+		<remote-id type="pypi">fusepy</remote-id>
+	</upstream>
+</pkgmetadata>

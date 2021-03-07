@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		NBench, later known as BYTEmark, is a synthetic computing benchmark program
+		developed in the mid-1990s by the now defunct BYTE magazine
+		intended to measure a computer's CPU, FPU, and Memory System speed.
+	</longdescription>
+</pkgmetadata>

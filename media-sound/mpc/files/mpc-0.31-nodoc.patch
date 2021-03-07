@@ -1,0 +1,12 @@
+--- a/meson.build	2018-10-24 10:31:33.000000000 +0200
++++ b/meson.build	2019-02-09 22:49:02.890387140 +0100
+@@ -109,9 +109,6 @@
+   install: true
+ )
+ 
+-install_data('AUTHORS', 'COPYING', 'NEWS', 'README.rst',
+-  install_dir : join_paths(get_option('datadir'), 'doc', meson.project_name()))
+-
+ install_data(
+   'contrib/mpd-m3u-handler.sh', 'contrib/mpd-pls-handler.sh',
+   'contrib/mpc-completion.bash',

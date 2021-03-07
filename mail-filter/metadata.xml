@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The mail-filter category contains email filtering software.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie mail-filter enthält Programme zur Filterung von
+		Emails.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría mail-filter contiene programas para filtrar correo
+		electrónico.
+	</longdescription>
+	<longdescription lang="ja">
+		mail-filter カテゴリーにはメールフィルタリング・ソフトウェアが
+		含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De mail-filter categorie bevat filtersoftware voor e-mail.
+	</longdescription>
+	<longdescription lang="sk">
+		Kategória mail-filter obsahuje nástroje na filtrovanie elektronických
+		správ.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm mail-filter chứa các phần mềm lọc email.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria mail-filter contiene programmi per il filtraggio della
+		posta elettronica.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria mail-filter contém programas para a filtragem do
+		correio eletrônico.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria mail-filter zawiera oprogramowanie służące do filtrowania poczty.
+	</longdescription>
+</catmetadata>

@@ -1,0 +1,10 @@
+diff -r -U2 pari-2.9.4.orig/config/Makefile.SH pari-2.9.4/config/Makefile.SH
+--- pari-2.9.4.orig/config/Makefile.SH	2017-11-09 16:26:14.000000000 +0700
++++ pari-2.9.4/config/Makefile.SH	2018-01-13 16:18:04.208394407 +0700
+@@ -250,5 +250,5 @@
+ LN = $ln_s
+ CP_F = cp -f
+-STRIP      = strip
++STRIP      = true
+ STRIPFLAGS =
+ 

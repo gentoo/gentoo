@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chutzpah@gentoo.org</email>
+		<name>Patrick McLean</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">Aquantia/AQtion</remote-id>
+	</upstream>
+	<use>
+		<flag name="lro">
+			Enable/disable Large Receive Offload. This MUST be disabled for
+			bridging or forwarding.
+		</flag>
+	</use>
+	<longdescription>
+		Latest development preview of aquantia's atlantic linux kernel
+		driver for AQtion family of multigigabit adapters.
+
+		These drivers are UNSUPPORTED by the vendor, use at your own
+		risk.
+	</longdescription>
+</pkgmetadata>

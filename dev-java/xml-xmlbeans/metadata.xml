@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>java@gentoo.org</email>
+	<name>Java</name>
+</maintainer>
+
+<longdescription>
+
+XMLBeans is a tool that allows you to access the full power of XML in a Java
+friendly way. It is an XML-Java binding tool. The idea is that you can take
+advantage the richness and features of XML and XML Schema and have these
+features mapped as naturally as possible to the equivalent Java language and
+typing constructs. XMLBeans uses XML Schema to compile Java interfaces and
+classes that you can then use to access and modify XML instance data. Using
+XMLBeans is similar to using any other Java interface/class, you will see things
+like getFoo or setFoo just as you would expect when working with Java. While a
+major use of XMLBeans is to access your XML instance data with strongly typed
+Java classes there are also API's that allow you access to the full XML infoset
+(XMLBeans keeps full XML Infoset fidelity) as well as to allow you to reflect
+into the XML schema itself through an XML Schema Object model.
+
+</longdescription>
+</pkgmetadata>

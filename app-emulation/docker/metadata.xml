@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		Docker is an open-source project to easily create lightweight,
+		portable, self-sufficient containers from any application. The same
+		container that a developer builds and tests on a laptop can run at
+		scale, in production, on VMs, bare metal, OpenStack clusters, public
+		clouds and more.
+	</longdescription>
+	<maintainer type="person">
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<use>
+		<flag name="aufs">
+			Enables dependencies for the "aufs" graph driver, including
+			necessary kernel flags.
+		</flag>
+		<flag name="apparmor">
+			Enable AppArmor support.
+		</flag>
+		<flag name="btrfs">
+			Enables dependencies for the "btrfs" graph driver, including
+			necessary kernel flags.
+		</flag>
+			<flag name="cli">
+				This is a temporary use flag which pulls in
+				app-emulation/docker-cli, the docker command line client.
+				This flag is here to assist in the transition to split packages
+				and will be removed in a future release.
+		</flag>
+		<flag name="container-init">
+			Makes the a staticly-linked init system tini available inside a
+			container.
+		</flag>
+		<flag name="device-mapper">
+			Enables dependencies for the "devicemapper" graph driver, including
+			necessary kernel flags.
+		</flag>
+		<flag name="overlay">
+			Enables dependencies for the "overlay" graph driver, including
+			necessary kernel flags.
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">moby/moby</remote-id>
+	</upstream>
+</pkgmetadata>

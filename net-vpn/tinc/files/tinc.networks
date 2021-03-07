@@ -1,0 +1,13 @@
+# file: /etc/conf.d/tinc.networks for /etc/init.d/tincd
+ 
+# In this file you define the tinc networks you want to connect to
+
+# USAGE:
+# you add a network to the init script by defining:
+# NETWORK: your_network_name
+#
+# if you want to connect to multiple VPN's just set them behind each other. e.g.
+# NETWORK: foo
+# NETWORK: bar
+# 
+# this would join the network foo and the network bar.

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>chromium@gentoo.org</email>
+		<name>Chromium in Gentoo Project</name>
+	</maintainer>
+	<use>
+		<flag name="swap-16bit-csp">Enable byte swapping for 16 bit colorspace</flag>
+	</use>
+	<upstream>
+		<remote-id type="google-code">webp</remote-id>
+	</upstream>
+</pkgmetadata>

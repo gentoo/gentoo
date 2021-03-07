@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		Adds a framework that allows registering new assertions
+		without compromising builtin assertion functionality.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">Olivine-Labs/luassert</remote-id>
+	</upstream>
+</pkgmetadata>

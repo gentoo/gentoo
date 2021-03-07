@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  This provides a set of sparse matrix types for Python, with modules
+  which implement:
+  - Iterative methods for solving linear systems of equations
+  - A set of standard preconditioners
+  - An interface to a direct solver for sparse linear systems of equations
+  - The JDSYM eigensolver.
+  All of these modules are implemented as C extension modules based on
+  standard sparse and dense matrix libraries (UMFPACK/AMD, SuperLU,
+  BLAS/LAPACK) for maximum performance and robustness.
+</longdescription>
+  <upstream>
+    <remote-id type="pypi">emcee</remote-id>
+  </upstream>
+</pkgmetadata>

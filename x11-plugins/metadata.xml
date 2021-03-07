@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The x11-plugins category contains plugin packages for various X11
+		applications.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie x11-plugins enthält Plugins für verschiedene 
+		X11-Applikationen.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría x11-plugins contiene paquetes de extensiones para
+		varias aplicaciones X11.
+	</longdescription>
+	<longdescription lang="ja">
+		x11-pluginsカテゴリーには様々なX11アプリケーションの
+		プラグイン・パッケージが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De x11-plugins categorie bevat plugins voor verschillende 
+		X11-applicaties.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm x11-plugins chứa các gói plugin cho các ứng dụng X11 khác nhau.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria x11-plugins contiene plugins per varie applicazioni X11.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria x11-plugins contém pacotes de plugins para várias
+		aplicações X11.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria x11-plugins zawiera rozszerzenia dla aplikacji X11.
+	</longdescription>
+</catmetadata>
+

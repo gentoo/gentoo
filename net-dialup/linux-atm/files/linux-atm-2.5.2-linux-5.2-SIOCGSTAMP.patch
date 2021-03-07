@@ -1,0 +1,41 @@
+Fix build failure against linux-5.2+:
+  https://www.spinics.net/lists/linux-sh/msg53430.html
+
+--- a/src/maint/atmdump.c
++++ b/src/maint/atmdump.c
+@@ -17,6 +17,16 @@
+ #include <netinet/in.h> /* for htonl and ntohl */
+ #include <atm.h>
+ 
++#ifndef SIOCGSTAMP
++/* linux-5.2+ added support for 64-bit time_t into ioctls
++   that support 'struct timeval' and removed 'SIOCGSTAMP'
++   define.
++
++   Include 'SIOCGSTAMP' wrapper via linux/sockios.h
++   if does not exist.
++  */
++#    include <linux/sockios.h>
++#endif
+ 
+ static const char *pti[] = { "Data SDU 0","Data SDU 1","Data SDU 0, CE",
+   "Data SDU 1, CE","Segment OAM F5","End-to-end OAM F5","Reserved (RM)",
+--- a/src/maint/saaldump.c
++++ b/src/maint/saaldump.c
+@@ -24,6 +24,16 @@
+ 
+ #define MAX_ITEM  2048 /* longest string emitted by q.dump */
+ 
++#ifndef SIOCGSTAMP
++/* linux-5.2+ added support for 64-bit time_t into ioctls
++   that support 'struct timeval' and removed 'SIOCGSTAMP'
++   define.
++
++   Include 'SIOCGSTAMP' wrapper via linux/sockios.h
++   if does not exist.
++  */
++#    include <linux/sockios.h>
++#endif
+ 
+ static int interval = 0; /* display absolute time by default */
+ static int quiet = 0; /* decode Q.2931 messages by default */

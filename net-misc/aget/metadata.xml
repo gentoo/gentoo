@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<!-- maintainer-needed -->
+<longdescription>Aget fetches HTTP URLs in a manner similar to wget, but segments the retrieval into multiple parts to increase download speed. It can be many times as fast as wget in some circumstances.</longdescription>
+<longdescription lang="ja">
+Aget は wget 風の振舞いで URL 上から HTTP 経由で取り寄せますが、異なる点としてはダウンロードのスピードアップのため対象を分割します。分割しても wget と変わらない場合もあります。
+</longdescription>
+</pkgmetadata>

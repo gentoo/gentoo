@@ -1,0 +1,11 @@
+--- erobot.el~	2002-09-28 21:25:39.000000000 +0200
++++ erobot.el	2007-04-21 11:57:15.000000000 +0200
+@@ -230,7 +230,7 @@
+ `erobot-max-turns' has been exceeded, or if the char q is pressed
+ while the game is running.  When the game ends, the candidates on
+ the map are returned in a list."
+-  (interactive "i\n\naCandidate A: \naCandidate B: ")
++  (interactive "aCandidate A: \naCandidate B: ")
+   ;; Place candidates on the map and set erobot-candidates
+   (setq erobot-candidates nil)
+   (erobot-initialize candidates)

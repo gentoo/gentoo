@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+    <email>games@gentoo.org</email>
+    <name>Gentoo Games Project</name>
+  </maintainer>
+<longdescription lang="en">
+XLogical is a puzzle game based on the Logical! game that was originally
+released by Rainbow Arts on the Commodore Amiga computer.
+</longdescription>
+  <use>
+    <flag name="alt_gfx">Use alternate graphics which are closer to the original Amiga version</flag>
+  </use>
+</pkgmetadata>

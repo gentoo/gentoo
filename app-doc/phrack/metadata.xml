@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<!-- maintainer-needed -->
+<stabilize-allarches/>
+<longdescription>
+"...those who know us know what we do, others do not have to...."
+
+
+Phrack Magazine is made available to the public, as often as possible, free of 
+charge.
+New issues are announced on the mailinglist (see below), various forums and are 
+made available on the website (http://www.phrack.org).
+</longdescription>
+</pkgmetadata>

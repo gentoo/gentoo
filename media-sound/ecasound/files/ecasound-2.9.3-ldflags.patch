@@ -1,0 +1,61 @@
+diff --git a/kvutils/Makefile.am b/kvutils/Makefile.am
+index ed2bc03..f12a01a 100644
+--- a/kvutils/Makefile.am
++++ b/kvutils/Makefile.am
+@@ -56,13 +56,12 @@ kvutil_headers = 	kvu_dbc.h \
+ 			kvu_value_queue.h
+ 
+ libkvutils_la_SOURCES = $(kvutil_sources) $(kvutil_headers)
+-libkvutils_la_LDFLAGS = -version-info @LIBKVUTILS_VERSION@:0:@LIBKVUTILS_VERSION_AGE@ -static
++libkvutils_la_LDFLAGS = -version-info @LIBKVUTILS_VERSION@:0:@LIBKVUTILS_VERSION_AGE@
+ 
+ libkvutils_debug_la_SOURCES = $(libkvutils_la_SOURCES)
+ libkvutils_debug_la_LDFLAGS = $(libkvutils_la_LDFLAGS)
+ 
+ libkvutils_tester_SOURCES = libkvutils_tester.cpp
+-libkvutils_tester_LDFLAGS = -static
+ libkvutils_tester_LDADD = $(lib_LTLIBRARIES)
+ 
+ noinst_HEADERS = $(kvutil_headers)
+diff --git a/libecasound/Makefile.am b/libecasound/Makefile.am
+index 87203cf..dca62bc 100644
+--- a/libecasound/Makefile.am
++++ b/libecasound/Makefile.am
+@@ -368,7 +368,7 @@ libecasound_tester_src = \
+ 
+ libecasound_la_SOURCES = $(ecasound_common1_src) $(ecasound_common2_src)
+ libecasound_debug_la_SOURCES = $(ecasound_common1_src) $(ecasound_common2_src)
+-libecasound_la_LDFLAGS = -export-dynamic $(eca_ldflags) -static
++libecasound_la_LDFLAGS = -export-dynamic $(eca_ldflags)
+ libecasound_la_LIBADD = $(eca_libadd)
+ libecasound_debug_la_LDFLAGS = $(libecasound_la_LDFLAGS)
+ libecasound_debug_la_LIBADD = $(libecasound_la_LIBADD)
+diff --git a/libecasound/plugins/Makefile.am b/libecasound/plugins/Makefile.am
+index 4ea5a92..80a3093 100644
+--- a/libecasound/plugins/Makefile.am
++++ b/libecasound/plugins/Makefile.am
+@@ -105,7 +105,7 @@ plugin_all_sources = 	$(all_af_src) \
+ libecasound_plugins_la_SOURCES          = audioio_dummy.cpp $(plugin_cond_sources)
+ EXTRA_libecasound_plugins_la_SOURCES    = $(plugin_all_sources)
+ libecasound_plugins_la_LIBADD		= $(ECA_S_EXTRA_LIBS)
+-libecasound_plugins_la_LDFLAGS 		= -static
++libecasound_plugins_la_LDFLAGS 		=
+ 
+ libecasound_plugins_debug_la_SOURCES	= $(libecasound_plugins_la_SOURCES)
+ EXTRA_libecasound_plugins_debug_la_SOURCES = $(EXTRA_libecasound_plugins_la_SOURCES)
+diff --git a/libecasoundc/Makefile.am b/libecasoundc/Makefile.am
+index 74ba20c..0f4527e 100644
+--- a/libecasoundc/Makefile.am
++++ b/libecasoundc/Makefile.am
+@@ -14,9 +14,9 @@ AUTOMAKE_OPTIONS = foreign
+ # !!!
+ # remember to update eca-version.cpp
+ if ECA_AM_DEBUG_MODE
+-eca_ldflags = -version-info @LIBECASOUNDC_VERSION@:0:@LIBECASOUNDC_VERSION_AGE@ -static
++eca_ldflags = -version-info @LIBECASOUNDC_VERSION@:0:@LIBECASOUNDC_VERSION_AGE@
+ else
+-eca_ldflags = -s -version-info @LIBECASOUNDC_VERSION@:0:@LIBECASOUNDC_VERSION_AGE@ -static
++eca_ldflags = -s -version-info @LIBECASOUNDC_VERSION@:0:@LIBECASOUNDC_VERSION_AGE@
+ endif
+ 
+ AM_CPPFLAGS = -I$(srcdir)

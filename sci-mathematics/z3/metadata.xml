@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>gienah@gentoo.org</email>
+  </maintainer>
+  <maintainer type="person">
+    <email>mgorny@gentoo.org</email>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <use>
+    <flag name="isabelle">Add integration support for the Isabelle/HOL
+  theorem prover.</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">Z3Prover/z3</remote-id>
+  </upstream>
+</pkgmetadata>

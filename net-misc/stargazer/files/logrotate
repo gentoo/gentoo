@@ -1,0 +1,9 @@
+/var/log/stargazer/*.log {
+    daily
+    rotate 31
+    compress
+    missingok
+    notifempty
+    copytruncate
+    sharedscripts
+}

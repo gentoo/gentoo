@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Sys-Statistics-Linux</remote-id>
+    <remote-id type="cpan-module">Sys::Statistics::Linux</remote-id>
+    <remote-id type="cpan-module">Sys::Statistics::Linux::Compilation</remote-id>
+    <remote-id type="cpan-module">Sys::Statistics::Linux::CpuStats</remote-id>
+    <remote-id type="cpan-module">Sys::Statistics::Linux::DiskStats</remote-id>
+    <remote-id type="cpan-module">Sys::Statistics::Linux::DiskUsage</remote-id>
+    <remote-id type="cpan-module">Sys::Statistics::Linux::FileStats</remote-id>
+    <remote-id type="cpan-module">Sys::Statistics::Linux::LoadAVG</remote-id>
+    <remote-id type="cpan-module">Sys::Statistics::Linux::MemStats</remote-id>
+    <remote-id type="cpan-module">Sys::Statistics::Linux::NetStats</remote-id>
+    <remote-id type="cpan-module">Sys::Statistics::Linux::PgSwStats</remote-id>
+    <remote-id type="cpan-module">Sys::Statistics::Linux::ProcStats</remote-id>
+    <remote-id type="cpan-module">Sys::Statistics::Linux::Processes</remote-id>
+    <remote-id type="cpan-module">Sys::Statistics::Linux::SockStats</remote-id>
+    <remote-id type="cpan-module">Sys::Statistics::Linux::SysInfo</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,12 @@
+diff -durp libmix-v2.05/misc/misc.c libmix-v2.05-fix-pattern/misc/misc.c
+--- libmix-v2.05/misc/misc.c	2002-05-19 09:51:23.000000000 +0100
++++ libmix-v2.05-fix-pattern/misc/misc.c	2007-08-25 22:48:14.000000000 +0100
+@@ -209,7 +209,7 @@ pattern(char *data, char **list)
+ {
+   int i = 0;
+ 
+-  while (strcmp(list[i++], NULL) != 0)
++  while (list[i++] != NULL)
+     if (strstr(data, list[i]) != NULL)
+       return 1;
+ 

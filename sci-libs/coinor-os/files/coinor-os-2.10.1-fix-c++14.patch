@@ -1,0 +1,100 @@
+Fix building with C++14, which errors out due to bool -> T* conversions
+and changed semantics caught by -Werror=terminate.
+
+See also: https://bugs.gentoo.org/show_bug.cgi?id=594180
+Patch partially taken from: https://projects.coin-or.org/OS/changeset/5137/
+
+--- a/src/OSCommonInterfaces/OSInstance.cpp
++++ b/src/OSCommonInterfaces/OSInstance.cpp
+@@ -165,6 +165,9 @@
+ }
+ 
+ OSInstance::~OSInstance()
++#if __cplusplus >= 201103L
++    noexcept(false)
++#endif
+ {
+     std::ostringstream outStr;
+ 
+--- a/src/OSCommonInterfaces/OSInstance.h
++++ b/src/OSCommonInterfaces/OSInstance.h
+@@ -2267,7 +2267,11 @@
+     OSInstance();
+ 
+     /** The OSInstance class destructor */
+-    ~OSInstance();
++    ~OSInstance()
++#if __cplusplus >= 201103L
++    noexcept(false)
++#endif
++    ;
+ 
+     /** the instanceHeader is implemented as a general file header object 
+      *  to allow sharing of classes between schemas 
+--- a/src/OSCommonInterfaces/OSMatrix.cpp
++++ b/src/OSCommonInterfaces/OSMatrix.cpp
+@@ -2297,7 +2297,7 @@
+ 
+     if (!processBlocks(rowPartition, rowPartitionSize,
+                        colPartition, colPartitionSize, false, symmetry))
+-       return false;
++       return NULL;
+     return ExpandedMatrixByBlocks.back();
+ }// end of MatrixType::getBlocks
+ 
+--- a/src/OSParsers/OSParseosil.tab.cpp
++++ b/src/OSParsers/OSParseosil.tab.cpp
+@@ -180,7 +180,7 @@
+ 
+ #define GETATTRIBUTETEXT  	\
+ 	for(; ISWHITESPACE( *ch) || isnewline( *ch, osillineno); ch++ ) ; \
+-	if( *ch != '=') {  osilerror_wrapper( ch, osillineno, "found an attribute not defined"); return false;}  \
++	if( *ch != '=') {  osilerror_wrapper( ch, osillineno, "found an attribute not defined"); return NULL;}  \
+ 	ch++; \
+ 	for(; ISWHITESPACE( *ch) || isnewline( *ch, osillineno); ch++ ) ;	\
+ 	if(*ch == '\"'){ \
+@@ -196,7 +196,7 @@
+ 	        *p = ch; \
+ 	        for( ; *ch != '\''; ch++); \
+ 	    } \
+-	    else {  osilerror_wrapper( ch, osillineno,"missing quote on attribute"); return false;} \
++	    else {  osilerror_wrapper( ch, osillineno,"missing quote on attribute"); return NULL;} \
+ 	}\
+ 	numChar = ch - *p; \
+ 	attText = new char[numChar + 1]; \
+@@ -11070,7 +11070,7 @@
+     // eat the white space
+     for( ; ISWHITESPACE( *ch) || isnewline( *ch, osillineno); ch++ ) ;
+     for(i = 0; sizeOf[i]  == *ch; i++, ch++);
+-    if(i != 6) {  osilerror_wrapper( ch,osillineno,"incorrect sizeOf attribute in <base64BinaryData> element"); return false;}    
++    if(i != 6) {  osilerror_wrapper( ch,osillineno,"incorrect sizeOf attribute in <base64BinaryData> element"); return NULL;}    
+     // ch should be pointing to the first character after sizeOf
+     GETATTRIBUTETEXT;
+     ch++;
+@@ -11080,7 +11080,7 @@
+     // eat the white space
+     for( ; ISWHITESPACE( *ch) || isnewline( *ch, osillineno); ch++ ) ;
+     // better have an > sign or not valid
+-    if(*ch != '>' ) {  osilerror_wrapper( ch,osillineno,"<base64BinaryData> element does not have a proper closing >"); return false;}
++    if(*ch != '>' ) {  osilerror_wrapper( ch,osillineno,"<base64BinaryData> element does not have a proper closing >"); return NULL;}
+     ch++;
+     // we are now pointing start of the data
+     const char *b64textstart = ch;
+@@ -11089,7 +11089,7 @@
+     const char *b64textend = ch;
+     // we should be pointing to </base64BinaryData>
+     for(i = 0; endBase64BinaryData[i]  == *ch; i++, ch++);
+-    if(i != 18) { osilerror_wrapper( ch,osillineno," problem with <base64BinaryData> element"); return false;}
++    if(i != 18) { osilerror_wrapper( ch,osillineno," problem with <base64BinaryData> element"); return NULL;}
+     int b64len = b64textend - b64textstart;
+     b64string = new char[ b64len + 1]; 
+     for(ki = 0; ki < b64len; ki++) b64string[ki] = b64textstart[ ki]; 
+@@ -11097,7 +11097,7 @@
+     // burn the white space
+     for( ; ISWHITESPACE( *ch) || isnewline( *ch, osillineno); ch++ ) ;
+     // better have an > sign or not valid
+-    if(*ch != '>' ) {  osilerror_wrapper( ch,osillineno,"</base64BinaryData> element does not have a proper closing >"); return false;}
++    if(*ch != '>' ) {  osilerror_wrapper( ch,osillineno,"</base64BinaryData> element does not have a proper closing >"); return NULL;}
+     ch++;
+     for( ; ISWHITESPACE( *ch) || isnewline( *ch, osillineno); ch++ ) ;
+     *p = ch;

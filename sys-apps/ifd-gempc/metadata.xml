@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+<longdescription>
+	This library provides PC/SC IFD handler implementation for Gemplus GemCore based
+	serial and USB smart cards readers.
+</longdescription>
+</pkgmetadata>

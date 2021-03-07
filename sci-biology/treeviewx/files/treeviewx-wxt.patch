@@ -1,0 +1,50 @@
+--- tv.cpp~	2005-10-01 16:47:35.000000000 -0400
++++ tv.cpp	2005-10-01 16:52:30.000000000 -0400
+@@ -312,11 +312,15 @@
+ 	{
+ #ifdef __WXMSW__
+ 		file_menu->AppendSeparator();
+-		file_menu->Append(SAVEAS_PICTURE_CMD, "Save As Picture..."), wxT("Save picture of tree to metafile");
++		file_menu->Append(SAVEAS_PICTURE_CMD,
++			wxT("Save As Picture...")),
++			wxT("Save picture of tree to metafile");
+ #else
+ 	#ifdef USE_SVG
+ 		file_menu->AppendSeparator();
+-		file_menu->Append(SAVEAS_PICTURE_CMD, "Save As Picture..."), wxT("Save picture of tree to SVG file");
++		file_menu->Append(SAVEAS_PICTURE_CMD,
++			wxT("Save As Picture...")),
++			wxT("Save picture of tree to SVG file");
+ 	#endif
+ #endif
+ 		file_menu->AppendSeparator();
+--- tview.cpp~	2005-10-01 16:47:45.000000000 -0400
++++ tview.cpp	2005-10-01 16:50:42.000000000 -0400
+@@ -184,10 +184,10 @@
+ 	wxString pictureFileName = GetFrame()->GetTitle();
+ 	pictureFileName += wxT(".emf");
+ 	wxFrame *f = GetMainFrame();
+-   	wxFileDialog dialog((wxWindow *)f, "Save Picture as", "", pictureFileName,
+-        "Enhanced metafile (*.emf)|*.emf",
+-        wxSAVE|wxOVERWRITE_PROMPT);
+-    
++	wxFileDialog dialog((wxWindow *)f, wxT("Save Picture as"), wxT(""),
++		pictureFileName, wxT("Enhanced metafile (*.emf)|*.emf"),
++		wxSAVE|wxOVERWRITE_PROMPT);
++
+     if (dialog.ShowModal() == wxID_OK)
+     {
+ 		wxMetafileDC pictureDC (dialog.GetPath(), 600, 650) ;
+@@ -204,9 +204,9 @@
+ 	#else
+ 	wxFrame *f = GetMainFrame();
+ 	#endif 
+-    wxFileDialog dialog((wxWindow *)f, "Save Picture as", "", pictureFileName,
+-        "SVG vector picture files (*.svg)|*.svg",
+-        wxSAVE|wxOVERWRITE_PROMPT);
++	wxFileDialog dialog((wxWindow *)f, wxT("Save Picture as"), wxT(""),
++		pictureFileName, wxT("SVG vector picture files (*.svg)|*.svg"),
++		wxSAVE|wxOVERWRITE_PROMPT);
+ 
+     if (dialog.ShowModal() == wxID_OK)
+     {

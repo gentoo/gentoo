@@ -1,0 +1,24 @@
+From dcc3d775bddc270aa1a4d06f85807979ab0c8358 Mon Sep 17 00:00:00 2001
+From: Matthias Maier <tamiko@kyomu.43-1.org>
+Date: Thu, 1 Jun 2017 02:27:16 -0500
+Subject: [PATCH] fix buildsystem
+
+---
+ VTK/Utilities/Doxygen/CMakeLists.txt | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/VTK/Utilities/Doxygen/CMakeLists.txt b/VTK/Utilities/Doxygen/CMakeLists.txt
+index 3f285f6..7ebf3ee 100644
+--- a/VTK/Utilities/Doxygen/CMakeLists.txt
++++ b/VTK/Utilities/Doxygen/CMakeLists.txt
+@@ -80,7 +80,4 @@ if(NOT VTK_INSTALL_NO_DOCUMENTATION)
+   install(FILES doc_readme.txt
+     DESTINATION ${VTK_INSTALL_DOXYGEN_DIR}
+     COMPONENT Development)
+-  install(DIRECTORY ${VTK_BINARY_DIR}/Utilities/Doxygen/doc/html
+-      DESTINATION ${VTK_INSTALL_DOXYGEN_DIR}
+-      COMPONENT Development)
+ endif()
+-- 
+2.13.0
+

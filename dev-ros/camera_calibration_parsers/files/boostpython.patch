@@ -1,0 +1,16 @@
+Revert special handling not needed on Gentoo.
+https://bugs.gentoo.org/show_bug.cgi?id=608330
+
+Index: camera_calibration_parsers/CMakeLists.txt
+===================================================================
+--- camera_calibration_parsers.orig/CMakeLists.txt
++++ camera_calibration_parsers/CMakeLists.txt
+@@ -4,7 +4,7 @@ project(camera_calibration_parsers)
+ find_package(catkin REQUIRED sensor_msgs rosconsole roscpp roscpp_serialization)
+ 
+ find_package(PythonLibs REQUIRED)
+-find_package(Boost REQUIRED COMPONENTS filesystem python)
++find_package(Boost REQUIRED COMPONENTS filesystem python${PYTHON_VERSION_MAJOR}${PYTHON_VERSION_MINOR})
+ include_directories(include ${catkin_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS} ${PYTHON_INCLUDE_DIRS})
+ 
+ catkin_python_setup()

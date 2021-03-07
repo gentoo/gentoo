@@ -1,0 +1,15 @@
+# Change in upstream master after release mythtv-31.0
+
+diff --git a/mythtv/libs/libmythui/mythpainter.cpp b/mythtv/libs/libmythui/mythpainter.cpp
+index 639ea41b30..221a7fe2b7 100644
+--- a/libs/libmythui/mythpainter.cpp
++++ b/libs/libmythui/mythpainter.cpp
+@@ -5,6 +5,7 @@
+ // QT headers
+ #include <QRect>
+ #include <QPainter>
++#include <QPainterPath>
+ 
+ // libmythbase headers
+ #include "mythlogging.h"
+

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>eike@sf-mail.de</email>
+		<name>Rolf Eike Beer</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="clearpasswd">Enables cleartext password storage in the
+			vpasswd files</flag>
+		<flag name="ipalias">Enables enable-ip-alias-domains</flag>
+		<flag name="maildrop">Enables <pkg>mail-filter/maildrop</pkg> support
+			in vdelivermail</flag>
+		<flag name="spamassassin">Enables <pkg>mail-filter/spamassassin</pkg>
+			support</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">vpopmail</remote-id>
+	</upstream>
+</pkgmetadata>

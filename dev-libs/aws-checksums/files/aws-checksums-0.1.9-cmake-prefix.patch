@@ -1,0 +1,26 @@
+From 97b3ba123af200d7dc4fe83e191e77c83ed7aff2 Mon Sep 17 00:00:00 2001
+From: Jakov Smolic <jakov.smolic@sartura.hr>
+Date: Tue, 1 Sep 2020 09:55:46 +0200
+Subject: [PATCH] CMakeLists: Add mising CMAKE_INSTALL_PREFIX
+
+Signed-off-by: Jakov Smolic <jakov.smolic@sartura.hr>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 888742b..193a94a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -23,7 +23,7 @@ elseif(NOT DEFINED CMAKE_INSTALL_LIBDIR)
+ endif()
+ 
+ # This is required in order to append /lib/cmake to each element in CMAKE_PREFIX_PATH
+-set(AWS_MODULE_DIR "/${CMAKE_INSTALL_LIBDIR}/cmake")
++set(AWS_MODULE_DIR "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/cmake")
+ string(REPLACE ";" "${AWS_MODULE_DIR};" AWS_MODULE_PATH "${CMAKE_PREFIX_PATH}${AWS_MODULE_DIR}")
+ # Append that generated list to the module search path
+ list(APPEND CMAKE_MODULE_PATH ${AWS_MODULE_PATH})
+-- 
+2.26.2
+

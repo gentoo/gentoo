@@ -1,0 +1,53 @@
+--- src/hdf5_drv/silo_hdf5.c.orig	2017-07-28 08:52:09.026638768 +0200
++++ src/hdf5_drv/silo_hdf5.c	2017-07-28 09:00:12.306635882 +0200
+@@ -4752,18 +4752,19 @@
+         }
+ 
+         /* default HDF5 mpi drivers */
+-        case DB_FILE_OPTS_H5_DEFAULT_MPIP:
+-        {
+-#ifdef H5_HAVE_PARALLEL
+-            h5status |= H5Pset_fapl_mpiposix(retval, MPI_COMM_SELF, TRUE);
+-#else
+-            H5Pclose(retval);
+-            return db_perror("HDF5 MPI VFD", E_NOTENABLEDINBUILD, me);
+-#endif
+-            break;
+-        }
++//        case DB_FILE_OPTS_H5_DEFAULT_MPIP:
++//        {
++//#ifdef H5_HAVE_PARALLEL
++//            h5status |= H5Pset_fapl_mpiposix(retval, MPI_COMM_SELF, TRUE);
++//#else
++//            H5Pclose(retval);
++//            return db_perror("HDF5 MPI VFD", E_NOTENABLEDINBUILD, me);
++//#endif
++//            break;
++//        }
+ 
+         case DB_FILE_OPTS_H5_DEFAULT_MPIO:
++	case DB_FILE_OPTS_H5_DEFAULT_MPIP:
+         {
+ #ifdef H5_HAVE_PARALLEL
+             MPI_Info info;
+@@ -5069,15 +5070,15 @@
+                     if ((p = DBGetOption(opts, DBOPT_H5_MPIP_NO_GPFS_HINTS)))
+                         use_gpfs_hints = FALSE;
+ 
+-                    if (vfd == DB_H5VFD_MPIO)
++//                    if (vfd == DB_H5VFD_MPIO)
+                     {
+                         h5status |= H5Pset_fapl_mpio(retval, mpi_comm, mpi_info);
+                         if (created_info) MPI_Info_free(&mpi_info);
+                     }
+-                    else
+-                    {
+-                        h5status |= H5Pset_fapl_mpiposix(retval, mpi_comm, use_gpfs_hints);
+-                    }
++//                    else
++//                    {
++//                        h5status |= H5Pset_fapl_mpiposix(retval, mpi_comm, use_gpfs_hints);
++//                    }
+ #else 
+                     H5Pclose(retval);
+                     return db_perror("HDF5 MPI VFD", E_NOTENABLEDINBUILD, me);

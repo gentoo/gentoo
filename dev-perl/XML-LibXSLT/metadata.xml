@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">XML-LibXSLT</remote-id>
+    <remote-id type="cpan-module">Driver::BaseClass</remote-id>
+    <remote-id type="cpan-module">Driver::LibXSLT</remote-id>
+    <remote-id type="cpan-module">Driver::Sablotron</remote-id>
+    <remote-id type="cpan-module">Driver::Sablotron::Handler</remote-id>
+    <remote-id type="cpan-module">XML::LibXSLT</remote-id>
+    <remote-id type="cpan-module">XML::LibXSLT::Security</remote-id>
+    <remote-id type="cpan-module">XML::LibXSLT::StylesheetWrapper</remote-id>
+  </upstream>
+</pkgmetadata>

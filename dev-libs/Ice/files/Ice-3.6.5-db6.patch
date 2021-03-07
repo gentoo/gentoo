@@ -1,0 +1,48 @@
+Avoid ambiguous ctor call (uint32_t vs DB_ENV*) with db 6.x.
+
+--- ice-3.6.3/cpp/src/Freeze/SharedDbEnv.cpp.orig	2016-10-05 16:59:08.000000000 +0200
++++ ice-3.6.3/cpp/src/Freeze/SharedDbEnv.cpp	2017-06-28 18:42:43.411869639 +0200
+@@ -530,7 +530,7 @@
+     {
+         if(_env == 0)
+         {
+-            _envHolder.reset(new DbEnv(0));
++            _envHolder.reset(new DbEnv(0u));
+             _env = _envHolder.get();
+ 
+             if(_trace >= 1)
+--- ice-3.6.3/cpp/src/FreezeScript/transformdb.cpp.orig	2016-10-05 16:59:08.000000000 +0200
++++ ice-3.6.3/cpp/src/FreezeScript/transformdb.cpp	2017-06-28 19:15:03.928514164 +0200
+@@ -766,8 +766,8 @@
+     //
+     // Transform the database.
+     //
+-    DbEnv dbEnv(0);
+-    DbEnv dbEnvNew(0);
++    DbEnv dbEnv(0u);
++    DbEnv dbEnvNew(0u);
+     Freeze::TransactionPtr txNew;
+     Freeze::ConnectionPtr connection;
+     Freeze::ConnectionPtr connectionNew;
+--- ice-3.6.3/cpp/src/FreezeScript/Util.cpp.orig	2016-10-05 16:59:08.000000000 +0200
++++ ice-3.6.3/cpp/src/FreezeScript/Util.cpp	2017-06-28 19:22:29.318509063 +0200
+@@ -209,7 +209,7 @@
+ {
+     CatalogDataMap result;
+ 
+-    DbEnv dbEnv(0);
++    DbEnv dbEnv(0u);
+     try
+     {
+ #ifdef _WIN32
+--- ice-3.6.3/cpp/src/FreezeScript/DumpDB.cpp.orig	2016-10-05 16:59:08.000000000 +0200
++++ ice-3.6.3/cpp/src/FreezeScript/DumpDB.cpp	2017-06-28 19:33:38.555168088 +0200
+@@ -481,7 +481,7 @@
+     FreezeScript::ObjectFactoryPtr objectFactory = new FreezeScript::ObjectFactory;
+     communicator->addObjectFactory(objectFactory, "");
+ 
+-    DbEnv dbEnv(0);
++    DbEnv dbEnv(0u);
+     DbTxn* txn = 0;
+     Freeze::ConnectionPtr connection;
+     int status = EXIT_SUCCESS;

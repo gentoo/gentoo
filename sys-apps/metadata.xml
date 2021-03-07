@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The sys-apps category contains various core system applications, and
+		some non-core system applications which have not yet been moved out into
+		other sys- categories.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría sys-apps contiene varios paquetes esenciales del sistema, y
+		algunos paquetes no esenciales que aún no han sido movidos a otras
+		categorías sys-.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie sys-apps enthält sowohl Programme die Bestandteil des Basissystems sind,
+		als auch Applikationen die noch nicht in eine der anderen sys- Kategorien eingeordnet
+		wurden.
+	</longdescription>
+	<longdescription lang="ja">
+		sys-appsカテゴリには様々なコアシステムアプリケーションの他、まだ他のsys-カテゴリに
+		移動されていないシステムアプリケーションが含まれています。				
+	</longdescription>
+	<longdescription lang="nl">
+		De sys-apps categorie bevat kerenbestanddelen van het systeem, en bepaalde
+		niet-kern toepassingen die nog niet in andere categorien zijn geplaatst.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm sys-apps chứa các phần mềm hệ thống cốt lõi, và vài phần mềm
+		hệ thống không phải cốt lõi mà chưa được chuyển sang các nhóm sys- khác.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria sys-apps contiene vari pacchetti essenziali per il sistema, e alcuni pacchetti
+		non essenziali che non sono ancora stati spostati in altre categorie sys-.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria sys-apps contém vários pacotes essenciais do sistema, e
+		algumas aplicações não-centrais que ainda não foram colocadas em
+		outras categorias sys-.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria sys-apps zawiera programy systemowe oraz inne dodatkowe
+		programy, których jeszcze nie przeniesiono do kategorii sys-.
+	</longdescription>
+</catmetadata>
+

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>qt@gentoo.org</email>
+		<name>Gentoo Qt Project</name>
+	</maintainer>
+	<maintainer type="person">
+		<description>ppc64 patchset maintainer</description>
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<use>
+		<flag name="designer">Install the QWebEngineView plugin used to add widgets in
+			<pkg>dev-qt/designer</pkg> forms that display web pages.</flag>
+		<flag name="geolocation">Enable physical position determination
+			via <pkg>dev-qt/qtpositioning</pkg></flag>
+		<flag name="jumbo-build">Combine source files to speed up build process.</flag>
+		<flag name="system-ffmpeg">Use the system-wide <pkg>media-video/ffmpeg</pkg>
+			instead of bundled.</flag>
+		<flag name="system-icu">Use the system-wide <pkg>dev-libs/icu</pkg>
+			instead of bundled.</flag>
+		<flag name="widgets">Enable QtWidgets support</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://bugreports.qt.io/</bugs-to>
+		<doc>https://doc.qt.io/</doc>
+	</upstream>
+	<slots>
+		<subslots>
+			Must only be used by packages that are known to use private parts of the Qt API.
+		</subslots>
+	</slots>
+</pkgmetadata>

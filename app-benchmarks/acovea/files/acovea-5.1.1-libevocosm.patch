@@ -1,0 +1,119 @@
+--- a/libacovea/acovea.cpp
++++ b/libacovea/acovea.cpp
+@@ -86,7 +86,7 @@
+ // randomize settings of this option
+ void option::randomize()
+ {
+-    m_enabled = (g_random.get_rand_real2() < 0.5);
++    m_enabled = (g_random.get_real() < 0.5);
+ }
+ 
+ // mutate this option
+@@ -246,7 +246,7 @@
+         m_step = 1;
+     
+     // possibly adjust value to randomize populations
+-    size_t choice = g_random.get_rand_index(3);
++    size_t choice = g_random.get_index(3);
+     
+     switch (choice)
+     {
+@@ -304,12 +304,12 @@
+ void tuning_option::mutate()
+ {
+     // select our mutation
+-    if (g_random.get_rand_real2() < 0.5)
++    if (g_random.get_real() < 0.5)
+         option::mutate();
+     else
+     {
+         // mutate value of this option, up or down randomly
+-        if (g_random.get_rand_real2() < 0.5)
++        if (g_random.get_real() < 0.5)
+             m_value -= m_step;
+         else
+             m_value += m_step;
+@@ -335,7 +335,7 @@
+ enum_option::enum_option(const vector<string> & a_choices, bool a_enabled)
+   : option(a_enabled),
+     m_choices(a_choices),
+-    m_setting(g_random.get_rand_index(a_choices.size()))    
++    m_setting(g_random.get_index(a_choices.size()))    
+ {
+     // nada
+ }
+@@ -344,7 +344,7 @@
+ enum_option::enum_option(const char ** a_choices, size_t a_num_choices, bool a_enabled)
+   : option(a_enabled),
+     m_choices(),
+-    m_setting(g_random.get_rand_index(a_num_choices))    
++    m_setting(g_random.get_index(a_num_choices))    
+ {
+     for (int n = 0; n < a_num_choices; ++n)
+         m_choices.push_back(string(a_choices[n]));
+@@ -369,7 +369,7 @@
+         token = strtok(NULL,"|");
+     }
+     
+-    m_setting = g_random.get_rand_index(m_choices.size());
++    m_setting = g_random.get_index(m_choices.size());
+     
+     free(choices);
+ }
+@@ -407,17 +407,17 @@
+ void enum_option::randomize()
+ {
+     // randomize enabled
+-    m_enabled = (g_random.get_rand_real2() < 0.5);
++    m_enabled = (g_random.get_real() < 0.5);
+     
+     // randomize setting
+-    m_setting = g_random.get_rand_index(m_choices.size());
++    m_setting = g_random.get_index(m_choices.size());
+ }
+ 
+ // mutate this option
+ void enum_option::mutate()
+ {
+     // select our mutation
+-    if (g_random.get_rand() & 1)
++    if (g_random.get_real() < 0.5)
+         option::mutate();
+     else
+     {
+@@ -435,7 +435,7 @@
+         
+             // find a different setting
+             while (new_setting == m_setting)
+-                new_setting = g_random.get_rand_index(m_choices.size());
++                new_setting = g_random.get_index(m_choices.size());
+             
+             m_setting = new_setting;
+         }
+@@ -915,7 +915,7 @@
+     // randomly pick an option from one of the parents
+     for (int n = 0; n < a_parent1.size(); ++n)
+     {
+-        if (g_random.get_rand() & 1)
++        if (g_random.get_real() < 0.5)
+             child.push_back(a_parent1[n]->clone());
+         else
+             child.push_back(a_parent2[n]->clone());
+@@ -931,7 +931,7 @@
+ {
+     for (int n = 0; n < a_options.size(); ++n)
+     {
+-        if (g_random.get_rand_real2() < a_mutation_chance)
++        if (g_random.get_real() < a_mutation_chance)
+             a_options[n]->mutate();
+     }
+ }
+@@ -1096,7 +1096,7 @@
+             acovea_organism * child;
+ 
+             // do we crossover?
+-            if (g_random.get_rand_real2() <= m_crossover_rate)
++            if (g_random.get_real() <= m_crossover_rate)
+             {
+                 // select a second parent
+                 size_t second_index = first_index;

@@ -1,0 +1,85 @@
+From f85f5336df72dc44e407ae756ed20a8f8422cb76 Mon Sep 17 00:00:00 2001
+From: Dale Whinham <daleyo@gmail.com>
+Date: Sat, 11 Apr 2020 16:51:31 +0100
+Subject: [PATCH] Fix hard dependency on RtMidi
+
+It is perfectly reasonable for libasound to be installed, but not
+librtmidi, and so we should only enable the MIDI code if both are
+present.
+
+Fixes #207.
+---
+ src/tracker/CMakeLists.txt   |  1 +
+ src/tracker/sdl/SDL_Main.cpp | 12 ++++++------
+ 2 files changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/src/tracker/CMakeLists.txt b/src/tracker/CMakeLists.txt
+index 0a935330..f4243a0f 100644
+--- a/src/tracker/CMakeLists.txt
++++ b/src/tracker/CMakeLists.txt
+@@ -348,6 +348,7 @@ elseif(WIN32)
+     target_link_libraries(tracker midi)
+ else()
+     if(ALSA_FOUND AND RTMIDI_FOUND)
++        target_compile_definitions(tracker PRIVATE -DHAVE_LIBRTMIDI)
+         target_link_libraries(tracker midi)
+     endif()
+ endif()
+diff --git a/src/tracker/sdl/SDL_Main.cpp b/src/tracker/sdl/SDL_Main.cpp
+index 1a49fc12..75ffa1df 100644
+--- a/src/tracker/sdl/SDL_Main.cpp
++++ b/src/tracker/sdl/SDL_Main.cpp
+@@ -78,7 +78,7 @@
+ #include "PPSystem_POSIX.h"
+ #include "PPPath_POSIX.h"
+ 
+-#ifdef HAVE_LIBASOUND
++#ifdef HAVE_LIBRTMIDI
+ #include "../midi/posix/MidiReceiver_pthread.h"
+ #endif
+ // --------------------------------------------------------------------------
+@@ -89,7 +89,7 @@ static SDL_TimerID			timer;
+ static PPScreen*			myTrackerScreen		= NULL;
+ static Tracker*				myTracker			= NULL;
+ static PPDisplayDevice*		myDisplayDevice		= NULL;
+-#ifdef HAVE_LIBASOUND
++#ifdef HAVE_LIBRTMIDI
+ static MidiReceiver*		myMidiReceiver		= NULL;
+ #endif
+ 
+@@ -223,7 +223,7 @@ static Uint32 SDLCALL timerCallback(Uint32 interval, void* param)
+ 	return interval;
+ }
+ 
+-#ifdef HAVE_LIBASOUND
++#ifdef HAVE_LIBRTMIDI
+ class MidiEventHandler : public MidiReceiver::MidiEventHandler
+ {
+ public:
+@@ -829,7 +829,7 @@ myDisplayDevice = new PPDisplayDeviceFB(windowSize.width, windowSize.height, sca
+ 	// Startup procedure
+ 	myTracker->startUp(noSplash);
+ 
+-#ifdef HAVE_LIBASOUND
++#ifdef HAVE_LIBRTMIDI
+ 	InitMidi();
+ #endif
+ 
+@@ -962,7 +962,7 @@ int main(int argc, char *argv[])
+ 	initTracker(defaultBPP, orientation, swapRedBlue, noSplash);
+ 	globalMutex->unlock();
+ 
+-#ifdef HAVE_LIBASOUND
++#ifdef HAVE_LIBRTMIDI
+ 	if (myMidiReceiver && recVelocity)
+ 	{
+ 		myMidiReceiver->setRecordVelocity(true);
+@@ -1036,7 +1036,7 @@ int main(int argc, char *argv[])
+ 	SDL_RemoveTimer(timer);
+ 
+ 	globalMutex->lock();
+-#ifdef HAVE_LIBASOUND
++#ifdef HAVE_LIBRTMIDI
+ 	delete myMidiReceiver;
+ #endif
+ 	delete myTracker;

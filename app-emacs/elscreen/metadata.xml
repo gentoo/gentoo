@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<longdescription>
+  Emacs is more of an "environment" than just an editor, since it has the
+  strong configuration language, emacs-lisp. There are a lot of applications
+  written in emacs-lisp, and you may run many applications on your Emacs at
+  the same time, i.e. e-mail reader, news reader, IRC client, a kind of IDE,
+  etc. These applications likely consist of two or more windows, so when you
+  switch among applications, you may want to save or restore how windows are
+  located (this is called as "window-configuration"). For this purpose, Emacs
+  has two functions, window-configuration-to-register and jump-to-register,
+  but these are too primitive to use on a daily basis.
+
+  ElScreen provides the ease-to-use environment to save or restore several
+  window-configurations.
+</longdescription>
+<stabilize-allarches/>
+<use>
+  <flag name="wanderlust">Include support for <pkg>app-emacs/wanderlust</pkg>
+  </flag>
+</use>
+</pkgmetadata>

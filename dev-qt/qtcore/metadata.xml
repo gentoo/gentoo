@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>qt@gentoo.org</email>
+		<name>Gentoo Qt Project</name>
+	</maintainer>
+	<use>
+		<flag name="old-kernel" restrict="&lt;dev-qt/qtcore-5.15.0">Disable syscalls not available on Linux kernels older than 3.17</flag>
+		<flag name="old-kernel" restrict="&gt;=dev-qt/qtcore-5.15.0">Disable syscalls not available on Linux kernels older than 4.11</flag>
+		<flag name="systemd">Enable native journald logging support</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://bugreports.qt.io/</bugs-to>
+		<doc>https://doc.qt.io/</doc>
+	</upstream>
+	<slots>
+		<subslots>
+			Must only be used by packages that are known to use private parts of the Qt API.
+		</subslots>
+	</slots>
+</pkgmetadata>

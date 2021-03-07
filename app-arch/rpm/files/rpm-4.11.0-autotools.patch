@@ -1,0 +1,14 @@
+diff -urN rpm-4.11.0.1.old/configure.ac rpm-4.11.0.1/configure.ac
+--- rpm-4.11.0.1.old/configure.ac	2013-03-26 18:38:35.137667450 +0100
++++ rpm-4.11.0.1/configure.ac	2013-03-26 18:44:08.632673258 +0100
+@@ -824,10 +810,6 @@
+ 
+ AC_SUBST(OBJDUMP)
+ 
+-if test "$with_external_db" = no; then
+-    AC_CONFIG_SUBDIRS(db3)
+-fi
+-
+ AM_CONDITIONAL([WITH_INTERNAL_DB],[test "$with_external_db" = no])
+ AM_CONDITIONAL([DOXYGEN],[test "$DOXYGEN" != no])
+ AM_CONDITIONAL([HACKINGDOCS],[test "$with_hackingdocs" = yes])

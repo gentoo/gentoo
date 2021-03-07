@@ -1,0 +1,12 @@
+## 70_choose_tree.dpatch by William Alexander Grant <william.grant@ubuntu.com.au>
+--- tv-0.5.orig/tview.cpp
++++ tv-0.5/tview.cpp
+@@ -209,7 +209,7 @@
+         wxT("SVG vector picture files (*.svg)|*.svg"),
+         wxSAVE|wxOVERWRITE_PROMPT);
+ 
+-    if (dialog.ShowModal() == wxID_OK)
++    if ((dialog.ShowModal() == wxID_OK) && (p.GetNumTrees() != 0))
+     {
+ 		wxSVGFileDC pictureDC (dialog.GetPath(), 600, 650) ;
+ 		OnDraw (&pictureDC);

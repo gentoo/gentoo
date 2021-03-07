@@ -1,0 +1,9 @@
+--- a/wavbreaker.desktop
++++ b/wavbreaker.desktop
+@@ -9,5 +9,5 @@
+ Icon=wavbreaker
+ Terminal=false
+ Type=Application
+-Categories=Application;AudioVideo;Audio;
++Categories=AudioVideo;Audio;
+ MimeType=audio/x-wav

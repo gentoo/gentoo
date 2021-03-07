@@ -1,0 +1,12 @@
+diff -Naur a/brainworkshop.pyw b/brainworkshop.pyw
+--- a/brainworkshop.pyw	2018-07-14 19:11:17.536581902 +0100
++++ b/brainworkshop.pyw	2018-07-14 19:12:07.582695292 +0100
+@@ -173,7 +173,7 @@
+     if rtrn:
+         return rtrn
+     else:
+-        return os.path.join(get_main_dir(), FOLDER_RES)
++        return '@GENTOO_DATADIR@'
+ def edit_config_ini():
+     if sys.platform == 'win32':
+         cmd = 'notepad'

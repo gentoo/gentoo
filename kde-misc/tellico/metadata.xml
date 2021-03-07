@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Tellico is a KDE application for organizing your collections. It provides
+		default templates for books, bibliographies, videos, music, video games, coins,
+		stamps, trading cards, comic books, and wines.
+	</longdescription>
+	<use>
+		<flag name="discid">Add support for reading disc IDs from audio CDs</flag>
+		<flag name="yaz">Add support for searching Z39.50 databases</flag>
+	</use>
+</pkgmetadata>

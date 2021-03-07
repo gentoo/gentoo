@@ -1,0 +1,20 @@
+--- a/CMakeLists.txt	2014-06-20 14:56:55.000000000 +0200
++++ b/CMakeLists.txt	2018-10-05 17:03:43.000000000 +0200
+@@ -4,15 +4,9 @@
+ 
+ add_executable(ddate ddate.c)
+ 
+-add_custom_command( OUTPUT ddate.1.gz
+-  COMMAND gzip -c -9 ${CMAKE_SOURCE_DIR}/ddate.1 >> ${CMAKE_CURRENT_BINARY_DIR}/ddate.1.gz
+-  DEPENDS ${CMAKE_SOURCE_DIR}/ddate.1
+-  COMMENT "gzipping manpage"
+-  )
+-
+ add_custom_target( manpage ALL
+-  DEPENDS ddate.1.gz
++  DEPENDS ddate.1
+   )
+ 
+-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/ddate.1.gz DESTINATION share/man/man1)
++install(FILES ${CMAKE_SOURCE_DIR}/ddate.1 DESTINATION share/man/man1)
+ install(TARGETS ddate DESTINATION bin)

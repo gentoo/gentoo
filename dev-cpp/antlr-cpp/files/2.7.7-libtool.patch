@@ -1,0 +1,21 @@
+diff -Naur antlr-2.7.7.orig/configure.in antlr-2.7.7/configure.in
+--- antlr-2.7.7.orig/configure.in	2006-11-01 21:37:18.000000000 +0000
++++ antlr-2.7.7/configure.in	2015-10-11 13:49:09.166308712 +0100
+@@ -13,6 +13,9 @@
+ AC_CONFIG_SRCDIR([LICENSE.txt])
+ AC_CONFIG_AUX_DIR(scripts)
+ 
++LT_INIT
++AM_INIT_AUTOMAKE
++
+ ## This shall be the very first config file. Do not change
+ ## this.
+ AC_CONFIG_FILES([scripts/config.vars])
+@@ -841,7 +844,6 @@
+ AC_PROG_RANLIB
+ 
+ test -z "$MKDIR" && AC_PATH_PROG(MKDIR, mkdir$EXEEXT, mkdir$EXEEXT )
+-test -z "$RM"    && AC_PATH_PROG(RM,    rm$EXEEXT, rm$EXEEXT )
+ 
+ AX_PATH_PROGS(
+   [TAR],

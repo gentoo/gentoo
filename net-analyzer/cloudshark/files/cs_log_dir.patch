@@ -1,0 +1,13 @@
+diff -Naur cloudshark-1.0.2-174-orig/cloudshark.lua cloudshark-1.0.2-174/cloudshark.lua
+--- cloudshark-1.0.2-174-orig/cloudshark.lua	2013-06-03 00:00:46.669223099 -0400
++++ cloudshark-1.0.2-174/cloudshark.lua	2013-06-03 00:01:31.493224300 -0400
+@@ -180,7 +180,8 @@
+ --
+ 
+ function cs_log_dir()
+-   return persconffile_path('plugins/cloudshark')
++   local log_dir = "/tmp"
++   return log_dir
+ end
+ 
+ --

@@ -1,0 +1,21 @@
+diff --git a/Makefile b/Makefile
+index 68d7469..bcb821c 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,6 +1,6 @@
+ MACHINEFLAGS = 
+ CFLAGS = $(MACHINEFLAGS)
+-LFLAGS = -lm $(MACHINEFLAGS)
++LFLAGS = -lm
+ OBJLIST = dots.o abin.o readPDBrecs.o geom3d.o utility.o select.o \
+ 	 parse.o atomprops.o stdconntable.o autobondrot.o hybrid_36_c.o
+ 
+@@ -8,7 +8,7 @@ OBJLIST = dots.o abin.o readPDBrecs.o geom3d.o utility.o select.o \
+ 	cc -c $*.c $(CFLAGS)
+ 
+ probe: probe.o $(OBJLIST)
+-	cc -o $@ probe.o $(OBJLIST) $(LFLAGS)
++	cc $(MACHINEFLAGS) -o $@ probe.o $(OBJLIST) $(LFLAGS)
+ 
+ clean:
+ 	@rm -f *.o *.ckp

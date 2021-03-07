@@ -1,0 +1,11 @@
+--- svgalib-1.9.25/src/vgamodesel.c~
++++ svgalib-1.9.25/src/vgamodesel.c
+@@ -35,7 +35,7 @@ int __svgalib_name2number(char *m)
+ int vga_getmodenumber(char *m)
+ {
+     int i;
+-    char s[3];
++    char s[8];
+ 
+     __svgalib_getchipset();		/* Do initialisation first */
+     i = __svgalib_name2number(m);

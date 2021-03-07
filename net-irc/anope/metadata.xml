@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<longdescription>
+		Anope IRC Services provide user and channel management services for an
+		IRC server. It is a well-known package which continues to be actively
+		developed. It has support for multiple different IRCd linking protocols.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">anope</remote-id>
+		<remote-id type="github">anope/anope</remote-id>
+	</upstream>
+	<use>
+		<flag name="ldap">Build LDAP modules for e.g. opertypes</flag>
+		<flag name="ssl">Provide SSL services using OpenSSL</flag>
+		<flag name="sql">Build modules which require SQL</flag>
+		<flag name="tre">Use <pkg>dev-libs/tre</pkg> for regular expressions</flag>
+	</use>
+</pkgmetadata>

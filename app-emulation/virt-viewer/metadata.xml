@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>virtualization@gentoo.org</email>
+		<name>Gentoo Virtualization Project</name>
+	</maintainer>
+	<use>
+		<flag name="libvirt">Support connecting to virtual machines
+			managed by libvirt.</flag>
+		<flag name="spice">Support connecting to SPICE-enabled virtual
+			machines.</flag>
+		<flag name="vnc">Support connecting to VNC-enabled virtual
+			machines.</flag>
+	</use>
+</pkgmetadata>

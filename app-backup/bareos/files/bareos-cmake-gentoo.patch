@@ -1,0 +1,11 @@
+--- core/cmake/distname.sh.orig	2019-01-31 12:39:26.000000000 +0100
++++ core/cmake/distname.sh	2019-02-05 10:26:43.258936535 +0100
+@@ -134,7 +134,7 @@
+       elif test -f /etc/gentoo-release
+       then
+          DISTNAME=gentoo
+-         DISTVER=`awk '/version / { print $5 }' < /etc/gentoo-release`
++         DISTVER=`awk '/release / { print $5 }' < /etc/gentoo-release`
+       elif test -f /etc/debian_version
+       then
+          if `test -f /etc/apt/sources.list && grep -q ubuntu /etc/apt/sources.list`; then

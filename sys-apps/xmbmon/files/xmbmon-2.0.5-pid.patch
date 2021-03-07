@@ -1,0 +1,31 @@
+Write a pid when we daemonize
+
+patch by Mike Frysinger
+
+--- a/bmon.c
++++ b/mbmon.c
+@@ -229,4 +229,5 @@
+ static void daemonize()
+ {
++	pid_t pid;
+ 	int fd;
+ 	struct sigaction sa_ign, sa_save;
+@@ -247,5 +248,5 @@
+ 	sigaction(SIGHUP, &sa_ign, &sa_save);
+ 
+-	switch (fork()) {
++	switch ((pid=fork())) {
+ 	case 0:
+ 		break;
+@@ -259,4 +260,11 @@
+ 
+ 	default:
++		{
++		FILE *f = fopen("/var/run/mbmon.pid", "w");
++		if (f != NULL) {
++			fprintf(f, "%i", pid);
++			fclose(f);
++		}
++		}
+ 		exit(0);
+ 		/* NOTREACHED */

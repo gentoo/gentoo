@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">XML-Generator</remote-id>
+    <remote-id type="cpan-module">XML::Generator</remote-id>
+    <remote-id type="cpan-module">XML::Generator::DOM</remote-id>
+    <remote-id type="cpan-module">XML::Generator::DOM::util</remote-id>
+    <remote-id type="cpan-module">XML::Generator::cdata</remote-id>
+    <remote-id type="cpan-module">XML::Generator::comment</remote-id>
+    <remote-id type="cpan-module">XML::Generator::final</remote-id>
+    <remote-id type="cpan-module">XML::Generator::overload</remote-id>
+    <remote-id type="cpan-module">XML::Generator::pi</remote-id>
+    <remote-id type="cpan-module">XML::Generator::pretty</remote-id>
+    <remote-id type="cpan-module">XML::Generator::util</remote-id>
+  </upstream>
+</pkgmetadata>

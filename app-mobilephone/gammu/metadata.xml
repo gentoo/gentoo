@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="person">
+        <email>ktrace@yandex.ru</email>
+        <name>Victor Kustov</name>
+    </maintainer>
+    <maintainer type="project">
+        <email>proxy-maint@gentoo.org</email>
+        <name>Proxy Maintainers</name>
+    </maintainer>
+    <use>
+        <flag name="bluetooth">Enables bluetooth support</flag>
+        <flag name="curl">Enables curl support</flag>
+        <flag name="irda">Enables infrared support</flag>
+        <flag name="nls">Enable native language support</flag>
+        <flag name="mysql">Use mysql for data storage</flag>
+        <flag name="odbc">Use ODBC as DB connector</flag>
+        <flag name="postgres">Use PostgreSQL for data storage</flag>
+        <flag name="usb">Enable USB suport</flag>
+    </use>
+    <upstream>
+        <remote-id type="github">gammu/gammu</remote-id>
+    </upstream>
+</pkgmetadata>

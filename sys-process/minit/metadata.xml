@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription>
+		minit - a small yet feature-complete init
+
+		What works so far
+		* It can start services and take dependencies into account.
+		* It can restart services
+		* It can start services in sync mode (i.e. wait until they terminate, to get around race conditions for static initializations)
+		* There is a companion utility "msvc" that can be used much in the same way as the svc from daemontools. Communication works over two fifos, /etc/minit/in and /etc/minit/out. Those have to exist before minit is started and they should be owned by root and have mode 600.
+		* There is a companion utility "pidfilehack" that can be used to do stuff like run ssh, wait a while, read the PID off /var/run/sshd.pid and tell minit this PID so it will know when sshd exits and can restart it.
+		* It can pipe stdout to a dedicated log process.
+	</longdescription>
+</pkgmetadata>

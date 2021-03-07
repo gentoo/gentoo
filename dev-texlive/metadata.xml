@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The dev-texlive category contains various TeXLive's packages.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría dev-texlive contiene varios paquetes de TeXLive.
+	</longdescription>
+</catmetadata>
+

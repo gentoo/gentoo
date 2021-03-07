@@ -1,0 +1,39 @@
+From 4d53621557de31479dad3cb44b7fccba8277b76d Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Thu, 27 Aug 2020 07:52:25 +0100
+Subject: [PATCH 2/2] lib/tests/test_wordtokenizer_main.cpp: insert overload to
+ std namespace
+
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+---
+ lib/tests/test_wordtokenizer_main.cpp | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/lib/tests/test_wordtokenizer_main.cpp b/lib/tests/test_wordtokenizer_main.cpp
+index 40e23b1..02e8fd8 100644
+--- a/lib/tests/test_wordtokenizer_main.cpp
++++ b/lib/tests/test_wordtokenizer_main.cpp
+@@ -11,9 +11,9 @@
+ using namespace std;
+ using namespace srchilite;
+ 
+-static ostream &operator <<(ostream &os, const WordTokenizer::WordTokenizerResults::value_type &);
+-
+-ostream &operator <<(ostream &os, const WordTokenizer::WordTokenizerResults::value_type &token) {
++/* Argument-dependent lookup looks only at std:: namespace (ostream and value_type expansion) */
++namespace std {
++static ostream &operator <<(ostream &os, const WordTokenizer::WordTokenizerResults::value_type &token) {
+     if (token.first.size()) {
+         os << "space: \"" << token.first << "\"" << endl;
+     } else {
+@@ -22,6 +22,7 @@ ostream &operator <<(ostream &os, const WordTokenizer::WordTokenizerResults::val
+ 
+     return os;
+ }
++}
+ 
+ int main() {
+     WordTokenizer::WordTokenizerResults tokens;
+-- 
+2.28.0
+

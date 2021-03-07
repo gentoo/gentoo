@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Ever wondered how Pacman would be like with physics? No? Well, it's
+		revolutionary. This mashup of "Not" and "Pacman" puts The Pac and
+		the Ghosts in a in a Pacworld cage, at mercy of gravity and the
+		level's shape, controlled solely by you. Ghosts still don't like
+		you very much, so you should be careful to make Pacman avoid them.
+	</longdescription>
+</pkgmetadata>

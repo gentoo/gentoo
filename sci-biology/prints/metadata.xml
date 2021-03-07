@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-biology@gentoo.org</email>
+		<name>Gentoo Biology Project</name>
+	</maintainer>
+	<longdescription>
+		A protein motif fingerprint database maintained at the University of
+		Manchester. A fingerprint is a group of conserved motifs used to
+		characterise a protein family; its diagnostic power is refined by
+		iterative scanning of a SWISS-PROT/TrEMBL composite. Usually the motifs
+		do not overlap, but are separated along a sequence, though they may be
+		contiguous in 3D-space. Fingerprints can encode protein folds and
+		functionalities more flexibly and powerfully than can single motifs,
+		full diagnostic potency deriving from the mutual context provided by
+		motif neighbours.
+	</longdescription>
+</pkgmetadata>

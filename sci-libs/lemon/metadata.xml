@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription>
+		LEMON stands for Library for Efficient Modeling and Optimization in
+		Networks. It is a C++ template library providing efficient
+		implementations of common data structures and algorithms with focus
+		on combinatorial optimization tasks connected mainly with graphs and
+		networks.
+	</longdescription>
+	<use>
+		<flag name="coin">Enable the <pkg>sci-libs/coinor-clp</pkg> and <pkg>sci-libs/coinor-cbc</pkg> graph algorithms</flag>
+		<flag name="glpk">Enable GNU Linear Programming Kit <pkg>sci-mathematics/glpk</pkg> support</flag>
+	</use>
+</pkgmetadata>

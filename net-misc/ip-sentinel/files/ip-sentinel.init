@@ -1,0 +1,49 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+CFG_FILE="/etc/ip-sentinel.cfg"
+
+depend() {
+        need net
+}
+
+checkconfig() {
+	if [ ! -f "${CFG_FILE}" ] ; then
+		eerror "File ${CFG_FILE} does not exists!"
+		return 1
+	fi
+
+	if [ -n "${CHROOT}" ] ; then
+		local_opts="--user ipsentinel --group ipsentinel -r ${CHROOT}"
+	else
+		local_opts="--user ipsentinel --group ipsentinel -r /"
+	fi
+}
+
+start() {
+	checkconfig || return 1
+
+	ebegin "Starting ip-sentinel..."
+	start-stop-daemon --start --quiet --exec /usr/sbin/ip-sentinel -- --ipfile ${CFG_FILE} ${local_opts} $OPTS $IFACE &
+	eend $? "Failed to start ip-sentinel"
+}
+
+stop() {
+	ebegin "Stoping ip-sentinel..."
+	start-stop-daemon --stop --quiet --pidfile /var/run/ip-sentinel.run
+	eend $? "Failed to stop ip-sentinel"
+}
+
+restart () {
+	svc_stop
+	echo "Please, wait while child process quit..."
+	while `ps aux | grep -v 'init.d' | grep [i]p-sentinel >/dev/null`
+	do
+		printf ". "
+		sleep 1
+	done
+	echo "[Done]"
+	svc_start
+}
+

@@ -1,0 +1,38 @@
+diff -Nuar openldap-2.4.35.orig/contrib/slapd-modules/samba4/Makefile openldap-2.4.35/contrib/slapd-modules/samba4/Makefile
+--- openldap-2.4.35.orig/contrib/slapd-modules/samba4/Makefile	2013-03-28 15:41:51.000000000 +0000
++++ openldap-2.4.35/contrib/slapd-modules/samba4/Makefile	2013-04-16 02:16:40.651868432 +0000
+@@ -20,7 +20,8 @@
+ 
+ LIBTOOL = $(LDAP_BUILD)/libtool
+ CC = gcc
+-OPT = -g -O2 -Wall
++#OPT = -g -O2 -Wall
++OPT = -Wall
+ DEFS = -DSLAPD_OVER_RDNVAL=SLAPD_MOD_DYNAMIC \
+ 	-DSLAPD_OVER_PGUID=SLAPD_MOD_DYNAMIC \
+ 	-DSLAPD_OVER_VERNUM=SLAPD_MOD_DYNAMIC
+@@ -41,20 +42,20 @@
+ .SUFFIXES: .c .o .lo
+ 
+ .c.lo:
+-	$(LIBTOOL) --mode=compile $(CC) $(OPT) $(DEFS) $(INCS) -c $<
++	$(LIBTOOL) --mode=compile $(CC) $(OPT) $(CFLAGS) $(DEFS) $(INCS) -c $<
+ 
+ all: $(PROGRAMS)
+ 
+ pguid.la: pguid.lo
+-	$(LIBTOOL) --mode=link $(CC) $(OPT) -version-info $(LTVER) \
++	$(LIBTOOL) --mode=link $(CC) $(OPT) $(CFLAGS) -version-info $(LTVER) \
+ 	-rpath $(moduledir) -module -o $@ $? $(LIBS)
+ 
+ rdnval.la: rdnval.lo
+-	$(LIBTOOL) --mode=link $(CC) $(OPT) -version-info $(LTVER) \
++	$(LIBTOOL) --mode=link $(CC) $(OPT) $(CFLAGS) -version-info $(LTVER) \
+ 	-rpath $(moduledir) -module -o $@ $? $(LIBS)
+ 
+ vernum.la: vernum.lo
+-	$(LIBTOOL) --mode=link $(CC) $(OPT) -version-info $(LTVER) \
++	$(LIBTOOL) --mode=link $(CC) $(OPT) $(CFLAGS) -version-info $(LTVER) \
+ 	-rpath $(moduledir) -module -o $@ $? $(LIBS)
+ 
+ clean:

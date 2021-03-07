@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:samba:rsync</remote-id>
+	</upstream>
+	<use>
+		<flag name="stunnel">Provide helper scripts for using rsync via &gt;=net-misc/stunnel-4</flag>
+		<flag name="system-zlib">Use system zlib instead of bundled one. This is incompatible with older rsync releases!</flag>
+		<flag name="xxhash">Enable <pkg>dev-libs/xxhash</pkg> support for hashing</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,22 @@
+Make the build system respect DESTDIR, in order to allow staged builds.
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -109,13 +109,13 @@
+ #          installs man pages in MANDIR/man1/  (e.g. if MANSUFFIX is 1)
+ #          Creates these directories if they don't exist.
+ install: 
+-	mkdir -p ${BINDIR}
+-	-mkdir -p ${MANDIR}/man${MANSUFFIX}
++	mkdir -p ${DESTDIR}${BINDIR}
++	-mkdir -p ${DESTDIR}${MANDIR}/man${MANSUFFIX}
+ 	for file in $(PROGS) $(PVMPROGS); do\
+-	   cp src/$$file $(BINDIR)/;\
++	   cp src/$$file ${DESTDIR}$(BINDIR)/;\
+ 	done
+ 	-for file in hmmer $(PROGS); do\
+-	   $(INSTMAN) documentation/man/$$file.man $(MANDIR)/man$(MANSUFFIX)/$$file.$(MANSUFFIX);\
++	   $(INSTMAN) documentation/man/$$file.man ${DESTDIR}$(MANDIR)/man$(MANSUFFIX)/$$file.$(MANSUFFIX);\
+ 	done
+ 
+ # uninstall: Reverses the steps of "make install".

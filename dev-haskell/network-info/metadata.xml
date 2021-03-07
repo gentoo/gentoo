@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		This library provides simple read-only access to the
+		local computer's networking configuration. It is
+		currently capable of getting a list of all the network
+		interfaces and their respective IPv4, IPv6 and MAC
+		addresses.
+		
+		network-info has been tested and is known to work on
+		Ubuntu 10.10, FreeBSD 9.0, Mac OS X 10.6.4 and Windows
+		XP/7. It probably works on other flavours of Linux,
+		OS X, FreeBSD and Windows as well.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">jystic/network-info</remote-id>
+	</upstream>
+</pkgmetadata>

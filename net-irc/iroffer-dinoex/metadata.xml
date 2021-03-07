@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zlogene@gentoo.org</email>
+		<name>Mikle Kolyada</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>pinkbyte@gentoo.org</email>
+		<name>Sergey Popov</name>
+	</maintainer>
+	<use>
+		<flag name="admin">Compile with HTTP Admin</flag>
+		<flag name="blowfish">Compile with blowfish encryption support</flag>
+		<flag name="chroot">Compile with chroot support</flag>
+		<flag name="http">Compile with HTTP server support</flag>
+		<flag name="kqueue">Compile with kqueue() support</flag>
+		<flag name="memsave">Compile with memory protection</flag>
+		<flag name="telnet">Compile with Telnet server support</flag>
+	</use>
+</pkgmetadata>

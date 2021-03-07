@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/jirutka/ssh-ldap-pubkey/issues</bugs-to>
+		<remote-id type="github">jirutka/ssh-ldap-pubkey</remote-id>
+	</upstream>
+	<use>
+		<flag name="schema">Install a copy of the LPK schema, only needed on LDAP servers.</flag>
+	</use>
+</pkgmetadata>

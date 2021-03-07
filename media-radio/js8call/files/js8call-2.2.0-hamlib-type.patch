@@ -1,0 +1,20 @@
+--- a/HamlibTransceiver.hpp	2020-06-27 19:35:04.514472802 -0400
++++ b/HamlibTransceiver.hpp	2020-06-27 19:35:34.361368141 -0400
+@@ -12,17 +12,9 @@
+ 
+ extern "C"
+ {
+-#ifdef JS8_USE_HAMLIB_THREE
+   typedef struct rig RIG;
+-#else
+-  typedef struct s_rig RIG;
+-#endif
+   struct rig_caps;
+-#ifdef JS8_USE_HAMLIB_THREE
+   typedef int vfo_t;
+-#else
+-  typedef unsigned int vfo_t;
+-#endif
+ }
+ 
+ // hamlib transceiver and PTT mostly delegated directly to hamlib Rig class

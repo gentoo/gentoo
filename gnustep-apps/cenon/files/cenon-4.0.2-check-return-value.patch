@@ -1,0 +1,40 @@
+Description: Check the return value of `system'.
+Author: Yavor Doganov <yavor@gnu.org>
+Forwarded: yes
+Last-Update: 2014-06-25
+---
+
+--- cenon.app.orig/VHFImport/PSImport.m
++++ cenon.app/VHFImport/PSImport.m
+@@ -143,7 +143,14 @@
+ 
+     /* convert pdf to eps */
+     commandLine = [NSString stringWithFormat:@"%@ -q -dNOPAUSE -dBATCH -dSAFER -sDEVICE=epswrite -sOutputFile=%@ -c save pop -f '%@'", [self gsPath], psFile, pdfFile];
+-    system([commandLine UTF8String]);
++    if (system([commandLine UTF8String]) != 0)
++      {
++	NSRunAlertPanel(@"Unable to import file",
++			@"An error occured while importing the file.\n"
++			@"Make sure you have ghostscript installed in PATH.",
++			@"OK", nil, nil);
++	return nil;
++      }
+ 
+     /* import ps */
+     psData = [NSData dataWithContentsOfFile:psFile];
+@@ -330,7 +337,14 @@
+     //[data writeToFile:inFile atomically:NO];    // <= 10.4
+ 
+     commandLine = [NSString stringWithFormat:@"%@ -dNODISPLAY -dBATCH -dNOSAFER -g1000x1000 '%@'", [self gsPath], inFile];
+-    system([commandLine UTF8String]);
++    if (system([commandLine UTF8String]) != 0)
++      {
++	NSRunAlertPanel(@"Unable to import file",
++			@"An error occured while importing the file.\n"
++			@"Make sure you have ghostscript installed in PATH.",
++			@"OK", nil, nil);
++	return nil;
++      }
+ 
+     /* load generated file */
+     //data = [[[NSString alloc] initWithContentsOfFile:outFile] autorelease];

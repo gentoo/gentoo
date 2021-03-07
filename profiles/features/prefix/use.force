@@ -1,0 +1,8 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# force prefix flag to be set
+prefix
+
+# force GNU userland (even though base profile sets this too)
+userland_GNU

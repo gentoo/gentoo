@@ -1,0 +1,15 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Joonas Niilola <juippis@gentoo.org> (2020-09-26)
+# Depends on media-video/rav1e that's listed below. #744637
+-media-libs/libavif
+
+# Sam James <sam@gentoo.org> (2020-11-04)
+# Needs Rust, which is available here
+-dev-util/cargo-c
+-dev-util/cbindgen
+-media-video/rav1e
+-net-news/newsboat
+-net-libs/quiche
+-dev-util/git-delta

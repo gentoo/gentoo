@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>dlan@gentoo.org</email>
+    <name>Yixun Lan</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>cjk@gentoo.org</email>
+    <name>Cjk</name>
+  </maintainer>
+  <use>
+    <flag name="boost">Enable support for <pkg>dev-libs/boost</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="github">ibus/ibus-pinyin</remote-id>
+  </upstream>
+</pkgmetadata>

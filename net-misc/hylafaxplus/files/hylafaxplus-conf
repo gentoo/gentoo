@@ -1,0 +1,29 @@
+# Spool directory for HylaFAX
+spooldir="/var/spool/fax"
+
+# Faxq program path
+faxq="/usr/sbin/faxq"
+
+# hfaxd program path
+hfaxd="/usr/sbin/hfaxd"
+
+# faxgetty program path
+faxgetty="/usr/sbin/faxgetty"
+
+# Port of the hfaxd daemon for new protocol
+faxport=hylafax
+
+# Address used by hfaxd as binding address.
+faxbind="127.0.0.1"
+
+# Port of the hfaxd daemon for SNPP protocol
+snppport=444
+
+# Port of the hfaxd daemon for old protocol
+oldprotoport=4557
+
+# newproto | oldproto | snpp | any
+mode="newproto"
+
+# Directory where the pidfiles of HylaFAX are saved.
+piddir="/var/run"

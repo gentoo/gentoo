@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>polynomial-c@gentoo.org</email>
+		<name>Lars Wendler</name>
+	</maintainer>
+	<longdescription lang="en">
+		Geany is a small and lightweight integrated development environment.
+		It was developed to provide a small and fast IDE, which has only a
+		few dependencies from other packages. Another goal was to be as
+		independent as possible from a special Desktop Environment like KDE
+		or GNOME. So it is using only the GTK2 toolkit and therefore you need
+		only the GTK2 runtime libraries to run Geany.
+
+		The basic features of Geany are: syntax highlighting; code completion;
+		auto completion of often used constructs like if, for and while;
+		auto completion of XML and HTML tags; call tips; many supported
+		filetypes like C, Java, PHP, HTML, Python, Perl, Pascal; symbol lists.
+	</longdescription>
+	<longdescription lang="fr">
+		Geany est un environnement de développement integré (EDI) petit et
+		léger. Il a été développé pour fournir un EDI petit et rapide, qui ne
+		possède que peu de dépendences avec d'autres paquets. Un autre but
+		était qu'il soit aussi indépendant que possible d'environnements de
+		bureaux comme KDE ou Gnome. Ainsi, il n'utilise que la boîte à outils
+		GTK2.
+
+		Les principales fonctionnalités sont: la coloration syntaxique; la
+		complétion de code source; la complétion automatique de certaines
+		constructions couramment utilisées, comme les blocs "if", "for" et
+		"while"; complétion automatique des balises XML et HTML; info-bulles
+		décrivant la syntaxe d'appel des fonctions; de nombreux langages
+		supportés, comme C, Java, PHP, HTML, Python, Perl, Pascal; liste des
+		symboles.
+	</longdescription>
+	<use>
+		<flag name="gtk2">Use GTK+2 instead of GTK+3</flag>
+		<flag name="gtk3">Use GTK+3 instead of GTK+2</flag>
+		<flag name="vte">Enable Terminal support (<pkg>x11-libs/vte</pkg>)</flag>
+	</use>
+</pkgmetadata>

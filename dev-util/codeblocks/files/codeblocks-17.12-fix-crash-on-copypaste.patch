@@ -1,0 +1,20 @@
+# Fix crashing on paste of copied text from other applications
+# https://sourceforge.net/p/codeblocks/tickets/629/
+diff -Nuar a/main.cpp b/main.cpp
+--- a/src/src/main.cpp	2017-11-01 02:32:38.000000000 +0300
++++ b/src/src/main.cpp	2020-03-13 21:59:25.000000000 +0300
+@@ -4321,7 +4321,13 @@
+     }
+ 
+     if (Manager::Get()->GetEditorManager() && event.GetEditor() == Manager::Get()->GetEditorManager()->GetActiveEditor())
+-        DoUpdateStatusBar();
++    {
++        #if wxCHECK_VERSION(3, 0, 0)
++            CallAfter(&MainFrame::DoUpdateStatusBar);
++        #else
++            DoUpdateStatusBar();
++        #endif // wxCHECK_VERSION(3, 0, 0)
++    }
+ 
+     event.Skip();
+ }

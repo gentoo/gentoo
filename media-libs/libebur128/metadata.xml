@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>amynka@gentoo.org</email>
+	<name>Amy Liffey</name>
+</maintainer>
+<upstream>
+	<maintainer status="active">
+		<email>jan.kokemueller@gmail.com</email>
+		<name>Jan Kokemüller</name>
+	</maintainer>
+	<maintainer status="active">
+		<email>superjoe30@gmail.com</email>
+		<name>Andrew Kelley</name>
+	</maintainer>
+	<remote-id type="github">jiixyj/libebur128</remote-id>
+	<bugs-to>https://github.com/jiixyj/libebur128/issues</bugs-to>
+</upstream>
+</pkgmetadata>

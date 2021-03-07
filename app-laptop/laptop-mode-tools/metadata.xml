@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="apm">Add APM (Advanced Power Management) support</flag>
+	</use>
+	<upstream>
+		<maintainer status="active">
+			<email>gentoo-lmt@researchut.com</email>
+			<name>Ritesh Raj Sarraf</name>
+		</maintainer>
+		<remote-id type="github">rickysarraf/laptop-mode-tools</remote-id>
+	</upstream>
+</pkgmetadata>

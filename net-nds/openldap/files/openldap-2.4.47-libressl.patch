@@ -1,0 +1,58 @@
+diff --git a/libraries/libldap/tls_o.c b/libraries/libldap/tls_o.c
+index b0277dfe9..8a3f47a74 100644
+--- a/libraries/libldap/tls_o.c
++++ b/libraries/libldap/tls_o.c
+@@ -50,7 +50,7 @@
+ #include <ssl.h>
+ #endif
+ 
+-#if OPENSSL_VERSION_NUMBER >= 0x10100000
++#if OPENSSL_VERSION_NUMBER >= 0x10100000 && !defined(LIBRESSL_VERSION_NUMBER)
+ #define ASN1_STRING_data(x)	ASN1_STRING_get0_data(x)
+ #endif
+ 
+@@ -200,7 +200,7 @@ tlso_init( void )
+ 	(void) tlso_seed_PRNG( lo->ldo_tls_randfile );
+ #endif
+ 
+-#if OPENSSL_VERSION_NUMBER < 0x10100000
++#if OPENSSL_VERSION_NUMBER < 0x10100000 || defined(LIBRESSL_VERSION_NUMBER)
+ 	SSL_load_error_strings();
+ 	SSL_library_init();
+ 	OpenSSL_add_all_digests();
+@@ -252,7 +252,7 @@ static void
+ tlso_ctx_ref( tls_ctx *ctx )
+ {
+ 	tlso_ctx *c = (tlso_ctx *)ctx;
+-#if OPENSSL_VERSION_NUMBER < 0x10100000
++#if OPENSSL_VERSION_NUMBER < 0x10100000 || defined(LIBRESSL_VERSION_NUMBER)
+ #define	SSL_CTX_up_ref(ctx)	CRYPTO_add( &(ctx->references), 1, CRYPTO_LOCK_SSL_CTX )
+ #endif
+ 	SSL_CTX_up_ref( c );
+@@ -511,7 +511,7 @@ tlso_session_my_dn( tls_session *sess, struct berval *der_dn )
+ 	if (!x) return LDAP_INVALID_CREDENTIALS;
+ 	
+ 	xn = X509_get_subject_name(x);
+-#if OPENSSL_VERSION_NUMBER < 0x10100000
++#if OPENSSL_VERSION_NUMBER < 0x10100000 || defined(LIBRESSL_VERSION_NUMBER)
+ 	der_dn->bv_len = i2d_X509_NAME( xn, NULL );
+ 	der_dn->bv_val = xn->bytes->data;
+ #else
+@@ -547,7 +547,7 @@ tlso_session_peer_dn( tls_session *sess, struct berval *der_dn )
+ 		return LDAP_INVALID_CREDENTIALS;
+ 
+ 	xn = X509_get_subject_name(x);
+-#if OPENSSL_VERSION_NUMBER < 0x10100000
++#if OPENSSL_VERSION_NUMBER < 0x10100000 || defined(LIBRESSL_VERSION_NUMBER)
+ 	der_dn->bv_len = i2d_X509_NAME( xn, NULL );
+ 	der_dn->bv_val = xn->bytes->data;
+ #else
+@@ -768,7 +768,7 @@ struct tls_data {
+ 	Sockbuf_IO_Desc		*sbiod;
+ };
+ 
+-#if OPENSSL_VERSION_NUMBER < 0x10100000
++#if OPENSSL_VERSION_NUMBER < 0x10100000 || defined(LIBRESSL_VERSION_NUMBER)
+ #define BIO_set_init(b, x)	b->init = x
+ #define BIO_set_data(b, x)	b->ptr = x
+ #define BIO_clear_flags(b, x)	b->flags &= ~(x)

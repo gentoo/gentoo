@@ -1,0 +1,20 @@
+Sune Foldager writes:
+On Darwin (Mac OS X), bash incorrectly assumed that it has been called over a
+network connection (such as ssh, rsh etc.), when stdin stems from the pipe()
+system call. This is because bash's heuristic code for determining if it's
+been started over a net connection is incorrect on Darwin kernels.
+
+http://bugs.gentoo.org/79124
+
+--- a/lib/sh/netconn.c
++++ b/lib/sh/netconn.c
+@@ -53,7 +53,8 @@
+   l = sizeof(sa);
+   rv = getpeername(fd, &sa, &l);
+   /* Solaris 2.5 getpeername() returns EINVAL if the fd is not a socket. */
+-  return ((rv < 0 && (errno == ENOTSOCK || errno == EINVAL)) ? 0 : 1);
++  /* Darwin 7.7.0 getpeername() returns ENOTCONN if the fd was created with pipe(). */
++  return ((rv < 0 && (errno == ENOTSOCK || errno == ENOTCONN || errno == EINVAL)) ? 0 : 1);
+ #else /* !HAVE_GETPEERNAME || SVR4_2 || __BEOS__ */
+ #  if defined (SVR4) || defined (SVR4_2)
+   /* Sockets on SVR4 and SVR4.2 are character special (streams) devices. */

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<upstream>
+		<maintainer status="active">
+			<email>c.cboldt@gmail.com</email>
+			<name>Chuck Seyboldt</name>
+		</maintainer>
+		<changelog>https://sourceforge.net/p/mktwpol/code/ci/master/tree/CHANGES</changelog>
+		<doc>https://sourceforge.net/p/mktwpol/code/ci/master/tree/README</doc>
+		<bugs-to>https://sourceforge.net/p/mktwpol/discussion/bugs/</bugs-to>
+		<remote-id type="sourceforge">mktwpol</remote-id>
+	</upstream>
+	<longdescription lang="en">
+		mktwpol is a tool that aids system administrators in the 
+		set-up and maintenance of tripwire (an Intrusion 
+		Detection System).  It contains a pair of bash scripts, 
+		mktwpol.sh and twsetup.sh.  mktwpol.sh generates a 
+		tripwire policy file that is tailored to the packages 
+		installed on any given sytem.  twsetup.sh steps through 
+		the initial set-up of tripwire, including the generating 
+		of encryption keys and encrypting the files that are 
+		necessary for tripwire to perform its function.
+	</longdescription>
+	<longdescription lang="es">
+		mktwpol es una herramienta que ayuda a los administradores
+		de sistemas en la configuración y el mantenimiento de
+		tripwire (un Sistema de Detección de Intrusos). Contiene
+		dos guiones bash: mktwpol.sh y twsetup.sh. mktwpol.sh
+		genera un fichero de directriz para tripwire ajustada
+		a los paquetes instalados en un sistema. twsetup.sh realiza
+		la configuración inicial de tripwire, incluyendo la
+		generación de las claves de cifrado y realiza el
+		cifrado de los ficheros necesitados por tripwire para
+		realizar su función.
+	</longdescription>
+</pkgmetadata>

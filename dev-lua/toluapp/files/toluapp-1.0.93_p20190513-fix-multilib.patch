@@ -1,0 +1,38 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -6,7 +6,7 @@
+ 
+ project ( toluapp C )
+ cmake_minimum_required ( VERSION 2.8 )
+-include ( cmake/dist.cmake )
++include ( GNUInstallDirs )
+ 
+ find_package ( Lua REQUIRED )
+ include_directories ( include src/lib ${LUA_INCLUDE_DIR} )
+@@ -19,7 +19,7 @@
+ 
+ add_library ( toluapp_lib ${SRC_LIBTOLUAPP} ${DEF_FILE} )
+ target_link_libraries ( toluapp_lib ${LUA_LIBRARIES} )
+-set_target_properties ( toluapp_lib PROPERTIES OUTPUT_NAME toluapp CLEAN_DIRECT_OUTPUT 
++set_target_properties ( toluapp_lib PROPERTIES OUTPUT_NAME tolua++ CLEAN_DIRECT_OUTPUT 
+   1 )
+ 
+ # Build app
+@@ -27,10 +27,12 @@
+ set ( SRC_TOLUA src/bin/tolua.c src/bin/toluabind.c )
+ add_executable ( toluapp ${SRC_TOLUA} )
+ target_link_libraries ( toluapp toluapp_lib ${LUA_LIBRARIES} )
++set_target_properties ( toluapp PROPERTIES OUTPUT_NAME tolua++ )
+ 
+ # Install
+-install_library ( toluapp_lib )
+-install_executable ( toluapp )
+-install_header ( include/ )
+-install_data ( README INSTALL )
+-install_doc ( doc/ )
++install( TARGETS toluapp_lib DESTINATION ${CMAKE_INSTALL_LIBDIR} )
++install( TARGETS toluapp DESTINATION ${CMAKE_INSTALL_BINDIR} )
++install( DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} )
++install( FILES README DESTINATION ${CMAKE_INSTALL_DOCDIR} )
++install( DIRECTORY doc/ DESTINATION ${CMAKE_INSTALL_DOCDIR}/html )
++install( DIRECTORY src/bin/lua/ DESTINATION ${CMAKE_INSTALL_DATADIR}/toluapp/luapp )

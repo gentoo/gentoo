@@ -1,0 +1,47 @@
+diff -Nuar b/Makefile a/Makefile
+--- b/Makefile	1999-12-27 22:27:24.000000000 +0000
++++ a/Makefile	2009-09-21 11:49:40.000000000 +0000
+@@ -46,26 +46,14 @@
+ 
+ .SUFFIXES: .dvi .tex .w
+ 
+-.tex.dvi:
+-	tex $*.tex
++all: libgb.a test_io test_graph test_flip demos
+ 
+-.w.c:
+-	if test -r $*.ch; then ctangle $*.w $*.ch; else ctangle $*.w; fi
+-
+-.w.tex:
+-	if test -r $*.ch; then cweave $*.w $*.ch; else cweave $*.w; fi
+-
+-.w.o:
+-	make $*.c
+-	make $*.o
+-
+-.w:
+-	make $*.c
+-	make $*
+-
+-.w.dvi:
+-	make $*.tex
+-	make $*.dvi
++%.dvi: %.tex
++	tex $^
++%.c: %.w
++	ctangle $^
++%.tex: %.w
++	cweave $^
+ 
+ DATAFILES = anna.dat david.dat econ.dat games.dat homer.dat huck.dat \
+         jean.dat lisa.dat miles.dat roget.dat words.dat
+@@ -175,3 +163,9 @@
+ 
+ fulltar: $(ALL) ERRATA ANSI AMIGA PROTOTYPES MSVC
+ 	tar cvf sgb.tar $(ALL) ERRATA ANSI AMIGA PROTOTYPES MSVC
++
++$(DEMOS) lib tests test_io test_graph test_flip: libgb.a
++
++demos: $(DEMOS)
++
++.PRECIOUS: .o .c .tex

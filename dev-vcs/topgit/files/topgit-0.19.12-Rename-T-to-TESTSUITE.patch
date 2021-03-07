@@ -1,0 +1,62 @@
+From 3df81dacc84bc20471542855139c5b1948409412 Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Wed, 26 Aug 2020 15:27:06 +0300
+Subject: [PATCH] Rename $(T) to $(TESTSUITE)
+
+$(T) is used in Gentoo for temp directory during builging package.
+---
+ t/Makefile.mak | 8 ++++----
+ t/Makefile.sh  | 6 +++---
+ 2 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/t/Makefile.mak b/t/Makefile.mak
+index bf8805c..73f6171 100644
+--- a/t/Makefile.mak
++++ b/t/Makefile.mak
+@@ -116,11 +116,11 @@ test: pre-clean TG-TEST-SETTINGS $(TEST_LINT) FORCE
+ 	$(Q)set -m && $(CACHE_SETUP_TTY) $(MAKE) $${GNO_PD_OPT} -f Makefile.mak aggregate-results-and-cleanup
+ 
+ prove: pre-clean TG-TEST-SETTINGS $(TEST_LINT) FORCE
+-	@echo "*** prove ***" && set -m && $(CACHE_SETUP) $(PROVE) --exec $(SHELL_PATH_SQ)'' $(TESTLIB_PROVE_OPTS) $(T) :: $(TESTLIB_TEST_OPTS)
++	@echo "*** prove ***" && set -m && $(CACHE_SETUP) $(PROVE) --exec $(SHELL_PATH_SQ)'' $(TESTLIB_PROVE_OPTS) $(TESTSUITE) :: $(TESTLIB_TEST_OPTS)
+ 	$(Q)$(NOCLEANCMT)$(MAKE) $${GNO_PD_OPT} -f Makefile.mak -s post-clean-except-prove-cache
+ 
+-.PRECIOUS: $(T)
+-$(T): FORCE
++.PRECIOUS: $(TESTSUITE)
++$(TESTSUITE): FORCE
+ 	@echo "*** $@ ***"; $(SHELL_PATH_SQ)'' $@ $(TESTLIB_TEST_OPTS)
+ 
+ # How to clean up
+@@ -169,7 +169,7 @@ test-lint-filenames:
+ 
+ # Run the tests without using prove
+ 
+-run-individual-tests: $(T)
++run-individual-tests: $(TESTSUITE)
+ 
+ aggregate-results-and-cleanup:
+ 	$(Q)set -m && ec=0 && $(SHELL_PATH_SQ)'' -c 'TESTLIB_TEST_PARENT_INT_ON_ERROR=$$$$ exec "$$@"' $(SHELL_PATH_SQ)'' \
+diff --git a/t/Makefile.sh b/t/Makefile.sh
+index ca2cf9c..dc94168 100644
+--- a/t/Makefile.sh
++++ b/t/Makefile.sh
+@@ -35,12 +35,12 @@ quotevar TEST_RESULTS_DIRECTORY TEST_RESULTS_DIRECTORY_SQ
+ 
+ v_wildcard ALLT 't[0-9][0-9][0-9][0-9]-*.sh'
+ v_sort ALLT $ALLT
+-[ -n "$T" ] || T="$ALLT"
+-[ -n "$LINTTESTS" ] || LINTTESTS="$T"
++[ -n "$TESTSUITE" ] || TESTSUITE="$ALLT"
++[ -n "$LINTTESTS" ] || LINTTESTS="$TESTSUITE"
+ 
+ # Extra shell scripts to run through check-non-portable-shell.pl
+ # These will ALWAYS be "checked" whenever the test-lint target is made
+-# By default all $(T) test files are checked so they don't need to be
++# By default all $(TESTSUITE) test files are checked so they don't need to be
+ # in this list
+ 
+ v_wildcard LINTSCRIPTS '*.sh'
+-- 
+2.26.2
+

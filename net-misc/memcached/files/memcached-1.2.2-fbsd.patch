@@ -1,0 +1,12 @@
+Index: memcached-1.2.2/memcached.h
+===================================================================
+--- memcached-1.2.2.orig/memcached.h
++++ memcached-1.2.2/memcached.h
+@@ -4,6 +4,7 @@
+ #include "config.h"
+ #include <sys/types.h>
+ #include <sys/time.h>
++#include <sys/socket.h>
+ #include <netinet/in.h>
+ #include <event.h>
+ 

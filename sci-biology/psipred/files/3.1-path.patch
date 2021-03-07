@@ -1,0 +1,38 @@
+diff --git a/runpsipred b/runpsipred
+index 4ccf44e..34dee99 100755
+--- a/runpsipred
++++ b/runpsipred
+@@ -14,13 +14,13 @@
+ set dbname = uniref90filt
+ 
+ # Where the NCBI programs have been installed
+-set ncbidir = /usr/local/bin
++set ncbidir = @GENTOO_PORTAGE_EPREFIX@/usr/bin
+ 
+ # Where the PSIPRED V2 programs have been installed
+-set execdir = ./bin
++set execdir = @GENTOO_PORTAGE_EPREFIX@/usr/bin
+ 
+ # Where the PSIPRED V2 data files have been installed
+-set datadir = ./data
++set datadir = @GENTOO_PORTAGE_EPREFIX@/usr/share/psipred/data
+ 
+ set basename = $1:r
+ set rootname = $basename:t
+diff --git a/runpsipred_single b/runpsipred_single
+index 1f7680b..7bd5bc3 100755
+--- a/runpsipred_single
++++ b/runpsipred_single
+@@ -10,10 +10,10 @@
+ # NOTE: Script modified to be more cluster friendly (DTJ April 2008)
+ 
+ # Where the PSIPRED V3 programs have been installed
+-set execdir = ./bin
++set execdir = @GENTOO_PORTAGE_EPREFIX@/usr/bin
+ 
+ # Where the PSIPRED V3 data files have been installed
+-set datadir = ./data
++set datadir = @GENTOO_PORTAGE_EPREFIX@/usr/share/psipred/data
+ 
+ set basename = $1:r
+ set rootname = $basename:t

@@ -1,0 +1,106 @@
+From 35827930553ca522270bd74df37a378d6b2dea8a Mon Sep 17 00:00:00 2001
+From: Mike Swanson <mikeonthecomputer@gmail.com>
+Date: Mon, 22 Jan 2018 20:41:16 -0800
+Subject: [PATCH] Update AppStream XML files to current (0.11) standards
+
+<id> tag is changed to a Reverse-DNS form, and an accommodating
+PACKAGE_RDNS is set in configure.ac to use it.
+
+<name> and <summary> tags have been added, using existing autoconf
+variable values.
+
+The `appstream-util validate` command will complain about some
+optionally-missing tags and a strict string length limit on some of
+the <caption> tags.  `validate-relax` passes, and by the letter of the
+AppStream specification, we should be completely valid.
+---
+ configure.ac               | 2 ++
+ src/doom.appdata.xml.in    | 4 +++-
+ src/heretic.appdata.xml.in | 4 +++-
+ src/hexen.appdata.xml.in   | 4 +++-
+ src/strife.appdata.xml.in  | 4 +++-
+ 5 files changed, 14 insertions(+), 4 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 17299714..2190a32b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -7,6 +7,7 @@ PACKAGE_COPYRIGHT="Copyright (C) 1993-2017"
+ PACKAGE_LICENSE="GNU General Public License, version 2"
+ PACKAGE_MAINTAINER="Simon Howard"
+ PACKAGE_URL="https://www.chocolate-doom.org/"
++PACKAGE_RDNS="org.chocolate_doom"
+ PACKAGE_ISSUES="https://github.com/chocolate-doom/chocolate-doom/issues"
+ 
+ AC_CONFIG_AUX_DIR(autotools)
+@@ -142,6 +143,7 @@ AC_SUBST(PACKAGE_COPYRIGHT)
+ AC_SUBST(PACKAGE_LICENSE)
+ AC_SUBST(PACKAGE_MAINTAINER)
+ AC_SUBST(PACKAGE_URL)
++AC_SUBST(PACKAGE_RDNS)
+ AC_SUBST(PACKAGE_ISSUES)
+ 
+ AC_SUBST(bashcompletiondir)
+diff --git a/src/doom.appdata.xml.in b/src/doom.appdata.xml.in
+index ed499f47..42747251 100644
+--- a/src/doom.appdata.xml.in
++++ b/src/doom.appdata.xml.in
+@@ -1,7 +1,9 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ 
+ <component type="desktop">
+-  <id>@PROGRAM_PREFIX@doom.desktop</id>
++  <id>@PACKAGE_RDNS@.Doom</id>
++  <name>@PACKAGE_SHORTNAME@ Doom</name>
++  <summary>@PACKAGE_SHORTDESC@</summary>
+   <metadata_license>CC0-1.0</metadata_license>
+   <project_license>GPL-2.0+</project_license>
+   <developer_name>@PACKAGE_MAINTAINER@</developer_name>
+diff --git a/src/heretic.appdata.xml.in b/src/heretic.appdata.xml.in
+index 36a1739a..dc8093de 100644
+--- a/src/heretic.appdata.xml.in
++++ b/src/heretic.appdata.xml.in
+@@ -1,7 +1,9 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ 
+ <component type="desktop">
+-  <id>@PROGRAM_PREFIX@heretic.desktop</id>
++  <id>@PACKAGE_RDNS@.Heretic</id>
++  <name>@PACKAGE_SHORTNAME@ Heretic</name>
++  <summary>@PACKAGE_SHORTDESC@</summary>
+   <metadata_license>CC0-1.0</metadata_license>
+   <project_license>GPL-2.0+</project_license>
+   <developer_name>@PACKAGE_MAINTAINER@</developer_name>
+diff --git a/src/hexen.appdata.xml.in b/src/hexen.appdata.xml.in
+index b5a526f2..7583cca8 100644
+--- a/src/hexen.appdata.xml.in
++++ b/src/hexen.appdata.xml.in
+@@ -1,7 +1,9 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ 
+ <component type="desktop">
+-  <id>@PROGRAM_PREFIX@hexen.desktop</id>
++  <id>@PACKAGE_RDNS@.Hexen</id>
++  <name>@PACKAGE_SHORTNAME@ Hexen</name>
++  <summary>@PACKAGE_SHORTDESC@</summary>
+   <metadata_license>CC0-1.0</metadata_license>
+   <project_license>GPL-2.0+</project_license>
+   <developer_name>@PACKAGE_MAINTAINER@</developer_name>
+diff --git a/src/strife.appdata.xml.in b/src/strife.appdata.xml.in
+index 7be869c3..6db4fad4 100644
+--- a/src/strife.appdata.xml.in
++++ b/src/strife.appdata.xml.in
+@@ -1,7 +1,9 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ 
+ <component type="desktop">
+-  <id>@PROGRAM_PREFIX@strife.desktop</id>
++  <id>@PACKAGE_RDNS@.Strife</id>
++  <name>@PACKAGE_SHORTNAME@ Strife</name>
++  <summary>@PACKAGE_SHORTDESC@</summary>
+   <metadata_license>CC0-1.0</metadata_license>
+   <project_license>GPL-2.0+</project_license>
+   <developer_name>@PACKAGE_MAINTAINER@</developer_name>
+-- 
+2.26.2
+

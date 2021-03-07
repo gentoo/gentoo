@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<use>
+		<flag name="netplay">Enable playing ROMs over the network (not recommended)</flag>
+		<flag name="libretro">Build libretro port</flag>
+	</use>
+	<upstream>
+		<remote-id type="google-code">snes9x-gtk</remote-id>
+		<remote-id type="github">snes9xgit/snes9x</remote-id>
+	</upstream>
+</pkgmetadata>

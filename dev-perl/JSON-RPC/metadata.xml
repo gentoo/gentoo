@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">JSON-RPC</remote-id>
+    <remote-id type="cpan-module">JSON::RPC</remote-id>
+    <remote-id type="cpan-module">JSON::RPC::Constants</remote-id>
+    <remote-id type="cpan-module">JSON::RPC::Dispatch</remote-id>
+    <remote-id type="cpan-module">JSON::RPC::Legacy</remote-id>
+    <remote-id type="cpan-module">JSON::RPC::Legacy::Client</remote-id>
+    <remote-id type="cpan-module">JSON::RPC::Legacy::Procedure</remote-id>
+    <remote-id type="cpan-module">JSON::RPC::Legacy::ReturnObject</remote-id>
+    <remote-id type="cpan-module">JSON::RPC::Legacy::Server</remote-id>
+    <remote-id type="cpan-module">JSON::RPC::Legacy::Server::Apache</remote-id>
+    <remote-id type="cpan-module">JSON::RPC::Legacy::Server::Apache2</remote-id>
+    <remote-id type="cpan-module">JSON::RPC::Legacy::Server::CGI</remote-id>
+    <remote-id type="cpan-module">JSON::RPC::Legacy::Server::Daemon</remote-id>
+    <remote-id type="cpan-module">JSON::RPC::Legacy::Server::system</remote-id>
+    <remote-id type="cpan-module">JSON::RPC::Legacy::ServiceObject</remote-id>
+    <remote-id type="cpan-module">JSON::RPC::Parser</remote-id>
+    <remote-id type="cpan-module">JSON::RPC::Procedure</remote-id>
+    <remote-id type="cpan-module">JSON::RPC::Test</remote-id>
+  </upstream>
+</pkgmetadata>

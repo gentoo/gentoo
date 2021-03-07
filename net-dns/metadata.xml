@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The net-dns category contains DNS (Domain Name Service) related
+		software.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie net-dns enthült Software zum Thema DNS (Domain Name Service).
+	</longdescription>
+	<longdescription lang="es">
+		La categoría net-dns contiene programas relacionados con el DNS, el
+		sistema de resolución de nombres de dominio.
+	</longdescription>
+	<longdescription lang="ja">
+		net-dnsカテゴリーにはドメイン・ネーム・サービスに関連したソフトウェアが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De net-dns categorie bevat DNS (Domain Name Service) applicaties.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm net-dns chứa các phần mềm liên quan đến DNS.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria net-dns contiene programmi per DNS (Domain Name Service).
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria net-dns contém programas relacionados a DNS (Domain
+		Name Service).
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria net-dns zawiera pakiety związane z DNS (Domain Name Service).
+	</longdescription>
+</catmetadata>
+

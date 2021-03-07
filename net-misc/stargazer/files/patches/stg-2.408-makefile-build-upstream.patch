@@ -1,0 +1,386 @@
+diff --git a/projects/convertor/Makefile b/projects/convertor/Makefile
+index efacbb6..04c00cc 100644
+--- a/projects/sgconv/Makefile
++++ b/projects/sgconv/Makefile
+@@ -58,6 +58,21 @@ clean:
+ distclean: clean
+ 	rm -f ../../Makefile.conf
+ 
++install: install-bin
++
++install-bin:
++ifeq ($(DEBUG), yes)
++	install -D -m $(BIN_MODE) -o $(OWNER) $(PROG) $(PREFIX)/usr/bin/$(PROG)
++else
++	install -D -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/bin/$(PROG)
++endif
++	$(MAKE) -C $(DIR_PLUGINS) install
++
++uninstall: uninstall-bin
++
++uninstall-bin:
++	rm -f $(PREFIX)/usr/bin/$(PROG)
++
+ ifneq ($(MAKECMDGOALS),distclean)
+ ifneq ($(MAKECMDGOALS),clean)
+ ifneq ($(MAKECMDGOALS),uninstall)
+diff --git a/projects/convertor/build b/projects/convertor/build
+index 0144b0f..471ee62 100755
+--- a/projects/sgconv/build
++++ b/projects/sgconv/build
+@@ -20,6 +20,7 @@ DEFS="-DDEBUG"
+ MAKEOPTS="-j1"
+ CXXFLAGS="$CXXFLAGS -ggdb3 -W -Wall -I/usr/local/include"
+ LDFLAGS="$LDFLAGS -L/usr/local/lib"
++DEBUG="yes"
+ 
+ if [ "$sys" = "Linux" ]
+ then
+@@ -251,6 +252,7 @@ fi
+ 
+ echo "OS=$OS" > $CONFFILE
+ echo "STG_TIME=yes" >> $CONFFILE
++echo "DEBUG=$DEBUG" >> $CONFFILE
+ echo "DIR_BUILD=$BUILD_DIR" >> $CONFFILE
+ echo "DIR_LIB=\$(DIR_BUILD)/../../lib" >> $CONFFILE
+ echo "DIR_LIBSRC=\$(DIR_BUILD)/../../stglibs" >> $CONFFILE
+diff --git a/projects/rlm_stg/Makefile b/projects/rlm_stg/Makefile
+index 98f5f2d..6190491 100644
+--- a/projects/rlm_stg/Makefile
++++ b/projects/rlm_stg/Makefile
+@@ -57,13 +57,17 @@ distclean: clean
+ install: install-bin
+ 
+ install-bin:
+-	install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/lib/$(PROG)
++ifeq ($(DEBUG), yes)
++	install -D -m $(BIN_MODE) -o $(OWNER) $(PROG) $(PREFIX)/usr/lib/freeradius/$(PROG)
++else
++	install -D -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/lib/freeradius/$(PROG)
++endif
+ 	$(MAKE) -C $(DIR_LIBSRC) install
+ 
+ uninstall: uninstall-bin
+ 
+ uninstall-bin:
+-	rm -f $(PREFIX)/usr/lib/$(PROG)
++	rm -f $(PREFIX)/usr/lib/freeradius/$(PROG)
+ 
+ ifneq ($(MAKECMDGOALS),distclean)
+ ifneq ($(MAKECMDGOALS),clean)
+diff --git a/projects/rlm_stg/build b/projects/rlm_stg/build
+index 0145d03..3781d1b 100755
+--- a/projects/rlm_stg/build
++++ b/projects/rlm_stg/build
+@@ -19,14 +19,17 @@ OWNER=root
+ if [ -z $1 ]
+ then
+     MAKEOPTS="-j1"
++    DEBUG="no"
+ else
+     if [ "$1" = "debug" ]
+     then
+         DEFS="-DDEBUG"
+         MAKEOPTS="-j1"
+         CXXFLAGS="$CXXFLAGS -ggdb3 -W -Wall"
++        DEBUG="yes"
+     else
+         MAKEOPTS="-j1"
++        DEBUG="no"
+     fi
+ fi
+ 
+@@ -144,6 +147,7 @@ rm -f fake
+ 
+ echo "OS=$OS" > $CONFFILE
+ echo "STG_TIME=yes" >> $CONFFILE
++echo "DEBUG=$DEBUG" >> $CONFFILE
+ echo "DIR_BUILD=$BUILD_DIR" >> $CONFFILE
+ echo "DIR_LIB=\$(DIR_BUILD)/../../lib" >> $CONFFILE
+ echo "DIR_LIBSRC=\$(DIR_BUILD)/../../stglibs" >> $CONFFILE
+diff --git a/projects/rscriptd/Makefile b/projects/rscriptd/Makefile
+index 0912be0..da06b50 100644
+--- a/projects/rscriptd/Makefile
++++ b/projects/rscriptd/Makefile
+@@ -57,7 +57,11 @@ distclean: clean
+ install: install-bin install-data
+ 
+ install-bin:
+-	install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/sbin/$(PROG)
++ifeq ($(DEBUG), yes)
++	install -D -m $(BIN_MODE) -o $(OWNER) $(PROG) $(PREFIX)/usr/sbin/$(PROG)
++else
++	install -D -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/sbin/$(PROG)
++endif
+ 	$(MAKE) -C $(DIR_LIBSRC) install
+ 
+ install-data:
+diff --git a/projects/rscriptd/build b/projects/rscriptd/build
+index 885eef7..6a7c77f 100755
+--- a/projects/rscriptd/build
++++ b/projects/rscriptd/build
+@@ -19,14 +19,17 @@ OWNER=root
+ if [ -z $1 ]
+ then
+     MAKEOPTS="-j1"
++    DEBUG="no"
+ else
+     if [ "$1" = "debug" ]
+     then
+         DEFS="-DDEBUG"
+         MAKEOPTS="-j1"
+         CXXFLAGS="$CXXFLAGS -ggdb3 -W -Wall"
++        DEBUG="yes"
+     else
+         MAKEOPTS="-j1"
++        DEBUG="no"
+     fi
+ fi
+ 
+@@ -150,6 +153,7 @@ rm -f build_check.c
+ 
+ echo "OS=$OS" > $CONFFILE
+ echo "STG_TIME=yes" >> $CONFFILE
++echo "DEBUG=$DEBUG" >> $CONFFILE
+ echo "DIR_BUILD=$BUILD_DIR" >> $CONFFILE
+ echo "DIR_LIB=\$(DIR_BUILD)/../../lib" >> $CONFFILE
+ echo "DIR_LIBSRC=\$(DIR_BUILD)/../../stglibs" >> $CONFFILE
+diff --git a/projects/sgauth/Makefile b/projects/sgauth/Makefile
+index 99cd0e4..a59371c 100644
+--- a/projects/sgauth/Makefile
++++ b/projects/sgauth/Makefile
+@@ -58,7 +58,11 @@ distclean: clean
+ install: install-bin install-data
+ 
+ install-bin:
+-	install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/sbin/$(PROG)
++ifeq ($(DEBUG), yes)
++	install -D -m $(BIN_MODE) -o $(OWNER) $(PROG) $(PREFIX)/usr/sbin/$(PROG)
++else
++	install -D -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/sbin/$(PROG)
++endif
+ 	$(MAKE) -C $(DIR_LIBSRC) install
+ 
+ install-data:
+diff --git a/projects/sgauth/build b/projects/sgauth/build
+index ec747e2..e3ad87f 100755
+--- a/projects/sgauth/build
++++ b/projects/sgauth/build
+@@ -19,14 +19,17 @@ OWNER=root
+ if [ -z $1 ]
+ then
+     MAKEOPTS="-j1"
++    DEBUG="no"
+ else
+     if [ "$1" = "debug" ]
+     then
+         DEFS="-DDEBUG"
+         MAKEOPTS="-j1"
+         CXXFLAGS="$CXXFLAGS -ggdb3 -W -Wall"
++        DEBUG="yes"
+     else
+         MAKEOPTS="-j1"
++        DEBUG="no"
+     fi
+ fi
+ 
+@@ -148,6 +151,7 @@ rm -f build_check.c
+ 
+ echo "OS=$OS" > $CONFFILE
+ echo "STG_TIME=yes" >> $CONFFILE
++echo "DEBUG=$DEBUG" >> $CONFFILE
+ echo "DIR_BUILD=$BUILD_DIR" >> $CONFFILE
+ echo "DIR_LIB=\$(DIR_BUILD)/../../lib" >> $CONFFILE
+ echo "DIR_LIBSRC=\$(DIR_BUILD)/../../stglibs" >> $CONFFILE
+diff --git a/projects/sgconf/Makefile b/projects/sgconf/Makefile
+index 4d62bb5..297d3e2 100644
+--- a/projects/sgconf/Makefile
++++ b/projects/sgconf/Makefile
+@@ -66,7 +66,11 @@ distclean: clean
+ install: install-bin
+ 
+ install-bin:
+-	install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/sbin/$(PROG)
++ifeq ($(DEBUG), yes)
++	install -D -m $(BIN_MODE) -o $(OWNER) $(PROG) $(PREFIX)/usr/bin/$(PROG)
++else
++	install -D -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/bin/$(PROG)
++endif
+ 	$(MAKE) -C $(DIR_LIBSRC) install
+ 
+ uninstall: uninstall-bin
+diff --git a/projects/sgconf/build b/projects/sgconf/build
+index 1f6c0a0..da81773 100755
+--- a/projects/sgconf/build
++++ b/projects/sgconf/build
+@@ -19,14 +19,17 @@ OWNER=root
+ if [ -z $1 ]
+ then
+     MAKEOPTS="-j1"
++    DEBUG="no"
+ else
+     if [ "$1" = "debug" ]
+     then
+         DEFS="-DDEBUG"
+         MAKEOPTS="-j1"
+         CXXFLAGS="$CXXFLAGS -ggdb3 -W -Wall"
++        DEBUG="yes"
+     else
+         MAKEOPTS="-j1"
++        DEBUG="no"
+     fi
+ fi
+ 
+@@ -166,6 +169,7 @@ fi
+ 
+ echo "OS=$OS" > $CONFFILE
+ echo "STG_TIME=yes" >> $CONFFILE
++echo "DEBUG=$DEBUG" >> $CONFFILE
+ echo "DIR_BUILD=$BUILD_DIR" >> $CONFFILE
+ echo "DIR_LIB=\$(DIR_BUILD)/../../lib" >> $CONFFILE
+ echo "DIR_LIBSRC=\$(DIR_BUILD)/../../stglibs" >> $CONFFILE
+diff --git a/projects/sgconf_xml/Makefile b/projects/sgconf_xml/Makefile
+index b7ebca0..32384e6 100644
+--- a/projects/sgconf_xml/Makefile
++++ b/projects/sgconf_xml/Makefile
+@@ -66,7 +66,11 @@ distclean: clean
+ install: install-bin install-data
+ 
+ install-bin:
+-	install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/sbin/$(PROG)
++ifeq ($(DEBUG), yes)
++	install -D -m $(BIN_MODE) -o $(OWNER) $(PROG) $(PREFIX)/usr/bin/$(PROG)
++else
++	install -D -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/bin/$(PROG)
++endif
+ 	$(MAKE) -C $(DIR_LIBSRC) install
+ 
+ uninstall: uninstall-bin uninstall-data
+diff --git a/projects/sgconf_xml/build b/projects/sgconf_xml/build
+index f78e6f7..9797075 100755
+--- a/projects/sgconf_xml/build
++++ b/projects/sgconf_xml/build
+@@ -19,14 +19,17 @@ OWNER=root
+ if [ -z $1 ]
+ then
+     MAKEOPTS="-j1"
++    DEBUG="no"
+ else
+     if [ "$1" = "debug" ]
+     then
+         DEFS="-DDEBUG"
+         MAKEOPTS="-j1"
+         CXXFLAGS="$CXXFLAGS -ggdb3 -W -Wall"
++        DEBUG="yes"
+     else
+         MAKEOPTS="-j1"
++        DEBUG="no"
+     fi
+ fi
+ 
+@@ -166,6 +169,7 @@ fi
+ 
+ echo "OS=$OS" > $CONFFILE
+ echo "STG_TIME=yes" >> $CONFFILE
++echo "DEBUG=$DEBUG" >> $CONFFILE
+ echo "DIR_BUILD=$BUILD_DIR" >> $CONFFILE
+ echo "DIR_LIB=\$(DIR_BUILD)/../../lib" >> $CONFFILE
+ echo "DIR_LIBSRC=\$(DIR_BUILD)/../../stglibs" >> $CONFFILE
+diff --git a/projects/stargazer/Makefile b/projects/stargazer/Makefile
+index 44ae35e..9dfc0b5 100644
+--- a/projects/stargazer/Makefile
++++ b/projects/stargazer/Makefile
+@@ -77,7 +77,11 @@ distclean: clean
+ install: install-bin install-data
+ 
+ install-bin: $(PROG)
+-	install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/sbin/$(PROG)
++ifeq ($(DEBUG), yes)
++	install -D -m $(BIN_MODE) -o $(OWNER) $(PROG) $(PREFIX)/usr/sbin/$(PROG)
++else
++	install -D -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/sbin/$(PROG)
++endif
+ 	$(MAKE) -C $(DIR_INCLUDE) install
+ 	$(MAKE) -C $(DIR_LIBSRC) install
+ 	$(MAKE) -C $(DIR_PLUGINS) install
+diff --git a/projects/stargazer/build b/projects/stargazer/build
+index c58b969..8a34c4f 100755
+--- a/projects/stargazer/build
++++ b/projects/stargazer/build
+@@ -39,15 +39,18 @@ if [ -z "$1" ]
+ then
+     DEFS="$DEFS -DNDEBUG"
+     MAKEOPTS="-j1"
++    DEBUG="no"
+ else
+     if [ "$1" = "debug" ]
+     then
+         DEFS="$DEFS -DDEBUG"
+         MAKEOPTS="-j1"
+         CXXFLAGS="$CXXFLAGS -ggdb3 -W -Wall"
++        DEBUG="yes"
+     else
+         DEFS="$DEFS -DNDEBUG"
+         MAKEOPTS="-j1"
++        DEBUG="no"
+     fi
+ fi
+ 
+@@ -391,6 +394,7 @@ fi
+ 
+ echo "OS=$OS" > $CONFFILE
+ echo "STG_TIME=yes" >> $CONFFILE
++echo "DEBUG=$DEBUG" >> $CONFFILE
+ echo "DIR_BUILD=$BUILD_DIR" >> $CONFFILE
+ echo "DIR_LIB=\$(DIR_BUILD)/../../lib" >> $CONFFILE
+ echo "DIR_LIBSRC=\$(DIR_BUILD)/../../stglibs" >> $CONFFILE
+diff --git a/projects/stargazer/plugins/Makefile.in b/projects/stargazer/plugins/Makefile.in
+index 17e10ac..70954a2 100644
+--- a/projects/stargazer/plugins/Makefile.in
++++ b/projects/stargazer/plugins/Makefile.in
+@@ -15,12 +15,12 @@ LIBS += $(addprefix -lstg,$(STGLIBS))
+ 
+ CXXFLAGS += -fPIC $(STGLIBS_INCS)
+ CFLAGS += -fPIC $(STGLIBS_INCS)
+-LDFLAGS += -shared -Wl,-rpath,$(PREFIX)/usr/lib/stg $(STGLIBS_LIBS)
++LDFLAGS += -shared -Wl,-rpath,$(PREFIX)/usr/lib/stg
+ 
+ all: $(PROG)
+ 
+ $(PROG): $(OBJS)
+-	$(CXX) $^ $(LDFLAGS) $(LIBS) -o $(PROG)
++	$(CXX) $^ $(STGLIBS_LIBS) $(LIBS) $(LDFLAGS) -o $(PROG)
+ 	$(LN) -fs "`pwd`/$(PROG)" $(DIR_MOD)/$(PROG)
+ 
+ clean:
+@@ -28,7 +28,11 @@ clean:
+ 
+ install: $(PROG)
+ 	mkdir -m $(DIR_MODE) -p $(PREFIX)/usr/lib/stg
+-	install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/lib/stg/$(PROG)
++ifeq ($(DEBUG), yes)
++	install -D -m $(BIN_MODE) -o $(OWNER) $(PROG) $(PREFIX)/usr/lib/stg/$(PROG)
++else
++	install -D -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/lib/stg/$(PROG)
++endif
+ 
+ uninstall:
+ 	rm -f $(PREFIX)/usr/lib/stg/$(PROG)
+diff --git a/stglibs/Makefile.in b/stglibs/Makefile.in
+index a318497..b5d1195 100644
+--- a/stglibs/Makefile.in
++++ b/stglibs/Makefile.in
+@@ -35,8 +35,11 @@ clean:
+ 	rm -f deps $(PROG) *.o *.a *.so tags *.*~ 
+ 
+ install: $(PROG)
+-	mkdir -m $(DIR_MODE) -p $(PREFIX)/usr/lib/stg
+-	install -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/lib/stg/$(PROG)
++ifeq ($(DEBUG), yes)
++	install -D -m $(BIN_MODE) -o $(OWNER) $(PROG) $(PREFIX)/usr/lib/stg/$(PROG)
++else
++	install -D -m $(BIN_MODE) -o $(OWNER) -s $(PROG) $(PREFIX)/usr/lib/stg/$(PROG)
++endif
+ 	mkdir -m $(DIR_MODE) -p $(PREFIX)/usr/include/stg
+ 	install -m $(DATA_MODE) -o $(OWNER) $(addprefix include/stg/,$(INCS)) $(PREFIX)/usr/include/stg/
+ 

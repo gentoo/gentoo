@@ -1,0 +1,279 @@
+Fix various QA issues:
+* Use correct printf format specifiers for 'size_t'
+* Fix const correctness ('char*' -> 'const char*') for C-string literals
+* Correctly forward declare inline functions
+
+--- a/fire/test-fire.cc
++++ b/fire/test-fire.cc
+@@ -24,7 +24,7 @@
+       if (k->size < (size_t) N)
+ 	sizes[k->size]++;
+       if (k->size % 4 !=0)
+-	printf ("odd size: %d\n", k->size);
++	printf ("odd size: %zu\n", k->size);
+     }
+   printf ("min = %d, max = %d\n", min, max);
+   for (int i = min; i <= max && i < N; i+=4)
+--- a/fire/tree-supp.cc
++++ b/fire/tree-supp.cc
+@@ -485,7 +485,7 @@
+   if (size < (size_t) N)
+     sizes[size]++;
+   if (size % 4 !=0)
+-    printf ("odd size: %d\n", size);
++    printf ("odd size: %zu\n", size);
+ }
+  
+ void
+--- a/freehdl/kernel-dump.hh
++++ b/freehdl/kernel-dump.hh
+@@ -42,9 +42,9 @@
+   short wait_id;
+   // This function will return an appropriate table entry (if
+   // available)
+-  char *find_table(type_info_interface* type);
++  const char *find_table(type_info_interface* type);
+   //this variable is used by the read_type function
+-  char* translation_table;
++  const char* translation_table;
+   // This method is executed each time the signal value changes
+   bool execute();
+   // Continue dumping the signal.
+@@ -77,7 +77,7 @@
+ extern list<signal_dump*> signal_dump_process_list;
+ 
+ // Used to store the user_defined translation table types
+-extern  map<string, char*, less<string> >  mapping_translation_table;
++extern  map<string, const char*, less<string> >  mapping_translation_table;
+ 
+ 
+ /******************************************************
+--- a/freehdl/kernel-fhdl-stream.hh
++++ b/freehdl/kernel-fhdl-stream.hh
+@@ -29,7 +31,7 @@
+       str->flush();
+   }
+ 
+-  fhdl_ostream_t &operator<<(char *p);
++  fhdl_ostream_t &operator<<(const char *p);
+   fhdl_ostream_t &operator<<(const string &a);
+   fhdl_ostream_t &operator<<(const int i);
+   fhdl_ostream_t &operator<<(const unsigned int i);
+--- a/freehdl/std-vhdl-types.hh
++++ b/freehdl/std-vhdl-types.hh
+@@ -607,7 +618,7 @@
+   // which caused the failure or NULL otherwise.
+   virtual const char *read(void *dest, const char *str) = 0;
+   // Prints the content of src into an string stream in VCD format
+-  virtual void vcd_print(buffer_stream &str, const void *src,char* translation_table, bool pure) = 0;
++  virtual void vcd_print(buffer_stream &str, const void *src, const char* translation_table, bool pure) = 0;
+   // Prints value into binary stream. Note that only the raw data but
+   // no type info objects are written! The method returns the number
+   // of bytes written to the stream.
+@@ -785,7 +796,7 @@
+   bool assign(void *dest, const void *src);
+   void remove(void *src);
+   void print(buffer_stream &str, const void *src, int mode);
+-  void vcd_print(buffer_stream  &str, const void *src,char* translation_table, bool pure);
++  void vcd_print(buffer_stream  &str, const void *src, const char* translation_table, bool pure);
+   const char *read(void *dest, const char *str);
+ 
+   integer check(integer value) {
+@@ -821,7 +832,7 @@
+   bool assign(void *dest, const void *src);
+   void remove(void *src);
+   void print(buffer_stream &str, const void *src, int mode);
+-  void vcd_print(buffer_stream  &str, const void *src,char* translation_table, bool pure) {};
++  void vcd_print(buffer_stream  &str, const void *src, const char* translation_table, bool pure) {};
+   const char *read(void *dest, const char *str);
+ };
+ 
+@@ -849,7 +860,7 @@
+   bool assign(void *dest, const void *src);
+   void remove(void *src);
+   void print(buffer_stream &str, const void *src, int mode) {};
+-  void vcd_print(buffer_stream  &str, const void *src,char* translation_table, bool pure) {};
++  void vcd_print(buffer_stream  &str, const void *src, const char* translation_table, bool pure) {};
+   const char *read(void *dest, const char *str);
+ };
+ 
+@@ -879,7 +890,7 @@
+   bool assign(void *dest, const void *src);
+   void remove(void *src);
+   void print(buffer_stream &str, const void *src, int mode);
+-  void vcd_print(buffer_stream  &str, const void *src,char* translation_table, bool pure);
++  void vcd_print(buffer_stream  &str, const void *src, const char* translation_table, bool pure);
+   const char *read(void *dest, const char *str);
+ 
+   floatingpoint check(floatingpoint value) {
+@@ -914,7 +925,7 @@
+   bool assign(void *dest, const void *src);
+   void remove(void *src);
+   void print(buffer_stream &str, const void *src, int mode);
+-  void vcd_print(buffer_stream  &str, const void *src,char* translation_table, bool pure);
++  void vcd_print(buffer_stream  &str, const void *src, const char* translation_table, bool pure);
+   const char *read(void *dest, const char *str);
+ 
+   enumeration check(integer value) {
+@@ -954,7 +965,7 @@
+   bool assign(void *dest, const void *src);
+   void remove(void *src);
+   void print(buffer_stream &str, const void *src, int mode);
+-  void vcd_print(buffer_stream  &str, const void *src,char* translation_table, bool pure) ;
++  void vcd_print(buffer_stream  &str, const void *src, const char* translation_table, bool pure) ;
+   const char *read(void *dest, const char *str);
+    
+   physical check(physical value) {
+@@ -1087,7 +1098,7 @@
+   bool assign(void *dest, const void *src) { return false; };
+   void remove(void *src);
+   void print(buffer_stream &str, const void *src, int mode);
+-  void vcd_print(buffer_stream  &str, const void *src,char* translation_table, bool pure) ;
++  void vcd_print(buffer_stream  &str, const void *src, const char* translation_table, bool pure) ;
+   const char *read(void *dest, const char *str);
+ };
+ 
+@@ -1230,7 +1241,7 @@
+   bool assign(void *dest, const void *src) { return false; };
+   void remove(void *src);
+   void print(buffer_stream &str, const void *src, int mode);
+-  void vcd_print(buffer_stream  &str, const void *src,char* translation_table, bool pure);
++  void vcd_print(buffer_stream  &str, const void *src, const char* translation_table, bool pure);
+   const char *read(void *dest, const char *str);
+ };
+ 
+--- a/freehdl/vaul-lexer.h
++++ b/freehdl/vaul-lexer.h
+@@ -115,7 +114,7 @@
+   IR_String expand_bitstring(const char *, int len);
+   
+   int LexerInput(char *buf, int max_size);
+-  void LexerError(char *msg);
++  void LexerError(const char *msg);
+   void message(char *fmt, va_list ap);
+   void message(vaul_yyltype &loc, char *fmt, va_list ap);
+ 
+--- a/kernel/driver_info.cc
++++ b/kernel/driver_info.cc
+@@ -270,6 +270,7 @@
+ 
+ 
+ // Creates transaction composite signals. Returns number of assigned scalars.
++inline int do_record_transport_assignment(driver_info &, const record_base &, int, const vtime &);
+ inline int
+ do_array_transport_assignment(driver_info &driver, const array_base &value, int first, const vtime &tr_time) 
+ {
+@@ -311,7 +312,6 @@
+ 	assigned_scalars += do_array_transport_assignment(driver, (array_base&)value.data[j], i, tr_time);
+ 	break;
+       case RECORD:
+-	inline int do_record_transport_assignment(driver_info &, const record_base &, int, const vtime &);
+ 	assigned_scalars += do_record_transport_assignment(driver, (record_base&)value.data[j], i, tr_time);
+ 	break;
+       }
+@@ -339,6 +339,7 @@
+ 
+ 
+ // Creates transaction for composite signals. Returns number of assigned scalars.
++inline int do_record_inertial_assignment(driver_info &, const record_base &, int, const vtime &, const vtime &); 
+ inline int
+ do_array_inertial_assignment(driver_info &driver,
+ 			     const array_base &value, int first, 
+@@ -381,8 +382,6 @@
+ 	assigned_scalars += do_array_inertial_assignment(driver, (array_base&)value.data[j], i, tr_time, rm_time);
+ 	break;
+       case RECORD:
+-	inline int do_record_inertial_assignment(driver_info &, const record_base &, int,  
+-						  const vtime &, const vtime &); 
+ 	assigned_scalars += do_record_inertial_assignment(driver, (record_base&)value.data[j], i, tr_time, rm_time);
+ 	break;
+       }
+--- a/kernel/dump.cc
++++ b/kernel/dump.cc
+@@ -90,7 +90,7 @@
+ 
+ 
+ // find_translation table
+-char *
++const char *
+ signal_dump::find_table(type_info_interface* type)
+ {
+   switch(type->id)
+--- a/kernel/fhdl_stream.cc
++++ b/kernel/fhdl_stream.cc
+@@ -60,7 +63,7 @@
+ }
+ 
+ fhdl_ostream_t &
+-fhdl_ostream_t::operator<<(char *p) 
++fhdl_ostream_t::operator<<(const char *p) 
+ {
+   if (!socket_connection)
+     *str << p;
+--- a/std/vhdl_types.cc
++++ b/std/vhdl_types.cc
+@@ -1013,7 +1016,7 @@
+ }
+ 
+ void
+-integer_info_base::vcd_print(buffer_stream  &str, const void *src,char* translation_table,  bool pure) 
++integer_info_base::vcd_print(buffer_stream  &str, const void *src, const char* translation_table,  bool pure) 
+ {
+  integer op =*((integer*)src);
+  static char result[INTEGER_SIZE_LD + 1];
+@@ -1306,7 +1309,7 @@
+ }
+ 
+ void
+-float_info_base::vcd_print(buffer_stream  &str, const void *src,char* translation_table, bool pure) {
++float_info_base::vcd_print(buffer_stream  &str, const void *src, const char* translation_table, bool pure) {
+   // should be definitly enough characters to hold a string
+   // representation of a double
+   static char rbuffer[8*sizeof(double)]; 
+@@ -1432,7 +1435,7 @@
+ 
+ 
+ void
+-enum_info_base::vcd_print(buffer_stream  &str, const void *src,char* translation_table, bool pure) 
++enum_info_base::vcd_print(buffer_stream  &str, const void *src, const char* translation_table, bool pure) 
+ {
+   if (translation_table != NULL) {
+     const char output = translation_table[*((enumeration*)src)];
+@@ -1583,7 +1586,7 @@
+ }
+ 
+ void
+-physical_info_base::vcd_print(buffer_stream  &str, const void *src,char* translation_table, bool pure) {
++physical_info_base::vcd_print(buffer_stream  &str, const void *src, const char* translation_table, bool pure) {
+   str << *((physical*)src) << " " << units[0];
+ }
+ 
+@@ -1778,7 +1781,7 @@
+ }
+ 
+ // Temporary VCD_Print function
+-void array_info::vcd_print(buffer_stream  &str, const void *src,char* translation_table, bool pure)
++void array_info::vcd_print(buffer_stream  &str, const void *src, const char* translation_table, bool pure)
+ {
+   //str.clean();
+   int length = ((array_base*)src)->info->length;
+@@ -2090,7 +2093,7 @@
+ 
+ 
+ // Temporary VCD_Print function
+-void record_info::vcd_print(buffer_stream  &str, const void *src, char* translation_table, bool pure)
++void record_info::vcd_print(buffer_stream  &str, const void *src, const char* translation_table, bool pure)
+ {
+   record_base &record = *(record_base*)src;
+   record_info &rinfo = *record.info;
+--- a/vaul/lexer.cc
++++ b/vaul/lexer.cc
+@@ -2075,7 +2075,7 @@
+ }
+ 
+ void
+-vaul_lexer::LexerError (char *m)
++vaul_lexer::LexerError (const char *m)
+ {
+   if (prt)
+     prt->fprintf (log, "%?%s %C\n", this, m, this);

@@ -1,0 +1,22 @@
+diff --git a/verboselogs/tests.py b/verboselogs/tests.py
+index c8759f2..640c002 100644
+--- a/verboselogs/tests.py
++++ b/verboselogs/tests.py
+@@ -61,17 +61,6 @@ class VerboseLogsTestCase(unittest.TestCase):
+         method(message)
+         logger._log.assert_called_with(level, message, ())
+ 
+-    def test_pylint_plugin(self):
+-        """Test the :mod:`verboselogs.pylint` module."""
+-        saved_args = sys.argv
+-        try:
+-            sys.argv = ['pylint', '--load-plugins', 'verboselogs.pylint', '--errors-only', 'verboselogs']
+-            __import__('pylint').run_pylint()
+-        except SystemExit:
+-            pass
+-        finally:
+-            sys.argv = saved_args
+-
+ 
+ def random_string(length=25):
+     """Generate a random string."""

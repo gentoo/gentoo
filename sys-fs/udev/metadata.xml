@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>udev-bugs@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="kmod">Enable kernel module loading/unloading support using <pkg>sys-apps/kmod</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:kernel:udev</remote-id>
+		<remote-id type="github">systemd/systemd</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <use><flag name="modperl">Enable <pkg>www-apache/mod_perl</pkg>
+        support</flag>
+  </use>
+  <upstream>
+    <remote-id type="cpan">HTML-Mason</remote-id>
+    <remote-id type="cpan-module">HTML::Mason</remote-id>
+    <remote-id type="cpan-module">HTML::Mason::Apache::Request</remote-id>
+    <remote-id type="cpan-module">HTML::Mason::ApacheHandler</remote-id>
+    <remote-id type="cpan-module">HTML::Mason::CGIHandler</remote-id>
+    <remote-id type="cpan-module">HTML::Mason::Cache::BaseCache</remote-id>
+    <remote-id type="cpan-module">HTML::Mason::Compiler</remote-id>
+    <remote-id type="cpan-module">HTML::Mason::Compiler::ToObject</remote-id>
+    <remote-id type="cpan-module">HTML::Mason::Component</remote-id>
+    <remote-id type="cpan-module">HTML::Mason::Component::FileBased</remote-id>
+    <remote-id type="cpan-module">HTML::Mason::Component::Subcomponent</remote-id>
+    <remote-id type="cpan-module">HTML::Mason::ComponentSource</remote-id>
+    <remote-id type="cpan-module">HTML::Mason::Escapes</remote-id>
+    <remote-id type="cpan-module">HTML::Mason::Exception</remote-id>
+    <remote-id type="cpan-module">HTML::Mason::Exception::Compilation</remote-id>
+    <remote-id type="cpan-module">HTML::Mason::Exception::Syntax</remote-id>
+    <remote-id type="cpan-module">HTML::Mason::Exceptions</remote-id>
+    <remote-id type="cpan-module">HTML::Mason::FakeApache</remote-id>
+    <remote-id type="cpan-module">HTML::Mason::FakeTable</remote-id>
+    <remote-id type="cpan-module">HTML::Mason::FakeTableHash</remote-id>
+    <remote-id type="cpan-module">HTML::Mason::Handler</remote-id>
+    <remote-id type="cpan-module">HTML::Mason::Interp</remote-id>
+    <remote-id type="cpan-module">HTML::Mason::Lexer</remote-id>
+    <remote-id type="cpan-module">HTML::Mason::MethodMaker</remote-id>
+    <remote-id type="cpan-module">HTML::Mason::Plugin</remote-id>
+    <remote-id type="cpan-module">HTML::Mason::Plugin::Context</remote-id>
+    <remote-id type="cpan-module">HTML::Mason::Plugin::Context::EndComponent</remote-id>
+    <remote-id type="cpan-module">HTML::Mason::Plugin::Context::EndRequest</remote-id>
+    <remote-id type="cpan-module">HTML::Mason::Plugin::Context::StartComponent</remote-id>
+    <remote-id type="cpan-module">HTML::Mason::Plugin::Context::StartRequest</remote-id>
+    <remote-id type="cpan-module">HTML::Mason::Request</remote-id>
+    <remote-id type="cpan-module">HTML::Mason::Request::ApacheHandler</remote-id>
+    <remote-id type="cpan-module">HTML::Mason::Request::CGI</remote-id>
+    <remote-id type="cpan-module">HTML::Mason::Resolver</remote-id>
+    <remote-id type="cpan-module">HTML::Mason::Resolver::File</remote-id>
+    <remote-id type="cpan-module">HTML::Mason::Resolver::Null</remote-id>
+    <remote-id type="cpan-module">HTML::Mason::Tools</remote-id>
+    <remote-id type="cpan-module">HTML::Mason::Utils</remote-id>
+    <remote-id type="cpan-module">Tie::Handle::Mason</remote-id>
+  </upstream>
+</pkgmetadata>

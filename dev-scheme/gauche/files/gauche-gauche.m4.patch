@@ -1,0 +1,27 @@
+--- a/m4/gauche.m4
++++ b/m4/gauche.m4
+@@ -103,13 +103,10 @@
+   AS_CASE(["$target"],
+ 	  [i686-*], [I686OPT="-DUSE_I686_PREFETCH"])
+   AS_CASE(["$CC"],
+-	  [gcc*], [ dnl some systems may have gcc-2.95, gcc-3, etc.
++	  [*gcc*], [ dnl some systems may have gcc-2.95, gcc-3, etc.
+ 		  AS_CASE(["$target"],
+ 			  [*mingw*], [],
+-				     [GCCOPT="-fomit-frame-pointer"])
+-		  AS_CASE(["$target"],
+-			  [i586-*], [GCCOPT="$GCCOPT -march=i586"],
+-			  [i686-*], [GCCOPT="$GCCOPT -march=i686"])])])
++				     [GCCOPT="-fomit-frame-pointer"])])])
+ OPTFLAGS="$GCCOPT $I686OPT"
+ AC_SUBST(OPTFLAGS)
+ ])
+@@ -150,7 +147,7 @@
+ dnl
+ AC_DEFUN([AC_GAUCHE_MAKE_GPD],
+ 	 [
+-GAUCHE_PACKAGE_CONFIGURE_ARGS=`echo "$ac_configure_args" | sed 's/@<:@\\"\`\$@:>@/\\\\&/g'`
++GAUCHE_PACKAGE_CONFIGURE_ARGS=`echo "$ac_configure_args" | sed 's/@<:@\$\\"\`@:>@/\\\\&/g'`
+ AC_MSG_NOTICE([creating ${PACKAGE_NAME}.gpd])
+ $GAUCHE_PACKAGE make-gpd "$PACKAGE_NAME" \
+   -version "$PACKAGE_VERSION" \

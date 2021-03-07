@@ -1,0 +1,39 @@
+From: William Breathitt Gray <vilhelm.gray@gmail.com>
+Date: Thu, 25 Jun 2020 11:30:42 -0400
+Subject: [PATCH] Update documentation about /usr/share/doom IWAD location
+
+---
+ man/INSTALL.template | 2 ++
+ man/iwad_paths.man   | 3 ++-
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/man/INSTALL.template b/man/INSTALL.template
+index f04e98e6..9c9f7601 100644
+--- a/man/INSTALL.template
++++ b/man/INSTALL.template
+@@ -199,6 +199,8 @@ do one of the following:
+  * Put the file into one of the following directories:
+ 
++     /usr/share/doom
+      /usr/share/games/doom
++     /usr/local/share/doom
+      /usr/local/share/games/doom
+ 
+  * Set the environment variable DOOMWADDIR to specify the path to a
+diff --git a/man/iwad_paths.man b/man/iwad_paths.man
+index 98058154..a41aba41 100644
+--- a/man/iwad_paths.man
++++ b/man/iwad_paths.man
+@@ -35,7 +35,8 @@ Writeable directory in the user's home directory. The path can be overridden
+ using the \fBXDG_DATA_HOME\fR environment variable (see the XDG Base Directory
+ Specification).
+ .TP
+-\fB/usr/local/share/games/doom, /usr/share/games/doom\fR
++\fB/usr/local/share/doom, /usr/local/share/games/doom, /usr/share/doom,
++/usr/share/games/doom\fR
+ System-wide locations that can be accessed by all users. The path
+ \fB/usr/share/games/doom\fR is a standard path that is supported by most
+ Doom source ports. These paths can be overridden using the \fBXDG_DATA_DIRS\fR
+-- 
+2.26.2
+

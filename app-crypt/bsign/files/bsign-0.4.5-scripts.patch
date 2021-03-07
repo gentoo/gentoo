@@ -1,0 +1,48 @@
+diff -urNp bsign-0.4.5/bsign_check bsign-0.4.5.new2/bsign_check
+--- bsign-0.4.5/bsign_check	2002-01-27 22:49:04.000000000 +0200
++++ bsign-0.4.5.new2/bsign_check	2013-06-16 01:00:55.862655310 +0300
+@@ -9,7 +9,7 @@
+ # LOCATIONS gives the path includes and excludes that guide where
+ #   bsign looks for input files.  
+ 
+-LOCATIONS=-i / -e /boot  -e /cdrom -e /dev -e /proc -e $BASE_PATH
++LOCATIONS="-i / -e /boot  -e /cdrom -e /dev -e /proc -e $BASE_PATH"
+ 
+ # MAIL_TO is the list of email addresses that will receive email when
+ #   this script terminates.  The mail will contain the output of
+diff -urNp bsign-0.4.5/bsign_hash bsign-0.4.5.new2/bsign_hash
+--- bsign-0.4.5/bsign_hash	2002-01-27 22:49:04.000000000 +0200
++++ bsign-0.4.5.new2/bsign_hash	2013-06-16 01:00:43.543657092 +0300
+@@ -9,7 +9,7 @@
+ # LOCATIONS gives the path includes and excludes that guide where
+ #   bsign looks for input files.  
+ 
+-LOCATIONS=-i / -e /boot  -e /cdrom -e /dev -e /proc
++LOCATIONS="-i / -e /boot  -e /cdrom -e /dev -e /proc"
+ 
+ # --- End of customization macros
+ 
+diff -urNp bsign-0.4.5/bsign_sign bsign-0.4.5.new2/bsign_sign
+--- bsign-0.4.5/bsign_sign	2002-01-27 20:44:09.000000000 +0200
++++ bsign-0.4.5.new2/bsign_sign	2013-06-16 01:00:17.737660680 +0300
+@@ -23,7 +23,7 @@ KEY_PATH=$BASE_PATH
+ # LOCATIONS gives the path includes and excludes that guide where
+ #   bsign looks for input files.  
+ 
+-LOCATIONS=-i / -e /boot  -e /cdrom -e /dev -e /proc -e $BASE_PATH
++LOCATIONS="-i / -e /boot  -e /cdrom -e /dev -e /proc -e $BASE_PATH"
+ 
+ # --- End of customization macros
+ 
+diff -urNp bsign-0.4.5/bsign_verify bsign-0.4.5.new2/bsign_verify
+--- bsign-0.4.5/bsign_verify	2002-01-27 20:44:09.000000000 +0200
++++ bsign-0.4.5.new2/bsign_verify	2013-06-16 01:00:28.114659254 +0300
+@@ -23,7 +23,7 @@ KEY_PATH=$BASE_PATH
+ # LOCATIONS gives the path includes and excludes that guide where
+ #   bsign looks for input files.  
+ 
+-LOCATIONS=-i / -e /boot  -e /cdrom -e /dev -e /proc -e $BASE_PATH
++LOCATIONS="-i / -e /boot  -e /cdrom -e /dev -e /proc -e $BASE_PATH"
+ #LOCATIONS=-i /bin -i /sbin -i /usr/bin -i /usr/sbin
+ 
+ # MAIL_TO is the list of email addresses that will receive email when

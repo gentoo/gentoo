@@ -1,0 +1,128 @@
+diff -ur a/configure.ac b/configure.ac
+--- a/configure.ac	2000-12-08 01:45:45.000000000 +0100
++++ b/configure.ac	2013-11-15 13:37:36.490520853 +0100
+@@ -182,29 +182,36 @@
+     [  --with-readline-library=DIR
+ 		  lib spec to readline (e.g. '-L/usr/local/lib -lreadline')],
+     LIBS="$LIBS $withval",
+-    AC_CHECK_LIB(readline, rl_callback_read_char, ,
+-	AC_MSG_RESULT([
+-	    Your readline version does not support readline's alternate interface.
+-	    Please upgrade to readline >= 2.2 and retry.
+-	])
+-	exit
++    AC_SEARCH_LIBS(rl_callback_read_char, readline, ,
++		AC_MSG_RESULT([
++			Your readline version does not support readline's alternate interface.
++			Please upgrade to readline >= 2.2 and retry.
++		])
++		exit
+     )
+ )
+ 
+ 
+ 
+-# check for readline's (macro.c) private variable
+-# _rl_executing_macro.
++# check for readline's rl_executing_macro
++# (could be macro.c's private variable _rl_executing_macro).
+ 
+-AC_MSG_CHECKING([for _rl_executing_macro in -lreadline])
+-AC_TRY_LINK(,[
++AC_CHECK_DECL(rl_executing_macro
++, AC_DEFINE(EXECUTING_MACRO_NAME, rl_executing_macro,
++  [ Define the name of the executing macro variable in libreadline. ])
++, AC_MSG_CHECKING([for _rl_executing_macro in -lreadline])
++  AC_TRY_LINK(,[
+     extern char* _rl_executing_macro;
+     _rl_executing_macro = (char*) 0;
+-],
+-    AC_MSG_RESULT(yes);
++  ]
++  , AC_MSG_RESULT(yes)
+     AC_DEFINE(EXECUTING_MACRO_HACK, 1,
+-    [ Define if _rl_executing_macro is resolved in libreadline. ]),
+-    AC_MSG_RESULT(no))
++    [ Define if EXECUTING_MACRO_NAME is resolved in libreadline. ])
++    AC_DEFINE(EXECUTING_MACRO_NAME, _rl_executing_macro,
++    [ Define the name of the executing macro variable in libreadline. ])
++  , AC_MSG_RESULT(no))
++, [AC_INCLUDES_DEFAULT
++#include "$READLINE_INCLUDE_DIR/readline.h"])
+ 
+ # check for readline's rl_cleanup_after_signal
+ 
+diff -ur a/tclreadline.c b/tclreadline.c
+--- a/tclreadline.c	2000-09-20 19:44:34.000000000 +0200
++++ b/tclreadline.c	2013-11-15 11:09:42.269771129 +0100
+@@ -41,7 +41,7 @@
+  * We need it here to decide, if we should read more
+  * characters from a macro. Dirty, but it should work.
+  */
+-extern char* _rl_executing_macro;
++extern char* EXECUTING_MACRO_NAME;
+ #endif
+ 
+ #include "tclreadline.h"
+@@ -249,14 +249,14 @@
+ 	    tclrl_state = LINE_PENDING;
+ 
+ 	    while (!TclReadlineLineComplete()) {
+-#ifdef EXECUTING_MACRO_HACK
++#ifdef EXECUTING_MACRO_NAME
+ 		/**
+ 		 * check first, if more characters are
+ 		 * available from _rl_executing_macro,
+ 		 * because Tcl_DoOneEvent() will (naturally)
+ 		 * not detect this `event'.
+ 		 */
+-		if (_rl_executing_macro)
++		if (EXECUTING_MACRO_NAME)
+ 		    TclReadlineReadHandler((ClientData) NULL, TCL_READABLE);
+ 		else
+ #endif
+@@ -468,17 +468,17 @@
+ TclReadlineReadHandler(ClientData clientData, int mask)
+ {
+     if (mask & TCL_READABLE) {
+-#ifdef EXECUTING_MACRO_HACK
++#ifdef EXECUTING_MACRO_NAME
+ 	do {
+ #endif
+ 	    rl_callback_read_char();
+-#ifdef EXECUTING_MACRO_HACK
++#ifdef EXECUTING_MACRO_NAME
+ 	    /**
+ 	     * check, if we're inside a macro and
+ 	     * if so, read all macro characters
+ 	     * until the next eol.
+ 	     */
+-	} while (_rl_executing_macro && !TclReadlineLineComplete());
++	} while (EXECUTING_MACRO_NAME && !TclReadlineLineComplete());
+ #endif
+     }
+ }
+@@ -517,12 +517,12 @@
+ 
+ 	Tcl_AppendResult(tclrl_interp, expansion, (char*) NULL);
+ 
+-#ifdef EXECUTING_MACRO_HACK
++#ifdef EXECUTING_MACRO_NAME
+ 	/**
+ 	 * don't stuff macro lines
+ 	 * into readline's history.
+ 	 */
+-	if(!_rl_executing_macro) {
++	if(!EXECUTING_MACRO_NAME) {
+ #endif
+ 	    /**
+ 	     * don't stuff empty lines
+@@ -537,7 +537,7 @@
+ 	    if (tclrl_last_line)
+ 		free(tclrl_last_line);
+ 	    tclrl_last_line = strdup(expansion);
+-#ifdef EXECUTING_MACRO_HACK
++#ifdef EXECUTING_MACRO_NAME
+ 	}
+ #endif
+ 	/**

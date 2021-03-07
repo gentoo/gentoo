@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>NP-Hardass@gentoo.org</email>
+    <name>NP-hardass</name>
+  </maintainer>
+  <longdescription lang="en">
+  FreeOrion is a free, open source, turn-based space empire and
+  galactic conquest (4X) computer game being designed and built by the
+  FreeOrion project. FreeOrion is inspired by the tradition of the
+  Master of Orion games, but is not a clone or remake of that series
+  or any other game.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">freeorion/freeorion</remote-id>
+  </upstream>
+</pkgmetadata>

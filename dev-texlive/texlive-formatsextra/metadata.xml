@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>aballier@gentoo.org</email>
+		<name>Alexis Ballier</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>tex@gentoo.org</email>
+		<name>Gentoo TeX Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Collected TeX `formats', i.e., large-scale macro packages
+		designed to be dumped into .fmt files -- excluding the most common
+		ones, such as latex and context, which have their own package(s).
+		It also includes the Aleph engine and related Omega formats and
+		packages.
+	</longdescription>
+</pkgmetadata>

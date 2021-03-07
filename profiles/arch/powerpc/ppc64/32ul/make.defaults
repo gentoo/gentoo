@@ -1,0 +1,16 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# All extra USE/etc should be specified in sub-profiles.
+# DO NOT POLLUTE USE ON THIS PROFILE.
+
+ARCH="ppc"
+CHOST="powerpc-unknown-linux-gnu"
+ABI="ppc"
+MULTILIB_ABIS="ppc"
+DEFAULT_ABI="ppc"
+ACCEPT_KEYWORDS="${ARCH} -ppc64"
+
+# Michał Górny <mgorny@gentoo.org> (2014-06-27)
+# Make the ABI flag implicit for compatibility with native ebuilds.
+IUSE_IMPLICIT="abi_ppc_32 -abi_ppc_64"

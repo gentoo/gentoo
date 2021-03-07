@@ -1,0 +1,86 @@
+Add umask support to cronolog.
+
+Patch-by: Mike Doty <kingtaco@gentoo.org>
+Signed-off-By: Robin H. Johnson <robbat2@gentoo.org>
+
+--- a/src/cronolog.c.orig	2010-01-22 16:49:41.000000000 -0800
++++ b/src/cronolog.c	2010-01-22 17:31:50.000000000 -0800
+@@ -106,7 +106,8 @@
+ 
+ #ifndef _WIN32
+ #define SETUGID_USAGE	"   -u USER,   --set-uid=USER  change to USER before doing anything (name or UID)\n" \
+-			"   -g GROUP,  --set-gid=GROUP change to GROUP before doing anything (name or GID)\n"
++			"   -g GROUP,  --set-gid=GROUP change to GROUP before doing anything (name or GID)\n" \
++			"   -U OCTAL,  --umask=OCTAL   sets umask of file/directory creation\n"
+ #else
+ #define SETUGID_USAGE	""
+ #endif
+@@ -134,7 +135,7 @@
+ /* Definition of the short and long program options */
+ 
+ #ifndef _WIN32
+-char          *short_options = "ad:eop:s:z:H:P:S:l:hVx:u:g:";
++char          *short_options = "ad:eop:s:z:H:P:S:l:hVx:u:g:U:";
+ #else
+ char          *short_options = "ad:eop:s:z:H:P:S:l:hVx:";
+ #endif        
+@@ -157,10 +158,16 @@
+     { "once-only", 	no_argument,       	NULL, 'o' },
+     { "help",      	no_argument,       	NULL, 'h' },
+     { "version",   	no_argument,       	NULL, 'V' },
++    { "umask",     	required_argument, 	NULL, 'U' },
+     { NULL,		0,			NULL, 0 }
+ };
+ #endif
+ 
++#ifndef _WIN32
++static mode_t saved_umask = 0;
++static mode_t new_umask = 0;
++#endif
++
+ /* Main function.
+  */
+ int
+@@ -193,6 +200,11 @@
+     int 	log_fd = -1;
+ 
+ #ifndef _WIN32
++    new_umask=umask(0);
++    umask(new_umask);
++#endif
++
++#ifndef _WIN32
+     while ((ch = getopt_long(argc, argv, short_options, long_options, NULL)) != EOF)
+ #else
+     while ((ch = getopt(argc, argv, short_options)) != EOF)
+@@ -267,6 +279,9 @@
+ 	    new_gid = parse_gid(optarg, argv[0]);
+ 	    change_gid = 1;
+ 	    break;
++	case 'U':
++	  new_umask = (mode_t)strtol(optarg, NULL, 8);
++	  break;
+ #endif
+ 	case 'o':
+ 	    periodicity = ONCE_ONLY;
+@@ -443,6 +458,9 @@
+ 	   timestamp(*pnext_period), *pnext_period,
+ 	   *pnext_period - time_now));
+     
++#ifndef _WIN32
++    saved_umask=umask(new_umask);
++#endif
+     log_fd = open(pfilename, O_WRONLY|O_CREAT|O_APPEND|O_LARGEFILE, FILE_MODE);
+     
+ #ifndef DONT_CREATE_SUBDIRS
+@@ -459,6 +477,10 @@
+ 	exit(2);
+     }
+ 
++#ifndef _WIN32
++    umask(saved_umask);
++#endif
++
+     if (linkname)
+     {
+ 	create_link(pfilename, linkname, linktype, prevlinkname);

@@ -1,0 +1,14 @@
+In C++14, bool -> T* implicit conversions are not allowed anymore.
+See also: https://bugs.gentoo.org/show_bug.cgi?id=601890
+
+--- a/src/common/weapons/AccessoryStore.cpp
++++ b/src/common/weapons/AccessoryStore.cpp
+@@ -156,7 +156,7 @@
+ 	Accessory *parent, XMLNode *currentNode)
+ {
+ 	XMLNode *typeNode = 0;
+-	if (!currentNode->getNamedParameter("type", typeNode)) return false;
++	if (!currentNode->getNamedParameter("type", typeNode)) return NULL;
+ 
+ 	AccessoryPart *accessoryPart = 
+ 		AccessoryMetaRegistration::getNewAccessory(typeNode->getContent(), this);

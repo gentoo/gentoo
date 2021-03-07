@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>codec@gentoo.org</email>
+		<name>Gentoo Codec Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:curtis_galloway:libexif</remote-id>
+		<remote-id type="github">libexif/libexif</remote-id>
+		<remote-id type="sourceforge">libexif</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,33 @@
+diff -ru sassena-1.4.2_org/cmake/CMakeLists.txt.executables sassena-1.4.2/cmake/CMakeLists.txt.executables
+--- sassena-1.4.2_org/cmake/CMakeLists.txt.executables	2014-07-29 11:02:12.652053749 +0200
++++ sassena-1.4.2/cmake/CMakeLists.txt.executables	2014-07-29 11:04:57.831042602 +0200
+@@ -18,18 +18,12 @@
+     tests/unit_broadcast.cpp
+ )
+ 
+-ADD_EXECUTABLE(unit_parameters 
+-	src/common.cpp
+-    tests/unit_parameters.cpp
+-)
+-
+ 
+ IF(STATIC)
+ SET_TARGET_PROPERTIES(sassena PROPERTIES LINK_SEARCH_END_STATIC 1)
+ SET_TARGET_PROPERTIES(s_stage PROPERTIES LINK_SEARCH_END_STATIC 1)
+ SET_TARGET_PROPERTIES(s_maketnx PROPERTIES LINK_SEARCH_END_STATIC 1)
+ SET_TARGET_PROPERTIES(unit_broadcast PROPERTIES LINK_SEARCH_END_STATIC 1)
+-SET_TARGET_PROPERTIES(unit_parameters PROPERTIES LINK_SEARCH_END_STATIC 1)
+ ENDIF(STATIC)
+ 
+ TARGET_LINK_LIBRARIES (s_stage 
+@@ -89,10 +83,4 @@
+ 	${BOOST_LIBRARIES}
+ )
+ 
+-TARGET_LINK_LIBRARIES (unit_parameters 
+-	sass_log
+-	sass_controlio
+-	${BOOST_LIBRARIES}
+-)
+-
+ INSTALL(TARGETS unit_broadcast RUNTIME DESTINATION bin)

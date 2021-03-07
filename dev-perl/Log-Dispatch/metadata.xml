@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Log-Dispatch</remote-id>
+    <remote-id type="cpan-module">Log::Dispatch</remote-id>
+    <remote-id type="cpan-module">Log::Dispatch::ApacheLog</remote-id>
+    <remote-id type="cpan-module">Log::Dispatch::Base</remote-id>
+    <remote-id type="cpan-module">Log::Dispatch::Code</remote-id>
+    <remote-id type="cpan-module">Log::Dispatch::Email</remote-id>
+    <remote-id type="cpan-module">Log::Dispatch::Email::MIMELite</remote-id>
+    <remote-id type="cpan-module">Log::Dispatch::Email::MailSend</remote-id>
+    <remote-id type="cpan-module">Log::Dispatch::Email::MailSender</remote-id>
+    <remote-id type="cpan-module">Log::Dispatch::Email::MailSendmail</remote-id>
+    <remote-id type="cpan-module">Log::Dispatch::File</remote-id>
+    <remote-id type="cpan-module">Log::Dispatch::File::Locked</remote-id>
+    <remote-id type="cpan-module">Log::Dispatch::Handle</remote-id>
+    <remote-id type="cpan-module">Log::Dispatch::Null</remote-id>
+    <remote-id type="cpan-module">Log::Dispatch::Output</remote-id>
+    <remote-id type="cpan-module">Log::Dispatch::Screen</remote-id>
+    <remote-id type="cpan-module">Log::Dispatch::Syslog</remote-id>
+    <remote-id type="cpan-module">Log::Dispatch::Types</remote-id>
+    <remote-id type="cpan-module">Log::Dispatch::Vars</remote-id>
+  </upstream>
+</pkgmetadata>

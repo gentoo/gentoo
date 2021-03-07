@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="capi">Enable ISDN support via CAPI</flag>
+		<flag name="osmesa">Add support for OpenGL in bitmaps using libOSMesa</flag>
+		<flag name="opencl">Enable OpenCL support</flag>
+		<flag name="pcap">Support packet capture software (e.g. wireshark)</flag>
+		<flag name="vulkan">Enable Vulkan drivers</flag>
+	</use>
+</pkgmetadata>

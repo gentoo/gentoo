@@ -1,0 +1,296 @@
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Unmask the flag which corresponds to ARCH.
+-mips
+
+# Matt Turner <mattst88@gentoo.org> (2018-03-25)
+# Unmask systemd since it is keyworded here.
+-systemd
+
+# Mart Raudsepp <leio@gentoo.org> (2018-02-11)
+# dev-util/valgrind is not keyworded here yet,
+# though the MIPS platform is supported upstream
+valgrind
+
+# Michał Górny <mgorny@gentoo.org> (2018-01-23)
+# net-misc/networkmanager is not keyworded here.
+networkmanager
+
+# Michał Górny <mgorny@gentoo.org> (2018-01-23)
+# sci-geosciences/gpsd is not keyworded here.
+gps
+
+# Brian Evans <grknight@gentoo.org> (2018-01-15)
+# Mask tcmalloc as dev-util/google-perftools is unavailable
+tcmalloc
+
+# James Le Cuirot <chewi@gentoo.org> (2017-06-29)
+# Unmask as this profile is big endian.
+-big-endian
+
+# Mart Raudsepp <leio@gentoo.org> (2017-05-27)
+# media-libs/libmtp not tested
+mtp
+
+# Mart Raudsepp <leio@gentoo.org> (2017-05-27)
+# net-libs/gnome-online-accounts not tested
+gnome-online-accounts
+
+# Mart Raudsepp <leio@gentoo.org> (2017-05-27)
+# Keywords lost on net-fs/samba over time, use.mask until re-keyworded
+samba
+
+# Mart Raudsepp <leio@gentoo.org> (2017-02-07)
+# dev-libs/libappindicator not tested
+appindicator
+ayatana
+
+# Anthony G. Basile <blueness@gentoo.org> (2015-08-01)
+# There is no luajit support on mips.  Bug #554376.
+luajittex
+
+# Markos Chandras <hwoarang@gentoo.org>
+# Profiles are ISA agnostic so these
+# should be masked on per user basis
+# See #498082
+-mipsdspr1
+-mipsdspr2
+-mipsfpu
+
+# Markos Chandras <hwoarang@gentoo.org>
+# Needs packages that lack ~mips keywords
+# See #485366
+m17n-lib
+
+# Ryan Hill <dirtyepic@gentoo.org>
+# Needs sci-mathematics/glpk.
+lpsol
+
+# Kacper Kowalik <xarthisius@gentoo.org> (2010-08-09)
+# cblas-external as virtual/cblas is also masked
+cblas-external
+
+# Samuli Suominen <ssuominen@gentoo.org>
+# Media cannot be tested for MIPS at the moment.
+# media-libs/libmpeg3
+# media-libs/portaudio
+# dev-libs/libcdio
+# media-libs/musicbrainz
+# media-libs/openexr
+mpeg
+portaudio
+cdio
+cdda
+musicbrainz
+openexr
+
+# Ryan Hill <dirtyepic@gentoo.org>
+# Various Gnome flags
+gnome
+
+# Peter Volkov <pva@gentoo.org> MPI was never tested on mips, but
+# some programs with this useflag are useful, e.g #227631
+mpi
+
+# Ryan Hill <dirtyepic@gentoo.org>
+# virtual/blas virtual/cblas and virtual/lapack not keyworded
+lapack
+blas
+
+# Alexander Færøy <eroyf@gentoo.org>
+# Clamav -- untested, masking for now.
+clamav
+
+# Untested on mips, masking for now.
+cdb
+
+# Until someone actually needs fuse, we'll mask it as
+# it holds up stablizing ntfsprogs
+fuse
+
+# Donnie Berkholz <dberkholz@gentoo.org> (2006-03-07)
+# Modular X: mask for architectures lacking direct rendering
+dri
+
+# Available on for mips.
+-video_cards_siliconmotion
+-video_cards_vivante
+
+# Stephen P. Becker <geoman@gentoo.org>
+# more modular X stuff
+video_cards_mga
+video_cards_nouveau
+video_cards_nv
+video_cards_r128
+video_cards_radeon
+input_devices_elographics
+input_devices_synaptics
+input_devices_vmmouse
+input_devices_void
+input_devices_wacom
+input_devices_joystick
+video_cards_glint
+video_cards_nvidia
+
+# Matt Turner <mattst88@gentoo.org>
+# Mask more VIDEO_CARDs added with mesa-8.0
+video_cards_amdgpu
+video_cards_r100
+video_cards_r200
+video_cards_r300
+video_cards_r600
+video_cards_radeonsi
+
+# Diego Pettenò <flameeyes@gentoo.org>
+# Until xine-lib's keywording can be maintained, please leave it masked.
+xine
+
+# Stephen P. Becker <geoman@gentoo.org>
+# masking mono because it doesn't work on mips
+mono
+
+# Hardave Riar <hardave@gentoo.org>
+# Temporarily masking ieee1394 until it can be tested
+# Quick fix to my tree b0rkage
+ieee1394
+
+# Henrik Brix Andersen <brix@gentoo.org>
+# According to the mips herd, we currently have no way of testing
+# pcmcia on mips, bug #90359
+pcmcia
+
+# John N. Laliberte <allanonjl@gentoo.org>
+# mask scanner support
+scanner
+
+# Hardave Riar <hardave@gentoo.org>
+# This should work, someone with a usb card and digital camera should test it
+gphoto2
+
+# Ciaran McCreesh <ciaranm@gentoo.org>
+# unresolved dep, bug #82428
+emboss
+
+# Joshua Kinard <kumba@gentoo.org>
+# dietlibc isn't known to work on mips
+diet
+
+# Stephen P. Becker <geoman@gentoo.org>
+# masked because it hoses xchat on 64-bit machines
+xosd
+
+# Stephen P. Becker <geoman@gentoo.org>
+# masked for now until this can be properly tested with alsa
+jack
+
+# Stephen P. Becker <geoman@gentoo.org>
+# masked because of silly java deps with gnome (we have no jre on mips)
+accessibility
+
+# Stephen P. Becker <geoman@gentoo.org>
+# masked because I say so, gnome--
+pda
+
+# Stephen P. Becker <geoman@gentoo.org>
+# masked because gaim sucks
+evo
+
+# Paul de Vrieze <pauldv@gentoo.org>
+# There is no java in this profile (if there is it must be available). Without
+# this repoman will fail on apps like sys-libs/db
+java
+
+# Ciaran McCreesh <ciaranm@gentoo.org>
+# No java, no netbeans
+netbeans
+
+# masked until gnome-extra/evolution-data-server is keyworded for mips
+eds
+
+# Flags which aren't applicable to mips (Mostly copied from sparc)
+3dfx
+acpi
+afs
+apm
+dvdr
+ibm
+ggi
+lirc
+smartcard
+
+#
+# Anthony G. Basile <blueness@gentoo.org> (2012-07-18)
+# php is an old mask which works now
+# pike is no longer a use flag
+#
+## see email to gentoo-dev with subject "use.mask and PHP5's crazy IUSE"
+## Dated Sat, 31 Jul 2004 14:49:28 -0700, from robbat2@gentoo.org
+## all of these are binary-only, and not presently available on this
+## architecture.
+#php
+#pike
+djbfft
+timidity
+
+# We don't use smartcards, afaik
+pcsc-lite
+
+# Fernando J. Pereda <ferdy@gentoo.org> (2007-03-20)
+# New optional dependency of >=mail-client/mutt-1.5.14
+qdbm
+
+# Doug Goldstein <cardoe@gentoo.org> (2007-05-08)
+# no one in mips land has smartcard hardware to test with
+# see bug #162205 comment 10.
+smartcard
+openct
+
+# kumba (2007-06-02)
+# pulseaudio hasn't been tested on mips; maybe someday
+pulseaudio
+
+# kumba (2007-11-01)
+# mask ladspa USE
+# [22:30] <beandog> mips: plz to mask ladspa use flag
+ladspa
+
+# Matt Turner <mattst88@gentoo.org> (2010-12-13)
+# Dropping app-arch/rpm keywords, mask rpm USE accordingly
+rpm
+
+# Matt Turner <mattst88@gentoo.org> (2010-12-13)
+# We don't have net-libs/libsmi keyworded
+smi
+
+# Matt Turner <mattst88@gentoo.org> (2010-12-13)
+# We don't have sys-devel/llvm
+llvm
+
+# Matt Turner <mattst88@gentoo.org (2011-06-14)
+# pdfannotextractor needs java
+pdfannotextractor
+
+# Matt Turner <mattst88@gentoo.org> (2011-07-11)
+# xemacs dependencies not keyworded
+xemacs
+
+# Matt Turner <mattst88@gentoo.org> (2011-07-11)
+# no native mips/linux code generation, see bug 319649
+ocamlopt
+
+# Michael Sterrett <mr_bones_@gentoo.org> (2012-08-24)
+# media-sound/fluidsynth isn't keyworded
+fluidsynth
+
+# Mips USE flags
+-fixed-point
+-loongson2f
+
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-08-22)
+# virtual/opencl is not keyworded
+opencl
+
+# Ben de Groot <yngwin@gentoo.org> (2015-02-01)
+# please remove when keyworded
+qt5

@@ -1,0 +1,250 @@
+--- vm-8.2.0b-orig/info/vm.texinfo
++++ vm-8.2.0b/info/vm.texinfo
+@@ -914,7 +914,8 @@
+ 
+ @example
+ ``pop:@var{HOST}:@var{PORT}:@var{AUTH}:@var{USER}:@var{PASSWORD}''
+-``imap:@var{HOST}:@var{PORT}:@var{MAILBOX}:@var{AUTH}:@var{USER}:@var{PASSWORD}''@end example
++``imap:@var{HOST}:@var{PORT}:@var{MAILBOX}:@var{AUTH}:@var{USER}:@var{PASSWORD}''
++@end example
+ 
+ @noindent Remote mailboxes accessed by VM in this fashion are referred
+ to as @dfn{server folders} (and @dfn{@acronym{POP} folders} or @dfn{@acronym{IMAP}
+@@ -1207,8 +1208,8 @@
+  ((@var{IMAPDROP} @var{NAME}) ...)
+ @end example
+ 
+-@var{IMAPDROP} is an @acronym{IMAP} maildrop specification (@ref{maildrop
+-  specification}). 
++@var{IMAPDROP} is an @acronym{IMAP} maildrop specification
++(@ref{maildrop specification}).
+ 
+ @var{NAME} is a string that should give a less cumbersome name that you
+ will use to refer to this maildrop when using @code{vm-visit-imap-folder}.
+@@ -2814,7 +2815,7 @@
+ * @acronym{MIME} preview::        Previewing a @acronym{MIME} message before sending.
+ @end menu
+ 
+-@node @acronym{MIME} attachments, @acronym{MIME} characters, Sending @acronym{MIME} Messages, Sending @acronym{MIME} Messages, 
++@node @acronym{MIME} attachments, @acronym{MIME} characters, Sending @acronym{MIME} Messages, Sending @acronym{MIME} Messages
+ @unnumberedsec @acronym{MIME} attachments
+ 
+ @kindex C-c C-a
+@@ -2868,7 +2869,7 @@
+ before invoking this command.  All the marked messages will be
+ attached as a digest in the outgoing message.
+ 
+-@unnumberedsubsubsec Point-to-point attachment operations
++@unnumberedsubsec Point-to-point attachment operations
+ 
+ @cindex point-to-point attachment operations
+ A number of @dfn{point-to-point operations} allow you to attach objects
+@@ -3425,7 +3426,7 @@
+ works like @code{vm-delete-after-saving} but applies to the @kbd{A}
+ (@code{vm-auto-archive-messages}) command (see below).
+ 
+-@unnumberedsubsec vm-auto-folder-alist
++@unnumberedsec vm-auto-folder-alist
+ 
+ @vindex vm-auto-folder-alist
+ The variable @code{vm-auto-folder-alist} is used to specify
+@@ -3477,7 +3478,7 @@
+ always case-insensitive because the Internet message standard RFC 822
+ specifies that header names are case indistinct.
+ 
+-@unnumberedsubsec Other commands
++@unnumberedsec Other commands
+ 
+ @table @kbd
+ @findex vm-save-message-sans-headers
+@@ -5174,7 +5175,7 @@
+ been expunged in the cache folder are expunged on the server.
+ 
+ @anchor{@acronym{UIDVALIDITY}}
+-@unnumberedsubsec @acronym{UIDVALIDITY}
++@unnumberedsec @acronym{UIDVALIDITY}
+ 
+ @cindex @acronym{UIDVALIDITY}
+ Messages on an @acronym{IMAP} server have unique id numbers called UID's.
+@@ -5198,7 +5199,7 @@
+ setting the @code{vm-enable-external-messages} flag to @code{(imap)} before
+ you refresh the cache so that it will be quicker. @pxref{External Messages}.
+ 
+-@unnumberedsubsec Operations for the IMAP server
++@unnumberedsec Operations for the IMAP server
+ 
+ @cindex vm-list-imap-folders
+ The command @code{vm-list-imap-folders} lists the folders available on the
+@@ -6021,7 +6022,7 @@
+ Useful ways to customize VM.
+ @section Reading messages
+ 
+-@unnumberedsubsubsec Shrunken headers
++@unnumberedsubsec Shrunken headers
+ 
+ @cindex headers, shrunken
+ @vindex vm-enable-addons
+@@ -6045,7 +6046,7 @@
+ 
+ (This add-on was provided by Robert Fenk.)
+ 
+-@unnumberedsubsubsec @acronym{MIME} alternatives
++@unnumberedsubsec @acronym{MIME} alternatives
+ @cindex @acronym{MIME} alternatives
+ The default setting of VM for handling @acronym{MIME} alternatives is
+ @code{best-internal}, which means the best alternative that can be
+@@ -6069,7 +6070,7 @@
+ 
+ @section Saving messages and attachments
+ 
+-@unnumberedsubsubsec Auto saving attachments
++@unnumberedsubsec Auto saving attachments
+ 
+ Messages with attachments get bulky and increase the size of VM
+ folders, slowing down VM.  The functions
+@@ -6179,7 +6180,7 @@
+ @uref{http://launchpad.net/vm}.  The ``VM Development Team'' can be
+ reached here using the email address @email{vm@@lists.launchpad.net}.
+ 
+-@unnumberedsubsec Savannah project site
++@unnumberedsec Savannah project site
+ 
+ The changes made in each of the releases is described in the @samp{NEWS}
+ file, which can be found in the source code repository.  The changes made
+@@ -6197,7 +6198,7 @@
+ takes you to a page that lists various version of VM source code, and
+ gives instructions for downloading it via @samp{Bazaar} (@code{bzr}).
+ 
+-@unnumberedsubsec Technical support
++@unnumberedsec Technical support
+ 
+ VM has a dedicated usenet newsgroup @code{gnu.emacs.vm.info} and a
+ gmane newsgroup @code{gmane.emacs.viewmail}, in which the developers
+@@ -6220,7 +6221,7 @@
+ 
+ The best way to report bugs is via the Launchpad bug tacker.  See below.
+ 
+-@unnumberedsubsec Get Involved
++@unnumberedsec Get Involved
+ 
+ VM is now supported and maintained by the user community.  So, as an
+ active user, your participation is key to keep the project going.  
+@@ -6249,7 +6250,7 @@
+ and merge your branch with the main development when your changes
+ are ready.
+ 
+-@unnumberedsubsec Contributors
++@unnumberedsec Contributors
+ 
+ Contributions to the code from the following members of the VM community
+ are gratefully acknowledged:
+@@ -6276,7 +6277,7 @@
+ 
+ Please let us know if any other contributors have been missed out.
+ 
+-@unnumberedsubsec Selected Releases of Kyle Jones
++@unnumberedsec Selected Releases of Kyle Jones
+ @itemize
+ @item Version 4.10, released in 1989.
+ @item Version 5.00, released in 1990.
+@@ -6291,7 +6292,7 @@
+ @end itemize
+ 
+ 
+-@unnumberedsubsec Releases of Robert Widhopf-Fenk
++@unnumberedsec Releases of Robert Widhopf-Fenk
+ @itemize
+ @item Version 8.0.0, released 31 May, 2007.
+ @item Version 8.0.1, released 29 June, 2007.
+@@ -6311,7 +6312,7 @@
+ @end itemize
+ 
+ 
+-@unnumberedsubsec Releases of VM development team
++@unnumberedsec Releases of VM development team
+ @itemize
+ @item Version 8.1.0, released 21 March, 2010.
+ @item Version 8.1.1, released 25 April, 2010.
+@@ -6545,7 +6546,7 @@
+ @acronym{IMAP} folders.)
+ @end itemize
+ 
+-@unnumberedsubsubsec Folder variables
++@unnumberedsubsec Folder variables
+ 
+ Internal to Emacs, VM stores the folder as simply a text buffer.  However, it
+ remembers a variety of data about the message contents in the buffer
+@@ -6712,7 +6713,7 @@
+ undoing cycle.
+ @end itemize
+ 
+-@unnumberedsubsubsec vm-folder-access-data
++@unnumberedsubsec vm-folder-access-data
+ 
+ The variable @code{vm-folder-access-data} is a vector storing data about the
+ state of the mail server (for @acronym{POP} and @acronym{IMAP} servers).  It contains the
+--- vm-8.2.0b-orig/info/vm-pcrisis.texinfo
++++ vm-8.2.0b/info/vm-pcrisis.texinfo
+@@ -1179,7 +1179,7 @@
+ 
+ @c ***************************************************************************
+ 
+-@unnumberedsubsec vmpc-auto-profiles-file
++@unnumberedsec vmpc-auto-profiles-file
+ @vindex vmpc-auto-profiles-file
+ 
+ The variable @code{vmpc-auto-profiles-file} contains the name of the
+@@ -1191,7 +1191,7 @@
+ 
+ @c ***************************************************************************
+ 
+-@unnumberedsubsec vmpc-auto-profiles-expunge-days
++@unnumberedsec vmpc-auto-profiles-expunge-days
+ @vindex vmpc-auto-profiles-expunge-days
+ 
+ In order to keep vmpc-auto-profiles-file from becoming massive,
+@@ -1203,7 +1203,7 @@
+ 
+ @c ***************************************************************************
+ 
+-@unnumberedsubsec vmpc-sig-face
++@unnumberedsec vmpc-sig-face
+ @vindex vmpc-sig-face
+ 
+ This is the face used to highlight the signature.  You can use
+@@ -1212,7 +1212,7 @@
+ 
+ @c ***************************************************************************
+ 
+-@unnumberedsubsec vmpc-pre-sig-face
++@unnumberedsec vmpc-pre-sig-face
+ @vindex vmpc-pre-sig-face
+ 
+ This is the face used to highlight the pre-signature.  You can use
+@@ -1221,7 +1221,7 @@
+ 
+ @c ***************************************************************************
+ 
+-@unnumberedsubsec vmpc-intangible-sig
++@unnumberedsec vmpc-intangible-sig
+ @vindex vmpc-intangible-sig
+ @anchor{vmpc-intangible-sig}
+ 
+@@ -1240,7 +1240,7 @@
+ 
+ @c ***************************************************************************
+ 
+-@unnumberedsubsec vmpc-intangible-pre-sig
++@unnumberedsec vmpc-intangible-pre-sig
+ @vindex vmpc-intangible-pre-sig
+ 
+ The @code{vmpc-intangible-pre-sig} variable works just like
+@@ -1249,7 +1249,7 @@
+ 
+ @c ***************************************************************************
+ 
+-@unnumberedsubsec vmpc-expect-default-signature
++@unnumberedsec vmpc-expect-default-signature
+ @vindex vmpc-expect-default-signature
+ 
+ Traditionally, signatures are added to new mail messages using a

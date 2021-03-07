@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sbraz@gentoo.org</email>
+		<name>Louis Sautier</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>fuuzetsu@fuuzetsu.co.uk</email>
+			<name>Mateusz Kowalczyk</name>
+		</maintainer>
+		<bugs-to>https://github.com/ShanaTsunTsunLove/torrentinfo/issues</bugs-to>
+		<remote-id type="github">Fuuzetsu/torrentinfo</remote-id>
+	</upstream>
+</pkgmetadata>

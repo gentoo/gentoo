@@ -1,0 +1,13 @@
+--- libgnomecups-0.2.2.orig/libgnomecups/gnome-cups-printer.c
++++ libgnomecups-0.2.2/libgnomecups/gnome-cups-printer.c
+@@ -510,6 +510,10 @@
+ 	num_dests = cups_get_dests (filename, num_dests, dests);
+ 	g_free (filename);
+ 
++	filename = g_build_filename (g_get_home_dir (), ".cups", "lpoptions", NULL);
++	num_dests = cups_get_dests (filename, num_dests, dests);
++	g_free (filename);
++
+ 	return num_dests;
+ }
+ 

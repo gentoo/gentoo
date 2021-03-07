@@ -1,0 +1,84 @@
+--- a/Makefile.in	2017-02-02 13:37:48.000000000 +0100
++++ b/Makefile.in	2018-05-15 21:52:25.900823345 +0200
+@@ -44,8 +44,8 @@
+ 	done && test -z "$$fail"
+ 
+ install:
+-	$(top_srcdir)/mkinstalldirs $(libdir)/pkgconfig
+-	$(INSTALL_DATA) serdisplib.pc $(libdir)/pkgconfig/
++	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(libdir)/pkgconfig
++	$(INSTALL_DATA) serdisplib.pc $(DESTDIR)$(libdir)/pkgconfig/
+ 	@for dir in ${subdirs}; do \
+ 	  (cd $(srcdir) && cd $$dir && $(MAKE) install) \
+ 	  || case "$(MFLAGS)" in *k*) fail=yes;; *) exit 1;; esac; \
+--- a/server/Makefile.in	2013-05-25 12:58:14.000000000 +0200
++++ b/server/Makefile.in	2018-05-15 21:52:38.966823295 +0200
+@@ -104,18 +104,18 @@
+ 
+ 
+ install: $(PROGRAMS)
+-	$(top_srcdir)/mkinstalldirs $(bindir)
+-	$(top_srcdir)/mkinstalldirs $(sbindir)
+-	$(top_srcdir)/mkinstalldirs $(sysconfdir)
++	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(bindir)
++	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(sbindir)
++	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(sysconfdir)
+ 	list='$(PROGRAMS_SBIN)'; \
+ 	for prog in $$list; do \
+-	  $(INSTALL_PROGRAM) $$prog $(sbindir)/ ; \
++	  $(INSTALL_PROGRAM) $$prog $(DESTDIR)$(sbindir)/ ; \
+ 	done
+ 	list='$(PROGRAMS_BIN)'; \
+ 	for prog in $$list; do \
+-	  $(INSTALL_PROGRAM) $$prog $(bindir)/ ; \
++	  $(INSTALL_PROGRAM) $$prog $(DESTDIR)$(bindir)/ ; \
+ 	done
+-	$(INSTALL_DATA) examples/serdispd.cfg $(sysconfdir)/
++	$(INSTALL_DATA) examples/serdispd.cfg $(DESTDIR)$(sysconfdir)/
+ 
+ 
+ uninstall:
+--- a/src/Makefile.in	2017-02-02 13:37:48.000000000 +0100
++++ b/src/Makefile.in	2018-05-15 21:52:56.268823229 +0200
+@@ -199,20 +199,20 @@
+ 	/bin/rm -f Makefile
+ 
+ install: $(LIB_DIR)/$(LIB_SHARED) $(LIB_DIR)/$(LIB_STATIC)
+-	$(top_srcdir)/mkinstalldirs $(bindir)
+-	$(top_srcdir)/mkinstalldirs $(libdir)
+-	$(top_srcdir)/mkinstalldirs $(includedir)
+-	$(top_srcdir)/mkinstalldirs $(includedir)/serdisplib
++	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(bindir)
++	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(libdir)
++	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(includedir)
++	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(includedir)/serdisplib
+ 	
+-	$(INSTALL_PROGRAM) $(PROGRAMS) $(bindir)/
+-	$(INSTALL_PROGRAM) $(LIB_DIR)/$(LIB_SHARED) $(libdir)/
+-	$(INSTALL_DATA) $(LIB_DIR)/$(LIB_STATIC) $(libdir)/
++	$(INSTALL_PROGRAM) $(PROGRAMS) $(DESTDIR)$(bindir)/
++	$(INSTALL_PROGRAM) $(LIB_DIR)/$(LIB_SHARED) $(DESTDIR)$(libdir)/
++	$(INSTALL_DATA) $(LIB_DIR)/$(LIB_STATIC) $(DESTDIR)$(libdir)/
+ 	list='$(LIB_HEADERFILES)'; \
+ 	for headerfile in $$list; do \
+-	  $(INSTALL_DATA) ../include/serdisplib/$$headerfile $(includedir)/serdisplib/ ; \
++	  $(INSTALL_DATA) ../include/serdisplib/$$headerfile $(DESTDIR)$(includedir)/serdisplib/ ; \
+ 	done
+-	cd $(libdir) && $(LN_S) -f $(LIB_SHARED) lib$(LIB_NAME).so.$(VERSION_MAJOR)
+-	cd $(libdir) && $(LN_S) -f lib$(LIB_NAME).so.$(VERSION_MAJOR) lib$(LIB_NAME).so
++	cd $(DESTDIR)$(libdir) && $(LN_S) -f $(LIB_SHARED) lib$(LIB_NAME).so.$(VERSION_MAJOR)
++	cd $(DESTDIR)$(libdir) && $(LN_S) -f lib$(LIB_NAME).so.$(VERSION_MAJOR) lib$(LIB_NAME).so
+ 
+ uninstall:
+ 	-/bin/rm -f $(libdir)/libserdisp*
+--- a/tools/Makefile.in	2014-03-30 09:13:59.000000000 +0200
++++ b/tools/Makefile.in	2018-05-15 21:53:01.042823211 +0200
+@@ -155,7 +155,7 @@
+ install: $(PROGRAMS)
+ 	list='$(PROGRAMS)'; \
+ 	for prog in $$list; do \
+-	  $(INSTALL_PROGRAM) $$prog $(bindir)/ ; \
++	  $(INSTALL_PROGRAM) $$prog $(DESTDIR)$(bindir)/ ; \
+ 	done
+ 
+ uninstall: $(PROGRAMS)

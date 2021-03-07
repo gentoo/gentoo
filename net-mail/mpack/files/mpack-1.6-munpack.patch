@@ -1,0 +1,55 @@
+From a4ececa89969adfa53c30878b21178e1427cb6c5 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Wed, 18 Jan 2012 05:22:25 +0100
+Subject: [PATCH] Fix unpacking of multiple parts
+
+The problem was reported by Dirk Meyer of FreeBSD.
+
+He shared these commands to reproduce:
+$ ./mpack -s Subject -m 1700 -o zparts md5c.c
+$ ./munpack zparts.*
+---
+ decode.c |    2 +-
+ unixos.c |   13 +++++++++++++
+ 2 files changed, 14 insertions(+), 1 deletions(-)
+
+diff --git a/decode.c b/decode.c
+index 7349abd..e8e8d56 100644
+--- a/decode.c
++++ b/decode.c
+@@ -633,7 +633,7 @@ int handlePartial(struct part *inpart, char *headers, params contentParams, int
+ 	}
+ 	/* Store number of parts in reassembly directory */
+ 	sprintf(buf, "%sCT", dir);
+-	partfile = os_createnewfile(buf);
++	partfile = os_resetfile(buf);
+ 	if (!partfile) {
+ 	    os_perror(buf);
+ 	    goto ignore;
+diff --git a/unixos.c b/unixos.c
+index 0e2f469..1650594 100644
+--- a/unixos.c
++++ b/unixos.c
+@@ -146,6 +146,19 @@ FILE *os_createnewfile(char *fname)
+     return ret;
+ }
+ 
++FILE *os_resetfile(char *fname)
++{
++    int fd;
++    FILE *ret;
++
++    fd=open(fname, O_RDWR|O_CREAT|O_TRUNC, 0600);
++    if (fd == -1)
++        return NULL;
++
++    ret=fdopen(fd, "w");
++    return ret;
++}
++
+      
+ /*
+  * Create a new file, with suggested filename "fname".
+-- 
+1.7.8.3
+

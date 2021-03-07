@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<longdescription>
+  Auto-Complete is an intelligent auto-completion extension for Emacs.
+  It extends the standard Emacs completion interface and provides an
+  environment that allows users to concentrate more on their own work.
+</longdescription>
+<stabilize-allarches/>
+<upstream>
+  <remote-id type="github">auto-complete/auto-complete</remote-id>
+</upstream>
+</pkgmetadata>

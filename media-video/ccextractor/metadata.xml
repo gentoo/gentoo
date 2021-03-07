@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>media-video@gentoo.org</email>
+		<name>Gentoo Video project</name>
+	</maintainer>
+	<longdescription lang="en">
+A tool that analyzes video files and produces independent subtitle files from the closed captions data.  Exports to SRT subtitle format.
+</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">ccextractor</remote-id>
+	</upstream>
+</pkgmetadata>

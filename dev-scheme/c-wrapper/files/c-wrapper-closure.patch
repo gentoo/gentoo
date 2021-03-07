@@ -1,0 +1,10 @@
+--- a/src/closure_alloc.c
++++ b/src/closure_alloc.c
+@@ -100,6 +100,7 @@
+             ++(node->n);
+             return;
+         }
++        node = node->next;
+     }
+ 
+     node = malloc(sizeof(FreeNode));

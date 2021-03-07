@@ -1,0 +1,13 @@
+http://bugs.gentoo.org/237046
+
+--- a/grun.c
++++ b/grun.c
+@@ -30,8 +30,6 @@
+ 
+ #if defined (HAVE_GETTEXT) || defined (HAVE_CATGETS)
+ #include <libintl.h>
+-#else
+-#include "intl/libintl.h"
+ #endif
+ 
+ #define PATH_CHAR	":"

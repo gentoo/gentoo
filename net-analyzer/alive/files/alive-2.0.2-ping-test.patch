@@ -1,0 +1,14 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -35,11 +35,6 @@
+  [alive_cv_nice_ping=yes],
+  [alive_cv_nice_ping=no])])
+ 
+-dnl Luckily both inetutils-ping and iputils-ping are nice.
+-AS_IF([test xno = x$alive_cv_nice_ping],
+-[AC_MSG_ERROR([$PING does not support ‘-n -c 1’.
+-Please install a ping program that does, and retry.])])
+-
+ AC_CONFIG_FILES([
+   Makefile
+   src/Makefile

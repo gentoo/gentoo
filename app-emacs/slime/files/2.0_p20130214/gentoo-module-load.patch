@@ -1,0 +1,84 @@
+--- slime-9999-orig/contrib/swank-arglists.lisp	2012-08-14 06:50:34.000000000 +1000
++++ slime-9999/contrib/swank-arglists.lisp	2013-02-14 21:33:26.879124163 +1100
+@@ -9,8 +9,7 @@
+ 
+ (in-package :swank)
+ 
+-(eval-when (:compile-toplevel :load-toplevel :execute)
+-  (swank-require :swank-c-p-c))
++(swank-require :swank-c-p-c)
+ 
+ ;;;; Utilities
+ 
+--- slime-9999-orig/contrib/swank-fuzzy.lisp	2013-02-02 20:48:51.000000000 +1100
++++ slime-9999/contrib/swank-fuzzy.lisp	2013-02-14 21:35:32.059873714 +1100
+@@ -10,9 +10,8 @@
+ 
+ (in-package :swank)
+ 
+-(eval-when (:compile-toplevel :load-toplevel :execute)
+-  (swank-require :swank-util)
+-  (swank-require :swank-c-p-c))
++(swank-require :swank-util)
++(swank-require :swank-c-p-c)
+ 
+ ;;; For nomenclature of the fuzzy completion section, please read
+ ;;; through the following docstring.
+--- slime-9999-orig/contrib/swank-sbcl-exts.lisp	2009-09-25 16:43:33.000000000 +1000
++++ slime-9999/contrib/swank-sbcl-exts.lisp	2013-02-14 21:33:26.880124185 +1100
+@@ -7,8 +7,7 @@
+ 
+ (in-package :swank)
+ 
+-(eval-when (:compile-toplevel :load-toplevel :execute)
+-  (swank-require :swank-arglists))
++(swank-require :swank-arglists)
+ 
+ ;; We need to do this so users can place `slime-sbcl-exts' into their
+ ;; ~/.emacs, and still use any implementation they want.
+--- slime-9999-orig/swank.lisp	2013-01-11 20:00:30.000000000 +1100
++++ slime-9999/swank.lisp	2013-02-14 22:15:39.624982175 +1100
+@@ -2535,14 +2535,17 @@
+   "Load the module MODULE."
+   (dolist (module (ensure-list modules))
+     (unless (member (string module) *modules* :test #'string=)
+-      (require module (if filename
+-                          (filename-to-pathname filename)
+-                          (module-filename module)))
++      (let ((*load-print* nil)
++            (*load-verbose* nil)
++            #+cmu (ext:*gc-verbose* nil))
++        (require module (if filename
++                            (filename-to-pathname filename)
++                            (module-filename module))))
+       (assert (member (string module) *modules* :test #'string=)
+               () "Required module ~s was not provided" module)))
+   *modules*)
+ 
+-(defvar *find-module* 'find-module
++(defvar *find-module* 'find-module-gentoo
+   "Pluggable function to locate modules.
+ The function receives a module name as argument and should return
+ the filename of the module (or nil if the file doesn't exist).")
+@@ -2572,6 +2575,21 @@
+     (some (lambda (dir) (some #'probe-file (module-canditates name dir)))
+           *load-path*)))
+ 
++(defun swank-fasl-pathname ()
++  (make-pathname :name nil :type nil
++                 :defaults (car (asdf:output-files
++                                 (make-instance 'asdf:compile-op)
++                                 (car (asdf:module-components
++                                       (asdf:find-system :swank)))))))
++
++(defun append-dir (pathname dir)
++  (make-pathname :directory (append (pathname-directory pathname) dir)))
++
++(defun find-module-gentoo (module)
++  (or (let ((*load-path* (list (append-dir (swank-fasl-pathname) '("contrib"))
++                               (append-dir swank-loader:*source-directory* '("contrib")))))
++        (find-module module))
++      (find-module module)))
+ 
+ ;;;; Macroexpansion
+ 

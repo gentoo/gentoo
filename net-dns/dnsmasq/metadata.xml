@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+<email>chutzpah@gentoo.org</email>
+<name>Patrick McLean</name>
+</maintainer>
+<use>
+	<flag name="auth-dns">Add support for acting as an authorative DNS server.</flag>
+	<flag name="conntrack">Add support for Linux conntrack connection marking.</flag>
+	<flag name="dhcp-tools">Install extra command line tools for manually managing DHCP leases.</flag>
+	<flag name="dhcp">Enable support for acting as a DHCP server.</flag>
+	<flag name="dnssec">Enable support DNSSEC validation and caching.</flag>
+	<flag name="dumpfile">Include code to dump packets to a libpcap-format file for debugging</flag>
+	<flag name="id">Whether report *.bind CHAOS info to clients, otherwise forward such requests upstream instead</flag>
+	<flag name="libidn2">Enable support for Internationalized Domain Names, via <pkg>net-dns/libidn2</pkg> rather than <pkg>net-dns/libidn</pkg></flag>
+	<flag name="nettlehash">Use hashing functions from <pkg>dev-libs/nettle</pkg></flag>
+	<flag name="script">Enable support for calling scripts when leases change.</flag>
+	<flag name="tftp">Enables built in TFTP server for netbooting.</flag>
+</use>
+<upstream>
+	<remote-id type="cpe">cpe:/a:thekelleys:dnsmasq</remote-id>
+</upstream>
+</pkgmetadata>

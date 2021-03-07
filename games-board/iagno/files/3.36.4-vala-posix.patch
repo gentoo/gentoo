@@ -1,0 +1,28 @@
+From 0100bab269f2102f24a6e41202b931da1b6e8dc5 Mon Sep 17 00:00:00 2001
+From: Michael Catanzaro <mcatanzaro@gnome.org>
+Date: Mon, 3 Aug 2020 13:47:43 -0500
+Subject: [PATCH] Fix build of perfs-tests-generator.vala
+
+Not sure exactly what changed, but Rico says: "likely a dependency isn't
+pulling posix.vapi in anymore."
+---
+ src/meson.build | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/meson.build b/src/meson.build
+index f3d3a20..9925272 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -15,7 +15,8 @@ run_target('update-perfs-tests', command: executable ('iagno-perfs-tests-generat
+             '--enable-experimental-non-null'
+         ],
+         dependencies : [
+-            gio_dependency
++            gio_dependency,
++            posix_dependency
+         ]
+     )
+ )
+-- 
+2.20.1
+

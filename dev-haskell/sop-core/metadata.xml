@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Implementation of n-ary sums and n-ary products.
+		
+		The module "Data.SOP" is the main module of this library and contains
+		more detailed documentation.
+		
+		The main use case of this package is to serve as the core of
+		https://hackage.haskell.org/package/generics-sop generics-sop 
+		
+		A detailed description of the ideas behind this library is provided by
+		the paper:
+		
+		* Edsko de Vries and Andres Löh.
+		http://www.andres-loeh.de/TrueSumsOfProducts True Sums of Products
+		Workshop on Generic Programming (WGP) 2014.
+		
+	</longdescription>
+</pkgmetadata>

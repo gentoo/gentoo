@@ -1,0 +1,44 @@
+--- a/Xcurse.c
++++ b/Xcurse.c
+@@ -37,6 +37,8 @@
+ 
+ extern int eightbit;
+ 
++struct _line *top_of_win;
++
+ static WINDOW *virtual_scr;
+ WINDOW *curscr;
+ WINDOW *stdscr;
+--- a/Xcurse.h
++++ b/Xcurse.h
+@@ -132,7 +132,7 @@
+ 	int number;
+ 	};
+ 
+-struct _line *top_of_win;
++extern struct _line *top_of_win;
+ 
+ typedef struct WIND {
+ 	int SR;		/* starting row		*/
+--- a/new_curse.c
++++ b/new_curse.c
+@@ -85,6 +85,8 @@
+ #endif
+ 
+ 
++struct _line *top_of_win;
++
+ WINDOW *curscr;
+ static WINDOW *virtual_scr;
+ WINDOW *stdscr;
+--- a/new_curse.h
++++ b/new_curse.h
+@@ -161,7 +161,7 @@
+ 	int number;
+ 	};
+ 
+-struct _line *top_of_win;
++extern struct _line *top_of_win;
+ 
+ typedef struct WIND {
+ 	int SR;		/* starting row		*/

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>voyageur@gentoo.org</email>
+		<name>Bernard Cafarelli</name>
+	</maintainer>
+	<use>
+		<flag name="stl">Compile with TIXML_USE_STL support</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">tinyxml</remote-id>
+	</upstream>
+</pkgmetadata>

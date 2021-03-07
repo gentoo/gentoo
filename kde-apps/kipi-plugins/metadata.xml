@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>dilfridge@gentoo.org</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<use>
+		<flag name="flashexport">Build the flash export plugin</flag>
+		<flag name="mediawiki">Build the mediawiki export plugin</flag>
+		<flag name="remotestorage">Build plugin for remote storage using network protocols such as FTP, SSH, SAMBA via <pkg>kde-frameworks/kio</pkg></flag>
+		<flag name="vkontakte">Build plugin for vkontakte.ru</flag>
+	</use>
+</pkgmetadata>

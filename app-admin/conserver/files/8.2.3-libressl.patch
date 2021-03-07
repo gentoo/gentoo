@@ -1,0 +1,31 @@
+From f4d2a4a30f930c58bf87511f7ed1a982eca66ce3 Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Thu, 6 Jun 2019 21:30:16 -0700
+Subject: [PATCH] libressl
+
+backport of https://github.com/conserver/conserver/pull/26
+---
+ conserver/cutil.h | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/conserver/cutil.h b/conserver/cutil.h
+index 63aef65..07aa6d4 100644
+--- a/conserver/cutil.h
++++ b/conserver/cutil.h
+@@ -12,10 +12,12 @@
+ # include <openssl/err.h>
+ # if OPENSSL_VERSION_NUMBER < 0x10100000L
+ #  define TLS_method SSLv23_method
++# endif/* OPENSSL_VERSION_NUMBER < 0x10100000L */
++# if (OPENSSL_VERSION_NUMBER < 0x10100000L) || defined(LIBRESSL_VERSION_NUMBER)
+ #  define CIPHER_SEC0
+ # else
+ #  define CIPHER_SEC0 ":@SECLEVEL=0"
+-# endif /* OPENSSL_VERSION_NUMBER < 0x10100000L */
++# endif/* OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER) */
+ #endif
+ #if HAVE_GSSAPI
+ # include <gssapi/gssapi.h>
+-- 
+2.21.0
+

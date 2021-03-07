@@ -1,0 +1,412 @@
+diff -ur ical-3.0.orig/dg_item.tcl ical-3.0/dg_item.tcl
+--- ical-3.0.orig/dg_item.tcl	2008-11-13 01:27:08.000000000 +0200
++++ ical-3.0/dg_item.tcl	2010-03-24 15:46:06.000000000 +0200
+@@ -3,15 +3,15 @@
+ 
+ proc item_edit {leader item} {
+     global iedit
+-    set iedit(done) -1
++    set iedit_done -1
+ 
+     iedit_make
+     iedit_fill $item
+     update
+     wm minsize .iedit [winfo reqwidth .iedit] [winfo reqheight .iedit]
+ 
+-    dialog_run $leader .iedit iedit(done)
+-    if !$iedit(done) {return}
++    dialog_run $leader .iedit iedit_done
++    if !$iedit_done {return}
+ 
+     # Check that item has not been deleted concurrently
+     catch {
+@@ -28,7 +28,7 @@
+     toplevel $f -class Bigdialog
+     wm title $f {Item Properties}
+     wm iconname $f Item
+-    wm protocol $f WM_DELETE_WINDOW {set iedit(done) 0}
++    wm protocol $f WM_DELETE_WINDOW {set iedit_done 0}
+ 
+     # Make the various container frames
+     frame $f.f1
+@@ -37,8 +37,8 @@
+ 
+     # Make the buttons
+     make_buttons $f.bot 1 {
+-        {Cancel         {set iedit(done) 0}}
+-        {Okay           {set iedit(done) 1}}
++        {Cancel         {set iedit_done 0}}
++        {Okay           {set iedit_done 1}}
+     }
+ 
+     # Top-level layout
+@@ -139,8 +139,8 @@
+         -variable iedit(todo) -onvalue 1 -offvalue 0
+     pack $f.todo -in $f.f2.c1 -side top -fill both
+ 
+-    bind $f <Control-c> {set iedit(done) 0}
+-    bind $f <Return>    {set iedit(done) 1}
++    bind $f <Control-c> {set iedit_done 0}
++    bind $f <Return>    {set iedit_done 1}
+ 
+     wm withdraw $f
+ }
+diff -ur ical-3.0.orig/dg_key.tcl ical-3.0/dg_key.tcl
+--- ical-3.0.orig/dg_key.tcl	2008-11-10 12:06:11.000000000 +0200
++++ ical-3.0/dg_key.tcl	2010-03-24 15:47:41.000000000 +0200
+@@ -11,7 +11,7 @@
+ #       The result is a list with two elements.  The first element
+ #       is a key sequence, and the second is a command name.
+ 
+-set defkey(done) -1
++set defkey_done -1
+ set defkey(help) 0
+ set defkey(cmd)  {}
+ 
+@@ -36,7 +36,7 @@
+ 
+     toplevel $f -class Dialog
+     wm title $f "Define Key"
+-    wm protocol $f WM_DELETE_WINDOW {set defkey(done) 0}
++    wm protocol $f WM_DELETE_WINDOW {set defkey_done 0}
+ 
+     frame $f.top -class Pane
+     frame $f.mid -class Pane
+@@ -44,8 +44,8 @@
+     make_buttons $f.bot 3 {
+         {Clear                  {defkey_clear_key}}
+         {Help                   {defkey_help_toggle}}
+-        {Cancel                 {set defkey(done) 0}}
+-        {Okay                   {set defkey(done) 1}}
++        {Cancel                 {set defkey_done 0}}
++        {Okay                   {set defkey_done 1}}
+     }
+ 
+     message $f.text -aspect 400 -text [join {
+@@ -117,10 +117,10 @@
+     if $defkey(help) {defkey_help_toggle}
+ 
+     # Run dialog
+-    set defkey(done) -1
+-    dialog_run $leader $f defkey(done)
++    set defkey_done -1
++    dialog_run $leader $f defkey_done
+ 
+-    return $defkey(done)
++    return $defkey_done
+ }
+ 
+ proc defkey_select_command {} {
+diff -ur ical-3.0.orig/dg_monthr.tcl ical-3.0/dg_monthr.tcl
+--- ical-3.0.orig/dg_monthr.tcl	2008-11-10 12:06:10.000000000 +0200
++++ ical-3.0/dg_monthr.tcl	2010-03-24 15:48:57.000000000 +0200
+@@ -11,13 +11,13 @@
+ 
+ # Hidden global variables
+ #
+-#       mr_state(done)          Interaction has finished
++#       mr_state_done           Interaction has finished
+ #       mr_state(item)          The item being modified
+ #       mr_state(int)           Repetition interval in months
+ #       mr_state(occ)           Type of monthly occurrence
+ #       mr_state(count:...)     Count for a particular type of occurrence
+ 
+-set mr_state(done)      0
++set mr_state_done       0
+ set mr_state(item)      {}
+ set mr_state(occ)       {}
+ set mr_state(int)       {}
+@@ -51,7 +51,7 @@
+     toplevel $f -class Dialog
+     wm title $f "Monthly Repetition"
+     wm iconname $f "Repeat"
+-    wm protocol $f WM_DELETE_WINDOW {set mr_state(done) 0}
++    wm protocol $f WM_DELETE_WINDOW {set mr_state_done 0}
+ 
+     frame $f.top   -class Pane
+     frame $f.left  -class Pane
+@@ -61,8 +61,8 @@
+     pack $f.text -in $f.top -side top -expand 1 -fill both -padx 5m -pady 5m
+ 
+     make_buttons $f.bot 1 {
+-        {Cancel         {set mr_state(done) 0}}
+-        {Okay           {set mr_state(done) 1}}
++        {Cancel         {set mr_state_done 0}}
++        {Okay           {set mr_state_done 1}}
+     }
+ 
+     # Create interval buttons
+@@ -104,8 +104,8 @@
+     pack $f.left  -side left -expand 1 -fill both
+     pack $f.right -side left -expand 1 -fill both
+ 
+-    bind $f <Control-c> {set mr_state(done) 0}
+-    bind $f <Return>    {set mr_state(done) 1}
++    bind $f <Control-c> {set mr_state_done 0}
++    bind $f <Return>    {set mr_state_done 1}
+ 
+     wm withdraw $f
+     update
+@@ -114,7 +114,7 @@
+ proc monthrepeat_interact {leader item anchor} {
+     global mr_state
+     set f .mr_dialog
+-    set mr_state(done) -1
++    set mr_state_done -1
+     set mr_state(int)  1
+     set mr_state(occ)  month_day
+ 
+@@ -186,6 +186,6 @@
+         $f.month_last_week_day configure -text "[num2text $c]-last $wday_name"
+     }
+ 
+-    dialog_run $leader $f mr_state(done)
+-    return $mr_state(done)
++    dialog_run $leader $f mr_state_done
++    return $mr_state_done
+ }
+diff -ur ical-3.0.orig/dg_range.tcl ical-3.0/dg_range.tcl
+--- ical-3.0.orig/dg_range.tcl	2008-11-10 12:06:09.000000000 +0200
++++ ical-3.0/dg_range.tcl	2010-03-24 15:49:57.000000000 +0200
+@@ -14,11 +14,11 @@
+ 
+ # Hidden global variables
+ #
+-#       dr_state(done)          Interaction has finished
++#       dr_state_done           Interaction has finished
+ #       dr_state(start)         Starting date
+ #       dr_state(finish)        Finishing date
+ 
+-set dr_state(done)              0
++set dr_state_done               0
+ set dr_state(start)             {}
+ set dr_state(finish)            {}
+ 
+@@ -47,7 +47,7 @@
+     toplevel $f -class Dialog
+     wm title $f "Select Range"
+     wm iconname $f "Range"
+-    wm protocol $f WM_DELETE_WINDOW {set dr_state(done) 0}
++    wm protocol $f WM_DELETE_WINDOW {set dr_state_done 0}
+ 
+     frame $f.top -class Pane
+     message $f.text -aspect 800 -text {Restrict item repetition range...}
+@@ -62,16 +62,16 @@
+     pack $f.finish  -in $f.mid -side top -expand 1 -fill both -padx 5m -pady 5m
+ 
+     make_buttons $f.bot 1 {
+-        {Cancel         {set dr_state(done) 0}}
+-        {Okay           {set dr_state(done) 1}}
++        {Cancel         {set dr_state_done 0}}
++        {Okay           {set dr_state_done 1}}
+     }
+ 
+     pack $f.top -side top -fill both -expand 1
+     pack $f.mid -side top -fill both -expand 1
+     pack $f.bot -side bottom -fill x
+ 
+-    bind $f <Control-c> {set dr_state(done) 0}
+-    bind $f <Return>    {set dr_state(done) 1}
++    bind $f <Control-c> {set dr_state_done 0}
++    bind $f <Return>    {set dr_state_done 1}
+ 
+     wm withdraw $f
+     update
+@@ -86,9 +86,9 @@
+     global dr_state
+     set f .dr_dialog
+ 
+-    set dr_state(done) -1
+-    dialog_run $leader $f dr_state(done)
+-    return $dr_state(done)
++    set dr_state_done -1
++    dialog_run $leader $f dr_state_done
++    return $dr_state_done
+ }
+ 
+ proc dr_validate {args} {
+diff -ur ical-3.0.orig/dg_wdays.tcl ical-3.0/dg_wdays.tcl
+--- ical-3.0.orig/dg_wdays.tcl	2008-11-10 12:06:08.000000000 +0200
++++ ical-3.0/dg_wdays.tcl	2010-03-24 15:54:11.000000000 +0200
+@@ -11,11 +11,11 @@
+ 
+ # Hidden global variables
+ #
+-#       ws_state(done)          Is ws interaction finished
++#       ws_state_done           Is ws interaction finished
+ #       ws_state(1..7)          Set iff specified weekday was selected
+ #       ws_state(int)           Week interval
+ 
+-set ws_state(done) 0
++set ws_state_done 0
+ foreach i {1 2 3 4 5 6 7} {
+     set ws_state($i) 0
+ }
+@@ -54,7 +54,7 @@
+     toplevel $f -class Dialog
+     wm title $f {Weekly Repetition}
+     wm iconname $f Repeat
+-    wm protocol $f WM_DELETE_WINDOW {set ws_state(done) 0}
++    wm protocol $f WM_DELETE_WINDOW {set ws_state_done 0}
+ 
+     frame $f.top   -class Pane
+     frame $f.left  -class Pane
+@@ -64,8 +64,8 @@
+     pack $f.text -in $f.top -side top -expand 1 -fill both -padx 5m -pady 5m
+ 
+     make_buttons $f.bot 1 {
+-        {Cancel         {set ws_state(done) 0}}
+-        {Okay           {set ws_state(done) 1}}
++        {Cancel         {set ws_state_done 0}}
++        {Okay           {set ws_state_done 1}}
+     }
+ 
+     # Make set of weekdays
+@@ -107,8 +107,8 @@
+     pack $f.right -side left -expand 1 -fill both
+     pack $f.left -side left -expand 1 -fill both
+ 
+-    bind $f <Control-c> {set ws_state(done) 0}
+-    bind $f <Return>    {set ws_state(done) 1}
++    bind $f <Control-c> {set ws_state_done 0}
++    bind $f <Return>    {set ws_state_done 1}
+ 
+     wm withdraw $f
+     update
+@@ -135,9 +135,9 @@
+     ws_reconfig
+ 
+     # Run dialog
+-    set ws_state(done) -1
+-    dialog_run $leader $f ws_state(done)
++    set ws_state_done -1
++    dialog_run $leader $f ws_state_done
+ 
+     # Construct return value
+-    return $ws_state(done)
++    return $ws_state_done
+ }
+diff -ur ical-3.0.orig/help.tcl ical-3.0/help.tcl
+--- ical-3.0.orig/help.tcl	2008-11-10 12:06:04.000000000 +0200
++++ ical-3.0/help.tcl	2010-03-24 15:55:03.000000000 +0200
+@@ -132,7 +132,7 @@
+     return 0
+ }
+ 
+-set about(done) 0
++set about_done 0
+ proc show_about {leader} {
+     global ical about
+ 
+@@ -155,22 +155,22 @@
+         pack $t.top.author  -side top -expand 1 -fill x -padx 5m -pady 5m
+ 
+         make_buttons $t.bot 0 {
+-            {{Okay}             {set about(done) 1}}
++            {{Okay}             {set about_done 1}}
+         }
+ 
+         pack $t.top -side top -expand 1 -fill x
+         pack $t.bot -side bottom -expand 1 -fill x
+ 
+         wm title $t {About Ical}
+-        wm protocol $t WM_DELETE_WINDOW {set about(done) 1}
+-        bind $t <Control-c> {set about(done) 1}
+-        bind $t <Return>    {set about(done) 1}
++        wm protocol $t WM_DELETE_WINDOW {set about_done 1}
++        bind $t <Control-c> {set about_done 1}
++        bind $t <Return>    {set about_done 1}
+ 
+         wm withdraw $t
+         update idletasks
+     }
+ 
+-    set about(done) 0
+-    dialog_run $leader $t about(done)
++    set about_done 0
++    dialog_run $leader $t about_done
+     return
+ }
+diff -ur ical-3.0.orig/ical.C ical-3.0/ical.C
+--- ical-3.0.orig/ical.C	2008-11-10 12:06:04.000000000 +0200
++++ ical-3.0/ical.C	2010-03-24 15:58:38.000000000 +0200
+@@ -140,7 +140,7 @@
+     buffer.append('\0');
+ 
+     if (Tcl_Eval(tcl, buffer.as_pointer()) == TCL_ERROR)
+-        fprintf(stderr, "ical: trigger error: %s\n", tcl->result);
++	fprintf(stderr, "ical: trigger error: %s\n", Tcl_GetStringResult(tcl));
+ 
+     buffer.clear();
+ }
+diff -ur ical-3.0.orig/tcllib/dg_bug.tcl ical-3.0/tcllib/dg_bug.tcl
+--- ical-3.0.orig/tcllib/dg_bug.tcl	2008-11-10 12:03:23.000000000 +0200
++++ ical-3.0/tcllib/dg_bug.tcl	2010-03-24 15:57:22.000000000 +0200
+@@ -11,7 +11,7 @@
+ #
+ #       bug_done                Is bug interaction finished
+ 
+-set bug(done) no
++set bug_done no
+ 
+ proc bug_notify {mailer email message} {
+     bug_make
+@@ -26,15 +26,15 @@
+ 
+     toplevel $f -class Dialog
+     wm title $f {Internal Error}
+-    wm protocol $f WM_DELETE_WINDOW {set bug(done) cancel}
++    wm protocol $f WM_DELETE_WINDOW {set bug_done cancel}
+ 
+     frame $f.top -class Pane
+     frame $f.mid -class Pane
+ 
+     make_buttons $f.bot 2 {
+-        {{Dismiss}              {set bug(done) cancel}}
+-        {{Save}                 {set bug(done) save}}
+-        {{Mail Report}          {set bug(done) send}}
++        {{Dismiss}              {set bug_done cancel}}
++        {{Save}                 {set bug_done save}}
++        {{Mail Report}          {set bug_done send}}
+     }
+ 
+     label $f.icon -bitmap error
+@@ -57,7 +57,7 @@
+     pack $f.bot -side top -fill both
+ 
+     # XXX What bindings should we add here?
+-    # bind $f <Control-c><Control-c> {set bug(done) cancel}
++    # bind $f <Control-c><Control-c> {set bug_done cancel}
+ 
+     wm withdraw $f
+     update
+@@ -97,13 +97,13 @@
+     set etext $bug(edit).text
+     $etext delete 1.0 end
+ 
+-    set bug(done) no
+-    dialog_run {} $f bug(done) $etext
++    set bug_done no
++    dialog_run {} $f bug_done $etext
+ 
+-    if ![string compare $bug(done) {cancel}] return
++    if ![string compare $bug_done {cancel}] return
+ 
+     set text [bug_extract]
+-    switch -exact -- $bug(done) {
++    switch -exact -- $bug_done {
+         save {
+             bug_save $email $text
+         }
+diff -ur ical-3.0.orig/tests/dialog.tcl ical-3.0/tests/dialog.tcl
+--- ical-3.0.orig/tests/dialog.tcl	2008-11-10 12:03:37.000000000 +0200
++++ ical-3.0/tests/dialog.tcl	2010-03-24 15:57:47.000000000 +0200
+@@ -35,7 +35,7 @@
+ }
+ 
+ proc dg_bug {} {
+-    after 500 {set bug(done) cancel}
++    after 500 {set bug_done cancel}
+     expect {bug_notify cat foo "Test message"} {}
+ }
+ 

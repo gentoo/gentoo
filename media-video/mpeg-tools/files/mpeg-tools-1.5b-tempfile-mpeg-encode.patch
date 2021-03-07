@@ -1,0 +1,87 @@
+--- mpeg_encode/parallel.c
++++ mpeg_encode/parallel.c
+@@ -586,6 +586,8 @@
+  * SIDE EFFECTS:    none
+  *
+  *===========================================================================*/
++/* internal hook into the ReadFrame function */
++void _ReadFrame(MpegFrame *frame, char *fileName, FILE *fileHook, char *conversion, boolean addPath);
+ void
+   GetRemoteFrame(frame, frameNumber)
+ MpegFrame *frame;
+@@ -615,8 +617,13 @@
+ 
+   if ( frameNumber != -1 ) {
+     if ( separateConversion ) {
+-      sprintf(fileName, "/tmp/foobar%d", machineNumber);
+-      filePtr = fopen(fileName, "wb");
++      int fd;
++      snprintf(fileName, sizeof(fileName), "/tmp/mpeg_encode_foobar%dXXXXXX", machineNumber);
++      fd = mkstemp(fileName);
++      if (fd == -1 || (filePtr = fdopen(fd, "wb")) == NULL) {
++	perror("ERROR: mpeg_encode->GetRemoteFrame");
++	exit(1);
++      }
+ 
+       /* read in stuff, SafeWrite to file, perform local conversion */
+       do {
+@@ -628,10 +635,12 @@
+ 	fwrite(smallBuffer, 1, numBytes, filePtr);
+       } while ( numBytes == 1000 );
+       fflush(filePtr);
+-      fclose(filePtr);
++      rewind(filePtr);
+ 
+       /* now do slave conversion */
+-      ReadFrame(frame, fileName, slaveConversion, FALSE);
++      _ReadFrame(frame, NULL, filePtr, slaveConversion, FALSE);
++      /* _ReadFrame() will close the file pointer for us */
++      /* fclose(filePtr); */
+     } else {
+       Frame_AllocYCC(frame);
+ 
+--- mpeg_encode/readframe.c
++++ mpeg_encode/readframe.c
+@@ -227,14 +227,22 @@
+  * SIDE EFFECTS:    none
+  *
+  *===========================================================================*/
++void _ReadFrame(MpegFrame *frame, char *fileName, FILE *fileHook, char *conversion, boolean addPath);
++
++void ReadFrame(MpegFrame *frame, char *fileName, char *conversion, boolean addPath)
++{
++    _ReadFrame(frame, fileName, NULL, conversion, addPath);
++}
++
+ void
+-ReadFrame(frame, fileName, conversion, addPath)
++_ReadFrame(frame, fileName, fileHook, conversion, addPath)
+     MpegFrame *frame;
+     char *fileName;
++    FILE *fileHook;
+     char *conversion;
+     boolean addPath;
+ {
+-    FILE    *ifp;
++    FILE    *ifp = fileHook;
+     char    command[1024];
+     char    fullFileName[1024];
+     MpegFrame    tempFrame;
+@@ -274,6 +282,9 @@
+     }
+ #endif
+ 
++    if (fileHook)
++      goto file_is_already_opened;
++
+     if ( fileType == ANY_FILE_TYPE ) {
+     char *convertPtr, *commandPtr, *charPtr;
+ 
+@@ -325,6 +336,7 @@
+       exit(1);
+     }
+ 
++file_is_already_opened:
+     switch(baseFormat) {
+     case YUV_FILE_TYPE:
+ 

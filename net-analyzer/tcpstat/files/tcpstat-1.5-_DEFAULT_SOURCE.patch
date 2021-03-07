@@ -1,0 +1,11 @@
+--- a/configure.in
++++ b/configure.in
+@@ -68,7 +68,7 @@
+ case $my_build_os in
+ 	aix*)		AC_DEFINE(AIX_STRANGENESS, 1, [ defined on AIX systems. ]) ;;
+ 	osf1*)		AC_DEFINE(TRU64_STRANGENESS, 1, [ defined on OSF systems. ]) ;;
+-	linux*)		AC_DEFINE(_BSD_SOURCE, 1, [ defined usually on linux systems ] ) ;;
++	linux*)		AC_DEFINE(_DEFAULT_SOURCE, 1, [ defined usually on linux systems ] ) ;;
+ 	bsd/os*)	;;
+ 	freebsd*)	;;
+ 	sunos*)		;;

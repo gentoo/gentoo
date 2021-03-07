@@ -1,0 +1,11 @@
+diff -Naur dvbackup-0.0.4.orig/dvconnect.c dvbackup-0.0.4/dvconnect.c
+--- dvbackup-0.0.4.orig/dvconnect.c	2002-03-24 20:27:10.000000000 +0100
++++ dvbackup-0.0.4/dvconnect.c	2009-11-05 16:16:10.467442012 +0100
+@@ -9,6 +9,7 @@
+ 
+ #include <pthread.h>
+ #include <signal.h>
++#include <string.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>

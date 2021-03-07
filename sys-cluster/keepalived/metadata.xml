@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>cluster@gentoo.org</email>
+		<name>Gentoo Cluster Project</name>
+	</maintainer>
+	<use>
+		<flag name="bfd">compile with support for Bidirectional Forwarding Detection (BFD).</flag>
+		<flag name="json">compile with signal to dump configuration and stats as JSON.</flag>
+		<flag name="regex">compile with support for regex in health checks</flag>
+	</use>
+</pkgmetadata>

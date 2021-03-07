@@ -1,0 +1,20 @@
+--- a/Makefile	2019-08-19 22:40:43.258528097 +0200
++++ b/Makefile	2019-08-19 23:00:30.786462412 +0200
+@@ -1,6 +1,4 @@
+ CC=g++
+-CFLAGS=-c -Wall
+-LDFLAGS=-lhidapi-libusb
+ SOURCES=main.cpp Keyboard.cpp Color.cpp
+ OBJECTS=$(SOURCES:.cpp=.o)
+ EXECUTABLE=msi-keyboard
+@@ -11,8 +9,7 @@
+ 	rm $(OBJECTS) $(EXECUTABLE)
+ 
+ $(EXECUTABLE): $(OBJECTS)
+-	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
++	$(CC) $(CFLAGS) -lhidapi-libusb $(LDFLAGS) $(OBJECTS) -o $@
+ 
+ .cpp.o:
+-	$(CC) $(CFLAGS) $< -o $@
+-
++	$(CC) $(CFLAGS) -c $< -o $@

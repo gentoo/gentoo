@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>polynomial-c@gentoo.org</email>
+		<name>Lars Wendler</name>
+	</maintainer>
+	<use>
+		<flag name="gtk">Pull in the gtk+ greeter</flag>
+		<flag name="non_root">Use non-root user by default</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">CanonicalLtd/lightdm</remote-id>
+	</upstream>
+</pkgmetadata>

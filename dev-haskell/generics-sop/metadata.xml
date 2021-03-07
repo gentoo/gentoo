@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		A library to support the definition of generic functions.
+		Datatypes are viewed in a uniform, structured way:
+		the choice between constructors is represented using an n-ary
+		sum, and the arguments of each constructor are represented using
+		an n-ary product.
+		
+		The module "Generics.SOP" is the main module of this library and contains
+		more detailed documentation.
+		
+		Examples of using this library are provided by the following
+		packages:
+		
+		* @&lt;https://hackage.haskell.org/package/basic-sop basic-sop&gt;@ basic examples,
+		
+		* @&lt;https://hackage.haskell.org/package/pretty-sop pretty-sop&gt;@ generic pretty printing,
+		
+		* @&lt;https://hackage.haskell.org/package/lens-sop lens-sop&gt;@ generically computed lenses,
+		
+		* @&lt;https://hackage.haskell.org/package/json-sop json-sop&gt;@ generic JSON conversions.
+		
+		A detailed description of the ideas behind this library is provided by
+		the paper:
+		
+		* Edsko de Vries and Andres Löh.
+		&lt;http://www.andres-loeh.de/TrueSumsOfProducts True Sums of Products&gt;.
+		Workshop on Generic Programming (WGP) 2014.
+		
+	</longdescription>
+</pkgmetadata>

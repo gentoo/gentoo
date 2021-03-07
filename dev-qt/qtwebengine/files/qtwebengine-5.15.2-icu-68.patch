@@ -1,0 +1,302 @@
+From 9236b21c883360482bd2c06929bfdecbc47f186c Mon Sep 17 00:00:00 2001
+From: Allan Sandfeld Jensen <allan.jensen@qt.io>
+Date: Mon, 16 Nov 2020 13:16:13 +0100
+Subject: Fix build with system ICU 68
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Fixes: QTBUG-88116
+Change-Id: I935babf51c2670fad7cc7950a2fe07eb2829c4cb
+Reviewed-by: Jüri Valdmann <juri.valdmann@qt.io>
+---
+ chromium/base/i18n/string_compare.cc                     |  4 ++--
+ chromium/base/i18n/time_formatting.cc                    |  2 +-
+ .../components/autofill/core/common/autofill_regexes.cc  |  8 ++++----
+ .../spellcheck/renderer/spellcheck_worditerator.cc       |  2 +-
+ .../url_formatter/spoof_checks/idn_spoof_checker.cc      |  4 ++--
+ .../url_formatter/spoof_checks/skeleton_generator.cc     |  2 +-
+ chromium/services/service_manager/zygote/zygote_linux.cc |  2 +-
+ .../blink/renderer/platform/text/locale_icu.cc           |  4 ++--
+ .../renderer/platform/text/text_break_iterator_icu.cc    | 16 ++++++++--------
+ .../blink/renderer/platform/text/unicode_utilities.cc    |  2 +-
+ .../blink/renderer/platform/wtf/text/text_codec_icu.cc   |  2 +-
+ chromium/ui/base/l10n/formatter.cc                       |  6 +++---
+ 12 files changed, 27 insertions(+), 27 deletions(-)
+
+diff --git a/chromium/base/i18n/string_compare.cc b/chromium/base/i18n/string_compare.cc
+index 6cd59b98f49..a5fa502b53f 100644
+--- a/src/3rdparty/chromium/base/i18n/string_compare.cc
++++ b/src/3rdparty/chromium/base/i18n/string_compare.cc
+@@ -18,8 +18,8 @@ UCollationResult CompareString16WithCollator(const icu::Collator& collator,
+                                              StringPiece16 rhs) {
+   UErrorCode error = U_ZERO_ERROR;
+   UCollationResult result = collator.compare(
+-      icu::UnicodeString(FALSE, lhs.data(), static_cast<int>(lhs.length())),
+-      icu::UnicodeString(FALSE, rhs.data(), static_cast<int>(rhs.length())),
++      icu::UnicodeString(false, lhs.data(), static_cast<int>(lhs.length())),
++      icu::UnicodeString(false, rhs.data(), static_cast<int>(rhs.length())),
+       error);
+   DCHECK(U_SUCCESS(error));
+   return result;
+diff --git a/chromium/base/i18n/time_formatting.cc b/chromium/base/i18n/time_formatting.cc
+index 1a6c1389ba0..106dd0e5b47 100644
+--- a/src/3rdparty/chromium/base/i18n/time_formatting.cc
++++ b/src/3rdparty/chromium/base/i18n/time_formatting.cc
+@@ -236,7 +236,7 @@ bool TimeDurationFormatWithSeconds(const TimeDelta time,
+   icu::FieldPosition ignore(icu::FieldPosition::DONT_CARE);
+   measure_format.formatMeasures(measures, 3, formatted, ignore, status);
+   *out = i18n::UnicodeStringToString16(formatted);
+-  return U_SUCCESS(status) == TRUE;
++  return U_SUCCESS(status) == true;
+ }
+ 
+ string16 DateIntervalFormat(const Time& begin_time,
+diff --git a/chromium/components/autofill/core/common/autofill_regexes.cc b/chromium/components/autofill/core/common/autofill_regexes.cc
+index b141cb2d0f6..a8a688d50c7 100644
+--- a/src/3rdparty/chromium/components/autofill/core/common/autofill_regexes.cc
++++ b/src/3rdparty/chromium/components/autofill/core/common/autofill_regexes.cc
+@@ -43,7 +43,7 @@ class AutofillRegexes {
+ icu::RegexMatcher* AutofillRegexes::GetMatcher(const base::string16& pattern) {
+   auto it = matchers_.find(pattern);
+   if (it == matchers_.end()) {
+-    const icu::UnicodeString icu_pattern(FALSE, pattern.data(),
++    const icu::UnicodeString icu_pattern(false, pattern.data(),
+                                          pattern.length());
+ 
+     UErrorCode status = U_ZERO_ERROR;
+@@ -70,20 +70,20 @@ bool MatchesPattern(const base::string16& input,
+   base::AutoLock lock(*g_lock);
+ 
+   icu::RegexMatcher* matcher = g_autofill_regexes->GetMatcher(pattern);
+-  icu::UnicodeString icu_input(FALSE, input.data(), input.length());
++  icu::UnicodeString icu_input(false, input.data(), input.length());
+   matcher->reset(icu_input);
+ 
+   UErrorCode status = U_ZERO_ERROR;
+   UBool matched = matcher->find(0, status);
+   DCHECK(U_SUCCESS(status));
+ 
+-  if (matched == TRUE && match) {
++  if (matched == true && match) {
+     icu::UnicodeString match_unicode = matcher->group(0, status);
+     DCHECK(U_SUCCESS(status));
+     *match = base::i18n::UnicodeStringToString16(match_unicode);
+   }
+ 
+-  return matched == TRUE;
++  return matched == true;
+ }
+ 
+ }  // namespace autofill
+diff --git a/chromium/components/spellcheck/renderer/spellcheck_worditerator.cc b/chromium/components/spellcheck/renderer/spellcheck_worditerator.cc
+index 8fe8a6df381..e3a65580c08 100644
+--- a/src/3rdparty/chromium/components/spellcheck/renderer/spellcheck_worditerator.cc
++++ b/src/3rdparty/chromium/components/spellcheck/renderer/spellcheck_worditerator.cc
+@@ -424,7 +424,7 @@ bool SpellcheckWordIterator::Normalize(size_t input_start,
+   // spellchecker and we need manual normalization as well. The normalized
+   // text does not have to be NUL-terminated since its characters are copied to
+   // string16, which adds a NUL character when we need.
+-  icu::UnicodeString input(FALSE, &text_[input_start],
++  icu::UnicodeString input(false, &text_[input_start],
+                            base::checked_cast<int32_t>(input_length));
+   UErrorCode status = U_ZERO_ERROR;
+   icu::UnicodeString output;
+diff --git a/chromium/components/url_formatter/spoof_checks/idn_spoof_checker.cc b/chromium/components/url_formatter/spoof_checks/idn_spoof_checker.cc
+index 1964793fd3e..c4e01026c38 100644
+--- a/src/3rdparty/chromium/components/url_formatter/spoof_checks/idn_spoof_checker.cc
++++ b/src/3rdparty/chromium/components/url_formatter/spoof_checks/idn_spoof_checker.cc
+@@ -347,7 +347,7 @@ bool IDNSpoofChecker::SafeToDisplayAsUnicode(
+   if (U_FAILURE(status) || (result & USPOOF_ALL_CHECKS))
+     return false;
+ 
+-  icu::UnicodeString label_string(FALSE /* isTerminated */, label.data(),
++  icu::UnicodeString label_string(false /* isTerminated */, label.data(),
+                                   base::checked_cast<int32_t>(label.size()));
+ 
+   // A punycode label with 'xn--' prefix is not subject to the URL
+@@ -677,7 +677,7 @@ bool IDNSpoofChecker::IsWholeScriptConfusableAllowedForTLD(
+     base::StringPiece tld,
+     base::StringPiece16 tld_unicode) {
+   icu::UnicodeString tld_string(
+-      FALSE /* isTerminated */, tld_unicode.data(),
++      false /* isTerminated */, tld_unicode.data(),
+       base::checked_cast<int32_t>(tld_unicode.size()));
+   // Allow if the TLD contains any letter from the script, in which case it's
+   // likely to be a TLD in that script.
+diff --git a/chromium/components/url_formatter/spoof_checks/skeleton_generator.cc b/chromium/components/url_formatter/spoof_checks/skeleton_generator.cc
+index 41485914007..b8c1c2f547a 100644
+--- a/src/3rdparty/chromium/components/url_formatter/spoof_checks/skeleton_generator.cc
++++ b/src/3rdparty/chromium/components/url_formatter/spoof_checks/skeleton_generator.cc
+@@ -117,7 +117,7 @@ SkeletonGenerator::~SkeletonGenerator() = default;
+ Skeletons SkeletonGenerator::GetSkeletons(base::StringPiece16 hostname) {
+   Skeletons skeletons;
+   size_t hostname_length = hostname.length() - (hostname.back() == '.' ? 1 : 0);
+-  icu::UnicodeString host(FALSE, hostname.data(), hostname_length);
++  icu::UnicodeString host(false, hostname.data(), hostname_length);
+   // If input has any characters outside Latin-Greek-Cyrillic and [0-9._-],
+   // there is no point in getting rid of diacritics because combining marks
+   // attached to non-LGC characters are already blocked.
+diff --git a/chromium/services/service_manager/zygote/zygote_linux.cc b/chromium/services/service_manager/zygote/zygote_linux.cc
+index aa601ab28d7..920438e5b50 100644
+--- a/src/3rdparty/chromium/services/service_manager/zygote/zygote_linux.cc
++++ b/src/3rdparty/chromium/services/service_manager/zygote/zygote_linux.cc
+@@ -564,7 +564,7 @@ base::ProcessId Zygote::ReadArgsAndFork(base::PickleIterator iter,
+   if (!iter.ReadString16(&timezone_id))
+     return -1;
+   icu::TimeZone::adoptDefault(icu::TimeZone::createTimeZone(
+-      icu::UnicodeString(FALSE, timezone_id.data(), timezone_id.length())));
++      icu::UnicodeString(false, timezone_id.data(), timezone_id.length())));
+ 
+   if (!iter.ReadInt(&numfds))
+     return -1;
+diff --git a/chromium/third_party/blink/renderer/platform/text/locale_icu.cc b/chromium/third_party/blink/renderer/platform/text/locale_icu.cc
+index abff1b1d809..57f1286d4e4 100644
+--- a/src/3rdparty/chromium/third_party/blink/renderer/platform/text/locale_icu.cc
++++ b/src/3rdparty/chromium/third_party/blink/renderer/platform/text/locale_icu.cc
+@@ -169,12 +169,12 @@ static String GetDateFormatPattern(const UDateFormat* date_format) {
+     return g_empty_string;
+ 
+   UErrorCode status = U_ZERO_ERROR;
+-  int32_t length = udat_toPattern(date_format, TRUE, nullptr, 0, &status);
++  int32_t length = udat_toPattern(date_format, true, nullptr, 0, &status);
+   if (status != U_BUFFER_OVERFLOW_ERROR || !length)
+     return g_empty_string;
+   StringBuffer<UChar> buffer(length);
+   status = U_ZERO_ERROR;
+-  udat_toPattern(date_format, TRUE, buffer.Characters(), length, &status);
++  udat_toPattern(date_format, true, buffer.Characters(), length, &status);
+   if (U_FAILURE(status))
+     return g_empty_string;
+   return String::Adopt(buffer);
+diff --git a/chromium/third_party/blink/renderer/platform/text/text_break_iterator_icu.cc b/chromium/third_party/blink/renderer/platform/text/text_break_iterator_icu.cc
+index a257cd75ccf..898d0c47bb1 100644
+--- a/src/3rdparty/chromium/third_party/blink/renderer/platform/text/text_break_iterator_icu.cc
++++ b/src/3rdparty/chromium/third_party/blink/renderer/platform/text/text_break_iterator_icu.cc
+@@ -311,13 +311,13 @@ static inline bool TextInChunkOrOutOfRange(UText* text,
+       text->chunkOffset = offset <= std::numeric_limits<int32_t>::max()
+                               ? static_cast<int32_t>(offset)
+                               : 0;
+-      is_accessible = TRUE;
++      is_accessible = true;
+       return true;
+     }
+     if (native_index >= native_length &&
+         text->chunkNativeLimit == native_length) {
+       text->chunkOffset = text->chunkLength;
+-      is_accessible = FALSE;
++      is_accessible = false;
+       return true;
+     }
+   } else {
+@@ -330,12 +330,12 @@ static inline bool TextInChunkOrOutOfRange(UText* text,
+       text->chunkOffset = offset <= std::numeric_limits<int32_t>::max()
+                               ? static_cast<int32_t>(offset)
+                               : 0;
+-      is_accessible = TRUE;
++      is_accessible = true;
+       return true;
+     }
+     if (native_index <= 0 && !text->chunkNativeStart) {
+       text->chunkOffset = 0;
+-      is_accessible = FALSE;
++      is_accessible = false;
+       return true;
+     }
+   }
+@@ -346,7 +346,7 @@ static UBool TextLatin1Access(UText* text,
+                               int64_t native_index,
+                               UBool forward) {
+   if (!text->context)
+-    return FALSE;
++    return false;
+   int64_t native_length = TextNativeLength(text);
+   UBool is_accessible;
+   if (TextInChunkOrOutOfRange(text, native_index, native_length, forward,
+@@ -370,7 +370,7 @@ static UBool TextLatin1Access(UText* text,
+     DCHECK_EQ(new_context, kPriorContext);
+     TextLatin1SwitchToPriorContext(text, native_index, native_length, forward);
+   }
+-  return TRUE;
++  return true;
+ }
+ 
+ static const struct UTextFuncs kTextLatin1Funcs = {
+@@ -510,7 +510,7 @@ static void TextUTF16SwitchToPriorContext(UText* text,
+ 
+ static UBool TextUTF16Access(UText* text, int64_t native_index, UBool forward) {
+   if (!text->context)
+-    return FALSE;
++    return false;
+   int64_t native_length = TextNativeLength(text);
+   UBool is_accessible;
+   if (TextInChunkOrOutOfRange(text, native_index, native_length, forward,
+@@ -532,7 +532,7 @@ static UBool TextUTF16Access(UText* text, int64_t native_index, UBool forward) {
+     DCHECK_EQ(new_context, kPriorContext);
+     TextUTF16SwitchToPriorContext(text, native_index, native_length, forward);
+   }
+-  return TRUE;
++  return true;
+ }
+ 
+ static const struct UTextFuncs kTextUTF16Funcs = {
+diff --git a/chromium/third_party/blink/renderer/platform/text/unicode_utilities.cc b/chromium/third_party/blink/renderer/platform/text/unicode_utilities.cc
+index 2cefd5390b6..b8c4515dc13 100644
+--- a/src/3rdparty/chromium/third_party/blink/renderer/platform/text/unicode_utilities.cc
++++ b/src/3rdparty/chromium/third_party/blink/renderer/platform/text/unicode_utilities.cc
+@@ -300,7 +300,7 @@ void NormalizeCharactersIntoNFCForm(const UChar* characters,
+   DCHECK(U_SUCCESS(status));
+   int32_t input_length = static_cast<int32_t>(length);
+   // copy-on-write.
+-  icu::UnicodeString normalized(FALSE, characters, input_length);
++  icu::UnicodeString normalized(false, characters, input_length);
+   // In the vast majority of cases, input is already NFC. Run a quick check
+   // to avoid normalizing the entire input unnecessarily.
+   int32_t normalized_prefix_length =
+diff --git a/chromium/third_party/blink/renderer/platform/wtf/text/text_codec_icu.cc b/chromium/third_party/blink/renderer/platform/wtf/text/text_codec_icu.cc
+index 810d1cd9181..9074b640fff 100644
+--- a/src/3rdparty/chromium/third_party/blink/renderer/platform/wtf/text/text_codec_icu.cc
++++ b/src/3rdparty/chromium/third_party/blink/renderer/platform/wtf/text/text_codec_icu.cc
+@@ -326,7 +326,7 @@ void TextCodecICU::CreateICUConverter() const {
+   DLOG_IF(ERROR, err == U_AMBIGUOUS_ALIAS_WARNING)
+       << "ICU ambiguous alias warning for encoding: " << encoding_.GetName();
+   if (converter_icu_)
+-    ucnv_setFallback(converter_icu_, TRUE);
++    ucnv_setFallback(converter_icu_, true);
+ }
+ 
+ int TextCodecICU::DecodeToBuffer(UChar* target,
+diff --git a/chromium/ui/base/l10n/formatter.cc b/chromium/ui/base/l10n/formatter.cc
+index 486a3a029cb..d7a41724628 100644
+--- a/src/3rdparty/chromium/ui/base/l10n/formatter.cc
++++ b/src/3rdparty/chromium/ui/base/l10n/formatter.cc
+@@ -232,7 +232,7 @@ void Formatter::Format(Unit unit,
+                        int value,
+                        icu::UnicodeString* formatted_string) const {
+   DCHECK(simple_format_[unit]);
+-  DCHECK(formatted_string->isEmpty() == TRUE);
++  DCHECK(formatted_string->isEmpty() == true);
+   UErrorCode error = U_ZERO_ERROR;
+   FormatNumberInPlural(*simple_format_[unit],
+                         value, formatted_string, &error);
+@@ -248,7 +248,7 @@ void Formatter::Format(TwoUnits units,
+       << "Detailed() not implemented for your (format, length) combination!";
+   DCHECK(detailed_format_[units][1])
+       << "Detailed() not implemented for your (format, length) combination!";
+-  DCHECK(formatted_string->isEmpty() == TRUE);
++  DCHECK(formatted_string->isEmpty() == true);
+   UErrorCode error = U_ZERO_ERROR;
+   FormatNumberInPlural(*detailed_format_[units][0], value_1,
+                        formatted_string, &error);
+@@ -281,7 +281,7 @@ std::unique_ptr<icu::MessageFormat> Formatter::InitFormat(
+     base::string16 pattern = l10n_util::GetStringUTF16(pluralities.id);
+     UErrorCode error = U_ZERO_ERROR;
+     std::unique_ptr<icu::MessageFormat> format(new icu::MessageFormat(
+-        icu::UnicodeString(FALSE, pattern.data(), pattern.length()), error));
++        icu::UnicodeString(false, pattern.data(), pattern.length()), error));
+     DCHECK(U_SUCCESS(error));
+     if (format.get())
+       return format;
+-- 
+cgit v1.2.1
+

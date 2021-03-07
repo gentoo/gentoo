@@ -1,0 +1,365 @@
+From: Carlos Maddela <e7appew@gmail.com>
+Date: Wed, 9 Nov 2016 05:05:01 +1100
+Subject: Add support for linking with openjpeg 2.x library.
+
+Description: Add support for linking with openjpeg 2.x library.
+ Even though the Debian package attempted to build with the openjpeg 2.x
+ library, the resulting binaries didn't support conversion of images with
+ dimensions of 256x256 or greater, since autoconf was incorrectly trying
+ to find libopenjpeg2 instead of libopenjp2. Changes were also required
+ to address the API differences between openjpeg 1.x and openjpeg 2.x.
+ (Closes: #844055)
+Author: Carlos Maddela <e7appew@gmail.com>
+Origin: vendor
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=844055
+Last-Update: 2016-11-12
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+---
+ src/icns_jp2.c | 264 +++++++++++++++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 256 insertions(+), 8 deletions(-)
+
+diff --git a/src/icns_jp2.c b/src/icns_jp2.c
+index 6d809fb..e994f58 100644
+--- a/src/icns_jp2.c
++++ b/src/icns_jp2.c
+@@ -125,19 +125,19 @@ int icns_image_to_jp2(icns_image_t *image, icns_size_t *dataSizeOut, icns_byte_t
+ 	
+ 	#ifdef ICNS_JASPER
+ 		error = icns_jas_image_to_jp2(image, dataSizeOut, dataPtrOut);	
+-	#else
+-	#ifdef ICNS_OPENJPEG
++	#elif (ICNS_OPENJPEG == 1)
+ 		// OpenJPEG is broken for RGB+A images for now. See a possible patch here:
+ 		// http://groups.google.com/group/openjpeg/browse_thread/thread/1cb7807b2053592e
+ 		// error = icns_opj_image_to_jp2(image, dataSizeOut, dataPtrOut);
+ 		icns_print_err("icns_image_to_jp2: Saving JP2 data with OpenJPEG is not yet supported!\n");
+ 		error = ICNS_STATUS_UNSUPPORTED;
++	#elif (ICNS_OPENJPEG == 2)
++		error = icns_opj_image_to_jp2(image, dataSizeOut, dataPtrOut);
+ 	#else
+ 		*dataPtrOut = NULL;
+ 		error = ICNS_STATUS_UNSUPPORTED;
+ 	#endif
+-	#endif
+-	
++
+ 	return error;
+ }
+ 
+@@ -547,9 +547,136 @@ int icns_opj_jp2_to_image(icns_size_t dataSize, icns_byte_t *dataPtr, icns_image
+ 	return error;	
+ }
+ 
++#if (ICNS_OPENJPEG == 2)
++
++typedef struct mem_stream
++{
++	OPJ_BYTE     *buffer;
++	OPJ_SIZE_T    bufferSize;
++	OPJ_OFF_T     offset;
++	OPJ_BOOL      readOnly;
++	opj_stream_t *stream;
++} mem_stream_t;
++
++static OPJ_SIZE_T read_mem_stream(void *buffer, OPJ_SIZE_T numBytes, void *userData)
++{
++	mem_stream_t *memStream = (mem_stream_t *) userData;
++	OPJ_SIZE_T    remaining = memStream->bufferSize - memStream->offset;
++	OPJ_SIZE_T    bytesRead = (remaining < numBytes) ? remaining : numBytes;
++	memcpy(buffer, memStream->buffer + memStream->offset, bytesRead);
++	memStream->offset += bytesRead;
++	return bytesRead ? bytesRead : (OPJ_SIZE_T) -1;
++}
++
++static OPJ_SIZE_T write_mem_stream(void *buffer, OPJ_SIZE_T numBytes, void *userData)
++{
++	mem_stream_t *memStream = (mem_stream_t *) userData;
++	if(!memStream->readOnly) {
++		OPJ_SIZE_T remaining = memStream->bufferSize - memStream->offset;
++		if(remaining < numBytes) {
++			OPJ_SIZE_T newBufferSize = memStream->bufferSize + numBytes;
++			OPJ_BYTE  *newBuffer = (OPJ_BYTE *) realloc(memStream->buffer, newBufferSize);
++			if(!newBuffer) {
++				return (OPJ_SIZE_T) -1;
++			}
++			memStream->buffer = newBuffer;
++			memStream->bufferSize = newBufferSize;
++			opj_stream_set_user_data_length(memStream->stream, newBufferSize);
++		}
++		memcpy(memStream->buffer + memStream->offset, buffer, numBytes);
++		memStream->offset += numBytes;
++		return numBytes ? numBytes : (OPJ_SIZE_T) -1;
++	}
++	return (OPJ_SIZE_T) -1;
++}
++
++static OPJ_OFF_T skip_mem_stream(OPJ_OFF_T offset, void *userData)
++{
++	mem_stream_t *memStream = (mem_stream_t *) userData;
++	OPJ_OFF_T remaining = memStream->bufferSize - memStream->offset;
++	if(offset > remaining) {
++		if(!memStream->readOnly) {
++			OPJ_SIZE_T newBufferSize = memStream->bufferSize + offset;
++			OPJ_BYTE  *newBuffer = (OPJ_BYTE *) realloc(memStream->buffer, newBufferSize);
++			if(!newBuffer) {
++				return (OPJ_OFF_T) -1;
++			}
++			memStream->buffer = newBuffer;
++			memStream->bufferSize = newBufferSize;
++			opj_stream_set_user_data_length(memStream->stream, newBufferSize);
++		} else {
++			offset = remaining;
++		}
++	}
++	memStream->offset += offset;
++	if(memStream->offset < 0) {
++		offset -= memStream->offset;
++		memStream->offset = 0;
++	}
++	return offset ? offset : (OPJ_OFF_T) -1;
++}
++
++static OPJ_BOOL seek_mem_stream(OPJ_OFF_T offset, void *userData)
++{
++	mem_stream_t *memStream = (mem_stream_t *) userData;
++	if(offset < 0) {
++		return OPJ_FALSE;
++	}
++	if((OPJ_SIZE_T) offset > memStream->bufferSize) {
++		if(!memStream->readOnly) {
++			OPJ_SIZE_T newBufferSize = offset;
++			OPJ_BYTE  *newBuffer = (OPJ_BYTE *) realloc(memStream->buffer, newBufferSize);
++			if(!newBuffer) {
++				return OPJ_FALSE;
++			}
++			memStream->buffer = newBuffer;
++			memStream->bufferSize = newBufferSize;
++			opj_stream_set_user_data_length(memStream->stream, newBufferSize);
++		} else {
++			return OPJ_FALSE;
++		}
++	}
++	memStream->offset = offset;
++	return OPJ_TRUE;
++}
++
++static opj_stream_t *create_mem_stream(OPJ_BYTE *buffer, OPJ_SIZE_T bufferSize, OPJ_BOOL readOnly, mem_stream_t **memStreamOut)
++{
++	opj_stream_t *stream = opj_stream_default_create(readOnly);
++	if(stream) {
++		mem_stream_t *memStream = malloc(sizeof(*memStream));
++		if(memStream) {
++			memStream->buffer = buffer;
++			memStream->bufferSize = bufferSize;
++			memStream->offset = 0;
++			memStream->readOnly = readOnly;
++			memStream->stream = stream;
++			if(memStreamOut) {
++				*memStreamOut = memStream;
++			}
++			opj_stream_set_user_data(stream, memStream, free);
++			opj_stream_set_user_data_length(stream, bufferSize);
++			opj_stream_set_read_function(stream, read_mem_stream);
++			if(!readOnly) {
++				opj_stream_set_write_function(stream, write_mem_stream);
++			}
++			opj_stream_set_skip_function(stream, skip_mem_stream);
++			opj_stream_set_seek_function(stream, seek_mem_stream);
++		} else {
++			opj_stream_destroy(stream);
++			stream = NULL;
++		}
++	}
++	return stream;
++}
++
++#endif /* (ICNS_OPENJPEG == 2) */
++
+ // Decode jp2 data using OpenJPEG
+ int icns_opj_jp2_dec(icns_size_t dataSize, icns_byte_t *dataPtr, opj_image_t **imageOut)
+ {
++#if (ICNS_OPENJPEG == 1)
++
+ 	opj_event_mgr_t    event_mgr;	
+ 	opj_dparameters_t  parameters;
+ 	opj_dinfo_t        *dinfo = NULL;
+@@ -583,6 +710,59 @@ int icns_opj_jp2_dec(icns_size_t dataSize, icns_byte_t *dataPtr, opj_image_t **i
+ 	opj_destroy_decompress(dinfo);
+ 
+ 	return ICNS_STATUS_OK;
++
++#else /* (ICNS_OPENJPEG == 2) */
++
++	opj_dparameters_t  parameters;
++	opj_codec_t        *decoder = NULL;
++	opj_stream_t       *stream = NULL;
++	opj_image_t        *image = NULL;
++
++	*imageOut = NULL;
++
++	decoder = opj_create_decompress(OPJ_CODEC_JP2);
++	if(!decoder) {
++		icns_print_err("icns_opj_jp2_dec: failed to create decoder!\n");
++		return ICNS_STATUS_NO_MEMORY;
++	}
++
++	opj_set_error_handler(decoder, icns_opj_error_callback, stderr);
++	opj_set_warning_handler(decoder, icns_opj_warning_callback, stderr);
++	opj_set_info_handler(decoder, icns_opj_info_callback, stderr);
++
++	opj_set_default_decoder_parameters(&parameters);
++	opj_setup_decoder(decoder, &parameters);
++
++	stream = create_mem_stream(dataPtr, dataSize, OPJ_TRUE, NULL);
++	if(!stream) {
++		icns_print_err("icns_opj_jp2_dec: failed to create stream!\n");
++		opj_destroy_codec(decoder);
++		return ICNS_STATUS_NO_MEMORY;
++	}
++
++	if(!opj_read_header(stream, decoder, &image)) {
++		icns_print_err("icns_opj_jp2_dec: failed to read header!\n");
++		opj_stream_destroy(stream);
++		opj_destroy_codec(decoder);
++		return ICNS_STATUS_INVALID_DATA;
++	}
++
++	if(!opj_decode(decoder, stream, image) || !opj_end_decompress(decoder, stream)) {
++		icns_print_err("icns_opj_jp2_dec: failed to decode image!\n");
++		opj_image_destroy(image);
++		opj_stream_destroy(stream);
++		opj_destroy_codec(decoder);
++		return ICNS_STATUS_INVALID_DATA;
++	}
++
++	*imageOut = image;
++
++	opj_stream_destroy(stream);
++	opj_destroy_codec(decoder);
++
++	return ICNS_STATUS_OK;
++
++#endif /* (ICNS_OPENJPEG == 2) */
+ }
+ 
+ // Convert from opj_image_t to icns_image_t
+@@ -666,18 +846,30 @@ int icns_opj_to_image(opj_image_t *opjImg, icns_image_t *iconImg)
+ 
+ int icns_opj_image_to_jp2(icns_image_t *iconImg, icns_size_t *dataSizeOut, icns_byte_t **dataPtrOut)
+ {
+-	int		     error = ICNS_STATUS_OK;
++#if (ICNS_OPENJPEG == 1)
++	int                  error = ICNS_STATUS_OK;
+ 	opj_event_mgr_t      event_mgr;
++#endif /* (ICNS_OPENJPEG == 1) */
+ 	opj_cparameters_t    parameters;
++#if (ICNS_OPENJPEG == 1)
+ 	OPJ_COLOR_SPACE      color_space = CLRSPC_SRGB;
++#else /* (ICNS_OPENJPEG == 2) */
++	OPJ_COLOR_SPACE      color_space = OPJ_CLRSPC_SRGB;
++#endif /* (ICNS_OPENJPEG == 2) */
+ 	opj_image_cmptparm_t cmptparm[4];
+ 	opj_image_t	     *opjImg = NULL;
+ 	icns_byte_t	     *dataPtr = NULL;
+ 	int                  i, j;
+ 	int                  rowOffset, colOffset;
++#if (ICNS_OPENJPEG == 1)
+ 	opj_cinfo_t          *cinfo = NULL;
+ 	opj_cio_t            *cio = NULL;
+ 	int                  success = 0;
++#else /* (ICNS_OPENJPEG == 2) */
++	opj_codec_t          *encoder = NULL;
++	opj_stream_t         *stream = NULL;
++	mem_stream_t         *memStream = NULL;
++#endif /* (ICNS_OPENJPEG == 2) */
+ 	
+ 	if(iconImg == NULL)
+ 	{
+@@ -713,12 +905,14 @@ int icns_opj_image_to_jp2(icns_image_t *iconImg, icns_size_t *dataSizeOut, icns_
+ 	
+ 	*dataSizeOut = 0;
+ 	*dataPtrOut = NULL;
+-	
++
++#if (ICNS_OPENJPEG == 1)
+ 	memset(&event_mgr, 0, sizeof(opj_event_mgr_t));
+ 	event_mgr.error_handler = icns_opj_error_callback;
+ 	event_mgr.warning_handler = icns_opj_warning_callback;
+ 	event_mgr.info_handler = icns_opj_info_callback;
+-	
++#endif /* (ICNS_OPENJPEG == 1) */
++
+ 	opj_set_default_encoder_parameters(&parameters);
+ 
+ 	parameters.tcp_numlayers = 1;
+@@ -766,7 +960,9 @@ int icns_opj_image_to_jp2(icns_image_t *iconImg, icns_size_t *dataSizeOut, icns_
+ 			opjImg->comps[3].data[p] = src_pixel->a;
+ 		}
+ 	}
+-	
++
++#if (ICNS_OPENJPEG == 1)
++
+ 	cinfo = opj_create_compress(CODEC_JP2);
+ 	opj_set_event_mgr((opj_common_ptr)cinfo, &event_mgr, stderr);
+ 	opj_setup_encoder(cinfo, &parameters, opjImg);
+@@ -810,6 +1006,58 @@ exception:
+ 	}
+ 	
+ 	return error;
++
++#else /* (ICNS_OPENJPEG == 2) */
++
++	encoder = opj_create_compress(OPJ_CODEC_JP2);
++	if(!encoder) {
++		icns_print_err("icns_opj_image_to_jp2: failed to create encoder!\n");
++		opj_image_destroy(opjImg);
++		return ICNS_STATUS_NO_MEMORY;
++	}
++
++	opj_set_error_handler(encoder, icns_opj_error_callback, stderr);
++	opj_set_warning_handler(encoder, icns_opj_warning_callback, stderr);
++	opj_set_info_handler(encoder, icns_opj_info_callback, stderr);
++
++	opj_setup_encoder(encoder, &parameters, opjImg);
++
++	stream = create_mem_stream(NULL, 0, OPJ_FALSE, &memStream);
++	if(!stream) {
++		icns_print_err("icns_opj_image_to_jp2: failed to create stream!\n");
++		opj_image_destroy(opjImg);
++		opj_destroy_codec(encoder);
++		return ICNS_STATUS_NO_MEMORY;
++	}
++
++	if(!opj_start_compress(encoder, opjImg, stream) || !opj_encode(encoder, stream) || !opj_end_compress(encoder, stream)) {
++		icns_print_err("icns_opj_image_to_jp2: Error while encoding jp2 data!\n");
++		opj_image_destroy(opjImg);
++		opj_stream_destroy(stream);
++		opj_destroy_codec(encoder);
++		return ICNS_STATUS_INVALID_DATA;
++	}
++
++	*dataSizeOut = memStream->bufferSize + 34;
++	*dataPtrOut = (icns_byte_t *) realloc(memStream->buffer, *dataSizeOut);
++
++	if(!(*dataPtrOut))
++	{
++		icns_print_err("icns_opj_image_to_jp2: Unable to allocate memory block of size: %d!\n", (int) *dataSizeOut);
++		opj_image_destroy(opjImg);
++		opj_stream_destroy(stream);
++		opj_destroy_codec(encoder);
++		return ICNS_STATUS_NO_MEMORY;
++	}
++
++	icns_place_jp2_cdef(*dataPtrOut, *dataSizeOut);
++
++	opj_image_destroy(opjImg);
++	opj_stream_destroy(stream);
++	opj_destroy_codec(encoder);
++
++	return ICNS_STATUS_OK;
++#endif /* (ICNS_OPENJPEG == 2) */
+ }
+ 
+ void icns_opj_error_callback(const char *msg, void *client_data) {

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Gtk2-Ex-FormFactory</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::Button</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::CheckButton</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::CheckButtonGroup</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::Combo</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::Container</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::Context</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::DialogButtons</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::Entry</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::ExecFlow</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::Expander</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::Form</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::GtkWidget</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::HBox</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::HPaned</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::HSeparator</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::Image</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::Label</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::Layout</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::List</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::Loader</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::Menu</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::MenuItem</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::Notebook</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::Popup</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::ProgressBar</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::Proxy</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::ProxyBuffered</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::RadioButton</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::Rules</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::Table</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::TextView</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::Timestamp</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::ToggleButton</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::VBox</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::VPaned</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::VSeparator</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::Widget</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::Window</remote-id>
+    <remote-id type="cpan-module">Gtk2::Ex::FormFactory::YesNo</remote-id>
+    <remote-id type="cpan-module">Music::Album</remote-id>
+    <remote-id type="cpan-module">Music::Artist</remote-id>
+    <remote-id type="cpan-module">Music::Config</remote-id>
+    <remote-id type="cpan-module">Music::DBI</remote-id>
+    <remote-id type="cpan-module">Music::Genre</remote-id>
+    <remote-id type="cpan-module">Music::Song</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,14 @@
+--- src/xmlcomp/org/apache/xmlbeans/impl/tool/SchemaCompiler.java.orig	2015-11-11 15:58:46.578486000 +0000
++++ src/xmlcomp/org/apache/xmlbeans/impl/tool/SchemaCompiler.java	2015-11-11 15:59:05.351486000 +0000
+@@ -217,8 +217,9 @@
+         boolean debug = (cl.getOpt("debug") != null);
+ 
+         String allowmdef = cl.getOpt("allowmdef");
+-        Set mdefNamespaces = (allowmdef == null ? Collections.EMPTY_SET :
+-                new HashSet(Arrays.asList(XmlListImpl.split_list(allowmdef))));
++        Set mdefNamespaces = Collections.EMPTY_SET;
++        // Set mdefNamespaces = (allowmdef == null ? Collections.EMPTY_SET :
++        //         new HashSet(Arrays.asList(XmlListImpl.split_list(allowmdef))));
+ 
+         List extensions = new ArrayList();
+         if (cl.getOpt("extension") != null) {

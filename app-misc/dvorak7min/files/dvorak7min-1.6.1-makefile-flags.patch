@@ -1,0 +1,26 @@
+https://sources.debian.org/patches/dvorak7min/1.6.1+repack-4/makefile-flags.patch/
+--- a/Makefile
++++ b/Makefile
+@@ -6,6 +6,7 @@
+ #NASTINESS = -DNASTY_AS_USUAL
+ #BEEPS = -DBEEPS_ARENT_IRRITATING
+ #FLASHES = -DFLASHES_ARENT_IRRITATING
++#PROF = -g0 -O2
+ COLORS = -DNO_COLORS_PLEASE
+ 
+ # Max length of imported texts.  Set it to 0 or comment it if you don't want
+@@ -15,11 +16,10 @@
+ ### That's all ###
+ 
+ CC      = gcc
+-PROF    = -g0 -O2
+-CFLAGS  = $(PROF) -Wall \
++CFLAGS  += -Wall \
+ 	$(PRETTINESS) $(NASTINESS) $(BEEPS) $(FLASHES) $(COLORS) \
+-	$(LIMIT_LENGTH)
+-LDFLAGS = $(PROF)
++	$(LIMIT_LENGTH) $(PROF)
++LDFLAGS += $(PROF)
+ LIBS    = -lncurses
+ 
+ OBJECTS = dvorak7min.o lessons.o

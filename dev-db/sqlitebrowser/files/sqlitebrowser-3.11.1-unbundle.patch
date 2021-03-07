@@ -1,0 +1,85 @@
+diff -Naur sqlitebrowser-3.11.1-orig/cmake/FindQScintilla.cmake sqlitebrowser-3.11.1/cmake/FindQScintilla.cmake
+--- sqlitebrowser-3.11.1-orig/cmake/FindQScintilla.cmake	2019-03-20 11:12:47.452357850 -0400
++++ sqlitebrowser-3.11.1/cmake/FindQScintilla.cmake	2019-03-20 11:17:49.611365342 -0400
+@@ -42,10 +42,12 @@
+ # either expressed or implied, of the FreeBSD Project.
+ #=============================================================================
+ 
++SET (QT_MIN_VERSION "5.6.2")
++FIND_PACKAGE( Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Network Widgets )
+ 
+ find_path ( QSCINTILLA_INCLUDE_DIR
+   NAMES qsciscintilla.h
+-  HINTS ${QT_INCLUDE_DIR}
++  HINTS ${Qt5Core_INCLUDE_DIRS}
+   PATH_SUFFIXES Qsci
+ )
+ 
+@@ -80,8 +82,8 @@
+ 
+ 
+ find_library ( QSCINTILLA_LIBRARY
+-  NAMES qscintilla qscintilla2 libqscintilla2
+-  HINTS ${QT_LIBRARY_DIR}
++  NAMES qscintilla2 libqscintilla2 qscintilla2_qt5 libqscintilla2_qt5
++  HINTS ${Qt5Core_LIBRARIES}
+ )
+ 
+ set ( QSCINTILLA_LIBRARIES ${QSCINTILLA_LIBRARY} )
+diff -Naur sqlitebrowser-3.11.1-orig/CMakeLists.txt sqlitebrowser-3.11.1/CMakeLists.txt
+--- sqlitebrowser-3.11.1-orig/CMakeLists.txt	2019-03-20 11:12:47.452357850 -0400
++++ sqlitebrowser-3.11.1/CMakeLists.txt	2019-03-20 11:19:07.740367280 -0400
+@@ -61,26 +61,12 @@
+ endif()
+ 
+ if(NOT FORCE_INTERNAL_ANTLR)
+-    find_package(Antlr2 QUIET)
++  find_package(Antlr2 REQUIRED)
+ endif()
+ if(NOT FORCE_INTERNAL_QSCINTILLA)
+-    find_package(QScintilla QUIET)
++  find_package(QScintilla REQUIRED)
+ endif()
+ 
+-set(QHEXEDIT_DIR libs/qhexedit)
+-set(QCUSTOMPLOT_DIR libs/qcustomplot-source)
+-
+-if(NOT ANTLR2_FOUND)
+-    set(ANTLR_DIR libs/antlr-2.7.7)
+-    add_subdirectory(${ANTLR_DIR})
+-endif()
+-if(NOT QSCINTILLA_FOUND)
+-    set(QSCINTILLA_DIR libs/qscintilla/Qt4Qt5)
+-    add_subdirectory(${QSCINTILLA_DIR})
+-endif()
+-add_subdirectory(${QHEXEDIT_DIR})
+-add_subdirectory(${QCUSTOMPLOT_DIR})
+-
+ find_package(Qt5 REQUIRED COMPONENTS Concurrent Gui LinguistTools Network PrintSupport Test Widgets Xml)
+ 
+ set(CMAKE_AUTOMOC ON)
+diff -Naur sqlitebrowser-3.11.1-orig/src/src.pro sqlitebrowser-3.11.1/src/src.pro
+--- sqlitebrowser-3.11.1-orig/src/src.pro	2019-03-20 11:12:47.459357850 -0400
++++ sqlitebrowser-3.11.1/src/src.pro	2019-03-20 11:22:02.891371623 -0400
+@@ -178,10 +178,6 @@
+     }
+ }
+ 
+-LIBPATH_QHEXEDIT=$$OUT_PWD/../libs/qhexedit
+-LIBPATH_ANTLR=$$OUT_PWD/../libs/antlr-2.7.7
+-LIBPATH_QCUSTOMPLOT=$$OUT_PWD/../libs/qcustomplot-source
+-LIBPATH_QSCINTILLA=$$OUT_PWD/../libs/qscintilla/Qt4Qt5
+ unix {
+     LIBS += -ldl
+ }
+@@ -222,9 +218,7 @@
+ }
+ 
+ UI_DIR = .ui
+-INCLUDEPATH += $$PWD/../libs/antlr-2.7.7 $$PWD/../libs/qhexedit $$PWD/../libs/qcustomplot-source $$PWD/../libs/qscintilla/Qt4Qt5 $$PWD/..
+-LIBS += -L$$LIBPATH_QHEXEDIT -L$$LIBPATH_ANTLR -L$$LIBPATH_QCUSTOMPLOT -L$$LIBPATH_QSCINTILLA -lantlr -lqhexedit -lqcustomplot -lqscintilla2
+-DEPENDPATH += $$PWD/../libs/antlr-2.7.7 $$PWD/../libs/qhexedit $$PWD/../libs/qcustomplot-source $$PWD/../libs/qscintilla/Qt4Qt5
++LIBS += -L$$LIBPATH_QHEXEDIT -L$$LIBPATH_ANTLR -L$$LIBPATH_QCUSTOMPLOT -L$$LIBPATH_QSCINTILLA -lantlr -lqhexedit -lqcustomplot -lqscintilla2_qt5
+ 
+ unix {
+     # Below, the user can specify where all generated file can be placed

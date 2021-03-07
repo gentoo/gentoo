@@ -1,0 +1,27 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Fabian Groffen <grobian@gentoo.org> (2020-12-10)
+# Fails to compile without nls during link with undefined symbol for
+# _gl_get_setlocale_null_lock, related, but causing other issues:
+# https://gitweb.gentoo.org/repo/proj/prefix.git/commit/?id=24276d89d7c30abb460e786497fe7d50605bcdf7
+~sys-devel/gettext-0.21 nls
+
+# Fabian Groffen <grobian@gentoo.org> (2020-06-08)
+# Do NOT enable tinfo, it breaks ANYTHING existing, and it also breaks
+# ncurses itself, for it apparently doesn't link against tinfo itself,
+# which needs fixing before re-enabling tinfo again.
+sys-libs/ncurses -tinfo
+sys-libs/ncurses-compat -tinfo
+
+# Fabian Groffen <grobian@gentoo.org> (2012-03-24)
+# Non-threaded target doesn't exist for Mac OS X Intel
+media-gfx/tachyon threads opengl
+
+# Elias Pipping <pipping@gentoo.org> (2007-11-29)
+# won't compile without
+media-libs/libsdl opengl
+
+# Jacob Floyd <cognifloyd@gmail.org> (2020-12-20)
+# Make sure we always use libcxxabi on macos prefix
+sys-libs/libcxx libcxxabi

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+<email>common-lisp@gentoo.org</email>
+<name>Gentoo Common Lisp Project</name>
+</maintainer>
+<longdescription>
+CMUCL is a free implementation of the Common Lisp programming language
+which runs on most major Unix platforms. It mainly conforms to the
+ANSI Common Lisp standard. Here is a summary of its main features:
+
+ * a sophisticated native-code compiler which is capable of powerful
+   type inferences, and generates code competitive in speed with C
+   compilers.
+
+ * generational garbage collection and multiprocessing capability on
+   the x86 ports.
+
+ * a foreign function interface which allows interfacing with C code
+   and system libraries, including shared libraries on most platforms,
+   and direct access to Unix system calls.
+
+ * support for interprocess communication and remote procedure calls.
+
+ * an implementation of CLOS, the Common Lisp Object System, which
+   includes multimethods and a metaobject protocol.
+
+ * a graphical source-level debugger using a Motif interface, and a
+   code profiler.
+</longdescription>
+<use>
+<flag name="doc">Installs package documentation</flag>
+<flag name="source">Include source code for CMUCL in installation</flag>
+<flag name="X">Build CLX, CLM, or Hemlock</flag>
+</use>
+</pkgmetadata>

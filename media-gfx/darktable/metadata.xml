@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>maekke@gentoo.org</email>
+		<name>Markus Meier</name>
+	</maintainer>
+	<use>
+		<flag name="avif">Support importing and exporting AVIF images</flag>
+		<flag name="flickr">Add support for uploading photos to flickr</flag>
+		<flag name="geolocation">Enable geotagging support</flag>
+		<flag name="gmic">Use the G'MIC image-processing framework (<pkg>media-gfx/gmic</pkg>), e.g. to support Colour LUTs compressed using their compression scheme</flag>
+		<flag name="kwallet">Enable encrypted storage of passwords with <pkg>kde-frameworks/kwallet</pkg></flag>
+		<flag name="lto">Enable link-time optimisations in the RawSpeed library</flag>
+		<flag name="opencl">Enable opencl support</flag>
+		<flag name="tools">Install tools for generating base curves and noise profiles</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">darktable-org/darktable</remote-id>
+	</upstream>
+</pkgmetadata>

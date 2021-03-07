@@ -1,0 +1,10 @@
+--- a/src/fasta_formatter/fasta_formatter.cpp
++++ b/src/fasta_formatter/fasta_formatter.cpp
+@@ -103,6 +103,7 @@
+ 		switch(opt) {
+ 		case 'h':
+ 			usage();
++			exit(EXIT_SUCCESS);
+ 		
+ 		case 'i':
+ 			input_filename = optarg;

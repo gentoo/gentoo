@@ -1,0 +1,225 @@
+Replace __BEGIN_DECLS and __END_DECLS with extern "C".
+
+The macros __BEGIN_DECLS and __END_DECLS are a GNU-ism found in
+glibc and uClibc, but not musl.  We replace them by the more general
+extern "C" { ... } block exposed only if we have __cplusplus.
+
+Signed-off-by: Anthony G. Basile <blueness@gentoo.org>
+
+diff -Naur libcgroup-0.41.orig/include/libcgroup/config.h libcgroup-0.41/include/libcgroup/config.h
+--- libcgroup-0.41.orig/include/libcgroup/config.h	2014-01-13 14:05:56.000000000 +0000
++++ libcgroup-0.41/include/libcgroup/config.h	2015-07-11 23:19:20.451977284 +0000
+@@ -9,7 +9,9 @@
+ #include <features.h>
+ #endif
+ 
+-__BEGIN_DECLS
++#ifdef __cplusplus
++extern "C" {
++#endif
+ 
+ /**
+  * @defgroup group_config 5. Configuration
+@@ -107,6 +109,8 @@
+  * @}
+  * @}
+  */
+-__END_DECLS
++#ifdef __cplusplus
++}
++#endif
+ 
+ #endif /*_LIBCGROUP_CONFIG_H*/
+diff -Naur libcgroup-0.41.orig/include/libcgroup/error.h libcgroup-0.41/include/libcgroup/error.h
+--- libcgroup-0.41.orig/include/libcgroup/error.h	2014-01-13 14:05:56.000000000 +0000
++++ libcgroup-0.41/include/libcgroup/error.h	2015-07-11 23:19:34.253977328 +0000
+@@ -9,7 +9,9 @@
+ #include <features.h>
+ #endif
+ 
+-__BEGIN_DECLS
++#ifdef __cplusplus
++extern "C" {
++#endif
+ 
+ /**
+  * @defgroup group_errors 6. Error handling
+@@ -99,6 +101,8 @@
+  * @}
+  * @}
+  */
+-__END_DECLS
++#ifdef __cplusplus
++}
++#endif
+ 
+ #endif /* _LIBCGROUP_INIT_H */
+diff -Naur libcgroup-0.41.orig/include/libcgroup/groups.h libcgroup-0.41/include/libcgroup/groups.h
+--- libcgroup-0.41.orig/include/libcgroup/groups.h	2014-01-13 14:05:56.000000000 +0000
++++ libcgroup-0.41/include/libcgroup/groups.h	2015-07-11 23:19:40.305977347 +0000
+@@ -11,7 +11,9 @@
+ #include <stdbool.h>
+ #endif
+ 
+-__BEGIN_DECLS
++#ifdef __cplusplus
++extern "C" {
++#endif
+ 
+ /**
+  * Flags for cgroup_delete_cgroup_ext().
+@@ -577,6 +579,8 @@
+  */
+ 
+ 
+-__END_DECLS
++#ifdef __cplusplus
++}
++#endif
+ 
+ #endif /* _LIBCGROUP_GROUPS_H */
+diff -Naur libcgroup-0.41.orig/include/libcgroup/init.h libcgroup-0.41/include/libcgroup/init.h
+--- libcgroup-0.41.orig/include/libcgroup/init.h	2014-01-13 14:05:56.000000000 +0000
++++ libcgroup-0.41/include/libcgroup/init.h	2015-07-11 23:19:46.369977366 +0000
+@@ -9,7 +9,9 @@
+ #include <features.h>
+ #endif
+ 
+-__BEGIN_DECLS
++#ifdef __cplusplus
++extern "C" {
++#endif
+ 
+ /**
+  * @defgroup group_init 1. Initialization
+@@ -58,6 +60,8 @@
+  * @}
+  * @}
+  */
+-__END_DECLS
++#ifdef __cplusplus
++}
++#endif
+ 
+ #endif /* _LIBCGROUP_INIT_H */
+diff -Naur libcgroup-0.41.orig/include/libcgroup/iterators.h libcgroup-0.41/include/libcgroup/iterators.h
+--- libcgroup-0.41.orig/include/libcgroup/iterators.h	2014-01-13 14:05:56.000000000 +0000
++++ libcgroup-0.41/include/libcgroup/iterators.h	2015-07-11 23:19:53.353977388 +0000
+@@ -11,7 +11,9 @@
+ #include <features.h>
+ #endif
+ 
+-__BEGIN_DECLS
++#ifdef __cplusplus
++extern "C" {
++#endif
+ 
+ /**
+  * @defgroup group_iterators 3. Iterators
+@@ -423,6 +425,8 @@
+  * @}
+  */
+ 
+-__END_DECLS
++#ifdef __cplusplus
++}
++#endif
+ 
+ #endif /* _LIBCGROUP_ITERATORS_H */
+diff -Naur libcgroup-0.41.orig/include/libcgroup/log.h libcgroup-0.41/include/libcgroup/log.h
+--- libcgroup-0.41.orig/include/libcgroup/log.h	2014-01-13 14:05:56.000000000 +0000
++++ libcgroup-0.41/include/libcgroup/log.h	2015-07-11 23:19:58.922977406 +0000
+@@ -11,7 +11,9 @@
+ 
+ #include <stdarg.h>
+ 
+-__BEGIN_DECLS
++#ifdef __cplusplus
++extern "C" {
++#endif
+ 
+ /**
+  * @defgroup group_log 7. Logging
+@@ -142,6 +144,8 @@
+  * @}
+  * @}
+  */
+-__END_DECLS
++#ifdef __cplusplus
++}
++#endif
+ 
+ #endif /* _LIBCGROUP_LOG_H */
+diff -Naur libcgroup-0.41.orig/include/libcgroup/tasks.h libcgroup-0.41/include/libcgroup/tasks.h
+--- libcgroup-0.41.orig/include/libcgroup/tasks.h	2014-01-13 14:05:56.000000000 +0000
++++ libcgroup-0.41/include/libcgroup/tasks.h	2015-07-11 23:20:03.329977420 +0000
+@@ -12,7 +12,9 @@
+ #include <stdbool.h>
+ #endif
+ 
+-__BEGIN_DECLS
++#ifdef __cplusplus
++extern "C" {
++#endif
+ 
+ /** Flags for cgroup_change_cgroup_uid_gid(). */
+ enum cgflags {
+@@ -204,6 +206,8 @@
+  * @}
+  * @}
+  */
+-__END_DECLS
++#ifdef __cplusplus
++}
++#endif
+ 
+ #endif /* _LIBCGROUP_TASKS_H */
+diff -Naur libcgroup-0.41.orig/src/daemon/cgrulesengd.h libcgroup-0.41/src/daemon/cgrulesengd.h
+--- libcgroup-0.41.orig/src/daemon/cgrulesengd.h	2014-01-13 14:05:56.000000000 +0000
++++ libcgroup-0.41/src/daemon/cgrulesengd.h	2015-07-11 23:20:34.282977519 +0000
+@@ -17,7 +17,9 @@
+ 
+ #include <features.h>
+ 
+-__BEGIN_DECLS
++#ifdef __cplusplus
++extern "C" {
++#endif
+ 
+ #include "config.h"
+ #include "libcgroup.h"
+@@ -119,7 +121,9 @@
+  */
+ void cgre_catch_term(int signum);
+ 
+-__END_DECLS
++#ifdef __cplusplus
++}
++#endif
+ 
+ #endif /* _CGRULESENGD_H */
+ 
+diff -Naur libcgroup-0.41.orig/src/libcgroup-internal.h libcgroup-0.41/src/libcgroup-internal.h
+--- libcgroup-0.41.orig/src/libcgroup-internal.h	2015-07-11 23:16:37.497976764 +0000
++++ libcgroup-0.41/src/libcgroup-internal.h	2015-07-11 23:20:22.299977481 +0000
+@@ -16,7 +16,9 @@
+ 
+ #define __LIBCG_INTERNAL
+ 
+-__BEGIN_DECLS
++#ifdef __cplusplus
++extern "C" {
++#endif
+ 
+ #include "config.h"
+ #include <fts.h>
+@@ -279,6 +281,8 @@
+  */
+ int cg_chmod_path(const char *path, mode_t mode, int owner_is_umask);
+ 
+-__END_DECLS
++#ifdef __cplusplus
++}
++#endif
+ 
+ #endif

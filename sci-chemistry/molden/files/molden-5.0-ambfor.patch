@@ -1,0 +1,16 @@
+ ambfor/makefile |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/ambfor/makefile b/ambfor/makefile
+index 8627a11..dbc23a1 100644
+--- a/ambfor/makefile
++++ b/ambfor/makefile
+@@ -47,7 +47,7 @@ ambmd:	md.o verlet.o qvdw.o allocmd.o $(OBJS)
+ 	$(LDR) -o ambmd md.o verlet.o qvdw.o allocmd.o $(OBJS) $(LIBS)
+ 
+ ambfor.o:	ambfor.f
+-	${FC} -c -g -ffast-math -funroll-loops -o ambfor.o ambfor.f
++	${FC} $(FFLAGS) -c -o ambfor.o ambfor.f
+ 
+ allocmd.o:	alloc.c
+ 	$(CC) $(CFLAGS) -DMD -c alloc.c -o allocmd.o

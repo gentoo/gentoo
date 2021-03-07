@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>JoMull01@protonmail.com</email>
+		<name>Josiah Mullins</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>jfreegman@tox.chat</email>
+			<name>Jakob Kreuze</name>
+		</maintainer>
+		<remote-id type="github">jfreegman/toxic</remote-id>
+	</upstream>
+	<longdescription lang="en">
+		An ncurses-based Tox client written in C. Supports audio and video calling, file sharing, and desktop notifications.
+	</longdescription>
+	<use>
+		<flag name="audio-notify">Enables native sound notifications</flag>
+		<flag name="llvm">Enables support for LLVM Address Sanitizer</flag>
+		<flag name="notification">Enables desktop notifications with libnotify, with sound support.</flag>
+		<flag name="qrcode">Enables QR code support</flag>
+		<flag name="sound">Enables audio calling</flag>
+		<flag name="video">Enables video calling</flag>
+	</use>
+</pkgmetadata>

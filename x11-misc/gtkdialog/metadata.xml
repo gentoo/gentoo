@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>desktop-misc@gentoo.org</email>
+		<name>Gentoo Desktop Miscellaneous Project</name>
+	</maintainer>
+	<longdescription>
+		gtkdialog is a GUI-creation utility that can be used with an arbitrary
+		interpreter. It enables the programmer to describe a graphical user interface
+		in a simple XML-like language, and use it with any interpreter that supports
+		either files, standard I/O, or environment variables. It can be called as an
+		external program from the interpreter, but can be used as a stand-alone
+		framework for the application as well. Stand-alone, bash, and awk examples are
+		provided.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">oshazard/gtkdialog</remote-id>
+	</upstream>
+	<use>
+		<flag name="gtk2">Build with GTK+2 instead of GTK+3</flag>
+	</use>
+</pkgmetadata>

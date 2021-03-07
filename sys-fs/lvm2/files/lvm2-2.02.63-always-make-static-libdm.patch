@@ -1,0 +1,42 @@
+diff -Nuar --exclude '*~' LVM2.2.02.63.orig/daemons/dmeventd/Makefile.in LVM2.2.02.63/daemons/dmeventd/Makefile.in
+--- LVM2.2.02.63.orig/daemons/dmeventd/Makefile.in	2010-04-09 14:42:48.000000000 -0700
++++ LVM2.2.02.63/daemons/dmeventd/Makefile.in	2010-04-19 11:53:27.000000000 -0700
+@@ -28,11 +28,12 @@
+ INSTALL_LIB_TARGETS = install_lib_dynamic
+ 
+ LIB_NAME = libdevmapper-event
++LIB_STATIC = $(LIB_NAME).a
++INSTALL_LIB_TARGETS += install_lib_static
++TARGETS += $(LIB_STATIC)
+ ifeq ("@STATIC_LINK@", "yes")
+-  LIB_STATIC = $(LIB_NAME).a
+-  TARGETS += $(LIB_STATIC) dmeventd.static
++  TARGETS += dmeventd.static
+   INSTALL_DMEVENTD_TARGETS += install_dmeventd_static
+-  INSTALL_LIB_TARGETS += install_lib_static
+ endif
+ 
+ LIB_VERSION = $(LIB_VERSION_DM)
+diff -Nuar --exclude '*~' LVM2.2.02.63.orig/libdm/Makefile.in LVM2.2.02.63/libdm/Makefile.in
+--- LVM2.2.02.63.orig/libdm/Makefile.in	2010-04-09 14:42:51.000000000 -0700
++++ LVM2.2.02.63/libdm/Makefile.in	2010-04-19 11:52:20.000000000 -0700
+@@ -34,8 +34,8 @@
+ 
+ INCLUDES = -I$(srcdir)/$(interface) -I$(srcdir)
+ 
+-ifeq ("@STATIC_LINK@", "yes")
+ LIB_STATIC = $(interface)/libdevmapper.a
++ifeq ("@STATIC_LINK@", "yes")
+ endif
+ 
+ LIB_SHARED = $(interface)/libdevmapper.$(LIB_SUFFIX)
+@@ -63,8 +63,8 @@
+ 
+ INSTALL_TYPE = install_dynamic
+ 
+-ifeq ("@STATIC_LINK@", "yes")
+   INSTALL_TYPE += install_static
++ifeq ("@STATIC_LINK@", "yes")
+ endif
+ 
+ ifeq ("@PKGCONFIG@", "yes")

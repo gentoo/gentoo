@@ -1,0 +1,114 @@
+diff -ru kildclient-3.0.1.orig/Makefile.am kildclient-3.0.1/Makefile.am
+--- kildclient-3.0.1.orig/Makefile.am	2014-09-07 11:49:16.000000000 -0400
++++ kildclient-3.0.1/Makefile.am	2015-01-03 22:33:12.578096926 -0500
+@@ -9,11 +9,7 @@
+           share
+ endif
+ 
+-pkgdocdir = $(datadir)/doc/kildclient
+-
+-pkgdoc_DATA = README AUTHORS NEWS COPYING
+-
+-appsdir = $(datadir)/applications
++appsdir = /usr/share/applications
+ apps_DATA = kildclient.desktop
+ 
+ EXTRA_DIST = kildclient.spec \
+diff -ru kildclient-3.0.1.orig/doc/C/Makefile.am kildclient-3.0.1/doc/C/Makefile.am
+--- kildclient-3.0.1.orig/doc/C/Makefile.am	2012-02-12 10:48:07.000000000 -0500
++++ kildclient-3.0.1/doc/C/Makefile.am	2015-01-04 00:11:46.422941983 -0500
+@@ -1,8 +1,8 @@
+ SUBDIRS = images
+ 
+-pkgdocdir = $(datadir)/doc/kildclient
++pkgdocdir = @docdir@
+ 
+-manualdir = $(pkgdocdir)/html
++manualdir = @htmldir@
+ 
+ #pkgdoc_DATA = kildclient.pdf
+ 
+diff -ru kildclient-3.0.1.orig/po/Makefile.in.in kildclient-3.0.1/po/Makefile.in.in
+--- kildclient-3.0.1.orig/po/Makefile.in.in	2014-12-13 05:47:22.000000000 -0500
++++ kildclient-3.0.1/po/Makefile.in.in	2015-01-04 00:13:33.357326034 -0500
+@@ -28,9 +28,8 @@
+ datarootdir = @datarootdir@
+ datadir = @datadir@
+ libdir = @libdir@
+-localedir = $(libdir)/locale
+-gnulocaledir = $(datadir)/locale
+-gettextsrcdir = $(datadir)/glib-2.0/gettext/po
++localedir = @localedir@
++gnulocaledir = @localedir@
+ subdir = po
+ 
+ INSTALL = @INSTALL@
+@@ -163,13 +162,6 @@
+ 	    fi; \
+ 	  fi; \
+ 	done
+-	if test "$(PACKAGE)" = "glib"; then \
+-	  $(MKINSTALLDIRS) $(DESTDIR)$(gettextsrcdir); \
+-	  $(INSTALL_DATA) $(srcdir)/Makefile.in.in \
+-			  $(DESTDIR)$(gettextsrcdir)/Makefile.in.in; \
+-	else \
+-	  : ; \
+-	fi
+ 
+ # Define this as empty until I found a useful application.
+ installcheck:
+@@ -184,9 +176,6 @@
+ 	  rm -f $(DESTDIR)$(gnulocaledir)/$$lang/LC_MESSAGES/$(GETTEXT_PACKAGE)$(INSTOBJEXT); \
+ 	  rm -f $(DESTDIR)$(gnulocaledir)/$$lang/LC_MESSAGES/$(GETTEXT_PACKAGE)$(INSTOBJEXT).m; \
+ 	done
+-	if test "$(PACKAGE)" = "glib"; then \
+-	  rm -f $(DESTDIR)$(gettextsrcdir)/Makefile.in.in; \
+-	fi
+ 
+ check: all
+ 
+diff -ru kildclient-3.0.1.orig/share/Makefile.am kildclient-3.0.1/share/Makefile.am
+--- kildclient-3.0.1.orig/share/Makefile.am	2012-02-12 10:48:56.000000000 -0500
++++ kildclient-3.0.1/share/Makefile.am	2015-01-04 00:14:05.375243115 -0500
+@@ -5,7 +5,7 @@
+ 		kildclient.hlp \
+ 		kcworld.dtd
+ 
+-pixmapdir = $(datadir)/pixmaps
++pixmapdir = /usr/share/pixmaps
+ pixmap_DATA = kildclient.png kildclient.xpm
+ 
+ 
+diff -ru kildclient-3.0.1.orig/src/Makefile.am kildclient-3.0.1/src/Makefile.am
+--- kildclient-3.0.1.orig/src/Makefile.am	2014-12-13 05:40:02.000000000 -0500
++++ kildclient-3.0.1/src/Makefile.am	2015-01-04 00:14:47.606814577 -0500
+@@ -84,11 +84,11 @@
+ 
+ EXTRA_DIST = $(pkgdata_DATA) $(uifiles)
+ 
+-pkgdocdir = $(datadir)/doc/kildclient
++pkgdocdir = @docdir@
+ 
+-manualdir = $(pkgdocdir)/html
++manualdir = @htmldir@
+ 
+-localedir = $(datadir)/locale
++localedir = @localedir@
+ 
+ kildclient_LDADD = $(GTK_LIBS) $(KILDCLIENT_PERL_LIBS) $(GTKSPELL_LIBS) $(LIBGNUTLS_LIBS) $(INTLLIBS) -lz
+ 
+diff -ru kildclient-3.0.1.orig/src/mainwindow.c kildclient-3.0.1/src/mainwindow.c
+--- kildclient-3.0.1.orig/src/mainwindow.c	2014-12-13 05:40:02.000000000 -0500
++++ kildclient-3.0.1/src/mainwindow.c	2015-01-04 00:15:43.877910836 -0500
+@@ -172,9 +172,9 @@
+   window = GTK_WIDGET(gtk_builder_get_object(main_builder, "wndMain"));
+ #ifndef __WIN32__
+   gtk_window_set_icon_from_file(GTK_WINDOW(window),
+-                                SYSDATADIR "/pixmaps/kildclient.png",
++                                "/usr/share/pixmaps/kildclient.png",
+                                 NULL);
+-  gtk_window_set_default_icon_from_file(SYSDATADIR "/pixmaps/kildclient.png",
++  gtk_window_set_default_icon_from_file("/usr/share/pixmaps/kildclient.png",
+                                         NULL);
+ #endif
+ 

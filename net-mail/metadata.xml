@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The net-mail category contains various email-related utilities.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie net-mail enthält verschiede Werkzeuge zum Thema Email.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría net-mail contiene varias utilidades relacionadas con el
+		correo electrónico.
+	</longdescription>
+	<longdescription lang="ja">
+		net-mailカテゴリーには様々なメール関連のユーティリティが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De net-mail categorie bevat verschillende email-gerelateerde applicaties.
+	</longdescription>
+	<longdescription lang="sk">
+		Kategória net-mail obsahuje rôzne nástroje pre prácu s elektronickou poštou.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm net-mail chứa các tiện ích email khác nhau.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria net-mail contiene varie utilità per la posta elettronica.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria net-mail contém vários utilitários relacionados com
+		correio eletrônico.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria net-mail zawiera narzędzia związane z pocztą elektroniczną.
+	</longdescription>
+</catmetadata>

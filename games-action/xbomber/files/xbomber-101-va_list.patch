@@ -1,0 +1,48 @@
+--- a/bomber.c	2005-11-06 16:50:04.000000000 +0100
++++ b/bomber.c	2005-11-06 16:47:35.000000000 +0100
+@@ -1,5 +1,6 @@
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <stdarg.h>
+ #include <unistd.h>
+ #include <string.h>
+ #include <sys/uio.h>
+@@ -626,8 +627,11 @@
+ void scrprintf(char *str,...)
+ {
+ char output[256],*p,*p2;
++va_list ap;
+ 
+-	vsprintf(output,str,&str+1);
++	va_start(ap, str);
++	vsprintf(output,str,ap);
++	va_end(ap);
+ 	p=output;
+ 	for(;;)
+ 	{
+@@ -653,8 +657,11 @@
+ void bigscrprintf(char *str,...)
+ {
+ char output[256],*p,*p2;
++va_list ap;
+ 
+-	vsprintf(output,str,&str+1);
++	va_start(ap, str);
++	vsprintf(output,str,ap);
++	va_end(ap);
+ 	p=output;
+ 	for(;;)
+ 	{
+@@ -1873,8 +1880,11 @@
+ additem(char *item,...)
+ {
+ char output[256];
++va_list ap;
+ 
+-	vsprintf(output,item,&item+1);
++	va_start(ap, item);
++	vsprintf(output,item,ap);
++	va_end(ap);
+ 	if(menunum<0)
+ 		menutitle=menuput;
+ 	else

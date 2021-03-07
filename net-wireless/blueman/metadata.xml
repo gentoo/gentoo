@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
+	<use>
+		<flag name="network">Add functionality to setup (host) PAN connections using either <pkg>net-dns/dnsmasq</pkg> or <pkg>net-misc/dhcp</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">blueman-project/blueman</remote-id>
+	</upstream>
+</pkgmetadata>

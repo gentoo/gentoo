@@ -1,0 +1,17 @@
+https://bugs.gentoo.org/412941
+
+fix matching in various locales
+
+patch by Leho Kraav <leho@kraav.com>
+
+--- a/src/lexer.l
++++ b/src/lexer.l
+@@ -28,7 +28,7 @@
+ bluemac                   { return BLUEMAC; }
+ @                         { return AT;}
+ ;                         { return SEMICOLON; }
+-[a-zA-Z][a-zA-Z0-9_]*     { yylval.word  = (char *) strdup(yytext); return WORD; }
++[[:alpha:]][[:alnum:]_-]* { yylval.word  = (char *) strdup(yytext); return WORD; }
+ {HXDIGD}{HXDIGD}{HXDIG}   { yylval.word  = (char *) strdup(yytext); return MAC; }
+ [0-9][0-9]*               { yylval.value = atoi(yytext);   return DIGIT; }
+ =                         { return EQUAL; }

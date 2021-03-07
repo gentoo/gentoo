@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locatingRules xmlns="http://thaiopensource.com/ns/locating-rules/1.0">
+  <!-- This version of the locatingRules does not support having
+       enough details to distinguish between different SVG versions,
+       maybe in the future it will.
+  -->
+
+  <uri pattern="*.svg" typeId="SVG" />
+  <namespace ns="http://www.w3.org/2000/svg" typeId="SVG" />
+  <documentElement localName="svg" typeId="SVG" />
+
+  <typeId id="SVG" uri="svg11.rnc" />
+</locatingRules>

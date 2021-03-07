@@ -1,0 +1,36 @@
+--- couriersrs-0.1.2/configure.ac.1	2009-10-11 19:20:07.000000000 +0200
++++ couriersrs-0.1.2/configure.ac	2009-10-11 19:30:35.000000000 +0200
+@@ -16,7 +16,7 @@
+ AM_ICONV
+ 
+ AM_GNU_GETTEXT
+-AM_GNU_GETTEXT_VERSION(0.14.1)
++AM_GNU_GETTEXT_VERSION(0.15)
+ ALL_LINGUAS=""
+ 
+ AC_DISABLE_STATIC
+diff -Naur couriersrs-0.1.1/intl/Makefile.in couriersrs-0.1.1-x/intl/Makefile.in
+--- couriersrs-0.1.1/intl/Makefile.in	2007-03-15 20:59:02.000000000 +0100
++++ couriersrs-0.1.1-x/intl/Makefile.in	2009-09-19 23:36:54.000000000 +0200
+@@ -39,8 +39,7 @@
+ 
+ INSTALL = @INSTALL@
+ INSTALL_DATA = @INSTALL_DATA@
+-MKINSTALLDIRS = @MKINSTALLDIRS@
+-mkinstalldirs = $(SHELL) $(MKINSTALLDIRS)
++mkinstalldirs = @mkdir_p@
+ 
+ l = @INTL_LIBTOOL_SUFFIX_PREFIX@
+ 
+--- couriersrs-0.1.1/po/Makefile.in.in	2007-03-15 20:59:04.000000000 +0100
++++ couriersrs-0.1.1-x/po/Makefile.in.in	2009-09-19 23:36:00.000000000 +0200
+@@ -28,8 +28,7 @@
+ 
+ INSTALL = @INSTALL@
+ INSTALL_DATA = @INSTALL_DATA@
+-MKINSTALLDIRS = @MKINSTALLDIRS@
+-mkinstalldirs = $(SHELL) $(MKINSTALLDIRS)
++mkinstalldirs = @mkdir_p@
+ 
+ GMSGFMT = @GMSGFMT@
+ MSGFMT = @MSGFMT@

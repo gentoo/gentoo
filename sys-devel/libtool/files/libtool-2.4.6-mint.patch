@@ -1,0 +1,46 @@
+Patch by Alan Hourihane
+
+http://bugs.gentoo.org/show_bug.cgi?id=266984
+
+--- a/configure
++++ b/configure
+@@ -5897,6 +5897,11 @@
+     lt_cv_sys_max_cmd_len=8192;
+     ;;
+ 
++  mint*)
++    # On MiNT this can take a long time and run out of memory.
++    lt_cv_sys_max_cmd_len=8192;
++    ;;
++
+   amigaos*)
+     # On AmigaOS with pdksh, this test takes hours, literally.
+     # So we just punt and use a minimum line length of 8192.
+--- a/libltdl/configure
++++ b/libltdl/configure
+@@ -4782,6 +4782,11 @@
+     lt_cv_sys_max_cmd_len=8192;
+     ;;
+ 
++  mint*)
++    # On MiNT this can take a long time and run out of memory.
++    lt_cv_sys_max_cmd_len=8192;
++    ;;
++
+   amigaos*)
+     # On AmigaOS with pdksh, this test takes hours, literally.
+     # So we just punt and use a minimum line length of 8192.
+--- a/m4/libtool.m4
++++ b/m4/libtool.m4
+@@ -1708,6 +1708,11 @@
+     lt_cv_sys_max_cmd_len=8192;
+     ;;
+ 
++  mint*)
++    # On MiNT this can take a long time and run out of memory.
++    lt_cv_sys_max_cmd_len=8192;
++    ;;
++
+   amigaos*)
+     # On AmigaOS with pdksh, this test takes hours, literally.
+     # So we just punt and use a minimum line length of 8192.

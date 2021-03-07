@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>polynomial-c@gentoo.org</email>
+		<name>Lars Wendler</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<longdescription>The mingetty program is a lightweight, minimalist getty program for
+use only on virtual consoles.  Mingetty is not suitable for serial
+lines (you should use the mgetty program in that case).</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">mingetty</remote-id>
+	</upstream>
+</pkgmetadata>

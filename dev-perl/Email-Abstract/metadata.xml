@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Email-Abstract</remote-id>
+    <remote-id type="cpan-module">Email::Abstract</remote-id>
+    <remote-id type="cpan-module">Email::Abstract::EmailMIME</remote-id>
+    <remote-id type="cpan-module">Email::Abstract::EmailSimple</remote-id>
+    <remote-id type="cpan-module">Email::Abstract::MIMEEntity</remote-id>
+    <remote-id type="cpan-module">Email::Abstract::MailInternet</remote-id>
+    <remote-id type="cpan-module">Email::Abstract::MailMessage</remote-id>
+    <remote-id type="cpan-module">Email::Abstract::Plugin</remote-id>
+  </upstream>
+</pkgmetadata>

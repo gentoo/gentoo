@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		Utility to control some functions of AMD/ATI Radeon chips:
+		- Turning on/off external DAC
+		- Turning on/off lcd panel backlight
+		- Turn on/off LCD scaling for resolution mismatch
+		- Dumping registers
+	</longdescription>
+</pkgmetadata>

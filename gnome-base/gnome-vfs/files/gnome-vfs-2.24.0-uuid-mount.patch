@@ -1,0 +1,77 @@
+From 8427c2daf543353f42b932b5137b6ec590f6589b Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Sat, 2 Oct 2010 00:42:31 +0200
+Subject: [PATCH 7/9] Prevent duplicated volumes, bug #193083
+
+---
+ libgnomevfs/gnome-vfs-unix-mounts.c |   39 +++++++++++++++++++++++++++++++++-
+ 1 files changed, 37 insertions(+), 2 deletions(-)
+
+diff --git a/libgnomevfs/gnome-vfs-unix-mounts.c b/libgnomevfs/gnome-vfs-unix-mounts.c
+index 51a009b..3eee305 100644
+--- a/libgnomevfs/gnome-vfs-unix-mounts.c
++++ b/libgnomevfs/gnome-vfs-unix-mounts.c
+@@ -40,6 +40,10 @@
+ #ifdef HAVE_POLL_H
+ #include <poll.h>
+ #endif
++
++#include <limits.h>
++#include <stdlib.h>
++
+ #include <stdio.h>
+ #include <unistd.h>
+ #include <sys/time.h>
+@@ -290,6 +294,15 @@ _gnome_vfs_get_current_unix_mounts (GList **return_list)
+ 
+ 		mount_entry->mount_path = g_strdup (mntent->mnt_dir);
+ 		mount_entry->device_path = g_strdup (mntent->mnt_fsname);
++
++		if (g_file_test (mntent->mnt_fsname, G_FILE_TEST_IS_SYMLINK)) {
++			char rpath[PATH_MAX];
++			if (realpath (mntent->mnt_fsname, rpath)) {
++				g_free (mount_entry->device_path);
++				mount_entry->device_path = g_strdup (rpath);
++			}
++		}
++
+ 		mount_entry->filesystem_type = g_strdup (mntent->mnt_type);
+ 		
+ 		g_hash_table_insert (mounts_hash,
+@@ -571,9 +584,31 @@ _gnome_vfs_get_unix_mount_table (GList **return_list)
+ 		}
+ 		
+ 		mount_entry = g_new0 (GnomeVFSUnixMountPoint, 1);
+-
++		
++		if(strlen(mntent->mnt_fsname) >= 5 && !strncmp (mntent->mnt_fsname, "UUID=", 5)) {
++			mount_entry->device_path = g_strdup_printf ("/dev/disk/by-uuid/%s", mntent->mnt_fsname+5);
++		}
++		else if(strlen(mntent->mnt_fsname) >= 6 && !strncmp (mntent->mnt_fsname, "LABEL=", 6)) {
++			mount_entry->device_path = g_strdup_printf ("/dev/disk/by-label/%s", mntent->mnt_fsname+6);
++		}
++		else {
++			mount_entry->device_path = g_strdup (mntent->mnt_fsname);
++		}
++		
++		if (g_file_test (mount_entry->device_path, G_FILE_TEST_IS_SYMLINK)) {
++			char rpath[PATH_MAX];
++			if (realpath (mount_entry->device_path, rpath)) {
++				g_free (mount_entry->device_path);
++				mount_entry->device_path = g_strdup (rpath);
++			}
++			else {
++				g_free (mount_entry->device_path);
++				g_free (mount_entry);
++				continue;
++			}
++		}
++		
+ 		mount_entry->mount_path = g_strdup (mntent->mnt_dir);
+-		mount_entry->device_path = g_strdup (mntent->mnt_fsname);
+ 		mount_entry->filesystem_type = g_strdup (mntent->mnt_type);
+ 
+ #ifdef HAVE_HASMNTOPT
+-- 
+1.7.3
+

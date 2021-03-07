@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>hattya@gentoo.org</email>
+		<name>Akinori Hattori</name>
+	</maintainer>
+	<longdescription lang="en">
+		H2O is a new generation HTTP server. Not only is it very fast,
+		it also provides much quicker response to end-users
+		when compared to older generations of HTTP servers.
+	</longdescription>
+	<use>
+		<flag name="libh2o">Build and install libh2o</flag>
+		<flag name="mruby">Enable support for mruby</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">h2o/h2o</remote-id>
+	</upstream>
+</pkgmetadata>

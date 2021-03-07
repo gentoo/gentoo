@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>java@gentoo.org</email>
+	<name>Java</name>
+</maintainer>
+
+<longdescription>
+
+JCIFS is an Open Source client library that implements the CIFS/SMB networking
+protocol in 100% Java. CIFS is the standard file sharing protocol on the
+Microsoft Windows platform (e.g. Map Network Drive ...). This client is used
+extensively in production on large Intranets.
+
+</longdescription>
+</pkgmetadata>

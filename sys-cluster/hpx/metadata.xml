@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <longdescription>
+    HPX (High Performance ParalleX) is a general C++ runtime system for parallel
+    and distributed applications of any scale. It is the first freely available,
+    open source, feature-complete, modular, and performance oriented
+    implementation of the ParalleX execution model. HPX is targeted at
+    conventional architectures and, currently, Linux based systems, such as SMP
+    nodes and conventional clusters.
+  </longdescription>
+  <maintainer type="person">
+    <email>kurt@kmk-computers.de</email>
+    <name>Kurt Kanzenbach</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <use>
+    <flag name="perftools">Use <pkg>dev-util/google-perftools</pkg> for
+  memory allocation</flag>
+    <flag name="tbb">Use <pkg>dev-cpp/tbb</pkg> for memory
+  allocation</flag>
+    <flag name="papi">Use <pkg>dev-libs/papi</pkg> for NaCl</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">STEllAR-GROUP/hpx</remote-id>
+  </upstream>
+</pkgmetadata>

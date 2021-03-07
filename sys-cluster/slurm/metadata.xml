@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>alexxy@gentoo.org</email>
+		<name>Alexey Shvetsov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>cluster@gentoo.org</email>
+		<name>Gentoo Cluster Project</name>
+	</maintainer>
+	<use>
+		<flag name="html">Build html documentation</flag>
+		<flag name="ipmi">Build support for collecting some ipmi stats</flag>
+		<flag name="json">Add support for json-persing via json-c</flag>
+		<flag name="munge">Enable authentication via munge</flag>
+		<flag name="multiple-slurmd">Allow multiple slurmd to run</flag>
+		<flag name="netloc">Add support for netloc (amd64 only)</flag>
+		<flag name="numa">Add NUMA awareness</flag>
+		<flag name="ofed">Add Infiniband support via ofed</flag>
+		<flag name="slurmdbd">Install SQL server for slurmdbd</flag>
+		<flag name="torque">Enable perl scripts that emulates pbs (qstat, qsub etc.)</flag>
+		<flag name="ucx">Enable Unified Communication X library support</flag>
+	</use>
+</pkgmetadata>

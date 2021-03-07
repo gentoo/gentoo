@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">libwww-perl</remote-id>
+    <remote-id type="cpan-module">LWP</remote-id>
+    <remote-id type="cpan-module">LWP::Authen::Basic</remote-id>
+    <remote-id type="cpan-module">LWP::Authen::Digest</remote-id>
+    <remote-id type="cpan-module">LWP::Authen::Ntlm</remote-id>
+    <remote-id type="cpan-module">LWP::ConnCache</remote-id>
+    <remote-id type="cpan-module">LWP::Debug</remote-id>
+    <remote-id type="cpan-module">LWP::Debug::TraceHTTP</remote-id>
+    <remote-id type="cpan-module">LWP::DebugFile</remote-id>
+    <remote-id type="cpan-module">LWP::MemberMixin</remote-id>
+    <remote-id type="cpan-module">LWP::Protocol</remote-id>
+    <remote-id type="cpan-module">LWP::Protocol::MyFTP</remote-id>
+    <remote-id type="cpan-module">LWP::Protocol::cpan</remote-id>
+    <remote-id type="cpan-module">LWP::Protocol::data</remote-id>
+    <remote-id type="cpan-module">LWP::Protocol::file</remote-id>
+    <remote-id type="cpan-module">LWP::Protocol::ftp</remote-id>
+    <remote-id type="cpan-module">LWP::Protocol::gopher</remote-id>
+    <remote-id type="cpan-module">LWP::Protocol::http</remote-id>
+    <remote-id type="cpan-module">LWP::Protocol::loopback</remote-id>
+    <remote-id type="cpan-module">LWP::Protocol::mailto</remote-id>
+    <remote-id type="cpan-module">LWP::Protocol::nntp</remote-id>
+    <remote-id type="cpan-module">LWP::Protocol::nogo</remote-id>
+    <remote-id type="cpan-module">LWP::RobotUA</remote-id>
+    <remote-id type="cpan-module">LWP::Simple</remote-id>
+    <remote-id type="cpan-module">LWP::UserAgent</remote-id>
+    <remote-id type="cpan-module">RequestAgent</remote-id>
+  </upstream>
+</pkgmetadata>

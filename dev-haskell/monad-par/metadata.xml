@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		This library offers an alternative parallel programming
+		API to that provided by the @parallel@ package.
+		The 'Par' monad allows the simple description of
+		parallel computations, and can be used to add
+		parallelism to pure Haskell code.  The basic API
+		is straightforward: the monad supports forking
+		and simple communication in terms of 'IVar's.
+		The library comes with an efficient work-stealing
+		implementation, but the internals are also
+		exposed so that you can build your own scheduler
+		if necessary.
+		Examples of use can be found in the examples/ directory
+		of the source package.
+	</longdescription>
+	<use>
+		<flag name="chaselev">Use Chase-Lev Deques for higher-perf work-stealing.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">simonmar/monad-par</remote-id>
+	</upstream>
+</pkgmetadata>

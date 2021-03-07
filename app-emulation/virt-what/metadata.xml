@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>eva@gentoo.org</email>
+		<name>Gilles Dartiguelongue</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<use>
+		<flag name="dmi">Use <pkg>sys-apps/dmidecode</pkg> to read firmware data</flag>
+	</use>
+</pkgmetadata>

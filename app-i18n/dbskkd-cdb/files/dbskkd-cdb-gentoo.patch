@@ -1,0 +1,24 @@
+--- a/Makefile
++++ b/Makefile
+@@ -6,7 +6,7 @@
+ INSTALLDIR = /usr/local/libexec
+ 
+ .c.o:
+-	$(CC) $(COMPAT) $(PRIVATE) -c $*.c
++	$(CC) $(CFLAGS) $(COMPAT) $(PRIVATE) -c $*.c
+ 
+ all: 	dbskkd-cdb 
+ 
+@@ -14,11 +14,10 @@
+ 	/bin/rm -f dbskkd-cdb *.o
+ 
+ dbskkd-cdb: dbskkd-cdb.o 
+-	$(CC) $(COMPAT) $(PRIVATE) -o dbskkd-cdb \
++	$(CC) $(LDFLAGS) $(COMPAT) $(PRIVATE) -o dbskkd-cdb \
+ 		dbskkd-cdb.o ${CDBLIB}
+ 
+ dbskkd-cdb.o: dbskkd-cdb.c 
+-	$(CC) $(COMPAT) $(PRIVATE) -c dbskkd-cdb.c
+ 
+ error.o: error.c error.h
+ 

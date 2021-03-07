@@ -1,0 +1,325 @@
+diff -ur a/openssh-8_4_P1-hpn-AES-CTR-15.1.diff b/openssh-8_4_P1-hpn-AES-CTR-15.1.diff
+--- a/openssh-8_4_P1-hpn-AES-CTR-15.1.diff	2021-03-03 12:57:01.975827879 -0800
++++ b/openssh-8_4_P1-hpn-AES-CTR-15.1.diff	2021-03-03 18:25:21.929305944 -0800
+@@ -3,9 +3,9 @@
+ --- a/Makefile.in
+ +++ b/Makefile.in
+ @@ -46,7 +46,7 @@ CFLAGS=@CFLAGS@
+- CFLAGS_NOPIE=@CFLAGS_NOPIE@
+- CPPFLAGS=-I. -I$(srcdir) @CPPFLAGS@ $(PATHS) @DEFS@
+- PICFLAG=@PICFLAG@
++ LD=@LD@
++ CFLAGS=@CFLAGS@ $(CFLAGS_EXTRA)
++ CPPFLAGS=-I. -I$(srcdir) @CPPFLAGS@ @LDAP_CPPFLAGS@ $(PATHS) @DEFS@
+ -LIBS=@LIBS@
+ +LIBS=@LIBS@ -lpthread
+  K5LIBS=@K5LIBS@
+@@ -803,8 +803,8 @@
+  ssh_packet_set_connection(struct ssh *ssh, int fd_in, int fd_out)
+  {
+  	struct session_state *state;
+--	const struct sshcipher *none = cipher_by_name("none");
+-+	struct sshcipher *none = cipher_by_name("none");
++-	const struct sshcipher *none = cipher_none();
+++	struct sshcipher *none = cipher_none();
+  	int r;
+  
+  	if (none == NULL) {
+@@ -894,24 +894,24 @@
+  		intptr = &options->compression;
+  		multistate_ptr = multistate_compression;
+ @@ -2062,6 +2068,7 @@ initialize_options(Options * options)
+- 	options->hostbased_accepted_algos = NULL;
+- 	options->pubkey_accepted_algos = NULL;
+- 	options->known_hosts_command = NULL;
++ 	options->revoked_host_keys = NULL;
++ 	options->fingerprint_hash = -1;
++ 	options->update_hostkeys = -1;
+ +	options->disable_multithreaded = -1;
+  }
+  
+  /*
+ @@ -2247,6 +2254,10 @@ fill_default_options(Options * options)
++ 		options->update_hostkeys = 0;
+  	if (options->sk_provider == NULL)
+  		options->sk_provider = xstrdup("$SSH_SK_PROVIDER");
+- #endif
+ +	if (options->update_hostkeys == -1)
+ +		options->update_hostkeys = 0;
+ +	if (options->disable_multithreaded == -1)
+ +		options->disable_multithreaded = 0;
+  
+- 	/* Expand KEX name lists */
+- 	all_cipher = cipher_alg_list(',', 0);
++ 	/* expand KEX and etc. name lists */
++ {	char *all;
+ diff --git a/readconf.h b/readconf.h
+ index d6a15550..d2d20548 100644
+ --- a/readconf.h
+@@ -950,9 +950,9 @@
+  	/* Portable-specific options */
+  	sUsePAM,
+ +	sDisableMTAES,
+- 	/* Standard Options */
+- 	sPort, sHostKeyFile, sLoginGraceTime,
+- 	sPermitRootLogin, sLogFacility, sLogLevel,
++ 	/* X.509 Standard Options */
++ 	sHostbasedAlgorithms,
++ 	sPubkeyAlgorithms,
+ @@ -672,6 +676,7 @@ static struct {
+  	{ "authorizedprincipalsfile", sAuthorizedPrincipalsFile, SSHCFG_ALL },
+  	{ "kexalgorithms", sKexAlgorithms, SSHCFG_GLOBAL },
+diff -ur a/openssh-8_4_P1-hpn-DynWinNoneSwitch-15.1.diff b/openssh-8_4_P1-hpn-DynWinNoneSwitch-15.1.diff
+--- a/openssh-8_4_P1-hpn-DynWinNoneSwitch-15.1.diff	2021-03-03 19:05:28.942903961 -0800
++++ b/openssh-8_4_P1-hpn-DynWinNoneSwitch-15.1.diff	2021-03-03 20:36:34.702362020 -0800
+@@ -157,6 +157,36 @@
+ +	 Allan Jude provided the code for the NoneMac and buffer normalization.
+ +         This work was financed, in part, by Cisco System, Inc., the National
+ +         Library of Medicine, and the National Science Foundation.
++diff --git a/auth2.c b/auth2.c
++--- a/auth2.c	2021-03-03 20:34:51.312051369 -0800
+++++ b/auth2.c	2021-03-03 20:35:15.797888115 -0800
++@@ -229,16 +229,17 @@
++ 	double delay;
++ 
++ 	digest_alg = ssh_digest_maxbytes();
++-	len = ssh_digest_bytes(digest_alg);
++-	hash = xmalloc(len);
+++	if (len = ssh_digest_bytes(digest_alg) > 0) {
+++		hash = xmalloc(len);
++ 
++-	(void)snprintf(b, sizeof b, "%llu%s",
++-	     (unsigned long long)options.timing_secret, user);
++-	if (ssh_digest_memory(digest_alg, b, strlen(b), hash, len) != 0)
++-		fatal_f("ssh_digest_memory");
++-	/* 0-4.2 ms of delay */
++-	delay = (double)PEEK_U32(hash) / 1000 / 1000 / 1000 / 1000;
++-	freezero(hash, len);
+++		(void)snprintf(b, sizeof b, "%llu%s",
+++			(unsigned long long)options.timing_secret, user);
+++		if (ssh_digest_memory(digest_alg, b, strlen(b), hash, len) != 0)
+++			fatal_f("ssh_digest_memory");
+++		/* 0-4.2 ms of delay */
+++		delay = (double)PEEK_U32(hash) / 1000 / 1000 / 1000 / 1000;
+++		freezero(hash, len);
+++	}
++ 	debug3_f("user specific delay %0.3lfms", delay/1000);
++ 	return MIN_FAIL_DELAY_SECONDS + delay;
++ }
+ diff --git a/channels.c b/channels.c
+ index e4917f3c..e0db582e 100644
+ --- a/channels.c
+@@ -209,14 +239,14 @@
+  static void
+  channel_pre_open(struct ssh *ssh, Channel *c,
+      fd_set *readset, fd_set *writeset)
+-@@ -2179,22 +2206,31 @@ channel_check_window(struct ssh *ssh, Channel *c)
++@@ -2179,21 +2206,31 @@ channel_check_window(struct ssh *ssh, Channel *c)
+  
+  	if (c->type == SSH_CHANNEL_OPEN &&
+  	    !(c->flags & (CHAN_CLOSE_SENT|CHAN_CLOSE_RCVD)) &&
+ -	    ((c->local_window_max - c->local_window >
+ -	    c->local_maxpacket*3) ||
+-+            ((ssh_packet_is_interactive(ssh) &&
+-+            c->local_window_max - c->local_window > c->local_maxpacket*3) ||
+++	    ((ssh_packet_is_interactive(ssh) &&
+++	    c->local_window_max - c->local_window > c->local_maxpacket*3) ||
+  	    c->local_window < c->local_window_max/2) &&
+  	    c->local_consumed > 0) {
+ +		u_int addition = 0;
+@@ -234,10 +264,12 @@
+  		    SSH2_MSG_CHANNEL_WINDOW_ADJUST)) != 0 ||
+  		    (r = sshpkt_put_u32(ssh, c->remote_id)) != 0 ||
+ -		    (r = sshpkt_put_u32(ssh, c->local_consumed)) != 0 ||
++-		    (r = sshpkt_send(ssh)) != 0)
++-			fatal_fr(r, "channel %d", c->self);
+ +		    (r = sshpkt_put_u32(ssh, c->local_consumed + addition)) != 0 ||
+- 		    (r = sshpkt_send(ssh)) != 0) {
+- 			fatal_fr(r, "channel %i", c->self);
+- 		}
+++		    (r = sshpkt_send(ssh)) != 0) {
+++			fatal_fr(r, "channel %i", c->self);
+++		}
+  		debug2("channel %d: window %d sent adjust %d", c->self,
+ -		    c->local_window, c->local_consumed);
+ -		c->local_window += c->local_consumed;
+@@ -384,20 +416,38 @@
+ index dec8e7e9..3c11558e 100644
+ --- a/compat.c
+ +++ b/compat.c
+-@@ -150,6 +150,13 @@ compat_banner(struct ssh *ssh, const char *version)
+- 			debug_f("match: %s pat %s compat 0x%08x",
++@@ -43,7 +43,7 @@
++ static u_int
++ compat_datafellows(const char *version)
++ {
++-	int i;
+++	int i, bugs = 0;
++ 	static struct {
++ 		char	*pat;
++ 		int	bugs;
++@@ -147,11 +147,19 @@
++ 		if (match_pattern_list(version, check[i].pat, 0) == 1) {
++ 			debug("match: %s pat %s compat 0x%08x",
+  			    version, check[i].pat, check[i].bugs);
+- 			ssh->compat = check[i].bugs;
+-+			/* Check to see if the remote side is OpenSSH and not HPN */
+-+			if (strstr(version, "OpenSSH") != NULL) {
+-+				if (strstr(version, "hpn") == NULL) {
+-+					ssh->compat |= SSH_BUG_LARGEWINDOW;
+-+					debug("Remote is NON-HPN aware");
+-+				}
+-+			}
+- 			return;
++-			return check[i].bugs;
+++			bugs |= check[i].bugs;
+  		}
+  	}
++-	debug("no match: %s", version);
++-	return 0;
+++	/* Check to see if the remote side is OpenSSH and not HPN */
+++	if (strstr(version, "OpenSSH") != NULL) {
+++		if (strstr(version, "hpn") == NULL) {
+++			bugs |= SSH_BUG_LARGEWINDOW;
+++			debug("Remote is NON-HPN aware");
+++		}
+++	}
+++	if (bugs == 0)
+++		debug("no match: %s", version);
+++	return bugs;
++ }
++ 
++ char *
+ diff --git a/compat.h b/compat.h
+ index 66db42cc..d4e811e4 100644
+ --- a/compat.h
+@@ -456,7 +506,7 @@
+ @@ -888,6 +888,10 @@ kex_choose_conf(struct ssh *ssh)
+  	int nenc, nmac, ncomp;
+  	u_int mode, ctos, need, dh_need, authlen;
+- 	int r, first_kex_follows;
++ 	int r, first_kex_follows = 0;
+ +	int auth_flag = 0;
+ +
+ +	auth_flag = packet_authentication_state(ssh);
+@@ -1033,19 +1083,6 @@
+  
+  /* File to read commands from */
+  FILE* infile;
+-diff --git a/ssh-keygen.c b/ssh-keygen.c
+-index a12b79a5..8b839219 100644
+---- a/ssh-keygen.c
+-+++ b/ssh-keygen.c
+-@@ -2999,7 +2999,7 @@ do_download_sk(const char *skprovider, const char *device)
+- 			freezero(pin, strlen(pin));
+- 		error("Unable to load resident keys: %s", ssh_err(r));
+- 		return -1;
+--	}
+-+ 	}
+- 	if (nkeys == 0)
+- 		logit("No keys to download");
+- 	if (pin != NULL)
+ diff --git a/ssh.c b/ssh.c
+ index f34ca0d7..d7d134f7 100644
+ --- a/ssh.c
+@@ -1091,7 +1128,7 @@
+ +	else
+ +		options.hpn_buffer_size = 2 * 1024 * 1024;
+ +
+-+	if (ssh->compat & SSH_BUG_LARGEWINDOW) {
+++	if (ssh_compat_fellows(ssh, SSH_BUG_LARGEWINDOW)) {
+ +		debug("HPN to Non-HPN Connection");
+ +	} else {
+ +		int sock, socksize;
+@@ -1331,6 +1368,26 @@
+  		/* Bind the socket to the desired port. */
+  		if (bind(listen_sock, ai->ai_addr, ai->ai_addrlen) == -1) {
+  			error("Bind to port %s on %s failed: %.200s.",
++@@ -1625,12 +1625,13 @@
++ 		if (ssh_digest_update(ctx, sshbuf_ptr(server_cfg),
++ 		    sshbuf_len(server_cfg)) != 0)
++ 			fatal_f("ssh_digest_update");
++-		len = ssh_digest_bytes(digest_alg);
++-		hash = xmalloc(len);
++-		if (ssh_digest_final(ctx, hash, len) != 0)
++-			fatal_f("ssh_digest_final");
++-		options.timing_secret = PEEK_U64(hash);
++-		freezero(hash, len);
+++		if (len = ssh_digest_bytes(digest_alg) > 0) {
+++			hash = xmalloc(len);
+++			if (ssh_digest_final(ctx, hash, len) != 0)
+++				fatal_f("ssh_digest_final");
+++			options.timing_secret = PEEK_U64(hash);
+++			freezero(hash, len);
+++		}
++ 		ssh_digest_free(ctx);
++ 		ctx = NULL;
++ 		return;
+ @@ -1746,6 +1753,19 @@ main(int ac, char **av)
+  	/* Fill in default values for those options not explicitly set. */
+  	fill_default_server_options(&options);
+@@ -1401,14 +1458,3 @@
+  # Example of overriding settings on a per-user basis
+  #Match User anoncvs
+  #	X11Forwarding no
+-diff --git a/version.h b/version.h
+-index c2f9c55b..f2e7fa80 100644
+---- a/version.h
+-+++ b/version.h
+-@@ -3,4 +3,5 @@
+- #define SSH_VERSION	"OpenSSH_8.4"
+- 
+- #define SSH_PORTABLE	"p1"
+--#define SSH_RELEASE	SSH_VERSION SSH_PORTABLE
+-+#define SSH_HPN         "-hpn15v1"
+-+#define SSH_RELEASE	SSH_VERSION SSH_PORTABLE SSH_HPN
+diff -ur a/openssh-8_4_P1-hpn-PeakTput-15.1.diff b/openssh-8_4_P1-hpn-PeakTput-15.1.diff
+--- a/openssh-8_4_P1-hpn-PeakTput-15.1.diff	2021-03-03 12:57:01.975827879 -0800
++++ b/openssh-8_4_P1-hpn-PeakTput-15.1.diff	2021-03-03 18:25:21.930305937 -0800
+@@ -12,9 +12,9 @@
+  static long stalled;		/* how long we have been stalled */
+  static int bytes_per_second;	/* current speed in bytes per second */
+ @@ -127,6 +129,7 @@ refresh_progress_meter(int force_update)
++ 	off_t bytes_left;
+  	int cur_speed;
+- 	int hours, minutes, seconds;
+- 	int file_len;
++ 	int len;
+ +	off_t delta_pos;
+  
+  	if ((!force_update && !alarm_fired && !win_resized) || !can_output())
+@@ -33,12 +33,12 @@
+ @@ -166,7 +173,7 @@ refresh_progress_meter(int force_update)
+  
+  	/* filename */
+- 	buf[0] = '\0';
+--	file_len = win_size - 36;
+-+	file_len = win_size - 45;
+- 	if (file_len > 0) {
+- 		buf[0] = '\r';
+- 		snmprintf(buf+1, sizeof(buf)-1, &file_len, "%-*s",
++ 	if (win_size > 36) {
++-		int file_len = win_size - 36;
+++		int file_len = win_size - 45;
++ 		snmprintf(buf+1, sizeof(buf)-1, &file_len, "%-*s ",
++ 		    file_len, file);
++ 	}
+ @@ -191,6 +198,15 @@ refresh_progress_meter(int force_update)
+  	    (off_t)bytes_per_second);
+  	strlcat(buf, "/s ", win_size);
+@@ -63,15 +63,3 @@
+  }
+  
+  /*ARGSUSED*/
+-diff --git a/ssh-keygen.c b/ssh-keygen.c
+-index a12b79a5..76b22338 100644
+---- a/ssh-keygen.c
+-+++ b/ssh-keygen.c
+-@@ -2987,7 +2987,6 @@ do_download_sk(const char *skprovider, const char *device)
+- 
+- 	if (skprovider == NULL)
+- 		fatal("Cannot download keys without provider");
+--
+- 	pin = read_passphrase("Enter PIN for authenticator: ", RP_ALLOW_STDIN);
+- 	if (!quiet) {
+- 		printf("You may need to touch your authenticator "

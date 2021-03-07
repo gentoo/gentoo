@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<use>
+		<flag name="brightness-control">Enable screen brightness control using <pkg>app-misc/ddcutil</pkg></flag>
+		<flag name="wireless">Enable wireless energy saving actions via <pkg>kde-frameworks/bluez-qt</pkg> and <pkg>kde-frameworks/networkmanager-qt</pkg></flag>
+	</use>
+</pkgmetadata>

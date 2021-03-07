@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription>
+		KochMorse is a simple morse-code tutor using the Koch method. It is
+		written in C++ and uses Qt5 for the graphical user interface.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">hmatuschek/kochmorse</remote-id>
+	</upstream>
+</pkgmetadata>

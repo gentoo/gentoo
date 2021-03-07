@@ -1,0 +1,14 @@
+diff -Naur a/fsgs/amiga/roms.py b/fsgs/amiga/roms.py
+--- a/fsgs/amiga/roms.py	2019-06-21 17:49:42.000000000 +0100
++++ b/fsgs/amiga/roms.py	2019-07-21 21:42:14.135600616 +0100
+@@ -10,7 +10,9 @@
+     # amiga-os-130.rom (decrypted, patched)
+     # Kickstart v1.3 r34.5 (1987)(Commodore)(A500-A1000-A2000-CDTV)[!]
+     # Kickstart v1.3 r34.5 (1987)(Commodore)(A500-A1000-A2000-CDTV)[o] (patch)
+-    "891e9a547772fe0c6c19b610baf8bc4ea7fcb785"
++    "891e9a547772fe0c6c19b610baf8bc4ea7fcb785",
++    # kick13.rom - from Upgrade Commodore Amiga 500 (1989)
++    "90933936cce43ca9bc6bf375662c076b27e3c458",
+ ]
+ 
+ A500_1_2_KICKSTARTS = [

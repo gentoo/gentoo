@@ -1,0 +1,34 @@
+--- a/net-snmp-config.in
++++ b/net-snmp-config.in
+@@ -190,13 +190,13 @@
+     #################################################### client lib
+     --libs)
+       # use this one == --netsnmp-libs + --external-libs
+-      echo $NSC_LDFLAGS $NSC_LIBDIR $NSC_SNMPLIBS $NSC_LIBS
++      echo $NSC_LIBDIR $NSC_SNMPLIBS $NSC_LIBS
+       ;;
+     --netsnmp-libs)
+       echo $NSC_LIBDIR $NSC_BASE_SNMP_LIBS
+       ;;
+     --external-libs)
+-      echo $NSC_LDFLAGS $NSC_LNETSNMPLIBS $NSC_LIBS @PERLLDOPTS_FOR_APPS@
++      echo $NSC_LNETSNMPLIBS $NSC_LIBS @PERLLDOPTS_FOR_APPS@
+       ;;
+     #################################################### agent lib
+     --base-agent-libs)
+@@ -207,13 +207,13 @@
+       ;;
+     --agent-libs)
+       # use this one == --netsnmp-agent-libs + --external-libs
+-      echo $NSC_LDFLAGS $NSC_LIBDIR $NSC_AGENTLIBS $NSC_LIBS
++      echo $NSC_LIBDIR $NSC_AGENTLIBS $NSC_LIBS
+       ;;
+     --netsnmp-agent-libs)
+       echo $NSC_LIBDIR $NSC_BASE_AGENT_LIBS
+       ;;
+     --external-agent-libs)
+-      echo $NSC_LDFLAGS $NSC_LMIBLIBS $NSC_LAGENTLIBS $NSC_LNETSNMPLIBS $NSC_LIBS
++      echo $NSC_LMIBLIBS $NSC_LAGENTLIBS $NSC_LNETSNMPLIBS $NSC_LIBS
+       ;;
+     ####################################################
+     --version|--ver*)

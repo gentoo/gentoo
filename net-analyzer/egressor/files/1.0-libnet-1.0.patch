@@ -1,0 +1,10 @@
+--- a/client/Makefile
++++ b/client/Makefile
+@@ -15 +15 @@
+-LIBS        =   -L../../lib/ -lnet 
++LIBS        =   -L../../lib/ -lnet-1.0 
+--- a/client/libnet_test.h
++++ b/client/libnet_test.h
+@@ -36 +36 @@
+-#include <libnet.h>
++#include <libnet-1.0.h>

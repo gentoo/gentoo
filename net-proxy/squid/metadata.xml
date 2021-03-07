@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+    <email>zlogene@gentoo.org</email>
+    <name>Mikle Kolyada</name>
+</maintainer>
+  <use>
+    <flag name="ecap">Adds support for loadable content adaptation modules
+      (http://www.e-cap.org)</flag>
+    <flag name="esi">Enable ESI for accelerators, will cause squid reverse proxies
+      to be capable of the Edge Acceleration Specification (www.esi.org)</flag>
+    <flag name="htcp">Enable HTCP protocol</flag>
+    <flag name="ipf-transparent">Adds transparent proxy support for systems
+      using IP-Filter (only for *bsd)</flag>
+    <flag name="logrotate">Use <pkg>app-admin/logrotate</pkg> for rotating
+      logs</flag>
+    <flag name="kqueue">Enables *BSD kqueue() support</flag>
+    <flag name="pf-transparent">Adds transparent proxy support for systems using
+      PF (only for *bsd)</flag>
+    <flag name="qos">Adds support for Quality of Service using netfilter conntrack
+      - see qos_flow directive for more info</flag>
+    <flag name="ssl-crtd">Adds support for dynamic SSL certificate generation in
+      SslBump environments</flag>
+    <flag name="tproxy">Enables real Transparent Proxy support for Linux Netfilter
+      TPROXY</flag>
+    <flag name="wccp">Enable Web Cache Coordination Protocol</flag>
+    <flag name="wccpv2">Enable Web Cache Coordination V2 Protocol</flag>
+  </use>
+</pkgmetadata>

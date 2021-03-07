@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">XML-Mini</remote-id>
+    <remote-id type="cpan-module">XML::Mini</remote-id>
+    <remote-id type="cpan-module">XML::Mini::Document</remote-id>
+    <remote-id type="cpan-module">XML::Mini::Element</remote-id>
+    <remote-id type="cpan-module">XML::Mini::Element::CData</remote-id>
+    <remote-id type="cpan-module">XML::Mini::Element::Comment</remote-id>
+    <remote-id type="cpan-module">XML::Mini::Element::DocType</remote-id>
+    <remote-id type="cpan-module">XML::Mini::Element::Entity</remote-id>
+    <remote-id type="cpan-module">XML::Mini::Element::Header</remote-id>
+    <remote-id type="cpan-module">XML::Mini::Node</remote-id>
+    <remote-id type="cpan-module">XML::Mini::TreeComponent</remote-id>
+  </upstream>
+</pkgmetadata>

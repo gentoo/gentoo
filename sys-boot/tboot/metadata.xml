@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>perfinion@gentoo.org</email>
+		<name>Jason Zaman</name>
+	</maintainer>
+	<longdescription lang="en">
+	A pre-kernel/VMM module that uses Intel(R) Trusted Execution Technology to perform a measured and verified launch of an OS kernel/VMM.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">tboot</remote-id>
+	</upstream>
+</pkgmetadata>

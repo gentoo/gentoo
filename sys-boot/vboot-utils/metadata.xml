@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<upstream>
+		<bugs-to>http://crbug.com</bugs-to>
+		<changelog>https://chromium.googlesource.com/chromiumos/platform/vboot_reference/+log/master</changelog>
+		<doc>https://chromium.googlesource.com/chromiumos/platform/vboot_reference/+/master/README</doc>
+	</upstream>
+	<maintainer type="person">
+		<email>zmedico@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="libzip">Use dev-libs/libzip.</flag>
+	</use>
+</pkgmetadata>

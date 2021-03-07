@@ -1,0 +1,64 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,5 +1,5 @@
+-CFLAGS  += -std=c99 -Wall -O2 -D_REENTRANT
+-LIBS    := -lpthread -lm -lssl -lcrypto
++CFLAGS  += -std=c99 -Wall -D_REENTRANT
++LIBS    := -lm -lssl -lcrypto -lpthread
+ 
+ TARGET  := $(shell uname -s | tr '[A-Z]' '[a-z]' 2>/dev/null || echo unknown)
+ 
+@@ -24,15 +24,13 @@
+ 
+ ODIR := obj
+ OBJ  := $(patsubst %.c,$(ODIR)/%.o,$(SRC)) $(ODIR)/bytecode.o $(ODIR)/version.o
+-LIBS := -lluajit-5.1 $(LIBS)
++LIBS := $(LUA_LIBS) $(LIBS)
+ 
+ DEPS    :=
+ CFLAGS  += -I$(ODIR)/include
+-LDFLAGS += -L$(ODIR)/lib
+ 
+ ifneq ($(WITH_LUAJIT),)
+-	CFLAGS  += -I$(WITH_LUAJIT)/include
+-	LDFLAGS += -L$(WITH_LUAJIT)/lib
++	CFLAGS  += $(WITH_LUAJIT)
+ else
+ 	CFLAGS  += -I$(ODIR)/include/luajit-2.1
+ 	DEPS    += $(ODIR)/lib/libluajit-5.1.a
+@@ -40,7 +38,6 @@
+ 
+ ifneq ($(WITH_OPENSSL),)
+ 	CFLAGS  += -I$(WITH_OPENSSL)/include
+-	LDFLAGS += -L$(WITH_OPENSSL)/lib
+ else
+ 	DEPS += $(ODIR)/lib/libssl.a
+ endif
+@@ -51,15 +48,14 @@
+ 	$(RM) -rf $(BIN) obj/*
+ 
+ $(BIN): $(OBJ)
+-	@echo LINK $(BIN)
+-	@$(CC) $(LDFLAGS) -o $@ $^ $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $^ $(LIBS)
+ 
+ $(OBJ): config.h Makefile $(DEPS) | $(ODIR)
+ 
+ $(ODIR):
+ 	@mkdir -p $@
+ 
+-$(ODIR)/bytecode.o: src/wrk.lua
++$(ODIR)/bytecode.c: src/wrk.lua
+ 	@echo LUAJIT $<
+ 	@$(SHELL) -c 'PATH=obj/bin:$(PATH) luajit -b $(CURDIR)/$< $(CURDIR)/$@'
+ 
+@@ -67,8 +63,7 @@
+ 	@echo 'const char *VERSION="$(VER)";' | $(CC) -xc -c -o $@ -
+ 
+ $(ODIR)/%.o : %.c
+-	@echo CC $<
+-	@$(CC) $(CFLAGS) -c -o $@ $<
++	$(CC) $(CFLAGS) -c -o $@ $<
+ 
+ # Dependencies
+ 

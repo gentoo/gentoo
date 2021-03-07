@@ -1,0 +1,13 @@
+Index: xpra-3.0.2/setup.py
+===================================================================
+--- xpra-3.0.2.orig/setup.py
++++ xpra-3.0.2/setup.py
+@@ -516,7 +516,7 @@ def cython_add(extension, min_version="0
+     #python2.7 setup.py build -b build-2.7 install --no-compile \
+     #    --root=/var/tmp/portage/x11-wm/xpra-0.7.0/temp/images/2.7
+     if "--no-compile" in sys.argv and not ("build" in sys.argv and "install" in sys.argv):
+-        return
++        pass
+     assert cython_ENABLED, "cython compilation is disabled"
+     cython_version_check(min_version)
+     from Cython.Distutils import build_ext

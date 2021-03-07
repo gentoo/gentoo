@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-electronics@gentoo.org</email>
+		<name>Gentoo Electronics Project</name>
+	</maintainer>
+	<use>
+		<flag name="glade">Build with libglade and glade-3 supports, which includes a glade's module for GtkDataBox widget</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">gtkdatabox</remote-id>
+	</upstream>
+</pkgmetadata>

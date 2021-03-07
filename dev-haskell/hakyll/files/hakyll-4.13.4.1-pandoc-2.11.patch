@@ -1,0 +1,209 @@
+From 77afcbc2937a4ee5db9666c1f3e0c090914d3980 Mon Sep 17 00:00:00 2001
+From: Jasper Van der Jeugt <m@jaspervdj.be>
+Date: Sun, 6 Dec 2020 19:24:06 +0100
+Subject: [PATCH] Pandoc 2.11 compatibility (#826)
+
+* Pandoc 2.11 compatibility
+
+* Bump stack.yaml
+
+* Bump stack dependencies
+---
+ lib/Hakyll/Web/Pandoc/Biblio.hs | 102 +++++++++++++++++---------------
+ lib/Hakyll/Web/Pandoc/Binary.hs |  12 ----
+ 5 files changed, 123 insertions(+), 86 deletions(-)
+diff --git a/lib/Hakyll/Web/Pandoc/Biblio.hs b/lib/Hakyll/Web/Pandoc/Biblio.hs
+index 5127d881..567f478b 100644
+--- a/lib/Hakyll/Web/Pandoc/Biblio.hs
++++ b/lib/Hakyll/Web/Pandoc/Biblio.hs
+@@ -12,6 +12,7 @@
+ {-# LANGUAGE Arrows                     #-}
+ {-# LANGUAGE DeriveDataTypeable         #-}
+ {-# LANGUAGE GeneralizedNewtypeDeriving #-}
++{-# LANGUAGE OverloadedStrings          #-}
+ module Hakyll.Web.Pandoc.Biblio
+     ( CSL
+     , cslCompiler
+@@ -23,33 +24,31 @@ module Hakyll.Web.Pandoc.Biblio
+ 
+ 
+ --------------------------------------------------------------------------------
+-import           Control.Monad            (liftM, replicateM)
+-import           Data.Binary              (Binary (..))
+-import           Data.Typeable            (Typeable)
++import           Control.Monad                 (liftM)
++import           Data.Binary                   (Binary (..))
++import qualified Data.ByteString               as B
++import qualified Data.ByteString.Lazy          as BL
++import qualified Data.Map                      as Map
++import qualified Data.Time                     as Time
++import           Data.Typeable                 (Typeable)
+ import           Hakyll.Core.Compiler
+ import           Hakyll.Core.Compiler.Internal
+ import           Hakyll.Core.Identifier
+ import           Hakyll.Core.Item
+-import           Hakyll.Core.Provider
+ import           Hakyll.Core.Writable
+ import           Hakyll.Web.Pandoc
+-import           Hakyll.Web.Pandoc.Binary ()
+-import qualified Text.CSL                 as CSL
+-import           Text.CSL.Pandoc          (processCites)
+-import           Text.Pandoc              (Pandoc, ReaderOptions (..),
+-                                           enableExtension, Extension (..))
++import           Text.Pandoc                   (Extension (..), Pandoc,
++                                                ReaderOptions (..),
++                                                enableExtension)
++import qualified Text.Pandoc                   as Pandoc
++import qualified Text.Pandoc.Citeproc          as Pandoc (processCitations)
+ 
+ 
+ --------------------------------------------------------------------------------
+-data CSL = CSL
+-    deriving (Show, Typeable)
++newtype CSL = CSL {unCSL :: B.ByteString}
++    deriving (Binary, Show, Typeable)
+ 
+ 
+---------------------------------------------------------------------------------
+-instance Binary CSL where
+-    put CSL = return ()
+-    get     = return CSL
+-
+ 
+ --------------------------------------------------------------------------------
+ instance Writable CSL where
+@@ -59,21 +58,12 @@ instance Writable CSL where
+ 
+ --------------------------------------------------------------------------------
+ cslCompiler :: Compiler (Item CSL)
+-cslCompiler = makeItem CSL
+-
+-
+---------------------------------------------------------------------------------
+-newtype Biblio = Biblio [CSL.Reference]
+-    deriving (Show, Typeable)
++cslCompiler = fmap (CSL . BL.toStrict) <$> getResourceLBS
+ 
+ 
+ --------------------------------------------------------------------------------
+-instance Binary Biblio where
+-    -- Ugly.
+-    get             = do
+-        len <- get
+-        Biblio <$> replicateM len get
+-    put (Biblio rs) = put (length rs) >> mapM_ put rs
++newtype Biblio = Biblio {unBiblio :: B.ByteString}
++    deriving (Binary, Show, Typeable)
+ 
+ 
+ --------------------------------------------------------------------------------
+@@ -84,12 +74,7 @@ instance Writable Biblio where
+ 
+ --------------------------------------------------------------------------------
+ biblioCompiler :: Compiler (Item Biblio)
+-biblioCompiler = do
+-    filePath <- getResourceFilePath
+-    makeItem =<< unsafeCompiler (Biblio <$> CSL.readBiblioFile idpred filePath)
+-  where
+-    -- This is a filter on citations.  We include all citations.
+-    idpred = const True
++biblioCompiler = fmap (Biblio . BL.toStrict) <$> getResourceLBS
+ 
+ 
+ --------------------------------------------------------------------------------
+@@ -99,19 +84,42 @@ readPandocBiblio :: ReaderOptions
+                  -> (Item String)
+                  -> Compiler (Item Pandoc)
+ readPandocBiblio ropt csl biblio item = do
+-    -- Parse CSL file, if given
+-    provider <- compilerProvider <$> compilerAsk
+-    style <- unsafeCompiler $
+-             CSL.readCSLFile Nothing . (resourceFilePath provider) . itemIdentifier $ csl
+-
+-    -- We need to know the citation keys, add then *before* actually parsing the
+-    -- actual page. If we don't do this, pandoc won't even consider them
+-    -- citations!
+-    let Biblio refs = itemBody biblio
+-    pandoc <- itemBody <$> readPandocWith ropt item
+-    let pandoc' = processCites style refs pandoc
+-
+-    return $ fmap (const pandoc') item
++    -- It's not straightforward to use the Pandoc API as of 2.11 to deal with
++    -- citations, since it doesn't export many things in 'Text.Pandoc.Citeproc'.
++    -- The 'citeproc' package is also hard to use.
++    --
++    -- So instead, we try treating Pandoc as a black box.  Pandoc can read
++    -- specific csl and bilbio files based on metadata keys.
++    --
++    -- So we load the CSL and Biblio files and pass them to Pandoc using the
++    -- ersatz filesystem.
++    Pandoc.Pandoc (Pandoc.Meta meta) blocks <- itemBody <$>
++        readPandocWith ropt item
++
++    let cslFile = Pandoc.FileInfo zeroTime . unCSL $ itemBody csl
++        bibFile = Pandoc.FileInfo zeroTime . unBiblio $ itemBody biblio
++        addBiblioFiles = \st -> st
++            { Pandoc.stFiles =
++                Pandoc.insertInFileTree "_hakyll/style.csl" cslFile .
++                Pandoc.insertInFileTree "_hakyll/refs.bib" bibFile $
++                Pandoc.stFiles st
++            }
++        biblioMeta = Pandoc.Meta .
++            Map.insert "csl" (Pandoc.MetaString "_hakyll/style.csl") .
++            Map.insert "bibliography" (Pandoc.MetaString "_hakyll/refs.bib") $
++            meta
++        errOrPandoc = Pandoc.runPure $ do
++            Pandoc.modifyPureState addBiblioFiles
++            Pandoc.processCitations $ Pandoc.Pandoc biblioMeta blocks
++
++    pandoc <- case errOrPandoc of
++        Left  e -> compilerThrow ["Error during processCitations: " ++ show e]
++        Right x -> return x
++
++    return $ fmap (const pandoc) item
++
++  where
++    zeroTime = Time.UTCTime (toEnum 0) 0
+ 
+ --------------------------------------------------------------------------------
+ pandocBiblioCompiler :: String -> String -> Compiler (Item String)
+diff --git a/lib/Hakyll/Web/Pandoc/Binary.hs b/lib/Hakyll/Web/Pandoc/Binary.hs
+index 5d3efead..3f7f4fb5 100644
+--- a/lib/Hakyll/Web/Pandoc/Binary.hs
++++ b/lib/Hakyll/Web/Pandoc/Binary.hs
+@@ -4,9 +4,6 @@ module Hakyll.Web.Pandoc.Binary where
+ 
+ import           Data.Binary        (Binary (..))
+ 
+-import qualified Text.CSL           as CSL
+-import qualified Text.CSL.Reference as REF
+-import qualified Text.CSL.Style     as STY
+ import           Text.Pandoc
+ 
+ --------------------------------------------------------------------------------
+@@ -18,7 +15,6 @@ instance Binary Caption
+ instance Binary Cell
+ instance Binary ColSpan
+ instance Binary ColWidth
+-instance Binary CSL.Reference
+ instance Binary Citation
+ instance Binary CitationMode
+ instance Binary Format
+@@ -27,17 +23,9 @@ instance Binary ListNumberDelim
+ instance Binary ListNumberStyle
+ instance Binary MathType
+ instance Binary QuoteType
+-instance Binary REF.CLabel
+-instance Binary REF.CNum
+-instance Binary REF.Literal
+-instance Binary REF.RefDate
+-instance Binary REF.RefType
+-instance Binary REF.Season
+ instance Binary Row
+ instance Binary RowHeadColumns
+ instance Binary RowSpan
+-instance Binary STY.Agent
+-instance Binary STY.Formatted
+ instance Binary TableBody
+ instance Binary TableFoot
+ instance Binary TableHead

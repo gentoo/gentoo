@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		This is a small wrapper around the \"directory\", \"unix\", and \"Win32\"
+		packages, for use with \"system-filepath\". It provides a consistent API
+		to the various versions of these packages distributed with different
+		versions of GHC.
+		
+		In particular, this library supports working with POSIX files that have
+		paths which can't be decoded in the current locale encoding.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">fpco/haskell-filesystem</remote-id>
+	</upstream>
+</pkgmetadata>

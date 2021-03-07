@@ -1,0 +1,112 @@
+https://github.com/mypaint/mypaint/issues/1107
+https://bugs.gentoo.org/739122
+https://github.com/mypaint/mypaint/commit/356716e7bacfcbb1f3ab80171fea405fdd10b2b9.patch
+----
+From 356716e7bacfcbb1f3ab80171fea405fdd10b2b9 Mon Sep 17 00:00:00 2001
+From: Red Rozenglass <rozenglass@protonmail.com>
+Date: Fri, 11 Sep 2020 02:43:49 +0300
+Subject: [PATCH] Acquire/release the GIL while processing tile requests
+
+Fixes crashes on some Linux distros, potentially improves performance.
+
+When handling tile requests we currently use an openmp critical block in a
+callback registered with libmypaint. The callback calls into Python code
+without locking the GIL. This sometimes crashes mypaint in numpy's memory
+cache allocator on some Linux distros that compile numpy with run-time
+asserts (without `-DNDEBUG`), like Gentoo, as numpy uses Python's GIL
+internally as a locking mechanism for its non-thread-safe global cache
+management.
+
+Acquiring the GIL in the C callback, before calling into Python, ensures
+that the GIL is still locked by the current thread when it reaches numpy's
+code, and thus prevents the crashes. We yield the GIL whenever Python code
+calls again into libmypaint, This allows other threads to acquire it, and
+concurrent callbacks to run, which prevents deadlocks that would otherwise
+happen while waiting for all the callbacks to finish on Python's side. When
+libmypaint is done we re-acquire the GIL, and return up to the callback
+where the GIL is released again after some Python reference count
+bookkeeping.
+
+The OpenMP critical block is no longer necessary after introducing the GIL
+locking mechanism. This would potentially improve performance as the C code
+in libmypaint can process multiple callbacks at the same time during the
+`Py_BEGIN_ALLOW_THREADS' period that yields the GIL.
+---
+ lib/brush.hpp              | 16 ++++++++++++++--
+ lib/pythontiledsurface.cpp |  7 +++++--
+ lib/tiledsurface.hpp       |  4 +++-
+ 3 files changed, 22 insertions(+), 5 deletions(-)
+
+diff --git a/lib/brush.hpp b/lib/brush.hpp
+index f717a42df..0db455377 100644
+--- a/lib/brush.hpp
++++ b/lib/brush.hpp
+@@ -66,13 +66,25 @@ class Brush {
+   bool stroke_to (Surface * surface, float x, float y, float pressure, float xtilt, float ytilt, double dtime, float viewzoom, float viewrotation, float barrel_rotation)
+   {
+       MyPaintSurface2 *c_surface = surface->get_surface2_interface();
+-      return mypaint_brush_stroke_to_2(c_brush, c_surface, x, y, pressure, xtilt, ytilt, dtime, viewzoom, viewrotation, barrel_rotation);
++      bool stroke_finished_or_empty;
++
++      Py_BEGIN_ALLOW_THREADS
++          stroke_finished_or_empty = mypaint_brush_stroke_to_2(c_brush, c_surface, x, y, pressure, xtilt, ytilt, dtime, viewzoom, viewrotation, barrel_rotation);
++      Py_END_ALLOW_THREADS
++
++      return stroke_finished_or_empty;
+   }
+ 
+   bool stroke_to_linear (Surface * surface, float x, float y, float pressure, float xtilt, float ytilt, double dtime, float viewzoom, float viewrotation, float barrel_rotation)
+   {
+       MyPaintSurface2 *c_surface = surface->get_surface2_interface();
+-      return mypaint_brush_stroke_to_2_linearsRGB(c_brush, c_surface, x, y, pressure, xtilt, ytilt, dtime, viewzoom, viewrotation, barrel_rotation);
++      bool stroke_finished_or_empty;
++
++      Py_BEGIN_ALLOW_THREADS
++          stroke_finished_or_empty = mypaint_brush_stroke_to_2_linearsRGB(c_brush, c_surface, x, y, pressure, xtilt, ytilt, dtime, viewzoom, viewrotation, barrel_rotation);
++      Py_END_ALLOW_THREADS
++
++      return stroke_finished_or_empty;
+   }
+ 
+   double get_total_stroke_painting_time()
+diff --git a/lib/pythontiledsurface.cpp b/lib/pythontiledsurface.cpp
+index 46c515c99..2c6e773db 100644
+--- a/lib/pythontiledsurface.cpp
++++ b/lib/pythontiledsurface.cpp
+@@ -36,8 +36,9 @@ tile_request_start(MyPaintTiledSurface2 *tiled_surface, MyPaintTileRequest *requ
+     const int ty = request->ty;
+     PyArrayObject* rgba = NULL;
+ 
+-#pragma omp critical
+ {
++    PyGILState_STATE gstate = PyGILState_Ensure();
++
+     rgba = (PyArrayObject*)PyObject_CallMethod(self->py_obj, "_get_tile_numpy", "(iii)", tx, ty, readonly);
+     if (rgba == NULL) {
+         request->buffer = NULL;
+@@ -59,7 +60,9 @@ tile_request_start(MyPaintTiledSurface2 *tiled_surface, MyPaintTileRequest *requ
+         Py_DECREF((PyObject *)rgba);
+         request->buffer = (uint16_t*)PyArray_DATA(rgba);
+     }
+-} // #end pragma opt critical
++
++    PyGILState_Release(gstate);
++}
+ 
+ 
+ }
+diff --git a/lib/tiledsurface.hpp b/lib/tiledsurface.hpp
+index 3a6b2e61d..d1a5d1307 100644
+--- a/lib/tiledsurface.hpp
++++ b/lib/tiledsurface.hpp
+@@ -66,7 +66,9 @@ class TiledSurface : public Surface {
+       MyPaintRectangle* rects = this->bbox_rectangles;
+       MyPaintRectangles bboxes = {BBOXES, rects};
+ 
+-      mypaint_surface2_end_atomic((MyPaintSurface2 *)c_surface, &bboxes);
++      Py_BEGIN_ALLOW_THREADS
++          mypaint_surface2_end_atomic((MyPaintSurface2 *)c_surface, &bboxes);
++      Py_END_ALLOW_THREADS
+ 
+       // The capacity of the bounding box array will most often exceed the number
+       // of rectangles that are actually used. The call to mypaint_surface_end_atomic

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>netmon@gentoo.org</email>
+		<name>Gentoo network monitoring and analysis project</name>
+	</maintainer>
+	<longdescription>
+		vnStat is a network traffic monitor for Linux that keeps a log of daily
+		network traffic for the selected interface(s). vnStat isn't a packet sniffer.
+		The traffic information is analyzed from the /proc filesystem. That way vnStat
+		can be used even without root permissions.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">vergoh/vnstat</remote-id>
+		<changelog>https://humdi.net/vnstat/CHANGES</changelog>
+	</upstream>
+</pkgmetadata>

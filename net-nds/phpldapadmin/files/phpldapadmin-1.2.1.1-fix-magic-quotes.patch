@@ -1,0 +1,23 @@
+diff -urN phpldapadmin-1.2.1.1/lib/emuhash_functions.php phpldapadmin-1.2.1.1-new/lib/emuhash_functions.php
+--- phpldapadmin-1.2.1.1/lib/emuhash_functions.php	2011-05-11 09:40:18.000000000 +0000
++++ phpldapadmin-1.2.1.1-new/lib/emuhash_functions.php	2011-10-20 15:55:05.597714125 +0000
+@@ -59,8 +59,8 @@
+ 			global $emuhash_emu;
+ 
+ 			if (PHP_VERSION < 6) {
+-				$current_magic_quotes = @get_magic_quotes_runtime();
+-				@set_magic_quotes_runtime(0);
++				$current_magic_quotes = ini_get('magic_quotes_runtime');
++				ini_set('magic_quotes_runtime', 0);;
+ 			}
+ 
+ 			$tmpfile = tempnam($emuhash_emu['tmpdir'],'emuhash');
+@@ -78,7 +78,7 @@
+ 			unlink($tmpfile);
+ 
+ 			if (PHP_VERSION < 6)
+-				@set_magic_quotes_runtime($current_magic_quotes);
++				ini_set('magic_quotes_runtime', $current_magic_quotes);
+ 
+ 			return $pass;
+ 		}

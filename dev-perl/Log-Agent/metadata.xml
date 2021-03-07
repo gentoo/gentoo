@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Log-Agent</remote-id>
+    <remote-id type="cpan-module">Log::Agent</remote-id>
+    <remote-id type="cpan-module">Log::Agent::Channel</remote-id>
+    <remote-id type="cpan-module">Log::Agent::Channel::File</remote-id>
+    <remote-id type="cpan-module">Log::Agent::Channel::Handle</remote-id>
+    <remote-id type="cpan-module">Log::Agent::Channel::Syslog</remote-id>
+    <remote-id type="cpan-module">Log::Agent::Driver</remote-id>
+    <remote-id type="cpan-module">Log::Agent::Driver::Datum</remote-id>
+    <remote-id type="cpan-module">Log::Agent::Driver::Default</remote-id>
+    <remote-id type="cpan-module">Log::Agent::Driver::File</remote-id>
+    <remote-id type="cpan-module">Log::Agent::Driver::Fork</remote-id>
+    <remote-id type="cpan-module">Log::Agent::Driver::Mail</remote-id>
+    <remote-id type="cpan-module">Log::Agent::Driver::Silent</remote-id>
+    <remote-id type="cpan-module">Log::Agent::Driver::Syslog</remote-id>
+    <remote-id type="cpan-module">Log::Agent::File::Native</remote-id>
+    <remote-id type="cpan-module">Log::Agent::File_Pool</remote-id>
+    <remote-id type="cpan-module">Log::Agent::Formatting</remote-id>
+    <remote-id type="cpan-module">Log::Agent::Message</remote-id>
+    <remote-id type="cpan-module">Log::Agent::Prefixer</remote-id>
+    <remote-id type="cpan-module">Log::Agent::Priorities</remote-id>
+    <remote-id type="cpan-module">Log::Agent::Stamping</remote-id>
+    <remote-id type="cpan-module">Log::Agent::Tag</remote-id>
+    <remote-id type="cpan-module">Log::Agent::Tag::Callback</remote-id>
+    <remote-id type="cpan-module">Log::Agent::Tag::Caller</remote-id>
+    <remote-id type="cpan-module">Log::Agent::Tag::Priority</remote-id>
+    <remote-id type="cpan-module">Log::Agent::Tag::String</remote-id>
+    <remote-id type="cpan-module">Log::Agent::Tag_List</remote-id>
+  </upstream>
+</pkgmetadata>

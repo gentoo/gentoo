@@ -1,0 +1,13 @@
+--- a/configure.ac	2016-10-09 00:24:41.507447888 +0200
++++ b/configure.ac	2016-10-09 00:29:22.550927024 +0200
+@@ -22,7 +22,9 @@
+ VERTEX_ENABLE([UNITY],       [unity],       [Unity],        [disable])
+ VERTEX_ENABLE([XFWM],        [xfwm],        [XFWM],         [disable])
+ 
+-VERTEX_GNOME
++AC_ARG_WITH(gnome, AS_HELP_STRING([--with-gnome]),
++            [GNOME_VERSION=$withval], [GNOME_VERSION=3.20])
++AC_SUBST([GNOME_VERSION])
+ 
+ AC_CONFIG_FILES([
+     common/Makefile

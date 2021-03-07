@@ -1,0 +1,16 @@
+diff -ruN Digest-SHA-5.88.orig/Makefile.PL Digest-SHA-5.88/Makefile.PL
+--- Digest-SHA-5.88.orig/Makefile.PL	2014-03-09 11:36:39.000000000 +0100
++++ Digest-SHA-5.88/Makefile.PL	2014-11-29 00:52:48.089987473 +0100
+@@ -27,12 +27,6 @@
+ 	}
+ }
+ 
+-	# Enhance performance on Intel when using gcc
+-
+-if ($Config{archname} =~ /^i[3456]86/ && $Config{ccname} eq 'gcc') {
+-	push(@extra, OPTIMIZE => '-O1 -fomit-frame-pointer');
+-}
+-
+ my %att = (
+ 	'NAME'		=> 'Digest::SHA',
+ 	'VERSION_FROM'	=> $PM,

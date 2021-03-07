@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-chemistry@gentoo.org</email>
+		<name>Gentoo Chemistry Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Molsketch is a 2D molecular editing tool. Its goal is to help you draw
+		molecules quick and easily. Of course you're creation can be exported
+		afterwards in high quality in a number of vector and bitmap formats.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">molsketch</remote-id>
+	</upstream>
+</pkgmetadata>

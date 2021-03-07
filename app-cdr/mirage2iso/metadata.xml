@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
+	<use>
+		<flag name="pinentry">Support <pkg>app-crypt/pinentry</pkg> password
+			input backend.</flag>
+	</use>
+	<upstream>
+		<maintainer status="active">
+			<email>mgorny@gentoo.org</email>
+			<name>Michał Górny</name>
+		</maintainer>
+		<bugs-to>https://github.com/mgorny/mirage2iso/issues/</bugs-to>
+		<remote-id type="github">mgorny/mirage2iso</remote-id>
+	</upstream>
+</pkgmetadata>

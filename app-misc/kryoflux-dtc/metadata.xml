@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<use>
+		<flag name="demos">Install example floppy game files.</flag>
+		<flag name="fast-firmware">Install fast firmware instead of slow firmware.</flag>
+	</use>
+</pkgmetadata>

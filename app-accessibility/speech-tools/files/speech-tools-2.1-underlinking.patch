@@ -1,0 +1,11 @@
+--- speech_tools.orig/config/systems/GentooLinux.mak.old	2013-11-24 01:49:44.000000000 +0200
++++ speech_tools/config/systems/GentooLinux.mak	2013-11-24 13:04:14.327758435 +0200
+@@ -38,6 +38,7 @@
+  ###########################################################################
+ 
+ MANDIR=$(INSTALL_PREFIX)/share/man
++GENTOO_ALSA_LIBS=$(shell pkg-config --libs alsa)
+ GENTOO_CURSES_LIBS=$(shell pkg-config --libs ncurses)
+ # Gentoo does not use termcap
+-OS_LIBS = $(GENTOO_CURSES_LIBS) $(LDFLAGS) -ldl
++OS_LIBS = $(GENTOO_ALSA_LIBS) $(GENTOO_CURSES_LIBS) $(LDFLAGS) -ldl

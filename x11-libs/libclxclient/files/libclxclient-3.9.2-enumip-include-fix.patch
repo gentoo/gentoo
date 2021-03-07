@@ -1,0 +1,13 @@
+diff --git a/source/enumip.cc b/source/enumip.cc
+index 0873da8..1cdac0d 100644
+--- a/source/enumip.cc
++++ b/source/enumip.cc
+@@ -19,7 +19,7 @@
+ // ---------------------------------------------------------------------------------
+ 
+ 
+-#include <clxclient.h>
++#include "clxclient.h"
+ #include <X11/keysym.h>
+ 
+ 

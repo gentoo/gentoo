@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The games-action category contains action games.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie games-action enthält Actionspiele.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría games-action contiene juegos de acción.
+	</longdescription>
+	<longdescription lang="ja">
+		games-actionカテゴリーにはアクション・ゲームが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De games-action categorie bevat actiespellen.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm games-action chứa các trò chơi thuộc thể loại hành động.
+	</longdescription>
+	<longdescription lang="sk">
+		Kategória games-action obsahuje akčné hry.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria games-action contiene giochi d'azione.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria games-action contém jogos de ação.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria games-action zawiera gry akcji.
+	</longdescription>
+</catmetadata>
+

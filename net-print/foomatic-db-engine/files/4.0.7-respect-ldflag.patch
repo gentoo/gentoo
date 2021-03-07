@@ -1,0 +1,15 @@
+--- foomatic-db-engine-4.0.2/Makefile.in.orig	2009-07-23 11:45:28.487999828 +0200
++++ foomatic-db-engine-4.0.2/Makefile.in	2009-07-23 11:45:53.939525006 +0200
+@@ -231,10 +231,10 @@
+ 	( cd lib && $(PERL) Makefile.PL verbose INSTALLDIRS=$(PERL_INSTALLDIRS) )
+ 
+ foomatic-combo-xml: foomatic-combo-xml.c
+-	$(CC) $(CFLAGS) -o foomatic-combo-xml foomatic-combo-xml.c
++	$(CC) $(CFLAGS) $(LDFLAGS) -o foomatic-combo-xml foomatic-combo-xml.c
+ 
+ foomatic-perl-data: foomatic-perl-data.c
+-	$(CC) $(CFLAGS) $(XML_CFLAGS) -o foomatic-perl-data foomatic-perl-data.c $(XML_LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o foomatic-perl-data foomatic-perl-data.c $(XML_CFLAGS) $(XML_LIBS)
+ 
+ man: lib/Foomatic/Defaults.pm
+ 	chmod a+rx ./makeMan

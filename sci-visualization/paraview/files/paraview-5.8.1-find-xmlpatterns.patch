@@ -1,0 +1,38 @@
+From 7fe2ebc709ecb3e7f3b2aa6fc124dda0622541d4 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 25 Nov 2020 16:32:56 +0100
+Subject: [PATCH] Make qt_xmlpatterns_executable overridable
+
+So far this relies on fragile guessing of path or binary being in PATH.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMake/ParaViewClient.cmake | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/CMake/ParaViewClient.cmake b/CMake/ParaViewClient.cmake
+index b0dea2b328..13b59cd744 100644
+--- a/CMake/ParaViewClient.cmake
++++ b/CMake/ParaViewClient.cmake
+@@ -512,11 +512,13 @@ function (paraview_client_documentation)
+   endif ()
+ 
+   include("${_ParaViewClient_cmake_dir}/paraview-find-package-helpers.cmake" OPTIONAL)
+-  find_program(qt_xmlpatterns_executable
+-    NAMES xmlpatterns-qt5 xmlpatterns
+-    HINTS "${Qt5_DIR}/../../../bin"
+-          "${Qt5_DIR}/../../../libexec/qt5/bin"
+-    DOC   "Path to xmlpatterns")
++  if (NOT qt_xmlpatterns_executable)
++    find_program(qt_xmlpatterns_executable
++      NAMES xmlpatterns-qt5 xmlpatterns
++      HINTS "${Qt5_DIR}/../../../bin"
++            "${Qt5_DIR}/../../../libexec/qt5/bin"
++      DOC   "Path to xmlpatterns")
++  endif ()
+   mark_as_advanced(qt_xmlpatterns_executable)
+ 
+   if (NOT qt_xmlpatterns_executable)
+-- 
+2.29.2
+

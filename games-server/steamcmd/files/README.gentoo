@@ -1,0 +1,42 @@
+Before you can start installing your favourite dedicated server,
+you must let SteamCMD do update itself.
+You can do this, by running SteamCMD itself:
+
+cd /opt/steamcmd
+runuser -l steamcmd -c './steamcmd.sh' -s /bin/bash
+
+On the first run, you will see, that SteamCMD starts updating itself.
+After that, SteamCMD is ready to go
+for installing your favourite dedicated server.
+
+Please keep in mind: You should not run SteamCMD as root!
+
+This package provides an init script and a conf file.
+Don't modify those files directly,
+but instead make a symlink of that init script
+and a copy of that conf file.
+You would do this for every server, you want to setup.
+
+For example, you wan't to setup an old Counter-Strike 1.6 server,
+you would do:
+
+cd /etc/init.d
+ln -s steamcmd steamcmd.cstrike
+
+cd /etc/conf.d
+cp steamcmd steamcmd.cstrike
+
+After that, make your settings in /etc/conf.d/steamcmd.cstrike
+
+In order to install with SteamCMD a dedicated server,
+for example CS 1.6, please run:
+
+cd /opt/steamcmd
+./steamcmd.sh +login anonymous +force_install_dir /opt/steamcmd/hlds +app_set_config 90 mod cstrike +app_update 90 validate +quit
+
+While you can use any path for '+force_install_dir', it's recommended to use:
+'/opt/steamcmd/hlds' for older HL1 based mods.
+'/opt/steamcmd/srcds' for newer HL2 based mods.
+
+For more information, please visit the Valve Developer Community:
+https://developer.valvesoftware.com/wiki/SteamCMD

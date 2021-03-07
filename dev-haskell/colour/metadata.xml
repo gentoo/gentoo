@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		This package provides a data type for colours and transparency.
+		Colours can be blended and composed.
+		Various colour spaces are supported.
+		A module of colour names ("Data.Colour.Names") is provided.
+	</longdescription>
+</pkgmetadata>

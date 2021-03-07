@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">X11-Protocol</remote-id>
+    <remote-id type="cpan-module">X11::Auth</remote-id>
+    <remote-id type="cpan-module">X11::Keysyms</remote-id>
+    <remote-id type="cpan-module">X11::Protocol</remote-id>
+    <remote-id type="cpan-module">X11::Protocol::Connection</remote-id>
+    <remote-id type="cpan-module">X11::Protocol::Connection::FileHandle</remote-id>
+    <remote-id type="cpan-module">X11::Protocol::Connection::INETFH</remote-id>
+    <remote-id type="cpan-module">X11::Protocol::Connection::INETSocket</remote-id>
+    <remote-id type="cpan-module">X11::Protocol::Connection::Socket</remote-id>
+    <remote-id type="cpan-module">X11::Protocol::Connection::UNIXFH</remote-id>
+    <remote-id type="cpan-module">X11::Protocol::Connection::UNIXSocket</remote-id>
+    <remote-id type="cpan-module">X11::Protocol::Constants</remote-id>
+    <remote-id type="cpan-module">X11::Protocol::Ext::BIG_REQUESTS</remote-id>
+    <remote-id type="cpan-module">X11::Protocol::Ext::DPMS</remote-id>
+    <remote-id type="cpan-module">X11::Protocol::Ext::RENDER</remote-id>
+    <remote-id type="cpan-module">X11::Protocol::Ext::SHAPE</remote-id>
+    <remote-id type="cpan-module">X11::Protocol::Ext::XC_MISC</remote-id>
+    <remote-id type="cpan-module">X11::Protocol::Ext::XFree86_Misc</remote-id>
+  </upstream>
+</pkgmetadata>

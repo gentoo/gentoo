@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The dev-vcs category contains utilities focused on version control.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie dev-vcs enthält Programme zur Versionsverwaltung.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría dev-vcs contiene programas para control de versiones.
+	</longdescription>
+</catmetadata>

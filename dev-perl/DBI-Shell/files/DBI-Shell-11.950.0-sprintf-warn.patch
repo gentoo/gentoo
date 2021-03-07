@@ -1,0 +1,25 @@
+From f44b8ba9d8cf954c76a967cbfb5d4182f109f8cf Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Sun, 8 Oct 2017 13:30:36 +1300
+Subject: Silence warnings about reduntant sprintf args
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=123216
+---
+ lib/DBI/Format/SQLMinus.pm | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/lib/DBI/Format/SQLMinus.pm b/lib/DBI/Format/SQLMinus.pm
+index c3a9ba2..7b240c9 100755
+--- a/lib/DBI/Format/SQLMinus.pm
++++ b/lib/DBI/Format/SQLMinus.pm
+@@ -155,6 +155,7 @@ sub header {
+ 
+ 				if ( exists $cf->{format} and defined $cf->{format} ) {
+ 					$format_names = $cf->{format};
++					no warnings 'redundant';
+ 					$width = length sprintf( $format_names, " " );
+ 				}
+ 
+-- 
+2.14.1
+

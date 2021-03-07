@@ -1,0 +1,44 @@
+--- klick-0.12.2/src/metronome_map.hh.old	2016-09-21 22:17:41.364102201 -0400
++++ klick-0.12.2/src/metronome_map.hh	2016-09-21 22:28:50.611858765 -0400
+@@ -48,7 +48,7 @@
+     virtual void timebase_callback(position_t *);
+ 
+   private:
+-    static double const TICKS_PER_BEAT = 1920.0;
++    static double const TICKS_PER_BEAT;
+ 
+     // transport position
+     nframes_t _current;
+--- klick-0.12.2/src/metronome_map.cc.old	2016-09-21 22:27:01.551067088 -0400
++++ klick-0.12.2/src/metronome_map.cc	2016-09-21 22:28:49.027158380 -0400
+@@ -195,3 +195,5 @@
+         p->beats_per_minute = _pos.map_entry().tempi[n];
+     }
+ }
++
++double const MetronomeMap::TICKS_PER_BEAT = 1920.0;
+--- klick-0.12.2/src/metronome_simple.hh.old	2016-09-21 22:18:57.674628602 -0400
++++ klick-0.12.2/src/metronome_simple.hh	2016-09-21 22:29:04.307859355 -0400
+@@ -58,9 +58,9 @@
+ 
+   private:
+ 
+-    static int const MAX_TAPS = 5;
+-    static float const MAX_TAP_AGE = 3.0;
+-    static float const TAP_DIFF = 0.2;
++    static int const MAX_TAPS;
++    static float const MAX_TAP_AGE;
++    static float const TAP_DIFF;
+ 
+     float _tempo;
+     float _tempo_increment, _tempo_start, _tempo_limit;
+--- klick-0.12.2/src/metronome_simple.cc.old	2016-09-21 22:27:24.883846428 -0400
++++ klick-0.12.2/src/metronome_simple.cc	2016-09-21 22:28:46.015859632 -0400
+@@ -217,3 +217,7 @@
+ 
+     _frame += nframes;
+ }
++
++int const MetronomeSimple::MAX_TAPS = 5;
++float const MetronomeSimple::MAX_TAP_AGE = 3.0;
++float const MetronomeSimple::TAP_DIFF = 0.2;

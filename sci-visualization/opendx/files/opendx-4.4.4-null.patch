@@ -1,0 +1,14 @@
+diff -up dx-4.4.4/src/exec/libdx/xwindow.c.null dx-4.4.4/src/exec/libdx/xwindow.c
+--- dx-4.4.4/src/exec/libdx/xwindow.c.null	2000-06-12 07:45:40.000000000 +0200
++++ dx-4.4.4/src/exec/libdx/xwindow.c	2009-11-08 15:10:13.000000000 +0100
+@@ -29,7 +29,9 @@ Error
+ DXRegisterWindowHandlerWithCheckProc(Error (*proc) (int, Pointer),
+ 		int (*check)(int, Pointer), Display *d, Pointer arg)
+ {
+-    int fd = ConnectionNumber(d);
++    int fd;
++    if (d) fd = ConnectionNumber(d);
++    else return ERROR;
+ 
+     if (! DXRegisterInputHandlerWithCheckProc(proc, check, fd, arg))
+ 	return ERROR;

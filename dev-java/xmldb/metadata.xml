@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
+	<longdescription>
+XML:DB provides a community for collaborative development of specifications
+for XML databases and data manipulation technologies. Along with each
+specification an open source reference implementation will be developed to
+validate the ideas.
+</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">xmldb-org</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		A simple Haskell progress bar for the console. Heavily borrows from TJ
+		Holowaychuk's Node.JS project
+		&lt;https://github.com/tj/node-progress progress&gt;
+		
+		&lt;https://github.com/yamadapc/haskell-ascii-progress github&gt;
+	</longdescription>
+	<upstream>
+		<remote-id type="github">yamadapc/haskell-ascii-progress</remote-id>
+	</upstream>
+</pkgmetadata>

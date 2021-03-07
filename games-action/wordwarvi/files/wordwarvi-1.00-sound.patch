@@ -1,0 +1,80 @@
+diff -ru wordwarvi-1.00.orig/Makefile wordwarvi-1.00/Makefile
+--- wordwarvi-1.00.orig/Makefile	2011-06-09 00:06:22.000000000 -0400
++++ wordwarvi-1.00/Makefile	2011-06-11 19:57:55.609619777 -0400
+@@ -1,5 +1,5 @@
+ PREFIX=/usr
+-DATADIR=${PREFIX}/share/wordwarvi
++DATADIR?=${PREFIX}/share/wordwarvi
+ MANDIR?=${PREFIX}/share/man
+ MANPAGEDIR=${MANDIR}/man6
+ 
+@@ -24,18 +24,6 @@
+ CC ?= gcc
+ BUILD_CC ?= gcc
+ 
+-# DEBUG=-g
+-# DEBUG=
+-# PROFILE_FLAG=-pg
+-#PROFILE_FLAG=
+-#OPTIMIZE_FLAG=
+-# OPTIMIZE_FLAG=-O3
+-#OPTIMIZE_FLAG=-O3 -pedantic -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security
+-OPTIMIZE_FLAG=-O3 -pedantic
+-
+-
+-LDFLAGS=${PROFILE_FLAG}
+-
+ DEFINES=${SNDFLAGS} -DDATADIR=\"${DATADIR}/\"
+ 
+ all:	wordwarvi wordwarvi.6.gz
+@@ -53,24 +41,24 @@
+ endif
+ 
+ joystick.o:	joystick.c joystick.h Makefile
+-	$(CC) ${DEBUG} ${PROFILE_FLAG} ${OPTIMIZE_FLAG} -pthread -Wall -c joystick.c
++	$(CC) ${DEBUG} ${PROFILE_FLAG} ${CFLAGS} -pthread -Wall -c joystick.c
+ 
+ ogg_to_pcm.o:	ogg_to_pcm.c ogg_to_pcm.h Makefile
+-	$(CC) ${DEBUG} ${PROFILE_FLAG} ${OPTIMIZE_FLAG} `pkg-config --cflags vorbisfile` \
++	$(CC) ${DEBUG} ${PROFILE_FLAG} ${CFLAGS} `pkg-config --cflags vorbisfile` \
+ 		-pthread -Wall -c ogg_to_pcm.c
+ 
+ wwviaudio.o:	wwviaudio.c wwviaudio.h ogg_to_pcm.h my_point.h Makefile
+-	$(CC) -Wall ${DEBUG} ${PROFILE_FLAG} ${OPTIMIZE_FLAG} \
++	$(CC) -Wall ${DEBUG} ${PROFILE_FLAG} ${CFLAGS} \
+ 		${DEFINES} \
+ 		-pthread `pkg-config --cflags vorbisfile` \
+ 		-c wwviaudio.c
+ 
+ rumble.o:	rumble.c rumble.h Makefile
+-	$(CC) ${DEBUG} ${PROFILE_FLAG} ${OPTIMIZE_FLAG} `pkg-config --cflags vorbisfile` \
++	$(CC) ${DEBUG} ${PROFILE_FLAG} ${CFLAGS} `pkg-config --cflags vorbisfile` \
+ 		-pthread -Wall -c rumble.c
+ 
+ wwvi_font.o:	wwvi_font.c wwvi_font.h my_point.h Makefile
+-	$(CC) ${DEBUG} ${PROFILE_FLAG} ${OPTIMIZE_FLAG} -pthread -Wall -c wwvi_font.c
++	$(CC) ${DEBUG} ${PROFILE_FLAG} ${CFLAGS} -pthread -Wall -c wwvi_font.c
+ 
+ stamp:	stamp.c
+ 	$(BUILD_CC) -o stamp stamp.c
+@@ -78,7 +66,7 @@
+ wordwarvi:	wordwarvi.c joystick.o rumble.o ${OGGOBJ} wwviaudio.o wwvi_font.o \
+ 		Makefile version.h stamp levels.h rumble.h
+ 	./stamp > stamp.h
+-	$(CC) ${DEBUG} ${PROFILE_FLAG} ${OPTIMIZE_FLAG} ${SCREENSAVERFLAG} -pthread -Wall  ${DEFINES} \
++	$(CC) $(LDFLAGS) ${DEBUG} ${PROFILE_FLAG} ${CFLAGS} ${SCREENSAVERFLAG} -pthread -Wall  ${DEFINES} \
+ 		joystick.o \
+ 		rumble.o \
+ 		wwvi_font.o \
+diff -ru wordwarvi-1.00.orig/wwviaudio.c wordwarvi-1.00/wwviaudio.c
+--- wordwarvi-1.00.orig/wwviaudio.c	2011-06-09 00:06:22.000000000 -0400
++++ wordwarvi-1.00/wwviaudio.c	2011-06-11 19:57:17.394274660 -0400
+@@ -121,7 +121,7 @@
+ 	if (clipnum >= max_sound_clips || clipnum < 0)
+ 		return -1;
+ 
+-	snprintf(filebuf, PATH_MAX, "%s/%s", DATADIR, filename);
++	snprintf(filebuf, PATH_MAX, "GENTOO_DATADIR/%s", DATADIR, filename);
+ 	rc = stat(filebuf, &statbuf);
+ 	if (rc != 0) {
+ 		strncpy(filebuf, filename, PATH_MAX);

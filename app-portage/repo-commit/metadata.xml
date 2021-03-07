@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <!--maintainer-needed-->
+  <upstream>
+    <maintainer status="active">
+      <email>binki@gentoo.org</email>
+      <name>Nathan Phillip Brink</name>
+    </maintainer>
+    <bugs-to>https://bitbucket.org/gentoo/repo-commit/issues/</bugs-to>
+    <remote-id type="bitbucket">gentoo/repo-commit</remote-id>
+  </upstream>
+</pkgmetadata>

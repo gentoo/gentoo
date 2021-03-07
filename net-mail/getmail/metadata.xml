@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>r+gentoo@r78.nl</email>
+    <name>Remco Rĳnders</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <stabilize-allarches/>
+  <upstream>
+    <maintainer status="active">
+      <name>Roland Puntaier</name>
+    </maintainer>
+    <bugs-to>https://github.com/getmail6/getmail6/issues</bugs-to>
+    <remote-id type="github">getmail6/getmail6</remote-id>
+    <remote-id type="pypi">getmail</remote-id>
+  </upstream>
+</pkgmetadata>

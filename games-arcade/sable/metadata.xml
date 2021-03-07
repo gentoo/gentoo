@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>games@gentoo.org</email>
+	<name>Gentoo Games Project</name>
+</maintainer>
+<longdescription lang="en">
+Sable is a frantic 3d space shooter inspired by games such as After Burner and
+Space Harrier. You pilot a ship through an obstacle-laden landscape and attack
+or evade swarms of enemies.
+
+The game itself is quite easy to play. The arrow keys move your ship, and the
+space bar fires your cannons. Holding down the space bar produces a rapid-fire
+effect. Avoid enemy craft, enemy shots, and the pylons. Pylons are destroyable
+but require concentrated fire to destroy.
+</longdescription>
+</pkgmetadata>

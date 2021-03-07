@@ -1,0 +1,13 @@
+--- a/tests/auto/unit/qzip/tst_qzip.cpp	2018-05-13 09:44:01.000000000 +0100
++++ b/tests/auto/unit/qzip/tst_qzip.cpp	2020-09-28 09:40:14.493025102 +0100
+@@ -41,8 +41,8 @@
+ 
+ #include <QtTest/QtTest>
+ #include <QDebug>
+-#include <QtCompress/qzipwriter.h>
+-#include <QtCompress/qzipreader.h>
++#include <qzipwriter.h>
++#include <qzipreader.h>
+ 
+ class tst_QZip : public QObject
+ {

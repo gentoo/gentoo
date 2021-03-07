@@ -1,0 +1,71 @@
+diff --git a/lib/events.h b/lib/events.h
+index 1b5b41b7..b4b6110e 100644
+--- a/lib/events.h
++++ b/lib/events.h
+@@ -69,6 +69,8 @@ G_MODULE_EXPORT void b_main_init();
+ G_MODULE_EXPORT void b_main_run();
+ G_MODULE_EXPORT void b_main_quit();
+ 
++G_MODULE_EXPORT void b_main_iteration();
++
+ 
+ /* Add event handlers (for I/O or a timeout). The event handler will be called
+    every time the event "happens", until your event handler returns FALSE (or
+diff --git a/lib/events_glib.c b/lib/events_glib.c
+index dca704e1..da73f3ae 100644
+--- a/lib/events_glib.c
++++ b/lib/events_glib.c
+@@ -64,6 +64,12 @@ void b_main_quit()
+ 	g_main_quit(loop);
+ }
+ 
++void b_main_iteration()
++{
++	g_main_iteration(FALSE);
++	event_debug("b_main_iteration()\n");
++}
++
+ static gboolean gaim_io_invoke(GIOChannel *source, GIOCondition condition, gpointer data)
+ {
+ 	GaimIOClosure *closure = data;
+diff --git a/lib/events_libevent.c b/lib/events_libevent.c
+index 854af010..05391afa 100644
+--- a/lib/events_libevent.c
++++ b/lib/events_libevent.c
+@@ -113,6 +113,12 @@ void b_main_quit()
+ 	b_main_restart();
+ }
+ 
++void b_main_iteration()
++{
++	event_base_loop(leh, EVLOOP_NONBLOCK);
++	event_debug("b_main_iteration()\n");
++}
++
+ static void b_event_passthrough(int fd, short event, void *data)
+ {
+ 	struct b_event_data *b_ev = data;
+diff --git a/tests/check_irc.c b/tests/check_irc.c
+index e2054106..db3137f3 100644
+--- a/tests/check_irc.c
++++ b/tests/check_irc.c
+@@ -5,6 +5,7 @@
+ #include <string.h>
+ #include <stdio.h>
+ #include "irc.h"
++#include "events.h"
+ #include "testsuite.h"
+ 
+ START_TEST(test_connect)
+@@ -42,7 +43,7 @@ START_TEST(test_login)
+                 "USER a a a a\n", -1, NULL, NULL) == G_IO_STATUS_NORMAL);
+     fail_unless(g_io_channel_flush(ch2, NULL) == G_IO_STATUS_NORMAL);
+ 
+-    g_main_iteration(FALSE);
++    b_main_iteration();
+     irc_free(irc);
+ 
+     fail_unless(g_io_channel_read_to_end(ch2, &raw, NULL, NULL) == G_IO_STATUS_NORMAL);
+-- 
+2.26.2
+

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zlogene@gentoo.org</email>
+		<name>Mikle Kolyada</name>
+	</maintainer>
+	<longdescription lang="en">
+Aewan is a multi-layered ascii-art/animation editor that produces both
+stand-alone cat-able art files and an easy-to-parse format for integration in
+your terminal applications.
+</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">aewan</remote-id>
+	</upstream>
+</pkgmetadata>

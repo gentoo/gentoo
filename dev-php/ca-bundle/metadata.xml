@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>guillaumeseren@gmail.com</email>
+    <name>Guillaume Seren</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>php-bugs@gentoo.org</email>
+  </maintainer>
+  <longdescription>
+    Small utility library that lets you find a path to the system CA
+    bundle, and includes a fallback to the Mozilla CA bundle.
+    Originally written as part of dev-php/composer, now extracted and
+    made available as a stand-alone library.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">composer/ca-bundle</remote-id>
+  </upstream>
+</pkgmetadata>

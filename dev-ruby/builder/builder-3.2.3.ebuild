@@ -1,0 +1,32 @@
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=5
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
+
+RUBY_FAKEGEM_DOCDIR="doc"
+RUBY_FAKEGEM_EXTRADOC="README.md CHANGES"
+
+inherit versionator ruby-fakegem
+
+DESCRIPTION="A builder to facilitate programatic generation of XML markup"
+HOMEPAGE="http://onestepback.org/"
+
+LICENSE="MIT"
+SLOT="$(get_version_component_range 1-2)"
+KEYWORDS="~alpha amd64 arm arm64 hppa ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+IUSE=""
+
+ruby_add_bdepend "doc? ( dev-ruby/rdoc )"
+
+all_ruby_prepare() {
+	sed -i \
+		-e '/rdoc\.template .*jamis/d' \
+		Rakefile || die
+
+	rm rakelib/* || die
+}
+
+each_ruby_test() {
+	${RUBY} -Ilib:.:test -e 'Dir["test/test_*.rb"].each{|f| require f}' || die
+}

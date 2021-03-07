@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<longdescription>
+  This module provides support for writing and executing regression tests
+  for Emacs Lisp code.
+
+  This module makes it easy for Emacs lisp programmers to write
+  complete, well-documented regression tests and to run them often
+  during the developement and enhancement processes.
+
+  Here's the idea:
+    1. The programmer puts one or more test suites directly in the lisp
+       file, wrapped inside an "eval-when-compile" special form.  This
+       causes the test suites to be available when .el file is loaded
+       (or when the buffer is evaluated), but not when the .elc file is
+       loaded.
+
+    2. The programmer runs the tests in one of two ways:
+         a. Interactively, with the M-x regress command.
+         b. Automatically, every time the file is evaluated, by putting
+            a small bit of code at the end of the file.
+
+    3. If there are any regressions, a report is produced detailing the
+       problems.
+</longdescription>
+<stabilize-allarches/>
+</pkgmetadata>

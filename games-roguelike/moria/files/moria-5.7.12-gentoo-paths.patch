@@ -1,0 +1,33 @@
+diff --git a/src/config.cpp b/src/config.cpp
+index 36f565b..bfe1b18 100644
+--- a/src/config.cpp
++++ b/src/config.cpp
+@@ -13,17 +13,17 @@ namespace config {
+     // Data files used by Umoria
+     // NOTE: use relative paths to the executable binary.
+     namespace files {
+-        const std::string splash_screen = "data/splash.txt";
+-        const std::string welcome_screen = "data/welcome.txt";
+-        const std::string license = "LICENSE";
+-        const std::string versions_history = "data/versions.txt";
+-        const std::string help = "data/help.txt";
+-        const std::string help_wizard = "data/help_wizard.txt";
+-        const std::string help_roguelike = "data/rl_help.txt";
+-        const std::string help_roguelike_wizard = "data/rl_help_wizard.txt";
+-        const std::string death_tomb = "data/death_tomb.txt";
+-        const std::string death_royal = "data/death_royal.txt";
+-        const std::string scores = "scores.dat";
++        const std::string splash_screen = "/usr/share/moria/splash.txt";
++        const std::string welcome_screen = "/usr/share/moria/welcome.txt";
++        const std::string license = "/usr/portage/licenses/GPL-2";
++        const std::string versions_history = "/usr/share/moria/versions.txt";
++        const std::string help = "/usr/share/moria/help.txt";
++        const std::string help_wizard = "/usr/share/moria/help_wizard.txt";
++        const std::string help_roguelike = "/usr/share/moria/rl_help.txt";
++        const std::string help_roguelike_wizard = "/usr/share/moria/rl_help_wizard.txt";
++        const std::string death_tomb = "/usr/share/moria/death_tomb.txt";
++        const std::string death_royal = "/usr/share/moria/death_royal.txt";
++        const std::string scores = "/var/lib/moria/scores.dat";
+         std::string save_game = "game.sav";
+     } // namespace files
+ 

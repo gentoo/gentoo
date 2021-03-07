@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>hanno@gentoo.org</email>
+	</maintainer>
+	<longdescription>
+		Complete email package consisting of pop, imap, smtp, and fax
+		server and secure version of the above also.
+	</longdescription>
+	<use>
+		<flag name="fax">Enables fax support in the courier mail server</flag>
+		<flag name="norewrite">Prevents courier mail server from mangling
+			virtual user addresses when sending</flag>
+		<flag name="web">Enable the web interface</flag>
+		<flag name="webmail">Enable the webmail interface</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">courier</remote-id>
+	</upstream>
+</pkgmetadata>

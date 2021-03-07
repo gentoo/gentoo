@@ -1,0 +1,19 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -251,14 +251,14 @@
+ 
+ # Net-SNMP includes v3 support and insists on crypto unless compiled --without-openssl
+ AC_MSG_CHECKING([if Net-SNMP needs crypto support])
+-AC_TRY_COMPILE([#include <net-snmp-config.h>], [exit(NETSNMP_USE_OPENSSL != 1);],
++AC_TRY_COMPILE([#include <net-snmp/net-snmp-config.h>], [exit(NETSNMP_USE_OPENSSL != 1);],
+   [  AC_MSG_RESULT(yes)
+      SNMP_SSL=yes
+   ],
+   AC_MSG_RESULT(no)
+ )
+ 
+-AC_TRY_COMPILE([ #include <net-snmp-config.h> 
++AC_TRY_COMPILE([ #include <net-snmp/net-snmp-config.h> 
+   #include <net-snmp/utilities.h>
+   #include <net-snmp/net-snmp-includes.h>
+   #include <net-snmp/config_api.h>

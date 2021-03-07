@@ -1,0 +1,48 @@
+#!/sbin/openrc-run
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+description='Signal the UPS to kill power in a power failure condition'
+
+depend() {
+	# This is only for baselayout2
+	if [ -f /etc/init.d/sysfs ]; then
+		keyword -jail -lxc -openvz -prefix -uml -vserver -xenu -timeout
+		need mount-ro
+	fi
+}
+
+start() {
+	if [ ! -f /etc/init.d/sysfs ]; then
+		eerror "The $SVCNAME init-script is written for baselayout-2!"
+		eerror "Please do not use it with baselayout-1!".
+		return 1
+	fi
+	local UPS_CTL UPS_POWERDOWN
+
+	if [ -f /etc/killpower -o -f /etc/nut/killpower ]; then
+		UPS_CTL=/sbin/upsdrvctl
+		UPS_POWERDOWN="${UPS_CTL} shutdown"
+	elif [ -f /etc/apcupsd/powerfail ]; then
+		UPS_CTL=/sbin/apcupsd
+		UPS_POWERDOWN="${UPS_CTL} --killpower"
+	else
+		ewarn "UPS powerfail script scheduled, but no poweroff commands found."
+		return 0
+	fi
+
+	if [ -f "${UPS_CTL}" -a -x "${UPS_CTL}" ]; then
+		ebegin 'Signaling UPS to kill power'
+		${UPS_POWERDOWN}
+		eend $?
+
+		ebegin 'Halt system and wait for the UPS to kill our power'
+		/sbin/halt -id
+		# If the sleep gets hit, something is wrong...
+		# do NOT restart the system.
+		while [ 1 ]; do sleep 60; done
+	else
+		ewarn "UPS powerfail script scheduled, and flags found, but ${UPS_CTL} missing."
+	fi
+}
+

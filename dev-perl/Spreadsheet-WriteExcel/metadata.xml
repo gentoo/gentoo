@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Spreadsheet-WriteExcel</remote-id>
+    <remote-id type="cpan-module">Spreadsheet::WriteExcel</remote-id>
+    <remote-id type="cpan-module">Spreadsheet::WriteExcel::BIFFwriter</remote-id>
+    <remote-id type="cpan-module">Spreadsheet::WriteExcel::Big</remote-id>
+    <remote-id type="cpan-module">Spreadsheet::WriteExcel::Chart</remote-id>
+    <remote-id type="cpan-module">Spreadsheet::WriteExcel::Chart::Area</remote-id>
+    <remote-id type="cpan-module">Spreadsheet::WriteExcel::Chart::Bar</remote-id>
+    <remote-id type="cpan-module">Spreadsheet::WriteExcel::Chart::Column</remote-id>
+    <remote-id type="cpan-module">Spreadsheet::WriteExcel::Chart::External</remote-id>
+    <remote-id type="cpan-module">Spreadsheet::WriteExcel::Chart::Line</remote-id>
+    <remote-id type="cpan-module">Spreadsheet::WriteExcel::Chart::Pie</remote-id>
+    <remote-id type="cpan-module">Spreadsheet::WriteExcel::Chart::Scatter</remote-id>
+    <remote-id type="cpan-module">Spreadsheet::WriteExcel::Chart::Stock</remote-id>
+    <remote-id type="cpan-module">Spreadsheet::WriteExcel::Examples</remote-id>
+    <remote-id type="cpan-module">Spreadsheet::WriteExcel::Format</remote-id>
+    <remote-id type="cpan-module">Spreadsheet::WriteExcel::Formula</remote-id>
+    <remote-id type="cpan-module">Spreadsheet::WriteExcel::OLEwriter</remote-id>
+    <remote-id type="cpan-module">Spreadsheet::WriteExcel::Properties</remote-id>
+    <remote-id type="cpan-module">Spreadsheet::WriteExcel::Utility</remote-id>
+    <remote-id type="cpan-module">Spreadsheet::WriteExcel::Workbook</remote-id>
+    <remote-id type="cpan-module">Spreadsheet::WriteExcel::Worksheet</remote-id>
+  </upstream>
+</pkgmetadata>

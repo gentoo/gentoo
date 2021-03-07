@@ -1,0 +1,127 @@
+--- usr/sbin/xe-update-guest-attrs.orig	2013-06-14 07:57:18.000000000 -0500
++++ usr/sbin/xe-update-guest-attrs	2014-04-19 13:38:14.627477193 -0500
+@@ -1,6 +1,7 @@
+ #!/bin/sh
+ 
+ # Copyright (C) 2009  Citrix Systems Inc.
++# Copyright (C) 2014  Christopher J. Camisa
+ #
+ # This program is free software; you can redistribute it and/or
+ # modify it under the terms of the GNU General Public License
+@@ -51,10 +52,10 @@
+ 
+ # parse command line opts
+ 
+-MEMORY_MODE=0 # do not update memory stats 
+-while [ $# -ge 1 ] ; do 
++MEMORY_MODE=0 # do not update memory stats
++while [ $# -ge 1 ] ; do
+     if [ "$1" = "--memory" ] ; then
+-	MEMORY_MODE=1	# update only memory stats 
++	MEMORY_MODE=1	# update only memory stats
+     fi
+     shift
+ done
+@@ -71,12 +72,12 @@
+ 	fi
+     else
+ 	# cache does not exist
+-	if [ -e $cache ] ; then 
++	if [ -e $cache ] ; then
+ 	    # something (directory?) in its way
+ 	    rm -rf $cache
+ 	fi
+     fi
+-    
++
+     # try to write and update cache if successful
+     if $XENSTORE write "$key" "$newval" ; then
+ 	mkdir -p $(dirname "$cache")
+@@ -119,8 +120,8 @@
+ xenstore_list_interfaces_cached() {
+     topdir=$XS_CACHE/attr
+     if [ -d $topdir ] ; then
+-	cd $topdir 
+-	for dir in * ; do 
++	cd $topdir
++	for dir in * ; do
+ 	    [ -f $dir/ip ] && echo $dir
+ 	done
+     fi
+@@ -131,7 +132,7 @@
+     eval $(cat /proc/meminfo | \
+ 	sed -n -e 's/MemTotal\: *\([0-9]*\)[^$]*/memtotal=\1/gp;' \
+         -e 's/MemFree\: *\([0-9]*\)[^$]*/memfree=\1/gp;')
+-    
++
+     xenstore_write_cached "data/meminfo_total" "${memtotal}"
+     xenstore_write_cached "data/meminfo_free" "${memfree}"
+ fi
+@@ -140,17 +141,17 @@
+ 
+ # e.g.
+ # $ ip addr show
+-# 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 16436 qdisc noqueue 
++# 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 16436 qdisc noqueue
+ #     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+ #     inet 127.0.0.1/8 scope host lo
+-#     inet6 ::1/128 scope host 
++#     inet6 ::1/128 scope host
+ #        valid_lft forever preferred_lft forever
+ # 2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast qlen 1000
+ #     link/ether 00:13:20:95:e8:74 brd ff:ff:ff:ff:ff:ff
+ #     inet 172.31.0.57/20 brd 172.31.15.255 scope global eth0
+-#     inet6 fe80::213:20ff:fe95:e874/64 scope link 
++#     inet6 fe80::213:20ff:fe95:e874/64 scope link
+ #        valid_lft forever preferred_lft forever
+-# 3: sit0: <NOARP> mtu 1480 qdisc noop 
++# 3: sit0: <NOARP> mtu 1480 qdisc noop
+ #     link/sit 0.0.0.0 brd 0.0.0.0
+ 
+ #eval $(ip addr show | \
+@@ -158,26 +159,26 @@
+ #	      -e 's/^[[:space:]]\{4\}inet \('${IPADDR_RE}'\)\/.*/eval inet_\${current}="\1"; /gp;')
+ 
+ # e.g.
+-# eth0      Link encap:Ethernet  HWaddr 00:13:20:95:E8:74  
++# eth0      Link encap:Ethernet  HWaddr 00:13:20:95:E8:74
+ #           inet addr:172.31.0.57  Bcast:172.31.15.255  Mask:255.255.240.0
+ #           inet6 addr: fe80::213:20ff:fe95:e874/64 Scope:Link
+ #           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+ #           RX packets:98001128 errors:0 dropped:0 overruns:0 frame:0
+ #           TX packets:87728920 errors:0 dropped:0 overruns:0 carrier:0
+-#           collisions:0 txqueuelen:1000 
++#           collisions:0 txqueuelen:1000
+ #           RX bytes:35864034092 (33.4 GiB)  TX bytes:27544025180 (25.6 GiB)
+-#           Interrupt:177 
+-# 
+-# lo        Link encap:Local Loopback  
++#           Interrupt:177
++#
++# lo        Link encap:Local Loopback
+ #           inet addr:127.0.0.1  Mask:255.0.0.0
+ #           inet6 addr: ::1/128 Scope:Host
+ #           UP LOOPBACK RUNNING  MTU:16436  Metric:1
+ #           RX packets:32928 errors:0 dropped:0 overruns:0 frame:0
+ #           TX packets:32928 errors:0 dropped:0 overruns:0 carrier:0
+-#           collisions:0 txqueuelen:0 
++#           collisions:0 txqueuelen:0
+ #           RX bytes:3604609 (3.4 MiB)  TX bytes:3604609 (3.4 MiB)
+ 
+-ifs=`/sbin/ifconfig | sed -n -e 's/^\([a-z0-9]\+\).*/name \1/p' \
++ifs=`/bin/ifconfig | sed -n -e 's/^\([a-z0-9]\+\).*/name \1/p' \
+     -e 's/.*inet addr:\('$IPADDR_RE'\) .*/ipv4 \1/p' \
+     -e 's+.*inet6 addr: \('$IPADDR6_RE'\)/.*+ipv6 \1+p' | \
+ while read tag value; do
+@@ -225,9 +226,9 @@
+ # build time addons
+ xenstore_write_cached "attr/PVAddons/MajorVersion" "6"
+ xenstore_write_cached "attr/PVAddons/MinorVersion" "2"
+-xenstore_write_cached "attr/PVAddons/MicroVersion" "0" 
++xenstore_write_cached "attr/PVAddons/MicroVersion" "0"
+ xenstore_write_cached "attr/PVAddons/BuildVersion" "70442"
+-xenstore_write_cached "attr/PVAddons/Installed" "1" 
++xenstore_write_cached "attr/PVAddons/Installed" "1"
+ 
+ # update xenstore if necessary
+ if [ $XENSTORE_UPDATED -eq 1 ] ; then

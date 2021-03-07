@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zerochaos@gentoo.org</email>
+		<name>Rick Farina</name>
+	</maintainer>
+	<longdescription lang="en">
+		This package provides all the command line tools for configuring
+		wireless networking devices with drivers that implement the Linux
+		Wireless Extensions (almost all recent IEEE 802.11a/b/g drivers).
+	</longdescription>
+	<use>
+		<flag name="multicall">Build the most commonly used tools as one
+			binary</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:wireless_tools:wireless_tools</remote-id>
+	</upstream>
+</pkgmetadata>

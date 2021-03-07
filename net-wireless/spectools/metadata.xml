@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zerochaos@gentoo.org</email>
+		<name>Rick Farina</name>
+		<description>maintainer, has access to all hardware as needed</description>
+	</maintainer>
+	<maintainer type="person">
+		<email>robbat2@gentoo.org</email>
+		<name>Robin H. Johnson</name>
+		<description>Maintainer, has 1st gen WiSpy hardware for testing</description>
+	</maintainer>
+	<use>
+		<flag name="debug">Build the raw output client for spectools. (for developers)</flag>
+		<flag name="ncurses">Build the ncurses based client for spectools</flag>
+		<flag name="gtk">Build the gtk-2 based client for spectools</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>slyfox@gentoo.org</email>
+		<name>Sergei Trofimovich</name>
+	</maintainer>
+	<longdescription>
+		It features a client-server model, allowing multiple (even simultaneous!) user
+		interfaces, both textual and graphical. All common audio formats are supported
+		using plugins. On top of this, there is a flexible media library to organize
+		your music.
+
+		List of features currently offered by XMMS2:
+
+		Client-server model:
+		* Allows XMMS2 to have various multiple interfaces (as clients).
+		o Command line interfaces
+		o GTK clients (matching GNOME &amp; XFCE4 look and feel)
+		o KDE clients (matching KDE look and feel)
+		* Network transparency means you can run and control XMMS2 remotely, (e.g. run XMMS2 on your 'media box' and control it over network using a bluetooth-enabled PDA (TCP))
+
+		Wide format support:
+		* Can play FLAC, mp3, MOD, SID, speex, ogg vorbis, wave files.
+		* Clean separation of transport and decoder subsystems
+		Allows for more flexible access to media. (e.g. play mp3 files from a Samba
+		share without having to mount it on the local filesystem)
+
+		Medialib:
+		Database-driven media library stores metadata about songs as they're played,
+		so songs can be quickly recalled and new playlists easily made.
+	</longdescription>
+	<use>
+		<flag name="airplay">Support for airplay format</flag>
+		<flag name="asf">Support for Monkey's Audio (APE) format with help of bundled libasf</flag>
+		<flag name="fluidsynth">Enable fluidsynth support (MIDI)</flag>
+		<flag name="ices">Icecast source output plugin</flag>
+		<flag name="mac">Support for Monkey's Audio (APE) format with help of <pkg>media-sound/mac</pkg></flag>
+		<flag name="ofa">Support for Open Fingerprint Architecture (OFA)</flag>
+		<flag name="phonehome">This client sends anonymous usage-statistics to the xmms2</flag>
+		<flag name="server">Build xmms2 player daemon (otherwise only clients are built)</flag>
+		<flag name="sid">Support for C64 SID</flag>
+		<flag name="valgrind">Run unit tests under valgrind.</flag>
+		<flag name="vocoder">Phase vocoder effect plugin</flag>
+		<flag name="mlib-update">Enable building of xmms2-mlib-updater client</flag>
+		<flag name="xml">Enable support for various XML based playlists and sources: RSS, XSPF</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">xmms2</remote-id>
+	</upstream>
+</pkgmetadata>

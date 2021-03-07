@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Color-Library</remote-id>
+    <remote-id type="cpan-module">Color::Library</remote-id>
+    <remote-id type="cpan-module">Color::Library::Color</remote-id>
+    <remote-id type="cpan-module">Color::Library::Dictionary</remote-id>
+    <remote-id type="cpan-module">Color::Library::Dictionary::HTML</remote-id>
+    <remote-id type="cpan-module">Color::Library::Dictionary::IE</remote-id>
+    <remote-id type="cpan-module">Color::Library::Dictionary::Mozilla</remote-id>
+    <remote-id type="cpan-module">Color::Library::Dictionary::NBS_ISCC</remote-id>
+    <remote-id type="cpan-module">Color::Library::Dictionary::NBS_ISCC::A</remote-id>
+    <remote-id type="cpan-module">Color::Library::Dictionary::NBS_ISCC::B</remote-id>
+    <remote-id type="cpan-module">Color::Library::Dictionary::NBS_ISCC::F</remote-id>
+    <remote-id type="cpan-module">Color::Library::Dictionary::NBS_ISCC::H</remote-id>
+    <remote-id type="cpan-module">Color::Library::Dictionary::NBS_ISCC::M</remote-id>
+    <remote-id type="cpan-module">Color::Library::Dictionary::NBS_ISCC::P</remote-id>
+    <remote-id type="cpan-module">Color::Library::Dictionary::NBS_ISCC::R</remote-id>
+    <remote-id type="cpan-module">Color::Library::Dictionary::NBS_ISCC::RC</remote-id>
+    <remote-id type="cpan-module">Color::Library::Dictionary::NBS_ISCC::S</remote-id>
+    <remote-id type="cpan-module">Color::Library::Dictionary::NBS_ISCC::SC</remote-id>
+    <remote-id type="cpan-module">Color::Library::Dictionary::NBS_ISCC::TC</remote-id>
+    <remote-id type="cpan-module">Color::Library::Dictionary::Netscape</remote-id>
+    <remote-id type="cpan-module">Color::Library::Dictionary::SVG</remote-id>
+    <remote-id type="cpan-module">Color::Library::Dictionary::Tango</remote-id>
+    <remote-id type="cpan-module">Color::Library::Dictionary::VACCC</remote-id>
+    <remote-id type="cpan-module">Color::Library::Dictionary::WWW</remote-id>
+    <remote-id type="cpan-module">Color::Library::Dictionary::Windows</remote-id>
+    <remote-id type="cpan-module">Color::Library::Dictionary::X11</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,28 @@
+From 608328ba1e0ccc8d0387c244793b229bcc184648 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?J=C3=A9r=C3=A9mie=20Laval?= <jeremie.laval@gmail.com>
+Date: Fri, 10 Dec 2010 15:03:12 +0000
+Subject: [PATCH] Disable broken matching on sender for signals. Fix issue #8.
+
+---
+ src/BusObject.cs |    5 ++++-
+ 1 files changed, 4 insertions(+), 1 deletions(-)
+
+diff --git a/src/BusObject.cs b/src/BusObject.cs
+index e12207e..fe32b72 100644
+--- a/src/BusObject.cs
++++ b/src/BusObject.cs
+@@ -56,7 +56,10 @@ public void ToggleSignal (string iface, string member, Delegate dlg, bool adding
+ 			rule.Fields.Add (FieldCode.Interface, new MatchTest (iface));
+ 			rule.Fields.Add (FieldCode.Member, new MatchTest (member));
+ 			rule.Fields.Add (FieldCode.Path, new MatchTest (object_path));
+-			rule.Fields.Add (FieldCode.Sender, new MatchTest (alt_bus_name ?? bus_name));
++			// FIXME: Cause a regression compared to 0.6 as name wasn't matched before
++			// the problem arises because busname is not used by DBus daemon and
++			// instead it uses the canonical name of the sender (i.e. similar to ':1.13')
++			//rule.Fields.Add (FieldCode.Sender, new MatchTest (alt_bus_name ?? bus_name));
+ 
+ 			if (adding) {
+ 				if (conn.Handlers.ContainsKey (rule))
+-- 
+1.7.5.4
+

@@ -1,0 +1,67 @@
+From 43e3295aaad5278a1e53c5282e2660b72cd76d28 Mon Sep 17 00:00:00 2001
+From: "Robin H. Johnson" <robbat2@gentoo.org>
+Date: Tue, 29 Dec 2015 15:29:14 -0800
+Subject: [PATCH] GRUB_LINUX_KERNEL_GLOBS: configurable kernel selection
+
+* util/grub.d/10_linux.in: Implement GRUB_LINUX_KERNEL_GLOBS
+* docs/grub.texi: Document GRUB_LINUX_KERNEL_GLOBS
+
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+---
+ docs/grub.texi          |  5 +++++
+ util/grub.d/10_linux.in | 21 +++++++++++----------
+ 2 files changed, 16 insertions(+), 10 deletions(-)
+
+diff --git a/docs/grub.texi b/docs/grub.texi
+index 9a25a0b..d1129ec 100644
+--- a/docs/grub.texi
++++ b/docs/grub.texi
+@@ -1490,6 +1490,11 @@ This option may be set to a list of GRUB module names separated by spaces.
+ Each module will be loaded as early as possible, at the start of
+ @file{grub.cfg}.
+ 
++@item GRUB_LINUX_KERNEL_GLOBS
++This option may be set to override the list of path globs used to find Linux
++kernels. The defaults vary by architecture, and generally include both
++@file{/boot} and @file{/}.
++
+ @end table
+ 
+ The following options are still accepted for compatibility with existing
+diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
+index 859b608..e5ac11d 100644
+--- a/util/grub.d/10_linux.in
++++ b/util/grub.d/10_linux.in
+@@ -145,18 +145,19 @@ EOF
+ }
+ 
+ machine=`uname -m`
+-case "x$machine" in
++globs="$GRUB_LINUX_KERNEL_GLOBS"
++[ -z "$globs" ] && case "x$machine" in
+     xi?86 | xx86_64)
+-	list=
+-	for i in /boot/vmlinuz-* /vmlinuz-* /boot/kernel-* ; do
+-	    if grub_file_is_not_garbage "$i" ; then list="$list $i" ; fi
+-	done ;;
+-    *) 
+-	list=
+-	for i in /boot/vmlinuz-* /boot/vmlinux-* /vmlinuz-* /vmlinux-* /boot/kernel-* ; do
+-                  if grub_file_is_not_garbage "$i" ; then list="$list $i" ; fi
+-	done ;;
++	globs="/boot/vmlinuz-* /vmlinuz-* /boot/kernel-*"
++	;;
++    *)
++	globs="/boot/vmlinuz-* /boot/vmlinux-* /vmlinuz-* /vmlinux-* /boot/kernel-*"
++	;;
+ esac
++list=
++for i in ${globs} ; do
++    if grub_file_is_not_garbage "$i" ; then list="$list $i" ; fi
++done
+ 
+ case "$machine" in
+     i?86) GENKERNEL_ARCH="x86" ;;
+-- 
+2.3.0
+

@@ -1,0 +1,10 @@
+diff --git a/cmdline/Makefile.am b/cmdline/Makefile.am
+index f3c763e..8e18d9c 100644
+--- a/cmdline/Makefile.am
++++ b/cmdline/Makefile.am
+@@ -7,4 +7,4 @@ bin_PROGRAMS = runacovea
+ 
+ runacovea_SOURCES = runacovea.cpp
+ 
+-LIBS = -L../libacovea -lacovea -lcoyotl -levocosm
++LIBS = -L../libacovea -lacovea -lcoyotl -levocosm -lbrahe

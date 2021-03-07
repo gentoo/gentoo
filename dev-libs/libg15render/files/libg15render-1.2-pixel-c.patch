@@ -1,0 +1,23 @@
+ * QA Notice: Package has poor programming practices which may compile
+ *            fine but exhibit random runtime failures.
+ * pixel.c:356: warning: incompatible implicit declaration of built-in function 'ceil'
+
+Should be fixed by including math.h
+
+ * QA Notice: Package triggers severe warnings which indicate that it
+ *            may exhibit random runtime failures.
+ * pixel.c:504:16: warning: incompatible implicit declaration of built-in function ‘malloc’
+
+Should be fixed by including stdlib.h
+
+--- libg15render-1.2/pixel.c
++++ libg15render-1.2/pixel.c
+@@ -17,6 +17,8 @@
+ */
+ 
+ #include <fcntl.h>
++#include <stdlib.h>
++#include <math.h>
+ #include "libg15render.h"
+ 
+ void

@@ -1,0 +1,26 @@
+#!/sbin/openrc-run
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+
+	need portmap
+
+}
+
+start() {
+
+	ebegin "Starting famd"
+	start-stop-daemon --start --quiet --exec /usr/sbin/famd \
+		-- -T 0 -c /etc/fam.conf
+	eend $?
+
+}
+
+stop() {
+
+	ebegin "Stopping famd"
+	start-stop-daemon --stop --quiet --exec /usr/sbin/famd
+	eend $?
+
+}

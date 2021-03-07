@@ -1,0 +1,95 @@
+--- a/doc/en/images/Makefile.am
++++ b/doc/en/images/Makefile.am
+@@ -1,6 +1,6 @@
+ # $Id$
+ 
+-imagesdir = $(datadir)/doc/imagination/html/en/images
++imagesdir = $(htmldir)/en/images
+ images_DATA = \
+ 				imagination_window.png \
+ 				side_panel_video.png   \
+--- a/doc/en/Makefile.am
++++ b/doc/en/Makefile.am
+@@ -3,7 +3,7 @@
+ SUBDIRS =								\
+ 	images
+ 
+-TARGET_DIR = $(datadir)/doc/imagination/html/en
++TARGET_DIR = $(htmldir)/en
+ STYLESHEET = ../imagination.xsl
+ DOCUMENT = imagination.xml
+ 
+--- a/doc/es/images/Makefile.am
++++ b/doc/es/images/Makefile.am
+@@ -1,6 +1,6 @@
+ # $Id$
+ 
+-imagesdir = $(datadir)/doc/imagination/html/es/images
++imagesdir = $(htmldir)/es/images
+ images_DATA = \
+ 				imagination_window.png \
+ 				side_panel_video.png   \
+--- a/doc/es/Makefile.am
++++ b/doc/es/Makefile.am
+@@ -3,7 +3,7 @@
+ SUBDIRS =								\
+ 	images
+ 
+-TARGET_DIR = $(datadir)/doc/imagination/html/es
++TARGET_DIR = $(htmldir)/es
+ STYLESHEET = ../imagination.xsl
+ DOCUMENT = imagination.xml
+ 
+--- a/doc/fr/images/Makefile.am
++++ b/doc/fr/images/Makefile.am
+@@ -1,6 +1,6 @@
+ # $Id$
+ 
+-imagesdir = $(datadir)/doc/imagination/html/fr/images
++imagesdir = $(htmldir)/fr/images
+ images_DATA = \
+ 				imagination_window.png \
+ 				side_panel_video.png   \
+--- a/doc/fr/Makefile.am
++++ b/doc/fr/Makefile.am
+@@ -3,7 +3,7 @@
+ SUBDIRS =								\
+ 	images
+ 
+-TARGET_DIR = $(datadir)/doc/imagination/html/fr
++TARGET_DIR = $(htmldir)/fr
+ STYLESHEET = ../imagination.xsl
+ DOCUMENT = imagination.xml
+ 
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -1,7 +1,7 @@
+ SUBDIRS =							\
+ 	en es fr pt_BR
+ 
+-cssdir = $(datadir)/doc/imagination/html
++cssdir = $(htmldir)
+ css_DATA =							\
+ 	imagination.css
+ 	
+--- a/doc/pt_BR/images/Makefile.am
++++ b/doc/pt_BR/images/Makefile.am
+@@ -1,6 +1,6 @@
+ # $Id$
+ 
+-imagesdir = $(datadir)/doc/imagination/html/pt_BR/images
++imagesdir = $(htmldir)/pt_BR/images
+ images_DATA = \
+ 				imagination_window.png \
+ 				side_panel_video.png   \
+--- a/doc/pt_BR/Makefile.am
++++ b/doc/pt_BR/Makefile.am
+@@ -3,7 +3,7 @@
+ SUBDIRS =								\
+ 	images
+ 
+-TARGET_DIR = $(datadir)/doc/imagination/html/pt_BR
++TARGET_DIR = $(htmldir)/pt_BR
+ STYLESHEET = ../imagination.xsl
+ DOCUMENT = imagination.xml
+ 

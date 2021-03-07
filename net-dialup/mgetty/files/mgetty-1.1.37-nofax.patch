@@ -1,0 +1,110 @@
+diff -Nru mgetty-1.1.37.orig/doc/Makefile mgetty-1.1.37/doc/Makefile
+--- mgetty-1.1.37.orig/doc/Makefile	2007-11-25 09:31:56.000000000 +0200
++++ mgetty-1.1.37/doc/Makefile	2007-11-25 09:28:02.000000000 +0200
+@@ -6,11 +6,10 @@
+ NROFF=nroff
+ #
+ #
+-MAN1PAGES=g32pbm.1 g3cat.1 pbm2g3.1 sff2g3.1 fax.1 \
+-	  faxspool.1 faxrunq.1 faxq.1 faxrm.1 coverpg.1
++MAN1PAGES=
+ MAN4PAGES=mgettydefs.4
+-MAN5PAGES=faxqueue.5
+-MAN8PAGES=sendfax.8 mgetty.8 callback.8 faxrunqd.8 faxq-helper.8
++MAN5PAGES=
++MAN8PAGES=mgetty.8 callback.8
+ MANSRC=$(MAN1PAGES) $(MAN4PAGES) $(MAN5PAGES) $(MAN8PAGES)
+ MAN1DIR=/usr/local/man/man1
+ MAN4DIR=/usr/local/man/man4
+diff -Nru mgetty-1.1.37.orig/Makefile mgetty-1.1.37/Makefile
+--- mgetty-1.1.37.orig/Makefile	2007-11-25 09:31:58.000000000 +0200
++++ mgetty-1.1.37/Makefile	2007-11-25 09:34:45.000000000 +0200
+@@ -324,7 +324,7 @@
+ 
+ all:	bin-all doc-man-only
+ 
+-bin-all: mgetty sendfax newslock sedscript subdirs call-back 
++bin-all: mgetty newslock sedscript subdirs call-back 
+ 
+ # a few C files need extra compiler arguments
+ 
+@@ -369,9 +369,7 @@
+ # subdirectories...
+ 
+ subdirs: sedscript
+-	cd g3 &&    $(MAKE) "CC=$(CC)" "CFLAGS=$(CFLAGS) -I.." "LDFLAGS=$(LDFLAGS)" "LIBS=$(LIBS)" all
+ 	cd tools && $(MAKE) "CC=$(CC)" "CFLAGS=$(CFLAGS) -I.." "LDFLAGS=$(LDFLAGS)" "LIBS=$(LIBS)" all
+-	cd fax &&   $(MAKE) "CC=$(CC)" "CFLAGS=$(CFLAGS) -I.." "LDFLAGS=$(LDFLAGS)" "LIBS=$(LIBS)" "FAX_SPOOL_OUT=$(FAX_SPOOL_OUT)" "FAX_OUT_USER=$(FAX_OUT_USER)" "CONFDIR=$(CONFDIR)" all
+ 
+ call-back:
+ 	@$(MAKE) mgetty
+@@ -597,7 +595,6 @@
+ 
+ 	-test -d $(SBINDIR) || ( ./mkidirs $(SBINDIR) ; chmod 755 $(SBINDIR) )
+ 	$(INSTALL) -m 700 mgetty $(SBINDIR)
+-	$(INSTALL) -m 755 sendfax $(SBINDIR)
+ #
+ # data files + directories
+ #
+@@ -609,12 +606,8 @@
+ 		$(INSTALL) -o root -m 600 login.config $(CONFDIR)/
+ 	test -f $(CONFDIR)/mgetty.config || \
+ 		$(INSTALL) -o root -m 600 mgetty.config $(CONFDIR)/
+-	test -f $(CONFDIR)/sendfax.config || \
+-		$(INSTALL) -o root -m 644 sendfax.config $(CONFDIR)/
+ 	test -f $(CONFDIR)/dialin.config || \
+ 		$(INSTALL) -o root -m 600 dialin.config $(CONFDIR)/
+-	test -f $(CONFDIR)/faxrunq.config || \
+-		$(INSTALL) -o root -m 644 faxrunq.config $(CONFDIR)/
+ #
+ # test for outdated stuff
+ #
+@@ -626,34 +626,6 @@
+ 	    echo "" ;\
+ 	fi
+ #
+-# fax spool directories
+-#
+-	test -d $(spool) || \
+-		( ./mkidirs $(spool) && chmod 755 $(spool) )
+-	test -d $(FAX_SPOOL) || \
+-		( ./mkidirs $(FAX_SPOOL) && \
+-		  chown $(FAX_OUT_USER) $(FAX_SPOOL) && \
+-		  chmod 755 $(FAX_SPOOL) )
+-	test -d $(FAX_SPOOL_IN) || \
+-		( ./mkidirs $(FAX_SPOOL_IN) && chmod 755 $(FAX_SPOOL_IN) )
+-	test -d $(FAX_SPOOL_OUT) || \
+-		  ./mkidirs $(FAX_SPOOL_OUT)
+-	chown $(FAX_OUT_USER) $(FAX_SPOOL_OUT)
+-	chmod 755 $(FAX_SPOOL_OUT)
+-#
+-# g3 tool programs
+-#
+-	cd g3 && $(MAKE) install INSTALL="$(INSTALL)" \
+-				BINDIR=$(BINDIR) \
+-				LIBDIR=$(LIBDIR) CONFDIR=$(CONFDIR)
+-#
+-# fax programs / scripts / font file
+-#
+-	cd fax && $(MAKE) install INSTALL="$(INSTALL)" \
+-				FAX_OUT_USER=$(FAX_OUT_USER) \
+-				BINDIR=$(BINDIR) SBINDIR=$(SBINDIR) \
+-				LIBDIR=$(LIBDIR) CONFDIR=$(CONFDIR)
+-#
+ # compatibility
+ #
+ 	if [ ! -z "$(INSTALL_MECHO)" ] ; then \
+diff -Nru mgetty-1.1.37.orig/t/Makefile mgetty-1.1.37/t/Makefile
+--- mgetty-1.1.37.orig/t/Makefile	2006-09-26 01:32:10.000000000 +0300
++++ mgetty-1.1.37/t/Makefile	2007-11-25 09:32:28.000000000 +0200
+@@ -8,8 +8,8 @@
+ CFLAGS=-O2 -I.. -g  #-DT_LOG_VERBOSE
+ 
+ TEST_PROGRAMS=t_config t_ring
+-TEST_HELP_PGM=t_g3f_c
+-TEST_SCRIPTS=t_echo t_trap t_g3file
++TEST_HELP_PGM=
++TEST_SCRIPTS=t_echo t_trap
+ 
+ test: $(TEST_PROGRAMS) $(TEST_HELP_PGM)
+ 	@for f in $(TEST_PROGRAMS) ; \

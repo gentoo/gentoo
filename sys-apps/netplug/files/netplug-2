@@ -1,0 +1,43 @@
+#!/bin/sh
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+#
+# Gentoo-specific netplug script
+#
+# This file gets called by netplug when it wants to bring an interface
+# up or down.
+#
+
+IFACE="$1"
+ACTION="$2"
+
+EXEC="/etc/init.d/net.${IFACE}"
+
+case "${ACTION}" in
+	in)
+		ARGS="--quiet start"
+	;;
+	out)
+		ARGS="--quiet stop"
+	;;
+	probe)
+		# Do nothing as we should already be up
+		exit 0
+	;;
+	*)
+		echo "$0: wrong arguments" >&2
+		echo "Call with <interface> <in|out|probe>" >&2
+		exit 1
+	;;
+esac
+
+export IN_BACKGROUND=true
+
+if [ -x "${EXEC}" ]
+then
+	${EXEC} ${ARGS}
+	exit 0
+else
+	logger -t netplug "Error: Couldn't configure ${IFACE}, no ${EXEC} !"
+	exit 1
+fi

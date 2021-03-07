@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>grozin@gentoo.org</email>
+	</maintainer>
+	<longdescription lang="en">
+		Libunibreak is an implementation of the line breaking and word breaking algorithms
+		as described in Unicode Standard Annex 14 and Unicode Standard Annex 29. It is
+		designed to be used in a generic text renderer.
+	</longdescription>
+	<use>
+		<flag name="doc">Install html API documentation.</flag>
+	</use>
+</pkgmetadata>

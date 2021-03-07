@@ -1,0 +1,85 @@
+From 943ea70672f52f1d7548723a1ef8f15b6249fdc2 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Thu, 14 Dec 2017 19:19:07 +1300
+Subject: Fix test suite to be useful in non-root environments
+
+While also exposing the need to be root to run certain tests
+---
+ t/00-compile.t | 9 +++++++++
+ t/01-loop.t    | 6 ++++++
+ t/02-open.t    | 7 +++++++
+ t/03-next.t    | 7 +++++++
+ 4 files changed, 29 insertions(+)
+ create mode 100644 t/00-compile.t
+
+diff --git a/t/00-compile.t b/t/00-compile.t
+new file mode 100644
+index 0000000..7f2ace4
+--- /dev/null
++++ b/t/00-compile.t
+@@ -0,0 +1,9 @@
++
++use strict;
++use warnings;
++
++print "1..1\n";
++
++local $@;
++eval { require Net::PcapUtils };
++printf "%s load Net::PcapUtils\n", ( $@ ? 'not ok' : 'ok' );
+diff --git a/t/01-loop.t b/t/01-loop.t
+index be7850c..92ad7a6 100644
+--- a/t/01-loop.t
++++ b/t/01-loop.t
+@@ -6,6 +6,12 @@
+ #
+ 
+ use strict;
++BEGIN {
++  if ( $> != 0 ) {
++    print "1..0 # SKIP This test requires running as root";
++    exit 0;
++  }
++}
+ use ExtUtils::testlib;
+ 
+ use Net::PcapUtils;
+diff --git a/t/02-open.t b/t/02-open.t
+index 81c8e19..de95e5b 100644
+--- a/t/02-open.t
++++ b/t/02-open.t
+@@ -6,6 +6,13 @@
+ #
+ 
+ use strict;
++BEGIN {
++  if ( $> != 0 ) {
++    print "1..0 # SKIP This test requires running as root";
++    exit 0;
++  }
++}
++
+ use ExtUtils::testlib;
+ 
+ use Net::Pcap;
+diff --git a/t/03-next.t b/t/03-next.t
+index b473816..330915e 100644
+--- a/t/03-next.t
++++ b/t/03-next.t
+@@ -6,6 +6,13 @@
+ #
+ 
+ use strict;
++BEGIN {
++  if ( $> != 0 ) {
++    print "1..0 # SKIP This test requires running as root";
++    exit 0;
++  }
++}
++
+ use ExtUtils::testlib;
+ 
+ use Net::PcapUtils;
+-- 
+2.15.1
+

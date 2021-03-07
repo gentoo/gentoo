@@ -1,0 +1,10 @@
+--- src/cal3d/platform.h.old	2008-04-27 23:08:41.000000000 +0200
++++ src/cal3d/platform.h	2008-04-27 23:08:56.000000000 +0200
+@@ -77,6 +77,7 @@
+ // standard includes
+ #include <stdlib.h>
+ #include <math.h>
++#include <string.h>
+ 
+ // debug includes
+ #include <assert.h>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<longdescription lang="en">
+		Python interface to last.fm and other api-compatible websites
+
+		Features:
+		* Simple public interface.
+		* Access to all the data exposed by the Last.fm webservices.
+		* Scrobbling support.
+		* Full object-oriented design.
+		* Proxy support.
+		* Internal caching support for some webservices calls (disabled by default).
+		* No extra dependencies but python itself.
+		* Support for other API-compatible networks like Libre.fm
+		* Python3-friendly (Starting from 0.5).
+	</longdescription>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">pylast</remote-id>
+		<remote-id type="github">pylast/pylast</remote-id>
+	</upstream>
+</pkgmetadata>

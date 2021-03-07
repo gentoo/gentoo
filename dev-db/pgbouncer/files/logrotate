@@ -1,0 +1,7 @@
+/var/log/pgbouncer/pgbouncer.log {
+	missingok
+	sharedscripts
+	postrotate
+		/etc/init.d/pgbouncer -q reload
+	endscript
+}

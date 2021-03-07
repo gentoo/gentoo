@@ -1,0 +1,15 @@
+-*- outline -*-
+
+Gentoo GNU/Linux specific notes for ECL
+---------------------------------------
+
+This is the README.Gentoo file from /usr/share/doc/@PF@/ directory.
+
+  * The Gentoo port includes a patch to ECL's installed header file (ech.h) so
+    that TRUE and FALSE are not redefined if they're already included from
+    elsewhere. This makes it easier to use ECL with other software which defines
+    those C preprocesser symbols (eg. glib-2.0).
+
+If you encounter any problems or have suggestions, use http://bugs.gentoo.org.
+Please don't bother the upstream authors unless you are absolutely certain it is
+not Gentoo-related.

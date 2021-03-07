@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  Zhu3D allows you to interactively view and animate mathematical
+  functions, isosurfaces and a further independent parametric system.
+  Numerical solutions of equation systems are found with an adaptive
+  random search. The OpenGL-viewer supports zooming, scaling, rotating
+  and translating as well as filed lightning or surface properties.
+  Special effects are transparency, textures, fog and motion blur.
+  </longdescription>
+  <upstream>
+    <remote-id type="sourceforge">zhu3d</remote-id>
+  </upstream>
+</pkgmetadata>

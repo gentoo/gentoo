@@ -1,0 +1,28 @@
+Fix the tests so they don't fail :)
+
+depcomp2: #159557 #181484
+fix false positive when using newer autoconf -- it throws a warning based
+on dataroot which causes a failure when there was none
+
+man2: #159557
+grab update from newer automake
+
+--- automake-1.6.3/tests/depcomp2.test
++++ automake-1.6.3/tests/depcomp2.test
+@@ -17,4 +17,5 @@
+ cat > Makefile.am << 'END'
+ SUBDIRS = subdir
++datarootdir = @datarootdir@
+ END
+ 
+--- automake-1.6.3/tests/man2.test
++++ automake-1.6.3/tests/man2.test
+@@ -23,7 +23,7 @@
+ $AUTOMAKE
+ 
+ # Let's play with $DESTDIR too, it shouldn't hurt.
+-./configure --prefix=''
++./configure --prefix='' --mandir=/man
+ DESTDIR="`pwd`/=inst" $MAKE -e SHELL=/bin/sh install
+ 
+ test -f ./=inst/man/man2/foo.2

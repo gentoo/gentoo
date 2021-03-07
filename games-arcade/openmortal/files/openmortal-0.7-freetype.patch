@@ -1,0 +1,15 @@
+--- openmortal-0.7/src/sge_tt_text.cpp.old
++++ openmortal-0.7/src/sge_tt_text.cpp
+@@ -37,9 +37,9 @@
+ 
+ #ifndef _SGE_NOTTF
+ #include <ft2build.h>
+-#include <freetype/freetype.h>
+-#include <freetype/ftoutln.h>
+-#include <freetype/ttnameid.h>
++#include FT_FREETYPE_H
++#include FT_OUTLINE_H
++#include FT_TRUETYPE_IDS_H
+ 
+ /* The structure used to hold glyph information (cached) */
+ struct glyph {

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+  </maintainer>
+  <longdescription>
+    This software implements various state-of-the-art algorithms for
+    algorithmic learning of XML Schema definitions and Document Type
+    Definitions.
+
+    Given a set or a single XML instance it can algorithmically infer
+    a schema which describes the XML instances. The resulting schemas
+    are of high-quality and human readable.
+
+    The theory behind the project is described in Kore Nordmann's
+    thesis, "Algorithmic learning of XML Schema definitions from XML
+    data," available at
+    http://kore-nordmann.de/talks/11_03_learning_xml_schema_definitions_from_xml_data.pdf.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">kore/XML-Schema-learner</remote-id>
+  </upstream>
+</pkgmetadata>

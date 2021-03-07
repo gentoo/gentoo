@@ -1,0 +1,33 @@
+From a98da7fd620a9b102a74affe16c0c0daccb97fc4 Mon Sep 17 00:00:00 2001
+From: Haakon Drews <fawz@negentropy.io>
+Date: Mon, 4 Jan 2021 02:21:17 +0100
+Subject: [PATCH] Fix segfault when running as regular user
+
+Bug: https://github.com/marazmista/radeon-profile/issues/244
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ radeon-profile/gpu.cpp | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/radeon-profile/gpu.cpp b/radeon-profile/gpu.cpp
+index ccd99d3..f5e32a3 100644
+--- a/radeon-profile/gpu.cpp
++++ b/radeon-profile/gpu.cpp
+@@ -69,7 +69,13 @@ void gpu::detectCards() {
+ 
+         int pciIdx = ueventContents.indexOf(QRegExp("PCI_SLOT_NAME.+"));
+         if (pciIdx != -1)
+-            gsi.name = globalStuff::grabSystemInfo("lspci -s " + ueventContents[pciIdx].split('=')[1])[0].split(':')[2].trimmed();
++        {
++            auto input = globalStuff::grabSystemInfo("lspci -s " + ueventContents[pciIdx].split('=')[1]);
++            if(input.size() < 3)
++                gsi.name = "UNKNOWN";
++            else
++                gsi.name = input[0].split(':')[2].trimmed();
++        }
+ 
+         gpuList.append(gsi);
+ 
+-- 
+2.30.0
+

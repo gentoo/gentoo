@@ -1,0 +1,11 @@
+--- a/Makefile.am	(revision 7413)
++++ b/Makefile.am	(working copy)
+@@ -15,7 +15,7 @@
+ 
+ .java.class:
+ 	-mkdir -p $(classdir)
+-	$(JAVAC) -d $(classdir) $<
++	$(JAVAC) $(JAVACFLAGS) -d $(classdir) $<
+ 
+ rrd_jinterface.c: org_opennms_netmgt_rrd_rrdtool_Interface.h
+ 

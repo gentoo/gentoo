@@ -1,0 +1,89 @@
+Install headers into 'hmmer3' subdir and not into global includedir.
+
+--- a/easel/Makefile.in
++++ b/easel/Makefile.in
+@@ -465,11 +465,12 @@
+ 	${INSTALL} -d ${DESTDIR}${bindir}
+ 	${INSTALL} -d ${DESTDIR}${libdir}
+ 	${INSTALL} -d ${DESTDIR}${includedir}
++	${INSTALL} -d ${DESTDIR}${includedir}/hmmer3
+ 	${INSTALL} -m 0644 libeasel.a ${DESTDIR}${libdir}/
+ 	for file in ${HDRS}; do\
+-	   ${INSTALL} -m 0644 ${srcdir}/$$file ${DESTDIR}${includedir}/ ;\
++	   ${INSTALL} -m 0644 ${srcdir}/$$file ${DESTDIR}${includedir}/hmmer3/ ;\
+ 	done
+-	${INSTALL} -m 0644 esl_config.h ${DESTDIR}${includedir}/
++	${INSTALL} -m 0644 esl_config.h ${DESTDIR}${includedir}/hmmer3/
+ 	${QUIET_SUBDIR0}miniapps      ${QUIET_SUBDIR1} install
+ 
+ # "make uninstall" reverses the steps of "make install"
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -143,6 +143,7 @@
+ 	${INSTALL} -d ${DESTDIR}${bindir}
+ 	${INSTALL} -d ${DESTDIR}${libdir}
+ 	${INSTALL} -d ${DESTDIR}${includedir}
++	${INSTALL} -d ${DESTDIR}${includedir}/hmmer3
+ 	${INSTALL} -d ${DESTDIR}${man1dir}
+ 	${INSTALL} -d ${DESTDIR}${pdfdir}
+ 	${QUIET_SUBDIR0}src           ${QUIET_SUBDIR1} install
+--- a/src/impl_dummy/Makefile.in
++++ b/src/impl_dummy/Makefile.in
+@@ -152,8 +152,9 @@
+ 	${CC} ${CFLAGS} ${SIMDFLAGS} ${CPPFLAGS} ${LDFLAGS} ${DEFS} ${MYLIBDIRS} ${MYINCDIRS} -D$${DFLAG} -o $@ $${DFILE} ${LIBS}
+ 
+ install:
++	${INSTALL} -d ${DESTDIR}${includedir}/hmmer3
+ 	for file in ${HDRS}; do \
+-	   ${INSTALL} -m 0644 ${srcdir}/$$file ${DESTDIR}${includedir}/ ;\
++	   ${INSTALL} -m 0644 ${srcdir}/$$file ${DESTDIR}${includedir}/hmmer3/ ;\
+ 	done
+ 
+ uninstall:
+--- a/src/impl_sse/Makefile.in
++++ b/src/impl_sse/Makefile.in
+@@ -155,8 +155,9 @@
+ 
+ 
+ install:
++	${INSTALL} -d ${DESTDIR}${includedir}/hmmer3
+ 	for file in ${HDRS}; do \
+-	   ${INSTALL} -m 0644 ${srcdir}/$$file ${DESTDIR}${includedir}/ ;\
++	   ${INSTALL} -m 0644 ${srcdir}/$$file ${DESTDIR}${includedir}/hmmer3/ ;\
+ 	done
+ 
+ uninstall:
+--- a/src/impl_vmx/Makefile.in
++++ b/src/impl_vmx/Makefile.in
+@@ -152,8 +152,9 @@
+ 	${CC} ${CFLAGS} ${SIMDFLAGS} ${CPPFLAGS} ${LDFLAGS} ${DEFS} ${MYLIBDIRS} ${MYINCDIRS} -D$${DFLAG} -o $@ $${DFILE} ${LIBS}
+ 
+ install:
++	${INSTALL} -d ${DESTDIR}${includedir}/hmmer3
+ 	for file in ${HDRS}; do \
+-	   ${INSTALL} -m 0644 ${srcdir}/$$file ${DESTDIR}${includedir}/ ;\
++	   ${INSTALL} -m 0644 ${srcdir}/$$file ${DESTDIR}${includedir}/hmmer3/ ;\
+ 	done
+ 
+ uninstall:
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -322,15 +322,16 @@
+ 	${CC} ${CFLAGS} ${SIMDFLAGS} ${CPPFLAGS} ${LDFLAGS} ${DEFS} ${MYLIBDIRS} ${MYINCDIRS} -D$${DFLAG} -o $@ $${DFILE} ${LIBS}
+ 
+ install:
++	${INSTALL} -d ${DESTDIR}${includedir}/hmmer3
+ 	${QUIET_SUBDIR0}${IMPLDIR} ${QUIET_SUBDIR1} install
+ 	for file in ${PROGS}; do \
+ 	   ${INSTALL} -m 0755 $$file ${DESTDIR}${bindir}/ ;\
+ 	done
+ 	${INSTALL} -m 0755 libhmmer.a ${DESTDIR}${libdir}/
+ 	for file in ${HDRS}; do \
+-	   ${INSTALL} -m 0644 ${srcdir}/$$file ${DESTDIR}${includedir}/ ;\
++	   ${INSTALL} -m 0644 ${srcdir}/$$file ${DESTDIR}${includedir}/hmmer3/ ;\
+ 	done
+-	${INSTALL} -m 0644 p7_config.h ${DESTDIR}${includedir}/ ;\
++	${INSTALL} -m 0644 p7_config.h ${DESTDIR}${includedir}/hmmer3/ ;\
+ 
+ uninstall:
+ 	${QUIET_SUBDIR0}${IMPLDIR} ${QUIET_SUBDIR1} uninstall

@@ -1,0 +1,15 @@
+add missing prototype to header
+
+--- a/src/mglueP.h
++++ b/src/mglueP.h
+@@ -477,6 +477,10 @@ OM_uint32 generic_gss_str_to_oid
+ 	    gss_OID *		/* oid */
+ 	   );
+ 
++OM_uint32
++generic_gss_copy_oid_set(OM_uint32 *minor_status,
++                         const gss_OID_set_desc * const oidset,
++                         gss_OID_set *new_oidset);
+ 
+ gss_OID gss_find_mechanism_from_name_type (gss_OID); /* name_type */
+ 

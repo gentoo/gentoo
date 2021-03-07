@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>cjk@gentoo.org</email>
+		<name>Cjk</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">taku910/mecab</remote-id>
+		<remote-id type="google-code">mecab</remote-id>
+		<remote-id type="sourceforge">mecab</remote-id>
+	</upstream>
+</pkgmetadata>

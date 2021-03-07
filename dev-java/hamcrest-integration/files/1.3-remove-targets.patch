@@ -1,0 +1,74 @@
+diff --git a/hamcrest-1.3/build.xml b/hamcrest-1.3/build.xml
+index 1cfd4fb..396ebc5 100644
+--- a/hamcrest-1.3/build.xml
++++ b/hamcrest-1.3/build.xml
+@@ -12,69 +12,14 @@
+     </target>
+ 
+     <target name="generator" description="Build code generator tool">
+-        <java-to-jar srcdir="hamcrest-generator/src/main/java"
+-                     modulename="hamcrest-generator-nodeps"
+-                     classpath="lib/generator/qdox-1.12.jar"/>
+-
+-        <!-- Bundle QDox classes in hamcrest-generator.jar using JarJar to place classes under a different package -->
+-        <taskdef name="jarjar" classname="com.tonicsystems.jarjar.JarJarTask" classpath="lib/generator/jarjar-1.3.jar"/>
+-        <jarjar jarfile="build/hamcrest-generator-${version}.jar">
+-            <zipfileset src="build/hamcrest-generator-nodeps-${version}.jar"/>
+-            <zipfileset src="lib/generator/qdox-1.12.jar"/>
+-            <rule pattern="com.thoughtworks.qdox.**" result="org.hamcrest.generator.qdox.@1"/>
+-        </jarjar>
+-        <copy file="build/hamcrest-generator-nodeps-${version}-sources.jar" tofile="build/hamcrest-generator-${version}-sources.jar"/>
+     </target>
+ 
+     <target name="core" depends="generator" description="Build core Hamcrest library">
+-        <java-to-jar srcdir="hamcrest-core/src/main/java" modulename="hamcrest-core"/>
+-
+-        <!-- Generate one class with all static imports -->
+-        <mkdir dir="build/temp/hamcrest-core/generated-code"/>
+-
+-        <java classname="org.hamcrest.generator.config.XmlConfigurator"
+-              fork="yes"
+-              failonerror="yes"
+-              classpath="
+-                build/hamcrest-core-${version}.jar;
+-                build/hamcrest-generator-${version}.jar;
+-              ">
+-            <arg value="core-matchers.xml"/>
+-            <arg value="hamcrest-core/src/main/java"/>
+-            <arg value="org.hamcrest.CoreMatchers"/>
+-            <arg value="build/temp/hamcrest-core/generated-code"/>
+-        </java>
+-        <!-- Append to core jar -->
+-        <java-to-jar srcdir="build/temp/hamcrest-core/generated-code"
+-                     modulename="hamcrest-core"
+-                     classpath="build/hamcrest-core-${version}.jar"/>
+     </target>
+ 
+     <target name="library"
+             depends="core,generator"
+             description="Build library of matchers">
+-        <mkdir dir="build/temp/hamcrest-library/generated-code"/>
+-        <java-to-jar srcdir="hamcrest-library/src/main/java"
+-                     modulename="hamcrest-library"
+-                     classpath="build/hamcrest-core-${version}.jar"/>
+-        <!-- Generate one class with all static imports -->
+-        <java classname="org.hamcrest.generator.config.XmlConfigurator"
+-              fork="yes"
+-              failonerror="yes"
+-              classpath="
+-                build/hamcrest-core-${version}.jar;
+-                build/hamcrest-generator-${version}.jar;
+-                build/hamcrest-library-${version}.jar;
+-              ">
+-            <arg value="matchers.xml"/>
+-            <arg value="hamcrest-core/src/main/java,hamcrest-library/src/main/java"/>
+-            <arg value="org.hamcrest.Matchers"/>
+-            <arg value="build/temp/hamcrest-library/generated-code"/>
+-        </java>
+-        <!-- Append to library jar -->
+-        <java-to-jar srcdir="build/temp/hamcrest-library/generated-code"
+-                     modulename="hamcrest-library"
+-                     classpath="build/hamcrest-core-${version}.jar"/>
+     </target>
+ 
+     <target name="integration" depends="core, library" description="Build integration with external tools">

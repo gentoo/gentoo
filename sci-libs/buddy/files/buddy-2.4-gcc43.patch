@@ -1,0 +1,22 @@
+diff -Naurp buddy-2.4-orig/src/bddtest.cxx buddy-2.4/src/bddtest.cxx
+--- buddy-2.4-orig/src/bddtest.cxx	2004-06-25 07:22:26.000000000 -0600
++++ buddy-2.4/src/bddtest.cxx	2009-02-09 22:14:19.000000000 -0600
+@@ -28,6 +28,7 @@
+ ========================================================================*/
+ 
+ #include <string>
++#include <cstdlib>
+ #include "bdd.h"
+ #include "bvec.h"
+ 
+diff -Naurp buddy-2.4-orig/examples/bddcalc/parser_.h buddy-2.4/examples/bddcalc/parser_.h
+--- buddy-2.4-orig/examples/bddcalc/parser_.h	2004-06-25 07:21:43.000000000 -0600
++++ buddy-2.4/examples/bddcalc/parser_.h	2009-02-09 22:21:09.000000000 -0600
+@@ -9,6 +9,7 @@
+ #define _PARSER_H
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include "bdd.h"
+ 
+ #define MAXIDLEN 32  /* Max. number of allowed characters in an identifier */

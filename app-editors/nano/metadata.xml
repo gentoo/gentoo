@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+    <email>polynomial-c@gentoo.org</email>
+    <name>Lars Wendler</name>
+</maintainer>
+<longdescription>
+GNU nano - an enhanced clone of the Pico text editor.
+
+The nano project was started because of a few "problems" with the
+wonderfully easy-to-use and friendly Pico text editor.
+
+First and foremost is its license: the Pine suite does not use the
+GPL or a GPL-friendly license, and has unclear restrictions on
+redistribution.  Because of this, Pine and Pico are not included with
+many GNU/Linux distributions.  Also, other features (like goto line
+number or search and replace) were unavailable until recently or
+require a command line flag.  Yuck.
+
+nano aims to solve these problems by emulating the functionality of
+Pico as closely as possible while addressing the problems above and
+perhaps providing other extra functionality.
+</longdescription>
+<use>
+ <flag name="justify">Enable justify/unjustify functions for text formatting.</flag>
+ <flag name="debug">
+  Enable debug messages and assert warnings.  Note that these will all be sent
+  straight to stderr rather than some logging facility.
+ </flag>
+ <flag name="magic">
+  Add magic file support (sys-apps/file) to automatically detect appropriate syntax highlighting
+ </flag>
+ <flag name="minimal">
+  Disable all fancy features, including ones that otherwise have a dedicated
+  USE flag (such as spelling).
+ </flag>
+ <flag name="split-usr">
+  Enable this if /bin and /usr/bin are separate directories
+ </flag>
+</use>
+</pkgmetadata>

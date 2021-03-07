@@ -1,0 +1,28 @@
+From 47275a3d92969709e7605f23a408c5ed5aa483c9 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl@gmail.com>
+Date: Fri, 15 May 2020 19:09:10 +0200
+Subject: [PATCH] Fix build with boost-1.73
+
+Thanks to William T Wilson for reporting and providing the patch.
+
+Signed-off-by: Bernd Waibel <waebbl@gmail.com>
+---
+ src/import.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/import.cc b/src/import.cc
+index eef1323..08e46ff 100644
+--- a/src/import.cc
++++ b/src/import.cc
+@@ -50,7 +50,7 @@ namespace fs = boost::filesystem;
+ #include <boost/assign/std/vector.hpp>
+ using namespace boost::assign; // bring 'operator+=()' into scope
+ 
+-#include <boost/detail/endian.hpp>
++#include <boost/endian/arithmetic.hpp>
+ #include <cstdint>
+ 
+ extern PolySet * import_amf(std::string, const Location &loc);
+-- 
+2.26.2
+

@@ -1,0 +1,21 @@
+We set these variables in the ebuild, so don't override them.
+
+--- a/scripts/cmake.global
++++ b/scripts/cmake.global
+@@ -27,16 +27,6 @@
+ include_directories(AFTER ${LIBUSB_INCLUDE_PATH})
+ set(CMAKE_REQUIRED_INCLUDES "${LIBUSB_INCLUDE_PATH};${CMAKE_REQUIRED_INCLUDES}")
+ 
+-execute_process(COMMAND pkg-config --variable=systemdsystemunitdir systemd
+-  OUTPUT_VARIABLE SYSTEMD_UNIT_DIR
+-  ERROR_QUIET
+-  OUTPUT_STRIP_TRAILING_WHITESPACE)
+-
+-execute_process(COMMAND pkg-config --variable=udevdir udev
+-  OUTPUT_VARIABLE UDEV_DIR
+-  ERROR_QUIET
+-  OUTPUT_STRIP_TRAILING_WHITESPACE)
+-
+ macro(INSTALL_EXEC_CMD _COMMAND _FAILMSG)
+ 	install(CODE "
+ 		execute_process(COMMAND ${_COMMAND} RESULT_VARIABLE install_exec_res)

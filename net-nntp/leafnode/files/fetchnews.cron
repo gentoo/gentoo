@@ -1,0 +1,10 @@
+#!/bin/sh
+#
+# Uncomment the following if you want to regularly
+# fetch new messages from your news server. 
+#
+#
+# This is part of the leafnode package.
+#
+
+#/usr/sbin/fetchnews 

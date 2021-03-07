@@ -1,0 +1,56 @@
+#!/bin/bash
+
+# Updates by Sascha Silbe
+
+usage() {
+	cat << EOF
+Usage: ntpclockset [options] <NTP server>
+Example: ntpclockset -q 192.168.0.1
+
+Options:
+	--quiet (-q)	be quiet (only show errors)
+	--help  (-h)	show this text and exit
+EOF
+	exit 1
+}
+
+quiet=0
+
+for curArg in "$@" ; do
+	case "${curArg}" in
+	-q|--quiet) quiet=1;;
+	-h|--help) 	usage;;
+	-*)			echo "Invalid option '${curArg}'"
+				usage;;
+	*)			NTPSERVER="${curArg}";;
+	esac
+done
+
+[ -z $NTPSERVER ] && NTPSERVER=`dnsip pool.ntp.org | awk '{print $1}'`
+
+tmpfile="`mktemp`"
+# display how much your clock is off by
+if ! sntpclock $NTPSERVER > ${tmpfile} ; then
+	echo "!!! Could not contact NTP server: $NTPSERVER" >&2
+	exit 2
+fi
+
+if [ ${quiet} -eq 0 ] ; then
+	echo ">>> Current clock sync:"
+	cat ${tmpfile} | clockview
+	echo
+	echo -n ">>> Now setting clock ..."
+fi
+cat ${tmpfile} | clockadd
+if [ ${quiet} -eq 0 ] ; then
+	echo "   [ok]"
+	echo -n ">>> Writing time to hardware clock ..."
+fi
+/sbin/hwclock --systohc
+if [ ${quiet} -eq 0 ] ; then
+	echo "   [ok]"
+	echo
+	echo ">>> New clock sync:"
+	sntpclock $NTPSERVER | clockview
+fi
+rm -f ${tmpfile}

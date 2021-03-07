@@ -1,0 +1,28 @@
+From 1978a0d16bf7f14b863b208d55699b9f46918b7c Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Tue, 5 Nov 2019 16:31:53 +0100
+Subject: [PATCH] configure.ac: Only check reasonable berkdb versions
+
+https://bugs.gentoo.org/519846
+
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 542f3bb..8f1edba 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -414,7 +414,7 @@ dnl Look for db3 or superior with db_create call
+   case "$DBVERS" in
+     3)
+     AC_MSG_RESULT([version 3.x or above])
+-    for lib in db-6.0 db-5.3 db-5.1 db-5.0 db-4.8 db-4.7 db-4.6 db-4.5 db-4.4 db-4.3 db-4.2 db-4.1 db-4.0 db-4 db4 db-3.2 db-3 db3 db; do
++    for lib in db-6.2 db-6.1 db-6.0 db-5.3 db-5.1 db-5.0 db-4.8 db; do
+       if test "x$DBLINKED" = "x0"; then
+ dnl        AC_CHECK_LIB($lib, db_create, [DBLIB="-l$lib"; DBLINKED=1], [])
+ dnl installations of libdb4 function names are defined in db.h
+-- 
+2.24.0
+

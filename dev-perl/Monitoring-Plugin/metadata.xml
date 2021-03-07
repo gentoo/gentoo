@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+    <name>Michael Orlitzky</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Monitoring-Plugin</remote-id>
+    <remote-id type="cpan-module">Monitoring::Plugin</remote-id>
+    <remote-id type="cpan-module">Monitoring::Plugin::Config</remote-id>
+    <remote-id type="cpan-module">Monitoring::Plugin::ExitResult</remote-id>
+    <remote-id type="cpan-module">Monitoring::Plugin::Functions</remote-id>
+    <remote-id type="cpan-module">Monitoring::Plugin::Getopt</remote-id>
+    <remote-id type="cpan-module">Monitoring::Plugin::Performance</remote-id>
+    <remote-id type="cpan-module">Monitoring::Plugin::Range</remote-id>
+    <remote-id type="cpan-module">Monitoring::Plugin::Threshold</remote-id>
+  </upstream>
+</pkgmetadata>

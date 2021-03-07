@@ -1,0 +1,39 @@
+Use JAVA_HOME before bundled jre
+
+Must keep bundled jre symlink around in case "Use Embedded JDK" is selected
+
+https://bugs.gentoo.org/613868
+https://bugs.gentoo.org/660404
+
+--- android-studio/bin/studio.sh	2018-07-20 13:43:12.339049033 +0800
++++ android-studio/bin/studio.sh	2018-07-20 13:43:38.494932028 +0800
+@@ -73,6 +73,14 @@
+   fi
+ fi
+ 
++if [ -z "$JDK" -a -n "$JDK_HOME" -a -x "$JDK_HOME/bin/java" ]; then
++  JDK="$JDK_HOME"
++fi
++
++if [ -z "$JDK" -a  -n "$JAVA_HOME" -a -x "$JAVA_HOME/bin/java" ]; then
++  JDK="$JAVA_HOME"
++fi
++
+ if [ -z "$JDK" -a "$OS_TYPE" = "Linux" ] ; then
+   BUNDLED_JRE="$IDE_HOME/jre64"
+   if [ ! -d "$BUNDLED_JRE" ]; then
+@@ -83,14 +91,6 @@
+   fi
+ fi
+ 
+-if [ -z "$JDK" -a -n "$JDK_HOME" -a -x "$JDK_HOME/bin/java" ]; then
+-  JDK="$JDK_HOME"
+-fi
+-
+-if [ -z "$JDK" -a  -n "$JAVA_HOME" -a -x "$JAVA_HOME/bin/java" ]; then
+-  JDK="$JAVA_HOME"
+-fi
+-
+ if [ -z "$JDK" ]; then
+   JDK_PATH=`which java`
+ 

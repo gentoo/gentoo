@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>sci-mathematics@gentoo.org</email>
+  <name>Gentoo Mathematics Project</name>
+</maintainer>
+<use>
+  <flag name="cdd">Enable sci-libs/cddlib interface for convex hull
+  computations (Should be kept enabled).</flag>
+  <flag name="lrs">Enable sci-libs/lrslib interface for convex hull computations.</flag>
+  <flag name="ppl">Enable dev-libs/ppl interface for convex hull computations.</flag>
+  <flag name="bliss">Enable sci-libs/bliss interface for graph and face lattice isomorphism computations.</flag>
+  <flag name="group">Build extension for dealing with permutation groups and symmetric objects.</flag>
+  <flag name="libnormaliz">Build the bundled extension for lattice related computations.</flag>
+  <flag name="singular">Enable the interface to sci-mathematics/singular for ideal related computations.</flag>
+  <flag name="libpolymake">Build the polymake library to build applications using the C++ interface.</flag>
+</use>
+<longdescription lang="en">
+Polymake started out as a tool for the algorithmic treatment of convex
+polyhedra. By now it also deals with finite simplicial complexes,
+tight spans of finite metric spaces, and other objects. 
+</longdescription>
+</pkgmetadata>

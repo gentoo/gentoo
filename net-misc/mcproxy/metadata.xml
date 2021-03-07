@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		IGMP/MLD proxies offer the possibility option to combine
+		local multicast networks with a larger multicast infrastructure.
+		In contrast to multicast routers, proxies are lightweight and
+		do not require the support of a multicast routing protocol such as PIM or DVMRP.
+		A common use case is a local stub networks that interconnects with
+		a remote multicast routing domain, e.g. via a tunnel.
+		But it can also be used in PMIPv6 domain to enable multicast for sources and listeners (RFC 6224).
+		The Mcproxy meets the requirements of the IGMP/MLD proxying standard (RFC 4605)
+		and has additional functionalities. The multicast proxy can be instantiated multiple times,
+		is dynamically configurable at runtime, supports multiple upstreams and peering-interfaces
+		for a non hierarchical interconnection of multicast proxies.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/mcproxy/mcproxy/issues</bugs-to>
+		<remote-id type="github">mcproxy/mcproxy</remote-id>
+	</upstream>
+</pkgmetadata>

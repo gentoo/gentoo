@@ -1,0 +1,15 @@
+Using the PHYlogeny Inference Package on Gentoo systems
+
+Location of the factor program
+
+On Gentoo systems, the PHYLIP program "factor" is named "factor-phylip", in
+order to avoid a file collision with the program of the same name provided by
+the "sys-apps/coreutils" package.
+
+Location of the font files
+
+PHYLIP programs will find font files only if they are in a directory
+referenced by the "PATH" variable or if they are in the current working
+directory. When working with PHYLIP programs that need these files, either
+copy or symlink the fonts you need to your working directory, or add
+"/usr/share/phylip/fonts/" to your "PATH" variable.

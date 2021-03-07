@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+EXODUS II is a model developed to store and retrieve transient data for 
+finite element analyses. It is used for preprocessing, postprocessing, 
+as well as code to code data transfer. ExodusII is based on netcdf.
+</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">exodusii</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,14 @@
+--- libgda-5.2.2/configure.orig	2014-05-17 14:58:33.206028742 +0200
++++ libgda-5.2.2/configure	2014-05-17 14:58:45.937790443 +0200
+@@ -23200,6 +23259,11 @@
+ 		    JTYPE="Sun JRE 1.7"
+ 		    JFLAGS="-Xlint:unchecked -Xlint:deprecation"
+ 		    ;;
++                JRE1.8.*)
++		    try_java=true
++		    JTYPE="Sun JRE 1.8"
++		    JFLAGS="-Xlint:unchecked -Xlint:deprecation"
++		    ;;
+                 JREgcj-4*)
+ 		    try_java=true
+ 		    JTYPE="GCJ"

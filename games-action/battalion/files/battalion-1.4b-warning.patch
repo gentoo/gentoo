@@ -1,0 +1,12 @@
+diff -ru battalion1.4b.orig/net.c battalion1.4b/net.c
+--- battalion1.4b.orig/net.c	2002-05-06 09:57:01.000000000 -0400
++++ battalion1.4b/net.c	2015-03-30 18:29:23.885306334 -0400
+@@ -378,7 +378,7 @@
+ 
+ /* nother copy of this elsewhere */
+ 
+-	sprintf(mesg, "%s %d %3.1f %3.1f %3.1f %3.1f %0.3f %d %d #", MESG_NEW_TANK,
++	sprintf(mesg, "%s %d %3.1f %3.1f %3.1f %3.1f %0.3f %d #", MESG_NEW_TANK,
+ 						 tempTank->number, 
+ 						 tempTank->x-globalxshift, 
+ 						 tempTank->z-globalzshift, 

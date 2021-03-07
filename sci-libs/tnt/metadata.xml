@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		The Template Numerical Toolkit (TNT) is a collection of interfaces and
+		reference implementations of numerical objects useful for scientific
+		computing in C++. The toolkit defines interfaces for basic data
+		structures, such as multidimensional arrays and sparse matrices, commonly
+		used in numerical applications. The goal of this package is to provide
+		reusable software components that address many of the portability and
+		maintenance problems with C++ codes.
+	</longdescription>
+</pkgmetadata>

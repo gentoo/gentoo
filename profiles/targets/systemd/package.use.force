@@ -1,0 +1,6 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Mike Gilbert <floppym@gentoo.org> (2015-04-22)
+# Force systemd to avoid depgraph breakage, bug 547360.
+virtual/libudev systemd

@@ -1,0 +1,105 @@
+--- /build/premake/premake5/build/gmake2.bsd/Premake5.make
++++ /build/premake/premake5/build/gmake2.bsd/Premake5.make
+@@ -36,19 +36,19 @@
+ TARGET = $(TARGETDIR)/premake5
+ OBJDIR = obj/Release/Premake5
+ DEFINES += -DPREMAKE_COMPRESSION -DCURL_STATICLIB -DPREMAKE_CURL -DNDEBUG -DLUA_USE_POSIX -DLUA_USE_DLOPEN
+-ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -O3 -Wall -Wextra
+-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -O3 -Wall -Wextra -fno-stack-protector
++ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -Wall -Wextra
++ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -Wall -Wextra -fno-stack-protector
+ LIBS += bin/Release/liblua-lib.a bin/Release/libzip-lib.a bin/Release/libzlib-lib.a bin/Release/libcurl-lib.a bin/Release/libmbedtls-lib.a -lm
+ LDDEPS += bin/Release/liblua-lib.a bin/Release/libzip-lib.a bin/Release/libzlib-lib.a bin/Release/libcurl-lib.a bin/Release/libmbedtls-lib.a
+-ALL_LDFLAGS += $(LDFLAGS) -s -rdynamic
++ALL_LDFLAGS += $(LDFLAGS) -rdynamic
+ 
+ else ifeq ($(config),debug)
+ TARGETDIR = ../../bin/debug
+ TARGET = $(TARGETDIR)/premake5
+ OBJDIR = obj/Debug/Premake5
+ DEFINES += -DPREMAKE_COMPRESSION -DCURL_STATICLIB -DPREMAKE_CURL -D_DEBUG -DLUA_USE_POSIX -DLUA_USE_DLOPEN
+-ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -g -Wall -Wextra
+-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -g -Wall -Wextra
++ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -Wall -Wextra
++ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -Wall -Wextra
+ LIBS += bin/Debug/liblua-lib.a bin/Debug/libzip-lib.a bin/Debug/libzlib-lib.a bin/Debug/libcurl-lib.a bin/Debug/libmbedtls-lib.a -lm
+ LDDEPS += bin/Debug/liblua-lib.a bin/Debug/libzip-lib.a bin/Debug/libzlib-lib.a bin/Debug/libcurl-lib.a bin/Debug/libmbedtls-lib.a
+ ALL_LDFLAGS += $(LDFLAGS) -rdynamic
+--- /build/premake/premake5/build/gmake2.macosx/Premake5.make
++++ /build/premake/premake5/build/gmake2.macosx/Premake5.make
+@@ -45,8 +45,8 @@
+ TARGET = $(TARGETDIR)/premake5
+ OBJDIR = obj/Release/Premake5
+ DEFINES += -DPREMAKE_COMPRESSION -DCURL_STATICLIB -DPREMAKE_CURL -DNDEBUG -DLUA_USE_MACOSX
+-ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -O3 -Wall -Wextra
+-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -O3 -Wall -Wextra -fno-stack-protector
++ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -Wall -Wextra
++ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -Wall -Wextra -fno-stack-protector
+ LIBS += bin/Release/liblua-lib.a bin/Release/libzip-lib.a bin/Release/libzlib-lib.a bin/Release/libcurl-lib.a -framework CoreServices -framework Foundation -framework Security -lreadline
+ LDDEPS += bin/Release/liblua-lib.a bin/Release/libzip-lib.a bin/Release/libzlib-lib.a bin/Release/libcurl-lib.a
+ 
+@@ -55,8 +55,8 @@
+ TARGET = $(TARGETDIR)/premake5
+ OBJDIR = obj/Debug/Premake5
+ DEFINES += -DPREMAKE_COMPRESSION -DCURL_STATICLIB -DPREMAKE_CURL -D_DEBUG -DLUA_USE_MACOSX
+-ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -g -Wall -Wextra
+-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -g -Wall -Wextra
++ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -Wall -Wextra
++ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -Wall -Wextra
+ LIBS += bin/Debug/liblua-lib.a bin/Debug/libzip-lib.a bin/Debug/libzlib-lib.a bin/Debug/libcurl-lib.a -framework CoreServices -framework Foundation -framework Security -lreadline
+ LDDEPS += bin/Debug/liblua-lib.a bin/Debug/libzip-lib.a bin/Debug/libzlib-lib.a bin/Debug/libcurl-lib.a
+ 
+--- /build/premake/premake5/build/gmake2.unix/Premake5.make
++++ /build/premake/premake5/build/gmake2.unix/Premake5.make
+@@ -36,19 +36,19 @@
+ TARGET = $(TARGETDIR)/premake5
+ OBJDIR = obj/Release/Premake5
+ DEFINES += -DPREMAKE_COMPRESSION -DCURL_STATICLIB -DPREMAKE_CURL -DNDEBUG -DLUA_USE_POSIX -DLUA_USE_DLOPEN
+-ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -O3 -Wall -Wextra
+-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -O3 -Wall -Wextra -fno-stack-protector
++ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -Wall -Wextra
++ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -Wall -Wextra -fno-stack-protector
+ LIBS += bin/Release/liblua-lib.a bin/Release/libzip-lib.a bin/Release/libzlib-lib.a bin/Release/libcurl-lib.a bin/Release/libmbedtls-lib.a -lm -ldl -lrt
+ LDDEPS += bin/Release/liblua-lib.a bin/Release/libzip-lib.a bin/Release/libzlib-lib.a bin/Release/libcurl-lib.a bin/Release/libmbedtls-lib.a
+-ALL_LDFLAGS += $(LDFLAGS) -s -rdynamic
++ALL_LDFLAGS += $(LDFLAGS) -rdynamic
+ 
+ else ifeq ($(config),debug)
+ TARGETDIR = ../../bin/debug
+ TARGET = $(TARGETDIR)/premake5
+ OBJDIR = obj/Debug/Premake5
+ DEFINES += -DPREMAKE_COMPRESSION -DCURL_STATICLIB -DPREMAKE_CURL -D_DEBUG -DLUA_USE_POSIX -DLUA_USE_DLOPEN
+-ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -g -Wall -Wextra
+-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -g -Wall -Wextra
++ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -Wall -Wextra
++ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -Wall -Wextra
+ LIBS += bin/Debug/liblua-lib.a bin/Debug/libzip-lib.a bin/Debug/libzlib-lib.a bin/Debug/libcurl-lib.a bin/Debug/libmbedtls-lib.a -lm -ldl -lrt
+ LDDEPS += bin/Debug/liblua-lib.a bin/Debug/libzip-lib.a bin/Debug/libzlib-lib.a bin/Debug/libcurl-lib.a bin/Debug/libmbedtls-lib.a
+ ALL_LDFLAGS += $(LDFLAGS) -rdynamic
+--- /build/premake/premake5/src/tools/gcc.lua
++++ /build/premake/premake5/src/tools/gcc.lua
+@@ -346,8 +346,7 @@
+ --
+ 
+ 	function gcc.ldsymbols(cfg)
+-		-- OS X has a bug, see http://lists.apple.com/archives/Darwin-dev/2006/Sep/msg00084.html
+-		return iif(table.contains(os.getSystemTags(cfg.system), "darwin"), "-Wl,-x", "-s")
++		return ""
+ 	end
+ 
+ 	gcc.ldflags = {
+--- /libraries/source/fcollada/src/Makefile
++++ /libraries/source/fcollada/src/Makefile
+@@ -9,9 +9,9 @@
+ 
+ CXX ?= g++
+ CXXFLAGS += -fvisibility=hidden -W -Wall -Wno-unused-parameter -Wno-unused-function $(OS_DEFINE) $(PIC_FLAGS) $(CPPFLAGS)
+-CXXFLAGS_DEBUG := -O0 -g -D_DEBUG -DRETAIL
+-CXXFLAGS_RELEASE := -O2 -DNDEBUG -DRETAIL
+-CXXFLAGS_TEST := -O0 -g -D_DEBUG
++CXXFLAGS_DEBUG := -D_DEBUG -DRETAIL
++CXXFLAGS_RELEASE := -DNDEBUG -DRETAIL
++CXXFLAGS_TEST := -D_DEBUG
+ LDFLAGS_TEST= -ldl
+ LIBS += `pkg-config libxml-2.0 --libs`
+ INCLUDES += -IFCollada `pkg-config libxml-2.0 --cflags`

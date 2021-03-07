@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>swegener@gentoo.org</email>
+		<name>Sven Wegener</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>monsieurp@gentoo.org</email>
+		<name>Patrice Clement</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>zlogene@gentoo.org</email>
+		<name>Mikle Kolyada</name>
+	</maintainer>
+	<use>
+		<flag name="otr">Adds support for a loadable IRC otr module</flag>
+		<flag name="proxy">Adds support for a loadable IRC proxy module</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">irssi/irssi</remote-id>
+	</upstream>
+</pkgmetadata>

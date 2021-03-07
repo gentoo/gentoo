@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
+	<longdescription lang="en">
+		Fastjar is a version of Sun's 'jar' utility, written entirely in C,
+		and therefore quite a bit faster. Fastjar can be up to 100x faster
+		than the stock 'jar' program running without a JIT.
+	</longdescription>
+</pkgmetadata>

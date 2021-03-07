@@ -1,0 +1,2 @@
+# arguments for prometheus alertmanager
+command_args="--config.file=/etc/alertmanager/config.yml --storage.path=/var/lib/alertmanager"

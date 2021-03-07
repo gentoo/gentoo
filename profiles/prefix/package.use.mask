@@ -1,0 +1,45 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2020-12-10)
+# Disable systemtap for now to be consistent
+# with ::prefix pre-merge.
+# Not yet tested so we may be able to drop this later.
+dev-lang/ruby systemtap
+
+# Fabian Groffen <grobian@gentoo.org> (2020-06-07)
+# installing kernels has no business in Prefix
+sys-apps/debianutils installkernel
+
+# Michael Haubenwallner <haubi@gentoo.org> (2019-05-02)
+# gold is linux only, and is required by cxx
+sys-devel/binutils cxx gold default-gold
+
+# Fabian Groffen <grobian@gentoo.org> (2018-12-27)
+# USE-dep fixing, bugs #665088, #667266, #671730, 
+dev-db/postgresql kerberos ldap llvm pam systemd libressl
+net-libs/libsoup gssapi samba vala
+net-libs/glib-networking gnome libproxy
+net-misc/wget cookie_check metalink uuid
+sys-apps/dbus selinux elogind systemd
+app-doc/doxygen clang doxysearch qt5
+app-text/ghostscript-gpl cups
+app-text/texlive-core cjk
+
+# Mikle Kolyada <zlogene@gentoo.org> (2014-11-29)
+# Masked because of lack of manpower/time (bug #497068)
+dev-vcs/git mediawiki mediawiki-experimental
+
+# Fabian Groffen <grobian@gentoo.org> (2010-10-23)
+# IPC relies on pipes, selects, polls, and more stuff that Python is
+# very bad with, that really causes way more issues than it is worth to
+# have some boundary bugs solved and more robust subshell die support
+sys-apps/portage ipc
+
+# Michael Haubenwallner <haubi@gentoo.org> (2010-09-17)
+# sys-apps/keyutils is a linux only package
+app-crypt/mit-krb5 keyutils
+
+# Michael Haubenwallner <haubi@gentoo.org> (2009-09-30)
+# Most prefix platforms do/can not have a uuid implementation (#230981).
+x11-libs/libSM uuid

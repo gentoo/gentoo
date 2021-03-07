@@ -1,0 +1,16 @@
+Fixes ncdump_tst_netcdf4 test failure on big endian.
+https://github.com/Unidata/netcdf-c/issues/1896
+diff --git a/ncdump/tst_special_atts.c b/ncdump/tst_special_atts.c
+index 9655b86..e71cb7e 100644
+--- a/ncdump/tst_special_atts.c
++++ b/ncdump/tst_special_atts.c
+@@ -145,6 +145,10 @@ main(int argc, char **argv)
+    /* Set _Storage as compact */
+    if (nc_def_var_chunking(ncid, var6id, NC_COMPACT, NULL)) ERR;
+    if (nc_def_var_chunking(ncid, var7id, NC_COMPACT, NULL)) ERR;
++#if __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
++   if (nc_def_var_endian(ncid, var6id, NC_ENDIAN_LITTLE)) ERR;
++   if (nc_def_var_endian(ncid, var7id, NC_ENDIAN_LITTLE)) ERR;
++#endif
+ 
+    if (nc_enddef(ncid)) ERR;

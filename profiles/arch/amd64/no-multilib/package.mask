@@ -1,0 +1,105 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# David Seifert <soap@gentoo.org> (2018-01-03)
+# Requires 32-bit multilib compatibility
+sys-block/megamgr
+
+# James Le Cuirot <chewi@gentoo.org> (2016-08-13)
+# Steam requires amd64 multilib. These are steam-overlay packages.
+dev-util/adobe-air-runtime
+games-util/steam-client-meta
+games-util/steam-games-meta
+games-util/steam-launcher
+games-util/steam-meta
+
+# Andreas K. Huettel <dilfridge@gentoo.org>
+# Novell Groupwise Client sadly needs a 32bit java vm (bundled)
+mail-client/novell-groupwise-client
+
+# AMD64 Team <amd64@gentoo.org>
+# Mask packages that rely on amd64 multilib
+app-accessibility/mbrola
+app-arch/stuffit
+app-benchmarks/cpuburn
+app-editors/emacs:18
+app-emulation/crossover-bin
+app-emulation/protontricks
+app-emulation/q4wine
+app-emulation/winetricks
+dev-embedded/libftd2xx
+dev-embedded/openocd
+dev-util/android-ndk
+dev-util/android-sdk-update-manager
+dev-util/biew
+games-action/badland
+games-action/beathazardultra
+games-action/brutal-legend
+games-action/crimsonland
+games-action/descent3
+games-action/descent3-demo
+games-action/guacamelee
+games-action/heretic2
+games-action/heretic2-demo
+games-action/hotline-miami
+games-action/intrusion2
+games-action/lugaru
+games-action/shadowgrounds-bin
+games-action/shadowgrounds-survivor-bin
+games-action/solar2
+games-action/swordandsworcery
+games-action/trine-enchanted-edition
+games-action/trine2
+games-arcade/aquaria
+games-arcade/barbarian-bin
+games-arcade/dynamitejack
+games-arcade/gish-demo
+games-arcade/jardinains
+games-arcade/thinktanks-demo
+games-emulation/caps
+games-emulation/nestra
+games-emulation/pcsx2
+games-emulation/zinc
+games-emulation/zsnes
+games-fps/avp
+games-fps/etqw-bin
+games-fps/etqw-data
+games-fps/etqw-demo
+games-fps/glxquake-bin
+games-fps/legends
+games-fps/sauerbraten
+games-fps/serious-sam-tse
+games-fps/soldieroffortune
+games-fps/ut2003
+games-fps/ut2003-demo
+games-fps/ut2004-demo
+games-misc/little-inferno
+games-misc/papers-please
+games-puzzle/triptych
+games-roguelike/adom
+games-rpg/baldurs-gate-ee
+games-rpg/broken-age
+games-rpg/costume-quest
+games-rpg/dear-esther
+games-rpg/dungeon-defenders
+games-rpg/eschalon-book-1-demo
+games-rpg/wasteland2
+games-server/etqw-ded
+games-simulation/bcs-demo
+games-strategy/darwinia
+games-strategy/darwinia-demo
+games-strategy/defcon-demo
+games-strategy/dominions2
+games-strategy/knights-demo
+games-strategy/majesty-demo
+games-strategy/spaz
+media-sound/aucdtect
+media-video/binkplayer
+media-video/tsmuxer
+net-misc/ps3mediaserver
+net-print/cndrvcups-common-lb
+net-print/cndrvcups-lb
+sci-biology/foldingathome
+sci-chemistry/cara-bin
+sci-chemistry/mars
+sci-electronics/eagle

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<use>
+		<flag name="pulseaudio">Enable system volume control plugin using <pkg>media-sound/pulseaudio</pkg></flag>
+		<flag name="wayland">Enable remote input mousepad plugin using <pkg>kde-frameworks/kwayland</pkg></flag>
+		<flag name="X">Enable remote input mousepad plugin using <pkg>x11-libs/libfakekey</pkg></flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,220 @@
+--- a/gcc/ada/exp_attr.adb	2018-11-16 20:23:21.775906196 +0100
++++ b/gcc/ada/exp_attr.adb	2018-11-16 20:25:57.418211404 +0100
+@@ -3121,6 +3121,121 @@
+          Analyze_And_Resolve (N, Standard_String);
+       end External_Tag;
+ 
++      -----------------------
++      -- Finalization_Size --
++      -----------------------
++
++      when Attribute_Finalization_Size => Finalization_Size : declare
++         function Calculate_Header_Size return Node_Id;
++         --  Generate a runtime call to calculate the size of the hidden header
++         --  along with any added padding which would precede a heap-allocated
++         --  object of the prefix type.
++
++         ---------------------------
++         -- Calculate_Header_Size --
++         ---------------------------
++
++         function Calculate_Header_Size return Node_Id is
++         begin
++            --  Generate:
++            --    Universal_Integer
++            --      (Header_Size_With_Padding (Pref'Alignment))
++
++            return
++              Convert_To (Universal_Integer,
++                Make_Function_Call (Loc,
++                  Name                   =>
++                    New_Occurrence_Of (RTE (RE_Header_Size_With_Padding), Loc),
++
++                  Parameter_Associations => New_List (
++                    Make_Attribute_Reference (Loc,
++                      Prefix         => New_Copy_Tree (Pref),
++                      Attribute_Name => Name_Alignment))));
++         end Calculate_Header_Size;
++
++         --  Local variables
++
++         Size : Entity_Id;
++
++      --  Start of Finalization_Size
++
++      begin
++         --  An object of a class-wide type first requires a runtime check to
++         --  determine whether it is actually controlled or not. Depending on
++         --  the outcome of this check, the Finalization_Size of the object
++         --  may be zero or some positive value.
++         --
++         --  In this scenario, Pref'Finalization_Size is expanded into
++         --
++         --    Size : Integer := 0;
++         --
++         --    if Needs_Finalization (Pref'Tag) then
++         --       Size :=
++         --         Universal_Integer
++         --           (Header_Size_With_Padding (Pref'Alignment));
++         --    end if;
++         --
++         --  and the attribute reference is replaced with a reference to Size.
++
++         if Is_Class_Wide_Type (Ptyp) then
++            Size := Make_Temporary (Loc, 'S');
++
++            Insert_Actions (N, New_List (
++
++              --  Generate:
++              --    Size : Integer := 0;
++
++              Make_Object_Declaration (Loc,
++                Defining_Identifier => Size,
++                Object_Definition   =>
++                  New_Occurrence_Of (Standard_Integer, Loc),
++                Expression          => Make_Integer_Literal (Loc, 0)),
++
++              --  Generate:
++              --    if Needs_Finalization (Pref'Tag) then
++              --       Size :=
++              --         Universal_Integer
++              --           (Header_Size_With_Padding (Pref'Alignment));
++              --    end if;
++
++              Make_If_Statement (Loc,
++                Condition              =>
++                  Make_Function_Call (Loc,
++                    Name                   =>
++                      New_Occurrence_Of (RTE (RE_Needs_Finalization), Loc),
++
++                    Parameter_Associations => New_List (
++                      Make_Attribute_Reference (Loc,
++                        Prefix         => New_Copy_Tree (Pref),
++                        Attribute_Name => Name_Tag))),
++
++                Then_Statements        => New_List (
++                   Make_Assignment_Statement (Loc,
++                     Name       => New_Occurrence_Of (Size, Loc),
++                     Expression => Calculate_Header_Size)))));
++
++            Rewrite (N, New_Occurrence_Of (Size, Loc));
++
++         --  The prefix is known to be controlled at compile time. Calculate
++         --  Finalization_Size by calling function Header_Size_With_Padding.
++
++         elsif Needs_Finalization (Ptyp) then
++            Rewrite (N, Calculate_Header_Size);
++
++         --  The prefix is not an object with controlled parts, so its
++         --  Finalization_Size is zero.
++
++         else
++            Rewrite (N, Make_Integer_Literal (Loc, 0));
++         end if;
++
++         --  Due to cases where the entity type of the attribute is already
++         --  resolved the rewritten N must get re-resolved to its appropriate
++         --  type.
++
++         Analyze_And_Resolve (N, Typ);
++      end Finalization_Size;
++
+       -----------
+       -- First --
+       -----------
+--- a/gcc/ada/snames.ads-tmpl	2016-05-16 11:29:28.000000000 +0200
+--- b/gcc/ada/snames.ads-tmpl	2016-05-16 11:29:28.000000000 +0200
+@@ -884,6 +884,7 @@
+    Name_Exponent                       : constant Name_Id := N + $;
+    Name_External_Tag                   : constant Name_Id := N + $;
+    Name_Fast_Math                      : constant Name_Id := N + $; -- GNAT
++   Name_Finalization_Size              : constant Name_Id := N + $; -- GNAT
+    Name_First                          : constant Name_Id := N + $;
+    Name_First_Bit                      : constant Name_Id := N + $;
+    Name_First_Valid                    : constant Name_Id := N + $; -- Ada 12
+@@ -1523,6 +1524,7 @@
+       Attribute_Exponent,
+       Attribute_External_Tag,
+       Attribute_Fast_Math,
++      Attribute_Finalization_Size,
+       Attribute_First,
+       Attribute_First_Bit,
+       Attribute_First_Valid,
+--- a/gcc/ada/sem_attr.ads	2018-11-16 21:35:46.821279875 +0100
++++ b/gcc/ada/sem_attr.ads	2018-11-16 21:36:00.028057464 +0100
+@@ -242,6 +242,16 @@
+       --  enumeration value. Constraint_Error is raised if no value of the
+       --  enumeration type corresponds to the given integer value.
+ 
++      -----------------------
++      -- Finalization_Size --
++      -----------------------
++
++      Attribute_Finalization_Size => True,
++      --  For every object or non-class-wide-type, Finalization_Size returns
++      --  the size of the hidden header used for finalization purposes as if
++      --  the object or type was allocated on the heap. The size of the header
++      --  does take into account any extra padding due to alignment issues.
++
+       -----------------
+       -- Fixed_Value --
+       -----------------
+--- a/gcc/ada/sem_attr.adb	2018-11-16 21:35:49.698231429 +0100
++++ b/gcc/ada/sem_attr.adb	2018-11-16 21:36:00.028057464 +0100
+@@ -3828,6 +3828,42 @@
+          Check_Standard_Prefix;
+          Rewrite (N, New_Occurrence_Of (Boolean_Literals (Fast_Math), Loc));
+ 
++      -----------------------
++      -- Finalization_Size --
++      -----------------------
++
++      when Attribute_Finalization_Size =>
++         Check_E0;
++
++         --  The prefix denotes an object
++
++         if Is_Object_Reference (P) then
++            Check_Object_Reference (P);
++
++         --  The prefix denotes a type
++
++         elsif Is_Entity_Name (P) and then Is_Type (Entity (P)) then
++            Check_Type;
++            Check_Not_Incomplete_Type;
++
++            --  Attribute 'Finalization_Size is not defined for class-wide
++            --  types because it is not possible to know statically whether
++            --  a definite type will have controlled components or not.
++
++            if Is_Class_Wide_Type (Etype (P)) then
++               Error_Attr_P
++                 ("prefix of % attribute cannot denote a class-wide type");
++            end if;
++
++         --  The prefix denotes an illegal construct
++
++         else
++            Error_Attr_P
++              ("prefix of % attribute must be a definite type or an object");
++         end if;
++
++         Set_Etype (N, Universal_Integer);
++
+       -----------
+       -- First --
+       -----------
+@@ -8264,6 +8300,13 @@
+          Fold_Uint (N,
+            Eval_Fat.Exponent (P_Base_Type, Expr_Value_R (E1)), Static);
+ 
++      -----------------------
++      -- Finalization_Size --
++      -----------------------
++
++      when Attribute_Finalization_Size =>
++         null;
++
+       -----------
+       -- First --
+       -----------

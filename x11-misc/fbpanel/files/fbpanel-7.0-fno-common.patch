@@ -1,0 +1,21 @@
+--- a/panel/plugin.c
++++ b/panel/plugin.c
+@@ -22,6 +22,7 @@
+ /**************************************************************/
+ static GHashTable *class_ht;
+ 
++struct _plugin_instance *stam;
+ 
+ void
+ class_register(plugin_class *p)
+--- a/panel/plugin.h
++++ b/panel/plugin.h
+@@ -9,7 +9,7 @@
+ #include <stdio.h>
+ #include "panel.h"
+ 
+-struct _plugin_instance *stam;
++extern struct _plugin_instance *stam;
+ 
+ typedef struct {
+     /* common */

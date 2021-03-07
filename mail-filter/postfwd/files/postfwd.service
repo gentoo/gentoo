@@ -1,0 +1,11 @@
+[Unit]
+Description=Postfix firewall daemon
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/postfwd2 --shortlog --summary=600 --cache=600 --cache-rbl-timeout=3600 --cleanup-requests=1200 --cleanup-rbls=1800 --cleanup-rates=1200 --daemon --file=/etc/postfwd/postfwd.cf --interface=127.0.0.1 --port=10040 --pidfile=/var/run/postfwd.pid --user=postfwd --group=postfwd
+ExecStop=/usr/sbin/postfwd2 --file=/etc/postfwd/postfwd.cf --pidfile=/var/run/postfwd.pid --kill
+ExecReload=/usr/sbin/postfwd2 --file=/etc/postfwd/postfwd.cf --pidfile=/var/run/postfwd.pid --reload
+
+[Install]
+WantedBy=multi-user.target

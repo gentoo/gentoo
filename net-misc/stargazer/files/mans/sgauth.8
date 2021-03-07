@@ -1,0 +1,54 @@
+.TH sgauth 1 "December 31, 2012" "" "sgauth"
+
+.SH NAME
+sgauth \- a command-line utility for authorization in Stargazer
+
+.SH SYNOPSIS
+.B sgauth
+.RI [ config-file ]
+.br
+
+.SH DESCRIPTION
+.B sgauth
+allow user to become authorized in 
+.B Stargazer
+billing system.
+.PP
+.B sgauth
+reads the
+.IR config-file ,
+connects to
+.B Stargazer
+server and authentificates on it using data supplied in
+.IR config-file .
+In addition, it runs a simple http-server on port 5580, capable of
+monitoring and controlling the connection (if specified in 
+.IR config-file ")."
+
+.SH OPTIONS
+.TP
+.I config-file
+Path to file containing user login, password and other configuration data. Default is 
+.B
+/etc/sgauth.conf
+
+.SH FILES
+.B
+/usr/sbin/sgauth
+.br
+.B
+/etc/stargazer/sgauth.conf
+
+.SH SEE ALSO
+.BR sgconf (1),
+.BR sgconf_xml (1),
+.BR sgconv (1),
+.BR stargazer (8),
+.BR rscriptd (8).
+
+.SH AUTHOR
+sgauth was initially written by Boris Mikhailenko <stg34@stargazer.dp.ua>.
+.PP
+This manual page was written by Alexey Osipov <simba@lerlan.ru>,
+for the Debian project (and may be used by others), and was modified by
+Vladimir Pavljuchenkov <spiderx@spiderx.dp.ua> for Gentoo Linux

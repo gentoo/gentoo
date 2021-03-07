@@ -1,0 +1,22 @@
+--- heimdal-1.5/configure.ac.orig	2011-08-01 12:49:33.554689000 +0200
++++ heimdal-1.5/configure.ac	2011-08-01 13:54:12.707009421 +0200
+@@ -444,7 +444,7 @@
+ #endif
+ ],[0,0,0,0,0])
+ 
+-AC_FIND_FUNC_NO_LIBS(tgetent, termcap ncurses curses,[
++AC_FIND_FUNC_NO_LIBS(tgetent, tinfo ncurses curses termcap,[
+ #ifdef HAVE_TERMCAP_H
+ #include <termcap.h>
+ #endif
+--- heimdal-1.5/lib/libedit/configure.ac~	2011-07-30 22:43:29.000000000 +0200
++++ heimdal-1.5/lib/libedit/configure.ac	2011-08-01 13:54:30.657009419 +0200
+@@ -33,7 +33,7 @@
+ EL_MANTYPE
+ 
+ 
+-AC_CHECK_LIB(curses, tgetent,,
++AC_CHECK_LIB(tinfo, tgetent,,
+    [AC_CHECK_LIB(ncurses, tgetent,,
+       [AC_MSG_ERROR([libcurses or libncurses are required!])] )] )
+ 

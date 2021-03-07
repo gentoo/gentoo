@@ -1,0 +1,43 @@
+--- makefile.orig	2010-01-19 20:22:59.000000000 +0100
++++ makefile	2010-01-19 20:52:01.000000000 +0100
+@@ -6,21 +6,21 @@
+ #CC = /bin/cc
+ 
+ # Location of gnu c++ library.  
+-#LIBDIR = /usr/lib 
+-LIBDIR = /usr/local/lib 
++LIBDIR = /usr/lib 
++#LIBDIR = /usr/local/lib 
+ 
+ # Location of gnu gmp library libgmp.a  
+-#GMPLIBDIR = /usr/lib 
+-GMPLIBDIR = /usr/local/lib 
++GMPLIBDIR = /usr/lib 
++#GMPLIBDIR = /usr/local/lib 
+ 
+ # Location of gnu gmp-library include file gmp.h 
+-#GMPINCLUDEDIR = /usr/include
+-GMPINCLUDEDIR = /usr/local/include
++GMPINCLUDEDIR = /usr/include
++#GMPINCLUDEDIR = /usr/local/include
+ 
+ # Compiler optimization/debug options
+ #OPTFLAGS = -g -static -O
+ #OPTFLAGS = -g -static -pg -O
+-OPTFLAGS = -O3
++#OPTFLAGS = -O3
+ 
+ ########## You shouldn't have to change anything after this point ##########
+ 
+@@ -29,9 +29,8 @@
+ RATOBJ = gmp_init.o Integer.o Rational.o
+ RATEXE = cddr+
+ 
+-CFLAGS = $(OPTFLAGS) -I$(INCLUDEDIR) -I$(GMPINCLUDEDIR) -I. $(GMPFLAG)
+-
+-LDFLAGS = -L$(LIBDIR) -L$(GMPLIBDIR)
++CFLAGS += -I$(INCLUDEDIR) -I$(GMPINCLUDEDIR) -I. $(GMPFLAG)
++LDFLAGS += -L$(LIBDIR) -L$(GMPLIBDIR) 
+ 
+ LIBS = -lstdc++ -l$(RATLIB)
+ 

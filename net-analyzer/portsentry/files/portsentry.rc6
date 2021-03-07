@@ -1,0 +1,38 @@
+#!/sbin/openrc-run
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# NB: Config is in /etc/conf.d/portsentry
+
+depend() {
+	need net
+}
+
+checkconfig() {
+	if [ ! -e /etc/portsentry/portsentry.conf ] ; then
+		eerror "You need an /etc/portsentry/portsentry.conf file"
+		eerror "There is  a  sample in /usr/share/doc/portsentry"
+		return 1
+	fi
+	if [ -z "$PORTSENTRY_MODES" ] ; then
+		eerror "You need to setup your PORTSENTRY_MODES first"
+		eerror "Check /etc/conf.d/portsentry that you've enabled some or all of them"
+		return 1
+	fi
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting portsentry"
+	for mode in $PORTSENTRY_MODES ; do
+		/usr/bin/portsentry -$mode
+		result=$(( $result + $? ))
+	done
+	eend $result
+}
+
+stop() {
+	ebegin "Stopping portsentry"
+	killall portsentry
+	eend $?
+}

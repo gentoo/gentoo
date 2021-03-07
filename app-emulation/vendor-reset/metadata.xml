@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sarnex@gentoo.org</email>
+		<name>Nick Sarnie</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">gnif/vendor-reset</remote-id>
+	</upstream>
+</pkgmetadata>

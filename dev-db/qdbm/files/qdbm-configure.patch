@@ -1,0 +1,213 @@
+--- a/cgi/configure.in
++++ b/cgi/configure.in
+@@ -13,15 +13,6 @@
+ # Export variables
+ TARGETS="all"
+ 
+-# Building paths
+-pathtmp="$PATH"
+-PATH="$HOME/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
+-PATH="$PATH:/usr/ccs/bin:/usr/ucb:/usr/xpg4/bin:/usr/xpg6/bin:$pathtmp"
+-LIBRARY_PATH="$HOME/lib:/usr/local/lib:$LIBRARY_PATH"
+-LD_LIBRARY_PATH="$HOME/lib:/usr/local/lib:$LD_LIBRARY_PATH"
+-CPATH="$HOME/include:/usr/local/include:$CPATH"
+-export PATH LIBRARY_PATH LD_LIBRARY_PATH CPATH
+-
+ 
+ 
+ #================================================================
+--- a/configure.in
++++ b/configure.in
+@@ -17,17 +17,6 @@
+ MYDEFS=""
+ MYOPTS=""
+ MGWLIBS=""
+-LD="ld"
+-AR="ar"
+-
+-# Building paths
+-pathtmp="$PATH"
+-PATH="$HOME/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
+-PATH="$PATH:/usr/ccs/bin:/usr/ucb:/usr/xpg4/bin:/usr/xpg6/bin:$pathtmp"
+-LIBRARY_PATH="$HOME/lib:/usr/local/lib:$LIBRARY_PATH"
+-LD_LIBRARY_PATH="$HOME/lib:/usr/local/lib:$LD_LIBRARY_PATH"
+-CPATH="$HOME/include:/usr/local/include:$CPATH"
+-export PATH LIBRARY_PATH LD_LIBRARY_PATH CPATH
+ 
+ 
+ 
+@@ -186,19 +175,15 @@
+ then
+   MYOPTS="-O1 -fno-omit-frame-pointer -fno-force-addr"
+ fi
+-if gcc --version | egrep -i '^2\.(8|9)' > /dev/null 2>&1
++if $CC --version | egrep -i '^2\.(8|9)' > /dev/null 2>&1
+ then
+   MYOPTS="-O1 -fno-omit-frame-pointer -fno-force-addr"
+ fi
+ 
+ # Linker
+-printf 'checking for ld... '
+-if which ld | grep '/ld$' > /dev/null 2>&1
++AC_CHECK_TOOL(LD, ld, no)
++if test "$LD" = "no"
+ then
+-  LD=`which ld`
+-  printf '%s\n' "$LD"
+-else
+-  printf 'no\n'
+   if test "$isnowarn" != "yes"
+   then
+     printf '#================================================================\n' 1>&2
+@@ -208,13 +193,9 @@
+ fi
+ 
+ # Archiver
+-printf 'checking for ar... '
+-if which ar | grep '/ar$' > /dev/null 2>&1
++AC_CHECK_TOOL(AR, ar, no)
++if test "$AR" = "no"
+ then
+-  AR=`which ar`
+-  printf '%s\n' "$AR"
+-else
+-  printf 'no\n'
+   if test "$isnowarn" != "yes"
+   then
+     printf '#================================================================\n' 1>&2
+--- a/java/configure.in
++++ b/java/configure.in
+@@ -23,16 +23,6 @@
+ JAVARUN="java"
+ MYDEFS=""
+ MYOPTS=""
+-LD="ld"
+-
+-# Building paths
+-pathtmp="$PATH"
+-PATH="$HOME/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
+-PATH="$PATH:/usr/ccs/bin:/usr/ucb:/usr/xpg4/bin:/usr/xpg6/bin:$pathtmp"
+-LIBRARY_PATH="$HOME/lib:/usr/local/lib:$LIBRARY_PATH"
+-LD_LIBRARY_PATH="$HOME/lib:/usr/local/lib:$LD_LIBRARY_PATH"
+-CPATH="$HOME/include:/usr/local/include:$CPATH"
+-export PATH LIBRARY_PATH LD_LIBRARY_PATH CPATH
+ 
+ 
+ 
+@@ -162,19 +152,15 @@
+ then
+   MYOPTS="-O1"
+ fi
+-if gcc --version | egrep -i '^2\.(8|9)' > /dev/null 2>&1
++if $CC --version | egrep -i '^2\.(8|9)' > /dev/null 2>&1
+ then
+   MYOPTS="-O1"
+ fi
+ 
+ # Linker
+-printf 'checking for ld... '
+-if which ld | grep '/ld$' > /dev/null 2>&1
++AC_CHECK_TOOL(LD, ld, no)
++if test "$LD" = "no"
+ then
+-  LD=`which ld`
+-  printf '%s\n' "$LD"
+-else
+-  printf 'no\n'
+   printf '#================================================================\n' 1>&2
+   printf '# WARNING: ld is not found in PATH.\n' 1>&2
+   printf '#================================================================\n' 1>&2
+--- a/perl/configure.in
++++ b/perl/configure.in
+@@ -5,15 +5,6 @@
+ # Targets
+ AC_INIT(qdbm-perl, 1.0.0)
+ 
+-# Building paths
+-pathtmp="$PATH"
+-PATH="$HOME/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
+-PATH="$PATH:/usr/ccs/bin:/usr/ucb:/usr/xpg4/bin:/usr/xpg6/bin:$pathtmp"
+-LIBRARY_PATH="$HOME/lib:/usr/local/lib:$LIBRARY_PATH"
+-LD_LIBRARY_PATH="$HOME/lib:/usr/local/lib:$LD_LIBRARY_PATH"
+-CPATH="$HOME/include:/usr/local/include:$CPATH"
+-export PATH LIBRARY_PATH LD_LIBRARY_PATH CPATH
+-
+ # Setting the default prefix
+ if test "$prefix" = NONE
+ then
+--- a/plus/configure.in
++++ b/plus/configure.in
+@@ -16,17 +16,6 @@
+ TARGETS="all"
+ MYDEFS=""
+ MYOPTS=""
+-LD="ld"
+-AR="ar"
+-
+-# Building paths
+-pathtmp="$PATH"
+-PATH="$HOME/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
+-PATH="$PATH:/usr/ccs/bin:/usr/ucb:/usr/xpg4/bin:/usr/xpg6/bin:$pathtmp"
+-LIBRARY_PATH="$HOME/lib:/usr/local/lib:$LIBRARY_PATH"
+-LD_LIBRARY_PATH="$HOME/lib:/usr/local/lib:$LD_LIBRARY_PATH"
+-CPATH="$HOME/include:/usr/local/include:$CPATH"
+-export PATH LIBRARY_PATH LD_LIBRARY_PATH CPATH
+ 
+ 
+ 
+@@ -75,32 +64,24 @@
+ then
+   MYOPTS="-O1"
+ fi
+-if gcc --version | egrep -i '^2\.(8|9)' > /dev/null 2>&1
++if $CXX --version | egrep -i '^2\.(8|9)' > /dev/null 2>&1
+ then
+   MYOPTS="-O1"
+ fi
+ 
+ # Linker
+-printf 'checking for ld... '
+-if which ld | grep '/ld$' > /dev/null 2>&1
++AC_CHECK_TOOL(LD, ld, no)
++if test "$LD" = "no"
+ then
+-  LD=`which ld`
+-  printf '%s\n' "$LD"
+-else
+-  printf 'no\n'
+   printf '#================================================================\n' 1>&2
+   printf '# WARNING: ld is not found in PATH.\n' 1>&2
+   printf '#================================================================\n' 1>&2
+ fi
+ 
+ # Archiver
+-printf 'checking for ar... '
+-if which ar | grep '/ar$' > /dev/null 2>&1
++AC_CHECK_TOOL(AR, ar, no)
++if test "$AR" = "no"
+ then
+-  AR=`which ar`
+-  printf '%s\n' "$AR"
+-else
+-  printf 'no\n'
+   printf '#================================================================\n' 1>&2
+   printf '# WARNING: ar is not found in PATH.\n' 1>&2
+   printf '#================================================================\n' 1>&2
+--- a/ruby/configure.in
++++ b/ruby/configure.in
+@@ -5,15 +5,6 @@
+ # Targets
+ AC_INIT(qdbm-ruby, 1.0.0)
+ 
+-# Building paths
+-pathtmp="$PATH"
+-PATH="$HOME/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
+-PATH="$PATH:/usr/ccs/bin:/usr/ucb:/usr/xpg4/bin:/usr/xpg6/bin:$pathtmp"
+-LIBRARY_PATH="$HOME/lib:/usr/local/lib:$LIBRARY_PATH"
+-LD_LIBRARY_PATH="$HOME/lib:/usr/local/lib:$LD_LIBRARY_PATH"
+-CPATH="$HOME/include:/usr/local/include:$CPATH"
+-export PATH LIBRARY_PATH LD_LIBRARY_PATH CPATH
+-
+ # Setting the default prefix
+ if test "$prefix" = NONE
+ then

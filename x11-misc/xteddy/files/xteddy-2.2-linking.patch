@@ -1,0 +1,22 @@
+--- a/configure.in
++++ b/configure.in
+@@ -5,6 +5,8 @@
+ 
+ AC_PATH_XTRA
+ PKG_CHECK_MODULES(IMLIB2, imlib2)
++PKG_CHECK_MODULES(X11, x11)
++PKG_CHECK_MODULES(XEXT, xext)
+ 
+ PIXMAP_PATH="/usr/share/xteddy"
+ AC_SUBST(PIXMAP_PATH)
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -7,7 +7,7 @@
+ bin_SCRIPTS = xtoys xteddy_test
+ 
+ AM_CFLAGS  = @IMLIB2_CFLAGS@
+-AM_LDFLAGS = @IMLIB2_LIBS@ -lX11
++xteddy_LDADD = @IMLIB2_LIBS@ @X11_LIBS@ @XEXT_LIBS@
+ 
+ DEFS = -DPIXMAP_PATH=\"@PIXMAP_PATH@\" -Wall
+ 

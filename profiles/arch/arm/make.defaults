@@ -1,0 +1,27 @@
+# Copyright 2008-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Main ARM profile
+
+ARCH="arm"
+ACCEPT_KEYWORDS="arm"
+
+CHOST="arm-unknown-linux-gnu"
+CFLAGS="-O2"
+CXXFLAGS="${CFLAGS}"
+FFLAGS="${CFLAGS}"
+FCFLAGS="${CFLAGS}"
+
+MULTILIB_ABIS="arm"
+DEFAULT_ABI="arm"
+ABI="${DEFAULT_ABI}"
+LIBDIR_arm="lib"
+CHOST_arm="${CHOST}"
+
+# Donnie Berkholz <dberkholz@gentoo.org> (2006-08-18)
+# Defaults for video drivers
+VIDEO_CARDS="exynos fbdev omap"
+
+# Michał Górny <mgorny@gentoo.org> (2017-03-14)
+# Unhide the ARM-specific USE_EXPANDs.
+USE_EXPAND_HIDDEN="-CPU_FLAGS_ARM"

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-biology@gentoo.org</email>
+		<name>Gentoo Biology Project</name>
+	</maintainer>
+	<longdescription>
+		tRNAscan-SE detects ~99% of eukaryotic nuclear or prokaryotic tRNA
+		genes, with a false positive rate of less than one per 15 gigabases,
+		and with a search speed of about 30 kb/second. It was implemented for
+		large-scale human genome sequence analysis, but is applicable to
+		other DNAs as well.
+	</longdescription>
+</pkgmetadata>

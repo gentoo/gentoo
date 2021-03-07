@@ -1,0 +1,4 @@
+# /etc/conf.d/rtl_tcp - configuration file for /etc/init.d/rtl_tcp
+
+# Options to pass to rtl_tcp, see `rtl_tcp -h`
+#RTL_TCP_OPTIONS="-d0"

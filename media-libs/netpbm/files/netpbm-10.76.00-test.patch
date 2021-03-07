@@ -1,0 +1,248 @@
+automatically skip tests of disabled tools
+
+--- a/GNUmakefile
++++ b/GNUmakefile
+@@ -455,6 +458,21 @@ deb:
+ .PHONY: check-package
+ .PHONY: check-install
+ 
++# Variables from the make env we pass down to the test scripts.
++CHECK_VARS = \
++	BUILDDIR=$(BUILDDIR) \
++	RGBDEF=$(RGBDEF) \
++	BUILD_FIASCO=$(BUILD_FIASCO) \
++	JASPERLIB="$(JASPERLIB)" \
++	JBIGLIB="$(JBIGLIB)" \
++	JPEGLIB="$(JPEGLIB)" \
++	PNGLIB="$(PNGLIB)" \
++	TIFFLIB="$(TIFFLIB)" \
++	URTLIB="$(URTLIB)" \
++	X11LIB="$(X11LIB)" \
++	XML2_LIBS="$(XML2_LIBS)" \
++	ZLIB="$(ZLIB)"
++
+ # Test files in source tree.
+ 
+ check-tree : BUILDBINDIRS :=./analyzer \
+@@ -525,10 +543,10 @@ resultdir-backup: FORCE
+ 
+ check-tree: $(TESTRANDOM) resultdir-backup
+ 	cd $(RESULTDIR); \
++	  $(CHECK_VARS) \
+ 	  CHECK_TYPE=tree \
+-	  PBM_TEST_PATH=$(PBM_TEST_PATH) BUILDDIR=$(BUILDDIR) \
++	  PBM_TEST_PATH=$(PBM_TEST_PATH) \
+ 	  LD_LIBRARY_PATH=$(PBM_LIBRARY_PATH):${LD_LIBRARY_PATH} \
+-	  RGBDEF=$(RGBDEF) \
+ 	  $(SRCDIR)/test/Execute-Tests 2>&1
+ 
+ # Execute-Tests needs to know BUILDDIR in order to locate testrandom.
+@@ -545,19 +563,18 @@ check: check-package
+ 
+ check-package: $(TESTRANDOM) resultdir-backup
+ 	cd $(RESULTDIR); \
++	  $(CHECK_VARS) \
+ 	  CHECK_TYPE=package \
+-	  PBM_TEST_PATH=$(PBM_TEST_PATH) BUILDDIR=$(BUILDDIR) \
++	  PBM_TEST_PATH=$(PBM_TEST_PATH) \
+ 	  LD_LIBRARY_PATH=$(PBM_LIBRARY_PATH):${LD_LIBRARY_PATH} \
+-	  RGBDEF=$(RGBDEF) \
+ 	  $(SRCDIR)/test/Execute-Tests 2>&1
+ 
+ 
+ # Check after install
+ check-install: $(TESTRANDOM) resultdir-backup
+ 	cd $(RESULTDIR); \
++	  $(CHECK_VARS) \
+ 	  CHECK_TYPE=install \
+-	  BUILDDIR=$(BUILDDIR) \
+-	  RGBDEF=$(RGBDEF) \
+ 	  $(SRCDIR)/test/Execute-Tests 2>&1
+ 
+ 
+--- a/test/all-in-place.test
++++ b/test/all-in-place.test
+@@ -367,11 +367,62 @@ ordinary_testprogs="\
+   zeisstopnm \
+ "
+ 
++enabled_testprog() {
++    case $1 in
++      fiascotopnm|\
++      pnmtofiasco)
++        [ "${BUILD_FIASCO}" = "N" ] && return 1 ;;
++
++      jpeg2ktopam|\
++      pamtojpeg2k)
++        [ "${JASPERLIB}" = "NONE" ] && return 1 ;;
++
++      jbigtopnm|\
++      pnmtojbig)
++        [ "${JBIGLIB}" = "NONE" ] && return 1 ;;
++
++      jpegtopnm|\
++      pnmtojpeg|\
++      ppmtojpeg)
++        [ "${JPEGLIB}" = "NONE" ] && return 1 ;;
++
++      pamtopng|\
++      pngtopam|\
++      pnmtopng)
++        [ "${PNGLIB}" = "NONE" ] && return 1 ;;
++
++      svgtopam)
++        [ "${PNGLIB}" = "NONE" ] && return 1
++        [ "${XML2_LIBS}" = "NONE" ] && return 1
++        ;;
++
++      pamtotiff|\
++      pnmtotiffcmyk|\
++      tifftopnm)
++        [ "${TIFFLIB}" = "NONE" ] && return 1 ;;
++
++      pnmtorle|\
++      rletopnm)
++        [ "${URTLIB}" = "NONE" ] && return 1 ;;
++
++      pamx)
++        [ "${X11LIB}" = "NONE" ] && return 1 ;;
++    esac
++
++    return 0
++}
++
+ # The string "fiascotopnm" has to be filtered out by egrep for fiascotopnm
+ # has a slightly different version report format.
+ 
+ for i in $ordinary_testprogs
+   do
++    # Stub out programs that aren't built.
++    if ! enabled_testprog "$i"; then
++      echo "$i: ok"
++      continue
++    fi
++
+     $i --version  2>&1 | \
+     egrep -v -e fiascotopnm -e \
+     "(Using libnetpbm|Compiled|(BSD|SYSV|MSDOS|AMIGA) defined|RGB_?ENV=)" \
+--- a/test/fiasco-roundtrip.test
++++ b/test/fiasco-roundtrip.test
+@@ -2,6 +2,10 @@
+ # This script tests: pnmtofiasco fiascotopnm
+ # Also requires: pnmpad
+ 
++if [ "${BUILD_FIASCO}" = "N" ]; then
++  exit 80
++fi
++
+ # Should print 215556145 102615
+ 
+ pnmpad --black --bottom 1 --left 1 testimg.ppm | \
+--- a/test/jbig-roundtrip.test
++++ b/test/jbig-roundtrip.test
+@@ -2,6 +2,9 @@
+ # This script tests: pnmtojbig jbigtopnm
+ # Also requires: pamchannel pamtopnm
+ 
++if [ "${JBIGLIB}" = "NONE" ]; then
++  exit 80
++fi
+ 
+ # Test 1.  Should print 2425386270 41
+ pnmtojbig testgrid.pbm | jbigtopnm | cksum
+--- a/test/legacy-names.test
++++ b/test/legacy-names.test
+@@ -94,8 +94,30 @@ ordinary_testprogs="\
+   ppmtouil \
+ "
+ 
++enabled_testprog() {
++    case $1 in
++      ppmtojpeg)
++        [ "${JPEGLIB}" = "NONE" ] && return 1 ;;
++
++      pamrgbatopng|\
++      pngtopnm)
++        [ "${PNGLIB}" = "NONE" ] && return 1 ;;
++
++      pnmtotiff)
++        [ "${TIFFLIB}" = "NONE" ] && return 1 ;;
++    esac
++
++    return 0
++}
++
+ for i in $ordinary_testprogs
+   do
++    # Stub out programs that aren't built.
++    if ! enabled_testprog "$i"; then
++      echo "$i: ok"
++      continue
++    fi
++
+     $i --version  2>&1 | \
+     egrep -v \
+     "(Using libnetpbm|Compiled|(BSD|SYSV|MSDOS|AMIGA) defined|RGB_?ENV=)" \
+--- a/test/png-roundtrip.test
++++ b/test/png-roundtrip.test
+@@ -6,6 +6,10 @@
+ ## If this test fails and pnm-roundtrip2.test succeeds, it indicates
+ ## some problem with pnmtopng.
+ 
++if [ "${PNGLIB}" = "NONE" ]; then
++  exit 80
++fi
++
+ # Test 1.  Should print 1926073387 101484 18 times
+ for flags in "" -interlace \
+   -gamma=.45 \
+--- a/test/png-roundtrip2.test
++++ b/test/png-roundtrip2.test
+@@ -9,6 +9,10 @@
+ ## If both tests fail, the likely cause is a problem with pngtopam.
+ ## It is also possible that there is some problem in libpng.
+ 
++if [ "${PNGLIB}" = "NONE" ]; then
++  exit 80
++fi
++
+ # Test 1.  Should print 1926073387 101484 twice
+ for flags in "" -gamma=.45
+   do
+--- a/test/ps-roundtrip.test
++++ b/test/ps-roundtrip.test
+@@ -8,6 +8,10 @@
+ ## (1) zlib was not linked.
+ ## (2) ghostscript is not available.
+ 
++if [ "${ZLIB}" = "NONE" ]; then
++  exit 80
++fi
++
+ tmpdir=${tmpdir:-/tmp}
+ 
+ # pstopnm does not use libnetpbm functions for output.
+--- a/test/tiff-roundtrip.test
++++ b/test/tiff-roundtrip.test
+@@ -2,6 +2,9 @@
+ # This script tests: pamtotiff tifftopnm
+ # Also requires:
+ 
++if [ "${TIFFLIB}" = "NONE" ]; then
++  exit 80
++fi
+ 
+ # Failure message
+ ## Second test fails if Netpbm was built without the flate library
+--- a/test/utahrle-roundtrip.test
++++ b/test/utahrle-roundtrip.test
+@@ -2,6 +2,9 @@
+ # This script tests: pnmtorle rletopnm
+ # Also requires: pamchannel pamtopnm
+ 
++if [ "${URTLIB}" = "NONE" ]; then
++  exit 80
++fi
+ 
+ #Test 1.  Should produce 1571496937 33838, cksum of testimg.red
+ pamchannel -infile=testimg.ppm -tupletype="GRAYSCALE" 0 | pamtopnm | \

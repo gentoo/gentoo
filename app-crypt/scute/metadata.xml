@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>soap@gentoo.org</email>
+		<name>David Seifert</name>
+	</maintainer>
+	<longdescription>
+		Scute is a PKCS #11 module that adds support for the OpenPGP smartcard card to the Mozilla Network Security Services (NSS).
+	</longdescription>
+	<upstream>
+		<maintainer>
+			<email>mb@g10code.de</email>
+			<name>Marcus Brinkmann</name>
+		</maintainer>
+		<changelog>http://git.gnupg.org/cgi-bin/gitweb.cgi?p=scute.git;a=blob_plain;f=ChangeLog;hb=HEAD</changelog>
+		<doc lang="en">http://www.scute.org/documentation.xhtml</doc>
+		<bugs-to>https://bugs.g10code.com/gnupg/</bugs-to>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,16 @@
+Bug: https://rt.cpan.org/Public/Bug/Display.html?id=76442
+Gentoo-Bug: https://bugs.gentoo.org/420177
+--- a/src/C_XS/ToolBox.h
++++ b/src/C_XS/ToolBox.h
+@@ -93,7 +93,10 @@
+     #elif PERL_DARWIN
+         #define boolean bool
+     #else
+-        typedef enum { false = FALSE, true = TRUE } boolean;
++        typedef int boolean;
++        #ifndef I_STDBOOL
++            enum { false, true };
++        #endif
+     #endif
+ #endif
+ 

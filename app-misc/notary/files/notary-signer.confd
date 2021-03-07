@@ -1,0 +1,2 @@
+# arguments for notary signer
+command_args="-config=/var/lib/notary/fixtures/signer-config-local.json"

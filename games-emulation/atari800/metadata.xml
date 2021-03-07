@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mgorny@gentoo.org</email>
+    <name>Michał Górny</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>games@gentoo.org</email>
+    <name>Gentoo Games Project</name>
+  </maintainer>
+  <longdescription>
+Atari800 is an Atari 800, 800XL, 130XE and 5200 emulator for Unix, Amiga, MS-DOS, Atari 
+TT/Falcon, SDL and WinCE. Our main objective is to create a freely distributable portable 
+emulator (i.e. with source code available). It can be configured to run in the following 
+ways :
+
+    * BASIC mode
+    * CURSES mode
+    * SVGALIB for Linux Systems
+    * X Window + Optional XVIEW or MOTIF User Interface
+    * CBM Amiga
+    * MS-DOS
+    * TOS (Atari Falcon030/TT030 and compatible)
+    * MS Windows (DirectX)
+    * SDL (many different platforms and systems)
+    * WinCE
+    * MacOS X
+</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">atari800</remote-id>
+    <remote-id type="github">atari800/atari800</remote-id>
+  </upstream>
+</pkgmetadata>

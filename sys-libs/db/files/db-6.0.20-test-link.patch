@@ -1,0 +1,38 @@
+diff -Nuar db-6.0.20.orig/test/tcl/parallel.tcl db-6.0.20/test/tcl/parallel.tcl
+--- db-6.0.20.orig/test/tcl/parallel.tcl	2013-07-04 15:49:43.408348040 +0000
++++ db-6.0.20/test/tcl/parallel.tcl	2013-07-04 17:40:07.147943377 +0000
+@@ -289,16 +289,26 @@
+ 			    [eval glob -nocomplain {$dir/$buildpath/db_{reptest,repsite,replicate}$EXE}] \
+ 			    $destdir/$buildpath}
+ 		}
++		catch {
++			set l [eval glob {$dir/.libs} {$dir/db_{checkpoint,deadlock}$EXE} \
++					{$dir/db_{dump,load,printlog,recover,stat,upgrade}$EXE} \
++					{$dir/db_{archive,verify,hotbackup,log_verify}$EXE}]
++			foreach fn $l {
++				set fbasename [file tail $fn]
++				eval file link {$destdir/$fbasename} $fn
++			}
++		}
++		# we will be modifying this file, so we must copy, not link
+ 		catch {eval file copy \
+-		    [eval glob {$dir/{.libs,include.tcl}}] $destdir}
++		    [eval glob {$dir/include.tcl}] $destdir}
+ 		# catch {eval file copy $dir/$queuedir $destdir}
+-		catch {eval file copy \
+-		    [eval glob {$dir/db_{checkpoint,deadlock}$EXE} \
+-		    {$dir/db_{dump,load,printlog,recover,stat,upgrade}$EXE} \
+-		    {$dir/db_{archive,verify,hotbackup,log_verify}$EXE}] \
+-		    $destdir}
+-		catch {eval file copy \
+-		    [eval glob -nocomplain {$dir/db_{reptest,repsite,replicate}$EXE}] $destdir}
++		catch {
++			set l [eval glob -nocomplain {$dir/db_{reptest,repsite,replicate}$EXE}] 
++			foreach fn $l {
++				set fbasename [file tail $fn]
++				eval file link {$destdir/$fbasename} $fn
++			}
++		}
+ 
+ 		# Create modified copies of include.tcl in parallel
+ 		# directories so paths still work.

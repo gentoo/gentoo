@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="pgp">Add support pgp authentication module</flag>
+		<flag name="quota">Add support for user quota on various filesystems</flag>
+		<flag name="shadow">Add shadow support</flag>
+		<flag name="tracker">Add support for spotlight like tracker</flag>
+		<flag name="ssl">
+			Use <pkg>dev-libs/openssl</pkg> to provide DHX User Access
+			Modules. These are not used with most recent versions of OS X
+			and can be kept disabled without risks.
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">netatalk</remote-id>
+	</upstream>
+</pkgmetadata>

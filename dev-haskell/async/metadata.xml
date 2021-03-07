@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+	</maintainer>
+	<longdescription>
+		This package provides a higher-level interface over
+		threads, in which an @Async a@ is a concurrent
+		thread that will eventually deliver a value of
+		type @a@.  The package provides ways to create
+		@Async@ computations, wait for their results, and
+		cancel them.
+		
+		Using @Async@ is safer than using threads in two
+		ways:
+		
+		* When waiting for a thread to return a result,
+		if the thread dies with an exception then the
+		caller must either re-throw the exception
+		('wait') or handle it ('waitCatch'); the
+		exception cannot be ignored.
+		
+		* The API makes it possible to build a tree of
+		threads that are automatically killed when
+		their parent dies (see 'withAsync').
+		
+		Changes in 2.0.1.3:
+		
+		* Bump @base@ dependency to allow 4.6
+		
+		Changes in 2.0.1.2:
+		
+		* Bump @stm@ dependency to 2.4
+		
+		Changes in 2.0.1.1:
+		
+		* Safe Haskell support: @Control.Concurrent.Async@ is now @Trustworthy@
+		
+		Changes in 2.0.1.0:
+		
+		* Added a @Functor@ instance for @Async@
+		
+		* Added @asyncBound@, @asyncOn@, @asyncWithUnmask@, @asyncOnWithUnmask@, @withAsyncBound@, @withAsyncOn@, @withAsyncWithUnmask@, @withAsyncOnWithUnmask@.
+		
+		* Added @mapConcurrently@
+		
+		* Added @Concurrently@ (with @Applicative@ and @Alternative@ instances)
+	</longdescription>
+	<upstream>
+		<remote-id type="github">simonmar/async</remote-id>
+	</upstream>
+</pkgmetadata>

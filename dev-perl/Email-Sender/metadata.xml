@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Email-Sender</remote-id>
+    <remote-id type="cpan-module">Email::Sender</remote-id>
+    <remote-id type="cpan-module">Email::Sender::Failure</remote-id>
+    <remote-id type="cpan-module">Email::Sender::Failure::Multi</remote-id>
+    <remote-id type="cpan-module">Email::Sender::Failure::Permanent</remote-id>
+    <remote-id type="cpan-module">Email::Sender::Failure::Temporary</remote-id>
+    <remote-id type="cpan-module">Email::Sender::Manual</remote-id>
+    <remote-id type="cpan-module">Email::Sender::Manual::QuickStart</remote-id>
+    <remote-id type="cpan-module">Email::Sender::Role::CommonSending</remote-id>
+    <remote-id type="cpan-module">Email::Sender::Role::HasMessage</remote-id>
+    <remote-id type="cpan-module">Email::Sender::Simple</remote-id>
+    <remote-id type="cpan-module">Email::Sender::Success</remote-id>
+    <remote-id type="cpan-module">Email::Sender::Success::Partial</remote-id>
+    <remote-id type="cpan-module">Email::Sender::Transport</remote-id>
+    <remote-id type="cpan-module">Email::Sender::Transport::DevNull</remote-id>
+    <remote-id type="cpan-module">Email::Sender::Transport::Failable</remote-id>
+    <remote-id type="cpan-module">Email::Sender::Transport::Maildir</remote-id>
+    <remote-id type="cpan-module">Email::Sender::Transport::Mbox</remote-id>
+    <remote-id type="cpan-module">Email::Sender::Transport::Print</remote-id>
+    <remote-id type="cpan-module">Email::Sender::Transport::SMTP</remote-id>
+    <remote-id type="cpan-module">Email::Sender::Transport::SMTP::Persistent</remote-id>
+    <remote-id type="cpan-module">Email::Sender::Transport::Sendmail</remote-id>
+    <remote-id type="cpan-module">Email::Sender::Transport::Test</remote-id>
+    <remote-id type="cpan-module">Email::Sender::Transport::Wrapper</remote-id>
+    <remote-id type="cpan-module">Email::Sender::Util</remote-id>
+  </upstream>
+</pkgmetadata>

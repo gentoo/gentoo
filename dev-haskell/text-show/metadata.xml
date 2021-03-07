@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		@text-show@ offers a replacement for the @Show@ typeclass intended
+		for use with @Text@ instead of @String@s. This package was created
+		in the spirit of
+		@&lt;http://hackage.haskell.org/package/bytestring-show bytestring-show&gt;@.
+		
+		At the moment, @text-show@ provides instances for most data
+		types in the @&lt;http://hackage.haskell.org/package/array array&gt;@,
+		@&lt;http://hackage.haskell.org/package/base base&gt;@,
+		@&lt;http://hackage.haskell.org/package/bytestring bytestring&gt;@, and
+		@&lt;http://hackage.haskell.org/package/text text&gt;@ packages.
+		Therefore, much of the source code for @text-show@ consists of
+		borrowed code from those packages in order to ensure that the
+		behaviors of @Show@ and @TextShow@ coincide.
+		
+		For most uses, simply importing "TextShow"
+		will suffice:
+		
+		@
+		module Main where
+		
+		import TextShow
+		
+		main :: IO ()
+		main = printT (Just \"Hello, World!\")
+		@
+		
+		If you desire it, there are also monomorphic versions of the @showb@
+		function available in the submodules of "TextShow". See the
+		&lt;https://github.com/RyanGlScott/text-show/wiki/Naming-conventions naming conventions&gt;
+		page for more information.
+		
+		Support for automatically deriving @TextShow@ instances can be found
+		in the "TextShow.TH" and "TextShow.Generic" modules. If you don't
+		know which one to use, use "TextShow.TH".
+	</longdescription>
+	<upstream>
+		<remote-id type="github">RyanGlScott/text-show</remote-id>
+	</upstream>
+</pkgmetadata>

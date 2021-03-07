@@ -1,0 +1,13 @@
+Index: StreamDVD-0.4/mplex/zalphastrm.hpp
+===================================================================
+--- StreamDVD-0.4.orig/mplex/zalphastrm.hpp
++++ StreamDVD-0.4/mplex/zalphastrm.hpp
+@@ -45,7 +45,7 @@ protected:
+     virtual bool AUBufferNeedsRefill();
+ 	virtual void NextDTSPTS( clockticks &DTS, clockticks &PTS);
+ 	virtual void ScanFirstSeqHeader();
+-    bool ZAlphaStream::RunOutComplete();
++    bool RunOutComplete();
+ 
+ private:
+     float z_min; 

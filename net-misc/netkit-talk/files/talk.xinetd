@@ -1,0 +1,13 @@
+# default: off
+# description: The talk server accepts talk requests for chatting with users \
+#	on other systems.
+service ntalk
+{
+#	flags			= IPv4
+	disable			= yes
+	socket_type		= dgram
+	wait			= yes
+	user			= nobody
+	group			= tty
+	server			= /usr/sbin/in.talkd
+}

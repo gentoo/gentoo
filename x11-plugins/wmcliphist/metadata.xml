@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>voyageur@gentoo.org</email>
+	<name>Bernard Cafarelli</name>
+</maintainer>
+
+<longdescription>
+wmcliphist is dockable clipboard history application for Window Maker. It is
+similar to klipper from KDE. wmcliphist keeps history of clipboard operations
+and allows you to put previously copied items back to the clipboard for pasting
+to other applications.
+</longdescription>
+</pkgmetadata>

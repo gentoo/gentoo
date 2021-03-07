@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		This module, &lt;http://hackage.haskell.org/package/lens-simple/docs/Lens-Simple.html Lens.Simple&gt;,
+		just re-exports the main modules from Russell O\'Connor's
+		&lt;http://hackage.haskell.org/package/lens-family lens-family&gt; package, the
+		original van Laarhoven-O'Connor lens library.
+		@lens-family@ is particularly remarkable for its minute number of dependencies:
+		(apart from &lt;http://hackage.haskell.org/package/mtl mtl&gt;
+		they are all ghc \'boot\' libraries); but more importantly for its
+		extreme conceptual simplicity and theoretical soundness. Much of
+		the material it contains is well-explained, from a tutorial point of view, by
+		&lt;http://hackage.haskell.org/package/lens-tutorial lens-tutorial&gt; It is independent,
+		self-standing and readily intelligible apart from any darker
+		more general system of combinators that might attempt to extend it. Much
+		of it ought to be in the Prelude.
+		
+		Convenient import of the elementary combinators from @lens-family@,
+		however, a little complicated. The idea of this trivial module, then, is just to make a sort of
+		low-powered, minimal-dependency, @lens-family@ equivalent of
+		the 800 lb gorilla of lens library imports:
+		
+		&gt; import Control.Lens
+		
+		namely, the light-weight and elegant:
+		
+		&gt; import Lens.Simple
+		
+		Check it out, it's even one character shorter!
+		
+		The material in &lt;http://hackage.haskell.org/package/lens-tutorial lens-tutorial&gt;
+		will work fine if you make this substitution in the underlying
+		&lt;http://hackage.haskell.org/package/lens-tutorial-1.0.0/docs/src/Control-Lens-Tutorial.html source&gt;
+		and follow along as prompted.
+		
+		As another illustration of the simplicity of the
+		fundamental van Laarhoven-O'Connor lens combinators - and their homogeneity with
+		@Control.Lens@ - note that the gloss
+		&lt;https://github.com/michaelt/lens-family-simple/blob/master/examples/Pong.hs pong example&gt;
+		from the @lens@ library examples directory - which continues to be
+		among the best introductory lens tutorials precisely by saying nothing -
+		requires only this abbreviating change of imports.
+		
+		If you make that program more complicated,
+		you might of course end up needing
+		the more sophisticated material in @Control.Lens@ and
+		its immense mass of dependencies. On the other hand,
+		you might just need some of the additional material
+		present in the similarly demystifying
+		&lt;http://hackage.haskell.org/package/microlens microlens&gt;
+		or &lt;http://hackage.haskell.org/package/microlens-th microlens-th&gt; and
+		the associated modules.
+		
+		This module was originally intended to simplify the use of packages that
+		follow the original promise of the van Laarhoven-O'Connor lenses.
+		/Correct practice is to export lenses without depending on a lens-library, where possible./
+		In basic cases these just use familiar @Prelude@ types, after all.
+		Examples of best practices in this respect are e.g. &lt;http://hackage.haskell.org/package/lens-family-th lens-family-th&gt; which
+		doesn't depend on @lens-family@ despite its name and pipes-related packages like
+		&lt;http://hackage.haskell.org/package/pipes-bytestring pipes-bytestring&gt;
+		and &lt;http://hackage.haskell.org/package/pipes-group pipes-group&gt;.
+		
+		@Lens.Simple@ also re-exports @makeLenses@ and
+		other convenient TH incantations from Dan Burton's associated
+		&lt;http://hackage.haskell.org/package/lens-family-th lens-family-th&gt;.
+		
+	</longdescription>
+	<upstream>
+		<remote-id type="github">michaelt/lens-simple</remote-id>
+	</upstream>
+</pkgmetadata>

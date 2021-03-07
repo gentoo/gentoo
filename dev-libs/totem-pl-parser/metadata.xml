@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>gnome@gentoo.org</email>
+	<name>Gentoo GNOME Desktop</name>
+</maintainer>
+<use>
+	<flag name="archive">Enables ISO detection with <pkg>app-arch/libarchive</pkg></flag>
+	<flag name="crypt">Support AmazonAMZ decoding with <pkg>dev-libs/libgcrypt</pkg></flag>
+	<flag name="quvi">Use <pkg>media-libs/libquvi</pkg> for parsing video links</flag>
+</use>
+</pkgmetadata>

@@ -1,0 +1,82 @@
+From 77ddd5d44f2bf4155d0c9b6f7d05f01713b32d5d Mon Sep 17 00:00:00 2001
+From: Jan Kundrát <jkt@kde.org>
+Date: Thu, 25 Jun 2020 11:30:51 +0200
+Subject: [PATCH] SMTP: Do not ignore TLS errors
+
+This fixes a CVE-2020-15047 (category: CWE-295). Since commit 0083eea5ed
+which added initial, experimental support for SMTP message submission,
+we have apparently never implemented proper SSL/TLS error handling, and
+the code has ever since just kept silently ignoring any certificate
+verification errors.  As a result, Trojita was susceptible to a MITM
+attack when sending e-mails. The information leaked include user's
+authentication details, including the password, and the content of sent
+messages.
+
+Sorry for this :(.
+
+Now, this patch re-enabes proper TLS error handling. It was not possible
+to directly re-use our code for TLS key pinning which we are using for
+IMAP connections. In the Qt TLS code, the decision to accept or not
+accept a TLS connection is a blocking one, so the IMAP code relies upon
+the protocol state machine (i.e., another layer) for deciding whether to
+use or not to use the just-established TLS connection. Implementing an
+equivalent code in the SMTP library would be nice, but this hot-fix has
+a priority. As a result, SMTP connections to hosts with, e.g.,
+self-signed TLS certs, are no longer possible. Let's hope that this is
+not a practical problem with Lets Encrypt anymore.
+
+Thanks to Damian Poddebniak for reporting this bug.
+
+Change-Id: Icd6bbb2b0fb3e45159fc9699ebd07ab84262fe37
+CVE: CVE-2020-15047
+BUG: 423453
+---
+
+diff --git a/src/MSA/SMTP.cpp b/src/MSA/SMTP.cpp
+index 3a05451..ac1eefc 100644
+--- a/src/MSA/SMTP.cpp
++++ b/src/MSA/SMTP.cpp
+@@ -21,6 +21,7 @@
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+ #include "SMTP.h"
++#include "UiUtils/Formatting.h"
+ 
+ namespace MSA
+ {
+@@ -32,8 +33,8 @@
+     user(user), failed(false), isWaitingForPassword(false), sendingMode(MODE_SMTP_INVALID)
+ {
+     qwwSmtp = new QwwSmtpClient(this);
+-    // FIXME: handle SSL errors properly
+-    connect(qwwSmtp, &QwwSmtpClient::sslErrors, qwwSmtp, &QwwSmtpClient::ignoreSslErrors);
++    // FIXME: handle SSL errors in the same way as we handle IMAP TLS errors, with key pinning, etc.
++    connect(qwwSmtp, &QwwSmtpClient::sslErrors, this, &SMTP::handleSslErrors);
+     connect(qwwSmtp, &QwwSmtpClient::connected, this, &AbstractMSA::sending);
+     connect(qwwSmtp, &QwwSmtpClient::done, this, &SMTP::handleDone);
+     connect(qwwSmtp, &QwwSmtpClient::socketError, this, &SMTP::handleError);
+@@ -78,6 +79,12 @@
+     emit error(msg);
+ }
+ 
++void SMTP::handleSslErrors(const QList<QSslError>& errors)
++{
++    auto msg = UiUtils::Formatting::sslErrorsToHtml(errors);
++    emit error(tr("<p>Cannot send message due to an SSL/TLS error</p>\n%1").arg(msg));
++}
++
+ void SMTP::setPassword(const QString &password)
+ {
+     pass = password;
+diff --git a/src/MSA/SMTP.h b/src/MSA/SMTP.h
+index 453407d..913bb87 100644
+--- a/src/MSA/SMTP.h
++++ b/src/MSA/SMTP.h
+@@ -43,6 +43,7 @@
+     virtual void setPassword(const QString &password);
+     void handleDone(bool ok);
+     void handleError(QAbstractSocket::SocketError err, const QString &msg);
++    void handleSslErrors(const QList<QSslError>& errors);
+ private:
+     QwwSmtpClient *qwwSmtp;
+     QString host;

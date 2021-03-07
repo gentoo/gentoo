@@ -1,0 +1,32 @@
+diff -NrU5 libcoyotl-3.1.0.orig/libcoyotl/command_line.cpp libcoyotl-3.1.0/libcoyotl/command_line.cpp
+--- libcoyotl-3.1.0.orig/libcoyotl/command_line.cpp	2008-03-21 22:41:41.000000000 +0100
++++ libcoyotl-3.1.0/libcoyotl/command_line.cpp	2008-03-21 22:41:59.000000000 +0100
+@@ -30,10 +30,13 @@
+ //      http://www.coyotegulch.com
+ //  
+ //-----------------------------------------------------------------------
+ 
+ #include "command_line.h"
++
++#include <cstring>
++
+ using namespace libcoyotl;
+ 
+ command_line::command_line(int argc, char * argv[], const set<string> & bool_opts)
+   : m_options(),
+     m_inputs(),
+diff -NrU5 libcoyotl-3.1.0.orig/libcoyotl/sortutil.h libcoyotl-3.1.0/libcoyotl/sortutil.h
+--- libcoyotl-3.1.0.orig/libcoyotl/sortutil.h	2008-03-21 22:41:41.000000000 +0100
++++ libcoyotl-3.1.0/libcoyotl/sortutil.h	2008-03-21 22:41:59.000000000 +0100
+@@ -34,10 +34,11 @@
+ //-----------------------------------------------------------------------
+ 
+ #if !defined(LIBCOYOTL_SORTUTIL_H)
+ #define LIBCOYOTL_SORTUTIL_H
+ 
++#include <climits>
+ #include <stdexcept>
+ 
+ namespace libcoyotl
+ {
+ 

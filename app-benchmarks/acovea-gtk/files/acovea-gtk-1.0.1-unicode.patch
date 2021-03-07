@@ -1,0 +1,12 @@
+--- a/src/main_window.cc
++++ b/src/main_window.cc
+@@ -488,7 +488,7 @@
+ {
+     Glib::RefPtr<Gtk::TextBuffer> buffer = main_window_output->get_buffer();
+     Gtk::TextIter end = buffer->end();
+-    buffer->insert(buffer->end(),text->c_str());
++    buffer->insert(buffer->end(),Glib::convert (text->c_str(), "UTF-8", "ISO-8859-1"));
+ } 
+ 
+ void main_window::set_ui_running(bool running)
+

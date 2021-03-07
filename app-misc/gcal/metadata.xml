@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>shell-tools@gentoo.org</email>
+    <name>Gentoo Shell Tools Project</name>
+  </maintainer>
+  <longdescription>
+  Gcal is a program similar the standard calendar programs BSD "cal" and
+  "calendar". Gcal displays hybrid and proleptic Julian and Gregorian calendar
+  sheets, respectively, for one month, three months or a whole year. It also
+  displays eternal holiday lists for many countries around the globe, and
+  features a very powerful creation of fixed date lists that can be used for
+  reminding purposes. Gcal can calculate various astronomical data and times
+  of the Sun and the Moon for at pleasure any location, precisely enough for
+  most civil purposes. Gcal supports some other calendar systems, for example
+  the Chinese and Japanese calendar, the Hebrew calendar and the civil Islamic
+  calendar, too.
+</longdescription>
+</pkgmetadata>

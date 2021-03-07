@@ -1,0 +1,51 @@
+From 63a4b9cca4ba3aa4101051402cbbe946ced17a49 Mon Sep 17 00:00:00 2001
+From: Jens Axboe <axboe@kernel.dk>
+Date: Tue, 2 Jun 2020 08:20:03 -0600
+Subject: [PATCH] gfio: don't have multiple versions of main_ui
+
+Also comment a fall-through case appropriately, so newer GCC
+don't warn.
+
+Signed-off-by: Jens Axboe <axboe@kernel.dk>
+---
+ gfio.c | 4 +++-
+ gfio.h | 4 +++-
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/gfio.c b/gfio.c
+index 280539685..734651b67 100644
+--- a/gfio.c
++++ b/gfio.c
+@@ -38,6 +38,8 @@
+ #include "gclient.h"
+ #include "graph.h"
+ 
++struct gui main_ui;
++
+ static bool gfio_server_running;
+ static unsigned int gfio_graph_limit = 100;
+ 
+@@ -223,7 +225,7 @@ static void update_button_states(struct gui *ui, struct gui_entry *ge)
+ 	switch (ge->state) {
+ 	default:
+ 		gfio_report_error(ge, "Bad client state: %u\n", ge->state);
+-		/* fall through to new state */
++		/* fall-through */
+ 	case GE_STATE_NEW:
+ 		connect_state = 1;
+ 		edit_state = 1;
+diff --git a/gfio.h b/gfio.h
+index aa14e3c7d..2bf0ea242 100644
+--- a/gfio.h
++++ b/gfio.h
+@@ -78,7 +78,9 @@ struct gui {
+ 	int handler_running;
+ 
+ 	GHashTable *ge_hash;
+-} main_ui;
++};
++
++extern struct gui main_ui;
+ 
+ enum {
+ 	GE_STATE_NEW = 1,

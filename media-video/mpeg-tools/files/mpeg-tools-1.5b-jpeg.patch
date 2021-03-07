@@ -1,0 +1,56 @@
+--- jpeg.c
++++ jpeg.c
+@@ -77,13 +77,10 @@
+ 
+ /* make it happier.... */
+ #undef DCTSIZE2
+-#include "jpeg/jpeglib.h"
+-
++#include "jpeglib.h"
+ 
+ #define HEADER_SIZE 607   /*JFIF header size used on output images*/
+ 
+-
+-
+ /*=======================================================================*
+  *                                                                       *
+  * JMovie2JPEG                                                           *
+@@ -514,8 +511,12 @@
+ #ifdef JPEG4
+   buffer_height = 8;  /* could be 2, 4,8 rows high */
+ #else
+-  buffer_height = cinfo.max_v_samp_factor * cinfo.min_DCT_scaled_size;
+-#endif
++  #if JPEG_LIB_VERSION >= 80
++    buffer_height = cinfo.max_v_samp_factor * cinfo.min_DCT_v_scaled_size;
++  #else
++    buffer_height = cinfo.max_v_samp_factor * cinfo.min_DCT_scaled_size;
++  #endif
++#endif /* JPEG4 */
+   
+   for(cp=0,compptr = cinfo.comp_info;cp<cinfo.num_components;
+       cp++,compptr++) {
+--- Makefile
++++ Makefile
+@@ -36,9 +36,9 @@
+ ##############
+ # JPEG STUFF #
+ ##############
+-JPEG_LIB = jpeg/libjpeg.a
+-JPEG_DIR = -Ijpeg
+-JPEG_LIB_DIR = -Ljpeg
++JPEG_LIB = -ljpeg
++JPEG_DIR = 
++JPEG_LIB_DIR = 
+ MP_JPEG_OBJS = jpeg.o
+ MP_JPEG_SRCS = jpeg.c
+ 
+@@ -57,7 +57,7 @@
+ #################
+ # INCLUDE FILES # 
+ #################
+-INCLUDEDIR = -Iheaders -I/usr/include $(JPEG_DIR)
++INCLUDEDIR = -Iheaders
+ 
+ ############################################################################
+ # LIBRARIES # specify library directories; need jpg lib and maybe pbm	   #

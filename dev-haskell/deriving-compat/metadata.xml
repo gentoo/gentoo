@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Provides Template Haskell functions that mimic deriving
+		extensions that were introduced or modified in recent versions
+		of GHC. Currently, the following extensions are covered:
+		
+		* @DeriveFoldable@
+		
+		* @DeriveFunctor@
+		
+		* @DeriveTraversable@
+		
+		The following changes have been backported:
+		
+		* In GHC 8.0, @DeriveFoldable@ was changed to allow folding
+		over data types with existential constraints.
+		
+		* In GHC 8.0, @DeriveFoldable@ and @DeriveTraversable@ were
+		changed so as not to generate superfluous @mempty@ or @pure@
+		expressions in generated code. As a result, this allows
+		deriving @Traversable@ instances for datatypes with unlifted
+		argument types.
+		
+		* In GHC 8.0, deriving @Show@ was changed so that constructor fields
+		with unlifted types are no longer shown with parentheses, and
+		the output of showing an unlifted type is suffixed with the same
+		number of hash signs as the corresponding primitive literals.
+		
+		* In GHC 8.2, deriving `Ord` was changed so that it generates concrete
+		@if@-expressions that are not subject to @RebindableSyntax@.
+		
+		Note that some recent GHC extensions are not covered by this package:
+		
+		* @DeriveGeneric@, which was introducted in GHC 7.2 for deriving
+		@Generic@ instances, and modified in GHC 7.6 to allow derivation
+		of @Generic1@ instances. Use @Generics.Deriving.TH@ from
+		@&lt;http://hackage.haskell.org/package/generic-deriving generic-deriving&gt;@
+		to derive @Generic(1)@ using Template Haskell.
+		
+		* @DeriveLift@, which was introduced in GHC 8.0 for deriving
+		@Lift@ instances. Use @Language.Haskell.TH.Lift@ from
+		@&lt;http://hackage.haskell.org/package/th-lift th-lift&gt;@
+		to derive @Lift@ using Template Haskell.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">haskell-compat/deriving-compat</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,27 @@
+From 241b71fdacad10ad1e790e5a4e380ea1ffbe8a93 Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Thu, 21 Jan 2021 12:32:31 +0300
+Subject: [PATCH] Fix ffmpeg configure switch option
+
+autoconf's --with-PACKAGE/--without-PACKAGE requires $withval, not
+$enableval.
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index fd9e0365..f63d50ea 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -38,7 +38,7 @@ AC_ARG_WITH([ffmpeg],
+ 	AS_HELP_STRING([--with-ffmpeg],
+ 		[Build with support for FFmpeg [autodetect] @<:@default: yes@:>@]
+ 	),
+-	[with_ffmpeg=$enableval], [with_ffmpeg=yes])
++	[with_ffmpeg=$withval], [with_ffmpeg=yes])
+ 
+ AC_ARG_ENABLE([release],
+ 	AS_HELP_STRING([--disable-release],
+-- 
+2.26.2
+

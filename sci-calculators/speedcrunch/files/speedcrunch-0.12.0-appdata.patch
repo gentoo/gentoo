@@ -1,0 +1,26 @@
+From 3caeaa7eec01f64e769351355dff0fedd95a25fd Mon Sep 17 00:00:00 2001
+From: Felix Krull <f_krull@gmx.de>
+Date: Mon, 7 Aug 2017 16:19:22 +0200
+Subject: [PATCH] Install appdata file into new metadata path.
+
+*asturm 2021-02-28: Backported to 0.12.0.
+
+---
+ src/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1fa32ac..fb333f4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -113,7 +113,7 @@
+ if(NOT WIN32)
+     set(SHAREDIR "share/")
+     set(MENUDIR "${SHAREDIR}/applications/")
+-    set(APPDATADIR "${SHAREDIR}/appdata/")
++    set(APPDATADIR "${SHAREDIR}/metainfo/")
+     set(ICONDIR "${SHAREDIR}/pixmaps/")
+     set(BINDIR "bin")
+ else(NOT WIN32)
+-- 
+2.10.5

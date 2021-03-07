@@ -1,0 +1,25 @@
+From c7a04feac8281cd3e53c8d0215a229bb6cd4fce8 Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Sat, 1 Jun 2019 00:36:04 -0700
+Subject: [PATCH] use system swt jar
+
+---
+ build.gradle | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/build.gradle b/build.gradle
+index 1e414b7..3d967bb 100644
+--- a/build.gradle
++++ b/build.gradle
+@@ -2477,7 +2477,7 @@ project(":swt") {
+     commonModuleSetup(project, [ 'base', 'graphics' ])
+ 
+     dependencies {
+-        compile name: SWT_FILE_NAME
++        compile files("__gentoo_swt_jar__")
+     }
+ 
+     classes {
+-- 
+2.21.0
+

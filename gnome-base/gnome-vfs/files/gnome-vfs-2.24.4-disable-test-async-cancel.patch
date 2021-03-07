@@ -1,0 +1,24 @@
+From 390c1f6c06917f54cfacd5f85834d02c231cc2ea Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Sat, 2 Oct 2010 01:46:31 +0200
+Subject: [PATCH 9/9] Disable broken test, bug #285706, upstream #618089
+
+---
+ test/Makefile.am |    1 -
+ 1 files changed, 0 insertions(+), 1 deletions(-)
+
+diff --git a/test/Makefile.am b/test/Makefile.am
+index a1aefa0..c18f2e4 100644
+--- a/test/Makefile.am
++++ b/test/Makefile.am
+@@ -62,7 +62,6 @@ TESTS_ENVIRONMENT = GNOME_VFS_MODULE_PATH=$(top_builddir)/modules/.libs \
+ 		SRCDIR=$(srcdir)
+ TESTS = test-acl	  \
+ 	test-address      \
+-	test-async-cancel \
+ 	test-escape       \
+ 	test-uri       	  \
+ 	$(srcdir)/auto-test	
+-- 
+1.7.3
+

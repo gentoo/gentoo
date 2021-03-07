@@ -1,0 +1,20 @@
+--- a/map.c
++++ b/map.c
+@@ -63,7 +63,7 @@
+         }
+     }
+     fclose(f);                              // Close the file
+-    f = fopen("/usr/share/trailblazer/trail.time","r");
++    f = fopen("/var/trailblazer/trail.time","r");
+     if (f != NULL)
+     {
+         for (i = 0;i < MAPMAX;i++)
+@@ -87,7 +87,7 @@
+         if (Map[i].Data != NULL) free(Map[i].Data);
+         Map[i].Data = NULL;
+     }
+-    f = fopen("/usr/share/trailblazer/trail.time","w");
++    f = fopen("/var/trailblazer/trail.time","w");
+     if (f != NULL)
+     {
+         for (i = 0;i < MAPMAX;i++)

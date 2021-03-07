@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>klondike@gentoo.org</email>
+    <name>Francisco Blas Izquierdo Riera</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+    <name>Michael Orlitzky</name>
+  </maintainer>
+  <longdescription>
+    A program implementing the Milter API that signs and verifies
+    using the DKIM standard. This is a fork of Sendmail's DKIM-milter
+  </longdescription>
+  <use>
+    <flag name="unbound">
+      Use the unbound dnssec library to perform DKIM DNS
+      queries.
+    </flag>
+    <flag name="opendbx">
+      Use opendbx backend to facilitate dataset driven OpenDKIM
+      configuration options like stats, bodylengthdb, etc. against a
+      wide variety of database types
+    </flag>
+    <flag name="sasl">
+      Used to authenticate to a LDAP server in various ways if
+      required.
+    </flag>
+    <flag name="ldap">
+      Enable openldap as a dataset facilitator or keys, determining
+      domains to sign for, and any other dataset that opendkim
+      supports.
+    </flag>
+    <flag name="lua">
+      Enables control over signature verification, filtering and
+      policy to be controlled by user defined lua scripts.
+    </flag>
+    <flag name="poll">
+      Use poll() instead of select() for the provided asynchronous
+      resolver library.
+    </flag>
+    <flag name="memcached">
+      Add support for using <pkg>dev-libs/libmemcached</pkg>
+    </flag>
+    <flag name="lmdb">
+      Add support for using <pkg>dev-db/lmdb</pkg>
+    </flag>
+    <flag name="querycache">
+      Add support for query caching (requires 'berkdb' flag)
+    </flag>
+    <flag name="stats">
+      Add support for statistics (requires 'opendbx' flag)
+    </flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">opendkim</remote-id>
+  </upstream>
+</pkgmetadata>

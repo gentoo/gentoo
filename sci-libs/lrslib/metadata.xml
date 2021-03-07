@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription>lrslib is a self-contained ANSI C implementation as a callable library of the
+  reverse search algorithm for vertex enumeration/convex hull problems and comes with a choice of
+  three arithmetic packages. Input file formats are compatible with Komei Fukuda's cdd package. All
+  computations are done exactly in either multiple precision or fixed integer arithmetic. Output is
+  not stored in memory, so even problems with very large output sizes can sometimes be
+  solved.</longdescription>
+</pkgmetadata>

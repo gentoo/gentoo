@@ -1,0 +1,23 @@
+diff -udr a/configure.in b/configure.in
+--- a/configure.in	1998-12-30 08:50:07.000000000 +0100
++++ b/configure.in	2019-06-01 20:38:54.918650170 +0200
+@@ -1,3 +1,4 @@
++m4_pattern_allow(.*)
+ dnl Process this file with autoconf to produce a configure script.
+ AC_INIT(src/crctab.c)
+ AM_INIT_AUTOMAKE(lrzsz, 0.12.20)
+diff -udr lrzsz-0.12.20.orig/po/Makefile.in.in lrzsz-0.12.20/po/Makefile.in.in
+--- a/po/Makefile.in.in	1998-04-26 15:22:40.000000000 +0200
++++ b/po/Makefile.in.in	2019-06-01 20:48:09.020703542 +0200
+@@ -110,9 +110,9 @@
+ install-data-no: all
+ install-data-yes: all
+ 	if test -r $(MKINSTALLDIRS); then \
+-	  $(MKINSTALLDIRS) $(datadir); \
++	  $(MKINSTALLDIRS) $(DATADIR); \
+ 	else \
+-	  $(top_srcdir)/mkinstalldirs $(datadir); \
++	  $(top_srcdir)/mkinstalldirs $(DATADIR); \
+ 	fi
+ 	@catalogs='$(CATALOGS)'; \
+ 	for cat in $$catalogs; do \

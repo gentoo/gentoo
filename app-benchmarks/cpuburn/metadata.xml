@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		CPU testing utilities in optimized assembler for maximum loading
+		P6 (Intel Pentium Pro/II/III and Celeron TM),
+		AMD K7 (Athlon/Duron/Thunderbird TM),
+		AMD K6, and Intel P5 Pentium chips. 
+	</longdescription>
+</pkgmetadata>

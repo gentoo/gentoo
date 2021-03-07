@@ -1,0 +1,15 @@
+--- a/Makefile	2020-06-10 10:37:53.992504952 +0200
++++ b/Makefile	2020-06-10 10:38:37.419801522 +0200
+@@ -1,10 +1,10 @@
+ all:: rocketwiki-lqfb rocketwiki-lqfb-compat
+ 
+ rocketwiki-lqfb: rocketwiki-lqfb.hs
+-	ghc --make rocketwiki-lqfb
++	ghc -ignore-package=parsec1 --make rocketwiki-lqfb
+ 
+ rocketwiki-lqfb-compat: rocketwiki-lqfb-compat.hs
+-	ghc --make rocketwiki-lqfb-compat
++	ghc -ignore-package=parsec1 --make rocketwiki-lqfb-compat
+ 
+ clean::
+ 	rm -f rocketwiki-lqfb rocketwiki-lqfb.hi rocketwiki-lqfb.o

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>sci@gentoo.org</email>
+  <name>Gentoo Science Project</name>
+</maintainer>
+<longdescription lang="en">
+  Ipopt is a solver for large-scale nonlinear continuous
+  optimization. It can be used from modeling environments, such as
+  AMPL, GAMS, or Matlab, and it is also available as a callable library with
+  interfaces to C++, C, and Fortran. Ipopt uses an interior point
+  method, together with a filter linear search procedure. Ipopt is
+  part of the larger COIN-OR initiative (Computational Infrastructure
+  for Operations Research).
+</longdescription>
+<use>
+  <flag name="hsl">hsl</flag>
+  <flag name="mumps">Enable <pkg>sci-libs/mumps</pkg> support</flag>
+</use>
+</pkgmetadata>

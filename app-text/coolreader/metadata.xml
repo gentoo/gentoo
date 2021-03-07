@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>grozin@gentoo.org</email>
+  </maintainer>
+  <longdescription lang="en">
+    A fast and small cross-platform XML/CSS based eBook reader for desktops and handheld devices.
+    Supported formats: FB2, TXT, RTF, DOC, TCR, HTML, EPUB, CHM, PDB, MOBI.
+  </longdescription>
+  <use>
+    <flag name="wxwidgets">Use <pkg>x11-libs/wxGTK</pkg> instead of Qt5</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">crengine</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tomjbe@gentoo.org</email>
+		<name>Thomas Beierlein</name>
+	</maintainer>
+	<longdescription lang="en">
+		The SvxLink project aim to develop a flexible, general purpose voice
+		services system for ham radio use. The svxlink server consists of a core
+		that handles the connection to the tranceiver.  The project also
+		includes an EchoLink client GUI application (Qtel).
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">svxlink</remote-id>
+		<remote-id type="github">sm0svx/svxlink</remote-id>
+	</upstream>
+</pkgmetadata>

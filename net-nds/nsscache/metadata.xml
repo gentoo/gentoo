@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>robbat2@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="nsscache">Depend on sys-auth/libnss-cache to handle flat files</flag>
+		<flag name="s3">Support for S3-based NSS sources</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">google/nsscache</remote-id>
+	</upstream>
+</pkgmetadata>

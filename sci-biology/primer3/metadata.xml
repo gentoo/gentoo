@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-biology@gentoo.org</email>
+		<name>Gentoo Biology Project</name>
+	</maintainer>
+	<longdescription>
+		Primer3 picks primers for PCR reactions, considering: oligonucleotide
+		melting temperature, size, GC content, and primer-dimer possibilities;
+		PCR product size; positional constraints within the source sequence;
+		and miscellaneous other constraints. All of these criteria are
+		user-specifiable as constraints, and some are specifiable as terms in
+		an objective function that characterizes an optimal primer pair.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">primer3</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		Supermicro Update Manager (SUM) can be used to manage the firmware and configuration
+		for Supermicro X9 (Romley), X10, B10, X11, B11, H11 generation motherboards.
+		SUM is a command line interface utility that can execute parallel commands
+		from a centralized management server. Two channels are possible for management:
+		the OOB (Out-Of-Band) channel, i.e. communication through the BMC/IPMI interface,
+		and the in-band channel, i.e. communication through the local system interfaces.
+		Through the OOB channel, most management commands can be executed independently
+		of the OS on the managed system and even before the system OS is installed.
+		Licensing: SFT-OOB-LIC or SFT-DCMS-Single required for each monitor node.
+	</longdescription>
+	<use>
+		<flag name="module">Install Supermicro's kernel module.</flag>
+	</use>
+</pkgmetadata>

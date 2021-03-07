@@ -1,0 +1,34 @@
+https://github.com/freehep/freehep-vectorgraphics/issues/30
+
+diff -Naur freehep-vectorgraphics-freehep-vectorgraphics-2.4.orig/freehep-graphicsio-emf/src/main/java/org/freehep/graphicsio/emf/EMFConverter.java freehep-vectorgraphics-freehep-vectorgraphics-2.4/freehep-graphicsio-emf/src/main/java/org/freehep/graphicsio/emf/EMFConverter.java
+--- freehep-vectorgraphics-freehep-vectorgraphics-2.4.orig/freehep-graphicsio-emf/src/main/java/org/freehep/graphicsio/emf/EMFConverter.java	2014-09-02 09:59:14.000000000 +0100
++++ freehep-vectorgraphics-freehep-vectorgraphics-2.4/freehep-graphicsio-emf/src/main/java/org/freehep/graphicsio/emf/EMFConverter.java	2016-05-25 22:50:41.859734476 +0100
+@@ -4,6 +4,7 @@
+ import org.freehep.graphicsbase.util.export.ExportFileType;
+ 
+ import java.util.List;
++import java.util.Properties;
+ import java.io.FileInputStream;
+ import java.io.File;
+ 
+@@ -64,9 +65,10 @@
+                 destFileName += type.toLowerCase();
+             }
+ 
++            Properties p = new Properties();
++
+             // TODO there is no possibility to use Constants of base class!
+             /* create SVG properties
+-            Properties p = new Properties();
+             p.put(SVGGraphics2D.EMBED_FONTS, Boolean.toString(false));
+             p.put(SVGGraphics2D.CLIP, Boolean.toString(true));
+             p.put(SVGGraphics2D.COMPRESS, Boolean.toString(false));
+@@ -82,7 +84,7 @@
+                new File(destFileName),
+                emfPanel,
+                emfPanel,
+-               null,
++               p,
+                "Freehep EMF converter");
+         } catch (Exception e) {
+             e.printStackTrace();

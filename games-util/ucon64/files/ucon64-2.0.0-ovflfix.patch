@@ -1,0 +1,20 @@
+--- backup/lynxit.c.old	2010-11-04 09:07:18.000000000 +0100
++++ backup/lynxit.c	2010-11-04 09:08:17.000000000 +0100
+@@ -561,7 +561,7 @@
+       return FALSE;
+     }
+ 
+-  if (strcmp (header.magic, "LYNX") != 0)
++  if (memcmp (header.magic, "LYNX", sizeof(header.magic)) != 0)
+     {
+       MESSAGE (("ERROR    : %s is not a lynx image\n", filename));
+       fclose (fp);
+@@ -682,7 +682,7 @@
+ #endif
+ 
+   memset (&header, 0, sizeof (st_lnx_header_t));
+-  strcpy (header.magic, MAGIC_STRING);
++  memcpy (header.magic, MAGIC_STRING, sizeof(header.magic));
+   strcpy (header.cartname, cartname);
+   strcpy (header.manufname, manufname);
+   header.page_size_bank0 = cart_analyse (BANK0);

@@ -1,0 +1,46 @@
+--- a/src/makefile
++++ b/src/makefile
+@@ -10,8 +10,6 @@
+     ###############################
+ 
+ 
+-CC = gcc
+-CFLAGS =  -c -O -I$ -DCONS
+ #CFLAGS =  -g -c -I$ -DCONS
+ LIBS = -lm
+ #
+@@ -23,33 +21,4 @@
+ 
+ #
+ dialign2-2: $(OBJS)  
+-	$(CC) $(OBJS) $(LIBS) -o dialign2-2
+-#	$(CC) -g $(OBJS) $(LIBS) -o dialign2-2_db
+-#
+-#
+-# Subroutines
+-#
+-
+-dialign.o: dialign.c
+-	$(CC) $(CFLAGS) dialign.c
+-functions.o: functions.c 
+-	$(CC) $(CFLAGS) functions.c
+-input.o: input.c
+-	$(CC) $(CFLAGS) input.c
+-frag_chain.o: frag_chain.c
+-	$(CC) $(CFLAGS) frag_chain.c
+-para.o: para.c
+-	$(CC) $(CFLAGS) para.c
+-output.o: output.c
+-	$(CC) $(CFLAGS) output.c
+-wgt.o: wgt.c
+-	$(CC) $(CFLAGS) wgt.c
+-regex.o: regex.c
+-	$(CC) $(CFLAGS) regex.c
+-anchor.o: anchor.c
+-	$(CC) $(CFLAGS) anchor.c
+-
+-#
+-
+-
+-
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(LIBS)

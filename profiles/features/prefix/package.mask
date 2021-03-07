@@ -1,0 +1,22 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Benda Xu <heroxbd@gentoo.org> (2019-08-20)
+# systemd is set to invade pid 1, which is not possible for Prefix.
+# The following are its reverse dependencies.
+sys-apps/systemd
+dev-libs/libreport
+app-admin/abrt
+app-admin/gnome-abrt
+app-admin/systemdgenie
+dev-python/python-systemd
+games-util/gamemode
+gnome-extra/gnome-logs
+gnome-extra/gnome-user-share
+gnome-extra/office-runner
+sys-apps/gentoo-systemd-integration
+sys-apps/systemd-readahead
+sys-kernel/installkernel-systemd-boot
+sys-process/systemd-cron
+www-misc/profile-sync-daemon
+<virtual/service-manager-1

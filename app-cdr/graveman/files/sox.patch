@@ -1,0 +1,38 @@
+diff -Naur /var/tmp/portage/graveman-0.3.12_p5/work/graveman-0.3.12-5/src/sox.c ./src/sox.c
+--- a/src/sox.c	2005-05-28 02:37:14.000000000 +0200
++++ b/src/sox.c	2007-01-27 18:22:11.000000000 +0100
+@@ -37,7 +37,7 @@
+ gboolean check_sox()
+ {
+   gchar *Lsox = conf_get_string("sox");
+-  gchar *Lcommandline, *Lerr = NULL;
++  gchar *Lcommandline, *Lerr = NULL, *Lstdout = NULL;
+   gboolean Lstatus;
+   gint Lexit = 0;
+ 
+@@ -47,12 +47,22 @@
+   if (!Lsox || !*Lsox) return FALSE;
+ 
+   Lcommandline = g_strdup_printf("%s -help", conf_get_string("sox"));
+-  Lstatus = g_spawn_command_line_sync(Lcommandline, NULL, &Lerr, &Lexit, NULL);
++  Lstatus = g_spawn_command_line_sync(Lcommandline, &Lstdout, &Lerr, &Lexit, NULL);
+   g_free(Lcommandline);
+ 
+-  GsupportMp3 = (Lstatus == TRUE && Lerr && ((strstr(Lerr, SOX_MP3))));
+-  GsupportOgg = (Lstatus == TRUE && Lerr && ((strstr(Lerr, SOX_OGG))));
++  /* sox 12.17 outputs -help to stderr */ 
++  if (Lerr && strstr(Lerr, "12.17")) {
++	GsupportMp3 = (Lstatus == TRUE && Lerr && ((strstr(Lerr, SOX_MP3))));
++	GsupportOgg = (Lstatus == TRUE && Lerr && ((strstr(Lerr, SOX_OGG))));
++  }
++
++  /* sox 12.18 outputs -help to stdout */
++  else {
++	GsupportMp3 = (Lstatus == TRUE && Lstdout && ((strstr(Lstdout, SOX_MP3))));
++	GsupportOgg = (Lstatus == TRUE && Lstdout && ((strstr(Lstdout, SOX_OGG))));
++  }
+   
++  g_free(Lstdout);
+   g_free(Lerr);
+ 
+   return Lstatus;

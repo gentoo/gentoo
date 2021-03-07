@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 71bc693..3904632 100644
+--- a/Makefile
++++ b/Makefile
+@@ -27,7 +27,7 @@ MANDIR ?= $(SHAREDIR)/man
+ 
+ all: $(SBIN)
+ 
+-names.h: /usr/include/linux/input.h gennames
++names.h: /usr/include/linux/input-event-codes.h gennames
+ 	./gennames $< > $@
+ 
+ inputlircd: inputlircd.c /usr/include/linux/input.h names.h

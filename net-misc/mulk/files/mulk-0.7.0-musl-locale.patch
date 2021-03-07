@@ -1,0 +1,12 @@
+diff --git a/lib/mulk.c b/lib/mulk.c
+index 9342032..21e5ccb 100644
+--- a/lib/mulk.c
++++ b/lib/mulk.c
+@@ -30,6 +30,7 @@
+  * files in the program, then also delete it here.
+  *---------------------------------------------------------------------------*/
+ 
++#include <locale.h>
+ #include "m_malloc.h"
+ #include "buffer_array.h"
+ #include "url_list.h"

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+<use>
+<flag name="fips">Enable NSS FIPS mode and support only the FIPS-compliant functions</flag>
+</use>
+<longdescription>
+hmaccalc can be used to compute HMAC (hash-based message authentication code)
+values for files. An HMAC is similar in concept to a message digest, except in
+that its calculation also incorporates a key which must be known to both the
+party generating the HMAC and the party verifying the HMAC. 
+</longdescription>
+</pkgmetadata>

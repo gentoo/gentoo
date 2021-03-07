@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription>A suite of Unix command-line tools and a server designed to remotely administer
+the file systems of multiple Unix machines.</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">radmind</remote-id>
+	</upstream>
+</pkgmetadata>

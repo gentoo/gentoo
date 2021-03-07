@@ -1,0 +1,11 @@
+--- Makefile.old	2010-10-01 07:05:03.000000000 +0200
++++ Makefile	2010-10-01 07:05:39.000000000 +0200
+@@ -28,7 +28,7 @@
+ ##########################################################
+ 
+ xjump : main.o game.o key.o misc.o record.o resource.o
+-	$(CC) $(CFLAGS) -o xjump \
++	$(CC) $(LDFLAGS) $(CFLAGS) -o xjump \
+ 		main.o game.o key.o misc.o record.o resource.o\
+ 		-lXaw -lXmu -lXt -lXpm -lXext -lX11 $(LDIR)
+ 

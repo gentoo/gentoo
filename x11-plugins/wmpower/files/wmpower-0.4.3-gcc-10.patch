@@ -1,0 +1,148 @@
+diff -Naur wmpower-0.4.3.orig/src/dockapp/dockapp.c wmpower-0.4.3/src/dockapp/dockapp.c
+--- wmpower-0.4.3.orig/src/dockapp/dockapp.c	2003-09-18 18:53:27.000000000 +0200
++++ wmpower-0.4.3/src/dockapp/dockapp.c	2020-01-29 19:15:58.062434728 +0100
+@@ -50,6 +50,7 @@
+ GC         NormalGC;
+ XpmIcon    wmgen;
+ Pixmap     pixmask;
++Display    *display;
+ 
+   /*****************/
+  /* Mouse Regions */
+diff -Naur wmpower-0.4.3.orig/src/dockapp/dockapp.h wmpower-0.4.3/src/dockapp/dockapp.h
+--- wmpower-0.4.3.orig/src/dockapp/dockapp.h	2003-09-18 18:29:17.000000000 +0200
++++ wmpower-0.4.3/src/dockapp/dockapp.h	2020-01-29 19:15:58.062434728 +0100
+@@ -28,7 +28,7 @@
+  /* Global variable */
+ /*******************/
+ 
+-Display		*display;
++extern Display		*display;
+ 
+   /***********************/
+  /* Function Prototypes */
+diff -Naur wmpower-0.4.3.orig/src/power_management/acpi/libacpi.c wmpower-0.4.3/src/power_management/acpi/libacpi.c
+--- wmpower-0.4.3.orig/src/power_management/acpi/libacpi.c	2005-09-06 12:09:10.000000000 +0200
++++ wmpower-0.4.3/src/power_management/acpi/libacpi.c	2020-01-29 19:20:44.031452047 +0100
+@@ -46,6 +46,8 @@
+ #include "power_management.h"
+ #include "lib_utils.h"
+ 
++char battery_type;
++int batt_count;
+ 
+ /* here we put temp stuff read from proc files */
+ char buf[512];
+diff -Naur wmpower-0.4.3.orig/src/power_management/acpi/libacpi.h wmpower-0.4.3/src/power_management/acpi/libacpi.h
+--- wmpower-0.4.3.orig/src/power_management/acpi/libacpi.h	2004-07-16 20:13:19.000000000 +0200
++++ wmpower-0.4.3/src/power_management/acpi/libacpi.h	2020-01-29 19:20:48.717452334 +0100
+@@ -67,7 +67,7 @@
+ }
+ ACPIinfo;
+ 
+-char battery_type;
++extern char battery_type;
+ 
+ typedef struct
+ {
+@@ -76,7 +76,7 @@
+ ACADstate;
+ 
+ /* number of batteries detected */
+-int batt_count;
++extern int batt_count;
+ 
+ int  check_acpi (void);
+ void read_acad_state (ACADstate *acadstate);
+diff -Naur wmpower-0.4.3.orig/src/power_management/compal/compal_lib.c wmpower-0.4.3/src/power_management/compal/compal_lib.c
+--- wmpower-0.4.3.orig/src/power_management/compal/compal_lib.c	2005-09-12 18:13:32.000000000 +0200
++++ wmpower-0.4.3/src/power_management/compal/compal_lib.c	2020-01-29 19:21:14.455453915 +0100
+@@ -40,6 +40,7 @@
+ #include "lib_utils.h"
+ #include "power_management.h"
+ 
++char  compal_model[COMPAL_MAX_MODEL_INFO];
+ 
+ 
+ /* gets a value from a strtok-ed buffer; for reading from /proc */
+diff -Naur wmpower-0.4.3.orig/src/power_management/compal/compal_lib.h wmpower-0.4.3/src/power_management/compal/compal_lib.h
+--- wmpower-0.4.3.orig/src/power_management/compal/compal_lib.h	2005-09-12 18:13:23.000000000 +0200
++++ wmpower-0.4.3/src/power_management/compal/compal_lib.h	2020-01-29 19:21:09.180453591 +0100
+@@ -44,7 +44,7 @@
+ #define COMPAL_PROC_FILE_BATT	"/proc/omnibook/battery"
+ 
+ 
+-char  compal_model[COMPAL_MAX_MODEL_INFO];
++extern char  compal_model[COMPAL_MAX_MODEL_INFO];
+ 
+ char *getvaluefromhash (char *key, char *hash);
+ 
+diff -Naur wmpower-0.4.3.orig/src/power_management/power_management.c wmpower-0.4.3/src/power_management/power_management.c
+--- wmpower-0.4.3.orig/src/power_management/power_management.c	2005-12-15 12:54:59.000000000 +0100
++++ wmpower-0.4.3/src/power_management/power_management.c	2020-01-29 19:18:36.031444239 +0100
+@@ -55,6 +55,13 @@
+ int use_noflushd=1;
+ int use_cpufreq=1;
+ 
++kernel_versions kernel_version;
++int minBrightness;
++int maxBrightness;
++int waittime; /* /proc polling time */
++char *cpufreq_online_governor;
++char *cpufreq_offline_governor;
++
+ /* Battery to monitor */
+ int Battery;
+ 
+diff -Naur wmpower-0.4.3.orig/src/power_management/power_management.h wmpower-0.4.3/src/power_management/power_management.h
+--- wmpower-0.4.3.orig/src/power_management/power_management.h	2005-12-15 12:54:12.000000000 +0100
++++ wmpower-0.4.3/src/power_management/power_management.h	2020-01-29 19:18:29.941443870 +0100
+@@ -34,7 +34,7 @@
+ 	IS_2_6 = 0,
+ 	IS_OTHER
+ } kernel_versions;
+-kernel_versions kernel_version;
++extern kernel_versions kernel_version;
+ 
+ typedef struct
+ {
+@@ -49,11 +49,11 @@
+ 
+ } pm_status;
+ 
+-int minBrightness;
+-int maxBrightness;
+-int waittime; /* /proc polling time */
+-char *cpufreq_online_governor;
+-char *cpufreq_offline_governor;
++extern int minBrightness;
++extern int maxBrightness;
++extern int waittime; /* /proc polling time */
++extern char *cpufreq_online_governor;
++extern char *cpufreq_offline_governor;
+ 
+ int pm_support(int which_battery);
+ void get_power_status(pm_status *power_status);
+diff -Naur wmpower-0.4.3.orig/src/power_management/toshiba/toshiba_lib.c wmpower-0.4.3/src/power_management/toshiba/toshiba_lib.c
+--- wmpower-0.4.3.orig/src/power_management/toshiba/toshiba_lib.c	2005-09-02 11:46:16.000000000 +0200
++++ wmpower-0.4.3/src/power_management/toshiba/toshiba_lib.c	2020-01-29 19:19:47.112448563 +0100
+@@ -57,6 +57,7 @@
+ #include "lib_utils.h"
+ #include "power_management.h"
+ 
++char toshiba_model[255];
+ 
+ void UglyHack(void);
+ int Get_Fan_Status(void);
+diff -Naur wmpower-0.4.3.orig/src/power_management/toshiba/toshiba_lib.h wmpower-0.4.3/src/power_management/toshiba/toshiba_lib.h
+--- wmpower-0.4.3.orig/src/power_management/toshiba/toshiba_lib.h	2005-09-02 11:34:04.000000000 +0200
++++ wmpower-0.4.3/src/power_management/toshiba/toshiba_lib.h	2020-01-29 19:19:38.749448053 +0100
+@@ -34,7 +34,7 @@
+ #define TOSHIBA_LCD_MED 1
+ #define TOSHIBA_LCD_MAX 2
+ 
+-char toshiba_model[255];
++extern char toshiba_model[255];
+ 
+ int machine_is_toshiba(int *use_toshiba_hardware);
+ int toshiba_get_fan_status(int use_toshiba_hardware);

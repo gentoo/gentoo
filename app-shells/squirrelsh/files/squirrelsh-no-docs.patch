@@ -1,0 +1,25 @@
+diff -Naur squirrelsh-1.2.6.orig//Makefile.in squirrelsh-1.2.6/Makefile.in
+--- squirrelsh-1.2.6.orig//Makefile.in	2011-12-16 13:25:08.000000000 -0500
++++ squirrelsh-1.2.6/Makefile.in	2012-03-12 21:58:50.000000000 -0400
+@@ -19,14 +19,6 @@
+ 	@MAKE_PCRE@
+ 	@MAKE_SQUIRREL@
+ 	@MAKE_SHELL@
+-	@INSTALL@ -d -m 0755 "@DOCDIR@"
+-	@INSTALL@ -c -m 0644 COPYING "@DOCDIR@"
+-	@INSTALL@ -c -m 0644 COPYING-squirrel "@DOCDIR@"
+-	@INSTALL@ -c -m 0644 COPYING-zlib "@DOCDIR@"
+-	@INSTALL@ -c -m 0644 HISTORY "@DOCDIR@"
+-	@INSTALL@ -c -m 0644 README "@DOCDIR@"
+-	@INSTALL@ -c -m 0644 doc/squirrel3.pdf "@DOCDIR@"
+-	@INSTALL@ -c -m 0644 doc/squirrelsh.pdf "@DOCDIR@"
+ 	@INSTALL@ -d -m 0755 "@MANDIR@"
+ 	@INSTALL@ -c -m 0644 doc/squirrelsh.1 "@MANDIR@"
+ 	@INSTALL_MIME@
+@@ -35,6 +27,5 @@
+ 	@MAKE_PCRE@
+ 	@MAKE_SQUIRREL@
+ 	@MAKE_SHELL@
+-	@RMDIR@ "@DOCDIR@"
+ 	@RM@ "@MANDIR@/squirrelsh.1"
+ 	@UNINSTALL_MIME@

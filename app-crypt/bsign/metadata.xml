@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription>
+		This package embeds secure hashes (SHA1) and digital signatures (GNU 
+		Privacy Guard) into files for verification and authentication. 
+		Currently, target file types are all ELF format: executables, kernel
+		modules, schared and static link libraries. This program has
+		functionality similar to tripwire and integrit without the need to
+		maintain a database. 
+	</longdescription> 
+</pkgmetadata>

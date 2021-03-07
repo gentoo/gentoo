@@ -1,0 +1,101 @@
+ Makefile |   56 +++++++++++++++++---------------------------------------
+ 1 files changed, 17 insertions(+), 39 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 9590e50..1aa14e5 100644
+--- a/Makefile
++++ b/Makefile
+@@ -88,7 +88,7 @@ INCLUDES = -I$(INC)
+ endif
+ 
+ COMPILE_COMMAND         =  $(LIBTOOL) --mode=compile $(CC) $(CFLAGS) $(INCLUDES) $(WARNINGS) -c
+-LIBRARY_LINK_COMMAND    =  $(LIBTOOL) --mode=link  $(CC) -version-info $(VERSION) -rpath $(INSTALLDIR)/lib
++LIBRARY_LINK_COMMAND    =  $(LIBTOOL) --mode=link $(CC) -shared -version-info $(VERSION) -rpath $(INSTALLDIR)/lib ${LDFLAGS}
+ BUILD_COMMAND_LOCAL     =  $(LIBTOOL) --mode=link $(CC) $(CFLAGS) $(INCLUDES)
+ BUILD_COMMAND_DYNAMIC   =  $(LIBTOOL) --mode=link $(CC) $(CFLAGS) -dynamic -I $(INSTALLDIR)/include -L$(INSTALLDIR)/lib
+ BUILD_COMMAND_STATIC    =  $(LIBTOOL) --mode=link $(CC) $(CFLAGS) -static -I $(INSTALLDIR)/include -L$(INSTALLDIR)/lib
+@@ -196,52 +196,30 @@ all:	$(LIB) $(BIN) $(SOURCE) $(HEADERS) \
+ 		$(LIB)/libCQRlib.$(LIB_EXT) \
+ 		$(BIN)/CQRlibTest $(BIN)/CPPQRTest
+ 		
+-install:  all $(INSTALLDIR) $(INSTALLDIR)/lib $(INSTALLDIR)/include \
++install:  all $(DESTDIR) $(DESTDIR)/GENTOOLIBDIR $(DESTDIR)/include \
+           $(INC) $(LIB)/libCQRlib.$(LIB_EXT)  $(INC)/cqrlib.h
+-		  $(INSTALL_COMMAND) $(LIB)/libCQRlib.$(LIB_EXT) $(INSTALLDIR)/lib/libCQRlib.$(LIB_EXT)
+-		  $(INSTALL_FINISH_COMMAND) $(INSTALLDIR)/lib/libCQRlib.$(LIB_EXT)
+-		  -cp $(INSTALLDIR)/include/cqrlib.h $(INSTALLDIR)/include/CQRlib_old.h
+-		  cp $(INC)/cqrlib.h $(INSTALLDIR)/include/cqrlib.h
+-		  chmod 644 $(INSTALLDIR)/include/cqrlib.h
+-		  echo "Testing final install dynamic"
+-		  $(BUILD_COMMAND_DYNAMIC)  $(EXAMPLES)/CQRlibTest.c \
+-		  -lCQRlib -lm -o $(BIN)/CQRlibTest_dynamic
+-		  $(BIN)/CQRlibTest_dynamic > $(TESTDATA)/CQRlibTest_dynamic.lst
+-		  diff -b -c $(TESTDATA)/CQRlibTest_orig.lst \
+-		    $(TESTDATA)/CQRlibTest_dynamic.lst
+-		  echo "Testing final install static"
+-		  $(BUILD_COMMAND_STATIC) $(EXAMPLES)/CQRlibTest.c \
+-		   -lCQRlib -lm -o $(BIN)/CQRlibTest_static
+-		  $(BIN)/CQRlibTest_static > $(TESTDATA)/CQRlibTest_static.lst
+-		  diff -b -c $(TESTDATA)/CQRlibTest_orig.lst \
+-		    $(TESTDATA)/CQRlibTest_static.lst
+-		  $(CPPBUILD_COMMAND_DYNAMIC) $(EXAMPLES)/CPPQRTest.cpp \
+-		    -lm -o $(BIN)/CPPQRTest_dynamic
+-		  $(BIN)/CPPQRTest_dynamic > $(TESTDATA)/CPPQRTest_dynamic.lst
+-		  diff -b -c $(TESTDATA)/CPPQRTest_orig.lst \
+-		    $(TESTDATA)/CPPQRTest_dynamic.lst
+-		  $(CPPBUILD_COMMAND_STATIC) $(EXAMPLES)/CPPQRTest.cpp \
+-		    -lm -o $(BIN)/CPPQRTest_static
+-	      $(BIN)/CPPQRTest_static > $(TESTDATA)/CPPQRTest_static.lst
+-		  diff -b -c $(TESTDATA)/CPPQRTest_orig.lst \
+-		    $(TESTDATA)/CPPQRTest_static.lst
++		  $(INSTALL_COMMAND) $(LIB)/libCQRlib.$(LIB_EXT) $(DESTDIR)/usr/GENTOOLIBDIR/libCQRlib.$(LIB_EXT)
++		  $(INSTALL_FINISH_COMMAND) $(DESTDIR)/usr/GENTOOLIBDIR/libCQRlib.$(LIB_EXT)
++		  -cp $(INSTALLDIR)/cqrlib.h $(DESTDIR)/usr/include/CQRlib.h
++		  cp $(INC)/cqrlib.h $(DESTDIR)/usr/include/cqrlib.h
++		  chmod 644 $(DESTDIR)/usr/include/cqrlib.h
+ 			
+ 		  
+ 		  
+ #
+ # Directories
+ #
+-$(INSTALLDIR):
+-	mkdir -p $(INSTALLDIR)
++$(DESTDIR):
++	mkdir -p $(DESTDIR)
+ 
+-$(INSTALLDIR)/lib:  $(INSTALLDIR)
+-	mkdir -p $(INSTALLDIR)/lib
++$(DESTDIR)/GENTOOLIBDIR:  $(DESTDIR)
++	mkdir -p $(DESTDIR)/usr/GENTOOLIBDIR
+ 
+-$(INSTALLDIR)/bin:  $(INSTALLDIR)
+-	mkdir -p $(INSTALLDIR)/bin
++$(DESTDIR)/bin:  $(DESTDIR)
++	mkdir -p $(DESTDIR)/usr/bin
+ 
+-$(INSTALLDIR)/include:  $(INSTALLDIR)
+-	mkdir -p $(INSTALLDIR)/include
++$(DESTDIR)/include:  $(DESTDIR)
++	mkdir -p $(DESTDIR)/usr/include
+ 	
+ 
+ $(LIB):
+@@ -255,7 +233,7 @@ $(BIN):
+ #
+ $(LIB)/libCQRlib.$(LIB_EXT): $(SOURCE) $(HEADERS) $(COMMONDEP)
+ 	$(COMPILE_COMMAND) -c $(SOURCE)
+-	$(LIBRARY_LINK_COMMAND) -o $(LIB)/libCQRlib.$(LIB_EXT) *.$(OBJ_EXT) 
++	$(LIBRARY_LINK_COMMAND) -o $(LIB)/libCQRlib.$(LIB_EXT) *.$(OBJ_EXT) -lm
+ 
+ #
+ # CQRlibTest example program
+@@ -274,7 +252,7 @@ $(BIN)/CPPQRTest: $(EXAMPLES)/CPPQRTest.cpp
+ #
+ # Tests
+ #
+-tests:		$(LIB) $(BIN) $(BIN)/CQRlibTest \
++tests:		$(LIB) $(BIN) $(BIN)/CQRlibTest $(BIN)/CPPQRTest \
+ 				all $(TESTDATA)/CQRlibTest_orig.lst $(TESTDATA)/CPPQRTest_orig.lst
+ 			$(BIN)/CQRlibTest > $(TESTDATA)/CQRlibTest.lst
+ 			diff -b -c $(TESTDATA)/CQRlibTest_orig.lst \

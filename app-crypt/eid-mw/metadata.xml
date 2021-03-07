@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+  <email>vincent.hardy.be@gmail.com</email>
+</maintainer>
+<maintainer type="project">
+   <email>proxy-maint@gentoo.org</email>
+   <name>Proxy Maintainers</name>
+</maintainer>
+<longdescription>
+eid-mw is Belgian Electronic Identity Card (eID) middleware supplied by the Belgian Federal Government.
+
+With your eID, you can:
+- identify yourself when necessary. All you have to do is insert the card in the reader. All your details then appear automatically on the PC screen.
+- authenticate yourself. This is a way of checking that you are who you say you are. That can be handy on the internet or to enable your children to chat in safety.
+- place a legally binding electronic signature on electronic documents.
+
+These three functions form the basis of the countless applications for your eID. Go to https://my.belgium.be and check out what can you do with it? and discover all the things you can use the eID for.
+</longdescription>
+<use>
+  <flag name="gtk">
+    All dialogs are available, by using <pkg>x11-libs/gtk+</pkg>
+  </flag>
+  <flag name="dialogs">
+    Enable "askaccess" dialog box, by using <pkg>x11-libs/gtk+</pkg>
+  </flag>
+  <flag name="p11-kit">
+    Support for app-crypt/p11-kit.
+  </flag>
+  <flag name="p11v220">
+    Enable PKCS#11 v2.20 features.
+  </flag>
+</use>
+</pkgmetadata>

@@ -1,0 +1,59 @@
+From 7b70e4169faf4e2ec0fe570b02190e71bc168377 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Tue, 10 Oct 2017 08:15:54 +1300
+Subject: Rename installed script to '.pl'
+
+Note: this must not happen in dist-root, or EUMM will also install this
+as $INC[0]/Data/hexdump.pl
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=123224
+---
+ MANIFEST                  | 2 +-
+ Makefile.PL               | 2 +-
+ hexdump => bin/hexdump.pl | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+ rename hexdump => bin/hexdump.pl (95%)
+
+diff --git a/MANIFEST b/MANIFEST
+index 2e0843a..2f0c98b 100644
+--- a/MANIFEST
++++ b/MANIFEST
+@@ -2,7 +2,7 @@ MANIFEST
+ MANIFEST.SKIP
+ Makefile.PL
+ README
+-hexdump
++bin/hexdump.pl
+ lib/Data/HexDump.pm
+ t/compare.t
+ t/data.t
+diff --git a/Makefile.PL b/Makefile.PL
+index 0ee62bf..091fa9d 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -6,5 +6,5 @@ WriteMakefile(NAME         => "Data::HexDump",
+               VERSION_FROM => "lib/Data/HexDump.pm",
+               dist         => { COMPRESS => "gzip", SUFFIX => "gz" },
+               clean        => { FILES => '*.bak *.old mibs/*.dump lib/*/*~' },
+-              EXE_FILES    => [ qw(hexdump) ],
++              EXE_FILES    => [ qw(bin/hexdump.pl) ],
+ );
+diff --git a/hexdump b/bin/hexdump.pl
+similarity index 95%
+rename from hexdump
+rename to bin/hexdump.pl
+index a2e28a1..9f86cd8 100755
+--- a/hexdump
++++ b/bin/hexdump.pl
+@@ -5,7 +5,7 @@ use strict;
+ use Data::HexDump;
+ use FileHandle;
+ 
+-my $prgname = "hexdump";
++my $prgname = "hexdump.pl";
+ my $file = shift;
+ my $fh;
+ 
+-- 
+2.14.1
+

@@ -1,0 +1,32 @@
+From d1c5f70b144abfd4783f866aef27f60a35b61f8b Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Tue, 3 Oct 2017 20:20:14 +1300
+Subject: Strip -flto from CFLAGS
+
+-flto breaks compilation of static archives and needs significant  magic
+to not break, including sentience about which CC you're using.
+---
+ Makefile.PL | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index 0054164..ad249b9 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -22,6 +22,13 @@ WriteMakefile(
+     },
+ );
+ 
++sub MY::cflags {
++  my $self = shift;
++  my $orig = $self->MM::cflags(@_);
++  $orig =~ s/-flto\b//g;
++  return $orig;
++}
++
+ sub MY::postamble {
+ '
+ $(MYEXTLIB): src/Makefile
+-- 
+2.14.1
+

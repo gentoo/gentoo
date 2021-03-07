@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>amynka@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="ide">Build and install the Free Pascal Compiler IDE</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">freepascal</remote-id>
+	</upstream>
+</pkgmetadata>

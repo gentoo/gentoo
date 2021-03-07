@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>ada@gentoo.org</email>
+	</maintainer>
+	<longdescription lang="en">
+		ASIS is a library that gives applications access to the complete
+		syntactic and semantic structure of an Ada compilation unit. This
+		library is typically used by tools that need to perform some sort of
+		static analysis on an Ada program.
+	</longdescription>
+</pkgmetadata>

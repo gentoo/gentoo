@@ -1,0 +1,42 @@
+diff -Nuar pmtools-20100123.orig/acpixtract/acpixtract.c pmtools-20100123/acpixtract/acpixtract.c
+--- pmtools-20100123.orig/acpixtract/acpixtract.c	2010-01-23 19:31:07.000000000 +0100
++++ pmtools-20100123/acpixtract/acpixtract.c	2010-03-07 14:44:32.451141841 +0100
+@@ -199,7 +199,7 @@
+     void)
+ {
+ 
+-    printf ("Usage: acpixtract [option] <InputFile>\n");
++    printf ("Usage: acpixtract-pmtools [option] <InputFile>\n");
+     printf ("\nExtract binary ACPI tables from text acpidump output\n");
+     printf ("Default invocation extracts all DSDTs and SSDTs\n");
+     printf ("Version %8.8X\n\n", VERSION);
+diff -Nuar pmtools-20100123.orig/madt/README pmtools-20100123/madt/README
+--- pmtools-20100123.orig/madt/README	2005-11-11 18:07:04.000000000 +0100
++++ pmtools-20100123/madt/README	2010-03-07 14:45:31.818052302 +0100
+@@ -1,7 +1,7 @@
+ User utility to parse the ACPI MADT
+ Hacked out of Linux kernel code to do the same.
+ 
+-# ./acpidmp | ./acpixtract APIC | ./madt
++# ./acpidmp | ./acpixtract-pmtools APIC | ./madt
+ 
+ ACPI: APIC (v001 INTEL  D845EBT2 0x20021021 MSFT 0x00000097) @ 0x(nil)
+ ACPI: LAPIC (acpi_id[0x01] lapic_id[0x00] enabled)
+diff -Nuar pmtools-20100123.orig/README pmtools-20100123/README
+--- pmtools-20100123.orig/README	2010-01-23 19:31:52.000000000 +0100
++++ pmtools-20100123/README	2010-03-07 14:47:18.286017297 +0100
+@@ -17,11 +17,11 @@
+ 
+     # ./acpidump > acpidump.out
+ 
+-./acpidump/acpixtract
+---------------------
++./acpidump/acpixtract-pmtools
++-----------------------------
+ Convert ASCII acpidump output to raw binary tables:
+ 
+-	$ acpixtract/acpixtract -a acpidump.out
++	$ acpixtract/acpixtract-pmtools -a acpidump.out
+ 	Acpi table [DSDT] -  15974 bytes written to DSDT.dat
+ 	Acpi table [FACS] -     64 bytes written to FACS.dat
+ 	Acpi table [FACP] -    116 bytes written to FACP.dat

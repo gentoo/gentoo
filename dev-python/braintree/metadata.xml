@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>cedk@gentoo.org</email>
+		<name>Cédric Krier</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="pypi">braintree</remote-id>
+		<remote-id type="github">braintree/braintree_python</remote-id>
+	</upstream>
+</pkgmetadata>

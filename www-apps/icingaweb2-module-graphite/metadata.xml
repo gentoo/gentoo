@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">Icinga/icingaweb2-module-graphite</remote-id>
+		<bugs-to>https://github.com/Icinga/icingaweb2-module-graphite/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

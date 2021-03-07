@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+		Provides the necessary support files for Image Scan! for Linux,
+		including device information and policy file generation logic.
+		Image Scan! for Linux will not function without this package.
+	</longdescription>
+</pkgmetadata>

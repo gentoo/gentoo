@@ -1,0 +1,36 @@
+diff -ur aterm-1.0.1-orig/src/command.c aterm-1.0.1/src/command.c
+--- aterm-1.0.1-orig/src/command.c	2020-04-01 12:50:59.222929696 -0400
++++ aterm-1.0.1/src/command.c	2020-04-01 12:49:47.319579199 -0400
+@@ -91,10 +91,13 @@
+ 
+ #if defined (__svr4__) || defined (__lnx21__)
+ # include <sys/resource.h>	/* for struct rlimit */
+-# include <sys/stropts.h>	/* for I_PUSH */
+ # define _NEW_TTY_CTRL		/* to get proper defines in <termios.h> */
+ #endif
+ 
++#if defined (__svr4__)
++# include <sys/stropts.h>	/* for I_PUSH */
++#endif
++
+ /*}}} */
+ 
+ static unsigned int ModMetaMask, ModNumLockMask;
+@@ -672,7 +675,7 @@
+ 	print_error("can't open slave tty %s", ttydev);
+ 	exit(EXIT_FAILURE);
+     }
+-#if defined (__svr4__) || defined (__lnx21__)
++#if defined (__svr4__)
+ /*
+  * Push STREAMS modules:
+  *    ptem: pseudo-terminal hardware emulation module.
+@@ -682,6 +685,8 @@
+     ioctl(fd, I_PUSH, "ptem");
+     ioctl(fd, I_PUSH, "ldterm");
+     ioctl(fd, I_PUSH, "ttcompat");
++#elif defined (__lnx21__)
++    /* do nothing */
+ #else				/* __svr4__ */
+     {
+     	/* change ownership of tty to real uid and real group */

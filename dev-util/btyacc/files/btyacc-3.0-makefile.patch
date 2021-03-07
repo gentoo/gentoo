@@ -1,0 +1,22 @@
+Respect CC, append to CFLAGS (but not -g), append to LDFLAGS, use system LD -jer
+
+--- a/Makefile	1999-07-15 19:40:12.000000000 +0200
++++ b/Makefile	2009-09-04 15:27:15.000000000 +0200
+@@ -8,14 +8,13 @@
+ 
+ HDRS	      = defs.h mstring.h
+ 
+-CFLAGS	      = -g -Wall -Wstrict-prototypes -Wmissing-prototypes
++CFLAGS	      += -Wall -Wstrict-prototypes -Wmissing-prototypes
+ 
+-LDFLAGS	      = -static
++LDFLAGS	      += -static
+ 
+ LIBS	      =
+ 
+-CC	      = gcc
+-LINKER	      = gcc
++LINKER	      = $(CC)
+ # LINKER      = cl
+ # CC	      = cl
+ 

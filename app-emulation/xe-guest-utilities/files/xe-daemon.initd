@@ -1,0 +1,27 @@
+#!/sbin/openrc-run
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+  need localmount
+  after bootmisc
+}
+
+start() {
+  einfo "Detecting Linux distribution version"
+  /usr/sbin/xe-linux-distribution /var/cache/xe-linux-distribution
+
+  ebegin "Starting xe daemon"
+  start-stop-daemon --start --exec /usr/sbin/xe-daemon \
+  --pidfile /var/run/xe-daemon.pid \
+  --background \
+  -- -p /var/run/xe-daemon.pid
+  eend $?
+}
+
+stop() {
+  ebegin "Stopping xe daemon"
+  start-stop-daemon --stop --exec /usr/sbin/xe-daemon \
+  --pidfile /var/run/xe-daemon.pid
+  eend $?
+}

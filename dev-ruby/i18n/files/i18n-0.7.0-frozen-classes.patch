@@ -1,0 +1,31 @@
+From bbbdedc0c78ec941a84d161d5c610a358310cf99 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?V=C3=ADt=20Ondruch?= <vondruch@redhat.com>
+Date: Tue, 20 Jan 2015 14:34:44 +0100
+Subject: [PATCH] Ignore metadata for frozen classes.
+
+---
+ lib/i18n/backend/metadata.rb | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/lib/i18n/backend/metadata.rb b/lib/i18n/backend/metadata.rb
+index 52c0a29..a8d922a 100644
+--- a/lib/i18n/backend/metadata.rb
++++ b/lib/i18n/backend/metadata.rb
+@@ -21,11 +21,15 @@ class << self
+         def included(base)
+           Object.class_eval do
+             def translation_metadata
+-              @translation_metadata ||= {}
++              unless self.frozen?
++                @translation_metadata ||= {}
++              else
++                {}
++              end
+             end
+ 
+             def translation_metadata=(translation_metadata)
+-              @translation_metadata = translation_metadata
++              @translation_metadata = translation_metadata unless self.frozen?
+             end
+           end unless Object.method_defined?(:translation_metadata)
+         end

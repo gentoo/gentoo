@@ -1,0 +1,62 @@
+--- a/Makefile.old	2012-11-26 18:58:48.201837870 +0100
++++ b/Makefile	2012-11-27 12:30:16.038998128 +0100
+@@ -1,5 +1,5 @@
+-METHANE_FLAGS = -DENABLE_SOUND `pkg-config --cflags clanCore-2.2 clanDisplay-2.2 clanApp-2.2 clanGL-2.2 clanGL1-2.2 clanSWRender-2.2 clanSound-2.2 clanMikMod-2.2`
+-METHANE_LIBS = `pkg-config --libs clanCore-2.2 clanDisplay-2.2 clanApp-2.2 clanGL-2.2 clanGL1-2.2 clanSWRender-2.2  clanSound-2.2 clanMikMod-2.2`
++METHANE_FLAGS = -DENABLE_SOUND `pkg-config --cflags clanCore-2.3 clanDisplay-2.3 clanApp-2.3 clanGL-2.3 clanGL1-2.3 clanSWRender-2.3 clanSound-2.3 clanMikMod-2.3`
++METHANE_LIBS = `pkg-config --libs clanCore-2.3 clanDisplay-2.3 clanApp-2.3 clanGL-2.3 clanGL1-2.3 clanSWRender-2.3  clanSound-2.3 clanMikMod-2.3`
+ 
+ OBJF = build/game.o build/baddie.o build/methane.o build/target.o build/maps.o build/gfxoff.o build/mapdata.o build/objlist.o build/doc.o build/bitdraw.o build/global.o build/suck.o build/power.o build/goodie.o build/bititem.o build/player.o build/weapon.o build/bitgroup.o build/boss.o build/sound.o build/gasobj.o build/misc.o
+ 
+@@ -10,7 +10,7 @@
+ 	@echo "================================="
+ 
+ methane: ${OBJF}
+-	g++ ${CXXFLAGS} ${OBJF}	-o methane ${METHANE_LIBS}
++	$(CXX) ${LDFLAGS} ${CXXFLAGS} ${OBJF} -o methane ${METHANE_LIBS}
+ 
+ clean:
+ 	@rm -Rf build
+@@ -23,6 +23,6 @@
+ build/%.o : sources/%.cpp
+ 	@echo "  Compiling $<..."
+ 	@if [ ! -d build ]; then mkdir build; fi
+-	gcc ${CXXFLAGS} ${METHANE_FLAGS} -c $< -o $@
++	$(CXX) ${CXXFLAGS} ${METHANE_FLAGS} -c $< -o $@
+ 
+ 
+--- a/sources/methane.cpp.old	2012-11-27 13:49:22.993003266 +0100
++++ b/sources/methane.cpp	2012-11-27 17:37:23.051913777 +0100
+@@ -80,15 +80,15 @@
+ 				return 0;
+ 			}
+ 
+-			CL_AutoPtr<CL_SetupSound> setup_sound;
+-			CL_AutoPtr<CL_SoundOutput> sound_output;
+-			CL_AutoPtr<CL_SetupMikMod> setup_mikmod;
++			CL_UniquePtr<CL_SetupSound> setup_sound;
++			CL_UniquePtr<CL_SoundOutput> sound_output;
++			CL_UniquePtr<CL_SetupMikMod> setup_mikmod;
+ 
+ 			if (GLOBAL_SoundEnable)
+ 			{
+-				setup_sound = new CL_SetupSound;
+-				sound_output = new CL_SoundOutput(44100);
+-				setup_mikmod = new CL_SetupMikMod;
++				setup_sound = cl_move(CL_UniquePtr<CL_SetupSound>(new CL_SetupSound));
++				sound_output = cl_move(CL_UniquePtr<CL_SoundOutput>(new CL_SoundOutput(44100)));
++				setup_mikmod = cl_move(CL_UniquePtr<CL_SetupMikMod>(new CL_SetupMikMod));
+ 			}
+ 
+ 			// Set the video mode
+--- a/sources/target.cpp.old	2012-11-28 21:34:32.666878913 +0100
++++ b/sources/target.cpp	2012-11-28 21:35:16.371247221 +0100
+@@ -132,7 +132,7 @@
+ 	CL_GraphicContext gc = m_pWindow->get_gc();
+ 
+ 	// Find the resources directory:
+-	CL_String resource_dir = CL_Directory::get_resourcedata("methane");
++	CL_String resource_dir = "@GENTOO_DATADIR@/methane/";
+ 	CL_String dataname("page_01.png");
+ 	CL_String filename = resource_dir + dataname;
+ 	if (!CL_FileHelp::file_exists(filename))

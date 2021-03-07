@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<longdescription lang="en">
+		mechanize is a Python module for static programmatic web browsing in
+		Python, after Andy Lester's Perl module WWW::Mechanize. With the Browser
+		subclass any url can be opened - not just http - and UserAgentBase
+		offers easy dynamic configuration of user-agent features like protocol,
+		cookie, redirection and robots.txt handling. Other functionalities
+		include easy HTML form filling using ClientForm interface, convenient
+		link parsing and following, browser history with .back() and .reload()
+		methods and automatic handling of HTTP-Equiv and Refresh.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">wwwsearch</remote-id>
+		<remote-id type="pypi">mechanize</remote-id>
+	</upstream>
+</pkgmetadata>

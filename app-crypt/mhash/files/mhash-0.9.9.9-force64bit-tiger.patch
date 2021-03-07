@@ -1,0 +1,14 @@
+diff -up mhash-0.9.9.9/lib/tiger.c.BAD mhash-0.9.9.9/lib/tiger.c
+--- mhash-0.9.9.9/lib/tiger.c.BAD	2009-07-02 16:42:47.683029940 -0400
++++ mhash-0.9.9.9/lib/tiger.c	2009-07-02 16:43:46.085049317 -0400
+@@ -252,7 +252,9 @@ void tiger_update(struct tiger_ctx *ctx,
+ void tiger_final(struct tiger_ctx *ctx)
+ {
+ 	register mutils_word64 i, j;
+-	mutils_word8 temp[TIGER_DATASIZE];
++	/* Force 64-bit alignment */
++	mutils_word64 temp_64bit[TIGER_DATASIZE/8];
++	mutils_word8 *temp = temp_64bit;
+ 	i = ctx->index;
+ 	
+ #if defined(WORDS_BIGENDIAN)

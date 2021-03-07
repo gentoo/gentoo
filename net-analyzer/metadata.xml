@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The net-analyzer category contains network analysis software.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie net-analyzer enthält Software zur Netzwerkanalyse.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría net-analyzer contiene programas de análisis de redes.
+	</longdescription>
+	<longdescription lang="ja">
+		net-analyzerカテゴリーにはネットワーク・アナリシスのソフトウェアが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De net-analyzer categorie bevat applicaties voor netwerk-analyse.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm net-analyzer chứa các phần mềm phân tích mạng.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria net-analyzer contiene programmi per l'analisi della rete.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria net-analyzer contém programas de análise de rede.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria net-analyzer zawiera programy do analizowania sieci.
+	</longdescription>
+</catmetadata>
+

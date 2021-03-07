@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
+	<longdescription>Apache Commons Imaging, previously known as Apache Commons Sanselan, is a library that reads and writes a variety of image formats, including fast parsing of image info (size, color space, ICC profile, etc.) and metadata.
+
+This library is pure Java. Compared to typical image I/O libraries in native code, it's more portable, and should be more reliable and more secure against corrupt/malicious images, yet still performs reasonably well. It's easier to use than ImageIO/JAI/java.awt.Toolkit (Sun/Java's image support), supports more formats (and supports them more correctly). It also provides easy access to metadata.
+
+Imaging was working and was used by a number of projects in production even before version 1.0.</longdescription>
+	<upstream>
+		<remote-id type="github">apache/commons-imaging</remote-id>
+	</upstream>
+</pkgmetadata>

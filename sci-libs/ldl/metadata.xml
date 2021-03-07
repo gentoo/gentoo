@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		LDL is a set of concise routines for factorizing symmetric
+		positive-definite sparse matrices, with some applicability to
+		symmetric indefinite matrices. Its primary purpose is to illustrate
+		much of the basic theory of sparse matrix algorithms in as concise a
+		code as possible, including an elegant new method of sparse symmetric
+		factorization that computes the factorization row-by-row but stores it
+		column-by-column. The entire symbolic and numeric factorization
+		consists of a total of only 49 lines of code. The package is written
+		in C, and includes a MATLAB interface.
+	</longdescription>
+</pkgmetadata>

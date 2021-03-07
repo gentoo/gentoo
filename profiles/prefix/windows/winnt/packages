@@ -1,0 +1,37 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# those are packages not available/required on winnt, since
+# winnt can be a child EPREFIX only, which tears it's DEPENDS
+# from a parent (e.g. x64-cygwin) prefix.
+
+-*sys-apps/grep
+-*app-arch/gzip
+-*sys-devel/libtool
+-*virtual/man
+-*sys-devel/patch
+-*sys-devel/flex
+-*sys-apps/gawk
+-*app-arch/tar
+-*sys-apps/sed
+-*sys-devel/bison
+-*sys-apps/file
+-*app-arch/bzip2
+-*net-misc/rsync
+-*sys-devel/automake
+-*virtual/editor
+-*sys-apps/coreutils
+-*sys-devel/make
+-*sys-apps/findutils
+-*sys-devel/m4
+-*net-misc/wget
+-*sys-apps/which
+-*virtual/pager
+-*sys-apps/diffutils
+-*sys-apps/baselayout-prefix
+-*app-shells/bash:0
+-*virtual/package-manager
+-*virtual/ssh
+-*sys-devel/autoconf
+-*sys-devel/gnuconfig
+-*sys-devel/gcc

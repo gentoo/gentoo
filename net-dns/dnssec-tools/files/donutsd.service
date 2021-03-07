@@ -1,0 +1,8 @@
+[Unit]
+Description=DNSSEC monitoring daemon
+
+[Service]
+ExecStart=/usr/bin/donutsd -i /etc/dnssec-tools/donutsd.db
+
+[Install]
+WantedBy=multi-user.target

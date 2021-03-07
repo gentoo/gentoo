@@ -1,0 +1,64 @@
+diff -Nru fbgetty-0.1.698.orig/include/fbgetty/generated/fgoptions.awk fbgetty-0.1.698/include/fbgetty/generated/fgoptions.awk
+--- fbgetty-0.1.698.orig/include/fbgetty/generated/fgoptions.awk	2001-07-11 23:01:15.000000000 +0300
++++ fbgetty-0.1.698/include/fbgetty/generated/fgoptions.awk	2007-10-27 11:29:50.000000000 +0300
+@@ -45,8 +45,7 @@
+   name = $3;
+   type = $2;
+ 
+-  printf("#define OFFSET_%s (offsetof(struct fbgetty_options_t, %s))\n", name, name);
+-  printf(" %s %s;\n\n", type, name);     
++  printf(" %s %s;\n", type, name);     
+ }
+ 
+ END {
+diff -Nru fbgetty-0.1.698.orig/src/options.c fbgetty-0.1.698/src/options.c
+--- fbgetty-0.1.698.orig/src/options.c	2001-12-17 22:55:42.000000000 +0200
++++ fbgetty-0.1.698/src/options.c	2007-10-27 11:32:53.000000000 +0300
+@@ -27,7 +27,7 @@
+  */
+ 
+ #include <fbgetty/global.h>
+-
++#include <stddef.h>
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
+@@ -141,7 +141,7 @@
+ #define ENV_BINARY  0x04
+ #define ENV_LEDS    0x08
+ 
+-#define ENV_ENTRY(name, type, ptr) { name, type, OFFSET_ ## ptr }
++#define ENV_ENTRY(name, type, ptr) { name, type, offsetof(struct fbgetty_options_t, ptr) }
+ 
+ static struct env_entry
+ {
+@@ -899,20 +899,20 @@
+ } 
+ merge_option_list[] = 
+ {
+-  { OFFSET_tty_device ,    MERGE_STR, NULL, -1 },
++  { offsetof(struct fbgetty_options_t, tty_device) ,    MERGE_STR, NULL, -1 },
+ #ifdef USE_FRAME_BUFFER
+-  { OFFSET_fb_device,      MERGE_STR, NULL, -1 },
++  { offsetof(struct fbgetty_options_t, fb_device),      MERGE_STR, NULL, -1 },
+ #endif
+ 
+-  { OFFSET_login_program,  MERGE_STR, LOGIN_PROGRAM, -1 },
+-  { OFFSET_login_prompt,   MERGE_STR, LOGIN_PROMPT, -1 },
+-  { OFFSET_issue_filename, MERGE_STR, ISSUE_FILE, -1 },
++  { offsetof(struct fbgetty_options_t, login_program),  MERGE_STR, LOGIN_PROGRAM, -1 },
++  { offsetof(struct fbgetty_options_t, login_prompt),   MERGE_STR, LOGIN_PROMPT, -1 },
++  { offsetof(struct fbgetty_options_t, issue_filename), MERGE_STR, ISSUE_FILE, -1 },
+ 
+-  { OFFSET_login_timeout,  MERGE_INT, NULL, LOGIN_TIMEOUT },
+-  { OFFSET_issue_refresh,  MERGE_INT, NULL, ISSUE_REFRESH },
+-  { OFFSET_screen_clear,   MERGE_INT, NULL, TRUE },
++  { offsetof(struct fbgetty_options_t, login_timeout),  MERGE_INT, NULL, LOGIN_TIMEOUT },
++  { offsetof(struct fbgetty_options_t, issue_refresh),  MERGE_INT, NULL, ISSUE_REFRESH },
++  { offsetof(struct fbgetty_options_t, screen_clear),   MERGE_INT, NULL, TRUE },
+ 
+-  { OFFSET_leds,           MERGE_INT, NULL, 0 },
++  { offsetof(struct fbgetty_options_t, leds),           MERGE_INT, NULL, 0 },
+   { 0, 0, NULL, -1 }
+ };
+ 

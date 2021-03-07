@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>billie@gentoo.org</email>
+		<name>Daniel Pielmeier</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>media-video@gentoo.org</email>
+		<name>Gentoo Video project</name>
+	</maintainer>
+	<longdescription><pkg>media-video/ttcut</pkg> is a tool designed to remove commercials from
+	DVB (European standard for digital radio and television broadcast)
+	recordings. It only accepts the elementary video and audio streams. This is
+	because the MPEG transport stream is slightly different to the MPEG Program
+	stream used on DVD media. Also it may contain errors that tools like
+	<pkg>media-video/projectx</pkg> can correct while demuxing the stream.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">ttcut.berlios</remote-id>
+	</upstream>
+</pkgmetadata>

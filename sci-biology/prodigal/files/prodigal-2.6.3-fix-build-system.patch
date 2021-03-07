@@ -1,0 +1,45 @@
+Fix build system to honour user variables.
+
+--- a/Makefile
++++ b/Makefile
+@@ -19,32 +19,31 @@
+ ##############################################################################
+ 
+ SHELL   = /bin/sh
+-CC      = gcc
++CC     ?= gcc
+ 
+-CFLAGS  += -pedantic -Wall -O3
+-LFLAGS = -lm $(LDFLAGS)
++LIBS    = -lm
+ 
+ TARGET  = prodigal
+ SOURCES = $(shell echo *.c)
+ HEADERS = $(shell echo *.h)
+ OBJECTS = $(SOURCES:.c=.o)
+ 
+-INSTALLDIR  = /usr/local/bin
++BINDIR = $(EPREFIX)/usr/bin
+ 
+ all: $(TARGET)
+ 
+ $(TARGET): $(OBJECTS)
+-	$(CC) $(CFLAGS) -o $@ $^ $(LFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(LIBS)
+ 
+ %.o: %.c $(HEADERS)
+-	$(CC) $(CFLAGS) -c -o $@ $<
++	$(CC) -Wall -pedantic $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
+ 
+ install: $(TARGET)
+-	install -d -m 0755 $(INSTALLDIR)
+-	install -m 0755 $(TARGET) $(INSTALLDIR)
++	install -d -m 0755 $(DESTDIR)$(BINDIR)
++	install -m 0755 $(TARGET) $(DESTDIR)$(BINDIR)
+  
+ uninstall:
+-	-rm $(INSTALLDIR)/$(TARGET)
++	-rm $(DESTDIR)$(BINDIR)/$(TARGET)
+ 
+ clean:
+ 	-rm -f $(OBJECTS)

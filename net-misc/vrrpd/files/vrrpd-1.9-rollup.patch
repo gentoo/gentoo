@@ -1,0 +1,37 @@
+This is a partial rollup of patches submitted to upstream to clean up the
+packaging.
+
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+
+diff --git a/Makefile b/Makefile
+old mode 100755
+new mode 100644
+index d7f3309..869d06d
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,8 @@
+ PROJECT=vrrpd
+ 
+-ALL_EXE=vrrpd
++ALL_EXE=vrrpd atropos
+ 
++ATROPOS_OBJS = atropos.o
+ VRRPD_OBJS = vrrpd.o libnetlink.o ipaddr.o
+ 
+ MAIN_OPT=
+@@ -18,9 +19,13 @@ COMMON_CFLAGS= $(MAIN_OPT) $(INCLUDEOPT) $(PROF_OPT) $(DBG_OPT) $(MACHINEOPT)
+ CC=gcc
+ CFLAGS= $(COMMON_CFLAGS) -Wall
+ 
++all: $(ALL_EXE)
++
++atropos: $(ATROPOS_OBJS)
++	$(CC) $(PROF_OPT) -o $@ $^
++
+ vrrpd : $(VRRPD_OBJS)
+-	$(CC) $(PROF_OPT) -o $@ $(VRRPD_OBJS) $(LINKLIB)
+-	$(CC) atropos.c -o atropos
++	$(CC) $(PROF_OPT) -o $@ $^ $(LINKLIB)
+ 
+ vrrpd.o: vrrpd.h
+ libnetlink.o: libnetlink.h

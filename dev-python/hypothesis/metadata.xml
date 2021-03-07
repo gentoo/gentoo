@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!--
+		This package has a very frequent release cycle which makes
+		it hard to track stable candidates.  Please do not bump it
+		without my approval.
+	-->
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">hypothesis</remote-id>
+		<remote-id type="github">HypothesisWorks/hypothesis</remote-id>
+	</upstream>
+	<use>
+		<flag name="cli">
+			Install a CLI tool used to write tests.
+		</flag>
+	</use>
+</pkgmetadata>

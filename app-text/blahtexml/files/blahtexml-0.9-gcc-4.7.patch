@@ -1,0 +1,24 @@
+Description: Fix FTBFS with gcc 4.7 by fixing missing <unistd.h> includes.
+Author: Cyril Brulebois <kibi@debian.org>
+Bug-Debian: http://bugs.debian.org/667116
+
+--- blahtexml-0.9.orig/Source/main.cpp
++++ blahtexml-0.9/Source/main.cpp
+@@ -24,6 +24,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIG
+ #include <stdlib.h>
+ #include <sstream>
+ #include <stdexcept>
++#include <unistd.h>
+ 
+ using namespace std;
+ using namespace blahtex;
+--- blahtexml-0.9.orig/Source/mainPng.cpp
++++ blahtexml-0.9/Source/mainPng.cpp
+@@ -27,6 +27,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIG
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <sstream>
++#include <unistd.h>
+ 
+ 
+ using namespace std;

@@ -1,0 +1,26 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+ARCH="hppa"
+ACCEPT_KEYWORDS="hppa"
+
+CHOST="hppa-unknown-linux-gnu"
+CFLAGS="-O2 -pipe"
+CXXFLAGS="${CFLAGS}"
+
+FEATURES="sandbox sfperms strict"
+
+USE="cups foomaticdb fortran gdbm gpm imlib libwww spell firefox"
+
+# Michał Górny <mgorny@gentoo.org> (2014-07-01)
+# Set ABI & DEFAULT_ABI consistently with ${ARCH}, to make ebuild
+# checks simpler.
+ABI="hppa"
+DEFAULT_ABI="hppa"
+MULTILIB_ABIS="hppa"
+LIBDIR_hppa="lib"
+CHOST_hppa="${CHOST}"
+
+# Donnie Berkholz <dberkholz@gentoo.org> (2006-08-18)
+# Defaults for video drivers
+VIDEO_CARDS="fbdev"

@@ -1,0 +1,12 @@
+diff -ru alsa-tools-1.0.20/envy24control/envy24control.h alsa-tools-1.0.20-r1/envy24control/envy24control.h
+--- alsa-tools-1.0.20/envy24control/envy24control.h	2009-05-06 09:07:25.000000000 +0200
++++ alsa-tools-1.0.20-r1/envy24control/envy24control.h	2009-06-08 04:18:04.000000000 +0200
+@@ -15,7 +15,7 @@
+ #endif
+ #define MAX_PROFILES 8
+ #define MAX_PROFILE_NAME_LENGTH 20
+-#define DEFAULT_PROFILERC "~/envy24control/profiles.conf"
++#define DEFAULT_PROFILERC "~/.envy24control/profiles.conf"
+ #define SYS_PROFILERC "/etc/envy24control/profiles.conf"
+ #ifndef MKDIR
+ #define MKDIR "/bin/mkdir"

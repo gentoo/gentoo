@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">XML-RSS-LibXML</remote-id>
+    <remote-id type="cpan-module">XML::RSS::LibXML</remote-id>
+    <remote-id type="cpan-module">XML::RSS::LibXML::ImplBase</remote-id>
+    <remote-id type="cpan-module">XML::RSS::LibXML::MagicElement</remote-id>
+    <remote-id type="cpan-module">XML::RSS::LibXML::Namespaces</remote-id>
+    <remote-id type="cpan-module">XML::RSS::LibXML::Null</remote-id>
+    <remote-id type="cpan-module">XML::RSS::LibXML::V0_9</remote-id>
+    <remote-id type="cpan-module">XML::RSS::LibXML::V0_91</remote-id>
+    <remote-id type="cpan-module">XML::RSS::LibXML::V0_92</remote-id>
+    <remote-id type="cpan-module">XML::RSS::LibXML::V1_0</remote-id>
+    <remote-id type="cpan-module">XML::RSS::LibXML::V2_0</remote-id>
+  </upstream>
+</pkgmetadata>

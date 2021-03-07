@@ -1,0 +1,544 @@
+rely on standard POSIX headers to fix globs of warnings
+
+--- a/tcprulescheck.c
++++ b/tcprulescheck.c
+@@ -1,3 +1,5 @@
++#include <unistd.h>
++
+ #include "byte.h"
+ #include "buffer.h"
+ #include "strerr.h"
+--- a/buffer.c
++++ b/buffer.c
+@@ -1,6 +1,6 @@
+ #include "buffer.h"
+ 
+-void buffer_init(buffer *s,int (*op)(),int fd,char *buf,unsigned int len)
++void buffer_init(buffer *s,ssize_t (*op)(),int fd,char *buf,unsigned int len)
+ {
+   s->x = buf;
+   s->fd = fd;
+--- a/buffer.h
++++ b/buffer.h
+@@ -1,6 +1,8 @@
+ #ifndef BUFFER_H
+ #define BUFFER_H
+ 
++#include <sys/types.h>
++
+ typedef struct buffer {
+   char *x;
+   unsigned int p;
+@@ -13,7 +15,7 @@ typedef struct buffer {
+ #define BUFFER_INSIZE 8192
+ #define BUFFER_OUTSIZE 8192
+ 
+-extern void buffer_init(buffer *,int (*)(),int,char *,unsigned int);
++extern void buffer_init(buffer *,ssize_t (*)(),int,char *,unsigned int);
+ 
+ extern int buffer_flush(buffer *);
+ extern int buffer_put(buffer *,char *,unsigned int);
+--- a/exit.h
++++ b/exit.h
+@@ -1,6 +1,6 @@
+ #ifndef EXIT_H
+ #define EXIT_H
+ 
+-extern void _exit();
++#include <unistd.h>
+ 
+ #endif
+--- a/install.c
++++ b/install.c
+@@ -1,3 +1,4 @@
++#include <sys/stat.h>
+ #include "buffer.h"
+ #include "strerr.h"
+ #include "error.h"
+--- a/readwrite.h
++++ b/readwrite.h
+@@ -1,7 +1,6 @@
+ #ifndef READWRITE_H
+ #define READWRITE_H
+ 
+-extern int read();
+-extern int write();
++#include <unistd.h>
+ 
+ #endif
+
+--- a/auto-str.c
++++ b/auto-str.c
+@@ -5,6 +5,7 @@
+ char bspace[256];
+ buffer b = BUFFER_INIT(write,1,bspace,sizeof bspace);
+ 
++#define puts _puts
+ void puts(char *s)
+ {
+   if (buffer_puts(&b,s) == -1) _exit(111);
+--- a/buffer.h
++++ b/buffer.h
+@@ -8,7 +8,7 @@ typedef struct buffer {
+   unsigned int p;
+   unsigned int n;
+   int fd;
+-  int (*op)();
++  ssize_t (*op)();
+ } buffer;
+ 
+ #define BUFFER_INIT(op,fd,buf,len) { (buf), 0, (len), (fd), (op) }
+--- a/fd_copy.c
++++ b/fd_copy.c
+@@ -1,4 +1,5 @@
+ #include <fcntl.h>
++#include <unistd.h>
+ #include "fd.h"
+ 
+ int fd_copy(int to,int from)
+--- a/fd_move.c
++++ b/fd_move.c
+@@ -1,3 +1,4 @@
++#include <unistd.h>
+ #include "fd.h"
+ 
+ int fd_move(int to,int from)
+--- a/socket_tcp.c
++++ b/socket_tcp.c
+@@ -1,3 +1,4 @@
++#include <unistd.h>
+ #include <sys/types.h>
+ #include <sys/param.h>
+ #include <sys/socket.h>
+--- a/chkshsgr.c
++++ b/chkshsgr.c
+@@ -1,8 +1,9 @@
++#include <grp.h>
+ #include "exit.h"
+ 
+ main()
+ {
+-  short x[4];
++  gid_t x[4];
+ 
+   x[0] = x[1] = 0;
+   if (getgroups(1,x) == 0) if (setgroups(1,x) == -1) _exit(1);
+--- a/prot.c
++++ b/prot.c
+@@ -1,10 +1,10 @@
+ #include "hasshsgr.h"
+ #include "prot.h"
+ 
+-int prot_gid(int gid)
++int prot_gid(gid_t gid)
+ {
+ #ifdef HASSHORTSETGROUPS
+-  short x[2];
++  gid_t x[2];
+   x[0] = gid; x[1] = 73; /* catch errors */
+   if (setgroups(1,x) == -1) return -1;
+ #else
+@@ -13,7 +13,7 @@ int prot_gid(int gid)
+   return setgid(gid); /* _should_ be redundant, but on some systems it isn't */
+ }
+ 
+-int prot_uid(int uid)
++int prot_uid(uid_t uid)
+ {
+   return setuid(uid);
+ }
+--- a/prot.h
++++ b/prot.h
+@@ -1,7 +1,10 @@
+ #ifndef PROT_H
+ #define PROT_H
+ 
+-extern int prot_gid(int);
+-extern int prot_uid(int);
++#include <unistd.h>
++#include <grp.h>
++
++extern int prot_gid(gid_t);
++extern int prot_uid(uid_t);
+ 
+ #endif
+--- a/fixcrio.c
++++ b/fixcrio.c
+@@ -6,6 +6,7 @@
+ #include "exit.h"
+ #include "iopause.h"
+ #include "pathexec.h"
++#include "fd.h"
+ 
+ #define FATAL "fixcrio: fatal: "
+ 
+--- a/hier.c
++++ b/hier.c
+@@ -1,5 +1,9 @@
+ #include "auto_home.h"
+ 
++extern void h(char *, int, int, int);
++extern void d(char *, char *, int, int, int);
++extern void c(char *, char *, char *, int, int, int);
++
+ void hier()
+ {
+   h(auto_home,-1,-1,02755);
+--- a/mconnect-io.c
++++ b/mconnect-io.c
+@@ -1,3 +1,4 @@
++#include <signal.h>
+ #include "sig.h"
+ #include "wait.h"
+ #include "fork.h"
+@@ -12,7 +13,7 @@ buffer bout;
+ char inbuf[512];
+ buffer bin;
+ 
+-int myread(int fd,char *buf,int len)
++ssize_t myread(int fd,char *buf,int len)
+ {
+   buffer_flush(&bout);
+   return read(fd,buf,len);
+--- a/tcprules.c
++++ b/tcprules.c
+@@ -1,3 +1,4 @@
++#include <stdio.h>
+ #include "strerr.h"
+ #include "stralloc.h"
+ #include "getln.h"
+@@ -6,6 +7,8 @@
+ #include "fmt.h"
+ #include "byte.h"
+ #include "cdb_make.h"
++#include "open.h"
++#include "scan.h"
+ 
+ #define FATAL "tcprules: fatal: "
+ 
+--- a/pathexec_run.c
++++ b/pathexec_run.c
+@@ -1,3 +1,4 @@
++#include <unistd.h>
+ #include "error.h"
+ #include "stralloc.h"
+ #include "str.h"
+--- a/recordio.c
++++ b/recordio.c
+@@ -8,6 +8,7 @@
+ #include "fmt.h"
+ #include "iopause.h"
+ #include "pathexec.h"
++#include "fd.h"
+ 
+ #define FATAL "recordio: fatal: "
+ 
+--- a/seek_set.c
++++ b/seek_set.c
+@@ -1,7 +1,6 @@
++#include <unistd.h>
+ #include <sys/types.h>
+ #include "seek.h"
+ 
+-#define SET 0 /* sigh */
+-
+ int seek_set(int fd,seek_pos pos)
+-{ if (lseek(fd,(off_t) pos,SET) == -1) return -1; return 0; }
++{ if (lseek(fd,(off_t) pos,SEEK_SET) == -1) return -1; return 0; }
+--- a/socket_udp.c
++++ b/socket_udp.c
+@@ -2,6 +2,7 @@
+ #include <sys/param.h>
+ #include <sys/socket.h>
+ #include <netinet/in.h>
++#include <unistd.h>
+ #include "ndelay.h"
+ #include "socket.h"
+ 
+--- a/tcprulescheck.c
++++ b/tcprulescheck.c
+@@ -5,6 +5,7 @@
+ #include "strerr.h"
+ #include "env.h"
+ #include "rules.h"
++#include "open.h"
+ 
+ void found(char *data,unsigned int datalen)
+ {
+
+the prototypes are added near the top to avoid conflicts w/ipv6 patch
+
+--- a/socket.h
++++ b/socket.h
+@@ -3,6 +3,9 @@
+ #ifndef SOCKET_H
+ #define SOCKET_H
+ 
++extern int socket_tcpnodelay(int);
++extern int socket_ipoptionskill(int);
++
+ #include "uint16.h"
+ 
+ extern int socket_tcp(void);
+--- a/remoteinfo.c
++++ b/remoteinfo.c
+@@ -1,3 +1,4 @@
++#include <unistd.h>
+ #include "fmt.h"
+ #include "buffer.h"
+ #include "socket.h"
+@@ -5,11 +6,12 @@
+ #include "iopause.h"
+ #include "timeoutconn.h"
+ #include "remoteinfo.h"
++#include "readwrite.h"
+ 
+ static struct taia now;
+ static struct taia deadline;
+ 
+-static int mywrite(int fd,char *buf,int len)
++static ssize_t mywrite(int fd,char *buf,int len)
+ {
+   iopause_fd x;
+ 
+@@ -27,7 +29,7 @@ static int mywrite(int fd,char *buf,int len)
+   return write(fd,buf,len);
+ }
+ 
+-static int myread(int fd,char *buf,int len)
++static ssize_t myread(int fd,char *buf,int len)
+ {
+   iopause_fd x;
+ 
+--- a/alloc.c
++++ b/alloc.c
+@@ -1,7 +1,5 @@
+ #include "alloc.h"
+ #include "error.h"
+-extern char *malloc();
+-extern void free();
+ 
+ #define ALIGNMENT 16 /* XXX: assuming that this alignment is enough */
+ #define SPACE 2048 /* must be multiple of ALIGNMENT */
+--- a/alloc.h
++++ b/alloc.h
+@@ -1,8 +1,10 @@
+ #ifndef ALLOC_H
+ #define ALLOC_H
+ 
+-extern /*@null@*//*@out@*/char *alloc();
+-extern void alloc_free();
++#include <stdlib.h>
++
++extern /*@null@*//*@out@*/char *alloc(unsigned int);
++extern void alloc_free(char *);
+ extern int alloc_re();
+ 
+ #endif
+--- a/buffer_0.c
++++ b/buffer_0.c
+@@ -1,7 +1,7 @@
+ #include "readwrite.h"
+ #include "buffer.h"
+ 
+-int buffer_0_read(fd,buf,len) int fd; char *buf; int len;
++ssize_t buffer_0_read(fd,buf,len) int fd; char *buf; int len;
+ {
+   if (buffer_flush(buffer_1) == -1) return -1;
+   return read(fd,buf,len);
+--- a/buffer_get.c
++++ b/buffer_get.c
+@@ -2,7 +2,7 @@
+ #include "byte.h"
+ #include "error.h"
+ 
+-static int oneread(int (*op)(),int fd,char *buf,unsigned int len)
++static int oneread(ssize_t (*op)(),int fd,char *buf,unsigned int len)
+ {
+   int r;
+ 
+--- a/buffer_put.c
++++ b/buffer_put.c
+@@ -3,7 +3,7 @@
+ #include "byte.h"
+ #include "error.h"
+ 
+-static int allwrite(int (*op)(),int fd,char *buf,unsigned int len)
++static int allwrite(ssize_t (*op)(),int fd,char *buf,unsigned int len)
+ {
+   int w;
+ 
+--- a/case.h
++++ b/case.h
+@@ -4,7 +4,7 @@
+ extern void case_lowers(char *);
+ extern void case_lowerb(char *,unsigned int);
+ extern int case_diffs(char *,char *);
+-extern int case_diffb(char *,unsigned int,char *);
++extern int case_diffb(const char *,unsigned int,const char *);
+ extern int case_starts(char *,char *);
+ extern int case_startb(char *,unsigned int,char *);
+ 
+--- a/case_diffb.c
++++ b/case_diffb.c
+@@ -1,6 +1,6 @@
+ #include "case.h"
+ 
+-int case_diffb(register char *s,register unsigned int len,register char *t)
++int case_diffb(register const char *s,register unsigned int len,const register char *t)
+ {
+   register unsigned char x;
+   register unsigned char y;
+--- a/open.h
++++ b/open.h
+@@ -1,10 +1,10 @@
+ #ifndef OPEN_H
+ #define OPEN_H
+ 
+-extern int open_read(char *);
+-extern int open_excl(char *);
+-extern int open_append(char *);
+-extern int open_trunc(char *);
+-extern int open_write(char *);
++extern int open_read(const char *);
++extern int open_excl(const char *);
++extern int open_append(const char *);
++extern int open_trunc(const char *);
++extern int open_write(const char *);
+ 
+ #endif
+--- a/open_read.c
++++ b/open_read.c
+@@ -2,5 +2,5 @@
+ #include <fcntl.h>
+ #include "open.h"
+ 
+-int open_read(char *fn)
++int open_read(const char *fn)
+ { return open(fn,O_RDONLY | O_NDELAY); }
+--- a/open_trunc.c
++++ b/open_trunc.c
+@@ -2,5 +2,5 @@
+ #include <fcntl.h>
+ #include "open.h"
+ 
+-int open_trunc(char *fn)
++int open_trunc(const char *fn)
+ { return open(fn,O_WRONLY | O_NDELAY | O_TRUNC | O_CREAT,0644); }
+--- a/open_write.c
++++ b/open_write.c
+@@ -2,5 +2,5 @@
+ #include <fcntl.h>
+ #include "open.h"
+ 
+-int open_write(char *fn)
++int open_write(const char *fn)
+ { return open(fn,O_WRONLY | O_NDELAY); }
+--- a/openreadclose.c
++++ b/openreadclose.c
+@@ -3,7 +3,7 @@
+ #include "readclose.h"
+ #include "openreadclose.h"
+ 
+-int openreadclose(char *fn,stralloc *sa,unsigned int bufsize)
++int openreadclose(const char *fn,stralloc *sa,unsigned int bufsize)
+ {
+   int fd;
+   fd = open_read(fn);
+--- a/openreadclose.h
++++ b/openreadclose.h
+@@ -3,6 +3,6 @@
+ 
+ #include "stralloc.h"
+ 
+-extern int openreadclose(char *,stralloc *,unsigned int);
++extern int openreadclose(const char *,stralloc *,unsigned int);
+ 
+ #endif
+--- a/stralloc.h
++++ b/stralloc.h
+@@ -7,7 +7,7 @@ GEN_ALLOC_typedef(stralloc,char,s,len,a)
+ 
+ extern int stralloc_ready(stralloc *,unsigned int);
+ extern int stralloc_readyplus(stralloc *,unsigned int);
+-extern int stralloc_copy(stralloc *,stralloc *);
++extern int stralloc_copy(stralloc *,const stralloc *);
+ extern int stralloc_cat(stralloc *,stralloc *);
+ extern int stralloc_copys(stralloc *,const char *);
+ extern int stralloc_cats(stralloc *,const char *);
+--- a/stralloc_copy.c
++++ b/stralloc_copy.c
+@@ -1,7 +1,7 @@
+ #include "byte.h"
+ #include "stralloc.h"
+ 
+-int stralloc_copy(stralloc *sato,stralloc *safrom)
++int stralloc_copy(stralloc *sato,const stralloc *safrom)
+ {
+   return stralloc_copyb(sato,safrom->s,safrom->len);
+ }
+--- a/taia.h
++++ b/taia.h
+@@ -19,7 +19,7 @@ extern double taia_frac(struct taia *);
+ extern void taia_add(struct taia *,struct taia *,struct taia *);
+ extern void taia_sub(struct taia *,struct taia *,struct taia *);
+ extern void taia_half(struct taia *,struct taia *);
+-extern int taia_less(struct taia *,struct taia *);
++extern int taia_less(const struct taia *,const struct taia *);
+ 
+ #define TAIA_PACK 16
+ extern void taia_pack(char *,struct taia *);
+--- a/taia_less.c
++++ b/taia_less.c
+@@ -2,7 +2,7 @@
+ 
+ /* XXX: breaks tai encapsulation */
+ 
+-int taia_less(struct taia *t,struct taia *u)
++int taia_less(const struct taia *t,const struct taia *u)
+ {
+   if (t->sec.x < u->sec.x) return 1;
+   if (t->sec.x > u->sec.x) return 0;
+--- a/uint32.h1
++++ b/uint32.h1
+@@ -5,7 +5,7 @@ typedef unsigned int uint32;
+ 
+ extern void uint32_pack(char *,uint32);
+ extern void uint32_pack_big(char *,uint32);
+-extern void uint32_unpack(char *,uint32 *);
+-extern void uint32_unpack_big(char *,uint32 *);
++extern void uint32_unpack(const char *,uint32 *);
++extern void uint32_unpack_big(const char *,uint32 *);
+ 
+ #endif
+--- a/uint32.h2
++++ b/uint32.h2
+@@ -5,7 +5,7 @@ typedef unsigned long uint32;
+ 
+ extern void uint32_pack(char *,uint32);
+ extern void uint32_pack_big(char *,uint32);
+-extern void uint32_unpack(char *,uint32 *);
+-extern void uint32_unpack_big(char *,uint32 *);
++extern void uint32_unpack(const char *,uint32 *);
++extern void uint32_unpack_big(const char *,uint32 *);
+ 
+ #endif
+--- a/uint32_unpack.c
++++ b/uint32_unpack.c
+@@ -1,6 +1,6 @@
+ #include "uint32.h"
+ 
+-void uint32_unpack(char s[4],uint32 *u)
++void uint32_unpack(const char s[4],uint32 *u)
+ {
+   uint32 result;
+ 
+@@ -15,7 +15,7 @@ void uint32_unpack(char s[4],uint32 *u)
+   *u = result;
+ }
+ 
+-void uint32_unpack_big(char s[4],uint32 *u)
++void uint32_unpack_big(const char s[4],uint32 *u)
+ {
+   uint32 result;
+ 

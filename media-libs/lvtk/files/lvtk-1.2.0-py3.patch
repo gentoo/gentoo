@@ -1,0 +1,13 @@
+diff --git a/wscript b/wscript
+index e69c0e0..08ba66f 100644
+--- a/wscript
++++ b/wscript
+@@ -155,7 +155,7 @@ def build(bld):
+ 
+ def release_tag(ctx):
+     tag = git.tag_version(VERSION, "Release: v" + VERSION , "lvtk-")
+-    if tag : print "Git Tag Created: " + tag
++    if tag : print("Git Tag Created: " + tag)
+ 
+ def dist(ctx):
+     z=ctx.options.ziptype

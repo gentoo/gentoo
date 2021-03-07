@@ -1,0 +1,11 @@
+--- a/doc/conf.py	2021-02-08 20:09:27.000629537 +0100
++++ b/doc/conf.py	2021-02-08 20:10:04.653994573 +0100
+@@ -34,6 +34,8 @@
+     'why3'
+ ]
+ 
++bibtex_bibfiles = ['manual.bib']
++
+ # Add any paths that contain templates here, relative to this directory.
+ templates_path = ['_templates']
+ 

@@ -1,0 +1,17 @@
+--- src/foecommand.h.old	2006-04-21 20:06:35.000000000 +0200
++++ src/foecommand.h	2006-04-21 20:06:57.000000000 +0200
+@@ -36,10 +36,10 @@
+   
+   virtual void doChangeDirection(double d);
+   virtual void doChangeSpeed(double s);
+-  virtual void FoeCommand::doAccelX(double ax);
+-  virtual void FoeCommand::doAccelY(double ay);
+-  virtual double FoeCommand::getBulletSpeedX();
+-  virtual double FoeCommand::getBulletSpeedY();
++  virtual void doAccelX(double ax);
++  virtual void doAccelY(double ay);
++  virtual double getBulletSpeedX();
++  virtual double getBulletSpeedY();
+   
+  private:
+   struct foe *foe;

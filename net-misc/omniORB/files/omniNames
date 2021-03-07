@@ -1,0 +1,21 @@
+#!/sbin/openrc-run
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting omniNames"
+	start-stop-daemon --start --background --make-pidfile --pidfile /var/run/omniNames.pid \
+		--exec /usr/bin/omniNames -- -start -always -logdir /var/log/omniORB \
+		-errlog /var/log/omniORB/omniORB.errors
+	eend $? "Error starting omniNames."
+}
+
+stop() {
+	ebegin "Stopping omniNames"
+	start-stop-daemon --stop --pidfile /var/run/omniNames.pid
+	eend $? "Error stopping omniNames."
+}

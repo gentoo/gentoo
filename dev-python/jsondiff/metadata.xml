@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zmedico@gentoo.org</email>
+		<name>Zac Medico</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">xlwings/jsondiff</remote-id>
+		<remote-id type="pypi">jsondiff</remote-id>
+		<bugs-to>https://github.com/xlwings/jsondiff/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

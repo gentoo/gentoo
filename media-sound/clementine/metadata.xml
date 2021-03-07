@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>polynomial-c@gentoo.org</email>
+		<name>Lars Wendler</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>sound@gentoo.org</email>
+		<name>Gentoo Sound project</name>
+	</maintainer>
+	<use>
+		<flag name="box">Enable filesharing via Box.com</flag>
+		<flag name="dropbox">Enable Dropbox support</flag>
+		<flag name="googledrive">Enable Google Drive support</flag>
+		<flag name="lastfm">Use liblastfm for fetching song info, scrobbling and radio streams</flag>
+		<flag name="moodbar">Enable moodbar support</flag>
+		<flag name="projectm">Build with ProjectM visualization</flag>
+		<flag name="seafile">Enable support for seafile: a file sync service</flag>
+		<flag name="skydrive">Enable Skydrive support</flag>
+		<flag name="wiimote">Enable support for Wii remote</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">clementine-player/Clementine</remote-id>
+	</upstream>
+</pkgmetadata>

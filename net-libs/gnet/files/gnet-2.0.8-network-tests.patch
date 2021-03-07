@@ -1,0 +1,32 @@
+From 576f6de12bf4a509882af0bbe4727e27e8bc9373 Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Tue, 16 Nov 2010 14:18:08 +0100
+Subject: [PATCH] Do not build network related tests if not enabled
+
+---
+ tests/check/gnet/gnetconn.c |    2 ++
+ 1 files changed, 2 insertions(+), 0 deletions(-)
+
+diff --git a/tests/check/gnet/gnetconn.c b/tests/check/gnet/gnetconn.c
+index 739b467..0558e28 100644
+--- a/tests/check/gnet/gnetconn.c
++++ b/tests/check/gnet/gnetconn.c
+@@ -25,6 +25,7 @@
+ 
+ #include <string.h>
+ 
++#ifdef GNET_ENABLE_NETWORK_TESTS
+ static void
+ conn_fail_cb (GConn * conn, GConnEvent * event, gpointer data)
+ {
+@@ -243,6 +244,7 @@ GNET_START_TEST (test_conn_new_socket)
+   g_main_loop_unref (loop);
+ }
+ GNET_END_TEST;
++#endif
+ 
+ static Suite *
+ gnetconn_suite (void)
+-- 
+1.7.3.1
+

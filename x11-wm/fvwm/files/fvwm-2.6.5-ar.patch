@@ -1,0 +1,35 @@
+--- configure.ac	2012-04-20 12:58:29.000000000 +0200
++++ configure_new.ac	2013-07-21 18:26:17.513904607 +0200
+@@ -209,6 +209,10 @@
+ # optional libraries.
+ AC_PROG_CC
+ AC_PROG_CPP
++AN_MAKEVAR([AR], [AC_PROG_AR])
++AN_PROGRAM([ar], [AC_PROG_AR])
++AC_DEFUN([AC_PROG_AR], [AC_CHECK_TOOL(AR, ar, :)])
++AC_PROG_AR
+ 
+ # added -Wall for gcc, what about for others?
+ if test "x$GCC" = "xyes"; then
+--- libs/Makefile.in	2012-04-20 13:03:55.000000000 +0200
++++ libs/Makefile_new.in	2013-07-21 18:27:17.443992505 +0200
+@@ -48,7 +48,7 @@
+ CONFIG_CLEAN_FILES =
+ CONFIG_CLEAN_VPATH_FILES =
+ LIBRARIES = $(noinst_LIBRARIES)
+-AR = ar
++AR = @AR@
+ ARFLAGS = cru
+ libfvwm_a_AR = $(AR) $(ARFLAGS)
+ libfvwm_a_DEPENDENCIES = @LIBOBJS@ @ALLOCA@
+--- modules/FvwmScript/Widgets/Makefile.in	2012-04-20 13:03:56.000000000 +0200
++++ modules/FvwmScript/Widgets/Makefile_new.in	2013-07-21 18:27:23.844001892 +0200
+@@ -46,7 +46,7 @@
+ CONFIG_CLEAN_FILES =
+ CONFIG_CLEAN_VPATH_FILES =
+ LIBRARIES = $(noinst_LIBRARIES)
+-AR = ar
++AR = @AR@
+ ARFLAGS = cru
+ libWidgets_a_AR = $(AR) $(ARFLAGS)
+ libWidgets_a_LIBADD =

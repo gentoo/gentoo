@@ -1,0 +1,24 @@
+diff -Nru werken.xpath.orig/src/com/werken/xpath/impl/Op.java werken.xpath/src/com/werken/xpath/impl/Op.java
+--- werken.xpath.orig/src/com/werken/xpath/impl/Op.java	2000-08-27 03:16:03.000000000 +0300
++++ werken.xpath/src/com/werken/xpath/impl/Op.java	2003-03-02 01:44:52.000000000 +0200
+@@ -19,7 +19,7 @@
+   public final static Op GT        = new Op(">");
+   public final static Op LT_EQUAL  = new Op("<=");
+   public final static Op GT_EQUAL  = new Op(">=");
+-  public final static Op MOD       = new Op("%");;
++  public final static Op MOD       = new Op("%");
+   public final static Op DIV       = new Op("/");
+   public final static Op PLUS      = new Op("+");
+   public final static Op MINUS     = new Op("-");
+diff -Nru werken.xpath.orig/src/com/werken/xpath/impl/UnAbbrStep.java werken.xpath/src/com/werken/xpath/impl/UnAbbrStep.java
+--- werken.xpath.orig/src/com/werken/xpath/impl/UnAbbrStep.java	2000-10-31 22:20:56.000000000 +0200
++++ werken.xpath/src/com/werken/xpath/impl/UnAbbrStep.java	2003-03-02 01:45:04.000000000 +0200
+@@ -175,7 +175,7 @@
+       }
+     }
+ 
+-    return aggregateResults;;
++    return aggregateResults;
+   }
+ 
+   private List applyPredicates(List nodeSet,

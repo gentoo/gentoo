@@ -1,0 +1,210 @@
+From 6cb6d9b328195e11c1f168f6e4b915b522c7089f Mon Sep 17 00:00:00 2001
+From: Stefan Gerlach <stefan.gerlach@uni-konstanz.de>
+Date: Wed, 15 May 2019 23:16:09 +0200
+Subject: [PATCH 1/3] do not output to standard streams (cout,
+ cerr) by default
+
+it might be better to hide all such usage behind #ifdefs,
+since the streams might not belong to the shared library
+
+provided by Ivan Krylov (Ropj)
+---
+ OriginAnyParser.cpp | 11 +++++------
+ OriginAnyParser.h   |  2 +-
+ OriginFile.cpp      |  2 --
+ 3 files changed, 6 insertions(+), 9 deletions(-)
+
+diff --git a/OriginAnyParser.cpp b/OriginAnyParser.cpp
+index d45026b..ff7b8f7 100644
+--- a/OriginAnyParser.cpp
++++ b/OriginAnyParser.cpp
+@@ -756,7 +756,7 @@ void OriginAnyParser::readProjectTree() {
+ 
+ 	// log info on project tree
+ #ifdef GENERATE_CODE_FOR_LOG
+-	outputProjectTree();
++	outputProjectTree(cout);
+ #endif // GENERATE_CODE_FOR_LOG
+ 
+ 	return;
+@@ -2835,7 +2835,6 @@ void OriginAnyParser::getColorMap(ColorMap& cmap, const string& cmapdata, unsign
+ 	// check we have enough data to fill the map
+ 	unsigned int minDataSize = cmoffset + 0x114 + (colorMapSize+2)*0x38;
+ 	if (minDataSize > cmapdatasz) {
+-		cerr << "WARNING: Too few data while getting ColorMap. Needed: at least " << minDataSize << " bytes. Have: " << cmapdatasz << " bytes." << endl;
+ 		LOG_PRINT(logfile, "WARNING: Too few data while getting ColorMap. Needed: at least %d bytes. Have: %d bytes.\n", minDataSize, cmapdatasz)
+ 		return;
+ 	}
+@@ -2988,15 +2987,15 @@ void OriginAnyParser::getProjectFolderProperties(tree<ProjectNode>::iterator cur
+ 	(*current_folder).modificationDate = doubleToPosixTime(modificationDate);
+ }
+ 
+-void OriginAnyParser::outputProjectTree() {
++void OriginAnyParser::outputProjectTree(std::ostream & out) {
+ 	size_t windowsCount = spreadSheets.size()+matrixes.size()+excels.size()+graphs.size()+notes.size();
+ 
+-	cout << "Project has " << windowsCount << " windows." << endl;
+-	cout << "Origin project Tree" << endl;
++	out << "Project has " << windowsCount << " windows." << endl;
++	out << "Origin project Tree" << endl;
+ 
+ 	char cdsz[21];
+ 	for (tree<ProjectNode>::iterator it = projectTree.begin(projectTree.begin()); it != projectTree.end(projectTree.begin()); ++it) {
+ 		strftime(cdsz, sizeof(cdsz), "%F %T", gmtime(&(*it).creationDate));
+-		cout <<  string(projectTree.depth(it) - 1, ' ') <<  (*it).name.c_str() << "\t" << cdsz << endl;
++		out <<  string(projectTree.depth(it) - 1, ' ') <<  (*it).name.c_str() << "\t" << cdsz << endl;
+ 	}
+ }
+diff --git a/OriginAnyParser.h b/OriginAnyParser.h
+index ed62bbb..bd7c1ae 100644
+--- a/OriginAnyParser.h
++++ b/OriginAnyParser.h
+@@ -68,7 +68,7 @@ protected:
+ 	void getZcolorsMap(ColorMap&, const string&, unsigned int);
+ 	void getProjectLeafProperties(tree<ProjectNode>::iterator, const string&, unsigned int);
+ 	void getProjectFolderProperties(tree<ProjectNode>::iterator, const string&, unsigned int);
+-	void outputProjectTree();
++	void outputProjectTree(std::ostream &);
+ 
+ 	inline time_t doubleToPosixTime(double jdt)
+ 	{
+diff --git a/OriginFile.cpp b/OriginFile.cpp
+index 5ac8e22..dba050f 100644
+--- a/OriginFile.cpp
++++ b/OriginFile.cpp
+@@ -39,7 +39,6 @@ OriginFile::OriginFile(const string& fileName)
+ 
+ 	if (!file.is_open())
+ 	{
+-		cerr << endl << "liborigin: " << strerror(errno) << ": " << fileName.c_str() << endl;
+ 		ioError = errno;
+ 		return;
+ 	}
+@@ -49,7 +48,6 @@ OriginFile::OriginFile(const string& fileName)
+ 	logfile = fopen("./opjfile.log", "w");
+ 	if (logfile == nullptr)
+ 	{
+-		cerr << endl <<  "liborigin: " << strerror(errno) << ": opjfile.log" << endl;
+ 		ioError = errno;
+ 		return;
+ 	}
+-- 
+2.26.2
+
+
+From 588bbc357cd34b9d353470ed6c0632b6f00805f5 Mon Sep 17 00:00:00 2001
+From: Stefan Gerlach <stefan.gerlach@uni-konstanz.de>
+Date: Wed, 15 May 2019 23:28:46 +0200
+Subject: [PATCH 2/3] fix bugs found by UBSan
+
+ - check values before casting to enum Attach
+ - default-initialize sensitive struct elements
+
+provided by Ivan Krylov (Ropj)
+---
+ OriginAnyParser.cpp | 1 +
+ OriginObj.h         | 5 ++++-
+ README              | 3 +++
+ 3 files changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/OriginAnyParser.cpp b/OriginAnyParser.cpp
+index ff7b8f7..9f9731c 100644
+--- a/OriginAnyParser.cpp
++++ b/OriginAnyParser.cpp
+@@ -1543,6 +1543,7 @@ void OriginAnyParser::getAnnotationProperties(const string& anhd, unsigned int a
+ 		GET_SHORT(stmp, r.bottom)
+ 
+ 		unsigned char attach = anhd[0x28];
++		if (attach >= (unsigned char)Attach::End_) attach = Attach::Frame;
+ 		unsigned char border = anhd[0x29];
+ 
+ 		Color color = getColor(anhd.substr(0x33,4));
+diff --git a/OriginObj.h b/OriginObj.h
+index 3a9f719..aeeeb6b 100644
+--- a/OriginObj.h
++++ b/OriginObj.h
+@@ -67,7 +67,7 @@ namespace Origin
+ 	enum DayOfWeekFormat {DAY_DDD = 0, DAY_DDDD = 1, DAY_LETTER = 2};
+ 
+ 	enum NumericDisplayType {DefaultDecimalDigits = 0, DecimalPlaces = 1, SignificantDigits = 2};
+-	enum Attach {Frame = 0, Page = 1, Scale = 2};
++	enum Attach {Frame = 0, Page = 1, Scale = 2, End_};
+ 	enum BorderType {BlackLine = 0, Shadow = 1, DarkMarble = 2, WhiteOut = 3, BlackOut = 4, None = -1};
+ 	enum FillPattern {NoFill = 0, BDiagDense = 1, BDiagMedium = 2, BDiagSparse = 3, FDiagDense = 4, FDiagMedium = 5, FDiagSparse = 6,
+ 		DiagCrossDense = 7, DiagCrossMedium = 8, DiagCrossSparse = 9, HorizontalDense = 10, HorizontalMedium = 11, HorizontalSparse = 12,
+@@ -345,6 +345,7 @@ namespace Origin
+ 		,	width(8)
+ 		,	index(_index)
+ 		,	view(DataView)
++		,	colorMap()
+ 		{coordinates.push_back(10.0);coordinates.push_back(10.0);coordinates.push_back(1.0);coordinates.push_back(1.0);};
+ 	};
+ 
+@@ -895,9 +896,11 @@ namespace Origin
+ 		GraphLayer()
+ 		:	backgroundColor({Color::Regular, {Color::White}})
+ 		,	borderType(BlackLine)
++		,	xAxis(), yAxis(), zAxis()
+ 		,	histogramBin(0.5)
+ 		,	histogramBegin(0.0)
+ 		,	histogramEnd(10.0)
++		,	colorMap()
+ 		,	xAngle(0)
+ 		,	yAngle(0)
+ 		,	zAngle(0)
+diff --git a/README b/README
+index 1dd56ef..598eacc 100644
+--- a/README
++++ b/README
+@@ -7,6 +7,9 @@ It is based on the code at
+ 	http://sourceforge.net/projects/liborigin
+ 	http://soft.proindependent.com/liborigin2
+ 
++Additionally, some fixes were applied to silence UBSan warnings caused by
++uninitialised POD struct members.
++
+ AUTHORS:  Knut Franke, Miquel Garriga, Stefan Gerlach, Alex Kargovsky, Russell Standish, Ion Vasilief
+ 
+ DEPENDENCIES: tree.hh (included) http://tree.phi-sci.com/
+-- 
+2.26.2
+
+
+From 88b4de31e1860b8b5de6e3eea4a32e92f2e58c71 Mon Sep 17 00:00:00 2001
+From: Stefan Gerlach <stefan.gerlach@uni-konstanz.de>
+Date: Wed, 15 May 2019 23:32:50 +0200
+Subject: [PATCH 3/3] readProjectTree: provide root node to append
+ to
+
+append_child() is not supposed to work on an empty tree,
+and I couldn't find any initialization before its use.
+All inserted nodes seemed to end up below tree_node::feet
+(or something) and were not cleaned up by the destructor.
+
+Using insert() to create a dummy node for others to be
+children of fixes the leak.
+
+provided by Ivan Krylov (Ropj)
+---
+ OriginAnyParser.cpp | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/OriginAnyParser.cpp b/OriginAnyParser.cpp
+index 9f9731c..4a79423 100644
+--- a/OriginAnyParser.cpp
++++ b/OriginAnyParser.cpp
+@@ -743,7 +743,10 @@ void OriginAnyParser::readProjectTree() {
+ 	string pte_pre2 = readObjectAsString(pte_pre2_size);
+ 
+ 	// root element and children
+-	unsigned int rootfolder = readFolderTree(projectTree.begin(), pte_depth);
++	unsigned int rootfolder = readFolderTree(
++		projectTree.insert(projectTree.begin(), ProjectNode("", ProjectNode::Folder)),
++		pte_depth
++	);
+ 	if (rootfolder > 0) {
+ 		LOG_PRINT(logfile, "Number of files at root: %d\n", rootfolder)
+ 	}
+-- 
+2.26.2
+

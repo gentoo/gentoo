@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+	Firebird is a relational database offering many ANSI SQL standard 
+	features that runs on Linux, Windows, and a variety of Unix platforms.
+	Firebird offers excellent concurrency, high performance, and powerful
+	language support for stored procedures and triggers. It has been used
+	in production systems, under a variety of names, since 1981.
+	</longdescription>
+	<use>
+		<flag name="server">Install the server components of Firebird, not just the client</flag>
+		<flag name="xinetd">Install ClassicServer</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">firebird</remote-id>
+	</upstream>
+	<maintainer type="project">
+		<email>office@gentoo.org</email>
+	</maintainer>
+</pkgmetadata>

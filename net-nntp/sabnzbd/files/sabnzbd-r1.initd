@@ -1,0 +1,71 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+PIDFILE="/run/sabnzbd/sabnzbd.pid"
+
+depend() {
+	use dns
+}
+
+get_var() {
+	grep -P -o -m 1 "(?<=^${1} = ).*" "${SABNZBD_CONFIGFILE}" || echo 0
+}
+
+start() {
+	ebegin "Starting SABnzbd"
+
+	checkpath -q -d -o ${SABNZBD_USER}:${SABNZBD_GROUP} -m 0770 "$(dirname "${PIDFILE}")"
+
+	start-stop-daemon \
+		--quiet \
+		--start \
+		--user ${SABNZBD_USER} \
+		--group ${SABNZBD_GROUP} \
+		--pidfile "${PIDFILE}" \
+		--wait 1000 \
+		--exec /usr/share/sabnzbd/SABnzbd.py \
+		-- \
+		--config-file "${SABNZBD_CONFIGFILE}" \
+		--logging "${SABNZBD_LOGGING}" \
+		--daemon \
+		--pidfile "${PIDFILE}"
+
+	eend $?
+}
+
+stop() {
+	local protocol="http"
+	local host="$(get_var "host")"
+	local port="$(get_var "port")"
+
+	if [ $(get_var "enable_https") -eq 1 ]; then
+		protocol="https"
+		port="$(get_var "https_port")"
+	fi
+
+	case "${host}" in
+		*:*) host="[${host}]" ;;
+	esac
+
+	local url="${protocol}://${host}:${port}/sabnzbd/api?mode=shutdown"
+
+	if [ $(get_var "disable_api_key") -eq 0 ]; then
+		url="${url}&apikey=$(get_var "api_key")"
+	fi
+
+	local signals="TERM/1/KILL/1"
+
+	ebegin "Stopping SABnzbd"
+
+	if [ "$(wget -o /dev/null -t 1 -O - -T 10 "${url}")" = "ok" ]; then
+		signals="NULL/5/${signals}"
+	fi
+
+	start-stop-daemon \
+		--stop \
+		--pidfile "${PIDFILE}" \
+		--retry "${signals}"
+
+	eend $?
+}

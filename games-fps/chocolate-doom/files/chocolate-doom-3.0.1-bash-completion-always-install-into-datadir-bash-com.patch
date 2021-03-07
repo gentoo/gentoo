@@ -1,0 +1,61 @@
+From b9d4c04c840321f5ec70787d8afb1256766aaa01 Mon Sep 17 00:00:00 2001
+From: Mike Swanson <mikeonthecomputer@gmail.com>
+Date: Tue, 6 Aug 2019 15:40:46 -0700
+Subject: [PATCH] bash-completion: always install into $datadir/bash-completion
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The bash-completion package by default searches in $HOME/.local and
+/usr/local first before /usr, and we should respect local installation
+locations instead of always trying to write to a path that is
+accessible only to root and could conflict with a package manager.
+
+This removes a toggle in the configure script, which neither actually
+worked properly (setting DIR didn’t work) and I believe did the wrong
+thing by default anyway.
+---
+ configure.ac                    | 9 ---------
+ man/bash-completion/Makefile.am | 2 +-
+ 2 files changed, 1 insertion(+), 10 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index f12eae68..5ec9dfbf 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -87,13 +87,6 @@ AC_CHECK_DECLS([strcasecmp, strncasecmp], [], [], [[#include <strings.h>]])
+ AC_CHECK_LIB(i386, i386_iopl)
+ AC_CHECK_LIB(amd64, amd64_iopl)
+ 
+-AC_ARG_WITH([bashcompletiondir],
+-    AS_HELP_STRING([--with-bashcompletiondir=DIR], [Bash completion directory]),
+-    [],
+-    [AS_IF([$($PKG_CONFIG --exists bash-completion 2> /dev/null)],
+-        [bashcompletiondir=$($PKG_CONFIG --variable=completionsdir bash-completion)],
+-	[bashcompletiondir=${datadir}/bash-completion/completions])])
+-
+ case "$host" in
+   *-*-mingw* | *-*-cygwin* | *-*-msvc* )
+     AC_CHECK_TOOL(WINDRES, windres, )
+@@ -153,8 +146,6 @@ AC_SUBST(PACKAGE_URL)
+ AC_SUBST(PACKAGE_RDNS)
+ AC_SUBST(PACKAGE_ISSUES)
+ 
+-AC_SUBST(bashcompletiondir)
+-
+ dnl Shut up the datarootdir warnings.
+ AC_DEFUN([AC_DATAROOTDIR_CHECKED])
+ 
+diff --git a/man/bash-completion/Makefile.am b/man/bash-completion/Makefile.am
+index bb706fc7..9c1400f1 100644
+--- a/man/bash-completion/Makefile.am
++++ b/man/bash-completion/Makefile.am
+@@ -1,4 +1,4 @@
+-bashcompletiondir=@bashcompletiondir@
++bashcompletiondir=@datadir@/bash-completion/completions
+ 
+ BASH_COMPLETION_TEMPLATES = \
+     doom.template \
+-- 
+2.26.2
+

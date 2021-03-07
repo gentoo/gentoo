@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		A @Scientific@ number is an arbitrary-precision floating-point number
+		represented using scientific notation.
+
+		A scientific number with 'coefficient' @c@ and
+		'base10Exponent' @e@ corresponds to the
+		'Fractional' number: @'fromInteger' c * 10 '^^' e@
+
+		Its primary use-case is to serve as the target of
+		parsing floating point numbers. Since the textual
+		representation of floating point numbers use
+		scientific notation they can be efficiently
+		parsed to a @Scientific@ number.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">basvandijk/scientific</remote-id>
+	</upstream>
+</pkgmetadata>

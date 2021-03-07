@@ -1,0 +1,49 @@
+--- shake-fs-0.999-orig/executive.c
++++ shake-fs-0.999/executive.c
+@@ -214,12 +214,21 @@ release (struct accused *a, struct law *
+   assert (a->fd >= 0);
+   /* Restores mtime */
+   {
++#ifdef __UCLIBC__
++    struct timespec tv[2];
++    tv[0].tv_sec = a->atime;
++    tv[0].tv_nsec = 0;
++    tv[1].tv_sec = a->mtime;
++    tv[1].tv_nsec = 0;
++    futimens (a->fd, tv);
++#else
+     struct timeval tv[2];
+     tv[0].tv_sec = a->atime;
+     tv[0].tv_usec = 0;
+     tv[1].tv_sec = a->mtime;
+     tv[1].tv_usec = 0;
+     futimes (a->fd, tv);
++#endif
+   }
+   if (has_been_unlocked (a, l))
+     error (0, 0, "%s: concurent accesses", a->name);
+--- shake-fs-0.999-orig/linux.h
++++ shake-fs-0.999/linux.h
+@@ -32,7 +32,6 @@
+ /* Called once, perform OS-specific tasks.
+  */
+ int os_specific_setup (const char *tempfile);
+-
+ 
+ 
+ /* Get a write lock on the file.
+@@ -54,12 +53,13 @@ int readlock_to_writelock (int fd);
+ /* Return true if fd is locked, else false
+  */
+ bool is_locked (int fd);
+-
+ 
+ 
++#ifndef __UCLIBC__
+ /* Declares the glibc function
+  */
+ int futimes (int fd, const struct timeval tv[2]);
++#endif
+ 
+ /* Set the shake_ptime field and ctime of the file to the actual date.
+  */

@@ -1,0 +1,117 @@
+--- a/configure.in	2014/05/06 14:13:59	1.134
++++ b/configure.in	2018/01/01 23:06:56	1.135
+@@ -382,62 +382,63 @@
+     fi
+ 
+ 
+-    GNOMEUI2_MODULE="libgnomeui-2.0"
+-    GNOMEUI2_VERSION="2.0.0"
+-
+-
+-    if `$PKGCFG --exists  $GNOMEUI2_MODULE >= $GNOMEUI2_VERSION`
+-    then	
+-	GTK_MODULES="$GTK_MODULES $GNOMEUI2_MODULE" 
+-	GTK_ERR=1
+-    fi
+-
+-    libgnomeui_CFLAGS=`$PKGCFG --cflags $GNOMEUI2_MODULE `
+-    libgnomeui_LIBS=`$PKGCFG --libs $GNOMEUI2_MODULE `
+-
+-
+-    AC_SUBST(libgnomeui_CFLAGS)
+-    AC_SUBST(libgnomeui_LIBS)
+-
+     PIXMAP_DIR=pixmap
+ 
+-
+-    if test x$buildgapplet = xtrue ; 
++    if test x$buildgapplet = xtrue; 
+     then   
+-    
+-      if test x$GTKCONF = x ; 
+-      then
+-  	echo " **************************************** "
+-  	echo " * WARNING, missing program: gtk-config *"
+-  	echo " **************************************** "
+-  	echo ""
+-  	echo "     On Debian based distros, install sth like: libgtk2.0-dev"
+-  	echo ""
+-  	echo "However, I will try my best to continue without gtk-config. "
+-  	echo "Will not be able to check for gtk/gnome header files properly"
+-  	echo "On most platforms this implies no problem"
+-  	echo ""
+-      else	
+-        GTK_PREFIX=`$GTKCONF --prefix`
+-        GTK_INC_PATH=$GTK_PREFIX/include/$GNOMEUI2_MODULE/
+-        GNOME_H_FILE=$GTK_INC_PATH/gnome.h
+-  
+-        ls -l $GNOME_H_FILE 2>/dev/null >/dev/null
+-
+-        MISSING_GNOME_H=$?
+ 
+-        if test x$MISSING_GNOME_H != x0  ; 
++        GNOMEUI2_MODULE="libgnomeui-2.0"
++        GNOMEUI2_VERSION="2.0.0"
++        
++        
++        if `$PKGCFG --exists  $GNOMEUI2_MODULE >= $GNOMEUI2_VERSION`
++        then	
++	    GTK_MODULES="$GTK_MODULES $GNOMEUI2_MODULE" 
++	    GTK_ERR=1
++        fi
++        
++        libgnomeui_CFLAGS=`$PKGCFG --cflags $GNOMEUI2_MODULE `
++        libgnomeui_LIBS=`$PKGCFG --libs $GNOMEUI2_MODULE `
++
++        
++        AC_SUBST(libgnomeui_CFLAGS)
++        AC_SUBST(libgnomeui_LIBS)
++        
++        
++        
++        if test x$GTKCONF = x ; 
+         then
+-  	  echo "Missing GNOME header file (gnome.h), you need to install development packages"
+-	  echo "On a Debian based distro system do:"
+-  	  echo ""
+-  	  echo "     sudo apt-get install libgnome2-dev"
+-  	  echo ""
+-echo  	  exit 1
+-        fi	
+-      fi
+-  
+-  fi
++  	    echo " **************************************** "
++  	    echo " * WARNING, missing program: gtk-config *"
++  	    echo " **************************************** "
++  	    echo ""
++  	    echo "     On Debian based distros, install sth like: libgtk2.0-dev"
++  	    echo ""
++  	    echo "However, I will try my best to continue without gtk-config. "
++  	    echo "Will not be able to check for gtk/gnome header files properly"
++  	    echo "On most platforms this implies no problem"
++  	    echo ""
++        else	
++            GTK_PREFIX=`$GTKCONF --prefix`
++            GTK_INC_PATH=$GTK_PREFIX/include/$GNOMEUI2_MODULE/
++            GNOME_H_FILE=$GTK_INC_PATH/gnome.h
++            
++            ls -l $GNOME_H_FILE 2>/dev/null >/dev/null
++            
++            MISSING_GNOME_H=$?
++            
++            if test x$MISSING_GNOME_H != x0  ; 
++            then
++  	        echo "Missing GNOME header file (gnome.h), you need to install development packages"
++	        echo "On a Debian based distro system do:"
++  	        echo ""
++  	        echo "     sudo apt-get install libgnome2-dev"
++  	        echo ""
++                echo  	  exit 1
++            fi	
++        fi
++        
++    fi
+ fi
+ 
+ 

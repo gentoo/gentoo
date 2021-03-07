@@ -1,0 +1,12 @@
+diff -Naur emilpro-3/CMakeLists.txt emilpro-3-cflags/CMakeLists.txt
+--- emilpro-3/CMakeLists.txt	2013-12-28 04:22:34.000000000 -0500
++++ emilpro-3-cflags/CMakeLists.txt	2014-03-18 17:59:47.534542384 -0400
+@@ -29,7 +29,7 @@
+ pkg_check_modules(LIBXMLPP libxml++-2.6)
+ pkg_check_modules(LIBCURL libcurl)
+ 
+-set (CMAKE_CXX_FLAGS "-std=c++0x -Wall -D_GLIBCXX_USE_NANOSLEEP -DPACKAGE=emilpro -DPACKAGE_VERSION=1")
++set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x -Wall -D_GLIBCXX_USE_NANOSLEEP -DPACKAGE=emilpro -DPACKAGE_VERSION=1")
+ LINK_DIRECTORIES(${CMAKE_BINARY_DIR}/install-binutils/lib ${CMAKE_BINARY_DIR}/install-binutils/lib64)
+ 
+ if (HAVE_BFD_MULTIARCH)

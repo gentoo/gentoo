@@ -1,0 +1,11 @@
+--- xdg/ggobi.desktop.orig	2013-02-24 22:20:02.616872402 -0800
++++ xdg/ggobi.desktop	2013-02-24 22:20:13.293924862 -0800
+@@ -6,6 +6,6 @@
+ Comment=Multivariate interactive graphics for exploratory data analysis
+ TryExec=ggobi
+ Exec=ggobi
+-Icon=ggobi.png
+-Categories=Graphics;2DGraphics
++Icon=ggobi
++Categories=Graphics;2DGraphics;
+ MimeType=text/comma-separated-values;text/csv;application/csv;

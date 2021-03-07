@@ -1,0 +1,216 @@
+diff -rupN old/percona-toolkit-2.2.7/bin/pt-archiver new/percona-toolkit-2.2.7/bin/pt-archiver
+--- old/percona-toolkit-2.2.7/bin/pt-archiver	2014-02-20 08:20:28.000000000 +0100
++++ new/percona-toolkit-2.2.7/bin/pt-archiver	2014-05-21 18:13:49.148631547 +0200
+@@ -7465,8 +7465,6 @@ Show version and exit.
+ 
+ =item --[no]version-check
+ 
+-default: yes
+-
+ Check for the latest version of Percona Toolkit, MySQL, and other programs.
+ 
+ This is a standard "check for updates automatically" feature, with two
+diff -rupN old/percona-toolkit-2.2.7/bin/pt-config-diff new/percona-toolkit-2.2.7/bin/pt-config-diff
+--- old/percona-toolkit-2.2.7/bin/pt-config-diff	2014-02-20 08:20:28.000000000 +0100
++++ new/percona-toolkit-2.2.7/bin/pt-config-diff	2014-05-21 18:13:38.012402960 +0200
+@@ -5563,8 +5563,6 @@ Show version and exit.
+ 
+ =item --[no]version-check
+ 
+-default: yes
+-
+ Check for the latest version of Percona Toolkit, MySQL, and other programs.
+ 
+ This is a standard "check for updates automatically" feature, with two
+diff -rupN old/percona-toolkit-2.2.7/bin/pt-deadlock-logger new/percona-toolkit-2.2.7/bin/pt-deadlock-logger
+--- old/percona-toolkit-2.2.7/bin/pt-deadlock-logger	2014-02-20 08:20:28.000000000 +0100
++++ new/percona-toolkit-2.2.7/bin/pt-deadlock-logger	2014-05-21 18:11:18.923569703 +0200
+@@ -5332,8 +5332,6 @@ Show version and exit.
+ 
+ =item --[no]version-check
+ 
+-default: yes
+-
+ Check for the latest version of Percona Toolkit, MySQL, and other programs.
+ 
+ This is a standard "check for updates automatically" feature, with two
+diff -rupN old/percona-toolkit-2.2.7/bin/pt-diskstats new/percona-toolkit-2.2.7/bin/pt-diskstats
+--- old/percona-toolkit-2.2.7/bin/pt-diskstats	2014-02-20 08:20:28.000000000 +0100
++++ new/percona-toolkit-2.2.7/bin/pt-diskstats	2014-05-21 18:11:04.041268359 +0200
+@@ -5468,8 +5468,6 @@ Show version and exit.
+ 
+ =item --[no]version-check
+ 
+-default: yes
+-
+ Check for the latest version of Percona Toolkit, MySQL, and other programs.
+ 
+ This is a standard "check for updates automatically" feature, with two
+diff -rupN old/percona-toolkit-2.2.7/bin/pt-duplicate-key-checker new/percona-toolkit-2.2.7/bin/pt-duplicate-key-checker
+--- old/percona-toolkit-2.2.7/bin/pt-duplicate-key-checker	2014-02-20 08:20:28.000000000 +0100
++++ new/percona-toolkit-2.2.7/bin/pt-duplicate-key-checker	2014-05-21 18:12:51.993462828 +0200
+@@ -5430,8 +5430,6 @@ Show version and exit.
+ 
+ =item --[no]version-check
+ 
+-default: yes
+-
+ Check for the latest version of Percona Toolkit, MySQL, and other programs.
+ 
+ This is a standard "check for updates automatically" feature, with two
+diff -rupN old/percona-toolkit-2.2.7/bin/pt-find new/percona-toolkit-2.2.7/bin/pt-find
+--- old/percona-toolkit-2.2.7/bin/pt-find	2014-02-20 08:20:28.000000000 +0100
++++ new/percona-toolkit-2.2.7/bin/pt-find	2014-05-21 18:09:46.496705351 +0200
+@@ -4440,8 +4440,6 @@ Show version and exit.
+ 
+ =item --[no]version-check
+ 
+-default: yes
+-
+ Check for the latest version of Percona Toolkit, MySQL, and other programs.
+ 
+ This is a standard "check for updates automatically" feature, with two
+diff -rupN old/percona-toolkit-2.2.7/bin/pt-fk-error-logger new/percona-toolkit-2.2.7/bin/pt-fk-error-logger
+--- old/percona-toolkit-2.2.7/bin/pt-fk-error-logger	2014-02-20 08:20:28.000000000 +0100
++++ new/percona-toolkit-2.2.7/bin/pt-fk-error-logger	2014-05-21 18:12:39.277202489 +0200
+@@ -4335,8 +4335,6 @@ Show version and exit.
+ 
+ =item --[no]version-check
+ 
+-default: yes
+-
+ Check for the latest version of Percona Toolkit, MySQL, and other programs.
+ 
+ This is a standard "check for updates automatically" feature, with two
+diff -rupN old/percona-toolkit-2.2.7/bin/pt-heartbeat new/percona-toolkit-2.2.7/bin/pt-heartbeat
+--- old/percona-toolkit-2.2.7/bin/pt-heartbeat	2014-02-20 08:20:28.000000000 +0100
++++ new/percona-toolkit-2.2.7/bin/pt-heartbeat	2014-05-21 18:09:29.885373476 +0200
+@@ -6019,8 +6019,6 @@ Show version and exit.
+ 
+ =item --[no]version-check
+ 
+-default: yes
+-
+ Check for the latest version of Percona Toolkit, MySQL, and other programs.
+ 
+ This is a standard "check for updates automatically" feature, with two
+diff -rupN old/percona-toolkit-2.2.7/bin/pt-index-usage new/percona-toolkit-2.2.7/bin/pt-index-usage
+--- old/percona-toolkit-2.2.7/bin/pt-index-usage	2014-02-20 08:20:28.000000000 +0100
++++ new/percona-toolkit-2.2.7/bin/pt-index-usage	2014-05-21 18:08:58.139739567 +0200
+@@ -7348,8 +7348,6 @@ Show version and exit.
+ 
+ =item --[no]version-check
+ 
+-default: yes
+-
+ Check for the latest version of Percona Toolkit, MySQL, and other programs.
+ 
+ This is a standard "check for updates automatically" feature, with two
+diff -rupN old/percona-toolkit-2.2.7/bin/pt-kill new/percona-toolkit-2.2.7/bin/pt-kill
+--- old/percona-toolkit-2.2.7/bin/pt-kill	2014-02-20 08:20:28.000000000 +0100
++++ new/percona-toolkit-2.2.7/bin/pt-kill	2014-05-21 18:11:45.264103271 +0200
+@@ -7626,8 +7626,6 @@ Show version and exit.
+ 
+ =item --[no]version-check
+ 
+-default: yes
+-
+ Check for the latest version of Percona Toolkit, MySQL, and other programs.
+ 
+ This is a standard "check for updates automatically" feature, with two
+diff -rupN old/percona-toolkit-2.2.7/bin/pt-online-schema-change new/percona-toolkit-2.2.7/bin/pt-online-schema-change
+--- old/percona-toolkit-2.2.7/bin/pt-online-schema-change	2014-02-20 08:20:28.000000000 +0100
++++ new/percona-toolkit-2.2.7/bin/pt-online-schema-change	2014-05-21 18:13:04.843724091 +0200
+@@ -11298,8 +11298,6 @@ Show version and exit.
+ 
+ =item --[no]version-check
+ 
+-default: yes
+-
+ Check for the latest version of Percona Toolkit, MySQL, and other programs.
+ 
+ This is a standard "check for updates automatically" feature, with two
+diff -rupN old/percona-toolkit-2.2.7/bin/pt-query-digest new/percona-toolkit-2.2.7/bin/pt-query-digest
+--- old/percona-toolkit-2.2.7/bin/pt-query-digest	2014-02-20 08:20:28.000000000 +0100
++++ new/percona-toolkit-2.2.7/bin/pt-query-digest	2014-05-21 18:12:23.127872894 +0200
+@@ -16265,8 +16265,6 @@ Show version and exit.
+ 
+ =item --[no]version-check
+ 
+-default: yes
+-
+ Check for the latest version of Percona Toolkit, MySQL, and other programs.
+ 
+ This is a standard "check for updates automatically" feature, with two
+diff -rupN old/percona-toolkit-2.2.7/bin/pt-slave-delay new/percona-toolkit-2.2.7/bin/pt-slave-delay
+--- old/percona-toolkit-2.2.7/bin/pt-slave-delay	2014-02-20 08:20:28.000000000 +0100
++++ new/percona-toolkit-2.2.7/bin/pt-slave-delay	2014-05-21 18:08:11.586811388 +0200
+@@ -4698,8 +4698,6 @@ Show version and exit.
+ 
+ =item --[no]version-check
+ 
+-default: yes
+-
+ Check for the latest version of Percona Toolkit, MySQL, and other programs.
+ 
+ This is a standard "check for updates automatically" feature, with two
+diff -rupN old/percona-toolkit-2.2.7/bin/pt-slave-restart new/percona-toolkit-2.2.7/bin/pt-slave-restart
+--- old/percona-toolkit-2.2.7/bin/pt-slave-restart	2014-02-20 08:20:28.000000000 +0100
++++ new/percona-toolkit-2.2.7/bin/pt-slave-restart	2014-05-21 18:11:32.423843497 +0200
+@@ -5638,8 +5638,6 @@ Show version and exit.
+ 
+ =item --[no]version-check
+ 
+-default: yes
+-
+ Check for the latest version of Percona Toolkit, MySQL, and other programs.
+ 
+ This is a standard "check for updates automatically" feature, with two
+diff -rupN old/percona-toolkit-2.2.7/bin/pt-table-checksum new/percona-toolkit-2.2.7/bin/pt-table-checksum
+--- old/percona-toolkit-2.2.7/bin/pt-table-checksum	2014-02-20 08:20:28.000000000 +0100
++++ new/percona-toolkit-2.2.7/bin/pt-table-checksum	2014-05-21 18:14:03.377924135 +0200
+@@ -12314,8 +12314,6 @@ Show version and exit.
+ 
+ =item --[no]version-check
+ 
+-default: yes
+-
+ Check for the latest version of Percona Toolkit, MySQL, and other programs.
+ 
+ This is a standard "check for updates automatically" feature, with two
+diff -rupN old/percona-toolkit-2.2.7/bin/pt-table-sync new/percona-toolkit-2.2.7/bin/pt-table-sync
+--- old/percona-toolkit-2.2.7/bin/pt-table-sync	2014-02-20 08:20:28.000000000 +0100
++++ new/percona-toolkit-2.2.7/bin/pt-table-sync	2014-05-21 18:10:18.476350097 +0200
+@@ -12501,8 +12501,6 @@ Show version and exit.
+ 
+ =item --[no]version-check
+ 
+-default: yes
+-
+ Check for the latest version of Percona Toolkit, MySQL, and other programs.
+ 
+ This is a standard "check for updates automatically" feature, with two
+diff -rupN old/percona-toolkit-2.2.7/bin/pt-upgrade new/percona-toolkit-2.2.7/bin/pt-upgrade
+--- old/percona-toolkit-2.2.7/bin/pt-upgrade	2014-02-20 08:20:28.000000000 +0100
++++ new/percona-toolkit-2.2.7/bin/pt-upgrade	2014-05-21 18:08:38.344342935 +0200
+@@ -11003,8 +11003,6 @@ Show version and exit.
+ 
+ =item --[no]version-check
+ 
+-default: yes
+-
+ Check for the latest version of Percona Toolkit, MySQL, and other programs.
+ 
+ This is a standard "check for updates automatically" feature, with two
+diff -rupN old/percona-toolkit-2.2.7/bin/pt-variable-advisor new/percona-toolkit-2.2.7/bin/pt-variable-advisor
+--- old/percona-toolkit-2.2.7/bin/pt-variable-advisor	2014-02-20 08:20:28.000000000 +0100
++++ new/percona-toolkit-2.2.7/bin/pt-variable-advisor	2014-05-21 18:10:01.967017827 +0200
+@@ -5968,8 +5968,6 @@ Show version and exit.
+ 
+ =item --[no]version-check
+ 
+-default: yes
+-
+ Check for the latest version of Percona Toolkit, MySQL, and other programs.
+ 
+ This is a standard "check for updates automatically" feature, with two

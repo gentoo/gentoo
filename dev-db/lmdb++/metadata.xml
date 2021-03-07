@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>nicolasbock@gentoo.org</email>
+		<name>Nicolas Bock</name>
+	</maintainer>
+	<longdescription lang="en">
+		This is a comprehensive C++ wrapper for the LMDB embedded database
+		library, offering both an error-checked procedural interface and an
+		object-oriented resource interface with RAII semantics.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">hoytech/lmdbxx</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,19 @@
+--- a/zenmap/setup.py
++++ b/zenmap/setup.py
+@@ -245,7 +245,6 @@
+         self.set_perms()
+         self.set_modules_path()
+         self.fix_paths()
+-        self.create_uninstaller()
+         self.write_installed_files()
+ 
+     def get_installed_files(self):
+@@ -263,8 +262,6 @@
+                 os.path.join(self.install_data, data_dir)):
+             for dir in dirs:
+                 installed_files.append(os.path.join(dirpath, dir))
+-        installed_files.append(
+-                os.path.join(self.install_scripts, "uninstall_" + APP_NAME))
+         return installed_files
+ 
+     def create_uninstaller(self):

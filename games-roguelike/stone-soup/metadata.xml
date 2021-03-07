@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>stasibear@gentoo.org</email>
+		<name>Erik Mackdanz</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<upstream>
+		<doc lang="en">https://crawl.develz.org</doc>
+		<bugs-to>https://crawl.develz.org/mantis</bugs-to>
+		<remote-id type="sourceforge">crawl-ref</remote-id>
+	</upstream>
+	<use>
+		<flag name="tiles">Enable for graphical (tiled) build.
+			(can be enabled on top of ncurses)
+		</flag>
+		<flag name="ncurses">Enable for console (uses ncurses) based build.
+			(can be enabled on top of tiles)
+		</flag>
+	</use>
+	<longdescription lang="en">
+		Dungeon Crawl Stone Soup is a free roguelike game of exploration
+		and treasure-hunting in dungeons filled with dangerous and
+		unfriendly monsters in a quest for the mystifyingly fabulous Orb
+		of Zot.
+
+		Dungeon Crawl Stone Soup has diverse species and many different
+		character backgrounds to choose from, deep tactical game-play,
+		sophisticated magic, religion and skill systems, and a grand
+		variety of monsters to fight and run from, making each game
+		unique and challenging.
+
+		Dungeon Crawl Stone Soup can be played offline, or online on a
+		public telnet/ssh server thanks to the good folks at
+		crawl.akrasiac.org (CAO) and crawl.develz.org (CDO). These public
+		servers allow you to meet other players’ ghosts, watch other people
+		playing, and, in general, have a blast!
+	</longdescription>
+</pkgmetadata>

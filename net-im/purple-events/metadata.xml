@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!--maintainer-needed-->
+	<upstream>
+		<maintainer status="active">
+			<email>sardemff7+gentoo@sardemff7.net</email>
+			<name>Quentin “Sardem FF7” Glidic</name>
+		</maintainer>
+		<remote-id type="github">sardemff7/purple-events</remote-id>
+	</upstream>
+</pkgmetadata>

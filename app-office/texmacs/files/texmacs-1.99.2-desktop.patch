@@ -1,0 +1,23 @@
+ TeXmacs/misc/mime/texmacs.desktop | 7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
+
+diff --git a/TeXmacs/misc/mime/texmacs.desktop b/TeXmacs/misc/mime/texmacs.desktop
+index 493103c..cfd66b3 100644
+--- a/TeXmacs/misc/mime/texmacs.desktop
++++ b/TeXmacs/misc/mime/texmacs.desktop
+@@ -1,14 +1,9 @@
+ [Desktop Entry]
+ Name=GNU TeXmacs
+ Comment=A structured wysiwyg scientific text editor
+-BinaryPattern=texmacs
+-Protocols=
+ MimeType=text/x-texmacs;text/plain;text/x-tex;
+ Exec=texmacs %f
+ Icon=TeXmacs
+-TerminalOptions=
+-Path=
+ Type=Application
+-Terminal=0
+-MapNotify=false
++Terminal=false
+ Categories=Education;Science;Math;

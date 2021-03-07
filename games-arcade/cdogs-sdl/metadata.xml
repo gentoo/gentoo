@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>games@gentoo.org</email>
+	<name>Gentoo Games Project</name>
+</maintainer>
+<longdescription lang="en">
+C-Dogs SDL is a classic overhead run-and-gun game, supporting up to 4 players in
+co-op and deathmatch modes. Customize your player, choose from many weapons, and
+blast, slide and slash your way through over 100 user-created campaigns. Have
+fun!
+</longdescription>
+<upstream>
+	<bugs-to>https://github.com/cxong/cdogs-sdl/issues</bugs-to>
+	<doc lang="en">https://cxong.github.io/cdogs-sdl/</doc>
+	<remote-id type="github">cxong/cdogs-sdl</remote-id>
+</upstream>
+</pkgmetadata>

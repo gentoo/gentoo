@@ -1,0 +1,35 @@
+#!/sbin/openrc-run
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	use net
+}
+
+start() {
+	ebegin "Starting uShare"
+
+	if [ ! -f /etc/ushare.conf -a -f /etc/conf.d/ushare ]; then
+		ewarn "Please migrate your settings from"
+		ewarn "/etc/conf.d/ushare to the new /etc/ushare.conf file"
+		ewarn "and then delete the /etc/conf.d/ushare file."
+		eerror "User migration steps are needed!"
+	fi
+
+	if [ -f /etc/ushare.conf -a -f /etc/conf.d/ushare ]; then
+		ewarn "Old configuration file /etc/conf.d/ushare detected!"
+		ewarn "Please migrate your settings to the new /etc/ushare.conf file"
+		ewarn "and then delete the old one."
+		eerror "User migration steps are needed!"
+	fi
+
+	start-stop-daemon --start --quiet -u ushare \
+	--exec /usr/bin/ushare -- -D --cfg=/etc/ushare.conf
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping uShare"
+	start-stop-daemon --stop --quiet --exec /usr/bin/ushare
+	eend $?
+}

@@ -1,0 +1,227 @@
+ include/MultiMatrix.h    |   14 +++++++-------
+ include/UnionHolder.h    |   40 ++++++++++++++++++++--------------------
+ include/basedefs.h       |   22 ++++++++++++----------
+ utils/Fork_controller.cc |    3 +++
+ utils/ttyio.cc           |    2 ++
+ 5 files changed, 44 insertions(+), 37 deletions(-)
+
+diff --git a/include/MultiMatrix.h b/include/MultiMatrix.h
+index b6fec33..2d54db5 100755
+--- a/include/MultiMatrix.h
++++ b/include/MultiMatrix.h
+@@ -254,19 +254,19 @@ namespace libcmatrix {
+     }
+ 
+     size_t operator()(size_t r) const
+-    { check_bounds_open(dim,r);
++    { this->check_bounds_open(dim,r);
+       return r*mults[0]; }
+ 
+     size_t operator()(size_t r,size_t s) const
+-    { check_bounds_open(dim,r,s);
++    { this->check_bounds_open(dim,r,s);
+       return r*mults[0]+s*mults[1]; }
+ 
+     size_t operator()(size_t r,size_t s,size_t t) const
+-    { check_bounds_open(dim,r,s,t); 
++    { this->check_bounds_open(dim,r,s,t); 
+       return r*mults[0]+s*mults[1]+t*mults[2]; }
+ 
+     size_t operator()(size_t r,size_t s,size_t t,size_t u) const
+-    { check_bounds_open(dim,r,s,t,u);
++    { this->check_bounds_open(dim,r,s,t,u);
+       return r*mults[0]+s*mults[1]+t*mults[2]+u*mults[3]; }
+     
+     size_t index(size_t r) const
+@@ -293,14 +293,14 @@ namespace libcmatrix {
+ 
+     void reverse(size_t& r, size_t& s, size_t ind) const {
+       LCM_STATIC_CHECK(N==2, Indexer_non2D_object);
+-      check(ind<size(),"Indexer::reverse");
++      this->check(ind<size(),"Indexer::reverse");
+       r=ind / mults[0];
+       s=ind-r*mults[0];
+     }
+ 
+     void reverse(size_t& r, size_t& s, size_t& t, size_t ind) const {
+       LCM_STATIC_CHECK(N==3, Indexer_non3D_object);
+-      check(ind<size(),"Indexer::reverse");
++      this->check(ind<size(),"Indexer::reverse");
+       r=ind / mults[0];
+       ind-=r*mults[0];
+       s=ind / mults[1];
+@@ -309,7 +309,7 @@ namespace libcmatrix {
+ 
+     void reverse(size_t& r, size_t& s, size_t& t, size_t& u, size_t ind) const {
+       LCM_STATIC_CHECK(N==4, Indexer_non4D_object);
+-      check(ind<size(),"Indexer::reverse");
++      this->check(ind<size(),"Indexer::reverse");
+       r=ind / mults[0];
+       ind-=r*mults[0];
+       s=ind / mults[1];
+diff --git a/include/UnionHolder.h b/include/UnionHolder.h
+index f447501..3157330 100755
+--- a/include/UnionHolder.h
++++ b/include/UnionHolder.h
+@@ -359,21 +359,21 @@ namespace libcmatrix {
+     //! overrides ::clear method from ::CommonHolder
+     void clear() {
+       switch (type_) {
+-      case 1: clear_(first_); break;
+-      case 2: clear_(second_); break;
+-      case 3: clear_(third_); break;
+-      case 4: clear_(fourth_); break;
+-      case 5: clear_(fifth_); break;
+-      case 6: clear_(sixth_); break;
+-      case 7: clear_(seventh_); break;
+-      case 8: clear_(eighth_); break;
+-      case 9: clear_(nineth_); break;
++      case 1: this->clear_(first_); break;
++      case 2: this->clear_(second_); break;
++      case 3: this->clear_(third_); break;
++      case 4: this->clear_(fourth_); break;
++      case 5: this->clear_(fifth_); break;
++      case 6: this->clear_(sixth_); break;
++      case 7: this->clear_(seventh_); break;
++      case 8: this->clear_(eighth_); break;
++      case 9: this->clear_(nineth_); break;
+       }
+       type_=0;
+     }
+ 
+     template<class T> UnionHolder& operator= (const T& v) {
+-      get(Type2Type<T>())=v;
++      this->get(Type2Type<T>())=v;
+       type(Type2Type<T>()); //only change type if assignment was successful
+       return *this;
+     }
+@@ -399,12 +399,12 @@ namespace libcmatrix {
+ 
+     template<class T> T& set(Type2Type<T> in) {
+       type(in);
+-      return get(in);
++      return this->get(in);
+     }
+ 
+     template<int M> typename reverse<M>::type& set(Int2Type<M> in) {
+       type(in);
+-      return get(Type2Type<typename reverse<M>::type>());
++      return this->get(Type2Type<typename reverse<M>::type>());
+     }
+ 
+     template<class T> T& operator()(Type2Type<T> in) {
+@@ -429,12 +429,12 @@ namespace libcmatrix {
+ 
+     template<int M> typename reverse<M>::type& operator()(Int2Type<M> in) {
+       verify(in);
+-      return get(Type2Type<typename reverse<M>::type>());
++      return this->get(Type2Type<typename reverse<M>::type>());
+     }
+ 
+     template<int M> const typename reverse<M>::type& operator()(Int2Type<M> in) const {
+       verify(in);
+-      return get(Type2Type<typename reverse<M>::type>());
++      return this->get(Type2Type<typename reverse<M>::type>());
+     }
+   };
+   
+@@ -482,12 +482,12 @@ namespace libcmatrix {
+     bool iscomplex() const { return (this->type()==COMPLEX); }
+     bool isreal() const { return (this->type()==REAL); }
+     
+-    C& set_complex() { return set(Int2Type<COMPLEX>()); }
+-    R& set_real() { return set(Int2Type<REAL>()); }
+-    const C& get_complex() const { return get(Type2Type<C>()); }
+-    const R& get_real() const { return get(Type2Type<R>()); }
+-    C& get_complex() { return get(Type2Type<C>()); }
+-    R& get_real() { return get(Type2Type<R>()); }
++    C& set_complex() { return this->set(Int2Type<COMPLEX>()); }
++    R& set_real() { return this->set(Int2Type<REAL>()); }
++    const C& get_complex() const { return this->get(Type2Type<C>()); }
++    const R& get_real() const { return this->get(Type2Type<R>()); }
++    C& get_complex() { return this->get(Type2Type<C>()); }
++    R& get_real() { return this->get(Type2Type<R>()); }
+   };
+ 
+ } //namespace libcmatrix
+diff --git a/include/basedefs.h b/include/basedefs.h
+index 420b341..80d47e3 100755
+--- a/include/basedefs.h
++++ b/include/basedefs.h
+@@ -13,6 +13,8 @@
+ #include <functional>
+ #include <iterator>
+ #include <algorithm>
++#include <math.h>
++//#include "BlockedMatrix.h"
+ //#include <complex>
+ 
+ // #ifdef LCM_DEBUG_ALLOCATOR
+@@ -1703,6 +1705,16 @@ template<size_t N> struct Multiply_<N,N,0> {
+   }
+ };
+ 
++template<size_t,size_t,size_t> struct Mla_ {
++  template<class T1,class T2,class T3> static void func(T1&, const T2&, const T3&) {
++    LCM_STATIC_ERROR( mla_incompatible_dimensionalities );
++  }
++};
++
++template<class T1,class T2,class T3> inline void mla(T1& d,const T2& a,const T3& b) {
++  Mla_<LCM_DIM(T1),LCM_DIM(T2),LCM_DIM(T3)>::func(d,a,b);
++}
++
+ template<> struct Multiply_<2,2,2> {
+   template<class T1,class T2,class T3> static void func(T1& dest,const T2& a,const T3& b)
+   {
+@@ -1875,12 +1887,6 @@ template<> struct Multiply_<0,0,0> {
+    Multiply_<LCM_DIM(T1),LCM_DIM(T2),LCM_DIM(T3)>::func(d,a,b);
+  }
+ 
+-template<size_t,size_t,size_t> struct Mla_ {
+-  template<class T1,class T2,class T3> static void func(T1&, const T2&, const T3&) {
+-    LCM_STATIC_ERROR( mla_incompatible_dimensionalities );
+-  }
+-};
+-
+ template<size_t N> struct Mla_<N,0,N> {
+   template<class T1,class T2,class T3> LCM_INLINE static void func(T1& d, const T2& a, const T3& b) {
+     if (d.empty())
+@@ -1940,10 +1946,6 @@ template<> struct Mla_<0,0,0> {
+   }
+ };
+ 
+-template<class T1,class T2,class T3> inline void mla(T1& d,const T2& a,const T3& b) {
+-  Mla_<LCM_DIM(T1),LCM_DIM(T2),LCM_DIM(T3)>::func(d,a,b);
+-}
+-
+ template<class T,size_t N> struct Print_ {
+   static void print(const T& a,std::ostream& ostr) {
+     ostr << '[';
+diff --git a/utils/Fork_controller.cc b/utils/Fork_controller.cc
+index 5f6b913..08ec942 100755
+--- a/utils/Fork_controller.cc
++++ b/utils/Fork_controller.cc
+@@ -3,6 +3,9 @@
+ #include <sys/wait.h>
+ #include <time.h>
+ #include <cstdio>
++#include <sys/types.h>
++#include <unistd.h>
++
+ 
+ namespace libcmatrix {
+ 
+diff --git a/utils/ttyio.cc b/utils/ttyio.cc
+index 17e4eb3..bbeac81 100755
+--- a/utils/ttyio.cc
++++ b/utils/ttyio.cc
+@@ -17,6 +17,8 @@
+ #include "args_iter.h"
+ #endif
+ 
++#include <unistd.h>
++
+ namespace libcmatrix {
+ 
+   namespace {

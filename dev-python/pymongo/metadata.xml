@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ultrabug@gentoo.org</email>
+		<name>Alexys Jacob</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<longdescription lang="en">PyMongo is a Python distribution containing tools 
+	for working with MongoDB, and is the recommended way to work 
+	with MongoDB from Python.</longdescription>
+	<upstream>
+		<remote-id type="pypi">pymongo</remote-id>
+		<remote-id type="github">mongodb/mongo-python-driver</remote-id>
+	</upstream>
+</pkgmetadata>

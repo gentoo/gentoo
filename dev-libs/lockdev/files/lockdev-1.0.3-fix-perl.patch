@@ -1,0 +1,11 @@
+--- lockdev-1.0.3.orig/LockDev/Makefile.PL
++++ lockdev-1.0.3/LockDev/Makefile.PL
+@@ -7,7 +7,7 @@ WriteMakefile(
+          'LIBS'	=> [''],
+        'DEFINE'	=> '',
+           'INC'	=> '-I../src',
+-     'MYEXTLIB'	=> '../src/lockdev.z',
++     'MYEXTLIB'	=> '../.libs/liblockdev.so',
+ );
+ 
+ sub MY::postamble {

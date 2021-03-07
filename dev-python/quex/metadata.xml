@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+	</maintainer>
+	<maintainer type="person">
+		<email>tupone@gentoo.org</email>
+		<name>Tupone Alfredo</name>
+	</maintainer>
+	<longdescription lang="en">
+		It is:
+		a tool to generate lexical analyzers. A lexical analyzer is a program
+		that transforms a stream of characters into a stream of
+		'atomic chunks of meaning', so called tokens.
+		
+		It does:
+		generate directly coded lexical analyzers, rather than table based
+		engines.
+		respond to queries on Unicode properties and regular expressions on the
+		command line.
+		generate state transition graphs of the generated engines.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">quex</remote-id>
+	</upstream>
+</pkgmetadata>

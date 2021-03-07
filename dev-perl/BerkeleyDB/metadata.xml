@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">BerkeleyDB</remote-id>
+    <remote-id type="cpan-module">BerkeleyDB</remote-id>
+    <remote-id type="cpan-module">BerkeleyDB::Btree</remote-id>
+    <remote-id type="cpan-module">BerkeleyDB::CDS::Lock</remote-id>
+    <remote-id type="cpan-module">BerkeleyDB::Common</remote-id>
+    <remote-id type="cpan-module">BerkeleyDB::Cursor</remote-id>
+    <remote-id type="cpan-module">BerkeleyDB::Env</remote-id>
+    <remote-id type="cpan-module">BerkeleyDB::Hash</remote-id>
+    <remote-id type="cpan-module">BerkeleyDB::Heap</remote-id>
+    <remote-id type="cpan-module">BerkeleyDB::Queue</remote-id>
+    <remote-id type="cpan-module">BerkeleyDB::Recno</remote-id>
+    <remote-id type="cpan-module">BerkeleyDB::Term</remote-id>
+    <remote-id type="cpan-module">BerkeleyDB::Txn</remote-id>
+    <remote-id type="cpan-module">BerkeleyDB::TxnMgr</remote-id>
+    <remote-id type="cpan-module">BerkeleyDB::Unknown</remote-id>
+    <remote-id type="cpan-module">BerkeleyDB::_tiedArray</remote-id>
+    <remote-id type="cpan-module">BerkeleyDB::_tiedHash</remote-id>
+  </upstream>
+</pkgmetadata>

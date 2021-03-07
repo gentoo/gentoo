@@ -1,0 +1,191 @@
+https://bugs.gentoo.org/705412
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -327,6 +327,7 @@ else
+ WIN32_INSTALL = $(bindir)/iverilog-vpi$(suffix)
+ endif
+ 
++.PHONY:  all installdirs $(libdir)/ivl$(suffix)/ivl@EXEEXT@  $(libdir)/ivl$(suffix)/include/constants.vams $(libdir)/ivl$(suffix)/include/disciplines.vams $(includedir)/ivl_target.h $(includedir)/_pli_types.h $(includedir)/sv_vpi_user.h $(includedir)/vpi_user.h $(includedir)/acc_user.h $(includedir)/veriuser.h $(WIN32_INSTALL) $(INSTALL_DOC)
+ install: all installdirs $(libdir)/ivl$(suffix)/ivl@EXEEXT@  $(libdir)/ivl$(suffix)/include/constants.vams $(libdir)/ivl$(suffix)/include/disciplines.vams $(includedir)/ivl_target.h $(includedir)/_pli_types.h $(includedir)/sv_vpi_user.h $(includedir)/vpi_user.h $(includedir)/acc_user.h $(includedir)/veriuser.h $(WIN32_INSTALL) $(INSTALL_DOC)
+ 	$(foreach dir,$(SUBDIRS),$(MAKE) -C $(dir) $@ && ) true
+ 
+--- a/cadpli/Makefile.in
++++ b/cadpli/Makefile.in
+@@ -79,6 +79,7 @@ endif
+ cadpli.vpl: $O ../vvp/libvpi.a ../libveriuser/libveriuser.o
+ 	$(CC) @shared@ $(LDFLAGS) -o $@ $O ../libveriuser/libveriuser.o $(SYSTEM_VPI_LDFLAGS)
+ 
++.PHONY: all installdirs $(vpidir)/cadpli.vpl
+ install: all installdirs $(vpidir)/cadpli.vpl
+ 
+ $(vpidir)/cadpli.vpl: ./cadpli.vpl
+--- a/driver-vpi/Makefile.in
++++ b/driver-vpi/Makefile.in
+@@ -93,6 +93,7 @@ res.o: res.rc
+ 	$(WINDRES) -i res.rc -o res.o
+ #
+ 
++.PHONY: all installdirs $(bindir)/iverilog-vpi$(suffix)@EXEEXT@
+ install: all installdirs $(bindir)/iverilog-vpi$(suffix)@EXEEXT@
+ 
+ $(bindir)/iverilog-vpi$(suffix)@EXEEXT@: ./iverilog-vpi@EXEEXT@
+--- a/driver/Makefile.in
++++ b/driver/Makefile.in
+@@ -127,6 +127,7 @@ INSTALL_DOC = $(mandir)/man1/iverilog$(suffix).1
+ INSTALL_DOCDIR = $(mandir)/man1
+ endif
+ 
++.PHONY: all installdirs $(bindir)/iverilog$(suffix)@EXEEXT@ $(INSTALL_DOC)
+ install: all installdirs $(bindir)/iverilog$(suffix)@EXEEXT@ $(INSTALL_DOC)
+ 
+ $(bindir)/iverilog$(suffix)@EXEEXT@: ./iverilog@EXEEXT@
+--- a/ivlpp/Makefile.in
++++ b/ivlpp/Makefile.in
+@@ -71,6 +71,7 @@ ivlpp@EXEEXT@: $O
+ lexor.c: $(srcdir)/lexor.lex
+ 	$(LEX) -t $< > $@
+ 
++.PHONY: all installdirs $(libdir)/ivl$(suffix)/ivlpp@EXEEXT@
+ install: all installdirs $(libdir)/ivl$(suffix)/ivlpp@EXEEXT@
+ 
+ $(libdir)/ivl$(suffix)/ivlpp@EXEEXT@: ivlpp@EXEEXT@
+--- a/tgt-blif/Makefile.in
++++ b/tgt-blif/Makefile.in
+@@ -81,6 +81,7 @@ endif
+ blif.tgt: $O $(TGTDEPLIBS)
+ 	$(CXX) @shared@ $(LDFLAGS) -o $@ $O $(TGTLDFLAGS)
+ 
++.PHONY: all installdirs $(libdir)/ivl$(suffix)/blif.tgt $(INSTALL_DOC) $(libdir)/ivl$(suffix)/blif.conf $(libdir)/ivl$(suffix)/blif-s.conf
+ install: all installdirs $(libdir)/ivl$(suffix)/blif.tgt $(INSTALL_DOC) $(libdir)/ivl$(suffix)/blif.conf $(libdir)/ivl$(suffix)/blif-s.conf
+ 
+ $(libdir)/ivl$(suffix)/blif.tgt: ./blif.tgt
+--- a/tgt-fpga/Makefile.in
++++ b/tgt-fpga/Makefile.in
+@@ -100,6 +100,7 @@ INSTALL_DOC = $(mandir)/man1/iverilog-fpga$(suffix).1
+ INSTALL_DOCDIR = $(mandir)/man1
+ endif
+ 
++.PHONY: all installdirs $(libdir)/ivl$(suffix)/fpga.tgt $(INSTALL_DOC) $(libdir)/ivl$(suffix)/fpga.conf $(libdir)/ivl$(suffix)/fpga-s.conf
+ install: all installdirs $(libdir)/ivl$(suffix)/fpga.tgt $(INSTALL_DOC) $(libdir)/ivl$(suffix)/fpga.conf $(libdir)/ivl$(suffix)/fpga-s.conf
+ 
+ $(libdir)/ivl$(suffix)/fpga.tgt: ./fpga.tgt
+--- a/tgt-null/Makefile.in
++++ b/tgt-null/Makefile.in
+@@ -80,6 +80,7 @@ endif
+ null.tgt: $O $(TGTDEPLIBS)
+ 	$(CC) @shared@ $(LDFLAGS) -o $@ $O $(TGTLDFLAGS)
+ 
++.PHONY: all installdirs $(libdir)/ivl$(suffix)/null.tgt $(INSTALL_DOC) $(libdir)/ivl$(suffix)/null.conf $(libdir)/ivl$(suffix)/null-s.conf
+ install: all installdirs $(libdir)/ivl$(suffix)/null.tgt $(INSTALL_DOC) $(libdir)/ivl$(suffix)/null.conf $(libdir)/ivl$(suffix)/null-s.conf
+ 
+ $(libdir)/ivl$(suffix)/null.tgt: ./null.tgt
+--- a/tgt-pal/Makefile.in
++++ b/tgt-pal/Makefile.in
+@@ -79,6 +79,7 @@ endif
+ pal.tgt: $O $(TGTDEPLIBS)
+ 	$(CC) @shared@ $(LDFLAGS) -o $@ $O $(TGTLDFLAGS) -lipal
+ 
++.PHONY: all installdirs $(libdir)/ivl/pal.tgt
+ install: all installdirs $(libdir)/ivl/pal.tgt
+ 
+ $(libdir)/ivl/pal.tgt: ./pal.tgt
+--- a/tgt-pcb/Makefile.in
++++ b/tgt-pcb/Makefile.in
+@@ -104,6 +104,7 @@ endif
+ pcb.tgt: $O $(TGTDEPLIBS)
+ 	$(CXX) @shared@ $(LDFLAGS) -o $@ $O $(TGTLDFLAGS)
+ 
++.PHONY: all installdirs $(libdir)/ivl$(suffix)/pcb.tgt $(INSTALL_DOC) $(libdir)/ivl$(suffix)/pcb.conf $(libdir)/ivl$(suffix)/pcb-s.conf
+ install: all installdirs $(libdir)/ivl$(suffix)/pcb.tgt $(INSTALL_DOC) $(libdir)/ivl$(suffix)/pcb.conf $(libdir)/ivl$(suffix)/pcb-s.conf
+ 
+ $(libdir)/ivl$(suffix)/pcb.tgt: ./pcb.tgt
+--- a/tgt-sizer/Makefile.in
++++ b/tgt-sizer/Makefile.in
+@@ -80,6 +80,7 @@ endif
+ sizer.tgt: $O $(TGTDEPLIBS)
+ 	$(CXX) @shared@ $(LDFLAGS) -o $@ $O $(TGTLDFLAGS)
+ 
++.PHONY: all installdirs $(libdir)/ivl$(suffix)/sizer.tgt $(INSTALL_DOC) $(libdir)/ivl$(suffix)/sizer.conf $(libdir)/ivl$(suffix)/sizer-s.conf
+ install: all installdirs $(libdir)/ivl$(suffix)/sizer.tgt $(INSTALL_DOC) $(libdir)/ivl$(suffix)/sizer.conf $(libdir)/ivl$(suffix)/sizer-s.conf
+ 
+ $(libdir)/ivl$(suffix)/sizer.tgt: ./sizer.tgt
+--- a/tgt-stub/Makefile.in
++++ b/tgt-stub/Makefile.in
+@@ -81,6 +81,7 @@ endif
+ stub.tgt: $O $(TGTDEPLIBS)
+ 	$(CC) @shared@ $(LDFLAGS) -o $@ $O $(TGTLDFLAGS)
+ 
++.PHONY: all installdirs $(libdir)/ivl$(suffix)/stub.tgt $(libdir)/ivl$(suffix)/stub.conf $(libdir)/ivl$(suffix)/stub-s.conf
+ install: all installdirs $(libdir)/ivl$(suffix)/stub.tgt \
+ 	$(libdir)/ivl$(suffix)/stub.conf $(libdir)/ivl$(suffix)/stub-s.conf
+ 
+--- a/tgt-verilog/Makefile.in
++++ b/tgt-verilog/Makefile.in
+@@ -79,6 +79,7 @@ endif
+ verilog.tgt: $O $(TGTDEPLIBS)
+ 	$(CC) @shared@ $(LDFLAGS) -o $@ $O $(TGTLDFLAGS)
+ 
++.PHONY: all installdirs $(libdir)/ivl/verilog.tgt $(includedir)/vpi_user.h
+ install: all installdirs $(libdir)/ivl/verilog.tgt \
+ 	$(includedir)/vpi_user.h
+ 
+--- a/tgt-vhdl/Makefile.in
++++ b/tgt-vhdl/Makefile.in
+@@ -89,6 +89,7 @@ stamp-vhdl_config-h: $(srcdir)/vhdl_config.h.in ../config.status
+ 	cd ..; ./config.status --header=tgt-vhdl/vhdl_config.h
+ vhdl_config.h: stamp-vhdl_config-h
+ 
++.PHONY: all installdirs $(libdir)/ivl$(suffix)/vhdl.tgt $(libdir)/ivl$(suffix)/vhdl.conf $(libdir)/ivl$(suffix)/vhdl-s.conf
+ install: all installdirs $(libdir)/ivl$(suffix)/vhdl.tgt $(libdir)/ivl$(suffix)/vhdl.conf \
+ 	$(libdir)/ivl$(suffix)/vhdl-s.conf
+ 
+--- a/tgt-vlog95/Makefile.in
++++ b/tgt-vlog95/Makefile.in
+@@ -80,6 +80,7 @@ endif
+ vlog95.tgt: $O $(TGTDEPLIBS)
+ 	$(CC) @shared@ $(LDFLAGS) -o $@ $O -lm $(TGTLDFLAGS)
+ 
++.PHONY: all installdirs $(libdir)/ivl$(suffix)/vlog95.tgt $(INSTALL_DOC) $(libdir)/ivl$(suffix)/vlog95.conf $(libdir)/ivl$(suffix)/vlog95-s.conf
+ install: all installdirs $(libdir)/ivl$(suffix)/vlog95.tgt $(INSTALL_DOC) $(libdir)/ivl$(suffix)/vlog95.conf $(libdir)/ivl$(suffix)/vlog95-s.conf
+ 
+ $(libdir)/ivl$(suffix)/vlog95.tgt: ./vlog95.tgt
+--- a/tgt-vvp/Makefile.in
++++ b/tgt-vvp/Makefile.in
+@@ -103,6 +103,7 @@ stamp-vvp_config-h: $(srcdir)/vvp_config.h.in ../config.status
+ 	cd ..; ./config.status --header=tgt-vvp/vvp_config.h
+ vvp_config.h: stamp-vvp_config-h
+ 
++.PHONY: all installdirs $(libdir)/ivl$(suffix)/vvp.tgt $(libdir)/ivl$(suffix)/vvp.conf $(libdir)/ivl$(suffix)/vvp-s.conf
+ install: all installdirs $(libdir)/ivl$(suffix)/vvp.tgt $(libdir)/ivl$(suffix)/vvp.conf $(libdir)/ivl$(suffix)/vvp-s.conf
+ 
+ $(libdir)/ivl$(suffix)/vvp.tgt: ./vvp.tgt
+--- a/vhdlpp/Makefile.in
++++ b/vhdlpp/Makefile.in
+@@ -127,6 +127,7 @@ lexor_keyword.o: lexor_keyword.cc parse.h
+ lexor_keyword.cc: $(srcdir)/lexor_keyword.gperf
+ 	gperf -o -i 7 --ignore-case -C -k 1-4,6,9,$$ -H keyword_hash -N check_identifier -t $(srcdir)/lexor_keyword.gperf > lexor_keyword.cc || (rm -f lexor_keyword.cc ; false)
+ 
++.PHONY: all installdirs $(libdir)/ivl$(suffix)/vhdlpp@EXEEXT@
+ install: all installdirs $(libdir)/ivl$(suffix)/vhdlpp@EXEEXT@
+ 
+ $(libdir)/ivl$(suffix)/vhdlpp@EXEEXT@: vhdlpp@EXEEXT@
+--- a/vpi/Makefile.in
++++ b/vpi/Makefile.in
+@@ -171,6 +171,7 @@ stamp-vpi_config-h: $(srcdir)/vpi_config.h.in ../config.status
+ 	cd ..; ./config.status --header=vpi/vpi_config.h
+ vpi_config.h: stamp-vpi_config-h
+ 
++.PHONY: all installdirs $(vpidir)/system.vpi $(vpidir)/system.sft $(vpidir)/va_math.vpi $(vpidir)/va_math.sft $(vpidir)/v2005_math.vpi $(vpidir)/v2005_math.sft $(vpidir)/v2009.vpi $(vpidir)/v2009.sft $(vpidir)/vhdl_sys.vpi $(vpidir)/vhdl_sys.sft $(vpidir)/vpi_debug.vpi
+ install: all installdirs \
+     $(vpidir)/system.vpi $(vpidir)/system.sft \
+     $(vpidir)/va_math.vpi $(vpidir)/va_math.sft \
+--- a/vvp/Makefile.in
++++ b/vvp/Makefile.in
+@@ -205,6 +205,7 @@ stamp-config-h: $(srcdir)/config.h.in ../config.status
+ 	cd ..; ./config.status --header=vvp/config.h
+ config.h: stamp-config-h
+ 
++.PHONY: all installdirs $(bindir)/vvp$(suffix)@EXEEXT@ $(libdir)/libvpi$(suffix).a $(INSTALL_DOC)
+ install: all installdirs $(bindir)/vvp$(suffix)@EXEEXT@ $(libdir)/libvpi$(suffix).a $(INSTALL_DOC)
+ 
+ $(bindir)/vvp$(suffix)@EXEEXT@: ./vvp@EXEEXT@

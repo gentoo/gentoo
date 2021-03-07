@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>netmon@gentoo.org</email>
+	<name>Gentoo network monitoring and analysis project</name>
+</maintainer>
+<longdescription lang="en">
+	libmnl is a minimalistic user-space library oriented to Netlink developers.
+	There are a lot of common tasks in parsing, validating, constructing of both
+	the Netlink header and TLVs that are repetitive and easy to get wrong. This
+	library aims to provide simple helpers that allows you to re-use code and to
+	avoid re-inventing the wheel.
+</longdescription>
+<upstream>
+	<remote-id type="cpe">cpe:/a:netfilter:libmnl</remote-id>
+</upstream>
+</pkgmetadata>

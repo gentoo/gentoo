@@ -1,0 +1,13 @@
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index cef5909..46bcb88 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -346,4 +346,4 @@ endif(NOT XDMF_BUILD_CORE_ONLY)
+ 
+ xdmf_create_config_file(${PROJECT_NAME})
+ install(FILES "${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
+-  DESTINATION ${CMAKE_INSTALL_PREFIX})
++  DESTINATION ${CMAKE_INSTALL_PREFIX}/share/cmake/Modules/)

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>misanthropos@gmx.net</email>
+		<name>Richard Fröhning</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<use>
+		<flag name="editor">Adds necessary file to run the editor</flag>
+		<flag name="ru-gold">Support for russian gold ja2 version</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">ja2-stracciatella/ja2-stracciatella</remote-id>
+	</upstream>
+</pkgmetadata>

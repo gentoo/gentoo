@@ -1,0 +1,14 @@
+Bug #160591; fixes a buffer underflow.
+Reported by B Douglas Hilton <b.d.hilton@verizon.net>
+
+--- tvision/classes/ttermina.cc
++++ tvision/classes/ttermina.cc
+@@ -233,7 +233,7 @@
+          }
+       }
+    }
+- while (pos-->=queBack);
++ while (pos-->queBack);
+ 
+  return queBack;
+ }

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-biology@gentoo.org</email>
+    <name>Gentoo Biology Project</name>
+  </maintainer>
+  <longdescription>
+MrBayes is a program for the Bayesian estimation of phylogeny.
+Bayesian inference of phylogeny is based upon a quantity called the
+posterior probability distribution of trees, which is the probability of a
+tree conditioned on the observations. The conditioning is accomplished using
+Bayes's theorem. The posterior probability distribution of trees is
+impossible to calculate analytically; instead, MrBayes uses a simulation
+technique called Markov chain Monte Carlo (or MCMC) to approximate the
+posterior probabilities of trees.
+</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">mrbayes</remote-id>
+  </upstream>
+</pkgmetadata>

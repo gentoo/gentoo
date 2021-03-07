@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>perl@gentoo.org</email>
+		<name>Gentoo Perl Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpan">MooX-HandlesVia</remote-id>
+		<remote-id type="cpan-module">Data::Perl::Bool::MooseLike</remote-id>
+		<remote-id type="cpan-module">Data::Perl::Collection::Array::MooseLike</remote-id>
+		<remote-id type="cpan-module">Data::Perl::Collection::Hash::MooseLike</remote-id>
+		<remote-id type="cpan-module">Data::Perl::Number::MooseLike</remote-id>
+		<remote-id type="cpan-module">Data::Perl::String::MooseLike</remote-id>
+		<remote-id type="cpan-module">MooX::HandlesVia</remote-id>
+	</upstream>
+</pkgmetadata>

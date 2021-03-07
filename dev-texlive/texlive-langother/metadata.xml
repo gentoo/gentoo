@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>aballier@gentoo.org</email>
+		<name>Alexis Ballier</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>tex@gentoo.org</email>
+		<name>Gentoo TeX Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Support for languages not otherwise listed, including Indic,
+		Thai, Vietnamese, Hebrew, Indonesian, African languages, and
+		plenty more.  The split is made simply on the basis of the size
+		of the support, to keep both collection sizes and the number of
+		collections reasonable.
+	</longdescription>
+</pkgmetadata>

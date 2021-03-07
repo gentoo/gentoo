@@ -1,0 +1,11 @@
+--- a/ansi2knr.c
++++ b/ansi2knr.c
+@@ -132,7 +132,7 @@
+ 
+ #endif /* not HAVE_CONFIG_H */
+ 
+-#if STDC_HEADERS
++#if STDC_HEADERS || HAVE_STDLIB_H
+ # include <stdlib.h>
+ #else
+ /*

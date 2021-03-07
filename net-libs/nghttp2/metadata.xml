@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>polynomial-c@gentoo.org</email>
+		<name>Lars Wendler</name>
+	</maintainer>
+	<use>
+		<flag name="hpack-tools">Install HPACK (header compression) helper tools</flag>
+		<flag name="utils">Install nghttp, nghttpd and nghttpx</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">nghttp2/nghttp2</remote-id>
+	</upstream>
+</pkgmetadata>

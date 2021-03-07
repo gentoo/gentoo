@@ -1,0 +1,110 @@
+https://bugs.gentoo.org/722618
+Submitted-by: inasprecali@disroot.org
+Author: smuglispweenie@gmail.com
+--- a/lisp-kernel/area.h
++++ b/lisp-kernel/area.h
+@@ -108,7 +108,7 @@ Boolean grow_dynamic_area(natural);
+ Boolean shrink_dynamic_area(natural);
+ 
+ /* serialize add_area/remove_area, and also the tcr queue */
+-void *tcr_area_lock;
++extern void *tcr_area_lock;
+ 
+ #define reserved_area ((area *)(all_areas))
+ #define active_dynamic_area ((area *)(reserved_area->succ))
+--- a/lisp-kernel/gc-common.c
++++ b/lisp-kernel/gc-common.c
+@@ -92,6 +92,7 @@ LispObj GCarealow = 0, GCareadynamiclow = 0;
+ natural GCndnodes_in_area = 0, GCndynamic_dnodes_in_area = 0;
+ LispObj GCweakvll = (LispObj)NULL;
+ LispObj GCdwsweakvll = (LispObj)NULL;
++LispObj GCfirstunmarked = (LispObj) NULL;
+ LispObj GCephemeral_low = 0;
+ natural GCn_ephemeral_dnodes = 0;
+ natural GCstack_limit = 0;
+--- a/lisp-kernel/gc.h
++++ b/lisp-kernel/gc.h
+@@ -62,8 +62,8 @@
+ extern LispObj GCarealow, GCareadynamiclow;
+ extern natural GCndnodes_in_area, GCndynamic_dnodes_in_area;
+ extern bitvector GCmarkbits, GCdynamic_markbits,managed_static_refbits,global_refidx,dynamic_refidx,managed_static_refidx;
+-LispObj *global_reloctab, *GCrelocptr;
+-LispObj GCfirstunmarked;
++extern LispObj *global_reloctab, *GCrelocptr;
++extern LispObj GCfirstunmarked;
+ 
+ extern natural lisp_heap_gc_threshold;
+ extern natural lisp_heap_notify_threshold;
+@@ -83,7 +83,6 @@ void gc(TCR *, signed_natural);
+ int change_hons_area_size(TCR *, signed_natural);
+ void delete_protected_area(protected_area_ptr);
+ Boolean egc_control(Boolean, BytePtr);
+-Boolean free_segments_zero_filled_by_OS;
+ Boolean new_heap_segment(ExceptionInformation *, natural, Boolean , TCR *, Boolean *);
+ void platform_new_heap_segment(ExceptionInformation *, TCR*, BytePtr, BytePtr);
+ /* an type representing 1/4 of a natural word */
+@@ -153,19 +152,19 @@ void report_paging_info_delta(FILE*, paging_info *, paging_info *);
+ #define GC_TRAP_FUNCTION_FREEZE 129
+ #define GC_TRAP_FUNCTION_THAW 130
+ 
+-Boolean GCDebug, GCverbose, just_purified_p;
+-bitvector GCmarkbits, GCdynamic_markbits;
+-LispObj GCarealow, GCareadynamiclow;
+-natural GCndnodes_in_area, GCndynamic_dnodes_in_area;
+-LispObj GCweakvll,GCdwsweakvll;
+-LispObj GCephemeral_low;
+-natural GCn_ephemeral_dnodes;
+-natural GCstack_limit;
++extern Boolean GCDebug, GCverbose, just_purified_p;
++extern bitvector GCmarkbits, GCdynamic_markbits;
++extern LispObj GCarealow, GCareadynamiclow;
++extern natural GCndnodes_in_area, GCndynamic_dnodes_in_area;
++extern LispObj GCweakvll, GCdwsweakvll;
++extern LispObj GCephemeral_low;
++extern natural GCn_ephemeral_dnodes;
++extern natural GCstack_limit;
+ 
+ #if WORD_SIZE == 64
+-unsigned short *_one_bits;
++extern unsigned short *_one_bits;
+ #else
+-const unsigned char _one_bits[256];
++extern const unsigned char _one_bits[256];
+ #endif
+ 
+ #define one_bits(x) _one_bits[x]
+@@ -195,11 +194,10 @@ void gc(TCR *, signed_natural);
+ /* backend-interface */
+ 
+ typedef void (*weak_mark_fun) (LispObj);
+-weak_mark_fun mark_weak_htabv, dws_mark_weak_htabv;
++extern weak_mark_fun mark_weak_htabv, dws_mark_weak_htabv;
+ 
+ typedef void (*weak_process_fun)(void);
+-
+-weak_process_fun markhtabvs;
++extern weak_process_fun markhtabvs;
+ 
+ 
+ #define hash_table_vector_header_count (sizeof(hash_table_vector_header)/sizeof(LispObj))
+--- a/lisp-kernel/pmcl-kernel.c
++++ b/lisp-kernel/pmcl-kernel.c
+@@ -151,6 +151,8 @@ wperror(char* message)
+ 
+ LispObj lisp_nil = (LispObj) 0;
+ bitvector global_mark_ref_bits = NULL, dynamic_mark_ref_bits = NULL, relocatable_mark_ref_bits = NULL, global_refidx = NULL, dynamic_refidx = NULL,managed_static_refidx = NULL;
++LispObj *global_reloctab = (LispObj*) 0, *GCrelocptr = (LispObj*) 0;
++void *tcr_area_lock = NULL;
+ 
+ 
+ /* These are all "persistent" : they're initialized when
+--- a/lisp-kernel/threads.h
++++ b/lisp-kernel/threads.h
+@@ -187,7 +187,6 @@ void tsd_set(LispObj, void *);
+ void *tsd_get(LispObj);
+ TCR *new_tcr(natural, natural);
+ void thread_init_tcr(TCR *tcr, void *stack_base, natural stack_size);
+-TCR *initial_thread_tcr;
+ 
+ #define DEFAULT_THREAD_STACK_SIZE ((size_t) -1)
+ #define MINIMAL_THREAD_STACK_SIZE ((size_t) 0)

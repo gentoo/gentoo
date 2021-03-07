@@ -1,0 +1,20 @@
+--- magic-7.5.202/textio/txInput.c
++++ magic-7.5.202/textio/txInput.c
+@@ -21,6 +21,7 @@
+ #endif  /* not lint */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <string.h>
+ #include <sys/time.h>
+ #include <sys/types.h>
+--- magic-8.0.131/graphics/grX11su3.c
++++ magic-8.0.131/graphics/grX11su3.c
+@@ -20,6 +20,7 @@
+ 
+ #include <stdio.h>
+ #include <string.h>
++#include <math.h>
+ #include <X11/Xlib.h>
+ 
+ #include "utils/magic.h"

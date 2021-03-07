@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chiitoo@gentoo.org</email>
+		<name>Jimi Huotari</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>NP-Hardass@gentoo.org</email>
+		<name>NP-Hardass</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>wine@gentoo.org</email>
+		<name>Wine</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="google-code">winetricks</remote-id>
+		<remote-id type="github">Winetricks/winetricks</remote-id>
+	</upstream>
+	<use>
+		<flag name="rar">Pull in <pkg>app-arch/unrar</pkg> for extraction of
+		rar-compressed game files</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,18 @@
+--- a/source/museq.c
++++ b/source/museq.c
+@@ -38,6 +38,7 @@
+ //extern void calc_weight(struct diag* dg, struct scr_matrix* smatrix, 
+ //		 struct prob_dist *pdist);
+ //extern struct diag_col *create_diag_col(int seq_amount);
++extern void free_diag(struct diag* dg);
+ extern void free_diag_col(struct diag_col* dcol);
+ extern struct diag_col *find_all_diags(struct scr_matrix *smatrix, 
+ 				struct prob_dist *pdist, 
+@@ -52,6 +53,7 @@
+ 
+ // alig.c
+ extern struct alignment* create_empty_alignment(struct seq_col *scol);
++extern void free_alignment(struct alignment *algn);
+ //extern char adapt_diag(struct alignment *algn, struct scr_matrix *smatrix, struct diag* dg);
+ extern int  simple_aligner(struct seq_col *scol, struct diag_col *dcol, 
+ 			    struct scr_matrix* smatrix, 

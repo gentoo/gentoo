@@ -1,0 +1,17 @@
+compile fix for >=vdr-1.7.2
+Joerg Bornkessel <hd_brummy@gentoo.org> 07 May 2009
+diff -Naur vcd-0.9.orig/player.h vcd-0.9/player.h
+--- vcd-0.9.orig/player.h   2009-05-07 17:10:46.839425275 +0200
++++ vcd-0.9/player.h    2009-05-07 17:12:55.446843178 +0200
+@@ -42,6 +42,11 @@
+ #define VIDEO_STREAM_SC     0xE0
+ #define SC_MASK             0xE0
+
++#if VDRVERSNUM > 10701
++#define I_FRAME             1
++#define FRAMESPERSEC        25
++#endif
++
+ class cVcdPlayer;
+
+ class cVcdPlayerControl : public cControl {

@@ -1,0 +1,12 @@
+--- a/desktop/net-gproftpd.desktop
++++ b/desktop/net-gproftpd.desktop
+@@ -16,7 +16,7 @@
+ GenericName=GPROFTPD
+ Comment=Proftpd FTP server administration
+ Exec=gproftpd
+-Icon=gproftpd.png
++Icon=gproftpd
+ Terminal=false
+ Type=Application
+-Categories=Application;Network;X-Red-Hat-ServerConfig;X-Red-Hat-Base;
++Categories=Network

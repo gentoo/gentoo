@@ -1,0 +1,51 @@
+--- htb.init.old	2005-03-15 14:56:08.328305288 +0200
++++ htb.init		2005-03-15 15:05:16.612953352 +0200
+@@ -240,6 +240,10 @@
+ #      Maximum packet size HTB creates rate maps for. The default should
+ #      be sufficient for most cases, it certainly is for Ethernet.
+ #
++# TOS=<number>                                 optional, default "none"
++#
++#      TOS field
++#
+ ### SFQ qdisc parameters
+ #
+ # The SFQ queueing discipline is a cheap way to fairly share class bandwidth
+@@ -435,6 +435,7 @@
+ HTB_CLASS="RATE\|CEIL\|BURST\|CBURST\|PRIO\|LEAF\|MTU"
+ HTB_CLASS="$HTB_CLASS\|PRIO_RULE\|PRIO_MARK\|PRIO_REALM"
+ HTB_CLASS="$HTB_CLASS\|LIMIT\|QUANTUM\|PERTURB"
++HTB_CLASS="$HTB_CLASS\|TOS"
+ 
+ 
+ #############################################################################
+@@ -646,7 +647,7 @@
+ 	### Set defaults & load class
+ 	MTU=""; LEAF=none; PERTURB=10
+ 	RATE=""; BURST=""; CEIL=""; CBURST=""
+-	PRIO=""; LIMIT=""; QUANTUM=""
++	PRIO=""; LIMIT=""; QUANTUM=""; TOS=""
+ 	
+ 	PRIO_RULE=$PRIO_RULE_DEFAULT
+ 	PRIO_MARK=$PRIO_MARK_DEFAULT
+@@ -868,12 +869,19 @@
+ 		u32_d="${DPORT:+match ip dport $DPORT $DMASK}"
+ 		u32_d="${DADDR:+match ip dst $DADDR} $u32_d"
+ 
++
++		u32_tos=""
++                if [ -n "$TOS" ]; then
++                        u32_tos="match ip tos $TOS 0xff"
++                fi
++
++
+ 		### Uncomment the following if you want to see parsed rules
+ 		#echo "$rule: $u32_s $u32_d"
+ 
+ 		### Attach u32 filter to the appropriate class
+ 		tc filter add dev $DEVICE parent 1:0 protocol ip \
+-		prio $PRIO_RULE u32 $u32_s $u32_d classid 1:$CLASS
++		prio $PRIO_RULE u32 $u32_s $u32_d $u32_tos classid 1:$CLASS
+ 	done ### rule
+ 
+ 	[ "$1" = "compile" ] && echo

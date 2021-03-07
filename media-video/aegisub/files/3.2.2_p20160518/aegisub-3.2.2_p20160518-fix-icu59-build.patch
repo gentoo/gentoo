@@ -1,0 +1,18 @@
+commit dd67db47cb2203e7a14058e52549721f6ff16a49
+Author: Maxime Gauduin <alucryd@archlinux.org>
+Date:   Tue May 9 04:01:47 2017 +0200
+
+Fix compilation against icu 59.1 (#46)
+
+diff --git a/src/utils.cpp b/src/utils.cpp
+index e1cde5e83..876c4c011 100644
+--- a/src/utils.cpp
++++ b/src/utils.cpp
+@@ -44,6 +44,7 @@
+ #include <boost/filesystem/path.hpp>
+ #include <map>
+ #include <unicode/locid.h>
++#include <unicode/unistr.h>
+ #include <wx/clipbrd.h>
+ #include <wx/filedlg.h>
+ #include <wx/stdpaths.h>

@@ -1,0 +1,160 @@
+--- a/src/java/org/apache/commons/collections/map/MultiValueMap.java
++++ b/src/java/org/apache/commons/collections/map/MultiValueMap.java
+@@ -153,7 +153,7 @@
+      * @param value the value to remove
+      * @return the value removed (which was passed in), null if nothing removed
+      */
+-    public Object remove(Object key, Object value) {
++    public Object removeMapping(Object key, Object value) {
+         Collection valuesForKey = getCollection(key);
+         if (valuesForKey == null) {
+             return null;
+--- a/src/java/org/apache/commons/collections/MultiHashMap.java
++++ b/src/java/org/apache/commons/collections/MultiHashMap.java
+@@ -331,7 +331,7 @@
+      * @param item  the value to remove
+      * @return the value removed (which was passed in), null if nothing removed
+      */
+-    public Object remove(Object key, Object item) {
++    public Object removeMapping(Object key, Object item) {
+         Collection valuesForKey = getCollection(key);
+         if (valuesForKey == null) {
+             return null;
+--- a/src/java/org/apache/commons/collections/MultiMap.java
++++ b/src/java/org/apache/commons/collections/MultiMap.java
+@@ -66,7 +66,7 @@
+      * @throws ClassCastException if the key or value is of an invalid type
+      * @throws NullPointerException if the key or value is null and null is invalid
+      */
+-    public Object remove(Object key, Object item);
++    public Object removeMapping(Object key, Object item);
+ 
+     //-----------------------------------------------------------------------
+     /**
+--- a/src/test/org/apache/commons/collections/map/TestMultiValueMap.java
++++ b/src/test/org/apache/commons/collections/map/TestMultiValueMap.java
+@@ -160,7 +160,7 @@
+         MultiValueMap one = new MultiValueMap();
+         Integer value = new Integer(1);
+         one.put("One", value);
+-        one.remove("One", value);
++        one.removeMapping("One", value);
+         
+         MultiValueMap two = new MultiValueMap();
+         assertEquals(two, one);
+@@ -186,7 +186,7 @@
+         assertEquals(4, map.totalSize());
+         map.remove("A");
+         assertEquals(3, map.totalSize());
+-        map.remove("B", "BC");
++        map.removeMapping("B", "BC");
+         assertEquals(2, map.totalSize());
+     }
+     
+@@ -203,7 +203,7 @@
+         assertEquals(2, map.size());
+         map.remove("A");
+         assertEquals(2, map.size());
+-        map.remove("B", "BC");
++        map.removeMapping("B", "BC");
+         assertEquals(2, map.size());
+     }
+     
+@@ -226,7 +226,7 @@
+         map.remove("A");
+         assertEquals(0, map.size("A"));
+         assertEquals(3, map.size("B"));
+-        map.remove("B", "BC");
++        map.removeMapping("B", "BC");
+         assertEquals(0, map.size("A"));
+         assertEquals(2, map.size("B"));
+     }
+@@ -327,11 +327,11 @@
+         map.put("A", "AA");
+         map.put("A", "AB");
+         map.put("A", "AC");
+-        assertEquals(null, map.remove("C", "CA"));
+-        assertEquals(null, map.remove("A", "AD"));
+-        assertEquals("AC", map.remove("A", "AC"));
+-        assertEquals("AB", map.remove("A", "AB"));
+-        assertEquals("AA", map.remove("A", "AA"));
++        assertEquals(null, map.removeMapping("C", "CA"));
++        assertEquals(null, map.removeMapping("A", "AD"));
++        assertEquals("AC", map.removeMapping("A", "AC"));
++        assertEquals("AB", map.removeMapping("A", "AB"));
++        assertEquals("AA", map.removeMapping("A", "AA"));
+         assertEquals(new MultiValueMap(), map);
+     }
+ 
+--- a/src/test/org/apache/commons/collections/TestMultiHashMap.java
++++ b/src/test/org/apache/commons/collections/TestMultiHashMap.java
+@@ -217,7 +217,7 @@
+         MultiHashMap one = new MultiHashMap();
+         Integer value = new Integer(1);
+         one.put("One", value);
+-        one.remove("One", value);
++        one.removeMapping("One", value);
+         
+         MultiHashMap two = new MultiHashMap();
+         assertEquals(two, one);
+@@ -269,7 +269,7 @@
+         assertEquals(4, map.totalSize());
+         map.remove("A");
+         assertEquals(3, map.totalSize());
+-        map.remove("B", "BC");
++        map.removeMapping("B", "BC");
+         assertEquals(2, map.totalSize());
+     }
+     
+@@ -292,7 +292,7 @@
+         map.remove("A");
+         assertEquals(0, map.size("A"));
+         assertEquals(3, map.size("B"));
+-        map.remove("B", "BC");
++        map.removeMapping("B", "BC");
+         assertEquals(0, map.size("A"));
+         assertEquals(2, map.size("B"));
+     }
+@@ -464,11 +464,11 @@
+         map.put("A", "AA");
+         map.put("A", "AB");
+         map.put("A", "AC");
+-        assertEquals(null, map.remove("C", "CA"));
+-        assertEquals(null, map.remove("A", "AD"));
+-        assertEquals("AC", map.remove("A", "AC"));
+-        assertEquals("AB", map.remove("A", "AB"));
+-        assertEquals("AA", map.remove("A", "AA"));
++        assertEquals(null, map.removeMapping("C", "CA"));
++        assertEquals(null, map.removeMapping("A", "AD"));
++        assertEquals("AC", map.removeMapping("A", "AC"));
++        assertEquals("AB", map.removeMapping("A", "AB"));
++        assertEquals("AA", map.removeMapping("A", "AA"));
+         assertEquals(new MultiHashMap(), map);
+     }
+ 
+--- a/src/java/org/apache/commons/collections/map/MultiKeyMap.java
++++ b/src/java/org/apache/commons/collections/map/MultiKeyMap.java
+@@ -197,7 +197,7 @@
+      * @param key2  the second key
+      * @return the value mapped to the removed key, null if key not in map
+      */
+-    public Object remove(Object key1, Object key2) {
++    public Object removeMultiKey(Object key1, Object key2) {
+         int hashCode = hash(key1, key2);
+         int index = map.hashIndex(hashCode, map.data.length);
+         AbstractHashedMap.HashEntry entry = map.data[index];
+--- a/src/test/org/apache/commons/collections/map/TestMultiKeyMap.java
++++ b/src/test/org/apache/commons/collections/map/TestMultiKeyMap.java
+@@ -315,10 +315,10 @@
+             switch (key.size()) {
+                 case 2:
+                 assertEquals(true, multimap.containsKey(key.getKey(0), key.getKey(1)));
+-                assertEquals(value, multimap.remove(key.getKey(0), key.getKey(1)));
++                assertEquals(value, multimap.removeMultiKey(key.getKey(0), key.getKey(1)));
+                 assertEquals(false, multimap.containsKey(key.getKey(0), key.getKey(1)));
+                 assertEquals(size - 1, multimap.size());
+-                assertEquals(null, multimap.remove(key.getKey(0), key.getKey(1)));
++                assertEquals(null, multimap.removeMultiKey(key.getKey(0), key.getKey(1)));
+                 assertEquals(false, multimap.containsKey(key.getKey(0), key.getKey(1)));
+                 break;
+                 case 3:

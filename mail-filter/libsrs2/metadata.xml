@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<!-- maintainer-needed -->
+<longdescription>
+	libsrs2 is the next generation SRS library from the original designer of
+	SRS. It implements the Sender Rewriting Scheme, a part of the SPF/SRS
+	protocol pair. Libsrs2 has been written from an entirely clean codebase with
+	compliance, speed and versatility in mind. It is platform independent and
+	has no external dependencies. It is thread-safe and heap-safe, and is
+	suitable for large scale applications and embedded systems and can operate
+	without many standard system facilities.
+</longdescription>
+</pkgmetadata>

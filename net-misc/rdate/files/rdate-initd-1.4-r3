@@ -1,0 +1,26 @@
+#!/sbin/openrc-run
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	before cron
+	need net
+	use dns
+}
+
+checkconfig() {
+	if [ -z "${RDATE_SERVER}" ] ; then
+		eerror "Please edit /etc/conf.d/rdate"
+		eerror "I need to know what server to use!"
+		return 1
+	fi
+	return 0
+}
+
+start() {
+	checkconfig || return $?
+
+	ebegin "Setting clock via rdate"
+	/usr/bin/rdate -s ${RDATE_OPTS} -t ${RDATE_TIMEOUT} ${RDATE_SERVER} > /dev/null
+	eend $? "Failed to set clock"
+}

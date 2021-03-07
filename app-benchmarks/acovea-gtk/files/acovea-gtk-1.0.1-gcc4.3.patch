@@ -1,0 +1,23 @@
+--- a/src/settings_window.cc
++++ b/src/settings_window.cc
+@@ -6,6 +6,7 @@
+ // This file is for your program, I won't touch it again!
+ 
+ #include <gtkmm.h>
++#include <cstring>
+ #include "config.h"
+ #include "settings_window.hh"
+ 
+
+--- a/src/main_window.cc
++++ b/src/main_window.cc
+@@ -9,6 +9,8 @@
+ #include <gtkmm.h>
+ #include <gtkmm/main.h>
+ #include <iomanip>
++#include <cstring>
++#include <sys/stat.h>
+ #include "config.h"
+ #include "main_window.hh"
+ 
+

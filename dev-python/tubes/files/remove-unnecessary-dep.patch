@@ -1,0 +1,24 @@
+From 2c05dd8f27c97ebbfea18706ff54d2406448b09a Mon Sep 17 00:00:00 2001
+From: Glyph <glyph@twistedmatrix.com>
+Date: Tue, 3 Mar 2020 01:24:13 -0800
+Subject: [PATCH] remove unnecessary dependency
+
+---
+ setup.py | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index c647927..e9e3134 100644
+--- a/setup.py
++++ b/setup.py
+@@ -16,7 +16,6 @@ setup(
+     packages=find_packages(exclude=[]),
+     package_dir={'tubes': 'tubes'},
+     install_requires=[
+-        "characteristic",
+         "six",
+         "Twisted",
+     ],
+--
+libgit2 1.0.1
+

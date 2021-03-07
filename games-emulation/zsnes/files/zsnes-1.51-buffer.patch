@@ -1,0 +1,85 @@
+--- src/initc.c.fortify
++++ src/initc.c
+@@ -1464,8 +1464,8 @@
+   clearmem2();
+ }
+ 
+-extern unsigned char BRRBuffer[32];
+-extern unsigned char echoon0;
++extern unsigned char BRRBuffer[];
++extern unsigned char echoon0[];
+ extern unsigned int PHdspsave;
+ extern unsigned int PHdspsave2;
+ unsigned char echobuf[90000];
+@@ -1479,7 +1479,7 @@
+   memset(vidmemch4, 0, 4096);
+   memset(vidmemch8, 0, 4096);
+   memset(BRRBuffer, 0, PHdspsave);
+-  memset(&echoon0, 0, PHdspsave2);
++  memset(echoon0, 0, PHdspsave2);
+   memset(echobuf, 0, 90000);
+   memset(spcBuffera, 0, 65536*4+4096);
+   memset(DSPMem, 0, 256);
+@@ -1822,7 +1822,7 @@
+ 
+ extern unsigned int nmiprevaddrl, nmiprevaddrh, nmirept, nmiprevline, nmistatus;
+ extern unsigned char spcnumread, yesoutofmemory;
+-extern unsigned char NextLineCache, sramsavedis, sndrot, regsbackup[3019];
++extern unsigned char NextLineCache, sramsavedis, sndrot[], regsbackup[3019];
+ extern unsigned int Voice0Freq, Voice1Freq, Voice2Freq, Voice3Freq;
+ extern unsigned int Voice4Freq, Voice5Freq, Voice6Freq, Voice7Freq;
+ extern unsigned int dspPAdj;
+@@ -2621,7 +2621,7 @@
+     }
+ 
+     sramsavedis = 0;
+-    memcpy(&sndrot, regsbackup, 3019);
++    memcpy(sndrot, regsbackup, 3019);
+ 
+     if (yesoutofmemory) { asm_call(outofmemfix); }
+     asm_call(GUIDoReset);
+--- src/zstate.c.fortify
++++ src/zstate.c
+@@ -99,15 +99,15 @@
+   copy_func(buffer, &cycpbl, 4);
+   copy_func(buffer, &cycpblt, 4);
+   //SNES PPU Register status
+-  copy_func(buffer, &sndrot, 3019);
++  copy_func(buffer, sndrot, 3019);
+ }
+ 
+ static void copy_spc_data(unsigned char **buffer, void (*copy_func)(unsigned char **, void *, size_t))
+ {
+   //SPC stuff, DSP stuff
+   copy_func(buffer, SPCRAM, PHspcsave);
+-  copy_func(buffer, &BRRBuffer, PHdspsave);
+-  copy_func(buffer, &DSPMem, sizeof(DSPMem));
++  copy_func(buffer, BRRBuffer, PHdspsave);
++  copy_func(buffer, DSPMem, sizeof(DSPMem));
+ }
+ 
+ static void copy_extra_data(unsigned char **buffer, void (*copy_func)(unsigned char **, void *, size_t))
+@@ -156,7 +156,7 @@
+     /*
+     if (buffer) //Rewind stuff
+     {
+-      copy_func(&buffer, &echoon0, PHdspsave2);
++      copy_func(&buffer, echoon0, PHdspsave2);
+     }
+     */
+   }
+--- src/gblvars.h.fortify
++++ src/gblvars.h
+@@ -33,9 +33,9 @@
+ extern unsigned int SfxR0, *setaramdata, ramsize, *sram, nmiprevaddrh;
+ extern unsigned int tempesi, tempedi, tempedx, tempebp;
+ extern unsigned int SPCMultA, PHnum2writespc7110reg, PHdspsave2;
+-extern unsigned char sndrot, SPCRAM[65472], DSPMem[256], SA1Status, *SA1RAMArea;
+-extern unsigned char DSP1Enable, DSP1COp, prevoamptr, BRRBuffer[32], *romdata;
+-extern unsigned char curcyc, echoon0, spcnumread, NextLineCache, HIRQNextExe;
++extern unsigned char sndrot[], SPCRAM[65472], DSPMem[256], SA1Status, *SA1RAMArea;
++extern unsigned char DSP1Enable, DSP1COp, prevoamptr, BRRBuffer[], *romdata;
++extern unsigned char curcyc, echoon0[], spcnumread, NextLineCache, HIRQNextExe;
+ extern unsigned char vidmemch4[4096], vidmemch8[4096], vidmemch2[4096];
+ 
+ extern bool C4Enable, SFXEnable, SA1Enable, SPC7110Enable, SETAEnable, DSP4Enable, spcon;

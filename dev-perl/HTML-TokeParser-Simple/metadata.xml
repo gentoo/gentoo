@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">HTML-TokeParser-Simple</remote-id>
+    <remote-id type="cpan-module">HTML::TokeParser::Simple</remote-id>
+    <remote-id type="cpan-module">HTML::TokeParser::Simple::Token</remote-id>
+    <remote-id type="cpan-module">HTML::TokeParser::Simple::Token::Comment</remote-id>
+    <remote-id type="cpan-module">HTML::TokeParser::Simple::Token::Declaration</remote-id>
+    <remote-id type="cpan-module">HTML::TokeParser::Simple::Token::ProcessInstruction</remote-id>
+    <remote-id type="cpan-module">HTML::TokeParser::Simple::Token::Tag</remote-id>
+    <remote-id type="cpan-module">HTML::TokeParser::Simple::Token::Tag::End</remote-id>
+    <remote-id type="cpan-module">HTML::TokeParser::Simple::Token::Tag::Start</remote-id>
+    <remote-id type="cpan-module">HTML::TokeParser::Simple::Token::Text</remote-id>
+  </upstream>
+</pkgmetadata>

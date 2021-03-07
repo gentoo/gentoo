@@ -1,0 +1,55 @@
+--- cdctl/Makefile.in
++++ cdctl/Makefile.in
+@@ -1,8 +1,8 @@
+ CC=gcc
+-CFLAGS=-Wall -g
++CFLAGS:=-Wall -g
+ BINS=cdctl sndreset
+ OBJS=cdctl.o version.o ioctls.o iso_header.o
+-DOCS=NEWS NUTSANDBOLTS LICENSE PUBLICKEY README SEGFAULTS
++DOCS=NEWS NUTSANDBOLTS LICENSE PUBLICKEY README
+ # NOTE:  all man pages are installed in $(mandir)/man1 -- see install-mans
+ MANS=cdctl.1
+ MOS=cdctl.mo
+@@ -22,6 +22,8 @@
+ INSTALL_DIR = $(INSTALL) -d
+ INSTALL_DATA = $(INSTALL) -m 644
+ 
++DESTDIR =
++
+ all: $(BINS)
+ 
+ cdctl: $(OBJS)
+@@ -35,25 +37,21 @@
+ indent:
+ 	indent -kr -cdb -sc *.c
+ 
+-install: install-bins install-docs install-mans install-mos
++install: install-bins install-mans install-mos
+ 
+ install-bins: $(BINS)
+-	$(INSTALL_DIR) $(bindir)
+-	$(INSTALL) -s $(BINS) $(bindir)
+-
+-install-docs: $(DOCS)
+-	$(INSTALL_DIR) $(docdir)
+-	$(INSTALL_DATA) $(DOCS) $(docdir)
++	$(INSTALL_DIR) $(DESTDIR)$(bindir)
++	$(INSTALL) $(BINS) $(DESTDIR)$(bindir)
+ 
+ install-mans: $(MANS)
+-	$(INSTALL_DIR) $(mandir)/man1
+-	$(INSTALL_DATA) $(MANS) $(mandir)/man1
++	$(INSTALL_DIR) $(DESTDIR)/$(mandir)/man1
++	$(INSTALL_DATA) $(MANS) $(DESTDIR)$(mandir)/man1
+ 
+ # FIXME: need to deal with other languages besides German
+ 
+ install-mos: cdctl.mo
+-	$(INSTALL_DIR) $(localedir)/de/LC_MESSAGES
+-	$(INSTALL_DATA) $(MOS) $(localedir)/de/LC_MESSAGES
++	$(INSTALL_DIR) $(DESTDIR)$(localedir)/de/LC_MESSAGES
++	$(INSTALL_DATA) $(MOS) $(DESTDIR)$(localedir)/de/LC_MESSAGES
+ 
+ cdctl.mo: cdctl.po
+ 	msgfmt cdctl.po -o cdctl.mo

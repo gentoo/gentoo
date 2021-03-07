@@ -1,0 +1,12 @@
+http://bugs.gentoo.org/228217
+
+--- a/config.hpp
++++ b/config.hpp
+@@ -24,6 +24,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <cstring>
+ 
+ #include <errno.h>
+ #include <unistd.h>

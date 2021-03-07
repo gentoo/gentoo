@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>juippis@gentoo.org</email>
+    <name>Joonas Niilola</name>
+  </maintainer>
+  <use>
+    <flag name="xwayland">Enable XWayland application support</flag>
+  </use>
+  <longdescription>
+    Enlightenment is classed as a "desktop shell" as it provides everything you need to 
+    operate your desktop or laptop, but it is not a full application suite. This covers 
+    functionality including launching applications, managing their windows and performing 
+    system tasks like suspending, rebooting, managing files and so on.
+  </longdescription>
+</pkgmetadata>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>dilfridge@gentoo.org</email>
+	<name>Andreas K. Huettel</name>
+</maintainer>
+<maintainer type="person">
+	<email>heroxbd@gentoo.org</email>
+	<name>Benda Xu</name>
+</maintainer>
+<maintainer type="person">
+	<email>alexxy@gentoo.org</email>
+	<name>Alexey Shvetsov</name>
+</maintainer>
+<maintainer type="person">
+	<email>chewi@gentoo.org</email>
+	<name>James Le Cuirot</name>
+</maintainer>
+<upstream>
+	<bugs-to>https://www.xpra.org/trac/report</bugs-to>
+</upstream>
+<use>
+	<flag name="brotli">Enable brotli compression support</flag>
+	<flag name="client">Build client-side code</flag>
+	<flag name="clipboard">Enable clipboard support</flag>
+	<flag name="csc">Enable csc softscaler support</flag>
+	<flag name="pillow">Enable pillow support</flag>
+	<flag name="server">Build server-side code</flag>
+	<flag name="vpx">Enable vpx image format support</flag>
+	<flag name="webcam">Enable webcam support via opencv</flag>
+</use>
+</pkgmetadata>

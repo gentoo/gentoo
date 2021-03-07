@@ -1,0 +1,19 @@
+#!/bin/bash -e
+
+if [[ $1 = install ]]; then
+	# Ensure database credentials are not world-readable.
+	chmod -v o= "${MY_INSTALLDIR}"/config.php
+
+	# These paths need to be writeable by the PHP user.
+	PATHS=( "${MY_INSTALLDIR}"/{cache/,config.php,download/,files/,store/,images/avatars/upload/} )
+
+	# Assume the PHP user is in the config group.
+	GID=${VHOST_CONFIG_GID}
+
+	# If that group is root, assume the web server group instead.
+	[[ ${GID} = 0 || ${GID} = root ]] && GID=${VHOST_SERVER_GID}
+
+	# Make the paths writeable by that group.
+	chgrp -v "${GID}" "${PATHS[@]}"
+	chmod -v g+w "${PATHS[@]}"
+fi

@@ -1,0 +1,11 @@
+--- a/galleta.c
++++ b/galleta.c
+@@ -35,6 +35,8 @@
+ #include <stdio.h>
+ #include <time.h>
+ #include <math.h>
++#include <stdlib.h>
++#include <string.h>
+ 
+ #define STRSIZE		1000
+ 

@@ -1,0 +1,11 @@
+--- a/libmultipath/structs.h
++++ b/libmultipath/structs.h
+@@ -106,7 +106,7 @@ enum yes_no_undef_states {
+  * _FIND_MULTIPATHS_F must have the same value as YNU_YES.
+  * Generate a compile time error if that isn't the case.
+  */
+-char ___error1___[-(_FIND_MULTIPATHS_F != YNU_YES)];
++extern char ___error1___[-(_FIND_MULTIPATHS_F != YNU_YES)];
+ 
+ #define find_multipaths_on(conf) \
+ 	(!!((conf)->find_multipaths & _FIND_MULTIPATHS_F))

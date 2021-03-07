@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>zerochaos@gentoo.org</email>
+	<name>Rick Farina</name>
+	<description>Also on the upstream team</description>
+</maintainer>
+<maintainer type="project">
+	<email>netmon@gentoo.org</email>
+	<name>Gentoo network monitoring and analysis project</name>
+</maintainer>
+<longdescription>
+	aircrack is a set of tools for auditing wireless networks.
+	aircrack-ng is the next generation of aircrack with lots of new features.
+	(from http://www.aircrack-ng.org)
+</longdescription>
+<use>
+	<flag name="airdrop-ng">Build airdrop-ng</flag>
+	<flag name="airgraph-ng">Build airgraph-ng</flag>
+	<flag name="experimental">Build the "experimental" tools which may randomly fail to run properly</flag>
+	<flag name="netlink">Use netlink for channel control instead of WEXT</flag>
+</use>
+	<upstream>
+		<remote-id type="github">aircrack-ng/aircrack-ng</remote-id>
+	</upstream>
+</pkgmetadata>

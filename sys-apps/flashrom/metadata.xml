@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<use>
+		<flag name="atahpt">Highpoint (HPT) ATA/RAID controller support</flag>
+		<flag name="atapromise">Support for Promise PDC2026x (FastTrak/Ultra)</flag>
+		<flag name="atavia">Support for VIA VT6421A SATA controllers</flag>
+		<flag name="buspirate-spi">Enable Bus Pirate SPI programmer</flag>
+		<flag name="ch341a-spi">Enable WCH CH341A SPI programmer</flag>
+		<flag name="dediprog">Dediprog SF100 support</flag>
+		<flag name="developerbox-spi">Enable Devloperbox SPI recovery support</flag>
+		<flag name="digilent-spi">Enable support for Digilent iCEblink40 development board</flag>
+		<flag name="drkaiser">Enable Dr. Kaiser programmer</flag>
+		<flag name="dummy">Enable dummy tracing</flag>
+		<flag name="ene-lpc">Enable ENE LPC interface keyboard controller</flag>
+		<flag name="ft2232-spi">Enable ftdi programmer, flashing through FTDI/SPI USB interface</flag>
+		<flag name="gfxnvidia">Enable NVIDIA programmer</flag>
+		<flag name="internal">Enable internal/onboard support</flag>
+		<flag name="internal-dmi">Enable internal DMI decoding rather than use <pkg>sys-apps/dmidecode</pkg></flag>
+		<flag name="it8212">Support for ITE IT8212F ATA/RAID controllers</flag>
+		<flag name="jlink-spi">Support for SEGGER J-Link and compatible devices</flag>
+		<flag name="linux-mtd">Enable support for Linux mtd SPI flash devices</flag>
+		<flag name="linux-spi">Enable support for Linux userspace spidev interface</flag>
+		<flag name="lspcon-i2c-spi">Enable support for Parade lspcon USB-C to HDMI protocol translator</flag>
+		<flag name="mec1308">Enable support for Microchip MEC1308 embedded controller</flag>
+		<flag name="mstarddc-spi">Support for SPI flash ROMs accessible through DDC in MSTAR-equipped displays</flag>
+		<flag name="nic3com">Enable 3Com NIC programmer</flag>
+		<flag name="nicintel">Support for Intel NICs</flag>
+		<flag name="nicintel-eeprom">Support for EEPROMs on Intel Gigabit network cards</flag>
+		<flag name="nicintel-spi">Support for SPI on Intel NICs</flag>
+		<flag name="nicnatsemi">Support for National Semiconductor NICs</flag>
+		<flag name="nicrealtek">Support for Realtek NICs</flag>
+		<flag name="ogp-spi">Enable support for OGP (Open Graphics Project) SPI flashing</flag>
+		<flag name="pickit2-spi">SUpport for SPI flash ROMs accessible via Microchip PICkit2</flag>
+		<flag name="pony-spi">Enable support for SI-Prog like hardware by Lancos</flag>
+		<flag name="raiden-debug-spi">Enable ChromiumOS Servo DUT debug board</flag>
+		<flag name="rayer-spi">RayeR SPIPGM hardware support</flag>
+		<flag name="realtek-mst-i2c-spi">Enable support for Realtek MultiStream Transport (MST)</flag>
+		<flag name="satasii">Enable programmer for SiI SATA controllers</flag>
+		<flag name="satamv">Enable programmer for Marvell SATA controllers</flag>
+		<flag name="stlinkv3-spi">Enable SPI programmer using STLINK-V3</flag>
+		<flag name="serprog">Enable Serial Flasher programmer</flag>
+		<flag name="tools">Install ich_descriptor_tool, a tool for reading descriptor-mode SPI-flash images for Intel chipsets</flag>
+		<flag name="usbblaster-spi">Enable support for Altera USB-Blaster dongles</flag>
+		<flag name="wiki">Enable wiki informations, like supported devices etc.</flag>
+	</use>
+	<longdescription lang="en">
+		flashrom is a utility for identifying, reading, writing, verifying and erasing flash chips. It is designed to flash BIOS/EFI/coreboot/firmware/optionROM images on mainboards, network/graphics/storage controller cards, and various other programmer devices.
+
+		Supports more than 380 flash chips, 260 chipsets, 450 mainboards, 50 PCI devices, 12 USB devices and various parallel/serial port-based programmers.
+		Supports parallel, LPC, FWH and SPI flash interfaces and various chip packages (DIP32, PLCC32, DIP8, SO8/SOIC8, TSOP32, TSOP40, TSOP48, BGA and more)
+		No physical access needed, root access is sufficient (not needed for some programmers).
+		No bootable floppy disk, bootable CD-ROM or other media needed.
+		No keyboard or monitor needed. Simply reflash remotely via SSH.
+		No instant reboot needed. Reflash your chip in a running system, verify it, be happy. The new firmware will be present next time you boot.
+		Crossflashing and hotflashing is possible as long as the flash chips are electrically and logically compatible (same protocol). Great for recovery.
+		Scriptability. Reflash a whole pool of identical machines at the same time from the command line. It is recommended to check flashrom output and error codes.
+		Speed. flashrom is often much faster than most vendor flash tools.
+		Portability. Supports DOS, Linux, FreeBSD, NetBSD, OpenBSD, DragonFly BSD, Solaris, Mac OS X, and other Unix-like OSes. Partial Windows support is available (no internal programmer support at the moment, hence no "BIOS flashing").
+	</longdescription>
+</pkgmetadata>

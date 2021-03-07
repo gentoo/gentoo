@@ -1,0 +1,131 @@
+diff --git a/build.xml b/build.xml
+index fca2271..11f4fbd 100755
+--- a/build.xml
++++ b/build.xml
+@@ -52,9 +52,6 @@
+     <property name="testng.verbosity" value="2"/>
+     <property name="test.debug.port" value="5005" />  <!-- override on the command line if desired -->
+ 
+-    <property environment="env"/>
+-    <property name="java6.home" value="${env.JAVA6_HOME}"/>
+-
+     <condition  property="isUnix">
+         <os family="unix"/>
+     </condition>
+@@ -78,9 +75,6 @@
+             <pathelement location="${classes}"/>
+         </path>
+ 
+-        <path id="java6.lib.ref">
+-            <fileset dir="${java6.home}/lib" includes="*.jar"/>
+-        </path>
+     </target>
+ 
+     <!-- CLEAN -->
+@@ -94,10 +88,6 @@
+     </target>
+ 
+     <!-- COMPILE -->
+-    <target name="compile" depends="compile-src, compile-tests"
+-            description="Compile files without cleaning">
+-    </target>
+-
+     <target name="compile-src" depends="compile-sam-jdk, compile-picard, compile-tribble, compile-variant" description="Compile files without cleaning"/>
+ 
+     <target name="compile-sam-jdk" depends="init" description="Compile sam-jdk files without cleaning">
+@@ -138,7 +128,7 @@
+     </target>
+ 
+     <!-- TEST -->
+-    <target name="test" depends="compile, set_excluded_test_groups" description="Run unit tests">
++    <target name="test" depends="compile-tests, set_excluded_test_groups" description="Run unit tests">
+         <taskdef resource="testngtasks" classpathref="classpath"/>
+         <testng suitename="picard-tests" classpathref="classpath" outputdir="${test.output}"
+                 failureproperty="tests.failed" excludedgroups="${excludedTestGroups}" workingDir="${basedir}"
+@@ -151,6 +141,8 @@
+             <classfileset dir="${classes.test}">
+                 <include name="**/Test*.class"/>
+                 <include name="**/*Test.class"/>
++		<exclude name="**/ValidateSamFileTest.class" />
++		<exclude name="**/VCFWriterUnitTest.class" />
+             </classfileset>
+             <jvmarg value="-Xmx2G"/>
+         </testng>
+@@ -165,7 +157,7 @@
+     </target>
+ 
+     <target name="single-test"
+-            depends="compile, compile-tests"
++            depends="compile-tests"
+             description="Compile and run a single test.">
+         <taskdef resource="testngtasks" classpathref="classpath"/>
+         <fail unless="name" message="Please provide input test: -Dname=..." />
+@@ -200,13 +192,12 @@
+         </jar>
+     </target>
+ 
+-    <target name="picard-jar" depends="compile"
++    <target name="picard-jar" depends="compile-src"
+             description="Builds picard-${picard-version}.jar for inclusion in other projects">
+         <mkdir dir="${dist}"/>
+         <jar destfile="${dist}/picard-${picard-version}.jar" compress="no">
+             <fileset dir="${classes}" includes ="net/sf/picard/**/*.*"/>
+             <fileset dir="${src.scripts}" includes="**/*.R"/>
+-            <zipfileset src="${lib}/apache-ant-1.8.2-bzip2.jar"/>
+             <manifest>
+                 <attribute name="Implementation-Version" value="${picard-version}(${repository.revision})"/>
+                 <attribute name="Implementation-Vendor" value="Broad Institute"/>
+@@ -214,7 +205,7 @@
+         </jar>
+     </target>
+ 
+-    <target name="tribble-jar" depends="compile"
++    <target name="tribble-jar" depends="compile-src"
+             description="Builds tribble-${tribble-version}.jar for inclusion in other projects">
+         <mkdir dir="${dist}"/>
+         <jar destfile="${dist}/tribble-${tribble-version}.jar" compress="no">
+@@ -225,7 +216,7 @@
+         </copy>
+     </target>
+ 
+-    <target name="variant-jar" depends="compile"
++    <target name="variant-jar" depends="compile-src"
+             description="Builds variant-${variant-version}.jar for inclusion in other projects">
+         <mkdir dir="${dist}"/>
+         <jar destfile="${dist}/variant-${variant-version}.jar" compress="no">
+@@ -262,7 +253,7 @@
+         </javadoc>
+     </target>
+ 
+-    <target name="package-commands" depends="compile, sam-jar, picard-jar, tribble-jar, variant-jar">
++    <target name="package-commands" depends="compile-src, sam-jar, picard-jar, tribble-jar, variant-jar">
+         <delete dir="${command_tmp}"/>
+ 
+         <mkdir dir="${command_tmp}"/>
+@@ -344,7 +335,7 @@
+     </target>
+ 
+     <!-- ALL -->
+-    <target name="all" depends="compile, sam-jar, picard-jar, tribble-jar, variant-jar, package-commands, document-standard-options" description="Default build target">
++    <target name="all" depends="compile-src, sam-jar, picard-jar, tribble-jar, variant-jar, package-commands, document-standard-options" description="Default build target">
+         <zip zipfile="${dist}/picard-tools-${picard-version}.zip">
+             <zipfileset dir="${dist}" includes="*.jar" prefix="picard-tools-${picard-version}"/>
+             <zipfileset dir="${lib}" includes="snappy*.jar"/>
+@@ -468,8 +459,6 @@
+                    target="${javac.target}">
+                 <classpath refid="@{compile.classpath}"/>
+                 <compilerarg line="@{compiler.args}" />
+-                <!-- ensure that Java 6 bootclasspath is used -->
+-                <compilerarg value="-Xbootclasspath/p:${toString:java6.lib.ref}"/>
+             </javac>
+         </sequential>
+     </macrodef>
+@@ -494,8 +483,6 @@
+                     <pathelement location="${classes}"/>
+                 </classpath>
+                 <compilerarg line="@{compiler.args}"/>
+-                <!-- ensure that Java 6 bootclasspath is used -->
+-                <compilerarg value="-Xbootclasspath/p:${toString:java6.lib.ref}"/>
+             </javac>
+         </sequential>
+     </macrodef>

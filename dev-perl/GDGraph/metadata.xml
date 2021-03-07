@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">GDGraph</remote-id>
+    <remote-id type="cpan-module">GD::Graph</remote-id>
+    <remote-id type="cpan-module">GD::Graph::Data</remote-id>
+    <remote-id type="cpan-module">GD::Graph::Error</remote-id>
+    <remote-id type="cpan-module">GD::Graph::area</remote-id>
+    <remote-id type="cpan-module">GD::Graph::axestype</remote-id>
+    <remote-id type="cpan-module">GD::Graph::bars</remote-id>
+    <remote-id type="cpan-module">GD::Graph::colour</remote-id>
+    <remote-id type="cpan-module">GD::Graph::hbars</remote-id>
+    <remote-id type="cpan-module">GD::Graph::lines</remote-id>
+    <remote-id type="cpan-module">GD::Graph::linespoints</remote-id>
+    <remote-id type="cpan-module">GD::Graph::mixed</remote-id>
+    <remote-id type="cpan-module">GD::Graph::pie</remote-id>
+    <remote-id type="cpan-module">GD::Graph::points</remote-id>
+    <remote-id type="cpan-module">GD::Graph::utils</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,14 @@
+https://sourceforge.net/tracker/?func=detail&aid=3554634&group_id=21862&atid=374571
+--- a/shed.c
++++ b/shed.c
+@@ -31,6 +31,10 @@
+ #include <ctype.h>     /* tolower    */
+ #include <unistd.h>    /* dup, dup2  */
+ 
++#ifdef __INTERIX
++# include <sys/time.h>
++#endif
++
+ #include "util.h"
+ 
+ /* function prototypes */

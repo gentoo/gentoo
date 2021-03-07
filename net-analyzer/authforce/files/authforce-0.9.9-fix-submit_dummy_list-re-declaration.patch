@@ -1,0 +1,25 @@
+From d7f718e78444acef635acdd19e34dc4783e741fa Mon Sep 17 00:00:00 2001
+From: "Zachary P. Landau" <zlandau@jellofund.net>
+Date: Wed, 5 Feb 2020 23:00:06 -0800
+Subject: [PATCH 1/4] Fix submit_dummy_list re-declaration
+
+---
+ src/extern.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/extern.h b/src/extern.h
+index 6798bd7..cc08e0a 100644
+--- a/src/extern.h
++++ b/src/extern.h
+@@ -61,7 +61,7 @@ extern void initialize_submit(void);
+ extern int submit(char *username, char *password);
+ extern void shutdown_submit(void);
+ #ifdef USE_DUMMY
+-char **submit_dummy_list;
++extern char **submit_dummy_list;
+ #endif /* USE_DUMMY */
+ 
+ /* files.c */
+-- 
+2.25.0
+

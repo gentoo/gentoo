@@ -1,0 +1,206 @@
+From d94d718154c065218bc9db8ccfe638d84b86bdb4 Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Sat, 18 Oct 2014 13:02:58 +0200
+Subject: [PATCH] Make autotools a bit saner
+
+---
+ Makefile.am        | 16 ++++++++++++++++
+ build/Makefile.am  | 17 -----------------
+ build/configure.ac | 47 -----------------------------------------------
+ build/qqwing.pc.in | 10 ----------
+ configure.ac       | 47 +++++++++++++++++++++++++++++++++++++++++++++++
+ qqwing.pc.in       | 10 ++++++++++
+ 6 files changed, 73 insertions(+), 74 deletions(-)
+ create mode 100644 Makefile.am
+ delete mode 100644 build/Makefile.am
+ delete mode 100755 build/configure.ac
+ delete mode 100755 build/qqwing.pc.in
+ create mode 100644 configure.ac
+ create mode 100644 qqwing.pc.in
+
+diff --git a/Makefile.am b/Makefile.am
+new file mode 100644
+index 0000000..d6109ba
+--- /dev/null
++++ b/Makefile.am
+@@ -0,0 +1,16 @@
++ACLOCAL_AMFLAGS = -I m4
++
++include_HEADERS = src/cpp/qqwing.hpp
++
++lib_LTLIBRARIES = libqqwing.la
++libqqwing_la_SOURCES = src/cpp/qqwing.cpp src/cpp/qqwing.hpp
++libqqwing_la_LDFLAGS = -no-undefined -version-info $(QQWING_CURRENT):$(QQWING_REVISION):$(QQWING_AGE)
++
++bin_PROGRAMS = qqwing
++qqwing_SOURCES = src/cpp/main.cpp
++qqwing_LDADD = $(top_builddir)/libqqwing.la
++
++pkgconfigdir = $(libdir)/pkgconfig
++dist_pkgconfig_DATA = qqwing.pc
++
++dist_man1_MANS = doc/qqwing.man
+diff --git a/build/Makefile.am b/build/Makefile.am
+deleted file mode 100644
+index ef647d2..0000000
+--- a/build/Makefile.am
++++ /dev/null
+@@ -1,17 +0,0 @@
+-ACLOCAL_AMFLAGS = -I m4
+-EXTRA_DIST = debian
+-
+-include_HEADERS = qqwing.hpp
+-
+-lib_LTLIBRARIES = libqqwing.la
+-libqqwing_la_SOURCES = qqwing.cpp qqwing.hpp
+-libqqwing_la_LDFLAGS = -no-undefined -version-info $(QQWING_CURRENT):$(QQWING_REVISION):$(QQWING_AGE)
+-
+-bin_PROGRAMS = qqwing
+-qqwing_SOURCES = main.cpp
+-qqwing_LDADD = $(top_builddir)/libqqwing.la
+-
+-pkgconfigdir = $(libdir)/pkgconfig
+-dist_pkgconfig_DATA = qqwing.pc
+-
+-dist_man_MANS = qqwing.1
+diff --git a/build/configure.ac b/build/configure.ac
+deleted file mode 100755
+index ca75f59..0000000
+--- a/build/configure.ac
++++ /dev/null
+@@ -1,47 +0,0 @@
+-AC_PREREQ(2.59)
+-AC_INIT(qqwing, 1.3.3, http://qqwing.com/)
+-AC_CONFIG_MACRO_DIR([m4])
+-AC_CONFIG_SRCDIR([config.h.in])
+-AC_CONFIG_HEADER([config.h])
+-
+-# Before making a release, the LT_VERSION string should be modified.
+-# The string is of the form C:R:A.
+-# - If interfaces have been changed or added, but binary compatibility has
+-#   been preserved, change to C+1:0:A+1
+-# - If binary compatibility has been broken (eg removed or changed interfaces)
+-#   change to C+1:0:0
+-# - If the interface is the same as the previous version, change to C:R+1:A
+-QQWING_CURRENT=2
+-QQWING_REVISION=3
+-QQWING_AGE=0
+-
+-AC_SUBST([QQWING_CURRENT])
+-AC_SUBST([QQWING_REVISION])
+-AC_SUBST([QQWING_AGE])
+-
+-AM_INIT_AUTOMAKE([foreign])
+-
+-# Checks for programs.
+-AC_PROG_CXX
+-AC_PROG_CC
+-
+-LT_PREREQ([2.2])
+-LT_INIT([disable-static])
+-
+-# Checks for libraries.
+-
+-# Checks for header files.
+-AC_HEADER_STDC
+-AC_CHECK_HEADERS([stdlib.h sys/time.h])
+-
+-# Checks for typedefs, structures, and compiler characteristics.
+-AC_HEADER_STDBOOL
+-AC_C_CONST
+-AC_C_INLINE
+-AC_HEADER_TIME
+-
+-# Checks for library functions.
+-AC_CHECK_FUNCS([gettimeofday])
+-
+-AC_CONFIG_FILES([Makefile qqwing.pc])
+-AC_OUTPUT
+diff --git a/build/qqwing.pc.in b/build/qqwing.pc.in
+deleted file mode 100755
+index fcc4c45..0000000
+--- a/build/qqwing.pc.in
++++ /dev/null
+@@ -1,10 +0,0 @@
+-prefix=@prefix@
+-exec_prefix=@exec_prefix@
+-libdir=@libdir@
+-includedir=@includedir@
+-
+-Name: libqqwing
+-Description: Sudoku generator and solver library
+-Version: @VERSION@
+-Libs: -L${libdir} -lqqwing
+-Cflags: -I${includedir}
+diff --git a/configure.ac b/configure.ac
+new file mode 100644
+index 0000000..646494f
+--- /dev/null
++++ b/configure.ac
+@@ -0,0 +1,47 @@
++AC_PREREQ(2.59)
++AC_INIT(qqwing, 1.3.3, http://qqwing.com/)
++AC_CONFIG_MACRO_DIR([m4])
++AC_CONFIG_SRCDIR([config.h.in])
++AC_CONFIG_HEADER([config.h])
++
++# Before making a release, the LT_VERSION string should be modified.
++# The string is of the form C:R:A.
++# - If interfaces have been changed or added, but binary compatibility has
++#   been preserved, change to C+1:0:A+1
++# - If binary compatibility has been broken (eg removed or changed interfaces)
++#   change to C+1:0:0
++# - If the interface is the same as the previous version, change to C:R+1:A
++QQWING_CURRENT=2
++QQWING_REVISION=3
++QQWING_AGE=0
++
++AC_SUBST([QQWING_CURRENT])
++AC_SUBST([QQWING_REVISION])
++AC_SUBST([QQWING_AGE])
++
++AM_INIT_AUTOMAKE([foreign subdir-objects])
++
++# Checks for programs.
++AC_PROG_CXX
++AC_PROG_CC
++
++LT_PREREQ([2.2])
++LT_INIT([disable-static])
++
++# Checks for libraries.
++
++# Checks for header files.
++AC_HEADER_STDC
++AC_CHECK_HEADERS([stdlib.h sys/time.h])
++
++# Checks for typedefs, structures, and compiler characteristics.
++AC_HEADER_STDBOOL
++AC_C_CONST
++AC_C_INLINE
++AC_HEADER_TIME
++
++# Checks for library functions.
++AC_CHECK_FUNCS([gettimeofday])
++
++AC_CONFIG_FILES([Makefile qqwing.pc])
++AC_OUTPUT
+diff --git a/qqwing.pc.in b/qqwing.pc.in
+new file mode 100644
+index 0000000..fcc4c45
+--- /dev/null
++++ b/qqwing.pc.in
+@@ -0,0 +1,10 @@
++prefix=@prefix@
++exec_prefix=@exec_prefix@
++libdir=@libdir@
++includedir=@includedir@
++
++Name: libqqwing
++Description: Sudoku generator and solver library
++Version: @VERSION@
++Libs: -L${libdir} -lqqwing
++Cflags: -I${includedir}
+-- 
+2.1.2
+

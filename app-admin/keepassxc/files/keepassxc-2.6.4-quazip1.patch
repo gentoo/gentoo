@@ -1,0 +1,28 @@
+From efbb6fc9da02fed4e5db21858aa7d265081df2c8 Mon Sep 17 00:00:00 2001
+From: Antonio Rojas <arojas@archlinux.org>
+Date: Mon, 5 Oct 2020 21:00:24 +0200
+Subject: [PATCH] Support quazip 1.0
+
+---
+ cmake/FindQuaZip.cmake | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/cmake/FindQuaZip.cmake b/cmake/FindQuaZip.cmake
+index a387e2f81..9fab3e579 100644
+--- a/cmake/FindQuaZip.cmake
++++ b/cmake/FindQuaZip.cmake
+@@ -10,12 +10,12 @@ if(MINGW)
+     find_path(QUAZIP_ZLIB_INCLUDE_DIR zlib.h)
+ else()
+     find_library(QUAZIP_LIBRARIES
+-        NAMES quazip5 quazip
++        NAMES quazip5 quazip quazip1-qt5
+ 	PATHS /usr/lib /usr/lib64 /usr/local/lib
+     )
+     find_path(QUAZIP_INCLUDE_DIR quazip.h
+ 	PATHS /usr/include /usr/local/include
+-        PATH_SUFFIXES quazip5 quazip
++        PATH_SUFFIXES quazip5 quazip QuaZip-Qt5-1.0/quazip
+     )
+     find_path(QUAZIP_ZLIB_INCLUDE_DIR zlib.h PATHS /usr/include /usr/local/include)
+ endif()

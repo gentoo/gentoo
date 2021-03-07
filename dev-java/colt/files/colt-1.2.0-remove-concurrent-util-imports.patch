@@ -1,0 +1,210 @@
+--- src/cern/colt/matrix/linalg/SmpBlas.java.orig	2015-10-07 22:23:44.969486000 +0000
++++ src/cern/colt/matrix/linalg/SmpBlas.java	2015-10-07 22:29:15.475486000 +0000
+@@ -10,7 +10,8 @@
+ 
+ import cern.colt.matrix.DoubleMatrix1D;
+ import cern.colt.matrix.DoubleMatrix2D;
+-import EDU.oswego.cs.dl.util.concurrent.FJTask;
++
++import java.util.concurrent.ForkJoinTask;
+ /**
+ Parallel implementation of the Basic Linear Algebra System for symmetric multi processing boxes.
+ Currently only a few algorithms are parallelised; the others are fully functional, but run in sequential mode.
+@@ -198,7 +199,7 @@
+ 	
+ 	// set up concurrent tasks
+ 	int span = width/noOfTasks;
+-	final FJTask[] subTasks = new FJTask[noOfTasks];
++	final ForkJoinTask[] subTasks = new ForkJoinTask[noOfTasks];
+ 	for (int i=0; i<noOfTasks; i++) {
+ 		final int offset = i*span;
+ 		if (i==noOfTasks-1) span = width - span*i; // last span may be a bit larger
+@@ -217,24 +218,30 @@
+ 			CC = C.viewPart(offset,0,span,p);
+ 		}
+ 				
+-		subTasks[i] = new FJTask() { 
++		subTasks[i] = new ForkJoinTask() { 
+ 			public void run() { 
+ 				seqBlas.dgemm(transposeA,transposeB,alpha,AA,BB,beta,CC); 
+ 				//System.out.println("Hello "+offset); 
+ 			}
++
++      public boolean exec() { return true; }
++      public void setRawResult(Object o) {}
++      public Object getRawResult() {return null;}
+ 		};
+ 	}
+ 	
+ 	// run tasks and wait for completion
+-	try { 
+-		this.smp.taskGroup.invoke(
+-			new FJTask() {
+-				public void run() {	
+-					coInvoke(subTasks);	
+-				}
+-			}
+-		);
+-	} catch (InterruptedException exc) {}
++  this.smp.taskGroup.invoke(
++          new ForkJoinTask() {
++              public void run() {	
++                  invokeAll(subTasks);	
++              }
++
++              public boolean exec() { return true; }
++              public void setRawResult(Object o) {}
++              public Object getRawResult() {return null;}
++          }
++          );
+ }
+ public void dgemv(final boolean transposeA, final double alpha, DoubleMatrix2D A, final DoubleMatrix1D x, final double beta, DoubleMatrix1D y) {
+ 	/*
+@@ -271,7 +278,7 @@
+ 	
+ 	// set up concurrent tasks
+ 	int span = width/noOfTasks;
+-	final FJTask[] subTasks = new FJTask[noOfTasks];
++	final ForkJoinTask[] subTasks = new ForkJoinTask[noOfTasks];
+ 	for (int i=0; i<noOfTasks; i++) {
+ 		final int offset = i*span;
+ 		if (i==noOfTasks-1) span = width - span*i; // last span may be a bit larger
+@@ -280,24 +287,30 @@
+ 		final DoubleMatrix2D AA = A.viewPart(offset,0,span,n);
+ 		final DoubleMatrix1D yy = y.viewPart(offset,span);
+ 				
+-		subTasks[i] = new FJTask() { 
++		subTasks[i] = new ForkJoinTask() { 
+ 			public void run() { 
+ 				seqBlas.dgemv(transposeA,alpha,AA,x,beta,yy); 
+ 				//System.out.println("Hello "+offset); 
+ 			}
++
++      public boolean exec() { return true; }
++      public void setRawResult(Object o) {}
++      public Object getRawResult() {return null;}
+ 		};
+ 	}
+ 	
+ 	// run tasks and wait for completion
+-	try { 
+-		this.smp.taskGroup.invoke(
+-			new FJTask() {
+-				public void run() {	
+-					coInvoke(subTasks);	
+-				}
+-			}
+-		);
+-	} catch (InterruptedException exc) {}
++  this.smp.taskGroup.invoke(
++          new ForkJoinTask() {
++              public void run() {	
++                  invokeAll(subTasks);	
++              }
++
++              public boolean exec() { return true; }
++              public void setRawResult(Object o) {}
++              public Object getRawResult() {return null;}
++          }
++          );
+ }
+ public void dger(double alpha, DoubleMatrix1D x, DoubleMatrix1D y, DoubleMatrix2D A) {
+ 	seqBlas.dger(alpha,x,y,A);
+@@ -369,9 +382,6 @@
+ /**
+  * Prints various snapshot statistics to System.out; Simply delegates to {@link EDU.oswego.cs.dl.util.concurrent.FJTaskRunnerGroup#stats}.
+  */
+-public void stats() {
+-	if (this.smp!=null) this.smp.stats();
+-}
+ private double xsum(DoubleMatrix2D A) {
+ 	double[] sums = run(A,true,
+ 		new Matrix2DMatrix2DFunction() {
+--- src/cern/colt/matrix/linalg/Smp.java.orig	2015-10-07 21:08:19.443486000 +0000
++++ src/cern/colt/matrix/linalg/Smp.java	2015-10-07 22:28:24.722486000 +0000
+@@ -9,12 +9,13 @@
+ package cern.colt.matrix.linalg;
+ 
+ import cern.colt.matrix.DoubleMatrix2D;
+-import EDU.oswego.cs.dl.util.concurrent.FJTask;
+-import EDU.oswego.cs.dl.util.concurrent.FJTaskRunnerGroup;
++import java.util.concurrent.ForkJoinTask;
++import java.util.concurrent.ForkJoinPool;
++
+ /*
+ */
+ class Smp {
+-	protected FJTaskRunnerGroup taskGroup; // a very efficient and light weight thread pool
++	protected ForkJoinPool taskGroup; // a very efficient and light weight thread pool
+ 
+ 	protected int maxThreads;	
+ /**
+@@ -24,41 +25,39 @@
+ 	maxThreads = Math.max(1,maxThreads);
+ 	this.maxThreads = maxThreads;
+ 	if (maxThreads>1) {
+-		this.taskGroup = new FJTaskRunnerGroup(maxThreads);
++		this.taskGroup = new ForkJoinPool(maxThreads);
+ 	}
+ 	else { // avoid parallel overhead
+ 		this.taskGroup = null;
+ 	}
+ }
+-/**
+- * Clean up deamon threads, if necessary.
+- */
+-public void finalize() {
+-	if (this.taskGroup!=null) this.taskGroup.interruptAll();
+-}
+ protected void run(final DoubleMatrix2D[] blocksA, final DoubleMatrix2D[] blocksB, final double[] results, final Matrix2DMatrix2DFunction function) {
+-	final FJTask[] subTasks = new FJTask[blocksA.length];
++	final ForkJoinTask[] subTasks = new ForkJoinTask[blocksA.length];
+ 	for (int i=0; i<blocksA.length; i++) {
+ 		final int k = i;
+-		subTasks[i] = new FJTask() { 
++		subTasks[i] = new ForkJoinTask() { 
+ 			public void run() {
+ 				double result = function.apply(blocksA[k],blocksB != null ? blocksB[k] : null);
+ 				if (results!=null) results[k] = result; 
+ 				//System.out.print("."); 
+ 			}
++      public boolean exec() { return true; }
++      public void setRawResult(Object o) {}
++      public Object getRawResult() {return null;}
+ 		};
+ 	}
+ 
+ 	// run tasks and wait for completion
+-	try { 
+-		this.taskGroup.invoke(
+-			new FJTask() {
+-				public void run() {	
+-					coInvoke(subTasks);	
+-				}
+-			}
+-		);
+-	} catch (InterruptedException exc) {}
++  this.taskGroup.invoke(
++          new ForkJoinTask() {
++              public void run() {	
++                  invokeAll(subTasks);	
++              }
++              public boolean exec() { return true; }
++              public void setRawResult(Object o) {}
++              public Object getRawResult() {return null;}
++          }
++          );
+ }
+ protected DoubleMatrix2D[] splitBlockedNN(DoubleMatrix2D A, int threshold, long flops) {
+ 	/*
+@@ -186,10 +185,4 @@
+ 	}
+ 	return blocks;
+ }
+-/**
+- * Prints various snapshot statistics to System.out; Simply delegates to {@link EDU.oswego.cs.dl.util.concurrent.FJTaskRunnerGroup#stats}.
+- */
+-public void stats() {
+-	if (this.taskGroup!=null) this.taskGroup.stats();
+-}
+ }

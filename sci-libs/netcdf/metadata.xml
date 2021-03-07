@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  NetCDF (network Common Data Form) is an interface for scientific
+  data access and a freely-distributed software library that provides an
+  implementation of the interface.  The netCDF library also defines a
+  machine-independent format for representing scientific data.
+  Together, the interface, library, and format support the creation,
+  access, and sharing of scientific data.
+  </longdescription>
+  <use>
+    <flag name="dap">Support for remote data access with the built-in OPeNDAP client</flag>
+    <flag name="hdf">Add support for the Hierarchical Data Format v.4 <pkg>sci-libs/hdf</pkg></flag>
+    <flag name="tools">Build the utilities nccopy, ncgen and ncdump</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">Unidata/netcdf-c</remote-id>
+  </upstream>
+</pkgmetadata>

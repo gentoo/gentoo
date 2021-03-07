@@ -1,0 +1,24 @@
+--- mod_dnssd-0.6/src/mod_dnssd.c.httpd24
++++ mod_dnssd-0.6/src/mod_dnssd.c
+@@ -26,6 +26,9 @@
+ #include <unixd.h>
+ #include <apr_signal.h>
+ #include <mpm_common.h>
++#if AP_MODULE_MAGIC_AT_LEAST(20090130,0)
++#include <mod_unixd.h>
++#endif
+ 
+ #include <unistd.h>
+ 
+@@ -576,7 +579,11 @@ static void child_process(apr_pool_t *p,
+ 
+     ap_assert(d);
+ 
++#if AP_MODULE_MAGIC_AT_LEAST(20090130,0)
++    ap_unixd_setup_child();
++#else
+     unixd_setup_child();
++#endif
+ 
+     if (pipe(sigterm_pipe_fds) < 0) {
+         ap_log_error(APLOG_MARK, APLOG_ERR, 0, r.main_server, "pipe() failed: %s", strerror(errno));

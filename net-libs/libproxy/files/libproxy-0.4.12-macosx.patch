@@ -1,0 +1,70 @@
+https://trac.macports.org/browser/trunk/dports/net/libproxy/files/patch-libproxy-cmake.diff
+
+diff -ur libproxy/cmake.orig/libproxy.cmk libproxy/cmake/libproxy.cmk
+--- a/libproxy/cmake/libproxy.cmk	2012-10-02 07:20:40.000000000 -0700
++++ b/libproxy/cmake/libproxy.cmk	2012-10-19 13:47:50.000000000 -0700
+@@ -18,7 +18,7 @@
+ set_property(SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/proxy.cpp
+              PROPERTY COMPILE_DEFINITIONS MODULEDIR="${MODULEDIR}";BUILTIN_MODULES=${BUILTIN_MODULES})
+ # When changing the SOVERSION here remember to also bump the 'favorite proxy .so' in python bindings.
+-set_target_properties(libproxy PROPERTIES PREFIX "" VERSION 1.0.0 SOVERSION 1)
++set_target_properties(libproxy PROPERTIES INSTALL_NAME_DIR "${CMAKE_INSTALL_PREFIX}/lib" PREFIX "" VERSION 1.0.0 SOVERSION 1)
+ set_target_properties(libproxy PROPERTIES INTERFACE_LINK_LIBRARIES "")
+ set_target_properties(libproxy PROPERTIES LINK_INTERFACE_LIBRARIES "")
+ install(TARGETS libproxy DESTINATION ${LIB_INSTALL_DIR})
+diff -ur libproxy/cmake.orig/modules/config_envvar.cmk libproxy/cmake/modules/config_envvar.cmk
+--- libproxy/cmake.orig/modules/config_envvar.cmk	2010-06-14 10:40:47.000000000 -0700
++++ b/libproxy/cmake/modules/config_envvar.cmk	2012-10-19 13:45:42.000000000 -0700
+@@ -1,3 +1,3 @@
+-if (NOT WIN32 AND NOT APPLE)
++if (NOT WIN32 AND NOT (APPLE AND MP_MACOSX))
+   set(ENVVAR_FOUND 1)
+-endif()
+\ No newline at end of file
++endif()
+diff -ur libproxy/cmake.orig/modules/config_gnome.cmk libproxy/cmake/modules/config_gnome.cmk
+--- libproxy/cmake.orig/modules/config_gnome.cmk	2012-10-02 07:20:40.000000000 -0700
++++ b/libproxy/cmake/modules/config_gnome.cmk	2012-10-19 13:45:42.000000000 -0700
+@@ -1,4 +1,4 @@
+-if (NOT WIN32 AND NOT APPLE)
++if (NOT WIN32 AND NOT (APPLE AND MP_MACOSX))
+   option(WITH_GNOME2 "Target a GNOME 2 system (gconf)" OFF)
+   option(WITH_GNOME3 "Target a GNOME 3 system (gsettings)" ON)
+   if(WITH_GNOME3)
+diff -ur libproxy/cmake.orig/modules/config_macosx.cmk libproxy/cmake/modules/config_macosx.cmk
+--- libproxy/cmake.orig/modules/config_macosx.cmk	2010-06-14 10:40:47.000000000 -0700
++++ b/libproxy/cmake/modules/config_macosx.cmk	2012-10-19 13:45:42.000000000 -0700
+@@ -1,4 +1,4 @@
+-if(APPLE)
++if(APPLE AND MP_MACOSX)
+   find_library(SC_LIBRARIES SystemConfiguration)
+   find_library(CF_LIBRARIES CoreFoundation)
+   if(SC_LIBRARIES)
+@@ -7,4 +7,4 @@
+   if(CF_LIBRARIES)
+     set(CF_FOUND 1)
+   endif()
+-endif()
+\ No newline at end of file
++endif()
+diff -ur libproxy/cmake.orig/modules/pacrunner_webkit.cmk libproxy/cmake/modules/pacrunner_webkit.cmk
+--- libproxy/cmake.orig/modules/pacrunner_webkit.cmk	2012-10-02 07:20:40.000000000 -0700
++++ b/libproxy/cmake/modules/pacrunner_webkit.cmk	2012-10-19 13:45:42.000000000 -0700
+@@ -6,7 +6,7 @@
+     link_directories(WEBKIT_LIBRARIES)
+     include_directories("${WEBKIT_INCLUDE_DIR}")
+   endif()
+-elseif(APPLE)
++elseif(APPLE AND MP_MACOSX)
+   find_library(WEBKIT_LIBRARIES JavaScriptCore)
+   if(WEBKIT_LIBRARIES)
+     set(WEBKIT_FOUND 1)
+diff -ur libproxy/cmake.orig/pkgconfig.cmk libproxy/cmake/pkgconfig.cmk
+--- libproxy/cmake.orig/pkgconfig.cmk	2012-10-02 07:20:40.000000000 -0700
++++ b/libproxy/cmake/pkgconfig.cmk	2012-10-19 13:45:42.000000000 -0700
+@@ -1,4 +1,4 @@
+-if(NOT WIN32 AND NOT APPLE)
++if(NOT WIN32 AND NOT (APPLE AND MP_MACOSX))
+   find_package(PkgConfig)
+ 
+   # Define our magical px_check_modules function

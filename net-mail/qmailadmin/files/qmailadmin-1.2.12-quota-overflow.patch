@@ -1,0 +1,118 @@
+diff -Nurp qmailadmin-1.2.12/util.c qmailadmin-1.2.12.new/util.c
+--- qmailadmin-1.2.12/util.c	2007-09-21 19:27:40.000000000 -0400
++++ qmailadmin-1.2.12.new/util.c	2009-07-11 01:54:02.000000000 -0400
+@@ -19,10 +19,11 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <stddef.h>
++#include <errno.h>
+ #include <string.h>
+ #include <unistd.h>
+ #include <sys/stat.h>
+-#include <unistd.h>
+ #include <pwd.h>
+ #include <dirent.h>
+ #include <ctype.h>
+@@ -352,41 +353,70 @@ char *get_quota_used(char *dir) {
+                    back to bytes for vpasswd file
+    return value: 0 for success, 1 for failure
+ */
+-int quota_to_bytes(char returnval[], char *quota) {
++int quota_to_bytes(char returnval[], const char *quota) {
+     double tmp;
++    int err = 0;
+ 
+     if (quota == NULL) { return 1; }
+-    if ((tmp = atof(quota))) {
+-        tmp *= 1048576;
+-        sprintf(returnval, "%.0lf", tmp);
+-        return 0;
++
++    /* first set errno to 0 to determine if an error occurs */
++    errno = 0;
++    tmp = strtod(quota, NULL);
++    err = errno;
++    if (err != 0) {
++        perror("quota_to_bytes");
++        return 1;
+     } else {
+-	strcpy (returnval, "");
+-	return 1;
++        tmp *= (1024*1024);
++        err = sprintf(returnval, "%.0lf", tmp);
++        if (err > 0) {
++            return 0;
++        } else {
++            returnval[0] = '\0';
++            return 1;
++        }
+     }
+ }
+ /* quota_to_megabytes: used to convert vpasswd representation of quota
+                        to number of megabytes.
+    return value: 0 for success, 1 for failure
+ */
+-int quota_to_megabytes(char *returnval, char *quota) {
++int quota_to_megabytes(char *returnval, const char *quota) {
+     double tmp;
+-    int i;
++    int err = 0;
++    size_t i;
+ 
+     if (quota == NULL) { return 1; }
+     i = strlen(quota);
++
++    errno = 0;
++    tmp = strtod(quota, NULL);
++    err = errno;
++    if (err != 0) {
++        perror("quota_to_megabytes");
++        return 1;
++    }
++
+     if ((quota[i-1] == 'M') || (quota[i-1] == 'm')) {
+-        tmp = atol(quota);  /* already in megabytes */
++        /* already in megabytes */
+     } else if ((quota[i-1] == 'K') || (quota[i-1] == 'k')) {
+-	tmp = atol(quota) * 1024;  /* convert kilobytes to megabytes */
+-    } else if ((tmp = atol(quota))) {
+-        tmp /= 1048576.0;
++        /* convert kilobytes to megabytes */
++        tmp *= 1024;
++    } else if (tmp != 0) {
++        /* convert bytes to megabytes */
++        tmp /= (1024*1024);
+     } else {
+-	strcpy (returnval, "");
+-	return 1;
++        returnval[0] = '\0';
++        return 1;
++    }
++
++    err = sprintf(returnval, "%.2lf", tmp);
++    if (err > 0) {
++        return 0;
++    } else {
++        returnval[0] = '\0';
++        return 1;
+     }
+-    sprintf(returnval, "%.2lf", tmp);
+-    return 0;
+ }
+ 
+ void print_user_index (char *action, int colspan, char *user, char *dom, time_t mytime)
+diff -Nurp qmailadmin-1.2.12/util.h qmailadmin-1.2.12.new/util.h
+--- qmailadmin-1.2.12/util.h	2007-09-21 19:27:40.000000000 -0400
++++ qmailadmin-1.2.12.new/util.h	2009-07-11 02:02:45.000000000 -0400
+@@ -25,8 +25,8 @@ void str_replace (char *, char, char);
+ 
+ void qmail_button(char *modu, char *command, char *user, char *dom, time_t mytime, char *png);
+ 
+-int quota_to_bytes(char[], char*);     //jhopper prototype
+-int quota_to_megabytes(char[], char*); //jhopper prototype
++int quota_to_bytes(char[], const char*);     //jhopper prototype
++int quota_to_megabytes(char[], const char*); //jhopper prototype
+ 
+ void print_user_index (char *action, int colspan, char *user, char *dom, time_t mytime);
+ char *cgiurl (char *action);

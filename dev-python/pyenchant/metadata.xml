@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<longdescription lang="en">
+		PyEnchant is a set of language bindings and some wrapper classes to
+		make the excellent Enchant spellchecker available as a Python
+		module. The bindings are generated using SWIG. It includes all the
+		functionality of Enchant with the flexibility of Python and a nice
+		'Pythonic' object-oriented interface. It also aims to provide some
+		higher-level functionality than is available in the C API.
+	</longdescription>
+	<upstream>
+		<remote-id type="pypi">pyenchant</remote-id>
+		<remote-id type="sourceforge">pyenchant</remote-id>
+		<remote-id type="github">pyenchant/pyenchant</remote-id>
+	</upstream>
+</pkgmetadata>

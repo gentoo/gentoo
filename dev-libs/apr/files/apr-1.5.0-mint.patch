@@ -1,0 +1,22 @@
+--- apr-1.5.0/build/apr_hints.m4
++++ apr-1.5.0/build/apr_hints.m4
+@@ -45,6 +45,8 @@
+   case "$host" in
+     *mint)
+ 	APR_ADDTO(CPPFLAGS, [-DMINT -D_GNU_SOURCE])
++	apr_cv_pthreads_cflags="none"
++	apr_cv_pthreads_lib="-lpthread"
+ 	;;
+     *MPE/iX*)
+ 	APR_ADDTO(CPPFLAGS, [-DMPE -D_POSIX_SOURCE -D_SOCKET_SOURCE])
+--- apr-1.5.0/build/apr_threads.m4
++++ apr-1.5.0/build/apr_threads.m4
+@@ -198,7 +198,7 @@
+ AC_DEFUN([APR_CHECK_SIGWAIT_ONE_ARG], [
+   AC_CACHE_CHECK(whether sigwait takes one argument,ac_cv_sigwait_one_arg,[
+   AC_TRY_COMPILE([
+-#if defined(__NETBSD__) || defined(DARWIN)
++#if defined(__NETBSD__) || defined(DARWIN) || defined(MINT)
+     /* When using the unproven-pthreads package, we need to pull in this
+      * header to get a prototype for sigwait().  Else things will fail later
+      * on.  XXX Should probably be fixed in the unproven-pthreads package.

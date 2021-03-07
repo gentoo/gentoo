@@ -1,0 +1,15 @@
+--- a/configure.ac	2009-04-15 23:47:52.000000000 +0200
++++ b/configure.ac	2010-03-29 17:59:39.000000000 +0200
+@@ -54,9 +54,9 @@
+ PKG_CHECK_MODULES(GLIB, glib-2.0 >= 2.14)
+ 
+ # Directories we need.
+-pkgdocdir='${datadir}/doc/'${PACKAGE_NAME}-${PACKAGE_VERSION}
+-initddir='${sysconfdir}/rc.d/init.d'
+-sysconfigdir='${sysconfdir}/sysconfig'
++pkgdocdir='${datadir}/doc/'${PF}
++initddir='${sysconfdir}/init.d'
++sysconfigdir='${sysconfdir}/conf.d'
+ logrotatedir='${sysconfdir}/logrotate.d'
+ logdir='${localstatedir}/log'
+ subsysdir='${localstatedir}/lock/subsys'

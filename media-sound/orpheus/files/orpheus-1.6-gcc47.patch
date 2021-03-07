@@ -1,0 +1,15 @@
+ https://bugs.gentoo.org/430386
+ 
+ src/streamtrack.cc | 1 +
+ 1 file changed, 1 insertion(+)
+
+--- a/src/streamtrack.cc
++++ b/src/streamtrack.cc
+@@ -34,6 +34,7 @@
+ #include <sys/wait.h>
+ #include <sys/stat.h>
+ #include <signal.h>
++#include <unistd.h>
+ 
+ #include <algorithm>
+ 

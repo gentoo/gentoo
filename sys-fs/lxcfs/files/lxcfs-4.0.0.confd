@@ -1,0 +1,7 @@
+# /etc/conf.d/lxcfs: config file for /etc/init.d/lxcfs
+
+# lxcfs options:
+# -l == calculate container load average instead of displaying host load average
+# -u == don't display swap usage to containers
+
+LXCFS_OPTS="-l -u"

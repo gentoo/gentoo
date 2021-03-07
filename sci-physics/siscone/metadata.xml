@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-physics@gentoo.org</email>
+		<name>Gentoo Physics Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		SISCone implements a seedless infrared (IR) safe cone jet algorithm, it takes
+		N^2*ln(N) time to find jets among N particles, comparing to N*2^N time of
+		other algorithms.
+	</longdescription>
+</pkgmetadata>

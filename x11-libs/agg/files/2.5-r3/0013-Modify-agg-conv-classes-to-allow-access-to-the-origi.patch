@@ -1,0 +1,93 @@
+From 6f1ab5f4b470bcf4e7e72aac6e2f7f6ee3e7b424 Mon Sep 17 00:00:00 2001
+From: Tom Hughes <tom@compton.nu>
+Date: Sat, 22 Jun 2013 12:16:42 +0100
+Subject: [PATCH 13/15] Modify agg conv classes to allow access to the original
+ geometry type
+
+---
+ include/agg_conv_adaptor_vcgen.h | 2 ++
+ include/agg_conv_adaptor_vpgen.h | 1 +
+ include/agg_conv_clip_polygon.h  | 1 +
+ include/agg_conv_clip_polyline.h | 1 +
+ include/agg_conv_smooth_poly1.h  | 2 ++
+ 5 files changed, 7 insertions(+)
+
+diff --git a/include/agg_conv_adaptor_vcgen.h b/include/agg_conv_adaptor_vcgen.h
+index 7bd9b07..fef4579 100644
+--- a/include/agg_conv_adaptor_vcgen.h
++++ b/include/agg_conv_adaptor_vcgen.h
+@@ -38,6 +38,7 @@ namespace agg
+ 
+         void rewind(unsigned) {}
+         unsigned vertex(double*, double*) { return path_cmd_stop; }
++        unsigned type() const { return 0; }
+     };
+ 
+ 
+@@ -73,6 +74,7 @@ namespace agg
+         }
+ 
+         unsigned vertex(double* x, double* y);
++        unsigned type() const { return m_source->type(); }
+ 
+     private:
+         // Prohibit copying
+diff --git a/include/agg_conv_adaptor_vpgen.h b/include/agg_conv_adaptor_vpgen.h
+index dca9415..a39102d 100644
+--- a/include/agg_conv_adaptor_vpgen.h
++++ b/include/agg_conv_adaptor_vpgen.h
+@@ -42,6 +42,7 @@ namespace agg
+ 
+         void rewind(unsigned path_id);
+         unsigned vertex(double* x, double* y);
++        unsigned type() const { return m_source->type(); }
+ 
+     private:
+         conv_adaptor_vpgen(const conv_adaptor_vpgen<VertexSource, VPGen>&);
+diff --git a/include/agg_conv_clip_polygon.h b/include/agg_conv_clip_polygon.h
+index 3c34590..e417a7d 100644
+--- a/include/agg_conv_clip_polygon.h
++++ b/include/agg_conv_clip_polygon.h
+@@ -60,6 +60,7 @@ namespace agg
+         double y1() const { return base_type::vpgen().y1(); }
+         double x2() const { return base_type::vpgen().x2(); }
+         double y2() const { return base_type::vpgen().y2(); }
++        unsigned type() const { return base_type::type(); }
+ 
+     private:
+         conv_clip_polygon(const conv_clip_polygon<VertexSource>&);
+diff --git a/include/agg_conv_clip_polyline.h b/include/agg_conv_clip_polyline.h
+index d45067f..0de4b57 100644
+--- a/include/agg_conv_clip_polyline.h
++++ b/include/agg_conv_clip_polyline.h
+@@ -60,6 +60,7 @@ namespace agg
+         double y1() const { return base_type::vpgen().y1(); }
+         double x2() const { return base_type::vpgen().x2(); }
+         double y2() const { return base_type::vpgen().y2(); }
++        unsigned type() const { return base_type::type(); }
+ 
+     private:
+         conv_clip_polyline(const conv_clip_polyline<VertexSource>&);
+diff --git a/include/agg_conv_smooth_poly1.h b/include/agg_conv_smooth_poly1.h
+index 15f7f8d..0956c4e 100644
+--- a/include/agg_conv_smooth_poly1.h
++++ b/include/agg_conv_smooth_poly1.h
+@@ -48,6 +48,7 @@ namespace agg
+ 
+         void   smooth_value(double v) { base_type::generator().smooth_value(v); }
+         double smooth_value() const { return base_type::generator().smooth_value(); }
++        unsigned type() const { return base_type::type(); }
+ 
+     private:
+         conv_smooth_poly1(const conv_smooth_poly1<VertexSource>&);
+@@ -70,6 +71,7 @@ namespace agg
+ 
+         void   smooth_value(double v) { m_smooth.generator().smooth_value(v); }
+         double smooth_value() const { return m_smooth.generator().smooth_value(); }
++        unsigned type() const { return m_smooth.type(); }
+ 
+     private:
+         conv_smooth_poly1_curve(const conv_smooth_poly1_curve<VertexSource>&);
+-- 
+1.8.1.4
+

@@ -1,0 +1,56 @@
+--- a/config/src/aws-net-std__gnat.adb	2019-05-31 19:03:42.565961279 +0200
++++ b/config/src/aws-net-std__gnat.adb	2019-05-31 19:05:23.895245892 +0200
+@@ -132,7 +132,7 @@
+ 
+       if Reuse_Address then
+          Sockets.Set_Socket_Option
+-           (Socket.S.FD, Option => (Sockets.Reuse_Address, Enabled => True));
++           (Socket.S.FD, Sockets.Socket_Level, (Sockets.Reuse_Address, Enabled => True));
+       end if;
+ 
+       Sockets.Bind_Socket
+@@ -263,7 +263,7 @@
+       package SC renames OS_Lib;
+ 
+       Option : constant Option_Type :=
+-                 Get_Socket_Option (Socket.S.FD, Name => Error);
++                 Get_Socket_Option (Socket.S.FD, Socket_Level, Error);
+    begin
+       case Option.Error is
+          when Success                                       =>
+@@ -439,7 +439,7 @@
+    is
+       use Sockets;
+    begin
+-      return Get_Socket_Option (Socket.S.FD, Name => Receive_Buffer).Size;
++      return Get_Socket_Option (Socket.S.FD, Socket_Level, Receive_Buffer).Size;
+    exception
+       when E : Sockets.Socket_Error =>
+          Raise_Exception (E, "Get_Receive_Buffer_Size", Socket);
+@@ -454,7 +454,7 @@
+    is
+       use Sockets;
+    begin
+-      return Get_Socket_Option (Socket.S.FD, Name => Send_Buffer).Size;
++      return Get_Socket_Option (Socket.S.FD, Socket_Level, Send_Buffer).Size;
+    exception
+       when E : Sockets.Socket_Error =>
+          Raise_Exception (E, "Get_Send_Buffer_Size", Socket);
+@@ -709,7 +709,7 @@
+    is
+       use Sockets;
+    begin
+-      Set_Socket_Option (Socket.S.FD, Option => (Receive_Buffer, Size));
++      Set_Socket_Option (Socket.S.FD, Socket_Level, (Receive_Buffer, Size));
+    exception
+       when E : Sockets.Socket_Error =>
+          Raise_Exception (E, "Set_Receive_Buffer_Size", Socket);
+@@ -725,7 +725,7 @@
+    is
+       use Sockets;
+    begin
+-      Set_Socket_Option (Socket.S.FD, Option => (Send_Buffer, Size));
++      Set_Socket_Option (Socket.S.FD, Socket_Level, (Send_Buffer, Size));
+    exception
+       when E : Sockets.Socket_Error =>
+          Raise_Exception (E, "Set_Send_Buffer_Size", Socket);

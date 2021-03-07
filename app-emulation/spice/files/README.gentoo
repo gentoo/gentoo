@@ -1,0 +1,7 @@
+
+If you choose to enable the video streaming support of gstreamer,
+please try to install addtional gst-plugins which matching the video codecs
+
+	mjpeg		media-plugins/gst-plugins-libav:1.0
+	vpx		media-plugins/gst-plugins-vpx:1.0
+	x264		media-plugins/gst-plugins-x264:1.0

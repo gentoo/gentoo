@@ -1,0 +1,10 @@
+[Unit]
+Description=Latency Logging and Graphing System
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/smokeping --nodaemon
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

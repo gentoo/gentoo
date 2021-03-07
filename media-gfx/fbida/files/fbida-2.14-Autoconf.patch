@@ -1,0 +1,11 @@
+--- a/mk/Autoconf.mk
++++ b/mk/Autoconf.mk
+@@ -162,7 +162,7 @@
+ 	@true
+ 
+ Make.config: $(srcdir)/GNUmakefile
+-	@/bin/echo -e "$(make-config-q)" > $@
++	@printf "$(make-config-q)" > $@
+ 	@echo
+ 	@echo "Make.config written, edit if needed"
+ 	@echo

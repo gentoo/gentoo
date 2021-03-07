@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mmogilvi+gnto@zoho.com</email>
+    <name>Matthew Ogilvie</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription>
+    Provides a daemon for changing passwords over the network. This feature
+    is commonly used for TCP loopback password changing from web scripting
+    languages such as Perl and PHP, removing the requirement for setuid perl
+    scipts or running a web server process as root. This version of poppassd
+    has PAM support, and also optional support for cracklib enforcing the use
+    of strong passwords. Note that the protocol is plain text and so insecure
+    for all but loopback use.
+  </longdescription>
+</pkgmetadata>

@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/648670
+
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+
+--- mhddfs-0.1.39/src/main.c
++++ mhddfs-0.1.39/src/main.c
+@@ -34,7 +34,7 @@
+ #include <utime.h>
+ 
+ #ifndef WITHOUT_XATTR
+-#include <attr/xattr.h>
++#include <sys/xattr.h>
+ #endif
+ 
+ #include "parse_options.h"
+--- mhddfs-0.1.39/src/tools.c
++++ mhddfs-0.1.39/src/tools.c
+@@ -32,7 +32,7 @@
+ #include <dirent.h>
+ 
+ #ifndef WITHOUT_XATTR
+-#include <attr/xattr.h>
++#include <sys/xattr.h>
+ #endif
+ 
+ #include "tools.h"

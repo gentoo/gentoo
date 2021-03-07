@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Frontier-RPC</remote-id>
+    <remote-id type="cpan-module">Apache::XMLRPC</remote-id>
+    <remote-id type="cpan-module">Frontier::Client</remote-id>
+    <remote-id type="cpan-module">Frontier::Daemon</remote-id>
+    <remote-id type="cpan-module">Frontier::RPC2</remote-id>
+    <remote-id type="cpan-module">Frontier::RPC2::Base64</remote-id>
+    <remote-id type="cpan-module">Frontier::RPC2::Boolean</remote-id>
+    <remote-id type="cpan-module">Frontier::RPC2::DataType</remote-id>
+    <remote-id type="cpan-module">Frontier::RPC2::DateTime::ISO8601</remote-id>
+    <remote-id type="cpan-module">Frontier::RPC2::Double</remote-id>
+    <remote-id type="cpan-module">Frontier::RPC2::Integer</remote-id>
+    <remote-id type="cpan-module">Frontier::RPC2::String</remote-id>
+    <remote-id type="cpan-module">Frontier::Responder</remote-id>
+    <remote-id type="sourceforge">perl-xml</remote-id>
+  </upstream>
+</pkgmetadata>

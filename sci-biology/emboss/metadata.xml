@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-biology@gentoo.org</email>
+		<name>Gentoo Biology Project</name>
+	</maintainer>
+	<longdescription>
+		EMBOSS is "The European Molecular Biology Open Software Suite".
+		EMBOSS is a free Open Source software analysis package specially
+		developed for the needs of the molecular biology (e.g. EMBnet) user
+		community. The software automatically copes with data in a variety
+		of formats and even allows transparent retrieval of sequence data
+		from the web. Also, as extensive libraries are provided with the
+		package, it is a platform to allow other scientists to develop and
+		release software in true open source spirit. EMBOSS also integrates
+		a range of currently available packages and tools for sequence
+		analysis into a seamless whole. EMBOSS breaks the historical trend
+		towards commercial software packages.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">emboss</remote-id>
+	</upstream>
+</pkgmetadata>

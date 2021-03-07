@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>arfrever.fta@gmail.com</email>
+		<name>Arfrever Frehtes Taifersar Arahesis</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>dlan@gentoo.org</email>
+		<name>Yixun Lan</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>cjk@gentoo.org</email>
+		<name>Cjk</name>
+	</maintainer>
+	<use>
+		<flag name="extra">Install extra packages</flag>
+	</use>
+	<upstream>
+		<maintainer>
+			<email>chen.sst@gmail.com</email>
+			<name>弓辰 (Gōng Chén)</name>
+		</maintainer>
+		<remote-id type="github">rime/brise</remote-id>
+	</upstream>
+</pkgmetadata>

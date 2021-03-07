@@ -1,0 +1,30 @@
+From 13551f3f40d41f1357126ac5a26d0fa012cd8123 Mon Sep 17 00:00:00 2001
+From: Bastien Nocera <hadess@hadess.net>
+Date: Tue, 16 Jun 2020 13:28:35 +0200
+Subject: [PATCH] afc: Add support for libplist-2.2
+
+Which changed name from libplist to libplist-2.0 to embed its API
+version number in the library name.
+---
+ meson.build | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 1750f65c..187bfd55 100644
+--- a/meson.build
++++ b/meson.build
+@@ -357,7 +357,10 @@ config_h.set('HAVE_LOGIND', enable_logind)
+ enable_afc = get_option('afc')
+ if enable_afc
+   libimobiledevice_dep = dependency('libimobiledevice-1.0', version: '>= 1.2')
+-  libplist_dep = dependency('libplist', version: '>= 0.15')
++  libplist_dep = dependency('libplist-2.0', required: false)
++  if not libplist_dep.found()
++    libplist_dep = dependency('libplist', version: '>= 0.15')
++  endif
+ endif
+ 
+ # *** Check if we should build with GOA volume monitor ***
+-- 
+2.20.1
+

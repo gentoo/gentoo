@@ -1,0 +1,16 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-06-18)
+# Force host target
+dev-libs/keystone llvm_targets_ARM
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-02-16)
+# Force the host target
+dev-lang/rust llvm_targets_ARM
+
+# Michał Górny <mgorny@gentoo.org> (2016-09-24)
+# Force the host target to avoid dependency hell
+dev-ml/llvm-ocaml llvm_targets_ARM
+sys-devel/clang llvm_targets_ARM
+sys-devel/llvm llvm_targets_ARM

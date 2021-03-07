@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="multiuser">Allow renderer customization per-user.</flag>
+		<flag name="transcode">Install optional dependencies for transcoding support via media-video/mplayer</flag>
+		<flag name="tsmuxer">Install optional dependencies for transcoding support via media-video/tsmuxer</flag>
+	</use>
+	<upstream>
+		<remote-id type="google-code">ps3mediaserver</remote-id>
+		<remote-id type="sourceforge">ps3mediaserver</remote-id>
+		<remote-id type="github">ps3mediaserver/ps3mediaserver</remote-id>
+	</upstream>
+</pkgmetadata>

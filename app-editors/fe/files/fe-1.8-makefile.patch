@@ -1,0 +1,15 @@
+--- fe-1.8-orig/Makefile.in
++++ fe-1.8/Makefile.in
+@@ -40,10 +40,10 @@
+ 
+ install:	all
+ 		$(INSTALL) -m 755 -d $(BINDIR)
+-		$(INSTALL_PROGRAM) -s fe $(BINDIR)/fe
++		$(INSTALL_PROGRAM) fe $(BINDIR)/fe
+ 		$(INSTALL) -m 755 -d $(MANDIR)/man1
+ 		$(INSTALL_DATA) fe.1 $(MANDIR)/man1/fe.1
+-		make install-po
++		$(MAKE) install-po
+ 
+ .c.o:
+ 		$(CC) -c $(CPPFLAGS) $(CFLAGS) $<

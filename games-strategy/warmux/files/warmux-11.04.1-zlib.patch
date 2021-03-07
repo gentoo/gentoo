@@ -1,0 +1,11 @@
+diff -uNr warmux-11.04.orig/src/graphic/surface.cpp warmux-11.04/src/graphic/surface.cpp
+--- warmux-11.04.orig/src/graphic/surface.cpp	2011-09-19 09:26:52.392650465 +0200
++++ warmux-11.04/src/graphic/surface.cpp	2011-09-19 09:26:19.417648189 +0200
+@@ -25,6 +25,7 @@
+ #include <SDL_image.h>
+ #include <SDL_rotozoom.h>
+ #include <png.h>
++#include <zlib.h>
+ 
+ #include "graphic/surface.h"
+ #include "tool/math_tools.h"

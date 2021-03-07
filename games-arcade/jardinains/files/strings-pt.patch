@@ -1,0 +1,303 @@
+--- data/strings.xml	2006-11-11 23:45:28.000000000 +0000
++++ data/strings.xml	2007-02-02 14:14:14.000000000 +0000
+@@ -35,5 +35,5 @@
+ 		<es>Español</es>
+ 		<it>Italiano</it>
+-		<pt>Portuguese</pt>
++		<pt>Português</pt>
+ 		<pl>Polski</pl>
+ 	</message>
+@@ -61,5 +61,5 @@
+ 		<es>Parar</es>
+ 		<it>Uscita</it>
+-		<pt>Parado</pt>
++		<pt>Sair</pt>
+ 		<pl>Koniec</pl>
+ 	</message>
+@@ -74,5 +74,5 @@
+ 		<es>Juego Nuevo</es>
+ 		<it>Nuovo Gioco</it>
+-		<pt>Jogo Novo</pt>
++		<pt>Novo Jogo</pt>
+ 		<pl>Nowa Gra</pl>
+ 	</message>
+@@ -113,5 +113,5 @@
+ 		<es>Modo De La Ventana</es>
+ 		<it>Modo Della Finestra</it>
+-		<pt>Modalidade Da Janela</pt>
++		<pt>Modo de Janela</pt>
+ 		<pl>Tryb Okienkowy</pl>
+ 	</message>
+@@ -165,5 +165,5 @@
+ 		<es>Pantalla Completa</es>
+ 		<it>Schermo Pieno</it>
+-		<pt>Tela Cheia</pt>
++		<pt>Jogar em Ecrã Completo</pt>
+ 		<pl>Pelny Ekran</pl>
+ 	</message>
+@@ -178,5 +178,5 @@
+ 		<es>Pantalla Completa/Ventana</es>
+ 		<it>Schermo Pieno/Finestra</it>
+-		<pt>Tela Cheia/Janela</pt>
++		<pt>Ecrã Completo/Janela</pt>
+ 		<pl>Pelny Ecran/Okno</pl>
+ 	</message>
+@@ -218,5 +218,5 @@
+ 		<es>Regresar</es>
+ 		<it>Andare Indietro</it>
+-		<pt>Ir Para Trás</pt>
++		<pt>Voltar</pt>
+ 		<pl>Wstecz</pl>
+ 	</message>
+@@ -244,5 +244,5 @@
+ 		<es>Anular</es>
+ 		<it>Annullamento</it>
+-		<pt>Cancelamento</pt>
++		<pt>Cancelar</pt>
+ 		<pl>Poniechaj</pl>
+ 	</message>
+@@ -257,5 +257,5 @@
+ 		<es>Continuar Jugando</es>
+ 		<it>Continuare A Giocare</it>
+-		<pt>Continuar Jogando</pt>
++		<pt>Continuar a Jogar</pt>
+ 		<pl>Kontynuuj Gre</pl>
+ 	</message>
+@@ -270,5 +270,5 @@
+ 		<es>Terminar y Regresar</es>
+ 		<it>Rinunciato Al Menu</it>
+-		<pt>Parado Ao Menu</pt>
++		<pt>Sair para o Menu</pt>
+ 		<pl>Wyjdz Do Menu</pl>
+ 	</message>
+@@ -283,5 +283,5 @@
+ 		<es>Terminar de Jugar</es>
+ 		<it>Uscita Jardinains 2</it>
+-		<pt>Parado Jardinains 2</pt>
++		<pt>Sair do Jardinains 2</pt>
+ 		<pl>Zakoncz Jardinains 2</pl>
+ 	</message>
+@@ -296,5 +296,5 @@
+ 		<es>Pausa</es>
+ 		<it>Pausa</it>
+-		<pt>Pausado/pt>
++		<pt>Pausa</pt>
+ 		<pl>Gra Przerwana</pl>
+ 	</message>
+@@ -322,5 +322,5 @@
+ 		<es>Calidad de los gráficos</es>
+ 		<it>Qualità dei grafici</it>
+-		<pt>Qualidade dos gráficos</pt>
++		<pt>Qualidade dos Gráficos</pt>
+ 		<pl>Jakosc Grafiki</pl>
+ 	</message>
+@@ -335,5 +335,5 @@
+ 		<es>Conductor de los gráficos</es>
+ 		<it>Driver dei grafici</it>
+-		<pt>Excitador dos gráficos</pt>
++		<pt>Controlador dos Gráficos</pt>
+ 		<pl>Sterowniki Graficzne</pl>
+ 	</message>
+@@ -361,5 +361,5 @@
+ 		<es>Crear A Nuevo Jugador</es>
+ 		<it>Generare Il Nuovo Giocatore</it>
+-		<pt>Criar O Jogador Novo</pt>
++		<pt>Criar um Jogador Novo</pt>
+ 		<pl>Utworz Nowego Gracza</pl>
+ 	</message>
+@@ -374,5 +374,5 @@
+ 		<es>Entrar Contraseña</es>
+ 		<it>Digitare La Parola d'Accesso</it>
+-		<pt>Incorporar A Senha</pt>
++		<pt>Introduzir A Senha</pt>
+ 		<pl>Wpisz Haslo</pl>
+ 	</message>
+@@ -387,5 +387,5 @@
+ 		<es>Volver A Entrar La Contraseña</es>
+ 		<it>Digitare Ancora La Parola d'Accesso</it>
+-		<pt>Incorporar A Senha Outra Vez</pt>
++		<pt>Re-Introduzir A Senha</pt>
+ 		<pl>Wprowadz Haslo Ponownie</pl>
+ 	</message>
+@@ -400,5 +400,5 @@
+ 		<es>Las Contraseñas No Emparejan!</es>
+ 		<it>Parole d'Accesso Male!</it>
+-		<pt>As Senhas Não Combinam!</pt>
++		<pt>As Senhas Não Coincidem!</pt>
+ 		<pl>Hasla Nie Sa Identyczne!</pl>
+ 	</message>
+@@ -426,5 +426,5 @@
+ 		<es>Contraseña Incorrecta</es>
+ 		<it>Parola d'Accesso Errata</it>
+-		<pt>Senha Incorreta</pt>
++		<pt>Senha Incorrecta</pt>
+ 		<pl>Niepoprawne Haslo</pl>
+ 	</message>
+@@ -439,5 +439,5 @@
+ 		<es>Incorporar Nombre Del Jugador</es>
+ 		<it>Introdurre Nome Del Giocatore</it>
+-		<pt>Dar Entrada Nome Do Jogador</pt>
++		<pt>Introduzir o Nome Do Jogador</pt>
+ 		<pl>Wprowadz Imie Gracza</pl>
+ 	</message>
+@@ -452,5 +452,5 @@
+ 		<es>¡Nombre No Existe!</es>
+ 		<it>Nessun Nome Introdotto!</it>
+-		<pt>Nenhum Nome Dado Entrada Com!</pt>
++		<pt>Nenhum Nome Introduzido!</pt>
+ 		<pl>Nie Podano Imienia!</pl>
+ 	</message>
+@@ -465,5 +465,5 @@
+ 		<es>¡El Jugador Existe!</es>
+ 		<it>Il Giocatore Già Esiste!</it>
+-		<pt>O Jogador Existe Já!</pt>
++		<pt>O Jogador Já Existe!</pt>
+ 		<pl>Gracz Juz Istnieje!</pl>
+ 	</message>
+@@ -478,5 +478,5 @@
+ 		<es>¡No Se Puede Crear!</es>
+ 		<it>Non Ha Potuto Generare!</it>
+-		<pt>Não Podia Criar O Jogador!</pt>
++		<pt>Não Consegui Criar O Jogador!</pt>
+ 		<pl>Utworzenie Gracza Niemozliwe!</pl>
+ 	</message>
+@@ -504,5 +504,5 @@
+ 		<es>Fin</es>
+ 		<it>Gioco Sopra</it>
+-		<pt>Jogo Sobre</pt>
++		<pt>Fim do Jogo</pt>
+ 		<pl>Koniec Gry</pl>
+ 	</message>
+@@ -517,5 +517,5 @@
+ 		<es>Nuevo Juego De Este Nivel</es>
+ 		<it>Nuovo Gioco (Questo Livello)</it>
+-		<pt>Jogo Novo Deste Nível</pt>
++		<pt>Jogo Novo a partir Deste Nível</pt>
+ 		<pl>Nowa Gra Od Tego Poziomu</pl>
+ 	</message>
+@@ -583,5 +583,5 @@
+ 		<es>Cuenta Mejor</es>
+ 		<it>Segno Migliore</it>
+-		<pt>Contagem Superior</pt>
++		<pt>Pontos Máximos</pt>
+ 		<pl>Najlepszy Wynik</pl>
+ 	</message>
+@@ -687,5 +687,5 @@
+ 		<es>PROYECTILES</es>
+ 		<it>PROIETTILI</it>
+-		<pt>PROJECTILES</pt>
++		<pt>PROJÉCTEIS</pt>
+ 		<pl>POCISKI</pl>
+ 	</message>
+@@ -739,5 +739,5 @@
+ 		<es>PRIMAS</es>
+ 		<it>INDENNITÀ</it>
+-		<pt>BÔNUS</pt>
++		<pt>BÓNUS</pt>
+ 		<pl>BONUSY</pl>
+ 	</message>
+@@ -804,5 +804,5 @@
+ 		<es>Solamente Sonido</es>
+ 		<it>Suono Soltanto</it>
+-		<pt>Som Somente</pt>
++		<pt>Apenas Som</pt>
+ 		<pl>Tylko Dzwieki</pl>
+ 	</message>
+@@ -817,5 +817,5 @@
+ 		<es>Solamente Música</es>
+ 		<it>Suono Musica</it>
+-		<pt>Som Música</pt>
++		<pt>Apenas Música</pt>
+ 		<pl>Tylko Muzyka</pl>
+ 	</message>
+@@ -856,5 +856,5 @@
+ 		<es>¡Solamente $19,99 USD!</es>
+ 		<it>Suono $19,99 USD!</it>
+-		<pt>Som $19,99 USD!</pt>
++		<pt>Só $19,99 USD!</pt>
+ 		<pl>Tylko $19,99 USD!</pl>
+ 	</message>
+@@ -882,5 +882,5 @@
+ 		<es>¡Más Primas!</es>
+ 		<it>Più Indennità!</it>
+-		<pt>Mais Bônus!</pt>
++		<pt>Mais Bónus!</pt>
+ 		<pl>Wiecej Bonusow!</pl>
+ 	</message>
+@@ -923,5 +923,5 @@
+ 		<es>¡Clíque Aquí Para Comprar!</es>
+ 		<it>Clicca Qui Per Comprare!</it>
+-		<pt>Estalar aqui para comprar!</pt>
++		<pt>Clicar Aqui Para Comprar!</pt>^M
+ 		<pl>Kliknij tu, aby kupic!</pl>
+ 	</message>
+@@ -989,5 +989,5 @@
+ 		<es>¿Abandonar el Juego Actual?</es>
+ 		<it>Abbandonare il Gioco Corrente?</it>
+-		<pt>Abandonar o Jogo Atual?</pt>
++		<pt>Abandonar o Jogo Actual?</pt>
+ 		<pl>Koniec Biezacej Gry?</pl>
+ 	</message>
+@@ -1004,5 +1004,5 @@
+ 		<es>Suprimir</es>
+ 		<it>Cancellare</it>
+-		<pt>Suprimir</pt>
++		<pt>Apagar</pt>
+ 		<pl>Usunac</pl>
+ 	</message>
+@@ -1030,5 +1030,5 @@
+ 		<es>Estadística</es>
+ 		<it>Statistiche</it>
+-		<pt>Statistics</pt>
++		<pt>Estatísticas</pt>
+ 		<pl>Statystyka</pl>
+ 	</message>
+@@ -1043,5 +1043,5 @@
+ 		<es>Tiempo Perdió</es>
+ 		<it>Tempo Perso</it>
+-		<pt>Tempo Perdeu</pt>
++		<pt>Tempo Total</pt>
+ 		<pl>Czas Stracony</pl>
+ 	</message>
+@@ -1069,5 +1069,5 @@
+ 		<es>año</es>
+ 		<it>anno</it>
+-		<pt>anos</pt>
++		<pt>ano</pt>
+ 		<pl>rok</pl>
+ 	</message>
+@@ -1199,5 +1199,5 @@
+ 		<es>Tramposo?</es>
+ 		<it>Frode?</it>
+-		<pt>Fraude?</pt>
++		<pt>Ajudas?</pt>
+ 		<pl>Oszukac?</pl>
+ 	</message>
+@@ -1212,5 +1212,5 @@
+ 		<es>Número de Juegos</es>
+ 		<it>Numero di Giochi</it>
+-		<pt>Número dos Jogos</pt>
++		<pt>Número de Jogos</pt>
+ 		<pl>Gra Ogolny</pl>
+ 	</message>
+@@ -1225,5 +1225,5 @@
+ 		<es>Número de Niveles</es>
+ 		<it>Numero di Livelli</it>
+-		<pt>Número dos Níveis</pt>
++		<pt>Número de Níveis</pt>
+ 		<pl>Poziomy Ogolem</pl>
+ 	</message>
+@@ -1251,5 +1251,5 @@
+ 		<es>¡Los paquetes del juego modificado están disponibles solamente en la versión completa de Jardinains 2!</es>
+ 		<it>I pacchetti su ordinazione del gioco sono disponibili soltanto nella versione completa di Jardinains 2!</it>
+-		<pt>Os blocos feitos sob encomenda do jogo estão disponíveis somente na versão cheia de Jardinains 2!</pt>
++		<pt>Os blocos modificados do jogo estão disponíveis somente na versão completa do Jardinains 2!</pt>
+ 		<pl>Custom game packs are available only in the full version of Jardinains 2!</pl>
+ 	</message>
+@@ -1293,5 +1293,5 @@
+ 		<es>Ningunos Rastros de la Bola</es>
+ 		<it>Nessun Tracce della Sfera</it>
+-		<pt>Nenhumas Fugas de Esfera</pt>
++		<pt>Nenhuns rastos de Esfera</pt>
+ 		<pl>Pilka Proste</pl>
+ 	</message>

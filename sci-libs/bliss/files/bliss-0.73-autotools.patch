@@ -1,0 +1,99 @@
+Replace simple Makefile by autotools
+- allow shared library
+- parallel build
+- added pkg-config support
+
+Author: Christoph Junghans <junghans@gentoo.org>
+
+diff -Naur bliss-0.72-fedora/config/.dummy bliss-0.72/config/.dummy
+--- bliss-0.72-fedora/config/.dummy	1969-12-31 17:00:00.000000000 -0700
++++ bliss-0.72/config/.dummy	2013-04-28 14:43:06.143760368 -0600
+@@ -0,0 +1 @@
++Dummy file to make patch create config dir, which is needed for autotools
+diff -Naur bliss-0.72-fedora/configure.ac bliss-0.72/configure.ac
+--- bliss-0.72-fedora/configure.ac	1969-12-31 17:00:00.000000000 -0700
++++ bliss-0.72/configure.ac	2013-04-28 14:40:42.283242722 -0600
+@@ -0,0 +1,32 @@
++AC_PREREQ([2.65])
++AC_INIT([bliss], [0.73], [Tommi.Junttil@kk.fi])
++
++AC_CONFIG_AUX_DIR(config)
++AC_CONFIG_MACRO_DIR(config)
++
++AM_INIT_AUTOMAKE([1.8 foreign])
++
++SHARED_VERSION_INFO="1:0:0"
++AC_SUBST(SHARED_VERSION_INFO)
++
++# Checks for programs.
++AC_PROG_CXX
++
++LT_INIT
++# Checks for libraries.
++AC_ARG_WITH([gmp],
++  [AS_HELP_STRING([--with-gmp], [enable support for GNU Multiple Precision Arithmetic Library @<:@default=check@:>@])],
++  [], [with_gmp=no])
++AS_IF([test "x$with_gmp" != xno],
++  [AC_CHECK_HEADERS([gmp.h],,AC_MSG_ERROR([Cannot find gmp.h header]))
++    AC_CHECK_LIB([gmp],_init,,AC_MSG_ERROR([Cannot find gmp library]))
++    AC_SUBST([GMP],[-lgmp])
++    [CPPFLAGS="$CPPFLAGS -DBLISS_USE_GMP"]])
++
++AC_CHECK_PROG(DOXYGEN,doxygen,doxygen,no)
++AM_CONDITIONAL(HAVE_DOXYGEN,[test .$DOXYGEN != .no])
++
++AC_CONFIG_FILES([Makefile])
++AC_CONFIG_FILES([bliss.pc])
++AC_CONFIG_FILES([bliss.1])
++AC_OUTPUT
+diff -Naur bliss-0.72-fedora/bliss.pc.in bliss-0.72/bliss.pc.in
+--- bliss-0.72-fedora/bliss.pc.in	1969-12-31 17:00:00.000000000 -0700
++++ bliss-0.72/bliss.pc.in	2013-04-28 14:40:54.223285686 -0600
+@@ -0,0 +1,13 @@
++prefix=@prefix@
++exec_prefix=@exec_prefix@
++libdir=@libdir@
++includedir=@includedir@
++
++Name: bliss
++Description: Library for Computing Automorphism Groups and Canonical Labelings of Graphs 
++URL: http://www.tcs.hut.fi/Software/bliss/index.shtml
++Version: @VERSION@
++Requires: 
++Libs: -L${libdir} -lbliss @GMP@
++Libs.private: -lm
++Cflags: -I${includedir}
+diff -Naur bliss-0.72-fedora/Makefile.am bliss-0.72/Makefile.am
+--- bliss-0.72-fedora/Makefile.am	1969-12-31 17:00:00.000000000 -0700
++++ bliss-0.72/Makefile.am	2013-04-28 14:47:26.944698789 -0600
+@@ -0,0 +1,30 @@
++ACLOCAL_AMFLAGS = -I config
++
++lib_LTLIBRARIES = libbliss.la
++
++libbliss_la_LDFLAGS = -no-undefined -version-info @SHARED_VERSION_INFO@
++libbliss_la_SOURCES = \
++	defs.cc graph.cc partition.cc orbit.cc uintseqhash.cc heap.cc \
++	timer.cc utils.cc bliss_C.cc
++
++pkginclude_HEADERS = \
++	bignum.hh bliss_C.h defs.hh graph.hh heap.hh kqueue.hh kstack.hh \
++	orbit.hh partition.hh timer.hh uintseqhash.hh utils.hh
++
++bin_PROGRAMS = bliss
++bliss_SOURCES = bliss.cc
++bliss_LDADD = libbliss.la
++dist_man1_MANS = bliss.1
++
++pkgconfigdir = $(libdir)/pkgconfig
++pkgconfig_DATA = bliss.pc
++
++html-local: Doxyfile
++if HAVE_DOXYGEN
++	$(DOXYGEN) $(srcdir)/Doxyfile
++else
++	@echo "doxygen was not found, please re-run configure"
++endif
++
++clean-local:
++	-rm -rf html

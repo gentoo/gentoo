@@ -1,0 +1,44 @@
+#!/sbin/openrc-run
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name="Prosody XMPP server"
+extra_started_commands="reload"
+jabber_pid="/run/jabber"
+jabber_logs="/var/log/jabber"
+pidfile="${jabber_pid}/prosody.pid"
+prosody_config="/etc/jabber/prosody.cfg.lua"
+
+command="/usr/bin/prosody"
+commandctl="/usr/bin/prosodyctl"
+command_group="jabber"
+command_user="jabber"
+
+checkconfig() {
+	if [ ! -f "${prosody_config}" ]; then
+		eerror "Please create ${prosody_config} before starting Prosody!"
+		return 1
+	fi
+
+	${commandctl} check config
+	return $?
+}
+
+depend() {
+	need net
+	provide jabber-server
+	use dns postgresql
+}
+
+reload() {
+	ebegin "Reloading configuration"
+	start-stop-daemon --signal HUP --pidfile "${pidfile}"
+	eend $?
+}
+
+start_pre() {
+	checkconfig || return 1
+
+	checkpath -d -m 0750 -o "${command_user}:${command_group}" -q "${jabber_logs}"
+	checkpath -d -m 0750 -o "${command_user}:${command_group}" -q "${jabber_pid}"
+}

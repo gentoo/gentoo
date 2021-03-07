@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		This is a library for converting unicode strings to numbers and numbers to unicode strings.
+		Standard functions like strtoul, strtod, and sprintf do this for numbers written in the
+		usual western number system using the indo-arabic numerals, but they do not handle other number systems.
+		The main functions take as input a UTF-32 unicode string and compute the corresponding unsigned integer.
+	</longdescription>
+</pkgmetadata>

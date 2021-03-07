@@ -1,0 +1,43 @@
+--- cpint-2.5.3/actgen.c
++++ cpint-2.5.3/actgen.c
+@@ -45,6 +45,7 @@
+ /************************************************************/
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <unistd.h>
+ #include <errno.h>
+ #include <fcntl.h>
+--- cpint-2.5.3/diag0.c
++++ cpint-2.5.3/diag0.c
+@@ -46,6 +46,8 @@
+ /************************************************************/
+ 
+ #include <stdio.h>
++#include <stdlib.h>
++#include <sys/ioctl.h>
+ #include <unistd.h>
+ #include <errno.h>
+ #include <fcntl.h>
+--- cpint-2.5.3/hcp.c
++++ cpint-2.5.3/hcp.c
+@@ -48,6 +48,8 @@
+ /************************************************************/
+ 
+ #include <stdio.h>
++#include <stdlib.h>
++#include <sys/ioctl.h>
+ #include <unistd.h>
+ #include <errno.h>
+ #include <fcntl.h>
+--- cpint-2.5.3/mongen.c
++++ cpint-2.5.3/mongen.c
+@@ -59,6 +59,8 @@
+ /************************************************************/
+ 
+ #include <stdio.h>
++#include <stdlib.h>
++#include <sys/ioctl.h>
+ #include <unistd.h>
+ #include <errno.h>
+ #include <fcntl.h>

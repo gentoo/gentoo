@@ -1,0 +1,21 @@
+--- skycat-3.0.2.orig/rtd/generic/RtdImage.C	2006-02-02 18:36:47.000000000 +0100
++++ skycat-3.0.2/rtd/generic/RtdImage.C	2009-09-15 09:23:44.505239756 +0200
+@@ -913,6 +913,9 @@
+     updateIdleTasks();
+ }
+ 
++#ifndef MODULE_SCOPE
++#define MODULE_SCOPE extern
++#endif
+ 
+ // Fix for Tk clipping coordinates to short range: See CanvasWindowCoordsNoClip() below.
+ #ifdef HAVE_TKCANVAS_H
+--- skycat-3.0.2.orig/skycat/skycat.in	2006-02-04 14:27:30.000000000 +0100
++++ skycat-3.0.2/skycat/skycat.in	2009-09-15 09:20:45.910857133 +0200
+@@ -54,5 +54,5 @@
+ 
+ test -d $HOME/.skycat || mkdir $HOME/.skycat
+ echo "`date`: Starting skycat with: $0 ${1+"$@"}" > $HOME/.skycat/log
+-exec wish8.4 $SKYCAT_BASE/lib/skycat@PACKAGE_VERSION@/main.tcl ${1+"$@"} | tee -a $HOME/.skycat/log 2>&1
++exec wish8.5 $SKYCAT_BASE/lib/skycat@PACKAGE_VERSION@/main.tcl ${1+"$@"} | tee -a $HOME/.skycat/log 2>&1
+ 

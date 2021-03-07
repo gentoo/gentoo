@@ -1,0 +1,30 @@
+From 82eaa751a4aebb6cce70b83407c1fafd13334130 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Wed, 10 Jul 2019 02:58:13 +1200
+Subject: Remove hardcoded XML::Parser check
+
+This test isn't necessary and is a vestigal side effect of old build
+chains that didn't have prereqs.
+
+As this dependency is only needed if you're using Boulder::XML, its
+rather redundant.
+---
+ Makefile.PL | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index 2fe3176..245f16e 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -1,8 +1,5 @@
+ use ExtUtils::MakeMaker;
+ 
+-eval "use XML::Parser; 1" 
+-  || warn "XML::Parser module not found.  This module is required to use Boulder::XML\n";
+-
+ WriteMakefile(
+     'NAME'	=> 'Boulder',
+     'DISTNAME'  => 'Boulder',
+-- 
+2.22.0
+

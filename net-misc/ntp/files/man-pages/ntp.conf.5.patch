@@ -1,0 +1,27 @@
+--- ntp.conf.5
++++ ntp.conf.5
+@@ -24,16 +24,6 @@
+ .Fl c
+ command line option).
+ .Pp
+-The
+-.Pa /etc/rc.d/ntpdate
+-script reads this file to get a list of NTP servers to use if the
+-variable
+-.Dq Li ntpdate_hosts
+-was not declared.
+-Refer to the
+-.Xr rc.conf 5
+-man page for further info about this.
+-.Pp
+ The file format is similar to other
+ .Ux
+ configuration files.
+@@ -2686,7 +2676,6 @@
+ Diffie-Hellman agreement parameters
+ .El
+ .Sh SEE ALSO
+-.Xr rc.conf 5 ,
+ .Xr ntpd 8 ,
+ .Xr ntpdc 8 ,
+ .Xr ntpq 8

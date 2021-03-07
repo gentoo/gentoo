@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>polynomial-c@gentoo.org</email>
+		<name>Lars Wendler</name>
+	</maintainer>
+	<longdescription lang="en">
+		libEtPan ! is a mail purpose library. It will be used for low-level mail
+		handling : network protocols (IMAP/NNTP/POP3/SMTP over TCP/IP and
+		SSL/TCP/IP, already implemented), local storage (mbox/MH/maildir),
+		message / MIME parser
+	</longdescription>
+	<use>
+		<flag name="liblockfile">Enable support for liblockfile library</flag>
+		<flag name="lmdb">Use <pkg>dev-db/lmdb</pkg> as cache DB</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">dinhviethoa/libetpan</remote-id>
+		<remote-id type="sourceforge">libetpan</remote-id>
+	</upstream>
+</pkgmetadata>

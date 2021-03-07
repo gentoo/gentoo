@@ -1,0 +1,11 @@
+--- a/option.cpp.old	2007-02-07 23:32:25.000000000 +0100
++++ b/option.cpp	2007-02-07 23:32:51.000000000 +0100
+@@ -29,7 +29,7 @@
+    { "Ponder", true, "false", "check", "", NULL },
+ 
+    { "OwnBook",  true, "true",           "check",  "", NULL },
+-   { "BookFile", true, "book_small.bin", "string", "", NULL },
++   { "BookFile", true, "@GENTOO_DATADIR@/book_small.bin", "string", "", NULL },
+ 
+    { "NullMove Pruning",       true, "Fail High", "combo", "var Always var Fail High var Never", NULL },
+    { "NullMove Reduction",     true, "3",         "spin",  "min 1 max 3", NULL },

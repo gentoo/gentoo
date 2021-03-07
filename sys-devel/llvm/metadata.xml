@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>llvm@gentoo.org</email>
+	</maintainer>
+	<longdescription>Low Level Virtual Machine (LLVM) is:
+	1. A compilation strategy designed to enable effective program optimization across the entire lifetime of a program. LLVM supports effective optimization at compile time, link-time (particularly interprocedural), run-time and offline (i.e., after software is installed), while remaining transparent to developers and maintaining compatibility with existing build scripts.
+	2. A virtual instruction set - LLVM is a low-level object code representation that uses simple RISC-like instructions, but provides rich, language-independent, type information and dataflow (SSA) information about operands. This combination enables sophisticated transformations on object code, while remaining light-weight enough to be attached to the executable. This combination is key to allowing link-time, run-time, and offline transformations.
+	3. A compiler infrastructure - LLVM is also a collection of source code that implements the language and compilation strategy. The primary components of the LLVM infrastructure are a GCC-based C and C++ front-end, a link-time optimization framework with a growing set of global and interprocedural analyses and transformations, static back-ends for many popular (and some obscure) architectures, a back-end which emits portable C code, and a Just-In-Time compilers for several architectures.
+	4. LLVM does not imply things that you would expect from a high-level virtual machine. It does not require garbage collection or run-time code generation (In fact, LLVM makes a great static compiler!). Note that optional LLVM components can be used to build high-level virtual machines and other systems that need these services.</longdescription>
+	<use>
+		<flag name="doc">Build and install the HTML documentation and regenerate the man pages</flag>
+		<flag name="exegesis">Enable performance counter support for llvm-exegesis tool
+			that can be used to measure host machine instruction characteristics</flag>
+		<flag name="gold">Build the gold linker plugin</flag>
+		<flag name="ncurses">Support querying terminal properties using ncurses' terminfo</flag>
+		<flag name="xar">Support dumping LLVM bitcode sections in Mach-O files
+			(uses <pkg>app-arch/xar</pkg>)</flag>
+		<flag name="z3">Enable support for <pkg>sci-mathematics/z3</pkg> constraint solver</flag>
+	</use>
+</pkgmetadata>

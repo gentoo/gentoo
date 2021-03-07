@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>llvm@gentoo.org</email>
+	</maintainer>
+	<longdescription>The goal of the Clang project is to create a new C, C++, Objective C and Objective C++ front-end for the LLVM compiler.
+
+Features and Goals
+
+Some of the goals for the project include the following:
+
+End-User Features:
+Fast compiles and low memory use
+Expressive diagnostics
+GCC compatibility
+Utility and Applications:
+
+Modular library based architecture
+Support diverse clients (refactoring, static analysis, code generation, etc)
+Allow tight integration with IDEs
+Use the LLVM BSD License
+Internal Design and Implementation:
+
+A real-world, production quality compiler
+A simple and hackable code base
+A single unified parser for C, Objective C, C++, and Objective C++
+Conformance with C/C++/ObjC and their variants</longdescription>
+	<use>
+		<flag name="default-compiler-rt">Use compiler-rt instead of libgcc as the default rtlib for clang</flag>
+		<flag name="default-libcxx">Use libc++ instead of libstdc++ as the default stdlib for clang</flag>
+		<flag name="default-lld">Use lld as the default linker for clang</flag>
+		<flag name="static-analyzer">Install the Clang static analyzer</flag>
+	</use>
+</pkgmetadata>

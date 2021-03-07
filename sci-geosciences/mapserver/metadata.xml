@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-geosciences@gentoo.org</email>
+		<name>Gentoo Geosciences Project</name>
+	</maintainer>
+	<use>
+		<flag name="apache">Enable mapserver to run under apache</flag>
+		<flag name="geos">Enable <pkg>sci-libs/geos</pkg> library support</flag>
+		<flag name="postgis">Enable <pkg>dev-db/postgis</pkg> support</flag>
+	</use>
+</pkgmetadata>

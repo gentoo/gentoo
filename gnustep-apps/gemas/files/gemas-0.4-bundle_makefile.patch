@@ -1,0 +1,24 @@
+diff -Naur Gemas-0.4.orig/Bundle/Gemas/GNUmakefile Gemas-0.4/Bundle/Gemas/GNUmakefile
+--- Gemas-0.4.orig/Bundle/Gemas/GNUmakefile	2013-12-24 18:51:16.000000000 +0100
++++ Gemas-0.4/Bundle/Gemas/GNUmakefile	2014-02-10 10:50:45.331011111 +0100
+@@ -10,7 +10,7 @@
+ BUNDLE_NAME = Gemas
+ BUNDLE_EXTENSION = .editor
+ Gemas_PRINCIPAL_CLASS = GemasEditor
+-Gemas_INSTALL_DIR=$(GNUSTEP_LOCAL_APPS)/ProjectCenter.app/Resources
++Gemas_INSTALL_DIR=${DESTDIR}/$(GNUSTEP_SYSTEM_APPS)/ProjectCenter.app/Resources
+ 
+ #
+ # Additional libraries
+diff -Naur Gemas-0.4.orig/Bundle/Gemas/GNUmakefile.preamble Gemas-0.4/Bundle/Gemas/GNUmakefile.preamble
+--- Gemas-0.4.orig/Bundle/Gemas/GNUmakefile.preamble	2013-12-24 18:51:16.000000000 +0100
++++ Gemas-0.4/Bundle/Gemas/GNUmakefile.preamble	2014-02-10 10:50:50.622016109 +0100
+@@ -15,7 +15,7 @@
+ ADDITIONAL_LDFLAGS +=
+ 
+ # Additional include directories the compiler should search
+-ADDITIONAL_INCLUDE_DIRS +=-I$(GNUSTEP_LOCAL_HEADERS)/ProjectCenter
++ADDITIONAL_INCLUDE_DIRS +=-I$(GNUSTEP_SYSTEM_HEADERS)/ProjectCenter
+ 
+ # Additional library directories the linker should search
+ ADDITIONAL_LIB_DIRS += -L./HighlighterKit/HighlighterKit.framework

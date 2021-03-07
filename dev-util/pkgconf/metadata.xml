@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>floppym@gentoo.org</email>
+		<name>Mike Gilbert</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>polynomial-c@gentoo.org</email>
+		<name>Lars Wendler</name>
+	</maintainer>
+	<slots>
+		<subslots>SONAME version of libpkgconf</subslots>
+	</slots>
+	<use>
+		<flag name="pkg-config">Install as a replacement for dev-util/pkgconfig</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">pkgconf/pkgconf</remote-id>
+	</upstream>
+</pkgmetadata>

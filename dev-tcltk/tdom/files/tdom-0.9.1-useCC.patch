@@ -1,0 +1,28 @@
+--- a/tclconfig/tcl.m4	2019-12-07 22:00:18.094712146 +0100
++++ b/tclconfig/tcl.m4	2019-12-07 22:00:28.961515544 +0100
+@@ -434,7 +434,6 @@
+     AC_SUBST(TCL_STUB_LIB_SPEC)
+ 
+     AC_MSG_CHECKING([platform])
+-    hold_cc=$CC; CC="$TCL_CC"
+     AC_TRY_COMPILE(,[
+ 	    #ifdef _WIN32
+ 		#error win32
+@@ -446,7 +445,6 @@
+ 	    TEA_PLATFORM="windows"
+ 	    AC_CHECK_PROG(CYGPATH, cygpath, cygpath -m, echo)	]
+     )
+-    CC=$hold_cc
+     AC_MSG_RESULT($TEA_PLATFORM)
+ 
+     # The BUILD_$pkg is to define the correct extern storage class
+--- a/configure.in	2019-12-07 22:06:56.954496437 +0100
++++ b/configure.in	2019-12-07 22:07:53.538472872 +0100
+@@ -33,6 +33,7 @@
+ TEA_INIT([3.13])
+ 
+ AC_CONFIG_AUX_DIR(tclconfig)
++AC_CONFIG_SUBDIRS([extensions/tnc extensions/example])
+ 
+ #--------------------------------------------------------------------
+ # Load the tclConfig.sh file

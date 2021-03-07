@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>billie@gentoo.org</email>
+		<name>Daniel Pielmeier</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>bugs@portagefilelist.de</email>
+			<name>Daniel Buschke</name>
+		</maintainer>
+	</upstream>
+	<use>
+		<flag name="network-cron">Adds a cron job which does a weekly submit of the package database</flag>
+	</use>
+</pkgmetadata>

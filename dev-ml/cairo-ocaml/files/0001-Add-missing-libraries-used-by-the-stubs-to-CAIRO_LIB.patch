@@ -1,0 +1,26 @@
+From: Stephane Glondu <steph@glondu.net>
+Date: Sun, 27 Feb 2011 13:31:22 +0100
+Subject: Add missing libraries used by the stubs to CAIRO_LIBS
+
+The recent changes in DSO linking highlighted this, and were
+preventing ocaml-melt from building.
+
+Signed-off-by: Stephane Glondu <steph@glondu.net>
+---
+ configure.ac |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 6c8c4e9..0cf1f11 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -6,7 +6,7 @@ AC_CONFIG_AUX_DIR(support)
+ AC_PROG_OCAML()
+ 
+ # Check for cairo
+-PKG_CHECK_MODULES(CAIRO, cairo >= 1.2 freetype2)
++PKG_CHECK_MODULES(CAIRO, cairo >= 1.2 cairo-ft cairo-fc cairo-ps cairo-pdf freetype2)
+ 
+ # Optional GTK support (for the X11 backend)
+ AC_ARG_WITH(gtk, 
+-- 

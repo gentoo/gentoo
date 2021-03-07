@@ -1,0 +1,5 @@
+# location of sanewall config
+SANEWALL_CONFIG="/etc/sanewall/sanewall.conf"
+
+# arguments for sanewall
+#SANEWALL_OPTS=""

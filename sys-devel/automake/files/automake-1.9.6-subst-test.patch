@@ -1,0 +1,42 @@
+https://bugs.gentoo.org/222225
+
+Patch from automake upstream git-repo to fix "make check" with newer versions of autoconf
+
+From: Ralf Wildenhues <Ralf.Wildenhues@gmx.de>
+Date: Sun, 22 Jul 2007 09:06:23 +0000 (+0000)
+Subject: * tests/subst.test: Move the AC_SUBST into a macro definition.
+X-Git-Url: http://git.savannah.gnu.org/gitweb/?p=automake.git;a=commitdiff_plain;h=3d85de7baa9edf21c56401db3d25ef8a8e8d7797
+
+* tests/subst.test: Move the AC_SUBST into a macro definition.
+Avoids an error from CVS Autoconf.
+* THANKS: Update.
+Report by Benoit Sigoure.
+---
+diff --git a/tests/subst.test b/tests/subst.test
+index 33e925d..a72af85 100755
+--- a/tests/subst.test
++++ b/tests/subst.test
+@@ -1,5 +1,5 @@
+ #! /bin/sh
+-# Copyright (C) 1996, 2001, 2002  Free Software Foundation, Inc.
++# Copyright (C) 1996, 2001, 2002, 2007  Free Software Foundation, Inc.
+ #
+ # This file is part of GNU Automake.
+ #
+@@ -24,8 +24,14 @@
+ . ./defs || exit 1
+ 
+ cat >> configure.in << 'END'
+-AC_SUBST($1)
+-AC_SUBST([$]$1)  dnl this is the actual invocation that was used
++dnl This test used to have the following lines, which cannot have
++dnl worked sensibly with Autoconf for years, however:
++dnl AC_SUBST($1)
++dnl AC_SUBST([$]$1)  dnl this is the actual invocation that was used
++dnl
++AC_DEFUN([FOO],
++[AC_SUBST([$1])])
++FOO([BAR])
+ END
+ 
+ : > Makefile.am

@@ -1,0 +1,394 @@
+--- a/src/main.c
++++ b/src/main.c
+@@ -35,6 +35,99 @@
+ #include <gtk/gtk.h>
+ #include "main.h"
+ 
++GtkWidget *window_main;
++GtkWidget *drawingarea1;
++GtkWidget *spinbutton_freq;
++GtkWidget *spinbutton_a1freq;
++GtkWidget *optionmenu_noteselect;
++GtkWidget *optionmenu_noteselect_menu;
++GtkWidget *checkbutton_ministep_freq;
++GtkWidget *checkbutton_ministep_a1freq;
++GtkWidget *checkbutton_coarse_tuning;
++GtkWidget *hscale_finetune;
++GtkWidget *hscale_coarsetune;
++GtkWidget *label_freqwarn;
++GtkWidget *mmenu_item_sel_guitar;
++GtkWidget *mmenu_item_small_display;
++GtkWidget *button_muting1;
++GtkAdjustment *adjustment_finetune;
++GtkAdjustment *adjustment_coarsetune;
++GdkPixmap *gdkpixmap1;
++
++GtkWidget *window_settings;
++GtkWidget *settings_entry_sounddev;
++GtkWidget *settings_alsa_device;
++GtkWidget *settings_radiobutton_scale_1;
++GtkWidget *settings_radiobutton_scale_2;
++
++GtkWidget *fileselection1;
++
++GtkWidget *about_dialog;
++
++GtkWidget *help_dialog;
++
++GtkWidget *debug_window;
++GtkWidget *debug_text_box;
++
++GdkImage *gdkimage1;
++GdkVisual *gdkvisual1;
++
++GdkGC *GdkGC_black;
++GdkGC *GdkGC_red;
++
++struct sel_guitar_config sel_guitar_config;
++struct main_config main_config;
++struct config config;
++
++int tuner_started;
++
++u_int8_t soundbuffer[SOUNDBUFFER_SIZE];
++int soundbuffer_len;
++int soundbuffer_readpos;
++int soundbuffer_writepos;
++double backto_lastdraw_samplecount;
++
++u_int8_t samplepieces_buffer[DRAWAREA_WIDTH*SAMPLEPIECES_MAX];
++int samplepieces_which_is_zero;
++int samplepieces_count;
++int samplepieces_count_finetune;
++int samplepieces_count_coarsetune;
++int samplepieces_last_valid;
++
++double frequency;
++gboolean frequency_set;
++double wavelength_samples;
++int samplerate;
++double downsample_ratio;
++
++int tuner_mode_coarse;
++int tuner_mode_coarse_new;
++
++gboolean notes_note_set;
++int notes_note;
++
++int timer_tag;
++int timer_count;
++
++int sound_fd;
++
++int spinbutton_freq_changed_by_user;
++
++gboolean displaystate_is_splash;
++
++gboolean display_big;
++gboolean display_cleared_around;
++
++int sel_standard_note;
++int sel_standard_octave;
++int sel_standard_last_octave;
++gboolean sel_standard_last_octave_valid;
++int sel_standard_last_scale_type;
++
++GString *gstr_sounddev;
++GString *gstr_alsa_device;
++int scale_type;
++
+ #include "main_img001.h"
+ 
+ 
+--- a/src/main.h
++++ b/src/main.h
+@@ -92,12 +92,12 @@
+ 
+ /* Scale note strings */
+ #define SCALE_COUNT 2
+-const char *(note_chars_lowercase_multi[2][12]);
+-const char *(note_chars_uppercase_multi[2][12]);
++extern const char *(note_chars_lowercase_multi[2][12]);
++extern const char *(note_chars_uppercase_multi[2][12]);
+ 
+ /* Menu entry names */
+ #define MENU_ENTRIES 6
+-const char *menu_entry[MENU_ENTRIES];
++extern const char *menu_entry[MENU_ENTRIES];
+ 
+ 
+ 
+@@ -119,69 +119,71 @@
+ /* GTK variables */
+ 
+ /* Main window */
+-GtkWidget *window_main;
+-GtkWidget *drawingarea1;
+-GtkWidget *spinbutton_freq;
+-GtkWidget *spinbutton_a1freq;
+-GtkWidget *optionmenu_noteselect;
+-GtkWidget *optionmenu_noteselect_menu;
+-GtkWidget *checkbutton_ministep_freq;
+-GtkWidget *checkbutton_ministep_a1freq;
+-GtkWidget *checkbutton_coarse_tuning;
+-GtkWidget *hscale_finetune;
+-GtkWidget *hscale_coarsetune;
+-GtkWidget *label_freqwarn;
+-GtkWidget *mmenu_item_sel_guitar;
+-GtkWidget *mmenu_item_small_display;
+-GtkWidget *button_muting1;
+-GtkAdjustment *adjustment_finetune;
+-GtkAdjustment *adjustment_coarsetune;
+-GdkPixmap *gdkpixmap1;
++extern GtkWidget *window_main;
++extern GtkWidget *drawingarea1;
++extern GtkWidget *spinbutton_freq;
++extern GtkWidget *spinbutton_a1freq;
++extern GtkWidget *optionmenu_noteselect;
++extern GtkWidget *optionmenu_noteselect_menu;
++extern GtkWidget *checkbutton_ministep_freq;
++extern GtkWidget *checkbutton_ministep_a1freq;
++extern GtkWidget *checkbutton_coarse_tuning;
++extern GtkWidget *hscale_finetune;
++extern GtkWidget *hscale_coarsetune;
++extern GtkWidget *label_freqwarn;
++extern GtkWidget *mmenu_item_sel_guitar;
++extern GtkWidget *mmenu_item_small_display;
++extern GtkWidget *button_muting1;
++extern GtkAdjustment *adjustment_finetune;
++extern GtkAdjustment *adjustment_coarsetune;
++extern GdkPixmap *gdkpixmap1;
+ 
+ /* Settings window */
+-GtkWidget *window_settings;
+-GtkWidget *settings_entry_sounddev;
+-GtkWidget *settings_alsa_device;
+-GtkWidget *settings_radiobutton_scale_1;
+-GtkWidget *settings_radiobutton_scale_2;
++extern GtkWidget *window_settings;
++extern GtkWidget *settings_entry_sounddev;
++extern GtkWidget *settings_alsa_device;
++extern GtkWidget *settings_radiobutton_scale_1;
++extern GtkWidget *settings_radiobutton_scale_2;
+ 
+ /* Filesel window */
+-GtkWidget *fileselection1;
++extern GtkWidget *fileselection1;
+ 
+ /* About dialog */
+-GtkWidget *about_dialog;
++extern GtkWidget *about_dialog;
+ 
+ /* Help dialog */
+-GtkWidget *help_dialog;
++extern GtkWidget *help_dialog;
+ 
+ /* Debug window */
+-GtkWidget *debug_window;
+-GtkWidget *debug_text_box;
++extern GtkWidget *debug_window;
++extern GtkWidget *debug_text_box;
+ 
+ /* GdkImage containing the drawn waves */
+-GdkImage *gdkimage1;
++extern GdkImage *gdkimage1;
+ /* GdkVisual for drawingarea1 */
+-GdkVisual *gdkvisual1;
++extern GdkVisual *gdkvisual1;
+ 
+ /* Graphics Contexts */
+-GdkGC *GdkGC_black;
+-GdkGC *GdkGC_red;
++extern GdkGC *GdkGC_black;
++extern GdkGC *GdkGC_red;
+ 
+ /* Configuration structures */
+-struct
++struct sel_guitar_config
+ {
+     struct config_struct_window window;
+-} sel_guitar_config;
++};
++extern struct sel_guitar_config sel_guitar_config;
+ 
+-struct
++struct main_config
+ {
+     struct config_struct_window window;
+-} main_config;
++};
++extern struct main_config main_config;
+ 
+ /**
+  * \brief Holds configuration from reading config file to realizing the configuration
+  */
+-struct
++struct config
+ {
+     gboolean sel_guitar_visible;
+     double a1frequency;
+@@ -194,74 +196,75 @@
+     int menu_accel_key[MENU_ENTRIES];
+     int menu_accel_mods[MENU_ENTRIES];
+     double play_sine;
+-} config;
++};
++extern struct config config;
+ 
+ /* --- */
+-int tuner_started; /**< Has the tuner been started? */
++extern int tuner_started; /**< Has the tuner been started? */
+ 
+ /* Sound buffer */
+-u_int8_t soundbuffer[SOUNDBUFFER_SIZE]; /* Rotating buffer */
+-int soundbuffer_len;
+-int soundbuffer_readpos;
+-int soundbuffer_writepos;
+-double backto_lastdraw_samplecount; /* Samples from writepos */
++extern u_int8_t soundbuffer[SOUNDBUFFER_SIZE]; /* Rotating buffer */
++extern int soundbuffer_len;
++extern int soundbuffer_readpos;
++extern int soundbuffer_writepos;
++extern double backto_lastdraw_samplecount; /* Samples from writepos */
+ /* to the sample which was sample 1 at last draw */
+ /* This variable will be negative */
+ 
+ /* Samplepieces buffer */
+-u_int8_t samplepieces_buffer[DRAWAREA_WIDTH*SAMPLEPIECES_MAX];
++extern u_int8_t samplepieces_buffer[DRAWAREA_WIDTH*SAMPLEPIECES_MAX];
+ /* Rotating buffer */
+-int samplepieces_which_is_zero; /**< Which slot is number 0 */
++extern int samplepieces_which_is_zero; /**< Which slot is number 0 */
+ /**
+  * \brief Number of times to draw over and over a samplepiece
+  */
+-int samplepieces_count; /* How many slots to use */
++extern int samplepieces_count; /* How many slots to use */
+ /**
+  * \brief Number of samplepieces to stack on display in finetune mode
+  */
+-int samplepieces_count_finetune;
++extern int samplepieces_count_finetune;
+ /**
+  * \brief Number of samplepieces to stack on display in coarsetune mode
+  */
+-int samplepieces_count_coarsetune;
+-int samplepieces_last_valid; /**< How many valid slots -1 */
++extern int samplepieces_count_coarsetune;
++extern int samplepieces_last_valid; /**< How many valid slots -1 */
+ 
+ /* --- */
+-double frequency; /**< Frequency */
+-gboolean frequency_set;
+-double wavelength_samples; /**< Wavelength in samples */
+-int samplerate; /**< Sampling rate */
+-double downsample_ratio; /**< Downsample ratio */
++extern double frequency; /**< Frequency */
++extern gboolean frequency_set;
++extern double wavelength_samples; /**< Wavelength in samples */
++extern int samplerate; /**< Sampling rate */
++extern double downsample_ratio; /**< Downsample ratio */
+ 
+-int tuner_mode_coarse; /**< If tuner is in coarse mode */
+-int tuner_mode_coarse_new; /**< If tuner should be put in coarse mode */
++extern int tuner_mode_coarse; /**< If tuner is in coarse mode */
++extern int tuner_mode_coarse_new; /**< If tuner should be put in coarse mode */
+ 
+-gboolean notes_note_set;
+-int notes_note;
++extern gboolean notes_note_set;
++extern int notes_note;
+ 
+-int timer_tag; /**< For GTK timeout */
+-int timer_count; /**< For coarse tuning. Update only every n timer tick. */
++extern int timer_tag; /**< For GTK timeout */
++extern int timer_count; /**< For coarse tuning. Update only every n timer tick. */
+ 
+-int sound_fd; /**< File descritor for sound input */
++extern int sound_fd; /**< File descritor for sound input */
+ 
+-int spinbutton_freq_changed_by_user; /**< Set to FALSE before program changes frequency. */
++extern int spinbutton_freq_changed_by_user; /**< Set to FALSE before program changes frequency. */
+ 
+-gboolean displaystate_is_splash; /**< Showing splash-screen? */
++extern gboolean displaystate_is_splash; /**< Showing splash-screen? */
+ 
+-gboolean display_big; /**< Big or small display? */
+-gboolean display_cleared_around;
++extern gboolean display_big; /**< Big or small display? */
++extern gboolean display_cleared_around;
+ 
+ /* Standard selector */
+-int sel_standard_note;
+-int sel_standard_octave;
+-int sel_standard_last_octave; /* Last octave-menu created */
+-gboolean sel_standard_last_octave_valid;
+-int sel_standard_last_scale_type;
++extern int sel_standard_note;
++extern int sel_standard_octave;
++extern int sel_standard_last_octave; /* Last octave-menu created */
++extern gboolean sel_standard_last_octave_valid;
++extern int sel_standard_last_scale_type;
+ 
+ /*--- */
+-GString *gstr_sounddev;
+-GString *gstr_alsa_device;
+-int scale_type; /*Which type of scale to use */
++extern GString *gstr_sounddev;
++extern GString *gstr_alsa_device;
++extern int scale_type; /*Which type of scale to use */
+ 
+ 
+ 
+--- a/src/sel_guitar.c
++++ b/src/sel_guitar.c
+@@ -33,6 +33,16 @@
+ #include "sel_guitar_img001.h"
+ 
+ 
++GtkWidget *sel_guitar_window;
++int sel_guitar_window_visible;
++
++GtkWidget *sel_guitar_gtk_pixmap1;
++GdkPixmap *sel_guitar_gdk_pixmap1;
++GdkPixmap *sel_guitar_gdk_pixmap_picture;
++GtkWidget *sel_guitar_eventbox1;
++
++int sel_guitar_last_position;
++
+ 
+ /**
+  * \brief Note numbers of the 6 guitar strings (E,A,D,G,H,E)
+--- a/src/sel_guitar.h
++++ b/src/sel_guitar.h
+@@ -30,8 +30,8 @@
+ 
+ /**** Global variables */
+ 
+-GtkWidget *sel_guitar_window;
+-int sel_guitar_window_visible;
++extern GtkWidget *sel_guitar_window;
++extern int sel_guitar_window_visible;
+ 
+ 
+ 
+@@ -39,14 +39,14 @@
+ 
+ /* GTK variables */
+ /*GtkWidget *sel_guitar_window; */
+-GtkWidget *sel_guitar_gtk_pixmap1;
+-GdkPixmap *sel_guitar_gdk_pixmap1;
+-GdkPixmap *sel_guitar_gdk_pixmap_picture;
+-GtkWidget *sel_guitar_eventbox1;
++extern GtkWidget *sel_guitar_gtk_pixmap1;
++extern GdkPixmap *sel_guitar_gdk_pixmap1;
++extern GdkPixmap *sel_guitar_gdk_pixmap_picture;
++extern GtkWidget *sel_guitar_eventbox1;
+ 
+ /*int sel_guitar_window_visible; */
+ 
+-int sel_guitar_last_position; /* Last string position drawn */
++extern int sel_guitar_last_position; /* Last string position drawn */
+ 
+ 
+ /**** Function declarations */

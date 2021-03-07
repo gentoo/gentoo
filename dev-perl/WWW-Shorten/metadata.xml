@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">WWW-Shorten</remote-id>
+    <remote-id type="cpan-module">WWW::Shorten</remote-id>
+    <remote-id type="cpan-module">WWW::Shorten::LinkToolbot</remote-id>
+    <remote-id type="cpan-module">WWW::Shorten::Linkz</remote-id>
+    <remote-id type="cpan-module">WWW::Shorten::MakeAShorterLink</remote-id>
+    <remote-id type="cpan-module">WWW::Shorten::Metamark</remote-id>
+    <remote-id type="cpan-module">WWW::Shorten::Qurl</remote-id>
+    <remote-id type="cpan-module">WWW::Shorten::Qwer</remote-id>
+    <remote-id type="cpan-module">WWW::Shorten::TinyClick</remote-id>
+    <remote-id type="cpan-module">WWW::Shorten::TinyURL</remote-id>
+    <remote-id type="cpan-module">WWW::Shorten::Tinylink</remote-id>
+    <remote-id type="cpan-module">WWW::Shorten::UserAgent</remote-id>
+    <remote-id type="cpan-module">WWW::Shorten::generic</remote-id>
+  </upstream>
+</pkgmetadata>

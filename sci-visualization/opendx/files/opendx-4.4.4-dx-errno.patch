@@ -1,0 +1,11 @@
+diff -up dx-4.4.4/src/exec/dpexec/lex.c.errno dx-4.4.4/src/exec/dpexec/lex.c
+--- dx-4.4.4/src/exec/dpexec/lex.c.errno	2006-01-09 23:57:34.000000000 +0100
++++ dx-4.4.4/src/exec/dpexec/lex.c	2009-01-26 19:16:20.000000000 +0100
+@@ -504,6 +504,7 @@ int yylex(YYSTYPE *lvalp)
+     for (;;)
+     {
+ 	yyleng = 0;
++	errno = 0;
+  
+ 	c = input();
+  

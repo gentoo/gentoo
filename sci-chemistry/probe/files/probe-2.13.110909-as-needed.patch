@@ -1,0 +1,25 @@
+ Makefile |    8 +++-----
+ 1 files changed, 3 insertions(+), 5 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 9031bd0..8f74d6a 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,14 +1,12 @@
+-MACHINEFLAGS = 
+-CFLAGS = $(MACHINEFLAGS)
+-LFLAGS = -static -lm $(MACHINEFLAGS)
++LIBS = -lm
+ OBJLIST = dots.o abin.o readPDBrecs.o geom3d.o utility.o select.o \
+ 	 parse.o atomprops.o stdconntable.o autobondrot.o hybrid_36_c.o
+ 
+ .c.o:
+-	cc -c $*.c $(CFLAGS)
++	$(CC) $(CFLAGS) -c $*.c
+ 
+ probe: probe.o $(OBJLIST)
+-	cc -o $@ probe.o $(OBJLIST) $(LFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ probe.o $(OBJLIST) $(LIBS)
+ 
+ clean:
+ 	@rm -f *.o *.ckp

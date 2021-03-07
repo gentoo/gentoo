@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Lutris is a gaming platform for GNU/Linux. Its goal is to make
+		gaming on Linux as easy as possible by taking care of installing
+		and setting up the game for the user. The only thing you have to
+		do is play the game. It aims to support every game that is playable
+		on Linux.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">lutris/lutris</remote-id>
+	</upstream>
+</pkgmetadata>

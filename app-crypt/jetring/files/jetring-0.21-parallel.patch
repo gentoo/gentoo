@@ -1,0 +1,31 @@
+From 4554254608c97aed3f9e654ca219c53e3c4e2ec1 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sun, 21 Feb 2016 18:47:46 +0100
+Subject: [PATCH] Address make warning "jobserver unavailable"
+
+To be precise:
+make[1]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+---
+ Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 6e62bda..43a14b7 100644
+--- a/Makefile
++++ b/Makefile
+@@ -3,10 +3,10 @@ PROGS=jetring-accept jetring-apply jetring-build jetring-diff \
+ 	jetring-checksum
+ 
+ build:
+-	make -C example build
++	$(MAKE) -C example build
+ 
+ clean:
+-	make -C example clean
++	$(MAKE) -C example clean
+ 
+ install:
+ 	install -d $(DESTDIR)/usr/bin/
+-- 
+2.7.1
+

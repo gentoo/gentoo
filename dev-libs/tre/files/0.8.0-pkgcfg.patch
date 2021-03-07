@@ -1,0 +1,14 @@
+ tre.pc.in |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/tre.pc.in b/tre.pc.in
+index fdc45fa..b8d0676 100644
+--- a/tre.pc.in
++++ b/tre.pc.in
+@@ -6,5 +6,5 @@ includedir=@includedir@
+ Name: TRE
+ Description: TRE regexp matching library
+ Version: @PACKAGE_VERSION@
+-Libs: -L${libdir} -ltre @LDFLAGS@ @LIBINTL@ @LIBS@
++Libs: -L${libdir} -ltre @LIBINTL@ @LIBS@
+ Cflags: -I${includedir} @CPPFLAGS@

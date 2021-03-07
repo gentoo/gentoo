@@ -1,0 +1,11 @@
+diff -ru a/sanei/sanei_pio.c b/sanei/sanei_pio.c
+--- a/sanei/sanei_pio.c	2019-03-01 10:44:36.723260142 -0600
++++ b/sanei/sanei_pio.c	2019-03-01 10:48:47.660693036 -0600
+@@ -73,6 +73,7 @@
+ #elif HAVE_SYS_HW_H
+ # include <sys/hw.h>
+ #elif defined(__i386__)  && defined (__GNUC__)
++#include <sys/types.h>
+ 
+ static __inline__ void
+ outb (u_char value, u_long port)

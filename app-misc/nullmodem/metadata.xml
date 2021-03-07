@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+  <email>tomjbe@gentoo.org</email>
+</maintainer>
+<longdescription>
+Pseudo-Terminals (ptys) are a type of interprocess communication with a master
+and a slave end. One program (in our case nullmodem) opens the master sides of
+connections and therefore provides connectible slave sides of connections. 
+If nullmodem receives some data on one of these connections it retransmits them
+on all other connections. It can be seen as a network with star-type wiring. 
+Because the names of the slave side ptys are dynamic, nullmodem creates
+symbolic links to filenames of your choice. 
+e.g. the command nullmodem /tmp/loop0 /tmp/loop1 /tmp/loop2 
+creates a pty-network with 3 slave sides linked to the names /tmp/loop0,
+/tmp/loop1 and /tmp/loop2. 
+If you close a slave side connection nullmodem will detect this and provide
+a new stub to connect to and update the symbolic link.
+</longdescription>
+</pkgmetadata>

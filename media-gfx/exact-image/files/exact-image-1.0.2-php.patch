@@ -1,0 +1,11 @@
+--- a/api/php/Makefile	2020-10-06 08:28:04.511865454 +0200
++++ b/api/php/Makefile	2020-10-06 08:28:18.109638538 +0200
+@@ -8,7 +8,7 @@
+ 
+ $($(X_MODULE)_OUTPUT)/api-php-wrap.cc: $(X_MODULE)/../api.hh $(X_MODULE)/../api-swig.hh
+ 	$(Q)echo "  SWIG      $(dir $@)"
+-	$(Q)swig -php5 -c++ -outdir $(dir $@) -o '$@' $(X_MODULE)/../api-swig.hh
++	$(Q)swig -php7 -c++ -outdir $(dir $@) -o '$@' $(X_MODULE)/../api-swig.hh
+ 
+ # we have an own install
+ _X_BUILD_IMPLICIT := $(_X_BUILD_IMPLICIT)

@@ -1,0 +1,85 @@
+--- a/tool/rbinstall.rb.~1~	2017-10-30 06:45:20.000000000 +0100
++++ b/tool/rbinstall.rb	2017-12-25 11:06:53.340432435 +0100
+@@ -700,10 +700,10 @@
+ # :startdoc:
+ 
+ install?(:ext, :comm, :gem, :'default-gems', :'default-gems-comm') do
+-  install_default_gem('lib', srcdir)
++  # Gems are unbundled in Gentoo
+ end
+ install?(:ext, :arch, :gem, :'default-gems', :'default-gems-arch') do
+-  install_default_gem('ext', srcdir)
++  # Gems are unbundled in Gentoo
+ end
+ 
+ def load_gemspec(file)
+@@ -765,68 +755,7 @@
+ end
+ 
+ install?(:ext, :comm, :gem, :'bundled-gems') do
+-  gem_dir = Gem.default_dir
+-  directories = Gem.ensure_gem_subdirectories(gem_dir, :mode => $dir_mode)
+-  prepare "bundled gems", gem_dir, directories
+-  install_dir = with_destdir(gem_dir)
+-  installed_gems = {}
+-  options = {
+-    :install_dir => install_dir,
+-    :bin_dir => with_destdir(bindir),
+-    :domain => :local,
+-    :ignore_dependencies => true,
+-    :dir_mode => $dir_mode,
+-    :data_mode => $data_mode,
+-    :prog_mode => $prog_mode,
+-    :wrappers => true,
+-    :format_executable => true,
+-  }
+-  gem_ext_dir = "#$extout/gems/#{CONFIG['arch']}"
+-  extensions_dir = Gem::StubSpecification.gemspec_stub("", gem_dir, gem_dir).extensions_dir
+-  Gem::Specification.each_gemspec([srcdir+'/gems/*']) do |path|
+-    spec = load_gemspec(path)
+-    next unless spec.platform == Gem::Platform::RUBY
+-    next unless spec.full_name == path[srcdir.size..-1][/\A\/gems\/([^\/]+)/, 1]
+-    spec.extension_dir = "#{extensions_dir}/#{spec.full_name}"
+-    if File.directory?(ext = "#{gem_ext_dir}/#{spec.full_name}")
+-      spec.extensions[0] ||= "-"
+-    end
+-    ins = RbInstall::UnpackedInstaller.new(spec, options)
+-    puts "#{INDENT}#{spec.name} #{spec.version}"
+-    ins.install
+-    File.chmod($data_mode, File.join(install_dir, "specifications", "#{spec.full_name}.gemspec"))
+-    unless spec.extensions.empty?
+-      install_recursive(ext, spec.extension_dir)
+-    end
+-    installed_gems[spec.full_name] = true
+-  end
+-  installed_gems, gems = Dir.glob(srcdir+'/gems/*.gem').partition {|gem| installed_gems.key?(File.basename(gem, '.gem'))}
+-  unless installed_gems.empty?
+-    install installed_gems, gem_dir+"/cache"
+-  end
+-  next if gems.empty?
+-  if defined?(Zlib)
+-    Gem.instance_variable_set(:@ruby, with_destdir(File.join(bindir, ruby_install_name)))
+-    silent = Gem::SilentUI.new
+-    gems.each do |gem|
+-      inst = Gem::Installer.new(gem, options)
+-      inst.spec.extension_dir = with_destdir(inst.spec.extension_dir)
+-      begin
+-        Gem::DefaultUserInteraction.use_ui(silent) {inst.install}
+-      rescue Gem::InstallError => e
+-        next
+-      end
+-      gemname = File.basename(gem)
+-      puts "#{INDENT}#{gemname}"
+-    end
+-    # fix directory permissions
+-    # TODO: Gem.install should accept :dir_mode option or something
+-    File.chmod($dir_mode, *Dir.glob(install_dir+"/**/"))
+-    # fix .gemspec permissions
+-    File.chmod($data_mode, *Dir.glob(install_dir+"/specifications/*.gemspec"))
+-  else
+-    puts "skip installing bundled gems because of lacking zlib"
+-  end
++  # Gems are unbundled in Gentoo
+ end
+ 
+ parse_args()

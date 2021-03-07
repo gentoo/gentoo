@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>vim@gentoo.org</email>
+    <name>Gentoo Vim Project</name>
+  </maintainer>
+  <use>
+    <flag name="cscope">Enable cscope interface</flag>
+    <flag name="racket">Enable support for Scheme using <pkg>dev-scheme/racket</pkg></flag>
+    <flag name="terminal">Enable terminal emulation support</flag>
+    <flag name="vim-pager">Install vimpager and vimmanpager links</flag>
+    <flag name="X">Link console vim against X11 libraries to enable title and
+      clipboard features in xterm</flag>
+  </use>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:vim:vim</remote-id>
+    <remote-id type="github">vim/vim</remote-id>
+  </upstream>
+</pkgmetadata>

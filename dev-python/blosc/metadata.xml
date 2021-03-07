@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Python</name>
+  </maintainer>
+  <longdescription lang="en">
+    blosc is a high performance compressor optimized for binary
+    data. It has been designed to transmit data to the processor cache
+    faster than the traditional, non-compressed, direct memory fetch
+    approach via a memcpy() OS call. Blosc works well for compressing
+    numerical arrays that contains data with relatively low entropy,
+    like sparse data, time series, grids with regular-spaced values,
+    etc. This is the python wrapper.
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">blosc</remote-id>
+    <remote-id type="github">Blosc/python-blosc</remote-id>
+  </upstream>
+</pkgmetadata>

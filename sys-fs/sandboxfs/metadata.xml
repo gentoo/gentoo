@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">bazelbuild/sandboxfs</remote-id>
+	</upstream>
+	<longdescription>
+		sandboxfs is a FUSE file system that exposes a combination of multiple files and directories from
+		the host's file system in the form of a virtual tree with an arbitrary layout.
+		You can think of a sandbox as an arbitrary view into the host's file system with different access privileges per directory.
+
+		sandboxfs is designed to allow running commands with limited access to the file system by using the virtual tree
+		as their new root, and to do so consistently across a variety of platforms.
+	</longdescription>
+</pkgmetadata>

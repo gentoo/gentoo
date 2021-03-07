@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The games-engines category contains game engines.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría games-engines contiene motores de juegos.
+	</longdescription>
+	<longdescription lang="ja">
+		games-enginesカテゴリーにはゲーム・エンジンが含まれています。
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm games-engines chứa các game engine.
+	</longdescription>
+	<longdescription lang="nl">
+		De games-engines category bevat spel-engines.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie games-engines enthält Game-Engines.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria games-engines contiene motori di gioco.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria games-engines contém engines de jogos.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria games-engines zawiera silniki gier.
+	</longdescription>
+</catmetadata>
+

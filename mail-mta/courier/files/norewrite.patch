@@ -1,0 +1,21 @@
+--- courier/module.esmtp/esmtp.c.orig	2004-02-03 01:08:15.679486558 -0700
++++ courier/module.esmtp/esmtp.c	2004-02-03 01:07:41.262697092 -0700
+@@ -255,6 +255,10 @@ const char *me;
+ struct rfc822t	*tp;
+ struct rfc822token at;
+ 
++#if 1
++	(*func)(info);
++	return;
++#else
+ 	if (info->ptr == 0)
+ 	{
+ 		(*func)(info);
+@@ -289,6 +293,7 @@ struct rfc822token at;
+ 	(*func)(info);
+ 	*r=0;
+ 	rfc822t_free(tp);
++#endif
+ }
+ 
+ static void rw_esmtp(struct rw_info *info, void (*func)(struct rw_info *))

@@ -1,0 +1,122 @@
+--- a/src/bltInit.c	2019-11-09 22:03:25.863937619 +0100
++++ b/src/bltInit.c	2019-11-09 22:03:37.052748213 +0100
+@@ -413,7 +413,7 @@
+ 	 * Check that the versions of Tcl that have been loaded are
+ 	 * the same ones that BLT was compiled against.
+ 	 */
+-	if (Tcl_InitStubs(interp, TCL_VERSION, 1) == NULL) {
++	if (Tcl_InitStubs(interp, TCL_PATCH_LEVEL, 1) == NULL) {
+ 	    return TCL_ERROR;
+ 	}
+ 	/* Set the "blt_version", "blt_patchLevel", and "blt_libPath" Tcl
+@@ -458,7 +458,7 @@
+ 	register Tcl_AppInitProc **p;
+ 	Tcl_Namespace *nsPtr;
+ 
+-	if (Tk_InitStubs(interp, TK_VERSION, 1) == NULL) {
++	if (Tk_InitStubs(interp, TK_PATCH_LEVEL, 1) == NULL) {
+ 		return TCL_OK;
+ 	}
+ 
+--- a/src/bltHtext.c	2019-11-10 21:37:10.229076065 +0100
++++ b/src/bltHtext.c	2019-11-10 21:38:24.835776868 +0100
+@@ -3347,7 +3347,8 @@
+      * The page is always draw at full width and the viewport will clip
+      * the text.
+      */
++    if (htPtr->lineArr) {
+     if ((htPtr->first != oldFirst) || (htPtr->last != oldLast)) {
+ 	int offset;
+ 	int i;
+ 	int first, last;
+@@ -3378,6 +3378,7 @@
+     }
+     DrawPage(htPtr, deltaY);
++    }
+     SendBogusEvent(tkwin);
+ 
+     /* Reset flags */
+     htPtr->flags &= ~TEXT_DIRTY;
+--- a/src/bltText.c	2019-11-12 08:33:39.905088060 +0100
++++ b/src/bltText.c	2019-11-12 08:34:01.995349355 +0100
+@@ -48,7 +48,7 @@
+ 
+     fragPtr = textPtr->fragArr;
+     for (i = 0; i < textPtr->nFrags; i++, fragPtr++) {
+-#if HAVE_UTF
++#if 0
+ 	Tk_DrawChars(display, drawable, gc, font, fragPtr->text,
+ 	    fragPtr->count, x + fragPtr->x, y + fragPtr->y);
+ #else
+--- a/src/bltWindow.c	2019-11-12 20:38:50.348383884 +0100
++++ b/src/bltWindow.c	2019-11-12 20:48:05.553043414 +0100
+@@ -362,6 +362,9 @@
+     Atom windowAtom;		/* Atom for TK_WINDOW. */
+     Atom clipboardAtom;		/* Atom for CLIPBOARD. */
+     Atom utf8Atom;		/* Atom for UTF8_STRING. */
++#if (TK_VERSION_NUMBER >= _VERSION(8,6,0))
++    Atom atomPairAtom;          /* Atom for ATOM_PAIR. */
++#endif
+ 
+     Tk_Window clipWindow;	/* Window used for clipboard ownership and to
+ 				 * retrieve selections between processes. NULL
+@@ -391,6 +394,7 @@
+     Atom appNameProperty;	/* X's name for property used to hold the
+ 				 * application name on each comm window. */
+ 
++#if (TK_VERSION_NUMBER < _VERSION(8,6,0))
+     /*
+      * Information used by tkXId.c only:
+      */
+@@ -408,7 +412,7 @@
+ 				/* If set, it means a call to WindowIdCleanup
+ 				 * has already been scheduled, 0 means it
+ 				 * hasn't. */
+-
++#endif
+     /*
+      * Information used by tkUnixWm.c and tkWinWm.c only:
+      */
+@@ -417,6 +421,7 @@
+     struct TkWmInfo *foregroundWmPtr;
+ 				/* Points to the foreground window. */
+ 
++#if (TK_VERSION_NUMBER < _VERSION(8,6,0))
+     /*
+      * Information maintained by tkWindow.c for use later on by tkXId.c:
+      */
+@@ -428,6 +433,7 @@
+ 				 * can re-use ids in windowStackPtr when
+ 				 * server has seen this request and event
+ 				 * queue is empty. */
++#endif
+ 
+     /*
+      * Information used by tkVisual.c only:
+@@ -460,7 +466,13 @@
+ 				 * display. */
+     Window mouseButtonWindow;	/* Window the button state was set in, added
+ 				 * in Tk 8.4. */
++#if (TK_VERSION_NUMBER >= _VERSION(8,6,0))
++    Tk_Window warpWindow;
++    Tk_Window warpMainwin;	/* For finding the root window for warping
++				 * purposes. */
++#else
+     Window warpWindow;
++#endif
+     int warpX;
+     int warpY;
+ 
+@@ -475,7 +487,11 @@
+ 
+     int iconDataSize;		/* Size of default iconphoto image data. */
+     unsigned char *iconDataPtr;	/* Default iconphoto image data, if set. */
+-
++#if (TK_VERSION_NUMBER >= _VERSION(8,6,0))
++#ifdef TK_USE_INPUT_METHODS
++    int ximGeneration;          /* Used to invalidate XIC */
++#endif /* TK_USE_INPUT_METHODS */
++#endif
+ } TkDisplay;
+ 
+ #else

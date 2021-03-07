@@ -1,0 +1,61 @@
+From 72efa486222cde6094c217efc6085f49af1cca85 Mon Sep 17 00:00:00 2001
+From: Sobhan Mohammadpour <sobhan@gentoo.org>
+Date: Sun, 26 May 2019 14:19:17 -0400
+Subject: [PATCH] make spell optional
+
+---
+ meson.build         | 4 +++-
+ meson_options.txt   | 4 ++++
+ plugins/meson.build | 4 +++-
+ 3 files changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 2f4d7e5..f67e320 100644
+--- a/meson.build
++++ b/meson.build
+@@ -86,7 +86,8 @@ libxml_dep = dependency('libxml-2.0', version: libxml_req)
+ libgd_dep = libgd_sp.get_variable('libgd_dep')
+ 
+ libsoup_dep = dependency('libsoup-2.4', version: libsoup_req, required: true)
+-gspell_dep = dependency('gspell-1', version: gspell_req, required: true)
++with_gspell = get_option('spell')
++gspell_dep = dependency('gspell-1', version: gspell_req, required: false)
+ x11_dep = dependency('x11', required: false)
+ 
+ introspection_dep = dependency('gobject-introspection-1.0', version: introspection_req, required: false)
+@@ -189,6 +190,7 @@ summary = [
+   '  Introspection: @0@'.format(generate_gir),
+   '        Plugins: @0@'.format(build_plugins),
+   '       Vala API: @0@'.format(generate_vapi),
++  '          Spell: @0@'.format(with_gspell),
+   '  Gvfs metadata: @0@'.format(enable_gvfs_metadata),
+   '',
+   'Directories:',
+diff --git a/meson_options.txt b/meson_options.txt
+index 90803fa..e1f7349 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -16,3 +16,7 @@ option('documentation',
+ option('enable-gvfs-metadata',
+         type: 'combo', choices : ['yes', 'no', 'auto'], value : 'auto',
+         description: 'Enable using gvfs to store metadata')
++
++option('spell',
++	type:'boolean', value: true,
++	description: 'Build spell support')
+diff --git a/plugins/meson.build b/plugins/meson.build
+index af94ab7..abeeac5 100644
+--- a/plugins/meson.build
++++ b/plugins/meson.build
+@@ -21,5 +21,7 @@ subdir('quickhighlight')
+ subdir('quickopen')
+ subdir('snippets')
+ subdir('sort')
+-subdir('spell')
++if with_gspell
++  subdir('spell')
++endif
+ subdir('time')
+-- 
+2.21.0
+

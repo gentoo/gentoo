@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <!--maintainer-needed-->
+  <use>
+    <flag name="fuzzyhash">
+      Support fuzzy hash computations (to detect malware, for example)
+      using the <pkg>app-crypt/ssdeep</pkg> package.
+    </flag>
+
+    <flag name="geoip">
+      Pull in <pkg>dev-libs/geoip</pkg> for use by the SecGeoLookupDb
+      directive.
+    </flag>
+
+    <flag name="jit">
+      Add support for the PCRE Just-in-Time optimisation, as enabled
+      by <pkg>dev-libs/libpcre</pkg> with jit USE flag enabled. Might
+      not be available on hardened systems.
+    </flag>
+
+    <flag name="json">
+      Suppose JSON in the request body parser through
+      <pkg>dev-libs/yajl</pkg>.
+    </flag>
+
+    <flag name="mlogc">
+      Build and install the ModSecurity Audit Log Collector (mlogc).
+    </flag>
+  </use>
+
+  <upstream>
+    <remote-id type="github">SpiderLabs/ModSecurity</remote-id>
+  </upstream>
+</pkgmetadata>

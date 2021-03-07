@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>djc@gentoo.org</email>
+    <name>Dirkjan Ochtman</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="pypi">pelican</remote-id>
+    <remote-id type="github">getpelican/pelican</remote-id>
+    <bugs-to>https://github.com/getpelican/pelican/issues</bugs-to>
+  </upstream>
+  <use>
+    <flag name="markdown">Markdown support</flag>
+  </use>
+</pkgmetadata>

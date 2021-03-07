@@ -1,0 +1,22 @@
+the tool tries to generate binary output, but the current locale might change
+what awk generates.  force it to C/ASCII to avoid that.
+
+https://bugs.gentoo.org/601012
+
+--- a/test/pbmtext.test
++++ b/test/pbmtext.test
+@@ -81,12 +81,14 @@ rm ${fontRectangle_txt} ${font_pbm}
+ 
+ # One long row
+ # Should print 3233136020 4535
++LC_CTYPE=C \
+ awk 'BEGIN { for (i=32; i<=125;++i) printf("%c",i);
+              for (i=160;i<=255;++i) printf("%c",i); }' | \
+     pbmtext -builtin bdf | cksum
+ 
+ # One tall column
+ # Should print 1216262214 5711
++LC_CTYPE=C \
+ awk 'BEGIN { for (i=32; i<=125;++i) printf("%c\n",i);
+              for (i=160;i<=255;++i) printf("%c\n",i); }' | \
+     pbmtext -nomargins -builtin bdf | cksum

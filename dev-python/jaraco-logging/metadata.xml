@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sbraz@gentoo.org</email>
+		<name>Louis Sautier</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">jaraco.logging</remote-id>
+		<remote-id type="github">jaraco/jaraco.logging</remote-id>
+		<bugs-to>https://github.com/jaraco/jaraco.logging/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

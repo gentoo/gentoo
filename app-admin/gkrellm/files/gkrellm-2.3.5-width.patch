@@ -1,0 +1,11 @@
+--- gkrellm-2.2.7/src/gkrellm.h.width	2005-06-09 12:48:34.000000000 +0200
++++ gkrellm-2.2.7/src/gkrellm.h	2005-06-09 12:48:37.000000000 +0200
+@@ -518,7 +518,7 @@
+ 	GkrellmCallback;
+ 
+ 
+-#define CHART_WIDTH_MAX	1000
++#define CHART_WIDTH_MAX	1600
+ #define CHART_WIDTH_MIN	25
+ 
+   /* Each chart must have a GkrellmChartconfig struct associated with it.

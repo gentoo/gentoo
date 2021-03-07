@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>robbat2@gentoo.org</email>
+		<name>Robin H. Johnson</name>
+	</maintainer>
+	<longdescription>
+		ddcutil primarily uses DDC/CI (Display Data Channel Command Interface)
+		to communicate with monitors implementing MCCS (Monitor Control Command
+		Set) over I2C. Normally, the video driver for the monitor exposes the
+		I2C channel as devices named /dev/i2c-n. Alternatively, there is initial
+		support for monitors (such as Apple displays) that implement MCCS using
+		a USB connection.
+	</longdescription>
+	<use>
+		<flag name="drm" restrict="&gt;=app-misc/ddcutil-0.8.5">
+			Use <pkg>x11-libs/libdrm</pkg> for more verbose diagnostics.
+		</flag>
+		<flag name="user-permissions">
+			Adds a udev rules to allow non-root users in the i2c group to
+			access the /dev/i2c-* devices. If usb-monitor is selected, users
+			will need to be added to the video group to access the USB monitor.
+			Otherwise, only root will be able to use ddcutil.
+		</flag>
+		<flag name="usb-monitor">
+			Adds support for monitors attached via USB.
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">rockowitz/ddcutil</remote-id>
+	</upstream>
+</pkgmetadata>

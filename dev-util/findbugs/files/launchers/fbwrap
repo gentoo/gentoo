@@ -1,0 +1,3 @@
+fb_mainclass="$1"
+unset fb_jvmargs
+shift

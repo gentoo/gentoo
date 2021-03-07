@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<longdescription>
+		EDuke32 is an awesome, free homebrew game engine and source port
+		of the classic PC first person shooter Duke Nukem 3D - Duke3D
+		for short to Windows, Linux, Mac OS X, FreeBSD and several handhelds.
+	</longdescription>
+	<use>
+		<flag name="duke3d">Install the Duke Nukem 3D data files, provided by <pkg>games-fps/duke3d-data</pkg>.</flag>
+		<flag name="fluidsynth">Install <pkg>media-libs/sdl2-mixer</pkg> with fluidsynth support.</flag>
+		<flag name="hrp">Install the Duke Nukem 3D High Resolution Pack.</flag>
+		<flag name="offensive">Install the Duke Nukem 3D XXX Pack.</flag>
+		<flag name="opl">Install the Duke Nukem 3D OPL music files.</flag>
+		<flag name="psx">Install the Duke Nukem 3D PSX high resolution voice files.</flag>
+		<flag name="sc-55">Install the Duke Nukem 3D Roland SC-55 music files.</flag>
+		<flag name="server">Enable support for multiplayer.</flag>
+		<flag name="sdk">Install the SDK files.</flag>
+		<flag name="tools">Install the support tools for mapster32.</flag>
+		<flag name="voidsw">Enable support for Shadow Warrior (Classic) through VoidSW.</flag>
+		<flag name="voxels">Install the Duke Nukem 3D Voxels Pack.</flag>
+		<flag name="vpx">Enable support for <pkg>media-libs/libvpx</pkg>.</flag>
+		<flag name="xmp">Enable support for <pkg>media-libs/exempi</pkg>.</flag>
+	</use>
+</pkgmetadata>

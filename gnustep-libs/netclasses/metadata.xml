@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>gnustep@gentoo.org</email>
+		<name>Gentoo GNUstep Project</name>
+	</maintainer>
+	<longdescription>
+		netclasses is an asynchronous networking library that works on
+		OS X natively, and any of the multitude of platforms supported
+		by GNUstep. You've never seen an easier way to put together
+		network applications!
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">netclasses</remote-id>
+	</upstream>
+</pkgmetadata>

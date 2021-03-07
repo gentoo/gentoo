@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription>
+MoleQueue is an open-source, cross-platform, system-tray resident desktop 
+application for abstracting, managing, and coordinating the execution of tasks 
+both locally and on remote computational resources. It is built and tested and 
+Linux, Mac OS X, and Windows, with nightly binaries currently available for 
+Mac OS X and Windows. Users can set up local and remote queues that describe 
+where the task will be executed. Each queue can have programs, with templates 
+to facilitate the execution of the program. Input files can be staged, and 
+output files collected using a standard interface.
+  </longdescription>
+  <use>
+    <flag name="zeromq">Build with <pkg>net-libs/zeromq</pkg> support</flag>
+    <flag name="client">Build the client application</flag>
+    <flag name="server">Build the serve application</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">molequeue</remote-id>
+    <remote-id type="github">OpenChemistry/molequeue</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>php-bugs@gentoo.org</email>
+    <name>PHP</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+    <name>Michael Orlitzky</name>
+  </maintainer>
+   <use>
+    <flag name="extension">
+      Build the C extension that uses <pkg>dev-libs/libmaxminddb</pkg>
+    </flag>
+  </use>
+  <upstream>
+    <remote-id type="github">maxmind/MaxMind-DB-Reader-php</remote-id>
+  </upstream>
+</pkgmetadata>

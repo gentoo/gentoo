@@ -1,0 +1,56 @@
+From 6d72f33efe9f911d1427795a06c13d9dcd6fa222 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Wed, 3 Apr 2019 14:11:42 +0200
+Subject: [PATCH] Don't mess with our CFLAGS
+
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ config.lib | 18 ------------------
+ 1 file changed, 18 deletions(-)
+
+diff --git a/config.lib b/config.lib
+index f65aaa535..7789c0bea 100644
+--- a/config.lib
++++ b/config.lib
+@@ -1499,11 +1499,6 @@ make_cflags_and_ldflags() {
+ 		# No debug, add default stuff
+ 		OBJS_SUBDIR="release"
+ 
+-		if [ "$enable_profiling" = "0" ]; then
+-			# -fomit-frame-pointer and -pg do not go well together (gcc errors they are incompatible)
+-			CFLAGS="-fomit-frame-pointer $CFLAGS"
+-		fi
+-		CFLAGS="-O2 $CFLAGS"
+ 	else
+ 		OBJS_SUBDIR="debug"
+ 
+@@ -1511,14 +1506,6 @@ make_cflags_and_ldflags() {
+ 		if [ $enable_debug -ge 1 ]; then
+ 			CFLAGS="$CFLAGS -g -D_DEBUG"
+ 		fi
+-		if [ $enable_debug -ge 2 ]; then
+-			CFLAGS="$CFLAGS -fno-inline"
+-		fi
+-		if [ $enable_debug -ge 3 ]; then
+-			CFLAGS="$CFLAGS -O0"
+-		else
+-			CFLAGS="$CFLAGS -O2"
+-		fi
+ 	fi
+ 
+ 	if [ $enable_debug -le 2 ]; then
+@@ -1543,11 +1530,6 @@ make_cflags_and_ldflags() {
+ 		CFLAGS="$CFLAGS -fno-expensive-optimizations"
+ 	fi
+ 
+-	if [ "$enable_profiling" != "0" ]; then
+-		CFLAGS="$CFLAGS -pg"
+-		LDFLAGS="$LDFLAGS -pg"
+-	fi
+-
+ 	if [ "$with_threads" = "0" ]; then
+ 		CFLAGS="$CFLAGS -DNO_THREADS"
+ 	fi
+-- 
+2.21.0
+

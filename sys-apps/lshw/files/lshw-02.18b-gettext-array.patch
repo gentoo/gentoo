@@ -1,0 +1,31 @@
+patch sent upstream
+
+From 1fb7ebed787ec1b73218c1f12cbb71b103433375 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Tue, 14 Mar 2017 22:25:12 -0700
+Subject: [PATCH] fix array access with string translations
+
+The code forgot to rebase the num to 0 before indexing the string array.
+It also provides 5 strings, but was only allowing 4 to be accessed.
+---
+ src/core/dmi.cc | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/core/dmi.cc b/src/core/dmi.cc
+index 250f48572d54..0db074975f2d 100644
+--- a/src/core/dmi.cc
++++ b/src/core/dmi.cc
+@@ -510,8 +510,8 @@ static const char *dmi_memory_array_location(u8 num)
+   };
+   if (num <= 0x0A)
+     return _(memory_array_location[num]);
+-  if (num >= 0xA0 && num < 0xA4)
+-    return _(jp_memory_array_location[num]);
++  if (num >= 0xA0 && num <= 0xA4)
++    return _(jp_memory_array_location[num - 0xA0]);
+   return "";
+ }
+ 
+-- 
+2.12.0
+

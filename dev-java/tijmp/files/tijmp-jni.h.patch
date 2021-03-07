@@ -1,0 +1,34 @@
+# Patch by Vlastimil Babka <caster@gentoo.org>
+# Some JDK's such as ibm-jdk-bin don't have jni_md.h, so make the test more robust
+--- a/configure.ac	2009-01-10 00:29:01.000000000 +0100
++++ b/configure.ac	2010-04-05 12:17:35.000000000 +0200
+@@ -24,22 +24,16 @@
+   JAVA_HOME=/usr/local/jdk
+ fi
+ 
+-jni_md=no
+-AC_CHECK_HEADERS($JAVA_HOME/include/$java_os/jni_md.h,
+-	jni_md=found)
++dnl ok, maybe we dont always need include/$java_os but we use an -I for it anyway...
++CPPFLAGS="$CPPFLAGS -I$JAVA_HOME/include -I$JAVA_HOME/include/$java_os"
+ 
+-if test $jni_md = no
+-then 
+-AC_CHECK_HEADERS($JAVA_HOME/include/jni_md.h,
+-	jni_md=found)
+-fi
++jni_h=no
++AC_CHECK_HEADERS($JAVA_HOME/include/jni.h,
++	jni_h=found)
+ 
+-if test $jni_md = no
++if test $jni_h = no
+ then
+-  	AC_MSG_ERROR(Does JAVA_HOME point to the java SDK directory?)
+-else
+-dnl ok, maybe we dont need include/$java_os but we use an -I for it anyway...
+-  	CPPFLAGS="$CPPFLAGS -I$JAVA_HOME/include -I$JAVA_HOME/include/$java_os"
++  	AC_MSG_ERROR(Could not find jni.h. Does JAVA_HOME point to the java SDK directory?)
+ fi
+ 
+ AC_CHECK_HEADER($JAVA_HOME/include/jvmti.h,

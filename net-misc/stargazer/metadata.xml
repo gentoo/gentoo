@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Stargazer is a powerful (inter)net billing system, capable of gathering
+	traffic statistics from many sources (such as NetFlow protocol,
+	ethernet packets capture, or IPQ subsystem), managing and billing user
+	accounts according to specified fees and rules (including time-based rules,
+	traffic source/destination rules and a payoff system).
+	This ebuild allows you to compile it yourself depending of your needs.
+	</longdescription>
+	<use>
+		<flag name="sgconv">Enable build of utility to convert Stargazer data between storage backends.</flag>
+		<flag name="radius">Enable build of FreeRADIUS module for data access via Stargazer.</flag>
+		<flag name="rscriptd">Enable build of remote script execute daemon for Stargazer, which run scripts when receive special signal from Stargazer.</flag>
+		<flag name="sgauth">Enable build of command-line utility for authorization in Stargazer.</flag>
+		<flag name="sgconf">Enable build of command-line utility for configuring Stargazer.</flag>
+		<flag name="sgconf_xml">Enable build of command-line xml-based utility for configuring Stargazer.</flag>
+		<flag name="stargazer">Enable build of Stargazer billing system.</flag>
+		<flag name="debug">Enable extra debug codepaths, like asserts and extra output.</flag>
+		<flag name="module_auth_always_online">Enable build of "Always Online" authentication module for Stargazer.</flag>
+		<flag name="module_auth_internet_access">Enable build of "InetAccess" authentication module for Stargazer. InetAccess is a Stargazer specific authentication protocol.</flag>
+		<flag name="module_auth_freeradius">Enable build of "Radius" authentication module for Stargazer. This module capable of using RADIUS procotol for user authentication.</flag>
+		<flag name="module_capture_ether">Enable build of "Ethernet" traffic capture module for Stargazer. This module uses RAW sockets to capture traffic.</flag>
+		<flag name="module_capture_ipq">Enable build of "IPQ" traffic capture module for Stargazer. This module uses IPQ subsystem to capture traffic.</flag>
+		<flag name="module_capture_netflow">Enable build of "NetFlow" traffic capture module for Stargazer. This module capable of receiving traffic data by NetFlow protocol.</flag>
+		<flag name="module_config_rpcconfig">Enable build of "XMLRPC" configuration module for Stargazer. This module uses XML-RPC protocol for configuring Stargazer.</flag>
+		<flag name="module_config_sgconfig">Enable build of "SGConf" configuration module for Stargazer. This module uses Stargazer specific protocol for configuring Stargazer.</flag>
+		<flag name="module_other_ping">Enable build of "Ping" module for Stargazer. This module pings connected users from time to time to ensure they are alive.</flag>
+		<flag name="module_other_remote_script">Enable build of "Remote Script" module for Stargazer. This module control rscriptd daemon over the net and makes it execute scripts in reaction to different Stargazer events.</flag>
+		<flag name="module_other_smux">Enable build of SMUX module for Stargazer. This module uses SMUX protocol to provide various information about Stargazer.</flag>
+		<flag name="module_store_files">Enable build of storage plugin for Stargazer based on plain files.</flag>
+		<flag name="module_store_firebird">Enable build of storage plugin for Stargazer, which uses Firebird database for storage.</flag>
+		<flag name="module_store_mysql">Enable build of storage plugin for Stargazer, which uses MySQL for storage.</flag>
+		<flag name="module_store_postgres">Enable build of storage plugin for Stargazer, which uses PostgreSQL for storage.</flag>
+	</use>
+	<upstream>
+		<doc>http://stg.net.ua/doc/index.html</doc>
+		<bugs-to>mailto:faust@stg.dp.ua</bugs-to>
+		<remote-id type="github">madf/stg</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,53 @@
+--- a/Makefile
++++ b/Makefile
+@@ -15,9 +15,8 @@
+ CONFFILE := astmanproxy.conf
+ PERMFILE := astmanproxy.users
+ 
+-CC := gcc
+ INCLUDES :=
+-PREFIX:= /usr/local
++PREFIX:= /usr
+ BINDIR := $(DESTDIR)$(PREFIX)/sbin
+ 
+ # For compilation dependencies
+@@ -27,7 +26,8 @@
+ LIBS := -lssl
+ 
+ # Add -g below for debug/GDB symbols
+-CFLAGS:=-Wall -O2 -D_REENTRANT -D_GNU_SOURCE -fPIC -Isrc/include -I/usr/include/openssl
++CFLAGS += -Wall -fPIC
++CPPFLAGS += -D_REENTRANT -D_GNU_SOURCE -Isrc/include -I/usr/include/openssl
+ 
+ ifeq (${OSARCH},Darwin)  
+   LIBS+=-lresolv
+@@ -62,7 +62,7 @@
+ DEFINES+='-DMDIR="$(MODDIR)"' '-DPDIR="$(PERMDIR)"' '-DPFILE="$(PERMFILE)"'
+ 
+ PROXYCERT := $(CERTDIR)/proxy-server.pem
+-PROXYSSLCONF := $(CONFDIR)/proxy-ssl.conf
++PROXYSSLCONF := $(DESTDIR)$(CONFDIR)/proxy-ssl.conf
+ 
+ CFLAGS += $(DEFINES)
+ 
+@@ -76,16 +76,16 @@
+ SRCS := $(MODS:%=src/%.c)
+ HDRS := src/include/astmanproxy.h
+ 
+-all: astmanproxy cert
++all: astmanproxy
+ 
+ astmanproxy: $(OBJS) $(SOBJS)
+-	$(CC) $(CFLAGS) -o $@ $(ASTLINK) $(OBJS) $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(ASTLINK) $(OBJS) $(LIBS)
+ 
+ $(OBJS): %.o: %.c
+-	$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(INCLUDES) -c -o $@ $<
+ 
+ $(SOBJS): %.so: %.o
+-	$(CC) $(SOLINK) $< -o $@
++	$(CC) $(LDFLAGS) $(SOLINK) $< -o $@
+ 
+ SERIAL=`date "+%Y%m%d%H%M%S"`
+ 

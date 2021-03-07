@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		Idle3-tools provides a utility, that can disable, get and set the value
+		of the infamous idle3 timer, found on recent Western Digital Hard Disk Drives.
+		It can be used as an alternative to the official wdidle3.exe proprietary utility,
+		without the need to reboot into a DOS environement. A full power up cycle of the
+		drive will be still mandatory, for new settings to be taken into account.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://sourceforge.net/p/idle3-tools/bugs/</bugs-to>
+		<remote-id type="sourceforge">idle3-tools</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,51 @@
+.TH rscriptd 8 "December 31, 2012" "" "rscriptd"
+
+.SH NAME
+rscriptd \- a remote script execute daemon for Stargazer
+
+.SH SYNOPSIS
+.B rscriptd
+.RI [ config-file ]
+.br
+
+.SH DESCRIPTION
+The
+.B rscriptd
+daemon typically runs on a last-wire router before users and
+manages firewall rules to allow/disallow users get their services.
+.B rscriptd
+communicates with
+.B Stargazer
+main daemon by UDP protocol.
+
+.SH OPTIONS
+.TP
+.I config-file
+Path to rscriptd configuration file. Default is 
+.B
+/etc/rscriptd/rscriptd.conf
+
+.SH FILES
+.B
+/usr/sbin/rsriptd
+.br
+.B
+/etc/stargazer/rscriptd.conf
+.br
+.B
+/var/log/stargazer/rscriptd.log
+
+.SH SEE ALSO
+.BR sgconf (1),
+.BR sgconf_xml (1),
+.BR sgconv (1),
+.BR sgauth (8),
+.BR stargazer (8).
+
+.SH AUTHOR
+rscriptd was originally written by Boris Mikhailenko <stg34@stargazer.dp.ua> and 
+Maxim Mamontov <faust@stargazer.dp.ua>.
+.PP
+This manual page was written by Alexey Osipov <simba@lerlan.ru>,
+for the Debian project (and may be used by others), and was modified by
+Vladimir Pavljuchenkov <spiderx@spiderx.dp.ua> for Gentoo Linux

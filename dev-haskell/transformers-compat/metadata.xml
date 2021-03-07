@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		This package includes backported versions of types that were added
+		to transformers in transformers 0.3 for users who need strict
+		transformers 0.2 compatibility to run on old versions of the
+		platform, but also need those types.
+		
+		Those users should be able to just depend on @transformers &gt;= 0.2@
+		and @transformers-compat@.
+		
+		Note: missing methods are not supplied
+		but this at least permits the types to be used.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">ekmett/transformers-compat</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <use>
+    <flag name="xs">Install <pkg>dev-perl/Cookie-Baker-XS</pkg> for accelerated performance</flag>
+  </use>
+  <upstream>
+    <remote-id type="cpan">Cookie-Baker</remote-id>
+    <remote-id type="cpan-module">Cookie::Baker</remote-id>
+  </upstream>
+</pkgmetadata>

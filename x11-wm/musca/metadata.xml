@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="apis">Optionally install the experimental `apis' window manager</flag>
+		<flag name="xlisten">Optionally install the xlisten utility</flag>
+	</use>
+	<upstream>
+		<remote-id type="launchpad">musca</remote-id>
+	</upstream>
+</pkgmetadata>

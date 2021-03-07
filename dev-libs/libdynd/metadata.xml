@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    LibDyND, a component of the Blaze project, is a C++ library for
+    dynamic, multidimensional arrays. It is inspired by NumPy, the
+    Python array programming library at the core of the scientific
+    Python stack, but tries to address a number of obstacles encountered
+    by some of its users. Examples of this are support for
+    variable-sized string and ragged array types. The library is in a
+    preview development state, and can be thought of as a sandbox where
+    features are being tried and tweaked to gain experience with them.
+  </longdescription>
+  <use>
+    <flag name="cuda">Enable NVIDIA CUDA toolkit support</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">libdynd/libdynd</remote-id>
+  </upstream>
+</pkgmetadata>

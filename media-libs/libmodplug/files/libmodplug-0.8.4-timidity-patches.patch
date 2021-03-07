@@ -1,0 +1,15 @@
+Index: libmodplug-0.8.4/src/load_pat.cpp
+===================================================================
+--- a/src/load_pat.cpp
++++ b/src/load_pat.cpp
+@@ -53,8 +53,8 @@ typedef UWORD WORD;
+ #define PATHFORPAT	"C:\\TIMIDITY\\INSTRUMENTS"
+ #else
+ #define DIRDELIM		'/'
+-#define TIMIDITYCFG	"/usr/local/share/timidity/timidity.cfg"
+-#define PATHFORPAT	"/usr/local/share/timidity/instruments"
++#define TIMIDITYCFG	"/usr/share/timidity/timidity.cfg"
++#define PATHFORPAT	"/usr/share/timidity/current"
+ #endif
+ 
+ #define PAT_ENV_PATH2CFG			"MMPAT_PATH_TO_CFG"

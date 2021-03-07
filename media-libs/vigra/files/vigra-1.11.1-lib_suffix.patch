@@ -1,0 +1,29 @@
+LIBDIR_SUFFIX is only used in one location, while LIB_SUFFIX is set already.
+
+--- a/config/vigra-config.in	2017-05-19 17:01:08.000000000 +0200
++++ b/config/vigra-config.in	2019-04-08 22:33:18.938060195 +0200
+@@ -68,7 +68,7 @@
+ if op.impex_lib: # was: --impex_lib|--impex-lib|--libs
+     ldflags = []
+ 
+-    libDir = '@CMAKE_INSTALL_PREFIX@/lib@LIBDIR_SUFFIX@'
++    libDir = '@CMAKE_INSTALL_PREFIX@/lib@LIB_SUFFIX@'
+     if libDir not in standardLibDirs:
+         ldflags.append('-L' + libDir)
+ 
+--- a/config/VigraSetDefaults.cmake	2017-05-19 17:01:08.000000000 +0200
++++ b/config/VigraSetDefaults.cmake	2019-04-08 22:33:09.361974643 +0200
+@@ -59,13 +59,6 @@
+     CACHE BOOL "Perform valgrind memory testing upon 'make ctest' ?"
+     FORCE)
+ 
+-IF(NOT DEFINED LIBDIR_SUFFIX)
+-    SET(LIBDIR_SUFFIX "")
+-ENDIF()
+-SET(LIBDIR_SUFFIX ${LIBDIR_SUFFIX}
+-    CACHE STRING "Define suffix of lib directory name (empty string or 32 or 64)."
+-    FORCE)
+-
+ IF(NOT DEFINED DEPENDENCY_SEARCH_PREFIX)
+     SET(DEPENDENCY_SEARCH_PREFIX "")
+ ENDIF()

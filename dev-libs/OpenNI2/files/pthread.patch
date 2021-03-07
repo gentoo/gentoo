@@ -1,0 +1,26 @@
+commit 716cffb2888bb2a0fa3264a22085caf8ce26368f
+Author: Pedro Asad <pasad@cos.ufrj.br>
+Date:   Wed Oct 8 18:18:57 2014 -0300
+
+    Added a missing -lpthread flag to one Makefile
+    
+      The lack of the -lpthread flag on Source/Tools/NiViewer/Makefile prevented the
+      whole project from compiling correctly on Ubuntu 14.04 64 bit. Just added the
+      missing flag to this Makefile, according to the same solution for issue 47 of
+      the old OpenNI2 Github repository, that boils down to a similar problem and
+      can be found here, on Github
+      https://github.com/OpenNI/OpenNI2/issues/47
+
+diff --git a/Source/Tools/NiViewer/Makefile b/Source/Tools/NiViewer/Makefile
+index 1eba049..1b5714d 100644
+--- a/Source/Tools/NiViewer/Makefile
++++ b/Source/Tools/NiViewer/Makefile
+@@ -26,7 +26,7 @@ else
+ endif
+ 
+ LIB_DIRS  += ../../../ThirdParty/PSCommon/XnLib/Bin/$(PLATFORM)-$(CFG)
+-USED_LIBS += OpenNI2 XnLib
++USED_LIBS += OpenNI2 XnLib pthread
+ 
+ EXE_NAME = NiViewer
+ 

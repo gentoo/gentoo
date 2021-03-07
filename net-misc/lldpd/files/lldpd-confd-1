@@ -1,0 +1,5 @@
+# /etc/conf.d/lldpd: config file for /etc/init.d/lldpd
+
+# see man page for lldpd or run `lldpd -h`
+# for valid cmdline options
+#LLDPD_OPTS=""

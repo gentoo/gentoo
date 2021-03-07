@@ -1,0 +1,12 @@
+diff --git a/src/tools/rbd/action/Bench.cc b/src/tools/rbd/action/Bench.cc
+index aa6edbc18b..90c551c179 100644
+--- a/src/tools/rbd/action/Bench.cc
++++ b/src/tools/rbd/action/Bench.cc
+@@ -9,6 +9,7 @@
+ #include "common/ceph_mutex.h"
+ #include "include/types.h"
+ #include "global/signal_handler.h"
++#include <atomic>
+ #include <iostream>
+ #include <boost/accumulators/accumulators.hpp>
+ #include <boost/accumulators/statistics/stats.hpp>

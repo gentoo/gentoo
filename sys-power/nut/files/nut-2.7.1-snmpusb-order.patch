@@ -1,0 +1,37 @@
+The code that generates the SNMP and USB headers to compile against does not
+have a deterministic order, leading to different results at times.
+
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+
+diff -Nuar --exclude .libs --exclude '*.o' --exclude core nut-2.7.1.orig/tools/nut-snmpinfo.py nut-2.7.1/tools/nut-snmpinfo.py
+--- nut-2.7.1.orig/tools/nut-snmpinfo.py	2014-01-04 19:08:19.117150636 -0800
++++ nut-2.7.1/tools/nut-snmpinfo.py	2013-07-26 12:41:11.000000000 -0700
+@@ -78,7 +78,9 @@
+ output_file.write( "/* SNMP IDs device table */\n" )
+ output_file.write( "static snmp_device_id_t snmp_device_table[] = {\n" )
+ 
+-for filename in glob.glob('../drivers/*-mib.c'):
++mibs = glob.glob('../drivers/*-mib.c')
++mibs.sort()
++for filename in mibs:
+ 	list_of_line = open(filename,'r').read().split(';')
+ 	for line in list_of_line:
+ 		if "mib2nut_info_t" in line:
+diff -Nuar --exclude .libs --exclude '*.o' --exclude core nut-2.7.1.orig/tools/nut-usbinfo.pl nut-2.7.1/tools/nut-usbinfo.pl
+--- nut-2.7.1.orig/tools/nut-usbinfo.pl	2014-01-04 19:12:45.595949760 -0800
++++ nut-2.7.1/tools/nut-usbinfo.pl	2013-11-17 11:27:38.000000000 -0800
+@@ -75,7 +75,12 @@
+ 
+ ################# MAIN #################
+ 
+-find(\&find_usbdevs,$scanPath);
++find({ 
++		wanted => \&find_usbdevs, 
++		follow => 1, 
++		preprocess => sub { return sort @_ },
++	},
++	$scanPath);
+ &gen_usb_files;
+ 
+ ################# SUB METHOD #################
+

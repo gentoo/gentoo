@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>robbat2@gentoo.org</email>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Gearman</remote-id>
+    <remote-id type="cpan-module">Gearman::Client</remote-id>
+    <remote-id type="cpan-module">Gearman::Job</remote-id>
+    <remote-id type="cpan-module">Gearman::JobStatus</remote-id>
+    <remote-id type="cpan-module">Gearman::Objects</remote-id>
+    <remote-id type="cpan-module">Gearman::ResponseParser</remote-id>
+    <remote-id type="cpan-module">Gearman::ResponseParser::Taskset</remote-id>
+    <remote-id type="cpan-module">Gearman::Task</remote-id>
+    <remote-id type="cpan-module">Gearman::Taskset</remote-id>
+    <remote-id type="cpan-module">Gearman::Util</remote-id>
+    <remote-id type="cpan-module">Gearman::Worker</remote-id>
+  </upstream>
+</pkgmetadata>

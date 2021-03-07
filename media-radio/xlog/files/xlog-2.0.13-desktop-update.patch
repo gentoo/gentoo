@@ -1,0 +1,51 @@
+--- configure.ac.orig	2007-11-06 15:49:25.000000000 -0800
++++ configure.ac	2007-11-06 15:51:22.000000000 -0800
+@@ -48,6 +48,7 @@
+ AH_TEMPLATE([HAVE_LC_MESSAGES], [])
+ AH_TEMPLATE([HAVE_STPCPY], [])
+ 
++dnl MIME update
+ AC_ARG_ENABLE(mime-update,
+ [  --enable-mime-update    update the mime database],
+ [case "${enableval}" in
+@@ -63,6 +64,21 @@
+ 	echo "disabled updating of the mime database"
+ fi
+ 
++dnl Desktop update
++AC_ARG_ENABLE(desktop-update,
++[  --enable-desktop-update    update the desktop database],
++[case "${enableval}" in
++  yes) desk_update=true ;;
++  no)  desk_update=false ;;
++  *) AC_MSG_ERROR(bad value ${enableval} for --enable-desk-update) ;;
++esac],[desk_update=false])
++AM_CONDITIONAL(DESKUPDATE, test x$desk_update = xtrue)
++
++if test "x${desk_update}" != "xfalse"; then
++	echo "enabled updating of the desktop database"
++else
++	echo "disabled updating of the desktop database"
++fi
+ 
+ AC_OUTPUT([po/Makefile.in
+ Makefile
+--- data/desktop/Makefile.am.orig	2007-11-06 15:47:51.000000000 -0800
++++ data/desktop/Makefile.am	2007-11-06 15:48:16.000000000 -0800
+@@ -5,12 +5,16 @@
+ 
+ EXTRA_DIST = $(DESKTOP_FILES)
+ 
++if DESKUPDATE
+ install-data-hook:
+ if HAVE_DESKTOP
+ 	$(UPDATE_DESKTOP_DATABASE) "$(DESTDIR)$(datadir)/applications"
+ endif
++endif
+ 
++if DESKUPDATE
+ uninstall-hook:
+ if HAVE_DESKTOP
+ 	$(UPDATE_DESKTOP_DATABASE) "$(DESTDIR)$(datadir)/applications"
+ endif
++endif

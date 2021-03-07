@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<longdescription>
+		This project implements a Python library, which takes care of the internal details
+		and allows its users to generate and manage keys,
+		encrypt and decrypt data, and sign and verify messages.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://bitbucket.org/vinay.sajip/python-gnupg/issues/new</bugs-to>
+		<remote-id type="bitbucket">vinay.sajip/python-gnupg</remote-id>
+		<remote-id type="pypi">python-gnupg</remote-id>
+	</upstream>
+</pkgmetadata>

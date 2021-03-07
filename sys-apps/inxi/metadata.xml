@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>jstein@gentoo.org</email>
+		<name>Jonas Stein</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">smxi/inxi</remote-id>
+	</upstream>
+	<longdescription>inxi is a script to print information about the system. It was forked from infobash. The script parses files in /proc but can also collects information from other tools such as glxinfo or dmidecode. See a full list of supported tools with inxi --recommends.</longdescription>
+</pkgmetadata>

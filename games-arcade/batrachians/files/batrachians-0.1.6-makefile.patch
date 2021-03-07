@@ -1,0 +1,35 @@
+diff -ru batrachians-0.1.6.orig/src/Makefile.am batrachians-0.1.6/src/Makefile.am
+--- batrachians-0.1.6.orig/src/Makefile.am	2011-04-18 21:25:53.000000000 -0400
++++ batrachians-0.1.6/src/Makefile.am	2014-10-27 23:19:58.292260669 -0400
+@@ -20,7 +20,7 @@
+ 	-DPACKAGE_FULL_NAME_EN=\"$(PACKAGE_FULL_NAME_EN)\" \
+ 	-DPKGSOUNDDIR=\"$(pkgsounddir)\"
+ 
+-pkgsounddir = $(datadir)/sounds/$(PACKAGE)
++pkgsounddir = $(datadir)/$(PACKAGE)/sounds
+ pkgsound_DATA = \
+ 	sounds/game-starts.wav \
+ 	sounds/game-ends.wav \
+@@ -29,18 +29,18 @@
+ 	sounds/frog-jumps.wav \
+ 	sounds/tongue-out.wav
+ 
+-desktopentrydir = $(datadir)/applications
++desktopentrydir =/usr/share/applications
+ desktopentry_DATA = $(PACKAGE).desktop
+ 
+-pixmapdir = $(datadir)/pixmaps
++pixmapdir =/usr/share/icons/hicolor/48x48/apps/
+ pixmap_DATA = images/$(PACKAGE).png
+ 
+ 
+ check: all
+ if HAVE_GETOPT_LONG
+ 	test "`./$(PACKAGE) --version`" = "$(PACKAGE) $(VERSION)"
+-	./$(PACKAGE) --version >& /dev/null
+-	./$(PACKAGE) --help >& /dev/null
++	./$(PACKAGE) --version > /dev/null 2>&1
++	./$(PACKAGE) --help > /dev/null 2>&1
+ endif
+ 
+ 

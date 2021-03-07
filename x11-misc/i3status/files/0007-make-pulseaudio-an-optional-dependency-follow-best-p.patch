@@ -1,0 +1,119 @@
+From 23da59920c4c911ee08498eb283b69bdef80fd65 Mon Sep 17 00:00:00 2001
+From: Michael Stapelberg <michael@stapelberg.de>
+Date: Mon, 29 Jul 2019 20:57:48 +0200
+Subject: [PATCH 7/7] make pulseaudio an optional dependency, follow best
+ practices
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+For my thoughts about optional dependencies, see
+https://michael.stapelberg.ch/posts/2019-05-23-optional-dependencies/
+
+This commit follows the best practices outlined in that article:
+
+1. The travis config was modified to verify both code paths build and link/don’t
+   link against pulseaudio.
+
+2. If pulseaudio is missing, the build fails until packagers explicitly pass a
+   --disable flag. In practice, I think the only situation when this flag should
+   be set is in source-based linux distributions where users can express
+   package-level compilation preferences (e.g. Gentoo USE flags).
+
+3. The --version output now reflects the status of the optional dependency.
+
+fixes #359
+---
+ .travis.yml        |  5 +++--
+ configure.ac       | 25 +++++++++++++++----------
+ i3status.c         |  8 +++++++-
+ src/print_volume.c |  2 +-
+ 4 files changed, 26 insertions(+), 14 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index a6c31d7..11caa33 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -80,25 +80,29 @@ AC_CANONICAL_HOST
+ PKG_CHECK_MODULES([CONFUSE], [libconfuse])
+ PKG_CHECK_MODULES([YAJL], [yajl])
+ 
+-pulse=true
++AC_ARG_ENABLE(pulseaudio,
++  AS_HELP_STRING(
++    [--disable-pulseaudio],
++    [build without pulseaudio support]),
++  [ax_pulse=$enableval],
++  [ax_pulse=yes])
++AM_CONDITIONAL([PULSE], [test x$ax_pulse = xyes])
++AS_IF([test x"$ax_pulse" = x"yes"],
++      [PKG_CHECK_MODULES([PULSE], [libpulse])])
++pulse_def=0
++AS_IF([test x"$ax_pulse" = x"yes"],
++      [pulse_def=1])
++AC_DEFINE_UNQUOTED([HAS_PULSEAUDIO], [$pulse_def], [Build with pulseaudio])
++
+ case $host_os in
+ 	linux*)
+ 	PKG_CHECK_MODULES([NLGENL], [libnl-genl-3.0])
+ 	PKG_CHECK_MODULES([ALSA], [alsa])
+ 	;;
+-	openbsd*)
+-	pulse=false
+-	;;
+-	dragonfly*)
+-	pulse=false
+-	;;
+ 	netbsd*)
+ 	AC_SEARCH_LIBS([prop_string_create], [prop])
+ 	;;
+ esac
+-AM_CONDITIONAL([PULSE], [test x$pulse = xtrue])
+-AS_IF([test x"$pulse" = x"true"],
+-      [PKG_CHECK_MODULES([PULSE], [libpulse])])
+ 
+ dnl TODO: check for libbsd for GNU/kFreeBSD
+ 
+@@ -160,6 +164,7 @@ AS_HELP_STRING([is release version:], [${is_release}])
+ AS_HELP_STRING([enable debug flags:], [${ax_enable_debug}])
+ AS_HELP_STRING([code coverage:], [${CODE_COVERAGE_ENABLED}])
+ AS_HELP_STRING([enabled sanitizers:], [${ax_enabled_sanitizers}])
++AS_HELP_STRING([pulseaudio support:], [${ax_pulse}])
+ 
+ To compile, run:
+ 
+diff --git a/i3status.c b/i3status.c
+index 0898da3..1ab8400 100644
+--- a/i3status.c
++++ b/i3status.c
+@@ -565,7 +565,13 @@ int main(int argc, char *argv[]) {
+                 return 0;
+                 break;
+             case 'v':
+-                printf("i3status " VERSION " © 2008 Michael Stapelberg and contributors\n");
++                printf("i3status " VERSION " © 2008 Michael Stapelberg and contributors\n"
++#if HAS_PULSEAUDIO
++                       "Built with pulseaudio support\n"
++#else
++                       "Built without pulseaudio support\n"
++#endif
++                       );
+                 return 0;
+                 break;
+             case 0:
+diff --git a/src/print_volume.c b/src/print_volume.c
+index 91e8ce2..7364d47 100644
+--- a/src/print_volume.c
++++ b/src/print_volume.c
+@@ -86,7 +86,7 @@ void print_volume(yajl_gen json_gen, char *buffer, const char *fmt, const char *
+         free(instance);
+     }
+ 
+-#if !defined(__DragonFly__) && !defined(__OpenBSD__)
++#if HAS_PULSEAUDIO
+     /* Try PulseAudio first */
+ 
+     /* If the device name has the format "pulse[:N]" where N is the
+-- 
+2.26.2
+

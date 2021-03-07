@@ -1,0 +1,30 @@
+ src/file.c       | 2 +-
+ src/werr_linux.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/file.c b/src/file.c
+index 9726564..af2f672 100644
+--- a/src/file.c
++++ b/src/file.c
+@@ -152,7 +152,7 @@ int file_check_file(char *file_name, int create)
+ 
+       fp = fopen(file_name, "w") ;
+       if (!fp) return 0 ;
+-      fprintf(fp, setup_format_loghead) ;
++      fprintf(fp, "%s", setup_format_loghead) ;
+       fprintf(fp, "\n") ;
+       fclose(fp) ;
+       return 1 ;
+diff --git a/src/werr_linux.c b/src/werr_linux.c
+index 50d3993..0f8834e 100644
+--- a/src/werr_linux.c
++++ b/src/werr_linux.c
+@@ -331,7 +331,7 @@ void werr(int flags, char* format, ...)
+        else
+          syslog_level = LOG_DEBUG ;
+ 
+-       syslog(syslog_level, message) ;
++       syslog(syslog_level, "%s", message) ;
+      }
+ #    endif
+ #    else  // i.e. ifndef NOGUI

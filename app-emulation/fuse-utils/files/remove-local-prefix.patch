@@ -1,0 +1,22 @@
+diff -Naur fuse-utils-1.4.3/configure.ac fuse-utils-1.4.3-patched/configure.ac
+--- fuse-utils-1.4.3/configure.ac	2018-07-01 02:09:55.000000000 +0200
++++ fuse-utils-1.4.3-patched/configure.ac	2020-07-28 17:02:05.287721692 +0200
+@@ -92,18 +92,6 @@
+   )
+ fi
+ 
+-dnl Allow the user to say that various libraries are in one place
+-AC_ARG_WITH(local-prefix,
+-[  --with-local-prefix=PFX local libraries installed in PFX (optional)],
+-CPPFLAGS="$CPPFLAGS -I$withval/include";
+-CXXFLAGS="$CXXFLAGS -I$withval/include";
+-LDFLAGS="$LDFLAGS -L$withval/lib",
+-if test "$prefix" != "NONE"; then
+-  CPPFLAGS="$CPPFLAGS -I$prefix/include";
+-  CXXFLAGS="$CXXFLAGS -I$prefix/include";
+-  LDFLAGS="$LDFLAGS -L$prefix/lib"
+-fi)
+-
+ dnl Check if libjpeg is available and supports jpeg_write_scanlines
+ AC_MSG_CHECKING(whether to use libjpeg)
+ AC_ARG_WITH(libjpeg,

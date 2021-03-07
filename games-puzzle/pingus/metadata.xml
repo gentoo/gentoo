@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<longdescription>Pingus is a free Lemmings clone for GNU/Linux and Windows covered under the GNU GPL. Pingus
+uses ClanLib and libxml and might also be usable on some other OSs like FreeBSD, but hasn't
+been tested there. Pingus is mainly developed under GNU/Linux, that's why the Windows port
+is sometimes a bit behind.
+If you don't know Lemmingstm, here comes a short introduction. Its a puzzle game developed
+in 1991 by DMA Design. The player takes command in the game of a bunch of small animals and
+has to guide them around in levels. Since the animals walk on their own, the player can only
+influence them by giving them commands, like build a bridge, dig a hole or redirect all
+animals in the other direction. The goal of each level is to reach the exit, for fix
+multiple combination of commands are necessary. The game is presented in a 2D site view.</longdescription>
+	<upstream>
+		<remote-id type="google-code">pingus</remote-id>
+	</upstream>
+	<use>
+		<flag name="music">Enable playing of background music</flag>
+	</use>
+</pkgmetadata>

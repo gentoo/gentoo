@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <!-- maintainer-needed -->
+  <use>
+    <flag name="fuse">Enable extra fuse thingies</flag>
+    <flag name="qemu">Enable qemu stuff</flag>
+    <flag name="s3">Enable support for Amazon S3</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">simsong/AFFLIBv3</remote-id>
+  </upstream>
+</pkgmetadata>

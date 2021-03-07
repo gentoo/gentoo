@@ -1,0 +1,25 @@
+From ba0bcb39c4fa57634c05597464352d4e630f1ea2 Mon Sep 17 00:00:00 2001
+From: hz-mk <51707958+hz-mk@users.noreply.github.com>
+Date: Tue, 11 Jun 2019 16:32:18 +0200
+Subject: [PATCH] Reset conversion descriptor after close (prevent double free)
+
+---
+ zbar/qrcode/qrdectxt.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/zbar/qrcode/qrdectxt.c b/zbar/qrcode/qrdectxt.c
+index 2ab7b9b..4be7635 100644
+--- a/zbar/qrcode/qrdectxt.c
++++ b/zbar/qrcode/qrdectxt.c
+@@ -409,7 +409,10 @@ int qr_code_data_list_extract_text(const qr_code_data_list *_qrlist,
+       /*If eci should be reset between codes, do so.*/
+       if(eci<=QR_ECI_GLI1){
+         eci=-1;
+-        if(eci_cd!=(iconv_t)-1)iconv_close(eci_cd);
++        if(eci_cd!=(iconv_t)-1){
++	  iconv_close(eci_cd);
++	  eci_cd=(iconv_t)-1;
++	}
+       }
+ 
+     }

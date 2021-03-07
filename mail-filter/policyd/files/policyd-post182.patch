@@ -1,0 +1,52 @@
+First patch from debian.  The other two mostly cosmetic patches from bug #288438.
+--- a/syslog.c
++++ b/syslog.c
+@@ -214,14 +214,15 @@ char
+   if (strlen (str) == 0)
+     return (str);
+ 
++  p = str + strlen(str);
++
+   for (i = 0; isspace (str[i]); i++)
+     ;
+ 
+-  strcpy (str, str + i);
++  str += i;
+ 
+-  p = str + strlen (str);
+-    while ((p--) != str && isspace (*p))
+-  *p = 0;
++  while ((p--) != str && isspace (*p))
++    *p = 0;
+ 
+   return (str);
+ }
+diff -ur policyd-1.82-orig/throttle.c policyd-1.82/throttle.c
+--- a/throttle.c	2007-08-20 08:42:05.000000000 +0200
++++ b/throttle.c	2009-10-10 03:49:25.000000000 +0200
+@@ -145,11 +145,11 @@
+   
+   if(tcount[fd] >= tquota[fd] && tcount[fd] >= trcpt[fd]) {
+     tresult = tcount[fd];
+-    if (DEBUG >= 4) logmessage("tquota[fd] won\n"); }
++    if (DEBUG >= 4) logmessage("tcount[fd] won\n"); }
+     
+   if(trcpt[fd]  >= tcount[fd] && trcpt[fd] >= tquota[fd]) {
+     tresult = trcpt[fd];
+-    if (DEBUG >= 4) logmessage("tquota[fd] won\n"); }
++    if (DEBUG >= 4) logmessage("trcpt[fd] won\n"); }
+ 
+   if(DEBUG >= 4)
+     logmessage("DEBUG: fd: %d: tresult: %d\n", fd, tresult);
+diff -ur policyd-1.82-orig/throttle_sasl.c policyd-1.82/throttle_sasl.c
+--- a/throttle_sasl.c	2007-08-20 08:42:05.000000000 +0200
++++ b/throttle_sasl.c	2009-10-10 03:50:27.000000000 +0200
+@@ -188,7 +188,7 @@
+       "UPDATE throttle SET"
+       " _abuse_cur=1"
+       " WHERE _from='%s'",
+-      triplet_array[fd][1]);
++      triplet_array[fd][4]);
+     if(db_doquery(fd) == -1) return(db_failure(fd, "throttle"));
+ 
+     return (-5);

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">MooseX-Types</remote-id>
+    <remote-id type="cpan-module">MooseX::Types</remote-id>
+    <remote-id type="cpan-module">MooseX::Types::Base</remote-id>
+    <remote-id type="cpan-module">MooseX::Types::CheckedUtilExports</remote-id>
+    <remote-id type="cpan-module">MooseX::Types::Combine</remote-id>
+    <remote-id type="cpan-module">MooseX::Types::Moose</remote-id>
+    <remote-id type="cpan-module">MooseX::Types::TypeDecorator</remote-id>
+    <remote-id type="cpan-module">MooseX::Types::UndefinedType</remote-id>
+    <remote-id type="cpan-module">MooseX::Types::Util</remote-id>
+    <remote-id type="cpan-module">MooseX::Types::Wrapper</remote-id>
+  </upstream>
+</pkgmetadata>

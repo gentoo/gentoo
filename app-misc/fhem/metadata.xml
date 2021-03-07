@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		FHEM is a GPL'd perl server for house automation.
+		It is used to automate some common tasks in the household like
+		switching lamps, shutters, heating and to log events like
+		temperature, humidity, power consumption.
+		In order to use FHEM you'll need some attached hardware
+		like the CUL-, EnOcean- or Z-Wave-USB-Stick to access the actors and sensors.
+	</longdescription>
+</pkgmetadata>

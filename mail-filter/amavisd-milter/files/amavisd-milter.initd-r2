@@ -1,0 +1,18 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name="amavisd-milter"
+command="/usr/sbin/${name}"
+command_args="${DOPTIONS}"
+command_user="amavis"
+pidfile="${PIDFILE}"
+
+depend() {
+        use logger dns amavisd sendmail
+}
+
+start_pre() {
+	# needed to avoid potential mi_stop errors
+	[ "${RC_CMD}" = "restart" ] && sleep 4
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">HTML-Template</remote-id>
+    <remote-id type="cpan-module">HTML::Template</remote-id>
+    <remote-id type="cpan-module">HTML::Template::COND</remote-id>
+    <remote-id type="cpan-module">HTML::Template::DEF</remote-id>
+    <remote-id type="cpan-module">HTML::Template::ESCAPE</remote-id>
+    <remote-id type="cpan-module">HTML::Template::FAQ</remote-id>
+    <remote-id type="cpan-module">HTML::Template::JSESCAPE</remote-id>
+    <remote-id type="cpan-module">HTML::Template::LOOP</remote-id>
+    <remote-id type="cpan-module">HTML::Template::NOOP</remote-id>
+    <remote-id type="cpan-module">HTML::Template::PRINTSCALAR</remote-id>
+    <remote-id type="cpan-module">HTML::Template::URLESCAPE</remote-id>
+    <remote-id type="cpan-module">HTML::Template::VAR</remote-id>
+  </upstream>
+</pkgmetadata>

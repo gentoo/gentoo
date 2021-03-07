@@ -1,0 +1,13 @@
+diff -ruN xloadimage.4.1.patched/jpeg.c xloadimage.4.1/jpeg.c
+--- xloadimage.4.1.patched/jpeg.c	2011-08-25 22:44:04.835308001 +0200
++++ xloadimage.4.1/jpeg.c	2011-08-25 22:45:57.391307973 +0200
+@@ -321,8 +321,8 @@
+       cinfo->arith_code = TRUE;
+ #else
+       fprintf(stderr, "jpegDump: sorry, arithmetic coding not supported\n");
+-    }
+ #endif
++    }
+     else if (!strncmp("grayscale", name, strlen(name)) ||
+ 	     !strncmp("greyscale", name, strlen(name)) ||
+ 	     !strncmp("monochrome", name, strlen(name))) {

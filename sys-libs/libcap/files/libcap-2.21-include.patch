@@ -1,0 +1,10 @@
+--- a/libcap/libcap.h
++++ b/libcap/libcap.h
+@@ -13,6 +13,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <sys/capability.h>
++#include <sys/prctl.h> /* prctl() */
+ 
+ #ifndef __u8
+ #define __u8    unsigned char

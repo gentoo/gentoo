@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">CGI-Session</remote-id>
+    <remote-id type="cpan-module">CGI::Session</remote-id>
+    <remote-id type="cpan-module">CGI::Session::Driver</remote-id>
+    <remote-id type="cpan-module">CGI::Session::Driver::DBI</remote-id>
+    <remote-id type="cpan-module">CGI::Session::Driver::db_file</remote-id>
+    <remote-id type="cpan-module">CGI::Session::Driver::file</remote-id>
+    <remote-id type="cpan-module">CGI::Session::Driver::mysql</remote-id>
+    <remote-id type="cpan-module">CGI::Session::Driver::postgresql</remote-id>
+    <remote-id type="cpan-module">CGI::Session::Driver::sqlite</remote-id>
+    <remote-id type="cpan-module">CGI::Session::ErrorHandler</remote-id>
+    <remote-id type="cpan-module">CGI::Session::ID::incr</remote-id>
+    <remote-id type="cpan-module">CGI::Session::ID::md5</remote-id>
+    <remote-id type="cpan-module">CGI::Session::ID::static</remote-id>
+    <remote-id type="cpan-module">CGI::Session::Serialize::default</remote-id>
+    <remote-id type="cpan-module">CGI::Session::Serialize::freezethaw</remote-id>
+    <remote-id type="cpan-module">CGI::Session::Serialize::storable</remote-id>
+    <remote-id type="cpan-module">CGI::Session::Test::Default</remote-id>
+    <remote-id type="cpan-module">CGI::Session::Test::SimpleObjectClass</remote-id>
+    <remote-id type="cpan-module">CGI::Session::Tutorial</remote-id>
+    <remote-id type="cpan-module">OverloadedClass</remote-id>
+  </upstream>
+</pkgmetadata>

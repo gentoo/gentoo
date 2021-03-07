@@ -1,0 +1,48 @@
+http://bugs.gentoo.org/291907
+
+This patch was merged from two patches extracted from this thread:
+http://markmail.org/thread/qkd76gpdgefpjlfn
+
+tc_stab.c: small fixes to commandline help
+
+
+tc_core.c:
+As kernel part of things relies on cell align which is always set to -1,
+I also added it to userspace computation stage. This way if someone
+specified e.g. 2048 and 512 for mtu and tsize respectively, one wouldn't
+end with tsize supporting mtu 4096 suddenly, New default mtu is also set
+to 2048 (disregarding weirdness of setting mtu to such values).
+
+
+Unless I missed something, this is harmless and feels cleaner, but if it's
+not allowed, documentation will have to be changed back to 2047 + extra
+explanation as well.
+
+--- iproute2/tc/tc_core.c
++++ iproute2/tc/tc_core.c
+@@ -155,12 +155,12 @@
+ 	}
+ 
+ 	if (s->mtu == 0)
+-		s->mtu = 2047;
++		s->mtu = 2048;
+ 	if (s->tsize == 0)
+ 		s->tsize = 512;
+ 
+ 	s->cell_log = 0;
+-	while ((s->mtu >> s->cell_log) > s->tsize - 1)
++	while ((s->mtu - 1 >> s->cell_log) > s->tsize - 1)
+ 		s->cell_log++;
+ 
+ 	*stab = malloc(s->tsize * sizeof(__u16));
+--- iproute2/tc/tc_stab.c
++++ iproute2/tc/tc_stab.c
+@@ -32,7 +32,7 @@
+ 	fprintf(stderr,
+ 		"Usage: ... stab [ mtu BYTES ] [ tsize SLOTS ] [ mpu BYTES ] \n"
+ 		"                [ overhead BYTES ] [ linklayer TYPE ] ...\n"
+-		"   mtu       : max packet size we create rate map for {2047}\n"
++		"   mtu       : max packet size we create size table for {2048}\n"
+ 		"   tsize     : how many slots should size table have {512}\n"
+ 		"   mpu       : minimum packet size used in rate computations\n"
+ 		"   overhead  : per-packet size overhead used in rate computations\n"

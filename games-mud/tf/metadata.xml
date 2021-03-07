@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>games@gentoo.org</email>
+    <name>Gentoo Games Project</name>
+  </maintainer>
+  <use>
+    <flag name="atcp">enable ATCP support.</flag>
+    <flag name="gmcp">enable GMCP support.</flag>
+    <flag name="option102">enable telnet option 102 support.</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">tinyfugue</remote-id>
+  </upstream>
+</pkgmetadata>

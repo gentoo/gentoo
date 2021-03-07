@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-mathematics@gentoo.org</email>
+		<name>Gentoo Mathematics Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		CVXOPT is a software for convex optimization based on
+		the Python programming language. Its main purpose is to make the
+		development of software for convex optimization applications
+		straightforward.
+	</longdescription>
+	<use>
+		<flag name="dsdp">Use interior point library
+			<pkg>sci-libs/dsdp</pkg></flag>
+		<flag name="glpk">Use GNU Linear Programming Kit
+			<pkg>sci-mathematics/glpk</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">cvxopt/cvxopt</remote-id>
+		<remote-id type="pypi">cvxopt</remote-id>
+	</upstream>
+</pkgmetadata>

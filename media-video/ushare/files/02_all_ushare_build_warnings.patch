@@ -1,0 +1,35 @@
+diff --git a/src/ctrl_telnet.c b/src/ctrl_telnet.c
+index 0849d80..b3e9e8d 100644
+--- a/src/ctrl_telnet.c
++++ b/src/ctrl_telnet.c
+@@ -202,6 +202,7 @@ ctrl_telnet_start (int port)
+ void
+ ctrl_telnet_stop (void)
+ {
++  ssize_t tmp;
+   pthread_mutex_lock (&startstop_lock);
+ 
+   if (!started)
+@@ -211,7 +212,7 @@ ctrl_telnet_stop (void)
+   }
+ 
+   /* yes is int, which is bigger then char, so this should be safe */
+-  write (ttd.killer[1], &yes, sizeof (char));
++  tmp = write (ttd.killer[1], &yes, sizeof (char));
+ 
+   pthread_mutex_unlock (&startstop_lock);
+   pthread_join (ttd.thread, NULL);
+diff --git a/src/mime.c b/src/mime.c
+index 66c48ab..bf0121b 100644
+--- a/src/mime.c
++++ b/src/mime.c
+@@ -144,7 +144,8 @@ char *mime_get_protocol (struct mime_type_t *mime)
+   if (!mime)
+     return NULL;
+ 
+-  sprintf (protocol, mime->mime_protocol);
++  //sprintf (protocol, mime->mime_protocol);
++  strcpy (protocol, mime->mime_protocol);
+   strcat (protocol, "*");
+   return strdup (protocol);
+ }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		run untrusted HTML through Text.HTML.SanitizeXSS.sanitizeXSS to prevent XSS attacks. see README.md &lt;https://github.com/yesodweb/haskell-xss-sanitize&gt; for more details
+	</longdescription>
+	<upstream>
+		<remote-id type="github">yesodweb/haskell-xss-sanitize</remote-id>
+	</upstream>
+</pkgmetadata>

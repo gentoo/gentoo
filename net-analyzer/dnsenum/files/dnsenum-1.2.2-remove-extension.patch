@@ -1,0 +1,62 @@
+--- a/dnsenum.pl
++++ b/dnsenum.pl
+@@ -1,11 +1,11 @@
+ #!/usr/bin/perl
+ #
+ #
+-#	dnsenum.pl VERSION 1.2.2
++#	dnsenum VERSION 1.2.2
+ #	This version:	- Improvement of output
+ #			- Added DNS Server Fingerprinting
+ #		
+-#	dnsenum.pl: multithread script to enumerate information on
++#	dnsenum: multithread script to enumerate information on
+ #		a domain and to discover non-contiguous ip blocks.
+ #	
+ #	1) Get the host's addresse.
+@@ -45,7 +45,7 @@
+ #
+ #	Special thanks to all perl developers.
+ #
+-#	please see perldoc dnsenum.pl for options and arguments
++#	please see perldoc dnsenum for options and arguments
+ 
+ use strict;
+ use warnings;#it complains about uninitialized values when it doesn't find address in RR; need to fix later
+@@ -71,7 +71,7 @@
+ my ($timeout, $delay, $pages, $ipcount, $ipvalid) = (10, 3, 20, 0, 0);
+ my ($output);
+ my $writer;
+-my $program = 'dnsenum.pl';
++my $program = 'dnsenum';
+ my $wildcards = 'pseudorandabcdefuvwxyz0123456789.';
+ my $VERSION = '1.2.2';
+ 
+@@ -1365,15 +1365,15 @@
+ 
+ =head1 NAME
+ 
+-dnsenum.pl: multithread script to enumerate information on a domain and to discover non-contiguous IP blocks.
++dnsenum: multithread script to enumerate information on a domain and to discover non-contiguous IP blocks.
+ 
+ =head1 VERSION
+ 
+-dnsenum.pl version 1.2.2
++dnsenum version 1.2.2
+ 
+ =head1 SYNOPSIS
+ 
+-dnsenum.pl [options] <domain>
++dnsenum [options] <domain>
+ 
+ =head1 DESCRIPTION
+ 
+@@ -1673,7 +1673,7 @@
+ 
+ =head1 README
+ 
+-dnsenum.pl: multithread script to enumerate information on a domain
++dnsenum: multithread script to enumerate information on a domain
+ and to discover non-contiguous ip blocks.
+ 
+ =head1 PREREQUISITES

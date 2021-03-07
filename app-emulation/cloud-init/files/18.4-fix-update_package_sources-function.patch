@@ -1,0 +1,26 @@
+From b15c4c4b24c894b3c8d444466110c881c35525e2 Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Wed, 14 Nov 2018 15:35:37 +0100
+Subject: [PATCH 4/5] gentoo: fix update_package_sources function
+
+Method is meant to update packages repository, not to update the system.
+---
+ cloudinit/distros/gentoo.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cloudinit/distros/gentoo.py b/cloudinit/distros/gentoo.py
+index 50bb61fb..7b838e82 100644
+--- a/cloudinit/distros/gentoo.py
++++ b/cloudinit/distros/gentoo.py
+@@ -212,7 +212,7 @@ class Distro(distros.Distro):
+ 
+     def update_package_sources(self):
+         self._runner.run("update-sources", self.package_command,
+-                         ["-u", "world"], freq=PER_INSTANCE)
++                         ["--sync"], freq=PER_INSTANCE)
+ 
+ 
+ def convert_resolv_conf(settings):
+-- 
+2.19.1
+

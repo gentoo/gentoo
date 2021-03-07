@@ -1,0 +1,28 @@
+
+# HG changeset patch
+# User Sam Lantinga <slouken@libsdl.org>
+# Date 1329357968 18000
+# Node ID 62ff1c0a103f685774450be2e5338824a22078bd
+# Parent  8e98c714bb2ab96de4100a335dacf042963d5068
+FreeBSD compile fix
+
+Robert Millan
+
+src/joystick/bsd/SDL_sysjoystick.c makes the invalid assumption that
+__FreeBSD_kernel__ implies presence of "ucr_data" struct member.  This
+breaks recent versions of FreeBSD 10-CURRENT, FreeBSD 9-STABLE and
+Debian GNU/kFreeBSD "wheezy/sid".
+
+diff -r 8e98c714bb2a -r 62ff1c0a103f src/joystick/bsd/SDL_sysjoystick.c
+--- a/src/joystick/bsd/SDL_sysjoystick.c	Sat Feb 04 18:12:20 2012 -0500
++++ b/src/joystick/bsd/SDL_sysjoystick.c	Wed Feb 15 21:06:08 2012 -0500
+@@ -148,7 +148,7 @@
+ static int	report_alloc(struct report *, struct report_desc *, int);
+ static void	report_free(struct report *);
+ 
+-#if defined(USBHID_UCR_DATA) || defined(__FreeBSD_kernel__)
++#if defined(USBHID_UCR_DATA)
+ #define REP_BUF_DATA(rep) ((rep)->buf->ucr_data)
+ #elif (defined(__FREEBSD__) && (__FreeBSD_kernel_version > 800063))
+ #define REP_BUF_DATA(rep) ((rep)->buf->ugd_data)
+

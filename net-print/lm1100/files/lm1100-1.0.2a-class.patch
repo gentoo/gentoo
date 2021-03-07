@@ -1,0 +1,24 @@
+diff -ur lm1100.1.0.2a~/PaintLine300c.h lm1100.1.0.2a/PaintLine300c.h
+--- lm1100.1.0.2a~/PaintLine300c.h	2006-06-22 15:14:36.000000000 +0200
++++ lm1100.1.0.2a/PaintLine300c.h	2006-06-22 15:14:55.000000000 +0200
+@@ -32,7 +32,7 @@
+ 	int size;
+ 	int x,y;
+ 
+-	friend LexmarkProtocol300c;
++	friend class LexmarkProtocol300c;
+ 
+  public:
+ 	void pad(int pad_amount);
+diff -ur lm1100.1.0.2a~/PaintLineBW.h lm1100.1.0.2a/PaintLineBW.h
+--- lm1100.1.0.2a~/PaintLineBW.h	2006-06-22 15:14:36.000000000 +0200
++++ lm1100.1.0.2a/PaintLineBW.h	2006-06-22 15:14:55.000000000 +0200
+@@ -33,7 +33,7 @@
+ 	int size;
+ 	int x,y;
+ 
+-	friend LexmarkProtocolBW;
++	friend class LexmarkProtocolBW;
+ 	
+  public:
+ 	void pad(int pad_amount);

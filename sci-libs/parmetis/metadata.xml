@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription lang="en">
+ParMETIS is an MPI-based parallel library that implements a variety
+of algorithms for partitioning unstructured graphs and for computing
+fill-reducing orderings of sparse matrices. ParMETIS extends the
+functionality provided by METIS and includes routines that are
+especially suited for parallel AMR computations and large scale
+numerical simulations.
+</longdescription>
+	<use>
+		<flag name="int64">Build the 64 bits integer library (needed for &gt; 2^31 vertices)</flag>
+		<flag name="double-precision">Floating-point operation done as double precision</flag>
+	</use>
+</pkgmetadata>

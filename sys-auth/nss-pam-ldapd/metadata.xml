@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>prometheanfire@gentoo.org</email>
+    <name>Matthew Thode</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>chutzpah@gentoo.org</email>
+    <name>Patrick McLean</name>
+  </maintainer>
+  <use>
+    <flag name="utils">Install the command-line utilities</flag>
+    <flag name="pynslcd">Install the python implementation along with the standard implementation</flag>
+  </use>
+  <longdescription lang="en">
+    Provides a Name Service Switch (NSS) module that allows your LDAP
+    server to provide user account, group, host name, alias, netgroup, and
+    basically any other information that you would normally get from /etc
+    flat files or NIS. It also provides a Pluggable Authentication Module
+    (PAM) to do authentication to an LDAP server.
+
+    This is implemented using thin NSS and PAM modules which delegate to a
+    dedicated service (nslcd) that queries the LDAP server with persistent
+    connections, authentication, attribute translation, etc.
+  </longdescription>
+</pkgmetadata>

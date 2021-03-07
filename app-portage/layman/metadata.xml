@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>layman@gentoo.org</email>
+		<name>Gentoo Layman team</name>
+	</maintainer>
+	<use>
+		<flag name="cvs">Support <pkg>dev-vcs/cvs</pkg> based overlays</flag>
+		<flag name="darcs">Support <pkg>dev-vcs/darcs</pkg> based overlays</flag>
+		<flag name="g-sorcery">Support <pkg>app-portage/g-sorcery</pkg> based overlays</flag>
+		<flag name="git">Support <pkg>dev-vcs/git</pkg> based overlays</flag>
+		<flag name="gpg">Support <pkg>app-crypt/gnupg</pkg> signed overlays lists and manifests</flag>
+		<flag name="mercurial">Support <pkg>dev-vcs/mercurial</pkg> based overlays</flag>
+		<flag name="squashfs">Support mounting squashfs image overlays locally read-only</flag>
+		<flag name="subversion">Support <pkg>dev-vcs/subversion</pkg> based overlays</flag>
+		<flag name="sync-plugin-portage">Install the <pkg>sys-apps/portage</pkg> sync module</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">layman</remote-id>
+	</upstream>
+</pkgmetadata>

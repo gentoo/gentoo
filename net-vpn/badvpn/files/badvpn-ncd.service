@@ -1,0 +1,11 @@
+[Unit]
+Description=Network Configuation Daemon
+After=syslog.target
+
+[Service]
+ExecStart=/usr/bin/badvpn-ncd --logger syslog --syslog-ident ncd --loglevel warning --channel-loglevel ncd_log_msg info /etc/ncd.conf
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+

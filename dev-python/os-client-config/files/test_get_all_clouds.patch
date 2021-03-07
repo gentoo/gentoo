@@ -1,0 +1,13 @@
+diff --git a/os_client_config/tests/test_config.py b/os_client_config/tests/test_config.py
+index 6bb65fc..743ef76 100644
+--- a/os_client_config/tests/test_config.py
++++ b/os_client_config/tests/test_config.py
+@@ -38,7 +38,7 @@ class TestConfig(base.TestCase):
+             cloud for cloud in base.USER_CONF['clouds'].keys()
+         ] + ['_test_cloud_regions']
+         configured_clouds = [cloud.name for cloud in clouds]
+-        self.assertItemsEqual(user_clouds, configured_clouds)
++        self.assertSetEqual(set(user_clouds), set(configured_clouds))
+ 
+     def test_get_one_cloud(self):
+         c = config.OpenStackConfig(config_files=[self.cloud_yaml],

@@ -1,0 +1,64 @@
+diff -Nru /tmp/xmlbeans-2.6.0.orig/src/xmlconfig/org/apache/xmlbeans/impl/config/BindingConfigImpl.java src/xmlconfig/org/apache/xmlbeans/impl/config/BindingConfigImpl.java
+--- /tmp/xmlbeans-2.6.0.orig/src/xmlconfig/org/apache/xmlbeans/impl/config/BindingConfigImpl.java	2010-04-14 08:30:34.000000000 +0300
++++ src/xmlconfig/org/apache/xmlbeans/impl/config/BindingConfigImpl.java	2012-09-05 23:03:48.617016181 +0300
+@@ -27,10 +27,10 @@
+ import org.apache.xmlbeans.XmlError;
+ import org.apache.xmlbeans.InterfaceExtension;
+ import org.apache.xmlbeans.PrePostExtension;
+-import org.apache.xmlbeans.impl.jam.JamClassLoader;
+-import org.apache.xmlbeans.impl.jam.JamService;
+-import org.apache.xmlbeans.impl.jam.JamServiceFactory;
+-import org.apache.xmlbeans.impl.jam.JamServiceParams;
++import org.codehaus.jam.JamClassLoader;
++import org.codehaus.jam.JamService;
++import org.codehaus.jam.JamServiceFactory;
++import org.codehaus.jam.JamServiceParams;
+ import org.apache.xmlbeans.impl.schema.StscState;
+ 
+ import javax.xml.namespace.QName;
+diff -Nru /tmp/xmlbeans-2.6.0.orig/src/xmlconfig/org/apache/xmlbeans/impl/config/InterfaceExtensionImpl.java src/xmlconfig/org/apache/xmlbeans/impl/config/InterfaceExtensionImpl.java
+--- /tmp/xmlbeans-2.6.0.orig/src/xmlconfig/org/apache/xmlbeans/impl/config/InterfaceExtensionImpl.java	2010-04-14 08:30:34.000000000 +0300
++++ src/xmlconfig/org/apache/xmlbeans/impl/config/InterfaceExtensionImpl.java	2012-09-05 23:09:00.320097542 +0300
+@@ -18,10 +18,10 @@
+ import org.apache.xmlbeans.impl.xb.xmlconfig.Extensionconfig;
+ import org.apache.xmlbeans.InterfaceExtension;
+ import org.apache.xmlbeans.XmlObject;
+-import org.apache.xmlbeans.impl.jam.JMethod;
+-import org.apache.xmlbeans.impl.jam.JClass;
+-import org.apache.xmlbeans.impl.jam.JParameter;
+-import org.apache.xmlbeans.impl.jam.JamClassLoader;
++import org.codehaus.jam.JMethod;
++import org.codehaus.jam.JClass;
++import org.codehaus.jam.JParameter;
++import org.codehaus.jam.JamClassLoader;
+ 
+ public class InterfaceExtensionImpl implements InterfaceExtension
+ {
+diff -Nru /tmp/xmlbeans-2.6.0.orig/src/xmlconfig/org/apache/xmlbeans/impl/config/PrePostExtensionImpl.java src/xmlconfig/org/apache/xmlbeans/impl/config/PrePostExtensionImpl.java
+--- /tmp/xmlbeans-2.6.0.orig/src/xmlconfig/org/apache/xmlbeans/impl/config/PrePostExtensionImpl.java	2010-04-14 08:30:34.000000000 +0300
++++ src/xmlconfig/org/apache/xmlbeans/impl/config/PrePostExtensionImpl.java	2012-09-05 23:06:48.081760004 +0300
+@@ -17,9 +17,9 @@
+ 
+ import org.apache.xmlbeans.XmlObject;
+ import org.apache.xmlbeans.PrePostExtension;
+-import org.apache.xmlbeans.impl.jam.JamClassLoader;
+-import org.apache.xmlbeans.impl.jam.JClass;
+-import org.apache.xmlbeans.impl.jam.JMethod;
++import org.codehaus.jam.JamClassLoader;
++import org.codehaus.jam.JClass;
++import org.codehaus.jam.JMethod;
+ import org.apache.xmlbeans.impl.xb.xmlconfig.Extensionconfig;
+ 
+ 
+diff -Nru /tmp/xmlbeans-2.6.0.orig/src/xmlconfig/org/apache/xmlbeans/impl/config/UserTypeImpl.java src/xmlconfig/org/apache/xmlbeans/impl/config/UserTypeImpl.java
+--- /tmp/xmlbeans-2.6.0.orig/src/xmlconfig/org/apache/xmlbeans/impl/config/UserTypeImpl.java	2010-04-14 08:30:34.000000000 +0300
++++ src/xmlconfig/org/apache/xmlbeans/impl/config/UserTypeImpl.java	2012-09-05 23:06:33.710940667 +0300
+@@ -3,7 +3,7 @@
+ import javax.xml.namespace.QName;
+ 
+ import org.apache.xmlbeans.UserType;
+-import org.apache.xmlbeans.impl.jam.JamClassLoader;
++import org.codehaus.jam.JamClassLoader;
+ import org.apache.xmlbeans.impl.xb.xmlconfig.Usertypeconfig;
+ 
+ public class UserTypeImpl implements UserType

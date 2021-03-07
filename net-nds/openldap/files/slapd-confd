@@ -1,0 +1,14 @@
+# conf.d file for openldap
+#
+# To enable both the standard unciphered server and the ssl encrypted
+# one uncomment this line or set any other server starting options
+# you may desire.
+#
+# OPTS="-h 'ldaps:// ldap:// ldapi://%2fvar%2frun%2fopenldap%2fslapd.sock'"
+# Uncomment the below to use the new slapd configuration for openldap 2.3
+#OPTS="-F /etc/openldap/slapd.d -h 'ldaps:// ldap:// ldapi://%2fvar%2frun%2fopenldap%2fslapd.sock'"
+#
+# If you change the above listen statement to bind on a specific IP for
+# listening, you should ensure that interface is up here (change eth0 as
+# needed).
+#rc_need="net.eth0"

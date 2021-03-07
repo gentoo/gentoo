@@ -1,0 +1,18 @@
+Index: mailx-support-20060102/Makefile
+===================================================================
+--- mailx-support-20060102.orig/Makefile
++++ mailx-support-20060102/Makefile
+@@ -17,10 +17,10 @@ clean:
+ 	${RM} -f ${PRODUCTS} *.o
+ 
+ mail.local: mail.local.o locking.o open_with_exlock.o
+-	${CC} ${CFLAGS} -o $@ $^
++	${CC} ${LDFLAGS} ${CFLAGS} -o $@ $^
+ 
+ lockspool: lockspool.o locking.o open_with_exlock.o
+-	${CC} ${CFLAGS} -o $@ $^
++	${CC} ${LDFLAGS} ${BINDNOW_FLAGS} ${CFLAGS} -o $@ $^
+ 
+ .c.o:
+ 	${CC} ${CFLAGS} -c -o $@ $^
+

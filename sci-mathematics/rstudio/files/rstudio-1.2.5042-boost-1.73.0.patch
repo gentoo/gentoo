@@ -1,0 +1,22 @@
+--- rstudio-1.2.5042-orig/src/cpp/core/system/PosixChildProcessTracker.cpp	2020-04-02 03:16:24.000000000 +1100
++++ rstudio-1.2.5042/src/cpp/core/system/PosixChildProcessTracker.cpp	2020-04-28 15:36:44.839368084 +1000
+@@ -19,6 +19,8 @@
+ 
+ #include <boost/format.hpp>
+ 
++using namespace boost::placeholders;
++
+ namespace rstudio {
+ namespace core {
+ namespace system {
+--- rstudio-1.2.5042-orig/src/cpp/core/system/PosixOutputCapture.cpp	2020-04-02 03:16:24.000000000 +1100
++++ rstudio-1.2.5042/src/cpp/core/system/PosixOutputCapture.cpp	2020-04-28 15:35:50.869185435 +1000
+@@ -28,6 +28,8 @@
+ 
+ #include <core/system/System.hpp>
+ 
++using namespace boost::placeholders;
++
+ namespace rstudio {
+ namespace core {
+ namespace system {

@@ -1,0 +1,55 @@
+diff --git a/unix/vncserver b/unix/vncserver
+index 9e7a6ac5..139f9601 100755
+--- a/unix/vncserver
++++ b/unix/vncserver
+@@ -684,6 +684,7 @@ sub Usage
+ 	"                 [-geometry <width>x<height>]\n".
+ 	"                 [-pixelformat rgbNNN|bgrNNN]\n".
+ 	"                 [-fp <font-path>]\n".
++	"                 [-cc <visual>]\n".
+ 	"                 [-fg]\n".
+ 	"                 [-autokill]\n".
+ 	"                 [-noxstartup]\n".
+diff --git a/vncviewer/vncviewer.cxx b/vncviewer/vncviewer.cxx
+index f076565f..05669a42 100644
+--- a/vncviewer/vncviewer.cxx
++++ b/vncviewer/vncviewer.cxx
+@@ -352,6 +352,11 @@ static void usage(const char *programName)
+           "       %s [parameters] -listen [port] [parameters]\n"
+           "       %s [parameters] [.tigervnc file]\n",
+           programName, programName, programName);
++  fprintf(stderr,"\n"
++	  "Options:\n\n"
++	  "  -display Xdisplay - Specifies the X display for the viewer window\n"
++	  "  -geometry geometry - Standard X position and sizing specification.\n");
++
+   fprintf(stderr,"\n"
+           "Parameters can be turned on with -<param> or off with -<param>=0\n"
+           "Parameters which take a value can be specified as "
+diff --git a/vncviewer/vncviewer.man b/vncviewer/vncviewer.man
+index 729c01d6..07dc58f1 100644
+--- a/vncviewer/vncviewer.man
++++ b/vncviewer/vncviewer.man
+@@ -240,6 +240,10 @@ This option specifies the preferred encoding to use from one of "Tight", "ZRLE",
+ Disable lossy JPEG compression in Tight encoding. Default is off.
+ .
+ .TP
++.B \-ImprovedHextile
++Try harder to compress data (default).
++.
++.TP
+ .B \-QualityLevel \fIlevel\fP
+ JPEG quality level. 0 = Low, 9 = High. May be adjusted automatically if
+ \fB-AutoSelect\fP is turned on. Default is 8.
+@@ -296,6 +300,11 @@ respectively.
+ .B \-AlertOnFatalError
+ Display a dialog with any fatal error before exiting. Default is on.
+ 
++.
++.TP
++.B \-ZlibLevel
++Zlib compression level.
++
+ .SH FILES
+ .TP
+ $HOME/.vnc/default.tigervnc

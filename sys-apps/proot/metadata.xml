@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>pinkbyte@gentoo.org</email>
+		<name>Sergey Popov</name>
+	</maintainer>
+	<longdescription lang="en">
+	PRoot is a user-space implementation of chroot, mount --bind, and binfmt_misc.
+	This means that users don't need any privilege or setup to do things like: using an arbitrary directory as the new root filesystem,
+	making files accessible somewhere else in the filesystem hierarchy, or executing programs built for another CPU architecture
+	transparently through QEMU user-mode.
+	</longdescription>
+	<upstream>
+		<bugs-to>mailto:proot_me@googlegroups.com</bugs-to>
+		<changelog>https://raw.githubusercontent.com/proot-me/PRoot/master/doc/proot/changelog.txt</changelog>
+		<remote-id type="github">proot-me/PRoot</remote-id>
+	</upstream>
+	<use>
+		<flag name="care">Build dynamic CARE binary (more info - https://proot-me.github.io)</flag>
+	</use>
+</pkgmetadata>

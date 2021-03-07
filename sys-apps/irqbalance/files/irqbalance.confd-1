@@ -1,0 +1,19 @@
+# /etc/conf.d/irqbalance: config file for /etc/init.d/irqbalance
+
+# Additional options to pass to irqbalance itself.
+IRQBALANCE_OPTS=""
+
+# These are envvars used by irqbalance itself, so make sure the "export"
+# is retained.  For more info, please see the irqbalance manpage.
+
+# Run irqbalance once and then exit
+#export IRQBALANCE_ONESHOT="0"
+
+# Include debug messages in output
+#export IRQBALANCE_DEBUG="0"
+
+# List of cpus to not include in balancing
+#export IRQBALANCE_BANNED_CPUS=""
+
+# List of interrupts to not include in balancing
+#export IRQBALANCE_BANNED_INTERRUPTS=""

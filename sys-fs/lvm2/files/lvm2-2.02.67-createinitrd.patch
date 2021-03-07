@@ -1,0 +1,18 @@
+X-Gentoo-Bug-URL: http://bugs.gentoo.org/show_bug.cgi?id=301331
+X-Gentoo-Bug: 301331
+
+diff -Nuar LVM2.2.02.67.orig/scripts/lvm2create_initrd/lvm2create_initrd LVM2.2.02.67/scripts/lvm2create_initrd/lvm2create_initrd
+--- LVM2.2.02.67.orig/scripts/lvm2create_initrd/lvm2create_initrd	2010-06-07 18:44:34.182980475 +0000
++++ LVM2.2.02.67/scripts/lvm2create_initrd/lvm2create_initrd	2010-06-07 18:51:27.636312899 +0000
+@@ -469,9 +469,9 @@
+ rmdir $TMPMNT/lost+found
+ 
+ echo "$cmd -- ummounting ram disk"
+-umount $DEVRAM
++umount $TMPMNT
+ if [ $? -ne 0 ]; then
+-   echo "$cmd -- ERROR umounting $DEVRAM"
++   echo "$cmd -- ERROR umounting $TMPMNT"
+    cleanup 1
+ fi
+ 

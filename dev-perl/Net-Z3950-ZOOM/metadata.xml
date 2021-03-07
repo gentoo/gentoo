@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Net-Z3950-ZOOM</remote-id>
+    <remote-id type="cpan-module">Net::Z3950</remote-id>
+    <remote-id type="cpan-module">Net::Z3950::Connection</remote-id>
+    <remote-id type="cpan-module">Net::Z3950::Manager</remote-id>
+    <remote-id type="cpan-module">Net::Z3950::Op</remote-id>
+    <remote-id type="cpan-module">Net::Z3950::ZOOM</remote-id>
+    <remote-id type="cpan-module">ZOOM</remote-id>
+    <remote-id type="cpan-module">ZOOM::CCL::Error</remote-id>
+    <remote-id type="cpan-module">ZOOM::Connection</remote-id>
+    <remote-id type="cpan-module">ZOOM::Error</remote-id>
+    <remote-id type="cpan-module">ZOOM::Event</remote-id>
+    <remote-id type="cpan-module">ZOOM::Exception</remote-id>
+    <remote-id type="cpan-module">ZOOM::Log</remote-id>
+    <remote-id type="cpan-module">ZOOM::Options</remote-id>
+    <remote-id type="cpan-module">ZOOM::Package</remote-id>
+    <remote-id type="cpan-module">ZOOM::Query</remote-id>
+    <remote-id type="cpan-module">ZOOM::Query::CCL2RPN</remote-id>
+    <remote-id type="cpan-module">ZOOM::Query::CQL</remote-id>
+    <remote-id type="cpan-module">ZOOM::Query::CQL2RPN</remote-id>
+    <remote-id type="cpan-module">ZOOM::Query::PQF</remote-id>
+    <remote-id type="cpan-module">ZOOM::Record</remote-id>
+    <remote-id type="cpan-module">ZOOM::ResultSet</remote-id>
+    <remote-id type="cpan-module">ZOOM::ScanSet</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,160 @@
+From 9a9e47a3d3e910805bd7c9c1763c66400181f677 Mon Sep 17 00:00:00 2001
+From: Andre Klapper <a9016009@gmx.de>
+Date: Sun, 5 Jan 2020 23:35:37 +0100
+Subject: [PATCH] help: No more menu bars in 3.34 UI
+
+---
+ help/C/burst-mode.page            | 5 +++--
+ help/C/pref-countdown.page        | 6 ++++--
+ help/C/pref-flash.page            | 5 +++--
+ help/C/pref-fullscreen.page       | 6 ++++--
+ help/C/pref-image-properties.page | 5 +++--
+ help/C/pref-resolution.page       | 6 ++++--
+ 6 files changed, 21 insertions(+), 12 deletions(-)
+
+diff --git a/help/C/burst-mode.page b/help/C/burst-mode.page
+index a14d3ab8..0a587ca1 100644
+--- a/help/C/burst-mode.page
++++ b/help/C/burst-mode.page
+@@ -9,6 +9,7 @@
+     <revision pkgversion="3.1" date="2011-09-05" status="review"/>
+     <revision pkgversion="3.8" date="2013-04-19" status="review"/>
+     <revision pkgversion="3.12" date="2014-02-21" status="review"/>
++    <revision pkgversion="3.34" date="2020-01-05" status="review"/>
+ 
+     <credit type="author copyright">
+       <name>Julita Inca</name>
+@@ -59,8 +60,8 @@
+ 
+   <steps>
+     <item>
+-      <p>Select
+-      <guiseq><gui style="menu">Cheese</gui><gui style="menuitem">Preferences</gui><gui style="tab">Capture</gui></guiseq>.</p>
++      <p>Press the menu button in the top-right corner of the window and select
++      <guiseq><gui style="menuitem">Preferences</gui><gui style="tab">Capture</gui></guiseq>.</p>
+     </item>
+     <item>
+       <p>Edit the preference settings:</p>
+diff --git a/help/C/pref-countdown.page b/help/C/pref-countdown.page
+index 9077d7a0..8f4b0292 100644
+--- a/help/C/pref-countdown.page
++++ b/help/C/pref-countdown.page
+@@ -9,6 +9,7 @@
+     <revision pkgversion="3.1" date="2011-09-19" status="review"/>
+     <revision pkgversion="3.8" date="2013-04-15" status="review"/>
+     <revision pkgversion="3.12" date="2014-02-21" status="final"/>
++    <revision pkgversion="3.34" date="2020-01-05" status="final"/>
+ 
+     <credit type="author copyright">
+       <name>Julita Inca</name>
+@@ -28,8 +29,9 @@
+   <title>Disable the <gui>Countdown</gui></title>
+ 
+   <p>By default, <app>Cheese</app> counts down from three before taking a
+-  photo. You can disable this feature by selecting
+-  <guiseq><gui>Cheese</gui><gui>Preferences</gui><gui>Capture</gui></guiseq>
++  photo. You can disable this feature by pressing the menu button in the
++  top-right corner of the window, selecting
++  <guiseq><gui style="menuitem">Preferences</gui><gui style="tab">Capture</gui></guiseq>,
+   and unchecking <gui>Countdown</gui>.</p>
+ 
+ </page>
+diff --git a/help/C/pref-flash.page b/help/C/pref-flash.page
+index b6ccd736..52897d2f 100644
+--- a/help/C/pref-flash.page
++++ b/help/C/pref-flash.page
+@@ -9,6 +9,7 @@
+     <revision pkgversion="3.1" date="2011-09-19" status="review"/>
+     <revision pkgversion="3.8" date="2013-04-15" status="review"/>
+     <revision pkgversion="3.12" date="2014-02-21" status="final"/>
++    <revision pkgversion="3.34" date="2020-01-05" status="final"/>
+ 
+     <credit type="author copyright">
+       <name>Julita Inca</name>
+@@ -30,8 +31,8 @@
+   <p>When you take a photo with Cheese, the computer screen briefly turns
+   white.</p>
+ 
+-  <p>To disable this feature, select
+-  <guiseq><gui>Cheese</gui><gui>Preferences</gui><gui>Capture</gui></guiseq>
++  <p>To disable this feature, press the menu button in the top-right corner of the window, select
++  <guiseq><gui style="menuitem">Preferences</gui><gui style="tab">Capture</gui></guiseq>,
+   and uncheck <gui>Fire flash</gui>.</p>
+ 
+ </page>
+diff --git a/help/C/pref-fullscreen.page b/help/C/pref-fullscreen.page
+index a90baaad..7e79f374 100644
+--- a/help/C/pref-fullscreen.page
++++ b/help/C/pref-fullscreen.page
+@@ -7,6 +7,7 @@
+     <link type="guide" xref="index#preferences"/>
+     <revision pkgversion="3.6" date="2012-05-09" status="stub"/>
+     <revision pkgversion="3.12" date="2014-02-21" status="review"/>
++    <revision pkgversion="3.34" date="2020-01-05" status="review"/>
+ 
+     <credit type="author">
+       <name>Ekaterina Gerasimova</name>
+@@ -23,10 +24,11 @@
+   <p>To enable or disable the fullscreen mode:</p>
+ 
+   <steps>
+-    <item><p>Select <guiseq><gui>Cheese</gui><gui>Fullscreen</gui></guiseq></p></item>
++    <item><p>Press the menu button in the top-right corner of the window and select
++      <gui style="menuitem">Fullscreen</gui>.</p></item>
+   </steps>
+ 
+-  <p>If you cannot see the <gui style="menu">Cheese</gui> menu in fullscreen
++  <p>If you cannot see the menu button in fullscreen
+   mode, move your mouse or tap your touchscreen.</p>
+ 
+   <note style="tip">
+diff --git a/help/C/pref-image-properties.page b/help/C/pref-image-properties.page
+index eea2c0e3..7d812596 100644
+--- a/help/C/pref-image-properties.page
++++ b/help/C/pref-image-properties.page
+@@ -10,6 +10,7 @@
+     <revision pkgversion="3.1" date="2011-09-05" status="review"/>
+     <revision pkgversion="3.8" date="2013-04-15" status="review"/>
+     <revision pkgversion="3.12" date="2014-02-21" status="review"/>
++    <revision pkgversion="3.34" date="2020-01-05" status="review"/>
+ 
+     <credit type="author copyright">
+       <name>Julita Inca</name>
+@@ -33,8 +34,8 @@
+ 
+   <steps>
+     <item>
+-      <p>Select
+-      <guiseq><gui>Cheese</gui><gui>Preferences</gui><gui>Image</gui></guiseq>.</p>
++      <p>Press the menu button in the top-right corner of the window and select
++      <guiseq><gui style="menuitem">Preferences</gui><gui style="tab">Image</gui></guiseq>.</p>
+     </item>
+     <item>
+       <p>Move the sliders to find the best settings for your webcam.</p>
+diff --git a/help/C/pref-resolution.page b/help/C/pref-resolution.page
+index a620a4ba..42846841 100644
+--- a/help/C/pref-resolution.page
++++ b/help/C/pref-resolution.page
+@@ -8,6 +8,7 @@
+     <revision pkgversion="3.0" date="2011-08-25" status="candidate"/>
+     <revision pkgversion="3.1" date="2011-09-05" status="review"/>
+     <revision pkgversion="3.12" date="2014-02-21" status="candidate"/>
++    <revision pkgversion="3.34" date="2020-01-05" status="candidate"/>
+ 
+     <credit type="author copyright">
+       <name>Julita Inca</name>
+@@ -38,8 +39,9 @@
+ 
+   <steps>
+     <item>
+-      <p>Select
+-      <guiseq><gui>Cheese</gui><gui>Preferences</gui><gui>Webcam</gui></guiseq>.</p>
++      <p>Press the menu button in the top-right corner of the window and select
++      <guiseq><gui style="menuitem">Preferences</gui><gui style="tab">Webcam</gui></guiseq>.</p>
++
+     </item>
+     <item>
+       <p>Choose a different resolution from the drop-down list. Some webcams
+-- 
+2.24.1
+

@@ -1,0 +1,26 @@
+Fix pkg-config file generation, backported from upstream commit:
+https://github.com/coin-or/CppAD/commit/6d10b8d
+with an additional fix to not have -l-lcppad_lib
+--- a/pkgconfig/CMakeLists.txt
++++ b/pkgconfig/CMakeLists.txt
+@@ -124,3 +124,3 @@
+ # cppad_includedir
+-LIST(GET cmake_install_libdirs 0 cppad_includedir)
++LIST(GET cmake_install_includedirs 0 cppad_includedir)
+ #
+@@ -161,2 +161,3 @@
+     ${CMAKE_CURRENT_BINARY_DIR}/cppad.pc
++    @ONLY
+ )
+--- a/pkgconfig/cppad.pc.in
++++ b/pkgconfig/cppad.pc.in
+@@ -17,3 +17,3 @@
+ prefix=@cppad_prefix@
+-exec_prefix=$(prefix)
++exec_prefix=${prefix}
+ includedir=${prefix}/@cppad_includedir@
+@@ -30,3 +30,3 @@
+ Cflags:                -I${includedir}
+-Libs:                  -L{libdir} -l@cppad_lib_list@
++Libs:                  -L${libdir} @cppad_lib_list@
+ Requires:

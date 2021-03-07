@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zlogene@gentoo.org</email>
+		<name>Mikle Kolyada</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<use>
+		<flag name="elogind">
+			Use pam_elogind module to register user sessions with elogind.
+		</flag>
+		<flag name="systemd">
+			Use pam_systemd module to register user sessions in the systemd
+			control group hierarchy.
+		</flag>
+		<flag name="homed">
+			Use pam_systemd_home module to manage home directories with
+			the systemd-homed service
+		</flag>
+		<flag name="debug">
+			Enable debug information logging on syslog(3) for all the
+			modules supporting this in the system authentication and system
+			login stacks.
+		</flag>
+		<flag name="passwdqc">
+			Enable pam_passwdqc module on system auth stack for password
+			quality validation. This module produces warnings, rejecting 
+			or providing example passwords when changing your system password.
+			It is used by default by OpenWall GNU/*/Linux and by FreeBSD.
+		</flag>
+		<flag name="pwhistory">
+			Enable pam_pwhistory module on system auth stack to save
+			the last passwords for each user in order to force password
+			change history and keep the user from alternating between
+			the same password too frequently.
+		</flag>
+		<flag name="pwquality">
+			Enable pam_pwquality module on system auth stack for passwd
+			quality validation. It is used be dafault by Fedora GNU/*/Linux.
+		</flag>
+		<flag name="mktemp">
+			Enable pam_mktemp module on system auth stack for session
+			handling. This module creates a private temporary directory for
+			the user, and sets TMP and TMPDIR accordingly.
+		</flag>
+		<flag name="pam_ssh">
+			Enable pam_ssh module on system auth stack for authentication
+			and session handling. This module will accept as password the
+			passphrase of a private SSH key (one of ~/.ssh/id_rsa,
+			~/.ssh/id_dsa or ~/.ssh/identity), and will spawn an ssh-agent
+			instance to cache the open key.
+		</flag>
+		<flag name="sha512">
+			Switch Linux-PAM's pam_unix module to use sha512 for passwords
+			hashes rather than MD5. This option requires
+			<pkg>sys-libs/pam</pkg> version 1.0.1 built against
+			<pkg>sys-libs/glibc</pkg> version 2.7, if it's built against an
+			earlier version, it will silently be ignored, and MD5 hashes
+			will be used. All the passwords changed after this USE flag is
+			enabled will be saved to the shadow file hashed using SHA512
+			function. The password previously saved will be left
+			untouched. Please note that while SHA512-hashed passwords will
+			still be recognised if the USE flag is removed, the shadow file
+			will not be compatible with systems using an earlier glibc
+			version.
+		</flag>
+		<flag name="pam_krb5">
+			Enable pam_krb5 module on system auth stack, as an alternative
+			to pam_unix. If Kerberos authentication succeed, only pam_unix
+			will be ignore, and all the other modules will proceed as usual,
+			including Gnome Keyring and other session modules. It requires
+			<pkg>sys-libs/pam</pkg> as PAM implementation.
+		</flag>
+		<flag name="minimal">
+			Disables the standard PAM modules that provide extra information
+			to users on login; this includes pam_lastlog, pam_motd, pam_mail
+			and other similar modules. This might not be a good idea on 
+			a multi-user system but could reduce slightly the overhead on
+			single-user non-networked systems.
+		</flag>
+		<flag name="nullok">
+			Enable the nullok option with the pam_unix module. This allows
+			people to login with blank passwords.
+		</flag>
+		<flag name="securetty">
+			Enable pam_securetty module in the login stack. Not generally
+			relevant anymore as the login stack only refers to local logins
+			and local terminals imply secure access in the first place.
+		</flag>
+	</use>
+</pkgmetadata>

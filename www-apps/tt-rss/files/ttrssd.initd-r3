@@ -1,0 +1,88 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+	after postgresql mysql
+}
+
+PID_DIR="/run/ttrssd"
+LOG_DIR=${LOG_DIR:-"/var/log/ttrssd"}
+TTRSSD_USER=${TTRSSD_USER:-"ttrssd"}
+
+setup() {
+	mkdir -p "${PID_DIR}" "${LOG_DIR}" || return 1
+	chown "${TTRSSD_USER}":ttrssd "${LOG_DIR}" || return 1
+}
+
+list_instance_dirs() {
+	if [ -z "${INSTANCE_DIRS}" ]; then
+		cut -d" " -f4 /var/db/webapps/tt-rss/*/installs 2>/dev/null
+	else
+		printf "%s\n" ${INSTANCE_DIRS}
+	fi
+}
+
+instance_dir_to_name() {
+	local name=${1#/}
+	echo ${name//\//--}
+}
+
+start() {
+	setup || return 1
+	local instance_dir instance_name ret=1
+
+	IFS=$'\n'
+	for instance_dir in $(list_instance_dirs); do
+		if [ -d "${instance_dir}" ]; then
+			if [ ! -f "${instance_dir}"/update_daemon2.php ]; then
+				ewarn "TT-RSS instance in ${instance_dir} has no update_daemon2.php script"
+			elif [ ! -f "${instance_dir}"/config.php ]; then
+				eerror "TT-RSS instance in ${instance_dir} is not configured"
+			else
+				instance_name=$(instance_dir_to_name "${instance_dir}")
+				ebegin "Starting TT-RSS update daemon in ${instance_dir}"
+				start-stop-daemon --start --user "${TTRSSD_USER}":ttrssd \
+								  --background --wait 2000 \
+								  --stdout "${LOG_DIR}/${instance_name}.log" \
+								  --stderr "${LOG_DIR}/${instance_name}.log" \
+								  --make-pidfile --pidfile "${PID_DIR}/${instance_name}.pid" \
+								  --exec /usr/bin/php -- -f "${instance_dir}"/update_daemon2.php \
+								  -- ${TTRSSD_OPTS}
+				eend $? && ret=0
+			fi
+		else
+			eerror "TT-RSS instance in ${instance_dir} is missing"
+		fi
+	done
+	unset IFS
+
+	# Succeed if at least one started.
+	return ${ret}
+}
+
+stop() {
+	local instance_dir instance_name
+
+	IFS=$'\n'
+	for instance_dir in $(list_instance_dirs); do
+		instance_name=$(instance_dir_to_name "${instance_dir}")
+
+		[ -f "${PID_DIR}/${instance_name}.pid" ] ||
+			[ -f "${instance_dir}"/update_daemon2.php ] ||
+			continue
+
+		ebegin "Stopping TT-RSS update daemon in ${instance_dir}"
+		start-stop-daemon --stop --retry 5 --pidfile "${PID_DIR}/${instance_name}.pid" \
+						  --exec /usr/bin/php -- -f "${instance_dir}"/update_daemon2.php \
+						  -- ${TTRSSD_OPTS}
+		eend $?
+
+		rm -f "${instance_dir}"/lock/*.lock
+	done
+	unset IFS
+
+	# Always succeed.
+	return 0
+}

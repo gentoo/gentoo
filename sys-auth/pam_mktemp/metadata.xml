@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+<email>swegener@gentoo.org</email>
+</maintainer>
+<use>
+<flag name="prevent-removal">If supported, set EXT2_APPEND_FL on /tmp/.private to prevent temporary directories from being removed</flag>
+</use>
+</pkgmetadata>

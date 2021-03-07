@@ -1,0 +1,22 @@
+--- a/Makefile	2003-09-20 13:02:15.000000000 +0200
++++ b/Makefile_new	2013-03-16 14:38:19.122375762 +0100
+@@ -9,8 +9,8 @@
+ 
+ DISTFILES=gkrellm_radio.c radio.c radio.h videodev.h README Makefile CHANGES
+ 
+-CC=gcc
+-LDFLAGS=
++CC=$(CC)
++LDFLAGS=$(LDFLAGS)
+ OBJS=gkrellm_radio.o radio.o
+ PLUGIN_DIR ?= /usr/local/lib/gkrellm2/plugins
+ INSTALL = install -c
+@@ -35,7 +35,7 @@
+ export PACKAGE LOCALEDIR
+ 
+ radio.so: $(OBJS)
+-	$(CC) -shared -Wl -o radio.so $(OBJS) $(LDFLAGS) 
++	$(CC) -shared -o radio.so $(OBJS) $(LDFLAGS) 
+ 	(cd po && ${MAKE} all )
+ 
+ %.o: %.c

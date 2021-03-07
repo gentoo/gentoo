@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<upstream>
+		<bugs-to>https://github.com/coreos/etcd/issues</bugs-to>
+		<changelog>https://raw.githubusercontent.com/coreos/etcd/master/CHANGELOG</changelog>
+		<doc>https://github.com/coreos/etcd/blob/master/README.md/</doc>
+		<remote-id type="github">coreos/etcd</remote-id>
+	</upstream>
+	<use>
+		<flag name="server">Installs etcd daemon</flag>
+	</use>
+	<maintainer type="person">
+		<email>zmedico@gentoo.org</email>
+	</maintainer>
+</pkgmetadata>

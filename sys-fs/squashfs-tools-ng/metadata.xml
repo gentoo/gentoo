@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>mattst88@gentoo.org</email>
+		<name>Matt Turner</name>
+	</maintainer>
+	<use>
+		<flag name="tools">Build the gensquashfs, rdsquashfs, sqfs2tar, sqfsdiff, and tar2sqfs tools</flag>
+		<flag name="xz">Enable support for XZ ("LZMA2") compression using <pkg>app-arch/xz-utils</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">AgentD/squashfs-tools-ng</remote-id>
+	</upstream>
+</pkgmetadata>

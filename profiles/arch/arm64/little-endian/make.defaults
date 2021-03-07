@@ -1,0 +1,4 @@
+# Little endian ARM64 settings.
+
+CHOST="aarch64-unknown-linux-gnu"
+CHOST_arm64="${CHOST}"

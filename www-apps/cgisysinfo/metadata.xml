@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+		cgisysinfo is a small CGI utility to show basic system information on Linux
+		machines.
+
+		cgisysinfo is useful for machines that run a webserver but not PHP, and was
+		tested with nginx + fcgiwrap. It should works with any CGI-capable web
+		server.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">rafaelmartins/cgisysinfo</remote-id>
+	</upstream>
+</pkgmetadata>

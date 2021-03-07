@@ -1,0 +1,8 @@
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+DONUTSD_CMD="donutsd"
+DONUTSD_CONFPATH="/etc/dnssec-tools/donutsd.db"
+DONUTSD_PID="/var/run/donutsd.pid"
+DONUTSD_OPTS=""
+

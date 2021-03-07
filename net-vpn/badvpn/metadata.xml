@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>williamh@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<maintainer status="active">
+			<email>ambrop7@gmail.com</email>
+			<name>Ambroz Bizjak</name>
+		</maintainer>
+		<doc lang="en">https://code.google.com/p/badvpn/w/list</doc>
+		<bugs-to>https://github.com/ambrop72/badvpn/issues</bugs-to>
+		<remote-id type="github">ambrop72/badvpn</remote-id>
+		<remote-id type="google-code">badvpn</remote-id>
+	</upstream>
+	<use>
+		<flag name="client">Build the badvpn-client program, a daemon that runs on endpoints of the VPN.</flag>
+		<flag name="server">Build the badvpn-server program, a central server that manages the VPN network.</flag>
+		<flag name="ncd">Build NCD, a lightweight scripting language especially suited for network configurations.</flag>
+		<flag name="tun2socks">Build tun2socks, a program which implements a TUN device that forwards TCP traffic through a SOCKS5 server.</flag>
+		<flag name="udpgw">Build udpgw, a small daemon which allows tun2socks to forward UDP traffic.</flag>
+	</use>
+	<longdescription lang="en">
+		BadVPN is an open-source peer-to-peer VPN system. It provides a
+		Layer 2 (Ethernet) network between the peers (VPN nodes). The peers
+		connect to a central server which acts as a chat server for them to
+		establish direct connections between each other (data connections).
+		These connections are used for transferring network data (Ethernet
+		frames), and can be secured with a multitude of mechanisms.
+
+		The BadVPN package also includes other network-related software,
+		like tun2socks and NCD.
+	</longdescription>
+</pkgmetadata>

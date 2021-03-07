@@ -1,0 +1,24 @@
+From: hasufell <hasufell@gentoo.org>
+Date: Fri, 8 Aug 2014 13:49:49 +0200
+Subject: [PATCH] Fix compiling against libmodplug-0.8.8.5
+
+pkg-config --cflags libmodplug no longer
+reports a subdir and thus we need to use
+#include "libmodplug/modplug.h" syntax.
+---
+ music_modplug.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/music_modplug.h
++++ b/music_modplug.h
+@@ -1,6 +1,6 @@
+ #ifdef MODPLUG_MUSIC
+ 
+-#include "modplug.h"
++#include "libmodplug/modplug.h"
+ #include "SDL_rwops.h"
+ #include "SDL_audio.h"
+ #include "SDL_mixer.h"
+-- 
+2.0.4
+

@@ -1,0 +1,24 @@
+--- a/lua/Makefile
++++ b/lua/Makefile
+@@ -13,7 +13,7 @@ osx_ge = $(shell if [ $(OS_VERSION) -ge $(1) ] ; then echo "$(2)"; else echo "$(
+ 
+ CFLAGS += $(call osx_ge,10,"-mmacosx-version-min=10.10","")
+ else
+-CFLAGS = -O2 -Wall -Wextra -DLUA_USE_LINUX
++CFLAGS += -Wall -Wextra -DLUA_USE_LINUX
+ endif
+ 
+ OBJ_FILES = lapi.o lcode.o lctype.o ldebug.o ldo.o ldump.o lfunc.o lgc.o llex.o \
+--- a/lua/Makefile
++++ b/lua/Makefile
+@@ -25,8 +25,8 @@ OBJ_FILES = lapi.o lcode.o lctype.o ldebug.o ldo.o ldump.o lfunc.o lgc.o llex.o
+ all: $(LUA_LIB)
+ 
+ $(LUA_LIB): $(OBJ_FILES)
+-	ar rcu $@ $(OBJ_FILES)
+-	ranlib $@
++	$(AR) rcu $@ $(OBJ_FILES)
++	$(RANLIB) $@
+ 
+ clean:
+ 	rm -f $(LUA_LIB) $(OBJ_FILES)

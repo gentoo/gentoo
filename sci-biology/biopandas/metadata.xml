@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-biology@gentoo.org</email>
+    <name>Gentoo Biology Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="pypi">BioPandas</remote-id>
+    <maintainer status="unknown">
+      <email>mail@sebastianraschka.com</email>
+      <name>Sebastian Raschka</name>
+    </maintainer>
+    <remote-id type="github">rasbt/biopandas</remote-id>
+  </upstream>
+</pkgmetadata>

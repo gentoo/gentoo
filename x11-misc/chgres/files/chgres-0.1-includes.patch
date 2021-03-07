@@ -1,0 +1,15 @@
+--- a/chgres.c	2001-04-18 22:40:05.000000000 +0200
++++ b/chgres.c	2010-09-17 03:20:37.000000000 +0200
+@@ -17,9 +17,11 @@
+  */
+ 
+ #include <X11/Xlib.h>
+-#include <X11/extensions/xf86dga.h>
++#include <X11/extensions/Xxf86dga.h>
+ #include <X11/extensions/xf86vmode.h>
+ #include <stdio.h>
++#include <stdlib.h> /* exit() */
++#include <strings.h> /* strcasecmp() */
+ 
+ #define VERSION "0.1"
+ 

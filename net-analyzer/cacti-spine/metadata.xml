@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>netmon@gentoo.org</email>
+		<name>Gentoo network monitoring and analysis project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Spine (formerly known as Cactid) is a poller for Cacti that primarily
+		strives to be as fast as possible. For this reason it is written in
+		native C, makes use of POSIX threads, and is linked directly against the
+		net-snmp library for minmumal SNMP polling overhead. Spine is a
+		replacement for the default cmd.php poller so you must decide if using
+		Spine makes sense for your installation.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">Cacti/spine</remote-id>
+	</upstream>
+</pkgmetadata>

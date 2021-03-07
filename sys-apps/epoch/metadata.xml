@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>alicef@gentoo.org</email>
+		<name>Alice Ferrazzi</name>
+	</maintainer>
+	<longdescription>
+		Epoch is an init system (analogous to systemd or upstart)
+		for Linux by Subsentient. It is intended as a lightweight
+		solution for lightweight distributions
+		that don't want a huge mess just to boot up.
+
+		It has one unified configuration file, is very small in size,
+		and it has no external dependencies besides glibc or similar,
+		and although installing a shell for /bin/sh is strongly recommended.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">Subsentient/epoch</remote-id>
+		<doc lang="en">http://universe2.us/epochconfig.html</doc>
+		<bugs-to>https://github.com/Subsentient/epoch/issues</bugs-to>
+		<changelog>https://github.com/Subsentient/epoch/commits/master</changelog>
+	</upstream>
+</pkgmetadata>

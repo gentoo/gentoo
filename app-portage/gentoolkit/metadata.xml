@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>tools-portage@gentoo.org</email>
+    <name>Gentoo Portage tools team</name>
+  </maintainer>
+  <longdescription>
+Gentoolkit is a collection of useful adminstration scripts particular to
+the Gentoo Linux distribution. It contains rough drafts and
+implementations of features that may in time make it into Portage, or
+into full-fledged tools in their own right.
+</longdescription>
+</pkgmetadata>

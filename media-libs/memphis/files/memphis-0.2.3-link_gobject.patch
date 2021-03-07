@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -89,7 +89,7 @@
+     exit 0;
+   fi
+   VALA_EXAMPLE_PACKAGES="--pkg cairo --pkg memphis-0.2"
+-  PKG_CHECK_MODULES(VALA_EXAMPLE, [glib-2.0, cairo])
++  PKG_CHECK_MODULES(VALA_EXAMPLE, [glib-2.0 gobject-2.0 cairo])
+   AC_SUBST(VALA_EXAMPLE_CFLAGS)
+   AC_SUBST(VALA_EXAMPLE_LIBS)
+   AC_SUBST(VALA_EXAMPLE_PACKAGES)

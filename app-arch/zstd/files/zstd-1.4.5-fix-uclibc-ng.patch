@@ -1,0 +1,28 @@
+From 1dcc4787965aa8f4af48ed5a2154185750bbaff5 Mon Sep 17 00:00:00 2001
+From: Yann Collet <cyan@fb.com>
+Date: Mon, 13 Jul 2020 14:16:33 -0700
+Subject: [PATCH] fix uclibc's st_mtim
+
+reported and suggested by @ewildgoose (#1872)
+---
+ programs/platform.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/programs/platform.h b/programs/platform.h
+index 2b4b9f2d8..68be70bb3 100644
+--- a/programs/platform.h
++++ b/programs/platform.h
+@@ -102,6 +102,12 @@ extern "C" {
+ #      define PLATFORM_POSIX_VERSION 1
+ #    endif
+ 
++#    ifdef __UCLIBC__
++#     ifndef __USE_MISC
++#      define __USE_MISC /* enable st_mtim on uclibc */
++#     endif
++#    endif
++
+ #  else  /* non-unix target platform (like Windows) */
+ #    define PLATFORM_POSIX_VERSION 0
+ #  endif
+

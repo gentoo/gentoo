@@ -1,0 +1,13 @@
+--- a/libwsmake/wsUtil.cpp
++++ b/libwsmake/wsUtil.cpp
+@@ -714,7 +714,8 @@
+   if(__wsmake_quiet) return;
+ 
+   vfprintf(out,output,*ap);
+-  va_end((void*&)*ap);
++  //BV: this does not compile:  va_end((void*&)*ap);
++  va_end((char*&)*ap);
+ }
+ 
+ #ifdef DEBUG
+

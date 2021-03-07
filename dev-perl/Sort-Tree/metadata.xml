@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    Sort::Tree implements a mechanism for sorting a list of objects into a
+    tree structure and flattening it back into a list. Among other things,
+    this is useful for displaying database queries in hierarchical views,
+    such as nested categories, parent-child relationships, threaded
+    discussions, and so forth.
+  </longdescription>
+  <upstream>
+    <remote-id type="cpan">Sort-Tree</remote-id>
+    <remote-id type="cpan-module">Sort::Tree</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,11 @@
+--- tests/Makefile.in.old	2014-07-24 07:25:53.464381420 +0200
++++ tests/Makefile.in	2014-07-24 07:26:14.951048323 +0200
+@@ -169,7 +169,7 @@
+ 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+ 	$(ioperf_stdio_la_LDFLAGS) $(LDFLAGS) -o $@
+ rocket_silo_la_LIBADD =
+-am_rocket_silo_la_OBJECTS = rocket_silo.lo
++am_rocket_silo_la_OBJECTS = rocket_silo.lo ../src/.libs/libsilo.la
+ rocket_silo_la_OBJECTS = $(am_rocket_silo_la_OBJECTS)
+ rocket_silo_la_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
+ 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \

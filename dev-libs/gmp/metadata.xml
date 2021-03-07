@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>toolchain@gentoo.org</email>
+	<name>Gentoo Toolchain Project</name>
+</maintainer>
+<use>
+	<flag name="asm">Enable use of hand optimized assembly routines (faster execution)</flag>
+	<flag name="pic">Force static libraries to be built as PIC to avoid TEXTRELs.</flag>
+</use>
+<upstream>
+	<remote-id type="cpe">cpe:/a:gmplib:gmp</remote-id>
+</upstream>
+</pkgmetadata>

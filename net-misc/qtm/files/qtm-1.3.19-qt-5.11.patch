@@ -1,0 +1,23 @@
+Fixes build error due to internal header cleanup in Qt 5.11.
+Gentoo-bug: https://bugs.gentoo.org/662480
+
+--- a/AccountsDialog.cc	2017-06-12 12:27:59.964042017 +0200
++++ b/AccountsDialog.cc	2018-08-17 23:51:40.559225179 +0200
+@@ -21,6 +21,7 @@
+  *************************************************************************************************/
+ 
+ 
++#include <QAction>
+ #include <QWidget>
+ #include <QDialog>
+ #include <QListWidget>
+--- a/QuickpostTemplateDialog.cc	2017-06-12 12:28:00.244038449 +0200
++++ b/QuickpostTemplateDialog.cc	2018-08-17 23:55:11.793673907 +0200
+@@ -20,6 +20,7 @@
+  *****************************************************************************/
+ 
+ 
++#include <QAction>
+ #include <QWidget>
+ #include <QDialog>
+ #include <QListWidget>

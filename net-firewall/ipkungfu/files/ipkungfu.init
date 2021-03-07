@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need logger net
+}
+
+start () {
+	ebegin "Starting ipkungfu"
+	/usr/sbin/ipkungfu --init
+	eend $? "Failed to start ipkungfu"
+}
+
+stop() {
+	ebegin "Stopping ipkungfu"
+	/usr/sbin/ipkungfu --disable > /dev/null
+	eend $? "Failed to stop ipkungfu"
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>sci-physics@gentoo.org</email>
+  <name>Gentoo Physics Project</name>
+</maintainer>
+<longdescription>
+  Yet more Objects for Data Analysis is a small set of data analysis
+  (specifically histogramming) classes being developed by MCnet
+  members as a lightweight common system for MC event generator
+  validation analyses, particularly as the core histogramming system
+  in Rivet.
+</longdescription>
+<use>
+  <flag name="root">Adds support for <pkg>sci-physics/root</pkg></flag>
+</use>
+</pkgmetadata>

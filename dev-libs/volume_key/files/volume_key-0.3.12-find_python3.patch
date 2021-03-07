@@ -1,0 +1,27 @@
+From d64fcc43ad740c91f4f1e1a6827663b2485f127a Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Thu, 7 Jan 2021 13:23:28 +0100
+Subject: [PATCH] configure.ac: Don't look for old python3 versions
+
+Gentoo-bug: https://bugs.gentoo.org/764230
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 4eda5eb..2dce575 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -101,7 +101,7 @@ if test "x$use_python3" = xno; then
+ else
+     AC_MSG_RESULT([testing])
+     # Try to find Python 3 interpreter:
+-    AC_PATH_PROGS([PYTHON3], [python3.6 python3.5 python3 python], [no])
++    AC_PATH_PROGS([PYTHON3], [python3], [no])
+     if test "x$PYTHON3" != xno; then
+         AC_MSG_CHECKING([whether $PYTHON3 version is >= 3.5])
+         python3_found=old
+-- 
+2.30.0
+

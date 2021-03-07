@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>whissi@gentoo.org</email>
+		<name>Thomas Deutschmann</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>sustrik@fastmq.com</email>
+			<name>Martin Sustrik</name>
+		</maintainer>
+		<doc>http://zguide.zeromq.org/page:all</doc>
+		<bugs-to>https://github.com/zeromq/libzmq/issues</bugs-to>
+		<remote-id type="github">zeromq/zeromq4-1</remote-id>
+		<remote-id type="github">zeromq/libzmq</remote-id>
+	</upstream>
+	<longdescription lang="en">
+		The 0MQ lightweight messaging kernel is a library which
+		extends the standard socket interfaces with features
+		traditionally provided by specialised messaging middleware
+		products. 0MQ sockets provide an abstraction of asynchronous
+		message queues, multiple messaging patterns, message filtering
+		(subscriptions), seamless access to multiple transport protocols
+		and more.
+	</longdescription>
+	<slots>
+		<subslots>Reflect ABI of libzmq.so.</subslots>
+	</slots>
+	<use>
+		<flag name="drafts">
+			Build draft API, which may change at any time without any notice, and
+			is therefore not recommended for normal use.
+		</flag>
+		<flag name="libbsd">
+			Use strlcpy() from <pkg>dev-libs/libbsd</pkg> instead of internal
+			implementation.
+		</flag>
+		<flag name="pgm">
+			Build PGM (Pragmatic General Multicast)extention, a protocol for reliable 
+			multicast transport of data over IP networks.
+		</flag>
+		<flag name="sodium">
+			Use <pkg>dev-libs/libsodium</pkg> for cryptography
+		</flag>
+	</use>
+</pkgmetadata>

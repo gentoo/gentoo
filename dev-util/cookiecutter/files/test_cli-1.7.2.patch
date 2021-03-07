@@ -1,0 +1,14 @@
+diff --git a/tests/test_cli.py b/tests/test_cli.py
+index e9b559c..9d89b2f 100644
+--- a/tests/test_cli.py
++++ b/tests/test_cli.py
+@@ -401,7 +401,8 @@ def test_cli_extra_context_invalid_format(cli_runner):
+         'tests/fake-repo-pre/', '--no-input', '-v', 'ExtraContextWithNoEqualsSoInvalid',
+     )
+     assert result.exit_code == 2
+-    assert "Error: Invalid value for '[EXTRA_CONTEXT]...'" in result.output
++    assert "Error: Invalid value for"
++    assert "[EXTRA_CONTEXT]..." in result.output
+     assert 'should contain items of the form key=value' in result.output
+ 
+ 

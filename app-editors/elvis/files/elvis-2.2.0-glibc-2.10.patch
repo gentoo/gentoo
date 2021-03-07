@@ -1,0 +1,48 @@
+diff -ur elvis-2.2_0.orig/ref.c elvis-2.2_0/ref.c
+--- elvis-2.2_0.orig/ref.c	2003-10-21 05:32:25.000000000 +0300
++++ elvis-2.2_0/ref.c	2009-08-05 21:28:30.000000000 +0300
+@@ -42,7 +42,7 @@
+ 
+ #if USE_PROTOTYPES
+ static void usage(char *argv0);
+-static char *getline(FILE *fp);
++static char *get_line(FILE *fp);
+ static void store(char *line, char **list);
+ static LINECLS classify(char *line, LINECLS prev);
+ static void lookup(TAG *tag);
+@@ -171,7 +171,7 @@
+ /* This function reads a single line, and replaces the terminating newline with
+  * a '\0' byte.  The string will be in a static buffer.  Returns NULL at EOF.
+  */
+-static char *getline(fp)
++static char *get_line(fp)
+ 	FILE	*fp;
+ {
+ 	int	ch;
+@@ -348,7 +348,7 @@
+ 	}
+ 
+ 	/* for each line... */
+-	for (lnum = 1, lc = LC_COMPLETE; (line = getline(fp)) != NULL; lnum++)
++	for (lnum = 1, lc = LC_COMPLETE; (line = get_line(fp)) != NULL; lnum++)
+ 	{
+ 		/* is this the tag definition? */
+ 		if (taglnum > 0 ? taglnum == lnum : !strncmp(tagline, line, len))
+@@ -377,7 +377,7 @@
+ 			{
+ 				if (strchr(line, '(') != NULL)
+ 				{
+-					while ((line = getline(fp)) != NULL
++					while ((line = get_line(fp)) != NULL
+ 					    && *line
+ 					    && ((*line != '#' && *line != '{')
+ 						|| line[strlen(line) - 1] == '\\'))
+@@ -387,7 +387,7 @@
+ 				}
+ 				else if ((lc = classify(line, lc)) == LC_PARTIAL)
+ 				{
+-					while ((line = getline(fp)) != NULL
++					while ((line = get_line(fp)) != NULL
+ 					    && (lc = classify(line, lc)) == LC_PARTIAL)
+ 					{
+ 						puts(line);

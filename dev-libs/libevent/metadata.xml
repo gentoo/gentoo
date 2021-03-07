@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:niels_provos:libevent</remote-id>
+		<remote-id type="github">libevent/libevent</remote-id>
+		<remote-id type="sourceforge">levent</remote-id>
+	</upstream>
+	<use>
+		<flag name="clock-gettime">Disable use of clock_gettime even if it is available</flag>
+		<flag name="debug">Support for running in debug mode</flag>
+		<flag name="malloc-replacement">Support for replacing the memory management functions</flag>
+		<flag name="mbedtls">Support for <pkg>net-libs/mbedtls</pkg> encryption</flag>
+		<flag name="ssl">Support for <pkg>dev-libs/openssl</pkg> encryption</flag>
+		<flag name="verbose-debug">Support for verbose debug logging</flag>
+	</use>
+</pkgmetadata>

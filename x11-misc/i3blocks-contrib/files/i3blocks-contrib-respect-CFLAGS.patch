@@ -1,0 +1,22 @@
+diff -ur a/bandwidth2/Makefile b/bandwidth2/Makefile
+--- a/bandwidth2/Makefile	2021-02-02 07:03:47.002894030 -0600
++++ b/bandwidth2/Makefile	2021-02-02 07:05:21.556854777 -0600
+@@ -1,6 +1,6 @@
+ P=bandwidth2
+ OBJECTS=
+-CFLAGS=-g -Wall -Werror -O2 -std=c11
++CFLAGS ?= -g -Wall -Werror -O2 -std=c11
+ LDLIBS=
+ 
+ $(P): $(OBJECTS)
+diff -ur a/cpu_usage2/Makefile b/cpu_usage2/Makefile
+--- a/cpu_usage2/Makefile	2021-02-02 07:03:47.004894029 -0600
++++ b/cpu_usage2/Makefile	2021-02-02 07:05:51.138842328 -0600
+@@ -1,6 +1,6 @@
+ P=cpu_usage2
+ OBJECTS=
+-CFLAGS=-g -Wall -Werror -O2 -std=gnu11
++CFLAGS ?= -g -Wall -Werror -O2 -std=gnu11
+ LDLIBS=
+ 
+ $(P): $(OBJECTS)

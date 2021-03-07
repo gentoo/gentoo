@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gentoo@chymera.eu</email>
+		<name>Horea Christian</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		This is a bash script which can create stage 4 tarballs either
+		for the running system, or a system at a specified mount point.
+		It is highly parameterized allowing among other things the
+		exclusion of sensitive user data.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">TheChymera/mkstage4</remote-id>
+	</upstream>
+</pkgmetadata>

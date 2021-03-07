@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-physics@gentoo.org</email>
+    <name>Gentoo Physics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  XROOTD software framework is a fully generic suite for fast, low latency
+  and scalable data access, which can serve natively any kind of data,
+  organized as a hierarchical filesystem-like namespace, based on the
+  concept of directory. 
+  It is usually used with <pkg>sci-physics/root</pkg> and its PROOF
+  facilities for cluster computing in high energy physics.
+</longdescription>
+  <use>
+    <flag name="fuse">Enable the <pkg>sys-fs/fuse</pkg> filesystem driver</flag>
+    <flag name="http">Enable http protocol support</flag>
+  </use>
+</pkgmetadata>

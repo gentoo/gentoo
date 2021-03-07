@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>sound@gentoo.org</email>
+	<name>Gentoo Sound project</name>
+</maintainer>
+<longdescription lang="en">
+GramoFile is intended primarily for transferring gramophone records to CDs, but
+has many other possible uses. It can record very long .wav files with a bargraph
+signal peak-level meter, playback any part of the files, split long .wav files
+into separate tracks (with automatic track location), and process the signal
+with filters to reduce ticks and pops (multiple filters are provided, they can
+be applied in any order (multiple instances) with user-adjustable parameters).
+Track splitting and signal processing are done in the same run, and don't need
+any temporary files.
+</longdescription>
+</pkgmetadata>

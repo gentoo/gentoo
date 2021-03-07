@@ -1,0 +1,84 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,6 +1,4 @@
+-CC = cc
+-
+-CFLAGS = -O2 -I/usr/include/ncurses -DHAVE_IPV6 -g -Wall
++CFLAGS += -I/usr/include/ncurses -g -Wall
+ OBJS = sockets.o tetrinet.o tetris.o tty.o xwin.o
+ 
+ ### If you want to have -server tetrinet client option, comment the two lines
+@@ -24,10 +22,10 @@
+ ########
+ 
+ tetrinet: $(OBJS)
+-	$(CC) -o $@ $(OBJS) -lncurses
++	$(CC) $(LDFLAGS) -o $@ $(OBJS) $(shell ${PKG_CONFIG} --libs ncurses)
+ 
+ tetrinet-server: server.c sockets.c tetrinet.c tetris.c server.h sockets.h tetrinet.h tetris.h
+-	$(CC) $(CFLAGS) -o $@ -DSERVER_ONLY server.c sockets.c tetrinet.c tetris.c
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ -DSERVER_ONLY server.c sockets.c tetrinet.c tetris.c
+ 
+ .c.o:
+ 	$(CC) $(CFLAGS) -c $<
+--- a/sockets.c
++++ b/sockets.c
+@@ -66,7 +66,7 @@
+     if (c == 0xFF)
+ 	ptr--;
+     *ptr = 0;
+-    if (log) {
++    if (logging) {
+ 	if (!logfile)
+ 	    logfile = fopen(logname, "a");
+ 	if (logfile) {
+@@ -89,7 +89,7 @@
+     unsigned char c = 0xFF;
+     int n = 0;
+ 
+-    if (log) {
++    if (logging) {
+ 	if (!logfile)
+ 	    logfile = fopen(logname, "a");
+ 	if (logfile) {
+--- a/tetrinet.c
++++ b/tetrinet.c
+@@ -21,7 +21,7 @@
+ /*************************************************************************/
+ 
+ int fancy = 0;		/* Fancy TTY graphics? */
+-int log = 0;		/* Log network traffic to file? */
++int logging = 0;		/* Log network traffic to file? */
+ char *logname;		/* Log filename */
+ int windows_mode = 0;	/* Try to be just like the Windows version? */
+ int noslide = 0;	/* Disallow piece sliding? */
+@@ -82,8 +82,7 @@
+ 	    else
+ 		winlist[i].team = 0;
+ 	    s++;
+-	    strncpy(winlist[i].name, s, sizeof(winlist[i].name)-1);
+-	    winlist[i].name[sizeof(winlist[i].name)] = 0;
++	    snprintf(winlist[i].name, sizeof(winlist[i].name), "%s", s);
+ 	    winlist[i].points = atoi(t);
+ 	    if ((t = strchr(t, ';')) != NULL)
+ 		winlist[i].games = atoi(t+1);
+@@ -590,7 +589,7 @@
+ 	    if (strcmp(av[i], "-fancy") == 0) {
+ 		fancy = 1;
+ 	    } else if (strcmp(av[i], "-log") == 0) {
+-		log = 1;
++		logging = 1;
+ 		i++;
+ 		if (i >= ac) {
+ 		    fprintf(stderr, "Option -log requires an argument\n");
+--- a/tetrinet.h
++++ b/tetrinet.h
+@@ -74,7 +74,7 @@
+ /* Externs */
+ 
+ extern int fancy;
+-extern int log;
++extern int logging;
+ extern char *logname;
+ extern int windows_mode;
+ extern int noslide;

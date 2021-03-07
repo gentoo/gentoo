@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>qt@gentoo.org</email>
+		<name>Gentoo Qt Project</name>
+	</maintainer>
+	<use>
+		<flag name="geolocation">Enable physical position determination via <pkg>dev-qt/qtpositioning</pkg></flag>
+		<flag name="gstreamer">Enable HTML5 audio/video support via <pkg>media-libs/gstreamer</pkg> using SLOT 1.0</flag>
+		<flag name="hyphen">Enable hyphenation support via <pkg>dev-libs/hyphen</pkg></flag>
+		<flag name="multimedia">Enable HTML5 audio/video support via <pkg>dev-qt/qtmultimedia</pkg></flag>
+		<flag name="orientation">Enable device orientation detection via <pkg>dev-qt/qtsensors</pkg></flag>
+		<flag name="printsupport">Enable printing via <pkg>dev-qt/qtprintsupport</pkg></flag>
+		<flag name="qml">Build QML/QtQuick bindings</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://bugreports.qt.io/</bugs-to>
+		<doc>https://doc.qt.io/</doc>
+	</upstream>
+	<slots>
+		<subslots>
+			Must only be used by packages that are known to use private parts of the Qt API.
+		</subslots>
+	</slots>
+</pkgmetadata>

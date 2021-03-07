@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<longdescription lang="en">
+		A collection of tools for internationalizing Python applications
+		Babel is composed of two major parts:
+			- tools to build and work with gettext message catalogs
+			- a Python interface to the CLDR (Common Locale Data Repository),
+			providing access to various locale display names, localized number
+			and date formatting, etc.
+	</longdescription>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">Babel</remote-id>
+		<remote-id type="github">python-babel/babel</remote-id>
+		<bugs-to>https://github.com/python-babel/babel/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

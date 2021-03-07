@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription>
+  Quickplot is a fast interactive 2D plotter with infinite zooming, value
+  picking, pipe input, and unlimited plots displayed.  Quickplot is meant for
+  looking at your data quickly and of secondary importance is making static
+  pictures of your data. It's a data viewer, not a plot editor.  It reads
+  ASCII text and sound files. It has lots of command line options, making it
+  very shell script friendly.
+  </longdescription>
+  <upstream>
+    <remote-id type="sourceforge">quickplot</remote-id>
+    <remote-id type="github">lanceman2/quickplot</remote-id>
+  </upstream>
+</pkgmetadata>

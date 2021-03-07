@@ -1,0 +1,47 @@
+--- quvi-0.9.1/configure.ac
++++ quvi-0.9.1/configure.ac
+@@ -54,22 +54,30 @@
+ PKG_CHECK_MODULES([gobject], [gobject-2.0 >= 2.24])
+ PKG_CHECK_MODULES([glib], [glib-2.0 >= 2.24])
+ 
+-PKG_CHECK_MODULES([json_glib], [json-glib-1.0 >= 0.12],
+-  [have_json_glib=yes
+-   AC_DEFINE([HAVE_JSON_GLIB], [1], [Define to json-glib package])
+-  ],
+-  [have_json_glib=no
+-   AC_MSG_NOTICE([json-glib 0.12+ not found, building without json output])
+-  ])
++AC_ARG_ENABLE([json],
++  AS_HELP_STRING([--disable-json], [Disable support for JSON output]))
++AS_IF([test "x$enable_json" != "xno"], [
++  PKG_CHECK_MODULES([json_glib], [json-glib-1.0 >= 0.12],
++    [have_json_glib=yes
++     AC_DEFINE([HAVE_JSON_GLIB], [1], [Define to json-glib package])
++    ],
++    [have_json_glib=no
++     AC_MSG_ERROR([json-glib 0.12+ not found])
++    ])
++])
+ AM_CONDITIONAL([HAVE_JSON_GLIB], [test x"$have_json_glib" = "xyes"])
+  
+-PKG_CHECK_MODULES([libxml], [libxml-2.0 >= 2.7.8],
+-  [have_libxml=yes
+-   AC_DEFINE([HAVE_LIBXML], [1], [Define to libxml package])
+-  ],
+-  [have_libxml=no
+-   AC_MSG_NOTICE([libxml 2.7.8+ not found, building without xml output])
+-  ])
++AC_ARG_ENABLE([xml],
++  AS_HELP_STRING([--disable-xml], [Disable support for XML output]))
++AS_IF([test "x$enable_xml" != "xno"], [
++  PKG_CHECK_MODULES([libxml], [libxml-2.0 >= 2.7.8],
++    [have_libxml=yes
++     AC_DEFINE([HAVE_LIBXML], [1], [Define to libxml package])
++    ],
++    [have_libxml=no
++     AC_MSG_ERROR([libxml 2.7.8+ not found])
++    ])
++])
+ AM_CONDITIONAL([HAVE_LIBXML], [test x"$have_libxml" = "xyes"])
+ 
+ # Checks for header files.

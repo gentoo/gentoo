@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<longdescription lang="en">
+		dnscrypt-proxy provides local service which can be used directly as your
+		local resolver or as a DNS forwarder, encrypting and authenticating
+		requests using the DNSCrypt or DNS-over-HTTPS protocol and passing them
+		to upstream servers.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">DNSCrypt/dnscrypt-proxy</remote-id>
+	</upstream>
+</pkgmetadata>

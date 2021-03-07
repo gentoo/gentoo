@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+		policyd-weight is a Perl policy daemon for the Postfix MTA (2.1 and
+		later) intended to eliminate forged envelope senders and HELOs (i.e. in
+		bogus mails). It allows you to score DNSBLs (RBL/RHSBL), HELO, MAIL
+		FROM and client IP addresses before any queuing is done. It allows you
+		to REJECT messages which have a score higher than allowed, providing
+		improved blocking of spam and virus mails. policyd-weight caches the
+		most frequent client/sender combinations (SPAM as well as HAM) to reduce
+		the number of DNS queries.
+	</longdescription>
+</pkgmetadata>

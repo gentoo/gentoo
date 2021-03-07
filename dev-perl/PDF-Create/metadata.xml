@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">PDF-Create</remote-id>
+    <remote-id type="cpan-module">PDF::Create</remote-id>
+    <remote-id type="cpan-module">PDF::Create::Outline</remote-id>
+    <remote-id type="cpan-module">PDF::Create::Page</remote-id>
+    <remote-id type="cpan-module">PDF::Font</remote-id>
+    <remote-id type="cpan-module">PDF::Image::GIF</remote-id>
+    <remote-id type="cpan-module">PDF::Image::JPEG</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,56 @@
+--- routino-3.2/Makefile.conf	2017-10-22 16:03:29.917559780 +0200
++++ routino-3.2/Makefile.conf.new	2017-10-22 16:04:23.877562797 +0200
+@@ -45,11 +45,11 @@
+ # Installation locations (edit if required)
+ 
+ ifneq ($(HOST),MINGW)
+-prefix=/usr/local
++prefix=/usr
+ bindir=$(prefix)/bin
+ incdir=$(prefix)/include
+ libdir=$(prefix)/lib
+-docdir=$(prefix)/doc/routino
++docdir=$(prefix)/share/doc/$(PF)
+ datadir=$(prefix)/share/routino
+ else
+ prefix="c:/Program Files/Routino"
+@@ -74,16 +74,16 @@
+ 
+ 
+ # Maths library
+-LDFLAGS=-lm
++LDFLAGS+=-lm
+ 
+ # Language dialect selection
+-CFLAGS=-std=c99
++CFLAGS+=-std=c99
+ 
+ # Warning options
+ CFLAGS+=-Wall -Wmissing-prototypes -Wextra -Wno-unused-parameter -pedantic
+ 
+ # Optimisation options
+-CFLAGS+=-O3
++#CFLAGS+=-O3
+ CFLAGS+=-ffast-math
+ 
+ # Optimisation option (only works if compilation and execution use exactly the same CPU architecture).
+@@ -118,7 +118,7 @@
+ endif
+ 
+ # Put the current directory in the shared library path for the router using libroutino
+-LDFLAGS_LDSO=-Wl,-R.
++#LDFLAGS_LDSO=-Wl,-R.
+ 
+ 
+ # Required for multi-threaded support (comment these two lines out if not required)
+@@ -139,8 +139,8 @@
+ 
+ 
+ # Required for xz support (uncomment these two lines if required)
+-#CFLAGS+=-DUSE_XZ
+-#LDFLAGS+=-llzma
++CFLAGS+=-DUSE_XZ
++LDFLAGS+=-llzma
+ 
+ 
+ # Required to use stdio with files > 2GiB on 32-bit system.

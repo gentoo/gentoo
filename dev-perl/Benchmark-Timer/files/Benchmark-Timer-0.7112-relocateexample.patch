@@ -1,0 +1,34 @@
+From 61b57efe776ee08232d2f9cd1cd6c89ae26cd232 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Sun, 19 Aug 2018 16:12:39 +1200
+Subject: Don't install delta.pl to lib/Benchmark/
+
+*.pl install to $(INST_SITELIB) due to legacy behaviour for EUMM
+where *.pl was for a "perl library", and nodes in  / were installed
+under $(dirname $(echo $distname | sed 's|-|/|;s|^|lib/|;s|$|.pm$' ))
+---
+ MANIFEST                      | 2 +-
+ delta.pl => examples/delta.pl | 0
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+ rename delta.pl => examples/delta.pl (100%)
+
+diff --git a/MANIFEST b/MANIFEST
+index 7653c9b..6c93cee 100644
+--- a/MANIFEST
++++ b/MANIFEST
+@@ -3,7 +3,7 @@ LICENSE
+ MANIFEST
+ Makefile.PL
+ README
+-delta.pl
++examples/delta.pl
+ TODO
+ 
+ # The module files
+diff --git a/delta.pl b/examples/delta.pl
+similarity index 100%
+rename from delta.pl
+rename to examples/delta.pl
+-- 
+2.17.1
+

@@ -1,0 +1,33 @@
+--- htb.init.old	2004-01-29 22:41:23.000000000 +0100
++++ htb.init		2006-09-08 00:22:11.000000000 +0200
+@@ -468,8 +468,8 @@
+ 	### List of classes in $HTB_PATH
+ 	htb_class_list () {
+ 		for dev in `htb_device_list`; do
+-			find $HTB_PATH \( -type f -or -type l \) \
+-			-name "$dev-*" -not -name '*~' -maxdepth 1 \
++			find $HTB_PATH -maxdepth 1 \( -type f -or -type l \) \
++			-name "$dev-*" -not -name '*~' \
+ 			-printf "%f\n"| sort
+ 		done
+ 	} # htb_class_list
+@@ -483,8 +483,8 @@
+ 	### Validate cache against config files
+ 	htb_valid_cache () {
+ 		for dev in `htb_device_list`; do
+-			[ `find $HTB_PATH \( -type f -or -type l \) \
+-			  -name "$dev*" -maxdepth 1 -newer $HTB_CACHE| \
++			[ `find $HTB_PATH -maxdepth 1 \( -type f -or -type l \) \
++			  -name "$dev*" -newer $HTB_CACHE| \
+ 			  wc -l` -gt 0 ] && VALID=0
+ 			[ $VALID -ne 1 ] && break
+ 		done
+@@ -493,7 +493,7 @@
+ 
+ 	### Find class config for device $1, which is newer than cache
+ 	htb_cache_older () {
+-		[ `find $HTB_PATH -type f -name "$1*" -maxdepth 1 \
++		[ `find $HTB_PATH -maxdepth 1 -type f -name "$1*" \
+ 		   -newer $HTB_CACHE| wc -l` -gt 0 ] && return 0
+ 		return 1
+ 	} # htb_cache_older

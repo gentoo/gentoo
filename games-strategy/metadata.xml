@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The games-strategy category contains strategy games.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie games-strategy enthält Strategiespiele.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría games-strategy contiene juegos de estrategia.
+	</longdescription>
+	<longdescription lang="ja">
+		games-strategyカテゴリーにはストラテジー・ゲームが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De games-strategy categorie bevat strategiespellen.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm games-strategy chứa các trò chơi chiến thuật.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria games-strategy contiene giochi strategici.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria games-strategy contém jogos de estratégia.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria games-strategy zawiera gry strategiczne.
+	</longdescription>
+</catmetadata>
+

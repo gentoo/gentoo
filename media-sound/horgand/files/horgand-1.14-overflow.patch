@@ -1,0 +1,13 @@
+diff --git a/src/Holrgan.h b/src/Holrgan.h
+index 1b93042..f8e9209 100644
+--- a/src/Holrgan.h
++++ b/src/Holrgan.h
+@@ -398,7 +398,7 @@ struct Ch3
+ struct Ch4
+ 
+ {
+-  char Nom[10];
++  char Nom[12];
+   int type;
+   int fund;
+   int dist1;

@@ -1,0 +1,21 @@
+Index: FIL-plugins-0.3.0/Makefile
+===================================================================
+--- FIL-plugins-0.3.0.orig/Makefile
++++ FIL-plugins-0.3.0/Makefile
+@@ -15,14 +15,14 @@
+ #    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ 
+ 
+-CPPFLAGS += -I. -fPIC -D_REENTRANT -Wall -O3
++CPPFLAGS += -I. -fPIC -D_REENTRANT -Wall
+ 
+ 
+ all:	filters.so
+ 
+ 
+ filters.so:	filters.o filters_if.o exp2ap.o
+-	g++ -shared filters.o filters_if.o exp2ap.o -o filters.so
++	$(CXX) $(LDFLAGS) -shared filters.o filters_if.o exp2ap.o -o filters.so
+ 
+ filters.o:	ladspaplugin.h filters.h
+ filters_if.o:	ladspaplugin.h filters.h

@@ -1,0 +1,103 @@
+diff --git a/gcl/gcl-tk/tkMain.c b/gcl/gcl-tk/tkMain.c
+index 74475cc..21c6c59 100755
+--- a/gcl/gcl-tk/tkMain.c
++++ b/gcl/gcl-tk/tkMain.c
+@@ -42,6 +42,11 @@
+ #if (TK_MINOR_VERSION==0 && TK_MAJOR_VERSION==4)
+ #define TkCreateMainWindow Tk_CreateMainWindow
+ #endif
++#if TCL_MAJOR_VERSION >= 8
++#define INTERP_RESULT(interp) Tcl_GetStringResult(interp)
++#else
++#define INTERP_RESULT(interp) (interp)->result
++#endif
+ 
+ 
+ /*-------------------------------------------------------------------*/
+@@ -276,7 +281,7 @@ TkX_Wish (argc, argv)
+ 
+     if (Tk_ParseArgv(interp, (Tk_Window) NULL, &argc, (void *)argv, argTable, 0)
+ 	    != TCL_OK) {
+-	fprintf(stderr, "%s\n", interp->result);
++	fprintf(stderr, "%s\n", INTERP_RESULT(interp));
+ 	exit(1);
+     }
+     if (name == NULL) {
+@@ -309,7 +314,7 @@ TkX_Wish (argc, argv)
+ 
+ /*     mainWindow = TkCreateMainWindow(interp, display, name/\*  , "Tk" *\/);  */
+ /*     if (mainWindow == NULL) { */
+-/* 	fprintf(stderr, "%s\n", interp->result); */
++/* 	fprintf(stderr, "%s\n", INTERP_RESULT(interp)); */
+ /* 	exit(1); */
+ /*     } */
+ /* #ifndef __MINGW32__     */
+@@ -362,7 +367,7 @@ TkX_Wish (argc, argv)
+     Tcl_FindExecutable ( argv[0] ); 
+ #else
+     if (Tcl_AppInit(interp) != TCL_OK) {
+-	fprintf(stderr, "Tcl_AppInit failed: %s\n", interp->result);
++	fprintf(stderr, "Tcl_AppInit failed: %s\n", INTERP_RESULT(interp));
+     }
+ #endif
+     /*
+@@ -372,7 +377,7 @@ TkX_Wish (argc, argv)
+     if (geometry != NULL) {
+ 	code = Tcl_VarEval(interp, "wm geometry . ", geometry, (char *) NULL);
+ 	if (code != TCL_OK) {
+-	    fprintf(stderr, "%s\n", interp->result);
++	    fprintf(stderr, "%s\n", INTERP_RESULT(interp));
+ 	}
+     }
+ 
+@@ -402,13 +407,13 @@ TkX_Wish (argc, argv)
+     
+ 	    fullName = Tcl_TildeSubst(interp, tcl_RcFileName, &buffer);
+ 	    if (fullName == NULL) {
+-		fprintf(stderr, "%s\n", interp->result);
++		fprintf(stderr, "%s\n", INTERP_RESULT(interp));
+ 	    } else {
+ 		f = fopen(fullName, "r");
+ 		if (f != NULL) {
+ 		    code = Tcl_EvalFile(interp, fullName);
+ 		    if (code != TCL_OK) {
+-			fprintf(stderr, "%s\n", interp->result);
++			fprintf(stderr, "%s\n", INTERP_RESULT(interp));
+ 		    }
+ 		    fclose(f);
+ 		}
+@@ -443,7 +448,7 @@ TkX_Wish (argc, argv)
+ error:
+     msg = Tcl_GetVar(interp, "errorInfo", TCL_GLOBAL_ONLY);
+     if (msg == NULL) {
+-	msg = interp->result;
++	msg = INTERP_RESULT(interp);
+     }
+     dfprintf(stderr, "%s\n", msg);
+     Tcl_Eval(interp, errorExitCmd);
+@@ -566,13 +571,13 @@ StdinProc(clientData, mask)
+ 	      || code)
+ 	    {
+ 	      char buf[4];
+-	      char *p = buf;
++	      char *p = buf, *string;
+ 	      /*header */
+ 	      *p++ = (code ? '1' : '0');
+ 	      bcopy(msg->msg_id,p,3);
+ 	      /* end header */
+-	      if(sock_write_str2(dsfd, m_reply, buf, 4 ,
+-				 interp->result, strlen(interp->result))
++	      string = INTERP_RESULT(interp);
++	      if(sock_write_str2(dsfd, m_reply, buf, 4, string, strlen(string))
+ 		 < 0)
+ 		{		/* what do we want to do if the write failed */}
+ 	      
+@@ -752,7 +757,7 @@ guiBindCallback(char *szNameCmdProc, char *szTclObject, char *szModifier,char* a
+   code = Tcl_Eval(interp, szCmd);
+   if (code != TCL_OK)
+     {
+-      dfprintf(stderr, "TCL Error int bind : %s\n", interp->result);
++      dfprintf(stderr, "TCL Error int bind : %s\n", INTERP_RESULT(interp));
+ 
+     }
+   return code;

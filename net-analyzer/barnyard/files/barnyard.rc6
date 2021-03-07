@@ -1,0 +1,29 @@
+#!/sbin/openrc-run
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+checkconfig() {
+	if [ ! -e $CONF ] ; then
+		eerror "You need a configuration file to run barnyard"
+		eerror "There is an example config in /etc/snort/barnyard.conf.distrib"
+		return 1
+	fi
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting barnyard"
+	start-stop-daemon --start --quiet --exec /usr/bin/barnyard \
+		-- ${BARNYARD_OPTS} >/dev/null 2>&1
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping barnyard"
+	start-stop-daemon --stop --quiet --pidfile ${PIDFILE}
+	eend $?
+}

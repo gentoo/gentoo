@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>games@gentoo.org</email>
+	<name>Gentoo Games Project</name>
+</maintainer>
+<longdescription>
+KXL is the library developed for the purpose of the ability to develop a 
+game easily on X Window System of Linux.
+
+KXL is the composition of the window of one sheet, and the frame buffer 
+of one sheet.
+
+KXL corresponds to reading of a bitmap picture, and offers a still 
+simple drawing function and a wave sound function.
+
+KXL is written only using xlib.
+
+KXL is written by the C language.
+</longdescription>
+</pkgmetadata>

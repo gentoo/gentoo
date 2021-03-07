@@ -1,0 +1,26 @@
+[Unit]
+Description=tvheadend
+After=network.target
+
+[Service]
+Type=simple
+User=tvheadend
+Group=video
+RuntimeDirectory=tvheadend
+PIDFile=/run/tvheadend/tvheadend.pid
+EnvironmentFile=/etc/conf.d/tvheadend
+ExecStart=/usr/bin/tvheadend -p /run/tvheadend/tvheadend.pid -c ${TVHEADEND_CONFIG} ${TVHEADEND_OPTIONS}
+TimeoutStartSec=1m
+TimeoutStopSec=20s
+Restart=always
+RestartSec=5s
+DevicePolicy=closed
+DeviceAllow=char-DVB rw
+DeviceAllow=char-drm rw
+RestrictAddressFamilies=AF_INET AF_INET6
+ProtectSystem=yes
+ProtectHome=yes
+NoNewPrivileges=yes
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,18 @@
+--- src/MoleInvasion.c
++++ src/MoleInvasion.c
+@@ -159,6 +159,7 @@
+ 	else
+ 		printf("Video mode set to %ux%u at %u bpp\n",800, 600, bpp);
+ 
++	if(g_opengl) {
+ 	/* pour opengl */
+ 	glEnable (GL_TEXTURE_2D);
+ 	glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+@@ -169,6 +170,7 @@
+         glEnable( GL_BLEND );
+ 	glMatrixMode(GL_PROJECTION);
+ 	/* fin opengl */
++	}
+ 
+ 	/* titre */
+ 	SDL_WM_SetCaption ("Mole Invasion", NULL);

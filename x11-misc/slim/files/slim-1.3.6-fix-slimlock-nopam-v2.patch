@@ -1,0 +1,26 @@
+--- a/CMakeLists.txt	2013-10-27 21:24:21.193802669 -0400
++++ b/CMakeLists.txt	2013-10-27 21:26:54.127806951 -0400
+@@ -220,7 +220,6 @@
+ ####### install
+ # slim
+ install(TARGETS slim RUNTIME DESTINATION bin)
+-install(TARGETS slimlock RUNTIME DESTINATION bin)
+ 
+ if (BUILD_SHARED_LIBS)
+ 	set_target_properties(libslim PROPERTIES
+@@ -235,8 +234,14 @@
+ 
+ # man file
+ install(FILES slim.1 DESTINATION ${MANDIR}/man1/)
+-install(FILES slimlock.1 DESTINATION ${MANDIR}/man1/)
+ # configure
+ install(FILES slim.conf DESTINATION ${SYSCONFDIR})
++
++#slimlock
++if(BUILD_SLIMLOCK)
++install(TARGETS slimlock RUNTIME DESTINATION bin PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE SETUID)
++install(FILES slimlock.1 DESTINATION ${MANDIR}/man1/)
++endif(BUILD_SLIMLOCK)
++
+ # themes directory
+ subdirs(themes)

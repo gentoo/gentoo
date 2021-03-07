@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>slyfox@gentoo.org</email>
+		<name>Sergei Trofimovich</name>
+	</maintainer>
+	<longdescription lang="en">
+		Crystal is a programming language that resembles Ruby but compiles to
+		native code and tries to be much more efficient, at the cost of
+		disallowing certain dynamic aspects of Ruby.
+	</longdescription>
+	<use>
+		<flag name="debug">
+			Build each module as a separate object file. Speeds build up.
+		</flag>
+		<flag name="blocking-stdio-hack">
+			Keep STDIO file descriptors in blocking mode.
+		</flag>
+		<flag name="yaml">
+			Use the <pkg>dev-libs/libyaml</pkg> library to enable Crystal yaml
+			module
+		</flag>
+		<flag name="xml">
+			Use the <pkg>dev-libs/libxml2</pkg> library to enable Crystal xml
+			module
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">manastech/crystal</remote-id>
+	</upstream>
+</pkgmetadata>
+

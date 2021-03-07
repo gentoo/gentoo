@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">CHI</remote-id>
+    <remote-id type="cpan-module">CHI</remote-id>
+    <remote-id type="cpan-module">CHI::CacheObject</remote-id>
+    <remote-id type="cpan-module">CHI::Driver</remote-id>
+    <remote-id type="cpan-module">CHI::Driver::Base::CacheContainer</remote-id>
+    <remote-id type="cpan-module">CHI::Driver::CacheCache</remote-id>
+    <remote-id type="cpan-module">CHI::Driver::FastMmap</remote-id>
+    <remote-id type="cpan-module">CHI::Driver::File</remote-id>
+    <remote-id type="cpan-module">CHI::Driver::Memory</remote-id>
+    <remote-id type="cpan-module">CHI::Driver::Metacache</remote-id>
+    <remote-id type="cpan-module">CHI::Driver::Null</remote-id>
+    <remote-id type="cpan-module">CHI::Driver::RawMemory</remote-id>
+    <remote-id type="cpan-module">CHI::Driver::Role::HasSubcaches</remote-id>
+    <remote-id type="cpan-module">CHI::Driver::Role::IsSizeAware</remote-id>
+    <remote-id type="cpan-module">CHI::Driver::Role::IsSubcache</remote-id>
+    <remote-id type="cpan-module">CHI::Stats</remote-id>
+  </upstream>
+</pkgmetadata>

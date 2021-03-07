@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>gnustep@gentoo.org</email>
+	<name>Gentoo GNUstep Project</name>
+</maintainer>
+<use>
+	<flag name="speech">Audio support using <pkg>app-accessibility/flite</pkg></flag>
+</use>
+<longdescription>
+It is a library of graphical user interface classes written completely
+in the Objective-C language; the classes are based upon the OpenStep
+specification as release by NeXT Software, Inc.  The library has been
+enhanced in a number of ways to take advantage of the GNU system.
+These classes include graphical objects such as buttons, text fields,
+popup lists, browser lists, and windows; there are also many associated
+classes for handling events, colors, fonts, pasteboards and images.
+
+The GNUstep GUI Library is designed in two parts.  The first part is
+the front-end component which is independent of platform and display
+system.  This front-end is combined with a back-end component which
+handles all of the display system dependent such as specific calls to
+X/Windows.  This design allows the GNUstep applications to have the
+"look and feel" of the underlying display system without any changes to
+the application, and the library can be easily ported to other display
+systems.
+
+The GNUstep GUI Library requires the GNU Objective-C compiler, the
+GNUstep Base Library, the TIFF Graphics library, and a back-end
+component like the GNUstep 'Back' Backend.
+</longdescription>
+</pkgmetadata>

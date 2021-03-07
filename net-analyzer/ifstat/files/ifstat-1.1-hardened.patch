@@ -1,0 +1,11 @@
+--- a/configure.in
++++ b/configure.in
+@@ -58,7 +58,7 @@
+      /*) file=$with_proc; with_proc=yes ;;
+      *) file=/proc/net/dev
+   AC_MSG_CHECKING([for proc interface in $file])
+-  if grep -q Inter- $file 2>/dev/null; then
++  if true; then
+     AC_DEFINE([USE_PROC], 1, [Define if you want to use /proc to get stats])
+     AC_DEFINE_UNQUOTED([PROC_FILE], ["$file"], [Proc file to poll for stats])
+     with_proc=yes

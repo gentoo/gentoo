@@ -1,0 +1,30 @@
+From af7e19734c9bbd21d2f1bf8a66b5ca1c131eeacd Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Fri, 13 Mar 2015 00:20:20 +0000
+Subject: [PATCH 3/3] JDK 1.8 works fine for me
+
+---
+ findbugs/build.xml | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/findbugs/build.xml b/findbugs/build.xml
+index 3eac5d6..48c8f2b 100644
+--- a/findbugs/build.xml
++++ b/findbugs/build.xml
+@@ -122,13 +122,6 @@
+                 </javac>
+     </target>
+     <target name="classes" depends="init">
+-        <echo>Requires JDK 7.x (not 8!), using: ${ant.java.version}</echo>
+-        <fail message="Requires JDK 7.x (not 8!), using: ${ant.java.version}">
+-             <condition>
+-                 <equals arg1="1.8" arg2="${ant.java.version}"/>
+-             </condition>
+-         </fail>
+-
+         <!-- Compile Java source files. -->
+         <echo level="info" message="compiling findbugs"/>
+         <javac
+-- 
+2.0.4
+

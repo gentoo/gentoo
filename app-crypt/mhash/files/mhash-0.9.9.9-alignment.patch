@@ -1,0 +1,16 @@
+diff -up mhash-0.9.9.9/lib/stdfns.c.BAD mhash-0.9.9.9/lib/stdfns.c
+--- mhash-0.9.9.9/lib/stdfns.c.BAD	2009-07-21 12:05:40.139461097 -0400
++++ mhash-0.9.9.9/lib/stdfns.c	2009-07-21 12:06:52.151190927 -0400
+@@ -378,6 +378,12 @@ mutils_memmove(void *dest, __const void 
+ 	bigptr1 = (mutils_word32 *) dest;
+ 	bigptr2 = (mutils_word32 *) src;
+ 
++	/* copy byte-by-byte for small and/or unaligned copies */
++	if ((n < 16) || ((mutils_word32)dest & 0x3) || ((mutils_word32)src & 0x3))
++	{
++		return mutils_memcpy8(dest, src, n);
++	}
++
+ 	words = n >> 2;
+ 	remainder = n - (words << 2);
+ 

@@ -1,0 +1,67 @@
+Fix build system to honour user flags.
+
+--- a/Makefile
++++ b/Makefile
+@@ -1,10 +1,4 @@
+-hello !!!
+-
+-CC = gcc #cc
+-CFLAGS = -O4 -fomit-frame-pointer -Wall -static
+-# CFLAGS = -Wall
+-# CFLAGS = -g -Wall
+-# CFLAGS = -pg -Wall -fprofile-arcs -static
++CC ?= gcc
+ LIBS = -lm
+ 
+ PROG = PHYML
+@@ -23,39 +17,39 @@
+ 
+ 
+ $(EXEC) : $(OBJS)
+-	$(CC) -o $(EXEC) $(OBJS) $(LIBS) $(CFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $(EXEC) $(OBJS) $(LIBS)
+ 
+ clean :
+ 	@rm *.o
+ ######################################################################################################
+ 
+ eigen.o : eigen.c eigen.h
+-	$(CC) $(CFLAGS) $(DFLAG) -c eigen.c
++	$(CC) $(CFLAGS) $(DFLAG) $(CPPFLAGS) -c eigen.c
+ 
+ simu.o : simu.c simu.h
+-	$(CC) $(CFLAGS) $(DFLAG) -c simu.c
++	$(CC) $(CFLAGS) $(DFLAG) $(CPPFLAGS) -c simu.c
+ 
+ lk.o : lk.c lk.h
+-	$(CC) $(CFLAGS) $(DFLAG) -c lk.c
++	$(CC) $(CFLAGS) $(DFLAG) $(CPPFLAGS) -c lk.c
+ 
+ utilities.o : utilities.c utilities.h
+-	$(CC) $(CFLAGS) $(DFLAG) -c utilities.c
++	$(CC) $(CFLAGS) $(DFLAG) $(CPPFLAGS) -c utilities.c
+ 
+ optimiz.o : optimiz.c optimiz.h
+-	$(CC) $(CFLAGS) $(DFLAG) -c optimiz.c
++	$(CC) $(CFLAGS) $(DFLAG) $(CPPFLAGS) -c optimiz.c
+ 
+ bionj.o : bionj.c bionj.h
+-	$(CC) $(CFLAGS) $(DFLAG) -c bionj.c
++	$(CC) $(CFLAGS) $(DFLAG) $(CPPFLAGS) -c bionj.c
+ 
+ main.o : main.c
+-	$(CC) $(CFLAGS) $(DFLAG) -c main.c
++	$(CC) $(CFLAGS) $(DFLAG) $(CPPFLAGS) -c main.c
+ 
+ models.o : models.c models.h
+-	$(CC) $(CFLAGS) $(DFLAG) -c models.c
++	$(CC) $(CFLAGS) $(DFLAG) $(CPPFLAGS) -c models.c
+ 
+ free.o : free.c free.h
+-	$(CC) $(CFLAGS) $(DFLAG) -c free.c
++	$(CC) $(CFLAGS) $(DFLAG) $(CPPFLAGS) -c free.c
+ 
+ options.o : options.c options.h
+-	$(CC) $(CFLAGS) $(DFLAG) -c options.c
++	$(CC) $(CFLAGS) $(DFLAG) $(CPPFLAGS) -c options.c
+ 

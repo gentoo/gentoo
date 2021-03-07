@@ -1,0 +1,12 @@
+diff -dupr etswitch-old/src/etswitch.c etswitch-0.1.14/src/etswitch.c
+--- etswitch-old/src/etswitch.c	2009-02-24 11:20:29.594339029 +0100
++++ etswitch-0.1.14/src/etswitch.c	2009-02-24 11:28:12.100463404 +0100
+@@ -461,7 +461,7 @@ int main(int argc, char *argv[]){
+     /* setup lock, fixme */
+     /* use temp var */
+     lock_file = "/tmp/.etswitch.pid";    /* now this isnt failsafe but at least something */
+-    lock_fd = open(lock_file, O_CREAT | O_RDWR);
++    lock_fd = open(lock_file, O_CREAT | O_RDWR, 0600);
+     if (lock_fd < 0) {
+ 	#ifdef DEBUG
+ 	fprintf(stdout, "'%s' allready exits, will try to open.\n",lock_file);

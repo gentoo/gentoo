@@ -1,0 +1,10 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -198,6 +198,7 @@
+ 	fi
+ 	HT_LIBS="$HT_LIBS -l$CURSES_LIB"
+ fi    
++AC_SEARCH_LIBS(stdscr,tinfo)
+ 
+ dnl Makefile vars.
+ AC_SUBST(IO_DIR)

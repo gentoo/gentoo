@@ -1,0 +1,12 @@
+--- a/colorit.in
++++ b/colorit.in
+@@ -167,7 +167,7 @@
+ 
+     function process_config (){
+ 	if (pp == ""){
+-	    while (0 < (ret = (pipe | getline))){
++	    while (0 < (ret = (getline < config_file))){
+ 		process_config_line()
+ 	    }
+ 	}else{
+

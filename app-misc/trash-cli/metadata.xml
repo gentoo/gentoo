@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zoltan@sinustrom.info</email>
+		<name>Zoltan Puskas</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<maintainer status="active">
+			<email>sito@andreafrancia.it</email>
+			<name>Andrea Francia</name>
+		</maintainer>
+		<changelog>https://github.com/andreafrancia/trash-cli/commits/master</changelog>
+		<doc lang="en">https://github.com/andreafrancia/trash-cli/blob/master/README.txt</doc>
+		<bugs-to>https://github.com/andreafrancia/trash-cli/issues</bugs-to>
+		<remote-id type="github">andreafrancia/trash-cli</remote-id>
+	</upstream>
+	<longdescription lang="en">
+		Trash-cli trashes files recording the original path, deletion date, and
+		permissions. It uses the same trashcan of KDE, GNOME, and XFCE, but you can
+		call it from the command line (and scripts).
+	</longdescription>
+</pkgmetadata>

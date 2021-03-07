@@ -1,0 +1,46 @@
+From f1c44c8fca177b399bc5cb889ff2dfba2427ae30 Mon Sep 17 00:00:00 2001
+From: Ritesh Raj Sarraf <rrs@debian.org>
+Date: Mon, 5 Feb 2018 08:51:26 +0530
+Subject: [PATCH] Fix case sensitive name for lmt.py
+
+Closes: https://github.com/rickysarraf/laptop-mode-tools/issues/124
+---
+ gui/{LMT.py => lmt.py} | 0
+ install.sh             | 2 +-
+ laptop-mode-tools.spec | 2 +-
+ 3 files changed, 2 insertions(+), 2 deletions(-)
+ rename gui/{LMT.py => lmt.py} (100%)
+
+diff --git a/gui/LMT.py b/gui/lmt.py
+similarity index 100%
+rename from gui/LMT.py
+rename to gui/lmt.py
+diff --git a/install.sh b/install.sh
+index 5692646..b68424f 100755
+--- a/install.sh
++++ b/install.sh
+@@ -209,7 +209,7 @@ if ( ! $INSTALL -m 644 gui/laptop-mode-tools.svg "$DESTDIR/usr/share/pixmaps" )
+ 	exit 11
+ fi
+ 
+-if ( ! $INSTALL -m 644 gui/LMT.py "$DESTDIR/usr/share/laptop-mode-tools" ) ; then
++if ( ! $INSTALL -m 644 gui/lmt.py "$DESTDIR/usr/share/laptop-mode-tools" ) ; then
+ 	echo "$0: Failed to install $DESTDIR/usr/share/laptop-mode-tools/lmt.py";
+ 	exit 11
+ fi
+diff --git a/laptop-mode-tools.spec b/laptop-mode-tools.spec
+index 2e4a164..72fa751 100644
+--- a/laptop-mode-tools.spec
++++ b/laptop-mode-tools.spec
+@@ -83,7 +83,7 @@ fi
+ #%{_usr}/sbin/*
+ %{_sbindir}/*
+ %{_usr}/share/applications/laptop-mode-tools.desktop
+-%{_usr}/share/laptop-mode-tools/LMT.py
++%{_usr}/share/laptop-mode-tools/lmt.py
+ %{_usr}/share/laptop-mode-tools/modules/*
+ %{_usr}/share/laptop-mode-tools/module-helpers/*
+ %{_usr}/share/pixmaps/laptop-mode-tools.svg
+-- 
+2.19.2
+

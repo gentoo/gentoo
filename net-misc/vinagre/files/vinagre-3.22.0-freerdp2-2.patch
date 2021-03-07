@@ -1,0 +1,117 @@
+Fix build issue with freerdp2
+
+Gnome-Bug: https://bugzilla.gnome.org/show_bug.cgi?id=765444
+Gentoo-Bug: https://bugs.gentoo.org/show_bug.cgi?id=609474
+
+diff --git c/plugins/rdp/vinagre-rdp-tab.c i/plugins/rdp/vinagre-rdp-tab.c
+index b731f9b20ec910cc..13100de3dc0e07e1 100644
+--- c/plugins/rdp/vinagre-rdp-tab.c
++++ i/plugins/rdp/vinagre-rdp-tab.c
+@@ -476,16 +476,17 @@ frdp_drawing_area_draw (GtkWidget *area,
+   return TRUE;
+ }
+ 
+-static void
++static BOOL
+ frdp_begin_paint (rdpContext *context)
+ {
+   rdpGdi *gdi = context->gdi;
+ 
+   gdi->primary->hdc->hwnd->invalid->null = 1;
+   gdi->primary->hdc->hwnd->ninvalid = 0;
++  return TRUE;
+ }
+ 
+-static void
++static BOOL
+ frdp_end_paint (rdpContext *context)
+ {
+   VinagreRdpTab        *rdp_tab = ((frdpContext *) context)->rdp_tab;
+@@ -495,7 +496,7 @@ frdp_end_paint (rdpContext *context)
+   gint                  x, y, w, h;
+ 
+   if (gdi->primary->hdc->hwnd->invalid->null)
+-    return;
++    return TRUE;
+ 
+   x = gdi->primary->hdc->hwnd->invalid->x;
+   y = gdi->primary->hdc->hwnd->invalid->y;
+@@ -517,6 +518,7 @@ frdp_end_paint (rdpContext *context)
+     {
+       gtk_widget_queue_draw_area (priv->display, x, y, w, h);
+     }
++  return TRUE;
+ }
+ 
+ static BOOL
+@@ -587,15 +589,7 @@ frdp_post_connect (freerdp *instance)
+   rdpGdi               *gdi;
+   int                   stride;
+ 
+-  gdi_init (instance,
+-#if defined(FREERDP_VERSION_MAJOR) && defined(FREERDP_VERSION_MINOR) && \
+-    !(FREERDP_VERSION_MAJOR > 1 || (FREERDP_VERSION_MAJOR == 1 && \
+-    FREERDP_VERSION_MINOR >= 2))
+-                    CLRBUF_24BPP,
+-#else
+-                    CLRBUF_32BPP,
+-#endif
+-                    NULL);
++  gdi_init (instance, PIXEL_FORMAT_BGRA32);
+   gdi = instance->context->gdi;
+ 
+   instance->update->BeginPaint = frdp_begin_paint;
+@@ -934,11 +928,13 @@ frdp_authenticate (freerdp  *instance,
+   return TRUE;
+ }
+ 
+-static BOOL
++static DWORD
+ frdp_certificate_verify (freerdp *instance,
+-                         char    *subject,
+-                         char    *issuer,
+-                         char    *fingerprint)
++                         const char *common_name,
++                         const char *subject,
++                         const char *issuer,
++                         const char *fingerprint,
++                         BOOL host_mismatch)
+ {
+   VinagreTab *tab = VINAGRE_TAB (((frdpContext *) instance->context)->rdp_tab);
+   GtkBuilder *builder;
+@@ -968,17 +964,20 @@ frdp_certificate_verify (freerdp *instance,
+   gtk_widget_hide (dialog);
+ 
+ 
+-  return response == GTK_RESPONSE_YES;
++  return (response == GTK_RESPONSE_YES) ? 1 : 0;
+ }
+ 
+ 
+ #if HAVE_FREERDP_1_1
+-static BOOL
++static DWORD
+ frdp_changed_certificate_verify (freerdp *instance,
+-                                 char    *subject,
+-                                 char    *issuer,
+-                                 char    *new_fingerprint,
+-                                 char    *old_fingerprint)
++                                 const char *common_name,
++                                 const char *subject,
++                                 const char *issuer,
++                                 const char *new_fingerprint,
++                                 const char *old_subject,
++                                 const char *old_issuer,
++                                 const char *old_fingerprint)
+ {
+   VinagreTab *tab = VINAGRE_TAB (((frdpContext *) instance->context)->rdp_tab);
+   GtkBuilder *builder;
+@@ -1023,7 +1022,7 @@ frdp_changed_certificate_verify (freerdp *instance,
+   gtk_widget_hide (dialog);
+ 
+ 
+-  return response == GTK_RESPONSE_YES;
++  return (response == GTK_RESPONSE_YES) ? 1 : 0;
+ }
+ #endif
+ 

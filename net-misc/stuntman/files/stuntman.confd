@@ -1,0 +1,7 @@
+# Stuntman's stunserver normally starts in simple mode.
+# It's recommended to run stunserver in full mode, there are
+# basically two options, bind it to two separate interfaces,
+# or more conveniently, to IP addresses.  There are numerous
+# other options for stunserver, just run stunserver --help
+# for more information.
+#STUNTMAN_PARAMS="--mode full --primaryinterface 1.2.3.4 --altinterface 1.2.3.5"

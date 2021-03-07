@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The sys-kernel category contains kernel source ebuilds and
+		kernel-related tools.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría sys-kernel contiene las fuentes del núcleo y herramientas
+		relacionadas con este.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie sys-kernel enthält Ebuilds für Kernelquellen
+		sowie damit in Zusammenhang stehende Pakete.
+	</longdescription>
+	<longdescription lang="ja">
+		sys-kernelカテゴリにはカーネルソースebuildとカーネル関連ツールが含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De sys-kernel categorie bevat ebuilds voor kernelbroncode en gerelateerde
+		hulpmiddelen.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm sys-kernel chứa ebuild mã nguồn kernel và các công cụ
+		liên quan đến kernel.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria sys-kernel contiene i sorgenti del kernel e alcuni programmi
+		per la sua gestione come genkernel.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria sys-kernel contém ebuilds de fonte de kernel e
+		ferramentas relacionadas a kernel.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria sys-kernel zawiera źródła jądra oraz związane z nimi narzędzia.
+	</longdescription>
+</catmetadata>
+

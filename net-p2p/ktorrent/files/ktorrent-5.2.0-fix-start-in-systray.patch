@@ -1,0 +1,24 @@
+From 9747a8f524942b57e2fd42254c3de73f9d42918c Mon Sep 17 00:00:00 2001
+From: Matt Scheirer <matt.scheirer@gmail.com>
+Date: Sun, 17 May 2020 02:36:09 -0400
+Subject: [PATCH] Fix starting in tray by removing redundant show() in main
+
+---
+ ktorrent/main.cpp | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/ktorrent/main.cpp b/ktorrent/main.cpp
+index b5866c22..8e532c9c 100644
+--- a/ktorrent/main.cpp
++++ b/ktorrent/main.cpp
+@@ -208,7 +208,6 @@ int main(int argc, char** argv)
+         bt::InitLog(kt::DataDir(kt::CreateIfNotExists) + QLatin1String("log"), true, true, logToStdout);
+ 
+         kt::GUI widget;
+-        widget.show();
+ 
+         auto handleCmdLine = [&widget, &parser](const QStringList &arguments, const QString &workingDirectory)
+         {
+-- 
+GitLab
+

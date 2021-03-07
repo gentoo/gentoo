@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The dev-cpp category contains libraries and utilities relevant to the
+		c++ programming language.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie dev-cpp enthält Bibliotheken und Werkzeuge für die 
+		Programmiersprache C++.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría dev-cpp contiene librerias y utilidades referentes al
+		lenguaje de programación C++.
+	</longdescription>
+	<longdescription lang="ja">
+		dev-cpp カテゴリーにはC++プログラミング言語に関連したライブラリーと
+		ユーティリティが含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De dev-cpp categorie bevat bibliotheken en hulpmiddelen voor het gebruik
+		van de programmeertaal C++.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm dev-cpp chứa các thư viện và tiện ích liên quan
+		đến ngôn ngữ lập trình C++.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria dev-cpp contiene librerie e utilità per illinguaggio C++.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria dev-cpp contém bibliotecas e utilitários para a
+		linguagem de programação C++.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria dev-cpp zawiera biblioteki i narzędzia związane z językiem
+		programowania c++.
+	</longdescription>
+</catmetadata>
+

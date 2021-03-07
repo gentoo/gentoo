@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zmedico@gentoo.org</email>
+		<name>Zac Medico</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">snapcore/snapd</remote-id>
+	</upstream>
+	<use>
+		<flag name="apparmor">
+			Enable AppArmor support.
+		</flag>
+		<flag name="cgroup-hybrid">
+			Default to hybrid (legacy) cgroup hierarchy instead of unified (modern).
+		</flag>
+		<flag name="forced-devmode">
+			Automatically disable application confinement if feature detection fails.
+		</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,11 @@
+diff --git a/rbutil/rbutilqt/version.h b/rbutil/rbutilqt/version.h
+index f0877ba..044c7c7 100644
+--- a/rbutil/rbutilqt/version.h
++++ b/rbutil/rbutilqt/version.h
+@@ -40,5 +40,5 @@
+ // PUREVERSION should identify the build uniquely. Use version string for now.
+ #define PUREVERSION "v1.4.1"
+ 
+-#define FULLVERSION VERSION " (" PUREVERSION "), built " __DATE__ " " __TIME__
++#define FULLVERSION VERSION
+ 

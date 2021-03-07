@@ -1,0 +1,38 @@
+diff --git a/javolution-4.0/src/javolution/io/Struct.java b/javolution-4.0/src/javolution/io/Struct.java
+index 5198030..3def806 100644
+--- a/javolution-4.0/src/javolution/io/Struct.java
++++ b/javolution-4.0/src/javolution/io/Struct.java
+@@ -134,7 +134,7 @@ public class Struct {
+ 	/**
+ 	 * Holds the outer struct if any.
+ 	 */
+-	private Struct _outer;
++	Struct _outer;
+ 
+ 	/**
+ 	 * Holds the byte buffer backing the struct (top struct).
+@@ -145,7 +145,7 @@ public class Struct {
+ 	 * Holds the offset of this struct relative to the outer struct or
+ 	 * to the byte buffer if there is no outer.
+ 	 */
+-	private int _outerOffset;
++	int _outerOffset;
+ 
+ 	/**
+ 	 * Holds the number of bits currently used (for size calculation).
+@@ -155,7 +155,7 @@ public class Struct {
+ 	/**
+ 	 * Holds this struct alignment (largest alignment of its members).
+ 	 */
+-	private int _alignment = 1;
++	int _alignment = 1;
+ 
+ 	/**
+ 	 * Holds the current bit index position (during construction).
+@@ -1607,4 +1607,4 @@ public class Struct {
+ 			}
+ 		}
+ 	}
+-}
+\ No newline at end of file
++}

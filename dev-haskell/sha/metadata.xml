@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name="exe">Build a sha1 and a sha384 executable similar to 'md5sum'.</flag>
+	</use>
+	<longdescription>
+		This library implements the SHA suite of message digest functions,
+		according to NIST FIPS 180-2 (with the SHA-224 addendum), as well
+		as the SHA-based HMAC routines. The functions have been tested
+		against most of the NIST and RFC test vectors for the various
+		functions. While some attention has been paid to performance,
+		these do not presently reach the speed of well-tuned libraries,
+		like OpenSSL.
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>emacs@gentoo.org</email>
+  <name>Gentoo Emacs project</name>
+</maintainer>
+<longdescription>
+  This product is an original development made to provide an emacs-like editor
+  on the PC for the purpose of writing Lisp code with the same features found
+  on other Lisp development systems. In 1985, with about 512 Ko of memory, it
+  was obvious that Gosling, GNU or other emacs written in Lisp were too big to
+  run on M$-DOG. So I decided to write my own editor that closely works like
+  those I used on VAX Unix at that time. I started with Conroy's MicroEMACS.
+
+  After a great amount of time, made essentially after hours, EmACT is now
+  a pretty good clone of GNU Emacs. It has all the features that programmers
+  enjoy, like parentheses matching, auto-indent for Lisp, C, C++, compile
+  mode, tags and even a Lisp interpreter which is not however compatible with
+  GNU MockLisp. It can be ported to all UN*X systems (terminal and X-Window)
+  and it runs of course on all Intel based system in text or graphic mode
+  (MSDOS, OS/2, Windows 3.x, Windows NT/2000/XP and Windows 95/98/Me).
+</longdescription>
+<upstream>
+  <remote-id type="sourceforge">emact</remote-id>
+</upstream>
+</pkgmetadata>

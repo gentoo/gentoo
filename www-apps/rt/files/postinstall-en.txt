@@ -1,0 +1,19 @@
+Please follow the Gentoo install guide found at:
+
+    https://wiki.gentoo.org/wiki/Request_Tracker
+
+Your local config files are located here:
+
+    ${VHOST_ROOT}/${PN}-${PVR}/etc
+
+************************************************************************
+*    NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE    *
+************************************************************************
+
+Some file locations have changed. Everything is now installed, for real
+this time, into:
+
+    ${VHOST_ROOT}
+
+RT executables are no longer in /usr/bin. You may need to modify your
+existing configuration files accordingly.

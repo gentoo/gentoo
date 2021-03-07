@@ -1,0 +1,108 @@
+* Fix ancient perl 4 modules that are long gone.
+* Fix perl shebangs to be portable and usable on Prefix.
+See also: https://blogs.gentoo.org/mgorny/2016/02/08/a-quick-note-on-portable-shebangs/
+
+--- a/squid/Testsuite/bug-1-sfetch-paths
++++ b/squid/Testsuite/bug-1-sfetch-paths
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Test for bug #1: sfetch/SSI path bug.
+ # sfetch can't follow paths out of current directory if it's using
+--- a/squid/Testsuite/x-base-afetch
++++ b/squid/Testsuite/x-base-afetch
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ use testsuite;
+ 
+--- a/squid/Testsuite/x-base-alistat
++++ b/squid/Testsuite/x-base-alistat
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ use testsuite;
+ 
+--- a/squid/Testsuite/x-base-seqstat
++++ b/squid/Testsuite/x-base-seqstat
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ use testsuite;
+ 
+--- a/squid/Testsuite/x-base-sfetch
++++ b/squid/Testsuite/x-base-sfetch
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ use testsuite;
+ 
+--- a/squid/Testsuite/x-base-shuffle
++++ b/squid/Testsuite/x-base-shuffle
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ use testsuite;
+ 
+--- a/squid/Testsuite/x-base-sindex
++++ b/squid/Testsuite/x-base-sindex
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ use testsuite;
+ 
+--- a/squid/Testsuite/x-base-sreformat
++++ b/squid/Testsuite/x-base-sreformat
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ use testsuite;
+ 
+--- a/testsuite/sqc
++++ b/testsuite/sqc
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # sqc 
+ # quality control script for exercising code, regression testing, 
+@@ -176,12 +176,11 @@
+ # SRE, Tue Aug  6 11:16:39 2002
+ # CVS $Id: sqc,v 1.3 2003/01/05 23:40:57 eddy Exp $
+ 
+-require "getopts.pl";
+-require "importenv.pl";
++use Getopt::Std;
+ 
+ # Parse our command line
+ #
+-&Getopts('mp:r:v');
++getopts('mp:r:v');
+ if ($opt_m) { $do_memtest = 1;    }
+ if ($opt_p) { push @prepdirs, $opt_p; }
+ if ($opt_r) { push @olddirs,  $opt_r; }
+@@ -506,7 +505,7 @@
+ #
+ sub tempname {
+     my ($dir, $name, $suffix);
+-    if ($TMPDIR) { $dir = $TMPDIR."/"; } else {$dir = "";}
++    if ($ENV{TMPDIR}) { $dir = $ENV{TMPDIR}."/"; } else {$dir = "";}
+ 
+     foreach $suffix ("aa".."zz") {
+         $name = "$dir"."sre".$suffix.$$;
+--- a/testsuite/test1-conversion.pl
++++ b/testsuite/test1-conversion.pl
+@@ -1,4 +1,4 @@
+-#! /usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # Test hmmconvert.
+ #

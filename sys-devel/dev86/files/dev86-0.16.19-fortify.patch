@@ -1,0 +1,23 @@
+--- dev86-0.16.19/bcc/bcc.c
++++ dev86-0.16.19/bcc/bcc.c
+@@ -596,12 +597,17 @@
+    }
+ }
+ 
+-void
+-command_reset()
+-{
+ #ifndef MAXPATHLEN
++#ifdef PATH_MAX
++#define MAXPATHLEN PATH_MAX
++#else
+ #define MAXPATHLEN 1024
+ #endif
++#endif
++
++void
++command_reset()
++{
+    char buf[MAXPATHLEN];
+    char ** prefix;
+    char * saved_cmd;

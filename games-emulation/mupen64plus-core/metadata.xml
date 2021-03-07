@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
+	<use>
+		<flag name="debugger">Build the debugger</flag>
+		<flag name="new-dynarec">Enable new experimental dynamic recompiler implementation (only for x86 and arm)</flag>
+		<flag name="opencv">Support video capture via <pkg>media-libs/opencv</pkg></flag>
+		<flag name="osd">Overlay emulator messages using on-screen-display</flag>
+	</use>
+	<longdescription>Mupen64Plus is a plugin-based N64 emulator for Linux which is capable of accurately playing many games.
+Included are four MIPS R4300 CPU emulators, with dynamic recompilers for 32-bit x86 and 64-bit amd64 systems.</longdescription>
+	<upstream>
+		<remote-id type="google-code">mupen64plus</remote-id>
+		<remote-id type="github">mupen64plus/mupen64plus-core</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,12 @@
+--- a/configure.in
++++ b/configure.in
+@@ -17,7 +17,8 @@
+ 
+ #AC_CONFIG_SRCDIR(configure.in)
+ AC_CONFIG_AUX_DIR(config)
+-AM_CONFIG_HEADER(include/config.h)
++AC_CONFIG_HEADERS([include/config.h])
++AC_CONFIG_MACRO_DIR([m4])
+ 
+ AM_INIT_AUTOMAKE
+ 

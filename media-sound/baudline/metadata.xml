@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<!-- maintainer-needed -->
+<longdescription lang="en">
+Baudline is a time-frequency browser designed for scientific visualization of the spectral domain.  Signal analysis is performed by Fourier, correlation, and raster transforms that create colorful spectrograms with vibrant detail.  Conduct test and measurement experiments with the built in function generator, or play back audio files with a multitude of effects and filters.  The baudline signal analyzer combines fast digital signal processing, versatile high speed displays, and continuous capture tools for hunting down and studying elusive signal characteristics.
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,32 @@
+Fix libm (and ncurses) underlinking issues.
+https://bugs.gentoo.org/show_bug.cgi?id=529490
+
+--- mpfc-1.3.8.1/configure.ac
++++ mpfc-1.3.8.1/configure.ac
+@@ -13,13 +13,13 @@
+ COMMON_LIBS=""
+ AC_SUBST(COMMON_LIBS)
+ 
++dnl Check for libm for rintf()
++AC_SEARCH_LIBS([rintf], [m], [], [
++	AC_MSG_ERROR([unable to find the rintf() function])
++])
++
+ # Check for ncurses
+-LIBS_save=$LIBS
+-AC_CHECK_HEADERS([curses.h],,[AC_MSG_ERROR(*** Can't find curses.h ***)])
+-AC_CHECK_LIB(ncursesw, waddch,,[AC_MSG_ERROR(*** Can't find ncurses library ***)])
+-CURSES_LIBS="-lncursesw"
+-AC_SUBST(CURSES_LIBS)
+-LIBS=$LIBS_save
++PKG_CHECK_MODULES([CURSES], [ncursesw])
+ 
+ # Check for pthread
+ LIBS_save=$LIBS
+--- mpfc-1.3.8.1/libmpfcwnd/Makefile.am
++++ mpfc-1.3.8.1/libmpfcwnd/Makefile.am
+@@ -1,3 +1,4 @@
++AM_CPPFLAGS = @CURSES_CFLAGS@
+ lib_LTLIBRARIES = libmpfcwnd.la
+ libmpfcwndhdrdir = $(includedir)/mpfc/libmpfcwnd
+ libmpfcwndhdr_HEADERS = wnd.h wnd_print.h wnd_msg.h wnd_kbd.h \

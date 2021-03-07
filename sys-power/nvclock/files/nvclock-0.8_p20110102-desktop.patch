@@ -1,0 +1,18 @@
+fix qa warning:
+
+/usr/share/applications/nvclock.desktop: error: (will be fatal in the future):
+value "nvclock.png" for key "Icon" in group "Desktop Entry" is an icon name
+with an extension, but there should be no extension as described in the Icon
+Theme Specification if the value is not an absolute path
+
+--- a/nvclock.desktop
++++ b/nvclock.desktop
+@@ -3,7 +3,7 @@ Encoding=UTF-8
+ Name=NVCLOCK
+ Comment=Overclock and Monitor NVIDIA cards
+ Exec=nvclock_gtk
+-Icon=nvclock.png
++Icon=nvclock
+ Terminal=false
+ Type=Application
+ Categories=System;

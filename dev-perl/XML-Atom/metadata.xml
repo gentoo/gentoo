@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">XML-Atom</remote-id>
+    <remote-id type="cpan-module">LWP::UserAgent::AtomClient</remote-id>
+    <remote-id type="cpan-module">XML::Atom</remote-id>
+    <remote-id type="cpan-module">XML::Atom::Base</remote-id>
+    <remote-id type="cpan-module">XML::Atom::Category</remote-id>
+    <remote-id type="cpan-module">XML::Atom::Client</remote-id>
+    <remote-id type="cpan-module">XML::Atom::Content</remote-id>
+    <remote-id type="cpan-module">XML::Atom::Entry</remote-id>
+    <remote-id type="cpan-module">XML::Atom::ErrorHandler</remote-id>
+    <remote-id type="cpan-module">XML::Atom::Feed</remote-id>
+    <remote-id type="cpan-module">XML::Atom::Link</remote-id>
+    <remote-id type="cpan-module">XML::Atom::Namespace</remote-id>
+    <remote-id type="cpan-module">XML::Atom::Person</remote-id>
+    <remote-id type="cpan-module">XML::Atom::Server</remote-id>
+    <remote-id type="cpan-module">XML::Atom::Thing</remote-id>
+    <remote-id type="cpan-module">XML::Atom::Util</remote-id>
+  </upstream>
+</pkgmetadata>

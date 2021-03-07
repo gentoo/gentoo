@@ -1,0 +1,368 @@
+Index: frei0r-plugins-1.7.0/src/filter/facebl0r/facebl0r.cpp
+===================================================================
+--- frei0r-plugins-1.7.0.orig/src/filter/facebl0r/facebl0r.cpp
++++ frei0r-plugins-1.7.0/src/filter/facebl0r/facebl0r.cpp
+@@ -19,18 +19,20 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <opencv2/opencv.hpp>
++#include <opencv2/core/core_c.h>
++#include <opencv2/imgproc/imgproc_c.h>
+ #include "frei0r.hpp"
+ #include "frei0r_math.h"
+ 
+ typedef struct {
+-  IplImage* hsv;     //input image converted to HSV
+-  IplImage* hue;     //hue channel of HSV image
+-  IplImage* mask;    //image for masking pixels
+-  IplImage* prob;    //face probability estimates for each pixel
++  cv::Mat hsv;     //input image converted to HSV
++  cv::Mat hue;     //hue channel of HSV image
++  cv::Mat mask;    //image for masking pixels
++  cv::Mat prob;    //face probability estimates for each pixel
+ 
+-  CvHistogram* hist; //histogram of hue in original face image
++  cv::Mat hist; //histogram of hue in original face image
+ 
+-  CvRect prev_rect;  //location of face in previous frame
++  cv::Rect prev_rect;  //location of face in previous frame
+   CvBox2D curr_box;  //current face location estimate
+ } TrackedObj;
+ 
+@@ -47,23 +49,23 @@ public:
+ private:
+     
+ // camshift
+-    TrackedObj* create_tracked_object (IplImage* image, CvRect* face_rect);
++    TrackedObj* create_tracked_object (cv::Mat& image, cv::Rect& face_rect);
+     void destroy_tracked_object (TrackedObj* tracked_obj);
+-    CvBox2D camshift_track_face (IplImage* image, TrackedObj* imgs);
+-    void update_hue_image (const IplImage* image, TrackedObj* imgs);
++    CvBox2D camshift_track_face (cv::Mat& image, TrackedObj* imgs);
++    void update_hue_image (const cv::Mat& image, TrackedObj* imgs);
+     
+ //trackface
+-    CvRect* detect_face (IplImage*, CvHaarClassifierCascade*, CvMemStorage*);
++    void detect_face (const cv::Mat&, cv::CascadeClassifier*, cv::Rect& res, bool& found);
+     
+ 
+     TrackedObj* tracked_obj;
+     CvBox2D face_box; //area to draw
+-    CvRect* face_rect;
++    cv::Rect face_rect;
+     
+ //used by capture_video_frame, so we don't have to keep creating.
+-    IplImage* image;
++    cv::Mat image;
+ 
+-    CvHaarClassifierCascade* cascade;
++    cv::CascadeClassifier* cascade;
+     CvMemStorage* storage;
+ 
+     // plugin parameters
+@@ -89,17 +91,17 @@ frei0r::construct<FaceBl0r> plugin("Face
+ 				  "ZioKernel, Biilly, Jilt, Jaromil, ddennedy",
+ 				  1,1, F0R_COLOR_MODEL_PACKED32);
+ 
+-FaceBl0r::FaceBl0r(int wdt, int hgt) {
++FaceBl0r::FaceBl0r(int wdt, int hgt):
++  image(wdt, hgt, CV_8UC4)
++{
+ 
+-  face_rect = 0;
+-  image = 0;
+   tracked_obj = 0;
+   face_found = 0;
+   
+   cascade = 0;
+   storage = 0;
+   
+-  classifier = "/usr/share/opencv/haarcascades/haarcascade_frontalface_default.xml";
++  classifier = "/usr/share/opencv4/haarcascades/haarcascade_frontalface_default.xml";
+   register_param(classifier,
+                  "Classifier",
+                  "Full path to the XML pattern model for recognition; look in /usr/share/opencv/haarcascades");
+@@ -124,7 +126,7 @@ FaceBl0r::~FaceBl0r() {
+     if(tracked_obj)
+         destroy_tracked_object(tracked_obj);
+ 
+-    if(cascade) cvReleaseHaarClassifierCascade(&cascade);
++    if(cascade) delete cascade;
+     if(storage) cvReleaseMemStorage(&storage);
+     
+ }
+@@ -142,7 +144,7 @@ void FaceBl0r::update(double time,
+ 	  return;
+ 	} else old_classifier = classifier;
+ 
+-	cascade = (CvHaarClassifierCascade*) cvLoad(classifier.c_str(), 0, 0, 0 );
++	cascade = new cv::CascadeClassifier(classifier);
+ 	if (!cascade) {
+ 	  fprintf(stderr, "ERROR in filter facebl0r, classifier cascade not found:\n");
+ 	  fprintf(stderr, " %s\n", classifier.c_str());
+@@ -162,10 +164,7 @@ void FaceBl0r::update(double time,
+   search_scale = CLAMP(search_scale, 0.11, 1.0);
+   neighbors = CLAMP(neighbors, 0.01, 1.0);
+ 
+-  if( !image )
+-      image = cvCreateImage( cvSize(width,height), IPL_DEPTH_8U, 4 );
+-
+-  memcpy(image->imageData, in, size * 4);
++  memcpy(image.data, in, size * 4);
+ 
+   /*
+     no face*
+@@ -176,12 +175,15 @@ void FaceBl0r::update(double time,
+        no face*
+    */
+   if(face_notfound>0) {
++      bool found = false;
+ 
+       if(face_notfound % cvRound(recheck * 1000) == 0)
+-          face_rect = detect_face(image, cascade, storage);
++      {
++          detect_face(image, cascade, face_rect, found);
++      }
+ 
+       // if no face detected
+-      if (!face_rect) {
++      if (!found) {
+           face_notfound++;
+       } else {
+           //track detected face with camshift
+@@ -211,16 +213,17 @@ void FaceBl0r::update(double time,
+       }
+       else {
+ ////////////////////////////////////////////////////////////////////////
+-	      cvSetImageROI (image, tracked_obj->prev_rect);
++	      cv::Mat roi = image(tracked_obj->prev_rect);
+ //          cvSmooth (image, image, CV_BLUR, 22, 22, 0, 0);
+-		  cvSmooth (image, image, CV_BLUR, 23, 23, 0, 0);
++		cv::blur (roi, roi, cv::Size(23,23));
+ //          cvSmooth (image, image, CV_GAUSSIAN, 11, 11, 0, 0);
+-		  cvResetImageROI (image);
+ ////////////////////////////////////////////////////////////////////////
+       
+           //outline face ellipse
+-          if (ellipse)
+-              cvEllipseBox(image, face_box, CV_RGB(255,0,0), 2, CV_AA, 0);
++          if (ellipse) {
++	      CvSize axes = cvSize(face_box.size.width*0.5, face_box.size.height*0.5);
++	      cv::ellipse(image, cvPointFrom32f(face_box.center), axes, face_box.angle, 0, 360, CV_RGB(255,0,0), 2, CV_AA, 0);
++	  }
+ 
+           face_found++;
+           if(face_found % cvRound(recheck * 1000) == 0)
+@@ -228,133 +231,121 @@ void FaceBl0r::update(double time,
+       }
+   }
+ 
+-  memcpy(out, image->imageData, size * 4);
+-  cvReleaseImage(&image);
++  memcpy(out, image.data, size * 4);
+ }
+ 
+ /* Given an image and a classider, detect and return region. */
+-CvRect* FaceBl0r::detect_face (IplImage* image,
+-                               CvHaarClassifierCascade* cascade,
+-                               CvMemStorage* storage) {
++void FaceBl0r::detect_face (const cv::Mat& image,
++                               cv::CascadeClassifier* cascade,
++			       cv::Rect& res,
++			       bool& found) {
+     
+-  CvRect* rect = 0;
+-  
+-  if (cascade && storage) {
++  if (cascade) {
+      //use an equalized gray image for better recognition
+-     IplImage* gray = cvCreateImage(cvSize(image->width, image->height), 8, 1);
+-     cvCvtColor(image, gray, CV_BGR2GRAY);
+-     cvEqualizeHist(gray, gray);
+-     cvClearMemStorage(storage);
++     //IplImage* gray = cvCreateImage(cvSize(image->width, image->height), 8, 1);
++     cv::Mat gray;
++     cv::cvtColor(image, gray, cv::COLOR_BGR2GRAY);
++     cv::equalizeHist(gray, gray);
+ 
+       //get a sequence of faces in image
+       int min = cvRound(smallest * 1000);
+-      CvSeq *faces = cvHaarDetectObjects(gray, cascade, storage,
++      std::vector< cv::Rect > objects;
++      std::vector< int > numDetections;
++      cascade->detectMultiScale(gray, objects, numDetections,
+          search_scale * 10.0,
+          cvRound(neighbors * 100),
+-         CV_HAAR_FIND_BIGGEST_OBJECT|//since we track only the first, get the biggest
+-         CV_HAAR_DO_CANNY_PRUNING,  //skip regions unlikely to contain a face
++         cv::CASCADE_FIND_BIGGEST_OBJECT|//since we track only the first, get the biggest
++         cv::CASCADE_DO_CANNY_PRUNING,  //skip regions unlikely to contain a face
+          cvSize(min, min));
+     
+       //if one or more faces are detected, return the first one
+-      if(faces && faces->total)
+-        rect = (CvRect*) cvGetSeqElem(faces, 0);
+-
+-      cvReleaseImage(&gray);
++      if(!objects.empty())
++      {
++        res = objects[0];
++	found = true;
++      }
+   }
+-
+-  return rect;
+ }
+ 
+ /* Create a camshift tracked object from a region in image. */
+-TrackedObj* FaceBl0r::create_tracked_object (IplImage* image, CvRect* region) {
++TrackedObj* FaceBl0r::create_tracked_object (cv::Mat& image, cv::Rect& region) {
+   TrackedObj* obj;
+   
++  int hist_bins = 30;           //number of histogram bins
++  float hist_range[] = {0,180}; //histogram range
++  const float* range = hist_range;
++  const int channels[] = {0, 1, 2};
++
+   //allocate memory for tracked object struct
+-  if((obj = (TrackedObj *) malloc(sizeof *obj)) != NULL) {
++  if((obj = new TrackedObj()) != NULL) {
+     //create-image: size(w,h), bit depth, channels
+-    obj->hsv  = cvCreateImage(cvGetSize(image), 8, 3);
+-    obj->mask = cvCreateImage(cvGetSize(image), 8, 1);
+-    obj->hue  = cvCreateImage(cvGetSize(image), 8, 1);
+-    obj->prob = cvCreateImage(cvGetSize(image), 8, 1);
+-
+-    int hist_bins = 30;           //number of histogram bins
+-    float hist_range[] = {0,180}; //histogram range
+-    float* range = hist_range;
+-    obj->hist = cvCreateHist(1,             //number of hist dimensions
+-                             &hist_bins,    //array of dimension sizes
+-                             CV_HIST_ARRAY, //representation format
+-                             &range,        //array of ranges for bins
+-                             1);            //uniformity flag
++    obj->hsv.create(image.size(), CV_8UC3);
++    obj->mask.create(image.size(), CV_8UC1);
++    obj->hue.create(image.size(), CV_8UC1);
++    obj->prob.create(image.size(), CV_8UC1);
+   }
+   
+   //create a new hue image
+   update_hue_image(image, obj);
+ 
+-  float max_val = 0.f;
++  double max_val = 0.f;
++  double min_val = 0.f;
+   
+   //create a histogram representation for the face
+-  cvSetImageROI(obj->hue, *region);
+-  cvSetImageROI(obj->mask, *region);
+-  cvCalcHist(&obj->hue, obj->hist, 0, obj->mask);
+-  cvGetMinMaxHistValue(obj->hist, 0, &max_val, 0, 0 );
+-  cvConvertScale(obj->hist->bins, obj->hist->bins,
+-                 max_val ? 255.0/max_val : 0, 0);
+-  cvResetImageROI(obj->hue);
+-  cvResetImageROI(obj->mask);
++  cv::Mat hueroi = obj->hue(region);
++  cv::Mat maskroi = obj->mask(region);
++  cv::calcHist(&obj->hue, 1, channels, obj->mask, obj->hist, 1, &hist_bins, &range);
++  cv::minMaxIdx(obj->hist, &min_val, &max_val);
++  obj->hist = (max_val ? 255.0/max_val : 0) * obj->hist;
+   
+   //store the previous face location
+-  obj->prev_rect = *region;
++  obj->prev_rect = region;
+ 
+   return obj;
+ }
+ 
+ /* Release resources from tracked object. */
+ void FaceBl0r::destroy_tracked_object (TrackedObj* obj) {
+-  cvReleaseImage(&obj->hsv);
+-  cvReleaseImage(&obj->hue);
+-  cvReleaseImage(&obj->mask);
+-  cvReleaseImage(&obj->prob);
+-  cvReleaseHist(&obj->hist);
+-
+-  free(obj);
++  delete obj;
+ }
+ 
+ /* Given an image and tracked object, return box position. */
+-CvBox2D FaceBl0r::camshift_track_face (IplImage* image, TrackedObj* obj) {
+-  CvConnectedComp components;
+-
++CvBox2D FaceBl0r::camshift_track_face (cv::Mat& image, TrackedObj* obj) {
+   //create a new hue image
+   update_hue_image(image, obj);
+ 
+   //create a probability image based on the face histogram
+-  cvCalcBackProject(&obj->hue, obj->prob, obj->hist);
+-  cvAnd(obj->prob, obj->mask, obj->prob, 0);
++  const int channels[] = {0, 1, 2};
++  float hist_range[] = {0,180}; //histogram range
++  const float* range = hist_range;
++  cv::calcBackProject(&obj->hue, 1, channels, obj->hist, obj->prob, &range);
++  obj->prob = obj->prob & obj->mask;
+ 
+   //use CamShift to find the center of the new face probability
+-  cvCamShift(obj->prob, obj->prev_rect,
+-             cvTermCriteria(CV_TERMCRIT_EPS | CV_TERMCRIT_ITER, 10, 1),
+-             &components, &obj->curr_box);
++  cv::RotatedRect rrect = cv::CamShift(obj->prob, obj->prev_rect, 
++             cv::TermCriteria(cv::TermCriteria::EPS | cv::TermCriteria::MAX_ITER, 10, 1));
+ 
+   //update face location and angle
+-  obj->prev_rect = components.rect;
+-  obj->curr_box.angle = -obj->curr_box.angle;
++  obj->prev_rect = rrect.boundingRect();
++  obj->curr_box = cvBox2D(rrect);
++  obj->curr_box.angle = -rrect.angle;
+ 
+   return obj->curr_box;
+ }
+ 
+-void FaceBl0r::update_hue_image (const IplImage* image, TrackedObj* obj) {
++void FaceBl0r::update_hue_image (const cv::Mat& image, TrackedObj* obj) {
+   //limits for calculating hue
+   int vmin = 65, vmax = 256, smin = 55;
+   
+   //convert to HSV color model
+-  cvCvtColor(image, obj->hsv, CV_BGR2HSV);
++  cv::cvtColor(image, obj->hsv, cv::COLOR_BGR2HSV);
+   
+   //mask out-of-range values
+-  cvInRangeS(obj->hsv,                               //source
+-             cvScalar(0, smin, MIN(vmin, vmax), 0),  //lower bound
+-             cvScalar(180, 256, MAX(vmin, vmax) ,0), //upper bound
++  cv::inRange(obj->hsv,                               //source
++             cv::Scalar(0, smin, MIN(vmin, vmax), 0),  //lower bound
++             cv::Scalar(180, 256, MAX(vmin, vmax) ,0), //upper bound
+              obj->mask);                             //destination
+   
+   //extract the hue channel, split: src, dest channels
+-  cvSplit(obj->hsv, obj->hue, 0, 0, 0 );
++  cv::split(obj->hsv, obj->hue);
+ }
+Index: frei0r-plugins-1.7.0/src/filter/facedetect/facedetect.cpp
+===================================================================
+--- frei0r-plugins-1.7.0.orig/src/filter/facedetect/facedetect.cpp
++++ frei0r-plugins-1.7.0/src/filter/facedetect/facedetect.cpp
+@@ -21,6 +21,8 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <opencv2/opencv.hpp>
++#include <opencv2/core/core_c.h>
++#include <opencv2/imgproc/imgproc_c.h>
+ #include "frei0r.hpp"
+ #include "frei0r_math.h"
+ 
+@@ -65,7 +67,7 @@ public:
+     {
+         roi.width = roi.height = 0;
+         roi.x = roi.y = 0;
+-        classifier = "/usr/share/opencv/haarcascades/haarcascade_frontalface_default.xml";
++        classifier = "/usr/share/opencv4/haarcascades/haarcascade_frontalface_default.xml";
+         register_param(classifier,
+                        "Classifier",
+                        "Full path to the XML pattern model for recognition; look in /usr/share/opencv/haarcascades"); 

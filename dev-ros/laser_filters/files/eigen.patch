@@ -1,0 +1,15 @@
+Index: laser_filters-1.8.11/CMakeLists.txt
+===================================================================
+--- laser_filters-1.8.11.orig/CMakeLists.txt
++++ laser_filters-1.8.11/CMakeLists.txt
+@@ -12,7 +12,9 @@ set(THIS_PACKAGE_ROS_DEPS sensor_msgs ro
+ 
+ find_package(catkin REQUIRED COMPONENTS ${THIS_PACKAGE_ROS_DEPS})
+ find_package(Boost REQUIRED COMPONENTS system)
+-include_directories(include ${catkin_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
++find_package(Eigen3 REQUIRED)
++add_definitions(${EIGEN3_DEFINITIONS})
++include_directories(include ${catkin_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS} ${EIGEN3_INCLUDE_DIR})
+ 
+ ##############################################################################
+ # Define package

@@ -1,0 +1,5 @@
+--- a/zorroutils.h
++++ b/zorroutils.h
+@@ -16,1 +16,1 @@
+-#define ZORRO_ID_DB "/usr/share/zorro.ids"
++#define ZORRO_ID_DB "/usr/share/misc/zorro.ids"

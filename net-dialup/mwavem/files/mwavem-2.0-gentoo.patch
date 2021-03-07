@@ -1,0 +1,24 @@
+diff -ur mwavem-2.0.orig/configure.in mwavem-2.0/configure.in
+--- mwavem-2.0.orig/configure.in	2004-04-06 23:50:57.000000000 +0000
++++ mwavem-2.0/configure.in	2008-10-18 09:31:29.000000000 +0000
+@@ -27,7 +27,7 @@
+ AC_DEFINE(MWWTDBG)
+ 
+ INCLUDES="-I\$(top_srcdir)/src/include"
+-CFLAGS="$INCLUDES -O2 -fno-strict-aliasing -fomit-frame-pointer -Wall"
++CFLAGS="${CFLAGS} $INCLUDES -fno-strict-aliasing -Wall"
+ 
+ dnl Set dsp_dir here and we substitute it in mwavem.conf from mwavem.conf.in
+ dsp_dir=`	test "x$exec_prefix" = xNONE && exec_prefix=$ac_default_prefix
+diff -ur mwavem-2.0.orig/src/mwavem/Makefile.am mwavem-2.0/src/mwavem/Makefile.am
+--- mwavem-2.0.orig/src/mwavem/Makefile.am	2008-10-18 09:38:52.000000000 +0000
++++ mwavem-2.0/src/mwavem/Makefile.am	2008-10-18 09:38:00.000000000 +0000
+@@ -10,6 +10,8 @@
+ 	-rm $(distdir)/modem.c
+ 
+ install-exec-local:
++
++install-exec-local-invalid:
+ 	if [ ! -c "/dev/modems/mwave" ]; then \
+ 		mkdir -p /dev/modems; \
+ 		mknod --mode=660 /dev/modems/mwave c 10 219; \

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zerochaos@gentoo.org</email>
+		<name>Rick Farina</name>
+	</maintainer>
+	<use>
+		<flag name="libusb">Support libusb based capture sources such as mousejack, cc2540(ble), and nrf51822(ble)</flag>
+		<flag name="suid">
+			Install a setuid root helper binary with limited functionality;
+			this allows running kismet as a normal user, significantly
+			reducing security risks
+		</flag>
+		<flag name="pcre">Build with pcre support</flag>
+		<flag name="rtlsdr">Enable rtlsdr based kismet capture sources</flag>
+		<flag name="ubertooth">Enable capture source for ubertooth to sniff bluetooth low energy</flag>
+	</use>
+</pkgmetadata>

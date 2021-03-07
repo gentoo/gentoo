@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>gokturk@gentoo.org</email>
+    <name>Göktürk Yüksek</name>
+  </maintainer>
+  <longdescription>
+    mbpfan is a daemon that uses input from coretemp module and sets
+    the fan speed using the applesmc module. This is an enhanced
+    version of Allan McRae mbpfan. This enhanced version assumes any
+    number of processors and fans.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/dgraziotin/mbpfan/issues</bugs-to>
+    <remote-id type="github">dgraziotin/mbpfan</remote-id>
+  </upstream>
+</pkgmetadata>

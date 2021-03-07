@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://sourceforge.net/p/serdisplib/bugs/</bugs-to>
+		<remote-id type="sourceforge">serdisplib</remote-id>
+	</upstream>
+	<longdescription>
+		Serdisplib is a library to drive serial displays with built-in controllers,
+		parallel driven displays and USB driven displays. OLED displays are also supported.
+	</longdescription>
+	<use>
+		<flag name="tools">Build optional tools.</flag>
+	</use>
+</pkgmetadata>

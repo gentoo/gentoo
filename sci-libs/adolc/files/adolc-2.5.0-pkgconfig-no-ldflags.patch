@@ -1,0 +1,9 @@
+--- a/adolclib.pc.in	2014-05-21 09:09:10.060824555 -0700
++++ b/adolclib.pc.in	2014-05-21 09:09:10.060824555 -0700
+@@ -7,5 +7,5 @@
+ Version: @PACKAGE_VERSION@
+ Description: Algorithmic Differentiation Library for C/C++
+ Requires: 
+-Libs: -L${libdir} -l@adolclib@ -Wl,-rpath,${libdir} @LDFLAGS@ @LIBS@
++Libs: -L${libdir} -l@adolclib@ @LIBS@
+ Cflags: -I${includedir}

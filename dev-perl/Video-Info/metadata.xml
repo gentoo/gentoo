@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Video-Info</remote-id>
+    <remote-id type="cpan-module">Video::Info</remote-id>
+    <remote-id type="cpan-module">Video::Info::ASF</remote-id>
+    <remote-id type="cpan-module">Video::Info::FOO</remote-id>
+    <remote-id type="cpan-module">Video::Info::MPEG</remote-id>
+    <remote-id type="cpan-module">Video::Info::MPEG::Audio</remote-id>
+    <remote-id type="cpan-module">Video::Info::MPEG::Constants</remote-id>
+    <remote-id type="cpan-module">Video::Info::MPEG::System</remote-id>
+    <remote-id type="cpan-module">Video::Info::MPEG::Video</remote-id>
+    <remote-id type="cpan-module">Video::Info::Magic</remote-id>
+    <remote-id type="cpan-module">Video::Info::Quicktime</remote-id>
+    <remote-id type="cpan-module">Video::Info::RIFF</remote-id>
+  </upstream>
+</pkgmetadata>

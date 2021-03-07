@@ -1,0 +1,26 @@
+From 02a47cd19641a04f6cf8d486cbb8882a1819c661 Mon Sep 17 00:00:00 2001
+From: Michael Stapelberg <michael@stapelberg.de>
+Date: Fri, 12 Jul 2019 14:38:43 +0200
+Subject: [PATCH 4/7] battery: include sys/sysctl.h on OpenBSD
+
+This is required so that CTL_HW and others are defined (ran into this on OpenBSD
+6.5).
+---
+ src/print_battery_info.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/print_battery_info.c b/src/print_battery_info.c
+index e2a790c..a36b05f 100644
+--- a/src/print_battery_info.c
++++ b/src/print_battery_info.c
+@@ -34,6 +34,7 @@
+ #include <sys/ioctl.h>
+ #include <sys/types.h>
+ #include <sys/sensors.h>
++#include <sys/sysctl.h>
+ #endif
+ 
+ #if defined(__NetBSD__)
+-- 
+2.26.2
+

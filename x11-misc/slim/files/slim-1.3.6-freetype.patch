@@ -1,0 +1,12 @@
+diff -up ./CMakeLists.txt.orig ./CMakeLists.txt
+--- ./CMakeLists.txt.orig	2014-11-11 20:38:40.706121207 +0100
++++ ./CMakeLists.txt	2014-11-11 20:39:34.206120264 +0100
+@@ -165,7 +165,7 @@ include_directories(
+ 	${X11_Xft_INCLUDE_PATH}
+ 	${X11_Xrender_INCLUDE_PATH}
+ 	${X11_Xrandr_INCLUDE_PATH}
+-	${FREETYPE_INCLUDE_DIR_freetype2}
++	${FREETYPE_INCLUDE_DIRS}
+ 	${X11_Xmu_INCLUDE_PATH}
+ 	${ZLIB_INCLUDE_DIR}
+ 	${JPEG_INCLUDE_DIR}

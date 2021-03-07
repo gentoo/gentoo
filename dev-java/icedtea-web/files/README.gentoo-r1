@@ -1,0 +1,56 @@
+Browser plugin
+--------------
+
+The IcedTea browser plugin (NPPlugin) is now made immediately
+available to supporting browsers without the need for eselect. Note
+that Chromium-based browsers no longer support NPAPI-based plugins
+since the code was removed in September 2015. The list of supporting
+browsers is shrinking but still includes Firefox as of version 46.
+
+JVM selection
+-------------
+
+By default, IcedTea's browser plugin and Web Start uses the JVM
+selected via eselect or the GENTOO_VM environment variable. Note that
+this doesn't have to be an IcedTea JVM. An Oracle JVM will also
+work. The choice can be overridden using the itweb-settings
+program. Simply blank out the field to restore the default behaviour.
+
+Coexistence with Oracle's plugin
+--------------------------------
+
+The IcedTea browser plugin can no longer be installed alongside
+Oracle's plugin. This used to be possible thanks to eselect
+java-nsplugin but this was removed in an effort to simplify things. No
+one is likely to need both, especially with plugins being all but
+outlawed these days. To avoid any blockers, simply enable the nsplugin
+USE flag on icedtea-web or the Oracle packages, but not both.
+
+If you're wondering why we don't just leave plugin selection to the
+browser, it's because Firefox (and probably others) only allows you to
+disable all the Java plugins together, not individually.
+
+Coexistence with Oracle's Web Start
+-----------------------------------
+
+/usr/bin/javaws, the executable used to launch JNLP files from a
+browser, will always use IcedTea's implementation over Oracle's when
+icedtea-web is installed, regardless of which JVM has been
+selected. This is primarily for consistency with the browser
+plugin. If you want to use Oracle's implementation then simply
+uninstall icedtea-web.
+
+32-bit plugin on 64-bit systems
+-------------------------------
+
+This is no longer supported as the 64-bit plugin can launch a 32-bit
+JVM. Other reasons for running a 32-bit browser on a 64-bit system
+have long passed.
+
+32-bit JVM on 64-bit systems
+----------------------------
+
+The emul-linux-x86-java package was removed in 2015 with the migration
+to full multilib. icedtea-bin now provides this feature via the
+multilib USE flag. Once installed, using the 32-bit variant is simply
+a case of selecting that VM as described above.

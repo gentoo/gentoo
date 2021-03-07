@@ -1,0 +1,31 @@
+From 877c93686ad36d5dcc4a42b8bff5f3c5383e6514 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Thu, 2 Jul 2020 20:16:20 +1200
+Subject: Change load order of Convert::ASCII::Armour
+
+Which is reported to somehow fix segv's in t/11-wrapper.t
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=4877
+Bug: https://bugs.gentoo.org/627058
+---
+ lib/Crypt/RSA.pm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/Crypt/RSA.pm b/lib/Crypt/RSA.pm
+index 5a3d3bc..072f0b4 100644
+--- a/lib/Crypt/RSA.pm
++++ b/lib/Crypt/RSA.pm
+@@ -15,9 +15,9 @@ use lib "$Bin/../../lib";
+ use strict;
+ use base 'Class::Loader';
+ use base 'Crypt::RSA::Errorhandler';
++use Convert::ASCII::Armour;
+ use Crypt::RSA::Key;
+ use Crypt::RSA::DataFormat qw(steak octet_len);
+-use Convert::ASCII::Armour;
+ use Carp;
+ 
+ $Crypt::RSA::VERSION = '1.99';  # change this elsewhere too!
+-- 
+2.27.0
+

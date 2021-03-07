@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="tmux">Install sk-tmux script to run skim in a tmux pane</flag>
+		<flag name="vim">Install vim plugin for skim</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">lotabout/skim</remote-id>
+		<changelog>https://github.com/lotabout/skim/blob/master/CHANGELOG.md</changelog>
+	</upstream>
+</pkgmetadata>

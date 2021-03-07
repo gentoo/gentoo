@@ -1,0 +1,60 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+SPOOLDIR="${SPOOLDIR:-/var/spool/MIMEDefang}"
+PID="${SPOOLDIR}/mimedefang.pid"
+MXPID="${SPOOLDIR}/mimedefang-multiplexor.pid"
+LOCK="${SPOOLDIR}/mimedefang.lock"
+MXLOCK="${SPOOLDIR}/mimedefang-multiplexor.lock"
+
+# Make sure required vars are set
+SOCKET="${SOCKET:-${SPOOLDIR}/mimedefang.sock}"
+MX_SOCKET="${MX_SOCKET:-${SPOOLDIR}/mimedefang-multiplexor.sock}"
+
+description="MIMEDefang mail filter"
+extra_commands="checkconfig"
+description_checkconfig="Check config for ${RC_SVCNAME}"
+
+depend() {
+	use antivirus
+}
+
+checkconfig() {
+	checkpath -d "${SPOOLDIR}"
+	einfo "multiplexor socket: ${MX_SOCKET}"
+	einfo "sendmail socket: ${SOCKET}"
+}
+
+start() {
+	checkconfig || return 1
+
+	# First start mimedefang multiplexor
+	rm -f "${MX_SOCKET}" > /dev/null 2>&1
+	ebegin "Starting mimedefang-multiplexor"
+	start-stop-daemon --start --quiet \
+		--exec /usr/bin/mimedefang-multiplexor -- -p "${MXPID}" -o "${MXLOCK}" -z "${SPOOLDIR}" \
+		${MD_MX_OPTS} ${MX_OPTS} \
+		-s "${MX_SOCKET}"
+	eend $? "Failed to start mimedefang-multiplexor"
+
+	# And now start mimedefang
+	rm -f "${SOCKET}" > /dev/null 2>&1
+	ebegin "Starting mimedefang"
+	start-stop-daemon --start --quiet \
+		--exec /usr/bin/mimedefang -- -P "${PID}" -o "${LOCK}" -z "${SPOOLDIR}" \
+		${MD_MX_OPTS} ${MD_OPTS} \
+		-m "${MX_SOCKET}" \
+		-p "${SOCKET}"
+	eend $? "Failed to start mimedefang"
+}
+
+stop() {
+	ebegin "Stopping mimedefang"
+	start-stop-daemon --stop --quiet --pidfile "${PID}"
+	eend $? "Failed to stop mimedefang"
+
+	ebegin "Stopping mimedefang-multiplexor"
+	start-stop-daemon --stop --quiet --pidfile "${MXPID}"
+	eend $? "Failed to stop mimedefang-multiplexor"
+}

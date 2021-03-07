@@ -1,0 +1,15 @@
+Index: rosbag/src/rosbag/bag.py
+===================================================================
+--- rosbag.orig/src/rosbag/bag.py
++++ rosbag/src/rosbag/bag.py
+@@ -50,8 +50,8 @@ import threading
+ import time
+ import yaml
+ 
+-from Cryptodome.Cipher import AES
+-from Cryptodome.Random import get_random_bytes
++from Crypto.Cipher import AES
++from Crypto.Random import get_random_bytes
+ 
+ import gnupg
+ 

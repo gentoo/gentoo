@@ -1,0 +1,72 @@
+--- configure.in
++++ configure.in
+@@ -183,9 +183,6 @@
+       blt_lib_prefix=""
+     fi
+     ;;
+-  *-*-macosx)
+-    blt_platform="macosx"
+-    ;;
+   *)
+     blt_platform="unix"
+     ;;
+@@ -728,6 +725,9 @@
+   *-hpux*)
+     SHLIB_SUFFIX="sl"
+     ;;
++  *-darwin*)
++    SHLIB_SUFFIX="dylib"
++    ;;
+   *)
+     SHLIB_SUFFIX="so"
+     ;;
+@@ -1145,6 +1145,13 @@
+     LDFLAGS=""
+     ;;
+ 
++  *-darwin*)
++    SHLIB_CFLAGS=""
++    SHLIB_LD="${CC}"
++    SHLIB_LD_FLAGS='-dynamiclib -install_name $(libdir)/$@'
++    SHLIB_SUFFIX=".dylib"
++    ;;
++
+   *-dgux*)
+     SHLIB_CFLAGS="-K PIC"
+     SHLIB_LD="cc"
+--- configure
++++ configure
+@@ -1279,9 +1279,6 @@
+       blt_lib_prefix=""
+     fi
+     ;;
+-  *-*-macosx)
+-    blt_platform="macosx"
+-    ;;
+   *)
+     blt_platform="unix"
+     ;;
+@@ -3396,6 +3393,9 @@
+   *-hpux*)
+     SHLIB_SUFFIX="sl"
+     ;;
++  *-darwin*)
++    SHLIB_SUFFIX="dylib"
++    ;;
+   *)
+     SHLIB_SUFFIX="so"
+     ;;
+@@ -3943,6 +3943,13 @@
+     LDFLAGS=""
+     ;;
+ 
++  *-darwin*)
++    SHLIB_CFLAGS=""
++    SHLIB_LD="${CC}"
++    SHLIB_LD_FLAGS='-dynamiclib -install_name $(libdir)/$@'
++    SHLIB_SUFFIX=".dylib"
++    ;;
++
+   *-dgux*)
+     SHLIB_CFLAGS="-K PIC"
+     SHLIB_LD="cc"

@@ -1,0 +1,23 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,16 +1,15 @@
+-INCDIR	=	-I/usr/X11R6/include
+-LIBDIR	=	-L/usr/X11R6/lib
+ LIBS	=	-lXpm -lXext -lX11 -lXxf86vm
+ OBJS	=	wmxres/wmxres.o \
+-		wmgeneral/wmgeneral.o \
++		wmgeneral/wmgeneral.o
++CFLAGS += -Wall
+ 
+ .c.o:
+-	cc -g -c -O2 -Wall -D$(shell echo `uname -s`) $< -o $*.o $(INCDIR)
++	$(CC) $(CPPFLAGS) $(CFLAGS) -c -D$(shell echo `uname -s`) $< -o $@
+ 
+ all: wmxres
+ 
+ wmxres: $(OBJS)
+-	cc -o wmxres/wmxres $^ $(LIBDIR) $(LIBS)
++	$(CC) $(LDFLAGS) -o wmxres/wmxres $^ $(LIBS)
+ 
+ install:: all
+ 	install -s -m 4755 -o root wmxres/wmxres /usr/X11R6/bin

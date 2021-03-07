@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>web-apps@gentoo.org</email>
+		<name>Gentoo Webapps</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>chewi@gentoo.org</email>
+		<name>James Le Cuirot</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<longdescription>
+		phpBB is a free flat-forum bulletin board software solution that can be used
+		to stay in touch with a group of people or can power your entire website.
+		With an extensive database of user-created extensions and styles database
+		containing hundreds of style and image packages to customise your board,
+		you can create a very unique forum in minutes.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://tracker.phpbb.com</bugs-to>
+		<remote-id type="github">phpbb/phpbb</remote-id>
+	</upstream>
+</pkgmetadata>

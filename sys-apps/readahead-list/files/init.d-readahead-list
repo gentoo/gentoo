@@ -1,0 +1,22 @@
+#!/sbin/openrc-run
+# Copyright 2005 Robin H. Johnson <robbat2@orbis-terrarum.net>
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	after localmount
+	# this should start as early as possible
+	# we can't do 'before *' as that breaks it
+	before clock bootmisc consolefont keymaps rmnologin serial urandom
+}
+
+start() {
+	# force reading
+	source /etc/conf.d/readahead-list
+
+	f="${READAHEAD_LIST_call_main}"
+	ebegin "readahead(2): ${f}"
+	/sbin/readahead-list ${f}
+	eend $?
+}
+
+# vim: ts=4 sw=4

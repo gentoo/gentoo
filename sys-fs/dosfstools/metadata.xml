@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>base-system@gentoo.org</email>
+	<name>Gentoo Base System</name>
+</maintainer>
+<upstream>
+	<remote-id type="cpe">cpe:/a:dosfstools_project:dosfstools</remote-id>
+	<remote-id type="github">dosfstools/dosfstools</remote-id>
+</upstream>
+<use>
+	<flag name="compat">Install symlinks for legacy names of the tools</flag>
+</use>
+</pkgmetadata>

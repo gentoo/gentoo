@@ -1,0 +1,19 @@
+--- multipath-tools-0.8.4-d491591/Makefile.inc
++++ multipath-tools-0.8.4-d491591/Makefile.inc
+@@ -99,12 +99,13 @@
+ 		  -Werror=cast-qual $(ERROR_DISCARDED_QUALIFIERS) \
+ 		  $(STACKPROT) --param=ssp-buffer-size=4
+ CPPFLAGS	:= -Wp,-D_FORTIFY_SOURCE=2 
+-CFLAGS		:= $(OPTFLAGS) -DBIN_DIR=\"$(bindir)\" -DLIB_STRING=\"${LIB}\" -DRUN_DIR=\"${RUN}\" \
+-		   -MMD -MP $(CFLAGS)
++CFLAGS		?= $(OPTFLAGS)
++CFLAGS		+= -DBIN_DIR=\"$(bindir)\" -DLIB_STRING=\"${LIB}\" -DRUN_DIR=\"${RUN}\" \
++		   -MMD -MP
+ BIN_CFLAGS	= -fPIE -DPIE
+ LIB_CFLAGS	= -fPIC
+ SHARED_FLAGS	= -shared
+-LDFLAGS		= -Wl,-z,relro -Wl,-z,now
++LDFLAGS		+= -Wl,-z,relro -Wl,-z,now
+ BIN_LDFLAGS	= -pie
+ 
+ # Check whether a function with name $1 has been declared in header file $2.

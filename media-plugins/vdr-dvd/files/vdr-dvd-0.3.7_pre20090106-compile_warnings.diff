@@ -1,0 +1,47 @@
+fixe a lot of compile warnings,...
+
+Signed of by: Joerg Bornkessel <hd_brummy@gentoo.org> (26 Jan 2011)
+
+diff -Naur dvd-cvs-20090106.orig/player-dvd.c dvd-cvs-20090106/player-dvd.c
+--- dvd-cvs-20090106.orig/player-dvd.c	2011-01-26 15:49:38.000000000 +0100
++++ dvd-cvs-20090106/player-dvd.c	2011-01-26 15:54:07.000000000 +0100
+@@ -2670,18 +2670,18 @@
+ 
+     //Menu's has no titleNumbers and chapterNumbers (see dvdnav.h)
+     if (titleNumber == 0)
+-        asprintf(&titleinfo_str, "%d/%d %d", titleNumber, titleNumbers,  chapterNumber);
++        (0 < asprintf(&titleinfo_str, "%d/%d %d", titleNumber, titleNumbers,  chapterNumber));
+     else if (angleNumbers > 1)
+-        asprintf(&titleinfo_str, "%d/%d %d/%d %d/%d", titleNumber, titleNumbers, chapterNumber, chapterNumbers, angleNumber, angleNumbers);
++        (0 < asprintf(&titleinfo_str, "%d/%d %d/%d %d/%d", titleNumber, titleNumbers, chapterNumber, chapterNumbers, angleNumber, angleNumbers));
+     else
+-        asprintf(&titleinfo_str, "%d/%d %d/%d", titleNumber, titleNumbers,  chapterNumber, chapterNumbers);
++        (0 < asprintf(&titleinfo_str, "%d/%d %d/%d", titleNumber, titleNumbers,  chapterNumber, chapterNumbers));
+     return;
+ }
+ 
+ void cDvdPlayer::GetAudioLanguageStr(const char **AudioLanguageStr) const
+ {
+ 	static char buffer[100];
+-	char *audioTypeDescr = NULL;
++	const char *audioTypeDescr = NULL;
+ 
+     if (!DVDActiveAndRunning()) {
+         *AudioLanguageStr = "n.a.";
+@@ -2753,13 +2753,13 @@
+ 
+     switch (dvdnav_get_video_aspect(nav)) {
+         case 0:
+-            asprintf(&aspect_str, " 4:3");
++            (0 < asprintf(&aspect_str, " 4:3"));
+             break;
+         case 2:
+-            asprintf(&aspect_str, "16:9_");
++            (0 < asprintf(&aspect_str, "16:9_"));
+             break;
+         case 3:
+-            asprintf(&aspect_str, "16:9");
++            (0 < asprintf(&aspect_str, "16:9"));
+             break;
+         default:
+             aspect_str = strdup(dummy_n_a);

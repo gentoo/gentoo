@@ -1,0 +1,25 @@
+#!/sbin/openrc-run
+# Copyright 1999-2007 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+[ -e /etc/conf.d/nfs ] && . /etc/conf.d/nfs
+
+rpc_bin=/usr/sbin/rpc.rquotad
+
+depend() {
+	use ypbind net
+	need portmap
+	after quota
+}
+
+start() {
+	ebegin "Starting rpc.rquotad"
+	${rpc_bin} ${OPTS_RPC_RQUOTAD}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping rpc.rquotad"
+	start-stop-daemon --stop --quiet --exec ${rpc_bin}
+	eend $?
+}

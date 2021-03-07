@@ -1,0 +1,28 @@
+diff -NrU5 notify-sharp-20080912.orig/configure.ac notify-sharp-20080912/configure.ac
+--- notify-sharp-20080912.orig/configure.ac	2008-11-26 21:56:02.000000000 +0100
++++ notify-sharp-20080912/configure.ac	2008-11-26 22:01:08.000000000 +0100
+@@ -34,16 +34,21 @@
+ if test "x$GACUTIL" = "xno"; then
+ 	AC_MSG_ERROR([You need to install gacutil])
+ fi
+ AC_SUBST(GACUTIL)
+ 
+-AC_ARG_ENABLE(docs, AC_HELP_STRING([--disable-docs], 
+-	[Do not build documentation]), with_docs=no, with_docs=yes)
++AC_ARG_ENABLE(	[docs],
++		[AC_HELP_STRING(	[--enable/disable-docs], 
++					[Do (not) build documentation (default=yes)]
++		)],
++		[],
++		[enable_docs=yes]
++)
+ 
+ MONODOC_REQ_VERSION=1.1.18
+ 
+-if test "x$with_docs" = "xyes"; then
++if test "x$enable_docs" = "xyes"; then
+ 	PKG_CHECK_MODULES(MONODOC, monodoc >= $MONODOC_REQ_VERSION,,
+ 		[AC_MSG_ERROR([You need to install monodoc, or pass --disable-docs to configure to skip documentation installation])])
+ 	AC_PATH_PROG(MONODOCER, monodocer, no)
+ 	if test "x$MONODOCER" = "xno"; then
+ 		AC_MSG_ERROR([You need to install monodoc, or pass --disable-docs to configure to skip documentation installation])

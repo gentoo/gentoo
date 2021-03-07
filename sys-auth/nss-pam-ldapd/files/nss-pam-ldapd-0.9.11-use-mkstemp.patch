@@ -1,0 +1,25 @@
+diff --git a/pynslcd/cache.py b/pynslcd/cache.py
+index 0be3a71..b463d2e 100644
+--- a/pynslcd/cache.py
++++ b/pynslcd/cache.py
+@@ -22,6 +22,7 @@ import datetime
+ import os
+ import sqlite3
+ import sys
++import tempfile
+ 
+ 
+ # TODO: probably create a config table
+@@ -192,10 +193,8 @@ _connection = None
+ def _get_connection():
+     global _connection
+     if _connection is None:
+-        filename = '/tmp/pynslcd_cache.sqlite'
+-        dirname = os.path.dirname(filename)
+-        if not os.path.isdir(dirname):
+-            os.mkdir(dirname)
++        tmpfd, filename = tempfile.mkstemp(suffix=".sqlite", prefix="pynslcd_cache")
++        os.close(tmpfd)
+         connection = sqlite3.connect(
+             filename, detect_types=sqlite3.PARSE_DECLTYPES,
+             check_same_thread=False)

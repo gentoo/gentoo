@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="bfio">Enables libbfio for chaining file in file handling</flag>
+		<flag name="fuse">Enable fuse support for ewfmount</flag>
+		<flag name="uuid">Enable UUID support in the ewftools</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">libyal/libewf</remote-id>
+	</upstream>
+</pkgmetadata>

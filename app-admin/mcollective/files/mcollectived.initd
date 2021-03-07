@@ -1,0 +1,28 @@
+#!/sbin/openrc-run
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the Apache License, Version 2.0
+
+mcollectived="/usr/sbin/mcollectived"
+pidfile="/var/run/mcollectived"
+
+depend() {
+    need net
+}
+
+start() {
+    ebegin "Starting mcollectived"
+    ${mcollectived} --pid=${pidfile} --config="/etc/mcollective/server.cfg"
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping mcollectived"
+    kill `cat ${pidfile}`
+    eend $?
+}
+
+restart() {
+    svc_stop
+    sleep 2
+    svc_start
+}

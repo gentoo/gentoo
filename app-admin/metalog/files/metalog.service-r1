@@ -1,0 +1,10 @@
+[Unit]
+Description=System Logger Daemon
+
+[Service]
+ExecStart=/usr/sbin/metalog
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+Alias=syslog.service

@@ -1,0 +1,41 @@
+# bash-completion script for scrot
+# place this in /etc/bash_completion.d
+
+_scrot() {
+	local cur prev opts
+	COMPREPLY=()
+	cur=${COMP_WORDS[COMP_CWORD]}
+	prev=${COMP_WORDS[COMP_CWORD-1]}
+	opts="
+		-h --help -v --version -a --autoselect -b --border -c --count -d
+		--delay -e --exec -q --quality -m --multidisp -s --select -u --focused
+		-t --thumb -z --silent -p --pointer -f --freeze -o --overwrite -l
+		--line -n --note
+	"
+
+	if [[ "${cur}" == -* ]] || [[ ${COMP_CWORD} -eq 1 ]]; then
+		COMPREPLY=($(compgen -W "${opts}" -- "${cur}"))
+	fi
+
+	case "${prev}" in
+		-h|--help) COMPREPLY=($(compgen -W "${opts/-h --help}" -- "${cur}")) ;;
+		-v|--version) COMPREPLY=($(compgen -W "${opts/-v --version}" -- "${cur}")) ;;
+		-a|--autoselect) COMPREPLY=($(compgen -W "${opts/-a --autoselect}" -- "${cur}")) ;;
+		-b|--border) COMPREPLY=($(compgen -W "${opts/-b --border}" -- "${cur}")) ;;
+		-c|--count) COMPREPLY=($(compgen -W "${opts/-c --count}" -- "${cur}")) ;;
+		-d|--delay) COMPREPLY=($(compgen -W "${opts/-d --delay}" -- "${cur}")) ;;
+		-e|--exec) COMPREPLY=($(compgen -A command -- "${cur}")) ;;
+		-q|--quality) COMPREPLY=($(compgen -W "${opts/-q --quality}" -- "${cur}")) ;;
+		-m|--multidisp) COMPREPLY=($(compgen -W "${opts/-m --multidisp}" -- "${cur}")) ;;
+		-s|--select) COMPREPLY=($(compgen -W "${opts/-s --select}" -- "${cur}")) ;;
+		-u|--focused) COMPREPLY=($(compgen -W "${opts/-u --focused}" -- "${cur}")) ;;
+		-t|--thumb) COMPREPLY=($(compgen -W "${opts/-t --thumb}" -- "${cur}")) ;;
+		-z|--silent) COMPREPLY=($(compgen -W "${opts/-z --silent}" -- "${cur}")) ;;
+		-p|--pointer) COMPREPLY=($(compgen -W "${opts/-p --pointer}" -- "${cur}")) ;;
+		-f|--freeze) COMPREPLY=($(compgen -W "${opts/-f --freeze}" -- "${cur}")) ;;
+		-o|--overwrite) COMPREPLY=($(compgen -W "${opts/-o --overwrite}" -- "${cur}")) ;;
+		-l|--line) COMPREPLY=($(compgen -W "${opts/-l --line}" -- "${cur}")) ;;
+		-n|--note) COMPREPLY=($(compgen -W "${opts/-n --note}" -- "${cur}")) ;;
+	esac
+}
+complete -F _scrot scrot

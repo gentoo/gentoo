@@ -1,0 +1,11 @@
+--- a/doc/po4a.mk
++++ b/doc/po4a.mk
+@@ -23,7 +23,7 @@
+ # threshold is 80%), it won't be distributed, and the build won't fail.
+ #
+ 
+-mandir = $(mandir)/$(lang)
++mandir := $(mandir)/$(lang)
+ 
+ # Inform automake that we want to install some man pages in section 1, 5
+ # and 8.

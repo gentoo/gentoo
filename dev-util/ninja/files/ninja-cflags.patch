@@ -1,0 +1,25 @@
+From e4530769ef6a497f8f5f06159f6be049dc20e2ea Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Thu, 19 Mar 2020 11:21:29 -0400
+Subject: [PATCH] Avoid adding -O2 -DNDEBUG to cflags
+
+---
+ configure.py | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/configure.py b/configure.py
+index 7d8ce90..7566147 100755
+--- a/configure.py
++++ b/configure.py
+@@ -344,8 +344,6 @@ else:
+     if options.debug:
+         cflags += ['-D_GLIBCXX_DEBUG', '-D_GLIBCXX_DEBUG_PEDANTIC']
+         cflags.remove('-fno-rtti')  # Needed for above pedanticness.
+-    else:
+-        cflags += ['-O2', '-DNDEBUG']
+     try:
+         proc = subprocess.Popen(
+             [CXX, '-fdiagnostics-color', '-c', '-x', 'c++', '/dev/null',
+-- 
+2.25.1
+

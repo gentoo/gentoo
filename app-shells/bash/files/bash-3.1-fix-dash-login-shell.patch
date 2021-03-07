@@ -1,0 +1,52 @@
+http://lists.gnu.org/archive/html/bug-bash/2006-01/msg00054.html
+http://bugs.gentoo.org/118257
+
+Date: Fri, 13 Jan 2006 17:11:10 +0000
+From: Tim Waugh <twaugh@redhat.com>
+To: bug-bash@gnu.org
+Subject: [patch] fix 'exec -l /bin/bash'
+
+Configuration Information [Automatically generated, do not change]:
+Machine: i386
+OS: linux-gnu
+Compiler: i386-redhat-linux-gcc
+Compilation CFLAGS:  -DPROGRAM='bash' -DCONF_HOSTTYPE='i386' -DCONF_OSTYPE='linux-gnu' -DCONF_MACHTYPE='i386-redhat-linux-gnu' -DCONF_VENDOR='redhat' -DLOCALEDIR='/usr/share/locale' -DPACKAGE='bash' -DSHELL -DHAVE_CONFIG_H   -I.  -I. -I./include -I./lib  -D_GNU_SOURCE -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=pentium4 -fasynchronous-unwind-tables
+uname output: Linux gene.surrey.redhat.com 2.6.13-1.1597_FC5 #1 Thu Oct 6 02:13:06 EDT 2005 i686 i686 i386 GNU/Linux
+Machine Type: i386-redhat-linux-gnu
+
+Bash Version: 3.1
+Patch Level: 1
+Release Status: release
+
+Description:
+	If bash has argv[0] as '-/bin/bash' it does not become a login
+	shell.
+
+Repeat-By:
+	exec -l /bin/bash
+	shopt
+
+Fix:
+
+--- bash-3.1/shell.c.login	2006-01-13 16:52:14.000000000 +0000
++++ bash-3.1/shell.c	2006-01-13 16:52:15.000000000 +0000
+@@ -1543,9 +1543,10 @@
+      any startup files; just try to be more like /bin/sh. */
+   shell_name = argv0 ? base_pathname (argv0) : PROGRAM;
+ 
+-  if (*shell_name == '-')
++  if (argv0 && *argv0 == '-')
+     {
+-      shell_name++;
++      if (*shell_name == '-')
++        shell_name++;
+       login_shell++;
+     }
+ 
+
+
+_______________________________________________
+Bug-bash mailing list
+Bug-bash@gnu.org
+http://lists.gnu.org/mailman/listinfo/bug-bash
+

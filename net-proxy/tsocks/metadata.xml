@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>bircoph@gentoo.org</email>
+  </maintainer>
+  <longdescription>tsocks' role is to allow non SOCKS aware applications (e.g telnet, ssh, ftp etc) to use SOCKS 
+without any modification. It does this by intercepting the calls that applications make to establish network connections 
+and negotating them through a SOCKS server as necessary.</longdescription>
+  <use>
+    <flag name="dns">Force DNS queries to use SOCKS server via tcp</flag>
+    <flag name="envconf">Allow TSOCKS_CONF_FILE to specify configuration file</flag>
+    <flag name="server-lookups">Allow hostname resolution _for_ SOCKS servers</flag>
+    <flag name="tordns">Apply tordns patch which allows transparent TORification of the DNS queries</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">tsocks</remote-id>
+  </upstream>
+</pkgmetadata>

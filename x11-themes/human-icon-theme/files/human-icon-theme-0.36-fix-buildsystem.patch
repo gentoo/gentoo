@@ -1,0 +1,22 @@
+--- a/Makefile
++++ b/Makefile
+@@ -19,7 +19,7 @@
+ 
+ 	# run icon-naming-utils
+ 	for d in $$DESTDIR/usr/share/icons/Human/*; do \
+-	    (cd $$d; for c in *; do /usr/lib/icon-naming-utils/icon-name-mapping -c $$c; done); \
++	    (cd $$d; for c in *; do /usr/libexec/icon-name-mapping -c $$c; done); \
+ 	done
+ 
+ 	# install mo files
+--- a/svg2png.sh.in
++++ b/svg2png.sh.in
+@@ -8,7 +8,7 @@
+ fi
+ 
+ ICONNAME=`echo ${3} | sed -e "s/.svg//"`
+-if test `basename $SVGCONVERT` = "rsvg"; then
++if test `basename $SVGCONVERT` = "rsvg-convert"; then
+     OPTIONS="-w ${1} -h ${1}"
+ else
+     OPTIONS="${1} ${1}"

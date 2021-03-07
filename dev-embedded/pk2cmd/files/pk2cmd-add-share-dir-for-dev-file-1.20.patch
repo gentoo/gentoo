@@ -1,0 +1,16 @@
+--- cmd_app.cpp.old	2009-01-31 21:23:30.000000000 +0100
++++ cmd_app.cpp	2009-01-31 21:25:48.000000000 +0100
+@@ -88,7 +88,12 @@
+ 		_tsearchenv_s("PK2DeviceFile.dat", "PATH", tempString);
+ 		if (_tcslen(tempString) < 17)
+ 		{
+-			_tcsncpy_s(tempString, "PK2DeviceFile.dat", 17);
++               // Try /usr/share/pk2 first
++               _tcsncpy_s(tempString, "/usr/share/pk2/PK2DeviceFile.dat", 32);
++
++               if(access(tempString, 0))
++                       // Well, that didn't work, default to the current directory
++                       _tcsncpy_s(tempString, "PK2DeviceFile.dat", 17);
+ 		}
+ 	}
+ 	if (!PicFuncs.ReadDeviceFile(tempString))

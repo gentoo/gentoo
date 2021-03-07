@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<use>
+		<flag name="activities">Enable activities kioslave and fileitem plugin</flag>
+		<flag name="man">Enable manpages kioslave</flag>
+		<flag name="nfs">Enable NFS support using <pkg>net-libs/libtirpc</pkg></flag>
+		<flag name="phonon">Enable file audio preview plugin using <pkg>media-libs/phonon</pkg></flag>
+		<flag name="sftp">Enable SFTP protocol support using <pkg>net-libs/libssh</pkg></flag>
+		<flag name="taglib">Enable audio thumbnails via <pkg>media-libs/taglib</pkg></flag>
+		<flag name="X">Enable support for XCursor thumbnails via <pkg>x11-libs/libX11</pkg></flag>
+	</use>
+</pkgmetadata>

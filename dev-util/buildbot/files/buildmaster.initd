@@ -1,0 +1,64 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+extra_started_commands="reload"
+
+BUILDMASTER_NAME=${RC_SVCNAME:12}
+BUILDMASTER_PATH="${BASEDIR}/${BUILDMASTER_NAME}"
+
+depend() {
+	need net
+}
+
+checkconfig() {
+	if [ -z "${BUILDMASTER_NAME}" ]; then
+		eerror "Buildmaster name not defined. Please link buildmaster.foo to this file to start the buildmaster with the name \"foo\"."
+		return 1
+	fi
+	if [ -z "${BASEDIR}" ]; then
+		eerror "BASEDIR not set"
+		return 1
+	fi
+	if [ -z "${USERNAME}" ]; then
+		eerror "USERNAME not set"
+		return 1
+	fi
+	if [ ! -d "${BUILDMASTER_PATH}" ]; then
+		eerror "${BUILDMASTER_PATH} is not a directory"
+		return 1
+	fi
+	if [ ! -e "${BUILDMASTER_PATH}/buildbot.tac" ]; then
+		eerror "${BUILDMASTER_PATH} does not contain buildbot.tac"
+		return 1
+	fi
+	if [ ! -e "${RUNTIME_PYTHON}" ]; then
+		RUNTIME_PYTHON="/usr/bin/python"
+	fi
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting buildmaster in ${BUILDMASTER_PATH}"
+	start-stop-daemon --start -u "${USERNAME}" \
+		--pidfile "${BUILDMASTER_PATH}/buildmaster.pid" \
+		--exec "${RUNTIME_PYTHON}" -- /usr/bin/twistd \
+		--no_save \
+		--logfile="${BUILDMASTER_PATH}/twistd.log" \
+		--pidfile="${BUILDMASTER_PATH}/buildmaster.pid" \
+		--python="${BUILDMASTER_PATH}/buildbot.tac"
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping buildmaster in ${BUILDMASTER_PATH}"
+	start-stop-daemon --stop --pidfile "${BUILDMASTER_PATH}/buildmaster.pid"
+	eend $?
+}
+
+reload() {
+	ebegin "Reconfiguring buildmaster in ${BUILDMASTER_PATH}"
+	start-stop-daemon --signal HUP --pidfile \
+		"${BUILDMASTER_PATH}"/buildmaster.pid
+	eend $?
+}

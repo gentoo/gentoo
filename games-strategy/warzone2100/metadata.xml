@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<longdescription>
+	Warzone 2100 offers campaign, multi-player, and single-player
+	skirmish modes. An extensive tech tree with over 400 different
+	technologies, combined with the unit design system, allows for
+	a wide variety of possible units and tactics.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">warzone2100</remote-id>
+		<remote-id type="github">Warzone2100/warzone2100</remote-id>
+	</upstream>
+	<use>
+		<flag name="discord">Enable Discord presence/join integration</flag>
+		<flag name="vulkan">Enable vulkan backend</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		TAUCS is a C library of sparse linear solvers.
+		The current version of the library (1.0) includes the following
+		functionality:
+		* Multifrontal Supernodal Cholesky Factorization.
+		* Left-Looking Supernodal Cholesky Factorization.
+		* Drop-Tolerance Incomplete-Cholesky Factorization.
+		* Out-of-Core, Left-Looking Supernodal Sparse Cholesky Factorization.
+		* Out-of-Core Sparse LU with Partial Pivoting Factor and Solve.
+		* Ordering Codes and Interfaces to Existing Ordering Codes.
+		* Multilevel-Support-Graph Preconditioners.
+		* Matrix Operations.
+		* Matrix Input/Output.
+		* Matrix Generators.
+		* Iterative Solvers.
+		* Vaidya's Preconditioners.
+		* Recursive Vaidya's Preconditioners.
+		* Multilevel-Support-Graph Preconditioners.
+		* Utility Routines
+	</longdescription>
+</pkgmetadata>

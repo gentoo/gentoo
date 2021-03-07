@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>polynomial-c@gentoo.org</email>
+		<name>Lars Wendler</name>
+	</maintainer>
+	<longdescription>
+	Pidgin is an instant messaging program for Windows, Linux, BSD, and other Unixes. You can talk to your friends using AIM, ICQ, Jabber/XMPP, MSN Messenger, Yahoo!, Bonjour, Gadu-Gadu, IRC, Novell GroupWise Messenger, QQ, Lotus Sametime, SIMPLE, and Zephyr.
+	</longdescription>
+	<use>
+		<flag name="gadu">Enable Gadu Gadu protocol support</flag>
+		<flag name="groupwise">Enable Novell Groupwise protocol support</flag>
+		<flag name="gstreamer">Enables voice and video sessions</flag>
+		<flag name="gtk">Builds Pidgin, the GTK+ interface</flag>
+		<flag name="meanwhile">Enable meanwhile support for Sametime protocol</flag>
+		<flag name="ncurses">Build finch, console interface</flag>
+		<flag name="prediction">Enable Contact Availability Prediction plugin</flag>
+		<flag name="python">Build libgnt (GLib Ncurses Toolkit used by finch) with python scripting support</flag>
+		<flag name="xscreensaver">Use X screensaver protocol extension to monitor idle/active status based on mouse/keyboard events</flag>
+		<flag name="zephyr">Enable Zephyr protocol support</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">pidgin</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<use>
+		<flag name="accessibility">Pull in <pkg>kde-apps/kdeaccessibility-meta</pkg> packages</flag>
+		<flag name="admin">Pull in <pkg>kde-apps/kdeadmin-meta</pkg> packages</flag>
+		<flag name="education">Pull in <pkg>kde-apps/kdeedu-meta</pkg> packages</flag>
+		<flag name="games">Pull in <pkg>kde-apps/kdegames-meta</pkg> packages</flag>
+		<flag name="graphics">Pull in <pkg>kde-apps/kdegraphics-meta</pkg> packages</flag>
+		<flag name="multimedia">Pull in <pkg>kde-apps/kdemultimedia-meta</pkg> packages</flag>
+		<flag name="network">Pull in <pkg>kde-apps/kdenetwork-meta</pkg> packages</flag>
+		<flag name="pim">Pull in KDE PIM suite</flag>
+		<flag name="sdk">Pull in developer-specific meta-packages</flag>
+		<flag name="utils">Pull in <pkg>kde-apps/kdeutils-meta</pkg> packages</flag>
+	</use>
+</pkgmetadata>

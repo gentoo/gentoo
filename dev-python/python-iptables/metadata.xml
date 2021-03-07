@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<longdescription lang="en">
+		Python Bindings for IPtables: Iptables is the tool that is used to manage netfilter,
+		the standard packet filtering and manipulation framework under Linux. As the iptables
+		manpage puts it: Iptables is used to set up, maintain, and inspect the tables of IPv4
+		packet filter rules in the Linux kernel. Several different tables may be defined.
+		Each table contains a number of built-in chains and may also contain user-defined
+		chains. Each chain is a list of rules which can match a set of packets. Each rule
+		specifies what to do with a packet that matches. This is called a target, which may be
+		a jump to a user-defined chain in the same table. Python-iptables provides python
+		bindings to iptables under Linux. Interoperability with iptables is achieved via
+		using the iptables C libraries (libiptc, libxtables, and the iptables extensions), not
+		calling the iptables binary and parsing its output.
+	</longdescription>
+	<upstream>
+		<remote-id type="pypi">python-iptables</remote-id>
+		<remote-id type="github">ldx/python-iptables</remote-id>
+	</upstream>
+</pkgmetadata>

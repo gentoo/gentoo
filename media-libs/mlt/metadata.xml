@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>media-video@gentoo.org</email>
+		<name>Gentoo Video Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<use>
+		<flag name="compressed-lumas">Compress the luma files in png.</flag>
+		<flag name="frei0r">Build the module for <pkg>media-plugins/frei0r-plugins</pkg></flag>
+		<flag name="lua">Build SWIG bindings for Lua</flag>
+		<flag name="opencv">Build motion tracking module using <pkg>media-libs/opencv</pkg></flag>
+		<flag name="python">Build SWIG bindings for Python</flag>
+		<flag name="rtaudio">Builds rtaudio consumer for native audio support on multiple platforms</flag>
+		<flag name="rubberband">Enable audio pitch-shifting using <pkg>media-libs/rubberband</pkg></flag>
+		<flag name="vidstab">Enabled video stabilization with <pkg>media-libs/vidstab</pkg></flag>
+		<!--
+		<flag name="swfdec">Use <pkg>media-libs/swfdec</pkg> for reading .swf files (Macromedia Flash) instead of libavformat.</flag>
+		<flag name="java">Build SWIG bindings for Java</flag>
+		<flag name="perl">Build SWIG bindings for Perl</flag>
+		<flag name="php">Build SWIG bindings for PHP</flag>
+		<flag name="tcl">Build SWIG bindings for TCL</flag>
+		-->
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">mlt</remote-id>
+		<remote-id type="github">mltframework/mlt</remote-id>
+	</upstream>
+</pkgmetadata>

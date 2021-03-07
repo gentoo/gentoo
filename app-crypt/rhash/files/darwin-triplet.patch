@@ -1,0 +1,23 @@
+From 35a830d1968465e4ecb079273f032b754bac6c66 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sun, 25 Mar 2018 17:40:49 +0100
+Subject: [PATCH] configure: Add target OS clause for Darwin
+
+These triplets can also have a version number suffix, for example,
+x86_64-apple-darwin16.
+---
+ configure | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/configure b/configure
+index 5b6b710..2d8ac42 100755
+--- a/configure
++++ b/configure
+@@ -410,6 +410,7 @@ else
+       amigaos) TARGET_OS=AmigaOS ;;
+       mingw32*) TARGET_OS=MINGW32 ;;
+       wine) TARGET_OS=Wine ;;
++      darwin*) TARGET_OS=Darwin ;;
+     esac
+   }
+   TARGET_OS="UNKNOWN"

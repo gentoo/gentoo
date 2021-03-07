@@ -1,0 +1,14 @@
+Same magic as haubi did for glib compilation, which works again here
+resolving a linker problem on Solaris with GNU ld.  Bug #222625
+
+--- a/pr/src/Makefile.in
++++ b/pr/src/Makefile.in
+@@ -95,7 +95,7 @@
+ endif
+ 
+ ifdef USE_PTHREADS
+-OS_LIBS			= -lpthread ${LIBRT} -lsocket -lnsl -ldl -lc
++OS_LIBS			= -pthread ${LIBRT} -lsocket -lnsl -ldl -lc
+ else
+ ifdef LOCAL_THREADS_ONLY
+ OS_LIBS			= -lsocket -lnsl -ldl -lc

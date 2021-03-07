@@ -1,0 +1,28 @@
+#!/sbin/openrc-run
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	use alsasound
+	use modules
+	use hotplug
+}
+
+start() {
+	ebegin "Starting eflite"
+	start-stop-daemon --start --exec /usr/bin/eflite --background \
+		--quiet --pidfile /var/run/eflite.pid --make-pidfile -- -D || eend 1
+
+	SOCKET=`egrep '^sockname=' /etc/eflite/es.conf | sed 's/^sockname=//'`
+	[ ! -S ${SOCKET} ] && SOCKET=/tmp/es.socket
+
+	chown root:speech ${SOCKET}
+	chmod 660 ${SOCKET}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping eflite"
+	start-stop-daemon --stop --quiet --pidfile /var/run/eflite.pid
+	eend $?
+}

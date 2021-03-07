@@ -1,0 +1,62 @@
+--- tsocks-1.8.orig/validateconf.c	2002-02-07 11:49:59.000000000 +0100
++++ tsocks-1.8/validateconf.c	2009-06-20 13:56:38.000000000 +0200
+@@ -23,7 +23,7 @@
+ */
+ 
+ /* Global configuration variables */ 
+-char *progname = "validateconf";	      /* Name for error msgs      */
++char *progname = "tsocks-validateconf";	      /* Name for error msgs      */
+ 
+ /* Header Files */
+ #include <config.h>
+--- tsocks-1.8.orig/tsocks.8	2002-03-16 11:20:51.000000000 +0100
++++ tsocks-1.8/tsocks.8	2009-06-20 13:56:38.000000000 +0200
+@@ -127,8 +127,8 @@
+ libtsocks in /etc/ld.so.preload. Please make sure you correctly enter the
+ full path to the library in this file if you do this. If you get it wrong,
+ you will be UNABLE TO DO ANYTHING with the machine and will have to boot
+-it with a rescue disk and remove the file (or try the saveme program, see
+-the INSTALL file for more info).  THIS IS A ***WARNING***, please be
++it with a rescue disk and remove the file (or try the tsocks-saveme program,
++simply unlinks /etc/ld.so.preload ). THIS IS A ***WARNING***, please be
+ careful. Also be sure the library is in the root filesystem as all hell
+ will break loose if the directory it is in is not available at boot time.
+ 
+--- tsocks-1.8.orig/tsocks.conf.5	2002-05-18 04:13:08.000000000 +0200
++++ tsocks-1.8/tsocks.conf.5	2009-06-20 13:56:38.000000000 +0200
+@@ -139,21 +139,20 @@
+ the version that server supports. 
+ 
+ .TP
+-validateconf
+-validateconf can be used to verify the configuration file. It checks the format
+-of the file and also the contents for errors. Having read the file it dumps 
+-the configuration to the screen in a formatted, readable manner. This can be 
+-extremely useful in debugging problems.
+-
+-validateconf can read a configuration file from a location other than the 
+-location specified at compile time with the -f <filename> command line 
+-option.
+-
+-Normally validateconf simply dumps the configuration read to the screen (in
+-a nicely readable format), however it also has a useful 'test' mode. When
+-passed a hostname/ip on the command line like -t <hostname/ip>, validateconf 
+-determines which of the SOCKS servers specified in the configuration file 
+-would be used by tsocks to access the specified host. 
++tsocks-validateconf
++tsocks-validateconf can be used to verify the configuration file. It checks
++the format of the file and also the contents for errors. Having read the file 
++it dumps the configuration to the screen in a formatted, readable manner.
++This can be extremely useful in debugging problems.
++
++tsocks-validateconf can read a configuration file from a location other than the 
++location specified at compile time with the -f <filename> command line option.
++
++Normally tsocks-validateconf simply dumps the configuration read to the screen 
++(in a nicely readable format), however it also has a useful 'test' mode. When
++passed a hostname/ip on the command line like -t <hostname/ip>, 
++tsocks-validateconf determines which of the SOCKS servers specified in the 
++configuration file would be used by tsocks to access the specified host. 
+ 
+ .SH SEE ALSO
+ tsocks(8)

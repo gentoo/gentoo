@@ -1,0 +1,25 @@
+From 21710409c0ed8acfbad98131d1664006d32181bf Mon Sep 17 00:00:00 2001
+From: Kristian Fiskerstrand <kf@sumptuouscapital.com>
+Date: Sat, 30 Jun 2018 20:24:55 +0200
+Subject: [PATCH] gnome-background-compatibility
+
+---
+ files/usr/share/cinnamon/cinnamon-settings/modules/cs_backgrounds.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/files/usr/share/cinnamon/cinnamon-settings/modules/cs_backgrounds.py b/files/usr/share/cinnamon/cinnamon-settings/modules/cs_backgrounds.py
+index 6e279ed..ec47983 100755
+--- a/files/usr/share/cinnamon/cinnamon-settings/modules/cs_backgrounds.py
++++ b/files/usr/share/cinnamon/cinnamon-settings/modules/cs_backgrounds.py
+@@ -268,7 +268,7 @@ class Module:
+     def get_system_backgrounds(self):
+         picture_list = []
+         folder_list = []
+-        properties_dir = "/usr/share/cinnamon-background-properties"
++        properties_dir = "/usr/share/gnome-background-properties"
+         backgrounds = []
+         if os.path.exists(properties_dir):
+             for i in os.listdir(properties_dir):
+-- 
+2.16.4
+

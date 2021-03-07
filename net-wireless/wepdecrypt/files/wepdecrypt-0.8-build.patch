@@ -1,0 +1,19 @@
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -6,15 +6,12 @@ include ../config.mak
+ wepdecrypt: 	wepdecrypt.o rc4.o wepfilter.o log.o modes.o misc.o verify.o keygen.o localkeygen.o wepserver.o wepclient.o md5_digest.o
+ 	$(LD) $(LDFLAGS) -o $@ wepdecrypt.o rc4.o wepfilter.o log.o \
+ 	modes.o misc.o md5_digest.o  wepserver.o wepclient.o verify.o keygen.o localkeygen.o $(LIBS)
+-	@if [ -f wepdecrypt.exe ]; then		strip.exe wepdecrypt.exe; echo "strip.exe wepdecrypt.exe"; 	else		strip wepdecrypt; echo "strip wepdecrypt"; fi
+ 
+ gwepdecrypt: gwepdecrypt.cpp
+ 	$(FLTK) --compile gwepdecrypt.cpp
+-	@if [ -f gwepdecrypt.exe ]; then		strip.exe gwepdecrypt.exe; echo "strip.exe gwepdecrypt.exe"; 	else		strip gwepdecrypt; echo "strip gwepdecrypt"; fi	
+ 
+ wkeygen: wkeygen.c
+-	$(LD) $(LDFLAGS) $(CFLAGS) $(LIBS) -o $@ wkeygen.c
+-	@if [ -f wkeygen.exe ]; then		strip wkeygen.exe; echo "strip wkeygen.exe"; 	else		strip wkeygen; echo "strip wkeygen"; fi
++	$(LD) $(LDFLAGS) $(CFLAGS) -o $@ wkeygen.c $(LIBS)
+ 	
+ wepdecrypt.o:	wepdecrypt.c wepdecrypt.h
+ 	$(CC) $(CFLAGS) -c -o $@ wepdecrypt.c

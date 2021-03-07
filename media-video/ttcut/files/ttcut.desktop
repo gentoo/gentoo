@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=TTCut
+Comment=Removes commercials from DVB recordings
+Comment[de]=Entfernt Werbeeinblendungen aus DVB-Mitschnitten
+TryExec=ttcut
+Exec=ttcut
+Icon=ttcut
+Terminal=false
+StartupNotify=false
+MimeType=video/mpeg;
+Categories=AudioVideo;Video;AudioVideoEditing;

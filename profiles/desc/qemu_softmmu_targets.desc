@@ -1,0 +1,40 @@
+# Copyright 1999-2019 Gentoo Authors.
+# Distributed under the terms of the GNU General Public License v2
+
+# This file contains descriptions of QEMU_SOFTMMU_TARGETS USE_EXPAND flags.
+
+# Keep it sorted.
+
+aarch64 - ARM64 system emulation target
+alpha - system emulation target
+arm - system emulation target
+avr - system emulation target
+cris - system emulation target
+hppa - system emulation target
+i386 - system emulation target
+lm32 - LatticeMico32 system emulation target
+m68k - system emulation target
+microblazeel - system emulation target
+microblaze - system emulation target
+mips64el - system emulation target
+mips64 - system emulation target
+mipsel - system emulation target
+mips - system emulation target
+moxie - moxielogic system emulation target
+nios2 - system emulation target
+or1k - OpenRISC system emulation target
+ppc64 - system emulation target
+ppc - system emulation target
+riscv32 - system emulation target
+riscv64 - system emulation target
+rx - Renesas RX system emulation target
+s390x - system emulation target
+sh4eb - system emulation target
+sh4 - system emulation target
+sparc - system emulation target
+sparc64 - system emulation target
+tricore - system emulation target
+unicore32 - system emulation target
+x86_64 - system emulation target
+xtensaeb - system emulation target
+xtensa - system emulation target

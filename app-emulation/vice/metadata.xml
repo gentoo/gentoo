@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<use>
+		<flag name="ethernet">Enable ethernet emulation</flag>
+		<flag name="headless">Include the headless variant of the emulator</flag>
+		<flag name="mpg123">Enable mp3@64 cartridge support</flag>
+		<flag name="parport">Enable parallel port SID support</flag>
+		<flag name="pci">Enable PCI device discovery using <pkg>sys-apps/pciutils</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">vice-emu</remote-id>
+	</upstream>
+</pkgmetadata>

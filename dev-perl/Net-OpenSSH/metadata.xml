@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Net-OpenSSH</remote-id>
+    <remote-id type="cpan-module">Net::OpenSSH</remote-id>
+    <remote-id type="cpan-module">Net::OpenSSH::ConnectionCache</remote-id>
+    <remote-id type="cpan-module">Net::OpenSSH::Constants</remote-id>
+    <remote-id type="cpan-module">Net::OpenSSH::ModuleLoader</remote-id>
+    <remote-id type="cpan-module">Net::OpenSSH::OSTracer</remote-id>
+    <remote-id type="cpan-module">Net::OpenSSH::ObjectRemote</remote-id>
+    <remote-id type="cpan-module">Net::OpenSSH::SSH</remote-id>
+    <remote-id type="cpan-module">Net::OpenSSH::ShellQuoter</remote-id>
+    <remote-id type="cpan-module">Net::OpenSSH::ShellQuoter::Chain</remote-id>
+    <remote-id type="cpan-module">Net::OpenSSH::ShellQuoter::MSCmd</remote-id>
+    <remote-id type="cpan-module">Net::OpenSSH::ShellQuoter::MSWin</remote-id>
+    <remote-id type="cpan-module">Net::OpenSSH::ShellQuoter::POSIX</remote-id>
+    <remote-id type="cpan-module">Net::OpenSSH::ShellQuoter::csh</remote-id>
+    <remote-id type="cpan-module">Net::OpenSSH::ShellQuoter::fish</remote-id>
+    <remote-id type="cpan-module">mod_perl_openssh</remote-id>
+  </upstream>
+</pkgmetadata>

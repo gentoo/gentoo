@@ -1,0 +1,41 @@
+From dc8f1f4371f20ce0f635b46ab0976d6d76ca0c26 Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Thu, 25 Jul 2019 18:18:59 -0700
+Subject: [PATCH] strip setuptools_scm
+
+---
+ setup.py | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 0f26fa0..9194143 100644
+--- a/setup.py
++++ b/setup.py
+@@ -1,4 +1,5 @@
+ from setuptools import setup
++import os
+ 
+ classifiers = [
+     "Development Status :: 4 - Beta",
+@@ -23,14 +24,16 @@ with open("README.rst", "rb") as fd:
+ with open("CHANGELOG.rst", "rb") as fd:
+     long_description += "\n\n" + fd.read().decode("utf-8")
+ 
++with open("src/pluggy/_version.py", 'wt') as fp:
++    fp.write('version = "{}"'.format(os.environ['PV']))
++
+ 
+ def main():
+     setup(
+         name="pluggy",
+         description="plugin and hook calling mechanisms for python",
+         long_description=long_description,
+-        use_scm_version={"write_to": "src/pluggy/_version.py"},
+-        setup_requires=["setuptools-scm"],
++        version=os.environ['PV'],
+         license="MIT license",
+         platforms=["unix", "linux", "osx", "win32"],
+         author="Holger Krekel",
+-- 
+2.22.0
+

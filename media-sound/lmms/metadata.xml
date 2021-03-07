@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>aballier@gentoo.org</email>
+		<name>Alexis Ballier</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>polynomial-c@gentoo.org</email>
+		<name>Lars Wendler</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proaudio@gentoo.org</email>
+		<name>Gentoo ProAudio Project</name>
+	</maintainer>
+	<use>
+		<flag name="libgig">Enables GIG player plugin.</flag>
+		<flag name="fluidsynth">Enables Fluidsynth MIDI software synthesis plugin.</flag>
+		<flag name="soundio">Enables libsoundio support.</flag>
+		<flag name="stk">Enables STK Mallet plugin.</flag>
+		<flag name="vst">Enables the VeSTige plugin to run VST plugins through Wine.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">LMMS/lmms</remote-id>
+		<remote-id type="sourceforge">lmms</remote-id>
+	</upstream>
+</pkgmetadata>

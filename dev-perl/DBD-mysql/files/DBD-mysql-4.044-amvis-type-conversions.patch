@@ -1,0 +1,56 @@
+From eb7eddaa2341b853df045ad4a3690c60fc38c6c8 Mon Sep 17 00:00:00 2001
+From: Pali <pali@cpan.org>
+Date: Fri, 24 Feb 2017 19:51:36 +0100
+Subject: Fix type conversions
+
+Calling SvNV() for magical scalar is not enough for float type conversion.
+It caused problem for Amavis in tainted mode -- all float values were zero.
+On the other hand SvIV() and SvUV() seems to work fine. To be sure that
+correct value of float is in scalar use sv_setnv() with explicit NV float
+value. Similar code is changed also for integers IV/UV.
+
+This patch should fix reported Amavis bug:
+https://github.com/perl5-dbi/DBD-mysql/issues/78
+
+See also reported perl bug about SvNV():
+https://rt.perl.org/Public/Bug/Display.html?id=130801
+
+Bugs: https://github.com/perl5-dbi/DBD-mysql/issues/78
+Bugs-Debian: https://bugs.debian.org/856064
+---
+ dbdimp.c | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
+
+diff --git a/dbdimp.c b/dbdimp.c
+index 9c33994..7fdfba1 100644
+--- a/dbdimp.c
++++ b/dbdimp.c
+@@ -4380,8 +4380,7 @@ process:
+           if (!(fields[i].flags & ZEROFILL_FLAG))
+           {
+             /* Coerce to dobule and set scalar as NV */
+-            (void) SvNV(sv);
+-            SvNOK_only(sv);
++            sv_setnv(sv, SvNV(sv));
+           }
+           break;
+ 
+@@ -4392,13 +4391,11 @@ process:
+             /* Coerce to integer and set scalar as UV resp. IV */
+             if (fields[i].flags & UNSIGNED_FLAG)
+             {
+-              (void) SvUV(sv);
+-              SvIOK_only_UV(sv);
++              sv_setuv(sv, SvUV(sv));
+             }
+             else
+             {
+-              (void) SvIV(sv);
+-              SvIOK_only(sv);
++              sv_setiv(sv, SvIV(sv));
+             }
+           }
+           break;
+-- 
+2.15.1
+

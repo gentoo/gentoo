@@ -1,0 +1,45 @@
+# Copyright 2019-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (2020-12-21)
+# Additional sanitizers supported on ppc64le.
+sys-libs/compiler-rt-sanitizers -xray
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-05)
+# dropbox requires binaries unavaliable for ppc64
+kde-apps/kdenetwork-meta webengine
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-05)
+# criu is unmasked on little-endian ppc64
+app-emulation/crun -criu
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-09-19)
+# openjfx is keyworded on ppc64le
+dev-java/openjdk:11 -javafx
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-02-26)
+# vulkan tested and works on ppc64le
+dev-qt/qtdeclarative -vulkan
+dev-qt/qtgui -vulkan
+dev-qt/qtwayland -vulkan
+media-libs/mesa -vulkan -vulkan-overlay
+media-libs/libsdl2 -vulkan
+media-video/mpv -vulkan
+media-video/pipewire -vulkan
+media-video/vlc -libplacebo
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-21)
+# mask untested card for libva
+x11-libs/libva video_cards_nouveau
+
+# Robin H. Johnson <robbat2@gentoo.org> (2019-12-06)
+# PPS should work on all arches, but only keyworded on some arches
+>=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-29)
+# PGO works on ppc64le
+>=www-client/firefox-68 -pgo
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-14)
+# works on ppc64le
+media-libs/mesa -llvm -video_cards_radeonsi

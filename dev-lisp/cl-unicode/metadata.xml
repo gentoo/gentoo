@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>common-lisp@gentoo.org</email>
+    <name>Gentoo Common Lisp Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    CL-UNICODE is a library which provides Common Lisp implementations
+    with knowledge about Unicode characters including their name, their
+    general category, the scripts and blocks they belong to, their
+    numerical value, and several other properties. It also provides the
+    ability to replace the standard syntax for reading Lisp characters
+    with one that is Unicode-aware and is used to enhance CL-PPCRE with
+    Unicode properties.
+  </longdescription>
+  <longdescription lang="es">
+    CL-UNICODE es una biblioteca que ofrece implmentaciones de Common
+    Lisp que reconoce caracteres Unicode incluyendo su nombre, categoría
+    general, los guiones y bloques a los que pertenecen, su valor
+    numérico y algunas otras propiedades. También ofrece la capacidad
+    de reemplazar la sintaxis estándar para la lectura de caracteres
+    Lisp por otra que reconoce Unicode y se utiliza para mejorar
+    CL-PPCRE con propiedades Unicode.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">edicl/cl-unicode</remote-id>
+  </upstream>
+</pkgmetadata>

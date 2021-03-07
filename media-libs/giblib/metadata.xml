@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription>
+giblib is a utility library used by many of the applications I write. It 
+incorporates doubly linked lists, some string functions, and a wrapper 
+for imlib2. The wrapper does two things. It gives you access to 
+fontstyles, which can be loaded from files, saved to files or defined 
+dynamically through the API. It also, and more importantly, wraps 
+imlib2's context API changing.
+</longdescription>
+	<upstream>
+		<remote-id type="freecode">giblib</remote-id>
+	</upstream>
+</pkgmetadata>

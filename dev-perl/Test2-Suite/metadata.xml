@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Test2-Suite</remote-id>
+    <remote-id type="cpan-module">Test2::Bundle</remote-id>
+    <remote-id type="cpan-module">Test2::Bundle::Extended</remote-id>
+    <remote-id type="cpan-module">Test2::Bundle::More</remote-id>
+    <remote-id type="cpan-module">Test2::Bundle::Simple</remote-id>
+    <remote-id type="cpan-module">Test2::Compare</remote-id>
+    <remote-id type="cpan-module">Test2::Compare::Array</remote-id>
+    <remote-id type="cpan-module">Test2::Compare::Bag</remote-id>
+    <remote-id type="cpan-module">Test2::Compare::Base</remote-id>
+    <remote-id type="cpan-module">Test2::Compare::Bool</remote-id>
+    <remote-id type="cpan-module">Test2::Compare::Custom</remote-id>
+    <remote-id type="cpan-module">Test2::Compare::DeepRef</remote-id>
+    <remote-id type="cpan-module">Test2::Compare::Delta</remote-id>
+    <remote-id type="cpan-module">Test2::Compare::Event</remote-id>
+    <remote-id type="cpan-module">Test2::Compare::EventMeta</remote-id>
+    <remote-id type="cpan-module">Test2::Compare::Hash</remote-id>
+    <remote-id type="cpan-module">Test2::Compare::Meta</remote-id>
+    <remote-id type="cpan-module">Test2::Compare::Negatable</remote-id>
+    <remote-id type="cpan-module">Test2::Compare::Number</remote-id>
+    <remote-id type="cpan-module">Test2::Compare::Object</remote-id>
+    <remote-id type="cpan-module">Test2::Compare::OrderedSubset</remote-id>
+    <remote-id type="cpan-module">Test2::Compare::Pattern</remote-id>
+    <remote-id type="cpan-module">Test2::Compare::Ref</remote-id>
+    <remote-id type="cpan-module">Test2::Compare::Regex</remote-id>
+    <remote-id type="cpan-module">Test2::Compare::Scalar</remote-id>
+    <remote-id type="cpan-module">Test2::Compare::Set</remote-id>
+    <remote-id type="cpan-module">Test2::Compare::String</remote-id>
+    <remote-id type="cpan-module">Test2::Compare::Undef</remote-id>
+    <remote-id type="cpan-module">Test2::Compare::Wildcard</remote-id>
+    <remote-id type="cpan-module">Test2::Event::Times</remote-id>
+    <remote-id type="cpan-module">Test2::Mock</remote-id>
+    <remote-id type="cpan-module">Test2::Plugin</remote-id>
+    <remote-id type="cpan-module">Test2::Plugin::BailOnFail</remote-id>
+    <remote-id type="cpan-module">Test2::Plugin::DieOnFail</remote-id>
+    <remote-id type="cpan-module">Test2::Plugin::ExitSummary</remote-id>
+    <remote-id type="cpan-module">Test2::Plugin::SRand</remote-id>
+    <remote-id type="cpan-module">Test2::Plugin::Times</remote-id>
+    <remote-id type="cpan-module">Test2::Plugin::UTF8</remote-id>
+    <remote-id type="cpan-module">Test2::Require</remote-id>
+    <remote-id type="cpan-module">Test2::Require::AuthorTesting</remote-id>
+    <remote-id type="cpan-module">Test2::Require::EnvVar</remote-id>
+    <remote-id type="cpan-module">Test2::Require::Fork</remote-id>
+    <remote-id type="cpan-module">Test2::Require::Module</remote-id>
+    <remote-id type="cpan-module">Test2::Require::Perl</remote-id>
+    <remote-id type="cpan-module">Test2::Require::RealFork</remote-id>
+    <remote-id type="cpan-module">Test2::Require::Threads</remote-id>
+    <remote-id type="cpan-module">Test2::Suite</remote-id>
+    <remote-id type="cpan-module">Test2::Todo</remote-id>
+    <remote-id type="cpan-module">Test2::Tools</remote-id>
+    <remote-id type="cpan-module">Test2::Tools::Basic</remote-id>
+    <remote-id type="cpan-module">Test2::Tools::Class</remote-id>
+    <remote-id type="cpan-module">Test2::Tools::ClassicCompare</remote-id>
+    <remote-id type="cpan-module">Test2::Tools::Compare</remote-id>
+    <remote-id type="cpan-module">Test2::Tools::Defer</remote-id>
+    <remote-id type="cpan-module">Test2::Tools::Encoding</remote-id>
+    <remote-id type="cpan-module">Test2::Tools::Event</remote-id>
+    <remote-id type="cpan-module">Test2::Tools::Exception</remote-id>
+    <remote-id type="cpan-module">Test2::Tools::Exports</remote-id>
+    <remote-id type="cpan-module">Test2::Tools::GenTemp</remote-id>
+    <remote-id type="cpan-module">Test2::Tools::Grab</remote-id>
+    <remote-id type="cpan-module">Test2::Tools::Mock</remote-id>
+    <remote-id type="cpan-module">Test2::Tools::Ref</remote-id>
+    <remote-id type="cpan-module">Test2::Tools::Subtest</remote-id>
+    <remote-id type="cpan-module">Test2::Tools::Target</remote-id>
+    <remote-id type="cpan-module">Test2::Tools::Warnings</remote-id>
+    <remote-id type="cpan-module">Test2::Util::Grabber</remote-id>
+    <remote-id type="cpan-module">Test2::Util::Ref</remote-id>
+    <remote-id type="cpan-module">Test2::Util::Stash</remote-id>
+    <remote-id type="cpan-module">Test2::Util::Sub</remote-id>
+    <remote-id type="cpan-module">Test2::Util::Table</remote-id>
+    <remote-id type="cpan-module">Test2::Util::Table::Cell</remote-id>
+    <remote-id type="cpan-module">Test2::Util::Table::LineBreak</remote-id>
+    <remote-id type="cpan-module">Test2::Util::Term</remote-id>
+    <remote-id type="cpan-module">Test2::Util::Times</remote-id>
+    <remote-id type="cpan-module">Test2::V0</remote-id>
+  </upstream>
+</pkgmetadata>

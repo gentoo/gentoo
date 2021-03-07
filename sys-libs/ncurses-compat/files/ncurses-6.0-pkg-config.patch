@@ -1,0 +1,14 @@
+disable the $PATH search for the PKG_CONFIG tool.  it isn't needed and just
+gets in the way when setting to a value that might not yet exist.
+
+--- ncurses-6.0/configure
++++ ncurses-6.0/configure
+@@ -3533,7 +3533,7 @@
+ esac
+ 
+ test -z "$PKG_CONFIG" && PKG_CONFIG=none
+-if test "$PKG_CONFIG" != none ; then
++if false ; then
+ 
+ if test "x$prefix" != xNONE; then
+ 	cf_path_syntax="$prefix"

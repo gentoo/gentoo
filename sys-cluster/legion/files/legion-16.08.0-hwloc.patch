@@ -1,0 +1,22 @@
+From 8c636a8547b1695105501b8b7c8c713094ef7921 Mon Sep 17 00:00:00 2001
+From: Christoph Junghans <christoph.junghans@gmail.com>
+Date: Fri, 2 Sep 2016 15:26:51 -0600
+Subject: [PATCH] FindHWLOC.cmake: fix syntax error
+
+---
+ cmake/FindHWLOC.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/FindHWLOC.cmake b/cmake/FindHWLOC.cmake
+index 1019b59..1e9e97d 100644
+--- a/cmake/FindHWLOC.cmake
++++ b/cmake/FindHWLOC.cmake
+@@ -28,7 +28,7 @@ if(NOT HWLOC_FOUND AND NOT TARGET HWLOC)
+     # Save the existing prefix options
+     set(_CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH})
+     set(_CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH})
+-    set(CMAKE_PREFIX_PATH ${HWLOC_ROOT_DIR}
++    set(CMAKE_PREFIX_PATH ${HWLOC_ROOT_DIR})
+     unset(CMAKE_LIBRARY_PATH)
+     set(_HWLOC_FIND_OPTS
+       NO_CMAKE_ENVIRONMENT_PATH

@@ -1,0 +1,34 @@
+diff -up dx-4.4.4/src/exec/libdx/fileio.c.open dx-4.4.4/src/exec/libdx/fileio.c
+--- dx-4.4.4/src/exec/libdx/fileio.c.open	2006-01-05 23:55:47.000000000 +0100
++++ dx-4.4.4/src/exec/libdx/fileio.c	2008-09-24 19:16:30.000000000 +0200
+@@ -263,7 +263,7 @@ Error _dxffile_open(char *name, int rw)
+ 	case 2:/* read/write */
+ 		fd = open(name, O_RDWR);
+ 		if (fd < 0) {
+-			fd = open(name, O_WRONLY | O_CREAT);
++			fd = open(name, O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR);
+ 			if (fd < 0) {
+ 				DXSetError(ERROR_DATA_INVALID, 
+ 				"can't open/create file '%s'", name);
+diff -up dx-4.4.4/src/exec/libdx/plock.c.open dx-4.4.4/src/exec/libdx/plock.c
+--- dx-4.4.4/src/exec/libdx/plock.c.open	2002-07-17 06:48:18.000000000 +0200
++++ dx-4.4.4/src/exec/libdx/plock.c	2008-09-24 19:16:30.000000000 +0200
+@@ -37,7 +37,8 @@ struct seminfo *__buf;      /* buffer fo
+ 
+ #define SEM_FLAGS  	 (IPC_CREAT | S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH)
+ #define SHM_FLAGS  	 (IPC_CREAT | S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH)
+-#define OPEN_FLAGS 	 (O_CREAT | S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH)
++#define OPEN_FLAGS	 (O_CREAT)
++#define OPEN_MODE 	 (S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH)
+ #define IS_MINE(a)	 (locks->_owner[a] == getpid())
+ #define SET_OWNER(a)	 (locks->_owner[a] = getpid())
+ #define CLEAR_OWNER(a)	 (locks->_owner[a] = 0)
+@@ -268,7 +269,7 @@ PLockInit()
+ 
+     if (stat(LOCKFILE, &statbuf))
+     {
+-        int fd = open(LOCKFILE, OPEN_FLAGS);
++        int fd = open(LOCKFILE, OPEN_FLAGS, OPEN_MODE);
+ 	if (fd < 0)
+ 	{
+ 	    fprintf(stderr, "initLocks: error accessing locks shared block: open\n");

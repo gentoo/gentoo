@@ -1,0 +1,30 @@
+#!/sbin/openrc-run
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+checkconfig() {
+	if [ ! -f /etc/ippl.conf ]
+	then
+		eerror "Please create /etc/ippl.conf"
+		return 1
+	fi
+	return 0
+}
+
+start() {
+	checkconfig || return $?
+	ebegin "Starting ippl"
+	start-stop-daemon --start --quiet --pidfile /run/ippl.pid \
+		--exec /usr/sbin/ippl
+	eend $? "Failed to start ippl"
+}
+
+stop() {
+	ebegin "Stopping ippl"
+	start-stop-daemon --stop --quiet --pidfile /run/ippl.pid
+	eend $? "Failed to stop ippl"
+}

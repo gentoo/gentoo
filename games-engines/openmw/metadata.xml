@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>alexey+gentoo@asokolov.org</email>
+		<name>Alexey Sokolov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<use>
+		<flag name="devtools">Install development tools like
+			bsatool, esmtool and opencs.</flag>
+		<flag name="osg-fork">Use OpenSceneGraph forked by OpenMW instead of upstream OSG.</flag>
+	</use>
+	<upstream>
+		<changelog>https://github.com/OpenMW/openmw/releases</changelog>
+		<doc lang="en">https://wiki.openmw.org</doc>
+		<bugs-to>https://bugs.openmw.org/</bugs-to>
+		<remote-id type="github">OpenMW/openmw</remote-id>
+		<remote-id type="gitlab">OpenMW/openmw</remote-id>
+	</upstream>
+	<longdescription lang="en">
+		OpenMW is a new and modern engine based on the one that runs the 2002
+		open-world RPG Morrowind. The engine (OpenMW) will come with its own
+		editor (OpenCS) which will allow the user to edit or create their own
+		games. Both OpenCS and OpenMW are written from scratch and aren’t
+		made to support any third party programs the original Morrowind
+		engine uses to improve its functionality.
+	</longdescription>
+</pkgmetadata>

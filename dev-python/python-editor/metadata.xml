@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/fmoo/python-editor/issues</bugs-to>
+		<remote-id type="github">fmoo/python-editor</remote-id>
+		<remote-id type="pypi">python-editor</remote-id>
+	</upstream>
+</pkgmetadata>

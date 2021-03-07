@@ -1,0 +1,23 @@
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Fabian Groffen <grobian@gentoo.org> (2014-01-14)
+# util-linux has no business on Darwin systems
+sys-apps/util-linux
+
+# Fabian Groffen <grobian@gentoo.org> (2011-12-30)
+# Does not support Darwin, http://mj.ucw.cz/pciutils.html
+sys-apps/pciutils
+
+# Fabian Groffen <grobian@gentoo.org> (2010-04-21)
+# state of mesa is probably not too good on OSX, opengl-apple is
+# preferred
+media-libs/mesa
+
+# Elias Pipping <pipping@gentoo.org> (2007-10-09)
+# darwin-miscutils are only available on darwin
+-sys-apps/darwin-miscutils
+
+# Fabian Groffen <grobian@gentoo.org> (2007-01-21)
+# dies with "exhausted memory" errors on Darwin
+=dev-vcs/cvs-1.12.12*

@@ -1,0 +1,89 @@
+diff -rupN beagle-3.0.3b/PACC/Math/Matrix.cpp beagle-3.0.3/PACC/Math/Matrix.cpp
+--- beagle-3.0.3b/PACC/Math/Matrix.cpp	2009-01-20 23:38:39.000000000 -0400
++++ beagle-3.0.3/PACC/Math/Matrix.cpp	2009-01-21 00:26:46.000000000 -0400
+@@ -40,6 +40,7 @@
+ #include <stdexcept>
+ #include <iomanip>
+ #include <cmath>
++#include <climits>
+ 
+ using namespace std;
+ using namespace PACC;
+diff -rupN beagle-3.0.3b/PACC/Math/Vector.hpp beagle-3.0.3/PACC/Math/Vector.hpp
+--- beagle-3.0.3b/PACC/Math/Vector.hpp	2009-01-20 23:38:39.000000000 -0400
++++ beagle-3.0.3/PACC/Math/Vector.hpp	2009-01-21 00:26:29.000000000 -0400
+@@ -42,6 +42,7 @@
+ #include "XML/Document.hpp"
+ #include "XML/Streamer.hpp"
+ #include <cmath>
++#include <algorithm>
+ 
+ namespace PACC {
+ 	
+diff -rupN beagle-3.0.3b/PACC/Socket/Cafe.cpp beagle-3.0.3/PACC/Socket/Cafe.cpp
+--- beagle-3.0.3b/PACC/Socket/Cafe.cpp	2009-01-20 23:38:39.000000000 -0400
++++ beagle-3.0.3/PACC/Socket/Cafe.cpp	2009-01-21 00:31:09.000000000 -0400
+@@ -35,6 +35,7 @@
+ 
+ #include "Socket/Cafe.hpp"
+ #include <iostream>
++#include <cstring>
+ 
+ #ifdef WIN32
+ ///////////// specifics for windows /////////////
+diff -rupN beagle-3.0.3b/PACC/Socket/Port.cpp beagle-3.0.3/PACC/Socket/Port.cpp
+--- beagle-3.0.3b/PACC/Socket/Port.cpp	2009-01-20 23:38:39.000000000 -0400
++++ beagle-3.0.3/PACC/Socket/Port.cpp	2009-01-21 00:30:54.000000000 -0400
+@@ -34,6 +34,7 @@
+  */
+ 
+ #include "Socket/Port.hpp"
++#include <cstring>
+ 
+ #ifdef WIN32
+ ///////////// specifics for windows /////////////
+diff -rupN beagle-3.0.3b/PACC/Threading/Thread.cpp beagle-3.0.3/PACC/Threading/Thread.cpp
+--- beagle-3.0.3b/PACC/Threading/Thread.cpp	2009-01-20 23:38:39.000000000 -0400
++++ beagle-3.0.3/PACC/Threading/Thread.cpp	2009-01-21 00:28:02.000000000 -0400
+@@ -35,6 +35,7 @@
+ 
+ #include "Threading/Thread.hpp"
+ #include "Util/Assert.hpp"
++#include <cstdlib>
+ 
+ #ifdef WIN32
+ #include <windows.h>
+diff -rupN beagle-3.0.3b/PACC/Util/SignalHandler.cpp beagle-3.0.3/PACC/Util/SignalHandler.cpp
+--- beagle-3.0.3b/PACC/Util/SignalHandler.cpp	2009-01-20 23:38:39.000000000 -0400
++++ beagle-3.0.3/PACC/Util/SignalHandler.cpp	2009-01-20 23:44:20.000000000 -0400
+@@ -37,6 +37,7 @@
+ #include "Util/Assert.hpp"
+ #include <signal.h>
+ #include <stdexcept>
++#include <cstdlib>
+ 
+ using namespace std;
+ using namespace PACC;
+diff -rupN beagle-3.0.3b/PACC/Util/Tokenizer.cpp beagle-3.0.3/PACC/Util/Tokenizer.cpp
+--- beagle-3.0.3b/PACC/Util/Tokenizer.cpp	2009-01-20 23:38:39.000000000 -0400
++++ beagle-3.0.3/PACC/Util/Tokenizer.cpp	2009-01-20 23:44:10.000000000 -0400
+@@ -36,6 +36,8 @@
+ #include "Util/Tokenizer.hpp"
+ #include "Util/Assert.hpp"
+ #include <stdexcept>
++#include <cstring>
++#include <cstdlib>
+ 
+ using namespace std;
+ using namespace PACC;
+diff -rupN beagle-3.0.3b/PACC/XML/Node.cpp beagle-3.0.3/PACC/XML/Node.cpp
+--- beagle-3.0.3b/PACC/XML/Node.cpp	2009-01-20 23:38:39.000000000 -0400
++++ beagle-3.0.3/PACC/XML/Node.cpp	2009-01-20 23:45:09.000000000 -0400
+@@ -39,6 +39,7 @@
+ #include "Util/Assert.hpp"
+ #include <sstream>
+ #include <stdexcept>
++#include <cstring>
+ 
+ using namespace std;
+ using namespace PACC;

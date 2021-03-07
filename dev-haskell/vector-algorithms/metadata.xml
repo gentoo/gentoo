@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name="bench">Build a benchmarking program.</flag>
+		<flag name="boundschecks">Enable bounds checking.</flag>
+		<flag name="internalchecks">Enable internal consistency checks at the cost of a significant performance penalty.</flag>
+		<flag name="properties">Enable quickcheck tests.</flag>
+		<flag name="unsafechecks">Enable bounds checking in unsafe operations at the cost of a significant performance penalty.</flag>
+	</use>
+</pkgmetadata>

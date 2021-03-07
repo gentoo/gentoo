@@ -1,0 +1,27 @@
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=5
+
+JAVA_PKG_IUSE="doc source"
+inherit java-pkg-2 java-pkg-simple
+
+DESCRIPTION="Layout manager that makes creating user interfaces fast and easy"
+HOMEPAGE="https://www.oracle.com/technetwork/java/tablelayout-141489.html"
+SRC_URI="https://www.oracle.com/technetwork/java/${PN}.jar -> ${P}.jar"
+
+LICENSE="LGPL-2.1"
+KEYWORDS="amd64 ~ppc64 x86"
+SLOT="0"
+IUSE=""
+
+DEPEND=">=virtual/jdk-1.6"
+RDEPEND=">=virtual/jre-1.6"
+
+java_prepare() {
+	find . -type f -name \*.class -exec rm -v {} \; || die
+
+	# two commmas cause a compiling error :/
+	sed -i -e 's#Dimension(40, 20);;#Dimension(40, 20);#g;' \
+		example/TypicalGui.java || die
+}

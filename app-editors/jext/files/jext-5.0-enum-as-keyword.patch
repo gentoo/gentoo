@@ -1,0 +1,173 @@
+--- src/lib/org/gjt/sp/jedit/textarea/InputHandler.java.orig	2015-07-03 17:52:13.843000000 +0000
++++ src/lib/org/gjt/sp/jedit/textarea/InputHandler.java	2015-07-03 17:52:59.746000000 +0000
+@@ -141,10 +141,10 @@
+    */
+   public static String getActionName(ActionListener listener)
+   {
+-    Enumeration enum = getActions();
+-    while(enum.hasMoreElements())
++    Enumeration myEnum = getActions();
++    while(myEnum.hasMoreElements())
+     {
+-      String name = (String)enum.nextElement();
++      String name = (String)myEnum.nextElement();
+       ActionListener _listener = getAction(name);
+       if(_listener == listener)
+         return name;
+--- src/lib/org/jext/options/OptionsDialog.java.orig	2015-07-03 17:54:19.179000000 +0000
++++ src/lib/org/jext/options/OptionsDialog.java	2015-07-03 17:54:33.377000000 +0000
+@@ -297,11 +297,11 @@
+ 
+   private void addOptionGroup(OptionGroup child, OptionGroup parent)
+   {
+-    ArrayList enum = child.getMembers();
++    ArrayList myEnum = child.getMembers();
+ 
+-    for (int i = 0; i < enum.size(); i++)
++    for (int i = 0; i < myEnum.size(); i++)
+     {
+-      Object elem = enum.get(i);
++      Object elem = myEnum.get(i);
+ 
+       if (elem instanceof OptionPane)
+       {
+@@ -669,4 +669,4 @@
+ 
+ }
+ 
+-// End of OptionsDialog.java
+\ No newline at end of file
++// End of OptionsDialog.java
+--- src/lib/org/jext/misc/VirtualFolders.java.orig	2015-07-03 17:49:57.731000000 +0000
++++ src/lib/org/jext/misc/VirtualFolders.java	2015-07-03 17:51:11.418000000 +0000
+@@ -233,10 +233,10 @@
+         ret.append(crlf).append("<folderlist>");
+       }
+ 
+-      Enumeration enum = parent.children();
+-      while (enum.hasMoreElements())
++      Enumeration myEnum = parent.children();
++      while (myEnum.hasMoreElements())
+       {
+-        VirtualFolderNode child = (VirtualFolderNode) enum.nextElement();
++        VirtualFolderNode child = (VirtualFolderNode) myEnum.nextElement();
+         ret.append(toXML(child, depth + 1));
+       }
+ 
+@@ -317,20 +317,20 @@
+ 
+   private void fixVisible()
+   {
+-    Enumeration enum = root.depthFirstEnumeration();
++    Enumeration myEnum = root.depthFirstEnumeration();
+     VirtualFolderNode node = null;
+-    while (enum.hasMoreElements())
++    while (myEnum.hasMoreElements())
+     {
+ 
+-      node = (VirtualFolderNode)enum.nextElement();
++      node = (VirtualFolderNode)myEnum.nextElement();
+       TreePath path = new TreePath(node.getPath());
+       tree.collapsePath(path);
+     }
+ 
+-    enum = root.depthFirstEnumeration();
+-    while (enum.hasMoreElements())
++    myEnum = root.depthFirstEnumeration();
++    while (myEnum.hasMoreElements())
+     {
+-      node = (VirtualFolderNode)enum.nextElement();
++      node = (VirtualFolderNode)myEnum.nextElement();
+       if (node.shouldBeVisible())
+       {
+         TreePath path = new TreePath(((VirtualFolderNode)node.getParent()).getPath());
+@@ -392,10 +392,10 @@
+   public static boolean folderExists(VirtualFolderNode parent, String name)
+   {
+     boolean exists = false;
+-    Enumeration enum = parent.children();
+-    while ((enum.hasMoreElements()) && !exists)
++    Enumeration myEnum = parent.children();
++    while ((myEnum.hasMoreElements()) && !exists)
+     {
+-      VirtualFolderNode child = (VirtualFolderNode) enum.nextElement();
++      VirtualFolderNode child = (VirtualFolderNode) myEnum.nextElement();
+       exists = child.toString().equals(name);
+     }
+     return exists;
+@@ -526,10 +526,10 @@
+     } else {
+       if (fromMenu)
+       {
+-        Enumeration enum = node.children();
+-        while (enum.hasMoreElements())
++        Enumeration myEnum = node.children();
++        while (myEnum.hasMoreElements())
+         {
+-          VirtualFolderNode child = (VirtualFolderNode) enum.nextElement();
++          VirtualFolderNode child = (VirtualFolderNode) myEnum.nextElement();
+           openNode(child, fromMenu);
+         }
+       }
+--- src/lib/com/microstar/xml/XmlParser.java.orig	2015-07-03 17:41:23.209000000 +0000
++++ src/lib/com/microstar/xml/XmlParser.java	2015-07-03 17:46:30.296000000 +0000
+@@ -1346,7 +1346,7 @@
+   {
+     String name;
+     int type;
+-    String enum = null;
++    String myEnum = null;
+ 
+ 				// Read the attribute name.
+     name = readNmtoken(true);
+@@ -1358,12 +1358,12 @@
+ 				// Get the string of enumerated values
+ 				// if necessary.
+     if (type == ATTRIBUTE_ENUMERATED || type == ATTRIBUTE_NOTATION) {
+-      enum = dataBufferToString();
++      myEnum = dataBufferToString();
+     }
+ 
+ 				// Read the default value.
+     requireWhitespace();
+-    parseDefault(elementName, name, type, enum);
++    parseDefault(elementName, name, type, myEnum);
+   }
+ 
+ 
+@@ -1451,7 +1451,7 @@
+     * Parse the default value for an attribute.
+     * [62] Default ::= '#REQUIRED' | '#IMPLIED' | ((%'#FIXED' S)? %AttValue
+     */
+-  void parseDefault (String elementName, String name, int type, String enum)
++  void parseDefault (String elementName, String name, int type, String myEnum)
+     throws java.lang.Exception
+   {
+     int valueType = ATTRIBUTE_DEFAULT_SPECIFIED;
+@@ -1477,7 +1477,7 @@
+       value = readLiteral(LIT_CHAR_REF);
+       context = CONTEXT_DTD;
+     }
+-    setAttribute(elementName, name, type, enum, value, valueType);
++    setAttribute(elementName, name, type, myEnum, value, valueType);
+   }
+ 
+ 
+@@ -2714,7 +2714,7 @@
+     * - int value type
+     * *TODO: do something with attribute types.
+     */
+-  void setAttribute (String elName, String name, int type, String enumeration,
++  void setAttribute (String elName, String name, int type, String myEnum,
+ 		     String value, int valueType)
+     throws java.lang.Exception
+   {
+@@ -2736,7 +2736,7 @@
+       attribute[0] = new Integer(type);
+       attribute[1] = value;
+       attribute[2] = new Integer(valueType);
+-      attribute[3] = enumeration;
++      attribute[3] = myEnum;
+       attribute[4] = null;
+       attlist.put(name.intern(), attribute);
+ 

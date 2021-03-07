@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+		<email>netmon@gentoo.org</email>
+		<name>Gentoo network monitoring and analysis project</name>
+	</maintainer>
+	<longdescription lang="en">
+		The arpwatch package contains arpwatch and arpsnmp. Arpwatch and arpsnmp
+		are both network monitoring tools. Both utilities monitor Ethernet or
+		FDDI network traffic and build databases of Ethernet/IP address pairs,
+		and can report certain changes via email.  Install the arpwatch package
+		if you need networking monitoring devices which will automatically keep
+		track of the IP addresses on your network.
+	</longdescription>
+</pkgmetadata>

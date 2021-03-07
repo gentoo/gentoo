@@ -1,0 +1,120 @@
+the autotools in this are ridiculously ancient (over 15 years old).
+update them to something reasonable.
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,7 +1,7 @@
+ #noinst_SCRIPTS=systype
+ PACKAGE_VERSION=@PACKAGE@-@VERSION@
+ # i can do that better ...
+-AUTOMAKE_OPTIONS=no-dependencies ansi2knr readme-alpha 1.3 gnu
++AUTOMAKE_OPTIONS=no-dependencies readme-alpha gnu
+ man_MANS=smtpblast.1 usmtpd.1 tomaildir.1 maildirblast.1 rewriteheader.1
+ EXTRA_DIST= attribs.h crc32ansi.h dirsysdep.h dns.h dynhash.h \
+ 	dns_int.h filelock.h \
+@@ -41,31 +41,6 @@ maildirblast_SOURCES=maildirblast.c smtp.c runqueue.c \
+ 	uosock_connect.c filelock.c uogetopt.c str2long.c str2ulong.c
+ maildirblast_LDADD=libdns.a libmta.a libstr.a libio.a @LIBOBJS@
+ 
+-if HAVE_GNU_MAKE
+-## We must create the .deps directory if it doesn't exist.  We do it
+-## in this strange way to make sure the .deps directory exists,
+-## without trying to run mkdir for each compilation.
+-## stolen from automake
+-DEPS_MAGIC := $(shell mkdir deps > /dev/null 2>&1 || :)
+-endif
+-
+-if HAVE_GNU_MAKE
+-# no dependency tracking without GNU make
+-##
+-## automake depencency stuff is unreliable, it will not
+-## recreate .deps/xxx.P if it has been removed.
+-## and anyway, i dislike hidden directories.
+--include $(addprefix ./deps/,$(SOURCES:.c=.d))
+-deps/%.d: %.c
+-if HAVE_GCC_DEP
+-	@echo mkdep $< 
+-	@$(COMPILE) -Wp,-MMD,./deps/$(@F) -E $< >/dev/null
+-else
+-# no dependency generating without GCC
+-	@exit 0
+-endif
+-endif
+-
+ rpm: $(PACKAGE_VERSION).tar.gz Specfile
+ 	$(srcdir)/buildrpm $(srcdir)
+ success:
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -1,4 +1,4 @@
+-AC_DEFUN(UO_HEADER_SYS_SELECT,
++AC_DEFUN([UO_HEADER_SYS_SELECT],
+ [AC_CACHE_CHECK([whether sys/time.h and sys/select.h may both be included],
+   lrzsz_cv_header_sys_select,
+   [AC_TRY_COMPILE([#include <sys/types.h>
+@@ -6,7 +6,7 @@ AC_DEFUN(UO_HEADER_SYS_SELECT,
+ #include <sys/select.h>],
+ [struct tm *tp;], lrzsz_cv_header_sys_select=yes, lrzsz_cv_header_sys_select=no)])
+ if test $lrzsz_cv_header_sys_select = no; then
+-AC_DEFINE(SYS_TIME_WITHOUT_SYS_SELECT)
++AC_DEFINE(SYS_TIME_WITHOUT_SYS_SELECT, 1, [blah])
+ fi
+ ])
+ 
+--- a/configure.in
++++ b/configure.in
+@@ -1,7 +1,9 @@
+-AC_INIT(smtpblast.c)
+-AM_INIT_AUTOMAKE(smtptools, 0.2.3)
++AC_INIT(smtptools, 0.2.3)
++AM_INIT_AUTOMAKE
+ AM_CONFIG_HEADER(config.h)
+ 
++AH_BOTTOM([#define P__(x) x])
++
+ if test "x$CFLAGS" = x ; then
+ 	if test "x$CC" = "xlcc" ; then 
+ 		if test "x$_CFLAGS_LCC" != x  ; then
+@@ -23,38 +25,19 @@ AC_ARG_ENABLE(efence,
+ dnl Checks for programs.
+ AC_PROG_CC
+ AC_PROG_CPP
+-if test "x$GCC" = xyes ; then 
+-	AC_MSG_CHECKING([whether gcc supports -Wp,-MMD])
+-	old="$CPPFLAGS"; CPPFLAGS="$CPPFLAGS -Wp,-MMD,myconftest.out -E"
+-	AC_TRY_CPP(int main(void) {return 0;},test -s myconftest.out && GCC_DEP=yes)
+-	rm -f myconftest.out
+-	CPPFLAGS="$old";
+-	if test "x$GCC_DEP" = xyes ; then AC_MSG_RESULT(yes) ; else AC_MSG_RESULT(no); fi
+-fi
+-if test "x$GCC_DEP" = xyes ; then : ; else
+-	AC_MSG_WARN([dependency tracking disabled])
+-fi
+ AM_CONDITIONAL(HAVE_GCC_DEP, test "x$GCC_DEP" = "xyes")
++AC_CHECK_TOOL(AR, ar)
+ AC_PROG_RANLIB
+ AC_CHECK_PROGS(MAKE,gnumake gmake make pmake,make)
+-AC_MSG_CHECKING([for GNU make])
+-	echo "include confMakefile2" >confMakefile1
+-	echo "TESTFORGNUMAKE:" >confMakefile2
+-	GNU_MAKE=no
+-	$MAKE -f confMakefile1 >/dev/null 2>/dev/null && GNU_MAKE=yes
+-	rm -f confMakefile2 confMakefile1
+-	AC_MSG_RESULT($GNU_MAKE)
+-	AM_CONDITIONAL(HAVE_GNU_MAKE, test "x$GNU_MAKE" = "xyes")
+-	if test "x$GNU_MAKE" = "xno" ; then
+-		AC_MSG_WARN([dependencies disabled])
+-	fi
+-AM_C_PROTOTYPES
+ 
+ dnl Checks for libraries.
+ if test "x$WANT_EFENCE" = x ; then : ;  else
+ 	AC_CHECK_LIB(efence, main)
+ fi
++dnl glibc uses the symbol __dn_expand and provides a dn_expand define
++dnl which expands into __dn_expand.  check for both.
+ AC_CHECK_LIB(resolv, dn_expand)
++AC_CHECK_LIB(resolv, __dn_expand)
+ dnl SCO needs this.
+ AC_CHECK_LIB(socket,syslog,,,)
+ dnl slowlartis needs this

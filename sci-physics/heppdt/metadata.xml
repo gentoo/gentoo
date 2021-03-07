@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-physics@gentoo.org</email>
+		<name>Gentoo Physics Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		HepPDT contains the fixed data about each particle type. In other
+		words, it contains the data that can be found in the Review of
+		Particle Properties.
+		This data is conceptually split into particle information (e.g. mass)
+		and decay information. HepPDT provides a simple set of particle data
+		classes. Particle ID translation methods are in a separate HepPID
+		library, which is distributed as part of HepPDT.
+	</longdescription>
+</pkgmetadata>

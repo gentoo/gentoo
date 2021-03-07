@@ -1,0 +1,125 @@
+Backport for Gentoo patch-2.7.x.
+
+https://bugs.gentoo.org/664640
+
+
+Original patch:
+Author: Lubomir Rintel <lkundrak@v3.sk>
+Date:   Tue Feb 27 16:52:00 2018 +0100
+Subject: Fix error handling with git-style patches
+
+When an error is encountered in output_files(), the subsequent call to
+cleanup() calls back into output_files() resulting in an infinte recursion.
+This is trivially reproduced with a git-style patch (which utilizes
+output_file_later()) that tries to patch a nonexistent or unreadable
+file (see attached test case).
+
+* src/patch.c: (output_files) clear the files_to_output list before
+iterating it, so that recursive calls won't iterate the same files.
+* tests/git-error: New test case.
+* tests/Makefile.am (TESTS): Add test case.
+
+Origin: https://lists.gnu.org/archive/html/bug-patch/2018-02/msg00010.html
+
+--- a/src/patch.c
++++ b/src/patch.c
+@@ -1938,8 +1938,12 @@ output_files (struct stat const *st)
+ {
+   gl_list_iterator_t iter;
+   const void *elt;
++  gl_list_t files;
+ 
+-  iter = gl_list_iterator (files_to_output);
++  files = files_to_output;
++  init_files_to_output ();
++
++  iter = gl_list_iterator (files);
+   while (gl_list_iterator_next (&iter, &elt, NULL))
+     {
+       const struct file_to_output *file_to_output = elt;
+@@ -1957,8 +1961,8 @@ output_files (struct stat const *st)
+ 	  /* Free the list up to here. */
+ 	  for (;;)
+ 	    {
+-	      const void *elt2 = gl_list_get_at (files_to_output, 0);
+-	      gl_list_remove_at (files_to_output, 0);
++	      const void *elt2 = gl_list_get_at (files, 0);
++	      gl_list_remove_at (files, 0);
+ 	      if (elt == elt2)
+ 		break;
+ 	    }
+@@ -1967,7 +1971,7 @@ output_files (struct stat const *st)
+ 	}
+     }
+   gl_list_iterator_free (&iter);
+-  gl_list_clear (files_to_output);
++  gl_list_free (files);
+ }
+ 
+ /* Fatal exit with cleanup. */
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -40,6 +40,7 @@ TESTS = \
+ 	filename-choice \
+ 	git-binary-diff \
+ 	git-cleanup \
++	git-error \
+ 	garbage \
+ 	global-reject-files \
+ 	inname \
+--- a/tests/Makefile.in
++++ b/tests/Makefile.in
+@@ -1316,6 +1316,7 @@ TESTS = \
+ 	filename-choice \
+ 	git-binary-diff \
+ 	git-cleanup \
++	git-error \
+ 	garbage \
+ 	global-reject-files \
+ 	inname \
+@@ -1695,6 +1696,13 @@ git-cleanup.log: git-cleanup
+ 	--log-file $$b.log --trs-file $$b.trs \
+ 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+ 	"$$tst" $(AM_TESTS_FD_REDIRECT)
++git-error.log: git-error
++	@p='git-error'; \
++	b='git-error'; \
++	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
++	--log-file $$b.log --trs-file $$b.trs \
++	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
++	"$$tst" $(AM_TESTS_FD_REDIRECT)
+ garbage.log: garbage
+ 	@p='garbage'; \
+ 	b='garbage'; \
+--- /dev/null
++++ b/tests/git-error
+@@ -0,0 +1,29 @@
++# Copyright (C) 2018 Free Software Foundation, Inc.
++#
++# Copying and distribution of this file, with or without modification,
++# in any medium, are permitted without royalty provided the copyright
++# notice and this notice are preserved.
++
++. $srcdir/test-lib.sh
++
++require cat
++use_local_patch
++use_tmpdir
++
++cat > f.diff <<EOF
++diff --git a/boo b/boo
++--- /dev/fd/63 2018-02-27 16:32:54.861266246 +0100
+++++ /dev/fd/62 2018-02-27 16:32:54.861266246 +0100
++@@ -1 +1 @@
++-abc
+++def
++
++EOF
++
++check 'patch .nonexistent < f.diff || echo "Status: $?"' <<EOF
++patching file .nonexistent
++Hunk #1 FAILED at 1.
++1 out of 1 hunk FAILED -- saving rejects to file .nonexistent.rej
++$PATCH: **** Can't reopen file .nonexistent : No such file or directory
++Status: 2
++EOF

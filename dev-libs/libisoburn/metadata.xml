@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+<email>billie@gentoo.org</email>
+<name>Daniel Pielmeier</name>
+</maintainer>
+<use>
+<flag name="external-filters">Allow the use of external processes as file content 
+filters (Note: this is a potential security risk)</flag>
+<flag name="external-filters-setuid">Also allow the use of external setuid 
+processes as file content filters (Note: this is a potential security 
+risk)</flag>
+<flag name="launch-frontend">Enable the tcl gui for xorriso</flag>
+<flag name="launch-frontend-setuid">Enable the tcl gui for xorriso under setuid</flag>
+<flag name="frontend-optional">Use <pkg>dev-tcltk/bwidget</pkg> which is not strictly required for the frontend</flag>
+</use>
+</pkgmetadata>

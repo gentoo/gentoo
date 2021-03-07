@@ -1,0 +1,75 @@
+--- a/colorgcc
++++ b/colorgcc
+@@ -95,6 +95,7 @@
+ use Cwd 'abs_path';
+ 
+ my(%nocolor, %colors, %compilerPaths);
++my($unfinishedQuote, $previousColor);
+ 
+ sub initDefaults
+ {
+@@ -159,14 +160,37 @@
+ 
+    my($line, $normalColor) = @_;
+ 
++   if (defined $normalColor)
++   {
++      $previousColor = $normalColor;
++   }
++   else
++   {
++      $normalColor = $previousColor;
++   }
++
+    my($srcon) = color("reset") . $colors{"srcColor"};
+    my($srcoff) = color("reset") . $normalColor;
+ 
+-   $line = $normalColor . $line;
++   $line = ($unfinishedQuote? $srcon : $normalColor) . $line;
+ 
+-   # This substitute replaces `foo' with `AfooB' where A is the escape
++   # These substitutions replaces `foo' with `AfooB' where A is the escape
+    # sequence that turns on the the desired source color, and B is the
+    # escape sequence that returns to $normalColor.
++
++   # Handle multi-line quotes.
++   if ($unfinishedQuote) {
++      if ($line =~ s/^([^\`]*?)\'/$1$srcoff\'/)
++      {
++	 $unfinishedQuote = 0;
++      }
++   }
++   if ($line =~ s/\`([^\']*?)$/\`$srcon$1/)
++   {
++      $unfinishedQuote = 1;
++   }
++
++   # Single line quoting.
+    $line =~ s/\`(.*?)\'/\`$srcon$1$srcoff\'/g;
+ 
+    print($line, color("reset"));
+@@ -190,6 +214,10 @@
+    loadPreferences('/etc/colorgcc/colorgccrc');
+ }
+ 
++# Set our default output color.  This presumes that any unrecognized output
++# is an error.
++$previousColor = $colors{"errorMessageColor"};
++
+ # Figure out which compiler to invoke based on our program name.
+ $0 =~ m%.*/(.*)$%;
+ my $progName = $1 || $0;
+@@ -281,10 +309,9 @@
+       # No line number, treat as an "introductory" line of text.
+       srcscan($_, $colors{"introColor"});
+    }
+-   else # Anything else.        
++   else # Anything else.
+    {
+-      # Doesn't seem to be a warning or an error. Print normally.
+-      print(color("reset"), $_);
++      srcscan($_, undef);
+    }
+ }
+ 
+

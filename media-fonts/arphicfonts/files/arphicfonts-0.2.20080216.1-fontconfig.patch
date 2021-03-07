@@ -1,0 +1,192 @@
+--- a/41-ttf-arphic-ukai.conf
++++ b/41-ttf-arphic-ukai.conf
+@@ -5,13 +5,28 @@
+ <!--
+   Sans-serif faces
+  -->
+-	<alias>
+-		<family>AR PL ZenKai Uni</family>
+-		<family>AR PL ZenKai Uni MBE</family>
+-		<family>AR PL UKai CN</family>
+-		<family>AR PL UKai HK</family>
+-		<family>AR PL UKai TW</family>
+-		<family>AR PL UKai TW MBE</family>
+-		<default><family>sans-serif</family></default>
+-	</alias>
++    <alias>
++        <family>AR PL ZenKai Uni</family>
++        <default><family>sans-serif</family></default>
++    </alias>
++    <alias>
++        <family>AR PL ZenKai Uni MBE</family>
++        <default><family>sans-serif</family></default>
++    </alias>
++    <alias>
++        <family>AR PL UKai CN</family>
++        <default><family>sans-serif</family></default>
++    </alias>
++    <alias>
++        <family>AR PL UKai HK</family>
++        <default><family>sans-serif</family></default>
++    </alias>
++    <alias>
++        <family>AR PL UKai TW</family>
++        <default><family>sans-serif</family></default>
++    </alias>
++    <alias>
++        <family>AR PL UKai TW MBE</family>
++        <default><family>sans-serif</family></default>
++    </alias>
+ </fontconfig>
+--- a/41-ttf-arphic-uming.conf
++++ b/41-ttf-arphic-uming.conf
+@@ -7,10 +7,25 @@
+  -->
+ 	<alias>
+ 		<family>AR PL ShanHeiSun Uni</family>
++		<default><family>serif</family></default>
++	</alias>
++	<alias>
+ 		<family>AR PL ShanHeiSun Uni MBE</family>
++		<default><family>serif</family></default>
++	</alias>
++	<alias>
+ 		<family>AR PL UMing CN</family>
++		<default><family>serif</family></default>
++	</alias>
++	<alias>
+ 		<family>AR PL UMing HK</family>
++		<default><family>serif</family></default>
++	</alias>
++	<alias>
+ 		<family>AR PL UMing TW</family>
++		<default><family>serif</family></default>
++	</alias>
++	<alias>
+ 		<family>AR PL UMing TW MBE</family>
+ 		<default><family>serif</family></default>
+ 	</alias>
+@@ -19,22 +34,52 @@
+  -->
+ 	<alias>
+ 		<family>AR PL ShanHeiSun Uni</family>
++		<default><family>sans-serif</family></default>
++	</alias>
++	<alias>
+ 		<family>AR PL ShanHeiSun Uni MBE</family>
++		<default><family>sans-serif</family></default>
++	</alias>
++	<alias>
+ 		<family>AR PL UMing CN</family>
++		<default><family>sans-serif</family></default>
++	</alias>
++	<alias>
+ 		<family>AR PL UMing HK</family>
++		<default><family>sans-serif</family></default>
++	</alias>
++	<alias>
+ 		<family>AR PL UMing TW</family>
++		<default><family>sans-serif</family></default>
++	</alias>
++	<alias>
+ 		<family>AR PL UMing TW MBE</family>
+ 		<default><family>sans-serif</family></default>
+ 	</alias>
+ <!--
+   Monospace faces
+  -->
+- 	<alias>
++	<alias>
+ 		<family>AR PL ShanHeiSun Uni</family>
++		<default><family>monospace</family></default>
++	</alias>
++	<alias>
+ 		<family>AR PL ShanHeiSun Uni MBE</family>
++		<default><family>monospace</family></default>
++	</alias>
++	<alias>
+ 		<family>AR PL UMing CN</family>
++		<default><family>monospace</family></default>
++	</alias>
++	<alias>
+ 		<family>AR PL UMing HK</family>
++		<default><family>monospace</family></default>
++	</alias>
++	<alias>
+ 		<family>AR PL UMing TW</family>
++		<default><family>monospace</family></default>
++	</alias>
++	<alias>
+ 		<family>AR PL UMing TW MBE</family>
+ 		<default><family>monospace</family></default>
+ 	</alias>
+--- a/25-ttf-arphic-uming-bitmaps.conf
++++ b/25-ttf-arphic-uming-bitmaps.conf
+@@ -5,25 +5,65 @@
+ 	<match target="font">
+ 	  <test name="family">
+ 	  <string>AR PL UMing CN</string>
++	  </test>
++       	  <edit name="antialias"><bool>false</bool></edit>
++    	  <edit name="hinting"><bool>true</bool></edit>
++          <edit name="autohint"><bool>false</bool></edit>
++	</match>
++	<match target="font">
++	  <test name="family">
+ 	  <string>AR PL UMing HK</string>
++	  </test>
++       	  <edit name="antialias"><bool>false</bool></edit>
++    	  <edit name="hinting"><bool>true</bool></edit>
++          <edit name="autohint"><bool>false</bool></edit>
++	</match>
++	<match target="font">
++	  <test name="family">
+ 	  <string>AR PL UMing TW</string>
++	  </test>
++       	  <edit name="antialias"><bool>false</bool></edit>
++    	  <edit name="hinting"><bool>true</bool></edit>
++          <edit name="autohint"><bool>false</bool></edit>
++	</match>
++	<match target="font">
++	  <test name="family">
+ 	  <string>AR PL UMing TW MBE</string>
+ 	  </test>
+        	  <edit name="antialias"><bool>false</bool></edit>
+     	  <edit name="hinting"><bool>true</bool></edit>
+           <edit name="autohint"><bool>false</bool></edit>
+ 	</match>
+-
+ 	<match target="font">
+ 	  <test name="family">
+ 	  <string>AR PL UMing CN</string>
++	  </test>
++      	  <test name="pixelsize" compare="more_eq"><int>17</int></test>
++	  <edit name="antialias" mode="assign"><bool>true</bool></edit>
++	  <edit name="hinting" mode="assign"><bool>true</bool></edit>
++	</match>
++	<match target="font">
++	  <test name="family">
+ 	  <string>AR PL UMing HK</string>
++	  </test>
++      	  <test name="pixelsize" compare="more_eq"><int>17</int></test>
++	  <edit name="antialias" mode="assign"><bool>true</bool></edit>
++	  <edit name="hinting" mode="assign"><bool>true</bool></edit>
++	</match>
++	<match target="font">
++	  <test name="family">
+ 	  <string>AR PL UMing TW</string>
++	  </test>
++      	  <test name="pixelsize" compare="more_eq"><int>17</int></test>
++	  <edit name="antialias" mode="assign"><bool>true</bool></edit>
++	  <edit name="hinting" mode="assign"><bool>true</bool></edit>
++	</match>
++	<match target="font">
++	  <test name="family">
+ 	  <string>AR PL UMing TW MBE</string>
+ 	  </test>
+       	  <test name="pixelsize" compare="more_eq"><int>17</int></test>
+ 	  <edit name="antialias" mode="assign"><bool>true</bool></edit>
+ 	  <edit name="hinting" mode="assign"><bool>true</bool></edit>
+ 	</match>
+-
+ </fontconfig>

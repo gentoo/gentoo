@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="gcrypt">Install xmlsec-gcrypt library</flag>
+		<flag name="gnutls">Install xmlsec-gnutls library</flag>
+		<flag name="nss">Install xmlsec-nss library</flag>
+		<flag name="openssl">Install xmlsec-openssl library</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">lsh123/xmlsec</remote-id>
+	</upstream>
+</pkgmetadata>

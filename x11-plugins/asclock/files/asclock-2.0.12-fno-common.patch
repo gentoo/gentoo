@@ -1,0 +1,21 @@
+--- a/config.c
++++ b/config.c
+@@ -1,6 +1,7 @@
+ #include "asclock.h"
+ 
+ extern char *Geometry;
++extern int itdocks;
+ 
+ /* load the variables from a predefined theme ****************************************/
+ 
+--- a/symbols.c
++++ b/symbols.c
+@@ -62,7 +62,7 @@ symbol config_symbols[] = {
+   { "beats_elem_height",&beats_elem_height},
+   { NULL, NULL} };
+ 
+-int itdocks;
++extern int itdocks;
+ int itblinks;
+ int showampm;
+ 

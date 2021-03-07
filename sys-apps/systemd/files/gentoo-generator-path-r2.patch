@@ -1,0 +1,26 @@
+From 91182cc273d2dd8325d856fd683d2d8e038abd91 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Tue, 25 Dec 2018 22:52:50 -0500
+Subject: [PATCH] path-lookup: look for generators in
+ /usr/lib/systemd/system-generators
+
+Bug: https://bugs.gentoo.org/625402
+---
+ src/basic/path-lookup.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/basic/path-lookup.c b/src/basic/path-lookup.c
+index 52968dee34..0cb10b1116 100644
+--- a/src/basic/path-lookup.c
++++ b/src/basic/path-lookup.c
+@@ -798,6 +798,7 @@ char **generator_binary_paths(UnitFileScope scope) {
+                         add = strv_new("/run/systemd/system-generators",
+                                        "/etc/systemd/system-generators",
+                                        "/usr/local/lib/systemd/system-generators",
++                                       "/usr/lib/systemd/system-generators",
+                                        SYSTEM_GENERATOR_DIR);
+                         break;
+ 
+-- 
+2.26.1
+

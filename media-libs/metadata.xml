@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The media-libs category contains media-related libraries.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie media-libs enthält Multimedia-Bibliotheken.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría media-libs contiene librerías relacionadas con media.
+	</longdescription>
+	<longdescription lang="ja">
+		media-libsカテゴリーにはメディア関連のライブラリが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De media-libs categorie bevat bibliotheken voor multimedia.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm media-libs chứa các thư viện liên quan đến media.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria media-libs contiene librerie multimediali.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria media-libs contém bibliotecas relacionadas com mídia.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria media-libs zawiera biblioteki multimedialne.
+	</longdescription>
+</catmetadata>
+

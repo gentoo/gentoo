@@ -1,0 +1,94 @@
+From 653fb2aea0ca1f60558917d52f4ff0c33cd7b067 Mon Sep 17 00:00:00 2001
+From: Craig Rodrigues <rodrigc@crodrigues.org>
+Date: Sun, 12 Apr 2020 14:28:23 -0700
+Subject: [PATCH 1/2] Add digestmod parameter to HMAC.__init__() invocations
+
+This parameter is now required on Python 3.8+
+---
+ src/twisted/cred/credentials.py        |  3 ++-
+ src/twisted/cred/test/test_cramauth.py | 11 ++++++++---
+ src/twisted/mail/test/test_pop3.py     |  4 +++-
+ 3 files changed, 13 insertions(+), 5 deletions(-)
+
+diff --git a/src/twisted/cred/credentials.py b/src/twisted/cred/credentials.py
+index 5469e5158..67c24cb01 100644
+--- a/src/twisted/cred/credentials.py
++++ b/src/twisted/cred/credentials.py
+@@ -441,7 +441,8 @@ class CramMD5Credentials(object):
+ 
+ 
+     def checkPassword(self, password):
+-        verify = hexlify(hmac.HMAC(password, self.challenge).digest())
++        verify = hexlify(hmac.HMAC(password, self.challenge,
++                         digestmod=md5).digest())
+         return verify == self.response
+ 
+ 
+diff --git a/src/twisted/cred/test/test_cramauth.py b/src/twisted/cred/test/test_cramauth.py
+index 1ee08712b..d21f2f68c 100644
+--- a/src/twisted/cred/test/test_cramauth.py
++++ b/src/twisted/cred/test/test_cramauth.py
+@@ -7,6 +7,8 @@ Tests for L{twisted.cred}'s implementation of CRAM-MD5.
+ 
+ from __future__ import division, absolute_import
+ 
++import hashlib
++
+ from hmac import HMAC
+ from binascii import hexlify
+ 
+@@ -39,7 +41,8 @@ class CramMD5CredentialsTests(TestCase):
+         """
+         c = CramMD5Credentials()
+         chal = c.getChallenge()
+-        c.response = hexlify(HMAC(b'secret', chal).digest())
++        c.response = hexlify(HMAC(b'secret', chal,
++                             digestmod=hashlib.md5).digest())
+         self.assertTrue(c.checkPassword(b'secret'))
+ 
+ 
+@@ -61,7 +64,8 @@ class CramMD5CredentialsTests(TestCase):
+         """
+         c = CramMD5Credentials()
+         chal = c.getChallenge()
+-        c.response = hexlify(HMAC(b'thewrongsecret', chal).digest())
++        c.response = hexlify(HMAC(b'thewrongsecret', chal,
++                             digestmod=hashlib.md5).digest())
+         self.assertFalse(c.checkPassword(b'secret'))
+ 
+ 
+@@ -75,7 +79,8 @@ class CramMD5CredentialsTests(TestCase):
+         chal = c.getChallenge()
+         c.setResponse(b" ".join(
+             (b"squirrel",
+-             hexlify(HMAC(b'supersecret', chal).digest()))))
++             hexlify(HMAC(b'supersecret', chal,
++                     digestmod=hashlib.md5).digest()))))
+         self.assertTrue(c.checkPassword(b'supersecret'))
+         self.assertEqual(c.username, b"squirrel")
+ 
+diff --git a/src/twisted/mail/test/test_pop3.py b/src/twisted/mail/test/test_pop3.py
+index 4a59c3b49..ea513487c 100644
+--- a/src/twisted/mail/test/test_pop3.py
++++ b/src/twisted/mail/test/test_pop3.py
+@@ -11,6 +11,7 @@ import hmac
+ import base64
+ import itertools
+ 
++from hashlib import md5
+ from collections import OrderedDict
+ from io import BytesIO
+ 
+@@ -1097,7 +1098,8 @@ class SASLTests(unittest.TestCase):
+         p.lineReceived(b"AUTH CRAM-MD5")
+         chal = s.getvalue().splitlines()[-1][2:]
+         chal = base64.decodestring(chal)
+-        response = hmac.HMAC(b'testpassword', chal).hexdigest().encode("ascii")
++        response = hmac.HMAC(b'testpassword', chal,
++                             digestmod=md5).hexdigest().encode("ascii")
+ 
+         p.lineReceived(
+             base64.encodestring(b'testuser ' + response).rstrip(b'\n'))
+-- 
+2.26.2
+

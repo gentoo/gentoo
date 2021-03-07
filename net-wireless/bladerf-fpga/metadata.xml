@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+<email>zerochaos@gentoo.org</email>
+<name>Rick Farina</name>
+</maintainer>
+<maintainer type="project">
+<email>radio@gentoo.org</email>
+<name>Radio</name>
+</maintainer>
+<use>
+<flag name="xA4">bitstream for the xA4 49 kLE Cyclone V FPGA bladerf 2.0 micro model"</flag>
+<flag name="xA9">bitstream for the xA9 301 kLE Cyclone V FPGA bladerf 2.0 micro model"</flag>
+<flag name="x40">bitstream for the x40 kLE Cyclone IV FPGA bladerf model"</flag>
+<flag name="x115">bitstream for the x115 kLE Cyclone IV FPGA bladerf model"</flag>
+</use>
+</pkgmetadata>

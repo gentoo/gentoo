@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# From http://www.cadsoft.de/faq.htm#17040701
+# Work around problems with the Composite X extension
+export XLIB_SKIP_ARGB_VISUALS=1
+
+# The ebuild will append the final line respecting INSTALLDIR
+# Default is /opt/eagle/bin/eagle "$@"

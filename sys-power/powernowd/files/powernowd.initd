@@ -1,0 +1,20 @@
+#!/sbin/openrc-run
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need localmount
+	use logger
+}
+
+start() {
+	ebegin "Starting powernowd"
+	start-stop-daemon --start --exec /usr/sbin/powernowd -- ${POWERNOWD_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping powernowd"
+	start-stop-daemon --stop --exec /usr/sbin/powernowd
+	eend $?
+}

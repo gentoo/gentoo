@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		A repository of cryptographic primitives.
+		
+		* Symmetric ciphers: AES, DES, 3DES, Blowfish, Camellia, RC4, Salsa, ChaCha.
+		
+		* Hash: SHA1, SHA2, SHA3, MD2, MD4, MD5, Kekkak, Skein, Ripemd, Tiger, Whirlpool
+		
+		* MAC: HMAC, Poly1305
+		
+		* Assymmetric crypto: DSA, RSA, DH, ECDH, ECDSA, ECC, Curve25519, Ed25519
+		
+		* Key Derivation Function: PBKDF2, Scrypt
+		
+		* Cryptographic Random generation: System Entropy, Deterministic Random Generator
+		
+		* Data related: Anti-Forensic Information Splitter (AFIS)
+		
+		If anything cryptographic related is missing from here, submit
+		a pull request to have it added. This package strive to be a
+		cryptographic kitchen sink that provides cryptography for everyone.
+		
+		Evaluate the security related to your requirements before using.
+	</longdescription>
+	<use>
+		<flag name="integer-gmp">Whether or not to use GMP for some functions</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">haskell-crypto/cryptonite</remote-id>
+	</upstream>
+</pkgmetadata>

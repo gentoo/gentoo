@@ -1,0 +1,88 @@
+--- a/cdk/cmake/DepFindSSL.cmake
++++ b/cdk/cmake/DepFindSSL.cmake
+@@ -88,7 +88,7 @@ function(main)
+ 
+   set(OPENSSL_LIB_DIR "${OPENSSL_LIB_DIR}" CACHE INTERNAL "")
+ 
+-  if(NOT OPENSSL_VERSION_MAJOR EQUAL 1)
++  if(NOT OPENSSL_VERSION_MAJOR VERSION_GREATER_EQUAL 1)
+     message(SEND_ERROR "OpenSSL version 1.x is required but version ${OPENSSL_VERSION} was found")
+   else()
+     message(STATUS "Using OpenSSL version: ${OPENSSL_VERSION}")
+@@ -184,41 +184,35 @@ function(find_openssl)
+ 
+ 
+   # Verify version number. Version information looks like:
+-  #   #define OPENSSL_VERSION_TEXT    "OpenSSL 1.1.1a  20 Nov 2018"
++  #   #define OPENSSL_VERSION_NUMBER 0x1000103fL
++  # Encoded as MNNFFPPS: major minor fix patch status
+ 
+   FILE(STRINGS "${OPENSSL_INCLUDE_DIR}/openssl/opensslv.h"
+     OPENSSL_VERSION_NUMBER
+-    REGEX "#[ ]*define[\t ]+OPENSSL_VERSION_TEXT"
++    REGEX "^#[ ]*define[\t ]+OPENSSL_VERSION_NUMBER[\t ]+0x[0-9].*"
+   )
+ 
+-  #message("== OPENSSL_VERSION_NUMBER: ${OPENSSL_VERSION_NUMBER}")
+-  # define OPENSSL_VERSION_TEXT "OpenSSL 1.1.1d-freebsd 10 Sep 2019"
+   STRING(REGEX REPLACE
+-    "^.*OPENSSL_VERSION_TEXT[\t ]+\"OpenSSL[\t ]([0-9]+)\\.([0-9]+)\\.([0-9]+)([a-z]|)[\t \\-].*$"
+-    "\\1;\\2;\\3;\\4"
+-    version_list "${OPENSSL_VERSION_NUMBER}"
++    "^.*OPENSSL_VERSION_NUMBER[\t ]+0x([0-9]).*$" "\\1"
++    OPENSSL_VERSION_MAJOR "${OPENSSL_VERSION_NUMBER}"
++  )
++  STRING(REGEX REPLACE
++    "^.*OPENSSL_VERSION_NUMBER[\t ]+0x[0-9]([0-9][0-9]).*$" "\\1"
++    OPENSSL_VERSION_MINOR "${OPENSSL_VERSION_NUMBER}"
++  )
++  STRING(REGEX REPLACE
++    "^.*OPENSSL_VERSION_NUMBER[\t ]+0x[0-9][0-9][0-9]([0-9][0-9]).*$" "\\1"
++    OPENSSL_VERSION_FIX "${OPENSSL_VERSION_NUMBER}"
+   )
+-  #message("-- OPENSSL_VERSION: ${version_list}")
+-
+-  list(GET version_list 0 OPENSSL_VERSION_MAJOR)
+-  math(EXPR OPENSSL_VERSION_MAJOR ${OPENSSL_VERSION_MAJOR})
+-
+-  list(GET version_list 1 OPENSSL_VERSION_MINOR)
+-  math(EXPR OPENSSL_VERSION_MINOR ${OPENSSL_VERSION_MINOR})
+-
+-  list(GET version_list 2 OPENSSL_VERSION_FIX)
+-  math(EXPR OPENSSL_VERSION_FIX ${OPENSSL_VERSION_FIX})
+-
+-  list(GET version_list 3 OPENSSL_VERSION_PATCH)
+-
+ 
+ 
+   set(OPENSSL_VERSION
+-    "${OPENSSL_VERSION_MAJOR}.${OPENSSL_VERSION_MINOR}.${OPENSSL_VERSION_FIX}${OPENSSL_VERSION_PATCH}"
++    "${OPENSSL_VERSION_MAJOR}.${OPENSSL_VERSION_MINOR}.${OPENSSL_VERSION_FIX}"
+     PARENT_SCOPE
+   )
+   set(OPENSSL_VERSION_MAJOR ${OPENSSL_VERSION_MAJOR} PARENT_SCOPE)
+ 
++  CHECK_SYMBOL_EXISTS(TLS1_3_VERSION "openssl/tls1.h" HAVE_TLS1_3_VERSION)
+ 
+   find_library(OPENSSL_LIBRARY
+     NAMES ssl ssleay32 ssleay32MD libssl
+--- a/cdk/foundation/connection_openssl.cc
++++ b/cdk/foundation/connection_openssl.cc
+@@ -211,7 +211,7 @@ static void throw_ssl_error(SSL* tls, int err)
+   case SSL_ERROR_WANT_CONNECT:
+   case SSL_ERROR_WANT_ACCEPT:
+   case SSL_ERROR_WANT_X509_LOOKUP:
+-# if OPENSSL_VERSION_NUMBER >= 0x10100000L
++# if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
+   case SSL_ERROR_WANT_ASYNC:
+   case SSL_ERROR_WANT_ASYNC_JOB:
+ # endif
+@@ -387,7 +387,7 @@ void TLS_helper::setup(SSL_CTX *ctx)
+ 
+   SSL_CTX_set_cipher_list(ctx, m_cipher_list.c_str());
+ 
+-#if OPENSSL_VERSION_NUMBER>=0x1010100fL
++#if HAVE_TLS1_3_VERSION
+ 
+   /*
+     Note: If TLSv1.3 is not enabled, there is no need to restrict

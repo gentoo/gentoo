@@ -1,0 +1,86 @@
+--- werken.xpath/src/com/werken/xpath/ElementNamespaceContext.java
++++ werken.xpath/src/com/werken/xpath/ElementNamespaceContext.java
+@@ -62,12 +62,12 @@
+ 
+       lineage.push(_element);
+ 
+-      Element elem = _element.getParent();
++      Element elem = _element.getParentElement();
+ 
+       while (elem != null)
+       {
+         lineage.push(elem);
+-        elem = elem.getParent();
++        elem = elem.getParentElement();
+       }
+ 
+       List      nsList = null;
+--- werken.xpath/src/com/werken/xpath/impl/ParentStep.java
++++ werken.xpath/src/com/werken/xpath/impl/ParentStep.java
+@@ -28,7 +28,7 @@
+   {
+     if ( node instanceof Element )
+     {
+-      return ((Element)node).getParent();
++      return ((Element)node).getParentElement();
+     }
+ 
+     return null;
+@@ -50,7 +50,7 @@
+ 
+       if ( each instanceof Element )
+       {
+-        parent = ((Element)each).getParent();
++        parent = ((Element)each).getParentElement();
+ 
+         if (parent != null)
+         {
+--- werken.xpath/src/com/werken/xpath/util/Partition.java
++++ werken.xpath/src/com/werken/xpath/util/Partition.java
+@@ -67,7 +67,7 @@
+ 
+   public static List followingSiblings(Element node)
+   {
+-    Element parent = node.getParent();
++    Element parent = node.getParentElement();
+ 
+     if (parent == null)
+     {
+@@ -95,7 +95,7 @@
+ 
+   public static List preceedingSiblings(Element node)
+   {
+-    Element parent = node.getParent();
++    Element parent = node.getParentElement();
+ 
+     if (parent == null)
+     {
+@@ -137,7 +137,7 @@
+       results.addAll( Partition.descendants( each ) );
+     }
+ 
+-    Element parent = node.getParent();
++    Element parent = node.getParentElement();
+ 
+     if (parent != null)
+     {
+@@ -170,7 +170,7 @@
+       results.addAll( Partition.descendants( each ) );
+     }
+ 
+-    Element parent = node.getParent();
++    Element parent = node.getParentElement();
+ 
+     if (parent != null)
+     {
+--- werken.xpath/test/src/com/werken/xpath/test/Driver.java
++++ werken.xpath/test/src/com/werken/xpath/test/Driver.java
+@@ -47,7 +47,7 @@
+ 
+         System.out.println("Using test-cases in [" + args[0] + "]");
+ 
+-        File dataDir = driverXML.getParentFile();
++        File dataDir = driverXML.getParentElementFile();
+ 
+         Driver driver = Driver(dataDir,
+                                    driverXML);

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>base-system@gentoo.org</email>
+	<name>Gentoo Base System</name>
+</maintainer>
+<use>
+	<flag name="netlink">Enable netlink interface via <pkg>net-libs/libmnl</pkg></flag>
+</use>
+<longdescription lang="en">
+	ethtool is a Linux utility for controlling network drivers and hardware,
+	particularly for wired Ethernet devices. It can be used to:
+		* Get identification and diagnostic information
+		* Get extended device statistics
+		* Control speed, duplex, autonegotiation and flow control for Ethernet devices
+		* Control checksum offload and other hardware offload features
+		* Control DMA ring sizes and interrupt moderation
+		* Control receive queue selection for multiqueue devices
+		* Upgrade firmware in flash memory
+</longdescription>
+<upstream>
+	<remote-id type="cpe">cpe:/a:kernel:ethtool</remote-id>
+</upstream>
+</pkgmetadata>

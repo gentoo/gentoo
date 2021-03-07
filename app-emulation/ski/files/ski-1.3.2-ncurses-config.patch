@@ -1,0 +1,25 @@
+use pkg-config to look up ncurses deps to support things like split tinfo
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -93,6 +93,7 @@
+ AC_PROG_SED
+ AC_PROG_YACC
+ AM_PROG_LEX
++PKG_PROG_PKG_CONFIG
+ 
+ AC_C_INLINE
+ AC_C_CONST
+@@ -304,9 +305,9 @@
+ fi    
+ 
+ if test "x$check_curses" != xno; then
+-AC_CHECK_LIB(curses, tgetent, [],
+-    [AC_CHECK_LIB(ncurses, tgetent, ,
+-            [AC_MSG_ERROR(Required curses library not found.)])])
++    PKG_CHECK_MODULES([NCURSES], [ncurses])
++    CFLAGS="$CFLAGS $NCURSES_CFLAGS"
++    LIBS="$LIBS $NCURSES_LIBS"
+ fi
+ 
+ AC_CHECK_LIB(elf, elf_begin, [],

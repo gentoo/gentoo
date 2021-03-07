@@ -1,0 +1,38 @@
+From 1579ee388749a7b056ccdd8ef2d4deafe21bd3e7 Mon Sep 17 00:00:00 2001
+From: Nikos Chantziaras <realnc@gmail.com>
+Date: Mon, 30 Dec 2019 16:03:16 +0200
+Subject: [PATCH] Fix building with Qt 5.14
+
+Qt 5.14 introduced QActionGroup::ExclusionPolicy::None, but <X.h> defines a
+'None' macro. Work around the resulting mess by temporarily undefining the
+macro.
+---
+ src/trayitem.h | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/src/trayitem.h b/src/trayitem.h
+index 7698ea4..4b54cdd 100644
+--- a/src/trayitem.h
++++ b/src/trayitem.h
+@@ -21,6 +21,10 @@
+ #ifndef _TRAYITEM_H
+ #define	_TRAYITEM_H
+ 
++// Qt 5.14 introduced QActionGroup::ExclusionPolicy::None, but <X.h> defines a 'None' macro.
++#pragma push_macro("None")
++#undef None
++
+ #include <QAction>
+ #include <QEvent>
+ #include <QIcon>
+@@ -32,6 +36,10 @@
+ 
+ #include "xlibutil.h"
+ 
++#ifndef None
++#pragma pop_macro("None")
++#endif
++
+ #define DEFAULT_CustomIcon        QString()
+ #define DEFAULT_BalloonTimeout    4000       // 4 seconds
+ #define DEFAULT_SkipTaskbar       false

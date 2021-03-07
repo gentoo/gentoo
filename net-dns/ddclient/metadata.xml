@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>titanofold@gentoo.org</email>
+		<name>Aaron W. Swenson</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		DDclient is a perl client used to update dynamic DNS entries
+		for accounts on dynamic DNS network service providers.
+		It has the capability to update more than just dynamic DNS
+		and it can fetch WAN-IP-addresses in a few different ways.
+	</longdescription>
+	<use>
+		<flag name="examples">Install various example files, like for cron.</flag>
+		<flag name="iproute2">Use <pkg>sys-apps/iproute2</pkg> instead of <pkg>sys-apps/net-tools</pkg> for interaction.</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://sourceforge.net/p/ddclient/bugs/</bugs-to>
+		<remote-id type="sourceforge">ddclient</remote-id>
+	</upstream>
+</pkgmetadata>

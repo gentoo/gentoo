@@ -1,0 +1,47 @@
+#!/bin/sh
+# vim: ft=sh
+
+# This cron script contains several (commented out) examples.  You may use
+# them as is, by uncommenting them, or modify them to suit your needs.  Read
+# tmpwatch(8) for more information on tmpwatch parameters.
+
+### Variables ###
+
+TMPWATCH="/usr/sbin/tmpwatch"
+#PORTAGE_TMPDIR="$(portageq envvar PORTAGE_TMPDIR)/portage"
+#PORTAGE_LOGDIR="$(portageq envvar PORT_LOGDIR)"
+#DISTDIR="$(portageq distdir)"
+
+### EXAMPLES ###
+
+# NOTE: if you have noatime in /etc/fstab for any partitions you plan on
+# running tmpwatch on, you should obviously change any of the examples that
+# use atime (-u|--atime).  Those that don't specify anything, default to 
+# atime.
+
+# NOTE2: the time value is in HOURS!
+
+# Delete everything in /tmp that haven't been accessed in a week (>=168 hrs).
+#
+# if [[ -d /tmp ]]; then
+#   ${TMPWATCH} --atime 168 /tmp
+# fi
+
+# Delete everything in PORTAGE_TMPDIR that hasn't been modified in 2 weeks.
+#
+# if [[ -d ${PORTAGE_TMPDIR:-/var/tmp/portage} && -z $(/usr/bin/pgrep emerge) ]]; then
+#   ${TMPWATCH} --mtime --all 336 ${PORTAGE_TMPDIR:-/var/tmp/portage}
+# fi
+
+# Delete everything in DISTDIR that hasn't been accessed in 6 months (going
+# by 30 day months)
+#
+# if [[ -d ${DISTDIR:-/usr/portage/distfiles} ]]; then
+#   ${TMPWATCH} --atime --fuser 4320 ${DISTDIR:-/usr/portage/distfiles}
+# fi
+
+# Delete everything in PORTAGE_LOGDIR that hasn't been accessed in 4 weeks
+#
+# if [[ -d ${PORTAGE_LOGDIR:-/var/log/portage} ]]; then
+#   ${TMPWATCH} --atime 772 ${PORTAGE_LOGDIR:-/var/log/portage}
+# fi

@@ -1,0 +1,16 @@
+diff -NrU5 levee-3.5a.original/configure.inc levee-3.5a/configure.inc
+--- levee-3.5a.original/configure.inc	2009-08-12 19:51:26.000000000 +0000
++++ levee-3.5a/configure.inc	2009-08-12 20:13:41.000000000 +0000
+@@ -1074,11 +1074,11 @@
+     else
+ 	PROG_INSTALL="$DEST"
+     fi
+ 
+     AC_SUB 'INSTALL' "$PROG_INSTALL"
+-    AC_SUB 'INSTALL_PROGRAM' "$PROG_INSTALL -s -m 755"
++    AC_SUB 'INSTALL_PROGRAM' "$PROG_INSTALL -m 755"
+     AC_SUB 'INSTALL_DATA' "$PROG_INSTALL -m 444"
+ 
+     # finally build a little directory installer
+     # if mkdir -p works, use that, otherwise use install -d,
+     # otherwise build a script to do it by hand.

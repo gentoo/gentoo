@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<use>
+		<flag name="downloader">Allows some Keen games to be downloaded from the menu</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">clonekeenplus</remote-id>
+		<remote-id type="gitlab">Dringgstein/Commander-Genius</remote-id>
+	</upstream>
+</pkgmetadata>

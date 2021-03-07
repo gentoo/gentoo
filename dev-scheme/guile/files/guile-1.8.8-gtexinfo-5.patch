@@ -1,0 +1,15 @@
+$NetBSD: patch-doc_tutorial_guile-tut.texi,v 1.1 2013/11/30 07:06:25 dsainty Exp $
+
+Compatibility with gtexinfo 5.2
+
+--- doc/tutorial/guile-tut.texi	2010-12-14 06:24:39.000000000 +1300
++++ doc/tutorial/guile-tut.texi	2013-11-30 19:44:28.304575529 +1300
+@@ -446,7 +446,7 @@
+ Schemer} from that list.}
+ 
+ 
+-@subsection Hello World
++@section Hello World
+ @cindex hello world
+ 
+ Our first program is the typical Scheme "hello world" program.  Put the

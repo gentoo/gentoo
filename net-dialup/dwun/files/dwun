@@ -1,0 +1,22 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+DAEMON=/usr/sbin/dwun
+PIDFILE="/run/${SVCNAME}.pid"
+
+start() {
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --pidfile ${PIDFILE} --startas ${DAEMON}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --signal 1 --pidfile ${PIDFILE}
+	eend $?
+}

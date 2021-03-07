@@ -1,0 +1,16 @@
+diff -Nuar db-3.2.9.orig/include/db_cxx.h db-3.2.9/include/db_cxx.h
+--- db-3.2.9.orig/include/db_cxx.h	2001-01-11 10:28:55.000000000 -0800
++++ db-3.2.9/include/db_cxx.h	2008-08-16 16:10:48.474699646 -0700
+@@ -49,7 +49,12 @@
+ // Forward declarations
+ //
+ 
++#if defined(__GNUC__) && (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 2))
++using namespace std;
++#include <iostream>
++#else
+ #include <iostream.h>
++#endif
+ #include <stdarg.h>
+ #include "db.h"
+ 

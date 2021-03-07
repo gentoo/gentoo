@@ -1,0 +1,25 @@
+From c956ffd82e5b88be74dca187dc80afcf6559a78f Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Wed, 11 Mar 2015 21:41:36 +0000
+Subject: [PATCH 2/2] Don't bundle anything in the annotations jar
+
+---
+ findbugs/build.xml | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/findbugs/build.xml b/findbugs/build.xml
+index 698b91f..3eac5d6 100644
+--- a/findbugs/build.xml
++++ b/findbugs/build.xml
+@@ -298,8 +298,6 @@
+             <fileset dir="${src.dir}">
+                 <include name="**/annotations/*.java"/>
+             </fileset>
+-            <zipfileset src="${jar.dir}/jcip-annotations.jar" excludes="META-INF/**,**/*.html"/>
+-            <zipfileset src="${jar.dir}/jsr305.jar" excludes="META-INF/**,**/*.html"/>
+         </jar>
+     </target>
+ 
+-- 
+2.0.4
+

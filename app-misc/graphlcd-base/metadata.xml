@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>vdr@gentoo.org</email>
+		<name>gentoo-vdr-project</name>
+	</maintainer>
+	<longdescription>
+		This is the base package for the GraphLCD driver.
+		It contains multiple parts:
+		- lcd drivers for GraphLCD, which are also used by GLCDprocDriver
+		- lcd graphics library for GraphLCD
+		- lcd tools fro GraphLCD
+		- lcd media files fro GraphLCD
+	</longdescription>
+	<use>
+		<flag name="fontconfig">Add support for <pkg>media-libs/fontconfig</pkg> font names.</flag>
+		<flag name="freetype">Add support for <pkg>media-libs/freetype</pkg>.</flag>
+		<flag name="graphicsmagick">Add support for <pkg>media-gfx/graphicsmagick</pkg>.</flag>
+		<flag name="imagemagick">Add support for <pkg>media-gfx/imagemagick</pkg>.</flag>
+	</use>
+</pkgmetadata>

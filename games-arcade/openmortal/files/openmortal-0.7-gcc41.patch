@@ -1,0 +1,11 @@
+--- a/src/OnlineChat.cpp.old
++++ b/src/OnlineChat.cpp
+@@ -56,7 +56,7 @@
+ class CChallengeMenu: public Menu
+ {
+ public:
+-	CChallengeMenu::CChallengeMenu( std::string a_sChallenger )
++	CChallengeMenu( std::string a_sChallenger )
+ 	: Menu( "You have been challenged!" ),
+ 	m_sChallenger( a_sChallenger )
+ 	{

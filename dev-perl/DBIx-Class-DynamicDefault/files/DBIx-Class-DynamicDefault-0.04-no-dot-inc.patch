@@ -1,0 +1,23 @@
+From 79f5dec79787a75779a06977094ffa24d8f76942 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Fri, 10 Jul 2020 23:41:56 +1200
+Subject: Include '.' in @INC on perl 5.26+
+
+---
+ Makefile.PL | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index 77f1e3a..61381ad 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -1,5 +1,6 @@
+ use strict;
+ use warnings;
++use lib '.';
+ use inc::Module::Install;
+ 
+ name 'DBIx-Class-DynamicDefault';
+-- 
+2.27.0
+

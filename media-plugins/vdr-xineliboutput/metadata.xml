@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>vdr@gentoo.org</email>
+		<name>Gentoo VDR Project</name>
+	</maintainer>
+	<use>
+		<flag name="cec">Enable CEC support through <pkg>dev-libs/libcec</pkg></flag>
+		<flag name="bluray">Enable BluRay metadata support through <pkg>media-libs/libbluray</pkg></flag>
+		<flag name="libextractor">Use <pkg>media-libs/libextractor</pkg> to gather
+			files' metadata in media-player</flag>
+		<flag name="vdr">Compile the vdr output plugin to use local or remote xine as output</flag>
+		<flag name="xine">Compile the xine input plugin for displaying vdr video and OSD</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">xineliboutput</remote-id>
+	</upstream>
+</pkgmetadata>

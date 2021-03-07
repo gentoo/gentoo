@@ -1,0 +1,14 @@
+diff -ur /tmp/xmlbeans-2.6.0.orig/src/store/org/apache/xmlbeans/impl/store/Locale.java src/store/org/apache/xmlbeans/impl/store/Locale.java
+--- /tmp/xmlbeans-2.6.0.orig/src/store/org/apache/xmlbeans/impl/store/Locale.java	2012-09-05 14:31:47.743396340 +0300
++++ src/store/org/apache/xmlbeans/impl/store/Locale.java	2012-09-05 14:35:31.527582989 +0300
+@@ -106,8 +106,8 @@
+ import org.apache.xmlbeans.impl.values.TypeStoreUser;
+ import org.apache.xmlbeans.impl.values.TypeStoreUserFactory;
+ 
+-import org.apache.xmlbeans.impl.piccolo.xml.Piccolo;
+-import org.apache.xmlbeans.impl.piccolo.io.FileFormatException;
++import com.bluecast.xml.Piccolo;
++import com.bluecast.io.FileFormatException;
+ 
+ public final class Locale
+     implements DOMImplementation, SaajCallback, XmlLocale

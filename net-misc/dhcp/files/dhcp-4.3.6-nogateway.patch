@@ -1,0 +1,66 @@
+--- dhcp-4.3.6/client/scripts/linux
++++ dhcp-4.3.6/client/scripts/linux
+@@ -242,20 +242,22 @@
+ 			if_metric=${if_metric:-1}
+ 		    fi
+ 
+-		    for router in $new_routers; do
+-			if [ "$new_subnet_mask" = "255.255.255.255" ]; then
+-			    # point-to-point connection => set explicit route
+-			    ${ip} -4 route add ${router} dev $interface >/dev/null 2>&1
+-			fi
+-
+-			# set default route
+-			${ip} -4 route add default via ${router} dev ${interface} \
+-			    ${if_metric:+metric $if_metric} >/dev/null 2>&1
+-
+-			if [ -n "$if_metric" ]; then
+-			    if_metric=$((if_metric+1))
+-			fi
+-		    done
++		    if [ x$PEER_ROUTERS = x ] || [ x$PEER_ROUTERS = xyes ]; then
++			for router in $new_routers; do
++			    if [ "$new_subnet_mask" = "255.255.255.255" ]; then
++				# point-to-point connection => set explicit route
++				${ip} -4 route add ${router} dev $interface >/dev/null 2>&1
++			    fi
++
++			    # set default route
++			    ${ip} -4 route add default via ${router} dev ${interface} \
++				${if_metric:+metric $if_metric} >/dev/null 2>&1
++
++			    if [ -n "$if_metric" ]; then
++				if_metric=$((if_metric+1))
++			    fi
++			done
++		    fi
+ 	    fi
+         fi
+ 
+@@ -330,15 +332,17 @@
+ 			if_metric=${if_metric:-1}
+ 		    fi
+ 
+-		    # set default route
+-		    for router in $new_routers; do
+-			${ip} -4 route add default via ${router} dev ${interface} \
+-			    ${if_metric:+metric $if_metric} >/dev/null 2>&1
+-
+-			if [ -n "$if_metric" ]; then
+-			    if_metric=$((if_metric+1))
+-			fi
+-		    done
++		    if [ x$PEER_ROUTERS = x ] || [ x$PEER_ROUTERS = xyes ]; then
++			# set default route
++			for router in $new_routers; do
++			    ${ip} -4 route add default via ${router} dev ${interface} \
++				${if_metric:+metric $if_metric} >/dev/null 2>&1
++
++			    if [ -n "$if_metric" ]; then
++				if_metric=$((if_metric+1))
++			    fi
++			done
++		    fi
+ 	    fi
+ 
+             # update /etc/resolv.conf

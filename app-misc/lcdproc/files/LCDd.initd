@@ -1,0 +1,15 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+instance="${SVCNAME}"
+name="LCDProc (${instance})"
+pidfile="/run/${instance}.pid"
+
+command="/usr/sbin/LCDd"
+command_args="-c /etc/${instance}.conf"
+
+depend() {
+	use g15daemon
+	use net
+}

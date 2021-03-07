@@ -1,0 +1,12 @@
+--- a/iodbcinst/inifile.c
++++ b/iodbcinst/inifile.c
+@@ -1023,7 +1023,8 @@
+ 
+   if (!_iodbcdm_cfg_find (pCfg, lpszSection, NULL))
+     {
+-      while (curr < cbRetBuffer && 0 == _iodbcdm_cfg_nextentry (pCfg))
++      while (curr < cbRetBuffer && 0 == _iodbcdm_cfg_nextentry (pCfg)
++	     && pCfg->section)
+ 	{
+ 	  if (_iodbcdm_cfg_section (pCfg))
+ 	    break;

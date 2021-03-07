@@ -1,0 +1,82 @@
+--- a/break_filelist
++++ b/break_filelist
+@@ -177,7 +177,7 @@
+   "p" => "pascal", "pas" => "pascal", "pp" => "pascal", "dpr" => "pascal",
+   "py" => "python",
+   "s" => "asm", "S" => "asm", "asm" => "asm",
++  "sh" => "sh", "bash" => "sh", "ebuild" => "sh",
+-  "sh" => "sh", "bash" => "sh",
+   "csh" => "csh", "tcsh" => "csh", 
+   "java" => "java",
+   "lisp" => "lisp", "el" => "lisp", "scm" => "lisp", "sc" => "lisp", 
+@@ -879,7 +879,7 @@
+   $command = $2;
+  }
+ 
++ if ( ($command =~ m/^(bash|ksh|zsh|pdksh|sh|runscript)[0-9\.]*(\.exe)?$/i) ||
+- if ( ($command =~ m/^(bash|ksh|zsh|pdksh|sh)[0-9\.]*(\.exe)?$/i) ||
+      ($firstline =~
+           m~^#!\s*\@_?(SCRIPT_)?(PATH_)?(BA|K)?SH(ELL)?(\d+)?\@?(\s|\Z)~)) {
+     # Note: wish(1) uses a funny trick; see wish(1) for more info.
+--- a/makefile
++++ b/makefile
+@@ -37,7 +37,7 @@
+ # Set this to your C compiler, if it's not "gcc"; a likely alternative is "cc".
+ # The "-Wall" option turns on warnings in gcc.  gcc users might also want
+ # to consider using "-Werror", which turns warnings into errors.
+-CC=gcc -Wall
++CFLAGS+= -Wall
+ 
+ # Set this to the name of your "install" program.  On some systems,
+ # "install -C" would be useful (so unchanged files won't be modified),
+@@ -124,34 +124,34 @@
+ 
+ MANPAGES=sloccount.1.gz
+ 
+-MYDOCS=sloccount.html README TODO ChangeLog
++MYDOCS=README TODO ChangeLog
+ 
+ 
+ all: $(COMPILED_EXECUTABLES)
+ 
+ lexcount1$(EXE_SUFFIX): lexcount1.c
+-	$(CC) lexcount1.c -o lexcount1$(EXE_SUFFIX)
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) lexcount1.c -o lexcount1$(EXE_SUFFIX)
+ 
+ c_count$(EXE_SUFFIX): c_count.c
+-	$(CC) c_count.c -o c_count$(EXE_SUFFIX)
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) c_count.c -o c_count$(EXE_SUFFIX)
+ 
+ php_count$(EXE_SUFFIX): php_count.c
+-	$(CC) php_count.c -o php_count$(EXE_SUFFIX)
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) php_count.c -o php_count$(EXE_SUFFIX)
+ 
+ pascal_count.c: pascal_count.l driver.c driver.h
+ 	flex -Cfe -t pascal_count.l > pascal_count.c
+ 
+ pascal_count$(EXE_SUFFIX): pascal_count.c
+-	$(CC) pascal_count.c -o pascal_count$(EXE_SUFFIX)
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) pascal_count.c -o pascal_count$(EXE_SUFFIX)
+ 
+ jsp_count.c: jsp_count.l driver.c driver.h
+ 	flex -Cfe -t jsp_count.l > jsp_count.c
+ 
+ jsp_count$(EXE_SUFFIX): jsp_count.c
+-	$(CC) jsp_count.c -o jsp_count$(EXE_SUFFIX)
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) jsp_count.c -o jsp_count$(EXE_SUFFIX)
+ 
+ ml_count$(EXE_SUFFIX): ml_count.c
+-	$(CC) ml_count.c -o ml_count$(EXE_SUFFIX)
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) ml_count.c -o ml_count$(EXE_SUFFIX)
+ 
+ sloccount.1.gz: sloccount.1
+ 	gzip -c sloccount.1 > sloccount.1.gz
+@@ -162,7 +162,7 @@
+ 
+ # This is USC's code counter, not built by default:
+ c_lines: C_LINES.C
+-	$(CC) C_LINES.C -o c_lines$(EXE_SUFFIX)
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) C_LINES.C -o c_lines$(EXE_SUFFIX)
+ 
+ install_prefix:
+ 	$(INSTALL_A_DIR) $(PREFIX)

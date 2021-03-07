@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<slots>
+		<subslots>libffms2 soname version</subslots>
+	</slots>
+	<upstream>
+		<remote-id type="github">FFMS/ffms2</remote-id>
+	</upstream>
+</pkgmetadata>

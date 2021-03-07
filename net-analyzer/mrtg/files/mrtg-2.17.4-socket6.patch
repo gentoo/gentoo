@@ -1,0 +1,11 @@
+--- a/bin/mrtg
++++ b/bin/mrtg
+@@ -300,7 +300,7 @@ sub main {
+     if ($cfg{enableipv6} eq 'yes') {
+         if ( eval {local $SIG{__DIE__};require Socket; require Socket6; require IO::Socket::INET6;}) {
+             import Socket;
+-            import Socket6;
++            Socket6->import(qw(inet_pton getaddrinfo));
+             debug('base', "IPv6 libraries found, IPv6 enabled.");
+         } else {
+             warn "$NOW: WARNING: IPv6 libraries not found, IPv6 disabled.\n";

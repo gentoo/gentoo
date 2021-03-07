@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>c.affolter@purplehaze.ch</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		WebDAV CGI is a Perl CGI script that enables the WebDAV protocol
+		(class 1,2,3) for Web server to manage Web sites or to use a Web server
+		as a Web drive for files, or for calendar/addressbook sharing. If you
+		need correct permissions for files and folders you can install this
+		WebDAV CGI script and a UID/GID wrapper. The Apache module mod_dav does
+		not support UID/GID wrapping, so this implementation fills up this gap
+		as a complete replacement.
+	</longdescription>
+	<use>
+		<flag name="rcs">Adds support for a revision controlled backend with RCS (<pkg>dev-vcs/rcs</pkg>)</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">webdavcgi</remote-id>
+	</upstream>
+</pkgmetadata>

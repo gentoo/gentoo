@@ -1,0 +1,7 @@
+CHOST="armv4l-unknown-linux-gnu"
+CHOST_arm="${CHOST}"
+
+CFLAGS="-O2 -pipe -march=armv4"
+CXXFLAGS="${CFLAGS}"
+FFLAGS="${CFLAGS}"
+FCFLAGS="${CFLAGS}"

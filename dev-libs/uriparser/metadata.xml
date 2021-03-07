@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sping@gentoo.org</email>
+		<name>Sebastian Pipping</name>
+	</maintainer>
+	<longdescription lang="en">
+		uriparser is a strictly RFC 3986 compliant URI parsing library.
+		uriparser is cross-platform, fast, supports Unicode and is
+		licensed under the New BSD license.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">uriparser</remote-id>
+	</upstream>
+</pkgmetadata>

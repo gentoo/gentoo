@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Library of IDL software procedures that Craig Markwardt is making
+		available to the general public. It contains:
+		* Curve Fitting and Function Minimization
+		* Read and Write SAVE Files
+		* Graphics Programs
+		* Mathematics
+		* Ephemeris and Timing
+		* Array / Set Operations
+		* Input / Output
+	</longdescription>
+</pkgmetadata>

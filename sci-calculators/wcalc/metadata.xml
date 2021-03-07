@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Wcalc is a very capable calculator. It has standard functions (sin,
+		asin, and sinh for example, in either radians or degrees), many
+		pre-defined constants (pi, e, c, etc.), support for using variables,
+		"active" variables, a command history, hex/octal/binary input and
+		output, unit conversions, embedded comments, and an expandable
+		expression entry field. It evaluates expressions using the standard
+		order of operations.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">w-calc</remote-id>
+	</upstream>
+</pkgmetadata>

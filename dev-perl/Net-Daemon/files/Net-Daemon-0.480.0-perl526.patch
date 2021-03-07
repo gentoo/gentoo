@@ -1,0 +1,35 @@
+From 08cfbdfae6e6956e1e2bbc2d0821c64daea9fd55 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentfredric@gmail.com>
+Date: Sun, 8 Oct 2017 10:17:23 +1300
+Subject: Fix ReadConfigFile implementation traversing @INC
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=123213
+Bug: https://bugs.gentoo.org/633722
+---
+ lib/Net/Daemon.pm | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/lib/Net/Daemon.pm b/lib/Net/Daemon.pm
+index fbcc9dd..6aaa151 100644
+--- a/lib/Net/Daemon.pm
++++ b/lib/Net/Daemon.pm
+@@ -29,6 +29,7 @@ use IO::Socket ();
+ use Config ();
+ use Net::Daemon::Log ();
+ use POSIX ();
++use File::Spec ();
+ 
+ 
+ package Net::Daemon;
+@@ -201,7 +202,7 @@ sub ReadConfigFile {
+     if (! -f $file) {
+ 	$self->Fatal("No such config file: $file");
+     }
+-    my $copts = do $file;
++    my $copts = do File::Spec->rel2abs($file);
+     if ($@) {
+ 	$self->Fatal("Error while processing config file $file: $@");
+     }
+-- 
+2.14.1
+

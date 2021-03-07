@@ -1,0 +1,15 @@
+--- src_j2se/net/sf/bt747/j2se/app/trackgraph/TrackDisplay.java.orig	2010-03-08 22:15:41.000000000 +0000
++++ src_j2se/net/sf/bt747/j2se/app/trackgraph/TrackDisplay.java	2016-02-10 22:17:02.188118721 +0000
+@@ -46,9 +46,9 @@
+         heightAxis.getAxisTitle().setTitle("Height");
+         speedAxis.getAxisTitle().setTitle("Speed");
+ 
+-        setAxisXBottom(timeAxis);
+-        setAxisYLeft(heightAxis);
+-        setAxisYRight(speedAxis);
++        setAxisXBottom(timeAxis, 0);
++        setAxisYLeft(heightAxis, 0);
++        setAxisYRight(speedAxis, 0);
+ 
+     }
+ 

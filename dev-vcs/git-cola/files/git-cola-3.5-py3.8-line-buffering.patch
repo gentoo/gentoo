@@ -1,0 +1,29 @@
+From ed00653d43b00b18e89c8c4d9e733ef156c02579 Mon Sep 17 00:00:00 2001
+From: Simon Peeters <peeters.simon@gmail.com>
+Date: Mon, 18 Nov 2019 21:15:32 +0100
+Subject: [PATCH] Only use line buffering in text mode when calling Popen
+
+Python3.8 started complaining loudly when trying to open a stream in binary mode but with line buffering enabled.
+So we should only try to set `bufsize` to `1` when we enable `text` or `universal_newlines` mode.
+
+see https://docs.python.org/3/library/subprocess.html#subprocess.Popen under bufsize
+---
+ cola/core.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/cola/core.py b/cola/core.py
+index 0fabfcf3d..5ad719f05 100644
+--- a/cola/core.py
++++ b/cola/core.py
+@@ -208,7 +208,10 @@ def start_command(cmd, cwd=None, add_env=None,
+             CREATE_NO_WINDOW = 0x08000000
+             extra['creationflags'] = CREATE_NO_WINDOW
+ 
+-    return subprocess.Popen(cmd, bufsize=1, stdin=stdin, stdout=stdout,
++    # Use line buffering when in text/universal_newlines mode,
++    # otherwise use the system default buffer size.
++    bufsize = 1 if universal_newlines else -1
++    return subprocess.Popen(cmd, bufsize=bufsize, stdin=stdin, stdout=stdout,
+                             stderr=stderr, cwd=cwd, env=env,
+                             universal_newlines=universal_newlines, **extra)
+ 

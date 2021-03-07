@@ -1,0 +1,49 @@
+From 1c4277eb9288c719b009aacb4bd71ca543f51cbd Mon Sep 17 00:00:00 2001
+From: Stefan Strogin <steils@gentoo.org>
+Date: Mon, 3 Jun 2019 16:18:21 +0300
+Subject: [PATCH] Use correct ifdefs for checking TLS 1.3
+
+TLS 1.3 is not ready yet in LibreSSL. Also there is a theoretical
+possibility of OpenSSL >=1.1.1 built without TLS 1.3 support
+
+Upstream-Status: Submitted
+[https://github.com/httperf/httperf/pull/66]
+Signed-off-by: Stefan Strogin <steils@gentoo.org>
+---
+ src/httperf.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/httperf.c b/src/httperf.c
+index af6f568..5dbba07 100755
+--- a/src/httperf.c
++++ b/src/httperf.c
+@@ -687,7 +687,7 @@ main(int argc, char **argv)
+                                 param.ssl_protocol = 5;
+ 			    else if (strcasecmp (optarg, "TLSv1.2") == 0 || strcasecmp (optarg, "TLSv1_2") == 0)
+                                 param.ssl_protocol = 6;
+-#if (OPENSSL_VERSION_NUMBER >= 0x10101000L)
++#ifdef TLS1_3_VERSION
+                             else if (strcasecmp (optarg, "TLSv1.3") == 0 || strcasecmp (optarg, "TLSv1_3") == 0)
+                                 param.ssl_protocol = 7;
+ #endif
+@@ -1104,7 +1104,7 @@ main(int argc, char **argv)
+ 		    SSL_CTX_set_options(ssl_ctx, SSL_OP_NO_SSLv2 | SSL_OP_NO_SSLv3 | SSL_OP_NO_TLSv1 | SSL_OP_NO_TLSv1_1); break;
+ #endif
+ 
+-#if (OPENSSL_VERSION_NUMBER >= 0x10101000L)
++#ifdef TLS1_3_VERSION
+                     /* 7/TLSv1.3 */
+ 		    case 7:
+                     ssl_ctx = SSL_CTX_new (TLS_client_method ());
+@@ -1329,7 +1329,7 @@ main(int argc, char **argv)
+             case 4: printf (" --ssl-protocol=TLSv1.0"); break;
+ 	    case 5: printf (" --ssl-protocol=TLSv1.1"); break;
+ 	    case 6: printf (" --ssl-protocol=TLSv1.2"); break;
+-#if (OPENSSL_VERSION_NUMBER >= 0x10101000L)
++#ifdef TLS1_3_VERSION
+             case 7: printf (" --ssl-protocol=TLSv1.3"); break;
+ #endif
+         }
+-- 
+2.21.0
+

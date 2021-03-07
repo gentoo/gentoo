@@ -1,0 +1,24 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Patrick McLean <chutzpah@gentoo.org> (2020-02-06)
+# sys-cluster/ceph no longer supports x86, versions that support
+# it no longer build thanks to python2 removals
+# for some reason profiles/arch/x86 is not catching everything
+app-backup/bareos cephfs rados rados-striper
+app-emulation/libvirt rbd
+app-emulation/qemu rbd
+net-analyzer/rrdtool rados
+net-fs/samba ceph
+sys-block/fio rbd
+sys-block/tgt rbd
+sys-fs/multipath-tools rbd
+www-servers/uwsgi uwsgi_plugins_rados
+
+# Mike Frysinger <vapier@gentoo.org> (2016-05-08)
+# This target supports VTV #547040.
+>=sys-devel/gcc-4.9 -vtv
+
+# Mike Frysinger <vapier@gentoo.org> (2014-10-21)
+# This target supports ASAN/etc... #504200.
+sys-devel/gcc -sanitize

@@ -1,0 +1,24 @@
+From 635048e81402f3dcc9719c060a67f33e6950649c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sun, 12 Jul 2020 08:18:06 +0200
+Subject: [PATCH] Fix NameError when calling SDL_SetColorKey()
+
+---
+ sdl2/ext/image.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sdl2/ext/image.py b/sdl2/ext/image.py
+index 1a413e1..49d897d 100644
+--- a/sdl2/ext/image.py
++++ b/sdl2/ext/image.py
+@@ -154,6 +154,6 @@ def load_image(fname, enforce=None):
+             # If the image has a single transparent palette index, set
+             # that index as the color key to make blitting correct.
+             if 'transparency' in image.info and isinstance(image.info['transparency'], int):
+-                sdl2.SDL_SetColorKey(imgsurface, True, image.info['transparency'])
++                surface.SDL_SetColorKey(imgsurface, True, image.info['transparency'])
+ 
+     return imgsurface
+-- 
+2.27.0
+

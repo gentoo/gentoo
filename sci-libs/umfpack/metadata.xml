@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  UMFPACK is a set of routines for solving unsymmetric sparse linear
+  systems, Ax=b, using the Unsymmetric MultiFrontal method.
+  Includes a C-callable interface, and a Fortran-callable interface.
+  MATLAB routines are not included in the Gentoo package.
+</longdescription>
+  <use>
+    <flag name="cholmod">Use <pkg>sci-libs/cholmod</pkg> for matrix
+  ordering</flag>
+  </use>
+</pkgmetadata>

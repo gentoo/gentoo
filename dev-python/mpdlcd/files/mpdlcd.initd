@@ -1,0 +1,15 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name="MPDlcd"
+description="A small adapter which will display the status of a MPD server on a LCDproc screen"
+pidfile="/run/mpdlcd.pid"
+
+command="/usr/bin/mpdlcd"
+command_args="${MPDLCD_OPTS}"
+command_background="true"
+
+depend() {
+	need net
+}

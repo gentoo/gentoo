@@ -1,0 +1,278 @@
+Don't link libdl into wfuse as it's unnecessary, use system bzip2, respect user
+CFLAGS, use pkgconfig to determine ncurses libs, and use verbose build output.
+
+--- a/Makefile
++++ b/Makefile
+@@ -111,11 +111,6 @@
+ #-------------------------------------------------------------------------------
+ # compiler settings
+ 
+-PRE		?= 
+-CC		= $(PRE)gcc
+-CPP		= $(PRE)g++
+-STRIP		= $(PRE)strip
+-
+ #-------------------------------------------------------------------------------
+ # files
+ 
+@@ -171,7 +166,7 @@
+ TOPT_wit	:= $(OPT_STATIC)
+ TOPT_wwt	:= $(OPT_STATIC)
+ TOPT_wdf	:= $(OPT_STATIC)
+-TOPT_wfuse	:= -lfuse -lpthread -ldl
++TOPT_wfuse	:= -lfuse -lpthread
+ 
+ #TOPT_ALL	:= $(TOPT_wit) $(TOPT_wwt) $(TOPT_wdf) $(TOPT_wfuse)
+ 
+@@ -206,8 +201,8 @@
+ endif
+ 
+ # lib summary
+-LIB_LIST	+= libbz2 lzma
+-LIB_OBJECTS	+= $(LIBBZ2_OBJ) $(LZMA_OBJ)
++LIB_LIST	+= lzma
++LIB_OBJECTS	+= $(LZMA_OBJ)
+ RM_FILES	+= $(foreach l,$(LIB_LIST),src/$(l)/*.{d,o})
+ 
+ 
+@@ -297,10 +292,9 @@
+ DEFINES1	+= -D_LZMA_PROB32=1	# LZMA option
+ DEFINES		=  $(strip $(DEFINES1) $(MODE) $(XDEF))
+ 
+-CFLAGS		+= -fomit-frame-pointer -fno-strict-aliasing -funroll-loops
++CFLAGS		+= -fno-strict-aliasing
+ CFLAGS		+= -Wall -Wno-parentheses -Wno-unused-function
+-#CFLAGS		+= -O3 -Isrc/libwbfs -Isrc/lzma -Isrc -I$(UI) -I. -Iwork
+-CFLAGS		+= -O3 -Isrc/libwbfs -Isrc -I$(UI) -I. -Iwork
++CFLAGS		+= -Isrc/libwbfs -Isrc -I$(UI) -I. -Iwork
+ ifeq ($(SYSTEM),cygwin)
+   CFLAGS	+= -Wno-format-truncation
+ else ifeq ($(SYSTEM),mac)
+@@ -311,13 +305,10 @@
+ 
+ DEPFLAGS	+= -MMD
+ 
+-LDFLAGS		+= -static-libgcc
+-LDFLAGS		:= $(strip $(LDFLAGS))
+-
+ ifeq ($(HAVE_ZLIB),1)
+  LIBS		+= -lz
+ endif
+-LIBS		+= -lm -lncurses $(XLIBS)
++LIBS		+= -lm $(shell $(PKG_CONFIG) --libs ncurses) -lbz2 $(XLIBS)
+ 
+ DISTRIB_RM	= ./wit-v$(VERSION)-r
+ DISTRIB_BASE	= wit-v$(VERSION)-r$(REVISION_NEXT)
+@@ -370,83 +361,70 @@
+ # general rules
+ 
+ $(ALL_TOOLS_X): %: %.o $(ALL_OBJECTS) $(TOBJ_ALL) Makefile | $(HELPER_TOOLS)
+-	@printf "$(LOGFORMAT_TOOL)" tool "$@" "$(MODE) $(TOPT_$@) $(TOBJ_$@)"
+-	@$(CC) $(CFLAGS) $(DEFINES) $(LDFLAGS) $@.o \
++	$(CC) $(CFLAGS) $(DEFINES) $(LDFLAGS) $@.o \
+ 		$(ALL_OBJECTS) $(TOBJ_$@) $(LIBS) $(TOPT_$@) -o $@
+-	@if test -f $@.exe; then $(STRIP) $@.exe; else $(STRIP) $@; fi
+ 
+-	@mkdir -p bin/$(SYSTEM) bin/$(SYSTEM)/debug
+-	@if test -s $(MODE_FILE) && grep -Fq -e -DDEBUG $(MODE_FILE); \
++	mkdir -p bin/$(SYSTEM) bin/$(SYSTEM)/debug
++	if test -s $(MODE_FILE) && grep -Fq -e -DDEBUG $(MODE_FILE); \
+ 		then cp -p $@ bin/$(SYSTEM)/debug/; \
+ 		else cp -p $@ bin/; cp -p $@ bin/$(SYSTEM)/; fi
+ 
+ #--------------------------
+ 
+ $(HELPER_TOOLS): %: %.o $(ALL_OBJECTS) $(UI_TABS) Makefile
+-	@printf "$(LOGFORMAT_TOOL)" helper "$@ $(TOBJ_$@)" "$(MODE)"
+-	@$(CC) $(CFLAGS) $(DEFINES) $(LDFLAGS) $@.o \
++	$(CC) $(CFLAGS) $(DEFINES) $(LDFLAGS) $@.o \
+ 		$(ALL_OBJECTS) $(TOBJ_$@) $(LIBS) -o $@
+ 
+ #--------------------------
+ 
+ $(WDF_LINKS): wdf
+-	@printf "$(LOGFORMAT_INST)" "link" "wdf -> $@" ""
+-	@ln -f wdf "$@"
++	ln -f wdf "$@"
+ 
+ #--------------------------
+ 
+ $(UI_OBJECTS): %.o: %.c ui-%.c ui-%.h version.h Makefile
+-	@printf "$(LOGFORMAT_CC)" +object "$@" "$(MODE)"
+-	@$(CC) $(CFLAGS) $(DEPFLAGS) $(DEFINES) -c $< -o $@
++	$(CC) $(CFLAGS) $(DEPFLAGS) $(DEFINES) -c $< -o $@
+ 
+ #--------------------------
+ 
+ $(C_OBJECTS): %.o: %.c version.h Makefile $(TEXT_FILES)
+-	@printf "$(LOGFORMAT_CC)" object "$@" "$(MODE)"
+-	@$(CC) $(CFLAGS) $(DEPFLAGS) $(DEFINES) -c $< -o $@
++	$(CC) $(CFLAGS) $(DEPFLAGS) $(DEFINES) -c $< -o $@
+ 
+ #--------------------------
+ 
+ $(ASM_OBJECTS): %.o: %.S Makefile
+-	@printf "$(LOGFORMAT_CC)" asm "$@" "$(MODE)"
+-	@$(CC) $(CFLAGS) $(DEPFLAGS) $(DEFINES) -c $< -o $@
++	$(CC) $(CFLAGS) $(DEPFLAGS) $(DEFINES) -c $< -o $@
+ 
+ #--------------------------
+ 
+ $(SETUP_FILES): templates.sed $(SETUP_DIR)/$@
+-	@printf "$(LOGFORMAT)" create "$@" ""
+-	@chmod 775 $(GEN_TEMPLATE)
+-	@$(GEN_TEMPLATE) $@
++	chmod 775 $(GEN_TEMPLATE)
++	$(GEN_TEMPLATE) $@
+ 
+ #--------------------------
+ 
+ $(TEXT_FILES): $(GEN_TEXT_FILE) $(TEXT_DIR)/$@
+-	@printf "$(LOGFORMAT)" text "$@" ""
+-	@chmod 775 $(GEN_TEXT_FILE)
+-	@$(GEN_TEXT_FILE) $(TEXT_DIR) $@
++	chmod 775 $(GEN_TEXT_FILE)
++	$(GEN_TEXT_FILE) $(TEXT_DIR) $@
+ 
+ #--------------------------
+ 
+ $(UI_FILES): gen-ui.c ui.h $(UI_TABS) | gen-ui
+-	@printf "$(LOGFORMAT)" run gen-ui ""
+-	@./gen-ui
++	./gen-ui
+ 
+ .PHONY : ui
+ ui : gen-ui
+-	@printf "$(LOGFORMAT)" run gen-ui ""
+-	@./gen-ui
++	./gen-ui
+ 
+ #
+ ###############################################################################
+ # lib specific rules
+ 
+ $(LIBBZ2_OBJ): %.o: %.c Makefile
+-	@printf "$(LOGFORMAT_CC)" object "$(subst src/libbz2/,,$@)" "$(MODE) [libbz2]"
+-	@$(CC) $(CFLAGS) $(DEPFLAGS) $(BZIP2_FLAGS) $(DEFINES) -c $< -o $@
++	$(CC) $(CFLAGS) $(DEPFLAGS) $(BZIP2_FLAGS) $(DEFINES) -c $< -o $@
+ 
+ $(LZMA_OBJ): %.o: %.c Makefile
+-	@printf "$(LOGFORMAT_CC)" object "$(subst src/lzma/,,$@)" "$(MODE) [lzma]"
+-	@$(CC) $(CFLAGS) $(DEPFLAGS) $(LZMA_FLAGS) $(DEFINES) -c $< -o $@
++	$(CC) $(CFLAGS) $(DEPFLAGS) $(LZMA_FLAGS) $(DEFINES) -c $< -o $@
+ 
+ #
+ ###############################################################################
+@@ -644,9 +622,8 @@
+ 
+ .PHONY : gen-doc
+ gen-doc:
+-	@printf "$(LOGFORMAT)" create documentation ""
+-	@chmod ug+x $(GEN_TEMPLATE)
+-	@$(GEN_TEMPLATE)
++	chmod ug+x $(GEN_TEMPLATE)
++	$(GEN_TEMPLATE)
+ 
+ #
+ #--------------------------
+@@ -750,7 +727,7 @@
+ 
+ .PHONY : predef
+ predef:
+-	@gcc -E -dM none.c | sort
++	@$(CC) -E -dM none.c | sort
+ 
+ #
+ #--------------------------
+@@ -764,8 +741,7 @@
+ #--------------------------
+ 
+ templates.sed: Makefile
+-	@printf "$(LOGFORMAT)" create templates.sed ""
+-	@echo -e '' \
++	echo -e '' \
+ 		'/^~/ d;\n' \
+ 		's|@.@@@|$(VERSION_NUM)|g;\n' \
+ 		's|@@@@-@@-@@|$(DATE)|g;\n' \
+@@ -828,13 +804,12 @@
+ 
+ .PHONY : test
+ test:
+-	@printf "$(LOGFORMAT)" enable test "-> define -DTEST"
+-	@rm -f *.o $(ALL_TOOLS_X)
+-	@echo "-DTEST" >>$(MODE_FILE)
+-	@sort $(MODE_FILE) | uniq > $(MODE_FILE).tmp
++	rm -f *.o $(ALL_TOOLS_X)
++	echo "-DTEST" >>$(MODE_FILE)
++	sort $(MODE_FILE) | uniq > $(MODE_FILE).tmp
+ # 2 steps to bypass a cygwin mv failure
+-	@cp $(MODE_FILE).tmp $(MODE_FILE)
+-	@rm -f $(MODE_FILE).tmp
++	cp $(MODE_FILE).tmp $(MODE_FILE)
++	rm -f $(MODE_FILE).tmp
+ 
+ #
+ #--------------------------
+--- a/makefiles-local/Makefile.local.i386
++++ b/makefiles-local/Makefile.local.i386
+@@ -5,6 +5,3 @@
+ #  => copy Makefile.local to main directory and remove appropriate comments
+ 
+ #------------------------------------------------------------------------------
+-
+-#CFLAGS		+= -mtune=generic
+-CFLAGS		+= -march=i686 
+--- a/makefiles-local/Makefile.local.x86_64
++++ b/makefiles-local/Makefile.local.x86_64
+@@ -5,6 +5,3 @@
+ #  => copy Makefile.local to main directory and remove appropriate comments
+ 
+ #------------------------------------------------------------------------------
+-
+-CFLAGS		+= -march=x86-64 
+-
+--- a/setup.sh
++++ b/setup.sh
+@@ -118,6 +118,6 @@
+ 
+ 	---EOT---
+ 
+-gcc $xflags system.c -o system.tmp && ./system.tmp >>Makefile.setup
++${CC} $xflags system.c -o system.tmp && ./system.tmp >>Makefile.setup
+ rm -f system.tmp
+ 
+--- a/test-libwbfs/Makefile
++++ b/test-libwbfs/Makefile
+@@ -7,11 +7,6 @@
+ 
+ SHELL			= /bin/bash
+ 
+-PRE		?= 
+-CC		= $(PRE)gcc
+-CPP		= $(PRE)g++
+-STRIP		= $(PRE)strip
+-
+ #-------------------------------------------------------------------------------
+ # files
+ 
+@@ -46,18 +41,14 @@
+ DEFINES		=  -DLARGE_FILES -D_FILE_OFFSET_BITS=64 $(XDEF)
+ DEFINES		:= $(strip $(DEFINES))
+ 
+-CFLAGS		=  -fomit-frame-pointer -fno-strict-aliasing
++CFLAGS		+= -fno-strict-aliasing
+ CFLAGS		+= -Wall -Wno-parentheses -Wno-unused-function
+-CFLAGS		+= -O3 -I../src/libwbfs -I.
++CFLAGS		+= -I../src/libwbfs -I.
+ CFLAGS		+= $(XFLAGS)
+ CFLAGS		:= $(strip $(CFLAGS))
+ 
+ DEPFLAGS	+= -MMD
+ 
+-LDFLAGS		+= -static-libgcc
+-#LDFLAGS	+= -static
+-LDFLAGS		:= $(strip $(LDFLAGS))
+-
+ LIBS		+= $(XLIBS)
+ 
+ #

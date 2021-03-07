@@ -1,0 +1,8 @@
+# /etc/conf.d/airdcppd: config file for /etc/init.d/airdcppd
+
+# User and group as which to run
+#AIRDCPPD_USER="airdcppd"
+#AIRDCPPD_GROUP="airdcppd"
+
+# umask used to create files
+#AIRDCPPD_UMASK=007

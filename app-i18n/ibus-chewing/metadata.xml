@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>cjk@gentoo.org</email>
+    <name>Cjk</name>
+  </maintainer>
+  <use>
+    <flag name="gconf">Enable support for <pkg>gnome-base/gconf</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="github">definite/ibus-chewing</remote-id>
+  </upstream>
+</pkgmetadata>

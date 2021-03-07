@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>patrick@gentoo.org</email>
+    <name>Patrick Lauer</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <use>
+    <flag name="clang">Toggle usage of the clang compiler in conjunction with MoarVM</flag>
+    <flag name="moar">Build the MoarVM backend (experimental/broken)</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">perl6/nqp</remote-id>
+  </upstream>
+</pkgmetadata>

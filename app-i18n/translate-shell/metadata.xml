@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>erkiferenc@gmail.com</email>
+		<name>Ferenc Erki</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>patrick@gentoo.org</email>
+		<name>Patrick Lauer</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Gentoo Proxy Maintainers Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Translate Shell (formerly Google Translate CLI) is a command-line
+		translator powered by Google Translate (default), Bing Translator,
+		Yandex.Translate and Apertium.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">soimort/translate-shell</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+<email>desktop-misc@gentoo.org</email>
+<name>Gentoo Desktop Miscellaneous Project</name>
+</maintainer>
+<use>
+<flag name="audacious">Install <pkg>media-sound/audacious</pkg> theme</flag>
+<flag name="cursors">Install Bluecurve cursors</flag>
+<flag name="gdm">Install Bluecurve <pkg>gnome-base/gdm</pkg> theme</flag>
+<flag name="icons">Install Bluecurve icons</flag>
+<flag name="nautilus">Install Bluecurve <pkg>gnome-base/nautilus</pkg> icons</flag>
+</use>
+</pkgmetadata>

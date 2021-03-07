@@ -1,0 +1,25 @@
+From 183d7619c29482a5d4ae8019692899f87f198171 Mon Sep 17 00:00:00 2001
+From: Antoine Jacoutot <ajacoutot@gnome.org>
+Date: Sat, 17 Oct 2015 08:52:35 +0200
+Subject: [PATCH] Allow building with gnupg 2.1.
+
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 406b9f3f..b621b236 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -95,7 +95,7 @@ AC_ARG_ENABLE(gpg-check,
+ 	DO_CHECK=$enableval, DO_CHECK=yes)
+ 
+ if test	"$DO_CHECK" = "yes"; then
+-	accepted_versions="1.2 1.4 2.0"
++	accepted_versions="1.2 1.4 2.0 2.1"
+ 	AC_PATH_PROGS(GNUPG, [gpg gpg2], no)
+ 	AC_DEFINE_UNQUOTED(GNUPG, "$GNUPG", [Path to gpg executable.])
+ 	ok="no"
+-- 
+2.14.1
+

@@ -1,0 +1,37 @@
+From 235ce6130168f4deee55c88ecda5ab84d81d125b Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@inbox.ru>
+Date: Fri, 5 Jun 2020 19:34:02 +0200
+Subject: [PATCH] configure: allow 'strings' override via STRINGS variable
+
+This allows building x264 on systems where 'strings' or
+'${HOST}-strings' does not exist, but llvm-strings exists.
+---
+ configure | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+--- a/configure
++++ b/configure
+@@ -541,6 +541,7 @@ done
+ 
+ CC="${CC-${cross_prefix}gcc}"
+ STRIP="${STRIP-${cross_prefix}strip}"
++STRINGS="${STRINGS-${cross_prefix}strings}"
+ INSTALL="${INSTALL-install}"
+ PKGCONFIG="${PKGCONFIG-${cross_prefix}pkg-config}"
+ 
+@@ -1017,10 +1018,10 @@ CPU_ENDIAN="little-endian"
+ if [ $compiler = GNU ]; then
+     echo "int i[2] = {0x42494745,0}; double f[2] = {0x1.0656e6469616ep+102,0};" > conftest.c
+     $CC $CFLAGS conftest.c -c -o conftest.o 2>/dev/null || die "endian test failed"
+-    if (${cross_prefix}strings -a conftest.o | grep -q BIGE) && (${cross_prefix}strings -a conftest.o | grep -q FPendian) ; then
++    if (${STRINGS} -a conftest.o | grep -q BIGE) && (${STRINGS} -a conftest.o | grep -q FPendian) ; then
+         define WORDS_BIGENDIAN
+         CPU_ENDIAN="big-endian"
+-    elif !(${cross_prefix}strings -a conftest.o | grep -q EGIB && ${cross_prefix}strings -a conftest.o | grep -q naidnePF) ; then
++    elif !(${STRINGS} -a conftest.o | grep -q EGIB && ${STRINGS} -a conftest.o | grep -q naidnePF) ; then
+         die "endian test failed"
+     fi
+ fi
+-- 
+2.27.0
+

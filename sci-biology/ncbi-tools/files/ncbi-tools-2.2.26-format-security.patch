@@ -1,0 +1,124 @@
+ api/alignmgr2.c    |  2 +-
+ api/pgppop.c       |  2 +-
+ api/txalign.c      | 10 +++++-----
+ desktop/seqpanel.c |  4 ++--
+ tools/spidey.c     |  4 ++--
+ 5 files changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/api/alignmgr2.c b/api/alignmgr2.c
+index 5b43ef3..4b9007e 100644
+--- a/api/alignmgr2.c
++++ b/api/alignmgr2.c
+@@ -5616,7 +5616,7 @@ NLM_EXTERN void AlnMgr2PrintSeqAlign(SeqAlignPtr sap, Int4 linesize, Boolean isn
+                spp = SeqPortNew(bsp, amp->from_row, amp->to_row, amp->strand, seqcode);
+                ctr = SeqPortRead(spp, (Uint1Ptr)buf, amp->to_row-amp->from_row+1);
+                buf[ctr] = '\0';
+-               fprintf(ofp, buf);
++               fprintf(ofp, "%s", buf);
+                SeqPortFree(spp);
+             }
+          }
+diff --git a/api/pgppop.c b/api/pgppop.c
+index d16d79d..b359378 100644
+--- a/api/pgppop.c
++++ b/api/pgppop.c
+@@ -2994,7 +2994,7 @@ Char DefLine[255];
+ 			if (szSeq){
+ 				if (!DDV_GetSequenceFromParaG(pgp,&szSeq,bspLength,IsAA,NULL,
+ 					NULL,NULL)) continue;
+-				fprintf(fp,szSeq);
++				fprintf(fp, "%s", szSeq);
+ 				fprintf(fp,"\n");
+ 				MemFree(szSeq);
+ 			}
+diff --git a/api/txalign.c b/api/txalign.c
+index 5877f9c..cb35fbc 100644
+--- a/api/txalign.c
++++ b/api/txalign.c
+@@ -1767,13 +1767,13 @@ static CharPtr DrawTextToBuffer(ValNodePtr tdp_list, CharPtr PNTR m_buf, Boolean
+ 					if(options&TXALIGN_HTML&&options&TXALIGN_MASTER&&DbHasGi&&(options&TXALIGN_GET_SEQUENCE)){
+ 					  Char checkboxBuf[200];
+ 					  sprintf(checkboxBuf, "<input type=\"checkbox\" name=\"getSeqGi\" value=\"%ld\" onClick=\"synchronizeCheck(this.value, 'getSeqAlignment%ld', 'getSeqGi', this.checked)\">", sip->data.intvalue, query_number_glb);
+-					  sprintf(docbuf+pos,checkboxBuf);
++					  sprintf(docbuf+pos,"%s", checkboxBuf);
+ 					  
+ 					  pos += StringLen(checkboxBuf);
+ 					}
+ 				
+ 					html_len = StringLen(HTML_buffer);
+-					sprintf(docbuf+pos, HTML_buffer);
++					sprintf(docbuf+pos, "%s", HTML_buffer);
+ 					pos += html_len;
+ 				
+ 					pos += print_label_to_buffer_all_ex(docbuf+pos, tdp->label, tdp->pos, 
+@@ -1790,7 +1790,7 @@ static CharPtr DrawTextToBuffer(ValNodePtr tdp_list, CharPtr PNTR m_buf, Boolean
+                                             sprintf(HTML_buffer, "<a name = THC%ld></a><a href=\"http://www.tigr.org/docs/tigr-scripts/hgi_scripts/thc_report.spl?est=THC%ld&report_type=n\">", (long) oip->id, (long) oip->id);
+                                             
+                                             html_len = StringLen(HTML_buffer);
+-                                            sprintf(docbuf+pos, HTML_buffer);
++                                            sprintf(docbuf+pos, "%s", HTML_buffer);
+                                             pos += html_len;
+                                             pos += print_label_to_buffer_all_ex(docbuf+pos, tdp->label, tdp->pos, 
+ 					    		tdp->strand, FALSE, TRUE, label_size, num_size, show_strand, strip_semicolon);
+@@ -1799,7 +1799,7 @@ static CharPtr DrawTextToBuffer(ValNodePtr tdp_list, CharPtr PNTR m_buf, Boolean
+                                             sprintf(HTML_buffer, "<a name = TI%ld></a><a href=\"http://www.ncbi.nlm.nih.gov/Traces/trace.cgi?cmd=retrieve&dopt=fasta&val=%ld\">", (long) oip->id, (long) oip->id);
+                                             
+                                             html_len = StringLen(HTML_buffer);
+-                                            sprintf(docbuf+pos, HTML_buffer);
++                                            sprintf(docbuf+pos, "%s", HTML_buffer);
+                                             pos += html_len;
+                                             pos += print_label_to_buffer_all_ex(docbuf+pos, tdp->label, tdp->pos, 
+ 					    		tdp->strand, FALSE, TRUE, label_size, num_size, show_strand, strip_semicolon);
+@@ -1816,7 +1816,7 @@ static CharPtr DrawTextToBuffer(ValNodePtr tdp_list, CharPtr PNTR m_buf, Boolean
+ 		  if(options&TXALIGN_HTML&&options&TXALIGN_MASTER&&DbHasGi&&(options&TXALIGN_GET_SEQUENCE)){
+ 		    Char checkboxBuf[200];
+ 		    sprintf(checkboxBuf, "<input type=\"checkbox\" name=\"getSeqMaster\" value=\"\" onClick=\"uncheckable('getSeqAlignment%ld', 'getSeqMaster')\">", query_number_glb);
+-		    sprintf(docbuf+pos,checkboxBuf);
++		    sprintf(docbuf+pos,"%s",checkboxBuf);
+ 		  
+ 		    pos += StringLen(checkboxBuf);
+ 		  }
+diff --git a/desktop/seqpanel.c b/desktop/seqpanel.c
+index 2e78e13..c7538aa 100644
+--- a/desktop/seqpanel.c
++++ b/desktop/seqpanel.c
+@@ -8661,7 +8661,7 @@ WriteAlignmentInterleaveToFileEx
+                                          seqbuf, alnbuf, &alnbuf_len,
+                                          show_substitutions);
+               MemCpy (printed_line + label_len + 1 + coord_len, alnbuf, alnbuf_len);
+-              fprintf (fp, printed_line);
++              fprintf (fp, "%s", printed_line);
+             }
+             fprintf (fp, "\n");
+             start = stop + 1;
+@@ -8757,7 +8757,7 @@ extern void WriteAlignmentContiguousToFile
+                                        seqbuf, alnbuf, &alnbuf_len,
+                                        show_substitutions);
+             MemCpy (printed_line, alnbuf, alnbuf_len);
+-            fprintf (fp, printed_line);
++            fprintf (fp, "%s", printed_line);
+             start = stop + 1;
+             stop += seq_chars_per_row;
+           }
+diff --git a/tools/spidey.c b/tools/spidey.c
+index d6ce62d..ac9f59a 100644
+--- a/tools/spidey.c
++++ b/tools/spidey.c
+@@ -2088,7 +2088,7 @@ static void SPI_PrintResult(FILE *ofp, FILE *ofp2, SPI_RegionInfoPtr srip, Biose
+                           fprintf(ofp2, " ");
+                           ctr++;
+                       }
+-                      fprintf(ofp2, buf);
++                      fprintf(ofp2, "%s", buf);
+                       if (spp){
+                           SeqPortFree(spp);
+                       }
+@@ -2417,7 +2417,7 @@ static void SPI_PrintHerdResult(FILE *ofp, FILE *ofp2, SPI_mRNAToHerdPtr herd, S
+                         ctr = SeqPortRead(spp, (Uint1Ptr)buf, 10);
+                         if (ctr > 0)
+                            buf[ctr] = '\0';
+-                        fprintf(ofp2, buf);
++                        fprintf(ofp2, "%s", buf);
+                         SeqPortFree(spp);
+                      }
+                      done = TRUE;

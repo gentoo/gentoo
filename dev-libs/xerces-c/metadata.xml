@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<!-- maintainer-needed -->
+<use>
+  <flag name="iconv">Use iconv (<pkg>virtual/libiconv</pkg>) as message loader
+    and transcoder (in general it would be possible to use iconv only as
+    message loader and something else like icu or the native method as
+    transcoder and vice-versa, but this is a less common case and hard to
+    handle)</flag>
+  <flag name="threads">Enable threading support through pthread (or other
+    libraries on AIX, IRIX, HPUX, Solars). Highly recommended</flag>
+</use>
+</pkgmetadata>

@@ -1,0 +1,73 @@
+diff -ur elvis-2.2_0-orig/guix11/tags elvis-2.2_0/guix11/tags
+--- elvis-2.2_0-orig/guix11/tags	2003-10-20 19:32:26.000000000 -0700
++++ elvis-2.2_0/guix11/tags	2007-08-17 12:56:28.000000000 -0700
+@@ -31,7 +31,7 @@
+ DEFAULT_TOOLFG	guix11.c	40;"	d	ln:40	file:
+ DEFAULT_XENCODING	guix11.c	48;"	d	ln:48	file:
+ FT_DEFAULT	xdialog.h	10;"	ln:10	enum:X_FIELDTYPE
+-FT_FILE	xdialog.h	10;"	ln:10	enum:X_FIELDTYPE
++FT_FILEC	xdialog.h	10;"	ln:10	enum:X_FIELDTYPE
+ FT_LOCKED	xdialog.h	10;"	ln:10	enum:X_FIELDTYPE
+ FT_NUMBER	xdialog.h	10;"	ln:10	enum:X_FIELDTYPE
+ FT_ONEOF	xdialog.h	10;"	ln:10	enum:X_FIELDTYPE
+diff -ur elvis-2.2_0-orig/guix11/xdialog.c elvis-2.2_0/guix11/xdialog.c
+--- elvis-2.2_0-orig/guix11/xdialog.c	2003-10-20 19:32:26.000000000 -0700
++++ elvis-2.2_0/guix11/xdialog.c	2007-08-17 12:56:28.000000000 -0700
+@@ -387,7 +387,7 @@
+ 			  case 'o': ft = FT_ONEOF, limit = scan;	break;
+ 			  case 'n': ft = FT_NUMBER, limit = scan;	break;
+ 			  case 's': ft = FT_STRING;			break;
+-			  case 'f': ft = FT_FILE;			break;
++			  case 'f': ft = FT_FILEC;			break;
+ 			  case 'l': ft = FT_LOCKED;			break;
+ 			}
+ 
+@@ -556,7 +556,7 @@
+ 			break;
+ 
+ 		  case FT_STRING:
+-		  case FT_FILE:
++		  case FT_FILEC:
+ 			button = addbutton(dia, "<", 'l', ELVCTRL('L'));
+ 			button->y = dia->y0 + dia->rowh * i;
+ 			button->x = dia->x0 + 3;
+@@ -1111,7 +1111,7 @@
+ 			newvalue = keystring(dia, key);
+ 			break;
+ 
+-		  case FT_FILE:
++		  case FT_FILEC:
+ #ifdef FEATURE_COMPLETE
+ 			if (key == '\t')
+ 			{
+@@ -1179,7 +1179,7 @@
+ 	switch (dia->field[row].ft)
+ 	{
+ 	  case FT_STRING:
+-	  case FT_FILE:
++	  case FT_FILEC:
+ 	  case FT_NUMBER:
+ 	  case FT_LOCKED:
+ 		drawtext(dia, row);
+@@ -1207,7 +1207,7 @@
+ 			break;
+ 
+ 		  case FT_STRING:
+-		  case FT_FILE:
++		  case FT_FILEC:
+ 			if (button->shape == 'l')
+ 				if (row == dia->current
+ 				    ? dia->shift > 0
+diff -ur elvis-2.2_0-orig/guix11/xdialog.h elvis-2.2_0/guix11/xdialog.h
+--- elvis-2.2_0-orig/guix11/xdialog.h	2003-10-20 19:32:26.000000000 -0700
++++ elvis-2.2_0/guix11/xdialog.h	2007-08-17 12:56:28.000000000 -0700
+@@ -5,7 +5,7 @@
+ 	FT_ONEOF,	/* one of a preset list; includes boolean */
+ 	FT_NUMBER,	/* numeric field */
+ 	FT_STRING,	/* string field */
+-	FT_FILE,	/* string field where <Tab> does filename completion */
++	FT_FILEC,	/* string field where <Tab> does filename completion */
+ 	FT_LOCKED	/* non-editable field */
+ } X_FIELDTYPE;
+ typedef struct
+

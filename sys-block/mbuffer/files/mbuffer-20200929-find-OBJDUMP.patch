@@ -1,0 +1,11 @@
+--- a/configure.in
++++ b/configure.in
+@@ -113,7 +113,7 @@ AC_PATH_PROG(AWK,awk)
+ AC_SYS_LARGEFILE
+ AC_STRUCT_ST_BLKSIZE
+ 
+-AC_CHECK_TARGET_TOOLS(OBJDUMP,gobjdump objdump)
++AC_CHECK_TOOLS(OBJDUMP, [gobjdump objdump])
+ 
+ AC_HEADER_ASSERT
+ AC_CHECK_LIB(pthread, pthread_mutex_init)

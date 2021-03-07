@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/attachment.cgi?id=399898
+Only first hunk preserved.
+diff -ruN hp2xx-3.4.4-r0/doc/hp2xxinf.tex hp2xx-3.4.4-r3/doc/hp2xxinf.tex
+--- hp2xx-3.4.4-r0/doc/hp2xxinf.tex	2003-06-21 17:41:16.000000000 +0200
++++ hp2xx-3.4.4-r3/doc/hp2xxinf.tex	2015-03-27 20:36:32.000000000 +0100
+@@ -92,7 +92,7 @@
+ @page
+ @tex
+ {\parskip=0pt
+-\hfill mk\@daveg.com\par
++\hfill mk@@daveg.com\par
+ \hfill {\it Using HP2XX}, \manvers\par
+ \hfill \TeX{}info \texinfoversion\par
+ }

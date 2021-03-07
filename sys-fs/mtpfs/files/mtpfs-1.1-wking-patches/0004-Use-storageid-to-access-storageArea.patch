@@ -1,0 +1,42 @@
+From 89ec461a73a2479fb5766b6b65a44e6e5b699b94 Mon Sep 17 00:00:00 2001
+From: "W. Trevor King" <wking@tremily.us>
+Date: Mon, 24 Aug 2015 00:34:41 -0700
+Subject: [PATCH 4/7] Use storageid to access storageArea
+
+'i' is indexing playlist->tracks here, and we don't want to look in a
+sequential storage areas for each track.
+
+I've also added a null-folder check.  I'm not sure if -ENOENT is the
+right code for "we can't find the parent directory in the storage area
+that contains the child", but it's the only non-success code that
+mtpfs_getattr_real returned before this commit.  And returning
+anything is probably better than segfaulting when we try and
+dereference folder with 'folder->parent_id'.  I've added a logging
+message to help debug things when we do get a null folder.
+---
+ mtpfs.c | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/mtpfs.c b/mtpfs.c
+index e31acd9..9f924a9 100644
+--- a/mtpfs.c
++++ b/mtpfs.c
+@@ -832,7 +832,14 @@ mtpfs_getattr_real (const gchar * path, struct stat *stbuf)
+                         filesize = filesize + strlen(file->filename) + 2;
+                         while (parent_id != 0) {
+                             check_folders();
+-                            folder = LIBMTP_Find_Folder(storageArea[i].folders,parent_id);
++                            folder =
++                              LIBMTP_Find_Folder
++                              (storageArea[storageid].folders, parent_id);
++                            if (folder == NULL) {
++                              DBG ("could not find %d in storage-area %d",
++                                   parent_id, storageid);
++                              return -ENOENT;
++                            }
+                             parent_id = folder->parent_id;
+                             filesize = filesize + strlen(folder->name) + 1;
+                         }
+-- 
+2.5.3
+

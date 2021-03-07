@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<longdescription>
+The SWORD Project is the CrossWire Bible Society's free Bible software
+project. Its purpose is to create tools that allow programmers and Bible
+societies to write new Bible software more quickly and easily.
+	</longdescription>
+	<use>
+		<flag name="clucene">Use <pkg>dev-cpp/clucene</pkg> for lucene search support</flag>
+	</use>
+</pkgmetadata>

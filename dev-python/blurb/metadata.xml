@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+	</maintainer>
+	<maintainer type="person">
+		<email>chutzpah@gentoo.org</email>
+		<name>Patrick McLean</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<longdescription lang="en">
+		blurb is a tool designed to rid CPython core development of the scourge of
+		Misc/NEWS conflicts.
+
+		The core concept: split Misc/NEWS into many separate files that, when
+		concatenated back together in sorted order, reconstitute the original
+		Misc/NEWS file. After that, Misc/NEWS could be deleted from the CPython
+		repo and thereafter rendered on demand (e.g. when building a release).
+		When checking in a change to CPython, the checkin process will write
+		out a new file that sorts into the correct place, using a filename
+		unlikely to have a merge conflict.
+	</longdescription>
+	<upstream>
+		<remote-id type="pypi">blurb</remote-id>
+	</upstream>
+</pkgmetadata>

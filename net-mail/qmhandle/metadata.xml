@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>robbat2@gentoo.org</email>
+    <name>Robin H. Johnson</name>
+  </maintainer>
+  <longdescription>qmHandle is a tool which can be used to manage the qmail
+    message queue. It's written in Perl (so fully customizable) and much more
+    powerful than qmail-qread and qmail-qstat. Key features are colored output
+    and the ability to view and delete messages in the queue.</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">qmhandle</remote-id>
+  </upstream>
+</pkgmetadata>

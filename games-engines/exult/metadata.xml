@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">exult</remote-id>
+		<remote-id type="github">exult/exult</remote-id>
+	</upstream>
+	<use>
+		<flag name="fluidsynth">Compile with support for FluidSynth</flag>
+		<flag name="sdl2">Use libsdl2 instead of libsdl</flag>
+		<flag name="tools">Enable tools</flag>
+	</use>
+</pkgmetadata>

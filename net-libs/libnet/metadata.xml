@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>netmon@gentoo.org</email>
+		<name>Gentoo network monitoring and analysis project</name>
+	</maintainer>
+	<longdescription>
+Libnet is a high-level API (toolkit) allowing the application 
+programmer to construct and inject network packets. It provides a 
+portable and simplified interface for low-level network packet 
+shaping, handling and injection. Libnet hides much of the tedium 
+of packet creation from the application programmer such as 
+multiplexing, buffer management, arcane packet header 
+information, byte-ordering, OS-dependent issues, and much more. 
+Libnet features portable packet creation interfaces at the IP 
+layer and link layer, as well as a host of supplementary and 
+complementary functionality. Using libnet, quick and simple 
+packet assembly applications can be whipped up with little 
+effort. With a bit more time, more complex programs can be 
+written (Traceroute and ping were easily rewritten using libnet 
+and libpcap).
+</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">libnet-dev</remote-id>
+	</upstream>
+</pkgmetadata>

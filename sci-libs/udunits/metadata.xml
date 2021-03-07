@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription>
+		This is the Unidata Units library, which supports conversion of unit
+		specifications between formatted and binary forms, arithmetic
+		manipulation of unit specifications, and conversion of values between
+		compatible scales of measurement.
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,42 @@
+From f338c37881a860952aa10cc437bc72fa0b49a823 Mon Sep 17 00:00:00 2001
+From: tastytea <tastytea@tastytea.de>
+Date: Thu, 21 May 2020 20:07:45 +0200
+Subject: [PATCH] Rename appdata.xml to metainfo.xml and change install dir.
+
+The new name is used since AppStream 0.9.8 (2016-08-10) and the new
+location is used since AppStream 0.9.4 (2016-04-18).
+---
+ data/meson.build                                     | 6 +++---
+ data/{viewnior.appdata.xml => viewnior.metainfo.xml} | 0
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+ rename data/{viewnior.appdata.xml => viewnior.metainfo.xml} (100%)
+
+diff --git a/data/meson.build b/data/meson.build
+index 55070fc..05d734e 100644
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -17,8 +17,8 @@ install_data(
+ )
+ 
+ install_data(
+-  'viewnior.appdata.xml',
+-  install_dir: join_paths(datadir, 'appdata')
++  'viewnior.metainfo.xml',
++  install_dir: join_paths(datadir, 'metainfo')
+ )
+ 
+ desktop = i18n.merge_file(
+@@ -39,4 +39,4 @@ if desktop_file_validate.found()
+       desktop.full_path()
+     ]
+   )
+-endif
+\ No newline at end of file
++endif
+diff --git a/data/viewnior.appdata.xml b/data/viewnior.metainfo.xml
+similarity index 100%
+rename from data/viewnior.appdata.xml
+rename to data/viewnior.metainfo.xml
+-- 
+2.26.2
+

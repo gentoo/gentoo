@@ -1,0 +1,25 @@
+From 68190ee0db1bc7577f17c51616966f509f971b0a Mon Sep 17 00:00:00 2001
+From: Craig Andrews <candrews@integralblue.com>
+Date: Mon, 26 Nov 2018 12:45:38 -0500
+Subject: [PATCH] Always use GNUInstallDirs
+
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index eb2582c..59a41d4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -32,9 +32,9 @@ set_if(SYMLINKABLE LINUX OR DARWIN OR CYGWIN)
+ # inside "bin" and "lib64" directories. At least this maintains
+ # the current status. Shall this be not desired, override values
+ # of CMAKE_INSTALL_BINDIR, CMAKE_INSTALL_LIBDIR and CMAKE_INSTALL_INCLUDEDIR.
+-if (NOT DEFINED CMAKE_INSTALL_LIBDIR)
++# if (NOT DEFINED CMAKE_INSTALL_LIBDIR)
+ 	include(GNUInstallDirs)
+-endif()
++# endif()
+ 
+ set (SRT_VERSION 1.3.1)
+ set_version_variables(SRT_VERSION ${SRT_VERSION})

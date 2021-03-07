@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+    <name>Michael Orlitzky</name>
+  </maintainer>
+
+  <longdescription lang="en">
+    rbldnsd is a small and fast DNS daemon which is especially made to
+    serve DNSBL zones. This daemon was inspired by Dan J. Bernstein's
+    rbldns program found in the djbdns package.
+
+    rbldnsd is extremely fast - it outperforms both bind and djbdns
+    greatly. It has very small memory footprint.
+
+    The daemon can serve both IP-based (ordb.org, dsbl.org etc) and
+    name-based (rfc-ignorant.org) blocklists. Unlike DJB's rbldns, it
+    has ability to specify individual values for every entry, can
+    serve as many zones on a single IP address as you wish, and,
+    finally, it is a real nameserver: it can reply to DNS metadata
+    requests. The daemon keeps all zones in memory for faster
+    operations, but its memory usage is very efficient, especially for
+    repeated TXT values which are stored only once.
+  </longdescription>
+
+  <upstream>
+    <remote-id type="github">spamhaus/rbldnsd</remote-id>
+  </upstream>
+</pkgmetadata>

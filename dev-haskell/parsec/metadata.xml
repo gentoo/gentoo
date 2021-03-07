@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Parsec is designed from scratch as an industrial-strength parser
+		library.  It is simple, safe, well documented (on the package
+		homepage), has extensive libraries and good error messages,
+		and is also fast.  It is defined as a monad transformer that can be
+		stacked on arbitrary monads, and it is also parametric in the
+		input stream type.
+	</longdescription>
+</pkgmetadata>

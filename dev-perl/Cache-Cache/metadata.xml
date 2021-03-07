@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Cache-Cache</remote-id>
+    <remote-id type="cpan-module">Cache::BaseCache</remote-id>
+    <remote-id type="cpan-module">Cache::BaseCacheTester</remote-id>
+    <remote-id type="cpan-module">Cache::Cache</remote-id>
+    <remote-id type="cpan-module">Cache::CacheMetaData</remote-id>
+    <remote-id type="cpan-module">Cache::CacheSizer</remote-id>
+    <remote-id type="cpan-module">Cache::CacheTester</remote-id>
+    <remote-id type="cpan-module">Cache::CacheUtils</remote-id>
+    <remote-id type="cpan-module">Cache::FileBackend</remote-id>
+    <remote-id type="cpan-module">Cache::FileCache</remote-id>
+    <remote-id type="cpan-module">Cache::MemoryBackend</remote-id>
+    <remote-id type="cpan-module">Cache::MemoryCache</remote-id>
+    <remote-id type="cpan-module">Cache::NullCache</remote-id>
+    <remote-id type="cpan-module">Cache::Object</remote-id>
+    <remote-id type="cpan-module">Cache::SharedMemoryBackend</remote-id>
+    <remote-id type="cpan-module">Cache::SharedMemoryCache</remote-id>
+    <remote-id type="cpan-module">Cache::SizeAwareCache</remote-id>
+    <remote-id type="cpan-module">Cache::SizeAwareCacheTester</remote-id>
+    <remote-id type="cpan-module">Cache::SizeAwareFileCache</remote-id>
+    <remote-id type="cpan-module">Cache::SizeAwareMemoryCache</remote-id>
+    <remote-id type="cpan-module">Cache::SizeAwareSharedMemoryCache</remote-id>
+  </upstream>
+</pkgmetadata>

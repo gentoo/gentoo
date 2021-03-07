@@ -1,0 +1,24 @@
+Picked-from: https://github.com/jomat/curlftpfs/commit/b8ce5599a17a1f9e00c93cff3a81fe88f51e8bd3
+Upstream-bug: https://sourceforge.net/tracker/?func=detail&aid=2924678&group_id=160565&atid=816357
+
+commit b8ce5599a17a1f9e00c93cff3a81fe88f51e8bd3
+Author: jomat <jomat@copete.de>
+Date:   Sun Oct 16 18:41:37 2011 +0000
+
+    added patch agains memory leak
+    
+    see also https://sourceforge.net/tracker/?func=detail&aid=2924678&group_id=160565&atid=816357
+
+diff --git a/ftpfs.c b/ftpfs.c
+index 0346354..96146f7 100644
+--- a/ftpfs.c
++++ b/ftpfs.c
+@@ -615,6 +615,8 @@ static void free_ftpfs_file(struct ftpfs_file *fh) {
+   sem_destroy(&fh->data_need);
+   sem_destroy(&fh->data_written);
+   sem_destroy(&fh->ready);
++  if (fh->buf.size) { buf_free(&fh->buf); }
++  if (fh->stream_buf.size) { buf_free(&fh->stream_buf); }
+   free(fh);
+ }
+ 

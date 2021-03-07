@@ -1,0 +1,11 @@
+diff -ru sassena-1.4.2_org/src/sample/frames.cpp sassena-1.4.2/src/sample/frames.cpp
+--- sassena-1.4.2_org/src/sample/frames.cpp	2014-07-29 11:02:12.651053749 +0200
++++ sassena-1.4.2/src/sample/frames.cpp	2014-07-29 11:11:39.229015514 +0200
+@@ -298,6 +298,7 @@
+ 	dcdfile.seekg(marker,ios_base::cur);
+ 	dcdfile.read((char*) &marker,sizeof(int32_t));
+ 
++    using boost::uint32_t;
+ 	uint32_t noa;
+ 	dcdfile.read((char*) &marker,sizeof(int32_t));
+ 	dcdfile.read((char*) &noa,sizeof(uint32_t));

@@ -1,0 +1,33 @@
+--- a/CMakeLists.txt	2013-10-15 11:35:16.688739802 -0400
++++ b/CMakeLists.txt	2013-10-15 11:53:46.185727620 -0400
+@@ -115,6 +115,7 @@
+ 		message("\tPAM Found")
+ 		set(SLIM_DEFINITIONS ${SLIM_DEFINITIONS} "-DUSE_PAM")
+ 		target_link_libraries(${PROJECT_NAME} ${PAM_LIBRARY})
++		target_link_libraries(libslim ${PAM_LIBRARY})
+ 		target_link_libraries(slimlock ${PAM_LIBRARY})
+ 		include_directories(${PAM_INCLUDE_DIR})
+ 	else(PAM_FOUND)
+@@ -173,7 +174,10 @@
+ )
+ 
+ target_link_libraries(libslim
+-    ${JPEG_LIBRARIES}
++	${RT_LIB}
++	${X11_Xft_LIB}
++	${X11_Xrandr_LIB}
++	${JPEG_LIBRARIES}
+ 	${PNG_LIBRARIES}
+ )
+ 
+@@ -228,8 +228,8 @@
+ 		SOVERSION ${SLIM_VERSION})
+ 
+ 	install(TARGETS libslim
+-		LIBRARY DESTINATION lib
+-		ARCHIVE DESTINATION lib
++		LIBRARY DESTINATION lib${LIB_SUFFIX}
++		ARCHIVE DESTINATION lib${LIB_SIFFUX}
+ 	)
+ endif (BUILD_SHARED_LIBS)
+ 

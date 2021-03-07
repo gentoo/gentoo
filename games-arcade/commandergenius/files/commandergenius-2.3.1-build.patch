@@ -1,0 +1,12 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9733f6d78..b515ee7a1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -78,7 +78,6 @@ add_subdirectory("src")
+ 
+ MESSAGE( STATUS "CG_VERSION = ${CG_VERSION}" )
+ 
+-INCLUDE(package.cmake)
+ 
+ MESSAGE( STATUS "Build system is prepared. To Build the project just type \"make\"" )
+ MESSAGE( STATUS "If you want to create the installation package just type \"make package\" after you build the project" )

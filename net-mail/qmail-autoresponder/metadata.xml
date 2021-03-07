@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<!-- maintainer-needed -->
+<longdescription lang="en">
+This is a simple program to automatically respond to emails.
+
+It is based on some ideas (but little or no code) from a similar
+autoresponder by Eric Huss, and ideas presented
+on the qmail mailing list.
+</longdescription>
+</pkgmetadata>

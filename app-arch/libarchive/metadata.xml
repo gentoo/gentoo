@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
+	<longdescription lang="en">
+		C library and command-line tools for reading and writing tar, cpio, zip, ISO, and other archive formats.
+	</longdescription>
+	<use>
+		<flag name="blake2">
+			Enable Blake2 hash support via <pkg>app-crypt/libb2</pkg>.
+		</flag>
+		<flag name="bzip2">
+			Allow accessing bzip2-compressed archives through libbz2 (which
+			comes with <pkg>app-arch/bzip2</pkg>). This only affects
+			libarchive's native support: bsdtar will keep using bunzip2 as a
+			filter if that's not built-in.
+		</flag>
+		<flag name="e2fsprogs">
+			Use file flags from <pkg>sys-fs/e2fsprogs</pkg> headers instead of <pkg>virtual/os-headers</pkg> headers
+		</flag>
+		<flag name="nettle">
+			Use <pkg>dev-libs/nettle</pkg> as crypto backend
+		</flag>
+		<flag name="zlib">
+			Allow accessing gzip-compressed archives through
+			<pkg>sys-libs/zlib</pkg>. This only affects libarchive's native
+			support: bsdtar will keep using gunzip as a filter if that's not
+			built-in. It's also needed for supporting extraction of ZIP
+			files.
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:libarchive:libarchive</remote-id>
+		<remote-id type="github">libarchive/libarchive</remote-id>
+		<bugs-to>https://github.com/libarchive/libarchive/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

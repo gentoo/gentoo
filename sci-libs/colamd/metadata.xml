@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  The COLumn Approximate Minimum Degree ordering algorithm
+  computes a permutation vector P such that the LU factorization of A
+  (:,P) tends to be sparser than that of A. The Cholesky factorization
+  of (A (:,P))\'*(A (:,P)) will also tend to be sparser than that of
+  A\'*A. SYMAMD is a symmetric minimum degree ordering method based on
+  COLAMD, available as a MATLAB-callable function. It constructs a
+  matrix M such that M\'*M has the same pattern as A, and then uses
+  COLAMD to compute a column ordering of M.
+</longdescription>
+</pkgmetadata>

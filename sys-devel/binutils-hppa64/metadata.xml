@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>hppa@gentoo.org</email>
+		<name>Gentoo Linux HPPA Development</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>toolchain@gentoo.org</email>
+		<name>Gentoo Toolchain Project</name>
+	</maintainer>
+	<use>
+		<flag name="cet">Enable Intel Control-flow Enforcement Technology.</flag>
+		<flag name="default-gold">Set ld to point to ld.gold instead of ld.bfd</flag>
+		<flag name="gold">Build ld.gold linker</flag>
+		<flag name="plugins">Enable plugin support in tools</flag>
+		<flag name="multitarget">Adds support to binutils for cross compiling (does not work with gas)</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The app-officeext category contains extension packages for 
+		LibreOffice and OpenOffice.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie app-officeext enthält Erweiterungspakete 
+		(extensions) für LibreOffice und OpenOffice.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría app-officeext contiene paquetes con extensiones
+		para LibreOffice y OpenOffice.
+	</longdescription>
+</catmetadata>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  The DSDP software is a free open source implementation of an
+  interior-point method for semidefinite programming. It provides
+  primal and dual solutions, exploits low-rank structure and sparsity
+  in the data, and has relatively low memory requirements for an
+  interior-point method. It allows feasible and infeasible starting
+  points and provides approximate certificates of infeasibility when
+  no feasible solution exists. The dual-scaling algorithm implemented
+  in this package has a convergence proof and worst-case polynomial
+  complexity under mild assumptions on the data. Furthermore, the
+  solver offers scalable parallel performance for large problems and a
+  well documented interface. Some of the most popular applications of
+  semidefinite programming and linear matrix inequalities (LMI) are
+  model control, truss topology design, and semidefinite relaxations
+  of combinatorial and global optimization problems.
+</longdescription>
+</pkgmetadata>

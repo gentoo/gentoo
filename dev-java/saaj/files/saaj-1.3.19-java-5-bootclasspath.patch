@@ -1,0 +1,13 @@
+--- a/src/java/com/sun/xml/messaging/saaj/soap/ImageDataContentHandler.java
++++ b/src/java/com/sun/xml/messaging/saaj/soap/ImageDataContentHandler.java
+@@ -83,7 +83,9 @@
+      * @return The DataFlavors.
+      */
+     public DataFlavor[] getTransferDataFlavors() { 
+-        return (DataFlavor[]) Arrays.copyOf(flavor, flavor.length);
++        DataFlavor[] copyOf = new DataFlavor[flavor.length];
++        System.arraycopy(flavor, 0, copyOf, 0, flavor.length);
++        return copyOf;
+     }
+ 
+     /**

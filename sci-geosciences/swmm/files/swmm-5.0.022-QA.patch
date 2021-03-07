@@ -1,0 +1,14 @@
+--- Makefile
++++ Makefile
+@@ -7,9 +7,10 @@
+        rain.o rdii.o report.o routing.o runoff.o shape.o snow.o stats.o \
+        statsrpt.o subcatch.o table.o toposort.o transect.o treatmnt.o xsect.o
+ 
++LIBS += -lm
+ 
+ swmm5 : $(objs)
+-	  cc -o swmm5 -lm $(objs)
++	  $(CC) $(CFLAGS) $(LDFLAGS) -o swmm5 $(objs) $(LIBS)
+ 
+ swmm5.o       : consts.h macros.h enums.h error.h datetime.h objects.h funcs.h text.h globals.h swmm5.h
+ climate.o     : headers.h

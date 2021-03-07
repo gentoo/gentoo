@@ -1,0 +1,186 @@
+--- a/src/config.h
++++ b/src/config.h
+@@ -37,7 +37,7 @@
+ #define WEPKEYSTORE     	(WEPKEYSIZE * WEPKEYS)
+ 
+ #define DEBUG 			0
+-#define VERSION			"0.1.3"
++#define VERSION			"0.1.3 (Gentoo patched)"
+ 
+ 
+ #endif
+--- a/src/log.c
++++ b/src/log.c
+@@ -73,7 +73,7 @@
+ 	fprintf(fp, "Cracking started: %s", ctime(&start_time));
+ 	fprintf(fp, "%s\t%s\n", word, in);
+ 
+-	fprintf(fp, "\nBssid\tKeyNo\tWepKey\tASCII\tEncryption\tElapsed Time");
++	fprintf(fp, "\nBssid\t\t\tKeyNo\tWepKey\t\tASCII\tEncryption\tElapsed Time");
+ 	fclose(fp);
+ }
+ 
+@@ -120,7 +120,7 @@
+ 			fprintf(fp, "\n");
+ 			print_hex_array(fp, list->frame.bssid, 6);
+ 			fprintf(fp, "\t%d", list->frame.key);
+-			fprintf(fp, "\tnot cracked\t\t%d sec",
++			fprintf(fp, "\tnot cracked\t\t\t\t%d sec",
+ 				(int)difftime(now, start_time));
+ 		}
+ 		list = list->next;
+--- a/src/misc.c
++++ b/src/misc.c
+@@ -40,10 +40,11 @@
+ 	fprintf(stdout,"WEPATTACK by Dominik Blunk and Alain ");
+ 	fprintf(stdout,"Girardet - Version %s\n", VERSION);
+ 	fprintf(stdout,"\nusage: wepattack -f dumpfile [-w wordfile]");
+-	fprintf(stdout, " [-m mode] [-n	network]\n");
++	fprintf(stdout, " [-m mode] [-b mac_address] [-n network]\n");
+ 	fprintf(stdout,"-f dumpfile \tnetwork dumpfile to read\n");
+ 	fprintf(stdout,"\t\t(in PCAP format as TCPDUMP or ETHEREAL uses)\n");
+ 	fprintf(stdout,"-w wordlist \twordlist to use (default: stdin)\n");
++	fprintf(stdout,"-b mac_address \tfilter the mac address from the dump file\n");
+ 	fprintf(stdout,"-m mode \trun wepattack in diffente modes (default: all)\n");
+ 	fprintf(stdout,"\t\tvalues: 64, 128, n64, n128\n");
+ 	fprintf(stdout,"-n network \tnetwork number to attack\n");
+--- a/src/wepattack.c
++++ b/src/wepattack.c
+@@ -4,6 +4,8 @@
+ * Author: 		Alain Girardet/Dominik Blunk
+ * Last Modified:	2002-10-24
+ *
++* Send me any suggestions about the patch to kirano_1@hotmail.com
++*
+ * Description: Read guessed passwords from stdin and applies RC4
+ * on sniffed encrypted 802.11 DATA packets
+ *
+@@ -57,6 +59,11 @@
+ // default mode (all modes sequential)
+ static unsigned char use_modes = 0x01;
+ 
++// to check bssid
++char* BSSID=NULL;
++wlan_packet_list* bssids_list=NULL;
++int is_bssid_set = 0;
++
+ void clean_up();
+ 
+ //
+@@ -64,7 +71,11 @@
+ //
+ void load_packets(char *infile, int network) {
+ 
+-	int network_count = 0;
++	int network_count = 0;	
++	wlan_packet_list* aux;
++	wlan_packet_list* aux_2;
++	wlan_packet_list* aux3;
++	char bssid_aux[18],bssid_aux2[13],bssid_aux3[18],bssid_aux4[13];	
+ 
+ 	// load networks from file
+ 	list_packet_to_crack = get_packets(infile);
+@@ -77,17 +88,57 @@
+ 
+ 	current_packet = list_packet_to_crack;
+ 
+-	// list all available networks
+-	printf("\n\nFounded BSSID:");
+-	while (current_packet->next != NULL) {
+-		network_count++;
+-		printf("\n%d)  ", network_count);
+-		print_hex_array(stdout, current_packet->frame.bssid, 6);
+-		printf("/ Key %d", current_packet->frame.key);
+-		current_packet = current_packet->next;
++	//Make another list with provided bssid
++	if (is_bssid_set){		
++		for (aux=current_packet; aux!=NULL;aux=aux->next){
++			sprintf(bssid_aux,"%.2X:%.2X:%.2X:%.2X:%.2X:%.2X",aux->frame.bssid[0],aux->frame.bssid[1],aux->frame.bssid[2],aux->frame.bssid[3],aux->frame.bssid[4],aux->frame.bssid[5]);
++			sprintf(bssid_aux2,"%.2X%.2X%.2X%.2X%.2X%.2X",aux->frame.bssid[0],aux->frame.bssid[1],aux->frame.bssid[2],aux->frame.bssid[3],aux->frame.bssid[4],aux->frame.bssid[5]);
++			sprintf(bssid_aux3,"%.2x:%.2x:%.2x:%.2x:%.2x:%.2x",aux->frame.bssid[0],aux->frame.bssid[1],aux->frame.bssid[2],aux->frame.bssid[3],aux->frame.bssid[4],aux->frame.bssid[5]);
++			sprintf(bssid_aux4,"%.2x%.2x%.2x%.2x%.2x%.2x",aux->frame.bssid[0],aux->frame.bssid[1],aux->frame.bssid[2],aux->frame.bssid[3],aux->frame.bssid[4],aux->frame.bssid[5]);			
++			if ((strncmp(bssid_aux,BSSID,17) == 0) || (strncmp(bssid_aux2,BSSID,12) == 0) || (strncmp(bssid_aux3,BSSID,17) == 0) || (strncmp(bssid_aux4,BSSID,12) == 0)){				
++				aux_2 = malloc(sizeof(wlan_packet_list));
++				memcpy(&aux_2->frame.frameControl, aux->frame.frameControl, 2);
++				memcpy(&aux_2->frame.duration, aux->frame.duration, 2);
++				memcpy(&aux_2->frame.srcAddress, aux->frame.srcAddress, 6);
++				memcpy(&aux_2->frame.dstAddress, aux->frame.dstAddress, 6);
++				memcpy(&aux_2->frame.bssid, aux->frame.bssid, 6);
++				if(aux->frame.address4 > 0) {
++					memcpy(&aux_2->frame.address4, aux->frame.address4, 6);
++				}
++				memcpy(&aux_2->frame.sequenceControl, aux->frame.sequenceControl, 2);
++				memcpy(&aux_2->frame.iv, &aux->frame.iv, 3);				
++				aux_2->frame.key=aux->frame.key;				
++				memcpy(&aux_2->frame.payload, aux->frame.payload, (aux->framesize)- (aux->frame.limits_payload));
++				if (bssids_list == NULL){
++					aux3 = malloc(sizeof(wlan_packet_list));
++					aux3->next = NULL;
++					bssids_list = aux3;
++				}
++				aux_2->framesize = aux->framesize;
++				aux_2->next = bssids_list;				
++				bssids_list = aux_2;
++			}
++		}
++		if (bssids_list != NULL){
++		//we must free the old list
++			delete_list(list_packet_to_crack);
++			list_packet_to_crack = bssids_list;
++			current_packet = list_packet_to_crack;
++		}
++		else printf("\n\nProvided BSSID not found. Cracking all networks");
+ 	}
++	
++	// list all available networks
++            printf("\n\nFounded BSSID:");
++            while (current_packet->next != NULL) {
++	            network_count++;
++				printf("\n%d)  ", network_count);
++				print_hex_array(stdout, current_packet->frame.bssid, 6);
++				printf("/ Key %d", current_packet->frame.key);
++				current_packet = current_packet->next;
++		}																					
+ 
+-	if (network > network_count)
++	if (network >= network_count)
+ 		network = 0;
+ 
+ 	// if only one should be attacked, remove the others from the list
+@@ -220,11 +272,15 @@
+ 
+ 	// process command line options
+ 	// program will terminate, if invalid options are passed
+-    	while((op = getopt(argc, argv, "n:m:f:w:?")) != -1) {
++    	while((op = getopt(argc, argv, "n:b:m:f:w:?")) != -1) {
+     		switch(op) {
+ 		case 'n':
+ 			network_arg = atoi(optarg);
+ 			break;
++		case 'b':
++			BSSID = optarg;
++			is_bssid_set = 1;		
++			break;
+                 // arg for packet file to read from
+ 		case 'f':
+                         packet_file = optarg;
+--- a/src/wepattack.h
++++ b/src/wepattack.h
+@@ -38,6 +38,7 @@
+ 	unsigned char iv[3];
+ 	unsigned char key;
+ 	unsigned char payload[2400];
++	int limits_payload;
+ };
+ 
+ /*
+--- a/src/wepfilter.c
++++ b/src/wepfilter.c
+@@ -104,6 +103,7 @@
+ 	memcpy(&newframe->frame.key, data+limits.key, 1);
+ 	newframe->frame.key = newframe->frame.key >> 6;
+ 	memcpy(&newframe->frame.payload, data+limits.payload, length-limits.payload);
++	newframe->frame.limits_payload = limits.payload;
+ 	newframe->framesize = length;
+ 	newframe->next = *head;
+ 	*head = newframe;

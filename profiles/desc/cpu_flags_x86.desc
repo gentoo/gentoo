@@ -1,0 +1,33 @@
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Whenever the flag name does not correspond to /proc/cpuinfo flags,
+# please put the cpuinfo flag in square brackets. If more than one flag
+# is specified, any of them will enable the respective USE flag.
+
+3dnow - Use the 3DNow! instruction set
+3dnowext - Use the Enhanced 3DNow! instruction set
+aes - Enable support for Intel's AES instruction set (AES-NI)
+avx - Adds support for Advanced Vector Extensions instructions
+avx2 - Adds support for Advanced Vector Extensions 2 instructions
+avx512dq - Use AVX-512 double- and quad-word instructions
+avx512f - Adds support for AVX-512 Foundation instructions
+avx512vl - Use AVX-512 vector-length instructions
+f16c - Adds support for F16C instruction set for converting between half-precision and single-precision floats
+fma3 - Use the Fused Multiply Add 3 instruction set ([fma] in cpuinfo)
+fma4 - Use the Fused Multiply Add 4 instruction set
+mmx - Use the MMX instruction set
+mmxext - Use the Extended MMX instruction set (a subset of SSE) ([mmxext] or [sse] in cpuinfo)
+padlock - Use VIA padlock instructions ([phe] in cpuinfo)
+pclmul - Use Carry-less Multiplication instructions ([pclmulqdq] in cpuinfo)
+popcnt - Enable popcnt instruction support ([abm] or [popcnt] in cpuinfo)
+rdrand - Use the RDRAND instruction for generating random numbers
+sha - Use the SHA-NI instruction set
+sse - Use the SSE instruction set
+sse2 - Use the SSE2 instruction set
+sse3 - Use the SSE3 instruction set ([pni] in cpuinfo, NOT ssse3)
+sse4_1 - Enable SSE4.1 instruction support
+sse4_2 - Enable SSE4.2 instruction support
+sse4a - Enable SSE4a instruction support
+ssse3 - Use the SSSE3 instruction set (NOT sse3/pni)
+xop - Enable the XOP instruction set

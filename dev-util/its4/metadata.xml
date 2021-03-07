@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+  <email>robbat2@gentoo.org</email>
+</maintainer>
+<longdescription>
+ITS4 scans source code, looking for function calls that are potentially
+dangerous. For some calls, ITS4 tries to perform some code analysis to
+determine how risky the call is. In each case, ITS4 provides a problem report,
+including a short description of the potential problem and suggestions on how
+to fix the code.
+</longdescription>
+</pkgmetadata>

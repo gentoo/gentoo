@@ -1,0 +1,32 @@
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -6,28 +6,14 @@
+ 			  optimizers/BestFit.cc optimizers/Split.cc \
+ 			  util/CmdLineParser.cc
+ 
+-INCLUDES = -I/usr/local/include -I.
+-CXX = g++
+-CXXFLAGS = -O3 -Wno-long-long $(INCLUDES)
+-LIBPATH = 
+-LIBS = 
+-LDFLAGS = $(LIBPATH) $(LIBS)
+-
+ ###########################################################################
+ 
+ OBJS = $(CPPFILES:.cc=.o)
+ 
+-.SUFFIXES: .o .cc 
+-
+-.cc.o:
+-	@echo $<:
+-	$(CXX) $(CXXFLAGS) -c $*.cc -o $*.o
+-
+ default: gaffitter 
+ 
+ 
+-gaffitter: $(OBJS) gaffitter.cc Params.h
+-	$(CXX) $(CXXFLAGS) $@.cc $(OBJS) -o $@ $(LDFLAGS)
++gaffitter: $(OBJS) Params.h
+ ###########################################################################
+ 
+ objs: $(OBJS)	

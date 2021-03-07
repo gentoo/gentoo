@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sbraz@gentoo.org</email>
+		<name>Louis Sautier</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>monsieurp@gentoo.org</email>
+		<name>Patrice Clement</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">klaus</remote-id>
+		<remote-id type="github">jonashaag/klaus</remote-id>
+		<bugs-to>https://github.com/jonashaag/klaus/issues</bugs-to>
+	</upstream>
+	<use>
+		<flag name="ctags">Enable support for Exuberant ctags; makes all source code symbols hyperlinks to their definitions</flag>
+	</use>
+</pkgmetadata>

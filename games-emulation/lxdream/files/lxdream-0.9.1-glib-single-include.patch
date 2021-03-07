@@ -1,0 +1,395 @@
+Index: lxdream-0.9.1/src/aica/audio.c
+===================================================================
+--- lxdream-0.9.1.orig/src/aica/audio.c
++++ lxdream-0.9.1/src/aica/audio.c
+@@ -19,7 +19,7 @@
+ 
+ #include "aica/aica.h"
+ #include "aica/audio.h"
+-#include <glib/gmem.h>
++#include <glib.h>
+ #include "dream.h"
+ #include <assert.h>
+ #include <string.h>
+Index: lxdream-0.9.1/src/aica/audio.h
+===================================================================
+--- lxdream-0.9.1.orig/src/aica/audio.h
++++ lxdream-0.9.1/src/aica/audio.h
+@@ -20,7 +20,7 @@
+ 
+ #include <stdint.h>
+ #include <stdio.h>
+-#include <glib/gtypes.h>
++#include <glib.h>
+ #include "gettext.h"
+ #include "plugin.h"
+ 
+Index: lxdream-0.9.1/src/cocoaui/cocoa_ctrl.m
+===================================================================
+--- lxdream-0.9.1.orig/src/cocoaui/cocoa_ctrl.m
++++ lxdream-0.9.1/src/cocoaui/cocoa_ctrl.m
+@@ -23,7 +23,7 @@
+ #include "maple/maple.h"
+ #include "vmu/vmulist.h"
+ 
+-#include <glib/gstrfuncs.h>
++#include <glib.h>
+ 
+ #define FIRST_SECONDARY_DEVICE MAPLE_PORTS
+ 
+Index: lxdream-0.9.1/src/cocoaui/paths_osx.m
+===================================================================
+--- lxdream-0.9.1.orig/src/cocoaui/paths_osx.m
++++ lxdream-0.9.1/src/cocoaui/paths_osx.m
+@@ -19,7 +19,7 @@
+  */
+ 
+ #include <string.h>
+-#include <glib/gstrfuncs.h>
++#include <glib.h>
+ 
+ #include "lxdream.h"
+ #include "lxpaths.h"
+Index: lxdream-0.9.1/src/config.c
+===================================================================
+--- lxdream-0.9.1.orig/src/config.c
++++ lxdream-0.9.1/src/config.c
+@@ -21,8 +21,7 @@
+ #include <errno.h>
+ #include <stdlib.h>
+ #include <string.h>
+-#include <glib/gmem.h>
+-#include <glib/gstrfuncs.h>
++#include <glib.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include "dream.h"
+Index: lxdream-0.9.1/src/config.h
+===================================================================
+--- lxdream-0.9.1.orig/src/config.h
++++ lxdream-0.9.1/src/config.h
+@@ -19,8 +19,7 @@
+ #ifndef lxdream_config_H
+ #define lxdream_config_H 1
+ 
+-#include <glib/gtypes.h>
+-#include <glib/glist.h>
++#include <glib.h>
+ #include "gettext.h"
+ 
+ #ifdef __cplusplus
+Index: lxdream-0.9.1/src/drivers/input_lirc.c
+===================================================================
+--- lxdream-0.9.1.orig/src/drivers/input_lirc.c
++++ lxdream-0.9.1/src/drivers/input_lirc.c
+@@ -28,7 +28,6 @@
+ #include <dirent.h>
+ #include <ctype.h>
+ 
+-#include <glib/giochannel.h>
+ #include <glib.h>
+ 
+ #include <lirc/lirc_client.h>
+Index: lxdream-0.9.1/src/drivers/joy_linux.c
+===================================================================
+--- lxdream-0.9.1.orig/src/drivers/joy_linux.c
++++ lxdream-0.9.1/src/drivers/joy_linux.c
+@@ -32,7 +32,6 @@
+ #include <ctype.h>
+ 
+ #include <linux/joystick.h>
+-#include <glib/giochannel.h>
+ #include <glib.h>
+ 
+ #include "lxdream.h"
+Index: lxdream-0.9.1/src/drivers/osx_iokit.m
+===================================================================
+--- lxdream-0.9.1.orig/src/drivers/osx_iokit.m
++++ lxdream-0.9.1/src/drivers/osx_iokit.m
+@@ -19,8 +19,7 @@
+  * GNU General Public License for more details.
+  */
+ 
+-#include <glib/gmem.h>
+-#include <glib/gstrfuncs.h>
++#include <glib.h>
+ #include <sys/param.h>
+ #include <paths.h>
+ #include <string.h>
+Index: lxdream-0.9.1/src/gdlist.c
+===================================================================
+--- lxdream-0.9.1.orig/src/gdlist.c
++++ lxdream-0.9.1/src/gdlist.c
+@@ -19,7 +19,7 @@
+ 
+ #include <string.h>
+ #include <stdlib.h>
+-#include <glib/gstrfuncs.h>
++#include <glib.h>
+ #include <libgen.h>
+ #include "gettext.h"
+ #include "gdrom/gdrom.h"
+Index: lxdream-0.9.1/src/gdrom/gddriver.h
+===================================================================
+--- lxdream-0.9.1.orig/src/gdrom/gddriver.h
++++ lxdream-0.9.1/src/gdrom/gddriver.h
+@@ -24,7 +24,7 @@
+ #include <stdio.h>
+ #include "lxdream.h"
+ #include "gdrom/gdrom.h"
+-#include <glib/gstrfuncs.h>
++#include <glib.h>
+ 
+ #ifdef __cplusplus
+ extern "C" {
+Index: lxdream-0.9.1/src/gdrom/gdi.c
+===================================================================
+--- lxdream-0.9.1.orig/src/gdrom/gdi.c
++++ lxdream-0.9.1/src/gdrom/gdi.c
+@@ -23,7 +23,7 @@
+ #include <fcntl.h>
+ #include <errno.h>
+ #include <sys/stat.h>
+-#include <glib/gutils.h>
++#include <glib.h>
+ #include "gdrom/gddriver.h"
+ 
+ 
+Index: lxdream-0.9.1/src/gdrom/gdrom.c
+===================================================================
+--- lxdream-0.9.1.orig/src/gdrom/gdrom.c
++++ lxdream-0.9.1/src/gdrom/gdrom.c
+@@ -20,7 +20,7 @@
+ #include <fcntl.h>
+ #include <errno.h>
+ #include <ctype.h>
+-#include <glib/gutils.h>
++#include <glib.h>
+ #include "gdrom/ide.h"
+ #include "gdrom/gdrom.h"
+ #include "gdrom/gddriver.h"
+Index: lxdream-0.9.1/src/gdrom/gdrom.h
+===================================================================
+--- lxdream-0.9.1.orig/src/gdrom/gdrom.h
++++ lxdream-0.9.1/src/gdrom/gdrom.h
+@@ -22,7 +22,7 @@
+ 
+ #include "lxdream.h"
+ #include "hook.h"
+-#include <glib/glist.h>
++#include <glib.h>
+ 
+ #ifdef __cplusplus
+ extern "C" {
+Index: lxdream-0.9.1/src/gdrom/nrg.c
+===================================================================
+--- lxdream-0.9.1.orig/src/gdrom/nrg.c
++++ lxdream-0.9.1/src/gdrom/nrg.c
+@@ -20,7 +20,7 @@
+ #include <assert.h>
+ #include <stdio.h>
+ #include <errno.h>
+-#include <glib/gtypes.h>
++#include <glib.h>
+ #include "gdrom/gddriver.h"
+ #include "dream.h"
+ 
+Index: lxdream-0.9.1/src/gui.h
+===================================================================
+--- lxdream-0.9.1.orig/src/gui.h
++++ lxdream-0.9.1/src/gui.h
+@@ -19,7 +19,7 @@
+ #ifndef lxdream_gui_H
+ #define lxdream_gui_H
+ 
+-#include <glib/gtypes.h>
++#include <glib.h>
+ 
+ #ifdef __cplusplus
+ extern "C" {
+Index: lxdream-0.9.1/src/loader.h
+===================================================================
+--- lxdream-0.9.1.orig/src/loader.h
++++ lxdream-0.9.1/src/loader.h
+@@ -20,7 +20,7 @@
+ #define lxdream_loader_H 1
+ 
+ #include <stdio.h>
+-#include <glib/gtypes.h>
++#include <glib.h>
+ 
+ #ifdef __cplusplus
+ extern "C" {
+Index: lxdream-0.9.1/src/lxdream.h
+===================================================================
+--- lxdream-0.9.1.orig/src/lxdream.h
++++ lxdream-0.9.1/src/lxdream.h
+@@ -20,7 +20,7 @@
+ #define lxdream_lxdream_H 1
+ 
+ #include <stdint.h>
+-#include <glib/gtypes.h>
++#include <glib.h>
+ 
+ #include "../config.h"
+ 
+Index: lxdream-0.9.1/src/lxpaths.c
+===================================================================
+--- lxdream-0.9.1.orig/src/lxpaths.c
++++ lxdream-0.9.1/src/lxpaths.c
+@@ -19,8 +19,7 @@
+ #include <ctype.h>
+ #include <unistd.h>
+ #include <wordexp.h>
+-#include <glib/gstrfuncs.h>
+-#include <glib/gutils.h>
++#include <glib.h>
+ 
+ #include "gui.h"
+ #include "config.h"
+Index: lxdream-0.9.1/src/maple/maple.c
+===================================================================
+--- lxdream-0.9.1.orig/src/maple/maple.c
++++ lxdream-0.9.1/src/maple/maple.c
+@@ -18,7 +18,7 @@
+ #define MODULE maple_module
+ 
+ #include <assert.h>
+-#include <glib/gstrfuncs.h>
++#include <glib.h>
+ #include "dream.h"
+ #include "mem.h"
+ #include "asic.h"
+Index: lxdream-0.9.1/src/mem.c
+===================================================================
+--- lxdream-0.9.1.orig/src/mem.c
++++ lxdream-0.9.1/src/mem.c
+@@ -20,7 +20,7 @@
+ #include <sys/types.h>
+ #include <sys/mman.h>
+ #include <sys/stat.h>
+-#include <glib/gstrfuncs.h>
++#include <glib.h>
+ #include <assert.h>
+ #include <stdint.h>
+ #include <stdlib.h>
+Index: lxdream-0.9.1/src/paths_unix.c
+===================================================================
+--- lxdream-0.9.1.orig/src/paths_unix.c
++++ lxdream-0.9.1/src/paths_unix.c
+@@ -18,7 +18,7 @@
+ 
+ #include <string.h>
+ #include <stdlib.h>
+-#include <glib/gstrfuncs.h>
++#include <glib.h>
+ 
+ #include "lxdream.h"
+ #include "config.h"
+Index: lxdream-0.9.1/src/plugin.c
+===================================================================
+--- lxdream-0.9.1.orig/src/plugin.c
++++ lxdream-0.9.1/src/plugin.c
+@@ -20,8 +20,7 @@
+ #include <dirent.h>
+ #include <dlfcn.h>
+ #include <string.h>
+-#include <glib/gmem.h>
+-#include <glib/gstrfuncs.h>
++#include <glib.h>
+ #include "plugin.h"
+ #include "lxpaths.h"
+ 
+Index: lxdream-0.9.1/src/pvr2/glutil.c
+===================================================================
+--- lxdream-0.9.1.orig/src/pvr2/glutil.c
++++ lxdream-0.9.1/src/pvr2/glutil.c
+@@ -17,7 +17,7 @@
+  */
+ 
+ #include <string.h>
+-#include <glib/gstrfuncs.h>
++#include <glib.h>
+ #include "pvr2/glutil.h"
+ 
+ gboolean isGLSecondaryColorSupported()
+Index: lxdream-0.9.1/src/sh4/sh4core.h
+===================================================================
+--- lxdream-0.9.1.orig/src/sh4/sh4core.h
++++ lxdream-0.9.1/src/sh4/sh4core.h
+@@ -19,7 +19,7 @@
+ #ifndef lxdream_sh4core_H
+ #define lxdream_sh4core_H 1
+ 
+-#include <glib/gtypes.h>
++#include <glib.h>
+ #include <stdint.h>
+ #include <stdio.h>
+ #include "mem.h"
+Index: lxdream-0.9.1/src/syscall.h
+===================================================================
+--- lxdream-0.9.1.orig/src/syscall.h
++++ lxdream-0.9.1/src/syscall.h
+@@ -20,7 +20,7 @@
+ #define lxdream_syscall_H 1
+ 
+ #include <stdint.h>
+-#include <glib/gtypes.h>
++#include <glib.h>
+ 
+ #ifdef __cplusplus
+ extern "C" {
+Index: lxdream-0.9.1/src/tools/actparse.c
+===================================================================
+--- lxdream-0.9.1.orig/src/tools/actparse.c
++++ lxdream-0.9.1/src/tools/actparse.c
+@@ -21,7 +21,7 @@
+ #include <string.h>
+ #include <ctype.h>
+ #include <sys/stat.h>
+-#include <glib/gstrfuncs.h>
++#include <glib.h>
+ #include "tools/gendec.h"
+ 
+ static int add_action( struct action *actions, struct ruleset *rules, char *operation, const char *file, int line, char *action )
+Index: lxdream-0.9.1/src/tools/gendec.c
+===================================================================
+--- lxdream-0.9.1.orig/src/tools/gendec.c
++++ lxdream-0.9.1/src/tools/gendec.c
+@@ -23,7 +23,7 @@
+ #include <getopt.h>
+ #include <errno.h>
+ #include <ctype.h>
+-#include <glib/gstrfuncs.h>
++#include <glib.h>
+ #include <assert.h>
+ #include "tools/gendec.h"
+ 
+Index: lxdream-0.9.1/src/vmu/vmulist.c
+===================================================================
+--- lxdream-0.9.1.orig/src/vmu/vmulist.c
++++ lxdream-0.9.1/src/vmu/vmulist.c
+@@ -18,8 +18,7 @@
+ 
+ #include <string.h>
+ #include <stdlib.h>
+-#include <glib/glist.h>
+-#include <glib/gstrfuncs.h>
++#include <glib.h>
+ #include "vmulist.h"
+ #include "config.h"
+ 
+Index: lxdream-0.9.1/src/vmu/vmuvol.c
+===================================================================
+--- lxdream-0.9.1.orig/src/vmu/vmuvol.c
++++ lxdream-0.9.1/src/vmu/vmuvol.c
+@@ -16,8 +16,7 @@
+  * GNU General Public License for more details.
+  */
+ 
+-#include <glib/gmem.h>
+-#include <glib/gstrfuncs.h>
++#include <glib.h>
+ #include <string.h>
+ #include <unistd.h>
+ #include <stdio.h>

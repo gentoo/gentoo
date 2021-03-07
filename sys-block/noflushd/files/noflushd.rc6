@@ -1,0 +1,30 @@
+#!/sbin/openrc-run
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# NB: Config is in /etc/conf.d/noflushd
+
+depend() {
+	need localmount
+}
+
+checkconfig() {
+	if [ -z "$NOFLUSHD_OPTS" ] ; then
+		eerror "You need to setup your NOFLUSHD_OPTS first"
+		eerror "Check that you've adjusted /etc/conf.d/noflushd for your needs"
+		return 1
+	fi
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting noflushd"
+	start-stop-daemon --start --quiet --exec /usr/sbin/noflushd -- $NOFLUSHD_OPTS
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping noflushd"
+	start-stop-daemon --stop --quiet --pidfile /var/run/noflushd.pid
+	eend $?
+}

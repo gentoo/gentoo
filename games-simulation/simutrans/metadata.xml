@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gentoo@tastytea.de</email>
+		<name>Ronny (tastytea) Gutbrod</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">simutrans</remote-id>
+	</upstream>
+	<use>
+		<flag name="pak128">Install more detailed scenario data</flag>
+		<flag name="pak128-britain">Install British scenario data</flag>
+		<flag name="pak128-german">Install German scenario data</flag>
+		<flag name="pak192-comic">Install comic-like scenario data</flag>
+	</use>
+</pkgmetadata>

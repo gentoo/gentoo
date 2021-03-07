@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Authen-DigestMD5</remote-id>
+    <remote-id type="cpan-module">Authen::DigestMD5</remote-id>
+    <remote-id type="cpan-module">Authen::DigestMD5::Packet</remote-id>
+    <remote-id type="cpan-module">Authen::DigestMD5::Request</remote-id>
+    <remote-id type="cpan-module">Authen::DigestMD5::Response</remote-id>
+  </upstream>
+</pkgmetadata>

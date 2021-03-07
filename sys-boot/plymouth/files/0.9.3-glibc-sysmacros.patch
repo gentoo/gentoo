@@ -1,0 +1,45 @@
+From f8d7813b32dfe129d1e5718719ee3eff131f4fac Mon Sep 17 00:00:00 2001
+From: Kjell Claesson <kjell.claesson@epost.tidanet.se>
+Date: Fri, 18 Aug 2017 00:25:56 +0200
+Subject: [PATCH] Fix build with newer glibc
+
+Signed-off-by: Gilles Dartiguelongue <eva@gentoo.org>
+---
+ configure.ac                          | 1 +
+ src/libply-splash-core/ply-terminal.c | 8 ++++++++
+ 2 files changed, 9 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index c32697f..8376789 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -5,6 +5,7 @@ AC_CONFIG_AUX_DIR(build-tools)
+ 
+ AC_USE_SYSTEM_EXTENSIONS
+ AC_SYS_LARGEFILE
++AC_HEADER_MAJOR
+ AC_PROG_AWK
+ AC_PROG_CC_STDC
+ AM_PROG_CC_C_O
+diff --git a/src/libply-splash-core/ply-terminal.c b/src/libply-splash-core/ply-terminal.c
+index a0954f2..ef62bf8 100644
+--- a/src/libply-splash-core/ply-terminal.c
++++ b/src/libply-splash-core/ply-terminal.c
+@@ -36,6 +36,14 @@
+ #include <unistd.h>
+ #include <wchar.h>
+ 
++/* major()/minor() */
++#ifdef MAJOR_IN_MKDEV
++#    include <sys/mkdev.h>
++#endif
++#ifdef MAJOR_IN_SYSMACROS
++#    include <sys/sysmacros.h>
++#endif
++
+ #include <linux/kd.h>
+ #include <linux/major.h>
+ #include <linux/vt.h>
+-- 
+2.14.1
+

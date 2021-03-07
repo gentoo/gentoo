@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Statistics-Basic</remote-id>
+    <remote-id type="cpan-module">Statistics::Basic</remote-id>
+    <remote-id type="cpan-module">Statistics::Basic::ComputedVector</remote-id>
+    <remote-id type="cpan-module">Statistics::Basic::Correlation</remote-id>
+    <remote-id type="cpan-module">Statistics::Basic::Covariance</remote-id>
+    <remote-id type="cpan-module">Statistics::Basic::LeastSquareFit</remote-id>
+    <remote-id type="cpan-module">Statistics::Basic::Mean</remote-id>
+    <remote-id type="cpan-module">Statistics::Basic::Median</remote-id>
+    <remote-id type="cpan-module">Statistics::Basic::Mode</remote-id>
+    <remote-id type="cpan-module">Statistics::Basic::StdDev</remote-id>
+    <remote-id type="cpan-module">Statistics::Basic::Variance</remote-id>
+    <remote-id type="cpan-module">Statistics::Basic::Vector</remote-id>
+  </upstream>
+</pkgmetadata>

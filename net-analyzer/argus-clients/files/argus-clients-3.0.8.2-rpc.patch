@@ -1,0 +1,34 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -40,6 +40,7 @@
+ AC_PROG_INSTALL
+ AC_PROG_RANLIB
+ AC_PROG_YACC
++PKG_PROG_PKG_CONFIG
+ 
+ AC_CHECK_PROGS(V_RANLIB, ranlib, @true)
+ AC_QOSIENT_LEX_AND_YACC(V_LEX, V_YACC, argus_)
+@@ -82,6 +83,12 @@
+ AC_CHECK_HEADERS([stdlib.h stddef.h string.h strings.h sys/file.h sys/ioctl.h sys/param.h sys/socket.h])
+ AC_CHECK_HEADERS([sys/mount.h sys/time.h sys/vfs.h syslog.h termios.h unistd.h values.h ifaddrs.h])
+ 
++PKG_CHECK_MODULES(libtirpc, libtirpc,
++	[LIBS="${LIBS} ${libtirpc_LIBS}"],
++[AC_CHECK_HEADER([rpc/types.h],,
++		[AC_MSG_ERROR([Cannot find <rpc/types.h>])])]
++)
++
+ # Checks for typedefs, structures, and compiler characteristics.
+ AC_C_CONST
+ AC_C_INLINE
+--- a/common/Makefile.in
++++ b/common/Makefile.in
+@@ -48,7 +48,7 @@
+ 
+ CC = @CC@
+ CCOPT = @V_CCOPT@
+-INCLS = -I. -I../include @V_INCLS@ @MYSQL_INCLS@
++INCLS = -I. -I../include @V_INCLS@ @MYSQL_INCLS@ @libtirpc_CFLAGS@
+ DEFS = @DEFS@ -DARGUS_SYSLOG
+ 
+ # Standard CFLAGS

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Term-ReadLine-Perl</remote-id>
+    <remote-id type="cpan-module">Term::ReadLine::Compa</remote-id>
+    <remote-id type="cpan-module">Term::ReadLine::Perl</remote-id>
+    <remote-id type="cpan-module">Term::ReadLine::Perl::AU</remote-id>
+    <remote-id type="cpan-module">Term::ReadLine::Perl::Tie</remote-id>
+    <remote-id type="cpan-module">readline</remote-id>
+  </upstream>
+</pkgmetadata>

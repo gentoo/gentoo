@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>openstack@gentoo.org</email>
+		<name>Openstack</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<use>
+		<flag name="bcrypt">bcrpyt hash algoryptm support</flag>
+		<flag name="totp">time based one time password support</flag>
+		<flag name="scrypt">accelerated scrypt algoythm support</flag>
+	</use>
+	<upstream>
+		<remote-id type="pypi">passlib</remote-id>
+	</upstream>
+</pkgmetadata>

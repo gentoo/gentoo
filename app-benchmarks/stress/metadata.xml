@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		Stress is a deliberately simple workload generator for POSIX systems.
+		It imposes a configurable amount of CPU, memory, I/O, and disk stress on the system.
+	</longdescription>
+</pkgmetadata>

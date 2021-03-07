@@ -1,0 +1,13 @@
+--- kit.orig/draw.c	2012-10-14 20:25:10.000000000 +0200
++++ kit/draw.c	2016-01-12 18:01:53.090388852 +0100
+@@ -1379,6 +1379,10 @@
+ 		}
+ 
+ 		q = draw_fragment(state, p, q - p, registry, charset16);
++		if (q == p) {
++			fprintf(stderr, "String '%s' too long for window!\n", p);
++			exit(1);
++		}
+ 
+ 		p = q;
+ 	}

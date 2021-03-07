@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The games-roguelike category contains games which resemble Rogue's
+		style.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie games-roguelike enthält Spiele die sich am Stil von
+		Rogue orientieren (z.B. NetHack).
+	</longdescription>
+	<longdescription lang="es">
+		La categoría games-roguelike contiene juegos que recrean el estilo del
+		Rogue.
+	</longdescription>
+	<longdescription lang="ja">
+		games-roguelike カテゴリーにはRogueスタイルに似たゲームが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De games-roguelike categorie bevat spellen die gebaseerd zijn op de
+		stijl van Rogue, zoals bijvoorbeeld NetHack.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm games-roguelike chứa các trò chơi dạng Rogue.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria games-roguelike contiene giochi che ricreano lo stile di Rogue.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria games-roguelike contém jogos que recriam o estilo
+		de Rogue.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria games-roguelike zawiera tekstowe gry cRPG podobne do Rogue.
+	</longdescription>
+</catmetadata>
+

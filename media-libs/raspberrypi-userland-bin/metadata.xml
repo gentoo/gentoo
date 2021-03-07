@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<use>
+		<flag name="hardfp">Use armv6 hardfp ABI</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">raspberrypi/firmware</remote-id>
+	</upstream>
+</pkgmetadata>

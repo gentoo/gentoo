@@ -1,0 +1,13 @@
+diff --git a/src/sspred_avpred.c b/src/sspred_avpred.c
+index 37b1332..4f04ab6 100644
+--- a/src/sspred_avpred.c
++++ b/src/sspred_avpred.c
+@@ -223,7 +223,7 @@ predict(int argc, char **argv)
+ int             getmtx(FILE *lfil)
+ {
+     int             aa, i, j, naa;
+-    char            buf[256], *p;
++    char            buf[65536], *p;
+     
+     if (fscanf(lfil, "%d", &naa) != 1)
+ 	fail("Bad mtx file - no sequence length!");

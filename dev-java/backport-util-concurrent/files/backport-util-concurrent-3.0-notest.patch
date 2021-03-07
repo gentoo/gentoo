@@ -1,0 +1,14 @@
+--- build.xml.orig	2007-05-09 23:23:00.000000000 +0200
++++ build.xml	2007-05-09 23:23:34.000000000 +0200
+@@ -33,9 +33,9 @@
+              deprecation="true" destdir="${dest}" nowarn="false"
+              source="1.4" target="1.4">
+         <src path="src"/>
+-        <src path="test/tck/src"/>
++<!--        <src path="test/tck/src"/>
+         <src path="test/loops/src"/>
+-        <src path="test/serialization"/>
++        <src path="test/serialization"/>-->
+       </javac>
+     </target>
+ 

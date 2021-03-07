@@ -1,0 +1,10 @@
+--- build.xml.orig	2013-03-25 18:01:56.000000000 +0000
++++ build.xml	2015-04-12 17:11:45.869203820 +0100
+@@ -137,7 +137,6 @@
+ 			<fileset dir="plugins/wintab/classes">
+ 				<include name="**/*.class"/>
+ 			</fileset>
+-			<zipfileset src="lib/jutils.jar" includes="**/*.class"/>
+ 			<manifest>
+ 				<attribute name="Sealed" value="true"/>
+ 			</manifest>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>dilfridge@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="tsm-cit">IBM Tivoli Common Inventory Technology</flag>
+		<flag name="tsm-hw">Difference snapshot support for NetApp and N-Series file servers</flag>
+	</use>
+</pkgmetadata>

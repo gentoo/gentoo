@@ -1,0 +1,74 @@
+--- lincity-1.13.1.orig/intl/Makefile.in
++++ lincity-1.13.1/intl/Makefile.in
+@@ -32,7 +32,7 @@
+ libdir = @libdir@
+ includedir = @includedir@
+ datadir = @datadir@
+-localedir = $(datadir)/locale
++localedir = /usr/share/locale
+ gettextsrcdir = $(datadir)/gettext/intl
+ aliaspath = $(localedir)
+ subdir = intl
+--- lincity-1.13.1.orig/mouse.c
++++ lincity-1.13.1/mouse.c
+@@ -1057,7 +1057,7 @@
+    and set to 1 if the existing transport if the more expensive sort
+    (e.g. GROUP_RAIL when overwriting GROUP_ROAD).
+ */
+-inline int
++int
+ mt_erase(int x, int y)
+ {
+     if (x < 0 || y < 0 || x >= WORLD_SIDE_LEN || y >= WORLD_SIDE_LEN)
+--- lincity-1.13.1.orig/pixmap.c
++++ lincity-1.13.1/pixmap.c
+@@ -390,7 +390,7 @@
+ 		  likes it in the file.  Still need to fix this in autoconf,
+                   but for now this will do. */
+ #if !defined (WIN32)
+-inline int 
++int 
+ pixmap_index (int x, int y)
+ {
+     return y*pixmap_width + x;
+--- lincity-1.13.1.orig/pixmap.h
++++ lincity-1.13.1/pixmap.h
+@@ -19,7 +19,7 @@
+ void initialize_pixmap (void);
+ void resize_pixmap (int new_width, int new_height);
+ int pixmap_getpixel (int x, int y);
+-inline int pixmap_index (int x, int y);
++int pixmap_index (int x, int y);
+ int pixmap_getpixel (int x, int y);
+ void pixmap_setpixel (int x, int y, int col);
+ void pixmap_hline (int x1, int y1, int x2, int col);
+@@ -33,7 +33,7 @@
+  * Public Inline Functions
+  * ---------------------------------------------------------------------- */
+ #if defined (WIN32)
+-inline int 
++int 
+ pixmap_index (int x, int y) {
+     return y*pixmap_width + x;
+ }
+--- lincity-1.13.1.orig/po/Makefile.in.in
++++ lincity-1.13.1/po/Makefile.in.in
+@@ -21,7 +21,7 @@
+ prefix = @prefix@
+ exec_prefix = @exec_prefix@
+ datadir = @datadir@
+-localedir = $(datadir)/locale
++localedir = /usr/share/locale
+ gettextsrcdir = $(datadir)/gettext/po
+ 
+ INSTALL = @INSTALL@
+--- lincity-1.13.1.orig/readpng.c
++++ lincity-1.13.1/readpng.c
+@@ -3,6 +3,7 @@
+  * This file is part of lincity (see COPYRIGHT for copyright information).
+  * ---------------------------------------------------------------------- */
+ #include <stdlib.h>
++#include <string.h>
+ #include "png.h"
+ #include "malloc.h"
+ #include "lin-city.h"

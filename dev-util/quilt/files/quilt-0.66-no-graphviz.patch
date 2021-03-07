@@ -1,0 +1,43 @@
+--- a/Makefile.in	2017-04-12 09:27:40.853018901 -0400
++++ b/Makefile.in	2017-04-12 09:36:16.584315529 -0400
+@@ -78,8 +78,7 @@ QUILT :=	$(QUILT_IN)
+ SRC +=		$(QUILT_SRC:%=quilt/%)
+ DIRT +=		$(QUILT_IN:%=quilt/%)
+
+-SCRIPTS_IN :=	patchfns inspect-wrapper dependency-graph edmail	\
+-		remove-trailing-ws backup-files
++SCRIPTS_IN := patchfns inspect-wrapper edmail remove-trailing-ws backup-files
+
+ SCRIPTS_SRC :=	$(SCRIPTS_IN:%=%.in)
+ SCRIPTS :=	$(SCRIPTS_IN)
+--- a/bash_completion	2017-04-12 09:27:57.643126246 -0400
++++ b/bash_completion	2017-04-12 09:30:27.673938451 -0400
+@@ -28,7 +28,7 @@ _quilt_completion()
+     prev=${COMP_WORDS[COMP_CWORD-1]}
+
+     # quilt sub commands
+-    cmds='add annotate applied delete diff edit files fold fork graph \
++    cmds='add annotate applied delete diff edit files fold fork \
+	  grep header import mail new next patches pop previous push refresh \
+	  remove rename revert series setup snapshot top unapplied upgrade'
+
+@@ -122,19 +122,6 @@ _quilt_completion()
+		;;
+	   esac
+	   ;;
+-	graph)
+-	   case $prev in
+-	     -T)
+-		COMPREPLY=( $( compgen -W "ps" -- $cur ) )
+-		;;
+-	     --edge-labels)
+-		COMPREPLY=( $( compgen -W "files" -- $cur ) )
+-		;;
+-	     *)
+-		COMPREPLY=( $( compgen -W "-T -h --all --reduce --lines --edge-labels $(quilt --quiltrc - applied 2>/dev/null)" -- $cur ) )
+-		;;
+-	   esac
+-	   ;;
+	grep)
+		type _longopt &> /dev/null && _longopt grep
+		COMPREPLY=( "${COMPREPLY[@]}" $( compgen -W "-h" -- $cur ) )

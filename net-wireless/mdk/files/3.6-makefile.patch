@@ -1,0 +1,37 @@
+--- Makefile	2007-07-18 16:16:54.000000000 +0200
++++ Makefile.new	2009-04-01 09:17:06.000000000 +0200
+@@ -1,8 +1,8 @@
+-CFLAGS		= -g -O3 -Wall -Wextra
+-LINKFLAGS	= -lpthread
++CFLAGS		+= 
++LINKFLAGS	= $(LDFLAGS)
+ 
+ DESTDIR		=
+-PREFIX		= /usr/local
++PREFIX		= /usr/
+ SBINDIR		= $(PREFIX)/sbin
+ 
+ OSD		= osdep
+--- Makefile	2009-04-01 09:24:46.000000000 +0200
++++ Makefile.new	2009-04-01 09:25:08.000000000 +0200
+@@ -6,7 +6,7 @@
+ SBINDIR		= $(PREFIX)/sbin
+ 
+ OSD		= osdep
+-LIBS		= -L$(OSD) -l$(OSD)
++LIBS		= -L$(OSD) -l$(OSD) -lpthread
+ LIBOSD		= $(OSD)/lib$(OSD).so
+ 
+ 
+@@ -10,9 +10,9 @@
+ LIBOSD		= $(OSD)/lib$(OSD).so
+ 
+ 
+-all: osd mdk3
++all: mdk3
+ 
+-osd:
++$(OSD)/libosdep.a:
+ 	$(MAKE) -C $(OSD)
+ 
+ $(LIBOSD):

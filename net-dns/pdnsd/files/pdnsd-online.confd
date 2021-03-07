@@ -1,0 +1,7 @@
+# Make sure to change the rc_need variable to the service for the
+# interface that connects you to the dns servers.
+#
+# For instance if you use a PPP connection on ppp0 to connect, set
+#   rc_need="net.ppp0"
+
+rc_need="net.lo"

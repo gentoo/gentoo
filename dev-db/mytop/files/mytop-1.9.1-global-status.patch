@@ -1,0 +1,94 @@
+Use GLOBAL STATUS instead of implicit session status.
+
+As of MySQL-5.0.72, many of the status variables split for session and global
+variants. Importantly, the Com_* and Questions ones did, and this broke the
+statistics at the top of mytop.
+
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+MySQL-Bug: 41131
+MySQL-Bug-URL: http://bugs.mysql.com/bug.php?id=41131
+
+diff -Nuar --exclude '*~' mytop-1.6.orig/mytop mytop-1.6/mytop
+--- mytop-1.6.orig/mytop	2007-02-16 20:57:46.000000000 -0800
++++ mytop-1.6/mytop	2008-11-30 15:18:05.818845253 -0800
+@@ -98,7 +98,7 @@
+ my %qcache = ();    ## The query cache--used for full query info support.
+ my %ucache = ();    ## The user cache--used for full killing by user
+ my %dbcache = ();   ## The db cache.  This should be merged at some point.
+-my %statcache = (); ## The show status cache for GetShowStatus()
++my %statcache = (); ## The show global status cache for GetShowStatus()
+ 
+ my (%STATUS, %OLD_STATUS); # header stuff.
+ 
+@@ -755,7 +755,7 @@
+ 
+         ## Query Cache info
+         ##
+-        ## mysql> show status like 'qcache%';
++        ## mysql> show global status like 'qcache%';
+         ## +-------------------------+----------+
+         ## | Variable_name           | Value    |
+         ## +-------------------------+----------+
+@@ -1064,7 +1064,7 @@
+ 
+ sub GetQPS()
+ {
+-    my($data) = Hashes('SHOW STATUS LIKE "Questions"');
++    my($data) = Hashes('SHOW GLOBAL STATUS LIKE "Questions"');
+     my $num   = $data->{Value};
+ 
+     if (not defined $questions) ## first time?
+@@ -1126,7 +1126,7 @@
+     }
+ 
+     # Variable_name and Value pairs come back...
+-    my @data = Hashes("SHOW STATUS LIKE 'Com_%'");
++    my @data = Hashes("SHOW GLOBAL STATUS LIKE 'Com_%'");
+     my %cmd_data;
+     my %cmd_delta;
+     my %cmd_pct;
+@@ -1216,7 +1216,7 @@
+ sub GetShowStatus()
+ {
+     Clear() unless $config{batchmode};
+-    my @rows = Hashes("SHOW STATUS");
++    my @rows = Hashes("SHOW GLOBAL STATUS");
+ 
+     printf "%32s  %10s %10s\n", 'Counter', 'Total', 'Change';
+     printf "%32s  %10s %10s\n", '-------', '-----', '------';
+@@ -1543,7 +1543,7 @@
+ 
+ And you obviously need access to a MySQL server (version 3.22.x or
+ 3.23.x) with the necessary security to run the I<SHOW PROCESSLIST> and
+-I<SHOW STATUS> commands.
++I<SHOW GLOBAL STATUS> commands.
+ 
+ If you are a Windows user, using ActiveState's Perl, you can use PPM
+ (the Perl Package Manager) to install the MySQL and Term::ReadKey
+@@ -1599,7 +1599,7 @@
+ notice features from each of them here.
+ 
+ B<mytop> will connect to a MySQL server and periodically run the
+-I<SHOW PROCESSLIST> and I<SHOW STATUS> commands and attempt to
++I<SHOW PROCESSLIST> and I<SHOW GLOBAL STATUS> commands and attempt to
+ summarize the information from them in a useful format.
+ 
+ =head2 The Display
+@@ -1817,7 +1817,7 @@
+ 
+ =item B<c>
+ 
+-Show "command counters" based on the Com_* values in SHOW STATUS.
++Show "command counters" based on the Com_* values in SHOW GLOBAL STATUS.
+ This is a new feature.  Feedback welcome.
+ 
+ =item B<d>
+@@ -1904,7 +1904,7 @@
+ 
+ Some performance information is not available when talking to a
+ version 3.22.x MySQL server. Additional information (about threads
+-mostly) was added to the output of I<SHOW STATUS> in MySQL 3.23.x and
++mostly) was added to the output of I<SHOW GLOBAL STATUS> in MySQL 3.23.x and
+ B<mytop> makes use of it. If the information is not available, you
+ will simply see zeros where the real numbers should be.
+ 

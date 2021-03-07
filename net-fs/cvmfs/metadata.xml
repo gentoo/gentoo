@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>amadio@gentoo.org</email>
+    <name>Guilherme Amadio</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>zlogene@gentoo.org</email>
+    <name>Mikle Kolyada</name>
+  </maintainer>
+  <longdescription lang="en">
+  The CernVM-File System (CernVM-FS) provides a scalable, reliable and low-
+  maintenance software distribution service. It was developed to assist High
+  Energy Physics (HEP) collaborations to deploy software on the worldwide-
+  distributed computing infrastructure used to run data processing applications.
+  CernVM-FS is implemented as a POSIX read-only file system in user space (a
+  FUSE module). Files and directories are hosted on standard web servers and
+  mounted in the universal namespace /cvmfs. Internally, CernVM-FS uses content-
+  addressable storage and Merkle trees in order to maintain file data and
+  meta-data. CernVM-FS uses outgoing HTTP connections only, thereby it avoids
+  most of the firewall issues of other network file systems. It transfers data
+  and meta-data on demand and verifies data integrity by cryptographic hashes.
+  </longdescription>
+  <use>
+    <flag name="server">Install the cvmfsd program and init script</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">cvmfs/cvmfs</remote-id>
+  </upstream>
+</pkgmetadata>

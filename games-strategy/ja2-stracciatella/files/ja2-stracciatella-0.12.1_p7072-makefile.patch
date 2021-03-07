@@ -1,0 +1,179 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Tue May  8 19:16:08 UTC 2012
+Subject: build system
+
+--- Makefile
++++ Makefile
+@@ -16,106 +16,94 @@
+ MANPREFIX ?= $(PREFIX)
+ 
+ INSTALL         ?= install
+-INSTALL_PROGRAM ?= $(INSTALL) -m 555 -s
+-INSTALL_MAN     ?= $(INSTALL) -m 444
+-INSTALL_DATA    ?= $(INSTALL) -m 444
++INSTALL_PROGRAM ?= $(INSTALL) -m 755
++INSTALL_MAN     ?= $(INSTALL) -m 644
++INSTALL_DATA    ?= $(INSTALL) -m 644
+ 
++# compiler CFLAGS
++CFLAGS += -std=gnu99
+ 
++# sdl-flags
+ SDL_CONFIG  ?= sdl-config
+ ifndef CFLAGS_SDL
+ CFLAGS_SDL  := $(shell $(SDL_CONFIG) --cflags)
+ endif
+ ifndef LDFLAGS_SDL
+-LDFLAGS_SDL := $(shell $(SDL_CONFIG) --libs)
++LIBS_SDL := $(shell $(SDL_CONFIG) --libs)
+ endif
+ 
++# LIBS
++LIBS += $(LIBS_SDL)
++LIBS += -lm
++
++ifdef WITH_ZLIB
++LIBS += -lz
++endif
+ 
+-CFLAGS += $(CFLAGS_SDL)
+-CFLAGS += -I Build
+-CFLAGS += -I Build/Tactical
+-CFLAGS += -I Build/Strategic
+-CFLAGS += -I Build/Editor
+-CFLAGS += -I Build/Res
+-CFLAGS += -I Build/Laptop
+-CFLAGS += -I Build/Utils
+-CFLAGS += -I Build/TileEngine
+-CFLAGS += -I Build/TacticalAI
+-CFLAGS += -I sgp
+-
+-#CFLAGS += -Wall
+-#CFLAGS += -W
+-CFLAGS += -Wpointer-arith
+-CFLAGS += -Wreturn-type
+-CFLAGS += -Wunused-label
+-CFLAGS += -Wunused-variable
+-CFLAGS += -Wwrite-strings
+ 
+-CFLAGS += -DJA2
++# preprocessor flags
++CPPFLAGS += $(CFLAGS_SDL)
++CPPFLAGS += -I Build
++CPPFLAGS += -I Build/Tactical
++CPPFLAGS += -I Build/Strategic
++CPPFLAGS += -I Build/Editor
++CPPFLAGS += -I Build/Res
++CPPFLAGS += -I Build/Laptop
++CPPFLAGS += -I Build/Utils
++CPPFLAGS += -I Build/TileEngine
++CPPFLAGS += -I Build/TacticalAI
++CPPFLAGS += -I sgp
+ 
++CPPFLAGS += -DJA2
+ 
+ ifdef WITH_DEMO
+-  CFLAGS += -DJA2DEMO
++  CPPFLAGS += -DJA2DEMO
+ endif
+ 
+ ifdef WITH_DEMO_ADS
+   ifndef WITH_DEMO
+     $(error WITH_DEMO_ADS needs WITH_DEMO)
+   endif
+-  CFLAGS += -DJA2DEMOADS
++  CPPFLAGS += -DJA2DEMOADS
+ endif
+ 
+ ifdef WITH_FIXMES
+-  CFLAGS += -DWITH_FIXMES
++  CPPFLAGS += -DWITH_FIXMES
+ endif
+ 
+ ifdef WITH_MAEMO
+-  CFLAGS += -DWITH_MAEMO
++  CPPFLAGS += -DWITH_MAEMO
+ endif
+ 
+ ifdef WITH_SOUND_DEBUG
+-  CFLAGS += -DWITH_SOUND_DEBUG
++  CPPFLAGS += -DWITH_SOUND_DEBUG
+ endif
+ 
+ ifdef _DEBUG
+-  CFLAGS += -D_DEBUG
++  CPPFLAGS += -D_DEBUG
+   ifndef JA2TESTVERSION
+     JA2TESTVERSION := yes
+   endif
+ endif
+ 
+ ifdef JA2TESTVERSION
+-  CFLAGS += -DJA2TESTVERSION
++  CPPFLAGS += -DJA2TESTVERSION
+   ifndef JA2BETAVERSION
+   	JA2BETAVERSION := yes
+   endif
+ endif
+ 
+ ifdef JA2BETAVERSION
+-CFLAGS += -DJA2BETAVERSION -DSGP_DEBUG -DFORCE_ASSERTS_ON -DSGP_VIDEO_DEBUGGING
++CPPFLAGS += -DJA2BETAVERSION -DSGP_DEBUG -DFORCE_ASSERTS_ON -DSGP_VIDEO_DEBUGGING
+ endif
+ 
+ ifdef JA2EDITOR
+-CFLAGS += -DJA2EDITOR
++CPPFLAGS += -DJA2EDITOR
+ endif
+ 
+-CFLAGS += -D$(LNG)
+-
+-CFLAGS += -DSGPDATADIR=\"$(SGPDATADIR)\"
+-
+-CCFLAGS += $(CFLAGS)
+-CCFLAGS += -std=gnu99
+-CCFLAGS += -Werror-implicit-function-declaration
+-CCFLAGS += -Wimplicit-int
+-CCFLAGS += -Wmissing-prototypes
++CPPFLAGS += -D$(LNG)
++CPPFLAGS += -DSGPDATADIR=\"$(SGPDATADIR)\"
+ 
+-CXXFLAGS += $(CFLAGS)
+-
+-LDFLAGS += $(LDFLAGS_SDL)
+-LDFLAGS += -lm
+-
+-ifdef WITH_ZLIB
+-LDFLAGS += -lz
+-endif
+ 
+ SRCS :=
+ SRCS += Build/AniViewScreen.cc
+@@ -468,7 +456,7 @@
+ .SUFFIXES:
+ .SUFFIXES: .c .cc .d .o
+ 
+-Q ?= @
++Q = 
+ 
+ all: $(BINARY)
+ 
+@@ -476,15 +464,15 @@
+ 
+ $(BINARY): $(OBJS)
+ 	@echo '===> LD $@'
+-	$(Q)$(CXX) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $@
++	$(Q)$(CXX) $(CXXFLAGS) $(OBJS) $(LDFLAGS) -o $@ $(LIBS)
+ 
+ .c.o:
+ 	@echo '===> CC $<'
+-	$(Q)$(CC) $(CCFLAGS) -c -MMD -o $@ $<
++	$(Q)$(CC) $(CFLAGS) $(CPPFLAGS) -c -MMD -o $@ $<
+ 
+ .cc.o:
+ 	@echo '===> CXX $<'
+-	$(Q)$(CXX) $(CXXFLAGS) -c -MMD -o $@ $<
++	$(Q)$(CXX) $(CXXFLAGS) $(CPPFLAGS) -c -MMD -o $@ $<
+ 
+ clean distclean:
+ 	@echo '===> CLEAN'

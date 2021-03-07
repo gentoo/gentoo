@@ -1,0 +1,27 @@
+Subject: Fix wrong type argument on Emacs 24.3.50 to check make-temp-file
+From: Tatsuya Kinoshita <tats@debian.org>
+Bug-Debian: http://bugs.debian.org/718765
+
+diff --git a/ChangeLog b/ChangeLog
+index 8e96224..9505b2e 100644
+--- a/ChangeLog
++++ b/ChangeLog
+@@ -0,0 +1,5 @@
++2013-08-05  Tatsuya Kinoshita  <tats@vega.ocn.ne.jp>
++
++	* poe.el: Fix wrong type argument on Emacs 24.3.50 to check
++	`make-temp-file'.
++
+diff --git a/poe.el b/poe.el
+index be52847..b381f90 100644
+--- a/poe.el
++++ b/poe.el
+@@ -1667,7 +1667,7 @@ See `walk-windows' for the meaning of MINIBUF and FRAME."
+                      )))
+       ;; arglist: (prefix &optional dir-flag suffix)
+       (cond
+-       ((not arglist)
++       ((or (not arglist) (not (listp arglist)))
+         ;; `make-temp-file' is a built-in; expects 3-args.
+         (put 'make-temp-file 'defun-maybe '3-args))
+        ((> (length arglist) 3)

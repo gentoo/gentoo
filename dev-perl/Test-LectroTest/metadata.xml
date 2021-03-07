@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Test-LectroTest</remote-id>
+    <remote-id type="cpan-module">Test::LectroTest</remote-id>
+    <remote-id type="cpan-module">Test::LectroTest::Compat</remote-id>
+    <remote-id type="cpan-module">Test::LectroTest::FailureRecorder</remote-id>
+    <remote-id type="cpan-module">Test::LectroTest::Generator</remote-id>
+    <remote-id type="cpan-module">Test::LectroTest::Property</remote-id>
+    <remote-id type="cpan-module">Test::LectroTest::TestRunner</remote-id>
+    <remote-id type="cpan-module">Test::LectroTest::TestRunner::results</remote-id>
+    <remote-id type="cpan-module">Test::LectroTest::TestRunner::testcontroller</remote-id>
+  </upstream>
+</pkgmetadata>

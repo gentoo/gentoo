@@ -1,0 +1,57 @@
+This patch
+* replaces deprecated calls,
+* makes the build system respect toolchain,
+* avoids underlinking.
+
+--- klick-0.12.2.orig/SConstruct
++++ klick-0.12.2/SConstruct
+@@ -11,24 +11,24 @@
+     ENV = os.environ,
+ )
+ 
+-# build options
+-opts = Options('scache.conf')
+-opts.AddOptions(
+-    PathOption('PREFIX', 'install prefix', '/usr/local'),
+-    PathOption('DESTDIR', 'intermediate install prefix', '', PathOption.PathAccept),
+-    BoolOption('DEBUG', 'debug mode', False),
+-    BoolOption('OSC', 'OSC support', True),
+-    BoolOption('TERMINAL', 'terminal control support', True),
+-    BoolOption('RUBBERBAND', 'use Rubber Band for pitch shifting', False),
++# build variables
++vars = Variables('scache.conf')
++vars.AddVariables(
++    ('CXX', 'C++ compiler'),
++    ('CXXFLAGS', 'C++ compiler flags'),
++    ('LINKFLAGS', 'linker flags'),
++    PathVariable('PREFIX', 'install prefix', '/usr/local'),
++    PathVariable('DESTDIR', 'intermediate install prefix', '', PathVariable.PathAccept),
++    BoolVariable('DEBUG', 'debug mode', False),
++    BoolVariable('OSC', 'OSC support', True),
++    BoolVariable('TERMINAL', 'terminal control support', True),
++    BoolVariable('RUBBERBAND', 'use Rubber Band for pitch shifting', False),
+ )
+-opts.Update(env)
+-opts.Save('scache.conf', env)
+-Help(opts.GenerateHelpText(env))
+-
+-if env['DEBUG']:
+-    env.Append(CCFLAGS = ['-g', '-W', '-Wall'])
+-else:
+-    env.Append(CCFLAGS = ['-O2', '-W', '-Wall'])
++vars.Update(env)
++vars.Save('scache.conf', env)
++Help(vars.GenerateHelpText(env))
++
++if not env['DEBUG']:
+     env.Prepend(CPPDEFINES = 'NDEBUG')
+ 
+ # install paths
+@@ -38,6 +38,7 @@
+ env.Append(CPPDEFINES = ('DATA_DIR', '\\"%s\\"' % prefix_share))
+ 
+ # required libraries
++env.PrependUnique(LIBS = ['stdc++', 'm'])
+ env.ParseConfig(
+     'pkg-config --cflags --libs jack samplerate sndfile'
+ )

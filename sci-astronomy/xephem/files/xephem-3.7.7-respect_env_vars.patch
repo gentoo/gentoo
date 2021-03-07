@@ -1,0 +1,137 @@
+diff -ruN a/GUI/xephem/Makefile b/GUI/xephem/Makefile
+--- a/GUI/xephem/Makefile	2015-08-09 22:36:50.000000000 +0100
++++ b/GUI/xephem/Makefile	2016-01-24 09:34:24.378578717 +0000
+@@ -10,9 +10,9 @@
+ # one executable, xephem.
+ 
+ # These -I and -L flags point to the supporting XEphem libraries
+-LIBINC = -I../../libastro -I../../libip -I../../liblilxml -I../../libjpegd -I../../libpng -I../../libz
+-LIBLNK = -L../../libastro -L../../libip -L../../liblilxml -L../../libjpegd -L../../libpng -L../../libz
+-LIBLIB = -lastro -lip -llilxml -ljpegd -lpng -lz
++LIBINC = -I../../libastro -I../../libip -I../../liblilxml
++LIBLNK = -L../../libastro -L../../libip -L../../liblilxml
++LIBLIB = -lastro -lip -llilxml -ljpeg -lpng -lz
+ 
+ # MOTIFI is the directory containing the Xm directory of include files.
+ # MOTIFL is the directory containing the libXm.a library.
+@@ -30,12 +30,9 @@
+ endif
+ 
+ # for linux and Apple OS X
+-CC = gcc
+-CLDFLAGS = -g
+-CFLAGS = $(LIBINC) $(CLDFLAGS) -O2 -Wall -I$(MOTIFI) -I/opt/X11/include
+-LDFLAGS = $(LIBLNK) $(CLDFLAGS) -L$(MOTIFL) -L/opt/X11/lib
+ XLIBS = -lXm -lXp -lXt -lXext -lXmu -lX11
+-LIBS = $(XLIBS) $(LIBLIB) -lm
++CFLAGS := $(LIBINC) $(CFLAGS)
++LIBS = $(LIBLNK) $(XLIBS) $(LIBLIB) -lm
+ 
+ # static linking on Apple using X11 libs from ports
+ # CC = gcc
+@@ -68,9 +65,9 @@
+ # MOTIFI = -I/usr/include
+ # MOTIFL = -L/usr/lib
+ # CC = cc
+-# CLDFLAGS = 
++# CLDFLAGS =
+ # CFLAGS = $(LIBINC) $(CLDFLAGS) -O -I$(MOTIFI)
+-# LDFLAGS = $(LIBLNK) $(CLDFLAGS) -L$(MOTIFL) 
++# LDFLAGS = $(LIBLNK) $(CLDFLAGS) -L$(MOTIFL)
+ # XLIBS = -lXm -lXt -lX11
+ # LIBS = $(XLIBS) $(LIBLIB) -lsocket -lnsl -lc -lm /usr/ucblib/libucb.a
+ # Note: if you get regex undefined, add -lgen to the end of LIBS.
+@@ -195,12 +192,9 @@
+ 	nroff -man $? > $@
+ 
+ libs:
+-	cd ../../libastro; make
+-	cd ../../libip; make
+-	cd ../../libjpegd; make
+-	cd ../../liblilxml; make
+-	cd ../../libpng; make
+-	cd ../../libz; make
++	$(MAKE) -C ../../libastro
++	$(MAKE) -C ../../libip
++	$(MAKE) -C ../../liblilxml
+ 
+ clean:
+ 	rm -fr *.o ../../lib*/*.[ao]
+diff -ruN a/libastro/Makefile b/libastro/Makefile
+--- a/libastro/Makefile	2006-02-24 03:37:31.000000000 +0000
++++ b/libastro/Makefile	2016-01-24 09:30:28.745982455 +0000
+@@ -4,8 +4,6 @@
+ # compiler and flags
+ 
+ # gcc
+-CC = gcc
+-CFLAGS= -O2 -Wall
+ 
+ # macosx universal binary
+ # CFLAGS= -O2 -Wall -arch i386 -arch ppc
+@@ -83,11 +81,11 @@
+ 	vsop87_data.o
+ 
+ libastro.a: $(HS) $(OBJS)
+-	ar rv $@ $(OBJS)
+-	ranlib $@
++	$(AR) rv $@ $(OBJS)
++	$(RANLIB) $@
+ 
+ libastro.so: $(HS) $(OBJS)
+-	$(CC) -shared -o $@ $(OBJS)
++	$(CC) $(LDFLAGS) -shared -o $@ $(OBJS)
+ 
+ clobber:
+ 	rm -f *.o libastro.a
+diff -ruN a/libip/Makefile b/libip/Makefile
+--- a/libip/Makefile	2009-01-05 20:53:46.000000000 +0000
++++ b/libip/Makefile	2016-01-24 09:30:28.745982455 +0000
+@@ -2,8 +2,7 @@
+ # (C) 2001 Elwood Charles Downey
+ 
+ # gcc
+-CC = gcc
+-CFLAGS= -I../libastro -O2 -Wall
++CFLAGS += -I../libastro
+ 
+ # macosx universal binary
+ # CFLAGS= -I../libastro -O2 -Wall -arch i386 -arch ppc
+@@ -36,11 +35,11 @@
+ HS = ip.h fsmatch.h
+ 
+ libip.a: $(HS)	$(OBJS)
+-	ar rv $@ $(OBJS)
+-	ranlib $@
++	$(AR) rv $@ $(OBJS)
++	$(RANLIB) $@
+ 
+ libip.so:    $(OBJS)
+-	gcc -shared -o $@ $(OBJS)
++	$(CC) $(LDFLAGS) -shared -o $@ $(OBJS)
+ 
+ clobber:
+ 	rm -f *.o libip.a
+diff -ruN a/liblilxml/Makefile b/liblilxml/Makefile
+--- a/liblilxml/Makefile	2006-02-24 03:37:32.000000000 +0000
++++ b/liblilxml/Makefile	2016-01-24 09:30:28.745982455 +0000
+@@ -4,8 +4,6 @@
+ # compiler and flags
+ 
+ # gcc
+-CC = gcc
+-CFLAGS= -O2 -Wall
+ 
+ # macosx universal binary
+ # CFLAGS= -O2 -Wall -arch i386 -arch ppc
+@@ -27,8 +25,8 @@
+ OBJS = lilxml.o base64.o
+ 
+ liblilxml.a: $(HS) $(OBJS)
+-	ar r $@ $(OBJS)
+-	ranlib $@
++	$(AR) r $@ $(OBJS)
++	$(RANLIB) $@
+ 
+ liltest: liltest.o liblilxml.a
+ 	$(CC) $(LDFLAGS) -o liltest liltest.o liblilxml.a

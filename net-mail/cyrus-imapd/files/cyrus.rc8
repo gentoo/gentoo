@@ -1,0 +1,34 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	use net
+	use dns logger
+	after drac saslauthd
+}
+
+checkdirs() {
+	for dir in /run/cyrus/{,proc,lock,socket,sync}
+	do
+	checkpath -q -d -o cyrus:mail -m 0750 "${dir}" || {
+                eerror "Failed to create directory at $dir"
+                return 1
+	}
+	done
+}
+
+
+start() {
+	checkdirs || return 1
+	ebegin "Starting cyrus imapd"
+	start-stop-daemon --start --quiet --background \
+		--exec /usr/libexec/cyrusmaster -- ${CYRUS_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping cyrus imapd"
+	start-stop-daemon --stop --quiet --pidfile /run/cyrus-master.pid
+	eend $?
+}

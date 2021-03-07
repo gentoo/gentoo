@@ -1,0 +1,31 @@
+diff -ur a/visual_regexp.tcl b/visual_regexp.tcl
+--- a/visual_regexp.tcl	2013-11-12 23:23:59.730171882 +0100
++++ b/visual_regexp.tcl	2013-11-12 23:24:42.134085257 +0100
+@@ -380,19 +380,17 @@
+ 	}
+ 	# do it
+ 	set in [open $file "r"]
+-	$data(w:menu) delete [expr 4+[llength $::regexp_db]/2] end
+-	while {![eof $in]} {
+-		set name [gets $in]
+-		while {$name == ""} {
+-			set name [gets $in]
+-		}
+-		set pattern [gets $in]
+-		while {$pattern == ""} {
+-			set pattern [gets $in]
++	set contents {}
++	foreach line [split [read $in] \n] {
++		if {$line != ""} {
++			lappend contents $line
+ 		}
+-		$data(w:menu) add command -label $name -command "regexp::regexp:insert [list $pattern]"
+ 	}
+ 	close $in
++	$data(w:menu) delete [expr 4+[llength $::regexp_db]/2] end
++	foreach {name pattern} $contents {
++		$data(w:menu) add command -label $name -command "regexp::regexp:insert [list $pattern]"
++	}
+ }
+ 
+ 

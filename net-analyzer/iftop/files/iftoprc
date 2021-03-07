@@ -1,0 +1,59 @@
+
+# Sets the network interface to if.
+# interface: if
+interface: ppp0
+
+# Controls reverse lookup of IP addresses.
+# dns-resolution: (yes|no)
+dns-resolution: yes
+
+# Controls conversion of port numbers to service names.
+# port-resolution: (yes|no)
+port-resolution: yes
+
+# Sets the filter code to bpf.
+# filter-code: bpf
+
+# Controls display of bar graphs.
+# show-bars: (yes|no)
+show-bars: yes
+
+# Puts the interface into promiscuous mode.
+# promiscuous: (yes|no)
+
+# Controls display of port numbers.
+# port-display: (off|source-only|destination-only|on)
+port-display: on
+
+# Hides source host names.
+# hide-source: (yes|no)
+
+# Hides destination host names.
+# hide-destination: (yes|no)
+
+# Use bytes for bandwidth display, rather than bits.
+# use-bytes: (yes|no)
+use-bytes: yes
+
+# Sets which column is used to sort the display.
+# sort: (2s|10s|40s|source|destination)
+
+# Controls the appearance of each item in the display.
+# line-display: (two-line|one-line-both|one-line-sent|one-line-received)
+
+# Shows cummulative total for each item.
+# show-totals: (yes|no)
+show-totals: yes
+
+# Use a logarithmic scale for bar graphs.
+# log-scale: (yes|no)
+
+# Fixes the maximum for the bar graph scale to bw, e.g. "10M"
+# max-bandwidth: bw
+
+# Defines an IP network boundary for determining packet direction.
+# net-filter: net/mask
+
+# Sets a regular expression to filter screen output.
+# screen-filter: regexp
+

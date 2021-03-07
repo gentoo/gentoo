@@ -1,0 +1,52 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-05)
+# dev-python/parameterized is not keyworded
+dev-util/gtk-doc test
+
+# Kent Fredric <kentnl@gentoo.org> (2020-10-19)
+# lapack and friends don't make much sense on m68k
+# and aren't keyworded
+dev-python/numpy lapack
+
+# Patrick McLean <chutzpah@gentoo.org> (2020-02-15)
+# Mask until dev-libs/libfido2 is keyworded
+net-misc/openssh security-key
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-12-02)
+# dev-util/systemtap is not keyworded on m68k
+sys-libs/glibc systemtap
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-12-02)
+# media-libs/gd is not keyworded on m68k
+sys-libs/glibc gd
+
+# Michał Górny <mgorny@gentoo.org> (2017-08-08)
+# Requires USE=seccomp that is masked in this profile.
+net-libs/gnutls test-full
+
+# Matt Turner <mattst88@gentoo.org> (2017-02-25)
+# Needs libepoxy keywording, bug #510940
+x11-base/xorg-server wayland
+
+# Mikle Kolyada <zlogene@gentoo.org> (2013-07-11)
+# Tests for dev-perl/Error require >=dev-perl/Test-Pod-Coverage-1.40.0 (bug #351636)
+dev-perl/Error test
+
+# Raúl Porcel <armin76@gentoo.org> (2013-01-23)
+# Architecture is unsupported
+dev-libs/libpcre jit
+dev-libs/libpcre2 jit
+
+# Ryan Hill <dirtyepic@gentoo.org> (2011-07-20)
+# graphite requires dev-libs/ppl & dev-libs/cloog-ppl
+# (bugs #269087 and #269088)
+sys-devel/gcc graphite awt
+
+# Mike Frysinger <vapier@gentoo.org> (2011-02-10)
+# Waiting for keywording #354309
+net-firewall/iptables netlink
+
+# Masking these to keep repoman happy
+media-gfx/graphviz perl

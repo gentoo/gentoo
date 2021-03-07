@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>polynomial-c@gentoo.org</email>
+		<name>Lars Wendler</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>apache-bugs@gentoo.org</email>
+		<name>Apache project</name>
+	</maintainer>
+	<longdescription>
+		The Apache HTTP Server Project is an effort to develop and maintain an
+		open-source HTTP server for modern operating systems. The goal of this
+		project is to provide a secure, efficient and extensible server that
+		provides HTTP services in sync with the current HTTP standards.
+	</longdescription>
+	<use>
+		<flag name="suexec">Install suexec with apache</flag>
+		<flag name="suexec-caps">Install suexec with capabilities instead of SUID</flag>
+		<flag name="suexec-syslog">Log suexec to syslog instead of to a separate file</flag>
+		<flag name="static">Link in apache2 modules statically rather then plugins</flag>
+	</use>
+</pkgmetadata>

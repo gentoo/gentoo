@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 13e66268..27ff8364 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -352,7 +352,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE
+                            ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_CFG_INTDIR})
+ # Compile options
+ if (UNIX)
+-    target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wno-sign-compare -Wno-unused-function -Werror ${LLVM_CPP_FLAGS})
++    target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wno-sign-compare -Wno-unused-function ${LLVM_CPP_FLAGS})
+     # Security options
+     target_compile_options(${PROJECT_NAME} PRIVATE -fstack-protector -fdata-sections -ffunction-sections
+                            -Wformat -Wformat-security -fpie -fwrapv)

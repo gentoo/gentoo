@@ -1,0 +1,12 @@
+--- a/include/netlink-local.h
++++ b/include/netlink-local.h
+@@ -343,7 +343,9 @@
+ }
+ 
+ #define ARRAY_SIZE(X) (sizeof(X) / sizeof((X)[0]))
++#ifndef offsetof
+ #define offsetof(TYPE, MEMBER) ((size_t) &((TYPE *)0)->MEMBER)
++#endif
+ 
+ #define __init __attribute__ ((constructor))
+ #define __exit __attribute__ ((destructor))

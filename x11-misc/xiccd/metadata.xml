@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<longdescription lang="en">
+		xiccd enumerates displays and register them in colord, creates default
+		ICC profiles based on EDID data, applies ICC profiles provided by
+		colord, and maintains user's private ICC storage directory. It does
+		basically the same as <pkg>gnome-base/gnome-settings-daemon</pkg>
+		colord plugin or <pkg>kde-misc/colord-kde</pkg> but does not depend on
+		any particular desktop environment.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">agalakhov/xiccd</remote-id>
+	</upstream>
+</pkgmetadata>

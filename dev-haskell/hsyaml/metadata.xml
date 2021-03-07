@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		@HsYAML@ is a [YAML 1.2](http://yaml.org/spec/1.2/spec.html) parser implementation for Haskell.
+		
+		Features of @HsYAML@ include:
+		
+		* Pure Haskell implementation with small dependency footprint and emphasis on strict compliance with the [YAML 1.2 specification](http://yaml.org/spec/1.2/spec.html).
+		* Direct decoding to native Haskell types via (@aeson@-inspired) typeclass-based API (see &quot;Data.YAML&quot;).
+		* Support for constructing custom YAML node graph representation (including support for cyclic YAML data structures).
+		* Support for the standard (untyped) /Failsafe/, (strict) /JSON/, and (flexible) /Core/ \&quot;schemas\&quot; providing implicit typing rules as defined in the YAML 1.2 specification (including support for user-defined custom schemas).
+		* Event-based API resembling LibYAML&#39;s Event-based API (see &quot;Data.YAML.Event&quot;).
+		* Low-level API access to lexical token-based scanner (see &quot;Data.YAML.Token&quot;).
+		
+	</longdescription>
+</pkgmetadata>

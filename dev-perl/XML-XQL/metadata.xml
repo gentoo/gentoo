@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">XML-XQL</remote-id>
+    <remote-id type="cpan-module">XML::XQL</remote-id>
+    <remote-id type="cpan-module">XML::XQL::AllAttr</remote-id>
+    <remote-id type="cpan-module">XML::XQL::AllElements</remote-id>
+    <remote-id type="cpan-module">XML::XQL::And</remote-id>
+    <remote-id type="cpan-module">XML::XQL::Attribute</remote-id>
+    <remote-id type="cpan-module">XML::XQL::Bang</remote-id>
+    <remote-id type="cpan-module">XML::XQL::Boolean</remote-id>
+    <remote-id type="cpan-module">XML::XQL::BooleanOp</remote-id>
+    <remote-id type="cpan-module">XML::XQL::Compare</remote-id>
+    <remote-id type="cpan-module">XML::XQL::Current</remote-id>
+    <remote-id type="cpan-module">XML::XQL::Element</remote-id>
+    <remote-id type="cpan-module">XML::XQL::Filter</remote-id>
+    <remote-id type="cpan-module">XML::XQL::Func</remote-id>
+    <remote-id type="cpan-module">XML::XQL::Intersect</remote-id>
+    <remote-id type="cpan-module">XML::XQL::Invocation</remote-id>
+    <remote-id type="cpan-module">XML::XQL::Node</remote-id>
+    <remote-id type="cpan-module">XML::XQL::Not</remote-id>
+    <remote-id type="cpan-module">XML::XQL::Number</remote-id>
+    <remote-id type="cpan-module">XML::XQL::Operator</remote-id>
+    <remote-id type="cpan-module">XML::XQL::Or</remote-id>
+    <remote-id type="cpan-module">XML::XQL::Parent</remote-id>
+    <remote-id type="cpan-module">XML::XQL::Path</remote-id>
+    <remote-id type="cpan-module">XML::XQL::PrimitiveType</remote-id>
+    <remote-id type="cpan-module">XML::XQL::PrimitiveTypeBase</remote-id>
+    <remote-id type="cpan-module">XML::XQL::Query</remote-id>
+    <remote-id type="cpan-module">XML::XQL::Root</remote-id>
+    <remote-id type="cpan-module">XML::XQL::Sequence</remote-id>
+    <remote-id type="cpan-module">XML::XQL::SimpleAttr</remote-id>
+    <remote-id type="cpan-module">XML::XQL::SimpleElement</remote-id>
+    <remote-id type="cpan-module">XML::XQL::Subscript</remote-id>
+    <remote-id type="cpan-module">XML::XQL::Text</remote-id>
+    <remote-id type="cpan-module">XML::XQL::Union</remote-id>
+  </upstream>
+</pkgmetadata>

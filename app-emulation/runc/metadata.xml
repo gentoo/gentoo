@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription lang="en">
+		runc is a CLI tool for spawning and running containers according
+		to the OCF (Open Container Format) specification.
+	</longdescription>
+	<maintainer type="person">
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<use>
+		<flag name="ambient">
+			Enable support for ambient capabilities set (Requires Linux kernel 4.3 or later).
+		</flag>
+		<flag name="apparmor">
+			Enable AppArmor support.
+		</flag>
+		<flag name="kmem">
+			Enable Kernel Memory Accounting.
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">opencontainers/runc</remote-id>
+	</upstream>
+</pkgmetadata>

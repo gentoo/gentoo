@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name="semigroups">
+			You can disable the use of the
+			`semigroups` package using `-f-semigroups`. Disabing this is
+			an unsupported configuration, but it may be useful for
+			accelerating builds in sandboxes for expert users.
+		</flag>
+		<flag name="tagged">
+			You can disable the use of the `tagged` package
+			using `-f-tagged`. Disabing this is an unsupported
+			configuration, but it may be useful for accelerating builds in
+			sandboxes for expert users.
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">ekmett/bifunctors</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,23 @@
+--- irsim-9.7.79/scripts/defs.mak.in
++++ irsim-9.7.79/scripts/defs.mak.in
+@@ -12,6 +12,7 @@
+ exec_prefix = @exec_prefix@
+ bindir = @bindir@
+ libdir = @libdir@
++datadir = @datadir@
+ mandir = @mandir@
+ 
+ VERSION                = @VERSION@
+@@ -33,9 +34,9 @@
+ LIBDIR                 = ${libdir}
+ DOCDIR                 = ${libdir}/irsim/doc
+ SYSDIR                 = ${libdir}/irsim/sys
+-PRMDIR                 = ${libdir}/irsim/prm
+-TCLDIR                 = ${libdir}/irsim/tcl
+-XBMDIR                 = ${libdir}/irsim/tcl/bitmaps
++PRMDIR                 = ${datadir}/irsim/prm
++TCLDIR                 = ${libdir}/irsim/tcl
++XBMDIR                 = ${libdir}/irsim/tcl/bitmaps
+ 
+ MAIN_EXTRA_LIBS	       = @extra_libs@
+ LD_EXTRA_LIBS	       = @ld_extra_libs@

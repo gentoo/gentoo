@@ -1,0 +1,23 @@
+From e64b95848f3253157d831f4934841fceeaf9b2e3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Miro=20Hron=C4=8Dok?= <miro@hroncok.cz>
+Date: Thu, 14 Nov 2019 12:54:47 +0100
+Subject: [PATCH] Test instance type by isinstance, not issubclass
+
+https://github.com/aio-libs/aiohttp-cors/pull/278
+Fixes https://github.com/aio-libs/aiohttp-cors/issues/277
+---
+ tests/unit/test_cors_config.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/unit/test_cors_config.py b/tests/unit/test_cors_config.py
+index 817410e..d494e20 100644
+--- a/tests/unit/test_cors_config.py
++++ b/tests/unit/test_cors_config.py
+@@ -103,7 +103,7 @@ def test_static_resource(app, cors):
+         "/file", "/", name="dynamic_named_route")
+     assert len(app.router.keys()) == 1
+     for resource in list(app.router.resources()):
+-        if issubclass(resource, web.StaticResource):
++        if isinstance(resource, web.StaticResource):
+             cors.add(resource)
+     assert len(app.router.keys()) == 1

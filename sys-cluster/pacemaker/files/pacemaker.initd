@@ -1,0 +1,41 @@
+#!/sbin/openrc-run
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+PIDFILE=/var/run/pacemaker.pid
+
+depend() {
+	need net corosync
+	use syslog
+}
+
+start() {
+	nc=0
+	ebegin "Starting Pacemaker Cluster Manager"
+
+	checkpath -d -m 0750 -o hacluster:haclient /var/run/crm
+
+	einfon "Waiting for Corosync startup ."
+	while true; do
+		/usr/sbin/corosync-cfgtool -s &>/dev/null && break
+		nc=$(expr $nc + 1)
+		if [ $nc -gt 30 ]; then
+			echo
+			eend 1 "Failed to detect Corosync startup, is it really running ?"
+			exit 1
+		fi
+		sleep 1
+		echo -n "."
+	done
+	echo
+	start-stop-daemon --start -q --exec /usr/sbin/pacemakerd \
+		--pidfile "${PIDFILE}" --make-pidfile --background \
+		-- -f
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping Pacemaker Cluster Manager"
+	start-stop-daemon --stop -q --pidfile "${PIDFILE}"
+	eend $?
+}

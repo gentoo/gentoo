@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>lu_zero@gentoo.org</email>
+		<name>Luca Barbato</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>leio@gentoo.org</email>
+		<name>Mart Raudsepp</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">Haivision/srt</remote-id>
+	</upstream>
+</pkgmetadata>

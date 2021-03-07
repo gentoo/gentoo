@@ -1,0 +1,11 @@
+--- a/processing/lib/CMakeLists.txt	2017-02-12 19:13:31.000000000 +0100
++++ b/processing/lib/CMakeLists.txt	2021-02-28 11:30:50.812028355 +0100
+@@ -4,7 +4,7 @@
+ 	FeedForwardNeuralNetwork.cpp
+ )
+ include_directories (${CMAKE_BINARY_DIR}/processing/lib)
+-add_library(processing ${processing_SRCS})
++add_library(processing STATIC ${processing_SRCS})
+ target_link_libraries(processing Qt5::Core)
+ if (CMAKE_COMPILER_IS_GNUCC)
+ 	set_target_properties(processing PROPERTIES COMPILE_FLAGS "-fPIC")

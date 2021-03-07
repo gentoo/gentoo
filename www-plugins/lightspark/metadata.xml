@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chithanh@gentoo.org</email>
+		<name>Chí-Thanh Christopher Nguyễn</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
+	<use>
+		<flag name="ppapi">Install the PPAPI plugin (for Chromium)</flag>
+		<flag name="rtmp">Enable Real Time Messaging Protocol using librtmp</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">lightspark/lightspark</remote-id>
+		<remote-id type="launchpad">lightspark</remote-id>
+		<remote-id type="sourceforge">lightspark</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,12 @@
+--- a/src/glob.c
++++ b/src/glob.c
+@@ -48,7 +48,7 @@
+ 
+ 	switch (*pat)
+ 	{
+-	    case NULL:	// pattern at end
++	    case '\0':	// pattern at end
+ 		return (!*str); // String at end ?
+ 
+ 	    case '*':  // match all
+

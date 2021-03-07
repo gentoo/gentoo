@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Exiv2 is a C++ library and command line utility to read and
+		write EXIF, IPTC and XMP image metadata.
+	</longdescription>
+	<use>
+		<flag name="webready">Support reading metadata over the internet</flag>
+	</use>
+</pkgmetadata>

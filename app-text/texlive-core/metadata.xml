@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>aballier@gentoo.org</email>
+		<name>Alexis Ballier</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>tex@gentoo.org</email>
+		<name>Gentoo TeX Project</name>
+	</maintainer>
+	<use>
+		<flag name="luajittex">Add support for LuaJitTeX: LuaTeX based on LuaJIT which is usually faster.</flag>
+		<flag name="xetex">Add support for XeTeX: a TeX system with Unicode and modern font technologies.</flag>
+		<flag name="xindy">Add support for Xindy: A general-purpose index processor.</flag>
+	</use>
+</pkgmetadata>

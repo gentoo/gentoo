@@ -1,0 +1,28 @@
+common.h still use function typeof,
+this was never defined in c++ and is
+not supported in c++11 anymore
+so we revert back to gnu++03 as it is not fixed by upstream
+Signed-of-by: Joerg Bornkessel <hd_brummy@gentoo.org> (2016/aug/01)
+diff -Naur satip-2.2.3.orig/Makefile satip-2.2.3/Makefile
+--- satip-2.2.3.orig/Makefile	2016-08-03 23:17:36.769080128 +0200
++++ satip-2.2.3/Makefile	2016-08-03 23:18:36.399080128 +0200
+@@ -32,6 +32,7 @@
+ 
+ export CFLAGS   = $(call PKGCFG,cflags)
+ export CXXFLAGS = $(call PKGCFG,cxxflags)
++export CXXFLAGS += -std=gnu++03
+ STRIP = true
+ 
+ ### The version number of VDR's plugin API:
+diff -Naur iptv-2.2.1.orig/common.h iptv-2.2.1/common.h
+--- iptv-2.2.1.orig/common.h	2016-08-07 19:32:59.623090044 +0200
++++ iptv-2.2.1/common.h	2016-08-07 19:33:30.243091614 +0200
+@@ -36,7 +36,7 @@
+   do {                                                              \
+      if (exp) {                                                     \
+         char tmp[64];                                               \
+-        esyslog("[%s,%d]: "errstr": %s", __FILE__, __LINE__,        \
++        esyslog("[%s,%d]: " errstr ": %s", __FILE__, __LINE__,      \
+                 strerror_r(errno, tmp, sizeof(tmp)));               \
+         func;                                                       \
+         ret;                                                        \

@@ -1,0 +1,34 @@
+--- trek/getpar.h.orig	2005-08-14 19:45:29.000000000 -0400
++++ trek/getpar.h	2005-08-14 19:46:33.000000000 -0400
+@@ -31,6 +31,9 @@
+  *	@(#)getpar.h	8.1 (Berkeley) 5/31/93
+  */
+ 
++#ifndef __GETPAR_H_
++#define __GETPAR_H_
++
+ typedef void (*cmdfun)(int);
+ struct cvntab		/* used for getcodpar() parameter list */
+ {
+@@ -51,3 +54,5 @@
+ int testnl(void);
+ void skiptonl(int);
+ int readdelim(int);
++
++#endif /*__GETPAR_H_*/
+--- trek/trek.h.orig	2005-08-14 19:45:37.000000000 -0400
++++ trek/trek.h	2005-08-14 19:48:17.000000000 -0400
+@@ -31,6 +31,13 @@
+  *	@(#)trek.h	8.1 (Berkeley) 5/31/93
+  */
+ 
++/* For struct cvntab definition, which is now required for
++ * Skitab and Lentab below.  gcc 4.0 and later will emit
++ * "array type has incomplete element type" errors otherwise.
++ * -- Jason Bucata (jbucata@tulsaconnect.com), 12-AUG-2005
++ */
++#include "getpar.h"
++
+ /*
+ **  Global Declarations
+ **

@@ -1,0 +1,20 @@
+--- a/CMakeLists.txt	2020-09-08 10:36:55.770304108 +0200
++++ b/CMakeLists.txt	2020-09-08 10:37:28.346406308 +0200
+@@ -1193,7 +1193,7 @@
+   if (OpenMP_C_FLAGS)
+     set_target_properties (wsjt_fort_omp
+       PROPERTIES
+-      COMPILE_FLAGS "${OpenMP_C_FLAGS}"
++      COMPILE_FLAGS "${OpenMP_Fortran_FLAGS}"
+       )
+   endif ()
+   set_target_properties (wsjt_fort_omp
+@@ -1260,7 +1260,7 @@
+     if (OpenMP_C_FLAGS)
+       set_target_properties (jt9
+         PROPERTIES
+-        COMPILE_FLAGS "${OpenMP_C_FLAGS}"
++	COMPILE_FLAGS "${OpenMP_Fortran_FLAGS}"
+         LINK_FLAGS "${OpenMP_C_FLAGS}"
+         )
+     endif ()

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>robbat2@gentoo.org</email>
+	</maintainer>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+	</maintainer>
+	<longdescription>High-performance, distributed memory object caching system, generic in nature,
+but intended for use in speeding up dynamic web applications by alleviating
+database load.
+Danga Interactive developed memcached to enhance the speed of LiveJournal.com, a
+site which was already doing 20 million+ dynamic page views per day for 1
+million users with a bunch of webservers and a bunch of database servers.
+memcached dropped the database load to almost nothing, yielding faster page load
+times for users, better resource utilization, and faster access to the databases
+on a memcache miss.</longdescription>
+	<use>
+		<flag name="slabs-reassign">Allow manual reassignment of memory slabs at the cost of slab optimizations.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">memcached/memcached</remote-id>
+	</upstream>
+</pkgmetadata>

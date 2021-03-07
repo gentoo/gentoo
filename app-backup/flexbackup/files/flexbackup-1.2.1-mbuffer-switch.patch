@@ -1,0 +1,130 @@
+Common subdirectories: flexbackup-1.2.1-r3/contrib and flexbackup-1.2.1-r4/contrib
+diff -ubB flexbackup-1.2.1-r3/flexbackup flexbackup-1.2.1-r4/flexbackup
+--- flexbackup-1.2.1-r3/flexbackup	2007-04-14 17:03:34.000000000 -0400
++++ flexbackup-1.2.1-r4/flexbackup	2007-04-14 17:09:48.000000000 -0400
+@@ -442,7 +442,7 @@
+ 		# Get rid of trailing /
+ 		$dir = &nuke_trailing_slash($dir);
+ 
+-		# If level is icremental for the set, each dir might
++		# If level is incremental for the set, each dir might
+ 		# have a different numeric level
+ 		if (!defined($::set_incremental)) {
+ 		    $level = $::level;
+@@ -3090,7 +3090,7 @@
+ 	    push(@::remoteprogs, $::path{'mbuffer'});
+ 
+ 	    my $megs = $cfg::buffer_megs . "M";
+-	    my $bufcmd = "$::path{mbuffer} -q -m $megs -p $cfg::buffer_fill_pct $mbuffer_blk_flag ";
++		my $bufcmd  = "$::path{mbuffer} -q -m $megs -P $cfg::buffer_fill_pct $mbuffer_blk_flag ";
+ 
+ 	    $::buffer_cmd = " | $bufcmd";
+ 	    $::write_cmd = "$bufcmd -f -o ";
+@@ -4884,18 +4884,24 @@
+     }
+ 
+     if (defined(%{$::prune{$prunekey}})) {
++		my $rex;
+ 	# FreeBSD needs -E (above) and no backslashes around the (|) chars
+ 	if ($::uname =~ /FreeBSD/) {
+-	    $cmd .= '-regex "\./(';
+-	    $cmd .= join('|', keys %{$::prune{$prunekey}});
+-	    $cmd .= ')/.*" ';
+-	} else {
+-	    $cmd .= '-regex "\./\(';
+-	    $cmd .= join('\|', keys %{$::prune{$prunekey}});
+-	    $cmd .= '\)/.*" ';
+-	}
++			$rex  = '-regex "\./(';
++			$rex .= join('|', keys %{$::prune{$prunekey}});
++			$rex .= ')/.*" ';
++		} else {
++			$rex  = '-regex "\./\(';
++			$rex .= join('\|', keys %{$::prune{$prunekey}});
++			$rex .= '\)/.*" ';
++		}
++		# Show what the darn thing is constructing for prune expressions.
++		&log("| \"find\" regex for pruning is: $rex");
++		$cmd .= $rex;
+ 	$cmd .= '-prune -o ';
+     } else {
++		# Show what the darn thing is constructing for prune expressions.
++		&log("| No pruning defined for this tree.");
+ 	# Can't use find -depth with -prune (see single unix spec etc)
+ 	# (not toally required anyway, only if you are archiving dirs you
+ 	# don't have permissions on and are running as non-root)
+diff -ubB flexbackup-1.2.1-r3/flexbackup.conf flexbackup-1.2.1-r4/flexbackup.conf
+--- flexbackup-1.2.1-r3/flexbackup.conf	2007-04-14 17:03:35.000000000 -0400
++++ flexbackup-1.2.1-r4/flexbackup.conf	2007-04-14 17:09:48.000000000 -0400
+@@ -30,6 +30,45 @@
+ # A space-separated list of directories to prune from each backup.
+ # Key is a filesystem or host:dir spec as outlined above
+ # regular expressions allowed (not shell-type wildcards!)
++#
++# Note:  These directories are actually regular expressions and must
++# match "find" output relative to the path of the current backup set. This
++# means that different exclusions are needed for different backup sets.
++# This is a little tricky, so, read on.
++#
++# The regular expressions are processed by "find" but, before "find" is run,
++# FlexBackup changes into the base directory of the backup set in progress.
++# FlexBackup then runs "find" with a path of "." which means all output lines
++# start with "./".  To be helpful, FlexBackup packages each space-separated
++# prune directory as follows.  If you have a prune list like this
++#
++#     $prune{'/somedir'} = "one two three";
++#
++# then, the constructed -regex argument to "find" looks like this
++#
++#     -regex "\./\(one\|two\|three\)/.*"
++#
++# The last thing you need to know is that FlexBackup only uses the prune
++# terms that match the current base directory in the set you're backing
++# up.  For example, if your backup set definition looks like this
++#
++#     $set{'daily'} = "/home /root /var /usr";
++#
++# and you want to do some exclusions in "/home" and "/var" (but not the other
++# directories), you must set up a prune list for those two directories 
++# separately.  For example, to exclude bert's and ernie's home directories plus
++# /var/tmp, you would need the following:
++#
++#     $prune{'/home'} = "bert ernie";
++#     $prune{'/var'}  = "tmp";
++#
++# In particular, combining these *does not* work.  For example, this
++#
++#     $prune{'/'} = "home/bert home/ernie var/tmp";
++#
++# does not work, unless, of course, your backup set is backing up "/", 
++# which our example is not.
++#
+ $prune{'/'} = "tmp proc";
+ 
+ # Compression
+@@ -84,7 +123,8 @@
+ # True to try and preserve file access times during backup, if the selected
+ # archive program can do so. Note that if this is true, -cnewer checks (file
+ # permission/status changes only, not content) are turned off when deciding
+-# which files to archive on the local system.
++# which files to archive on the local system.  This is because preserving the
++# access time changes the permission/status change time in the filesystem.
+ $atime_preserve = 'false';
+ 
+ # Span across filesytems? ("dump" will ignore this option)
+@@ -97,8 +137,13 @@
+ # leading directories (the filesystem specs above or the "-dir" flag).
+ # Matches paths, not filenames, so put .* on the front/back as needed.
+ # Comment these out to exclude nothing.
+-$exclude_expr[0] = '.*/[Cc]ache/.*';
+-$exclude_expr[1] = '.*~$';
++# 
++# Note:  The first example line breaks portage in a restored backup because
++# "/usr/lib/portage/pym/cache" is not backed up.  Way too general!  The moral
++# of this story is, be very careful with global excludes.  The second example 
++# is probably okay.
++# $exclude_expr[0] = '.*/[Cc]ache/.*';
++# $exclude_expr[1] = '.*~$';
+ 
+ # If true (default), and using a tape device, level zero "set" backups
+ # assume you want to erase and use a new tape for each set. If false, level

@@ -1,0 +1,12 @@
+diff -ru a/Makefile.lib.in b/Makefile.lib.in
+--- a/Makefile.lib.in	2002-01-22 05:57:53.000000000 -0600
++++ b/Makefile.lib.in	2009-01-04 16:15:41.000000000 -0600
+@@ -23,7 +23,7 @@
+ 	echo 'LT_OBJS='`echo $(OBJS)|sed 's/\.o/.lo/g'` >Makefile.lt
+ 
+ lib$(LIB).la: $(LT_OBJS)
+-	$(LIBTOOL) --mode=link $(CC) $(LINKFLAGS) -o lib$(LIB).la $(LT_OBJS) \
++	$(LIBTOOL) --mode=link $(CC) $(LDFLAGS) $(LINKFLAGS) -o lib$(LIB).la $(LT_OBJS) \
+ 	    -rpath $(libdir) -version-info $(LTVERSION) $(DEPLIBS)
+ 
+ install:

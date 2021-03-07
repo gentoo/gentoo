@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <stabilize-allarches/>
+  <longdescription lang="en">
+    Command line interface to and serialization format for Blosc, a high
+    performance, multi-threaded, blocking and shuffling compressor. Uses
+    python-blosc bindings to interface with blosc.
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">bloscpack</remote-id>
+    <remote-id type="github">Blosc/bloscpack</remote-id>
+  </upstream>
+</pkgmetadata>

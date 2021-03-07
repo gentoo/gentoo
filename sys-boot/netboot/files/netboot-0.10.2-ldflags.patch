@@ -1,0 +1,38 @@
+--- netboot-0.10.2/make.config.in.org	2007-02-01 13:09:18.000000000 +0100
++++ netboot-0.10.2/make.config.in	2010-02-09 00:34:15.000000000 +0100
+@@ -105,7 +105,7 @@
+ INCLUDE      = $(patsubst %,-I%,$(subst :, ,$(VPATH)))
+ CDEFS        = @DEFS@ -DNETBOOT
+ CFLAGS       = @CFLAGS@ $(CDEBUG) $(CDEFS) $(INCLUDE)
+-LDFLAGS      = -s
++LDFLAGS      = @LDFLAGS@
+ SYSLIBS      = @LIBS@
+ BDBLIB       = @BDBLIB@
+ ODBCLIB      = @ODBCLIB@
+--- netboot-0.10.2/misc/Makefile.org	2007-02-01 19:42:10.000000000 +0100
++++ netboot-0.10.2/misc/Makefile	2010-02-09 00:39:21.000000000 +0100
+@@ -76,7 +76,7 @@
+ 
+ gccrules:	$(LIBTOOL) gccrules.o $(LIBNBA)
+ 	@$(LIBTOOL) --mode=link \
+-	  $(CC) $(CFLAGS) -o gccrules gccrules.o $(LIBS) \
++	  $(CC) $(CFLAGS) $(LDFLAGS) -o gccrules gccrules.o $(LIBS) \
+ 	  -no-install
+ 
+ 
+@@ -89,13 +89,13 @@
+ 
+ gccopt:		$(LIBTOOL) gccopt.o $(LIBNBA)
+ 	@$(LIBTOOL) --mode=link \
+-	  $(CC) $(CFLAGS) -o gccopt gccopt.o $(LIBS) \
++	  $(CC) $(CFLAGS) $(LDFLAGS) -o gccopt gccopt.o $(LIBS) \
+ 	  -no-install
+ 
+ 
+ nbmd5:		$(LIBTOOL) nbmd5.o $(LIBNBA)
+ 	@$(LIBTOOL) --mode=link \
+-	  $(CC) $(CFLAGS) -o nbmd5 nbmd5.o $(LIBS)
++	  $(CC) $(CFLAGS) $(LDFLAGS) -o nbmd5 nbmd5.o $(LIBS)
+ 
+ 
+ instdrv:	instdrv.in

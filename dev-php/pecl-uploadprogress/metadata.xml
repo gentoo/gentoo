@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>php-bugs@gentoo.org</email>
+    <name>PHP</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+    <name>Michael Orlitzky</name>
+  </maintainer>
+  <longdescription lang="en">
+    An extension to track the progress of a file upload. See
+    http://svn.php.net/viewvc/pecl/uploadprogress/trunk/examples/ for
+    an example. It is only known to work on apache with mod_php; other
+    SAPI implementations unfortunately still have issues.
+</longdescription>
+</pkgmetadata>

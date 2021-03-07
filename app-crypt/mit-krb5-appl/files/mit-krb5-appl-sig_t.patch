@@ -1,0 +1,55 @@
+Bug #513762
+
+From 4b45a32ba7c4f7b447919de6ce28a14150584290 Mon Sep 17 00:00:00 2001
+From: Russ Allbery <rra@stanford.edu>
+Date: Wed, 21 Mar 2012 04:16:36 +0000
+Subject: [PATCH] Move redeclaration of sig_t after all system includes
+
+Move some internal messing about with sig_t done by gssftp/ftp/ftp_var.h
+after the last system include to keep from stomping on system headers.
+Required for kFreeBSD and Hurd.
+
+git-svn-id: svn://anonsvn.mit.edu/krb5-appl/trunk@3331 dc483132-0cff-0310-8789-dd5450dbe970
+---
+ gssftp/ftp/ftp_var.h | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/gssftp/ftp/ftp_var.h b/gssftp/ftp/ftp_var.h
+index 3efbdb1..e478961 100644
+--- a/gssftp/ftp/ftp_var.h
++++ b/gssftp/ftp/ftp_var.h
+@@ -53,15 +53,6 @@ FILE* fdopen_socket(SOCKET s, char* mode);
+ #define PERROR_SOCKET(str) perror(str)
+ #endif
+ 
+-#ifdef _WIN32
+-typedef void (*sig_t)(int);
+-typedef void sigtype;
+-#else
+-#define sig_t my_sig_t
+-#define sigtype krb5_sigtype
+-typedef sigtype (*sig_t)();
+-#endif
+-
+ /*
+  * FTP global variables.
+  */
+@@ -168,6 +159,15 @@ extern int macnum;		/* number of defined macros */
+ extern struct macel macros[16];
+ extern char macbuf[4096];
+ 
++#ifdef _WIN32
++typedef void (*sig_t)(int);
++typedef void sigtype;
++#else
++#define sig_t my_sig_t
++#define sigtype krb5_sigtype
++typedef sigtype (*sig_t)();
++#endif
++
+ #ifdef DEFINITIONS
+ #undef extern
+ #endif
+-- 
+1.9.3
+

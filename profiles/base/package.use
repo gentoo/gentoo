@@ -1,0 +1,23 @@
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (2016-09-24)
+# Enable the BPF target by default
+dev-ml/llvm-ocaml llvm_targets_BPF
+sys-devel/clang llvm_targets_BPF
+sys-devel/llvm llvm_targets_BPF
+
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2012-07-27)
+# Modular X: Build the Xorg X server by default
+x11-base/xorg-server xorg
+
+# Diego Elio Pettenò <flameeyes@gentoo.org> (2011-04-11)
+# Disable ldap support by default in sudo, as it seem to lack
+# developers maintaining that particular support and is, thus, vastly
+# untested.
+app-admin/sudo -ldap
+
+# Zac Medico <zmedico@gentoo.org> (2009-12-04)
+# Bug #295615 - Disable cxx by default, in order to avoid a die
+# in pkg_setup with default USE settings (cxx requires sasl).
+net-nds/openldap -cxx

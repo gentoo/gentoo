@@ -1,0 +1,32 @@
+--- a/doc/manpages/de/muttprint.pod
++++ b/doc/manpages/de/muttprint.pod
+@@ -1,3 +1,5 @@
++=encoding latin1
++
+ =head1 NAME
+ 
+ muttprint - schöner Ausdruck von Mails mit Mutt
+--- a/doc/manpages/en/muttprint.pod
++++ b/doc/manpages/en/muttprint.pod
+@@ -1,3 +1,5 @@
++=encoding latin1
++
+ =head1 NAME
+ 
+ muttprint - pretty printing of mails with Mutt
+--- a/doc/manpages/es/muttprint.pod	
++++ b/doc/manpages/es/muttprint.pod
+@@ -1,3 +1,5 @@
++=encoding latin1
++
+ =head1 NOMBRE
+ 
+ muttprint - impresión elegante de mensajes de correo con Mutt
+--- a/doc/manpages/it/muttprint.pod	
++++ b/doc/manpages/it/muttprint.pod
+@@ -1,3 +1,5 @@
++=encoding latin1
++
+ =head1 NOME
+ 
+ muttprint - stampa raffinata della posta elettronica con Mutt

@@ -1,0 +1,11 @@
+--- a/contrib/texi2pod.pl
++++ b/contrib/texi2pod.pl
+@@ -337,7 +337,7 @@ while(<$inf>) {
+                 $_ = "\n=item $1\n";
+             }
+ 	} else {
+-	    $_ = "\n=item $ic\n";
++	    $_ = "\n=item Z\&LT;\&GT;$ic\n";
+ 	    $ic =~ y/A-Ya-y/B-Zb-z/;
+ 	    $ic =~ s/(\d+)/$1 + 1/eg;
+ 	}

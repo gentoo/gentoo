@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>ruby@gentoo.org</email>
+    <name>Gentoo Ruby Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">fxn/zeitwerk</remote-id>
+  </upstream>
+  <longdescription>
+    Zeitwerk implements constant autoloading with Ruby semantics. Each
+    gem and application may have their own independent autoloader,
+    with its own configuration, inflector, and logger. Supports
+    autoloading, preloading, reloading, and eager loading.
+  </longdescription>
+</pkgmetadata>

@@ -1,0 +1,17 @@
+Patch for fixing parallel make issue, bug #486434
+
+Related links:
+
+https://github.com/brianb/mdbtools/issues/33
+https://github.com/brianb/mdbtools/issues/35
+
+diff --git a/src/sql/Makefile.am b/src/sql/Makefile.am
+index 633f0c3..94b0838 100644
+--- a/src/sql/Makefile.am
++++ b/src/sql/Makefile.am
+@@ -1,3 +1,5 @@
++BUILT_SOURCES = parser.h
++AM_YFLAGS = -d
+ lib_LTLIBRARIES	=	libmdbsql.la
+ libmdbsql_la_SOURCES=	mdbsql.c parser.y lexer.l 
+ libmdbsql_la_LDFLAGS = -version-info 2:0:0 -export-symbols-regex '^mdb_sql_'

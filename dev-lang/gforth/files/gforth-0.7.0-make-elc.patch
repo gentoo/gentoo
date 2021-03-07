@@ -1,0 +1,14 @@
+--- gforth-0.7.0-orig/Makefile.in
++++ gforth-0.7.0/Makefile.in
+@@ -430,7 +430,10 @@
+ 
+ ENGINES_FAST = gforth-fast$(OPT)$(EC)$(EXE) #gforth-native$(OPT)$(EC)$(EXE) 
+ 
+-GEN = $(ENGINES) $(ENGINES_FAST) gforth.elc
++GEN = $(ENGINES) $(ENGINES_FAST)
++ifneq ($(emacssitelispdir), no)
++GEN += gforth.elc
++endif
+ 
+ # things that need a working forth system to be generated
+ FORTH_GEN_ENGINE=engine/prim.i engine/prim_lab.i engine/prim_names.i \

@@ -1,0 +1,23 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# This file requires eapi 5 or later. New entries go on top.
+# Please use the same syntax as in use.mask
+
+# Brian Evans <grknight@gentoo.org> (2020-12-08)
+# Allow packages to add php 8.0 support while waiting on its stable
+php_targets_php8-0
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-04-13)
+# dev-vcs/darcs (dev-lang/ghc) has no stable keywords.
+darcs
+
+# Zac Medico <zmedico@gentoo.org> (2016-09-01)
+# Needs dev-python/pypy* stable
+python_targets_pypy3
+python_single_target_pypy3
+
+# Hans de Graaff <graaff@gentoo.org> (2020-12-26)
+# Currently in testing and not ready to go stable yet.
+ruby_targets_ruby27
+ruby_targets_ruby30

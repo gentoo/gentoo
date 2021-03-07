@@ -1,0 +1,15 @@
+--- wvdial-1.60/Makefile.in	2008-12-14 17:18:25.000000000 +0100
++++ wvdial-1.60/Makefile.in	2008-12-14 17:20:13.000000000 +0100
+@@ -15,10 +15,12 @@
+ ifeq ($(PC_LIBS),)
+  $(error WvStreams does not appear to be installed)
+ endif
+ LIBS+=$(PC_LIBS)
+ 
++wvdial-LIBS+= -luniconf
++
+ BINDIR=${prefix}/bin
+ MANDIR=${prefix}/share/man
+ PPPDIR=${DESTDIR}/etc/ppp/peers
+ 
+ include wvrules.mk

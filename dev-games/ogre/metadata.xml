@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>games@gentoo.org</email>
+    <name>Gentoo Games Project</name>
+  </maintainer>
+  <longdescription>
+OGRE (Object-Oriented Graphics Rendering Engine) is a scene-oriented, flexible 3D 
+engine written in C++ designed to make it easier and more intuitive for developers 
+to produce games and demos utilising 3D hardware. The class library abstracts all 
+the details of using the underlying system libraries like Direct3D and OpenGL and 
+provides an interface based on world objects and other intuitive classes.
+
+Productivity features
+
+    * Simple, easy to use OO interface designed to minimise the effort required to render 3D scenes, and to be independent of 3D implementation e.g. Direct3D/OpenGL/Glide etc.
+    * Extensible example framework makes getting your application running is quick and simple
+    * Common requirements like render state management, hierarchical culling, dealing with transparency are done for you automatically saving you valuable time
+    * Clean, uncluttered design and full documentation of all engine classes
+
+Platform and 3D API support
+
+    * Direct3D and OpenGL support
+    * Windows (all major versions), Linux and Mac OSX support
+    * Builds on Visual C++ 6 (with STLport), Visual C++.Net (with STLport), Visual C++.Net 2003
+    * Builds on gcc 3+ on Linux / Mac OSX
+
+Material / Shader support
+
+    * Load textures from PNG, JPEG or TGA files, MipMaps generated automatically, resizes maps to align with hardware requirements
+    * Procedural texture coordinate generation (e.g. environment mapping) and modification (scrolls, warps, rotations)
+    * Unbounded number of texture layers with many texture blending effects, animated textures
+    * Multitexturing hardware used to best effect automatically, combined with automatic fallback to mulitpass rendering
+    * Object transparency and other scene-level blending effects
+    * All defineable through text scripts to allow you to set up and tweak advanced materials without recompiling
+
+Meshes
+
+    * Flexible mesh data formats accepted
+    * Export from Milkshape3D direct to OGRE .mesh and .skeleton format
+    * Skeletal animation (including blending of multiple animations)
+    * Biquadric Bezier patches for curved surfaces
+    * Progressive meshes 
+
+Scene Features
+
+    * Highly customisable, flexible scene management, not tied to any single scene type. Use predefined classes for scene organisation if they suit or plug in your own subclass to gain full control over the scene organisation
+    * Generic SceneManager hierarchically culls by bounding volumes
+    * Example plugin (BspSceneManager) specialises to allow fast indoor renders, loading Quake3 levels inc. shader script parsing support
+    * Hierarchical scene graph; nodes allow objects to be attached to each other and follow each others movements, articulated structures etc
+    * Scene querying features 
+
+Special Effects
+
+    * Particle Systems, including easily extensible emitters and affectors (customisable through plugins). Systems can be defined in text scripts for easy tweaking. Automatic use of particle pooling for maximum performance
+    * Support for skyboxes, skyplanes and skydomes, very easy to use
+    * Billboarding for sprite graphics
+    * Transparent objects automatically managed (rendering order and depth buffer settings all set up for you)
+
+Misc features
+
+    * Common resource infrastructure for memory management and loading from archives (ZIP, PK3)
+    * Flexible plugin architecture allows engine to be extended without recompilation
+    * 'Controllers' allow you to easily organise derived values between objects e.g. changing the colour of a ship based on shields left
+    * Debugging memory manager for identifying memory leaks
+    * ReferenceAppLayer provides an example of how to combine OGRE with other libraries, for example ODE for collision and physics
+    * XMLConverter to convert efficient runtime binary formats to/from XML for interchange or editing
+
+Exporters
+
+    * 3D Studio Max (meshes and animation)
+    * Milkshape 3D (meshes and animation)
+    * Blender3D (meshes)
+    * Wings3D (meshes)
+    * VRML97 (meshes)
+    * Maya (meshes)
+  </longdescription>
+  <use>
+    <flag name="assimp" restrict="~dev-games/ogre-1.12.9">Use media-libs/assimp to import assets from 3D files</flag>
+    <flag name="boost">Enable boost support</flag>
+    <flag name="cache">Enable GL state cache support</flag>
+    <flag name="cg">NVIDIA toolkit plugin</flag>
+    <flag name="double-precision">More precise calculations at the expense of speed</flag>
+    <flag name="egl">Use egl instead of glx</flag>
+    <flag name="deprecated" restrict="~dev-games/ogre-1.12.9">
+        Build deprecated component 'HLMS' and nodeless positioning of Lights and Cameras.
+    </flag>
+    <flag name="fine-granularity" restrict="~dev-games/ogre-2.1">
+        Enable fine light mask granularity. This impacts on performance and should
+        not be enabled unless an application really needs it.
+    </flag>
+    <flag name="freeimage">Support images via media-libs/freeimage</flag>
+    <flag name="gl3plus">Build OpenGL 3+ RenderSystem (EXPERIMENTAL)</flag>
+    <flag name="gles2" restrict="~dev-games/ogre-1.9.0">Build OpenGL ES 2.x RenderSystem</flag>
+    <flag name="gles3" restrict="~dev-games/ogre-1.9.0">Enable OpenGL ES 3.x Features</flag>
+    <flag name="json">Use dev-libs/rapidjson (needed by Hlms JSON materials)</flag>
+    <flag name="legacy-animations">
+        Use the skeletal animation from 1.x. It's much slower, but the new system
+        is still experimental.
+    </flag>
+    <flag name="ois">Pull in Object-oriented Input System library dev-games/ois for samples</flag>
+    <flag name="poco">When USE=threads, use poco for threading</flag>
+    <!-- Not yet available? Needs testing! (Note: Shouldn't this be EGL instead of GLES2?)
+    <flag name="mobile">
+        Build for OpenGL ES 2.0 only and use the mobile variants of the PBS and
+        unlit material systems.
+    </flag>
+    -->
+    <flag name="resman-pedantic">
+        Resource Manager PEDANTIC : require an explicit resource group. Case
+        sensitive lookup. Some demos might not work with this setting.
+        (default: case-insensitive + sensitive lookup in all groups)
+    </flag>
+    <flag name="tbb">When USE=threads, use tbb for threading</flag>
+    <flag name="tools">
+        Build and install AssimpConverter (assimp USE flag is enabled), MeshUpgrader, VRMLConverter and XMLConverter
+    </flag>
+  </use>
+  <upstream>
+    <remote-id type="bitbucket">sinbad/ogre</remote-id>
+    <remote-id type="github">OGRECave/ogre</remote-id>
+    <remote-id type="github">OGRECave/ogre-next</remote-id>
+  </upstream>
+</pkgmetadata>

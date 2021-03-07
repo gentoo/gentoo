@@ -1,0 +1,13 @@
+diff --git a/contrib/swank-presentation-streams.lisp b/contrib/swank-presentation-streams.lisp
+index 0c24bda..bd5a990 100644
+--- a/contrib/swank-presentation-streams.lisp
++++ b/contrib/swank-presentation-streams.lisp
+@@ -65,7 +65,7 @@ be sensitive and remember what object it is in the repl if predicate is true"
+        (funcall ,continue)))))
+ 
+ ;;; Get pretty printer patches for SBCL at load (not compile) time.
+-#+sbcl
++#+#:disable-dangerous-patching ; #+sbcl
+ (eval-when (:load-toplevel)
+   (handler-bind ((simple-error
+                  (lambda (c)

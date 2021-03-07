@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<longdescription>
+		Eigen is a lightweight C++ template library for vector and matrix math,
+		a.k.a. linear algebra. Unlike most other linear algebra libraries, Eigen
+		focuses on the simple mathematical needs of applications: games and other
+		OpenGL apps, spreadsheets and other office apps, etc. Eigen is dedicated to
+		providing optimal speed with GCC.
+	</longdescription>
+	<use>
+		<flag name="c++11">Build using the C++11 standard</flag>
+		<flag name="cuda">Build with cuda support</flag>
+	</use>
+	<upstream>
+		<remote-id type="gitlab">libeigen/eigen</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    gf2x is a C/C++ software package containing routines for fast
+    arithmetic in GF(2)[x] (multiplication, squaring, GCD) and searching
+    for irreducible/primitive trinomials.
+  </longdescription>
+  <use>
+    <flag name="custom-tune">
+      Extra long compile time for tuning hardware specific low-level
+      routines
+    </flag>
+    <flag name="fft">
+      Build an FFT API for multiplication of 2 polynomials over GF(2)
+    </flag>
+  </use>
+</pkgmetadata>

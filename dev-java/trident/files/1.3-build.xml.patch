@@ -1,0 +1,29 @@
+diff --git a/build.xml b/build.xml
+index 808ea3c..36e5859 100644
+--- a/build.xml
++++ b/build.xml
+@@ -84,7 +84,7 @@
+ 
+ 	<target name="compile.module.trident.production" description="compile module trident production classes">
+ 		<mkdir dir="${trident.output.dir}" />
+-		<javac source="${javac.source}" target="${javac.target}" encoding="${javac.encoding}" destdir="${trident.output.dir}" debug="${javac.debug}" nowarn="${javac.generate.no.warnings}" memoryMaximumSize="${javac.max.memory}" fork="true" executable="${module.jdk.home.trident}/bin/javac">
++		<javac source="${javac.source}" target="${javac.target}" encoding="${javac.encoding}" destdir="${trident.output.dir}" debug="${javac.debug}" nowarn="${javac.generate.no.warnings}" memoryMaximumSize="${javac.max.memory}" fork="true">
+ 			<compilerarg line="${javac.args.trident}" />
+ 			<bootclasspath refid="trident.module.bootclasspath" />
+ 			<classpath refid="trident.module.classpath" />
+@@ -102,7 +102,7 @@
+ 
+ 	<target name="compile.module.trident.test" description="compile module trident test classes">
+ 		<mkdir dir="${trident.output.dir}" />
+-		<javac source="${javac.source}" target="${javac.target}" encoding="${javac.encoding}" destdir="${trident.output.dir}" debug="${javac.debug}" nowarn="${javac.generate.no.warnings}" memoryMaximumSize="${javac.max.memory}" fork="true" executable="${module.jdk.home.trident}/bin/javac">
++		<javac source="${javac.source}" target="${javac.target}" encoding="${javac.encoding}" destdir="${trident.output.dir}" debug="${javac.debug}" nowarn="${javac.generate.no.warnings}" memoryMaximumSize="${javac.max.memory}" fork="true">
+ 			<compilerarg line="${javac.args.trident}" />
+ 			<bootclasspath refid="trident.module.bootclasspath" />
+ 			<classpath refid="trident.module.classpath" />
+@@ -189,4 +189,4 @@
+ 	<target name="clean" depends="clean.module.trident" description="cleanup all" />
+ 
+ 	<target name="all" depends="timestamp, init, clean, compile.module.trident, jar, compile.module.trident.test, jar-tst" description="build all" />
+-</project>
+\ No newline at end of file
++</project>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>soap@gentoo.org</email>
+		<name>David Seifert</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>office@gentoo.org</email>
+		<description>Please CC on stabilisation bugs</description>
+	</maintainer>
+	<use>
+		<flag name="context">Build and install the Boost.Context (and Boost.Fiber) library and all other Boost libraries that depend on it</flag>
+		<flag name="debug">Build and install only the debug version of the Boost libraries. Only enable this flag if you're developing against boost.</flag>
+		<flag name="doc">Install the full API documentation documentation. This takes over 200MB of extra disk space.</flag>
+		<flag name="nls">Build libboost_locale. This library requires compatible C library interfaces, which might not be provided by uClibc or other embedded libraries.</flag>
+		<flag name="numpy">Optionally build NumPy extensions when Boost.Python is enabled</flag>
+		<flag name="threads">Build multi-thread-compatible libraries instead of single-threaded only.</flag>
+		<flag name="tools">Build and install the boost tools (bcp, quickbook, inspect, wave)</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:boost:boost</remote-id>
+		<remote-id type="sourceforge">boost</remote-id>
+	</upstream>
+</pkgmetadata>

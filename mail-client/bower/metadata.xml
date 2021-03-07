@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription>
+		Bower is a curses frontend for the Notmuch (https://notmuchmail.org)
+		email system, written in Mercury.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">wangp/bower</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>johu@gentoo.org</email>
+		<name>Johannes Huber</name>
+	</maintainer>
+	<use>
+		<flag name="openpty">Use openpty() in preference to posix_openpt()</flag>
+		<flag name="sixel">Enable sixel graphics support</flag>
+		<flag name="toolbar">Enable the xterm toolbar to be built</flag>
+	</use>
+</pkgmetadata>

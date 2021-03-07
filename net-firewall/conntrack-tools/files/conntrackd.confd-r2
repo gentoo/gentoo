@@ -1,0 +1,14 @@
+# conntrackd config file
+# default: /etc/conntrackd/conntrackd.conf
+#CONNTRACKD_CFG=/etc/conntrackd/conntrackd.conf
+
+# conntrackd lockfile (must match the "LockFile" entry
+# from the "General" section in the config file)
+# default: /run/lock/conntrack.lock
+#CONNTRACKD_LOCK=/run/lock/conntrack.lock
+
+# extra options for conntrackd
+#CONNTRACKD_OPTS="" # you must NOT use -C here!
+
+# depend on a specific network interface
+#rc_need="net.eth1"

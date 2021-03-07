@@ -1,0 +1,12 @@
+Drop unused zlib header.
+
+--- apngdis-2.9-src/apngdis.cpp
++++ apngdis-2.9-src/apngdis.cpp
+@@ -32,7 +32,6 @@
+ #include <string.h>
+ #include <vector>
+ #include "png.h"     /* original (unpatched) libpng is ok */
+-#include "zlib.h"
+ 
+ #define notabc(c) ((c) < 65 || (c) > 122 || ((c) > 90 && (c) < 97))
+ 

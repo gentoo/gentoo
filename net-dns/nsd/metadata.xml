@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>polynomial-c@gentoo.org</email>
+		<name>Lars Wendler</name>
+	</maintainer>
+	<use>
+		<flag name="bind8-stats">Enables BIND8 like NSTATS and XSTATS</flag>
+		<flag name="dnstap">Enable the structured binary log format</flag>
+		<flag name="libevent">Use libevent or libev, useful when zone
+			count is high</flag>
+		<flag name="minimal-responses">If minimal responses are disabled,
+			responses are more likely to get truncated, resulting in TCP
+			fallback</flag>
+		<flag name="nsec3">Enable NSEC3 support</flag>
+		<flag name="ratelimit">Enables ratelimiting, based on query name,
+			type and source</flag>
+		<flag name="root-server">Configure NSD as a root server</flag>
+		<flag name="runtime-checks">Enable runtime checks, this could lead 
+			to a reduced service level</flag>
+		<flag name="munin">
+			Install a plugin for <pkg>net-analyzer/munin</pkg> to graph
+			statistical data from nsd.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">NLnetLabs/nsd</remote-id>
+	</upstream>
+</pkgmetadata>

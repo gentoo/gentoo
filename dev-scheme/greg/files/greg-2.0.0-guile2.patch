@@ -1,0 +1,14 @@
+--- greg-2.0.0/configure.ac.old	2012-09-23 13:25:24.000000000 +0200
++++ greg-2.0.0/configure.ac	2012-09-23 13:25:31.000000000 +0200
+@@ -48,7 +48,10 @@
+ AC_HEADER_STDC
+ AC_HEADER_TIME
+ AC_HEADER_SYS_WAIT
+-AC_CHECK_HEADERS(libc.h limits.h malloc.h memory.h string.h signal.h sys/file.h sys/fcntl.h sys/ioctl.h sys/stropts.h unistd.h utime.h libguile.h errno.h)
++AC_CHECK_HEADERS(libc.h limits.h malloc.h memory.h string.h signal.h sys/file.h sys/fcntl.h sys/ioctl.h sys/stropts.h unistd.h utime.h errno.h)
++
++CFLAGS=`GUILE_AUTOCOMPILE=0 $GUILECONFIG compile`
++AC_CHECK_HEADER(libguile.h)
+ 
+ 
+ # Checks for typedefs, structures, and compiler characteristics.

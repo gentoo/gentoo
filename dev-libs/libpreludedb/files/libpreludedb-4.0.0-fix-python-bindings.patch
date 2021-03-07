@@ -1,0 +1,39 @@
+--- a/bindings/python/Makefile.am	2017-07-18 12:27:27.278000000 +0200
++++ b/bindings/python/Makefile.am	2017-09-07 23:41:21.279920258 +0200
+@@ -6,36 +6,6 @@
+ all-am: python-build
+ 
+ python-build: _preludedb.cxx
+-if HAVE_PYTHON2
+-	CC="$(CXX)" $(PYTHON2) setup.py build
+-endif
+-if HAVE_PYTHON3
+-	CC="$(CXX)" $(PYTHON3) setup.py build
+-endif
+-install-exec-hook:
+-if HAVE_PYTHON2
+-	$(PYTHON2) setup.py install `test -n "$(DESTDIR)" && echo --root $(DESTDIR)`
+-endif
+-if HAVE_PYTHON3
+-	$(PYTHON3) setup.py install `test -n "$(DESTDIR)" && echo --root $(DESTDIR)`
+-endif
+-
+-uninstall-hook:
+-if HAVE_PYTHON2
+-	$(PYTHON2) setup.py uninstall `test -n "$(DESTDIR)" && echo --root $(DESTDIR)`
+-endif
+-if HAVE_PYTHON3
+-	$(PYTHON3) setup.py uninstall `test -n "$(DESTDIR)" && echo --root $(DESTDIR)`
+-endif
+-
+-clean-local:
+-if HAVE_PYTHON2
+-	$(PYTHON2) setup.py clean -a
+-endif
+-if HAVE_PYTHON3
+-	$(PYTHON3) setup.py clean -a
+-endif
+-
+ 
+ _preludedb.cxx preludedb.py: $(top_srcdir)/bindings/c++/include/*.hxx $(top_srcdir)/bindings/libpreludedbcpp.i libpreludedbcpp-python.i
+ if HAVE_SWIG

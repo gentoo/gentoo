@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>tcltk@gentoo.org</email>
+	<name>Gentoo Tcltk Project</name>
+</maintainer>
+<use>
+	<flag name="ode">
+		Enable support for physics engine from <pkg>dev-games/ode</pkg>
+	</flag>
+	<flag name="osg">
+		Enable support for 3D toolkit from <pkg>dev-games/openscenegraph</pkg>
+	</flag>
+</use>
+<longdescription>
+Tcl3D offers the 3D functionality of OpenGL and other 3D libraries at the Tcl scripting level.
+The Tcl3D package currently consists of the following modules:
+
+Tcl3D core module
+tcl3dOgl 	Enhanced Togl widget, a Tk widget for displaying OpenGL content.
+	Wrapper for core OpenGL functionality (GL Version 3.0, GLU Version 1.2) and OpenGL extensions.
+	Tcl3D utility library: Math functions, standard shapes, stop watch, demo support.
+
+Tcl3D optional modules
+tcl3dCg 	Wrapper for NVidia's Cg shading language. *
+tcl3dSDL 	Wrapper for the Simple DirectMedia Library.
+tcl3dFTGL 	Wrapper for the OpenGL Font Rendering Library.
+tcl3dGl2ps 	Wrapper for the OpenGL To Postscript library. *
+tcl3dOde 	Wrapper for the Open Dynamics Engine.
+tcl3dOsg    Wrapper for OpenSceneGraph
+tcl3dGauges 	Tcl3D package for displaying gauges.
+</longdescription>
+</pkgmetadata>

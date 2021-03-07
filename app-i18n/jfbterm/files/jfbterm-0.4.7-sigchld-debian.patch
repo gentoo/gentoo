@@ -1,0 +1,22 @@
+--- jfbterm-0.4.7.orig/main.c
++++ jfbterm-0.4.7/main.c
+@@ -184,7 +184,7 @@
+ 	p->gExecShellArgv = NULL;
+ 	p->gConfFile = FILE_JFBTERM_CONF;
+ 	p->gConfEncoding = NULL;
+-
++	signal(SIGCHLD, sigchld);
+ 	atexit(tapp_final_at_exit);
+ }
+ 
+--- jfbterm-0.4.7.orig/term.h
++++ jfbterm-0.4.7/term.h
+@@ -44,7 +44,7 @@
+ } TTerm;
+ 
+ void tterm_start(TTerm* p, const char* tn, const char* en);
+-
++void sigchld(int sig);
+ extern TTerm gTerm;
+ 
+ #endif /* INCLUDE_TERM_H */

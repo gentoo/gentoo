@@ -1,0 +1,50 @@
+#!/sbin/openrc-run
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2
+
+VSFTPD_NAME=${SVCNAME##*.}
+if [ -n "${VSFTPD_NAME}" -a "${SVCNAME}" != "vsftpd" ]; then
+    VSFTPD_PID="/var/run/vsftpd.${VSFTPD_NAME}.pid"
+    VSFTPD_CONF_DEFAULT="/etc/vsftpd/${VSFTPD_NAME}.conf"
+else
+    VSFTPD_PID="/var/run/vsftpd.pid"
+    VSFTPD_CONF_DEFAULT="/etc/vsftpd/vsftpd.conf"
+fi
+VSFTPD_CONF=${VSFTPD_CONF:-${VSFTPD_CONF_DEFAULT}}
+VSFTPD_EXEC=${VSFTPD_EXEC:-/usr/sbin/vsftpd}
+
+depend() {
+	need net
+	use dns logger
+}
+
+checkconfig() {
+	VSFTPD_CONF="${VSFTPD_CONF}" \
+		/usr/libexec/vsftpd-checkconfig.sh || return 1
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --exec ${VSFTPD_EXEC} \
+		--background --make-pidfile --pidfile "${VSFTPD_PID}" \
+		-- "${VSFTPD_CONF}"
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	local retval=0
+	if [ -f ${VSFTPD_PID} ]; then
+		start-stop-daemon --stop --pidfile ${VSFTPD_PID} || retval=1
+		pkill --full ${VSFTPD_CONF}
+	else
+		ewarn "Couldn't find ${VSFTPD_PID} trying to stop using the config filename ${VSFTPD_CONF}"
+		pgrep --full ${VSFTPD_CONF} > ${VSFTPD_PID}
+		start-stop-daemon --stop --pidfile ${VSFTPD_PID} || retval=1
+		pkill --full ${VSFTPD_CONF}
+	fi
+	eend ${retval}
+}
+
+# vim: ts=4

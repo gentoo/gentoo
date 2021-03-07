@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>pgsql-bugs@gentoo.org</email>
+		<name>PostgreSQL and Related Package Development</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>sci-geosciences@gentoo.org</email>
+		<name>Gentoo Geosciences Project</name>
+	</maintainer>
+	<use>
+		<flag name="address-standardizer">
+			Normalize US and CA postal addresses
+		</flag>
+		<flag name="gtk">
+			Build graphical interface for shp2pgsql (shp2pgsql-gui)
+		</flag>
+		<flag name="topology">
+			Build topology spatial types and functions
+		</flag>
+	</use>
+</pkgmetadata>

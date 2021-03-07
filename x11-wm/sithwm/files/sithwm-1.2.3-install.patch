@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -64,7 +64,7 @@
+ install: sithwm
+ 	if [ -f sithwm.exe ]; then mv sithwm.exe sithwm; fi
+ 	mkdir -p $(prefix)/bin $(prefix)/share/man/man1 $(confdir)
+-	install -s sithwm $(prefix)/bin
++	install sithwm $(prefix)/bin
+ 	install sithwm.1 $(prefix)/share/man/man1
+ 	install default.sithwmrc $(confdir)
+ 	@if test -x /usr/bin/update-menus; then \

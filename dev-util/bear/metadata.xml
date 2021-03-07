@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<longdescription lang="en">
+		Bear is a tool that generates a compilation database for clang tooling.
+		The concept behind Bear is: to execute the original build command and intercept the exec calls issued by the build tool.
+		To achieve that, Bear uses the LD_PRELOAD or DYLD_INSERT_LIBRARIES mechanisms provided by the dynamic linker.
+		Bear has two components: the library and the binary.
+		The library redefines the exec methods to be used by all child processes.
+		The executable enables the use of the library for child processes and writes the output file.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">rizsotto/Bear</remote-id>
+	</upstream>
+</pkgmetadata>

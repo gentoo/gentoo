@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
+	</maintainer>
+	<longdescription lang="en">
+			kubeadm performs the actions necessary to get a minimum viable cluster
+			up and running. By design, it cares only about bootstrapping, not
+			about provisioning machines. Likewise, installing various
+			nice-to-have addons, like the Kubernetes Dashboard, monitoring
+			solutions and cloud-specific addons is not in scope.
+
+		Instead, we expect higher-level and more tailored tooling to be built on
+			top of kubeadm, and ideally, using kubeadm as the basis of all
+			deployments will make it easier to create conformant clusters.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">kubernetes/kubernetes</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,218 @@
+From a867fa646d7af98fe57c9d6c96a407e648fbca24 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl@gmail.com>
+Date: Sat, 15 Jun 2019 16:39:50 +0200
+Subject: [PATCH 5/5] Fix install locations
+
+Signed-off-by: Bernd Waibel <waebbl@gmail.com>
+---
+ CMakeLists.txt                   | 8 ++++----
+ arnold/Procedural/CMakeLists.txt | 2 +-
+ bin/AbcConvert/CMakeLists.txt    | 2 +-
+ bin/AbcDiff/CMakeLists.txt       | 2 +-
+ bin/AbcEcho/CMakeLists.txt       | 2 +-
+ bin/AbcLs/CMakeLists.txt         | 2 +-
+ bin/AbcStitcher/CMakeLists.txt   | 2 +-
+ bin/AbcTree/CMakeLists.txt       | 2 +-
+ lib/Alembic/CMakeLists.txt       | 4 ++--
+ maya/AbcExport/CMakeLists.txt    | 2 +-
+ maya/AbcImport/CMakeLists.txt    | 2 +-
+ prman/Procedural/CMakeLists.txt  | 4 ++--
+ python/PyAlembic/CMakeLists.txt  | 4 ++--
+ 13 files changed, 19 insertions(+), 19 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 51a95d7..0622613 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -80,12 +80,12 @@ OPTION(ALEMBIC_LIB_USES_TR1
+ 
+ # Set static/dynamic build options
+ SET(LIB_TYPE STATIC)
+-SET(RUNTIME_INSTALL_DIR lib)
+-SET(LIBRARY_INSTALL_DIR lib)
+-SET(ARCHIVE_INSTALL_DIR lib)
++SET(RUNTIME_INSTALL_DIR lib${LIB_SUFFIX})
++SET(LIBRARY_INSTALL_DIR lib${LIB_SUFFIX})
++SET(ARCHIVE_INSTALL_DIR lib${LIB_SUFFIX})
+ IF (ALEMBIC_SHARED_LIBS)
+     SET(LIB_TYPE SHARED)
+-    SET(ARCHIVE_INSTALL_DIR lib)
++    SET(ARCHIVE_INSTALL_DIR lib${LIB_SUFFIX})
+     IF (WIN32)
+         ADD_DEFINITIONS(-DALEMBIC_DLL)
+     ENDIF()
+diff --git a/arnold/Procedural/CMakeLists.txt b/arnold/Procedural/CMakeLists.txt
+index 69e00da..027e646 100644
+--- a/arnold/Procedural/CMakeLists.txt
++++ b/arnold/Procedural/CMakeLists.txt
+@@ -60,7 +60,7 @@ TARGET_LINK_LIBRARIES( AlembicArnoldProcedural Alembic::Alembic)
+ 
+ set_target_properties(AlembicArnoldProcedural PROPERTIES
+     INSTALL_RPATH_USE_LINK_PATH TRUE
+-    INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}/lib)
++    INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX})
+ 
+ INSTALL ( TARGETS
+   AlembicArnoldProcedural
+diff --git a/bin/AbcConvert/CMakeLists.txt b/bin/AbcConvert/CMakeLists.txt
+index 451409c..5b41a14 100644
+--- a/bin/AbcConvert/CMakeLists.txt
++++ b/bin/AbcConvert/CMakeLists.txt
+@@ -38,6 +38,6 @@ TARGET_LINK_LIBRARIES(abcconvert Alembic::Alembic)
+ 
+ set_target_properties(abcconvert PROPERTIES
+     INSTALL_RPATH_USE_LINK_PATH TRUE
+-    INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}/lib)
++    INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX})
+ 
+ INSTALL(TARGETS abcconvert DESTINATION bin)
+diff --git a/bin/AbcDiff/CMakeLists.txt b/bin/AbcDiff/CMakeLists.txt
+index 511864a..c9cf482 100644
+--- a/bin/AbcDiff/CMakeLists.txt
++++ b/bin/AbcDiff/CMakeLists.txt
+@@ -38,6 +38,6 @@ TARGET_LINK_LIBRARIES(abcdiff Alembic::Alembic)
+ 
+ set_target_properties(abcdiff PROPERTIES
+     INSTALL_RPATH_USE_LINK_PATH TRUE
+-    INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}/lib)
++    INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX})
+ 
+ INSTALL(TARGETS abcdiff DESTINATION bin)
+diff --git a/bin/AbcEcho/CMakeLists.txt b/bin/AbcEcho/CMakeLists.txt
+index be5f5c1..3020041 100644
+--- a/bin/AbcEcho/CMakeLists.txt
++++ b/bin/AbcEcho/CMakeLists.txt
+@@ -41,6 +41,6 @@ TARGET_LINK_LIBRARIES(abcechobounds Alembic::Alembic)
+ 
+ set_target_properties(abcecho abcechobounds PROPERTIES
+     INSTALL_RPATH_USE_LINK_PATH TRUE
+-    INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}/lib)
++    INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX})
+ 
+ INSTALL(TARGETS abcecho abcechobounds DESTINATION bin)
+diff --git a/bin/AbcLs/CMakeLists.txt b/bin/AbcLs/CMakeLists.txt
+index 815f84f..cd216e4 100644
+--- a/bin/AbcLs/CMakeLists.txt
++++ b/bin/AbcLs/CMakeLists.txt
+@@ -39,6 +39,6 @@ TARGET_LINK_LIBRARIES(abcls Alembic::Alembic)
+ 
+ set_target_properties(abcls PROPERTIES
+     INSTALL_RPATH_USE_LINK_PATH TRUE
+-    INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}/lib)
++    INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX})
+ 
+ INSTALL(TARGETS abcls DESTINATION bin)
+diff --git a/bin/AbcStitcher/CMakeLists.txt b/bin/AbcStitcher/CMakeLists.txt
+index a963420..5882287 100644
+--- a/bin/AbcStitcher/CMakeLists.txt
++++ b/bin/AbcStitcher/CMakeLists.txt
+@@ -38,6 +38,6 @@ TARGET_LINK_LIBRARIES(abcstitcher Alembic::Alembic)
+ 
+ set_target_properties(abcstitcher PROPERTIES
+     INSTALL_RPATH_USE_LINK_PATH TRUE
+-    INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}/lib)
++    INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX})
+ 
+ INSTALL(TARGETS abcstitcher DESTINATION bin)
+diff --git a/bin/AbcTree/CMakeLists.txt b/bin/AbcTree/CMakeLists.txt
+index b4f65f1..841e1d2 100644
+--- a/bin/AbcTree/CMakeLists.txt
++++ b/bin/AbcTree/CMakeLists.txt
+@@ -38,6 +38,6 @@ TARGET_LINK_LIBRARIES(abctree Alembic::Alembic)
+ 
+ set_target_properties(abctree PROPERTIES
+     INSTALL_RPATH_USE_LINK_PATH TRUE
+-    INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}/lib)
++    INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX})
+ 
+ INSTALL(TARGETS abctree DESTINATION bin)
+diff --git a/lib/Alembic/CMakeLists.txt b/lib/Alembic/CMakeLists.txt
+index e4d33cb..e43dcce 100644
+--- a/lib/Alembic/CMakeLists.txt
++++ b/lib/Alembic/CMakeLists.txt
+@@ -85,7 +85,7 @@ IF ( ${ALEMBIC_LIB_USES_TR1} AND CMAKE_COMPILER_IS_GNUCXX AND
+     TARGET_LINK_LIBRARIES( Alembic atomic )
+ ENDIF()
+ 
+-SET( ALEMBIC_LIB_INSTALL_DIR lib CACHE PATH "Where to install the Alembic libs")
++SET( ALEMBIC_LIB_INSTALL_DIR lib${LIB_SUFFIX} CACHE PATH "Where to install the Alembic libs")
+ INSTALL(TARGETS Alembic
+         EXPORT AlembicTargets
+         LIBRARY DESTINATION ${ALEMBIC_LIB_INSTALL_DIR}
+@@ -118,7 +118,7 @@ EXPORT(TARGETS
+     Alembic::
+     )
+ 
+-SET(ConfigPackageLocation lib/cmake/Alembic CACHE PATH
++SET(ConfigPackageLocation lib${LIB_SUFFIX}/cmake/Alembic CACHE PATH
+     "Where to install the Alembic's cmake files")
+ 
+ INSTALL(FILES
+diff --git a/maya/AbcExport/CMakeLists.txt b/maya/AbcExport/CMakeLists.txt
+index 50d2fd2..b4ce46d 100644
+--- a/maya/AbcExport/CMakeLists.txt
++++ b/maya/AbcExport/CMakeLists.txt
+@@ -77,7 +77,7 @@ TARGET_LINK_LIBRARIES(AbcExport
+ 
+ set_target_properties(AbcExport PROPERTIES
+     INSTALL_RPATH_USE_LINK_PATH TRUE
+-    INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}/lib)
++    INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX})
+ 
+ INSTALL(TARGETS AbcExport
+         DESTINATION ${ALEMBIC_MAYA_PLUGINS_INSTALL_DIR})
+diff --git a/maya/AbcImport/CMakeLists.txt b/maya/AbcImport/CMakeLists.txt
+index 6826183..5a5efad 100644
+--- a/maya/AbcImport/CMakeLists.txt
++++ b/maya/AbcImport/CMakeLists.txt
+@@ -81,7 +81,7 @@ TARGET_LINK_LIBRARIES(AbcImport
+ 
+ set_target_properties(AbcImport PROPERTIES
+     INSTALL_RPATH_USE_LINK_PATH TRUE
+-    INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}/lib)
++    INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX})
+ 
+ INSTALL(TARGETS AbcImport
+         DESTINATION ${ALEMBIC_MAYA_PLUGINS_INSTALL_DIR})
+diff --git a/prman/Procedural/CMakeLists.txt b/prman/Procedural/CMakeLists.txt
+index 6b46e91..c774c2a 100644
+--- a/prman/Procedural/CMakeLists.txt
++++ b/prman/Procedural/CMakeLists.txt
+@@ -60,10 +60,10 @@ TARGET_LINK_LIBRARIES(AlembicRiProcedural Alembic::Alembic)
+ 
+ set_target_properties(AlembicRiProcedural PROPERTIES
+     INSTALL_RPATH_USE_LINK_PATH TRUE
+-    INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}/lib)
++    INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX})
+ 
+ INSTALL(TARGETS
+     AlembicRiProcedural
+     DESTINATION
+-    prman/procedurals
++    $ENV{RMANTREE}/lib/plugins
+ )
+diff --git a/python/PyAlembic/CMakeLists.txt b/python/PyAlembic/CMakeLists.txt
+index af8dcb5..90f7428 100644
+--- a/python/PyAlembic/CMakeLists.txt
++++ b/python/PyAlembic/CMakeLists.txt
+@@ -141,7 +141,7 @@ IF (Boost_PYTHON${PYTHON_VERSION_MAJOR}${PYTHON_VERSION_MINOR}_LIBRARY_RELEASE A
+     )
+ 
+     SET( ALEMBIC_PYTHON_INSTALL_DIR
+-        lib/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages
++        lib${LIB_SUFFIX}/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages
+         CACHE PATH
+         "Alembic's python bindings install directory"
+     )
+@@ -156,7 +156,7 @@ IF (Boost_PYTHON${PYTHON_VERSION_MAJOR}${PYTHON_VERSION_MINOR}_LIBRARY_RELEASE A
+ 
+     set_target_properties(PyAlembic PROPERTIES
+         INSTALL_RPATH_USE_LINK_PATH TRUE
+-        INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}/lib)
++        INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX})
+ ELSE()
+     MESSAGE(FATAL_ERROR "Unable to find Python libs")
+ ENDIF()
+-- 
+2.22.0
+

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<longdescription lang="en">
+	GNU parallel is a shell tool for executing jobs in parallel locally or
+	using remote machines. A job is typically a single command or a small
+	script that has to be run for each of the lines in the input. The
+	typical input is a list of files, a list of hosts, a list of users, a
+	list of URLs, or a list of tables.
+
+	If you use xargs today you will find GNU parallel very easy to use as
+	GNU parallel is written to have the same options as xargs. If you
+	write loops in shell, you will find GNU parallel may be able to
+	replace most of the loops and make them run faster by running several
+	jobs in parallel. If you use ppss or pexec you will find GNU parallel
+	will often make the command easier to read.
+	</longdescription>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:gnu:parallel</remote-id>
+	</upstream>
+</pkgmetadata>

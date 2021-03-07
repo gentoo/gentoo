@@ -1,0 +1,34 @@
+From f7c4983b31909299c47bf9b2627c84b6bfe225de Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bj=C3=B6rn=20Esser?= <besser82@fedoraproject.org>
+Date: Mon, 13 Apr 2020 14:16:20 +0200
+Subject: [PATCH] Add support for upcoming json-c 0.14.0.
+
+TRUE/FALSE are not defined anymore.  1 and 0 are used instead.
+---
+ u2f-server/core.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/u2f-server/core.c b/u2f-server/core.c
+index 2fb325e..895c004 100644
+--- a/u2f-server/core.c
++++ b/u2f-server/core.c
+@@ -44,6 +44,19 @@ typedef int json_bool;
+ #define u2fs_json_object_object_get(obj, key, value) (value = json_object_object_get(obj, key)) == NULL ? (json_bool)FALSE : (json_bool)TRUE
+ #endif
+ 
++/* json-c 0.13.99 does not define TRUE/FALSE anymore
++ * the json-c maintainers replaced them with pure 1/0
++ * https://github.com/json-c/json-c/commit/0992aac61f8b
++ */
++#if defined JSON_C_VERSION_NUM && JSON_C_VERSION_NUM >= ((13 << 8) | 99)
++#ifndef FALSE
++#define FALSE 0
++#endif
++#ifndef TRUE
++#define TRUE  1
++#endif
++#endif
++
+ static u2fs_rc encode_b64u(const char *data, size_t data_len, char *output)
+ {
+   base64_encodestate b64;

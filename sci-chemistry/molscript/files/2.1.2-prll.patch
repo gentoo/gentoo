@@ -1,0 +1,10 @@
+diff --git a/Makefile.complete b/Makefile.complete
+index 92ef20a..e3f68e3 100644
+--- a/Makefile.complete
++++ b/Makefile.complete
+@@ -153,4 +153,4 @@ molauto.o: molauto.c
+ 
+ #------------------------------------------------------------
+ clib/clib.a:
+-	cd clib; make clib.a CFLAGS="-I. $(CFLAGS)" OPENGLCLIBOBJ="$(OPENGLCLIBOBJ)"
++	$(MAKE) -C clib clib.a CFLAGS="-I. $(CFLAGS)" OPENGLCLIBOBJ="$(OPENGLCLIBOBJ)"

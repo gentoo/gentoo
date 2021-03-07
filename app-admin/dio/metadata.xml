@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		It samples kernel statistics at the specified time interval
+		and uses them to derive useful realtime and cumulative performance statistics.
+		The output is presented in a standard terminal window using the standard curses library,
+		which contains the output on visible terminal.
+		The approach offers a more intuitive visual presentation of the data.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/donaldmcintosh/dio/issues</bugs-to>
+		<remote-id type="github">donaldmcintosh/dio</remote-id>
+	</upstream>
+</pkgmetadata>

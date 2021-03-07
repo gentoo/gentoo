@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-electronics@gentoo.org</email>
+    <name>Gentoo Electronics Project</name>
+  </maintainer>
+  <longdescription>
+  Free, open source, GPL'ed VHDL simulator. The project goal is to develop a
+  VHDL simulator that :
+   * Has a graphical waveform viewer.
+   * Has a source level debugger.
+   * Is VHDL-93 compliant.
+   * Is of commercial quality. (on par with, say, V-System - it'll take us a
+     while to get there, but that should be our aim)
+   * Is freely distributable - both source and binaries - like Linux itself.
+     (Under the Gnu General Public License (GPL)).
+   * Works with Linux. If others want to port it to other platforms they may,
+     but it is not the goal of this project.
+  </longdescription>
+  <upstream>
+    <remote-id type="sourceforge">qucs</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">XML-SAX</remote-id>
+    <remote-id type="cpan-module">XML::SAX</remote-id>
+    <remote-id type="cpan-module">XML::SAX::DocumentLocator</remote-id>
+    <remote-id type="cpan-module">XML::SAX::ParserFactory</remote-id>
+    <remote-id type="cpan-module">XML::SAX::PurePerl</remote-id>
+    <remote-id type="cpan-module">XML::SAX::PurePerl::DebugHandler</remote-id>
+    <remote-id type="cpan-module">XML::SAX::PurePerl::Exception</remote-id>
+    <remote-id type="cpan-module">XML::SAX::PurePerl::Productions</remote-id>
+    <remote-id type="cpan-module">XML::SAX::PurePerl::Reader</remote-id>
+    <remote-id type="cpan-module">XML::SAX::PurePerl::Reader::Stream</remote-id>
+    <remote-id type="cpan-module">XML::SAX::PurePerl::Reader::String</remote-id>
+    <remote-id type="cpan-module">XML::SAX::PurePerl::Reader::URI</remote-id>
+  </upstream>
+</pkgmetadata>

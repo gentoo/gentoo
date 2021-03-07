@@ -1,0 +1,43 @@
+From fd89e242d16128dedef08f47d99ae56aa19b0591 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C3=98rjan=20Malde?= <red@foxi.me>
+Date: Wed, 15 Jul 2020 12:16:16 +0200
+Subject: [PATCH] Include limits.h for INT_MAX
+
+---
+ lib/zip_crypto_openssl.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/lib/zip_crypto_openssl.c b/lib/zip_crypto_openssl.c
+index 1cb00479..60f92758 100644
+--- a/lib/zip_crypto_openssl.c
++++ b/lib/zip_crypto_openssl.c
+@@ -38,6 +38,7 @@
+ #include "zip_crypto.h"
+ 
+ #include <openssl/rand.h>
++#include <limits.h>
+ 
+ #if OPENSSL_VERSION_NUMBER < 0x1010000fL || defined(LIBRESSL_VERSION_NUMBER)
+ #define USE_OPENSSL_1_0_API
+
+From b4a4f778806fe2c3ca9ec57c0411a8dcf462e655 Mon Sep 17 00:00:00 2001
+From: Thomas Klausner <tk@giga.or.at>
+Date: Wed, 15 Jul 2020 12:38:07 +0200
+Subject: [PATCH] Include limits.h for INT_MAX.
+
+---
+ lib/zip_crypto_mbedtls.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/lib/zip_crypto_mbedtls.c b/lib/zip_crypto_mbedtls.c
+index c348ad2a..7063c6b6 100644
+--- a/lib/zip_crypto_mbedtls.c
++++ b/lib/zip_crypto_mbedtls.c
+@@ -41,6 +41,7 @@
+ #include <mbedtls/entropy.h>
+ #include <mbedtls/pkcs5.h>
+ 
++#include <limits.h>
+ 
+ _zip_crypto_aes_t *
+ _zip_crypto_aes_new(const zip_uint8_t *key, zip_uint16_t key_size, zip_error_t *error) {

@@ -1,0 +1,22 @@
+--- a/scoring.c
++++ b/scoring.c
+@@ -12,6 +12,8 @@
+ #include <time.h>
+ #include "scoring.h"
+ 
++char highscoref[255];
++
+ int get_high_scores(struct highscoreent *highscores[], int *numscores)
+ {
+ 	FILE *scorefile;
+--- a/scoring.h
++++ b/scoring.h
+@@ -11,7 +11,7 @@
+ /* Max number of high scores we store */
+ #define MAXHIGHSCORES 20
+ 
+-char highscoref[255];
++extern char highscoref[255];
+ 
+ struct highscoreent {
+ 	char name[16];

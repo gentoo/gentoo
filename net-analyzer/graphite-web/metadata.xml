@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>grobian@gentoo.org</email>
+		<name>Fabian Groffen</name>
+	</maintainer>
+	<use>
+		<flag name="memcached">Enable memcached support</flag>
+		<flag name="carbon">Enable carbon support</flag>
+	</use>
+	<upstream>
+		<remote-id type="pypi">graphite-web</remote-id>
+		<remote-id type="github">graphite-project/graphite-web</remote-id>
+		<bugs-to>https://github.com/graphite-project/graphite-web/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

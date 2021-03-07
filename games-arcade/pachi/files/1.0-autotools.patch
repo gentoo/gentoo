@@ -1,0 +1,46 @@
+--- configure.in
++++ configure.in
+@@ -1,5 +1,7 @@
+ # Process this file with autoconf to produce a configure script.
++AC_PREREQ([2.54])
+ AC_INIT(src/faes.cpp, 0.1, T-1000@Bigfoot.com)
++AC_CANONICAL_SYSTEM
+ AM_INIT_AUTOMAKE(pachi, 0.1)
+ AM_CONFIG_HEADER(config.h)
+ 
+@@ -44,7 +46,7 @@
+ 	SCOREDIR="."
+ else
+ 	DATADIR="$datadir/$PACKAGE"
+-	SCOREDIR="/var/lib/games/$PACKAGE"
++	SCOREDIR="$localstatedir/$PACKAGE"
+ fi
+ 
+ eval DATAPATH=`eval echo "$DATADIR"`
+--- data/Makefile.am
++++ data/Makefile.am
+@@ -10,13 +10,13 @@
+ objects_v2.dat \
+ rooms_v2.dat
+ 
+-score_DATA = \
++score_DATA_ = \
+ scores.dat
+ 
+-EXTRA_DIST = $(dat_DATA) $(score_DATA)
++EXTRA_DIST = $(dat_DATA) $(score_DATA_)
+ 
+ install-data-local:
+-	for file in $(score_DATA); do\
+-	    chgrp $(group) $(scoredir)/$$file; \
+-	    chmod $(perms) $(scoredir)/$$file; \
+-	done					    
++	$(mkinstalldirs) $(DESTDIR)$(scoredir)
++	for file in $(score_DATA_); do                                       \
++		$(INSTALL) -g $(group) -m $(perms) $$file $(DESTDIR)$(scoredir); \
++	done
+--- Makefile.am
++++ Makefile.am
+@@ -1 +1 @@
+-SUBDIRS = src Tgfx data fonts music sounds docs
++SUBDIRS = src Tgfx data fonts music sounds

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>dolsen@gentoo.org</email>
+		<name>Brian Dolbec</name>
+	</maintainer>
+	<longdescription lang="en">
+		The Buildbot badges plugin produces an image in SVG or PNG format with
+		information about the last build for the given builder name. PNG
+		generation is based on the CAIRO SVG engine, it requires a bit more CPU
+		to generate.
+	</longdescription>
+	<upstream>
+		<maintainer>
+			<email>devel@buildbot.net</email>
+			<name>Developers List</name>
+		</maintainer>
+		<remote-id type="pypi">buildbot-grid-view</remote-id>
+		<remote-id type="github">buildbot/buildbot</remote-id>
+	</upstream>
+</pkgmetadata>

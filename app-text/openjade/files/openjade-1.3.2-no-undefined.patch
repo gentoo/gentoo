@@ -1,0 +1,11 @@
+--- a/Makefile.lib.in.orig	2016-05-19 17:20:25.164931700 +0200
++++ b/Makefile.lib.in	2016-05-19 17:20:56.539989400 +0200
+@@ -24,7 +24,7 @@
+ 
+ lib$(LIB).la: $(LT_OBJS)
+ 	$(LIBTOOL) --mode=link $(CC) $(LDFLAGS) $(LINKFLAGS) -o lib$(LIB).la $(LT_OBJS) \
+-	    -rpath $(libdir) -version-info $(LTVERSION) $(DEPLIBS)
++	    -no-undefined -rpath $(libdir) -version-info $(LTVERSION) $(DEPLIBS)
+ 
+ install:
+ 	$(mkinstalldirs) $(DESTDIR)$(libdir)

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>voyageur@gentoo.org</email>
+    <name>Bernard Cafarelli</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="sourceforge">mcomix</remote-id>
+    <remote-id type="github">multiSnow/mcomix3</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>bircoph@gentoo.org</email>
+		<name>Andrew Savchenko</name>
+	</maintainer>
+	<use>
+		<flag name="crypt">Allows suspend and resume from encrypted disk</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">suspend</remote-id>
+		<remote-id type="github">bircoph/suspend</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<longdescription>
+  This package provides a tool that can (hopefully) aid in the production of
+  quality color themes. Basically it allows the user to
+   * develop sets of colors (palettes) that work well together,
+   * use those palettes to quickly select and set the properties of key face
+     groups, and
+   * save and manipulate themes and palettes under development.
+</longdescription>
+<stabilize-allarches/>
+</pkgmetadata>

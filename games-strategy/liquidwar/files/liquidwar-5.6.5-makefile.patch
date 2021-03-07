@@ -1,0 +1,93 @@
+Fix paths. Don't install COPYING and obsolete .desktop
+
+diff --git a/Makefile.in b/Makefile.in
+index 45f13ec..d27dddc 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -27,21 +27,19 @@ mandir =          @mandir@
+ infodir =         @infodir@
+ 
+ BINDIR =          $(bindir)
+-GAMEDIR =         $(exec_prefix)/games
+-DATADIR =         $(datadir)/games/liquidwar
++GAMEDIR =         $(bindir)
++DATADIR =         $(datadir)/liquidwar
+ PIXDIR =          $(datadir)/pixmaps
+ DOCDIR =          $(datadir)/doc/liquidwar
+ DESKTOPDIR =           $(datadir)/applications
+ # We don't use the autoconf default mandir=$(prefix)/man man
+ # directory since the FHS (File Hierarchy Standard recommends
+ # to place man pages in $(datadir)/man (ie /usr/share/man).
+-# MANDIR =          $(mandir)/man6
+-MANDIR =          $(datadir)/man/man6
++MANDIR =          $(mandir)/man6
+ # We don't use the autoconf default infodir=$(prefix)/info info
+ # directory since the FHS (File Hierarchy Standard recommends
+ # to place info pages in $(datadir)/info (ie /usr/share/info).
+-# INFODDIR =        $(infodir)
+-INFODIR =         $(datadir)/info
++INFODDIR =        $(infodir)
+ INFODIRDIR =      $(infodir)
+ 
+ HOST =          @host@
+@@ -123,7 +121,7 @@ build_doc:
+ 
+ install: install_link install_nolink
+ 
+-# the install_nolink is for distribs where $(prefix)/games is in the PATH,
++# the install_nolink is for distribs where $(prefix) is in the PATH,
+ # for instance Debian, where a link in $(prefix)/bin is pretty much useless
+ install_nolink: install_bin install_data install_custom_map install_custom_texture install_custom_music install_icon install_doc install_gpl install_desktop install_readme
+ 	@echo 
+@@ -136,9 +134,9 @@ install_nolink: install_bin install_data install_custom_map install_custom_textu
+ install_bin: src/liquidwar src/liquidwar-server src/liquidwar-mapgen
+ 	@echo "Installing liquidwar binaries in $(GAMEDIR)."
+ 	@install -d $(DESTDIR)$(GAMEDIR)
+-	@install -c -s src/liquidwar $(DESTDIR)$(GAMEDIR)
+-	@install -c -s src/liquidwar-server $(DESTDIR)$(GAMEDIR)
+-	@install -c -s src/liquidwar-mapgen $(DESTDIR)$(GAMEDIR)
++	@install -c src/liquidwar $(DESTDIR)$(GAMEDIR)
++	@install -c src/liquidwar-server $(DESTDIR)$(GAMEDIR)
++	@install -c src/liquidwar-mapgen $(DESTDIR)$(GAMEDIR)
+ 
+ install_link:
+ 	@echo "Installing link in $(BINDIR)."
+@@ -174,7 +172,7 @@ install_custom_music:
+ 	@install -c -m 0644 custom/music/*.* $(DESTDIR)$(DATADIR)/music
+ 
+ install_doc:
+-	@if [ -f $(MAKE_DOC_DIR)/txt/rules.txt ]; then echo "Installing liquidwar plain text doc in $(DOCDIR)/txt."; install -d $(DESTDIR)$(DOCDIR)/txt; install -c -m 0644 $(MAKE_DOC_DIR)/txt/*.txt $(DESTDIR)$(DOCDIR)/txt; fi
++	@if [ -f $(MAKE_DOC_DIR)/txt/rules.txt ]; then echo "Installing liquidwar plain text doc in $(DOCDIR)."; install -d $(DESTDIR)$(DOCDIR); install -c -m 0644 $(MAKE_DOC_DIR)/txt/*.txt $(DESTDIR)$(DOCDIR); fi
+ 	@if [ -f $(MAKE_DOC_DIR)/html/rules.html ]; then echo "Installing liquidwar HTML doc in $(DOCDIR)/html."; install -d $(DESTDIR)$(DOCDIR)/html; install -c -m 0644 $(MAKE_DOC_DIR)/html/*.html $(DESTDIR)$(DOCDIR)/html; fi
+ 	@if [ -f $(MAKE_DOC_DIR)/man/liquidwar.6.gz ]; then echo "Installing liquidwar man page in $(MANDIR)."; install -d $(DESTDIR)$(MANDIR); install -c -m 0644 $(MAKE_DOC_DIR)/man/liquidwar.6.gz $(DESTDIR)$(MANDIR); ln -s -f liquidwar.6.gz $(DESTDIR)$(MANDIR)/liquidwar-server.6.gz; ln -s -f liquidwar.6.gz $(DESTDIR)$(MANDIR)/liquidwar-mapgen.6.gz; fi
+ 	@if [ -f $(MAKE_DOC_DIR)/info/liquidwar.info.gz ]; then echo "Installing info page $(INFODIR)/liquidwar.info.gz."; install -d $(DESTDIR)$(INFODIR); install -c -m 644 $(MAKE_DOC_DIR)/info/liquidwar.info* $(DESTDIR)$(INFODIR); if which install-info; then if test -d $(DESTDIR)$(INFODIRDIR); then if test -f $(DESTDIR)$(INFODIRDIR)/dir; then echo "Installing liquidwar info entry."; install-info --info-dir=$(DESTDIR)$(INFODIRDIR) $(MAKE_DOC_DIR)/info/liquidwar.info.gz; fi; fi; fi; fi
+@@ -189,12 +187,12 @@ install_icon:
+ install_desktop:
+ 	@echo "Installing desktop file in $(DESKTOPDIR)."
+ 	@install -d $(DESTDIR)$(DESKTOPDIR)
+-	@install -c -m 0644 misc/liquidwar.desktop $(DESTDIR)$(DESKTOPDIR)
++	#@install -c -m 0644 misc/liquidwar.desktop $(DESTDIR)$(DESKTOPDIR)
+ 
+ install_gpl:
+ 	@echo "Installing GPL in $(DOCDIR)."
+ 	@install -d $(DESTDIR)$(DOCDIR)
+-	@install -c -m 0644 COPYING $(DESTDIR)$(DOCDIR)
++	#@install -c -m 0644 COPYING $(DESTDIR)$(DOCDIR)
+ 
+ install_readme:
+ 	@echo "Installing README in $(DOCDIR)."
+diff --git a/src/Makefile.in b/src/Makefile.in
+index f9a471a..deb6692 100644
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -4,8 +4,8 @@ exec_prefix =     @exec_prefix@
+ datarootdir =     @datarootdir@
+ datadir =         @datadir@
+ 
+-DATADIR =         $(datadir)/games/liquidwar
+-GAMEDIR =         $(exec_prefix)/games
++DATADIR =         $(datadir)/liquidwar
++GAMEDIR =         @bindir@
+ 
+ HOST_OPT =        @HOST_OPT@
+ STATIC =          @STATIC@

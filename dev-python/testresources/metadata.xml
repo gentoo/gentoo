@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>openstack@gentoo.org</email>
+		<name>Openstack</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<longdescription lang="en">
+		Testresources extends unittest with a clean and simple api to provide test
+	optimisation where expensive common resources are needed for test cases
+	for example sample working trees for VCS systems, reference databases for
+	enterprise applications, or web servers ... let imagination run wild.
+	</longdescription>
+	<upstream>
+		<remote-id type="pypi">testresources</remote-id>
+		<remote-id type="launchpad">testresources</remote-id>
+	</upstream>
+</pkgmetadata>

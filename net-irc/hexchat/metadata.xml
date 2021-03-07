@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>polynomial-c@gentoo.org</email>
+		<name>Lars Wendler</name>
+	</maintainer>
+	<use>
+		<flag name="libcanberra">Enable sound event support using
+			<pkg>media-libs/libcanberra</pkg></flag>
+		<flag name="libproxy">Enable proxy support.</flag>
+		<flag name="plugin-checksum">Build Checksum plugin
+			(needs plugins)</flag>
+		<flag name="plugin-fishlim">Build FiSHLiM plugin (needs plugins
+			)</flag>
+		<flag name="plugin-sysinfo">Build SysInfo plugin (needs plugins)
+		</flag>
+		<flag name="theme-manager">Build the theme manager (mono)</flag>
+	</use>
+	<upstream>
+		<maintainer status="active">
+			<email>tingping@tingping.se</email>
+			<name>TingPing</name>
+		</maintainer>
+		<bugs-to>https://github.com/hexchat/hexchat/issues</bugs-to>
+		<doc lang="en">http://hexchat.readthedocs.org/en/latest</doc>
+		<remote-id type="github">hexchat/hexchat</remote-id>
+	</upstream>
+</pkgmetadata>

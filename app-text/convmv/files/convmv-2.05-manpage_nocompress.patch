@@ -1,0 +1,16 @@
+--- convmv-2.05/Makefile
++++ convmv-2.05/Makefile
+@@ -10,11 +10,11 @@
+ install: all
+ 	mkdir -p $(DESTDIR)$(MANDIR)/man1/
+ 	mkdir -p $(DESTDIR)$(PREFIX)/bin/
+-	cp convmv.1.gz $(DESTDIR)$(MANDIR)/man1/
++	cp convmv.1 $(DESTDIR)$(MANDIR)/man1/
+ 	install -m 755 convmv $(DESTDIR)$(PREFIX)/bin/
+ 
+ manpage:
+-	pod2man --section 1 --center=" " convmv | gzip > convmv.1.gz
++	pod2man --section 1 --center=" " convmv > convmv.1
+ 
+ clean:
+ 	rm -f convmv.1.gz convmv-*.tar.gz MD5sums SHA256sums .files .name

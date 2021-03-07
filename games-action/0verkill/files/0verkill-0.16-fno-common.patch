@@ -1,0 +1,87 @@
+--- a/bot.c
++++ b/bot.c
+@@ -104,7 +104,7 @@
+ 
+ /* objects */
+ struct object_list objects;
+-struct object_list *last_obj;
++extern struct object_list *last_obj;
+ struct it* hero;
+ 
+ unsigned long_long game_start_offset; /* time difference between game start on this machine and on server */
+--- a/client.c
++++ b/client.c
+@@ -97,7 +97,7 @@
+ 
+ /* objects */
+ struct object_list objects;
+-struct object_list *last_obj;
++extern struct object_list *last_obj;
+ struct it* hero;
+ 
+ /* important sprites */
+--- a/data.c
++++ b/data.c
+@@ -13,6 +13,9 @@
+ #include "md5.h"
+ #include "error.h"
+ 
++unsigned char *weapon_name[ARMS];
++struct obj_attr_type obj_attr[N_TYPES];
++struct weapon_type weapon[ARMS];
+ 
+ #ifdef TRI_D
+ int tri_d=0;
+--- a/data.h
++++ b/data.h
+@@ -62,7 +62,7 @@
+ 
+ #define ARMS 5
+ 
+-unsigned char *weapon_name[ARMS];
++extern unsigned char *weapon_name[ARMS];
+ 
+ /* STATUS
+ 0: walk
+@@ -91,7 +91,8 @@
+ 		      bit 1=server updates
+ 		      bit 2=server sends updates to clients
+ 		      */
+-}obj_attr[N_TYPES];
++};
++extern struct obj_attr_type obj_attr[N_TYPES];
+ 
+ 
+ /* weapon attribut table */
+@@ -107,7 +108,8 @@
+ 	unsigned char add_ammo;
+ 	unsigned char max_ammo;
+ 	my_double shell_xspeed,shell_yspeed;
+-}weapon[ARMS];
++};
++extern struct weapon_type weapon[ARMS];
+ 
+ 
+ /* object in the game */
+--- a/editor.c
++++ b/editor.c
+@@ -26,7 +26,7 @@
+ int oldx=0,oldy=0;  /* old cursor position */
+ 
+ struct object_list objects;
+-struct object_list *last_obj;
++extern struct object_list *last_obj;
+ int level_number;
+ 
+ 
+--- a/server.c
++++ b/server.c
+@@ -100,7 +100,7 @@
+ struct object_list objects;
+ 
+ struct player_list *last_player;
+-struct object_list *last_obj;
++extern struct object_list *last_obj;
+ 
+ 
+ #ifdef WIN32

@@ -1,0 +1,36 @@
+From edc4f0ad8f37bb8aeae4e3ea34766dc6cdbb2f15 Mon Sep 17 00:00:00 2001
+From: David Carlos Manuelda <StormByte@gmail.com>
+Date: Tue, 7 Aug 2018 05:42:28 +0200
+Subject: [PATCH] Fix clang compilation
+
+---
+ src/mp4.cpp   | 2 +-
+ src/mp4util.h | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/mp4.cpp b/src/mp4.cpp
+index 1016f79..d576103 100644
+--- a/src/mp4.cpp
++++ b/src/mp4.cpp
+@@ -896,7 +896,7 @@ MP4FileHandle MP4ReadProvider( const char* fileName, const MP4FileProvider* file
+         }
+ 
+         catch (...) {
+-            return MP4_INVALID_TRACK_ID;
++            return (mp4v2_ismacrypParams *)MP4_INVALID_TRACK_ID;
+         }
+     }
+ 
+diff --git a/src/mp4util.h b/src/mp4util.h
+index 1fbbd81..b33bb44 100644
+--- a/src/mp4util.h
++++ b/src/mp4util.h
+@@ -33,7 +33,7 @@ namespace mp4v2 { namespace impl {
+ #ifndef ASSERT
+ #   define ASSERT(expr) \
+         if (!(expr)) { \
+-            throw new Exception("assert failure: "LIBMPV42_STRINGIFY((expr)), __FILE__, __LINE__, __FUNCTION__ ); \
++            throw new Exception("assert failure: " LIBMPV42_STRINGIFY((expr)), __FILE__, __LINE__, __FUNCTION__ ); \
+         }
+ #endif
+ 

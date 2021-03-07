@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>rust@gentoo.org</email>
+		<name>Rust Project</name>
+	</maintainer>
+	<use>
+		<flag name="clippy">Install clippy, Rust code linter</flag>
+		<flag name="rls">Install rls, Rust Language Server (used with IDEs supporting RLS protocol)</flag>
+		<flag name="rustfmt">Install rustfmt, Rust code formatter</flag>
+	</use>
+</pkgmetadata>

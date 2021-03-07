@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>haskell@gentoo.org</email>
+    <name>Gentoo Haskell</name>
+  </maintainer>
+  <longdescription lang="en">
+Haskell-Source with eXtensions (HSX, haskell-src-exts) is an extension of the
+standard haskell-src package, and handles most common syntactic extensions to
+Haskell, including:
+
+  * Multi-parameter type classes with functional dependencies
+  * Empty data declarations
+  * GADTs
+  * Implicit parameters (ghc and hugs style)
+  * Template Haskell (broken for 6.4, needs redoing)
+</longdescription>
+  <upstream>
+    <remote-id type="github">haskell-suite/haskell-src-exts</remote-id>
+  </upstream>
+</pkgmetadata>

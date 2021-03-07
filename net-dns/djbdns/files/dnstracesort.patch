@@ -1,0 +1,11 @@
+--- djbdns-1.05/dnstracesort.sh.orig	2006-04-26 21:52:54.000000000 +0200
++++ djbdns-1.05/dnstracesort.sh	2006-04-26 21:53:02.000000000 +0200
+@@ -12,7 +12,7 @@
+     }
+     print
+   }
+-' | sort -t: +0 -2 +4 +3 -4 +2 -3 | uniq | awk -F: '
++' | sort -t: -k 1,3 -k 5 -k 4,5 -k 3,4 | uniq | awk -F: '
+   {
+     type = $1
+     q = $2

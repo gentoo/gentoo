@@ -1,0 +1,136 @@
+From faf456bf2d081aa3cff52d0f9f714748a04628b1 Mon Sep 17 00:00:00 2001
+From: gbtami <gbtami@gmail.com>
+Date: Sat, 18 May 2019 18:50:17 +0200
+Subject: [PATCH] Fix bdist_rpm. Prevent importing GLib from setup.py
+
+---
+ lib/pychess/Savers/pgn.py         |  8 ++++----
+ lib/pychess/Utils/__init__.py     | 18 ++++++++++++++++++
+ lib/pychess/widgets/ChessClock.py | 20 ++------------------
+ 3 files changed, 24 insertions(+), 22 deletions(-)
+
+diff --git a/lib/pychess/Savers/pgn.py b/lib/pychess/Savers/pgn.py
+index ac4238471..2b089e1d1 100644
+--- a/lib/pychess/Savers/pgn.py
++++ b/lib/pychess/Savers/pgn.py
+@@ -10,8 +10,6 @@
+ import sys
+ import textwrap
+ 
+-from gi.repository import GLib
+-
+ import pexpect
+ 
+ from sqlalchemy import String
+@@ -23,7 +21,6 @@
+     WON_RESIGN, DRAW, BLACKWON, WHITEWON, NORMALCHESS, DRAW_AGREE, FIRST_PAGE, PREV_PAGE, NEXT_PAGE, \
+     ABORTED_REASONS, ADJOURNED_REASONS, WON_CALLFLAG, DRAW_ADJUDICATION, WON_ADJUDICATION, \
+     WHITE_ENGINE_DIED, BLACK_ENGINE_DIED, RUNNING, TOOL_NONE, TOOL_CHESSDB, TOOL_SCOUTFISH
+-
+ from pychess.System import conf
+ from pychess.System.Log import log
+ from pychess.System.protoopen import PGN_ENCODING
+@@ -35,7 +32,7 @@
+ from pychess.Utils.elo import get_elo_rating_change_pgn
+ from pychess.Utils.logic import getStatus
+ from pychess.Variants import name2variant, NormalBoard, variants
+-from pychess.widgets.ChessClock import formatTime
++from pychess.Utils import formatTime
+ from pychess.Savers.ChessFile import ChessFile, LoadingError
+ from pychess.Savers.database import col2label, TagDatabase, parseDateTag
+ from pychess.Database import model as dbmodel
+@@ -460,6 +457,7 @@ def init_tag_database(self, importer=None):
+             if size > 10000000:
+                 drop_indexes(self.engine)
+             if self.progressbar is not None:
++                from gi.repository import GLib
+                 GLib.idle_add(self.progressbar.set_text, _("Importing game headers..."))
+             if importer is None:
+                 importer = PgnImport(self)
+@@ -477,6 +475,7 @@ def init_chess_db(self):
+         if chess_db_path is not None and self.path and self.size > 0:
+             try:
+                 if self.progressbar is not None:
++                    from gi.repository import GLib
+                     GLib.idle_add(self.progressbar.set_text, _("Creating .bin index file..."))
+                 self.chess_db = Parser(engine=(chess_db_path, ))
+                 self.chess_db.open(self.path)
+@@ -503,6 +502,7 @@ def init_scoutfish(self):
+         if scoutfish_path is not None and self.path and self.size > 0:
+             try:
+                 if self.progressbar is not None:
++                    from gi.repository import GLib
+                     GLib.idle_add(self.progressbar.set_text, _("Creating .scout index file..."))
+                 self.scoutfish = Scoutfish(engine=(scoutfish_path, ))
+                 self.scoutfish.open(self.path)
+diff --git a/lib/pychess/Utils/__init__.py b/lib/pychess/Utils/__init__.py
+index 481273854..038c798da 100755
+--- a/lib/pychess/Utils/__init__.py
++++ b/lib/pychess/Utils/__init__.py
+@@ -1,9 +1,27 @@
+ import asyncio
+ import weakref
++from math import ceil
+ 
+ from pychess.Utils.lutils.ldata import MATE_VALUE, MATE_DEPTH
+ 
+ 
++def formatTime(seconds, clk2pgn=False):
++    minus = ""
++    if seconds <= -10 or seconds >= 10:
++        seconds = ceil(seconds)
++    if seconds < 0:
++        minus = "-"
++        seconds = -seconds
++    hours, remainder = divmod(seconds, 3600)
++    minutes, seconds = divmod(remainder, 60)
++    if hours or clk2pgn:
++        return minus + "%d:%02d:%02d" % (hours, minutes, seconds)
++    elif not minutes and seconds < 10:
++        return minus + "%.1f" % seconds
++    else:
++        return minus + "%d:%02d" % (minutes, seconds)
++
++
+ def prettyPrintScore(s, depth, format_mate=False):
+     """The score parameter is an eval value from White point of view"""
+ 
+diff --git a/lib/pychess/widgets/ChessClock.py b/lib/pychess/widgets/ChessClock.py
+index 8811d13db..740e0828a 100644
+--- a/lib/pychess/widgets/ChessClock.py
++++ b/lib/pychess/widgets/ChessClock.py
+@@ -1,32 +1,16 @@
+ # -*- coding: UTF-8 -*-
+ 
+-from math import ceil, pi, cos, sin
++from math import pi, cos, sin
+ 
+ import cairo
+ from gi.repository import GLib, Gtk, Gdk, Pango, PangoCairo, GObject
+ 
+ from pychess.System import conf
++from pychess.Utils import formatTime
+ from pychess.Utils.const import BLACK, WHITE, LOCAL, UNFINISHED_STATES, DRAW, WHITEWON, BLACKWON, UNKNOWN_STATE
+ from . import preferencesDialog
+ 
+ 
+-def formatTime(seconds, clk2pgn=False):
+-    minus = ""
+-    if seconds <= -10 or seconds >= 10:
+-        seconds = ceil(seconds)
+-    if seconds < 0:
+-        minus = "-"
+-        seconds = -seconds
+-    hours, remainder = divmod(seconds, 3600)
+-    minutes, seconds = divmod(remainder, 60)
+-    if hours or clk2pgn:
+-        return minus + "%d:%02d:%02d" % (hours, minutes, seconds)
+-    elif not minutes and seconds < 10:
+-        return minus + "%.1f" % seconds
+-    else:
+-        return minus + "%d:%02d" % (minutes, seconds)
+-
+-
+ class ChessClock(Gtk.DrawingArea):
+     def __init__(self):
+         GObject.GObject.__init__(self)

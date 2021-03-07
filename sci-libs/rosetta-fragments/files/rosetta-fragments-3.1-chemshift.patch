@@ -1,0 +1,62 @@
+ chemshift/make.system | 24 ++++++++++++------------
+ chemshift/makefile    |  2 +-
+ 2 files changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/chemshift/make.system b/chemshift/make.system
+index 53bbd38..d105802 100644
+--- a/chemshift/make.system
++++ b/chemshift/make.system
+@@ -60,18 +60,18 @@ endif
+ ########## once COMPILER is set, here are the options
+ 
+ # defaults
+-F77=f77
+-FFLAGS=
+-FOPTIMFLAGS=-O
+-FDEBUGFLAGS=-g
++F77?=f77
++FFLAGS?=
++FOPTIMFLAGS?=
++FDEBUGFLAGS?=
+ FPROFILEFLAGS=-P
+ 
+ ifeq ($(COMPILER),gnu)
+-	F77 = g77
+-	FFLAGS = -finline-functions -funroll-loops -W  -ffixed-line-length-132 -Wimplicit
+-	FOPTIMFLAGS = -O -ffast-math -malign-double
+-	FDEBUGFLAGS = -g -Wall -Wimplicit -Wsurprising -Wformat -W
+-	FPROFILEFLAGS = -pg
++	F77 ?= g77
++	FFLAGS += -W  -ffixed-line-length-132 -Wimplicit
++	FOPTIMFLAGS += -malign-double
++	FDEBUGFLAGS += -Wall -Wimplicit -Wsurprising -Wformat -W
++	FPROFILEFLAGS =
+ endif
+ 
+ ifeq ($(COMPILER),pgi) # on mary, good bounds checking
+@@ -108,9 +108,9 @@ endif
+ 
+ # Suse ppc gnu
+ ifeq ($(COMPILER),ppc)
+-	F77 = g77
+-	FFLAGS = -Wall -finline-functions -funroll-loops -W -ffixed-line-length-132
+-	FDEBUGFLAGS = -g -C -Mbounds
++	F77 ?= g77
++	FFLAGS += -Wall -W -ffixed-line-length-132
++	FDEBUGFLAGS += -C -Mbounds
+ 	FOPTIMFLAGS =
+ endif
+ 
+diff --git a/chemshift/makefile b/chemshift/makefile
+index 712e98f..05d3b64 100644
+--- a/chemshift/makefile
++++ b/chemshift/makefile
+@@ -64,7 +64,7 @@ regular: compile
+ # rule to compile executable
+ compile: $(BASE_NAME).$(COMPILER)
+ $(BASE_NAME).$(COMPILER) : print ${OBJS}
+-	$(F77) $(FFLAGS) -o $@ $(OBJS) $(LINKFLAGS)
++	$(F77) $(FFLAGS) $(LDFLAGS) -o $@ $(OBJS) $(LINKFLAGS)
+ 
+ # rule to compile object files:
+ .$(COMPILER).%.o: %.f

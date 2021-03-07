@@ -1,0 +1,33 @@
+--- a/src/hints.c
++++ b/src/hints.c
+@@ -43,7 +43,7 @@ Atom win_hints, win_state, win_client_list, win_layer, win_workspace,
+   win_workspace_count, win_desktop_button_proxy, win_supporting_wm_check,
+   gnome_panel_desktop_area;
+ Atom net_atoms[NET_ATOM_COUNT];
+-Display *dpy;
++extern Display *dpy;
+ 
+ void
+ initHints (Display * d)
+--- a/src/keyboard.c
++++ b/src/keyboard.c
+@@ -35,6 +35,8 @@
+ #include <stdio.h>
+ #endif
+ 
++int NumLockMask, CapsLockMask, ScrollLockMask;
++
+ void
+ parseKeyString (Display * dpy, MyKey * key, char *str)
+ {
+--- a/src/keyboard.h
++++ b/src/keyboard.h
+@@ -90,7 +90,7 @@ void grabKey (Display *, MyKey *, Window);
+ void ungrabKeys (Display *, Window);
+ void init_keyboard (Display * dpy);
+ 
+-int NumLockMask, CapsLockMask, ScrollLockMask;
++extern int NumLockMask, CapsLockMask, ScrollLockMask;
+ 
+ #endif /* __KEYBOARD_H */
+ 

@@ -1,0 +1,16 @@
+ src/actions.c |    2 ++
+ 1 files changed, 2 insertions(+), 0 deletions(-)
+
+diff --git a/src/actions.c b/src/actions.c
+index d42a63a..1f5a0d1 100644
+--- a/src/actions.c
++++ b/src/actions.c
+@@ -30,6 +30,8 @@
+ #include <libintl.h>
+ #define _(String) gettext (String)
+ 
++#include <ctype.h>
++
+ /* Handle a control c by either exiting pdmenu or doing nothing. */
+ void Handle_Ctrl_C() {
+   if (Q_Exits) {

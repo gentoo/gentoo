@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>aballier@gentoo.org</email>
+    <name>Alexis Ballier</name>
+  </maintainer>
+  <longdescription>
+    libccd is library for a collision detection between two convex shapes.
+    libccd implements variation on Gilbert–Johnson–Keerthi algorithm plus Expand Polytope Algorithm (EPA) and also
+    implements algorithm Minkowski Portal Refinement (MPR, a.k.a. XenoCollide) as described in Game Programming Gems 7.
+  </longdescription>
+  <use>
+    <flag name="double-precision">More precise calculations at the expense of speed</flag>
+  </use>
+  <upstream>
+    <bugs-to>https://github.com/danfis/libccd/issues</bugs-to>
+    <remote-id type="github">danfis/libccd</remote-id>
+  </upstream>
+</pkgmetadata>

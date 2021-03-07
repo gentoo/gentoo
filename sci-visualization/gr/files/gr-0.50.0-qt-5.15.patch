@@ -1,0 +1,21 @@
+From 20204e37d8411b19b69a7ee5c776035c07f7175d Mon Sep 17 00:00:00 2001
+From: Sutou Kouhei <kou@clear-code.com>
+Date: Sun, 31 May 2020 11:56:51 +0900
+Subject: [PATCH] Include QPainterPath explicitly for Qt 5.15.0
+
+---
+ lib/gks/plugin/qt5plugin.cxx | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/lib/gks/plugin/qt5plugin.cxx b/lib/gks/plugin/qt5plugin.cxx
+index de9cd3d2..301d7fb9 100644
+--- a/lib/gks/plugin/qt5plugin.cxx
++++ b/lib/gks/plugin/qt5plugin.cxx
+@@ -6,6 +6,7 @@
+ 
+ #include <QtWidgets/QWidget>
+ #include <QtGui/QPainter>
++#include <QtGui/QPainterPath>
+ #include <QtGui/QImage>
+ #include <QtGui/QGuiApplication>
+ #include <QtGui/QScreen>

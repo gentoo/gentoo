@@ -1,0 +1,42 @@
+diff -ur tvmet-1.7.2-orig/configure tvmet-1.7.2/configure
+--- tvmet-1.7.2-orig/configure	2009-04-19 16:27:20.000000000 -0400
++++ tvmet-1.7.2/configure	2009-04-19 16:48:52.000000000 -0400
+@@ -2659,11 +2659,9 @@
+      ;;
+      *:*)                   # Simple initialization syntax
+        CXX=`echo "$cxxwith" | sed  -n -e 's/.*:\(.*\)/\1/p'`
+-       CXXFLAGS=""
+      ;;
+      *)                     # Default values
+        CXX="g++"
+-       CXXFLAGS=""
+      ;;
+    esac
+        CXX_OPTIMIZE_FLAGS="-DTVMET_OPTIMIZE -O2 -finline-limit=5000 -ftemplate-depth-200 -fomit-frame-pointer"
+@@ -3704,7 +3702,6 @@
+   echo "$as_me: failed program was:" >&5
+ sed 's/^/| /' conftest.$ac_ext >&5
+ 
+-	CXXFLAGS=""
+       cat >conftest.$ac_ext <<_ACEOF
+ /* confdefs.h.  */
+ _ACEOF
+@@ -3799,15 +3796,9 @@
+   CXXFLAGS=$ac_save_CXXFLAGS
+ elif test $ac_cv_prog_cxx_g = yes; then
+   if test "$GXX" = yes; then
+-    CXXFLAGS="-g -O2"
++    CXXFLAGS+="$CXXFLAGS -g -O2"
+   else
+-    CXXFLAGS="-g"
+-  fi
+-else
+-  if test "$GXX" = yes; then
+-    CXXFLAGS="-O2"
+-  else
+-    CXXFLAGS=
++    CXXFLAGS+="$CXXFLAGS -g"
+   fi
+ fi
+ ac_ext=cpp
+

@@ -1,0 +1,36 @@
+--- xloadimage.4.1/zio.c	1993-10-28 17:10:02.000000000 +0000
++++ xloadimage.4.1/zio.c	2005-02-28 15:32:05.895470680 +0000
+@@ -210,9 +211,30 @@
+     if ((strlen(name) > strlen(filter->extension)) &&
+ 	!strcmp(filter->extension,
+ 		name + (strlen(name) - strlen(filter->extension)))) {
+-      debug(("Filtering image through '%s'\n", filter->filter));
+-      zf->type= ZPIPE;
+-      sprintf(buf, "%s %s", filter->filter, name);
++            char *fname, *t, *s;
++            
++            /* meta-char protection from xli.
++             *
++             * protect in single quotes, replacing single quotes
++             * with '"'"', so worst-case expansion is 5x
++             */
++            
++            s = fname = (char *) lmalloc(1 + (5 * strlen(name)) + 1 + 1);
++			*s++ = '\'';
++            for (t = name; *t; ++t) {
++                if ('\'' == *t) {
++					/* 'foo'bar' -> 'foo'"'"'bar' */
++                    strcpy(s, "'\"'\"'");
++					s += strlen(s);
++                } else {
++                    *s++ = *t;
++                }
++            }
++            strcpy (s, "'");
++            debug(("Filtering image through '%s'\n", filter->filter));
++            zf->type= ZPIPE;
++            sprintf(buf, "%s %s", filter->filter, fname);
++            lfree (fname);
+       if (! (zf->stream= popen(buf, "r"))) {
+ 	lfree((byte *)zf->filename);
+ 	zf->filename= NULL;

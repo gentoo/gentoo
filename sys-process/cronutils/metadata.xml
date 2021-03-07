@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+		Utilities to assist running batch processing jobs.
+
+		* runalarm: Limit the run time of a process.
+		* runlock: Prevent concurrent runs of a process.
+		* runstat: Export statistics about a process's execution.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">google/cronutils</remote-id>
+	</upstream>
+</pkgmetadata>

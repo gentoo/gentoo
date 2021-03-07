@@ -1,0 +1,21 @@
+--- a/enumerator.cabal
++++ b/enumerator.cabal
+@@ -152,2 +152,5 @@ library
+ 
++  if !impl(ghc >= 8.0)
++    build-depends: semigroups == 0.18.*
++
+   exposed-modules:
+--- a/lib/Data/Enumerator/Internal.hs
++++ b/lib/Data/Enumerator/Internal.hs
+@@ -50,2 +50,3 @@ import           Data.Function (fix)
+ import           Data.Monoid (Monoid, mempty, mappend, mconcat)
++import qualified Data.Semigroup as S
+ 
+@@ -73,2 +74,6 @@ instance Monad Stream where
+ 
++instance S.Semigroup (Stream a) where
++	(<>) (Chunks xs) (Chunks ys) = Chunks (xs ++ ys)
++	(<>) _ _ = EOF
++
+ instance Monoid (Stream a) where

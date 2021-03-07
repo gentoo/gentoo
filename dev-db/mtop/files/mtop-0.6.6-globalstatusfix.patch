@@ -1,0 +1,12 @@
+diff -ur mtop-0.6.6/work/mtop-0.6.6/mtop.PL mtop-0.6.6-r1/work/mtop-0.6.6/mtop.PL
+--- mtop-0.6.6/work/mtop-0.6.6/mtop.PL	2004-09-13 00:22:03.000000000 +0200
++++ mtop-0.6.6-r1/work/mtop-0.6.6/mtop.PL	2009-12-08 15:04:56.000000000 +0100
+@@ -568,7 +568,7 @@
+     die "Unable to connect to mysql [", $DBI::errstr, "]\n";
+ 
+ my $st_procs   = $dbh->prepare("show full processlist");
+-my $st_status  = $dbh->prepare("show status");
++my $st_status  = $dbh->prepare("show global status");
+ my $st_kill    = $dbh->prepare("kill ?");
+ my $st_flush   = $dbh->prepare("flush status");
+ my $st_vars    = $dbh->prepare("show variables");

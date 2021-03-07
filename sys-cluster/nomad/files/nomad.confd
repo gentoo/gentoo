@@ -1,0 +1,2 @@
+# extra arguments for nomad
+command_args="agent -config=/etc/nomad.d"

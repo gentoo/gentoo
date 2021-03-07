@@ -1,0 +1,61 @@
+From b9a07b1ff100d5efeb5698d0ffe1c56935c681b8 Mon Sep 17 00:00:00 2001
+From: zimous <zimous@matfyz.cz>
+Date: Mon, 2 Sep 2019 12:46:53 +0200
+Subject: [PATCH] Fix build against ncurses with separate tinfo lib
+
+Gentoo-bug: https://bugs.gentoo.org/692614
+---
+ configure.ac | 22 ++++++++++++++++++----
+ 1 file changed, 18 insertions(+), 4 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 9426a94..958375f 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -52,11 +52,23 @@ AC_ARG_WITH(
+ AS_IF([test "x$with_ui" != xno], [
+ 	AC_CHECK_LIB([ncursesw],[tparm],[
+ 		CURSESLIB=-lncursesw
++        AC_CHECK_LIB([tinfow],[tgetent], [
++            CURSESLIB="$CURSESLIB -ltinfow"
++        ])
+ 	],[AC_CHECK_LIB([curses],[tparm],[
+ 		CURSESLIB=-lcurses
++        AC_CHECK_LIB([tinfo],[tgetent], [
++            CURSESLIB="$CURSESLIB -ltinfo"
++        ])
+ 	],[AC_CHECK_LIB([ncurses],[tparm],[
+ 		CURSESLIB=-lncurses
+-	])])])
++        AC_CHECK_LIB([tinfo],[tgetent], [
++            CURSESLIB="$CURSESLIB -ltinfo"
++        ])
++	],
++    [-ltinfo])],
++    [-ltinfo])],
++    [-ltinfow])
+    if test "$CURSESLIB" != "" ; then
+ 	echo Compiling with curses user interface.
+ 	AC_CHECK_HEADERS([curses.h])
+@@ -78,13 +90,15 @@ AC_ARG_WITH(
+ )
+ READLINELIB=""
+ AS_IF([test "x$with_readline" != xno],
+-	[AC_CHECK_LIB([tinfo],[tgetent], [
++	[AC_CHECK_LIB([tinfow],[tgetent], [
++		TERMLIB=-ltinfow
++    ],[AC_CHECK_LIB([tinfo],[tgetent], [
+ 		TERMLIB=-ltinfo
+-        ],[AC_CHECK_LIB([curses],[tparm],[
++    ],[AC_CHECK_LIB([curses],[tparm],[
+ 		TERMLIB=-lncurses
+ 	],[AC_CHECK_LIB([termcap],[tgetent],[
+ 		TERMLIB=-ltermcap
+-	])])])
++	])])])])
+ 	LDSAVE=$LDFLAGS
+ 	LDFLAGS="$LDFLAGS $TERMLIB"
+ 	AC_CHECK_LIB([readline],[readline],[
+-- 
+2.24.1
+

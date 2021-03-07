@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<upstream>
+		<maintainer status="active">
+			<email>rafael@rafaelmartins.eng.br</email>
+			<name>Rafael G. Martins</name>
+		</maintainer>
+		<bugs-to>mailto:rafael@rafaelmartins.eng.br</bugs-to>
+		<remote-id type="pypi">marrie</remote-id>
+		<remote-id type="github">rafaelmartins/marrie</remote-id>
+	</upstream>
+</pkgmetadata>

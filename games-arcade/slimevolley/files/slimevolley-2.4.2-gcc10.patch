@@ -1,0 +1,263 @@
+Author: Reiner Herrmann <reiner@reiner-h.de>
+Description: Fix FTBFS with GCC 10
+Bug-Debian: https://bugs.debian.org/957813
+
+--- a/src/themes.h
++++ b/src/themes.h
+@@ -41,28 +41,28 @@
+ bool _charge_theme_act(char* theme_select);
+ void _theme_suivant(bool initial);
+ 
+-char nom_theme[32];
+-char theme_act[32];
++extern char nom_theme[32];
++extern char theme_act[32];
+ 
+-int menu_decalage, menu_t_police, menu_ecart;
++extern int menu_decalage, menu_t_police, menu_ecart;
+ 
+-SDL_Color coul_txt_menu, coul_txt_dial, coul_txt_jeu, coul_filet, coul_sol, coul_fond;
++extern SDL_Color coul_txt_menu, coul_txt_dial, coul_txt_jeu, coul_filet, coul_sol, coul_fond;
+ 
+-SDL_Surface *sol, *filet, *balle_img, *fleche, *oeil, *icone_jg, *icone_jd, *icone_fen;
++extern SDL_Surface *sol, *filet, *balle_img, *fleche, *oeil, *icone_jg, *icone_jd, *icone_fen;
+ 
+-SDL_Surface **img_grand_jg, **img_grand_jd, **img_2J_jg, **img_2J_jd, **img_3J_jg, **img_3J_jd;
+-Uint8 img_max_jg, img_max_jd;
++extern SDL_Surface **img_grand_jg, **img_grand_jd, **img_2J_jg, **img_2J_jd, **img_3J_jg, **img_3J_jd;
++extern Uint8 img_max_jg, img_max_jd;
+ 
+-SDL_Surface *fond, *fond_jeu;
++extern SDL_Surface *fond, *fond_jeu;
+ 
+-TTF_Font* police; /* La police de caract√®res */
+-TTF_Font* police_menu;
++extern TTF_Font* police; /* La police de caract√®res */
++extern TTF_Font* police_menu;
+ 
+-Uint16 decalage_haut, decalage_gauche;
+-float ratio_police;
++extern Uint16 decalage_haut, decalage_gauche;
++extern float ratio_police;
+ 
+-bool th_libere;
++extern bool th_libere;
+ 
+-char* chemin_moi;
++extern char* chemin_moi;
+ 
+ #endif
+--- a/src/themes_general.c
++++ b/src/themes_general.c
+@@ -31,6 +31,21 @@
+ #define RATIO_3J .6
+ #define RATIO_IC .4
+ 
++char nom_theme[32];
++char theme_act[32];
++int menu_decalage, menu_t_police, menu_ecart;
++SDL_Color coul_txt_menu, coul_txt_dial, coul_txt_jeu, coul_filet, coul_sol, coul_fond;
++SDL_Surface *sol, *filet, *balle_img, *fleche, *oeil, *icone_jg, *icone_jd, *icone_fen;
++SDL_Surface **img_grand_jg, **img_grand_jd, **img_2J_jg, **img_2J_jd, **img_3J_jg, **img_3J_jd;
++Uint8 img_max_jg, img_max_jd;
++SDL_Surface *fond, *fond_jeu;
++TTF_Font* police; /* La police de caract√®res */
++TTF_Font* police_menu;
++Uint16 decalage_haut, decalage_gauche;
++float ratio_police;
++bool th_libere;
++char* chemin_moi;
++
+ SDL_Rect filet_rect = { FILET_GAUCHE, HAUT_ECRAN - HAUT_SOL - FILET_HAUT, 0, 0 };
+ SDL_Rect sol_rect = { 0, HAUT_ECRAN - HAUT_SOL, 0, 0 };
+ SDL_Rect fond_rect;
+--- a/src/slime.c
++++ b/src/slime.c
+@@ -53,6 +53,20 @@
+ 	#endif
+ #endif
+ 
++SDL_Event evenement;
++SDL_Surface *ecran; /* L'√©cran */
++joueur tab_joueurs[NB_JOUEURS_T]; /* Ce tableau contient les configuration des joueurs */
++touches_joueur touches[4];
++Uint8 nb_balles;
++balle_obj tab_balles[MAX_BALLES];
++config_slime conf; /* La configuration actuelle (modifiable) */
++Uint8 act_conf;
++Uint32 ev_timer(Uint32 intervalle, void* param);
++Uint16 h_ecran, l_ecran;
++bool quitter;
++bool fen_ok;
++bool plein_ecran, aff_fps, aff_sc_perm;
++
+ char conf_chemin[64] = CONFIG_NOM;
+ 
+ void afficher(char* chaine, TTF_Font* police_texte, SDL_Color coul_texte, Uint16 posX, Uint16 posY) {
+--- a/src/slime.h
++++ b/src/slime.h
+@@ -68,7 +68,7 @@
+ 	#define snprintf5(a, b, c, d, e) snprintf(a, b, c, d, e)
+ #endif
+ 
+-SDL_Event evenement;
++extern SDL_Event evenement;
+ 
+ void afficher(char* chaine, TTF_Font* police_texte, SDL_Color coul_text, Uint16 posX, Uint16 posY);
+ void aff_aide(const char* texte);
+@@ -85,23 +85,23 @@
+ 
+ /* Les variables globales n√©cessaires... */
+ 
+-SDL_Surface *ecran; /* L'√©cran */
++extern SDL_Surface *ecran; /* L'√©cran */
+ 
+-joueur tab_joueurs[NB_JOUEURS_T]; /* Ce tableau contient les configuration des joueurs */
+-touches_joueur touches[4];
++extern joueur tab_joueurs[NB_JOUEURS_T]; /* Ce tableau contient les configuration des joueurs */
++extern touches_joueur touches[4];
+ 
+-Uint8 nb_balles;
+-balle_obj tab_balles[MAX_BALLES];
++extern Uint8 nb_balles;
++extern balle_obj tab_balles[MAX_BALLES];
+ 
+-config_slime conf; /* La configuration actuelle (modifiable) */
++extern config_slime conf; /* La configuration actuelle (modifiable) */
+ 
+-Uint8 act_conf;
++extern Uint8 act_conf;
+ 
+-Uint32 ev_timer(Uint32 intervalle, void* param);
++extern Uint32 ev_timer(Uint32 intervalle, void* param);
+ 
+-Uint16 h_ecran, l_ecran;
++extern Uint16 h_ecran, l_ecran;
+ 
+-bool quitter;
+-bool fen_ok;
+-bool plein_ecran, aff_fps, aff_sc_perm;
++extern bool quitter;
++extern bool fen_ok;
++extern bool plein_ecran, aff_fps, aff_sc_perm;
+ #endif
+--- a/src/audio.c
++++ b/src/audio.c
+@@ -26,6 +26,10 @@
+ #include "slime.h"
+ #include "audio.h"
+ 
++bool audio_desact;
++bool son_active;
++slime_son sons[NB_SONS];
++
+ SDL_AudioSpec format_obtenu;
+ 
+ slime_son* son_act;
+--- a/src/audio.h
++++ b/src/audio.h
+@@ -40,8 +40,8 @@
+ 
+ void stop_son(void);
+ 
+-bool audio_desact;
+-bool son_active;
++extern bool audio_desact;
++extern bool son_active;
+ 
+ enum {
+ 	SON_RBD_SLIME	= 0,
+@@ -54,6 +54,6 @@
+ 	NB_SONS			= 7
+ };
+ 
+-slime_son sons[NB_SONS];
++extern slime_son sons[NB_SONS];
+ 
+ #endif
+--- a/src/reseau.c
++++ b/src/reseau.c
+@@ -34,6 +34,11 @@
+ #define PORT 2222 /* A changer aussi dans les messages */
+ #define HANDSHAKE "HelloSV241"
+ 
++Uint8 nb_reseau; /* Nombre de joueurs r√©seau */
++Uint8 nb_total; /* Nombre de joueurs au total */
++UDPpacket* paquet;
++Uint8 clt_id_joueur;
++
+ UDPsocket res_socket;
+ IPaddress j_adresses[NB_JOUEURS_T];
+ 
+--- a/src/reseau.h
++++ b/src/reseau.h
+@@ -48,12 +48,12 @@
+ Uint8 connecte_client(char* addr_ip);
+ void deconnecte_client(void);
+ 
+-Uint8 nb_reseau; /* Nombre de joueurs r√©seau */
+-Uint8 nb_total; /* Nombre de joueurs au total */
++extern Uint8 nb_reseau; /* Nombre de joueurs r√©seau */
++extern Uint8 nb_total; /* Nombre de joueurs au total */
+ 
+-UDPpacket* paquet;
++extern UDPpacket* paquet;
+ 
+-Uint8 clt_id_joueur;
++extern Uint8 clt_id_joueur;
+ 
+ #endif
+ #endif
+--- a/src/menu.c
++++ b/src/menu.c
+@@ -31,6 +31,11 @@
+ 
+ #define TEXTE_GAUCHE 170
+ 
++int decalage; /* Pour aligner les slimes par rapport au texte */
++Sint8 menu_act; /* L'√©l√©ment de menu actuellement choisi */
++Uint8 menu_raf; /* L'√©l√©ment de menu actuellement rafraichi */
++Sint8 action; /* Indique la touche press√©e par l'utilisateur (gauche/retour/droite) */
++
+ void affiche_menu(menu_elem* fonctions, Uint8 n, char* nom_retour) {
+ 	Uint8 i;
+ 
+--- a/src/menu.h
++++ b/src/menu.h
+@@ -41,10 +41,10 @@
+ 
+ void affiche_menu(menu_elem* fonctions, Uint8 n, char* nom_retour);
+ 
+-int decalage; /* Pour aligner les slimes par rapport au texte */
++extern int decalage; /* Pour aligner les slimes par rapport au texte */
+ 
+-Sint8 menu_act; /* L'ÈlÈment de menu actuellement choisi */
+-Uint8 menu_raf; /* L'ÈlÈment de menu actuellement rafraichi */
+-Sint8 action; /* Indique la touche pressÈe par l'utilisateur (gauche/retour/droite) */
++extern Sint8 menu_act; /* L'ÈlÈment de menu actuellement choisi */
++extern Uint8 menu_raf; /* L'ÈlÈment de menu actuellement rafraichi */
++extern Sint8 action; /* Indique la touche pressÈe par l'utilisateur (gauche/retour/droite) */
+ 
+ #endif
+--- a/src/menu_options.c
++++ b/src/menu_options.c
+@@ -26,7 +26,7 @@
+ #include "reseau.h"
+ #include "audio.h"
+ 
+-char tmp_chaine[64];
++static char tmp_chaine[64];
+ 
+ void m_touches_act(void) {
+ 	configClavier();
+--- a/src/menu_princ.c
++++ b/src/menu_princ.c
+@@ -27,7 +27,7 @@
+ #include "slime.h"
+ #include "themes.h"
+ 
+-char tmp_chaine[64];
++static char tmp_chaine[64];
+ 
+ char* m_vitesse_aff(void) {
+ 	const char* noms_confs[] = { N_("normal"), N_("turbo"), N_("sprint") , N_("fury") };

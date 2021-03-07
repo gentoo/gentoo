@@ -1,0 +1,27 @@
+commit be8fd5831afa0a04f14cd6206e6576f03ee59558
+Author: Amaury Pouly <amaury.pouly@gmail.com>
+Date:   Sat Sep 17 16:40:46 2016 +0100
+
+    Fix GPG test
+    
+    At least GnuPG, when run with both --fingerprint and --with-colons will output
+    the fingerprint of the public key and the subkey. The command below will thus
+    output two fingerprints and the delete command will fail because it cannot
+    find the second fingerprint (which is a subkey and not a public key). It seems
+    that a safe approach is to consider only the first fingerprint line.
+    
+    Change-Id: I4c6aa79e4473bca146aa087728a5652d91586a81
+
+diff --git a/tests/Cryptography/keygen.sh b/tests/Cryptography/keygen.sh
+index c94c0ab..98c69ca 100755
+--- a/tests/Cryptography/keygen.sh
++++ b/tests/Cryptography/keygen.sh
+@@ -115,7 +115,7 @@ $TAIL" > crypto_test_data.h
+ echo -n "key *\nexpire\nseconds=1\nsave\n" | ${GPG} --no-tty --quiet --command-fd 0 --edit-key "expired@test.trojita.flaska.net"
+ 
+ # extract fingerprint of key to be deleted
+-FINGERPRINT="$(${GPG} --quiet --no-tty --list-keys --with-colons --fingerprint unknown@test.trojita.flaska.net | grep fpr | cut -d : -f 10)"
++FINGERPRINT="$(${GPG} --quiet --no-tty --list-keys --with-colons --fingerprint unknown@test.trojita.flaska.net | grep fpr | head -n 1 | cut -d : -f 10)"
+ 
+ # delete key
+ yes | DISPLAY="" ${GPG} --quiet --batch --no-tty --delete-secret-and-public-key --yes --command-fd 0 --passphrase-fd 0 "${FINGERPRINT}"

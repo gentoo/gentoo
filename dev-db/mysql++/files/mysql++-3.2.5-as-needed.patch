@@ -1,0 +1,178 @@
+https://bugs.gentoo.org/635414
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -408,55 +408,55 @@ $(LIBPREFIX)mysqlpp_ssqls2parse$(LIBEXT): $(SSQLS2PARSE_OBJECTS) $(DLLPREFIX)mys
+ 	$(RANLIB) $@
+ 
+ ssqlsxlat$(EXEEXT): $(SSQLSXLAT_OBJECTS) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3) $(LIBPREFIX)mysqlpp_ssqls2parse$(LIBEXT) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(SSQLSXLAT_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp -lmysqlpp_ssqls2parse -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(SSQLSXLAT_OBJECTS) $(LDFLAGS) -L. -lmysqlpp -lmysqlpp_ssqls2parse -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ test_array_index$(EXEEXT): $(TEST_ARRAY_INDEX_OBJECTS) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(TEST_ARRAY_INDEX_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(TEST_ARRAY_INDEX_OBJECTS) $(LDFLAGS) -L. -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ test_cpool$(EXEEXT): $(TEST_CPOOL_OBJECTS) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(TEST_CPOOL_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(TEST_CPOOL_OBJECTS) $(LDFLAGS) -L. -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ test_datetime$(EXEEXT): $(TEST_DATETIME_OBJECTS) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(TEST_DATETIME_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(TEST_DATETIME_OBJECTS) $(LDFLAGS) -L. -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ test_inttypes$(EXEEXT): $(TEST_INTTYPES_OBJECTS) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(TEST_INTTYPES_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(TEST_INTTYPES_OBJECTS) $(LDFLAGS) -L. -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ test_insertpolicy$(EXEEXT): $(TEST_INSERTPOLICY_OBJECTS) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(TEST_INSERTPOLICY_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(TEST_INSERTPOLICY_OBJECTS) $(LDFLAGS) -L. -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ test_manip$(EXEEXT): $(TEST_MANIP_OBJECTS) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(TEST_MANIP_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(TEST_MANIP_OBJECTS) $(LDFLAGS) -L. -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ test_null_comparison$(EXEEXT): $(TEST_NULL_COMPARISON_OBJECTS) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(TEST_NULL_COMPARISON_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(TEST_NULL_COMPARISON_OBJECTS) $(LDFLAGS) -L. -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ test_query_copy$(EXEEXT): $(TEST_QUERY_COPY_OBJECTS) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(TEST_QUERY_COPY_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(TEST_QUERY_COPY_OBJECTS) $(LDFLAGS) -L. -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ test_qssqls$(EXEEXT): $(TEST_QSSQLS_OBJECTS) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(TEST_QSSQLS_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(TEST_QSSQLS_OBJECTS) $(LDFLAGS) -L. -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ test_qstream$(EXEEXT): $(TEST_QSTREAM_OBJECTS) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(TEST_QSTREAM_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(TEST_QSTREAM_OBJECTS) $(LDFLAGS) -L. -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ test_sqlstream$(EXEEXT): $(TEST_SQLSTREAM_OBJECTS) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(TEST_SQLSTREAM_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(TEST_SQLSTREAM_OBJECTS) $(LDFLAGS) -L. -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ test_ssqls2$(EXEEXT): $(TEST_SSQLS2_OBJECTS) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3) $(LIBPREFIX)mysqlpp_ssqls2parse$(LIBEXT) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3) $(LIBPREFIX)mysqlpp_ssqls2parse$(LIBEXT)
+-	$(CXX) -o $@ $(TEST_SSQLS2_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp -lmysqlpp_ssqls2parse -lmysqlpp -lmysqlpp_ssqls2parse $(LIBS)
++	$(CXX) -o $@ $(TEST_SSQLS2_OBJECTS) $(LDFLAGS) -L. -lmysqlpp -lmysqlpp_ssqls2parse -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ test_string$(EXEEXT): $(TEST_STRING_OBJECTS) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(TEST_STRING_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(TEST_STRING_OBJECTS) $(LDFLAGS) -L. -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ test_tcp$(EXEEXT): $(TEST_TCP_OBJECTS) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(TEST_TCP_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(TEST_TCP_OBJECTS) $(LDFLAGS) -L. -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ test_uds$(EXEEXT): $(TEST_UDS_OBJECTS) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(TEST_UDS_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(TEST_UDS_OBJECTS) $(LDFLAGS) -L. -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ test_wnp$(EXEEXT): $(TEST_WNP_OBJECTS) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(TEST_WNP_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(TEST_WNP_OBJECTS) $(LDFLAGS) -L. -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ $(LIBPREFIX)mysqlpp_excommon$(LIBEXT): $(EXCOMMON_OBJECTS) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+ 	rm -f $@
+@@ -464,76 +464,76 @@ $(LIBPREFIX)mysqlpp_excommon$(LIBEXT): $(EXCOMMON_OBJECTS) $(DLLPREFIX)mysqlpp$(
+ 	$(RANLIB) $@
+ 
+ cgi_jpeg$(EXEEXT): $(CGI_JPEG_OBJECTS) $(LIBPREFIX)mysqlpp_excommon$(LIBEXT) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(CGI_JPEG_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp_excommon -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(CGI_JPEG_OBJECTS) $(LDFLAGS) -L. -lmysqlpp_excommon -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ cpool$(EXEEXT): $(CPOOL_OBJECTS) $(LIBPREFIX)mysqlpp_excommon$(LIBEXT) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(CPOOL_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp_excommon -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(CPOOL_OBJECTS) $(LDFLAGS) -L. -lmysqlpp_excommon -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ dbinfo$(EXEEXT): $(DBINFO_OBJECTS) $(LIBPREFIX)mysqlpp_excommon$(LIBEXT) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(DBINFO_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp_excommon -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(DBINFO_OBJECTS) $(LDFLAGS) -L. -lmysqlpp_excommon -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ deadlock$(EXEEXT): $(DEADLOCK_OBJECTS) $(LIBPREFIX)mysqlpp_excommon$(LIBEXT) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(DEADLOCK_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp_excommon -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(DEADLOCK_OBJECTS) $(LDFLAGS) -L. -lmysqlpp_excommon -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ fieldinf$(EXEEXT): $(FIELDINF_OBJECTS) $(LIBPREFIX)mysqlpp_excommon$(LIBEXT) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(FIELDINF_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp_excommon -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(FIELDINF_OBJECTS) $(LDFLAGS) -L. -lmysqlpp_excommon -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ for_each$(EXEEXT): $(FOR_EACH_OBJECTS) $(LIBPREFIX)mysqlpp_excommon$(LIBEXT) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(FOR_EACH_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp_excommon -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(FOR_EACH_OBJECTS) $(LDFLAGS) -L. -lmysqlpp_excommon -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ load_jpeg$(EXEEXT): $(LOAD_JPEG_OBJECTS) $(LIBPREFIX)mysqlpp_excommon$(LIBEXT) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(LOAD_JPEG_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp_excommon -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(LOAD_JPEG_OBJECTS) $(LDFLAGS) -L. -lmysqlpp_excommon -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ multiquery$(EXEEXT): $(MULTIQUERY_OBJECTS) $(LIBPREFIX)mysqlpp_excommon$(LIBEXT) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(MULTIQUERY_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp_excommon -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(MULTIQUERY_OBJECTS) $(LDFLAGS) -L. -lmysqlpp_excommon -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ resetdb$(EXEEXT): $(RESETDB_OBJECTS) $(LIBPREFIX)mysqlpp_excommon$(LIBEXT) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(RESETDB_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp_excommon -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(RESETDB_OBJECTS) $(LDFLAGS) -L. -lmysqlpp_excommon -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ simple1$(EXEEXT): $(SIMPLE1_OBJECTS) $(LIBPREFIX)mysqlpp_excommon$(LIBEXT) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(SIMPLE1_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp_excommon -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(SIMPLE1_OBJECTS) $(LDFLAGS) -L. -lmysqlpp_excommon -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ simple2$(EXEEXT): $(SIMPLE2_OBJECTS) $(LIBPREFIX)mysqlpp_excommon$(LIBEXT) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(SIMPLE2_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp_excommon -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(SIMPLE2_OBJECTS) $(LDFLAGS) -L. -lmysqlpp_excommon -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ simple3$(EXEEXT): $(SIMPLE3_OBJECTS) $(LIBPREFIX)mysqlpp_excommon$(LIBEXT) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(SIMPLE3_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp_excommon -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(SIMPLE3_OBJECTS) $(LDFLAGS) -L. -lmysqlpp_excommon -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ ssqls1$(EXEEXT): $(SSQLS1_OBJECTS) $(LIBPREFIX)mysqlpp_excommon$(LIBEXT) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(SSQLS1_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp_excommon -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(SSQLS1_OBJECTS) $(LDFLAGS) -L. -lmysqlpp_excommon -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ ssqls2$(EXEEXT): $(SSQLS2_OBJECTS) $(LIBPREFIX)mysqlpp_excommon$(LIBEXT) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(SSQLS2_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp_excommon -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(SSQLS2_OBJECTS) $(LDFLAGS) -L. -lmysqlpp_excommon -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ ssqls3$(EXEEXT): $(SSQLS3_OBJECTS) $(LIBPREFIX)mysqlpp_excommon$(LIBEXT) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(SSQLS3_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp_excommon -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(SSQLS3_OBJECTS) $(LDFLAGS) -L. -lmysqlpp_excommon -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ ssqls4$(EXEEXT): $(SSQLS4_OBJECTS) $(LIBPREFIX)mysqlpp_excommon$(LIBEXT) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(SSQLS4_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp_excommon -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(SSQLS4_OBJECTS) $(LDFLAGS) -L. -lmysqlpp_excommon -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ ssqls5$(EXEEXT): $(SSQLS5_OBJECTS) $(LIBPREFIX)mysqlpp_excommon$(LIBEXT) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(SSQLS5_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp_excommon -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(SSQLS5_OBJECTS) $(LDFLAGS) -L. -lmysqlpp_excommon -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ ssqls6$(EXEEXT): $(SSQLS6_OBJECTS) $(LIBPREFIX)mysqlpp_excommon$(LIBEXT) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(SSQLS6_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp_excommon -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(SSQLS6_OBJECTS) $(LDFLAGS) -L. -lmysqlpp_excommon -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ store_if$(EXEEXT): $(STORE_IF_OBJECTS) $(LIBPREFIX)mysqlpp_excommon$(LIBEXT) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(STORE_IF_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp_excommon -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(STORE_IF_OBJECTS) $(LDFLAGS) -L. -lmysqlpp_excommon -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ tquery1$(EXEEXT): $(TQUERY1_OBJECTS) $(LIBPREFIX)mysqlpp_excommon$(LIBEXT) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(TQUERY1_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp_excommon -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(TQUERY1_OBJECTS) $(LDFLAGS) -L. -lmysqlpp_excommon -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ tquery2$(EXEEXT): $(TQUERY2_OBJECTS) $(LIBPREFIX)mysqlpp_excommon$(LIBEXT) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(TQUERY2_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp_excommon -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(TQUERY2_OBJECTS) $(LDFLAGS) -L. -lmysqlpp_excommon -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ tquery3$(EXEEXT): $(TQUERY3_OBJECTS) $(LIBPREFIX)mysqlpp_excommon$(LIBEXT) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(TQUERY3_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp_excommon -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(TQUERY3_OBJECTS) $(LDFLAGS) -L. -lmysqlpp_excommon -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ tquery4$(EXEEXT): $(TQUERY4_OBJECTS) $(LIBPREFIX)mysqlpp_excommon$(LIBEXT) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(TQUERY4_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp_excommon -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(TQUERY4_OBJECTS) $(LDFLAGS) -L. -lmysqlpp_excommon -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ transaction$(EXEEXT): $(TRANSACTION_OBJECTS) $(LIBPREFIX)mysqlpp_excommon$(LIBEXT) $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3)
+-	$(CXX) -o $@ $(TRANSACTION_OBJECTS)    -L@MYSQL_C_LIB_DIR@ -L. -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  -lmysqlpp_excommon -lmysqlpp $(LIBS)
++	$(CXX) -o $@ $(TRANSACTION_OBJECTS) $(LDFLAGS) -L. -lmysqlpp_excommon -lmysqlpp $(LIBS) -L@MYSQL_C_LIB_DIR@ -l@MYSQL_C_LIB_NAME@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@
+ 
+ Makefile: configure.ac install.hta.in mysql++.bkl mysql++.spec.in doc/userman/userman.dbx.in lib/Doxyfile.in lib/mysql++.h.in ssx/Doxyfile.in
+ 	bakefile_gen

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<use>
+		<flag name="color-management">Enable color management via <pkg>media-libs/opencolorio</pkg></flag>
+		<flag name="heif">Enable support for ISO/IEC 23008-12:2017 HEIF/HEIC image format using <pkg>media-libs/libheif</pkg></flag>
+		<flag name="qtmedia">Enable sound support for animations via <pkg>dev-qt/qtmultimedia</pkg></flag>
+		<flag name="vc">Enable support for <pkg>dev-libs/vc</pkg>, could be a significant speed boost</flag>
+	</use>
+</pkgmetadata>

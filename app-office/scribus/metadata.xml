@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>fordfrog@gentoo.org</email>
+    <name>Miroslav Šulc</name>
+  </maintainer>
+  <use>
+    <flag name="boost">Enable support for Boost based enhancement</flag>
+    <flag name="hunspell">Enable support for spell checking with <pkg>app-text/hunspell</pkg></flag>
+    <flag name="minimal">Don't install headers (only required for e.g. plug-in developers)</flag>
+    <flag name="osg">3D rendering via <pkg>dev-games/openscenegraph</pkg></flag>
+    <flag name="scripts">Install the scripts</flag>
+    <flag name="templates">Document templates</flag>
+    <flag name="tk">Install tk based scripts e.g. FontSample.py</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">scribus</remote-id>
+  </upstream>
+</pkgmetadata>

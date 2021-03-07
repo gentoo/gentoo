@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
+	<longdescription lang="en">
+		&gt;snip&lt; is an Ant task designed to help with the single-sourcing
+		of program documentation. This task extracts snippets of text from files,
+		placing them into properties in the Ant project. These properties can
+		then be used by any other Ant task, and are particularly useful when
+		referenced by &gt;filter&lt;s within the &gt;copy&lt; task.
+	</longdescription>
+</pkgmetadata>

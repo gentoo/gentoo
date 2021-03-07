@@ -1,0 +1,17 @@
+Description: Add missing linkage against X11 libs.
+Author: Anton Gladky <gladk@debian.org>
+Last-Update: 2015-06-16
+
+Index: gnuplot-5.0.1/src/Makefile.am
+===================================================================
+--- gnuplot-5.0.1.orig/src/Makefile.am
++++ gnuplot-5.0.1/src/Makefile.am
+@@ -89,6 +89,8 @@ $(EXTRA_gnuplot_SOURCES)
+ 
+ if BUILD_WXWIDGETS
+ gnuplot_SOURCES += wxterminal/wxt_gui.cpp
++XLIBS = @LIBRARIES_FOR_X@
++gnuplot_LDADD += $(XLIBS)
+ endif
+ 
+ if BUILD_GPCAIRO

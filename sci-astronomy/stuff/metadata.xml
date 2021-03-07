@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-astronomy@gentoo.org</email>
+		<name>Gentoo Astronomy Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Stuff is a program that simulates “perfect” astronomical
+		catalogues. It generate object lists in ASCII which can read by the
+		SkyMaker program to produce realistic astronomical fields.
+	</longdescription>
+</pkgmetadata>

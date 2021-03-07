@@ -1,0 +1,55 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -148,6 +148,12 @@ AC_ARG_WITH(netcdf,
+ 	      [with_netcdf=$withval],
+ 	      [with_netcdf='yes'])
+ 
++# Enable szip.
++AC_ARG_WITH(szlib,
++	      [  --with-szlib            Use szlib library for external szlib I/O (default is yes)],
++	      [with_szlib=$withval],
++	      [with_szlib='yes'])
++
+ # Enable 64-bit arenas, if supported
+ AC_ARG_WITH(large-arenas,
+               [  --with-large-arenas     enable 64-bit arenas, when available (default is no)],
+@@ -790,6 +796,39 @@ fi
+ 
+ 
+ #
++# Check for szlib
++#
++have_szlib='no'
++LIB_SZLIB=''
++if test "$with_szlib" != 'no'
++then
++    AS_MESSAGE([checking for szlib ......])
++    failed=0;
++    passed=0;
++    AC_CHECK_HEADERS(szlib.h, passed=`expr $passed + 1`,failed=`expr $failed + 1`)
++    AC_CHECK_LIB(sz, SZ_BufftoBuffCompress,passed=`expr $passed + 1`,failed=`expr $failed + 1`,)
++    AC_MSG_CHECKING(if szlib package is complete)
++    if test $passed -gt 0
++    then
++    if test $failed -gt 0
++    then
++	AC_MSG_RESULT(no -- some components failed test)
++        have_szlib='no (failed tests)'
++    else
++	LIB_SZLIB='-lsz'
++	LIBS="$LIB_SZLIB $LIBS"
++	FMT_LIBS="$FMT_LIBS libsz.a"
++	AC_DEFINE(HAVE_LIBSZIP, 1, [Define to 1 if you have the SZLIB libraries])
++	AC_MSG_RESULT(yes)
++        have_szlib='yes'
++    fi
++    else
++        AC_MSG_RESULT(no)
++    fi
++fi
++
++
++#
+ # Check for IMAGEMAGICK
+ #
+ have_magick='no'

@@ -1,0 +1,68 @@
+From cf2364b80fa8ae844df8350cd5833d47cce235f2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jan=20Kundr=C3=A1t?= <jkt@kde.org>
+Date: Mon, 9 Mar 2020 08:24:48 -0700
+Subject: [PATCH] Fix possible crash when downloading attachments
+
+Turns out we've been happily deleting network replies from the
+QNetworkReply::finished(). That was never a good thing to do, but it did
+not use to crash with older Qt. Now it does.
+
+After changing to deleteLater(), there's a window for
+already-deregistered replies to generate events, therefore the assert
+has to go, too, otherwise Bad Things happen:
+
+ (gdb) bt
+ #0  __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:50
+ #1  0x00007ffff16bdcd2 in __GI_abort () at abort.c:89
+ #2  0x00007ffff2400bcb in qt_message_fatal (context=..., message=<synthetic pointer>...) at /var/tmp/portage/dev-qt/qtcore-5.13.9999/work/qtcore-5.13.9999/src/corelib/global/qlogging.cpp:1904
+ #3  QMessageLogger::fatal (this=this@entry=0x7fffffffc990, msg=msg@entry=0x7ffff2690b10 "ASSERT: \"%s\" in file %s, line %d") at /var/tmp/portage/dev-qt/qtcore-5.13.9999/work/qtcore-5.13.9999/src/corelib/global/qlogging.cpp:888
+ #4  0x00007ffff23fff7c in qt_assert (assertion=assertion@entry=0x5555558451d7 "reply", file=file@entry=0x555555841a38 "/home/jkt/work/prog/trojita/src/Imap/Network/FileDownloadManager.cpp", line=line@entry=142)
+     at /var/tmp/portage/dev-qt/qtcore-5.13.9999/work/qtcore-5.13.9999/src/corelib/global/qglobal.cpp:3247
+ #5  0x00005555555da840 in Imap::Network::FileDownloadManager::onPartDataTransfered (this=0x555556a20990)
+ #6  0x00007ffff25f1bdf in QtPrivate::QSlotObjectBase::call (a=0x7fffffffcaa0, r=0x555556a20990, this=0x5555569f99c0) at ../../include/QtCore/../../../qtcore-5.13.9999/src/corelib/kernel/qobjectdefs_impl.h:394
+ #7  QMetaObject::activate(QObject*, int, int, void**) () at /var/tmp/portage/dev-qt/qtcore-5.13.9999/work/qtcore-5.13.9999/src/corelib/kernel/qobject.cpp:3787
+ #8  0x00007ffff25f20b7 in QMetaObject::activate (sender=sender@entry=0x555556a21370, m=m@entry=0x7ffff3f96b00 <QNetworkReply::staticMetaObject>, local_signal_index=local_signal_index@entry=1, argv=argv@entry=0x0)
+     at /var/tmp/portage/dev-qt/qtcore-5.13.9999/work/qtcore-5.13.9999/src/corelib/kernel/qobject.cpp:3658
+ #9  0x00007ffff3d3cbf3 in QNetworkReply::finished (this=this@entry=0x555556a21370) at .moc/moc_qnetworkreply.cpp:385
+ #10 0x0000555555709485 in Imap::Network::MsgPartNetworkReply::slotMyDataChanged() () at /home/jkt/work/prog/trojita/src/Imap/Network/MsgPartNetworkReply.cpp:112
+
+BUG: 417697
+Reported-by: Stefan de Konink <stefan@konink.de>
+Change-Id: I79f340c5a471430a14474472513d0a055c7238d6
+---
+ src/Imap/Network/FileDownloadManager.cpp | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/src/Imap/Network/FileDownloadManager.cpp b/src/Imap/Network/FileDownloadManager.cpp
+index 16b6c8df..c3f72176 100644
+--- a/src/Imap/Network/FileDownloadManager.cpp
++++ b/src/Imap/Network/FileDownloadManager.cpp
+@@ -139,7 +139,9 @@ void FileDownloadManager::downloadMessage()
+ 
+ void FileDownloadManager::onPartDataTransfered()
+ {
+-    Q_ASSERT(reply);
++    if (!reply) {
++        return;
++    }
+     if (reply->error() == QNetworkReply::NoError) {
+         if (!saving.open(QIODevice::WriteOnly)) {
+             emit transferError(saving.errorString());
+@@ -192,11 +194,11 @@ void FileDownloadManager::onCombinerTransferError(const QString &message)
+ 
+ void FileDownloadManager::deleteReply(QNetworkReply *reply)
+ {
+-    if (reply == this->reply) {
++    if (reply && reply == this->reply) {
+         if (!saved)
+             onPartDataTransfered();
+-        delete reply;
+-        this->reply = 0;
++        reply->deleteLater();
++        this->reply = nullptr;
+     }
+ }
+ 
+-- 
+GitLab
+

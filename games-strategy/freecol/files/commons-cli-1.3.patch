@@ -1,0 +1,22 @@
+From: Markus Koschany <apo@debian.org>
+Date: Sun, 20 Dec 2015 18:49:11 +0100
+Subject: commons-cli 1.3
+
+Forwarded: not-needed
+---
+ src/net/sf/freecol/FreeCol.java | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/net/sf/freecol/FreeCol.java b/src/net/sf/freecol/FreeCol.java
+index d05ae3d..99b9cdc 100644
+--- a/src/net/sf/freecol/FreeCol.java
++++ b/src/net/sf/freecol/FreeCol.java
+@@ -426,7 +426,7 @@ public final class FreeCol {
+     private static void handleArgs(String[] args) {
+         Options options = new Options();
+         final String help = Messages.message("cli.help");
+-        final File dummy = new File("dummy");
++        final Class dummy = null;
+         final String argDirectory = Messages.message("cli.arg.directory");
+ 
+         // Help options.

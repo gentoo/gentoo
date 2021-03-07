@@ -1,0 +1,137 @@
+--- conf/config.pl.dist	2013-09-23 23:05:50.332064754 +0300
++++ conf/config.pl	2013-09-23 23:07:44.110943607 +0300
+@@ -355,7 +355,7 @@
+ # needs to be a full path and you can't include shell syntax like
+ # redirection and pipes; put that in a script if you need it.
+ #
+-$Conf{ServerInitdPath} = '';
++$Conf{ServerInitdPath} = undef;
+ $Conf{ServerInitdStartCmd} = '';
+ 
+ 
+@@ -373,7 +373,7 @@
+ # time taken for the backup, plus the granularity of $Conf{WakeupSchedule}
+ # will make the actual backup interval a bit longer.
+ #
+-$Conf{FullPeriod} = 6.97;
++$Conf{FullPeriod} = '6.97';
+ 
+ #
+ # Minimum period in days between incremental backups (a user requested
+@@ -383,7 +383,7 @@
+ # time taken for the backup, plus the granularity of $Conf{WakeupSchedule}
+ # will make the actual backup interval a bit longer.
+ #
+-$Conf{IncrPeriod} = 0.97;
++$Conf{IncrPeriod} = '0.97';
+ 
+ #
+ # Number of full backups to keep.  Must be >= 1.
+@@ -458,7 +458,7 @@
+ #    $Conf{FullKeepCnt} = 4;
+ #    $Conf{FullKeepCnt} = [4];
+ #
+-$Conf{FullKeepCnt} = 1;
++$Conf{FullKeepCnt} = [1];
+ 
+ #
+ # Very old full backups are removed after $Conf{FullAgeMax} days.  However,
+@@ -688,7 +688,7 @@
+ #       '*' => ['/myFiles', '/important'],      # these are other shares
+ #    };
+ #
+-$Conf{BackupFilesOnly} = undef;
++$Conf{BackupFilesOnly} = {};
+ 
+ #
+ # List of directories or files to exclude from the backup.  For Smb,
+@@ -749,7 +749,7 @@
+ #       '*' => ['/junk', '/dont_back_this_up'], # these are for other shares
+ #    };
+ #
+-$Conf{BackupFilesExclude} = undef;
++$Conf{BackupFilesExclude} = {};
+ 
+ #
+ # PCs that are always or often on the network can be backed up after
+@@ -932,7 +932,7 @@
+ #
+ # This setting only matters if $Conf{XferMethod} = 'smb'.
+ #
+-$Conf{SmbShareName} = 'C$';
++$Conf{SmbShareName} = ['C$'];
+ 
+ #
+ # Smbclient share user name.  This is passed to smbclient's -U argument.
+@@ -1054,7 +1054,7 @@
+ #
+ # This setting only matters if $Conf{XferMethod} = 'tar'.
+ #
+-$Conf{TarShareName} = '/';
++$Conf{TarShareName} = ['/'];
+ 
+ #
+ # Command to run tar on the client.  GNU tar is required.  You will
+@@ -1233,7 +1233,7 @@
+ #
+ #     $Conf{RsyncShareName} = ['/', '/var', '/data', '/boot'];
+ #
+-$Conf{RsyncShareName} = '/';
++$Conf{RsyncShareName} = ['/'];
+ 
+ #
+ # Rsync daemon port on the client, for $Conf{XferMethod} = "rsyncd".
+@@ -1285,7 +1285,7 @@
+ #   
+ # This setting has no effect unless checksum caching is turned on.
+ #   
+-$Conf{RsyncCsumCacheVerifyProb} = 0.01;
++$Conf{RsyncCsumCacheVerifyProb} = '0.01';
+ 
+ #
+ # Arguments to rsync for backup.  Do not edit the first set unless you
+@@ -1883,7 +1883,7 @@
+ # rounded up (ie: 2.5 means a user will never receive email more
+ # than once every 3 days).
+ #
+-$Conf{EMailNotifyMinDays} = 2.5;
++$Conf{EMailNotifyMinDays} = '2.5';
+ 
+ #
+ # Name to use as the "from" name for email.  Depending upon your mail
+@@ -1938,7 +1938,7 @@
+ # When there have been no backups in this number of days the user
+ # is sent an email.
+ #
+-$Conf{EMailNotifyOldBackupDays} = 7.0;
++$Conf{EMailNotifyOldBackupDays} = 7;
+ 
+ #
+ # This subject and message is sent to a user if their PC has not recently
+@@ -1965,7 +1965,7 @@
+ # How old the most recent backup of Outlook files has to be before
+ # notifying user.
+ #
+-$Conf{EMailNotifyOldOutlookDays} = 5.0;
++$Conf{EMailNotifyOldOutlookDays} = 5;
+ 
+ #
+ # This subject and message is sent to a user if their Outlook files have
+@@ -2102,14 +2102,17 @@
+     {
+         link  => "?action=view&type=docs",
+         lname => "Documentation",    # actually displays $Lang->{Documentation}
++        name  => undef,
+     },
+     {
+         link  => "http://backuppc.wiki.sourceforge.net",
+         name  => "Wiki",              # displays literal "Wiki"
++        lname => undef,
+     },
+     {
+         link  => "http://backuppc.sourceforge.net",
+         name  => "SourceForge",      # displays literal "SourceForge"
++        lname => undef,
+     },
+ ];
+ 

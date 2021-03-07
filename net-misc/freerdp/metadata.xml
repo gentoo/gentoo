@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>floppym@gentoo.org</email>
+		<name>Mike Gilbert</name>
+	</maintainer>
+	<use>
+		<flag name="openh264">Enable H.264 support using <pkg>media-libs/openh264</pkg></flag>
+		<flag name="server">Build server binaries</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">FreeRDP/FreeRDP</remote-id>
+	</upstream>
+</pkgmetadata>

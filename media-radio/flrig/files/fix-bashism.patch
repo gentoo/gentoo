@@ -1,0 +1,11 @@
+--- m4/fltk.m4.orig	2014-12-13 13:46:29.000000000 +0100
++++ m4/fltk.m4	2014-12-13 14:03:44.000000000 +0100
+@@ -38,7 +38,7 @@
+           FLTK_LIBS=`$FLTK_CONFIG --ldflags --use-images`
+           if test "x$target_mingw32" != "xyes"; then
+               if test "x$target_darwin" != "xyes"; then
+-                  if grep -q "lX11" <<< "$FLTK_LIBS"; then
++                  if echo "$FLTK_LIBS" | grep -q "lX11" ; then
+                       FLTK_LIBS="$FLTK_LIBS";
+                   else
+                       FLTK_LIBS="$FLTK_LIBS -lm -lX11";

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>toolchain@gentoo.org</email>
+    <name>Gentoo Toolchain Project</name>
+  </maintainer>
+  <use>
+    <flag name="leaps-timezone">
+      Install the set of "right" timezones; these timezones include leap seconds
+      when counting seconds since the epoch (while POSIX does not) as they are
+      based on the TAI (International Atomic Time) clock
+    </flag>
+    <flag name="zic-slim">
+      Default to 'slim' file format for /usr/share/zoneinfo. Otherwise 'fat' format
+      is used. Not all programs can handle 'slim' format'.
+    </flag>
+  </use>
+</pkgmetadata>

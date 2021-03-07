@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<use>
+		<flag name="aio">Add support for AIO.</flag>
+		<flag name="attachsql">Add support for AttachSQL.</flag>
+		<flag name="drizzle">Add support for Drizzles.</flag>
+		<flag name="largefile">Add support for large files.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">akopytov/sysbench</remote-id>
+	</upstream>
+</pkgmetadata>

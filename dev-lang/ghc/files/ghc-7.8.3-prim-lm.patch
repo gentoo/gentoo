@@ -1,0 +1,12 @@
+Fix underlinking on ghc-prim.
+Fixes ghc-stage2 crahs on hardened toolchain.
+Reported-by: aranea
+diff --git a/libraries/ghc-prim/ghc-prim.cabal b/libraries/ghc-prim/ghc-prim.cabal
+index ffb32af..0431380 100644
+--- a/libraries/ghc-prim/ghc-prim.cabal
++++ b/libraries/ghc-prim/ghc-prim.cabal
+@@ -68,0 +68,4 @@ Library
++
++    -- ghc 'sin' (and other) primops generate 'libm' calls,
++    -- but ghc itself does not add '-lm'
++    extra-libraries: m

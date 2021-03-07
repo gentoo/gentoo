@@ -1,0 +1,12 @@
+diff --git a/configure.ac b/configure.ac
+index 3088817..d789ce9 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -460,7 +460,6 @@ AS_IF([test x"$enable_hardening" != xno], [
+ 
+   add_hardened_c_flag([-Wall])
+   add_hardened_c_flag([-Wextra])
+-  add_hardened_c_flag([-Werror])
+ 
+   add_hardened_c_flag([-Wformat])
+   add_hardened_c_flag([-Wformat-security])

@@ -1,0 +1,21 @@
+diff --git a/lib/chalib.c b/lib/chalib.c
+index 5d79e13..cddf51b 100644
+--- a/lib/chalib.c
++++ b/lib/chalib.c
+@@ -306,9 +306,14 @@ chasen_sparse_main(char *input, FILE *output)
+      */
+     while (*input) {
+ 	int c = 0, len, cursor;
+-	if ((crlf = strpbrk(input, "\r\n")) == NULL)
++	if ((crlf = strpbrk(input, "\r\n")) == NULL) {
+ 	    len = strlen(input);
+-	else {
++	    if (len >= CHA_INPUT_SIZE) {
++		len = CHA_INPUT_SIZE - 1;
++		crlf = input + CHA_INPUT_SIZE - 2;
++		c = 0;
++	    }
++	} else {
+ 	    len = crlf - input;
+ 	    c = *crlf;
+ 	    *crlf = '\0';

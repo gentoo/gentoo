@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Encode</remote-id>
+    <remote-id type="cpan-module">Encode</remote-id>
+    <remote-id type="cpan-module">Encode::Alias</remote-id>
+    <remote-id type="cpan-module">Encode::Byte</remote-id>
+    <remote-id type="cpan-module">Encode::CJKConstants</remote-id>
+    <remote-id type="cpan-module">Encode::CN</remote-id>
+    <remote-id type="cpan-module">Encode::CN::HZ</remote-id>
+    <remote-id type="cpan-module">Encode::Config</remote-id>
+    <remote-id type="cpan-module">Encode::EBCDIC</remote-id>
+    <remote-id type="cpan-module">Encode::Encoder</remote-id>
+    <remote-id type="cpan-module">Encode::Encoding</remote-id>
+    <remote-id type="cpan-module">Encode::GSM0338</remote-id>
+    <remote-id type="cpan-module">Encode::Guess</remote-id>
+    <remote-id type="cpan-module">Encode::Internal</remote-id>
+    <remote-id type="cpan-module">Encode::JP</remote-id>
+    <remote-id type="cpan-module">Encode::JP::H2Z</remote-id>
+    <remote-id type="cpan-module">Encode::JP::JIS7</remote-id>
+    <remote-id type="cpan-module">Encode::KR</remote-id>
+    <remote-id type="cpan-module">Encode::KR::2022_KR</remote-id>
+    <remote-id type="cpan-module">Encode::MIME::Header</remote-id>
+    <remote-id type="cpan-module">Encode::MIME::Header::ISO_2022_JP</remote-id>
+    <remote-id type="cpan-module">Encode::MIME::Name</remote-id>
+    <remote-id type="cpan-module">Encode::Symbol</remote-id>
+    <remote-id type="cpan-module">Encode::TW</remote-id>
+    <remote-id type="cpan-module">Encode::UTF_EBCDIC</remote-id>
+    <remote-id type="cpan-module">Encode::Unicode</remote-id>
+    <remote-id type="cpan-module">Encode::Unicode::UTF7</remote-id>
+    <remote-id type="cpan-module">Encode::utf8</remote-id>
+    <remote-id type="cpan-module">encoding</remote-id>
+  </upstream>
+</pkgmetadata>

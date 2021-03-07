@@ -1,0 +1,11 @@
+--- qemacs-orig/qe.1
++++ qemacs/qe.1
+@@ -44,7 +44,7 @@
+ anti aliased font display.
+ .PP
+ For more information and a list of key bindings please see
+-/usr/share/doc/qemacs/README.gz.
++the README file in /usr/share/doc/@PF@/.
+ .SH AUTHOR
+ This manual page was written by Edmund GRIMLEY EVANS <edmundo@rano.org>,
+ for the Debian GNU/Linux system (but may be used by others).

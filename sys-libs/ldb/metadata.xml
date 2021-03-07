@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>samba@gentoo.org</email>
+		<name>Samba</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:samba:samba</remote-id>
+	</upstream>
+	<use>
+		<flag name="doc">Builds documentation</flag>
+		<flag name="ldap">Enable LDAP support</flag>
+		<flag name="lmdb">Enable LMDB backend</flag>
+		<flag name="python">Enable Python support</flag>
+	</use>
+</pkgmetadata>

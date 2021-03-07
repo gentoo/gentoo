@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>proaudio@gentoo.org</email>
+	<name>Gentoo ProAudio Project</name>
+</maintainer>
+
+<longdescription lang="en">
+	Jalv is a simple but fully featured LV2 host for Jack. It runs LV2 plugins and exposes their ports as Jack ports, essentially making any LV2 plugin function as a Jack application.
+
+	Jalv is a small program which is useful, but also intended to be an appropriate test host for plugin development. It runs plugins from the command line with no user interaction, is light enough to run in valgrind, and is capable of dumping all plugin to/from UI communication in a human readable format.
+
+	To make it simple to test plugins in hosts that use different toolkits, there are several Jalv executables: jalv, jalv.gtk, jalv.gtkmm, and jalv.qt.
+</longdescription>
+
+<use>
+	<flag name="gtkmm"> Adds support for <pkg>dev-cpp/gtkmm</pkg>: C++ interface for GTK+2</flag>
+</use>
+
+</pkgmetadata>

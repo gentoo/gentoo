@@ -1,0 +1,22 @@
+--- a/t_coffee_source/util_lib/aln_convertion_util.c
++++ b/t_coffee_source/util_lib/aln_convertion_util.c
+@@ -5592,7 +5592,7 @@
+ 
+ 	     list=string2list (H->seq_comment[n]);
+ 	     if ( list==NULL || atoi(list[0])==1)continue;
+-	     S->seq_comment[a]='\0';
++	     S->seq_comment[a]=NULL;
+ 	     sprintf (S->name[a], "%s%s%s",H->name[n], list[1], list[2]);
+ 	     vfree ( S->seq_comment[a]);S->seq_comment[a]=(char*)vcalloc ( strlen (H->seq_comment[n])+1, sizeof (char));
+ 	     for (b=3; b< atoi(list[0]); b++)S->seq_comment[a]=strcat (S->seq_comment[a], list[b]);
+--- a/t_coffee_source/util_lib/util.c
++++ b/t_coffee_source/util_lib/util.c
+@@ -5946,7 +5946,7 @@
+ 		  val_array[a]=(char*)vrealloc (val_array[a], strlen (v)+1);
+ 		  sprintf (val_array[a],"%s",v);
+ 		}
+-	      else val_array[a]='\0';
++	      else val_array[a]=NULL;
+ 	      return v;
+ 	    }
+ 	}

@@ -1,0 +1,35 @@
+Downloaded from https://projects.archlinux.org/svntogit/community.git/plain/trunk/regexxer-glib2.32.patch?h=packages/regexxer
+for bug 417049
+
+--- a/src/fileshared.h
++++ b/src/fileshared.h
+@@ -23,6 +23,7 @@
+
+ #include "sharedptr.h"
+
++#include <glibmm/regex.h>
+ #include <gtkmm/textbuffer.h>
+ #include <functional>
+ #include <utility>
+--- a/src/globalstrings.h
++++ b/src/globalstrings.h
+@@ -21,7 +21,7 @@
+ #ifndef REGEXXER_GLOBALSTRINGS_H_INCLUDED
+ #define REGEXXER_GLOBALSTRINGS_H_INCLUDED
+
+-#include <glib/gutils.h>  /* for G_DIR_SEPARATOR_S */
++#include <glib.h>  /* for G_DIR_SEPARATOR_S */
+
+ namespace Regexxer
+ {
+--- a/src/translation.h
++++ b/src/translation.h
+@@ -21,7 +21,7 @@
+ #ifndef REGEXXER_TRANSLATION_H_INCLUDED
+ #define REGEXXER_TRANSLATION_H_INCLUDED
+
+-#include <glib/gmacros.h>
++#include <glib.h>
+ #include <glibmm/ustring.h>
+
+ #ifndef gettext_noop

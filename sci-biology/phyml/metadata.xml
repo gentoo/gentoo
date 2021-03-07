@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-biology@gentoo.org</email>
+		<name>Gentoo Biology Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Phyml is a simple, fast, and accurate algorithm to estimate large
+		phylogenies by maximum likelihood. Given input sequence files, it
+		estimates phylogenies using maximum likelihood, and is capable of
+		processing large amounts of phylogenetic data.
+	</longdescription>
+</pkgmetadata>

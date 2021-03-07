@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<longdescription lang="en">
+		Binwalk is a tool for searching a given binary image for embedded files.
+		Specifically, it is designed for identifying files embedded inside of firmware
+		images. Binwalk uses the libmagic library, so it is compatible with magic
+		signatures created for the Unix file utility.
+		Binwalk also includes a custom magic signature file which contains improved
+		signatures for files that are commonly found in firmware images such as
+		compressed/archived files, firmware headers, Linux kernels, bootloaders,
+		filesystems, etc.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">ReFirmLabs/binwalk</remote-id>
+	</upstream>
+</pkgmetadata>

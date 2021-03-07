@@ -1,0 +1,38 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	use logger
+	need net
+}
+
+checkconfig() {
+	local mod
+	if [ -n "${TPM_MODULES}" ] ; then
+		for mod in ${TPM_MODULES} ; do
+			lsmod | grep -q "^${mod}\b" \
+				|| modprobe ${mod} &>/dev/null \
+				|| ewarn "Failed to load module ${mod}"
+		done
+		# Should we sleep or something to wait for device creation?
+	fi
+	if [ ! -c /dev/tpm ] && [ ! -c /dev/tpm0 ] ; then
+		eerror "No TPM device found!"
+		return 1
+	fi
+	return 0
+}
+
+start() {
+	ebegin "Starting TrouSerS' TCS daemon (tcsd)"
+	checkconfig || eend $?
+	start-stop-daemon --start --user tss --exec /usr/sbin/tcsd
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping TrouSerS' TCS daemon (tcsd)"
+	start-stop-daemon --stop --quiet --exec /usr/sbin/tcsd --user tss
+	eend $?
+}

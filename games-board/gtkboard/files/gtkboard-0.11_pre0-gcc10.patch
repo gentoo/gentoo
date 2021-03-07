@@ -1,0 +1,14 @@
+--- a/src/engine.c	2020-09-22 23:14:49.105745203 -0000
++++ b/src/engine.c	2020-09-22 23:53:45.862582851 -0000
+@@ -47,9 +47,9 @@ byte * engine_search (Pos *);
+ static FILE *engine_fin, *engine_fout;
+ 
+ //! Eval fn for white (can be NULL, in which case game_eval will be used for both)
+-ResultType (*game_eval_white) (Pos *, Player, float *);
++extern ResultType (*game_eval_white) (Pos *, Player, float *);
+ //! Eval fn for black (can be NULL, in which case game_eval will be used for both)
+-ResultType (*game_eval_black) (Pos *, Player, float *);
++extern ResultType (*game_eval_black) (Pos *, Player, float *);
+ 
+ // FIXME: following 3 extern decls must be removed by refactoring (i.e, move all fns common to client and server to a new file)
+ extern void reset_game_params ();

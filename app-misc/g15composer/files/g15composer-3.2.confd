@@ -1,0 +1,17 @@
+# /etc/conf.d/g15composer: Configuration for the g15composer
+
+# The CONTROL_FIFO is the name of the FIFO that g15composer listens to.
+# It does not create a screen on the display, but allows programs to
+# create their own non-virtual screens.
+# Please make sure the file specified does not exist.
+CONTROL_FIFO="/var/run/g15composer"
+
+# Set the user who owns the CONTROL_FIFO.
+# As this is also the user as whom g15composer is run,
+# it has to be someone who can create further message channels
+# This should be the user who runs the LCD clients
+FIFO_USER=
+
+# Set the grop which owns the CONTROL_FIFO.
+# The users who want to display screens on the LCD need to be in this group.
+FIFO_GROUP=users

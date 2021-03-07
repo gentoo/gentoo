@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Awesome GNOME
+Comment=GNOME with highly configurable window manager awesome
+TryExec=gnome-session
+Exec=gnome-session --session=awesome-gnome
+Type=Application

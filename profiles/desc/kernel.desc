@@ -1,0 +1,16 @@
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# This file contains descriptions of KERNEL USE_EXPAND flags.
+
+# Keep it sorted.
+AIX - KERNEL setting for system using the AIX kernel
+Darwin - KERNEL setting for system using the Darwin kernel (i.e.: Mac OS X).
+FreeBSD - KERNEL setting for system using the FreeBSD kernel
+freemint - KERNEL setting for system using the FreeMiNT kernel
+HPUX - KERNEL setting for system using the HP-UX kernel
+linux - KERNEL setting for system using the Linux kernel
+NetBSD - KERNEL setting for system using the NetBSD kernel
+OpenBSD - KERNEL setting for system using the OpenBSD kernel
+SunOS - KERNEL setting for system using an SunOS (i.e.: Solaris) kernel
+Winnt - KERNEL setting for systems on Windows (Cygwin, MinGW, Winnt, ...)

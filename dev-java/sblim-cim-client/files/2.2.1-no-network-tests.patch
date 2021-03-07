@@ -1,0 +1,41 @@
+diff --git a/sblim-cim-client2-2.2.1-src/utst/org/sblim/cimclient/unittest/testcases.discovery.txt b/sblim-cim-client2-2.2.1-src/utst/org/sblim/cimclient/unittest/testcases.discovery.txt
+index 5b0ce56..cf79a8b 100644
+--- a/sblim-cim-client2-2.2.1-src/utst/org/sblim/cimclient/unittest/testcases.discovery.txt
++++ b/sblim-cim-client2-2.2.1-src/utst/org/sblim/cimclient/unittest/testcases.discovery.txt
+@@ -1,3 +1,2 @@
+-discovery.DiscovererSLPTest
+ discovery.WBEMServiceAdvertisementSLPTest
+-discovery.AdvertisementCatalogTest
+\ No newline at end of file
++discovery.AdvertisementCatalogTest
+diff --git a/sblim-cim-client2-2.2.1-src/utst/org/sblim/cimclient/unittest/testcases.slp.txt b/sblim-cim-client2-2.2.1-src/utst/org/sblim/cimclient/unittest/testcases.slp.txt
+index 68eab35..1437e75 100644
+--- a/sblim-cim-client2-2.2.1-src/utst/org/sblim/cimclient/unittest/testcases.slp.txt
++++ b/sblim-cim-client2-2.2.1-src/utst/org/sblim/cimclient/unittest/testcases.slp.txt
+@@ -1,3 +1,2 @@
+-slp.SLPTest
+ slp.ServiceURLTest
+-! testcases.slp.internal.txt
+\ No newline at end of file
++! testcases.slp.internal.txt
+diff --git a/sblim-cim-client2-2.2.1-src/utst/org/sblim/cimclient/unittest/testcases.txt b/sblim-cim-client2-2.2.1-src/utst/org/sblim/cimclient/unittest/testcases.txt
+index 43da29d..26bb35f 100644
+--- a/sblim-cim-client2-2.2.1-src/utst/org/sblim/cimclient/unittest/testcases.txt
++++ b/sblim-cim-client2-2.2.1-src/utst/org/sblim/cimclient/unittest/testcases.txt
+@@ -5,8 +5,6 @@ cim.CIMVersionTest
+ ! testcases.discovery.txt
+ ! testcases.util.txt
+ ! testcases.wbem.txt
+-http.SSLConfigurationTest
+ cimxml.CimXmlSerializerTest
+-http.HttpClientTest
+ http.HttpHeaderTest
+ logging.LogAndTraceBrokerTest
+diff --git a/sblim-cim-client2-2.2.1-src/utst/org/sblim/cimclient/unittest/testcases.util.txt b/sblim-cim-client2-2.2.1-src/utst/org/sblim/cimclient/unittest/testcases.util.txt
+index 4b34dd4..f0e7431 100644
+--- a/sblim-cim-client2-2.2.1-src/utst/org/sblim/cimclient/unittest/testcases.util.txt
++++ b/sblim-cim-client2-2.2.1-src/utst/org/sblim/cimclient/unittest/testcases.util.txt
+@@ -1,3 +1,2 @@
+-util.WBEMConfigurationTest
+ util.XMLHostStrTest
+ util.BadDoubleStringsTest

@@ -1,0 +1,13 @@
+--- openobex-1.7.2-Source/include/openobex/version.h.in.orig	2013-07-21 21:27:14.000000000 +0400
++++ openobex-1.7.2-Source/include/openobex/version.h.in	2018-10-27 19:35:53.921795023 +0300
+@@ -1,6 +1,6 @@
+ 
+-#define OPENOBEX_VERSION       "@VERSION@"
++#define OPENOBEX_VERSION       "@openobex_VERSION@"
+ 
+-#define OPENOBEX_VERSION_MAJOR @VERSION_MAJOR@
+-#define OPENOBEX_VERSION_MINOR @VERSION_MINOR@
+-#define OPENOBEX_VERSION_PATCH @VERSION_PATCH@
++#define OPENOBEX_VERSION_MAJOR @openobex_VERSION_MAJOR@
++#define OPENOBEX_VERSION_MINOR @openobex_VERSION_MINOR@
++#define OPENOBEX_VERSION_PATCH @openobex_VERSION_PATCH@

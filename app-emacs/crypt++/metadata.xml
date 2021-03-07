@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<longdescription>
+  crypt++.el is a package of Lisp functions that recognize automatically
+  encrypted and encoded (i.e., compressed) files when they are first visited
+  or written. The BUFFER corresponding to the file is decoded and/or decrypted
+  before it is presented to the user. The file itself is unchanged on the
+  disk. When the buffer is subsequently saved to disk, a hook function
+  re-encodes the buffer before the actual disk write takes place.
+</longdescription>
+<stabilize-allarches/>
+</pkgmetadata>

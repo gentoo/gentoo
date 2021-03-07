@@ -1,0 +1,24 @@
+diff -Naurp colo-1.22.orig/stage2/src/heap.c colo-1.22/stage2/src/heap.c
+--- colo-1.22.orig/stage2/src/heap.c	2006-01-22 10:26:56.000000000 -0500
++++ colo-1.22/stage2/src/heap.c	2019-10-20 23:20:17.167266445 -0400
+@@ -25,16 +25,16 @@ static size_t next_size;
+ void heap_reset(void)
+ {
+ 	extern char __text;
+-	void *restrict;
++	void *restrict2;
+ 
+ 	assert(!((unsigned long) &__text & 15));
+ 
+ 	free_lo = KSEG0(0);
+ 	free_hi = KSEG0(&__text) - (32 << 10);			// XXX
+ 
+-	restrict = KSEG0(ram_restrict) - (16 << 10);	// XXX
+-	if(free_hi > restrict)
+-		free_hi = restrict;
++	restrict2 = KSEG0(ram_restrict) - (16 << 10);	// XXX
++	if(free_hi > restrict2)
++		free_hi = restrict2;
+ 
+ 	image_size = 0;
+ 	image_size_mark = 0;

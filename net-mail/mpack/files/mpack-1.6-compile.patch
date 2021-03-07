@@ -1,0 +1,129 @@
+From a01468c1734129595355af0815d4577af4e265cc Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Wed, 7 Dec 2011 23:22:55 +0100
+Subject: [PATCH] Add missing includes, remove conflicting prototypes
+
+---
+ decode.c   |    1 +
+ encode.c   |    1 +
+ magic.c    |    1 +
+ part.c     |    1 +
+ unixos.c   |    5 +----
+ unixpk.c   |    2 ++
+ unixpk.o   |  Bin 12000 -> 12016 bytes
+ unixunpk.c |    1 +
+ xmalloc.c  |    2 +-
+ 9 files changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/decode.c b/decode.c
+index c96918f..8b8df56 100644
+--- a/decode.c
++++ b/decode.c
+@@ -28,6 +28,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <ctype.h>
++#include <stdlib.h>
+ #include "xmalloc.h"
+ #include "common.h"
+ #include "part.h"
+diff --git a/encode.c b/encode.c
+index 0ba3934..1377cf8 100644
+--- a/encode.c
++++ b/encode.c
+@@ -24,6 +24,7 @@
+  */
+ #include <stdio.h>
+ #include <string.h>
++#include <stdlib.h>
+ 
+ extern char *magic_look(FILE *infile);
+ extern char *os_genid(void);
+diff --git a/magic.c b/magic.c
+index e08c6f8..a452a43 100644
+--- a/magic.c
++++ b/magic.c
+@@ -23,6 +23,7 @@
+  * SOFTWARE.
+  */
+ #include <stdio.h>
++#include <string.h>
+ 
+ /* Description of the various file formats and their magic numbers */
+ struct magic {
+diff --git a/part.c b/part.c
+index 1d4efe6..15fd724 100644
+--- a/part.c
++++ b/part.c
+@@ -28,6 +28,7 @@
+ 
+ #include <stdio.h>
+ #include <string.h>
++#include <stdlib.h>
+ 
+ #include "part.h"
+ #include "xmalloc.h"
+diff --git a/unixos.c b/unixos.c
+index 3f5c4c0..fa6d0a7 100644
+--- a/unixos.c
++++ b/unixos.c
+@@ -30,6 +30,7 @@
+ #include <sys/param.h>
+ #include <netdb.h>
+ #include <fcntl.h>
++#include <stdlib.h>
+ #include "xmalloc.h"
+ #include "common.h"
+ #include "part.h"
+@@ -38,10 +39,6 @@
+ #define MAXHOSTNAMELEN 64
+ #endif
+ 
+-extern int errno;
+-extern char *malloc();
+-extern char *getenv();
+-
+ int overwrite_files = 0;
+ int didchat;
+ 
+diff --git a/unixpk.c b/unixpk.c
+index c2aaa56..1f81ea9 100644
+--- a/unixpk.c
++++ b/unixpk.c
+@@ -25,6 +25,8 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <errno.h>
++#include <stdlib.h>
++#include <unistd.h>
+ #include "common.h"
+ #include "version.h"
+ #include "xmalloc.h"
+diff --git a/unixunpk.c b/unixunpk.c
+index a1f065b..0f5fa85 100644
+--- a/unixunpk.c
++++ b/unixunpk.c
+@@ -23,6 +23,7 @@
+  * SOFTWARE.
+  */
+ #include <stdio.h>
++#include <stdlib.h>
+ #include "version.h"
+ #include "part.h"
+ 
+diff --git a/xmalloc.c b/xmalloc.c
+index 7c74360..46dbbd1 100644
+--- a/xmalloc.c
++++ b/xmalloc.c
+@@ -24,7 +24,7 @@
+  */
+ #include <stdio.h>
+ #include <string.h>
+-extern char *malloc(), *realloc();
++#include <stdlib.h>
+ 
+ char *xmalloc (int size)
+ {
+-- 
+1.7.8
+

@@ -1,0 +1,23 @@
+http://bugs.gentoo.org/123762
+
+--- a/3ddeskd.cpp
++++ b/3ddeskd.cpp
+@@ -2411,15 +2411,15 @@
+ 
+     // initialize opengl
+ 
+-    // our own init function.
+-    gl_init();
+-
+     GLWin.open_display();
+ 
+ 
+     GLWin.create_GL_window("Enhanced 3-dimensional workspace visualization magic machine", 
+                            cfg->options->do_fullscreen);
+ 
++    // our own init function.
++    gl_init();
++
+     cfg->texture_size = GLWin.get_best_texture_size(cfg->texture_size);
+ 
+     // Loads up the correct perspective matrix

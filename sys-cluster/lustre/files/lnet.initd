@@ -1,0 +1,45 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="Loads lnet module and configures network."
+
+depend() {
+        need net
+        after bootmisc
+}
+
+start() {
+        if [ "${RC_CMD}" = "restart" ];
+        then
+                einfo "Restarting..."
+        fi
+
+        ebegin "Loading LNet modules:"
+        modprobe lnet
+        eend $*
+
+        ebegin "Bringing up LNet"
+        lnetctl lnet configure --all
+        eend $*
+}
+
+stop() {
+        local LNETMODULES=( "ko2iblnd" "lnet" "libcfs" )
+        ebegin "Bringing down LNet"
+        lnetctl lnet unconfigure --all
+        eend $*
+
+        einfo "Unloading LNet modules:"
+        for mod in ${LNETMODULES[@]}; do
+                ebegin "... ${mod}"
+                modprobe -r ${mod}
+                eend $*
+        done
+}
+
+status()
+{
+        einfo "LNet status:"
+        lnetctl net show
+}

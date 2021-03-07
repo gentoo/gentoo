@@ -1,0 +1,26 @@
+diff --git a/substract_wave.c b/substract_wave.c
+index a44e5e5..bef211b 100644
+--- a/substract_wave.c
++++ b/substract_wave.c
+@@ -545,9 +545,9 @@ for(i = 0; i < header_size; i++)
+ 	*ptr = 0;
+ 	ptr++;
+ 	}
+-strcpy(out_header -> main_chunk, "RIFF");
+-strcpy(out_header -> chunk_type, "WAVE"); 
+-strcpy(out_header -> sub_chunk, "fmt ");
++memcpy(out_header -> main_chunk, "RIFF", 4);
++memcpy(out_header -> chunk_type, "WAVE", 4);
++memcpy(out_header -> sub_chunk, "fmt ", 4);
+ out_header -> length_chunk = 16; //always 16
+ out_header -> format = 1; //PCM
+ 
+@@ -557,7 +557,7 @@ out_header -> byte_p_spl = main_header -> byte_p_spl;
+ 
+ out_header -> sample_fq = main_header -> sample_fq;
+ out_header -> bit_p_spl = 16; // main_header -> bit_p_spl;
+-strcpy(out_header -> data_chunk, "data");
++memcpy(out_header -> data_chunk, "data", 4);
+ 
+ main_offset = start_offset + (samples_offset * 2);
+ 

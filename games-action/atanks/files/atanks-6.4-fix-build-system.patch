@@ -1,0 +1,28 @@
+* Don't try to find where $(CXX) is, just use it
+* Don't muck with CXXFLAGS
+
+--- a/Makefile
++++ b/Makefile
+@@ -85,13 +85,9 @@
+ # ------------------------------------
+ INSTALL := $(shell which install)
+ RM      := $(shell which rm) -f
+-CXX     ?= g++
+ SED     := $(shell which sed)
+ WINDRES :=
+ 
+-ifeq (,$(findstring /,$(CXX)))
+-  CXX   := $(shell which $(CXX))
+-endif
+ 
+ 
+ # if this is a Windows target, prefer mingw32-g++ over g++
+@@ -231,8 +227,6 @@
+     CPPFLAGS := ${CPPFLAGS} -DATANKS_DEBUG_LOGTOFILE
+   endif
+ 
+-else
+-  CXXFLAGS := -march=native ${CXXFLAGS} -O2
+ endif
+ 
+ 

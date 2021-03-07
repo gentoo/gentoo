@@ -1,0 +1,15 @@
+diff -Naur a/rc/filetype/sh.kak b/rc/filetype/sh.kak
+--- a/rc/filetype/sh.kak	2020-01-16 11:52:20.000000000 +0200
++++ b/rc/filetype/sh.kak	2020-05-25 15:50:20.417809942 +0300
+@@ -2,6 +2,11 @@
+     set-option buffer filetype sh
+ }
+ 
++hook global BufCreate .*\.ebuild %{
++    set-option buffer filetype sh
++}
++
++
+ hook global WinSetOption filetype=sh %{
+     require-module sh
+     set-option window static_words %opt{sh_static_words}

@@ -1,0 +1,29 @@
+From e635608785ed374bfe5f1158ca4a4695f3ea2f08 Mon Sep 17 00:00:00 2001
+From: Dan Church <amphetamachine@gmail.com>
+Date: Fri, 5 Jun 2020 11:09:30 -0500
+Subject: [PATCH] Fix omission of man page
+
+It was omitting the man page upon first install, so in order to get the
+man page added to the installed set of files, one would have to run
+cmake, then run make, then run cmake again, then run make.
+
+Also clarify when the extra `install` step would be added.
+---
+ tool/CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/tool/CMakeLists.txt b/tool/CMakeLists.txt
+index c12a474..03efefe 100644
+--- a/tool/CMakeLists.txt
++++ b/tool/CMakeLists.txt
+@@ -66,8 +66,10 @@ if (GENERATE_MAN_PAGES)
+     add_help2man_manpage (yubico-piv-tool.1 yubico-piv-tool)
+ 
+     add_custom_target (yubico-piv-tool-man ALL DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/yubico-piv-tool.1)
++    install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/yubico-piv-tool.1" DESTINATION "${YKPIV_INSTALL_MAN_DIR}/man1")
+ endif(GENERATE_MAN_PAGES)
+ 
++# If somehow a manpage was generated before configure started, install that too
+ find_file(MAN_PAGE yubico-piv-tool.1 PATHS ${CMAKE_CURRENT_SOURCE_DIR})
+ if(MAN_PAGE)
+     install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/yubico-piv-tool.1" DESTINATION "${YKPIV_INSTALL_MAN_DIR}/man1")

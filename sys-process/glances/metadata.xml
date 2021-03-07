@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<longdescription>
+		Glances is a cross-platform monitoring tool which aims to present a large
+		amount of monitoring information through a curses or Web based interface.
+		The information dynamically adapts depending on the size of the user interface.
+		It can also work in client/server mode.
+		Remote monitoring could be done via terminal, Web interface or API (XML-RPC and RESTful).
+		Stats can also be exported to files or external time/value databases.
+</longdescription>
+	<upstream>
+		<remote-id type="pypi">Glances</remote-id>
+		<remote-id type="github">nicolargo/glances</remote-id>
+	</upstream>
+</pkgmetadata>

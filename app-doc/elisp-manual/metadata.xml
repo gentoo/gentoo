@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<longdescription>
+  Most of the GNU Emacs text editor is written in the programming language
+  called Emacs Lisp. You can write new code in Emacs Lisp and install it as an
+  extension to the editor. However, Emacs Lisp is more than a mere "extension
+  language"; it is a full computer programming language in its own right. You
+  can use it as you would any other programming language.
+
+  Because Emacs Lisp is designed for use in an editor, it has special features
+  for scanning and parsing text as well as features for handling files,
+  buffers, displays, subprocesses, and so on. Emacs Lisp is closely integrated
+  with the editing facilities; thus, editing commands are functions that can
+  also conveniently be called from Lisp programs, and parameters for
+  customization are ordinary Lisp variables.
+
+  This manual attempts to be a full description of Emacs Lisp. For a
+  beginner's introduction to Emacs Lisp, see An Introduction to Emacs Lisp
+  Programming, by Bob Chassell, also published by the Free Software
+  Foundation. This manual presumes considerable familiarity with the use of
+  Emacs for editing; see The GNU Emacs Manual for this basic information.
+</longdescription>
+<stabilize-allarches/>
+</pkgmetadata>

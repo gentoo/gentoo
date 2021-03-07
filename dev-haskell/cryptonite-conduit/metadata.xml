@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Conduit bridge for cryptonite
+		
+		For now only provide a conduit version for hash and hmac, but
+		with contribution, this could provide cipher conduits too,
+		and probably other things.
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		Libugpio is a free software library to ease the use of linux kernel's sysfs
+		gpio interface from C programs and/or other libraries.
+		The basic function set is derived from the kernel internal gpio api.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/mhei/libugpio/issues</bugs-to>
+		<remote-id type="github">mhei/libugpio</remote-id>
+	</upstream>
+</pkgmetadata>

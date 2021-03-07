@@ -1,0 +1,80 @@
+#!/sbin/openrc-run
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need localmount
+	use net
+
+	local script="/etc/pulse/system.pa"
+
+	for opt in ${PA_OPTS}; do
+		case "$opt" in
+			--file=*)	script="${opt#*=}" ;;
+			-F*)		script="${opt#-F}" ;;
+		esac
+	done
+
+	config "$script"
+
+	local needs="$(get_options need)"
+	if [ -n "${needs}" ]; then
+		need ${needs}
+		return
+	fi
+
+	if egrep -q '^[[:space:]]*load-module[[:space:]]+module-console-kit' "$script"; then
+	    needs="${needs} consolekit"
+	fi
+
+#ifdef UDEV
+	if egrep -q '^[[:space:]]*load-module[[:space:]]+module-udev-detect' "$script"; then
+	    needs="${needs} udev"
+	fi
+#endif
+
+#ifdef AVAHI
+	if egrep -q '^[[:space:]]*load-module[[:space:]]+module-zeroconf-publish' "$script"; then
+	    needs="${needs} avahi-daemon"
+	fi
+#endif
+
+#ifdef BLUETOOTH
+	if egrep -q '^[[:space:]]*load-module[[:space:]]+module-bt-proximity' "$script"; then
+	    needs="${needs} bluetooth"
+	fi
+#endif
+
+#ifdef ALSA
+	if egrep -q '^[[:space:]]*load-module[[:space:]]+module-alsa-(sink|source)' "$script" || 
+	    egrep -q '^[[:space:]]*load-module[[:space:]]+module-(udev-)?detect' "$script" ||
+	    egrep -q '^[[:space:]]*add-autoload-source[[:space:]]+(input|output)[[:space:]]+module-alsa-(sink|source)' "$script"; then
+	    needs="${needs} alsasound"
+	fi
+#endif
+
+	need "${needs}"
+	save_options need "${needs}"
+}
+
+start() {
+	if [ -z "${PULSEAUDIO_SHOULD_NOT_GO_SYSTEMWIDE}" ]; then
+		eerror "Please don't use system wide PulseAudio unless you read the"
+		eerror "documentation available at http://www.pulseaudio.org/wiki/WhatIsWrongWithSystemMode"
+		eerror ""
+		eerror "When you're done, please set the variable PULSEAUDIO_SHOULD_NOT_GO_SYSTEMWIDE in"
+		eerror "/etc/conf.d/pulseaudio . Please remember that upstream does not support this mode"
+		eerror "when used for standard desktop configurations."
+		return 1
+	fi
+	ebegin "Starting pulseaudio"
+	PA_ALL_OPTS="${PA_OPTS} --fail=1 --daemonize=1 --system"
+	start-stop-daemon --start --exec /usr/bin/pulseaudio -- ${PA_ALL_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping pulseaudio"
+	start-stop-daemon --stop --quiet --exec /usr/bin/pulseaudio --pidfile /var/run/pulse/pid
+	eend $?
+}

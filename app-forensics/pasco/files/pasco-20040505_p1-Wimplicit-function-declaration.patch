@@ -1,0 +1,10 @@
+--- a/pasco.c
++++ b/pasco.c
+@@ -36,6 +36,7 @@
+ #include <stdio.h>
+ #include <time.h>
+ #include <math.h>
++#include <string.h>
+ 
+ //
+ /* This is the default block size for an activity record */

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		This is wol, the Wake On Lan client.
+		It wakes up magic packet compliant machines such as boxes
+		with wake-on-lan ethernet-cards.
+		Some workstations provide SecureON which extends
+		wake-on-lan with a password. This feature is also provided by wol.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">ahh</remote-id>
+	</upstream>
+</pkgmetadata>

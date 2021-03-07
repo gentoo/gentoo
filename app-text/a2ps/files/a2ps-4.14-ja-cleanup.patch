@@ -1,0 +1,122 @@
+diff --git lib/argmatch.c lib/argmatch.c
+index f983e9d..eadc7ea 100644
+--- lib/argmatch.c
++++ lib/argmatch.c
+@@ -21,6 +21,7 @@
+ #include "argmatch.h"
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #ifdef STDC_HEADERS
+ # include <string.h>
+ #endif
+diff --git lib/encoding.c lib/encoding.c
+index 9bd9f2a..f554a6d 100644
+--- lib/encoding.c
++++ lib/encoding.c
+@@ -989,7 +989,7 @@ dump_encoding_setup (FILE * stream,
+   /* Create the dictionary and fill it */
+   fprintf (stream, "%% Dictionary for %s support\n",
+ 	  encoding->name);
+-  fprintf (stream, "/%sdict %d dict begin\n", encoding->key,
++  fprintf (stream, "/%sdict %zu dict begin\n", encoding->key,
+ 	   (encoding->composite_flag == true)? nb+nb+ns:nb+ns);
+   for (i = 0 ; i < nb ; i++)
+     fprintf (stream, "  /f%s %sEncoding /%s reencode_font\n",
+diff --git lib/output.c lib/output.c
+index b5fc37d..5f67676 100644
+--- lib/output.c
++++ lib/output.c
+@@ -84,7 +84,7 @@ new_derivation (enum derivation_type type)
+ static void
+ derivation_self_print (struct derivation * derivation, FILE * stream)
+ {
+-  fprintf (stream, "At %x: ", (int) derivation);
++  fprintf (stream, "At %p: ", derivation);
+   switch (derivation->type)
+     {
+     case nothing:
+@@ -525,7 +525,7 @@ output_file (struct output * out, a2ps_job * job,
+ 		     expand_user_string (job, FIRST_FILE (job),
+ 					 (const uchar *) "Expand: requirement",
+ 					 (const uchar *) token));
+-	output (dest, expansion);
++	output (dest, "%s", expansion);
+ 	continue;
+       }
+ 
+diff --git lib/parseppd.y lib/parseppd.y
+index a7558ba..c89d188 100644
+--- lib/parseppd.y
++++ lib/parseppd.y
+@@ -154,7 +154,7 @@ font_clause :
+ void
+ yyerror (const char *msg)
+ {
+-  error_at_line (1, 0, ppdfilename, ppdlineno, msg);
++  error_at_line (1, 0, ppdfilename, ppdlineno, "%s", msg);
+ }
+ 
+ /*
+diff --git lib/psgen.c lib/psgen.c
+index 9eeef74..9d7a27d 100644
+--- lib/psgen.c
++++ lib/psgen.c
+@@ -232,7 +232,7 @@ output_marker (a2ps_job * job, const char * kind, uchar * marker)
+     default:
+       *buf = '\0';
+       ps_escape_char (job, cp[i], buf);
+-      output (jdiv, (char *) buf);
++      output (jdiv, "%s", buf);
+       break;
+     }
+   }
+diff --git lib/quotearg.c lib/quotearg.c
+index 16d0b91..89db991 100644
+--- lib/quotearg.c
++++ lib/quotearg.c
+@@ -60,6 +60,7 @@
+ 
+ #if HAVE_MBRTOWC && HAVE_WCHAR_H
+ # include <wchar.h>
++# include <wctype.h>
+ #else
+ # define iswprint(wc) 1
+ # define mbrtowc(pwc, s, n, ps) 1
+diff --git lib/title.c lib/title.c
+index cf4a34b..7a3e87b 100644
+--- lib/title.c
++++ lib/title.c
+@@ -28,6 +28,7 @@
+ #endif
+ 
+ #include <stdio.h>
++#include <string.h>
+ 
+ #if HAVE_VPRINTF || HAVE_DOPRNT || _LIBC
+ # if __STDC__
+diff --git src/long-options.c src/long-options.c
+index fb40cd9..7bd77b0 100644
+--- src/long-options.c
++++ src/long-options.c
+@@ -22,6 +22,7 @@
+ #endif
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <getopt.h>
+ #include "closeout.h"
+ #include "long-options.h"
+diff --git src/parsessh.y src/parsessh.y
+index 21e9559..569fdb6 100644
+--- src/parsessh.y
++++ src/parsessh.y
+@@ -740,7 +740,7 @@ exception_def_opt:
+ void
+ yyerror (const char *msg)
+ {
+-  error_at_line (1, 0, sshfilename, sshlineno, msg);
++  error_at_line (1, 0, sshfilename, sshlineno, "%s", msg);
+ }
+ 
+ /*

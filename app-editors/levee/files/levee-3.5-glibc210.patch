@@ -1,0 +1,80 @@
+diff -NrU5 levee-3.5.original/editcor.c levee-3.5/editcor.c
+--- levee-3.5.original/editcor.c	2009-07-21 22:58:18.000000000 +0000
++++ levee-3.5/editcor.c	2009-07-21 23:07:21.000000000 +0000
+@@ -183,11 +183,11 @@
+ 
+     strcpy(scratch, "/tmp/lv.XXXXXX");
+     
+     clrprompt();
+     printch('!');
+-    if ( !getline(instring) )
++    if ( !get_line(instring) )
+ 	return FALSE;
+ 
+     if ( (tf = mkstemp(scratch)) < 0 ) {
+ 	prints("[tempfile error]");
+ 	return FALSE;
+diff -NrU5 levee-3.5.original/extern.h levee-3.5/extern.h
+--- levee-3.5.original/extern.h	2009-07-21 22:58:18.000000000 +0000
++++ levee-3.5/extern.h	2009-07-21 23:02:39.000000000 +0000
+@@ -195,11 +195,11 @@
+ extern exec_type PROC editcore();
+ 
+ extern char PROC line(), peekc(), readchar();
+ extern char PROC *findparse(),*makepat();
+ 
+-extern bool PROC getline();
++extern bool PROC get_line();
+ extern bool PROC putfile();
+ extern bool PROC doyank(), deletion(), putback();
+ extern bool PROC pushb(),pushi(),pushmem(),uputcmd(), delete_to_undo();
+ extern bool PROC ok_to_scroll(), move_to_undo();
+ 
+diff -NrU5 levee-3.5.original/main.c levee-3.5/main.c
+--- levee-3.5.original/main.c	2009-07-21 22:58:18.000000000 +0000
++++ levee-3.5/main.c	2009-07-21 23:09:52.000000000 +0000
+@@ -251,11 +251,11 @@
+ 	println();
+ 
+     mode=emode;
+     do {
+ 	prompt(FALSE,":");
+-	if (getline(instring))
++	if (get_line(instring))
+ 	    exec(instring, &mode, &noquit);
+ 	indirect = FALSE;
+ 	if (mode == E_VISUAL && zotscreen && noquit) {	/*ask for more*/
+ 	    prints(" [more]");
+ 	    if ((ch=peekc()) == 13 || ch == ' ' || ch == ':')
+diff -NrU5 levee-3.5.original/misc.c levee-3.5/misc.c
+--- levee-3.5.original/misc.c	2009-07-21 22:58:18.000000000 +0000
++++ levee-3.5/misc.c	2009-07-21 23:09:10.000000000 +0000
+@@ -19,11 +19,11 @@
+  */
+ #include "levee.h"
+ #include "extern.h"
+ 
+ bool PROC
+-getline(str)
++get_line(str)
+ char *str;
+ {
+     int len;
+     char flag;
+     
+diff -NrU5 levee-3.5.original/move.c levee-3.5/move.c
+--- levee-3.5.original/move.c	2009-07-21 22:58:18.000000000 +0000
++++ levee-3.5/move.c	2009-07-21 23:10:26.000000000 +0000
+@@ -158,11 +158,11 @@
+     case FSEARCH:
+     case BSEARCH:
+ 	clrprompt();
+ 	if (cmd == PATT_FWD || cmd == PATT_BACK) {
+ 	    printch(tsearch = instring[0] = chars[cmd-PATT_FWD]);
+-	    if (!getline(&instring[1]))
++	    if (!get_line(&instring[1]))
+ 		return ESCAPED;	/* needs to skip later tests */
+ 	}
+ 	else {
+ 	    if (!lsearch)
+ 		return BADMOVE;

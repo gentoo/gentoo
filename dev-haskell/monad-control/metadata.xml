@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		This package defines the type class @MonadControlIO@, a subset of
+		@MonadIO@ into which generic control operations such as @catch@ can
+		be lifted from @IO@.  Instances are based on monad transformers in
+		@MonadTransControl@, which includes all standard monad transformers
+		in the @transformers@ library except @ContT@.  For convenience, it
+		provides a wrapped version of @Control.Exception@ with types
+		generalized from @IO@ to all monads in @MonadControlIO@.
+
+		Note that this package is a rewrite of Anders Kaseorg's @monad-peel@ library.
+		The main difference is that this package provides CPS style
+		operators and exploits the @RankNTypes@ language extension to
+		simplify most definitions.
+
+		The package includes a copy of the @monad-peel@ testsuite written by Anders Kaseorg.
+		The tests can be performed by using @cabal test@.
+
+		The following @critertion@ based benchmark shows that @monad-control@
+		is on average about 2.5 times faster than @monad-peel@:
+
+		&lt;https://github.com/basvandijk/bench-monad-peel-control&gt;
+	</longdescription>
+	<upstream>
+		<remote-id type="github">basvandijk/monad-control</remote-id>
+	</upstream>
+</pkgmetadata>

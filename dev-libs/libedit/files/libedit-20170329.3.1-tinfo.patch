@@ -1,0 +1,30 @@
+From 7aa660fd9d446567d3280765ba2a50a46b2a9159 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Mon, 12 Jun 2017 21:36:54 +0200
+Subject: [PATCH] configure: Support -ltinfo as split in newer ncurses
+
+The newer versions of ncurses support building terminfo routines
+as a split -ltinfo library. Account for that by adding this library
+to the search list.
+---
+ configure.ac | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 9a571b2..5d714b5 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -49,7 +49,9 @@ EL_MANTYPE
+ AC_CHECK_LIB(ncurses, tgetent,,
+   [AC_CHECK_LIB(curses, tgetent,,
+     [AC_CHECK_LIB(termcap, tgetent,,
+-      [AC_MSG_ERROR([libncurses, libcurses, or libtermcap is required!])]
++      [AC_CHECK_LIB(tinfo, tgetent,,
++        [AC_MSG_ERROR([libncurses, libcurses, libtermcap or libtinfo is required!])]
++      )]
+     )]
+   )]
+ )
+-- 
+2.13.1
+

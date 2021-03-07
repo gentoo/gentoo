@@ -1,0 +1,23 @@
+We drop the -g for debug output but we keep the -O0, as we don't want GCC
+to optimize out some critical math.
+
+--- a/Makefile
++++ b/Makefile
+@@ -1,13 +1,13 @@
+-CFLAGS=-Wextra -Wall -O0 -g -pipe `pkg-config --cflags alsa`
+-LIBS=`pkg-config --libs alsa` -lm
++CFLAGS+=-Wextra -Wall -O0 $(shell $(PKG_CONFIG) --cflags alsa)
++LIBS=-lm $(shell $(PKG_CONFIG) --libs alsa)
+ 
+ all: dbmeasure dbverify
+ 
+ dbmeasure: dbmeasure.o
+-	$(CC) -o dbmeasure $^ $(CFLAGS) $(LIBS)
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o dbmeasure $^ $(LIBS)
+ 
+ dbverify: dbverify.o
+-	$(CC) -o dbverify $^ $(CFLAGS) $(LIBS)
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o dbverify $^ $(LIBS)
+ 
+ clean:
+ 	rm -f *.o dbmeasure dbverify

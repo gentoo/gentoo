@@ -1,0 +1,3 @@
+# Options for dnsproxy daemon (rarely you need to change these)
+DNSPROXY_CONFFILE="/etc/dnsproxy/dnsproxy.conf"
+DNSPROXY_PIDFILE="/var/run/dnsproxy.pid"

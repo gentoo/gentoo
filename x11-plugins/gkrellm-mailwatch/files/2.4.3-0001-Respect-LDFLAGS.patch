@@ -1,0 +1,36 @@
+From 139912e0cf5d9714e5e1fe4576d01251491701f5 Mon Sep 17 00:00:00 2001
+From: Jim Ramsay <jim_ramsay@dell.com>
+Date: Mon, 1 Nov 2010 08:36:17 -0400
+Subject: [PATCH 1/3] Respect LDFLAGS
+
+Instead of using a non-standard varible name like LFLAGS, using LDFLAGS
+lets this play nice with Gentoo's build system.
+---
+ Makefile |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index b8cf927..02ca376 100644
+--- a/Makefile
++++ b/Makefile
+@@ -12,7 +12,7 @@ INSTALL=install -c -m 755
+ 
+ CFLAGS += -O2 -Wall -fPIC $(GTK_INCLUDE) $(IMLIB_INCLUDE) $(GKRELLM_INCLUDE)
+ LIBS = $(GTK_LIB) $(IMLIB_LIB)
+-LFLAGS += -shared
++LDFLAGS += -shared
+ 
+ LOCALEDIR := $(DESTDIR)/usr/share/locale
+ PACKAGE ?= gkrellm-mailwatch
+@@ -30,7 +30,7 @@ all: mailwatch.so
+ 
+ mailwatch.so: $(OBJS)
+ 	(cd po && ${MAKE})
+-	$(CC) $(CFLAGS) $(OBJS) -o mailwatch.so $(LFLAGS) $(LIBS)
++	$(CC) $(CFLAGS) $(OBJS) -o mailwatch.so $(LDFLAGS) $(LIBS)
+ 
+ clean:
+ 	(cd po && ${MAKE} clean )
+-- 
+1.7.3.1
+

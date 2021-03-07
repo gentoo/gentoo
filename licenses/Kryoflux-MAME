@@ -1,0 +1,48 @@
+This licence is based on the MAME licence and is intended for use in all non-commercial projects and environments. Other licensing options are available. Don't hesitate - please contact us at licensing@kryoflux.com.
+
+
+PREAMBLE
+
+The purpose ("Purpose") of the SPS DECODER LIBRARY ("CLL", "CAPSImage", "CAPSImg", etc.) is to enable third party software to use The Software Preservation Society Interchangeable Preservation Format ("IPF"), Software Preservation Society Capture Tool RAW ("CT RAW", "RAW") and KryoFlux STREAM ("KF STREAM", "RAW") format files as produced by e.g. The Software Preservation Analyser, KryoFlux - High Definition Flux Sampler for USB or KryoFlux FREE.
+
+
+LICENCE
+	
+Redistribution and use of the SPS DECODER LIBRARY code is permitted provided that the following conditions are met:
+
+- Redistributions may not be sold, nor may they be used in a commercial product or activity.
+
+- Redistributions that are modified from the original source must include the complete source code, including the source code for all components used by a binary built from the modified sources. However, as a special exception, the source code distributed need not include anything that is normally distributed (in either source or binary form) with the major components (compiler, kernel, and so on) of the operating system on which the executable runs, unless that component itself accompanies the executable.
+
+- Aforementioned modifications to the code can be made to enhance the code or to make it compile on other platforms than originally supported. Modifications must still satisfy the Purpose. Any file formats other than those listed under Purpose must not be enabled through the SPS DECODER LIBRARY.  
+
+- Redistributions must reproduce the following copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+COPYRIGHT
+
+SPS DECODER LIBRARY Copyright (c) 2001-2014 by István Fábián under exclusive licence to KryoFlux Products & Services Ltd, 80 Allington Way, Maidstone, ME16 0HN, United Kingdom. All rights reserved.
+
+
+COMMON QUESTIONS
+
+Q. Can I include the SPS DECODER LIBRARY with my commercial product?
+A. No. The SPS DECODER LIBRARY is not licensed for commercial use. Using SPS DECODER LIBRARY as a "freebie" or including it at "no cost" with your product still constitutes commerical usage and is forbidden by the licence.
+
+Q. Can I sell my product with the SPS DECODER LIBRARY or associated logos (e.g. SPS, KryoFlux) on it?
+A. No. Putting the name or logo on your product makes it appear that the product is something officially endorsed.
+
+Q. Can I use the SPS DECODER LIBRARY or the SPS logo to advertise my product?
+A. No. Using the name or logo in your advertising makes it appear that the product is something officially endorsed.
+
+Q. Can I use the term "SPS DECODER LIBRARY" in the name of my software?
+A. Generally, no, especially if it is something that is sold. However, if you are producing a free SPS DECODER LIBRARY-related piece of software, it is common that permission is granted. Send a query to double-check first, please.
+
+Q. Can I ask for donations for the work I did on my port of SPS DECODER LIBRARY to platform X?
+A. No. You would be earning money from the SPS DECODER LIBRARY trademark and copyrights, and that would be a commercial use, which is prohibited by the licence. It is our wish that SPS DECODER LIBRARY remains free.
+
+v1.02
+2014-05-20
+

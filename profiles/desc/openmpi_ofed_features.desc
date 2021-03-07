@@ -1,0 +1,13 @@
+# Copyright 1999-2014 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+
+# This file contains descriptions of OPENMPI_OFED_FEATURES USE_EXPAND flags.
+
+# Keep it sorted.
+
+control-hdr-padding - Add padding bytes to the openib control header
+connectx-xrc - Enable ConnectX XRC support
+rdmacm - Enable Open Fabrics RDMACM support in openib BTL
+udcm - Enable Open Fabrics UDCM support in openib BTL
+dynamic-sl - Enable openib BTL to query Subnet Manager for IB SL
+failover - enable openib BTL failover (for multiport adapters

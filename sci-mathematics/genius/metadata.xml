@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription>
+		Genius is a calculator program which can work
+		with arbitrary precision integers, multiple precision floats,
+		rational numbers, complex numbers, linear algebra, number theory,
+		numerical calculus, statistics, numerical equation solving,
+		combinatorics, elementary functions, modular arithmetic.
+		It has a programming language with automatic typing.
+		It can do various 2D and 3D plots, with possibility
+		to export to eps or png. Genius has a GUI IDE.
+		It can output matrices in LaTeX, Troff (eqn) or MathML.
+	</longdescription>
+</pkgmetadata>

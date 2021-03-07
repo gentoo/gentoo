@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>whissi@gentoo.org</email>
+		<name>Thomas Deutschmann</name>
+	</maintainer>
+	<slots>
+		<subslots>Reflect major ABI version (=upstream's LIBOPING_CURRENT value) of liboping.so.</subslots>
+	</slots>
+	<upstream>
+		<bugs-to>https://github.com/octo/liboping/issues</bugs-to>
+		<remote-id type="github">octo/liboping</remote-id>
+	</upstream>
+	<use>
+		<flag name="filecaps">Allow non-root users to use [n]oping utility.</flag>
+		<flag name="ncurses">Build ncurses-based version of oping utility (requires <pkg>sys-libs/ncurses</pkg>)</flag>
+	</use>
+</pkgmetadata>

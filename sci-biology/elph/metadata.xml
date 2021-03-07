@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-biology@gentoo.org</email>
+		<name>Gentoo Biology Project</name>
+	</maintainer>
+	<longdescription>
+		ELPH is a general-purpose Gibbs sampler for finding motifs in a set of
+		DNA or protein sequences. The program takes as input a set containing
+		anywhere from a few dozen to thousands of sequences, and searches
+		through them for the most common motif, assuming that each sequence
+		contains one copy of the motif.
+	</longdescription>
+</pkgmetadata>

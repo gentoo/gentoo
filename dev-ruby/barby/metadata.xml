@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>ruby@gentoo.org</email>
+    <name>Gentoo Ruby Project</name>
+  </maintainer>
+  <use>
+    <flag name="qrcode">
+      Add support for QRCode 2D codes using
+      <pkg>dev-ruby/rqrcode</pkg>.
+    </flag>
+    <flag name="prawn">
+      Add support for writing PDF documents using
+      <pkg>dev-ruby/prawn</pkg>.
+    </flag>
+    <flag name="png">
+      Add support for writing PNG images using
+      <pkg>dev-ruby/chunky_png</pkg>.
+    </flag>
+    <flag name="rmagick">
+      Add support for writing images (among others PNG, GIF and JPEG)
+      using <pkg>dev-ruby/rmagick</pkg>. Not available on JRuby.
+    </flag>
+    <flag name="cairo">
+      Add support for writing images (PNG, PS, EPS and, if supported,
+      PDF and SVG) using <pkg>dev-ruby/rcairo</pkg>. Not available on
+      JRuby.
+    </flag>
+  </use>
+  <upstream>
+    <remote-id type="github">toretore/barby</remote-id>
+  </upstream>
+</pkgmetadata>

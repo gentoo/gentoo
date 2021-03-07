@@ -1,0 +1,11 @@
+--- libquvi-0.9.4/configure.ac
++++ libquvi-0.9.4/configure.ac
+@@ -8,7 +8,7 @@
+ AC_INIT([libquvi], m4_esyscmd([./gen-ver.sh -c | tr -d '\n']),
+         [http://quvi.sf.net/bugs/],[],[http://quvi.sf.net/])
+ 
+-AC_DEFINE_UNQUOTED([BUILD_OPTS], "$@",
++AC_DEFINE_UNQUOTED([BUILD_OPTS], "$*",
+   [Define to configure invocation command line options])
+ 
+ # Interface

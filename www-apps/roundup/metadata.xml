@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>web-apps@gentoo.org</email>
+		<name>Gentoo Webapps</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>cedk@gentoo.org</email>
+		<name>Cédric Krier</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">roundup</remote-id>
+		<remote-id type="sourceforge">roundup</remote-id>
+	</upstream>
+	<use>
+		<flag name="tz">Enable full support of timezone</flag>
+		<flag name="xapian">Enable Xapian full-text indexer</flag>
+		<flag name="whoosh">Enable Whoosh full-text indexer</flag>
+		<flag name="jinja">Enable Jinja2 support</flag>
+		<flag name="pyjwt">Enable jwt tokens for login</flag>
+		<flag name="markdown">Enable markdown rendering</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,18 @@
+diff -ur a/openssh-8_3_P1-hpn-DynWinNoneSwitch-14.22.diff b/openssh-8_3_P1-hpn-DynWinNoneSwitch-14.22.diff
+--- a/openssh-8_3_P1-hpn-DynWinNoneSwitch-14.22.diff	2020-09-28 16:42:34.168386903 -0700
++++ b/openssh-8_3_P1-hpn-DynWinNoneSwitch-14.22.diff	2020-09-28 16:42:43.806325434 -0700
+@@ -1171,14 +1171,3 @@
+  # Example of overriding settings on a per-user basis
+  #Match User anoncvs
+  #	X11Forwarding no
+-diff --git a/version.h b/version.h
+-index a2eca3ec..ff654fc3 100644
+---- a/version.h
+-+++ b/version.h
+-@@ -3,4 +3,5 @@
+- #define SSH_VERSION	"OpenSSH_8.3"
+- 
+- #define SSH_PORTABLE	"p1"
+--#define SSH_RELEASE	SSH_VERSION SSH_PORTABLE
+-+#define SSH_HPN         "-hpn14v22"
+-+#define SSH_RELEASE	SSH_VERSION SSH_PORTABLE SSH_HPN

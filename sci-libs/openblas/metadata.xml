@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>lumin@debian.org</email>
+    <name>Mo Zhou</name>
+  </maintainer>
+  <longdescription lang="en">
+    OpenBLAS is an optimized Basic Linear Algebra Subprograms (BLAS)
+    library based on GotoBLAS2 1.13 BSD version. It was forked when
+    Mr. Kazushige Goto left TACC and GotoBLAS became unmaintained. In
+    general, BLAS is the computational kernel ("the bottom of the food
+    chain") in linear algebra or scientific applications. Thus, if
+    your BLAS implementation is highly optimized, the whole
+    application can substantially benefit. OpenBLAS has optimized code
+    for modern architectures, and has accrued many other features and
+    bug fixes beyond GotoBLAS.
+  </longdescription>
+  <use>
+    <flag name="dynamic">
+      Build dynamic architecture detection at run time (for multi targets)
+    </flag>
+    <flag name="eselect-ldso">
+      Enable BLAS/LAPACK runtime switching
+    </flag>
+    <flag name="index-64bit">
+      Compile a separate INTERFACE64 OpenBLAS
+    </flag>
+    <flag name="pthread">
+      Build with pthread threading model
+    </flag>
+    <flag name="relapack">
+      Build the ReLAPACK extension to OpenBLAS
+    </flag>
+  </use>
+  <upstream>
+    <remote-id type="github">xianyi/OpenBLAS</remote-id>
+  </upstream>
+</pkgmetadata>

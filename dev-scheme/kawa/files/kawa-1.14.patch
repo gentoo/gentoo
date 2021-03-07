@@ -1,0 +1,24 @@
+diff -Naur kawa-1.10.orig/Makefile.in kawa-1.10/Makefile.in
+--- kawa-1.10.orig/Makefile.in		2010-09-19 01:38:24.000000000 +0200
++++ kawa-1.10/Makefile.in	2010-09-19 01:38:59.000000000 +0200
+@@ -908,7 +908,7 @@
+     | sed -e 's|./||' | sort > $@
+ 
+ gnu/kawa/util/PreProcess.class: $(srcdir)/gnu/kawa/util/PreProcess.java
+-	$(JAVAC) -d . $(srcdir)/gnu/kawa/util/PreProcess.java
++	$(JAVAC) $(JAVACFLAGS) -d . $(srcdir)/gnu/kawa/util/PreProcess.java
+ 
+ # JDK 1.1
+ select-java1: $(srcdir)/patch-source-list gnu/kawa/util/PreProcess.class
+diff -Naur kawa-1.9.90.orig/bin/Makefile.in kawa-1.9.90/bin/Makefile.in
+--- kawa-1.9.90.orig/bin/Makefile.in	2009-08-08 12:20:49.000000000 -0300
++++ kawa-1.9.90/bin/Makefile.in	2009-09-21 20:15:06.000000000 -0300
+@@ -686,7 +686,7 @@
+ install-binPROGRAMS: $(bin_PROGRAMS)
+ 	@$(NORMAL_INSTALL)
+ 	test -z "$(bindir)" || $(mkdir_p) "$(DESTDIR)$(bindir)"
+-@ENABLE_KAWA_FRONTEND_TRUE@	$(INSTALL_PROGRAM_ENV) $(LIBTOOL_INSTALL) $(binPROGRAMS_INSTALL) kawa$(EXEEXT) $(DESTDIR)$(bindir)/kawa$(EXEEXT)
++@ENABLE_KAWA_FRONTEND_TRUE@	$(INSTALL_PROGRAM_ENV) $(LIBTOOL_INSTALL) $(binPROGRAMS_INSTALL) ./kawa$(EXEEXT) $(DESTDIR)$(bindir)/kawa$(EXEEXT)
+ @WITH_GCJ_DBTOOL_FALSE@@WITH_GCJ_TRUE@	$(INSTALL_PROGRAM_ENV) $(LIBTOOL_INSTALL) $(binPROGRAMS_INSTALL) kawa-bin$(EXEEXT) $(DESTDIR)$(bindir)/kawa-bin$(EXEEXT)
+ @ENABLE_SERVLET_TRUE@	$(INSTALL_PROGRAM_ENV) $(LIBTOOL_INSTALL) $(binPROGRAMS_INSTALL) cgi-servlet$(EXEEXT) $(DESTDIR)$(bindir)/cgi-servlet$(EXEEXT)
+ 

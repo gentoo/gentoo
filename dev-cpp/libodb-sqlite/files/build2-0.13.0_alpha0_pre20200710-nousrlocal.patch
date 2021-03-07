@@ -1,0 +1,52 @@
+--- build2-toolchain-e135a3112b15c88f0601583ca068f8adea7b605d-orig/build2/libbuild2/cc/module.cxx	2020-07-10 20:12:57.000000000 +1000
++++ build2-toolchain-e135a3112b15c88f0601583ca068f8adea7b605d/build2/libbuild2/cc/module.cxx	2020-07-14 14:33:58.939950579 +1000
+@@ -323,8 +323,6 @@
+ 
+ #ifndef _WIN32
+     static const dir_path usr_inc     ("/usr/include");
+-    static const dir_path usr_loc_lib ("/usr/local/lib");
+-    static const dir_path usr_loc_inc ("/usr/local/include");
+ #  ifdef __APPLE__
+     static const dir_path a_usr_inc (
+       "/Library/Developer/CommandLineTools/SDKs/MacOSX*.sdk/usr/include");
+@@ -486,7 +484,6 @@
+         auto& ls (lib_dirs.first);
+ 
+         bool ui  (find (is.begin (), is.end (), usr_inc)     != is.end ());
+-        bool uli (find (is.begin (), is.end (), usr_loc_inc) != is.end ());
+ 
+ #ifdef __APPLE__
+         // On Mac OS starting from 10.14 there is no longer /usr/include.
+@@ -509,7 +506,7 @@
+         //
+         // Is Apple's /usr/include.
+         //
+-        if (!ui && !uli)
++        if (!ui)
+         {
+           for (const dir_path& d: is)
+           {
+@@ -521,22 +518,16 @@
+           }
+         }
+ #endif
+-        if (ui || uli)
++        if (ui)
+         {
+-          bool ull (find (ls.begin (), ls.end (), usr_loc_lib) != ls.end ());
+-
+           // Many platforms don't search in /usr/local/lib by default (but do
+           // for headers in /usr/local/include). So add it as the last option.
+           //
+-          if (!ull && exists (usr_loc_lib, true /* ignore_error */))
+-            ls.push_back (usr_loc_lib);
+ 
+           // FreeBSD is at least consistent: it searches in neither. Quoting
+           // its wiki: "FreeBSD can't even find libraries that it installed."
+           // So let's help it a bit.
+           //
+-          if (!uli && exists (usr_loc_inc, true /* ignore_error */))
+-            is.push_back (usr_loc_inc);
+         }
+       }
+ #endif

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!--maintainer-needed-->
+	<upstream>
+		<remote-id type="pypi">txAMQP</remote-id>
+		<remote-id type="github">txamqp/txamqp</remote-id>
+		<bugs-to>https://github.com/txamqp/txamqp/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

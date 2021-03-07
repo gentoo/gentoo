@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+		Tripwire is a tool that aids system administrators and users in
+		monitoring a designated set of files for any changes. Used with system
+		files on a regular (e.g., daily) basis, Tripwire can notify system
+		administrators of corrupted or tampered files, so damage control
+		measures can be taken in a timely manner.
+	</longdescription>
+	<longdescription lang="es">
+		Tripwire es una herramienta que ayuda a los administradores y
+		usuarios en la monitorización de los cambios en un conjunto de
+		ficheros. Se utiliza particularmente en los ficheros de sistema
+		de un modo regular (por ejemplo diariamente). Tripwire puede
+		notificar a los administradores de sistema sobre ficheros que
+		se han corrompido o han sido modificados maliciosamente, por lo
+		que se pueden adoptar medidas de control de forma periódica.
+	</longdescription>
+	<use>
+		<flag name="tools">Installs app-admin/mktwpol, providing scripts
+		for the installation/setup of tripwire, including generating the
+		tripwire policy file and maintenance of the tripwire database</flag>
+		<flag name="ssl">Adds support for Secure Socket Layer connections</flag>
+		<flag name="static">Builds the package statically</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">tripwire</remote-id>
+		<remote-id type="github">Tripwire/tripwire-open-source</remote-id>
+	</upstream>
+</pkgmetadata>

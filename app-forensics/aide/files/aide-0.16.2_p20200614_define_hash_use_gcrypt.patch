@@ -1,0 +1,37 @@
+diff -Nur aide-0.16/include/md.h aide-0.16.new/include/md.h
+--- aide-0.16/include/md.h	2016-07-25 22:56:55.000000000 +0200
++++ aide-0.16.new/include/md.h	2018-11-21 14:07:01.347479021 +0100
+@@ -48,7 +48,7 @@
+ #define HASH_GCRYPT_COUNT GCRY_MD_CRC32
+ #ifndef WITH_MHASH
+ #define HASH_USE_GCRYPT (DB_MD5|DB_SHA1|DB_RMD160|DB_TIGER|DB_CRC32|\
+-                         DB_HAVAL|DB_CRC32|DB_SHA256|DB_SHA512)
++                         DB_CRC32B|DB_SHA256|DB_SHA512)
+ #endif
+ #endif
+ 
+diff -Nur aide-0.16/src/md.c aide-0.16.new/src/md.c
+--- aide-0.16/src/md.c	2016-07-25 22:56:55.000000000 +0200
++++ aide-0.16.new/src/md.c	2018-11-21 14:06:05.602295496 +0100
+@@ -55,10 +55,12 @@
+     r=DB_TIGER;
+     break;
+   }
++/* until libgcrypt-1.8.4 not implemented yet, see doc/gcrypt.info-1
+   case GCRY_MD_HAVAL: {
+     r=DB_HAVAL;
+     break;
+   }
++*/
+   case GCRY_MD_SHA256: {
+     r=DB_SHA256;
+     break;
+@@ -219,7 +221,7 @@
+ 			if(gcry_md_enable(md->mdh,i)==GPG_ERR_NO_ERROR){
+ 				md->calc_attr|=h;
+ 			} else {
+-				error(0,"gcry_md_enable %i failed",i);
++				error(0,"gcry_md_enable %i failed, see /usr/include/gcrypt.h enum gcry_md_algos",i);
+ 				md->todo_attr&=~h;
+ 			}
+ 		}

@@ -1,0 +1,15 @@
+--- a/configure.in
++++ b/configure.in
+@@ -17,10 +17,12 @@
+ rend_posix=true
+ 
+ STATIC_LIBS=no
+ CPPFLAGS="${CPPFLAGS} -g"
+ 
++AM_MAINTAINER_MODE
++
+ dnl fix freebsd's broken (?) libpthread
+ AC_CHECK_LIB(c_r,pthread_creat,THREAD_LIBS="-lc_r", [
+   AC_CHECK_LIB(pthread,pthread_create,THREAD_LIBS="-lpthread") ])
+ AC_SUBST(THREAD_LIBS)
+ 

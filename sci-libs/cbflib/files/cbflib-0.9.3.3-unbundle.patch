@@ -1,0 +1,181 @@
+ CMakeLists.txt | 118 +++------------------------------------------------------
+ 1 file changed, 6 insertions(+), 112 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 75054d6..15bab99 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -279,7 +279,7 @@ project (CBFlib C CXX Fortran)
+ enable_testing()
+ set (CBF_CMAKE_DEBUG "ON")
+ 
+-set(CMAKE_C_FLAGS "-Wall -fno-strict-aliasing")
++set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -fno-strict-aliasing")
+ 
+ #
+ #  User setable parameters
+@@ -530,42 +530,6 @@ find_package(ZLIB)
+ 
+ 
+ 
+-#Load external packages in build directory at cmake time
+-add_subdirectory(${CBF__EXTERNAL_PACKAGES}  "${CBF__EXT_PKG}")
+-
+-find_file(CBF_EXT_PKG_BLD_RUNNING cbf_ext_pkg_build_running "${CBF__EXT_PKG}")
+-if (${CBF_EXT_PKG_BLD_RUNNING} STREQUAL "CBF_EXT_PKG_BLD_RUNNING-NOTFOUND")
+-  file(WRITE "${CBF__EXT_PKG}/cbf_ext_pkg_build_running" "cbf_ext_pkg_build_running")
+-  CBF_DEBUG_MESSAGE("CMAKE_COMMAND:        ${CMAKE_COMMAND}")
+-  CBF_DEBUG_MESSAGE("CBFlib_SOURCE_DIR:    ${CBFlib_SOURCE_DIR} ")
+-  execute_process(
+-    COMMAND ${CMAKE_COMMAND} ${CBFlib_SOURCE_DIR}
+-    RESULT_VARIABLE CBF_BUILD_RESULT)
+-  CBF_DEBUG_MESSAGE("CBF_BUILD_RESULT: ${CBF_BUILD_RESULT}")
+-  execute_process(
+-    COMMAND ${CMAKE_COMMAND} --build ${CBFlib_BINARY_DIR} --target HDF5
+-    RESULT_VARIABLE CBF_BUILD_RESULT)
+-  CBF_DEBUG_MESSAGE("CBF_BUILD_RESULT: ${CBF_BUILD_RESULT}")
+-  execute_process(
+-    COMMAND ${CMAKE_COMMAND} --build ${CBFlib_BINARY_DIR} --target TIFF
+-    RESULT_VARIABLE CBF_BUILD_RESULT)
+-  CBF_DEBUG_MESSAGE("CBF_BUILD_RESULT: ${CBF_BUILD_RESULT}")
+-  file(REMOVE "${CBF__EXT_PKG}/cbf_ext_pkg_build_running")
+-endif (${CBF_EXT_PKG_BLD_RUNNING} STREQUAL "CBF_EXT_PKG_BLD_RUNNING-NOTFOUND")
+-
+-
+-file(GLOB CBF_HDF5_LIBRARY_PATH "${CMAKE_CURRENT_BINARY_DIR}/lib/*hdf5*")
+-CBF_DEBUG_MESSAGE( "CBF_HDF5_LIBRARY_PATH:  ${CBF_HDF5_LIBRARY_PATH}")
+-file(GLOB CBF_TIFF_LIBRARY_PATH "${CMAKE_CURRENT_BINARY_DIR}/lib/*tif*")
+-CBF_DEBUG_MESSAGE( "CBF_TIFF_LIBRARY_PATH: ${CBF_TIFF_LIBRARY_PATH}")
+-
+-if ("|${CBF_HDF5_LIBRARY_PATH}|" STREQUAL "||" OR "|${CBF_TIFF_LIBRARY_PATH}|" STREQUAL "||")
+-  MESSAGE(STATUS "Must build external packages in ${CBF__EXT_PKG}")
+-  MESSAGE(STATUS "Then rerun cmake")
+-  MESSAGE(WARNING "Finishing run to make Makefiles")
+-endif ("|${CBF_HDF5_LIBRARY_PATH}|" STREQUAL "||" OR "|${CBF_TIFF_LIBRARY_PATH}|" STREQUAL "||")
+-
+-
+ #
+ # Data Directories
+ #
+@@ -579,35 +543,6 @@ set(CBF_DATAURLBASE	"http://downloads.sf.net/cbflib")
+ set(CBF_DATAURLI  "${CBF_DATAURLBASE}/CBFlib_${CBF_VERSION}_Data_Files_Input.tar.gz")
+ set(CBF_DATAURLO  "${CBF_DATAURLBASE}/CBFlib_${CBF_VERSION}_Data_Files_Output.tar.gz")
+ set(CBF_DATAURLS  "${CBF_DATAURLBASE}/CBFlib_${CBF_VERSION}_Data_Files_Output_Sigs_Only.tar.gz")
+-#
+-# Load and unpack the Data Files
+-#
+-CBF_LOAD_TARBALL(${CBF__DATA} ${CBF_DATADIRI} ${CBF_DATAURLI})
+-CBF_LOAD_TARBALL(${CBF__DATA} ${CBF_DATADIRO} ${CBF_DATAURLO})
+-CBF_LOAD_TARBALL(${CBF__DATA} ${CBF_DATADIRS} ${CBF_DATAURLS})
+-#
+-# Verify the checksums
+-#
+-file(GLOB CBF_DATADIRI_FILES "${CBF_DATADIRI}/*")
+-file(GLOB CBF_DATADIRO_FILES "${CBF_DATADIRO}/*")
+-foreach(loop_file ${CBF_DATADIRI_FILES} )
+-  if (NOT "${loop_file}" MATCHES "[*.]md5")
+-    file(MD5 "${loop_file}" loop_file_md5)
+-    file(STRINGS "${loop_file}.md5" loop_file_md5_orig LIMIT_COUNT 1)
+-    if (NOT ("${loop_file_md5}" STREQUAL "${loop_file_md5_orig}"))
+-      message(WARNINH "loop_file: ${loop_file}:|${loop_file_md5}|${loop_file_md5_orig}|")
+-    endif (NOT ("${loop_file_md5}" STREQUAL "${loop_file_md5_orig}"))
+-  endif (NOT "${loop_file}" MATCHES "[*.]md5")
+-endforeach(loop_file)
+-foreach(loop_file ${CBF_DATADIRO_FILES} )
+-  if (NOT "${loop_file}" MATCHES "[*.]md5")
+-    file(MD5 "${loop_file}" loop_file_md5)
+-    file(STRINGS "${loop_file}.md5" loop_file_md5_orig LIMIT_COUNT 1)
+-    if (NOT ("${loop_file_md5}" STREQUAL "${loop_file_md5_orig}"))
+-      message(WARNING "loop_file: ${loop_file}:|${loop_file_md5}|${loop_file_md5_orig}|")
+-    endif (NOT ("${loop_file_md5}" STREQUAL "${loop_file_md5_orig}"))
+-  endif (NOT "${loop_file}" MATCHES "[*.]md5")
+-endforeach(loop_file)
+ 
+ 
+ #
+@@ -775,7 +710,7 @@ add_library(cbf_shared SHARED  ${CBF_C_SOURCES})
+ set_target_properties(cbf_shared PROPERTIES OUTPUT_NAME "cbf")
+ set_target_properties(cbf_shared PROPERTIES LINKER_LANGUAGE C)
+ set_target_properties(cbf_shared PROPERTIES SOVERSION "${CBF_APIVERSION}")
+-target_link_libraries(cbf_shared ${CBF_HDF5_LIBRARY_PATH})
++target_link_libraries(cbf_shared hdf5)
+ 
+ #
+ # Build the static and shared IMG libraries
+@@ -791,7 +726,7 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CBFlib_BINARY_DIR}/solib")
+ add_library(img_shared SHARED  ${CBF__EXAMPLES}/img.c)
+ set_target_properties(img_shared PROPERTIES OUTPUT_NAME "img")
+ set_target_properties(img_shared PROPERTIES LINKER_LANGUAGE C)
+-target_link_libraries(img_shared ${CBF_HDF5_LIBRARY_PATH})
++target_link_libraries(img_shared hdf5 m )
+ 
+ 
+ #
+@@ -829,26 +764,6 @@ target_link_libraries(fcb_shared ${CBF_HDF5_LIBRARY_PATH})
+ #
+ #  C and C++ examples
+ #
+-CBF_ADD_C_EXAMPLE(convert_image "${CBF__EXAMPLES}" "" "img_static")
+-CBF_ADD_C_EXAMPLE(convert_minicbf "${CBF__EXAMPLES}" "" "")
+-CBF_ADD_C_EXAMPLE(makecbf "${CBF__EXAMPLES}" "" "img_static")
+-CBF_ADD_C_EXAMPLE(adscimg2cbf "${CBF__EXAMPLES}" "${CBF__EXAMPLES}/adscimg2cbf_sub.c" "")
+-CBF_ADD_C_EXAMPLE(cbf2adscimg "${CBF__EXAMPLES}" "${CBF__EXAMPLES}/cbf2adscimg_sub.c" "")
+-CBF_ADD_C_EXAMPLE(cbf_tail "${CBF__EXAMPLES}" "" "")
+-CBF_ADD_C_EXAMPLE(changtestcompression "${CBF__EXAMPLES}" "" "")
+-CBF_ADD_C_EXAMPLE(img2cif "${CBF__EXAMPLES}" "" "img_static")
+-CBF_ADD_C_EXAMPLE(cif2cbf "${CBF__EXAMPLES}" "" "")
+-CBF_ADD_C_EXAMPLE(cbf2nexus "${CBF__EXAMPLES}" "" "")
+-CBF_ADD_C_EXAMPLE(minicbf2nexus "${CBF__EXAMPLES}" "" "")
+-CBF_ADD_C_EXAMPLE(cbf_template_t "${CBF__DECTRIS_EXAMPLES}" "" "")
+-CBF_ADD_CXX_EXAMPLE(testcell "${CBF__EXAMPLES}" "" "")
+-CBF_ADD_CXX_EXAMPLE(sauter_test "${CBF__EXAMPLES}" "" "")
+-CBF_ADD_C_EXAMPLE(sequence_match "${CBF__EXAMPLES}" "" "")
+-CBF_ADD_C_EXAMPLE(tiff2cbf "${CBF__EXAMPLES}" "${CBF__EXT_PKG}/${CBF_TIFF}/libtiff/tif_sprint.c" "${CBF_TIFF_LIBRARY_PATH}")
+-CBF_ADD_C_EXAMPLE(testulp "${CBF__EXAMPLES}" "" "")
+-CBF_ADD_C_EXAMPLE(testhdf5 "${CBF__EXAMPLES}" "" "")
+-CBF_ADD_C_EXAMPLE(testtree "${CBF__EXAMPLES}" "" "")
+-CBF_ADD_C_EXAMPLE(testalloc "${CBF__EXAMPLES}" "" "")
+ 
+ 
+ 
+@@ -876,26 +791,9 @@ target_link_libraries(test_xds_binary     fcb_static)
+ #
+ # install
+ #
+-install (TARGETS makecbf DESTINATION bin)
+-install (TARGETS img2cif DESTINATION bin)
+-install (TARGETS cif2cbf DESTINATION bin)
+-install (TARGETS adscimg2cbf DESTINATION bin)
+-install (TARGETS cbf2adscimg DESTINATION bin)
+-install (TARGETS changtestcompression DESTINATION bin)
+-install (TARGETS convert_image DESTINATION bin)
+-install (TARGETS convert_minicbf DESTINATION bin)
+-install (TARGETS minicbf2nexus DESTINATION bin)
+-install (TARGETS cbf_template_t DESTINATION bin)
+-install (TARGETS testcell DESTINATION bin)
+-install (TARGETS sauter_test DESTINATION bin)
+-install (TARGETS sequence_match DESTINATION bin)
+-install (TARGETS tiff2cbf DESTINATION bin)
+-install (TARGETS cbf_static DESTINATION lib)
+-install (TARGETS cbf_shared DESTINATION lib)
+-install (TARGETS fcb_static DESTINATION lib)
+-install (TARGETS fcb_shared DESTINATION lib)
+-install (TARGETS img_static DESTINATION lib)
+-install (TARGETS img_shared DESTINATION lib)
++install (TARGETS cbf_shared DESTINATION lib${LIB_SUFFIX})
++install (TARGETS fcb_shared DESTINATION lib${LIB_SUFFIX})
++install (TARGETS img_shared DESTINATION lib${LIB_SUFFIX})
+ install (DIRECTORY ${CBF__INCLUDE}/ DESTINATION include/cbflib FILES_MATCHING PATTERN "*.h")
+ install (DIRECTORY ${CBF__BIN_INCLUDE}/* DESTINATION include/cbflib FILES_MATCHING PATTERN "*.h")
+ 
+@@ -914,10 +812,6 @@ endif ()
+ #
+ # tests  -- to be extended
+ #
+-add_test(NAME cbftest_makecbf
+-  COMMAND ${CMAKE_COMMAND}
+-    -DCMD1=$<TARGET_FILE:makecbf> -DARG11=${CBF_DATADIRI}/example.mar2300 -DARG12=makecbf.cbf
+-    -P ${CMAKE_CURRENT_SOURCE_DIR}/runcommands.cmake)
+ add_test(cbftest_testalloc ${VALGRIND_COMMAND} ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/testalloc)
+ add_test(cbftest_testhdf5 ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/testhdf5)
+ add_test(cbftest_testtree ${VALGRIND_COMMAND} ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/testtree)

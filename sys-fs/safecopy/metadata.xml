@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chewi@gentoo.org</email>
+		<name>James Le Cuirot</name>
+	</maintainer>
+	<longdescription>safecopy is a data recovery tool which tries to extract as much data as possible from a problematic (i.e. damaged sectors) source - like floppy drives, hard disk partitions, CDs, tape devices, ..., where other tools like dd would fail due to I/O errors.</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">safecopy</remote-id>
+	</upstream>
+</pkgmetadata>

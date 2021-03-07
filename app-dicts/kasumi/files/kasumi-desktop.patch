@@ -1,0 +1,13 @@
+--- a/kasumi.desktop.in
++++ b/kasumi.desktop.in
+@@ -8,8 +8,8 @@
+ Comment=Edit Anthy dictionary.
+ Comment[ja]=Anthy の個人辞書に単語を登録、削除、編集するツールです。
+ Exec=kasumi
+-Icon=kasumi.png
++Icon=/usr/share/pixmaps/kasumi.png
+ StartupNotify=true
+ Terminal=false
+ Type=Application
+-Categories=Applications;Settings;
++Categories=Settings;

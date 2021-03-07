@@ -1,0 +1,488 @@
+From 7440e66d07ae04f9276bf6994bcf53f4aa870388 Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Fri, 29 May 2020 20:23:14 +0300
+Subject: [PATCH] Fix compilation for GCC10 (-fno-common)
+
+---
+ src/emu.c       |  4 ++++
+ src/emu.h       |  6 +++---
+ src/interrupt.c |  4 ++++
+ src/interrupt.h |  6 +++---
+ src/menu.c      |  2 ++
+ src/menu.h      |  2 +-
+ src/message.c   |  2 +-
+ src/message.h   |  2 +-
+ src/rom.c       |  3 +++
+ src/rom.h       |  4 ++--
+ src/serial.c    |  4 ++++
+ src/serial.h    | 10 ++++++----
+ src/sgb.c       |  6 ++++++
+ src/sgb.h       |  8 ++++----
+ src/sound.c     | 10 ++++++++++
+ src/sound.h     | 16 ++++++++--------
+ src/video_std.c |  4 ++++
+ src/video_std.h |  6 +++---
+ src/video_yuv.c |  6 ++++++
+ src/video_yuv.h | 12 +++++++-----
+ src/vram.c      |  4 ++++
+ src/vram.h      |  6 +++---
+ 22 files changed, 89 insertions(+), 38 deletions(-)
+
+diff --git a/src/emu.c b/src/emu.c
+index 91d4b88..cdbde0d 100644
+--- a/src/emu.c
++++ b/src/emu.c
+@@ -54,6 +54,10 @@ Uint8 jmap[8]={1,1,0,0,3,2,0,1};
+ Sint16 *joy_axis;
+ Uint8 *joy_but;
+ 
++GNGB_CONF conf;
++SDL_Joystick *sdl_joy;
++Uint16 key[SDLK_LAST];
++
+ /* Configuration File */
+ 
+ #define UINTEGER8  1
+diff --git a/src/emu.h b/src/emu.h
+index cb83289..bd4e466 100644
+--- a/src/emu.h
++++ b/src/emu.h
+@@ -64,11 +64,11 @@ typedef struct {
+   Sint32 pal[5][4];
+ }GNGB_CONF;
+ 
+-GNGB_CONF conf;
++extern GNGB_CONF conf;
+ 
+-SDL_Joystick *sdl_joy;
++extern SDL_Joystick *sdl_joy;
+ 
+-Uint16 key[SDLK_LAST];
++extern Uint16 key[SDLK_LAST];
+ extern Sint16 *joy_axis;
+ extern Uint8 *joy_but;
+ 
+diff --git a/src/interrupt.c b/src/interrupt.c
+index 0a736a2..a18814a 100644
+--- a/src/interrupt.c
++++ b/src/interrupt.c
+@@ -34,6 +34,10 @@ static const Uint16 lcd_cycle_tab[2][5]={{204,456,80,172,80},              /* GB
+ Uint32 nb_cycle=0;
+ Uint32 key_cycle=0;
+ Uint8 vram_init_pal=0;
++GBLCDC *gblcdc;
++Uint8 vram_pal_line_temp[160][4];
++GBTIMER *gbtimer;
++
+ 
+ Uint32 get_nb_cycle(void)
+ {
+diff --git a/src/interrupt.h b/src/interrupt.h
+index 5dca287..cbec97f 100644
+--- a/src/interrupt.h
++++ b/src/interrupt.h
+@@ -68,9 +68,9 @@ typedef struct {
+   Uint8 *vram_pal_line[160];
+ }GBLCDC;
+ 
+-GBLCDC *gblcdc;
++extern GBLCDC *gblcdc;
+ 
+-Uint8 vram_pal_line_temp[160][4];
++extern Uint8 vram_pal_line_temp[160][4];
+ extern Uint8 vram_init_pal;
+ 
+ #define gb_set_pal_bck(v) { \
+@@ -98,7 +98,7 @@ typedef struct {
+   Sint32 cycle;
+ }GBTIMER;
+ 
+-GBTIMER *gbtimer;
++extern GBTIMER *gbtimer;
+ 
+ void gblcdc_init(void);
+ void gblcdc_reset(void);
+diff --git a/src/menu.c b/src/menu.c
+index ee3a831..2879dd7 100644
+--- a/src/menu.c
++++ b/src/menu.c
+@@ -45,6 +45,8 @@
+ 
+ int stop_all=0;
+ 
++MENU *current_menu;
++
+ Uint8 radio_group[256];
+ SDL_Color buttonpal[]={{255,255,255},{214,214,214},{150,150,150},{0,0,0},{195,195,195}};
+ 
+diff --git a/src/menu.h b/src/menu.h
+index bf4d713..160ccac 100644
+--- a/src/menu.h
++++ b/src/menu.h
+@@ -49,7 +49,7 @@ typedef struct MENU{
+ #define DRAW_WHEN_ACTIVE 1
+ 
+ extern MENU main_menu;
+-MENU *current_menu;
++extern MENU *current_menu;
+ void loop_menu(MENU *m);
+ void display_menu(MENU *m);
+ 
+diff --git a/src/message.c b/src/message.c
+index af52efc..f409767 100644
+--- a/src/message.c
++++ b/src/message.c
+@@ -29,7 +29,7 @@
+ 
+ SDL_Surface *fontbuf=NULL;
+ 
+-//int wl,hl,xm,ym;
++int wl,hl,xm,ym;
+ static int tempo_mes;
+ 
+ #define BUF_ALPHA 240
+diff --git a/src/message.h b/src/message.h
+index 534a7a0..d893525 100644
+--- a/src/message.h
++++ b/src/message.h
+@@ -21,7 +21,7 @@
+ 
+ #include <SDL.h>
+ 
+-int wl,hl,xm,ym;
++extern int wl,hl,xm,ym;
+ //extern void (*draw_message)(int x,int y,char *mes);
+ extern SDL_Surface *fontbuf;
+ 
+diff --git a/src/rom.c b/src/rom.c
+index ff57a45..ba01473 100644
+--- a/src/rom.c
++++ b/src/rom.c
+@@ -48,9 +48,12 @@
+ 
+ #define FILENAME_LEN 1024
+ 
++char *rom_name;
+ Sint16 rom_type=UNKNOW_TYPE;
+ Uint8 rom_gb_type=UNKNOW;
+ 
++ROM_TIMER *rom_timer;
++
+ int check_dir(char *dir_name) {
+ #ifdef WIN32
+   BOOL res;
+diff --git a/src/rom.h b/src/rom.h
+index def6e6e..6befec1 100644
+--- a/src/rom.h
++++ b/src/rom.h
+@@ -37,7 +37,7 @@
+ #define SRAM           0x200
+ #define HUC1           0x400
+ 
+-char *rom_name;
++extern char *rom_name;
+ extern Sint16 rom_type;
+ 
+ //  rom_gb_suport
+@@ -52,7 +52,7 @@ typedef struct {
+   Uint8 regl[5];   // register locked
+ }ROM_TIMER; // MBC3
+ 
+-ROM_TIMER *rom_timer;
++extern ROM_TIMER *rom_timer;
+ 
+ int open_rom(char *filename);
+ 
+diff --git a/src/serial.c b/src/serial.c
+index 8d5fbbe..cec41f5 100644
+--- a/src/serial.c
++++ b/src/serial.c
+@@ -54,6 +54,10 @@
+ SDL_Thread *thread;
+ int thread_fun(void *data);
+ 
++serial gbserial;
++Sint16 serial_cycle_todo;
++Sint8 gblisten;
++
+ SOCKET dest_socket=-1;
+ SOCKET listen_socket=-1;
+ 
+diff --git a/src/serial.h b/src/serial.h
+index 888d09b..c253a1f 100644
+--- a/src/serial.h
++++ b/src/serial.h
+@@ -21,7 +21,7 @@
+ 
+ #include "global.h"
+ 
+-struct {
++typedef struct serial {
+   Sint16 cycle_todo;
+   Uint16 p;
+   Uint8 b;
+@@ -29,10 +29,12 @@ struct {
+   Uint8 check;
+   Uint8 wait;
+   Uint8 ready2read;
+-}gbserial;
++} serial;
+ 
+-Sint16 serial_cycle_todo;
+-Sint8 gblisten;
++extern serial gbserial;
++
++extern Sint16 serial_cycle_todo;
++extern Sint8 gblisten;
+ 
+ void gbserial_init(int server_side,char *servername);
+ void gbserial_close(void);
+diff --git a/src/sgb.c b/src/sgb.c
+index ffdc6e0..9fc7308 100644
+--- a/src/sgb.c
++++ b/src/sgb.c
+@@ -32,6 +32,12 @@ Uint8 sgb_tiles[256*32];
+ Uint8 sgb_map[32*32];
+ Uint8 sgb_att[32*32];
+ 
++Uint16 sgb_pal[4][4];           /* 4 pallete of 4 colour */
++Uint8 sgb_pal_map[20][18];      /* Map of Pallete Tiles */
++Uint8 sgb_mask;
++
++SGB sgb;
++
+ SDL_Surface *sgb_buf=NULL;
+ 
+ extern Uint16 Filter[32768];
+diff --git a/src/sgb.h b/src/sgb.h
+index 71aea6a..fd9b8f9 100644
+--- a/src/sgb.h
++++ b/src/sgb.h
+@@ -39,12 +39,12 @@ typedef struct {
+   Uint8 player;
+ }SGB;
+ 
+-SGB sgb;
++extern SGB sgb;
+ 
+-Uint16 sgb_pal[4][4];		/* 4 pallete of 4 colour */
+-Uint8 sgb_pal_map[20][18];      /* Map of Pallete Tiles */
++extern Uint16 sgb_pal[4][4];		/* 4 pallete of 4 colour */
++extern Uint8 sgb_pal_map[20][18];      /* Map of Pallete Tiles */
+ 
+-Uint8 sgb_mask;
++extern Uint8 sgb_mask;
+ 
+ extern SDL_Surface *sgb_buf;
+ 
+diff --git a/src/sound.c b/src/sound.c
+index ecc6e1f..8b7bce4 100644
+--- a/src/sound.c
++++ b/src/sound.c
+@@ -32,6 +32,16 @@
+ #define HZ_M3(x) ((double)(4194304.0)/(64.0*(double)(2048-x)))
+ // #define LOG_SOUND
+ 
++Uint32 sample_rate;
++Uint8  bit_per_sample;
++Uint16 sample_per_update;
++
++SoundM1 snd_m1;
++SoundM2 snd_m2;
++SoundM3 snd_m3;
++SoundM4 snd_m4;
++SoundG snd_g;
++
+ Sint8 *playbuf;
+ FILE *fsound;
+ /*
+diff --git a/src/sound.h b/src/sound.h
+index 56f58ce..6ef3bd8 100644
+--- a/src/sound.h
++++ b/src/sound.h
+@@ -22,9 +22,9 @@
+ 
+ #include "global.h"
+ 
+-Uint32 sample_rate;
+-Uint8  bit_per_sample;
+-Uint16 sample_per_update;
++extern Uint32 sample_rate;
++extern Uint8  bit_per_sample;
++extern Uint16 sample_per_update;
+ 
+ typedef struct SoundM1
+ {
+@@ -61,7 +61,7 @@ typedef struct SoundM1
+   float sample_env_per_step;
+   float cp;
+ }SoundM1;
+-SoundM1 snd_m1;
++extern SoundM1 snd_m1;
+ 
+ typedef struct SoundM2
+ {
+@@ -92,7 +92,7 @@ typedef struct SoundM2
+   float sample_env_per_step;
+   float cp;
+ }SoundM2;
+-SoundM2 snd_m2;
++extern SoundM2 snd_m2;
+ 
+ typedef struct SoundM3
+ {
+@@ -120,7 +120,7 @@ typedef struct SoundM3
+   Uint16 sample_len; // durée en samples
+   float cp;
+ }SoundM3;
+-SoundM3 snd_m3;
++extern SoundM3 snd_m3;
+ 
+ typedef struct SoundM4
+ {
+@@ -149,7 +149,7 @@ typedef struct SoundM4
+   float env_per_step;
+   float sample_env_per_step;
+ }SoundM4;
+-SoundM4 snd_m4;
++extern SoundM4 snd_m4;
+ 
+ /* Control general */
+ typedef struct SoundG
+@@ -177,7 +177,7 @@ typedef struct SoundG
+   Uint8 Sound3_On_Off   ;
+   Uint8 Sound4_On_Off   ;
+ }SoundG;
+-SoundG snd_g;
++extern SoundG snd_g;
+ 
+ 
+ #define LEFT  1
+diff --git a/src/video_std.c b/src/video_std.c
+index 1a81e90..b894443 100644
+--- a/src/video_std.c
++++ b/src/video_std.c
+@@ -35,6 +35,10 @@ SDL_Surface *back=NULL;
+ Sint8 rb_tab[2][RB_SIZE]={{0,-2,2,-2,2},
+ 			 {0,-1,-1,1,1}};
+ 
++Uint8 rb_shift;
++SDL_Rect dstR;
++SDL_Rect scrR;
++
+ VIDEO_MODE video_std;
+ 
+ SDL_Rect clip_rct;
+diff --git a/src/video_std.h b/src/video_std.h
+index 4a78d7e..05a0fd1 100644
+--- a/src/video_std.h
++++ b/src/video_std.h
+@@ -27,9 +27,9 @@
+ extern Sint8 rb_tab[2][RB_SIZE];
+ extern SDL_Surface *back;
+ 
+-Uint8 rb_shift;
+-SDL_Rect dstR;
+-SDL_Rect scrR;
++extern Uint8 rb_shift;
++extern SDL_Rect dstR;
++extern SDL_Rect scrR;
+ 
+ void draw_screen_sgb_std(void);
+ void draw_screen_wb_std(void);
+diff --git a/src/video_yuv.c b/src/video_yuv.c
+index 0c05a81..cba9e0f 100644
+--- a/src/video_yuv.c
++++ b/src/video_yuv.c
+@@ -25,6 +25,12 @@
+ #include "memory.h"
+ #include "message.h"
+ 
++SDL_Overlay *overlay;
++SDL_Rect ov_rect;
++Uint32 yuv_flag;
++yuv rgb2yuv[65536];
++
++
+ void init_message_yuv(void) {
+ 
+ }
+diff --git a/src/video_yuv.h b/src/video_yuv.h
+index c0d7c25..4d85ce9 100644
+--- a/src/video_yuv.h
++++ b/src/video_yuv.h
+@@ -21,16 +21,18 @@
+ 
+ #include "global.h"
+ 
+-SDL_Overlay *overlay;
+-SDL_Rect ov_rect;
+-Uint32 yuv_flag;
++extern SDL_Overlay *overlay;
++extern SDL_Rect ov_rect;
++extern Uint32 yuv_flag;
+ 
+-struct yuv{
++typedef struct yuv{
+   Uint16 y;
+   Uint8  u;
+   Uint8  v;
+   Uint32 yuy2;
+-}rgb2yuv[65536];
++} yuv;
++
++extern yuv rgb2yuv[65536];
+ 
+ void init_message_yuv(void);
+ void init_rgb2yuv_table(void);
+diff --git a/src/vram.c b/src/vram.c
+index 206b625..8a333be 100644
+--- a/src/vram.c
++++ b/src/vram.c
+@@ -30,6 +30,7 @@
+ 
+ SDL_Surface *gb_screen=NULL;
+ 
++int scxoff,scyoff;
+ 
+ Uint16 grey[4];
+ Uint8 pal_bck[4]={0,3,3,3};
+@@ -45,6 +46,9 @@ Uint8 back_col[170][170];
+ 
+ Uint8 nb_spr;
+ 
++GB_SPRITE gb_spr[40];
++Uint8 rb_on;
++
+ struct mask_shift tab_ms[8]={
+   { 0x80,7 },
+   { 0x40,6 },
+diff --git a/src/vram.h b/src/vram.h
+index d64a3d4..db9d061 100644
+--- a/src/vram.h
++++ b/src/vram.h
+@@ -62,7 +62,7 @@ struct mask_shift {
+ 
+ extern struct mask_shift tab_ms[8];
+ extern Uint32 video_flag;
+-int scxoff,scyoff;		/* shift of the screen */
++extern int scxoff,scyoff;		/* shift of the screen */
+ 
+ extern Uint16 grey[4];
+ extern Uint8 pal_bck[4];
+@@ -89,10 +89,10 @@ typedef struct {
+   Uint8 priority;
+ }GB_SPRITE;
+ 
+-GB_SPRITE gb_spr[40];
++extern GB_SPRITE gb_spr[40];
+ extern Uint8 nb_spr;
+ 
+-Uint8 rb_on;
++extern Uint8 rb_on;
+ 
+ extern void (*draw_screen)(void);
+ 
+-- 
+2.26.2
+

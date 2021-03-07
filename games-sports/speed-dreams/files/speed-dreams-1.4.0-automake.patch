@@ -1,0 +1,35 @@
+--- a/configure.in	2012-03-13 08:15:34.891163505 +0100
++++ b/configure.in	2012-03-13 08:18:40.154092687 +0100
+@@ -14,9 +14,10 @@
+ #
+ ##############################################################################
+ 
+-AC_INIT(Make-config.in)
++AC_INIT([speed-dreams], [1.4.0-r2307])
++AC_CONFIG_SRCDIR([Make-config.in])
+ AC_CONFIG_HEADERS(config.h)
+-AM_INIT_AUTOMAKE(speed-dreams, 1.4.0-r2307)
++AC_DEFINE(VERSION, ["1.4.0-r2307"], [Version])
+ 
+ dnl Checks for programs.
+ AC_PROG_CC
+--- a/Makefile	2012-03-13 10:43:30.563720337 +0100
++++ b/Makefile	2012-03-13 10:44:26.339794119 +0100
+@@ -88,17 +88,7 @@
+ -include ${MAKE_DEFAULT}
+ 
+ Make-config: configure Make-config.in
+-	rm -f config.status config.log config.cache
+ 	./configure
+-	rm -f config.status config.log config.cache
+-
+-configure: configure.in config.h.in aclocal.m4
+-	rm -f config.status config.log config.cache
+-	autoheader
+-	autoconf
+-
+-aclocal.m4: acinclude.m4
+-	aclocal
+ 
+ distclean: clean
+ 	rm -f config.status config.log config.cache

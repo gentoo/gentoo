@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/516854
+
+--- e2fsprogs-1.42.13/configure
++++ e2fsprogs-1.42.13/configure
+@@ -1315,6 +1315,8 @@
+ if test $cross_compiling = no; then
+    BUILD_CFLAGS="$CFLAGS $CPPFLAGS $INCLUDES -DHAVE_CONFIG_H"
+    BUILD_LDFLAGS="$LDFLAGS"
++else
++   BUILD_CFLAGS="$INCLUDES"
+ fi
+ 
+ 

@@ -1,0 +1,28 @@
+ Makefile | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index b4a49f8..410e018 100644
+--- a/Makefile
++++ b/Makefile
+@@ -7,12 +7,17 @@ LIBDIR=$(DESTDIR)/usr/lib
+ INSTALL=install
+ 
+ # You may need to change the -I arguments depending on your system
+-CFLAGS=-O3 -I/usr/include/tcl8.3/ -I/usr/include/tcl
++#CFLAGS=-O3 -I/usr/include/tcl8.3/ -I/usr/include/tcl
++
++LIBS = -ltcl
+ 
+ all:	libfilecmp.so.0.0
+ 
+-libfilecmp.so.0.0: filecmp.c
+-	$(CC) $(CFLAGS) -shared -o $@ filecmp.c
++.c.o:
++	$(CC) $(CPPFLAGS) $(CFLAGS) -fPIC -c $< -o $@
++
++libfilecmp.so.0.0: filecmp.o
++	$(CC) $(LDFLAGS) -shared -Wl,-soname,libfilecmp.so.0 -o $@ filecmp.o $(LIBS)
+ 
+ install: dirdiff libfilecmp.so.0.0
+ 	$(INSTALL) -c dirdiff $(BINDIR)

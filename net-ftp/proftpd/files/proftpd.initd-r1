@@ -1,0 +1,51 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+extra_started_commands="reload"
+
+depend() {
+	need net
+	use logger dns mysql postgresql antivirus
+}
+
+check_configuration() {
+	if [ ! -e /etc/proftpd/proftpd.conf ] ; then
+		eerror "To execute the ProFTPD server you need a /etc/proftpd/proftpd.conf configuration"
+		eerror "file. In /etc/proftpd you can find a sample configuration."
+		return 1
+	fi
+	/usr/sbin/proftpd -t &>/dev/null
+	if [ $? -ne 0 ] ; then
+		eerror "The ProFTPD configuration file /etc/proftpd/proftpd.conf is invalid! You have to"
+		eerror "fix your configuration in order to run the ProFTPD server. For more information"
+		eerror "you may execute the ProFTPD configuration check '/usr/sbin/proftpd -t'."
+		return 2
+	fi
+}
+
+start() {
+	checkpath -d /run/proftpd
+	[ "${RC_CMD}" = "restart" ] || check_configuration || return 1
+	ebegin "Starting ProFTPD"
+	start-stop-daemon --start --quiet \
+		--exec /usr/sbin/proftpd \
+		--pidfile /run/proftpd/proftpd.pid
+	eend $?
+}
+
+stop() {
+	[ "${RC_CMD}" != "restart" ] || check_configuration || return 1
+	ebegin "Stopping ProFTPD"
+	start-stop-daemon --stop --quiet --retry 20 \
+		--pidfile /run/proftpd/proftpd.pid
+	eend $?
+}
+
+reload() {
+	check_configuration || return 1
+	ebegin "Reloading ProFTPD"
+	start-stop-daemon --quiet --signal HUP \
+		--pidfile /run/proftpd/proftpd.pid
+	eend $?
+}

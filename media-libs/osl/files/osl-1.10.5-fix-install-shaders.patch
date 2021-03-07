@@ -1,0 +1,35 @@
+From 296ee89fcdec8ff6e514a3aebf5cb6c177f7f0c1 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl@gmail.com>
+Date: Mon, 10 Jun 2019 13:02:14 +0200
+Subject: [PATCH] fix install location of shaders (Gentoo specific)
+
+Signed-off-by: Bernd Waibel <waebbl@gmail.com>
+---
+ src/shaders/CMakeLists.txt           | 2 +-
+ src/shaders/MaterialX/CMakeLists.txt | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/shaders/CMakeLists.txt b/src/shaders/CMakeLists.txt
+index 9b263ff..5c47918 100644
+--- a/src/shaders/CMakeLists.txt
++++ b/src/shaders/CMakeLists.txt
+@@ -63,4 +63,4 @@ add_custom_target (shaders ALL
+                    SOURCES ${shader_source} ${shader_headers})
+ 
+ install (FILES ${shader_headers} ${shader_source} ${shader_objs}
+-        DESTINATION shaders)
++        DESTINATION include/OSL/shaders)
+diff --git a/src/shaders/MaterialX/CMakeLists.txt b/src/shaders/MaterialX/CMakeLists.txt
+index 88b52f3..f0e0a23 100644
+--- a/src/shaders/MaterialX/CMakeLists.txt
++++ b/src/shaders/MaterialX/CMakeLists.txt
+@@ -258,5 +258,5 @@ add_custom_target (mxshaders ALL
+                    SOURCES ${shader_source} ${mx_shader_headers})
+ 
+ install (FILES ${mx_shader_headers} ${mx_shader_objs} ${mx_shader_osls}
+-         DESTINATION shaders/MaterialX)
++         DESTINATION include/OSL/shaders/MaterialX)
+ 
+-- 
+2.21.0
+

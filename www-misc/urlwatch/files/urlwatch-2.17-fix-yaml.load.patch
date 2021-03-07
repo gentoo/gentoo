@@ -1,0 +1,18 @@
+commit d00041bacd6343cadf29c3d0a98817a7b9fda2a1
+Author: Louis Sautier <sautier.louis@gmail.com>
+Date:   Sun Apr 14 14:49:24 2019 +0200
+
+    Fix YAMLLoadWarning in tests
+
+diff --git a/test/test_filters.py b/test/test_filters.py
+index 3402616..da2393b 100644
+--- a/test/test_filters.py
++++ b/test/test_filters.py
+@@ -33,6 +33,6 @@ def test_filters():
+         eq_(result, expected_result)
+ 
+     with open(os.path.join(os.path.dirname(__file__), 'data/filter_tests.yaml'), 'r', encoding='utf8') as fp:
+-        filter_tests = yaml.load(fp)
++        filter_tests = yaml.load(fp, Loader=yaml.SafeLoader)
+     for test_name in filter_tests:
+         yield check_filter, test_name

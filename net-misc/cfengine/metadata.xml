@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sysadmin@gentoo.org</email>
+		<name>Gentoo Sysadmin Project</name>
+	</maintainer>
+	<use>
+		<flag name="libvirt">Enable support for virtual machine management through <pkg>app-emulation/libvirt</pkg></flag>
+		<flag name="masterfiles">Install the Masterfiles Policy Framework</flag>
+		<flag name="qdbm">Use <pkg>dev-db/qdbm</pkg> as database backend</flag>
+		<flag name="tokyocabinet">Use <pkg>dev-db/tokyocabinet</pkg> as database backend</flag>
+	</use>
+	<longdescription>
+	Cfengine, or the configuration engine is an autonomous agent and a middle to
+	high level policy language for building expert systems which administrate
+	and configure large computer networks. Cfengine uses the idea of classes and
+	a primitive intelligence to define and automate the configuration and
+	maintenance of system state, for small to huge configurations. Cfengine is
+	designed to be a part of a computer immune system, and can be thought of as
+	a gaming agent. It is ideal for cluster management and has been adopted for
+	use all over the world in small and huge organizations alike.
+	</longdescription>
+	<longdescription lang="ja">
+	Cfengine 、つまり the configuration engine (設定エンジン)は大規模
+	コンピュータ・ネットワークの管理と設定を行うエキスパート・システム
+	を構築するためのハイレベルなポリシ言語の自律型エージェントとその
+	ミドルを指します。莫大な設定を軽減するため、Cfengineはクラス概念と
+	プリミティブ・インテリジェンスの導入及びシステム状態の設定と保守を
+	自動化します。Cfengine は免疫型システムの一部としてデザインされ、
+	ゲーム・エージェントにもなります。クラスタ制御には最適で、世界中
+	の小さな組織および大きな組織で採用されています。
+	</longdescription>
+</pkgmetadata>

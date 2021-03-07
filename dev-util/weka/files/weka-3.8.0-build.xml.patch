@@ -1,0 +1,16 @@
+--- a/build.xml	2016-05-15 10:56:04.011409745 +0200
++++ b/build.xml	2016-05-15 10:57:43.971411711 +0200
+@@ -618,13 +618,6 @@
+          <include name="**/*.default"/>
+        </fileset>
+     </copy>
+-    <rmic base="${build}/classes"
+-       classname="weka.experiment.RemoteEngine"/>
+-    <unzip src="${lib}/java-cup.jar" dest="${build}/classes">
+-      <patternset>
+-        <include name="java_cup/runtime/**/*"/>
+-      </patternset>
+-    </unzip>
+     <unzip src="${lib}/bounce.jar" dest="${build}/classes">
+       <patternset>
+         <include name="org/**/*"/>

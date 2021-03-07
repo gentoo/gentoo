@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name="bibutils">Use Chris Putnam's Bibutils.</flag>
+		<flag name="debug">Turn on debug tracing.</flag>
+		<flag name="embed-data-files">Embed locale files into the library (needed for windows packaging)</flag>
+		<flag name="static">Use static linking.</flag>
+		<flag name="unicode-collation">Use Haskell bindings to the International Components for Unicode (ICU) libraries</flag>
+	</use>
+	<longdescription>
+		The pandoc-citeproc library supports automatic
+		generation of citations and a bibliography in pandoc
+		documents using the Citation Style Language (CSL)
+		macro language. More details on CSL can be found at
+		&lt;http://citationstyles.org/&gt;.
+		
+		In addition to a library, the package includes
+		an executable, pandoc-citeproc, which works as a pandoc
+		filter and also has a mode for converting bibliographic
+		databases into CSL JSON and pandoc YAML metadata formats.
+		
+		pandoc-citeproc originated as a fork of Andrea
+		Rossato&#39;s citeproc-hs.
+	</longdescription>
+</pkgmetadata>

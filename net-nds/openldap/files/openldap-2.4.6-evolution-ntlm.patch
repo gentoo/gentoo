@@ -1,0 +1,192 @@
+diff -up evo-openldap-2.4.14/include/ldap.h.evolution-ntlm evo-openldap-2.4.14/include/ldap.h
+--- evo-openldap-2.4.14/include/ldap.h.evolution-ntlm	2009-01-27 00:29:53.000000000 +0100
++++ evo-openldap-2.4.14/include/ldap.h	2009-02-17 10:10:00.000000000 +0100
+@@ -2461,5 +2461,26 @@ ldap_parse_deref_control LDAP_P((
+ 	LDAPControl	**ctrls,
+ 	LDAPDerefRes	**drp ));
+ 
++/*
++ * hacks for NTLM
++ */
++#define LDAP_AUTH_NTLM_REQUEST	((ber_tag_t) 0x8aU)
++#define LDAP_AUTH_NTLM_RESPONSE	((ber_tag_t) 0x8bU)
++LDAP_F( int )
++ldap_ntlm_bind LDAP_P((
++	LDAP		*ld,
++	LDAP_CONST char	*dn,
++	ber_tag_t	tag,
++	struct berval	*cred,
++	LDAPControl	**sctrls,
++	LDAPControl	**cctrls,
++	int		*msgidp ));
++LDAP_F( int )
++ldap_parse_ntlm_bind_result LDAP_P((
++	LDAP		*ld,
++	LDAPMessage	*res,
++	struct berval	*challenge));
++
++
+ LDAP_END_DECL
+ #endif /* _LDAP_H */
+diff -up evo-openldap-2.4.14/libraries/libldap/Makefile.in.evolution-ntlm evo-openldap-2.4.14/libraries/libldap/Makefile.in
+--- evo-openldap-2.4.14/libraries/libldap/Makefile.in.evolution-ntlm	2009-01-27 00:29:53.000000000 +0100
++++ evo-openldap-2.4.14/libraries/libldap/Makefile.in	2009-02-17 10:10:00.000000000 +0100
+@@ -20,7 +20,7 @@ PROGRAMS = apitest dntest ftest ltest ur
+ SRCS	= bind.c open.c result.c error.c compare.c search.c \
+ 	controls.c messages.c references.c extended.c cyrus.c \
+ 	modify.c add.c modrdn.c delete.c abandon.c \
+-	sasl.c gssapi.c sbind.c unbind.c cancel.c  \
++	sasl.c ntlm.c gssapi.c sbind.c unbind.c cancel.c  \
+ 	filter.c free.c sort.c passwd.c whoami.c \
+ 	getdn.c getentry.c getattr.c getvalues.c addentry.c \
+ 	request.c os-ip.c url.c pagectrl.c sortctrl.c vlvctrl.c \
+@@ -33,7 +33,7 @@ SRCS	= bind.c open.c result.c error.c co
+ OBJS	= bind.lo open.lo result.lo error.lo compare.lo search.lo \
+ 	controls.lo messages.lo references.lo extended.lo cyrus.lo \
+ 	modify.lo add.lo modrdn.lo delete.lo abandon.lo \
+-	sasl.lo gssapi.lo sbind.lo unbind.lo cancel.lo \
++	sasl.lo ntlm.lo gssapi.lo sbind.lo unbind.lo cancel.lo \
+ 	filter.lo free.lo sort.lo passwd.lo whoami.lo \
+ 	getdn.lo getentry.lo getattr.lo getvalues.lo addentry.lo \
+ 	request.lo os-ip.lo url.lo pagectrl.lo sortctrl.lo vlvctrl.lo \
+diff -up /dev/null evo-openldap-2.4.14/libraries/libldap/ntlm.c
+--- /dev/null	2009-02-17 09:19:52.829004420 +0100
++++ evo-openldap-2.4.14/libraries/libldap/ntlm.c	2009-02-17 10:10:00.000000000 +0100
+@@ -0,0 +1,137 @@
++/* $OpenLDAP: pkg/ldap/libraries/libldap/ntlm.c,v 1.1.4.10 2002/01/04 20:38:21 kurt Exp $ */
++/*
++ * Copyright 1998-2002 The OpenLDAP Foundation, All Rights Reserved.
++ * COPYING RESTRICTIONS APPLY, see COPYRIGHT file
++ */
++
++/* Mostly copied from sasl.c */
++
++#include "portable.h"
++
++#include <stdlib.h>
++#include <stdio.h>
++
++#include <ac/socket.h>
++#include <ac/string.h>
++#include <ac/time.h>
++#include <ac/errno.h>
++
++#include "ldap-int.h"
++
++int
++ldap_ntlm_bind(
++	LDAP		*ld,
++	LDAP_CONST char	*dn,
++	ber_tag_t	tag,
++	struct berval	*cred,
++	LDAPControl	**sctrls,
++	LDAPControl	**cctrls,
++	int		*msgidp )
++{
++	BerElement	*ber;
++	int rc;
++	ber_int_t id;
++
++	Debug( LDAP_DEBUG_TRACE, "ldap_ntlm_bind\n", 0, 0, 0 );
++
++	assert( ld != NULL );
++	assert( LDAP_VALID( ld ) );
++	assert( msgidp != NULL );
++
++	if( msgidp == NULL ) {
++		ld->ld_errno = LDAP_PARAM_ERROR;
++		return ld->ld_errno;
++	}
++
++	/* create a message to send */
++	if ( (ber = ldap_alloc_ber_with_options( ld )) == NULL ) {
++		ld->ld_errno = LDAP_NO_MEMORY;
++		return ld->ld_errno;
++	}
++
++	assert( LBER_VALID( ber ) );
++
++	LDAP_NEXT_MSGID( ld, id );
++	rc = ber_printf( ber, "{it{istON}" /*}*/,
++			 id, LDAP_REQ_BIND,
++			 ld->ld_version, dn, tag,
++			 cred );
++
++	/* Put Server Controls */
++	if( ldap_int_put_controls( ld, sctrls, ber ) != LDAP_SUCCESS ) {
++		ber_free( ber, 1 );
++		return ld->ld_errno;
++	}
++
++	if ( ber_printf( ber, /*{*/ "N}" ) == -1 ) {
++		ld->ld_errno = LDAP_ENCODING_ERROR;
++		ber_free( ber, 1 );
++		return ld->ld_errno;
++	}
++
++	/* send the message */
++	*msgidp = ldap_send_initial_request( ld, LDAP_REQ_BIND, dn, ber, id );
++
++	if(*msgidp < 0)
++		return ld->ld_errno;
++
++	return LDAP_SUCCESS;
++}
++
++int
++ldap_parse_ntlm_bind_result(
++	LDAP		*ld,
++	LDAPMessage	*res,
++	struct berval	*challenge)
++{
++	ber_int_t	errcode;
++	ber_tag_t	tag;
++	BerElement	*ber;
++	ber_len_t	len;
++
++	Debug( LDAP_DEBUG_TRACE, "ldap_parse_ntlm_bind_result\n", 0, 0, 0 );
++
++	assert( ld != NULL );
++	assert( LDAP_VALID( ld ) );
++	assert( res != NULL );
++
++	if ( ld == NULL || res == NULL ) {
++		return LDAP_PARAM_ERROR;
++	}
++
++	if( res->lm_msgtype != LDAP_RES_BIND ) {
++		ld->ld_errno = LDAP_PARAM_ERROR;
++		return ld->ld_errno;
++	}
++
++	if ( ld->ld_error ) {
++		LDAP_FREE( ld->ld_error );
++		ld->ld_error = NULL;
++	}
++	if ( ld->ld_matched ) {
++		LDAP_FREE( ld->ld_matched );
++		ld->ld_matched = NULL;
++	}
++
++	/* parse results */
++
++	ber = ber_dup( res->lm_ber );
++
++	if( ber == NULL ) {
++		ld->ld_errno = LDAP_NO_MEMORY;
++		return ld->ld_errno;
++	}
++
++	tag = ber_scanf( ber, "{ioa" /*}*/,
++			 &errcode, challenge, &ld->ld_error );
++	ber_free( ber, 0 );
++
++	if( tag == LBER_ERROR ) {
++		ld->ld_errno = LDAP_DECODING_ERROR;
++		return ld->ld_errno;
++	}
++
++	ld->ld_errno = errcode;
++
++	return( ld->ld_errno );
++}

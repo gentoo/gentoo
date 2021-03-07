@@ -1,0 +1,18 @@
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+sys-apps/hwloc gl
+
+sys-devel/gcc -hardened
+sys-libs/glibc -hardened
+
+# Ian Stakenvicius <axs@gentoo.org> (2014-12-03)
+# Have no way of knowing what Gecko Media Plugins will install in profiles
+www-client/firefox gmp-autoupdate
+
+# net-fs/openafs-kernel module can't be used on hardened,
+# see bug 540196.
+net-fs/openafs modules
+
+# jit don't work on hardened.
+dev-vcs/git pcre-jit

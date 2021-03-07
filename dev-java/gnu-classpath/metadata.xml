@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
+	<use>
+		<flag name="alsa">Build with ALSA javax.sound.midi provider</flag>
+		<flag name="dssi">Build with DSSI javax.sound.midi provider</flag>
+		<flag name="gconf">Build with GConf preferences backend</flag>
+		<flag name="gmp">Build with GMP backend for java.math.BigInteger</flag>
+		<flag name="gjdoc">Build GJDoc, a documentation generator</flag>
+		<flag name="gtk">Build with Gtk+ AWT peers</flag>
+		<flag name="xml">Build with native XML backend</flag>
+	</use>
+</pkgmetadata>

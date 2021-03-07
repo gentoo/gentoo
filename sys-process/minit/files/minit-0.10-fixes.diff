@@ -1,0 +1,62 @@
+diff -ru minit-0.10.orig/Makefile minit-0.10/Makefile
+--- minit-0.10.orig/Makefile	2005-04-08 19:24:04.000000000 +0200
++++ minit-0.10/Makefile	2008-11-27 23:05:57.000000000 +0100
+@@ -7,7 +7,7 @@
+ CROSS=
+ #CROSS=arm-linux-
+ LDFLAGS=-s
+-MANDIR=/usr/man
++MANDIR=/usr/share/man
+ 
+ path = $(subst :, ,$(PATH))
+ diet_path = $(foreach dir,$(path),$(wildcard $(dir)/diet))
+@@ -44,9 +44,11 @@
+ msvc: msvc.o
+ minit-update: minit-update.o split.o openreadclose.o
+ serdo: serdo.o
+-
+ shutdown: shutdown.o split.o openreadclose.o opendevconsole.o
+-	$(DIET) $(CROSS)$(CC) $(LDFLAGS) -o shutdown $^
++pidfilehack: pidfilehack.o
++hard-reboot: hard-reboot.o
++write_proc: write_proc.o
++killall5: killall5.o
+ 
+ %.o: %.c
+ 	$(DIET) $(CROSS)$(CC) $(CFLAGS) -c $<
+@@ -61,22 +63,11 @@
+ test: test.c
+ 	gcc -nostdlib -o $@ $^ -I../dietlibc/include ../dietlibc/start.o ../dietlibc/dietlibc.a
+ 
+-pidfilehack: pidfilehack.c
+-	$(DIET) $(CROSS)$(CC) $(CFLAGS) -o $@ $^
+-
+-hard-reboot: hard-reboot.c
+-	$(DIET) $(CROSS)$(CC) $(CFLAGS) -o $@ $^
+-
+-write_proc: write_proc.c
+-	$(DIET) $(CROSS)$(CC) $(CFLAGS) -o $@ $^
+-
+-killall5: killall5.c
+-	$(DIET) $(CROSS)$(CC) $(CFLAGS) -o $@ $^
+-
+ install-files:
+ 	install -d $(DESTDIR)/etc/minit $(DESTDIR)/sbin $(DESTDIR)/bin $(DESTDIR)$(MANDIR)/man8
+-	install minit pidfilehack $(DESTDIR)/sbin
++	install minit killall5 pidfilehack $(DESTDIR)/sbin
+ 	install write_proc hard-reboot minit-update $(DESTDIR)/sbin
++	install listpids $(DESTDIR)/sbin/minit-list
+ 	install msvc serdo $(DESTDIR)/bin
+ 	install -m 4750 shutdown $(DESTDIR)/sbin
+ 	test -f $(DESTDIR)/sbin/init || ln $(DESTDIR)/sbin/minit $(DESTDIR)/sbin/init
+diff -ru minit-0.10.orig/serdo.c minit-0.10/serdo.c
+--- minit-0.10.orig/serdo.c	2005-02-26 18:00:22.000000000 +0100
++++ minit-0.10/serdo.c	2008-11-27 23:02:57.000000000 +0100
+@@ -10,6 +10,7 @@
+ #define MAXENV 256
+ char* envp[MAXENV+2];
+ int envc;
++extern char **environ;
+ 
+ int continueonerror;
+ 

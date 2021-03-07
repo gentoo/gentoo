@@ -1,0 +1,21 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# prefix USE flag should always be unmasked in prefix profiles
+-prefix
+
+# re-add userland GNU
+-userland_GNU
+
+# USE flags inherited by the base/use.defaults file that shouldn't be in Prefix
+gpm
+
+# need to invade pid 1, which is not possible for Prefix.
+systemd
+
+# system authentication etc. not possible for non-privileged Prefix
+pam
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-06-06)
+# sci-libs/mkl does not have prefix keywords
+mkl

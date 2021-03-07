@@ -1,0 +1,40 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
+
+extra_commands="configtest"
+extra_started_commands="reload"
+
+command="/usr/bin/monit"
+
+depend() {
+	use net
+}
+
+configtest() {
+        ${command} -t 1>/dev/null 2>&1
+        ret=$?
+        if [ $ret -ne 0 ]; then
+                eerror "${SVCNAME} has detected an error in your setup:"
+                ${command} -t
+        fi
+        return $ret
+}
+
+start() {
+	ebegin "Starting monit"
+	start-stop-daemon --start --quiet --exec ${command} >/dev/null 2>&1
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping monit"
+	start-stop-daemon --stop --quiet --exec ${command}
+	eend $?
+}
+
+reload() {
+	ebegin "Reloading monit"
+	${command} -c /etc/monitrc reload >/dev/null 2>&1
+	eend $?
+}

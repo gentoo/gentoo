@@ -1,0 +1,21 @@
+diff --git a/install.sh b/install.sh
+index 72f6163..e84c645 100755
+--- a/install.sh
++++ b/install.sh
+@@ -17,6 +17,16 @@ fi
+ BINDIR=$PREFIX/bin
+ LIBDIR=$PREFIX/share/herdtools7
+ 
++if ! [ -d $BINDIR ]
++then
++	mkdir -p $BINDIR
++fi
++
++if ! [ -d $LIBDIR ]
++then
++	mkdir -p $LIBDIR
++fi
++
+ cpbin () {
+   SUB=$1
+   EXECS="$2"

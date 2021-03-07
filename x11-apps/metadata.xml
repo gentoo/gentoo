@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		x11-apps contains applications distributed as part of X.Org X11.
+	</longdescription>
+	<longdescription lang="ja">
+		x11-appsカテゴリにはX.Org X11のパッケージソフトが含まれます。
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie x11-apps enthält Applikationen welche mit X.Org 
+		X11 ausgeliefert werden.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria x11-apps contém aplicações distribuídas como parte
+		do X.Org X11.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria x11-apps zawiera programy wchodzące w skład środowiska
+		graficznego X.Org X11.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría x11-apps contiene aplicaciones que se distribuyen como
+		parte de X.Org X11.
+	</longdescription>
+</catmetadata>
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sping@gentoo.org</email>
+		<name>Sebastian Pipping</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<longdescription>
+		rss2email is a simple Python script that lets you subscribe to a
+		list of XML newsfeeds (RSS or Atom) and get new items sent to
+		you by email.
+	</longdescription>
+</pkgmetadata>

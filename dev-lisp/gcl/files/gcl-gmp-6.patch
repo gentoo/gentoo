@@ -1,0 +1,8 @@
+diff -r -U1 gcl.orig/configure gcl/configure
+--- gcl.orig/configure	2013-11-11 21:55:48.000000000 +0700
++++ gcl/configure	2014-03-30 17:25:04.874994142 +0700
+@@ -5027,3 +5027,3 @@
+ 				    int main() {
+-				    #if __GNU_MP_VERSION == 4 || __GNU_MP_VERSION == 5
++				    #if __GNU_MP_VERSION == 4 || __GNU_MP_VERSION == 5 || __GNU_MP_VERSION == 6
+ 					return 0;

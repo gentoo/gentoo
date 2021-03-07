@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>blueness@gentoo.org</email>
+		<name>Anthony G. Basile</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpan">Search-Xapian</remote-id>
+		<remote-id type="cpan-module">Search::Xapian</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::AssertionError</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::BM25Weight</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::BoolWeight</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::Database</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::DatabaseCorruptError</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::DatabaseCreateError</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::DatabaseError</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::DatabaseLockError</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::DatabaseModifiedError</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::DatabaseOpeningError</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::DatabaseVersionError</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::DocNotFoundError</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::Document</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::ESet</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::ESetIterator</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::Enquire</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::Error</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::FeatureUnavailableError</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::InternalError</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::InvalidArgumentError</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::InvalidOperationError</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::LogicError</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::MSet</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::MSet::Tied</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::MSetIterator</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::MultiValueSorter</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::NetworkError</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::NetworkTimeoutError</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::PerlStopper</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::PositionIterator</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::PostingIterator</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::Query</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::QueryParser</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::QueryParserError</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::RSet</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::RangeError</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::RuntimeError</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::SerialisationError</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::SimpleStopper</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::Stem</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::Stopper</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::TermGenerator</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::TermIterator</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::TradWeight</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::UnimplementedError</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::ValueIterator</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::Weight</remote-id>
+		<remote-id type="cpan-module">Search::Xapian::WritableDatabase</remote-id>
+	</upstream>
+</pkgmetadata>

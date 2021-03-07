@@ -1,0 +1,351 @@
+commit fa31e8f4a0f853848d96549a429083941877bf8d
+Author: Sergei Trofimovich <siarheit@google.com>
+Date:   Sun Dec 14 14:30:12 2014 +0000
+
+    powerpc: fix and enable shared libraries by default on linux
+    
+    Summary:
+    And fix things all the way down to it. Namely:
+        - remove 'r30' from free registers, it's an .LCTOC1 register
+          for gcc. generated .plt stubs expect it to be initialised.
+        - fix PicBase computation, which originally forgot to use 'tmp'
+          reg in 'initializePicBase_ppc.fetchPC'
+        - mark 'ForeighTarget's as implicitly using 'PicBase' register
+          (see comment for details)
+        - add 64-bit MO_Sub and test on alloclimit3/4 regtests
+        - fix dynamic label offsets to match with .LCTOC1 offset
+    
+    Signed-off-by: Sergei Trofimovich <siarheit@google.com>
+    
+    Test Plan: validate passes equal amount of vanilla/dyn tests
+    
+    Reviewers: simonmar, erikd, austin
+    
+    Reviewed By: erikd, austin
+    
+    Subscribers: carter, thomie
+    
+    Differential Revision: https://phabricator.haskell.org/D560
+    
+    GHC Trac Issues: #8024, #9831
+
+diff --git a/compiler/cmm/CLabel.hs b/compiler/cmm/CLabel.hs
+index 0f2c0ae..37b8ada 100644
+--- a/compiler/cmm/CLabel.hs
++++ b/compiler/cmm/CLabel.hs
+@@ -1170,7 +1170,8 @@ pprDynamicLinkerAsmLabel platform dllInfo lbl
+    else if osElfTarget (platformOS platform)
+         then if platformArch platform == ArchPPC
+              then case dllInfo of
+-                  CodeStub  -> ppr lbl <> text "@plt"
++                  CodeStub  -> -- See Note [.LCTOC1 in PPC PIC code]
++                               ppr lbl <> text "+32768@plt"
+                   SymbolPtr -> text ".LC_" <> ppr lbl
+                   _         -> panic "pprDynamicLinkerAsmLabel"
+              else if platformArch platform == ArchX86_64
+diff --git a/compiler/nativeGen/PIC.hs b/compiler/nativeGen/PIC.hs
+index 9b5c080..6326a8b 100644
+--- a/compiler/nativeGen/PIC.hs
++++ b/compiler/nativeGen/PIC.hs
+@@ -54,7 +54,6 @@ import qualified X86.Instr      as X86
+ 
+ import Platform
+ import Instruction
+-import Size
+ import Reg
+ import NCGMonad
+ 
+@@ -468,11 +467,8 @@ pprGotDeclaration dflags ArchX86 OSDarwin
+ pprGotDeclaration _ _ OSDarwin
+         = empty
+ 
+--- pprGotDeclaration
++-- Emit GOT declaration
+ -- Output whatever needs to be output once per .s file.
+--- The .LCTOC1 label is defined to point 32768 bytes into the table,
+--- to make the most of the PPC's 16-bit displacements.
+--- Only needed for PIC.
+ pprGotDeclaration dflags arch os
+         | osElfTarget os
+         , arch  /= ArchPPC_64
+@@ -482,6 +478,7 @@ pprGotDeclaration dflags arch os
+         | osElfTarget os
+         , arch  /= ArchPPC_64
+         = vcat [
++                -- See Note [.LCTOC1 in PPC PIC code]
+                 ptext (sLit ".section \".got2\",\"aw\""),
+                 ptext (sLit ".LCTOC1 = .+32768") ]
+ 
+@@ -688,12 +685,7 @@ pprImportedSymbol _ _ _
+ 
+ 
+ -- Get a pointer to our own fake GOT, which is defined on a per-module basis.
+--- This is exactly how GCC does it, and it's quite horrible:
+--- We first fetch the address of a local label (mkPicBaseLabel).
+--- Then we add a 16-bit offset to that to get the address of a .long that we
+--- define in .text space right next to the proc. This .long literal contains
+--- the (32-bit) offset from our local label to our global offset table
+--- (.LCTOC1 aka gotOffLabel).
++-- This is exactly how GCC does it in linux.
+ 
+ initializePicBase_ppc
+         :: Arch -> OS -> Reg
+@@ -704,18 +696,9 @@ initializePicBase_ppc ArchPPC os picReg
+     (CmmProc info lab live (ListGraph blocks) : statics)
+     | osElfTarget os
+     = do
+-        dflags <- getDynFlags
+-        gotOffLabel <- getNewLabelNat
+-        tmp <- getNewRegNat $ intSize (wordWidth dflags)
+         let
+-            gotOffset = CmmData Text $ Statics gotOffLabel [
+-                            CmmStaticLit (CmmLabelDiffOff gotLabel
+-                                                          mkPicBaseLabel
+-                                                          0)
+-                        ]
+-            offsetToOffset
+-                        = PPC.ImmConstantDiff
+-                                (PPC.ImmCLbl gotOffLabel)
++            gotOffset = PPC.ImmConstantDiff
++                                (PPC.ImmCLbl gotLabel)
+                                 (PPC.ImmCLbl mkPicBaseLabel)
+ 
+             blocks' = case blocks of
+@@ -726,15 +709,23 @@ initializePicBase_ppc ArchPPC os picReg
+               | bID `mapMember` info = fetchPC b
+               | otherwise            = b
+ 
++            -- GCC does PIC prologs thusly:
++            --     bcl 20,31,.L1
++            -- .L1:
++            --     mflr 30
++            --     addis 30,30,.LCTOC1-.L1@ha
++            --     addi 30,30,.LCTOC1-.L1@l
++            -- TODO: below we use it over temporary register,
++            -- it can and should be optimised by picking
++            -- correct PIC reg.
+             fetchPC (BasicBlock bID insns) =
+               BasicBlock bID (PPC.FETCHPC picReg
+-                              : PPC.ADDIS tmp picReg (PPC.HI offsetToOffset)
+-                              : PPC.LD PPC.archWordSize tmp
+-                                   (PPC.AddrRegImm tmp (PPC.LO offsetToOffset))
+-                              : PPC.ADD picReg picReg (PPC.RIReg picReg)
++                              : PPC.ADDIS picReg picReg (PPC.HA gotOffset)
++                              : PPC.ADDI picReg picReg (PPC.LO gotOffset)
++                              : PPC.MR PPC.r30 picReg
+                               : insns)
+ 
+-        return (CmmProc info lab live (ListGraph blocks') : gotOffset : statics)
++        return (CmmProc info lab live (ListGraph blocks') : statics)
+ 
+ 
+ initializePicBase_ppc ArchPPC OSDarwin picReg
+diff --git a/compiler/nativeGen/PPC/CodeGen.hs b/compiler/nativeGen/PPC/CodeGen.hs
+index ddf483a..c1c4a74 100644
+--- a/compiler/nativeGen/PPC/CodeGen.hs
++++ b/compiler/nativeGen/PPC/CodeGen.hs
+@@ -54,7 +54,7 @@ import Outputable
+ import Unique
+ import DynFlags
+ 
+-import Control.Monad    ( mapAndUnzipM )
++import Control.Monad    ( mapAndUnzipM, when )
+ import Data.Bits
+ import Data.Word
+ 
+@@ -355,6 +355,19 @@ iselExpr64 (CmmMachOp (MO_Add _) [e1,e2]) = do
+                        ADDE rhi r1hi r2hi ]
+    return (ChildCode64 code rlo)
+ 
++iselExpr64 (CmmMachOp (MO_Sub _) [e1,e2]) = do
++   ChildCode64 code1 r1lo <- iselExpr64 e1
++   ChildCode64 code2 r2lo <- iselExpr64 e2
++   (rlo,rhi) <- getNewRegPairNat II32
++   let
++        r1hi = getHiVRegFromLo r1lo
++        r2hi = getHiVRegFromLo r2lo
++        code =  code1 `appOL`
++                code2 `appOL`
++                toOL [ SUBFC rlo r2lo r1lo,
++                       SUBFE rhi r2hi r1hi ]
++   return (ChildCode64 code rlo)
++
+ iselExpr64 (CmmMachOp (MO_UU_Conv W32 W64) [expr]) = do
+     (expr_reg,expr_code) <- getSomeReg expr
+     (rlo, rhi) <- getNewRegPairNat II32
+@@ -918,8 +931,12 @@ genCCall' dflags gcp target dest_regs args0
+                                                         (toOL []) []
+ 
+         (labelOrExpr, reduceToFF32) <- case target of
+-            ForeignTarget (CmmLit (CmmLabel lbl)) _ -> return (Left lbl, False)
+-            ForeignTarget expr _ -> return  (Right expr, False)
++            ForeignTarget (CmmLit (CmmLabel lbl)) _ -> do
++                uses_pic_base_implicitly
++                return (Left lbl, False)
++            ForeignTarget expr _ -> do
++                uses_pic_base_implicitly
++                return (Right expr, False)
+             PrimTarget mop -> outOfLineMachOp mop
+ 
+         let codeBefore = move_sp_down finalStack `appOL` passArgumentsCode
+@@ -940,6 +957,13 @@ genCCall' dflags gcp target dest_regs args0
+     where
+         platform = targetPlatform dflags
+ 
++        uses_pic_base_implicitly = do
++            -- See Note [implicit register in PPC PIC code]
++            -- on why we claim to use PIC register here
++            when (gopt Opt_PIC dflags) $ do
++                _ <- getPicBaseNat archWordSize
++                return ()
++
+         initialStackOffset = case gcp of
+                              GCPDarwin -> 24
+                              GCPLinux  -> 8
+@@ -1431,3 +1455,21 @@ coerceFP2Int _ toRep x = do
+                 -- read low word of value (high word is undefined)
+             LD II32 dst (spRel dflags 3)]
+     return (Any (intSize toRep) code')
++
++-- Note [.LCTOC1 in PPC PIC code]
++-- The .LCTOC1 label is defined to point 32768 bytes into the GOT table
++-- to make the most of the PPC's 16-bit displacements.
++-- As 16-bit signed offset is used (usually via addi/lwz instructions)
++-- first element will have '-32768' offset against .LCTOC1.
++
++-- Note [implicit register in PPC PIC code]
++-- PPC generates calls by labels in assembly
++-- in form of:
++--     bl puts+32768@plt
++-- in this form it's not seen directly (by GHC NCG)
++-- that r30 (PicBaseReg) is used,
++-- but r30 is a required part of PLT code setup:
++--   puts+32768@plt:
++--       lwz     r11,-30484(r30) ; offset in .LCTOC1
++--       mtctr   r11
++--       bctr
+diff --git a/compiler/nativeGen/PPC/Instr.hs b/compiler/nativeGen/PPC/Instr.hs
+index f5b9506..b7081f9 100644
+--- a/compiler/nativeGen/PPC/Instr.hs
++++ b/compiler/nativeGen/PPC/Instr.hs
+@@ -205,8 +205,11 @@ data Instr
+     | ADD     Reg Reg RI            -- dst, src1, src2
+     | ADDC    Reg Reg Reg           -- (carrying) dst, src1, src2
+     | ADDE    Reg Reg Reg           -- (extend) dst, src1, src2
++    | ADDI    Reg Reg Imm           -- Add Immediate dst, src1, src2
+     | ADDIS   Reg Reg Imm           -- Add Immediate Shifted dst, src1, src2
+     | SUBF    Reg Reg Reg           -- dst, src1, src2 ; dst = src2 - src1
++    | SUBFC   Reg Reg Reg           -- (carrying) dst, src1, src2 ; dst = src2 - src1
++    | SUBFE   Reg Reg Reg           -- (extend) dst, src1, src2 ; dst = src2 - src1
+     | MULLW   Reg Reg RI
+     | DIVW    Reg Reg Reg
+     | DIVWU   Reg Reg Reg
+@@ -284,8 +287,11 @@ ppc_regUsageOfInstr platform instr
+     ADD     reg1 reg2 ri     -> usage (reg2 : regRI ri, [reg1])
+     ADDC    reg1 reg2 reg3   -> usage ([reg2,reg3], [reg1])
+     ADDE    reg1 reg2 reg3   -> usage ([reg2,reg3], [reg1])
++    ADDI    reg1 reg2 _      -> usage ([reg2], [reg1])
+     ADDIS   reg1 reg2 _      -> usage ([reg2], [reg1])
+     SUBF    reg1 reg2 reg3   -> usage ([reg2,reg3], [reg1])
++    SUBFC   reg1 reg2 reg3   -> usage ([reg2,reg3], [reg1])
++    SUBFE   reg1 reg2 reg3   -> usage ([reg2,reg3], [reg1])
+     MULLW   reg1 reg2 ri     -> usage (reg2 : regRI ri, [reg1])
+     DIVW    reg1 reg2 reg3   -> usage ([reg2,reg3], [reg1])
+     DIVWU   reg1 reg2 reg3   -> usage ([reg2,reg3], [reg1])
+@@ -358,8 +364,11 @@ ppc_patchRegsOfInstr instr env
+     ADD     reg1 reg2 ri    -> ADD (env reg1) (env reg2) (fixRI ri)
+     ADDC    reg1 reg2 reg3  -> ADDC (env reg1) (env reg2) (env reg3)
+     ADDE    reg1 reg2 reg3  -> ADDE (env reg1) (env reg2) (env reg3)
++    ADDI    reg1 reg2 imm   -> ADDI (env reg1) (env reg2) imm
+     ADDIS   reg1 reg2 imm   -> ADDIS (env reg1) (env reg2) imm
+     SUBF    reg1 reg2 reg3  -> SUBF (env reg1) (env reg2) (env reg3)
++    SUBFC   reg1 reg2 reg3  -> SUBFC (env reg1) (env reg2) (env reg3)
++    SUBFE   reg1 reg2 reg3  -> SUBFE (env reg1) (env reg2) (env reg3)
+     MULLW   reg1 reg2 ri    -> MULLW (env reg1) (env reg2) (fixRI ri)
+     DIVW    reg1 reg2 reg3  -> DIVW (env reg1) (env reg2) (env reg3)
+     DIVWU   reg1 reg2 reg3  -> DIVWU (env reg1) (env reg2) (env reg3)
+diff --git a/compiler/nativeGen/PPC/Ppr.hs b/compiler/nativeGen/PPC/Ppr.hs
+index 6851769..f59d51f 100644
+--- a/compiler/nativeGen/PPC/Ppr.hs
++++ b/compiler/nativeGen/PPC/Ppr.hs
+@@ -525,6 +525,16 @@ pprInstr (BCTRL _) = hcat [
+         ptext (sLit "bctrl")
+     ]
+ pprInstr (ADD reg1 reg2 ri) = pprLogic (sLit "add") reg1 reg2 ri
++pprInstr (ADDI reg1 reg2 imm) = hcat [
++        char '\t',
++        ptext (sLit "addi"),
++        char '\t',
++        pprReg reg1,
++        ptext (sLit ", "),
++        pprReg reg2,
++        ptext (sLit ", "),
++        pprImm imm
++    ]
+ pprInstr (ADDIS reg1 reg2 imm) = hcat [
+         char '\t',
+         ptext (sLit "addis"),
+@@ -539,6 +549,8 @@ pprInstr (ADDIS reg1 reg2 imm) = hcat [
+ pprInstr (ADDC reg1 reg2 reg3) = pprLogic (sLit "addc") reg1 reg2 (RIReg reg3)
+ pprInstr (ADDE reg1 reg2 reg3) = pprLogic (sLit "adde") reg1 reg2 (RIReg reg3)
+ pprInstr (SUBF reg1 reg2 reg3) = pprLogic (sLit "subf") reg1 reg2 (RIReg reg3)
++pprInstr (SUBFC reg1 reg2 reg3) = pprLogic (sLit "subfc") reg1 reg2 (RIReg reg3)
++pprInstr (SUBFE reg1 reg2 reg3) = pprLogic (sLit "subfe") reg1 reg2 (RIReg reg3)
+ pprInstr (MULLW reg1 reg2 ri@(RIReg _)) = pprLogic (sLit "mullw") reg1 reg2 ri
+ pprInstr (MULLW reg1 reg2 ri@(RIImm _)) = pprLogic (sLit "mull") reg1 reg2 ri
+ pprInstr (DIVW reg1 reg2 reg3) = pprLogic (sLit "divw") reg1 reg2 (RIReg reg3)
+diff --git a/compiler/nativeGen/PPC/Regs.hs b/compiler/nativeGen/PPC/Regs.hs
+index 0f636bf..69e69c0 100644
+--- a/compiler/nativeGen/PPC/Regs.hs
++++ b/compiler/nativeGen/PPC/Regs.hs
+@@ -37,7 +37,8 @@ module PPC.Regs (
+         fits16Bits,
+         makeImmediate,
+         fReg,
+-        sp, r3, r4, r27, r28, f1, f20, f21,
++        sp, r3, r4, r27, r28, r30,
++        f1, f20, f21,
+ 
+         allocatableRegs
+ 
+@@ -295,12 +296,13 @@ point registers.
+ fReg :: Int -> RegNo
+ fReg x = (32 + x)
+ 
+-sp, r3, r4, r27, r28, f1, f20, f21 :: Reg
++sp, r3, r4, r27, r28, r30, f1, f20, f21 :: Reg
+ sp      = regSingle 1
+ r3      = regSingle 3
+ r4      = regSingle 4
+ r27     = regSingle 27
+ r28     = regSingle 28
++r30     = regSingle 30
+ f1      = regSingle $ fReg 1
+ f20     = regSingle $ fReg 20
+ f21     = regSingle $ fReg 21
+diff --git a/includes/CodeGen.Platform.hs b/includes/CodeGen.Platform.hs
+index 9916e0e..1d46a01 100644
+--- a/includes/CodeGen.Platform.hs
++++ b/includes/CodeGen.Platform.hs
+@@ -881,6 +881,8 @@ freeReg 1 = fastBool False -- The Stack Pointer
+ # if !MACHREGS_darwin
+ -- most non-darwin powerpc OSes use r2 as a TOC pointer or something like that
+ freeReg 2 = fastBool False
++-- at least linux in -fPIC relies on r30 in PLT stubs
++freeReg 30 = fastBool False
+ # endif
+ # ifdef REG_Base
+ freeReg REG_Base = fastBool False
+diff --git a/mk/config.mk.in b/mk/config.mk.in
+index 0f5820f..8f134bc 100644
+--- a/mk/config.mk.in
++++ b/mk/config.mk.in
+@@ -95,7 +95,7 @@ TargetElf = YES
+ endif
+ 
+ # Some platforms don't support shared libraries
+-NoSharedLibsPlatformList = powerpc-unknown-linux \
++NoSharedLibsPlatformList = \
+ 	x86_64-unknown-mingw32 \
+ 	i386-unknown-mingw32
+ 

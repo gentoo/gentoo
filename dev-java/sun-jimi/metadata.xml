@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+
+<maintainer type="project">
+	<email>java@gentoo.org</email>
+	<name>Java</name>
+</maintainer>
+
+<longdescription>
+
+Jimi is a class library for managing images. Its primary function is image I/O.
+Jimi was formerly a product of Activated Intelligence. Sun is making it
+available for developers who have code with dependencies on Jimi or for those
+who need image I/O functionality in applications running under 1.1.x versions of
+the Java Platform.
+
+</longdescription>
+</pkgmetadata>

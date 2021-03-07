@@ -1,0 +1,46 @@
+Allow spellchecking support to be disabled.
+
+--- cone-1.0/cone/configure.ac
++++ cone-1.0/cone/configure.ac
+@@ -183,8 +183,10 @@
+ 	ALLSPELLOBJ='spellcheckerPspell.$(OBJEXT)'" $ALLSPELLOBJ"
+ fi
+ 
+-AC_ARG_WITH(spellcheck, [  --with-spellcheck=pspell      Use pspell for spell checking
+-  --with-spellcheck=aspell      Use aspell for spell checking], [
++AC_ARG_WITH(spellcheck, [
++  --with-spellcheck=pspell      Use pspell for spell checking
++  --with-spellcheck=aspell      Use aspell for spell checking
++  --with-spellcheck=none        Disable spell checking], [
+ 
+ case "$withval" in
+ pspell)
+@@ -200,6 +202,10 @@
+ 		AC_MSG_ERROR(aspell library not found)
+ 	fi
+ 	;;
++none)
++	PSPELL="none"
++	ASPELL="none"
++	;;
+ *)
+ 	AC_MSG_ERROR(Invalid --with-spellcheck option)
+ 	;;
+@@ -232,10 +238,13 @@
+ 		SPELL_OBJ='spellcheckerPspell.$(OBJEXT)'
+ 		SPELL_LIB='-lpspell'
+ 	else
+-		AC_MSG_WARN(---------------------------------------------------------------)
+-		AC_MSG_WARN(Neither pspell nor aspell was found -- disabling spell checking)
+-		AC_MSG_WARN(---------------------------------------------------------------)
+-		sleep 5
++		if test "$ASPELL" != "none" && test "$PSPELL" != "none"
++		then
++			AC_MSG_WARN(---------------------------------------------------------------)
++			AC_MSG_WARN(Neither pspell nor aspell was found -- disabling spell checking)
++			AC_MSG_WARN(---------------------------------------------------------------)
++			sleep 5
++		fi
+ 		SPELL_OBJ='spellcheckerNone.$(OBJEXT)'
+ 		SPELL_LIB=''
+ 	fi

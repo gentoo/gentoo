@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The net-im category contains instant messaging software.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie net-im enthält Software für Instant Messaging.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría net-im contiene programas de mensajería instantánea.
+	</longdescription>
+	<longdescription lang="ja">
+		net-imカテゴリーにはインスタント・メッセージのソフトウェアが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De net-im categorie bevat applicaties voor instant messaging.
+	</longdescription>
+	<longdescription lang="sk">
+		Kategória net-im obsahuje aplikácie pre instant messaging.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm net-im chứa các phần mềm nhắn tin.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria net-im contiene programmi per i messaggi istantanei.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria net-im contém programas para mensagens instantâneas.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria net-im zawiera komunikatory internetowe.
+	</longdescription>
+</catmetadata>
+

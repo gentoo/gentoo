@@ -1,0 +1,48 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-17)
+# works on ppc64le
+-app-emulation/docker
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-09-22
+# criu works on ppc64le
+-sys-process/criu
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-09-18)
+# openjfx:11 works on ppc64le
+-dev-java/openjfx:11
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-08-27)
+# little-endian power8 ppc64 configs are provided
+-sys-kernel/gentoo-kernel
+-sys-kernel/vanilla-kernel
+-virtual/dist-kernel
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-25)
+# libva unmasked on little-endian profile
+-net-im/telegram-desktop
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-21)
+# works fine on little-endian
+-x11-libs/libva
+-media-video/libva-utils
+-media-plugins/gst-plugins-vaapi
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-14)
+# works fine on little-endian
+-x11-drivers/xf86-video-amdgpu
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-02-04)
+# AdoptOpenJDK's ppc64 build is little-endian only
+# so we can use bins and build from source
+-dev-java/openjdk:11
+-dev-java/openjdk-bin
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2018-04-11)
+# ltrace is not ported to powerpc64le yet.
+dev-util/ltrace
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2018-02-21)
+# Mozc supports only little-endian architectures.
+-app-i18n/mozc

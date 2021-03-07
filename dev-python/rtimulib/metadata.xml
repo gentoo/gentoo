@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		RTIMULib is the simplest way to connect a 9-dof, 10-dof or 11-dof IMU
+		to an embedded Linux system and obtain Kalman-filtered quaternion or
+		Euler angle pose data. Basically, two simple funtion calls
+		(IMUInit() and IMURead()) are pretty much all that's needed to integrate RTIMULib.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/RPi-Distro/RTIMULib/issues</bugs-to>
+		<remote-id type="github">RPi-Distro/RTIMULib</remote-id>
+		<remote-id type="pypi">RTIMULib</remote-id>
+	</upstream>
+</pkgmetadata>

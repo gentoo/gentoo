@@ -1,0 +1,13 @@
+[Unit]
+Description=Update of the root trust anchor for DNSSEC validation
+After=network.target
+Before=nss-lookup.target
+Wants=nss-lookup.target
+Before=unbound.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/unbound-anchor
+
+[Install]
+WantedBy=multi-user.target

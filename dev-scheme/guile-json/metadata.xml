@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>scheme@gentoo.org</email>
+	<name>Gentoo Scheme Project</name>
+</maintainer>
+<maintainer type="person">
+	<email>slyfox@gentoo.org</email>
+</maintainer>
+</pkgmetadata>

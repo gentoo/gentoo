@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mgorny@gentoo.org</email>
+    <name>Michał Górny</name>
+  </maintainer>
+  <use>
+    <flag name="http-client">Build support for HTTP client using <pkg>net-misc/curl</pkg></flag>
+    <flag name="http-server">Build support for HTTP server using <pkg>net-libs/libmicrohttpd</pkg></flag>
+    <flag name="redis-client">Build support for Redis client using <pkg>dev-libs/hiredis</pkg></flag>
+    <flag name="redis-server">Build support for Redis server using <pkg>dev-libs/hiredis</pkg></flag>
+    <flag name="stubgen">Build header stub code generator (needed for development and when pregenerated headers are not bundled)</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">cinemast/libjson-rpc-cpp</remote-id>
+  </upstream>
+</pkgmetadata>

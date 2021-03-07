@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>sci-physics@gentoo.org</email>
+  <name>Gentoo Physics Project</name>
+</maintainer>
+<longdescription lang="en">
+  The HepMC package is an object oriented event record written in C++
+  for High Energy Physics Monte Carlo Generators. Many extensions from
+  HEPEVT, the Fortran HEP standard, are supported: the number of entries
+  is unlimited, spin density matrices can be stored with each vertex,
+  flow patterns (such as color) can be stored and traced, integers
+  representing random number generator states can be stored, and an
+  arbitrary number of event weights can be included. Particles and
+  vertices are kept separate in a graph structure, physically similar to
+  a physics event. The added information supports the modularisation of
+  event generators. The package has been kept as simple as possible with
+  minimal internal/external dependencies. Event information is accessed
+  by means of iterators supplied with the package.
+  
+  Reference: M. Dobbs and J.B. Hansen, Comput. Phys. Commun. 134 (2001)41. 
+</longdescription>
+<use>
+  <flag name="gev">Build with GeV instead of default MeV for momentum units</flag>
+  <flag name="cm">Build with cm instead of default mm for length units</flag>
+</use>
+</pkgmetadata>

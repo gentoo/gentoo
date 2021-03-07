@@ -1,0 +1,11 @@
+--- ypsilon-0.9.6.update3.orig/Makefile	2008-12-23 09:56:02.000000000 +0100
++++ ypsilon-0.9.6.update3/Makefile	2009-10-21 18:14:37.613881129 +0200
+@@ -126,7 +126,7 @@
+ 	@mkdir -p -m755 $(HOME)/.ypsilon
+ 
+ $(PROG): $(OBJS)
+-	$(CXX) $(LDFLAGS) $(LDLIBS) -o $@ $^
++	$(CXX) $(LDFLAGS) -o $@ $^ $(LDLIBS)
+ 
+ vm1.s: vm1.cpp
+ 	$(CXX) $(CXXFLAGS) $(CPPFLAGS) \

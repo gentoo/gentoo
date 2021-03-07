@@ -1,0 +1,33 @@
+Only in sfftobmp3_1_1: Makefile.am.orig
+Only in sfftobmp3_1_1: Makefile.am.rej
+diff -ur sfftobmp3_1_1.orig/src/cmdline.cpp sfftobmp3_1_1/src/cmdline.cpp
+--- sfftobmp3_1_1.orig/src/cmdline.cpp	2007-10-07 22:01:21.000000000 +0300
++++ sfftobmp3_1_1/src/cmdline.cpp	2009-05-09 00:33:06.000000000 +0300
+@@ -35,6 +35,7 @@
+ 
+ ---RCS-Info--------------------------------------------------*/
+ 
++#include <cstdio>
+ #include <vector>
+ #include <cassert>
+ #include <iostream>
+diff -ur sfftobmp3_1_1.orig/src/common.cpp sfftobmp3_1_1/src/common.cpp
+--- sfftobmp3_1_1.orig/src/common.cpp	2007-10-07 22:01:20.000000000 +0300
++++ sfftobmp3_1_1/src/common.cpp	2009-05-09 00:28:37.000000000 +0300
+@@ -49,6 +49,7 @@
+ #include <sys/utime.h>
+ #endif
+ 
++#include <cstdio>
+ #include <cassert>
+ #include <iostream>
+ 
+diff -ur sfftobmp3_1_1.orig/src/Makefile.am sfftobmp3_1_1/src/Makefile.am
+--- sfftobmp3_1_1.orig/src/Makefile.am	2006-10-24 23:14:19.000000000 +0300
++++ sfftobmp3_1_1/src/Makefile.am	2009-05-09 00:27:42.000000000 +0300
+@@ -3,4 +3,4 @@
+ INCLUDES            =  -I$(top_builddir) -I$(top_srcdir)
+ bin_PROGRAMS = sfftobmp
+ sfftobmp_SOURCES = my_getopt.c cmdline.cpp codes.cpp common.cpp decoder.cpp input.cpp main.cpp output.cpp
+-sfftobmp_LDADD = @TIFF_LIB@ @JPEG_LIB@ -lboost_filesystem
++sfftobmp_LDADD = @TIFF_LIB@ @JPEG_LIB@ -lboost_filesystem -lboost_system

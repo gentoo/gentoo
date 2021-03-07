@@ -1,0 +1,40 @@
+From c5ada7063a68cc05ed1b783a9769557b8e2a83ed Mon Sep 17 00:00:00 2001
+From: Alberto Fanjul <albertofanjul@gmail.com>
+Date: Thu, 7 May 2020 12:43:51 +0200
+Subject: [PATCH 1/2] glade: Adapt to Glade 3.36 API changes
+
+Fixes https://source.puri.sm/Librem5/libhandy/issues/267.
+---
+ glade/glade-hdy-header-group.c | 2 +-
+ glade/glade-hdy-swipe-group.c  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/glade/glade-hdy-header-group.c b/glade/glade-hdy-header-group.c
+index be6a9de..aa83c6b 100644
+--- a/glade/glade-hdy-header-group.c
++++ b/glade/glade-hdy-header-group.c
+@@ -43,7 +43,7 @@ glade_hdy_header_group_read_widgets (GladeWidget *widget, GladeXmlNode *node)
+         string = widget_name;
+       } else if (widget_name != NULL) {
+         tmp =
+-          g_strdup_printf ("%s%s%s", string, GPC_OBJECT_DELIMITER,
++          g_strdup_printf ("%s%s%s", string, GLADE_PROPERTY_DEF_OBJECT_DELIMITER,
+                            widget_name);
+         string = (g_free (string), tmp);
+         g_free (widget_name);
+diff --git a/glade/glade-hdy-swipe-group.c b/glade/glade-hdy-swipe-group.c
+index 0b42798..ff909b0 100644
+--- a/glade/glade-hdy-swipe-group.c
++++ b/glade/glade-hdy-swipe-group.c
+@@ -45,7 +45,7 @@ glade_hdy_swipe_group_read_widgets (GladeWidget  *widget,
+         string = widget_name;
+       } else if (widget_name != NULL) {
+         tmp =
+-          g_strdup_printf ("%s%s%s", string, GPC_OBJECT_DELIMITER,
++          g_strdup_printf ("%s%s%s", string, GLADE_PROPERTY_DEF_OBJECT_DELIMITER,
+                            widget_name);
+         string = (g_free (string), tmp);
+         g_free (widget_name);
+-- 
+2.20.1
+

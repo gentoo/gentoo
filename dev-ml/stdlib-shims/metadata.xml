@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <longdescription>
+    Compatibility library for OCaml compilers before 4.08 to allow calling
+    Pervasives module functions on Stdlib, which is the API in newer compilers.
+    Does not add newer Stdlib functions.
+  </longdescription>
+  <maintainer type="person">
+    <email>rkitover@gmail.com</email>
+    <name>Rafael Kitover</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">ocaml/stdlib-shims</remote-id>
+  </upstream>
+  <use>
+    <flag name="ocamlopt">
+      Whether the OCaml native code compiler is used. Must be set globally and
+      match dev-lang/ocaml.
+    </flag>
+  </use>
+</pkgmetadata>

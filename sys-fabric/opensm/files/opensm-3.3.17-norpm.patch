@@ -1,0 +1,32 @@
+--- opensm-3.3.17/configure.in.orig	2014-01-30 23:13:35.000000000 +0400
++++ opensm-3.3.17/configure.in	2014-12-27 02:48:11.264876067 +0300
+@@ -17,11 +17,7 @@
+                    [name of the RDMA service: "rdma" when using /etc/init.d/rdma to start RDMA services; "openibd" when using /etc/init.d/openibd to start RDMA services [default=${default_rdma_service}]]))
+ AC_SUBST(RDMA_SERVICE, ${with_rdma_service:-${default_rdma_service}})
+ 
+-if { rpm -q sles-release || rpm -q openSUSE-release; } >/dev/null 2>&1; then
+-   default_stop="0 1 4 6"
+-else
+-   default_stop="0 1 6"
+-fi
++default_stop="0 1 6"
+ 
+ default_start="null"
+ 
+@@ -282,4 +278,4 @@
+ AC_CONFIG_FILES([man/opensm.8 man/torus-2QoS.8 man/torus-2QoS.conf.5 scripts/opensm.init scripts/redhat-opensm.init scripts/sldd.sh])
+ 
+ dnl Create the following Makefiles
+-AC_OUTPUT([include/opensm/osm_version.h Makefile include/Makefile complib/Makefile libvendor/Makefile opensm/Makefile osmeventplugin/Makefile osmtest/Makefile opensm.spec])
++AC_OUTPUT([include/opensm/osm_version.h Makefile include/Makefile complib/Makefile libvendor/Makefile opensm/Makefile osmeventplugin/Makefile osmtest/Makefile])
+--- opensm-3.3.17/Makefile.am.orig	2013-02-07 11:46:28.000000000 +0400
++++ opensm-3.3.17/Makefile.am	2014-12-27 02:48:45.133654187 +0300
+@@ -19,7 +19,7 @@
+ 	doc/partition-config.txt doc/opensm-sriov.txt \
+ 	doc/opensm_release_notes-3.3.txt
+ 
+-EXTRA_DIST = autogen.sh opensm.spec $(various_scripts) $(man_MANS) $(docs)
++EXTRA_DIST = autogen.sh $(various_scripts) $(man_MANS) $(docs)
+ 
+ dist-hook: $(EXTRA_DIST)
+ 	if [ -x $(top_srcdir)/gen_chlog.sh ] ; then \

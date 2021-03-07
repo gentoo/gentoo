@@ -1,0 +1,13 @@
+diff -r -U2 maxima-5.38.0.orig/src/maxima.in maxima-5.38.0/src/maxima.in
+--- maxima-5.38.0.orig/src/maxima.in	2016-04-02 23:42:45.000000000 +0200
++++ maxima-5.38.0/src/maxima.in	2016-04-03 09:07:46.317809312 +0200
+@@ -195,7 +195,7 @@
+ # switch --dynamic-space-size in order to do so.
+   if [ -x "$MAXIMA_IMAGESDIR/binary-$MAXIMA_LISP/maxima" ]; then
+-    exec "$MAXIMA_IMAGESDIR/binary-$MAXIMA_LISP/maxima" --noinform $MAXIMA_LISP_OPTIONS --end-runtime-options --eval '(cl-user::run)' --end-toplevel-options "$@"
++    exec "$MAXIMA_IMAGESDIR/binary-$MAXIMA_LISP/maxima" --noinform $MAXIMA_LISP_OPTIONS --end-runtime-options --no-sysinit --no-userinit --eval '(cl-user::run)' --end-toplevel-options "$@"
+   else
+-    exec "@SBCL_NAME@" --core "$maxima_image_base.core" --noinform $MAXIMA_LISP_OPTIONS --end-runtime-options --eval '(cl-user::run)' --end-toplevel-options "$@"
++    exec "@SBCL_NAME@" --core "$maxima_image_base.core" --noinform $MAXIMA_LISP_OPTIONS --end-runtime-options --no-sysinit --no-userinit --eval '(cl-user::run)' --end-toplevel-options "$@"
+   fi
+ 

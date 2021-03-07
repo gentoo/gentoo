@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>slyfox@gentoo.org</email>
+		<name>Sergei Trofimovich</name>
+	</maintainer>
+	<use>
+		<flag name="fluidsynth">use <pkg>media-sound/fluidsynth</pkg> for MIDI emulation</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">dosemu</remote-id>
+	</upstream>
+</pkgmetadata>

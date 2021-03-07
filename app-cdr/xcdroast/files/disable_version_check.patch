@@ -1,0 +1,11 @@
+--- a/src/init.c	2016-07-08 12:00:17.705356781 +0200
++++ b/src/init.c	2016-07-08 12:02:35.914358133 +0200
+@@ -790,7 +790,7 @@
+ 	debug = 0;
+ 	oldfontcode = 0;
+ 	*altdevscan = 1;
+-	no_versioncheck = 0;
++	no_versioncheck = 1;
+ 	support_ontheflyaudio = 0;
+ 	c_locale_is_utf8 = 0;
+ 	ignoreProDVD = 0;

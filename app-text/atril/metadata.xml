@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>mate@gentoo.org</email>
+		<name>Gentoo MATE Desktop</name>
+	</maintainer>
+	<use>
+		<flag name="caja">Enable property page extension in 
+			<pkg>mate-base/caja</pkg></flag>
+		<flag name="dvi">Enable build-in DVI viewer</flag>
+		<flag name="epub">Enable build-in DVI viewer using
+			<pkg>net-libs/webkit-gtk</pkg></flag>
+		<flag name="synctex">Enable search highlighting through synctex
+		(<pkg>virtual/tex-base</pkg>)</flag>
+		<flag name="t1lib">Enable the Type-1 fonts for the build-in DVI viewer
+			(<pkg>media-libs/t1lib</pkg>)</flag>
+		<flag name="xps">Enable XPS viewer using 
+			<pkg>app-text/libgxps</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">mate-desktop/atril</remote-id>
+	</upstream>
+</pkgmetadata>

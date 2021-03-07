@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>grknight@gentoo.org</email>
+		<name>Brian Evans</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>perl@gentoo.org</email>
+		<name>Gentoo Perl Project</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="cpan">ack</remote-id>
+		<remote-id type="cpan-module">App::Ack</remote-id>
+		<remote-id type="cpan-module">App::Ack::ConfigDefault</remote-id>
+		<remote-id type="cpan-module">App::Ack::ConfigFinder</remote-id>
+		<remote-id type="cpan-module">App::Ack::ConfigLoader</remote-id>
+		<remote-id type="cpan-module">App::Ack::Filter</remote-id>
+		<remote-id type="cpan-module">App::Ack::Filter::Collection</remote-id>
+		<remote-id type="cpan-module">App::Ack::Filter::Default</remote-id>
+		<remote-id type="cpan-module">App::Ack::Filter::Extension</remote-id>
+		<remote-id type="cpan-module">App::Ack::Filter::ExtensionGroup</remote-id>
+		<remote-id type="cpan-module">App::Ack::Filter::FirstLineMatch</remote-id>
+		<remote-id type="cpan-module">App::Ack::Filter::Inverse</remote-id>
+		<remote-id type="cpan-module">App::Ack::Filter::Is</remote-id>
+		<remote-id type="cpan-module">App::Ack::Filter::IsGroup</remote-id>
+		<remote-id type="cpan-module">App::Ack::Filter::IsPath</remote-id>
+		<remote-id type="cpan-module">App::Ack::Filter::IsPathGroup</remote-id>
+		<remote-id type="cpan-module">App::Ack::Filter::Match</remote-id>
+		<remote-id type="cpan-module">App::Ack::Filter::MatchGroup</remote-id>
+		<remote-id type="cpan-module">App::Ack::Resource</remote-id>
+		<remote-id type="cpan-module">App::Ack::Resources</remote-id>
+	</upstream>
+</pkgmetadata>

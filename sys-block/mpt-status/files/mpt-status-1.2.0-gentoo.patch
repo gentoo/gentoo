@@ -1,0 +1,51 @@
+Patch for Gentoo distribution of mpt-status.
+ 1.  -I../linux-sources/drivers/message/fusion for our inclusion of the mpt headers.
+ 2. Remove -O2, and use $(CFLAGS) from user instead.
+ 3. Use LDFLAGS
+ 4. -D flag to install is GNU specific.
+ 5. Remove sparc64 specific CFLAGS.
+ 6. Remember to make the sbin directory before installing to it.
+ 7. Don't strip the binary.
+
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+
+diff -Nuar mpt-status-1.2.0.orig/Makefile mpt-status-1.2.0/Makefile
+--- mpt-status-1.2.0.orig/Makefile	2006-11-01 19:02:30.000000000 +0000
++++ mpt-status-1.2.0/Makefile	2006-11-10 08:54:18.000000000 +0000
+@@ -3,28 +3,26 @@
+ KERNEL_PATH	:= /usr/src/linux
+ KERNEL_PATH_B	:= /lib/modules/`uname -r`/build
+ KERNEL_PATH_S	:= /lib/modules/`uname -r`/source
+-CFLAGS		:= -Iincl -Wall -W -O2 \
++CFLAGS		:= -Iincl -Wall -W \
++            -I../linux-sources/drivers/message/fusion \
+ 			-I${KERNEL_PATH}/drivers/message/fusion \
+ 			-I${KERNEL_PATH_B}/drivers/message/fusion \
+-			-I${KERNEL_PATH_S}/drivers/message/fusion
++			-I${KERNEL_PATH_S}/drivers/message/fusion \
++			$(CFLAGS)
+ DFLAGS		:= #-DSANITIZED_KERNEL_HEADERS
+-LDFLAGS		:=
++LDFLAGS		:= $(LDFLAGS)
+ DESTDIR		:=
+ MANDIR		:= /usr/share/man
+ CC		:= gcc
+-INSTALL		:= install -D
++INSTALL		:= install
+ ARCH		:= $(shell uname -m)
+ 
+-ifeq "${ARCH}" "sparc64"
+-	CFLAGS	:= -Iincl -Wall -W -O2 -m64 -pipe \
+-			-mcpu=ultrasparc -mcmodel=medlow
+-endif
+-
+ ${PROG}: ${PROG}.c ${PROG}.h
+ 	${CC} ${DFLAGS} ${CFLAGS} -o $@ $< ${LDFLAGS}
+ 
+ install: ${PROG}
+-	${INSTALL} -s -o root -g root -m 0500 $< \
++	${INSTALL} -d ${DESTDIR}${PREFIX}/sbin/
++	${INSTALL}  -o root -g root -m 0500 $< \
+ 		${DESTDIR}${PREFIX}/sbin
+ 
+ install_doc: man/${PROG}.8

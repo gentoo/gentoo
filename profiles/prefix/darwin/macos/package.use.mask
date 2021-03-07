@@ -1,0 +1,23 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Fabian Groffen <grobian@gentoo.org> (2020-06-08)
+# Do NOT enable tinfo, it breaks ANYTHING existing, and it also breaks
+# ncurses itself, for it apparently doesn't link against tinfo itself,
+# which needs fixing before re-enabling tinfo again.
+sys-libs/ncurses tinfo
+sys-libs/ncurses-compat tinfo
+
+# Andrey Utkin <andrey_utkin@gentoo.org> (2018-03-11)
+# This flag can be sensibly enabled only on macos
+# hence it is masked in base profile. Bug #637482
+media-video/ffmpeg -appkit
+
+# Fabian Groffen <grobian@gentoo.org> (2009-10-30)
+# X and linux only
+media-video/mplayer xv dga X xinerama xscreensaver
+media-video/mplayer dvb lirc jack joystick
+
+# Elias Pipping <pipping@gentoo.org> (2007-08-27)
+# elinks does not compile with USE=perl (tested with 0.11.{2,3})
+www-client/elinks perl

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>perl@gentoo.org</email>
+		<name>Gentoo Perl Project</name>
+	</maintainer>
+	<longdescription>
+		ExifTool is a platform-independent Perl library plus a command-line
+		application for reading, writing and editing meta information in image,
+		audio and video files. ExifTool supports many different types of
+		metadata including EXIF, GPS, IPTC, XMP, JFIF, GeoTIFF, ICC Profile,
+		Photoshop IRB, FlashPix, AFCP and ID3, as well as the maker notes of
+		many digital cameras by Canon, Casio, FujiFilm, HP, JVC/Victor, Kodak,
+		Leaf, Minolta/Konica- Minolta, Nikon, Olympus/Epson, Panasonic/Leica,
+		Pentax/Asahi, Ricoh, Sanyo, Sigma/Foveon and Sony.
+	</longdescription>
+	<upstream>
+		<remote-id type="cpan">Image-ExifTool</remote-id>
+		<remote-id type="cpan-module">File::RandomAccess</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::AES</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::AFCP</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::AIFF</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::APE</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::APP12</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::ASF</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::BMP</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::BZZ</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::BigTIFF</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::BuildTagLookup</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Canon</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::CanonCustom</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::CanonRaw</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::CanonVRD</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::CaptureOne</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Casio</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Charset</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::DICOM</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::DNG</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::DV</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::DjVu</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::EXE</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Exif</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::FLAC</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Fixup</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Flash</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::FlashPix</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Font</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::FotoStation</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::FujiFilm</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::GE</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::GIF</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::GIMP</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::GPS</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::GeoTiff</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Geotag</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::H264</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::HP</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::HTML</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::HtmlDump</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::ICC_Profile</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::ID3</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::IPTC</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::ITC</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Import</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::InDesign</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::JPEG</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::JPEGDigest</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::JVC</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Jpeg2000</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Kodak</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::KyoceraRaw</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::LNK</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Lang::cs</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Lang::de</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Lang::en_ca</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Lang::en_gb</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Lang::es</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Lang::fi</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Lang::fr</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Lang::it</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Lang::ja</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Lang::ko</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Lang::nl</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Lang::pl</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Lang::ru</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Lang::sv</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Lang::tr</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Lang::zh_cn</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Lang::zh_tw</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Leaf</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::M2TS</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::MIE</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::MIFF</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::MNG</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::MPC</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::MPEG</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::MPF</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::MWG</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::MXF</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::MakerNotes</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Matroska</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Microsoft</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Minolta</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::MinoltaRaw</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Nikon</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::NikonCapture</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::NikonCustom</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::OOXML</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Ogg</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Olympus</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::OpenEXR</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::PDF</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::PGF</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::PICT</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::PNG</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::PPM</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::PSP</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Panasonic</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::PanasonicRaw</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Pentax</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::PhotoCD</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::PhotoMechanic</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Photoshop</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::PostScript</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::PrintIM</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Qualcomm</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::QuickTime</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::RIFF</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::RSRC</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::RTF</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Radiance</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Rawzor</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Real</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Reconyx</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Ricoh</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Samsung</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Sanyo</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Shortcuts</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Sigma</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::SigmaRaw</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Sony</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::SonyIDC</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Stim</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::TagInfoXML</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::TagLookup</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Theora</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Unknown</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::Vorbis</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::XMP</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::ZIP</remote-id>
+		<remote-id type="cpan-module">Image::ExifTool::iWork</remote-id>
+	</upstream>
+</pkgmetadata>

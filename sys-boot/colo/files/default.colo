@@ -1,0 +1,25 @@
+#:CoLo:#
+
+# Turn on the serial port
+-serial on
+
+# Generate a menu to select the appropriate kernel image on the LCD Screen
+# Format is:
+# menu "<message>" <time out> <menu text 1> <menu option 1> <menu text 2> <menu option 2> ...
+# 
+# Where <menu text> is the item displayed, and <menu option> is the item
+# that the text corresponds to.  When a menu item is selected, the env variable
+# {menu-option} gets set to the value of <menu option>.
+#
+# Please note, no sample script has been provided for a backup script (linuxold).
+# You will need to create one yourself if you require this.
+menu "colo-@COLOVER@" 100 Linux linux Linux-OLD linuxold
+
+# Loads the corresponding script depending on the selected value from the menu
+-load /boot/menu-{menu-option}.colo
+-script
+
+# Incase of failure, return to the menu
+load /boot/default.colo
+script
+

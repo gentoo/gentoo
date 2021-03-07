@@ -1,0 +1,10 @@
+--- a/configure.in
++++ b/configure.in
+@@ -9,6 +9,7 @@ dnl Don't include maintainer make-rules by default
+ AM_MAINTAINER_MODE
+ 
+ dnl Checks for programs.
++AM_PROG_AR
+ AC_PROG_AWK
+ AC_PROG_CC
+ AC_PROG_INSTALL

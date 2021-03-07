@@ -1,0 +1,27 @@
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (2021-01-07)
+# Prebuilt kernels are supported here.
+-dist-kernel
+
+# Georgy Yakovlev <gyakovlev@gentoo.org (2020-10-16)
+# dev-qt/qtwebengine works on ppc64le
+-webengine
+
+# Georgy Yakovlev <gyakovlev@gentoo.org (2020-01-21)
+# works on ppc64le
+-vaapi
+
+# James Le Cuirot <chewi@gentoo.org> (2017-06-29)
+# Remask as this profile is little endian.
+big-endian
+
+# Chris Gianelloni <wolf31o2@gentoo.org> (2008-02-13)
+# Mask multilib, since we cannot use it.
+multilib
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-14)
+# # works on ppc64le
+-video_cards_amdgpu
+-video_cards_ast

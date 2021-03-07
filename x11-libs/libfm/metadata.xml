@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <!-- maintainer-needed -->
+  <use>
+    <flag name="vala">Support custom actions in menus</flag>
+    <flag name="udisks">Use libfm's udisks-based volume monitor implementation instead of using the one from gvfs</flag>
+    <flag name="automount">Use <pkg>gnome-base/gvfs</pkg> for automounting</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">pcmanfm</remote-id>
+    <remote-id type="github">lxde/libfm</remote-id>
+  </upstream>
+</pkgmetadata>

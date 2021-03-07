@@ -1,0 +1,26 @@
+From 76f43e6cc25eae25b658831111b37b10376311d2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?J=C3=A9r=C3=A9mie=20Laval?= <jeremie.laval@gmail.com>
+Date: Thu, 10 Feb 2011 17:31:38 +0000
+Subject: [PATCH] Remove sender match check on receiving side too. Properly
+ fix issue 8.
+
+---
+ src/Connection.cs |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/src/Connection.cs b/src/Connection.cs
+index b414994..e593db9 100644
+--- a/src/Connection.cs
++++ b/src/Connection.cs
+@@ -278,7 +278,7 @@ internal void HandleSignal (Message msg)
+ 			rule.MessageType = MessageType.Signal;
+ 			rule.Fields.Add (FieldCode.Interface, new MatchTest (signal.Interface));
+ 			rule.Fields.Add (FieldCode.Member, new MatchTest (signal.Member));
+-			rule.Fields.Add (FieldCode.Sender, new MatchTest (signal.Sender));
++			//rule.Fields.Add (FieldCode.Sender, new MatchTest (signal.Sender));
+ 			rule.Fields.Add (FieldCode.Path, new MatchTest (signal.Path));
+ 
+ 			Delegate dlg;
+-- 
+1.7.5.4
+

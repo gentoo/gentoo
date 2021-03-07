@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  Computer Algebra system, descendent of Macsyma.
+  Maxima is a system for the manipulation of symbolic and 
+  numerical expressions, including differentiation, integration, 
+  Taylor series, Laplace transforms, ordinary differential 
+  equations, systems of linear equations, and vectors, matrices, 
+  and tensors. Maxima produces high precision results by using 
+  exact fractions and arbitrarily long floating point representations, 
+  and can plot functions and data in two and three dimensions.
+</longdescription>
+  <use>
+    <flag name="clisp">Compile maxima with GNU CLISP
+    (<pkg>dev-lisp/clisp</pkg>)</flag>
+    <flag name="clozurecl">Compile maxima with Clozure Common Lisp
+    (<pkg>dev-lisp/clozurecl</pkg>)</flag>
+    <flag name="cmucl">Compile maxima with CMU Common Lisp
+    (<pkg>dev-lisp/cmucl</pkg>)</flag>
+    <flag name="ecls">Compile maxima with Embeddable Common Lisp
+    (<pkg>dev-lisp/ecls</pkg>)</flag>
+    <flag name="gcl">Compile maxima with GNU Common Lisp
+    (<pkg>dev-lisp/gcl</pkg>)</flag>
+    <flag name="sbcl">Compile maxima with Steel Bank Common Lisp
+    (<pkg>dev-lisp/sbcl</pkg>)</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">maxima</remote-id>
+  </upstream>
+</pkgmetadata>

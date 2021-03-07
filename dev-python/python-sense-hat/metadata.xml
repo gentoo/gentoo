@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		Python module to control the Raspberry Pi Sense HAT used in the Astro Pi mission.
+		An education outreach programme for UK schools sending code experiments
+		to the International Space Station.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/astro-pi/python-sense-hat/issues</bugs-to>
+		<remote-id type="github">astro-pi/python-sense-hat</remote-id>
+		<remote-id type="pypi">sense-hat</remote-id>
+	</upstream>
+</pkgmetadata>

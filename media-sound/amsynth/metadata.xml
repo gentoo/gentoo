@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sound@gentoo.org</email>
+		<name>Gentoo Sound project</name>
+	</maintainer>
+	<use>
+		<flag name="dssi">Enable support for DSSI Soft Synth Interface</flag>
+		<flag name="lv2">Add support for Ladspa V2</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">amsynth/amsynth</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,36 @@
+#!/sbin/openrc-run
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+pidfile=/var/run/iplog.pid
+
+start() {
+	ebegin "Starting iplog"
+	checkconfig 
+	rc=$?
+	if [ $rc -eq 0 ]; then
+		start-stop-daemon --start --quiet --startas /usr/sbin/iplog \
+		--pidfile=${pidfile} --name=iplog
+		rc=$?
+		eend $rc "Failed to start iplog $rc"
+	else
+		eend $rc "/etc/iplog.conf does not exist!"
+	fi
+}
+
+stop() {
+	ebegin "Stopping iplog"
+	start-stop-daemon --stop --retry=5 --quiet --pidfile=${pidfile} --name=iplog
+	# due to a bug in the program, it doesn't properly remove it's pidfile sometimes
+	rm -f ${pidfile}
+	eend $? "Failed to stop iplog!"
+}
+
+checkconfig() {
+	[ -f /etc/iplog.conf ] || return 1
+	return 0
+}

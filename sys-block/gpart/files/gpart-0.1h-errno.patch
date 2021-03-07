@@ -1,0 +1,20 @@
+--- gpart-0.1h/src/l64seek.c
++++ gpart-0.1h-working/src/l64seek.c
+@@ -16,6 +16,7 @@
+ 
+ #include "l64seek.h"
+ 
++#include <errno.h>
+ 
+ #define OSTACKLEN	16
+ static struct
+--- gpart-0.1h/src/disku.c
++++ gpart-0.1h-working/src/disku.c
+@@ -20,6 +20,7 @@
+ #include <string.h>
+ #include <sys/ioctl.h>
+ #include "gpart.h"
++#include <errno.h>
+ 
+ #if defined(__linux__)
+ #include <sys/mount.h>

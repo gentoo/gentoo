@@ -1,0 +1,35 @@
+diff --git a/syslog-summary b/syslog-summary
+index abf6381..b3edffc 100755
+--- a/syslog-summary
++++ b/syslog-summary
+@@ -128,24 +128,12 @@ def split_date(line):
+ 
+ def is_gzipped(filename):
+ 	"""Returns True if the filename is a gzipped compressed file"""	
+-	try:
+-		import magic
+-		ms = magic.open(magic.MAGIC_NONE)
+-		ms.load()
+-		if re.search("^gzip compressed data.*", ms.file(filename)):
+-			return True
+-		else:
+-			return False
+-	except:
+-		from os.path import splitext
+-		
+-		if not QUIET:
+-			print "Using fallback detection... please install python-magic for better gzip detection."
+-		
+-		if splitext(filename)[1] == ".gz":
+-			return True
+-		else:
+-			return False
++	from os.path import splitext
++
++	if splitext(filename)[1] == ".gz":
++		return True
++	else:
++		return False
+ 
+ def summarize(filename, states):
+ 	counts = {}

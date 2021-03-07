@@ -1,0 +1,13 @@
+Do not install in locale/share and be consistent about the package name.
+
+--- blinkperl/blinkserver.pl.orig	2003-02-06 19:38:00.000000000 +0100
++++ blinkperl/blinkserver.pl	2008-11-27 21:14:24.000000000 +0100
+@@ -21,7 +21,7 @@
+ 
+ # be sure to modify ${MOVIEDIR} in the Makefile
+ # (if you want to use "make install"), if you modify it here!
+-my $moviedir = "/usr/local/share/blinkenperl/movies" ; # where to find the movies
++my $moviedir = "/usr/share/blinkperl/movies" ; # where to find the movies
+ my $blmext = "blm" ;     # extensions of blm files in the movie directory
+ 
+ 

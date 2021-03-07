@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>arkamar@atlas.cz</email>
+		<name>Petr Vaněk</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<maintainer status="active">
+			<email>jgeboski@gmail.com</email>
+			<name>James Geboski</name>
+		</maintainer>
+		<bugs-to>https://github.com/bitlbee/bitlbee-facebook/issues</bugs-to>
+		<remote-id type="github">bitlbee/bitlbee-facebook</remote-id>
+	</upstream>
+</pkgmetadata>

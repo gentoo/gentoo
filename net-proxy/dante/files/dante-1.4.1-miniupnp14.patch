@@ -1,0 +1,14 @@
+Index: dante-1.4.1/lib/upnp.c
+===================================================================
+--- dante-1.4.1.orig/lib/upnp.c
++++ dante-1.4.1/lib/upnp.c
+@@ -156,6 +156,9 @@ socks_initupnp(gw, emsg, emsglen)
+                            0
+ #if HAVE_LIBMINIUPNP17
+                           ,0,
++#if MINIUPNPC_API_VERSION >= 14 /* adds ttl */
++                          2,
++#endif
+                           &rc
+ #endif /* HAVE_LIBMINIUPNP17 */
+                          );

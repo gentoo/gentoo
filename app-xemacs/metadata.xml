@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The app-xemacs category contains extensions for the XEmacs text editor.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie app-xemacs enthält Erweiterungen für den Texteditor XEmacs.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría app-xemacs contiene extensiones para el editor de texto
+		XEmacs.
+	</longdescription>
+	<longdescription lang="ja">
+		app-xemacsカテゴリにはXEmacsテキストエディタに
+		関連した拡張パッケージが含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De app-xemacs categorie bevat uitbreidingen voor de XEmacs text editor.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm app-xemacs chứa các phần mở rộng của trình soạn
+		thảo văn bản XEmacs.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria app-xemacs contiene estensioni per l'editor di testo
+		XEmacs.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria app-xemacs contém extensões para o editor de texto
+		XEmacs.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria app-xemacs zawiera rozszerzenia dla edytora tekstu XEmacs.
+	</longdescription>
+</catmetadata>
+

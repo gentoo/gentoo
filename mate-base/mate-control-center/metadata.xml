@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>mate@gentoo.org</email>
+		<name>Gentoo MATE Desktop</name>
+	</maintainer>
+	<use>
+		<flag name="accountsservice">Add support for AccountsService</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">mate-desktop/mate-control-center</remote-id>
+	</upstream>
+</pkgmetadata>

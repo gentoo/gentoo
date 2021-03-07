@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>dilfridge@gentoo.org</email>
+		<name>Andreas K. Huettel</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>maekke@gentoo.org</email>
+		<name>Markus Meier</name>
+	</maintainer>
+	<longdescription lang="en">
+The project provides a database of photographic lenses and a library that allows advanced access to the database including functions to correct images based on intimate knowledge of lens characteristics and calibration data.
+</longdescription>
+	<upstream>
+		<remote-id type="github">lensfun/lensfun</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The dev-scheme category contains libraries and utilities relevant to the
+		Scheme programming language.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie dev-scheme enthält Bibliotheken und Werkzeuge für die
+		Programmiersprache Scheme.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría dev-scheme contiene librerías y utilidades referentes al
+		lenguaje de programación Scheme.
+	</longdescription>
+	<longdescription lang="ja">
+		dev-schemeカテゴリーにはSchemeプログラミング言語に関連したライブラリーと
+		ユーティリティが含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De dev-scheme categorie bevat bibliotheken en hulpmiddelen voor het gebruik
+		van de programmeertaal Scheme.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm dev-scheme chứa các thư viện và tiện ích liên quan
+		đến ngôn ngữ lập trình Scheme.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria dev-scheme contiene librerie e utilità per il linguaggio di
+		programmazione Scheme.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria dev-scheme contém bibliotecas e utilitários
+		referentes à linguagem de programação Scheme.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria dev-scheme zawiera biblioteki i narzędzia związane z językiem
+		programowania Scheme.
+	</longdescription>
+</catmetadata>
+

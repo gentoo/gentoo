@@ -1,0 +1,10 @@
+--- plugins/linux/build.xml.orig	2006-07-11 22:07:38.000000000 +0100
++++ plugins/linux/build.xml	2011-11-16 15:49:21.140789781 +0000
+@@ -56,6 +56,7 @@
+ 		<javah destdir="src/native">
+             <classpath>
+                 <pathelement location="classes"/>
++                <pathelement location="../../coreAPI/classes"/>
+             </classpath>
+ 			<class name="net.java.games.input.LinuxEventDevice"/>
+ 			<class name="net.java.games.input.LinuxJoystickDevice"/>

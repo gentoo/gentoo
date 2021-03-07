@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>whissi@gentoo.org</email>
+		<name>Thomas Deutschmann</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>blueness@gentoo.org</email>
+		<name>Anthony G. Basile</name>
+	</maintainer>
+	<use>
+		<flag name="debug">
+			Enable debug code and output. Since version 3.0.5 this will no
+			longer force foreground execution, and fcron will be able to run
+			as a service properly.
+		</flag>
+		<flag name="mta">
+			Enable mta support for sending emails from fcron
+		</flag>
+		<flag name="pam">
+			Enable PAM support for fcron. This means that fcron will pass
+			through the "fcron" stack before executing the jobs, and
+			fcrontab will use the "fcrontab" stack to authenticate the user
+			before editing its crontab file.
+		</flag>
+		<flag name="system-crontab">
+			Set up fcron to respect /etc/crontab and /etc/cron.d. If this
+			flag is disabled, /etc/cron.d and /etc/crontab will be ignored,
+			but /etc/cron.{hourly,daily,weekly,monthly} will still be
+			respected.
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">yo8192/fcron</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>titanofold@gentoo.org</email>
+		<name>Aaron W. Swenson</name>
+	</maintainer>
+	<use>
+		<flag name="fusefs">Enable the Fuse Filesystem</flag>
+		<flag name="json">Enable the JSON API of Fossil's wiki</flag>
+		<flag name="miniz">
+			Use the bundled miniz for compression instead of
+			zlib. Incompatible with ssl.
+		</flag>
+		<flag name="system-sqlite">
+			Use the system SQLite instead of the bundled one
+		</flag>
+		<flag name="tcl-stubs">
+			Enable Tcl integration via stubs library mechanism
+		</flag>
+		<flag name="tcl-private-stubs">
+			Enable Tcl integration via private stubs mechanism
+		</flag>
+		<flag name="th1-docs">
+			Enable TH1 for embedded documentation pages
+		</flag>
+		<flag name="th1-hooks">
+			Enable TH1 hooks for commands and web pages
+		</flag>
+	</use>
+</pkgmetadata>

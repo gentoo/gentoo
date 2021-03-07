@@ -1,0 +1,36 @@
+# Provided by ftpbase (dont remove this line!)
+# /etc/ftpusers: list of users disallowed FTP access
+
+halt
+operator
+root
+shutdown
+sync
+bin
+daemon
+adm
+lp
+mail
+postmaster
+news
+uucp
+man
+games
+at
+cron
+www
+named
+squid
+gdm
+mysql
+postgres
+guest
+nobody
+alias
+qmaild
+qmaill
+qmailp
+qmailq
+qmailr
+qmails
+postfix

@@ -1,0 +1,41 @@
+#!/bin/bash
+#
+# Update SpamAssassin rules and reload daemons that use them.
+#
+
+# First, redirect stdout to /dev/null.
+exec 1>/dev/null
+
+# Try to update the rules.
+sa-update
+
+# Exit code 0: all new updates were installed.
+# Exit code 1: we were already up-to-date.
+# Exit code 3: some updates were installed, but some weren't.
+# Any other exit code indicates failure.
+if (( $? == 0 || $? == 3 )); then
+    # Compilation spits out its progress onto stderr.
+    sa-compile 2>/dev/null
+
+    # Do you run spamd or amavisd? Both daemons need to be reloaded
+    # in order to pick up the newly-updated rules.
+    if command -v rc-service 2>/dev/null; then
+        # OpenRC is installed. These "status" checks should succeed
+        # only when the daemon is running under OpenRC. We redirect
+        # stderr to hide the lecture that OpenRC gives you if you
+        # try this on a system running systemd.
+        rc-service spamd status 2>/dev/null && rc-service spamd reload
+        rc-service amavisd status 2>/dev/null && rc-service amavisd reload
+    fi
+
+    if command -v systemctl 2>/dev/null; then
+        # The systemctl (systemd) executable is installed, so try to
+        # use it to restart spamd and amavisd. These are safe to run
+        # if systemd is installed but not in use.  The is-active
+	# check is to keep systemctl from outputting warnings if
+	# amavisd is not installed (bug #681872).
+        systemctl try-restart spamassassin
+        systemctl is-active --quiet amavisd \
+            && systemctl try-reload-or-restart amavisd
+    fi
+fi

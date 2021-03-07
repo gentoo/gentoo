@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+  </maintainer>
+  <!--
+      mjo: François maintained this package in the sage-on-gentoo overlay
+      long before I moved it into ::gentoo. You don't need an ACK from me
+      to merge his changes.
+  -->
+  <maintainer type="person">
+    <email>frp.bissey@gmail.com</email>
+    <name>François Bissey</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    The C-library  cddlib is a C implementation of the Double Description
+    Method of Motzkin et al. for generating all vertices (i.e. extreme points)
+    and extreme rays of a general convex polyhedron in R^d given by a system
+    of linear inequalities:
+
+    P = { x=(x1, ..., xd)^T :  b - A  x  &gt;= 0 }
+
+    where  A  is a given m x d real matrix, b is a given m-vector
+    and 0 is the m-vector of all zeros.
+
+    The program can be used for the reverse operation (i.e. convex hull
+    computation).  This means that  one can move back and forth between
+    an inequality representation  and a generator (i.e. vertex and ray)
+    representation of a polyhedron with cdd.  Also, cdd can solve a linear
+    programming problem, i.e. a problem of maximizing and minimizing
+    a linear function over P.
+  </longdescription>
+  <use>
+    <flag name="tools">Add a few executables and tests for cddlib</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">cddlib/cddlib</remote-id>
+  </upstream>
+</pkgmetadata>

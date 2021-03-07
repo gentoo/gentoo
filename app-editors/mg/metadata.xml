@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>emacs@gentoo.org</email>
+  <name>Gentoo Emacs project</name>
+</maintainer>
+<longdescription>
+  Mg (mg) is intended to be a small, fast, and portable editor for
+  people who can't (or don't want to) run real Emacs for one reason
+  or another. It is compatible with GNU Emacs because there shouldn't
+  be any reason to learn more than one Emacs flavor.
+
+  This is a portable version of the Mg maintained by the OpenBSD team.
+</longdescription>
+</pkgmetadata>

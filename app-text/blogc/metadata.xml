@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<upstream>
+		<maintainer status="active">
+			<email>rafael@rafaelmartins.eng.br</email>
+			<name>Rafael G. Martins</name>
+		</maintainer>
+		<remote-id type="github">blogc/blogc</remote-id>
+	</upstream>
+	<use>
+		<flag name="git">Build blogc-git-receiver tool</flag>
+		<flag name="make">Build blogc-make tool</flag>
+		<flag name="httpd">Build blogc-runserver tool</flag>
+	</use>
+</pkgmetadata>

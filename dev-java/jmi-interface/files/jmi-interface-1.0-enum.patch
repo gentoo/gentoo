@@ -1,0 +1,22 @@
+--- a/src/javax/jmi/reflect/RefClass.java
++++ b/src/javax/jmi/reflect/RefClass.java
+@@ -8,6 +8,6 @@
+     public Collection refAllOfClass();
+     public RefStruct refCreateStruct(RefObject struct, List params);
+     public RefStruct refCreateStruct(String structName, List params);
+-    public RefEnum refGetEnum(RefObject enum, String name);
++    public RefEnum refGetEnum(RefObject enumObj, String name);
+     public RefEnum refGetEnum(String enumName, String name);
+ }
+\ No newline at end of file
+--- a/src/javax/jmi/reflect/RefPackage.java
++++ b/src/javax/jmi/reflect/RefPackage.java
+@@ -14,7 +14,7 @@
+     public Collection refAllAssociations();
+     public RefStruct refCreateStruct(RefObject struct, List params);
+     public RefStruct refCreateStruct(String structName, List params);
+-    public RefEnum refGetEnum(RefObject enum, String name);
++    public RefEnum refGetEnum(RefObject enumObj, String name);
+     public RefEnum refGetEnum(String enumName, String name);
+     public void refDelete();
+ } 

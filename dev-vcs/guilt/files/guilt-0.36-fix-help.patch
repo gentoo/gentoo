@@ -1,0 +1,41 @@
+From 53db96dd0c37b2fd299a26a00ba9b6f53cf6224e Mon Sep 17 00:00:00 2001
+Date: Thu, 28 Dec 2017 20:01:08 -0500
+Subject: [PATCH] Fix broken guilt help system
+
+  https://bugs.gentoo.org/642584
+---
+ guilt      | 4 ++--
+ guilt-help | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/guilt b/guilt
+index 35177b9..498dfb6 100755
+--- a/guilt
++++ b/guilt
+@@ -73,8 +73,8 @@ GUILT_PATH="$(dirname "$0")"
+ 
+ guilt_commands()
+ {
+-	find "$GUILT_PATH/../lib/guilt" -maxdepth 1 -name "guilt-*" -type f -perm +111 2> /dev/null | sed -e "s/.*\\/$GUILT-//"
+-	find "$GUILT_PATH" -maxdepth 1 -name "guilt-*" -type f -perm +111 | sed -e "s/.*\\/$GUILT-//"
++	find "$GUILT_PATH/../lib/guilt" -maxdepth 1 -name "guilt-*" -type f -executable 2> /dev/null | sed -e "s/.*\\/$GUILT-//"
++	find "$GUILT_PATH" -maxdepth 1 -name "guilt-*" -type f -executable | sed -e "s/.*\\/$GUILT-//"
+ }
+ 
+ # by default, we shouldn't fail
+diff --git a/guilt-help b/guilt-help
+index 93442a3..b29e059 100755
+--- a/guilt-help
++++ b/guilt-help
+@@ -34,7 +34,7 @@ case $# in
+ 		;;
+ esac
+ 
+-MANDIR=`dirname $0`/../man
++MANDIR=`dirname $0`/../share/man
+ MANDIR=`(cd "$MANDIR"; pwd)`
+ exec man -M "$MANDIR" "$page"
+ 
+-- 
+2.13.5
+

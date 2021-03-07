@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Crypt-OpenPGP</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Armour</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Buffer</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::CFB</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Certificate</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Cipher</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Cipher::Blowfish</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Cipher::CAST5</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Cipher::DES3</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Cipher::IDEA</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Cipher::Rijndael</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Cipher::Rijndael192</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Cipher::Rijndael256</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Cipher::Twofish</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Ciphertext</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Compressed</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Config</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Config::GnuPG</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Config::PGP2</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Config::PGP5</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Constants</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Digest</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Digest::MD5</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Digest::RIPEMD160</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Digest::SHA1</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Digest::SHA224</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Digest::SHA256</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Digest::SHA384</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Digest::SHA512</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::ElGamal::Private</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::ElGamal::Public</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::ErrorHandler</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Key</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Key::Public</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Key::Public::DSA</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Key::Public::ElGamal</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Key::Public::RSA</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Key::Secret</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Key::Secret::DSA</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Key::Secret::ElGamal</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Key::Secret::RSA</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::KeyBlock</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::KeyRing</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::KeyServer</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::MDC</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Marker</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Message</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::OnePassSig</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::PacketFactory</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Plaintext</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::S2k</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::S2k::Salt_Iter</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::S2k::Salted</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::S2k::Simple</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::SKSessionKey</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::SessionKey</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Signature</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Signature::SubPacket</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Trust</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::UserID</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Util</remote-id>
+    <remote-id type="cpan-module">Crypt::OpenPGP::Words</remote-id>
+  </upstream>
+</pkgmetadata>

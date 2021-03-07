@@ -1,0 +1,35 @@
+--- im-freewnn-0.0.2.orig/Makefile.am	2004-08-04 07:05:06.000000000 +0200
++++ im-freewnn-0.0.2/Makefile.am	2009-12-29 20:34:54.420539767 +0100
+@@ -10,8 +10,6 @@
+ 
+ DEPS =
+ 
+-LDADDS = @GTK_DEP_LIBS@ -lcrypt
+-
+ EXTRA_DIST=	\
+ 	im-freewnn.spec
+ 
+@@ -38,7 +36,7 @@
+ 		candwin.h \
+ 		candwin.c
+ 
+-im_freewnn_la_LIBADD = $(LDADDS) -lcrypt
++im_freewnn_la_LIBADD = @LIBS@ @GTK_DEP_LIBS@ -lcrypt
+ 
+ module_LTLIBRARIES =				\
+ 	im-freewnn.la
+--- im-freewnn-0.0.2.orig/configure.in	2004-08-05 08:04:36.000000000 +0200
++++ im-freewnn-0.0.2/configure.in	2009-12-29 20:36:31.562539161 +0100
+@@ -48,11 +48,8 @@
+ AM_CONDITIONAL(PLATFORM_WIN32, test "$platform_win32" = "yes")
+ 
+ dnl FreeWnn check
+-ldflags_backup="$LDFLAGS"
+-LDFLAGS="$LDFLAGS -lcrypt"
+ AC_CHECK_HEADER(wnn/jlib.h,,)
+-AC_CHECK_LIB(wnn, jl_open_lang,,)
+-LDFLAGS="$ldflags_backup"
++AC_CHECK_LIB([wnn], [jl_open_lang], , ,[-lcrypt])
+ 
+ AC_OUTPUT([
+ Makefile

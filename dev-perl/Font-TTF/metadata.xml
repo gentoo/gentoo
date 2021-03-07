@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>fonts@gentoo.org</email>
+    <name>Fonts</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Font-TTF</remote-id>
+    <remote-id type="cpan-module">Font::TTF</remote-id>
+    <remote-id type="cpan-module">Font::TTF::AATKern</remote-id>
+    <remote-id type="cpan-module">Font::TTF::AATutils</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Anchor</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Bsln</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Cmap</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Coverage</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Cvt_</remote-id>
+    <remote-id type="cpan-module">Font::TTF::DSIG</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Delta</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Dumper</remote-id>
+    <remote-id type="cpan-module">Font::TTF::EBDT</remote-id>
+    <remote-id type="cpan-module">Font::TTF::EBLC</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Fdsc</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Feat</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Features::Cvar</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Features::Size</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Features::Sset</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Fmtx</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Font</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Fpgm</remote-id>
+    <remote-id type="cpan-module">Font::TTF::GDEF</remote-id>
+    <remote-id type="cpan-module">Font::TTF::GPOS</remote-id>
+    <remote-id type="cpan-module">Font::TTF::GSUB</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Glat</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Gloc</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Glyf</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Glyph</remote-id>
+    <remote-id type="cpan-module">Font::TTF::GrFeat</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Hdmx</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Head</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Hhea</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Hmtx</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Kern</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Kern::ClassArray</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Kern::CompactClassArray</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Kern::OrderedList</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Kern::StateTable</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Kern::Subtable</remote-id>
+    <remote-id type="cpan-module">Font::TTF::LTSH</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Loca</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Maxp</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Mort</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Mort::Chain</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Mort::Contextual</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Mort::Insertion</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Mort::Ligature</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Mort::Noncontextual</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Mort::Rearrangement</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Mort::Subtable</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Name</remote-id>
+    <remote-id type="cpan-module">Font::TTF::OS_2</remote-id>
+    <remote-id type="cpan-module">Font::TTF::OTTags</remote-id>
+    <remote-id type="cpan-module">Font::TTF::OldCmap</remote-id>
+    <remote-id type="cpan-module">Font::TTF::OldMort</remote-id>
+    <remote-id type="cpan-module">Font::TTF::PCLT</remote-id>
+    <remote-id type="cpan-module">Font::TTF::PSNames</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Post</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Prep</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Prop</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Segarr</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Silf</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Sill</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Table</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Ttc</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Ttopen</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Utils</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Vhea</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Vmtx</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Win32</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Woff</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Woff::MetaData</remote-id>
+    <remote-id type="cpan-module">Font::TTF::Woff::PrivateData</remote-id>
+    <remote-id type="cpan-module">Font::TTF::XMLparse</remote-id>
+  </upstream>
+</pkgmetadata>

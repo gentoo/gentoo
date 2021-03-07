@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>dlan@gentoo.org</email>
+		<name>Yixun Lan</name>
+	</maintainer>
+	<use>
+		<flag name="dmalloc">Enable debugging with the dmalloc library</flag>
+		<flag name="ldap">Install LDAP module</flag>
+		<flag name="libtirpc">Use TiRPC library instead of SunRPC</flag>
+		<flag name="mount-locking">
+			Enable locking to prevent corruption of /etc/mtab in the presence of
+			concurrent auto-mounting. If enabled, recursive auto-mounting (eg. using
+			autofs to bind or loop mount a filesystem which is itself auto-mounted)
+			is not possible.
+		</flag>
+		<flag name="sasl">Enable SASL support in the LDAP module</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:ibm:autofs</remote-id>
+	</upstream>
+</pkgmetadata>

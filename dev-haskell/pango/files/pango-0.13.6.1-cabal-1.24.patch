@@ -1,0 +1,33 @@
+https://bugs.gentoo.org/702986
+
+--- a/Setup.hs
++++ b/Setup.hs
+@@ -8,7 +8,7 @@ import Distribution.Simple ( defaultMainWithHooks, UserHooks(postConf),
+ import Gtk2HsSetup ( gtk2hsUserHooks, getPkgConfigPackages)
+ import Distribution.Simple.Setup ( ConfigFlags(configVerbosity), fromFlag)
+ import Distribution.Simple.LocalBuildInfo ( LocalBuildInfo(..) )
+-import Distribution.Simple.BuildPaths ( autogenPackageModulesDir )
++import Distribution.Simple.BuildPaths ( autogenModulesDir )
+ import Distribution.Text ( display )
+ import Distribution.Version ( Version(..) )
+ import Distribution.Verbosity
+@@ -49,7 +49,7 @@ writePangoVersionHeaderFile verbosity lbi (Version (major:minor:micro:_) []) = d
+     , "#define PANGO_VERSION_MICRO " ++ show micro
+     ]
+   where
+-    targetDir  = autogenPackageModulesDir lbi
++    targetDir  = autogenModulesDir lbi
+     targetFile = targetDir </> "hspangoversion.h"
+ 
+ writeVersionHeaderFile _ _ version =
+--- a/Setup.hs
++++ b/Setup.hs
+@@ -43,7 +43,7 @@ writePangoVersionHeaderFile verbosity lbi (versionNumbers -> (major:minor:micro:
+ writePangoVersionHeaderFile verbosity lbi (Version (major:minor:micro:_) []) = do
+ #endif
+   createDirectoryIfMissingVerbose verbosity True targetDir
+-  rewriteFileEx verbosity targetFile $ unlines
++  rewriteFile targetFile $ unlines
+     [ "#define PANGO_VERSION_MAJOR " ++ show major
+     , "#define PANGO_VERSION_MINOR " ++ show minor
+     , "#define PANGO_VERSION_MICRO " ++ show micro

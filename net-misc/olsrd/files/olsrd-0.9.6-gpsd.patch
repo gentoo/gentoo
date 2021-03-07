@@ -1,0 +1,21 @@
+--- a/lib/pud/src/gpsdclient.c
++++ b/lib/pud/src/gpsdclient.c
+@@ -343,7 +343,6 @@
+           | POLICY_SET //
+ #ifdef GPSD_JESSIE
+           | TIMEDRIFT_SET //
+-          | EOF_SET //
+ #endif
+ #ifdef GPSD_NEW
+           | TOFF_SET //
+--- a/lib/pud/Makefile
++++ b/lib/pud/Makefile
+@@ -108,7 +108,7 @@
+ 
+ default_target: nmealib library $(PLUGIN_FULLNAME)
+ 
+-$(PLUGIN_FULLNAME): $(OBJS) version-script.txt
++$(PLUGIN_FULLNAME): nmealib library $(OBJS) version-script.txt
+ ifeq ($(PUD_NMEALIB_STATICALLY_LINKED),)
+ ifeq ($(VERBOSE),0)
+ endif

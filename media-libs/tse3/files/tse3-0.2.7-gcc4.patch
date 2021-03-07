@@ -1,0 +1,10 @@
+--- a/src/tse3/cmd/Phrase.h
++++ b/src/tse3/cmd/Phrase.h
+@@ -19,6 +19,7 @@
+ 
+ #include "tse3/cmd/Command.h"
+ #include "tse3/Phrase.h"
++#include "tse3/PhraseEdit.h"
+ #include "tse3/DisplayParams.h"
+ 
+ #include <vector>

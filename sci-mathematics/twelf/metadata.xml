@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>gienah@gentoo.org</email>
+    <name>Mark Wright</name>
+  </maintainer>
+  <longdescription lang="en">
+Twelf is an implementation of the logical framework LF. It is used for
+logic programming and for the formalization of programming language
+theory.
+</longdescription>
+</pkgmetadata>

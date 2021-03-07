@@ -1,0 +1,73 @@
+diff -Naur a/src/interface.c b/src/interface.c
+--- a/src/interface.c	2016-02-21 01:06:17.000000000 +0100
++++ b/src/interface.c	2016-09-13 19:37:28.038350050 +0200
+@@ -26,6 +26,18 @@
+ #include <glib/gi18n.h>
+ #include "interface.h"
+ 
++GtkTreeStore *list_store;
++GtkTreeSelection *selection;
++GtkWidget *treeview;
++GtkWidget *mainmenu;
++GtkWidget *taskpopup;
++GtkWidget *cpu_usage_progress_bar;
++GtkWidget *mem_usage_progress_bar;
++GtkWidget *cpu_usage_progress_bar_box;
++GtkWidget *mem_usage_progress_bar_box;
++
++GtkTreeViewColumn *column;
++
+ #define GLADE_HOOKUP_OBJECT(component,widget,name) \
+   g_object_set_data_full (G_OBJECT (component), name, \
+     gtk_widget_ref (widget), (GDestroyNotify) gtk_widget_unref)
+diff -Naur a/src/interface.h b/src/interface.h
+--- a/src/interface.h	2014-09-16 14:27:52.000000000 +0200
++++ b/src/interface.h	2016-09-13 19:32:22.816372893 +0200
+@@ -38,16 +38,15 @@
+ #include "callbacks.h"
+ #include "types.h"
+ 
+-GtkTreeStore *list_store;
+-GtkTreeSelection *selection;
+-GtkWidget *treeview;
+-GtkWidget *mainmenu;
+-GtkWidget *taskpopup;
+-GtkWidget *priopopup;
+-GtkWidget *cpu_usage_progress_bar;
+-GtkWidget *mem_usage_progress_bar;
+-GtkWidget *cpu_usage_progress_bar_box;
+-GtkWidget *mem_usage_progress_bar_box;
++extern GtkTreeStore *list_store;
++extern GtkTreeSelection *selection;
++extern GtkWidget *treeview;
++extern GtkWidget *mainmenu;
++extern GtkWidget *taskpopup;
++extern GtkWidget *cpu_usage_progress_bar;
++extern GtkWidget *mem_usage_progress_bar;
++extern GtkWidget *cpu_usage_progress_bar_box;
++extern GtkWidget *mem_usage_progress_bar_box;
+ 
+ enum {
+     COLUMN_NAME = 0,
+@@ -61,7 +60,7 @@
+     COLUMN_PPID
+ };
+ 
+-GtkTreeViewColumn *column;
++extern GtkTreeViewColumn *column;
+ 
+ void change_list_store_view(void);
+ void create_list_store(void);
+diff -Naur a/src/types.h b/src/types.h
+--- a/src/types.h	2014-09-16 14:27:52.000000000 +0200
++++ b/src/types.h	2016-09-13 19:25:51.014402217 +0200
+@@ -77,9 +77,6 @@
+ extern gint win_width;
+ extern gint win_height;
+ 
+-const gchar *custom_signal_0;
+-const gchar *custom_signal_1;
+-
+ extern int page_size;
+ 
+ #endif

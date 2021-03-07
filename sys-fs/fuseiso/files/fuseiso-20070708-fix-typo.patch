@@ -1,0 +1,12 @@
+diff -urp fuseiso-20070708.org/src/fuseiso.c fuseiso-20070708/src/fuseiso.c
+--- fuseiso-20070708.org/src/fuseiso.c	2013-08-22 19:33:46.316904170 +0800
++++ fuseiso-20070708/src/fuseiso.c	2013-08-22 19:31:54.789908834 +0800
+@@ -295,7 +295,7 @@ void usage(const char* prog) {
+         "    -f                 -- run in foreground, do not daemonize\n"
+         "    -d                 -- run in foreground and print debug information\n"
+         "    -s                 -- run single-threaded\n"
+-        "\nPlease consult with FUSE ducumentation for more information\n",
++        "\nPlease consult with FUSE documentation for more information\n",
+         VERSION, 
+         prog);
+ };

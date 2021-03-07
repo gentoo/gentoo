@@ -1,0 +1,31 @@
+--- a/src/auth_pam.c
++++ b/src/auth_pam.c
+@@ -138,7 +138,12 @@
+ 
+     /* we can be installed setuid root to support shadow passwords,
+        and we don't need root privileges any longer.  --marekm */
+-    setuid(getuid());
++    int retval;
++    retval = setuid(getuid());
++    /* if setuid's return value isn't checked, it's a security issue */
++    if (retval != 0) {
++        return 0;
++    }
+ 
+     return 1;
+ }
+--- a/src/auth_passwd.c
++++ a/src/auth_passwd.c
+@@ -68,7 +68,11 @@
+ 
+     /* we can be installed setuid root to support shadow passwords,
+        and we don't need root privileges any longer.  --marekm */
+-    setuid(getuid());
++    int retval;
++    retval = setuid(getuid());
++    if (retval != 0) {
++        return 0;
++    }
+ 
+     if (strlen(pwd_entry->pw_passwd) < 13) {
+         perror("password entry has no pwd\n");

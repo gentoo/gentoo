@@ -1,0 +1,47 @@
+--- a/src/main/java/org/apache/felix/utils/filter/FilterImpl.java	2012-06-12 08:56:50.000000000 +0200
++++ b/src/main/java/org/apache/felix/utils/filter/FilterImpl.java	2013-05-13 14:25:58.601527069 +0200
+@@ -25,6 +25,7 @@
+ import java.security.AccessController;
+ import java.security.PrivilegedAction;
+ import java.util.*;
++import java.util.Map.Entry;
+ 
+ import org.apache.felix.utils.version.VersionTable;
+ import org.osgi.framework.Filter;
+@@ -111,6 +111,19 @@
+         converted = conv;
+     }
+ 
++    @Override
++    public boolean matches(Map<String, ?> map)
++    {
++        Map nonGenericMap = new HashMap();
++
++        for(Entry<String, ?> entry : map.entrySet())
++        {
++            nonGenericMap.put(entry.getKey(), entry.getValue());
++        }
++
++        return match0(nonGenericMap);
++    }
++
+ 
+     /**
+      * Filter using a service's properties.
+@@ -575,13 +587,13 @@
+                 switch (operation) {
+                     case APPROX :
+                     case EQUAL : {
+-                        return ((Version) value1).compareTo(converted) == 0;
++                        return ((Version) value1).compareTo((Version) converted) == 0;
+                     }
+                     case GREATER: {
+-                        return ((Version) value1).compareTo(converted) >= 0;
++                        return ((Version) value1).compareTo((Version) converted) >= 0;
+                     }
+                     case LESS: {
+-                        return ((Version) value1).compareTo(converted) <= 0;
++                        return ((Version) value1).compareTo((Version) converted) <= 0;
+                     }
+                 }
+             } else {

@@ -1,0 +1,9 @@
+--- a/meson.build       2020-09-26 21:25:08.557345415 +0000
++++ b/meson.build       2020-09-26 21:25:59.507348156 +0000
+@@ -84,7 +84,7 @@ sbindir = prefix / get_option('sbindir')
+ sharedstatedir = prefix / get_option('sharedstatedir')
+ 
+ confdir = sysconfdir / meson.project_name()
+-docdir = datadir / 'doc' / meson.project_name()
++docdir = datadir / 'doc' / '@0@-@1@'.format(meson.project_name(), meson.project_version())
+ pkgdatadir = datadir / meson.project_name()

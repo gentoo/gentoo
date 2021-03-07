@@ -1,0 +1,38 @@
+From 45e0a722fb85bb5d1ab8bef92080e934254b13aa Mon Sep 17 00:00:00 2001
+From: David Edmundson <kde@davidedmundson.co.uk>
+Date: Thu, 7 Jan 2021 13:36:29 +0000
+Subject: [PATCH] [lookandfeel] Avoid rendering invisible contents
+
+An opacity of 0 but still visible still results in nodes in the
+scenegraph, which is wasteful.  This is shown in gammaray with some
+warnings.
+
+Enabled is also bound to visible as if a text field has focus it still
+animates the cursor icon even if inivisble, producing wakeups.
+
+BUG: 347772
+FIXED-IN: 5.21
+---
+ lookandfeel/contents/lockscreen/LockScreenUi.qml | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/lookandfeel/contents/lockscreen/LockScreenUi.qml b/lookandfeel/contents/lockscreen/LockScreenUi.qml
+index a2eba8e6d..83564fc0a 100644
+--- a/lookandfeel/contents/lockscreen/LockScreenUi.qml
++++ b/lookandfeel/contents/lockscreen/LockScreenUi.qml
+@@ -228,6 +228,12 @@ PlasmaCore.ColorScope {
+             height: lockScreenRoot.height + units.gridUnit * 3
+             focus: true //StackView is an implicit focus scope, so we need to give this focus so the item inside will have it
+ 
++            // this isn't implicit, otherwise items still get processed for the scenegraph
++            visible: opacity > 0
++            // changing enabled will toggle if an item can have activeFocus, which otherwise
++            //keeps the text cursor blinking even when invisble
++            enabled: visible
++
+             initialItem: MainBlock {
+                 id: mainBlock
+                 lockScreenUiVisible: lockScreenRoot.uiVisible
+-- 
+GitLab
+

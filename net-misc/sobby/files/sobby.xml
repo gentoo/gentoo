@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sobby_config>
+  <settings>
+    <autosave_directory>/var/lib/sobby</autosave_directory>
+    <autosave_file>autosave.obby</autosave_file>
+    <autosave_interval>0</autosave_interval>
+    <command_directory></command_directory>
+    <name>Standalone obby server</name>
+    <password>secret</password>
+    <port>6522</port>
+    <post_save_hook></post_save_hook>
+    <session></session>
+  </settings>
+</sobby_config>

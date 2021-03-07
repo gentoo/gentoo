@@ -1,0 +1,16 @@
+Ripped from Debian
+
+# DP: current_command must be declared volatile to prevent assignments from
+#     being optimized away as dead code.  In reality, the use of setjmp/longjmp
+#     makes it not dead code at all.
+
+--- a/eval.c
++++ b/eval.c
+@@ -63,7 +63,7 @@
+ reader_loop ()
+ {
+   int our_indirection_level;
+-  COMMAND *current_command = (COMMAND *)NULL;
++  COMMAND * volatile current_command = (COMMAND *)NULL;
+ 
+   USE_VAR(current_command);

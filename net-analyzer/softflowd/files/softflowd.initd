@@ -1,0 +1,53 @@
+#!/sbin/openrc-run
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+softflowd_checkconfig() {
+	SOFTFLOWD_INTERFACE=${SVCNAME#*.}
+	if [ ${SOFTFLOWD_INTERFACE} = ${SVCNAME} ]; then
+		eerror "You have to create an init script for each interface:"
+		eerror "ln -s softflowd /etc/init.d/softflowd.eth0"
+		return 1
+	fi
+
+	if [ -z "${SOFTFLOWD_COLLECTOR}" ]; then
+		eerror "Specify the host and port that the accounting datagrams are to be"
+		eerror	"sent to in /etc/conf.d/${SVCNAME}." 
+		eerror "Example: SOFTFLOWD_COLLECTOR=collector.example.com:9995"
+		return 1
+	fi
+	SOFTFLOWD_PIDFILE="/var/run/softflowd.${SOFTFLOWD_INTERFACE}.pid"
+	SOFTFLOWD_CTLFILE="/var/run/softflowd.${SOFTFLOWD_INTERFACE}.ctl"
+}
+
+
+start() {
+	softflowd_checkconfig || return 1
+
+	ebegin "Starting softflowd on interface ${SOFTFLOWD_INTERFACE}"
+	iface_arg=${SOFTFLOWD_INTERFACE}
+	[ -n "${SOFTFLOWD_INTERFACE_IDX}" ] && iface_arg="${SOFTFLOWD_INTERFACE_IDX}:${iface_arg}"
+	start-stop-daemon --start \
+		--exec /usr/sbin/softflowd \
+		--	-i "${iface_arg}" \
+			-n "${SOFTFLOWD_COLLECTOR}" \
+			-p "${SOFTFLOWD_PIDFILE}" \
+			-c "${SOFTFLOWD_CTLFILE}" \
+			-t "${SOFTFLOWD_TIMEOUTS-maxlife=600}" \
+			-m "${SOFTFLOWD_MAXFLOWS-17000}" \
+			${SOFTFLOWD_EXTRA}
+	eend $?
+}
+
+stop() {
+	softflowd_checkconfig || return 1
+
+	ebegin "Stopping softflowd on interface ${SOFTFLOWD_INTERFACE}"
+	# use softflowd's own way to shut it down
+	/usr/sbin/softflowctl -c ${SOFTFLOWD_CTLFILE} shutdown
+	eend $?
+}

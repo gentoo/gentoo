@@ -1,0 +1,12 @@
+diff -ruN atari800-3.1.0/src/configure.ac new/src/configure.ac
+--- atari800-3.1.0/src/configure.ac	2014-04-12 15:58:16.000000000 +0200
++++ new/src/configure.ac	2015-03-26 23:36:24.419178078 +0100
+@@ -982,7 +982,7 @@
+ dnl existence of the tgetent symbol in readline. If not, we search for tgetent
+ dnl in a few other libraries. All done with a single AC_SEARCH_LIBS statement.
+     have_readline=no
+-    AC_SEARCH_LIBS(tgetent, [readline termcap ncursesw ncurses curses], [
++    AC_SEARCH_LIBS(tgetent, [readline termcap tinfow ncursesw ncurses curses], [
+         AC_SEARCH_LIBS(readline, readline, [
+             AC_CHECK_HEADER([readline/readline.h], [
+                 have_readline=yes

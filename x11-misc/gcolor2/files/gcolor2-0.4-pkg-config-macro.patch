@@ -1,0 +1,10 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -26,6 +26,7 @@
+ AC_DISABLE_STATIC
+ AC_PROG_LIBTOOL
+ AC_PROG_INTLTOOL([0.27])
++PKG_PROG_PKG_CONFIG
+ 
+ 
+ GETTEXT_PACKAGE=gcolor2

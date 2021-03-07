@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		Penlight is a set of pure Lua libraries for making it easier to work
+		with common tasks like iterating over directories, reading
+		configuration files and the like. Provides functional operations
+		on tables and sequences.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">Tieske/Penlight</remote-id>
+	</upstream>
+</pkgmetadata>

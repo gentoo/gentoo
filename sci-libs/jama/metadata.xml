@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		JAMA/C++: a translation of the Java Matrix Library,  developed by the
+		Mathworks and NIST, into C++ . It includes the following routines:
+		* classical matrix linear algebra
+		* QR
+		* SVD
+		* Cholesky
+		* Eigenvalue solver
+		It is based on NIST's Template Numerical Toolkit.
+	</longdescription>
+</pkgmetadata>

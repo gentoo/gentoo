@@ -1,0 +1,51 @@
+--- a/GNUmakefile
++++ b/GNUmakefile
+@@ -21,22 +21,22 @@
+ 	-Wcast-align -Wunused-parameter -Wchar-subscripts -Winline \
+ 	-Wnested-externs -Wredundant-decls -Wno-format-y2k
+ 
+-CFLAGS+= -g -O -pipe -DNDEBUG -I$(PREFIX)/include
++CPPFLAGS+= -DNDEBUG -I$(PREFIX)/include
+ ifeq ($(UNAME), Linux)
+-	CFLAGS+= -D_XOPEN_SOURCE -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64
++	CPPFLAGS+= -D_XOPEN_SOURCE -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64
+ endif
+ ifeq ($(UNAME), Darwin)
+-	CFLAGS+= -DHAVE_FFLAGS
++	CPPFLAGS+= -DHAVE_FFLAGS
+ endif
+ CFLAGS+= $(WARNS)
+-LDFLAGS= -L$(PREFIX)/lib -lcrypto -lz -lpthread
++LIBS= -lcrypto -lz -lpthread
+ 
+ .PHONY: all clean install
+ 
+ all: csup csup.1.gz
+ 
+ csup: $(OBJS)
+-	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $@ $^ $(LIBS)
+ 
+ config.c: parse.h
+ 
+@@ -49,9 +49,6 @@
+ clean:
+ 	rm -f csup $(OBJS) parse.c parse.h token.c csup.1.gz
+ 
+-%.o: %.c
+-	$(CC) $(CFLAGS) -c -o $@ $<
+-
+ %.c: %.y
+ 	$(YACC) -d -o $@ $<
+ 
+--- a/Makefile
++++ b/Makefile
+@@ -11,7 +11,7 @@
+ 	globtree.c idcache.c keyword.c lister.c main.c misc.c mux.c parse.y \
+ 	pathcomp.c proto.c status.c stream.c threads.c token.l updater.c
+ 
+-CFLAGS+=	-I. -I${.CURDIR} -g -pthread -DHAVE_FFLAGS -DNDEBUG
++CFLAGS+=	-I. -I${.CURDIR} -pthread -DHAVE_FFLAGS
+ WARNS?=		6
+ 
+ # A bit of tweaking is needed to get this Makefile working

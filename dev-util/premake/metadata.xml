@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>titanofold@gentoo.org</email>
+		<name>Aaron W. Swenson</name>
+	</maintainer>
+	<longdescription lang="en">
+		Describe your software project just once, using Premake's simple and
+		easy to read syntax, and build it everywhere. Generate project files
+		for Visual Studio, GNU Make, Xcode, Code::Blocks, and more across
+		Windows, Mac OS X, and Linux. Use the full featured Lua scripting
+		engine to make build configuration tasks a breeze.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">premake/premake-core</remote-id>
+		<remote-id type="sourceforge">premake</remote-id>
+	</upstream>
+</pkgmetadata>

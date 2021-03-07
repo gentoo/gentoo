@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>williamh@gentoo.org</email>
+    <name>William Hubbs</name>
+  </maintainer>
+  <use>
+    <flag name="lua52compat">
+      Enable some upwards-compatible features
+      from Lua 5.2 that are unlikely to break existing code.
+    </flag>
+  </use>
+</pkgmetadata>

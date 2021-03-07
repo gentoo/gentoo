@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+		SecPanel serves as a graphical user interface for managing and running
+		SSH (Secure Shell) and SCP (Secure Copy) connections.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">secpanel</remote-id>
+	</upstream>
+</pkgmetadata>

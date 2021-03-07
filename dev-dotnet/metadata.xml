@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The dev-dotnet category contains libraries and utilities relevant to the
+		.NET programming environment.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie dev-dotnet enthält Bibliotheken und Werkzeuge für die
+		.NET Programmierumgebung.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría dev-dotnet contiene librerias y utilidades referentes al
+		ambiente de programación .NET.
+	</longdescription>
+	<longdescription lang="ja">
+		dev-dotnet カテゴリーには.Netプログラミング環境に関連したライブラリーと
+		ユーティリティが含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De dev-dotnet categorie bevat bibliotheken en hulpmiddelen voor het gebruik
+		van de verschillende .NET programmeertalen.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm dev-dotnet chứa các thư viện và tiện ích liên quan
+		đến môi trường lập trình .NET.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria dev-dotnet contiene librerie ed utilità per l'ambiente .NET.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria dev-dotnet contém bibliotecas e utilitários para o
+		ambiente .NET.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria dev-dotnet zawiera biblioteki i narzędzia związane ze
+		środowiskiem programowania .NET.
+	</longdescription>
+</catmetadata>
+

@@ -1,0 +1,24 @@
+Description: Fix buffer overflow during crash when using user supplied image.
+Author: Sławomir Nizio
+--- a/cuneiform_src/Kern/rstr/src/acc_tabs.c	
++++ b/cuneiform_src/Kern/rstr/src/acc_tabs.c	
+@@ -1233,7 +1233,7 @@ if(is_cen_language(language))
+ 
+     strcpy(decode_ASCII_to_[(uchar)liga_i      ],   "_i_");
+     strcpy(decode_ASCII_to_[(uchar)liga_exm    ],   "_!_");
+-    strcpy(decode_ASCII_to_[(uchar)liga_inv_exm],   "_!!_");
++    strcpy(decode_ASCII_to_[(uchar)liga_inv_exm],   "_!_");
+     strcpy(decode_ASCII_to_[(uchar)right_quocket],  "\xbb");
+ 	strcpy(decode_ASCII_to_[(uchar)liga_CC     ],   "\xa9");
+ 	strcpy(decode_ASCII_to_[(uchar)liga_CR     ],   "\xae");
+--- a/cuneiform_src/Kern/rstr/src/match_wd.c	
++++ b/cuneiform_src/Kern/rstr/src/match_wd.c
+@@ -484,7 +484,7 @@
+   str_raster->w=(int32_t)(right-left);
+   str_raster->h=(int32_t)(bottom-top);
+ 
+-  if (str_raster->w > LINE_WIDTH || str_raster->h > LINE_HEIGHT)
++  if ((str_raster->w+7) > LINE_WIDTH || str_raster->h > LINE_HEIGHT)
+     return FALSE;
+ 
+   memset(&str_raster->pict,0,(str_raster->w+7)/8*str_raster->h);

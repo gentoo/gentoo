@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>java@gentoo.org</email>
+    <name>Java</name>
+  </maintainer>
+  <use>
+    <flag name="antlr">Enable ANTLR Ant tasks</flag>
+    <flag name="bcel">Enable bcel (bytecode manipulation) Ant tasks</flag>
+    <flag name="bsf">Enable support for Apache Bean Scripting Framework
+      (<pkg>dev-java/bsf</pkg>)</flag>
+    <flag name="commonslogging">Enable commons-logging Ant tasks</flag>
+    <flag name="commonsnet">Enable commons-net Ant tasks</flag>
+    <flag name="jai">Enable JAI (Java Imaging) Ant task</flag>
+    <flag name="javamail">Enable JavaMail Ant task</flag>
+    <flag name="jdepend">Enable Jdepend Ant tasks</flag>
+    <flag name="jmf">Enable JMF (Java Media Framework) Ant tasks</flag>
+    <flag name="jsch">Disable Jsch (ssh, scp and related) Ant tasks</flag>
+    <flag name="junit">Enable JUnit Ant tasks</flag>
+    <flag name="junit4">Enable JUnit4 Ant tasks</flag>
+    <flag name="junitlauncher">Enable JUnit5 Ant tasks</flag>
+    <flag name="log4j">Enable Apache log4j Ant tasks</flag>
+    <flag name="oro">Enable Apache Oro Ant tasks</flag>
+    <flag name="regexp">Enable Apache Regexp Ant tasks</flag>
+    <flag name="resolver">Enable Apache Resolver Ant tasks</flag>
+    <flag name="swing">Enable Swing Ant tasks</flag>
+    <flag name="testutil">Enable optional test util classes</flag>
+    <flag name="xz">Enable XZ Ant tasks</flag>
+  </use>
+</pkgmetadata>

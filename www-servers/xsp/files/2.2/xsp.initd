@@ -1,0 +1,37 @@
+#!/sbin/openrc-run
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+	after dotnet
+}
+
+start() {
+	ebegin "Starting xsp"
+
+	if [ ${MonoServerVersion} -eq 1 ]; then
+		xsppath=1.0/xsp.exe
+	elif [ ${MonoServerVersion} -eq 2 ]; then
+		xsppath=2.0/xsp2.exe
+	else
+		eerror "MonoServerVersion was not properly set. Check your config file"
+		return 1
+	fi
+
+	start-stop-daemon --quiet --start \
+		--background \
+		--make-pidfile \
+		--pidfile /var/run/aspnet/xsp.pid \
+		--chuid aspnet \
+		--exec /usr/bin/mono /usr/lib/mono/${xsppath} -- --root ${MonoServerRoot} --port ${MonoServerPort} --nonstop
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping xsp"
+	start-stop-daemon -o --quiet --stop \
+		--pidfile /var/run/aspnet/xsp.pid
+	eend $?
+}
+

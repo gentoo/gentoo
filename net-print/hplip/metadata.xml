@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>billie@gentoo.org</email>
+		<name>Daniel Pielmeier</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>printing@gentoo.org</email>
+		<name>Gentoo Printing Project</name>
+	</maintainer>
+	<use>
+		<flag name="fax">Enable fax on multifunction devices which support it</flag>
+		<flag name="hpcups">Build the hpcups driver for cups (by HP)</flag>
+		<flag name="hpijs">Build the IJS driver for cups (Foomatic)</flag>
+		<flag name="kde">Enables <pkg>kde-misc/skanlite</pkg> as scanner GUI with USE="scanner X"</flag>
+		<flag name="libnotify">Enables desktop notifications</flag>
+		<flag name="libusb0">Depend on <pkg>virtual/libusb</pkg> SLOT 0. Some old printers do not work with <pkg>virtual/libusb</pkg> SLOT 1.</flag>
+		<flag name="minimal">Only build internal hpijs/hpcups driver (not recommended at all, make sure you know what you are doing)</flag>
+		<flag name="parport">Enable parallel port for devices which require it</flag>
+		<flag name="scanner">Enable scanner on multifunction devices which support it</flag>
+		<flag name="snmp">Add support for <pkg>net-analyzer/net-snmp</pkg> which enables this driver to work over networks (both for server and client)</flag>
+		<flag name="static-ppds">Use statically-generated PPDs instead of Dynamic PPDs. Although this is deprecated some printers may still need it to work properly. Use this flag if hp-setup fails to find/create a valid PPD file</flag>
+		<flag name="X">Enables scanner GUI dependencies with USE="scanner" where <pkg>media-gfx/xsane</pkg> is preferred over <pkg>media-gfx/sane-frontends</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:hp:linux_imaging_and_printing_project</remote-id>
+		<remote-id type="sourceforge">hplip</remote-id>
+	</upstream>
+</pkgmetadata>

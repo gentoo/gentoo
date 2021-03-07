@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		This package comes \"Batteries Included\" with many useful lenses for the types
+		commonly used from the Haskell Platform, and with tools for automatically
+		generating lenses and isomorphisms for user-supplied data types.
+
+		The combinators in @Control.Lens@ provide a highly generic toolbox for composing
+		families of getters, folds, isomorphisms, traversals, setters and lenses and their
+		indexed variants.
+
+		An overview, with a large number of examples can be found in the @README@: &lt;https://github.com/ekmett/lens#lens-lenses-folds-and-traversals&gt;
+
+		A video on how to use lenses and how they are constructed is available from youtube: &lt;http://youtu.be/cefnmjtAolY?hd=1&gt;
+
+		Slides can be obtained here: &lt;http://comonad.com/haskell/Lenses-Folds-and-Traversals-NYC.pdf&gt;
+
+		More information on the care and feeding of lenses, including a brief tutorial and motivation
+		for their types can be found on the lens wiki: &lt;https://github.com/ekmett/lens/wiki&gt;
+
+		A small game of @pong@ and other more complex examples that manage their state using lenses can be found in the example folder: &lt;https://github.com/ekmett/lens/blob/master/examples/&gt;
+
+		/Lenses, Folds and Traversals/
+
+		The core of the hierarchy of lens-like constructions looks like:
+
+
+		&lt;&lt;http://i.imgur.com/4fHw3Fd.png&gt;&gt;
+
+		Local copy (&lt;Hierarchy.png&gt;)
+
+		You can compose any two elements of the hierarchy above using @(.)@ from the @Prelude@, and you can
+		use any element of the hierarchy as any type it linked to above it.
+
+		The result is their lowest upper bound in the hierarchy (or an error if that bound doesn't exist).
+
+		For instance:
+
+		* You can use any 'Traversal' as a 'Fold' or as a 'Setter'.
+
+		* The composition of a 'Traversal' and a 'Getter' yields a 'Fold'.
+
+		/Minimizing Dependencies/
+
+		If you want to provide lenses and traversals for your own types in your own libraries, then you
+		can do so without incurring a dependency on this (or any other) lens package at all.
+
+		/e.g./ for a data type:
+
+		&gt; data Foo a = Foo Int Int a
+
+		You can define lenses such as
+
+		&gt; -- bar :: Lens' (Foo a) Int
+		&gt; bar :: Functor f =&gt; (Int -&gt; f Int) -&gt; Foo a -&gt; f (Foo a)
+		&gt; bar f (Foo a b c) = fmap (\a' -&gt; Foo a' b c) (f a)
+
+		&gt; -- baz :: Lens (Foo a) (Foo b) a b
+		&gt; quux :: Functor f =&gt; (a -&gt; f b) -&gt; Foo a -&gt; f (Foo b)
+		&gt; quux f (Foo a b c) = fmap (Foo a b) (f c)
+
+		without the need to use any type that isn't already defined in the @Prelude@.
+
+		And you can define a traversal of multiple fields with 'Control.Applicative.Applicative':
+
+		&gt; -- traverseBarAndBaz :: Traversal' (Foo a) Int
+		&gt; traverseBarAndBaz :: Applicative f =&gt; (Int -&gt; f Int) -&gt; Foo a -&gt; f (Foo a)
+		&gt; traverseBarAndBaz f (Foo a b c) = Foo &lt;$&gt; f a &lt;*&gt; f b &lt;*&gt; pure c
+
+		What is provided in this library is a number of stock lenses and traversals for
+		common haskell types, a wide array of combinators for working them, and more
+		exotic functionality, (/e.g./ getters, setters, indexed folds, isomorphisms).
+	</longdescription>
+	<use>
+		<flag name="benchmark-uniplate">
+			Enable benchmarking against Neil Mitchell's
+			uniplate library for comparative performance analysis. Defaults to being
+			turned off to avoid the extra dependency.
+		</flag>
+		<flag name="inlining">
+			Generate inline pragmas when using
+			template-haskell. This defaults to enabled, but you can
+			to shut it off to benchmark the relative performance impact,
+			or as last ditch effort to address compile errors resulting
+			from the myriad versions of template-haskell that all purport to be 2.8.
+		</flag>
+		<flag name="old-inline-pragmas">Some 7.6.1-rc1 users report their TH still uses old style inline pragmas. This lets them turn on inlining.</flag>
+		<flag name="safe">Disallow unsafeCoerce</flag>
+		<flag name="dump-splices">Build and run the doctests test-suite.</flag>
+		<flag name="j">Attempt a parallel build with GHC 7.8.</flag>
+		<flag name="test-doctests">Build and run the doctests test-suite.</flag>
+		<flag name="test-templates">Build the test templates if we're building tests</flag>
+		<flag name="trustworthy">Assert that we are trustworthy when we can</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">ekmett/lens</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>x11@gentoo.org</email>
+		<name>X11</name>
+	</maintainer>
+	<use>
+		<flag name="classic">Build drivers based on the classic architecture.</flag>
+		<flag name="d3d9">Enable Direct 3D9 API through Nine state tracker. Can be used together with patched wine.</flag>
+		<flag name="dri3">Enable DRI3 support.</flag>
+		<flag name="egl">Enable EGL support.</flag>
+		<flag name="gallium">Build drivers based on Gallium3D, the new architecture for 3D graphics drivers.</flag>
+		<flag name="gbm">Enable the Graphics Buffer Manager for EGL on KMS.</flag>
+		<flag name="gles1">Enable GLESv1 support.</flag>
+		<flag name="gles2">Enable GLESv2 support.</flag>
+		<flag name="llvm">Enable LLVM backend for Gallium3D.</flag>
+		<flag name="lm-sensors">Enable Gallium HUD lm-sensors support.</flag>
+		<flag name="opencl">Enable the Clover Gallium OpenCL state tracker.</flag>
+		<flag name="osmesa">Build the Mesa library for off-screen rendering.</flag>
+		<flag name="valgrind">Compile in valgrind memory hints</flag>
+		<flag name="vdpau">Enable the VDPAU acceleration interface for the Gallium3D Video Layer.</flag>
+		<flag name="vulkan">Enable Vulkan drivers</flag>
+		<flag name="vulkan-overlay">Build vulkan-overlay-layer which displays Frames Per Second and other statistics</flag>
+		<flag name="wayland">Enable support for dev-libs/wayland</flag>
+		<flag name="xa">Enable the XA (X Acceleration) API for Gallium3D.</flag>
+		<flag name="xvmc">Enable the XvMC acceleration interface for the Gallium3D Video Layer.</flag>
+		<flag name="zink">Enable the Zink OpenGL-over-Vulkan Gallium driver</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:mesa3d:mesa</remote-id>
+		<remote-id type="sourceforge">mesa3d</remote-id>
+	</upstream>
+</pkgmetadata>

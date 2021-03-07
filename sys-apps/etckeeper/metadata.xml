@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<use>
+		<flag name="cron">Install cron script</flag>
+	</use>
+	<longdescription>etckeeper is a collection of tools to let /etc be stored in
+	a git, mercurial, darcs, or bzr repository. It can hook into portage to
+	automatically commit changes made to /etc during package upgrades. It tracks
+	file metadata that revison control systems do not normally support, but that
+	is important for /etc, such as the permissions of /etc/shadow.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">joeyh/etckeeper</remote-id>
+	</upstream>
+</pkgmetadata>

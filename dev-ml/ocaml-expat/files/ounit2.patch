@@ -1,0 +1,17 @@
+Index: ocaml-expat-1.1.0/Makefile
+===================================================================
+--- ocaml-expat-1.1.0.orig/Makefile
++++ ocaml-expat-1.1.0/Makefile
+@@ -85,10 +85,10 @@ test: unittest
+ testopt: unittest.opt
+ 	./unittest.opt
+ unittest: all unittest.ml
+-	$(OCAMLFIND) ocamlc -o unittest -package oUnit -ccopt -L. -linkpkg \
++	$(OCAMLFIND) ocamlc -o unittest -package ounit2 -ccopt -L. -linkpkg \
+ 	$(ARCHIVE) unittest.ml
+ unittest.opt: allopt unittest.ml
+-	$(OCAMLFIND) ocamlopt -o unittest.opt -package oUnit -ccopt -L. -linkpkg \
++	$(OCAMLFIND) ocamlopt -o unittest.opt -package ounit2 -ccopt -L. -linkpkg \
+ 	$(XARCHIVE) unittest.ml
+ 
+ ## Cleaning up

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>blueness@gentoo.org</email>
+		<name>Anthony G. Basile</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>embedded@gentoo.org</email>
+		<name>Embedded Gentoo</name>
+	</maintainer>
+	<longdescription>
+	uClibc-ng is a small C library for developing embedded Linux systems. It is much
+	smaller than the GNU C Library, but nearly all applications supported by glibc
+	also work perfectly with uClibc-ng.
+	</longdescription>
+	<use>
+		<flag name="symlink-compat">Explicitly add sym links for libdl.so.0, libm.so.0, and
+		friends for backward compatibility with sys-libs/uclibc-ng-1.0.17 and earlier</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription>
+		This lightweight cron daemon aims to be simple and secure, with just enough
+		features to stay useful.
+		Unlike other fatter cron daemons, though, this cron doesn't even try to manage
+		environment variables or act as a shell.
+		All jobs are run with `/bin/sh` for conformity and portability.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/dubiousjim/dcron/issues</bugs-to>
+		<remote-id type="github">dubiousjim/dcron</remote-id>
+	</upstream>
+</pkgmetadata>

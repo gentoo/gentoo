@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!--maintainer-needed-->
+	<longdescription>
+		This program is a filter which shall improve the readability for messages
+		(emails and usenet postings) by *hiding* some annoying parts, e.g. mailing
+		list footers, signatures, and TOFU, as well as squeezing sequences of blank
+		lines or punctuation.
+
+		TOFU is an acronym that stands for "Text oben, Fullquote unten" (german
+		language) which means the style of sadly so many people that just leave all
+		the quotes in a reply and add some own lines above. This acronym is what
+		gave the script its name - TOFU Protection.
+	</longdescription>
+</pkgmetadata>

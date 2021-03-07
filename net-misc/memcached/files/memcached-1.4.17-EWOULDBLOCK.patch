@@ -1,0 +1,21 @@
+errno.h(0P):
+    EAGAIN Resource unavailable, try again (may be the same value as [EWOULDBLOCK]).
+
+    [...]
+
+    EWOULDBLOCK
+        Operation would block (may be the same value as [EAGAIN]).
+
+
+--- a/testapp.c
++++ b/testapp.c
+@@ -1840,6 +1840,9 @@
+                 switch (errno) {
+                 case EINTR:
+                     break;
++#if (EAGAIN != EWOULDBLOCK)
++                case EAGAIN:
++#endif
+                 case ENOMEM:
+                 case EWOULDBLOCK:
+                     more = false;

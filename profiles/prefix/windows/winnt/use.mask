@@ -1,0 +1,70 @@
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Re-add Winnt libc
+-elibc_Winnt
+
+# CURL_SSL=winssl is allowd on Winnt libc
+-curl_ssl_winssl
+
+# these need a review, since they are just copied from interix
+# these will more than likely never work on Windows
+3dfx
+acpi
+alsa
+altivec
+apm
+bluetooth
+caps
+cdr
+coreaudio
+dga
+djbfft
+dri
+dvdr
+# emacs USE flag is masked because of missing implementation for unexec()
+emacs
+fbcon
+ggi
+glut
+gpm
+gps
+hardened
+hddtemp
+ibm
+ieee1394
+ipod
+ipv6
+lm-sensors
+ncurses
+opengl
+oss
+pcmcia
+pda
+rtc
+selinux
+scanner
+smartcard
+svga
+uclibc
+# unicode is totally b0rked on interix
+unicode
+usb
+v4l
+wifi
+
+# these are USE flags that don't _currently_ work, but may will in the future.
+ffmpeg
+fftw
+flac
+jack
+joystick
+ladspa
+# opennmp is not working yet on interix
+openmp
+portaudio
+pulseaudio
+readline
+# libtiff only static, so avoid the tiff USE flag!
+tiff
+timidity

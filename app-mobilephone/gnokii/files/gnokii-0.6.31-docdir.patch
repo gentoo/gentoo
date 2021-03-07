@@ -1,0 +1,69 @@
+--- a/Docs/Makefile.am.JeR
++++ b/Docs/Makefile.am
+@@ -1,6 +1,6 @@
+ SUBDIRS = man sample protocol
+ 
+-docsdir = $(datadir)/doc/gnokii
++docsdir = $(docdir)
+ 
+ DEVEL_DOCS =    CodingStyle \
+ 		README.libsms
+--- a/Docs/protocol/Makefile.am
++++ b/Docs/protocol/Makefile.am
+@@ -1,4 +1,4 @@
+-protocoldocsdir = $(datadir)/doc/gnokii/protocol
++protocoldocsdir = $(docdir)/protocol
+ protocoldocs_DATA= 		\
+ 	dancall.txt		\
+ 	gnokiid-at.txt		\
+--- a/Docs/sample/Makefile.am
++++ b/Docs/sample/Makefile.am
+@@ -1,6 +1,6 @@
+ SUBDIRS = ppp logo ringtone vCalendar
+ 
+-sampledocsdir = $(datadir)/doc/gnokii/sample
++sampledocsdir = $(docdir)/sample
+ sampledocs_DATA = gnokiirc	\
+ 		magic		\
+ 		45-nokiadku2.rules
+--- a/Docs/sample/vCalendar/Makefile.am
++++ b/Docs/sample/vCalendar/Makefile.am
+@@ -1,4 +1,4 @@
+-vcaldocsdir = $(datadir)/doc/gnokii/sample/vCalendar
++vcaldocsdir = $(docdir)/sample/vCalendar
+ vcaldocs_DATA = test.vcs
+ 
+ EXTRA_DIST = $(vcaldocs_DATA)
+--- a/Docs/sample/logo/Makefile.am
++++ b/Docs/sample/logo/Makefile.am
+@@ -1,4 +1,4 @@
+-logodocsdir = $(datadir)/doc/gnokii/sample/logo
++logodocsdir = $(docdir)/sample/logo
+ logodocs_DATA = pacman.xpm \
+ 		gnokii.xpm \
+ 		gnokiiop.xpm \
+@@ -6,4 +6,4 @@
+ 		bronto.xpm \
+ 		horse2.xpm
+ 
+-EXTRA_DIST = $(logodocs_DATA)
+\ No newline at end of file
++EXTRA_DIST = $(logodocs_DATA)
+--- a/Docs/sample/ringtone/Makefile.am
++++ b/Docs/sample/ringtone/Makefile.am
+@@ -1,4 +1,4 @@
+-ringtonedocsdir = $(datadir)/doc/gnokii/sample/ringtone
++ringtonedocsdir = $(docdir)/sample/ringtone
+ ringtonedocs_DATA = star.imelody star.rtttl
+ 
+-EXTRA_DIST = $(ringtonedocs_DATA) 
+\ No newline at end of file
++EXTRA_DIST = $(ringtonedocs_DATA) 
+--- a/Docs/sample/ppp/Makefile.am
++++ b/Docs/sample/ppp/Makefile.am
+@@ -1,4 +1,4 @@
+-pppdocsdir = $(datadir)/doc/gnokii/sample/ppp
++pppdocsdir = $(docdir)/sample/ppp
+ pppdocs_DATA =  cimd-connect \
+ 		ppp-FILES \
+ 		options \

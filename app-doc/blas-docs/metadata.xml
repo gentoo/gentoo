@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>sci@gentoo.org</email>
+	<name>Gentoo Science Project</name>
+</maintainer>
+<stabilize-allarches/>
+<longdescription lang="en">
+BLAS (Basic Linear Algebra Subroutines) is a set of efficient routines
+for most of the basic vector and matrix operations. They are widely
+used as the basis for other high quality linear algebra software, for
+example lapack and linpack. This implementation is the Fortran 77
+reference implementation found at netlib.
+This package contains manual pages for the routines, and other
+quick reference in postscript format.
+</longdescription>
+</pkgmetadata>

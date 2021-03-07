@@ -1,0 +1,23 @@
+ Makefile |    6 +++---
+ 1 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index f2107ce..835232b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -25,12 +25,12 @@ TREES_FLAG = -DSERIAL_NJTREE
+ PAIRALIGN_FLAG = -DDYNAMIC_SCHEDULING_PAIRALIGN 
+ #PAIRALIGN_FLAG = -DSTATIC_SCHEDULING_PAIRALIGN
+ 
+-CFLAGS  = -c -O3
++CFLAGS  += -c
+ #CFLAGS  = -c -O3 -funroll-all-loops
+-LFLAGS	= -lm 
++LIBS	= -lm 
+ 
+ clustalw-mpi: $(OBJECTS) 
+-	$(CC) -o $@ $(OBJECTS) $(LFLAGS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJECTS) $(LIBS)
+ 
+ interface.o : interface.c $(HEADERS) param.h
+ 	$(CC) $(CFLAGS) $*.c

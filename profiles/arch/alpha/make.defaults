@@ -1,0 +1,34 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+ARCH="alpha"
+ACCEPT_KEYWORDS="alpha ~alpha"
+
+CHOST="alpha-unknown-linux-gnu"
+CFLAGS="-O2 -pipe"
+CXXFLAGS="${CFLAGS}"
+FFLAGS="${CFLAGS}"
+FCFLAGS="${CFLAGS}"
+
+# Michał Górny <mgorny@gentoo.org> (2014-07-01)
+# Set ABI & DEFAULT_ABI consistently with ${ARCH}, to make ebuild
+# checks simpler.
+ABI="alpha"
+DEFAULT_ABI="alpha"
+MULTILIB_ABIS="alpha"
+CHOST_alpha="${CHOST}"
+LIBDIR_alpha="lib"
+
+# Donnie Berkholz <dberkholz@gentoo.org> (2006-08-18)
+# Defaults for video drivers
+VIDEO_CARDS="fbdev glint mga nv r128 radeon"
+
+# Chris Gianelloni <wolf31o2@gentoo.org> (2007-02-05)
+# Defaults for audio drivers. These are copied from x86 (minus modems), since
+# Alpha supports the same busses.
+ALSA_CARDS="ali5451 als4000 bt87x ca0106 cmipci emu10k1 ens1370 ens1371 es1938 es1968 fm801 hda-intel intel8x0 maestro3 trident usb-audio via82xx ymfpci"
+
+# Tobias Klausmann <klausman@gentoo.org> (2018-06-25)
+# Enable USE=libtirpc by default, to ease dependency resolution during
+# the stabilization of glibc-2.26. Bug 657148
+USE="libtirpc"

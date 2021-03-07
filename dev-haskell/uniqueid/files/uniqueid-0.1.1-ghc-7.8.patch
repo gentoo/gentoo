@@ -1,0 +1,46 @@
+diff --git a/Data/Unique/Id.hs b/Data/Unique/Id.hs
+index f41127e..56853d9 100644
+--- a/Data/Unique/Id.hs
++++ b/Data/Unique/Id.hs
+@@ -14,7 +14,7 @@ module Data.Unique.Id (
+  ) where
+ 
+ import GHC.Exts
+-import GHC.IOBase ( unsafeDupableInterleaveIO )
++import GHC.IO ( unsafeDupableInterleaveIO )
+ 
+ import Data.IORef
+ import System.IO.Unsafe ( unsafePerformIO )
+@@ -55,15 +55,15 @@ splitIdSupplyL ids = ids1 : splitIdSupplyL ids2
+ idFromSupply :: IdSupply -> Id
+ idFromSupply (IdSupply n _ _) = Id (I# n)
+ 
+-instance Eq Id where Id (I# x) == Id (I# y) = x ==# y
++instance Eq Id where Id (I# x) == Id (I# y) = isTrue# (x ==# y)
+ 
+ instance Ord Id
+  where
+-  Id (I# x) <  Id (I# y) = x <#  y
+-  Id (I# x) <= Id (I# y) = x <=# y
++  Id (I# x) <  Id (I# y) = isTrue# (x <#  y)
++  Id (I# x) <= Id (I# y) = isTrue# (x <=# y)
+ 
+   compare (Id (I# x)) (Id (I# y)) =
+-   if x ==# y then EQ else if x <# y then LT else GT
++   if isTrue# (x ==# y) then EQ else if isTrue# (x <# y) then LT else GT
+ 
+ instance Show Id
+  where
+diff --git a/uniqueid.cabal b/uniqueid.cabal
+index 8099520..83aaa39 100644
+--- a/uniqueid.cabal
++++ b/uniqueid.cabal
+@@ -18,7 +18,7 @@ Build-Type:    Simple
+ Stability:     experimental
+ 
+ Library
+-  Build-Depends:   base >= 3 && < 5
++  Build-Depends:   base >= 3 && < 5, ghc-prim
+   Exposed-Modules: Data.Unique.Id
+   Extensions:      MagicHash
+   Ghc-Options:     -Wall

@@ -1,0 +1,12 @@
+Add definition of free and setenv, Michael Weber <xmw@gentoo.org> Oct 18th, 2010
+
+--- pam_fprint-0.2/src/pam_fprint.c
++++ pam_fprint-0.2/src/pam_fprint.c
+@@ -22,6 +22,7 @@
+ #include <sys/types.h>
+ #include <pwd.h>
+ #include <string.h>
++#include <stdlib.h>
+ 
+ #include <fprint.h>
+ 

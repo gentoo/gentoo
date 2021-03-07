@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-astronomy@gentoo.org</email>
+    <name>Gentoo Astronomy Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    Funtools, is a minimal buy-in FITS library and utility package from 
+    the SAO/HEAD. The Funtools library provides simplified
+    access to FITS images and binary tables, as well as to raw array and binary
+    event lists. The Funtools utilities provide high-level support for
+    processing astronomical data.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">ericmandel/funtools</remote-id>
+  </upstream>  
+</pkgmetadata>

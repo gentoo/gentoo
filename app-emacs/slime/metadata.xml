@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<maintainer type="project">
+  <email>common-lisp@gentoo.org</email>
+  <name>Gentoo Common Lisp Project</name>
+</maintainer>
+<longdescription>
+  SLIME: The Superior Lisp Interaction Mode for Emacs.  SLIME is a
+  fresh, new Emacs mode for Common Lisp development inspired by existing
+  systems such Emacs Lisp and ILISP. Feature highlights include:
+
+    * slime-mode: An Emacs minor-mode to enhance lisp-mode with:
+      o Code evaluation, compilation, and macroexpansion.
+      o Online documentation (describe, apropos, hyperspec).
+      o Definition finding (aka Meta-Point aka M-.).
+      o Symbol and package name completion.
+      o Automatic macro indentation based on &amp;body.
+      o Cross-reference interface (WHO-CALLS, etc).
+      o ... and more.
+
+    * SLDB: Common Lisp debugger with an Emacs-based user interface.
+
+    * REPL: The Read-Eval-Print Loop ("top-level") is written in Emacs
+      Lisp for tighter integration with Emacs. The REPL also has builtin
+      "shortcut" commands similar those of the McCLIM Listener.
+
+    * Compilation notes: SLIME is able to take compiler messages and
+      annotate them directly into source buffers.
+
+    * Inspector: Interactive object-inspector in an Emacs buffer.
+</longdescription>
+<stabilize-allarches/>
+<use>
+  <flag name="xref">Install xref.lisp cross-referencing tool</flag>
+</use>
+<upstream>
+  <remote-id type="github">slime/slime</remote-id>
+</upstream>
+</pkgmetadata>

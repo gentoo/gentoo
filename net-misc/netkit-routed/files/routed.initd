@@ -1,0 +1,20 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting routed"
+	/sbin/start-stop-daemon --start --quiet \
+		--exec /usr/sbin/routed -- ${ROUTED_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping routed"
+	/sbin/start-stop-daemon --stop --quiet --exec /usr/sbin/routed
+	eend $?
+}

@@ -1,0 +1,11 @@
+--- xfsprogs-4.15.0/scrub/Makefile
++++ xfsprogs-4.15.0/scrub/Makefile
+@@ -25,7 +25,7 @@
+ CRONTABS = xfs_scrub_all.cron
+ OPTIONAL_TARGETS += $(CRONTABS)
+ # Don't enable the crontab by default for now
+-CROND_DIR = $(PKG_LIB_DIR)/$(PKG_NAME)
++CROND_DIR = $(PKG_DOC_DIR)
+ endif
+ 
+ endif	# scrub_prereqs

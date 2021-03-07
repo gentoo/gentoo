@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <upstream>
+    <bugs-to>https://github.com/coreos/go-etcd/issues</bugs-to>
+    <changelog>https://github.com/coreos/go-etcd/commits/master</changelog>
+    <doc>https://godoc.org/github.com/coreos/go-etcd/etcd</doc>
+    <remote-id type="github">coreos/go-etcd</remote-id>
+  </upstream>
+  <maintainer type="person">
+    <email>zmedico@gentoo.org</email>
+  </maintainer>
+</pkgmetadata>

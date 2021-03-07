@@ -1,0 +1,79 @@
+--- a/MANIFEST.txt
++++ b/MANIFEST.txt
+@@ -1,9 +1,6 @@
+ README.md
+ CHANGELOG.md
+-ext/duktape/duktape.c
+-ext/duktape/duktape.h
+ ext/duktape/duktape_ext.c
+-ext/duktape/duk_config.h
+ ext/duktape/extconf.rb
+ lib/duktape/version.rb
+ lib/duktape.rb
+--- a/ext/duktape/extconf.rb
++++ b/ext/duktape/extconf.rb
+@@ -1,6 +1,64 @@
+ require 'mkmf'
+ require 'zlib'
+ 
++#
++# functions
++#
++
++def package_config pkg, options={}
++  package = pkg_config(pkg)
++  return package if package
++
++  begin
++    require 'rubygems'
++    gem 'pkg-config', (gem_ver='~> 1.1')
++    require 'pkg-config' and message("Using pkg-config gem version #{PKGConfig::VERSION}\n")
++  rescue LoadError
++    message "pkg-config could not be used to find #{pkg}\nPlease install either `pkg-config` or the pkg-config gem per\n\n    gem install pkg-config -v #{gem_ver.inspect}\n\n"
++  else
++    return nil unless PKGConfig.have_package(pkg)
++
++    cflags  = PKGConfig.cflags(pkg)
++    ldflags = PKGConfig.libs_only_L(pkg)
++    libs    = PKGConfig.libs_only_l(pkg)
++
++    Logging::message "PKGConfig package configuration for %s\n", pkg
++    Logging::message "cflags: %s\nldflags: %s\nlibs: %s\n\n", cflags, ldflags, libs
++
++    [cflags, ldflags, libs]
++  end
++end
++
++def duktape_try_compile
++  try_compile "int main() {return 0;}", "", {werror: true}
++end
++
++def add_cflags(flags)
++  print "checking if the C compiler accepts #{flags}... "
++  with_cflags("#{$CFLAGS} #{flags}") do
++    if duktape_try_compile
++      puts 'yes'
++      true
++    else
++      puts 'no'
++      false
++    end
++  end
++end
++
++#
++# main
++#
++
++if ENV['CC']
++  RbConfig::CONFIG['CC'] = RbConfig::MAKEFILE_CONFIG['CC'] = ENV['CC']
++end
++$LIBS << " #{ENV["LIBS"]}"
++$LDFLAGS << " #{ENV["LDFLAGS"]}"
++add_cflags(ENV["CFLAGS"])
++
++package_config('duktape')
++
+ $CFLAGS += ' -std=c99'
+ have_func 'rb_sym2str'
+ create_makefile 'duktape_ext'

@@ -1,0 +1,56 @@
+Source:
+https://sources.debian.net/src/gtklp/1.3.1-0.1/debian/patches/bugs/644113.diff/
+
+--- gtklp.orig/libgtklp/libgtklp.c
++++ gtklp/libgtklp/libgtklp.c
+@@ -554,7 +554,7 @@ void passwin_response_ok(GtkEditable *ed
+ 
+ const char *getPass (const char *prompt)
+ {
+-  GtkWidget *vbox, *hbox, *hbox1, *vbox1, *vbox2, *labell, *labelp, *yes, *no;
++  GtkWidget *vbox, *hbox, *vbox1, *vbox2, *labell, *labelp;
+ 	gint gi1;
+ #if GTK_MAJOR_VERSION == 1
+ 	GtkWidget *sep,*passwin;
+@@ -780,9 +780,6 @@ void exitOnError(char *gerror1, char *ge
+ 	GtkWidget *exitErrorDialog;
+ 	GtkWidget *hbox,*label,*pixmapwid;
+ 	char tmplabel[MAXLINE+1];
+-	GtkStyle *style;
+-	GdkPixmap *pixmap;
+-	GdkBitmap *mask;
+ #if GTK_MAJOR_VERSION == 1
+ 	GtkWidget *button,*vbox,*sep,*bbox;
+ #endif
+@@ -826,9 +823,9 @@ void exitOnError(char *gerror1, char *ge
+ 		gtk_widget_show(pixmapwid);
+ 
+ 		if(strlen(gerror2) == 0)
+-			snprintf(tmplabel,(size_t)MAXLINE,gerror1);
++			snprintf(tmplabel,(size_t)MAXLINE,"%s",gerror1);
+ 		else
+-			snprintf(tmplabel,(size_t)MAXLINE,gerror1,gerror2);
++			snprintf(tmplabel,(size_t)MAXLINE,"%s\n%s",gerror1,gerror2);
+ 		label=gtk_label_new(tmplabel);
+ 		gtk_box_pack_end(GTK_BOX(hbox),label,FALSE, FALSE,FRAME_SPACING_V);
+ 		gtk_widget_show(label);
+@@ -856,7 +853,7 @@ void exitOnError(char *gerror1, char *ge
+ #endif
+ 	} else {
+ 		if(strlen(gerror2) == 0)
+-			g_warning(gerror1);
++			g_warning("%s",gerror1);
+ 		else
+ 			g_warning(gerror1,gerror2);
+ 	}
+--- gtklp.orig/gtklp/gtklp.c
++++ gtklp/gtklp/gtklp.c
+@@ -302,7 +302,7 @@ int main(int argc,char *argv[])
+ 			case '?':
+ 				if(calledGtkLP)
+ 				{
+-					g_print(str2str(_("Usage: gtklp [-P|-d printer] [-c configdir] [-S server] [-U user] [-p port] [-l] [-D] [-V] [-b] [-i] [-# n] [-C] [-H] [-E] [-J jobname] [-q priority] [-o option=value ...] [file(s)]\n")));
++					g_print("%s", str2str(_("Usage: gtklp [-P|-d printer] [-c configdir] [-S server] [-U user] [-p port] [-l] [-D] [-V] [-b] [-i] [-# n] [-C] [-H] [-E] [-J jobname] [-q priority] [-o option=value ...] [file(s)]\n")));
+ 				}
+ 				return(0);
+ 			break;

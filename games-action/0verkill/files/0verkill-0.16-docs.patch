@@ -1,0 +1,32 @@
+--- 0verkill-0.16/doc/README.html
++++ 0verkill-0.16-gentoo/doc/README.html
+@@ -30,7 +30,7 @@
+ <center><h1><a name="running">RUNNING</a></h1></center>
+ 
+ <p><h2><a name="server">Running server</a></h2>
+-<p>First thing to start 0verkill is run the server - type <i>server</i>. Server
++<p>First thing to start 0verkill is run the server - type <i>0verkill-server</i>. Server
+ takes options <i>-p</i> and <i>-n</i>. As usual, option <i>-h</i> prints help.
+ 
+ <p> Option <i>-p</i> takes one argument: port number. Server needs UDP port
+@@ -84,9 +84,9 @@
+ 
+ <p><h2><a name="testserver">Testing Program</a></h2>
+ 
+-<p>There's <i>test_server</i> program in the distribution. It avoids testing
++<p>There's <i>0verkill-test_server</i> program in the distribution. It avoids testing
+ remote server if it's up and how many players there is. To use it simply type
+-<i>test_server -a &lt;server address&gt; -p &lt;port number &gt;</i>.
++<i>0verkill-test_server -a &lt;server address&gt; -p &lt;port number &gt;</i>.
+ 
+ <center><h1><a name="controls">GAME CONTROLS</a></h1></center>
+ 
+--- 0verkill-0.16/doc/adding_a_level.txt
++++ 0verkill-0.16-gentoo/doc/adding_a_level.txt
+@@ -19,5 +19,5 @@
+ 5) If you want to create some cool new graphics, run 
+    "avi grx/graphics_file.avi". Then add it to the data/new_level.sp
+ 
+-6) When the level is done, run "server -lX", where X is again from (1). And
++6) When the level is done, run "0verkill-server -lX", where X is again from (1). And
+    play!

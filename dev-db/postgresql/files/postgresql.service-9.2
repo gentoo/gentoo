@@ -1,0 +1,51 @@
+# It's not recommended to modify this file in-place, because it will be
+# overwritten during package upgrades. If you want to customize, the
+# best way is to create file
+# "/etc/systemd/system/postgresql-@SLOT@.service.d/*.conf"
+# containing your changes
+
+# For example, if you want to change the server's port number to 5433,
+# create a file named
+# "/etc/systemd/system/postgresql-@SLOT@.service.d/port.conf"
+# containing:
+#       [Service]
+#       Environment=PGPORT=5433
+# This will override the setting appearing below.
+
+[Unit]
+Description=PostgreSQL database server
+After=network.target
+
+[Service]
+Type=forking
+
+User=postgres
+Group=postgres
+
+# Port number for server to listen on
+Environment=PGPORT=5432
+
+# Location of configuration files
+Environment=PGDATA=/etc/postgresql-@SLOT@
+
+# Where the data directory is located
+Environment=DATA_DIR=/var/lib/postgresql/@SLOT@/data
+
+# Where to send early-startup messages from the server (before the logging
+# options of postgresql.conf take effect)
+# This is normally controlled by the global default set by systemd
+# StandardOutput=syslog
+
+ExecStartPre=/usr/bin/postgresql-@SLOT@-check-db-dir
+ExecStart=/usr/@LIBDIR@/postgresql-@SLOT@/bin/pg_ctl start -D ${DATA_DIR} -s -l ${DATA_DIR}/postmaster.log -o "-p ${PGPORT} -D ${PGDATA} --data-directory=${DATA_DIR}" -w -t 300
+ExecStop=/usr/@LIBDIR@/postgresql-@SLOT@/bin/pg_ctl stop -D ${DATA_DIR} -s -m fast
+ExecReload=/usr/@LIBDIR@/postgresql-@SLOT@/bin/pg_ctl reload -D ${DATA_DIR} -s
+
+# Give a reasonable amount of time for the server to start up/shut down
+TimeoutSec=300
+
+# Disable OOM kill on the postmaster
+OOMScoreAdjust=-1000
+
+[Install]
+WantedBy=multi-user.target

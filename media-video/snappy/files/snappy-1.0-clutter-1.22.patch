@@ -1,0 +1,25 @@
+From 529445d6fc5da3ea6e5c81051248b9d4818a1224 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Wed, 15 Apr 2015 15:46:14 +0200
+Subject: Set windowing backend to X11
+
+This required to work with Clutter 1.22.
+---
+ src/snappy.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/snappy.c b/src/snappy.c
+index 6054c88..c2bb2d0 100644
+--- a/src/snappy.c
++++ b/src/snappy.c
+@@ -179,6 +179,7 @@ main (int argc, char *argv[])
+ 
+   context = g_option_context_new ("<media file> - Play movie files");
+ 
++  clutter_set_windowing_backend (CLUTTER_WINDOWING_X11);
+   ci_err = gtk_clutter_init (&argc, &argv);
+   if (ci_err != CLUTTER_INIT_SUCCESS)
+     goto quit;
+-- 
+cgit v0.11.2
+

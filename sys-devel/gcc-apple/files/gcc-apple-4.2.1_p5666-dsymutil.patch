@@ -1,0 +1,20 @@
+Revert of dsymutil part of
+http://gcc.gnu.org/ml/gcc-patches/2006-09/msg00057.html
+See http://article.gmane.org/gmane.linux.gentoo.alt/4327
+
+--- gcc/config/darwin.hdsymutil	2015-01-21 22:22:52.000000000 +0100
++++ gcc/config/darwin.h	2015-01-21 22:42:24.000000000 +0100
+@@ -337,12 +337,7 @@
+     %{fnested-functions: -allow_stack_execute} \
+ "/* APPLE LOCAL prefer -lSystem 6645902 */"\
+     %{!nostdlib:%{!nodefaultlibs:%(link_ssp) %(link_gcc_c_sequence)}} \
+-"/* APPLE LOCAL begin mainline 4.3 2006-10-31 4370146 */"\
+-    %{!A:%{!nostdlib:%{!nostartfiles:%E}}} %{T*} %{F*} }}}}}}}}\n\
+-%{!fdump=*:%{!fsyntax-only:%{!c:%{!M:%{!MM:%{!E:%{!S:\
+-"/* APPLE LOCAL end mainline 4.3 2006-10-31 4370146 */"\
+-    %{.c|.cc|.C|.cpp|.cp|.c++|.cxx|.CPP|.m|.mm: \
+-    %{g*:%{!gstabs*:%{!g0: dsymutil %{o*:%*}%{!o:a.out}}}}}}}}}}}}"
++    %{!A:%{!nostdlib:%{!nostartfiles:%E}}} %{T*} %{F*} }}}}}}}}"
+ /* APPLE LOCAL end mainline */
+ 
+ #ifdef TARGET_SYSTEM_ROOT

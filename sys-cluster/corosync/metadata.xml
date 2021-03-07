@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>robbat2@gentoo.org</email>
+		<name>Robin Johnson</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>cluster@gentoo.org</email>
+		<name>Gentoo Cluster Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">corosync/corosync</remote-id>
+	</upstream>
+	<use>
+		<flag name="augeas">Enable augeas support</flag>
+		<flag name="watchdog">Enable watchdog support</flag>
+	</use>
+</pkgmetadata>

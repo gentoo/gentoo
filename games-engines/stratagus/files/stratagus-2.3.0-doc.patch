@@ -1,0 +1,11 @@
+--- stratagus_2.2.7.orig/CMakeLists.txt
++++ stratagus_2.2.7.orig/CMakeLists.txt
+@@ -1050,7 +1050,7 @@
+ 		doc/media.html
+ 		doc/metaserver_protocol.txt
+ 		doc/README-SDL.txt
+-		DESTINATION share/doc/stratagus
++		DESTINATION ${DOCDIR}
+ 	)
+ 	install(DIRECTORY doc/graphics doc/scripts ${CMAKE_CURRENT_BINARY_DIR}/doxygen DESTINATION ${DOCDIR})
+ endif(ENABLE_DOC AND DOXYGEN_FOUND)

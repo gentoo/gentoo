@@ -1,0 +1,81 @@
+ corelib/ncbilcl.beos | 2 +-
+ corelib/ncbilcl.hlx  | 2 +-
+ corelib/ncbilcl.lnx  | 4 ++--
+ corelib/ncbilcl.plx  | 2 +-
+ corelib/ncbilcl.qnx  | 2 +-
+ 5 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/corelib/ncbilcl.beos b/corelib/ncbilcl.beos
+index f720567..fe6346f 100644
+--- a/corelib/ncbilcl.beos
++++ b/corelib/ncbilcl.beos
+@@ -77,7 +77,7 @@
+ #endif
+ 
+ /* good for the EGCS C/C++ compiler on Linux(e.g. putenv(), tempnam() proto) */
+-#define _SVID_SOURCE 1
++#define _DEFAULT_SOURCE 1
+ 
+ 
+ /*----------------------------------------------------------------------*/
+diff --git a/corelib/ncbilcl.hlx b/corelib/ncbilcl.hlx
+index 1492f93..0e98fb6 100644
+--- a/corelib/ncbilcl.hlx
++++ b/corelib/ncbilcl.hlx
+@@ -67,7 +67,7 @@
+ #endif
+ 
+ /* good for the EGCS C/C++ compiler on Linux(e.g. putenv(), tempnam() proto) */
+-/*#define _SVID_SOURCE 1 */
++/*#define _DEFAULT_SOURCE 1 */
+ 
+ 
+ /*----------------------------------------------------------------------*/
+diff --git a/corelib/ncbilcl.lnx b/corelib/ncbilcl.lnx
+index 46e2978..b3256b3 100644
+--- a/corelib/ncbilcl.lnx
++++ b/corelib/ncbilcl.lnx
+@@ -65,7 +65,7 @@
+ * fixes for new RedHat6.2
+ *
+ * Revision 6.3  2000/02/10 16:36:32  vakatov
+-* Added _SVID_SOURCE
++* Added _DEFAULT_SOURCE
+ *
+ * Revision 6.2  1999/07/12 05:50:49  vakatov
+ * Avoid redefinition of #_REENTRANT
+@@ -141,7 +141,7 @@
+ #endif
+ 
+ /* good for the EGCS C/C++ compiler on Linux(e.g. putenv(), tempnam() proto) */
+-#define _SVID_SOURCE 1
++#define _DEFAULT_SOURCE 1
+ #define _GNU_SOURCE 1
+ 
+ /*----------------------------------------------------------------------*/
+diff --git a/corelib/ncbilcl.plx b/corelib/ncbilcl.plx
+index bf5824c..f2b53e1 100644
+--- a/corelib/ncbilcl.plx
++++ b/corelib/ncbilcl.plx
+@@ -68,7 +68,7 @@
+ #endif
+ 
+ /* good for the EGCS C/C++ compiler on Linux(e.g. putenv(), tempnam() proto) */
+-/*#define _SVID_SOURCE 1 */
++/*#define _DEFAULT_SOURCE 1 */
+ 
+ 
+ /*----------------------------------------------------------------------*/
+diff --git a/corelib/ncbilcl.qnx b/corelib/ncbilcl.qnx
+index c3d1f0a..4b27bd1 100644
+--- a/corelib/ncbilcl.qnx
++++ b/corelib/ncbilcl.qnx
+@@ -72,7 +72,7 @@
+ #endif
+ 
+ /* good for the EGCS C/C++ compiler on Linux(e.g. putenv(), tempnam() proto) */
+-#define _SVID_SOURCE 1
++#define _DEFAULT_SOURCE 1
+ 
+ 
+ 

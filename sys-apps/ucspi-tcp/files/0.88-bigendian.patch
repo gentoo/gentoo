@@ -1,0 +1,18 @@
+https://bugs.gentoo.org/18892
+
+patch by Michael Hanselmann <hansmi@gentoo.org>
+
+--- a/tcpserver.c
++++ b/tcpserver.c
+@@ -422,7 +422,11 @@
+     se = getservbyname(x,"tcp");
+     if (!se)
+       strerr_die3x(111,FATAL,"unable to figure out port number for ",x);
++#if __BYTE_ORDER == __BIG_ENDIAN || BYTE_ORDER == BIG_ENDIAN
++    localport = ntohs(se->s_port);
++#else
+     uint16_unpack_big((char*)&se->s_port,&localport);
++#endif
+   }
+ 
+   if (!*argv) usage();

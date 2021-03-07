@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+		Burp is a network backup and restore program. It uses librsync in order
+		to save network traffic and to save on the amount of space that is used
+		by each backup. It also uses VSS (Volume Shadow Copy Service) to make
+		snapshots when backing up Windows computers.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">grke/burp</remote-id>
+		<remote-id type="sourceforge">burp</remote-id>
+	</upstream>
+</pkgmetadata>

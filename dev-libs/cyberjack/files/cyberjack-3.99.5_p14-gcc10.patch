@@ -1,0 +1,13 @@
+Fixes compilation with GCC10.
+
+--- a/ifd/ifd.cpp
++++ b/ifd/ifd.cpp
+@@ -958,7 +958,7 @@
+   else
+     l_atrLength=0;
+   rj=r->IfdPower(mode, Atr, &l_atrLength);
+-  switch (rj) {
++  switch (static_cast<NTSTATUS>(rj)) {
+   case STATUS_SUCCESS:
+     DEBUGLUN(Lun, DEBUG_MASK_IFD, "Success (ATR: %d bytes)\n", (int)l_atrLength);
+     rc=IFD_SUCCESS;

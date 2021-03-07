@@ -1,0 +1,26 @@
+diff --git a/Makefile b/Makefile
+index 53e5c5b..a2d3feb 100644
+--- a/Makefile
++++ b/Makefile
+@@ -109,17 +109,17 @@ MPOBJ = mpviterbi.o mp-dbviterbi.o
+ all: 	$(PROGS) tRNAscan-SE setpaths
+ 
+ covels-SE:  $(OBJ) scan_main.o
+-	$(CC) $(CFLAGS) $(RFLAGS) -o covels-SE scan_main.o $(OBJ) $(LIBS)
++	$(CC) $(CFLAGS) $(RFLAGS) $(LDFLAGS) -o covels-SE scan_main.o $(OBJ) $(LIBS)
+ 
+ coves-SE: $(OBJ) score_main.o
+-	$(CC) $(CFLAGS) $(RFLAGS) -o coves-SE score_main.o $(OBJ) $(LIBS)
++	$(CC) $(CFLAGS) $(RFLAGS) $(LDFLAGS) -o coves-SE score_main.o $(OBJ) $(LIBS)
+ 
+ eufindtRNA: $(SQUIDOBJ) pavesi.o eufind_main.o
+-	$(CC) $(CFLAGS)  -o eufindtRNA eufind_main.o \
++	$(CC) $(CFLAGS)  $(LDFLAGS) -o eufindtRNA eufind_main.o \
+ 	pavesi.o $(SQUIDOBJ) $(LIBS)
+ 
+ trnascan-1.4: trnascan.o
+-	$(CC) $(CFLAGS) -DTSCANDIR=\"$(LIBDIR)\" -o trnascan-1.4 trnascan.c
++	$(CC) $(CFLAGS) -DTSCANDIR=\"$(LIBDIR)\" $(LDFLAGS) -o trnascan-1.4 trnascan.c
+ 
+ tRNAscan-SE:
+ 	$(PERLDIR)/$(PERLBIN) checkversion.pl

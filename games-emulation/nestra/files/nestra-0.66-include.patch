@@ -1,0 +1,73 @@
+--- a/comptbl.c
++++ b/comptbl.c
+@@ -9,6 +9,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <errno.h>
++#include <stdlib.h>
+ 
+ #define ALLOC_SIZE 0x400000 /* 4MB */
+ #define TBL_BASE ((unsigned char *)0x10000000)
+--- a/d6502.c
++++ b/d6502.c
+@@ -1,6 +1,7 @@
+ /* 6502 disassembler */
+ /* Public Domain */
+ 
++#include <stdio.h>
+ #include "globals.h"
+ 
+ char Opcodes_6502[256][4]={
+--- a/emu.c
++++ b/emu.c
+@@ -12,6 +12,7 @@
+ #include <sys/mman.h>
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ 
+ #include "mapper.h"
+ #include "io.h"
+--- a/fb.c
++++ b/fb.c
+@@ -2,6 +2,8 @@
+ /* Framebuffer/pixmap rendering */
+ /* Public Domain */
+ 
++#include <stdlib.h>
++#include <string.h>
+ #include <stdio.h>
+ #include "mapper.h"
+ #include "globals.h"
+--- a/io.c
++++ b/io.c
+@@ -5,6 +5,7 @@
+    to do I/O operations. */
+ 
+ #include <stdio.h>
++#include <string.h>
+ #include "mapper.h"
+ #include "io.h"
+ #include "globals.h"
+--- a/mapper.c
++++ b/mapper.c
+@@ -1,6 +1,7 @@
+ /* Nestra mapper.c */
+ /* Public Domain */
+ 
++#include <string.h>
+ #include "mapper.h"
+ #include "consts.h"
+ 
+--- a/x11.c
++++ b/x11.c
+@@ -1,6 +1,9 @@
+ /* Nestra x11.c */
+ /* Public Domain */
+ 
++#include <stdlib.h>
++#include <string.h>
++#include <stdio.h>
+ #include <X11/Xlib.h>
+ #include <X11/keysym.h>
+ #include <X11/Xutil.h>

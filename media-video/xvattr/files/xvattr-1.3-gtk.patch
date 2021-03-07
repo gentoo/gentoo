@@ -1,0 +1,44 @@
+diff -ur xvattr-1.3.orig/configure.in xvattr-1.3/configure.in
+--- xvattr-1.3.orig/configure.in	2002-06-13 22:40:33.000000000 +0300
++++ xvattr-1.3/configure.in	2007-09-04 14:02:56.000000000 +0300
+@@ -17,7 +17,14 @@
+ AC_PATH_XTRA
+ 
+ dnl check for gtk
+-AM_PATH_GTK
++AC_ARG_WITH(gtk,
++       [--without-gtk     Disable GTK support (default: enabled)])
++if test "x$with_gtk" != "xno"; then
++       PKG_CHECK_MODULES(GTK, gtk+-2.0)
++else
++       no_gtk="yes"
++fi
++AM_CONDITIONAL(WITH_GTK, [test "x$no_gtk" != "xyes"])
+ 
+ dnl Checks for libraries.
+ AC_ARG_WITH(xv-path,[  --with-xv-path=path    Where libXv is installed],
+diff -ur xvattr-1.3.orig/Makefile.am xvattr-1.3/Makefile.am
+--- xvattr-1.3.orig/Makefile.am	2002-06-13 22:22:00.000000000 +0300
++++ xvattr-1.3/Makefile.am	2007-09-04 13:58:14.000000000 +0300
+@@ -1,12 +1,19 @@
+ # 
+ 
+-bin_PROGRAMS = xvattr gxvattr
++if WITH_GTK
++gtk_programs = gxvattr
++endif
++
++bin_PROGRAMS = xvattr $(gtk_programs)
++
+ xvattr_SOURCES = xvattr.c
+ 
+ xvattr_LDADD = $(X_LIBS) $(X_PRE_LIBS) $(X_EXTRA_LIBS) -lX11 -lXext @LIBOBJS@
+ 
+ gxvattr_SOURCES = gxvattr.c
+-CFLAGS = @GTK_CFLAGS@
++
++gxvattr_CFLAGS = @GTK_CFLAGS@
++
+ gxvattr_LDADD = @GTK_LIBS@ $(X_LIBS) $(X_PRE_LIBS) $(X_EXTRA_LIBS) -lX11 -lXext
+ noinst_HEADERS = getopt.h
+ 

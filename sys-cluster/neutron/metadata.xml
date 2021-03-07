@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>prometheanfire@gentoo.org</email>
+    <name>Matthew Thode</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>openstack@gentoo.org</email>
+    <name>Openstack</name>
+  </maintainer>
+  <longdescription lang="en">
+    Just like OpenStack Nova provides an API to dynamically request and
+  configure virtual servers, Neutron provides an API to dynamically request
+  and configure virtual networks. These networks connect "interfaces" from
+  other OpenStack services (e.g., vNICs from Nova VMs). The Neutron API
+  supports extensions to provide advanced network capabilities
+  (e.g., QoS, ACLs, network monitoring, etc).
+  </longdescription>
+  <use>
+    <flag name="compute-only">Only install things needed on compute hosts</flag>
+    <flag name="dhcp">Installs the initscripts for the neutron dhcp service</flag>
+    <flag name="haproxy">haproxy backend support</flag>
+    <flag name="l3">Installs the initscripts for the neutron l3 agent service</flag>
+    <flag name="metadata">Installs the initscripts for the neutron metadata agent service</flag>
+    <flag name="openvswitch">Installs the initscripts for the neutron openvswitch agent service</flag>
+    <flag name="linuxbridge">Installs the initscripts for the neutron linuxbridge agent service</flag>
+    <flag name="server">Installs the initscripts for the neutron server service</flag>
+  </use>
+  <upstream>
+    <remote-id type="launchpad">neutron</remote-id>
+  </upstream>
+</pkgmetadata>

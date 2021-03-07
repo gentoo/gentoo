@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ppurka@gmail.com</email>
+		<name>Punarbasu 'ppurka' Purkayastha</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers Project</name>
+	</maintainer>
+	<upstream>
+		<maintainer status="active">
+			<email>jfd@recoll.org</email>
+			<name>Jean-Francois Dockes</name>
+		</maintainer>
+		<bugs-to>https://bitbucket.org/medoc/recoll/issues</bugs-to>
+	</upstream>
+	<use>
+		<flag name="camelcase">Enable indexing for camelCase sentences and words</flag>
+		<flag name="chm">Enable CHM file support via <pkg>dev-python/pychm</pkg></flag>
+		<flag name="inotify">Use the Linux Kernel notification subsystem for monitoring file alterations in realtime</flag>
+		<flag name="session">Stop monitoring file alterations when X11 session terminates</flag>
+		<flag name="webengine">Use <pkg>dev-qt/qtwebengine</pkg> for fancy result list display</flag>
+	</use>
+	<longdescription lang="en">
+		Recoll is a desktop full-text search tool. It can search most document
+		formats. You may need external applications for text extraction. It
+		can reach any storage place: files, archive members, email attachments,
+		transparently handling decompression.
+	</longdescription>
+</pkgmetadata>

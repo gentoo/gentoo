@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>radio@gentoo.org</email>
+		<name>Radio</name>
+	</maintainer>
+	<use>
+		<flag name="liquid">improve sound quality using <pkg>net-libs/liquid-dsp</pkg></flag>
+		<flag name="wav">wav file support using <pkg>media-libs/libsndfile</pkg></flag>
+	</use>
+</pkgmetadata>

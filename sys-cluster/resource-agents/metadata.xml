@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>cluster@gentoo.org</email>
+		<name>Gentoo Cluster Project</name>
+	</maintainer>
+	<longdescription>
+		Resource agents are a standardized interfaces for a cluster resource. 
+		They translate a standard set of operations into steps specific to 
+		the resource or application, and interpret their results as success or
+		failure. Previously, they were a part of the then-monolithic Heartbeat 
+		project, and had no collective name.
+	</longdescription>
+	<use>
+		<flag name="libnet">Force use of <pkg>net-libs/libnet</pkg></flag>
+		<flag name="rgmanager">Install resources for rgmanager</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">ClusterLabs/resource-agents</remote-id>
+	</upstream>
+</pkgmetadata>

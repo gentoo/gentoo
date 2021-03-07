@@ -1,0 +1,11 @@
+// Let users in plugdev group modify network connections using blueman
+polkit.addRule(function(action, subject) {
+    if ((action.id == "org.blueman.network.setup" ||
+         action.id == "org.blueman.dhcp.client" ||
+         action.id == "org.blueman.rfkill.setstate" ||
+         action.id == "org.blueman.pppd.pppconnect") &&
+        subject.isInGroup("plugdev") && subject.active) {
+
+        return polkit.Result.YES;
+    }
+});

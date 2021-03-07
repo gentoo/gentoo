@@ -1,0 +1,136 @@
+#!/sbin/openrc-run
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	before net
+	provide firewall
+}
+
+start() {
+	ebegin "Starting ufw"
+	_source_file || { eend $?; return $?; }
+
+	local enabled_in_cfg ret
+	_check_if_enabled_in_cfg
+	enabled_in_cfg=$?
+
+	# Avoid "Firewall already started, use 'force-reload'" message that
+	# appears if `ufw enable' had been run before start().
+	if _status_quiet; then
+		eend 0
+		return
+	fi
+
+	# The ufw_start function does the same: if ufw is disabled using `ufw disable',
+	# ufw_start would not start ufw and return 0, so let's handle this case.
+	case $enabled_in_cfg in
+	0)
+		ufw_start
+		ret=$?
+		eend $ret "Failed to start ufw."
+		;;
+	1)
+		# see /etc/conf.d/<name>
+		if [ "${ufw_nonfatal_if_disabled:-no}" != "yes" ]; then
+			ret=1
+			eend $ret "Not starting firewall (not enabled), use \"ufw enable\" first."
+		else
+			ret=0
+			eend 0
+		fi
+		;;
+	2)
+		ret=1
+		eend $ret "Failed to start ufw."
+		;;
+	esac
+
+	return $ret
+}
+
+stop() {
+	ebegin "Stopping ufw"
+	_source_file || { eend $?; return $?; }
+	local enabled_in_cfg ret
+	_check_if_enabled_in_cfg
+	enabled_in_cfg=$?
+
+	# Same as above (unless --force is passed to ufw_stop).
+	case $enabled_in_cfg in
+	0)
+		ufw_stop
+		ret=$?
+		;;
+	1)
+		einfo "INFO: ufw is configured to be disabled"
+		ufw_stop --force
+		ret=$?
+		;;
+	2)
+		ret=1
+		;;
+	esac
+
+	eend $ret "Failed to stop ufw."
+	return $ret
+}
+
+_status_quiet() {
+	# return values: 0 - started, 1 - stopped, 2 - error
+	# Does not execute _source_file.
+	local ret
+	ufw_status > /dev/null
+	ret=$?
+	# Return values for ufw_status come from /usr/share/ufw/ufw-init-functions.
+	case $ret in
+	0) return 0 ;;
+	3) return 1 ;;
+	*) return 2 ;;
+	esac
+}
+
+_source_file() {
+	local sourced_f="/usr/share/ufw/ufw-init-functions"
+	if [ ! -f "$sourced_f" ]; then
+		eerror "Cannot find file $sourced_f!"
+		return 1
+	fi
+
+	local _path=$PATH
+	if ! . "$sourced_f"; then
+		# PATH can be broken here, fix it...
+		PATH=$_path
+		eerror "Error sourcing file $sourced_f"
+		return 1
+	fi
+
+	if [ -z "$PATH" ]; then
+		PATH=$_path
+	else
+		PATH="${PATH}:${_path}"
+	fi
+	return 0
+}
+
+_check_if_enabled_in_cfg() {
+	# Check if user has enabled the firewall with "ufw enable".
+	# Return 0 if firewall enabled in configuration file, 1 otherwise, 2 on error.
+
+	local sourced_f="/etc/ufw/ufw.conf"
+	if [ ! -f "$sourced_f" ]; then
+		eerror "Cannot find file $sourced_f!"
+		return 2
+	fi
+
+	if ! . "$sourced_f"; then
+		eerror "Error sourcing file $sourced_f"
+		return 2
+	fi
+
+	if [ "$ENABLED" = "yes" ] || [ "$ENABLED" = "YES" ]; then
+		return 0
+	else
+		return 1
+	fi
+}

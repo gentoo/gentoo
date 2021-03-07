@@ -1,0 +1,20 @@
+diff --git a/Distribution/Client/IndexUtils.hs b/Distribution/Client/IndexUtils.hs
+index 48d8d49..3a38ee1 100644
+--- a/Distribution/Client/IndexUtils.hs
++++ b/Distribution/Client/IndexUtils.hs
+@@ -312,10 +312,15 @@ extractPkg entry = case Tar.entryContent entry of
+ 
+ extractPrefs :: Tar.Entry -> Maybe [Dependency]
+ extractPrefs entry = case Tar.entryContent entry of
++{-
++ -- get rid of hackage's preferred-versions
++ -- I'd like to have bleeding-edge packages in system and I don't fear of
++ -- broken packages with improper depends
+   Tar.NormalFile content _
+      | takeFileName (Tar.entryPath entry) == "preferred-versions"
+     -> Just . parsePreferredVersions
+      . BS.Char8.unpack $ content
++-}
+   _ -> Nothing
+ 
+ parsePreferredVersions :: String -> [Dependency]

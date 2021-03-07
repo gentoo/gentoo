@@ -1,0 +1,102 @@
+--- a/sc.c
++++ b/sc.c
+@@ -520,7 +520,7 @@
+ 		    break;
+ 	    }
+ 	}
+-	if (redraw) printf(redraw);
++	if (redraw) printf("%s", redraw);
+ 	exit (0);
+     }
+ 
+--- a/gram.y
++++ b/gram.y
+@@ -1010,7 +1010,7 @@
+ 	|	S_PLUGOUT STRING '=' STRING
+ 					{ addplugin($2, $4, 'w'); } 
+ 	|       PLUGIN			{ *line = '|';
+-					  sprintf(line + 1, $1);
++					  sprintf(line + 1, "%s", $1);
+ 					  readfile(line, 0);
+ 					  scxfree($1); }
+ 	|	/* nothing */
+--- a/vmtbl.c
++++ b/vmtbl.c
+@@ -61,10 +61,10 @@
+     oldptr = newptr /* wait incase we can't alloc */
+ 
+ #ifndef PSC
+-static char	nolonger[] = "The table can't be any longer";
++#define NOLONGER "The table can't be any longer"
+ #endif /* !PSC */
+ 
+-static char	nowider[] = "The table can't be any wider";
++#define NOWIDER "The table can't be any wider"
+ 
+ /*
+  * grow the main && auxiliary tables (reset maxrows/maxcols as needed)
+@@ -117,7 +117,7 @@
+     if ((rowcol == GROWCOL) || (rowcol == GROWBOTH)) {
+ 	if ((rowcol == GROWCOL) && ((maxcols == ABSMAXCOLS) ||
+ 		(topcol >= ABSMAXCOLS))) {
+-	    error(nowider);
++	    error(NOWIDER);
+ 	    return (FALSE);
+ 	}
+ 
+@@ -135,14 +135,14 @@
+ 	struct	ent *** lnullit;
+ 	int	lcnt;
+ 
+-	GROWALLOC(row_hidden2, row_hidden, newrows, char, nolonger);
++	GROWALLOC(row_hidden2, row_hidden, newrows, char, NOLONGER);
+ 	memset(row_hidden+maxrows, 0, (newrows-maxrows)*sizeof(char));
+ 
+ 	/*
+ 	 * alloc tbl row pointers, per net.lang.c, calloc does not
+ 	 * necessarily fill in NULL pointers
+ 	 */
+-	GROWALLOC(tbl2, tbl, newrows, struct ent **, nolonger);
++	GROWALLOC(tbl2, tbl, newrows, struct ent **, NOLONGER);
+ 	for (lnullit = tbl+maxrows, lcnt = 0; lcnt < newrows-maxrows;
+ 		lcnt++, lnullit++)
+ 	    *lnullit = (struct ent **)NULL;
+@@ -151,16 +151,16 @@
+ #endif /* !PSC */
+ 
+     if ((rowcol == GROWCOL) || (rowcol == GROWBOTH) || (rowcol == GROWNEW)) {
+-	GROWALLOC(fwidth2, fwidth, newcols, int, nowider);
+-	GROWALLOC(precision2, precision, newcols, int, nowider);
+-	GROWALLOC(realfmt2, realfmt, newcols, int, nowider);
++	GROWALLOC(fwidth2, fwidth, newcols, int, NOWIDER);
++	GROWALLOC(precision2, precision, newcols, int, NOWIDER);
++	GROWALLOC(realfmt2, realfmt, newcols, int, NOWIDER);
+ #ifdef PSC
+ 	memset(fwidth+maxcols, 0, (newcols-maxcols)*sizeof(int));
+ 	memset(precision+maxcols, 0, (newcols-maxcols)*sizeof(int));
+ 	memset(realfmt+maxcols, 0, (newcols-maxcols)*sizeof(int));
+     }
+ #else
+-	GROWALLOC(col_hidden2, col_hidden, newcols, char, nowider);
++	GROWALLOC(col_hidden2, col_hidden, newcols, char, NOWIDER);
+ 	memset(col_hidden+maxcols, 0, (newcols-maxcols)*sizeof(char));
+ 	for (i = maxcols; i < newcols; i++) {
+ 	    fwidth[i] = DEFWIDTH;
+@@ -172,7 +172,7 @@
+ 	for (i = 0; i < maxrows; i++) {
+ 	    if ((tbl[i] = (struct ent **)scxrealloc((char *)tbl[i],
+ 		(unsigned)(newcols * sizeof(struct ent **)))) == (struct ent **)0) {
+-	    error(nowider);
++	    error(NOWIDER);
+ 	    return(FALSE);
+ 	    }
+ 	for (nullit = ATBL(tbl, i, maxcols), cnt = 0;
+@@ -190,7 +190,7 @@
+     for (; i < newrows; i++) {
+ 	if ((tbl[i] = (struct ent **)scxmalloc((unsigned)(newcols *
+ 		sizeof(struct ent **)))) == (struct ent **)0) {
+-	    error(nowider);
++	    error(NOWIDER);
+ 	    return(FALSE);
+ 	}
+ 	for (nullit = tbl[i], cnt = 0; cnt < newcols; cnt++, nullit++)

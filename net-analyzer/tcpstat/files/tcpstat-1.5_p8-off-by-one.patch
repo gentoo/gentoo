@@ -1,0 +1,50 @@
+--- a/src/catpcap.c
++++ b/src/catpcap.c
+@@ -156,10 +156,10 @@
+ 				return Usage(1, argv[0]);
+ 				break;
+ 			case 'f':
+-				strncpy(filterexpr, optarg, BUF_SIZ);
++				strncpy(filterexpr, optarg, BUF_SIZ - 1);
+ 				break;
+ 			case 'r':
+-				strncpy(filename, optarg, BUF_SIZ);
++				strncpy(filename, optarg, BUF_SIZ - 1);
+ 				break;
+ 			default:
+ 				return Usage(1, argv[0]);
+--- a/src/dump.c
++++ b/src/dump.c
+@@ -109,10 +109,10 @@
+ 				get_tcp_flags |= GET_TCPD_COUNT_LINKSIZE;
+ 				break;
+ 			case 'f':
+-				strncpy(filterexpr, optarg, BUF_SIZ);
++				strncpy(filterexpr, optarg, BUF_SIZ - 1);
+ 				break;
+ 			case 'r':
+-				strncpy(filename, optarg, BUF_SIZ);
++				strncpy(filename, optarg, BUF_SIZ - 1);
+ 				break;
+ 			case 's':
+ 				what_to_show |= parse_show_types(optarg);
+--- a/src/tcpprof.c
++++ b/src/tcpprof.c
+@@ -126,14 +126,14 @@
+ 				src_dest_split = 1;
+ 				break;
+ 			case 'f':
+-				strncpy(filterexpr, optarg, BUF_SIZ);
++				strncpy(filterexpr, optarg, BUF_SIZ - 1);
+ 				break;
+ 			case 'i':
+-				strncpy(filename, optarg, BUF_SIZ);
++				strncpy(filename, optarg, BUF_SIZ - 1);
+ 				flags |= GET_TCPD_DO_LIVE;
+ 				break;
+ 			case 'r':
+-				strncpy(filename, optarg, BUF_SIZ);
++				strncpy(filename, optarg, BUF_SIZ - 1);
+ 				flags &= ~GET_TCPD_DO_LIVE;
+ 				break;
+ 			case 'n':

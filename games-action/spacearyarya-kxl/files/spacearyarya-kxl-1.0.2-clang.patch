@@ -1,0 +1,11 @@
+--- a/src/ranking.c.bak	2016-07-27 16:42:34.367945713 -0500
++++ b/src/ranking.c	2016-07-27 16:43:34.679949783 -0500
+@@ -5,7 +5,7 @@
+ /**********************
+   スコアランキング
+  **********************/
+-int ScoreRanking(void)
++void ScoreRanking(void)
+ {
+   Uint16 i, j, k;
+   struct passwd *pw;

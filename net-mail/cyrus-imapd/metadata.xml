@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <!-- maintainer-needed -->
+  <use>
+    <flag name="replication">Enable replication support</flag>
+    <flag name="sieve">Enable sieve support</flag>
+    <flag name="http">Enable http and http/2 support</flag>
+    <flag name="server">Enable building server binaries</flag>
+    <flag name="backup">Enable backup service support</flag>
+    <flag name="calalarm">Enable CalDAV alarm support</flag>
+    <flag name="xapian">Enable Xapian search engine support</flag>
+    <flag name="lmdb">Enable support for using <pkg>dev-db/lmdb</pkg></flag>
+  </use>
+</pkgmetadata>

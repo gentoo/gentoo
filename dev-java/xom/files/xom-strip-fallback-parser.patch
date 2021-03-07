@@ -1,0 +1,18 @@
+Author: Ralph Sennhauser <sera@gentoo.org>
+
+Don't build and install fallback parser relying on internel classes of
+SUNs/Oracles JVM >= 1.5. This allows building xom using ibm-jdk-bin. #399119
+
+--- /tmp/build.xml
++++ /tmp/build.xml
+@@ -235,10 +235,6 @@
+   	<echo file="${build.dest}/nu/xom/version.txt">${version}</echo>
+ 
+     <copy file="${build.src}/nu/xom/compositions.dat" tofile="${build.dest}/nu/xom/compositions.dat" />
+-
+-    <!-- This file requires Java 1.5 to generate so we compile it with a 
+-         different target and copy it over here. -->
+-    <copy file="classes15/nu/xom/JDK15XML1_0Parser.class" tofile="${build.dest}/nu/xom/JDK15XML1_0Parser.class"/>
+   </target>
+ 
+ 

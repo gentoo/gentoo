@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<use>
+		<flag name="physfs">Enable support for various formats through <pkg>dev-games/physfs</pkg>.</flag>
+	</use>
+	<upstream>
+		<bugs-to>mailto:sdlsound@icculus.org</bugs-to>
+	</upstream>
+</pkgmetadata>

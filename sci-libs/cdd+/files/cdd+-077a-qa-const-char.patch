@@ -1,0 +1,47 @@
+Silence warnings produced by passing a string literal to a 'char*':
+
+cddio.C: In function ‘void SetWriteFileName(char*, char, char*)’:
+cddio.C:103:20: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+           extension=".ine"; break;     /* output file for ine data */
+
+--- cdd+-077a/cdd.h
++++ cdd+-077a/cdd.h
+@@ -185,8 +185,8 @@
+ extern int output_digits;  /* Float digits for output.  Does not affect the computation. */
+ 
+ void SetInputFile(boolean *);
+-void SetWriteFileName(DataFileType, char, char *);
+-void SetReadFileName(DataFileType, char, char *);
++void SetWriteFileName(DataFileType, char, const char *);
++void SetReadFileName(DataFileType, char, const char *);
+ 
+ myTYPE FABS(myTYPE);
+ void SetNumberType(string);
+--- cdd+-077a/cddio.C
++++ cdd+-077a/cddio.C
+@@ -90,10 +90,10 @@
+   }
+ }
+ 
+-void SetWriteFileName(DataFileType fname, char cflag, char *fscript)
++void SetWriteFileName(DataFileType fname, char cflag, const char *fscript)
+ {
+   boolean quit=False;
+-  char *extension;
++  const char *extension;
+   DataFileType newname;
+   
+   switch (cflag) {
+@@ -192,10 +192,10 @@
+   if (DynamicWriteOn) printf("Open %s file %s.\n",fscript,fname);
+ }
+ 
+-void SetReadFileName(DataFileType fname, char cflag, char *fscript)
++void SetReadFileName(DataFileType fname, char cflag, const char *fscript)
+ {
+   boolean quit=False;
+-  char *extension;
++  const char *extension;
+   DataFileType newname;
+   
+   switch (cflag) {

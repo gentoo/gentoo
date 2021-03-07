@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <!-- maintainer-needed -->
+  <longdescription>
+  Tux Paint is a free drawing program designed for young children
+  (kids ages 3 and up). It has a simple, easy-to-use interface, fun
+  sound effects, and an encouraging cartoon mascot who helps guide
+  children as they use the program. It provides a blank canvas and a
+  variety of drawing tools to help your child be creative.
+</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">tuxpaint</remote-id>
+  </upstream>
+</pkgmetadata>

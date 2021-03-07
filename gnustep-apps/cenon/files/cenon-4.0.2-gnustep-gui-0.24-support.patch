@@ -1,0 +1,231 @@
+Description: Various fixes for gnustep-base/1.24 and gnustep-gui/0.24.
+ - Proper intialization.
+ - Use correct return types for methods and compare functions.
+ - Likewise for method arguments.
+ - Avoid conflicting methods by declaring the ivars of a specific type.
+ - Add mising argument to private method declaration.
+Author: Yavor Doganov <yavor@gnu.org>
+Bug-Debian: http://bugs.debian.org/749553
+Forwarded: yes
+Last-Update: 2014-06-25
+---
+
+--- cenon.app.orig/GraphicObjects.subproj/VCurveFit.m
++++ cenon.app/GraphicObjects.subproj/VCurveFit.m
+@@ -87,7 +87,7 @@
+ /* turn lines into optimized curves
+  */
+ - (VPath*)fitGraphic:(VGraphic*)g maxError:(double)maxError
+-{   Point2  *pts = nil;
++{   Point2  *pts = NULL;
+     int     i, nPts = 0;
+     VPath   *path = nil;
+ 
+--- cenon.app.orig/GraphicObjects.subproj/VGroup.h
++++ cenon.app/GraphicObjects.subproj/VGroup.h
+@@ -67,7 +67,7 @@
+ - (float)stepWidth;
+ - (void)setRadialCenter:(NSPoint)rc;
+ - (NSPoint)radialCenter;
+-- (void)setList:(NSArray*)aList;
++- (void)setList:(NSMutableArray*)aList;
+ - (void)addObject:(VGraphic*)g;
+ - (void)add:(NSArray*)addList;
+ - (NSMutableArray*)list;
+--- cenon.app.orig/InspectorPanel.subproj/IPAllAcc.h
++++ cenon.app/InspectorPanel.subproj/IPAllAcc.h
+@@ -40,7 +40,7 @@
+ 
+ @interface IPAllAcc:IPBasicLevel
+ {
+-    id  accPopup;           // the popup to allow the user to select the different accessories
++    NSPopUpButton *accPopup; // the popup to allow the user to select the different accessories
+     id  accView;            // the view containing the accessory view
+ 
+     int levelCnt;           // number of accessories
+--- cenon.app.orig/InspectorPanel.subproj/IPAllFilling.h
++++ cenon.app/InspectorPanel.subproj/IPAllFilling.h
+@@ -39,7 +39,7 @@
+     id stepForm;
+     id colorWell;
+     id colorWellGraduated;
+-    id fillPopup;
++    NSPopUpButton *fillPopup;
+     id sliderBox;
+     id radialCenterText;
+     id angleButtonLeft;
+--- cenon.app.orig/InspectorPanel.subproj/IPAllStrokeWidth.h
++++ cenon.app/InspectorPanel.subproj/IPAllStrokeWidth.h
+@@ -35,7 +35,7 @@
+ @interface IPAllStrokeWidth:IPBasicLevel
+ {
+     int		stroked;
+-    id 		strokePopup;
++    NSPopUpButton	*strokePopup;
+     id 		colorWell;
+     id 		widthField;
+     id 		widthSlider;
+--- cenon.app.orig/LayerObject.h
++++ cenon.app/LayerObject.h
+@@ -144,8 +144,8 @@
+ - (void)setString:(NSString *)aString;
+ - (NSString*)string;
+ 
+-- (void)setTag:(int)newTag;
+-- (int)tag;
++- (void)setTag:(NSInteger)newTag;
++- (NSInteger)tag;
+ 
+ - (void)setColor:(NSColor *)aColor;
+ - (NSColor *)color;
+--- cenon.app.orig/LayerObject.m
++++ cenon.app/LayerObject.m
+@@ -227,8 +227,8 @@
+ - (void)setString:(NSString *)aString   { [string release]; string = [aString retain]; }
+ - (NSString *)string                    { return string; }
+ 
+-- (void)setTag:(int)newTag              { tag = newTag; }
+-- (int)tag                              { return tag; }
++- (void)setTag:(NSInteger)newTag        { tag = newTag; }
++- (NSInteger)tag                        { return tag; }
+ 
+ - (void)setColor:(NSColor *)aColor      { color=aColor; }
+ - (NSColor *)color                      { return color; }
+--- cenon.app.orig/GraphicObjects.subproj/VPath.h
++++ cenon.app/GraphicObjects.subproj/VPath.h
+@@ -58,7 +58,7 @@
+ - (NSMutableArray*)list;
+ - (void)setList:aList;
+ - (void)setList:aList optimize:(BOOL)optimize;
+-- (unsigned)count;
++- (NSUInteger)count;
+ - (unsigned)countRecursive;
+ - (void)getEndPoints:(NSPoint*)p1 :(NSPoint*)p2;
+ - (int)selectedKnobIndex;
+--- cenon.app.orig/GraphicObjects.subproj/VPath.m
++++ cenon.app/GraphicObjects.subproj/VPath.m
+@@ -399,7 +399,7 @@
+     *p2 = [[list objectAtIndex:[list count]-1] pointWithNum:MAXINT]; 
+ }
+ 
+-- (unsigned)count
++- (NSUInteger)count
+ {
+     return [list count];
+ }
+--- cenon.app.orig/InspectorPanel.subproj/IPImage.h
++++ cenon.app/InspectorPanel.subproj/IPImage.h
+@@ -43,7 +43,7 @@
+     id	thumbSwitch;
+     id	nameField;
+     id	factorField;
+-    id	compPopUp;
++    NSPopUpButton *compPopUp;
+ 
+     VGraphic	*graphic;	// the loaded graphic or the first of them if multiple
+ }
+--- cenon.app.orig/DINImportSub.m
++++ cenon.app/DINImportSub.m
+@@ -46,7 +46,7 @@
+ /* created: 2001-06-06
+  * performcance map is not used, because we set this later when the layers are added to the view!
+  */
+-static NSInteger sortLayer(id l1, id l2, void *context)
++static NSComparisonResult sortLayer(id l1, id l2, void *context)
+ {   float       d1 = 0.0, d2 = 0.0;
+     VGraphic    *g0 = [[l1 list] objectAtIndex:0], *g1 = [[l2 list] objectAtIndex:0];
+ 
+--- cenon.app.orig/DocView.m
++++ cenon.app/DocView.m
+@@ -994,7 +994,7 @@
+ #define SORT_COL_LRUL 5
+ #define SORT_ROW_URLL 6
+ #define SORT_ROW_LRUL 7
+-NSInteger sortPosition(id g1, id g2, void *context)
++NSComparisonResult sortPosition(id g1, id g2, void *context)
+ {   NSPoint	p1 = [g1 bounds].origin, p2 = [g2 bounds].origin;
+     int		sort = *(int*)context;
+ 
+--- cenon.app.orig/SVGImportSub.m
++++ cenon.app/SVGImportSub.m
+@@ -112,7 +112,7 @@
+ /* allocate a group object
+  * copy the objects in aList to the group, add the group to bList
+  */
+-- (void)addGroupList:(NSArray*)aList toList:bList
++- (void)addGroupList:(NSMutableArray*)aList toList:bList
+ {   VGroup          *g = [VGroup group];
+     int             i;
+     NSMutableArray  *mutArray = [NSMutableArray array];
+@@ -136,7 +136,7 @@
+     [bList addObject:g];
+ }
+ 
+-- (void)addGroupList:(NSArray*)aList toList:bList withTransform:(NSAffineTransform*)matrix
++- (void)addGroupList:(NSMutableArray*)aList toList:bList withTransform:(NSAffineTransform*)matrix
+ {   VGroup          *g = [VGroup group];
+     int             i;
+     NSMutableArray  *mutArray = [NSMutableArray array];
+--- cenon.app.orig/MoveCell.h
++++ cenon.app/MoveCell.h
+@@ -32,7 +32,7 @@
+ 
+ @interface MoveCell:NSCell
+ {
+-    int		tag;
++    NSInteger		tag;
+     MoveMatrix 	*moveMatrix;
+ 
+     float	ascender, descender, lineHeight;
+@@ -41,8 +41,8 @@
+ - (void)setMatrix:(MoveMatrix *)anMatrix;
+ - (void)setFont:(NSFont *)fontObj;
+ 
+-- (void)setTag:(int)anInt;
+-- (int)tag;
++- (void)setTag:(NSInteger)anInt;
++- (NSInteger)tag;
+ 
+ - (BOOL)dependant;
+ 
+--- cenon.app.orig/MoveCell.m
++++ cenon.app/MoveCell.m
+@@ -39,14 +39,14 @@
+ 
+ /* modified: 13.01.93
+  */
+-- (void)setTag:(int)anInt
++- (void)setTag:(NSInteger)anInt
+ {
+     tag=anInt;
+ }
+ 
+ /* modified: 13.01.93
+  */
+-- (int)tag
++- (NSInteger)tag
+ {
+     return tag;
+ }
+--- cenon.app.orig/VHFImport/DXFImport.m
++++ cenon.app/VHFImport/DXFImport.m
+@@ -86,7 +86,7 @@
+ - (BOOL)getSolid:(NSScanner*)scanner :(NSPoint*)ps :(int*)pCnt;
+ - (BOOL)getCircle:(NSScanner*)scanner :(NSPoint*)ctr :(NSPoint*)start :(float*)angle;
+ - (BOOL)getArc:(NSScanner*)scanner :(NSPoint*)ctr :(NSPoint*)start :(float*)angle;
+-- (BOOL)getText :(NSScanner*)scanner mtext:(BOOL)mext :(NSString**)string :(float*)angle :(NSPoint*)origin :(float*)size :(float*)ar :(int*)alignment;
++- (BOOL)getText :(NSScanner*)scanner mtext:(BOOL)mext :(NSString**)string :(float*)angle :(NSPoint*)origin :(float*)size :(float*)ar :(int*)alignment :(NSString**)fontName;
+ - (BOOL)get3DFace:(NSScanner*)scanner points:(V3Point*)pts color:(NSColor**)color;
+ - (BOOL)getInsert:(NSScanner*)scanner :cList;
+ - (void)updateBounds:(NSPoint)p;
+--- cenon.app.orig/TileScrollView.h
++++ cenon.app/TileScrollView.h
+@@ -36,7 +36,7 @@
+ @interface TileScrollView:NSScrollView
+ {
+     id		box;
+-    id		resPopupListButton;
++    NSPopUpButton *resPopupListButton;
+     id		document;
+     VFloat	oldScaleFactor;
+ }

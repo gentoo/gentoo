@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  A Class Library for Numbers is a library for computations with all
+  kinds of numbers in arbitrary precision. It has a set of number
+  classes, including integers (with unlimited precision), reals with
+  various precisions (including unlimited), rationals, complex numbers
+  and polynomials. The kernel is written in assembly language. It uses
+  automatic garbage collection.
+</longdescription>
+</pkgmetadata>

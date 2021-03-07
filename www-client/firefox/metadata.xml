@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>mozilla@gentoo.org</email>
+	<name>Gentoo Mozilla Team</name>
+</maintainer>
+<use>
+	<flag name="clang">Use Clang compiler instead of GCC</flag>
+	<flag name="eme-free">Disable EME (DRM plugin) cabability at build time</flag>
+	<flag name="geckodriver">Enable WebDriver support</flag>
+	<flag name="gmp-autoupdate">Allow Gecko Media Plugins (binary blobs) to be automatically
+		downloaded and kept up-to-date in user profiles</flag>
+	<flag name="hwaccel">Force-enable hardware-accelerated rendering (Mozilla bug 594876)</flag>
+	<flag name="lto">Enable Link Time Optimization (LTO). Requires Gold linker when using GCC
+		or LDD linker when using Clang</flag>
+	<flag name="openh264">Use <pkg>media-libs/openh264</pkg> for H.264 support
+		instead of downloading binary blob from Mozilla at runtime</flag>
+	<flag name="pgo">Add support for profile-guided optimization using gcc-4.5,
+		for faster binaries. This option will double the compile time.</flag>
+	<flag name="screencast">Enable support for remote desktop and screen cast using <pkg>media-video/pipewire</pkg></flag>
+	<flag name="system-av1">Use the system-wide <pkg>media-libs/dav1d</pkg>
+		and <pkg>media-libs/libaom</pkg> library instead of bundled.</flag>
+	<flag name="system-harfbuzz">Use the system-wide <pkg>media-libs/harfbuzz</pkg>
+		and <pkg>media-gfx/graphite2</pkg> instead of bundled.</flag>
+	<flag name="system-icu">Use the system-wide <pkg>dev-libs/icu</pkg>
+		instead of bundled.</flag>
+	<flag name="system-jpeg">Use the system-wide <pkg>media-libs/libjpeg-turbo</pkg>
+		instead of bundled.</flag>
+	<flag name="system-libevent">Use the system-wide <pkg>dev-libs/libevent</pkg>
+		instead of bundled.</flag>
+	<flag name="system-libvpx">Use the system-wide <pkg>media-libs/libvpx</pkg>
+		instead of bundled.</flag>
+	<flag name="system-webp">Use the system-wide <pkg>media-libs/libwebp</pkg>
+		instead of bundled.</flag>
+</use>
+</pkgmetadata>

@@ -1,0 +1,12 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,6 @@
+-all: install
++LDLIBS += -lm
+ 
+-install:  pasco.c
+-	gcc -o pasco pasco.c -lm -lc;cp pasco ../bin
++all: pasco
+ 
+ installwin:  pasco.c
+ 	gcc -DCYGWIN -o pasco.exe pasco.c -lm -lc;cp pasco.exe ../bin

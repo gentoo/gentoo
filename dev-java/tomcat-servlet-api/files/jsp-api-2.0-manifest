@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %bundleName
+Bundle-Vendor: %vendorName
+Bundle-Localization: plugin
+Import-Package: javax.servlet; version=2.4,javax.servlet.http; version=2.4,javax.servlet.resources; version=2.4
+Export-Package: javax.servlet.jsp; version=2.0,javax.servlet.jsp.el; version=2.0, javax.servlet.jsp.resources; version=2.0,
+ javax.servlet.jsp.tagext; version=2.0
+Bundle-Version: 2.0
+Bundle-SymbolicName: javax.servlet.jsp
+

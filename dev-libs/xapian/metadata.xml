@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>blueness@gentoo.org</email>
+		<name>Anthony G. Basile</name>
+	</maintainer>
+	<longdescription lang="en">
+		Xapian is an Open Source Probabilistic Information Retrieval library,
+		released under the GPL. It's written in C++, with bindings to allow use
+		from Perl, Python, PHP, Java, TCL, C#, and Ruby (so far!)
+
+		Xapian is designed to be a highly adaptable toolkit to allow developers
+		to easily add advanced indexing and search facilities to their own
+		applications.
+	</longdescription>
+	<use>
+		<flag name="brass">Enabled brass backend db support</flag>
+		<flag name="chert">Enabled chert backend db support</flag>
+		<flag name="inmemory">Enabled inmemory backend db support</flag>
+		<flag name="remote">Enabled remote backend db support</flag>
+	</use>
+</pkgmetadata>

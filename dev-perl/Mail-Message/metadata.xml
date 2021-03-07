@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Mail-Message</remote-id>
+    <remote-id type="cpan-module">Mail::Box::FastScalar</remote-id>
+    <remote-id type="cpan-module">Mail::Box::Parser</remote-id>
+    <remote-id type="cpan-module">Mail::Box::Parser::Perl</remote-id>
+    <remote-id type="cpan-module">Mail::Message</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Body</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Body::File</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Body::Lines</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Body::Multipart</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Body::Nested</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Body::String</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Convert</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Convert::EmailSimple</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Convert::Html</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Convert::HtmlFormatPS</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Convert::HtmlFormatText</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Convert::MailInternet</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Convert::MimeEntity</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Convert::TextAutoformat</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Field</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Field::AddrGroup</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Field::Address</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Field::Addresses</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Field::Attribute</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Field::AuthResults</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Field::DKIM</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Field::Date</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Field::Fast</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Field::Flex</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Field::Full</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Field::Structured</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Field::URIs</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Field::Unstructured</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Head</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Head::Complete</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Head::FieldGroup</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Head::ListGroup</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Head::Partial</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Head::ResentGroup</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Head::SpamGroup</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Part</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Replace::MailHeader</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Replace::MailInternet</remote-id>
+    <remote-id type="cpan-module">Mail::Message::Test</remote-id>
+    <remote-id type="cpan-module">Mail::Message::TransferEnc</remote-id>
+    <remote-id type="cpan-module">Mail::Message::TransferEnc::Base64</remote-id>
+    <remote-id type="cpan-module">Mail::Message::TransferEnc::Binary</remote-id>
+    <remote-id type="cpan-module">Mail::Message::TransferEnc::EightBit</remote-id>
+    <remote-id type="cpan-module">Mail::Message::TransferEnc::QuotedPrint</remote-id>
+    <remote-id type="cpan-module">Mail::Message::TransferEnc::SevenBit</remote-id>
+    <remote-id type="cpan-module">Mail::Reporter</remote-id>
+  </upstream>
+</pkgmetadata>

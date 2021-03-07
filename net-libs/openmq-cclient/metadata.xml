@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>haubi@gentoo.org</email>
+		<name>Michael Haubenwallner</name>
+	</maintainer>
+	<longdescription lang="en">
+		Open message queue is an enterprise quality, production ready, scalable
+		messaging server. It provides a complete Java Message Service (JMS)
+		implementation for message oriented system integration. In addition,
+		Open MQ provides the additional enterprise features that are necessary
+		for enterprise deployments, large and small. It gets its roots from Java
+		Message Queue and provides all the features, functions and capabilities
+		of the currently available licensed product: Java System Message Queue.
+		These ebuilds install the c-client library only.
+	</longdescription>
+</pkgmetadata>

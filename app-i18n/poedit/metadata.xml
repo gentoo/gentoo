@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>wxwidgets@gentoo.org</email>
+		<name>Gentoo wxWidgets Project</name>
+	</maintainer>
+	<longdescription>
+		This program is a GUI frontend to the GNU gettext utilities
+		and a catalogs editor/source code parser.
+		It helps with translating applications into another language.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/vslavik/poedit/issues</bugs-to>
+		<remote-id type="github">vslavik/poedit</remote-id>
+	</upstream>
+</pkgmetadata>

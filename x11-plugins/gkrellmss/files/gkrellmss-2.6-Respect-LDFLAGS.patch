@@ -1,0 +1,25 @@
+From 88d25e2e4fe3edbb832d0bb2b44cd705b060360a Mon Sep 17 00:00:00 2001
+From: Jim Ramsay <lack@gentoo.org>
+Date: Wed, 11 Aug 2010 08:37:20 -0400
+Subject: [PATCH] Respect LDFLAGS
+
+---
+ src/Makefile |    2 ++
+ 1 files changed, 2 insertions(+), 0 deletions(-)
+
+diff --git a/src/Makefile b/src/Makefile
+index e618bd4..35a1453 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -78,6 +78,8 @@ LFLAGS = -shared
+ STRIP ?= -s
+ endif
+ 
++LFLAGS += $(LDFLAGS)
++
+ ifeq ($(debug),1)
+ 	FLAGS += -g
+ endif
+-- 
+1.7.2
+

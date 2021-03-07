@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sound@gentoo.org</email>
+		<name>Gentoo Sound project</name>
+	</maintainer>
+	<use>
+		<flag name="async-connect">Enable asynchronous connect</flag>
+		<flag name="chat-screen">Enable the chat screen</flag>
+		<flag name="help-screen">Enable the help screen</flag>
+		<flag name="key-screen">Enable key editor screen</flag>
+		<flag name="library-screen">Enable library screen</flag>
+		<flag name="lyrics-screen">Enable lyrics screen</flag>
+		<flag name="mouse">Enable curses getmouse support</flag>
+		<flag name="outputs-screen">Enable the outputs screen</flag>
+		<flag name="search-screen">Enable search screen</flag>
+		<flag name="song-screen">Enable song viewer screen</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">MusicPlayerDaemon/ncmpc</remote-id>
+	</upstream>
+</pkgmetadata>

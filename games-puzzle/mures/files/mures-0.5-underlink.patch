@@ -1,0 +1,23 @@
+--- a/configure.in
++++ b/configure.in
+@@ -7,6 +7,7 @@
+ AC_PROG_MAKE_SET
+ AC_PROG_CC
+ AC_PROG_RANLIB
++AM_PROG_AR
+ AC_PROG_INSTALL
+ 
+ dnl Checks for libraries.
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1,8 +1,8 @@
+ bin_PROGRAMS = mures
+ 
+ mures_LDADD = \
+-	-llua -L./lua
+-	$(STATIC_LIBS)
++	-llua -L./lua \
++	$(STATIC_LIBS) -lm
+ 
+ SUBDIRS = lua gui images maps sounds textures
+ 

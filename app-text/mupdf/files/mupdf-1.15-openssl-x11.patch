@@ -1,0 +1,20 @@
+diff --git a/Makerules b/Makerules
+index 298b5737..b2079435 100644
+--- a/Makerules
++++ b/Makerules
+@@ -119,13 +119,13 @@ else ifeq ($(OS),Linux)
+ 	SYS_GLUT_LIBS := -lglut -lGL
+   endif
+ 
+-  HAVE_X11 := $(shell pkg-config --exists x11 xext && echo yes)
++  HAVE_X11 := not-unless-portage-tells-me
+   ifeq ($(HAVE_X11),yes)
+ 	X11_CFLAGS := $(shell pkg-config --cflags x11 xext)
+ 	X11_LIBS := $(shell pkg-config --libs x11 xext)
+   endif
+ 
+-  HAVE_LIBCRYPTO := $(shell pkg-config --exists 'libcrypto >= 1.1.0' && echo yes)
++  HAVE_LIBCRYPTO := not-unless-portage-tells-me
+   ifeq ($(HAVE_LIBCRYPTO),yes)
+ 	LIBCRYPTO_CFLAGS := $(shell pkg-config --cflags libcrypto) -DHAVE_LIBCRYPTO
+ 	LIBCRYPTO_LIBS := $(shell pkg-config --libs libcrypto)

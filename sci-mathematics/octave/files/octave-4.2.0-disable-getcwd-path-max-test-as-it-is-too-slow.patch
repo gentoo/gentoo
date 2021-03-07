@@ -1,0 +1,11 @@
+--- a/m4/getcwd.m4
++++ b/m4/getcwd.m4
+@@ -110,7 +110,7 @@
+ 
+   gl_abort_bug=no
+   case "$host_os" in
+-    mingw*)
++    *-gnu* | gnu* | mingw*)
+       gl_cv_func_getcwd_path_max=yes
+       ;;
+     *)

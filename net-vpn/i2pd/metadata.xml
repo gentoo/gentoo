@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>kaikaikai@yandex.ru</email>
+		<name>Alexey Korepanov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>klondike@gentoo.org</email>
+		<name>Francisco Blas Izquierdo Riera</name>
+	</maintainer>
+	<use>
+		<flag name="i2p-hardening">
+			Compile with hardening on vanilla compilers/linkers
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">PurpleI2P/i2pd</remote-id>
+	</upstream>
+</pkgmetadata>

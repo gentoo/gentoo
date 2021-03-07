@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>printing@gentoo.org</email>
+		<name>Gentoo Printing Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:littlecms:little_cms_color_engine</remote-id>
+		<remote-id type="github">mm2/Little-CMS</remote-id>
+		<remote-id type="sourceforge">lcms</remote-id>
+	</upstream>
+</pkgmetadata>

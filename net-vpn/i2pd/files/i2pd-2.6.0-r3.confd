@@ -1,0 +1,12 @@
+I2PD_USER=i2pd
+I2PD_GROUP=i2pd
+I2PD_LOG=/var/log/i2pd.log
+I2PD_PID=/run/i2pd/i2pd.pid
+
+# max number of open files (for floodfill)
+rc_ulimit="-n 4096"
+
+# Options to i2pd
+I2PD_OPTIONS="--daemon --service --pidfile=${I2PD_PID} \
+--log=file --logfile=${I2PD_LOG} \
+--conf=/etc/i2pd/i2pd.conf --tunconf=/etc/i2pd/tunnels.conf"

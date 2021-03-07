@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+  <email>ulm@gentoo.org</email>
+  <name>Ulrich Müller</name>
+</maintainer>
+<longdescription lang="en">
+  TECO /tee'koh/ /n.,v. obs./ 1. [originally an acronym for `[paper]
+  Tape Editor and COrrector'; later, `Text Editor and COrrector'] /n./
+  A text editor developed at MIT and modified by just about everybody.
+  With all the dialects included, TECO may have been the most prolific
+  editor in use before EMACS, to which it was directly ancestral.
+  Noted for its powerful programming-language-like features and its
+  unspeakably hairy syntax. It is literally the case that every string
+  of characters is a valid TECO program (though probably not a useful
+  one); one common game used to be mentally working out what the TECO
+  commands corresponding to human names did.
+
+  In mid-1991, TECO is pretty much one with the dust of history,
+  having been replaced in the affections of hackerdom by EMACS.
+  Descendants of an early (and somewhat lobotomized) version adopted
+  by DEC can still be found lurking on VMS and a couple of crufty
+  PDP-11 operating systems, however, and ports of the more advanced
+  MIT versions remain the focus of some antiquarian interest.
+</longdescription>
+</pkgmetadata>

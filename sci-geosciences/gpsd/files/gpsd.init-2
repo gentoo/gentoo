@@ -1,0 +1,38 @@
+#!/sbin/openrc-run
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	after dbus
+	before ntpd
+}
+
+PIDFILE=/var/run/${SVCNAME}.pid
+DAEMON=/usr/sbin/gpsd
+
+checkconfig() {
+	# Note: these GPSD_xxx var names should be kept in sync with the udev rules.
+	if [ -z "${GPSD_SOCKET}" ] && [ -z "${DEVICES}" ]; then
+		GPSD_SOCKET="/var/run/gpsd.sock"
+	fi
+
+	if [ -n "${GPSD_SOCKET}" ]; then
+		GPSD_OPTIONS="${GPSD_OPTIONS} -F ${GPSD_SOCKET}"
+	fi
+}
+
+start() {
+	checkconfig
+	ebegin "Starting gpsd"
+
+	start-stop-daemon --start --quiet --pidfile ${PIDFILE} --exec ${DAEMON} -- \
+		${GPSD_OPTIONS} -P ${PIDFILE} ${DEVICES}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping gpsd"
+	start-stop-daemon --stop --quiet --retry=TERM/30/KILL/5 --pidfile ${PIDFILE}
+	eend $?
+	rm -f ${PIDFILE}
+}

@@ -1,0 +1,61 @@
+--- a/src/mlagan.c
++++ b/src/mlagan.c
+@@ -46,6 +46,7 @@
+     return 1;
+ }
+ 
++int printXMFAAlign(FILE* outfile, align* myalign);
+ 
+ void usage(void) {
+   printf("mlagan seqfile_1 seqfile_2 [... seqfile_%d] [-parameters]\n\n",
+--- a/src/order.c
++++ b/src/order.c
+@@ -28,6 +28,8 @@
+ 
+ align* makeAlign(dmat* mydm, char* seq1, char* seq2);
+ 
++int printMFAAlign(char* seq1, char* seq2, align* myalign, char* n1, char* n2);
++int printXMFAAlign(char* seq1, char* seq2, align* myalign, char* n1, char* n2);
+ 
+ char* alpha = "ATCGN.";
+ 
+--- a/src/prolagan.c
++++ b/src/prolagan.c
+@@ -49,6 +49,7 @@
+     return 1;
+ }
+ 
++int printXMFAAlign(FILE* outfile, align* myalign);
+ 
+ void usage(void) {
+   printf("mlagan seqfile_1 seqfile_2 [... seqfile_%d] [-parameters]\n\n",
+--- a/src/utils/cstat.c
++++ b/src/utils/cstat.c
+@@ -3,6 +3,7 @@
+ #include <string.h>
+ #include <math.h>
+ #include <assert.h>
++#include <ctype.h>
+ 
+ #define MAX_SEQ 31
+ #define MAX(a,b) ((a)>(b)?(a):(b))
+--- a/src/utils/overlay.c
++++ b/src/utils/overlay.c
+@@ -2,6 +2,7 @@
+ #include <stdio.h>
+ #include <assert.h>
+ #include <string.h>
++#include <ctype.h>
+ 
+ #define MAX_SEQS 63
+ #define MIN2(y,z)        ((y)<(z))?(y):(z)
+--- a/src/utils/scorecontigs.c
++++ b/src/utils/scorecontigs.c
+@@ -3,6 +3,7 @@
+ #include <string.h>
+ #include <math.h>
+ #include <assert.h>
++#include <ctype.h>
+ 
+ #define MAX_SEQ 1024
+ #define MAX(a,b) ((a)>(b)?(a):(b))

@@ -1,0 +1,11 @@
+--- image/png.c
++++ image/png.c
+@@ -86,7 +86,7 @@
+ 		return NULL;
+ 	}
+ 
+-	if (setjmp(png_ptr->jmpbuf)) {
++	if (setjmp(png_jmpbuf(png_ptr))) {
+ 		png_destroy_read_struct(&png_ptr, &info_ptr, (png_infopp)NULL);
+ 		fclose(fp);
+ 		return NULL;

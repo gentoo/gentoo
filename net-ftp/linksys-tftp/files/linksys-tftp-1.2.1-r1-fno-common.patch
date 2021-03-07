@@ -1,0 +1,11 @@
+--- a/tftp.c
++++ b/tftp.c
+@@ -50,7 +50,7 @@ extern	int	segsize;
+ #define PKTSIZE    (1432+4) /* SEGSIZE+4 */
+ char    ackbuf[PKTSIZE];
+ int	timeout;
+-jmp_buf	toplevel;
++extern jmp_buf	toplevel;
+ jmp_buf	timeoutbuf;
+ 
+ #ifndef OACK

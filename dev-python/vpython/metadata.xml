@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+	</maintainer>
+	<longdescription>
+		This package enables one to run VPython in a browser,
+		using the GlowScript VPython API,
+		documented in the Help at http://glowscript.org.
+		If the code is in a cell in a Jupyter notebook,
+		the 3D scene appears in the Jupyter notebook.
+		If the code is launched outside a notebook (e.g. from the command line),
+		a browser window will open displaying the scene.
+	</longdescription>
+	<upstream>
+		<remote-id type="pypi">vpython</remote-id>
+	</upstream>
+</pkgmetadata>

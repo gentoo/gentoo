@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">AnyEvent</remote-id>
+    <remote-id type="cpan-module">AE</remote-id>
+    <remote-id type="cpan-module">AE::Log::COLLECT</remote-id>
+    <remote-id type="cpan-module">AE::Log::FILTER</remote-id>
+    <remote-id type="cpan-module">AE::Log::LOG</remote-id>
+    <remote-id type="cpan-module">AnyEvent</remote-id>
+    <remote-id type="cpan-module">AnyEvent::Base</remote-id>
+    <remote-id type="cpan-module">AnyEvent::CondVar</remote-id>
+    <remote-id type="cpan-module">AnyEvent::CondVar::Base</remote-id>
+    <remote-id type="cpan-module">AnyEvent::DNS</remote-id>
+    <remote-id type="cpan-module">AnyEvent::Debug</remote-id>
+    <remote-id type="cpan-module">AnyEvent::Debug::Backtrace</remote-id>
+    <remote-id type="cpan-module">AnyEvent::Debug::Wrap</remote-id>
+    <remote-id type="cpan-module">AnyEvent::Debug::Wrapped</remote-id>
+    <remote-id type="cpan-module">AnyEvent::Debug::shell</remote-id>
+    <remote-id type="cpan-module">AnyEvent::Handle</remote-id>
+    <remote-id type="cpan-module">AnyEvent::IO</remote-id>
+    <remote-id type="cpan-module">AnyEvent::IO::IOAIO</remote-id>
+    <remote-id type="cpan-module">AnyEvent::IO::Perl</remote-id>
+    <remote-id type="cpan-module">AnyEvent::Impl::Cocoa</remote-id>
+    <remote-id type="cpan-module">AnyEvent::Impl::EV</remote-id>
+    <remote-id type="cpan-module">AnyEvent::Impl::Event</remote-id>
+    <remote-id type="cpan-module">AnyEvent::Impl::EventLib</remote-id>
+    <remote-id type="cpan-module">AnyEvent::Impl::FLTK</remote-id>
+    <remote-id type="cpan-module">AnyEvent::Impl::Glib</remote-id>
+    <remote-id type="cpan-module">AnyEvent::Impl::IOAsync</remote-id>
+    <remote-id type="cpan-module">AnyEvent::Impl::Irssi</remote-id>
+    <remote-id type="cpan-module">AnyEvent::Impl::POE</remote-id>
+    <remote-id type="cpan-module">AnyEvent::Impl::Perl</remote-id>
+    <remote-id type="cpan-module">AnyEvent::Impl::Qt</remote-id>
+    <remote-id type="cpan-module">AnyEvent::Impl::Qt::Io</remote-id>
+    <remote-id type="cpan-module">AnyEvent::Impl::Qt::Timer</remote-id>
+    <remote-id type="cpan-module">AnyEvent::Impl::Tk</remote-id>
+    <remote-id type="cpan-module">AnyEvent::Log</remote-id>
+    <remote-id type="cpan-module">AnyEvent::Log::COLLECT</remote-id>
+    <remote-id type="cpan-module">AnyEvent::Log::Ctx</remote-id>
+    <remote-id type="cpan-module">AnyEvent::Log::FILTER</remote-id>
+    <remote-id type="cpan-module">AnyEvent::Log::LOG</remote-id>
+    <remote-id type="cpan-module">AnyEvent::Loop</remote-id>
+    <remote-id type="cpan-module">AnyEvent::Socket</remote-id>
+    <remote-id type="cpan-module">AnyEvent::Strict</remote-id>
+    <remote-id type="cpan-module">AnyEvent::TLS</remote-id>
+    <remote-id type="cpan-module">AnyEvent::Util</remote-id>
+    <remote-id type="cpan-module">DB</remote-id>
+  </upstream>
+</pkgmetadata>

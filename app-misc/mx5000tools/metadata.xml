@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		The Logitech Cordless Desktop MX 5000 Laser comes with a keyboard that has a nice LCD.
+		But Logitech did not provide any way to control the LCD on a Free operating system.
+		These tools make it possible to control what is displayed on the LCD and to use some
+		of the keys that are not recognized by the stock Linux HID driver.
+	</longdescription>
+</pkgmetadata>

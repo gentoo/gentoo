@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>juippis@gentoo.org</email>
+		<name>Joonas Niilola</name>
+	</maintainer>
+	<longdescription>
+		EFL is a collection of libraries for handling many common tasks a 
+		developer man have such as data structures, communication, 
+		rendering, widgets and more.
+
+		PYTHON-EFL are the python bindings for the whole EFL stack (eo, 
+		evas, ecore, edje, emotion, ethumb and elementary)
+	</longdescription>
+	<upstream>
+		<remote-id type="pypi">python-efl</remote-id>
+	</upstream>
+</pkgmetadata>

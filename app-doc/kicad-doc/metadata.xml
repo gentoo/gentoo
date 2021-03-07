@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zoltan@sinustrom.info</email>
+		<name>Zoltan Puskas</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="html">Generate documentation in HTML format</flag>
+		<flag name="pdf">Generate documentation in PDF format</flag>
+	</use>
+	<longdescription>
+		Kicad-doc is the extended manuals and documenation for Kicad. Kicad is
+		an open source (GPL) software for the creation of electronic schematic
+		diagrams and printed circuit board artwork.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">KiCad/kicad-doc</remote-id>
+	</upstream>
+</pkgmetadata>

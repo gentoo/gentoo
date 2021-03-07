@@ -1,0 +1,35 @@
+--- tcp_wrappers_7.6/tcpd.c.bug11881
++++ tcp_wrappers_7.6/tcpd.c
+@@ -60,10 +60,10 @@
+      */
+ 
+     if (argv[0][0] == '/') {
+-	strcpy(path, argv[0]);
++	strncpy(path, argv[0], sizeof(path));
+ 	argv[0] = strrchr(argv[0], '/') + 1;
+     } else {
+-	sprintf(path, "%s/%s", REAL_DAEMON_DIR, argv[0]);
++	snprintf(path, sizeof(path), "%s/%s", REAL_DAEMON_DIR, argv[0]);
+     }
+ 
+     /*
+--- tcp_wrappers_7.6/eval.c.bug11881
++++ tcp_wrappers_7.6/eval.c
+@@ -111,7 +111,7 @@
+ 	return (hostinfo);
+ #endif
+     if (STR_NE(eval_user(request), unknown)) {
+-	sprintf(both, "%s@%s", request->user, hostinfo);
++	snprintf(both, sizeof(both), "%s@%s", request->user, hostinfo);
+ 	return (both);
+     } else {
+ 	return (hostinfo);
+@@ -128,7 +128,7 @@
+     char   *daemon = eval_daemon(request);
+ 
+     if (STR_NE(host, unknown)) {
+-	sprintf(both, "%s@%s", daemon, host);
++	snprintf(both, sizeof(both), "%s@%s", daemon, host);
+ 	return (both);
+     } else {
+ 	return (daemon);

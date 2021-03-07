@@ -1,0 +1,25 @@
+diff -urN netkit-bootparamd-0.17.old/rpc.bootparamd/rpc.bootparamd.c netkit-bootparamd-0.17/rpc.bootparamd/rpc.bootparamd.c
+--- netkit-bootparamd-0.17.old/rpc.bootparamd/rpc.bootparamd.c	2000-07-22 12:23:56.000000000 -0400
++++ netkit-bootparamd-0.17/rpc.bootparamd/rpc.bootparamd.c	2004-09-13 17:42:43.000000000 -0400
+@@ -136,11 +136,16 @@
+ 	    strncpy(path, where, sizeof(path));
+ 	    path[sizeof(path)-1] = 0;
+ 	    he = gethostbyname(hostname);
+-	    if (!he) goto failed;
+-	    bcopy( he->h_addr, &res.server_address.bp_address_u.ip_addr, 4);
+-	    res.server_name = hostname;
+-	    res.server_path = path;
+-	    res.server_address.address_type = IP_ADDR_TYPE;
++	    if (!he) {	/* jumpstart parameters are not valid hosts */
++		res.server_name = hostname;
++		res.server_path = path;
++		bzero(&res.server_address.bp_address_u.ip_addr,4);
++	    } else {
++	    	bcopy( he->h_addr, &res.server_address.bp_address_u.ip_addr, 4);
++	        res.server_name = hostname;
++		res.server_path = path;
++		res.server_address.address_type = IP_ADDR_TYPE;
++	    }
+ 	}
+ 	else { /* special for dump, answer with null strings */
+ 	    if (!strcmp(getfile->file_id, "dump")) {

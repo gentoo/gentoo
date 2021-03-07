@@ -1,0 +1,22 @@
+diff -urNp mcrypt-2.6.7.org/src/gaaout.c mcrypt-2.6.7/src/gaaout.c
+--- mcrypt-2.6.7.org/src/gaaout.c	2007-06-09 11:39:14.000000000 +0300
++++ mcrypt-2.6.7/src/gaaout.c	2007-11-10 14:30:22.000000000 +0200
+@@ -5,6 +5,7 @@
+ 
+ 
+ #include <defines.h>
++#include "mcrypt_int.h"
+ 
+ #include <stdio.h>
+ #include <string.h>
+diff -urNp mcrypt-2.6.7.org/src/mcrypt_int.h mcrypt-2.6.7/src/mcrypt_int.h
+--- mcrypt-2.6.7.org/src/mcrypt_int.h	2003-09-08 20:25:50.000000000 +0300
++++ mcrypt-2.6.7/src/mcrypt_int.h	2007-11-10 14:27:42.000000000 +0200
+@@ -15,3 +15,7 @@ void rol_buf(void * buffer, int buffersi
+ void mcrypt_version();
+ void mcrypt_license();
+ void usage(void);
++
++int print_list(void);
++int print_hashlist(void);
++int print_keylist(void);

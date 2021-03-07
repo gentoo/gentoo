@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zoltan@sinustrom.info</email>
+		<name>Zoltan Puskas</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		oce is a C++ 3D modeling library. It can be used to develop CAD/CAM 
+		softwares. oce stands for opencascade community edition. This project
+		aims at gathering patches/ changes/ improvements from the OCC community.
+	</longdescription>
+<use>
+	<flag name="freeimage">Enable support for image i/o via media-libs/freeimage</flag>
+	<flag name="gl2ps">Use gl2ps PostScript printing library</flag>
+	<flag name="tbb">Enable parallel meshing</flag>
+	<flag name="vtk">Enable Virtualisation Toolkit</flag></use>
+</pkgmetadata>

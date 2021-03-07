@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The games-sports category contains sports games.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie games-sports enthält Sportspiele.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría games-sports contiene juegos de deporte.
+	</longdescription>
+	<longdescription lang="ja">
+		games-sportsカテゴリーにはスポーツ・ゲームが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De games-sports categorie bevat sportspellen.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm games-sports chứa các trò chơi thể thao.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria games-sports contiene giochi sportivi.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria games-sports contém jogos de esportes.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria games-sports zawiera gry sportowe.
+	</longdescription>
+</catmetadata>
+

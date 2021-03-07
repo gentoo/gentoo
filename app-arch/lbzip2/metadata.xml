@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>mattst88@gentoo.org</email>
+		<name>Matt Turner</name>
+	</maintainer>
+	<longdescription lang="en">
+		A multi-threaded bzip2/bunzip2 utility that employs multiple threads and an
+		input-bound splitter even when decompressing .bz2 files created by standard
+		bzip2
+	</longdescription>
+	<use>
+		<flag name="symlink">Install symlinks which override <pkg>app-arch/bzip2</pkg> implementation</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">kjn/lbzip2</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">ShipIt</remote-id>
+    <remote-id type="cpan-module">ShipIt</remote-id>
+    <remote-id type="cpan-module">ShipIt::Conf</remote-id>
+    <remote-id type="cpan-module">ShipIt::ProjectType</remote-id>
+    <remote-id type="cpan-module">ShipIt::ProjectType::AutoConf</remote-id>
+    <remote-id type="cpan-module">ShipIt::ProjectType::Perl</remote-id>
+    <remote-id type="cpan-module">ShipIt::ProjectType::Perl::MakeMaker</remote-id>
+    <remote-id type="cpan-module">ShipIt::ProjectType::Perl::ModuleBuild</remote-id>
+    <remote-id type="cpan-module">ShipIt::State</remote-id>
+    <remote-id type="cpan-module">ShipIt::Step</remote-id>
+    <remote-id type="cpan-module">ShipIt::Step::AddToSVNDir</remote-id>
+    <remote-id type="cpan-module">ShipIt::Step::ChangeRPMVersion</remote-id>
+    <remote-id type="cpan-module">ShipIt::Step::ChangeVersion</remote-id>
+    <remote-id type="cpan-module">ShipIt::Step::CheckChangeLog</remote-id>
+    <remote-id type="cpan-module">ShipIt::Step::Commit</remote-id>
+    <remote-id type="cpan-module">ShipIt::Step::DistTest</remote-id>
+    <remote-id type="cpan-module">ShipIt::Step::FindVersion</remote-id>
+    <remote-id type="cpan-module">ShipIt::Step::MakeDist</remote-id>
+    <remote-id type="cpan-module">ShipIt::Step::Tag</remote-id>
+    <remote-id type="cpan-module">ShipIt::Step::UploadCPAN</remote-id>
+    <remote-id type="cpan-module">ShipIt::Util</remote-id>
+    <remote-id type="cpan-module">ShipIt::Util::TempDir</remote-id>
+    <remote-id type="cpan-module">ShipIt::VC</remote-id>
+    <remote-id type="cpan-module">ShipIt::VC::Git</remote-id>
+    <remote-id type="cpan-module">ShipIt::VC::Mercurial</remote-id>
+    <remote-id type="cpan-module">ShipIt::VC::SVK</remote-id>
+    <remote-id type="cpan-module">ShipIt::VC::SVN</remote-id>
+  </upstream>
+</pkgmetadata>

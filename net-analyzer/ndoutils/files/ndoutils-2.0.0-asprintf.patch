@@ -1,0 +1,16 @@
+This is a fix for the QA warnings that result from using asprintf()
+without defining it. That happens because asprintf() is a GNU
+extension, but somehow gets used before _GNU_SOURCE is defined.
+
+Upstream-Bug: https://github.com/NagiosEnterprises/ndoutils/issues/43
+
+--- a/include/config.h.in
++++ b/include/config.h.in
+@@ -9,6 +9,7 @@
+ #ifndef _CONFIG_H
+ #define _CONFIG_H
+ 
++#define _GNU_SOURCE
+ #include <stdio.h>
+ #include <stdlib.h>
+ 

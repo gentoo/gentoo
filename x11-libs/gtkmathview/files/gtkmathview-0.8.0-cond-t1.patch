@@ -1,0 +1,22 @@
+diff --exclude-from=/home/dang/.scripts/diffrc -up -ruN gtkmathview-0.8.0.old/src/backend/ps/PS_StreamRenderingContext.cc gtkmathview-0.8.0/src/backend/ps/PS_StreamRenderingContext.cc
+--- gtkmathview-0.8.0.old/src/backend/ps/PS_StreamRenderingContext.cc	2007-08-17 06:02:40.000000000 -0400
++++ gtkmathview-0.8.0/src/backend/ps/PS_StreamRenderingContext.cc	2008-06-26 14:46:31.000000000 -0400
+@@ -24,7 +24,6 @@
+ #include "PS_StreamRenderingContext.hh"
+ #include "String.hh"
+ #include "FontDataBase.hh"
+-#include "T1_FontDataBase.hh"
+ 
+ PS_StreamRenderingContext::PS_StreamRenderingContext(const SmartPtr<AbstractLogger>& logger,
+ 						     std::ostream& os,
+diff --exclude-from=/home/dang/.scripts/diffrc -up -ruN gtkmathview-0.8.0.old/src/backend/ps/PS_StreamRenderingContext.hh gtkmathview-0.8.0/src/backend/ps/PS_StreamRenderingContext.hh
+--- gtkmathview-0.8.0.old/src/backend/ps/PS_StreamRenderingContext.hh	2007-08-17 06:02:40.000000000 -0400
++++ gtkmathview-0.8.0/src/backend/ps/PS_StreamRenderingContext.hh	2008-06-26 14:46:31.000000000 -0400
+@@ -25,7 +25,6 @@
+ #include "PS_RenderingContext.hh"
+ #include "String.hh"
+ #include "FontDataBase.hh"
+-#include "T1_FontDataBase.hh"
+ 
+ class GMV_BackEnd_EXPORT PS_StreamRenderingContext : public PS_RenderingContext
+ {

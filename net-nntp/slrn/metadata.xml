@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>nemunaire@nemunai.re</email>
+		<name>Pierre-Olivier Mercier</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="uudeview">Add support for yEnc coding and more using
+		<pkg>dev-libs/uulib</pkg></flag>
+		<flag name="canlock">Add support for cancel locks via
+		<pkg>net-libs/canlock</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">slrn</remote-id>
+	</upstream>
+</pkgmetadata>

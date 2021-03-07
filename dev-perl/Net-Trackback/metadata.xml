@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>perl@gentoo.org</email>
+		<name>Gentoo Perl Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpan">Net-Trackback</remote-id>
+		<remote-id type="cpan-module">Net::Trackback</remote-id>
+		<remote-id type="cpan-module">Net::Trackback::Client</remote-id>
+		<remote-id type="cpan-module">Net::Trackback::Data</remote-id>
+		<remote-id type="cpan-module">Net::Trackback::Message</remote-id>
+		<remote-id type="cpan-module">Net::Trackback::Ping</remote-id>
+		<remote-id type="cpan-module">Net::Trackback::Server</remote-id>
+	</upstream>
+</pkgmetadata>

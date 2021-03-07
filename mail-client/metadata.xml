@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The mail-client category contains email clients.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie mail-client enthält Email-Clients.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría mail-client contiene clientes de correo electrónico.
+	</longdescription>
+	<longdescription lang="ja">
+		mail-clientカテゴリーにはメールクライアントが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De mail-client categorie bevat email-clients.
+	</longdescription>
+	<longdescription lang="sk">
+		Kategória mail-client obsahuje klientské programy pre elektronickú poštu.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm mail-client chứa các ứng dụng đọc email.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria mail-client contiene client per la posta elettronica.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria mail-client contém clientes de correio eletrônico.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria mail-client zawiera programy pocztowe.
+	</longdescription>
+</catmetadata>

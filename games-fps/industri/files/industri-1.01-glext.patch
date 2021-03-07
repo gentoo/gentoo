@@ -1,0 +1,18 @@
+--- glquake.h.old	2011-04-29 12:36:53.000000000 +0200
++++ glquake.h	2011-04-29 12:44:39.000000000 +0200
+@@ -977,6 +977,7 @@
+ #define GL_MAP2_VERTEX_ATTRIB15_4_NV      0x867F
+ 
+ /* NV_vertex_program */
++#ifndef GL_NV_vertex_program
+ typedef GLboolean (APIENTRY * PFNGLAREPROGRAMSRESIDENTNVPROC) (GLsizei n, const GLuint *programs, GLboolean *residences);
+ typedef void (APIENTRY * PFNGLBINDPROGRAMNVPROC) (GLenum target, GLuint id);
+ typedef void (APIENTRY * PFNGLDELETEPROGRAMSNVPROC) (GLsizei n, const GLuint *programs);
+@@ -1040,6 +1041,7 @@
+ typedef void (APIENTRY * PFNGLVERTEXATTRIBS4FVNVPROC) (GLuint index, GLsizei count, const GLfloat *v);
+ typedef void (APIENTRY * PFNGLVERTEXATTRIBS4SVNVPROC) (GLuint index, GLsizei count, const GLshort *v);
+ typedef void (APIENTRY * PFNGLVERTEXATTRIBS4UBVNVPROC) (GLuint index, GLsizei count, const GLubyte *v);
++#endif
+ 
+ extern PFNGLAREPROGRAMSRESIDENTNVPROC qglAreProgramsResidentNV ;
+ extern PFNGLBINDPROGRAMNVPROC qglBindProgramNV ;

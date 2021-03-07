@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">IPC-Run</remote-id>
+    <remote-id type="cpan-module">IPC::Run</remote-id>
+    <remote-id type="cpan-module">IPC::Run::Debug</remote-id>
+    <remote-id type="cpan-module">IPC::Run::IO</remote-id>
+    <remote-id type="cpan-module">IPC::Run::Timer</remote-id>
+    <remote-id type="cpan-module">IPC::Run::Win32Helper</remote-id>
+    <remote-id type="cpan-module">IPC::Run::Win32IO</remote-id>
+    <remote-id type="cpan-module">IPC::Run::Win32Pump</remote-id>
+  </upstream>
+</pkgmetadata>

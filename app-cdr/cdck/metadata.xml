@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <!-- maintainer-needed -->
+  <longdescription>
+    Actually cdck is a simple program to verify CD/DVD quality. The known
+    fact is that even if all files on the disc are readable, some sectors
+    having bad timing can easily turn into unreadable ones in the future.
+
+    To get an idea about disc cdck reads it sector by sector, keeping all
+    reading timings and then tells you its verdict. Optionally it can write
+    timing table into text file usable by gnuplot(1) program, so you can draw
+    some graphs out of it.
+  </longdescription>
+</pkgmetadata>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>cluster@gentoo.org</email>
+		<name>Gentoo Cluster Project</name>
+	</maintainer>
+	<longdescription>
+		Pdsh is a high-performance, parallel remote shell utility. It has built-in,
+		thread-safe clients for Berkeley and Kerberos V4 rsh, and can call SSH
+		externally (though with reduced performance). Pdsh uses a "sliding window"
+		parallel algorithm to conserve socket resources on the initiating node and
+		to allow progress to continue while timeouts occur on some connections.
+		Pdsh is similar to DSH, part of the IBM PSSP software offering, but offers
+		improved performance and handling of error conditions. It runs on a variety
+		of platforms (including as a replacement for DSH on AIX/PSSP), but is
+		primarily developed on Linux.
+	</longdescription>
+	<use>
+		<flag name="rsh">
+			This allows the use of rsh (remote shell) and rcp
+			(remote copy) for authoring websites. sftp is a much more secure protocol
+			and is preferred.
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">pdsh</remote-id>
+	</upstream>
+</pkgmetadata>

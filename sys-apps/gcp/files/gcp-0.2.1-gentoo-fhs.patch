@@ -1,0 +1,13 @@
+--- a/setup.py
++++ b/setup.py
+@@ -41,9 +41,8 @@
+ #        'console_scripts': ['gcp=gcp:main'],
+ #    },
+     data_files=[
+-        ('man/man1', ["gcp.1"]),
++        ('share/man/man1', ["gcp.1"]),
+         ('share/locale/fr/LC_MESSAGES', ['i18n/fr/LC_MESSAGES/gcp.mo']),
+-        ('share/doc/%s' % name, ['CHANGELOG', 'LICENSE', 'README.md']),
+     ],
+     install_requires=['PyGObject', 'dbus-python'],
+     python_requires='>=3',

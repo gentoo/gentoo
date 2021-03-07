@@ -1,0 +1,13 @@
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# This file contains descriptions of POSTGRES_TARGETS USE_EXPAND flags.
+
+postgres9_3 - Build against PostgreSQL 9.3
+postgres9_4 - Build against PostgreSQL 9.4
+postgres9_5 - Build against PostgreSQL 9.5
+postgres9_6 - Build against PostgreSQL 9.6
+postgres10 - Build against PostgreSQL 10
+postgres11 - Build against PostgreSQL 11
+postgres12 - Build against PostgreSQL 12
+postgres13 - Build against PostgreSQL 13

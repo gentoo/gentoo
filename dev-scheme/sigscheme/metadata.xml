@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>scheme@gentoo.org</email>
+		<name>Gentoo Scheme Project</name>
+	</maintainer>
+	<longdescription>SigScheme is a R5RS Scheme interpreter for embedded use. 
+		It features small footprint (64KB in library form on the 
+		'small' configuration) like SIOD and TinyScheme, low memory 
+		consumption (2-words per cons cell), multibyte characters 
+		handling (UTF-8, EUCs and Shift_JIS) and more. 
+		It is mainly developed to replace the Scheme interpreter of uim.</longdescription>
+	<upstream>
+		<remote-id type="google-code">sigscheme</remote-id>
+	</upstream>
+</pkgmetadata>

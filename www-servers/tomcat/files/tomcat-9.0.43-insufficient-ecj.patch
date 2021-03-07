@@ -1,0 +1,32 @@
+diff --git a/java/org/apache/jasper/compiler/JDTCompiler.java b/java/org/apache/jasper/compiler/JDTCompiler.java
+index ebc00f6..df22856 100644
+--- a/java/org/apache/jasper/compiler/JDTCompiler.java
++++ b/java/org/apache/jasper/compiler/JDTCompiler.java
+@@ -306,9 +306,9 @@ public class JDTCompiler extends org.apache.jasper.compiler.Compiler {
+             } else if(opt.equals("13")) {
+                 settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_13);
+             } else if(opt.equals("14")) {
+-                settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_14);
++                settings.put(CompilerOptions.OPTION_Source, "14");
+             } else if(opt.equals("15")) {
+-                settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_15);
++                settings.put(CompilerOptions.OPTION_Source, "15");
+             } else if(opt.equals("16")) {
+                 // Constant not available in latest ECJ version shipped with
+                 // Tomcat. May be supported in a snapshot build.
+@@ -364,11 +364,11 @@ public class JDTCompiler extends org.apache.jasper.compiler.Compiler {
+                 settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_13);
+                 settings.put(CompilerOptions.OPTION_Compliance, CompilerOptions.VERSION_13);
+             } else if(opt.equals("14")) {
+-                settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_14);
+-                settings.put(CompilerOptions.OPTION_Compliance, CompilerOptions.VERSION_14);
++                settings.put(CompilerOptions.OPTION_TargetPlatform, "14");
++                settings.put(CompilerOptions.OPTION_Compliance, "14");
+             } else if(opt.equals("15")) {
+-                settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_15);
+-                settings.put(CompilerOptions.OPTION_Compliance, CompilerOptions.VERSION_15);
++                settings.put(CompilerOptions.OPTION_TargetPlatform, "15");
++                settings.put(CompilerOptions.OPTION_Compliance, "15");
+             } else if(opt.equals("16")) {
+                 // Constant not available in latest ECJ version shipped with
+                 // Tomcat. May be supported in a snapshot build.

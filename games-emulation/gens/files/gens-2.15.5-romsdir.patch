@@ -1,0 +1,13 @@
+diff -ruN gens-rc3.5-opengl/src/gens/util/rom.c gens-rc3.5-opengl-patched/src/gens/util/rom.c
+--- a/src/gens/util/file/rom.c	2005-01-10 22:24:01.000000000 +0100
++++ b/src/gens/util/file/rom.c	2006-10-29 14:58:14.000000000 +0100
+@@ -411,6 +411,9 @@
+     create_file_chooser_dialog ("Open Rom", GTK_FILE_CHOOSER_ACTION_OPEN);
+ //      fileselection_set_dir (fd.filesel, Rom_Dir);
+   addRomsFilter (widget);
++  
++  gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (widget), Rom_Dir);
++  
+   res = gtk_dialog_run (GTK_DIALOG (widget));
+   if (res == GTK_RESPONSE_OK)
+     {

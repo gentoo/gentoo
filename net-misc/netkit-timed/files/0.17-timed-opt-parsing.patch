@@ -1,0 +1,12 @@
+diff -ur netkit-timed-0.17.orig/timed/timed/timed.c netkit-timed-0.17/timed/timed/timed.c
+--- netkit-timed-0.17.orig/timed/timed/timed.c	2006-07-28 00:12:03.000000000 -0700
++++ netkit-timed-0.17/timed/timed/timed.c	2006-07-28 00:12:52.000000000 -0700
+@@ -158,7 +158,7 @@
+ 	struct nets *nt;
+ 	struct sockaddr_in server;
+ 	u_short port;
+-	char c;
++	signed char c;
+ #ifdef sgi
+ 	FILE *timetrim_st;
+ #endif

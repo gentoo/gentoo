@@ -1,0 +1,22 @@
+--- a/charproc.c
++++ b/charproc.c
+@@ -1897,6 +1897,19 @@
+ 				 case 7:
+ 					term->flags |= INVERSE;
+ 					break;
++				 case 22:	/* Reset bold.		*/
++						/* ECMA-ly incorrect	*/
++					term->flags &= ~BOLD;
++					break;
++				 case 24:
++					term->flags &= ~UNDERLINE;
++					break;
++				 case 25:	/* Blink, really.	*/
++					term->flags &= ~BOLD;
++					break;
++				 case 27:
++					term->flags &= ~INVERSE;
++					break;
+ #ifdef KTERM_COLOR
+ 				 case 30:
+ 				 case 31:

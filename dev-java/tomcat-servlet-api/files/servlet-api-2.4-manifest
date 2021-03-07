@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %bundleName
+Bundle-Vendor: %vendorName
+Bundle-Localization: plugin
+Export-Package: javax.servlet;version="2.4",javax.servlet.http;version="2.4",javax.servlet.resources;version="2.4"
+Bundle-Version: 2.4.0
+Bundle-SymbolicName: javax.servlet
+

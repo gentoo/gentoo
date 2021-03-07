@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>arfrever.fta@gmail.com</email>
+		<name>Arfrever Frehtes Taifersar Arahesis</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>floppym@gentoo.org</email>
+		<name>Mike Gilbert</name>
+		<description>Proxy</description>
+	</maintainer>
+	<use>
+		<flag name="dcc_video">Support video connections over DCC protocol</flag>
+		<flag name="phonon">Support Phonon for audio output</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">kvirc/KVIrc</remote-id>
+	</upstream>
+</pkgmetadata>

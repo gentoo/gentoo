@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="atasmart">include libatasmart support to get disc temperature</flag>
+		<flag name="nvidia">allow thinkfan to read GPU temperature from the proprietary nVidia driver</flag>
+		<flag name="yaml">use YAML format for config file</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">thinkfan</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,27 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+PIDFILE=/var/run/postfwd.pid
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting postfwd"
+		start-stop-daemon --start --quiet --background \
+		--pidfile ${PIDFILE} \
+		--exec /usr/sbin/postfwd3 -- --daemon --file ${POSTFWD_CONFIG} \
+			--interface=${POSTFWD_LISTEN} --port=${POSTFWD_PORT} \
+			--user=${POSTFWD_USER} --group=${POSTFWD_GROUP} \
+			--pidfile ${PIDFILE} \
+			${POSTFWD_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping postfwd"
+		start-stop-daemon --stop --quiet --pidfile ${PIDFILE}
+	eend $?
+}

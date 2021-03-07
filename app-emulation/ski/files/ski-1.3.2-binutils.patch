@@ -1,0 +1,31 @@
+From 30d3253c6b413ba22ca0ca30dcd4c4c24daec2e1 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Tue, 19 Aug 2014 09:42:43 +0300
+Subject: [PATCH] Fix build failure against binutils-2.16.1 and upper.
+
+Follow binutils' upstream change from 2004:
+
+    https://sourceware.org/git/?p=binutils.git;a=commitdiff;h=7e2dd9e4c3e0b69dcb7d471b891879b5fd28687e
+    > section.c (struct sec): Rename "_cooked_size" to "size".
+
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+---
+ src/linux/dwarf-linux.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/linux/dwarf-linux.c b/src/linux/dwarf-linux.c
+index 1941a1f..73be0e6 100644
+--- a/src/linux/dwarf-linux.c
++++ b/src/linux/dwarf-linux.c
+@@ -155,7 +155,7 @@ find_in_section (bfd * bfd, asection * sect, PTR obj)
+ 	      first.function = function;
+ 	      first.line = line;
+ 	      first.num_lines = 1;
+-	      first.limit = sect->_cooked_size;
++	      first.limit = sect->size;
+ 	      last_line = line;
+ 	    }
+ 	  if (line > last_line
+-- 
+2.0.4
+

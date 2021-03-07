@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>toolchain@gentoo.org</email>
+    <name>Gentoo Toolchain Project</name>
+  </maintainer>
+  <upstream>
+    <maintainer>
+      <email>vda.linux@googlemail.com</email>
+      <name>Denys Vlasenko</name>
+    </maintainer>
+    <bugs-to>mailto:vda.linux@googlemail.com</bugs-to>
+  </upstream>
+</pkgmetadata>

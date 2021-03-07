@@ -1,0 +1,40 @@
+#!/sbin/openrc-run
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+extra_started_commands="reload"
+
+depend() {
+	need net
+}
+
+checkconfig() {
+	if [[ ! -f /etc/games/pvpgn/NAME.conf ]] ; then
+	    eerror "You must have a NAME.conf configuration file to start NAME"
+	    return 1
+	fi
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting PvPGN NAME"
+	start-stop-daemon --background --start --quiet \
+		--make-pidfile \
+		--pidfile /var/run/NAME.pid \
+		--exec GAMES_BINDIR/NAME -c GAMES_USER:GAMES_GROUP -- -f
+	eend $? "Failed to start NAME"
+}
+
+stop() {
+	ebegin "Stopping PvPGN NAME"
+	start-stop-daemon --stop --quiet --retry 20 \
+		--pidfile /var/run/NAME.pid
+	eend $?
+}
+
+reload() {
+	ebegin "Rehashing configuration for PvPGN NAME"
+	start-stop-daemon --stop --signal HUP --oknodo \
+	    --pidfile /var/run/NAME.pid
+	eend $?
+}

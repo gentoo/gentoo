@@ -1,0 +1,145 @@
+From 34fc21424803ad193532c8423049ad07131fd7db Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Sun, 6 May 2018 20:55:29 +0200
+Subject: [PATCH 1/2] BUILD: Prefer pkg-config over freetype-config if possible
+
+As of freetype-2.9.1 the freetype-config script no longer gets installed
+by default.
+---
+ configure | 47 ++++++++++++++++++++++++++++++++++++++---------
+ 1 file changed, 38 insertions(+), 9 deletions(-)
+
+diff --git a/configure b/configure
+index 7e0c9300..0a00cd95 100755
+--- a/configure
++++ b/configure
+@@ -209,6 +209,7 @@ _sparklepath=
+ _sdlconfig=sdl2-config
+ _libcurlconfig=curl-config
+ _freetypeconfig=freetype-config
++_freetype_found="false"
+ _sdlpath="$PATH"
+ _freetypepath="$PATH"
+ _libcurlpath="$PATH"
+@@ -4529,17 +4530,45 @@ echo "$_libunity"
+ #
+ # Check for FreeType2 to be present
+ #
+-if test "$_freetype2" != "no"; then
+-
+-	# Look for the freetype-config script
+-	find_freetypeconfig
++find_freetype() {
++        # Wrapper function which tries to find freetype
++        # either by callimg freetype-config or by using
++        # pkg-config.
++        # As of freetype-2.9.1 the freetype-config file
++        # no longer gets installed by default.
++
++	if pkg-config --exists freetype2; then
++		FREETYPE2_LIBS=`pkg-config --libs freetype2`
++		FREETYPE2_CFLAGS=`pkg-config --cflags freetype2`
++		FREETYPE2_STATIC_LIBS=`pkg-config --static --libs freetype2`
++		_freetype_found="true"
++	else
++		# Look for the freetype-config script
++		find_freetypeconfig
++		if test -n "$_freetypeconfig"; then
++			# Since 2.3.12, freetype-config prepends $SYSROOT to everything.
++			# This means we can't pass it a --prefix that includes $SYSROOT.
++			freetypeprefix="$_freetypepath"
++			if test -n "$SYSROOT" -a "$SYSROOT" != "/"; then
++				teststring=VeryImplausibleSysrootX1Y2Z3
++				if ( env SYSROOT=/$teststring "$_freetypeconfig" --cflags | grep $teststring 2> /dev/null > /dev/null ); then
++					echo "Adapting FreeType prefix to SYSROOT" >> "$TMPLOG"
++					freetypeprefix="${freetypeprefix##$SYSROOT}"
++				fi
++			fi
++			FREETYPE2_LIBS=`$_freetypeconfig --prefix="$freetypeprefix" --libs`
++			FREETYPE2_CFLAGS=`$_freetypeconfig --prefix="$freetypeprefix" --cflags`
++			FREETYPE2_STATIC_LIBS=`$_freetypeconfig --prefix="$freetypeprefix" --static --libs 2>/dev/null`
++			_freetype_found="true"
++		fi
++	fi
++}
+ 
+-	if test -z "$_freetypeconfig"; then
++if test "$_freetype2" != "no"; then
++	find_freetype
++	if test $_freetype_found != true; then
+ 		_freetype2=no
+ 	else
+-		FREETYPE2_LIBS=`$_freetypeconfig --prefix="$_freetypepath" --libs`
+-		FREETYPE2_CFLAGS=`$_freetypeconfig --prefix="$_freetypepath" --cflags`
+-
+ 		if test "$_freetype2" = "auto"; then
+ 			_freetype2=no
+ 
+@@ -4559,7 +4588,7 @@ EOF
+ 			# required flags for static linking. We abuse this to detect
+ 			# FreeType2 builds which are static themselves.
+ 			if test "$_freetype2" != "yes"; then
+-				FREETYPE2_LIBS=`$_freetypeconfig --prefix="$_freetypepath" --static --libs 2>/dev/null`
++				FREETYPE2_LIBS="$FREETYPE2_STATIC_LIBS"
+ 				cc_check_no_clean $FREETYPE2_CFLAGS $FREETYPE2_LIBS && _freetype2=yes
+ 			fi
+ 			cc_check_clean
+-- 
+2.21.0
+
+From c42f90595efae54e661293832bf979f3029599fb Mon Sep 17 00:00:00 2001
+From: Bastien Bouclet <bastien.bouclet@gmail.com>
+Date: Mon, 30 Jul 2018 13:40:55 +0200
+Subject: [PATCH 2/2] BUILD: Check if pkg-config is available
+
+---
+ configure | 19 +++++++++++++++----
+ 1 file changed, 15 insertions(+), 4 deletions(-)
+
+diff --git a/configure b/configure
+index 0a00cd95..198c1938 100755
+--- a/configure
++++ b/configure
+@@ -3866,7 +3866,19 @@ EOF
+ cc_check -lm && append_var LIBS "-lm"
+ 
+ #
+-# Check for Ogg Vorbis
++# Check for pkg-config
++#
++echocheck "pkg-config"
++_pkg_config=no
++command -v pkg-config >/dev/null 2>&1 && _pkg_config=yes
++echo "$_pkg_config"
++
++if test "$_pkg_config" = yes && test -n "$_host" && test -z "$PKG_CONFIG_LIBDIR"; then
++	echo "WARNING: When cross-compiling PKG_CONFIG_LIBDIR must be set to the location of the .pc files for the target"
++fi
++
++#
++# Check for Ogg
+ #
+ echocheck "Ogg Vorbis"
+ if test "$_vorbis" = auto ; then
+@@ -4490,7 +4502,7 @@ define_in_config_h_if_yes "$_text_console" 'USE_TEXT_CONSOLE_FOR_DEBUGGER'
+ # Check for Unity if taskbar integration is enabled
+ #
+ echocheck "libunity"
+-if test "$_unix" = no || test "$_taskbar" = no; then
++if test "$_unix" = no || test "$_taskbar" = no || test "$_pkg_config" = no; then
+ 	_libunity=no
+ else
+ if test "$_libunity" = auto ; then
+@@ -4536,8 +4548,7 @@ find_freetype() {
+         # pkg-config.
+         # As of freetype-2.9.1 the freetype-config file
+         # no longer gets installed by default.
+-
+-	if pkg-config --exists freetype2; then
++	if test "$_pkg_config" = "yes" && pkg-config --exists freetype2; then
+ 		FREETYPE2_LIBS=`pkg-config --libs freetype2`
+ 		FREETYPE2_CFLAGS=`pkg-config --cflags freetype2`
+ 		FREETYPE2_STATIC_LIBS=`pkg-config --static --libs freetype2`
+-- 
+2.21.0
+

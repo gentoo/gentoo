@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tomjbe@gentoo.org</email>
+		<name>Thomas Beierlein</name>
+	</maintainer>
+	<use>
+		<flag name="geotiff">Install geotiff support. Allows using USGS DRG topo
+			maps or other types of geotiff mapes/images</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">xastir</remote-id>
+	</upstream>
+</pkgmetadata>

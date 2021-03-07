@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>holgersson@posteo.de</email>
+		<name>Nils Freydank</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="altgamma">Alternative way for gamma setting with modesetting driver</flag>
+		<flag name="client">Build binary for client (includes code for non-dedicated server)</flag>
+		<flag name="mumble">Use Mumble for ingame VoIP (experimental)</flag>
+		<flag name="server">Build binary for dedicated server</flag>
+		<flag name="skeetshootmod">Build support for skeetshoot mod for specific maps</flag>
+		<flag name="voip">Use ioq3 ingame VoIP (experimental)</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">Barbatos/ioq3-for-UrbanTerror-4</remote-id>
+	</upstream>
+</pkgmetadata>

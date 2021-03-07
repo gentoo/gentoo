@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+		GNU cflow analyzes a collection of C source files and prints a graph,
+		charting control flow within the program.
+
+		GNU cflow is able to produce both direct and inverted flowgraphs for C
+		sources. Optionally a cross-reference listing can be generated. Two
+		output formats are implemented: POSIX and GNU (extended).
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,18 @@
+move app-admin/collectd app-metrics/collectd
+move app-metrics/prometheus-mysqld_exporter app-metrics/mysqld_exporter
+move gnome-extra/gnome-builder dev-util/gnome-builder
+move kde-apps/kstars sci-astronomy/kstars
+move media-video/kamoso kde-apps/kamoso
+move app-backup/kbackup kde-apps/kbackup
+move x11-proto/xcb-proto x11-base/xcb-proto
+move dev-db/xtrabackup-bin dev-db/percona-xtrabackup-bin
+move ros-meta/geometry_experimental ros-meta/geometry2
+slotmove =dev-ruby/websocket-driver-0.7.0 0 0.7
+move kde-plasma/oxygen-fonts media-fonts/oxygen-fonts
+move media-libs/vulkan-tools dev-util/vulkan-tools
+move games-strategy/ufo-ai games-strategy/ufoai
+move kde-apps/okteta app-editors/okteta
+move games-puzzle/triptych-demo games-puzzle/triptych
+move media-sound/teamspeak-client-bin media-sound/teamspeak-client
+move media-sound/teamspeak-server-bin media-sound/teamspeak-server
+move sci-chemistry/mdanalysis sci-chemistry/MDAnalysis

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>proaudio@gentoo.org</email>
+	<name>Gentoo ProAudio Project</name>
+</maintainer>
+<longdescription lang="en">
+	Aeolus is a synthesised (i.e. not sampled) pipe organ emulator that should
+	be good enough to make an organist enjoy playing it. It is a software
+	synthesiser optimised for this job, with possibly hundreds of controls for
+	each stop, that enable the user to "voice" his instrument.
+
+	Main features of the default instrument: three manuals and one pedal, five
+	different temperaments, variable tuning, MIDI control of course, stereo,
+	surround or Ambisonics output, flexible audio controls including a large
+	church reverb.
+</longdescription>
+</pkgmetadata>

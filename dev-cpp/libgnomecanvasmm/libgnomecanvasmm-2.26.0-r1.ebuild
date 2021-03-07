@@ -1,0 +1,56 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI="5"
+GCONF_DEBUG="no"
+GNOME_TARBALL_SUFFIX="bz2"
+
+inherit flag-o-matic gnome2
+
+DESCRIPTION="C++ bindings for libgnomecanvas"
+HOMEPAGE="https://www.gtkmm.org"
+
+LICENSE="LGPL-2.1"
+SLOT="2.6"
+KEYWORDS="~alpha amd64 arm ~ia64 ppc ppc64 sparc x86"
+IUSE="doc examples"
+
+RDEPEND="
+	>=gnome-base/libgnomecanvas-2.6
+	>=dev-cpp/gtkmm-2.4:2.4
+"
+DEPEND="${RDEPEND}
+	virtual/pkgconfig
+	doc? ( app-doc/doxygen )
+"
+
+src_prepare() {
+	if ! use examples; then
+		# don't waste time building the examples
+		sed -i 's/^\(SUBDIRS =.*\)examples\(.*\)$/\1\2/' Makefile.in || \
+			die "sed Makefile.in failed"
+	fi
+	gnome2_src_prepare
+	append-cxxflags -std=c++11 #568300
+}
+
+src_compile() {
+	gnome2_src_compile
+
+	if use doc; then
+		cd "${S}/docs/reference"
+		emake all
+	fi
+}
+
+src_install() {
+	gnome2_src_install
+
+	if use doc ; then
+		dohtml -r docs/reference/html/*
+	fi
+
+	if use examples; then
+		cp -R examples "${D}/usr/share/doc/${PF}"
+	fi
+}

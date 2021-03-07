@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>pinkbyte@gentoo.org</email>
+		<name>Sergey Popov</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>ibragimovrinat@mail.ru</email>
+			<name>Rinat Ibragimov</name>
+		</maintainer>
+		<bugs-to>https://github.com/i-rinat/reiserfs-defrag/issues</bugs-to>
+		<remote-id type="github">i-rinat/reiserfs-defrag</remote-id>
+	</upstream>
+</pkgmetadata>

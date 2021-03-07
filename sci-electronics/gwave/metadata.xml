@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-electronics@gentoo.org</email>
+    <name>Gentoo Electronics Project</name>
+  </maintainer>
+  <longdescription>
+  Gwave is a waveform viewer. Gwave can read binary or ascii files written by
+  HSpice from transient, AC, or Sweep analyses, "raw" files written by Spice2,
+  Spice3, or ngspice, and transient analysis files from the CAzM simulator. It
+  can also read a generic tabular ASCII format suitable for use with GnuCap or
+  homegrown tools.
+  </longdescription>
+  <upstream>
+    <remote-id type="sourceforge">gwave</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,24 @@
+diff -ur opendnssec-2.0.1.orig/m4/opendnssec_common.m4 opendnssec-2.0.1/m4/opendnssec_common.m4
+--- opendnssec-2.0.1.orig/m4/opendnssec_common.m4	2016-07-21 16:15:00.000000000 +0200
++++ opendnssec-2.0.1/m4/opendnssec_common.m4	2016-08-23 14:42:35.033460972 +0200
+@@ -17,7 +17,7 @@
+ OPENDNSSEC_DATA_DIR=$full_datadir/opendnssec
+ OPENDNSSEC_SYSCONF_DIR=$full_sysconfdir/opendnssec
+ OPENDNSSEC_LOCALSTATE_DIR="$full_localstatedir/opendnssec"
+-OPENDNSSEC_PID_DIR="$full_localstatedir/run/opendnssec"
++OPENDNSSEC_PID_DIR="${destdir}/run/opendnssec"
+ 
+ AC_SUBST([OPENDNSSEC_BIN_DIR])
+ AC_SUBST([OPENDNSSEC_SBIN_DIR])
+diff -ur opendnssec-2.0.1.orig/Makefile.am opendnssec-2.0.1/Makefile.am
+--- opendnssec-2.0.1.orig/Makefile.am	2016-08-23 14:40:10.009951791 +0200
++++ opendnssec-2.0.1/Makefile.am	2016-08-23 14:43:20.377870776 +0200
+@@ -36,8 +36,6 @@
+ 	$(INSTALL) -d $(DESTDIR)$(localstatedir)/lib/opendnssec/signconf
+ 	$(INSTALL) -d $(DESTDIR)$(localstatedir)/lib/opendnssec/unsigned
+ 	$(INSTALL) -d $(DESTDIR)$(localstatedir)/lib/opendnssec/signed
+-	$(INSTALL) -d $(DESTDIR)$(localstatedir)/run
+-	$(INSTALL) -d $(DESTDIR)$(localstatedir)/run/opendnssec
+ 
+ docs:
+ 	(cd libhsm; $(MAKE) doxygen)

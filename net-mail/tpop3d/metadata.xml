@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <!-- maintainer-needed -->
+  <use>
+    <flag name="authexternal">Enable authentication by an external program</flag>
+    <flag name="flatfile">Enable authentication against /etc/passwd-style flat files</flag>
+    <flag name="passwd">Enable /etc/passwd authentication</flag>
+    <flag name="sha1">Use OpenSSL for sha1 encrypted passwords.</flag>
+    <flag name="shadow">Enable /etc/shadow authentication</flag>
+  </use>
+</pkgmetadata>

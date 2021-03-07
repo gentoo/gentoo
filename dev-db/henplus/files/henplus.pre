@@ -1,0 +1,51 @@
+#
+# Based on the upstream script but parts not relevant to Gentoo
+# stripped away. We would not need this at all but better to make
+# this behave as the upstream docs say and then also have all the 
+# Gentoo goodies.
+# https://bugs.gentoo.org/show_bug.cgi?id=176185
+
+##------------------
+THISDIR=`dirname $0`
+# install layout is: script in /usr/bin/henplus and libs in /usr/share/henplus
+HENPLUSDIR=$THISDIR/../share/henplus
+
+# you may just throw your own jar files in this dir.
+# (like additional JDBC-drivers, that are not in default
+# classpath)
+for f in $HENPLUSDIR/*.jar $HENPLUSDIR/*.zip ; do
+    if [ -r "$f" ] ; then
+        CLASSPATH=$CLASSPATH:$f
+    fi
+done
+
+# starting at the current directory we look for additional
+# JDBC-drivers in .henplus/lib-directories up the path. 
+# if no directory like that has been found the one in the 
+# home directory will be used
+DIR=`pwd`
+CUSTOM_HENPLUSDIR=""
+
+while [ $DIR != "/" ] ; do
+        if [ -d $DIR"/.henplus/lib" ]; then
+            CUSTOM_HENPLUSDIR=$DIR"/.henplus/lib"
+	    break
+        fi
+        DIR=`dirname $DIR`
+done
+
+if [ -z $CUSTOM_HENPLUSDIR ]; then
+     if [ -d "/.henplus/lib" ]; then
+         CUSTOM_HENPLUSDIR="/.henplus/lib"
+     else
+         CUSTOM_HENPLUSDIR=$HOME/.henplus/lib
+     fi
+fi
+
+for f in $CUSTOM_HENPLUSDIR/*.jar $CUSTOM_HENPLUSDIR/*.zip ; do
+    if [ -r "$f" ] ; then
+        CLASSPATH=$CLASSPATH:$f
+    fi
+done
+
+export CLASSPATH

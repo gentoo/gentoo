@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>graham@ulsterit.com</email>
+    <name>Graham Ramsey</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>cjk@gentoo.org</email>
+    <name>Cjk</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <use>
+    <flag name="boost">Compile against <pkg>dev-libs/boost</pkg> libraries</flag>
+    <flag name="opencc">Enable support for <pkg>app-i18n/opencc</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="github">libpinyin/ibus-libpinyin</remote-id>
+    <remote-id type="sourceforge">libpinyin</remote-id>
+  </upstream>
+</pkgmetadata>

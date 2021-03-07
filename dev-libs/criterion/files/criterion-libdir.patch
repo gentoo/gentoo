@@ -1,0 +1,30 @@
+diff --git a/.cmake/Modules/PackageUtils.cmake b/.cmake/Modules/PackageUtils.cmake
+index 593f2d1..a771fd5 100644
+--- a/.cmake/Modules/PackageUtils.cmake
++++ b/.cmake/Modules/PackageUtils.cmake
+@@ -50,9 +50,9 @@ function (cr_add_library _LIB)
+   endforeach ()
+ 
+   install(TARGETS ${_LIB}
+-    RUNTIME DESTINATION bin
+-    LIBRARY DESTINATION lib
+-    ARCHIVE DESTINATION lib ${install_flags}
++    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
++    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR} ${install_flags}
+   )
+ endfunction ()
+ 
+diff --git a/src/criterion.pc.in b/src/criterion.pc.in
+index 18ac3d6..23737a4 100644
+--- a/src/criterion.pc.in
++++ b/src/criterion.pc.in
+@@ -1,7 +1,7 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=${prefix}
+ includedir=${prefix}/include
+-libdir=${prefix}/lib
++libdir=${prefix}/@CMAKE_INSTALL_LIBDIR@
+ 
+ Name: @PROJECT_NAME@
+ Description: A KISS, Cross platform unit testing framework for C and C++

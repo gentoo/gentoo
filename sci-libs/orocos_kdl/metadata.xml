@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>aballier@gentoo.org</email>
+		<name>Alexis Ballier</name>
+	</maintainer>
+	<longdescription lang="en">
+		The Kinematics and Dynamics Library (KDL) develops an application
+		independent framework for modelling and computation of kinematic chains,
+		such as robots, biomechanical human models, computer-animated figures,
+		machine tools, etc. It provides class libraries for geometrical objects
+		(point, frame, line,... ), kinematic chains of various families (serial,
+		humanoid, parallel, mobile,... ), and their motion specification and
+		interpolation.
+	</longdescription>
+	<use>
+		<flag name="models">Build models for some well known robots.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">orocos/orocos_kinematics_dynamics</remote-id>
+	</upstream>
+</pkgmetadata>

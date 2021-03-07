@@ -1,0 +1,28 @@
+#!/sbin/openrc-run
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+#NB: Config is in /etc/conf.d/gpm
+
+command=/usr/sbin/gpm
+command_args="
+	-m ${MOUSEDEV}
+	-t ${MOUSE}
+	${RESPONSIVENESS:+ -r ${RESPONSIVENESS}}
+	${REPEAT_TYPE:+ -R${REPEAT_TYPE}}
+	${APPEND}
+"
+
+pidfile=/var/run/gpm.pid
+
+depend() {
+	need localmount
+	use hotplug logger
+}
+
+start_pre() {
+	if [ -z "${MOUSEDEV}" ] || [ -z "${MOUSE}" ] ; then
+		eerror "You need to setup MOUSEDEV and MOUSE in /etc/conf.d/gpm first"
+		return 1
+	fi
+}

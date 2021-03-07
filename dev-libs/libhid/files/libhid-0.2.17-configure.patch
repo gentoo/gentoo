@@ -1,0 +1,36 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -59,9 +59,10 @@
+ MD_CHECK_OS
+ 
+ MD_CHECK_LIBUSB018B
++LIBS="$LIBS $LIBUSB_LIBS"
++INCLUDES="$INCLUDES $LIBUSB_CFLAGS"
+ 
+ AC_PROG_CC
+-MD_CHECK_GCC3
+ 
+ dnl MD_CONF_DISTCC
+ dnl MD_CONF_CCACHE
+@@ -78,7 +79,6 @@
+ AC_C_BIGENDIAN
+ AC_C_STRINGIZE
+ 
+-MD_CONF_DEBUGGING
+ MD_CONF_COMPILER
+ AM_CONDITIONAL(OS_LINUX, test "$MD_OS" = "linux")
+ AM_CONDITIONAL(OS_BSD, test "$MD_OS" = "bsd")
+@@ -98,13 +98,6 @@
+ 
+ MD_CHECK_DOXYGEN
+ 
+-MD_CONF_FLAGS(
+-  [],
+-  [$OS_CFLAGS $LIBUSB_CFLAGS],
+-  [],
+-  [$OS_LDFLAGS $LIBUSB_LIBS]
+-)
+-
+ MD_CONF_DB2MAN
+ 
+ ##### OUTPUT #################################################################

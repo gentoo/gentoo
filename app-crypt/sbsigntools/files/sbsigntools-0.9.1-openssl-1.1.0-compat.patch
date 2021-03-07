@@ -1,0 +1,152 @@
+diff --git a/src/fileio.c b/src/fileio.c
+index 032eb1e..09bc3aa 100644
+--- a/src/fileio.c
++++ b/src/fileio.c
+@@ -40,6 +40,7 @@
+ #include <openssl/pem.h>
+ #include <openssl/err.h>
+ #include <openssl/engine.h>
++#include <openssl/ui.h>
+ 
+ #include <ccan/talloc/talloc.h>
+ #include <ccan/read_write_all/read_write_all.h>
+diff --git a/src/idc.c b/src/idc.c
+index 236cefd..6d87bd4 100644
+--- a/src/idc.c
++++ b/src/idc.c
+@@ -238,7 +238,11 @@ struct idc *IDC_get(PKCS7 *p7, BIO *bio)
+ 
+ 	/* extract the idc from the signed PKCS7 'other' data */
+ 	str = p7->d.sign->contents->d.other->value.asn1_string;
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
+ 	idcbuf = buf = ASN1_STRING_data(str);
++#else
++	idcbuf = buf = ASN1_STRING_get0_data(str);
++#endif
+ 	idc = d2i_IDC(NULL, &buf, ASN1_STRING_length(str));
+ 
+ 	/* If we were passed a BIO, write the idc data, minus type and length,
+@@ -289,7 +293,11 @@ int IDC_check_hash(struct idc *idc, struct image *image)
+ 	}
+ 
+ 	/* check hash against the one we calculated from the image */
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
+ 	buf = ASN1_STRING_data(str);
++#else
++	buf = ASN1_STRING_get0_data(str);
++#endif
+ 	if (memcmp(buf, sha, sizeof(sha))) {
+ 		fprintf(stderr, "Hash doesn't match image\n");
+ 		fprintf(stderr, " got:       %s\n", sha256_str(buf));
+diff --git a/src/sbattach.c b/src/sbattach.c
+index a0c01b8..e89a23e 100644
+--- a/src/sbattach.c
++++ b/src/sbattach.c
+@@ -231,6 +231,7 @@ int main(int argc, char **argv)
+ 		return EXIT_FAILURE;
+ 	}
+ 
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
+ 	ERR_load_crypto_strings();
+ 	OpenSSL_add_all_digests();
+ 	OPENSSL_config(NULL);
+@@ -239,6 +240,7 @@ int main(int argc, char **argv)
+ 	 * module isn't present).  In either case ignore the errors
+ 	 * (malloc will cause other failures out lower down */
+ 	ERR_clear_error();
++#endif
+ 
+ 	image = image_load(image_filename);
+ 	if (!image) {
+diff --git a/src/sbkeysync.c b/src/sbkeysync.c
+index 7b17f40..419b1e7 100644
+--- a/src/sbkeysync.c
++++ b/src/sbkeysync.c
+@@ -208,7 +208,11 @@ static int x509_key_parse(struct key *key, uint8_t *data, size_t len)
+ 		goto out;
+ 
+ 	key->id_len = ASN1_STRING_length(serial);
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
+ 	key->id = talloc_memdup(key, ASN1_STRING_data(serial), key->id_len);
++#else
++	key->id = talloc_memdup(key, ASN1_STRING_get0_data(serial), key->id_len);
++#endif
+ 
+ 	key->description = talloc_array(key, char, description_len);
+ 	X509_NAME_oneline(X509_get_subject_name(x509),
+@@ -927,6 +931,7 @@ int main(int argc, char **argv)
+ 		return EXIT_FAILURE;
+ 	}
+ 
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
+ 	ERR_load_crypto_strings();
+ 	OpenSSL_add_all_digests();
+ 	OpenSSL_add_all_ciphers();
+@@ -936,6 +941,7 @@ int main(int argc, char **argv)
+ 	 * module isn't present).  In either case ignore the errors
+ 	 * (malloc will cause other failures out lower down */
+ 	ERR_clear_error();
++#endif
+ 
+ 	ctx->filesystem_keys = init_keyset(ctx);
+ 	ctx->firmware_keys = init_keyset(ctx);
+diff --git a/src/sbsign.c b/src/sbsign.c
+index ff1fdfd..78d8d64 100644
+--- a/src/sbsign.c
++++ b/src/sbsign.c
+@@ -188,6 +188,7 @@ int main(int argc, char **argv)
+ 
+ 	talloc_steal(ctx, ctx->image);
+ 
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
+ 	ERR_load_crypto_strings();
+ 	OpenSSL_add_all_digests();
+ 	OpenSSL_add_all_ciphers();
+@@ -197,6 +198,7 @@ int main(int argc, char **argv)
+ 	 * module isn't present).  In either case ignore the errors
+ 	 * (malloc will cause other failures out lower down */
+ 	ERR_clear_error();
++#endif
+ 	if (engine)
+ 		pkey = fileio_read_engine_key(engine, keyfilename);
+ 	else
+diff --git a/src/sbvarsign.c b/src/sbvarsign.c
+index 7dcbe51..9319c8b 100644
+--- a/src/sbvarsign.c
++++ b/src/sbvarsign.c
+@@ -509,6 +509,7 @@ int main(int argc, char **argv)
+ 		return EXIT_FAILURE;
+ 	}
+ 
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
+ 	/* initialise openssl */
+ 	OpenSSL_add_all_digests();
+ 	OpenSSL_add_all_ciphers();
+@@ -519,6 +520,7 @@ int main(int argc, char **argv)
+ 	 * module isn't present).  In either case ignore the errors
+ 	 * (malloc will cause other failures out lower down */
+ 	ERR_clear_error();
++#endif
+ 
+ 	/* set up the variable signing context */
+ 	varname = argv[optind];
+diff --git a/src/sbverify.c b/src/sbverify.c
+index 3920d91..d0b203a 100644
+--- a/src/sbverify.c
++++ b/src/sbverify.c
+@@ -250,6 +250,7 @@ int main(int argc, char **argv)
+ 	verbose = false;
+ 	detached_sig_filename = NULL;
+ 
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
+ 	OpenSSL_add_all_digests();
+ 	ERR_load_crypto_strings();
+ 	OPENSSL_config(NULL);
+@@ -258,6 +259,7 @@ int main(int argc, char **argv)
+ 	 * module isn't present).  In either case ignore the errors
+ 	 * (malloc will cause other failures out lower down */
+ 	ERR_clear_error();
++#endif
+ 
+ 	for (;;) {
+ 		int idx;

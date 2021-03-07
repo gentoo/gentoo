@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		Prosody is a modern XMPP communication server.
+		It aims to be easy to set up and configure,
+		and efficient with system resources.
+		Additionally, for developers it aims to be easy to extend
+		and give a flexible system on which to rapidly develop
+		added functionality, or prototype new protocols.
+	</longdescription>
+	<use>
+		<flag name="libevent">Use libevent for event handling</flag>
+	</use>
+</pkgmetadata>

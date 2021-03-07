@@ -1,0 +1,17 @@
+--- a/makefile
++++ b/makefile
+@@ -11,11 +11,11 @@
+ HEADERS = general.h clustalw.h
+ 
+ CC	= cc
+-CFLAGS  = -c -O
+-LFLAGS	= -O -lm 
++CFLAGS  += -c
++LIBS	= -lm 
+ 
+ clustalw : $(OBJECTS) amenu.o clustalw.o
+-	$(CC) -o $@ $(OBJECTS) amenu.o clustalw.o $(LFLAGS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJECTS) amenu.o clustalw.o $(LIBS)
+ 
+ interface.o : interface.c $(HEADERS) param.h
+ 	$(CC) $(CFLAGS) $*.c

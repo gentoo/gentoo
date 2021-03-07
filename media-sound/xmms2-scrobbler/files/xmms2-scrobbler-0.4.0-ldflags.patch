@@ -1,0 +1,19 @@
+commit 8b97319c1a03acecc21b5608516859daaf5bca75
+Author: James Le Cuirot <chewi@aura-online.co.uk>
+Date:   Fri Mar 26 20:10:54 2010 +0100
+
+    Fixed the build if the --as-needed linker option is enabled.
+
+diff --git a/Makefile b/Makefile
+index dad3fcb..3331e30 100644
+--- a/Makefile
++++ b/Makefile
+@@ -35,7 +35,7 @@ install: $(BINARY)
+ 	install -m 755 $(BINARY) $(DESTDIR)$(PREFIX)/bin
+ 
+ $(BINARY): $(OBJECTS) bin
+-	$(QUIET_LINK)$(CC) $(LDFLAGS) $(XMMS_LDFLAGS) $(CURL_LDFLAGS) $(OBJECTS) -o $@
++	$(QUIET_LINK)$(CC) $(OBJECTS) $(LDFLAGS) $(XMMS_LDFLAGS) $(CURL_LDFLAGS) -o $@
+ 
+ src/%.o : src/%.c
+ 	$(QUIET_CC)$(CC) $(CFLAGS) $(XMMS_CFLAGS) $(CURL_CFLAGS) $(ENDIAN_CFLAGS) -o $@ -c $<

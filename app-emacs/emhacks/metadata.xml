@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<longdescription>
+  The EMHACKS project goal is to provide a set of useful libraries to help
+  using Emacs or XEmacs.
+
+  Among those libraries you will find:
+  gdiff,    Use an external GUI diff tool from [X]Emacs;
+  jjar,     Java Archive builder;
+  jmaker,   Java Makefile generator;
+  swbuff,   Quick switch between Emacs buffers;
+  tabbar,   Display a tab bar in the header line.
+</longdescription>
+<stabilize-allarches/>
+<upstream>
+  <remote-id type="sourceforge">emhacks</remote-id>
+</upstream>
+</pkgmetadata>

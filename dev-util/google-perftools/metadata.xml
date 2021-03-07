@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<use>
+		<flag name="largepages">
+			Use (experimental) larger pages for tcmalloc, this increases
+			memory usage, but should speed up the allocation/free
+			operations.
+		</flag>
+		<flag name="largepages64k">
+			Use (experimental) 64K pages for tcmalloc, this increases
+			memory usage, but should speed up the allocation/free
+			operations.
+		</flag>
+		<flag name="debug">
+			Build a set of libraries with debug support (so-called
+			debugalloc). These are available by default but are not needed
+			unless you're actually developing using tcmalloc.
+		</flag>
+		<flag name="minimal">
+			Only build the tcmalloc_minimal library, ignoring the heap
+			checker and the profilers.
+		</flag>
+		<flag name="optimisememory">
+			To build libtcmalloc with smaller internal caches.
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">gperftools/gperftools</remote-id>
+	</upstream>
+</pkgmetadata>

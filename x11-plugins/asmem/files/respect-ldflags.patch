@@ -1,0 +1,27 @@
+From 1f02c866884bd08dda27aada5ebaa92e560144d4 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sun, 28 Aug 2016 12:15:34 -0400
+Subject: [PATCH 1/1] autoconf/Makefile.common.in: add $LDFLAGS to the linker
+ command.
+
+Gentoo-Bug: 334771
+---
+ autoconf/Makefile.common.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/autoconf/Makefile.common.in b/autoconf/Makefile.common.in
+index 2409579..08e01a9 100644
+--- a/autoconf/Makefile.common.in
++++ b/autoconf/Makefile.common.in
+@@ -34,7 +34,7 @@ indent:
+ 		done
+ 
+ $(PROG):        $(OBJS)
+-		$(CC) $(OBJS) $(LIBRARIES) $(EXTRA_LIBRARIES) -o $(@)
++		$(CC) $(OBJS) $(LIBRARIES) $(EXTRA_LIBRARIES) -o $(@) $(LDFLAGS)
+ 
+ .c.o:
+ 		$(CC) $(CCFLAGS) $(EXTRA_DEFINES) $(INCLUDES) $(EXTRA_INCLUDES) -c $*.c
+-- 
+2.7.3
+

@@ -1,0 +1,302 @@
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Tue, 11 Oct 2016 21:29:22 -0400
+Subject: Test use of gpg without explicit passphrase (agent+pinentry)
+
+The modern GnuPG suite encourages the use of gpg-agent to control
+access to secret key material.  In this use case, we avoid setting an
+explicit passphrase in code, and rely on either a correctly-configured
+and primed gpg-agent or a dedicated pinentry program to supply the
+passphrase.
+
+This additional test verifies that the passphrase can be handled by
+the agent.  Note that the passphrase for this additional test key is
+*not* the default passphrase, so this test should fail in the event
+that gpg can't use the agent and the pinentry for this task.
+
+Unfortunately, this all assumes that we're using GnuPG "Modern".  I've
+noted concerns about writing forward- and backward-compatible bindings
+for GnuPG here:
+https://lists.gnupg.org/pipermail/gnupg-devel/2016-October/031800.html
+---
+ README                 | 41 +++++++++++++++++++++++++++--------------
+ lib/GnuPG/Interface.pm | 26 +++++++++++++++++++++++++-
+ t/MyTestSpecific.pm    | 10 ++++++++--
+ t/decrypt.t            | 27 +++++++++++++++++++++++++++
+ test/encrypted.2.gpg   | 12 ++++++++++++
+ test/fake-pinentry.pl  |  2 +-
+ test/plain.2.txt       |  1 +
+ 7 files changed, 101 insertions(+), 18 deletions(-)
+ create mode 100644 test/encrypted.2.gpg
+ create mode 100644 test/plain.2.txt
+
+diff --git a/README b/README
+index a05ef9b..be06ef3 100644
+--- a/README
++++ b/README
+@@ -5,7 +5,7 @@ SYNOPSIS
+       # A simple example
+       use IO::Handle;
+       use GnuPG::Interface;
+-  
++
+       # setting up the situation
+       my $gnupg = GnuPG::Interface->new();
+       $gnupg->options->hash_init( armor   => 1,
+@@ -24,7 +24,7 @@ SYNOPSIS
+       # Now we'll go about encrypting with the options already set
+       my @plaintext = ( 'foobar' );
+       my $pid = $gnupg->encrypt( handles => $handles );
+-  
++
+       # Now we write to the input of GnuPG
+       print $input @plaintext;
+       close $input;
+@@ -140,13 +140,26 @@ OBJECT METHODS
+         standard error, standard output, or standard error. If the status or
+         logger handle is not defined, this channel of communication is never
+         established with GnuPG, and so this information is not generated and
+-        does not come into play. If the passphrase data member handle of the
+-        handles object is not defined, but the the passphrase data member
+-        handle of GnuPG::Interface object is, GnuPG::Interface will handle
+-        passing this information into GnuPG for the user as a convenience.
+-        Note that this will result in GnuPG::Interface storing the
+-        passphrase in memory, instead of having it simply 'pass-through' to
+-        GnuPG via a handle.
++        does not come into play.
++
++        If the passphrase data member handle of the handles object is not
++        defined, but the the passphrase data member handle of
++        GnuPG::Interface object is, GnuPG::Interface will handle passing
++        this information into GnuPG for the user as a convenience. Note that
++        this will result in GnuPG::Interface storing the passphrase in
++        memory, instead of having it simply 'pass-through' to GnuPG via a
++        handle.
++
++        If neither the passphrase data member of the GnuPG::Interface nor
++        the passphrase data member of the handles object is defined, then
++        GnuPG::Interface assumes that access and control over the secret key
++        will be handled by the running gpg-agent process. This represents
++        the simplest mode of operation with the GnuPG "modern" suite
++        (version 2.1 and later). It is also the preferred mode for tools
++        intended to be user-facing, since the user will be prompted directly
++        by gpg-agent for use of the secret key material. Note that for
++        programmatic use, this mode requires the gpg-agent and pinentry to
++        already be correctly configured.
+ 
+   Other Methods
+     get_public_keys( @search_strings )
+@@ -241,7 +254,7 @@ EXAMPLES
+ 
+       my $handles = GnuPG::Handles->new( stdin    => $input,
+                                          stdout   => $output );
+-   
++
+       # this sets up the communication
+       # Note that the recipients were specified earlier
+       # in the 'options' data member of the $gnupg object.
+@@ -315,7 +328,7 @@ EXAMPLES
+       # a file written to disk
+       # Make sure you "use IO::File" if you use this module!
+       my $cipher_file = IO::File->new( 'encrypted.gpg' );
+-   
++
+       # this sets up the communication
+       my $pid = $gnupg->decrypt( handles => $handles );
+ 
+@@ -346,7 +359,7 @@ EXAMPLES
+       # This time we'll just let GnuPG print to our own output
+       # and read from our input, because no input is needed!
+       my $handles = GnuPG::Handles->new();
+-  
++
+       my @ids = ( 'ftobin', '0xABCD1234ABCD1234ABCD1234ABCD1234ABCD1234' );
+ 
+       # this time we need to specify something for
+@@ -354,7 +367,7 @@ EXAMPLES
+       # search ids as arguments
+       my $pid = $gnupg->list_public_keys( handles      => $handles,
+                                           command_args => [ @ids ] );
+-  
++
+        waitpid $pid, 0;
+ 
+   Creating GnuPG::PublicKey Objects
+@@ -372,7 +385,7 @@ EXAMPLES
+           command_args => [ qw( test/key.1.asc ) ],
+           handles      => $handles,
+         );
+-    
++
+         my @out = <$handles->stdout()>;
+         waitpid $pid, 0;
+ 
+diff --git a/lib/GnuPG/Interface.pm b/lib/GnuPG/Interface.pm
+index 29205f0..5d8b0ec 100644
+--- a/lib/GnuPG/Interface.pm
++++ b/lib/GnuPG/Interface.pm
+@@ -106,6 +106,14 @@ sub fork_attach_exec( $% ) {
+     my ( $self, %args ) = @_;
+ 
+     my $handles = $args{handles} or croak 'no GnuPG::Handles passed';
++    my $use_loopback_pinentry = 0;
++
++    # WARNING: this assumes that we're using the "modern" GnuPG suite
++    # -- version 2.1.x or later.  It's not clear to me how we can
++    # safely and efficiently avoid this assumption (see
++    # https://lists.gnupg.org/pipermail/gnupg-devel/2016-October/031800.html)
++    $use_loopback_pinentry = 1
++      if ($handles->passphrase());
+ 
+     # deprecation support
+     $args{commands} ||= $args{gnupg_commands};
+@@ -293,8 +301,12 @@ sub fork_attach_exec( $% ) {
+             $self->options->$option($fileno);
+         }
+ 
++        my @args = $self->options->get_args();
++        push @args, '--pinentry-mode', 'loopback'
++          if $use_loopback_pinentry;
++
+         my @command = (
+-            $self->call(), $self->options->get_args(),
++            $self->call(), @args,
+             @commands,     @command_args
+         );
+ 
+@@ -1005,6 +1017,7 @@ and standard error will be tied to the running program's standard error,
+ standard output, or standard error.  If the B<status> or B<logger> handle
+ is not defined, this channel of communication is never established with GnuPG,
+ and so this information is not generated and does not come into play.
++
+ If the B<passphrase> data member handle of the B<handles> object
+ is not defined, but the the B<passphrase> data member handle of GnuPG::Interface
+ object is, GnuPG::Interface will handle passing this information into GnuPG
+@@ -1012,6 +1025,17 @@ for the user as a convenience.  Note that this will result in
+ GnuPG::Interface storing the passphrase in memory, instead of having
+ it simply 'pass-through' to GnuPG via a handle.
+ 
++If neither the B<passphrase> data member of the GnuPG::Interface nor
++the B<passphrase> data member of the B<handles> object is defined,
++then GnuPG::Interface assumes that access and control over the secret
++key will be handled by the running gpg-agent process.  This represents
++the simplest mode of operation with the GnuPG "modern" suite (version
++2.1 and later).  It is also the preferred mode for tools intended to
++be user-facing, since the user will be prompted directly by gpg-agent
++for use of the secret key material.  Note that for programmatic use,
++this mode requires the gpg-agent and pinentry to already be correctly
++configured.
++
+ =back
+ 
+ =head2 Other Methods
+diff --git a/t/MyTestSpecific.pm b/t/MyTestSpecific.pm
+index c8764cc..e513c25 100644
+--- a/t/MyTestSpecific.pm
++++ b/t/MyTestSpecific.pm
+@@ -55,9 +55,15 @@ struct( Text => { fn => "\$", fh => "\$", data => "\$" } );
+ $texts{plain} = Text->new();
+ $texts{plain}->fn( 'test/plain.1.txt' );
+ 
++$texts{alt_plain} = Text->new();
++$texts{alt_plain}->fn( 'test/plain.2.txt' );
++
+ $texts{encrypted} = Text->new();
+ $texts{encrypted}->fn( 'test/encrypted.1.gpg' );
+ 
++$texts{alt_encrypted} = Text->new();
++$texts{alt_encrypted}->fn( 'test/encrypted.2.gpg' );
++
+ $texts{signed} = Text->new();
+ $texts{signed}->fn( 'test/signed.1.asc' );
+ 
+@@ -68,7 +74,7 @@ $texts{temp} = Text->new();
+ $texts{temp}->fn( 'test/temp' );
+ 
+ 
+-foreach my $name ( qw( plain encrypted signed key ) )
++foreach my $name ( qw( plain alt_plain encrypted alt_encrypted signed key ) )
+ {
+     my $entry = $texts{$name};
+     my $filename = $entry->fn();
+@@ -90,7 +96,7 @@ sub reset_handles
+         stderr  => $stderr
+       );
+ 
+-    foreach my $name ( qw( plain encrypted signed key ) )
++    foreach my $name ( qw( plain alt_plain encrypted alt_encrypted signed key ) )
+     {
+         my $entry = $texts{$name};
+         my $filename = $entry->fn();
+diff --git a/t/decrypt.t b/t/decrypt.t
+index b2639ed..ee41448 100644
+--- a/t/decrypt.t
++++ b/t/decrypt.t
+@@ -58,3 +58,30 @@ TEST
+ {
+     return compare( $texts{plain}->fn(), $texts{temp}->fn() ) == 0;
+ };
++
++
++# test without default_passphrase (that is, by using the agent)
++TEST
++{
++    reset_handles();
++
++    $handles->stdin( $texts{alt_encrypted}->fh() );
++    $handles->options( 'stdin' )->{direct} = 1;
++
++    $handles->stdout( $texts{temp}->fh() );
++    $handles->options( 'stdout' )->{direct} = 1;
++
++    $gnupg->clear_passphrase();
++
++    my $pid = $gnupg->decrypt( handles => $handles );
++
++    waitpid $pid, 0;
++
++    return $CHILD_ERROR == 0;
++};
++
++
++TEST
++{
++    return compare( $texts{alt_plain}->fn(), $texts{temp}->fn() ) == 0;
++};
+diff --git a/test/encrypted.2.gpg b/test/encrypted.2.gpg
+new file mode 100644
+index 0000000..105cbb3
+--- /dev/null
++++ b/test/encrypted.2.gpg
+@@ -0,0 +1,12 @@
++-----BEGIN PGP MESSAGE-----
++
++hQEMAw3NS2KuRB0PAQgAuCMQO6blPRIJZib+kDa51gac+BYPl8caXYTLqIHtiz2/
++YRVqePJON4lNAqT6qUksIzQHtejFO6tb1SLqgX9Ti+fKAMLrQw9VGOYaJFoRrTJs
+++X33S4GHVVikRTu0dydAsekbfPSc2nRmTFUlSEV3psgAmg9xy8KA6cZroK9Xfcuh
++xW7KLE0hLP+2NZ7zNmJMdu6LDGzvlQsnm1UeElXK8XdMGf8kA3R+GgeeOnR/oEQc
++Uep77k/fLc+UV4fp9Dk1OBeg3Ko/irSaefk4mU7F4HmS8jIERHRvXBTiur1Zx8Nx
++9U3fcQuc+P9+JC89iS4PJPF1Hr0MlezAghZYJrhOrtJIAe5Uaft5KMGRfy0VQnAs
++MHqGnGtzzVWK6GK83ibgG4tTfPEHHIgNFsJf3rM4cWklUmCS9TeeDJJZfhnRA6+/
++X82e6OI7QNbO
++=DlGE
++-----END PGP MESSAGE-----
+diff --git a/test/fake-pinentry.pl b/test/fake-pinentry.pl
+index 12d3611..40b8b08 100755
+--- a/test/fake-pinentry.pl
++++ b/test/fake-pinentry.pl
+@@ -21,7 +21,7 @@ while (<STDIN>) {
+   chomp;
+   next if (/^$/);
+   next if (/^#/);
+-  print ("D test\n") if (/^getpin/i);
++  print ("D supercalifragilisticexpialidocious\n") if (/^getpin/i);
+   print "OK\n";
+   exit if (/^bye/i);
+ }
+diff --git a/test/plain.2.txt b/test/plain.2.txt
+new file mode 100644
+index 0000000..da5a1d5
+--- /dev/null
++++ b/test/plain.2.txt
+@@ -0,0 +1 @@
++test message

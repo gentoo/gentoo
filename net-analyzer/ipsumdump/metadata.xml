@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type='project'>
+<email>netmon@gentoo.org</email>
+</maintainer>
+<use>
+<flag name="nanotimestamp">Enable timestamps with nano-second resolution</flag>
+</use>
+<longdescription lang="en">
+The ipsumdump program summarizes TCP/IP dump files into a self-describing ASCII
+format easily readable by humans and programs. The companion ipaggcreate
+program counts various properties of packet aggregates.
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<upstream>
+		<changelog>http://conspy.sourceforge.net/ChangeLog.txt</changelog>
+		<remote-id type="sourceforge">conspy</remote-id>
+	</upstream>
+</pkgmetadata>

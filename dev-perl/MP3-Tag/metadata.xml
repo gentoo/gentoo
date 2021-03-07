@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sound@gentoo.org</email>
+    <name>Gentoo Sound project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">MP3-Tag</remote-id>
+    <remote-id type="cpan-module">Encode::transliterate_win1251</remote-id>
+    <remote-id type="cpan-module">MP3::Tag</remote-id>
+    <remote-id type="cpan-module">MP3::Tag::CDDB_File</remote-id>
+    <remote-id type="cpan-module">MP3::Tag::Cue</remote-id>
+    <remote-id type="cpan-module">MP3::Tag::File</remote-id>
+    <remote-id type="cpan-module">MP3::Tag::ID3v1</remote-id>
+    <remote-id type="cpan-module">MP3::Tag::ID3v2</remote-id>
+    <remote-id type="cpan-module">MP3::Tag::ImageExifTool</remote-id>
+    <remote-id type="cpan-module">MP3::Tag::ImageSize</remote-id>
+    <remote-id type="cpan-module">MP3::Tag::Implemenation</remote-id>
+    <remote-id type="cpan-module">MP3::Tag::Inf</remote-id>
+    <remote-id type="cpan-module">MP3::Tag::LastResort</remote-id>
+    <remote-id type="cpan-module">MP3::Tag::ParseData</remote-id>
+    <remote-id type="cpan-module">MP3::Tag::__hasparent</remote-id>
+    <remote-id type="cpan-module">MP3::Tag::__proxy</remote-id>
+    <remote-id type="cpan-module">Normalize::Text::Music_Fields</remote-id>
+  </upstream>
+</pkgmetadata>

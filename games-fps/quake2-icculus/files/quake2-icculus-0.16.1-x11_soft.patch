@@ -1,0 +1,45 @@
+
+the x11 software renderer just needs some tweaks to get working
+
+--- Makefile.old
++++ Makefile
+@@ -358,7 +358,7 @@
+  endif
+ 
+  ifeq ($(strip $(BUILD_X11)),YES)
+-  $(warning Warning: Software X Renderer not supported for $(ARCH))
++  TARGETS += $(BUILDDIR)/ref_softx.$(SHLIBEXT)
+  endif
+ 
+  ifeq ($(strip $(BUILD_GLX)),YES)
+--- src/linux/rw_x11.c.old
++++ src/linux/rw_x11.c
+@@ -53,7 +53,7 @@
+ #include <X11/Xatom.h>
+ #include <X11/keysym.h>
+ #include <X11/extensions/XShm.h>
+-#include <X11/extensions/xf86dga.h>
++#include <X11/extensions/Xxf86dga.h>
+ #ifdef OPENGL
+ #include <X11/extensions/xf86vmode.h>
+ #endif
+@@ -151,7 +151,7 @@
+ int config_notify_height;
+ 						      
+ typedef unsigned short PIXEL16;
+-typedef unsigned long PIXEL24;
++typedef unsigned int PIXEL24;
+ #ifdef REDBLUE
+ static PIXEL16 st2d_8to16table_s[2][256];
+ static PIXEL24 st2d_8to24table_s[2][256];
+--- src/ref_soft/r_poly.c.old
++++ src/ref_soft/r_poly.c
+@@ -994,7 +994,7 @@
+ 		scale = yscale * pout->zi;
+ 		pout->v = (ycenter - scale * transformed[1]);
+ 
+-		pv += sizeof (vec5_t) / sizeof (pv);
++		pv += sizeof (vec5_t) / sizeof (float);
+ 	}
+ 
+ // draw it

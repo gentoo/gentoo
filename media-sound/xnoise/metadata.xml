@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sound@gentoo.org</email>
+		<name>Gentoo Sound project</name>
+	</maintainer>
+	<use>
+		<flag name="lastfm">Enable support for lastfm cover art fetching and scrobbling</flag>
+		<flag name="lyrics">Enable support for lyrics fetching</flag>
+	</use>
+	<upstream>
+		<remote-id type="bitbucket">shuerhaaken/xnoise</remote-id>
+	</upstream>
+</pkgmetadata>

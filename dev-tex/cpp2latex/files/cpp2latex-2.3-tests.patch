@@ -1,0 +1,15 @@
+Index: cpp2latex-2.3/cpp2latex/getopttest.cpp
+===================================================================
+--- cpp2latex-2.3.orig/cpp2latex/getopttest.cpp
++++ cpp2latex-2.3/cpp2latex/getopttest.cpp
+@@ -2,7 +2,9 @@
+ #include <iostream>
+ #include <getopt.h>
+ 
+-void main( int argc, char* argv[] )
++using namespace std;
++
++int main( int argc, char* argv[] )
+ {
+ int optch=0, optc=1;
+ 	while( ( optch = getopt( argc,argv, "h:a:k" ) ) > 0 )

@@ -1,0 +1,186 @@
+https://sourceforge.net/tracker/index.php?func=detail&aid=2219175&group_id=55753&atid=478140
+
+=== modified file 'doc/Makefile.am'
+--- doc/Makefile.am	2009-12-27 10:41:45 +0000
++++ doc/Makefile.am	2009-12-27 10:56:50 +0000
+@@ -94,116 +94,95 @@
+ 	    man/man3/JudyHSFreeArray
+ 
+ 
++dep_on_Judy = J1T J1S J1U J1F J1N J1L J1P J1FE J1NE J1LE J1PE J1C J1BC J1FA J1MU
++
++$(patsubst %,man/man3/%,$(dep_on_Judy)): man/man3/Judy
+ 
+ man/man3/Judy: 
+ 	../tool/jhton ext/Judy_3.htm | grep -v '^[   ]*$$' | sed -e 's/\.C//' >  man/man3/Judy
++	cd man/man3 && \
++	for man in $(dep_on_Judy); do \
++		ln -s Judy $$man; \
++	done
+ 
+ man/man3/Judy1:
+ 	../tool/jhton ext/Judy1_3.htm | grep -v '^[   ]*$$' | sed -e 's/\.C//' > man/man3/Judy1
+-	cd man/man3; ln -s Judy J1T
+-	cd man/man3; ln -s Judy J1S
+-	cd man/man3; ln -s Judy J1U
+-	cd man/man3; ln -s Judy J1F
+-	cd man/man3; ln -s Judy J1N
+-	cd man/man3; ln -s Judy J1L
+-	cd man/man3; ln -s Judy J1P
+-	cd man/man3; ln -s Judy J1FE
+-	cd man/man3; ln -s Judy J1NE
+-	cd man/man3; ln -s Judy J1LE
+-	cd man/man3; ln -s Judy J1PE
+-	cd man/man3; ln -s Judy J1C
+-	cd man/man3; ln -s Judy J1BC
+-	cd man/man3; ln -s Judy J1FA
+-	cd man/man3; ln -s Judy J1MU
++
++dep_on_Judy1_funcs = Judy1Test Judy1Set Judy1Unset Judy1First Judy1Next Judy1Last Judy1Prev Judy1FirstEmpty Judy1NextEmpty Judy1LastEmpty Judy1PrevEmpty Judy1Count Judy1ByCount Judy1FreeArray Judy1MemUsed
++
++$(patsubst %,man/man3/%,$(dep_on_Judy1_funcs)): man/man3/Judy1_funcs
+ 
+ man/man3/Judy1_funcs:
+ 	../tool/jhton ext/Judy1_funcs_3.htm | grep -v '^[   ]*$$' | sed -e 's/\.C//' > man/man3/Judy1_funcs
+-	cd man/man3; ln -s Judy1_funcs Judy1Test 
+-	cd man/man3; ln -s Judy1_funcs Judy1Set 
+-	cd man/man3; ln -s Judy1_funcs Judy1Unset 
+-	cd man/man3; ln -s Judy1_funcs Judy1First 
+-	cd man/man3; ln -s Judy1_funcs Judy1Next
+-	cd man/man3; ln -s Judy1_funcs Judy1Last
+-	cd man/man3; ln -s Judy1_funcs Judy1Prev
+-	cd man/man3; ln -s Judy1_funcs Judy1FirstEmpty
+-	cd man/man3; ln -s Judy1_funcs Judy1NextEmpty
+-	cd man/man3; ln -s Judy1_funcs Judy1LastEmpty
+-	cd man/man3; ln -s Judy1_funcs Judy1PrevEmpty
+-	cd man/man3; ln -s Judy1_funcs Judy1Count
+-	cd man/man3; ln -s Judy1_funcs Judy1ByCount
+-	cd man/man3; ln -s Judy1_funcs Judy1FreeArray
+-	cd man/man3; ln -s Judy1_funcs Judy1MemUsed
++	cd man/man3 && \
++	for man in $(dep_on_Judy1_funcs); do \
++		ln -s Judy1_funcs $$man; \
++	done
++
++dep_on_JudyL= JLG JLI JLD JLF JLN JLL JLP JLFE JLNE JLLE JLPE JLC JLBC JLFA JLMU
++
++$(patsubst %,man/man3/%,$(dep_on_JudyL)): man/man3/JudyL
+ 
+ man/man3/JudyL:
+ 	../tool/jhton ext/JudyL_3.htm | grep -v '^[   ]*$$' | sed -e 's/\.C//' > man/man3/JudyL
+-	cd man/man3; ln -s JudyL JLG
+-	cd man/man3; ln -s JudyL JLI
+-	cd man/man3; ln -s JudyL JLD
+-	cd man/man3; ln -s JudyL JLF
+-	cd man/man3; ln -s JudyL JLN
+-	cd man/man3; ln -s JudyL JLL
+-	cd man/man3; ln -s JudyL JLP
+-	cd man/man3; ln -s JudyL JLFE
+-	cd man/man3; ln -s JudyL JLNE
+-	cd man/man3; ln -s JudyL JLLE
+-	cd man/man3; ln -s JudyL JLPE
+-	cd man/man3; ln -s JudyL JLC
+-	cd man/man3; ln -s JudyL JLBC
+-	cd man/man3; ln -s JudyL JLFA
+-	cd man/man3; ln -s JudyL JLMU
++	cd man/man3 && \
++	for man in $(dep_on_JudyL); do \
++		ln -s JudyL $$man; \
++	done
++
++dep_on_JudyL_funcs = JudyLGet JudyLIns JudyLDel JudyLFirst JudyLNext JudyLLast JudyLPrev JudyLFirstEmpty JudyLNextEmpty JudyLLastEmpty JudyLPrevEmpty JudyLCount JudyLByCount JudyLFreeArray JudyLMemUsed
++
++$(patsubst %,man/man3/%,$(dep_on_JudyL_funcs)): man/man3/JudyL_funcs
+ 
+ man/man3/JudyL_funcs:
+ 	../tool/jhton ext/JudyL_funcs_3.htm | grep -v '^[   ]*$$' | sed -e 's/\.C//' > man/man3/JudyL_funcs
+-	cd man/man3; ln -s JudyL_funcs JudyLGet
+-	cd man/man3; ln -s JudyL_funcs JudyLIns
+-	cd man/man3; ln -s JudyL_funcs JudyLDel
+-	cd man/man3; ln -s JudyL_funcs JudyLFirst
+-	cd man/man3; ln -s JudyL_funcs JudyLNext
+-	cd man/man3; ln -s JudyL_funcs JudyLLast
+-	cd man/man3; ln -s JudyL_funcs JudyLPrev
+-	cd man/man3; ln -s JudyL_funcs JudyLFirstEmpty
+-	cd man/man3; ln -s JudyL_funcs JudyLNextEmpty
+-	cd man/man3; ln -s JudyL_funcs JudyLLastEmpty
+-	cd man/man3; ln -s JudyL_funcs JudyLPrevEmpty
+-	cd man/man3; ln -s JudyL_funcs JudyLCount
+-	cd man/man3; ln -s JudyL_funcs JudyLByCount
+-	cd man/man3; ln -s JudyL_funcs JudyLFreeArray
+-	cd man/man3; ln -s JudyL_funcs JudyLMemUsed
++	cd man/man3 && \
++	for man in $(dep_on_JudyL_funcs); do \
++		ln -s JudyL_funcs $$man; \
++	done
++
++dep_on_JudySL = JSLG JSLI JSLD JSLF JSLN JSLL JSLP JSLFA
++
++$(patsubst %,man/man3/%,$(dep_on_JudySL)): man/man3/JudySL
+ 
+ man/man3/JudySL:
+ 	../tool/jhton ext/JudySL_3.htm | grep -v '^[   ]*$$' | sed -e 's/\.C//' > man/man3/JudySL
+-	cd man/man3; ln -s JudySL JSLG
+-	cd man/man3; ln -s JudySL JSLI
+-	cd man/man3; ln -s JudySL JSLD
+-	cd man/man3; ln -s JudySL JSLF
+-	cd man/man3; ln -s JudySL JSLN
+-	cd man/man3; ln -s JudySL JSLL
+-	cd man/man3; ln -s JudySL JSLP
+-	cd man/man3; ln -s JudySL JSLFA
++	cd man/man3 && \
++	for man in $(dep_on_JudySL); do \
++		ln -s JudySL $$man; \
++	done
++
++dep_on_JudySL_funcs = JudySLGet JudySLIns JudySLDel JudySLFirst JudySLNext JudySLLast JudySLPrev JudySLFreeArray
++
++$(patsubst %,man/man3/%,$(dep_on_JudySL_funcs)): man/man3/JudySL_funcs
+ 
+ man/man3/JudySL_funcs:
+ 	../tool/jhton ext/JudySL_funcs_3.htm | grep -v '^[   ]*$$' | sed -e 's/\.C//' > man/man3/JudySL_funcs
+-	cd man/man3; ln -s JudySL_funcs JudySLGet
+-	cd man/man3; ln -s JudySL_funcs JudySLIns
+-	cd man/man3; ln -s JudySL_funcs JudySLDel
+-	cd man/man3; ln -s JudySL_funcs JudySLFirst
+-	cd man/man3; ln -s JudySL_funcs JudySLNext
+-	cd man/man3; ln -s JudySL_funcs JudySLLast
+-	cd man/man3; ln -s JudySL_funcs JudySLPrev
+-	cd man/man3; ln -s JudySL_funcs JudySLFreeArray
++	cd man/man3 && \
++	for man in $(dep_on_JudySL_funcs); do \
++		ln -s JudySL_funcs $$man; \
++	done
++
++dep_on_JudyHS = JHSG JHSI JHSD JHSFA
++
++$(patsubst %,man/man3/%,$(dep_on_JudyHS)): man/man3/JudyHS
+ 
+ man/man3/JudyHS:
+ 	../tool/jhton ext/JudyHS_3.htm | grep -v '^[   ]*$$' | sed -e 's/\.C//' > man/man3/JudyHS
+-	cd man/man3; ln -s JudyHS JHSG 
+-	cd man/man3; ln -s JudyHS JHSI
+-	cd man/man3; ln -s JudyHS JHSD
+-	cd man/man3; ln -s JudyHS JHSFA
++	cd man/man3 && \
++	for man in $(dep_on_JudyHS); do \
++		ln -s JudyHS $$man; \
++	done
++
++dep_on_JudyHS_funcs = JudyHSGet JudyHSIns JudyHSDel JudyHSFreeArray
++
++$(patsubst %,man/man3/%,$(dep_on_JudyHS_funcs)): man/man3/JudyHS_funcs
+ 
+ man/man3/JudyHS_funcs:
+ 	../tool/jhton ext/JudyHS_funcs_3.htm | grep -v '^[   ]*$$' | sed -e 's/\.C//' > man/man3/JudyHS_funcs
+-	cd man/man3; ln -s JudyHS_funcs JudyHSGet
+-	cd man/man3; ln -s JudyHS_funcs JudyHSIns
+-	cd man/man3; ln -s JudyHS_funcs JudyHSDel
+-	cd man/man3; ln -s JudyHS_funcs JudyHSFreeArray
++	cd man/man3 && \
++	for man in $(dep_on_JudyHS_funcs); do \
++		ln -s JudyHS_funcs $$man; \
++	done
+ 
+ CLEANFILES = man/man3/*
+

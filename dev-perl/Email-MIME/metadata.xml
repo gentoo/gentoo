@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Email-MIME</remote-id>
+    <remote-id type="cpan-module">Email::MIME</remote-id>
+    <remote-id type="cpan-module">Email::MIME::Creator</remote-id>
+    <remote-id type="cpan-module">Email::MIME::Encode</remote-id>
+    <remote-id type="cpan-module">Email::MIME::Header</remote-id>
+    <remote-id type="cpan-module">Email::MIME::Header::AddressList</remote-id>
+    <remote-id type="cpan-module">Email::MIME::Modifier</remote-id>
+    <remote-id type="github">rjbs/Email-MIME</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>cjk@gentoo.org</email>
+    <name>Cjk</name>
+  </maintainer>
+  <use>
+    <flag name="gconf">Enable support for <pkg>gnome-base/gconf</pkg></flag>
+    <flag name="gtk2">
+      Build with <pkg>x11-libs/gtk+</pkg>:2 instead of <pkg>x11-libs/gtk+</pkg>:3
+     </flag>
+    <flag name="xfconf">Enable support for <pkg>xfce-base/xfconf</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="bitbucket">tagoh/imsettings</remote-id>
+  </upstream>
+</pkgmetadata>

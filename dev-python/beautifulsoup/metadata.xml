@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<longdescription lang="en">
+		Beautiful Soup is a Python HTML/XML parser designed for quick
+		turnaround projects like screen-scraping. Two features make it
+		powerful: it won't choke if you give it bad markup and it provides a
+		few simple methods and Pythonic idioms for navigating and searching
+		a parse tree: a toolkit for dissecting a document and extracting
+		what you need.
+	</longdescription>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">beautifulsoup4</remote-id>
+	</upstream>
+</pkgmetadata>

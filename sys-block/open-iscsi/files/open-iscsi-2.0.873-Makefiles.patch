@@ -1,0 +1,161 @@
+diff --git a/Makefile b/Makefile
+index c5d9700..4dbff18 100644
+--- a/Makefile
++++ b/Makefile
+@@ -14,8 +14,8 @@ mandir = $(prefix)/share/man
+ etcdir = /etc
+ initddir = $(etcdir)/init.d
+ 
+-MANPAGES = doc/iscsid.8 doc/iscsiadm.8 doc/iscsi_discovery.8
+-PROGRAMS = usr/iscsid usr/iscsiadm utils/iscsi_discovery utils/iscsi-iname
++MANPAGES = doc/iscsid.8 doc/iscsiadm.8 doc/iscsi_discovery.8 doc/iscsistart.8 doc/iscsi-iname.8
++PROGRAMS = usr/iscsid usr/iscsiadm utils/iscsi_discovery utils/iscsi-iname usr/iscsistart
+ INSTALL = install
+ ETCFILES = etc/iscsid.conf
+ IFACEFILES = etc/iface.example
+@@ -84,11 +84,11 @@ install_programs:  $(PROGRAMS)
+ # ugh, auto-detection is evil
+ # Gentoo maintains their own init.d stuff
+ install_initd:
+-	if [ -f /etc/debian_version ]; then \
++	if [ -f $(DESTDIR)$(etcdir)/debian_version ]; then \
+ 		$(MAKE) install_initd_debian ; \
+-	elif [ -f /etc/redhat-release ]; then \
++	elif [ -f $(DESTDIR)$(etcdir)/redhat-release ]; then \
+ 		$(MAKE) install_initd_redhat ; \
+-	elif [ -f /etc/SuSE-release ]; then \
++	elif [ -f $(DESTDIR)$(etcdir)/SuSE-release ]; then \
+ 		$(MAKE) install_initd_suse ; \
+ 	fi
+ 
+@@ -115,7 +115,7 @@ install_iface: $(IFACEFILES)
+ 	$(INSTALL) -m 644 $^ $(DESTDIR)$(etcdir)/iscsi/ifaces
+ 
+ install_etc: $(ETCFILES)
+-	if [ ! -f /etc/iscsi/iscsid.conf ]; then \
++	if [ ! -f $(DESTDIR)$(etcdir)/iscsi/iscsid.conf ]; then \
+ 		$(INSTALL) -d $(DESTDIR)$(etcdir)/iscsi ; \
+ 		$(INSTALL) -m 644 $^ $(DESTDIR)$(etcdir)/iscsi ; \
+ 	fi
+@@ -128,11 +128,11 @@ install_kernel:
+ 	$(MAKE) -C kernel install_kernel
+ 
+ install_iname:
+-	if [ ! -f /etc/iscsi/initiatorname.iscsi ]; then \
+-		echo "InitiatorName=`$(DESTDIR)/sbin/iscsi-iname`" > $(DESTDIR)/etc/iscsi/initiatorname.iscsi ; \
++	if [ ! -f $(DESTDIR)$(etcdir)/iscsi/initiatorname.iscsi ]; then \
++		echo "InitiatorName=`$(DESTDIR)$(sbindir)/iscsi-iname`" > $(DESTDIR)$(etcdir)/iscsi/initiatorname.iscsi ; \
+ 		echo "***************************************************" ; \
+-		echo "Setting InitiatorName to `cat $(DESTDIR)/etc/iscsi/initiatorname.iscsi`" ; \
+-		echo "To override edit /etc/iscsi/initiatorname.iscsi" ; \
++		echo "Setting InitiatorName to `cat $(DESTDIR)$(etcdir)/iscsi/initiatorname.iscsi`" ; \
++		echo "To override edit $(etcdir)/iscsi/initiatorname.iscsi" ; \
+ 		echo "***************************************************" ; \
+ 	fi
+ 
+diff --git a/usr/Makefile b/usr/Makefile
+index 673b7f1..83507f3 100644
+--- a/usr/Makefile
++++ b/usr/Makefile
+@@ -54,18 +54,18 @@ all: $(PROGRAMS)
+ 
+ iscsid: $(ISCSI_LIB_SRCS) $(INITIATOR_SRCS) $(DISCOVERY_SRCS) \
+ 	iscsid.o session_mgmt.o discoveryd.o
+-	$(CC) $(CFLAGS) $^ -o $@  -L../utils/open-isns -lisns
++	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@  -L../utils/open-isns -lisns
+ 
+ iscsiadm: $(ISCSI_LIB_SRCS) $(DISCOVERY_SRCS) iscsiadm.o session_mgmt.o
+-	$(CC) $(CFLAGS) $^ -o $@ -L../utils/open-isns -lisns
++	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ -L../utils/open-isns -lisns
+ 
+ iscsistart: $(ISCSI_LIB_SRCS) $(INITIATOR_SRCS) $(FW_BOOT_SRCS) \
+ 		iscsistart.o statics.o
+-	$(CC) $(CFLAGS) -static $^ -o $@
++	$(CC) $(CFLAGS) -static $(LDFLAGS) $^ -o $@
+ clean:
+-	rm -f *.o $(PROGRAMS) .depend $(LIBSYS)
++	$(RM) *.o $(PROGRAMS) .depend $(LIBSYS)
+ 
+ depend:
+-	gcc $(CFLAGS) -M `ls *.c` > .depend
++	$(CC) $(CFLAGS) -M `ls *.c` > .depend
+ 
+ -include .depend
+diff --git a/utils/Makefile b/utils/Makefile
+index 2c7e891..62c49fa 100644
+--- a/utils/Makefile
++++ b/utils/Makefile
+@@ -1,17 +1,18 @@
+ # This Makefile will work only with GNU make.
+ 
+-CFLAGS += $(OPTFLAGS) -O2 -fno-inline -Wall -Wstrict-prototypes -g
++OPTFLAGS ?= -O2 -g
++CFLAGS += $(OPTFLAGS) -fno-inline -Wall -Wstrict-prototypes
+ PROGRAMS = iscsi-iname
+ 
+ all: $(PROGRAMS)
+ 
+ iscsi-iname: md5.o iscsi-iname.o
+-	$(CC) $(CFLAGS) $^ $(DBM_LIB) -o $@
++	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(DBM_LIB) -o $@
+ 
+ clean:
+-	rm -f *.o $(PROGRAMS) .depend
++	$(RM) *.o $(PROGRAMS) .depend
+ 
+ depend:
+-	gcc $(CFLAGS) -M `ls *.c` > .depend
++	$(GCC) $(CFLAGS) -M `ls *.c` > .depend
+ 
+ -include .depend
+diff --git a/utils/fwparam_ibft/Makefile b/utils/fwparam_ibft/Makefile
+index c72bb7f..a36c2d2 100644
+--- a/utils/fwparam_ibft/Makefile
++++ b/utils/fwparam_ibft/Makefile
+@@ -26,18 +26,18 @@ OBJS := fw_entry.o fwparam_sysfs.o $(SYSDEPS_OBJS) ../../usr/iscsi_net_util.o
+ OBJS += prom_lex.o prom_parse.tab.o fwparam_ppc.o
+ CLEANFILES = $(OBJS) *.output *~
+ 
+-OPTFLAGS ?= -O2 -g -fPIC
++OPTFLAGS ?= -O2 -g
+ WARNFLAGS ?= -Wall -Wstrict-prototypes
+-CFLAGS += $(OPTFLAGS) $(WARNFLAGS) -I../../include -I../../usr -D_GNU_SOURCE
++CFLAGS += $(OPTFLAGS) $(WARNFLAGS) -fPIC -I../../include -I../../usr -D_GNU_SOURCE
+ 
+ all: $(OBJS)
+ 
+ clean:
+-	rm -f *.o $(CLEANFILES) .depend
++	$(RM) *.o $(CLEANFILES) .depend
+ 
+ $(OBJS): prom_parse.tab.h prom_parse.h fwparam_ibft.h
+ 
+ depend:
+-	gcc $(CFLAGS) -M `ls *.c` > .depend
++	$(CC) $(CFLAGS) -M `ls *.c` > .depend
+ 
+ -include .depend
+diff --git a/utils/sysdeps/Makefile b/utils/sysdeps/Makefile
+index 53c10e5..19cfe19 100644
+--- a/utils/sysdeps/Makefile
++++ b/utils/sysdeps/Makefile
+@@ -1,15 +1,16 @@
+ # This Makefile will work only with GNU make.
+ 
+-CFLAGS += $(OPTFLAGS) $(WARNFLAGS) -O2 -fno-inline -Wall -Wstrict-prototypes -g
++OPTFLAGS ?= -O2 -g
++CFLAGS += $(OPTFLAGS) $(WARNFLAGS) -fno-inline -Wall -Wstrict-prototypes
+ 
+ SYSDEPS_OBJS=sysdeps.o
+ 
+ all: $(SYSDEPS_OBJS)
+ 
+ clean:
+-	rm -f *.o .depend
++	$(RM) *.o .depend
+ 
+ depend:
+-	gcc $(CFLAGS) -M `ls *.c` > .depend
++	$(CC) $(CFLAGS) -M `ls *.c` > .depend
+ 
+ -include .depend

@@ -1,0 +1,196 @@
+From 5f5a0a34556d0ae739f79d7c148d24fcf3ff8557 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentfredric@gmail.com>
+Date: Wed, 3 Aug 2016 01:26:17 +1200
+Subject: [PATCH] Fence of Network IO with NO_NETWORK_TESTING
+
+This is a workaround for #477 but doesn't actually fix the underlying
+issue, merely recognises that some vendors are smart enough to
+anticipate Network IO will fail and integrate this ENV var to quickly
+avoid it.
+
+This precedent was established by Test::RequiresInternet as a result of
+a CPANworkers discussion, and Gentoo is known to export this variable
+within its tooling by default as a result.
+
+This doesn't actually test that binding a socket/IP will work, but this
+fence should be tested anyway, because security measures could result in
+attempted socket/IP binds getting SIGKILLed ( Sandbox )
+
+This commit hence addresses/fences only the problem cases listed in bug
+in depth.
+
+However, this commit targets to simply solve the known parts of the
+problem in the simplest way possible without any extra dependencies.
+
+The application of a BEGIN { } block and `print` was a design decision
+instead of using `Test::More` and `skip`, because the overhead of
+loading Test::More is quite high when you have lots of .t files, and
+Test2 further increases the load time.
+
+This load time is generally acceptable if you're actually running a
+dozen tests, but spinning up a full suite of Test::More to only then
+immediately exit with a skip is a lot of CPU load for relatively little
+benefit.
+---
+ t/Plack-Handler/standalone.t                      | 6 ++++++
+ t/Plack-Loader/shotgun.t                          | 6 ++++++
+ t/Plack-Middleware/component-leak.t               | 7 +++++++
+ t/Plack-Middleware/error_document_streaming_app.t | 7 +++++++
+ t/Plack-Middleware/stacktrace/sigdie.t            | 7 +++++++
+ t/Plack-Middleware/stacktrace/utf8.t              | 7 +++++++
+ t/Plack-Middleware/urlmap_ports.t                 | 6 ++++++
+ t/Plack-Test/2args.t                              | 7 +++++++
+ t/Plack-Test/hello_server.t                       | 7 +++++++
+ t/Plack-Util/response_cb.t                        | 7 +++++++
+ 10 files changed, 67 insertions(+)
+
+diff --git a/t/Plack-Handler/standalone.t b/t/Plack-Handler/standalone.t
+index f5fcf26..b42de16 100644
+--- a/t/Plack-Handler/standalone.t
++++ b/t/Plack-Handler/standalone.t
+@@ -1,3 +1,9 @@
++BEGIN {
++  if ( $ENV{NO_NETWORK_TESTING} ) {
++    print '1..0 # SKIP Network connections required for this test';
++    exit;
++  }
++}
+ use strict;
+ use warnings;
+ use Test::More;
+diff --git a/t/Plack-Loader/shotgun.t b/t/Plack-Loader/shotgun.t
+index cb7b95a..d9fe148 100644
+--- a/t/Plack-Loader/shotgun.t
++++ b/t/Plack-Loader/shotgun.t
+@@ -1,3 +1,9 @@
++BEGIN {
++  if ( $ENV{NO_NETWORK_TESTING} ) {
++    print '1..0 # SKIP Network connections required for this test';
++    exit;
++  }
++}
+ use strict;
+ use warnings;
+ use Test::More;
+diff --git a/t/Plack-Middleware/component-leak.t b/t/Plack-Middleware/component-leak.t
+index 7cdab99..2acedd0 100644
+--- a/t/Plack-Middleware/component-leak.t
++++ b/t/Plack-Middleware/component-leak.t
+@@ -1,3 +1,10 @@
++BEGIN {
++  if ( $ENV{NO_NETWORK_TESTING} ) {
++    print '1..0 # SKIP Network connections required for this test';
++    exit;
++  }
++}
++
+ package MyComponent;
+ use strict;
+ use warnings;
+diff --git a/t/Plack-Middleware/error_document_streaming_app.t b/t/Plack-Middleware/error_document_streaming_app.t
+index b177c53..c893e7b 100644
+--- a/t/Plack-Middleware/error_document_streaming_app.t
++++ b/t/Plack-Middleware/error_document_streaming_app.t
+@@ -1,3 +1,10 @@
++BEGIN {
++  if ( $ENV{NO_NETWORK_TESTING} ) {
++    print '1..0 # SKIP Network connections required for this test';
++    exit;
++  }
++}
++
+ use strict;
+ use warnings;
+ use FindBin;
+diff --git a/t/Plack-Middleware/stacktrace/sigdie.t b/t/Plack-Middleware/stacktrace/sigdie.t
+index dc82b2c..28747cf 100644
+--- a/t/Plack-Middleware/stacktrace/sigdie.t
++++ b/t/Plack-Middleware/stacktrace/sigdie.t
+@@ -1,3 +1,10 @@
++BEGIN {
++  if ( $ENV{NO_NETWORK_TESTING} ) {
++    print '1..0 # SKIP Network connections required for this test';
++    exit;
++  }
++}
++
+ use strict;
+ use warnings;
+ use Test::More;
+diff --git a/t/Plack-Middleware/stacktrace/utf8.t b/t/Plack-Middleware/stacktrace/utf8.t
+index 6d2f51f..77849dc 100644
+--- a/t/Plack-Middleware/stacktrace/utf8.t
++++ b/t/Plack-Middleware/stacktrace/utf8.t
+@@ -1,3 +1,10 @@
++BEGIN {
++  if ( $ENV{NO_NETWORK_TESTING} ) {
++    print '1..0 # SKIP Network connections required for this test';
++    exit;
++  }
++}
++
+ use strict;
+ use warnings;
+ use Test::More;
+diff --git a/t/Plack-Middleware/urlmap_ports.t b/t/Plack-Middleware/urlmap_ports.t
+index 9a0a9c0..4ff4ba5 100644
+--- a/t/Plack-Middleware/urlmap_ports.t
++++ b/t/Plack-Middleware/urlmap_ports.t
+@@ -1,3 +1,9 @@
++BEGIN {
++  if ( $ENV{NO_NETWORK_TESTING} ) {
++    print '1..0 # SKIP Network connections required for this test';
++    exit;
++  }
++}
+ use strict;
+ use Test::More;
+ use Plack::App::URLMap;
+diff --git a/t/Plack-Test/2args.t b/t/Plack-Test/2args.t
+index 2942f93..a68481d 100644
+--- a/t/Plack-Test/2args.t
++++ b/t/Plack-Test/2args.t
+@@ -1,3 +1,10 @@
++BEGIN {
++  if ( $ENV{NO_NETWORK_TESTING} ) {
++    print '1..0 # SKIP Network connections required for this test';
++    exit;
++  }
++}
++
+ use Plack::Test;
+ use Test::More;
+ use HTTP::Request::Common;
+diff --git a/t/Plack-Test/hello_server.t b/t/Plack-Test/hello_server.t
+index 47ffb75..dc9f4bd 100644
+--- a/t/Plack-Test/hello_server.t
++++ b/t/Plack-Test/hello_server.t
+@@ -1,3 +1,10 @@
++BEGIN {
++  if ( $ENV{NO_NETWORK_TESTING} ) {
++    print '1..0 # SKIP Network connections required for this test';
++    exit;
++  }
++}
++
+ use Test::More;
+ use Plack::Test;
+ 
+diff --git a/t/Plack-Util/response_cb.t b/t/Plack-Util/response_cb.t
+index 813dc87..5cb31ba 100644
+--- a/t/Plack-Util/response_cb.t
++++ b/t/Plack-Util/response_cb.t
+@@ -1,3 +1,10 @@
++BEGIN {
++  if ( $ENV{NO_NETWORK_TESTING} ) {
++    print '1..0 # SKIP Network connections required for this test';
++    exit;
++  }
++}
++
+ use strict;
+ use warnings;
+ use Plack::Util;
+-- 
+2.9.2
+

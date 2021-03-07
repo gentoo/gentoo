@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name="bundled-c-zlib">Use the bundled zlib C sources. Requires pkg-config to be False. For windows, this is the default.</flag>
+		<flag name="non-blocking-ffi">The (de)compression calls can sometimes take a long time, which prevents other Haskell threads running. Enabling this flag avoids this unfairness, but with greater overall cost.</flag>
+	</use>
+	<longdescription>
+		This package provides a pure interface for compressing and
+		decompressing streams of data represented as lazy
+		&#39;ByteString&#39;s. It uses the
+		&lt;https://en.wikipedia.org/wiki/Zlib zlib C library&gt;
+		so it has high performance. It supports the \&quot;zlib\&quot;,
+		\&quot;gzip\&quot; and \&quot;raw\&quot; compression formats.
+		
+		It provides a convenient high level API suitable for most
+		tasks and for the few cases where more control is needed it
+		provides access to the full zlib feature set.
+	</longdescription>
+</pkgmetadata>

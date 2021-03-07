@@ -1,0 +1,42 @@
+#!/sbin/openrc-run
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+today=$(date '+%Y-%m-%d')
+
+depend() {
+	need net
+}
+checkconfig() {
+	if [ ! -e /etc/sancp/sancp.conf ] ; then
+		eerror "You need an /etc/sancp/sancp.conf to run sancp"
+		return 1
+	fi
+}
+
+start() {
+	checkconfig || return 1
+	
+	# Today's log directory
+	if [ ! -d $LOGDIR/$today ]; then
+		/bin/mkdir $LOGDIR/$today
+		/bin/rm -f $LOGDIR/today
+	fi
+	
+	# today/ directory :)
+	if [ ! -d $LOGDIR/today ]; then
+		/bin/ln -s $LOGDIR/$today $LOGDIR/today
+	fi
+	
+	ebegin "Starting sancp"
+	start-stop-daemon --start --quiet -m --pidfile /var/run/sancp.pid \
+		--exec /usr/bin/sancp \
+		-- ${SANCP_OPTS} > /var/log/sancp.log 2>&1 &
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping sancp"
+	start-stop-daemon --stop --quiet --pidfile /var/run/sancp.pid
+	eend $?
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="png">Generate png images by default instead of gif</flag>
+	</use>
+	<longdescription>MathTeX parses a LaTeX math expression and immediately emits 
+	the corresponding gif (or png) image.  It can be used as cgi program to embed
+	LaTeX math in your own html pages, blogs, wikis, etc. Just place an html img
+	tag in your document wherever you want to see the corresponding LaTeX
+	expression. Take a look at homepage for examples.
+	</longdescription>
+</pkgmetadata>

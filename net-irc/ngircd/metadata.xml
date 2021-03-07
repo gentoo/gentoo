@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<use>
+		<flag name="ident">Enables support for <pkg>net-libs/libident</pkg></flag>
+		<flag name="irc-plus">Enables support for the IRC+ protocol (needs <pkg>virtual/libiconv</pkg>)</flag>
+		<flag name="strict-rfc">Strict RFC compliance; may harm compatibility</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:barton:ngircd</remote-id>
+		<remote-id type="github">ngircd/ngircd</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,90 @@
+<project name="Tomcat Serlvet API 2.5/JSP API 2.1" default="deploy" basedir=".">
+
+  <property name="compile.source" value="1.5"/>
+
+  <property name="tomcat.build"      value="${basedir}/output/build"/>
+  <property name="tomcat.classes"    value="${basedir}/output/classes"/>
+  <property name="servlet-api.jar" value="${tomcat.build}/lib/servlet-api.jar"/>
+  <property name="jsp-api.jar" value="${tomcat.build}/lib/jsp-api.jar"/>
+  <property name="el-api.jar" value="${tomcat.build}/lib/el-api.jar"/>
+
+  <!-- Just build Tomcat -->
+  <target name="build-prepare">
+
+    <available classname="junit.framework.TestCase" property="junit.present" />
+
+    <mkdir dir="${tomcat.build}"/>
+    <mkdir dir="${tomcat.build}/lib"/>
+    <mkdir dir="${tomcat.classes}"/>
+
+  </target>
+
+  <target name="compile">
+
+    <!-- Compile internal server components -->
+    <javac srcdir="java" destdir="${tomcat.classes}"
+           debug="${compile.debug}"
+           deprecation="${compile.deprecation}"
+           source="${compile.source}"
+           optimize="${compile.optimize}"
+           excludes="**/CVS/**,**/.svn/**">
+      <exclude name="java/javax/annotation/**" />
+      <exclude name="java/javax/ejb/**" />
+      <exclude name="java/javax/mail/**" />
+      <exclude name="java/javax/persistence/**" />
+      <exclude name="java/javax/xml/**" />
+      <exclude name="org/**" />
+    </javac>
+    <tstamp>
+      <format property="TODAY" pattern="MMM d yyyy" locale="en"/>
+      <format property="TSTAMP" pattern="hh:mm:ss"/>
+    </tstamp>
+    <!-- Copy static resource files -->
+    <filter token="VERSION" value="${version}"/>
+    <filter token="VERSION_NUMBER" value="${version.number}"/>
+    <filter token="VERSION_BUILT" value="${TODAY} ${TSTAMP}"/>
+    <copy todir="${tomcat.classes}" filtering="true">
+      <fileset dir="java">
+        <include name="**/*.properties"/>
+        <include name="**/*.dtd"/>
+        <include name="**/*.tasks"/>
+        <include name="**/*.xsd"/>
+        <include name="**/*.xml"/>
+      </fileset>
+    </copy>
+
+  </target>
+
+  <target name="jar" depends="build-prepare,compile">
+    <!-- Servlet 2.5 Implementation JAR File -->
+    <jar  jarfile="${servlet-api.jar}">
+      <fileset dir="${tomcat.classes}">
+        <include name="javax/servlet/*" />
+        <include name="javax/servlet/http/*" />
+        <include name="javax/servlet/resources/*" />
+        <!-- Javadoc and i18n exclusions -->
+        <exclude name="**/package.html" />
+        <exclude name="**/LocalStrings_*" />
+      </fileset>
+    </jar>
+
+    <!-- JSP 2.1 Implementation JAR File -->
+    <jar  jarfile="${jsp-api.jar}">
+      <fileset dir="${tomcat.classes}">
+        <include name="javax/servlet/jsp/**" />
+        <!-- Javadoc and i18n exclusions -->
+        <exclude name="**/package.html" />
+        <exclude name="**/LocalStrings_*" />
+      </fileset>
+    </jar>
+
+    <!-- JSP 2.1 EL Implementation JAR File -->
+    <jar jarfile="${el-api.jar}">
+      <fileset dir="${tomcat.classes}">
+        <include name="javax/el/**" />
+      </fileset>
+    </jar>
+
+  </target>
+
+</project>

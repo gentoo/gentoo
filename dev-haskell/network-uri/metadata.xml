@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		This package provides an URI manipulation inteface.
+		
+		In network-2.6 the @Network.URI@ module was split off from the
+		network package into this package. If you're using the @Network.URI@
+		module you can automatically get it from the right package by adding
+		this to your .cabal file:
+		
+		&gt; flag network-uri
+		&gt;   description: Get Network.URI from the network-uri package
+		&gt;   default: True
+		&gt;
+		&gt; library
+		&gt;   -- ...
+		&gt;   if flag(network-uri)
+		&gt;     build-depends: network-uri &gt;= 2.6
+		&gt;   else
+		&gt;     build-depends: network &lt; 2.6
+		
+		If you want to use other modules from the network package while
+		using the @Network.URI@ modules from this package, add a @network &gt;
+		2.6@ clause to the first @build-depends@ line.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">haskell/network-uri</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,84 @@
+--- a/src/AvrAtmel.C
++++ b/src/AvrAtmel.C
+@@ -185,7 +185,7 @@
+ 
+ void TAvrAtmel::SetAddress(TAddr addr){
+   apc_address = addr;
+-  TByte setAddr [3] = { 'A', (addr>>8)&0xff, addr&0xff};
++  TByte setAddr [3] = { 'A', static_cast<TByte>((addr>>8)&0xff), static_cast<TByte>(addr&0xff)};
+   Send(setAddr, 3, 1);
+   CheckResponse(setAddr [0]);
+ }
+@@ -294,7 +294,7 @@
+       if (flush_buffer){WriteProgramMemoryPage();}
+     }
+     
+-    TByte wrF [2] = { (addr&1)?'C':'c', byte };
++    TByte wrF [2] = { static_cast<TByte>((addr&1)?'C':'c'), byte };
+     
+     if (apc_address!=(addr>>1) || apc_autoinc==false) SetAddress (addr>>1);
+     if (wrF[0]=='C') apc_address++;
+@@ -346,7 +346,7 @@
+  */
+ void TAvrAtmel::WriteOldFuseBits (TByte val)
+ {
+-  TByte buf[5] = {'.', 0xac, (val & 0x1f) | 0xa0, 0x00, 0xd2 };
++  TByte buf[5] = {'.', 0xac, static_cast<TByte>((val & 0x1f) | 0xa0), 0x00, 0xd2 };
+   Info (2, "Write fuse high bits: %02x\n", (int)val);
+   Send (buf, 5, 2);
+   CheckResponse (buf[1]);
+@@ -423,7 +423,7 @@
+ }
+ 
+ void TAvrAtmel::WriteLockBits(TByte bits){
+-  TByte lockTarget [2] = { 'l', 0xF9 | ((bits << 1) & 0x06) };
++  TByte lockTarget [2] = { 'l', static_cast<TByte>(0xF9 | ((bits << 1) & 0x06)) };
+   Send (lockTarget, 2, 1);
+   CheckResponse(lockTarget [0]);
+   Info(1, "Writing lock bits ...\nReinitializing device\n");
+--- a/src/AvrDummy.C
++++ b/src/AvrDummy.C
+@@ -81,12 +81,12 @@
+ TAvrDummy::GetPartInfo(TAddr addr)
+ {
+   if (at89) {
+-    TByte info [4] = { 0x28, addr & 0x1f, 0, 0 };
++    TByte info [4] = { 0x28, static_cast<TByte>(addr & 0x1f), 0, 0 };
+     Send(info, 4);
+     return info[3];
+   }
+ 
+-  TByte info [4] = { 0x30, 0, addr, 0 };
++  TByte info [4] = { 0x30, 0, static_cast<TByte>(addr), 0 };
+   Send(info, 4);
+   return info[3];
+ }
+@@ -289,7 +289,7 @@
+ void
+ TAvrDummy::WriteOldFuseBits(TByte val)
+ {
+-  TByte oldfuse[4] = { 0xAC, (val & 0x1F) | 0xA0, 0, 0xD2 };
++  TByte oldfuse[4] = { 0xAC, static_cast<TByte>((val & 0x1F) | 0xA0), 0, 0xD2 };
+   Send(oldfuse, 4);
+ }
+ 
+@@ -533,7 +533,7 @@
+ {
+   /* This handles both old (byte 2, bits 1-2)
+      and new (byte 4, bits 0-5) devices.  */
+-  TByte lock[4] = { 0xAC, 0xF9 | ((bits << 1) & 0x06), 0xFF, bits };
++  TByte lock[4] = { 0xAC, static_cast<TByte>(0xF9 | ((bits << 1) & 0x06)), 0xFF, bits };
+   TByte rbits;
+ 
+   if (at89)
+--- a/src/Stk500.C
++++ b/src/Stk500.C
+@@ -518,7 +518,7 @@
+ 
+ TByte TStk500::ReadCalFuseBits(int addr)
+ {
+-  TByte cmd[] = { 0x38, 0x00, addr, 0x00 };
++  TByte cmd[] = { 0x38, 0x00, static_cast<TByte>(addr), 0x00 };
+ 
+   return UniversalCmd(cmd);
+ }

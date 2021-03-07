@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <!--maintainer-needed-->
+  <longdescription lang="en">
+    Proprietary plugin for several EPSON scanner models, to be used
+    with the epkowa SANE backend (provided by
+    <pkg>media-gfx/iscan</pkg>). 32-bit only.
+
+    Also includes the firmware for them, to be used with the snapscan
+    SANE backend (provided by <pkg>media-gfx/sane-backends</pkg>).
+
+    Supports the following models:
+
+    EPSON Perfection 2480 PHOTO / GT-F500
+    EPSON Perfection 2580 PHOTO / GT-F550
+  </longdescription>
+
+  <use>
+    <flag name="minimal">
+      Install the firmware only, and not the plugin.
+    </flag>
+  </use>
+</pkgmetadata>

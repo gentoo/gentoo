@@ -1,0 +1,40 @@
+-Wall -Wextra compains about unused arguments,
+causes safe-stack to be mis-detected.
+--- a/configure
++++ b/configure
+@@ -2293,7 +2293,7 @@ fi
+ cat > $TMPC << EOF
+ #include <stdint.h>
+ #include <stdio.h>
+-int main(int argc, char *argv[]) {
++int main(void) {
+     return printf("%zu", SIZE_MAX);
+ }
+ EOF
+@@ -4911,7 +4911,7 @@ fi
+ 
+ if test "$safe_stack" = "yes"; then
+ cat > $TMPC << EOF
+-int main(int argc, char *argv[])
++int main(void)
+ {
+ #if ! __has_feature(safe_stack)
+ #error SafeStack Disabled
+@@ -4933,7 +4933,7 @@ EOF
+   fi
+ else
+ cat > $TMPC << EOF
+-int main(int argc, char *argv[])
++int main(void)
+ {
+ #if defined(__has_feature)
+ #if __has_feature(safe_stack)
+@@ -5283,7 +5283,7 @@ static const int Z = 1;
+ #define TAUT(X) ((X) == Z)
+ #define PAREN(X, Y) (X == Y)
+ #define ID(X) (X)
+-int main(int argc, char *argv[])
++int main(void)
+ {
+     int x = 0, y = 0;
+     x = ID(x);

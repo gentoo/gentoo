@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		The Microsemi Adaptec RAID Controller Command Line Utility allows you to:
+		Create and delete logical drives.
+		Display and modify configuration settings.
+		Copy configurations from one computer to another.
+		Recover from a failed physical device and rebuild an affected logical drive.
+		Flash new firmware and BIOS onto the controller.
+		Enable the controller to check the removal and connection of any disk drives.
+		Provides access to the status and event logs of a controller.
+		Isolate problems and determine their causes.
+	</longdescription>
+</pkgmetadata>

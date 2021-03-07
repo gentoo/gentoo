@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>reagentoo@gmail.com</email>
+		<name>Dmitry Baranov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="annotations">Enable adding comments to the contacts in the roster</flag>
+		<flag name="autostatus">Change the status in accordance with the time of inactivity</flag>
+		<flag name="avatars">Enable assigning and displaying avatars</flag>
+		<flag name="birthdayreminder">Reminds about birthdays of your friends</flag>
+		<flag name="bitsofbinary">Allow other modules to receive or send a small amount of binary data in XMPP stanza</flag>
+		<flag name="bookmarks">Enable creating bookmarks of the Jabber conferences and Web pages</flag>
+		<flag name="captchaforms">Perform tests for humanity outside of Web browser</flag>
+		<flag name="chatstates">Post user's activity to the chat</flag>
+		<flag name="clientinfo">Enable sending and receiving peer's application version, local time and last activity info</flag>
+		<flag name="commands">Enable performing special commands provided by various services</flag>
+		<flag name="compress">Compress stream of messages</flag>
+		<flag name="console">Enable inspecting a raw XML stream</flag>
+		<flag name="dataforms">Allow other modules to process and display data forms intended for the user</flag>
+		<flag name="datastreamsmanager">Enable initiating a custom data stream between two XMPP entities</flag>
+		<flag name="emoticons">Enable using smiley images in messages</flag>
+		<flag name="filemessagearchive">Allows to save the history of conversations to local files</flag>
+		<flag name="filestreamsmanager">Enable transferring files between two XMPP entities</flag>
+		<flag name="filetransfer">Enable sending files to peers</flag>
+		<flag name="gateways">Simplify the interaction with gateways to other IM systems</flag>
+		<flag name="inbandstreams">Enable initiating in-band data stream between two XMPP enitites</flag>
+		<flag name="iqauth">Enable logging on Jabber servers withous SASL authentication support</flag>
+		<flag name="jabbersearch">Enable searching contacts in Jabber networks</flag>
+		<flag name="messagearchiver">Enable saving the communication history both locally and on the server</flag>
+		<flag name="messagecarbons">Allows to keep all user IM clients engaged in a conversation</flag>
+		<flag name="multiuserchat">Enable Jabber multi-user conferences</flag>
+		<flag name="pepmanager">Allows other plugins to receive and publish PEP events</flag>
+		<flag name="privacylists">Enable blocking the undesirable contacts</flag>
+		<flag name="privatestorage">Allow other modules to store arbitrary data on the server</flag>
+		<flag name="recentcontacts">Displays a recently used contacts</flag>
+		<flag name="registration">Enable creating accounts in Jabber services</flag>
+		<flag name="remotecontrol">Allows to remotely control the client</flag>
+		<flag name="rosteritemexchange">Allows to exchange contact list items</flag>
+		<flag name="rostersearch">Allows to search for contacts in the roster</flag>
+		<flag name="servermessagearchive">Allows to save the history of communications on the server</flag>
+		<flag name="servicediscovery">Enable receiving information about Jabber entities</flag>
+		<flag name="sessionnegotiation">Enable initiating the session between two entities with setting the rules for XMPP stanzas exchange</flag>
+		<flag name="shortcutmanager">Allows to setup user defined shortcuts</flag>
+		<flag name="socksstreams">Enable initiating SOCKS5 data streams between two XMPP entities</flag>
+		<flag name="urlprocessor">Allows other plugins to load data from custom types of URLs</flag>
+		<flag name="vcard">Enable obtaining peer's personal contact information</flag>
+		<flag name="xmppuriqueries">Allow other plugins to handle XMPP URI queries</flag>
+		<flag name="aspell">Select <pkg>app-text/aspell</pkg> spell checker backend</flag>
+		<flag name="enchant">Select <pkg>app-text/enchant</pkg> spell checker backend</flag>
+		<flag name="hunspell">Select <pkg>app-text/hunspell</pkg> spell checker backend</flag>
+	</use>
+</pkgmetadata>

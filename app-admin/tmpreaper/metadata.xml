@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<longdescription lang="en">
+		tmpreaper is a program that can be used to clean out temporary-file
+		directories. It recursively searches the directory, refusing to chdir()
+		across symlinks, and removes files that haven't been accessed in a
+		user-specified amount of time. You can specify a set of files to protect
+		from deletion with a shell pattern. It will not remove files owned by the
+		process EUID that have the `w' bit clear, unless you ask it to, much like
+		`rm -f'. `tmpreaper' will not remove symlinks, sockets, fifos, or special
+		files unless given a command line option enabling it to.
+
+		WARNING: Please do not run `tmpreaper' on `/'. There are no protections
+		against this written into the program, as that would prevent it from
+		functioning the way you'd expect it to in a `chroot(8)' environment.
+
+		The daily tmpreaper run can be configured through /etc/tmpreaper.conf .
+	</longdescription>
+</pkgmetadata>

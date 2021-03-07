@@ -1,0 +1,18 @@
+#!/sbin/openrc-run
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+extra_started_commands="reload"
+
+command="/usr/bin/npcd"
+command_args="-f /etc/pnp/npcd.cfg -d"
+
+depend() {
+	need net
+}
+
+reload() {
+        ebegin "Reloading npcd"
+        kill -HUP `pgrep npcd`
+        eend $? "Failed to reload npcd"
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<use>
+		<flag name="activities">Enable kactivities support</flag>
+		<flag name="fits">Enable support for NASA's <pkg>sci-libs/cfitsio</pkg> library</flag>
+		<flag name="kipi">Enable support for the KDE Image Plugin Interface</flag>
+		<flag name="mpris">Enable support for MPRIS2 interface, requiring <pkg>dev-qt/qtdbus</pkg> as dependency.
+		</flag>
+		<flag name="share">Enable support for a share menu using <pkg>kde-frameworks/purpose</pkg></flag>
+	</use>
+</pkgmetadata>

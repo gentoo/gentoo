@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2008 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	after checkroot root
+}
+
+start() {
+	ebegin "Starting verynice"
+	/usr/sbin/verynice -d /var/run/verynice.pid
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping verynice"
+	start-stop-daemon --stop --quiet --pidfile=/var/run/verynice.pid
+	eend $?
+}

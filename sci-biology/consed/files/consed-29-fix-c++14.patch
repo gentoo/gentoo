@@ -1,0 +1,376 @@
+Fix building with C++14:
+* Add 'noexcept(false)' to throwing destructors in C++11 mode
+* Properly guard C declarations with extern "C" scopes
+* Avoid erroneous overloaded suffix operator errors, due to missing spaces
+* Add explicit casts to avoid -Wnarrowing errors
+* Add 'this->' for dependent identifiers in derived class templates,
+  previously required -fpermissive
+
+--- a/bvAlignedReads.cpp
++++ b/bvAlignedReads.cpp
+@@ -126,7 +126,11 @@
+ }
+ 
+ 
+-bvAlignedReads :: ~bvAlignedReads() {
++bvAlignedReads :: ~bvAlignedReads()
++#if __cplusplus >= 201103L
++   noexcept(false)
++#endif
++{
+ 
+ 
+    assert( pBamView_->aBVAlignedReads_.remove( this ) );
+--- a/bvAlignedReads.h
++++ b/bvAlignedReads.h
+@@ -81,7 +81,11 @@
+                    const FileName& filReferenceSequenceFile,
+                    bamView* pBamView );
+ 
+-   ~bvAlignedReads();
++   ~bvAlignedReads()
++#if __cplusplus >= 201103L
++   noexcept(false)
++#endif
++   ;
+ 
+    bool operator==( const bvAlignedReads& myBVAlignedReads ) const {
+       return( this == &myBVAlignedReads );
+--- a/chromatData.h
++++ b/chromatData.h
+@@ -58,6 +58,9 @@
+ #ifndef CHROMATDATA_DEFINED
+ #define CHROMATDATA_DEFINED
+ 
++#ifdef __cplusplus
++extern "C" {
++#endif
+ 
+ #ifndef FLOAT
+ #define FLOAT		double
+@@ -131,4 +134,8 @@
+ int freeChromatData();
+ #endif
+ 
++#ifdef __cplusplus
++}
++#endif
++
+ #endif
+--- a/compareContigs.cpp
++++ b/compareContigs.cpp
+@@ -126,6 +126,9 @@
+ 
+ 
+ compareContigs :: ~compareContigs() 
++#if __cplusplus >= 201103L
++   noexcept(false)
++#endif
+ { 
+ 
+    if ( !bCalledFromMakeJoins_ ) {
+--- a/compareContigs.h
++++ b/compareContigs.h
+@@ -137,7 +137,11 @@
+    compareContigs( ContigWin* pContigWin, const int nConsPos1);
+    compareContigs(); // for assemblyView
+ 
+-   ~compareContigs();
++   ~compareContigs()
++#if __cplusplus >= 201103L
++   noexcept(false)
++#endif
++   ;
+ 
+    // this makes RWTPtrOrderedVector in ConsEd happy
+    bool operator==( const compareContigs& compC ) const {
+
+--- a/filePopupAndGetAceFilename.cpp
++++ b/filePopupAndGetAceFilename.cpp
+@@ -317,7 +317,7 @@
+       struct tm* pTM = localtime( &( pAceFile->stat_.st_mtime ) );
+       
+       strftime( szDateTime, nDateTimeSize,  
+-                quote(%H)":"quote(%M)":"quote(%S)" %e-%h-%Y",
++                quote(%H) ":" quote(%M) ":" quote(%S) " %e-%h-%Y",
+                 pTM );
+ 
+       RWCString soDescription = RWCString( szDateTime ) + "    " + (*pAceFile);
+@@ -620,7 +620,7 @@
+       struct tm* pTM = localtime( &( pAceFile->stat_.st_mtime ) );
+       
+       strftime( szDateTime, nDateTimeSize,  
+-                quote(%H)":"quote(%M)":"quote(%S)" %e-%h-%Y",
++                quote(%H) ":" quote(%M) ":" quote(%S) " %e-%h-%Y",
+                 pTM );
+ 
+       RWCString soDescription = RWCString( szDateTime ) + "    " + (*pAceFile);
+--- a/findTraceExtrema.h
++++ b/findTraceExtrema.h
+@@ -44,8 +44,15 @@
+ 
+ #include    "chromatData.h"
+ 
++#ifdef __cplusplus
++extern "C" {
++#endif
++
+ int findTraceExtrema( ChromatData *chromatData );
+ 
++#ifdef __cplusplus
++}
++#endif
+ 
+ #endif
+ 
+--- a/makeUpper.h
++++ b/makeUpper.h
+@@ -42,6 +42,14 @@
+ #ifndef MAKEUPPER_INCLUDED
+ #define MAKEUPPER_INCLUDED
+ 
++#ifdef __cplusplus
++extern "C" {
++#endif
++
+ void makeUpper( char* szStringOfMixedCase );
+ 
++#ifdef __cplusplus
++}
++#endif
++
+ #endif
+--- a/nextPhredPipeline.cpp
++++ b/nextPhredPipeline.cpp
+@@ -476,7 +476,7 @@
+ void nextPhredPipeline :: openAndLockControlFile() {
+ 
+ 
+-   nFDControlFile_ = open( filControlFile_.data(), O_CREAT |O_RDWR );
++   nFDControlFile_ = open( filControlFile_.data(), O_CREAT |O_RDWR, 0600);
+    if ( nFDControlFile_ == -1 ) {
+       THROW_FILE_ERROR( filControlFile_ );
+    }
+--- a/readABI.h
++++ b/readABI.h
+@@ -56,10 +56,18 @@
+ 
+ #include    "chromatData.h"
+ 
++#ifdef __cplusplus
++extern "C" {
++#endif
++
+ #ifdef ANSI_C
+ ChromatData *readABI( char *fn, int *status );
+ #else
+ ChromatData *readABI();
+ #endif
+ 
++#ifdef __cplusplus
++}
++#endif
++
+ #endif
+--- a/readData.h
++++ b/readData.h
+@@ -44,6 +44,14 @@
+ 
+ #include    "chromatData.h"
+ 
++#ifdef __cplusplus
++extern "C" {
++#endif
++
+ ChromatData *readData( char *filename, int* status );
+ 
++#ifdef __cplusplus
++}
++#endif
++
+ #endif
+--- a/readESD.h
++++ b/readESD.h
+@@ -53,6 +53,10 @@
+ 
+ #include "chromatData.h"
+ 
++#ifdef __cplusplus
++extern "C" {
++#endif
++
+ typedef unsigned int4           DWORD;
+ typedef unsigned char           TCHAR;
+ typedef char                    BYTE;
+@@ -187,5 +191,7 @@
+ ChromatData *readESD();
+ #endif
+ 
+-
++#ifdef __cplusplus
++}
++#endif
+ 
+--- a/readSCF.h
++++ b/readSCF.h
+@@ -56,6 +56,10 @@
+ 
+ #include    "chromatData.h"
+ 
++#ifdef __cplusplus
++extern "C" {
++#endif
++
+ /* ---- Constants ---- */
+ #define SCF_MAGIC (((((int4)'.'<<8)+(int4)'s'<<8)+(int4)'c'<<8)+(int4)'f')
+ #define scale(V,OLDMAX,NEWMAX) (int2)( (FLOAT) V * (FLOAT) NEWMAX / (FLOAT) OLDMAX )
+@@ -144,4 +148,8 @@
+ int readSCF3();
+ #endif
+ 
++#ifdef __cplusplus
++}
++#endif
++
+ #endif
+--- a/readsense_bitmaps.h
++++ b/readsense_bitmaps.h
+@@ -56,10 +56,10 @@
+ static const int forward_bitmap_height = 19;
+ static char forward_bitmap_bits[] = {
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+-   0x00, 0x00, 0x00, 0x00, 0x38, 0x00, 0x00, 0x00, 0xf8, 0x07, 0x00, 0x00,
+-   0xf8, 0xff, 0x00, 0x00, 0xf8, 0xff, 0x3f, 0x00, 0xf8, 0xff, 0xff, 0x07,
+-   0xf8, 0xff, 0xff, 0x0f, 0xf8, 0xff, 0xff, 0x07, 0xf8, 0xff, 0x1f, 0x00,
+-   0xf8, 0xff, 0x00, 0x00, 0xf8, 0x07, 0x00, 0x00, 0x38, 0x00, 0x00, 0x00,
++   0x00, 0x00, 0x00, 0x00, 0x38, 0x00, 0x00, 0x00, (char)0xf8, 0x07, 0x00, 0x00,
++   (char)0xf8, (char)0xff, 0x00, 0x00, (char)0xf8, (char)0xff, 0x3f, 0x00, (char)0xf8, (char)0xff, (char)0xff, 0x07,
++   (char)0xf8, (char)0xff, (char)0xff, 0x0f, (char)0xf8, (char)0xff, (char)0xff, 0x07, (char)0xf8, (char)0xff, 0x1f, 0x00,
++   (char)0xf8, (char)0xff, 0x00, 0x00, (char)0xf8, 0x07, 0x00, 0x00, 0x38, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00};
+ 
+@@ -67,10 +67,10 @@
+ static const int reverse_bitmap_height = 19;
+ static char reverse_bitmap_bits[] = {
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+-   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0xf8, 0x07,
+-   0x00, 0xc0, 0xff, 0x07, 0x00, 0xff, 0xff, 0x07, 0xf8, 0xff, 0xff, 0x07,
+-   0xfc, 0xff, 0xff, 0x07, 0xf8, 0xff, 0xff, 0x07, 0x00, 0xfe, 0xff, 0x07,
+-   0x00, 0xc0, 0xff, 0x07, 0x00, 0x00, 0xf8, 0x07, 0x00, 0x00, 0x00, 0x07,
++   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x07, 0x00, 0x00, (char)0xf8, 0x07,
++   0x00, (char)0xc0, (char)0xff, 0x07, 0x00, (char)0xff, (char)0xff, 0x07, (char)0xf8, (char)0xff, (char)0xff, 0x07,
++   (char)0xfc, (char)0xff, (char)0xff, 0x07, (char)0xf8, (char)0xff, (char)0xff, 0x07, 0x00, (char)0xfe, (char)0xff, 0x07,
++   0x00, (char)0xc0, (char)0xff, 0x07, 0x00, 0x00, (char)0xf8, 0x07, 0x00, 0x00, 0x00, 0x07,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00};
+ 
+--- a/readType.h
++++ b/readType.h
+@@ -56,11 +56,19 @@
+ 
+ #include    "chromatData.h"
+ 
++#ifdef __cplusplus
++extern "C" {
++#endif
++
+ #ifdef ANSI_C
+ int readType( char *filename );
+ #else
+ int readType();
+ #endif
+ 
++#ifdef __cplusplus
++}
++#endif
++
+ #endif
+ 
+--- a/rwtptrsortedvector.h
++++ b/rwtptrsortedvector.h
+@@ -57,7 +57,6 @@
+ #ifdef USE_USING_IN_PUBLIC_TEMPLATE_CLASSES
+    using RWTPtrOrderedVector<TP>::nCurrentLength_;
+    using RWTPtrOrderedVector<TP>::isEmpty;
+-   using RWTPtrOrderedVector<TP>::nCurrentLength_;
+    using RWTPtrOrderedVector<TP>::length;
+    using RWTPtrOrderedVector<TP>::ppArray_;
+    using RWTPtrOrderedVector<TP>::data;
+@@ -84,7 +83,7 @@
+       if ( nInsertBeforeIndex == RW_NPOS )
+          nInsertBeforeIndex = nCurrentLength_;
+ 
+-      insertAt( nInsertBeforeIndex, pVal );
++      this->insertAt( nInsertBeforeIndex, pVal );
+    }
+ 
+    // don't copy this.  copy mbtValOrderedVectorOfRWCString's method instead
+--- a/rwtvalsortedvector.h
++++ b/rwtvalsortedvector.h
+@@ -74,7 +74,7 @@
+       if ( nPos == RW_NPOS ) 
+          nPos = nCurrentLength_;
+ 
+-      insertAt( nPos, val );
++      this->insertAt( nPos, val );
+    }
+ 
+ 
+--- a/rwUtil.h
++++ b/rwUtil.h
+@@ -51,6 +51,10 @@
+ *|***************************************************************************|*
+ */
+ 
++#ifdef __cplusplus
++extern "C" {
++#endif
++
+ #ifdef ANSI_C
+ int2  inSwpSint2( char *ptr );
+ int4  inSwpSint4( char *ptr );
+@@ -97,3 +101,6 @@
+ int writeUint4();
+ #endif
+ 
++#ifdef __cplusplus
++}
++#endif
+--- a/soGetDateTime.cpp
++++ b/soGetDateTime.cpp
+@@ -62,13 +62,13 @@
+    else if ( nFormat == nDotInMiddle ) {
+       strftime( szDateTime, 
+                 nDateTimeSize,
+-                "%y%m%d."quote(%H)quote(%M)quote(%S),
++                "%y%m%d." quote(%H)quote(%M)quote(%S),
+                 localtime( &timee ) );
+    }
+    else {
+       strftime( szDateTime, 
+                 nDateTimeSize,
+-                "%y%m%d:"quote(%H)quote(%M)quote(%S),
++                "%y%m%d:" quote(%H)quote(%M)quote(%S),
+                 localtime( &timee ) );
+    }
+                 
+--- a/szGetTime.h
++++ b/szGetTime.h
+@@ -42,9 +42,15 @@
+ #ifndef szGetTime_included
+ #define szGetTime_included
+ 
+-char *szGetTime();
++#ifdef __cplusplus
++extern "C" {
++#endif
+ 
++char *szGetTime();
+ 
++#ifdef __cplusplus
++}
++#endif
+ 
+ #endif
+ 

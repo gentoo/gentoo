@@ -1,0 +1,32 @@
+--- a/include/email.h
++++ b/include/email.h
+@@ -61,11 +61,11 @@
+ 
+ 
+ /* Globally defined vars */
+-dhash table;
+-char *conf_file;
+-dstrbuf *global_msg;
++extern dhash table;
++extern char *conf_file;
++extern dstrbuf *global_msg;
+ 
+-struct mailer_options {
++extern struct mailer_options {
+ 	bool verbose;
+ 	bool encoding;
+ 	short html;
+--- a/src/email.c
++++ b/src/email.c
+@@ -40,6 +40,11 @@
+ #include "error.h"
+ #include "mimeutils.h"
+ 
++dhash table;
++char *conf_file;
++dstrbuf *global_msg;
++struct mailer_options Mopts;
++
+ static void
+ defaultDestr(void *ptr)
+ {

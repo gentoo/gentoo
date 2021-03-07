@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>junghans@gentoo.org</email>
+    <name>Christoph Junghans</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+    <name>Michael Orlitzky</name>
+  </maintainer>
+  <use>
+    <flag name="libconfig">
+      Require <pkg>dev-libs/libconfig</pkg> to allow the daemon to
+      read a configuration file at startup
+    </flag>
+  </use>
+  <upstream>
+    <remote-id type="github">evgeni/hdapsd</remote-id>
+    <remote-id type="sourceforge">hdaps</remote-id>
+  </upstream>
+</pkgmetadata>

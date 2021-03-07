@@ -1,0 +1,13 @@
+Fix underlinking in GCC 4.9 and below
+
+--- bcache-tools-1.0.8/Makefile
++++ bcache-tools-1.0.8/Makefile
+@@ -24,7 +24,7 @@
+ make-bcache: LDLIBS += `pkg-config --libs uuid blkid`
+ make-bcache: CFLAGS += `pkg-config --cflags uuid blkid`
+ make-bcache: bcache.o
+-probe-bcache: LDLIBS += `pkg-config --libs uuid blkid`
++probe-bcache: LDLIBS += `pkg-config --libs uuid blkid` bcache.o
+ probe-bcache: CFLAGS += `pkg-config --cflags uuid blkid`
+ bcache-super-show: LDLIBS += `pkg-config --libs uuid`
+ bcache-super-show: CFLAGS += -std=gnu99

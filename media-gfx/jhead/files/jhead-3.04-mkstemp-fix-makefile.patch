@@ -1,0 +1,53 @@
+diff --git a/jhead.c b/jhead.c
+index f78127a..d8d1472 100644
+--- a/jhead.c
++++ b/jhead.c
+@@ -376,7 +376,7 @@ static void DoCommand(const char * FileName, int ShowIt)
+     // as mktemp - that is, that between getting the random name, and making the file
+     // some other program could snatch that exact same name!
+     // also, not all platforms support mkstemp.
+-    mktemp(TempName);
++    mkstemp(TempName);
+ 
+ 
+     if(!TempName[0]) {
+diff --git a/makefile b/makefile
+index f8f195e..c36d34f 100644
+--- a/makefile
++++ b/makefile
+@@ -3,17 +3,20 @@
+ #--------------------------------
+ OBJ=.
+ SRC=.
+-CPPFLAGS:=$(shell dpkg-buildflags --get CPPFLAGS)
+-CFLAGS:=$(shell dpkg-buildflags --get CFLAGS)
+-LDFLAGS:=$(shell dpkg-buildflags --get LDFLAGS)
++LFLAGS = -fPIC -shared -Wl,-soname,libjhead.so.1
+ 
+-all: jhead
++TARGET	= libjhead.so.1.0.0
++TARGET0	= libjhead.so
++TARGET1	= libjhead.so.1
++TARGET2 = libjhead.so.1.0
++
++all: jhead $(TARGET)
+ 
+ objs = $(OBJ)/jhead.o $(OBJ)/jpgfile.o $(OBJ)/jpgqguess.o $(OBJ)/paths.o \
+ 	$(OBJ)/exif.o $(OBJ)/iptc.o $(OBJ)/gpsinfo.o $(OBJ)/makernote.o 
+ 
+ $(OBJ)/%.o:$(SRC)/%.c
+-	${CC} $(CFLAGS) $(CPPFLAGS) -c $< -o $@
++	${CC} -fPIC $(CFLAGS) $(CPPFLAGS) -c $< -o $@
+ 
+ jhead: $(objs) jhead.h
+ 	${CC} $(LDFLAGS) -o jhead $(objs) -lm
+@@ -23,3 +26,9 @@ clean:
+ 
+ install:
+ 	cp jhead ${DESTDIR}/usr/bin/
++
++$(TARGET): $(objs) jhead
++	${CC} $(LDFLAGS) $(LFLAGS) -o $(TARGET) $(objs)
++	ln -s ${TARGET} ${TARGET0}
++	ln -s ${TARGET} ${TARGET1}
++	ln -s ${TARGET} ${TARGET2}

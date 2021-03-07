@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+  </maintainer>
+  <upstream>
+    <remote-id type="pypi">rfc3339-validator</remote-id>
+    <remote-id type="github">naimetti/rfc3339-validator</remote-id>
+  </upstream>
+</pkgmetadata>

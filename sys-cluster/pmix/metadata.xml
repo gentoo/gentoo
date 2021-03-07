@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>cluster@gentoo.org</email>
+		<name>Gentoo Cluster Project</name>
+	</maintainer>
+	<use>
+		<flag name="munge">Enable authentication via munge</flag>
+		<flag name="pmi">Build PMI1 and PMI2 interface</flag>
+	</use>
+</pkgmetadata>

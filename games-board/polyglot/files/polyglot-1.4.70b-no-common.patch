@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/706976
+
+--- polyglot-1.4.70b-orig/pgheader.h
++++ polyglot-1.4.70b/pgheader.h
+@@ -10,9 +10,6 @@
+ #define PGHEADER_BAD_HEADER 6
+ 
+ 
+-const char * pgheader_version;
+-const char * pgheader_magic;
+-
+ /* This does some heuristic tests to make it reasonably sure we are dealing
+    with a Polyglot book.
+ */

@@ -1,0 +1,8 @@
+--- a/services/icecc.pc.in
++++ b/services/icecc.pc.in
+@@ -11,4 +11,5 @@ Version: @VERSION@
+ Requires:
+ Conflicts:
+ Libs: -L${libdir} -licecc
++Libs.private: @CAPNG_LDADD@
+ Cflags: -I${includedir}

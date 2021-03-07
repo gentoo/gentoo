@@ -1,0 +1,12 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,6 @@
+-all: install
++LDLIBS += -lm
+ 
+-install:  rifiuti.c
+-	gcc -o rifiuti rifiuti.c -lm -lc;cp rifiuti ../bin
++all: rifiuti
+ 
+ installwin:  rifiuti.c
+ 	gcc -DCYGWIN -o rifiuti.exe rifiuti.c -lm -lc;cp rifiuti.exe ../bin

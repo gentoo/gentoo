@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>fonts@gentoo.org</email>
+		<name>Fonts</name>
+	</maintainer>
+	<longdescription lang="en">
+		Welcome to the Charis SIL font package. Charis is similar to
+		Bitstream Charter, one of the first fonts designed specifically
+		for laser printers. It is highly readable and holds up well in
+		less-than-ideal reproduction environments. It also has a full set
+		of styles - regular, italic, bold, bold italic - and so is more
+		useful in general publishing than Doulos SIL. Charis is a serif,
+		proportionally-spaced font optimized for readability in long
+		printed documents.
+	</longdescription>
+	<use>
+		<flag name="compact">Use more compactly spaced font</flag>
+	</use>
+</pkgmetadata>

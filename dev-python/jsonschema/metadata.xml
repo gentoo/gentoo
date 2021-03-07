@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>chutzpah@gentoo.org</email>
+    <name>Patrick McLean</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Python</name>
+  </maintainer>
+  <longdescription lang="en">
+jsonschema is an implementation of JSON Schema (currently in Draft 3) for
+Python (supporting 2.6+ including Python 3).
+</longdescription>
+  <stabilize-allarches/>
+  <upstream>
+    <remote-id type="pypi">jsonschema</remote-id>
+    <remote-id type="github">Julian/jsonschema</remote-id>
+  </upstream>
+</pkgmetadata>

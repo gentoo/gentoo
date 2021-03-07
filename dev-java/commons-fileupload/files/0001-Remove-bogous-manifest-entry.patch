@@ -1,0 +1,29 @@
+From 88920db784bbb37c1043371548642a9ad529d600 Mon Sep 17 00:00:00 2001
+From: Ralph Sennhauser <sera@gentoo.org>
+Date: Sat, 20 Apr 2013 09:51:46 +0200
+Subject: [PATCH 1/2] Remove bogous manifest entry
+
+---
+ build.xml | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/build.xml b/build.xml
+index b207f76..1e18fec 100644
+--- a/build.xml
++++ b/build.xml
+@@ -252,12 +252,8 @@
+     <jar jarfile="${maven.build.dir}/${maven.build.finalName}.jar" 
+          compress="true" 
+          index="false" 
+-         manifest="${commons.manifestfile}" 
+          basedir="${maven.build.outputDir}" 
+          excludes="**/package.html">
+-      <manifest>
+-        <attribute name="Main-Class"/>
+-      </manifest>
+     </jar>
+   </target>
+ 
+-- 
+1.8.1.5
+

@@ -1,0 +1,11 @@
+--- a/check_glsa2_cached.sh
++++ b/check_glsa2_cached.sh
+@@ -8,7 +8,7 @@
+ # Caches the result of check_glsa2.sh
+ # First line is the return code, rest of the file is the message
+ NAME=$(basename $0 .sh)
+-CACHEDIR=/var/lib/gentoo/
++CACHEDIR=/var/cache/check_glsa2
+ CACHEFILE=${CACHEDIR}/check_glsa2.cache
+ SCRIPT=/usr/lib/nagios/plugins/check_glsa2.sh
+ ret=0

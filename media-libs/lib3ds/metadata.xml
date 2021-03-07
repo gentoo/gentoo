@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="person">
+        <email>amynka@gentoo.org</email>
+    </maintainer>
+    <maintainer type="project">
+        <email>games@gentoo.org</email>
+        <name>Gentoo Games Project</name>
+    </maintainer>
+    <maintainer type="project">
+        <email>3dprint@gentoo.org</email>
+        <name>Gentoo 3D print</name>
+    </maintainer>
+    <upstream>
+        <bugs-to>https://code.google.com/archive/p/lib3ds/issues</bugs-to>
+    </upstream>
+</pkgmetadata>

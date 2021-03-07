@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<longdescription>
+  'Remember' is a mode for remembering data. It uses whatever back-end is
+  appropriate to record and correlate the data, but its main intention is to
+  allow you to express as little structure as possible up front. If you later
+  want to express more powerful relationships between your data, or state
+  assumptions that were at first too implicit to be recognized, you can
+  'study' the data later and rearrange it. But the initial 'just remember
+  this' impulse should be as close to simply throwing the data at Emacs as
+  possible.
+</longdescription>
+<stabilize-allarches/>
+<use>
+  <flag name="bbdb">Include support for <pkg>app-emacs/bbdb</pkg></flag>
+  <flag name="planner">Include support for <pkg>app-emacs/planner</pkg></flag>
+</use>
+<upstream>
+  <remote-id type="github">jwiegley/remember</remote-id>
+</upstream>
+</pkgmetadata>

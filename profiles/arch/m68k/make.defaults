@@ -1,0 +1,23 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+ARCH="m68k"
+ACCEPT_KEYWORDS="m68k ~m68k"
+
+CHOST="m68k-unknown-linux-gnu"
+CFLAGS="-O2 -pipe"
+CXXFLAGS="${CFLAGS}"
+FFLAGS="${CFLAGS}"
+FCFLAGS="${CFLAGS}"
+
+# Michał Górny <mgorny@gentoo.org> (2014-07-01)
+# Set ABI & DEFAULT_ABI consistently with ${ARCH}, to make ebuild
+# checks simpler.
+ABI="m68k"
+DEFAULT_ABI="m68k"
+MULTILIB_ABIS="m68k"
+LIBDIR_m68k="lib"
+CHOST_m68k="${CHOST}"
+
+# Disable sandbox on this architecture
+FEATURES="-sandbox"

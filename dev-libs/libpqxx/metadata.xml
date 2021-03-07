@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>pgsql-bugs@gentoo.org</email>
+    <name>PostgreSQL and Related Package Development</name>
+  </maintainer>
+  <longdescription>
+    libpqxx is the official C++ client API for PostgreSQL. If you are writing
+    software in C++ that needs to access databases managed by Postgres — on just
+    about any platform — then libpqxx is the library you use. Supersedes the now
+    defunct libpq++ (AKA, libpqpp) API.
+  </longdescription>
+</pkgmetadata>

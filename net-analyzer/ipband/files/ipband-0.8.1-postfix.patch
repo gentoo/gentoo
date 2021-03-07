@@ -1,0 +1,13 @@
+--- a/ipband.sample.conf
++++ b/ipband.sample.conf
+@@ -61,7 +61,10 @@
+ #   MTA string. Default is "/usr/sbin/sendmail -t -ba". Change it to
+ #   whatever runs MTA of your choice. Note that the stringis tokenized and 
+ #   passed to exec(), so that shell's metacharacters are not interpreted.
++# Sendmail
+ #mtastring "/usr/sbin/sendmail -t -ba"
++# Postfix
++#mtastring "/usr/sbin/sendmail -t"
+ 
+ #   Default number of subnet mask bits.
+ #maskbits 24

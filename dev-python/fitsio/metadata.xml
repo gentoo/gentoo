@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-astronomy@gentoo.org</email>
+		<name>Gentoo Astronomy Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Fitsio provides an easy to use object-oriented API including
+		providing a Numpy interface to FITS files read from CFITSIO. It
+		allows direct access to the columns of a FITS binary table which can
+		be useful for reading large fits files. Compared to astropy.io.fits,
+		this package is closer to the underlying cfitsio library.
+		Fitsio also exposes a microlanguage (implemented in CFITSIO) for
+		making efficient SQL-like queries of tables (single tables only
+		though–no joins or anything like that).
+	</longdescription>
+	<upstream>
+		<remote-id type="github">esheldon/fitsio</remote-id>
+		<remote-id type="pypi">fitsio</remote-id>
+	</upstream>
+</pkgmetadata>

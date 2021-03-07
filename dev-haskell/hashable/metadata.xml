@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		This package defines a class, 'Hashable', for types that
+		can be converted to a hash value.  This class
+		exists for the benefit of hashing-based data
+		structures.  The package provides instances for
+		basic types and a way to combine hash values.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">tibbe/hashable</remote-id>
+	</upstream>
+</pkgmetadata>

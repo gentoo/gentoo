@@ -1,0 +1,19 @@
+--- a/bwbar.c
++++ b/bwbar.c
+@@ -30,6 +30,7 @@
+ #include <alloca.h>
+ #include <getopt.h>
+ #include <png.h>
++#include <zlib.h>
+ 
+ void skipline(FILE *f)
+ {
+@@ -79,7 +80,7 @@
+   if ( !info_ptr )
+     goto barf;
+ 
+-  if ( setjmp(png_ptr->jmpbuf) ) {
++  if ( setjmp(png_jmpbuf(png_ptr)) ) {
+     status = 1;
+     goto barf;			/* libpng abort */
+   }

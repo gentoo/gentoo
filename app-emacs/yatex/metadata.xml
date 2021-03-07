@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>gnu-emacs@gentoo.org</email>
+		<name>Gentoo GNU Emacs project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>cjk@gentoo.org</email>
+		<name>Cjk</name>
+	</maintainer>
+	<longdescription lang="en">
+		YaTeX is an intelligent, acquisitive and integrated package which reduces
+		your efforts of composing LaTeX source on Emacs. And yahtml is the honest
+		and bright YaTeX-compatible major-mode package for writing HTML. If you have
+		noticed the power of YaTeX, you can drive yahtml over the HTML files quickly
+		and steadily. And vice versa, of course.
+	</longdescription>
+	<stabilize-allarches/>
+</pkgmetadata>

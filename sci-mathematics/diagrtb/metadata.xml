@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-chemistry@gentoo.org</email>
+		<name>Gentoo Chemistry Project</name>
+	</maintainer>
+	<longdescription>
+A fortran program for the calculation of some eigenvectors of a large real, 
+symmetrical, matrix.
+If the matrix was obtained, for instance, with the PDBMAT program, these 
+eigenvectors correspond to the low-frequency normal modes (i.e., mostly 
+those with a collective character) of the system. Note that in the case of 
+proteins, low-frequency normal modes thus obtained are found to be very close 
+to those obtained with standard, much more realistic (e.g., all atoms with 
+empirical force fields), models.
+
+The method used rests upon the RTB approximation (standing for 
+Rotations-Translations-of-Blocks). Within the frame of this approximation, 
+blocks of n (n=1,2,...) consecutive monomers (amino-acid residues) are 
+assumed to behave like rigid bodies.
+
+Requirements: a matrix in the "i j non-zero-ij-matrix-element" format. 
+A file with the coordinates of the system, in the PDB or "x y z mass 
+block-number" format.
+</longdescription>
+</pkgmetadata>

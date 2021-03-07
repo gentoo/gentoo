@@ -1,0 +1,11 @@
+--- a/src/output-plugins/spo_alert_unixsock.c
++++ b/src/output-plugins/spo_alert_unixsock.c
+@@ -56,6 +56,8 @@
+ #include "spo_alert_unixsock.h"
+ #include "barnyard2.h"
+ 
++#include <stdlib.h>
++
+ #define UNSOCK_FILE "barnyard2_alert"
+ 
+ 

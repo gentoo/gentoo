@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">GraphViz</remote-id>
+    <remote-id type="cpan-module">Devel::GraphVizProf</remote-id>
+    <remote-id type="cpan-module">GraphViz</remote-id>
+    <remote-id type="cpan-module">GraphViz::Data::Grapher</remote-id>
+    <remote-id type="cpan-module">GraphViz::No</remote-id>
+    <remote-id type="cpan-module">GraphViz::Parse::RecDescent</remote-id>
+    <remote-id type="cpan-module">GraphViz::Parse::Yacc</remote-id>
+    <remote-id type="cpan-module">GraphViz::Parse::Yapp</remote-id>
+    <remote-id type="cpan-module">GraphViz::Regex</remote-id>
+    <remote-id type="cpan-module">GraphViz::Small</remote-id>
+    <remote-id type="cpan-module">GraphViz::XML</remote-id>
+  </upstream>
+</pkgmetadata>

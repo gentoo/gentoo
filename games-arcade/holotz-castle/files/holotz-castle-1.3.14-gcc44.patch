@@ -1,0 +1,11 @@
+--- a/JLib/JLib/Util/JFS.cpp
++++ b/JLib/JLib/Util/JFS.cpp
+@@ -887,7 +887,7 @@
+ 
+ 		// Si es un directorio lo importa recursivamente
+ 		struct dirent64 **namelist;
+-		n = scandir64(filename, &namelist, 0, alphasort);
++		n = scandir64(filename, &namelist, 0, alphasort64);
+ 
+ 		if (n < 0)
+ 		{

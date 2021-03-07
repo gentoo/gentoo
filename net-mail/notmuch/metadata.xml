@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>gentoo@seichter.de</email>
+		<name>Ralph Seichter</name>
+	</maintainer>
+	<use>
+		<flag name="apidoc">Provide doxygen generated API docs</flag>
+		<flag name="doc">Install API documentation</flag>
+		<flag name="crypt">Support decryption and verification of PGP/MIME
+			messages and in Emacs UI - encryption; support also S/MIME
+			signature verification since version 0.22</flag>
+		<flag name="emacs">Install Emacs UI (the main one)</flag>
+		<flag name="mutt">Install helper script for Mutt</flag>
+		<flag name="nmbug">Install experimental tag sharing /
+			pseudo-bug-tracking script for Notmuch
+			(see http://notmuchmail.org/nmbug/)</flag>
+		<flag name="valgrind">Depend on dev-util/valgrind for test suite</flag>
+	</use>
+	<longdescription lang="en">
+		Notmuch is a system for indexing, searching, reading, and tagging large
+		collections of email messages in maildir or mh format. It uses the
+		Xapian library to provide fast, full-text search with a convenient
+		search syntax.
+	</longdescription>
+</pkgmetadata>

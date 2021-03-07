@@ -1,0 +1,10 @@
+--- a/socnetv.pro	2017-01-21 16:50:53.000000000 +0100
++++ b/socnetv.pro	2017-01-28 15:05:26.462351261 +0100
+@@ -34,7 +34,6 @@
+ LANGUAGE = C++
+ 
+ # support
+-QT += xml 
+ QT += network
+ QT += widgets
+ QT += printsupport 

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The kde-misc category contains various miscellaneous KDE packages.
+		In general, packages here are extensions of the Plasma desktop environment
+		(ioslaves, command center modules, plasmoids, ...), while KDE applications
+		that do not rely on the desktop environment better suit other categories.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie kde-misc enthält verschiedenartige KDE-Pakete.
+		In der Regel sind die Pakete hier Erweiterungen der Plasma Desktopumgebung
+		(ioslaves, Module der Systemeinstellungen, Plasmoide, ...); KDE-Anwendungen, 
+		die nicht zwingend die gesamte Desktopumgebung voraussetzen, gehören besser
+		in andere Kategorien.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría kde-misc contiene paquetes misceláneos de KDE.
+	</longdescription>
+	<longdescription lang="ja">
+		kde-baseカテゴリーにはKDEの多種多様なパッケージが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De kde-misc categorie bevat allerlei pakketten voor KDE.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm kde-misc chứa các gói KDE linh tinh khác.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria kde-misc contiene vari pacchetti per KDE.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria kde-misc contém vários pacotes mistos de KDE.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria kde-misc zawiera dodatkowe programy dla środowiska KDE.
+	</longdescription>
+</catmetadata>
+

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+		iGal is a Perl program that can generate and publish an entire online
+		picture show (static HTML slides, thumbnails and index page) with just
+		one command line invocation in a Linux or Unix environment.
+	</longdescription>
+</pkgmetadata>

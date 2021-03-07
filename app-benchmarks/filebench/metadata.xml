@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gokturk@gentoo.org</email>
+		<name>Göktürk Yüksek</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>bircoph@gentoo.org</email>
+		<name>Andrew Savchenko</name>
+	</maintainer>
+	<use>
+		<flag name="auto-completion">Enable command-line autocompletion using <pkg>dev-libs/libtecla</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">filebench</remote-id>
+	</upstream>
+</pkgmetadata>

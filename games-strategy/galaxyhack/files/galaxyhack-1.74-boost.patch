@@ -1,0 +1,11 @@
+--- src/SetupBattle.cpp
++++ src/SetupBattle.cpp
+@@ -18,7 +18,7 @@
+ #include "PreBattle.h"
+ 
+ #include <sstream>
+-#include <boost/filesystem/exception.hpp>
++#include <boost/filesystem.hpp>
+ 
+ using std::stringstream;
+ using std::getline;

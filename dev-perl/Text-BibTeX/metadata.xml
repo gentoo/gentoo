@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Text-BibTeX</remote-id>
+    <remote-id type="cpan-module">Text::BibTeX</remote-id>
+    <remote-id type="cpan-module">Text::BibTeX::BibEntry</remote-id>
+    <remote-id type="cpan-module">Text::BibTeX::BibFormat</remote-id>
+    <remote-id type="cpan-module">Text::BibTeX::BibSort</remote-id>
+    <remote-id type="cpan-module">Text::BibTeX::BibStructure</remote-id>
+    <remote-id type="cpan-module">Text::BibTeX::Entry</remote-id>
+    <remote-id type="cpan-module">Text::BibTeX::File</remote-id>
+    <remote-id type="cpan-module">Text::BibTeX::Name</remote-id>
+    <remote-id type="cpan-module">Text::BibTeX::NameFormat</remote-id>
+    <remote-id type="cpan-module">Text::BibTeX::SimpleValue</remote-id>
+    <remote-id type="cpan-module">Text::BibTeX::Structure</remote-id>
+    <remote-id type="cpan-module">Text::BibTeX::StructuredEntry</remote-id>
+    <remote-id type="cpan-module">Text::BibTeX::Value</remote-id>
+  </upstream>
+</pkgmetadata>

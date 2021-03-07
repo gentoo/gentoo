@@ -1,0 +1,194 @@
+Origin: other, https://sourceforge.net/p/qtscrob/patches/15/
+Bug: https://sourceforge.net/p/qtscrob/patches/15/
+Bug-Debian: https://bugs.debian.org/875156
+Description: Port to Qt5
+
+--- a/src/lib/gettrackinfo.cpp
++++ b/src/lib/gettrackinfo.cpp
+@@ -58,7 +58,7 @@
+     data += "&track=" + QUrl::toPercentEncoding(track_info.title);
+     data += "&autocorrect=1";
+     time.restart();
+-    manager->post(request, QByteArray(data.toAscii()));
++    manager->post(request, QByteArray(data.toLatin1()));
+ }
+ 
+ void GetTrackInfo::run()
+--- a/src/lib/lib.pro
++++ b/src/lib/lib.pro
+@@ -13,7 +13,8 @@
+ QT += core \
+     network \
+     xml \
+-    sql
++    sql \
++    widgets
+ 
+ QT -= gui
+ LANGUAGE = C++
+--- a/src/lib/parse-log.cpp
++++ b/src/lib/parse-log.cpp
+@@ -153,9 +153,9 @@
+                 //right number of tabs in the line
+                 scrob_entry temp_entry;
+ 
+-                temp_entry.artist = QString::fromUtf8(log_entry[0].toAscii());
+-                temp_entry.album = QString::fromUtf8(log_entry[1].toAscii());
+-                temp_entry.title = QString::fromUtf8(log_entry[2].toAscii());
++                temp_entry.artist = QString::fromUtf8(log_entry[0].toLatin1());
++                temp_entry.album = QString::fromUtf8(log_entry[1].toLatin1());
++                temp_entry.title = QString::fromUtf8(log_entry[2].toLatin1());
+                 temp_entry.tracknum = log_entry[3].toInt();
+                 temp_entry.length = log_entry[4].toInt();
+                 temp_entry.played = log_entry[5][0];
+--- a/src/lib/submit.cpp
++++ b/src/lib/submit.cpp
+@@ -151,7 +151,7 @@
+     submit_handshake.setHeader(QNetworkRequest::ContentTypeHeader,
+                                "application/x-www-form-urlencoded");
+ 
+-    QByteArray submit_data = QByteArray(data.toAscii());
++    QByteArray submit_data = QByteArray(data.toLatin1());
+     nr_submit = nam_submit->post(submit_handshake, submit_data);
+ }
+ 
+@@ -251,7 +251,7 @@
+     QString time_str = QString::number(QDateTime::currentDateTime().toTime_t());
+ 
+     QCryptographicHash auth_hash(QCryptographicHash::Md5);
+-    auth_hash.addData(QString(context.password_hash + time_str).toAscii());
++    auth_hash.addData(QString(context.password_hash + time_str).toLatin1());
+     QString auth = QString(auth_hash.result().toHex());
+ 
+     QUrl url_handshake = QString( "http://%1/?hs=true&p=%2&c=%3&v=%4&u=%5&t=%6&a=%7" )
+--- a/src/lib/submit.h
++++ b/src/lib/submit.h
+@@ -20,7 +20,6 @@
+ #define SUBMIT_H
+ 
+ #include <QtCore>
+-#include <QHttp>
+ #include <QNetworkAccessManager>
+ #include <QNetworkProxy>
+ #include <QNetworkReply>
+--- a/src/qt/qt.pro
++++ b/src/qt/qt.pro
+@@ -34,6 +34,7 @@
+ TEMPLATE = app
+ TARGET = qtscrob
+ QT += gui
++QT += widgets
+ LANGUAGE = C++
+ INCLUDEPATH += . \
+     src \
+--- a/src/qt/src/about.h
++++ b/src/qt/src/about.h
+@@ -22,6 +22,7 @@
+ #include "ui_aboutWin.h"
+ #include <QApplication>
+ #include <QtGui>
++#include <QLabel>
+ 
+ class QTScrob;
+ 
+--- a/src/qt/src/console.h
++++ b/src/qt/src/console.h
+@@ -22,6 +22,11 @@
+ #include <QTimer>
+ #include <QApplication>
+ #include <QtGui>
++#include <QLabel> 
++#include <QTextEdit>
++#include <QDialog>
++#include <QComboBox>
++#include <QPushButton>
+ 
+ class QTScrob;
+ class QTimer;
+--- a/src/qt/src/help.h
++++ b/src/qt/src/help.h
+@@ -21,6 +21,9 @@
+ 
+ #include <QApplication>
+ #include <QtGui>
++#include <QLabel> 
++#include <QDialog>
++#include <QTextEdit>
+ 
+ class QTScrob;
+ 
+--- a/src/qt/src/progress.h
++++ b/src/qt/src/progress.h
+@@ -21,6 +21,13 @@
+ 
+ #include <QApplication>
+ #include <QtGui>
++#include <QLabel>
++#include <QWidget>
++#include <QProgressBar>
++#include <QDialog>
++#include <QFormLayout>
++#include <QVBoxLayout>
++#include <QPushButton>
+ 
+ class QTScrob;
+ 
+--- a/src/qt/src/qtscrob.cpp
++++ b/src/qt/src/qtscrob.cpp
+@@ -41,7 +41,7 @@
+ 	logTable->setHorizontalHeaderLabels(tableLabels);
+ 	logTable->setAlternatingRowColors(true);
+ 	logTable->setSelectionBehavior(QAbstractItemView::SelectRows);
+-	logTable->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
++	logTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+     logTable->installEventFilter(this);
+ 
+     recalc_timestamp = scrob->get_gmt();
+@@ -600,7 +600,7 @@
+ 		case 5:
+ 			if (!logTable->item(r, c)->text().isEmpty())
+ 			{
+-				char rating = logTable->item(r, c)->text().toAscii().data()[0];
++				char rating = logTable->item(r, c)->text().toLatin1().data()[0];
+ 				if ('L' == rating || 'S' == rating)
+ 					tmp.played = rating;
+ 			}
+--- a/src/qt/src/qtscrob.h
++++ b/src/qt/src/qtscrob.h
+@@ -23,12 +23,20 @@
+ #include <QtGui>
+ #include <QApplication>
+ #include <QMainWindow>
++#include <QTableWidget>
++#include <QMenu>
++#include <QMenuBar>
++#include <QStatusBar>
++#include <QFile>
++#include <QFileDialog>
++#include <QTextEdit>
+ #include <QMessageBox>
+ #include <QByteArray>
+ #include <QtDebug>
+ #include <QSettings>
+ #include <QDateTimeEdit>
+ #include <QLabel>
++#include <QWidget>
+ #include "libscrobble.h"
+ #include "common.h"
+ #include "missingtimeprogress.h"
+--- a/src/qtscrob.pro
++++ b/src/qtscrob.pro
+@@ -1,4 +1,4 @@
+-VER = $$find(QT_VERSION, ^4\\.[6-9]+.*)
++VER = $$find(QT_VERSION, ^4\\.[6-9]+.*|^5)
+ isEmpty(VER) {
+     message("Qt >= 4.6 required!")
+     !isEmpty(QT_VERSION) error("Qt found:" $$[QT_VERSION])
+@@ -17,6 +17,7 @@
+ system($$QMAKE_LUPDATE -silent language/language.pro)
+ system($$QMAKE_LRELEASE -silent language/language.pro)
+ 
++QT += widgets
+ TEMPLATE=subdirs
+ SUBDIRS=lib qt cli
+ CONFIG += ordered

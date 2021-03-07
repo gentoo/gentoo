@@ -1,0 +1,21 @@
+--- a/Makefile	2001-04-18 23:07:56.000000000 +0200
++++ b/Makefile	2010-09-17 03:08:55.000000000 +0200
+@@ -1,9 +1,9 @@
+-CFLAGS=
+-LDFLAGS= -L/usr/X11R6/lib -lXext -lX11 -lXxf86vm -lXxf86dga
++LIBS= $(shell pkg-config --libs xext x11 xxf86vm xxf86dga)
++INCLUDES= $(shell pkg-config --cflags xext x11 xxf86vm xxf86dga)
+ prefix=/usr
+ 
+ chgres: chgres.o
+-	$(CC) -o $@ $< $(LDFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $< $(LIBS)
+ 
+ install: chgres
+ 	install -D -m 0555 chgres $(prefix)/bin/
+@@ -12,4 +12,4 @@
+ 	rm -f core chgres.o chgres
+ 
+ .c.o:
+-	$(CC) $(CFLAGS) -c $< -o $@
++	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@

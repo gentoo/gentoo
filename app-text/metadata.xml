@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The app-text category contains tools for working with human-language
+		text files.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie app-text enhält Werkzeuge für das Arbeiten mit menschenlesbaren
+		Textdokumenten.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría app-text contiene herramientas para trabajar con archivos
+		de texto en lenguaje humano.
+	</longdescription>
+	<longdescription lang="nl">
+		De app-text categorie bevat applicaties voor het werken met door mensen geschreven teksten.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm app-text chứa các công cụ để làm việc với các tập
+		tin văn bản có thể đọc hiểu.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria app-text contiene utilità per lavorare con file di testo.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria app-text contém ferramentas para trabalhar com
+		arquivos de texto em linguagens humanas.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria app-text zawiera narzędzia do pracy ze zwykłymi plikami tekstowymi.
+	</longdescription>
+</catmetadata>
+

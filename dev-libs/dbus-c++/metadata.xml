@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="ecore">Use Ecore integration</flag>
+		<flag name="glib">Use glib integration</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">dbus-cplusplus</remote-id>
+	</upstream>
+</pkgmetadata>

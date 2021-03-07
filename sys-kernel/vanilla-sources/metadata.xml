@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kernel@gentoo.org</email>
+		<name>Gentoo kernel team</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>ago@gentoo.org</email>
+		<name>Agostino Sarubbo</name>
+		<description>CC/Assign to me the version bump request</description>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpe">cpe:/o:linux:linux_kernel</remote-id>
+	</upstream>
+</pkgmetadata>

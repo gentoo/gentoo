@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sound@gentoo.org</email>
+		<name>Gentoo Sound project</name>
+	</maintainer>
+	<use>
+		<flag name="pango">Use the pango library to render fonts with non-latin characters</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">leesavide/abcm2ps</remote-id>
+	</upstream>
+</pkgmetadata>

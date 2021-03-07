@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The sci-geosciences category contains geosciences-related software.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie sci-geosciences enthält Software aus dem Bereich der
+		Geowissenschaften.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría sci-geosciences contiene programas relacionados con la
+		geología.
+	</longdescription>
+	<longdescription lang="ja">
+		sci-geosciencesカテゴリーには地球科学関連のソフトウェアが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De sci-geosciences categorie bevat programma's voor gebruik in de geologie
+		en andere aardwetenschappen.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm sci-geosciences chứa các phần mềm liên quan đến địa-khoa học.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria sci-geosciences contiene programmi di geologia.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria sci-geosciences contém programas relacionados com
+		geologia.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria sci-geosciences zawiera programy naukowe związane z geologią.
+	</longdescription>
+</catmetadata>
+

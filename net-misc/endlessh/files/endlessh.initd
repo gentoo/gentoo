@@ -1,0 +1,30 @@
+#!/sbin/openrc-run
+# Copyright 2019-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	after bootmisc
+	need localmount
+	use clock logger net
+}
+
+description="Starts endlessh tarpit"
+
+command="/usr/bin/endlessh"
+# NOTE: You will need to add -s to ENDLESSH_ARGS in /etc/conf.d/endlessh if modified to keep syslog
+command_args="${ENDLESSH_ARGS:--sv}"
+command_background="true"
+extra_started_commands="dumpstats reload"
+pidfile="/run/${RC_SVCNAME}.pid"
+
+dumpstats() {
+	ebegin "Dumping connection stats of ${RC_SVCNAME} to log"
+	start-stop-daemon --signal SIGUSR1 --pidfile "${pidfile}"
+	eend $?
+}
+
+reload() {
+	ebegin "Reloading ${RC_SVCNAME} configuration"
+	start-stop-daemon --signal HUP --pidfile "${pidfile}"
+	eend $?
+}

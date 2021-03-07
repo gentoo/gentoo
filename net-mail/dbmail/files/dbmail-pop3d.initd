@@ -1,0 +1,48 @@
+#!/sbin/runscript
+#
+
+BIN_DIR=/usr/sbin
+PID_DIR=/run/dbmail
+PID=pid
+
+# Where is the dbmail.conf file located?
+CONFIG=/etc/dbmail/dbmail.conf
+
+## not in 3.1.x yet
+#extra_started_commands="reload"
+
+depend() {
+	need net
+	use mysql
+	use pgsql
+	after mta
+}
+
+checkconfig() {
+	if [ ! -e "/etc/dbmail/dbmail.conf" ]; then
+		eerror "You need to create apropriate config"
+		eerror "in /etc/dbmail/ . Example can be found in /etc/dbmail/dbmail.conf.dist"
+		return 1
+	fi
+	# Avoid using root's TMPDIR
+	unset TMPDIR
+}
+
+
+start() {
+	checkconfig && \
+	ebegin "Starting DBMail POP3 daemon"
+	    start-stop-daemon --start --quiet \
+		--exec /usr/sbin/dbmail-pop3d \
+		--name dbmail-pop3d \
+		-- -p ${PIDFILE} -f /etc/dbmail/dbmail.conf 2>&1
+	eend $?
+}	
+
+stop() {
+	ebegin "Stopping DBMail POP3 daemon"
+	    start-stop-daemon --stop --quiet --retry 5 \
+		--pidfile ${PIDFILE}
+	eend $?
+}	
+

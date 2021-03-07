@@ -1,0 +1,26 @@
+the rpc logic here isn't terribly useful, so just punt it
+
+http://bugs.gentoo.org/371395
+
+--- a/inetd/inetd.c
++++ b/inetd/inetd.c
+@@ -158,8 +158,8 @@
+ #include <rpc/rpc.h>
+ #include <rpc/pmap_clnt.h>
+ #undef __wait
+-#endif
+ #include <rpc/pmap_clnt.h>
++#endif
+ 
+ #ifndef MIN
+ #define MIN(a, b)	((a) < (b) ? (a) : (b))
+--- a/inetd/inetd.h
++++ b/inetd/inetd.h
+@@ -4,7 +4,6 @@
+ 
+ #define	RETRYTIME	(60*10)		/* retry time after bind/server fail */
+ 
+-#define RPC                             /* Use SunRPC */
+ 
+ 
+ /* globals */

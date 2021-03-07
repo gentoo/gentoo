@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<use>
+		<flag name="bittorrent">Enable bittorrent transfer plugin through <pkg>net-libs/libktorrent</pkg></flag>
+		<flag name="gpg">Enable signature verification by GpgME++ via <pkg>app-crypt/gpgme</pkg></flag>
+		<flag name="mms">Enable MMS (Microsoft Media Server) plugin through <pkg>media-libs/libmms</pkg></flag>
+	</use>
+</pkgmetadata>

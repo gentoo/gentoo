@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		This package provides a set of helper programs necessary to
+		build the Gtk2Hs suite of libraries. These tools include
+		a modified c2hs binding tool that is used to generate
+		FFI declarations, a tool to build a type hierarchy that
+		mirrors the C type hierarchy of GObjects found in glib,
+		and a generator for signal declarations that are used
+		to call back from C to Haskell. These tools are not needed
+		to actually run Gtk2Hs programs.
+	</longdescription>
+	<use>
+		<flag name="closuresignals">Use the the GClosure-based signals
+		implementation.</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,88 @@
+diff --git a/src/c_make.gen b/src/c_make.gen
+index 414dead..84c3030 100644
+--- a/src/c_make.gen
++++ b/src/c_make.gen
+@@ -200,45 +200,12 @@ LOCAL_SYS_INC=$(SEP_PATH)/../SYS/inc
+ #### Do not redefine if (a) passed in on command line, or (b)
+ #### defined in an environment variable.
+ 
+-ifneq "$(origin CC)" "environment"
+-CC      = cc
+-endif
+-
+-ifneq "$(origin CPPFLAGS)" "environment"
+-CPPFLAGS=
+-endif
+-
+-ifneq "$(origin CFLAGS)" "environment"
+-CFLAGS  =
+-endif
+-
+-ifneq "$(origin CDEFS)" "environment"
+-CDEFS  =
+-endif
+-
+-ifneq "$(origin CXX)" "environment"
+-CXX	= g++
+-endif
+-
+-ifneq "$(origin CXXFLAGS)" "environment"
+-CXXFLAGS=
+-endif
+-
+-ifneq "$(origin CXXDEFS)" "environment"
+-CXXDEFS= -D__cplusplus
+-endif
+-
+-ifneq "$(origin AR)" "environment"
+-AR      = ar
+-endif
+-
+-ifneq "$(origin ARFLAGS)" "environment"
+-ARFLAGS = rvs
+-endif
+-
+-ifneq "$(origin LDFLAGS)" "environment"
+-LDFLAGS =
+-endif
++CC      ?= cc
++CXX	?= g++
++CXXFLAGS ?=
++CXXDEFS = -D__cplusplus
++AR      ?= ar
++ARFLAGS ?= rvs
+ 
+ #### Delete default suffix rules
+ .SUFFIXES:
+@@ -359,13 +326,13 @@ $(PROGS):
+ 	  cd $(LOCAL_OBJ); \
+ 	    if $(CC) -o $(LOCAL_BIN)/$(notdir $@) $(LDFLAGS) \
+                $(LD_DIRS) $(filter-out lib%.a, $+) \
+-	       $(patsubst lib%.a, -l%, $(filter lib%.a, $+)) ; then \
++	       $(patsubst lib%.a, -l%, $(filter lib%.a, $+)) $(LIBS) ; then \
+ 			true; else rm -f $(LOCAL_BIN)/$(notdir $@); fi; \
+ 	else \
+ 	  cd $(LOCAL_OBJ); \
+ 	    if $(CXX) -o $(LOCAL_BIN)/$(notdir $@) $(LDFLAGS) \
+                $(LD_DIRS) $(filter-out lib%.a, $+) \
+-	       $(patsubst lib%.a, -l%, $(filter lib%.a, $+)) ; then \
++	       $(patsubst lib%.a, -l%, $(filter lib%.a, $+)) $(LIBS) ; then \
+ 			true; else rm -f $(LOCAL_BIN)/$(notdir $@); fi; \
+ 	fi ;
+ 
+diff --git a/src/c_make.glm b/src/c_make.glm
+index 0decc17..b82131c 100644
+--- a/src/c_make.glm
++++ b/src/c_make.glm
+@@ -8,10 +8,7 @@ include $(LOCAL_WORK)/src/c_make.gen
+ 
+ SUBDIRS = Common ICM Glimmer Util
+ 
+-CFLAGS = -g -Wall
+-CXXFLAGS = -g -Wall
+-
+-LDFLAGS = -g -lm
++LIBS = -lm
+ 
+ 
+ #AS_BUILD_DIR =$(LOCAL_WORK)

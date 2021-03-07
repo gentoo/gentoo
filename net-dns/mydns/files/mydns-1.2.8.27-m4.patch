@@ -1,0 +1,53 @@
+--- mydns-1.1.0/m4/mydns.m4.orig	2010-12-01 21:57:52.000000000 +0100
++++ mydns-1.1.0/m4/mydns.m4	2010-12-01 22:07:24.000000000 +0100
+@@ -542,46 +542,10 @@
+ ##
+ AC_DEFUN([AC_LIB_MYSQLCLIENT],
+ 	[
+-		libmysqlclient_dirs="/usr/local/mysql/lib /usr/local/lib/mysql /usr/local/lib /usr/lib/mysql /usr/lib /lib"
+-		AC_ARG_WITH(mysql-lib,
+-			AC_HELP_STRING([--with-mysql-lib=DIR], [look for the MySQL client library in DIR]),
+-			libmysqlclient_dirs="$withval $libmysqlclient_dirs")
+-		libmysqlclient_found=no, libmysqlclient_ok=no
+-		for libmysqlclient_dir in $libmysqlclient_dirs; do
+-			if test "$libmysqlclient_found" != yes; then
+-				AC_CHECK_FILE($libmysqlclient_dir/libmysqlclient_r.so, libmysqlclient_found=yes, libmysqlclient_found=no)
+-				if test "$libmysqlclient_found" != yes; then
+-					AC_CHECK_FILE($libmysqlclient_dir/libmysqlclient.so, libmysqlclient_found=yes, libmysqlclient_found=no)
+-				fi
+-				if test "$libmysqlclient_found" != yes; then
+-					AC_CHECK_FILE($libmysqlclient_dir/libmysqlclient.a, libmysqlclient_found=yes, libmysqlclient_found=no)
+-				fi
+-				if test "$libmysqlclient_found" = yes; then
+-					## libmysqlclient depends on libz
+-					if ! test -n "$LIBZ"; then
+-						AC_LIB_Z
+-					fi
+-					if ! test -n "$LIBZ"; then
+-						## No zlib
+-						AC_MSG_ERROR([
+-
+-][  ###
+-][  ###  zlib compression library (libz.a) not found.
+-][  ###
+-][  ###  Please download and install the zlib compression
+-][  ###  library from the following URL:
+-][  ###
+-][  ###       http://www.gzip.org/zlib/
+-][  ###
+-][  ###  (Error detail might be available in `config.log')
+-][  ###
+-])
+-     				fi
+-					LIBMYSQLCLIENT="-L$libmysqlclient_dir -lmysqlclient"
+-					libmysqlclient_found=yes
+-				fi
+-			fi
+-		done
++		AC_CHECK_PROG(LIBMYSQLCLIENT,mysql_config,`mysql_config --libs`)
++		if test -z "$LIBMYSQLCLIENT"; then
++			AC_MSG_ERROR([Could not find mysql_config script. Make sure the mysql client libraries are installed])
++		fi
+ 		AC_SUBST(LIBMYSQLCLIENT)
+ 	]
+ )

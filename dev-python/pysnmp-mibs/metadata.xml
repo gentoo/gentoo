@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>netmon@gentoo.org</email>
+		<name>Gentoo network monitoring and analysis project</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<longdescription>
+		This is a Python implementation of SNMP v.1/v.2c engine. Its general
+		functionality is to assemble/disassemble SNMP messages from/into
+		given SNMP Object IDs along with associated values. PySNMP also provides
+		a few transport methods specific to TCP/IP networking.
+
+		PySNMP is written entirely in Python and is self-sufficient in terms
+		that it does not rely on any third party tool (it is not a wrapper!).
+	</longdescription>
+	<longdescription lang="ja">
+		これは SNMP v.1/v.2 エンジンのPython言語での実装です。関連値に沿ったSNMPオブジェ
+		クトIDから/へSNMPメッセージをアセンブル/ディスアセンブルするのが一般的な機能です
+		。PySNMPは幾つかのTCP/IPネットワーキングを特定するトランスポート・メソッドも提供
+		します。
+
+		PySNMPは全体をPython言語で記述され、どのサードパーティ製ツールも信用しない立場で
+		自給自足します。(これはラッパー・ツールではありません。)
+	</longdescription>
+	<upstream>
+		<remote-id type="pypi">pysnmp-mibs</remote-id>
+		<remote-id type="github">etingof/pysnmp-mibs</remote-id>
+	</upstream>
+</pkgmetadata>

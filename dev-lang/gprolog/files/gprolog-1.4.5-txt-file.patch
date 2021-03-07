@@ -1,0 +1,10 @@
+--- gprolog-1.4.5.orig/src/Makefile.in	2018-07-14 10:19:12.000000000 +0200
++++ gprolog-1.4.5/src/Makefile.in	2018-07-22 11:56:09.247146686 +0200
+@@ -60,7 +60,6 @@
+ install-system:
+ 	./mkinstalldirs $(INSTALL_DIR) $(INSTALL_DIR)/bin \
+ 	$(INSTALL_DIR)/include $(INSTALL_DIR)/lib
+-	for i in $(TXT_FILES); do $(INSTALL_DATA) ../$$i $(INSTALL_DIR); done
+ 	for i in $(BIN_FILES); do $(INSTALL_PROGRAM) */$$i $(INSTALL_DIR)/bin; done
+ 	for i in $(OBJ_FILES); do $(INSTALL_DATA) */$$i $(INSTALL_DIR)/lib; done
+ 	for i in $(LIB_FILES); do $(INSTALL_DATA) */$$i $(INSTALL_DIR)/lib; done

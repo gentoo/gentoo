@@ -1,0 +1,8 @@
+--- a/src/engine/Makefile.am
++++ b/src/engine/Makefile.am
+@@ -76,4 +76,5 @@ include_HEADERS = \
+ 	sabcfg.h
+ 
+ libsablot_la_LDFLAGS = -version-info 100:3:100
++libsablot_la_LIBADD = @EXPAT_LIBS@
+ 

@@ -1,0 +1,23 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Re-add SunOS libc
+-elibc_SunOS
+-kernel_SunOS
+
+# these will more than likely never work on solaris
+3dfx
+acpi
+alsa
+apm
+caps
+djbfft
+fbcon
+ggi
+gpm
+hardened
+oss
+svga
+rtc
+uclibc
+v4l

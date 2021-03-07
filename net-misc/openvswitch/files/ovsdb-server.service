@@ -1,0 +1,14 @@
+[Unit]
+Description=Open vSwitch Database Server
+Documentation=man:ovsdb-server
+
+[Service]
+# The file can be shared for this as this values are prone to change
+# and that way we don't need to update them in two different places
+EnvironmentFile=/etc/conf.d/ovsdb-server
+ExecStart=/usr/sbin/ovsdb-server --monitor \
+		--remote=punix:${DB_SOCKET} \
+		--remote=${REMOTE_DB} \
+		--private-key=${PRIVATE_KEY} \
+		--certificate=${CERTIFICATE} \
+		--bootstrap-ca-cert=${BOOTSTRAP_CA_CERT}

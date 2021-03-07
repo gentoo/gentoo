@@ -1,0 +1,36 @@
+#!/sbin/openrc-run
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need postgresql
+}
+
+start() {
+	ebegin "Starting slony1"
+	/usr/bin/slon -p /var/run/slony1.pid -d $LOGLEVEL $CLUSTER "dbname=$DBNAME user=$DBUSER host=$DBHOST" >> $LOGFILE 2>&1 &
+
+	while :
+	do
+		cnt=$(($cnt + 1))
+		if [ -f "/var/run/slony1.pid" ]; then
+			ret=0
+			break
+		fi
+
+		if [ $cnt -eq 30 ]; then
+			eerror "Please see log file: $LOGFILE"
+			ret=1
+			break
+		fi
+		sleep 1
+	done
+	eend $ret
+}
+
+stop() {
+	ebegin "Stopping slony1"
+	kill `cat /var/run/slony1.pid`
+	eend $?
+}
+

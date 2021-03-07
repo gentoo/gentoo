@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Data-Stag</remote-id>
+    <remote-id type="cpan-module">Data::Stag</remote-id>
+    <remote-id type="cpan-module">Data::Stag::Arr2HTML</remote-id>
+    <remote-id type="cpan-module">Data::Stag::Base</remote-id>
+    <remote-id type="cpan-module">Data::Stag::BaseGenerator</remote-id>
+    <remote-id type="cpan-module">Data::Stag::BaseHandler</remote-id>
+    <remote-id type="cpan-module">Data::Stag::ChainHandler</remote-id>
+    <remote-id type="cpan-module">Data::Stag::DTDWriter</remote-id>
+    <remote-id type="cpan-module">Data::Stag::GraphHandler</remote-id>
+    <remote-id type="cpan-module">Data::Stag::HashDB</remote-id>
+    <remote-id type="cpan-module">Data::Stag::ITextParser</remote-id>
+    <remote-id type="cpan-module">Data::Stag::ITextWriter</remote-id>
+    <remote-id type="cpan-module">Data::Stag::IndentParser</remote-id>
+    <remote-id type="cpan-module">Data::Stag::IndentWriter</remote-id>
+    <remote-id type="cpan-module">Data::Stag::PerlWriter</remote-id>
+    <remote-id type="cpan-module">Data::Stag::PodParser</remote-id>
+    <remote-id type="cpan-module">Data::Stag::SAX2Stag</remote-id>
+    <remote-id type="cpan-module">Data::Stag::Simple</remote-id>
+    <remote-id type="cpan-module">Data::Stag::StagDB</remote-id>
+    <remote-id type="cpan-module">Data::Stag::StagI</remote-id>
+    <remote-id type="cpan-module">Data::Stag::StagImpl</remote-id>
+    <remote-id type="cpan-module">Data::Stag::SxprParser</remote-id>
+    <remote-id type="cpan-module">Data::Stag::SxprWriter</remote-id>
+    <remote-id type="cpan-module">Data::Stag::Util</remote-id>
+    <remote-id type="cpan-module">Data::Stag::Writer</remote-id>
+    <remote-id type="cpan-module">Data::Stag::XMLParser</remote-id>
+    <remote-id type="cpan-module">Data::Stag::XMLWriter</remote-id>
+    <remote-id type="cpan-module">Data::Stag::XSLHandler</remote-id>
+    <remote-id type="cpan-module">Data::Stag::XSLTHandler</remote-id>
+    <remote-id type="cpan-module">Data::Stag::null</remote-id>
+    <remote-id type="sourceforge">stag</remote-id>
+  </upstream>
+</pkgmetadata>

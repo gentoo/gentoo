@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		A Haskell binding to the X11 graphics library. The binding is a direct
+		translation of the C binding; for documentation of these calls, refer
+		to \&quot;The Xlib Programming Manual\&quot;, available online at
+		&lt;http://tronche.com/gui/x/xlib/&gt;.
+	</longdescription>
+</pkgmetadata>

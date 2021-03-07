@@ -1,0 +1,12 @@
+Index: orpheus-1.6/kkconsui-0.1/src/Makefile.am
+===================================================================
+--- orpheus-1.6.orig/kkconsui-0.1/src/Makefile.am
++++ orpheus-1.6/kkconsui-0.1/src/Makefile.am
+@@ -1,6 +1,6 @@
+ INCLUDES = -I$(top_srcdir)/include -I$(top_srcdir)/../kkstrtext -I$(top_srcdir)/../kkstrtext-0.1
+ noinst_LIBRARIES = libsrc.a
+-CPPFLAGS = 
++AM_CPPFLAGS = 
+ libsrc_a_SOURCES =  treeview.cc colorschemer.cc textinputline.cc fileselector.cc textwindow.cc texteditor.cc dialogbox.cc screenarea.cc textbrowser.cc abstractui.cc horizontalbar.cc linkedlist.cc cmenus.cc conscommon.cc
+ EXTRA_DIST = treeview.cc colorschemer.cc textinputline.cc fileselector.cc textwindow.cc texteditor.cc dialogbox.cc screenarea.cc textbrowser.cc abstractui.cc horizontalbar.cc linkedlist.cc cmenus.cc conscommon.cc
+ SUBDIRS = 

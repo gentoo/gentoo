@@ -1,0 +1,22 @@
+--- a/filter/hnf.pl
++++ b/filter/hnf.pl
+@@ -244,7 +244,7 @@
+         $uri = '?%year%month%hiday#%year%month%day0'; # for hns-1.x
+       }
+       $uri =~ s/%%/\34/g;
+-      $uri =~ s/%{?([a-z]+)}?/$param{$1}/g;
++      $uri =~ s/%\{?([a-z]+)}?/$param{$1}/g;
+       $uri =~ s/\34/%/g;
+       $uri = $hnf::diary_uri . $uri;
+       $uri =~ s/%7E/~/i;
+--- a/filter/mp3.pl
++++ b/filter/mp3.pl
+@@ -152,7 +152,7 @@
+     mp3::get_title($$contref, $weighted_str, $fields);
+     mp3::get_author($$contref, $fields);
+     mp3::get_album($$contref, $fields);
+-    $$contref =~ s/^\w+:{1,1}?//gm;
++    $$contref =~ s/^\w+:?//gm;
+ 
+     return;
+ }

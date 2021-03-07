@@ -1,0 +1,16 @@
+[Unit]
+Description=Gracefully restart the box
+Documentation=man:kexec(8)
+After=boot.mount
+Before=shutdown.target umount.target final.target
+ConditionPathExists=!/nokexec
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+EnvironmentFile=/etc/kexec.conf
+ExecStart=/usr/sbin/kexec -l /boot/${KNAME} ${KEXEC_OPT_ARGS}
+ExecStop=/usr/sbin/kexec -l /boot/${KNAME} ${KEXEC_OPT_ARGS}
+
+[Install]
+WantedBy=multi-user.target

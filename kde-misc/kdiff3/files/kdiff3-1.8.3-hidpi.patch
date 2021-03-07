@@ -1,0 +1,112 @@
+From 5dcc0673c61cc75122bf5f812a45bbb15b778218 Mon Sep 17 00:00:00 2001
+From: Alexander Volkov <avolkov@astralinux.ru>
+Date: Mon, 27 Apr 2020 15:52:18 +0300
+Subject: [PATCH] Add HiDPI support
+
+* Backported to 1.8 branch
+---
+ src/Overview.cpp             |  6 ++++--
+ src/directorymergewindow.cpp | 15 +++++++++------
+ src/main.cpp                 |  1 +
+ src/mergeresultwindow.cpp    |  7 +++++--
+ 4 files changed, 19 insertions(+), 10 deletions(-)
+
+diff --git a/src/Overview.cpp b/src/Overview.cpp
+index ee1d73f..ac35e7e 100644
+--- a/src/Overview.cpp
++++ b/src/Overview.cpp
+@@ -271,7 +271,8 @@ void Overview::paintEvent(QPaintEvent*)
+     int h = height() - 1;
+     int w = width();
+ 
+-    if(m_pixmap.size() != size())
++    const auto dpr = devicePixelRatioF();
++    if(m_pixmap.size() != size() * dpr)
+     {
+         if(m_pOptions->m_bWordWrap)
+         {
+@@ -287,7 +288,8 @@ void Overview::paintEvent(QPaintEvent*)
+             m_nofLines = m_pDiff3LineList->size();
+         }
+ 
+-        m_pixmap = QPixmap(size());
++        m_pixmap = QPixmap(size() * dpr);
++        m_pixmap.setDevicePixelRatio(dpr);
+ 
+         QPainter p(&m_pixmap);
+         p.fillRect(rect(), m_pOptions->m_bgColor);
+diff --git a/src/directorymergewindow.cpp b/src/directorymergewindow.cpp
+index 31dbcaf..1cc62b4 100644
+--- a/src/directorymergewindow.cpp
++++ b/src/directorymergewindow.cpp
+@@ -584,7 +584,10 @@ class DirectoryMergeWindow::DirMergeItemDelegate : public QStyledItemDelegate
+             //QPixmap icon = value.value<QPixmap>(); //pixmap(column);
+             if(!icon.isNull())
+             {
+-                int yOffset = (sizeHint(option, index).height() - icon.height()) / 2;
++                const auto dpr = thePainter->device()->devicePixelRatioF();
++                const int w = qRound(icon.width() / dpr);
++                const int h = qRound(icon.height() / dpr);
++                int yOffset = (sizeHint(option, index).height() - h) / 2;
+                 thePainter->drawPixmap(x + 2, y + yOffset, icon);
+ 
+                 int i = index == d->m_selection1Index ? 1 : index == d->m_selection2Index ? 2 : index == d->m_selection3Index ? 3 : 0;
+@@ -593,20 +596,20 @@ class DirectoryMergeWindow::DirMergeItemDelegate : public QStyledItemDelegate
+                     Options* pOpts = d->m_pOptions;
+                     QColor c(i == 1 ? pOpts->m_colorA : i == 2 ? pOpts->m_colorB : pOpts->m_colorC);
+                     thePainter->setPen(c); // highlight() );
+-                    thePainter->drawRect(x + 2, y + yOffset, icon.width(), icon.height());
++                    thePainter->drawRect(x + 2, y + yOffset, w, h);
+                     thePainter->setPen(QPen(c, 0, Qt::DotLine));
+-                    thePainter->drawRect(x + 1, y + yOffset - 1, icon.width() + 2, icon.height() + 2);
++                    thePainter->drawRect(x + 1, y + yOffset - 1, w + 2, h + 2);
+                     thePainter->setPen(Qt::white);
+                     QString s(QChar('A' + i - 1));
+ 
+-                    thePainter->drawText(x + 2 + (icon.width() - Utils::getHorizontalAdvance(thePainter->fontMetrics(), s)) / 2,
+-                                y + yOffset + (icon.height() + thePainter->fontMetrics().ascent()) / 2 - 1,
++                    thePainter->drawText(x + 2 + (w - Utils::getHorizontalAdvance(thePainter->fontMetrics(), s)) / 2,
++                                y + yOffset + (h + thePainter->fontMetrics().ascent()) / 2 - 1,
+                                 s);
+                 }
+                 else
+                 {
+                     thePainter->setPen(m_pDMW->palette().window().color());
+-                    thePainter->drawRect(x + 1, y + yOffset - 1, icon.width() + 2, icon.height() + 2);
++                    thePainter->drawRect(x + 1, y + yOffset - 1, w + 2, h + 2);
+                 }
+                 return;
+             }
+diff --git a/src/main.cpp b/src/main.cpp
+index df06eab..c62aee3 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -81,6 +81,7 @@ int main(int argc, char* argv[])
+ {
+     const QLatin1String appName("kdiff3");
+ 
++    QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+     QApplication app(argc, argv); // KAboutData and QCommandLineParser depend on this being setup.
+     KLocalizedString::setApplicationDomain(appName.data());
+ 
+diff --git a/src/mergeresultwindow.cpp b/src/mergeresultwindow.cpp
+index 894bc44..29d16ae 100644
+--- a/src/mergeresultwindow.cpp
++++ b/src/mergeresultwindow.cpp
+@@ -1970,8 +1970,11 @@ void MergeResultWindow::paintEvent(QPaintEvent*)
+     if(!m_bCursorUpdate) // Don't redraw everything for blinking cursor?
+     {
+         m_selection.bSelectionContainsData = false;
+-        if(size() != m_pixmap.size())
+-            m_pixmap = QPixmap(size());
++        const auto dpr = devicePixelRatioF();
++        if(size() * dpr != m_pixmap.size()) {
++            m_pixmap = QPixmap(size() * dpr);
++            m_pixmap.setDevicePixelRatio(dpr);
++        }
+ 
+         RLPainter p(&m_pixmap, m_pOptions->m_bRightToLeftLanguage, width(), fontWidth);
+         p.setFont(font());
+-- 
+2.27.0
+

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+	</maintainer>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<longdescription lang="en">
+		collective.checkdocs adds new distutils commands checkdocs and showdocs to validate restructured text in long_description field of Python eggs. This package aims to make Python egg help page publishing and editing easier.
+	</longdescription>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">collective.checkdocs</remote-id>
+		<remote-id type="github">collective/collective.checkdocs</remote-id>
+		<bugs-to>https://github.com/collective/collective.checkdocs/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

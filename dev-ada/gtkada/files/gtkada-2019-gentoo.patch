@@ -1,0 +1,11 @@
+--- a/Makefile.in	2019-09-21 18:47:40.749628914 +0200
++++ b/Makefile.in	2019-09-21 18:48:08.547200073 +0200
+@@ -30,7 +30,7 @@
+ 
+ GPRBUILD_FULL = ${GPRBUILD} -j${PROCESSORS} -m -p ${GPRBUILD_SWITCHES}
+ GPRINSTALL_FULL = ${GPRINSTALL} -p -f --project-subdir=$(PRJDIR) \
+-	--build-var=GTKADA_BUILD,LIBRARY_TYPE --install-name=gtkada \
++	--build-var=LIBRARY_TYPE --install-name=gtkada \
+ 	--prefix=${DESTDIR}$(prefix) -XGTK_PREFIX=${prefix}
+ 
+ GETTEXT_INTL=@GETTEXT_INTL@

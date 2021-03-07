@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription>
+		wdfs is a webdav filesystem that makes it possible to mount a webdav
+		share under linux, freebsd and apple mac os x. wdfs has some special
+		features for accessing subversion repositories via webdav. it's based on
+		fuse and neon.
+	</longdescription>
+</pkgmetadata>

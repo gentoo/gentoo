@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tamiko@gentoo.org</email>
+		<name>Matthias Maier</name>
+	</maintainer>
+	<use>
+		<flag name="general-32">Generic unoptimized 32-bits build</flag>
+		<flag name="general-64">Generic unoptimized 64-bits build</flag>
+		<flag name="optimize">Enable upstream -O3 optimizations (default enabled)</flag>
+	</use>
+</pkgmetadata>

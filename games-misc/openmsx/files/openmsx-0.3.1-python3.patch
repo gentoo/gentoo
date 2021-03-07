@@ -1,0 +1,306 @@
+From 5857a22e79dc77c9b571297451dc11c4a68bc198 Mon Sep 17 00:00:00 2001
+From: Stefan Strogin <steils@gentoo.org>
+Date: Fri, 7 Feb 2020 13:15:16 +0200
+Subject: [PATCH] Fix: support Python 3
+
+Correct tabs and spaces in scripts to make them consistent.
+Don't call deprecated methods.
+
+Upstream-Status: Submitted [https://github.com/OpenTTD/OpenMSX/pull/2]
+Signed-off-by: Stefan Strogin <steils@gentoo.org>
+---
+ scripts/authorlist.py    | 20 ++++++++---------
+ scripts/md5list.py       | 48 ++++++++++++++++++++--------------------
+ scripts/midifiles.py     | 30 ++++++++++++-------------
+ scripts/namelist.py      | 34 ++++++++++++++--------------
+ scripts/playlist.py      | 42 +++++++++++++++++------------------
+ scripts/sanitize_list.py | 48 ++++++++++++++++++++--------------------
+ 6 files changed, 111 insertions(+), 111 deletions(-)
+
+diff --git a/scripts/authorlist.py b/scripts/authorlist.py
+index 689ddb9..e041d64 100755
+--- a/scripts/authorlist.py
++++ b/scripts/authorlist.py
+@@ -14,14 +14,14 @@ import string
+ import sys
+ 
+ while 1:
+-    data = sys.stdin.readline()
+-    if data != '':
+-        # do some processing of the contents of
+-        # the data variable
+-        separate = string.split(data,";")
+-        print '%-30s %s' % (separate[1]+":", separate[2])
+-        # end of data processing command group
++	data = sys.stdin.readline()
++	if data != '':
++		# do some processing of the contents of
++		# the data variable
++		separate = data.split(';')
++		print('%-30s %s' % (separate[1]+":", separate[2]))
++		# end of data processing command group
+ 		#        sys.stdout.write(res)
+-    else:
+-        sys.stdout.flush()
+-        break
++	else:
++		sys.stdout.flush()
++		break
+diff --git a/scripts/md5list.py b/scripts/md5list.py
+index cf611fc..781052e 100755
+--- a/scripts/md5list.py
++++ b/scripts/md5list.py
+@@ -16,28 +16,28 @@ import subprocess
+ import os
+ 
+ while 1:
+-    data = sys.stdin.readline()
+-    if data != '':
+-	# leave out all comment lines (lines starting with '#')
+-	comment_pos = string.find(data,'#')
+-	if comment_pos == 0:
+-		continue
+-	# separate the single entries by ';'
+-	separate = string.split(data,";")
+-	if len(separate) != 4:
+-		continue
+-	systemtype = (os.uname())[0]
+-	if systemtype == 'Linux':
+-		md5call = ["md5sum"]
+-	elif systemtype == 'Darwin':
+-		md5call = ["md5", "-r"]
++	data = sys.stdin.readline()
++	if data != '':
++		# leave out all comment lines (lines starting with '#')
++		comment_pos = data.find('#')
++		if comment_pos == 0:
++			continue
++		# separate the single entries by ';'
++		separate = data.split(';')
++		if len(separate) != 4:
++			continue
++		systemtype = (os.uname())[0]
++		if systemtype == 'Linux':
++			md5call = ["md5sum"]
++		elif systemtype == 'Darwin':
++			md5call = ["md5", "-r"]
++		else:
++			md5call = ["md5sum"]
++		md5call = md5call + ["src/"+separate[1].strip()]
++		md5sum = subprocess.Popen(md5call, stdout=subprocess.PIPE).communicate()[0]
++		md5sum = md5sum.split()
++		res = "%-32s = %s\n" % (separate[1], md5sum[0].decode())
++		sys.stdout.write(res)
+ 	else:
+-		md5call = ["md5sum"]
+-	md5call = md5call + ["src/"+string.strip(separate[1])]
+-	md5sum = subprocess.Popen(md5call, stdout=subprocess.PIPE).communicate()[0]
+-	md5sum = string.split(md5sum)
+-	res = "%-32s = %s\n" % (separate[1], md5sum[0])
+-        sys.stdout.write(res)
+-    else:
+-        sys.stdout.flush()
+-        break
++		sys.stdout.flush()
++		break
+diff --git a/scripts/midifiles.py b/scripts/midifiles.py
+index 3b5ec57..a89e4f2 100755
+--- a/scripts/midifiles.py
++++ b/scripts/midifiles.py
+@@ -15,18 +15,18 @@ import sys
+ 
+ res = ""
+ while 1:
+-    data = sys.stdin.readline()
+-    if data != '':
+-	# leave out all comment lines (lines starting with '#')
+-	comment_pos = string.find(data,'#')
+-	if comment_pos == 0:
+-		continue
+-	# separate the single entries by ';'
+-        separate = string.split(data,";")
+-	if len(separate) != 4:
+-		continue
+-	res = res + " src/" + string.strip(separate[1])
+-    else:
+-	sys.stdout.write(res)
+-        sys.stdout.flush()
+-        break
++	data = sys.stdin.readline()
++	if data != '':
++		# leave out all comment lines (lines starting with '#')
++		comment_pos = data.find('#')
++		if comment_pos == 0:
++			continue
++		# separate the single entries by ';'
++		separate = data.split(';')
++		if len(separate) != 4:
++			continue
++		res = res + " src/" + separate[1].strip()
++	else:
++		sys.stdout.write(res)
++		sys.stdout.flush()
++		break
+diff --git a/scripts/namelist.py b/scripts/namelist.py
+index cdac127..107ad00 100755
+--- a/scripts/namelist.py
++++ b/scripts/namelist.py
+@@ -14,23 +14,23 @@ import string
+ import sys
+ 
+ while 1:
+-    data = sys.stdin.readline()
+-    if data != '':
+-	# leave out all comment lines (lines starting with '#')
+-	comment_pos = string.find(data,'#')
+-	if comment_pos == 0:
+-		continue
+-	# separate the single entries by ';'
+-        separate = string.split(data,";")
+-	if len(separate) != 4:
+-		continue
+-	res = "%-32s = %s\n" % (separate[1], string.strip(separate[3]))
+-        sys.stdout.write(res)
+-    else:
+-        sys.stdout.flush()
+-        break
++	data = sys.stdin.readline()
++	if data != '':
++		# leave out all comment lines (lines starting with '#')
++		comment_pos = data.find('#')
++		if comment_pos == 0:
++			continue
++		# separate the single entries by ';'
++		separate = data.split(';')
++		if len(separate) != 4:
++			continue
++		res = "%-32s = %s\n" % (separate[1], separate[3].strip())
++		sys.stdout.write(res)
++	else:
++		sys.stdout.flush()
++		break
+ 
+ def authorlist(mystr):
+-	separate = string.split()
++	separate = separate.split()
+ 	for str in separate:
+-		print string.strip(str)
+\ No newline at end of file
++		print(str.strip())
+diff --git a/scripts/playlist.py b/scripts/playlist.py
+index 939d03d..e77b02a 100755
+--- a/scripts/playlist.py
++++ b/scripts/playlist.py
+@@ -14,27 +14,27 @@ import string
+ import sys
+ 
+ while 1:
+-    data = sys.stdin.readline()
+-    if data != '':
+-	# leave out all comment lines (lines starting with '#')
+-	comment_pos = string.find(data,'#')
+-	if comment_pos == 0:
+-		continue
+-	# separate the single entries by ';'
+-        separate = string.split(data,";")
+-	res = ""
+-	# leave out all lines which don't have the proper number of elements
+-	if len(separate) >= 1:
+-		res = string.strip(separate[0]) + " = "
+-	if len(separate) == 4:
+-		res = res + separate[1]
+-	res = res + "\n"
+-        sys.stdout.write(res)
+-    else:
+-        sys.stdout.flush()
+-        break
++	data = sys.stdin.readline()
++	if data != '':
++		# leave out all comment lines (lines starting with '#')
++		comment_pos = data.find('#')
++		if comment_pos == 0:
++			continue
++		# separate the single entries by ';'
++		separate = data.split(';')
++		res = ""
++		# leave out all lines which don't have the proper number of elements
++		if len(separate) >= 1:
++			res = separate[0].strip() + " = "
++		if len(separate) == 4:
++			res = res + separate[1]
++		res = res + "\n"
++		sys.stdout.write(res)
++	else:
++		sys.stdout.flush()
++		break
+ 
+ def authorlist(mystr):
+-	separate = string.split()
++	separate = separate.split()
+ 	for str in separate:
+-		print string.strip(str)
+\ No newline at end of file
++		print(str.strip())
+diff --git a/scripts/sanitize_list.py b/scripts/sanitize_list.py
+index f97709a..5368831 100755
+--- a/scripts/sanitize_list.py
++++ b/scripts/sanitize_list.py
+@@ -14,30 +14,30 @@ import string
+ import sys
+ 
+ while 1:
+-    data = sys.stdin.readline()
+-    if data != '':
+-	# leave out all comment lines (lines starting with '#')
+-	comment_pos = string.find(data,'#')
+-	if comment_pos == 0:
+-		continue
+-	# separate the single entries by ';'
+-        separate = string.split(data,";")
+-	if len(separate) != 4:
+-		continue
+-	res = ""
+-	for str in separate:
+-		if res != '':
+-			res = res + ";" + string.strip(str)
+-		else:
+-			res = string.strip(str)
+-        # end of data processing command group
+-	res = res + "\n"
+-        sys.stdout.write(res)
+-    else:
+-        sys.stdout.flush()
+-        break
++	data = sys.stdin.readline()
++	if data != '':
++		# leave out all comment lines (lines starting with '#')
++		comment_pos = data.find('#')
++		if comment_pos == 0:
++			continue
++		# separate the single entries by ';'
++		separate = data.split(';')
++		if len(separate) != 4:
++			continue
++		res = ""
++		for str in separate:
++			if res != '':
++				res = res + ";" + str.strip()
++			else:
++				res = str.strip()
++		# end of data processing command group
++		res = res + "\n"
++		sys.stdout.write(res)
++	else:
++		sys.stdout.flush()
++		break
+ 
+ def authorlist(mystr):
+-	separate = string.split()
++	separate = separate.split()
+ 	for str in separate:
+-		print string.strip(str)
+\ No newline at end of file
++		print(str.strip())
+-- 
+2.27.0
+

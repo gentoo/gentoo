@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>alarig@swordarmor.fr</email>
+		<name>Alarig Le Lay</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		This is sieve-connect. A client for the ManageSieve protocol,
+		as specifed in RFC 5804. Historically, this was MANAGESIEVE as
+		implemented by timsieved in Cyrus IMAP. This software is licensed
+		and the terms are provided in the file "LICENSE" as supplied
+		with this software (BSD license without the advertising clause).
+
+		SIEVE is an RFC-specified language for mail filtering, which at
+		time of writing is specified in a list of RFCs at the end of this
+		document, plus various drafts, both IETF and individual submissions.
+		It's designed to be regular enough for machines to be able to
+		manipulate, whilst still being editable by humans. Alas, not many
+		clients actually implement this instead of embedding their own
+		internal codes in sieve comments, defeating the goal of being able
+		to edit with a client of your choice.
+
+		This is not yet fully compatible with RFC 5804, but is moving
+		towards that from the timsieved baseline; some issues to be
+		worked on are documented in the "TODO" file.
+
+		sieve-connect speaks ManageSieve and supports TLS for connection
+		privacy and also authentication if using client certificates.
+		sieve-connect will use SASL authentication; SASL integrity layers
+		are not supported, use TLS instead. GSSAPI-based authentication
+		should generally work, provided that client and server can use a
+		common underlaying protocol. If it doesn't work for you, please
+		report the issue.
+
+		sieve-connect is designed to be both a tool which can be invoked
+		from scripts and also a decent interactive client. It should also
+		be a drop-in replacement for "sieveshell", as supplied with Cyrus
+		IMAP.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/syscomet/sieve-connect/issues</bugs-to>
+		<remote-id type="github">syscomet/sieve-connect</remote-id>
+	</upstream>
+</pkgmetadata>

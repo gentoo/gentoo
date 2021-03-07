@@ -1,0 +1,35 @@
+#!/sbin/openrc-run
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+COMMAND=/usr/bin/swift-init
+PIDFILE=/run/swift/container-server.pid
+
+depend() {
+    after net
+}
+
+checkconfig() {
+    if [ ! -r /etc/swift/swift.conf ]; then
+        eerror "Missing required config file: /etc/swift/swift.conf"
+        return 1
+    fi
+    if [ ! -r /etc/swift/container-server.conf ]; then
+        eerror "Missing required config file: /etc/swift/container-server.conf"
+        return 1
+    fi
+    return 0
+}
+
+start() {
+    checkconfig || return $?
+    ebegin "Starting ${SVCNAME}"
+    start-stop-daemon --start --quiet -i --pidfile ${PIDFILE} ${COMMAND} -- container start
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping ${SVCNAME}"
+    start-stop-daemon --stop --quiet -i --pidfile ${PIDFILE} ${COMMAND} -- container stop
+    eend $?
+}

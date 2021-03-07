@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<use>
+		<flag name="client">Compile client</flag>
+		<flag name="server">Compile server</flag>
+	</use>
+	<longdescription lang="en">
+		TomeNET is a multiplayer fantasy dungeon exploration game based on
+		the	works of J.R.R. Tolkien. It is a game that emphasizes intricate,
+		challenging, and varied gameplay over graphics. Hundreds of
+		different monsters in randomly-generated,
+		unpredictable dungeons will strive to slay you by various means,
+		and you counter - if you survive - by developing the skills of your
+		choice and wielding mighty 
+		artifacts.
+	</longdescription>
+</pkgmetadata>

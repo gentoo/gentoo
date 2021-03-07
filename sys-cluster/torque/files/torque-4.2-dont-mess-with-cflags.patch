@@ -1,0 +1,27 @@
+--- a/configure.ac	2014-09-10 21:06:26.000000000 -0400
++++ b/configure.ac	2017-05-23 10:43:59.051759539 -0400
+@@ -703,24 +703,6 @@
+   AC_HELP_STRING([--with-debug], [compile with debugging symbols]),
+   DEBUG_SYMBOLS=$withval, DEBUG_SYMBOLS="yes")
+ AC_MSG_RESULT([DEBUG_SYMBOLS=$DEBUG_SYMBOLS])
+-dnl  remove -O* and add -g
+-if test "$DEBUG_SYMBOLS" = 'yes'; then
+-  AC_MSG_RESULT([before tweak CFLAGS=$CFLAGS])
+-  CFLAGS=`echo $CFLAGS | sed 's/ \?-O[[^ ]]*//g'`
+-  AC_MSG_RESULT([mid tweak CFLAGS=$CFLAGS])
+-  case $CFLAGS in
+-    *-g*)
+-      ;;
+-    *)
+-      if test "$CFLAGS" = ''; then
+-        CFLAGS="-g"
+-      else
+-        CFLAGS="-g $CFLAGS"
+-      fi
+-      ;;
+-  esac
+-  AC_MSG_RESULT([after tweak CFLAGS=$CFLAGS])
+-fi
+ 
+ dnl if using gcc, we can be very strict
+ AC_ARG_ENABLE(gcc_warnings, [

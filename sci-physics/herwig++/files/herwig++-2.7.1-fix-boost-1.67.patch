@@ -1,0 +1,42 @@
+https://bugs.gentoo.org/672250
+
+--- a/DipoleShower/Base/DipoleChain.cc
++++ b/DipoleShower/Base/DipoleChain.cc
+@@ -15,6 +15,7 @@
+ #include "Herwig++/DipoleShower/Utility/DipolePartonSplitter.h"
+ 
+ #include <boost/utility.hpp>
++#include <boost/next_prior.hpp>
+ 
+ using namespace Herwig;
+ 
+--- a/DipoleShower/Base/DipoleEventRecord.cc
++++ b/DipoleShower/Base/DipoleEventRecord.cc
+@@ -19,6 +19,7 @@
+ #include "ThePEG/PDF/PartonExtractor.h"
+ 
+ #include <boost/utility.hpp>
++#include <boost/next_prior.hpp>
+ 
+ #include <algorithm>
+ 
+--- a/Exsample2/BinnedStatistics.h
++++ b/Exsample2/BinnedStatistics.h
+@@ -16,6 +16,7 @@
+ #include "ThePEG/Repository/UseRandom.h"
+ 
+ #include <boost/utility.hpp>
++#include <boost/next_prior.hpp>
+ 
+ namespace Herwig {
+ 
+--- a/Exsample2/exsample/config.h
++++ b/Exsample2/exsample/config.h
+@@ -25,6 +25,7 @@
+ #include <limits>
+ 
+ #include <boost/utility.hpp>
++#include <boost/next_prior.hpp>
+ #include <boost/scoped_array.hpp>
+ #include <boost/scoped_ptr.hpp>
+ 

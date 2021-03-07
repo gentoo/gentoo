@@ -1,0 +1,16 @@
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index eb26b17..79e4391 100644
+--- a/Makefile
++++ b/Makefile
+@@ -10,7 +10,7 @@ CC = gcc $(CFLAGS) $(FLAGS)
+ OBJS = gkrellstock.o
+ 
+ gkrellstock.so: $(OBJS)
+-	$(CC) $(OBJS) -o gkrellstock.so $(LFLAGS) $(LIBS) 
++	$(CC) $(LDFLAGS) $(OBJS) -o gkrellstock.so $(LFLAGS) $(LIBS) 
+ 
+ clean:
+ 	rm -f *.o core *.so* *.bak *~

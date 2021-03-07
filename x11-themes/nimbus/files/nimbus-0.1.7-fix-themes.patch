@@ -1,0 +1,43 @@
+- Tango is deprecated
+- Encoding= key is obsolete
+
+--- a/dark-index.theme.in
++++ b/dark-index.theme.in
+@@ -2,7 +2,6 @@
+ Type=X-GNOME-Metatheme
+ _Name=Dark Nimbus
+ _Comment=Sun Microsystems, Inc. alternative theme
+-Encoding=UTF-8
+ 
+ [X-GNOME-Metatheme]
+ GtkTheme=dark-nimbus
+--- a/icons/index.theme.in
++++ b/icons/index.theme.in
+@@ -1,6 +1,6 @@
+ [Icon Theme]
+ Name=nimbus
+-Inherits=Tango
++Inherits=gnome,Tango
+ Directories=12x12/actions,12x12/emblems,12x12/places,16x16/actions,16x16/apps,16x16/categories,16x16/devices,16x16/emblems,16x16/places,16x16/mimetypes,16x16/status,20x20/status,24x24/actions,24x24/animations,24x24/apps,24x24/categories,24x24/devices,24x24/emblems,24x24/places,24x24/mimetypes,24x24/status,32x32/actions,32x32/apps,32x32/categories,32x32/devices,32x32/emblems,32x32/places,32x32/mimetypes,32x32/status,36x36/actions,36x36/animations,36x36/apps,36x36/categories,36x36/devices,36x36/places,36x36/mimetypes,48x48/actions,48x48/animations,48x48/apps,48x48/categories,48x48/devices,48x48/places,48x48/mimetypes,48x48/status,48x48/emblems,72x72/apps,72x72/categories,72x72/places,72x72/mimetypes,96x96/apps,96x96/categories,96x96/devices,96x96/places,96x96/mimetypes,192x192/apps,192x192/categories,192x192/devices,192x192/places,192x192/mimetypes
+ Example=user-desktop
+ 
+--- a/index.theme.in
++++ b/index.theme.in
+@@ -2,7 +2,6 @@
+ Type=X-GNOME-Metatheme
+ _Name=Nimbus
+ _Comment=Sun Microsystems, Inc. default theme
+-Encoding=UTF-8
+ 
+ [X-GNOME-Metatheme]
+ GtkTheme=nimbus
+--- a/light-index.theme.in
++++ b/light-index.theme.in
+@@ -2,7 +2,6 @@
+ Type=X-GNOME-Metatheme
+ _Name=Light Nimbus
+ _Comment=Sun Microsystems, Inc. alternative theme
+-Encoding=UTF-8
+ 
+ [X-GNOME-Metatheme]
+ GtkTheme=light-nimbus

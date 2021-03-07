@@ -1,0 +1,18 @@
+Guard inclusion of Availability.h so that it only happens on arm where it's
+actuallty used so it doesn't cause failures on old OS X where Availability.h
+doesn't exist yet.
+
+Michael Weiser <michael@weiser.dinsnail.net>
+
+--- Csu-85/start.s.orig	2013-10-09 01:11:47.000000000 +0200
++++ Csu-85/start.s	2015-02-11 20:34:04.000000000 +0100
+@@ -22,7 +22,9 @@
+  * @APPLE_LICENSE_HEADER_END@
+  */
+ 
++#ifdef __arm__
+ #include <Availability.h>
++#endif
+ 
+ #if __ppc__ && __DYNAMIC__
+ //

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>robbat2@gentoo.org</email>
+    <name>Robin H. Johnson</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>haubi@gentoo.org</email>
+    <name>Michael Haubenwallner</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">bruceg/nullmailer</remote-id>
+  </upstream>
+</pkgmetadata>

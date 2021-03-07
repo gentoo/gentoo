@@ -1,0 +1,51 @@
+diff --git a/org/gudy/azureus2/core3/util/AddressUtils.java b/org/gudy/azureus2/core3/util/AddressUtils.java
+index 6691951..38f14ee 100644
+--- a/org/gudy/azureus2/core3/util/AddressUtils.java
++++ b/org/gudy/azureus2/core3/util/AddressUtils.java
+@@ -494,11 +494,11 @@ AddressUtils
+ 			try{
+ 					// unfortunately we have an incompatible base64 standard in i2p, they replaced / with ~ and + with -
+ 				
+-				char[]	encoded = to_decode.toCharArray();
++				byte[]	encoded = to_decode.getBytes();
+ 				
+ 				for ( int i=0;i<encoded.length;i++){
+ 					
+-					char c = encoded[i];
++					byte c = encoded[i];
+ 					
+ 					if ( c == '~' ){
+ 						encoded[i] = '/';
+diff --git a/org/gudy/azureus2/pluginsimpl/local/utils/xml/simpleparser/SimpleXMLParserDocumentImpl.java b/org/gudy/azureus2/pluginsimpl/local/utils/xml/simpleparser/SimpleXMLParserDocumentImpl.java
+index a67a8a2..da4a46c 100644
+--- a/org/gudy/azureus2/pluginsimpl/local/utils/xml/simpleparser/SimpleXMLParserDocumentImpl.java
++++ b/org/gudy/azureus2/pluginsimpl/local/utils/xml/simpleparser/SimpleXMLParserDocumentImpl.java
+@@ -25,7 +25,7 @@ package org.gudy.azureus2.pluginsimpl.local.utils.xml.simpleparser;
+ import javax.xml.parsers.*;
+ 
+ import org.xml.sax.*;
+-import org.apache.commons.lang.Entities;
++import org.apache.commons.lang.StringEscapeUtils;
+ import org.gudy.azureus2.core3.util.AENetworkClassifier;
+ import org.gudy.azureus2.core3.util.Constants;
+ import org.gudy.azureus2.core3.util.Debug;
+@@ -656,17 +656,8 @@ SimpleXMLParserDocumentImpl
+ 		     					replacement = new String( buffer, 0, buffer_pos );
+ 		     					
+ 		     				}else{
+-		     							     							     					
+-			     				int num = Entities.HTML40.entityValue( ref );
+-			     					
+-		     					if ( num != -1 ){
+-		     					
+-		     						replacement = "&#" + num + ";";
+-		     						
+-		     					}else{
+-		     						
+-		     						replacement = new String( buffer, 0, buffer_pos );
+-		     					}
++
++								replacement = StringEscapeUtils.escapeHtml(ref);
+ 		     				}
+ 		     				
+ 		     				char[] chars = replacement.toCharArray();

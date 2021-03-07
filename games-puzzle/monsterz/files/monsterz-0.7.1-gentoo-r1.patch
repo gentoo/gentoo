@@ -1,0 +1,11 @@
+--- a/monsterz.py.old	2019-12-25 20:25:16.680365172 +0100
++++ b/monsterz.py	2019-12-25 20:25:50.606666122 +0100
+@@ -1991,7 +1991,7 @@
+     global system, data, settings, fonter, monsterz
+     override = {}
+     scorefile = None
+-    sharedir = dirname(argv[0])
++    sharedir = "GENTOO_DATADIR"
+     outfd = None
+     try:
+         long = ['help', 'version', 'music', 'sound', 'fullscreen',

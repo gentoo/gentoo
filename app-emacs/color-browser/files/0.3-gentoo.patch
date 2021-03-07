@@ -1,0 +1,80 @@
+--- color-browser.el.orig	2006-05-17 11:40:18.000000000 -0500
++++ color-browser.el	2006-05-17 11:38:12.000000000 -0500
+@@ -1028,7 +1028,7 @@
+ 	  ;; make some adjustments
+ 
+ 	  ;; use SYMBOL instead of my-color-theme
+-	  (beginning-of-buffer)
++	  (goto-char (point-min))
+ 	  (insert "(require 'color-theme)\n\n")
+ 	  (search-forward "my-color-theme" nil t)
+ 	  (delete-region (match-beginning 0) (match-end 0))
+@@ -1044,7 +1044,7 @@
+ 	  (insert symbol)
+ 
+ 	  ;; add a provide
+-	  (end-of-buffer)
++	  (goto-char (point-max))
+ 	  (insert "\n\n(provide '" symbol ")\n")
+ 	  (save-buffer)
+ 	  (kill-this-buffer))
+@@ -1152,7 +1152,7 @@
+       (set-marker marker point)
+       ;; un-mark the previous current face
+       (save-excursion
+-	(beginning-of-buffer)
++	(goto-char (point-min))
+ 	(and (search-forward "[" nil t) (delete-char -1))
+ 	(and (search-forward "]" nil t) (delete-char -1)))
+ 
+@@ -1491,7 +1491,7 @@
+ 	       palette))
+ 
+       ;; parse the buffer to get a list of color-names
+-      (beginning-of-buffer)
++      (goto-char (point-min))
+       (while (search-forward "[DEL]" nil t)
+ 	(forward-char 2)
+ 	(setq color-names
+@@ -1708,7 +1708,7 @@
+       (forward-line -1)
+       ;; skip top line
+       (when (bobp)
+-	(end-of-buffer)
++	(goto-char (point-max))
+ 	(forward-line -1)) ;; skip last line
+       (yank)
+       (setq header-line-format "Palette Modified")
+@@ -1724,11 +1724,11 @@
+       (select-window (posn-window (event-start click))))
+     (let ((inhibit-read-only t)
+ 	  (kill-ring kill-ring))
+-      (end-of-buffer)
++      (goto-char (point-max))
+       (forward-line -2) ;; skip last line
+       (beginning-of-line)
+       (kill-line 1)
+-      (beginning-of-buffer)
++      (goto-char (point-min))
+       (forward-line 1)  ;; skip top line
+       (yank)
+       (setq header-line-format "Palette Modified")
+@@ -1760,7 +1760,7 @@
+ 
+       (beginning-of-line)
+       ;; catch point on or after last line
+-      (unless (looking-at "\\[DEL\\]") (beginning-of-buffer))
++      (unless (looking-at "\\[DEL\\]") (goto-char (point-min)))
+       ;; catch point on first line
+       (when (bobp) (forward-line 1))
+       (setq start (point))
+@@ -1980,7 +1980,8 @@
+ 	  ))
+     (setq header-line-format nil)
+     (force-mode-line-update)
+-    ))........................................................
++    ))
++;;;   ........................................................
+ 
+ ;;;_  + Color Browser.........................................
+ 

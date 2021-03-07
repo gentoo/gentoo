@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>plevine457@gmail.com</email>
+		<name>Peter Levine</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<doc lang="en">https://github.com/google/googletest/tree/master/googletest/docs</doc>
+		<remote-id type="github">google/googletest</remote-id>
+	</upstream>
+</pkgmetadata>

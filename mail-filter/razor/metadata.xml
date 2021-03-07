@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<!-- future maintainer: please uncomment the following contact:
+	<maintainer type="person">
+		<email>razor-admin@cloudmark.com</email>
+		<description>
+			A contact designated by upstream developers. This email address
+			should always be added to CC list of any Razor bug that needs
+			upstream care.
+		</description>
+	</maintainer>
+	-->
+	<upstream>
+		<remote-id type="sourceforge">razor</remote-id>
+	</upstream>
+</pkgmetadata>

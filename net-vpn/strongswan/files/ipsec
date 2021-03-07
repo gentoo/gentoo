@@ -1,0 +1,34 @@
+#!/sbin/openrc-run
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+	use logger
+}
+
+start() {
+	ebegin "Starting ${IPSECD}"
+	ipsec start
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${IPSECD}"
+	ipsec stop
+	eend $?
+}
+
+restart() {
+	ebegin "Restarting ${IPSECD}"
+	svc_stop
+	sleep 2
+	svc_start
+	eend $?
+}
+
+status() {
+	ebegin "${IPSECD} Status (verbose):"
+	ipsec statusall
+	eend $?
+}

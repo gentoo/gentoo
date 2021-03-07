@@ -1,0 +1,45 @@
+http://bugs.gentoo.org/340145
+
+fix buffer overflows in path handling.  these defines should only be used
+with host paths, so bumping them up to a larger value should be fine.
+
+--- a/common.h
++++ b/common.h
+@@ -35,7 +35,8 @@
+ C_START
+ 
+ #if !defined (MAX_PATH)
+-#  define MAX_PATH 128
++/* This needs to be at least 256 bytes -- see iin_gi_probe_path */
++#  define MAX_PATH 1024
+ #endif
+ 
+ 
+--- a/osal.h
++++ b/osal.h
+@@ -62,7 +62,8 @@ typedef struct
+ #  define OSAL_HANDLE_INIT { -1 } /* file descriptor */
+ #  define OSAL_IS_OPENED(x) ((x).desc != -1)
+ 
+-#  define MAX_PATH 256
++/* This needs to be at least 256 bytes -- see iin_gi_probe_path */
++#  define MAX_PATH 1024
+ 
+ #endif
+ typedef /*@special@*/ /*@only@*/ /*@out@*/ osal_handle_t* osal_handle_p_t;
+
+the magic field is 32 bytes, so strcpy-ing 32 bytes will add a 33rd NUL char.
+this isn't a problem in practice as the 33rd char is "unknown_0x02", but let's
+fix the issue anyways.
+
+--- a/apa.c
++++ b/apa.c
+@@ -1270,7 +1270,7 @@ apa_initialize_ex (hio_t *hio)
+   set_u32 (&header.length, 128 * 1024 * 2);
+   set_u16 (&header.type, 0x0001);
+   set_ps2fs_datetime (&header.created, time (NULL));
+-  strcpy (header.mbr.magic, "Sony Computer Entertainment Inc.");
++  memcpy (header.mbr.magic, "Sony Computer Entertainment Inc.", 32);
+   header.mbr.unknown_0x02 = 0x02;
+   set_ps2fs_datetime (&header.mbr.created, time (NULL));
+   set_u32 (&header.checksum, apa_partition_checksum (&header));

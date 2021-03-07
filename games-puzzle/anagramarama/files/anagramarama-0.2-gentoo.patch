@@ -1,0 +1,40 @@
+--- a/makefile
++++ b/makefile
+@@ -1,6 +1,13 @@
+-LFLAGS=-Wall -funroll-loops -fomit-frame-pointer -pipe -O9
+-CFLAGS=-Wall `sdl-config --cflags --libs` -funroll-loops -fomit-frame-pointer -pipe -O9 -lSDL_mixer
+-CC=gcc
++PKG_CONFIG ?= pkg-config
++
++SDL_CFLAGS = `$(PKG_CONFIG) --cflags sdl`
++SDL_LIBS = `$(PKG_CONFIG) --libs sdl`
++
++SDL_MIXER_CFLAGS = `$(PKG_CONFIG) --cflags SDL_mixer`
++SDL_MIXER_LIBS = `$(PKG_CONFIG) --libs SDL_mixer`
++
++LDLIBS=$(SDL_LIBS) $(SDL_MIXER_LIBS)
++CPPFLAGS+=$(SDL_CFLAGS) $(SDL_MIXER_CFLAGS)
+ 
+ C_FILES=src/dlb.c src/linked.c src/sprite.c src/ag.c
+ OBJ_FILES=src/dlb.o src/linked.o src/sprite.o src/ag.o
+@@ -9,19 +16,7 @@
+ all:ag
+ 
+ ag: $(OBJ_FILES)
+-	$(CC) $(CFLAGS) -o $(OUT_FILE) $(OBJ_FILES)
+-
+-src/dlb.o: src/dlb.c
+-	$(CC) $(LFLAGS) -c -o $@ $^
+-
+-src/linked.o: src/linked.c
+-	$(CC) $(LFLAGS) -c -o $@ $^
+-	
+-src/sprite.o: src/sprite.c
+-	$(CC) $(LFLAGS) -c -o $@ $^
+-
+-src/ag.o: src/ag.c
+-	$(CC) $(LFLAGS) -c -o $@ $^
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $(OUT_FILE) $(OBJ_FILES) $(LDLIBS)
+ 
+ clean:
+ 	rm -f src/*.o

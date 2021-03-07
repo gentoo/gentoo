@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<!-- maintainer-needed -->
+<!--
+<maintainer type="person">
+	<email>rich@annexia.org</email>
+	<name>Richard Jones</name>
+	<description>Upstream - please CC on bugs that concerns upstream</description>
+</maintainer>
+-->
+<use>
+	<flag name="erlang">Build Erlang bindings</flag>
+	<flag name="fuse">Enable image mount support via fuse</flag>
+	<flag name="inspect-icons">Use <pkg>media-gfx/icoutils</pkg> for acces icon file in image and inspect it</flag>
+	<flag name="libvirt">Use <pkg>app-emulation/libvirt</pkg> to manipulate VMs</flag>
+	<flag name="systemtap">Use <pkg>dev-util/systemtap</pkg> to inspect VM via "probes" way</flag>
+</use>
+</pkgmetadata>

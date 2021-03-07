@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!--maintainer-needed-->
+	<use>
+		<flag name="jbig">JBIG Fax Compression Support</flag>
+		<flag name="pam">hfaxd authentication via PAM</flag>
+		<flag name="mgetty">Receive faxes via serial port connections</flag>
+		<flag name="html">Convert faxes into html email</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">hylafax</remote-id>
+	</upstream>
+</pkgmetadata>

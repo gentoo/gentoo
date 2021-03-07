@@ -1,0 +1,11 @@
+--- a/t/lib/MIMEDefang/Unit.pm.ori	2010-05-13 23:12:23.000000000 +0200
++++ b/t/lib/MIMEDefang/Unit.pm	2019-07-10 15:08:35.190824853 +0200
+@@ -12,7 +12,7 @@
+ 	no warnings 'redefine';
+ 	local *CORE::GLOBAL::exit = sub { };
+ 	local @ARGV = ();
+-	do 'mimedefang.pl.in';
++	do './mimedefang.pl.in';
+ 	use warnings 'redefine';
+ }
+ 1;

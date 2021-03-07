@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>guillaumeseren@gmail.com</email>
+		<name>Guillaume Seren</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<maintainer status="active">
+			<email>brukie@gmx.net</email>
+			<name>Max-Wilhelm Bruker</name>
+		</maintainer>
+		<changelog>https://github.com/mbruker/Cockatrice/commits/master</changelog>
+		<doc lang="en">http://cockatrice.de/dokuwiki/doku.php</doc>
+		<bugs-to>https://github.com/mbruker/Cockatrice/issues</bugs-to>
+		<remote-id type="github">Cockatrice/cockatrice</remote-id>
+	</upstream>
+	<use>
+		<flag name="server">Compile server support</flag>
+		<flag name="oracle">Build with oracle</flag>
+		<flag name="client">Build with client</flag>
+	</use>
+	<longdescription lang="en">
+		Cockatrice is an open-source multiplatform software for playing card
+		games, such as Magic: The Gathering, over a network. It is fully
+		client-server based to prevent any kind of cheating, though it supports
+		single-player games without a network interface as well. Both client
+		and server are written in Qt 4.
+	</longdescription>
+</pkgmetadata>

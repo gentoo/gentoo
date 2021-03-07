@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/725284
+--- a/configure.ac
++++ b/configure.ac
+@@ -78,6 +78,7 @@ fi
+ 
+ AC_PROG_RANLIB
+ AC_PROG_INSTALL
++AM_PROG_AR
+ 
+ # Checks for libraries.
+ # Replace `main' with a function in -lm:

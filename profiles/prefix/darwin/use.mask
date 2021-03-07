@@ -1,0 +1,38 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+#Add USE flags that don't work on Darwin/OpenDarwin/OS X here
+
+# readd globally masked darwin-only flags
+-coreaudio
+-aqua
+
+# Re-add Darwin libc
+-elibc_Darwin
+-kernel_Darwin
+
+
+# these will more than likely never work on darwin
+3dfx
+acpi
+alsa
+apm
+caps
+djbfft
+fbcon
+ggi
+gpm
+hardened
+
+oss
+rtc
+v4l
+
+# introspection is far from working on OSX
+introspection
+
+# libcap doesn't work on OSX (fcaps.eclass), bug #534264
+filecaps
+
+# linux-exclusive feature
+inotify

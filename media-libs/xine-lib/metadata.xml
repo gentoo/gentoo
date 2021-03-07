@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>media-video@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="bluray">
+			Enable playback of Blu-ray filesystems using <pkg>media-libs/libbluray</pkg>
+		</flag>
+		<flag name="dxr3">
+			Enable support for DXR3 mpeg acceleration cards.
+		</flag>
+		<flag name="flac">
+			Build the <pkg>media-libs/flac</pkg> based FLAC demuxer and decoder. This
+			flag is not needed for playing FLAC content, neither standalone nor in Ogg
+			container (OggFLAC), but might have better support for exotic features like
+			24-bit samples or 96kHz sample rates.
+		</flag>
+		<flag name="gtk">
+			Build the gdkpixbuf-based image decoder plugin.
+		</flag>
+		<flag name="imagemagick">
+			Build the ImageMagick-based image decoder plugin.
+		</flag>
+		<flag name="mad">
+			Build the <pkg>media-libs/libmad</pkg> based mp3 decoder. This mp3 decoder
+			has superior support compared to the one coming from FFmpeg that is used as
+			a fallback. If you experience any bad behaviour with mp3 files (skipping,
+			distorted sound) make sure you enabled this USE flag.
+		</flag>
+		<flag name="mmap">
+			Use mmap() function while reading file from local disks. Using mmap() will
+			use more virtual memory space, but leaves to the Kernel the task of caching
+			the file's data. mmap() access should be faster, but might misbehave if the
+			device where the file resides in is removed during playback.
+		</flag>
+		<flag name="nfs">
+			Allow accessing NFS shares via <pkg>net-fs/libnfs</pkg>.
+		</flag>
+		<flag name="truetype">
+			Use <pkg>media-libs/freetype</pkg> for font rendering and
+			<pkg>media-libs/fontconfig</pkg> for font discovery. Enabling this USE flag
+			will allow OSD (such as subtitles) to use more advanced font and to more
+			easily select which font to use. The support for TrueType fonts in xine-lib
+			is still experimental, and might not be as good looking as the bitmap fonts
+			used with this USE flag disabled.
+		</flag>
+		<flag name="sftp">
+			Use <pkg>net-libs/libssh2</pkg> to access SFTP servers.
+		</flag>
+		<flag name="vdr">
+			Build the VDR plugin
+		</flag>
+		<flag name="vidix">
+			Enable support for vidix video output.
+		</flag>
+		<flag name="vis">
+			Adds support for SIMD optimizations for UltraSPARC processors.
+		</flag>
+		<flag name="vpx">
+			Enable VP8 codec support via media-libs/libvpx.
+		</flag>
+		<flag name="xvmc">
+			Enable support for XVideo Motion Compensation (accelerated mpeg playback).
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">xine</remote-id>
+	</upstream>
+</pkgmetadata>

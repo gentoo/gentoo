@@ -1,0 +1,38 @@
+From e90c9705a0b57cbf0d7ebe85d3fb1af7661e26fe Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Tue, 9 Jan 2018 05:41:00 +1300
+Subject: Prevent installing Changes.pod as $INC[...]/Set/Changes.pod
+
+Currently, `Changes.pod` installs into `@INC` using the traditional
+method used for installing  `*.pm` , `*.pl`, and `*.pod`
+
+This is the simplest fix that works by filtering the `blib/` to `/`
+copy in ExtUtils::Install
+
+Bug: https://github.com/rurban/Set-Object/pull/5
+---
+ INSTALL.SKIP | 1 +
+ MANIFEST     | 1 +
+ 2 files changed, 2 insertions(+)
+ create mode 100644 INSTALL.SKIP
+
+diff --git a/INSTALL.SKIP b/INSTALL.SKIP
+new file mode 100644
+index 0000000..55e47a4
+--- /dev/null
++++ b/INSTALL.SKIP
+@@ -0,0 +1 @@
++\bChanges\.pod$
+diff --git a/MANIFEST b/MANIFEST
+index 36fafd9..adf3dc1 100644
+--- a/MANIFEST
++++ b/MANIFEST
+@@ -1,4 +1,5 @@
+ Changes.pod
++INSTALL.SKIP
+ LICENSE
+ lib/Set/Object.pm
+ lib/Set/Object/Weak.pm
+-- 
+2.15.1
+

@@ -1,0 +1,26 @@
+--- libtecla/Makefile.rules.orig	2014-11-10 00:36:53.000000000 +0300
++++ libtecla/Makefile.rules	2016-04-13 10:37:36.234418914 +0300
+@@ -54,19 +54,19 @@
+ demos: $(DEMO_PROGS)
+ 
+ demo$(SUFFIX): $(OBJDIR)/demo.o $(TARGETS)
+-	LD_RUN_PATH="$(LIBDIR):$$LD_RUN_PATH:`pwd`" $(CC) $(CFLAGS) $(LDFLAGS) -o $@ \
++	LD_RUN_PATH="$(LIBDIR)" $(CC) $(CFLAGS) $(LDFLAGS) -o $@ \
+  $(OBJDIR)/demo.o -L. -ltecla$(SUFFIX) $(LIBS)
+ 
+ demo2$(SUFFIX): $(OBJDIR)/demo2.o $(TARGETS)
+-	LD_RUN_PATH="$(LIBDIR):$$LD_RUN_PATH:`pwd`" $(CC) $(CFLAGS) $(LDFLAGS) -o $@ \
++	LD_RUN_PATH="$(LIBDIR)" $(CC) $(CFLAGS) $(LDFLAGS) -o $@ \
+  $(OBJDIR)/demo2.o -L. -ltecla$(SUFFIX) $(LIBS)
+ 
+ demo3$(SUFFIX): $(OBJDIR)/demo3.o $(TARGETS)
+-	LD_RUN_PATH="$(LIBDIR):$$LD_RUN_PATH:`pwd`" $(CC) $(CFLAGS) $(LDFLAGS) -o $@ \
++	LD_RUN_PATH="$(LIBDIR)" $(CC) $(CFLAGS) $(LDFLAGS) -o $@ \
+  $(OBJDIR)/demo3.o -L. -ltecla$(SUFFIX) $(LIBS)
+ 
+ enhance$(SUFFIX): $(OBJDIR)/enhance.o $(TARGETS)
+-	LD_RUN_PATH="$(LIBDIR):$$LD_RUN_PATH:`pwd`" $(CC) $(CFLAGS) $(LDFLAGS) -o $@ \
++	LD_RUN_PATH="$(LIBDIR)" $(CC) $(CFLAGS) $(LDFLAGS) -o $@ \
+  $(OBJDIR)/enhance.o -L. -ltecla$(SUFFIX) $(LIBS)
+ 
+ #-----------------------------------------------------------------------

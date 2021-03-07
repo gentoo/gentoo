@@ -1,0 +1,144 @@
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Unmask the flag which corresponds to ARCH.
+-arm
+
+# Michał Górny <mgorny@gentoo.org> (2021-01-07)
+# Prebuilt kernels are supported here.
+-dist-kernel
+
+# Unmask arm arch specific flags
+-cpu_flags_arm_iwmmxt
+-cpu_flags_arm_iwmmxt2
+
+# Sam James <sam@gentoo.org> (2020-11-10)
+# Rust isn't available for generic ARM,
+# just armv6, armv7
+rust
+
+# Sam James <sam@gentoo.org> (2020-06-24)
+# Valgrind lacks support for < ARMv7
+# https://valgrind.org/info/platforms.html
+valgrind
+
+# Matt Turner <mattst88@gentoo.org> (2020-02-02)
+# Neither dev-python/pymongo nor dev-libs/mongo-c-driver are keyworded
+mongodb
+
+# Andrey Utkin <andrey_utkin@gentoo.org> (2018-06-13)
+# No ACPI support on arm. Bug #657332
+acpi
+
+# Andrey Grozin <grozin@gentoo.org> (2014-05-16)
+# gcl keyworded ~arm, bug #509842
+-gcl
+
+# Markus Meier <maekke@gentoo.org> (2010-08-22)
+# unmask synaptics input driver
+-input_devices_synaptics
+
+# Markus Meier <maekke@gentoo.org> (2010-08-22)
+# net-wireless/wimax not tested
+wimax
+
+# Raúl Porcel <armin76@gentoo.org>
+# I've been told xfs is broken on ARM
+xfs
+
+# No hardware to test by the team
+ios
+ipod
+
+# Stuff that doesn't make sense on this arch
+3dfx
+dmi
+
+# Stuff we don't want
+tracker
+lasi
+pdfannotextractor
+prelude
+mssql
+gajim
+
+# havent tested yet
+R
+gphoto2
+afs
+mono
+lm-sensors
+xemacs
+sid
+mms
+mtp
+ieee1394
+darcs
+ggi
+nut
+fits
+vaapi
+lpsol
+devil
+gts
+anthy
+
+# Unmask ARM-only video-cards
+-video_cards_exynos
+-video_cards_freedreno
+-video_cards_imx
+-video_cards_lima
+-video_cards_omap
+-video_cards_panfrost
+-video_cards_tegra
+-video_cards_v3d
+-video_cards_vc4
+
+# James Le Cuirot <chewi@gentoo.org>
+# Unmask as Vivante is available for arm.
+-video_cards_vivante
+
+# Donnie Berkholz <dberkholz@gentoo.org> (2006-02-05)
+# Modular X: mask for architectures on which they aren't available
+video_cards_glint
+video_cards_mga
+video_cards_nouveau
+video_cards_nv
+video_cards_r128
+video_cards_radeon
+
+# Matt Turner <mattst88@gentoo.org>
+# Mask more VIDEO_CARDs added with mesa-8.0
+video_cards_amdgpu
+video_cards_r100
+video_cards_r200
+video_cards_r300
+video_cards_r600
+video_cards_radeonsi
+
+# USE=audit masked prior to testing on alpha, arm, hppa, ppc64, s390, sh.
+# Bug #184563, 2007-09-18
+# Robin H. Johnson <robbat2@gentoo.org>
+audit
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-31)
+# media-libs/xine-lib is not keyworded
+xine
+
+# Michał Górny <mgorny@gentoo.org> (2013-05-04)
+# Unmask systemd since it is keyworded here.
+-systemd
+
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-08-22)
+# virtual/opencl is not keyworded
+opencl
+
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-11-10)
+# sys-devel/llvm is keyworded
+-llvm
+
+# Missing sys-process/numactl keywords.
+numa
+
+# toolkit for nvidia binary drivers
+cg

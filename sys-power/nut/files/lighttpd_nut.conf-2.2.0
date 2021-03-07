@@ -1,0 +1,22 @@
+###############################################################################
+# Lighttpd configuration for using NUT under Gentoo Linux.
+# Copyright 1999-2006 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+###############################################################################
+
+# Simple copy this to /etc/lighttpd/ and include it in your lighttpd.conf.
+# It will make NUT available at http://$HOST/nut/ 
+
+server.modules += ("mod_cgi")
+
+# If you want to limit it to some host, uncomment the host check and modify it to your needs.
+# $HTTP["host"] == "www2.example.org" {
+alias.url += ( "/nut/" => "/usr/share/nut/cgi/" )
+$HTTP["url"] =~ "^/nut/" {
+  dir-listing.activate = "disable"
+  cgi.assign = ( ".cgi" => "" )
+  index-file.names = ( "upsstats.cgi" )
+}
+# }
+
+# vim: set ft=conf foldmethod=marker et :

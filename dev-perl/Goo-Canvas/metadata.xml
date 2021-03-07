@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <longdescription lang="en">
+GTK+ does't has an buildin canvas widget. GooCanvas is wonderful. It is easy to use and has powerful and extensible way to create items in canvas. Just try it.
+</longdescription>
+  <upstream>
+    <remote-id type="cpan">Goo-Canvas</remote-id>
+    <remote-id type="cpan-module">Goo::Canvas</remote-id>
+  </upstream>
+</pkgmetadata>

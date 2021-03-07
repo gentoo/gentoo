@@ -1,0 +1,155 @@
+From 01dba45f0d15b7e23f21d19776d64f69879cd27a Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Sat, 2 Oct 2010 00:41:01 +0200
+Subject: [PATCH 5/9] Fix to identify ${HOME} (#200897)
+
+Thanks to debian folks.
+---
+ libgnomevfs/gnome-vfs-application-registry.c |    2 +-
+ libgnomevfs/gnome-vfs-init.c                 |    3 +-
+ libgnomevfs/gnome-vfs-private-utils.c        |   52 ++++++++++++++++++++++++++
+ libgnomevfs/gnome-vfs-private-utils.h        |    2 +
+ modules/file-method.c                        |    6 +-
+ 5 files changed, 60 insertions(+), 5 deletions(-)
+
+diff --git a/libgnomevfs/gnome-vfs-application-registry.c b/libgnomevfs/gnome-vfs-application-registry.c
+index 0b11cc5..051ea44 100644
+--- a/libgnomevfs/gnome-vfs-application-registry.c
++++ b/libgnomevfs/gnome-vfs-application-registry.c
+@@ -965,7 +965,7 @@ gnome_vfs_application_registry_init (void)
+ 						       NULL);
+ 	gnome_registry_dir.system_dir = TRUE;
+ 	
+-	user_registry_dir.dirname = g_build_filename (g_get_home_dir(),
++	user_registry_dir.dirname = g_build_filename (gnome_vfs_get_home_dir(),
+ 						      ".gnome",
+ 						      "application-info",
+ 						      NULL);
+diff --git a/libgnomevfs/gnome-vfs-init.c b/libgnomevfs/gnome-vfs-init.c
+index e3fd5d9..c07cf06 100644
+--- a/libgnomevfs/gnome-vfs-init.c
++++ b/libgnomevfs/gnome-vfs-init.c
+@@ -118,7 +118,8 @@ gnome_vfs_init (void)
+ 	char *bogus_argv[2] = { "dummy", NULL };
+ 	*/
+ 	
+-	if (!ensure_dot_gnome_exists ()) {
++	/* The first call also checks that ~/.gnome2 is writable. */
++	if (!gnome_vfs_get_home_dir ()) {
+ 		return FALSE;
+ 	}
+ 
+diff --git a/libgnomevfs/gnome-vfs-private-utils.c b/libgnomevfs/gnome-vfs-private-utils.c
+index 7fafde3..7ad8fbc 100644
+--- a/libgnomevfs/gnome-vfs-private-utils.c
++++ b/libgnomevfs/gnome-vfs-private-utils.c
+@@ -34,6 +34,7 @@
+ #include "gnome-vfs-uri.h"
+ #include <errno.h>
+ #include <glib.h>
++#include <glib/gstdio.h>
+ #include <gconf/gconf-client.h>
+ #include <stdlib.h>
+ #include <string.h>
+@@ -1085,3 +1086,54 @@ _gnome_vfs_winsock_strerror (int error)
+ }
+ #endif
+ 
++static gboolean
++ensure_dot_gnome_exists (gchar *home_dir)
++{
++	gboolean retval = TRUE;
++	gchar *dirname;
++
++	dirname = g_build_filename (home_dir, ".gnome2", NULL);
++
++	if (!g_file_test (dirname, G_FILE_TEST_EXISTS)) {
++		if (g_mkdir (dirname, S_IRWXU) != 0) {
++			g_warning ("Unable to create ~/.gnome2 directory: %s",
++				   g_strerror (errno));
++			retval = FALSE;
++		}
++	} else if (!g_file_test (dirname, G_FILE_TEST_IS_DIR)) {
++		g_warning ("Error: ~/.gnome2 must be a directory.");
++		retval = FALSE;
++	}
++
++	g_free (dirname);
++	return retval;
++}
++
++/**
++ * gnome_vfs_get_home_dir:
++ *
++ * If ~/.gnome2 is writable, return the home directory
++ * Otherwise, return the contents of the HOME environment variable
++ *
++ * Return value: home directory if successful, NULL otherwise.
++ * Do not free the value returned.
++ */
++const gchar *
++gnome_vfs_get_home_dir (void)
++{
++	static gchar *home = NULL;
++
++	if (home == NULL) {
++		gchar *tmp = g_get_home_dir ();
++		if (ensure_dot_gnome_exists (tmp)) {
++			home = g_strdup (tmp);
++		} else {
++			gchar *tmp2 = g_getenv ("HOME");
++			if (!g_str_equal (tmp, tmp2) && ensure_dot_gnome_exists (tmp2)) {
++				home = g_strdup (tmp2);
++			}
++		}
++	}
++
++	return home;
++}
+diff --git a/libgnomevfs/gnome-vfs-private-utils.h b/libgnomevfs/gnome-vfs-private-utils.h
+index 981c6d9..fe282a2 100644
+--- a/libgnomevfs/gnome-vfs-private-utils.h
++++ b/libgnomevfs/gnome-vfs-private-utils.h
+@@ -124,6 +124,8 @@ const char    *_gnome_vfs_winsock_strerror		  (int		 error);
+ 
+ #endif
+ 
++const gchar   *gnome_vfs_get_home_dir                     (void);
++
+ G_END_DECLS
+ 
+ #endif /* _GNOME_VFS_PRIVATE_UTILS_H */
+diff --git a/modules/file-method.c b/modules/file-method.c
+index 37e4853..7265e58 100644
+--- a/modules/file-method.c
++++ b/modules/file-method.c
+@@ -1531,7 +1531,7 @@ save_trash_entry_cache (void)
+ 	GList *p;
+ 	char *buffer, *escaped_path, *escaped_mount_point;
+ 
+-	cache_file_parent = append_to_path (g_get_home_dir (), TRASH_ENTRY_CACHE_PARENT);
++	cache_file_parent = append_to_path (gnome_vfs_get_home_dir (), TRASH_ENTRY_CACHE_PARENT);
+ 	cache_file_path = append_to_path (cache_file_parent, TRASH_ENTRY_CACHE_NAME);
+ 
+ 	if (mkdir_recursive (cache_file_parent, 0777) != 0) {
+@@ -1670,7 +1670,7 @@ read_saved_cached_trash_entries (void)
+ 	cached_trash_directories = NULL;
+ 
+ 	/* read in the entries from disk */
+-	cache_file_path = g_build_filename (g_get_home_dir (),
++	cache_file_path = g_build_filename (gnome_vfs_get_home_dir (),
+ 					    TRASH_ENTRY_CACHE_PARENT,
+ 					    TRASH_ENTRY_CACHE_NAME,
+ 					    NULL);
+@@ -1942,7 +1942,7 @@ do_find_directory (GnomeVFSMethod *method,
+ 		return GNOME_VFS_ERROR_INVALID_URI;
+ 
+ 	/* We will need the URI and the stat structure for the home directory. */
+-	home_directory = g_get_home_dir ();
++	home_directory = gnome_vfs_get_home_dir ();
+ 
+ 	if (gnome_vfs_context_check_cancellation (context)) {
+ 		g_free (full_name_near);
+-- 
+1.7.3
+

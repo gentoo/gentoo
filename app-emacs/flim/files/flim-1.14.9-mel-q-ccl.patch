@@ -1,0 +1,31 @@
+http://bugs.gentoo.org/292449
+
+--- flim-1.14.9-orig/mel-q-ccl.el	2006-06-12 17:10:02.000000000 +0200
++++ flim-1.14.9/mel-q-ccl.el	2009-11-13 15:38:28.000000000 +0100
+@@ -893,7 +893,13 @@
+   (defun quoted-printable-ccl-encode-region (start end)
+     "Encode the region from START to END with quoted-printable encoding."
+     (interactive "*r")
+-    (decode-coding-region start end 'mel-ccl-quoted-printable-lf-lf-rev))
++    (save-excursion
++      (goto-char start)
++      (insert (prog1
++		(decode-coding-string
++		  (string-as-unibyte (buffer-substring start end))
++		  'mel-ccl-quoted-printable-lf-lf-rev)
++		(delete-region start end)))))
+ 
+   (defun quoted-printable-ccl-insert-encoded-file (filename)
+     "Encode contents of the file named as FILENAME, and insert it."
+@@ -932,7 +938,10 @@
+ (defun quoted-printable-ccl-write-decoded-region (start end filename)
+   "Decode quoted-printable encoded current region and write out to FILENAME."
+   (interactive "*r\nFWrite decoded region to file: ")
+-  (let ((coding-system-for-write 'mel-ccl-quoted-printable-lf-lf-rev)
++  (let ((coding-system-for-write
++	 (if (coding-system-p 'mel-ccl-quoted-printable-lf-lf-rev-unix)
++	     'mel-ccl-quoted-printable-lf-lf-rev-unix
++	   'mel-ccl-quoted-printable-lf-lf-rev))
+ 	jka-compr-compression-info-list jam-zcat-filename-list)
+     (write-region start end filename)))
+ 

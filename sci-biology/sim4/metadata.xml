@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-biology@gentoo.org</email>
+		<name>Gentoo Biology Project</name>
+	</maintainer>
+	<longdescription>
+		sim4 is a similarity-based tool for aligning an expressed DNA sequence
+		(EST, cDNA, mRNA) with a genomic sequence for the gene. It also detects
+		end matches when the two input sequences overlap at one end (i.e., the
+		start of one sequence overlaps the end of the other).sim4 employs a
+		blast-based technique to first determine the basic matching blocks
+		representing the "exon cores". In this first stage, it detects all
+		possible exact matches of W-mers (i.e., DNA words of size W) between
+		the two sequences and extends them to maximal scoring gap-free
+		segments. In the second stage, the exon cores are extended into the
+		adjacent as-yet-unmatched fragments using greedy alignment algorithms,
+		and heuristics are used to favor configurations that conform to the
+		splice-site recognition signals (GT-AG, CT-AC). If necessary, the
+		process is repeated with less stringent parameters on the unmatched
+		fragments.
+	</longdescription>
+</pkgmetadata>

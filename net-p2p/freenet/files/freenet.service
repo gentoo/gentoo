@@ -1,0 +1,13 @@
+[Unit]
+Description=An encrypted network without censorship and monitoring.
+After=network.target
+
+[Service]
+User=freenet
+Type=forking
+ExecStart=/var/freenet/run.sh start
+ExecStop=/var/freenet/run.sh stop
+WorkingDirectory=/var/freenet
+
+[Install]
+WantedBy=multi-user.target

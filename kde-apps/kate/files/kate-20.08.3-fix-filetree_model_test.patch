@@ -1,0 +1,27 @@
+From 761b74416a513331359b327e033349a8da77daa8 Mon Sep 17 00:00:00 2001
+From: Ahmad Samir <a.samirh78@gmail.com>
+Date: Thu, 26 Nov 2020 14:12:30 +0200
+Subject: [PATCH] filetree addon: fix crash in filetree_model_test
+
+We can't use QTEST_GUILESS_MAIN since KateRendererConfig::setSchemaInternal()
+uses QGuiApplication to get the current palette name.
+---
+ addons/filetree/autotests/filetree_model_test.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/addons/filetree/autotests/filetree_model_test.cpp b/addons/filetree/autotests/filetree_model_test.cpp
+index 2ea8a0780..5c503328c 100644
+--- a/addons/filetree/autotests/filetree_model_test.cpp
++++ b/addons/filetree/autotests/filetree_model_test.cpp
+@@ -9,7 +9,7 @@
+ #include "document_dummy.h"
+ 
+ #include <QtTest>
+-QTEST_GUILESS_MAIN(FileTreeModelTest)
++QTEST_MAIN(FileTreeModelTest)
+ 
+ // BEGIN ResultNode
+ class ResultNode
+-- 
+GitLab
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
+	<longdescription lang="en">
+		A set of text-processing Java classes that provide Perl5 compatible
+		regular expressions, AWK-like regular expressions, glob expressions,
+		and utility classes for performing substitutions, splits, filtering
+		filenames, etc.
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,30 @@
+From c7f84f8fc4e90ef779a204ac268f5ee1a962e324 Mon Sep 17 00:00:00 2001
+From: Jimi Huotari <chiitoo@gentoo.org>
+Date: Sun, 9 Feb 2020 05:23:55 +0200
+Subject: [PATCH] deps/glad: Fix build with GCC-10
+
+GCC-10 defaults to '-fno-common' [1], which triggers issues with
+defining global variables multiple times.  To fix the build, use
+'extern' to turn the first definition of 'gladGetProcAddressPtr'
+into a declaration.
+
+1. https://gcc.gnu.org/bugzilla/show_bug.cgi?id=85678
+
+Closes https://github.com/obsproject/obs-studio/issues/2828
+---
+ deps/glad/src/glad_glx.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/deps/glad/src/glad_glx.c b/deps/glad/src/glad_glx.c
+index 7c55b9fc01..58086f1039 100644
+--- a/deps/glad/src/glad_glx.c
++++ b/deps/glad/src/glad_glx.c
+@@ -35,7 +35,7 @@ static void* libGL;
+ 
+ #ifndef __APPLE__
+ typedef void* (APIENTRYP PFNGLXGETPROCADDRESSPROC_PRIVATE)(const char*);
+-PFNGLXGETPROCADDRESSPROC_PRIVATE gladGetProcAddressPtr;
++extern PFNGLXGETPROCADDRESSPROC_PRIVATE gladGetProcAddressPtr;
+ #endif
+ 
+ static

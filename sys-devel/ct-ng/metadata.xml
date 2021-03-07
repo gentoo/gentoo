@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>blueness@gentoo.org</email>
+		<name>Anthony G. Basile</name>
+	</maintainer>
+	<longdescription lang="en">
+		crosstool-NG is a utility for building cross-compiling toolchains.
+		It will only build the toolchain.  It is up to use how you want to
+		use it after that.
+
+		It is an alternative to sys-devel/crossdev.
+
+		For more information, see http://ymorin.is-a-geek.org/projects/crosstool
+	</longdescription>
+</pkgmetadata>

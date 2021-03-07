@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name='bundled-expat'> Use bundled expat instead of <pkg>dev-libs/expat</pkg></flag>
+	</use>
+	<longdescription>
+		This package provides a general purpose Haskell XML library using Expat to
+		do its parsing (&lt;http://expat.sourceforge.net/&gt; - a fast stream-oriented XML
+		parser written in C).  It is extensible to any string type, with @String@,
+		@ByteString@ and @Text@ provided out of the box.
+		
+		Basic usage: Parsing a tree (/Tree/), formatting a tree (/Format/).
+		Other features: Helpers for processing XML trees (/Proc/), trees annotated with
+		XML source location (/Annotated/), extended XML trees with comments,
+		processing instructions, etc (/Extended/), XML cursors (/Cursor/),
+		SAX-style parse (/SAX/), and access to the low-level interface in case speed
+		is paramount (/Internal.IO/).
+		
+		The design goals are speed, speed, speed, interface simplicity and modularity.
+		
+		For introduction and examples, see the /Text.XML.Expat.Tree/ module. For benchmarks,
+		&lt;http://haskell.org/haskellwiki/Hexpat/&gt;
+		
+		If you want to do interactive I\/O, an obvious option is to use lazy parsing
+		with one of the lazy I\/O functions such as hGetContents.  However, this can be
+		problematic in some applications because it doesn't handle I\/O errors properly
+		and can give no guarantee of timely resource cleanup.  In these cases, chunked
+		I\/O is a better approach: Take a look at the /hexpat-enumerator/ package.
+		
+		/IO/ is filed under /Internal/ because it's low-level and most users won't want
+		it.  The other /Internal/ modules are re-exported by /Annotated/, /Tree/ and /Extended/,
+		so you won't need to import them directly.
+		
+		Credits to Iavor Diatchki and the @xml@ (XML.Light) package for /Proc/ and /Cursor/.
+		Thanks to the many contributors.
+		
+		BOUND VS. UNBOUND THREADS: GHC (at least versions 6.12.X) will spawn threads
+		if you call a safe FFI callback from an unbound thread.  This can get out of
+		control in a busy application.  To avoid this, from version 0.19.1 we now delegate
+		processing to a single worker thread if the calling thread is not bound.
+		This essentially means that hexpat currently won't exploit multicores very well.
+		It also means that hexpat may be more efficient on threads spawned with forkOS
+		(to give you a bound thread) rather than forkIO.
+		
+		ChangeLog: 0.15 changes intended to fix a (rare) \"error: a C finalizer called back into Haskell.\"
+		that seemed only to happen only on ghc6.12.X; 0.15.1 Fix broken Annotated parse;
+		0.16 switch from mtl to transformers; 0.17 fix mapNodeContainer &amp; rename some things.;
+		0.18 rename defaultEncoding to overrideEncoding. 0.18.3 formatG and indent were demanding list
+		items more than once (inefficient in chunked processing); 0.19 add Extended.hs;
+		0.19.1 fix a memory leak introduced in 0.19, delegate parsing to bound thread
+		if unbound (see note above); 0.19.2 include expat source code so \'cabal install\' just works
+		on Linux, Mac and Windows (thanks Jacob Stanley); 0.19.3 fix misconfiguration of expat
+		which broke entity parsing; 0.19.4 bump version constraint for text; 0.19.5 bump text
+		to &lt; 0.12 and fix text-0.10.0.1 breakage; 0.19.6 dependency breakage with List;
+		0.19.7 ghc-7.2.1 compatibility; 0.19.8 fix space leak on lazy parse under ghc-7.2.1
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Chunk of memory, polymorphic byte array management and manipulation
+		
+		* A polymorphic byte array abstraction and function similar to strict ByteString.
+		
+		* Different type of byte array abstraction.
+		
+		* Raw memory IO operations (memory set, memory copy, ..)
+		
+		* Aliasing with endianness support.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">vincenthz/hs-memory</remote-id>
+	</upstream>
+</pkgmetadata>

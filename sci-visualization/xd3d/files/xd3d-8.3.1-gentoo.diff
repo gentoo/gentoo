@@ -1,0 +1,86 @@
+diff -Naur RULES.gentoo RULES.gentoo
+--- /dev/null		1969-12-31 19:00:00.000000000 -0500
++++ ./RULES.gentoo	2008-01-21 06:41:41.000000000 -0500
+@@ -0,0 +1,82 @@
++#--------------------------------------------------------
++# Configuration file for the Makefiles of xd3d          |
++# François Jouve 2005 (Francois.Jouve@Polytechnique.fr) |
++#--------------------------------------------------------
++
++#
++# Modifiable parameters
++#
++
++#
++# Root directory of the distribution
++#
++#XD3D_DIR = $(HOME)/xd3d-8.1.0
++XD3D_DIR = Please_Configure
++
++#
++# Install directory
++#
++#INSTALL_DIR = /usr/local/bin
++INSTALL_DIR = ##D##/usr/bin
++
++#
++# Location of the X11 lib (libX11.a)
++#
++#LIBX11 = /usr/X11R6/lib
++LIBX11 = /usr/##lib##/
++
++#
++# Language parameter
++#
++#LANGUAGE = FRANCAIS
++#LANGUAGE = ENGLISH
++LANGUAGE = ENGLISH
++
++#
++# Max memory for xd3d (MBytes)
++#
++#MEMORY_XD3D = 64
++MEMORY_XD3D = 64
++
++#
++# Fortran compiler
++#
++COMPILF = $(FC)
++
++#
++# C compiler
++#
++COMPILC = $(CC)
++RANLIB  = ranlib
++AR      = ar r
++STRIP   = echo $@
++
++#
++# Options for the Fortran compiler
++#
++OPTF = $(FFLAGS)
++#
++# Options for the C compiler
++#
++OPTC = $(CFLAGS)
++
++#-----------------------------------------------
++# You should not need to change anything below !
++#-----------------------------------------------
++
++SRCDIR = $(XD3D_DIR)/src
++BINDIR = $(XD3D_DIR)/bin
++LIBDIR = $(XD3D_DIR)/lib
++SUFF   =
++INCF   = -I$(XD3D_DIR)/src/include
++INCC   = -I$(LIBX11)/../include
++
++LINK      = $(COMPILF) $(LDFLAGS) -o
++LINKOPT   = -lc -lm
++LINKOPTX  = -L$(LIBX11) -lX11 -lXpm -lc -lm
++LIBRAIRIE = $(LIBDIR)/question_lib.a
++MYXLIB    = $(LIBDIR)/my_Xlib.a
++INTERP    = $(LIBDIR)/interp.a
++
++.f.o: ; $(COMPILF) $(INCF) $(OPTF) -c $*.f
++.c.o: ; $(COMPILC) $(INCC) $(OPTC) -D$(LANGUAGE) -c $*.c

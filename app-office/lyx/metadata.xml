@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>aballier@gentoo.org</email>
+		<name>Alexis Ballier</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>cjk@gentoo.org</email>
+		<name>Cjk</name>
+	</maintainer>
+	<use>
+		<flag name="aspell">Add support for aspell spellchecking</flag>
+		<flag name="enchant">Add support for enchant spellchecking wrapper
+			(both aspell and hunspell can be used by LyX).</flag>
+		<flag name="dia">Add support for diagrams (<pkg>app-office/dia</pkg>)</flag>
+		<flag name="dot">Add support for DOT import (<pkg>media-gfx/graphviz</pkg>)</flag>
+		<flag name="gnumeric">Add support for importing Gnumeric/OpenOffice/MS Excel
+			spreadsheets into LyX.</flag>
+		<flag name="html">Add support for HTML import</flag>
+		<flag name="hunspell">Add support for spellchecking based on hunspell and
+			reuse system-wide OpenOffice dictionaries. This also enable thesaurus
+			dictionaries not accessible via aspell.</flag>
+		<flag name="monolithic-build">This should speed up compilation significantly
+			when you have enough RAM (&gt; 600 MB)</flag>
+		<flag name="rcs">Add support for revision control via <pkg>dev-vcs/rcs</pkg></flag>
+		<flag name="rtf">Add support for RTF import/export packages</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/738224
+Author: hangglider@gmx.de
+--- a/src/common_sighandler.c
++++ b/src/common_sighandler.c
+@@ -187,7 +187,7 @@
+ 		return;
+ 	}
+ 	else {
+-		fprintf (stderr, "ERROR: Caught signal number %d (%s) at\n", sig_num, sys_siglist[sig_num]);
++		fprintf (stderr, "ERROR: Caught signal number %d (%s) at\n", sig_num, strsignal(sig_num));
+ 		backtrace_symbols_fd (array, 2, STDERR_FILENO); /* print function with faulting instruction */
+ 		size = backtrace (array, 50); /* get void*'s for all entries on the stack */
+ 		fprintf (stderr, "Stack backtrace:\n");
+

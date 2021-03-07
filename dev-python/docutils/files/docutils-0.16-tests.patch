@@ -1,0 +1,66 @@
+Index: docutils/test/test_parsers/test_rst/test_directives/test_code.py
+===================================================================
+--- docutils/test/test_parsers/test_rst/test_directives/test_code.py	(revision 8494)
++++ docutils/test/test_parsers/test_rst/test_directives/test_code.py	(working copy)
+@@ -107,7 +107,7 @@
+ <document source="test data">
+     <literal_block classes="code python testclass" xml:space="preserve">
+          \n\
+-        <inline classes="keyword">
++        <inline classes="name builtin">
+             print
+         <inline classes="punctuation">
+             (
+@@ -167,7 +167,7 @@
+         <inline classes="ln">
+             12 \n\
+             \n\
+-        <inline classes="keyword">
++        <inline classes="name builtin">
+             print
+         <inline classes="punctuation">
+             (
+Index: docutils/test/test_parsers/test_rst/test_directives/test_code_long.py
+===================================================================
+--- docutils/test/test_parsers/test_rst/test_directives/test_code_long.py	(revision 8494)
++++ docutils/test/test_parsers/test_rst/test_directives/test_code_long.py	(working copy)
+@@ -69,7 +69,7 @@
+         <inline classes="ln">
+             12 \n\
+             \n\
+-        <inline classes="keyword">
++        <inline classes="name builtin">
+             print
+         <inline classes="punctuation">
+             (
+Index: docutils/test/test_parsers/test_rst/test_directives/test_tables.py
+===================================================================
+--- docutils/test/test_parsers/test_rst/test_directives/test_tables.py	(revision 8494)
++++ docutils/test/test_parsers/test_rst/test_directives/test_tables.py	(working copy)
+@@ -45,10 +45,11 @@
+ # some error messages changed in Python 3.3, CPython has backported to 2.7.4,
+ # PyPy has not
+ csv_eod_error_str = 'unexpected end of data'
+-if sys.version_info < (2,7,4) or platform.python_implementation() == 'PyPy':
++if sys.version_info < (2,7,4) or (platform.python_implementation() == 'PyPy'
++                                  and sys.version_info < (3,0)):
+     csv_eod_error_str = 'newline inside string'
+ # pypy adds a line number
+-if sys.version_info >= (3, 0) and platform.python_implementation() == 'PyPy':
++if platform.python_implementation() == 'PyPy':
+     csv_eod_error_str = 'line 1: ' + csv_eod_error_str
+ csv_unknown_url = "'bogus.csv'"
+ if sys.version_info < (3, 0):
+Index: docutils/test/test_parsers/test_rst/test_interpreted.py
+===================================================================
+--- docutils/test/test_parsers/test_rst/test_interpreted.py	(revision 8494)
++++ docutils/test/test_parsers/test_rst/test_interpreted.py	(working copy)
+@@ -283,7 +283,7 @@
+     <paragraph>
+         Python code \n\
+         <literal classes="code testclass python">
+-            <inline classes="keyword">
++            <inline classes="name builtin">
+                 print
+             <inline classes="punctuation">
+                 (

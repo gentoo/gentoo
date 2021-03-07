@@ -1,0 +1,33 @@
+From 63978a11cc1a512e564237e83060e9aa29ebce73 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Andr=C3=A9s=20Sicard-Ram=C3=ADrez?= <asr@eafit.edu.co>
+Date: Sun, 7 Jan 2018 23:52:32 -0500
+Subject: [PATCH] Added Semigroup instance.
+
+The instance was required by GHC 8.4.1-alpha1.
+---
+ src/Control/Monad/Plus.hs | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/src/Control/Monad/Plus.hs b/src/Control/Monad/Plus.hs
+index 25f4782..654d133 100644
+--- a/src/Control/Monad/Plus.hs
++++ b/src/Control/Monad/Plus.hs
+@@ -1,5 +1,5 @@
+
+-{-# LANGUAGE DeriveFunctor, DeriveFoldable, GeneralizedNewtypeDeriving #-}
++{-# LANGUAGE CPP, DeriveFunctor, DeriveFoldable, GeneralizedNewtypeDeriving #-}
+
+ -------------------------------------------------------------------------------------
+ -- |
+@@ -263,6 +263,9 @@ instance Category Partial where
+
+ instance Monoid (Partial a b) where
+     mempty  = mzero
++#if !MIN_VERSION_base(4,11,0)
+     mappend = mplus
+-
+-
++#else
++instance Semigroup (Partial a b) where
++  (<>) = mappend
++#endif

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>games@gentoo.org</email>
+    <name>Gentoo Games Project</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>mgorny@gentoo.org</email>
+    <name>Michał Górny</name>
+  </maintainer>
+  <use>
+    <flag name="fluidsynth">compile with support for fluidsynth</flag>
+    <flag name="fribidi">Support for right-to-left languages via <pkg>dev-libs/fribidi</pkg></flag>
+    <flag name="glew">enable support for OpenGL Extension Wrangler Library (<pkg>media-libs/glew</pkg>)</flag>
+    <flag name="mpeg2">enable mpeg2 codec for cutscenes</flag>
+    <flag name="net">enable cloud support via <pkg>media-libs/sdl2-net</pkg></flag>
+    <flag name="speech">enable text-to-speech support through <pkg>app-accessibility/speech-dispatcher</pkg></flag>
+    <flag name="unsupported">enable unsupported and/or broken game engines (you're on your own)</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">scummvm</remote-id>
+  </upstream>
+</pkgmetadata>

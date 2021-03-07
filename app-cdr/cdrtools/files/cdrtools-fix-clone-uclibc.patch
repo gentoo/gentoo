@@ -1,0 +1,69 @@
+diff -Naur cdrtools-3.02.orig/readcd/readcd.c cdrtools-3.02/readcd/readcd.c
+--- cdrtools-3.02.orig/readcd/readcd.c	2016-01-24 11:15:19.000000000 -0500
++++ cdrtools-3.02/readcd/readcd.c	2016-04-09 12:29:54.727635502 -0400
+@@ -257,7 +257,7 @@
+ BOOL	pifscan;
+ BOOL	plot;
+ BOOL	fulltoc;
+-BOOL	clone;
++BOOL	clonetoc;
+ BOOL	edc_corr;
+ BOOL	noerror;
+ BOOL	nocorr;
+@@ -294,7 +294,7 @@
+ 	error(_("\t-plot		Print data suitable for gnuplot\n"));
+ #ifdef	CLONE_WRITE
+ 	error(_("\t-fulltoc	Retrieve the full TOC\n"));
+-	error(_("\t-clone		Retrieve the full TOC and all data\n"));
++	error(_("\t-clonetoc		Retrieve the full TOC and all data\n"));
+ 	error(_("\t-edc-corr	Try to do user level Reed Solomon repair (experimental)\n"));
+ #endif
+ 	error(_("\ttimeout=#	set the default SCSI command timeout to #.\n"));
+@@ -320,7 +320,7 @@
+ }
+ 
+ /* CSTYLED */
+-char	opts[]   = "debug#,d+,kdebug#,kd#,timeout#,quiet,q,verbose+,v+,Verbose+,V+,x+,xd#,silent,s,help,h,version,scanbus,dev*,scgopts*,sectors*,w,c2scan,cxscan,pi8scan,pifscan,plot,fulltoc,clone,edc-corr,noerror,nocorr,notrunc,retries#,factor,f*,speed#,ts&,overhead,meshpoints#";
++char	opts[]   = "debug#,d+,kdebug#,kd#,timeout#,quiet,q,verbose+,v+,Verbose+,V+,x+,xd#,silent,s,help,h,version,scanbus,dev*,scgopts*,sectors*,w,c2scan,cxscan,pi8scan,pifscan,plot,fulltoc,clonetoc,edc-corr,noerror,nocorr,notrunc,retries#,factor,f*,speed#,ts&,overhead,meshpoints#";
+ 
+ EXPORT int
+ main(ac, av)
+@@ -397,7 +397,7 @@
+ 			&scanbus, &dev, &scgopts, &sectors, &do_write,
+ 			&c2scan, &cxscan, &pi8scan, &pifscan,
+ 			&plot,
+-			&fulltoc, &clone,
++			&fulltoc, &clonetoc,
+ 			&edc_corr,
+ 			&noerror, &nocorr,
+ 			&notrunc, &retries, &do_factor, &filename,
+@@ -679,7 +679,7 @@
+ 
+ 	if (filename || sectors || c2scan || cxscan || pi8scan || pifscan ||
+ 	    meshpoints || fulltoc ||
+-	    clone || edc_corr) {
++	    clonetoc || edc_corr) {
+ 		dorw(scgp, filename, sectors);
+ 	} else {
+ 		doit(scgp);
+@@ -894,9 +894,9 @@
+ 		if (params.name == NULL)
+ 			params.name = "/dev/null";
+ 		read_ftoc(scgp, &params, FALSE);
+-	} else if (clone || edc_corr) {
++	} else if (clonetoc || edc_corr) {
+ 		if (!is_mmc(scgp, NULL, NULL))
+-			comerrno(EX_BAD, _("Unsupported device for clone mode.\n"));
++			comerrno(EX_BAD, _("Unsupported device for clonetoc mode.\n"));
+ 		if (!edc_corr)
+ 			noerror = TRUE;
+ 		if (retries == MAX_RETRY)
+@@ -904,7 +904,7 @@
+ 		if (params.name == NULL)
+ 			params.name = "/dev/null";
+ 
+-		if (clone)
++		if (clonetoc)
+ 		if (read_ftoc(scgp, &params, TRUE) < 0)
+ 			comerrno(EX_BAD, _("Read fulltoc problems.\n"));
+ 		readcd_disk(scgp, &params);

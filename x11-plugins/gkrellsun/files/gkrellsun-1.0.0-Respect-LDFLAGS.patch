@@ -1,0 +1,13 @@
+diff --git a/src20/Makefile b/src20/Makefile
+index 3e8e62c..ef96fa2 100644
+--- a/src20/Makefile
++++ b/src20/Makefile
+@@ -16,6 +16,8 @@ FLAGS = -O2 -Wall -fPIC $(GTK_INCLUDE)
+ LIBS = $(GTK_LIB)
+ LFLAGS = -shared
+ 
++LFLAGS += $(LDFLAGS)
++
+ ifeq ($(enable_nls),1)
+ 	FLAGS += -DENABLE_NLS -DLOCALEDIR=\"$(LOCALEDIR)\"
+ 	export enable_nls

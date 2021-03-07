@@ -1,0 +1,42 @@
+--- a/configure.in
++++ b/configure.in
+@@ -153,10 +153,8 @@
+ dnl libnet_init_packet only available in < libnet-1.1.x
+ dnl AC_CHECK_LIB(net, libnet_init_packet,, AC_MSG_ERROR(We need libnet.
+ dnl Get libnet from http://www.packetfactory.net or try --with-[[libs,includes]]=DIR))
+-AC_CHECK_LIB(net, libnet_init_packet, [NET=yes], [NET=no])
++AC_CHECK_LIB(net-1.0, libnet_init_packet, [NET=yes], [NET=no])
+ if test x"$NET" = x"no" -o x"$DIST" = x"yes"; then
+-	AC_CONFIG_SUBDIRS(Libnet-1.0.2a)
+-	THCRUT_SUBDIRS="$THCRUT_SUBDIRS Libnet-1.0.2a"
+ 	CPPFLAGS="-I../Libnet-1.0.2a/include ${CPPFLAGS}"
+ 	LDFLAGS="-L../Libnet-1.0.2a/src ${LDFLAGS}"
+ 	PRG_LIBNET_CONFIG_CFLAGS="../Libnet-1.0.2a/libnet-config --cflags --defines | tr '\n' ' '"
+@@ -164,14 +162,12 @@
+ 	dnl CFLAGS="`${srcdir}/Libnet-1.0.2a/libnet-config --cflags --defines | tr '\n' ' '` $CFLAGS"
+ 	dnl LIBS="`${srcdir}/Libnet-1.0.2a/libnet-config --libs` $LIBS"
+ else
+-	CFLAGS="`libnet-config --cflags --defines | tr '\n' ' '` $CFLAGS"
+-	LIBS="`libnet-config --libs` $LIBS"
++	CFLAGS="`libnet-1.0-config --cflags --defines | tr '\n' ' '` $CFLAGS"
++	LIBS="`libnet-1.0-config --libs` $LIBS"
+ fi
+ 
+ AC_CHECK_LIB(pcre, pcre_compile, [PCRE=yes], [PCRE=no])
+ if test x"$PCRE" = x"no" -o x"$DIST" = x"yes"; then
+-	AC_CONFIG_SUBDIRS(pcre-3.9)
+-	THCRUT_SUBDIRS="$THCRUT_SUBDIRS pcre-3.9"
+ 	CPPFLAGS="-I../pcre-3.9 ${CPPFLAGS}"
+ 	LDFLAGS="-L../pcre-3.9 ${LDFLAGS}"
+ 	PRG_PCRE_CONFIG_CFLAGS="../pcre-3.9/pcre-config --cflags"
+@@ -199,8 +195,8 @@
+ AC_OUTPUT(Makefile src/Makefile)
+ 
+ dnl Just to show the correct values...
+-CFLAGS="`${srcdir}/pcre-3.9/pcre-config --cflags` `${srcdir}/Libnet-1.0.2a/libnet-config --cflags --defines | tr '\n' ' '` $CFLAGS"
+-LIBS="`${srcdir}/pcre-3.9/pcre-config --libs` `${srcdir}/Libnet-1.0.2a/libnet-config --libs` $LIBS"
++CFLAGS="`${srcdir}/pcre-3.9/pcre-config --cflags` `libnet-config --cflags --defines | tr '\n' ' '` $CFLAGS"
++LIBS="`${srcdir}/pcre-3.9/pcre-config --libs` `libnet-config --libs` $LIBS"
+ 
+ echo "THCrut has been configured with the following options:"
+ echo "                 User binaries: $B"

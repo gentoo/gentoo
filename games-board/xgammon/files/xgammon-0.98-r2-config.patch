@@ -1,0 +1,26 @@
+diff --git a/Imakefile b/Imakefile
+index 332deee..1c43ff5 100644
+--- a/Imakefile
++++ b/Imakefile
+@@ -12,9 +12,9 @@ SRCS = allow.c      drawing.c    load.c    rollout.c  \
+ 
+ ComplexProgramTarget(xgammon)
+ InstallAppDefaults(XGammon)
+-MakeDirectories(install, $(LIBDIR)/xgammon)
+-InstallNonExec(lib/xgammon.db, $(LIBDIR)/xgammon)
+-MANSUFFIX = 6
++MakeDirectories(install,$(LIBDIR)/xgammon)
++InstallNonExec(lib/xgammon.db,$(LIBDIR)/xgammon)
++MANSUFFIX = 1
+ 
+ xgammon.o:      xgammon.c
+ 	$(CC) $(CFLAGS) -DDATABASE=\"$(LIBDIR)/xgammon/xgammon.db\" -c xgammon.c
+@@ -35,7 +35,7 @@ lib/xgammon.db:
+ 	@echo "Database complete"
+ 
+ XGammon.ad:     xgammon.ad
+-	$(LN) xgammon.ad XGammon.ad
++	sed -e "s:lib/xgammon.db:$(LIBDIR)/xgammon/xgammon.db:" xgammon.ad >XGammon.ad
+ 
+ xgammon.man:    xgammon.6
+ 	$(LN) xgammon.6 xgammon.man

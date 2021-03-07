@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>junghans@gentoo.org</email>
+		<name>Christoph Junghans</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>sci-chemistry@gentoo.org</email>
+		<name>Gentoo Chemistry Project</name>
+	</maintainer>
+	<use>
+		<flag name="gromacs">Add support for gromacs file formats through <pkg>sci-chemistry/gromacs</pkg></flag>
+		<flag name="extras">Pull in extra applications from <pkg>sci-chemistry/votca-csgapps</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">votca/csg</remote-id>
+	</upstream>
+</pkgmetadata>

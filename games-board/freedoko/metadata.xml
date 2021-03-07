@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>games@gentoo.org</email>
+    <name>Gentoo Games Project</name>
+  </maintainer>
+  <use>
+    <flag name="kdecards">Install the KDE card set</flag>
+    <flag name="net">Enable network game support</flag>
+    <flag name="pysolcards">Install the PySol card set</flag>
+    <flag name="xskatcards">Install the XSkat card set</flag>
+    <flag name="gnomecards">Install the gnome-games card set</flag>
+    <flag name="openclipartcards">Install the openclipartcards card set</flag>
+    <flag name="backgrounds">Install additional background images</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">free-doko</remote-id>
+  </upstream>
+</pkgmetadata>

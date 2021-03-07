@@ -1,0 +1,124 @@
+From a3117d0b6a9e79f11e69362c42205bc548f6c754 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Fri, 13 Oct 2017 09:43:01 +1300
+Subject: Rework test suite to be useful
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=31547
+---
+ MANIFEST  |  2 +-
+ t/basic.t | 23 +++++++++++++++++++++++
+ test.pl   | 60 ------------------------------------------------------------
+ 3 files changed, 24 insertions(+), 61 deletions(-)
+ create mode 100644 t/basic.t
+ delete mode 100644 test.pl
+
+diff --git a/MANIFEST b/MANIFEST
+index d15c4ab..b713e9a 100644
+--- a/MANIFEST
++++ b/MANIFEST
+@@ -5,6 +5,6 @@ Mix.c
+ Mix.h
+ Mixer.pm
+ Mixer.xs
+-test.pl
++t/basic.t
+ eg/volume.pl
+ README
+diff --git a/t/basic.t b/t/basic.t
+new file mode 100644
+index 0000000..53448d2
+--- /dev/null
++++ b/t/basic.t
+@@ -0,0 +1,23 @@
++use strict;
++use warnings;
++
++use Test::More tests => 7;
++
++require_ok("Audio::Mixer");
++
++is( Audio::Mixer::init_mixer(), 0, "Initialize Mixer" );
++
++my ( @old ) = Audio::Mixer::get_cval('vol');
++cmp_ok( scalar @old, ">", 0 , "Got existing volume levels");
++
++Audio::Mixer::set_cval('vol', 50);
++my ( @new ) = Audio::Mixer::get_cval('vol');
++is( $new[0], 50, "Set left channel to 50");
++is( $new[1], 50, "Set right channel to 50");
++
++Audio::Mixer::set_cval('vol', $old[0], $old[1]);
++my ( @final ) = Audio::Mixer::get_cval('vol');
++is( $final[0], $old[0], "Restored left channel");
++is( $final[1], $old[1], "Restored right channel");
++
++done_testing;
+diff --git a/test.pl b/test.pl
+deleted file mode 100644
+index af1f214..0000000
+--- a/test.pl
++++ /dev/null
+@@ -1,60 +0,0 @@
+-# Before `make install' is performed this script should be runnable with
+-# `make test'. After `make install' it should work as `perl test.pl'
+-
+-######################### We start with some black magic to print on failure.
+-
+-# Change 1..1 below to 1..last_test_to_print .
+-# (It may become useful if the test is moved to ./t subdirectory.)
+-
+-BEGIN { $| = 1; print "1..1\n"; }
+-END {print "not ok 1\n" unless $loaded;}
+-use Audio::Mixer;
+-$loaded = 1;
+-print "ok 1\n";
+-
+-######################### End of black magic.
+-
+-# Insert your test code below (better if it prints "ok 13"
+-# (correspondingly "not ok 13") depending on the success of chunk 13
+-# of the test code):
+-
+-print STDERR "Opening mixer...  ";
+-$ret = Audio::Mixer::init_mixer();
+-print STDERR $ret ? "FAILED.\n" : "Ok.\n";
+-
+-print STDERR "Getting the volume... ";
+-my @old = Audio::Mixer::get_cval('vol');
+-print STDERR join(', ', @old)." Ok.\nSetting to 50... ";
+-Audio::Mixer::set_cval('vol', 50);
+-my @ret = Audio::Mixer::get_cval('vol');
+-print STDERR ($ret[0] == 50 && $ret[1] == 50) ? "Ok.\nResetting back... " :
+-    "FAILED.\nTrying to reset back... ";
+-Audio::Mixer::set_cval('vol', $old[0], $old[1]);
+-@ret = Audio::Mixer::get_cval('vol');
+-print STDERR ($ret[0] == $old[0] && $ret[1] == $old[1]) ?
+-    "Ok.\n" : "FAILED.\n";
+-
+-#my $ret = Mixer::get_cval('vol');
+-#printf "get_cval() vol=0x%x\n", $ret;
+-
+-#$ret = Mixer::set_cval('vol', 50);
+-#print "set_cval returns $ret\n";
+-
+-#@ret = Mixer::get_cval('vol');
+-#print "get_cval() vol=".join(', ', @ret)."\n";
+-#$ret = Mixer::get_cval('vol');
+-#printf "get_cval() vol=0x%x\n", $ret;
+-
+-
+-#$ret = Mixer::get_param_val('vol');
+-#printf "get_param_val() vol=0x%x\n", $ret;
+-
+-#$ret = Mixer::set_param_val('vol', 20, 50);
+-#print "set_param_val returns $ret\n";
+-
+-#$ret = Mixer::get_param_val('vol');
+-#printf "get_param_val() vol=0x%x\n", $ret;
+-
+-#@ret = Mixer::get_mixer_params();
+-#print "== ".join(',', @ret)." ==\n";
+-
+-- 
+2.14.2
+

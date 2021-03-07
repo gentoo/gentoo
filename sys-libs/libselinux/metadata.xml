@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>selinux@gentoo.org</email>
+		<name>SELinux Team</name>
+	</maintainer>
+	<longdescription>
+		Libselinux provides an API for SELinux applications to get and set
+		process and file security contexts and to obtain security policy
+		decisions.  Required for any applications that use the SELinux API.
+	</longdescription>
+	<use>
+		<flag name="pcre2">Use <pkg>dev-libs/libpcre2</pkg> for fcontext regexes</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:selinuxproject:libselinux</remote-id>
+		<remote-id type="github">SELinuxProject/selinux</remote-id>
+	</upstream>
+</pkgmetadata>

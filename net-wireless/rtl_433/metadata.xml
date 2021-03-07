@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>radio@gentoo.org</email>
+    <name>Radio</name>
+  </maintainer>
+  <use>
+    <flag name="rtlsdr">Build with Realtek RTL2832U (rtlsdr) support</flag>
+    <flag name="soapysdr">Build with SoapySDR support</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">merbanan/rtl_433</remote-id>
+  </upstream>
+</pkgmetadata>

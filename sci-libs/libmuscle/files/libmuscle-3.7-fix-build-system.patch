@@ -1,0 +1,21 @@
+* Make build system parallel buildable
+* Remove -funroll-loops and friends
+
+--- a/libMUSCLE/Makefile.am
++++ b/libMUSCLE/Makefile.am
+@@ -1,6 +1,4 @@
+-OPTIMIZATION = -O2 -Wall -funroll-loops -fomit-frame-pointer -ftree-vectorize -funsafe-math-optimizations
+-AM_CXXFLAGS = $(OPTIMIZATION) -DNDEBUG=1 @OPENMP_CXXFLAGS@
+-AM_LDFLAGS = $(OPTIMIZATION)
++AM_CXXFLAGS = -DNDEBUG=1 @OPENMP_CXXFLAGS@
+ 
+ LIBMUSCLE_H = \
+ alpha.h cluster.h clust.h clustsetdf.h clustset.h clustsetmsa.h diaglist.h distcalc.h distfunc.h dpregionlist.h dpreglist.h edgelist.h enumopts.h enums.h estring.h gapscoredimer.h gonnet.h intmath.h msadist.h msa.h muscle.h objscore.h params.h profile.h pwpath.h refine.h scorehistory.h seq.h seqvect.h textfile.h timing.h tree.h types.h unixio.h threadstorage.h 
+@@ -36,6 +34,6 @@
+ 
+ 
+ muscle_SOURCES = main.cpp
+-muscle_LDADD = $(top_builddir)/libMUSCLE/libMUSCLE-3.7.la
++muscle_LDADD = libMUSCLE-3.7.la
+ 
+ 

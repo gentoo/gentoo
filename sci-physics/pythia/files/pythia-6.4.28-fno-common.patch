@@ -1,0 +1,54 @@
+https://bugs.gentoo.org/766306
+--- a/pythia6_common_address.c
++++ b/pythia6_common_address.c
+@@ -48,28 +48,28 @@
+ # define pybins PYBINS
+ #endif
+ 
+-int pyjets[2+5*4000+2*2*5*4000];
+-int pydat1[200+2*200+200+2*200];
+-int pydat2[4*500+2*4*500+2*2000+2*4*4];
+-int pydat3[3*500+2*8000+2*8000+5*8000];  /* KNDCAY=8000 */
+-char pydat4[2*500*16];
+-int pydatr[6+2*100];
+-int pysubs[2+500+81*2+2*200];
+-int pypars[200+2*200+200+2*200];
+-int pyint1[400+2*400];
+-int pyint2[500+2*500+2*20*500+2*4*40];
+-int pyint3[2*81*2+3*1000+2*1000];
+-int pyint4[500+2*5*500];
+-int pyint5[1+3*501+2*3*501];
+-char pyint6[501*28];
+-int pyint7[2*6*7*7];
+-int pyint8[2*5*13];
+-int pyint9[2*4*13];
+-int pyuppr[1+7*20+1+2*10+2*5*20+2*11]; /* PYUPPR DOES NOT EXIST IN PYTHIA6 AT ALL!!! */
+-int pymssm[100+2*100];
+-int pyssmt[2*4*4+2*2*2+2*2*2+2*4+2*2+2*4*16+2*4*4+2*2*2+2*2*2];
+-int pyints[2*20];
+-int pybins[4+1000+2*20000];
++extern int pyjets[2+5*4000+2*2*5*4000];
++extern int pydat1[200+2*200+200+2*200];
++extern int pydat2[4*500+2*4*500+2*2000+2*4*4];
++extern int pydat3[3*500+2*8000+2*8000+5*8000];  /* KNDCAY=8000 */
++extern char pydat4[2*500*16];
++extern int pydatr[6+2*100];
++extern int pysubs[2+500+81*2+2*200];
++extern int pypars[200+2*200+200+2*200];
++extern int pyint1[400+2*400];
++extern int pyint2[500+2*500+2*20*500+2*4*40];
++extern int pyint3[2*81*2+3*1000+2*1000];
++extern int pyint4[500+2*5*500];
++extern int pyint5[1+3*501+2*3*501];
++extern char pyint6[501*28];
++extern int pyint7[2*6*7*7];
++extern int pyint8[2*5*13];
++extern int pyint9[2*4*13];
++extern int pyuppr[1+7*20+1+2*10+2*5*20+2*11]; /* PYUPPR DOES NOT EXIST IN PYTHIA6 AT ALL!!! */
++extern int pymssm[100+2*100];
++extern int pyssmt[2*4*4+2*2*2+2*2*2+2*4+2*2+2*4*16+2*4*4+2*2*2+2*2*2];
++extern int pyints[2*20];
++extern int pybins[4+1000+2*20000];
+ 
+ void *pythia6_common_address(const char* name) {
+    if      (!strcmp(name,"PYJETS")) return pyjets;

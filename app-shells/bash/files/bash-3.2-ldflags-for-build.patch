@@ -1,0 +1,37 @@
+http://bugs.gentoo.org/211947
+
+fix from Takashi YOSHII: dont use target ldflags for build apps
+
+--- bash/builtins/Makefile.in
++++ bash/builtins/Makefile.in
+@@ -63,7 +63,7 @@
+ 
+ LIBS = @LIBS@
+ LDFLAGS = @LDFLAGS@ $(LOCAL_LDFLAGS) $(CFLAGS)
+-LDFLAGS_FOR_BUILD = $(LDFLAGS)
++LDFLAGS_FOR_BUILD = @LDFLAGS_FOR_BUILD@ $(LOCAL_LDFLAGS) $(CFLAGS_FOR_BUILD)
+ LOCAL_LDFLAGS = @LOCAL_LDFLAGS@
+ #LIBS_FOR_BUILD = @LIBS_FOR_BUILD@
+ LIBS_FOR_BUILD = $(LIBS)
+--- bash/support/Makefile.in
++++ bash/support/Makefile.in
+@@ -58,7 +58,7 @@
+ 
+ LOCAL_LDFLAGS = @LOCAL_LDFLAGS@
+ LDFLAGS = @LDFLAGS@ $(LOCAL_LDFLAGS) $(CFLAGS)
+-LDFLAGS_FOR_BUILD = $(LDFLAGS)
++LDFLAGS_FOR_BUILD = @LDFLAGS_FOR_BUILD@ $(LOCAL_LDFLAGS) $(CFLAGS_FOR_BUILD)
+ 
+ INCLUDES = -I${BUILD_DIR} -I${topdir}
+ 
+--- bash/Makefile.in
++++ bash/Makefile.in
+@@ -143,7 +143,7 @@
+ CCFLAGS_FOR_BUILD = $(BASE_CCFLAGS) $(CPPFLAGS_FOR_BUILD) $(CFLAGS_FOR_BUILD)
+ 
+ LDFLAGS = @LDFLAGS@ $(STATIC_LD) $(LOCAL_LDFLAGS) $(PROFILE_FLAGS) $(CFLAGS)
+-LDFLAGS_FOR_BUILD = $(LDFLAGS)
++LDFLAGS_FOR_BUILD = @LDFLAGS_FOR_BUILD@ $(LOCAL_LDFLAGS) $(CFLAGS_FOR_BUILD)
+ 
+ INCLUDES = -I. @RL_INCLUDE@ -I$(srcdir) -I$(BASHINCDIR) -I$(LIBSRC) $(INTL_INC)
+ 

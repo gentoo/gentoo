@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locatingRules xmlns="http://thaiopensource.com/ns/locating-rules/1.0">
+  <!-- As far as I can see there is no way to apply more than one to
+       search for a file, so we're going to use some very generic
+       locating rules… yes it's bad, but upstream libvirt doesn't
+       intend to change that anytime soon.
+  -->
+
+  <documentElement localName="domain" uri="domain.rnc" />
+  <documentElement localName="pool" uri="storagepool.rnc" />
+  <documentElement localName="network" uri="network.rnc" />
+</locatingRules>

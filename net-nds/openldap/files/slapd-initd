@@ -1,0 +1,29 @@
+#!/sbin/openrc-run
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net.lo
+	before hald avahi-daemon
+}
+
+start() {
+        checkpath -q -d /var/run/openldap/ -o ldap:ldap 
+        if ! checkconfig ; then
+                eerror "There is a problem with your slapd.conf!"
+                return 1
+        fi
+	ebegin "Starting ldap-server"
+	eval start-stop-daemon --start --pidfile /var/run/openldap/slapd.pid --exec /usr/lib/openldap/slapd -- -u ldap -g ldap "${OPTS}"
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ldap-server"
+	start-stop-daemon --stop --signal 2 --quiet --pidfile /var/run/openldap/slapd.pid 
+	eend $?
+}
+
+checkconfig() {                                                                                                                                                                                                                              
+        /usr/sbin/slaptest -u "$@" ${OPTS_CONF}                                                                                                                                                                                              
+}

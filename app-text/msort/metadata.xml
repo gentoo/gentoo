@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		Msort is a program for sorting files in sophisticated ways.
+		It was originally developed for alphabetizing dictionaries of "exotic" languages
+		in formats like those used by Shoebox and Toolbox, for which it has been extensively used,
+		but is useful for many other purposes.
+		Msort differs from typical sort utilities in providing greater flexibility in parsing
+		the input into records and identifying key fields and greater control over the sort order.
+	</longdescription>
+	<use>
+		<flag name="heap">Use heap instead of alloca()</flag>
+		<flag name="icu">Use <pkg>dev-libs/icu</pkg> instead of <pkg>dev-libs/libutf8proc</pkg>.</flag>
+		<flag name="libuninum">Use <pkg>dev-libs/libuninum</pkg> for conversion.</flag>
+	</use>
+</pkgmetadata>

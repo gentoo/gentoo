@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <!-- maintainer-needed -->
+  <longdescription>
+The purpose of disktype is to detect the content format of a disk or disk image. It knows about common file systems, 
+partition tables, and boot codes.
+
+As of version 7, disktype knows about the following formats. For more detailed information, please see the 
+documentation. 
+
+File systems: 
+
+FAT12/FAT16/FAT32
+NTFS
+HPFS
+MFS, HFS, HFS Plus
+ISO9660
+UDF
+ext2/ext3
+Minix
+ReiserFS
+Linux romfs
+Linux cramfs
+Linux squashfs
+UFS (some variations)
+SysV FS (some variations)
+JFS
+XFS
+Amiga FS/FFS
+BeOS BFS
+QNX4 FS
+3DO CD-ROM FS
+Veritas VxFS
+     
+
+ Partitioning: 
+
+DOS/PC style
+Apple
+Amiga "Rigid Disk"
+ATARI ST (AHDI3)
+BSD disklabel
+Linux RAID physical disks
+Linux LVM physical volumes
+Solaris SPARC disklabel
+Solaris x86 disklabel (vtoc)
+
+ Other structures: 
+
+Debian split floppy header
+Linux swap
+
+ Disk images: 
+
+Raw CD image (.bin)
+Virtual PC hard disk image
+Apple UDIF disk image (limited)
+     
+
+ Boot codes: 
+
+LILO
+GRUB
+SYSLINUX
+ISOLINUX
+Linux kernel
+FreeBSD loader
+Sega Dreamcast (?)
+
+ Compression formats: 
+
+gzip
+compress
+bzip2
+
+ Archive formats: 
+
+tar
+cpio
+bar
+dump/restore
+
+</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">disktype</remote-id>
+  </upstream>
+</pkgmetadata>

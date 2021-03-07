@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>kurt@kmk-computers.de</email>
+    <name>Kurt Kanzenbach</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription>
+    LibGeoDecomp (Library for Geometric Decomposition codes) is an
+    auto-parallelizing library for computer simulations. It is specifically
+    targeted computational science applications in the context of supercomputers
+    and heterogeneous systems. The library eases development of such tightly
+    coupled codes by essentially taking over the parallel programming: it
+    handles both, the parallelization itself and parameter tuning. This enables
+    scientists to focus on their simulation code, rather than the technical
+    details of the parallel computer.
+  </longdescription>
+  <use>
+    <flag name="cuda">
+      Enables plugins for NVIDIA GPUs
+    </flag>
+    <flag name="opencl">
+      Enables OpenCL backend
+    </flag>
+    <flag name="opencv">
+      Enables OpenCV related code
+    </flag>
+    <flag name="silo">
+      Enables SILO related code
+    </flag>
+    <flag name="hpx">
+      Enables HPX backend
+    </flag>
+  </use>
+</pkgmetadata>

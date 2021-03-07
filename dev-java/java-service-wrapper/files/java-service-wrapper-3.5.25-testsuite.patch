@@ -1,0 +1,12 @@
+diff -u -r wrapper_3.5.25_src.orig/src/c/Makefile-linux-x86-64.make wrapper_3.5.25_src/src/c/Makefile-linux-x86-64.make
+--- wrapper_3.5.25_src.orig/src/c/Makefile-linux-x86-64.make	2014-09-06 00:06:05.730644375 +0200
++++ wrapper_3.5.25_src/src/c/Makefile-linux-x86-64.make	2014-09-06 00:06:51.130013387 +0200
+@@ -23,7 +23,7 @@
+ LIB = ../../lib
+ TEST = ../../test
+ 
+-all: init wrapper libwrapper.so testsuite
++all: init wrapper libwrapper.so
+ 
+ clean:
+ 	rm -f *.o

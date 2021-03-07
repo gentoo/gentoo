@@ -1,0 +1,76 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+extra_commands="reload"
+
+[[ -f /etc/conf.d/slurm ]] && . /etc/conf.d/slurm
+
+depend() {
+	local _need
+	[[ ${SLURM_USE_MUNGE} -ne 0 ]] && _need="${_need} munged"
+	[[ ${SLURM_USE_YPBIND} -ne 0 ]] && _need="${_need} ypbind"
+	after logger slurmdbd
+	need ${_need}
+}
+
+create_folder_and_set_permission() {
+    folder=${1}
+    # Fix permissions (/tmp is wiped at boot)
+    if [[ "${folder}" == "/tmp" ]]; then
+        eerror "SLURM: folder == ${folder} == /tmp"
+        exit
+    fi
+    if [[ "${folder}" == "/var/tmp" ]]; then
+        eerror "SLURM: folder == ${folder} == /var/tmp"
+        exit
+    fi
+    checkpath -d -o slurm:slurm "${folder}"
+}
+
+checkconfig() {
+	if [ ! -e "/etc/slurm/slurm.conf" ]; then
+		eerror "Missing config /etc/slurm/slurm.conf"
+		eerror "Customize sample one or generate new by configurator.html"
+		eerror "in slurm doc directory"
+		return 1
+	fi
+
+	# Make sure folders exists
+	. /etc/slurm/slurm.conf
+	folders=(
+		${SlurmdSpoolDir}
+		$(dirname ${SlurmctldLogFile})
+		$(dirname ${SlurmctldPidFile})
+		$(dirname ${SlurmdLogFile})
+		$(dirname ${SlurmdPidFile})
+		${SlurmdSpoolDir}
+		${StateSaveLocation}
+	)
+	for folder in ${folders[@]}; do
+		create_folder_and_set_permission "${folder}"
+	done
+}
+
+start() {
+	ebegin "Starting slurm control daemon"
+	checkconfig
+	start-stop-daemon --start --quiet --background \
+		--pidfile /run/slurm/slurmctld.pid \
+		--user slurm \
+		--group slurm \
+		--exec /usr/sbin/slurmctld -- ${SLURMCTLD_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping slurm control daemon"
+	start-stop-daemon --stop --pidfile /run/slurm/slurmctld.pid
+	eend $?
+}
+
+reload() {
+	ebegin "Reloading slurm daemon configuration"
+	start-stop-daemon --signal HUP --pidfile /run/slurm/slurmctld.pid
+	eend $?
+}

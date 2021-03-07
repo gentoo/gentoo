@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<longdescription>
+		YaKuake is Yet Another Kuake terminal emulator. It drops down on a configurable
+		key press (defaults to F12) with a konsole window, supports multiple tabs,
+		tabs, multiple screens and mouse wheel tab navigation amongst other features.
+	</longdescription>
+	<use>
+		<flag name="absolute-position">Use <pkg>kde-frameworks/kwayland</pkg> for absolute window positioning in KWin</flag>
+	</use>
+</pkgmetadata>

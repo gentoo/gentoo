@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>rich0@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="hamlib">Enables support by the Hamlib amateur radio rig control library</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">wb2osz/direwolf</remote-id>
+	</upstream>
+</pkgmetadata>

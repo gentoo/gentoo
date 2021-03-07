@@ -1,0 +1,13 @@
+diff --git a/cmake/modules/Distutils.cmake b/cmake/modules/Distutils.cmake
+index 5697dff85f..7fdcfe4112 100644
+--- a/cmake/modules/Distutils.cmake
++++ b/cmake/modules/Distutils.cmake
+@@ -61,7 +61,7 @@ function(distutils_add_cython_module name src)
+     CC="${PY_CC}"
+     CXX="${PY_CXX}"
+     LDSHARED="${PY_LDSHARED}"
+-    OPT=\"-DNDEBUG -g -fwrapv -O2 -w\"
++    OPT=\"-DNDEBUG -g -fwrapv -w\"
+     LDFLAGS=-L${CMAKE_LIBRARY_OUTPUT_DIRECTORY}
+     CYTHON_BUILD_DIR=${CMAKE_CURRENT_BINARY_DIR}
+     CEPH_LIBDIR=${CMAKE_LIBRARY_OUTPUT_DIRECTORY}

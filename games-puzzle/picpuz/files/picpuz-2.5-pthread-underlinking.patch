@@ -1,0 +1,18 @@
+Fix underlinking on recent binutils:
+
+> x86_64-pc-linux-gnu-g++ -Wl,-O1 -Wl,--as-needed -Wl,--hash-style=gnu picpuz.o zfuncs.o `pkg-config --libs gtk+-3.0` -o picpuz
+> /usr/lib/gcc/x86_64-pc-linux-gnu/4.8.2/../../../../x86_64-pc-linux-gnu/bin/ld: zfuncs.o: undefined reference to symbol 'pthread_create@@GLIBC_2.2.5'
+> /lib64/libpthread.so.0: error adding symbols: DSO missing from command line
+diff --git a/Makefile b/Makefile
+index 28638de..700b610 100644
+--- a/Makefile
++++ b/Makefile
+@@ -19,7 +19,7 @@ MANDIR = $(PREFIX)/share/man/man1
+ MENUFILE = $(PREFIX)/share/applications/kornelix-$(PROGRAM).desktop
+ 
+ CXXFLAGS += -c `pkg-config --cflags gtk+-3.0`
+-LIBS = `pkg-config --libs gtk+-3.0`
++LIBS = -pthread `pkg-config --libs gtk+-3.0`
+ 
+ $(PROGRAM): $(PROGRAM).o zfuncs.o
+ 	$(CXX) $(LDFLAGS) $(PROGRAM).o zfuncs.o $(LIBS) -o $(PROGRAM)

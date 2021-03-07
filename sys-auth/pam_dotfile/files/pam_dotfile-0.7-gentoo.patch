@@ -1,0 +1,157 @@
+diff --git a/configure.ac b/configure.ac
+index 4730bdf..b8d8747 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -44,16 +44,26 @@ CFLAGS="$CFLAGS -L/lib"
+ # Checks for libraries.
+ AC_CHECK_HEADER([security/pam_modules.h],, [AC_MSG_ERROR([*** Sorry, you have to install the PAM development files ***])])
+ 
+-LIBS="$LIBS -ldl -lpam -lpam_misc"
+-
+-case "$host" in
+-  *-*-linux*)
+-    PAM_MODDIR="/lib/security"
+-    ;;
+-  *)
+-    PAM_MODDIR="/usr/lib"
+-    ;;
+-esac
++AC_CHECK_HEADERS([security/_pam_macros.h security/pam_misc.h security/openpam.h])
++
++AC_CHECK_LIB([pam], [pam_start])
++AC_CHECK_LIB([pam_misc], [misc_conv])
++
++AC_ARG_WITH([pammoddir],
++	AC_HELP_STRING([--with-pammoddir], [Install module in specified directory]),
++	[
++		PAM_MODDIR=$withval
++	], [
++		case "$host" in
++			*-*-linux*)
++				PAM_MODDIR="/lib/security"
++				;;
++			*)
++				PAM_MODDIR="/usr/lib"
++				;;
++		esac
++	])
++
+ AC_SUBST(PAM_MODDIR)
+ 
+ # Checks for header files.
+@@ -64,7 +74,7 @@ AC_FUNC_LSTAT
+ AC_FUNC_LSTAT_FOLLOWS_SLASHED_SYMLINK
+ AC_FUNC_VPRINTF
+ 
+-AC_CHECK_HEADERS([fcntl.h limits.h syslog.h termios.h])
++AC_CHECK_HEADERS([fcntl.h limits.h syslog.h termios.h sys/types.h])
+ AC_HEADER_STDC
+ AC_HEADER_SYS_WAIT
+ 
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 2905b7c..e7e47d2 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -22,7 +22,7 @@ moduledir = @PAM_MODDIR@
+ module_LTLIBRARIES = pam_dotfile.la
+ 
+ pam_dotfile_la_SOURCES = pam_dotfile.c md5.c md5util.c md5.h md5util.h log.c log.h common.c common.h
+-pam_dotfile_la_LDFLAGS = -module -avoid-version
++pam_dotfile_la_LDFLAGS = -module -avoid-version -export-symbols-regex '^pam_'
+ pam_dotfile_la_CFLAGS = $(AM_CFLAGS)
+ 
+ sbin_PROGRAMS = pam-dotfile-helper
+diff --git a/src/common.h b/src/common.h
+index ef34cf3..6a57116 100644
+--- a/src/common.h
++++ b/src/common.h
+@@ -21,7 +21,10 @@
+ ***/
+ 
+ #include <security/pam_modules.h>
+-#include <security/_pam_macros.h>
++#include <security/pam_appl.h>
++#ifdef HAVE_SECURITY__PAM_MACROS_H
++#  include <security/_pam_macros.h>
++#endif
+ 
+ typedef struct context {
+     int opt_debug;
+diff --git a/src/pam-dotfile-helper.c b/src/pam-dotfile-helper.c
+index 04c73de..1c09b18 100644
+--- a/src/pam-dotfile-helper.c
++++ b/src/pam-dotfile-helper.c
+@@ -23,6 +23,14 @@
+ #include <signal.h>
+ #include <pwd.h>
+ 
++#ifdef HAVE_CONFIG_H
++#  include <config.h>
++#endif
++
++#ifdef HAVE_SYS_TYPES_H
++#  include <sys/types.h>
++#endif
++
+ #include "common.h"
+ #include "log.h"
+ 
+diff --git a/src/pam_dotfile.c b/src/pam_dotfile.c
+index 405f494..183aafd 100644
+--- a/src/pam_dotfile.c
++++ b/src/pam_dotfile.c
+@@ -29,11 +29,19 @@
+ #include <sys/types.h>
+ #include <sys/wait.h>
+ #include <fcntl.h>
++#include <stdlib.h>
+ 
+ #define PAM_SM_AUTH
+ 
+ #include <security/pam_modules.h>
+-#include <security/_pam_macros.h>
++#include <security/pam_appl.h>
++#ifdef HAVE_SECURITY__PAM_MACROS_H
++#  include <security/_pam_macros.h>
++#endif
++
++#ifndef x_strdup
++#  define x_strdup(s)  ( (s) ? strdup(s):NULL )
++#endif
+ 
+ #include "md5.h"
+ #include "md5util.h"
+diff --git a/src/pamtest.c b/src/pamtest.c
+index 171e601..6583de1 100644
+--- a/src/pamtest.c
++++ b/src/pamtest.c
+@@ -19,11 +19,28 @@
+ 
+ #include <stdio.h>
+ 
++#ifdef HAVE_CONFIG_H
++#  include <config.h>
++#endif
++
+ #include <security/pam_appl.h>
+-#include <security/pam_misc.h>
++
++#ifdef HAVE_SECURITY_PAM_MISC_H
++#  include <security/pam_misc.h>
++#endif
++
++#ifdef HAVE_SECURITY_OPENPAM_H
++#  include <security/openpam.h>
++#endif
+ 
+ int main(int argc, char*argv[]) {
++#ifdef HAVE_LIBPAM_MISC
+     static struct pam_conv pc = { misc_conv, NULL };
++#elif defined(_OPENPAM)
++    static struct pam_conv pc = { openpam_nullconv, NULL };
++#else
++    static struct pam_conv pc = { NULL };
++#endif
+     pam_handle_t *ph = NULL;
+     int r, ret;
+     char *username, *procname, *service;

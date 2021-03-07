@@ -1,0 +1,96 @@
+.TH fsck_ext2fs 8 2006-07-02 "Matthias Andree" "FreeBSD Ports"
+.\"
+.\" fsck_ext2fs.8 - manual page for fsck_ext2fs wrapper
+.\"
+.\" (C) Copyright 2006 by Matthias Andree <matthias.andree@gmx.de>
+.\"
+.\" License: This file may be redistributed in accordance with the terms
+.\" of the GNU General Public License v2.
+.\"
+.\" Upstream $Id: fsck_ext2fs.8,v 1.3 2006/07/02 11:45:21 emma Exp $
+.\" $FreeBSD: ports/sysutils/e2fsprogs/files/fsck_ext2fs.8,v 1.1 2006/07/04 15:47:51 leeym Exp $
+.\"
+.SH NAME
+.B fsck_ext2fs
+\- compatibility wrapper for e2fsck
+.SH SYNOPSIS
+.P
+.B fsck_ext2fs
+[\fB\-Fpfnyv\fR] [\fB\-b\fR \fIblock\fR]
+.SH DESCRIPTION
+.P
+\fBfsck_ext2fs\fR maps the traditional FreeBSD \fBfsck_ffs\fR options to
+options with the same functionality for \fBe2fsck,\fR runs \fBe2fsck\fR
+and then maps its exit status to values that FreeBSD understands.
+\fBe2fsck\fR is a utility to check and repair ext2 and ext3 file
+systems.
+
+.SH OPTIONS
+.IP \fB\-F\fR
+(check foreground mode required) Immediately exits with status 1 to tell
+\fBfsck\fR that ext2fs cannot be checked in the background. \fBfsck\fR
+usually runs \fBfsck_*\fR programs twice, first with \fB\-F\fR to find
+out if they can do background checking, then either immediately without
+\fB\-F\fR for foreground checking or deferred in the background with
+\fB\-B\fR.
+.IP \fB\-p\fR
+(preen mode) This option suppresses adding the \fB\-f\fR option (unless
+\fB\-f\fR is also given) and adds the \fB\-p\fR option to the
+\fBe2fsck\fR command line. This causes \fBe2fsck\fR to automatically fix
+any filesystem problems that can safely be fixed without operator
+intervention. Without this option given, \fBe2fsck\fR will be run with
+the \fB\-f\fR option to force a check, since interactive scan and repair
+mode is the default on FreeBSD, but not on Linux where \fBe2fsck\fR
+comes from.
+.IP \fB\-f\fR
+(force check) This option forces the check of a clean file system while
+preening and is passed to \fBe2fsck\fR verbatim.
+.IP \fB\-n\fR
+("no" mode) This option causes the file system to be opened in read-only
+mode and assume "no" as answer to all questions. This is the only way to
+safely run \fBfsck\fR on a mounted ext2 or ext3 file system. This option
+is passed to \fBe2fsck\fR verbatim.
+.IP \fB\-y\fR
+("yes" mode) This option is passed verbatim to \fBe2fsck\fR and causes
+it to assume "yes" as answer to all questions. This allows the
+non-interactive use of e2fsck but is rather aggressive. Use with care.
+.IP \fB\-v\fR
+(verbose output) This option is passed verbatim to \fBe2fsck\fR and
+causes it to verbosely report its progress.
+.IP "\fB\-b\fR \fIblock\fR"
+(use alternate super block) This option is passed verbatim to
+\fBe2fsck\fR and selects an alternate super block, for use when the
+primary super block has been damaged. Please see the \fBe2fsck\fR(8)
+manual page for details.
+
+.SH EXIT STATUS
+If errors remain after \fBe2fsck\fR, an invalid option or too many
+options have been specified, \fBe2fsck\fR was killed with a signal or
+the \fIfork\fB system call failed, \fBfsck_ext2fs\fR exits with status
+EXIT_FAILURE (usually 1). If \fBe2fsck\fR cannot be started, exits with
+status 127. If the file system is clean after \fBe2fsck\fR operation,
+exits with status EXIT_SUCCESS (0).
+
+.SH NOTES
+.P
+This utility is merely meant as an adaptor so that \fBe2fsck\fR can be
+run during the boot process, it does not support all options that
+\fBe2fsck\fR offers. If you need one of its advanced options, please run
+\fBe2fsck\fR directly.
+
+.SH FILES
+.TP
+.I /sbin/e2fsck
+is the location of the \fBe2fsck\fR program to run.
+
+.SH AUTHOR
+.P
+Matthias Andree <matthias.andree@gmx.de> wrote the program and this
+manual page.
+.SH CONFORMING TO
+The FreeBSD 6.1 command line interface for \fBfsck_ufs\fR(8).
+.SH SEE ALSO
+.BR fsck (8),
+.BR e2fsck (8)
+and
+.BR fsck_ufs (8).

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-biology@gentoo.org</email>
+		<name>Gentoo Biology Project</name>
+	</maintainer>
+	<longdescription>
+		Amino acid indices and similarity matrices maintained at Kyoto
+		University. An amino acid index is a set of 20 numerical values
+		representing any of the different physicochemical and biological
+		properties of amino acids.  The AAindex1 section of the Amino Acid
+		Index Database is a collection of published indices together with the
+		result of cluster analysis using the correlation coefficient as the
+		distance between two indices.  This section currently contains 494
+		indices. Another important feature of amino acids that can be
+		represented numerically is the similarity between amino acids.  Thus, a
+		similarity matrix, also called a mutation matrix, is a set of 210
+		numerical values, 20 diagonal and 20x19/2 off-diagonal elements, used
+		for sequence alignments and similarity searches.  The AAindex2 section
+		of the Amino Acid Index Database is a collection of published amino
+		acid mutation matrices together with the result of cluster analysis.
+		This section currently contains 83 matrices.
+	</longdescription>
+</pkgmetadata>

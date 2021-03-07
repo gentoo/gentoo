@@ -1,0 +1,14 @@
+[Unit]
+Description=Shell In A Box daemon
+Documentation=man:shellinaboxd(1)
+After=network.target nss-lookup.target
+
+[Service]
+EnvironmentFile=/etc/conf.d/shellinaboxd
+WorkingDirectory=/usr/share/shellinabox-resources
+ExecStart=/usr/sbin/shellinaboxd ${SIAB_DISABLE_SSL} --port=${SIAB_HTTP_PORT} --user=${SIAB_USER} --group=${SIAB_GROUP} --service=${SIAB_SERVICE}
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+

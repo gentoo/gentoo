@@ -1,0 +1,114 @@
+ Makefile.am            | 2 +-
+ configure.ac           | 2 +-
+ libplot/Makefile.am    | 5 +++--
+ libplot/extern.h       | 4 ++--
+ libplotter/Makefile.am | 6 ++++--
+ 5 files changed, 11 insertions(+), 8 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index b506d17..09d3eda 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -22,7 +22,7 @@ endif
+ if NO_LIBXMI
+ ADD_LIBXMI =
+ else
+-ADD_LIBXMI = libxmi
++ADD_LIBXMI = 
+ endif
+ 
+ SUBDIRS = lib spline double ode ode-examples libplot $(ADD_LIBXMI) plot tek2plot plotfont graph hersheydemo $(ADD_LIBPLOTTER) include info doc fonts test
+diff --git a/configure.ac b/configure.ac
+index 8fb7b64..4ea0fc4 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -392,5 +392,5 @@ int main()
+   fi
+ fi
+ 
+-AC_CONFIG_FILES([Makefile double/Makefile graph/Makefile hersheydemo/Makefile pic2plot/Makefile pic2plot/doc/Makefile pic2plot/libgroff/Makefile pic2plot/include/Makefile info/Makefile lib/Makefile libplot/Makefile libplotter/Makefile libxmi/Makefile libxmi/info/Makefile plot/Makefile tek2plot/Makefile tek2plot/teksamples/Makefile plotfont/Makefile spline/Makefile ode/Makefile ode-examples/Makefile include/Makefile doc/Makefile fonts/Makefile fonts/bdf/Makefile fonts/pcf/Makefile fonts/pfb/Makefile test/Makefile])
++AC_CONFIG_FILES([Makefile double/Makefile graph/Makefile hersheydemo/Makefile pic2plot/Makefile pic2plot/doc/Makefile pic2plot/libgroff/Makefile pic2plot/include/Makefile info/Makefile lib/Makefile libplot/Makefile libplotter/Makefile plot/Makefile tek2plot/Makefile tek2plot/teksamples/Makefile plotfont/Makefile spline/Makefile ode/Makefile ode-examples/Makefile include/Makefile doc/Makefile fonts/Makefile fonts/bdf/Makefile fonts/pcf/Makefile fonts/pfb/Makefile test/Makefile])
+ AC_OUTPUT
+diff --git a/libplot/Makefile.am b/libplot/Makefile.am
+index 356cbef..a0cb2ff 100644
+--- a/libplot/Makefile.am
++++ b/libplot/Makefile.am
+@@ -8,7 +8,7 @@ libplot_la_LDFLAGS = -version-info 4:4:2
+ 
+ INCLUDES = $(X_CFLAGS) -I$(srcdir)/../include -DLIBPLOT
+ 
+-MISRC = mi_alloc.c mi_api.c mi_arc.c mi_canvas.c mi_fllarc.c mi_fllrct.c \
++_MISRC = mi_alloc.c mi_api.c mi_arc.c mi_canvas.c mi_fllarc.c mi_fllrct.c \
+ mi_fplycon.c mi_gc.c mi_ply.c mi_plycon.c mi_plygen.c mi_plypnt.c	 \
+ mi_plyutil.c mi_spans.c mi_widelin.c mi_zerarc.c mi_zerolin.c mi_version.c
+ 
+@@ -87,7 +87,7 @@ x_savestate.c x_text.c y_closepl.c y_defplot.c y_erase.c y_openpl.c
+ 
+ libplot_la_SOURCES = apinewc.c apioldc.c apioldcc.c $(ALLSRC)
+ 
+-MIHEADERS = xmi.h mi_api.h mi_arc.h mi_fllarc.h mi_fply.h mi_gc.h mi_line.h \
++_MIHEADERS = xmi.h mi_api.h mi_arc.h mi_fllarc.h mi_fply.h mi_gc.h mi_line.h \
+ mi_ply.h mi_scanfill.h mi_spans.h mi_widelin.h mi_zerarc.h
+ 
+ noinst_HEADERS = extern.h g_arc.h g_colorname.h g_control.h g_cntrlify.h \
+@@ -110,6 +110,7 @@ libplot_la_LIBADD = $(X_LIBS) $(X_TOOLKIT_LIBS) $(X_PRE_LIBS) $(X_BASIC_LIBS) $(
+ endif
+ endif
+ 
++libplot_la_LIBADD += -lxmi
+ 
+ ## execute the following command in ../libxmi to produce the commands
+ ## that follow
+diff --git a/libplot/extern.h b/libplot/extern.h
+index 39a6f8c..87a05f1 100644
+--- a/libplot/extern.h
++++ b/libplot/extern.h
+@@ -1262,7 +1262,7 @@ extern void _delete_color_name_cache (plColorNameCache *color_cache);
+    and a separate version of libxmi. */
+ 
+ /* libxmi API functions */
+-
++/*
+ #define miClearPaintedSet _pl_miClearPaintedSet
+ #define miCopyCanvas _pl_miCopyCanvas
+ #define miCopyGC _pl_miCopyGC
+@@ -1291,7 +1291,7 @@ extern void _delete_color_name_cache (plColorNameCache *color_cache);
+ #define miSetGCPixels _pl_miSetGCPixels
+ #define miSetPixelMerge2 _pl_miSetPixelMerge2
+ #define miSetPixelMerge3 _pl_miSetPixelMerge3
+-
++*/
+ /* an external libxmi symbol */
+ #define mi_libxmi_ver _pl_mi_libxmi_ver
+ 
+diff --git a/libplotter/Makefile.am b/libplotter/Makefile.am
+index 9b478d6..11466ad 100644
+--- a/libplotter/Makefile.am
++++ b/libplotter/Makefile.am
+@@ -6,7 +6,7 @@ libplotter_la_LDFLAGS = -version-info 4:4:2
+ 
+ INCLUDES = $(X_CFLAGS) -I$(srcdir)/../include -DLIBPLOT -DLIBPLOTTER
+ 
+-MISRC = mi_alloc.cc mi_api.cc mi_arc.cc mi_canvas.cc mi_fllarc.cc	\
++_MISRC = mi_alloc.cc mi_api.cc mi_arc.cc mi_canvas.cc mi_fllarc.cc	\
+ mi_fllrct.cc mi_fplycon.cc mi_gc.cc mi_ply.cc mi_plycon.cc mi_plygen.cc	\
+ mi_plypnt.cc mi_plyutil.cc mi_spans.cc mi_widelin.cc mi_zerarc.cc	\
+ mi_zerolin.cc mi_version.cc
+@@ -84,7 +84,7 @@ endif
+ endif
+ 
+ 
+-MIHEADERS = xmi.h mi_api.h mi_arc.h mi_fllarc.h mi_fply.h mi_gc.h mi_line.h \
++_MIHEADERS = xmi.h mi_api.h mi_arc.h mi_fllarc.h mi_fply.h mi_gc.h mi_line.h \
+ mi_ply.h mi_scanfill.h mi_spans.h mi_widelin.h mi_zerarc.h
+ 
+ ALLHEADERS = extern.h g_arc.h g_colorname.h g_control.h g_cntrlify.h \
+@@ -111,6 +111,8 @@ libplotter_la_LIBADD = $(X_LIBS) $(X_TOOLKIT_LIBS) $(X_PRE_LIBS) $(X_BASIC_LIBS)
+ endif
+ endif
+ 
++libplotter_la_LIBADD += -lxmi
++
+ ## execute the following command in ../libplot to produce the commands
+ ## that follow
+ ## (for i in ?_*.c; do echo "$i"c: "\$(top_srcdir)/libplot/$i"; echo "	rm -f $i"c" ; if \$(LN_S) \$(top_srcdir)/libplot/$i $i"c" ; then true ; else cp -p \$(top_srcdir)/libplot/$i $i"c" ; fi"; echo; done)

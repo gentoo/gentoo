@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>gstreamer@gentoo.org</email>
+	<name>GStreamer package maintainers</name>
+</maintainer>
+<use>
+	<flag name="gbm">Enable Graphics Buffer Manager based EGL windowing system support (requires egl and at least one of gles or opengl)</flag>
+	<flag name="egl">Enable EGL platform support</flag>
+	<flag name="gles2">Enable OpenGL library and plugin via GLESv2 API (requires egl)</flag>
+	<flag name="ivorbis">Enable integer based vorbis decoder</flag>
+	<flag name="opengl">Enable OpenGL library and plugin via desktop OpenGL API</flag>
+	<flag name="pango">Enable pango GStreamer plugin</flag>
+	<flag name="wayland">Enable Wayland EGL windowing system support (requires egl and at least one of gles2 or opengl)</flag>
+	<flag name="X">Enable ximagesink and xvimagesink plugins; build GLX platform support if USE=opengl is enabled; build x11 windowing system support if USE=egl is enabled</flag>
+</use>
+</pkgmetadata>

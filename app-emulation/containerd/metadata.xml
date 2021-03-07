@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		Containerd is a daemon with an API and a command line client, to manage
+		containers on one machine. It uses runC to run containers according to
+		the OCI specification. Containerd has advanced features such as seccomp
+		and user namespace support as well as checkpoint and restore for cloning
+		and live migration of containers.
+	</longdescription>
+	<maintainer type="person">
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<use>
+	<flag name="apparmor">Support for AppArmor</flag>
+	<flag name="btrfs">Support for BTRFS snapshot driver</flag>
+	<flag name="cri">Support for Kubernetes CRI</flag>
+	<flag name="device-mapper">Support for device mapper snapshot driver</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">containerd/containerd</remote-id>
+	</upstream>
+</pkgmetadata>

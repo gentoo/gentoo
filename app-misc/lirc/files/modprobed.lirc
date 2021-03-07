@@ -1,0 +1,22 @@
+#
+# For first serial receivers:
+#
+#options lirc_serial irq=4 io=0x3f8
+#options lirc_sir irq=4 io=0x3f8
+
+#
+# Detach first serial port from serial-driver.
+# Use this when you have your serial-port-driver statically
+# compiled into your kernel, or as a module but loaded before
+# the lirc-module.
+# 
+#install lirc_serial setserial /dev/ttyS0 uart none; modprobe --ignore-install lirc_serial
+#
+#install lirc_sir    setserial /dev/ttyS0 uart none; modprobe --ignore-install lirc_sir
+
+
+#
+# For parallel receivers:
+#
+#options lirc_parallel irq=7 io=0x3bc
+

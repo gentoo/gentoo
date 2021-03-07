@@ -1,0 +1,122 @@
+diff -Nur ori/src/IniConfig.cpp new/src/IniConfig.cpp
+--- ori/src/IniConfig.cpp	2004-02-29 15:28:28.000000000 +0100
++++ new/src/IniConfig.cpp	2009-07-20 21:17:56.926134851 +0200
+@@ -120,7 +120,7 @@
+ }
+ 
+ 
+-bool IniConfig::readInt (ini_fd_t ini, char *key, int &value)
++bool IniConfig::readInt (ini_fd_t ini, const char *key, int &value)
+ {
+     int i = value;
+     if (ini_locateKey (ini, key) < 0)
+@@ -134,7 +134,7 @@
+ }
+ 
+ 
+-bool IniConfig::readString (ini_fd_t ini, char *key, char *&str)
++bool IniConfig::readString (ini_fd_t ini, const char *key, char *&str)
+ {
+     char  *ret;
+     size_t length;
+@@ -165,7 +165,7 @@
+ }
+ 
+ 
+-bool IniConfig::readBool (ini_fd_t ini, char *key, bool &boolean)
++bool IniConfig::readBool (ini_fd_t ini, const char *key, bool &boolean)
+ {
+     int b = boolean;
+     if (ini_locateKey (ini, key) < 0)
+@@ -179,7 +179,7 @@
+ }
+ 
+ 
+-bool IniConfig::readChar (ini_fd_t ini, char *key, char &ch)
++bool IniConfig::readChar (ini_fd_t ini, const char *key, char &ch)
+ {
+     char *str, c = 0;
+     bool  ret = readString (ini, key, str);
+@@ -206,7 +206,7 @@
+ }
+ 
+ 
+-bool IniConfig::readTime (ini_fd_t ini, char *key, int &value)
++bool IniConfig::readTime (ini_fd_t ini, const char *key, int &value)
+ {
+     char *str, *sep;
+     int   time;
+diff -Nur ori/src/IniConfig.h new/src/IniConfig.h
+--- ori/src/IniConfig.h	2001-07-03 19:49:27.000000000 +0200
++++ new/src/IniConfig.h	2009-07-20 21:16:17.406144852 +0200
+@@ -98,11 +98,11 @@
+ protected:
+     void  clear ();
+ 
+-    bool  readInt    (ini_fd_t ini, char *key, int &value);
+-    bool  readString (ini_fd_t ini, char *key, char *&str);
+-    bool  readBool   (ini_fd_t ini, char *key, bool &boolean);
+-    bool  readChar   (ini_fd_t ini, char *key, char &ch);
+-    bool  readTime   (ini_fd_t ini, char *key, int  &time);
++    bool  readInt    (ini_fd_t ini, const char *key, int &value);
++    bool  readString (ini_fd_t ini, const char *key, char *&str);
++    bool  readBool   (ini_fd_t ini, const char *key, bool &boolean);
++    bool  readChar   (ini_fd_t ini, const char *key, char &ch);
++    bool  readTime   (ini_fd_t ini, const char *key, int  &time);
+ 
+     bool  readSidplay2  (ini_fd_t ini);
+     bool  readConsole   (ini_fd_t ini);
+diff -Nur ori/src/args.cpp new/src/args.cpp
+--- ori/src/args.cpp	2004-05-06 01:49:20.000000000 +0200
++++ new/src/args.cpp	2009-07-20 21:19:12.249460696 +0200
+@@ -77,6 +77,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <iostream>
++#include <string>
+ using std::cout;
+ using std::cerr;
+ using std::endl;
+@@ -95,7 +96,7 @@
+ // Convert time from integer
+ bool ConsolePlayer::parseTime (const char *str, uint_least32_t &time)
+ {
+-    char *sep;
++    const char *sep;
+     uint_least32_t _time;
+ 
+     // Check for empty string
+@@ -110,8 +111,7 @@
+     else
+     {   // Read in MM:SS format
+         int val;
+-        *sep = '\0';
+-        val  = atoi (str);
++        val  = atoi (std::string(str, sep - str).c_str());
+         if (val < 0 || val > 99)
+             return false;
+         _time = (uint_least32_t) val * 60;
+diff -Nur ori/src/audio/AudioBase.h new/src/audio/AudioBase.h
+--- ori/src/audio/AudioBase.h	2001-11-16 20:34:29.000000000 +0100
++++ new/src/audio/AudioBase.h	2009-07-20 21:06:15.619538393 +0200
+@@ -43,7 +43,7 @@
+ {
+ protected:
+     AudioConfig _settings;
+-    char       *_errorString;
++    const char *_errorString;
+     void       *_sampleBuffer;
+ 
+ public:
+diff -Nur ori/src/menu.cpp new/src/menu.cpp
+--- ori/src/menu.cpp	2004-02-29 15:28:28.000000000 +0100
++++ new/src/menu.cpp	2009-07-20 21:20:16.576120922 +0200
+@@ -353,7 +353,7 @@
+ {
+     if ((m_iniCfg.console ()).ansi)
+     {
+-        char *mode = "";
++        const char *mode = "";
+ 
+         switch (colour)
+         {

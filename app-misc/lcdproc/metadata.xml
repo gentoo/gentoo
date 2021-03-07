@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		LCDproc is a piece of open source software that displays real-time system information
+		from your Linux/*BSD box on a LCD. The server supports several serial and USB devices
+		from Matrix Orbital and CrystalFontz as well as
+		some devices connected to the LPT port:	HD44780, T6963, SED1520 and SED1330.
+		Various clients are available that display things like CPU load,
+		system load, memory usage, uptime, and a lot more.
+	</longdescription>
+	<use>
+		<flag name="ethlcd">Enable support for ethlcd in the hd44780 driver.</flag>
+		<flag name="extra-charmaps">Enable extra language specific charmaps.</flag>
+		<flag name="freetype">Enable support for <pkg>media-libs/freetype</pkg> in the glcd driver.</flag>
+		<flag name="menu">Enable menu support in the lcdproc client.</flag>
+		<flag name="nfs">Display NFS filesystem stats in the lcdproc client.</flag>
+		<flag name="png">Enable support for <pkg>media-libs/libpng</pkg> in the glcd driver.</flag>
+		<flag name="samba">Display SMBFS filesystem stats in the lcdproc client.</flag>
+		<flag name="test-menu">Enable test menu support for the lcdproc server.</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://www.github.com/lcdproc/lcdproc/issues</bugs-to>
+		<remote-id type="github">lcdproc/lcdproc</remote-id>
+	</upstream>
+</pkgmetadata>

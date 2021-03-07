@@ -1,0 +1,46 @@
+diff -Naurd old/configure.ac new/configure.ac
+--- old/configure.ac	2019-03-03 12:10:38.826276038 +0500
++++ new/configure.ac	2019-03-03 21:02:30.456414852 +0500
+@@ -133,17 +133,19 @@
+   AC_DEFINE_UNQUOTED(PACKAGE_DATA_DIR, "${datadir}/${PACKAGE}")
+ fi
+ 
+-subdirs="util gsm gverb metadata"
++GSM_LIBS=-lgsm
++
++subdirs="util gverb metadata"
+ 
+ AC_SUBST(subdirs)
+ AC_SUBST(FFTW_LIBS)
+ AC_SUBST(STATIC_FFTW_LIBS)
+ AC_SUBST(FFTW_CFLAGS)
++AC_SUBST(GSM_LIBS)
+ AC_SUBST(LIBTOOL)
+ AC_OUTPUT([
+ Makefile
+ util/Makefile
+-gsm/Makefile
+ gverb/Makefile
+ metadata/Makefile
+ po/Makefile.in
+diff -Naurd old/Makefile.am new/Makefile.am
+--- old/Makefile.am	2016-10-17 14:05:54.000000000 +0500
++++ new/Makefile.am	2019-03-03 20:58:55.298862874 +0500
+@@ -34,7 +34,7 @@
+ 	latency_1914.la xfade_1915.la sc4m_1916.la \
+ 	mbeq_1197.la pitch_scale_1193.la pitch_scale_1194.la imp_1199.la
+ 
+-SUBDIRS = po util gsm gverb metadata
++SUBDIRS = po util gverb metadata
+ 
+ # Wacky stuff to stop automake getting confused
+ EXTRA_DIST = config.rpath  @top_srcdir@/*.xml @top_srcdir@/*.c @top_srcdir@/*.h \
+@@ -73,7 +73,7 @@
+ sc4_1882_la_LIBADD = -Lutil -ldb -lrms
+ sc4m_1916_la_LIBADD = -Lutil -ldb -lrms
+ se4_1883_la_LIBADD = -Lutil -ldb -lrms
+-gsm_1215_la_LIBADD = gsm/libgsm.a
++gsm_1215_la_LIBADD = @GSM_LIBS@
+ gverb_1216_la_LIBADD = -Lgverb -lgverb
+ lcr_delay_1436_la_DEPENDENCIES = util/biquad.h
+ 

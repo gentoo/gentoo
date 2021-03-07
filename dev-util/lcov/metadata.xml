@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>jeffrey@icurse.nl</email>
+		<name>Jeffrey Lin</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>marbacz@gmail.com</email>
+		<name>Marcin Baczyński</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">ltp</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>netmon@gentoo.org</email>
+	<name>Gentoo network monitoring and analysis project</name>
+</maintainer>
+<longdescription>
+UDPcast is a file transfer tool that can send data simultaneously to 
+many destinations on a LAN. This can for instance be used to install 
+entire classrooms of PC's at once. The advantage of UDPcast over using 
+other methods (nfs, ftp, whatever) is that UDPcast uses Ethernet's 
+multicast abilities: it won't take longer to install 15 machines than it 
+would to install just 2.
+</longdescription>
+</pkgmetadata>

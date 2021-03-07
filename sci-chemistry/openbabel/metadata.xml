@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-chemistry@gentoo.org</email>
+		<name>Gentoo Chemistry Project</name>
+	</maintainer>
+	<longdescription>
+		Open Babel is a chemical toolbox designed to speak the many languages of
+		chemical data. It's an open, collaborative project allowing anyone to
+		search, convert, analyze, or store data from molecular modeling, chemistry,
+		solid-state materials, biochemistry, or related areas.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">openbabel</remote-id>
+	</upstream>
+</pkgmetadata>

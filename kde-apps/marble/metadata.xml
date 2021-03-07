@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<use>
+		<flag name="aprs">Enable support for APRS data sources</flag>
+		<flag name="designer">Install plugin for <pkg>dev-qt/designer</pkg></flag>
+		<flag name="geolocation">Enable position information via <pkg>dev-qt/qtpositioning</pkg></flag>
+		<flag name="pbf">Enable OpenStreetMap PBF file support via <pkg>dev-libs/protobuf</pkg></flag>
+		<flag name="phonon">Enable sound support via <pkg>media-libs/phonon</pkg></flag>
+		<flag name="shapefile">Enable support for ESRI shapefiles</flag>
+		<flag name="webengine">Use <pkg>dev-qt/qtwebengine</pkg> for embedded web browser</flag>
+	</use>
+</pkgmetadata>

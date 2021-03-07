@@ -1,0 +1,73 @@
+diff -ru lm1100.1.0.2a~/Jet.h lm1100.1.0.2a/Jet.h
+--- lm1100.1.0.2a~/Jet.h	2006-12-02 18:48:16.000000000 +0100
++++ lm1100.1.0.2a/Jet.h	2006-12-02 18:49:54.000000000 +0100
+@@ -45,7 +45,7 @@
+ 	Coord imageStart;  // start of image from edge of paper
+ 
+ 	bool insideImage(int x, int y);
+-	bool Jet::needsPainting(int ix, int iy, int bit);
++	bool needsPainting(int ix, int iy, int bit);
+ 	
+  public:
+ 	/* Range of paper jet covers when head is at 0,0 */
+@@ -54,7 +54,7 @@
+ 	/* Range of paper jet needs to cover to get the entire image */
+ 	void getImageRange(Rect *dest);
+ 	Coord *getPreferredImageStart(Coord *start);
+-	int Jet::getPreferredEnd();
++	int getPreferredEnd();
+ 	bool finished();
+ 	void setImageStart(Coord *imageStart);
+ 	void paint(int startX, int endX, int y, class LexmarkProtocol *protocol);
+diff -ru lm1100.1.0.2a~/LinkedList.h lm1100.1.0.2a/LinkedList.h
+--- lm1100.1.0.2a~/LinkedList.h	2006-12-02 18:48:16.000000000 +0100
++++ lm1100.1.0.2a/LinkedList.h	2006-12-02 18:49:54.000000000 +0100
+@@ -26,8 +26,8 @@
+ 	void *object;
+ 	LinkedList *next;
+ 
+-	LinkedList::LinkedList();
+-	LinkedList::LinkedList(void * object);
++	LinkedList();
++	LinkedList(void * object);
+ };
+ 
+ #endif
+diff -ru lm1100.1.0.2a~/Map.h lm1100.1.0.2a/Map.h
+--- lm1100.1.0.2a~/Map.h	2006-12-02 18:48:16.000000000 +0100
++++ lm1100.1.0.2a/Map.h	2006-12-02 18:49:54.000000000 +0100
+@@ -41,7 +41,7 @@
+ 	int height; /* height of map in cells */
+ 
+ 	Map(int width, int height, int cellSize);
+-	Map::~Map();
++	~Map();
+ 
+ 	void cacheLines(int start, int len);
+ 	void addAlgorithm(MapAlgorithm *algorithm);
+diff -ru lm1100.1.0.2a~/PPMRaw.h lm1100.1.0.2a/PPMRaw.h
+--- lm1100.1.0.2a~/PPMRaw.h	2006-12-02 18:48:16.000000000 +0100
++++ lm1100.1.0.2a/PPMRaw.h	2006-12-02 18:49:54.000000000 +0100
+@@ -32,7 +32,7 @@
+ 
+  public:
+ 	PPMRaw(Reader *reader,bool readMagic);
+-	static void PPMRaw::readHeader(int *width, int *height, int *maxval, Reader *reader, bool readMagic);
++	static void readHeader(int *width, int *height, int *maxval, Reader *reader, bool readMagic);
+ 	
+ 	virtual void getRGB(RGB *rgb, int x, int y);
+ 
+diff -ru lm1100.1.0.2a~/Rect.h lm1100.1.0.2a/Rect.h
+--- lm1100.1.0.2a~/Rect.h	2006-12-02 18:48:16.000000000 +0100
++++ lm1100.1.0.2a/Rect.h	2006-12-02 18:49:54.000000000 +0100
+@@ -23,8 +23,8 @@
+ class Rect
+ {
+  public:
+-	Rect::Rect();
+-	Rect::Rect(int x, int y, int width, int height);
++	Rect();
++	Rect(int x, int y, int width, int height);
+ 	
+ 	int x,y,width,height;
+ 

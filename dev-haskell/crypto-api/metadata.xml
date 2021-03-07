@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name="all-cpolys">Build all the CMAC polynomes up to 10000 bits instead of just the usual ones</flag>
+	</use>
+	<longdescription>
+		A generic interface for cryptographic operations (hashes, ciphers, randomness).
+		Maintainers of hash and cipher implementations are
+		encouraged to add instances for the classes defined
+		in Crypto.Classes.  Crypto users are similarly
+		encouraged to use the interfaces defined in the Classes
+		module.
+		Any concepts or functions of general use to more than
+		one cryptographic algorithm (ex: padding) is within
+		scope of this package.
+	</longdescription>
+</pkgmetadata>

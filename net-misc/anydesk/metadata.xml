@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>jmbsvicetto@gentoo.org</email>
+		<name>Jorge Manuel B. S. Vicetto</name>
+	</maintainer>
+	<upstream>
+		<changelog>https://download.anydesk.com/changelog.txt</changelog>
+		<bugs-to>mailto:support@anydesk.com</bugs-to>
+	</upstream>
+	<longdescription lang="en">
+		Connect to a computer remotely, be it from the other end of the office
+		or halfway around the world. AnyDesk ensures secure and reliable remote
+		desktop connections for IT professionals and on-the-go individuals alike.
+	</longdescription>
+</pkgmetadata>

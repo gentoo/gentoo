@@ -1,0 +1,10 @@
+--- a/src/PatternLayout.cpp
++++ b/src/PatternLayout.cpp
+@@ -24,6 +24,7 @@
+ #include <iomanip>
+ #include <ctime>
+ #include <cstdlib>
++#include <cmath>
+ #include "Localtime.hh"
+ 
+ #ifdef LOG4CPP_HAVE_INT64_T

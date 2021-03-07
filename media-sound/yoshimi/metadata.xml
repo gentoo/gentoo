@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sound@gentoo.org</email>
+		<name>Gentoo Sound project</name>
+	</maintainer>
+	<use>
+		<flag name="lv2">Add support for Ladspa V2</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">Yoshimi/yoshimi</remote-id>
+	</upstream>
+	<longdescription>
+	Yoshimi is a software audio synthesizer, originally forked from ZynAddSubFX
+	Features
+	Three separate engines
+	each with distinctive characteristics, can be used together or individually
+	Sixteen engine kits for the ultimate in multi-layering of engines, or for synthesized drum kits 
+	Vector Control
+	manage up to four independent sounds on any channel with faders or an X/Y midi joystick
+	Solo
+	step through up to 16 sounds seamlessly while playing in real time (including vector sounds)
+	Microtonal Tuning
+	Scala-compatible scales and keymaps
+	Extensive Midi-Learn
+	capture almost all internal controls and many switches with ordinary 7-bit values, or NRPNs, or even 7-bit NRPNs, then edit the responses
+	Command Line Access
+	headless operation and high accessibility, for those with sight- or motor control issues
+	Rich variations of tone and timbre
+	Yoshimi provides the means to ensure no two notes are ever identical - just like in the real world.
+	And much more...
+	</longdescription>
+</pkgmetadata>

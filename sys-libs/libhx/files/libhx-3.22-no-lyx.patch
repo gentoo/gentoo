@@ -1,0 +1,12 @@
+--- libHX-3.22/configure.ac.orig	2014-08-25 19:16:37.000000000 +0400
++++ libHX-3.22/configure.ac	2016-06-01 11:09:42.287438190 +0300
+@@ -107,8 +107,7 @@
+ AC_CHECK_FUNCS([getegid geteuid getpid getppid])
+ AM_CONDITIONAL([B_PROC], [test "$b_proc" = 1])
+ 
+-AC_CHECK_PROGS([LYX], [lyx])
+-AM_CONDITIONAL([BUILD_DOCS], [test -n "$LYX"])
++AM_CONDITIONAL([BUILD_DOCS], [false])
+ 
+ regular_CPPFLAGS="-D_FILE_OFFSET_BITS=64 -D_REENTRANT"
+ regular_CFLAGS="-Wall -Waggregate-return -Wmissing-declarations \

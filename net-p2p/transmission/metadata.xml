@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>floppym@gentoo.org</email>
+		<name>Mike Gilbert</name>
+	</maintainer>
+	<use>
+		<flag name="lightweight">Optimize transmission for low-resource systems (smaller cache size, prefer unencrypted peer connections, etc.)</flag>
+		<flag name="mbedtls">Use mbed TLS instead of OpenSSL</flag>
+	</use>
+</pkgmetadata>

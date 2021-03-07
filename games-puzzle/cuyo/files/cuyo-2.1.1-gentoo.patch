@@ -1,0 +1,30 @@
+--- cuyo-2.~-1.1.orig/icons/Makefile.am
++++ cuyo-2.~-1.1/icons/Makefile.am
+@@ -1,4 +1,4 @@
+-desktopdir = $(datadir)/applications
++desktopdir = /usr/share/applications
+ desktop_DATA = cuyo.desktop
+ 
+ 
+@@ -25,7 +25,7 @@
+ # Das vorige war falsch: die png sollen alle cuyo.png heissen
+ # und nicht cuyo-xxxx.png. Deshalb nachfolgend neue Version:
+ 
+-iconsdir = $(datadir)/icons/hicolor
++iconsdir = /usr/share/icons/hicolor
+ icons_DATA = cuyo-32x32.png cuyo-64x64.png
+ 
+ install-iconsDATA:
+--- cuyo-2.~-1.1.orig/icons/cuyo.desktop
++++ cuyo-2.~-1.1/icons/cuyo.desktop
+@@ -3,9 +3,8 @@
+ Icon=cuyo
+ Type=Application
+ Terminal=false
+-MimeType=application/x-executable
++MimeType=application/x-executable;
+ Categories=Game;BlocksGame;
+-Encoding=UTF-8
+ Comment=A tetris like game with many levels
+ Comment[de]=Ein Tetris-artiges Spiel mit vielen Leveln
+ Exec=cuyo

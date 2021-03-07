@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>polynomial-c@gentoo.org</email>
+		<name>Lars Wendler</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>voyageur@gentoo.org</email>
+		<name>Bernard Cafarelli</name>
+	</maintainer>
+	<longdescription>RazerTool is an unofficial tool for controlling Razer Copperhead(TM) mice in *nix. It has both command-line and gtk+-2.x versions. Allows to switch and alter profiles, upgrade firmware, ...</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">razertool</remote-id>
+	</upstream>
+</pkgmetadata>

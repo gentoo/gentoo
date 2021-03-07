@@ -1,0 +1,48 @@
+diff --git a/src/os/linux/arm/callNative.S b/src/os/linux/arm/callNative.S
+index 245afd1..1583023 100644
+--- a/src/os/linux/arm/callNative.S
++++ b/src/os/linux/arm/callNative.S
+@@ -36,3 +36,7 @@
+ #include "callNativeOABI.S"
+ #endif
+ #endif
++
++#if defined(__linux__) && defined(__ELF__)
++.section .note.GNU-stack,"",%progbits
++#endif
+diff --git a/src/os/linux/mips/callNative.S b/src/os/linux/mips/callNative.S
+index cede343..90d9163 100644
+--- a/src/os/linux/mips/callNative.S
++++ b/src/os/linux/mips/callNative.S
+@@ -184,3 +184,7 @@ return:
+ 	j $31
+ 	.end callJNIMethod
+ #endif
++
++#if defined(__linux__) && defined(__ELF__)
++.section .note.GNU-stack,"",%progbits
++#endif
+diff --git a/src/os/linux/powerpc/callNative.S b/src/os/linux/powerpc/callNative.S
+index aa47f6a..763dc0a 100644
+--- a/src/os/linux/powerpc/callNative.S
++++ b/src/os/linux/powerpc/callNative.S
+@@ -281,3 +281,7 @@ return:
+         mr 1,11
+         blr
+ #endif
++
++#if defined(__linux__) && defined(__ELF__)
++.section .note.GNU-stack,"",%progbits
++#endif
+diff --git a/src/os/linux/x86_64/callNative.S b/src/os/linux/x86_64/callNative.S
+index 26404e6..9fb5cdf 100644
+--- a/src/os/linux/x86_64/callNative.S
++++ b/src/os/linux/x86_64/callNative.S
+@@ -267,3 +267,7 @@ float_ret:
+     addq    $8, %rcx
+     jmp     return
+ #endif
++
++#if defined(__linux__) && defined(__ELF__)
++.section .note.GNU-stack,"",%progbits
++#endif

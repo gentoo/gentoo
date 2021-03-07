@@ -1,0 +1,15 @@
+Very slow CIs take longer on this test
+
+--- a/jupyter_console/tests/test_console.py
++++ b/jupyter_console/tests/test_console.py
+@@ -65,8 +65,8 @@
+     except IOError:
+         raise SkipTest("Couldn't find command %s" % cmd)
+     
+-    # timeout after one minute
+-    t = 60
++    # timeout after 5 minutes
++    t = 300
+     idx = p.expect(r'In \[\d+\]', timeout=t)
+     return p, pexpect, t
+ 

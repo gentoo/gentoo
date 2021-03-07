@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-geosciences@gentoo.org</email>
+    <name>Gentoo Geosciences Project</name>
+  </maintainer>
+  <use>
+    <flag name="gdal">Enable <pkg>sci-libs/gdal</pkg> library support</flag>
+    <flag name="gmttria">Non GNU triangulation method, more efficient</flag>
+    <flag name="gshhg">Install coastline database</flag>
+    <flag name="htmldoc">Install html documentation</flag>
+    <flag name="metric">Use SI (cm) units instead of US (inches) ones</flag>
+    <flag name="mex">Enable compilation of mex supplement which requires Octave/Matlab</flag>
+    <flag name="octave">Enable octave support</flag>
+    <flag name="pcre2">Use libpcre2 for regular expressions</flag>
+    <flag name="tutorial">Install data files for tutorial</flag>
+  </use>
+</pkgmetadata>

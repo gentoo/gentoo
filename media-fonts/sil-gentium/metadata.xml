@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>fonts@gentoo.org</email>
+		<name>Fonts</name>
+	</maintainer>
+	<longdescription lang="en">
+		Gentium is a typeface family designed to enable the diverse ethnic
+		groups around the world who use the Latin, Cyrillic and Greek
+		scripts to produce readable, high-quality publications. It supports
+		a wide range of Latin- and Cyrillic-based alphabets.
+
+		The design is intended to be highly readable, reasonably compact,
+		and visually attractive. The additional ‘extended’ Latin letters are
+		designed to naturally harmonize with the traditional 26 ones.
+		Diacritics are treated with careful thought and attention to their
+		use. Gentium also supports both polytonic and monotonic Greek.
+		Gentium Plus now includes more extended Latin glyphs (Unicode 5.1),
+		archaic Greek symbols, and full extended Cyrillic script support.
+	</longdescription>
+	<use>
+		<flag name="compact">Also install more compact version of the font.</flag>
+	</use>
+</pkgmetadata>

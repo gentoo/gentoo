@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription>
+		This utility converts the native (RAW), format of various digital cameras into
+		netpbm portable pixmap (.ppm) image. Supports the following models: Canon,
+		Kodak, Olympus, Nikon, Fuji, Minolta and Sigma (see
+		http://www.cybercom.net/~dcoffin/dcraw/ for full list) Note: This utility does
+		not read directly from the cameras, only the files after they have been
+		downloaded, use gphoto2 for that.
+	</longdescription>
+</pkgmetadata>

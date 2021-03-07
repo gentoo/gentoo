@@ -1,0 +1,12 @@
+diff -upr enchant-1.6.0.orig/src/myspell/myspell_checker.cpp enchant-1.6.0/src/myspell/myspell_checker.cpp
+--- enchant-1.6.0.orig/src/myspell/myspell_checker.cpp	2016-11-26 16:04:05.689051339 +0200
++++ enchant-1.6.0/src/myspell/myspell_checker.cpp	2016-11-26 16:05:11.380014568 +0200
+@@ -431,7 +431,7 @@ MySpellChecker::requestDictionary(const
+ 	if(myspell == NULL){
+ 		return false;
+ 	}
+-	char *enc = myspell->get_dic_encoding();
++	const char *enc = myspell->get_dic_encoding();
+ 
+ 	m_translate_in = g_iconv_open(enc, "UTF-8");
+ 	m_translate_out = g_iconv_open("UTF-8", enc);

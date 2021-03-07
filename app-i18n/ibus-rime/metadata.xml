@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>dlan@gentoo.org</email>
+    <name>Yixun Lan</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>cjk@gentoo.org</email>
+    <name>Cjk</name>
+  </maintainer>
+  <upstream>
+    <maintainer>
+      <email>chen.sst@gmail.com</email>
+      <name>Gong Chen</name>
+    </maintainer>
+    <remote-id type="github">rime/ibus-rime</remote-id>
+  </upstream>
+</pkgmetadata>

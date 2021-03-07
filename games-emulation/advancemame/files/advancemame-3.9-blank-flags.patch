@@ -1,0 +1,32 @@
+From f306234fbaa6bd3fbcb75ebe5e3b318a9fc1c5f0 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sat, 25 Apr 2020 11:40:18 +0100
+Subject: [PATCH] Don't use auto CFLAGS/LDFLAGS if they are set but blank
+
+Explicitly blank flags are valid.
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index f8ba989..330959c 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -82,12 +82,12 @@ case "$build" in
+ esac
+ AC_SUBST([CONF_BUILD],[$ac_build])
+ 
+-if test -z "$CFLAGS" ; then
++if test -z "${CFLAGS+set}" ; then
+ 	ac_auto_cflags=yes
+ else
+ 	ac_auto_cflags=no
+ fi
+-if test -z "$LDFLAGS" ; then
++if test -z "${LDFLAGS+set}" ; then
+ 	ac_auto_ldflags=yes
+ else
+ 	ac_auto_ldflags=no
+-- 
+2.26.0
+

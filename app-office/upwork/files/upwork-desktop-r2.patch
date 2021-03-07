@@ -1,0 +1,8 @@
+--- a/usr/share/applications/upwork.desktop	2020-03-10 21:47:46.928089982 -0600
++++ b/usr/share/applications/upwork.desktop	2020-03-10 21:48:36.989429456 -0600
+@@ -8,4 +8,4 @@
+ StartupNotify=false
+ Encoding=UTF-8
+ Comment=Upwork Desktop Application
+-Categories=Utility;
++Categories=GTK;Network;X-Project Management

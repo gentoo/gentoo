@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>ejabberd@gentoo.org</email>
+	</maintainer>
+	<longdescription>
+		Free and Open Source distributed fault-tolerant Jabber server. It's
+		mostly written in Erlang, and works on many platforms.
+	</longdescription>
+	<use>
+		<flag name="captcha">Support for CAPTCHA Forms (XEP-158) on registration</flag>
+		<flag name="full-xml">Use XML features in XMPP stream (ex: CDATA),
+			requires XML compliant clients</flag>
+		<flag name="hipe">Compile natively with HiPE, not recommended</flag>
+		<flag name="mssql">Enable Microsoft SQL Server support (via ODBC) for
+			data storage</flag>
+		<flag name="mysql">Enable MySQL support for data storage</flag>
+		<flag name="odbc">Enable ODBC support to access data storage</flag>
+		<flag name="postgres">Enable PostgreSQL support for data storage</flag>
+		<flag name="redis">Enable Redis support for transient data</flag>
+		<flag name="roster-gw">Turn on workaround for processing gateway subscriptions</flag>
+		<flag name="sqlite">Enable SQLite database support</flag>
+		<flag name="sip">Enable SIP support</flag>
+		<flag name="stun">Enable STUN/TURN support</flag>
+		<flag name="zlib">Enable Stream Compression (XEP-0138) using zlib</flag>
+		<!-- TODO Add later: flag name="tools">Build development tools</flag -->
+	</use>
+	<upstream>
+		<remote-id type="github">processone/ejabberd</remote-id>
+	</upstream>
+</pkgmetadata>

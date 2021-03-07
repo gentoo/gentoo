@@ -1,0 +1,21 @@
+http://defect.opensolaris.org/bz/show_bug.cgi?id=6580
+
+--- top-3.8beta1/commands.c
++++ top-3.8beta1/commands.c
+@@ -501,13 +501,15 @@
+     if (procnum == -1 || prio < PRIO_MIN || prio > PRIO_MAX)
+     {
+ 	message_error(" renice: bad priority value");
++	return;
+     }
+ #endif
+ 
+     /* move to the first process number */
+     if ((str = next_field(str)) == NULL)
+     {
+-	message_error(" remice: no processes specified");
++	message_error(" renice: no processes specified");
++	return;
+     }
+ 
+ #ifdef HAVE_SETPRIORITY

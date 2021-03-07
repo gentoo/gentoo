@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
+	</maintainer>
+	<longdescription>
+		Lab wraps Git or Hub, making it simple to clone, fork, and interact with repositories on GitLab,
+		including seamless workflows for creating merge requests, issues and snippets.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">zaquestion/lab</remote-id>
+	</upstream>
+</pkgmetadata>

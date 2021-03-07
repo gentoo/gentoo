@@ -1,0 +1,50 @@
+diff -ru a/makefile b/makefile
+--- a/makefile	2013-04-14 20:08:33.000000000 +0000
++++ b/makefile	2013-12-11 11:59:58.688782748 +0000
+@@ -18,8 +18,7 @@
+ #AR= echo
+ 
+ # Unix, generally
+-CC = gcc -fpic -pedantic
+-DEBUG=-g -Wall -Wno-char-subscripts -O
++#CC = $(CC)
+ Osuf=o
+ SOsuf=so
+ LIBsuf=a
+@@ -27,12 +26,11 @@
+ LIBPREFIX=lib
+ OUT = -o $@
+ RM= -rm -f
+-AR= ar crs
++#AR= $(AR)
++ARFLAGS = crs
+ 
+ # Linux
+-LD = gcc
+-LDFLAGS = -shared
+-DEBUG=-g -Wno-char-subscripts -O
++#LD = $(CC)
+ SYS_LIBS= -ldl -lm
+ PLATFORM_FEATURES= -DSUN_DL=1
+ 
+@@ -71,16 +69,16 @@
+ all: $(LIBTARGET) $(STATICLIBTARGET) scheme$(EXE_EXT)
+ 
+ %.$(Osuf): %.c
+-	$(CC) -I. -c $(DEBUG) $(FEATURES) $(DL_FLAGS) $<
++	$(CC) -fpic $(CFLAGS) -I. -c $(FEATURES) $(DL_FLAGS) $<
+ 
+ $(LIBTARGET): $(OBJS)
+-	$(LD) $(LDFLAGS) $(OUT) $(OBJS) $(SYS_LIBS)
++	$(CC) -shared $(LDFLAGS) -Wl,-soname=$@ -o $@ $(OUT) $(OBJS) $(SYS_LIBS)
+ 
+ scheme$(EXE_EXT): $(OBJS)
+-	$(CC) -o $@ $(DEBUG) $(OBJS) $(SYS_LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJS) $(SYS_LIBS)
+ 
+ $(STATICLIBTARGET): $(OBJS)
+-	$(AR) $@ $(OBJS)
++	$(AR) $(ARFLAGS) $@ $(OBJS)
+ 
+ $(OBJS): scheme.h scheme-private.h opdefines.h
+ dynload.$(Osuf): dynload.h

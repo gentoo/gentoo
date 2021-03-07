@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zlogene@gentoo.org</email>
+		<name>Mikle Kolyada</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>polynomial-c@gentoo.org</email>
+		<name>Lars Wendler</name>
+	</maintainer>
+	<use>
+		<flag name="scd-shared-access">
+		Allow concurrent access to scdaemon by multiple apps from same
+		user. Useful if you want to use scdaemon with gnupg and for
+		example NitroKey.
+		</flag>
+		<flag name="smartcard">
+		Build scdaemon software. Enables usage of OpenPGP cards. For
+		other type of smartcards, try <pkg>app-crypt/gnupg-pkcs11-scd</pkg>.
+		Bring in <pkg>dev-libs/libusb</pkg> as a dependency; enable scdaemon.
+		</flag>
+		<flag name="usb">
+		Build direct CCID access for scdaemon; requires <pkg>dev-libs/libusb</pkg>.
+		</flag>
+		<flag name="user-socket">
+		try a socket directory which is not removed by init manager at session end
+		</flag>
+		<flag name="tofu">
+		Enable support for Trust on First use trust model; requires <pkg>dev-db/sqlite</pkg>.
+		</flag>
+		<flag name="tools">
+		Install extra tools (including gpgsplit and gpg-zip).
+		</flag>
+		<flag name="wks-server">
+		Install the wks-server
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:gnupg:gnupg</remote-id>
+	</upstream>
+</pkgmetadata>

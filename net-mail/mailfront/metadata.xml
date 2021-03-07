@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<!-- maintainer-needed -->
+<longdescription lang="en">
+This is mailfront, a package containing customizeable network front-ends
+for mail servers.  It contains complete SMTP, QMQP, QMTP, and POP3
+front-ends as well as an authentication module for IMAP.  The mail
+delivery front-ends also contain internal address filtering features.
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,140 @@
+--- kernelcookies
++++ kernelcookies
+@@ -1,42 +1,3 @@
+-/* Only Sun can take such nice parts and fuck up the programming interface
+- * like this.  Good job guys...
+- */
+-        linux-2.6.6/drivers/net/sunhme.c
+-%
+-/* This card is _fucking_ hot... */
+-        linux-2.6.6/drivers/net/sunhme.c
+-%
+-If you don't see why, please stay the fuck away from my code.
+-        Rusty, in linux-2.6.6/Documentation/DocBook/kernel-locking.tmpl        
+-%
+-/* Fuck, we are miserable poor guys... */
+-        linux-2.6.6/net/xfrm/xfrm_algo.c
+-%
+-/* Ugly, ugly fucker. */
+-        linux-2.6.6/include/linux/netfilter_ipv4/ipt_limit.h
+-%
+-/* XXX: where the fuck is ->f_vfsmnt? */
+-        linux-2.6.6/fs/intermezzo/vfs.c
+-%
+-        if(ct<0)
+-                ct=2;        /* Shit happens.. */
+-        linux-2.6.6/drivers/net/wan/z85230.c
+-%
+-/* Remember: "Different name, same old buggy as shit hardware." */
+-        linux-2.6.6/drivers/net/sunhme.c
+-%
+-/* This is total bullshit: */
+-        linux-2.6.6/drivers/video/sis/init301.c
+-%
+-/* The HME is the biggest piece of shit I have ever seen. */
+-        linux-2.6.6/drivers/scsi/esp.h
+-%
+-/* Sun, you just can't beat me, you just can't.  Stop trying,
+- * give up.  I'm serious, I am going to kick the living shit
+- * out of you, game over, lights out.
+- */
+-         linux-2.6.6/arch/sparc/lib/checksum.S
+-%
+ printk("WE HAVE A BUG HERE!!! stk=0x%p\n", stk);
+         linux-2.6.6/drivers/block/cciss_scsi.c
+ %
+@@ -49,18 +10,9 @@
+ printk("GSCD: magic ...\n");
+         linux-2.6.6/drivers/cdrom/gscd.c
+ %
+-printk(" (Read error)");        /* Bitch about the problem. */
+-        linux-2.6.6/drivers/cdrom/mcd.c
+-%
+ printk(" Speed now 1x");        /* Pull my finger! */
+         linux-2.6.6/drivers/cdrom/mcd.c
+ %
+-printk("%s: confused, missing data\n", drive->name);
+-        linux-2.6.6/drivers/ide/ide-cd.c
+-%
+-printk(KERN_ERR "ide: huh? queue was plugged!\n");
+-        linux-2.6.6/drivers/ide/ide-io.c:
+-%
+ printk ("%s: This looks like a LART board to me.\n",module_name);
+         linux-2.6.6/drivers/mtd/devices/lart.c
+ %
+@@ -380,21 +332,6 @@
+ printk(KERN_WARNING "Multi-volume CD somehow got mounted.\n");
+         linux-2.2.16/fs/isofs/inode.c
+ %
+-/* Fuck me gently with a chainsaw... */
+-        linux-2.0.38/arch/sparc/kernel/ptrace.c
+-%
+-/* Binary compatibility is good American knowhow fuckin' up. */
+-        linux-2.2.16/arch/sparc/kernel/sunos_ioctl.c
+-%
+-/* Am I fucking pedantic or what? */
+-        linux-2.2.16/drivers/scsi/qlogicpti.h
+-%
+-/* vsprintf.c -- Lars Wirzenius & Linus Torvalds. */
+- *
+- * Wirzenius wrote this portably, Torvalds fucked it up :-)
+- */
+-        linux-2.2.16/lib/vsprintf.c
+-%
+ printk("Penguin %d is stuck in the bottle.\n", i);
+         linux-2.0.38/arch/sparc/kernel/smp.c
+ %
+@@ -416,9 +353,6 @@
+ panic("Cannot initialize video hardware\n");
+         linux-2.0.38/arch/m68k/atari/atafb.c
+ %
+-printk("ufs_read_super: fucking Sun blows me\n");
+-        linux-2.0.38/fs/ufs/ufs_super.c
+-%
+ printk("autofs: Out of inode numbers -- what the heck did you do??\n"); 
+         linux-2.0.38/fs/autofs/root.c
+ %
+@@ -444,23 +378,11 @@
+ # Okay, what on Earth is this one supposed to be used for?
+         linux-2.4.0/drivers/char/cp437.uni
+ %
+-/* Fuck.  The f-word is here so you can grep for it :-)  */
+-        linux-2.4.3/include/asm-mips/mmu_context.h
+-%
+ /* Thanks to Rob `CmdrTaco' Malda for not influencing this code in any
+  * way.
+  */
+         linux-2.4.3/net/core/netfilter.c
+ %
+-/* James M doesn't say fuck enough. */
+-        linux-2.4.3/net/core/netfilter.c
+-%
+-/* So there I am, in the middle of my `netfilter-is-wonderful'
+-   talk in Sydney, and someone asks `What happens if you try
+-   to enlarge a 64k packet here?'.  I think I said something
+-   eloquent like `fuck'. */
+-        linux-2.4.3/net/ipv4/netfilter/ip_nat_ftp.c
+-%
+ panic ("No CPUs found.  System halted.\n");
+         linux-2.4.3/arch/parisc/kernel/setup.c
+ %
+@@ -492,19 +414,6 @@
+ printk("CPU[%d]: Giving pardon to imprisoned penguins\n", smp_processor_id());
+         linux-2.4.8/arch/sparc64/kernel/smp.c
+ %
+-/* Welcome to Sun Microsystems, can I take your order please? */
+-/* Would you like fries with that? */
+-/* Anything else? */
+-/* Fifty-two cents is your change, have a nice day. */
+-/* Would you like to try our SMCC Delux? */
+-/* We have a special on GNU/Viking hardware bugs today. */
+-/* Will that be all? */
+-/* Don't forget your vik_1137125_wa.  Have a nice day. */
+-/* We're consolidating our STB products, it's your lucky day. */
+-/* Come back next week when we are "Sun Microelectronics". */
+-/* Remember: "Different name, same old buggy as shit hardware." */
+-	linux-2.6.6/drivers/net/sunhme.c
+-%
+ printk (KERN_INFO "NM256: Congratulations. You're not running Eunice.\n");
+ 	linux-2.6.19/sound/oss/nm256_audio.c
+ %

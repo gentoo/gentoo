@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sound@gentoo.org</email>
+		<name>Gentoo Sound project</name>
+	</maintainer>
+	<use>
+		<flag name="cdio">Use libcdio for CD support </flag>
+		<flag name="discid">Enable reading the ID of the inserted CD</flag>
+		<flag name="elogind">Enable MPRIS support via <pkg>sys-auth/elogind</pkg></flag>
+		<flag name="pidgin">Install support script for <pkg>net-im/pidgin</pkg></flag>
+		<flag name="systemd">Enable MPRIS support via <pkg>sys-apps/systemd</pkg></flag>
+		<flag name="tremor">Use libivorbis from <pkg>media-libs/tremor</pkg> instead of <pkg>media-libs/libvorbis</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">cmus/cmus</remote-id>
+		<remote-id type="sourceforge">cmus</remote-id>
+	</upstream>
+</pkgmetadata>

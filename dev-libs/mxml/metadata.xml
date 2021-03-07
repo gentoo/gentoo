@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		Mini-XML is a small XML parsing library that you can use to read XML data files or strings
+		in your application without requiring large non-standard libraries.
+		Mini-XML provides the following functionality:
+		- Reading of UTF-8 and UTF-16 and writing of UTF-8 encoded XML files and strings.
+		- Data is stored in a linked-list tree structure, preserving the XML data hierarchy.
+		- SAX (streamed) reading of XML files and strings to minimize memory usage.
+		- Supports arbitrary element names, attributes, and attribute values with no preset limits, just available memory.
+		- Supports integer, real, opaque ("cdata"), and text data types in "leaf" nodes.
+		- Functions for creating and managing trees of data.
+		- Find" and "walk" functions for easily locating and navigating trees of data.
+		Mini-XML doesn't do validation or other types of processing on the data based
+		upon schema files or other sources of definition information.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/michaelrsweet/mxml/issues</bugs-to>
+		<remote-id type="github">michaelrsweet/mxml</remote-id>
+	</upstream>
+</pkgmetadata>

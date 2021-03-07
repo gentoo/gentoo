@@ -1,0 +1,163 @@
+--- a/configure.in	2003-11-03 09:19:11.000000000 +0100
++++ b/configure.in	2008-07-27 21:59:45.774740303 +0200
+@@ -2,6 +2,12 @@
+ AC_INIT(main.c)
+ AC_CONFIG_HEADER(config.h)
+ 
++# test prior to AC_PROG_CC, since it sets cflags on it's own.
++if test x"CFLAGS" = x
++then
++	DEFAULT_CFLAGS="-g -Wall -O3"
++fi
++
+ dnl Checks for programs.
+ AC_PROG_CC
+ AC_PROG_INSTALL
+@@ -9,10 +15,10 @@
+ AC_SYS_LARGEFILE
+ 
+ # Thanks to Martin Pool
+-if test x"$GCC" = xyes 
++if test x"$GCC" = xyes && test x"$DEFAULT_CFLAGS" != x
+ then
+     CFLAGS="-g -Wall -O3"
+-    AC_MSG_NOTICE([Setting gcc options: $CFLAGS])
++    AC_MSG_RESULT([Setting default cflags: $CFLAGS])
+ fi
+ 
+ AC_CHECK_HEADERS(fcntl.h sys/time.h sys/unistd.h unistd.h)
+@@ -45,12 +51,8 @@
+ AC_CHECK_LIB(bz2, BZ2_bzBuffToBuffCompress, , 
+         AC_MSG_ERROR([Could not find bz2 library - please install libbz2-devel]))
+ 
+-echo $ac_n "checking for errno in errno.h... $ac_c"
+-AC_TRY_COMPILE([#include <errno.h>],[int i = errno],
+-echo yes; AC_DEFINE(HAVE_ERRNO_DECL),
+-echo no)
+-
+ AC_CHECK_FUNCS(mmap strerror)
+ AC_CHECK_FUNCS(getopt_long)
++AC_CHECK_FUNCS(strndup)
+ 
+ AC_OUTPUT(Makefile)
+--- a/main.c	2006-02-14 01:38:23.000000000 +0100
++++ b/main.c	2008-07-27 22:00:28.298071207 +0200
+@@ -18,6 +18,7 @@
+ /* rzip compression - main program */
+ 
+ #include "rzip.h"
++#include "strutils.h"
+ 
+ static void usage(void)
+ {
+--- a/rzip.h	2006-02-14 01:38:23.000000000 +0100
++++ b/rzip.h	2008-07-27 21:58:08.204752617 +0200
+@@ -94,7 +94,7 @@
+ #define strerror(i) sys_errlist[i]
+ #endif
+ 
+-#ifndef HAVE_ERRNO_DECL
++#if !defined(errno)
+ extern int errno;
+ #endif
+ 
+--- a/strutils.c	1970-01-01 01:00:00.000000000 +0100
++++ b/strutils.c	2008-07-27 21:58:08.204752617 +0200
+@@ -0,0 +1,29 @@
++/* 
++   Copyright (C) 2005 Gentoo Foundation
++   
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 2 of the License, or
++   (at your option) any later version.
++   
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++   
++   You should have received a copy of the GNU General Public License
++   along with this program; if not, write to the Free Software
++   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
++*/
++/* string utilities that may be missing on various platforms */
++
++#include "strutils.h"
++
++#ifndef HAVE_STRNDUP
++char* strndup(const char* s, size_t n) {
++	char* ret = malloc(n + 1);
++	if (ret == NULL) return(ret);
++	ret[n] = '\0';
++	return(memcpy(ret, s, n));
++}
++#endif
+--- a/strutils.h	1970-01-01 01:00:00.000000000 +0100
++++ b/strutils.h	2008-07-27 21:58:08.204752617 +0200
+@@ -0,0 +1,31 @@
++/* 
++   Copyright (C) 2005 Gentoo Foundation
++   
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 2 of the License, or
++   (at your option) any later version.
++   
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++   
++   You should have received a copy of the GNU General Public License
++   along with this program; if not, write to the Free Software
++   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
++*/
++/* string utilities that may be missing on various platforms */
++
++#ifndef _HEADER_STRUTIL
++#define _HEADER_STRUTIL 1
++
++#include <stdlib.h>
++#include <string.h>
++#include "config.h"
++
++# ifndef HAVE_STRNDUP
++char* strndup(const char* s, size_t n);
++# endif
++
++#endif
+--- a/Makefile.in	2006-02-14 01:38:23.000000000 +0100
++++ b/Makefile.in	2010-08-26 23:34:38.000000000 +0200
+@@ -3,8 +3,8 @@
+ 
+ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+-INSTALL_BIN=$(exec_prefix)/bin
+-INSTALL_MAN=$(prefix)/man
++INSTALL_BIN=$(DESTDIR)/@bindir@
++INSTALL_MAN=$(DESTDIR)/@mandir@
+ 
+ LIBS=@LIBS@
+ CC=@CC@
+@@ -20,7 +20,7 @@
+ .SUFFIXES:
+ .SUFFIXES: .c .o
+ 
+-OBJS= rzip.o runzip.o main.o stream.o util.o crc32.o
++OBJS= rzip.o runzip.o strutils.o main.o stream.o util.o crc32.o
+ 
+ # note that the -I. is needed to handle config.h when using VPATH
+ .c.o:
+@@ -35,9 +35,10 @@
+ 	${INSTALLCMD} -m 755 rzip ${INSTALL_BIN}
+ 	-mkdir -p ${INSTALL_MAN}/man1
+ 	${INSTALLCMD} -m 644 $(srcdir)/rzip.1 ${INSTALL_MAN}/man1/
++	ln -s rzip $(INSTALL_BIN)/runzip
+ 
+ rzip: $(OBJS)
+-	$(CC) $(CFLAGS) -o rzip $(OBJS) $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o rzip $(OBJS) $(LIBS)
+ 
+ rzip.1: rzip.yo
+ 	yodl2man -o rzip.1 rzip.yo

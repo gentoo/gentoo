@@ -1,0 +1,11 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -18,7 +18,7 @@
+ java_files := $(foreach dir,$(dirs),$(find_files))
+ class_files := $(patsubst $(jdir)/%.java,%.class,$(java_files))
+ 
+-JCFLAGS := -source 1.6 -encoding ISO-8859-1 -Xlint:unchecked -deprecation
++JCFLAGS := $(JAVACFLAGS) -encoding ISO-8859-1 -Xlint:unchecked -deprecation
+ 
+ # standard java compilation..
+ JAVACOMPILE := $(JAVAC) $(JCFLAGS) -sourcepath $(jdir) -d $(top_builddir)

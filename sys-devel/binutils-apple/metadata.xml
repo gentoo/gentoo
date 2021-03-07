@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>prefix@gentoo.org</email>
+		<name>Gentoo Prefix</name>
+	</maintainer>
+	<use>
+		<flag name="lto">Add support for Link-Time Optimization with LLVM</flag>
+		<flag name="classic">Use nm, otool, etc. from this ebuild
+			instead of llvm-based tools</flag>
+		<flag name="tapi">Build against <pkg>sys-libs/tapi</pkg></flag>
+	</use>
+</pkgmetadata>

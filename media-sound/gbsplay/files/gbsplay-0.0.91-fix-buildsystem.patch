@@ -1,0 +1,32 @@
+Fix linking failure due to different GCC5 inline semantics
+https://bugs.gentoo.org/show_bug.cgi?id=571000
+
+In addition, fix QA warnings caused by passing
+an unformatted string to printf().
+
+--- gbsplay-0.0.91/Makefile
++++ gbsplay-0.0.91/Makefile
+@@ -35,7 +35,7 @@
+ 	-predboolothers \
+ 	-shiftnegative \
+ 	-shiftimplementation
+-GBSCFLAGS  := -Wall -fsigned-char -D_FORTIFY_SOURCE=2
++GBSCFLAGS  := -Wall -fsigned-char -std=gnu89
+ GBSLDFLAGS := -Wl,-O1 -lm
+ GBSPLAYLDFLAGS :=
+ 
+--- gbsplay-0.0.91/plugout.c
++++ gbsplay-0.0.91/plugout.c
+@@ -55,10 +55,10 @@
+ {
+ 	long idx;
+ 
+-	printf(_("Available output plugins:\n\n"));
++	fputs(_("Available output plugins:\n\n"), stdout);
+ 
+ 	if (plugouts[0] == NULL) {
+-		printf(_("No output plugins available.\n\n"));
++		fputs(_("No output plugins available.\n\n"), stdout);
+ 		return;
+ 	}
+ 

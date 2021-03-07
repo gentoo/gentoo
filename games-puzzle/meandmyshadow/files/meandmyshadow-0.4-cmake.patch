@@ -1,0 +1,17 @@
+--- meandmyshadow-0.4.orig/CMakeLists.txt
++++ meandmyshadow-0.4/CMakeLists.txt
+@@ -15,13 +15,12 @@
+ Find_Package(CURL REQUIRED)
+ Find_Package(LibArchive REQUIRED)
+ Find_Package(OpenSSL REQUIRED)
++Find_Package(X11 REQUIRED)
+ 
+ #Use openGL only when compiling with HARDWARE_ACCELERATION.
+ #Otherwise we try to find XLib.
+ if(HARDWARE_ACCELERATION)
+ 	Find_Package(OpenGL REQUIRED)
+-else(HARDWARE_ACCELERATION)
+-	INCLUDE(FindX11)
+ endif(HARDWARE_ACCELERATION)
+ 
+ #Add the include dirs of the libraries.

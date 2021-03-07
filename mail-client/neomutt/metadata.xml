@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>nicolasbock@gentoo.org</email>
+		<name>Nicolas Bock</name>
+	</maintainer>
+	<use>
+		<flag name="berkdb">Enable BDB (Berkley DB) backend for header
+			caching</flag>
+		<flag name="gdbm">Enable GDBM (GNU dbm) backend for header
+			caching</flag>
+		<flag name="kyotocabinet">Enable Kyoto Cabinet database backend for
+			header caching</flag>
+		<flag name="lmdb">Enable LMDB (Lightning Memory-Mapped Database)
+			backend for header caching</flag>
+		<flag name="notmuch">Enable support for
+			<pkg>net-mail/notmuch</pkg></flag>
+		<flag name="qdbm">Enable QDBM (Quicker Database Manager) database
+			backend for header caching</flag>
+		<flag name="tokyocabinet">Enable Tokyo Cabinet database backend for
+			header caching</flag>
+		<flag name="pgp-classic">Build classic-pgp backend to support PGP/MIME
+			and traditional/inline PGP</flag>
+		<flag name="gpgme">Build gpgme backend to support S/MIME, PGP/MIME and
+			traditional/inline PGP</flag>
+		<flag name="smime-classic">Build classic-smime backend to support
+			S/MIME</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">neomutt/neomutt</remote-id>
+	</upstream>
+</pkgmetadata>

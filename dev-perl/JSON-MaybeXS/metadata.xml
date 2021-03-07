@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <use>
+    <flag name="xs">Install a C-Based backend to make JSON encode/decode fast</flag>
+  </use>
+  <upstream>
+    <remote-id type="cpan">JSON-MaybeXS</remote-id>
+    <remote-id type="cpan-module">JSON::MaybeXS</remote-id>
+  </upstream>
+</pkgmetadata>

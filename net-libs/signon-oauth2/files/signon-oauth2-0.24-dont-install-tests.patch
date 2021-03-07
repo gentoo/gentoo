@@ -1,0 +1,11 @@
+--- a/tests/tests.pro	2018-05-29 22:51:43.766914590 +0200
++++ b/tests/tests.pro	2018-05-29 22:52:45.247259336 +0200
+@@ -32,8 +32,6 @@
+ target.path = $${INSTALL_PREFIX}/bin
+ testsuite.path = $${INSTALL_PREFIX}/share/$$TARGET
+ testsuite.files = tests.xml
+-INSTALLS += target \
+-    testsuite
+ 
+ check.depends = $$TARGET
+ check.commands = ./$$TARGET || :

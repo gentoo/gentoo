@@ -1,0 +1,8 @@
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+ROLLERD_CMD="rollerd"
+ROLLERD_RRFILE="/etc/dnssec-tools/dnssec-tools.rollrec"
+ROLLERD_KRFDIR="/var/bind/pri"
+ROLLERD_OPTS=""
+

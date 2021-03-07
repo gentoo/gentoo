@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>asturm@gentoo.org</email>
+		<name>Andreas Sturmlechner</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>sound@gentoo.org</email>
+		<name>Gentoo Sound project</name>
+	</maintainer>
+	<use>
+		<flag name="ampache">Support controlling audacious via ampache</flag>
+		<flag name="bs2b">Enable Bauer Bauer stereophonic-to-binaural headphone filter</flag>
+		<flag name="cue">Support CUE sheets using the libcue library</flag>
+		<flag name="fluidsynth">Support FluidSynth as MIDI synth backend</flag>
+		<flag name="gme">Support various gaming console music formats</flag>
+		<flag name="http">Support HTTP streams through neon</flag>
+		<flag name="scrobbler">Build with scrobbler/LastFM submission support</flag>
+		<flag name="sid">Build with SID (Commodore 64 Audio) support</flag>
+		<flag name="soxr">Build with SoX Resampler support</flag>
+		<flag name="speedpitch">Enable speed/pitch effects</flag>
+		<flag name="streamtuner">Build the streamtuner plugin</flag>
+	</use>
+</pkgmetadata>

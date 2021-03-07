@@ -1,0 +1,32 @@
+--- a/src/scusibot.cpp
++++ b/src/scusibot.cpp
+@@ -5,6 +5,7 @@
+ #include "stationarygun.hpp"
+ #include "global.hpp"
+ #include <vector>
++#include <algorithm>
+ 
+ ScusiBot::ScusiBot()
+ 	: m_event( Event::EMPTY ), m_count( 0 ), m_state( IDLE ) {
+--- a/src/gameinfowindow.cpp
++++ b/src/gameinfowindow.cpp
+@@ -10,6 +10,8 @@
+ #include "avatarworm.hpp"
+ #include "wopsprites.hpp"
+ #include "wopsprites.cpp"
++#include "spriteset.cpp"
++#include "spritesequence.cpp"
+ #include "scorekeeper.hpp"
+ #include "wopgui.hpp"
+ 
+--- a/src/map.cpp
++++ b/src/map.cpp
+@@ -9,6 +9,8 @@
+ #include "world.hpp"
+ #include "wopsettings.hpp"
+ #include "objectpaths.hpp"
++#include "spriteset.cpp"
++#include "spritesequence.cpp"
+ 
+ /**********************************************************/
+ 

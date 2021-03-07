@@ -1,0 +1,13 @@
+--- a/dtest
++++ b/dtest
+@@ -26,6 +26,10 @@ done
+ echo " $count tests succeeded"
+ echo 'All unit tests passed' >> $TMP
+ 
++if [[ -n "${ONLY_UNIT_TESTS}" ]] ; then
++	exit 0
++fi
++
+ # Assume AUTO_INCREMENT id column in images table will get 1 in
+ # load_jpeg call below, since we reset the DB before doing it.
+ export QUERY_STRING=id=1

@@ -1,0 +1,12 @@
+--- a/lib/device/dev-io.c
++++ b/lib/device/dev-io.c
+@@ -505,7 +505,9 @@
+ 			dev->flags |= DEV_NOT_O_NOATIME;
+ 			if ((dev->fd = open(name, flags, 0777)) >= 0) {
+ 				log_debug_devs("%s: Not using O_NOATIME", name);
++#ifdef O_DIRECT_SUPPORT
+ 				goto opened;
++#endif
+ 			}
+ 		}
+ #endif

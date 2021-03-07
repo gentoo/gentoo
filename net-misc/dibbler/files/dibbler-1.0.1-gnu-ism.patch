@@ -1,0 +1,83 @@
+From f8352ac6dfc61a99b1162e0fd28d30b1e9340fde Mon Sep 17 00:00:00 2001
+From: Robert Gerus <arachnist@i.am-a.cat>
+Date: Thu, 11 Jun 2015 21:34:39 +0200
+Subject: [PATCH] Compatybility patch for musl
+
+Minor header/include/typedef changes to fix compatybility with musl libc.
+Doesn't break compatybility with glibc, as far as I can tell.
+---
+ Misc/Portable.h.in                     | 4 ++++
+ Port-linux/ethtool-local.h             | 6 +++---
+ Port-linux/lowlevel-linux-link-state.c | 4 +++-
+ Port-linux/utils.h                     | 5 +++++
+ 4 files changed, 15 insertions(+), 4 deletions(-)
+
+diff --git a/Misc/Portable.h.in b/Misc/Portable.h.in
+index 1a96293..2d94d0d 100644
+--- a/Misc/Portable.h.in
++++ b/Misc/Portable.h.in
+@@ -29,6 +29,10 @@
+ #include <arpa/inet.h>
+ #endif
+ 
++#if defined(LINUX)
++# include <sys/select.h>
++#endif
++
+ #include <stdint.h>
+ #include <unistd.h>
+ 
+diff --git a/Port-linux/ethtool-local.h b/Port-linux/ethtool-local.h
+index 2940090..555f06b 100644
+--- a/Port-linux/ethtool-local.h
++++ b/Port-linux/ethtool-local.h
+@@ -22,9 +22,9 @@
+  */
+ 
+ typedef unsigned long long u64;
+-typedef __uint32_t u32;        
+-typedef __uint16_t u16;        
+-typedef __uint8_t u8;          
++typedef uint32_t u32;        
++typedef uint16_t u16;        
++typedef uint8_t u8;          
+ 
+ #include "ethtool-kernel.h"
+ 
+diff --git a/Port-linux/lowlevel-linux-link-state.c b/Port-linux/lowlevel-linux-link-state.c
+index 7ca9f6b..76293ea 100644
+--- a/Port-linux/lowlevel-linux-link-state.c
++++ b/Port-linux/lowlevel-linux-link-state.c
+@@ -18,7 +18,9 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <unistd.h>
+-#include <bits/sigthread.h>
++#if defined(__GLIBC__)
++# include <bits/sigthread.h>
++#endif
+ #include "Portable.h"
+ #include "interface.h"
+ 
+diff --git a/Port-linux/utils.h b/Port-linux/utils.h
+index e40d95f..579dffb 100644
+--- a/Port-linux/utils.h
++++ b/Port-linux/utils.h
+@@ -1,9 +1,14 @@
+ #ifndef __UTILS_H__
+ #define __UTILS_H__ 1
+ 
++#ifndef _GNU_SOURCE
++# define _GNU_SOURCE 1
++#endif
++
+ #include <asm/types.h>
+ //#include <resolv.h>
+ #include <linux/types.h>
++#include <sys/types.h>
+ 
+ #include "libnetlink.h"
+ #include "ll_map.h"
+-- 
+2.4.3
+

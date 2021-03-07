@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		This package provides a MySQL driver for HDBC, implemented via
+		bindings to the C @mysqlclient@ library.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">bos/hdbc-mysql</remote-id>
+	</upstream>
+</pkgmetadata>

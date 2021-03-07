@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<use>
+		<flag name="share">Install <pkg>kde-frameworks/purpose</pkg> for share file context menu actions in <pkg>kde-apps/dolphin</pkg></flag>
+		<flag name="thumbnail">Install <pkg>kde-apps/ffmpegthumbs</pkg> and <pkg>kde-apps/thumbnailers</pkg> for thumbnail generation in <pkg>kde-apps/dolphin</pkg></flag>
+		<flag name="webengine">Enable <pkg>www-client/falkon</pkg> which depends on <pkg>dev-qt/qtwebengine</pkg></flag>
+	</use>
+</pkgmetadata>

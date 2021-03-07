@@ -1,0 +1,10 @@
+--- a/delay.c
++++ b/delay.c
+@@ -17,6 +17,7 @@
+ */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <time.h>
+ #include <sys/time.h>
+ #include <unistd.h>

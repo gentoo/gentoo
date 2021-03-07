@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zerochaos@gentoo.org</email>
+		<name>Rick Farina</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>radio@gentoo.org</email>
+		<name>Radio</name>
+	</maintainer>
+	<use>
+		<flag name="airspy">use native backend which directly uses <pkg>net-wireless/airspy</pkg></flag>
+		<flag name="audio">use a soundcard instead of an sdr</flag>
+		<flag name="bladerf">use native backend which directly uses <pkg>net-wireless/bladerf</pkg></flag>
+		<flag name="hackrf">use native backend which directly uses <pkg>net-libs/libhackrf</pkg></flag>
+		<flag name="limesdr">use native backend which directly uses <pkg>net-wireless/limesuite</pkg></flag>
+		<flag name="plutosdr">use native backend which directly uses <pkg>net-libs/libiio</pkg></flag>
+		<flag name="rtlsdr">use native backend which directly uses <pkg>net-wireless/rtl-sdr</pkg></flag>
+		<flag name="sdrplay">use native backend which directly uses <pkg>net-wireless/sdrplay</pkg></flag>
+		<flag name="uhd">use native backend which directly uses <pkg>net-wireless/uhd</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">jopohl/urh</remote-id>
+	</upstream>
+</pkgmetadata>

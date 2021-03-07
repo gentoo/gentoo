@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>leio@gentoo.org</email>
+	</maintainer>
+	<longdescription lang="en">
+		Getting Things Gnome! (gtg) is a personal organizer for the GNOME desktop that
+		was inspired by the Getting Things Done methodology (GTD). It is not a GTD only
+		software as it aims for flexibility, adaptability and ease of use.
+
+		GTG wants to help you to track everything you need to do and need to know, from
+		very small tasks to big projects.
+
+		GTG uses a very handy text edition system for task creation and edition.
+		The task editor can automatically recognize metadata such as tags and subtasks
+		only by the use of a very simple syntax.
+	</longdescription>
+	<upstream>
+		<remote-id type="launchpad">gtg</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/750206
+--- a/Data/Concurrent/Deque/Reference.hs
++++ b/Data/Concurrent/Deque/Reference.hs
+@@ -27,7 +27,7 @@ import Data.IORef
+ 
+ #ifdef USE_CAS
+ #warning "abstract-deque: reference implementation using CAS..."
+-import Data.CAS (atomicModifyIORefCAS)
++import Data.Atomics (atomicModifyIORefCAS)
+ -- Toggle these and compare performance:
+ modify = atomicModifyIORefCAS
+ _is_using_CAS = True

@@ -1,0 +1,12 @@
+diff -Nru pcf2bdf-orig/pcf2bdf.cc pcf2bdf/pcf2bdf.cc
+--- pcf2bdf-orig/pcf2bdf.cc	2006-10-08 21:12:13.000000000 +0200
++++ pcf2bdf/pcf2bdf.cc	2006-10-08 21:12:40.000000000 +0200
+@@ -599,7 +599,7 @@
+     fclose(ifp);
+     char buf[1024];
+     sprintf(buf, "gzip -dc %s", ifilename); // TODO
+-    ifp = popen(buf, "rb");
++    ifp = popen(buf, "r");
+     _setmode(fileno(ifp), O_BINARY);
+     read_bytes = 0;
+     if (!ifp)

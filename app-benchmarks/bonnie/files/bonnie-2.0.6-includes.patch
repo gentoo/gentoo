@@ -1,0 +1,13 @@
+--- a/Bonnie.c	1996-08-28 18:23:49.000000000 +0200
++++ b/Bonnie.c	2010-10-12 20:15:26.000000000 +0200
+@@ -29,6 +29,10 @@
+ #include <fcntl.h>
+ #include <sys/types.h>
+ #include <sys/time.h>
++#include <time.h>
++#include <string.h>
++#include <stdlib.h>
++#include <sys/wait.h>
+ #if defined(SysV)
+ #include <limits.h>
+ #include <sys/times.h>

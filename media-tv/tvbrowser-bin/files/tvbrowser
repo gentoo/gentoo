@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# These variables are induced by the ebuild during the build process
+P=
+JAVA_SLOT=
+
+POSSIBLE_JAVA_PROGRAM_DIRS=(
+    /usr/lib*/openjdk-${JAVA_SLOT}
+    /opt/openjdk-bin-${JAVA_SLOT}
+    /opt/openjdk-jre-bin-${JAVA_SLOT}
+)
+
+for POSSIBLE_DIR in ${POSSIBLE_JAVA_PROGRAM_DIRS[@]}; do
+    if [[ -x ${POSSIBLE_DIR}/bin/java ]]; then
+	export JAVA_PROGRAM_DIR="${POSSIBLE_DIR}/bin/"
+	break
+    fi
+done
+
+if [ -z "$JAVA_PROGRAM_DIR" ]; then
+    echo "Could not find a suitable Java ${JAVA_SLOT} installation!"
+    exit 1
+fi
+
+cd "/opt/${P}"
+echo ${JAVA_PROGRAM_DIR}java -Xms16m -Xmx1G --module-path="lib:tvbrowser.jar" -Djava.library.path="./" -splash:imgs/splash.png -Dpropertiesfile=linux.properties -m tvbrowser/tvbrowser.TVBrowser "$@"
+${JAVA_PROGRAM_DIR}java -Xms16m -Xmx1G --module-path="lib:tvbrowser.jar" -Djava.library.path="./" -splash:imgs/splash.png -Dpropertiesfile=linux.properties -m tvbrowser/tvbrowser.TVBrowser "$@"
+

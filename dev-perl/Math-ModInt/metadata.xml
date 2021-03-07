@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Math-ModInt</remote-id>
+    <remote-id type="cpan-module">Math::ModInt</remote-id>
+    <remote-id type="cpan-module">Math::ModInt::BigInt</remote-id>
+    <remote-id type="cpan-module">Math::ModInt::ChineseRemainder</remote-id>
+    <remote-id type="cpan-module">Math::ModInt::Event</remote-id>
+    <remote-id type="cpan-module">Math::ModInt::Event::Trap</remote-id>
+    <remote-id type="cpan-module">Math::ModInt::GF2</remote-id>
+    <remote-id type="cpan-module">Math::ModInt::GF3</remote-id>
+    <remote-id type="cpan-module">Math::ModInt::Perl</remote-id>
+    <remote-id type="cpan-module">Math::ModInt::Trivial</remote-id>
+  </upstream>
+</pkgmetadata>

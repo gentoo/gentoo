@@ -1,0 +1,19 @@
+# Global start/restart/stop options
+#
+OPTIONS="-tvv"
+
+# Start options
+#
+STARTOPTIONS=""
+
+# Stop options
+#
+STOPOPTIONS=""
+
+# Reload options
+#
+RELOADOPTIONS=""
+
+# Restart options
+#
+RESTARTOPTIONS=""

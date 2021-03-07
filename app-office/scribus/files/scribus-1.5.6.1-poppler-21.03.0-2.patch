@@ -1,0 +1,27 @@
+From 6b9ff916959bcb941866f0bd86da639a421337f8 Mon Sep 17 00:00:00 2001
+From: Jean Ghali <jghali@libertysurf.fr>
+Date: Mon, 1 Mar 2021 22:00:02 +0000
+Subject: [PATCH] Attempt to fix build of pdf import plugin with poppler
+ 21.03.0
+
+git-svn-id: svn://scribus.net/trunk/Scribus@24538 11d20701-8431-0410-a711-e3c959e3b870
+---
+ scribus/plugins/import/pdf/slaoutput.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/scribus/plugins/import/pdf/slaoutput.cpp b/scribus/plugins/import/pdf/slaoutput.cpp
+index d1b37a0c21..de0a4145ef 100644
+--- a/scribus/plugins/import/pdf/slaoutput.cpp
++++ b/scribus/plugins/import/pdf/slaoutput.cpp
+@@ -2336,7 +2336,11 @@ GBool SlaOutputDev::tilingPatternFill(GfxState *state, Gfx * /*gfx*/, Catalog *c
+ 	// Unset the clip path as it is unrelated to the pattern's coordinate space.
+ 	QPainterPath savedClip = m_currentClipPath;
+ 	m_currentClipPath = QPainterPath();
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(21, 3, 0)
++	gfx->display(tPat->getContentStream());
++#else
+ 	gfx->display(str);
++#endif
+ 	m_currentClipPath = savedClip;
+ 	inPattern--;
+ 	gElements = m_groupStack.pop();

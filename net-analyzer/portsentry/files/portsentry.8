@@ -1,0 +1,151 @@
+.TH PORTSENTRY 8
+.\" NAME should be all caps, SECTION should be 1-8, maybe w/ subsection
+.\" other parms are allowed: see man(7), man(1)
+.SH NAME
+portsentry \- detect portscan activity
+.SH SYNOPSIS
+.B portsentry
+.I "[ \-tcp | \-stcp | \-atcp ]"
+.br
+.B portsentry
+.I "[ \-udp | \-sudp | \-audp ]"
+.SH "DESCRIPTION"
+This manual page documents briefly the
+.BR portsentry
+command.
+This manual page was written for the Debian GNU/Linux distribution
+because the original program does not have a manual page.
+.PP
+.B portsentry
+is a program that tries to detect portscans on network interfaces with the ability to detect stealth scans. On alarm portsentry can block the scanning machine via hosts.deny (see
+.BR hosts_access (5),
+firewall rule (see
+.BR ipfwadm (8) ,
+.BR ipchains (8)
+and
+.BR iptables (8))
+or dropped route (see
+.BR route (8)).
+.SH OPTIONS
+For details on the various modes see
+.I /usr/doc/portsentry/README.install
+.
+.TP
+.B \-tcp
+tcp portscan detection on ports specified under 
+.I TCP_PORTS 
+in the config file 
+.IR /etc/portsentry/portsentry.conf . 
+.TP
+.B \-stcp
+As above but additionally detect stealth scans.
+.TP
+.B \-atcp
+Advanced tcp or inverse mode. Portsentry binds to all unused ports below 
+.I ADVANCED_PORTS_TCP 
+given in the config file
+.IR /etc/portsentry/portsentry.conf .
+
+.TP
+.B \-udp
+udp portscan detection on ports specified under
+.I UDP_PORTS
+in the config file
+.IR /etc/portsentry/portsentry.conf .
+.TP
+.B \-sudp
+As above but additionally detect "stealth" scans.
+.TP
+.B \-audp
+Advanced udp or inverse mode. Portsentry binds to all unused ports below 
+.I ADVANCED_PORTS_UDP 
+given in the config file
+.IR /etc/portsentry/portsentry.conf .
+
+.SH "CONFIGURATION FILES"
+.B portsentry
+keeps all its configuration files in 
+.BR /etc/portsentry. 
+.B portsentry.conf 
+is
+.BR portsentry 's
+main configuration file. See 
+.BR portsentry.conf (5) 
+for details.
+
+The file 
+.BR portsentry.ignore
+contains a list of all hosts that are ignored, if they connect to a tripwired
+port. It should contain at least the localhost(127.0.0.1), 0.0.0.0 and the IP addresses of all local interfaces. You can ignore whole subnets by using a notation <IP Address>/<Netmask Bits>. It is  *not* recommend putting in every machine IP on your network. It may be important for you to see who is connecting to you, even if it is a "friendly" machine. This can help you detect internal host compromises faster.
+
+If you use the
+.IR /etc/init.d/portsentry
+script to start the daemon,
+.BR portsentry.ignore
+is rebuild on each start of the daemon using 
+.BR portsentry.ignore.static
+and all the IP addresses found on the machine via
+.BR ifconfig .
+
+.BR /etc/default/portsenty 
+specifies in which protocol modes
+.B portsentry 
+should be startet from
+.IR /etc/init.d/portsentry 
+There are currently two options:
+.TP
+.B TCP_MODE=
+either
+.BR tcp ", " stcp " or " atcp " (see " OPTIONS " above)."
+.TP
+.B UDP_MODE=
+either
+.BR udp ", " sudp " or " audp " (see " OPTIONS " above)."
+
+.PP
+The options above correspond to portsentry's commandline arguments. For example
+.B TCP_MODE="atcp"
+has the same effect as to start portsentry using
+.BR portsentry " " -atcp.
+Only one mode per protocol can be started at a time (i.e. one tcp and one udp mode).
+
+.SH "FILES"
+.BR /etc/portsentry/portsentry.conf
+main configuration file
+.TP
+.BR /etc/portsentry/portsentry.ignore
+IP addresses to ignore
+.TP
+.BR /etc/portsentry/portsentry.ignore.static
+static IP addresses to ignore
+.TP
+.BR /etc/default/portsentry
+startup options
+.TP
+.BR /etc/init.d/portsentry
+script responsible for starting and stopping the daemon
+.TP
+.BR /var/lib/portsentry/portsentry.blocked.*
+blocked hosts(cleared upon reload)
+.TP
+.BR /var/lib/portsentry/portsentry.history
+history file
+.LP
+.SH "SEE ALSO"
+.BR portsentry.conf(5),
+.BR hosts_access(5),
+.BR hosts_options(5),
+.BR route(8),
+.BR ipfwadm(8),
+.BR ipchains(8),
+.BR iptables(8),
+.BR ifconfig(8)
+
+.BR /usr/share/doc/portsentry/README.install
+.LP
+.SH AUTHOR
+.B portsentry
+was written by Craig H. Howland
+.B <crowland@users.sf.net>.
+
+This manual page was stitched together by Guido Guenther <agx@debian.org>, for the Debian GNU/Linux system (but may be used by others). Some parts are just a cut and paste from the original documentation.

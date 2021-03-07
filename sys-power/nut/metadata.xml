@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>robbat2@gentoo.org</email>
+		<name>Robin H. Johnson</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="ipmi">Support IPMI-based UPSes.</flag>
+		<flag name="ups_drivers_al175">Driver for Eltek UPS models with AL175 alarm module</flag>
+		<flag name="ups_drivers_bcmxcp">Driver for UPSes supporting the serial BCM/XCP protocol</flag>
+		<flag name="ups_drivers_belkin">Driver for Belkin serial UPS equipment</flag>
+		<flag name="ups_drivers_belkinunv">Driver for Belkin "Universal UPS" and compatible</flag>
+		<flag name="ups_drivers_bestfcom">Driver for Best Power Fortress/Ferrups</flag>
+		<flag name="ups_drivers_bestfortress">Driver for old Best Fortress UPS equipment</flag>
+		<flag name="ups_drivers_bestuferrups">Driver for Best Power Micro-Ferrups</flag>
+		<flag name="ups_drivers_bestups">Driver for Best Power / SOLA (Phoenixtec protocol) UPS equipment</flag>
+		<flag name="ups_drivers_dummy-ups">Driver for multi-purpose UPS emulation</flag>
+		<flag name="ups_drivers_etapro">Driver for ETA UPS equipment</flag>
+		<flag name="ups_drivers_everups">Driver for Ever UPS models</flag>
+		<flag name="ups_drivers_gamatronic">Driver for Gamatronic UPS equipment</flag>
+		<flag name="ups_drivers_genericups">Driver for contact-closure UPS equipment</flag>
+		<flag name="ups_drivers_isbmex">Driver for ISBMEX UPS equipment</flag>
+		<flag name="ups_drivers_liebert">Driver for Liebert contact-closure UPS equipment</flag>
+		<flag name="ups_drivers_liebert-esp2">Driver for Liebert UPS, using the ESP-II serial protocol</flag>
+		<flag name="ups_drivers_masterguard">Driver for Masterguard UPS equipment</flag>
+		<flag name="ups_drivers_metasys">Driver for Meta System UPS equipment</flag>
+		<flag name="ups_drivers_mge-utalk">Driver for MGE UPS SYSTEMS UTalk protocol equipment</flag>
+		<flag name="ups_drivers_microdowell">Driver for Microdowell Enterprise UPS series</flag>
+		<flag name="ups_drivers_mge-shut">Driver for SHUT Protocol UPS equipment</flag>
+		<flag name="ups_drivers_oldmge-shut">Driver for SHUT Protocol UPS equipment (older implementation)</flag>
+		<flag name="ups_drivers_oneac">Driver for Oneac UPS equipment</flag>
+		<flag name="ups_drivers_optiups">Driver for Opti-UPS (Viewsonic) UPS and Zinto D (ONLINE-USV) equipment</flag>
+		<flag name="ups_drivers_powercom">UPS driver for serial Powercom/Trust/Advice UPS equipment</flag>
+		<flag name="ups_drivers_rhino">Driver for Brazilian Microsol RHINO UPS equipment</flag>
+		<flag name="ups_drivers_safenet">Driver for SafeNet compatible UPS equipment</flag>
+		<flag name="ups_drivers_solis">Driver for Brazilian Microsol SOLIS UPS equipment</flag>
+		<flag name="ups_drivers_tripplite">Driver for Tripp-Lite SmartPro UPS equipment</flag>
+		<flag name="ups_drivers_tripplitesu">Driver for Tripp-Lite SmartOnline (SU) UPS equipment</flag>
+		<flag name="ups_drivers_upscode2">Driver for UPScode II compatible UPS equipment</flag>
+		<flag name="ups_drivers_victronups">Driver for IMV/Victron UPS unit Match, Match Lite, NetUps</flag>
+		<flag name="ups_drivers_powerpanel">Driver for PowerPanel Plus compatible UPS equipment</flag>
+		<flag name="ups_drivers_blazer_ser">Driver for Megatec/Q1 protocol serial based UPS equipment</flag>
+		<flag name="ups_drivers_clone">Fake driver to clone outlets for device grouping</flag>
+		<flag name="ups_drivers_clone-outlet">Fake driver to clone outlets for device grouping</flag>
+		<flag name="ups_drivers_ivtscd">driver for the IVT Solar Controller Device</flag>
+		<flag name="ups_drivers_apcsmart">Driver for American Power Conversion Smart Protocol UPS equipment</flag>
+		<flag name="ups_drivers_apcsmart-old">Driver for American Power Conversion Smart Protocol UPS equipment</flag>
+		<flag name="ups_drivers_apcupsd-ups">Driver for apcupsd client access</flag>
+		<flag name="ups_drivers_riello_ser">Driver for Riello UPS Protocol UPS equipment</flag>
+		<flag name="ups_drivers_nutdrv_qx">Driver for Q* protocol serial and USB based UPS equipment</flag>
+		<flag name="ups_drivers_usbhid-ups">Driver for USB/HID UPS equipment</flag>
+		<flag name="ups_drivers_bcmxcp_usb">Experimental driver for UPSes supporting the BCM/XCP protocol over USB</flag>
+		<flag name="ups_drivers_tripplite_usb">Driver for older Tripp Lite USB UPSes (not PDC HID)</flag>
+		<flag name="ups_drivers_blazer_usb">Driver for Megatec/Q1 protocol USB based UPS equipment</flag>
+		<flag name="ups_drivers_richcomm_usb">Driver UPS equipment using Richcomm dry-contact to USB solution</flag>
+		<flag name="ups_drivers_riello_usb">Driver for Riello UPS Protocol UPS equipment via USB</flag>
+		<flag name="ups_drivers_netxml-ups">Driver for Eaton / MGE Network Management Card / Proxy (XML/HTTP Protocol) equipment</flag>
+		<flag name="ups_drivers_snmp-ups">Multi-MIB Driver for SNMP UPS equipment</flag>
+		<flag name="ups_drivers_nut-ipmipsu">Driver for IPMI Power Supply Units (PSU)</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">networkupstools/nut</remote-id>
+		<bugs-to>https://github.com/networkupstools/nut/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

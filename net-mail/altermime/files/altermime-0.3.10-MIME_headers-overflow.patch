@@ -1,0 +1,13 @@
+http://bugs.gentoo.org/320785
+
+--- a/MIME_headers.c
++++ b/MIME_headers.c
+@@ -2243,7 +2243,7 @@
+ 		{
+ 			if (MIMEH_DNORMAL) LOGGER_log("%s:%d:MIME_parse_contentlocation:DEBUG: filename = %s\n", FL, p);
+ 			snprintf(hinfo->name, sizeof(hinfo->name),"%s",p);
+-			snprintf(hinfo->filename, sizeof(hinfo->name),"%s",p);
++			snprintf(hinfo->filename, sizeof(hinfo->filename),"%s",p);
+ 			FNFILTER_filter(hinfo->filename, _MIMEH_FILENAMELEN_MAX);
+ 			SS_push(&(hinfo->ss_filenames), hinfo->filename, strlen(hinfo->filename));
+ 

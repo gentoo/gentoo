@@ -1,0 +1,24 @@
+--- a/mscompress.c
++++ b/mscompress.c
+@@ -25,6 +25,7 @@
+ #include <unistd.h>
+ #include <fcntl.h>
+ #include <string.h>
++#include <stdint.h>
+ #ifdef HAVE_GETOPT_H
+ #include <getopt.h>
+ #else
+@@ -156,10 +157,10 @@
+   int ch, i, run, len, match, size, mask;
+   char buf[17];
+   struct stat st;
+-  unsigned long magic1;
+-  unsigned long magic2;
++  uint32_t magic1;
++  uint32_t magic2;
+   unsigned short magic3;
+-  unsigned long filesize;
++  uint32_t filesize;
+ 
+   /* 28.5 kB */
+   buffer = malloc (N + F + (N + 1 + N + N + 256) * sizeof (int));

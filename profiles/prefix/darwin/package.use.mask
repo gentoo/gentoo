@@ -1,0 +1,38 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2020-12-01)
+# Needs more work to make bindings build
+dev-db/qdbm java perl ruby
+
+# Fabian Groffen <grobian@gentoo.org> (2016-04-06)
+# dev-libs/re2 needs love, bug #563932
+app-misc/sphinx re2
+
+# Fabian Groffen <grobian@gentoo.org> (2016-01-10)
+# libutempter isn't ported for Darwin, bug #506494
+net-misc/mosh utempter
+
+# Fabian Groffen <grobian@gentoo.org> (2015-05-26)
+# Avoid pulling in broken and unnecessary ossp-uuid, bug #324527
+dev-db/postgresql uuid
+
+# Fabian Groffen <grobian@gentoo.org> (2012-03-24)
+# There's no upstream support for MPI on Darwin
+media-gfx/tachyon mpi
+
+# Fabian Groffen <grobian@gentoo.org> (2012-01-01)
+# gdb server is not supported on this platform
+sys-devel/gdb server
+
+# Fabian Groffen <grobian@gentoo.org> (2011-01-08)
+# Darwin has libuuid from util-linux
+x11-libs/libSM -uuid
+
+# Fabian Groffen <grobian@gentoo.org> (2009-10-30)
+# linux only
+media-video/mplayer dvb lirc jack joystick
+
+# Elias Pipping <pipping@gentoo.org> (2007-11-16)
+# make fails
+sys-devel/gcc objc-gc

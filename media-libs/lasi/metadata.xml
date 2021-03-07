@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  libLASi is a library written by Larry Siden that provides a C++
+  stream output interface for creating Postscript documents that can
+  contain characters from any of the scripts and symbol blocks
+  supported in Unicode and by Owen Taylor's Pango layout engine.
+  The library accomodates right-to-left scripts such as Arabic
+  and Hebrew as easily as left-to-right scripts. Indic and Indic-derived
+  Complex Text Layout (CTL) scripts, such as Devanagari, Thai, Lao, and
+  Tibetan are supported to the extent provided by Pango and by the
+  OpenType fonts installed on your system. All of this is provided
+  without need for any special configuration or layout calculation on
+  the programmer's part.
+  libLASi was designed for projects which require the ability to
+  produce Postscript independent of any one application framework.
+</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">lasi</remote-id>
+  </upstream>
+</pkgmetadata>

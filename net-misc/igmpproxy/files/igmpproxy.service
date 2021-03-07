@@ -1,0 +1,10 @@
+[Unit]
+Description=IGMPproxy
+After=network-online.target
+
+[Service]
+ExecStart=igmpproxy /etc/igmpproxy.conf
+Type=simple
+
+[Install]
+WantedBy=network.target

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Data-Stream-Bulk</remote-id>
+    <remote-id type="cpan-module">Data::Stream::Bulk</remote-id>
+    <remote-id type="cpan-module">Data::Stream::Bulk::Array</remote-id>
+    <remote-id type="cpan-module">Data::Stream::Bulk::Callback</remote-id>
+    <remote-id type="cpan-module">Data::Stream::Bulk::Cat</remote-id>
+    <remote-id type="cpan-module">Data::Stream::Bulk::Chunked</remote-id>
+    <remote-id type="cpan-module">Data::Stream::Bulk::DBI</remote-id>
+    <remote-id type="cpan-module">Data::Stream::Bulk::DBIC</remote-id>
+    <remote-id type="cpan-module">Data::Stream::Bulk::DoneFlag</remote-id>
+    <remote-id type="cpan-module">Data::Stream::Bulk::FileHandle</remote-id>
+    <remote-id type="cpan-module">Data::Stream::Bulk::Filter</remote-id>
+    <remote-id type="cpan-module">Data::Stream::Bulk::Nil</remote-id>
+    <remote-id type="cpan-module">Data::Stream::Bulk::Path::Class</remote-id>
+    <remote-id type="cpan-module">Data::Stream::Bulk::Util</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		The Block Triangular Form is a library of routines offering
+		permutation of an unsymmetric matrix (square or rectangular) into
+		its block upper triangular form (more precisely, it computes a
+		Dulmage-Mendelsohn decomposition).
+	</longdescription>
+</pkgmetadata>

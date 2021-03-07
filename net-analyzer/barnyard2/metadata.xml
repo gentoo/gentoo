@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>patrick@gentoo.org</email>
+		<name>Patrick Lauer</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>netmon@gentoo.org</email>
+		<name>Gentoo network monitoring and analysis project</name>
+	</maintainer>
+	<longdescription>
+		Barnyard2 is a fork of the original barnyard project (which is no longer under development).
+		Barnyard2 is an open source interpreter for Snort unified2 binary output files. Its primary
+		use is allowing Snort to write to disk in an efficient manner and leaving the task of 
+		parsing binary data into various formats to a separate process that will not cause Snort to
+		miss network traffic. Barnyard2 is under active development and continues to adapt based on 
+		user feedback.
+	</longdescription>
+	<upstream>
+		<maintainer>
+			<email>dev@securixlive.com</email>
+			<name>Securixlive</name>
+		</maintainer>
+		<doc>http://www.securixlive.com/barnyard2/docs/index.php</doc>
+		<bugs-to>mailto:dev@securixlive.com</bugs-to>
+	</upstream>
+	<use>
+		<flag name="gre">Enable GRE support</flag>
+		<flag name="mpls">Enable support for mpls networks</flag>
+		<flag name="sguil">Enable sguil (The Analyst Console for Network Security Monitoring) support</flag>
+	</use>
+</pkgmetadata>

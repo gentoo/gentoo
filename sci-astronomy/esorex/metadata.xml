@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-astronomy@gentoo.org</email>
+		<name>Gentoo Astronomy Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		EsoRex is the ESO Recipe Execution Tool. It can list, configure and
+		execute CPL-based recipes from the command line. One of the features
+		provided by the CPL is the ability to create data-reduction algorithms
+		that run as plugins (dynamic libraries). These are called recipes and
+		are one of the main aspects of the CPL data-reduction development
+		environment. As these recipes are dynamic libraries, it is not
+		possible to run them directly from the command line. However, ESO
+		provides several tools to do this, thus saving recipe developers the
+		need to write such an application themselves. One of these is GASGANO
+		(a GUI-based tool) and the other is EsoRex (which runs from the
+		command line.
+	</longdescription>
+</pkgmetadata>

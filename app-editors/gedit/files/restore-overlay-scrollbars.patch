@@ -1,0 +1,26 @@
+From 189ee4514107e70a62d44766f8ca39d815d48581 Mon Sep 17 00:00:00 2001
+From: Michael Catanzaro <mcatanzaro@gnome.org>
+Date: Fri, 20 Mar 2020 11:32:59 -0500
+Subject: [PATCH] Revert "ViewFrame: disable overlay scrolling for the
+ GtkScrolledWindow"
+
+This reverts commit 5e0909c19f267b4023131881fac89c58a2a17453.
+---
+ gedit/resources/ui/gedit-view-frame.ui | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/gedit/resources/ui/gedit-view-frame.ui b/gedit/resources/ui/gedit-view-frame.ui
+index ebf70b013..4c783c711 100644
+--- a/gedit/resources/ui/gedit-view-frame.ui
++++ b/gedit/resources/ui/gedit-view-frame.ui
+@@ -11,7 +11,6 @@
+         <property name="visible">True</property>
+         <property name="hexpand">True</property>
+         <property name="vexpand">True</property>
+-        <property name="overlay_scrolling">False</property>
+         <child>
+           <object class="GeditView" id="view">
+             <property name="visible">True</property>
+-- 
+2.25.1
+

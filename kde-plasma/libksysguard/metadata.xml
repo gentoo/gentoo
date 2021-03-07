@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<slots>
+		<subslots>Reflects ABI compatibility by soname version</subslots>
+	</slots>
+	<use>
+		<flag name="designer">Build plugins for <pkg>dev-qt/designer</pkg></flag>
+		<flag name="webengine">Enable display of detailed memory information using <pkg>dev-qt/qtwebengine</pkg>.</flag>
+	</use>
+</pkgmetadata>

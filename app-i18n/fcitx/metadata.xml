@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>arfrever.fta@gmail.com</email>
+		<name>Arfrever Frehtes Taifersar Arahesis</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>cjk@gentoo.org</email>
+		<name>Cjk</name>
+	</maintainer>
+	<use>
+		<flag name="autostart">Enable XDG-compatible autostart of Fcitx</flag>
+		<flag name="enchant">Enable Enchant backend (using <pkg>app-text/enchant</pkg>) for spelling hinting</flag>
+		<flag name="gtk2">Install input method module for GTK+ 2</flag>
+		<flag name="gtk3">Install input method module for GTK+ 3</flag>
+		<flag name="opencc">Enable OpenCC engine (using <pkg>app-i18n/opencc</pkg>) for converter between Simplified Chinese and Traditional Chinese</flag>
+		<flag name="pango">Enable support for <pkg>x11-libs/pango</pkg></flag>
+		<flag name="table">Install table input methods for Simplified Chinese</flag>
+		<flag name="xkb">Enable support for XKB (required for fcitx-xkb, fcitx-xkbdbus, part of fcitx-keyboard)</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">fcitx/fcitx</remote-id>
+	</upstream>
+</pkgmetadata>

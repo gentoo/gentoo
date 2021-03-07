@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<use>
+		<flag name="debugger">Install the CUDA debugger</flag>
+		<flag name="eclipse">Install Eclipse plugins</flag>
+		<flag name="nsight">Install profiling and optimizing tools (nsight-compute, nsight-systems)</flag>
+		<flag name="profiler">Install the NVIDIA CUDA profiler (nvprof) and the related libraries</flag>
+		<flag name="sanitizer">Install compute-sanitizer tool</flag>
+		<flag name="vis-profiler">Install the NVIDIA CUDA visual profiler (nvvp)</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,9 @@
+# Copyright 2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# RISC-V rv32imac/ilp32 no-multilib profile
+
+# We have only one ABI
+MULTILIB_ABIS="ilp32"
+DEFAULT_ABI="ilp32"
+ABI="ilp32"

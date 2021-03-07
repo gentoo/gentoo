@@ -1,0 +1,25 @@
+From ec99347a09caeae147c075813543fc839d5b4562 Mon Sep 17 00:00:00 2001
+From: Ralph Sennhauser <sera@gentoo.org>
+Date: Sat, 20 Apr 2013 09:57:06 +0200
+Subject: [PATCH 2/2] Fix running tests
+
+---
+ build.xml | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/build.xml b/build.xml
+index 1e18fec..947f325 100644
+--- a/build.xml
++++ b/build.xml
+@@ -172,6 +172,8 @@
+           <include name="**/*Test.java"/>
+           <include name="**/*TestCase.java"/>
+           <exclude name="**/*Abstract*Test.java"/>
++	  <!-- base class without tests violationg naming scheme -->
++          <exclude name="**/FileUploadTestCase.java"/>
+         </fileset>
+       </batchtest>
+       <batchtest todir="${maven.test.reports}" if="test">
+-- 
+1.8.1.5
+

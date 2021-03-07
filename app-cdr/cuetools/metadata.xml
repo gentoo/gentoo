@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+		cuetools is a set of utilities for working with Cue Sheet (cue) and Table of Contents (toc) files.
+		It includes:
+		cueconvert convert between the cue and toc formats
+		cuebreakpoints print the breakpoints from a cue or toc file
+		cueprint print disc and track infomation for a cue or toc file
+	</longdescription>
+	<upstream>
+		<remote-id type="github">svend/cuetools</remote-id>
+		<bugs-to>https://github.com/svend/cuetools/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

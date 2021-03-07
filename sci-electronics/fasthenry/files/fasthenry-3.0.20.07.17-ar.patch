@@ -1,0 +1,18 @@
+diff -ruN fasthenry-3.0wr.orig/src/sparse/Makefile fasthenry-3.0wr/src/sparse/Makefile
+--- fasthenry-3.0wr.orig/src/sparse/Makefile	2020-10-24 18:35:15.348900086 +0300
++++ fasthenry-3.0wr/src/sparse/Makefile	2020-10-24 18:37:09.729921680 +0300
+@@ -25,12 +25,12 @@
+ #	$(CC) $(CFLAGS) -o $(DESTINATION) $(TESTO) $(LIBRARY) -lm
+ 
+ $(LIBRARY)	: $(OFILES)
+-	ar r   $(LIBRARY) $?
++	$(AR) r   $(LIBRARY) $?
+ 	ranlib $(LIBRARY)
+ 
+ spice		: $(LIBRARY) spSMP.o
+ 	cp $(LIBRARY) ../SMP.a
+-	ar r ../SMP.a spSMP.o
++	$(AR) r ../SMP.a spSMP.o
+ 	ranlib ../SMP.a
+ 
+ lint		:

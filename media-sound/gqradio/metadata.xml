@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sound@gentoo.org</email>
+		<name>Gentoo Sound project</name>
+	</maintainer>
+	<longdescription>
+		GQradio interfaces with radio cards through the video4linux API.
+		Stations can be tuned manually, set to presets, or auto seek can find
+		the next available frequency. The application supports theming (skins),
+		and includes a built-in skin editor. Skin formats are similar to GQmpeg.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">gqmpeg</remote-id>
+	</upstream>
+</pkgmetadata>

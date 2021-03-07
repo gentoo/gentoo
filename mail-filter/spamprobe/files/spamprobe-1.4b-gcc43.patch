@@ -1,0 +1,150 @@
+--- spamprobe-1.4d.orig/src/spamprobe/Command_exec.cc
++++ spamprobe-1.4d/src/spamprobe/Command_exec.cc
+@@ -28,6 +28,7 @@
+ //    http://www.cooldevtools.com/qpl.html
+ //
+ 
++#include <cstdlib>
+ #include "SpamFilter.h"
+ #include "CommandConfig.h"
+ #include "ConfigManager.h"
+--- spamprobe-1.4d.orig/src/spamprobe/Command_edit_term.cc
++++ spamprobe-1.4d/src/spamprobe/Command_edit_term.cc
+@@ -28,6 +28,7 @@
+ //    http://www.cooldevtools.com/qpl.html
+ //
+ 
++#include <cstdlib>
+ #include "SpamFilter.h"
+ #include "FrequencyDB.h"
+ #include "CommandConfig.h"
+--- spamprobe-1.4d.orig/src/spamprobe/Command_cleanup.cc
++++ spamprobe-1.4d/src/spamprobe/Command_cleanup.cc
+@@ -28,6 +28,7 @@
+ //    http://www.cooldevtools.com/qpl.html
+ //
+ 
++#include <cstdlib>
+ #include "CleanupManager.h"
+ #include "SpamFilter.h"
+ #include "FrequencyDB.h"
+--- spamprobe-1.4d.orig/src/spamprobe/spamprobe.cc
++++ spamprobe-1.4d/src/spamprobe/spamprobe.cc
+@@ -28,6 +28,7 @@
+ //    http://www.cooldevtools.com/qpl.html
+ //
+ 
++#include <cstdlib>
+ #include <unistd.h>
+ #include <locale.h>
+ #include <signal.h>
+--- spamprobe-1.4d.orig/src/spamprobe/Command_purge.cc
++++ spamprobe-1.4d/src/spamprobe/Command_purge.cc
+@@ -28,6 +28,7 @@
+ //    http://www.cooldevtools.com/qpl.html
+ //
+ 
++#include <cstdlib>
+ #include "CleanupManager.h"
+ #include "SpamFilter.h"
+ #include "FrequencyDB.h"
+--- spamprobe-1.4d.orig/src/spamprobe/Command_import.cc
++++ spamprobe-1.4d/src/spamprobe/Command_import.cc
+@@ -28,6 +28,7 @@
+ //    http://www.cooldevtools.com/qpl.html
+ //
+ 
++#include <cstdlib>
+ #include <fstream>
+ #include "LineReader.h"
+ #include "IstreamCharReader.h"
+--- spamprobe-1.4d.orig/src/database/DatabaseConfig.cc
++++ spamprobe-1.4d/src/database/DatabaseConfig.cc
+@@ -29,6 +29,7 @@
+ //
+ 
+ #include <stdexcept>
++#include <cstdlib>
+ #include "File.h"
+ #include "WordData.h"
+ #include "FrequencyDBImpl.h"
+--- spamprobe-1.4d.orig/src/parser/MailMessageReader.cc
++++ spamprobe-1.4d/src/parser/MailMessageReader.cc
+@@ -28,6 +28,7 @@
+ //    http://www.cooldevtools.com/qpl.html
+ //
+ 
++#include <cstdlib>
+ #include "RegularExpression.h"
+ #include "MailMessage.h"
+ #include "MailMessageList.h"
+--- spamprobe-1.4d.orig/src/parser/MbxMailMessageReader.cc
++++ spamprobe-1.4d/src/parser/MbxMailMessageReader.cc
+@@ -28,6 +28,7 @@
+ //    http://www.cooldevtools.com/qpl.html
+ //
+ 
++#include <cstdlib>
+ #include <stdexcept>
+ #include "MailMessage.h"
+ #include "MailMessageList.h"
+--- spamprobe-1.4d.orig/src/parser/AutoTrainMailMessageReader.cc
++++ spamprobe-1.4d/src/parser/AutoTrainMailMessageReader.cc
+@@ -28,6 +28,7 @@
+ //    http://www.cooldevtools.com/qpl.html
+ //
+ 
++#include <cstdlib>
+ #include "MailMessage.h"
+ #include "AutoTrainMailMessageReader.h"
+ 
+--- spamprobe-1.4d.orig/src/parser/HtmlTokenizer.cc
++++ spamprobe-1.4d/src/parser/HtmlTokenizer.cc
+@@ -28,6 +28,7 @@
+ //    http://www.cooldevtools.com/qpl.html
+ //
+ 
++#include <cstdlib>
+ #include "AbstractTokenReceiver.h"
+ #include "StringReader.h"
+ #include "RegularExpression.h"
+--- spamprobe-1.4d.orig/src/hdl/HdlTokenizer.cc
++++ spamprobe-1.4d/src/hdl/HdlTokenizer.cc
+@@ -28,6 +28,7 @@
+ //    http://www.cooldevtools.com/qpl.html
+ //
+ 
++#include <cstdlib>
+ #include "AbstractCharReader.h"
+ #include "HdlError.h"
+ #include "HdlToken.h"
+--- spamprobe-1.4d.orig/src/includes/util.h
++++ spamprobe-1.4d/src/includes/util.h
+@@ -42,6 +42,7 @@
+ #include <cassert>
+ #include <iostream>
+ #include <cstdio>
++#include <cstring>
+ #include "Ptr.h"
+ #include "Ref.h"
+ 
+--- spamprobe-1.4d.orig/src/includes/MultiLineSubString.h
++++ spamprobe-1.4d/src/includes/MultiLineSubString.h
+@@ -31,6 +31,7 @@
+ #ifndef _MultiLineSubString_h
+ #define _MultiLineSubString_h
+ 
++#include <climits>
+ #include "AbstractMultiLineString.h"
+ 
+ class MultiLineSubString : public AbstractMultiLineString
+--- spamprobe-1.4d.orig/src/includes/Buffer.h
++++ spamprobe-1.4d/src/includes/Buffer.h
+@@ -32,6 +32,7 @@
+ #define _Buffer_h
+ 
+ #include "Array.h"
++#include <cassert>
+ 
+ //
+ // Similar to Array but handles variable length.

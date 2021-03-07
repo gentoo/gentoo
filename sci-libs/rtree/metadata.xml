@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="project">
+        <email>3dprint@gentoo.org</email>
+        <name>Gentoo 3D Printer Project</name>
+    </maintainer>
+    <longdescription>
+        Rtree is a ctypes Python wrapper of libspatialindex that provides a number of advanced spatial indexing
+        features for the spatially curious Python user.
+    </longdescription>
+    <upstream>
+        <bugs-to>https://github.com/Toblerity/rtree/issues</bugs-to>
+        <remote-id type="github">Toblerity/rtree</remote-id>
+        <remote-id type="pypi">Rtree</remote-id>
+    </upstream>
+</pkgmetadata>

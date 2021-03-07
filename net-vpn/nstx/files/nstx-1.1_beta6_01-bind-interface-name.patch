@@ -1,0 +1,134 @@
+diff -ru nstx-1.1-beta6.tuntap/Makefile nstx-1.1-beta6/Makefile
+--- nstx-1.1-beta6.tuntap/Makefile	2009-03-16 23:22:11.000000000 +0000
++++ nstx-1.1-beta6/Makefile	2009-03-16 23:27:09.000000000 +0000
+@@ -1,9 +1,9 @@
+ CFLAGS += -ggdb -Wall -Werror -Wsign-compare 
+ 
+-NSTXD_SRCS = nstxd.c nstx_encode.c nstx_pstack.c nstx_dns.c nstx_tuntap.c nstx_queue.c
++NSTXD_SRCS = nstxd.c nstx_encode.c nstx_pstack.c nstx_dns.c nstx_tuntap.c nstx_queue.c nstx_util.c
+ NSTXD_OBJS = ${NSTXD_SRCS:.c=.o}
+ 
+-NSTXCD_SRCS = nstxcd.c nstx_encode.c nstx_pstack.c nstx_dns.c nstx_tuntap.o nstx_queue.c
++NSTXCD_SRCS = nstxcd.c nstx_encode.c nstx_pstack.c nstx_dns.c nstx_tuntap.o nstx_queue.c nstx_util.c
+ NSTXCD_OBJS = ${NSTXCD_SRCS:.c=.o}
+ 
+ PROGS = nstxd nstxcd
+diff -ru nstx-1.1-beta6.tuntap/nstx_util.c nstx-1.1-beta6/nstx_util.c
+--- nstx-1.1-beta6.tuntap/nstx_util.c	2004-06-27 21:43:34.000000000 +0000
++++ nstx-1.1-beta6/nstx_util.c	2009-03-16 23:28:37.000000000 +0000
+@@ -27,6 +27,10 @@
+ #include <stdio.h>
+ #include <sys/types.h>
+ #include <sys/socket.h>
++#include <net/if.h>
++#include <sys/ioctl.h>
++#include <arpa/inet.h>
++#include <errno.h>
+ 
+ #include "nstxfun.h"
+ 
+@@ -48,6 +52,48 @@
+    close(fd);
+ }
+ 
++static int iface_addr(const char * name, in_addr_t * result) {
++    int r, s;
++    struct ifreq ifr;
++    struct sockaddr_in * sin;
++    
++    s = socket(AF_INET, SOCK_DGRAM, 0);
++
++    if (s < 0) {
++        perror("socket");
++        return s;
++    }
++
++    strncpy(ifr.ifr_name, name, sizeof(ifr.ifr_name));
++    ifr.ifr_name[sizeof(ifr.ifr_name) - 1] = 0;
++
++    r = ioctl(s, SIOCGIFADDR, &ifr);
++
++    if (r < 0) {
++        perror("ioctl(SIOCGIFADDR)");
++        return r;
++    }
++
++    sin = (struct sockaddr_in *)&ifr.ifr_addr;
++    *result = sin->sin_addr.s_addr;
++
++    if (*result == INADDR_ANY || *result == INADDR_NONE) {
++        fprintf(stderr, "interface %s has no assigned address\n", name);
++        return -EINVAL;
++    }
++
++    return 0;
++}
++
++int addr_convert(const char * s, in_addr_t * result) {
++    *result = inet_addr(s);
++
++    if (*result != INADDR_NONE)
++        return 0;
++
++    return iface_addr(s, result);
++}
++
+ #ifdef WITH_PKTDUMP
+ void
+ pktdump (const char *prefix, unsigned short id, const char *data,
+diff -ru nstx-1.1-beta6.tuntap/nstxd.8 nstx-1.1-beta6/nstxd.8
+--- nstx-1.1-beta6.tuntap/nstxd.8	2009-03-16 23:23:46.000000000 +0000
++++ nstx-1.1-beta6/nstxd.8	2009-03-16 23:29:59.000000000 +0000
+@@ -22,8 +22,8 @@
+ Tun mode (default)
+ .IP \-T
+ Tap mode
+-.IP \-i ipaddr
+-Bind to this IP address rather than every available address
++.IP \-i ipaddr|interface
++Bind to this IP address or interface rather than every available address
+ .IP \-C dir
+ Chroot to this directory on startup
+ .IP \-D
+diff -ru nstx-1.1-beta6.tuntap/nstxd.c nstx-1.1-beta6/nstxd.c
+--- nstx-1.1-beta6.tuntap/nstxd.c	2009-03-16 23:23:46.000000000 +0000
++++ nstx-1.1-beta6/nstxd.c	2009-03-16 23:32:45.000000000 +0000
+@@ -61,7 +61,7 @@
+ 	    "\t-t (tun mode, default)\n"
+ 	    "\t-T (tap mode)\n"
+ #endif
+-	    "\t-i ip.to.bi.nd (bind to port 53 on this IP only)\n"
++	    "\t-i ip|interface (bind to port 53 on this IP/interface only)\n"
+ 	    "\t-C dir (chroot() to this directory after initialization)\n"
+ 	    "\t-D (call daemon(3) to detach from terminal)\n"
+ 	    "\t-g (enable debug messages)\n"
+@@ -80,14 +80,15 @@
+    int		 daemonize = 0;
+    int		 logmask = LOG_UPTO(LOG_INFO);
+    int tun = 1;
++   int r;
+    
+    while ((ch = getopt(argc, argv, "gDC:u:hd:I:i:tT")) != -1) {
+ 	switch(ch) {
+ 	case 'i':
+-		bindto = inet_addr(optarg);
+-		if (bindto == INADDR_NONE) {
+-			fprintf(stderr, "`%s' is not an IP-address\n",
+-			    optarg);
++        r = addr_convert(optarg, &bindto);
++        if (r < 0) {
++            fprintf(stderr, "couldn't use interface %s: %s\n", optarg,
++                    strerror(-r));
+ 			exit(EX_USAGE);
+ 		}
+ 		break;
+diff -ru nstx-1.1-beta6.tuntap/nstxfun.h nstx-1.1-beta6/nstxfun.h
+--- nstx-1.1-beta6.tuntap/nstxfun.h	2009-03-16 23:23:46.000000000 +0000
++++ nstx-1.1-beta6/nstxfun.h	2009-03-16 23:28:37.000000000 +0000
+@@ -102,4 +102,6 @@
+ void pktdump (const char *, unsigned short, const char *, size_t, int);
+ #endif
+ 
++int addr_convert(const char *, in_addr_t *);
++
+ #endif /* _NSTXHDR_H */

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  Command-line operators to analyze netCDF files
+  NetCDF Operator is a suite of programs known as operators. The
+  operators are stand-alone, command-line programs executable in a POSIX
+  shell. Operators take one or more netCDF files as input, perform an
+  operation (e.g., averaging or hyperslabbing), and produce a netCDF
+  output file. NCO was originally designed to manipulate and analyze
+  climate data, though it works on any netCDF format datasets.
+  </longdescription>
+  <use>
+    <flag name="dap">Support for remote data access with the NETCDF DAP client</flag>
+    <flag name="ncap2">Build next generation netcdf arithmetic processor
+    (needs <pkg>dev-java/antlr</pkg>)</flag>
+    <flag name="udunits">Add <pkg>sci-libs/udunits</pkg> files support</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">nco</remote-id>
+  </upstream>
+</pkgmetadata>

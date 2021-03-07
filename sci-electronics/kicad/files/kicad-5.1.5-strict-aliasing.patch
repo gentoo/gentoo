@@ -1,0 +1,25 @@
+diff --git a/eeschema/dialogs/dialog_spice_model.cpp b/eeschema/dialogs/dialog_spice_model.cpp
+index b265e2363..eb1187d86 100644
+--- a/eeschema/dialogs/dialog_spice_model.cpp
++++ b/eeschema/dialogs/dialog_spice_model.cpp
+@@ -34,6 +34,7 @@
+ #include <wx/wupdlock.h>
+
+ #include <cctype>
++#include <cstring>
+
+ // Helper function to shorten conditions
+ static bool empty( const wxTextCtrl* aCtrl )
+@@ -804,9 +804,11 @@ bool DIALOG_SPICE_MODEL::addPwlValue( const wxString& aTime, const wxString& aVa
+     float timeF;
+     m_pwlTime->GetValue().ToDouble( &timeD );
+     timeF = timeD;
++    long data;
++    std::memcpy( &data, &timeF, sizeof( timeF ) );
+
+     // Store the time value, so the entries can be sorted
+-    m_pwlValList->SetItemData( idx, *reinterpret_cast<long*>( &timeF ) );
++    m_pwlValList->SetItemData( idx, data );
+
+     // Sort items by timestamp
+     m_pwlValList->SortItems( comparePwlValues, -1 );

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>proaudio@gentoo.org</email>
+	<name>Gentoo ProAudio Project</name>
+</maintainer>
+<longdescription>
+	Ecasound is a software package designed for multitrack audio
+	processing. It can be used for simple tasks like audio playback,
+	recording and format conversions, as well as for multitrack
+	effect processing, mixing, recording and signal recycling.
+	Ecasound supports a wide range of audio inputs, outputs and
+	effect algorithms. Effects and audio objects can be combined
+	in various ways, and their parameters can be controlled by operator
+	objects like oscillators and MIDI-CCs. A versatile console mode
+	user-interface is included in the package.
+</longdescription>
+<use>
+	<flag name="oil">Use <pkg>dev-libs/liboil</pkg> for inner loop optimizations</flag>
+	<flag name="lv2">Add support for Ladspa V2</flag>
+</use>
+</pkgmetadata>

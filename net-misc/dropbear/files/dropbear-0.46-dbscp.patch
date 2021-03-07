@@ -1,0 +1,20 @@
+--- a/dbmulti.c
++++ b/dbmulti.c
+@@ -60,7 +60,7 @@
+ 		}
+ #endif
+ #ifdef DBMULTI_scp
+-		if (strcmp(progname, "scp") == 0) {
++		if ((strcmp(progname, "scp") == 0) || (strcmp(progname, "dbscp") == 0)) {
+ 			return scp_main(argc, argv);
+ 		}
+ #endif
+@@ -81,7 +81,7 @@
+ 			"'dropbearconvert' - the key converter\n"
+ #endif
+ #ifdef DBMULTI_scp
+-			"'scp' - secure copy\n"
++			"'dbscp' - secure copy\n"
+ #endif
+ 			,
+ 			DROPBEAR_VERSION);

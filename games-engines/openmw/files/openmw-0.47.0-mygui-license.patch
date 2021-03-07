@@ -1,0 +1,16 @@
+We don't install license files
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d69352c94..5f97c86e9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -856,9 +856,6 @@ elseif(NOT APPLE)
+             INSTALL(PROGRAMS "${INSTALL_SOURCE}/openmw-wizard" DESTINATION "${BINDIR}" )
+         ENDIF(BUILD_WIZARD)
+ 
+-        # Install licenses
+-        INSTALL(FILES "files/mygui/DejaVuFontLicense.txt" DESTINATION "${LICDIR}" )
+-
+         # Install icon and desktop file
+         INSTALL(FILES "${OpenMW_BINARY_DIR}/org.openmw.launcher.desktop" DESTINATION "${DATAROOTDIR}/applications" COMPONENT "openmw")
+         INSTALL(FILES "${OpenMW_SOURCE_DIR}/files/launcher/images/openmw.png" DESTINATION "${ICONDIR}" COMPONENT "openmw")

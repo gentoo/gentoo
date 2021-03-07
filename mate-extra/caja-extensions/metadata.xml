@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>mate@gentoo.org</email>
+		<name>Gentoo MATE Desktop</name>
+	</maintainer>
+	<use>
+		<flag name="cdr">Add an extension to burn files to cds using <pkg>app-cdr/brasero</pkg>.</flag>
+		<flag name="gajim">Add an extension to support <pkg>net-im/gajim</pkg>.</flag>
+		<flag name="image-converter">Add image conversion support.</flag>
+		<flag name="mail">Add an extension to support e-mail functionality.</flag>
+		<flag name="open-terminal">Add an extension to support an open terminal.</flag>
+		<flag name="pidgin">Add an extension to support <pkg>net-im/pidgin</pkg></flag>
+		<flag name="share">Add an extension to support sharing files.</flag>
+		<flag name="wallpaper">Add an extension to support setting an image as the current wallpaper</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">mate-desktop/caja-extensions</remote-id>
+	</upstream>
+</pkgmetadata>

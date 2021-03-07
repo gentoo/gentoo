@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<upstream>
+		<remote-id type="github">bcpierce00/unison</remote-id>
+		<bugs-to>https://github.com/bcpierce00/unison/issues</bugs-to>
+		<doc>https://github.com/bcpierce00/unison/wiki</doc>
+		<changelog>https://www.cis.upenn.edu/~bcpierce/unison/changes.html</changelog>
+	</upstream>
+</pkgmetadata>

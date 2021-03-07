@@ -1,0 +1,34 @@
+diff --git a/src/cw.c b/src/cw.c
+index d7b4875..a7811d8 100644
+--- a/src/cw.c
++++ b/src/cw.c
+@@ -1336,7 +1336,7 @@ unsigned char is_cwfile(char *file){
+  s=strlen(buf);
+  if(buf[s]=='\n')s--;
+  if(buf[s]=='\r')s--;
+- if(s>4&&!strncmp(buf,"#!",2)&&!strncmp(buf+(s-4),"/cw",3))return(1);
++ if(s>15&&!strncmp(buf,"#!",2)&&!strncmp(buf+(s-15),"/color-wrapper",14))return(1);
+  return(0);
+ }
+ /* sets left and right borders. */
+diff --git a/src/cwu.c b/src/cwu.c
+index 823618d..63f566b 100644
+--- a/src/cwu.c
++++ b/src/cwu.c
+@@ -37,12 +37,12 @@ signed int main(signed int argc,char **argv){
+  if(argc>1&&!strcmp(argv[1],"-v"))
+   cwuexit(1,"cwu (color wrapper directive updater) v"VERSION);
+  if(argc<2)
+-  cwuexit(1,"syntax: cwu <definitions directory> <cw binary path>");
++  cwuexit(1,"syntax: cwu <definitions directory> <color-wrapper binary path>");
+  if(argc<3)cwuexit(1,"no path provided to update with.");
+- if(strncmp(argv[2]+(strlen(argv[2])-3),"/cw",3))
+-  cwuexit(1,"cw binary path doesn't end with `/cw'.");
++ if(strncmp(argv[2]+(strlen(argv[2])-14),"/color-wrapper",14))
++  cwuexit(1,"cw binary path doesn't end with `/color-wrapper'.");
+  if(access(argv[2],X_OK))
+-  cwuexit(1,"cw binary does not exist or is not executable.");
++  cwuexit(1,"color-wrapper binary does not exist or is not executable.");
+  globcw(argv[1],argv[2]);
+  cwuexit(0,0);
+  exit(0);

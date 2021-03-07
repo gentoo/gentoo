@@ -1,0 +1,35 @@
+https://github.com/google/mozc/issues/461
+
+--- /src/data/symbol/categorized.tsv
++++ /src/data/symbol/categorized.tsv
+@@ -405,6 +405,7 @@
+ ㍽	MATH	たいしょう  ねんごう
+ ㍼	MATH	しょうわ  ねんごう
+ ㍻	MATH	へいせい ねんごう
++㋿	MATH	れいわ ねんごう
+ 
+ ㌣	MATH	せんと たんい
+ ㌦	MATH	どる たんい
+--- /src/data/symbol/symbol.tsv
++++ /src/data/symbol/symbol.tsv
+@@ -528,6 +528,7 @@
+ 記号	㊦	した げ	丸下
+ 記号	㊧	ひだり	丸左
+ 記号	㊨	みぎ	丸右
++記号	㋿	れいわ ねんごう	年号		OTHER
+ 記号	㍻	へいせい ねんごう	年号		OTHER
+ 記号	㍼	しょうわ  ねんごう	年号		OTHER
+ 記号	㍽	たいしょう  ねんごう	年号		OTHER
+--- /src/rewriter/date_rewriter.cc
++++ /src/rewriter/date_rewriter.cc
+@@ -1239,6 +1239,10 @@
+     1989,
+     "平成",
+     "へいせい",
++  }, {
++    2019,
++    "令和",
++    "れいわ",
+   }
+ };
+ 

@@ -1,0 +1,14 @@
+diff --git a/tests/test_cli.py b/tests/test_cli.py
+index bfd2345..f55910c 100644
+--- a/tests/test_cli.py
++++ b/tests/test_cli.py
+@@ -16,6 +16,9 @@ import click
+ import kaptan
+ from click.testing import CliRunner
+ 
++import sys
++import pathlib
++sys.path.extend([str(p) for p in pathlib.Path(__file__, '..', 'fixtures/pluginsystem/plugins').resolve().iterdir() if p.is_dir()])
+ import libtmux
+ from libtmux.common import has_lt_version
+ from libtmux.exc import LibTmuxException

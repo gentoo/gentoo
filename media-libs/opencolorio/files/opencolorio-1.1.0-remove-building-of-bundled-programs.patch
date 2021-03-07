@@ -1,0 +1,154 @@
+From 967369b36c9684d7ffb73a926c442d8991a3afef Mon Sep 17 00:00:00 2001
+From: Jonathan Scruggs <j.scruggs@gmail.com>
+Date: Mon, 15 Jan 2018 13:09:31 +0000
+Subject: [PATCH 3/3] Remove building of bundled programs
+
+---
+ docs/CMakeLists.txt | 98 ++---------------------------------------------------
+ 1 file changed, 3 insertions(+), 95 deletions(-)
+
+diff --git a/docs/CMakeLists.txt b/docs/CMakeLists.txt
+index a822a19..d588139 100644
+--- a/docs/CMakeLists.txt
++++ b/docs/CMakeLists.txt
+@@ -1,90 +1,4 @@
+ 
+-###############################################################################
+-### External Doc Apps ###
+-
+-if (WIN32)
+-    # Workaround to mimic *nix '> PYTHONPATH=XXX CMD' 
+-    #  on windows, it becomes  '> set PYTHONPATH=XXX \n call CMD'
+-    #   '\n' is here because '\\&' does not work.
+-    set(PYT_PRE_CMD set PYTHONPATH=${PYTHONPATH} "\n" call )
+-    # Unfortunately some windows tools require to have
+-    #  the paths with the '\' (not working with '//').
+-    set(PYT_LIB_OUTPUT ${EXTDIST_ROOT})
+-    string(REGEX REPLACE "/" "\\\\" PYT_LIB_OUTPUT ${PYT_LIB_OUTPUT})
+-    set(PYT_EXTDIST_BINPATH ${EXTDIST_BINPATH})
+-    string(REGEX REPLACE "/" "\\\\" PYT_EXTDIST_BINPATH ${PYT_EXTDIST_BINPATH})
+-else()
+-    set(PYT_PRE_CMD PYTHONPATH=${PYTHONPATH})
+-    set(PYT_LIB_OUTPUT ${EXTDIST_ROOT})
+-    set(PYT_EXTDIST_BINPATH ${EXTDIST_BINPATH})
+-endif()
+-
+-# setuptools
+-# https://pypi.python.org/pypi/setuptools
+-set(SETUPTOOLS_VERSION 1.1.6)
+-
+-ExternalProject_Add(setuptools
+-    URL ${CMAKE_SOURCE_DIR}/ext/setuptools-${SETUPTOOLS_VERSION}.tar.gz
+-    BUILD_IN_SOURCE 1
+-    CONFIGURE_COMMAND ${CMAKE_COMMAND} -E make_directory ${EXTDIST_PYTHONPATH}
+-    BUILD_COMMAND ${PYT_PRE_CMD} ${PYTHON} setup.py build
+-    INSTALL_COMMAND ${PYT_PRE_CMD} ${PYTHON} setup.py install --prefix=${PYT_LIB_OUTPUT}
+-    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/setuptools-prefix/src/setuptools
+-)
+-
+-# docutils
+-# https://pypi.python.org/pypi/docutils
+-set(DOCUTILS_VERSION 0.11)
+-ExternalProject_Add(docutils
+-    DEPENDS setuptools
+-    URL ${CMAKE_SOURCE_DIR}/ext/docutils-${DOCUTILS_VERSION}.tar.gz
+-    BUILD_IN_SOURCE 1
+-    CONFIGURE_COMMAND ${CMAKE_COMMAND} -E make_directory ${EXTDIST_PYTHONPATH}
+-    BUILD_COMMAND ${PYT_PRE_CMD} ${PYTHON} setup.py build
+-    INSTALL_COMMAND ${PYT_PRE_CMD} ${PYTHON} setup.py install --prefix=${PYT_LIB_OUTPUT}
+-    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/docutils-prefix/src/docutils
+-)
+-
+-# jinja2
+-# https://pypi.python.org/pypi/Jinja2
+-set(JINJA2_VERSION 2.7.1)
+-ExternalProject_Add(Jinja2
+-    DEPENDS setuptools
+-    URL ${CMAKE_SOURCE_DIR}/ext/Jinja2-${JINJA2_VERSION}.tar.gz
+-    BUILD_IN_SOURCE 1
+-    CONFIGURE_COMMAND ${CMAKE_COMMAND} -E make_directory ${EXTDIST_PYTHONPATH}
+-    BUILD_COMMAND ${PYT_PRE_CMD} ${PYTHON} setup.py build
+-    INSTALL_COMMAND ${PYT_PRE_CMD} ${PYTHON} setup.py install --prefix=${PYT_LIB_OUTPUT}
+-    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Jinja2-prefix/src/Jinja2
+-)
+-
+-# Pygments
+-# https://pypi.python.org/pypi/Pygments
+-set(PYGMENTS_VERSION 1.6)
+-ExternalProject_Add(Pygments
+-    DEPENDS setuptools
+-    URL ${CMAKE_SOURCE_DIR}/ext/Pygments-${PYGMENTS_VERSION}.tar.gz
+-    BUILD_IN_SOURCE 1
+-    CONFIGURE_COMMAND ${CMAKE_COMMAND} -E make_directory ${EXTDIST_PYTHONPATH}
+-    BUILD_COMMAND ${PYT_PRE_CMD} ${PYTHON} setup.py build
+-    INSTALL_COMMAND ${PYT_PRE_CMD} ${PYTHON} setup.py install --prefix=${PYT_LIB_OUTPUT}
+-    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Pygments-prefix/src/Pygments
+-)
+-
+-# sphinx
+-# https://pypi.python.org/pypi/Sphinx
+-set(SPHINX_VERSION 1.2b3)
+-ExternalProject_Add(Sphinx
+-    DEPENDS setuptools docutils Jinja2 Pygments
+-    URL ${CMAKE_SOURCE_DIR}/ext/Sphinx-${SPHINX_VERSION}.tar.gz
+-    PATCH_COMMAND patch -p1 < ${CMAKE_SOURCE_DIR}/ext/Sphinx-${SPHINX_VERSION}.patch
+-    BUILD_IN_SOURCE 1
+-    CONFIGURE_COMMAND ${CMAKE_COMMAND} -E make_directory ${EXTDIST_PYTHONPATH}
+-    BUILD_COMMAND ${PYT_PRE_CMD} ${PYTHON} setup.py build
+-    INSTALL_COMMAND ${PYT_PRE_CMD} ${PYTHON} setup.py install --prefix=${PYT_LIB_OUTPUT} --install-scripts=${PYT_EXTDIST_BINPATH}
+-    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Sphinx-prefix/src/Sphinx
+-)
+-
+ ###############################################################################
+ ### Create Doc Targets ###
+ 
+@@ -122,7 +36,7 @@ else()
+ endif()
+ 
+ add_custom_target(doc ALL
+-    COMMAND ${PYT_PRE_CMD} ${EXTDIST_BINPATH}/sphinx-build -b html . ${CMAKE_CURRENT_BINARY_DIR}/build-html
++    COMMAND sphinx-build -b html . ${CMAKE_CURRENT_BINARY_DIR}/build-html
+     DEPENDS
+         ${DEPLIBS}
+         ${CMAKE_BINARY_DIR}/docs/conf.py
+@@ -131,11 +45,7 @@ add_custom_target(doc ALL
+         developers/api/OpenColorTypes.rst
+         ${RSTDOC_OUTPUT}
+     COMMENT "Building html docs"
+     SOURCES ${DOCFILES})
+-
+-# note: ExternalProject will not build when added to a add_custom_target this
+-# works around this problem. This seems to be fixed in the cmake ^HEAD
+-add_dependencies(doc Sphinx) 
+ 
+ install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/build-html/
+         DESTINATION ${CMAKE_INSTALL_DOCDIR}/html
+@@ -146,8 +56,8 @@ find_package(LATEX)
+ find_package(LATEX)
+ if(PDFLATEX_COMPILER)
+     
+-    add_custom_target(latex
+-        COMMAND ${PYT_PRE_CMD} ${EXTDIST_BINPATH}/sphinx-build -b latex . ${CMAKE_CURRENT_BINARY_DIR}/build-latex
++    add_custom_target(latex ALL
++        COMMAND sphinx-build -b latex . ${CMAKE_CURRENT_BINARY_DIR}/build-latex
+         DEPENDS
+             OpenColorIO
+             ${CMAKE_BINARY_DIR}/docs/conf.py
+@@ -156,14 +66,12 @@ if(PDFLATEX_COMPILER)
+             ${RSTDOC_OUTPUT}
+         COMMENT "Building latex doc"
+         SOURCES ${DOCFILES})
+-    add_dependencies(latex Sphinx)
+     
+     add_custom_target(pdf ALL
+         COMMAND ${PDFLATEX_COMPILER} OpenColorIO.tex
+         WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/build-latex
+         COMMENT "Building pdf doc"
+         SOURCES ${DOCFILES})
+-    add_dependencies(pdf latex)
+     
+     install(FILES ${CMAKE_CURRENT_BINARY_DIR}/build-latex/OpenColorIO.pdf
+             DESTINATION ${CMAKE_INSTALL_DOCDIR})
+-- 
+2.15.1
+

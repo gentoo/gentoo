@@ -1,0 +1,11 @@
+diff -ur monica-3.7.orig/monica.cpp monica-3.7/monica.cpp
+--- monica-3.7.orig/monica.cpp	2008-06-02 06:45:50.000000000 +0300
++++ monica-3.7/monica.cpp	2009-07-24 20:42:12.000000000 +0300
+@@ -14,6 +14,7 @@
+ #include <FL/Fl_Tooltip.H>
+ #include <FL/Fl_Pixmap.H>
+ 
++#include <cstdio>
+ #include <cstdlib>
+ #include <string>
+ #include <iostream>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">XML-LibXML</remote-id>
+    <remote-id type="cpan-module">XML::LibXML</remote-id>
+    <remote-id type="cpan-module">XML::LibXML::Attr</remote-id>
+    <remote-id type="cpan-module">XML::LibXML::AttributeHash</remote-id>
+    <remote-id type="cpan-module">XML::LibXML::Boolean</remote-id>
+    <remote-id type="cpan-module">XML::LibXML::CDATASection</remote-id>
+    <remote-id type="cpan-module">XML::LibXML::Comment</remote-id>
+    <remote-id type="cpan-module">XML::LibXML::Common</remote-id>
+    <remote-id type="cpan-module">XML::LibXML::Devel</remote-id>
+    <remote-id type="cpan-module">XML::LibXML::Document</remote-id>
+    <remote-id type="cpan-module">XML::LibXML::DocumentFragment</remote-id>
+    <remote-id type="cpan-module">XML::LibXML::Dtd</remote-id>
+    <remote-id type="cpan-module">XML::LibXML::Element</remote-id>
+    <remote-id type="cpan-module">XML::LibXML::ErrNo</remote-id>
+    <remote-id type="cpan-module">XML::LibXML::Error</remote-id>
+    <remote-id type="cpan-module">XML::LibXML::InputCallback</remote-id>
+    <remote-id type="cpan-module">XML::LibXML::Literal</remote-id>
+    <remote-id type="cpan-module">XML::LibXML::NamedNodeMap</remote-id>
+    <remote-id type="cpan-module">XML::LibXML::Namespace</remote-id>
+    <remote-id type="cpan-module">XML::LibXML::Node</remote-id>
+    <remote-id type="cpan-module">XML::LibXML::NodeList</remote-id>
+    <remote-id type="cpan-module">XML::LibXML::Number</remote-id>
+    <remote-id type="cpan-module">XML::LibXML::PI</remote-id>
+    <remote-id type="cpan-module">XML::LibXML::Pattern</remote-id>
+    <remote-id type="cpan-module">XML::LibXML::Reader</remote-id>
+    <remote-id type="cpan-module">XML::LibXML::RegExp</remote-id>
+    <remote-id type="cpan-module">XML::LibXML::RelaxNG</remote-id>
+    <remote-id type="cpan-module">XML::LibXML::SAX</remote-id>
+    <remote-id type="cpan-module">XML::LibXML::SAX::AttributeNode</remote-id>
+    <remote-id type="cpan-module">XML::LibXML::SAX::Builder</remote-id>
+    <remote-id type="cpan-module">XML::LibXML::SAX::Generator</remote-id>
+    <remote-id type="cpan-module">XML::LibXML::SAX::Parser</remote-id>
+    <remote-id type="cpan-module">XML::LibXML::Schema</remote-id>
+    <remote-id type="cpan-module">XML::LibXML::Text</remote-id>
+    <remote-id type="cpan-module">XML::LibXML::XPathContext</remote-id>
+    <remote-id type="cpan-module">XML::LibXML::XPathExpression</remote-id>
+    <remote-id type="cpan-module">XML::LibXML::_SAXParser</remote-id>
+  </upstream>
+</pkgmetadata>

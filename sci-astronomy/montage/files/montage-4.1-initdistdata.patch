@@ -1,0 +1,19 @@
+Author: Christoph Deil <Deil.Christoph@gmail.com>
+Description: non-void function 'closefitsfile' should return a value
+ This is copied from macports.
+Bug: https://trac.macports.org/ticket/41076
+Url: https://trac.macports.org/attachment/ticket/41076/patch-lib-src-two_plane_v1.1-initdistdata.c.diff
+--- a/lib/src/two_plane_v1.1/initdistdata.c
++++ b/lib/src/two_plane_v1.1/initdistdata.c
+@@ -33,9 +33,9 @@
+   if (I_fits_return_status != 0)
+   {
+      fprintf(stderr, "Error closing file\n");
+-     return;
++     return -1;
+   }
+-  return;    
++  return 0;
+ }
+ 
+ int initdata_byheader(char *fitsheader, DistCoeff *coeff) 

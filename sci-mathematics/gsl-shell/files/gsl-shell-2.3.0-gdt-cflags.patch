@@ -1,0 +1,20 @@
+--- a/gdt/Makefile
++++ b/gdt/Makefile
+@@ -27,7 +27,7 @@ include $(GSH_BASE_DIR)/makedefs
+ 
+ INCLUDES += -I$(GSH_BASE_DIR)
+ 
+-CFLAGS += -std=c99
++GDT_CFLAGS = $(CFLAGS) -std=c99
+ 
+ GDT_SRC_FILES = char_buffer.c gdt_index.c gdt_table.c
+ GDT_OBJ_FILES := $(GDT_SRC_FILES:%.c=%.o)
+@@ -36,7 +36,7 @@ DEP_FILES := $(GDT_SRC_FILES:%.c=.deps/%.P)
+ 
+ DEPS_MAGIC := $(shell mkdir .deps > /dev/null 2>&1 || :)
+ 
+-COMPILE = $(CC) $(CFLAGS) $(LUA_CFLAGS) $(DEFS) $(INCLUDES)
++COMPILE = $(CC) $(GDT_CFLAGS) $(LUA_CFLAGS) $(DEFS) $(INCLUDES)
+ 
+ TARGETS = libgdt.a
+ 
