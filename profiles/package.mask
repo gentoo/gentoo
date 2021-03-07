@@ -73,6 +73,7 @@ dev-ml/ocaml-cstruct
 dev-ml/ocaml-ipaddr
 dev-ml/ocaml-uri
 dev-ml/re2
+dev-ml/bin-prot
 
 # Conrad Kostecki <conikost@gentoo.org> (2021-03-05)
 # Deprecated by upstream and unsupported due EOL.
