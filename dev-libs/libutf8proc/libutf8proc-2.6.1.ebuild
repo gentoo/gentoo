@@ -35,7 +35,9 @@ src_prepare() {
 src_compile() {
 	emake \
 		AR="$(tc-getAR)" \
-		CC="$(tc-getCC)"
+		CC="$(tc-getCC)" \
+		prefix="/usr" \
+		libdir="${EPREFIX}/usr/$(get_libdir)"
 }
 
 src_install() {

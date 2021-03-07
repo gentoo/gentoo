@@ -162,6 +162,7 @@ pkg_setup() {
 src_compile() {
 	export DOCKER_GITCOMMIT="${GIT_COMMIT}"
 	export GOPATH="${WORKDIR}/${P}"
+	export VERSION=${PV}
 
 	# setup CFLAGS and LDFLAGS for separate build target
 	# see https://github.com/tianon/docker-overlay/pull/10
