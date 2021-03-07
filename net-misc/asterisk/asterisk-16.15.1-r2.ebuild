@@ -5,7 +5,7 @@ EAPI=7
 
 LUA_COMPAT=( lua5-{1..4} )
 
-inherit autotools linux-info lua-single systemd toolchain-funcs
+inherit autotools linux-info lua-single systemd toolchain-funcs tmpfiles
 
 DESCRIPTION="Asterisk: A Modular Open Source PBX System"
 HOMEPAGE="https://www.asterisk.org/"
@@ -284,7 +284,7 @@ src_install() {
 	newconfd "${FILESDIR}"/confd-13.32.0 asterisk
 
 	systemd_dounit "${FILESDIR}"/asterisk.service
-	systemd_newtmpfilesd "${FILESDIR}"/asterisk.tmpfiles2.conf asterisk.conf
+	newtmpfiles "${FILESDIR}"/asterisk.tmpfiles2.conf asterisk.conf
 	systemd_install_serviced "${FILESDIR}"/asterisk.service.conf
 
 	# Reset diropts else dodoc uses it for doc installations.
