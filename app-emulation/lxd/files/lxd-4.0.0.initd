@@ -28,7 +28,7 @@ start() {
 }
 
 stop() {
-	if [[ "${RC_CMD}" = restart ]]; then
+	if [ "${RC_CMD}" = restart ]; then
 		ebegin "Stopping lxd service (but not containers)"
 		# start-stop-daemon sends SIGTERM with a timeout of 5s by default.
 		# SIGTERM indicates to LXD that it will be stopped temporarily.
