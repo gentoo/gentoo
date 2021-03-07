@@ -4034,6 +4034,9 @@ media-gfx/nvidia-texture-tools:glew - Enable support for The OpenGL Extension Wr
 media-gfx/openclipart:gzip - Compresses clip art using gzip
 media-gfx/openexr_viewers:cg - Add support for nvidia's cg shaders
 media-gfx/openscad:ccache - Use dev-util/ccache to speed up rebuilds
+media-gfx/openscad:gamepad - Add support for gamepads through dev-qt/qtgamepad
+media-gfx/openscad:headless - Build a binary without GUI
+media-gfx/openscad:spacenav - Add support for space navigator devices through dev-libs/libspnav
 media-gfx/openvdb:abi3-compat - Disables newer features to maintain compatibility with ABI3.
 media-gfx/openvdb:abi4-compat - Disables newer features to maintain compatibility with ABI4.
 media-gfx/openvdb:abi5-compat - Disables newer features to maintain compatibility with ABI5.
