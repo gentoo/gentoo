@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -34,7 +34,7 @@ RDEPEND="
 	>=x11-libs/gtk+-3.23.1:3
 	v4l? ( >=media-video/cheese-3.5.91:= )
 	telepathy? ( >=net-libs/telepathy-glib-0.22 )
-	>=gui-libs/libhandy-0.0.12:0.0=
+	>=gui-libs/libhandy-1.0.0:1
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
