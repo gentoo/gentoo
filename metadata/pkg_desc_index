@@ -712,7 +712,7 @@ app-admin/mei-amt-check 0_p20170515: AMT status checker
 app-admin/metalog 3-r2 20181125 20200113-r1: A highly configurable replacement for syslogd/klogd
 app-admin/mktwpol 1.0.1: Bash scripts to install tripwire and generate tripwire policy files
 app-admin/mms-agent 3.7.0.212_p1 6.0.0.381_p1: MongoDB MMS agents
-app-admin/mongo-tools 3.6.13 3.6.17 4.0.12 4.0.16 4.0.19 4.0.20 4.2.3 4.2.6 4.2.8 4.2.10 4.2.11 100.2.0 100.2.1: A high-performance, open source, schema-free document-oriented database
+app-admin/mongo-tools 4.2.11 4.2.12 100.2.0 100.2.1 100.3.0: A high-performance, open source, schema-free document-oriented database
 app-admin/monit 5.27.1 5.27.1-r1 5.27.2: Monitoring and managing daemons or similar programs running on a Unix system
 app-admin/mtail 3.0.0_rc35 3.0.0_rc36: A tool for extracting metrics from application logs
 app-admin/multilog-watch 1.12-r1: Watches a multilog file for irregularities
