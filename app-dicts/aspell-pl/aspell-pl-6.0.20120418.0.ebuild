@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,11 +10,9 @@ inherit versionator aspell-dict-r1
 
 MY_P="${PN/aspell/aspell6}-$(replace_version_separator 2 _ $(replace_version_separator 3 -))"
 
-HOMEPAGE="http://www.sjp.pl/slownik/"
+HOMEPAGE="https://sjp.pl/slownik/en/"
 SRC_URI="http://www.sjp.pl/slownik/ort/sjp-${MY_P}.tar.bz2"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86"
-IUSE=""
-
-S="${WORKDIR}/${MY_P}"
