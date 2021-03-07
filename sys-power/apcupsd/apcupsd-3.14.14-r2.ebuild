@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit linux-info flag-o-matic systemd udev
+inherit linux-info flag-o-matic systemd udev tmpfiles
 
 DESCRIPTION="APC UPS daemon with integrated tcp/ip remote shutdown"
 HOMEPAGE="http://www.apcupsd.org/"
@@ -93,7 +93,7 @@ src_install() {
 	newinitd "${FILESDIR}/${PN}.powerfail.init" "${PN}".powerfail
 
 	systemd_dounit "${FILESDIR}"/${PN}.service
-	systemd_dotmpfilesd "${FILESDIR}"/${PN}-tmpfiles.conf
+	dotmpfiles "${FILESDIR}"/${PN}-tmpfiles.conf
 
 	# remove hal settings, we don't really want to have it around still.
 	rm -r "${D}"/usr/share/hal || die
