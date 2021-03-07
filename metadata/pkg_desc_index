@@ -7992,7 +7992,7 @@ dev-python/argh 0.26.2-r2: A simple argparse wrapper
 dev-python/argon2-cffi 20.1.0: CFFI bindings to the Argon2 password hashing library
 dev-python/argparse-manpage 1.4 1.5: Automatically build man-pages for your Python project
 dev-python/arpeggio 1.10.0: Parser interpreter based on PEG grammars
-dev-python/arrow 0.17.0 1.0.0 1.0.1 1.0.2: Better dates and times for Python
+dev-python/arrow 0.17.0 1.0.0 1.0.1 1.0.2 1.0.3: Better dates and times for Python
 dev-python/asgiref 3.3.1: ASGI utilities (successor to WSGI)
 dev-python/asn1crypto 1.4.0: Python ASN.1 library with a focus on performance and a pythonic API
 dev-python/asteval 0.9.21 0.9.22 0.9.23: Evaluator of Python expression using ast module
@@ -8319,7 +8319,7 @@ dev-python/git-review 1.28.0: Tool to submit code to Gerrit
 dev-python/gitdb 4.0.5-r1: GitDB is a pure-Python git object database
 dev-python/github3 1.3.0: A wrapper for the GitHub API written in python
 dev-python/glance_store 2.3.0: A library for glance
-dev-python/glooey 0.3.4: An object-oriented GUI library for pyglet
+dev-python/glooey 0.3.4-r1: An object-oriented GUI library for pyglet
 dev-python/gmpy 2.0.8-r2: Python bindings for GMP, MPC, MPFR and MPIR libraries
 dev-python/google-api-core 1.25.1 1.26.0 1.26.1: Core Library for Google Client Libraries
 dev-python/google-api-python-client 1.8.3-r1 2.0.0 2.0.2: Google API Client for Python
