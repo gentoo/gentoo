@@ -275,27 +275,31 @@ kernel-install_test() {
 		spawn ./run.sh
 		expect {
 			"terminating on signal" {
-				send_error "\n* Qemu killed"
+				send_error "\n* Qemu killed\n"
 				exit 1
 			}
 			"OS terminated" {
-				send_error "\n* Qemu terminated OS"
+				send_error "\n* Qemu terminated OS\n"
 				exit 1
 			}
 			"Kernel panic" {
-				send_error "\n* Kernel panic"
+				send_error "\n* Kernel panic\n"
 				exit 1
 			}
 			"Entering emergency mode" {
-				send_error "\n* Initramfs failed to start the system"
+				send_error "\n* Initramfs failed to start the system\n"
 				exit 1
 			}
 			"Hello, World!" {
-				send_error "\n* Booted successfully"
+				send_error "\n* Booted successfully\n"
 				exit 0
 			}
 			timeout {
-				send_error "\n* Kernel boot timed out"
+				send_error "\n* Kernel boot timed out\n"
+				exit 2
+			}
+			eof {
+				send_error "\n* qemu terminated before booting the kernel\n"
 				exit 2
 			}
 		}
