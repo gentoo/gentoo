@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit apache-module eutils systemd
+inherit apache-module eutils tmpfiles
 
 DESCRIPTION="An Apache authentication module using Kerberos"
 HOMEPAGE="http://modauthkerb.sourceforge.net/"
@@ -50,5 +50,5 @@ src_compile() {
 
 src_install() {
 	apache-module_src_install
-	systemd_dotmpfilesd "${FILESDIR}/${PN}.conf"
+	dotmpfiles "${FILESDIR}/${PN}.conf"
 }
