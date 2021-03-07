@@ -5814,7 +5814,7 @@ dev-lua/mpack 1.0.8-r100: Lua bindings for libmpack
 dev-lua/penlight 1.9.2-r101: Lua utility libraries loosely based on the Python standard libraries
 dev-lua/say 1.3_p1-r101: Lua String Hashing/Indexing Library
 dev-lua/toluapp 1.0.93_p20190513-r100: A tool to integrate C/C++ code with Lua
-dev-ml/alcotest 0.8.2 1.2.3-r3: A lightweight and colourful test framework
+dev-ml/alcotest 1.2.3-r3: A lightweight and colourful test framework
 dev-ml/astring 0.8.3 0.8.5: Alternative String module for OCaml
 dev-ml/async 0.14.0: Jane Street Capital's asynchronous execution library
 dev-ml/async_extra 0.14.0: Jane Street Capital's asynchronous execution library (extra)
@@ -5846,7 +5846,7 @@ dev-ml/camomile 0.8.5-r2 1.0.2: Camomile is a comprehensive Unicode library for 
 dev-ml/cinaps 0.14.0 0.15.0: Trivial metaprogramming tool
 dev-ml/cmdliner 1.0.4: Declarative definition of command line interfaces for OCaml
 dev-ml/configurator 0.9.1: Helper library for gathering system configuration
-dev-ml/core 0.9.1-r1 0.9.2 0.14.0-r3: Jane Street's alternative to the standard library
+dev-ml/core 0.14.0-r3: Jane Street's alternative to the standard library
 dev-ml/core_bench 0.14.0: Micro-benchmarking library for OCaml
 dev-ml/core_extended 0.9.0: Jane Street's alternative to the standard library
 dev-ml/core_kernel 0.9.0 0.9.1 0.14.1-r3: System-independent part of Core
@@ -5954,9 +5954,9 @@ dev-ml/parsexp 0.14.0: S-expression parsing library
 dev-ml/patience_diff 0.14.0: Tool and library implementing patience diff
 dev-ml/pcre-ocaml 7.2.3 7.4.6-r1: Perl Compatibility Regular Expressions for O'Caml
 dev-ml/pgocaml 2.3-r1: PG'OCaml is a set of OCaml bindings for the PostgreSQL database
-dev-ml/ppx_assert 0.9.0 0.14.0: Assert-like extension nodes that raise useful errors on failure
+dev-ml/ppx_assert 0.14.0: Assert-like extension nodes that raise useful errors on failure
 dev-ml/ppx_ast 0.9.1: AST used in Jane Street ppx rewriters
-dev-ml/ppx_base 0.9.0 0.14.0: Base set of ppx rewriters
+dev-ml/ppx_base 0.14.0: Base set of ppx rewriters
 dev-ml/ppx_bench 0.9.1 0.14.1: Syntax extension for writing in-line benchmarks in ocaml code
 dev-ml/ppx_bin_prot 0.9.0 0.14.0: Generation of bin_prot readers and writers from types
 dev-ml/ppx_cold 0.14.0: Expands [@cold] into [@inline never][@specialise never][@local never]
@@ -5967,14 +5967,14 @@ dev-ml/ppx_derivers 1.0 1.2.1: Shared [@@deriving] plugin registry
 dev-ml/ppx_deriving 4.5 5.2: Type-driven code generation for OCaml
 dev-ml/ppx_driver 0.9.1-r1 0.11.0: Feature-full driver for OCaml AST transformers
 dev-ml/ppx_enumerate 0.9.0 0.14.0: Generate a list containing all values of a finite type
-dev-ml/ppx_expect 0.9.0-r1 0.14.0: Cram like framework for OCaml
+dev-ml/ppx_expect 0.14.0: Cram like framework for OCaml
 dev-ml/ppx_fail 0.9.0 0.14.0: Add location to calls to failwiths
 dev-ml/ppx_fields_conv 0.9.0-r1 0.14.1: Generation of accessor and iteration functions for ocaml records
 dev-ml/ppx_fixed_literal 0.14.0: Simpler notation for fixed point literals
-dev-ml/ppx_hash 0.9.0 0.14.0: PPX rewriter that generates hash functions from type expressions and definitions
+dev-ml/ppx_hash 0.14.0: PPX rewriter that generates hash functions from type expressions and definitions
 dev-ml/ppx_here 0.9.1 0.14.0: Expands [%here] into its location
 dev-ml/ppx_inline_test 0.9.2 0.14.1: Syntax extension for writing in-line tests in ocaml code
-dev-ml/ppx_jane 0.9.0 0.14.0: Standard Jane Street ppx rewriters
+dev-ml/ppx_jane 0.14.0: Standard Jane Street ppx rewriters
 dev-ml/ppx_js_style 0.9.0 0.14.0: Code style checker for Jane Street Packages
 dev-ml/ppx_let 0.9.0 0.14.0: Monadic let-bindings
 dev-ml/ppx_metaquot 0.9.0 0.11.0: Write OCaml AST fragment using OCaml syntax
@@ -5983,8 +5983,8 @@ dev-ml/ppx_optcomp 0.9.0-r3 0.14.0: Optional compilation for OCaml
 dev-ml/ppx_optional 0.9.0 0.14.0: Pattern matching on flat options
 dev-ml/ppx_pipebang 0.9.0 0.14.0: A ppx rewriter that inlines reverse application operators |> and |!
 dev-ml/ppx_sexp_conv 0.9.0-r1 0.14.1 0.14.2: Support Library for type-driven code generators
-dev-ml/ppx_sexp_message 0.9.0 0.14.0: A ppx rewriter for easy construction of s-expressions
-dev-ml/ppx_sexp_value 0.9.0 0.14.0: Standard library for ppx rewriters
+dev-ml/ppx_sexp_message 0.14.0: A ppx rewriter for easy construction of s-expressions
+dev-ml/ppx_sexp_value 0.14.0: Standard library for ppx rewriters
 dev-ml/ppx_stable 0.14.1: Stable types conversions generator
 dev-ml/ppx_string 0.14.1: Ppx extension for string interpolation
 dev-ml/ppx_tools 6.2: Tools for authors of ppx rewriters
@@ -6007,9 +6007,9 @@ dev-ml/rresult 0.5.0: Result value combinators for OCaml
 dev-ml/seq 0.1 0.2 1: Compatibility package for OCaml's standard iterator type starting from 4.07.
 dev-ml/sexplib 0.9.2 0.9.3 0.14.0: Library for automated conversion of OCaml-values to and from S-expressions
 dev-ml/sexplib0 0.14.0: Library for automated conversion of OCaml-values to and from S-expressions
-dev-ml/spawn 0.9.0 0.13.0: Spawning sub-processes
+dev-ml/spawn 0.13.0: Spawning sub-processes
 dev-ml/splittable_random 0.14.0: PRNG that can be split into independent streams
-dev-ml/stdio 0.9.0-r1 0.9.1 0.14.0: Standard IO Library for OCaml
+dev-ml/stdio 0.14.0: Standard IO Library for OCaml
 dev-ml/stdlib-shims 0.2.0 0.3.0: Pure OCaml library that allows replacing Pervasives with Stdlib before 4.08
 dev-ml/stringext 1.4.3: Extra string functions for OCaml
 dev-ml/textutils 0.14.0: Text output utilities
@@ -15607,7 +15607,7 @@ net-vpn/openvpn 2.4.9 2.5.0-r1 9999: Robust and highly flexible tunneling applic
 net-vpn/pptpd 1.4.0-r3: Linux Point-to-Point Tunnelling Protocol Server
 net-vpn/protonvpn-cli 2.2.2 2.2.4 2.2.6: A VPN command-line tool from protonvpn - python rewrite
 net-vpn/strongswan 5.9.0 5.9.1: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
-net-vpn/tailscale 1.2.10-r1 1.4.0 1.4.1: Tailscale vpn client
+net-vpn/tailscale 1.2.10-r1 1.4.0 1.4.1 1.4.5: Tailscale vpn client
 net-vpn/tinc 1.0.35-r2 1.0.36 1.1_pre17-r1: tinc is an easy to configure VPN implementation
 net-vpn/tor 0.4.4.6 0.4.4.7 0.4.5.6: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550-r2: Free client for Cisco VPN routing software
