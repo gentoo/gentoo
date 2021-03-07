@@ -18358,7 +18358,7 @@ x11-libs/libva-intel-driver 2.4.1 9999: HW video decode support for Intel integr
 x11-libs/libva-intel-media-driver 20.1.1-r2 20.2.0-r2 20.4.5 9999: Intel Media Driver for VAAPI (iHD)
 x11-libs/libva-vdpau-driver 0.7.4-r5: VDPAU Backend for Video Acceleration (VA) API
 x11-libs/libvdpau 1.4 99999: VDPAU wrapper and trace libraries
-x11-libs/libwnck 2.31.0 3.36.0: A window navigation construction kit
+x11-libs/libwnck 2.31.0 2.31.0-r1 3.36.0: A window navigation construction kit
 x11-libs/libxcb 1.14: X C-language Bindings library
 x11-libs/libxkbcommon 1.0.3 1.1.0: keymap handling library for toolkits and window systems
 x11-libs/libxkbfile 1.1.0: X.Org xkbfile library
