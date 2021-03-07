@@ -17,7 +17,7 @@ S="${WORKDIR}/${P/_/}"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="doc full-support minimal test X"
 RESTRICT="!test? ( test )"
 
@@ -93,7 +93,7 @@ DEPEND="${COMMON_DEPEND}
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/openpyxl[${PYTHON_USEDEP}]
 		dev-python/pymysql[${PYTHON_USEDEP}]
-		>=dev-python/pytest-5.1[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		dev-python/psycopg:2[${PYTHON_USEDEP}]
@@ -115,10 +115,17 @@ python_prepare_all() {
 		-i doc/source/conf.py || die
 
 	# requires package installed
+	sed -e 's:test_register_entrypoint:_&:' \
+		-i pandas/tests/plotting/test_backend.py || die
+
 	sed -e '/extra_compile_args =/s:"-Werror"::' \
 		-i setup.py || die
 
 	distutils-r1_python_prepare_all
+}
+
+python_compile() {
+	distutils-r1_python_compile -j1
 }
 
 python_compile_all() {
@@ -136,21 +143,10 @@ src_test() {
 }
 
 python_test() {
-	local deselect=(
-		# broken on practically any hardware/CFLAGS but the one
-		# the patch author was using
-		# https://github.com/pandas-dev/pandas/issues/38921
-		pandas/tests/window/test_rolling.py::test_rolling_var_numerical_issues
-
-		# weird issue, doesn't seem very important
-		'pandas/tests/base/test_misc.py::test_memory_usage[series-with-empty-index]'
-	)
-
 	local -x LC_ALL=C.UTF-8
-	pushd "${BUILD_DIR}"/lib > /dev/null || die
+	pushd  "${BUILD_DIR}"/lib > /dev/null || die
 	"${EPYTHON}" -c "import pandas; pandas.show_versions()" || die
-	PYTHONPATH=. pytest pandas -vv --skip-slow --skip-network \
-		${deselect[@]/#/--deselect } \
+	PYTHONPATH=. pytest pandas -v --skip-slow --skip-network \
 		-n "$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")" \
 		-m "not single" || die "Tests failed with ${EPYTHON}"
 	find . '(' -name .pytest_cache -o -name .hypothesis ')' \
