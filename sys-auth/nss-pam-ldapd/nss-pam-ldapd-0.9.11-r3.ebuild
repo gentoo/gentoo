@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PYTHON_COMPAT=(python3_{7..8})
-inherit eutils prefix python-r1 autotools multilib multilib-minimal systemd s6
+inherit eutils prefix python-r1 autotools multilib multilib-minimal systemd s6 tmpfiles
 
 DESCRIPTION="NSS module for name lookups using LDAP"
 HOMEPAGE="https://arthurdejong.org/nss-pam-ldapd/"
@@ -131,7 +131,7 @@ multilib_src_install_all() {
 		newinitd "${FILESDIR}"/pynslcd.init pynslcd
 	fi
 
-	systemd_newtmpfilesd "${FILESDIR}"/nslcd-tmpfiles.conf nslcd.conf
+	newtmpfiles "${FILESDIR}"/nslcd-tmpfiles.conf nslcd.conf
 	systemd_newunit "${FILESDIR}"/nslcd.service nslcd.service
 }
 
