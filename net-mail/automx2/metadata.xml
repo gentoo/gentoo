@@ -18,11 +18,11 @@
 		(autoconfig) in one tool.
 	</longdescription>
 	<upstream>
-		<doc>https://gitlab.com/automx/automx2/blob/master/doc/automx2.adoc</doc>
+		<doc>https://github.com/rseichter/automx2/blob/master/doc/automx2.pdf</doc>
 		<maintainer>
 			<email>automx2@seichter.de</email>
 			<name>Ralph Seichter</name>
 		</maintainer>
-		<remote-id type="gitlab">automx/automx2</remote-id>
+		<remote-id type="github">rseichter/automx2</remote-id>
 	</upstream>
 </pkgmetadata>
