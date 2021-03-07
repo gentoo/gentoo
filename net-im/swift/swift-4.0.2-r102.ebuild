@@ -132,6 +132,9 @@ src_configure() {
 		hunspell_enable="no"
 		icu="$(usex icu)"
 		install_git_hooks="no"
+		# Use 'DISABLE' as an invalid lib name, so no editline lib is used,
+		# as current version is not compatible and compilation will fail.
+		editline_libname="DISABLE"
 		libidn_bundled_enable="false"
 		libminiupnpc_force_bundled="false"
 		libnatpmp_force_bundled="false"
