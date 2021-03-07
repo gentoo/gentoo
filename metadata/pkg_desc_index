@@ -5973,7 +5973,7 @@ dev-ml/ppx_fields_conv 0.14.1: Generation of accessor and iteration functions fo
 dev-ml/ppx_fixed_literal 0.14.0: Simpler notation for fixed point literals
 dev-ml/ppx_hash 0.14.0: PPX rewriter that generates hash functions from type expressions and definitions
 dev-ml/ppx_here 0.9.1 0.14.0: Expands [%here] into its location
-dev-ml/ppx_inline_test 0.9.2 0.14.1: Syntax extension for writing in-line tests in ocaml code
+dev-ml/ppx_inline_test 0.14.1: Syntax extension for writing in-line tests in ocaml code
 dev-ml/ppx_jane 0.14.0: Standard Jane Street ppx rewriters
 dev-ml/ppx_js_style 0.14.0: Code style checker for Jane Street Packages
 dev-ml/ppx_let 0.14.0: Monadic let-bindings
@@ -5993,7 +5993,7 @@ dev-ml/ppx_traverse 0.9.0: Automatic generation of open recursion classes
 dev-ml/ppx_traverse_builtins 0.9.0: Builtins for ppx_traverse
 dev-ml/ppx_type_conv 0.9.0: Support Library for type-driven code generators
 dev-ml/ppx_typerep_conv 0.14.1: Generation of runtime types from type declarations
-dev-ml/ppx_variants_conv 0.9.0 0.14.1: Generation of accessor and iteration functions for ocaml variant types
+dev-ml/ppx_variants_conv 0.14.1: Generation of accessor and iteration functions for ocaml variant types
 dev-ml/ppxfind 1.4: ocamlfind ppx tool
 dev-ml/ppxlib 0.18.0 0.20.0 0.21.0-r1 0.22.0-r1: Base library and tools for ppx rewriters
 dev-ml/protocol_version_header 0.14.0: Protocol aware version negotiation for OCaml
