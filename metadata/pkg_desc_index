@@ -8365,7 +8365,7 @@ dev-python/hvac 0.10.8: hashicorp vault client in python
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 21.0.0: A featureful, correct URL for Python
-dev-python/hypothesis 6.1.1 6.2.0 6.3.4 6.4.0 6.4.2 6.4.3: A library for property based testing
+dev-python/hypothesis 6.1.1 6.2.0 6.3.4 6.4.0 6.4.2 6.4.3 6.6.0: A library for property based testing
 dev-python/icalendar 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/idna 2.10-r1 3.0 3.1: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0-r1: Patch ssl.match_hostname for Unicode(idna) domains support
@@ -9142,7 +9142,7 @@ dev-python/serpent 1.30.2: A simple serialization library based on ast.literal_e
 dev-python/serverfiles 0.2.1 0.3.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0-r1: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.2.2: Allow customization of the process title
-dev-python/setuptools 51.3.3 53.0.0 53.1.0 54.0.0 54.1.0: Collection of extensions to Distutils
+dev-python/setuptools 51.3.3 53.0.0 53.1.0 54.0.0 54.1.0 54.1.1: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2-r2: Setuptools revision control system plugin for Git
 dev-python/setuptools_scm 5.0.1 5.0.2: Manage versions by scm tags via setuptools
 dev-python/setuptools_scm_git_archive 1.1: A setuptools_scm plugin for git archives
@@ -18128,7 +18128,7 @@ www-plugins/google-talkplugin 5.41.3.0 9999: Video chat browser plug-in for Goog
 www-plugins/lightspark 0.8.2-r1 0.8.3 0.8.4: High performance flash player
 www-plugins/passff-host 1.2.1-r1: Host app for the PassFF WebExtension
 www-plugins/pdfjs 2.4.456 2.5.207: A PDF reader in JavaScript
-www-servers/adsf 1.4.3: A Dead Simple Fileserver is a static file server that can launch in a directory
+www-servers/adsf 1.4.3 1.4.5: A Dead Simple Fileserver is a static file server that can launch in a directory
 www-servers/apache 2.4.46 2.4.46-r5 2.4.46-r6: The Apache Web Server
 www-servers/boa 0.94.14_rc21-r2: A very small and very fast http daemon
 www-servers/bozohttpd 20190228: bozohttpd is a small and secure http server
@@ -19077,7 +19077,7 @@ xfce-base/exo 4.16.0: Extensions, widgets and framework library with session sup
 xfce-base/garcon 0.8.0: Xfce's freedesktop.org specification compatible menu implementation library
 xfce-base/libxfce4ui 4.16.0: Unified widget and session management libs for Xfce
 xfce-base/libxfce4util 4.16.0: A basic utility library for the Xfce desktop environment
-xfce-base/thunar 4.16.2 4.16.3 4.17.0: File manager for the Xfce desktop environment
+xfce-base/thunar 4.16.2 4.16.3 4.16.4 4.17.0: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.16.1: A tool to find and launch installed applications for the Xfce desktop
 xfce-base/xfce4-meta 4.14-r2 4.16 4.16-r2: The Xfce Desktop Environment (meta package)
 xfce-base/xfce4-panel 4.16.1 4.16.2: Panel for the Xfce desktop environment
