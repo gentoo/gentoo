@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools eutils linux-info readme.gentoo-r1 systemd
+inherit autotools eutils linux-info readme.gentoo-r1 systemd tmpfiles
 
 DESCRIPTION="Single Packet Authorization and Port Knocking application"
 HOMEPAGE="https://www.cipherdyne.org/fwknop/"
@@ -93,7 +93,7 @@ src_install() {
 		newinitd "${FILESDIR}/fwknopd.init" fwknopd
 		newconfd "${FILESDIR}/fwknopd.confd" fwknopd
 		systemd_dounit "${FILESDIR}/fwknopd.service"
-		systemd_newtmpfilesd "${FILESDIR}/fwknopd.tmpfiles.conf" fwknopd.conf
+		newtmpfiles "${FILESDIR}/fwknopd.tmpfiles.conf" fwknopd.conf
 		readme.gentoo_create_doc
 	fi
 
