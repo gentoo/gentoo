@@ -45,7 +45,10 @@ src_configure() {
 src_install () {
 	default
 
-	use examples && docompress -x "/usr/share/doc/${PF}/examples"
+	if use examples; then
+		docompress -x "/usr/share/doc/${PF}/examples"
+		dodoc -r examples
+	fi
 	use doc && einstalldocs
 
 	mv "${ED}/usr/bin/cube" "${ED}/usr/bin/topcom_cube" || die
