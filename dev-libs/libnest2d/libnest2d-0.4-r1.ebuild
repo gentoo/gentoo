@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/tamasmeszaros/libnest2d"
 SRC_URI="https://github.com/tamasmeszaros/libnest2d/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3"
-SLOT="0"
+SLOT="0/1"
 KEYWORDS="~amd64 ~arm64 ~x86"
 
 IUSE="examples static-libs test"
@@ -26,7 +26,11 @@ DEPEND="${RDEPEND}
 	test? ( >=dev-cpp/catch-2.9.1 )
 	"
 
-PATCHES=( "${FILESDIR}"/${P}-add-disallowed-areas.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-add-disallowed-areas.patch
+	"${FILESDIR}"/${P}-add-soversion-to-shared-library.patch
+	"${FILESDIR}"/${P}-fix-cpp-version.patch
+	)
 
 src_configure() {
 	local mycmakeargs=(
