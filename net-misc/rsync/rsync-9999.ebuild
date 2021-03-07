@@ -120,7 +120,7 @@ src_install() {
 
 	eprefixify "${ED}"/etc/{,xinetd.d}/rsyncd*
 
-	systemd_dounit "${FILESDIR}/rsyncd.service"
+	systemd_newunit "packaging/systemd/rsync.service" "rsyncd.service"
 }
 
 pkg_postinst() {
