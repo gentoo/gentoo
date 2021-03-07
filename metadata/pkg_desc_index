@@ -285,6 +285,7 @@ acct-group/ushare 0: Group for uShare
 acct-group/utmp 0-r1: System group: utmp
 acct-group/varnish 0-r1: group for varnish
 acct-group/vault 0-r1: System group: vault
+acct-group/vault_exporter 0: A group for app-metrics/vault_exporter
 acct-group/vboxguest 0-r1: System group: vboxguest
 acct-group/vboxsf 0-r1: System group: vboxsf
 acct-group/vboxusers 0-r1: System group: vboxusers
@@ -567,6 +568,7 @@ acct-user/usbmux 0-r1: User for the usbmuxd daemon
 acct-user/ushare 0: User for uShare
 acct-user/varnish 0-r1: user for varnish
 acct-user/vault 0-r1: User for vault
+acct-user/vault_exporter 0: A user for app-metrics/vault_exporter
 acct-user/vboxguest 0-r1: user for virtualbox-guest-additions
 acct-user/vdradmin 0-r1: User for www-misc/vdradmin-am
 acct-user/vpopmail 0-r1: user for vpopmail
@@ -655,7 +657,7 @@ app-admin/entr 4.6: Run arbitrary commands when files change
 app-admin/eselect 1.4.16 1.4.17 9999: Gentoo's multi-purpose configuration and management tool
 app-admin/evtxtools 1.1.1-r1: Read, decode and dump Windows Vista/2008/7 event log file
 app-admin/exo 1.24.0: Command-line tool for everything at Exoscale: compute, storage, dns.
-app-admin/fam 2.7.0_p17_p2 2.7.0_p17_p3: FAM, the File Alteration Monitor
+app-admin/fam 2.7.0_p17_p3: FAM, the File Alteration Monitor
 app-admin/fetchlog 1.4-r1: Displays the last new messages of a logfile
 app-admin/fifo-cronolog 1.1.1-r1: cronolog wrapper for use with dumb daemons like squid, varnish and so on
 app-admin/filebeat 6.8.13 7.8.1 7.9.2 7.9.3 7.10.2: Lightweight log shipper for Logstash and Elasticsearch
@@ -2368,7 +2370,7 @@ app-metrics/rabbitmq_exporter 0.29.0: Rabbitmq exporter for Prometheus
 app-metrics/redis_exporter 0.20.2 1.1.1 1.2.0 1.2.1: Prometheus Exporter for Redis Metrics. Supports Redis 2.x, 3.x and 4.x
 app-metrics/snmp_exporter 0.15.0: Prometheus exporter for snmp metrics
 app-metrics/uwsgi_exporter 0.7.0 0.8.0: uWSGI metrics exporter for prometheus.io
-app-metrics/vault_exporter 0.1.2: Vault exporter for Prometheus
+app-metrics/vault_exporter 0.1.2-r1: Vault exporter for Prometheus
 app-misc/OpenRGB 0.4 0.5 9999: Open source RGB lighting control that doesn't depend on manufacturer software
 app-misc/abduco 0.6: lightweight session manager with {de,at}tach support
 app-misc/abook 0.6.1-r2: Abook is a text-based addressbook program designed to use with mutt mail client

@@ -1,0 +1,13 @@
+BDEPEND=acct-group/vault_exporter acct-user/vault_exporter >=dev-lang/go-1.10
+DEFINED_PHASES=compile install test unpack
+DESCRIPTION=Vault exporter for Prometheus
+EAPI=7
+HOMEPAGE=https://github.com/grapeshot/vault_exporter
+KEYWORDS=~amd64
+LICENSE=Apache-2.0 BSD MIT MPL-2.0
+RDEPEND=acct-group/vault_exporter acct-user/vault_exporter
+RESTRICT=strip
+SLOT=0
+SRC_URI=https://github.com/grapeshot/vault_exporter/archive/v0.1.2.tar.gz -> vault_exporter-0.1.2.tar.gz
+_eclasses_=golang-base	904cd4c642d6923795b9bd99b6fe0e74	golang-build	91472d4e18894e738c69b415e236a664	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec
+_md5_=11d89db4298d3faa76cc05f46c7aae1b
