@@ -14,6 +14,7 @@
     This package contains base application classes and configuration
     inhertited by other projects. It doesn't do much on its own.
   </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">jupyter-core</remote-id>
     <remote-id type="github">jupyter/jupyter_core</remote-id>
