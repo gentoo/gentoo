@@ -5816,12 +5816,12 @@ dev-lua/say 1.3_p1-r101: Lua String Hashing/Indexing Library
 dev-lua/toluapp 1.0.93_p20190513-r100: A tool to integrate C/C++ code with Lua
 dev-ml/alcotest 0.8.2 1.2.3-r3: A lightweight and colourful test framework
 dev-ml/astring 0.8.3 0.8.5: Alternative String module for OCaml
-dev-ml/async 0.9.0 0.14.0: Jane Street Capital's asynchronous execution library
-dev-ml/async_extra 0.9.0 0.14.0: Jane Street Capital's asynchronous execution library (extra)
-dev-ml/async_kernel 0.9.0 0.14.0: Jane Street Capital's asynchronous execution library (core)
-dev-ml/async_rpc_kernel 0.9.0 0.14.0-r1: Platform-independent core of Async RPC library
-dev-ml/async_ssl 0.9.0 0.9.1 0.14.0: An Async-pipe-based interface with OpenSSL.
-dev-ml/async_unix 0.9.0 0.14.0: Jane Street Capital's asynchronous execution library (unix)
+dev-ml/async 0.14.0: Jane Street Capital's asynchronous execution library
+dev-ml/async_extra 0.14.0: Jane Street Capital's asynchronous execution library (extra)
+dev-ml/async_kernel 0.14.0: Jane Street Capital's asynchronous execution library (core)
+dev-ml/async_rpc_kernel 0.14.0-r1: Platform-independent core of Async RPC library
+dev-ml/async_ssl 0.14.0: An Async-pipe-based interface with OpenSSL.
+dev-ml/async_unix 0.14.0: Jane Street Capital's asynchronous execution library (unix)
 dev-ml/base 0.9.1 0.9.2 0.9.3 0.9.4 0.14.0 0.14.1: Standard library for OCaml
 dev-ml/base_bigstring 0.14.0: String type based on Bigarray, for use in I/O and C-bindings
 dev-ml/base_quickcheck 0.14.0: Randomized testing framework, designed for compatibility with Base
@@ -5951,7 +5951,7 @@ dev-ml/ounit 2.0.6: Unit testing framework for OCaml
 dev-ml/ounit2 2.2.3 2.2.4: Unit testing framework for OCaml
 dev-ml/parmap 1.0_rc8 1.1.1 1.2: Library to exploit multicore architectures for OCaml programs
 dev-ml/parsexp 0.14.0: S-expression parsing library
-dev-ml/patience_diff 0.9.0 0.14.0: Tool and library implementing patience diff
+dev-ml/patience_diff 0.14.0: Tool and library implementing patience diff
 dev-ml/pcre-ocaml 7.2.3 7.4.6-r1: Perl Compatibility Regular Expressions for O'Caml
 dev-ml/pgocaml 2.3-r1: PG'OCaml is a set of OCaml bindings for the PostgreSQL database
 dev-ml/ppx_assert 0.9.0 0.14.0: Assert-like extension nodes that raise useful errors on failure
@@ -6011,13 +6011,13 @@ dev-ml/spawn 0.9.0 0.13.0: Spawning sub-processes
 dev-ml/splittable_random 0.14.0: PRNG that can be split into independent streams
 dev-ml/stdio 0.9.0-r1 0.9.1 0.14.0: Standard IO Library for OCaml
 dev-ml/stdlib-shims 0.2.0 0.3.0: Pure OCaml library that allows replacing Pervasives with Stdlib before 4.08
-dev-ml/stringext 1.4.3 1.5.0: Extra string functions for OCaml
-dev-ml/textutils 0.9.0 0.14.0: Text output utilities
+dev-ml/stringext 1.4.3: Extra string functions for OCaml
+dev-ml/textutils 0.14.0: Text output utilities
 dev-ml/time_now 0.14.0: Reports the current time
 dev-ml/timezone 0.14.0: Time-zone handling for OCaml
 dev-ml/topkg 0.9.0 0.9.1 1.0.3: The transitory OCaml software packager
 dev-ml/type-conv 113.00.02: Mini library required for some other preprocessing libraries
-dev-ml/typerep 0.9.0 0.14.0: Library for creating runtime representation of OCaml types
+dev-ml/typerep 0.14.0: Library for creating runtime representation of OCaml types
 dev-ml/tyxml 4.2.0: A libary to build xml trees typechecked by OCaml
 dev-ml/uchar 0.0.2: Uchar compatibility library
 dev-ml/unidecode 0.4.0: Convert unicode strings into its ASCII representation
@@ -6025,9 +6025,9 @@ dev-ml/uucp 13.0.0-r2: Unicode character properties for OCaml
 dev-ml/uuidm 0.9.7: Universally unique identifiers (UUIDs) for OCaml
 dev-ml/uunf 13.0.0: Unicode text normalization
 dev-ml/uutf 1.0.1: Non-blocking streaming Unicode codec for OCaml
-dev-ml/variantslib 0.9.0 0.14.0: OCaml variants as first class values
+dev-ml/variantslib 0.14.0: OCaml variants as first class values
 dev-ml/xml-light 2.2-r3: Minimal Xml parser and printer for OCaml
-dev-ml/yojson 1.4.0 1.7.0: JSON parsing and pretty-printing library for OCaml
+dev-ml/yojson 1.7.0: JSON parsing and pretty-printing library for OCaml
 dev-ml/zarith 1.7 1.9.1 1.10 1.11 1.12: Arithmetic and logic operations over arbitrary-precision integers
 dev-perl/Ace 1.920.0-r6: Object-Oriented Access to ACEDB Databases
 dev-perl/Acme-Damn 0.80.0: Module, that 'unblesses' Perl objects
