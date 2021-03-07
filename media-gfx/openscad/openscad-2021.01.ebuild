@@ -13,15 +13,11 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.src.tar.gz -
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
-IUSE="ccache emacs"
+KEYWORDS="~amd64 ~arm64 ~x86"
+IUSE="emacs"
+# tests are not fully working and need cmake which isn't yet
+# officially supported.
 RESTRICT="test"
-
-PATCHES=(
-	"${FILESDIR}/${P}_fix-boost-1.72.0-build.patch"
-	"${FILESDIR}/${P}-0001-Fix-build-with-boost-1.73.patch"
-	"${FILESDIR}/${P}-0003-change-C-standard-to-c-14.patch"
-)
 
 RDEPEND="
 	dev-cpp/eigen:3
@@ -31,6 +27,7 @@ RDEPEND="
 	dev-libs/gmp:0=
 	dev-libs/hidapi
 	dev-libs/libspnav
+	dev-libs/libxml2
 	dev-libs/libzip:=
 	dev-libs/mpfr:0=
 	dev-qt/qtconcurrent:5
@@ -48,6 +45,7 @@ RDEPEND="
 	media-libs/harfbuzz:=
 	media-libs/lib3mf
 	sci-mathematics/cgal:=
+	x11-libs/cairo
 	>=x11-libs/qscintilla-2.10.3:=
 	emacs? ( >=app-editors/emacs-23.1:* )
 "
@@ -58,26 +56,23 @@ BDEPEND="
 	sys-devel/flex
 	sys-devel/gettext
 	virtual/pkgconfig
-	ccache? ( dev-util/ccache )
 "
+
+PATCHES=( "${FILESDIR}"/${P}-0001-Gentoo-specific-Disable-ccache-building.patch )
 
 src_prepare() {
 	default
-
-	# fix path prefix
-	sed -i "s/\/usr\/local/\/usr/g" ${PN}.pro || die
-
-	# change c++ standard
-	sed -e 's/CONFIG += c++11/CONFIG += c++std/' -i openscad.pro || die
-
-	# disable ccache
-	if ! use ccache; then
-		eapply "${FILESDIR}/${P}-0002-Gentoo-specific-Disable-ccache-building.patch"
+	if has_version ">=media-libs/lib3mf-2"; then
+		eapply "${FILESDIR}/${P}-0002-fix-to-find-lib3mf-2.patch"
 	fi
 }
 
 src_configure() {
-	eqmake5 "${PN}.pro"
+	if has ccache ${FEATURES}; then
+		eqmake5 "PREFIX = ${EROOT}/usr" "CONFIG += ccache" "${PN}.pro"
+	else
+		eqmake5 "PREFIX = ${EROOT}/usr" "${PN}.pro"
+	fi
 }
 
 src_compile() {
