@@ -17,7 +17,7 @@ S="${WORKDIR}/${P/_/}"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="doc full-support minimal test X"
 RESTRICT="!test? ( test )"
 
@@ -119,6 +119,10 @@ python_prepare_all() {
 		-i setup.py || die
 
 	distutils-r1_python_prepare_all
+}
+
+python_compile() {
+	distutils-r1_python_compile -j1
 }
 
 python_compile_all() {
