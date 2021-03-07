@@ -17,7 +17,7 @@ DESCRIPTION="PHP plugin for KDevelop"
 HOMEPAGE="https://kdevelop.org/"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	KEYWORDS="~amd64 x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="GPL-2 LGPL-2"
