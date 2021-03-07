@@ -1,4 +1,4 @@
-BDEPEND=test? ( dev-vcs/git ) python_targets_pypy3? ( >=dev-python/pypy3-7.3.0:0=[bzip2(+),threads(+)] ) python_targets_python3_7? ( dev-lang/python:3.7[bzip2(+),threads(+)] ) python_targets_python3_8? ( dev-lang/python:3.8[bzip2(+),threads(+)] ) python_targets_python3_9? ( dev-lang/python:3.9[bzip2(+),threads(+)] ) >=dev-lang/python-exec-2:=[python_targets_pypy3(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_pypy3(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)]
+BDEPEND=app-arch/xz-utils test? ( dev-vcs/git ) python_targets_pypy3? ( >=dev-python/pypy3-7.3.0:0=[bzip2(+),threads(+)] ) python_targets_python3_7? ( dev-lang/python:3.7[bzip2(+),threads(+)] ) python_targets_python3_8? ( dev-lang/python:3.8[bzip2(+),threads(+)] ) python_targets_python3_9? ( dev-lang/python:3.9[bzip2(+),threads(+)] ) >=dev-lang/python-exec-2:=[python_targets_pypy3(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_pypy3(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)]
 DEFINED_PHASES=compile configure install preinst prepare pretend setup test
 DEPEND=!build? ( python_targets_pypy3? ( >=dev-python/pypy3-7.3.0:0=[ssl(+)] ) python_targets_python3_7? ( dev-lang/python:3.7[ssl(+)] ) python_targets_python3_8? ( dev-lang/python:3.8[ssl(+)] ) python_targets_python3_9? ( dev-lang/python:3.9[ssl(+)] ) ) >=app-arch/tar-1.27 dev-lang/python-exec:2 >=sys-apps/sed-4.0.5 sys-devel/patch doc? ( app-text/xmlto ~app-text/docbook-xml-dtd-4.4 ) apidoc? ( dev-python/sphinx dev-python/sphinx-epytext )
 DESCRIPTION=Portage is the package management and distribution system for Gentoo
@@ -12,6 +12,6 @@ RDEPEND=acct-user/portage app-arch/zstd >=app-arch/tar-1.27 dev-lang/python-exec
 REQUIRED_USE=|| ( python_targets_pypy3 python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 )
 RESTRICT=!test? ( test )
 SLOT=0
-SRC_URI=mirror://gentoo/portage-3.0.14.tar.bz2 https://dev.gentoo.org/~zmedico/portage/archives/portage-3.0.14.tar.bz2
+SRC_URI=mirror://gentoo/portage-3.0.17.tar.xz https://dev.gentoo.org/~zmedico/portage/archives/portage-3.0.17.tar.xz
 _eclasses_=distutils-r1	c166cdc9bfdc0fee3ea2100e01fdcdd3	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	python-r1	4c65b35c1895b82c0f44e44166a3464f	python-utils-r1	69861348186337fa4b269de5826004b3	tmpfiles	6170dc7770585fb3f16efdee789a3218	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=21b6cfd4ca08e5612c1829e9966d8d1b
+_md5_=fbff5fb669913aa4b4d03faa5753ddb1
