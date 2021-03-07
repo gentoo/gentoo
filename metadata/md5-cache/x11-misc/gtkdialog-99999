@@ -1,13 +1,12 @@
-BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=sys-apps/texinfo sys-devel/flex virtual/pkgconfig virtual/yacc >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile configure install postinst postrm prepare unpack
-DEPEND=gtk2? ( x11-libs/gtk+:2 x11-libs/vte:0= ) !gtk2? ( x11-libs/gtk+:3 x11-libs/vte:2.91= ) sys-apps/texinfo sys-devel/flex virtual/pkgconfig virtual/yacc
-DESCRIPTION=A small utility for fast and easy GUI building
+DEPEND=x11-libs/gtk+:3 x11-libs/vte:2.91=
+DESCRIPTION=Small utility for fast and easy GUI building
 EAPI=7
 HOMEPAGE=https://github.com/oshazard/gtkdialog
-IUSE=gtk2
 LICENSE=GPL-2
 PROPERTIES=live
-RDEPEND=gtk2? ( x11-libs/gtk+:2 x11-libs/vte:0= ) !gtk2? ( x11-libs/gtk+:3 x11-libs/vte:2.91= )
+RDEPEND=x11-libs/gtk+:3 x11-libs/vte:2.91=
 SLOT=0
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=64cba811e2056989f3ff8607fa7fc9f0
+_md5_=c79c0ae73482f87f0aefe1d6d37660ea

@@ -7,10 +7,10 @@ HOMEPAGE=https://vincentbernat.github.com/lldpd/
 IUSE=cdp doc +dot1 +dot3 edp fdp graph +lldpmed old-kernel sanitizers seccomp sonmp snmp static-libs test readline xml zsh-completion
 KEYWORDS=~amd64 ~x86
 LICENSE=ISC
-RDEPEND=dev-libs/libbsd >=dev-libs/libevent-2.0.5:= sys-libs/readline:0= snmp? ( net-analyzer/net-snmp[extensible(+)] ) xml? ( dev-libs/libxml2:= ) seccomp? ( sys-libs/libseccomp:= ) zsh-completion? ( app-shells/zsh )
+RDEPEND=dev-libs/libbsd >=dev-libs/libevent-2.0.5:= sys-libs/readline:0= snmp? ( net-analyzer/net-snmp[extensible(+)] ) xml? ( dev-libs/libxml2:= ) seccomp? ( sys-libs/libseccomp:= ) zsh-completion? ( app-shells/zsh ) virtual/tmpfiles
 REQUIRED_USE=graph? ( doc )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=http://media.luffy.cx/files/lldpd/lldpd-1.0.4.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	bash-completion-r1	be99724bde4274de21e581204e9d164a	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=0e752b627f9caa044c9f7076e765f49c
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	bash-completion-r1	be99724bde4274de21e581204e9d164a	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	tmpfiles	6170dc7770585fb3f16efdee789a3218	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=d5dad6b01962a90e52438c4db0368714

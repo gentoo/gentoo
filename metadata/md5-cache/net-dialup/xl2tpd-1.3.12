@@ -5,8 +5,8 @@ EAPI=6
 HOMEPAGE=https://github.com/xelerance/xl2tpd
 KEYWORDS=~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86
 LICENSE=GPL-2+
-RDEPEND=net-libs/libpcap >=sys-kernel/linux-headers-2.6 net-dialup/ppp
+RDEPEND=net-libs/libpcap >=sys-kernel/linux-headers-2.6 net-dialup/ppp virtual/tmpfiles
 SLOT=0
 SRC_URI=https://github.com/xelerance/xl2tpd/archive/v1.3.12.tar.gz -> xl2tpd-1.3.12.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=813cf50c6ec20f48f91fa2bcbc55a760
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	tmpfiles	6170dc7770585fb3f16efdee789a3218	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=74f4ec5c295f9f7e2a224f67eba40553
