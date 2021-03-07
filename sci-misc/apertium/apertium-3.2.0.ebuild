@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -28,7 +28,8 @@ PATCHES=(
 	"${FILESDIR}"/${PV}-flags.patch
 	"${FILESDIR}"/${PV}-datadir.patch
 	"${FILESDIR}"/${P}-libpcre.patch
-	)
+	"${FILESDIR}"/${P}-autotools.patch
+)
 
 MAKEOPTS+=" -j1"
 AUTOTOOLS_IN_SOURCE_BUILD=1
