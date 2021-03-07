@@ -74,6 +74,7 @@ dev-ml/ocaml-ipaddr
 dev-ml/ocaml-uri
 dev-ml/re2
 dev-ml/bin-prot
+dev-ml/configurator
 
 # Conrad Kostecki <conikost@gentoo.org> (2021-03-05)
 # Deprecated by upstream and unsupported due EOL.
