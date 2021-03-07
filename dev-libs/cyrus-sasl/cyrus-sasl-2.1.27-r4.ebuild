@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils flag-o-matic multilib multilib-minimal autotools pam java-pkg-opt-2 db-use systemd toolchain-funcs
+inherit eutils flag-o-matic multilib multilib-minimal autotools pam java-pkg-opt-2 db-use systemd toolchain-funcs tmpfiles
 
 SASLAUTHD_CONF_VER="2.1.26"
 
@@ -227,7 +227,7 @@ multilib_src_install_all() {
 	newinitd "${FILESDIR}/saslauthd2.rc7" saslauthd
 	newconfd "${FILESDIR}/saslauthd-${SASLAUTHD_CONF_VER}.conf" saslauthd
 	systemd_dounit "${FILESDIR}/saslauthd.service"
-	systemd_dotmpfilesd "${FILESDIR}/${PN}.conf"
+	dotmpfiles "${FILESDIR}/${PN}.conf"
 
 	# The get_modname bit is important: do not remove the .la files on
 	# platforms where the lib isn't called .so for cyrus searches the .la to
