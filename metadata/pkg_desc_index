@@ -5502,7 +5502,7 @@ dev-libs/libmowgli 1.0.0-r1 2.1.3 2.1.3-r2 9999: Useful set of performance and u
 dev-libs/libmpack 1.0.5: Simple implementation of msgpack in C
 dev-libs/libmspack 0.10.1_alpha 9999: A library for Microsoft compression formats
 dev-libs/libnatspec 0.3.0: library to smooth charset/localization issues
-dev-libs/libnest2d 0.4: Library and framework for the 2D bin packaging problem
+dev-libs/libnest2d 0.4-r1: Library and framework for the 2D bin packaging problem
 dev-libs/libnfc 1.7.2 1.8.0: Near Field Communications (NFC) library
 dev-libs/libnl 1.1.4-r1 1.1.9999 3.5.0 99999999: Libraries providing APIs to netlink protocol based Linux kernel interfaces
 dev-libs/libnsfb 0.2.0-r2 0.2.1-r1 0.2.2-r1: C library for framebuffer abstraction
@@ -5982,7 +5982,7 @@ dev-ml/ppx_module_timer 0.14.0: Ppx rewriter that records top-level module start
 dev-ml/ppx_optcomp 0.9.0-r3 0.14.0: Optional compilation for OCaml
 dev-ml/ppx_optional 0.14.0: Pattern matching on flat options
 dev-ml/ppx_pipebang 0.14.0: A ppx rewriter that inlines reverse application operators |> and |!
-dev-ml/ppx_sexp_conv 0.9.0-r1 0.14.1 0.14.2: Support Library for type-driven code generators
+dev-ml/ppx_sexp_conv 0.14.1 0.14.2: Support Library for type-driven code generators
 dev-ml/ppx_sexp_message 0.14.0: A ppx rewriter for easy construction of s-expressions
 dev-ml/ppx_sexp_value 0.14.0: Standard library for ppx rewriters
 dev-ml/ppx_stable 0.14.1: Stable types conversions generator
