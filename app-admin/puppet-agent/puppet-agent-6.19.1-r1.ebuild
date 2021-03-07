@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit eutils systemd unpacker
+inherit eutils systemd unpacker tmpfiles
 
 DESCRIPTION="general puppet client utils along with hiera and facter"
 HOMEPAGE="https://puppetlabs.com/"
@@ -64,7 +64,7 @@ src_install() {
 	newinitd "${FILESDIR}/puppet.initd2" puppet
 	systemd_dounit lib/systemd/system/puppet.service
 	systemd_dounit lib/systemd/system/pxp-agent.service
-	systemd_newtmpfilesd usr/lib/tmpfiles.d/puppet-agent.conf puppet-agent.conf
+	newtmpfiles usr/lib/tmpfiles.d/puppet-agent.conf puppet-agent.conf
 	# symlinks
 	chmod 0755 -R "${D}/opt/puppetlabs/puppet/bin/"
 	chmod 0755 "${D}//opt/puppetlabs/puppet/lib/virt-what/virt-what-cpuid-helper"
