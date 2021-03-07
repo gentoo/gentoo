@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-03-07)
+# Unresolved build issue since 2019, QA issues, bugs #697870 and #705236
+# Blocks cleanup of equally broken sci-physics/looptools-2.8, bug #770796
+# Masked for removal on 2021-03-06.
+sci-physics/herwig++
+
 # Conrad Kostecki <conikost@gentoo.org> (2021-03-07)
 # Upstream since 2004 gone, does not supportnon-English characters,
 # multiple bugs open and unmaintained.
