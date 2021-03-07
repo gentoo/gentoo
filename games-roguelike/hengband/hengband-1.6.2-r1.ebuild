@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils autotools games
+inherit eutils autotools
 
 DESCRIPTION="An Angband variant, with a Japanese/fantasy theme"
 HOMEPAGE="http://hengband.sourceforge.jp/en/"
@@ -18,6 +18,7 @@ RDEPEND=">=sys-libs/ncurses-5:0
 	X? ( x11-libs/libX11 )"
 DEPEND="${RDEPEND}
 	X? ( x11-libs/libXt )"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	# Removing Xaw dependency as is not used
@@ -33,30 +34,30 @@ src_prepare() {
 	epatch \
 		"../${P}"-mispellings.patch	\
 		"${FILESDIR}/${P}"-added_faq.patch \
-		"${FILESDIR}"/${P}-ovflfix.patch
+		"${FILESDIR}"/${P}-ovflfix.patch \
+		"${FILESDIR}/${P}-autoconf-ncurses.patch"
 	mv configure.in configure.ac || die
 	eautoreconf
 }
 
 src_configure() {
-	local myconf
-	use l10n_ja || myconf="--disable-japanese"
+	local myconf=(
+		--bindir="${EPREFIX}"/usr/bin
+		--with-setgid="nobody"
+		$(use_with X x)
+	)
+	use l10n_ja || myconf+=( --disable-japanese )
 
-	egamesconf \
-		--with-setgid=${GAMES_GROUP} \
-		$(use_with X x) \
-		${myconf}
+	econf "${myconf[@]}"
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die "make install failed"
+	default
+
 	if use l10n_ja ; then
 		dodoc readme.txt autopick.txt readme_eng.txt autopick_eng.txt
 	else
 		newdoc readme_eng.txt readme.txt
 		newdoc autopick_eng.txt autopick.txt
 	fi
-	prepgamesdirs
-	# FIXME: we need to patch around this BS
-	fperms g+w "${GAMES_DATADIR}"/${PN}/lib/{apex,data,save,user}
 }
