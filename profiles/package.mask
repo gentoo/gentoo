@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Conrad Kostecki <conikost@gentoo.org> (2021-03-07)
+# Upstream since 2004 gone, does not supportnon-English characters,
+# multiple bugs open and unmaintained.
+# Removal in 30 days.
+app-portage/splat
+
 # William Hubbs <williamh@gentoo.org> (2021-03-07)
 # Dependency issues, need resolution upstream
 =app-emulation/docker-20.10.4
