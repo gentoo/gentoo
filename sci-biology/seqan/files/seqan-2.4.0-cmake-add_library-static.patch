@@ -1,0 +1,38 @@
+From 1877d143ad9f42d80692073538e3f32b37e15967 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 7 Mar 2021 19:35:44 +0100
+Subject: [PATCH] Fix linking with BUILD_SHARED_LIBS=ON default in EAPI-7
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ apps/mason2/CMakeLists.txt         | 2 +-
+ apps/pair_align/lib/CMakeLists.txt | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/apps/mason2/CMakeLists.txt b/apps/mason2/CMakeLists.txt
+index 2218187..c042ea7 100644
+--- a/apps/mason2/CMakeLists.txt
++++ b/apps/mason2/CMakeLists.txt
+@@ -52,7 +52,7 @@ add_definitions (-DSEQAN_REVISION="${SEQAN_REVISION}")
+ add_definitions (-DSEQAN_DATE="${SEQAN_DATE}")
+ 
+ # We define a library for the reusable parts of Mason.
+-add_library (mason_sim
++add_library (mason_sim STATIC
+              external_split_merge.h
+              external_split_merge.cpp
+              fragment_generation.h
+diff --git a/apps/pair_align/lib/CMakeLists.txt b/apps/pair_align/lib/CMakeLists.txt
+index 75faef7..3b9576e 100644
+--- a/apps/pair_align/lib/CMakeLists.txt
++++ b/apps/pair_align/lib/CMakeLists.txt
+@@ -53,5 +53,5 @@ endforeach(GAPS_T)
+ 
+ # This part can be used instead for cmake version greater or equal to 2.8.8. 
+ # This requires to update the script above as well.
+-add_library(pair_align_lib pair_align_lib.cpp pair_align_lib.h ${LIB_TARGETS})
++add_library(pair_align_lib STATIC pair_align_lib.cpp pair_align_lib.h ${LIB_TARGETS})
+ target_link_libraries(pair_align_lib ${SEQAN_LIBRARIES})
+-- 
+2.30.1
+
