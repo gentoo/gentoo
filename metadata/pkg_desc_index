@@ -5921,9 +5921,9 @@ dev-ml/ocaml-gettext-stub 0.4.2-r1: Support for internationalization of OCaml pr
 dev-ml/ocaml-hashcons 1.3: OCaml hash-consing library
 dev-ml/ocaml-ipaddr 2.8.0: OCaml library for manipulation of IP (and MAC) address representations
 dev-ml/ocaml-magic-mime 1.0.0 1.1.0: Convert file extensions to MIME types
-dev-ml/ocaml-migrate-parsetree 1.0.5 1.0.6 1.0.7 1.8.0 2.0.0 2.1.0: Convert OCaml parsetrees between different major versions
+dev-ml/ocaml-migrate-parsetree 1.8.0 2.0.0 2.1.0: Convert OCaml parsetrees between different major versions
 dev-ml/ocaml-re 1.7.1: Regular expression library for OCaml
-dev-ml/ocaml-sqlite3 4.3.0-r1 5.0.2: SQLite3 bindings for OCaml
+dev-ml/ocaml-sqlite3 5.0.2: SQLite3 bindings for OCaml
 dev-ml/ocaml-ssl 0.5.3-r1 0.5.9 0.5.10: OCaml bindings for OpenSSL
 dev-ml/ocaml-uri 1.9.4-r1: RFC3986 URI parsing library for OCaml
 dev-ml/ocamlbuild 0.11.0 0.14.0-r1: Generic build tool with built-in rules for building OCaml library and programs
@@ -5935,7 +5935,7 @@ dev-ml/ocamlsdl 0.9.1: OCaml SDL Bindings
 dev-ml/ocamlweb 1.39 1.41: O'Caml literate programming tool
 dev-ml/ocplib-endian 1.0 1.1-r1: Functions to read and write int16/32/64 from strings, bytes, and bigarrays
 dev-ml/ocplib-simplex 0.3 0.4: A library implementing a simplex algorithm
-dev-ml/octavius 1.1.0 1.2.2: ocamldoc comment syntax parser
+dev-ml/octavius 1.2.2: ocamldoc comment syntax parser
 dev-ml/ocurl 0.7.10 0.9.1: OCaml interface to the libcurl library
 dev-ml/opam 1.3.1-r2 2.0.7-r1 2.0.8-r1: A source-based package manager for OCaml
 dev-ml/opam-client 2.0.7-r1 2.0.8: opam client libraries
@@ -5957,31 +5957,31 @@ dev-ml/pgocaml 2.3-r1: PG'OCaml is a set of OCaml bindings for the PostgreSQL da
 dev-ml/ppx_assert 0.14.0: Assert-like extension nodes that raise useful errors on failure
 dev-ml/ppx_ast 0.9.1: AST used in Jane Street ppx rewriters
 dev-ml/ppx_base 0.14.0: Base set of ppx rewriters
-dev-ml/ppx_bench 0.9.1 0.14.1: Syntax extension for writing in-line benchmarks in ocaml code
+dev-ml/ppx_bench 0.14.1: Syntax extension for writing in-line benchmarks in ocaml code
 dev-ml/ppx_bin_prot 0.9.0 0.14.0: Generation of bin_prot readers and writers from types
 dev-ml/ppx_cold 0.14.0: Expands [@cold] into [@inline never][@specialise never][@local never]
 dev-ml/ppx_compare 0.9.0-r1 0.14.0: Generation of comparison functions from types
 dev-ml/ppx_core 0.9.0-r1: Standard library for ppx rewriters
 dev-ml/ppx_custom_printf 0.9.0-r1 0.14.0: Printf-style format-strings for user-defined string conversion
-dev-ml/ppx_derivers 1.0 1.2.1: Shared [@@deriving] plugin registry
+dev-ml/ppx_derivers 1.2.1: Shared [@@deriving] plugin registry
 dev-ml/ppx_deriving 4.5 5.2: Type-driven code generation for OCaml
 dev-ml/ppx_driver 0.9.1-r1 0.11.0: Feature-full driver for OCaml AST transformers
-dev-ml/ppx_enumerate 0.9.0 0.14.0: Generate a list containing all values of a finite type
+dev-ml/ppx_enumerate 0.14.0: Generate a list containing all values of a finite type
 dev-ml/ppx_expect 0.14.0: Cram like framework for OCaml
-dev-ml/ppx_fail 0.9.0 0.14.0: Add location to calls to failwiths
+dev-ml/ppx_fail 0.14.0: Add location to calls to failwiths
 dev-ml/ppx_fields_conv 0.9.0-r1 0.14.1: Generation of accessor and iteration functions for ocaml records
 dev-ml/ppx_fixed_literal 0.14.0: Simpler notation for fixed point literals
 dev-ml/ppx_hash 0.14.0: PPX rewriter that generates hash functions from type expressions and definitions
 dev-ml/ppx_here 0.9.1 0.14.0: Expands [%here] into its location
 dev-ml/ppx_inline_test 0.9.2 0.14.1: Syntax extension for writing in-line tests in ocaml code
 dev-ml/ppx_jane 0.14.0: Standard Jane Street ppx rewriters
-dev-ml/ppx_js_style 0.9.0 0.14.0: Code style checker for Jane Street Packages
-dev-ml/ppx_let 0.9.0 0.14.0: Monadic let-bindings
+dev-ml/ppx_js_style 0.14.0: Code style checker for Jane Street Packages
+dev-ml/ppx_let 0.14.0: Monadic let-bindings
 dev-ml/ppx_metaquot 0.9.0 0.11.0: Write OCaml AST fragment using OCaml syntax
 dev-ml/ppx_module_timer 0.14.0: Ppx rewriter that records top-level module startup times
 dev-ml/ppx_optcomp 0.9.0-r3 0.14.0: Optional compilation for OCaml
-dev-ml/ppx_optional 0.9.0 0.14.0: Pattern matching on flat options
-dev-ml/ppx_pipebang 0.9.0 0.14.0: A ppx rewriter that inlines reverse application operators |> and |!
+dev-ml/ppx_optional 0.14.0: Pattern matching on flat options
+dev-ml/ppx_pipebang 0.14.0: A ppx rewriter that inlines reverse application operators |> and |!
 dev-ml/ppx_sexp_conv 0.9.0-r1 0.14.1 0.14.2: Support Library for type-driven code generators
 dev-ml/ppx_sexp_message 0.14.0: A ppx rewriter for easy construction of s-expressions
 dev-ml/ppx_sexp_value 0.14.0: Standard library for ppx rewriters
@@ -5992,7 +5992,7 @@ dev-ml/ppx_tools_versioned 5.0.1 5.2.2 5.4.0: Tools for authors of ppx rewriters
 dev-ml/ppx_traverse 0.9.0: Automatic generation of open recursion classes
 dev-ml/ppx_traverse_builtins 0.9.0: Builtins for ppx_traverse
 dev-ml/ppx_type_conv 0.9.0: Support Library for type-driven code generators
-dev-ml/ppx_typerep_conv 0.9.0 0.14.1: Generation of runtime types from type declarations
+dev-ml/ppx_typerep_conv 0.14.1: Generation of runtime types from type declarations
 dev-ml/ppx_variants_conv 0.9.0 0.14.1: Generation of accessor and iteration functions for ocaml variant types
 dev-ml/ppxfind 1.4: ocamlfind ppx tool
 dev-ml/ppxlib 0.18.0 0.20.0 0.21.0-r1 0.22.0-r1: Base library and tools for ppx rewriters
