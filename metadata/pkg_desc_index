@@ -1201,7 +1201,7 @@ app-dicts/aspell-la 6.0.20020503.0: Latin language dictionary for aspell
 app-dicts/aspell-lt 1.0.1: Lithuanian language dictionary for aspell
 app-dicts/aspell-nl 0.50.2: Dutch language dictionary for aspell
 app-dicts/aspell-no 0.50.2: Norwegian language dictionary for aspell
-app-dicts/aspell-pl 6.0.20120418.0: Polish language dictionary for aspell
+app-dicts/aspell-pl 6.0.20120418.0 6.0.20210216.0: Polish language dictionary for aspell
 app-dicts/aspell-pt 0.50.2-r1: Portuguese language dictionary for aspell
 app-dicts/aspell-pt-br 6.0.20090702: Brazilian Portuguese language dictionary for aspell
 app-dicts/aspell-ro 3.3.2: Romanian language dictionary for aspell

@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=>=app-text/aspell-0.60
+DESCRIPTION=Polish language dictionary for aspell
+EAPI=6
+HOMEPAGE=https://sjp.pl/slownik/en/
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86
+LICENSE=Apache-2.0 CC-BY-4.0 GPL-2 LGPL-2.1 MPL-1.1
+RDEPEND=>=app-text/aspell-0.60
+SLOT=0
+SRC_URI=https://www.sjp.pl/slownik/ort/sjp-aspell6-pl-6.0_20210216-0.tar.bz2
+_eclasses_=aspell-dict-r1	79e37698c4f52cac5e606d8692fda04f	eapi7-ver	f9ec87e93172b25ce65a85303dc06964
+_md5_=c70965db22b27d4b5b9389b803a543d1
