@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit systemd
+inherit systemd tmpfiles
 
 DESCRIPTION="Open Source, Distributed, RESTful, Search Engine"
 HOMEPAGE="https://www.elastic.co/products/elasticsearch"
@@ -67,7 +67,7 @@ src_install() {
 	newinitd "${FILESDIR}/${PN}.init.6" ${PN}
 
 	systemd_install_serviced "${FILESDIR}/${PN}.service.conf"
-	systemd_newtmpfilesd "${FILESDIR}/${PN}.tmpfiles.d" ${PN}.conf
+	newtmpfiles "${FILESDIR}/${PN}.tmpfiles.d" ${PN}.conf
 	systemd_newunit "${FILESDIR}"/${PN}.service.3 ${PN}.service
 }
 
