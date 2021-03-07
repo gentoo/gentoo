@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_7 python3_8 python3_9 )
 
-inherit autotools eutils linux-info linux-mod python-r1 systemd
+inherit autotools eutils linux-info linux-mod python-r1 systemd tmpfiles
 
 DESCRIPTION="Production quality, multilayer virtual switch"
 HOMEPAGE="https://www.openvswitch.org"
@@ -112,7 +112,7 @@ src_install() {
 	systemd_newunit "${FILESDIR}/ovsdb-server-r3.service" ovsdb-server.service
 	systemd_newunit "${FILESDIR}/ovs-vswitchd-r3.service" ovs-vswitchd.service
 	systemd_newunit rhel/usr_lib_systemd_system_ovs-delete-transient-ports.service ovs-delete-transient-ports.service
-	systemd_newtmpfilesd "${FILESDIR}/openvswitch.tmpfiles" openvswitch.conf
+	newtmpfiles "${FILESDIR}/openvswitch.tmpfiles" openvswitch.conf
 
 	insinto /etc/logrotate.d
 	newins rhel/etc_logrotate.d_openvswitch openvswitch

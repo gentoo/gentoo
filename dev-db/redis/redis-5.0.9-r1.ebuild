@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic systemd toolchain-funcs
+inherit autotools flag-o-matic systemd toolchain-funcs tmpfiles
 
 DESCRIPTION="A persistent caching system, key-value and data structures database"
 HOMEPAGE="https://redis.io"
@@ -138,7 +138,7 @@ src_install() {
 	newinitd "${FILESDIR}/redis.initd-5" redis
 
 	systemd_newunit "${FILESDIR}/redis.service-3" redis.service
-	systemd_newtmpfilesd "${FILESDIR}/redis.tmpfiles-2" redis.conf
+	newtmpfiles "${FILESDIR}/redis.tmpfiles-2" redis.conf
 
 	newconfd "${FILESDIR}/redis-sentinel.confd" redis-sentinel
 	newinitd "${FILESDIR}/redis-sentinel.initd" redis-sentinel

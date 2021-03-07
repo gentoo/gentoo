@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -119,7 +119,7 @@ src_install() {
 	dosbin stats/opendkim-reportstats
 
 	newinitd "${S}/contrib/OpenRC/opendkim.openrc" "${PN}"
-	systemd_newtmpfilesd "${S}/contrib/systemd/opendkim.tmpfiles" "${PN}.conf"
+	newtmpfiles "${S}/contrib/systemd/opendkim.tmpfiles" "${PN}.conf"
 	systemd_newunit "contrib/systemd/opendkim.service" "${PN}.service"
 
 	dodir /etc/opendkim
