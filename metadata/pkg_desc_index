@@ -7974,7 +7974,7 @@ dev-python/aiorpcX 0.18.5 0.19 0.19.1 0.20.1: Generic async RPC implementation, 
 dev-python/aiosmtpd 1.2 1.2.2 1.2.4 1.3.2 1.4.0 1.4.1: asyncio based SMTP server
 dev-python/alabaster 0.7.12: A configurable sidebar-enabled Sphinx theme
 dev-python/alagitpull 0.0.23-r1: alabaster sub-theme used on git-pull docs
-dev-python/alembic 1.5.1 1.5.4 1.5.5 1.5.6: database migrations tool, written by the author of SQLAlchemy
+dev-python/alembic 1.5.4 1.5.5 1.5.6: database migrations tool, written by the author of SQLAlchemy
 dev-python/ament_package 0.9.2: Parser for the manifest files in the ament buildsystem
 dev-python/amodem 1.15.1-r1: Transmit data between two computers using audio
 dev-python/aniso8601 8.1.1 9.0.0 9.0.1: A library for parsing ISO 8601 strings
@@ -8012,7 +8012,7 @@ dev-python/authres 1.2.0: Parse and generate Authentication-Results headers
 dev-python/autobahn 20.7.1 20.12.2 20.12.3 21.1.1 21.2.1 21.2.2 21.3.1: WebSocket and WAMP for Twisted and Asyncio
 dev-python/automat 20.2.0: Self-service finite-state machines for the programmer on the go
 dev-python/automaton 1.12.1 2.2.0: Friendly state machines for python.
-dev-python/autopep8 1.5.4 1.5.5 9999: Automatically formats Python code to conform to the PEP 8 style guide
+dev-python/autopep8 1.5.5 9999: Automatically formats Python code to conform to the PEP 8 style guide
 dev-python/autoprop 1.0.2: Infer properties from accessor methods
 dev-python/aws-sam-translator 1.34.0: A library that transform SAM templates into AWS CloudFormation templates
 dev-python/aws-xray-sdk-python 2.6.0: AWS X-Ray SDK for Python
@@ -8103,7 +8103,7 @@ dev-python/cliff 3.6.0 3.7.0: Command Line Interface Formulation Framework
 dev-python/clikit 0.6.2: Group of utilities to build beautiful and testable command line interfaces
 dev-python/clint 0.5.1-r3: Python Command-line Application Tools
 dev-python/cloudpickle 1.6.0: Extended pickling support for Python objects
-dev-python/cmd2 1.4.0 1.5.0: Extra features for standard library's cmd module
+dev-python/cmd2 1.5.0: Extra features for standard library's cmd module
 dev-python/collective-checkdocs 0.2-r1: Distutils command to view/validate packages's rst text long_descriptions.
 dev-python/colorama 0.4.3-r1 0.4.4: ANSI escape character sequences for colored terminal text & cursor positioning
 dev-python/colorclass 2.2.0-r1: Colorful worry-free console applications for multiple platforms
@@ -8128,7 +8128,7 @@ dev-python/coverage 4.5.4 5.4 5.5: Code coverage measurement for Python
 dev-python/cppy 1.1.0: C++ header library which makes it easier to write Python extension modules
 dev-python/crashtest 0.3.1: Python library that makes exceptions handling and inspection easier
 dev-python/crcmod 1.7-r4: Python CRC Generator module
-dev-python/croniter 1.0.2 1.0.6 1.0.7 1.0.8: Python module to provide iteration for datetime object
+dev-python/croniter 1.0.6 1.0.8: Python module to provide iteration for datetime object
 dev-python/cryptography 3.2.1 3.3.1 3.3.2: Library providing cryptographic recipes and primitives
 dev-python/css-parser 1.0.4-r1: A CSS Cascading Style Sheets library (fork of cssutils)
 dev-python/cssselect 1.1.0-r1: parses CSS3 Selectors and translates them to XPath 1.0
@@ -8145,7 +8145,7 @@ dev-python/cycler 0.10.0-r1: Composable style cycles
 dev-python/cython 0.29.21 0.29.21-r1 0.29.22: A Python to C compiler
 dev-python/cython-test-exception-raiser 1.0.0: A trivial extension that just raises an exception (for testing)
 dev-python/daemonize 2.5.0: Library for writing system daemons in Python
-dev-python/dask 2021.1.1 2021.2.0 2021.3.0: Task scheduling and blocked algorithms for parallel processing
+dev-python/dask 2021.2.0 2021.3.0: Task scheduling and blocked algorithms for parallel processing
 dev-python/dbus-python 1.2.16-r1: Python bindings for the D-Bus messagebus
 dev-python/dbusmock 0.22.0: Easily create mock objects on D-Bus for software testing
 dev-python/dbutils 1.3 2.0: Database connections for multi-threaded environments
@@ -8244,7 +8244,7 @@ dev-python/eyeD3 0.9.6: Module for manipulating ID3 (v1 + v2) tags in Python
 dev-python/fakeredis 1.4.5: Fake implementation of redis API for testing purposes
 dev-python/falcon 2.0.0: A supersonic micro-framework for building cloud APIs
 dev-python/fasteners 0.16: Python package that provides useful locks
-dev-python/fastjsonschema 2.14.5 2.15.0: Fast JSON schema validator for Python
+dev-python/fastjsonschema 2.15.0: Fast JSON schema validator for Python
 dev-python/fcl 0.0.12-r1: Python bindings for the Flexible Collision Library
 dev-python/feedgenerator 1.9.1-r1: Standalone version of django.utils.feedgenerator
 dev-python/feedparser 5.2.1-r1 6.0.2: Parse RSS and Atom feeds in Python
@@ -8324,7 +8324,7 @@ dev-python/gmpy 2.0.8-r2: Python bindings for GMP, MPC, MPFR and MPIR libraries
 dev-python/google-api-core 1.25.1 1.26.0 1.26.1: Core Library for Google Client Libraries
 dev-python/google-api-python-client 1.8.3-r1 2.0.0 2.0.2: Google API Client for Python
 dev-python/google-apitools 0.5.31: Python library to manipulate Google APIs
-dev-python/google-auth 1.24.0 1.25.0 1.26.1 1.27.0 1.27.1: Google Authentication Library
+dev-python/google-auth 1.25.0 1.26.1 1.27.0 1.27.1: Google Authentication Library
 dev-python/google-auth-httplib2 0.0.4 0.1.0: httplib2 Transport for Google Auth
 dev-python/google-auth-oauthlib 0.4.1-r1 0.4.3: Google Authentication Library
 dev-python/google-pasta 0.1.1 0.2.0: AST-based Python refactoring library
@@ -8340,7 +8340,7 @@ dev-python/grpcio-tools 1.32.0: Protobuf code generator for gRPC
 dev-python/gsd 1.5.3-r1 2.4.0: GSD - file format specification and a library to read and write it
 dev-python/gssapi 1.6.12: Low and high level wrappers around the GSSAPI C libraries
 dev-python/gst-python 1.16.3: A Python Interface to GStreamer
-dev-python/guessit 3.2.0 3.3.0 3.3.1: Python library for guessing information from video filenames
+dev-python/guessit 3.3.0 3.3.1: Python library for guessing information from video filenames
 dev-python/guzzle_sphinx_theme 0.7.11-r1: Sphinx theme used by Guzzle
 dev-python/h11 0.11.0 0.12.0: A pure-Python implementation of HTTP/1.1 inspired by hyper-h2
 dev-python/h5py 2.10.0-r1 3.2.1: Simple Python interface to HDF5 files
@@ -8398,11 +8398,11 @@ dev-python/ipdb 0.10.3-r1 0.13.5: IPython-enabled pdb
 dev-python/ipy 1.01: Class and tools for handling of IPv4 and IPv6 addresses and networks
 dev-python/ipykernel 5.4.3 5.5.0: IPython Kernel for Jupyter
 dev-python/ipyparallel 6.3.0-r1: Interactive Parallel Computing with IPython
-dev-python/ipython 7.19.0-r1 7.20.0 7.21.0: Advanced interactive shell for Python
+dev-python/ipython 7.20.0 7.21.0: Advanced interactive shell for Python
 dev-python/ipython_genutils 0.2.0-r1: Vestigial utilities from IPython
 dev-python/ipywidgets 7.5.1-r1 7.6.2 7.6.3: IPython HTML widgets for Jupyter
 dev-python/irc 19.0.1: IRC client framework written in Python
-dev-python/iso8601 0.1.13 0.1.14: Simple module to parse ISO 8601 dates
+dev-python/iso8601 0.1.14: Simple module to parse ISO 8601 dates
 dev-python/isodate 0.6.0-r1: ISO 8601 date/time/duration parser and formatter
 dev-python/isort 5.7.0: A python utility/library to sort imports
 dev-python/itsdangerous 1.1.0-r1: Various helpers to pass trusted data to untrusted environments and back
@@ -8446,7 +8446,7 @@ dev-python/junit-xml 1.9: Create JUnit XML test result documents
 dev-python/jupyter 1.0.0-r3: Jupyter metapackage. Install all the Jupyter components in one go
 dev-python/jupyter_client 6.1.11: Jupyter protocol implementation and client libraries
 dev-python/jupyter_console 6.1.0-r2: A terminal-based console frontend for Jupyter kernels
-dev-python/jupyter_core 4.6.3-r1 4.7.1: Core common functionality of Jupyter projects
+dev-python/jupyter_core 4.7.1: Core common functionality of Jupyter projects
 dev-python/jupyterlab_pygments 0.1.2: Pygments theme making use of JupyterLab CSS variables
 dev-python/jwcrypto 0.8.0: Implements JWK,JWS,JWE specifications using python-cryptography
 dev-python/kafka-python 1.4.7: Kafka protocol support in Python
@@ -8485,7 +8485,7 @@ dev-python/lit 10.0.1 11.0.0 11.0.1 11.1.0 12.0.0_rc2 12.0.0.9999 13.0.0.9999: A
 dev-python/livereload 2.6.3: Python LiveReload is an awesome tool for web developers
 dev-python/llfuse 1.3.6 1.4.0 1.4.1: Python bindings for the low-level FUSE API
 dev-python/llvmlite 0.34.0 0.35.0: Python wrapper around the llvm C++ library
-dev-python/lmdb 1.0.0 1.1.0 1.1.1 1.1.1-r1: Python bindings for the Lightning Database
+dev-python/lmdb 1.1.0 1.1.1-r1: Python bindings for the Lightning Database
 dev-python/lmfit 1.0.1 1.0.2: Non-Linear Least-Squares Minimization and Curve-Fitting for Python
 dev-python/locket 0.2.1: File-based locks for Python
 dev-python/lockfile 0.12.2-r2: Platform-independent file locking module
@@ -8505,7 +8505,7 @@ dev-python/mando 0.6.4: Create Python CLI apps with little to no effort at all!
 dev-python/manuel 1.10.1: Lets you mix and match traditional doctests with custom test syntax
 dev-python/markdown 2.6.11 3.3.3 3.3.4: Python implementation of the markdown markup language
 dev-python/markdown2 2.4.0: Python Markdown language reimplementation
-dev-python/markups 3.0.0-r1 3.1.0 3.1.1: A wrapper around various text markups
+dev-python/markups 3.1.0 3.1.1: A wrapper around various text markups
 dev-python/markupsafe 1.1.1-r1: Implements a XML/HTML/XHTML Markup safe string for Python
 dev-python/marshmallow 3.5.1 3.10.0: A lightweight library for converting complex datatypes to and from native Python datatypes.
 dev-python/matplotlib 3.3.4: Pure python plotting library with matlab like syntax
@@ -8806,7 +8806,7 @@ dev-python/pygame 1.9.6-r1 2.0.0_pre10 2.0.0 2.0.1 9999: Python bindings for SDL
 dev-python/pygame_sdl2 6.99.12.4-r5 7.3.5-r1 7.3.5-r2: Reimplementation of portions of the pygame API using SDL2
 dev-python/pyghmi 1.5.22: A pure python implementation of IPMI protocol
 dev-python/pygit2 1.5.0: Python bindings for libgit2
-dev-python/pyglet 1.5.13 1.5.14 1.5.15: Cross-platform windowing and multimedia library for Python
+dev-python/pyglet 1.5.14 1.5.15: Cross-platform windowing and multimedia library for Python
 dev-python/pygments 2.7.4 2.8.0 2.8.1: Pygments is a syntax highlighting package written in Python
 dev-python/pygments-github-lexers 0.0.5: Pygments Github custom lexers
 dev-python/pygobject 3.34.0-r1 3.36.1-r1 3.38.0: Python bindings for GObject Introspection
@@ -9018,12 +9018,12 @@ dev-python/python-sense-hat 2.2.0-r2: Raspberry Pi Sense HAT python library
 dev-python/python-slip 0.6.5-r1: Miscellaneous convenience, extension and workaround code for Python
 dev-python/python-slugify 1.2.6 4.0.1: A Python Slugify application that handles Unicode
 dev-python/python-socks 1.2.0 1.2.1 1.2.2: SOCKS4, SOCKS5, HTTP tunneling functionality for Python
-dev-python/python-sshpubkeys 3.3.0 3.3.1: OpenSSH public key parser for Python
+dev-python/python-sshpubkeys 3.3.1: OpenSSH public key parser for Python
 dev-python/python-stdnum 1.14 1.15 1.16: A module to handle standardized numbers and codes
 dev-python/python-swiftclient 3.10.1: Python bindings to the OpenStack Object Storage API
 dev-python/python-systemd 234: Python module for native access to the systemd facilities
 dev-python/python-troveclient 5.1.1: A client for the OpenStack Trove API, a scalable relational database service
-dev-python/python-utils 2.5.3 2.5.6: Collection of small Python functions & classes
+dev-python/python-utils 2.5.6: Collection of small Python functions & classes
 dev-python/python-varlink 30.3.0: Python implementation of the Varlink protocol
 dev-python/python-vitrageclient 4.1.1: A client for the OpenStack Vitrage API
 dev-python/python-xlib 0.29: A fully functional X client library for Python, written in Python
@@ -9040,7 +9040,7 @@ dev-python/pythondialog 3.5.1: A Python module for making simple text/console-mo
 dev-python/pytidylib 0.3.2-r1: Python wrapper for HTML Tidy (tidylib)
 dev-python/pytools 2021.1 9999: Collection of tools missing from the Python standard library
 dev-python/pytrie 0.4.0: A pure Python implementation of the trie data structure
-dev-python/pytz 2020.5 2021.1: World timezone definitions for Python
+dev-python/pytz 2021.1: World timezone definitions for Python
 dev-python/pytzdata 2020.1: The Olson timezone database for Python
 dev-python/pyu2f 0.1.4-r1: Python based U2F host library
 dev-python/pyudev 0.22.0: Python binding to libudev
@@ -9144,7 +9144,7 @@ dev-python/serpent 1.30.2: A simple serialization library based on ast.literal_e
 dev-python/serverfiles 0.2.1 0.3.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0-r1: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.2.2: Allow customization of the process title
-dev-python/setuptools 51.3.3 53.0.0 53.1.0 54.0.0 54.1.0 54.1.1: Collection of extensions to Distutils
+dev-python/setuptools 53.0.0 53.1.0 54.1.1: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2-r2: Setuptools revision control system plugin for Git
 dev-python/setuptools_scm 5.0.1 5.0.2: Manage versions by scm tags via setuptools
 dev-python/setuptools_scm_git_archive 1.1: A setuptools_scm plugin for git archives
@@ -9286,7 +9286,7 @@ dev-python/toml 0.10.2: Python library for handling TOML files
 dev-python/toolz 0.11.1: List processing tools and functional utilities
 dev-python/tooz 2.7.1: Library centralizing the most common distributed primitives
 dev-python/towncrier 19.2.0: Building newsfiles for your project
-dev-python/tox 3.21.2 3.21.4 3.22.0 3.23.0: virtualenv-based automation of test activities
+dev-python/tox 3.21.4 3.22.0 3.23.0: virtualenv-based automation of test activities
 dev-python/tqdm 4.55.2 4.56.2 4.57.0 4.58.0 4.59.0: Add a progress meter to your loops in a second
 dev-python/traceback2 1.4.0-r1: Backports of the traceback module
 dev-python/traitlets 4.3.3 5.0.5: A configuration system for Python applications
@@ -9312,7 +9312,7 @@ dev-python/ubelt 0.9.5: A stdlib like feel, and extra batteries. Hashing, Cachin
 dev-python/ujson 4.0.2: Ultra fast JSON encoder and decoder for Python
 dev-python/uncertainties 3.1.4-r1: Python module for calculations with uncertainties
 dev-python/unicodecsv 0.14.1-r1: Drop-in replacement for python stdlib csv module supporting unicode
-dev-python/unidecode 1.1.2 1.2.0: Module providing ASCII transliterations of Unicode text
+dev-python/unidecode 1.2.0: Module providing ASCII transliterations of Unicode text
 dev-python/unittest-mixins 1.6-r1: A set of mixin classes and other helpers for unittest test case classes
 dev-python/unittest2 1.1.0-r1: The new features in unittest backported to Python 2.4+
 dev-python/uranium 4.8.0: A Python framework for building 3D printing related applications
@@ -17231,7 +17231,7 @@ sys-block/ndctl 71.1-r1: Helper tools and libraries for managing non-volatile me
 sys-block/noflushd 2.8: A daemon to spin down your disks and force accesses to be cached
 sys-block/open-iscsi 2.0.873-r1 2.0.875 2.1.1 2.1.2 2.1.3: A performant, transport independent, multi-platform implementation of RFC3720
 sys-block/open-isns 0.98 0.99 0.100 0.101: iSNS server and client for Linux
-sys-block/parted 3.3-r2 3.4: Create, destroy, resize, check, copy partitions and file systems
+sys-block/parted 3.4: Create, destroy, resize, check, copy partitions and file systems
 sys-block/partimage 0.6.9-r1: Console-based application to efficiently save raw partition data to image file
 sys-block/partitionmanager 4.2.0 20.12.3: Utility for management of disks, partitions and file systems
 sys-block/perccli 7.5.007.0529 7.5.007.0529-r2: LINUX PERCCLI Utility For All Dell HBA/PERC Controllers
@@ -17612,8 +17612,8 @@ sys-kernel/cryptodev 1.9-r1 1.11 9999: device that allows access to Linux kernel
 sys-kernel/dracut 050-r2 051-r1 053 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
-sys-kernel/gentoo-kernel 5.4.94 5.4.97 5.4.99 5.4.100 5.4.101 5.4.102 5.10.17 5.10.18 5.10.19 5.10.20 5.11.2 5.11.3: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.94 5.4.94-r1 5.4.97 5.4.97-r1 5.4.99 5.4.99-r1 5.4.100 5.4.100-r1 5.4.101 5.4.101-r1 5.4.101-r2 5.4.102-r2 5.4.102-r3 5.10.17 5.10.17-r1 5.10.18 5.10.18-r1 5.10.19 5.10.19-r1 5.10.19-r2 5.10.20-r2 5.10.20-r3 5.11.2 5.11.2-r1 5.11.2-r2 5.11.3-r2 5.11.3-r3: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel 5.4.94 5.4.97 5.4.99 5.4.100 5.4.101 5.4.102 5.4.103 5.10.17 5.10.18 5.10.19 5.10.20 5.10.21 5.11.2 5.11.3 5.11.4: Linux kernel built with Gentoo patches
+sys-kernel/gentoo-kernel-bin 5.4.94 5.4.94-r1 5.4.97 5.4.97-r1 5.4.99 5.4.99-r1 5.4.100 5.4.100-r1 5.4.101 5.4.101-r1 5.4.101-r2 5.4.102-r2 5.4.102-r3 5.4.103 5.10.17 5.10.17-r1 5.10.18 5.10.18-r1 5.10.19 5.10.19-r1 5.10.19-r2 5.10.20-r2 5.10.20-r3 5.10.21 5.11.2 5.11.2-r1 5.11.2-r2 5.11.3-r2 5.11.3-r3 5.11.4: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.246 4.4.255 4.4.256 4.4.257 4.4.258 4.4.259 4.4.260 4.9.246 4.9.255 4.9.256 4.9.257 4.9.258 4.9.259 4.9.260 4.14.209 4.14.219 4.14.220 4.14.221 4.14.222 4.14.223 4.14.224 4.19.160 4.19.173 4.19.174 4.19.175 4.19.176 4.19.177 4.19.178 4.19.179 5.4.80-r1 5.4.97 5.4.98 5.4.99 5.4.100 5.4.101 5.4.102 5.4.103 5.10.14 5.10.15 5.10.16 5.10.17 5.10.18 5.10.19 5.10.20 5.10.21 5.11.0 5.11.1 5.11.2 5.11.3 5.11.4: Full sources including the Gentoo patchset for the 5.11 kernel tree
 sys-kernel/git-sources 5.12_rc1 5.12_rc2: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
@@ -17628,7 +17628,7 @@ sys-kernel/pf-sources 5.9_p7 5.10_p12 5.11_p1 5.11_p2: Linux kernel fork that in
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.79_p20201201 5.10.11_p20210201 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.79_p20201201 5.4.9999 5.10.11_p20210201: Raspberry Pi kernel sources
 sys-kernel/rt-sources 4.4.240_p209 4.4.245_p211 4.4.249_p212 4.9.240_p155 4.9.247_p162 4.14.206_p99 4.14.209_p101 4.14.214_p104 4.19.148_p64 4.19.160_p69 4.19.165_p70 5.4.70_p40 5.4.84_p47 5.10.1_p20 5.10.4_p22: Full Linux 5.10 kernel sources with the CONFIG_PREEMPT_RT patch
-sys-kernel/vanilla-kernel 5.4.94 5.4.97 5.4.99 5.4.100 5.4.101 5.4.102 5.10.17 5.10.18 5.10.19 5.10.20 5.11.2 5.11.3: Linux kernel built from vanilla upstream sources
+sys-kernel/vanilla-kernel 5.4.94 5.4.97 5.4.99 5.4.100 5.4.101 5.4.102 5.4.103 5.10.17 5.10.18 5.10.19 5.10.20 5.10.21 5.11.2 5.11.3 5.11.4: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-sources 4.4.260 4.9.260 4.14.224 4.19.179 5.4.103 5.10.21 5.11.4: Full sources for the Linux kernel
 sys-kernel/zen-sources 5.10.16 5.11: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
@@ -17806,7 +17806,7 @@ virtual/commonlisp 0: Virtual for Common Lisp
 virtual/cron 0-r2: Virtual for cron
 virtual/daemontools 0: Virtual for daemontools
 virtual/dev-manager 0-r2: Virtual for the device filesystem manager
-virtual/dist-kernel 5.4.94 5.4.97 5.4.99 5.4.100 5.4.101 5.4.102 5.10.17 5.10.18 5.10.19 5.10.20 5.11.2 5.11.3: Virtual to depend on any Distribution Kernel
+virtual/dist-kernel 5.4.94 5.4.97 5.4.99 5.4.100 5.4.101 5.4.102 5.4.103 5.10.17 5.10.18 5.10.19 5.10.20 5.10.21 5.11.2 5.11.3 5.11.4: Virtual to depend on any Distribution Kernel
 virtual/editor 0-r3: Virtual for editor
 virtual/eject 0-r1: Virtual for the eject command
 virtual/fam 0-r1: A virtual package to choose between gamin and fam
