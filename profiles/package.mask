@@ -47,12 +47,14 @@ dev-libs/libgpuarray
 # Bug 729876 and several others; removal in 30days
 dev-libs/klibc
 
-# Alfredo Tupone <tupone@gentoo.org> (2021-03-05)
+# Alfredo Tupone <tupone@gentoo.org> (2021-03-07)
 # unbuildable
-# Removal on 2021-04-0r52
+# Removal on 2021-04-05
 www-servers/ocsigenserver
 dev-ml/eliom
 dev-ml/js_of_ocaml
+dev-ml/ocaml-conduit
+dev-ml/dns
 
 # Conrad Kostecki <conikost@gentoo.org> (2021-03-05)
 # Deprecated by upstream and unsupported due EOL.
