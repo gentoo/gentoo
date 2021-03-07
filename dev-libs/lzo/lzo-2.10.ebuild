@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit multilib-minimal toolchain-funcs usr-ldscript
+inherit multilib-minimal usr-ldscript
 
 DESCRIPTION="An extremely fast compression and decompression library"
 HOMEPAGE="https://www.oberhumer.com/opensource/lzo/"
