@@ -6,7 +6,7 @@ EAPI=7
 LUA_COMPAT=( lua5-1 luajit )
 PYTHON_COMPAT=( python3_{7..9} )
 
-inherit autotools flag-o-matic linux-info lua-single python-single-r1 systemd
+inherit autotools flag-o-matic linux-info lua-single python-single-r1 systemd tmpfiles
 
 DESCRIPTION="High performance Network IDS, IPS and Network Security Monitoring engine"
 HOMEPAGE="https://suricata-ids.org/"
@@ -139,7 +139,7 @@ src_install() {
 	newinitd "${FILESDIR}/${PN}-5.0.1-init" ${PN}
 	newconfd "${FILESDIR}/${PN}-5.0.1-conf" ${PN}
 	systemd_dounit "${FILESDIR}"/${PN}.service
-	systemd_newtmpfilesd "${FILESDIR}"/${PN}.tmpfiles ${PN}.conf
+	newtmpfiles "${FILESDIR}"/${PN}.tmpfiles ${PN}.conf
 
 	if use logrotate; then
 		insopts -m0644
