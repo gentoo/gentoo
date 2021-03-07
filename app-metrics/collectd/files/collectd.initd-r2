@@ -20,7 +20,9 @@ pidfile="${COLLECTD_PIDFILE}"
 retry="${COLLECTD_TERMTIMEOUT}"
 
 extra_commands="configtest"
+extra_started_commands="sync"
 description_configtest="Run collectd's internal config check."
+description_sync="Save collectd's RRD data to an archive."
 
 required_files="\"${COLLECTD_CONFIGFILE}\""
 
@@ -57,14 +59,38 @@ configtest() {
 	eend $?
 }
 
+sync() {
+	ebegin "Syncing ${SVCNAME} data"
+	if [ -n "${COLLECTD_ARCHIVE}" ] && [ -d "${COLLECTD_DATADIR}" ]; then
+		if [ "$(ls -A ${COLLECTD_DATADIR})" ]; then
+			tar -acf ${COLLECTD_ARCHIVE} -C ${COLLECTD_DATADIR} .
+		fi
+	fi
+	eend $?
+}
+
 start_pre() {
 	if [ "${RC_CMD}" != "restart" ]; then
 		configtest || return 1
+	fi
+
+	if [ -f "${COLLECTD_ARCHIVE}" ] && [ -d "${COLLECTD_DATADIR}" ]; then
+		if [ -z "$(ls -A ${COLLECTD_DATADIR})" ]; then
+			tar -axf ${COLLECTD_ARCHIVE} -C ${COLLECTD_DATADIR} .
+		fi
 	fi
 }
 
 stop_pre() {
 	if [ "${RC_CMD}" = "restart" ]; then
 		configtest || return 1
+	fi
+}
+
+stop_post() {
+	if [ -n "${COLLECTD_ARCHIVE}" ] && [ -d "${COLLECTD_DATADIR}" ]; then
+		if [ "$(ls -A ${COLLECTD_DATADIR})" ]; then
+			tar -acf ${COLLECTD_ARCHIVE} -C ${COLLECTD_DATADIR} .
+		fi
 	fi
 }

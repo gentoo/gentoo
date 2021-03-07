@@ -47,3 +47,11 @@
 # * Do not specify another PIDFILE but use the variable above to change the location
 # * Do not specify another CONFIGFILE but use the variable above to change the location
 #COLLECTD_OPTS=""
+
+# If using a tmpfs mount as the data directory to reduce disk IO or SSD wear,
+# you can set these options to save and restore RRD files to a tar archive
+# when stopping and starting collectd. The tar archive is compressed
+# according to its file suffix. You can setup a cron job to periodically
+# save by running "/etc/init.d/collectd sync".
+#COLLECTD_ARCHIVE="/var/lib/collectd/rrd.tar.zst"
+#COLLECTD_DATADIR="/var/lib/collectd/rrd"
