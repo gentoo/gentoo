@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools db-use flag-o-matic multilib-minimal preserve-libs ssl-cert toolchain-funcs systemd
+inherit autotools db-use flag-o-matic multilib-minimal preserve-libs ssl-cert toolchain-funcs systemd tmpfiles
 
 BIS_PN=rfc2307bis.schema
 BIS_PV=20140524
@@ -779,7 +779,7 @@ multilib_src_install() {
 		sed -e "s,/usr/lib/,/usr/$(get_libdir)/," "${FILESDIR}"/slapd.service > "${T}"/slapd.service || die
 		systemd_dounit "${T}"/slapd.service
 		systemd_install_serviced "${FILESDIR}"/slapd.service.conf
-		systemd_newtmpfilesd "${FILESDIR}"/slapd.tmpfilesd slapd.conf
+		newtmpfiles "${FILESDIR}"/slapd.tmpfilesd slapd.conf
 
 		# If built without SLP, we don't need to be before avahi
 			sed -i \
