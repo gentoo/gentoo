@@ -62,6 +62,11 @@ dev-ml/js_of_ocaml
 dev-ml/ocaml-conduit
 dev-ml/dns
 dev-ml/ocaml-cohttp
+dev-ml/ocaml-dispatch
+dev-ml/ocaml-cstruct
+dev-ml/ocaml-ipaddr
+dev-ml/ocaml-uri
+dev-ml/re2
 
 # Conrad Kostecki <conikost@gentoo.org> (2021-03-05)
 # Deprecated by upstream and unsupported due EOL.
