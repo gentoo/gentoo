@@ -5,7 +5,7 @@ EAPI=7
 
 LUA_COMPAT=( lua5-{1..3} )
 
-inherit autotools flag-o-matic lua-single readme.gentoo-r1 systemd toolchain-funcs
+inherit autotools flag-o-matic lua-single readme.gentoo-r1 systemd toolchain-funcs tmpfiles
 
 DESCRIPTION="Lightweight high-performance web server"
 HOMEPAGE="https://www.lighttpd.net https://github.com/lighttpd"
@@ -225,7 +225,7 @@ src_install() {
 	use minimal && remove_non_essential
 
 	systemd_dounit "${FILESDIR}/${PN}.service"
-	systemd_dotmpfilesd "${FILESDIR}/${PN}.tmpfiles.conf"
+	dotmpfiles "${FILESDIR}/${PN}.tmpfiles.conf"
 }
 
 pkg_postinst() {
