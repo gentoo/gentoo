@@ -6,6 +6,6 @@
 		<name>William Hubbs</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">grapeshot/vault_exporter</remote-id>
+		<remote-id type="github">Talend/vault_exporter</remote-id>
 	</upstream>
 </pkgmetadata>
