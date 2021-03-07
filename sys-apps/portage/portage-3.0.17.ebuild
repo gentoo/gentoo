@@ -18,7 +18,9 @@ SLOT="0"
 IUSE="apidoc build doc gentoo-dev +ipc +native-extensions +rsync-verify selinux test xattr"
 RESTRICT="!test? ( test )"
 
-BDEPEND="test? ( dev-vcs/git )"
+BDEPEND="
+	app-arch/xz-utils
+	test? ( dev-vcs/git )"
 DEPEND="!build? ( $(python_gen_impl_dep 'ssl(+)') )
 	>=app-arch/tar-1.27
 	dev-lang/python-exec:2
@@ -82,8 +84,8 @@ prefix_src_archives() {
 }
 
 TARBALL_PV=${PV}
-SRC_URI="mirror://gentoo/${PN}-${TARBALL_PV}.tar.bz2
-	$(prefix_src_archives ${PN}-${TARBALL_PV}.tar.bz2)"
+SRC_URI="mirror://gentoo/${PN}-${TARBALL_PV}.tar.xz
+	$(prefix_src_archives ${PN}-${TARBALL_PV}.tar.xz)"
 
 pkg_pretend() {
 	local CONFIG_CHECK="~IPC_NS ~PID_NS ~NET_NS ~UTS_NS"
@@ -137,13 +139,17 @@ python_prepare_all() {
 			-w "/_BINARY/" lib/portage/const.py
 
 		einfo "Prefixing shebangs ..."
+		> "${T}/shebangs" || die
 		while read -r -d $'\0' ; do
 			local shebang=$(head -n1 "$REPLY")
 			if [[ ${shebang} == "#!"* && ! ${shebang} == "#!${EPREFIX}/"* ]] ; then
-				sed -i -e "1s:.*:#!${EPREFIX}${shebang:2}:" "$REPLY" || \
-					die "sed failed"
+				echo "${REPLY}" >> "${T}/shebangs" || die
 			fi
-		done < <(find . -type f ! -name etc-update -print0)
+		done < <(find . -type f -executable ! -name etc-update -print0)
+
+		if [[ -s ${T}/shebangs ]]; then
+			xargs sed -i -e "1s:^#!:#!${EPREFIX}:" < "${T}/shebangs" || die "sed failed"
+		fi
 
 		einfo "Adjusting make.globals, repos.conf and etc-update ..."
 		hprefixify cnf/{make.globals,repos.conf} bin/etc-update
@@ -246,6 +252,10 @@ pkg_preinst() {
 	env -u BINPKG_COMPRESS -u PORTAGE_REPOSITORIES \
 		PYTHONPATH="${D}${sitedir}${PYTHONPATH:+:${PYTHONPATH}}" \
 		"${PYTHON}" -m portage._compat_upgrade.binpkg_compression || die
+
+	env -u FEATURES -u PORTAGE_REPOSITORIES \
+		PYTHONPATH="${D}${sitedir}${PYTHONPATH:+:${PYTHONPATH}}" \
+		"${PYTHON}" -m portage._compat_upgrade.binpkg_multi_instance || die
 
 	# elog dir must exist to avoid logrotate error for bug #415911.
 	# This code runs in preinst in order to bypass the mapping of

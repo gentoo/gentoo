@@ -106,6 +106,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	tmpfiles_process ${PN}-tmpfiles.conf
+
 	if use cgi; then
 		elog "The cgi-bin directory for ${PN} is /usr/libexec/${PN}/cgi-bin."
 		elog "Set up your ScriptAlias or symbolic links accordingly."
