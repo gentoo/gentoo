@@ -1,0 +1,15 @@
+BDEPEND=>=dev-lang/go-1.13.12 dev-go/go-md2man virtual/pkgconfig virtual/pkgconfig virtual/pkgconfig >=dev-lang/go-1.10
+DEFINED_PHASES=compile install postinst setup unpack
+DEPEND=acct-group/docker >=dev-db/sqlite-3.7.9:3 apparmor? ( sys-libs/libapparmor ) btrfs? ( >=sys-fs/btrfs-progs-3.16.1 ) device-mapper? ( >=sys-fs/lvm2-2.02.89[thin] ) seccomp? ( >=sys-libs/libseccomp-2.2.1 )
+DESCRIPTION=The core functions you need to create Docker images and run Docker containers
+EAPI=7
+HOMEPAGE=https://www.docker.com/
+IUSE=apparmor aufs btrfs +cli +container-init device-mapper hardened overlay seccomp kernel_linux
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=acct-group/docker >=dev-db/sqlite-3.7.9:3 apparmor? ( sys-libs/libapparmor ) btrfs? ( >=sys-fs/btrfs-progs-3.16.1 ) device-mapper? ( >=sys-fs/lvm2-2.02.89[thin] ) seccomp? ( >=sys-libs/libseccomp-2.2.1 ) >=net-firewall/iptables-1.4 sys-process/procps >=dev-vcs/git-1.7 >=app-arch/xz-utils-4.9 dev-libs/libltdl ~app-emulation/containerd-1.4.3[apparmor?,btrfs?,device-mapper?,seccomp?] ~app-emulation/runc-1.0.0_rc92[apparmor?,seccomp?] ~app-emulation/docker-proxy-0.8.0_p20201215 cli? ( app-emulation/docker-cli ) container-init? ( >=sys-process/tini-0.19.0[static] )
+RESTRICT=installsources strip
+SLOT=0
+SRC_URI=https://github.com/moby/moby/archive/v20.10.3.tar.gz -> docker-20.10.3.tar.gz
+_eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	golang-base	904cd4c642d6923795b9bd99b6fe0e74	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	udev	452708c3f55cf6e918b045adb949a9e6
+_md5_=de28124500afbd4795b73e71ecbfb1e0
