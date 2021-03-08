@@ -2680,7 +2680,7 @@ app-office/auto-multiple-choice 1.3.0-r1: Create and manage multiple choice ques
 app-office/borg 1.7.4-r3: Calendar and task tracker, written in Java
 app-office/calcurse 4.4.0-r1 4.7.0: a text-based calendar and scheduling application
 app-office/calligra 3.2.1-r1: KDE Office Suite
-app-office/calligraplan 3.2.2-r1 3.3.0: Project management application
+app-office/calligraplan 3.3.0: Project management application
 app-office/dia 0.97.3-r1: Diagram/flowchart creation program
 app-office/dia2code 1.0.0: Convert UML diagrams produced with Dia to various source code flavours
 app-office/glabels 3.4.1: Program for creating labels and business cards
@@ -2984,8 +2984,8 @@ app-text/libgxps 0.3.1: Library for handling and rendering XPS documents
 app-text/liblangtag 0.6.3: An interface library to access tags for identifying languages
 app-text/libmspub 0.1.4 9999: Library parsing Microsoft Publisher documents
 app-text/libmwaw 0.3.17 9999: Library parsing many pre-OSX MAC text formats
-app-text/libnumbertext 1.0.6 1.0.7: Number to number name and money text conversion libraries
-app-text/libodfgen 0.1.7 0.1.8 9999: Library to generate ODF documents from libwpd and libwpg
+app-text/libnumbertext 1.0.7: Number to number name and money text conversion libraries
+app-text/libodfgen 0.1.8 9999: Library to generate ODF documents from libwpd and libwpg
 app-text/libpaper 1.1.24_p5 1.1.28: Library for handling paper characteristics
 app-text/libqxp 0.0.2: Library parsing QuarkXpress documents
 app-text/libspectre 0.2.9: Library for rendering Postscript documents
@@ -3688,7 +3688,7 @@ dev-embedded/picprog 1.9.1: A PIC16, PIC18 and dsPIC microcontroller programmer 
 dev-embedded/pista 0.70: Commandline-driven interface to PICSTART+ PIC programmer
 dev-embedded/pk2cmd 1.20: An application for working with the Microchip PicKit2 PIC programmer
 dev-embedded/platformio 5.0.1: An open source ecosystem for IoT development
-dev-embedded/ponyprog 2.07c-r2 3.0.0: EEPROM and microcontroller programmer/flasher
+dev-embedded/ponyprog 3.0.0: EEPROM and microcontroller programmer/flasher
 dev-embedded/powersoftplus-libftdi 0.1.8-r1: Library which includes a table of VIDs and PIDs of Ever UPS devices
 dev-embedded/rpi-eeprom 11.0_p1: Updater for Raspberry Pi 4 bootloader and the VL805 USB controller
 dev-embedded/sdcc 3.8.0-r1 4.0.0 9999: Small device C compiler (for various microprocessors)
@@ -5737,7 +5737,7 @@ dev-libs/utfcpp 3.1 3.1.1 3.1.2 9999: UTF-8 C++ library
 dev-libs/uthash 2.2.0 2.3.0: An easy-to-use hash implementation for C programmers
 dev-libs/uulib 0.5.20-r1: Library that supports Base64 (MIME), uuencode, xxencode and binhex coding
 dev-libs/vala-common 0.48.6 0.48.9 0.48.11 0.48.12 0.50.2: Build infrastructure for packages that use Vala
-dev-libs/vc 1.3.0 1.3.3 1.4.1: SIMD Vector Class Library for C++
+dev-libs/vc 1.4.1: SIMD Vector Class Library for C++
 dev-libs/vc-intrinsics 0_p20200904: LLVM intrinsics representing SIMD semantics of a program targeting GPU
 dev-libs/voikko-fi 2.4: Finnish dictionary for libvoikko based spell checkers (vvfst format)
 dev-libs/volume_key 0.3.12-r3: Library for manipulating and storing storage volume encryption keys
@@ -5748,7 +5748,7 @@ dev-libs/xalan-c 1.11.0_pre1153059: XSLT processor for transforming XML into HTM
 dev-libs/xapian 1.2.25 1.4.17 1.4.18: Xapian Probabilistic Information Retrieval library
 dev-libs/xapian-bindings 1.4.14 1.4.15 1.4.16 1.4.17 1.4.18-r1: SWIG and JNI bindings for Xapian
 dev-libs/xbyak 5.73: JIT assembler for x86(IA-32)/x64(AMD64, x86-64)
-dev-libs/xerces-c 3.2.3-r1 3.2.3-r2 9999: A validating XML parser written in a portable subset of C++
+dev-libs/xerces-c 3.2.3-r2 9999: A validating XML parser written in a portable subset of C++
 dev-libs/xmlrpc-c 1.51.06-r2: A lightweigt RPC library based on XML and HTTP
 dev-libs/xmlsec 1.2.30 1.2.31: Command line tool for signing, verifying, encrypting and decrypting XML
 dev-libs/xxhash 0.7.3 0.8.0: Extremely fast non-cryptographic hash algorithm
@@ -5982,7 +5982,7 @@ dev-ml/ppx_js_style 0.14.0: Code style checker for Jane Street Packages
 dev-ml/ppx_let 0.14.0: Monadic let-bindings
 dev-ml/ppx_metaquot 0.11.0: Write OCaml AST fragment using OCaml syntax
 dev-ml/ppx_module_timer 0.14.0: Ppx rewriter that records top-level module startup times
-dev-ml/ppx_optcomp 0.9.0-r3 0.14.0: Optional compilation for OCaml
+dev-ml/ppx_optcomp 0.14.0: Optional compilation for OCaml
 dev-ml/ppx_optional 0.14.0: Pattern matching on flat options
 dev-ml/ppx_pipebang 0.14.0: A ppx rewriter that inlines reverse application operators |> and |!
 dev-ml/ppx_sexp_conv 0.14.1 0.14.2: Support Library for type-driven code generators
@@ -13995,7 +13995,7 @@ media-sound/qmidiarp 0.6.5: Arpeggiator, sequencer and MIDI LFO for ALSA
 media-sound/qmidiroute 0.4.0: QMidiRoute is a filter/router for MIDI events
 media-sound/qmmp 1.4.2 9999: Qt5-based audio player with winamp/xmms skins support
 media-sound/qsampler 0.9.1 9999: Graphical frontend to the LinuxSampler engine
-media-sound/qsynth 0.6.3 0.9.0 0.9.1 9999: Qt application to control FluidSynth
+media-sound/qsynth 0.9.1 9999: Qt application to control FluidSynth
 media-sound/qtagger 1.0.1_p20150402: Simple Qt5 ID3v2 tag editor
 media-sound/qtgain 1.0.0: Simple frontend to mp3gain, vorbisgain and metaflac
 media-sound/qtractor 0.9.19 0.9.20: Audio/MIDI multi-track sequencer written in C++ with the Qt framework
@@ -15158,7 +15158,7 @@ net-misc/dcetest 2.0: dcetest is a clone of the Windows rpcinfo
 net-misc/dhcdrop 0.5-r1: Effectively suppresses illegal DHCP servers on the LAN
 net-misc/dhcp 4.4.2-r3: ISC Dynamic Host Configuration Protocol (DHCP) client/server
 net-misc/dhcpcd 8.1.9-r1 9.3.4 9.4.0 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
-net-misc/dhcpcd-ui 0.7.7-r1 0.7.8: Desktop notification and configuration for dhcpcd
+net-misc/dhcpcd-ui 0.7.8: Desktop notification and configuration for dhcpcd
 net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see if it is responding
 net-misc/dibbler 1.0.1 1.0.1-r2 1.0.1-r3: Portable DHCPv6 implementation (server, client and relay)
 net-misc/dleyna-server 0.6.0: Service that allows to discover and manipulate DLNA Digital Media servers (DMS)
