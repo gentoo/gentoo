@@ -13990,11 +13990,11 @@ media-sound/pulseeffects 4.7.2-r2 4.8.4-r1 5.0.0-r1 5.0.1 9999: Limiter, compres
 media-sound/pulsemixer 1.5.1 9999: CLI and curses mixer for PulseAudio
 media-sound/pwavecat 0.4.5: concatenates any number of audio files to stdout
 media-sound/qastools 0.23.0: Qt5 GUI ALSA tools: mixer, configuration browser
-media-sound/qjackctl 0.9.0 0.9.1 9999: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections
+media-sound/qjackctl 0.9.1 9999: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections
 media-sound/qmidiarp 0.6.5: Arpeggiator, sequencer and MIDI LFO for ALSA
 media-sound/qmidiroute 0.4.0: QMidiRoute is a filter/router for MIDI events
 media-sound/qmmp 1.4.2 9999: Qt5-based audio player with winamp/xmms skins support
-media-sound/qsampler 0.6.3 0.9.1 9999: Graphical frontend to the LinuxSampler engine
+media-sound/qsampler 0.9.1 9999: Graphical frontend to the LinuxSampler engine
 media-sound/qsynth 0.6.3 0.9.0 0.9.1 9999: Qt application to control FluidSynth
 media-sound/qtagger 1.0.1_p20150402: Simple Qt5 ID3v2 tag editor
 media-sound/qtgain 1.0.0: Simple frontend to mp3gain, vorbisgain and metaflac
@@ -15583,6 +15583,7 @@ net-voip/yate 6.2.0 9999: The Yate AV Suite
 net-vpn/6tunnel 0.13: TCP proxy for applications that don't speak IPv6
 net-vpn/badvpn 1.999.127 1.999.129 1.999.130: Peer-to-peer VPN, NCD scripting language, tun2socks proxifier
 net-vpn/corkscrew 2.0-r1: a tool for tunneling SSH through HTTP proxies
+net-vpn/fp-multiuser 0.0.2: A frp server plugin to support multiple users for frp
 net-vpn/frp 0.34.3 0.35.1: A reverse proxy that exposes a server behind a NAT or firewall to the internet
 net-vpn/httptunnel 3.3_p20180119: httptunnel can create IP tunnels through firewalls/proxies using HTTP
 net-vpn/i2p 0.9.47 0.9.48: A privacy-centric, anonymous network
