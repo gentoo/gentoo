@@ -1,6 +1,11 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-03-08)
+# Broken without USE=unicode
+# Needs to link with libiconv, bug #774507
+app-text/vilistextum unicode
+
 # Sam James <sam@gentoo.org> (2021-03-03)
 # A large number of packages still need /usr/bin/python{,2,3}
 # including meson.eclass consumers.
