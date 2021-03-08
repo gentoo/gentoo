@@ -1969,7 +1969,7 @@ app-emacs/rfcview 0.13: An Emacs mode that reformats IETF RFCs for display
 app-emacs/riece 9.0.0: A redesign of Liece IRC client
 app-emacs/rnc-mode 1.0.6: An Emacs mode for editing Relax NG compact schema files
 app-emacs/rpm-spec-mode 0.15: Emacs mode to ease editing of RPM spec files
-app-emacs/ruby-mode 2.4.1 2.5.5 2.6.3 2.7.0: Emacs major mode for editing Ruby code
+app-emacs/ruby-mode 2.5.5 2.6.3 2.7.0 3.0.0: Emacs major mode for editing Ruby code
 app-emacs/rudel 0.3_pre20110721-r1 0.3.1: Collaborative editing environment for GNU Emacs
 app-emacs/rust-mode 0.3.0_p20190125 0.4.0: A major emacs mode for editing Rust source code
 app-emacs/s 1.12.0: The long lost Emacs string manipulation library
