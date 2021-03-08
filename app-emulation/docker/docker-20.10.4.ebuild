@@ -28,7 +28,7 @@ DEPEND="
 # https://github.com/moby/moby/blob/master/project/PACKAGERS.md#runtime-dependencies
 # https://github.com/moby/moby/blob/master/project/PACKAGERS.md#optional-dependencies
 # https://github.com/moby/moby/tree/master//hack/dockerfile/install
-# make sure containerd, docker-proxy, runc and tini pinned to exact versions from ^,
+# make sure docker-proxy is pinned to exact version from ^,
 # for appropriate branchch/version of course
 RDEPEND="
 	${DEPEND}
@@ -37,8 +37,7 @@ RDEPEND="
 	>=dev-vcs/git-1.7
 	>=app-arch/xz-utils-4.9
 	dev-libs/libltdl
-	~app-emulation/containerd-1.4.3[apparmor?,btrfs?,device-mapper?,seccomp?]
-	~app-emulation/runc-1.0.0_rc93[apparmor?,seccomp?]
+	>=app-emulation/containerd-1.4.1[apparmor?,btrfs?,device-mapper?,seccomp?]
 	~app-emulation/docker-proxy-0.8.0_p20201215
 	cli? ( app-emulation/docker-cli )
 	container-init? ( >=sys-process/tini-0.19.0[static] )
