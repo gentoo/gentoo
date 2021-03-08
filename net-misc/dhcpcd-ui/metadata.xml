@@ -2,9 +2,4 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
-<use>
-	<flag name="gtk2">
-		Build with <pkg>x11-libs/gtk+</pkg> version 2 instead of version 3
-	</flag>
-</use>
 </pkgmetadata>
