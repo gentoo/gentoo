@@ -66,6 +66,7 @@ CDEPEND="
 	"
 
 DEPEND="${CDEPEND}
+	dev-libs/boost
 	virtual/pkgconfig
 "
 
@@ -91,6 +92,8 @@ src_prepare() {
 	sed -i -e 's#-Wno-unknown-warning-option ##g' Makefile.inc.in || die
 
 	#sed -i -e 's#root#kismet#g' packaging/systemd/kismet.service.in
+
+	rm -r boost || die
 
 	# Don't strip and set correct mangrp
 	sed -i -e 's| -s||g' \
