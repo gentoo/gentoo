@@ -4046,7 +4046,6 @@ media-gfx/openvdb:numpy - Build pyopenvdb with support for dev-python/numpy
 media-gfx/openvdb:utils - Build utility binaries
 media-gfx/photoqt:devil - Support additional image formats using media-libs/devil
 media-gfx/photoqt:freeimage - Support additional image formats using media-libs/freeimage
-media-gfx/pngcrush:system-libs - Use libpng and libz provided by system
 media-gfx/potrace:metric - default to a4 paper size and metric measurement
 media-gfx/povray:io-restrictions - POV-Ray's mechanism for control of I/O operations
 media-gfx/pqiv:archive - Enable support for images in archives and cbX comic book files
