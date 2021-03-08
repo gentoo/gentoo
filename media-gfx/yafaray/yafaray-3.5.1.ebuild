@@ -41,7 +41,10 @@ RDEPEND="
 	truetype? ( media-libs/freetype:2 )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="python? ( dev-lang/swig )"
+BDEPEND="python? (
+		${PYTHON_DEPS}
+		dev-lang/swig
+	)"
 
 DOCS=( AUTHORS.md CHANGELOG.md CODING.md INSTALL.md README.md )
 
