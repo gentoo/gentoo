@@ -58,7 +58,7 @@ src_compile() {
 	use ocamlopt || myconf="$myconf NATIVE=false"
 
 	if use doc; then
-		emake $myconf CFLAGS="" HEVEA=false docs
+		VARTEXFONTS="${T}/fonts" emake $myconf CFLAGS="" HEVEA=false docs
 	fi
 
 	# Discard cflags as it will try to pass them to ocamlc...
