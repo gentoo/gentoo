@@ -10,5 +10,5 @@ PROPERTIES=live
 RDEPEND=acct? ( acct-group/git acct-user/git[gitea] ) pam? ( sys-libs/pam ) dev-vcs/git filecaps? ( sys-libs/libcap ) virtual/tmpfiles
 RESTRICT=test
 SLOT=0
-_eclasses_=fcaps	da689a8e04bbbb3518888ff668fee45b	git-r3	3e7ec3d6619213460c85e2aa48398441	go-module	92660621959e7fab813173772987588b	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	tmpfiles	6170dc7770585fb3f16efdee789a3218	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=fcaps	da689a8e04bbbb3518888ff668fee45b	git-r3	3e7ec3d6619213460c85e2aa48398441	go-module	92660621959e7fab813173772987588b	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	tmpfiles	dc8e4917d734a019caa04ad3b8db560b	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=680d14274714bb32f56a156b18b36f86
