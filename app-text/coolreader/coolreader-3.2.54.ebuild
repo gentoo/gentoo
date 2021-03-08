@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/buggins/coolreader/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="wxwidgets"
 
 CDEPEND="sys-libs/zlib
