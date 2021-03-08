@@ -25,6 +25,10 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+PATCHES=(
+	"${FILESDIR}"/${P}-libc.patch
+)
+
 python_test() {
 	local args=(
 		# docker, seriously?
@@ -34,5 +38,5 @@ python_test() {
 		--skip-high-memory
 	)
 
-	pytest -vv "${args[@]}" || die "Tests failed on ${EPYTHON}"
+	epytest "${args[@]}"
 }
