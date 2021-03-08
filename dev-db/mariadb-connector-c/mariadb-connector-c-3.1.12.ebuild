@@ -11,7 +11,7 @@ else
 	MY_PV=${PV/_b/-b}
 	SRC_URI="https://downloads.mariadb.org/f/${MY_PN}-${PV%_beta}/${PN}-${MY_PV}-src.tar.gz?serve -> ${P}-src.tar.gz"
 	S="${WORKDIR%/}/${PN}-${MY_PV}-src"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~ppc ppc64 s390 sparc x86"
 fi
 
 CMAKE_ECLASS=cmake
