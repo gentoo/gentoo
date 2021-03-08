@@ -5,7 +5,7 @@ DESCRIPTION=A personal finance manager
 EAPI=7
 HOMEPAGE=https://www.gnucash.org/
 IUSE=aqbanking debug doc examples gnome-keyring +gui mysql nls ofx postgres python quotes -register2 smartcard sqlite test python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9
-KEYWORDS=~amd64 ~arm64 ~ppc ~ppc64 ~x86
+KEYWORDS=amd64 ~arm64 ~ppc ~ppc64 x86
 LICENSE=GPL-2
 PDEPEND=doc? ( ~app-doc/gnucash-docs-4.4 gnome-extra/yelp )
 RDEPEND=>=dev-libs/glib-2.56.1:2 >=dev-scheme/guile-2.2.0:=[regex] >=sys-libs/zlib-1.1.4 dev-libs/boost:=[icu,nls] dev-libs/icu:= dev-libs/libxml2:2 dev-libs/libxslt aqbanking? ( >=net-libs/aqbanking-6[ofx?] sys-libs/gwenhywfar:= smartcard? ( sys-libs/libchipcard ) ) gnome-keyring? ( >=app-crypt/libsecret-0.18 ) gui? ( >=x11-libs/gtk+-3.22.30:3 gnome-base/dconf net-libs/webkit-gtk:4= aqbanking? ( sys-libs/gwenhywfar:=[gtk] ) ) mysql? ( dev-db/libdbi dev-db/libdbi-drivers[mysql] ) ofx? ( >=dev-libs/libofx-0.9.1:= ) postgres? ( dev-db/libdbi dev-db/libdbi-drivers[postgres] ) python? ( python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_9? ( dev-lang/python:3.9 >=dev-lang/python-exec-2:=[python_targets_python3_9] ) ) quotes? ( >=dev-perl/Finance-Quote-1.11 dev-perl/Date-Manip dev-perl/HTML-TableExtract ) sqlite? ( dev-db/libdbi dev-db/libdbi-drivers[sqlite] )
@@ -14,4 +14,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/Gnucash/gnucash/releases/download/4.4/gnucash-4.4.tar.bz2
 _eclasses_=cmake	314a813be2f09820e8978cdee941e501	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	41a7dd844b3de07121fe2821bbeea142	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=769a9b1b764a774a30f7c7b5a7e89acf
+_md5_=7d00d62847415ad49ed0eebc7a1b8f5a

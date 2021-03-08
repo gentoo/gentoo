@@ -4,7 +4,7 @@ DESCRIPTION=Python driver for MongoDB
 EAPI=7
 HOMEPAGE=https://github.com/mongodb/mongo-python-driver https://pypi.org/project/pymongo/
 IUSE=doc kerberos test doc python_targets_python3_7 python_targets_python3_8 python_targets_python3_9
-KEYWORDS=~amd64 ~arm64 ~hppa ~x86
+KEYWORDS=amd64 ~arm64 ~hppa ~x86
 LICENSE=Apache-2.0
 RDEPEND=kerberos? ( dev-python/pykerberos[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] ) python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)]
 REQUIRED_USE=|| ( python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 )
@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/mongodb/mongo-python-driver/archive/3.11.3.tar.gz -> mongo-python-driver-3.11.3.tar.gz
 _eclasses_=check-reqs	7e3fd1855a5e1b50bb9e80827b3f672d	distutils-r1	62d60cb45322f5a6eab963d7c386f377	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	4c65b35c1895b82c0f44e44166a3464f	python-utils-r1	41a7dd844b3de07121fe2821bbeea142	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=9993844b95777d50ce8d864a0c813370
+_md5_=504b76b0b04cd1bb8f61a6a2d7017d38
