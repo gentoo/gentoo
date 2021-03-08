@@ -1,0 +1,1 @@
+FP_MULTIUSER_OPTS="-f /etc/fp-multiuser/tokens -l 127.0.0.1:7200"
