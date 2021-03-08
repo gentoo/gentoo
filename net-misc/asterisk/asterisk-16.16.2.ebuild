@@ -28,9 +28,7 @@ REQUIRED_USE="gtalk? ( xmpp )
 "
 
 PATCHES=(
-	"${FILESDIR}/asterisk-historic-no-var-run-install.patch"
-	"${FILESDIR}/asterisk-13.38.1-r1-autoconf-lua-version.patch"
-	"${FILESDIR}/asterisk-13.38.1-r1-func_lock-fix-races.patch"
+	"${FILESDIR}/asterisk-16.16.2-no-var-run-install.patch"
 	"${FILESDIR}/asterisk-16.15.1-r2-autoconf-2.70.patch"
 )
 
