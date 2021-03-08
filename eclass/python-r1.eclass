@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-r1.eclass
@@ -771,14 +771,17 @@ python_foreach_impl() {
 python_setup() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	_python_validate_useflags
+	local has_check_deps
+	declare -f python_check_deps >/dev/null && has_check_deps=1
+
+	if [[ ! ${has_check_deps} ]]; then
+		_python_validate_useflags
+	fi
+
 	local pycompat=( "${PYTHON_COMPAT[@]}" )
 	if [[ ${PYTHON_COMPAT_OVERRIDE} ]]; then
 		pycompat=( ${PYTHON_COMPAT_OVERRIDE} )
 	fi
-
-	local has_check_deps
-	declare -f python_check_deps >/dev/null && has_check_deps=1
 
 	# (reverse iteration -- newest impl first)
 	local found
