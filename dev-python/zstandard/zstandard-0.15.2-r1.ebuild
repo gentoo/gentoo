@@ -25,11 +25,15 @@ BDEPEND="
 
 distutils_enable_tests setup.py
 
-python_compile() {
-	local MAKEOPTS=-j1
-	distutils-r1_python_compile --system-zstd
-}
+src_prepare() {
+	# the C backend is repeatedly broken, so force CFFI instead
+	sed -e '/PYTHON_ZSTANDARD_IMPORT_POLICY/s:default:cffi:' \
+		-i zstandard/__init__.py || die
 
-python_install() {
-	distutils-r1_python_install --system-zstd
+	distutils-r1_src_prepare
+
+	mydistutilsargs=(
+		--no-c-backend
+		--system-zstd
+	)
 }
