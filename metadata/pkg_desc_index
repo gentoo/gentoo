@@ -72,6 +72,7 @@ acct-group/fhem 0-r1: A group for the FHEM perl server for house automation
 acct-group/fingerprint 0-r1: System group: fingerprint
 acct-group/flatpak 0: System group: flatpak
 acct-group/flows 0: gid for net-analyzer/flow-tools
+acct-group/fp-multiuser 0: A group for net-vpn/fp-multiuser
 acct-group/freenet 0: Group for net-p2p/freenet
 acct-group/frr 0: System group: frr
 acct-group/ftp 0-r1: File Transfer Protocol server user
@@ -372,6 +373,7 @@ acct-user/fetchmail 0-r1: User for net-mail/fetchmail
 acct-user/fhem 0-r1: A user for the FHEM perl server for house automation
 acct-user/flatpak 0: System user: flatpak
 acct-user/flows 0: uid for net-analyzer/flow-tools
+acct-user/fp-multiuser 0: A user for net-vpn/fp-multiuser
 acct-user/freenet 0: User for net-p2p/freenet
 acct-user/frr 0: System user: frr
 acct-user/ftp 0-r1: File Transfer Protocol server user
@@ -1119,6 +1121,7 @@ app-crypt/openpgp-keys-kernel 20201103: OpenPGP keys used to sign Linux kernel r
 app-crypt/openpgp-keys-linuxcontainers 20201014: OpenPGP keys used to sign LXC-related packages
 app-crypt/openpgp-keys-miniupnp 20201006: OpenPGP keys used to sign miniupnp* packages
 app-crypt/openpgp-keys-python 20210121: OpenPGP keys used to sign CPython releases
+app-crypt/openpgp-keys-terminator 20210306: OpenPGP keys used to sign x11-terms/terminator package
 app-crypt/openpgp-keys-voikko 20201013: OpenPGP keys used to sign voikko* packages
 app-crypt/ophcrack 3.8.0: A time-memory-trade-off-cracker
 app-crypt/ophcrack-tables 1.0-r2: Tables available for ophcrack
@@ -5649,7 +5652,7 @@ dev-libs/papi 5.5.1 6.0.0.1: Performance Application Programming Interface
 dev-libs/pcc-libs 1.1.0 9999: pcc compiler support libs
 dev-libs/pcl 1.12-r1: Portable Coroutine Library
 dev-libs/pegtl 2.8.3-r1 3.2.0: Header-only library for creating parsers according to Parsing Expression Grammar
-dev-libs/pigpio 76 77 78: A library for the Raspberry which allows control of the GPIOs
+dev-libs/pigpio 76 77 78 79: A library for the Raspberry which allows control of the GPIOs
 dev-libs/pkcs11-helper 1.25.1: PKCS#11 helper library
 dev-libs/plasma-wayland-protocols 1.1.1: Plasma Specific Protocols for Wayland
 dev-libs/pmdk 1.9.2: Persistent Memory Development Kit
@@ -16132,7 +16135,7 @@ sci-geosciences/gpscorrelate 1.6.1-r1: Tool for adjusting EXIF tags of your phot
 sci-geosciences/gpsd 3.21 9999: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
 sci-geosciences/gpx-viewer 0.4.0-r1: Simple program to visualize a gpx file
 sci-geosciences/gpxsee 8.1 8.4 8.7 8.8: A viewer and analyzer that supports gpx, tcx, kml, fit, igc and nmea files
-sci-geosciences/grass 7.8.4 7.8.5 9999: A free GIS with raster and vector functionality, as well as 3D vizualization
+sci-geosciences/grass 7.8.5 9999: A free GIS with raster and vector functionality, as well as 3D vizualization
 sci-geosciences/gshhg-gmt 2.3.7: Global Self-consistent, Hierarchical, High-resolution Geography Database
 sci-geosciences/gshhs 1.13: Global Self-consistent, Hierarchical, High-resolution Shoreline programs
 sci-geosciences/gshhs-data 2.2.0: Global Self-consistent, Hierarchical, High-resolution Shoreline programs data
@@ -18880,7 +18883,7 @@ x11-terms/roxterm 3.9.4: A terminal emulator designed to integrate with the ROX 
 x11-terms/rxvt-unicode 9.22-r7 9999: rxvt clone with xft and unicode support
 x11-terms/sakura 3.7.0 3.7.1: sakura is a terminal emulator based on GTK and VTE
 x11-terms/st 0.8.4 9999: simple terminal implementation for X
-x11-terms/terminator 2.0.1: Multiple GNOME terminals in one window
+x11-terms/terminator 2.0.1 2.1.0: Multiple GNOME terminals in one window
 x11-terms/terminology 1.9.0: Feature rich terminal emulator using the Enlightenment Foundation Libraries
 x11-terms/tilda 1.5.2: A drop down terminal, similar to the consoles found in first person shooters
 x11-terms/xfce4-terminal 0.8.9.2 0.8.10: A terminal emulator for the Xfce desktop environment
