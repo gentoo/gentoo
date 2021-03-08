@@ -1,0 +1,10 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=Web server vulnerability scanner
+EAPI=7
+HOMEPAGE=https://www.cirt.net/Nikto2
+KEYWORDS=~amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl dev-perl/Net-SSLeay net-analyzer/nmap virtual/perl-JSON-PP
+SLOT=0
+SRC_URI=https://github.com/sullo/nikto/archive/8a4b5fb86ae8a1b4f31c32da0bcedd3bcaf4deb8.tar.gz -> nikto-2.1.6_p20210304.tar.gz
+_md5_=b09c44cc95389efc70d66aa99859e32d
