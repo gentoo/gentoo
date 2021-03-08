@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Brian Evans <grknight@gentoo.org> (2021-03-08)
+# No longer consistently maintained, severely broken with PHP 8
+# No reverse dependencies, fails tests
+# Removal in 30 days.
+dev-php/PEAR-Config
+
 # Hans de Graaff <graaff@gentoo.org> (2021-03-08)
 # Last litc upstream release in 2010, no reverse dependencies,
 # ruby25-only. Includes fakeweb test dependency which is also
