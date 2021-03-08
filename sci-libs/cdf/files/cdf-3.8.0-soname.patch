@@ -1,0 +1,48 @@
+diff --git a/Makefile b/Makefile
+index 9857fa9..f0a7b1f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -896,7 +896,7 @@ install.tools: create.bin copy.tools
+ install.help_: create.help copy.help
+ 
+ install.lib: create.lib copy.lib.a
+-	@if [ -f $(LIBsrcDIR)/libcdf.so ] ; then \
++	@if [ -f $(LIBsrcDIR)/libcdf.$(SHAREDEXT) ] ; then \
+ 	   $(MAKE) MAKE=$(MAKE) "INSTALLDIR=$(INSTALLDIR)" install.lib.so ; \
+ 	 else \
+ 	   $(NULL) ; \
+@@ -1010,10 +1010,10 @@ copy.include:
+ 	      cp $(INCsrcDIR)/cdfconfig.h $(INSTALLDIR)/include
+ 
+ copy.lib.so:
+-	@echo cp $(LIBsrcDIR)/libcdf.so $(INSTALLDIR)/lib
+-	      cp $(LIBsrcDIR)/libcdf.so $(INSTALLDIR)/lib/libcdf.$(VERSION).so
++	@echo cp $(LIBsrcDIR)/libcdf.$(SHAREDEXT) $(INSTALLDIR)/lib
++	      cp $(LIBsrcDIR)/libcdf.$(SHAREDEXT) $(INSTALLDIR)/lib
+ 	      rm -f $(INSTALLDIR)/lib/libcdf.so
+-	      cd $(INSTALLDIR)/lib && ln -s libcdf.$(VERSION).so libcdf.so
++	      cd $(INSTALLDIR)/lib && ln -s libcdf.so.3 libcdf.so
+ 
+ copy.lib.sl:
+ 	@echo cp $(LIBsrcDIR)/libcdf.sl $(INSTALLDIR)/lib
+diff --git a/src/lib/Makefile b/src/lib/Makefile
+index 2017c46..9380e44 100644
+--- a/src/lib/Makefile
++++ b/src/lib/Makefile
+@@ -120,13 +120,13 @@ ranlib.yes:
+ 
+ shared.yes: libcdf.$(SHAREDEXT)
+ 
+-libcdf.so \
++libcdf.$(SHAREDEXT) \
+ libcdf.dylib \
+ libcdf.dll \
+ libcdf.sl: $(OBJs)
+ 	@if [ -f $@ ] ; then rm $@ ; else $(NULL) ; fi
+-	@echo $(LD) $(LDFLAGS) -o $@ $(OBJs) $(SYSLIBS)
+-	      $(LD) $(LDFLAGS) -o $@ $(OBJs) $(SYSLIBS)
++	@echo $(LD) $(LDFLAGS) -Wl,-soname,libcdf.$(SHAREDEXT) -o $@ $(OBJs) $(SYSLIBS)
++	      $(LD) $(LDFLAGS) -Wl,-soname,libcdf.$(SHAREDEXT) -o $@ $(OBJs) $(SYSLIBS)
+ #	@if [ $(MACVERSION) -gt 0 ]; then \
+ #	  rm -f $(MACLIB)/$@; \
+ #	  cp $@ $(MACLIB)/libcdf.$(VERSION).dylib; \
