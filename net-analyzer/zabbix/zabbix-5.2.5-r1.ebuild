@@ -246,7 +246,7 @@ HOMEPAGE="https://www.zabbix.com/"
 MY_P=${P/_/}
 MY_PV=${PV/_/}
 SRC_URI="https://cdn.zabbix.com/${PN}/sources/stable/$(ver_cut 1-2)/${P}.tar.gz
-	${EGO_SUM_SRC_URI}
+	agent2? ( ${EGO_SUM_SRC_URI} )
 "
 
 LICENSE="GPL-2"
