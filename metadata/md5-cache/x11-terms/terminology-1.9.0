@@ -10,5 +10,5 @@ LICENSE=BSD-2
 RDEPEND=|| ( dev-libs/efl[gles2-only] dev-libs/efl[opengl] ) || ( dev-libs/efl[X] dev-libs/efl[wayland] ) app-arch/lz4 dev-libs/efl[eet,fontconfig]
 SLOT=0
 SRC_URI=https://download.enlightenment.org/rel/apps/terminology/terminology-1.9.0.tar.xz https://downloads.terminolo.gy/terminology-1.9.0.tar.xz
-_eclasses_=meson	e43eef9331f54965a573ed380854ff47	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=meson	e43eef9331f54965a573ed380854ff47	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	41a7dd844b3de07121fe2821bbeea142	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=985356dee768da87f78c8aa51b2f964b

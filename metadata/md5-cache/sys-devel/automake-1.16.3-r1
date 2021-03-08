@@ -11,5 +11,5 @@ RDEPEND=dev-lang/perl >=sys-devel/automake-wrapper-11 >=sys-devel/autoconf-2.69:
 RESTRICT=!test? ( test )
 SLOT=1.16
 SRC_URI=mirror://gnu/automake/automake-1.16.3.tar.xz https://alpha.gnu.org/pub/gnu/automake/automake-1.16.3.tar.xz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	41a7dd844b3de07121fe2821bbeea142	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=1bf8942dd77fc490e27e30e428275691

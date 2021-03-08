@@ -12,5 +12,5 @@ REQUIRED_USE=|| ( emacs fcitx4 ibus )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/google/mozc/archive/9ba59b64d53365c1fe93c1c245b4ec3e35bdadf0.tar.gz -> mozc-2.26.4220-20201212102434.tar.gz https://github.com/hiroyuki-komatsu/japanese-usage-dictionary/archive/a4a66772e33746b91e99caceecced9a28507e925.tar.gz -> japanese-usage-dictionary-20180701040110.tar.gz fcitx4? ( https://github.com/fcitx/mozc/archive/1ea089debc31ff216473369ad71c08318384ee06.tar.gz -> fcitx-mozc-2.26.4220-20201219202429.tar.gz )
-_eclasses_=elisp-common	d4b53ec63c580b993ed19445f411e1d2	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	69861348186337fa4b269de5826004b3	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=elisp-common	d4b53ec63c580b993ed19445f411e1d2	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	41a7dd844b3de07121fe2821bbeea142	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=ee82b04db8a99b1bcf4db3039ecba600
