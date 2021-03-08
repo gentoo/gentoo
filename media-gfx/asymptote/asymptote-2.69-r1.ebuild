@@ -14,8 +14,7 @@ SRC_URI="mirror://sourceforge/asymptote/${P}.src.tgz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="+boehm-gc curl doc emacs examples fftw gsl +imagemagick latex offscreen +opengl python sigsegv svg test vim-syntax"
-# FIXME: xasy is currently broken
+IUSE="+boehm-gc context curl doc emacs examples fftw gsl +imagemagick latex offscreen +opengl python sigsegv svg test vim-syntax X"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -28,7 +27,7 @@ RDEPEND="
 	>=sys-libs/readline-4.3-r5:0=
 	net-libs/libtirpc
 	imagemagick? ( media-gfx/imagemagick[png] )
-	opengl? ( media-libs/mesa media-libs/freeglut media-libs/glew:0 media-libs/glm )
+	opengl? ( media-libs/mesa[X(+)] media-libs/freeglut media-libs/glew:0 media-libs/glm )
 	offscreen? ( media-libs/mesa[osmesa] )
 	svg? ( app-text/dvisvgm )
 	sigsegv? ( dev-libs/libsigsegv )
@@ -37,15 +36,23 @@ RDEPEND="
 	gsl? ( sci-libs/gsl )
 	python? ( ${PYTHON_DEPS} )
 	curl? ( net-misc/curl )
+	X? (
+		${PYTHON_DEPS}
+		dev-python/PyQt5[${PYTHON_USEDEP},gui,widgets,svg]
+		dev-python/numpy
+		dev-python/pycson
+		>=gnome-base/librsvg-2.40
+		)
 	latex? (
 		virtual/latex-base
 		>=dev-texlive/texlive-latexextra-2013
 		)
+	context? ( dev-texlive/texlive-context )
 	emacs? ( >=app-editors/emacs-23.1:* )
 	vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )"
 DEPEND="${RDEPEND}
+	dev-lang/perl
 	doc? (
-		dev-lang/perl
 		media-gfx/imagemagick[png]
 		virtual/texi2dvi
 		virtual/latex-base
@@ -78,6 +85,9 @@ src_configure() {
 		CPPFLAGS=-DHAVE_SYS_TYPES_H \
 		CFLAGS="${CXXFLAGS}" \
 		--disable-gc-debug \
+		--disable-gc-full-debug \
+		--with-latex=/usr/share/texmf-site/tex/latex \
+		--with-context=/usr/share/texmf-site/tex/context \
 		$(use_enable boehm-gc gc system) \
 		$(use_enable curl) \
 		$(use_enable fftw) \
@@ -92,10 +102,11 @@ src_compile() {
 
 	cd doc || die
 	emake asy.1
+	einfo "Making info"
+	cd png || die
+	emake ${PN}.info
+	cd .. || die
 	if use doc; then
-		# info
-		einfo "Making info"
-		emake ${PN}.info
 		cd FAQ || die
 		emake
 		cd .. || die
@@ -104,7 +115,7 @@ src_compile() {
 		export VARTEXFONTS="${T}"/fonts
 		# see bug #260606
 		emake -j1 asymptote.pdf
-		emake CAD.pdf
+		emake CAD.pdf asy-latex.pdf asyRefCard.pdf
 	fi
 	cd .. || die
 
@@ -120,22 +131,53 @@ src_install() {
 
 	# .asy files
 	insinto /usr/share/${PN}
-	doins -r base/*.asy base/shaders base/webgl
+	doins -r base/*.asy base/*.js base/*.sh base/*.ps base/shaders base/webgl
+	chmod 755 "${D}"/usr/share/${PN}/shaders/*
 
 	# documentation
-	dodoc BUGS ChangeLog README ReleaseNotes TODO
-	doman doc/asy.1
+	dodoc README ReleaseNotes ChangeLog
+	cd doc || die
+	doman asy.1
+	doinfo png/${PN}.info
+	if use doc; then
+		dodoc FAQ/asy-faq.ascii
+		dodoc CAD.pdf asy-latex.pdf asyRefCard.pdf asymptote.pdf
+	fi
+	cd .. || die
+
+	# asymptote.py
+	if use python; then
+		python_moduleinto ${PN}
+		python_foreach_impl python_domodule aspy.py
+		python_foreach_impl python_domodule base/${PN}.py
+	fi
+
+	# X GUI
+	if use X; then
+		cd GUI || die
+		python_setup
+		sed -e 1d -i xasy.py
+		echo "#!/usr/bin/env ${EPYTHON}" > xasy1
+		cat xasy1 xasy.py > xasy
+		rm xasy1 xasy.py
+		mv xasy xasy.py
+		cd .. || die
+		python_domodule GUI
+		chmod 755 "${D}/$(python_get_sitedir)/${PN}/GUI/xasy.py"
+		dosym "$(python_get_sitedir)/${PN}/GUI/xasy.py" /usr/bin/xasy
+		doman doc/xasy.1x
+	fi
 
 	# examples
 	if use examples; then
-		insinto /usr/share/${PN}/examples
+		insinto /usr/share/doc/${PF}/examples
 		doins \
 			examples/*.asy \
 			examples/*.views \
 			examples/*.dat \
 			examples/*.bib \
-			examples/piicon.png \
-			examples/100d.pdb1 \
+			examples/*.png \
+			examples/*.pdb1 \
 			doc/*.asy \
 			doc/*.csv \
 			doc/*.dat \
@@ -149,7 +191,7 @@ src_install() {
 	if use latex; then
 		cd doc || die
 		insinto "${TEXMF}"/tex/latex/${PN}
-		doins ${PN}.sty asycolors.sty
+		doins *.sty latexmkrc
 		if use examples; then
 			insinto /usr/share/${PN}/examples
 			doins latexusage.tex externalprc.tex
@@ -159,9 +201,10 @@ src_install() {
 		cd .. || die
 	fi
 
-	# asymptote.py
-	if use python; then
-		python_foreach_impl python_domodule base/${PN}.py
+	# ConTeXt
+	if use context; then
+		insinto /usr/share/texmf-site/tex/context
+		doins doc/colo-asy.tex
 	fi
 
 	# emacs mode
@@ -176,18 +219,6 @@ src_install() {
 		doins base/asy.vim
 		insinto /usr/share/vim/vimfiles/ftdetect
 		doins base/asy_filetype.vim
-	fi
-
-	# extra documentation
-	if use doc; then
-		cd doc || die
-		doinfo ${PN}.info*
-		dodoc ${PN}.pdf CAD.pdf
-		cd FAQ || die
-		dodoc asy-faq.ascii
-		doinfo asy-faq.info
-		docinto html/FAQ
-		dodoc asy-faq.html/*
 	fi
 }
 
