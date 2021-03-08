@@ -44,5 +44,5 @@ src_configure() {
 
 multilib_src_install() {
 	cmake_src_install
-	cp "${D}"/usr/$(get_libdir)/pkgconfig/{,free}glut.pc || die
+	cp "${ED}"/usr/$(get_libdir)/pkgconfig/{,free}glut.pc || die
 }
