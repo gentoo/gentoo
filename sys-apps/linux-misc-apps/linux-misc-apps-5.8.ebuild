@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils toolchain-funcs linux-info autotools flag-o-matic
+inherit toolchain-funcs linux-info autotools flag-o-matic
 
 DESCRIPTION="Misc tools bundled with kernel sources"
 HOMEPAGE="https://kernel.org/"
@@ -108,7 +108,7 @@ src_unpack() {
 
 src_prepare() {
 	if [[ -n ${LINUX_PATCH} ]]; then
-		epatch "${DISTDIR}"/${LINUX_PATCH}
+		eapply "${DISTDIR}"/${LINUX_PATCH}
 	fi
 
 	pushd tools/usb/usbip/ >/dev/null &&
