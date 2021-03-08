@@ -3,7 +3,7 @@
 
 EAPI=7
 EGO_PN=github.com/docker/docker
-GIT_COMMIT=363e9a88a1
+GIT_COMMIT=46229ca1d8
 inherit bash-completion-r1 linux-info systemd udev golang-vcs-snapshot
 
 DESCRIPTION="The core functions you need to create Docker images and run Docker containers"
@@ -28,7 +28,7 @@ DEPEND="
 # https://github.com/moby/moby/blob/master/project/PACKAGERS.md#runtime-dependencies
 # https://github.com/moby/moby/blob/master/project/PACKAGERS.md#optional-dependencies
 # https://github.com/moby/moby/tree/master//hack/dockerfile/install
-# make sure docker-proxy is pinned to exact version from ^,
+# make sure containerd, docker-proxy and tini pinned to exact versions from ^,
 # for appropriate branchch/version of course
 RDEPEND="
 	${DEPEND}
@@ -37,7 +37,7 @@ RDEPEND="
 	>=dev-vcs/git-1.7
 	>=app-arch/xz-utils-4.9
 	dev-libs/libltdl
-	>=app-emulation/containerd-1.4.1[apparmor?,btrfs?,device-mapper?,seccomp?]
+	~app-emulation/containerd-1.4.3[apparmor?,btrfs?,device-mapper?,seccomp?]
 	~app-emulation/docker-proxy-0.8.0_p20201215
 	cli? ( app-emulation/docker-cli )
 	container-init? ( >=sys-process/tini-0.19.0[static] )
@@ -58,7 +58,6 @@ S="${WORKDIR}/${P}/src/${EGO_PN}"
 CONFIG_CHECK="
 	~NAMESPACES ~NET_NS ~PID_NS ~IPC_NS ~UTS_NS
 	~CGROUPS ~CGROUP_CPUACCT ~CGROUP_DEVICE ~CGROUP_FREEZER ~CGROUP_SCHED ~CPUSETS ~MEMCG
-	~CGROUP_NET_PRIO
 	~KEYS
 	~VETH ~BRIDGE ~BRIDGE_NETFILTER
 	~IP_NF_FILTER ~IP_NF_TARGET_MASQUERADE ~NETFILTER_XT_MARK
@@ -100,6 +99,27 @@ ERROR_XFRM_ALGO="CONFIG_XFRM_ALGO: is optional for secure networks"
 ERROR_XFRM_USER="CONFIG_XFRM_USER: is optional for secure networks"
 
 pkg_setup() {
+	if kernel_is lt 3 10; then
+		ewarn ""
+		ewarn "Using Docker with kernels older than 3.10 is unstable and unsupported."
+		ewarn " - http://docs.docker.com/engine/installation/binaries/#check-kernel-dependencies"
+	fi
+
+	if kernel_is le 3 18; then
+		CONFIG_CHECK+="
+			~RESOURCE_COUNTERS
+		"
+	fi
+
+	if kernel_is le 3 13; then
+		CONFIG_CHECK+="
+			~NETPRIO_CGROUP
+		"
+	else
+		CONFIG_CHECK+="
+			~CGROUP_NET_PRIO
+		"
+	fi
 
 	if kernel_is lt 4 5; then
 		CONFIG_CHECK+="
