@@ -60,7 +60,15 @@ case "${EAPI}" in
 *) die "API is undefined for EAPI ${EAPI}" ;;
 esac
 
-RDEPEND="virtual/tmpfiles"
+# @ECLASS-VARIABLE: TMPFILES_OPTIONAL
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# When not empty, disables the dependency on virtual/tmpfiles.
+# Ebuilds that call tmpfiles_process conditionally should declare a
+# conditional dependency themselves.
+if [[ -z ${TMPFILES_OPTIONAL} ]]; then
+	RDEPEND="virtual/tmpfiles"
+fi
 
 # @FUNCTION: dotmpfiles
 # @USAGE: <tmpfiles.d_file> ...
