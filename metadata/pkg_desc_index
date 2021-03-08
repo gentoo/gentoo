@@ -1249,7 +1249,7 @@ app-dicts/myspell-de_1901 20160403: German (traditional orthography) dictionarie
 app-dicts/myspell-el 0.9: Greek dictionaries for myspell/hunspell
 app-dicts/myspell-en 20170101 20181101 20190101 20190101-r1: English dictionaries for myspell/hunspell
 app-dicts/myspell-eo 1.0-r1: Esperanto dictionaries for myspell/hunspell
-app-dicts/myspell-es 0.7 2.3: Spanish dictionaries for myspell/hunspell
+app-dicts/myspell-es 0.7 2.3 2.6: Spanish dictionaries for myspell/hunspell
 app-dicts/myspell-et 20030606: Estonian dictionaries for myspell/hunspell
 app-dicts/myspell-fo 0.4.2: Faroese dictionaries for myspell/hunspell
 app-dicts/myspell-fr 4.5-r1: French dictionaries for myspell/hunspell
