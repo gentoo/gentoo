@@ -139,7 +139,7 @@ src_install() {
 	cd doc || die
 	doman asy.1
 	doinfo png/${PN}.info
-	if use doc; then	
+	if use doc; then
 		dodoc FAQ/asy-faq.ascii
 		dodoc CAD.pdf asy-latex.pdf asyRefCard.pdf asymptote.pdf
 	fi
