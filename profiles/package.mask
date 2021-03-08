@@ -90,11 +90,6 @@ sci-physics/herwig++
 # Removal in 30 days.
 app-portage/splat
 
-# William Hubbs <williamh@gentoo.org> (2021-03-07)
-# Dependency issues, need resolution upstream
-=app-emulation/docker-20.10.4
-=app-emulation/docker-20.10.5
-
 # David Seifert <soap@gentoo.org> (2021-03-06)
 # Unmaintained, abandoned upstream, tests fail, broken USE=doc, no revdeps
 # in tree. Removal on 2021-04-03.  Bug #623488, #697804, #774447.
