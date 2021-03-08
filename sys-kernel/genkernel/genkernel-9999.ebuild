@@ -41,7 +41,7 @@ VERSION_UTIL_LINUX="2.36.2"
 VERSION_XFSPROGS="5.10.0"
 VERSION_XZ="5.2.5"
 VERSION_ZLIB="1.2.11"
-VERSION_ZSTD="1.4.8"
+VERSION_ZSTD="1.4.9"
 
 COMMON_URI="
 	https://github.com/g2p/bcache-tools/archive/399021549984ad27bf4a13ae85e458833fe003d7.tar.gz -> bcache-tools-${VERSION_BCACHE_TOOLS}.tar.gz
