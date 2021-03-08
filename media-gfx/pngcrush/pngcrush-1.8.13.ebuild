@@ -2,29 +2,23 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 inherit toolchain-funcs
 
 DESCRIPTION="Portable Network Graphics (PNG) optimizing utility"
 HOMEPAGE="https://pmt.sourceforge.io/pngcrush/"
-SRC_URI="system-libs? ( mirror://sourceforge/pmt/${P}-nolib.tar.xz )
-	!system-libs? ( mirror://sourceforge/pmt/${P}.tar.xz )"
+SRC_URI="mirror://sourceforge/pmt/${P}-nolib.tar.xz"
 
 LICENSE="pngcrush"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="+system-libs"
 
-RDEPEND="
-	system-libs? (
-		media-libs/libpng:0=
-		sys-libs/zlib:=
-	)"
+RDEPEND="media-libs/libpng:0=
+	sys-libs/zlib:="
 DEPEND="${RDEPEND}
 	app-arch/xz-utils"
 
-pkg_setup() {
-	use system-libs && S+="-nolib"
-}
+S="${WORKDIR}"/${P}-nolib
 
 src_compile() {
 	emake \

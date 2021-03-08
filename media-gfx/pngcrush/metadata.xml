@@ -13,7 +13,4 @@
 		<bugs-to>https://sourceforge.net/p/pmt/bugs/</bugs-to>
 		<remote-id type="sourceforge">pmt</remote-id>
 	</upstream>
-	<use>
-		<flag name="system-libs">Use libpng and libz provided by system</flag>
-	</use>
 </pkgmetadata>
