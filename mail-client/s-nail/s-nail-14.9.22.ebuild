@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,17 +12,14 @@ LICENSE="BSD BSD-4 ISC RSA"
 SRC_URI="https://ftp.sdaoden.eu/${P}.tar.xz"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="idn kerberos libressl net ssl"
+IUSE="idn kerberos net ssl"
 
 RDEPEND="
 	sys-libs/ncurses:0=
 	virtual/libiconv
 	idn? ( net-dns/libidn2 )
 	net? (
-		ssl? (
-			!libressl? ( dev-libs/openssl:0= )
-			libressl? ( dev-libs/libressl:0= )
-		)
+		ssl? ( dev-libs/openssl:0= )
 		kerberos? ( virtual/krb5 )
 	)
 	!mail-client/mailx
