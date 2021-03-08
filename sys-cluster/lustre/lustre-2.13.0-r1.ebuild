@@ -21,7 +21,7 @@ fi
 SUPPORTED_KV_MAJOR=4
 SUPPORTED_KV_MINOR=19
 
-inherit ${scm} autotools linux-info linux-mod toolchain-funcs udev flag-o-matic
+inherit ${scm} autotools linux-info linux-mod toolchain-funcs flag-o-matic
 
 DESCRIPTION="Lustre is a parallel distributed file system"
 HOMEPAGE="http://wiki.whamcloud.com/"
@@ -69,7 +69,7 @@ pkg_setup() {
 
 src_prepare() {
 	if [ ${#PATCHES[0]} -ne 0 ]; then
-		epatch ${PATCHES[@]}
+		eapply ${PATCHES[@]}
 	fi
 
 	eapply_user
