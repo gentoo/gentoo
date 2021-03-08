@@ -101,10 +101,6 @@ net-analyzer/rrdtool rados
 sys-fs/multipath-tools rbd
 www-servers/uwsgi uwsgi_plugins_rados
 
-# Virgil Dupras <vdupras@gentoo.org> (2019-03-03)
-# Tests fail with jpeg2k flag. Bug #662686
-dev-python/pillow jpeg2k
-
 # Thomas Deutschmann <whissi@gentoo.org> (2019-02-26)
 # nginx_modules_http_lua requires USE=luajit which requires
 # dev-lang/luajit which is not keyworded on PowerPC
