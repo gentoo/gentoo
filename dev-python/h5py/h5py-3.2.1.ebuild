@@ -46,11 +46,11 @@ distutils_enable_sphinx docs \
 #}
 
 python_prepare_all() {
-	# fix other numpy dep to be >=
-	sed -i -e '/numpy/s:==:>=:' setup.py || die
 	# avoid pytest-mpi dep, we do not use mpi anyway
 	sed -i -e 's:pytest-mpi::' pytest.ini || die
 	distutils-r1_python_prepare_all
+
+	export H5PY_SETUP_REQUIRES=0
 }
 
 python_test() {
