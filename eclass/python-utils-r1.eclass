@@ -1278,6 +1278,29 @@ build_sphinx() {
 	HTML_DOCS+=( "${dir}/_build/html/." )
 }
 
+# @FUNCTION: epytest
+# @USAGE: [<args>...]
+# @DESCRIPTION:
+# Run pytest, passing the standard set of pytest options, followed
+# by user-specified options.
+#
+# This command dies on failure and respects nonfatal in EAPIs supporting
+# nonfatal die.
+epytest() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	[[ -n ${EPYTHON} ]] || die "EPYTHON unset, invalid call context"
+
+	local die_args=()
+	[[ ${EAPI} != [45] ]] && die_args+=( -n )
+
+	set -- "${EPYTHON}" -m pytest -vv -ra "${@}"
+
+	echo "${@}" >&2
+	"${@}" || die "${die_args[@]}" "pytest failed with ${EPYTHON}"
+	return ${?}
+}
+
 # -- python.eclass functions --
 
 _python_check_dead_variables() {
