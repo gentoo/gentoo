@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit eutils flag-o-matic multilib
+
+inherit flag-o-matic multilib
 
 DESCRIPTION="An MTA designed specifically for maildirs"
 HOMEPAGE="http://www.courier-mta.org/"
@@ -65,7 +66,7 @@ PDEPEND="pam? ( net-mail/mailbase )
 	crypt? ( >=app-crypt/gnupg-1.0.4 )"
 
 src_prepare() {
-	use norewrite && epatch "${FILESDIR}/norewrite.patch"
+	use norewrite && eapply "${FILESDIR}/norewrite.patch"
 	default
 }
 

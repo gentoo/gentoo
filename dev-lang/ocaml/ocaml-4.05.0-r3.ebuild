@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic eutils multilib toolchain-funcs
+inherit flag-o-matic multilib toolchain-funcs
 
 PATCHLEVEL="9"
 MY_P="${P/_/-}"
@@ -49,9 +49,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	EPATCH_SUFFIX="patch" epatch "${WORKDIR}/patches"
+	EPATCH_SUFFIX="patch" eapply "${WORKDIR}/patches"
 	default
-
 }
 
 src_configure() {
