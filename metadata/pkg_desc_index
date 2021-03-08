@@ -5286,7 +5286,7 @@ dev-libs/cppcodec 0.2 9999: C++11 library to encode/decode base64, base64url, ba
 dev-libs/crc32c 1.0.6: CRC32C implementation with support for CPU-specific acceleration instructions
 dev-libs/criterion 2.3.3 2.4_pre20200110: Cross platform unit testing framework for C and C++
 dev-libs/crossguid 0_pre20150817: Lightweight cross platform C++ GUID/UUID library
-dev-libs/crypto++ 8.2.0-r2 8.4.0: C++ class library of cryptographic schemes
+dev-libs/crypto++ 8.2.0-r2 8.4.0 8.5.0: C++ class library of cryptographic schemes
 dev-libs/cudnn 8.0.5.39: NVIDIA Accelerated Deep Learning on GPU library
 dev-libs/cvector 1.0.3.1: An ANSI C implementation of dynamic arrays (approximation of C++ vectors)
 dev-libs/cxxopts 2.2.1-r1: Lightweight C++ command line option parser
@@ -8845,7 +8845,7 @@ dev-python/pymountboot 0.2.3 9999: Python extension module to (re)mount /boot
 dev-python/pymssql 2.1.5: Simple MSSQL python extension module
 dev-python/pymysql 1.0.2: Pure-Python MySQL Driver
 dev-python/pynacl 1.4.0: Python binding to the Networking and Cryptography (NaCl) library
-dev-python/pynest2d 4.8.0: Python bindings for libnest2d
+dev-python/pynest2d 4.8.0-r1: Python bindings for libnest2d
 dev-python/pynput 1.6.8 9999: Sends virtual input commands
 dev-python/pynvim 0.4.2 0.4.3: Python client for Neovim
 dev-python/pyocr 0.7.2 0.8: An optical character recognition (OCR) tool wrapper
@@ -13049,7 +13049,7 @@ media-libs/SoXt 1.4.0: GUI binding for using Coin/Open Inventor with Xt/Motif
 media-libs/a52dec 0.7.4-r8: library for decoding ATSC A/52 streams used in DVD
 media-libs/aalib 1.4_rc5-r9: A ASCII-Graphics Library
 media-libs/aften 0.0.8-r2: A/52 (AC-3) audio encoder
-media-libs/allegro 4.4.3.1 5.2.6.0: Cross-platform library aimed at video game and multimedia programming
+media-libs/allegro 4.4.3.1 5.2.6.0 5.2.7.0: Cross-platform library aimed at video game and multimedia programming
 media-libs/alsa-lib 1.2.2-r1 1.2.3.2-r1 1.2.4: Advanced Linux Sound Architecture Library
 media-libs/alsa-oss 1.1.8: Advanced Linux Sound Architecture OSS compatibility layer
 media-libs/alsa-topology-conf 1.2.2 1.2.3 1.2.4: ALSA topology configuration files
