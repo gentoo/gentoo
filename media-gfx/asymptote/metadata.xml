@@ -20,6 +20,7 @@
 	</longdescription>
 	<use>
 		<flag name="boehm-gc">Enables using the Boehm-Demers-Weiser conservative garbage collector</flag>
+		<flag name="context">Enables support for ConTeXt format (<pkg>dev-texlive/texlive-context</pkg>)</flag>
 		<flag name="curl">Enables running remote programs via <pkg>net-misc/curl</pkg></flag>
 		<flag name="sigsegv">Enables using <pkg>dev-libs/libsigsegv</pkg></flag>
 		<flag name="offscreen">Enables off-screen rendering</flag>
