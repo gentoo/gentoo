@@ -32,6 +32,46 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2021-03-08)
+# Last litc upstream release in 2010, no reverse dependencies,
+# ruby25-only. Includes fakeweb test dependency which is also
+# ruby25-only and has no other reverse dependencies.
+# Masked for removal in 30 days.
+dev-ruby/litc
+dev-ruby/fakeweb
+
+# Hans de Graaff <graaff@gentoo.org> (2021-03-08)
+# Last upstream release in 2009, no reverse dependencies,
+# no test suite.
+# Masked for removal in 30 days.
+dev-ruby/metaid
+
+# Hans de Graaff <graaff@gentoo.org> (2021-03-08)
+# Last upstream release in 2018, no reverse dependencies,
+# stuck on ruby25.
+# Masked for removal in 30 days.
+dev-ruby/nexpose
+
+# Hans de Graaff <graaff@gentoo.org> (2021-03-08)
+# No longer maintained upstream, last release in 2014.
+# ruby25-only.
+# Masked for removal in 30 days.
+dev-ruby/session
+
+# Hans de Graaff <graaff@gentoo.org> (2021-03-08)
+# gitsh is maintainer-needed and stuck on ruby25.
+# parslet is only needed for gitsh and also ruby25-only.
+# Masked for removal in 30 days.
+dev-vcs/gitsh
+dev-ruby/parslet
+
+# Hans de Graaff <graaff@gentoo.org> (2021-03-08)
+# Old ruby25-only slots. Use the newer slot instead.
+# Masked for removal in 30 days.
+dev-ruby/i18n:0.7
+dev-ruby/pcaprub:0.12
+dev-ruby/pg:0
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-03-07)
 # Unresolved build issue since 2019, QA issues, bugs #697870 and #705236
 # Blocks cleanup of equally broken sci-physics/looptools-2.8, bug #770796
