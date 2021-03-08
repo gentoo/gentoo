@@ -33,6 +33,8 @@ python_test() {
 	local args=(
 		# docker, seriously?
 		--deselect 'tests/test_loky_module.py::test_cpu_count_cfs_limit'
+		# hangs, and even pytest-timeout does not help
+		--deselect 'tests/test_reusable_executor.py::TestExecutorDeadLock::test_deadlock_kill'
 		# one test that uses a lot of memory, also broken on 32-bit
 		# platforms
 		--skip-high-memory
