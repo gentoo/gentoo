@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/dar/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~amd64-linux"
-IUSE="curl dar32 dar64 doc gcrypt gpg lzo nls rsync xattr"
+IUSE="curl dar32 dar64 doc gcrypt gpg lzo nls rsync threads xattr"
 
 RESTRICT="test" # need to be run as root
 
@@ -26,6 +26,7 @@ RDEPEND="
 	gpg? ( app-crypt/gpgme )
 	lzo? ( dev-libs/lzo:= )
 	rsync? ( net-libs/librsync:= )
+	threads? ( dev-libs/libthreadar:= )
 	xattr? ( sys-apps/attr:= )
 "
 
@@ -66,6 +67,7 @@ src_configure() {
 		$(usex lzo '' --disable-liblzo2-linking)
 		$(usex nls '' --disable-nls)
 		$(usex rsync '' --disable-librsync-linking)
+		$(usex threads '' --disable-threadar)
 		$(usex xattr '' --disable-ea-support)
 	)
 

@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Viorel Munteanu <ceamac.paragon@gmail.com> (2020-03-11)
+# new package dev-libs/libthreadar has no keywords
+app-backup/dar threads
+
 # Daniel Novomesky <dnovomesky@gmail.com> (2021-02-24)
 # Depends on media-libs/svt-av1, which is unavailable on x86
 media-libs/libavif svt-av1
