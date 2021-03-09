@@ -10371,7 +10371,7 @@ dev-ruby/sanitize 5.2.1 5.2.2 5.2.3: Sanitize is a whitelist-based HTML sanitize
 dev-ruby/sass 3.4.25 3.4.25-r1 3.5.7 3.5.7-r1 3.7.4: An extension of CSS3, adding nested rules, variables, mixins, and more
 dev-ruby/sass-listen 4.0.0: Fork of guard/listen provides a stable API for users of the ruby Sass CLI
 dev-ruby/sass-rails 5.0.8 5.1.0: Official Ruby-on-Rails Integration with Sass
-dev-ruby/sassc 2.2.1: Use libsass with Ruby
+dev-ruby/sassc 2.2.1 2.2.1-r1: Use libsass with Ruby
 dev-ruby/sassc-rails 2.1.2-r1: Integrate SassC-Ruby with Rails
 dev-ruby/sawyer 0.8.2: Secret User Agent of HTTP
 dev-ruby/sdoc 1.0.0 1.1.0: rdoc generator html with javascript search index
