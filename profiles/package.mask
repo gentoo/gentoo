@@ -367,12 +367,6 @@ app-admin/mms-agent
 # Removal on 2021-03-09.  Bug #732750.
 app-office/orage
 
-# Michał Górny <mgorny@gentoo.org> (2021-02-07)
-# These plugins have not been ported to Xfce 4.16 / GTK+3.
-# They do not build against to-be-stable xfce4-panel.
-# Removal on 2021-03-09.  Bug #732754.
-xfce-extra/multiload-nandhp
-
 # Michał Górny <mgorny@gentoo.org> (2021-02-01)
 # LibreSSL support is discontinued.  Please read the relevant news item
 # and either migrate to dev-libs/openssl, or use the unsupported
