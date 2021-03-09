@@ -13,7 +13,7 @@ SRC_URI="http://www.inf.puc-rio.br/~roberto/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ~mips ppc ppc64 sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~mips ppc ppc64 sparc x86 ~x64-macos"
 IUSE="test debug doc"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
@@ -39,6 +39,11 @@ lua_src_prepare() {
 src_prepare() {
 	default
 	use debug && append-cflags -DLPEG_DEBUG
+
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		append-ldflags "-undefined dynamic_lookup"
+	fi
+
 	lua_foreach_impl lua_src_prepare
 }
 
@@ -70,6 +75,14 @@ lua_src_install() {
 	instdir="$(lua_get_lmod_dir)"
 	insinto "${instdir#${EPREFIX}}"
 	doins re.lua
+
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		local luav=$(lua_get_version)
+		# we only want the major version (e.g. 5.1)
+		local luamv=${luav:0:3}
+		local file="lua/${luamv}/lpeg.so"
+		install_name_tool -id "${EPREFIX}/usr/$(get_libdir)/${file}" "${ED}/usr/$(get_libdir)/${file}" || die "Failed to adjust install_name"
+	fi
 }
 
 src_install() {
