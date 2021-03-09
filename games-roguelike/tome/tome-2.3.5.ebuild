@@ -1,8 +1,8 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils games
+EAPI=7
+inherit multilib
 
 MY_PV=${PV//./}
 DESCRIPTION="save the world from Morgoth and battle evil (or become evil ;])"
@@ -28,14 +28,19 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/tome-${MY_PV}-src/src
 
+PATCHES=( "${FILESDIR}/${PV}-gentoo-paths.patch"
+	"${FILESDIR}"/${PN}-2.3.5-format.patch
+	"${FILESDIR}"/${PN}-2.3.5-noX.patch
+)
+
 src_prepare() {
 	mv makefile.std makefile
-	epatch "${FILESDIR}/${PV}-gentoo-paths.patch" \
-		"${FILESDIR}"/${P}-format.patch \
-		"${FILESDIR}"/${P}-noX.patch
+
+	default
+
 	sed -i -e '/^CC =/d' makefile || die
 	sed -i -e "s:xx:x:" ../lib/edit/p_info.txt || die
-	sed -i -e "s:GENTOO_DIR:${GAMES_STATEDIR}:" files.c init2.c || die
+	# sed -i -e "s:GENTOO_DIR:${GAMES_STATEDIR}:" files.c init2.c || die
 
 	find .. -name .cvsignore -exec rm -f \{\} +
 	find ../lib/edit -type f -exec chmod a-x \{\} +
@@ -90,8 +95,8 @@ src_compile() {
 		INCLUDES="${GENTOO_INCLUDES}" \
 		DEFINES="${GENTOO_DEFINES}" \
 		LIBS="${GENTOO_LIBS} -lm" \
-		BINDIR="${GAMES_BINDIR}" \
-		LIBDIR="${GAMES_DATADIR}/${PN}" \
+		BINDIR="${EPREFIX}/usr/bin" \
+		LIBDIR="${EPREFIX}/usr/$(get_libdir)/${PN}" \
 		GTK_SRC_FILE="${GTK_SRC_FILE}" \
 		GTK_OBJ_FILE="${GTK_OBJ_FILE}"
 }
@@ -99,23 +104,17 @@ src_compile() {
 src_install() {
 	emake -j1 \
 		DESTDIR="${D}" \
-		OWNER="${GAMES_USER}" \
-		BINDIR="${GAMES_BINDIR}" \
-		LIBDIR="${GAMES_DATADIR}/${PN}" install
+		OWNER="nobody" \
+		BINDIR="${EPREFIX}/usr/bin" \
+		LIBDIR="${EPREFIX}/usr/$(get_libdir)/${PN}" install
 	cd ..
 	dodoc *.txt
 
-	dodir "${GAMES_STATEDIR}"
-	touch "${D}/${GAMES_STATEDIR}/${PN}-scores.raw"
-	prepgamesdirs
-	fperms g+w "${GAMES_STATEDIR}/${PN}-scores.raw"
-	#FIXME: something has to be done about this.
-	fperms g+w "${GAMES_DATADIR}/${PN}/data"
+	dodir "/var/games"
+	touch "${D}/var/games/${PN}-scores.raw"
 }
 
 pkg_postinst() {
-	games_pkg_postinst
-	echo
 	ewarn "ToME ${PV} is not save-game compatible with 2.3.0 and previous versions."
 	echo
 	ewarn "If you have older save files and you wish to continue those games,"
