@@ -1,0 +1,11 @@
+--- asterisk-16.16.2/Makefile.o	2021-03-09 00:03:19.794028722 +0200
++++ asterisk-16.16.2/Makefile	2021-03-09 00:03:32.434013494 +0200
+@@ -556,7 +556,7 @@
+ 
+ NEWHEADERS=$(notdir $(wildcard include/asterisk/*.h))
+ OLDHEADERS=$(filter-out $(NEWHEADERS) $(notdir $(DESTDIR)$(ASTHEADERDIR)),$(notdir $(wildcard $(DESTDIR)$(ASTHEADERDIR)/*.h)))
+-INSTALLDIRS="$(ASTLIBDIR)" "$(ASTMODDIR)" "$(ASTSBINDIR)" "$(ASTCACHEDIR)" "$(ASTETCDIR)" "$(ASTVARRUNDIR)" \
++INSTALLDIRS="$(ASTLIBDIR)" "$(ASTMODDIR)" "$(ASTSBINDIR)" "$(ASTCACHEDIR)" "$(ASTETCDIR)" \
+ 	"$(ASTSPOOLDIR)" "$(ASTSPOOLDIR)/dictate" "$(ASTSPOOLDIR)/meetme" \
+ 	"$(ASTSPOOLDIR)/monitor" "$(ASTSPOOLDIR)/system" "$(ASTSPOOLDIR)/tmp" \
+ 	"$(ASTSPOOLDIR)/voicemail" "$(ASTSPOOLDIR)/recording" \
