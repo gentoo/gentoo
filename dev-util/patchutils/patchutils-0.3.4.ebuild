@@ -18,5 +18,5 @@ PATCHES=(
 
 src_test() {
 	# See bug 605952.
-	make check || die
+	emake -j1 check
 }
