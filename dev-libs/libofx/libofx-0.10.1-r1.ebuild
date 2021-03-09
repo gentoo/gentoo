@@ -32,8 +32,8 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/libofx-0.10.1-opensp-libdir.patch
-	"${FILESDIR}"/libofx-0.10.1-docdir.patch
+	"${FILESDIR}"/${P}-opensp-libdir.patch
+	"${FILESDIR}"/${P}-docdir.patch
 )
 
 src_prepare() {
