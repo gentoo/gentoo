@@ -10912,7 +10912,7 @@ dev-util/ostree 2019.5 2020.6 2020.7 2020.8: Operating system and container bina
 dev-util/packer 1.4.0 1.4.5 1.5.6 1.6.1 1.6.5: A tool to create identical machine images for multiple platforms
 dev-util/patchbin 20160208 99999999: Apply binary patches without git
 dev-util/patchelf 0.10 0.11 0.12: Small utility to modify the dynamic linker and RPATH of ELF executables
-dev-util/patchutils 0.3.3 0.3.4: A collection of tools that operate on patch files
+dev-util/patchutils 0.3.4 0.4.2: A collection of tools that operate on patch files
 dev-util/patdiff 0.14.0: Colored patience diffs with word-level refinement
 dev-util/peg 0.1.18: Recursive-descent parser generators for C
 dev-util/perf 5.8 5.9.9 5.10.16 5.11: Userland tools for Linux Performance Counters
