@@ -22,6 +22,7 @@ RDEPEND="
 BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
 	test? (
+		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/python-email-validator[${PYTHON_USEDEP}]
 	)
 "
