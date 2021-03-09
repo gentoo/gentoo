@@ -5,7 +5,7 @@ EAPI=7
 inherit multilib-minimal systemd
 
 DESCRIPTION="Portable sound event library"
-HOMEPAGE="http://git.0pointer.net/libcanberra.git/"
+HOMEPAGE="http://0pointer.de/lennart/projects/libcanberra/"
 SRC_URI="http://0pointer.de/lennart/projects/${PN}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1+"
