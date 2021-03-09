@@ -39,6 +39,8 @@ DEPEND=">=dev-libs/openssl-1.0.1:0
 RDEPEND="${DEPEND}
 		!app-crypt/johntheripper"
 
+PATCHES=( "${FILESDIR}/${P}-opencl-fix.patch" )
+
 pkg_setup() {
 	if use openmp && [[ ${MERGE_TYPE} != binary ]]; then
 		tc-has-openmp || die "Please switch to an openmp compatible compiler"
@@ -103,8 +105,15 @@ src_install() {
 		dosym john /usr/sbin/$s
 	done
 
-	insinto /usr/share/john
-	doins run/*.py
+	# scripts
+	exeinto /usr/share/john
+	doexe run/*.pl
+	doexe run/*.py
+	cd run
+	for s in *.pl *.py ; do
+		dosym ../share/john/$s /usr/bin/$s
+	done
+	cd ..
 
 	if use opencl; then
 		insinto /etc/john
@@ -118,5 +127,6 @@ src_install() {
 	doins -r run/rules run/ztex
 
 	# documentation
-	dodoc -r doc/*
+	rm -f doc/README
+	dodoc -r README.md doc/*
 }
