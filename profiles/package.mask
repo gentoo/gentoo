@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2021-03-09)
+# Last upstream release in 2013, ruby25-only.
+# Masked for removal in 30 days.
+dev-ruby/shorturl
+
 # Brian Evans <grknight@gentoo.org> (2021-03-08)
 # No longer consistently maintained, severely broken with PHP 8
 # No reverse dependencies, fails tests
