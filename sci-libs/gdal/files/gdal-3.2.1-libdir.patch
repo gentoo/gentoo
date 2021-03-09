@@ -1,30 +1,5 @@
 https://github.com/OSGeo/gdal/pull/3560
-
-From fbb2adf5b67741f561036b41ab196c72b5978517 Mon Sep 17 00:00:00 2001
-From: Sam James <sam@gentoo.org>
-Date: Tue, 9 Mar 2021 21:57:57 +0000
-Subject: [PATCH] Respect --libdir parameter
-
-When searching for various libraries, we want to use
-the libdir passed in to autotools (--libdir)
-to ensure that we find the library
-for the correct ABI.
-
-It is possible that we pick up the wrong
-copy from e.g. /usr/lib/ where a 32-bit
-copy of e.g. zlib exists
-when we're in the middle of a 64-bit build.
-
-Use ${libdir} to ensure we respect
-any preferences/information given and
-search for libraries in the right place.
-
-No behaviour should change here as
---libdir defaults to 'lib'.
-
-Bug: https://bugs.gentoo.org/696106
-Signed-off-by: Sam James <sam@gentoo.org>
-
+https://bugs.gentoo.org/696106
 --- a/gdal/configure.ac
 +++ b/gdal/configure.ac
 @@ -1121,11 +1121,11 @@ if test "$with_libz" = "external" -o "$with_libz" = "" -o "$with_libz" = "yes" ;
