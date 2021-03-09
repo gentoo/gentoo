@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ceamac.paragon@gmail.com</email>
+		<name>Viorel Munteanu</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+Libthreadar is a C++ library providing an abstracted set of C++ *classes* to manipulate threads in a very simple and efficient way from your C++ code.
+It also handles exceptions thrown from a thread and propagated to another one, when the latter is calling the thread::join() method. This lets one manage exceptions as simply as it is in C++ single threaded context.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">libthreadar</remote-id>
+	</upstream>
+</pkgmetadata>
