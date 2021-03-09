@@ -565,6 +565,7 @@ src_test() {
 	disabled_tests+=( "main.plugin_auth;0;Needs client libraries built" )
 	disabled_tests+=( "main.stat_tables;0;Sporadically failing test" )
 	disabled_tests+=( "main.stat_tables_innodb;0;Sporadically failing test" )
+	disabled_tests+=( "main.upgrade_MDEV-19650;25096;Known to be broken" )
 	disabled_tests+=( "mariabackup.*;0;Broken test suite" )
 	disabled_tests+=( "perfschema.nesting;23458;Known to be broken" )
 	disabled_tests+=( "plugins.auth_ed25519;0;Needs client libraries built" )
