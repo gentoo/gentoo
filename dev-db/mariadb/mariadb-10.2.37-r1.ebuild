@@ -10,7 +10,7 @@ inherit eutils systemd flag-o-matic prefix toolchain-funcs \
 	multiprocessing java-pkg-opt-2 cmake
 
 # Patch version
-PATCH_SET="https://dev.gentoo.org/~whissi/dist/${PN}/${PN}-10.5.9-patches-02.tar.xz"
+PATCH_SET="https://dev.gentoo.org/~whissi/dist/${PN}/${PN}-10.2.37-patches-02.tar.xz"
 
 SRC_URI="https://downloads.mariadb.org/interstitial/${P}/source/${P}.tar.gz
 	${PATCH_SET}"
@@ -18,17 +18,18 @@ SRC_URI="https://downloads.mariadb.org/interstitial/${P}/source/${P}.tar.gz
 HOMEPAGE="https://mariadb.org/"
 DESCRIPTION="An enhanced, drop-in replacement for MySQL"
 LICENSE="GPL-2 LGPL-2.1+"
-SLOT="10.5/${SUBSLOT:-0}"
-IUSE="+backup bindist columnstore cracklib debug extraengine galera innodb-lz4
+SLOT="10.2/${SUBSLOT:-0}"
+IUSE="+backup bindist client-libs cracklib debug extraengine galera innodb-lz4
 	innodb-lzo innodb-snappy jdbc jemalloc kerberos latin1 libressl mroonga
 	numa odbc oqgraph pam +perl profiling rocksdb selinux +server sphinx
-	sst-rsync sst-mariabackup static systemd systemtap s3 tcmalloc
-	test xml yassl"
+	sst-rsync sst-mariabackup sst-xtrabackup static systemd systemtap tcmalloc
+	test tokudb xml yassl"
 
 # Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
 RESTRICT="!bindist? ( bindist ) libressl? ( test ) !test? ( test )"
 
 REQUIRED_USE="jdbc? ( extraengine server !static )
+	server? ( tokudb? ( jemalloc !tcmalloc ) )
 	?? ( tcmalloc jemalloc )
 	static? ( yassl !pam )"
 
@@ -41,30 +42,29 @@ S="${WORKDIR}/mysql"
 # Be warned, *DEPEND are version-dependant
 # These are used for both runtime and compiletime
 COMMON_DEPEND="
-	>=dev-libs/libpcre-8.41-r1:3=
-	>=sys-apps/sed-4
-	>=sys-apps/texinfo-4.7-r1
-	sys-libs/ncurses:0=
-	>=sys-libs/zlib-1.2.3:0=
-	!bindist? (
-		sys-libs/binutils-libs:0=
-		>=sys-libs/readline-4.1:0=
-	)
-	jemalloc? ( dev-libs/jemalloc:0= )
-	kerberos? ( virtual/krb5 )
 	kernel_linux? (
 		sys-process/procps:0=
 		dev-libs/libaio:0=
 	)
+	>=sys-apps/sed-4
+	>=sys-apps/texinfo-4.7-r1
+	jemalloc? ( dev-libs/jemalloc:0= )
+	tcmalloc? ( dev-util/google-perftools:0= )
+	systemtap? ( >=dev-util/systemtap-1.3:0= )
+	>=sys-libs/zlib-1.2.3:0=
+	kerberos? ( virtual/krb5 )
+	yassl? ( net-libs/gnutls:0= )
+	!yassl? (
+		!libressl? ( >=dev-libs/openssl-1.0.0:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)
+	sys-libs/ncurses:0=
+	!bindist? (
+		sys-libs/binutils-libs:0=
+		>=sys-libs/readline-4.1:0=
+	)
 	server? (
-		app-arch/bzip2
-		app-arch/xz-utils
 		backup? ( app-arch/libarchive:0= )
-		columnstore? (
-			app-arch/snappy
-			dev-libs/boost:0=
-			dev-libs/libxml2:2=
-		)
 		cracklib? ( sys-libs/cracklib:0= )
 		extraengine? (
 			odbc? ( dev-db/unixODBC:0= )
@@ -77,60 +77,53 @@ COMMON_DEPEND="
 		numa? ( sys-process/numactl )
 		oqgraph? ( >=dev-libs/boost-1.40.0:0= dev-libs/judy:0= )
 		pam? ( sys-libs/pam:0= )
-		s3? ( net-misc/curl )
 		systemd? ( sys-apps/systemd:= )
+		tokudb? ( app-arch/snappy )
 	)
-	systemtap? ( >=dev-util/systemtap-1.3:0= )
-	tcmalloc? ( dev-util/google-perftools:0= )
-	yassl? ( net-libs/gnutls:0= )
-	!yassl? (
-		!libressl? ( >=dev-libs/openssl-1.0.0:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
+	>=dev-libs/libpcre-8.41-r1:3=
 "
 BDEPEND="virtual/yacc
 	|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 )
 "
-DEPEND="${COMMON_DEPEND}
+DEPEND="static? ( sys-libs/ncurses[static-libs] )
 	server? (
 		extraengine? ( jdbc? ( >=virtual/jdk-1.6 ) )
 		test? ( acct-group/mysql acct-user/mysql )
 	)
-	static? ( sys-libs/ncurses[static-libs] )
-"
-RDEPEND="${COMMON_DEPEND}
+	${COMMON_DEPEND}"
+RDEPEND="selinux? ( sec-policy/selinux-mysql )
 	!dev-db/mysql !dev-db/mariadb-galera !dev-db/percona-server !dev-db/mysql-cluster
 	!dev-db/mariadb:0
 	!dev-db/mariadb:5.5
 	!dev-db/mariadb:10.1
-	!dev-db/mariadb:10.2
 	!dev-db/mariadb:10.3
 	!dev-db/mariadb:10.4
+	!dev-db/mariadb:10.5
 	!<virtual/mysql-5.6-r11
-	!<virtual/libmysqlclient-18-r1
-	selinux? ( sec-policy/selinux-mysql )
+	${COMMON_DEPEND}
 	server? (
-		columnstore? ( dev-db/mariadb-connector-c )
-		extraengine? ( jdbc? ( >=virtual/jre-1.6 ) )
 		galera? (
 			sys-apps/iproute2
-			=sys-cluster/galera-26*
+			=sys-cluster/galera-25*
 			sst-rsync? ( sys-process/lsof )
 			sst-mariabackup? ( net-misc/socat[ssl] )
+			sst-xtrabackup? ( net-misc/socat[ssl] )
 		)
 		!prefix? ( dev-db/mysql-init-scripts acct-group/mysql acct-user/mysql )
-	)
-	perl? (
-		!dev-db/mytop
-		virtual/perl-Getopt-Long
-		dev-perl/TermReadKey
-		virtual/perl-Term-ANSIColor
-		virtual/perl-Time-HiRes
+		extraengine? ( jdbc? ( >=virtual/jre-1.6 ) )
 	)
 "
 # For other stuff to bring us in
 # dev-perl/DBD-mysql is needed by some scripts installed by MySQL
-PDEPEND="perl? ( >=dev-perl/DBD-mysql-2.9004 )"
+# percona-xtrabackup-bin causes a circular dependency if DBD-mysql is not already installed
+PDEPEND="perl? ( >=dev-perl/DBD-mysql-2.9004 )
+	server? (
+		galera? (
+			sst-xtrabackup? (
+				|| ( >=dev-db/percona-xtrabackup-bin-2.2.4 dev-db/percona-xtrabackup )
+			)
+		)
+	)"
 
 mysql_init_vars() {
 	MY_SHAREDSTATEDIR=${MY_SHAREDSTATEDIR="${EPREFIX}/usr/share/mariadb"}
@@ -193,6 +186,13 @@ pkg_setup() {
 		local GCC_MAJOR_SET=$(gcc-major-version)
 		local GCC_MINOR_SET=$(gcc-minor-version)
 
+		if use tokudb && [[ ${GCC_MAJOR_SET} -lt 4 || \
+			${GCC_MAJOR_SET} -eq 4 && ${GCC_MINOR_SET} -lt 7 ]] ; then
+			eerror "${PN} with tokudb needs to be built with gcc-4.7 or later."
+			eerror "Please use gcc-config to switch to gcc-4.7 or later version."
+			die
+		fi
+
 		# Bug 565584.  InnoDB now requires atomic functions introduced with gcc-4.7 on
 		# non x86{,_64} arches
 		if ! use amd64 && ! use x86 && [[ ${GCC_MAJOR_SET} -lt 4 || \
@@ -235,16 +235,21 @@ src_prepare() {
 	}
 
 	if use jemalloc; then
-		echo "TARGET_LINK_LIBRARIES(mariadbd jemalloc)" >> "${S}/sql/CMakeLists.txt"
+		echo "TARGET_LINK_LIBRARIES(mysqld jemalloc)" >> "${S}/sql/CMakeLists.txt"
 	elif use tcmalloc; then
-		echo "TARGET_LINK_LIBRARIES(mariadbd tcmalloc)" >> "${S}/sql/CMakeLists.txt"
+		echo "TARGET_LINK_LIBRARIES(mysqld tcmalloc)" >> "${S}/sql/CMakeLists.txt"
 	fi
+
+	# Don't build bundled xz-utils for tokudb
+	echo > "${S}/storage/tokudb/PerconaFT/cmake_modules/TokuThirdParty.cmake" || die
+	sed -i -e 's/ build_lzma//' -e 's/ build_snappy//' "${S}/storage/tokudb/PerconaFT/ft/CMakeLists.txt" || die
+	sed -i -e 's/add_dependencies\(tokuportability_static_conv build_jemalloc\)//' "${S}/storage/tokudb/PerconaFT/portability/CMakeLists.txt" || die
 
 	local plugin
 	local server_plugins=( handler_socket auth_socket feedback metadata_lock_info
 				locale_info qc_info server_audit sql_errlog auth_ed25519 )
 	local test_plugins=( audit_null auth_examples daemon_example fulltext
-				debug_key_management example_key_management versioning )
+				debug_key_management example_key_management )
 	if ! use server; then # These plugins are for the server
 		for plugin in "${server_plugins[@]}" ; do
 			_disable_plugin "${plugin}"
@@ -256,7 +261,6 @@ src_prepare() {
 			_disable_plugin "${plugin}"
 		done
 		_disable_engine test_sql_discovery
-		echo > "${S}/plugin/auth_pam/testing/CMakeLists.txt" || die
 	fi
 
 	_disable_engine example
@@ -273,18 +277,9 @@ src_prepare() {
 		_disable_engine mroonga
 	fi
 
-	# Fix static bindings in galera replication
-	sed -i -e 's~add_library(wsrep_api_v26$~add_library(wsrep_api_v26 STATIC~' \
-		"${S}"/wsrep-lib/wsrep-API/CMakeLists.txt || die
-	sed -i -e 's~add_library(wsrep-lib$~add_library(wsrep-lib STATIC~' \
-		"${S}"/wsrep-lib/src/CMakeLists.txt || die
-
 	# Fix galera_recovery.sh script
 	sed -i -e "s~@bindir@/my_print_defaults~${EPREFIX}/usr/libexec/mariadb/my_print_defaults~" \
 		scripts/galera_recovery.sh || die
-
-	sed -i -e 's~ \$basedir/lib/\*/mariadb19/plugin~~' \
-		"${S}"/scripts/mysql_install_db.sh || die
 
 	cmake_src_prepare
 	java-pkg-opt-2_src_prepare
@@ -295,9 +290,6 @@ src_configure() {
 	tc-ld-disable-gold
 	# Bug #114895, bug #110149
 	filter-flags "-O" "-O[01]"
-
-	# It fails on alpha without this
-	use alpha && append-ldflags "-Wl,--no-relax"
 
 	append-cxxflags -felide-constructors
 
@@ -378,21 +370,20 @@ src_configure() {
 		if ! use extraengine ; then
 			mycmakeargs+=(
 				-DPLUGIN_FEDERATED=NO
-				-DPLUGIN_FEDERATEDX=NO
-			)
+				-DPLUGIN_FEDERATEDX=NO )
 		fi
 
 		mycmakeargs+=(
+			-DWITH_JEMALLOC=$(usex jemalloc system)
 			-DWITH_PCRE=system
 			-DPLUGIN_OQGRAPH=$(usex oqgraph DYNAMIC NO)
 			-DPLUGIN_SPHINX=$(usex sphinx YES NO)
+			-DPLUGIN_TOKUDB=$(usex tokudb YES NO)
 			-DPLUGIN_AUTH_PAM=$(usex pam YES NO)
 			-DPLUGIN_CRACKLIB_PASSWORD_CHECK=$(usex cracklib YES NO)
 			-DPLUGIN_CASSANDRA=NO
 			-DPLUGIN_SEQUENCE=$(usex extraengine YES NO)
 			-DPLUGIN_SPIDER=$(usex extraengine YES NO)
-			-DPLUGIN_S3=$(usex s3 YES NO)
-			-DPLUGIN_COLUMNSTORE=$(usex columnstore YES NO)
 			-DPLUGIN_CONNECT=$(usex extraengine YES NO)
 			-DCONNECT_WITH_MYSQL=1
 			-DCONNECT_WITH_LIBXML2=$(usex xml)
@@ -408,12 +399,15 @@ src_configure() {
 			-DPLUGIN_AUTH_GSSAPI=$(usex kerberos DYNAMIC NO)
 			-DWITH_MARIABACKUP=$(usex backup ON OFF)
 			-DWITH_LIBARCHIVE=$(usex backup ON OFF)
-			-DINSTALL_SQLBENCHDIR=""
+			-DINSTALL_SQLBENCHDIR=share/mariadb
 			-DPLUGIN_ROCKSDB=$(usex rocksdb DYNAMIC NO)
 			# systemd is only linked to for server notification
 			-DWITH_SYSTEMD=$(usex systemd yes no)
 			-DWITH_NUMA=$(usex numa ON OFF)
 		)
+
+		# Workaround for MDEV-14524
+		use tokudb && mycmakeargs+=( -DTOKUDB_OK=1 )
 
 		if use test ; then
 			# This is needed for the new client lib which tests a real, open server
@@ -569,11 +563,12 @@ src_test() {
 	disabled_tests+=( "compat/oracle.plugin;0;Needs example plugin which Gentoo disables" )
 	disabled_tests+=( "main.explain_non_select;0;Sporadically failing test" )
 	disabled_tests+=( "main.func_time;0;Dependent on time test was written" )
+	disabled_tests+=( "main.grant;0;Sporadically failing test" )
+	disabled_tests+=( "main.join_cache;0;Sporadically failing test" )
 	disabled_tests+=( "main.plugin_auth;0;Needs client libraries built" )
 	disabled_tests+=( "main.stat_tables;0;Sporadically failing test" )
 	disabled_tests+=( "main.stat_tables_innodb;0;Sporadically failing test" )
 	disabled_tests+=( "mariabackup.*;0;Broken test suite" )
-	disabled_tests+=( "perfschema.nesting;23458;Known to be broken" )
 	disabled_tests+=( "plugins.auth_ed25519;0;Needs client libraries built" )
 	disabled_tests+=( "plugins.cracklib_password_check;0;False positive due to varying policies" )
 	disabled_tests+=( "plugins.two_password_validations;0;False positive due to varying policies" )
@@ -584,7 +579,6 @@ src_test() {
 		disabled_tests+=( "main.information_schema;0;Requires USE=latin1" )
 		disabled_tests+=( "main.sp2;24177;Requires USE=latin1" )
 		disabled_tests+=( "main.system_mysql_db;0;Requires USE=latin1" )
-		disabled_tests+=( "main.upgrade_MDEV-19650;24178;Requires USE=latin1" )
 	fi
 
 	local test_infos_str test_infos_arr
@@ -601,7 +595,7 @@ src_test() {
 
 	# run mysql-test tests
 	pushd "${TESTDIR}" &>/dev/null || die
-	perl mysql-test-run.pl --force --vardir="${T}/var-tests" --reorder --skip-test-list="${T}/disabled.def"
+	perl mysql-test-run.pl --force --vardir="${T}/var-tests" --reorder --skip-test=tokudb --skip-test-list="${T}/disabled.def"
 	retstatus_tests=$?
 
 	popd &>/dev/null || die
@@ -693,33 +687,38 @@ src_install() {
 		# but are needed for galera and initial installation
 		exeinto /usr/libexec/mariadb
 		doexe "${BUILD_DIR}/extra/my_print_defaults" "${BUILD_DIR}/extra/perror"
+	fi
 
-		if use pam ; then
-			keepdir /usr/$(get_libdir)/mariadb/plugin/auth_pam_tool_dir
+	# Remove bundled mytop in favor of dev-db/mytop
+	local mytop_file
+	for mytop_file in \
+		"${ED}/usr/bin/mytop" \
+		"${ED}/usr/share/man/man1/mytop.1" \
+	; do
+		if [[ -e "${mytop_file}" ]] ; then
+			rm -v "${mytop_file}" || die
 		fi
-	fi
-
-	# Remove mytop if perl is not selected
-	if [[ -e "${ED}/usr/bin/mytop" ]] && ! use perl ; then
-		rm -f "${ED}/usr/bin/mytop" || die
-	fi
+	done
 
 	# Fix a dangling symlink when galera is not built
 	if [[ -L "${ED}/usr/bin/wsrep_sst_rsync_wan" ]] && ! use galera ; then
 		rm "${ED}/usr/bin/wsrep_sst_rsync_wan" || die
 	fi
-
-	# Remove broken SST scripts that are incompatible
-	local scriptremove
-	for scriptremove in wsrep_sst_xtrabackup wsrep_sst_xtrabackup-v2 ; do
-		if [[ -e "${ED}/usr/bin/${scriptremove}" ]] ; then
-			rm "${ED}/usr/bin/${scriptremove}" || die
-		fi
-	done
 }
 
 pkg_preinst() {
 	java-pkg-opt-2_pkg_preinst
+
+	# Here we need to see if the implementation switched client libraries
+	# We check if this is a new instance of the package and a client library already exists
+	local SHOW_ABI_MESSAGE libpath
+	if [[ -z ${REPLACING_VERSIONS} && -e "${EROOT}/usr/$(get_libdir)/libmysqlclient.so" ]] ; then
+		libpath=$(readlink "${EROOT}/usr/$(get_libdir)/libmysqlclient.so")
+		elog "Due to ABI changes when switching between different client libraries,"
+		elog "revdep-rebuild must find and rebuild all packages linking to libmysqlclient."
+		elog "Please run: revdep-rebuild --library ${libpath}"
+		ewarn "Failure to run revdep-rebuild may cause issues with other programs or libraries"
+	fi
 }
 
 pkg_postinst() {
@@ -736,7 +735,6 @@ pkg_postinst() {
 			elog "To activate and configure the PAM plugin, please read:"
 			elog "https://mariadb.com/kb/en/mariadb/pam-authentication-plugin/"
 			einfo
-			chown mysql:mysql "${EROOT}/usr/$(get_libdir)/mariadb/plugin/auth_pam_tool_dir" || die
 		fi
 
 		if [[ -z "${REPLACING_VERSIONS}" ]] ; then
@@ -763,15 +761,11 @@ pkg_postinst() {
 			elog "--wsrep-new-cluster to the options in /etc/conf.d/mysql for one node."
 			elog "This option should then be removed for subsequent starts."
 			einfo
-			if [[ -n "${REPLACING_VERSIONS}" ]] ; then
-				local rver
-				for rver in ${REPLACING_VERSIONS} ; do
-					if ver_test "${rver}" -lt "10.4.0" ; then
-						ewarn "Upgrading galera from a previous version requires admin restart of the entire cluster."
-						ewarn "Please refer to https://mariadb.com/kb/en/library/changes-improvements-in-mariadb-104/#galera-4"
-						ewarn "for more information"
-					fi
-				done
+			if use sst-xtrabackup ; then
+				ewarn "As per https://mariadb.com/kb/en/meta/xtrabackup_warning/, XtraBackup"
+				ewarn "as an SST is broken by default beginning with 10.2.19 with the setting"
+				ewarn "innodb_safe_truncate=ON.  Please migrate to sst-mariabackup instead."
+				ewarn "sst-xtrabackup is being removed in 10.3 and higher."
 			fi
 		fi
 	fi
@@ -899,20 +893,16 @@ pkg_config() {
 		einfo "Please provide a password for the mysql 'root'@'localhost' user now"
 		einfo "or through the ${HOME}/.my.cnf file."
 		ewarn "Avoid [\"'\\_%] characters in the password"
-		einfo "Not entering a password defaults to UNIX authentication"
 		read -rsp "    >" pwd1 ; echo
 
-		if [[ -n "${pwd1}" ]] ; then
-			einfo "Retype the password"
-			read -rsp "    >" pwd2 ; echo
+		einfo "Retype the password"
+		read -rsp "    >" pwd2 ; echo
 
-			if [[ "x$pwd1" != "x$pwd2" ]] ; then
-				die "Passwords are not the same"
-			fi
-
-			MYSQL_ROOT_PASSWORD="${pwd1}"
+		if [[ "x$pwd1" != "x$pwd2" ]] ; then
+			die "Passwords are not the same"
 		fi
 
+		MYSQL_ROOT_PASSWORD="${pwd1}"
 		unset pwd1 pwd2
 	fi
 
@@ -926,7 +916,7 @@ pkg_config() {
 	# Figure out which options we need to disable to do the setup
 	local helpfile="${TMPDIR}/mysqld-help"
 	"${EROOT}/usr/sbin/mysqld" --verbose --help >"${helpfile}" 2>/dev/null
-	for opt in host-cache name-resolve networking slave-start \
+	for opt in grant-tables host-cache name-resolve networking slave-start \
 		federated ssl log-bin relay-log slow-query-log external-locking \
 		log-slave-updates \
 		; do
@@ -966,11 +956,6 @@ pkg_config() {
 	[[ -f "${ROOT}/${MY_DATADIR}/mysql/user.frm" ]] \
 		|| die "MySQL databases not installed"
 
-	if [[ -z ${sqltmp} && -z ${MYSQL_ROOT_PASSWORD} ]] ; then
-		einfo "Done"
-		exit 0
-	fi
-
 	use prefix || options="${options} --user=mysql"
 
 	local socket="${EROOT}/var/run/mysqld/mysqld${RANDOM}.sock"
@@ -1001,17 +986,14 @@ pkg_config() {
 		die "Completely failed to start up mysqld with: ${mysqld}"
 	fi
 
-	if [[ -n "${MYSQL_ROOT_PASSWORD}" ]] ; then
-		ebegin "Setting root password"
-		# Do this from memory, as we don't want clear text passwords in temp files
-		local sql="SET PASSWORD FOR 'root'@'localhost' = PASSWORD('${MYSQL_ROOT_PASSWORD}')"
-		"${EROOT}/usr/bin/mysql" \
-			"--socket=${socket}" \
-			-hlocalhost \
-			-e "${sql}"
-		unset sql
-		eend $?
-	fi
+	ebegin "Setting root password"
+	# Do this from memory, as we don't want clear text passwords in temp files
+	local sql="UPDATE mysql.user SET Password = PASSWORD('${MYSQL_ROOT_PASSWORD}') WHERE USER='root'; FLUSH PRIVILEGES"
+	"${EROOT}/usr/bin/mysql" \
+		"--socket=${socket}" \
+		-hlocalhost \
+		-e "${sql}"
+	eend $?
 
 	if [[ -n "${sqltmp}" ]] ; then
 		ebegin "Loading \"zoneinfo\", this step may require a few seconds"
