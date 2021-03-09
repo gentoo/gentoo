@@ -1,18 +1,19 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_7,3_8} )
+LUA_COMPAT=( lua5-{1..4} )
+PYTHON_COMPAT=( python3_{7..9} )
 
-inherit cmake python-single-r1 xdg-utils
+inherit cmake lua-single python-single-r1 xdg-utils
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/weechat/weechat.git"
 else
 	SRC_URI="https://weechat.org/files/src/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm ~arm64 ~ppc ppc64 x86 ~x64-macos"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~x64-macos"
 fi
 
 DESCRIPTION="Portable and multi-interface IRC client"
@@ -27,7 +28,12 @@ PLUGINS="+alias +buflist +charset +exec +fifo +fset +logger +relay +scripts +spe
 SCRIPT_LANGS="guile lua +perl php +python ruby tcl"
 LANGS=" cs de es fr it ja pl ru"
 IUSE="doc man nls test ${SCRIPT_LANGS} ${PLUGINS} ${INTERFACES} ${NETWORKS}"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+
+REQUIRED_USE="
+	lua? ( ${LUA_REQUIRED_USE} )
+	python? ( ${PYTHON_REQUIRED_USE} )
+	test? ( nls )
+"
 
 RDEPEND="
 	dev-libs/libgcrypt:0=
@@ -37,15 +43,16 @@ RDEPEND="
 	net-misc/curl[ssl]
 	charset? ( virtual/libiconv )
 	guile? ( >=dev-scheme/guile-2.0 )
-	lua? ( dev-lang/lua:0 )
+	lua? ( ${LUA_DEPS} )
 	nls? ( virtual/libintl )
 	perl? ( dev-lang/perl:= )
 	php? ( >=dev-lang/php-7.0:*[embed] )
 	python? ( ${PYTHON_DEPS} )
-	ruby? ( || ( dev-lang/ruby:2.6 dev-lang/ruby:2.5 ) )
+	ruby? ( || ( dev-lang/ruby:2.7 dev-lang/ruby:2.6 dev-lang/ruby:2.5 ) )
 	spell? ( app-text/aspell )
 	tcl? ( >=dev-lang/tcl-8.4.15:0= )
 "
+
 DEPEND="${RDEPEND}
 	test? ( dev-util/cpputest )
 "
@@ -57,12 +64,16 @@ BDEPEND="
 	nls? ( >=sys-devel/gettext-0.15 )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.0-cmake_lua_version.patch
+)
+
 DOCS="AUTHORS.adoc ChangeLog.adoc Contributing.adoc ReleaseNotes.adoc README.adoc"
 
-# tests need to be fixed to not use system plugins if weechat is already installed
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
 pkg_setup() {
+	use lua && lua-single_pkg_setup
 	use python && python-single-r1_pkg_setup
 }
 
@@ -135,6 +146,15 @@ src_configure() {
 		-DENABLE_XFER=$(usex xfer)
 	)
 	cmake_src_configure
+}
+
+src_test() {
+	if $(locale -a | grep -iq "en_US\.utf.*8"); then
+		cmake_src_test -V
+	else
+		eerror "en_US.UTF-8 locale is required to run ${PN}'s ${FUNCNAME}"
+		die "required locale missing"
+	fi
 }
 
 pkg_postinst() {
