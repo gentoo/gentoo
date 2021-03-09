@@ -122,6 +122,7 @@ dev-ml/bin-prot
 dev-ml/ppx_driver
 dev-ml/ppx_core
 dev-ml/ppx_ast
+dev-ml/ppx_traverse_builtins
 
 # Conrad Kostecki <conikost@gentoo.org> (2021-03-05)
 # Deprecated by upstream and unsupported due EOL.
