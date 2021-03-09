@@ -1,0 +1,39 @@
+--- virtualbox-modules-6.1.18/vboxdrv/SUPDrvTracer.c
++++ virtualbox-modules-6.1.18/vboxdrv/SUPDrvTracer.c
+@@ -1472,29 +1472,32 @@
+ __asm__("\
+         .section .text                                                  \n\
+                                                                         \n\
+-        .p2align 2,,3                                                   \n\
++        .p2align 4                                                      \n\
+         .global SUPR0TracerFireProbe                                    \n\
++        .type   SUPR0TracerFireProbe, @function                         \n\
+ SUPR0TracerFireProbe:                                                   \n\
+ ");
+ # if   defined(RT_ARCH_AMD64)
+-__asm__(" \
+-            movq    g_pfnSupdrvProbeFireKernel(%rip), %rax                  \n\
++__asm__("\
++            movq    g_pfnSupdrvProbeFireKernel(%rip), %rax              \n\
+             jmp     *%rax \n\
+ ");
+ # elif defined(RT_ARCH_X86)
+ __asm__("\
+-            movl    g_pfnSupdrvProbeFireKernel, %eax                        \n\
++            movl    g_pfnSupdrvProbeFireKernel, %eax                    \n\
+             jmp     *%eax \n\
+ ");
+ # else
+ #  error "Which arch is this?"
+ # endif
+ __asm__("\
++        .size SUPR0TracerFireProbe, . - SUPR0TracerFireProbe            \n\
+                                                                         \n\
+         .type supdrvTracerProbeFireStub,@function                       \n\
+         .global supdrvTracerProbeFireStub                               \n\
+ supdrvTracerProbeFireStub:                                              \n\
+         ret                                                             \n\
++        .size supdrvTracerProbeFireStub, . - supdrvTracerProbeFireStub  \n\
+                                                                         \n\
+         .previous                                                       \n\
+ ");
