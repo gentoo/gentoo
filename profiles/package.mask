@@ -364,7 +364,7 @@ media-gfx/gqview
 dev-libs/libressl
 
 # Ulrich Müller <ulm@gentoo.org> (2021-01-29)
-# Pretest versions, masked for testing.
+# Preliminary test versions, masked for testing.
 ~app-editors/emacs-27.1.91
 ~app-editors/emacs-27.1.92
 ~app-editors/emacs-27.1.93
