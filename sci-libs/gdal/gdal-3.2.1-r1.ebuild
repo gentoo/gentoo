@@ -97,6 +97,7 @@ src_prepare() {
 	# Drop a --prefix hack in the upstream build system
 	# We don't want the line at all, so let's just drop it rather than
 	# trying to put in the right libdir value.
+	# bug #696106
 	sed -e '/\$ADD_PREFIX\/lib/d' \
 		-i configure.ac || die
 
