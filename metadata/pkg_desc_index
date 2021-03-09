@@ -937,7 +937,7 @@ app-backup/rdumpfs 0.1: a rsync-based dump file system backup tool
 app-backup/rdup 1.1.15: Generate a file list suitable for full or incremental backups
 app-backup/rear 2.4 2.6: Relax-and-Recover is a setup-and-forget bare metal disaster recovery solution
 app-backup/reoback 1.0_p3-r1: Reoback Backup Solution
-app-backup/restic 0.9.6 0.10.0 0.11.0: A backup program that is fast, efficient and secure
+app-backup/restic 0.11.0 0.12.0: A backup program that is fast, efficient and secure
 app-backup/rsnapshot 1.4.2 1.4.3: A filesystem backup utility based on rsync
 app-backup/sarab 1.0.0: SaraB is a powerful and automated backup scheduling system based on DAR
 app-backup/simplebackup 1.8.1-r1: Cross-platform backup program
@@ -8868,7 +8868,7 @@ dev-python/pypng 0.0.20: Pure Python PNG image encoder/decoder
 dev-python/pypowervm 1.1.24: Python binding for the PowerVM REST API
 dev-python/pyprof2calltree 1.4.4 1.4.5: convert python profile data to kcachegrind calltree form
 dev-python/pyproj 2.6.1_p1 3.0.1: Python interface to the PROJ library
-dev-python/pyproject2setuppy 9 10: Cheap setup.py hack to install flit & poetry-based projects
+dev-python/pyproject2setuppy 10: Cheap setup.py hack to install flit & poetry-based projects
 dev-python/pypugjs 5.9.5 5.9.8: Pug (Jade) syntax adapter for Django, Jinja2 and Mako templates
 dev-python/pypy 7.3.3_p2-r1: A fast, compliant alternative implementation of the Python language
 dev-python/pypy-exe 7.3.3_p2: PyPy executable (build from source)
@@ -14758,7 +14758,7 @@ net-im/yowsup 3.2.3_p20190905: A library that enables you to build applications 
 net-im/ysm 2.9.9.1-r1: A console ICQ client supporting versions 7/8
 net-im/zoom 5.4.53391.1108-r2 5.5.7011.0206-r2 5.5.7938.0228: Video conferencing and web conferencing service
 net-irc/anope 2.0.9: Anope IRC Services
-net-irc/atheme-services 7.2.10_p2-r2: A portable and secure set of open-source and modular IRC services
+net-irc/atheme-services 7.2.11: A portable and secure set of open-source and modular IRC services
 net-irc/bnc 2.9.4-r1: BNC (BouNCe) is used as a gateway to an IRC Server
 net-irc/cgiirc 0.5.10: A perl/CGI program to use IRC from a web browser
 net-irc/dccserver 0.5-r1: linux implementation of the mirc dccserver command
@@ -15004,7 +15004,7 @@ net-libs/zmqpp 4.2.0: ZeroMQ 'highlevel' C++ bindings
 net-mail/altermime 0.3.11: alterMIME is a small program which is used to alter your mime-encoded mailpacks
 net-mail/amavis-logwatch 1.51.03-r5: A log analyzer for amavisd-new
 net-mail/asmail 2.1-r1: a small mail monitor similar to xbiff
-net-mail/automx2 2020.1-r1 2020.2 2021.0: Email client autoconfiguration service
+net-mail/automx2 2021.0 2021.2: Email client autoconfiguration service
 net-mail/autorespond 2.0.4 2.0.5: Autoresponder add on package for qmailadmin
 net-mail/b4 0.6.1: Utility for fetching patchsets from public-inbox
 net-mail/checkpassword 0.90-r4: A uniform password checking interface for root applications
@@ -15189,8 +15189,8 @@ net-misc/gerbera 1.7.0 9999: UPnP Media Server
 net-misc/getdate 1.2-r2: Network Date/Time Query and Set Local Date/Time Utility
 net-misc/gnome-online-miners 3.34.0: Crawls through your online content
 net-misc/gnome-remote-desktop 0.1.7 0.1.8 0.1.9: Remote desktop daemon for GNOME using pipewire
-net-misc/gns3-gui 2.2.17: Graphical Network Simulator
-net-misc/gns3-server 2.2.17: GNS3 server to asynchronously manage emulators
+net-misc/gns3-gui 2.2.17 2.2.19: Graphical Network Simulator
+net-misc/gns3-server 2.2.17 2.2.19: GNS3 server to asynchronously manage emulators
 net-misc/gofish 1.2: Gofish gopher server
 net-misc/grdesktop 0.23-r2: Gtk3 frontend for rdesktop
 net-misc/grive 0.5.1_pre20171005 0.5.1 0.5.1-r1 0.5.2_pre20200205: An open source Linux client for Google Drive
@@ -15478,7 +15478,7 @@ net-p2p/fms 0.3.82: A spam-resistant message board application for Freenet
 net-p2p/freenet 0.7.5_p1484 0.7.5_p1486 0.7.5_p1488: An encrypted network without censorship
 net-p2p/gnut 0.4.28-r1: Text-mode gnutella client
 net-p2p/go-ethereum 1.9.15 1.10.0 1.10.1: Official golang implementation of the Ethereum protocol
-net-p2p/go-ipfs 0.7.0: Main implementation of IPFS
+net-p2p/go-ipfs 0.7.0 0.8.0: Main implementation of IPFS
 net-p2p/go-ipfs-bin 0.4.22 0.7.0: Main implementation of IPFS
 net-p2p/gtk-gnutella 1.2.0-r1: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
@@ -17615,7 +17615,7 @@ sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh 
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.94 5.4.97 5.4.99 5.4.100 5.4.101 5.4.102 5.4.103 5.10.17 5.10.18 5.10.19 5.10.20 5.10.21 5.11.2 5.11.3 5.11.4: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.94 5.4.94-r1 5.4.97 5.4.97-r1 5.4.99 5.4.99-r1 5.4.100 5.4.100-r1 5.4.101 5.4.101-r1 5.4.101-r2 5.4.102-r2 5.4.102-r3 5.4.103 5.10.17 5.10.17-r1 5.10.18 5.10.18-r1 5.10.19 5.10.19-r1 5.10.19-r2 5.10.20-r2 5.10.20-r3 5.10.21 5.11.2 5.11.2-r1 5.11.2-r2 5.11.3-r2 5.11.3-r3 5.11.4: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.246 4.4.255 4.4.256 4.4.257 4.4.258 4.4.259 4.4.260 4.9.246 4.9.255 4.9.256 4.9.257 4.9.258 4.9.259 4.9.260 4.14.209 4.14.219 4.14.220 4.14.221 4.14.222 4.14.223 4.14.224 4.19.160 4.19.173 4.19.174 4.19.175 4.19.176 4.19.177 4.19.178 4.19.179 5.4.80-r1 5.4.97 5.4.98 5.4.99 5.4.100 5.4.101 5.4.102 5.4.103 5.10.14 5.10.15 5.10.16 5.10.17 5.10.18 5.10.19 5.10.20 5.10.21 5.11.0 5.11.1 5.11.2 5.11.3 5.11.4: Full sources including the Gentoo patchset for the 5.11 kernel tree
+sys-kernel/gentoo-sources 4.4.246 4.4.255 4.4.256 4.4.257 4.4.258 4.4.259 4.4.260 4.9.246 4.9.255 4.9.256 4.9.257 4.9.258 4.9.259 4.9.260 4.14.209 4.14.219 4.14.220 4.14.221 4.14.222 4.14.223 4.14.224 4.19.160 4.19.173 4.19.174 4.19.175 4.19.176 4.19.177 4.19.178 4.19.179 5.4.80-r1 5.4.97 5.4.98 5.4.99 5.4.100 5.4.101 5.4.102 5.4.103 5.4.104 5.10.14 5.10.15 5.10.16 5.10.17 5.10.18 5.10.19 5.10.20 5.10.21 5.10.22 5.11.0 5.11.1 5.11.2 5.11.3 5.11.4 5.11.5: Full sources including the Gentoo patchset for the 5.11 kernel tree
 sys-kernel/git-sources 5.12_rc2: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
@@ -17630,7 +17630,7 @@ sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.79_p2020120
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.79_p20201201 5.4.9999 5.10.11_p20210201: Raspberry Pi kernel sources
 sys-kernel/rt-sources 4.4.240_p209 4.4.245_p211 4.4.249_p212 4.9.240_p155 4.9.247_p162 4.14.206_p99 4.14.209_p101 4.14.214_p104 4.19.148_p64 4.19.160_p69 4.19.165_p70 5.4.70_p40 5.4.84_p47 5.10.1_p20 5.10.4_p22: Full Linux 5.10 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/vanilla-kernel 5.4.94 5.4.97 5.4.99 5.4.100 5.4.101 5.4.102 5.4.103 5.10.17 5.10.18 5.10.19 5.10.20 5.10.21 5.11.2 5.11.3 5.11.4: Linux kernel built from vanilla upstream sources
-sys-kernel/vanilla-sources 4.4.260 4.9.260 4.14.224 4.19.179 5.4.103 5.10.21 5.11.4: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 4.4.260 4.9.260 4.14.224 4.19.179 5.4.104 5.10.22 5.11.5: Full sources for the Linux kernel
 sys-kernel/zen-sources 5.10.16 5.11: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
 sys-libs/binutils-libs 2.34-r2 2.35.1-r1 2.35.2 2.36.1: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
@@ -18024,7 +18024,7 @@ www-apps/davical 1.1.9.3 1.1.9.3-r1: A CalDAV and CardDAV Server
 www-apps/dokuwiki 20180422a 20180422b 20200729: DokuWiki is a simple to use Wiki aimed at a small company's documentation needs.
 www-apps/dotproject 2.1.7-r1: dotProject is a PHP web-based project management framework
 www-apps/drupal 7.78 8.9.13 9.0.11 9.1.3: PHP-based open-source platform and content management system
-www-apps/gitea 1.13.2 9999: A painless self-hosted Git service
+www-apps/gitea 1.13.4 9999: A painless self-hosted Git service
 www-apps/gitit 0.13.0.0-r1: Wiki using happstack, git or darcs, and pandoc
 www-apps/grafana-bin 7.4.1 7.4.2: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/hugo 0.78.1: The world's fastest framework for building websites
