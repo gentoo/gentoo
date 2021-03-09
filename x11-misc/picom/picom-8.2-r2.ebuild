@@ -43,6 +43,8 @@ BDEPEND="virtual/pkgconfig
 	test? ( $(python_gen_any_dep 'dev-python/xcffib[${PYTHON_USEDEP}]') )
 "
 
+DOCS=( README.md picom.sample.conf )
+
 src_configure() {
 	local emesonargs=(
 		$(meson_use config-file config_file)

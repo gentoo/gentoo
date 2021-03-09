@@ -36,6 +36,8 @@ DEPEND="${RDEPEND}
 BDEPEND="virtual/pkgconfig
 	doc? ( app-text/asciidoc )"
 
+DOCS=( README.md picom.sample.conf )
+
 src_configure() {
 	local emesonargs=(
 		$(meson_use config-file config_file)
