@@ -351,11 +351,6 @@ media-plugins/vdr-quicktimer
 # Removal in 3 months. Bug #769440.
 media-gfx/gqview
 
-# Alexys Jacob <ultrabug@gentoo.org> (2021-02-08)
-# Multiple QA issues, CVE affected, unmaintained for packaging upstream.
-# Removal on 2021-03-08.  Bug #769509
-app-admin/mms-agent
-
 # Michał Górny <mgorny@gentoo.org> (2021-02-07)
 # Fails tests (and does not seem to test the old installed version
 # at least partially).  Needs further testing.
