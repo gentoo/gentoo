@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit dune
+inherit dune findlib
 
 DESCRIPTION="Library for arbitrary-precision integer and rational arithmetic"
 HOMEPAGE="https://github.com/ocaml/num"
@@ -13,3 +13,12 @@ LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
 IUSE="+ocamlopt"
+
+src_compile() {
+	emake CFLAGS="${CFLAGS}"
+}
+
+src_install() {
+	findlib_src_preinst
+	OCAMLPATH="${OCAMLFIND_DESTDIR}" emake install DESTDIR="${D}"
+}
