@@ -8,5 +8,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">cssutils</remote-id>
+    <remote-id type="github">jaraco/cssutils</remote-id>
   </upstream>
 </pkgmetadata>
