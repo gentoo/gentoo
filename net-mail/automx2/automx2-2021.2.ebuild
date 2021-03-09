@@ -17,7 +17,9 @@ KEYWORDS="~amd64"
 IUSE="doc"
 
 BDEPEND="acct-user/automx2
+	dev-python/flask[${PYTHON_USEDEP}]
 	dev-python/flask-migrate[${PYTHON_USEDEP}]
+	dev-python/flask-sqlalchemy[${PYTHON_USEDEP}]
 	dev-python/ldap3[${PYTHON_USEDEP}]"
 RDEPEND="${BDEPEND}"
 
