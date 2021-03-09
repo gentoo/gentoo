@@ -1,3 +1,5 @@
+https://github.com/OSGeo/gdal/pull/3560
+https://bugs.gentoo.org/696106
 --- a/configure.ac
 +++ b/configure.ac
 @@ -1133,11 +1133,11 @@ if test "$with_libz" = "external" -o "$with_libz" = "" -o "$with_libz" = "yes" ;
