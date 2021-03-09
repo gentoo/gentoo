@@ -16,12 +16,13 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="doc"
 
-BDEPEND="acct-user/automx2
+BDEPEND="acct-user/automx2"
+RDEPEND="
 	dev-python/flask[${PYTHON_USEDEP}]
 	dev-python/flask-migrate[${PYTHON_USEDEP}]
 	dev-python/flask-sqlalchemy[${PYTHON_USEDEP}]
-	dev-python/ldap3[${PYTHON_USEDEP}]"
-RDEPEND="${BDEPEND}"
+	dev-python/ldap3[${PYTHON_USEDEP}]
+"
 
 python_prepare_all() {
 	sed -i -e "/('scripts'/d" setup.py || die
