@@ -5,7 +5,7 @@ EAPI=7
 
 LUA_COMPAT=( lua5-{1..2} luajit )
 
-inherit lua toolchain-funcs
+inherit flag-o-matic lua toolchain-funcs
 
 DESCRIPTION="Bit Operations Library for the Lua Programming Language"
 HOMEPAGE="http://bitop.luajit.org"
@@ -13,7 +13,7 @@ SRC_URI="http://bitop.luajit.org/download/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~hppa ~mips ppc ppc64 sparc x86"
+KEYWORDS="amd64 arm ~arm64 ~hppa ~mips ppc ppc64 sparc x86 ~x64-macos"
 IUSE="test"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
@@ -45,6 +45,9 @@ lua_src_compile() {
 }
 
 src_compile() {
+	if [[ $CHOST == *-darwin* ]] ; then
+		append-ldflags "-undefined dynamic_lookup"
+	fi
 	lua_foreach_impl lua_src_compile
 }
 
@@ -77,6 +80,14 @@ lua_src_install() {
 	doexe bit.so
 
 	popd
+
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		local luav=$(lua_get_version)
+		# we only want the major version (e.g. 5.1)
+		local luamv=${luav:0:3}
+		local file="lua/${luamv}/bit.so"
+		install_name_tool -id "${EPREFIX}/usr/$(get_libdir)/${file}" "${ED}/usr/$(get_libdir)/${file}" || die "Failed to adjust install_name"
+	fi
 }
 
 src_install() {
