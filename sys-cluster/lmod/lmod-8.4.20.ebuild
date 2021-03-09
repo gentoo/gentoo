@@ -15,7 +15,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	SRC_URI="https://github.com/TACC/Lmod/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/Lmod-${PV}
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~sparc ~x86"
 fi
 
 LICENSE="MIT"
