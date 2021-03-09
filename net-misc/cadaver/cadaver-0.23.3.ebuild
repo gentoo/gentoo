@@ -1,4 +1,4 @@
-# Copyright 2003-2020 Gentoo Authors
+# Copyright 2003-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -34,6 +34,10 @@ src_prepare() {
 	cp "${EPREFIX}/usr/share/gettext/po/Makefile.in.in" po || die "cp failed"
 
 	AT_M4DIR="m4 m4/neon" eautoreconf
+
+	# Fixed build issue with sys-devel/autoconf:2.71
+	# configure: error: cannot find required auxiliary files: config.rpath
+	touch config.rpath || die
 }
 
 src_configure() {
