@@ -41,7 +41,7 @@ S="${WORKDIR}/mysql"
 # Be warned, *DEPEND are version-dependant
 # These are used for both runtime and compiletime
 COMMON_DEPEND="
-	>=dev-libs/libpcre-8.41-r1:3=
+	>=dev-libs/libpcre2-10.34:=
 	>=sys-apps/sed-4
 	>=sys-apps/texinfo-4.7-r1
 	sys-libs/ncurses:0=
