@@ -13,6 +13,7 @@
 		<email>python@gentoo.org</email>
 		<name>Python</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">mitya57/python-markdown-math</remote-id>
 		<remote-id type="pypi">python-markdown-math</remote-id>
