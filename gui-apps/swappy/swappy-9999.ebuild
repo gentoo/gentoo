@@ -33,13 +33,6 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-src_prepare() {
-	default
-
-	# See https://github.com/jtheoof/swappy/pull/99
-	sed -i -e 's/Utility;Graphics;Annotation;/Utility;Graphics;/'  src/po/swappy.desktop.in || die "Sed failed!"
-}
-
 src_configure() {
 	local emesonargs=(
 		-Dwerror=false
