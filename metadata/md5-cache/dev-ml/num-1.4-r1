@@ -1,6 +1,6 @@
 BDEPEND=dev-ml/dune dev-lang/ocaml
 DEFINED_PHASES=compile install test
-DEPEND=>=dev-lang/ocaml-4:=[ocamlopt?]
+DEPEND=>=dev-lang/ocaml-4:=[ocamlopt?] >=dev-ml/findlib-1.0.4-r1
 DESCRIPTION=Library for arbitrary-precision integer and rational arithmetic
 EAPI=7
 HOMEPAGE=https://github.com/ocaml/num
@@ -10,5 +10,5 @@ LICENSE=LGPL-2.1-with-linking-exception
 RDEPEND=>=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0
 SRC_URI=https://github.com/ocaml/num/archive/v1.4.tar.gz -> num-1.4.tar.gz
-_eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
-_md5_=09fe658ea767d4538eb7d6653b038d06
+_eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea	findlib	3d3de4bef686774baeeabfa2b916631c
+_md5_=8989a08fb16783b6c9bb3502127cd88b
