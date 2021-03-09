@@ -2081,7 +2081,7 @@ app-emulation/libvirt-glib 1.0.0-r1 2.0.0 3.0.0: GLib and GObject mappings for l
 app-emulation/libvirt-snmp 0.0.4: Provides SNMP functionality for libvirt
 app-emulation/lxc 4.0.6: A userspace interface for the Linux kernel containment features
 app-emulation/lxc-templates 3.0.4: Old style template scripts for LXC
-app-emulation/lxd 4.0.4-r6 4.0.4-r7 4.0.5: Fast, dense and secure container management
+app-emulation/lxd 4.0.4-r7 4.0.5: Fast, dense and secure container management
 app-emulation/nemu 2.2.1 9999: ncurses interface for QEMU
 app-emulation/open-vm-tools 11.2.0_p16938113-r1 11.2.5_p17337674: Opensourced tools for VMware guests
 app-emulation/pcem 17: A PC emulator that specializes in running old operating systems and software
@@ -2429,7 +2429,7 @@ app-misc/cstream 3.1.1-r1: general-purpose stream-handling tool like UNIX dd
 app-misc/cw 1.0.16-r3: A non-intrusive real-time ANSI color wrapper for common unix-based commands
 app-misc/dailystrips 1.0.28-r3: dailystrips automatically downloads your favorite online comics from the web
 app-misc/datefudge 1.22 1.24: A program (and preload library) to fake system date
-app-misc/dateutils 0.4.6 0.4.7 9999: command line date and time utilities
+app-misc/dateutils 0.4.6 0.4.7 0.4.8 9999: Command line date and time utilities
 app-misc/datovka 4.15.3: GUI to access the Czech data box e-government system
 app-misc/ddate 0.2.2_p20160627: Perpetual date converter from gregorian to poee calendar
 app-misc/ddccontrol 0.4.4_p20200630: DDCControl allows control of monitor parameters via DDC
@@ -8152,7 +8152,7 @@ dev-python/dbutils 1.3 2.0: Database connections for multi-threaded environments
 dev-python/ddt 1.2.2: A library to multiply test cases
 dev-python/debtcollector 2.2.0: Python deprecation patterns and strategies that collect technical debt
 dev-python/decorator 4.4.2-r1: Simplifies the usage of decorators for the average programmer
-dev-python/deepmerge 0.1.1: Tools to handle merging of nested data structures in python
+dev-python/deepmerge 0.1.1_p1: Tools to handle merging of nested data structures in python
 dev-python/defcon 0.6.0-r1 0.7.2 0.8.0: A set of UFO based objects for use in font editing applications
 dev-python/defusedxml 0.7.0_rc1 0.7.0 0.7.1: XML bomb protection for Python stdlib modules, an xml serialiser
 dev-python/denonavr 0.9.9 0.9.10 0.10.1: Automation Library for Denon AVR receivers
@@ -11475,7 +11475,7 @@ games-fps/tenebrae 1.04-r1: adds stencil shadows and per pixel lights to quake
 games-fps/transfusion-bin 1.01-r1: Blood remake
 games-fps/tribes2 25034: Tribes 2 - Team Combat on an Epic Scale
 games-fps/turtlearena 0.6.1-r1: A turtle featuring free and open source third-person action game (ioq3 engine)
-games-fps/urbanterror 4.3.4_p20200519: Hollywood tactical shooter based on the ioquake3 engine
+games-fps/urbanterror 4.3.4_p20210304: Hollywood tactical shooter based on the ioquake3 engine
 games-fps/urbanterror-data 4.3.4: Data files for UrbanTerror
 games-fps/ut2003 2225-r6: Sequel to the 1999 Game of the Year multi-player first-person shooter
 games-fps/ut2003-bonuspack-cm 1: Community Bonus Pack for UT2003
