@@ -28,7 +28,7 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/tome-${MY_PV}-src/src
 
-PATCHES=( "${FILESDIR}/${PV}-gentoo-paths.patch"
+PATCHES=( "${FILESDIR}/${PN}-2.3.5-gentoo-paths.patch"
 	"${FILESDIR}"/${PN}-2.3.5-format.patch
 	"${FILESDIR}"/${PN}-2.3.5-noX.patch
 )
