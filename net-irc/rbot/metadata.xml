@@ -21,11 +21,6 @@
     to enable the "translator" plugin for rbot. If the USE flag is
     disabled the plugin is also disabled by default.
   </flag>
-    <flag name="shorturl">
-    Add dependency over <pkg>dev-ruby/shorturl</pkg>, which is needed
-    to enable the "shortenurl" plugin for rbot. If the USE flag is
-    disabled the plugin is also disabled by default.
-  </flag>
     <flag name="nls">
     Build and install translation for the messages coming from the bot
     and its plugins (through <pkg>dev-ruby/ruby-gettext</pkg>).

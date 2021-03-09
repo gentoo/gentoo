@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-USE_RUBY="ruby23 ruby24 ruby25"
+EAPI=7
+USE_RUBY="ruby25 ruby26 ruby27"
 
 GITHUB_COMMIT="e358601cc521d8aced941eb928fae2d8c53cf0c2"
-inherit ruby-ng eutils user
+inherit ruby-ng l10n user
 
 DESCRIPTION="A ruby IRC bot"
 HOMEPAGE="https://ruby-rbot.org/"
@@ -14,12 +14,10 @@ SRC_URI="https://github.com/ruby-rbot/rbot/archive/${GITHUB_COMMIT}.tar.gz -> ${
 LICENSE="|| ( feh GPL-2 )"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="spell aspell timezone translator shorturl nls figlet
+IUSE="spell aspell timezone translator nls figlet
 	fortune cal host sqlite toilet"
 ILINGUAS="zh_CN zh_TW ru nl de fi fr it ja"
 RUBY_S="${PN}-${GITHUB_COMMIT}"
-
-RUBY_PATCHES=( rbot-rakefile-gettext.patch )
 
 RDEPEND+="
 	spell? (
@@ -46,7 +44,6 @@ ruby_add_rdepend "
 	dev-ruby/tokyocabinet
 	timezone? ( dev-ruby/tzinfo:* )
 	translator? ( dev-ruby/mechanize )
-	shorturl? ( dev-ruby/shorturl )
 	nls? ( dev-ruby/ruby-gettext >=dev-ruby/locale-2.0.5-r2 )
 "
 
@@ -55,6 +52,8 @@ pkg_setup() {
 }
 
 all_ruby_prepare() {
+	eapply -p0 "${FILESDIR}"/rbot-rakefile-gettext.patch
+
 	# Avoid tests that are only compatible with ruby22
 	rm -f test/test_journal.rb || die
 
@@ -104,7 +103,6 @@ all_ruby_compile() {
 
 	use_rbot_plugin timezone time
 	use_rbot_plugin translator translator
-	use_rbot_plugin shorturl shortenurls
 
 	use_rbot_plugin fortune fortune
 	use_rbot_conf_path fortune fortune.path /usr/bin/fortune
