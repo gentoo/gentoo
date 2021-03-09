@@ -120,13 +120,6 @@ RDEPEND="${COMMON_DEPEND}
 		)
 		!prefix? ( dev-db/mysql-init-scripts acct-group/mysql acct-user/mysql )
 	)
-	perl? (
-		!dev-db/mytop
-		virtual/perl-Getopt-Long
-		dev-perl/TermReadKey
-		virtual/perl-Term-ANSIColor
-		virtual/perl-Time-HiRes
-	)
 "
 # For other stuff to bring us in
 # dev-perl/DBD-mysql is needed by some scripts installed by MySQL
@@ -699,10 +692,16 @@ src_install() {
 		fi
 	fi
 
-	# Remove mytop if perl is not selected
-	if [[ -e "${ED}/usr/bin/mytop" ]] && ! use perl ; then
-		rm -f "${ED}/usr/bin/mytop" || die
-	fi
+	# Remove bundled mytop in favor of dev-db/mytop
+	local mytop_file
+	for mytop_file in \
+		"${ED}/usr/bin/mytop" \
+		"${ED}/usr/share/man/man1/mytop.1" \
+	; do
+		if [[ -e "${mytop_file}" ]] ; then
+			rm -v "${mytop_file}" || die
+		fi
+	done
 
 	# Fix a dangling symlink when galera is not built
 	if [[ -L "${ED}/usr/bin/wsrep_sst_rsync_wan" ]] && ! use galera ; then
