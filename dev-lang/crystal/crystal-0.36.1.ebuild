@@ -73,6 +73,7 @@ src_compile() {
 		CC=$(tc-getCC) \
 		CXX=$(tc-getCXX) \
 		AR=$(tc-getAR) \
+		LLVM_CONFIG="$(get_llvm_prefix "${LLVM_MAX_SLOT}")/bin/llvm-config" \
 		\
 		PATH="${bootstrap_path}:${PATH}" \
 		CRYSTAL_PATH=src \
@@ -95,6 +96,7 @@ src_test() {
 		CC=$(tc-getCC) \
 		CXX=$(tc-getCXX) \
 		AR=$(tc-getAR) \
+		LLVM_CONFIG="$(get_llvm_prefix "${LLVM_MAX_SLOT}")/bin/llvm-config" \
 		\
 		CRYSTAL_PATH=src \
 		CRYSTAL_CONFIG_VERSION=${PV} \
