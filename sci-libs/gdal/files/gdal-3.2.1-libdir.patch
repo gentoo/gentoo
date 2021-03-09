@@ -1,7 +1,7 @@
 https://github.com/OSGeo/gdal/pull/3560
 https://bugs.gentoo.org/696106
---- a/gdal/configure.ac
-+++ b/gdal/configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -1121,11 +1121,11 @@ if test "$with_libz" = "external" -o "$with_libz" = "" -o "$with_libz" = "yes" ;
  
  elif test "$with_libz" != "no" -a "$with_libz" != "internal" ; then
@@ -325,8 +325,8 @@ https://bugs.gentoo.org/696106
  else
    AC_MSG_ERROR([libjson-c (internal or external) is required])
  fi
---- a/gdal/frmts/grass/pkg/configure.in
-+++ b/gdal/frmts/grass/pkg/configure.in
+--- a/frmts/grass/pkg/configure.in
++++ b/frmts/grass/pkg/configure.in
 @@ -99,7 +99,7 @@ else
    if $GDAL_CONFIG --autoload > /dev/null 2>&1 ; then
      AUTOLOAD_DIR=`$GDAL_CONFIG --autoload`
@@ -370,8 +370,8 @@ https://bugs.gentoo.org/696106
      fi
      GRASS_INCLUDE="-I$with_grass/include"
      GRASS_GISBASE="$with_grass"
---- a/gdal/m4/ax_lib_expat.m4
-+++ b/gdal/m4/ax_lib_expat.m4
+--- a/m4/ax_lib_expat.m4
++++ b/m4/ax_lib_expat.m4
 @@ -119,9 +119,9 @@ AC_DEFUN([AX_LIB_EXPAT],
                      expat_lib_flags="-lexpat"
                  fi
@@ -384,8 +384,8 @@ https://bugs.gentoo.org/696106
                  fi
              fi
          fi
---- a/gdal/m4/ax_lib_libkml.m4
-+++ b/gdal/m4/ax_lib_libkml.m4
+--- a/m4/ax_lib_libkml.m4
++++ b/m4/ax_lib_libkml.m4
 @@ -172,7 +172,7 @@ kmldom::KmlFactory* factory = kmldom::KmlFactory::GetFactory();
              if test "$libkml_prefix" = "/usr"; then
                  libkml_lib_flags="-lkmldom -lkmlbase -lkmlengine -lkmlconvenience -lminizip -luriparser"
@@ -395,8 +395,8 @@ https://bugs.gentoo.org/696106
              fi
              run_libkml_test="yes"
          elif test "$libkml_requested" = "yes"; then
---- a/gdal/m4/ax_lib_xerces.m4
-+++ b/gdal/m4/ax_lib_xerces.m4
+--- a/m4/ax_lib_xerces.m4
++++ b/m4/ax_lib_xerces.m4
 @@ -100,7 +100,7 @@ AC_DEFUN([AX_LIB_XERCES],
          if test "$xerces_prefix" = "/usr"; then
              xerces_lib_flags="-lxerces-c -lpthread"
