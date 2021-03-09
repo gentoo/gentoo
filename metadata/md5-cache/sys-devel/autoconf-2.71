@@ -7,8 +7,8 @@ IUSE=emacs
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-3
 PDEPEND=emacs? ( app-emacs/autoconf-mode )
-RDEPEND=>=sys-devel/m4-1.4.16 >=dev-lang/perl-5.6 >=sys-devel/autoconf-wrapper-14 sys-devel/gnuconfig !~sys-devel/autoconf-2.70:2.5
-SLOT=2.70
-SRC_URI=mirror://gnu/autoconf/autoconf-2.70.tar.xz -> autoconf-2.70.tar.xz https://alpha.gnu.org/pub/gnu/autoconf/autoconf-2.70.tar.xz -> autoconf-2.70.tar.xz https://dev.gentoo.org/~polynomial-c/autoconf-2.70-patches-01.tar.xz
+RDEPEND=>=sys-devel/m4-1.4.16 >=dev-lang/perl-5.6 >=sys-devel/autoconf-wrapper-15 sys-devel/gnuconfig !~sys-devel/autoconf-2.71:2.5
+SLOT=2.71
+SRC_URI=mirror://gnu/autoconf/autoconf-2.71.tar.xz -> autoconf-2.71.tar.xz https://alpha.gnu.org/pub/gnu/autoconf/autoconf-2.71.tar.xz -> autoconf-2.71.tar.xz
 _eclasses_=toolchain-autoconf	c85a87c2280cd1204e1433d3e1123e41
-_md5_=1ca15794c157ed5e490e5b212f5a7d34
+_md5_=f65fa65cde3c5c7b436f42f54d043ddf

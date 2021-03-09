@@ -14664,7 +14664,7 @@ net-fs/cvmfs 2.7.2-r1 2.7.3: HTTP read-only file system for distributing softwar
 net-fs/davfs2 1.6.0: Linux FUSE (or coda) driver that allows you to mount a WebDAV resource
 net-fs/docker-volume-netshare 0.35: Docker NFS, AWS EFS, Ceph & Samba/CIFS Volume Plugin
 net-fs/libnfs 4.0.0 9999: Client library for accessing NFS shares over a network
-net-fs/mc 2019.07.31.19.17.35 2021.01.16.02.45.34: Minio client provides alternatives for ls, cat on cloud storage and filesystems
+net-fs/mc 2021.03.06.22.16.44: Minio client provides alternatives for ls, cat on cloud storage and filesystems
 net-fs/minio 2021.03.04.00.53.13: An Amazon S3 compatible object storage server
 net-fs/netatalk 3.1.12-r1: Open Source AFP server
 net-fs/nfs-utils 2.5.1 2.5.2 2.5.3: NFS client and server daemons
@@ -17370,9 +17370,9 @@ sys-cluster/wulfware 2.6.0: Applications to monitor on a beowulf- or GRID-style 
 sys-cluster/zetcd 0.0.4: A ZooKeeper personality for etcd
 sys-cluster/zookeeper-bin 3.4.13-r1 3.5.9 3.6.2: A high-performance coordination service for distributed applications.
 sys-cluster/zookeepercli 1.0.12: Simple, lightweight, dependable CLI for ZooKeeper
-sys-devel/autoconf 2.13-r1 2.64-r1 2.69-r4 2.69-r5 2.70-r2 2.71-r1 9999: Used to create autoconfiguration files
+sys-devel/autoconf 2.13-r1 2.64-r1 2.69-r5 2.71 9999: Used to create autoconfiguration files
 sys-devel/autoconf-archive 2018.03.13 2019.01.06 2021.02.19: GNU Autoconf Macro Archive
-sys-devel/autoconf-wrapper 13-r1 14 15: wrapper for autoconf to manage multiple autoconf versions
+sys-devel/autoconf-wrapper 13-r1 15: wrapper for autoconf to manage multiple autoconf versions
 sys-devel/autogen 5.18.16-r1: Program and text file generation
 sys-devel/automake 1.4_p6-r2 1.5-r2 1.6.3-r2 1.7.9-r3 1.8.5-r5 1.9.6-r5 1.10.3-r3 1.11.6-r3 1.12.6-r2 1.13.4-r2 1.14.1-r2 1.15.1-r2 1.16.2-r1 1.16.3-r1 9999: Used to generate Makefile.in from Makefile.am
 sys-devel/automake-wrapper 11: wrapper for automake to manage multiple automake versions
