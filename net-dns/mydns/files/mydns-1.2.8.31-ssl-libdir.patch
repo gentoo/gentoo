@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/695574
+--- a/m4/mydns.m4
++++ b/m4/mydns.m4
+@@ -37,7 +37,7 @@
+ ##
+ AC_DEFUN([AC_WITH_OPENSSL_LIB],
+ 	[
+-		ac_ssl_lib_dirs="/lib /usr/lib /usr/local/lib /usr/ssl/lib /usr/local/ssl/lib"
++		ac_ssl_lib_dirs="/lib /usr/lib /usr/lib64 /usr/local/lib /usr/ssl/lib /usr/local/ssl/lib"
+ 		AC_ARG_WITH(openssl-lib,
+ 			AC_HELP_STRING([--with-openssl-lib=DIR], [look for the OpenSSL libraries in DIR]),
+ 			ac_ssl_lib_dirs="$withval $ac_ssl_lib_dirs")
