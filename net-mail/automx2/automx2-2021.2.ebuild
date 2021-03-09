@@ -24,6 +24,8 @@ RDEPEND="
 	dev-python/ldap3[${PYTHON_USEDEP}]
 "
 
+distutils_enable_tests unittest
+
 python_prepare_all() {
 	sed -i -e "/('scripts'/d" setup.py || die
 	distutils-r1_python_prepare_all
