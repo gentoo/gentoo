@@ -5395,6 +5395,7 @@ net-analyzer/wireshark:tfshark - Install tfshark, a terminal-based version of th
 net-analyzer/wireshark:tshark - Install tshark, to dump and analyzer network traffic from the command line
 net-analyzer/wireshark:udpdump - Install udpdump, to get packets exported from a source (like a network device or a GSMTAP producer) that are dumped to a pcap file
 net-analyzer/zabbix:agent - Enable zabbix agent (for to-be-monitored machines)
+net-analyzer/zabbix:agent2 - Enable go-based zabbix agent 2 (for to-be-monitored machines)
 net-analyzer/zabbix:frontend - Enable zabbix web frontend
 net-analyzer/zabbix:ipv6 - Turn on support of IPv6
 net-analyzer/zabbix:java - Enable Zabbix Java JMX Management Gateway
