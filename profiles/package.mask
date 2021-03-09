@@ -377,12 +377,6 @@ xfce-extra/xfce4-equake-plugin
 <xfce-extra/xfce4-kbdleds-plugin-0.2.3
 xfce-extra/xfce4-windowck-plugin
 
-# Michał Górny <mgorny@gentoo.org> (2021-02-07)
-# Fails to start due to unpackaged Ruby modules.  Abandoned upstream
-# in 2010.
-# Removal on 2021-03-09.  Bug #769371.
-xfce-extra/eatmonkey
-
 # Michał Górny <mgorny@gentoo.org> (2021-02-01)
 # LibreSSL support is discontinued.  Please read the relevant news item
 # and either migrate to dev-libs/openssl, or use the unsupported
