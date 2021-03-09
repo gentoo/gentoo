@@ -380,11 +380,6 @@ dev-libs/libressl
 # using the latter is still broken.
 dev-go/qt
 
-# Lars Wendler <polynomial-c@gentoo.org> (2020-12-09)
-# Masked until most broken packages have been fixed (bug #732648)
->=sys-devel/autoconf-2.70
->=sys-devel/autoconf-wrapper-14
-
 # Michał Górny <mgorny@gentoo.org> (2020-11-10)
 # This old Kodi version requires vulnerable dev-python/pillow
 # and prevents users from upgrading.  Masked for the time being.
