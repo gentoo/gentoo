@@ -2359,7 +2359,7 @@ app-metrics/mongodb_exporter 0.6.2-r1 0.11.0 0.11.1: Prometheus exporter for Mon
 app-metrics/mysqld_exporter 0.10.0-r1 0.11.0 0.12.1_p20200622: Prometheus exporter for MySQL server metrics
 app-metrics/nginx-lua-prometheus 0.1_pre20170610 0.1_pre20170610-r100: Library that exports Nginx metrics to Prometheus
 app-metrics/nginx-vts-exporter 0.10.3 0.10.7 0.10.7-r1: Nginx virtual host traffic stats exporter for Prometheus
-app-metrics/node_exporter 0.18.1 1.0.1: Prometheus exporter for machine metrics
+app-metrics/node_exporter 0.18.1 1.0.1 1.1.2: Prometheus exporter for machine metrics
 app-metrics/openvpn_exporter 0.2.1 0.3.0: Prometheus Exporter for OpenVPN
 app-metrics/postfix_exporter 0.1.2 0.1.2-r1: Prometheus Exporter for Postfix
 app-metrics/postgres_exporter 0.4.7: PostgreSQL stats exporter for Prometheus
@@ -8641,7 +8641,7 @@ dev-python/oslo-policy 3.5.0: Support for RBAC policy enforcement across all Ope
 dev-python/oslo-privsep 1.33.3 2.4.0: OpenStack library for privilege separation.
 dev-python/oslo-reports 2.2.0: generified reports for openstack
 dev-python/oslo-rootwrap 5.15.2 6.2.0: Allows fine filtering of shell commands to run as root from OpenStack services
-dev-python/oslo-serialization 4.0.1 4.0.2: Oslo Serialization library
+dev-python/oslo-serialization 4.0.2: Oslo Serialization library
 dev-python/oslo-service 2.4.0: Library for running OpenStack services
 dev-python/oslo-sphinx 4.18.0: OpenStack Sphinx Extensions and Theme
 dev-python/oslo-upgradecheck 1.1.1: Oslo i18n library
@@ -8956,7 +8956,7 @@ dev-python/python-blazarclient 3.1.1: This is a client for the OpenStack Blazar 
 dev-python/python-bugzilla 3.0.2: A python module for interacting with Bugzilla over XMLRPC
 dev-python/python-caja 1.24.0-r1 1.24.0-r2: Python bindings for the Caja file manager
 dev-python/python-ceilometerclient 2.9.0: This is a client library for Ceilometer built on the Ceilometer API
-dev-python/python-cinderclient 7.2.0: A client for the OpenStack Cinder API
+dev-python/python-cinderclient 7.2.0 7.2.1: A client for the OpenStack Cinder API
 dev-python/python-cstruct 1.8: C-style structs for Python
 dev-python/python-ctags 1.5.0: Exuberant Ctags indexing python bindings
 dev-python/python-daemon 2.2.4 2.3.0: Library to implement a well-behaved Unix daemon process
@@ -17300,7 +17300,7 @@ sys-cluster/ceph 14.2.16-r3 15.2.8-r1 15.2.9-r1: Ceph distributed filesystem
 sys-cluster/charliecloud 0.21 0.22 9999: Lightweight user-defined software stacks for high-performance computing
 sys-cluster/charm 6.8.2: Message-passing parallel language and runtime system
 sys-cluster/charmdebug 6.2.0-r1: A debugger for Charm++ applications
-sys-cluster/cinder 16.2.1 17.0.1 2020.1.9999 2020.2.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
+sys-cluster/cinder 16.2.1 17.0.1 17.1.0 2020.1.9999 2020.2.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
 sys-cluster/classads 1.0.10: Condor's classified advertisement language
 sys-cluster/cluster-glue 1.0.11 1.0.12 1.0.12-r1: Library pack for Heartbeat / Pacemaker
 sys-cluster/corosync 3.1.0: OSI Certified implementation of a complete cluster engine
