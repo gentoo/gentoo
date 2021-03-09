@@ -1,4 +1,4 @@
-BDEPEND=>=app-portage/elt-patches-20170815 =sys-devel/automake-1.15* >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+BDEPEND=>=app-portage/elt-patches-20170815 =sys-devel/automake-1.15* >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare pretend setup
 DEPEND=virtual/awk dlc? ( dev-libs/libyaml ) readline? ( sys-libs/readline:0 ) server? ( >=sys-fs/zfs-kmod-0.8 >=sys-fs/zfs-0.8 ) dev-python/docutils virtual/linux-sources kernel_linux? ( sys-apps/kmod[tools] dist-kernel? ( virtual/dist-kernel:= ) ) sys-apps/sed kernel_linux? ( virtual/linux-sources virtual/libelf )
 DESCRIPTION=Lustre is a parallel distributed file system
@@ -11,5 +11,5 @@ RDEPEND=virtual/awk dlc? ( dev-libs/libyaml ) readline? ( sys-libs/readline:0 ) 
 REQUIRED_USE=client? ( modules ) server? ( modules )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~alexxy/distfiles/lustre-2.13.0.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	linux-mod	6eea2d40e8514773bec08ae1be26800b	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	udev	452708c3f55cf6e918b045adb949a9e6	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=8346dc693ee2d14acb81c50b8945b6dc
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	linux-mod	6eea2d40e8514773bec08ae1be26800b	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=9f0f5ccf73d27b4c1a2818b276df9f9d

@@ -8094,7 +8094,7 @@ dev-python/cjkwrap 2.2-r1: A library for wrapping and filling UTF-8 CJK text
 dev-python/clang-python 10.0.1 11.0.0 11.0.1 11.1.0 12.0.0_rc2 12.0.0.9999 13.0.0.9999: Python bindings for sys-devel/clang
 dev-python/cleo 0.8.1: Python tool for building testable command-line interfaces
 dev-python/cli_helpers 2.1.0 9999: Python helpers for common CLI tasks
-dev-python/click 6.7-r2 7.1.2-r1: A Python package for creating beautiful command line interfaces
+dev-python/click 6.7-r2 6.7-r3 7.1.2-r1: A Python package for creating beautiful command line interfaces
 dev-python/click-default-group 1.2.2: Extends click. Group to invoke a command without explicit subcommand name
 dev-python/click-log 0.3.2: Logging integration for Click.
 dev-python/click-plugins 1.0.3 1.1.1: Module for click to enable registering CLI commands via setuptools entry-points
@@ -8220,8 +8220,8 @@ dev-python/easyprocess 0.3: Easy to use Python subprocess interface
 dev-python/ebuildtester 0.1.16 0.1.16-r1 0.1.27: A dockerized approach to test a Gentoo package within a clean stage3 container
 dev-python/ecdsa 0.16.1: ECDSA cryptographic signature library in pure Python
 dev-python/editorconfig-core-py 0.12.0 0.12.3-r1: Clone of EditorConfig core written in Python
-dev-python/elasticsearch-curator 5.8.1-r2: Tending time-series indices in Elasticsearch
-dev-python/elasticsearch-py 7.7.0: Official Python low-level client for Elasticsearch
+dev-python/elasticsearch-curator 5.8.1-r2 5.8.1-r3 5.8.3: Tending time-series indices in Elasticsearch
+dev-python/elasticsearch-py 7.7.0 7.7.0-r1: Official Python low-level client for Elasticsearch
 dev-python/elementpath 2.1.2 2.1.4 2.2.0: XPath 1.0/2.0 parsers and selectors for ElementTree and lxml
 dev-python/emcee 3.0.2: Python ensemble sampling toolkit for affine-invariant MCMC
 dev-python/emoji 0.5.4: Emoji for Python
@@ -9318,7 +9318,7 @@ dev-python/unittest2 1.1.0-r1: The new features in unittest backported to Python
 dev-python/uranium 4.8.0: A Python framework for building 3D printing related applications
 dev-python/urdf_parser_py 0.4.3: URDF parser for Python
 dev-python/uritemplate 3.0.1-r1: Python implementation of RFC6570, URI Template
-dev-python/urlgrabber 4.0.0-r1: Python module for downloading files
+dev-python/urlgrabber 4.0.0-r1 4.1.0: Python module for downloading files
 dev-python/urllib3 1.25.11 1.26.2 1.26.2-r1 1.26.2-r2 1.26.2-r3 1.26.3-r1: HTTP library with thread-safe connection pooling, file post, and more
 dev-python/urwid 2.1.1: Curses-based user interface library for Python
 dev-python/urwidtrees 1.0.3: Tree widgets for urwid
@@ -14790,7 +14790,7 @@ net-irc/polari 3.36.3: An IRC client for Gnome
 net-irc/psybnc 2.3.2.9-r3: A multi-user and multi-server gateway to IRC networks
 net-irc/quassel 0.13.1-r2 9999: Qt/KDE IRC client supporting a remote daemon for 24/7 connectivity
 net-irc/quasselgrep 0_p20200830: Tool for searching quassel logs from the commandline
-net-irc/rbot 0.9.15_p20160325-r1: A ruby IRC bot
+net-irc/rbot 0.9.15_p20160325-r2: A ruby IRC bot
 net-irc/rhapsody 0.28b: IRC client intended to be displayed on a text console
 net-irc/scrollz 2.3: Advanced IRC client based on ircII
 net-irc/sic 1.2-r1: An extremely simple IRC client
@@ -15102,7 +15102,7 @@ net-misc/apt-cacher-ng 3.6_p1 9999: Yet another caching HTTP proxy for Debian/Ub
 net-misc/aria2 1.35.0: A download utility with segmented downloading with BitTorrent support
 net-misc/arpd 0.2-r1: ARP server claiming all unassigned addresses (for network monitoring/simulation)
 net-misc/arpsponge 3.17.11: Sweeps up stray ARP queries from a peering LAN
-net-misc/asterisk 13.38.1-r2 16.15.1-r2: Asterisk: A Modular Open Source PBX System
+net-misc/asterisk 13.38.1-r2 13.38.2 16.16.2: Asterisk: A Modular Open Source PBX System
 net-misc/asterisk-core-sounds 1.6.1-r1: Core sounds for asterisk
 net-misc/asterisk-extra-sounds 1.5.2: Extra sounds for asterisk
 net-misc/asterisk-g729 13.0.3.1.9 16.0.3.1.9: G.729 codec and supporting files for asterisk
