@@ -15,7 +15,7 @@ else
 	COMMIT="b99622087233178368cff6cf38ec72fa01dfd8a6"
 	SRC_URI="https://github.com/TACC/Hermes/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/Hermes-${COMMIT}
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~sparc ~x86"
 fi
 
 LICENSE="MIT"
