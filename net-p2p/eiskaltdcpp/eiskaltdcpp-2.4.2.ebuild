@@ -104,6 +104,7 @@ src_prepare() {
 }
 
 src_configure() {
+	use gtk && strip-linguas -i eiskaltdcpp-gtk/po/
 	local mycmakeargs=(
 		-DLIB_INSTALL_DIR="$(get_libdir)"
 		-Dlinguas="$(l10n_get_locales)"
