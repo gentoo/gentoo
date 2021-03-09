@@ -1,23 +1,20 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# NOTE: We have to stick with EAPI 6 for now because of the
-# depend.apache eclass.
-EAPI=6
+EAPI=7
 
 # Variables for the miscellaneous bindings we provide
 PHP_EXT_OPTIONAL_USE="php"
 PHP_EXT_NAME="php_mapscriptng"
 PHP_EXT_SKIP_PHPIZE="yes"
 
-USE_PHP="php7-2 php7-3 php7-4"
+USE_PHP="php7-3 php7-4"
 PYTHON_COMPAT=( python3_{7,8,9} )
 
 WEBAPP_MANUAL_SLOT=yes
 WEBAPP_OPTIONAL=yes
 
-# NOTE: Similarly, we cannot go cmake-utils -> cmake until we're on EAPI 7
-inherit cmake-utils depend.apache eapi7-ver perl-functions php-ext-source-r3 python-r1 webapp
+inherit cmake depend.apache perl-functions php-ext-source-r3 python-r1 webapp
 
 DESCRIPTION="Development environment for building spatially enabled webapps"
 HOMEPAGE="https://mapserver.org/"
@@ -77,9 +74,8 @@ RDEPEND="
 	)
 	python? ( ${PYTHON_DEPS} )
 "
-
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 	perl? ( >=dev-lang/swig-4.0 )
 	php? ( >=dev-lang/swig-4.0 )
@@ -89,6 +85,10 @@ DEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-proj8.patch
+)
+
 want_apache2 apache
 
 pkg_setup() {
@@ -97,7 +97,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	use php && php-ext-source-r3_src_prepare
 	use python && python_copy_sources
@@ -163,7 +163,7 @@ src_configure() {
 	use perl && mycmakeargs+=( "-DCUSTOM_PERL_SITE_ARCH_DIR=$(perl_get_raw_vendorlib)" )
 
 	# Configure the standard build first
-	cmake-utils_src_configure
+	cmake_src_configure
 
 	# Minimal build for bindings
 	# Note that we use _generate_cmake_args to get a clean config each time, then add
@@ -174,7 +174,7 @@ src_configure() {
 			"-DWITH_PYTHON=ON"
 		)
 
-		python_foreach_impl cmake-utils_src_configure
+		python_foreach_impl cmake_src_configure
 		python_foreach_impl python_optimize
 	fi
 
@@ -193,7 +193,7 @@ src_configure() {
 				"-DPHP_INCLUDES=${PHPPREFIX}"
 			)
 
-			BUILD_DIR="${S}/php${slot}" cmake-utils_src_configure
+			BUILD_DIR="${S}/php${slot}" cmake_src_configure
 
 			# Return to where we left off, in case we add more
 			# to this phase.
@@ -203,10 +203,10 @@ src_configure() {
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 
 	if use python ; then
-		python_foreach_impl cmake-utils_src_compile
+		python_foreach_impl cmake_src_compile
 	fi
 
 	if use php ; then
@@ -216,7 +216,7 @@ src_compile() {
 			php_init_slot_env "${slot}"
 
 			# Force cmake to build in it
-			BUILD_DIR="${S}/php${slot}" cmake-utils_src_compile
+			BUILD_DIR="${S}/php${slot}" cmake_src_compile
 
 			# Return to where we left off, in case we add more
 			# to this phase.
@@ -230,7 +230,7 @@ src_install() {
 	use apache && webapp_src_preinst
 
 	if use python ; then
-		python_foreach_impl cmake-utils_src_install
+		python_foreach_impl cmake_src_install
 		python_foreach_impl python_optimize
 	fi
 
@@ -241,14 +241,14 @@ src_install() {
 		for slot in $(php_get_slots) ; do
 			php_init_slot_env "${slot}"
 
-			BUILD_DIR="${S}/php${slot}" cmake-utils_src_install
+			BUILD_DIR="${S}/php${slot}" cmake_src_install
 
 			cd "${S}" || die
 		done
 	fi
 
 	# Install this last because this build is the most "fully-featured"
-	cmake-utils_src_install
+	cmake_src_install
 
 	if use apache ; then
 		# We need a mapserver symlink available in cgi-bin
