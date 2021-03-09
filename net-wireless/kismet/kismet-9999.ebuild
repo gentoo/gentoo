@@ -67,6 +67,7 @@ CDEPEND="
 
 DEPEND="${CDEPEND}
 	dev-libs/boost
+	dev-libs/libfmt
 	virtual/pkgconfig
 "
 
@@ -94,6 +95,16 @@ src_prepare() {
 	#sed -i -e 's#root#kismet#g' packaging/systemd/kismet.service.in
 
 	rm -r boost || die
+	rm -r fmt || die
+
+	#dev-libs/jsoncpp
+	#rm -r json || die
+	#sed -i 's#"json/json.h"#<json/json.h>#' jsoncpp.cc kis_net_beast_httpd.h \
+	#	log_tools/kismetdb_clean.cc log_tools/kismetdb_dump_devices.cc \
+	#	log_tools/kismetdb_statistics.cc log_tools/kismetdb_to_gpx.cc \
+	#	log_tools/kismetdb_to_kml.cc log_tools/kismetdb_to_pcap.cc \
+	#	log_tools/kismetdb_to_wiglecsv.cc trackedcomponent.h \
+	#	trackedelement.h trackedelement_workers.h
 
 	# Don't strip and set correct mangrp
 	sed -i -e 's| -s||g' \
