@@ -28,6 +28,8 @@ REQUIRED_USE="^^ ( mysql postgres )"
 PATCHES=(
 	"${FILESDIR}/${PN}-1.2.8.27-m4.patch"
 	"${FILESDIR}/${P}-texinfo.patch"
+	"${FILESDIR}/${PN}-1.2.8.31-ssl-libdir.patch"
+	"${FILESDIR}/${PN}-1.2.8.31-misc-libdir.patch"
 )
 
 src_prepare() {

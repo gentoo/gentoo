@@ -170,8 +170,8 @@ src_install() {
 
 	# examples
 	if use examples; then
-		insinto /usr/share/doc/${PF}/examples
-		doins \
+		docinto examples
+		dodoc \
 			examples/*.asy \
 			examples/*.views \
 			examples/*.dat \
@@ -183,8 +183,8 @@ src_install() {
 			doc/*.dat \
 			doc/pixel.pdf \
 			doc/extra/*.asy
-		insinto /usr/share/${PN}/examples/animations
-		doins examples/animations/*.asy
+		docinto examples/animations
+		dodoc examples/animations/*.asy
 	fi
 
 	# LaTeX style
@@ -193,10 +193,10 @@ src_install() {
 		insinto "${TEXMF}"/tex/latex/${PN}
 		doins *.sty latexmkrc
 		if use examples; then
-			insinto /usr/share/${PN}/examples
-			doins latexusage.tex externalprc.tex
-			insinto /usr/share/${PN}/examples/animations
-			doins ../examples/animations/*.tex
+			docinto examples
+			dodoc latexusage.tex externalprc.tex
+			docinto examples/animations
+			dodoc ../examples/animations/*.tex
 		fi
 		cd .. || die
 	fi

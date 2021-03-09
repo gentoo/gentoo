@@ -1,22 +1,19 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit flag-o-matic perl-functions
 
-MY_PN="atheme"
-MY_PV="7.2.10-r2"
-
 DESCRIPTION="A portable and secure set of open-source and modular IRC services"
 HOMEPAGE="https://github.com/atheme/atheme"
-SRC_URI="https://github.com/atheme/atheme/releases/download/v${MY_PV}/${MY_PN}-v${MY_PV}.tar.xz -> ${P}.tar.xz"
+SRC_URI="https://github.com/atheme/atheme/releases/download/v${PV}/${PN}-v${PV}.tar.xz -> ${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="cracklib largenet ldap nls +pcre perl profile ssl"
-S="${WORKDIR}/${MY_PN}-v${MY_PV}"
+S="${WORKDIR}/${PN}-v${PV}"
 
 RDEPEND="
 	acct-group/atheme-services
@@ -34,8 +31,7 @@ BDEPEND="
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-configure-logdir.patch
-	"${FILESDIR}"/${P}-fix-backtrace-compat-detection.patch)
+	"${FILESDIR}"/${PN}-7.2.10_p2-configure-logdir.patch)
 
 src_configure() {
 	# perl scriping module support is also broken in 7.0.0. Yay for QA failures.
