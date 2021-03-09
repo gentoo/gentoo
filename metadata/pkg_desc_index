@@ -10572,8 +10572,8 @@ dev-tcltk/tls 1.7.16 1.7.22: TLS OpenSSL extension to Tcl
 dev-tcltk/togl 2.0-r3: A Tk widget for OpenGL rendering
 dev-tcltk/vtcl 1.6.0-r2 1.6.1_alpha1: Visual Tcl is a high-quality application development environment
 dev-tex/abntex 0.9_beta2-r1: LaTeX macros for writing documents following the ABNT norms
-dev-tex/biber 2.14: A BibTeX replacement for users of biblatex
-dev-tex/biblatex 3.14: Reimplementation of the bibliographic facilities provided by LaTeX
+dev-tex/biber 2.14 2.16: A BibTeX replacement for users of biblatex
+dev-tex/biblatex 3.14 3.16: Reimplementation of the bibliographic facilities provided by LaTeX
 dev-tex/biblatex-gost 1.17: Biblatex styles for Russian GOST 7.0.5-2008 bibliography standard
 dev-tex/bibtex2html 1.99: A bibtex to HTML converter
 dev-tex/bibtexu 3.71_p20200406: 8-bit Implementation of BibTeX 0.99 with a Very Large Capacity
@@ -15753,7 +15753,7 @@ perl-core/Text-Tabs+Wrap 2013.52.300-r1: Expand/unexpand tabs per unix expand an
 perl-core/Thread-Semaphore 2.120.0-r1: Thread-safe semaphores
 perl-core/Time-HiRes 1.972.600-r1: Perl Time::HiRes. High resolution alarm, sleep, gettimeofday, interval timers
 perl-core/Time-Local 1.230.0-r1: Implements timelocal() and timegm()
-perl-core/Unicode-Collate 1.250.0: Unicode Collate Algorithm
+perl-core/Unicode-Collate 1.250.0 1.290.0: Unicode Collate Algorithm
 perl-core/Unicode-Normalize 1.250.0: Unicode Normalization Forms
 perl-core/libnet 1.270.0: A URI Perl Module
 perl-core/parent 0.228-r1: Establish an ISA relationship with base classes at compile time
@@ -17933,7 +17933,7 @@ virtual/perl-Tie-RefHash 1.390.0-r12: Virtual for Tie-RefHash
 virtual/perl-Time-HiRes 1.976.0 1.976.400: Virtual for Time-HiRes
 virtual/perl-Time-Local 1.280.0-r1: Virtual for Time-Local
 virtual/perl-Time-Piece 1.330.0 1.340.100: Virtual for Time-Piece
-virtual/perl-Unicode-Collate 1.270.0-r1: Virtual for Unicode-Collate
+virtual/perl-Unicode-Collate 1.270.0-r1 1.290.0: Virtual for Unicode-Collate
 virtual/perl-Unicode-Normalize 1.260.0-r2 1.270.0: Virtual for Unicode-Normalize
 virtual/perl-XSLoader 0.300.0-r3: Virtual for XSLoader
 virtual/perl-autodie 2.290.0-r5 2.320.0: Virtual for autodie
