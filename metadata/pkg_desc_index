@@ -8785,7 +8785,7 @@ dev-python/pycuda 2019.1.2: Python wrapper for NVIDIA CUDA
 dev-python/pycups 1.9.73-r2: Python bindings for the CUPS API
 dev-python/pycurl 7.43.0.6: python binding for curl/libcurl
 dev-python/pycxx 7.1.2-r2: Set of facilities to extend Python with C++
-dev-python/pydantic 1.6.1: Data parsing and validation using Python type hints
+dev-python/pydantic 1.6.1 1.8.1: Data parsing and validation using Python type hints
 dev-python/pydata-sphinx-theme 0.4.3: Bootstrap-based Sphinx theme from the PyData community
 dev-python/pydecomp 0.3-r1 9999: A python library of common (de)compression and contents handling
 dev-python/pydiff 0.2-r1: Diffs two Python files at the bytecode level
@@ -9318,7 +9318,7 @@ dev-python/unittest2 1.1.0-r1: The new features in unittest backported to Python
 dev-python/uranium 4.8.0: A Python framework for building 3D printing related applications
 dev-python/urdf_parser_py 0.4.3: URDF parser for Python
 dev-python/uritemplate 3.0.1-r1: Python implementation of RFC6570, URI Template
-dev-python/urlgrabber 4.0.0: Python module for downloading files
+dev-python/urlgrabber 4.0.0-r1: Python module for downloading files
 dev-python/urllib3 1.25.11 1.26.2 1.26.2-r1 1.26.2-r2 1.26.2-r3 1.26.3-r1: HTTP library with thread-safe connection pooling, file post, and more
 dev-python/urwid 2.1.1: Curses-based user interface library for Python
 dev-python/urwidtrees 1.0.3: Tree widgets for urwid
@@ -10759,7 +10759,7 @@ dev-util/cucumber-wire 0.0.1-r1: Executable feature scenarios
 dev-util/cunit 2.1_p3: C Unit Test Framework
 dev-util/cutils 1.6-r4: C language utilities
 dev-util/cutter 1.12.0: A Qt and C++ GUI for radare2 reverse engineering framework
-dev-util/cvise 1.9.0 2.0.0 2.1.0 2.2.0: Super-parallel Python port of the C-Reduce
+dev-util/cvise 1.9.0 2.0.0 2.1.0 2.2.0 2.3.0: Super-parallel Python port of the C-Reduce
 dev-util/cwdiff 0.4.0 9999: A script that wraps wdiff to support directories and colorize the output
 dev-util/d-feet 0.3.14-r1: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 19.04.0-r1: Run executables under a new DBus session for testing
