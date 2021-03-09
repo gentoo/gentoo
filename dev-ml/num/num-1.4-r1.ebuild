@@ -3,6 +3,7 @@
 
 EAPI=7
 
+# Not using dune for now, bug #775119
 inherit findlib
 
 DESCRIPTION="Library for arbitrary-precision integer and rational arithmetic"
