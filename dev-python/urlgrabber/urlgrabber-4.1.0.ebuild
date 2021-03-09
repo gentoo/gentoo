@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,6 +10,7 @@ inherit distutils-r1
 DESCRIPTION="Python module for downloading files"
 HOMEPAGE="http://urlgrabber.baseurl.org https://github.com/rpm-software-management/urlgrabber"
 SRC_URI="https://github.com/rpm-software-management/${PN}/archive/${PN}-${PV//./-}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-${PN}-${PV//./-}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -18,15 +19,15 @@ RESTRICT="test"
 
 RDEPEND="
 	dev-python/pycurl[${PYTHON_USEDEP}]
-	dev-python/urllib3[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
+	dev-python/urllib3[${PYTHON_USEDEP}]
 "
+BDEPEND="dev-python/six[${PYTHON_USEDEP}]"
 
 PATCHES=(
 	"${FILESDIR}/${P}-skip-test_range.patch"
 	"${FILESDIR}/${P}-test-mirror-set-thread-daemon.patch"
 )
-S="${WORKDIR}/${PN}-${PN}-${PV//./-}"
 
 python_test() {
 	# Entire testsuite relies on connecting to the i'net, added for reference
