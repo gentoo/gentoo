@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit desktop
+EAPI=7
+inherit autotools desktop
 
 DESCRIPTION="Addictive OpenGL-based block game"
 HOMEPAGE="http://www.nongnu.org/crack-attack/"
@@ -15,28 +15,37 @@ IUSE="gtk sdl"
 
 RDEPEND="
 	media-libs/freeglut
-	sdl? ( media-libs/libsdl
-		media-libs/sdl-mixer )
+	sdl? (
+		media-libs/libsdl
+		media-libs/sdl-mixer
+	)
 	gtk? ( >=x11-libs/gtk+-2.6:2 )
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-glut.patch
+	"${FILESDIR}"/${P}-gcc43.patch
+	"${FILESDIR}"/${P}-avoid_bashisms.patch
+)
+
 src_prepare() {
 	default
-	eapply \
-		"${FILESDIR}"/${P}-glut.patch \
-		"${FILESDIR}"/${P}-gcc43.patch
+	eautoreconf
 	sed -i 's/-lXmu//' src/gtk-gui/Makefile.in src/Makefile.in || die
 	touch -r . * */*
 }
 
 src_configure() {
-	econf \
-		--disable-binreloc \
-		$(use_enable sdl sound) \
+	local myeconfargs=(
+		--disable-binreloc
+		$(use_enable sdl sound)
 		$(use_enable gtk)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
