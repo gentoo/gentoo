@@ -10,6 +10,14 @@
 		device over USB as well as verifying attestation and assertion
 		signatures.
 	</longdescription>
+	<slots>
+		<subslots>
+			Reflects the versions that introduce backwards
+			incompatible changes. Do not bind with ':=',
+			unless you are absolutely sure. In most cases, you
+			should bind to a specific subslot.
+		</subslots>
+	</slots>
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">Yubico/python-fido2</remote-id>
