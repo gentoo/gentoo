@@ -3,7 +3,7 @@
 
 EAPI=7
 
-USE_RUBY="ruby25 ruby26 ruby27"
+USE_RUBY="ruby25 ruby26 ruby27 ruby30"
 
 # The test target also contains test:exe but that requires
 # shoulda-context which we do not have packaged yet.
@@ -39,6 +39,7 @@ ruby_add_bdepend "test? ( dev-ruby/rspec:3 )"
 all_ruby_prepare() {
 	sed -i -e "/[Bb]undler/d" Rakefile || die
 	sed -i -e '/git ls-files/ s:^:#:' -e 's/.rc.*"/"/' coderay.gemspec || die
+	sed -i -e '/simplecov/ s:^:#:' spec/spec_helper.rb test/*/*.rb || die
 
 	# Fix failing tests for lazy evaluation in ruby26
 	sed -i -e 's/\.filter$/.filter.to_a/' test/unit/filter.rb || die
