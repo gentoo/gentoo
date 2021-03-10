@@ -2875,7 +2875,7 @@ app-text/blogc 0.20.0 9999: A blog compiler
 app-text/bogosort 0.4.2-r1: A file sorting program which uses the bogosort algorithm
 app-text/build-docbook-catalog 1.21: DocBook XML catalog auto-updater
 app-text/c2ps 4.0: Generates a beautified ps document from a source file (c/c++)
-app-text/calibre 4.22.0 4.23.0 5.4.2-r1 5.6.0: Ebook management application
+app-text/calibre 4.22.0 4.23.0 5.4.2-r1 5.6.0 5.13.0: Ebook management application
 app-text/capyt 1.1.1: A python3 CLI utility to interface with cpy.pt paste service
 app-text/catdoc 0.95-r1: Converter for Microsoft Word, Excel, PowerPoint and RTF files to text
 app-text/cb2bib 2.0.0-r1: Tool for extracting unformatted bibliographic references
@@ -3678,7 +3678,7 @@ dev-embedded/lpc21isp 1.85: In-circuit programming (ISP) tool for the NXP microc
 dev-embedded/mcu8051ide 1.4.10: Graphical IDE for microcontrollers based on 8051.
 dev-embedded/mspdebug 0.24 0.25: A free debugger for use with MSP430 MCUs
 dev-embedded/nodemcu-uploader 1.0.0: Simple tool for uploading files to the filesystem of an ESP8266 running NodeMCU
-dev-embedded/openocd 0.10.0-r1 0.11.0_rc2 9999: OpenOCD - Open On-Chip Debugger
+dev-embedded/openocd 0.10.0-r1 0.11.0 9999: OpenOCD - Open On-Chip Debugger
 dev-embedded/parapin 1.5.0 1.5.1_beta1: A parallel port pin programming library
 dev-embedded/picasm 1.14: An assembler and disassembler for 12 and 14-bit PIC chips
 dev-embedded/picp 0.6.8: A commandline interface to Microchip's PICSTART+ programmer
@@ -17738,7 +17738,7 @@ sys-power/powerstat 0.02.21 0.02.22 9999: Laptop power measuring tool
 sys-power/powertop 2.13-r1 9999: tool to diagnose issues with power consumption and power management
 sys-power/sispmctl 4.1: GEMBIRD SiS-PM control utility
 sys-power/suspend 1.0_p20190605 1.0_p20200924: Userspace Software Suspend and S2Ram
-sys-power/thermald 2.4.1-r1 2.4.2: Thermal daemon for Intel architectures
+sys-power/thermald 2.4.1-r1 2.4.2 2.4.3: Thermal daemon for Intel architectures
 sys-power/tuxedo-cc-wmi 0.1.4-r1: Kernel Module for Tuxedo WMI
 sys-power/uhubctl 2.4.0: USB hub per-port power control
 sys-power/upower 0.99.9-r1 0.99.11: D-Bus abstraction for enumerating power devices, querying history and statistics
