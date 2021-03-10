@@ -53,6 +53,7 @@ cnr - Montenegrin
 cop - Coptic
 co - Corsican
 cs - Czech
+csb - Kashubian
 cu - Church Slavic
 cy - Welsh
 da - Danish
@@ -104,10 +105,12 @@ gug - Paraguayan Guarani
 gv - Manx
 he - Hebrew
 hi - Hindi
+hil - Hiligaynon
 hr - Croatian
 hsb - Upper Sorbian
 ht - Haitian
 hu - Hungarian
+hus - Huastec
 hy - Armenian
 ia - Interlingua
 id - Indonesian
@@ -153,12 +156,14 @@ my - Burmese
 nan - Min Nan Chinese
 nb - Norwegian Bokmål
 nd - North Ndebele
+nds - Low German
 ne - Nepali
 nl - Dutch
 nn - Norwegian Nynorsk
 no - Norwegian
 nr - South Ndebele
 nso - Northern Sotho
+ny - Chichewa
 oc - Occitan
 om - Oromo
 or - Oriya (macrolanguage)
@@ -206,6 +211,7 @@ szl - Silesian
 ta - Tamil
 ta-LK - Tamil (Sri Lanka)
 te - Telugu
+tet - Tetum
 tg - Tajik
 th - Thai
 ti - Tigrinya
@@ -227,6 +233,7 @@ ve - Venda
 vec - Venetian
 vi - Vietnamese
 vls - Vlaams
+wa - Walloon
 xh - Xhosa
 yi - Yiddish
 yo - Yoruba
