@@ -11,4 +11,4 @@ REQUIRED_USE=^^ ( python_single_target_python3_8 python_single_target_python3_9 
 SLOT=0
 SRC_URI=https://download.calibre-ebook.com/5.13.0/calibre-5.13.0.tar.xz https://dev.gentoo.org/~zmedico/dist/calibre-5.4.2-SIP-v4-04ad7b.patch https://dev.gentoo.org/~zmedico/dist/calibre-5.4.2-SIP-v4.patch.xz
 _eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	desktop	c0d27bf73aa08ca05b663dbd31fbef28	multilib	d410501a125f99ffb560b0c523cd3d1e	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	41a7dd844b3de07121fe2821bbeea142	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=7628eeb12750264e81ba1cf9d5b04cd9
+_md5_=42ce6c3dc9f194c05f6f0d4f26a12dde
