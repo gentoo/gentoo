@@ -56,6 +56,7 @@ src_configure() {
 	cd src || die
 
 	use custom-cflags || strip-flags
+	append-cflags -fcommon
 
 	econf \
 		--disable-native-march \
