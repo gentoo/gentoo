@@ -1,6 +1,6 @@
-BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=virtual/linux-sources virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
-DEPEND=net-firewall/iptables:0= snmp? ( net-analyzer/net-snmp ) virtual/linux-sources virtual/pkgconfig kernel_linux? ( sys-apps/kmod[tools] dist-kernel? ( virtual/dist-kernel:= ) ) sys-apps/sed kernel_linux? ( virtual/linux-sources virtual/libelf )
+DEPEND=net-firewall/iptables:0= snmp? ( net-analyzer/net-snmp ) kernel_linux? ( sys-apps/kmod[tools] dist-kernel? ( virtual/dist-kernel:= ) ) sys-apps/sed kernel_linux? ( virtual/linux-sources virtual/libelf )
 DESCRIPTION=Netflow iptables module
 EAPI=7
 HOMEPAGE=https://sourceforge.net/projects/ipt-netflow https://github.com/aabc/ipt-netflow
@@ -10,4 +10,4 @@ PROPERTIES=live
 RDEPEND=net-firewall/iptables:0= snmp? ( net-analyzer/net-snmp ) kernel_linux? ( sys-apps/kmod[tools] dist-kernel? ( virtual/dist-kernel:= ) )
 SLOT=0
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	git-r3	3e7ec3d6619213460c85e2aa48398441	l10n	8cdd85e169b835d518bc2fd59f780d8e	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	linux-mod	6eea2d40e8514773bec08ae1be26800b	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=b5214377712b710eecdea6597a9e8108
+_md5_=49f9591580f69903667cee4ce153bde7

@@ -1,7 +1,8 @@
+BDEPEND=virtual/pkgconfig sphinx? ( dev-python/sphinx ) >=app-portage/elt-patches-20170815
 DEFINED_PHASES=configure install prepare setup
-DEPEND=>=dev-libs/onigmo-6.1.1:0= benchmark? ( >=dev-libs/glib-2.8 ) jemalloc? ( dev-libs/jemalloc:0= ) libedit? ( >=dev-libs/libedit-3 ) libevent? ( dev-libs/libevent:0= ) lzo? ( dev-libs/lzo ) mecab? ( >=app-text/mecab-0.80 ) msgpack? ( dev-libs/msgpack ) sphinx? ( >=dev-python/sphinx-1.0.1 ) zeromq? ( net-libs/zeromq:0= ) zlib? ( sys-libs/zlib:0= ) zstd? ( app-arch/zstd:0= ) virtual/pkgconfig sphinx? ( dev-python/sphinx ) >=app-portage/elt-patches-20170815
+DEPEND=>=dev-libs/onigmo-6.1.1:0= benchmark? ( >=dev-libs/glib-2.8 ) jemalloc? ( dev-libs/jemalloc:0= ) libedit? ( >=dev-libs/libedit-3 ) libevent? ( dev-libs/libevent:0= ) lzo? ( dev-libs/lzo ) mecab? ( >=app-text/mecab-0.80 ) msgpack? ( dev-libs/msgpack ) sphinx? ( >=dev-python/sphinx-1.0.1 ) zeromq? ( net-libs/zeromq:0= ) zlib? ( sys-libs/zlib:0= ) zstd? ( app-arch/zstd:0= )
 DESCRIPTION=An Embeddable Fulltext Search Engine
-EAPI=6
+EAPI=7
 HOMEPAGE=https://groonga.org/
 IUSE=abort benchmark debug doc dynamic-malloc-change +exact-alloc-count examples fmalloc futex jemalloc libedit libevent lzo +mecab msgpack +nfkc sphinx static-libs uyield zeromq zlib zstd
 KEYWORDS=~amd64 ~x86
@@ -11,4 +12,4 @@ REQUIRED_USE=abort? ( dynamic-malloc-change ) fmalloc? ( dynamic-malloc-change )
 SLOT=0
 SRC_URI=https://packages.groonga.org/source/groonga/groonga-8.0.2.tar.gz
 _eclasses_=libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
-_md5_=e84f482cee46409b22818721ff73f658
+_md5_=0f8bd10639825fe7c46d6d23cebcc2c8

@@ -11,4 +11,4 @@ RESTRICT=mirror
 SLOT=0
 SRC_URI=x86? ( https://docs.broadcom.com/docs-and-downloads/docs/linux_sta/hybrid-v35-nodebug-pcoem-6_30_223_271.tar.gz ) amd64? ( https://docs.broadcom.com/docs-and-downloads/docs/linux_sta/hybrid-v35_64-nodebug-pcoem-6_30_223_271.tar.gz ) https://docs.broadcom.com/docs-and-downloads/docs/linux_sta/README_6.30.223.271.txt -> README-broadcom-sta-6.30.223.271.txt
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	linux-mod	6eea2d40e8514773bec08ae1be26800b	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=f88cdf002830c3657a69c1d77996f91c
+_md5_=ba19ece2b68cbdb64ac018d9d9dbc814

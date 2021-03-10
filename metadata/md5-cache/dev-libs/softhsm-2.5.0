@@ -1,4 +1,4 @@
-BDEPEND=virtual/pkgconfig sys-devel/gcc:=[cxx] test? ( dev-util/cppunit )
+BDEPEND=sys-devel/gcc:=[cxx] virtual/pkgconfig test? ( dev-util/cppunit )
 DEFINED_PHASES=configure install
 DEPEND=migration-tool? ( dev-db/sqlite:3= ) !libressl? ( dev-libs/openssl:0=[bindist=] ) libressl? ( dev-libs/libressl:= ) !~dev-libs/softhsm-2.0.0:0
 DESCRIPTION=A software PKCS#11 implementation
@@ -11,4 +11,4 @@ RDEPEND=migration-tool? ( dev-db/sqlite:3= ) !libressl? ( dev-libs/openssl:0=[bi
 RESTRICT=!test? ( test )
 SLOT=2
 SRC_URI=https://www.opendnssec.org/files/source/softhsm-2.5.0.tar.gz
-_md5_=f986d8ddb749df87ed1b49ca4225d45d
+_md5_=6a939b5aaa201237be69c099cb5609fd

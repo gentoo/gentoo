@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile config install postinst prepare setup unpack
-DEPEND=ssl? ( >=dev-libs/openssl-0.9.7d ) oidentd? ( >=net-misc/oidentd-2.0 )
+DEPEND=ssl? ( >=dev-libs/openssl-0.9.7d:= ) oidentd? ( >=net-misc/oidentd-2.0 )
 DESCRIPTION=A multi-user and multi-server gateway to IRC networks
 EAPI=7
 HOMEPAGE=http://www.psybnc.at/index.html
 IUSE=ipv6 ssl oidentd scripting multinetwork
 KEYWORDS=~amd64 ~ppc ~sparc ~x86
 LICENSE=GPL-2
-RDEPEND=ssl? ( >=dev-libs/openssl-0.9.7d ) oidentd? ( >=net-misc/oidentd-2.0 )
+RDEPEND=ssl? ( >=dev-libs/openssl-0.9.7d:= ) oidentd? ( >=net-misc/oidentd-2.0 )
 SLOT=0
 SRC_URI=http://www.psybnc.at/download/beta/psyBNC-2.3.2-9.tar.gz
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
-_md5_=bcd0b15aee5ff1f60c74611621461441
+_md5_=08f81a410f6f14efd6d8694a9f04f811
