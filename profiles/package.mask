@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Mair-Keimberger <mmk@levelnine.at> (2021-03-10)
+# Last upstream release a decade age
+# from the package todo: amap is outdated. use nmap instead
+# Masked for removal in 30 days.
+net-analyzer/amap
+
 # Hans de Graaff <graaff@gentoo.org> (2021-03-09)
 # Last upstream release in 2013, ruby25-only.
 # Masked for removal in 30 days.
