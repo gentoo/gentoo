@@ -8567,6 +8567,7 @@ dev-python/nagiosplugin 1.3.2-r1: A class library for writing nagios-compatible 
 dev-python/namespace-google 1-r1: Namespace package declaration for google
 dev-python/namespace-paste 1-r1: Namespace package declaration for paste
 dev-python/namespace-repoze 1: Namespace package declaration for repoze
+dev-python/namespace-ruamel 1: Namespace package declaration for ruamel
 dev-python/namespace-sphinxcontrib 1.0: Namespace package declaration for sphinxcontrib
 dev-python/namespace-zope 1-r1: Namespace package declaration for zope
 dev-python/natsort 7.1.1: Natural sorting for Python
@@ -9126,6 +9127,7 @@ dev-python/rsa 4.7 4.7.1 4.7.2: Pure-Python RSA implementation
 dev-python/rst-linker 2.1.1: Sphinx plugin to add links and timestamps to the changelog
 dev-python/rtimulib 7.2.1-r1: Python Binding for RTIMULib, a versatile IMU library
 dev-python/rtslib-fb 2.1.74: A Python object API for managing the Linux LIO kernel target
+dev-python/ruamel-std-pathlib 0.6.4-r2: Ruamel enhancements to pathlib and pathlib2
 dev-python/ruamel-yaml 0.16.12-r1 0.16.13: YAML parser/emitter that supports roundtrip comment preservation
 dev-python/ruamel-yaml-clib 0.2.2-r1: C-based reader/scanner and emitter for dev-python/ruamel-yaml
 dev-python/ryu 4.34: Component-based Software-defined Networking Framework
