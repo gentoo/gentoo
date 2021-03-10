@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,15 +8,14 @@ MY_PN="estimator"
 MY_PV=${PV/_rc/-rc}
 MY_P=${MY_PN}-${MY_PV}
 
-inherit bazel distutils-r1 flag-o-matic toolchain-funcs
+inherit bazel distutils-r1
 
-DESCRIPTION="A high-level TensorFlow API that greatly simplifies machine learning programming"
+DESCRIPTION="High-level TensorFlow API that greatly simplifies machine learning programming"
 HOMEPAGE="https://www.tensorflow.org/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 
 bazel_external_uris="
 	https://github.com/bazelbuild/rules_cc/archive/0d5f3f2768c6ca2faca0079a997a97ce22997a0c.zip -> bazelbuild-rules_cc-0d5f3f2768c6ca2faca0079a997a97ce22997a0c.zip
@@ -29,6 +28,7 @@ SRC_URI="https://github.com/tensorflow/${MY_PN}/archive/v${MY_PV}.tar.gz -> ${P}
 RDEPEND="sci-libs/tensorflow[python,${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="
+	app-arch/unzip
 	dev-java/java-config
 	>=dev-util/bazel-3"
 
