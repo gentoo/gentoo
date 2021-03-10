@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="The ANTLR 4 C++ Runtime"
 HOMEPAGE="https://www.antlr.org/"
@@ -23,5 +23,5 @@ src_prepare() {
 	sed -i -e "s#share/doc/libantlr4#share/doc/${P}#g" \
 		"${S}"/CMakeLists.txt || die "failed sed"
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
