@@ -1,15 +1,15 @@
 BDEPEND=qt5? ( dev-qt/linguist-tools:5 )
 DEFINED_PHASES=configure install postinst prepare pretend setup
 DEPEND=dev-libs/xapian:= sys-libs/zlib:= virtual/libiconv chm? ( dev-libs/chmlib dev-python/pychm ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtprintsupport:5 webengine? ( dev-qt/qtwebengine:5[widgets] ) ) session? ( inotify? ( x11-libs/libSM x11-libs/libICE x11-libs/libX11 ) ) spell? ( app-text/aspell ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] )
-DESCRIPTION=A personal full text search package
+DESCRIPTION=Personal full text search package
 EAPI=7
 HOMEPAGE=https://www.lesbonscomptes.com/recoll/
 IUSE=camelcase chm doc +inotify qt5 session +spell webengine kernel_linux +python_single_target_python3_7
 KEYWORDS=amd64 x86
-LICENSE=GPL-2
+LICENSE=GPL-2+
 RDEPEND=dev-libs/xapian:= sys-libs/zlib:= virtual/libiconv chm? ( dev-libs/chmlib dev-python/pychm ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtprintsupport:5 webengine? ( dev-qt/qtwebengine:5[widgets] ) ) session? ( inotify? ( x11-libs/libSM x11-libs/libICE x11-libs/libX11 ) ) spell? ( app-text/aspell ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) app-arch/unzip
 REQUIRED_USE=session? ( inotify ) webengine? ( qt5 ) ^^ ( python_single_target_python3_7 )
 SLOT=0
 SRC_URI=https://www.lesbonscomptes.com/recoll/recoll-1.25.19.tar.gz
 _eclasses_=linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	optfeature	6a2add34e06e5a05d88471a33ccdd73e	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	41a7dd844b3de07121fe2821bbeea142	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=e8cf3c88e59a67a9cc46ea6645797044
+_md5_=8d63339c01d3b62b2c55df2bbaebe1d6
