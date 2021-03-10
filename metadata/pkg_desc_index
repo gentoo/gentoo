@@ -1034,6 +1034,7 @@ app-crypt/acme-tiny 4.1.0 9999: A tiny, auditable script for Let's Encrypt's ACM
 app-crypt/acr38u 1.7.11-r3: Non CCID driver for ACR38 AC1038-based Smart Card Reader
 app-crypt/aescrypt 3.0.6b 3.14: Advanced file encryption using AES
 app-crypt/aespipe 2.4e 2.4f: Encrypts data from stdin to stdout
+app-crypt/age 1.0.0_beta_p7: A simple, modern and secure encryption tool (and Go library)
 app-crypt/argon2 20190702: Password hashing software that won the Password Hashing Competition (PHC)
 app-crypt/asedriveiiie-serial 3.5: ASEDriveIIIe Serial Card Reader
 app-crypt/asedriveiiie-usb 3.5: ASEDriveIIIe USB Card Reader
@@ -7943,7 +7944,7 @@ dev-python/APScheduler 3.6.3: In-process task scheduler with Cron-like capabilit
 dev-python/Babel 2.8.1 2.9.0: Collection of tools for internationalizing Python applications
 dev-python/BitVector 3.4.9 3.4.9-r1: A pure-Python memory-efficient packed representation for bit arrays
 dev-python/CppHeaderParser 2.7.4: Parse C++ header files and generate a data structure
-dev-python/Faker 5.6.5 6.4.1 6.5.1: A Python package that generates fake data for you
+dev-python/Faker 5.6.5 6.4.1 6.5.1 6.6.0: A Python package that generates fake data for you
 dev-python/GitPython 3.1.12 3.1.13 3.1.14: Library used to interact with Git repositories
 dev-python/GridDataFormats 0.5.0: Reading and writing of data on regular grids in Python
 dev-python/MechanicalSoup 0.12.0 1.0.0: A python library for automating interaction with websites
@@ -8371,7 +8372,7 @@ dev-python/hvac 0.10.8: hashicorp vault client in python
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 21.0.0: A featureful, correct URL for Python
-dev-python/hypothesis 6.1.1 6.2.0 6.3.4 6.4.0 6.4.2 6.4.3 6.6.0: A library for property based testing
+dev-python/hypothesis 6.1.1 6.2.0 6.3.4 6.4.0 6.4.2 6.4.3 6.6.0 6.7.0: A library for property based testing
 dev-python/icalendar 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/idna 2.10-r1 3.0 3.1: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0-r1: Patch ssl.match_hostname for Unicode(idna) domains support
@@ -8700,7 +8701,7 @@ dev-python/pickleshare 0.7.5: A small 'shelve' like datastore with concurrency s
 dev-python/pid 3.0.4: Pidfile featuring stale detection and file-locking
 dev-python/piexif 1.1.3-r1: Exif manipulation with pure Python
 dev-python/pika 1.1.0: Pure-Python implementation of the AMQP
-dev-python/pikepdf 2.5.2 2.6.0 2.7.0 2.8.0 2.8.0_p1: Python library to work with pdf files based on qpdf
+dev-python/pikepdf 2.5.2 2.6.0 2.7.0 2.8.0 2.8.0_p1 2.8.0_p2: Python library to work with pdf files based on qpdf
 dev-python/pilkit 2.0: A collection of utilities and processors for the Python Imaging Libary
 dev-python/pillow 8.1.1 8.1.2: Python Imaging Library (fork)
 dev-python/pip 21.0.1: Installs python packages -- replacement for easy_install
@@ -9350,7 +9351,7 @@ dev-python/waitress 1.4.4 2.0.0: A pure-Python WSGI server
 dev-python/wand 0.6.5 0.6.6: Ctypes-based simple ImageMagick binding for Python
 dev-python/warlock 1.3.3: Python object model built on JSON schema and JSON patch
 dev-python/watchdog 1.0.2 2.0.0 2.0.1 2.0.2: Python API and shell utilities to monitor file system events
-dev-python/wcmatch 7.1 7.2 8.0 8.0.1 8.1 8.1.1: Wildcard/glob file name matcher
+dev-python/wcmatch 7.1 7.2 8.0 8.0.1 8.1 8.1.1 8.1.2: Wildcard/glob file name matcher
 dev-python/wcwidth 0.2.5-r1: Measures number of Terminal column cells of wide-character codes
 dev-python/weasyprint 51 52.3: Visual rendering engine for HTML and CSS that can export to PDF
 dev-python/webassets 2.0: Asset management for Python web development
@@ -10763,7 +10764,7 @@ dev-util/cucumber-wire 0.0.1-r1: Executable feature scenarios
 dev-util/cunit 2.1_p3: C Unit Test Framework
 dev-util/cutils 1.6-r4: C language utilities
 dev-util/cutter 1.12.0: A Qt and C++ GUI for radare2 reverse engineering framework
-dev-util/cvise 1.9.0 2.0.0 2.1.0 2.2.0 2.3.0: Super-parallel Python port of the C-Reduce
+dev-util/cvise 2.1.0 2.2.0 2.3.0: Super-parallel Python port of the C-Reduce
 dev-util/cwdiff 0.4.0 9999: A script that wraps wdiff to support directories and colorize the output
 dev-util/d-feet 0.3.14-r1: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 19.04.0-r1: Run executables under a new DBus session for testing

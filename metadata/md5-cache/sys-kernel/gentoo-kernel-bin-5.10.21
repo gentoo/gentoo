@@ -11,5 +11,5 @@ RDEPEND=!sys-kernel/gentoo-kernel:5.10.21 || ( sys-kernel/installkernel-gentoo s
 RESTRICT=!test? ( test ) test? ( userpriv ) arm? ( test )
 SLOT=5.10.21
 SRC_URI=https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.tar.xz https://dev.gentoo.org/~mpagano/dist/genpatches/genpatches-5.10-24.base.tar.xz https://dev.gentoo.org/~mpagano/dist/genpatches/genpatches-5.10-24.extras.tar.xz amd64? ( https://dev.gentoo.org/~mgorny/binpkg/amd64/kernel/sys-kernel/gentoo-kernel/gentoo-kernel-5.10.21-1.xpak -> gentoo-kernel-5.10.21-1.amd64.xpak ) x86? ( https://dev.gentoo.org/~mgorny/binpkg/x86/kernel/sys-kernel/gentoo-kernel/gentoo-kernel-5.10.21-1.xpak -> gentoo-kernel-5.10.21-1.x86.xpak )
-_eclasses_=dist-kernel-utils	ba761317b3fcd25e34c3fb8e5bf1e45f	kernel-install	25b86fd436d75846aad25d1ec72163ec	mount-boot	060ced4c5e0fd737db17cbb609bbf557	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=dist-kernel-utils	ba761317b3fcd25e34c3fb8e5bf1e45f	kernel-install	1835aacda8cc29bfa7d21ecf2fe44cbb	mount-boot	060ced4c5e0fd737db17cbb609bbf557	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=8040503440faa9331505cbbbbc2a081a
