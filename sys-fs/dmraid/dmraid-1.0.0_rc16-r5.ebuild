@@ -41,12 +41,16 @@ src_prepare() {
 	eapply -p0 "${FILESDIR}"/${P}-static-build-fixes.patch
 	eapply -p3 "${FILESDIR}"/${P}-parallel-make.patch
 	eapply "${FILESDIR}"/${P}-fix-missing-PATH-MOUNTED.patch
+	eapply "${FILESDIR}"/${PN}-1.0.0_rc16-musl.patch
 
 	# pkg_check_modules is not in aclocal.m4 by default, and eautoreconf doesnt add it
 	einfo "Appending pkg.m4 from system to aclocal.m4"
 	cat "${BROOT}"/usr/share/aclocal/pkg.m4 >>"${S}"/aclocal.m4 || die "Could not append pkg.m4"
 
+	mv configure.{in,ac} || die
+
 	default
+
 	eautoreconf
 
 	einfo "Creating prepatched source archive for use with Genkernel"
