@@ -3672,7 +3672,7 @@ dev-embedded/jal 0.4.62: A high-level language for Microchip PIC and Ubicom SX m
 dev-embedded/kobs-ng 3.0.35.4.1.0: Utility to write u-boot images to NAND on Freescale iMX devices
 dev-embedded/libdisasm 0.23: Provides basic disassembly of Intel x86 instructions from a binary stream
 dev-embedded/libftd2xx 1.1.12-r1 1.4.8: Library that allows a direct access to a USB device
-dev-embedded/libftdi 0.20-r1 1.4-r1 1.5-r2 9999: Userspace access to FTDI USB interface chips
+dev-embedded/libftdi 0.20-r1 1.4-r1 1.5-r2 1.5-r3 9999: Userspace access to FTDI USB interface chips
 dev-embedded/libjaylink 0.1.0 0.2.0 9999: Library to access J-Link devices
 dev-embedded/lpc21isp 1.85: In-circuit programming (ISP) tool for the NXP microcontrollers
 dev-embedded/mcu8051ide 1.4.10: Graphical IDE for microcontrollers based on 8051.
@@ -11172,7 +11172,7 @@ games-arcade/abe 1.1-r1: A scrolling, platform-jumping, key-collecting, ancient 
 games-arcade/afternoonstalker 1.1.5-r1: Clone of the 1981 Night Stalker video game by Mattel Electronics
 games-arcade/alienwave 0.4.0-r1: An ncurses-based Xenon clone
 games-arcade/amphetamine 0.8.10-r1: A cool Jump'n Run game offering some unique visual effects
-games-arcade/aop 0.6-r1: Ambassador of Pain is a curses based game with only 64 lines of code
+games-arcade/aop 0.6-r2: Ambassador of Pain is a curses based game with only 64 lines of code
 games-arcade/apricots 0.2.6-r2: Fly a plane around bomb/shoot the enemy. Port of Planegame from Amiga
 games-arcade/aquaria 1.1.3-r1: A 2D scroller set in a massive ocean world
 games-arcade/ascii-invaders 0.1b-r1: Space invaders clone, using ncurses library
@@ -17982,7 +17982,7 @@ www-apache/mod_common_redirect 0.1.1-r1: mod_common_redirect implements common r
 www-apache/mod_dnssd 0.6-r1: mod_dnssd is an Apache module which adds Zeroconf support via DNS-SD using Avahi
 www-apache/mod_evasive 1.10.1-r1: Evasive maneuvers module for the event of an HTTP DoS
 www-apache/mod_extract_forwarded 2.0.3_pre2015052015: Rewrites X-Forwarded-For to REMOTE_ADDR for reverse proxy configurations
-www-apache/mod_fastcgi_handler 0.6-r1: A simple FastCGI handler module
+www-apache/mod_fastcgi_handler 0.6-r2: A simple FastCGI handler module
 www-apache/mod_fcgid 2.3.9-r1: Binary-compatible alternative to mod_fastcgi with better process management
 www-apache/mod_gnutls 0.8.2-r2 0.11.0: mod_gnutls uses GnuTLS for SSL/TLS encryption in Apache2 (compare to mod_ssl)
 www-apache/mod_h2 1.15.16 1.15.17 9999: HTTP/2 module for Apache

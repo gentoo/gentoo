@@ -9,4 +9,4 @@ RDEPEND==www-servers/apache-2*
 SLOT=0
 SRC_URI=https://github.com/hollow/mod_fastcgi_handler/archive/v0.6.tar.gz -> mod_fastcgi_handler-0.6.tar.gz
 _eclasses_=apache-module	b40f49b22e6e55c4a17f7ecded4f0425	depend.apache	94458fe4e9466f4803360408e60e11fd
-_md5_=a9b19878351b2322a7255b1b62bec90a
+_md5_=3fe82311810561ac8bd9806db1a363fa
