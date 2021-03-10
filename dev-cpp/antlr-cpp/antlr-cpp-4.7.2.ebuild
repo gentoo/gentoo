@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="The ANTLR 4 C++ Runtime"
 HOMEPAGE="https://www.antlr.org/"
@@ -12,7 +12,7 @@ LICENSE="BSD"
 SLOT="4"
 KEYWORDS="amd64 ~arm ~ppc x86"
 
-DEPEND="app-arch/zip"
+DEPEND="app-arch/unzip"
 
 S="${WORKDIR}"
 
@@ -23,5 +23,5 @@ src_prepare() {
 	sed -i -e "s#share/doc/libantlr4#share/doc/${P}#g" \
 		"${S}"/CMakeLists.txt || die "failed sed"
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }

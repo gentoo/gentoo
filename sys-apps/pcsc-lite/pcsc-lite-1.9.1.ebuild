@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_7,3_8} )
+PYTHON_COMPAT=( python{3_7,3_8,3_9} )
 
 inherit python-single-r1 systemd udev multilib-minimal
 
