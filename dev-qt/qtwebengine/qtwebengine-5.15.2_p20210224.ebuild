@@ -14,6 +14,7 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	if [[ ${PV} == ${QTVER}_p* ]]; then
 		SRC_URI="https://dev.gentoo.org/~asturm/distfiles/${P}.tar.xz"
 		S="${WORKDIR}/${P}"
+		QT5_BUILD_DIR="${S}_build"
 	fi
 fi
 
