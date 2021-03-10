@@ -128,8 +128,6 @@ src_prepare() {
 		"${DISTDIR}/${PN}-5.4.2-SIP-v4-04ad7b.patch" \
 		"${WORKDIR}/${PN}-5.4.2-SIP-v4.patch"
 
-	has_version ">=dev-libs/icu-68.1" && eapply "${FILESDIR}/${PN}-4.22.0-icu68.patch"
-
 	eapply_user
 
 	# Fix outdated version constant.
