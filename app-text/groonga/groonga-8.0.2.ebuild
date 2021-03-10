@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -71,7 +71,7 @@ src_configure() {
 		$(use_with lzo)
 		$(use_with mecab)
 		$(use_enable msgpack message-pack)
-		$(use_with msgpack message-pack "${EROOT%/}/usr")
+		$(use_with msgpack message-pack "${EPREFIX}/usr")
 		$(use_enable nfkc)
 		$(use_with sphinx sphinx-build)
 		$(use_enable static-libs static)
