@@ -97,6 +97,7 @@ kernel-install_update_symlink() {
 		local symlink_target=$(readlink "${target}")
 		local symlink_ver=${symlink_target#${target##*/}-}
 		local updated=
+		symlink_ver=${symlink_ver%${KV_LOCALVERSION}}
 		if [[ ${symlink_target} == ${target##*/}-* && \
 				-z ${symlink_ver//[0-9.]/} ]]
 		then
