@@ -5603,7 +5603,7 @@ dev-libs/link-grammar 5.8.0: A Syntactic English parser
 dev-libs/lockdev 1.0.3.1.2-r3: Library for locking devices
 dev-libs/log4cplus 1.2.0: C++ port of the Log for Java (log4j) logging library
 dev-libs/log4cpp 1.1.3: C++ classes for flexible logging to files, syslog and other destinations
-dev-libs/log4cxx 0.10.0-r1: Library of C++ classes for logging to files, syslog and other destinations
+dev-libs/log4cxx 0.10.0-r1 0.11.0: Library of C++ classes for logging to files, syslog and other destinations
 dev-libs/log4sh 1.4.2: A flexible logging framework for shell scripts
 dev-libs/luise 0.1.1-r1: Programming interface for the Wallbraun LCD-USB-Interface
 dev-libs/lzo 2.10: An extremely fast compression and decompression library
