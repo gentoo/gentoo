@@ -86,7 +86,12 @@ prefix_src_archives() {
 
 TARBALL_PV=${PV}
 SRC_URI="mirror://gentoo/${PN}-${TARBALL_PV}.tar.xz
-	$(prefix_src_archives ${PN}-${TARBALL_PV}.tar.xz)"
+	$(prefix_src_archives ${PN}-${TARBALL_PV}.tar.xz)
+	https://github.com/gentoo/portage/commit/ff7d78442895e53afb534c072477f98bada4f248.patch -> ${P}-bug-775053-setup-globals-double-prefix-ff7d78.patch"
+
+PATCHES=(
+	"${DISTDIR}/${P}-bug-775053-setup-globals-double-prefix-ff7d78.patch"
+)
 
 pkg_pretend() {
 	local CONFIG_CHECK="~IPC_NS ~PID_NS ~NET_NS ~UTS_NS"
