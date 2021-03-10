@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit eutils linux-info linux-mod
+
+inherit linux-info linux-mod
 
 DESCRIPTION="Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver"
 HOMEPAGE="https://www.broadcom.com/support/802.11"
@@ -10,6 +11,7 @@ SRC_BASE="https://docs.broadcom.com/docs-and-downloads/docs/linux_sta/hybrid-v35
 SRC_URI="x86? ( ${SRC_BASE}-nodebug-pcoem-${PV//\./_}.tar.gz )
 	amd64? ( ${SRC_BASE}_64-nodebug-pcoem-${PV//\./_}.tar.gz )
 	https://docs.broadcom.com/docs-and-downloads/docs/linux_sta/README_${PV}.txt -> README-${P}.txt"
+S="${WORKDIR}"
 
 LICENSE="Broadcom"
 KEYWORDS="-* ~amd64 ~x86"
@@ -17,9 +19,22 @@ KEYWORDS="-* ~amd64 ~x86"
 RESTRICT="mirror"
 
 DEPEND="virtual/linux-sources"
-RDEPEND=""
 
-S="${WORKDIR}"
+PATCHES=(
+	"${FILESDIR}/${PN}-6.30.223.141-makefile.patch"
+	"${FILESDIR}/${PN}-6.30.223.141-eth-to-wlan.patch"
+	"${FILESDIR}/${PN}-6.30.223.141-gcc.patch"
+	"${FILESDIR}/${PN}-6.30.223.248-r3-Wno-date-time.patch"
+	"${FILESDIR}/${PN}-6.30.223.271-r1-linux-3.18.patch"
+	"${FILESDIR}/${PN}-6.30.223.271-r2-linux-4.3-v2.patch"
+	"${FILESDIR}/${PN}-6.30.223.271-r4-linux-4.7.patch"
+	"${FILESDIR}/${PN}-6.30.223.271-r4-linux-4.8.patch"
+	"${FILESDIR}/${PN}-6.30.223.271-r4-linux-4.11.patch"
+	"${FILESDIR}/${PN}-6.30.223.271-r4-linux-4.12.patch"
+	"${FILESDIR}/${PN}-6.30.223.271-r4-linux-4.15.patch"
+	"${FILESDIR}/${PN}-6.30.223.271-r5-linux-5.1.patch"
+	"${FILESDIR}/${PN}-6.30.223.271-r5-linux-5.6.patch"
+)
 
 MODULE_NAMES="wl(net/wireless)"
 MODULESD_WL_ALIASES=("wlan0 wl")
@@ -70,22 +85,6 @@ pkg_setup() {
 	BUILD_PARAMS="-C ${KV_DIR} M=${S}"
 	BUILD_TARGETS="wl.ko"
 }
-
-PATCHES=(
-		"${FILESDIR}/${PN}-6.30.223.141-makefile.patch"
-		"${FILESDIR}/${PN}-6.30.223.141-eth-to-wlan.patch"
-		"${FILESDIR}/${PN}-6.30.223.141-gcc.patch"
-		"${FILESDIR}/${PN}-6.30.223.248-r3-Wno-date-time.patch"
-		"${FILESDIR}/${PN}-6.30.223.271-r1-linux-3.18.patch"
-		"${FILESDIR}/${PN}-6.30.223.271-r2-linux-4.3-v2.patch"
-		"${FILESDIR}/${PN}-6.30.223.271-r4-linux-4.7.patch"
-		"${FILESDIR}/${PN}-6.30.223.271-r4-linux-4.8.patch"
-		"${FILESDIR}/${PN}-6.30.223.271-r4-linux-4.11.patch"
-		"${FILESDIR}/${PN}-6.30.223.271-r4-linux-4.12.patch"
-		"${FILESDIR}/${PN}-6.30.223.271-r4-linux-4.15.patch"
-		"${FILESDIR}/${PN}-6.30.223.271-r5-linux-5.1.patch"
-		"${FILESDIR}/${PN}-6.30.223.271-r5-linux-5.6.patch"
-)
 
 src_install() {
 	linux-mod_src_install
