@@ -1,0 +1,35 @@
+Upstream insists on installing mathjax and pandoc using the bundled scripts. An
+error is thrown during configuration if these dependencies are not found in the
+src directory. This patch removes those checks, since we can install the
+dependencies using other means.
+
+--- a/src/cpp/session/CMakeLists.txt
++++ b/src/cpp/session/CMakeLists.txt
+@@ -22,13 +22,7 @@ add_subdirectory(workers)
+ if(NOT EXISTS "${RSTUDIO_DEPENDENCIES_DIR}/common/dictionaries")
+   message(FATAL_ERROR "Dictionaries not found (re-run install-dependencies script to install)")
+ endif()
+-if(NOT EXISTS "${RSTUDIO_DEPENDENCIES_DIR}/common/mathjax-27")
+-  message(FATAL_ERROR "Mathjax 2.7 not found (re-run install-dependencies script to install)")
+-endif()
+ set(PANDOC_VERSION "2.11.4" CACHE INTERNAL "Pandoc version")
+-if(NOT EXISTS "${RSTUDIO_DEPENDENCIES_DIR}/common/pandoc/${PANDOC_VERSION}")
+-  message(FATAL_ERROR "pandoc ${PANDOC_VERSION} not found (re-run install-dependencies script to install)")
+-endif()
+ 
+ # verify embedded packages are available
+ foreach(PKG ${RSTUDIO_EMBEDDED_PACKAGES})
+
+--- a/src/cpp/session/CMakeLists.txt
++++ b/src/cpp/session/CMakeLists.txt
+@@ -534,10 +534,6 @@ if (NOT RSTUDIO_SESSION_WIN32)
+    install(DIRECTORY "${RSTUDIO_DEPENDENCIES_DIR}/common/dictionaries"
+            DESTINATION "${RSTUDIO_INSTALL_SUPPORTING}/resources")
+ 
+-   # install mathjax for local html preview
+-   install(DIRECTORY "${RSTUDIO_DEPENDENCIES_DIR}/common/mathjax-27"
+-           DESTINATION "${RSTUDIO_INSTALL_SUPPORTING}/resources")
+-
+    # icons for database connections
+    install(DIRECTORY "resources/connections"
+            DESTINATION ${RSTUDIO_INSTALL_SUPPORTING}/resources)

@@ -1,0 +1,12 @@
+diff --git a/src/cpp/rstudio-tests.in b/src/cpp/rstudio-tests.in
+index 274231bb9d..01e306c46c 100755
+--- a/src/cpp/rstudio-tests.in
++++ b/src/cpp/rstudio-tests.in
+@@ -181,6 +181,7 @@ if [ -z "$TEST_SCOPE" ] || [ "$TEST_SCOPE" == "r" ]; then
+     runWatchdogProcess 5m false "${CMAKE_CURRENT_BINARY_DIR}/session/$RSTUDIO_SESSION_BIN" \
+         --run-script "\"source('${CMAKE_CURRENT_SOURCE_DIR}/tests/testthat/run-tests.R'); runAllTests('${CMAKE_CURRENT_SOURCE_DIR}', '${CMAKE_CURRENT_BINARY_DIR}'$TESTTHAT_FILTER)\"" \
+         --config-file="$SESSION_CONF_FILE"
++    checkRUnitTestFailure
+ fi
+ 
+ # return an error exit code if any unit tests failed

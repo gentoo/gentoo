@@ -1,0 +1,58 @@
+There seem to be some missing boost-related includes and using-declarations.
+TODO: submit upstream bug report and pull request to resolve.
+
+--- a/src/cpp/core/HtmlUtils.cpp
++++ b/src/cpp/core/HtmlUtils.cpp
+@@ -17,6 +17,7 @@
+ 
+ #include <core/system/System.hpp>
+ 
++#include <boost/bind.hpp>
+ #include <boost/format.hpp>
+ #include <boost/algorithm/string/predicate.hpp>
+ 
+--- a/src/cpp/core/file_lock/FileLock.cpp
++++ b/src/cpp/core/file_lock/FileLock.cpp
+@@ -27,6 +27,7 @@
+ #include <core/system/Xdg.hpp>
+ 
+ #include <boost/algorithm/string.hpp>
++#include <boost/bind.hpp>
+ 
+ // borrowed from SessionConstants.hpp
+ #define kRStudioSessionRoute "RSTUDIO_SESSION_ROUTE"
+
+--- a/src/cpp/core/system/PosixChildProcessTracker.cpp
++++ b/src/cpp/core/system/PosixChildProcessTracker.cpp
+@@ -20,6 +20,8 @@
+ #include <boost/format.hpp>
+ #include <boost/bind.hpp>
+ 
++using namespace boost::placeholders;
++
+ namespace rstudio {
+ namespace core {
+ namespace system {
+
+--- a/src/cpp/core/system/PosixOutputCapture.cpp
++++ b/src/cpp/core/system/PosixOutputCapture.cpp
+@@ -31,6 +31,8 @@
+ 
+ #include <boost/bind.hpp>
+ 
++using namespace boost::placeholders;
++
+ namespace rstudio {
+ namespace core {
+ namespace system {
+
+--- a/src/cpp/r/session/RStdCallbacks.cpp
++++ b/src/cpp/r/session/RStdCallbacks.cpp
+@@ -60,6 +60,7 @@ __declspec(dllimport) SA_TYPE SaveAction;
+ }
+ 
+ using namespace rstudio::core;
++using namespace boost::placeholders;
+ 
+ namespace rstudio {
+ namespace r {

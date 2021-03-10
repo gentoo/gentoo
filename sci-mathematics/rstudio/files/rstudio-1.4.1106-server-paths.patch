@@ -1,0 +1,139 @@
+# This path moves the server installation files to a FHS-compliant location.
+# However, there's been limited tested done with the actualy server runtime, so
+# please report any issues you have (this codebase has a tendency to hardcode
+# paths or to try to be clever about determining where things are located).
+
+--- a/src/cpp/server/CMakeLists.txt
++++ b/src/cpp/server/CMakeLists.txt
+@@ -177,27 +177,27 @@ set (RSERVER_THEME_README "themes/README.md")
+ configure_file("${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_THEME_README}"
+                "${CMAKE_CURRENT_BINARY_DIR}/extras/${RSERVER_THEME_README}")
+ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/extras/${RSERVER_THEME_README}"
+-       DESTINATION "extras/themes")
++    DESTINATION "${RSTUDIO_INSTALL_SUPPORTING}/extras/themes")
+ 
+ # do the same for fonts
+ set (RSERVER_FONT_README "fonts/README.md")
+ configure_file("${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_FONT_README}"
+                "${CMAKE_CURRENT_BINARY_DIR}/extras/${RSERVER_FONT_README}")
+ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/extras/${RSERVER_FONT_README}"
+-       DESTINATION "extras/fonts")
++    DESTINATION "${RSTUDIO_INSTALL_SUPPORTING}/extras/fonts")
+ 
+ # install db migration scripts
+ file(GLOB DB_MIGRATION_FILES_SQL "db/*.sql")
+ file(GLOB DB_MIGRATION_FILES_SQLITE "db/*.sqlite")
+ file(GLOB DB_MIGRATION_FILES_POSTGRESQL "db/*.postgresql")
+ install(FILES ${DB_MIGRATION_FILES_SQL} ${DB_MIGRATION_FILES_SQLITE} ${DB_MIGRATION_FILES_POSTGRESQL}
+-        DESTINATION "db")
++    DESTINATION "${RSTUDIO_INSTALL_SUPPORTING}/db")
+ 
+ # install default database.conf file
+ set(RSERVER_CONF_DIR "extras/conf")
+ set(RSERVER_DATABASE_CONF_FILE "${RSERVER_CONF_DIR}/database.conf")
+ install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_DATABASE_CONF_FILE}
+-        DESTINATION ${RSERVER_CONF_DIR})
++    DESTINATION "${RSTUDIO_INSTALL_SUPPORTING}/${RSERVER_CONF_DIR}")
+ 
+ if (UNIX AND NOT APPLE)
+    # install configured admin script
+@@ -205,7 +205,7 @@ if (UNIX AND NOT APPLE)
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_ADMIN_SCRIPT}.in
+                   ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_ADMIN_SCRIPT})
+    install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_ADMIN_SCRIPT}
+-                    DESTINATION ${RSTUDIO_INSTALL_BIN})
++       DESTINATION "${RSTUDIO_INSTALL_SUPPORTING}/${RSTUDIO_INSTALL_BIN}")
+ 
+    # install configured debian init.d script
+    set(RSERVER_INITD_DEBIAN_DIR "extras/init.d/debian")
+@@ -213,7 +213,7 @@ if (UNIX AND NOT APPLE)
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_INITD_DEBIAN_SCRIPT}.in
+                   ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_INITD_DEBIAN_SCRIPT})
+    install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_INITD_DEBIAN_SCRIPT}
+-           DESTINATION ${RSERVER_INITD_DEBIAN_DIR})
++       DESTINATION "${RSTUDIO_INSTALL_SUPPORTING}/${RSERVER_INITD_DEBIAN_DIR}")
+ 
+    # install configured redhat init.d script
+    set(RSERVER_INITD_REDHAT_DIR "extras/init.d/redhat")
+@@ -221,7 +221,7 @@ if (UNIX AND NOT APPLE)
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_INITD_REDHAT_SCRIPT}.in
+                   ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_INITD_REDHAT_SCRIPT})
+    install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_INITD_REDHAT_SCRIPT}
+-           DESTINATION ${RSERVER_INITD_REDHAT_DIR})
++       DESTINATION "${RSTUDIO_INSTALL_SUPPORTING}/${RSERVER_INITD_REDHAT_DIR}")
+ 
+    # install configured suse init.d script
+    set(RSERVER_INITD_SUSE_DIR "extras/init.d/suse")
+@@ -229,13 +229,13 @@ if (UNIX AND NOT APPLE)
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_INITD_SUSE_SCRIPT}.in
+                   ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_INITD_SUSE_SCRIPT})
+    install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_INITD_SUSE_SCRIPT}
+-           DESTINATION ${RSERVER_INITD_SUSE_DIR})
++       DESTINATION "${RSTUDIO_INSTALL_SUPPORTING}/${RSERVER_INITD_SUSE_DIR}")
+ 
+    # install pam profile
+    set(RSERVER_PAM_DIR "extras/pam")
+    set(RSERVER_PAM_PROFILE "${RSERVER_PAM_DIR}/rstudio")
+    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_PAM_PROFILE}
+-           DESTINATION ${RSERVER_PAM_DIR})
++       DESTINATION "${RSTUDIO_INSTALL_SUPPORTING}/${RSERVER_PAM_DIR}")
+ 
+    # install configured upstart profile
+    set(RSERVER_UPSTART_DIR "extras/upstart")
+@@ -243,34 +243,29 @@ if (UNIX AND NOT APPLE)
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_UPSTART_PROFILE}.in
+                   ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_UPSTART_PROFILE})
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_UPSTART_PROFILE}
+-           DESTINATION ${RSERVER_UPSTART_DIR})
++       DESTINATION "${RSTUDIO_INSTALL_SUPPORTING}/${RSERVER_UPSTART_DIR}")
+    set(RSERVER_UPSTART_PROFILE_REDHAT "${RSERVER_UPSTART_DIR}/rstudio-server.redhat.conf")
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_UPSTART_PROFILE_REDHAT}.in
+                   ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_UPSTART_PROFILE_REDHAT})
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_UPSTART_PROFILE_REDHAT}
+-           DESTINATION ${RSERVER_UPSTART_DIR})
++       DESTINATION "${RSTUDIO_INSTALL_SUPPORTING}/${RSERVER_UPSTART_DIR}")
+ 
+     # install configured systemd profile
+-   set(RSERVER_SYSTEMD_DIR "extras/systemd")
++    set(RSERVER_SYSTEMD_DIR "extras/systemd")
+    set(RSERVER_SYSTEMD_PROFILE "${RSERVER_SYSTEMD_DIR}/rstudio-server.service")
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_SYSTEMD_PROFILE}.in
+                   ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_SYSTEMD_PROFILE})
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_SYSTEMD_PROFILE}
+-           DESTINATION ${RSERVER_SYSTEMD_DIR})
+-   set(RSERVER_SYSTEMD_PROFILE_REDHAT "${RSERVER_SYSTEMD_DIR}/rstudio-server.redhat.service")
+-   configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_SYSTEMD_PROFILE_REDHAT}.in
+-                  ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_SYSTEMD_PROFILE_REDHAT})
+-   install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_SYSTEMD_PROFILE_REDHAT}
+-           DESTINATION ${RSERVER_SYSTEMD_DIR})
++       DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/systemd/system")
+ 
+ elseif(APPLE)
+ 
+    # install configured admin script
+-  set(RSERVER_ADMIN_SCRIPT "extras/admin/rstudio-server")
++   set(RSERVER_ADMIN_SCRIPT "extras/admin/rstudio-server")
+   configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_ADMIN_SCRIPT}.mac.in
+                  ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_ADMIN_SCRIPT})
+   install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_ADMIN_SCRIPT}
+-                   DESTINATION ${RSTUDIO_INSTALL_BIN})
++      DESTINATION "${RSTUDIO_INSTALL_SUPPORTING}/${RSTUDIO_INSTALL_BIN}")
+ 
+   # install configured launchd plist for mac
+   set(RSERVER_LAUNCHD_DIR "extras/launchd")
+@@ -278,13 +273,13 @@ elseif(APPLE)
+   configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_LAUNCHD_PLIST}.in
+                  ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_LAUNCHD_PLIST})
+   install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_LAUNCHD_PLIST}
+-          DESTINATION ${RSERVER_LAUNCHD_DIR})
++      DESTINATION "${RSTUDIO_INSTALL_SUPPORTING}/${RSERVER_LAUNCHD_DIR}")
+ 
+    # install pam profile
+    set(RSERVER_PAM_DIR "extras/pam")
+    set(RSERVER_PAM_PROFILE "${RSERVER_PAM_DIR}/mac/rstudio")
+    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_PAM_PROFILE}
+-           DESTINATION ${RSERVER_PAM_DIR})
++       DESTINATION "${RSTUDIO_INSTALL_SUPPORTING}/${RSERVER_PAM_DIR}")
+ 
+ endif()
+ 
