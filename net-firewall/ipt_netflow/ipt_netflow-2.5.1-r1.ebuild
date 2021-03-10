@@ -1,7 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit linux-info linux-mod toolchain-funcs
 
 DESCRIPTION="Netflow iptables module"
@@ -21,10 +22,12 @@ RDEPEND="
 	net-firewall/iptables:0=
 	snmp? ( net-analyzer/net-snmp )
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/linux-sources
 	virtual/pkgconfig
 "
+
 PATCHES=(
 	"${FILESDIR}/${PN}-2.0-configure.patch" # bug #455984
 	"${FILESDIR}/${PN}-2.5-gentoo.patch"
