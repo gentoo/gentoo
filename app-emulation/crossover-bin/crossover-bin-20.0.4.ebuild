@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit python-single-r1 unpacker
 
@@ -14,7 +14,7 @@ LICENSE="CROSSOVER-3"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE="+capi +cups doc +gphoto2 +gsm +gstreamer +jpeg +lcms ldap +mp3 +nls osmesa +openal +opencl +opengl +pcap +png +scanner +ssl +v4l +vulkan"
-REQUIRED_USE=${PYTHON_REQUIRED_USE}
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RESTRICT="bindist test"
 
@@ -22,6 +22,7 @@ QA_FLAGS_IGNORED="opt/cxoffice/.*"
 QA_PRESTRIPPED="
 	opt/cxoffice/lib/.*
 	opt/cxoffice/lib64/.*
+	opt/cxoffice/bin/cabextract
 	opt/cxoffice/bin/cxburner
 	opt/cxoffice/bin/cxntlm_auth
 	opt/cxoffice/bin/wineserver
@@ -37,6 +38,7 @@ QA_PRESTRIPPED="
 	opt/cxoffice/bin/wineloader64
 "
 QA_TEXTRELS="
+	opt/cxoffice/bin/wineserver32
 	opt/cxoffice/lib/wine/*
 	opt/cxoffice/lib/libwine.so*
 "
@@ -52,6 +54,10 @@ BDEPEND="${PYTHON_DEPS}
 
 RDEPEND="${DEPEND}
 	${PYTHON_DEPS}
+	$(python_gen_cond_dep '
+		dev-python/dbus-python[${PYTHON_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
+	')
 	!prefix? ( sys-libs/glibc )
 	!app-emulation/crossover-office-pro-bin
 	!app-emulation/crossover-office-bin
@@ -81,7 +87,9 @@ RDEPEND="${DEPEND}
 	ssl? ( net-libs/gnutls:0/30[abi_x86_32(-)] )
 	v4l? ( media-libs/libv4l[abi_x86_32(-)] )
 	vulkan? ( media-libs/vulkan-loader[abi_x86_32(-)] )
+	dev-libs/glib:2
 	dev-libs/gobject-introspection
+	dev-libs/openssl
 	dev-util/desktop-file-utils
 	media-libs/alsa-lib[abi_x86_32(-)]
 	media-libs/freetype:2[abi_x86_32(-)]
@@ -89,6 +97,7 @@ RDEPEND="${DEPEND}
 	media-libs/tiff:0[abi_x86_32(-)]
 	sys-auth/nss-mdns[abi_x86_32(-)]
 	sys-apps/util-linux[abi_x86_32(-)]
+	sys-libs/libunwind[abi_x86_32(-)]
 	sys-libs/ncurses-compat:5[abi_x86_32(-)]
 	sys-libs/zlib[abi_x86_32(-)]
 	x11-libs/libICE[abi_x86_32(-)]
@@ -105,6 +114,7 @@ RDEPEND="${DEPEND}
 	x11-libs/gdk-pixbuf:2[introspection]
 	x11-libs/gtk+:3[introspection]
 	x11-libs/pango[introspection]
+	x11-libs/vte:2.91[introspection]
 "
 
 pkg_nofetch() {
@@ -146,6 +156,8 @@ src_install() {
 	find . | cpio -dumpl "${ED}/opt/cxoffice" 2>/dev/null \
 		|| die "Could not install into ${ED}/opt/cxoffice"
 
+	# Disable auto-update
+	sed -i -e 's/;;\"AutoUpdate\" = \"1\"/\"AutoUpdate\" = \"0\"/g' share/crossover/data/cxoffice.conf || die
 	# Install configuration file
 	insinto /opt/cxoffice/etc
 	doins share/crossover/data/cxoffice.conf
@@ -191,9 +203,12 @@ src_install() {
 		fperms a+x "/opt/cxoffice/bin/cxdiag"
 	fi
 	# It tries to load libpcap as packaged in Debian, https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=657900
+	# https://bugs.gentoo.org/721108
 	if use pcap; then
-		dosym "../../../usr/lib64/libpcap.so.1.9.1" "/opt/cxoffice/lib64/libpcap.so.0.8"
-		dosym "../../../usr/lib32/libpcap.so.1.9.1" "/opt/cxoffice/lib/libpcap.so.0.8"
+		bbe -e 's/libpcap.so.0.8/libpcap.so.1.9.1/' "${ED}/opt/cxoffice/lib/wine/wpcap.dll.so" >tmp || die
+		bbe -e 's/libpcap.so.0.8/libpcap.so.1.9.1/' "${ED}/opt/cxoffice/lib64/wine/wpcap.dll.so" >tmp64 || die
+		mv tmp "${ED}/opt/cxoffice/lib/wine/wpcap.dll.so" || die
+		mv tmp64 "${ED}/opt/cxoffice/lib64/wine/wpcap.dll.so" || die
 	fi
 }
 
@@ -202,28 +217,4 @@ pkg_postinst() {
 	einfo "Source code can be obtained from:"
 	einfo
 	einfo "https://media.codeweavers.com/pub/crossover/source/crossover-sources-${PV}.tar.gz"
-
-	# The check done by /opt/cxoffice/bin/cxdiag is far superior to this.
-	# However, we do this check because I noticed that we could end up with a
-	# system that doesn't have a working OpenCL according to cxdiag, yet the
-	# dependencies have been installed. This is a defensive measure to reduce
-	# user frustration. A more robust check might be worthwhile.
-	if use opencl; then
-		local b32=false
-		local b64=false
-		if [[ ! -e "${EROOT}/usr/lib32/libOpenCL.so.1" ]]; then
-			b32=true
-			ewarn "32-bit libOpenCL.so.1 missing."
-		fi
-
-		if use amd64 && [[ ! -e "${EROOT}/usr/lib64/libOpenCL.so.1" ]]; then
-			b64=true
-			ewarn "64-bit libOpenCL.so.1 missing."
-		fi
-
-		if $b32 || $b64; then
-			ewarn
-			ewarn "Set OpenCL via eselect opencl to avoid problems"
-		fi
-	fi
 }

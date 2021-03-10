@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,16 +12,16 @@ SRC_URI="https://codeload.github.com/fedict/${PN}/tar.gz/v${PV} -> ${P}.tar.gz"
 LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="+dialogs +gtk +p11v220 p11-kit"
+IUSE="+dialogs +gtk p11-kit"
 
 RDEPEND=">=sys-apps/pcsc-lite-1.2.9
 	gtk? (
 		x11-libs/gdk-pixbuf[jpeg]
-		x11-libs/gtk+:*
+		x11-libs/gtk+:3
 		dev-libs/libxml2
 		net-misc/curl[ssl]
 		net-libs/libproxy
-		!app-misc/eid-viewer-bin
+		app-crypt/pinentry[gtk]
 	)
 	p11-kit? ( app-crypt/p11-kit )"
 
@@ -33,19 +33,12 @@ REQUIRED_USE="dialogs? ( gtk )"
 src_prepare() {
 	default
 
-	sed -i -e 's:/beid/rsaref220:/rsaref220:' configure.ac || die
-	sed -i -e 's:/beid::' cardcomm/pkcs11/src/libbeidpkcs11.pc.in || die
-
 	# Buggy internal versioning when autoreconf a tarball release.
 	# Weird numbering is required otherwise we get a seg fault in
 	# about-eid-mw program.
 	echo "${PV}-v${PV}" > .version
-	sed -i \
-		-e '/^GITDESC/ d' \
-		-e '/^VERCLEAN/ d' \
-		scripts/build-aux/genver.sh
 
-	# legacy xpi module : we don't want it anymore
+	# xpi module : we don't want it anymore
 	sed -i -e '/SUBDIRS/ s:plugins_tools/xpi ::' Makefile.am || die
 	sed -i -e '/plugins_tools\/xpi/ d' configure.ac || die
 
@@ -61,13 +54,13 @@ src_prepare() {
 		-e "/pkcs11_manifestdir/ s:prefix)/lib:libdir):" \
 		cardcomm/pkcs11/src/Makefile.am || die
 
-	# See bug #691308
-	eapply "${FILESDIR}/eid-sign-test-4.4.19.patch"
-
 	# See bug #732994
 	sed -i \
 		-e '/LDFLAGS="/ s:$CPPFLAGS:$LDFLAGS:' \
 		configure.ac || die
+
+	# See bug #751472
+	eapply "${FILESDIR}/use-printf-in-Makefile.patch"
 
 	eautoreconf
 }
@@ -75,7 +68,6 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_enable dialogs) \
-		$(use_enable p11v220) \
 		$(use_enable p11-kit p11kit) \
 		$(use_with gtk gtkvers 'detect') \
 		--with-gnu-ld \
@@ -96,6 +88,16 @@ pkg_postinst() {
 		gnome2_schemas_update
 		xdg_desktop_database_update
 		xdg_icon_cache_update
+
+		local peimpl=$(eselect --brief --colour=no pinentry show)
+		case "${peimpl}" in
+		*gtk*) ;;
+		*)	ewarn "The pinentry front-end currently selected is not supported by eid-mw."
+			ewarn "You may be prompted for your pin code in an inaccessible shell!!"
+			ewarn "Please select pinentry-gtk-2 as default pinentry provider:"
+			ewarn " # eselect pinentry set pinentry-gtk-2"
+		;;
+		esac
 	fi
 }
 
