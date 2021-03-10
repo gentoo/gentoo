@@ -27,3 +27,10 @@ distutils_enable_tests pytest
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.4.2-test-without-coverage.patch
 )
+
+python_test() {
+	cd tests || die
+	# broken by CPython CVE fix
+	epytest \
+		--deselect tests/test_url_query.py::test_semicolon_as_separator
+}

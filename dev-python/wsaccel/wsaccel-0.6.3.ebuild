@@ -17,3 +17,8 @@ KEYWORDS="amd64 arm arm64 x86 ~amd64-linux ~x86-linux"
 BDEPEND="dev-python/cython[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
+
+python_test() {
+	cd tests || die
+	epytest
+}
