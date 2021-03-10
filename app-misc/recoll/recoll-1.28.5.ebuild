@@ -7,11 +7,11 @@ PYTHON_COMPAT=( python3_{6..9} )
 
 inherit linux-info optfeature python-single-r1 qmake-utils
 
-DESCRIPTION="A personal full text search package"
+DESCRIPTION="Personal full text search package"
 HOMEPAGE="https://www.lesbonscomptes.com/recoll/"
 SRC_URI="https://www.lesbonscomptes.com/recoll/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
