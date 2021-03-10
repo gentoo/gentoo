@@ -17,6 +17,7 @@ KEYWORDS="~amd64 ~x86"
 PATCHES=(
 	"${FILESDIR}"/${PN}-9.00.00-ar.patch
 	"${FILESDIR}"/${PN}-9.02.02-verbose-build.patch
+	"${FILESDIR}"/${PN}-9.03.01-compressed-docs.patch
 )
 
 src_prepare() {
