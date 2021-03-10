@@ -18,7 +18,7 @@ LICENSE="GPL-2 GPL-2-with-classpath-exception BSD-2 MIT Apache-2.0 LGPL-2.1 unRA
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND=">=virtual/jre-1.8"
+RDEPEND=">=virtual/jre-1.8:1.8"
 DEPEND="${RDEPEND}"
 BDEPEND="app-arch/unzip"
 
