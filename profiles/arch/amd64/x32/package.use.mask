@@ -46,6 +46,7 @@ dev-ruby/tilt test
 net-analyzer/netdata nodejs
 www-apps/gitea build-client
 www-apps/jekyll test
+dev-python/QtPy test
 
 # Davide Pesavento <pesa@gentoo.org> (2011-11-30)
 # The QML (V4) and JSC JITs do not work on x32.
