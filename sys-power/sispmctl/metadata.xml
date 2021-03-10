@@ -2,9 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
-	<use>
-		<flag name="gemplug">Install gemplug (management script)</flag>
-	</use>
 	<longdescription>
 sispmctl is an application enabling the use of the GEMBIRD
 SilverShield PowerManager (SiS-PM) device under Linux.
@@ -15,4 +12,3 @@ The SiS-PM is an intelligent advanced surge protector with
 		<remote-id type="sourceforge">sispmctl</remote-id>
 	</upstream>
 </pkgmetadata>
-
