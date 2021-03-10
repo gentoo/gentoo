@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools desktop systemd
+inherit autotools desktop systemd prefix
 
 COLOUR_PATCH_NAME="${PN}-9.22_24-bit-color_cpixl-20201108.patch"
 
@@ -53,6 +53,9 @@ src_prepare() {
 
 	# kill the rxvt-unicode terminfo file - #192083
 	sed -i -e "/rxvt-unicode.terminfo/d" doc/Makefile.in || die "sed failed"
+
+	# use xsubpp from Prefix - #506500
+	hprefixify -q '"' -w "/xsubpp/" src/Makefile.in
 
 	eautoreconf
 }
