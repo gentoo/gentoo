@@ -682,6 +682,7 @@ app-admin/go-updater 0.2.0: Checks if Gentoo go packages are compiled with the s
 app-admin/gopass 1.11.0 1.12.1: a simple but powerful password manager for the terminal
 app-admin/gopass-hibp 1.12.0: Gopass haveibeenpwnd.com integration
 app-admin/gopass-jsonapi 1.11.1: Gopass Browser Bindings
+app-admin/gopass-summon-provider 1.12.0: Gopass Summon Provider
 app-admin/graylog 3.3.9 3.3.10 4.0.2: Free and open source log management
 app-admin/gtkdiskfree 2.0.4_p20200224: Graphical tool to show free disk space like df
 app-admin/hardinfo 0.6_alpha_pre20201116: System information and benchmark tool for Linux systems
