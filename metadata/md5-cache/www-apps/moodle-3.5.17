@@ -6,8 +6,8 @@ HOMEPAGE=https://moodle.org
 IUSE=mysqli mssql postgres imap ldap odbc vhosts vhosts
 KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
 LICENSE=GPL-3+
-RDEPEND=>=dev-lang/php-7.1[mysqli?,mssql?,postgres?,imap?,ldap?,odbc?,ctype,curl,iconv,json,session,simplexml,xml,zip,gd,intl,soap,ssl,tokenizer,xmlrpc] virtual/httpd-php virtual/cron >=app-admin/webapp-config-1.50.15
-SLOT=3.8.7
-SRC_URI=https://download.moodle.org/stable38/moodle-3.8.7.tgz
+RDEPEND=>=dev-lang/php-7.0[mysqli?,mssql?,postgres?,imap?,ldap?,odbc?,ctype,curl,iconv,json,session,simplexml,xml,zip,gd,intl,soap,ssl,tokenizer,xmlrpc] virtual/httpd-php virtual/cron >=app-admin/webapp-config-1.50.15
+SLOT=3.5.17
+SRC_URI=https://download.moodle.org/stable35/moodle-3.5.17.tgz
 _eclasses_=webapp	1d03df021d958f89f4cc78e289d0b116
-_md5_=a3e3e4cf2f559f1440cfb2537a8e7366
+_md5_=96531b830097a8d2a4913e76740cac3c
