@@ -679,6 +679,7 @@ app-admin/gnome-abrt 1.3.6: A utility for viewing problems that have occurred wi
 app-admin/gnome-system-log 3.9.90: System log viewer for GNOME
 app-admin/go-updater 0.2.0: Checks if Gentoo go packages are compiled with the system's golang version
 app-admin/gopass 1.11.0 1.12.1: a simple but powerful password manager for the terminal
+app-admin/gopass-hibp 1.12.0: Gopass haveibeenpwnd.com integration
 app-admin/gopass-jsonapi 1.11.1: Gopass Browser Bindings
 app-admin/graylog 3.3.9 3.3.10 4.0.2: Free and open source log management
 app-admin/gtkdiskfree 2.0.4_p20200224: Graphical tool to show free disk space like df
