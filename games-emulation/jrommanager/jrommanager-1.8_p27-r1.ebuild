@@ -32,10 +32,11 @@ src_prepare() {
 }
 
 src_install() {
-	insinto "/usr/share/${PN}"
+	insinto /usr/share/${PN}
 	doins *.jar
 	doins -r lib
-	newbin "${MY_PN}-multi.sh" "${PN}"
-	newicon "rom.png" "${PN}.png"
-	make_desktop_entry "${PN}" '' '' 'Utility'
+
+	newbin ${MY_PN}-multi.sh ${PN}
+	newicon rom.png ${PN}.png
+	make_desktop_entry ${PN} '' '' 'Utility'
 }
