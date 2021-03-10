@@ -27,7 +27,9 @@ QA_PREBUILT="*"
 src_prepare() {
 	default
 
-	sed -e "/cd.*/s:.*:cd \"${EROOT}/usr/share/${PN}\" || exit:" -i *.sh || die "sed failed!"
+	sed -e "/cd.*/s:.*:cd \"${EPREFIX}/usr/share/${PN}\" || exit:" -i *.sh \
+		|| die "sed failed!"
+
 	unzip -j ${MY_PN}.jar "jrm/resources/rom.png" || die
 }
 
