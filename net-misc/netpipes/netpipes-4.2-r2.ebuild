@@ -8,28 +8,29 @@ inherit toolchain-funcs
 DESCRIPTION="Tools to manipulate BSD TCP/IP stream sockets"
 HOMEPAGE="http://web.purplefrog.com/~thoth/netpipes/netpipes.html"
 SRC_URI="http://web.purplefrog.com/~thoth/netpipes/ftp/${P}-export.tar.gz"
-LICENSE="GPL-2+"
+S="${WORKDIR}/${P}-export"
 
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-S="${WORKDIR}/${P}-export"
-
-PATCHES=( "${FILESDIR}/${P}"-string.patch )
+PATCHES=(
+	"${FILESDIR}/${P}"-string.patch
+)
 
 src_prepare() {
 	default
 	sed -i \
-		-e 's:CFLAGS =:CFLAGS +=:' \
-		-e '/ -o /s:${CFLAGS}:$(CFLAGS) $(LDFLAGS):g' \
+		-e 's;CFLAGS =;CFLAGS +=;' \
+		-e '/ -o /s;${CFLAGS};$(CFLAGS) $(LDFLAGS);g' \
 		Makefile || die
 }
 
 src_compile() {
-	emake CC=$(tc-getCC)
+	emake CC="$(tc-getCC)"
 }
 
 src_install() {
 	dodir /usr/share/man
-	emake INSTROOT="${D}"/usr INSTMAN="${D}"/usr/share/man install
+	emake INSTROOT="${ED}"/usr INSTMAN="${ED}"/usr/share/man install
 }
