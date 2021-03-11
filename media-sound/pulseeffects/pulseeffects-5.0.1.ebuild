@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]];then
 	EGIT_REPO_URI="https://github.com/wwmm/pulseeffects"
 else
 	SRC_URI="https://github.com/wwmm/pulseeffects/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
 LICENSE="GPL-3"
