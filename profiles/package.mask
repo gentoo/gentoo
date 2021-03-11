@@ -315,13 +315,6 @@ media-plugins/vdr-cpumon
 # Removal on 2021-03-12.  Bug #740302
 media-plugins/vdr-mount
 
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2021-02-11)
-# Does not build against vdr-2.4.  Last release in ~2006.
-# Upstream repository is gone.
-# Depends minimal on very old vdr version
-# Removal on 2021-03-11.  Bug #724700.
-media-plugins/vdr-pilot
-
 # Sam James <sam@gentoo.org> (2021-02-10)
 # Causes circular dep with opam
 # seq -> opam-installer -> opam-format -> re -> seq
