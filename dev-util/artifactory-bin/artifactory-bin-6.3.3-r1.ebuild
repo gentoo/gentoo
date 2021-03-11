@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Using a binary ebuild until a source ebuild is doable.
@@ -10,7 +10,7 @@
 
 EAPI=6
 
-inherit user
+inherit systemd user
 
 MY_P="${P/-bin}"
 MY_PN="${PN/-bin}"
@@ -101,6 +101,8 @@ src_install() {
 
 	newconfd "${FILESDIR}/confd" ${MY_PN}
 	newinitd "${FILESDIR}/initd-r3" ${MY_PN}
+
+	systemd_dounit misc/service/artifactory.service
 
 	fowners -R artifactory:artifactory ${ARTIFACTORY_HOME}
 	fperms -R u+w ${TOMCAT_HOME}/work
