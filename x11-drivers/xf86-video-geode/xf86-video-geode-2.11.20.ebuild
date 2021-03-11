@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,6 +14,10 @@ DEPEND="${RDEPEND}
 	ztv? (
 		sys-kernel/linux-headers
 	)"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-multiple-definition-of-linker-error.patch
+)
 
 pkg_setup() {
 	XORG_CONFIGURE_OPTIONS=(
