@@ -5,6 +5,7 @@
 		<email>billie@gentoo.org</email>
 		<name>Daniel Pielmeier</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<maintainer>
 			<email>bugs@portagefilelist.de</email>
