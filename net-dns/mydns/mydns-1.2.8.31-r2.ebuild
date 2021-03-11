@@ -1,11 +1,11 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools
+inherit autotools flag-o-matic
 
-DESCRIPTION="A DNS-Server which gets its data from a MySQL-/PostgreSQL-database"
+DESCRIPTION="A DNS-Server which gets its data from a MySQL/PostgreSQL-database"
 HOMEPAGE="http://www.mydns.pl/"
 SRC_URI="mirror://sourceforge/mydns-ng/${P}.tar.gz"
 
@@ -14,14 +14,18 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~sparc x86"
 IUSE="alias debug nls mysql postgres ssl static status"
 
-RDEPEND="mysql? ( dev-db/mysql-connector-c:= )
+BDEPEND="sys-devel/bison"
+RDEPEND="
+	virtual/libiconv
+	mysql? ( dev-db/mysql-connector-c:= )
 	nls? ( virtual/libintl )
 	postgres? ( dev-db/postgresql )
 	ssl? ( dev-libs/openssl:0= )
-	virtual/libiconv"
-DEPEND="${RDEPEND}
+"
+DEPEND="
+	${RDEPEND}
 	nls? ( >=sys-devel/gettext-0.12 )
-	sys-devel/bison"
+"
 
 REQUIRED_USE="^^ ( mysql postgres )"
 
@@ -38,6 +42,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #775134
+	append-flags -fcommon
+
 	econf \
 		$(use_enable alias) \
 		$(use_enable nls) \
