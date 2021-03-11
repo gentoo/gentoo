@@ -10,5 +10,5 @@ RDEPEND=dev-libs/libconfig:= net-libs/tox:= net-misc/curl sys-libs/ncurses:= aud
 REQUIRED_USE=python? ( ^^ ( python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9 ) ) video? ( sound X )
 SLOT=0
 SRC_URI=https://github.com/JFreegman/toxic/archive/v0.10.0.tar.gz -> toxic-0.10.0.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	41a7dd844b3de07121fe2821bbeea142	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=3a524c375a5635a4ffe7f22fbdbff8a3

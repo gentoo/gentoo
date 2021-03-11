@@ -11,5 +11,5 @@ REQUIRED_USE=|| ( python_targets_python3_7 python_targets_python3_8 python_targe
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/python-trio/sniffio/archive/v1.2.0.tar.gz -> sniffio-1.2.0.gh.tar.gz
-_eclasses_=distutils-r1	62d60cb45322f5a6eab963d7c386f377	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	4c65b35c1895b82c0f44e44166a3464f	python-utils-r1	41a7dd844b3de07121fe2821bbeea142	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=distutils-r1	16579e06f8839831bd5c03455bb87e3f	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	6d099888c5b4dd4868c26508df307e95	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=81e7cade314086bb867aebcb2ad8d531

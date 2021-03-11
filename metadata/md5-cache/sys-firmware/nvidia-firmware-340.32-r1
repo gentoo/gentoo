@@ -8,5 +8,5 @@ LICENSE=MIT NVIDIA-r2
 RESTRICT=bindist mirror
 SLOT=0
 SRC_URI=http://us.download.nvidia.com/XFree86/Linux-x86/340.32/NVIDIA-Linux-x86-340.32.run https://raw.githubusercontent.com/envytools/firmware/a0b9f9be0efad90cc84b8b2eaf587c3d7d350ea9/extract_firmware.py -> nvidia_extract_firmware-a0b9f9be0efad90cc84b8b2eaf587c3d7d350ea9.py
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	41a7dd844b3de07121fe2821bbeea142	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	unpacker	45b49db67094fdafbb6a16a2299e894b
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	unpacker	45b49db67094fdafbb6a16a2299e894b
 _md5_=2716098c12e7d6b01f844dbe52fb0e3c

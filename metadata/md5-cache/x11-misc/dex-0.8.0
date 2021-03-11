@@ -10,5 +10,5 @@ RDEPEND=python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3
 REQUIRED_USE=|| ( python_targets_python3_7 python_targets_python3_8 )
 SLOT=0
 SRC_URI=https://github.com/jceb/dex/archive/v0.8.0.tar.gz -> dex-0.8.0.tar.gz
-_eclasses_=multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	python-r1	4c65b35c1895b82c0f44e44166a3464f	python-utils-r1	41a7dd844b3de07121fe2821bbeea142	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	python-r1	6d099888c5b4dd4868c26508df307e95	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=60a5e7489d6d392e6102044454a25681

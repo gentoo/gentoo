@@ -12,5 +12,5 @@ RDEPEND=>=sys-libs/libselinux-9999:=[python,python_targets_python3_7(-)?,python_
 REQUIRED_USE=|| ( python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~perfinion/distfiles/policycoreutils-extra-1.37.tar.bz2
-_eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	git-r3	3e7ec3d6619213460c85e2aa48398441	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	python-r1	4c65b35c1895b82c0f44e44166a3464f	python-utils-r1	41a7dd844b3de07121fe2821bbeea142	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	git-r3	3e7ec3d6619213460c85e2aa48398441	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	python-r1	6d099888c5b4dd4868c26508df307e95	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=ec305a1d022425fda02335d98d56101b

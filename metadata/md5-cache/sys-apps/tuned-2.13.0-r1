@@ -11,5 +11,5 @@ REQUIRED_USE=^^ ( python_single_target_python3_7 )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/redhat-performance/tuned/archive/v2.13.0.tar.gz -> tuned-2.13.0.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	41a7dd844b3de07121fe2821bbeea142	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=8ac1b44988844a76b7a9e71447d766d7

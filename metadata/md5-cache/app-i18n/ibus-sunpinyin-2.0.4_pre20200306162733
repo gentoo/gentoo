@@ -11,5 +11,5 @@ RDEPEND=app-i18n/ibus ~app-i18n/sunpinyin-2.0.4_pre20200306162733 dev-libs/glib:
 REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9 )
 SLOT=0
 SRC_URI=https://github.com/sunpinyin/sunpinyin/archive/f39c195db08661e894017507842991a1ef70bedf.tar.gz -> sunpinyin-2.0.4_pre20200306162733.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	41a7dd844b3de07121fe2821bbeea142	scons-utils	0c3d02e3e56d99a17ac273db118e8a24	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	scons-utils	0c3d02e3e56d99a17ac273db118e8a24	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=03ec75813e88776a828a22a05b4fc15c

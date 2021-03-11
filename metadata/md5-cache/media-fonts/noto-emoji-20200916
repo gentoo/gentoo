@@ -10,5 +10,5 @@ LICENSE=Apache-2.0 OFL-1.1
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=https://github.com/googlefonts/noto-emoji/archive/aac7ccaa4d1dea4543453b96f7d6fc47066a57ff.tar.gz -> noto-emoji-20200916.tar.gz
-_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45	multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	41a7dd844b3de07121fe2821bbeea142	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45	multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=f66a162646be0e12b7813547b3e1153c

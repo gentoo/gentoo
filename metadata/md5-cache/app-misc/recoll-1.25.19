@@ -11,5 +11,5 @@ RDEPEND=dev-libs/xapian:= sys-libs/zlib:= virtual/libiconv chm? ( dev-libs/chmli
 REQUIRED_USE=session? ( inotify ) webengine? ( qt5 ) ^^ ( python_single_target_python3_7 )
 SLOT=0
 SRC_URI=https://www.lesbonscomptes.com/recoll/recoll-1.25.19.tar.gz
-_eclasses_=linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	optfeature	6a2add34e06e5a05d88471a33ccdd73e	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	41a7dd844b3de07121fe2821bbeea142	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	optfeature	6a2add34e06e5a05d88471a33ccdd73e	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=8d63339c01d3b62b2c55df2bbaebe1d6

@@ -10,5 +10,5 @@ LICENSE=BSD-2 GPL-2
 RDEPEND=|| ( dev-lang/python:3.8 dev-lang/python:3.7 ) acct-user/maradns acct-group/maradns acct-user/duende dev-lang/perl
 SLOT=0
 SRC_URI=https://maradns.samiam.org/download/3.5/3.5.0005/maradns-3.5.0005.tar.xz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	41a7dd844b3de07121fe2821bbeea142	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
 _md5_=32f137c94dc0c999d6060592777c76e8

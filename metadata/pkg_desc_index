@@ -7978,7 +7978,7 @@ dev-python/aiohttp 3.7.4: http client/server for asyncio
 dev-python/aiohttp-cors 0.7.0-r1: Implements CORS support for aiohttp asyncio-powered asynchronous HTTP server
 dev-python/aiohttp-jinja2 0.15.0: jinja2 template renderer for aiohttp.web
 dev-python/aiohttp-socks 0.5.5 0.6.0: SOCKS proxy connector for aiohttp
-dev-python/aiorpcX 0.18.5 0.19 0.19.1 0.20.1: Generic async RPC implementation, including JSON-RPC
+dev-python/aiorpcX 0.18.5 0.19 0.19.1 0.20.1 0.20.2 0.21.0: Generic async RPC implementation, including JSON-RPC
 dev-python/aiosmtpd 1.2 1.2.2 1.2.4 1.3.2 1.4.0 1.4.1 1.4.2: asyncio based SMTP server
 dev-python/alabaster 0.7.12: A configurable sidebar-enabled Sphinx theme
 dev-python/alagitpull 0.0.23-r1: alabaster sub-theme used on git-pull docs
@@ -8056,8 +8056,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7 1.0.8: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r4: Amazon Web Services API
-dev-python/boto3 1.16.63 1.17.7 1.17.12 1.17.17 1.17.18 1.17.19 1.17.20 1.17.21 1.17.22 1.17.23 1.17.24 9999: The AWS SDK for Python
-dev-python/botocore 1.19.63 1.20.7 1.20.12 1.20.17 1.20.18 1.20.19 1.20.20 1.20.21 1.20.22 1.20.23 1.20.24 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.16.63 1.17.7 1.17.12 1.17.17 1.17.18 1.17.19 1.17.20 1.17.21 1.17.22 1.17.23 1.17.24 1.17.25 9999: The AWS SDK for Python
+dev-python/botocore 1.19.63 1.20.7 1.20.12 1.20.17 1.20.18 1.20.19 1.20.20 1.20.21 1.20.22 1.20.23 1.20.24 1.20.25 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.21: Syntax highlighting and autocompletion for the Python interpreter
@@ -8141,7 +8141,7 @@ dev-python/cryptography 3.2.1 3.3.1 3.3.2: Library providing cryptographic recip
 dev-python/css-parser 1.0.4-r1: A CSS Cascading Style Sheets library (fork of cssutils)
 dev-python/cssselect 1.1.0-r1: parses CSS3 Selectors and translates them to XPath 1.0
 dev-python/cssselect2 0.4.1: Parses CSS3 Selectors and translates them to XPath 1.0
-dev-python/cssutils 1.0.2-r2 2.0.0: A CSS Cascading Style Sheets library
+dev-python/cssutils 1.0.2-r2 2.0.0 2.2.0: A CSS Cascading Style Sheets library
 dev-python/csv23 0.3.2-r1: Python 2/3 unicode CSV compatibility layer
 dev-python/ctypescrypto 0.5 9999: Python interface to some openssl function based on ctypes module
 dev-python/cursive 0.2.2-r1: Cursive implements OpenStack-specific validation of digital signatures.
@@ -8160,7 +8160,7 @@ dev-python/dbutils 1.3 2.0: Database connections for multi-threaded environments
 dev-python/ddt 1.2.2: A library to multiply test cases
 dev-python/debtcollector 2.2.0: Python deprecation patterns and strategies that collect technical debt
 dev-python/decorator 4.4.2-r1: Simplifies the usage of decorators for the average programmer
-dev-python/deepmerge 0.1.1_p1: Tools to handle merging of nested data structures in python
+dev-python/deepmerge 0.1.1_p1 0.2.1: Tools to handle merging of nested data structures in python
 dev-python/defcon 0.6.0-r1 0.7.2 0.8.0: A set of UFO based objects for use in font editing applications
 dev-python/defusedxml 0.7.0_rc1 0.7.0 0.7.1: XML bomb protection for Python stdlib modules, an xml serialiser
 dev-python/denonavr 0.9.9 0.9.10 0.10.1: Automation Library for Denon AVR receivers
@@ -8300,7 +8300,7 @@ dev-python/flufl-bounce 3.0.1: Email bounce detectors.
 dev-python/flufl-i18n 2.0.2 3.1.4 3.1.5: A high level API for Python internationalization
 dev-python/flufl-lock 5.0.1 5.0.4 5.0.5: NFS-safe file locking with timeouts for POSIX systems
 dev-python/fonttools 4.18.2 4.21.1: Library for manipulating TrueType, OpenType, AFM and Type1 fonts
-dev-python/fqdn 1.5.0-r1: RFC-compliant FQDN validation and manipulation for Python
+dev-python/fqdn 1.5.0-r1 1.5.1: RFC-compliant FQDN validation and manipulation for Python
 dev-python/freezegun 1.1.0: Let your Python tests travel through time
 dev-python/frozen-flask 0.15: Freezes a Flask application into a set of static files
 dev-python/frozendict 1.2: A simple immutable mapping for python
@@ -8883,8 +8883,8 @@ dev-python/pypy 7.3.3_p2-r1: A fast, compliant alternative implementation of the
 dev-python/pypy-exe 7.3.3_p2: PyPy executable (build from source)
 dev-python/pypy-exe-bin 7.3.3_p2: PyPy executable (pre-built version)
 dev-python/pypy3 7.3.3_p37_p1-r1: A fast, compliant alternative implementation of the Python (3.7) language
-dev-python/pypy3-exe 7.3.3_p37_p1: PyPy3 executable (build from source)
-dev-python/pypy3-exe-bin 7.3.3_p37_p1: PyPy3 executable (pre-built version)
+dev-python/pypy3-exe 7.3.3_p37_p1 7.3.3_p37_p2: PyPy3 executable (build from source)
+dev-python/pypy3-exe-bin 7.3.3_p37_p1 7.3.3_p37_p2: PyPy3 executable (pre-built version)
 dev-python/pyqrcode 1.2.1-r1: A pure Python QR code generator with SVG, EPS, PNG and terminal output
 dev-python/pyqt-distutils 0.7.3: distutils extension to work with PyQt applications and UI files
 dev-python/pyqtgraph 0.11.0_rc0: A pure-python graphics and GUI library built on PyQt and numpy
@@ -8979,7 +8979,7 @@ dev-python/python-dotenv 0.15.0: Manage .env files
 dev-python/python-editor 1.0.4-r1: Programmatically open an editor, capture the result.
 dev-python/python-efl 1.25.0: Python bindings for Enlightenment Foundation Libraries
 dev-python/python-email-validator 1.1.2: A robust email syntax and deliverability validation library
-dev-python/python-engineio 3.12.1: Python implementation of the Engine.IO realtime server.
+dev-python/python-engineio 3.12.1 4.0.1: Python implementation of the Engine.IO realtime server.
 dev-python/python-etcd 0.4.5-r1: A python client for etcd
 dev-python/python-evdev 1.4.0: Python library for evdev bindings
 dev-python/python-fastimport 0.9.8-r1: Library for parsing the fastimport VCS serialization format
@@ -9047,7 +9047,7 @@ dev-python/python3-saml 1.9.0 1.10.0 1.10.1: OneLogin's SAML Python Toolkit
 dev-python/python_orocos_kdl 1.4.0-r1 9999: Python bindings for KDL
 dev-python/pythondialog 3.5.1: A Python module for making simple text/console-mode user interfaces
 dev-python/pytidylib 0.3.2-r1: Python wrapper for HTML Tidy (tidylib)
-dev-python/pytools 2021.1 2021.1.2 9999: Collection of tools missing from the Python standard library
+dev-python/pytools 2021.1 2021.1.2 2021.2 9999: Collection of tools missing from the Python standard library
 dev-python/pytrie 0.4.0: A pure Python implementation of the trie data structure
 dev-python/pytz 2021.1: World timezone definitions for Python
 dev-python/pytzdata 2020.1: The Olson timezone database for Python
@@ -9089,7 +9089,7 @@ dev-python/reflink 0.2.1-r1: Python wrapper around the reflink system calls
 dev-python/regex 2020.4.4-r1: Alternative regular expression module to replace re
 dev-python/rencode 1.0.6: similar to bencode from the BitTorrent project
 dev-python/reno 3.2.0-r1: Release notes manager, storing release notes in a git repo and building docs
-dev-python/reportlab 3.5.60 3.5.63 3.5.64: Tools for generating printable PDF documents from any data source
+dev-python/reportlab 3.5.60 3.5.63 3.5.64 3.5.65: Tools for generating printable PDF documents from any data source
 dev-python/repoze-lru 0.7-r1: A tiny LRU cache implementation and decorator
 dev-python/repoze-sphinx-autointerface 0.8: Sphinx extension: auto-generates API docs from Zope interfaces
 dev-python/requests 2.24.0-r1 2.25.0 2.25.1-r1: HTTP library for human beings
@@ -9127,7 +9127,7 @@ dev-python/rpy 3.4.2: Python interface to the R Programming Language
 dev-python/rpyc 5.0.1: Remote Python Call (RPyC), a transparent and symmetric RPC library
 dev-python/rq 1.7.0: simple, lightweight library for creating and processing background jobs
 dev-python/rsa 4.7 4.7.1 4.7.2: Pure-Python RSA implementation
-dev-python/rst-linker 2.1.1: Sphinx plugin to add links and timestamps to the changelog
+dev-python/rst-linker 2.1.1 2.2.0: Sphinx plugin to add links and timestamps to the changelog
 dev-python/rtimulib 7.2.1-r1: Python Binding for RTIMULib, a versatile IMU library
 dev-python/rtslib-fb 2.1.74: A Python object API for managing the Linux LIO kernel target
 dev-python/ruamel-std-pathlib 0.6.4-r2: Ruamel enhancements to pathlib and pathlib2
@@ -14622,7 +14622,7 @@ net-dns/libidn 1.36: Internationalized Domain Names (IDN) implementation
 net-dns/libidn2 2.3.0: An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
 net-dns/maradns 3.5.0005: A security-aware DNS server
 net-dns/mdns-repeater 1.11: Multicast DNS repeater
-net-dns/mydns 1.2.8.31-r1 1.2.8.31-r2: A DNS-Server which gets its data from a MySQL-/PostgreSQL-database
+net-dns/mydns 1.2.8.31-r1 1.2.8.31-r2: A DNS-Server which gets its data from a MySQL/PostgreSQL-database
 net-dns/ndu 0.4-r4: DNS serial number incrementer and reverse zone builder
 net-dns/nsd 4.3.4 4.3.5: An authoritative only, high performance, open source name server
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
