@@ -26,9 +26,11 @@ RESTRICT="test"
 
 RDEPEND="dev-python/namespace-ruamel[${PYTHON_USEDEP}]
 	dev-python/ruamel-yaml-clib[${PYTHON_USEDEP}]"
-BDEPEND="test? (
-	dev-python/ruamel-std-pathlib[${PYTHON_USEDEP}]
-)"
+# This confuses dependency resolution on arches not supporting this package
+# yet regardless of RESTRICT=test, just leave it out for now.
+#BDEPEND="test? (
+#	dev-python/ruamel-std-pathlib[${PYTHON_USEDEP}]
+#)"
 
 S="${WORKDIR}"/${MY_P}
 
