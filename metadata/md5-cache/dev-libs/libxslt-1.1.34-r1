@@ -11,4 +11,4 @@ RDEPEND=>=dev-libs/libxml2-2.9.10:2[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)
 SLOT=0
 SRC_URI=ftp://xmlsoft.org/libxslt/libxslt-1.1.34.tar.gz
 _eclasses_=libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=88c762e35557c0e976b7e795213f4891
+_md5_=6d074ff0a4b7a4925bbf2981c8769f83
