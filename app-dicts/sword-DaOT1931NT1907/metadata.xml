@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription lang="da">
 		Dansk GT1931 + NT1907 med oprindelig retskrivning
 		Dansk autoriseret oversættelse af GT fra 1931 med den autoriserede

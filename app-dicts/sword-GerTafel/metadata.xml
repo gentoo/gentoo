@@ -5,4 +5,5 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>

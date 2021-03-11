@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 		Eberhard Nestle's edition of the Greek New Testament, published in 1904 by the British and Foreign Bible Society. Based on the 1904 (http://www.archive.org/details/biblentgreektext00nestuoft) and 1913 (www.archive.org/details/hkainediathekete00lond) editions of the Eberhard Nestle\'s Greek New Testament.
 	</longdescription>

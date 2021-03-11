@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription lang="nl">
 		DAT IS DE GANSE HEILIGE SCHRIFT
 		BEVATTENDE AL DE KANONIEKE BOEKEN VAN HET

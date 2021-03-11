@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 		Biblia Veteris Testamenti Aethiopica The Ge’ez Old Testament comprised of the Augustus Dillmann’s Ethiopic Octateuch and Hiob Ludolf’s Psalter, digitized by Ran HaCohen
 	</longdescription>

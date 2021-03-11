@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription lang="en">
 		This Sword Bible module provides the french translation of the OT by Félix Bovet (1824-1903), and of the NT by Louis Bonnet (1805-1892). They both are extracted from a well known commentary in France and Switzerland, still very appreciated today : "La Bible annotée".
 		For practical reasons the verses reference have been modified to match the KJV one.

@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 		Meditations and Discourses on the Glory of Christ is a collection of discourses in which John Owen (1616-1683) proclaims the glory of the Lord as it is revealed in Scripture.  Archaic words in the text have been automatically modernized.
 	</longdescription>

@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription lang="en">
 		"Electronic Network Bible" is a new translation of the Bible by modern Japanese aimed at completely free use. Translation work is underway with "World English Bible" as the base, and referring to several Japanese translations. The latest draft at the present moment is March 3, 2002 version.
 	</longdescription>

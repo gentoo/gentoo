@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 		This electronic version was first written by German Johann Ernst Glück and over the years has been improved until 7th edition in 1898. This Bible was created from 7th edition. However some words currently not in use in Latvian language are replaced by words in use today. Some old words are explained in parentheses. Statements or structure has not been altered.
 	</longdescription>

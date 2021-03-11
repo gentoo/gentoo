@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription lang="en">
 		The Confessional Lutheran Church of Finland has published this Finnish Bible translation for the quincentennial celebration of the Reformation. Translated from Hebrew, Aramaic and Greek by Th.D. h.c. Markku Särelä.
 	</longdescription>

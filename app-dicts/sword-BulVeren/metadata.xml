@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 		This is an updated version of the Bible, published by Konstantin Fotinov,
 		Petko Slaveykov and Hristodul Sichan-Nikolov in 1871. This version is made

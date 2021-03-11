@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 		Cherokee New Testament, published in 1860 by the American Bible Society. This electronic edition is still undergoing proofreading and was produced by www.cherokeenewtestament.org. This module is based on the May 13, 2009 version. The text is also available in facsimile at http://books.google.com/books?id=v0MTAAAAYAAJ .
 	</longdescription>

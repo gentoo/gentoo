@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 		A transcriptions of the Phaistos Disk, a clay disk from the 2nd millennium BC in an undeciphered language. The meaning of the text is unknown. Treat this module as a tech demo or font demo.
 	</longdescription>

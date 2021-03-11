@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 		According to 19th Century Orthography, Morphology &amp; Syntax of Late Modern Swedish used 1732-1906.
 
