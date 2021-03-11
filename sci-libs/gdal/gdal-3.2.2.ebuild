@@ -111,6 +111,10 @@ src_prepare() {
 	sed -e "s: gdal_array.i: ../include/gdal_array.i:" \
 		-i swig/python/GNUmakefile || die "sed python makefile failed"
 
+	# autoconf 2.70+
+	# bug #775209
+	touch config.rpath || die
+
 	eautoreconf
 }
 
