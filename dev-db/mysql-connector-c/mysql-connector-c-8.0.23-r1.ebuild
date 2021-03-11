@@ -77,7 +77,11 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	CMAKE_BUILD_TYPE="RelWithDebInfo"
+
 	local mycmakeargs=(
+		-DCMAKE_C_FLAGS_RELWITHDEBINFO=-DNDEBUG
+		-DCMAKE_CXX_FLAGS_RELWITHDEBINFO=-DNDEBUG
 		-DINSTALL_LAYOUT=RPM
 		-DINSTALL_LIBDIR=$(get_libdir)
 		-DWITH_DEFAULT_COMPILER_OPTIONS=OFF
@@ -93,6 +97,7 @@ multilib_src_configure() {
 		-DCMAKE_POSITION_INDEPENDENT_CODE=ON
 		-DWITHOUT_SERVER=ON
 	)
+
 	cmake_src_configure
 }
 
