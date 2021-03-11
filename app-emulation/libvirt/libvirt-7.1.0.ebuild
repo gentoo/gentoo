@@ -282,11 +282,15 @@ src_test() {
 src_install() {
 	meson_src_install
 
-	# Remove bogus, empty directories. They are either not used, or
-	# libvirtd is able to create them on demand
-	rm -r "${D}"/etc/sysconfig || die
-	rm -r "${D}"/var || die
-	rm -r "${D}"/run || die
+	# Depending on configuration option, libvirt will create some bogus
+	# directoreis. They are either not used, or libvirtd is able to create
+	# them on demand, so let's remove them.
+	#
+	# Note, we are using -f here so that rm does not fail or warn if the
+	# directory is nonexistent.
+	rm -rf "${D}"/etc/sysconfig
+	rm -rf "${D}"/var
+	rm -rf "${D}"/run
 
 	# Fix up doc paths for revisions
 	if [[ $PV != $PVR ]]; then
