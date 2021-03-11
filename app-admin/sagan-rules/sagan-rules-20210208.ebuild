@@ -1,28 +1,26 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="Rules for Sagan log analyzer"
-HOMEPAGE="http://sagan.softwink.com/"
-SRC_URI="https://dev.gentoo.org/~maksbotan/sagan/sagan-rules-${PV}.tar.gz"
+HOMEPAGE="https://quadrantsec.com/sagan_log_analysis_engine/"
+SRC_URI="https://quadrantsec.com/rules/${P}.tar.gz"
+S="${WORKDIR}/rules"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="+lognorm"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
 PDEPEND="app-admin/sagan"
-
-S=${WORKDIR}/rules
 
 src_install() {
 	insinto /etc/sagan-rules
 	doins *.config
 	doins *rules
+	doins *map
 	if use lognorm ; then
-		doins *normalize.rulebase
+		doins normalization.rulebase
 	fi
 }
