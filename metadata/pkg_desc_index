@@ -3066,7 +3066,7 @@ app-text/rman 3.2-r1: PolyGlotMan man page translator AKA RosettaMan
 app-text/rnc2rng 2.6.1 2.6.2 2.6.4: RELAX NG Compact to regular syntax conversion library
 app-text/rnv 1.7.11-r1: A lightweight Relax NG Compact Syntax validator
 app-text/robodoc 4.99.43 4.99.43-r1: Automating Software Documentation
-app-text/ronn 0.7.3-r3: Converts simple, human readable textfiles to roff for terminal display, and HTML
+app-text/ronn 0.7.3-r3 0.7.3-r4: Converts simple, human readable textfiles to roff for terminal display, and HTML
 app-text/rpl 1.6.7: Intelligent recursive search/replace utility
 app-text/rtf2html 0.2.0-r1: RTF to HTML converter
 app-text/sablotron 1.0.3-r1 1.0.3-r2: An XSLT Parser in C++
@@ -10267,7 +10267,7 @@ dev-ruby/rbs 1.0.0 1.0.4 1.0.6 1.1.0: The language for type signatures for Ruby 
 dev-ruby/rbst 0.6.5: A simple Ruby wrapper for processing rST via docutils
 dev-ruby/rcairo 1.16.5 1.16.6: Ruby bindings for cairo
 dev-ruby/rchardet 1.8.0: Character encoding auto-detection in Ruby
-dev-ruby/rdiscount 2.2.0.1 2.2.0.2: Implementation of John Gruber's Markdown
+dev-ruby/rdiscount 2.2.0.1 2.2.0.2 2.2.0.2-r1: Implementation of John Gruber's Markdown
 dev-ruby/rdoc 6.1.2 6.2.0 6.3.0: An extended version of the RDoc library from Ruby 1.8
 dev-ruby/rdtool 0.6.38-r2: A multipurpose documentation format for Ruby
 dev-ruby/recog 2.3.14 2.3.15 2.3.18 2.3.19: Pattern recognition for hosts, services, and content
@@ -10428,7 +10428,7 @@ dev-ruby/stamp 0.6.0: Date and time formatting for humans
 dev-ruby/state_machine 1.2.0: Adds support for creating state machines for attributes on any Ruby class
 dev-ruby/stomp 1.4.9 1.4.10: Ruby bindings for the stomp messaging protocol
 dev-ruby/stringex 2.8.5: Extensions for Ruby's String class
-dev-ruby/strptime 0.2.3 0.2.4 0.2.5: A fast strptime/strftime engine which uses VM
+dev-ruby/strptime 0.2.5 0.2.5-r1: A fast strptime/strftime engine which uses VM
 dev-ruby/subexec 0.2.3-r1: Subexec spawns an external command with a timeout
 dev-ruby/sync 0.5.0: A module that provides a two-phase lock with a counter
 dev-ruby/syntax 1.2.2: Syntax highlighting for sourcecode and HTML
