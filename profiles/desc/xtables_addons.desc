@@ -23,6 +23,7 @@ logmark - LOGMARK target will log packet and connection marks to syslog
 lscan - match detects simple low-level scan attemps based upon the packet's contents
 quota2 - match implements a named counter which can be increased or decreased on a per-match basis
 pknock - match implements so-called "port knocking", a stealthy system for network authentication
+proto - modifies the protocol number in IP packet header
 psd - match attempts to detect TCP and UDP port scans (derived from Solar Designer's scanlogd)
 sysrq - SYSRQ target allows to remotely trigger sysrq on the local machine over the network
 tarpit - TARPIT target captures and holds incoming TCP connections using no local per-connection resources
