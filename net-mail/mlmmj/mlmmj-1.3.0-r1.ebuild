@@ -1,25 +1,36 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_PV="${PV/_rc/-RC}"
 MY_P="${PN}-${MY_PV}"
 DESCRIPTION="Mailing list managing made joyful"
 HOMEPAGE="http://mlmmj.org/"
 SRC_URI="http://mlmmj.org/releases/${MY_P}.tar.bz2"
+S="${WORKDIR}/${MY_P}"
+
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE=""
-DEPEND="virtual/mta"
-S="${WORKDIR}/${MY_P}"
 
-DOCS="AUTHORS ChangeLog FAQ README* TODO TUNABLES UPGRADE"
+DEPEND="virtual/mta"
+
+DOCS=( AUTHORS ChangeLog FAQ "README*" TODO TUNABLES UPGRADE )
+
 PATCHES=(
 	"${FILESDIR}"/mlmmj-1.2.19.0-listcontrol-customheaders.patch
 	"${FILESDIR}"/mlmmj-1.3.0-gcc-10.patch
 )
+
+src_prepare() {
+	default
+
+	# bug #259962
+	for file in $(find . -iname "*.cgi") ; do
+		sed -i -e "s:/usr/local/bin/:${EPREFIX}/usr/bin/:" "${file}" || die
+	done
+}
 
 src_configure() {
 	econf --enable-receive-strip
