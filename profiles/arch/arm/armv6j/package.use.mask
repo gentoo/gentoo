@@ -6,9 +6,11 @@
 >=media-libs/libheif-1.10.0 -rav1e
 
 # Joonas Niilola <juippis@gentoo.org> (2020-10-08)
+# Sam James <sam@gentoo.org> (2021-03-11)
 # libavif is keyworded for this profile.
 dev-libs/efl -avif
 kde-frameworks/kimageformats -avif
+media-libs/gd -avif
 
 # Mart Raudsepp <leio@gentoo.org> (2020-08-02)
 # virtual/rust is available here

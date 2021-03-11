@@ -6,9 +6,10 @@
 # on this arch (Bug #775242)
 dev-python/ruamel-yaml test
 
-# Sam James <sam@gentoo.org> (2021-03-06)
+# Sam James <sam@gentoo.org> (2021-03-13)
 # media-libs/libheif isn't keyworded here
-media-libs/gd heif
+# media-libs/libavif isn't keyworded here
+media-libs/gd avif heif
 
 # Sam James <sam@gentoo.org> (2021-02-26)
 # dev-libs/efl not keyworded here

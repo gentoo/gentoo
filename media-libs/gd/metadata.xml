@@ -28,6 +28,7 @@ and so forth.
 		<bugs-to>https://github.com/libgd/libgd/issues</bugs-to>
 	</upstream>
 	<use>
+		<flag name="avif">Enable support for the avif format via <pkg>media-libs/libavif</pkg></flag>
 		<flag name="heif">Enable support for the heif format via <pkg>media-libs/libheif</pkg></flag>
 		<flag name="webp">Enable support for the webp format</flag>
 	</use>
