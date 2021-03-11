@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit linux-info
+
+inherit linux-info systemd
 
 DESCRIPTION="Connection tracking userspace tools"
 HOMEPAGE="http://conntrack-tools.netfilter.org"
@@ -29,15 +30,15 @@ RDEPEND="
 		>=sys-apps/systemd-227
 	)
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
+	sys-devel/bison
+	sys-devel/flex
+	virtual/pkgconfig
 	doc? (
 		app-text/docbook-xml-dtd:4.1.2
 		app-text/xmlto
 	)
-	virtual/pkgconfig
-	sys-devel/bison
-	sys-devel/flex
 "
 
 pkg_setup() {
@@ -92,6 +93,8 @@ src_install() {
 
 	insinto /etc/conntrackd
 	doins doc/stats/conntrackd.conf
+
+	systemd_dounit "${FILESDIR}/conntrackd.service"
 
 	dodoc -r doc/sync doc/stats AUTHORS TODO
 	use doc && dodoc doc/manual/${PN}.html
