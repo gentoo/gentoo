@@ -159,7 +159,6 @@ multilib_src_configure() {
 	fi
 }
 
-
 libxml2_py_emake() {
 	pushd "${BUILD_DIR}/python" > /dev/null || die
 
@@ -167,7 +166,6 @@ libxml2_py_emake() {
 
 	popd > /dev/null || die
 }
-
 
 multilib_src_compile() {
 	default
