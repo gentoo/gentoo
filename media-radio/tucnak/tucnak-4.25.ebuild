@@ -20,7 +20,7 @@ RDEPEND="dev-libs/glib:2
 	alsa? ( media-libs/alsa-lib )
 	fftw? ( sci-libs/fftw:3.0 )
 	gpm? ( sys-libs/gpm )
-	hamlib? ( media-libs/hamlib )"
+	hamlib? ( media-libs/hamlib:= )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
