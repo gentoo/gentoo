@@ -1,0 +1,9 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=Manage Qt for Python implementations
+EAPI=7
+HOMEPAGE=https://github.com/spyder-ide/qtpy
+KEYWORDS=~amd64 ~arm64 ~x86
+LICENSE=GPL-2
+RDEPEND=app-admin/eselect
+SLOT=0
+_md5_=de5afad2deba3fadab4404a18f0515e4

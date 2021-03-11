@@ -2145,6 +2145,7 @@ app-emulation/xen 4.13.2-r4 4.13.2-r5 4.14.1-r1: The Xen virtual machine monitor
 app-emulation/xen-pvgrub 4.13.2 4.14.1: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
 app-emulation/xen-tools 4.13.2-r2 4.14.1: Xen tools including QEMU and xl
 app-emulation/xtrs 4.9d-r5: Radio Shack TRS-80 emulator
+app-eselect/eselect-QtPy 1.0: Manage Qt for Python implementations
 app-eselect/eselect-audicle 1.0.1-r1: Manages the /usr/bin/audicle symlink
 app-eselect/eselect-awk 0.3: Manages the {,/usr}/bin/awk symlink
 app-eselect/eselect-blas 0.1 0.2: BLAS/CBLAS module for eselect
@@ -7961,7 +7962,7 @@ dev-python/PySDL2 0.9.7: Python (ctypes) bindings for SDL2 libraries
 dev-python/PySensors 0.0.4: Python bindings to libsensors (via ctypes)
 dev-python/PySocks 1.7.1-r1: SOCKS client module
 dev-python/PyUtilib 5.7.2: A collection of Python utilities
-dev-python/QtPy 1.9.0-r2: Abstraction layer for PyQt5/PySide
+dev-python/QtPy 1.9.0-r2 1.9.0-r3: Abstraction layer on top of PyQt5 and PySide2 and additional custom QWidgets
 dev-python/Rx 3.1.0: Reactive Extensions for Python
 dev-python/SaltTesting 2018.9.21: Required testing tools needed in the several Salt Stack projects
 dev-python/WSME 0.10.0: Simplify the writing of REST APIs, and extend them with additional protocols.
@@ -8499,7 +8500,7 @@ dev-python/logfury 0.1.2-r1: Boilerplate library for logging method calls
 dev-python/loguru 0.5.3: Python logging made (stupidly) simple
 dev-python/logutils 0.3.5: The logutils package provides a set of handlers for the Python standard
 dev-python/loky 2.9.0: Robust and reusable Executor for joblib
-dev-python/lunr 0.5.6 0.5.8: A Python implementation of Lunr.js
+dev-python/lunr 0.5.8 0.5.9: A Python implementation of Lunr.js
 dev-python/lxml 4.6.2-r1: A Pythonic binding for the libxml2 and libxslt libraries
 dev-python/lz4 3.1.3: LZ4 Bindings for Python
 dev-python/m2crypto 0.35.2-r1 0.36.0-r1 0.37.1: A Python crypto and SSL toolkit
@@ -8536,9 +8537,9 @@ dev-python/mkdocs 1.1.2: Project documentation with Markdown
 dev-python/mkdocs-bootstrap 1.1-r1: Bootstrap theme for MkDocs
 dev-python/mkdocs-bootswatch 1.1-r1: Bootswatch themes for MkDocs
 dev-python/mkdocs-git-revision-date-localized-plugin 0.8: Display the localized date of the last git modification of a markdown file
-dev-python/mkdocs-material 6.1.7: A Material Design theme for MkDocs
+dev-python/mkdocs-material 6.1.7 6.2.5: A Material Design theme for MkDocs
 dev-python/mkdocs-material-extensions 1.0.1: Extension pack for Python Markdown
-dev-python/mkdocs-minify-plugin 0.3.0: An MkDocs plugin to minify HTML and/or JS files prior to being written to disk
+dev-python/mkdocs-minify-plugin 0.3.0 0.4.0: An MkDocs plugin to minify HTML and/or JS files prior to being written to disk
 dev-python/mkdocs-redirects 1.0.1: Plugin for Mkdocs page redirects
 dev-python/mkdocs_pymdownx_material_extras 1.0.7 1.1.3: Custom alterations based on Mkdocs-Material
 dev-python/mmtf-python 1.1.2-r1: The python implementation of the MMTF API, decoder and encoder
@@ -8894,7 +8895,7 @@ dev-python/pyrqlite 2.1: Python client for rqlite
 dev-python/pyrsistent 0.17.3: Persistent/Functional/Immutable data structures
 dev-python/pysaml2 6.1.0: Python implementation of SAML Version 2 to be used in a WSGI environment
 dev-python/pyscard 2.0.0: Smart cards support in python
-dev-python/pyscreenshot 2.2: Python screenshot library
+dev-python/pyscreenshot 2.2 2.3: Python screenshot library
 dev-python/pyserial 3.5: Python Serial Port extension
 dev-python/pyside2 5.15.1: Python bindings for the Qt framework
 dev-python/pyside2-tools 5.15.1-r1: PySide development tools (pyside2-lupdate with support for Python)
@@ -8904,7 +8905,7 @@ dev-python/pysnmp 4.4.12-r1 999999: Python SNMP library
 dev-python/pysnmp-mibs 0.1.6: SNMP framework in Python - MIBs
 dev-python/pysol_cards 0.10.1: Deal PySol FreeCell cards
 dev-python/pyspectrum2 0.2.0: Implements a protobuf-based interface for Spectrum2 python-based backends
-dev-python/pyspelling 2.7.0: Spell checker automation tool
+dev-python/pyspelling 2.7.0 2.7.1: Spell checker automation tool
 dev-python/pyspf 2.0.14: Python implementation of the Sender Policy Framework (SPF)
 dev-python/pysrt 1.1.2 9999: Python library used to edit or create SubRip files
 dev-python/pysvg 0.2.2_p3: Python SVG document creation library
@@ -9051,7 +9052,7 @@ dev-python/pytzdata 2020.1: The Olson timezone database for Python
 dev-python/pyu2f 0.1.4-r1: Python based U2F host library
 dev-python/pyudev 0.22.0: Python binding to libudev
 dev-python/pyusb 1.1.1: USB support for Python
-dev-python/pyvirtualdisplay 1.3.2 2.1: Python wrapper for Xvfb, Xephyr and Xvnc
+dev-python/pyvirtualdisplay 1.3.2 2.0 2.1: Python wrapper for Xvfb, Xephyr and Xvnc
 dev-python/pywavelets 1.1.1: Discrete Wavelet Transforms in Python
 dev-python/pyx 0.15: Python package for the generation of encapsulated PostScript figures
 dev-python/pyxDamerauLevenshtein 1.6.1 1.6.2 1.7.0: Implements the Damerau-Levenshtein edit distance algorithm for Python in Cython
@@ -9224,11 +9225,11 @@ dev-python/sphinxcontrib-serializinghtml 1.1.4: Sphinx extension which outputs o
 dev-python/sphinxcontrib-spelling 7.1.0: Sphinx spelling extension
 dev-python/sphinxcontrib-websupport 1.2.4: Sphinx websupport extension
 dev-python/spur 0.3.22: Run commands locally or over SSH using the same interface
-dev-python/spyder 4.2.0 4.2.1: The Scientific Python Development Environment
+dev-python/spyder 4.2.0 4.2.1 4.2.3: The Scientific Python Development Environment
 dev-python/spyder-kernels 1.10.0 1.10.1 1.10.2: Kernels used by spyder on its ipython console
 dev-python/spyder-line-profiler 0.2.1: Plugin to run the python line profiler from within the spyder editor
 dev-python/spyder-memory-profiler 0.2.1: Plugin to run the python memory_profiler from within the spyder editor
-dev-python/spyder-notebook 0.3.1: Jupyter notebook integration with Spyder
+dev-python/spyder-notebook 0.3.2: Jupyter notebook integration with Spyder
 dev-python/spyder-terminal 0.5.0: Run system terminals inside Spyder
 dev-python/spyder-unittest 0.4.1: Plugin for Spyder to run tests and view the results
 dev-python/spyder-vim 0_pre20201026: Plugin for Spyder to enable Vim keybindings
@@ -10863,7 +10864,7 @@ dev-util/itstool 2.0.6-r1: Translation tool for XML documents that uses gettext 
 dev-util/japi-compliance-checker 2.4 9999: Java API compliance checker
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jconfig 2.9: Utility that provides a simple API for the management of properties
-dev-util/jenkins-bin 2.263.3-r1 2.263.4 2.280: Extensible continuous integration server
+dev-util/jenkins-bin 2.263.3-r1 2.263.4 2.277.1 2.280: Extensible continuous integration server
 dev-util/jfrog-cli 1.35.3: Command line utility foroperations on container images and image repositories
 dev-util/kbuild 0.1.9998.3407 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
@@ -16928,7 +16929,7 @@ sys-apps/firejail 0.9.64.4 9999: Security sandbox for any type of processes
 sys-apps/firejail-lts 0.9.56.2-r1 0.9.56.2-r2: Security sandbox for any type of processes; LTS version
 sys-apps/fix-gnustack 0.1: Utility to report and remove the executable flag from an ELF object's GNU_STACK
 sys-apps/flashrom 1.2-r3 9999: Utility for reading, writing, erasing and verifying flash ROM chips
-sys-apps/flatpak 1.8.5 1.10.0 1.10.2: Linux application sandboxing and distribution framework
+sys-apps/flatpak 1.10.0 1.10.2: Linux application sandboxing and distribution framework
 sys-apps/frandom 1.1-r1: Fast kernel-land pseudo-random number generator using the RC4 algorithm
 sys-apps/fwts 20.05.00 20.11.00: Firmware Test Suite
 sys-apps/fwupd 1.4.6 1.5.6 1.5.7: Aims to make updating firmware on Linux automatic, safe and reliable

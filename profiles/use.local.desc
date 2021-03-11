@@ -2390,12 +2390,30 @@ dev-python/PyQt5:websockets - Build bindings for the QtWebSockets module
 dev-python/PyQt5:widgets - Build bindings for the QtWidgets module
 dev-python/PyQt5:x11extras - Build bindings for the QtX11Extras module
 dev-python/PyQt5:xmlpatterns - Build bindings for the QtXmlPatterns module
-dev-python/QtPy:designer - Build bindings for the QtDesigner module and enable the designer plugin
-dev-python/QtPy:gui - Build bindings for the QtGui module
-dev-python/QtPy:printsupport - Build bindings for the QtPrintSupport module
-dev-python/QtPy:svg - Build bindings for the QtSvg module
-dev-python/QtPy:testlib - Build bindings for the QtTest module
-dev-python/QtPy:webengine - Build bindings for the QtWebEngine module
+dev-python/QtPy:declarative - Pull in bindings for the QtQml/QtQuick modules and enable the qmlscene plugin
+dev-python/QtPy:designer - Pull in bindings for the QtDesigner module and enable the designer plugin
+dev-python/QtPy:gui - Pull in bindings for the QtGui module
+dev-python/QtPy:help - Pull in bindings for the QtHelp module
+dev-python/QtPy:location - Pull in bindings for the QtLocation module
+dev-python/QtPy:multimedia - Pull in QtMultimedia and QtMultimediaWidgets modules
+dev-python/QtPy:network - Pull in bindings for the QtNetwork module
+dev-python/QtPy:opengl - Pull in bindings for the QtOpenGL module
+dev-python/QtPy:positioning - Pull in bindings for the QtPositioning module
+dev-python/QtPy:printsupport - Pull in bindings for the QtPrintSupport module
+dev-python/QtPy:qml - Pull in QtQml module
+dev-python/QtPy:quick - Pull in QtQuick and QtQuickWidgets modules
+dev-python/QtPy:sensors - Pull in bindings for the QtSensors module
+dev-python/QtPy:serialport - Pull in bindings for the QtSerialPort module
+dev-python/QtPy:sql - Pull in bindings for the QtSql module
+dev-python/QtPy:svg - Pull in bindings for the QtSvg module
+dev-python/QtPy:testlib - Pull in bindings for the QtTest module
+dev-python/QtPy:webchannel - Pull in bindings for the QtWebChannel module
+dev-python/QtPy:webengine - Pull in QtWebEngine and QtWebEngineWidgets modules
+dev-python/QtPy:websockets - Pull in bindings for the QtWebSockets module
+dev-python/QtPy:widgets - Pull in bindings for the QtWidgets module
+dev-python/QtPy:x11extras - Pull in bindings for the QtX11Extras module
+dev-python/QtPy:xml - Pull in QtXml module
+dev-python/QtPy:xmlpatterns - Pull in bindings for the QtXmlPatterns module
 dev-python/autobahn:scram - Add support for WAMP-SCRAM authentication
 dev-python/autobahn:xbr - Add support for XBR decentralized data markets and etherium blockchain
 dev-python/cryptography:idna - enable support for the old, deprecated IDNA specification (RFC 3490)

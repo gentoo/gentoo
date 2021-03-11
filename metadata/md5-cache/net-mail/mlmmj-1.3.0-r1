@@ -7,4 +7,4 @@ KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=MIT
 SLOT=0
 SRC_URI=http://mlmmj.org/releases/mlmmj-1.3.0.tar.bz2
-_md5_=b6753653a66fd1fc708deddad32b0468
+_md5_=6d426711c0383617c2d97553e4d5b360
