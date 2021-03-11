@@ -19,9 +19,14 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+RDEPEND="
+	dev-python/aiohttp[${PYTHON_USEDEP}]
+	dev-python/requests[${PYTHON_USEDEP}]
+	dev-python/websocket-client[${PYTHON_USEDEP}]"
 BDEPEND="
 	test? (
 		dev-python/eventlet[${PYTHON_USEDEP}]
+		www-servers/tornado[${PYTHON_USEDEP}]
 	)"
 
 distutils_enable_tests pytest
