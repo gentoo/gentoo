@@ -16,7 +16,7 @@ KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 DEPEND="virtual/mta"
 
-DOCS=( AUTHORS ChangeLog FAQ "README*" TODO TUNABLES UPGRADE )
+DOCS=( AUTHORS ChangeLog FAQ TODO TUNABLES UPGRADE )
 
 PATCHES=(
 	"${FILESDIR}"/mlmmj-1.2.19.0-listcontrol-customheaders.patch
@@ -44,6 +44,8 @@ src_install() {
 
 	insinto /usr/share/mlmmj
 	doins -r contrib/web/*
+
+	dodoc README.*
 }
 
 pkg_postinst() {
@@ -51,5 +53,5 @@ pkg_postinst() {
 	elog "- One for user subscribing/unsubscribing"
 	elog "- One for admin tasks"
 	elog "both available in a php and perl module."
-	elog "For more info have a look in /usr/share/mlmmj"
+	elog "For more info have a look in ${EROOT}/usr/share/mlmmj"
 }
