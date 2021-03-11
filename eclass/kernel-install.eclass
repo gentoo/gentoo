@@ -89,6 +89,9 @@ kernel-install_can_update_symlink() {
 
 	# if the symlink does not exist or is broken, update
 	[[ ! -e ${target} ]] && return 0
+	# if the target does not seem to contain kernel sources
+	# (i.e. is probably a leftover directory), update
+	[[ ! -e ${target}/Makefile ]] && return 0
 
 	local symlink_target=$(readlink "${target}")
 	# the symlink target should start with the same basename as target
