@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 		These Dictionary topics are from M.G. Easton M.A., D.D., Illustrated Bible
 		Dictionary, Third Edition, published by Thomas Nelson, 1897. Due to the

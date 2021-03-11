@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 		Taken from the meditations of St. Anne Katharina Emmerick. Parts of the text served as inspiration for Mel Gibson's film.
 	</longdescription>

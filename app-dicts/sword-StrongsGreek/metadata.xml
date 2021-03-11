@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 		Dictionary of Greek Words taken from Strong's Exhaustive Concordance by James Strong, S.T.D., LL.D. 1890
 	</longdescription>
