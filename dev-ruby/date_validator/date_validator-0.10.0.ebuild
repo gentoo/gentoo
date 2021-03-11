@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-USE_RUBY="ruby24 ruby25 ruby26 ruby27"
+USE_RUBY="ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_TASK_TEST="test"
 
@@ -18,7 +18,7 @@ RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Simple, ORM agnostic, Ruby 1.9 compatible date validator for Rails 3"
+DESCRIPTION="Simple, ORM agnostic, Ruby 1.9 compatible date validator for Rails"
 HOMEPAGE="https://github.com/codegram/date_validator"
 
 LICENSE="MIT"
