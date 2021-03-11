@@ -3549,7 +3549,7 @@ dev-db/apgdiff 2.4: A simple PostgreSQL diff tool that is useful for schema upgr
 dev-db/barman 2.10 2.12: Administration tool for disaster recovery of PostgreSQL servers
 dev-db/bucardo 5.4.1: An asynchronous PostgreSQL replication system
 dev-db/cdb 0.75-r4: Fast, reliable, simple package for creating and reading constant databases
-dev-db/citus 9.5.2 9.5.4 10.0.1: Open-source postgresql extension for clustering/multi-node setups
+dev-db/citus 9.5.2 9.5.4 10.0.1 10.0.2: Open-source postgresql extension for clustering/multi-node setups
 dev-db/cockroach 2.1.5 19.1.1: open source database for building cloud services
 dev-db/cpp-driver 2.9.0 2.11.0: DataStax C/C++ Driver for Cassandra
 dev-db/datadraw 3.1.1: feature rich database generator for high performance C applications
@@ -8458,7 +8458,7 @@ dev-python/jupyter_core 4.7.1: Core common functionality of Jupyter projects
 dev-python/jupyterlab_pygments 0.1.2: Pygments theme making use of JupyterLab CSS variables
 dev-python/jwcrypto 0.8.0: Implements JWK,JWS,JWE specifications using python-cryptography
 dev-python/kafka-python 1.4.7: Kafka protocol support in Python
-dev-python/kaitaistruct 0.8 0.9: Kaitai Struct runtime for Python
+dev-python/kaitaistruct 0.9: Kaitai Struct runtime for Python
 dev-python/kaptan 0.5.12-r1: Configuration manager in your pocket
 dev-python/kazoo 2.8.0: A high-level Python library that makes it easier to use Apache Zookeeper
 dev-python/kconfiglib 14.1.0: A flexible Python Kconfig implementation
@@ -10794,7 +10794,7 @@ dev-util/dmake 4.12.2: Improved make
 dev-util/docker-distribution-pruner 0_p20170401: Clean all old container revisions from registry
 dev-util/docker-ls 0.3.1: Tools for browsing and manipulating docker registries
 dev-util/dogtail 0.9.11: GUI test tool and automation framework using accessibility framework
-dev-util/dput-ng 1.28-r1: Next generation Debian package upload tool
+dev-util/dput-ng 1.28-r1 1.32: Next generation Debian package upload tool
 dev-util/drone 0.8.9: A Continuous Delivery platform built on Docker, written in Go
 dev-util/drone-cli 0.8.6 1.1.4 1.2.1: Command-line interface for Drone
 dev-util/dropwatch 1.4_p20150706: A utility to interface to the kernel to monitor for dropped network packets
@@ -13118,7 +13118,7 @@ media-libs/ganv 1.8.0: A GTK+ widget for interactive graph-like environments
 media-libs/gavl 1.4.0-r2: Library for handling uncompressed audio and video data
 media-libs/gd 2.3.0 2.3.1 2.3.2: Graphics library for fast image creation
 media-libs/gegl 0.4.26-r1 0.4.28 9999: A graph based image processing framework
-media-libs/gexiv2 0.12.1 9999: GObject-based wrapper around the Exiv2 library
+media-libs/gexiv2 0.12.1: GObject-based wrapper around the Exiv2 library
 media-libs/giblib 1.2.4-r1: a graphics library built on top of imlib2
 media-libs/giflib 5.2.1-r1: Library to handle, display and manipulate GIF images
 media-libs/glew 1.6.0-r100 1.10.0-r100 2.1.0-r1 2.2.0: The OpenGL Extension Wrangler Library
@@ -15285,7 +15285,7 @@ net-misc/netkit-talk 0.17-r5: Netkit - talkd
 net-misc/netkit-telnetd 0.17-r12: Standard Linux telnet client and server
 net-misc/netkit-timed 0.17-r10: Netkit - timed
 net-misc/netpipe 1.0.0_beta2-r2: tool to reliably distribute binary data using UDP broadcasting techniques
-net-misc/netpipes 4.2-r2: a package to manipulate BSD TCP/IP stream sockets
+net-misc/netpipes 4.2-r2: Tools to manipulate BSD TCP/IP stream sockets
 net-misc/netsed 0.01b-r1 1.3: Small tool for altering forwarded network data in real time
 net-misc/netstat-nat 1.4.10: Display NAT connections
 net-misc/networkmanager 1.22.10-r12 1.26.4 1.26.6 1.28.0-r1: A set of co-operative tools that make networking simple and straightforward
@@ -17466,7 +17466,7 @@ sys-firmware/b43-firmware 5.100.138 6.30.163.46: broadcom firmware for b43 LP PH
 sys-firmware/b43legacy-firmware 3.130.20.0: broadcom firmware for b43legacy/bcm43xx
 sys-firmware/bluez-firmware 1.2: Firmware for Broadcom BCM203x and STLC2300 Bluetooth chips
 sys-firmware/broadcom-bt-firmware 12.0.1.1011_p1: Broadcom Bluetooth firmware
-sys-firmware/edk2-ovmf 201905 202008 999999: UEFI firmware for 64-bit x86 virtual machines
+sys-firmware/edk2-ovmf 201905 202008: UEFI firmware for 64-bit x86 virtual machines
 sys-firmware/firmware-imx 5.4: NXP i.MX firmware
 sys-firmware/intel-microcode 20201112_p20201116-r1 20210216_p20210221: Intel IA32/IA64 microcode update data
 sys-firmware/ipw2100-firmware 1.3: Firmware for the Intel PRO/Wireless 2100 3B miniPCI adapter
