@@ -299,13 +299,6 @@ dev-db/4store
 # Removal in 30 days.  Bug #707504.
 app-misc/slmon
 
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2021-02-12)
-# Does not build against clang/LLVM toolchain.
-# Last release in 2009. Upstream repository is gone.
-# Depends minimal on very old vdr version
-# Removal on 2021-03-12.  Bug #740302
-media-plugins/vdr-cpumon
-
 # Sam James <sam@gentoo.org> (2021-02-10)
 # Causes circular dep with opam
 # seq -> opam-installer -> opam-format -> re -> seq
