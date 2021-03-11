@@ -87,10 +87,12 @@ prefix_src_archives() {
 TARBALL_PV=${PV}
 SRC_URI="mirror://gentoo/${PN}-${TARBALL_PV}.tar.xz
 	$(prefix_src_archives ${PN}-${TARBALL_PV}.tar.xz)
-	https://github.com/gentoo/portage/commit/ff7d78442895e53afb534c072477f98bada4f248.patch -> ${P}-bug-775053-setup-globals-double-prefix-ff7d78.patch"
+	https://github.com/gentoo/portage/commit/ff7d78442895e53afb534c072477f98bada4f248.patch -> ${P}-bug-775053-setup-globals-double-prefix-ff7d78.patch
+	https://github.com/gentoo/portage/commit/d8a12c258cbe15b2725c51b1061e8297919b20df.patch -> ${P}-bug-775239-_test_lock_fn-tempfile-leak-d8a12c.patch"
 
 PATCHES=(
 	"${DISTDIR}/${P}-bug-775053-setup-globals-double-prefix-ff7d78.patch"
+	"${DISTDIR}/${P}-bug-775239-_test_lock_fn-tempfile-leak-d8a12c.patch"
 )
 
 pkg_pretend() {
