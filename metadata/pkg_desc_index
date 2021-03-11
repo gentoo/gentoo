@@ -3585,7 +3585,7 @@ dev-db/myodbc 8.0.22 8.0.23: ODBC driver for MySQL
 dev-db/mysql 5.7.27-r2 5.7.29-r1 5.7.30-r1 5.7.31 5.7.32 5.7.33 8.0.19-r2 8.0.20-r1 8.0.21-r1 8.0.22 8.0.23: A fast, multi-threaded, multi-user SQL database server
 dev-db/mysql++ 3.2.5: C++ API interface to the MySQL database
 dev-db/mysql-cluster 7.2.34 7.3.22 7.4.21: An enhanced, drop-in replacement for MySQL
-dev-db/mysql-connector-c 8.0.22 8.0.23: C client library for MariaDB/MySQL
+dev-db/mysql-connector-c 8.0.22 8.0.23-r1: C client library for MariaDB/MySQL
 dev-db/mysql-connector-c++ 1.1.12-r1 8.0.19 8.0.20 8.0.21 8.0.22 8.0.23: MySQL database connector for C++ (mimics JDBC 4.0 API)
 dev-db/mysql-init-scripts 2.3-r3: Gentoo MySQL init scripts.
 dev-db/mysql-super-smack 1.3-r4: Benchmarking, stress testing, and load generation tool for MySQL & PostGreSQL
@@ -13636,14 +13636,12 @@ media-plugins/vco-plugins 0.3.0-r1: SAW-VCO ladspa plugin package. Anti-aliased 
 media-plugins/vdr-actuator 1.2.1 2.4.1_pre20181025: VDR plugin: control an hor. or ver. actuator attached trough the parallel port
 media-plugins/vdr-avards 0.2.4 0.2.6: VDR Plugin: Automatic Video Aspect Ratio Detection and Signaling
 media-plugins/vdr-beep 0.1.2: VDR plugin: Use the PC speaker to signalize some events (shutdown, cut done ...)
-media-plugins/vdr-bgprocess 0.1.0: VDR plugin: Collect information about background process status
 media-plugins/vdr-burn 0.2.2-r1 0.3.0: VDR Plugin: burn records on DVD
 media-plugins/vdr-burn-templates 0.0.3: DVD-themes (background and menu) for vdr-burn
 media-plugins/vdr-calc 0.0.1_rc5: VDR Plugin: OSD Calculator
 media-plugins/vdr-cdplayer 1.2.2: VDR Plugin: CD-PLAYER
 media-plugins/vdr-cinebars 0.0.5: VDR Plugin: Show black bars to hide station logo
 media-plugins/vdr-clock 1.0.0-r2: VDR Plugin: Tea clock, clock
-media-plugins/vdr-cpumon 0.0.6_p1: VDR Plugin: Show cpu-usage on OSD
 media-plugins/vdr-ddci2 1.0.4 1.0.5 9999: VDR plugin: DDCI2 - Digital Devices CI support
 media-plugins/vdr-devstatus 0.4.1-r1: VDR plugin: display the usage status of the available DVB devices
 media-plugins/vdr-dummydevice 2.0.0: VDR Plugin: dummy output device ,for recording server without any output devices
@@ -13672,7 +13670,6 @@ media-plugins/vdr-live 0.3.0_p20130504-r1 2.3.1: VDR Plugin: Web Access To Setti
 media-plugins/vdr-loadepg 0.2.7: VDR : Loadepg Plugin; Canal+ group (Mediahighway)
 media-plugins/vdr-menuorg 0.5.1-r1: VDR plugin: make osd menu configurable via config-file
 media-plugins/vdr-mlist 1.0.2: VDR plugin: Show a history of the last OSD message
-media-plugins/vdr-mount 0.0.2: VDR plugin: (Un)Mount removable media via osd
 media-plugins/vdr-mp3ng 0.0.1_pre5-r2 0.0.1_pre5-r3: VDR Plugin: play mp3 and ogg on VDR
 media-plugins/vdr-mplayer 0.10.2: VDR Plugin: Play video files not supported by VDR with mplayer (divx and more)
 media-plugins/vdr-newsticker 0.0.4: VDR plugin: Show rdf Newsticker on TV
@@ -13681,14 +13678,10 @@ media-plugins/vdr-osdserver 0.1.2 0.1.3: VDR plugin: VDR OSD access for ext. pro
 media-plugins/vdr-osdteletext 0.9.7 0.9.8: VDR Plugin: Osd-Teletext displays the teletext/videotext on the OSD
 media-plugins/vdr-peer 0.0.1: VDR Plugin: peer-to-peer between multiple VDRs
 media-plugins/vdr-permashift 1.0.1-r1 1.0.4_pre20200301: VDR Plugin: permanent timeshift by recording live TV on RAM
-media-plugins/vdr-pilot 0.0.9-r1: VDR plugin: Another way for viewing EPG and zap to channels
 media-plugins/vdr-pin 0.1.14 0.1.17-r1: VDR plugin: enable/disable parentalrating in records
 media-plugins/vdr-powermate 0.0.5: VDR PLUGIN: support the Powermate device
-media-plugins/vdr-proxy 0.1.4-r1: VDR Plugin: enable grouping of menu entries, online load/unload
 media-plugins/vdr-pvr350 1.7.5: VDR plugin: use a PVR350 as output device
-media-plugins/vdr-quicktimer 0.1.1: VDR plugin: Fast generate timers with just entering Channel, Day and start time
 media-plugins/vdr-radio 0.9.1 1.1.0: VDR plugin: show background image for radio and decode RDS Text
-media-plugins/vdr-radiolist 0.0.2: VDR plugin: Filters channel list and only show the radio channels
 media-plugins/vdr-rcu 2.2.0: VDR plugin: Remote Control Unit consists mainly of an IR receiver, PIC 16C84
 media-plugins/vdr-recsearch 0.3.7: VDR Plugin: Search through your recordings and find the one you are looking for
 media-plugins/vdr-remote 0.7.0: VDR Plugin: use various devices for controlling vdr (keyboards, lirc, remotes bundled with tv-cards)
@@ -14442,7 +14435,7 @@ net-analyzer/ngrep 1.47: A grep for network layers
 net-analyzer/nikto 2.1.6_p20200901 2.1.6_p20210304: Web server vulnerability scanner
 net-analyzer/nipper 0.12.0: Router configuration security analysis tool
 net-analyzer/nload 0.7.4-r1: Real time network traffic monitor for the command line interface
-net-analyzer/nmap 7.80-r2 7.91-r1 9999: Network exploration tool and security / port scanner
+net-analyzer/nmap 7.80-r2 7.91-r1 7.91-r2 9999: Network exploration tool and security / port scanner
 net-analyzer/nmapsi 0.5_alpha2: Qt frontend to nmap
 net-analyzer/nmbscan 1.2.5-r1: Scans the shares of a SMB/NetBIOS network
 net-analyzer/nrpe 4.0.0 4.0.2 4.0.3: Nagios Remote Plugin Executor
