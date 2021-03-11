@@ -141,8 +141,9 @@ app-admin/rsyslog:zeromq - Build the ZeroMQ input and output modules (requires n
 app-admin/sagan:libdnet - Add support for dev-libs/libdnet
 app-admin/sagan:lognorm - Add support for log/rules normalizations via dev-libs/liblognorm
 app-admin/sagan:pcap - Add support for network packet capture via net-libs/libpcap
+app-admin/sagan:redis - Add support for the Redis database via dev-libs/hiredis
 app-admin/sagan:smtp - Build witch SMTP (E-Mail) support
-app-admin/sagan:snort - Add support to interact with Snort IDE using net-analyzer/snortsam'
+app-admin/sagan:snort - Add support to interact with Snort IDE using net-analyzer/snortsam
 app-admin/sagan-rules:lognorm - Install normalize rules support with dev-libs/liblognorm
 app-admin/salt:cheetah - Enable support for dev-python/cheetah3
 app-admin/salt:cherrypy - Enable support for using cherrypy.
