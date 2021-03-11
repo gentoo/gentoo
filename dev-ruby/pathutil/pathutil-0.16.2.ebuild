@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ RUBY_FAKEGEM_GEMSPEC="Gem.gemspec"
 inherit ruby-fakegem
 
 DESCRIPTION="Like Pathname but a little less insane"
-HOMEPAGE="https://rubygems.org/gems/pathutil https://github.com/envygeeks/pathutils"
+HOMEPAGE="https://rubygems.org/gems/pathutil https://github.com/envygeeks/pathutil"
 SRC_URI="https://github.com/envygeeks/pathutil/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
