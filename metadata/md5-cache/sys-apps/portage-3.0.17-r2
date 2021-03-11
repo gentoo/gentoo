@@ -12,6 +12,6 @@ RDEPEND=acct-user/portage app-arch/zstd >=app-arch/tar-1.27 dev-lang/python-exec
 REQUIRED_USE=|| ( python_targets_pypy3 python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 )
 RESTRICT=!test? ( test )
 SLOT=0
-SRC_URI=mirror://gentoo/portage-3.0.17.tar.xz https://dev.gentoo.org/~zmedico/portage/archives/portage-3.0.17.tar.xz https://github.com/gentoo/portage/commit/ff7d78442895e53afb534c072477f98bada4f248.patch -> portage-3.0.17-bug-775053-setup-globals-double-prefix-ff7d78.patch
+SRC_URI=mirror://gentoo/portage-3.0.17.tar.xz https://dev.gentoo.org/~zmedico/portage/archives/portage-3.0.17.tar.xz https://github.com/gentoo/portage/commit/ff7d78442895e53afb534c072477f98bada4f248.patch -> portage-3.0.17-bug-775053-setup-globals-double-prefix-ff7d78.patch https://github.com/gentoo/portage/commit/d8a12c258cbe15b2725c51b1061e8297919b20df.patch -> portage-3.0.17-bug-775239-_test_lock_fn-tempfile-leak-d8a12c.patch
 _eclasses_=distutils-r1	16579e06f8839831bd5c03455bb87e3f	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	python-r1	6d099888c5b4dd4868c26508df307e95	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	tmpfiles	dc8e4917d734a019caa04ad3b8db560b	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=dc0016146990002e42916e0ceb49b695
+_md5_=89f279d29d6504e6bf2d939c00cc0aac
