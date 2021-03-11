@@ -58,6 +58,7 @@ src_configure() {
 	local myeconfargs=(
 		$(use_enable smtp esmtp)
 		$(use_enable lognorm)
+		$(use_enable redis)
 		$(use_enable pcap libpcap)
 		$(use_enable geoip)
 	)
