@@ -5,6 +5,7 @@ EAPI=7
 
 inherit libtool multilib-minimal toolchain-funcs
 
+# Note: Please bump this in sync with dev-libs/libxml2.
 DESCRIPTION="XSLT libraries and tools"
 HOMEPAGE="http://www.xmlsoft.org/ https://gitlab.gnome.org/GNOME/libxslt"
 SRC_URI="ftp://xmlsoft.org/${PN}/${P}.tar.gz"
@@ -18,7 +19,7 @@ IUSE="crypt debug examples static-libs elibc_Darwin"
 BDEPEND=">=virtual/pkgconfig-1"
 RDEPEND="
 	>=dev-libs/libxml2-2.9.10:2[${MULTILIB_USEDEP}]
-	crypt?  ( >=dev-libs/libgcrypt-1.5.3:0=[${MULTILIB_USEDEP}] )
+	crypt? ( >=dev-libs/libgcrypt-1.5.3:0=[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}"
 
@@ -40,6 +41,7 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# Python bindings were dropped as they were Python 2 only at the time
 	ECONF_SOURCE="${S}" econf \
 		--with-html-dir="${EPREFIX}"/usr/share/doc/${PF} \
 		--with-html-subdir=html \
