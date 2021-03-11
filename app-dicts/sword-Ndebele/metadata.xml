@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 		The Ndebele Bible that is offered here to you is partly completed and partly a work in progress at the time of writing, 2018.
 	</longdescription>

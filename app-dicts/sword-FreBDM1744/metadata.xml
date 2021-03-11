@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription lang="fr">
 		La Sainte Bible, Version David Martin 1744: Cette Bible est basée sur le
 		Textus Receptus et est très fidèle. C'est une Bible d'étude idéal, bien

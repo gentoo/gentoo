@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 		One of John Owen's finest devotional treatises in which he examines the Christian's communion with God as it relates to all three members of the Holy Trinity.  By John Owen.  Archaic words in the text have been automatically modernized.
 	</longdescription>

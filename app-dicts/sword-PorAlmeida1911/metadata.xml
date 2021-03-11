@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription lang="pt">
 		Da reimpressão de 1911 de uma edição de 1900 da tradução da Bíblia parao português feita por João Ferreira de Almeida no século 17
 	</longdescription>

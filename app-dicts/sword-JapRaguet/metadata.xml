@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 		Emile Raguet (1854-1929) was a Belgian missionary. He came to Japan at 1879. He translated a New Tastament based on Vulgate into classical Japanese in 1910. His translation was treated as the semi-official Catholic translation in Japan.
 	</longdescription>

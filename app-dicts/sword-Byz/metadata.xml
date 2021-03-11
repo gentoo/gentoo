@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 		The New Testament in the Original Greek: Byzantine Textform 2005, edited
 		by Maurice A. Robinson and William G. Pierpont. This is the edition by Pierpont
