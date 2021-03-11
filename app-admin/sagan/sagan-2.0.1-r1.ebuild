@@ -52,6 +52,10 @@ src_prepare() {
 src_configure() {
 	append-flags -fcommon
 
+	# TODO: poke at strstr logic and enable/disable CPU_FLAGS_X86_*
+	# accordingly?
+	# Note that not all of these are used:
+	# https://github.com/quadrantsec/sagan/blob/main/m4/ax_ext.m4
 	local myeconfargs=(
 		$(use_enable smtp esmtp)
 		$(use_enable lognorm)
