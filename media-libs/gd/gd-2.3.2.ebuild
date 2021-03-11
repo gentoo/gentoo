@@ -13,7 +13,7 @@ S="${WORKDIR}/lib${P}"
 LICENSE="gd IJG HPND BSD"
 SLOT="2/3"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
-IUSE="cpu_flags_x86_sse fontconfig +jpeg heif +png static-libs test tiff truetype webp xpm zlib"
+IUSE="avif cpu_flags_x86_sse fontconfig +jpeg heif +png static-libs test tiff truetype webp xpm zlib"
 RESTRICT="!test? ( test )"
 
 # fontconfig has prefixed font paths, details see bug #518970
@@ -24,6 +24,7 @@ REQUIRED_USE="
 
 BDEPEND="virtual/pkgconfig"
 RDEPEND="
+	avif? ( media-libs/libavif[${MULTILIB_USEDEP}] )
 	fontconfig? ( >=media-libs/fontconfig-2.10.92[${MULTILIB_USEDEP}] )
 	jpeg? ( >=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}] )
 	heif? ( media-libs/libheif[${MULTILIB_USEDEP}] )
@@ -68,8 +69,8 @@ multilib_src_configure() {
 		--disable-werror
 		--without-x
 		--without-liq
-		--without-avif
 		$(use_enable static-libs static)
+		$(use_with avif)
 		$(use_with fontconfig)
 		$(use_with png)
 		$(use_with tiff)
