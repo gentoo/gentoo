@@ -320,10 +320,6 @@ app-emulation/libvirt xen
 # Requires USE=sdl that is masked in this profile.
 media-video/mjpegtools sdlgfx
 
-# Michał Górny <mgorny@gentoo.org> (2018-01-12)
-# Those require USE=doc that is masked in this profile.
-dev-python/python-neutronclient test
-
 # Ian Whyman <thev00d00@gentoo.org> (2017-09-05)
 # missing keywords media-libs/lastfmlib
 net-misc/gerbera lastfm
