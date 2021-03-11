@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -337,7 +337,15 @@ pkg_setup() {
 	if use video_cards_i965 ||
 	   use video_cards_iris ||
 	   use video_cards_radeonsi; then
-		CONFIG_CHECK="~CHECKPOINT_RESTORE"
+		if kernel_is -ge 5 11 3; then
+			CONFIG_CHECK="~KCMP"
+		elif kernel_is -ge 5 11; then
+			CONFIG_CHECK="~CHECKPOINT_RESTORE"
+		elif kernel_is -ge 5 10 20; then
+			CONFIG_CHECK="~KCMP"
+		else
+			CONFIG_CHECK="~CHECKPOINT_RESTORE"
+		fi
 		linux-info_pkg_setup
 	fi
 
