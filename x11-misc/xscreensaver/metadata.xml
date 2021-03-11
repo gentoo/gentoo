@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-<email>desktop-misc@gentoo.org</email>
-<name>Gentoo Desktop Miscellaneous Project</name>
-</maintainer>
-<upstream>
-<maintainer>
-<email>jwz@jwz.org</email>
-<name>Jamie Zawinski</name>
-</maintainer>
-</upstream>
-<use>
-<flag name="gdk-pixbuf">Include support for the <pkg>x11-libs/gdk-pixbuf</pkg> library in some demos, which will make it possible for them to read GIF, JPEG, and PNG files as well</flag>
-<flag name="gdm">Use gdmflexiserver from <pkg>gnome-base/gdm</pkg> instead of <pkg>x11-misc/lightdm</pkg></flag>
-<flag name="locking">Compile in support for locking the display</flag>
-<flag name="new-login">Enable user switching support using gdmflexiserver (<pkg>x11-misc/lightdm</pkg>)</flag>
-</use>
+	<!-- maintainer-needed -->
+	<upstream>
+		<maintainer>
+			<email>jwz@jwz.org</email>
+			<name>Jamie Zawinski</name>
+		</maintainer>
+	</upstream>
+	<use>
+		<flag name="gdk-pixbuf">Include support for the <pkg>x11-libs/gdk-pixbuf</pkg> library in some demos, which will make it possible for them to read GIF, JPEG, and PNG files as well</flag>
+		<flag name="gdm">Use gdmflexiserver from <pkg>gnome-base/gdm</pkg> instead of <pkg>x11-misc/lightdm</pkg></flag>
+		<flag name="locking">Compile in support for locking the display</flag>
+		<flag name="new-login">Enable user switching support using gdmflexiserver (<pkg>x11-misc/lightdm</pkg>)</flag>
+	</use>
 </pkgmetadata>
