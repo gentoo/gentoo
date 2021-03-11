@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -106,10 +106,6 @@ dev-python/setuptools_scm test
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-24)
 # dependencies not stable yet
 dev-python/pytest-cov test
-
-# Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
-# No stable app-arch/rpm on hppa, bug #471456
-dev-util/patchutils test
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
 # no stable app-editors/{,g}vim
