@@ -8,6 +8,7 @@ PYTHON_REQ_USE="xml"
 
 inherit autotools libtool flag-o-matic python-r1 prefix multilib-minimal
 
+# Note: Please bump in sync with dev-libs/libxslt
 XSTS_HOME="http://www.w3.org/XML/2004/xml-schema-test-suite"
 XSTS_NAME_1="xmlschema2002-01-16"
 XSTS_NAME_2="xmlschema2004-01-14"
