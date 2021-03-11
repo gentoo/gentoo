@@ -16,9 +16,9 @@ IUSE="geoip +libdnet +lognorm mysql redis +pcap smtp"
 
 BDEPEND="virtual/pkgconfig"
 DEPEND="
-	app-admin/sagan-rules[lognorm?]
-	acct-user/sagan
 	acct-group/sagan
+	acct-user/sagan
+	app-admin/sagan-rules[lognorm?]
 	dev-libs/libpcre
 	dev-libs/libyaml
 	geoip? ( dev-libs/geoip )
@@ -35,7 +35,7 @@ DEPEND="
 # Package no longer logs directly to a database
 # and relies on Unified2 format to accomplish it
 RDEPEND="
-	${RDEPEND}
+	${DEPEND}
 	mysql? ( net-analyzer/barnyard2[mysql] )
 "
 
