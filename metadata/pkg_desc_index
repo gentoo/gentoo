@@ -13736,7 +13736,7 @@ media-radio/fldigi 4.1.14 4.1.15 4.1.17 4.1.18: Sound card based multimode softw
 media-radio/flmsg 4.0.3 4.0.14 4.0.17: Fldigi helper for creating radiograms
 media-radio/flrig 1.3.51 1.3.53 1.3.54: Transceiver control program for Amateur Radio use
 media-radio/fsync-mdc1200-decode 1.0 9999: Linux Fleetsync / MDC1200 decoder
-media-radio/gpredict 2.2.1: Real-time satellite tracking and orbit prediction application
+media-radio/gpredict 2.2.1 2.3: Real-time satellite tracking and orbit prediction application
 media-radio/grig 0.8.1 0.8.1-r1: A tool for controlling amateur radios
 media-radio/ibp 0.21-r1: Shows currently transmitting beacons of the International Beacon Project (IBP)
 media-radio/js8call 2.2.0: Weak signal ham radio communication
@@ -16925,7 +16925,7 @@ sys-apps/fakeroot 1.22 1.23 1.24 1.25.1 1.25.2 1.25.3: A fake root environment b
 sys-apps/fakeroot-ng 0.18-r1: A utility to run commands with fake root privileges
 sys-apps/fbset 2.1: A utility to set the framebuffer videomode
 sys-apps/fd 8.1.1 8.2.1: Alternative to find that provides sensible defaults for 80% of the use cases
-sys-apps/file 5.37-r1 5.38-r1 5.39-r3 9999: identify a file's format by scanning binary data for patterns
+sys-apps/file 5.37-r1 5.38-r1 5.39-r3 5.39-r4 9999: identify a file's format by scanning binary data for patterns
 sys-apps/findutils 4.7.0 4.8.0: GNU utilities for finding files
 sys-apps/firejail 0.9.64.4 9999: Security sandbox for any type of processes
 sys-apps/firejail-lts 0.9.56.2-r1 0.9.56.2-r2: Security sandbox for any type of processes; LTS version
