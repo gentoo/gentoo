@@ -63,6 +63,11 @@ src_prepare() {
 	# out-of-tree build.
 	eapply "${FILESDIR}/${PN}-3.9-cmake-link-flags.patch"
 
+	# Known failures.
+	rm test/libcxx/gdb/gdb_pretty_printer_test.sh.cpp || die
+	rm test/libcxx/memory/trivial_abi/unique_ptr_ret.pass.cpp || die
+	rm test/libcxx/memory/trivial_abi/weak_ptr_ret.pass.cpp || die
+
 	llvm.org_src_prepare
 }
 

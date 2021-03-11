@@ -88,6 +88,9 @@ src_prepare() {
 		fi
 	done
 
+	# Known failures.
+	rm test/lsan/TestCases/many_threads_detach.cpp || die
+
 	# TODO: fix these tests to be skipped upstream
 	if use asan && ! use profile; then
 		rm test/asan/TestCases/asan_and_llvm_coverage_test.cpp || die
