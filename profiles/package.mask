@@ -306,15 +306,6 @@ app-misc/slmon
 # Removal on 2021-03-12.  Bug #740302
 media-plugins/vdr-cpumon
 
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2021-02-12)
-# Last release in 2006. Upstream repository is gone.
-# Hompage shows only to a wiki entry.
-# Has open bugs.
-# If you still relies on this plugin, leave a comment in
-# the depended bug.
-# Removal on 2021-03-12.  Bug #740302
-media-plugins/vdr-mount
-
 # Sam James <sam@gentoo.org> (2021-02-10)
 # Causes circular dep with opam
 # seq -> opam-installer -> opam-format -> re -> seq
