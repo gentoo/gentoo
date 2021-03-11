@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2021-03-11)
+# Last upstream release in 2018, uses outdated dependencies.  No
+# longer works with dev-ruby/parser, bug 775206. No reverse
+# dependencies.
+# Masked for removal in 30 days.
+dev-ruby/astrolabe
+
 # Hans de Graaff <graaff@gentoo.org> (2021-03-09)
 # Last upstream release in 2013, ruby25-only.
 # Masked for removal in 30 days.
