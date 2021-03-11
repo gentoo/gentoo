@@ -1,5 +1,5 @@
 DEFINED_PHASES=install prepare setup
-DEPEND=>=virtual/jdk-1.8 app-arch/unzip
+DEPEND=>=virtual/jdk-1.8 app-arch/unzip virtual/pkgconfig
 DESCRIPTION=The world's most advanced repository manager for maven
 EAPI=6
 HOMEPAGE=http://www.jfrog.org/products.php
@@ -9,5 +9,5 @@ LICENSE=AGPL-3+
 RDEPEND=>=virtual/jre-1.8
 SLOT=0
 SRC_URI=https://bintray.com/artifact/download/jfrog/artifactory/jfrog-artifactory-oss-6.3.3.zip -> artifactory-6.3.3.zip
-_eclasses_=user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
-_md5_=7e0c1025c3cc30e1b9d930cfc91d9cc7
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+_md5_=0fd2dcf6dcf3f07970c0bf79b81407e6
