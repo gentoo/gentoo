@@ -2709,7 +2709,7 @@ app-office/libalkimia 8.0.4 8.1.0: Library with common classes and functionality
 app-office/libreoffice 6.4.7.2 7.0.4.2 7.0.5.2 7.0.9999 9999: A full office productivity suite
 app-office/libreoffice-bin 6.4.7.2_p2 6.4.7.2_p3: A full office productivity suite. Binary package
 app-office/libreoffice-bin-debug 6.4.7.2_p2 6.4.7.2_p3: LibreOffice, a full office productivity suite. Binary package, debug info
-app-office/libreoffice-l10n 6.4.7.2 7.0.4.2 7.0.5.1: Translations for the Libreoffice suite
+app-office/libreoffice-l10n 6.4.7.2 7.0.4.2 7.0.5.2: Translations for the Libreoffice suite
 app-office/libreoffice-voikko 5.0-r1: Free Finnish spell checking and hyphenation for LibreOffice
 app-office/lyx 2.3.5.2-r2 2.3.6.1: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/magicpoint 1.13a_p20121015-r1: An X11 based presentation tool
@@ -17512,7 +17512,7 @@ sys-fs/copyfs 1.0.1-r1: fuse-based filesystem for maintaining configuration file
 sys-fs/cramfs 1.1 2.1: Linux filesystem designed to be simple, small, and to compress things well
 sys-fs/cryfs 0.10.2: Encrypted FUSE filesystem that conceals metadata
 sys-fs/cryptmount 5.3.3: A utility for management and user-mode mounting of encrypted filesystems
-sys-fs/cryptsetup 2.3.2 2.3.3 2.3.4: Tool to setup encrypted devices with dm-crypt
+sys-fs/cryptsetup 2.3.4 2.3.5: Tool to setup encrypted devices with dm-crypt
 sys-fs/ctmg 1.2: Simple wrapper around cryptsetup for encrypted containers
 sys-fs/davl 1.2.4-r2: Visualizes the fragmentation status of ext2/3 filesystems
 sys-fs/dd-rescue 1.99.8-r1 1.99.9: Similar to dd but can copy from source with errors
