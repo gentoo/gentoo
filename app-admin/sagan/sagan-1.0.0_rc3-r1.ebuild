@@ -16,20 +16,21 @@ KEYWORDS="~amd64 ~x86"
 IUSE="geoip +libdnet +lognorm mysql +pcap smtp snort"
 
 BDEPEND="virtual/pkgconfig"
-RDEPEND="dev-libs/libpcre
+RDEPEND="
 	app-admin/sagan-rules[lognorm?]
-	smtp? ( net-libs/libesmtp )
-	pcap? ( net-libs/libpcap )
+	dev-libs/libpcre
+	geoip? ( dev-libs/geoip )
 	lognorm? (
 		dev-libs/liblognorm
 		dev-libs/json-c:=
 		dev-libs/libee
 		dev-libs/libestr
-			)
+	)
 	libdnet? ( dev-libs/libdnet )
+	pcap? ( net-libs/libpcap )
+	smtp? ( net-libs/libesmtp )
 	snort? ( >=net-analyzer/snortsam-2.50 )
-	geoip? ( dev-libs/geoip )
-	"
+"
 DEPEND="${RDEPEND}"
 
 # Package no longer logs directly to a database
