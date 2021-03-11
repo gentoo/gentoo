@@ -21,6 +21,15 @@ PATCHES=(
 	"${FILESDIR}"/mlmmj-1.3.0-gcc-10.patch
 )
 
+src_prepare() {
+	default
+
+	# bug #259962
+	for file in $(find . -iname "*.cgi") ; do
+		sed -i -e "s:/usr/local/bin/:${EPREFIX}/usr/bin/:" "${file}" || die
+	done
+}
+
 src_configure() {
 	econf --enable-receive-strip
 }
