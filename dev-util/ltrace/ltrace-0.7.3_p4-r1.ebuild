@@ -48,6 +48,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.7.3-tuple-tests.patch
 	"${FILESDIR}"/${PN}-0.7.3-CXX-for-tests.patch
 	"${FILESDIR}"/${PN}-0.7.3-test-glibc-2.33.patch
+	"${FILESDIR}"/${PN}-0.7.3-disable-munmap-test.patch
 )
 
 src_prepare() {
@@ -66,4 +67,10 @@ src_configure() {
 		--disable-werror \
 		$(use_enable debug) \
 		$(use_with unwind libunwind)
+}
+
+src_test() {
+	# sandbox redirects vfork() to fork(): bug # 774054
+	# Let's avoid sandbox entirely.
+	SANDBOX_ON=0 LD_PRELOAD= emake check
 }
