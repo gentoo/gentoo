@@ -16,9 +16,9 @@ IUSE="geoip +libdnet +lognorm mysql redis +pcap smtp"
 
 BDEPEND="virtual/pkgconfig"
 DEPEND="
-	app-admin/sagan-rules[lognorm?]
-	acct-user/sagan
 	acct-group/sagan
+	acct-user/sagan
+	app-admin/sagan-rules[lognorm?]
 	dev-libs/libpcre
 	dev-libs/libyaml
 	geoip? ( dev-libs/geoip )
