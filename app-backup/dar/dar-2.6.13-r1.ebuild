@@ -61,7 +61,6 @@ src_configure() {
 		$(usex dar32 --enable-mode=32 '')
 		$(usex dar64 --enable-mode=64 '')
 		$(usex doc '' --disable-build-html)
-		#$(usex examples --enable-examples '')
 		$(usex gcrypt '' --disable-libgcrypt-linking)
 		$(usex gpg '' --disable-gpgme-linking)
 		$(usex lzo '' --disable-liblzo2-linking)
