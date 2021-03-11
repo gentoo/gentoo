@@ -287,69 +287,6 @@ xfce-extra/xfce4-statusnotifier-plugin
 # Mask development versions now that they were bumped...
 =net-misc/kea-1.9*
 
-# Jakov Smolic <jakov.smolic@sartura.hr> (2021-02-13)
-# Fails to build with gcc-10, stuck on EAPI 5, dead upstream
-# multiple reported bugs, not touched by maintainer in years.
-# Removal in 30 days. Bug #762904
-dev-db/4store
-
-# Jakov Smolic <jakov.smolic@sartura.hr> (2021-02-13)
-# Fails to build with gcc-10, no maintainer, last release in 2004,
-# no reverse dependencies.
-# Removal in 30 days.  Bug #707504.
-app-misc/slmon
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2021-02-12)
-# Does not build against clang/LLVM toolchain.
-# Last release in 2009. Upstream repository is gone.
-# Depends minimal on very old vdr version
-# Removal on 2021-03-12.  Bug #740302
-media-plugins/vdr-cpumon
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2021-02-12)
-# Last release in 2006. Upstream repository is gone.
-# Hompage shows only to a wiki entry.
-# Has open bugs.
-# If you still relies on this plugin, leave a comment in
-# the depended bug.
-# Removal on 2021-03-12.  Bug #740302
-media-plugins/vdr-mount
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2021-02-11)
-# Does not build against vdr-2.4.  Last release in ~2006.
-# Upstream repository is gone.
-# Depends minimal on very old vdr version
-# Removal on 2021-03-11.  Bug #724700.
-media-plugins/vdr-pilot
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2021-02-11)
-# Does not build against vdr-2.4.  Last release in ~2006.
-# Upstream repository is gone.
-# Depends minimal on very old vdr version
-# Removal on 2021-03-11.  Bug #724704.
-media-plugins/vdr-radiolist
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2021-02-11)
-# Does not build against vdr-2.4.  Last release in 2008.
-# Upstream repository is gone.
-# Depends minimal on very old vdr version
-# Removal on 2021-03-11.  Bug #724742.
-media-plugins/vdr-proxy
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2021-02-11)
-# Does not build against vdr-2.4.  Last release in 2008.
-# Upstream repository is gone.
-# Depends minimal on very old vdr version
-# Removal on 2021-03-11.  Bug #724752.
-media-plugins/vdr-bgprocess
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2021-02-11)
-# Does not build against vdr-2.4.  Last release in ~2006.
-# Upstream repository is gone.
-# Depends minimal on very old vdr version
-# Removal on 2021-03-11.  Bug #724734.
-media-plugins/vdr-quicktimer
-
 # Sam James <sam@gentoo.org> (2021-02-10)
 # Causes circular dep with opam
 # seq -> opam-installer -> opam-format -> re -> seq

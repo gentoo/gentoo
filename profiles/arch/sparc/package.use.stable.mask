@@ -1,4 +1,4 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2021-02-21)
@@ -47,10 +47,6 @@ media-sound/vorbis-tools kate
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-14)
 # dependencies not stable on sparc
 media-video/ffmpeg codec2 dav1d libaom libaribb24 libilbc libtesseract lv2 rubberband vidstab
-
-# Rolf Eike Beer <eike@sf-mail.de> (2020-04-14)
-# needs app-arch/rpm for the tests, which is not stable on sparc
-dev-util/patchutils test
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-10)
 # gnome-online-accounts not stable on sparc
