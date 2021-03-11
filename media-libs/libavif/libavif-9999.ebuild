@@ -63,9 +63,9 @@ multilib_src_configure() {
 
 		if ! use aom ; then
 			if use rav1e || use svt-av1 ; then
-				ewarn "libavif on $MULTILIB_ABI_FLAG will work in read-only mode."
-				ewarn "Support for rav1e and/or svt-av1 is is not available on $MULTILIB_ABI_FLAG"
-				ewarn "Enable aom flag for full support on $MULTILIB_ABI_FLAG"
+				ewarn "libavif on ${MULTILIB_ABI_FLAG} will work in read-only mode."
+				ewarn "Support for rav1e and/or svt-av1 is is not available on ${MULTILIB_ABI_FLAG}"
+				ewarn "Enable aom flag for full support on ${MULTILIB_ABI_FLAG}"
 			fi
 		fi
 	fi
