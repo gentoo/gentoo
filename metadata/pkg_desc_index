@@ -214,6 +214,7 @@ acct-group/rspamd 0-r1: Group for rspamd - Rapid spam filtering system
 acct-group/rstudio-server 0-r1: group for sci-mathematics/rstudio
 acct-group/rtkit 0-r1: Group for the Realtime Policy and Watchdog Daemon
 acct-group/sabnzbd 0-r1: SABnzbd program group
+acct-group/sagan 0: Group for the Sagan log monitoring system
 acct-group/sancp 0: gid for net-analyzer/sancp
 acct-group/sanlock 0-r1: shared storage lock manager
 acct-group/scponly 0-r1: group for scponly
@@ -507,6 +508,7 @@ acct-user/rspamd 0-r1: User for rspamd - Rapid spam filtering system
 acct-user/rstudio-server 0-r1: user for sci-mathematics/rstudio
 acct-user/rtkit 0-r1: User for the Realtime Policy and Watchdog Daemon
 acct-user/sabnzbd 0-r1: SABnzbd program user
+acct-user/sagan 0-r1: User for the Sagan log monitoring system
 acct-user/sancp 0: uid for net-analyzer/sancp
 acct-user/sanlock 0-r1: shared storage lock manager
 acct-user/scponly 0-r1: user for chrooted scponly
@@ -759,7 +761,7 @@ app-admin/reportmagic 2.21: Makes usable statistics from your web site log file 
 app-admin/restart-services 0.15.2 0.16.0 0.16.1 0.17.0: Tool to manage OpenRC and systemd services that need to be restarted
 app-admin/rex 1.13.3 9999: (R)?ex, the friendly automation framework
 app-admin/rsyslog 8.2008.0 8.2010.0 8.2012.0 8.2012.0-r1 8.2102.0: An enhanced multi-threaded syslogd with database support and more
-app-admin/sagan 1.0.0_rc3 1.0.0_rc3-r1 2.0.1: Sagan is a multi-threaded, real time system and event log monitoring system
+app-admin/sagan 1.0.0_rc3 1.0.0_rc3-r1 2.0.1-r1: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20140617 20210208 99999999: Rules for Sagan log analyzer
 app-admin/salt 3000.5 3000.8 3001.6 3002.5: Salt is a remote execution and configuration manager
 app-admin/selint 1.1.0 1.2.0 9999: Policy Analysis Tools for SELinux
@@ -13952,7 +13954,7 @@ media-sound/mup 6.6: Program for printing music scores
 media-sound/murmur 1.3.3 1.3.4 9999: Mumble is an open source, low-latency, high quality voice chat software
 media-sound/muse 0.9.2_p20161002: Multiple Streaming Engine, an icecast source streamer
 media-sound/musepack-tools 465-r1: Musepack SV8 libraries and utilities
-media-sound/musescore 3.6.1 3.6.2 9999: WYSIWYG Music Score Typesetter
+media-sound/musescore 3.6.2 9999: WYSIWYG Music Score Typesetter
 media-sound/music-file-organizer 1.0.3: Organizes audio files into directories based on metadata tags
 media-sound/musique 1.5-r1: Qt music player
 media-sound/ncmpc 0.34 0.39: Ncurses client for the Music Player Daemon (MPD)
@@ -14976,7 +14978,7 @@ net-libs/openmq-cclient 4.4.1: C-Client Library for Open Source Java Message Ser
 net-libs/ortp 0.23.0-r1: Open Real-time Transport Protocol (RTP, RFC3550) stack
 net-libs/pacparser 1.3.7-r1: Library to parse proxy auto-config files
 net-libs/phodav 2.2: WebDav server implementation using libsoup
-net-libs/pjproject 2.7.2-r2 2.9-r2 2.10: Open source SIP, Media, and NAT Traversal Library
+net-libs/pjproject 2.7.2-r2 2.9-r2 2.10 2.10-r1: Open source SIP, Media, and NAT Traversal Library
 net-libs/quiche 0.5.1 0.6.0 0.7.0 9999: Implementation of the QUIC transport protocol and HTTP/3
 net-libs/qxmpp 1.2.0 9999: A cross-platform C++ XMPP client library based on the Qt framework
 net-libs/rabbitmq-c 0.10.0: RabbitMQ C client
