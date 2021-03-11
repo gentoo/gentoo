@@ -35,7 +35,7 @@ DEPEND="
 # Package no longer logs directly to a database
 # and relies on Unified2 format to accomplish it
 RDEPEND="
-	${RDEPEND}
+	${DEPEND}
 	mysql? ( net-analyzer/barnyard2[mysql] )
 "
 
