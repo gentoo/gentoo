@@ -13,7 +13,7 @@ HOMEPAGE="http://www.xmlsoft.org/ https://gitlab.gnome.org/GNOME/libxml2"
 
 LICENSE="MIT"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="debug examples icu ipv6 lzma +python readline static-libs test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
@@ -91,9 +91,6 @@ src_prepare() {
 
 	# bug #745162
 	eapply "${FILESDIR}"/${PN}-2.9.8-python3-unicode-errors.patch
-
-	# https://gitlab.gnome.org/GNOME/libxml2/-/issues/178
-	eapply "${FILESDIR}"/${PN}-2.9.10-xmllint-utf8.patch
 
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		# Avoid final linking arguments for python modules
