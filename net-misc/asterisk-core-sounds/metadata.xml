@@ -9,6 +9,7 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<use>
 		<flag name="alaw">Install the sounds files for the alaw codec.</flag>
 		<flag name="g722">Install the sounds files for the g722 codec.</flag>
