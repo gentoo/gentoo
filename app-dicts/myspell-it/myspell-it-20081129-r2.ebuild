@@ -30,7 +30,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc 
 src_prepare() {
 	default
 	# remove useless license files.
-	rm -rf agpl3-en.txt gpl3-en.txt it_IT_license.txt \
+	rm -r agpl3-en.txt gpl3-en.txt it_IT_license.txt \
 		lgpl3-en.txt th_it_IT_copyright_licenza.txt \
 		th_it_IT_lettera_in_inglese.txt || die
 }
