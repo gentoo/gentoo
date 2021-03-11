@@ -10367,7 +10367,7 @@ dev-ruby/ruby2ruby 2.4.2 2.4.4: Generates readable ruby from ParseTree
 dev-ruby/ruby_gntp 0.3.4: Ruby library for GNTP(Growl Notification Transport Protocol)
 dev-ruby/ruby_parser 3.14.2 3.15.0 3.15.1: A ruby parser written in pure ruby
 dev-ruby/ruby_smb 1.1.0: pure Ruby implementation of the SMB Protocol Family
-dev-ruby/rubygems 2.7.10 2.7.11 3.0.3 3.0.9 3.1.6 3.2.6 3.2.7 3.2.11 3.2.13: Centralized Ruby extension management system
+dev-ruby/rubygems 2.7.10 2.7.11 3.0.3 3.0.9 3.1.6 3.2.6 3.2.7 3.2.11 3.2.13 3.2.14: Centralized Ruby extension management system
 dev-ruby/rubyntlm 0.6.2 0.6.3: Ruby/NTLM provides message creator and parser for the NTLM authentication.
 dev-ruby/rubypants 0.7.0 0.7.1: A Ruby port of the SmartyPants PHP library
 dev-ruby/rubytest 0.8.1: Ruby Test is a universal test harness for Ruby
@@ -10971,7 +10971,7 @@ dev-util/sel 0.08.4-r2: A filemanager for shell scripts
 dev-util/serialtalk 1.2-r1 9999: simple command-line tool to talk to serial devices
 dev-util/sgb 20030623-r1 20090810: Stanford GraphBase
 dev-util/shadowman 2 9999: Unified compiler shadow link directory updater
-dev-util/shards 0.14.0: Dependency manager for the Crystal language
+dev-util/shards 0.14.0 0.14.1: Dependency manager for the Crystal language
 dev-util/shc 3.9.6: A (shell-) script compiler/scrambler
 dev-util/shellcheck 0.7.1: Shell script analysis tool
 dev-util/shellcheck-bin 0.7.1: Shell script analysis tool (binary package)
@@ -18010,7 +18010,7 @@ www-apache/mod_vdbh 1.0.3-r2: An Apache2 module for mass virtual hosting using a
 www-apache/mod_vhost_ldap 2.4.0-r1: Store and configure Apache virtual hosts using LDAP
 www-apache/mod_whatkilledus 2.01: Debug segmentation faults in Apache threads
 www-apache/mod_wsgi 4.7.0 4.7.1 4.7.1-r1: An Apache2 module for running Python WSGI applications
-www-apache/mod_xsendfile 1.0_beta1-r1: Apache module that processes X-SENDFILE headers registered by the output handler
+www-apache/mod_xsendfile 1.0_beta1-r1 1.0_beta1-r2: Apache module that processes X-SENDFILE headers registered by the output handler
 www-apache/modsec-flameeyes 20130216 99999999: Flameeyes's Ruleset for ModSecurity
 www-apache/modsecurity-crs 3.3.0: OWASP ModSecurity Core Rule Set
 www-apache/mpm_itk 2.4.7_p4-r1: Run virtual hosts under separate users/groups
