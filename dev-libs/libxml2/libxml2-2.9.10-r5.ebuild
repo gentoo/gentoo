@@ -6,17 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{7,8,9} )
 PYTHON_REQ_USE="xml"
 
-inherit libtool flag-o-matic python-r1 autotools prefix multilib-minimal
-
-DESCRIPTION="XML C parser and toolkit"
-HOMEPAGE="http://www.xmlsoft.org/ https://gitlab.gnome.org/GNOME/libxml2"
-
-LICENSE="MIT"
-SLOT="2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="debug examples icu ipv6 lzma +python readline static-libs test"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
-RESTRICT="!test? ( test )"
+inherit autotools libtool flag-o-matic python-r1 prefix multilib-minimal
 
 XSTS_HOME="http://www.w3.org/XML/2004/xml-schema-test-suite"
 XSTS_NAME_1="xmlschema2002-01-16"
@@ -24,14 +14,31 @@ XSTS_NAME_2="xmlschema2004-01-14"
 XSTS_TARBALL_1="xsts-2002-01-16.tar.gz"
 XSTS_TARBALL_2="xsts-2004-01-14.tar.gz"
 XMLCONF_TARBALL="xmlts20080827.tar.gz"
-
-SRC_URI="ftp://xmlsoft.org/${PN}/${PN}-${PV/_rc/-rc}.tar.gz
+DESCRIPTION="XML C parser and toolkit"
+HOMEPAGE="http://www.xmlsoft.org/ https://gitlab.gnome.org/GNOME/libxml2"
+SRC_URI="
+	ftp://xmlsoft.org/${PN}/${PN}-${PV/_rc/-rc}.tar.gz
 	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-r1-patchset.tar.xz
 	test? (
 		${XSTS_HOME}/${XSTS_NAME_1}/${XSTS_TARBALL_1}
 		${XSTS_HOME}/${XSTS_NAME_2}/${XSTS_TARBALL_2}
-		http://www.w3.org/XML/Test/${XMLCONF_TARBALL} )"
+		http://www.w3.org/XML/Test/${XMLCONF_TARBALL}
+	)
+"
+S="${WORKDIR}/${PN}-${PV%_rc*}"
 
+LICENSE="MIT"
+SLOT="2"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+
+IUSE="debug examples icu ipv6 lzma +python readline static-libs test"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+RESTRICT="!test? ( test )"
+
+BDEPEND="
+	dev-util/gtk-doc-am
+	virtual/pkgconfig
+"
 RDEPEND="
 	>=sys-libs/zlib-1.2.8-r1:=[${MULTILIB_USEDEP}]
 	icu? ( >=dev-libs/icu-51.2-r1:=[${MULTILIB_USEDEP}] )
@@ -40,12 +47,6 @@ RDEPEND="
 	readline? ( sys-libs/readline:= )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="
-	dev-util/gtk-doc-am
-	virtual/pkgconfig
-"
-
-S="${WORKDIR}/${PN}-${PV%_rc*}"
 
 MULTILIB_CHOST_TOOLS=(
 	/usr/bin/xml2-config
@@ -58,7 +59,7 @@ src_unpack() {
 	unpack ${P}-r1-patchset.tar.xz
 	cd "${S}" || die
 
-	if use test; then
+	if use test ; then
 		cp "${DISTDIR}/${XSTS_TARBALL_1}" \
 			"${DISTDIR}/${XSTS_TARBALL_2}" \
 			"${S}"/xstc/ \
@@ -92,7 +93,7 @@ src_prepare() {
 	# bug #745162
 	eapply "${FILESDIR}"/${PN}-2.9.8-python3-unicode-errors.patch
 
-	# https://gitlab.gnome.org/GNOME/libxml2/-/issues/178
+	# bug #749849
 	eapply "${FILESDIR}"/${PN}-2.9.10-xmllint-utf8.patch
 
 	if [[ ${CHOST} == *-darwin* ]] ; then
@@ -105,24 +106,26 @@ src_prepare() {
 	# Please do not remove, as else we get references to PORTAGE_TMPDIR
 	# in /usr/lib/python?.?/site-packages/libxml2mod.la among things.
 	# We now need to run eautoreconf at the end to prevent maintainer mode.
-#	elibtoolize
-#	epunt_cxx # if we don't eautoreconf
+	# elibtoolize
+	# If we don't eautoreconf, we need this instead
+	# epunt_cxx
 
 	eautoreconf
 }
 
 multilib_src_configure() {
-	# filter seemingly problematic CFLAGS (#26320)
+	# Filter seemingly problematic CFLAGS (#26320)
 	filter-flags -fprefetch-loop-arrays -funroll-loops
 
-	# USE zlib support breaks gnome2
-	# (libgnomeprint for instance fails to compile with
-	# fresh install, and existing) - <azarah@gentoo.org> (22 Dec 2002).
-
-	# The meaning of the 'debug' USE flag does not apply to the --with-debug
-	# switch (enabling the libxml2 debug module). See bug #100898.
-
-	# --with-mem-debug causes unusual segmentation faults (bug #105120).
+	# Notes:
+	# 1) USE zlib support breaks gnome2
+	#    (libgnomeprint for instance fails to compile with
+	#    fresh install, and existing) - <azarah@gentoo.org> (22 Dec 2002).
+	#
+	# 2) The meaning of the 'debug' USE flag does not apply to the --with-debug
+	#    switch (enabling the libxml2 debug module). See bug #100898.
+	#
+	# 3) --with-mem-debug causes unusual segmentation faults (bug #105120).
 
 	libxml2_configure() {
 		ECONF_SOURCE="${S}" econf \
@@ -138,53 +141,78 @@ multilib_src_configure() {
 	}
 
 	libxml2_py_configure() {
-		mkdir -p "${BUILD_DIR}" || die # ensure python build dirs exist
+		# Ensure python build dirs exist
+		mkdir -p "${BUILD_DIR}" || die
+
+		# Odd build system, also see bug #582130
 		run_in_build_dir libxml2_configure \
 			"--with-python=${EPYTHON}" \
 			"--with-python-install-dir=$(python_get_sitedir)"
-			# odd build system, also see bug #582130
 	}
 
-	libxml2_configure --without-python # build python bindings separately
+	# Build python bindings separately
+	libxml2_configure --without-python
 
-	if multilib_is_native_abi && use python; then
+	if multilib_is_native_abi && use python ; then
 		python_foreach_impl libxml2_py_configure
 	fi
 }
 
+
+libxml2_py_emake() {
+	pushd "${BUILD_DIR}/python" > /dev/null || die
+
+	emake "$@"
+
+	popd > /dev/null || die
+}
+
+
 multilib_src_compile() {
 	default
-	if multilib_is_native_abi && use python; then
-		local native_builddir=${BUILD_DIR}
-		python_foreach_impl libxml2_py_emake top_builddir="${native_builddir}" all
+
+	if multilib_is_native_abi && use python ; then
+		local native_builddir="${BUILD_DIR}"
+
+		python_foreach_impl libxml2_py_emake \
+				top_builddir="${native_builddir}" \
+				all
 	fi
 }
 
 multilib_src_test() {
 	ln -s "${S}"/xmlconf || die
+
 	emake check
-	multilib_is_native_abi && use python && python_foreach_impl libxml2_py_emake test
+
+	if multilib_is_native_abi && use python ; then
+		python_foreach_impl libxml2_py_emake test
+	fi
 }
 
 multilib_src_install() {
-	emake DESTDIR="${D}" \
-		EXAMPLES_DIR="${EPREFIX}"/usr/share/doc/${PF}/examples install
+	emake \
+		DESTDIR="${D}" \
+		EXAMPLES_DIR="${EPREFIX}"/usr/share/doc/${PF}/examples \
+		install
 
-	if multilib_is_native_abi && use python; then
+	if multilib_is_native_abi && use python ; then
 		python_foreach_impl libxml2_py_emake \
 			DESTDIR="${D}" \
 			docsdir="${EPREFIX}"/usr/share/doc/${PF}/python \
 			exampledir="${EPREFIX}"/usr/share/doc/${PF}/python/examples \
 			install
+
 		python_foreach_impl python_optimize
 	fi
 }
 
 multilib_src_install_all() {
 	rm -rf "${ED}"/usr/share/doc/${P}
+
 	einstalldocs
 
-	if ! use examples; then
+	if ! use examples ; then
 		rm -rf "${ED}"/usr/share/doc/${PF}/examples
 		rm -rf "${ED}"/usr/share/doc/${PF}/python/examples
 	fi
@@ -195,25 +223,19 @@ multilib_src_install_all() {
 pkg_postinst() {
 	# We don't want to do the xmlcatalog during stage1, as xmlcatalog will not
 	# be in / and stage1 builds to ROOT=/tmp/stage1root. This fixes bug #208887.
-	if [[ -n ${ROOT} ]]; then
+	if [[ -n "${ROOT}" ]]; then
 		elog "Skipping XML catalog creation for stage building (bug #208887)."
 	else
-		# need an XML catalog, so no-one writes to a non-existent one
+		# Need an XML catalog, so no-one writes to a non-existent one
 		CATALOG="${EROOT}/etc/xml/catalog"
 
-		# we dont want to clobber an existing catalog though,
+		# We don't want to clobber an existing catalog though,
 		# only ensure that one is there
 		# <obz@gentoo.org>
-		if [[ ! -e ${CATALOG} ]]; then
+		if [[ ! -e "${CATALOG}" ]]; then
 			[[ -d "${EROOT}/etc/xml" ]] || mkdir -p "${EROOT}/etc/xml"
 			"${EPREFIX}"/usr/bin/xmlcatalog --create > "${CATALOG}"
 			einfo "Created XML catalog in ${CATALOG}"
 		fi
 	fi
-}
-
-libxml2_py_emake() {
-	pushd "${BUILD_DIR}/python" > /dev/null || die
-	emake "$@"
-	popd > /dev/null
 }
