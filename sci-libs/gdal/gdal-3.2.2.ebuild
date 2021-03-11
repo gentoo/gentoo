@@ -113,7 +113,7 @@ src_prepare() {
 
 	# autoconf 2.70+
 	# bug #775209
-	touch config.rpath || die
+	config_rpath_update .
 
 	eautoreconf
 }
