@@ -20,21 +20,21 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
 
-#RESTRICT="!test? ( test )"
-# Running the test suite is broken for now, WIP
-RESTRICT="test"
-
 RDEPEND="dev-python/namespace-ruamel[${PYTHON_USEDEP}]
 	dev-python/ruamel-yaml-clib[${PYTHON_USEDEP}]"
-# This confuses dependency resolution on arches not supporting this package
-# yet regardless of RESTRICT=test, just leave it out for now.
-#BDEPEND="test? (
-#	dev-python/ruamel-std-pathlib[${PYTHON_USEDEP}]
-#)"
+BDEPEND="test? (
+	dev-python/ruamel-std-pathlib[${PYTHON_USEDEP}]
+)"
 
 S="${WORKDIR}"/${MY_P}
 
 distutils_enable_tests pytest
+
+# Old PyYAML tests from lib/ require special set-up and are invoked indirectly
+# via test_z_olddata, tell pytest itself to leave the subdir alone.
+python_test() {
+	epytest --ignore _test/lib/
+}
 
 python_install() {
 	distutils-r1_python_install --single-version-externally-managed

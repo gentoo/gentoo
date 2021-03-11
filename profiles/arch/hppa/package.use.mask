@@ -4,6 +4,11 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Marek Szuba <marecki@gentoo.org> (2021-03-11)
+# Awaiting keywording of dev-python/ruamel-std-pathlib
+# on this arch (Bug #775242)
+dev-python/ruamel-yaml test
+
 # Sam James <sam@gentoo.org> (2021-03-06)
 # media-libs/libheif isn't keyworded here
 media-libs/gd heif
