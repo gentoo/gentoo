@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic user systemd
+inherit autotools flag-o-matic systemd
 
 DESCRIPTION="Sagan is a multi-threaded, real time system and event log monitoring system"
 HOMEPAGE="https://sagan.quadrantsec.com/"
@@ -17,6 +17,8 @@ IUSE="geoip +libdnet +lognorm mysql redis +pcap smtp"
 BDEPEND="virtual/pkgconfig"
 DEPEND="
 	app-admin/sagan-rules[lognorm?]
+	acct-user/sagan
+	acct-group/sagan
 	dev-libs/libpcre
 	dev-libs/libyaml
 	geoip? ( dev-libs/geoip )
@@ -40,11 +42,6 @@ RDEPEND="
 REQUIRED_USE="mysql? ( libdnet )"
 
 DOCS=( AUTHORS ChangeLog FAQ INSTALL README NEWS TODO )
-
-pkg_setup() {
-	enewgroup sagan
-	enewuser sagan -1 -1 /dev/null sagan
-}
 
 src_prepare() {
 	default
