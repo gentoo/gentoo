@@ -1,0 +1,15 @@
+BDEPEND=virtual/pkgconfig test? ( dev-python/lxml[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] dev-python/nose[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] ) test? ( app-emulation/libvirt:0/7.1.0 ) python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)]
+DEFINED_PHASES=compile configure install prepare test
+DESCRIPTION=libvirt Python bindings
+EAPI=7
+HOMEPAGE=https://www.libvirt.org
+IUSE=examples test test python_targets_python3_7 python_targets_python3_8 python_targets_python3_9
+KEYWORDS=~amd64 ~arm64 ~ppc64 ~x86
+LICENSE=LGPL-2
+RDEPEND=app-emulation/libvirt:0/7.1.0 python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)]
+REQUIRED_USE=|| ( python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 )
+RESTRICT=!test? ( test ) !test? ( test )
+SLOT=0
+SRC_URI=https://libvirt.org/sources/python/libvirt-python-7.1.0.tar.gz
+_eclasses_=distutils-r1	62d60cb45322f5a6eab963d7c386f377	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	4c65b35c1895b82c0f44e44166a3464f	python-utils-r1	41a7dd844b3de07121fe2821bbeea142	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=e4e88c9684fbe2cd65a43f8cc87953af
