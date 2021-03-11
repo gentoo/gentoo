@@ -1,33 +1,36 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils toolchain-funcs
+EAPI=7
 
-DESCRIPTION="a package to manipulate BSD TCP/IP stream sockets"
-HOMEPAGE="http://web.purplefrog.com/~thoth/netpipes/"
+inherit toolchain-funcs
+
+DESCRIPTION="Tools to manipulate BSD TCP/IP stream sockets"
+HOMEPAGE="http://web.purplefrog.com/~thoth/netpipes/netpipes.html"
 SRC_URI="http://web.purplefrog.com/~thoth/netpipes/ftp/${P}-export.tar.gz"
-LICENSE="GPL-2"
+S="${WORKDIR}/${P}-export"
 
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-S=${WORKDIR}/${P}-export
+PATCHES=(
+	"${FILESDIR}/${P}"-string.patch
+)
 
 src_prepare() {
+	default
 	sed -i \
-		-e 's:CFLAGS =:CFLAGS +=:' \
-		-e '/ -o /s:${CFLAGS}:$(CFLAGS) $(LDFLAGS):g' \
+		-e 's;CFLAGS =;CFLAGS +=;' \
+		-e '/ -o /s;${CFLAGS};$(CFLAGS) $(LDFLAGS);g' \
 		Makefile || die
-
-	epatch "${FILESDIR}/${P}"-string.patch
 }
 
 src_compile() {
-	emake CC=$(tc-getCC)
+	emake CC="$(tc-getCC)"
 }
 
 src_install() {
 	dodir /usr/share/man
-	emake INSTROOT="${D}"/usr INSTMAN="${D}"/usr/share/man install
+	emake INSTROOT="${ED}"/usr INSTMAN="${ED}"/usr/share/man install
 }
