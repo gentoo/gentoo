@@ -47,9 +47,11 @@ net-wireless/gnuradio ctrlport
 media-libs/libsdl2 fcitx4
 
 # Joonas Niilola <juippis@gentoo.org> (2020-10-02)
+# Sam James <sam@gentoo.org> (2021-03-11)
 # Dependency only keyworded on specific arm profiles.
 dev-libs/efl avif
 kde-frameworks/kimageformats avif
+media-libs/gd avif
 
 # Adam Feldman <NP-Hardass@gentoo.org> (2020-09-05)
 # dev-util/dogtail is not keyworded for arm
