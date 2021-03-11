@@ -164,7 +164,7 @@ case ${DOCS_BUILDER} in
 		;;
 esac
 
-# @FUNCTION: python_append_dep
+# @FUNCTION: python_append_deps
 # @INTERNAL
 # @DESCRIPTION:
 # Appends [\${PYTHON_USEDEP}] to all dependencies
