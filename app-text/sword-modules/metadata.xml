@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<use>
 		<flag name="esoteric">Install modules with no linguistic content, in unknown languages etc.</flag>
 	</use>
