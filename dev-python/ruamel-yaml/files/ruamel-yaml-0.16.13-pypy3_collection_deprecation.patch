@@ -1,0 +1,22 @@
+Note that this implicitly assumes pypy3 to be compatible with CPython 3.6.
+The test could in principle be more robust - but between 3.7 support
+in PyPy is still being alpha-grade and the fact there will be many more
+serious issues with switching the Gentoo pypy3 target to those versions,
+why bother for now.
+
+--- a/_test/test_deprecation.py
++++ b/_test/test_deprecation.py
+@@ -2,11 +2,12 @@
+ 
+ from __future__ import print_function
+ 
++import platform
+ import sys
+ import pytest  # NOQA
+ 
+ 
+-@pytest.mark.skipif(sys.version_info < (3, 7) or sys.version_info >= (3, 9),
++@pytest.mark.skipif(platform.python_implementation() == 'PyPy' or sys.version_info < (3, 7) or sys.version_info >= (3, 9),
+                     reason='collections not available?')
+ def test_collections_deprecation():
+     with pytest.warns(DeprecationWarning):
