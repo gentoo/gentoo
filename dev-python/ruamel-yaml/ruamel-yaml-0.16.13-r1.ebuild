@@ -26,6 +26,10 @@ BDEPEND="test? (
 	dev-python/ruamel-std-pathlib[${PYTHON_USEDEP}]
 )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.16.13-pypy3_collection_deprecation.patch
+)
+
 S="${WORKDIR}"/${MY_P}
 
 distutils_enable_tests pytest

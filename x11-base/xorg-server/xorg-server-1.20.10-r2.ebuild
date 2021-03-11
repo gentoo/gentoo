@@ -14,7 +14,8 @@ if [[ ${PV} != 9999* ]]; then
 fi
 
 IUSE_SERVERS="dmx kdrive wayland xephyr xnest xorg xvfb"
-IUSE="${IUSE_SERVERS} debug +elogind ipv6 libressl minimal selinux suid systemd +udev unwind xcsecurity"
+IUSE="${IUSE_SERVERS} debug +elogind ipv6 libressl minimal selinux suid systemd test +udev unwind xcsecurity"
+RESTRICT="!test? ( test )"
 
 CDEPEND="
 	media-libs/libglvnd[X]
@@ -141,6 +142,7 @@ pkg_setup() {
 		$(use_enable debug)
 		$(use_enable dmx)
 		$(use_enable kdrive)
+		$(use_enable test unit-tests)
 		$(use_enable unwind libunwind)
 		$(use_enable wayland xwayland)
 		$(use_enable !minimal record)
