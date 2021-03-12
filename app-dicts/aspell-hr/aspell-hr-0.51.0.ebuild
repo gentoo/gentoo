@@ -4,6 +4,7 @@
 EAPI=7
 
 ASPELL_LANG="Croatian"
+
 inherit aspell-dict-r1
 
 LICENSE="GPL-2"
