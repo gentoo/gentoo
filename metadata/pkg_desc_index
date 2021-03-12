@@ -1725,7 +1725,7 @@ app-doc/lapack-docs 3.1.1: Documentation reference and man pages for lapack impl
 app-doc/linkers-and-loaders 1-r1: The Linkers and Loaders book
 app-doc/linux-device-drivers 2 3: howto write linux device drivers (updated for Linux 2.6)
 app-doc/linux-kernel-in-a-nutshell 1-r1: Linux Kernel in a Nutshell: A Desktop Quick Reference
-app-doc/linuxfromscratch 7.10 8.0 8.2: LFS documents building a Linux system entirely from source
+app-doc/linuxfromscratch 8.0 8.2: LFS documents building a Linux system entirely from source
 app-doc/mathjax-docs 2.7.7: MathJax documentation
 app-doc/motif-reference-manual 2.3.0-r2: Motif Reference Manual
 app-doc/php-docs 20190203: HTML documentation for PHP
