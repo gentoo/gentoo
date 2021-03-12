@@ -300,13 +300,6 @@ xfce-extra/xfce4-statusnotifier-plugin
 # Mask development versions now that they were bumped...
 =net-misc/kea-1.9*
 
-# Sam James <sam@gentoo.org> (2021-02-10)
-# Causes circular dep with opam
-# seq -> opam-installer -> opam-format -> re -> seq
-# See ff101b42980416c2fdee330c105cabb745bc9a42
-# bug #769725
-=dev-ml/seq-1
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2021-02-08)
 # Abandoned upstream. Was never ported from gtk-2.
 # A possible alternative is media-gfx/geeqie (gqview fork).
