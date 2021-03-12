@@ -630,7 +630,7 @@ app-admin/calamares 3.2.32.1: Distribution-independent installer framework
 app-admin/cancd 0.1.0-r4: CA NetConsole Daemon receives output from the Linux netconsole driver
 app-admin/ccze 0.2.1-r4: A flexible and fast logfile colorizer
 app-admin/cdist 6.9.4: A usable configuration management system
-app-admin/checksec 1.9.0 1.11.1 2.0.1 2.1.0 2.2.0 2.2.1 2.2.2 2.2.3 2.4.0: Tool to check properties of executables (e.g. ASLR/PIE, RELRO, PaX, Canaries)
+app-admin/checksec 2.2.3 2.4.0: Tool to check properties of executables (e.g. ASLR/PIE, RELRO, PaX, Canaries)
 app-admin/chroot_safe 1.4-r1: Chroot any dynamically linked application in a safe and sane manner
 app-admin/chrootuid 1.3-r2: Run a network service at low privilege level and restricted file system access
 app-admin/chrpath 0.13-r2 0.16: Chrpath can modify the rpath and runpath of ELF executables
@@ -5788,7 +5788,7 @@ dev-libs/ucl 1.03-r1: the UCL Compression Library
 dev-libs/ucommon 7.0.0: Portable C++ runtime for threads and sockets
 dev-libs/udis86 1.7.2-r1: Disassembler library for the x86/-64 architecture sets
 dev-libs/unibilium 2.0.0 2.1.0: A very basic terminfo library
-dev-libs/unittest++ 2.0.0 2.0.0-r1 2.0.0-r2: A lightweight unit testing framework for C++
+dev-libs/unittest++ 2.0.0-r2: A lightweight unit testing framework for C++
 dev-libs/univalue 1.0.5 9999: C++ universal value object and JSON library
 dev-libs/urdfdom 1.0.4 9999: URDF (U-Robot Description Format) library
 dev-libs/urdfdom_headers 1.0.5 9999: URDF (U-Robot Description Format) headers
