@@ -16183,7 +16183,7 @@ sci-geosciences/readosm 1.0.0e-r1 1.1.0a: Library to extract valid data from an 
 sci-geosciences/routino 3.2 3.3.2: Routing application based on openstreetmap data
 sci-geosciences/swmm 5.0.022: Storm Water Management Model-SWMM, hydrology, hydraulics, water quality model
 sci-geosciences/tcd-utils 20120115-r1: Utilities for working with Tidal Constituent Databases
-sci-geosciences/viking 1.7-r1 1.8: GPS data editor and analyzer
+sci-geosciences/viking 1.8 1.8-r1: GPS data editor and analyzer
 sci-geosciences/xtide 2.15.1: XTide provides tide and current predictions in a wide variety of formats
 sci-libs/ViSP 3.3.0: Visual Servoing Platform: visual tracking and visual servoing library
 sci-libs/adolc 2.7.2 9999: Automatic differentiation system for C/C++

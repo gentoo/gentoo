@@ -7179,7 +7179,6 @@ sci-geosciences/qgis:polar - Enable support for the polar coordinate system via 
 sci-geosciences/qgis:qml - Enable support Qml-based plugins using dev-qt/qtdeclarative
 sci-geosciences/viking:geoclue - Use app-misc/geoclue to determine current location
 sci-geosciences/viking:libexif - Use media-libs/libexif for EXIF support
-sci-geosciences/viking:mapnik - Enable a layer based on mapnik
 sci-geosciences/viking:oauth - Enable OAuth authentication for OSM
 sci-geosciences/viking:sqlite - Enable MBTiles support based on dev-db/sqlite
 sci-libs/ViSP:coin - Enables Coin3D support.
