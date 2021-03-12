@@ -1,0 +1,12 @@
+BDEPEND=dev-go/gox >=dev-lang/go-1.12 app-arch/unzip
+DEFINED_PHASES=compile install postinst test unpack
+DESCRIPTION=A simple, modern and secure encryption tool (and Go library)
+EAPI=7
+HOMEPAGE=https://github.com/FiloSottile/age
+KEYWORDS=~amd64
+LICENSE=BSD
+RESTRICT=strip
+SLOT=0
+SRC_URI=https://github.com/FiloSottile/age/archive/v1.0.0-rc.1.tar.gz -> age-1.0.0_rc1.tar.gz mirror://goproxy//golang.org/x/crypto/@v/v0.0.0-20190308221718-c2843e01d9a2.mod -> golang.org%2Fx%2Fcrypto%2F@v%2Fv0.0.0-20190308221718-c2843e01d9a2.mod mirror://goproxy//golang.org/x/crypto/@v/v0.0.0-20201221181555-eec23a3978ad.zip -> golang.org%2Fx%2Fcrypto%2F@v%2Fv0.0.0-20201221181555-eec23a3978ad.zip mirror://goproxy//golang.org/x/crypto/@v/v0.0.0-20201221181555-eec23a3978ad.mod -> golang.org%2Fx%2Fcrypto%2F@v%2Fv0.0.0-20201221181555-eec23a3978ad.mod mirror://goproxy//golang.org/x/net/@v/v0.0.0-20190404232315-eb5bcb51f2a3.mod -> golang.org%2Fx%2Fnet%2F@v%2Fv0.0.0-20190404232315-eb5bcb51f2a3.mod mirror://goproxy//golang.org/x/sys/@v/v0.0.0-20190215142949-d0b11bdaac8a.mod -> golang.org%2Fx%2Fsys%2F@v%2Fv0.0.0-20190215142949-d0b11bdaac8a.mod mirror://goproxy//golang.org/x/sys/@v/v0.0.0-20191026070338-33540a1f6037.zip -> golang.org%2Fx%2Fsys%2F@v%2Fv0.0.0-20191026070338-33540a1f6037.zip mirror://goproxy//golang.org/x/sys/@v/v0.0.0-20191026070338-33540a1f6037.mod -> golang.org%2Fx%2Fsys%2F@v%2Fv0.0.0-20191026070338-33540a1f6037.mod mirror://goproxy//golang.org/x/term/@v/v0.0.0-20201117132131-f5c789dd3221.zip -> golang.org%2Fx%2Fterm%2F@v%2Fv0.0.0-20201117132131-f5c789dd3221.zip mirror://goproxy//golang.org/x/term/@v/v0.0.0-20201117132131-f5c789dd3221.mod -> golang.org%2Fx%2Fterm%2F@v%2Fv0.0.0-20201117132131-f5c789dd3221.mod mirror://goproxy//golang.org/x/text/@v/v0.3.0.mod -> golang.org%2Fx%2Ftext%2F@v%2Fv0.3.0.mod
+_eclasses_=go-module	92660621959e7fab813173772987588b
+_md5_=861984c1fde187f238772e24491476f8

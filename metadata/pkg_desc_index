@@ -1036,7 +1036,7 @@ app-crypt/acme-tiny 4.1.0 9999: A tiny, auditable script for Let's Encrypt's ACM
 app-crypt/acr38u 1.7.11-r3: Non CCID driver for ACR38 AC1038-based Smart Card Reader
 app-crypt/aescrypt 3.0.6b 3.14: Advanced file encryption using AES
 app-crypt/aespipe 2.4e 2.4f: Encrypts data from stdin to stdout
-app-crypt/age 1.0.0_beta_p7: A simple, modern and secure encryption tool (and Go library)
+app-crypt/age 1.0.0_beta_p7 1.0.0_rc1: A simple, modern and secure encryption tool (and Go library)
 app-crypt/argon2 20190702: Password hashing software that won the Password Hashing Competition (PHC)
 app-crypt/asedriveiiie-serial 3.5: ASEDriveIIIe Serial Card Reader
 app-crypt/asedriveiiie-usb 3.5: ASEDriveIIIe USB Card Reader
@@ -10188,7 +10188,7 @@ dev-ruby/network_interface 0.0.2: network_interface layer from metasploit pcapru
 dev-ruby/nexpose 7.2.1: API client for Nexpose vulnerability managment product
 dev-ruby/niceogiri 1.1.2: Some wrappers around and helpers for XML manipulation using Nokogiri
 dev-ruby/nio4r 2.5.4 2.5.5 2.5.5-r1 2.5.7: A high performance selector API for monitoring IO objects
-dev-ruby/nokogiri 1.11.1-r1 1.11.1-r2: Nokogiri is an HTML, XML, SAX, and Reader parser
+dev-ruby/nokogiri 1.11.1-r1 1.11.1-r2 1.11.2: Nokogiri is an HTML, XML, SAX, and Reader parser
 dev-ruby/nokogiri-diff 0.2.0-r2: Calculate the differences between two XML/HTML documents
 dev-ruby/nokogumbo 2.0.2 2.0.3 2.0.4: A Nokogiri interface to the Gumbo HTML5 parser
 dev-ruby/notify 0.5.2-r1: A function to notify on cross platform
@@ -10203,7 +10203,7 @@ dev-ruby/optimist 3.0.1: A commandline option parser for Ruby that just gets out
 dev-ruby/optionable 0.2.0: Robust options validation for Ruby methods
 dev-ruby/org-ruby 0.9.12: Ruby routines for parsing org-mode files
 dev-ruby/origin 2.3.1: Origin is a simple DSL for generating MongoDB selectors and options
-dev-ruby/ox 2.13.4 2.14.0 2.14.1 2.14.2: A fast XML parser and Object marshaller
+dev-ruby/ox 2.13.4 2.14.0 2.14.1 2.14.2 2.14.3: A fast XML parser and Object marshaller
 dev-ruby/packetfu 1.1.13: A mid-level packet manipulation library
 dev-ruby/paint 2.2.0 2.2.1: Terminal painter
 dev-ruby/parallel 1.19.2 1.20.0 1.20.1: Run any code in parallel Processes or Threads
@@ -10263,7 +10263,7 @@ dev-ruby/rb-readline 0.5.5: Ruby implementation of the GNU readline C library
 dev-ruby/rbnacl 4.0.2-r1 7.1.1: Provides a high-level toolkit for building cryptographic systems and protocols
 dev-ruby/rbpdf 1.20.1-r2: Ruby on Rails RBPDF plugin
 dev-ruby/rbpdf-font 1.19.1: Font files for the Ruby on Rails RBPDF plugin
-dev-ruby/rbs 1.0.0 1.0.4 1.0.6 1.1.0: The language for type signatures for Ruby and standard library definitions
+dev-ruby/rbs 1.0.0 1.0.4 1.0.6 1.1.0 1.1.1: The language for type signatures for Ruby and standard library definitions
 dev-ruby/rbst 0.6.5: A simple Ruby wrapper for processing rST via docutils
 dev-ruby/rcairo 1.16.5 1.16.6: Ruby bindings for cairo
 dev-ruby/rchardet 1.8.0: Character encoding auto-detection in Ruby
