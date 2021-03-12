@@ -15356,7 +15356,7 @@ net-misc/ser2net 2.10.0: Serial To Network Proxy
 net-misc/sgopherd 18.08: Small Gopher Server written in GNU Bash
 net-misc/shigofumi 0.3-r1 9999: Command line client for ISDS
 net-misc/shmux 1.0.2 1.0.2-r1: run the same command across many hosts in parallel
-net-misc/sipcalc 1.1.6: Sipcalc is an advanced console-based IP subnet calculator
+net-misc/sipcalc 1.1.6 1.1.6-r1: Sipcalc is an advanced console-based IP subnet calculator
 net-misc/sipp 3.6.0 3.6.1: A free Open Source test tool / traffic generator for the SIP protocol
 net-misc/sipsak 0.9.8: small command line tool for testing SIP applications and devices
 net-misc/sitecopy 0.16.6-r1: Maintain remote web sites with ease
