@@ -8,8 +8,8 @@ JAVA_PKG_IUSE="doc source"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Library for testing Java code using mock objects"
-SRC_URI="http://www.${PN}.org/downloads/${P}-jars.zip"
-HOMEPAGE="http://www.jmock.org/"
+SRC_URI="http://${PN}.org/downloads/${P}-jars.zip"
+HOMEPAGE="http://jmock.org/"
 
 LICENSE="BSD"
 SLOT="1.0"
