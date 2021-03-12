@@ -9,7 +9,7 @@ SRC_URI="https://github.com/AbiWord/enchant/releases/download/v${PV}/${P}.tar.gz
 
 LICENSE="LGPL-2.1+"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
 
 IUSE="aspell +hunspell test voikko"
 REQUIRED_USE="|| ( hunspell aspell )"
