@@ -4,6 +4,7 @@
 EAPI=7
 
 ASPELL_LANG="Dutch"
+
 inherit aspell-dict-r1
 
 LICENSE="freedist"
