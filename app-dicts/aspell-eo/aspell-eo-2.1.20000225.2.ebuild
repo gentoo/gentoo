@@ -5,11 +5,12 @@ EAPI=7
 
 ASPELL_LANG="Esperanto"
 ASPELL_VERSION=6
+MY_PV="$(ver_cut 1-3)a-$(ver_cut 4)"
+MY_P="${PN/aspell/aspell${ASPELL_VERSION}}-${MY_PV}"
+
 inherit aspell-dict-r1
 
-MY_P=${P%.*}a-${PV##*.}
-MY_P=aspell${ASPELL_VERSION}-${MY_P/aspell-/}
-SRC_URI="mirror://gnu/aspell/dict/${ASPELL_SPELLANG}/${MY_P}.tar.bz2"
+SRC_URI="mirror://gnu/${PN%-*}/dict/${PN/aspell-/}/${MY_P}.tar.bz2"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
