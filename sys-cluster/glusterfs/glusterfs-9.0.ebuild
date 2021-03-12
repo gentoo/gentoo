@@ -7,13 +7,8 @@ PYTHON_COMPAT=( python3_{7..9} )
 
 inherit autotools elisp-common python-single-r1 systemd
 
-if [[ ${PV#9999} != ${PV} ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/gluster/glusterfs.git"
-else
-	SRC_URI="https://download.gluster.org/pub/gluster/${PN}/$(ver_cut 1)/${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
-fi
+SRC_URI="https://download.gluster.org/pub/gluster/${PN}/$(ver_cut 1)/${PV}/${P}.tar.gz"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
 DESCRIPTION="GlusterFS is a powerful network/cluster filesystem"
 HOMEPAGE="https://www.gluster.org/ https://github.com/gluster/glusterfs/"
