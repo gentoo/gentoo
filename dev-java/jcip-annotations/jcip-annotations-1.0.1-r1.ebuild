@@ -1,13 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 JAVA_PKG_IUSE="doc source"
 
-inherit versionator java-pkg-2 java-pkg-simple
+inherit java-pkg-2 java-pkg-simple
 
-MY_P="${PN}-$(replace_version_separator $(get_last_version_component_index) -)"
+MY_P="${PN}-$(ver_rs 2 -)"
 
 DESCRIPTION="Clean room implementation of the JCIP Annotations"
 HOMEPAGE="https://github.com/stephenc/jcip-annotations"
@@ -18,8 +18,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND=">=virtual/jre-1.5"
-DEPEND=">=virtual/jdk-1.5"
+RDEPEND=">=virtual/jre-1.8:*"
+DEPEND=">=virtual/jdk-1.8:*"
 
 S="${WORKDIR}/${PN}-${MY_P}/src"
 JAVA_SRC_DIR="main/java"

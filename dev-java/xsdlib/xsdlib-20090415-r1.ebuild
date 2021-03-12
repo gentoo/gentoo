@@ -20,9 +20,9 @@ COMMON_DEP="
 	dev-java/relaxng-datatype:0"
 BDEPEND="app-arch/unzip"
 RDEPEND="${COMMON_DEP}
-	>=virtual/jre-1.4"
+	>=virtual/jre-1.8:*"
 DEPEND="${COMMON_DEP}
-	>=virtual/jdk-1.4"
+	>=virtual/jdk-1.8:*"
 
 S="${WORKDIR}/${P}"
 
