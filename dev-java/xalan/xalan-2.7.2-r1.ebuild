@@ -34,7 +34,7 @@ RDEPEND="${CDEPEND}
 	~dev-java/xalan-serializer-${PV}:${SLOT}"
 
 DEPEND="${CDEPEND}
-	>=virtual/jdk-1.8:*"
+	virtual/jdk:1.8"
 
 EANT_GENTOO_CLASSPATH="bcel,javacup"
 EANT_BUILD_TARGET="unbundledjar"
