@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>waebbl-gentoo@posteo.net</email>
-		<name>Bernd Waibel</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
-	<longdescription>
-A python module for creating, editing and loading COLLADA, which is a
-COLLAborative Design Activity for establishing an interchange file format
-for interactive 3D applications.
-</longdescription>
-	<upstream>
-		<remote-id type="github">pycollada/pycollada</remote-id>
-		<remote-id type="pypi">pycollada</remote-id>
-	</upstream>
+  <maintainer type="person">
+    <email>waebbl-gentoo@posteo.net</email>
+    <name>Bernd Waibel</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <description>Proxy Maintainers</description>
+  </maintainer>
+  <stabilize-allarches/>
+  <longdescription>
+  A python module for creating, editing and loading COLLADA, which is a
+  COLLAborative Design Activity for establishing an interchange file format
+  for interactive 3D applications.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">pycollada/pycollada</remote-id>
+    <remote-id type="pypi">pycollada</remote-id>
+  </upstream>
 </pkgmetadata>
