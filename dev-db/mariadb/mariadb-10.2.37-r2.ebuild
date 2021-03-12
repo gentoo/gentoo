@@ -781,7 +781,6 @@ pkg_postinst() {
 	einfo
 }
 
-
 pkg_config() {
 	_getoptval() {
 		local section="${1}"
@@ -1056,7 +1055,6 @@ pkg_config() {
 	# Limit access
 	chmod 0770 "${SETUP_TMPDIR}" || die
 	chown ${MYSQL_USER} "${SETUP_TMPDIR}" || die
-
 
 	local mysql_install_log="${SETUP_TMPDIR}/install_db.log"
 	local mysqld_logfile="${SETUP_TMPDIR}/mysqld.log"
