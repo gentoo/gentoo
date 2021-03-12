@@ -266,7 +266,8 @@ app-backup/btrbk:mbuffer - Use sys-block/mbuffer to enable progress bar and buff
 app-backup/dar:dar32 - Enables --enable-mode=32 option, which replace infinite by 32 bit integers
 app-backup/dar:dar64 - Enables --enable-mode=64 option, which replace infinite by 64 bit integers
 app-backup/dar:gcrypt - Enables strong encryption support
-app-backup/dar:gpg - Enables usage of asymetric crypto algorithms
+app-backup/dar:gpg - Enables usage of asymmetric encryption algorithms
+app-backup/dar:rsync - Enables linking with net-libs/librsync for delta compression support
 app-backup/duplicity:s3 - Support for backing up to the Amazon S3 system
 app-backup/rear:udev - Have ReaR start backup when attaching your USB drive.
 app-backup/snapper:lvm - Enable LVM thinprovisioned snapshots support sys-fs/lvm2

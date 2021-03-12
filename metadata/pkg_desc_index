@@ -923,7 +923,7 @@ app-backup/cdbackup 0.7.1-r1: Allows streaming backup utilities to dump/restore 
 app-backup/cdbkup 1.0-r2: performs full/incremental backups of local/remote filesystems onto CD-R(W)s
 app-backup/consul-backinator 1.6.5: consul backup and restore utility
 app-backup/cpdup 1.18: A comprehensive filesystem mirroring program
-app-backup/dar 2.5.11 2.6.10 2.6.13: A full featured backup tool, aimed for disks
+app-backup/dar 2.5.11 2.6.10 2.6.13 2.6.13-r1: A full featured backup tool, aimed for disks
 app-backup/dirvish 1.2.1: Dirvish is a fast, disk based, rotating network backup system
 app-backup/duplicity 0.8.15 0.8.17 0.8.18: Secure backup system using gnupg to encrypt data
 app-backup/duply 1.11.3 2.0.1 2.0.2 2.0.3 2.2.2: A shell frontend for duplicity
@@ -5564,6 +5564,7 @@ dev-libs/libtar 1.2.20-r4: C library for manipulating tar archives
 dev-libs/libtasn1 4.13 4.15.0-r1 4.16.0: ASN.1 library
 dev-libs/libtecla 1.6.3: Tecla command-line editing library
 dev-libs/libtermkey 0.20 0.22: Library for easy processing of keyboard entry from terminal-based programs
+dev-libs/libthreadar 1.3.0: Threading library used by dar archiver
 dev-libs/libtimezonemap 0.4.6: GTK+3 timezone map widget
 dev-libs/libtomcrypt 1.18.2-r2: LibTomCrypt is a comprehensive, modular and portable cryptographic toolkit
 dev-libs/libtomfloat 0.02-r1: library for floating point number manipulation
