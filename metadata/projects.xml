@@ -89,7 +89,7 @@
     <member>
       <email>dilfridge@gentoo.org</email>
       <name>Andreas K. Hüttel</name>
-      <role>inactive (no hardware)</role>
+      <role>Release engineering</role>
     </member>
     <member>
       <email>dlan@gentoo.org</email>
@@ -2724,7 +2724,7 @@
     <member>
       <email>dilfridge@gentoo.org</email>
       <name>Andreas K. Hüttel</name>
-      <role>RISC-V; autobuilds; qemu</role>
+      <role>RISC-V; ARM; qemu autobuilds</role>
     </member>
     <member>
       <email>dolsen@gentoo.org</email>

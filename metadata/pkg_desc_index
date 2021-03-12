@@ -5092,7 +5092,7 @@ dev-java/tomcat-jstl-el 1.2.5-r1: JSP Standard Tag Library (JSTL) - EL jar
 dev-java/tomcat-jstl-impl 1.2.5-r1: JSP Standard Tag Library (JSTL) - Implementation jar
 dev-java/tomcat-jstl-spec 1.2.5-r1: JSP Standard Tag Library (JSTL) - Specification jar
 dev-java/tomcat-native 1.2.26: Allows Tomcat to use certain native resources for better performance
-dev-java/tomcat-servlet-api 4.1.40 5.5.36 6.0.53-r1 7.0.107 7.0.108 8.5.61 8.5.63 9.0.41 9.0.43 10.0.2: Tomcat's Servlet API 5.0/JSP API 3.0/EL API 4.0 implementation
+dev-java/tomcat-servlet-api 4.1.40 5.5.36 6.0.53-r1 7.0.107 7.0.108 8.5.61 8.5.63 8.5.64 9.0.41 9.0.43 9.0.44 10.0.2: Tomcat's Servlet API 5.0/JSP API 3.0/EL API 4.0 implementation
 dev-java/toolbar 1.1.0-r2: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22-r1: TouchGraph provides a set of interfaces for graph visualization
 dev-java/treelayout 1.0.2: Efficiently create compact tree layouts in Java
@@ -5164,7 +5164,7 @@ dev-lang/gforth 0.7.3-r1: GNU Forth is a fast and portable implementation of the
 dev-lang/ghc 7.8.4 7.10.3 8.0.2 8.2.1 8.2.2 8.4.1 8.4.2 8.4.3 8.6.4 8.6.5 8.8.1 8.8.2 8.8.3 8.8.4 8.10.1 8.10.2 8.10.3 8.10.4 9.0.1: The Glasgow Haskell Compiler
 dev-lang/gnat-gpl 2016-r4 2017-r1 2018-r3 2019-r2: GNAT Ada Compiler - GPL version
 dev-lang/gnuprologjava 0.2.6-r1: GNU Prolog for Java is an implementation of ISO Prolog as a Java library
-dev-lang/go 1.15.7 1.15.8 1.15.10 1.16 1.16.2 9999: A concurrent garbage collected and typesafe programming language
+dev-lang/go 1.14.14 1.14.15 1.15.7 1.15.8 1.15.10 1.16 1.16.2 9999: A concurrent garbage collected and typesafe programming language
 dev-lang/go-bootstrap 1.13.6: Bootstrap package for dev-lang/go
 dev-lang/gprolog 1.4.5: A native Prolog compiler with constraint solving over finite domains (FD)
 dev-lang/hy 0.17.0: A LISP dialect running in python
@@ -10870,7 +10870,7 @@ dev-util/itstool 2.0.6-r1: Translation tool for XML documents that uses gettext 
 dev-util/japi-compliance-checker 2.4 9999: Java API compliance checker
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jconfig 2.9: Utility that provides a simple API for the management of properties
-dev-util/jenkins-bin 2.263.3-r1 2.263.4 2.277.1 2.280: Extensible continuous integration server
+dev-util/jenkins-bin 2.263.3-r1 2.263.4 2.277.1 2.280 2.283: Extensible continuous integration server
 dev-util/jfrog-cli 1.35.3: Command line utility foroperations on container images and image repositories
 dev-util/kbuild 0.1.9998.3407 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
@@ -14948,7 +14948,7 @@ net-libs/libtirpc 1.2.6 1.3.1: Transport Independent RPC library (SunRPC replace
 net-libs/libtorrent 0.13.7 0.13.7-r1 0.13.8: BitTorrent library written in C++ for *nix
 net-libs/libtorrent-rasterbar 1.2.6 1.2.9 1.2.10 1.2.11 1.2.12: C++ BitTorrent implementation focusing on efficiency and scalability
 net-libs/libtrace 4.0.14_p1 4.0.15_p1 9999: A library and tools for trace processing
-net-libs/libupnp 1.6.21 1.6.25 1.8.7 1.12.1 1.14.0: An Portable Open Source UPnP Development Kit
+net-libs/libupnp 1.14.0: An Portable Open Source UPnP Development Kit
 net-libs/libupnpp 0.20.1: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
 net-libs/libvncserver 0.9.13: library for creating vnc servers
 net-libs/libwebsockets 4.1.6: A flexible pure-C library for implementing network protocols
@@ -15004,8 +15004,8 @@ net-libs/usrsctp 0.9.3.0_p20201102: A cross-platform userland SCTP stack
 net-libs/wandio 4.2.3_p1-r1: C library for simple and efficient file IO
 net-libs/webkit-gtk 2.30.5: Open source web browser engine
 net-libs/wvstreams 4.6.1_p14-r1 99999: A network programming library in C++
-net-libs/xrootd 5.0.3 5.1.0: Extended ROOT remote file server
-net-libs/xrootd-ceph 5.0.3 5.1.0: xrootd OSS plug-in for interfacing with Ceph storage platform
+net-libs/xrootd 5.0.3 5.1.1: Extended ROOT remote file server
+net-libs/xrootd-ceph 5.0.3 5.1.1: xrootd OSS plug-in for interfacing with Ceph storage platform
 net-libs/zeromq 4.3.3-r1 4.3.4-r1: A brokerless kernel
 net-libs/zmqpp 4.2.0: ZeroMQ 'highlevel' C++ bindings
 net-mail/altermime 0.3.11: alterMIME is a small program which is used to alter your mime-encoded mailpacks
@@ -15498,7 +15498,7 @@ net-p2p/nicotine+ 2.0.1-r1 2.1.2 2.2.0 2.2.2 3.0.2: A fork of nicotine, a Soulse
 net-p2p/opendchub 0.8.2: hub software for Direct Connect
 net-p2p/qbittorrent 4.3.1 4.3.3 9999: BitTorrent client in C++ and Qt
 net-p2p/resilio-sync 2.6.1 2.6.3: Resilient, fast and scalable file synchronization tool
-net-p2p/retroshare 0.6.5 0.6.5-r2: P2P private sharing application
+net-p2p/retroshare 0.6.5-r2: P2P private sharing application
 net-p2p/rtorrent 0.9.7 0.9.7-r1 0.9.8: BitTorrent Client using libtorrent
 net-p2p/syncthing 1.10.0 1.13.1 1.14.0: Open Source Continuous File Synchronization
 net-p2p/syrep 0.9: A generic file repository synchronization tool
@@ -18033,7 +18033,7 @@ www-apps/dotproject 2.1.7-r1: dotProject is a PHP web-based project management f
 www-apps/drupal 7.78 8.9.13 9.0.11 9.1.3: PHP-based open-source platform and content management system
 www-apps/gitea 1.13.4 9999: A painless self-hosted Git service
 www-apps/gitit 0.13.0.0-r1: Wiki using happstack, git or darcs, and pandoc
-www-apps/grafana-bin 7.4.1 7.4.2: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
+www-apps/grafana-bin 7.4.1 7.4.2 7.4.3: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/hugo 0.78.1: The world's fastest framework for building websites
 www-apps/icingaweb2 2.8.2 9999: Icinga Web 2 - Frontend for icinga2
 www-apps/icingaweb2-module-director 1.6.2 9999: Icinga Web 2 plugin for configuration
@@ -18162,7 +18162,7 @@ www-servers/servefile 0.5.1: Serve a single file via HTTP
 www-servers/sniproxy 0.6.0-r1: Proxies incoming HTTP and TLS connections based on the hostname
 www-servers/spawn-fcgi 1.6.4-r1: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thttpd 2.27.1 9999: Fork of thttpd, a small, fast, multiplexing webserver
-www-servers/tomcat 7.0.107 7.0.108 8.5.61 8.5.63 9.0.41 9.0.43 10.0.2: Tomcat Servlet-5.0/JSP-3.0/EL-4.0/WebSocket-2.0/JASIC-2.0 Container
+www-servers/tomcat 7.0.107 7.0.108 8.5.61 8.5.63 8.5.64 9.0.41 9.0.43 9.0.44 10.0.2: Tomcat Servlet-5.0/JSP-3.0/EL-4.0/WebSocket-2.0/JASIC-2.0 Container
 www-servers/tornado 6.0.4 6.1: Python web framework and asynchronous networking library
 www-servers/uwsgi 2.0.19.1-r100 2.0.19.1-r101: uWSGI server for Python web applications
 www-servers/varnish 6.0.6 6.3.2 6.4.0 6.5.0 6.5.1: Varnish is a state-of-the-art, high-performance HTTP accelerator
