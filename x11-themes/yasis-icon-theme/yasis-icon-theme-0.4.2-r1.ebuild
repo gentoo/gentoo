@@ -5,11 +5,9 @@ EAPI=7
 
 inherit xdg
 
-MY_PV="$(ver_rs 1- '')"
-
-DESCRIPTION="Scalable icon theme called Nou"
+DESCRIPTION="Scalable icon theme called Yasis"
 HOMEPAGE="http://www.silvestre.com.ar/"
-SRC_URI="mirror://gentoo/Nou-${MY_PV}.tar.bz2"
+SRC_URI="mirror://gentoo/yasis-${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -18,9 +16,9 @@ KEYWORDS="~amd64 ~x86"
 S="${WORKDIR}"
 
 src_install() {
-	dodoc Nou/{AUTHORS,README}
-	rm -f Nou/{AUTHORS,COPYING,DONATE,INSTALL,README,.icon-theme.cache}
+	dodoc yasis/{AUTHORS,README}
+	rm -f yasis/{AUTHORS,COPYING,DONATE,INSTALL,README}
 
 	insinto /usr/share/icons
-	doins -r Nou
+	doins -r yasis
 }
