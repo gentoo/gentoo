@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: emboss-r2.eclass
@@ -9,7 +9,7 @@
 # Original author: Author Olivier Fisette <ofisette@gmail.com>
 # Next gen author: Justin Lecher <jlec@gentoo.org>
 # Next gen author: Ted Tanberry <ted.tanberry@gmail.com>
-# @SUPPORTED_EAPIS: 6
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: Use this to easy install EMBOSS and EMBASSY programs (EMBOSS add-ons).
 # @DESCRIPTION:
 # The inheriting ebuild must set at least EAPI=6 and provide EBO_DESCRIPTION before the inherit line.
@@ -18,7 +18,7 @@
 #
 # Example:
 #
-# EAPI=6
+# EAPI=7
 #
 # EBO_DESCRIPTION="applications from the CBS group"
 #
@@ -38,7 +38,7 @@
 if [[ ! ${_EMBOSS_R2} ]]; then
 
 case ${EAPI:-0} in
-	6) ;;
+	[67]) ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
@@ -47,8 +47,8 @@ inherit autotools flag-o-matic
 EXPORT_FUNCTIONS src_prepare src_configure src_install
 
 HOMEPAGE="http://emboss.sourceforge.net/"
-LICENSE="LGPL-2 GPL-2"
 
+LICENSE="LGPL-2 GPL-2"
 SLOT="0"
 IUSE="mysql pdf png postgres static-libs X"
 
