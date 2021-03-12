@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 JAVA_PKG_IUSE="doc source"
 
 inherit java-pkg-2 java-ant-2
@@ -23,13 +23,17 @@ IUSE="test"
 RESTRICT="test"
 
 CDEPEND="dev-java/xerces:2"
-DEPEND=">=virtual/jdk-1.3
+DEPEND=">=virtual/jdk-1.8:*
 	test? ( dev-java/junit:4 )
 	${CDEPEND}"
-RDEPEND=">=virtual/jre-1.3
+RDEPEND=">=virtual/jre-1.8:*
 	${CDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
+
+PATCHES=(
+	"${FILESDIR}/${P}-fix-java5+.patch"
+)
 
 EANT_GENTOO_CLASSPATH="xerces-2"
 EANT_EXTRA_ARGS="-Dx2_present=true -Djunit.present=true"
@@ -37,7 +41,9 @@ EANT_BUILD_TARGET="intf intf_jar impl x2impl"
 EANT_DOC_TARGET="api"
 EANT_TEST_TARGET="junit"
 
-java_prepare() {
+src_prepare() {
+	default
+
 	rm -r build/ lib/ || die
 
 	# Our usual rewriting stomps over the existing classpath, which
