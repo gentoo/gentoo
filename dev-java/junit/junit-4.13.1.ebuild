@@ -6,6 +6,7 @@ EAPI=7
 MY_PN="${PN}${PV%%.*}"
 MY_P="${MY_PN}-r${PV}"
 JAVA_PKG_IUSE="doc source"
+MAVEN_ID="junit:junit:4.13.1"
 
 inherit java-pkg-2 java-pkg-simple
 
