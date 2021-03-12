@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
 JAVA_PKG_IUSE="doc examples source test"
 
@@ -40,18 +40,20 @@ CDEPEND="dev-java/jsch:0
 	dev-java/jakarta-oro:2.0
 	dev-java/commons-httpclient:3"
 
-DEPEND=">=virtual/jdk-1.6
+DEPEND=">=virtual/jdk-1.8:*
 	test? (
 		dev-java/ant-junit:0
 	)
 	${CDEPEND}"
 
-RDEPEND=">=virtual/jre-1.6
+RDEPEND=">=virtual/jre-1.8:*
 	${CDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
-java_prepare() {
+src_prepare() {
+	default
+
 	# This stuff needs removing.
 	local CLEANUP=(
 		doc/reports

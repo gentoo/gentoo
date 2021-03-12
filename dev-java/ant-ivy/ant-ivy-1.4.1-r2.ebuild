@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
 JAVA_PKG_IUSE="doc examples source test"
 
@@ -11,7 +11,7 @@ WANT_SPLIT_ANT="true"
 # Rewrites examples otherwise... bad.
 JAVA_PKG_BSFIX_ALL="no"
 
-inherit java-pkg-2 java-ant-2 eutils
+inherit java-pkg-2 java-ant-2
 
 MY_PN="${PN##*-}"
 MY_P="${MY_PN}-${PV}"
@@ -32,19 +32,23 @@ COMMON_DEP="
 	dev-java/jakarta-oro:2.0
 	dev-java/jsch:0"
 
+BDEPEND="app-arch/unzip"
 DEPEND="
-	>=virtual/jdk-1.4
-	app-arch/unzip
+	>=virtual/jdk-1.8:*
 	test? ( dev-java/ant-junit:0 )
 	${COMMON_DEP}"
 
-RDEPEND=">=virtual/jre-1.4
+RDEPEND=">=virtual/jre-1.8:*
 	${COMMON_DEP}"
 
 S="${WORKDIR}/${MY_P}"
 
-java_prepare() {
-	epatch "${FILESDIR}/1.4.1-javadoc.patch"
+PATCHES=(
+	"${FILESDIR}/1.4.1-javadoc.patch"
+)
+
+src_prepare() {
+	default
 
 	# init-ivy expects existing ivy.jar, but we don't need actually it
 	sed -i -e 's/depends="init-ivy, prepare"/depends="prepare"/' build.xml \
