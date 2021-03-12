@@ -1,14 +1,15 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 JAVA_PKG_IUSE="doc examples source test"
+MAVEN_ID="commons-httpclient:commons-httpclient:3.1"
 
-inherit eutils java-pkg-2 java-ant-2
+inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="The Jakarta Commons HttpClient library"
-HOMEPAGE="http://hc.apache.org/"
+HOMEPAGE="https://hc.apache.org/"
 SRC_URI="mirror://apache/httpcomponents/${PN}/source/${P}-src.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="3"
@@ -20,9 +21,9 @@ RESTRICT="test"
 
 CDEPEND="dev-java/commons-logging:0
 	dev-java/commons-codec:0"
-RDEPEND=">=virtual/jre-1.6
+RDEPEND=">=virtual/jre-1.8:*
 	${CDEPEND}"
-DEPEND=">=virtual/jdk-1.6
+DEPEND=">=virtual/jdk-1.8:*
 	test? ( dev-java/ant-junit:0 )
 	${CDEPEND}"
 
@@ -32,9 +33,13 @@ EANT_GENTOO_CLASSPATH="commons-logging,commons-codec"
 EANT_BUILD_TARGET="dist"
 EANT_DOC_TARGET="doc"
 
-java_prepare() {
-	# patch against CVE-2012-{5783,6153}. See bug 442292.
-	epatch "${FILESDIR}"/"${P}-SSLProtocolSocketFactory.java.patch"
+# patch against CVE-2012-{5783,6153}. See bug 442292.
+PATCHES=(
+	"${FILESDIR}/${P}-SSLProtocolSocketFactory.java.patch"
+)
+
+src_prepare() {
+	default
 
 	# generated docs go into docs/api
 	rm -rf docs/apidocs
