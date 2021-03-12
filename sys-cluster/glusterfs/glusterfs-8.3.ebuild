@@ -12,7 +12,7 @@ if [[ ${PV#9999} != ${PV} ]]; then
 	EGIT_REPO_URI="https://github.com/gluster/glusterfs.git"
 else
 	SRC_URI="https://download.gluster.org/pub/gluster/${PN}/$(ver_cut 1)/${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ppc ppc64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86"
 fi
 
 DESCRIPTION="GlusterFS is a powerful network/cluster filesystem"
