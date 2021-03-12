@@ -1,0 +1,9 @@
+--- a/usr/bin/teams	2021-03-12 09:58:20.095552303 +0100
++++ b/usr/bin/teams	2021-03-12 09:58:41.938137585 +0100
+@@ -8,5 +8,5 @@ TEAMS_LOGS="$HOME/.config/Microsoft/Micr
+ 
+ mkdir -p "$TEAMS_LOGS"
+ 
+-nohup "$TEAMS_PATH" --disable-namespace-sandbox --disable-setuid-sandbox "$@" > "$TEAMS_LOGS/teams-startup.log" 2>&1 &
++nohup "$TEAMS_PATH" "$@" --disable-namespace-sandbox --disable-setuid-sandbox > "$TEAMS_LOGS/teams-startup.log" 2>&1 &
+ 
