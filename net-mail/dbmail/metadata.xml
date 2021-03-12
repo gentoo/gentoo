@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
+  <maintainer type="person">
+    <email>lordvan@gentoo.org</email>
+    <name>Thomas Raschbacher</name>
+  </maintainer>
   <longdescription>Dbmail is the name of a group of programs that enable the possiblilty of storing and retrieving mail messages from a database. Currently MySQL, PostgreSQL and SQLite can be used as database backends.</longdescription>
   <use>
     <flag name="sieve">Enable sieve filter support</flag>
