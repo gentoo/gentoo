@@ -4626,7 +4626,7 @@ dev-java/ant-commons-net 1.10.9: Apache Ant's optional tasks depending on common
 dev-java/ant-contrib 1.0_beta3-r2: A collection of tasks for Apache Ant
 dev-java/ant-core 1.10.9: Java-based build tool similar to 'make' that uses XML configuration files
 dev-java/ant-eclipse-ecj 4.4.2 4.5.1 4.10-r1 4.13 4.15: Ant Compiler Adapter for Eclipse Java Compiler
-dev-java/ant-ivy 1.4.1-r1 2.3.0-r2: Ivy is a free java based dependency manager
+dev-java/ant-ivy 1.4.1-r2 2.3.0-r3: Ivy is a free java based dependency manager
 dev-java/ant-jai 1.10.9: Apache Ant's optional tasks depending on sun-jai-bin
 dev-java/ant-javamail 1.10.9: Apache Ant's optional tasks depending on gnu-jaf-1
 dev-java/ant-jdepend 1.10.9: Apache Ant's optional tasks depending on jdepend
@@ -4656,7 +4656,7 @@ dev-java/avalon-framework 4.1.5-r2 4.2.0-r2: Avalon Framework
 dev-java/avalon-logkit 2.1-r8: Easy-to-use Java logging toolkit
 dev-java/backport-util-concurrent 3.1-r1: A portability wrapper for java.util.concurrent API (jsr166) 6.0
 dev-java/batik 1.9: Java based SVG toolkit
-dev-java/bcel 6.0_rc3: The Byte Code Engineering Library: analyze, create, manipulate Java class files
+dev-java/bcel 6.0_rc3 6.5.0: Apache Commons Bytecode Engineering Library
 dev-java/bcmail 1.38-r6 1.45-r5 1.50-r3 1.52-r3: Java cryptography APIs
 dev-java/bcpg 1.50-r1 1.50-r2 1.52-r1 1.52-r2: Java cryptography APIs
 dev-java/bcpkix 1.50-r2 1.52-r1: Java cryptography APIs
@@ -4700,7 +4700,7 @@ dev-java/commons-el 1.0-r3: EL is the JSP 2.0 Expression Language Interpreter fr
 dev-java/commons-email 1.4 1.5: Commons Email aims to provide an API for sending email
 dev-java/commons-fileupload 1.3: High-performance file upload capability to your servlets and web applications
 dev-java/commons-graph 0.1: A toolkit for managing graphs and graph based data structures
-dev-java/commons-httpclient 3.1-r1: The Jakarta Commons HttpClient library
+dev-java/commons-httpclient 3.1-r2: The Jakarta Commons HttpClient library
 dev-java/commons-imaging 0.97: A minimalistic realtime charting library for Java
 dev-java/commons-io 2.4: Utility classes, stream implementations, file filters, and endian classes
 dev-java/commons-jelly 1.0-r8: A Java and XML based scripting and processing engine
@@ -4723,7 +4723,7 @@ dev-java/cssparser 0.9.25 0.9.26: API for parsing CSS 2 in Java
 dev-java/dict4j 1.1: Dict protocol implementation in Java
 dev-java/disruptor 3.2.0: High Performance Inter-Thread Messaging Library
 dev-java/dnsjava 2.1.8: An implementation of DNS in Java
-dev-java/dom4j 1.6.1-r7: XML Java library
+dev-java/dom4j 1.6.1-r8: XML Java library
 dev-java/dtdparser 1.21-r2: A Java DTD Parser
 dev-java/dynalang 0.4-r1: Library of interoperable metaobject protocols for dynamic languages
 dev-java/easymock 3.3.1: Mock Objects for interfaces in JUnit tests by generating them on the fly
@@ -4854,7 +4854,7 @@ dev-java/jcalendar 1.4: Java date chooser bean for graphically picking a date
 dev-java/jchardet 1.1-r1: Java port of Mozilla's Automatic Charset Detection algorithm
 dev-java/jchart2d 3.2.2: A minimalistic realtime charting library for Java
 dev-java/jcifs 1.3.17-r2 1.3.19: Library that implements the CIFS/SMB networking protocol in Java
-dev-java/jcip-annotations 1.0.1: Clean room implementation of the JCIP Annotations
+dev-java/jcip-annotations 1.0.1-r1: Clean room implementation of the JCIP Annotations
 dev-java/jclasslib 3.1: Java bytecode viewer
 dev-java/jcmdline 1.0.2-r2 2.0.0: Library for parsing/handling of command line parameters
 dev-java/jcodings 1.0.5 1.0.11: Byte-based encoding support library for Java
@@ -4876,7 +4876,7 @@ dev-java/jetty-npn-api 1.1.1: Jetty's NPN API
 dev-java/jexcelapi 2.6.8-r2: A Java API to read, write, and modify Excel spreadsheets
 dev-java/jffi 1.2.9: An optimized Java interface to libffi
 dev-java/jflex 1.6.1: JFlex is a lexical analyzer generator for Java
-dev-java/jformatstring 2.0.3: Compile time checking for Java format strings
+dev-java/jformatstring 2.0.3-r1: Compile time checking for Java format strings
 dev-java/jfreechart 1.0.19-r1: JFreeChart is a free Java class library for generating charts
 dev-java/jfreesvg 2.1-r1 3.0: JFreeSVG is a fast, light-weight, vector graphics library for the Java platform
 dev-java/jgoodies-animation 1.2.0-r2: JGoodies Animation Library
@@ -5110,7 +5110,7 @@ dev-java/werken-xpath 0.9.4_beta-r4: W3C XPath-Rec implementation for DOM4J
 dev-java/ws-commons-util 1.0.1-r1: Utility classes that allow high performance XML processing based on SAX
 dev-java/wsdl4j 1.6.2: Web Services Description Language for Java Toolkit (WSDL4J)
 dev-java/wstx 3.2.9-r1: Woodstox is a high-performance validating namespace-aware XML-processor
-dev-java/xalan 2.7.2: Transforming XML documents into HTML, text, or other XML document types
+dev-java/xalan 2.7.2-r1: Transforming XML documents into HTML, text, or other XML document types
 dev-java/xalan-serializer 2.7.2: DOM Level 3 serializer from Apache Xalan, shared by Xalan and Xerces
 dev-java/xerces 2.12.0: Xerces Java XML parser
 dev-java/xerial-core 2.0.1: An open-source DBMS for XML/JSON/Relational data
@@ -5129,11 +5129,11 @@ dev-java/xmlunit 1.6: XMLUnit extends JUnit and NUnit to enable unit testing of 
 dev-java/xmpcore 5.1.2: Java library based on the Adobe C++ XMPCore library with a similar API
 dev-java/xom 1.2.10 1.3.2: XML Object Model
 dev-java/xp 0.5-r4: XP is an XML 1.0 parser written in Java
-dev-java/xpp2 2.1.10-r2: A streaming pull XML parser used to quickly process input elements
+dev-java/xpp2 2.1.10-r3: A streaming pull XML parser used to quickly process input elements
 dev-java/xpp3 1.1.4c-r3 1.1.4c-r4: An implementation of XMLPULL V1 API
-dev-java/xsdlib 20090415: Sun XML Datatypes Library
+dev-java/xsdlib 20090415-r1: Sun XML Datatypes Library
 dev-java/xsom 20140925: XSOM is a Java library allows to easily parse and inspect XML schema docs
-dev-java/xz-java 1.8: Implementation of xz data compression in pure java
+dev-java/xz-java 1.8-r1: Implementation of xz data compression in pure java
 dev-java/yanfs 1.0: Yet Another NFS - a Java NFS library
 dev-java/zeus-jscl 1.64-r1: Zeus Java Swing Components Library
 dev-lang/R 3.4.1 3.6.3-r1 4.0.2 4.0.4: Language and environment for statistical computing and graphics
