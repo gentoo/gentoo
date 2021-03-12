@@ -8249,9 +8249,7 @@ sys-fs/cryptsetup:openssl - Use dev-libs/openssl crypto backend
 sys-fs/cryptsetup:pwquality - Use dev-libs/libpwquality for password quality checking
 sys-fs/cryptsetup:reencrypt - Build cryptsetup-reencrypt
 sys-fs/cryptsetup:urandom - Use /dev/urandom instead of /dev/random
-sys-fs/dmraid:dietlibc - Compile against dev-libs/dietlibc
 sys-fs/dmraid:intel_led - Enable Intel LED support
-sys-fs/dmraid:klibc - Compile against dev-libs/klibc
 sys-fs/dmraid:led - Enable LED support
 sys-fs/dmraid:mini - Create a minimal binary suitable for early boot environments
 sys-fs/dosfstools:compat - Install symlinks for legacy names of the tools

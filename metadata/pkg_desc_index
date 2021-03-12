@@ -761,7 +761,7 @@ app-admin/reportmagic 2.21: Makes usable statistics from your web site log file 
 app-admin/restart-services 0.15.2 0.16.0 0.16.1 0.17.0: Tool to manage OpenRC and systemd services that need to be restarted
 app-admin/rex 1.13.3 9999: (R)?ex, the friendly automation framework
 app-admin/rsyslog 8.2008.0 8.2010.0 8.2012.0 8.2012.0-r1 8.2102.0: An enhanced multi-threaded syslogd with database support and more
-app-admin/sagan 1.0.0_rc3 1.0.0_rc3-r1 2.0.1-r2: Sagan is a multi-threaded, real time system and event log monitoring system
+app-admin/sagan 1.0.0_rc3-r1 2.0.1-r2: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20140617 20210208 99999999: Rules for Sagan log analyzer
 app-admin/salt 3000.5 3000.8 3001.6 3002.5: Salt is a remote execution and configuration manager
 app-admin/selint 1.1.0 1.2.0 9999: Policy Analysis Tools for SELinux
@@ -5735,7 +5735,7 @@ dev-libs/tvision 2.1.0_pre2-r4 2.2.1.4: Text User Interface that implements the 
 dev-libs/tvmet 1.7.2-r2: Tiny Vector Matrix library using Expression Templates
 dev-libs/ucl 1.03-r1: the UCL Compression Library
 dev-libs/ucommon 7.0.0: Portable C++ runtime for threads and sockets
-dev-libs/udis86 1.7-r2 1.7.2-r1: Disassembler library for the x86/-64 architecture sets
+dev-libs/udis86 1.7.2-r1: Disassembler library for the x86/-64 architecture sets
 dev-libs/unibilium 2.0.0 2.1.0: A very basic terminfo library
 dev-libs/unittest++ 2.0.0 2.0.0-r1 2.0.0-r2: A lightweight unit testing framework for C++
 dev-libs/univalue 1.0.5 9999: C++ universal value object and JSON library
@@ -17518,7 +17518,7 @@ sys-fs/dfc 3.1.1: A simple CLI tool that display file system usage, with colors
 sys-fs/diskdev_cmds 332.14_p1-r4: HFS and HFS+ utils ported from OSX, supplies mkfs and fsck
 sys-fs/dislocker 0.7.1-r2 0.7.1-r3 9999: Dislocker is used to read BitLocker encrypted partitions.
 sys-fs/dmg2img 1.6.7 1.6.7-r1: Converts Apple DMG files to standard HFS+ images
-sys-fs/dmraid 1.0.0_rc16-r3 1.0.0_rc16-r4 1.0.0_rc16-r5: Device-mapper RAID tool and library
+sys-fs/dmraid 1.0.0_rc16-r5: Device-mapper RAID tool and library
 sys-fs/dosfstools 4.1 4.2: DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfat
 sys-fs/duperemove 0.11.2: Btrfs and xfs deduplication utility
 sys-fs/e2fsprogs 1.45.6 1.45.7 1.46.1 1.46.2: Standard EXT2/EXT3/EXT4 filesystem utilities
