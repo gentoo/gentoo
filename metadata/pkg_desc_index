@@ -17508,7 +17508,7 @@ sys-fs/cryptmount 5.3.3: A utility for management and user-mode mounting of encr
 sys-fs/cryptsetup 2.3.4 2.3.5: Tool to setup encrypted devices with dm-crypt
 sys-fs/ctmg 1.2: Simple wrapper around cryptsetup for encrypted containers
 sys-fs/davl 1.2.4-r2: Visualizes the fragmentation status of ext2/3 filesystems
-sys-fs/dd-rescue 1.99.8-r1 1.99.9: Similar to dd but can copy from source with errors
+sys-fs/dd-rescue 1.99.8-r1 1.99.9 1.99.10: Similar to dd but can copy from source with errors
 sys-fs/ddrescue 1.24 1.25: Copy data from one file or block device to another with read-error recovery
 sys-fs/dfc 3.1.1: A simple CLI tool that display file system usage, with colors
 sys-fs/diskdev_cmds 332.14_p1-r4: HFS and HFS+ utils ported from OSX, supplies mkfs and fsck
