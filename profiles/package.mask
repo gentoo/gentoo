@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2021-03-12)
+# Requires a (proxy) maintainer with access to Oracle development
+# libraries. Please express your interest on bug 772128 if you can
+# help.
+# Masked for removal in 30 days.
+dev-ruby/ruby-oci8
+
 # Hans de Graaff <graaff@gentoo.org> (2021-03-11)
 # Last upstream release in 2018, uses outdated dependencies.  No
 # longer works with dev-ruby/parser, bug 775206. No reverse
