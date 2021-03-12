@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit cmake-utils eutils toolchain-funcs
+inherit cmake toolchain-funcs
 
 DESCRIPTION="Levenberg-Marquardt nonlinear least squares C library"
 HOMEPAGE="https://www.ics.forth.gr/~lourakis/levmar/"
@@ -18,7 +18,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	virtual/blas
 	virtual/lapack"
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 PATCHES=(
@@ -26,23 +26,24 @@ PATCHES=(
 	"${FILESDIR}"/${P}-demo-underlinking.patch
 )
 
+DOCS=(README.txt)
+
 src_configure() {
 	local mycmakeargs+=(
 		-DNEED_F2C=OFF
 		-DHAVE_LAPACK=ON
 		-DLAPACKBLAS_LIB_NAMES="$($(tc-getPKG_CONFIG) --libs blas lapack)"
-		$(cmake-utils_use test BUILD_DEMO)
+		-DBUILD_DEMO=$(usex test)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {
-	cd ${CMAKE_BUILD_DIR}
-	./lmdemo || die
+	"${BUILD_DIR}"/lmdemo || die "Tests failed"
 }
 
 src_install() {
-	dolib.so ${CMAKE_BUILD_DIR}/liblevmar.so
+	dolib.so "${BUILD_DIR}"/liblevmar.so
 	insinto /usr/include
-	doins levmar.h
+	doins "${S}"/levmar.h
 }
