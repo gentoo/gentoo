@@ -1,7 +1,8 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 WANT_AUTOCONF="2.1"
 
 PYTHON_COMPAT=( python3_{7..9} )
@@ -27,37 +28,35 @@ else
 	MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/releases/${MOZ_PV}"
 fi
 
-S="${WORKDIR}/${MY_MOZ_P}"
 SRC_URI="${MOZ_HTTP_URI}/source/${MY_MOZ_P}.source.tar.xz -> ${P}.source.tar.xz
 	${MOZ_HTTP_URI}/source/${MY_MOZ_P}.source-l10n.tar.xz -> ${P}.source-l10n.tar.xz"
+S="${WORKDIR}/${MY_MOZ_P}"
 
 MOZ_GENERATE_LANGPACKS=1
 MOZ_L10N_SOURCEDIR="${S}/${P}-l10n"
-inherit autotools check-reqs flag-o-matic mozcoreconf-v6 mozextension mozlinguas-v2 pax-utils toolchain-funcs xdg-utils
-
-PATCH="${PN}-2.53.6_beta1-patches-01"
+inherit autotools check-reqs desktop flag-o-matic mozcoreconf-v6 mozextension mozlinguas-v2 pax-utils toolchain-funcs xdg-utils
 
 DESCRIPTION="Seamonkey Web Browser"
-HOMEPAGE="http://www.seamonkey-project.org"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+HOMEPAGE="https://www.seamonkey-project.org/"
 
-SLOT="0"
-LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
-SYSTEM_IUSE=( +system-{av1,harfbuzz,icu,jpeg,libevent,libvpx,sqlite} )
-IUSE="+chatzilla +crypt dbus debug +gmp-autoupdate +ipc jack lto minimal
-neon pulseaudio +roaming selinux startup-notification ${SYSTEM_IUSE[@]} test
-wifi"
-RESTRICT="!test? ( test )"
-
+PATCH="${PN}-2.53.6_beta1-patches-01"
 SRC_URI+="
 	https://dev.gentoo.org/~polynomial-c/mozilla/patchsets/${PATCH}.tar.xz
 	system-libvpx? ( https://dev.gentoo.org/~polynomial-c/mozilla/${PN}-2.53.3-system_libvpx-1.8.patch.xz )
 "
 
+LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
+SLOT="0"
+SYSTEM_IUSE=( +system-{av1,harfbuzz,icu,jpeg,libevent,libvpx,sqlite} )
+IUSE="+chatzilla +crypt dbus debug +gmp-autoupdate +ipc jack lto minimal neon
+pulseaudio +roaming selinux startup-notification ${SYSTEM_IUSE[@]} test wifi"
+KEYWORDS="~amd64 ~ppc64 ~x86"
+
+RESTRICT="!test? ( test )"
+
 ASM_DEPEND=">=dev-lang/yasm-1.1"
 
-# Convert to BDEPEND once the ebuild goes EAPI-7
-DEPEND="
+BDEPEND="
 	app-arch/unzip
 	app-arch/zip
 	dev-lang/perl
@@ -65,15 +64,10 @@ DEPEND="
 	>=sys-devel/binutils-2.16.1
 	virtual/pkgconfig
 	>=virtual/rust-1.34.0
-	amd64? (
-		${ASM_DEPEND}
-	)
+	amd64? ( ${ASM_DEPEND} )
 	lto? ( sys-devel/binutils[gold] )
-	x86? (
-		${ASM_DEPEND}
-	)
+	x86? ( ${ASM_DEPEND} )
 "
-
 COMMON_DEPEND="
 	>=app-text/hunspell-1.5.4:=
 	dev-libs/atk
@@ -134,20 +128,17 @@ COMMON_DEPEND="
 		)
 	)
 "
-RDEPEND="
-	${COMMON_DEPEND}
+RDEPEND="${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-mozilla )
 "
-DEPEND+="${COMMON_DEPEND}
+DEPEND="${COMMON_DEPEND}
 	amd64? ( virtual/opengl )
 	x86? ( virtual/opengl )
 "
 
 # allow GMP_PLUGIN_LIST to be set in an eclass or
 # overridden in the enviromnent (advanced hackers only)
-if [[ -z ${GMP_PLUGIN_LIST} ]] ; then
-	GMP_PLUGIN_LIST=( gmp-gmpopenh264 gmp-widevinecdm )
-fi
+[[ -z ${GMP_PLUGIN_LIST} ]] && GMP_PLUGIN_LIST=( gmp-gmpopenh264 gmp-widevinecdm )
 
 BUILD_OBJ_DIR="${S}/seamonk"
 
@@ -302,14 +293,14 @@ src_configure() {
 	fi
 
 	# These are enabled by default in all mozilla applications
-	mozconfig_annotate '' --with-system-nspr --with-nspr-prefix="${SYSROOT}${EPREFIX%/}"/usr
-	mozconfig_annotate '' --with-system-nss --with-nss-prefix="${SYSROOT}${EPREFIX%/}"/usr
-	mozconfig_annotate '' --x-includes="${SYSROOT}${EPREFIX%/}"/usr/include --x-libraries="${SYSROOT}${EPREFIX%/}"/usr/$(get_libdir)
+	mozconfig_annotate '' --with-system-nspr --with-nspr-prefix="${SYSROOT}${EPREFIX}"/usr
+	mozconfig_annotate '' --with-system-nss --with-nss-prefix="${SYSROOT}${EPREFIX}"/usr
+	mozconfig_annotate '' --x-includes="${SYSROOT}${EPREFIX}"/usr/include --x-libraries="${SYSROOT}${EPREFIX}"/usr/$(get_libdir)
 	if use system-libevent ; then
-		mozconfig_annotate '' --with-system-libevent="${SYSROOT}${EPREFIX%/}"/usr
+		mozconfig_annotate '' --with-system-libevent="${SYSROOT}${EPREFIX}"/usr
 	fi
-	mozconfig_annotate '' --prefix="${EPREFIX%/}"/usr
-	mozconfig_annotate '' --libdir="${EPREFIX%/}"/usr/$(get_libdir)
+	mozconfig_annotate '' --prefix="${EPREFIX}"/usr
+	mozconfig_annotate '' --libdir="${EPREFIX}"/usr/$(get_libdir)
 	mozconfig_annotate 'Gentoo default' --enable-system-hunspell
 	mozconfig_annotate '' --disable-crashreporter
 	mozconfig_annotate 'Gentoo default' --with-system-png
@@ -360,8 +351,7 @@ src_configure() {
 	if [[ ${CHOST} == armv* ]] ; then
 		mozconfig_annotate '' --with-float-abi=hard
 		if ! use system-libvpx ; then
-			sed -i -e "s|softfp|hard|" \
-				media/libvpx/moz.build || die
+			sed -i -e "s|softfp|hard|" media/libvpx/moz.build || die
 		fi
 	fi
 
@@ -438,7 +428,7 @@ src_configure() {
 	export MOZ_NOSPAM=1
 
 	# workaround for funky/broken upstream configure...
-	SHELL="${SHELL:-${EPREFIX%/}/bin/bash}" \
+	SHELL="${SHELL:-${EPREFIX}/bin/bash}" \
 	emake V=1 -f client.mk configure
 	#./mach configure || die
 }
@@ -453,7 +443,7 @@ src_compile() {
 
 src_install() {
 	MOZILLA_FIVE_HOME="/usr/$(get_libdir)/${PN}"
-	DICTPATH="\"${EPREFIX%/}/usr/share/myspell\""
+	DICTPATH="\"${EPREFIX}/usr/share/myspell\""
 
 	local emid
 	cd "${BUILD_OBJ_DIR}" || die
@@ -483,7 +473,7 @@ src_install() {
 		done
 	fi
 
-	MOZ_MAKE_FLAGS="${MAKEOPTS}" SHELL="${SHELL:-${EPREFIX%/}/bin/bash}" \
+	MOZ_MAKE_FLAGS="${MAKEOPTS}" SHELL="${SHELL:-${EPREFIX}/bin/bash}" \
 	emake DESTDIR="${D}" install
 	MOZ_P="${MY_MOZ_P}" mozlinguas_src_install
 
@@ -499,18 +489,18 @@ src_install() {
 	domenu "${T}"/${PN}.desktop
 
 	# Required in order to use plugins and even run seamonkey on hardened.
-	pax-mark m "${ED}"${MOZILLA_FIVE_HOME}/{seamonkey,seamonkey-bin,plugin-container}
+	pax-mark m "${ED}"/${MOZILLA_FIVE_HOME}/{seamonkey,seamonkey-bin,plugin-container}
 
 	if use minimal ; then
-		rm -rf "${ED}"/usr/include "${ED}${MOZILLA_FIVE_HOME}"/{idl,include,lib,sdk}
+		rm -r "${ED}"/usr/include "${ED}/${MOZILLA_FIVE_HOME}"/{idl,include,lib,sdk} || die
 	fi
 
 	if use chatzilla ; then
 		emid='{59c81df5-4b7a-477b-912d-4e0fdf64e5f2}'
 
 		# remove the en_US-only xpi file so a version with all requested locales can be installed
-		if [[ -e "${ED}"${MOZILLA_FIVE_HOME}/distribution/extensions/${emid}.xpi ]] ; then
-			rm -f "${ED}"${MOZILLA_FIVE_HOME}/distribution/extensions/${emid}.xpi || die
+		if [[ -e "${ED}"/${MOZILLA_FIVE_HOME}/distribution/extensions/${emid}.xpi ]] ; then
+			rm -f "${ED}"/${MOZILLA_FIVE_HOME}/distribution/extensions/${emid}.xpi || die
 		fi
 
 		# merge the extra locales into the main extension
@@ -556,4 +546,8 @@ pkg_postinst() {
 		elog "chatzilla is now an extension which can be en-/disabled and configured via"
 		elog "the Add-on manager."
 	fi
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }
