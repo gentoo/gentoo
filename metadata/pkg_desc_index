@@ -5605,7 +5605,7 @@ dev-libs/libxdg-basedir 1.2.0-r1: Small library to access XDG Base Directories S
 dev-libs/libxdiff 0.23-r2: Library for creating diff files
 dev-libs/libxls 1.6.2: A library which can read Excel (xls) files
 dev-libs/libxml2 2.9.10-r4 2.9.10-r5: XML C parser and toolkit
-dev-libs/libxmlb 0.1.15 0.2.1: Library to help create and query binary XML blobs
+dev-libs/libxmlb 0.1.15 0.2.1 0.3.0: Library to help create and query binary XML blobs
 dev-libs/libxslt 1.1.34-r1: XSLT libraries and tools
 dev-libs/libyaml 0.2.2 0.2.5: YAML 1.1 parser and emitter written in C
 dev-libs/libzia 4.23 4.24 4.25: platform abstraction code for tucnak package
@@ -12570,7 +12570,7 @@ mail-filter/zdkimfilter 1.8 2.1 2.2: DKIM filter for Courier-MTA
 mail-mta/courier 1.0.5 1.0.13 1.0.14 1.0.17: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2-r1: User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
 mail-mta/exim 4.93.0.4-r2 4.94-r2: A highly configurable, drop-in replacement for sendmail
-mail-mta/msmtp 1.8.7-r1 1.8.12 1.8.13 1.8.14: An SMTP client and SMTP plugin for mail user agents such as Mutt
+mail-mta/msmtp 1.8.12 1.8.14 1.8.15: An SMTP client and SMTP plugin for mail user agents such as Mutt
 mail-mta/netqmail 1.06-r14: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/notqmail 1.08-r3 9999: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 2.2-r1: Simple relay-only local mail transport agent

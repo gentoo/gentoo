@@ -1,0 +1,15 @@
+BDEPEND=|| ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 ) >=dev-util/meson-0.47.0 virtual/pkgconfig introspection? ( || ( ( dev-lang/python:3.9 dev-python/setuptools[python_targets_python3_9(-),-python_single_target_python3_9(-)] ) ( dev-lang/python:3.8 dev-python/setuptools[python_targets_python3_8(-),-python_single_target_python3_8(-)] ) ( dev-lang/python:3.7 dev-python/setuptools[python_targets_python3_7(-),-python_single_target_python3_7(-)] ) ) ) >=dev-util/meson-0.54.0 >=dev-util/ninja-1.8.2 dev-util/meson-format-array
+DEFINED_PHASES=compile configure install setup test
+DEPEND=dev-libs/glib:2 sys-apps/util-linux stemmer? ( dev-libs/snowball-stemmer ) doc? ( dev-util/gtk-doc ) introspection? ( dev-libs/gobject-introspection )
+DESCRIPTION=Library to help create and query binary XML blobs
+EAPI=7
+HOMEPAGE=https://github.com/hughsie/libxmlb
+IUSE=doc introspection stemmer test
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86
+LICENSE=LGPL-2.1+
+RDEPEND=dev-libs/glib:2 sys-apps/util-linux stemmer? ( dev-libs/snowball-stemmer )
+RESTRICT=!test? ( test )
+SLOT=0/2
+SRC_URI=https://github.com/hughsie/libxmlb/archive/0.3.0.tar.gz -> libxmlb-0.3.0.tar.gz
+_eclasses_=meson	e43eef9331f54965a573ed380854ff47	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=bcd656ab8c3a351dadebcb3185f50dce
