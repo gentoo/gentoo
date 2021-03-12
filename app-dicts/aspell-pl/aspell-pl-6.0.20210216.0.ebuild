@@ -5,6 +5,7 @@ EAPI=7
 
 ASPELL_LANG="Polish"
 ASPELL_VERSION=6
+
 inherit aspell-dict-r1
 
 HOMEPAGE="https://sjp.pl/slownik/en/"

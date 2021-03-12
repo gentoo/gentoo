@@ -5,6 +5,7 @@ EAPI=7
 
 ASPELL_LANG="Slovak"
 ASPELL_VERSION=6
+
 inherit aspell-dict-r1
 
 LICENSE="GPL-2"
