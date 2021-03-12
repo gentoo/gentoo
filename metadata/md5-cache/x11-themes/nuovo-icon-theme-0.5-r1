@@ -1,11 +1,11 @@
 DEFINED_PHASES=install postinst postrm preinst prepare
 DEPEND=dev-util/desktop-file-utils x11-misc/shared-mime-info
-DESCRIPTION=Scalable icon theme called Nou
+DESCRIPTION=A scalable icon theme called Nuovo
 EAPI=7
 HOMEPAGE=http://www.silvestre.com.ar/
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 SLOT=0
-SRC_URI=mirror://gentoo/Nou-090208.tar.bz2
+SRC_URI=mirror://gentoo/dlg-nuovo-0.5.tar.bz2
 _eclasses_=xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=f87992c3da9ac122ee65d46736afecf6
+_md5_=4fe2aefdbb58ea9860ab2838aa54ac4e

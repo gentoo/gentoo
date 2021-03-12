@@ -1,11 +1,11 @@
 DEFINED_PHASES=install postinst postrm preinst prepare
 DEPEND=dev-util/desktop-file-utils x11-misc/shared-mime-info
-DESCRIPTION=Scalable icon theme called Nou
+DESCRIPTION=Scalable icon theme called Yasis
 EAPI=7
 HOMEPAGE=http://www.silvestre.com.ar/
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 SLOT=0
-SRC_URI=mirror://gentoo/Nou-090208.tar.bz2
+SRC_URI=mirror://gentoo/yasis-0.4.2.tar.bz2
 _eclasses_=xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=f87992c3da9ac122ee65d46736afecf6
+_md5_=af1e235c9e741048a2a1b009055ed962

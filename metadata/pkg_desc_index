@@ -3570,7 +3570,7 @@ dev-db/libdbi 0.9.0: A database-independent abstraction layer in C
 dev-db/libdbi-drivers 0.9.0-r1: The libdbi-drivers project maintains drivers for libdbi
 dev-db/libiodbc 3.52.12-r1 3.52.14: ODBC Interface for Linux
 dev-db/libodbc++ 0.2.5-r2: Provides a subset of the well-known JDBC 2.0(tm) and runs on top of ODBC
-dev-db/libzdb 3.1-r1: A thread safe high level multi-database connection pool library
+dev-db/libzdb 3.1-r1 3.2.2: A thread safe high level multi-database connection pool library
 dev-db/lmdb 0.9.23 0.9.24 0.9.26 0.9.27 0.9.28: An ultra-fast, ultra-compact key-value embedded data store
 dev-db/lmdb++ 0.9.14.0 1.0.0: C++11 wrapper for the LMDB database library
 dev-db/m17n-db 1.7.0 1.8.0: Database for the m17n library
@@ -18914,7 +18914,7 @@ x11-themes/e16-themes 1.0.2: All the official E16 themes
 x11-themes/echo-icon-theme 0.3.89.0_pre20081031: SVG icon theme from the Echo Icon project
 x11-themes/elementary-xfce-icon-theme 0.15.1 0.15.2: Elementary icons forked from upstream, extended and maintained for Xfce
 x11-themes/experience 3.04-r1: GTK+2 themes which copy and improve the look of XP Luna
-x11-themes/faenza-icon-theme 1.3.1: A scalable icon theme called Faenza
+x11-themes/faenza-icon-theme 1.3.1-r1: A scalable icon theme called Faenza
 x11-themes/fedora-backgrounds 27.0.1 28.1.5 29.1.3 30.1.2 31.0.4 32.2.2 33.0.8 34.0.1: A set of default and supplemental wallpapers for Fedora
 x11-themes/flatsvg 1.0: Flat SVG icon set
 x11-themes/fluxbox-styles-fluxmod 20050128-r1: A collection of FluxBox themes from FluxMod
@@ -18981,11 +18981,11 @@ x11-themes/murrine-themes 0.98.0-r1: Themes for the Murrine GTK+2 Cairo Engine
 x11-themes/neutral-xcursors 20150106: A family of smoothed and shadowed cursors that resemble the standard X ones
 x11-themes/nimbus 0.1.7-r1: The default OpenSolaris theme (GTK+ 2.x engine, icon- and metacity theme)
 x11-themes/notify-osd-icons 0.7-r1: Icons for on-screen-display notification agent
-x11-themes/nou-icon-theme 09.02.08: A scalable icon theme called Nou
+x11-themes/nou-icon-theme 09.02.08: Scalable icon theme called Nou
 x11-themes/numix-gtk-theme 2.6.7-r2: A modern flat theme with a combination of light and dark elements
 x11-themes/numix-icon-theme 18.07.17 19.09.20 20.03.20 20.06.07: An official icon theme from the Numix Project
-x11-themes/numix-icon-theme-circle 18.08.29 18.09.19 18.10.03 18.12.01 19.01.24 19.02.07 19.02.22 19.03.20 19.04.15 19.05.07 19.09.20 19.12.27 20.06.07 20.07.11: An icon theme for Linux from the Numix project
-x11-themes/nuovo-icon-theme 0.5: A scalable icon theme called Nuovo
+x11-themes/numix-icon-theme-circle 19.09.20 19.12.27 20.06.07 20.07.11 20.09.19: Icon theme from the Numix project
+x11-themes/nuovo-icon-theme 0.5-r1: A scalable icon theme called Nuovo
 x11-themes/nuvox 07.1-r1: NuvoX SVG icon theme
 x11-themes/obsidian-xcursors 1.0: A shiny and clean xcursor theme
 x11-themes/oxygen-gtk 1.4.1-r1 1.4.6-r1: Official GTK+:2 port of KDE's Oxygen widget style
@@ -19017,11 +19017,11 @@ x11-themes/vertex-icon-theme 20150506: Vertex icon theme
 x11-themes/vertex-theme 20160329 20170128 20170128-r1: Vertex theme for GTK+ based desktops
 x11-themes/windowmaker-themes 0.1-r1: Collection of Window Maker themes
 x11-themes/wm-icons 0.4.0: A Large Assortment of Beautiful Themed Icons, Created with FVWM in mind
-x11-themes/xcursor-themes 1.0.6: X.Org cursor themes: whiteglass, redglass and handhelds
+x11-themes/xcursor-themes 1.0.6-r1: X.Org cursor themes: whiteglass, redglass and handhelds
 x11-themes/xfce-gant-icon-theme 3.9_p6-r1: Xfce Gant Icon Theme
 x11-themes/xfwm4-themes 4.10.0-r1: Additional themes for the Xfce window manager
 x11-themes/xxv-skins 1.6.1-r1: Additional skins for XXV
-x11-themes/yasis-icon-theme 0.4.2: A scalable icon theme called Yasis
+x11-themes/yasis-icon-theme 0.4.2-r1: Scalable icon theme called Yasis
 x11-themes/zuki-themes 3.32.2: Zuki themes for GTK, gnome-shell and more
 x11-themes/zukini 20120817: Unified look for GTK+ 2.x, GTK+ 3.x, gnome-shell, metacity and more
 x11-themes/zukitwo 2016.08.08: Transition package to zuki-themes

@@ -1,6 +1,7 @@
-DEFINED_PHASES=install
+DEFINED_PHASES=install postinst postrm preinst prepare
+DEPEND=dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=Iconsets for Claws Mail
-EAPI=5
+EAPI=7
 HOMEPAGE=https://www.claws-mail.org/
 KEYWORDS=~alpha amd64 ~ppc ~ppc64 x86
 LICENSE=GPL-2 GPL-3 CC-BY-3.0 CC-BY-SA-2.5 CC-BY-NC-SA-3.0 CC-BY-ND-3.0 MPL-1.1 freedist public-domain all-rights-reserved
@@ -8,4 +9,5 @@ RDEPEND=mail-client/claws-mail
 RESTRICT=mirror bindist
 SLOT=0
 SRC_URI=https://www.claws-mail.org/themes/claws-mail-themes-20140629.tar.gz
-_md5_=652be1cb45c9083085b02656bcb414c9
+_eclasses_=xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=c7ff14ed94815a0ba0ea0aa273433c82

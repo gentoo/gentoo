@@ -1,9 +1,11 @@
-DEFINED_PHASES=install postinst
+DEFINED_PHASES=install postinst postrm preinst prepare
+DEPEND=dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=Style neutral scalable cursor theme
-EAPI=6
+EAPI=7
 HOMEPAGE=http://www.egregorion.net/2007/03/26/chameleon/
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 SLOT=0
-SRC_URI=http://www.egregorion.net/works/Chameleon-Anthracite-0.5.tar.bz2 http://www.egregorion.net/works/Chameleon-DarkSkyBlue-0.5.tar.bz2 http://www.egregorion.net/works/Chameleon-SkyBlue-0.5.tar.bz2 http://www.egregorion.net/works/Chameleon-Pearl-0.5.tar.bz2 http://www.egregorion.net/works/Chameleon-White-0.5.tar.bz2
-_md5_=bf08567f354c4f4efc359ab9ef524032
+SRC_URI=mirror://gentoo/Chameleon-Anthracite-0.5.tar.bz2 mirror://gentoo/Chameleon-DarkSkyBlue-0.5.tar.bz2 mirror://gentoo/Chameleon-SkyBlue-0.5.tar.bz2 mirror://gentoo/Chameleon-Pearl-0.5.tar.bz2 mirror://gentoo/Chameleon-White-0.5.tar.bz2
+_eclasses_=xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=420ea203b456fc8085ef2b828c5336cb
