@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Original author: Seemant Kulleen
 #      -r1 author: David Seifert
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 7
 # @BLURB: An eclass to streamline the construction of ebuilds for new aspell dicts
 # @DESCRIPTION:
 # The aspell-dict-r1 eclass is designed to streamline the construction of
@@ -31,10 +31,10 @@
 # it needs to be overridden before inheriting the eclass.
 
 case ${EAPI:-0} in
-	[0-5])
+	[0-6])
 		die "aspell-dict-r1.eclass is banned in EAPI ${EAPI:-0}"
 		;;
-	[67])
+	7)
 		;;
 	*)
 		die "Unknown EAPI ${EAPI:-0}"
