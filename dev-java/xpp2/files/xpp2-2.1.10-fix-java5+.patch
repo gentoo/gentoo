@@ -1,0 +1,17 @@
+diff --git a/src/java/impl/node/org/gjt/xpp/impl/node/Node.java b/src/java/impl/node/org/gjt/xpp/impl/node/Node.java
+index 7c66608..6c128e9 100644
+--- a/src/java/impl/node/org/gjt/xpp/impl/node/Node.java
++++ b/src/java/impl/node/org/gjt/xpp/impl/node/Node.java
+@@ -273,9 +273,9 @@ public class Node extends StartTag implements XmlNode {
+         oneChild = null;
+ 
+         if(children != null && children.size() > 0) {
+-            Enumeration enum = children.elements();
+-            while (enum.hasMoreElements()) {
+-                Object child = enum.nextElement();
++            Enumeration elements = children.elements();
++            while (elements.hasMoreElements()) {
++                Object child = elements.nextElement();
+                 if(child instanceof XmlNode) {
+                     ((XmlNode)child).setParentNode(null);
+                 }
