@@ -6,13 +6,13 @@ EAPI=7
 inherit font
 
 DESCRIPTION="Beautiful free fonts from exljbris Font Foundry"
-HOMEPAGE="http://www.josbuivenga.demon.nl/"
+HOMEPAGE="https://www.exljbris.com"
 SRC_URI="
-	http://www.exljbris.com/dl/DELICIOUS_21_OTF.zip
-	http://www.exljbris.com/dl/Diavlo_II_37b2.zip
-	http://www.exljbris.com/dl/fontin2_pc.zip
-	http://www.exljbris.com/dl/FontinSans_49.zip
-	http://www.exljbris.com/dl/tallys_15b2.zip"
+	https://www.exljbris.com/dl/DELICIOUS_21_OTF.zip
+	https://www.exljbris.com/dl/Diavlo_II_37b2.zip
+	https://www.exljbris.com/dl/fontin2_pc.zip
+	https://www.exljbris.com/dl/FontinSans_49.zip
+	https://www.exljbris.com/dl/tallys_15b2.zip"
 
 LICENSE="exljbris-free"
 SLOT="0"
