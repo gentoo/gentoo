@@ -3574,7 +3574,7 @@ dev-db/libzdb 3.1-r1: A thread safe high level multi-database connection pool li
 dev-db/lmdb 0.9.23 0.9.24 0.9.26 0.9.27 0.9.28: An ultra-fast, ultra-compact key-value embedded data store
 dev-db/lmdb++ 0.9.14.0 1.0.0: C++11 wrapper for the LMDB database library
 dev-db/m17n-db 1.7.0 1.8.0: Database for the m17n library
-dev-db/mariadb 10.2.22-r2 10.2.32-r3 10.2.34 10.2.35 10.2.36 10.2.37-r2 10.3.23-r3 10.3.25 10.3.26 10.3.27 10.3.28-r2 10.4.13-r3 10.4.15 10.4.16 10.4.17 10.4.18-r2 10.5.6 10.5.7 10.5.8 10.5.9-r2: An enhanced, drop-in replacement for MySQL
+dev-db/mariadb 10.2.22-r2 10.2.32-r3 10.2.34 10.2.35 10.2.36 10.2.37-r2 10.3.23-r3 10.3.25 10.3.26 10.3.27 10.3.28-r2 10.4.13-r3 10.4.15 10.4.16 10.4.17 10.4.18-r2 10.5.6 10.5.7 10.5.8 10.5.9-r3: An enhanced, drop-in replacement for MySQL
 dev-db/mariadb-connector-c 3.1.11 3.1.12 9999: C client library for MariaDB/MySQL
 dev-db/mariadb-connector-odbc 3.1.6 3.1.11-r2: MariaDB Connector/ODBC
 dev-db/mongodb 4.2.11 4.2.12 4.4.1 4.4.2 4.4.4: A high-performance, open source, schema-free document-oriented database
@@ -5162,7 +5162,7 @@ dev-lang/gforth 0.7.3-r1: GNU Forth is a fast and portable implementation of the
 dev-lang/ghc 7.8.4 7.10.3 8.0.2 8.2.1 8.2.2 8.4.1 8.4.2 8.4.3 8.6.4 8.6.5 8.8.1 8.8.2 8.8.3 8.8.4 8.10.1 8.10.2 8.10.3 8.10.4 9.0.1: The Glasgow Haskell Compiler
 dev-lang/gnat-gpl 2016-r4 2017-r1 2018-r3 2019-r2: GNAT Ada Compiler - GPL version
 dev-lang/gnuprologjava 0.2.6-r1: GNU Prolog for Java is an implementation of ISO Prolog as a Java library
-dev-lang/go 1.14.14 1.14.15 1.15.7 1.15.8 1.16 9999: A concurrent garbage collected and typesafe programming language
+dev-lang/go 1.14.14 1.14.15 1.15.7 1.15.8 1.15.10 1.16 1.16.2 9999: A concurrent garbage collected and typesafe programming language
 dev-lang/go-bootstrap 1.13.6: Bootstrap package for dev-lang/go
 dev-lang/gprolog 1.4.5: A native Prolog compiler with constraint solving over finite domains (FD)
 dev-lang/hy 0.17.0: A LISP dialect running in python
