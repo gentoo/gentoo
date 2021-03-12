@@ -61,9 +61,12 @@ src_prepare() {
 			"${FILESDIR}"/${P}-translations.patch
 		)
 
+	default
+
 	sed -i -e "s:/usr/local:${EPREFIX}/usr:" Docs/sample/gnokiirc || die
 
-	default
+	# bug 775485
+	sed -i -e "s:my_bool:bool:" smsd/mysql.c || die
 
 	cp "${FILESDIR}"/${P}-codeset.m4 m4/codeset.m4 || die
 	mv configure.{in,ac} || die
