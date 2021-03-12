@@ -12,7 +12,7 @@ SRC_URI="https://www.mpagano.com/downloads/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ppc sparc x86"
 IUSE=""
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
