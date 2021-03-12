@@ -5,9 +5,11 @@ EAPI=7
 
 ASPELL_LANG="Italian"
 ASPELL_VERSION=6
+MY_PV="${PV#*.}"
+MY_P="${PN/aspell/aspell${ASPELL_VERSION}}-${PV%%.*}.${MY_PV//./-}"
+
 inherit aspell-dict-r1
 
-MY_P="aspell${ASPELL_VERSION}-${PN#aspell-}-${PV%.*}-${PV##*.}-0"
 SRC_URI="mirror://sourceforge/linguistico/${MY_P}.tar.bz2"
 S="${WORKDIR}/${MY_P}"
 
