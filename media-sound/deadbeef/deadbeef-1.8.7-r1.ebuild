@@ -1,9 +1,9 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools xdg l10n
+inherit autotools xdg l10n flag-o-matic
 
 DESCRIPTION="DeaDBeeF is a modular audio player similar to foobar2000"
 HOMEPAGE="https://deadbeef.sourceforge.io/"
@@ -43,17 +43,23 @@ DEPEND="
 	mp3? ( media-sound/mpg123 )
 	musepack? ( media-sound/musepack-tools )
 	nls? ( virtual/libintl )
-	notify? ( sys-apps/dbus )
+	notify? (
+		sys-apps/dbus
+		dev-libs/libdispatch
+	)
 	opus? ( media-libs/opusfile	)
 	pulseaudio? ( media-sound/pulseaudio )
 	vorbis? ( media-libs/libvorbis )
 	wavpack? ( media-sound/wavpack )
+	lastfm? ( dev-libs/libdispatch )
 "
 
 RDEPEND="${DEPEND}"
 BDEPEND="
 	dev-util/intltool
 	sys-devel/gettext
+	sys-devel/clang
+	sys-devel/llvm
 "
 
 PATCHES=(
@@ -94,6 +100,20 @@ src_prepare() {
 }
 
 src_configure () {
+	if ! tc-is-clang; then
+		AR=llvm-ar
+		CC=${CHOST}-clang
+		CXX=${CHOST}-clang++
+		NM=llvm-nm
+		RANLIB=llvm-ranlib
+
+		strip-unsupported-flags
+	fi
+
+	export HOST_CC="$(tc-getBUILD_CC)"
+	export HOST_CXX="$(tc-getBUILD_CXX)"
+	tc-export CC CXX LD AR NM OBJDUMP RANLIB PKG_CONFIG
+
 	local myconf=(
 		"--disable-static"
 		"--disable-staticlink"
