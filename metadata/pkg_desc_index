@@ -965,7 +965,7 @@ app-benchmarks/cpuburn 1.4a-r3: CPU testing utilities in optimized assembler for
 app-benchmarks/dbench 4.0: Popular filesystem benchmark
 app-benchmarks/filebench 1.4.9.1-r1: Filebench - A Model Based File System Workload Generator
 app-benchmarks/forkbomb 1.4-r1: Controlled fork() bomber for testing heavy system load
-app-benchmarks/geekbench 2.4.2 2.4.3 3.4.2 4.4.1 5.3.2: A Cross-Platform Benchmark for Android, iOS, Linux, MacOS and Windows
+app-benchmarks/geekbench 2.4.2 2.4.3 3.4.2 4.4.1 5.3.2 5.4.0: A Cross-Platform Benchmark for Android, iOS, Linux, MacOS and Windows
 app-benchmarks/hey 0.1.2: HTTP load generator, ApacheBench (ab) replacement, formerly known as rakyll/boom
 app-benchmarks/httperf 0.9.1_p20181111 0.9.1_p20181111-r1: A tool from HP for measuring web server performance
 app-benchmarks/hyperfine 1.11.0: A command-line benchmarking tool (runs other benchmarks)
@@ -979,7 +979,7 @@ app-benchmarks/pipebench 0.40-r2: Measures the speed of stdin/stdout communicati
 app-benchmarks/ramspeed 3.5.0-r2: Benchmarking for memory and cache
 app-benchmarks/siege 4.0.4 4.0.5 4.0.7: A HTTP regression testing and benchmarking utility
 app-benchmarks/stress 1.0.4-r2: A deliberately simple workload generator for POSIX systems
-app-benchmarks/stress-ng 0.12.04: Stress test for a computer system with various selectable ways
+app-benchmarks/stress-ng 0.12.05: Stress test for a computer system with various selectable ways
 app-benchmarks/sysbench 1.0.20-r100: A scriptable multi-threaded benchmark tool based on LuaJIT
 app-benchmarks/tiobench 0.4.2: Portable, robust, fully-threaded I/O benchmark program
 app-benchmarks/wrk 4.1.0-r100: A HTTP benchmarking tool
@@ -1180,47 +1180,98 @@ app-crypt/xor-analyze 0.5-r1: program for cryptanalyzing xor 'encryption' with v
 app-crypt/yubikey-manager 3.1.1-r1: Python library and command line tool for configuring a YubiKey
 app-crypt/yubikey-manager-qt 1.1.5: Cross-platform application for configuring any YubiKey over all USB transports
 app-crypt/zulucrypt 5.5.0_pre20180223: Front end to cryptsetup
-app-dicts/aspell-af 0.50.0: Afrikaans language dictionary for aspell
-app-dicts/aspell-be 0.01-r1: Belarusian language dictionary for aspell
-app-dicts/aspell-bg 4.1.0: Bulgarian language dictionary for aspell
-app-dicts/aspell-br 0.50.2: Breton language dictionary for aspell
-app-dicts/aspell-ca 2.1.5.1: Catalan language dictionary for aspell
-app-dicts/aspell-cs 0.60.20040614: Czech language dictionary for aspell
-app-dicts/aspell-cy 0.50.3: Welsh language dictionary for aspell
-app-dicts/aspell-da 1.7.42: Danish language dictionary for aspell
-app-dicts/aspell-de 0.60_pre20030222: German and Swiss-German language dictionary for aspell
-app-dicts/aspell-de-alt 2.1.1-r1: German (traditional orthography) language dictionary for aspell
-app-dicts/aspell-el 0.50.3: Greek language dictionary for aspell
-app-dicts/aspell-en 2018.04.16.0: English (US, British, Canadian) language dictionary for aspell
-app-dicts/aspell-eo 2.1.20000225.2: Esperanto language dictionary for aspell
-app-dicts/aspell-es 1.9a 1.11_p2: Spanish language dictionary for aspell
-app-dicts/aspell-et 0.1.21.1: Estonian language dictionary for aspell
-app-dicts/aspell-fi 0.7.0: Finnish language dictionary for aspell
-app-dicts/aspell-fo 0.51.0: Faroese language dictionary for aspell
-app-dicts/aspell-fr 0.60: French language dictionary for aspell
-app-dicts/aspell-ga 0.50.4: Irish language dictionary for aspell
-app-dicts/aspell-gl 0.5.2: Galician language dictionary for aspell
-app-dicts/aspell-he 1.0.0: Hebrew language dictionary for aspell
-app-dicts/aspell-hr 0.51.0: Croatian language dictionary for aspell
-app-dicts/aspell-hu 0.99.4.2: Hungarian language dictionary for aspell
-app-dicts/aspell-hy 0.10.0: Armenian language dictionary for aspell
-app-dicts/aspell-is 0.51.1.0: Icelandic language dictionary for aspell
-app-dicts/aspell-it 2.4.20070901: Italian language dictionary for aspell
-app-dicts/aspell-la 6.0.20020503.0: Latin language dictionary for aspell
-app-dicts/aspell-lt 1.0.1: Lithuanian language dictionary for aspell
-app-dicts/aspell-nl 0.50.2: Dutch language dictionary for aspell
-app-dicts/aspell-no 0.50.2: Norwegian language dictionary for aspell
-app-dicts/aspell-pl 6.0.20120418.0 6.0.20210216.0: Polish language dictionary for aspell
-app-dicts/aspell-pt 0.50.2-r1: Portuguese language dictionary for aspell
-app-dicts/aspell-pt-br 6.0.20090702: Brazilian Portuguese language dictionary for aspell
-app-dicts/aspell-ro 3.3.2: Romanian language dictionary for aspell
-app-dicts/aspell-ru 0.99.1-r1: Russian language dictionary for aspell
-app-dicts/aspell-sk 2.01.2: Slovak language dictionary for aspell
-app-dicts/aspell-sl 0.50.0: Slovenian language dictionary for aspell
-app-dicts/aspell-sr 0.60: Serbian language dictionary for aspell
-app-dicts/aspell-sv 0.51.0: Swedish language dictionary for aspell
-app-dicts/aspell-uk 1.4.0.0: Ukrainian language dictionary for aspell
-app-dicts/aspell-vi 0.01.1.1: Vietnamese language dictionary for aspell
+app-dicts/aspell-af 0.50.0: Aspell (Afrikaans) language dictionary
+app-dicts/aspell-am 0.03.1: Aspell (Amharic) language dictionary
+app-dicts/aspell-ar 1.2.0: Aspell (Arabic) language dictionary
+app-dicts/aspell-ast 0.01: Aspell (Asturian) language dictionary
+app-dicts/aspell-az 0.02.0: Aspell (Azerbaijani) language dictionary
+app-dicts/aspell-be 0.01-r1: Aspell (Belarusian) language dictionary
+app-dicts/aspell-bg 4.1.0: Aspell (Bulgarian) language dictionary
+app-dicts/aspell-bn 0.01.1.1: Aspell (Bengali) language dictionary
+app-dicts/aspell-br 0.50.2: Aspell (Breton) language dictionary
+app-dicts/aspell-ca 2.1.5.1: Aspell (Catalan) language dictionary
+app-dicts/aspell-cs 20040614.1: Aspell (Czech) language dictionary
+app-dicts/aspell-csb 0.02.0: Aspell (Kashubian) language dictionary
+app-dicts/aspell-cy 0.50.3: Aspell (Welsh) language dictionary
+app-dicts/aspell-da 1.7.42: Aspell (Danish) language dictionary
+app-dicts/aspell-de 0.60_pre20030222 20161207.7.0: Aspell (German, Austria-German and Swiss-German) language dictionary
+app-dicts/aspell-de-alt 2.1.1-r1: Aspell (German (traditional orthography)) language dictionary
+app-dicts/aspell-el 0.08.0 0.50.3: Aspell (Greek) language dictionary
+app-dicts/aspell-en 2018.04.16.0 2020.12.07.0: Aspell (English (British, Canadian, US)) language dictionary
+app-dicts/aspell-eo 2.1.20000225.2: Aspell (Esperanto) language dictionary
+app-dicts/aspell-es 1.9a 1.11.2: Aspell (Spanish) language dictionary
+app-dicts/aspell-et 0.1.21.1: Aspell (Estonian) language dictionary
+app-dicts/aspell-fa 0.11.0: Aspell (Persian) language dictionary
+app-dicts/aspell-fi 0.7.0: Aspell (Finnish) language dictionary
+app-dicts/aspell-fo 0.2.16.1 0.51.0: Aspell (Faroese) language dictionary
+app-dicts/aspell-fr 0.50.3: Aspell (French) language dictionary
+app-dicts/aspell-fy 0.12.0: Aspell (Frisian Frysk) language dictionary
+app-dicts/aspell-ga 0.50.4 4.5.0: Aspell (Irish) language dictionary
+app-dicts/aspell-gd 0.1.1.1: Aspell (Scottish Gaelic) language dictionary
+app-dicts/aspell-gl 0.5.2: Aspell (Galician) language dictionary
+app-dicts/aspell-grc 0.02.0: Aspell (Ancient Greek) language dictionary
+app-dicts/aspell-gu 0.03.0: Aspell (Gujarati) language dictionary
+app-dicts/aspell-gv 0.50.0: Aspell (Manx Gaelic) language dictionary
+app-dicts/aspell-he 1.0.0: Aspell (Hebrew) language dictionary
+app-dicts/aspell-hi 0.02.0: Aspell (Hindi) language dictionary
+app-dicts/aspell-hil 0.11.0: Aspell (Hiligaynon) language dictionary
+app-dicts/aspell-hr 0.51.0: Aspell (Croatian) language dictionary
+app-dicts/aspell-hsb 0.02.0: Aspell (Upper Sorbian) language dictionary
+app-dicts/aspell-hu 0.99.4.2.0: Aspell (Hungarian) language dictionary
+app-dicts/aspell-hus 0.03.1: Aspell (Huastec Tenek) language dictionary
+app-dicts/aspell-hy 0.10.0.0: Aspell (Armenian) language dictionary
+app-dicts/aspell-ia 0.50.1: Aspell (Interlingua) language dictionary
+app-dicts/aspell-id 1.2.0: Aspell (Indonesian) language dictionary
+app-dicts/aspell-is 0.51.1.0: Aspell (Icelandic) language dictionary
+app-dicts/aspell-it 2.4.20070901.0: Aspell (Italian) language dictionary
+app-dicts/aspell-kn 0.01.1: Aspell (Kannada) language dictionary
+app-dicts/aspell-ku 0.20.1: Aspell (Kurdi) language dictionary
+app-dicts/aspell-ky 0.01.0: Aspell (Kirghiz) language dictionary
+app-dicts/aspell-la 20020503.0: Aspell (Latin) language dictionary
+app-dicts/aspell-lt 1.0.1 1.2.1.0: Aspell (Lithuanian) language dictionary
+app-dicts/aspell-lv 0.5.5.1: Aspell (Latvian) language dictionary
+app-dicts/aspell-mg 0.03.0: Aspell (Malagasy) language dictionary
+app-dicts/aspell-mi 0.50.0: Aspell (Maori) language dictionary
+app-dicts/aspell-mk 0.50.0: Aspell (Macedonian) language dictionary
+app-dicts/aspell-ml 0.03.1: Aspell (Malayalam) language dictionary
+app-dicts/aspell-mn 0.06.2: Aspell (Mongolian) language dictionary
+app-dicts/aspell-mr 0.10.0: Aspell (Marathi) language dictionary
+app-dicts/aspell-ms 0.50.0: Aspell (Malay) language dictionary
+app-dicts/aspell-mt 0.50.0: Aspell (Maltese) language dictionary
+app-dicts/aspell-nb 0.50.1.0: Aspell (Norwegian Bokmal) language dictionary
+app-dicts/aspell-nds 0.01.0: Aspell (Lower Saxony Plattdüütsch) language dictionary
+app-dicts/aspell-nl 0.50.2: Aspell (Dutch) language dictionary
+app-dicts/aspell-nn 0.50.1.1: Aspell (Norwegian Nynorsk) language dictionary
+app-dicts/aspell-no 0.50.2: Aspell (Norwegian) language dictionary
+app-dicts/aspell-ny 0.01.0: Aspell (Chichewa) language dictionary
+app-dicts/aspell-or 0.03.1: Aspell (Oriya) language dictionary
+app-dicts/aspell-pa 0.01.1: Aspell (Punjabi) language dictionary
+app-dicts/aspell-pl 6.0.20120418.0 6.0.20210216.0: Aspell (Polish) language dictionary
+app-dicts/aspell-pt 0.50.2-r1 20190329.1.0: Aspell (Portuguese) language dictionary
+app-dicts/aspell-pt-br 20090702.0 20131030.12.0: Aspell (Brazilian Portuguese) language dictionary
+app-dicts/aspell-qu 0.02.0: Aspell (Quechua Runasimi) language dictionary
+app-dicts/aspell-ro 3.3.2: Aspell (Romanian) language dictionary
+app-dicts/aspell-ru 0.99.1-r1: Aspell (Russian) language dictionary
+app-dicts/aspell-rw 0.50.0: Aspell (Kinyarwanda) language dictionary
+app-dicts/aspell-sc 1.0: Aspell (Sardinian) language dictionary
+app-dicts/aspell-sk 2.01.2: Aspell (Slovak) language dictionary
+app-dicts/aspell-sl 0.50.0: Aspell (Slovenian) language dictionary
+app-dicts/aspell-sr 0.02: Aspell (Serbian) language dictionary
+app-dicts/aspell-sv 0.51.0: Aspell (Swedish) language dictionary
+app-dicts/aspell-sw 0.50.0: Aspell (Swahili Kiswahili) language dictionary
+app-dicts/aspell-ta 20040424.1: Aspell (Tamil) language dictionary
+app-dicts/aspell-te 0.01.2: Aspell (Telugu) language dictionary
+app-dicts/aspell-tet 0.1.1: Aspell (Tetum) language dictionary
+app-dicts/aspell-tk 0.01.0: Aspell (Turkmen) language dictionary
+app-dicts/aspell-tl 0.02.1: Aspell (Tagalog) language dictionary
+app-dicts/aspell-tn 1.0.1.0: Aspell (Setswana) language dictionary
+app-dicts/aspell-tr 0.50.0: Aspell (Turkish) language dictionary
+app-dicts/aspell-uk 1.4.0.0: Aspell (Ukrainian) language dictionary
+app-dicts/aspell-uz 0.6.0: Aspell (Uzbek) language dictionary
+app-dicts/aspell-vi 0.01.1.1: Aspell (Vietnamese) language dictionary
+app-dicts/aspell-wa 0.50.0: Aspell (Walloon) language dictionary
+app-dicts/aspell-yi 0.01.1.1: Aspell (Yiddish) language dictionary
+app-dicts/aspell-zu 0.50.0: Aspell (Zulu) language dictionary
 app-dicts/bookview 3.2.1: NDTP client written in Tcl/Tk
 app-dicts/canna-2ch 20040519: Japanese Canna dictionary for 2channelers
 app-dicts/canna-cannadic 0.95c: Japanese dictionary as a supplement/replacement to Canna3.5b2
@@ -2869,7 +2920,7 @@ app-text/antixls 0.3b: Print out an XLS file with minimal formatting, or extract
 app-text/apvlv 0.1.5-r2: Alf's PDF Viewer Like Vim
 app-text/asa 1.1-r1: ASA Carriage control conversion for ouput by Fortran programs
 app-text/asciidoc 9.0.2 9.0.4 9.0.5: A plain text human readable/writable document format
-app-text/aspell 0.60.8: A spell checker replacement for ispell
+app-text/aspell 0.60.8 0.60.8-r1: Free and Open Source spell checker designed to replace Ispell
 app-text/atril 1.24.0-r1 1.24.0-r2: Atril document viewer for MATE
 app-text/bact 0.13-r1: Boosting Algorithm for Classification of Trees
 app-text/barcode 0.99: barcode generator
