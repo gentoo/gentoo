@@ -12,7 +12,7 @@ S="${WORKDIR}/sagan-1.0.0RC3/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="geoip +libdnet +lognorm mysql +pcap smtp snort"
 
 BDEPEND="virtual/pkgconfig"
