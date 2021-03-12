@@ -5,10 +5,11 @@ EAPI=7
 
 ASPELL_LANG="Serbian"
 ASPELL_VERSION=6
+MY_P="${PN/aspell/aspell${ASPELL_VERSION}}-${PV}"
+
 inherit aspell-dict-r1
 
-MY_P="aspell6-sr-0.02"
-SRC_URI="http://srpski.org/aspell/${MY_P}.tar.bz2"
+SRC_URI="mirror://gnu/${PN%-*}/dict/${PN/aspell-/}/${MY_P}.tar.bz2"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
