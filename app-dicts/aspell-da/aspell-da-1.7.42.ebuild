@@ -4,6 +4,7 @@
 EAPI=7
 
 ASPELL_LANG="Danish"
+
 inherit aspell-dict-r1
 
 HOMEPAGE="https://da.speling.org"
