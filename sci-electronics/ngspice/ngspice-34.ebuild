@@ -15,11 +15,7 @@ SLOT="0"
 IUSE="X debug deprecated doc examples fftw openmp +readline +shared tcl"
 KEYWORDS="~amd64 ~arm64 ~ppc ~sparc ~x86 ~x64-macos"
 
-# A large number of tests currently fails due to spurious
-# "No compatibility mode selected!" messages in the output,
-# see https://sourceforge.net/p/ngspice/bugs/544/
-#RESTRICT="!test? ( test )"
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="sys-libs/ncurses:0=
 	X? ( x11-libs/libXaw
@@ -191,6 +187,7 @@ src_test() {
 	if ! use debug; then
 		# tests can be only executed for the binaries variant
 		pushd "${WORKDIR}/${P}-binaries" &>/dev/null || die
+		echo "set ngbehavior=mc" > "${HOME}"/.spiceinit || die "Failed to configure ${PN} for running the test suite"
 		virtx default
 		popd &>/dev/null || die
 	else
