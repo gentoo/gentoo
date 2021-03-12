@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/rspec/rspec"
 
 LICENSE="MIT"
 SLOT="3"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~s390 sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ppc ppc64 ~s390 sparc x86"
 IUSE=""
 
 SUBVERSION="$(ver_cut 1-2)"
