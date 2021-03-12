@@ -2,7 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <!-- maintainer-needed -->
-<use>
-	<flag name="classic">Support classic spelling by default</flag>
-</use>
+	<stabilize-allarches/>
+	<use>
+		<flag name="classic">Support classic spelling by default</flag>
+	</use>
 </pkgmetadata>
