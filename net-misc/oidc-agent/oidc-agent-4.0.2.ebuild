@@ -25,8 +25,14 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.0.2_install-perms.patch
+	"${FILESDIR}"/${PN}-4.0.2_makefile-liblist-automagic.patch
 	"${FILESDIR}"/${PN}-4.0.2_makefile-toolchain-vars.patch
 )
+
+src_prepare() {
+	default
+	sed -i -e 's|^\(\s\+\)@|\1|' Makefile || die "Failed to increase verbosity in Makefile"
+}
 
 src_compile() {
 	# As of 4.0.2 parallel building still doesn't work
