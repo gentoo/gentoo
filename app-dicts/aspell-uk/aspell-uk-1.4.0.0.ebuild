@@ -5,6 +5,7 @@ EAPI=7
 
 ASPELL_LANG="Ukrainian"
 ASPELL_VERSION=6
+
 inherit aspell-dict-r1
 
 LICENSE="GPL-2 LGPL-2.1"
