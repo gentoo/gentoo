@@ -1,0 +1,39 @@
+From 2f7e31a06679798c15f737b2725d246a12bcc6b4 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Fri, 12 Mar 2021 20:43:20 +0100
+Subject: [PATCH] respect distribution CFLAGS
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+---
+ CMakeLists.txt | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 00dfda9..ade65a7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -234,18 +234,18 @@ if(NOT WIN32)
+ 	endif(NOT YAF_BINDINGS_RUBY_DIR)
+ 
+ 	# build flags
+-	set(CMAKE_CXX_FLAGS "-Wall -Wno-unused-result" CACHE STRING "Default compiler flags" FORCE)
++	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wno-unused-result" CACHE STRING "Default compiler flags" FORCE)
+ 	
+ 	if(USER_RELEASE_OPTIMIZATION_FLAGS)
+ 		set(YAF_CXX_FLAGS_RELEASE ${USER_RELEASE_OPTIMIZATION_FLAGS})
+ 	else(USER_RELEASE_OPTIMIZATION_FLAGS)
+-		set(YAF_CXX_FLAGS_RELEASE "-Wall -std=c++11 -pthread -O3 -ffast-math -Wno-unused-result")
++		set(YAF_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wall -std=c++11 -pthread -O3 -ffast-math -Wno-unused-result")
+ 	endif(USER_RELEASE_OPTIMIZATION_FLAGS)
+ 	
+ 	if(USER_DEBUG_OPTIMIZATION_FLAGS)
+ 		set(YAF_CXX_FLAGS_DEBUG ${USER_DEBUG_OPTIMIZATION_FLAGS})
+ 	else(USER_DEBUG_OPTIMIZATION_FLAGS)
+-		set(YAF_CXX_FLAGS_DEBUG "-Wall -std=c++11 -pthread -ggdb -Wno-unused-result")
++		set(YAF_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -std=c++11 -pthread -ggdb -Wno-unused-result")
+ 	endif(USER_DEBUG_OPTIMIZATION_FLAGS)
+ 	
+ 	if(APPLE)
+-- 
+2.30.1
+

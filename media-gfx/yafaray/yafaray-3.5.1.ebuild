@@ -46,6 +46,10 @@ BDEPEND="python? (
 		dev-lang/swig
 	)"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-0001-respect-distribution-CFLAGS.patch
+)
+
 DOCS=( AUTHORS.md CHANGELOG.md CODING.md INSTALL.md README.md )
 
 pkg_setup() {
