@@ -18,7 +18,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE="grub_platforms_efi-64"
 
 RDEPEND="app-emulation/qemu
-	dev-python/distro[${PYTHON_USEDEP}]
 	dev-libs/libisoburn
 	sys-fs/mtools
 	grub_platforms_efi-64? (
