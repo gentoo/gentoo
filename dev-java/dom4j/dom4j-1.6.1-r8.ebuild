@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 JAVA_PKG_IUSE="doc source test"
 
@@ -26,8 +26,9 @@ CDEPEND="
 
 RDEPEND="
 	${CDEPEND}
-	>=virtual/jre-1.6"
+	>=virtual/jre-1.8:*"
 
+# restricted to jdk 1.8 because it needs javax.xml.bind
 DEPEND="
 	${CDEPEND}
 	test? (
@@ -35,7 +36,7 @@ DEPEND="
 		dev-java/ant-junit:0
 		dev-java/junitperf:0
 	)
-	>=virtual/jdk-1.6"
+	virtual/jdk:1.8"
 
 PDEPEND="dev-java/jaxen:1.1"
 
