@@ -1,0 +1,29 @@
+From 5429b36d186e73695244cee66f98ff9f61378b67 Mon Sep 17 00:00:00 2001
+From: Thomas Deutschmann <whissi@gentoo.org>
+Date: Wed, 13 Dec 2017 01:02:12 +0100
+Subject: [PATCH] loff_t and __WORDSIZE includes for MUSL
+
+Rewrite of Justin Keogh's patch [Link 1] to fix build problems
+on ARM.
+
+Link 1: https://gitweb.gentoo.org/repo/gentoo.git/commit/?id=5f5abc0f1b036921d6eb5b0f434c960ed280619f
+Fixes: https://bugs.gentoo.org/616364
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 454bbcb..ec3fcc7 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -11,7 +11,7 @@ AC_C_INLINE
+ 
+ #AC_PROG_INSTALL
+ #CFLAGS="$CFLAGS -DHAVE_CONFIG_H"
+-AC_CHECK_HEADERS([fallocate.h dlfcn.h unistd.h sys/xattr.h attr/xattr.h sys/acl.h sys/ioctl.h endian.h linux/fs.h linux/fiemap.h stdint.h lzo/lzo1x.h openssl/evp.h linux/random.h sys/random.h malloc.h sched.h sys/statvfs.h sys/resource.h])
++AC_CHECK_HEADERS([fallocate.h dlfcn.h unistd.h sys/xattr.h attr/xattr.h sys/acl.h sys/ioctl.h sys/reg.h endian.h linux/fs.h linux/fiemap.h stdint.h lzo/lzo1x.h openssl/evp.h linux/random.h sys/random.h malloc.h sched.h sys/statvfs.h sys/resource.h])
+ AC_CHECK_FUNCS([ffs ffsl basename fallocate64 splice getopt_long open64 pread pread64 lseek64 stat64 posix_fadvise posix_fadvise64 __builtin_prefetch htobe64 feof_unlocked getline getentropy getrandom posix_memalign valloc sched_yield fstatvfs __builtin_cpu_supports getrlimit])
+ AC_CHECK_LIB(dl,dlsym)
+ AC_CHECK_LIB(fallocate,linux_fallocate64)
+-- 
+2.31.0.rc2
