@@ -1189,7 +1189,7 @@ app-dicts/aspell-be 0.01-r1: Aspell (Belarusian) language dictionary
 app-dicts/aspell-bg 4.1.0: Aspell (Bulgarian) language dictionary
 app-dicts/aspell-bn 0.01.1.1: Aspell (Bengali) language dictionary
 app-dicts/aspell-br 0.50.2: Aspell (Breton) language dictionary
-app-dicts/aspell-ca 2.1.5.1: Aspell (Catalan) language dictionary
+app-dicts/aspell-ca 2.1.5.1 2.5.0: Aspell (Catalan) language dictionary
 app-dicts/aspell-cs 20040614.1: Aspell (Czech) language dictionary
 app-dicts/aspell-csb 0.02.0: Aspell (Kashubian) language dictionary
 app-dicts/aspell-cy 0.50.3: Aspell (Welsh) language dictionary
@@ -1228,7 +1228,7 @@ app-dicts/aspell-kn 0.01.1: Aspell (Kannada) language dictionary
 app-dicts/aspell-ku 0.20.1: Aspell (Kurdi) language dictionary
 app-dicts/aspell-ky 0.01.0: Aspell (Kirghiz) language dictionary
 app-dicts/aspell-la 20020503.0: Aspell (Latin) language dictionary
-app-dicts/aspell-lt 1.0.1 1.2.1.0: Aspell (Lithuanian) language dictionary
+app-dicts/aspell-lt 1.0.1 1.3.2: Aspell (Lithuanian) language dictionary
 app-dicts/aspell-lv 0.5.5.1: Aspell (Latvian) language dictionary
 app-dicts/aspell-mg 0.03.0: Aspell (Malagasy) language dictionary
 app-dicts/aspell-mi 0.50.0: Aspell (Maori) language dictionary
@@ -1250,11 +1250,11 @@ app-dicts/aspell-pl 6.0.20120418.0 6.0.20210216.0: Aspell (Polish) language dict
 app-dicts/aspell-pt 0.50.2-r1 20190329.1.0: Aspell (Portuguese) language dictionary
 app-dicts/aspell-pt-br 20090702.0 20131030.12.0: Aspell (Brazilian Portuguese) language dictionary
 app-dicts/aspell-qu 0.02.0: Aspell (Quechua Runasimi) language dictionary
-app-dicts/aspell-ro 3.3.2: Aspell (Romanian) language dictionary
+app-dicts/aspell-ro 3.3.2 3.3.10: Aspell (Romanian) language dictionary
 app-dicts/aspell-ru 0.99.1-r1: Aspell (Russian) language dictionary
 app-dicts/aspell-rw 0.50.0: Aspell (Kinyarwanda) language dictionary
 app-dicts/aspell-sc 1.0: Aspell (Sardinian) language dictionary
-app-dicts/aspell-sk 2.01.2: Aspell (Slovak) language dictionary
+app-dicts/aspell-sk 2.01.2 2.02.0: Aspell (Slovak) language dictionary
 app-dicts/aspell-sl 0.50.0: Aspell (Slovenian) language dictionary
 app-dicts/aspell-sr 0.02: Aspell (Serbian) language dictionary
 app-dicts/aspell-sv 0.51.0: Aspell (Swedish) language dictionary
