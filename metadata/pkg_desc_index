@@ -5318,7 +5318,7 @@ dev-libs/dqlite 1.6.0: Embeddable, replicated and fault tolerant SQL engine
 dev-libs/eb 4.4.1-r1: EB is a C library and utilities for accessing CD-ROM books
 dev-libs/editline 1.17.1: line editing library for UNIX call compatible with the FSF readline
 dev-libs/eekboard 1.0.8_p20121001-r1: An easy to use virtual keyboard toolkit
-dev-libs/efl 1.25.1-r10: Enlightenment Foundation Libraries all-in-one package
+dev-libs/efl 1.25.1-r10 1.25.1-r11: Enlightenment Foundation Libraries all-in-one package
 dev-libs/elfutils 0.181 0.182 0.183: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
 dev-libs/ell 0.36 0.38 9999: Embedded Linux Library provides core, low-level functionality for system daemons
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
