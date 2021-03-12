@@ -9,4 +9,5 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Gentoo Proxy Maintainers Project</name>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>
