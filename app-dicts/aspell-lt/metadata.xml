@@ -6,4 +6,7 @@
 		<name>Conrad Kostecki</name>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">ispell-lt/ispell-lt</remote-id>
+	</upstream>
 </pkgmetadata>
