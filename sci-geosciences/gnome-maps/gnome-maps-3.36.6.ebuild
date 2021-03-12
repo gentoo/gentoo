@@ -9,7 +9,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Maps"
 
 LICENSE="GPL-2+ LGPL-2+ MIT CC-BY-3.0 CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 # Pure introspection dependencies found by grepping imports.gi in ${S}
 RDEPEND="
