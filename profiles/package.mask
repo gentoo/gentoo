@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Wolfgang E. Sanyer <WolfgangESanyer@Gmail.com> (2021-03-11)
+# Per upstream, this has been deprecated in favour if citeproc. bug #775545
+# opened per the examples - Masked for removal in 30 days
+dev-haskell/pandoc-citeproc
+=sci-mathematics/rstudio-1.3.1093
+
 # Hans de Graaff <graaff@gentoo.org> (2021-03-12)
 # Requires a (proxy) maintainer with access to Oracle development
 # libraries. Please express your interest on bug 772128 if you can
