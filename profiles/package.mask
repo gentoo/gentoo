@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2021-03-12)
+# Obsolete copy of dev-ml/re
+# Stuck on old oasis.eclass
+# bug #749696, #711414
+dev-ml/ocaml-re
+
 # Hans de Graaff <graaff@gentoo.org> (2021-03-12)
 # Requires a (proxy) maintainer with access to Oracle development
 # libraries. Please express your interest on bug 772128 if you can
