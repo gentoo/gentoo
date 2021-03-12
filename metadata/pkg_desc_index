@@ -3750,7 +3750,7 @@ dev-games/KXL 1.1.7-r2: Development Library for making games for X
 dev-games/aseprite 1.1.6 1.1.9: Animated sprite editor & pixel art tool
 dev-games/cardpics 0.4-r1: set of free cards sets
 dev-games/cegui 0.8.7-r1 0.8.7-r100: Crazy Eddie's GUI System
-dev-games/clanlib 0.8.1 0.8.1-r1 2.3.7 2.3.7-r1 4.0.0: Multi-platform game development library
+dev-games/clanlib 0.8.1-r1 2.3.7-r1 4.0.0: Multi-platform game development library
 dev-games/flatzebra 0.1.6 0.1.7: Generic game engine for 2D double-buffering animation
 dev-games/freecell-solver 6.2.0-r1: C library for automatically solving Freecell and some other solitaire variants
 dev-games/goatee 0.3.1.2: A monadic take on a 2,500-year-old board game - library
