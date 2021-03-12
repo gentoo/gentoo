@@ -1,0 +1,72 @@
+From 1cf969dfcba797a02d74540965677b92d3884cfa Mon Sep 17 00:00:00 2001
+From: Simon Zeni <simon@bl4ckb0ne.ca>
+Date: Tue, 27 Oct 2020 22:31:21 -0400
+Subject: [PATCH] examples: disable ucontext-cp if ucontext.h is not available
+
+The header file `ucontext.h` is not available on musl based distros. The
+example `ucontext-cp` is not built if `configure` fails to locate the
+header.
+
+Signed-off-by: Simon Zeni <simon@bl4ckb0ne.ca>
+Signed-off-by: Jens Axboe <axboe@kernel.dk>
+---
+ configure         | 21 +++++++++++++++++++++
+ examples/Makefile |  6 +++++-
+ 2 files changed, 26 insertions(+), 1 deletion(-)
+
+diff --git a/configure b/configure
+index c911f59..3b96cde 100755
+--- a/configure
++++ b/configure
+@@ -287,6 +287,24 @@ if compile_prog_cxx "" "" "C++"; then
+ fi
+ print_config "C++" "$has_cxx"
+ 
++##########################################
++# check for ucontext support
++has_ucontext="no"
++cat > $TMPC << EOF
++#include <ucontext.h>
++int main(int argc, char **argv)
++{
++  ucontext_t ctx;
++  getcontext(&ctx);
++  return 0;
++}
++EOF
++if compile_prog "" "" "has_ucontext"; then
++  has_ucontext="yes"
++fi
++print_config "has_ucontext" "$has_ucontext"
++
++
+ #############################################################################
+ 
+ if test "$__kernel_rwf_t" = "yes"; then
+@@ -304,6 +322,9 @@ fi
+ if test "$has_cxx" = "yes"; then
+   output_sym "CONFIG_HAVE_CXX"
+ fi
++if test "$has_ucontext" = "yes"; then
++  output_sym "CONFIG_HAVE_UCONTEXT"
++fi
+ 
+ echo "CC=$cc" >> $config_host_mak
+ print_config "CC" "$cc"
+diff --git a/examples/Makefile b/examples/Makefile
+index 0eec627..60c1b71 100644
+--- a/examples/Makefile
++++ b/examples/Makefile
+@@ -10,7 +10,11 @@ ifneq ($(MAKECMDGOALS),clean)
+ include ../config-host.mak
+ endif
+ 
+-all_targets += io_uring-test io_uring-cp link-cp ucontext-cp
++all_targets += io_uring-test io_uring-cp link-cp
++
++ifdef CONFIG_HAVE_UCONTEXT
++all_targets += ucontext-cp
++endif
+ 
+ all: $(all_targets)
+ 

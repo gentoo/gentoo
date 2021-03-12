@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,6 +20,10 @@ SLOT="0/1.0.7" # liburing.so version
 IUSE="static-libs"
 # fsync test hangs forever
 RESTRICT="test"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.7-ucontext_h-detection.patch
+)
 
 src_prepare() {
 	default
