@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Viorel Munteanu <ceamac.paragon@gmail.com> (2020-03-11)
+# new package dev-libs/libthreadar has no keywords
+app-backup/dar threads
+
 # Marek Szuba <marecki@gentoo.org> (2021-03-11)
 # Awaiting keywording of dev-python/ruamel-std-pathlib
 # on this arch (Bug #775242)
