@@ -66,6 +66,14 @@ src_configure() {
 	# -ggdb3 & co makes it behave weirdly, breaks sexplib
 	replace-flags -ggdb* -ggdb
 
+	# OCaml generates textrels on 32-bit arches
+	# We can't do anything about it, but disabling it means that tests
+	# for OCaml-based packages won't fail on unexpected output
+	# bug #773226
+	if use arm || use ppc || use x86 ; then
+		append-ldflags "-Wl,-z,notext"
+	fi
+
 	# It doesn't compile on alpha without this LDFLAGS
 	use alpha && append-ldflags "-Wl,--no-relax"
 
