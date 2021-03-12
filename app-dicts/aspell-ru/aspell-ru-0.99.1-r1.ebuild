@@ -5,11 +5,12 @@ EAPI=7
 
 ASPELL_LANG="Russian"
 ASPELL_VERSION=6
+MY_PV="$(ver_cut 1-2)f7-$(ver_cut 3)"
+MY_P="${PN/aspell/aspell${ASPELL_VERSION}}-${MY_PV}"
+
 inherit aspell-dict-r1
 
-# very strange filename not supported by the gentoo naming scheme
-MY_P="aspell6-ru-0.99f7-1"
-SRC_URI="mirror://gnu/aspell/dict/ru/${MY_P}.tar.bz2"
+SRC_URI="mirror://gnu/${PN%-*}/dict/${PN/aspell-/}/${MY_P}.tar.bz2"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
@@ -18,6 +19,6 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 s
 src_prepare() {
 	default
 
-	einfo "Setting default dictionary to ru-yeyo"
+	# Setting default dictionary to ru-yeyo
 	cp -v ru-yeyo.multi ru.multi || die
 }
