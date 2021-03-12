@@ -14,7 +14,7 @@ SRC_URI="https://www.sourceware.org/${PN}/ftp/releases/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 s390 sparc x86"
-IUSE="libvirt selinux sqlite +ssl zeroconf"
+IUSE="libvirt selinux sqlite +ssl test zeroconf"
 
 RDEPEND=">=dev-libs/elfutils-0.142
 	dev-libs/json-c:=
@@ -39,6 +39,7 @@ DEPEND="${RDEPEND}
 	>=sys-devel/gettext-0.18.2
 	libvirt? ( dev-libs/libxml2 )
 "
+BDEPEND="test? ( dev-util/dejagnu )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
