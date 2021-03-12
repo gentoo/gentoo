@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 FINDBUGS_PV="3.0.1"
 JAVA_PKG_IUSE="doc source"
@@ -15,10 +15,9 @@ HOMEPAGE="https://code.google.com/p/j-format-string"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
-IUSE=""
 
-RDEPEND=">=virtual/jre-1.5"
-DEPEND=">=virtual/jdk-1.5
+RDEPEND=">=virtual/jre-1.8:*"
+DEPEND=">=virtual/jdk-1.8:*
 	app-arch/unzip"
 
 src_unpack() {
@@ -26,6 +25,7 @@ src_unpack() {
 	unpack ./jFormatString.jar
 }
 
-java_prepare() {
+src_prepare() {
+	default
 	find -name "*.class" -delete || die
 }
