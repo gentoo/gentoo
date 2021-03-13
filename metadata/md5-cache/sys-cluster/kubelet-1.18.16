@@ -1,4 +1,4 @@
-BDEPEND==dev-lang/go-1.14* >=dev-lang/go-1.12 app-arch/unzip virtual/pkgconfig
+BDEPEND=>=dev-lang/go-1.12 app-arch/unzip virtual/pkgconfig
 DEFINED_PHASES=compile install postinst unpack
 DESCRIPTION=Kubernetes Node Agent
 EAPI=7
@@ -11,4 +11,4 @@ RESTRICT=strip test
 SLOT=0
 SRC_URI=https://github.com/kubernetes/kubernetes/archive/v1.18.16.tar.gz -> kubernetes-1.18.16.tar.gz
 _eclasses_=go-module	92660621959e7fab813173772987588b	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=16cc2136286582be3b8d9fa348f7a62f
+_md5_=e7554604a6dd9bb3f7bd7f74206c9b38

@@ -1,4 +1,4 @@
-BDEPEND==dev-lang/go-1.14* >=dev-lang/go-1.12 app-arch/unzip
+BDEPEND=>=dev-lang/go-1.12 app-arch/unzip
 DEFINED_PHASES=compile install postinst unpack
 DESCRIPTION=Kubernetes Proxy service
 EAPI=7
@@ -11,4 +11,4 @@ RESTRICT=strip test
 SLOT=0
 SRC_URI=https://github.com/kubernetes/kubernetes/archive/v1.18.16.tar.gz -> kubernetes-1.18.16.tar.gz
 _eclasses_=go-module	92660621959e7fab813173772987588b
-_md5_=3d53f61a1e26b18f452584760fbc296f
+_md5_=1bca40e401c9bef0205ad3732e993a17

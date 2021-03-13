@@ -1,4 +1,4 @@
-BDEPEND==dev-lang/go-1.14* >=dev-lang/go-1.12 app-arch/unzip
+BDEPEND=>=dev-lang/go-1.12 app-arch/unzip
 DEFINED_PHASES=compile install postinst unpack
 DEPEND=acct-group/kube-controller-manager acct-user/kube-controller-manager
 DESCRIPTION=Kubernetes Controller Manager
@@ -12,4 +12,4 @@ RESTRICT=strip test
 SLOT=0
 SRC_URI=https://github.com/kubernetes/kubernetes/archive/v1.18.16.tar.gz -> kubernetes-1.18.16.tar.gz
 _eclasses_=go-module	92660621959e7fab813173772987588b
-_md5_=8fa6510dcd0623fd2d995fb498a7e319
+_md5_=51758dc16e8c05844f5abd104cd67570

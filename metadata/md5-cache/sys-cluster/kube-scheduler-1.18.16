@@ -1,4 +1,4 @@
-BDEPEND==dev-lang/go-1.14* >=dev-lang/go-1.12 app-arch/unzip
+BDEPEND=>=dev-lang/go-1.12 app-arch/unzip
 DEFINED_PHASES=compile install postinst unpack
 DEPEND=acct-group/kube-scheduler acct-user/kube-scheduler
 DESCRIPTION=Kubernetes Scheduler
@@ -12,4 +12,4 @@ RESTRICT=strip test
 SLOT=0
 SRC_URI=https://github.com/kubernetes/kubernetes/archive/v1.18.16.tar.gz -> kubernetes-1.18.16.tar.gz
 _eclasses_=go-module	92660621959e7fab813173772987588b
-_md5_=a4b200a1100acc05e9da4a904b223ba9
+_md5_=727ff481a4696acff0328f6db49f63ca
