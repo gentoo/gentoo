@@ -11,7 +11,7 @@ RUBY_FAKEGEM_EXTRADOC="History.txt README.md"
 
 RUBY_FAKEGEM_GEMSPEC="rake-compiler.gemspec"
 
-inherit ruby-fakegem eutils
+inherit ruby-fakegem
 
 DESCRIPTION="Provide a standard and simplified way to build and package Ruby extensions"
 HOMEPAGE="https://github.com/luislavena/rake-compiler"
@@ -27,7 +27,7 @@ ruby_add_rdepend "dev-ruby/rake"
 
 ruby_add_bdepend "test? ( dev-ruby/rspec:3 )"
 
-USE_RUBY="ruby25 ruby26" ruby_add_bdepend "test? ( dev-util/cucumber dev-ruby/rspec:2 )"
+USE_RUBY="ruby25 ruby26 ruby27" ruby_add_bdepend "test? ( dev-util/cucumber dev-ruby/rspec:2 )"
 
 all_ruby_prepare() {
 	# Make sure the right rspec version is used in cucumber.
@@ -40,7 +40,7 @@ all_ruby_prepare() {
 each_ruby_test() {
 	# Skip cucumber for new ruby versions (not ready yet)
 	case ${RUBY} in
-		*ruby25|*ruby26)
+		*ruby25|*ruby26|*ruby27)
 			RSPEC_VERSION=3 ruby-ng_rspec
 			ruby-ng_cucumber
 			;;
