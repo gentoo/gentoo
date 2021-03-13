@@ -1,0 +1,10 @@
+BDEPEND=sys-apps/osinfo-db-tools
+DEFINED_PHASES=install unpack
+DESCRIPTION=osinfo database files
+EAPI=7
+HOMEPAGE=https://libosinfo.org/
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2+
+SLOT=0
+SRC_URI=https://releases.pagure.org/libosinfo/osinfo-db-20210312.tar.xz
+_md5_=00d7f9104a552daefa925d15a1f2d912

@@ -1,0 +1,16 @@
+BDEPEND=|| ( ( dev-lang/python:3.9[xml(+)] dev-python/setuptools[python_targets_python3_9(-),-python_single_target_python3_9(-)] ) ( dev-lang/python:3.8[xml(+)] dev-python/setuptools[python_targets_python3_8(-),-python_single_target_python3_8(-)] ) ( dev-lang/python:3.7[xml(+)] dev-python/setuptools[python_targets_python3_7(-),-python_single_target_python3_7(-)] ) ) gtk-doc? ( app-text/docbook-xml-dtd:4.1.2 app-text/docbook-xml-dtd:4.4 dev-util/gtk-doc ) vala? ( || ( dev-lang/vala:0.50[vapigen(+)] dev-lang/vala:0.48[vapigen(+)] dev-lang/vala:0.46[vapigen(+)] dev-lang/vala:0.44[vapigen(+)] dev-lang/vala:0.40[vapigen(+)] dev-lang/vala:0.36[vapigen(+)] ) ) virtual/pkgconfig >=dev-util/meson-0.54.0 >=dev-util/ninja-1.8.2 dev-util/meson-format-array
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=>=dev-libs/glib-2.44.0:2[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] virtual/libusb:1[udev,abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] introspection? ( >=dev-libs/gobject-introspection-1.54:= ) sys-apps/hwids
+DESCRIPTION=GObject wrapper for libusb
+EAPI=7
+HOMEPAGE=https://github.com/hughsie/libgusb
+IUSE=gtk-doc +introspection static-libs test +vala abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_s390_32 abi_s390_64
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
+LICENSE=LGPL-2.1+
+RDEPEND=>=dev-libs/glib-2.44.0:2[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] virtual/libusb:1[udev,abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] introspection? ( >=dev-libs/gobject-introspection-1.54:= ) sys-apps/hwids
+REQUIRED_USE=vala? ( introspection )
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://people.freedesktop.org/~hughsient/releases/libgusb-0.3.6.tar.xz
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	meson	e43eef9331f54965a573ed380854ff47	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	vala	5fab64090cefe75c5df431cefa0b653d	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=f1c88b72e377d9105cc907f55d982397

@@ -583,7 +583,7 @@ acct-user/xrootd 0-r1: User for the XRootD server
 acct-user/zabbix 0: User for Zabbix
 acct-user/ziproxy 0: System user: ziproxy
 acct-user/znc 0-r1: User for net-irc/znc
-app-accessibility/accerciser 3.36.2: Interactive Python accessibility explorer
+app-accessibility/accerciser 3.36.2 3.38.0: Interactive Python accessibility explorer
 app-accessibility/at-spi2-atk 2.34.2 2.38.0: Gtk module for bridging AT-SPI to Atk
 app-accessibility/at-spi2-core 2.34.0 2.36.0 2.38.0: D-Bus accessibility specifications and registration daemon
 app-accessibility/brltty 6.1: Daemon that provides access to the Linux/Unix console for a blind person
@@ -1152,7 +1152,7 @@ app-crypt/sbsigntools 0.9.1-r1 0.9.2: Utilities for signing and verifying files 
 app-crypt/scdrand 0.3.5: Feed kernel entropy pool from smartcard's TRNG
 app-crypt/scrypt 1.3.1: A simple password-based encryption utility using scrypt key derivation function
 app-crypt/scute 1.6.0: A PKCS #11 module for OpenPGP smartcards
-app-crypt/seahorse 3.36.2: Manage your passwords and encryption keys
+app-crypt/seahorse 3.36.2 3.38.1: Manage your passwords and encryption keys
 app-crypt/seahorse-sharing 3.8.0_p20181216: Daemon for PGP public key sharing using DNS-SD and HKP
 app-crypt/shash 0.2.6-r3: Generate or check digests or MACs of files
 app-crypt/signify 23 24 29 30: Cryptographically sign and verify files
@@ -1815,7 +1815,7 @@ app-editors/gedit 3.34.1 3.36.2 3.38.1: A text editor for the GNOME desktop
 app-editors/gedit-plugins 3.36.2 3.38.1: Collection of extra plugins for the gedit Text Editor
 app-editors/ghex 3.18.4-r1: GNOME hexadecimal editor
 app-editors/ghostwriter 1.8.1: Cross-platform, aesthetic, distraction-free markdown editor
-app-editors/gnome-latex 3.36.0: Integrated LaTeX environment for GNOME
+app-editors/gnome-latex 3.36.0 3.38.0: Integrated LaTeX environment for GNOME
 app-editors/gummi 0.8.1: Simple LaTeX editor for GTK+ users
 app-editors/gvim 8.2.0360 8.2.0508 8.2.0638 8.2.0814 8.2.0814-r100 9999: GUI version of the Vim text editor
 app-editors/hexcurse 1.55 1.60.0: ncurses based hex editor
@@ -3019,7 +3019,7 @@ app-text/htmltidy 20090325-r2: Tidy the layout and correct errors in HTML and XM
 app-text/htp 1.19: An HTML preprocessor
 app-text/hunspell 1.7.0-r2: Spell checker, morphological analyzer library and command-line tool
 app-text/hyperestraier 1.4.13: a full-text search system for communities
-app-text/iso-codes 4.4 4.5.0: ISO language, territory, currency, script codes and their translations
+app-text/iso-codes 4.4 4.5.0 4.6.0: ISO language, territory, currency, script codes and their translations
 app-text/itex2mml 1.5.6: A LaTeX into XHTML/MathML converter
 app-text/jabref 2.10-r4: Java GUI for managing BibTeX and other bibliographies
 app-text/jabref-bin 3.7 3.8 3.8.1 3.8.2 4.0 4.1 4.3.1 4.9999: Java GUI manages bibliographies in a BibTeX database
@@ -3190,7 +3190,7 @@ app-text/xmlto 0.0.28-r3 0.0.28-r4: Script for converting XML and DocBook docume
 app-text/xournal 0.4.8.2016 9999: An application for notetaking, sketching, and keeping a journal using a stylus
 app-text/xournalpp 1.0.20 9999: Handwriting notetaking software with PDF annotation support
 app-text/xpdf 4.03: The PDF viewer and tools
-app-text/yelp-tools 3.32.2: Collection of tools for building and converting documentation
+app-text/yelp-tools 3.32.2 3.38.0: Collection of tools for building and converting documentation
 app-text/yodl 4.02.01 4.02.02-r1 4.03.00: Your Own Document Language: a pre-document language and tools to process it
 app-text/zathura 0.4.3 0.4.4 0.4.5 0.4.7 9999: A highly customizable and functional document viewer
 app-text/zathura-cb 0.1.8 9999: Comic book plug-in for zathura with 7zip, rar, tar and zip support
@@ -5429,9 +5429,9 @@ dev-libs/jansson 2.13.1-r1: C library for encoding, decoding and manipulating JS
 dev-libs/jemalloc 5.2.1: Jemalloc is a general-purpose scalable concurrent allocator
 dev-libs/jerasure 2.0.0-r1 2.0.0-r2: A Library in C Facilitating Erasure Coding for Storage Applications
 dev-libs/json-c 0.15 9999: A JSON implementation in C
-dev-libs/json-glib 1.4.4 1.6.0: Library providing GLib serialization and deserialization for the JSON format
+dev-libs/json-glib 1.4.4 1.6.0 1.6.2: Library providing GLib serialization and deserialization for the JSON format
 dev-libs/jsoncpp 1.9.3 1.9.4: C++ JSON reader and writer
-dev-libs/jsonrpc-glib 3.34.0: JSON-RPC library for GLib
+dev-libs/jsonrpc-glib 3.34.0 3.38.0: JSON-RPC library for GLib
 dev-libs/jthread 1.3.3: JThread provides some classes to make use of threads easy on different platforms
 dev-libs/judy 1.0.5-r2 1.0.5-r3: A C library that implements a dynamic array
 dev-libs/kasync 0.3.0: C++ library for controlling asynchronous tasks
@@ -5526,7 +5526,7 @@ dev-libs/libgpg-error 1.38 1.39 1.41: Contains error handling functions used by 
 dev-libs/libgpiod 1.1.1 1.4.1: C library and tools for interacting with the linux GPIO character device
 dev-libs/libgpuarray 0.6.0 0.6.7: Library to manipulate tensors on the GPU
 dev-libs/libgudev 233-r1 234: GObject bindings for libudev
-dev-libs/libgusb 0.3.3 0.3.5: GObject wrapper for libusb
+dev-libs/libgusb 0.3.3 0.3.5 0.3.6: GObject wrapper for libusb
 dev-libs/libgweather 3.36.1: Location and timezone database and weather-lookup library
 dev-libs/libhid 0.2.17: Provides a generic and flexible way to access and interact with USB HID devices
 dev-libs/libical 3.0.8 3.0.9: An implementation of basic iCAL protocols
@@ -12019,8 +12019,8 @@ gnome-extra/polkit-gnome 0.105-r2: A dbus session bus service that is used to br
 gnome-extra/seahorse-nautilus 3.11.92: Nautilus extension for encrypting and decrypting files with GnuPG
 gnome-extra/sushi 3.34.0: A quick previewer for Nautilus, the GNOME file manager
 gnome-extra/synapse 0.2.99.4: A program launcher in the style of GNOME Do
-gnome-extra/yelp 3.36.0 3.36.2: Help browser for GNOME
-gnome-extra/yelp-xsl 3.36.1: XSL stylesheets for yelp
+gnome-extra/yelp 3.36.0 3.36.2 3.38.3: Help browser for GNOME
+gnome-extra/yelp-xsl 3.36.1 3.38.3: XSL stylesheets for yelp
 gnome-extra/zenity 3.32.0: Tool to display dialogs from the commandline and shell scripts
 gnustep-apps/aclock 0.4.0-r1: Analog dockapp clock for GNUstep
 gnustep-apps/addresses 0.4.8-r1: Apple Addressbook work alike (standalone and for GNUMail)
@@ -12913,7 +12913,7 @@ media-gfx/ebdftopcf 2: Optimally generate PCF files from BDF files
 media-gfx/enblend 4.2.0_p20161007-r1: Image Blending with Multiresolution Splines
 media-gfx/engauge 10.6: Convert an image file showing a graph or map into numbers
 media-gfx/entangle 3.0: Tethered Camera Control & Capture
-media-gfx/eog 3.36.3 3.36.4 3.38.1: The Eye of GNOME image viewer
+media-gfx/eog 3.36.3 3.36.4 3.38.1 3.38.2: The Eye of GNOME image viewer
 media-gfx/eog-plugins 3.26.5 3.26.6: Eye of GNOME plugins
 media-gfx/eom 1.24.0-r2 1.24.1: The MATE image viewer
 media-gfx/ephoto 1.5: Enlightenment image viewer written with EFL
@@ -15045,7 +15045,7 @@ net-libs/srt 1.4.1-r1 1.4.2 9999: Secure Reliable Transport (SRT) library and to
 net-libs/stem 1.7.0 1.7.1 1.8.0-r1: Stem is a Python controller library for Tor
 net-libs/telepathy-accounts-signon 2.1: Mission control plugin for Telepathy to provide IM accounts and authentication
 net-libs/telepathy-farstream 0.6.2: Telepathy client library that uses Farstream to handle Call channels
-net-libs/telepathy-glib 0.24.1-r1: GLib bindings for the Telepathy D-Bus protocol
+net-libs/telepathy-glib 0.24.1-r1 0.24.2: GLib bindings for the Telepathy D-Bus protocol
 net-libs/telepathy-logger-qt 17.09.0: Qt bindings for the Telepathy logger
 net-libs/telepathy-qt 0.9.8 9999: Qt bindings for the Telepathy D-Bus protocol
 net-libs/tox 0.2.11-r1 0.2.12-r1 9999: Encrypted P2P, messaging, and audio/video calling platform
@@ -17088,8 +17088,8 @@ sys-apps/onerng 3.6-r3: Software for the Open Hardware Random Number Generator c
 sys-apps/opal-utils 6.7: OPAL firmware utilities
 sys-apps/openrc 0.42.1-r1 9999: OpenRC manages the services, startup and shutdown of a host
 sys-apps/opentmpfiles 0.1.1 0.1.2 0.1.3 0.1.3-r1 0.2 0.3.1 9999: A standalone utility to process systemd-style tmpfiles.d files
-sys-apps/osinfo-db 20200529 20201015: osinfo database files
-sys-apps/osinfo-db-tools 1.8.0: Tools for managing the osinfo database
+sys-apps/osinfo-db 20200529 20201015 20210312: osinfo database files
+sys-apps/osinfo-db-tools 1.8.0 1.9.0: Tools for managing the osinfo database
 sys-apps/paxctl 0.9: Manages various PaX related program header flags for Elf32, Elf64, binaries
 sys-apps/paxctld 1.2.3 1.2.5: PaX flags maintenance daemon
 sys-apps/pciutils 3.5.6-r1 3.6.4 3.7.0: Various utilities dealing with the PCI bus
@@ -17725,7 +17725,7 @@ sys-libs/libhx 3.24-r1 3.25: Platform independent library providing basic system
 sys-libs/libieee1284 0.2.11-r8: Library to query devices using IEEE1284
 sys-libs/libixp 0.5_p20110208-r3: A stand-alone client/server 9P library including ixpc client
 sys-libs/libomp 10.0.1 11.0.0 11.0.1 11.1.0 12.0.0_rc2 12.0.0_rc3 12.0.0.9999 13.0.0.9999: OpenMP runtime library for LLVM/clang compiler
-sys-libs/libosinfo 1.8.0-r1: GObject library for managing information about real and virtual OSes
+sys-libs/libosinfo 1.8.0-r1 1.9.0: GObject library for managing information about real and virtual OSes
 sys-libs/libraw1394 2.1.2-r1: Library that provides direct access to the IEEE 1394 bus
 sys-libs/librtas 2.0.2-r1: A set of libraries for userspace access to RTAS on the PowerPC platform(s)
 sys-libs/libseccomp 2.4.3 2.4.4 2.5.0 2.5.1 9999: high level interface to Linux seccomp filter
