@@ -36,11 +36,20 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	test? ( dev-ml/ounit )
+	test? ( dev-ml/ounit2 )
 "
 
 src_prepare() {
 	default
+
+	# Porting to dev-ml/ounit2
+	sed -i \
+		-e 's/OCAMLFIND_CHECK_MODULE(oUnit/OCAMLFIND_CHECK_MODULE(ounit2/' \
+		configure.in || die
+	sed -i \
+		-e 's/oUnit/ounit2/' \
+		test/Makefile || die
+
 	eautoreconf
 }
 
