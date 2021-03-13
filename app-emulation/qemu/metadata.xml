@@ -64,6 +64,5 @@
 		<flag name="xen">Enables support for Xen backends</flag>
 		<flag name="xfs">Support xfsctl() notification and syncing for XFS backed
 		virtual disks.</flag>
-		<flag name="xkb">Depend on x11-libs/libxkbcommon to build qemu-keymap tool for converting xkb keymaps</flag>
 	</use>
 </pkgmetadata>
