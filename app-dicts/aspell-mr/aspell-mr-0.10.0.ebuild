@@ -15,7 +15,7 @@ src_prepare() {
 	default
 
 	# Must be renamed, as it triggers otherwise a file collision with app-dicts/aspell-hi.
-	sed -e 's/u-deva/u-deva-mr/g' -i Makefile.pre || die
+	sed -e 's/u-deva/u-deva-mr/g' -i info -i Makefile.pre -i mr.dat || die
 	mv u-deva.cmap u-deva-mr.cmap || die
 	mv u-deva.cset u-deva-mr.cset || die
 }
