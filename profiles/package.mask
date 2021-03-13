@@ -34,13 +34,10 @@
 
 # Sam James <sam@gentoo.org> (2021-03-13)
 # Stuck on oasis.eclass, out of date
-# Please port your applications to dev-ml/ounit2
-# Should be a case of just a sed in most cases
-dev-ml/ounit
-
-# Sam James <sam@gentoo.org> (2021-03-12)
-# Stuck on oasis.eclass, out of date
 # No reverse dependencies
+# bug #775785
+# Removal in 14 days. Nothing should really
+# be able to use any of these right now anyway.
 dev-ml/qcheck
 dev-ml/macaque
 dev-ml/pgocaml
@@ -55,17 +52,17 @@ dev-ml/lwt_react
 dev-ml/batteries
 dev-ml/ocaml-magic-mime
 dev-ml/iTeML
-# dependencies of oasis itself
+# Stuck on old oasis.eclass
+# bug #749696, #711414
+dev-ml/ocaml-re
+# Dependencies of Oasis itself
 dev-ml/ocamlify
 dev-ml/ocamlmod
 dev-ml/ocaml-expect
 dev-ml/oasis
-
-# Sam James <sam@gentoo.org> (2021-03-12)
-# Obsolete copy of dev-ml/re
-# Stuck on old oasis.eclass
-# bug #749696, #711414
-dev-ml/ocaml-re
+# Please port your applications to dev-ml/ounit2
+# Should be a case of just a sed in most cases
+dev-ml/ounit
 
 # Hans de Graaff <graaff@gentoo.org> (2021-03-12)
 # Requires a (proxy) maintainer with access to Oracle development
