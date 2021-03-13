@@ -3,7 +3,7 @@
 
 # @ECLASS: myspell-r2.eclass
 # @MAINTAINER:
-# maintainer-needed@gentoo.org
+# Conrad Kostecki <conikost@gentoo.org>
 # @AUTHOR:
 # Tomáš Chvátal <scarabeus@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6 7
