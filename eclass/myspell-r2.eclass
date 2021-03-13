@@ -6,8 +6,10 @@
 # maintainer-needed@gentoo.org
 # @AUTHOR:
 # Tomáš Chvátal <scarabeus@gentoo.org>
-# @BLURB: An eclass to ease the construction of ebuilds for myspell dicts
+# @BLURB: An eclass to streamline the construction of ebuilds for new Myspell dictionaries.
 # @DESCRIPTION:
+# The myspell-r2 eclass is designed to streamline the construction of ebuilds for
+# the new Myspell dictionaries which support hunspell.
 
 EXPORT_FUNCTIONS src_unpack src_install
 
