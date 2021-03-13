@@ -11,4 +11,4 @@ RDEPEND=app-arch/bzip2 >=dev-tcltk/expect-5.45.4 dev-db/sqlite:3 dev-libs/expat 
 SLOT=0
 SRC_URI=https://github.com/viking-gps/viking/archive/viking-1.8.tar.gz doc? ( https://github.com/viking-gps/viking/releases/download/viking-1.8/viking.pdf )
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=6b8b3c3729a37d1ae55ad27151bf6c11
+_md5_=a6205dcf414a15021067d08f54552249
