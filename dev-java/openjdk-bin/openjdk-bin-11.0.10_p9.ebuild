@@ -6,8 +6,13 @@ EAPI=6
 inherit java-vm-2 toolchain-funcs
 
 abi_uri() {
+	local os=linux
+	case ${2} in
+		*-macos)    os=mac      ;;
+		*-solaris)  os=solaris  ;;
+	esac
 	echo "${2-$1}? (
-			https://github.com/AdoptOpenJDK/openjdk${SLOT}-binaries/releases/download/jdk-${MY_PV}/OpenJDK${SLOT}U-jdk_${1}_linux_hotspot_${MY_PV//+/_}.tar.gz
+			https://github.com/AdoptOpenJDK/openjdk${SLOT}-binaries/releases/download/jdk-${MY_PV}/OpenJDK${SLOT}U-jdk_${1}_${os}_hotspot_${MY_PV//+/_}.tar.gz
 		)"
 }
 
@@ -19,29 +24,32 @@ SRC_URI="
 	$(abi_uri aarch64 arm64)
 	$(abi_uri ppc64le ppc64)
 	$(abi_uri x64 amd64)
+	$(abi_uri x64 x64-macos)
 "
 
 DESCRIPTION="Prebuilt Java JDK binaries provided by AdoptOpenJDK"
 HOMEPAGE="https://adoptopenjdk.net"
 LICENSE="GPL-2-with-classpath-exception"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x64-macos"
 IUSE="alsa cups +gentoo-vm headless-awt selinux source"
 
 RDEPEND="
-	media-libs/fontconfig:1.0
-	media-libs/freetype:2
 	>=sys-apps/baselayout-java-0.1.0-r1
-	>=sys-libs/glibc-2.2.5:*
-	sys-libs/zlib
-	alsa? ( media-libs/alsa-lib )
-	cups? ( net-print/cups )
-	selinux? ( sec-policy/selinux-java )
-	!headless-awt? (
-		x11-libs/libX11
-		x11-libs/libXext
-		x11-libs/libXi
-		x11-libs/libXrender
-		x11-libs/libXtst
+	kernel_linux? (
+		media-libs/fontconfig:1.0
+		media-libs/freetype:2
+		>=sys-libs/glibc-2.2.5:*
+		sys-libs/zlib
+		alsa? ( media-libs/alsa-lib )
+		cups? ( net-print/cups )
+		selinux? ( sec-policy/selinux-java )
+		!headless-awt? (
+			x11-libs/libX11
+			x11-libs/libXext
+			x11-libs/libXi
+			x11-libs/libXrender
+			x11-libs/libXtst
+		)
 	)"
 
 RESTRICT="preserve-libs splitdebug"
@@ -55,23 +63,36 @@ pkg_pretend() {
 	fi
 }
 
+src_unpack() {
+	default
+	if [[ ${A} == *_mac_* ]] ; then
+		mv -v "${S}/Contents/Home/"* "${S}" || die
+		rm -Rf "${S}/Contents"  # drop macOS executable
+	fi
+}
+
 src_install() {
 	local dest="/opt/${P}"
 	local ddest="${ED%/}/${dest#/}"
 
-	# Not sure why they bundle this as it's commonly available and they
-	# only do so on x86_64. It's needed by libfontmanager.so. IcedTea
-	# also has an explicit dependency while Oracle seemingly dlopens it.
-	rm -vf lib/libfreetype.so || die
+	# on macOS if they would exist they would be called .dylib, but most
+	# importantly, there are no different providers, so everything
+	# that's shipped works.
+	if [[ ${A} != *_mac_* ]] ; then
+		# Not sure why they bundle this as it's commonly available and they
+		# only do so on x86_64. It's needed by libfontmanager.so. IcedTea
+		# also has an explicit dependency while Oracle seemingly dlopens it.
+		rm -vf lib/libfreetype.so || die
 
-	# Oracle and IcedTea have libjsoundalsa.so depending on
-	# libasound.so.2 but AdoptOpenJDK only has libjsound.so. Weird.
-	if ! use alsa ; then
-		rm -v lib/libjsound.* || die
-	fi
+		# Oracle and IcedTea have libjsoundalsa.so depending on
+		# libasound.so.2 but AdoptOpenJDK only has libjsound.so. Weird.
+		if ! use alsa ; then
+			rm -v lib/libjsound.* || die
+		fi
 
-	if use headless-awt ; then
-		rm -v lib/lib*{[jx]awt,splashscreen}* || die
+		if use headless-awt ; then
+			rm -v lib/lib*{[jx]awt,splashscreen}* || die
+		fi
 	fi
 
 	if ! use source ; then

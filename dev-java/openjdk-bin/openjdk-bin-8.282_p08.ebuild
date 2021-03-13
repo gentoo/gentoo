@@ -6,8 +6,13 @@ EAPI=6
 inherit eapi7-ver java-vm-2
 
 abi_uri() {
+	local os=linux
+	case ${2} in
+		*-macos)    os=mac      ;;
+		*-solaris)  os=solaris  ;;
+	esac
 	echo "${2-$1}? (
-			https://github.com/AdoptOpenJDK/openjdk${SLOT}-binaries/releases/download/jdk${MY_PV}/OpenJDK8U-jdk_${1}_linux_hotspot_${3-${MY_PV/-/}}.tar.gz
+			https://github.com/AdoptOpenJDK/openjdk${SLOT}-binaries/releases/download/jdk${MY_PV}/OpenJDK8U-jdk_${1}_${os}_hotspot_${3-${MY_PV/-/}}.tar.gz
 		)"
 }
 
@@ -24,29 +29,32 @@ SRC_URI="
 	$(abi_uri aarch64 arm64 jdk${MY_PV})
 	$(abi_uri ppc64le ppc64)
 	$(abi_uri x64 amd64)
+	$(abi_uri x64 x64-macos)
 "
 
 LICENSE="GPL-2-with-classpath-exception"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x64-macos"
 
 IUSE="alsa cups examples headless-awt selinux source"
 
 RDEPEND="
-	media-libs/fontconfig:1.0
-	media-libs/freetype:2
 	>=sys-apps/baselayout-java-0.1.0-r1
-	>=sys-libs/glibc-2.2.5:*
-	sys-libs/zlib
-	alsa? ( media-libs/alsa-lib )
-	arm? ( dev-libs/libffi-compat:6 )
-	cups? ( net-print/cups )
-	selinux? ( sec-policy/selinux-java )
-	!headless-awt? (
-		x11-libs/libX11
-		x11-libs/libXext
-		x11-libs/libXi
-		x11-libs/libXrender
-		x11-libs/libXtst
+	kernel_linux? (
+		media-libs/fontconfig:1.0
+		media-libs/freetype:2
+		>=sys-libs/glibc-2.2.5:*
+		sys-libs/zlib
+		alsa? ( media-libs/alsa-lib )
+		arm? ( dev-libs/libffi-compat:6 )
+		cups? ( net-print/cups )
+		selinux? ( sec-policy/selinux-java )
+		!headless-awt? (
+			x11-libs/libX11
+			x11-libs/libXext
+			x11-libs/libXi
+			x11-libs/libXrender
+			x11-libs/libXtst
+		)
 	)
 "
 
@@ -60,6 +68,9 @@ src_unpack() {
 	# 753575
 	if use arm; then
 		mv -v "${S}"* "${S}" || die
+	elif [[ ${A} == *_mac_* ]] ; then
+		mv -v "${S}/Contents/Home/"* "${S}" || die
+		rm -Rf "${S}/Contents"  # drop macOS executable
 	fi
 }
 
@@ -69,20 +80,25 @@ src_install() {
 
 	rm ASSEMBLY_EXCEPTION LICENSE THIRD_PARTY_README || die
 
-	# this does not exist on arm64 hence -f
-	rm -fv jre/lib/*/libfreetype.so* || die
+	# on macOS if they would exist they would be called .dylib, but most
+	# importantly, there are no different providers, so everything
+	# that's shipped works.
+	if [[ ${A} != *_mac_* ]] ; then
+		# this does not exist on arm64 hence -f
+		rm -fv jre/lib/*/libfreetype.so* || die
 
-	if ! use alsa ; then
-		rm -v jre/lib/*/libjsoundalsa.so* || die
-	fi
+		if ! use alsa ; then
+			rm -v jre/lib/*/libjsoundalsa.so* || die
+		fi
 
-	if ! use examples ; then
-		rm -vr sample || die
-	fi
+		if ! use examples ; then
+			rm -vr sample || die
+		fi
 
-	if use headless-awt ; then
-		rm -fvr {,jre/}lib/*/lib*{[jx]awt,splashscreen}* \
-			{,jre/}bin/policytool bin/appletviewer || die
+		if use headless-awt ; then
+			rm -fvr {,jre/}lib/*/lib*{[jx]awt,splashscreen}* \
+				{,jre/}bin/policytool bin/appletviewer || die
+		fi
 	fi
 
 	if ! use source ; then
