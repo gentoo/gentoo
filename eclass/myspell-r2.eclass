@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: myspell-r2.eclass
@@ -18,11 +18,13 @@ EXPORT_FUNCTIONS src_unpack src_install
 # MYSPELL_DICT=( "file.dic" "dir/file2.aff" )
 
 # @ECLASS-VARIABLE: MYSPELL_HYPH
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Array variable containing list of all hyphenation files.
 # MYSPELL_HYPH=( "file.dic" "dir/file2.dic" )
 
 # @ECLASS-VARIABLE: MYSPELL_THES
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Array variable containing list of all thesarus files.
 # MYSPELL_THES=( "file.dat" "dir/file2.idx" )
