@@ -37,6 +37,7 @@
 # No reverse dependencies
 dev-ml/qcheck
 dev-ml/macaque
+dev-ml/pgocaml
 
 # Sam James <sam@gentoo.org> (2021-03-12)
 # Obsolete copy of dev-ml/re
