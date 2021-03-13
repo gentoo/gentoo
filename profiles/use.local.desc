@@ -7431,7 +7431,6 @@ sci-mathematics/agda:stdlib - Install the standard library.
 sci-mathematics/bertini:optimization - Accept upstream's choices for -O option.
 sci-mathematics/cgal:mpfi - Enable support for multiple recision interval arithmetic via sci-libs/mpfi
 sci-mathematics/cgal:ntl - Enable support for dev-libs/ntl
-sci-mathematics/coq:camlp5 - Build using camlp5. This is required for some plugins like Ssreflect.
 sci-mathematics/cvc4:cln - Use sci-libs/cln
 sci-mathematics/cvc4:proofs - Support for proof generation
 sci-mathematics/cvc4:replay - Turn on the replay feature

@@ -1,6 +1,6 @@
 BDEPEND=>=dev-ml/cppo-1.6.6 dev-ml/dune-configurator dev-ml/dune dev-lang/ocaml
-DEFINED_PHASES=compile install test
-DEPEND=dev-ml/base:= dev-ml/camomile:=[ocamlopt] dev-ml/ocaml-gettext:= test? ( dev-ml/ounit[ocamlopt=] dev-ml/ocaml-fileutils ) >=dev-lang/ocaml-4:=[ocamlopt?]
+DEFINED_PHASES=compile install prepare test
+DEPEND=dev-ml/base:= dev-ml/camomile:=[ocamlopt] dev-ml/ocaml-gettext:= test? ( dev-ml/ounit2[ocamlopt=] dev-ml/ocaml-fileutils ) >=dev-lang/ocaml-4:=[ocamlopt?]
 DESCRIPTION=Support for internationalization of OCaml programs using the Camomile library
 EAPI=7
 HOMEPAGE=https://github.com/gildor478/ocaml-gettext
@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0/0.4.2
 SRC_URI=https://github.com/gildor478/ocaml-gettext/archive/v0.4.2.tar.gz -> ocaml-gettext-0.4.2.tar.gz
 _eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
-_md5_=5b451b6619aa38be17b5fc0a1043224a
+_md5_=6d73558928d6b7890fec1ecc758df2bf
