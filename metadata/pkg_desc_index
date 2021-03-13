@@ -16417,7 +16417,7 @@ sci-libs/nanoflann 1.3.2 9999: C++ header-only library for Nearest Neighbor (NN)
 sci-libs/neartree 5.1.1: Function library efficiently solving the Nearest Neighbor Problem
 sci-libs/nemesis 6.09: Enhancement to the EXODUSII finite element database model
 sci-libs/netcdf 4.7.4: Scientific library and interface for array oriented data access
-sci-libs/netcdf-cxx 4.3.0 4.3.1: C++ library for netCDF
+sci-libs/netcdf-cxx 4.2-r300 4.3.0 4.3.1: C++ library for netCDF
 sci-libs/netcdf-fortran 4.4.3: Scientific library and interface for array oriented data access
 sci-libs/nfft 3.5.2: library for nonequispaced discrete Fourier transformations
 sci-libs/nlopt 2.6.2-r1: Non-linear optimization library
