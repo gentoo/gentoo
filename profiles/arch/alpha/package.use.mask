@@ -3,6 +3,7 @@
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-03-13)
 # dev-python/sphinx_lv2_theme isn't keyworded here (bug #769413)
+>=media-libs/lilv-0.24.12 doc
 >=media-libs/sratom-0.6.8 doc
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-03-13)
