@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-GCONF_DEBUG="yes"
 VALA_USE_DEPEND="vapigen"
 
 inherit gnome2 vala
@@ -14,7 +13,7 @@ SRC_URI="http://tecnocode.co.uk/downloads/${PN}/${P}.tar.xz"
 LICENSE="LGPL-2+"
 SLOT="0"
 
-IUSE="+introspection vala"
+IUSE="debug +introspection vala"
 REQUIRED_USE="vala? ( introspection )"
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
@@ -40,6 +39,7 @@ src_prepare() {
 src_configure() {
 	gnome2_src_configure \
 		--disable-static \
+		$(use_enable debug) \
 		$(use_enable introspection) \
 		$(use_enable vala)
 }
