@@ -93,7 +93,7 @@ APACHE2_MODULES="authn_core authz_core socache_shmcb unixd actions alias auth_ba
 
 # Peter Volkov <pva@gentoo.org> (2010-04-29)
 # Set some defaults or package will fail to build (Check mconfig in package sources)
-XTABLES_ADDONS="quota2 psd pknock lscan length2 ipv4options ipset ipp2p iface geoip fuzzy condition tee tarpit sysrq steal rawnat logmark ipmark dhcpmac delude chaos account"
+XTABLES_ADDONS="quota2 psd pknock lscan length2 ipv4options ipset ipp2p iface geoip fuzzy condition tee tarpit sysrq proto steal rawnat logmark ipmark dhcpmac delude chaos account"
 
 # Robert Buchholz <rbu@gentoo.org> (2006-01-17)
 # Some common lcd devices

@@ -15,12 +15,13 @@ SRC_URI="https://github.com/solokeys/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0 MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND=">=dev-python/click-7.0.0[${PYTHON_USEDEP}]
 	dev-python/cryptography[${PYTHON_USEDEP}]
 	dev-python/ecdsa[${PYTHON_USEDEP}]
 	>=dev-python/fido2-0.8.1[${PYTHON_USEDEP}]
+	<dev-python/fido2-0.9.0[${PYTHON_USEDEP}]
 	dev-python/intelhex[${PYTHON_USEDEP}]
 	dev-python/pyserial[${PYTHON_USEDEP}]
 	dev-python/pyusb[${PYTHON_USEDEP}]

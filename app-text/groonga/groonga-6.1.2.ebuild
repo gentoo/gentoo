@@ -63,7 +63,7 @@ src_configure() {
 		$(use_with libevent) \
 		$(use_with lzo) \
 		$(use_with mecab) \
-		$(use_with msgpack message-pack "${EROOT}usr") \
+		$(use_with msgpack message-pack "${EPREFIX}/usr") \
 		$(use_enable nfkc) \
 		$(use_with sphinx sphinx-build) \
 		$(use_enable static-libs static) \
@@ -74,6 +74,7 @@ src_configure() {
 
 src_install() {
 	local DOCS=( README.md )
+
 	default
 
 	prune_libtool_files

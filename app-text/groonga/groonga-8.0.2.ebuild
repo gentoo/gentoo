@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit libtool user
 
@@ -26,11 +26,17 @@ RDEPEND=">=dev-libs/onigmo-6.1.1:0=
 	zeromq? ( net-libs/zeromq:0= )
 	zlib? ( sys-libs/zlib:0= )
 	zstd? ( app-arch/zstd:0= )"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
-	sphinx? ( dev-python/sphinx )"
+	sphinx? ( dev-python/sphinx )
+"
 
-REQUIRED_USE=" abort? ( dynamic-malloc-change ) fmalloc? ( dynamic-malloc-change ) sphinx? ( doc )"
+REQUIRED_USE="
+	abort? ( dynamic-malloc-change )
+	fmalloc? ( dynamic-malloc-change )
+	sphinx? ( doc )
+"
 
 pkg_setup() {
 	enewgroup groonga
@@ -38,7 +44,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	default_src_prepare
+	default
+
 	elibtoolize
 }
 
@@ -71,7 +78,7 @@ src_configure() {
 		$(use_with lzo)
 		$(use_with mecab)
 		$(use_enable msgpack message-pack)
-		$(use_with msgpack message-pack "${EROOT%/}/usr")
+		$(use_with msgpack message-pack "${EPREFIX}/usr")
 		$(use_enable nfkc)
 		$(use_with sphinx sphinx-build)
 		$(use_enable static-libs static)
@@ -80,14 +87,16 @@ src_configure() {
 		$(use_with zlib)
 		$(use_with zstd)
 	)
+
 	econf "${econfopts[@]}"
 }
 
 src_install() {
 	local DOCS=( README.md )
+
 	default
 
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 
 	newinitd "${FILESDIR}/${PN}.initd" ${PN}
 	newconfd "${FILESDIR}/${PN}.confd" ${PN}
@@ -95,5 +104,7 @@ src_install() {
 	keepdir /var/{log,lib}/${PN}
 	fowners groonga:groonga /var/{log,lib}/${PN}
 
-	use examples || rm -r "${D%/}/usr/share/${PN}" || die
+	if ! use examples ; then
+		rm -r "${ED}/usr/share/${PN}" || die
+	fi
 }

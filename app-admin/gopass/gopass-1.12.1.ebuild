@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit go-module
+inherit go-module optfeature
 
 EGO_SUM=(
 	"filippo.io/age v1.0.0-beta7"
@@ -162,6 +162,8 @@ LICENSE="MIT Apache-2.0 BSD MPL-2.0 BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
 
+RESTRICT="strip test"
+
 DEPEND=">=dev-lang/go-1.16"
 RDEPEND="
 	dev-vcs/git
@@ -171,4 +173,11 @@ RDEPEND="
 src_install() {
 	emake install DESTDIR="${ED}/usr"
 	einstalldocs
+}
+
+pkg_postinst() {
+	optfeature "browser integration" app-admin/gopass-jsonapi
+	optfeature "git credentials helper" app-admin/git-credential-gopass
+	optfeature "haveibeenpwnd.com integration" app-admin/gopass-hibp
+	optfeature "summon secrets helper" app-admin/gopass-summon-provider
 }

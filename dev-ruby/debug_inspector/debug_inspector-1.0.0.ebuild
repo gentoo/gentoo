@@ -22,3 +22,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
+
+all_ruby_prepare() {
+	sed -i -e '/extensiontask/,$ s:^:#:' Rakefile || die
+}

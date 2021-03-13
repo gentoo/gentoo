@@ -5,4 +5,5 @@
     <email>juippis@gentoo.org</email>
     <name>Joonas Niilola</name>
   </maintainer>
+  <stabilize-allarches/>
 </pkgmetadata>

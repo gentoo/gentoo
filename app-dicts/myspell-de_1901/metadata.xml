@@ -4,6 +4,7 @@
   <maintainer type="person">
     <email>ulm@gentoo.org</email>
   </maintainer>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="sourceforge">aoo-extensions</remote-id>
   </upstream>

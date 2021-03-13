@@ -1,17 +1,16 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 ASPELL_LANG="Polish"
 ASPELL_VERSION=6
-
-inherit versionator aspell-dict-r1
-
-MY_P="${PN/aspell/aspell6}-$(replace_version_separator 2 _ $(replace_version_separator 3 -))"
+inherit aspell-dict-r1
 
 HOMEPAGE="https://sjp.pl/slownik/en/"
-SRC_URI="http://www.sjp.pl/slownik/ort/sjp-${MY_P}.tar.bz2"
+
+MY_P="${PN/aspell/aspell6}-$(ver_rs 2 _ 3 -)"
+SRC_URI="https://sjp.pl/slownik/ort/sjp-${MY_P}.tar.bz2"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"

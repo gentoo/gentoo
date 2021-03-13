@@ -1,4 +1,3 @@
-
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
@@ -7,7 +6,7 @@
 sys-cluster/ceph pmdk rbd-rwl
 
 # Roy Bamford <neddyseagoon@gentoo.org> (2021-02-24)
-# Invert the theme-manager mask as it bouilds and tests here 
+# Invert the theme-manager mask as it bouilds and tests here
 # Originaly set by Julian Ospald <hasufell@gentoo.org> (2013-03-31)
 # but it's in base now.
 net-irc/hexchat -theme-manager
@@ -282,10 +281,6 @@ www-client/chromium widevine
 www-client/vivaldi widevine
 www-client/vivaldi-snapshot widevine
 
-# Matthew Thode <prometheanfire@gentoo.org> (2018-02-23)
-# net-proxy/haproxy isn't keyworded for arm64
-sys-cluster/neutron haproxy
-
 # Michał Górny <mgorny@gentoo.org> (2018-02-17)
 # Requires unkeyworded dependencies.
 dev-python/ipython notebook
@@ -324,10 +319,6 @@ app-emulation/libvirt xen
 # Michał Górny <mgorny@gentoo.org> (2018-01-12)
 # Requires USE=sdl that is masked in this profile.
 media-video/mjpegtools sdlgfx
-
-# Michał Górny <mgorny@gentoo.org> (2018-01-12)
-# Those require USE=doc that is masked in this profile.
-dev-python/python-neutronclient test
 
 # Ian Whyman <thev00d00@gentoo.org> (2017-09-05)
 # missing keywords media-libs/lastfmlib

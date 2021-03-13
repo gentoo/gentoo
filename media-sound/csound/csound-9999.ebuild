@@ -30,19 +30,18 @@ HOMEPAGE="https://csound.github.io/"
 
 LICENSE="LGPL-2.1 doc? ( FDL-1.2+ )"
 SLOT="0"
-# java doesn't work atm as it needs to have some variables specified to work, see src_configure
 IUSE="+alsa beats chua curl +cxx debug doc double-precision dssi examples
-fltk +fluidsynth hdf5 +image jack keyboard linear lua mp3 nls osc portaudio
+fltk +fluidsynth hdf5 +image jack java keyboard linear lua mp3 nls osc portaudio
 portaudio portmidi pulseaudio python samples static-libs stk test +threads +utils
 vim-syntax websocket"
 
 REQUIRED_USE="
 	alsa? ( threads )
+	java? ( cxx )
 	linear? ( double-precision )
 	lua? ( ${LUA_REQUIRED_USE} cxx )
 	python? ( ${PYTHON_REQUIRED_USE} cxx )
 "
-#	java? ( cxx )
 
 BDEPEND="
 	sys-devel/flex
@@ -58,8 +57,6 @@ BDEPEND="
 "
 # linear currently works only with sci-mathematics-gmm-5.1
 #   https://github.com/csound/csound/issues/920
-# currently not used deps due to some issues
-#	java? ( virtual/jdk:* )
 CDEPEND="
 	dev-cpp/eigen:3
 	>=media-libs/libsndfile-1.0.16
@@ -76,6 +73,7 @@ CDEPEND="
 	hdf5? ( sci-libs/hdf5 )
 	image? ( media-libs/libpng:0= )
 	jack? ( virtual/jack )
+	java? ( >=virtual/jdk-1.8:* )
 	keyboard? ( x11-libs/fltk:1[threads?] )
 	linear? ( =sci-mathematics/gmm-5.1* )
 	lua? ( ${LUA_DEPS} )
@@ -142,7 +140,7 @@ src_configure() {
 		-DBUILD_IMAGE_OPCODES=$(usex image)
 		-DBUILD_INSTALLER=OFF
 		-DBUILD_JACK_OPCODES=$(usex jack)
-		-DBUILD_JAVA_INTERFACE=OFF
+		-DBUILD_JAVA_INTERFACE=$(usex java)
 		-DBUILD_LINEAR_ALGEBRA_OPCODES=$(usex linear)
 		-DBUILD_LUA_INTERFACE=$(usex lua)
 		-DBUILD_MP3OUT_OPCODE=$(usex mp3)
@@ -195,13 +193,9 @@ src_configure() {
 
 	)
 
-	#use java && mycmakeargs+=(
-		#-DJAVA_INCLUDE_PATH="${JAVA_HOME}/include"
-		#-DJAVA_AWT_LIBRARY="?"
-		#-DJAVA_JVM_LIBRARY="?"
-		#-DJAVA_INCLUDE_PATH2="?"
-		#-DJAVA_AWT_INCLUDE_PATH="?"
-	#)
+	use java && mycmakeargs+=(
+		-DJAVA_HOME="$(java-config -g JAVA_HOME)"
+	)
 
 	use lua && mycmakeargs+=(
 		-DLUA_H_PATH="$(lua_get_include_dir)"

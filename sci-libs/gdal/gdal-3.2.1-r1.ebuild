@@ -88,10 +88,18 @@ RDEPEND="${DEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-2.2.3-soname.patch"
 	"${FILESDIR}/${PN}-2.3.0-curl.patch" # bug 659840
+	"${FILESDIR}/${PN}-3.2.1-libdir.patch"
 )
 
 src_prepare() {
 	default
+
+	# Drop a --prefix hack in the upstream build system
+	# We don't want the line at all, so let's just drop it rather than
+	# trying to put in the right libdir value.
+	# bug #696106
+	sed -e '/\$ADD_PREFIX\/lib/d' \
+		-i configure.ac || die
 
 	sed -e "s: /usr/: \"${EPREFIX}\"/usr/:g" \
 		-i configure.ac || die
@@ -131,10 +139,10 @@ src_configure() {
 		--with-geotiff
 		--with-gnm
 		--with-hide-internal-symbols
-		--with-libjson-c="${EPREFIX}"/usr/
+		--with-libjson-c="${EPREFIX}"/usr
 		--with-libtiff
 		--with-libtool
-		--with-libz="${EPREFIX}"/usr/
+		--with-libz="${EPREFIX}"/usr
 		--without-charls
 		--without-dods-root
 		--without-ecw

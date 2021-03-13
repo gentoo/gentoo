@@ -23,14 +23,6 @@ sci-mathematics/yafu sieve
 # PCRE JIT support via dev-libs/libpcre2[jit] is only available for certain architectures
 dev-lang/php jit
 
-# Sam James <sam@gentoo.org> (2021-02-09)
-# We plan to remove dev-ml/js_of_ocaml
-# but right now, this drags in plenty
-# of ancient deps and is not installable.
-# bug #769680
-dev-ml/logs javascript
-dev-ml/mtime javascript
-
 # Sam James <sam@gentoo.org> (2021-02-07)
 # Fails to build with USE=doc for now.
 # Needs rework to use Python eclasses
@@ -123,11 +115,6 @@ mail-mta/protonmail-bridge gui
 # Michał Górny <mgorny@gentoo.org> (2020-11-29)
 # libclangformat-ide is masked for removal.
 dev-qt/qt-creator clang
-
-# Joonas Niilola <juippis@gentoo.org> (2020-11-26)
-# Still too experimental. efl's upstream can't keep up with libavif's.
-# Bug: 756733
-dev-libs/efl avif
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-11-25)
 # Depends on masked net-libs/libkvkontakte

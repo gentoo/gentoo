@@ -31,6 +31,7 @@ MODULESD_VBOXNETFLT_ENABLED="no"
 
 PATCHES=(
 	"${FILESDIR}/${P}-linux-5.11.patch" #762994
+	"${FILESDIR}/${P}-binutils-2.36.patch"
 )
 
 pkg_setup() {

@@ -406,10 +406,10 @@ distutils_enable_sphinx() {
 distutils_enable_tests() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local do_install=
+	_DISTUTILS_TEST_INSTALL=
 	case ${1} in
 		--install)
-			do_install=1
+			_DISTUTILS_TEST_INSTALL=1
 			shift
 			;;
 	esac
@@ -419,61 +419,20 @@ distutils_enable_tests() {
 	case ${1} in
 		nose)
 			test_pkg=">=dev-python/nose-1.3.7-r4"
-			if [[ ${do_install} ]]; then
-				python_test() {
-					distutils_install_for_testing --via-root
-					nosetests -v || die "Tests fail with ${EPYTHON}"
-				}
-			else
-				python_test() {
-					nosetests -v || die "Tests fail with ${EPYTHON}"
-				}
-			fi
 			;;
 		pytest)
 			test_pkg=">=dev-python/pytest-4.5.0"
-			if [[ ${do_install} ]]; then
-				python_test() {
-					distutils_install_for_testing --via-root
-					epytest
-				}
-			else
-				python_test() {
-					epytest
-				}
-			fi
 			;;
 		setup.py)
-			if [[ ${do_install} ]]; then
-				python_test() {
-					distutils_install_for_testing --via-root
-					nonfatal esetup.py test --verbose ||
-						die "Tests fail with ${EPYTHON}"
-				}
-			else
-				python_test() {
-					nonfatal esetup.py test --verbose ||
-						die "Tests fail with ${EPYTHON}"
-				}
-			fi
 			;;
 		unittest)
-			if [[ ${do_install} ]]; then
-				python_test() {
-					distutils_install_for_testing --via-root
-					"${EPYTHON}" -m unittest discover -v ||
-						die "Tests fail with ${EPYTHON}"
-				}
-			else
-				python_test() {
-					"${EPYTHON}" -m unittest discover -v ||
-						die "Tests fail with ${EPYTHON}"
-				}
-			fi
 			;;
 		*)
 			die "${FUNCNAME}: unsupported argument: ${1}"
 	esac
+
+	_DISTUTILS_TEST_RUNNER=${1}
+	python_test() { distutils-r1_python_test; }
 
 	local test_deps=${RDEPEND}
 	if [[ -n ${test_pkg} ]]; then
@@ -714,7 +673,7 @@ distutils-r1_python_configure() {
 _distutils-r1_create_setup_cfg() {
 	cat > "${HOME}"/.pydistutils.cfg <<-_EOF_ || die
 		[build]
-		build-base = ${BUILD_DIR}
+		build_base = ${BUILD_DIR}
 
 		# using a single directory for them helps us export
 		# ${PYTHONPATH} and ebuilds find the sources independently
@@ -723,16 +682,16 @@ _distutils-r1_create_setup_cfg() {
 		# note: due to some packages (wxpython) relying on separate
 		# platlib & purelib dirs, we do not set --build-lib (which
 		# can not be overridden with --build-*lib)
-		build-platlib = %(build-base)s/lib
-		build-purelib = %(build-base)s/lib
+		build_platlib = %(build_base)s/lib
+		build_purelib = %(build_base)s/lib
 
 		# make the ebuild writer lives easier
-		build-scripts = %(build-base)s/scripts
+		build_scripts = %(build_base)s/scripts
 
 		# this is needed by distutils_install_for_testing since
 		# setuptools like to create .egg files for install --home.
 		[bdist_egg]
-		dist-dir = ${BUILD_DIR}/dist
+		dist_dir = ${BUILD_DIR}/dist
 	_EOF_
 
 	# we can't refer to ${D} before src_install()
@@ -749,7 +708,7 @@ _distutils-r1_create_setup_cfg() {
 
 		if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
 			cat >> "${HOME}"/.pydistutils.cfg <<-_EOF_ || die
-				install-scripts = $(python_get_scriptdir)
+				install_scripts = $(python_get_scriptdir)
 			_EOF_
 		fi
 	fi
@@ -838,6 +797,48 @@ _distutils-r1_wrap_scripts() {
 			debug-print "${FUNCNAME}: moving ${f#${path}/} to ${bindir}/${basename}"
 			mv "${f}" "${path}${bindir}/${basename}" || die
 		done
+	fi
+}
+
+# @FUNCTION: distutils-r1_python_test
+# @USAGE: [additional-args...]
+# @DESCRIPTION:
+# The python_test() implementation used by distutils_enable_tests.
+# Runs tests using the specified test runner, possibly installing them
+# first.
+#
+# This function is used only if distutils_enable_tests is called.
+distutils-r1_python_test() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	if [[ -z ${_DISTUTILS_TEST_RUNNER} ]]; then
+		die "${FUNCNAME} can be only used after calling distutils_enable_tests"
+	fi
+
+	if [[ ${_DISTUTILS_TEST_INSTALL} ]]; then
+		distutils_install_for_testing
+	fi
+
+	case ${_DISTUTILS_TEST_RUNNER} in
+		nose)
+			nosetests -v "${@}"
+			;;
+		pytest)
+			epytest
+			;;
+		setup.py)
+			nonfatal esetup.py test --verbose
+			;;
+		unittest)
+			"${EPYTHON}" -m unittest discover -v
+			;;
+		*)
+			die "Mis-synced test runner between ${FUNCNAME} and distutils_enable_testing"
+			;;
+	esac
+
+	if [[ ${?} -ne 0 ]]; then
+		die "Tests failed with ${EPYTHON}"
 	fi
 }
 
@@ -1183,40 +1184,6 @@ distutils-r1_src_install() {
 	fi
 
 	_distutils-r1_check_namespace_pth
-}
-
-# -- distutils.eclass functions --
-
-distutils_get_intermediate_installation_image() {
-	die "${FUNCNAME}() is invalid for distutils-r1"
-}
-
-distutils_src_unpack() {
-	die "${FUNCNAME}() is invalid for distutils-r1, and you don't want it in EAPI ${EAPI} anyway"
-}
-
-distutils_src_prepare() {
-	die "${FUNCNAME}() is invalid for distutils-r1, you probably want: ${FUNCNAME/_/-r1_}"
-}
-
-distutils_src_compile() {
-	die "${FUNCNAME}() is invalid for distutils-r1, you probably want: ${FUNCNAME/_/-r1_}"
-}
-
-distutils_src_test() {
-	die "${FUNCNAME}() is invalid for distutils-r1, you probably want: ${FUNCNAME/_/-r1_}"
-}
-
-distutils_src_install() {
-	die "${FUNCNAME}() is invalid for distutils-r1, you probably want: ${FUNCNAME/_/-r1_}"
-}
-
-distutils_pkg_postinst() {
-	die "${FUNCNAME}() is invalid for distutils-r1, and pkg_postinst is unnecessary"
-}
-
-distutils_pkg_postrm() {
-	die "${FUNCNAME}() is invalid for distutils-r1, and pkg_postrm is unnecessary"
 }
 
 _DISTUTILS_R1=1

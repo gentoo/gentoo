@@ -8,7 +8,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3 autotools
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/mobile-broadband/libqmi.git"
 else
-	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86"
+	KEYWORDS="amd64 arm ~arm64 ~mips ~ppc ~ppc64 x86"
 	SRC_URI="https://www.freedesktop.org/software/libqmi/${P}.tar.xz"
 fi
 

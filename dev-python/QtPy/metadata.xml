@@ -1,30 +1,51 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>python@gentoo.org</email>
-    <name>Gentoo Python Project</name>
-  </maintainer>
-  <longdescription>
-     QtPy is a small abstraction layer that lets you write
-     applications using a single API call to either PyQt or
-     PySide. QtPy also provides a set of additional QWidgets. It
-     provides support for PyQt5, PyQt4 and PySide using the PyQt5
-     layout (where the QtGui module has been split into QtGui and
-     QtWidgets).
-     Basically, you write your code as if you were using PyQt5 but
-     import qt from QtPy instead of PyQt5.
-  </longdescription>
-  <use>
-    <flag name="designer">Build bindings for the QtDesigner module and enable the designer plugin</flag>
-    <flag name="gui">Build bindings for the QtGui module</flag>
-    <flag name="printsupport">Build bindings for the QtPrintSupport module</flag>
-    <flag name="svg">Build bindings for the QtSvg module</flag>
-    <flag name="testlib">Build bindings for the QtTest module</flag>
-    <flag name="webengine">Build bindings for the QtWebEngine module</flag>
-  </use>
-  <upstream>
-    <remote-id type="github">spyder-ide/qtpy</remote-id>
-    <remote-id type="pypi">QtPy</remote-id>
-  </upstream>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Gentoo Python Project</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>andrewammerlaan@riseup.net</email>
+		<name>Andrew Ammerlaan</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		QtPy is a small abstraction layer that lets you write applications using a single API call to either PyQt or PySide.
+		It provides support for PyQt5, PyQt4, PySide2 and PySide using the Qt5 layout (where the QtGui module has been split into QtGui and QtWidgets).
+		Basically, you can write your code as if you were using PySide2 but import Qt modules from qtpy instead of PySide2 (or PyQt5)
+	</longdescription>
+	<use>
+		<flag name="declarative">Pull in bindings for the QtQml/QtQuick modules and enable the qmlscene plugin</flag>
+		<flag name="designer">Pull in bindings for the QtDesigner module and enable the designer plugin</flag>
+		<flag name="gui">Pull in bindings for the QtGui module</flag>
+		<flag name="help">Pull in bindings for the QtHelp module</flag>
+		<flag name="location">Pull in bindings for the QtLocation module</flag>
+		<flag name="multimedia">Pull in QtMultimedia and QtMultimediaWidgets modules</flag>
+		<flag name="network">Pull in bindings for the QtNetwork module</flag>
+		<flag name="opengl">Pull in bindings for the QtOpenGL module</flag>
+		<flag name="positioning">Pull in bindings for the QtPositioning module</flag>
+		<flag name="printsupport">Pull in bindings for the QtPrintSupport module</flag>
+		<flag name="qml">Pull in QtQml module</flag>
+		<flag name="quick">Pull in QtQuick and QtQuickWidgets modules</flag>
+		<flag name="sensors">Pull in bindings for the QtSensors module</flag>
+		<flag name="serialport">Pull in bindings for the QtSerialPort module</flag>
+		<flag name="sql">Pull in bindings for the QtSql module</flag>
+		<flag name="svg">Pull in bindings for the QtSvg module</flag>
+		<flag name="testlib">Pull in bindings for the QtTest module</flag>
+		<flag name="webchannel">Pull in bindings for the QtWebChannel module</flag>
+		<flag name="webengine">Pull in QtWebEngine and QtWebEngineWidgets modules</flag>
+		<flag name="websockets">Pull in bindings for the QtWebSockets module</flag>
+		<flag name="widgets">Pull in bindings for the QtWidgets module</flag>
+		<flag name="x11extras">Pull in bindings for the QtX11Extras module</flag>
+		<flag name="xmlpatterns">Pull in bindings for the QtXmlPatterns module</flag>
+		<flag name="xml">Pull in QtXml module</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">spyder-ide/qtpy</remote-id>
+		<remote-id type="pypi">QtPy</remote-id>
+	</upstream>
 </pkgmetadata>

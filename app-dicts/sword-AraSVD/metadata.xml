@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 		Al-Kitab al-Muqaddas (Arabic Bible)
 		Translated by Drs. Eli Smith &amp; Cornelius van Alen van Dyck, 1865.

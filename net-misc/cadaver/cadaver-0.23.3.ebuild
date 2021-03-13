@@ -1,4 +1,4 @@
-# Copyright 2003-2020 Gentoo Authors
+# Copyright 2003-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -33,6 +33,7 @@ src_prepare() {
 	sed -e "s:^\(SUBDIRS.*=\).*:\1:" -i Makefile.in || die "sed Makefile.in failed"
 	cp "${EPREFIX}/usr/share/gettext/po/Makefile.in.in" po || die "cp failed"
 
+	config_rpath_update .
 	AT_M4DIR="m4 m4/neon" eautoreconf
 }
 

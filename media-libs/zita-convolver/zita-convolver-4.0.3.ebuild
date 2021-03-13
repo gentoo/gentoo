@@ -11,7 +11,7 @@ SRC_URI="https://kokkinizita.linuxaudio.org/linuxaudio/downloads/${P}.tar.bz2"
 
 LICENSE="GPL-3+"
 SLOT="0/4"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
 
 RDEPEND="sci-libs/fftw:3.0="
 DEPEND="${RDEPEND}"

@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription lang="en">
 		Elle Stone has developed LCMS-based ICC profile-making code which
 		makes a variety of RGB working space profiles, plus Gray profiles,

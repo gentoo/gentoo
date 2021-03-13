@@ -12,7 +12,7 @@ SRC_URI="https://github.com/RetroShare/RetroShare/releases/download/v${PV}/Retro
 # pegmarkdown can also be used with MIT
 LICENSE="AGPL-3 GPL-2 GPL-3 Apache-2.0 LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="cli control-socket gnome-keyring +gui +jsonapi service +sqlcipher webui +xapian"
 
 REQUIRED_USE="

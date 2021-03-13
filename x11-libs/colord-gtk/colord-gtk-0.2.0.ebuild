@@ -12,7 +12,7 @@ SRC_URI="https://www.freedesktop.org/software/colord/releases/${P}.tar.xz"
 
 LICENSE="LGPL-3+"
 SLOT="0/1" # subslot = libcolord-gtk soname version
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 
 IUSE="doc +introspection vala"
 REQUIRED_USE="vala? ( introspection )"
@@ -31,6 +31,7 @@ BDEPEND="
 		app-text/docbook-xml-dtd:4.1.2
 		>=dev-util/gtk-doc-1.9
 	)
+	app-text/docbook-xsl-ns-stylesheets
 	introspection? ( >=dev-libs/gobject-introspection-0.9.8 )
 	vala? ( $(vala_depend) )
 "

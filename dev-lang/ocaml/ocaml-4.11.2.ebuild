@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit flag-o-matic
+
 HOMEPAGE="https://ocaml.org/"
 SRC_URI="https://github.com/ocaml/ocaml/archive/${PV}.tar.gz -> ${P}.tar.gz"
 DESCRIPTION="Programming language supporting functional, imperative & object-oriented styles"
@@ -21,6 +23,15 @@ PDEPEND="emacs? ( app-emacs/ocaml-mode )
 
 src_prepare() {
 	default
+
+	# OCaml generates textrels on 32-bit arches
+	# We can't do anything about it, but disabling it means that tests
+	# for OCaml-based packages won't fail on unexpected output
+	# bug #773226
+	#if use arm || use ppc || use x86 ; then
+		append-ldflags "-Wl,-z,notext"
+	#fi
+
 	# Upstream build ignores LDFLAGS in several places.
 	sed -i -e 's/\(^MKDLL=.*\)/\1 $(LDFLAGS)/' \
 		-e 's/\(^OC_CFLAGS=.*\)/\1 $(LDFLAGS)/' \

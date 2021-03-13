@@ -28,8 +28,5 @@ These three functions form the basis of the countless applications for your eID.
   <flag name="p11-kit">
     Support for app-crypt/p11-kit.
   </flag>
-  <flag name="p11v220">
-    Enable PKCS#11 v2.20 features.
-  </flag>
 </use>
 </pkgmetadata>

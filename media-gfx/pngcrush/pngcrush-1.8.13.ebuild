@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/pmt/${P}-nolib.tar.xz"
 
 LICENSE="pngcrush"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 RDEPEND="media-libs/libpng:0=
 	sys-libs/zlib:="

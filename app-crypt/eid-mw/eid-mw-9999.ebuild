@@ -11,7 +11,7 @@ EGIT_REPO_URI="https://github.com/Fedict/${PN}.git"
 
 LICENSE="LGPL-3"
 SLOT="0"
-IUSE="+dialogs +gtk +p11v220 p11-kit"
+IUSE="+dialogs +gtk p11-kit"
 
 RDEPEND=">=sys-apps/pcsc-lite-1.2.9
 	gtk? (
@@ -62,7 +62,6 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_enable dialogs) \
-		$(use_enable p11v220) \
 		$(use_enable p11-kit p11kit) \
 		$(use_with gtk gtkvers 'detect') \
 		--with-gnu-ld \

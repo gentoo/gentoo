@@ -124,6 +124,7 @@ multilib_src_configure() {
 		-Dlibidn=false
 		-Dlibidn2=false
 		-Dlibiptc=false
+		-Dp11kit=false
 		-Dseccomp=false
 		-Dlz4=false
 		-Dxz=false

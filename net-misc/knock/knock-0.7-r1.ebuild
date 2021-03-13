@@ -1,11 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="Simple port-knocking daemon"
-HOMEPAGE="https://www.zeroflux.org/projects/knock
-	https://github.com/jvinet/knock"
+HOMEPAGE="https://www.zeroflux.org/projects/knock"
 SRC_URI="https://www.zeroflux.org/proj/knock/files/${P}.tar.gz"
 
 LICENSE="GPL-2+"
@@ -22,6 +21,7 @@ src_prepare() {
 	sed -e "/^AM_CFLAGS/s: -g : :" \
 		-e "/dist_doc_DATA/s:COPYING::" \
 		-i Makefile.in || die
+
 	sed -e "s:/usr/sbin/iptables:/sbin/iptables:g" \
 		-i knockd.conf || die
 }
@@ -31,7 +31,7 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" docdir="${EROOT}/usr/share/doc/${PF}" install
+	emake DESTDIR="${D}" docdir="${EPREFIX}/usr/share/doc/${PF}" install
 
 	if use server ; then
 		newinitd "${FILESDIR}"/knockd.initd.2 knock

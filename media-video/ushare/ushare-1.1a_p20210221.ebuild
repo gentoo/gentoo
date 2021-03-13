@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit readme.gentoo-r1 toolchain-funcs systemd
 
 COMMIT="79b0d6e41fd9af73c2ef7ee6b110f9b367295a76"
@@ -10,7 +11,7 @@ DESCRIPTION="uShare is a UPnP (TM) A/V & DLNA Media Server"
 HOMEPAGE="https://github.com/ddugovic/uShare/"
 SRC_URI="https://github.com/ddugovic/uShare/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="nls"
@@ -56,7 +57,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	enewuser ushare
 	readme.gentoo_print_elog
 	elog
 	elog "The config file has been moved to /etc/ushare.conf"

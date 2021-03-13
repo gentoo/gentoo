@@ -32,6 +32,52 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2021-03-13)
+# Stuck on oasis.eclass, out of date
+# No reverse dependencies
+# bug #775785
+# Removal in 14 days. Nothing should really
+# be able to use any of these right now anyway.
+dev-ml/qcheck
+dev-ml/macaque
+dev-ml/pgocaml
+dev-ml/csv
+dev-ml/gen
+dev-ml/tyxml
+dev-ml/stringext
+dev-ml/deriving
+dev-ml/type-conv
+dev-ml/optcomp
+dev-ml/lwt_react
+dev-ml/batteries
+dev-ml/ocaml-magic-mime
+dev-ml/iTeML
+# Stuck on old oasis.eclass
+# bug #749696, #711414
+dev-ml/ocaml-re
+# Dependencies of Oasis itself
+dev-ml/ocamlify
+dev-ml/ocamlmod
+dev-ml/ocaml-expect
+dev-ml/oasis
+# Please port your applications to dev-ml/ounit2
+# Should be a case of just a sed in most cases
+dev-ml/ounit
+
+# Hans de Graaff <graaff@gentoo.org> (2021-03-12)
+# Requires a (proxy) maintainer with access to Oracle development
+# libraries. Please express your interest on bug 772128 if you can
+# help.
+# Masked for removal in 30 days.
+dev-ruby/ruby-oci8
+
+# Hans de Graaff <graaff@gentoo.org> (2021-03-11)
+# Last upstream release in 2018, uses outdated dependencies.  No
+# longer works with dev-ruby/parser, bug 775206. No reverse
+# dependencies.
+# Masked for removal in 30 days.
+dev-ruby/astrolabe
+
 # Hans de Graaff <graaff@gentoo.org> (2021-03-09)
 # Last upstream release in 2013, ruby25-only.
 # Masked for removal in 30 days.
@@ -280,76 +326,6 @@ xfce-extra/xfce4-statusnotifier-plugin
 # Mask development versions now that they were bumped...
 =net-misc/kea-1.9*
 
-# Jakov Smolic <jakov.smolic@sartura.hr> (2021-02-13)
-# Fails to build with gcc-10, stuck on EAPI 5, dead upstream
-# multiple reported bugs, not touched by maintainer in years.
-# Removal in 30 days. Bug #762904
-dev-db/4store
-
-# Jakov Smolic <jakov.smolic@sartura.hr> (2021-02-13)
-# Fails to build with gcc-10, no maintainer, last release in 2004,
-# no reverse dependencies.
-# Removal in 30 days.  Bug #707504.
-app-misc/slmon
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2021-02-12)
-# Does not build against clang/LLVM toolchain.
-# Last release in 2009. Upstream repository is gone.
-# Depends minimal on very old vdr version
-# Removal on 2021-03-12.  Bug #740302
-media-plugins/vdr-cpumon
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2021-02-12)
-# Last release in 2006. Upstream repository is gone.
-# Hompage shows only to a wiki entry.
-# Has open bugs.
-# If you still relies on this plugin, leave a comment in
-# the depended bug.
-# Removal on 2021-03-12.  Bug #740302
-media-plugins/vdr-mount
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2021-02-11)
-# Does not build against vdr-2.4.  Last release in ~2006.
-# Upstream repository is gone.
-# Depends minimal on very old vdr version
-# Removal on 2021-03-11.  Bug #724700.
-media-plugins/vdr-pilot
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2021-02-11)
-# Does not build against vdr-2.4.  Last release in ~2006.
-# Upstream repository is gone.
-# Depends minimal on very old vdr version
-# Removal on 2021-03-11.  Bug #724704.
-media-plugins/vdr-radiolist
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2021-02-11)
-# Does not build against vdr-2.4.  Last release in 2008.
-# Upstream repository is gone.
-# Depends minimal on very old vdr version
-# Removal on 2021-03-11.  Bug #724742.
-media-plugins/vdr-proxy
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2021-02-11)
-# Does not build against vdr-2.4.  Last release in 2008.
-# Upstream repository is gone.
-# Depends minimal on very old vdr version
-# Removal on 2021-03-11.  Bug #724752.
-media-plugins/vdr-bgprocess
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2021-02-11)
-# Does not build against vdr-2.4.  Last release in ~2006.
-# Upstream repository is gone.
-# Depends minimal on very old vdr version
-# Removal on 2021-03-11.  Bug #724734.
-media-plugins/vdr-quicktimer
-
-# Sam James <sam@gentoo.org> (2021-02-10)
-# Causes circular dep with opam
-# seq -> opam-installer -> opam-format -> re -> seq
-# See ff101b42980416c2fdee330c105cabb745bc9a42
-# bug #769725
-=dev-ml/seq-1
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2021-02-08)
 # Abandoned upstream. Was never ported from gtk-2.
 # A possible alternative is media-gfx/geeqie (gqview fork).
@@ -379,11 +355,6 @@ dev-libs/libressl
 # seems to be incompatible with revdeps using go-module, the variant
 # using the latter is still broken.
 dev-go/qt
-
-# Lars Wendler <polynomial-c@gentoo.org> (2020-12-09)
-# Masked until most broken packages have been fixed (bug #732648)
->=sys-devel/autoconf-2.70
->=sys-devel/autoconf-wrapper-14
 
 # Michał Górny <mgorny@gentoo.org> (2020-11-10)
 # This old Kodi version requires vulnerable dev-python/pillow

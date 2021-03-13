@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription lang="cs">
 		Czech Bible Kralicka: Bible svata aneb vsecka svata pisma Stareho i Noveho
 		Zakona podle posledniho vydani kralickeho z roku 1613.

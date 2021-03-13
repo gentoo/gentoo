@@ -1,6 +1,11 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marek Szuba <marecki@gentoo.org> (2021-03-11)
+# Awaiting keywording of dev-python/ruamel-std-pathlib
+# on this arch (Bug #775242)
+dev-python/ruamel-yaml test
+
 # Sam James <sam@gentoo.org> (2021-02-17)
 # Unmask dev-libs/libpcre2[jit] support on PHP
 # where available
@@ -42,9 +47,11 @@ net-wireless/gnuradio ctrlport
 media-libs/libsdl2 fcitx4
 
 # Joonas Niilola <juippis@gentoo.org> (2020-10-02)
+# Sam James <sam@gentoo.org> (2021-03-11)
 # Dependency only keyworded on specific arm profiles.
 dev-libs/efl avif
 kde-frameworks/kimageformats avif
+media-libs/gd avif
 
 # Adam Feldman <NP-Hardass@gentoo.org> (2020-09-05)
 # dev-util/dogtail is not keyworded for arm

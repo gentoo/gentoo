@@ -28,7 +28,6 @@
     <flag name="lttng">Add support for LTTng</flag>
     <flag name="mgr">Build the ceph-mgr daemon</flag>
     <flag name="numa">Use <pkg>sys-process/numactl</pkg> for numa support in rocksdb</flag>
-    <flag name="openssl">Use <pkg>dev-libs/openssl</pkg></flag>
     <flag name="pmdk">Enable PMDK libraries</flag>
     <flag name="rabbitmq">Use rabbitmq-c to build rgw amqp push endpoint</flag>
     <flag name="radosgw">Add radosgw support</flag>

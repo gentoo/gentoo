@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 DISTUTILS_USE_SETUPTOOLS=no
 
@@ -11,13 +11,13 @@ inherit desktop distutils-r1 xdg-utils
 if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64 ~arm64 ~x86"
 	SRC_URI="https://www.mercurial-scm.org/release/tortoisehg/targz/${P}.tar.gz"
-	HG_DEPEND=">=dev-vcs/mercurial-5.6
-		<dev-vcs/mercurial-5.8"
+	HG_DEPEND=">=dev-vcs/mercurial-5.6[${PYTHON_USEDEP}]
+		<dev-vcs/mercurial-5.8[${PYTHON_USEDEP}]"
 else
 	inherit mercurial
 	EHG_REPO_URI="https://foss.heptapod.net/mercurial/tortoisehg/thg"
 	EHG_REVISION="stable"
-	HG_DEPEND=">=dev-vcs/mercurial-5.6"
+	HG_DEPEND=">=dev-vcs/mercurial-5.6[${PYTHON_USEDEP}]"
 fi
 
 DESCRIPTION="Set of graphical tools for Mercurial"

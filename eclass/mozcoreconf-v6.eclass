@@ -1,9 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 #
 # @ECLASS: mozcoreconf-v6.eclass
 # @MAINTAINER:
 # Mozilla team <mozilla@gentoo.org>
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: core options and configuration functions for mozilla
 # @DESCRIPTION:
 #
@@ -16,13 +17,25 @@
 
 if [[ ! ${_MOZCORECONF} ]]; then
 
-inherit multilib toolchain-funcs flag-o-matic python-any-r1 versionator
+inherit toolchain-funcs flag-o-matic python-any-r1
 
-IUSE="${IUSE} custom-cflags custom-optimization"
-
-DEPEND="virtual/pkgconfig
+BDEPEND="virtual/pkgconfig
 	dev-lang/python:2.7[ncurses,sqlite,ssl,threads(+)]
 	${PYTHON_DEPS}"
+
+case "${EAPI:-0}" in
+	6)
+		inherit multilib versionator
+		DEPEND+=" ${BDEPEND}"
+		;;
+	7)
+		;;
+	*)
+		die "EAPI ${EAPI} is not supported, contact eclass maintainers"
+		;;
+esac
+
+IUSE="${IUSE} custom-cflags custom-optimization"
 
 # @FUNCTION: mozconfig_annotate
 # @DESCRIPTION:

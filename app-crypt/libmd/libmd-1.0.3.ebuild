@@ -20,5 +20,5 @@ src_configure() {
 src_install() {
 	default
 
-	rm "${ED}"/usr/$(get_libdir)/libmd.la || die
+	find "${ED}" -name '*.la' -delete || die
 }

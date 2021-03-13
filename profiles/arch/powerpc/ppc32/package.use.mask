@@ -1,9 +1,19 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Sam James <sam@gentoo.org> (2021-03-06)
+# Viorel Munteanu <ceamac.paragon@gmail.com> (2020-03-11)
+# new package dev-libs/libthreadar has no keywords
+app-backup/dar threads
+
+# Marek Szuba <marecki@gentoo.org> (2021-03-11)
+# Awaiting keywording of dev-python/ruamel-std-pathlib
+# on this arch (Bug #775242)
+dev-python/ruamel-yaml test
+
+# Sam James <sam@gentoo.org> (2021-03-11)
 # media-libs/libheif isn't keyworded here
-media-libs/gd heif
+# media-libs/libavif isn't keyworded here
+media-libs/gd avif heif
 
 # Sam James <sam@gentoo.org> (2021-02-28)
 # compiler-rt* has no support for ppc32 (yet?)

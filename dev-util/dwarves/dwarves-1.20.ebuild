@@ -11,7 +11,7 @@ HOMEPAGE="https://git.kernel.org/cgit/devel/pahole/pahole.git/"
 
 LICENSE="GPL-2" # only
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc64 x86"
 IUSE="debug"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

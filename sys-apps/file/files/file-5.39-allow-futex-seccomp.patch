@@ -1,0 +1,18 @@
+In some situations, futex() is called even when lzma
+support is not compiled in. Let's enable it unconditionally
+for now.
+
+https://bugs.gentoo.org/771096
+https://bugs.astron.com/view.php?id=241
+--- a/src/seccomp.c
++++ b/src/seccomp.c
+@@ -175,9 +175,7 @@ enable_sandbox_full(void)
+  	ALLOW_RULE(fcntl64);
+ 	ALLOW_RULE(fstat);
+  	ALLOW_RULE(fstat64);
+-#ifdef XZLIBSUPPORT
+ 	ALLOW_RULE(futex);
+-#endif
+ 	ALLOW_RULE(getdents);
+ #ifdef __NR_getdents64
+ 	ALLOW_RULE(getdents64);

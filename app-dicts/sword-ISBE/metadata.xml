@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 		THE INTERNATIONAL STANDARD BIBLE ENCYCLOPEDIA
 		James Orr, M.A., D.D. General Editor

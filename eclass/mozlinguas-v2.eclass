@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: mozlinguas-v2.eclass
@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Nirbheek Chauhan <nirbheek@gentoo.org>
 # Ian Stakenvicius <axs@gentoo.org>
-# @SUPPORTED_EAPIS: 2 3 4 5 6
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: Handle language packs for mozilla products
 # @DESCRIPTION:
 # Sets IUSE according to MOZ_LANGS (language packs available). Also exports
@@ -17,15 +17,15 @@
 inherit mozextension
 
 case "${EAPI:-0}" in
-	0|1)
-		die "EAPI ${EAPI:-0} does not support the '->' SRC_URI operator";;
-	2|3|4|5|6)
-		inherit eapi7-ver
-		EXPORT_FUNCTIONS src_unpack src_compile src_install;;
-
+	6)
+		inherit eapi7-ver ;;
+	7)
+		;;
 	*)
-		die "EAPI ${EAPI} is not supported, contact eclass maintainers";;
+		die "EAPI ${EAPI} is not supported, contact eclass maintainers" ;;
 esac
+
+EXPORT_FUNCTIONS src_unpack src_compile src_install
 
 # @ECLASS-VARIABLE: MOZ_LANGS
 # @DESCRIPTION:

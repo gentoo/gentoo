@@ -13,7 +13,7 @@ HOMEPAGE="https://www.hamlib.org"
 SRC_URI="mirror://sourceforge/hamlib/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2 GPL-2"
-SLOT="0"
+SLOT="0/4"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc perl python tcl"
 

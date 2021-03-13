@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -16,7 +16,7 @@ SRC_URI="https://github.com/xerial/${MY_PN}/archive/${PV}.tar.gz -> ${PN}-java-$
 
 LICENSE="Apache-2.0"
 SLOT="1.1"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~x86 ~x64-macos"
 IUSE=""
 
 CDEPEND="dev-java/osgi-core-api:0
@@ -53,7 +53,14 @@ src_compile() {
 }
 
 src_install() {
-	java-pkg_doso "${S}"/target/libsnappyjava.so
+	local jniext=.so
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		jniext=.jnilib
+		# avoid install_name check failure
+		install_name_tool -id @loader_path/libsnappyjava${jniext} \
+			"${S}"/target/libsnappyjava${jniext}
+	fi
+	java-pkg_doso "${S}"/target/libsnappyjava${jniext}
 	java-pkg_dojar "${S}/target/${PN}.jar"
 
 	use source && java-pkg_dosrc "${S}"/src/main/java/*

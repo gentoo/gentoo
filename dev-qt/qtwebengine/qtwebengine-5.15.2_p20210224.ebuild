@@ -14,6 +14,7 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	if [[ ${PV} == ${QTVER}_p* ]]; then
 		SRC_URI="https://dev.gentoo.org/~asturm/distfiles/${P}.tar.xz"
 		S="${WORKDIR}/${P}"
+		QT5_BUILD_DIR="${S}_build"
 	fi
 fi
 
@@ -89,7 +90,8 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.15.0-disable-fatal-warnings.patch" # bug 695446
-	"${FILESDIR}/${P}-chromium-87-v8-icu68.patch" # bug 757606
+	"${FILESDIR}/${P}-fix-crash-w-app-locales.patch" # bug 773919, QTBUG-91715
+	"${FILESDIR}/${P}-chromium-87-v8-icu68.patch" # downstream, bug 757606
 	"${FILESDIR}/${P}-disable-git.patch" # downstream snapshot fix
 )
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,20 +10,22 @@ MY_PV=${PV/_/.}-3
 DESCRIPTION="Device-mapper RAID tool and library"
 HOMEPAGE="https://people.redhat.com/~heinzm/sw/dmraid/"
 SRC_URI="https://people.redhat.com/~heinzm/sw/dmraid/src/${PN}-${MY_PV}.tar.bz2"
+S="${WORKDIR}/${PN}/${MY_PV}/${PN}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~ia64 ppc ppc64 sparc x86"
 IUSE="intel_led led mini static"
 
 RDEPEND=">=sys-fs/lvm2-2.02.45"
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	static? ( sys-fs/lvm2[static-libs] )
 "
-BDEPEND="virtual/pkgconfig
-	app-arch/tar"
-
-S="${WORKDIR}/${PN}/${MY_PV}/${PN}"
+BDEPEND="
+	app-arch/tar
+	virtual/pkgconfig
+"
 
 pkg_setup() {
 	if kernel_is lt 2 6 ; then
@@ -39,19 +41,26 @@ src_prepare() {
 	eapply -p0 "${FILESDIR}"/${P}-static-build-fixes.patch
 	eapply -p3 "${FILESDIR}"/${P}-parallel-make.patch
 	eapply "${FILESDIR}"/${P}-fix-missing-PATH-MOUNTED.patch
+	eapply "${FILESDIR}"/${PN}-1.0.0_rc16-musl.patch
 
 	# pkg_check_modules is not in aclocal.m4 by default, and eautoreconf doesnt add it
 	einfo "Appending pkg.m4 from system to aclocal.m4"
 	cat "${BROOT}"/usr/share/aclocal/pkg.m4 >>"${S}"/aclocal.m4 || die "Could not append pkg.m4"
-	eapply_user
+
+	mv configure.{in,ac} || die
+
+	default
+
 	eautoreconf
 
 	einfo "Creating prepatched source archive for use with Genkernel"
 	# archive the patched source for use with genkernel
 	cd "${WORKDIR}" || die
 	mkdir -p "tmp/${PN}" || die
+
 	cp -a "${PN}/${MY_PV}/${PN}" "tmp/${PN}" || die
 	mv "tmp/${PN}/${PN}" "tmp/${PN}/${MY_PV}" || die
+
 	cd tmp || die
 	tar -jcf ${PN}-${MY_PV}-prepatched.tar.bz2 ${PN} || die
 	mv ${PN}-${MY_PV}-prepatched.tar.bz2 .. || die
@@ -59,7 +68,8 @@ src_prepare() {
 
 src_configure() {
 	# disable klibc and dietlibc, bug #653392
-	econf --with-usrlibdir='${prefix}'/$(get_libdir) \
+	econf \
+		--with-usrlibdir='${prefix}'/$(get_libdir) \
 		--disable-klibc \
 		--disable-dietlibc \
 		$(use_enable static static_link) \
@@ -70,7 +80,9 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" install
+
 	dodoc CHANGELOG README TODO KNOWN_BUGS doc/*
+
 	insinto /usr/share/${PN}
 	doins "${WORKDIR}"/${PN}-${MY_PV}-prepatched.tar.bz2
 }

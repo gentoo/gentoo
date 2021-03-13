@@ -1,0 +1,16 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -468,11 +468,11 @@
+ 
+ AC_DEFUN([AC_CHECK_GCC_ARG],
+  [if test -n "$GCC"; then
+-   AC_CACHE_CHECK([whether gcc accepts [$2]],
++   AC_CACHE_CHECK([whether [$CC] accepts [$2]],
+      ac_cv_gcc_accepts_[$1],
+     [rm -rf conftest.$ac_ext
+      touch conftest.$ac_ext
+-     if ( ( gcc -c [$2] conftest.$ac_ext -o/dev/null >/dev/null ) 2>&1 | \
++     if ( ( $CC -c [$2] conftest.$ac_ext -o/dev/null >/dev/null ) 2>&1 | \
+           grep unrecognized >/dev/null ); then
+        ac_cv_gcc_accepts_[$1]=no
+      else
