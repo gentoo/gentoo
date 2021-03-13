@@ -12,6 +12,10 @@
 
 # Do not complain about CFLAGS etc since ml projects do not use them.
 QA_FLAGS_IGNORED='.*'
+# OCaml won't generate executable stack unless it has to on 32-bit
+# bug #773226
+QA_EXECSTACK=".*"
+QA_WX_LOAD=".*"
 
 # From this findlib version there is proper stublibs support.
 DEPEND=">=dev-ml/findlib-1.0.4-r1"
