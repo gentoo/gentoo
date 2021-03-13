@@ -1,5 +1,5 @@
+BDEPEND=app-arch/unzip
 DEFINED_PHASES=install prepare unpack
-DEPEND=app-arch/unzip
 DESCRIPTION=English dictionaries for myspell/hunspell
 EAPI=7
 HOMEPAGE=https://extensions.libreoffice.org/extensions/english-dictionaries
@@ -9,5 +9,5 @@ LICENSE=BSD MIT LGPL-3+
 REQUIRED_USE=|| ( l10n_en l10n_en-AU l10n_en-CA l10n_en-GB l10n_en-US l10n_en-ZA )
 SLOT=0
 SRC_URI=https://extensions.libreoffice.org/extensions/english-dictionaries/2018-11.01/@@download/file/dict-en-20181101.oxt
-_eclasses_=myspell-r2	36682fc8e58634a89e0a56c54eac945c
+_eclasses_=myspell-r2	c3ce3195fd25a3958492bf548ef8b1f9
 _md5_=dab907499c5bc180c53fe3fc5dd6ba5a

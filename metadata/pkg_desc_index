@@ -1233,7 +1233,7 @@ app-dicts/aspell-lv 0.5.5.1: Aspell (Latvian) language dictionary
 app-dicts/aspell-mg 0.03.0: Aspell (Malagasy) language dictionary
 app-dicts/aspell-mi 0.50.0: Aspell (Maori) language dictionary
 app-dicts/aspell-mk 0.50.0: Aspell (Macedonian) language dictionary
-app-dicts/aspell-ml 0.03.1: Aspell (Malayalam) language dictionary
+app-dicts/aspell-ml 0.04.1: Aspell (Malayalam) language dictionary
 app-dicts/aspell-mn 0.06.2: Aspell (Mongolian) language dictionary
 app-dicts/aspell-mr 0.10.0: Aspell (Marathi) language dictionary
 app-dicts/aspell-ms 0.50.0: Aspell (Malay) language dictionary
@@ -1263,7 +1263,7 @@ app-dicts/aspell-ta 20040424.1: Aspell (Tamil) language dictionary
 app-dicts/aspell-te 0.01.2: Aspell (Telugu) language dictionary
 app-dicts/aspell-tet 0.1.1: Aspell (Tetum) language dictionary
 app-dicts/aspell-tk 0.01.0: Aspell (Turkmen) language dictionary
-app-dicts/aspell-tl 0.02.1: Aspell (Tagalog) language dictionary
+app-dicts/aspell-tl 0.4.0: Aspell (Tagalog) language dictionary
 app-dicts/aspell-tn 1.0.1.0: Aspell (Setswana) language dictionary
 app-dicts/aspell-tr 0.50.0: Aspell (Turkish) language dictionary
 app-dicts/aspell-uk 1.4.0.0: Aspell (Ukrainian) language dictionary
@@ -2908,7 +2908,7 @@ app-shells/tmux-bash-completion 9999: bash-completion scripts for tmux
 app-shells/yash 2.50 2.51: Yash is a POSIX-compliant command line shell
 app-shells/zsh 5.8 9999: UNIX Shell similar to the Korn shell
 app-shells/zsh-completions 0.31.0 0.32.0 9999: Additional completion definitions for Zsh
-app-shells/zsh-syntax-highlighting 0.7.0_beta1 0.7.1: Fish shell like syntax highlighting for zsh
+app-shells/zsh-syntax-highlighting 0.7.1: Fish shell like syntax highlighting for zsh
 app-text/XML-Schema-learner 1.0.1: Algorithmic inferencing of XML schema definitions and DTDs
 app-text/a2ps 4.14-r6: Any to PostScript filter
 app-text/agrep 2.04-r2: A tool for the fast searching of text allowing for errors in the search pattern
@@ -3697,7 +3697,7 @@ dev-db/tinycdb 0.77-r2 0.78: A very fast and simple package for creating and rea
 dev-db/tokyocabinet 1.4.48-r1: A library of routines for managing a database
 dev-db/tora 3.2-r1 9999: SQL IDE for Oracle, MySQL and PostgreSQL dbs
 dev-db/unixODBC 2.3.7 2.3.9: A complete ODBC driver manager
-dev-db/vsqlite++ 0.3.13-r1: VSQLite++ - A welldesigned and portable SQLite3 Wrapper for C++
+dev-db/vsqlite++ 0.3.13-r1: VSQLite++ - A well designed and portable SQLite3 Wrapper for C++
 dev-db/wxsqlite3 3.2.1-r1: C++ wrapper around the public domain SQLite 3.x database
 dev-dotnet/dbus-sharp 0.7.0-r2 0.8.1: D-Bus for .NET
 dev-dotnet/dbus-sharp-glib 0.5.0-r1 0.6.0: D-Bus for .NET: GLib integration module
@@ -15297,7 +15297,7 @@ net-misc/libteam 1.31 9999: Library and tools set for controlling team network d
 net-misc/linux-eoip 0.5: Linux support for proprietary MIkrotik EoIP protocol
 net-misc/linuxptp 2.0-r1: The Linux Precision Time Protocol (PTP) implementation
 net-misc/liveice 2000530-r2: Live Source Client For IceCast
-net-misc/lksctp-tools 1.0.17 1.0.18-r1: Tools for Linux Kernel Stream Control Transmission Protocol implementation
+net-misc/lksctp-tools 1.0.18-r1: Tools for Linux Kernel Stream Control Transmission Protocol implementation
 net-misc/lldpd 1.0.3 1.0.4 1.0.5-r1 1.0.6 1.0.7: Implementation of IEEE 802.1ab (LLDP)
 net-misc/mcproxy 1.1.1-r1: A multicast proxy for IGMP/MLD
 net-misc/megatools 1.10.3: Command line tools and C library for accessing Mega cloud storage
@@ -16582,7 +16582,7 @@ sci-misc/fitscut 1.4.4: Extract cutouts from FITS image files
 sci-misc/fitsverify 4.18: FITS file format checker
 sci-misc/flashdot 1.1.4-r1: Generator for psychophysical experiments
 sci-misc/gt-itm 19961004-r2: Routines to generate / analyze graphs using models for internetwork topology
-sci-misc/h5utils 1.12.1-r2 1.13.1: Utilities for visualization and conversion of HDF5 files
+sci-misc/h5utils 1.13.1: Utilities for visualization and conversion of HDF5 files
 sci-misc/lttoolbox 3.3.3: Toolbox for lexical processing, morphological analysis and generation of words
 sci-misc/nco 4.5.1-r2: Command line utilities for operating on netCDF files
 sci-misc/ncview 2.1.7: X-based viewer for netCDF files
@@ -17379,14 +17379,14 @@ sys-cluster/k9scli 0.20.5 0.21.2 0.22.1: terminal based UI to manage kubernetes 
 sys-cluster/keepalived 2.0.20 2.1.5: A strong & robust keepalive facility to the Linux Virtual Server project
 sys-cluster/knem 1.1.3-r2 9999: High-Performance Intra-Node MPI Communication
 sys-cluster/kronosnet 1.19: Network abstraction layer designed for High Availability use cases
-sys-cluster/kube-apiserver 1.18.15 1.18.16 1.19.7 1.19.8 1.20.4: Kubernetes API server
-sys-cluster/kube-controller-manager 1.18.15 1.18.16 1.19.7 1.19.8 1.20.4: Kubernetes Controller Manager
-sys-cluster/kube-proxy 1.18.15 1.18.16 1.19.7 1.19.8 1.20.4: Kubernetes Proxy service
+sys-cluster/kube-apiserver 1.18.16 1.19.8 1.20.4: Kubernetes API server
+sys-cluster/kube-controller-manager 1.18.16 1.19.8 1.20.4: Kubernetes Controller Manager
+sys-cluster/kube-proxy 1.18.16 1.19.8 1.20.4: Kubernetes Proxy service
 sys-cluster/kube-router 0.4.0 1.0.1 1.1.0 1.1.1: A turnkey solution for Kubernetes networking
-sys-cluster/kube-scheduler 1.18.15 1.18.16 1.19.7 1.19.8 1.20.4: Kubernetes Scheduler
-sys-cluster/kubeadm 1.18.15 1.18.16 1.19.7 1.19.8 1.20.4: CLI to Easily bootstrap a secure Kubernetes cluster
-sys-cluster/kubectl 1.18.15 1.18.16 1.19.7 1.19.8 1.20.4: CLI to run commands against Kubernetes clusters
-sys-cluster/kubelet 1.18.15 1.18.16 1.19.7 1.19.8 1.20.4: Kubernetes Node Agent
+sys-cluster/kube-scheduler 1.18.16 1.19.8 1.20.4: Kubernetes Scheduler
+sys-cluster/kubeadm 1.18.16 1.19.8 1.20.4: CLI to Easily bootstrap a secure Kubernetes cluster
+sys-cluster/kubectl 1.18.16 1.19.8 1.20.4: CLI to run commands against Kubernetes clusters
+sys-cluster/kubelet 1.18.16 1.19.8 1.20.4: Kubernetes Node Agent
 sys-cluster/kubeletctl 1.5 1.6: A client for kubelet
 sys-cluster/legion 16.08.0-r1 16.10.0 17.02.0 17.05.0 17.08.0 17.10.0 18.02.0 18.05.0 18.12.0 19.06.0 9999: A data-centric parallel programming system
 sys-cluster/libcircle 0.3.0: API for distributing embarrassingly parallel workloads using self-stabilization
@@ -17816,7 +17816,7 @@ sys-process/ctop 0.7.3: Top-like interface for container-metrics
 sys-process/daemontools 0.76-r8: Collection of tools for managing UNIX services
 sys-process/daemontools-encore 1.10 1.11: Collection of tools for managing UNIX services
 sys-process/dcron 4.5-r2: A cute little cron from Matt Dillon
-sys-process/dumb-init 1.2.0 1.2.1: A minimal init system for Linux containers
+sys-process/dumb-init 1.2.1 1.2.5: A minimal init system for Linux containers
 sys-process/evisum 0.5.9 0.5.11: System and process monitor written with EFL
 sys-process/fcron 3.2.1-r1 3.2.1-r3 3.3.0_beta-r1: A command scheduler with extended capabilities over cron and anacron
 sys-process/ftop 1.0-r1: Monitor open files and filesystems

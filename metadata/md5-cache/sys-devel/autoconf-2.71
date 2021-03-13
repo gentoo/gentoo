@@ -11,4 +11,4 @@ RDEPEND=>=sys-devel/m4-1.4.16 >=dev-lang/perl-5.6 >=sys-devel/autoconf-wrapper-1
 SLOT=2.71
 SRC_URI=mirror://gnu/autoconf/autoconf-2.71.tar.xz -> autoconf-2.71.tar.xz https://alpha.gnu.org/pub/gnu/autoconf/autoconf-2.71.tar.xz -> autoconf-2.71.tar.xz
 _eclasses_=toolchain-autoconf	c85a87c2280cd1204e1433d3e1123e41
-_md5_=f65fa65cde3c5c7b436f42f54d043ddf
+_md5_=c5fde1bd42a8c697465a56f40b902710
