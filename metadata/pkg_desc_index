@@ -18634,7 +18634,7 @@ x11-misc/slop 7.5 9999: Application that queries the user for a selection for pr
 x11-misc/snixembed 0.2.2 0.3.0: Proxy StatusNotifierItems as XEmbedded systemtray-spec icons
 x11-misc/spacefm 1.0.6-r1 9999: A multi-panel tabbed file manager
 x11-misc/splatmoji 1.1.1 1.2.0: Quickly look up and input emoji and/or emoticons
-x11-misc/spnavcfg 0.3 0.3.1: GTK-based GUI to configure a space navigator device
+x11-misc/spnavcfg 0.3.1: GTK-based GUI to configure a space navigator device
 x11-misc/sprop 0.1-r1: a simple X property utility
 x11-misc/sselp 0.2-r1 9999: Simple X selection printer
 x11-misc/stalonetray 0.8.3 0.8.4: System tray utility including support for KDE system tray icons
