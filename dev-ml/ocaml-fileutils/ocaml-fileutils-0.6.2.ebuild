@@ -22,3 +22,10 @@ DEPEND=">=dev-ml/ounit-2.0.0
 DOCS=( "README.md" "CHANGES.md" "LICENSE.txt" )
 
 S="${WORKDIR}/${DUNE_PKG_NAME}-v${PV}"
+
+src_prepare() {
+	default
+
+	# Port to dev-ml/ounit2
+	sed -i -e 's/oUnit/ounit2/' test/dune || die
+}
