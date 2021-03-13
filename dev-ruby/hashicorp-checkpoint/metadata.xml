@@ -9,6 +9,10 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>ruby@gentoo.org</email>
+		<name>Gentoo Ruby Project</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">hashicorp/ruby-checkpoint</remote-id>
 	</upstream>
