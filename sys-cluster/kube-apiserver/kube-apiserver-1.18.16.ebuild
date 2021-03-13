@@ -19,7 +19,6 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}
 	!sys-cluster/kubernetes"
-BDEPEND="=dev-lang/go-1.14*"
 
 RESTRICT+=" test"
 S="${WORKDIR}/kubernetes-${PV}"
