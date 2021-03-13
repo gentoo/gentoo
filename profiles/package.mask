@@ -297,11 +297,6 @@ sys-auth/authenticator
 # Removal on 2021-03-27.  Bug #731038, #772812.
 media-gfx/videorbits
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2021-02-24)
-# Completely dissolved and moved into other PIM libraries upstream.
-# Masked for removal on 2021-03-10.
-kde-apps/kdepim-apps-libs
-
 # Matthew Thode <prometheanfire@gentoo.org> (2021-02-22)
 # Removing unneeded packages from tree Bug #772200
 # Removal on 2021-03-22
