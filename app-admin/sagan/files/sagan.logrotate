@@ -1,0 +1,13 @@
+/var/log/sagan/alert
+/var/log/sagan/sagan.log
+/var/log/sagan/sagan.stats
+{
+    compress
+    delaycompress
+    missingok
+    notifempty
+    sharedscripts
+    postrotate
+        /sbin/service sagan reload 2>/dev/null || true
+    endscript
+}
