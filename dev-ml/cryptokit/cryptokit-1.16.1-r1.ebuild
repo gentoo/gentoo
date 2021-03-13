@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}-release${MY_PV}"
 
 LICENSE="LGPL-2"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ppc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc x86"
 IUSE="cpu_flags_x86_aes +ocamlopt test zlib"
 REQUIRED_USE="test? ( ocamlopt )"
 RESTRICT="!test? ( test )"
