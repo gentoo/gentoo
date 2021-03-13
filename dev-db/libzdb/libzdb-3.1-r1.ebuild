@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ REQUIRED_USE=" || ( postgres mysql sqlite )"
 RESTRICT=test
 
 RDEPEND="mysql? ( dev-db/mysql-connector-c:0= )
-	postgres? ( dev-db/postgresql )
+	postgres? ( dev-db/postgresql:* )
 	sqlite? ( >=dev-db/sqlite-3.7:3[unlock-notify(+)] )
 	ssl? ( dev-libs/openssl:0= )"
 DEPEND="${RDEPEND}
