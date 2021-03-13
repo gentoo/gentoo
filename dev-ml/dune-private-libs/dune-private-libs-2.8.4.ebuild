@@ -10,19 +10,14 @@ HOMEPAGE="https://github.com/ocaml/dune"
 SRC_URI="https://github.com/ocaml/dune/archive/${PV}.tar.gz -> dune-${PV}.tar.gz"
 S="${WORKDIR}/dune-${PV}"
 
-LICENSE="MIT"
+LICENSE="Apache-2.0"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
-DEPEND="
-	~dev-ml/dune-private-libs-${PV}:=[ocamlopt=]
-	dev-ml/csexp:=[ocamlopt=]
-	dev-ml/result:=[ocamlopt=]
-"
-RDEPEND="${DEPEND}"
-DEPEND="${DEPEND}
+BDEPEND="
+	~dev-ml/dune-${PV}
 	test? (
 		dev-ml/core_bench
 		dev-ml/menhir
@@ -30,6 +25,13 @@ DEPEND="${DEPEND}
 		dev-ml/ppx_expect
 	)
 "
+DEPEND="
+	dev-ml/csexp:=[ocamlopt=]
+	dev-ml/findlib:=[ocamlopt=]
+	>=dev-lang/ocaml-4.09:=
+"
+RDEPEND="${DEPEND}"
+
 # TODO for test deps:
 # Add cram?
 # Add dev-ml/js_of_ocaml once dev-ml/ocaml-base64 is ported to Dune
@@ -38,7 +40,7 @@ DEPEND="${DEPEND}
 src_prepare() {
 	default
 
-	# Keep this list in sync with dev-ml/dune-private-libs
+	# Keep this list in sync with dev-ml/dune-configurator
 	local bad_tests=(
 		# List of tests calling git, mercurial, etc
 		test/blackbox-tests/test-cases/dune-project-meta/main.t
@@ -60,6 +62,15 @@ src_prepare() {
 		test/blackbox-tests/test-cases/c-flags.t
 		test/blackbox-tests/test-cases/install-libdir.t
 		test/blackbox-tests/test-cases/dune-cache/trim.t
+
+		# Strange failures about opam not being initialised
+		test/blackbox-tests/test-cases/merlin/merlin-from-subdir.t
+		test/blackbox-tests/test-cases/merlin/symlinks.t
+		test/blackbox-tests/test-cases/merlin/src-dirs-of-deps.t
+		test/blackbox-tests/test-cases/merlin/per-module-pp.t
+		test/blackbox-tests/test-cases/merlin/server.t
+		test/blackbox-tests/test-cases/github1946.t
+		test/blackbox-tests/test-cases/github759.t
 
 		# Wants nodejs!
 		test/blackbox-tests/test-cases/jsoo/simple.t
@@ -103,6 +114,6 @@ src_prepare() {
 	rm -r ${bad_tests[@]} || die "Failed to remove broken/inappropriate tests"
 }
 
-src_configure(){
+src_configure() {
 	:
 }

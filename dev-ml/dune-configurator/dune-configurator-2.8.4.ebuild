@@ -12,7 +12,7 @@ S="${WORKDIR}/dune-${PV}"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
@@ -60,6 +60,15 @@ src_prepare() {
 		test/blackbox-tests/test-cases/c-flags.t
 		test/blackbox-tests/test-cases/install-libdir.t
 		test/blackbox-tests/test-cases/dune-cache/trim.t
+
+		# Strange failures about opam not being initialised
+		test/blackbox-tests/test-cases/merlin/merlin-from-subdir.t
+		test/blackbox-tests/test-cases/merlin/symlinks.t
+		test/blackbox-tests/test-cases/merlin/src-dirs-of-deps.t
+		test/blackbox-tests/test-cases/merlin/per-module-pp.t
+		test/blackbox-tests/test-cases/merlin/server.t
+		test/blackbox-tests/test-cases/github1946.t
+		test/blackbox-tests/test-cases/github759.t
 
 		# Wants nodejs!
 		test/blackbox-tests/test-cases/jsoo/simple.t
