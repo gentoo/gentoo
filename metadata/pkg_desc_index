@@ -14802,7 +14802,7 @@ net-im/skypeforlinux 8.69.0.77: Instant messaging client, with support for audio
 net-im/slack 4.11.3 4.12.2 4.13.0: Team collaboration tool
 net-im/spectrum2 2.0.13-r2: An open source instant messaging transport
 net-im/swift 4.0.2-r102: An elegant, secure, adaptable and intuitive XMPP Client
-net-im/teams 1.3.00.25560 1.3.00.30857-r1 1.4.00.4855: Microsoft Teams, an Office 365 multimedia collaboration client, pre-release
+net-im/teams 1.3.00.30857-r1 1.4.00.4855 1.4.00.4855-r1: Microsoft Teams, an Office 365 multimedia collaboration client, pre-release
 net-im/telegram-desktop 2.4.7-r1 2.4.11: Official desktop client for Telegram
 net-im/telegram-desktop-bin 2.5.9 2.6.0 2.6.1: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
