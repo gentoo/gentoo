@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2021-03-13)
+# Integrated into >=sys-apps/hwloc-2, completely broken, unmaintained,
+# no revdeps. Removal in 14 days. Bug #721938, #722916, #732046.
+sys-apps/netloc
+
 # Sam James <sam@gentoo.org> (2021-03-13)
 # Stuck on oasis.eclass, out of date
 # No reverse dependencies
