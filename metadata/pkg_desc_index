@@ -12204,7 +12204,6 @@ kde-apps/kdenetwork-filesharing 20.08.3 20.12.3: SMB filesharing config module f
 kde-apps/kdenetwork-meta 20.08.3-r1 20.12.3: kdenetwork - merge this to pull in all kdenetwork-derived packages
 kde-apps/kdenlive 20.08.3 20.12.3: Non-linear video editing suite by KDE
 kde-apps/kdepim-addons 20.12.2 20.12.3: Plugins for KDE Personal Information Management Suite
-kde-apps/kdepim-apps-libs 20.08.3: Libraries for KDE PIM applications
 kde-apps/kdepim-meta 20.12.2 20.12.3: KDE PIM - merge this to pull in all kdepim-derived packages
 kde-apps/kdepim-runtime 20.12.2 20.12.3: Runtime plugin collection to extend the functionality of KDE PIM
 kde-apps/kdesdk-kioslaves 20.08.3 20.12.3: kioslaves from kdesdk package
