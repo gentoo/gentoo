@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit findlib eutils autotools
+inherit autotools findlib
 
 DESCRIPTION="Provides support for internationalization of OCaml program"
 HOMEPAGE="https://github.com/gildor478/ocaml-gettext"
@@ -17,6 +17,12 @@ RESTRICT="!test? ( test )"
 
 PATCHES=( "${FILESDIR}"/ocaml-unsafe-string.patch )
 
+BDEPEND="
+	doc? (
+		app-text/docbook-xsl-stylesheets
+		dev-libs/libxslt
+	)
+"
 # OCaml 4.10 does not support -unsafe-string by default
 # bug #666149
 RDEPEND="
@@ -28,16 +34,22 @@ RDEPEND="
 	dev-ml/camlp4:=
 	!dev-ml/ocaml-gettext-stub
 "
-DEPEND="${RDEPEND}
-	doc? (
-		app-text/docbook-xsl-stylesheets
-		dev-libs/libxslt
-	)
-	test? ( dev-ml/ounit )
+DEPEND="
+	${RDEPEND}
+	test? ( dev-ml/ounit2 )
 "
 
 src_prepare() {
 	default
+
+	# Porting to dev-ml/ounit2
+	sed -i \
+		-e 's/OCAMLFIND_CHECK_MODULE(oUnit/OCAMLFIND_CHECK_MODULE(ounit2/' \
+		configure.in || die
+	sed -i \
+		-e 's/oUnit/ounit2/' \
+		test/Makefile || die
+
 	eautoreconf
 }
 

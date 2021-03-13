@@ -39,7 +39,7 @@ BDEPEND="
 	dev-lang/perl
 	dev-ml/findlib
 	>=dev-util/cmake-3.16
-	test? ( dev-ml/ounit )
+	test? ( dev-ml/ounit2 )
 	${PYTHON_DEPS}"
 
 LLVM_COMPONENTS=( llvm )

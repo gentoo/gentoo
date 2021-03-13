@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -41,7 +41,7 @@ BDEPEND="
 	dev-lang/perl
 	dev-ml/findlib
 	>=dev-util/cmake-3.16
-	test? ( dev-ml/ounit )
+	test? ( dev-ml/ounit2 )
 	${PYTHON_DEPS}"
 
 pkg_setup() {

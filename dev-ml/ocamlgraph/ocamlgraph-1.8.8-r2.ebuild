@@ -1,32 +1,31 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils findlib
+inherit findlib
 
 DESCRIPTION="O'Caml Graph library"
 HOMEPAGE="http://ocamlgraph.lri.fr/index.en.html"
 SRC_URI="http://ocamlgraph.lri.fr/download/${P}.tar.gz"
+
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
-RDEPEND="<=dev-lang/ocaml-4.06:=[ocamlopt?]
-	gtk? ( dev-ml/lablgtk:2=[gnomecanvas,ocamlopt?] )"
-DEPEND="${RDEPEND}
-	doc? ( dev-tex/hevea dev-ml/ocamlweb )"
+KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86"
 IUSE="doc examples gtk +ocamlopt"
 
-src_prepare() {
-	epatch "${FILESDIR}/${PN}-1.8.6-installfindlib.patch"
-	epatch "${FILESDIR}/${P}-test.patch"
-}
+RDEPEND="
+	>=dev-lang/ocaml-3.10.2:=[ocamlopt?]
+	gtk? ( dev-ml/lablgtk:2=[gnomecanvas,ocamlopt?] )
+"
+DEPEND="${RDEPEND}"
+BDEPEND="doc? ( dev-tex/hevea dev-ml/ocamlweb )"
 
 src_compile() {
 	emake byte
 	use ocamlopt && emake opt
 
-	if use doc;	then
+	if use doc; then
 		emake doc
 	fi
 
