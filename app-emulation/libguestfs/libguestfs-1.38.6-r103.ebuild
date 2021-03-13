@@ -97,7 +97,7 @@ DEPEND="${COMMON_DEPEND}
 		<dev-ml/ocaml-gettext-0.4.2
 		dev-ml/ocaml-gettext-stub[ocamlopt]
 	)
-	>=dev-ml/ounit-2[ocamlopt]
+	dev-ml/ounit2[ocamlopt]
 	doc? ( app-text/po4a )
 	ruby? ( dev-lang/ruby virtual/rubygems dev-ruby/rake )
 	test? ( introspection? ( dev-libs/gjs ) )
