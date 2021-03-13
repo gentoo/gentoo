@@ -5,11 +5,11 @@ DESCRIPTION=A collection of different plugins for Geany
 EAPI=7
 HOMEPAGE=https://plugins.geany.org
 IUSE=ctags debugger enchant git gpg gtkspell lua markdown nls pretty-printer scope soup workbench +lua_single_target_lua5-1
-KEYWORDS=amd64 ~arm ~ppc ppc64 ~sparc x86
+KEYWORDS=amd64 ~arm ppc ppc64 ~sparc x86
 LICENSE=GPL-2
 RDEPEND=dev-libs/glib:2 >=dev-util/geany-1.37[-gtk2(-)] x11-libs/gtk+:3 ctags? ( dev-util/ctags ) debugger? ( x11-libs/vte:2.91 ) enchant? ( app-text/enchant:= ) git? ( dev-libs/libgit2:= ) gpg? ( app-crypt/gpgme:1= ) gtkspell? ( app-text/gtkspell:3= ) lua? ( lua_single_target_lua5-1? ( dev-lang/lua:5.1 ) ) markdown? ( app-text/discount net-libs/webkit-gtk:4 ) pretty-printer? ( dev-libs/libxml2:2 ) scope? ( x11-libs/vte:2.91 ) soup? ( net-libs/libsoup:2.4 ) workbench? ( dev-libs/libgit2:= ) scope? ( sys-devel/gdb )
 REQUIRED_USE=lua? ( ^^ ( lua_single_target_lua5-1 ) )
 SLOT=0
 SRC_URI=https://plugins.geany.org/geany-plugins/geany-plugins-1.37.tar.gz
 _eclasses_=lua-single	f91b5656f00869c220a6e35ae0521c54	lua-utils	736947973cfbc9de01fdb8548f942f82	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=bcd9ce8c74376072f24378a478b813d6
+_md5_=42c3de36c5e398e7304cf1cc4281be10

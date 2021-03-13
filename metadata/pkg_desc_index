@@ -10095,13 +10095,13 @@ dev-ruby/gettext-setup 0.34-r2: A gem to ease i18n
 dev-ruby/gettext_i18n_rails 1.8.1: FastGettext / Rails integration
 dev-ruby/gh 0.18.0: multi-layer client for the github api v3
 dev-ruby/gherkin 5.1.0: Fast Gherkin lexer and parser
-dev-ruby/gist 5.1.0: Potentially the best command line gister.
+dev-ruby/gist 5.1.0 6.0.0: Potentially the best command line gister.
 dev-ruby/git 1.7.0: Library for using Git in Ruby
 dev-ruby/globalid 0.4.2 0.4.2-r1 0.4.2-r2: Reference models by URI
 dev-ruby/gnuplot 2.6.2-r2: Gnuplot drawing library - Ruby Bindings
-dev-ruby/google-protobuf 3.11.4 3.12.4 3.13.0: Protocol Buffers are Google's data interchange format
+dev-ruby/google-protobuf 3.12.4 3.13.0 3.14.0: Protocol Buffers are Google's data interchange format
 dev-ruby/gpgme 2.0.20: Ruby language binding for GnuPG Made Easy
-dev-ruby/gruff 0.7.0-r2 0.8.0: Beautiful graphs for one or multiple datasets
+dev-ruby/gruff 0.7.0-r2 0.8.0 0.12.1: Beautiful graphs for one or multiple datasets
 dev-ruby/haml 5.1.2: A ruby web page templating engine
 dev-ruby/haml-rails 2.0.0 2.0.1: Provides Haml generators for Rails 4
 dev-ruby/hamster 3.0.0-r1: Efficient, immutable, thread-safe collection classes for Ruby
