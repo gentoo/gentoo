@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt"
 
-DEPEND=">=dev-ml/ounit-2.0.0
+DEPEND=">=dev-ml/ounit2-2.0.0
 	>=dev-ml/stdlib-shims-0.2.0"
 
 DOCS=( "README.md" "CHANGES.md" "LICENSE.txt" )
