@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2021-03-13)
+# Integrated into >=sys-apps/hwloc-2, completely broken, unmaintained,
+# no revdeps. Removal in 14 days. Bug #721938, #722916, #732046.
+sys-apps/netloc
+
 # Hans de Graaff <graaff@gentoo.org> (2021-03-12)
 # Requires a (proxy) maintainer with access to Oracle development
 # libraries. Please express your interest on bug 772128 if you can
