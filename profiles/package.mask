@@ -40,6 +40,7 @@ dev-ml/macaque
 dev-ml/pgocaml
 dev-ml/csv
 dev-ml/gen
+dev-ml/tyxml
 
 # Sam James <sam@gentoo.org> (2021-03-12)
 # Obsolete copy of dev-ml/re
