@@ -1,0 +1,68 @@
+From 43393af96308d001c30ac14c32000519253fe910 Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Fri, 22 Feb 2019 22:06:18 +0200
+Subject: [PATCH] build: Allow passing bash-completion dir and have a generic
+ fallback
+
+With autotools the installation path was just hardcoded to the usual
+location. In meson it was made to always check the path from
+bash-completion.pc, but some downstream might want to install the
+file without a bash-completion build-dep. Allow installing the
+completion file to a passed directory, and add back the fallback
+path if an explicit directory isn't passed and bash-completion
+package isn't found. This is also what the tracker project does.
+---
+ meson.build       | 26 ++++++++++++++++++--------
+ meson_options.txt |  2 +-
+ 2 files changed, 19 insertions(+), 9 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index b81a81a..7c790c1 100644
+--- a/meson.build
++++ b/meson.build
+@@ -62,14 +62,24 @@ if systemd_userunitdir == ''
+   endif
+ endif
+ 
+-enable_bash_completion = get_option('bash_completion')
+-if enable_bash_completion
+-  bash_completion_dep = dependency('bash-completion')
+-  completions_dir = bash_completion_dep.get_pkgconfig_variable(
+-    'completionsdir',
+-    # bash-completion 2.10 changed the substitutions
+-    define_variable: bash_completion_dep.version().version_compare('>= 2.10') ? ['datadir', dconf_datadir] : ['prefix', dconf_prefix],
+-  )
++enable_bash_completion = false
++if get_option('bash_completion_dir') == 'yes' or get_option('bash_completion_dir') == 'auto'
++  bash_completion_dep = dependency('bash-completion', required: false)
++  if bash_completion_dep.found()
++    completions_dir = bash_completion_dep.get_pkgconfig_variable(
++      'completionsdir',
++      # bash-completion 2.10 changed the substitutions
++      define_variable: bash_completion_dep.version().version_compare('>= 2.10') ? ['datadir', dconf_datadir] : ['prefix', dconf_prefix],
++    )
++  else
++    completions_dir = join_paths(dconf_datadir, 'bash-completion', 'completions')
++  endif
++  enable_bash_completion = true
++elif get_option('bash_completion_dir') == 'no' or get_option('bash_completion_dir') == ''
++  enable_bash_completion = false
++else
++  enable_bash_completion = true
++  completions_dir = get_option('bash_completion_dir')
+ endif
+ 
+ configure_file(
+diff --git a/meson_options.txt b/meson_options.txt
+index 1b85d5d..7f5afcc 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -1,4 +1,4 @@
+-option('bash_completion', type: 'boolean', value: true, description: 'install bash completion files')
++option('bash_completion_dir', type: 'string', value: 'yes', description: 'directory to install Bash completion files (or "yes" for default directory, "no" to disable installation)')
+ option('man', type: 'boolean', value: true, description: 'generate man pages')
+ option('gtk_doc', type: 'boolean', value: false, description: 'use gtk-doc to build documentation')
+ option('vapi', type: 'boolean', value: true, description: 'install dconf client vapi')
+-- 
+2.26.2
+
