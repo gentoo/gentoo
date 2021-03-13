@@ -31,6 +31,7 @@ BDEPEND="
 		app-text/docbook-xml-dtd:4.1.2
 		>=dev-util/gtk-doc-1.9
 	)
+	app-text/docbook-xsl-ns-stylesheets
 	introspection? ( >=dev-libs/gobject-introspection-0.9.8 )
 	vala? ( $(vala_depend) )
 "
