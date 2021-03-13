@@ -40,26 +40,6 @@ src_configure() {
 	econf "${myeconfargs[@]}"
 }
 
-src_install() {
-	dobin mu/mu
-	dodoc AUTHORS HACKING NEWS NEWS.org TODO README ChangeLog
-	if use emacs; then
-		elisp-install ${PN} mu4e/*.el mu4e/*.elc
-		elisp-site-file-install "${FILESDIR}/${SITEFILE}"
-		doinfo mu4e/mu4e.info
-	fi
-
-	doman man/mu-*.*
-
-	if use guile; then
-		  doinfo guile/mu-guile.info
-	fi
-
-	if use mug; then
-		  dobin toys/mug/mug
-	fi
-}
-
 pkg_preinst() {
 	if [[ -n ${REPLACING_VERSIONS} ]]; then
 		elog "After upgrading from an old major version, you should"
