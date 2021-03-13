@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit cmake flag-o-matic l10n virtualx xdg
 
-PLOCALES="cs de es fr hu id it ko nb pl ru"
+PLOCALES="cs de es fr hu id it ko nb pl ru sv"
 
 DESCRIPTION="Modern music player and library organizer based on Clementine and Qt"
 HOMEPAGE="https://www.strawbs.org/"
@@ -14,12 +14,12 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/jonaski/strawberry/releases/download/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~ppc64 ~x86"
 fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="cdda +dbus debug ipod mms mtp pulseaudio +udisks"
+IUSE="cdda +dbus debug +gstreamer ipod mtp pulseaudio +udisks vlc"
 
 REQUIRED_USE="
 	udisks? ( dbus )
@@ -44,26 +44,29 @@ COMMON_DEPEND="
 	dev-qt/qtwidgets:5
 	media-libs/alsa-lib
 	media-libs/chromaprint:=
-	media-libs/gstreamer:1.0
-	media-libs/gst-plugins-base:1.0
 	>=media-libs/libmygpo-qt-1.0.9[qt5(+)]
 	>=media-libs/taglib-1.11.1_p20181028
-	media-video/vlc
 	sys-libs/zlib
 	virtual/glu
 	x11-libs/libX11
 	cdda? ( dev-libs/libcdio:= )
 	dbus? ( dev-qt/qtdbus:5 )
+	gstreamer? (
+		media-libs/gstreamer:1.0
+		media-libs/gst-plugins-base:1.0
+	)
 	ipod? ( >=media-libs/libgpod-0.8.0 )
 	mtp? ( >=media-libs/libmtp-1.0.0 )
 	pulseaudio? ( media-sound/pulseaudio )
+	vlc? ( media-video/vlc )
 "
 # Note: sqlite driver of dev-qt/qtsql is bundled, so no sqlite use is required; check if this can be overcome someway;
 RDEPEND="${COMMON_DEPEND}
-	media-plugins/gst-plugins-meta:1.0
-	media-plugins/gst-plugins-soup:1.0
-	media-plugins/gst-plugins-taglib:1.0
-	mms? ( media-plugins/gst-plugins-libmms:1.0 )
+	gstreamer? (
+		media-plugins/gst-plugins-meta:1.0
+		media-plugins/gst-plugins-soup:1.0
+		media-plugins/gst-plugins-taglib:1.0
+	)
 	mtp? ( gnome-base/gvfs[mtp] )
 	udisks? ( sys-fs/udisks:2 )
 "
@@ -77,10 +80,13 @@ DEPEND="${COMMON_DEPEND}
 
 DOCS=( Changelog README.md )
 
+REQUIRED_USE="
+	|| ( gstreamer vlc )
+"
+
 src_prepare() {
 	l10n_find_plocales_changes "src/translations" "" ".po"
 
-	rm -r 3rdparty/taglib || die
 	cmake_src_prepare
 }
 
@@ -94,11 +100,12 @@ src_configure() {
 		-DLINGUAS="$(l10n_get_locales)"
 		-DENABLE_AUDIOCD="$(usex cdda)"
 		-DCMAKE_DISABLE_FIND_PACKAGE_Qt5DBus=$(usex !dbus)
+		-DENABLE_GSTREAMER="$(usex gstreamer)"
 		-DENABLE_LIBGPOD="$(usex ipod)"
 		-DENABLE_LIBMTP="$(usex mtp)"
 		-DENABLE_LIBPULSE="$(usex pulseaudio)"
 		-DENABLE_UDISKS2="$(usex udisks)"
-		-DUSE_SYSTEM_TAGLIB=ON
+		-DENABLE_VLC="$(usex vlc)"
 		-DWITH_QT6=OFF
 	)
 
@@ -110,7 +117,9 @@ src_configure() {
 pkg_postinst() {
 	xdg_pkg_postinst
 
-	elog "Note that list of supported formats is controlled by media-plugins/gst-plugins-meta "
-	elog "USE flags. You may be interested in setting aac, flac, mp3, ogg or wavpack USE flags "
-	elog "depending on your preferences"
+	if use gstreamer ; then
+		elog "Note that list of supported formats is controlled by media-plugins/gst-plugins-meta "
+		elog "USE flags. You may be interested in setting aac, flac, mp3, ogg or wavpack USE flags "
+		elog "depending on your preferences"
+	fi
 }
