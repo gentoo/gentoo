@@ -3,8 +3,6 @@
 
 EAPI=7
 
-LUA_COMPAT=( lua5-{1..3} )
-
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/SchedMD/slurm.git"
 	INHERIT_GIT="git-r3"
@@ -21,7 +19,7 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-inherit autotools bash-completion-r1 lua-single pam perl-module prefix toolchain-funcs systemd ${INHERIT_GIT} tmpfiles
+inherit autotools bash-completion-r1 pam perl-module prefix toolchain-funcs systemd ${INHERIT_GIT} tmpfiles
 
 DESCRIPTION="A Highly Scalable Resource Manager"
 HOMEPAGE="https://www.schedmd.com https://github.com/SchedMD/slurm"
@@ -41,10 +39,11 @@ COMMON_DEPEND="
 		)
 	munge? ( sys-auth/munge )
 	pam? ( sys-libs/pam )
-	lua? ( ${LUA_DEPS} )
+	lua? ( dev-lang/lua:0= )
+	!lua? ( !dev-lang/lua )
 	ipmi? ( sys-libs/freeipmi )
 	json? ( dev-libs/json-c:= )
-	amd64? ( netloc? ( || ( sys-apps/netloc >=sys-apps/hwloc-2.1.0[netloc] ) ) )
+	amd64? ( netloc? ( >=sys-apps/hwloc-2.1.0[netloc] ) )
 	hdf5? ( sci-libs/hdf5:= )
 	numa? ( sys-process/numactl )
 	ofed? ( sys-fabric/ofed )
@@ -53,7 +52,6 @@ COMMON_DEPEND="
 	>=sys-apps/hwloc-1.1.1-r1
 	sys-libs/ncurses:0=
 	app-arch/lz4:0=
-	dev-libs/glib:2=
 	sys-libs/readline:0="
 
 DEPEND="${COMMON_DEPEND}
@@ -64,8 +62,7 @@ RDEPEND="${COMMON_DEPEND}
 	acct-group/slurm
 	dev-libs/libcgroup"
 
-REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )
-	torque? ( perl )"
+REQUIRED_USE="torque? ( perl )"
 
 S="${WORKDIR}/${PN}-${MY_P}"
 
@@ -73,10 +70,6 @@ LIBSLURM_PERL_S="${S}/contribs/perlapi/libslurm/perl"
 LIBSLURMDB_PERL_S="${S}/contribs/perlapi/libslurmdb/perl"
 
 RESTRICT="test"
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-20.11.0.1_autoconf-lua.patch
-)
 
 src_unpack() {
 	if [[ ${PV} == *9999* ]]; then
@@ -128,7 +121,6 @@ src_configure() {
 	use amd64 && myconf+=( $(use_with netloc) )
 	econf "${myconf[@]}" \
 		$(use_enable debug) \
-		$(use_enable lua) \
 		$(use_enable pam) \
 		$(use_enable X x11) \
 		$(use_with munge) \
