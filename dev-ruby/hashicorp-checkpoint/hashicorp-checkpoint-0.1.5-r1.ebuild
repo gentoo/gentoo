@@ -6,7 +6,6 @@ EAPI=7
 USE_RUBY="ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_EXTRADOC="README.md"
-RUBY_FAKEGEM_GEMSPEC="ruby-checkpoint.gemspec"
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
 inherit ruby-fakegem
