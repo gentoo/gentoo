@@ -1238,11 +1238,11 @@ app-dicts/aspell-mn 0.06.2: Aspell (Mongolian) language dictionary
 app-dicts/aspell-mr 0.10.0: Aspell (Marathi) language dictionary
 app-dicts/aspell-ms 0.50.0: Aspell (Malay) language dictionary
 app-dicts/aspell-mt 0.50.0: Aspell (Maltese) language dictionary
-app-dicts/aspell-nb 0.50.1.0: Aspell (Norwegian Bokmal) language dictionary
+app-dicts/aspell-nb 0.50.1.0-r1: Aspell (Norwegian Bokmal) language dictionary
 app-dicts/aspell-nds 0.01.0: Aspell (Lower Saxony Plattdüütsch) language dictionary
 app-dicts/aspell-nl 0.50.2: Aspell (Dutch) language dictionary
 app-dicts/aspell-nn 0.50.1.1: Aspell (Norwegian Nynorsk) language dictionary
-app-dicts/aspell-no 0.50.2: Aspell (Norwegian) language dictionary
+app-dicts/aspell-no 0.50.2-r1: Aspell (Norwegian) language dictionary
 app-dicts/aspell-ny 0.01.0: Aspell (Chichewa) language dictionary
 app-dicts/aspell-or 0.03.1: Aspell (Oriya) language dictionary
 app-dicts/aspell-pa 0.01.1: Aspell (Punjabi) language dictionary
@@ -5266,7 +5266,7 @@ dev-lang/python-exec-conf 2.4.6: Configuration file for dev-lang/python-exec
 dev-lang/qu-prolog 10.6: Extended Prolog supporting quantifiers, object-variables and substitutions
 dev-lang/rakudo 2020.05.1 2020.06 2020.07 2020.08.1 2020.09 2020.10 2020.11 2020.12 2021.02 9999: A compiler for the Perl 6 programming language
 dev-lang/regina-rexx 3.9.1-r1: Portable Rexx interpreter
-dev-lang/ruby 2.5.8 2.5.8-r1 2.6.6-r2 2.7.2 3.0.0 3.0.0-r1: An object-oriented scripting language
+dev-lang/ruby 2.5.8 2.5.8-r1 2.6.6-r2 2.6.6-r3 2.7.2 2.7.2-r1 3.0.0 3.0.0-r1 3.0.0-r2: An object-oriented scripting language
 dev-lang/rust 1.46.0 1.47.0-r2 1.48.0 1.49.0 1.50.0: Systems programming language from Mozilla
 dev-lang/rust-bin 1.46.0 1.47.0-r1 1.48.0 1.49.0 1.50.0: Systems programming language from Mozilla
 dev-lang/sassc 3.6.0 3.6.1: A libsass command line driver
@@ -5924,9 +5924,9 @@ dev-ml/cudf 0.9: Library to parse, pretty print, and evaluate CUDF documents
 dev-ml/deriving 0.7.1: A deriving library for Ocsigen
 dev-ml/dns 1.0.0-r1: A pure OCaml implementation of the DNS protocol
 dev-ml/dose3 5.0.1-r2 5.0.1_p16-r2: Library to perform analysis on package repositories
-dev-ml/dune 1.11.4 2.1.0 2.7.1 2.8.2: A composable build system for OCaml
-dev-ml/dune-configurator 2.7.1 2.8.2-r1: A composable build system for OCaml
-dev-ml/dune-private-libs 2.7.1 2.8.2-r1: A composable build system for OCaml
+dev-ml/dune 1.11.4 2.1.0 2.7.1 2.8.2 2.8.4: A composable build system for OCaml
+dev-ml/dune-configurator 2.7.1 2.8.2-r1 2.8.4: A composable build system for OCaml
+dev-ml/dune-private-libs 2.7.1 2.8.2-r1 2.8.4: A composable build system for OCaml
 dev-ml/duration 0.1.3: Duration - conversions to various time units
 dev-ml/easy-format 1.2.0: Pretty-printing library for OCaml
 dev-ml/eliom 6.2.0 9999: A web framework to program client/server applications

@@ -1,0 +1,15 @@
+BDEPEND=dev-ml/dune dev-lang/ocaml
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=~dev-ml/dune-private-libs-2.8.4:=[ocamlopt=] dev-ml/csexp:=[ocamlopt=] dev-ml/result:=[ocamlopt=] test? ( dev-ml/core_bench dev-ml/menhir dev-ml/opam dev-ml/ppx_expect ) >=dev-lang/ocaml-4:=[ocamlopt?]
+DESCRIPTION=A composable build system for OCaml
+EAPI=7
+HOMEPAGE=https://github.com/ocaml/dune
+IUSE=+ocamlopt test
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
+LICENSE=MIT
+RDEPEND=~dev-ml/dune-private-libs-2.8.4:=[ocamlopt=] dev-ml/csexp:=[ocamlopt=] dev-ml/result:=[ocamlopt=] >=dev-lang/ocaml-4:=[ocamlopt?]
+RESTRICT=!test? ( test )
+SLOT=0/2.8.4
+SRC_URI=https://github.com/ocaml/dune/archive/2.8.4.tar.gz -> dune-2.8.4.tar.gz
+_eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
+_md5_=f6945ecc3f0c437e485db49779afb240

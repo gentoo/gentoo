@@ -4,10 +4,10 @@ DEPEND=>=dev-lang/ocaml-4.09.0:=[ocamlopt] >=dev-ml/findlib-1.8.1[ocamlopt] >=de
 DESCRIPTION=Library for arbitrary-precision integer and rational arithmetic
 EAPI=7
 HOMEPAGE=https://github.com/ocaml/num
-KEYWORDS=amd64 ~arm ~arm64 ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris
+KEYWORDS=amd64 ~arm ~arm64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris
 LICENSE=LGPL-2.1-with-linking-exception
 RDEPEND=>=dev-lang/ocaml-4.09.0:=[ocamlopt] >=dev-ml/findlib-1.8.1[ocamlopt]
 SLOT=0
 SRC_URI=https://github.com/ocaml/num/archive/v1.3.tar.gz -> num-1.3.tar.gz
 _eclasses_=findlib	3d3de4bef686774baeeabfa2b916631c	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=6fe2ba867222055a849265661b01e452
+_md5_=7e65cabdaa18e380aca9367cfea1761c

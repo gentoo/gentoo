@@ -9,4 +9,4 @@ RDEPEND=app-text/aspell
 SLOT=0
 SRC_URI=mirror://gnu/aspell/dict/mr/aspell6-mr-0.10-0.tar.bz2
 _eclasses_=aspell-dict-r1	dcedc31b2596e3c50d4f7f4b35ded54f
-_md5_=6a94ad36f4278626a5ba33347d078ad9
+_md5_=eb1ae37cb1cb07be10e277b784670389
