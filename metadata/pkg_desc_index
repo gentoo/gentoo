@@ -18219,10 +18219,10 @@ www-servers/uwsgi 2.0.19.1-r100 2.0.19.1-r101: uWSGI server for Python web appli
 www-servers/varnish 6.0.6 6.3.2 6.4.0 6.5.0 6.5.1: Varnish is a state-of-the-art, high-performance HTTP accelerator
 www-servers/xsp 2014.12-r2014120900: XSP is a small web server that can host ASP.NET pages
 x11-apps/amlc 0.5.1: Another Modeline Calculator, generates quality X11 display configs easily
-x11-apps/appres 1.0.5: list X application resource database
-x11-apps/bdftopcf 1.1: X.Org bdftopcf application
+x11-apps/appres 1.0.5 1.0.5-r1: list X application resource database
+x11-apps/bdftopcf 1.1 1.1-r1: X.Org bdftopcf application
 x11-apps/beforelight 1.0.5: Sample implementation of screen saver
-x11-apps/bitmap 1.0.9: X.Org bitmap application
+x11-apps/bitmap 1.0.9 1.0.9-r1: X.Org bitmap application
 x11-apps/editres 1.0.7: a dynamic resource editor for X Toolkit applications
 x11-apps/fonttosfnt 1.2.0 1.2.1: X.Org fonttosfnt application
 x11-apps/fslsfonts 1.0.5-r1: list fonts served by X font server
@@ -18243,7 +18243,7 @@ x11-apps/scripts 1.0.1-r1: start an X program on a remote machine
 x11-apps/sessreg 1.1.2: manage utmp/wtmp entries for non-init clients
 x11-apps/setxkbmap 1.3.2: Controls the keyboard layout of a running X server
 x11-apps/showfont 1.0.5: font dumper for X font server
-x11-apps/smproxy 1.0.6: Session Manager Proxy
+x11-apps/smproxy 1.0.6 1.0.6-r1: Session Manager Proxy
 x11-apps/transset 1.0.2: An utility for setting opacity property
 x11-apps/viewres 1.0.6: graphical class browser for Xt
 x11-apps/x11perf 1.6.1: X rendering operation stress test utility
@@ -18253,21 +18253,21 @@ x11-apps/xbiff 1.0.4: mailbox flag for X
 x11-apps/xcalc 1.1.0: scientific calculator for X
 x11-apps/xclipboard 1.1.3: interchange between cut buffer and selection
 x11-apps/xclock 1.0.9: analog / digital clock for X
-x11-apps/xcmsdb 1.0.5: Device Color Characterization utility for X Color Management System
+x11-apps/xcmsdb 1.0.5 1.0.5-r1: Device Color Characterization utility for X Color Management System
 x11-apps/xconsole 1.0.7: monitor system console messages with X
-x11-apps/xcursorgen 1.0.7: create an X cursor file from a collection of PNG images
+x11-apps/xcursorgen 1.0.7 1.0.7-r1: create an X cursor file from a collection of PNG images
 x11-apps/xdbedizzy 1.1.0: X.Org xdbedizzy application
 x11-apps/xditview 1.0.5: display ditroff output
 x11-apps/xdm 1.1.12: X.Org xdm application
-x11-apps/xdpyinfo 1.3.2: Display information utility for X
-x11-apps/xdriinfo 1.0.6: query configuration information of DRI drivers
+x11-apps/xdpyinfo 1.3.2 1.3.2-r1: Display information utility for X
+x11-apps/xdriinfo 1.0.6 1.0.6-r1: query configuration information of DRI drivers
 x11-apps/xedit 1.2.2: simple text editor for X
 x11-apps/xev 1.2.4: Print contents of X events
 x11-apps/xeyes 1.1.2: X.Org xeyes application
-x11-apps/xf86dga 1.0.3: Test program for the XFree86-DGA extension
+x11-apps/xf86dga 1.0.3 1.0.3-r1: Test program for the XFree86-DGA extension
 x11-apps/xfd 1.1.3: X.Org xfd application
 x11-apps/xfontsel 1.0.6: point and click selection of X11 font names
-x11-apps/xgamma 1.0.6: Alter a monitor's gamma correction through the X server
+x11-apps/xgamma 1.0.6 1.0.6-r1: Alter a monitor's gamma correction through the X server
 x11-apps/xgc 1.0.5: X graphics demo
 x11-apps/xhost 1.0.8: Controls host and/or user access to a running X server
 x11-apps/xinit 1.4.1 1.4.1-r1: X Window System initializer
@@ -18275,36 +18275,36 @@ x11-apps/xinput 1.6.3: Utility to set XInput device parameters
 x11-apps/xinput_calibrator 0.7.5-r2: A generic touchscreen calibration program for X.Org
 x11-apps/xisxwayland 1 9999: Tool to determine whether the X server in use is Xwayland
 x11-apps/xkbcomp 1.4.4: XKB keyboard description compiler
-x11-apps/xkbevd 1.1.4: XKB event daemon
+x11-apps/xkbevd 1.1.4 1.1.4-r1: XKB event daemon
 x11-apps/xkbprint 1.0.5: Print an XKB keyboard description
-x11-apps/xkbutils 1.0.4: X.Org xkbutils application
-x11-apps/xkill 1.0.5: kill a client by its X resource
+x11-apps/xkbutils 1.0.4 1.0.4-r1: X.Org xkbutils application
+x11-apps/xkill 1.0.5 1.0.5-r1: kill a client by its X resource
 x11-apps/xload 1.1.3: system load average display for X
 x11-apps/xlogo 1.0.5: X Window System logo
 x11-apps/xlsatoms 1.1.3: list interned atoms defined on server
-x11-apps/xlsclients 1.1.4: X.Org xlsclients application
+x11-apps/xlsclients 1.1.4 1.1.4-r1: X.Org xlsclients application
 x11-apps/xlsfonts 1.0.6: X.Org xlsfonts application
 x11-apps/xmag 1.0.6: X.Org xmag application
 x11-apps/xman 1.1.5: Manual page display program for the X Window System
 x11-apps/xmessage 1.0.5-r1: display a message or query in a window (X-based /bin/echo)
 x11-apps/xmodmap 1.0.10: utility for modifying keymaps and pointer button mappings in X
 x11-apps/xmore 1.0.3: plain text display program for the X Window System
-x11-apps/xpr 1.0.5: X.Org xpr application
+x11-apps/xpr 1.0.5 1.0.5-r1: X.Org xpr application
 x11-apps/xprop 1.2.5: property displayer for X
 x11-apps/xrandr 1.5.1: primitive command line interface to RandR extension
 x11-apps/xrdb 1.2.0: X server resource database utility
 x11-apps/xrectsel 0.3.2: Print the geometry of a rectangular screen region
-x11-apps/xrefresh 1.0.6: refresh all or part of an X screen
-x11-apps/xset 1.2.4: X.Org xset application
-x11-apps/xsetroot 1.1.2: X.Org xsetroot application
+x11-apps/xrefresh 1.0.6 1.0.6-r1: refresh all or part of an X screen
+x11-apps/xset 1.2.4 1.2.4-r1: X.Org xset application
+x11-apps/xsetroot 1.1.2 1.1.2-r1: X.Org xsetroot application
 x11-apps/xsm 1.0.4: X Session Manager
 x11-apps/xstdcmap 1.0.4: X standard colormap utility
 x11-apps/xvidtune 1.0.3: video mode tuner for Xorg
 x11-apps/xvinfo 1.1.4: Print out X-Video extension adaptor information
 x11-apps/xwarppointer 1-r2: Program to move the mouse cursor
-x11-apps/xwd 1.0.7: dump an image of an X window
+x11-apps/xwd 1.0.7 1.0.7-r1: dump an image of an X window
 x11-apps/xwininfo 1.1.5: window information utility for X
-x11-apps/xwud 1.0.5: image displayer for X
+x11-apps/xwud 1.0.5 1.0.5-r1: image displayer for X
 x11-base/xcb-proto 1.14.1: X C-language Bindings protocol headers
 x11-base/xorg-drivers 1.20-r2 9999: Meta package containing deps on all xorg drivers
 x11-base/xorg-proto 2020.1 2021.3 9999: X.Org combined protocol headers
