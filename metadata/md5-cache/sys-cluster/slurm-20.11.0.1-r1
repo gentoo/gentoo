@@ -1,0 +1,16 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-lang/perl virtual/pkgconfig
+DEFINED_PHASES=compile configure install postinst preinst prepare test unpack
+DEPEND=!sys-cluster/torque !net-analyzer/slurm !net-analyzer/sinfo || ( sys-cluster/pmix[-pmi] >=sys-cluster/openmpi-2.0.0 ) mysql? ( || ( dev-db/mariadb-connector-c dev-db/mysql-connector-c ) slurmdbd? ( || ( dev-db/mariadb:* dev-db/mysql:* ) ) ) munge? ( sys-auth/munge ) pam? ( sys-libs/pam ) lua? ( dev-lang/lua:0= ) !lua? ( !dev-lang/lua ) ipmi? ( sys-libs/freeipmi ) json? ( dev-libs/json-c:= ) amd64? ( netloc? ( >=sys-apps/hwloc-2.1.0[netloc] ) ) hdf5? ( sci-libs/hdf5:= ) numa? ( sys-process/numactl ) ofed? ( sys-fabric/ofed ) ucx? ( sys-cluster/ucx ) X? ( net-libs/libssh2 ) >=sys-apps/hwloc-1.1.1-r1 sys-libs/ncurses:0= app-arch/lz4:0= sys-libs/readline:0= html? ( sys-apps/man2html ) dev-lang/perl
+DESCRIPTION=A Highly Scalable Resource Manager
+EAPI=7
+HOMEPAGE=https://www.schedmd.com https://github.com/SchedMD/slurm
+IUSE=debug hdf5 html ipmi json lua multiple-slurmd +munge mysql netloc numa ofed pam perl slurmdbd static-libs ucx torque X
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=!sys-cluster/torque !net-analyzer/slurm !net-analyzer/sinfo || ( sys-cluster/pmix[-pmi] >=sys-cluster/openmpi-2.0.0 ) mysql? ( || ( dev-db/mariadb-connector-c dev-db/mysql-connector-c ) slurmdbd? ( || ( dev-db/mariadb:* dev-db/mysql:* ) ) ) munge? ( sys-auth/munge ) pam? ( sys-libs/pam ) lua? ( dev-lang/lua:0= ) !lua? ( !dev-lang/lua ) ipmi? ( sys-libs/freeipmi ) json? ( dev-libs/json-c:= ) amd64? ( netloc? ( >=sys-apps/hwloc-2.1.0[netloc] ) ) hdf5? ( sci-libs/hdf5:= ) numa? ( sys-process/numactl ) ofed? ( sys-fabric/ofed ) ucx? ( sys-cluster/ucx ) X? ( net-libs/libssh2 ) >=sys-apps/hwloc-1.1.1-r1 sys-libs/ncurses:0= app-arch/lz4:0= sys-libs/readline:0= acct-user/slurm acct-group/slurm dev-libs/libcgroup dev-lang/perl:= virtual/tmpfiles
+REQUIRED_USE=torque? ( perl )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/SchedMD/slurm/archive/slurm-20-11-0-1.tar.gz
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	bash-completion-r1	be99724bde4274de21e581204e9d164a	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	pam	b097695df28f3974e3af860d6704d4f2	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	systemd	74b223e42834adf09a2d21fe5fe13741	tmpfiles	dc8e4917d734a019caa04ad3b8db560b	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=6977a21b1ccc18b0435a80a135af2911
