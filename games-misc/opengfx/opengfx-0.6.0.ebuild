@@ -20,6 +20,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 DEPEND="
 	games-util/grfcodec
 	games-util/nml
+	${PYTHON_DEPS}
 "
 
 DOCS=( "README.md" "changelog.txt" )

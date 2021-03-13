@@ -9,3 +9,11 @@ inherit aspell-dict-r1
 
 LICENSE="GPL-2"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86"
+
+src_prepare() {
+	default
+
+	# Fix QA error '[..] not encoded with the UTF-8 encoding' by renaming file.
+	sed -e 's/'$'\355''/Y/g' -i Makefile.pre || die
+	mv ''$'\355''slenska.alias' Yslenska.alias || die
+}
