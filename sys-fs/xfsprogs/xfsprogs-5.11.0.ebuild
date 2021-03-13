@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,15 +11,14 @@ SRC_URI="https://www.kernel.org/pub/linux/utils/fs/xfs/${PN}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 s390 sparc x86"
-IUSE="icu libedit nls readline"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+IUSE="icu libedit nls"
 
-LIB_DEPEND=">=sys-apps/util-linux-2.17.2[static-libs(+)]
-	icu? ( dev-libs/icu:=[static-libs(+)] )
-	readline? ( sys-libs/readline:0=[static-libs(+)] )
-	!readline? ( libedit? ( dev-libs/libedit[static-libs(+)] ) )"
-RDEPEND="${LIB_DEPEND//\[static-libs(+)]}
-	!<sys-fs/xfsdump-3"
+RDEPEND=">=sys-apps/util-linux-2.17.2
+	dev-libs/inih
+	icu? ( dev-libs/icu:= )
+	libedit? ( dev-libs/libedit )
+"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	nls? ( sys-devel/gettext )
@@ -29,13 +28,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.15.0-docdir.patch
 	"${FILESDIR}"/${PN}-5.3.0-libdir.patch
 )
-
-pkg_setup() {
-	if use readline && use libedit ; then
-		ewarn "You have USE='readline libedit' but these are exclusive."
-		ewarn "Defaulting to readline; please disable this USE flag if you want libedit."
-	fi
-}
 
 src_prepare() {
 	default
@@ -66,6 +58,9 @@ src_configure() {
 	# Avoid automagic on libdevmapper, #709694
 	export ac_cv_search_dm_task_create=no
 
+	# Build fails with -O3 (bug #712698)
+	replace-flags -O3 -O2
+
 	# Upstream does NOT support --disable-static anymore,
 	# https://www.spinics.net/lists/linux-xfs/msg30185.html
 	# https://www.spinics.net/lists/linux-xfs/msg30272.html
@@ -75,24 +70,13 @@ src_configure() {
 		--with-systemd-unit-dir="$(systemd_get_systemunitdir)"
 		$(use_enable icu libicu)
 		$(use_enable nls gettext)
-		$(use_enable readline)
-		$(usex readline --disable-editline $(use_enable libedit editline))
+		$(use_enable libedit editline)
 	)
 
-	if is-flagq -fno-lto ; then
-		einfo "LTO disabled via {C,CXX,F,FC}FLAGS"
-		myconf+=( --disable-lto )
+	if is-flagq -flto ; then
+		myconf+=( --enable-lto )
 	else
-		if is-flagq -flto ; then
-			einfo "LTO forced via {C,CXX,F,FC}FLAGS"
-			myconf+=( --enable-lto )
-		elif use amd64 || use x86  ; then
-			# match upstream default
-			myconf+=( --enable-lto )
-		else
-			# LTO can cause problems on some architectures, bug 655638
-			myconf+=( --disable-lto )
-		fi
+		myconf+=( --disable-lto )
 	fi
 
 	econf "${myconf[@]}"
@@ -103,8 +87,8 @@ src_compile() {
 }
 
 src_install() {
-	emake DIST_ROOT="${ED}" install
-	emake DIST_ROOT="${ED}" install-dev
+	emake DIST_ROOT="${ED}" HAVE_ZIPPED_MANPAGES=false install
+	emake DIST_ROOT="${ED}" HAVE_ZIPPED_MANPAGES=false install-dev
 
 	gen_usr_ldscript -a handle
 }
