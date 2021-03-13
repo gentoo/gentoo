@@ -58,5 +58,6 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
+	! use jni && find ${ED} -name "*.a" -delete
 	einstalldocs
 }
