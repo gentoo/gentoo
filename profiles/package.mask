@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2021-03-13)
+# Stuck on oasis.eclass, out of date
+# Please port your applications to dev-ml/ounit2
+# Should be a case of just a sed in most cases
+dev-ml/ounit
+
 # Sam James <sam@gentoo.org> (2021-03-12)
 # Stuck on oasis.eclass, out of date
 # No reverse dependencies
