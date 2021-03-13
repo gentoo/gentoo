@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-03-13)
+# virtual/jdk isn't keyworded here
+media-libs/rubberband jni
+
 # Marek Szuba <marecki@gentoo.org> (2021-03-11)
 # Awaiting keywording of dev-python/ruamel-std-pathlib
 # on this arch (Bug #775242)
