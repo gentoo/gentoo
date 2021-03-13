@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ if [[ -z ${PV%%*9999} ]]; then
 else
 	MY_PV=$(ver_rs 3 -)
 	SRC_URI="https://github.com/zsh-users/zsh-syntax-highlighting/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 
