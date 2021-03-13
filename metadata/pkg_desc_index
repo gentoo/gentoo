@@ -14199,7 +14199,7 @@ media-video/ccextractor 0.85-r2 0.88: Extract closed captioning subtitles from v
 media-video/cclive 0.9.3-r2: Command line tool for extracting videos from various websites
 media-video/celluloid 0.16 0.18 0.19 0.20: A simple GTK+ frontend for mpv
 media-video/chaplin 1.10-r2: This is a program to raw copy chapters from a dvd using libdvdread
-media-video/cheese 3.34.0-r1: A cheesy program to take pictures and videos from your webcam
+media-video/cheese 3.34.0-r1 3.38.0: A cheesy program to take pictures and videos from your webcam
 media-video/clive 2.3.0.1: Command line tool for extracting videos from various websites
 media-video/cpvts 1.2-r1: raw copy title sets from a DVD to your harddisc
 media-video/devedeng 4.16.0-r1: DevedeNG is a program to create video DVDs and CDs (VCD, sVCD or CVD)
@@ -14223,7 +14223,7 @@ media-video/ffmpegthumbnailer 2.2.0-r1 2.2.2: Lightweight video thumbnailer that
 media-video/flvstreamer 2.1c: Open source command-line RTMP client intended to stream audio or video flash content
 media-video/frameworks 0.3.7-r1: A small v4l frame capture utility especially suited for stop motion animation
 media-video/gaupol 1.8-r1 1.8-r2 1.9: A subtitle editor for text-based subtitles
-media-video/gnome-video-effects 0.4.3: Effects for Cheese, the webcam video and picture application
+media-video/gnome-video-effects 0.4.3 0.5.0: Effects for Cheese, the webcam video and picture application
 media-video/google2srt 0.5.6-r1: Convert subtitles from Google Video and YouTube to SubRip (.srt) format
 media-video/gpac 1.0.1 9999: Implementation of the MPEG-4 Systems standard developed from scratch in ANSI C
 media-video/guvcview 2.0.6-r1: Simple Qt5 or GTK+3 interface for capturing and viewing video from v4l2 devices

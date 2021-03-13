@@ -1,0 +1,15 @@
+BDEPEND=gtk-doc? ( dev-util/gtk-doc ) dev-libs/libxslt app-text/docbook-xml-dtd:4.3 dev-util/itstool dev-libs/appstream-glib dev-libs/libxml2:2 dev-util/glib-utils >=sys-devel/gettext-0.19.8 virtual/pkgconfig x11-base/xorg-proto test? ( x11-libs/libXtst ) || ( dev-lang/vala:0.50 dev-lang/vala:0.48 dev-lang/vala:0.46 dev-lang/vala:0.44 dev-lang/vala:0.40 dev-lang/vala:0.36 ) app-arch/xz-utils >=dev-util/meson-0.54.0 >=dev-util/ninja-1.8.2 dev-util/meson-format-array test? ( x11-base/xorg-server[xvfb] x11-apps/xhost )
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
+DEPEND=>=media-libs/clutter-1.13.2:1.0[introspection?] media-libs/clutter-gst:3.0 >=media-libs/clutter-gtk-0.91.8:1.0 x11-libs/gdk-pixbuf:2[jpeg,introspection?] >=dev-libs/glib-2.39.90:2 >=gnome-base/gnome-desktop-2.91.6:3= >=media-libs/gstreamer-1.4:1.0[introspection?] >=media-libs/gst-plugins-base-1.4:1.0[ogg,pango,theora,vorbis] >=media-libs/gst-plugins-bad-1.4:1.0 >=x11-libs/gtk+-3.13.4:3 >=media-libs/libcanberra-0.26[gtk3] x11-libs/libX11 sys-apps/dbus media-video/gnome-video-effects introspection? ( >=dev-libs/gobject-introspection-1.56:= ) media-libs/cogl:1.0=[introspection?] dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=A cheesy program to take pictures and videos from your webcam
+EAPI=7
+HOMEPAGE=https://wiki.gnome.org/Apps/Cheese
+IUSE=gtk-doc +introspection test test
+KEYWORDS=~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2+
+RDEPEND=>=media-libs/clutter-1.13.2:1.0[introspection?] media-libs/clutter-gst:3.0 >=media-libs/clutter-gtk-0.91.8:1.0 x11-libs/gdk-pixbuf:2[jpeg,introspection?] >=dev-libs/glib-2.39.90:2 >=gnome-base/gnome-desktop-2.91.6:3= >=media-libs/gstreamer-1.4:1.0[introspection?] >=media-libs/gst-plugins-base-1.4:1.0[ogg,pango,theora,vorbis] >=media-libs/gst-plugins-bad-1.4:1.0 >=x11-libs/gtk+-3.13.4:3 >=media-libs/libcanberra-0.26[gtk3] x11-libs/libX11 sys-apps/dbus media-video/gnome-video-effects introspection? ( >=dev-libs/gobject-introspection-1.56:= ) media-libs/cogl:1.0=[introspection?] >=media-libs/gst-plugins-good-1.4:1.0 >=media-plugins/gst-plugins-jpeg-1.4:1.0 >=media-plugins/gst-plugins-v4l2-1.4:1.0 >=media-plugins/gst-plugins-vpx-1.4:1.0
+RESTRICT=!test? ( test )
+SLOT=0/8
+SRC_URI=mirror://gnome/sources/cheese/3.38/cheese-3.38.0.tar.xz
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	gnome.org	532d56d07b9eace4831aaa817d2b756a	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3	l10n	8cdd85e169b835d518bc2fd59f780d8e	meson	e43eef9331f54965a573ed380854ff47	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	vala	5fab64090cefe75c5df431cefa0b653d	virtualx	7e60d3b10c791ab996f717bc1f30072f	wrapper	4251d4c84c25f59094fd557e0063a974	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=71d2a6f8b2e0f6af8b8546658b6a08c1
