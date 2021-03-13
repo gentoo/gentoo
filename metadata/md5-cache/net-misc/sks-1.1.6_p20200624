@@ -5,11 +5,11 @@ DESCRIPTION=An OpenPGP keyserver which is decentralized with highly reliable syn
 EAPI=7
 HOMEPAGE=https://github.com/SKS-Keyserver/sks-keyserver
 IUSE=optimize test
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=acct-user/sks acct-group/sks >=dev-lang/ocaml-4.0:= dev-ml/camlp4:= dev-ml/cryptokit:= dev-ml/num:= sys-libs/db:5.3
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/SKS-Keyserver/sks-keyserver/archive/591a7834dc9f1dff3d336d769a6561138a5befe7.tar.gz -> sks-1.1.6_p20200624.tar.gz
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=89c71fcc7a63df1e6eb1841d92aa28cc
+_md5_=a57286e0e7277a932949dca98b2d4498

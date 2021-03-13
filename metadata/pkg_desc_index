@@ -15382,7 +15382,7 @@ net-misc/python-x2go 0.6.1.3: X2Go client-side Python API
 net-misc/qtm 1.3.19-r1: Qt blogging client
 net-misc/quagga 1.2.4: A free routing daemon replacing Zebra supporting RIP, OSPF and BGP
 net-misc/r8168 8.048.03-r1: r8168 driver for Realtek 8111/8168 PCI-E NICs
-net-misc/rabbitmq-server 3.8.7: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
+net-misc/rabbitmq-server 3.8.7 3.8.14: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
 net-misc/radvd 2.17-r1 2.17-r2 2.18 2.18-r1 2.19: Linux IPv6 Router Advertisement Daemon
 net-misc/rclone 1.53.3 9999: A program to sync files to and from various cloud storage providers
 net-misc/rdate 1.4-r4 1.10: Use TCP or UDP to retrieve the current time of another machine
