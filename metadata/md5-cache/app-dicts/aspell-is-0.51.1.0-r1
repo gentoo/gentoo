@@ -1,4 +1,4 @@
-DEFINED_PHASES=configure install
+DEFINED_PHASES=configure install prepare
 DEPEND=app-text/aspell
 DESCRIPTION=Aspell (Icelandic) language dictionary
 EAPI=7
@@ -9,4 +9,4 @@ RDEPEND=app-text/aspell
 SLOT=0
 SRC_URI=mirror://gnu/aspell/dict/is/aspell-is-0.51.1-0.tar.bz2
 _eclasses_=aspell-dict-r1	dcedc31b2596e3c50d4f7f4b35ded54f
-_md5_=6ca1b9c18bedc1e7c9d7dd560a82afe5
+_md5_=f0179c3a04404c1e236a3f06006b7a90

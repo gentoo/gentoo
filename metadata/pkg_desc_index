@@ -1222,7 +1222,7 @@ app-dicts/aspell-hus 0.03.1: Aspell (Huastec Tenek) language dictionary
 app-dicts/aspell-hy 0.10.0.0: Aspell (Armenian) language dictionary
 app-dicts/aspell-ia 0.50.1: Aspell (Interlingua) language dictionary
 app-dicts/aspell-id 1.2.0: Aspell (Indonesian) language dictionary
-app-dicts/aspell-is 0.51.1.0: Aspell (Icelandic) language dictionary
+app-dicts/aspell-is 0.51.1.0-r1: Aspell (Icelandic) language dictionary
 app-dicts/aspell-it 2.4.20070901.0: Aspell (Italian) language dictionary
 app-dicts/aspell-kn 0.01.1: Aspell (Kannada) language dictionary
 app-dicts/aspell-ku 0.20.1: Aspell (Kurdi) language dictionary
