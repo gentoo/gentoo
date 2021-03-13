@@ -47,7 +47,7 @@ DEPEND="${COMMONDEPEND}
 	sys-devel/gettext
 "
 
-PATCHES=( "${FILESDIR}/${PN}-1.7-no-common.patch" )
+PATCHES=( "${FILESDIR}/${PN}-1.7-no-common.patch" "${FILESDIR}/${P}-libexif.patch" )
 
 S="${WORKDIR}/${PN}-${P}"
 
