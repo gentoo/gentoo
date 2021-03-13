@@ -18,9 +18,6 @@
 			Build the architecture workbench for working with architectural 
 			elements
 		</flag>
-		<flag name="ccache">
-			Use <pkg>dev-util/ccache</pkg> to build the package.
-		</flag>
 		<flag name="cloud">
 			Build the Cloud workbench, to access cloud providers (mostly
 			Amazon S3).
