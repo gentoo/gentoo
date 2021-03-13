@@ -28,8 +28,15 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	test? ( dev-ml/ounit[ocamlopt=] )
+	test? ( dev-ml/ounit2[ocamlopt=] )
 "
+
+src_prepare() {
+	default
+
+	# Port to dev-ml/ounit2
+	sed -i -e 's/oUnit/ounit2/' test/{,common,test-camomile,test-stub}/dune || die
+}
 
 src_install() {
 	dune_src_install
