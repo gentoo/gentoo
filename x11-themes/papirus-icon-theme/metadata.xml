@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
-<upstream>
-	<remote-id type="github">PapirusDevelopmentTeam/papirus-icon-theme</remote-id>
-</upstream>
+<maintainer type="person">
+		<email>marco@scardovi.com</email>
+		<name>Marco Scardovi</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">PapirusDevelopmentTeam/papirus-icon-theme</remote-id>
+	</upstream>
 </pkgmetadata>
