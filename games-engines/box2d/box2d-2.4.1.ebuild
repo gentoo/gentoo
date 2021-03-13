@@ -12,3 +12,14 @@ SRC_URI="https://github.com/erincatto/Box2D/archive/v${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="doc"
+
+BDEPEND="doc? ( app-doc/doxygen )"
+
+src_configure() {
+	local mycmakeargs=(
+		-DBOX2D_BUILD_TESTBED=OFF # bundled libs, broken anyway right now
+		-DBOX2D_BUILD_DOCS=$(usex doc)
+	)
+	cmake_src_configure
+}
