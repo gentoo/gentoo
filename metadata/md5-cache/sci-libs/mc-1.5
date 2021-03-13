@@ -1,13 +1,14 @@
-DEFINED_PHASES=compile configure install prepare setup test
-DEPEND=dev-libs/maloc media-libs/sg sci-libs/amd sci-libs/gamer sci-libs/punc <sci-libs/superlu-5 sci-libs/umfpack virtual/blas virtual/lapack doc? ( media-gfx/graphviz app-doc/doxygen ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/fortran
+BDEPEND=doc? ( media-gfx/graphviz app-doc/doxygen ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare setup
+DEPEND=dev-libs/maloc media-libs/sg sci-libs/amd sci-libs/gamer sci-libs/punc <sci-libs/superlu-5 sci-libs/umfpack virtual/blas virtual/lapack virtual/fortran
 DESCRIPTION=2D/3D AFEM code for nonlinear geometric PDE
-EAPI=5
+EAPI=7
 HOMEPAGE=http://fetk.org/codes/mc/index.html
-IUSE=debug doc static-libs
+IUSE=debug doc
 KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=dev-libs/maloc media-libs/sg sci-libs/amd sci-libs/gamer sci-libs/punc <sci-libs/superlu-5 sci-libs/umfpack virtual/blas virtual/lapack virtual/fortran
 SLOT=0
 SRC_URI=http://www.fetk.org/codes/download/mc-1.5.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	autotools-utils	961893b8004e6cf64fbef1cea6ed8bd2	desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	epatch	e8f1ec13660dc2f44b32775765d85e42	estack	055c42df72f76a4f45ec92b35e83cd56	eutils	2d5b3f4b315094768576b6799e4f926e	fortran-2	b4796813ccda91c9c0d3463fc90aa969	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	multilib	d410501a125f99ffb560b0c523cd3d1e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=852b13a278dc72fdc15e7e792f09a1bc
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	fortran-2	b4796813ccda91c9c0d3463fc90aa969	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=05deb03c9f153ffbacd0611c4c66f6c1

@@ -2757,7 +2757,7 @@ app-office/kraft 0.95: Software to manage quotes and invoices in small enterpris
 app-office/ktimetracker 5.0.1: Todo management and time tracker
 app-office/ledger 3.2.1: Double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 8.0.4 8.1.0: Library with common classes and functionality used by KDE finance applications
-app-office/libreoffice 6.4.7.2 7.0.5.2 7.0.9999 9999: A full office productivity suite
+app-office/libreoffice 6.4.7.2 7.0.5.2 7.1.9999 9999: A full office productivity suite
 app-office/libreoffice-bin 6.4.7.2_p2 6.4.7.2_p3: A full office productivity suite. Binary package
 app-office/libreoffice-bin-debug 6.4.7.2_p2 6.4.7.2_p3: LibreOffice, a full office productivity suite. Binary package, debug info
 app-office/libreoffice-l10n 6.4.7.2 7.0.5.2: Translations for the Libreoffice suite
