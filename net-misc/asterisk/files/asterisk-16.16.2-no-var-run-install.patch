@@ -5,7 +5,7 @@
  NEWHEADERS=$(notdir $(wildcard include/asterisk/*.h))
  OLDHEADERS=$(filter-out $(NEWHEADERS) $(notdir $(DESTDIR)$(ASTHEADERDIR)),$(notdir $(wildcard $(DESTDIR)$(ASTHEADERDIR)/*.h)))
 -INSTALLDIRS="$(ASTLIBDIR)" "$(ASTMODDIR)" "$(ASTSBINDIR)" "$(ASTCACHEDIR)" "$(ASTETCDIR)" "$(ASTVARRUNDIR)" \
-+INSTALLDIRS="$(ASTLIBDIR)" "$(ASTMODDIR)" "$(ASTSBINDIR)" "$(ASTCACHEDIR)" "$(ASTETCDIR)" \
++INSTALLDIRS="$(ASTLIBDIR)" "$(ASTMODDIR)" "$(ASTSBINDIR)" "$(ASTETCDIR)" \
  	"$(ASTSPOOLDIR)" "$(ASTSPOOLDIR)/dictate" "$(ASTSPOOLDIR)/meetme" \
  	"$(ASTSPOOLDIR)/monitor" "$(ASTSPOOLDIR)/system" "$(ASTSPOOLDIR)/tmp" \
  	"$(ASTSPOOLDIR)/voicemail" "$(ASTSPOOLDIR)/recording" \
