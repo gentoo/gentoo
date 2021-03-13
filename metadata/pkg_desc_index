@@ -12351,86 +12351,86 @@ kde-apps/thumbnailers 20.08.3 20.12.3: Thumbnail generators for PDF/PS and RAW f
 kde-apps/umbrello 20.08.3 20.12.3: KDE UML Modeller
 kde-apps/yakuake 20.08.3 20.12.3: Quake-style terminal emulator based on konsole
 kde-apps/zeroconf-ioslave 20.08.3 20.12.3: DNSSD (DNS Service Discovery - part of Rendezvous) ioslave and kded module
-kde-frameworks/attica 5.77.0 5.79.0: Framework providing access to Open Collaboration Services
-kde-frameworks/baloo 5.77.0-r1 5.79.0: Framework for searching and managing metadata
-kde-frameworks/bluez-qt 5.77.0 5.79.0: Qt wrapper for Bluez 5 DBus API
-kde-frameworks/breeze-icons 5.77.0-r1 5.79.0: Breeze SVG icon theme
-kde-frameworks/breeze-icons-rcc 5.77.0-r1 5.79.0: Breeze SVG icon theme binary resource
-kde-frameworks/extra-cmake-modules 5.77.0 5.79.0: Extra modules and scripts for CMake
-kde-frameworks/frameworkintegration 5.77.0 5.79.0: Framework for integrating Qt applications with KDE Plasma workspaces
-kde-frameworks/kactivities 5.77.0 5.79.0: Framework for working with KDE activities
-kde-frameworks/kactivities-stats 5.77.0 5.79.0: Framework for getting the usage statistics collected by the activities service
-kde-frameworks/kapidox 5.77.0 5.79.0: Framework for building KDE API documentation in a standard format and style
-kde-frameworks/karchive 5.77.0 5.79.0: Framework for reading, creation, and manipulation of various archive formats
-kde-frameworks/kauth 5.77.0 5.79.0: Framework to let applications perform actions as a privileged user
-kde-frameworks/kbookmarks 5.77.0 5.79.0: Framework for managing bookmarks stored in XBEL format
-kde-frameworks/kcalendarcore 5.77.0 5.79.0: Library for interfacing with calendars
-kde-frameworks/kcmutils 5.77.0 5.79.0: Framework to work with KDE System Settings modules
-kde-frameworks/kcodecs 5.77.0 5.79.0: Framework for manipulating strings using various encodings
-kde-frameworks/kcompletion 5.77.0 5.79.0: Framework for common completion tasks such as filename or URL completion
-kde-frameworks/kconfig 5.77.0 5.79.0: Framework for reading and writing configuration
-kde-frameworks/kconfigwidgets 5.77.0 5.79.0: Framework providing an assortment of configuration-related widgets
-kde-frameworks/kcontacts 5.77.0 5.79.0: Address book API based on KDE Frameworks
-kde-frameworks/kcoreaddons 5.77.0 5.79.0: Framework for solving common problems such as caching, randomisation, and more
-kde-frameworks/kcrash 5.77.0 5.79.0: Framework for intercepting and handling application crashes
-kde-frameworks/kdav 5.77.0-r1 5.79.0: DAV protocol implemention with KJobs
-kde-frameworks/kdbusaddons 5.77.0 5.79.0: Framework for registering services and applications per freedesktop standards
-kde-frameworks/kdeclarative 5.77.0 5.79.0: Framework providing integration of QML and KDE work spaces
-kde-frameworks/kded 5.77.0 5.79.0: Central daemon of KDE workspaces
-kde-frameworks/kdelibs4support 5.77.0 5.79.0: Framework easing the development transition from KDELibs 4 to KF 5
-kde-frameworks/kdesu 5.77.0 5.79.0: Framework to handle super user actions
-kde-frameworks/kdnssd 5.77.0 5.79.1: Framework for network service discovery using Zeroconf
-kde-frameworks/kdoctools 5.77.0 5.79.0: Tools to generate documentation in various formats from DocBook files
-kde-frameworks/kemoticons 5.77.0 5.79.0: Framework for converting text emoticons to graphical representations
+kde-frameworks/attica 5.77.0 5.79.0 5.80.0: Framework providing access to Open Collaboration Services
+kde-frameworks/baloo 5.77.0-r1 5.79.0 5.80.0: Framework for searching and managing metadata
+kde-frameworks/bluez-qt 5.77.0 5.79.0 5.80.0: Qt wrapper for Bluez 5 DBus API
+kde-frameworks/breeze-icons 5.77.0-r1 5.79.0 5.80.0: Breeze SVG icon theme
+kde-frameworks/breeze-icons-rcc 5.77.0-r1 5.79.0 5.80.0: Breeze SVG icon theme binary resource
+kde-frameworks/extra-cmake-modules 5.77.0 5.79.0 5.80.0: Extra modules and scripts for CMake
+kde-frameworks/frameworkintegration 5.77.0 5.79.0 5.80.0: Framework for integrating Qt applications with KDE Plasma workspaces
+kde-frameworks/kactivities 5.77.0 5.79.0 5.80.0: Framework for working with KDE activities
+kde-frameworks/kactivities-stats 5.77.0 5.79.0 5.80.0: Framework for getting the usage statistics collected by the activities service
+kde-frameworks/kapidox 5.77.0 5.79.0 5.80.0: Framework for building KDE API documentation in a standard format and style
+kde-frameworks/karchive 5.77.0 5.79.0 5.80.0: Framework for reading, creation, and manipulation of various archive formats
+kde-frameworks/kauth 5.77.0 5.79.0 5.80.0: Framework to let applications perform actions as a privileged user
+kde-frameworks/kbookmarks 5.77.0 5.79.0 5.80.0: Framework for managing bookmarks stored in XBEL format
+kde-frameworks/kcalendarcore 5.77.0 5.79.0 5.80.0: Library for interfacing with calendars
+kde-frameworks/kcmutils 5.77.0 5.79.0 5.80.0: Framework to work with KDE System Settings modules
+kde-frameworks/kcodecs 5.77.0 5.79.0 5.80.0: Framework for manipulating strings using various encodings
+kde-frameworks/kcompletion 5.77.0 5.79.0 5.80.0: Framework for common completion tasks such as filename or URL completion
+kde-frameworks/kconfig 5.77.0 5.79.0 5.80.0: Framework for reading and writing configuration
+kde-frameworks/kconfigwidgets 5.77.0 5.79.0 5.80.0: Framework providing an assortment of configuration-related widgets
+kde-frameworks/kcontacts 5.77.0 5.79.0 5.80.0: Address book API based on KDE Frameworks
+kde-frameworks/kcoreaddons 5.77.0 5.79.0 5.80.0: Framework for solving common problems such as caching, randomisation, and more
+kde-frameworks/kcrash 5.77.0 5.79.0 5.80.0: Framework for intercepting and handling application crashes
+kde-frameworks/kdav 5.77.0-r1 5.79.0 5.80.0: DAV protocol implemention with KJobs
+kde-frameworks/kdbusaddons 5.77.0 5.79.0 5.80.0: Framework for registering services and applications per freedesktop standards
+kde-frameworks/kdeclarative 5.77.0 5.79.0 5.80.0: Framework providing integration of QML and KDE work spaces
+kde-frameworks/kded 5.77.0 5.79.0 5.80.0: Central daemon of KDE workspaces
+kde-frameworks/kdelibs4support 5.77.0 5.79.0 5.80.0: Framework easing the development transition from KDELibs 4 to KF 5
+kde-frameworks/kdesu 5.77.0 5.79.0 5.80.0: Framework to handle super user actions
+kde-frameworks/kdnssd 5.77.0 5.79.1 5.80.0: Framework for network service discovery using Zeroconf
+kde-frameworks/kdoctools 5.77.0 5.79.0 5.80.0: Tools to generate documentation in various formats from DocBook files
+kde-frameworks/kemoticons 5.77.0 5.79.0 5.80.0: Framework for converting text emoticons to graphical representations
 kde-frameworks/kf-env 5: Environment setting required for all KDE Frameworks apps to run
-kde-frameworks/kfilemetadata 5.77.0 5.79.0: Library for extracting file metadata
-kde-frameworks/kglobalaccel 5.77.0 5.79.0: Framework to handle global shortcuts
-kde-frameworks/kguiaddons 5.77.0 5.79.0: Framework providing assorted high-level user interface components
-kde-frameworks/kholidays 5.77.0 5.79.0: Library to determine holidays and other special events for a geographical region
-kde-frameworks/khtml 5.77.0 5.79.0: KHTML web rendering engine
-kde-frameworks/ki18n 5.77.0 5.79.0: Framework based on Gettext for internationalizing user interface text
-kde-frameworks/kiconthemes 5.77.0 5.79.0: Framework for icon theming and configuration
-kde-frameworks/kidletime 5.77.0 5.79.0: Framework for detection and notification of device idle time
-kde-frameworks/kimageformats 5.77.0 5.79.0: Framework providing additional format plugins for Qt's image I/O system
-kde-frameworks/kinit 5.77.0 5.79.0: Helper library to speed up start of applications on KDE work spaces
-kde-frameworks/kio 5.77.0-r2 5.79.0: Framework providing transparent file and data management
-kde-frameworks/kirigami 5.77.0 5.77.0-r1 5.79.0: Lightweight user interface framework for mobile and convergent applications
-kde-frameworks/kitemmodels 5.77.0 5.79.0: Framework providing data models to help with tasks such as sorting and filtering
-kde-frameworks/kitemviews 5.77.0 5.79.0: Framework providing additional widgets for item models
-kde-frameworks/kjobwidgets 5.77.0 5.79.0: Framework providing assorted widgets for showing the progress of jobs
-kde-frameworks/kjs 5.77.0 5.79.0: ECMAScipt compatible parser and engine
-kde-frameworks/knewstuff 5.77.0-r1 5.79.0: Framework for downloading and sharing additional application data
-kde-frameworks/knotifications 5.77.0 5.79.0: Framework for notifying the user of an event
-kde-frameworks/knotifyconfig 5.77.0 5.79.0: Framework for configuring desktop notifications
-kde-frameworks/kpackage 5.77.0 5.79.0: Framework to install and load packages of non binary content
-kde-frameworks/kparts 5.77.0 5.79.0: Framework providing elaborate user-interface components
-kde-frameworks/kpeople 5.77.0 5.79.0: KDE contact person abstraction library
-kde-frameworks/kplotting 5.77.0 5.79.0: Framework providing easy data-plotting functions
-kde-frameworks/kpty 5.77.0 5.79.0: Framework for pseudo terminal devices and running child processes
-kde-frameworks/kquickcharts 5.77.0 5.79.0: QtQuick plugin providing high-performance charts
-kde-frameworks/kross 5.77.0 5.79.0: Framework for embedding scripting into applications
-kde-frameworks/krunner 5.77.0 5.79.0: Framework for providing different actions given a string query
-kde-frameworks/kservice 5.77.0 5.79.0: Advanced plugin and service introspection
-kde-frameworks/ktexteditor 5.77.0 5.79.0: Framework providing a full text editor component
-kde-frameworks/ktextwidgets 5.77.0 5.79.0: Framework providing an assortment of widgets for displaying and editing text
-kde-frameworks/kunitconversion 5.77.0 5.79.0: Framework for converting units
-kde-frameworks/kwallet 5.77.0 5.79.0: Framework providing desktop-wide storage for passwords
-kde-frameworks/kwayland 5.77.0 5.79.0: Qt-style client and server library wrapper for Wayland libraries
-kde-frameworks/kwidgetsaddons 5.77.0 5.79.0: An assortment of high-level widgets for common tasks
-kde-frameworks/kwindowsystem 5.77.0 5.79.0: Framework providing access to properties and features of the window manager
-kde-frameworks/kxmlgui 5.77.0-r1 5.79.0: Framework for managing menu and toolbar actions in an abstract way
-kde-frameworks/modemmanager-qt 5.77.0 5.79.0: ModemManager bindings for Qt
-kde-frameworks/networkmanager-qt 5.77.0 5.79.0: NetworkManager bindings for Qt
-kde-frameworks/oxygen-icons 5.77.0 5.79.0: Oxygen SVG icon theme
-kde-frameworks/plasma 5.77.0-r1 5.79.0: Plasma framework
-kde-frameworks/prison 5.77.0 5.79.0: QRCode and data matrix barcode library
-kde-frameworks/purpose 5.77.0-r1 5.79.0: Library for providing abstractions to get the developer's purposes fulfilled
-kde-frameworks/qqc2-desktop-style 5.77.0 5.79.0: Style for QtQuickControls 2 that uses QWidget's QStyle for painting
-kde-frameworks/solid 5.77.0 5.79.0: Provider for platform independent hardware discovery, abstraction and management
-kde-frameworks/sonnet 5.77.0 5.79.0: Framework for providing spell-checking through abstraction of popular backends
-kde-frameworks/syndication 5.77.0 5.79.0: Library for parsing RSS and Atom feeds
-kde-frameworks/syntax-highlighting 5.77.0-r1 5.77.0-r3 5.79.0 5.79.1: Framework for syntax highlighting
-kde-frameworks/threadweaver 5.77.0 5.79.0: Framework for managing threads using job and queue-based interfaces
+kde-frameworks/kfilemetadata 5.77.0 5.79.0 5.80.0: Library for extracting file metadata
+kde-frameworks/kglobalaccel 5.77.0 5.79.0 5.80.0: Framework to handle global shortcuts
+kde-frameworks/kguiaddons 5.77.0 5.79.0 5.80.0: Framework providing assorted high-level user interface components
+kde-frameworks/kholidays 5.77.0 5.79.0 5.80.0: Library to determine holidays and other special events for a geographical region
+kde-frameworks/khtml 5.77.0 5.79.0 5.80.0: KHTML web rendering engine
+kde-frameworks/ki18n 5.77.0 5.79.0 5.80.0: Framework based on Gettext for internationalizing user interface text
+kde-frameworks/kiconthemes 5.77.0 5.79.0 5.80.0: Framework for icon theming and configuration
+kde-frameworks/kidletime 5.77.0 5.79.0 5.80.0: Framework for detection and notification of device idle time
+kde-frameworks/kimageformats 5.77.0 5.79.0 5.80.0: Framework providing additional format plugins for Qt's image I/O system
+kde-frameworks/kinit 5.77.0 5.79.0 5.80.0: Helper library to speed up start of applications on KDE work spaces
+kde-frameworks/kio 5.77.0-r2 5.79.0 5.80.0: Framework providing transparent file and data management
+kde-frameworks/kirigami 5.77.0 5.77.0-r1 5.79.0 5.80.0: Lightweight user interface framework for mobile and convergent applications
+kde-frameworks/kitemmodels 5.77.0 5.79.0 5.80.0: Framework providing data models to help with tasks such as sorting and filtering
+kde-frameworks/kitemviews 5.77.0 5.79.0 5.80.0: Framework providing additional widgets for item models
+kde-frameworks/kjobwidgets 5.77.0 5.79.0 5.80.0: Framework providing assorted widgets for showing the progress of jobs
+kde-frameworks/kjs 5.77.0 5.79.0 5.80.0: ECMAScipt compatible parser and engine
+kde-frameworks/knewstuff 5.77.0-r1 5.79.0 5.80.0: Framework for downloading and sharing additional application data
+kde-frameworks/knotifications 5.77.0 5.79.0 5.80.0: Framework for notifying the user of an event
+kde-frameworks/knotifyconfig 5.77.0 5.79.0 5.80.0: Framework for configuring desktop notifications
+kde-frameworks/kpackage 5.77.0 5.79.0 5.80.0: Framework to install and load packages of non binary content
+kde-frameworks/kparts 5.77.0 5.79.0 5.80.0: Framework providing elaborate user-interface components
+kde-frameworks/kpeople 5.77.0 5.79.0 5.80.0: KDE contact person abstraction library
+kde-frameworks/kplotting 5.77.0 5.79.0 5.80.0: Framework providing easy data-plotting functions
+kde-frameworks/kpty 5.77.0 5.79.0 5.80.0: Framework for pseudo terminal devices and running child processes
+kde-frameworks/kquickcharts 5.77.0 5.79.0 5.80.0: QtQuick plugin providing high-performance charts
+kde-frameworks/kross 5.77.0 5.79.0 5.80.0: Framework for embedding scripting into applications
+kde-frameworks/krunner 5.77.0 5.79.0 5.80.0: Framework for providing different actions given a string query
+kde-frameworks/kservice 5.77.0 5.79.0 5.80.0: Advanced plugin and service introspection
+kde-frameworks/ktexteditor 5.77.0 5.79.0 5.80.0: Framework providing a full text editor component
+kde-frameworks/ktextwidgets 5.77.0 5.79.0 5.80.0: Framework providing an assortment of widgets for displaying and editing text
+kde-frameworks/kunitconversion 5.77.0 5.79.0 5.80.0: Framework for converting units
+kde-frameworks/kwallet 5.77.0 5.79.0 5.80.0: Framework providing desktop-wide storage for passwords
+kde-frameworks/kwayland 5.77.0 5.79.0 5.80.0: Qt-style client and server library wrapper for Wayland libraries
+kde-frameworks/kwidgetsaddons 5.77.0 5.79.0 5.80.0: An assortment of high-level widgets for common tasks
+kde-frameworks/kwindowsystem 5.77.0 5.79.0 5.80.0: Framework providing access to properties and features of the window manager
+kde-frameworks/kxmlgui 5.77.0-r1 5.79.0 5.80.0: Framework for managing menu and toolbar actions in an abstract way
+kde-frameworks/modemmanager-qt 5.77.0 5.79.0 5.80.0: ModemManager bindings for Qt
+kde-frameworks/networkmanager-qt 5.77.0 5.79.0 5.80.0: NetworkManager bindings for Qt
+kde-frameworks/oxygen-icons 5.77.0 5.79.0 5.80.0: Oxygen SVG icon theme
+kde-frameworks/plasma 5.77.0-r1 5.79.0 5.80.0: Plasma framework
+kde-frameworks/prison 5.77.0 5.79.0 5.80.0: QRCode and data matrix barcode library
+kde-frameworks/purpose 5.77.0-r1 5.79.0 5.80.0: Library for providing abstractions to get the developer's purposes fulfilled
+kde-frameworks/qqc2-desktop-style 5.77.0 5.79.0 5.80.0: Style for QtQuickControls 2 that uses QWidget's QStyle for painting
+kde-frameworks/solid 5.77.0 5.79.0 5.80.0: Provider for platform independent hardware discovery, abstraction and management
+kde-frameworks/sonnet 5.77.0 5.79.0 5.80.0: Framework for providing spell-checking through abstraction of popular backends
+kde-frameworks/syndication 5.77.0 5.79.0 5.80.0: Library for parsing RSS and Atom feeds
+kde-frameworks/syntax-highlighting 5.77.0-r3 5.79.1 5.80.0: Framework for syntax highlighting
+kde-frameworks/threadweaver 5.77.0 5.79.0 5.80.0: Framework for managing threads using job and queue-based interfaces
 kde-misc/basket 2.49b: Multiple information organizer - a DropDrawers clone
 kde-misc/colord-kde 0.5.0-r2: Provides interfaces and session daemon to colord
 kde-misc/kdeconnect 20.08.3 20.12.3: Adds communication between KDE Plasma and your smartphone

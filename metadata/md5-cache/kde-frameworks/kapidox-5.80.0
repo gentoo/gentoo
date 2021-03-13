@@ -1,0 +1,14 @@
+BDEPEND=python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_9? ( dev-lang/python:3.9 >=dev-lang/python-exec-2:=[python_targets_python3_9] ) python_single_target_python3_7? ( >=dev-python/setuptools-42.0.2[python_targets_python3_7(-)] ) python_single_target_python3_8? ( >=dev-python/setuptools-42.0.2[python_targets_python3_8(-)] ) python_single_target_python3_9? ( >=dev-python/setuptools-42.0.2[python_targets_python3_9(-)] )
+DEFINED_PHASES=compile configure install nofetch prepare setup test unpack
+DESCRIPTION=Framework for building KDE API documentation in a standard format and style
+EAPI=7
+HOMEPAGE=https://kde.org/products/frameworks/
+IUSE=python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86
+LICENSE=BSD-2
+RDEPEND=app-doc/doxygen python_single_target_python3_7? ( dev-python/jinja[python_targets_python3_7(-)] dev-python/pyyaml[python_targets_python3_7(-)] ) python_single_target_python3_8? ( dev-python/jinja[python_targets_python3_8(-)] dev-python/pyyaml[python_targets_python3_8(-)] ) python_single_target_python3_9? ( dev-python/jinja[python_targets_python3_9(-)] dev-python/pyyaml[python_targets_python3_9(-)] ) media-gfx/graphviz[python,python_single_target_python3_7(-)?,python_single_target_python3_8(-)?,python_single_target_python3_9(-)?] python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_9? ( dev-lang/python:3.9 >=dev-lang/python-exec-2:=[python_targets_python3_9] )
+REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9 )
+SLOT=5/5.80
+SRC_URI=mirror://kde/stable/frameworks/5.80/kapidox-5.80.0.tar.xz
+_eclasses_=distutils-r1	16579e06f8839831bd5c03455bb87e3f	kde.org	1c383520a04b2d5564075764eaf0bde0	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=d2215bdc37dfeffb09f65de4e7f271b5
