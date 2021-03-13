@@ -16947,7 +16947,7 @@ sys-apps/daisydog 2014.05.30: A very simple /dev/watchdog daemon
 sys-apps/darwin-miscutils 6-r1 8 9 10 11 12: Miscellaneous commands used on macOS, High Sierra 10.13
 sys-apps/dbus 1.12.20-r1: A message bus system, a simple way for applications to talk to each other
 sys-apps/dbus-broker 25 27 9999: Linux D-Bus Message Broker
-sys-apps/dcfldd 1.3.4.1-r1 1.5 1.6 1.7: enhanced dd with features for forensics and security
+sys-apps/dcfldd 1.7: enhanced dd with features for forensics and security
 sys-apps/dchroot 0.12.1: Utility for managing chroots for non-root users
 sys-apps/debianutils 4.11.1 4.11.2: A selection of tools from Debian
 sys-apps/diffutils 3.7-r1: Tools to make diffs and compare files

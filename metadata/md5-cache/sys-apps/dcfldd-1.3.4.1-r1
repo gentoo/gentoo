@@ -1,9 +1,0 @@
-DEFINED_PHASES=-
-DESCRIPTION=enhanced dd with features for forensics and security
-EAPI=7
-HOMEPAGE=http://dcfldd.sourceforge.net/
-KEYWORDS=amd64 ~ppc x86
-LICENSE=GPL-2
-SLOT=0
-SRC_URI=mirror://sourceforge/dcfldd/dcfldd-1.3.4-1.tar.gz
-_md5_=647dd0731388098fcc743b3beca9be00
