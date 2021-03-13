@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic systemd
+inherit autotools flag-o-matic tmpfiles systemd
 
 DESCRIPTION="Sagan is a multi-threaded, real time system and event log monitoring system"
 HOMEPAGE="https://sagan.quadrantsec.com/"
@@ -74,12 +74,12 @@ src_install() {
 	rm -r "${ED}"/var/run/ || die
 
 	# Fix paths in config file
-	sed -i -e "s:/usr/local/:${EPREFIX}/:" "${ED}"/etc/sagan.yaml || die
+	sed -i \
+		-e "s:/usr/local/:${EPREFIX}/:" \
+		-e "s:/var/run/sagan:${EPREFIX}/run/sagan:" \
+		"${ED}"/etc/sagan.yaml || die
 
 	diropts -g sagan -o sagan -m 775
-
-	dodir /var/log/sagan
-
 	keepdir /var/log/sagan
 
 	touch "${ED}"/var/log/sagan/sagan.log || die
@@ -89,12 +89,18 @@ src_install() {
 	newconfd "${FILESDIR}"/sagan.confd sagan
 
 	systemd_dounit "${FILESDIR}"/sagan.service
+	newtmpfiles "${FILESDIR}"/sagan.tmpfiles sagan.conf
+
+	insinto /etc/logrotate.d
+	newins "${FILESDIR}"/sagan.logrotate sagan
 
 	docinto examples
 	dodoc -r extra/*
 }
 
 pkg_postinst() {
+	tmpfiles_process sagan.conf
+
 	if use smtp; then
 		ewarn "You have enabled smtp use flag. If you plan on using Sagan with"
 		ewarn "email, create valid writable home directory for user 'sagan'"
