@@ -14,7 +14,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/jonaski/strawberry/releases/download/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~ppc64 ~x86"
 fi
 
 LICENSE="GPL-3"
@@ -87,7 +87,6 @@ REQUIRED_USE="
 src_prepare() {
 	l10n_find_plocales_changes "src/translations" "" ".po"
 
-	rm -r 3rdparty/taglib || die
 	cmake_src_prepare
 }
 
@@ -107,7 +106,6 @@ src_configure() {
 		-DENABLE_LIBPULSE="$(usex pulseaudio)"
 		-DENABLE_UDISKS2="$(usex udisks)"
 		-DENABLE_VLC="$(usex vlc)"
-		-DUSE_SYSTEM_TAGLIB=ON
 		-DWITH_QT6=OFF
 	)
 
