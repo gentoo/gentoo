@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -87,6 +87,7 @@ src_install() {
 		}
 		python_foreach_impl run_in_build_dir installation
 		python_replicate_script "${ED}"/usr/bin/spd-conf
+		python_foreach_impl python_optimize
 	fi
 
 	find "${D}" -name '*.la' -type f -delete || die
