@@ -1,17 +1,17 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools elisp-common
+inherit elisp-common
 
 DESCRIPTION="Set of tools to deal with Maildirs, in particular, searching and indexing"
 HOMEPAGE="https://www.djcbsoftware.nl/code/mu/ https://github.com/djcb/mu"
-SRC_URI="https://github.com/djcb/mu/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/djcb/mu/releases/download/${PV}/mu-${PV}.tar.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 x86 ~x64-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~x64-macos"
 IUSE="emacs guile mug"
 
 DEPEND="
@@ -29,11 +29,6 @@ BDEPEND="virtual/pkgconfig"
 
 SITEFILE="70mu-gentoo-autoload.el"
 
-src_prepare() {
-	default
-	eautoreconf
-}
-
 src_configure() {
 	local myeconfargs=(
 		$(use_enable emacs mu4e)
@@ -43,26 +38,6 @@ src_configure() {
 	)
 
 	econf "${myeconfargs[@]}"
-}
-
-src_install() {
-	dobin mu/mu
-	dodoc AUTHORS HACKING NEWS NEWS.org TODO README ChangeLog
-	if use emacs; then
-		elisp-install ${PN} mu4e/*.el mu4e/*.elc
-		elisp-site-file-install "${FILESDIR}/${SITEFILE}"
-		doinfo mu4e/mu4e.info
-	fi
-
-	doman man/mu-*.*
-
-	if use guile; then
-		  doinfo guile/mu-guile.info
-	fi
-
-	if use mug; then
-		  dobin toys/mug/mug
-	fi
 }
 
 pkg_preinst() {
