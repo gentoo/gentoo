@@ -1,0 +1,15 @@
+BDEPEND=dev-util/ninja dev-util/cmake
+DEFINED_PHASES=compile configure install prepare pretend test
+DEPEND=dev-libs/gmp:= sys-libs/binutils-libs:= arb? ( sci-mathematics/arb:= ) boost? ( dev-libs/boost:= ) ecm? ( sci-mathematics/gmp-ecm ) flint? ( sci-mathematics/flint:= ) mpc? ( dev-libs/mpc:= ) tcmalloc? ( dev-util/google-perftools ) doc? ( app-doc/doxygen[dot] )
+DESCRIPTION=Fast symbolic manipulation library, written in C++
+EAPI=7
+HOMEPAGE=https://github.com/sympy/symengine
+IUSE=arb benchmarks boost debug doc ecm flint llvm mpc mpfr openmp test tcmalloc threads
+KEYWORDS=~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=MIT
+RDEPEND=dev-libs/gmp:= sys-libs/binutils-libs:= arb? ( sci-mathematics/arb:= ) boost? ( dev-libs/boost:= ) ecm? ( sci-mathematics/gmp-ecm ) flint? ( sci-mathematics/flint:= ) mpc? ( dev-libs/mpc:= ) tcmalloc? ( dev-util/google-perftools )
+RESTRICT=!test? ( test )
+SLOT=0/0.4
+SRC_URI=https://github.com/sympy/symengine/archive/v0.7.0.tar.gz -> symengine-0.7.0.tar.gz
+_eclasses_=cmake	314a813be2f09820e8978cdee941e501	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=0d52a474644dada4b385f51cd9634a8b
