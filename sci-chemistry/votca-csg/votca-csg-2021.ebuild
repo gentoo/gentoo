@@ -32,6 +32,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	>=app-text/txt2tags-2.5
 	virtual/pkgconfig
 "
 
