@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/project/spacenav/spacenavd%20config%20gui/${PN}%20
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 COMMON_DEPEND="x11-libs/gtk+:2"
