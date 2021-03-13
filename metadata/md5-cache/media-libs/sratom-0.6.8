@@ -1,4 +1,4 @@
-BDEPEND=virtual/pkgconfig doc? ( app-doc/doxygen )
+BDEPEND=virtual/pkgconfig doc? ( app-doc/doxygen dev-python/sphinx dev-python/sphinx_lv2_theme )
 DEFINED_PHASES=compile configure install prepare setup test
 DEPEND=dev-libs/serd dev-libs/sord media-libs/lv2 || ( dev-lang/python:3.9[threads(+)] dev-lang/python:3.8[threads(+)] dev-lang/python:3.7[threads(+)] )
 DESCRIPTION=Library for serialising LV2 atoms to/from RDF, particularly the Turtle syntax
@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=http://download.drobilla.net/sratom-0.6.8.tar.bz2
 _eclasses_=multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	waf-utils	0a6e492cdcbd52b1304cfcd9eba5abc6
-_md5_=8f2f8f368253a7b803471796e8cfe97a
+_md5_=07ae160992e98f795c2d37d139961a35

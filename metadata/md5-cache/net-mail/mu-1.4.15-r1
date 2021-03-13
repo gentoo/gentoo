@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=configure postinst postrm preinst
+DEPEND=dev-libs/glib:2= dev-libs/gmime:3.0= >=dev-libs/xapian-1.4:= emacs? ( >=app-editors/emacs-24.4:* ) guile? ( >=dev-scheme/guile-2.2:* ) mug? ( net-libs/webkit-gtk:4= x11-libs/gtk+:3= )
+DESCRIPTION=Set of tools to deal with Maildirs, in particular, searching and indexing
+EAPI=7
+HOMEPAGE=https://www.djcbsoftware.nl/code/mu/ https://github.com/djcb/mu
+IUSE=emacs guile mug
+KEYWORDS=~amd64 ~arm ~arm64 ~x86 ~x64-macos
+LICENSE=GPL-3+
+RDEPEND=dev-libs/glib:2= dev-libs/gmime:3.0= >=dev-libs/xapian-1.4:= emacs? ( >=app-editors/emacs-24.4:* ) guile? ( >=dev-scheme/guile-2.2:* ) mug? ( net-libs/webkit-gtk:4= x11-libs/gtk+:3= )
+SLOT=0
+SRC_URI=https://github.com/djcb/mu/releases/download/1.4.15/mu-1.4.15.tar.xz
+_eclasses_=elisp-common	d4b53ec63c580b993ed19445f411e1d2
+_md5_=f63172b9ebf03ba8943a28eab16d38fc
