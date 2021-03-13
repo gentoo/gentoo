@@ -40,7 +40,7 @@ PDEPEND="emacs? ( app-emacs/autoconf-mode )"
 src_prepare() {
 	# usr/bin/libtool is provided by binutils-apple, need gnu libtool
 	if [[ ${CHOST} == *-darwin* ]] ; then
-		PATCHES+=( "${FILESDIR}"/${PN}-2.61-darwin.patch )
+		PATCHES+=( "${FILESDIR}"/${PN}-2.71-darwin.patch )
 	fi
 
 	# Save timestamp to avoid later makeinfo call
