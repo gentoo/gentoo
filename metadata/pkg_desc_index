@@ -2957,7 +2957,7 @@ app-text/dblatex 0.3.11-r1 0.3.12: Transform DocBook using TeX macros
 app-text/delta 20060803-r1: Heuristically minimizes interesting files
 app-text/dictd 1.13.0-r1: Dictionary Client/Server for the DICT protocol
 app-text/diction 1.13 1.14: Diction and style checkers for english and german texts
-app-text/diff-pdf 0.3 0.4.1-r2: A simple tool for visually comparing two PDF files
+app-text/diff-pdf 0.4.1-r2: A simple tool for visually comparing two PDF files
 app-text/diffpdf 2.1.3-r2: Program that textually or visually compares two PDF files
 app-text/ding 1.8.1 1.9: Tk based dictionary (German-English) (incl. dictionary itself)
 app-text/discount 2.2.7: A Markdown-to HTML translator written in C
