@@ -8,4 +8,10 @@
 	<use>
 		<flag name="ant-task">Build and register the ant-task</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">jflex-de/jflex</remote-id>
+		<changelog>https://jflex.de/changelog.html</changelog>
+		<bugs-to>https://github.com/jflex-de/jflex/issues/</bugs-to>
+		<doc>https://jflex.de/docu.html</doc>
+	</upstream>
 </pkgmetadata>
