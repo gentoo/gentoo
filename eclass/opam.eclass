@@ -20,6 +20,10 @@ esac
 
 # Do not complain about CFLAGS etc since ml projects do not use them.
 QA_FLAGS_IGNORED='.*'
+# OCaml won't generate executable stack unless it has to on 32-bit
+# bug #773226
+QA_EXECSTACK=".*"
+QA_WX_LOAD=".*"
 
 # @ECLASS-VARIABLE: OPAM_INSTALLER_DEP
 # @PRE_INHERIT
