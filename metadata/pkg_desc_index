@@ -11131,7 +11131,7 @@ dev-vcs/gitsh 0.11.2: An interactive shell for git
 dev-vcs/gitstats 0_pre20201124: Statistics generator for git
 dev-vcs/gti 9999: A silly git launcher, basically. Inspired by sl
 dev-vcs/guilt 0.36-r1: A series of bash scripts which add a quilt-like interface to git
-dev-vcs/hg-evolve 10.2.0: enables the changeset evolution feature of Mercurial
+dev-vcs/hg-evolve 10.3.0: enables the changeset evolution feature of Mercurial
 dev-vcs/hg-git 0.9.0_rc1-r1 0.9.0: push to and pull from a Git repository using Mercurial
 dev-vcs/hub 2.14.2: Command-line wrapper for git that makes you better at GitHub
 dev-vcs/kdesvn 2.1.0: A frontend to the subversion vcs
