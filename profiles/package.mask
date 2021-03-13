@@ -47,7 +47,11 @@ dev-ml/type-conv
 dev-ml/optcomp
 dev-ml/lwt_react
 dev-ml/batteries
-
+dev-ml/ocaml-magic-mime
+# dependencies of oasis itself
+dev-ml/ocamlify
+dev-ml/ocamlmod
+dev-ml/oasis
 
 # Sam James <sam@gentoo.org> (2021-03-12)
 # Obsolete copy of dev-ml/re
