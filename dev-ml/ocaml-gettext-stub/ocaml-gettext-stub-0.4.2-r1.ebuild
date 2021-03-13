@@ -33,6 +33,13 @@ DEPEND="
 	${RDEPEND}
 	test? (
 		dev-ml/ocaml-fileutils
-		dev-ml/ounit[ocamlopt=]
+		dev-ml/ounit2[ocamlopt=]
 	)
 "
+
+src_prepare() {
+	default
+
+	# Port to dev-ml/ounit2
+	sed -i -e 's/oUnit/ounit2/' test/{,common,test-camomile,test-stub}/dune || die
+}
