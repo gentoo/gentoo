@@ -15,7 +15,6 @@ IUSE="hardened"
 
 RDEPEND="net-firewall/conntrack-tools
 	!sys-cluster/kubernetes"
-BDEPEND="=dev-lang/go-1.14*"
 
 RESTRICT+=" test"
 S="${WORKDIR}/kubernetes-${PV}"
