@@ -43,6 +43,7 @@ dev-ml/gen
 dev-ml/tyxml
 dev-ml/stringext
 dev-ml/deriving
+dev-ml/type-conv
 
 # Sam James <sam@gentoo.org> (2021-03-12)
 # Obsolete copy of dev-ml/re
