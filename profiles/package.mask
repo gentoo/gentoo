@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2021-03-12)
+# Stuck on oasis.eclass, out of date
+# No reverse dependencies
+dev-ml/qcheck
+
+# Sam James <sam@gentoo.org> (2021-03-12)
 # Obsolete copy of dev-ml/re
 # Stuck on old oasis.eclass
 # bug #749696, #711414
