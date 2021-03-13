@@ -1,14 +1,14 @@
 BDEPEND=>=dev-vcs/git-1.8.2.1[curl] >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install prepare setup unpack
-DEPEND=dev-libs/boost:= dev-util/mdds:1/9999 python? ( python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) ) dev-libs/spdlog
+DEPEND=dev-libs/boost:= dev-util/mdds:1/9999 python? ( python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_9? ( dev-lang/python:3.9 >=dev-lang/python-exec-2:=[python_targets_python3_9] ) )
 DESCRIPTION=General purpose formula parser & interpreter
 EAPI=7
 HOMEPAGE=https://gitlab.com/ixion/ixion
-IUSE=debug python +threads python_single_target_python3_7 python_single_target_python3_8
+IUSE=debug python +threads python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9
 LICENSE=MIT
 PROPERTIES=live
-RDEPEND=dev-libs/boost:= dev-util/mdds:1/9999 python? ( python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) )
-REQUIRED_USE=python? ( ^^ ( python_single_target_python3_7 python_single_target_python3_8 ) )
+RDEPEND=dev-libs/boost:= dev-util/mdds:1/9999 python? ( python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_9? ( dev-lang/python:3.9 >=dev-lang/python-exec-2:=[python_targets_python3_9] ) )
+REQUIRED_USE=python? ( ^^ ( python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9 ) )
 SLOT=0/0.16
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=fc77b8ab5e82170948ec5f29e45d7a1a
+_md5_=14f849e32fac7eddb5de89e76a998c20

@@ -2131,7 +2131,7 @@ app-emulation/img 0.5.7-r1: Standalone daemon-less unprivileged Dockerfile and O
 app-emulation/kompose 1.22.0: Tool to move from docker-compose to Kubernetes
 app-emulation/libcacard 2.6.0: virtual Common Access Card (CAC) library emulator
 app-emulation/libdsk 1.5.8: LIBDSK is a library for accessing discs and disc image files
-app-emulation/libguestfs 1.36.13-r2 1.36.15-r2 1.38.6-r1 1.38.6-r102: Tools for accessing, inspect and modifying virtual machine (VM) disk images
+app-emulation/libguestfs 1.38.6-r103: Tools for accessing, inspect and modifying virtual machine (VM) disk images
 app-emulation/libguestfs-appliance 1.38.0: VM appliance disk image used in libguestfs package
 app-emulation/libspectrum 1.4.4: Spectrum emulation library
 app-emulation/libvirt 6.8.0-r2 7.0.0-r1 7.1.0 9999: C toolkit to manipulate virtual machines
@@ -5539,7 +5539,7 @@ dev-libs/libintl 0.21: the GNU international library (split out of gettext)
 dev-libs/libisoburn 1.5.2 1.5.4: Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn
 dev-libs/libisofs 1.5.2 1.5.4: Open-source library for reading, mastering and writing optical discs
 dev-libs/libite 2.1.0 2.1.2 2.2.0: A collection of useful BSD APIs
-dev-libs/libixion 0.15.0 9999: General purpose formula parser & interpreter
+dev-libs/libixion 0.15.0 0.16.1 9999: General purpose formula parser & interpreter
 dev-libs/libjcat 0.1.4 0.1.5 0.1.6: Library and tool for reading and writing Jcat files
 dev-libs/libkpass 6-r1: Libkpass is a C implementation to access KeePass 1.x format password databases
 dev-libs/libksba 1.3.5-r1 1.3.5-r2 1.4.0 1.5.0: X.509 and CMS (PKCS#7) library
@@ -5573,7 +5573,7 @@ dev-libs/libnsfb 0.2.0-r2 0.2.1-r1 0.2.2-r1: C library for framebuffer abstracti
 dev-libs/libnsutils 0.0.5-r2 0.1.0-r1: C library for base64 and time
 dev-libs/libofx 0.10.1-r1: Library to support the Open Financial eXchange XML format
 dev-libs/liboil 0.3.17-r3: Library of simple functions that are optimized for various CPUs
-dev-libs/liborcus 0.15.4 9999: Standalone file import filter library for spreadsheet documents
+dev-libs/liborcus 0.15.4 0.16.1 9999: Standalone file import filter library for spreadsheet documents
 dev-libs/libotf 0.9.13 0.9.16: Library for handling OpenType fonts (OTF)
 dev-libs/libowfat 0.31-r1 0.32-r1 0.32-r2: reimplement libdjb - excellent libraries from Dan Bernstein
 dev-libs/libp11 0.4.10 0.4.11: Abstraction layer to simplify PKCS#11 API
@@ -11476,7 +11476,7 @@ games-emulation/vgba 4.8-r1: Gameboy Advance (GBA) emulator for Linux
 games-emulation/yabause 0.9.15: Sega Saturn emulator
 games-emulation/zinc 1.1-r1: An x86 binary-only emulator for Sony ZN-1, ZN-2, and Namco System 11 arcades
 games-emulation/zsnes 1.51-r8 1.51-r9: SNES (Super Nintendo) emulator that uses x86 assembly
-games-engines/box2d 2.1.2 2.2.1 2.3.1: A C++ engine for simulating rigid bodies in 2D games
+games-engines/box2d 2.4.1: C++ engine for simulating rigid bodies in 2D games
 games-engines/dMagnetic 0.30: A Magnetic Scrolls Interpreter for playing a collection of old text adventures
 games-engines/devilutionx 1.0.3 1.1.0-r2 9999: Diablo engine for modern operating systems
 games-engines/exult 1.6: an Ultima 7 game engine that runs on modern operating systems
@@ -11926,8 +11926,8 @@ games-util/xgame 1.7.1-r1: Run games in a separate X session
 games-util/xgame-gtk2 2.0.2-r1: Run games in a separate X session
 games-util/xgamer 0.6.2: A launcher for starting games in a second X session
 games-util/xqf 1.0.6.2: A server browser for many FPS games (frontend for qstat)
-gnome-base/dconf 0.34.0 0.36.0: Simple low-level configuration system
-gnome-base/dconf-editor 3.36.4: Graphical tool for editing the dconf configuration database
+gnome-base/dconf 0.34.0 0.36.0 0.40.0: Simple low-level configuration system
+gnome-base/dconf-editor 3.36.4 3.38.2: Graphical tool for editing the dconf configuration database
 gnome-base/gconf 3.2.6-r5: GNOME configuration system and daemon
 gnome-base/gdm 3.36.3 3.36.4: GNOME Display Manager for managing graphical display servers and user logins
 gnome-base/gnome 3.36.5: Meta package for GNOME 3, merge this package to install
@@ -14099,7 +14099,7 @@ media-sound/spek 0.8.3-r1: Analyse your audio files by showing their spectrogram
 media-sound/splay 0.9.5.2-r2: An audio player, primarily for the console
 media-sound/split2flac 122 9999: sh script to split an APE/FLAC/WV/WAV audio image with CUE sheet into tracks
 media-sound/spotify 1.0.72-r1 1.1.10-r1 1.1.26-r1 1.1.26-r2 1.1.42: Spotify is a social music platform
-media-sound/strawberry 0.8.3 0.8.4 0.8.5 9999: Modern music player and library organizer based on Clementine and Qt
+media-sound/strawberry 0.8.3 0.8.5 0.9.1 9999: Modern music player and library organizer based on Clementine and Qt
 media-sound/streamripper 1.64.6: Extracts and records individual MP3 file tracks from shoutcast streams
 media-sound/streamtranscoder 1.2.4 3.1.11: Commandline program to transcode shoutcast/icecast streams to different bitrates
 media-sound/subsonic-bin 5.2.1-r2: Subsonic is a complete, personal media streaming solution
@@ -15008,7 +15008,7 @@ net-libs/libyang 1.0.215: YANG data modeling language library
 net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs
 net-libs/liquid-dsp 1.3.2 9999: digital signal processing library for software-defined radios
 net-libs/loudmouth 1.5.3-r1 1.5.3-r2 1.5.3-r3: Lightweight C Jabber library
-net-libs/mbedtls 2.16.8 2.16.9 2.24.0 2.25.0: Cryptographic library for embedded systems
+net-libs/mbedtls 2.16.8 2.16.9 2.16.10 2.24.0 2.25.0 2.26.0: Cryptographic library for embedded systems
 net-libs/meanwhile 1.0.2-r1: Meanwhile (Sametime protocol) library
 net-libs/miniupnpc 2.2.1 2.2.2: UPnP client library and a simple UPnP client
 net-libs/nDPI 3.0-r1 3.0-r2 3.2-r1 3.2-r2 3.4 9999: Open Source Deep Packet Inspection Software Toolkit
@@ -15051,7 +15051,7 @@ net-libs/telepathy-logger-qt 17.09.0: Qt bindings for the Telepathy logger
 net-libs/telepathy-qt 0.9.8 9999: Qt bindings for the Telepathy D-Bus protocol
 net-libs/tox 0.2.11-r1 0.2.12-r1 9999: Encrypted P2P, messaging, and audio/video calling platform
 net-libs/udns 0.4: Async-capable DNS stub resolver library
-net-libs/uhttpmock 0.5.1: HTTP web service mocking library
+net-libs/uhttpmock 0.5.1 0.5.3: HTTP web service mocking library
 net-libs/usrsctp 0.9.3.0_p20201102: A cross-platform userland SCTP stack
 net-libs/wandio 4.2.3_p1-r1: C library for simple and efficient file IO
 net-libs/webkit-gtk 2.30.5: Open source web browser engine
