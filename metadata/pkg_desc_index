@@ -14714,7 +14714,7 @@ net-firewall/rtsp-conntrack 4.18-r1 5.3: RTSP conntrack module for Netfilter
 net-firewall/sanewall 1.1.6-r3: iptables firewall generator (fork of firehol)
 net-firewall/shorewall 5.2.8: A high-level tool for configuring Netfilter
 net-firewall/ufw 0.36: A program used to manage a netfilter firewall
-net-firewall/xtables-addons 2.13-r1 3.7-r1 3.8-r1 3.9 3.13 3.17: iptables extensions not yet accepted in the main kernel
+net-firewall/xtables-addons 2.13-r1 3.7-r1 3.8-r1 3.9 3.13 3.17 3.18: iptables extensions not yet accepted in the main kernel
 net-fs/autofs 5.1.6-r1 5.1.7: Kernel based automounter
 net-fs/btfs 2.22 2.23: a bittorrent filesystem based on FUSE
 net-fs/cifs-utils 6.11 6.12: Tools for Managing Linux CIFS Client Filesystems
