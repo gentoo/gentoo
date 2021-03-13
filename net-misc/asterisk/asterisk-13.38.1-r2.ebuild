@@ -19,7 +19,7 @@ IUSE_VOICEMAIL_STORAGE=(
 	voicemail_storage_odbc
 	voicemail_storage_imap
 )
-IUSE="${IUSE_VOICEMAIL_STORAGE[*]//+/} alsa blocks bluetooth calendar +caps cluster curl dahdi debug doc freetds gtalk http iconv ilbc ldap libressl lua mysql newt odbc oss pjproject portaudio postgres radius selinux snmp span speex srtp +ssl static statsd syslog vorbis xmpp"
+IUSE="${IUSE_VOICEMAIL_STORAGE[*]} alsa blocks bluetooth calendar +caps cluster curl dahdi debug doc freetds gtalk http iconv ilbc ldap libressl lua mysql newt odbc oss pjproject portaudio postgres radius selinux snmp span speex srtp +ssl static statsd syslog vorbis xmpp"
 REQUIRED_USE="gtalk? ( xmpp )
 	lua? ( ${LUA_REQUIRED_USE} )
 	^^ ( ${IUSE_VOICEMAIL_STORAGE[*]//+/} )
@@ -99,7 +99,8 @@ RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-asterisk )
 	syslog? ( virtual/logger )"
 
-BDEPEND="virtual/pkgconfig"
+BDEPEND="dev-libs/libxml2:2
+	virtual/pkgconfig"
 
 QA_DT_NEEDED="/usr/lib.*/libasteriskssl[.]so[.][0-9]\+"
 
@@ -285,7 +286,7 @@ src_install() {
 	dodoc UPGRADE* BUGS CREDITS
 
 	# install extra documentation
-	use doc &&doc/*.{txt,pdf}
+	use doc && dodoc doc/*.{txt,pdf}
 
 	# install logrotate snippet; bug #329281
 	#
