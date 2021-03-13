@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit desktop unpacker xdg-utils
+inherit desktop unpacker xdg-utils chromium-2
 
 DESCRIPTION="Microsoft Teams, an Office 365 multimedia collaboration client, pre-release"
 HOMEPAGE="https://products.office.com/en-us/microsoft-teams/group-chat-software/"
@@ -58,6 +58,19 @@ RDEPEND="
 "
 
 S="${WORKDIR}"
+
+PATCHES=(
+	"${FILESDIR}/fix-url-opening-1.4.00.4855.patch"
+)
+
+pkg_pretend() {
+	chromium_suid_sandbox_check_kernel_config
+}
+
+src_configure() {
+	chromium_suid_sandbox_check_kernel_config
+	default
+}
 
 src_install() {
 	rm _gpgorigin || die
