@@ -1,0 +1,15 @@
+BDEPEND=dev-libs/libxml2:2 app-text/docbook-xsl-stylesheets dev-libs/libxslt dev-util/glib-utils >=sys-devel/gettext-0.19.8 virtual/pkgconfig app-arch/xz-utils >=dev-util/meson-0.54.0 >=dev-util/ninja-1.8.2 dev-util/meson-format-array
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
+DEPEND=>=media-libs/libdvdread-4.2.0:0= >=dev-libs/glib-2.31:2 >=x11-libs/gtk+-3.16.0:3 >=media-libs/libcanberra-0.1[gtk3] >=app-arch/xz-utils-5.0.5 >=x11-libs/libnotify-0.7:= >=app-crypt/libsecret-0.7 >=dev-libs/libpwquality-1.0.0 >=sys-fs/udisks-2.7.6:2 elogind? ( >=sys-auth/elogind-209 ) systemd? ( >=sys-apps/systemd-209:0= ) dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Disk Utility for GNOME using udisks
+EAPI=7
+HOMEPAGE=https://wiki.gnome.org/Apps/Disks
+IUSE=fat elogind gnome systemd
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2+
+RDEPEND=>=media-libs/libdvdread-4.2.0:0= >=dev-libs/glib-2.31:2 >=x11-libs/gtk+-3.16.0:3 >=media-libs/libcanberra-0.1[gtk3] >=app-arch/xz-utils-5.0.5 >=x11-libs/libnotify-0.7:= >=app-crypt/libsecret-0.7 >=dev-libs/libpwquality-1.0.0 >=sys-fs/udisks-2.7.6:2 elogind? ( >=sys-auth/elogind-209 ) systemd? ( >=sys-apps/systemd-209:0= ) x11-themes/adwaita-icon-theme fat? ( sys-fs/dosfstools ) gnome? ( >=gnome-base/gnome-settings-daemon-3.8 )
+REQUIRED_USE=?? ( elogind systemd )
+SLOT=0
+SRC_URI=mirror://gnome/sources/gnome-disk-utility/3.38/gnome-disk-utility-3.38.2.tar.xz
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	gnome.org	532d56d07b9eace4831aaa817d2b756a	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3	l10n	8cdd85e169b835d518bc2fd59f780d8e	meson	e43eef9331f54965a573ed380854ff47	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=0ab3d31444d4d2a78cf2d1b88c7c348e

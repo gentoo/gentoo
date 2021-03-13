@@ -10938,7 +10938,7 @@ dev-util/kup 0.3.4-r1 0.3.6: kernel.org uploader tool
 dev-util/kyua 0.13-r2: Testing framework for infrastructure software
 dev-util/lcov 1.13-r2 1.14 1.14_p2 1.15 9999: A graphical front-end for GCC's coverage testing tool gcov
 dev-util/leaktracer 2.4-r3: trace and analyze memory leaks in C++ programs
-dev-util/libabigail 1.6: Suite of tools for checking ABI differences between ELF objects
+dev-util/libabigail 1.6 1.8.2: Suite of tools for checking ABI differences between ELF objects
 dev-util/linklint 2.3.5: A Perl program that checks links on web sites
 dev-util/lldb 10.0.1 11.0.0 11.0.1 11.1.0 12.0.0_rc2 12.0.0_rc3 12.0.0.9999 13.0.0.9999: The LLVM debugger
 dev-util/lockrun 20120508-r1: Lockrun - runs cronjobs with overrun protection
@@ -16417,7 +16417,7 @@ sci-libs/nanoflann 1.3.2 9999: C++ header-only library for Nearest Neighbor (NN)
 sci-libs/neartree 5.1.1: Function library efficiently solving the Nearest Neighbor Problem
 sci-libs/nemesis 6.09: Enhancement to the EXODUSII finite element database model
 sci-libs/netcdf 4.7.4: Scientific library and interface for array oriented data access
-sci-libs/netcdf-cxx 4.2-r300 4.3.0 4.3.1: C++ library for netCDF
+sci-libs/netcdf-cxx 4.3.0 4.3.1: C++ library for netCDF
 sci-libs/netcdf-fortran 4.4.3: Scientific library and interface for array oriented data access
 sci-libs/nfft 3.5.2: library for nonequispaced discrete Fourier transformations
 sci-libs/nlopt 2.6.2-r1: Non-linear optimization library
@@ -16988,7 +16988,7 @@ sys-apps/gawk 4.2.1-r1 5.0.1 5.1.0: GNU awk pattern-matching language
 sys-apps/gcp 0.2.1: File copying utility with progress and I/O indicator
 sys-apps/gentoo-functions 0.13 0.14 9999: base functions required by all Gentoo systems
 sys-apps/gentoo-systemd-integration 7 8 9 9999: systemd integration files for Gentoo
-sys-apps/gnome-disk-utility 3.36.3: Disk Utility for GNOME using udisks
+sys-apps/gnome-disk-utility 3.36.3 3.38.2: Disk Utility for GNOME using udisks
 sys-apps/gpet 0.4: GTK+ based TOMOYO policy editor
 sys-apps/gptfdisk 1.0.6-r1 1.0.7: GPT partition table manipulator for Linux
 sys-apps/gradm 3.1.201603152148 3.1.201607172312 3.1.201608131257 3.1.201708012022 3.1.201903191516: Administrative interface for the grsecurity Role Based Access Control system
