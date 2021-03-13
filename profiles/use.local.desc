@@ -5959,6 +5959,7 @@ net-libs/daq:ipq - Build the IPQ data acquisition module. IPQ is the old way to 
 net-libs/daq:nfq - Build the NFQ data acquisition module. NFQ is the new way to process iptables packets for inline deployments. Snort can not run unprivileged when using this module.
 net-libs/daq:pcap - Build the PCAP data acquisition module.
 net-libs/davix:tools - Install additional tools
+net-libs/farstream:valgrind - Compile in valgrind memory hints
 net-libs/freaklabs-chibiarduino:promisc - Enable promisc in the config file for packet sniffing
 net-libs/glib-networking:gnome - Extract HTTP/HTTPS/SOCKS proxy configuration stored using GSettings
 net-libs/glib-networking:libproxy - Use net-libs/libproxy for getting the HTTP/HTTPS/SOCKS proxy configuration

@@ -3037,7 +3037,7 @@ app-text/libepubgen 0.1.1: EPUB generator for librevenge
 app-text/libetonyek 0.1.9-r1 9999: Library parsing Apple Keynote presentations
 app-text/libexttextcat 3.4.5: Library implementing N-gram-based text categorization
 app-text/libgepub 0.6.0: GObject based library for handling and rendering epub documents
-app-text/libgxps 0.3.1: Library for handling and rendering XPS documents
+app-text/libgxps 0.3.1 0.3.2: Library for handling and rendering XPS documents
 app-text/liblangtag 0.6.3: An interface library to access tags for identifying languages
 app-text/libmspub 0.1.4 9999: Library parsing Microsoft Publisher documents
 app-text/libmwaw 0.3.17 9999: Library parsing many pre-OSX MAC text formats
@@ -12018,7 +12018,7 @@ gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME'
 gnome-extra/pch-session 3.36.3 3.38.1 3.38.2: Unofficial gnome based session with different default settings and extensions
 gnome-extra/polkit-gnome 0.105-r2: A dbus session bus service that is used to bring up authentication dialogs
 gnome-extra/seahorse-nautilus 3.11.92: Nautilus extension for encrypting and decrypting files with GnuPG
-gnome-extra/sushi 3.34.0: A quick previewer for Nautilus, the GNOME file manager
+gnome-extra/sushi 3.34.0 3.38.0: A quick previewer for Nautilus, the GNOME file manager
 gnome-extra/synapse 0.2.99.4: A program launcher in the style of GNOME Do
 gnome-extra/yelp 3.36.0 3.36.2 3.38.3: Help browser for GNOME
 gnome-extra/yelp-xsl 3.36.1 3.38.3: XSL stylesheets for yelp
@@ -14807,7 +14807,7 @@ net-im/telegram-desktop 2.4.7-r1 2.4.11: Official desktop client for Telegram
 net-im/telegram-desktop-bin 2.5.9 2.6.0 2.6.1: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.2-r1: Daemon that centralizes the communication logging within the Telepathy framework
-net-im/telepathy-mission-control 5.16.5: An account manager and channel dispatcher for the Telepathy framework
+net-im/telepathy-mission-control 5.16.5 5.16.6: An account manager and channel dispatcher for the Telepathy framework
 net-im/tkabber 1.1.2: A jabber client written in Tcl/Tk
 net-im/toxic 0.8.3-r2 0.10.0-r1: A curses-based client for Tox
 net-im/transwhat 0.2.2_p20190426-r1: A WhatsApp XMPP Gateway based on Spectrum 2 and Yowsup 3
@@ -14852,7 +14852,7 @@ net-irc/rbot 0.9.15_p20160325-r2: A ruby IRC bot
 net-irc/rhapsody 0.28b: IRC client intended to be displayed on a text console
 net-irc/scrollz 2.3: Advanced IRC client based on ircII
 net-irc/sic 1.2-r1: An extremely simple IRC client
-net-irc/telepathy-idle 0.2.0-r3: Full-featured IRC connection manager for Telepathy
+net-irc/telepathy-idle 0.2.0-r3 0.2.2: Full-featured IRC connection manager for Telepathy
 net-irc/unrealircd 5.0.6 5.0.7 5.0.7-r1 5.0.7-r2 5.0.8: An advanced Internet Relay Chat daemon
 net-irc/weechat 3.0-r100 3.0.1 3.1 9999: Portable and multi-interface IRC client
 net-irc/znc 1.8.1 1.8.2 9999: An advanced IRC Bouncer
@@ -14881,7 +14881,7 @@ net-libs/dleyna-connector-dbus 0.3.0: utility library for higher level dLeyna li
 net-libs/dleyna-core 0.6.0: utility library for higher level dLeyna libraries
 net-libs/dleyna-renderer 0.6.0: A library to discover and manipulate DLNA renderers
 net-libs/enet 1.2.2-r1 1.3.13 1.3.17: Relatively thin, simple and robust network communication layer on top of UDP
-net-libs/farstream 0.2.8-r2: Audio/video conferencing framework specifically designed for instant messengers
+net-libs/farstream 0.2.8-r2 0.2.9: Audio/video conferencing framework specifically designed for instant messengers
 net-libs/freaklabs-chibiarduino 1.0.8_p20190329 9999: freaklabs fork of the lightweight wireless sensor library for Arduino
 net-libs/glib-networking 2.62.4 2.64.3 2.66.0: Network-related giomodules for glib
 net-libs/gloox 1.0.22 1.0.24: A portable high-level Jabber/XMPP library for C++
