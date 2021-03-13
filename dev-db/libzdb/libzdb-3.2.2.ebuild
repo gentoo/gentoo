@@ -18,7 +18,7 @@ REQUIRED_USE=" || ( postgres mysql sqlite )"
 RESTRICT=test
 
 RDEPEND="mysql? ( dev-db/mysql-connector-c:0= )
-	postgres? ( dev-db/postgresql )
+	postgres? ( dev-db/postgresql:* )
 	sqlite? ( >=dev-db/sqlite-3.7:3[unlock-notify(+)] )
 	ssl? ( dev-libs/openssl:0= )"
 DEPEND="${RDEPEND}
@@ -28,8 +28,6 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	default
 	sed -i -e "s|&& ./pool||g" test/Makefile.in || die
-	# Fix detection of openssl 1.1
-	sed -i -e "s|SSL_library_init|SSL_CTX_new|" configure || die
 }
 
 src_configure() {
