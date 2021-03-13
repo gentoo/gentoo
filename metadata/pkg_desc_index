@@ -10107,7 +10107,7 @@ dev-ruby/haml-rails 2.0.0 2.0.1: Provides Haml generators for Rails 4
 dev-ruby/hamster 3.0.0-r1: Efficient, immutable, thread-safe collection classes for Ruby
 dev-ruby/hashdiff 1.0.0 1.0.1: Simple Hash extension to make working with nested hashes easier
 dev-ruby/hashery 2.1.2: The Hashery is a tight collection of Hash-like classes
-dev-ruby/hashicorp-checkpoint 0.1.5: Internal HashiCorp service to check version information
+dev-ruby/hashicorp-checkpoint 0.1.5 0.1.5-r1: Internal HashiCorp service to check version information
 dev-ruby/hashie 2.1.2-r1 3.6.0 4.0.0 4.1.0 4.1.0-r1: Hashie is a small collection of tools that make hashes more powerful
 dev-ruby/hashr 2.0.1: Simple Hash extension to make working with nested hashes easier
 dev-ruby/heredoc_unindent 1.2.0 1.2.0-r1: Removes leading whitespace from Ruby heredocs
