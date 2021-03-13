@@ -4,11 +4,11 @@ DESCRIPTION=Prebuilt Java JDK binaries provided by AdoptOpenJDK
 EAPI=6
 HOMEPAGE=https://adoptopenjdk.net
 IUSE=alsa cups examples headless-awt selinux source
-KEYWORDS=~amd64 ~arm64 ~ppc64
+KEYWORDS=~amd64 ~arm64 ~ppc64 ~x64-macos
 LICENSE=GPL-2-with-classpath-exception
-RDEPEND=media-libs/fontconfig:1.0 media-libs/freetype:2 >=sys-apps/baselayout-java-0.1.0-r1 >=sys-libs/glibc-2.2.5:* sys-libs/zlib alsa? ( media-libs/alsa-lib ) arm? ( dev-libs/libffi-compat:6 ) cups? ( net-print/cups ) selinux? ( sec-policy/selinux-java ) !headless-awt? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXi x11-libs/libXrender x11-libs/libXtst ) >=dev-java/java-config-2.2.0-r3 >=app-eselect/eselect-java-0.4.0
+RDEPEND=>=sys-apps/baselayout-java-0.1.0-r1 kernel_linux? ( media-libs/fontconfig:1.0 media-libs/freetype:2 >=sys-libs/glibc-2.2.5:* sys-libs/zlib alsa? ( media-libs/alsa-lib ) arm? ( dev-libs/libffi-compat:6 ) cups? ( net-print/cups ) selinux? ( sec-policy/selinux-java ) !headless-awt? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXi x11-libs/libXrender x11-libs/libXtst ) ) >=dev-java/java-config-2.2.0-r3 >=app-eselect/eselect-java-0.4.0
 RESTRICT=preserve-libs strip
 SLOT=8
-SRC_URI=arm64? ( https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u282-b08/OpenJDK8U-jdk_aarch64_linux_hotspot_jdk8u282-b08.tar.gz ) ppc64? ( https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u282-b08/OpenJDK8U-jdk_ppc64le_linux_hotspot_8u282b08.tar.gz ) amd64? ( https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u282-b08/OpenJDK8U-jdk_x64_linux_hotspot_8u282b08.tar.gz )
+SRC_URI=arm64? ( https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u282-b08/OpenJDK8U-jdk_aarch64_linux_hotspot_jdk8u282-b08.tar.gz ) ppc64? ( https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u282-b08/OpenJDK8U-jdk_ppc64le_linux_hotspot_8u282b08.tar.gz ) amd64? ( https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u282-b08/OpenJDK8U-jdk_x64_linux_hotspot_8u282b08.tar.gz ) x64-macos? ( https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u282-b08/OpenJDK8U-jdk_x64_mac_hotspot_8u282b08.tar.gz )
 _eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	java-vm-2	3a5fd6d2dc28e64872910bdd6c6b8d7b	multilib	d410501a125f99ffb560b0c523cd3d1e	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=23ba8243e5981116f4eca6649c56ecd4
+_md5_=645f09071864b4340ef5a977ffb2c873

@@ -4334,6 +4334,7 @@ media-libs/quarter:qthelp - Build API documentation in QtHelp format
 media-libs/quvi:json - Enable support for JSON output
 media-libs/raptor:json - Enable support for JSON parsing
 media-libs/raspberrypi-userland-bin:hardfp - Use armv6 hardfp ABI
+media-libs/rubberband:jni - Enables building of Java Native Interface library
 media-libs/rubberband:programs - Builds also executable applications
 media-libs/rubberband:vamp - Enables vamp plugins support (Audio analysing plugins)
 media-libs/sdl-mixer:fluidsynth - Use media-sound/fluidsynth for MIDI support

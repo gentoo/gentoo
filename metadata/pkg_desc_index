@@ -13438,7 +13438,7 @@ media-libs/raspberrypi-userland-bin 1.20201201: Raspberry Pi userspace tools and
 media-libs/resid 0.16_p2-r1: C++ library to emulate the C64 SID chip
 media-libs/rlottie 0.2: A platform independent standalone library that plays Lottie Animations
 media-libs/rtaudio 5.1.0: A set of cross-platform C++ classes for realtime audio I/O
-media-libs/rubberband 1.9.0: An audio time-stretching and pitch-shifting library and utility program
+media-libs/rubberband 1.9.0 1.9.1: An audio time-stretching and pitch-shifting library and utility program
 media-libs/sbc 1.5: Audio codec to connect bluetooth HQ audio devices as headphones or loudspeakers
 media-libs/sdl-gfx 2.0.26 2.0.26-r1: Graphics drawing primitives library for SDL
 media-libs/sdl-image 1.2.12-r2: image file loading library
@@ -13872,7 +13872,7 @@ media-sound/deadbeef 1.8.4 1.8.7-r1: DeaDBeeF is a modular audio player similar 
 media-sound/declick 0.6.5-r1: Dynamic digital declicker for audio sample files
 media-sound/deinvert 9999: A voice inversion descrambler
 media-sound/denemo 2.3.0-r1: A music notation editor
-media-sound/din 49.1: a software musical instrument and audio synthesizer
+media-sound/din 49.1 50: a software musical instrument and audio synthesizer
 media-sound/dir2ogg 0.13-r1: Converts mp3, m4a, wma, and wav files to Ogg Vorbis format
 media-sound/drumstick 2.0.0: Qt/C++ wrapper for ALSA sequencer
 media-sound/dvda-author 10.06-r1: Author a DVD-Audio DVD
@@ -17658,7 +17658,7 @@ sys-fs/unionfs-fuse 2.1 9999: Self-syncing tree-merging file system based on FUS
 sys-fs/vhba 20200106-r1: Virtual (SCSI) Host Bus Adapter kernel module for the CDEmu suite
 sys-fs/vzquota 3.1: OpenVZ VPS disk quota utility
 sys-fs/xfsdump 3.1.9: xfs dump/restore utilities
-sys-fs/xfsprogs 5.4.0-r1 5.10.0-r1: xfs filesystem utilities
+sys-fs/xfsprogs 5.10.0-r1 5.11.0: xfs filesystem utilities
 sys-fs/xwmfs 0.86: FUSE-based X11 Window-Manager file system
 sys-fs/yaffs2utils 0.2.9: tools for generating YAFFS images
 sys-fs/zerofree 1.1.1: Zeroes out all free space on a filesystem
