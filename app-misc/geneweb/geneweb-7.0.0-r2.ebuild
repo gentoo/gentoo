@@ -25,9 +25,15 @@ RDEPEND="dev-lang/ocaml[ocamlopt?]
 	dev-ml/calendars:="
 DEPEND="${RDEPEND}
 	dev-ml/cppo
-	test? ( dev-ml/ounit )"
+	test? ( dev-ml/ounit2 )"
 
 QA_FLAGS_IGNORED='.*'
+
+src_prepare() {
+	default
+
+	sed -i -e "s/oUnit/ounit2/" test/dune.in || die
+}
 
 src_configure() {
 	ocaml ./configure.ml
