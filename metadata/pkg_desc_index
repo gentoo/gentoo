@@ -2148,7 +2148,7 @@ app-emulation/podman 3.0.1: Library and podman tool for running OCI-based contai
 app-emulation/protontricks 1.4.1 1.4.3: app-emulation/winetricks wrapper for Proton (Steam Play) games
 app-emulation/punes 0.107: Nintendo Entertainment System (NES) emulator
 app-emulation/q4wine 1.3.12: Qt GUI configuration tool for Wine
-app-emulation/qemu 5.1.0-r3 5.2.0-r1 5.2.0-r2 5.2.0-r3 9999: QEMU + Kernel-based Virtual Machine userland tools
+app-emulation/qemu 5.2.0-r1 5.2.0-r2 5.2.0-r3 9999: QEMU + Kernel-based Virtual Machine userland tools
 app-emulation/qemu-guest-agent 4.2.0-r1 5.0.0: QEMU Guest Agent (qemu-ga) for use when running inside a VM
 app-emulation/qemu-init-scripts 0.3.0-r1: Kvm and qemu init scripts
 app-emulation/qemu-riscv64-bin 5.0.0: Statically linked x86-64 binary of app-emulation/qemu, riscv64 emulator
@@ -2595,7 +2595,7 @@ app-misc/logserial 0.4.2: A tool for logging raw data from a serial device
 app-misc/lsx 0.1-r1: list executables
 app-misc/ltunify 0.2-r2: Tool for working with Logitech Unifying receivers and devices
 app-misc/lxsplit 0.2.4-r1: Command-line file splitter/joiner for Linux
-app-misc/mc 4.8.25-r1 4.8.26-r1 9999: GNU Midnight Commander is a text based file manager
+app-misc/mc 4.8.26-r1 9999: GNU Midnight Commander is a text based file manager
 app-misc/media-player-info 24: Repository of data files describing media player capabilities
 app-misc/mediacrush-cli 1.1.2 9999: A bash script for working with MediaCrush from a shell
 app-misc/mencal 3.0: Calendar to track menstruation cycles
@@ -2618,7 +2618,7 @@ app-misc/nut 20.1: Record what you eat and analyze your nutrient levels
 app-misc/ondir 0.2.4: Automatically execute scripts as you traverse directories
 app-misc/oneko 1.2-r2 1.2_p5 1.2_p6_p14-r1: A cat, dog and others which chase the mouse or windows around the screen
 app-misc/pal 0.4.3-r2: Command-line calendar program
-app-misc/pax-utils 1.2.6 1.2.8 1.2.9: ELF utils that can check files for security relevant properties
+app-misc/pax-utils 1.2.6 1.2.9: ELF utils that can check files for security relevant properties
 app-misc/pdfpc 4.4.1: Presenter console with multi-monitor support for PDF files
 app-misc/perltrash 0.3-r1: Command-line trash can emulation
 app-misc/pet 0.3.6 0.3.6-r1: Simple command-line snippet manager
@@ -11028,7 +11028,7 @@ dev-util/sel 0.08.4-r2: A filemanager for shell scripts
 dev-util/serialtalk 1.2-r1 9999: simple command-line tool to talk to serial devices
 dev-util/sgb 20030623-r1 20090810: Stanford GraphBase
 dev-util/shadowman 2 9999: Unified compiler shadow link directory updater
-dev-util/shards 0.14.0 0.14.1: Dependency manager for the Crystal language
+dev-util/shards 0.14.1: Dependency manager for the Crystal language
 dev-util/shc 3.9.6: A (shell-) script compiler/scrambler
 dev-util/shellcheck 0.7.1: Shell script analysis tool
 dev-util/shellcheck-bin 0.7.1: Shell script analysis tool (binary package)
@@ -12851,7 +12851,7 @@ media-fonts/source-pro 20141211 20160608 20170111: Adobe's open source typeface 
 media-fonts/stix-fonts 1.1.1 2.0.0: Comprehensive OpenType font set of mathematical symbols and alphabets
 media-fonts/takao-fonts 003.02.01: A community developed derivatives of IPA Fonts
 media-fonts/tengwar-fonts 1.9d: Tengwar - the Elvish letters, created by Feanor and described by J.R.R.Tolkien)
-media-fonts/terminus-font 4.48-r2 4.49: A clean fixed font for the console and X11
+media-fonts/terminus-font 4.49: A clean fixed font for the console and X11
 media-fonts/termsyn 1.8.7: Monospaced font based on terminus and tamsyn
 media-fonts/tex-gyre 2.005 2.501: Extensive remake of freely available URW fonts
 media-fonts/texcm-ttf 1.0: TeX's Computer Modern Fonts for MathML
