@@ -35,6 +35,7 @@
 # Matt Turner <mattst88@gentoo.org> (2021-04-13)
 # Masked for testing
 >=app-misc/tracker-3
+>=app-misc/tracker-miners-3
 
 # Michał Górny <mgorny@gentoo.org> (2021-04-10)
 # Obsolete backport to Python < 3.4.  No reverse dependencies left.
