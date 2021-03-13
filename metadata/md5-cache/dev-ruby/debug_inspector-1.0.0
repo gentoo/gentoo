@@ -13,4 +13,4 @@ RESTRICT=!test? ( test ) !test? ( test )
 SLOT=0
 SRC_URI=https://github.com/banister/debug_inspector/archive/v1.0.0.tar.gz -> debug_inspector-1.0.0.tar.gz
 _eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	multilib	d410501a125f99ffb560b0c523cd3d1e	ruby-fakegem	ec7b495f660dc38b1da9b6a19c75ecdd	ruby-ng	676004cfb6cdf3dedf1c778d56346624	ruby-utils	03dfa7f54d59d740c2964dc7256d2820	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=455455091fb07c5ab38df5de7145afe1
+_md5_=9477d6776214fac88a91e2ea6bb32725
