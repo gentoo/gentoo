@@ -13438,7 +13438,7 @@ media-libs/raspberrypi-userland-bin 1.20201201: Raspberry Pi userspace tools and
 media-libs/resid 0.16_p2-r1: C++ library to emulate the C64 SID chip
 media-libs/rlottie 0.2: A platform independent standalone library that plays Lottie Animations
 media-libs/rtaudio 5.1.0: A set of cross-platform C++ classes for realtime audio I/O
-media-libs/rubberband 1.9.0 1.9.1: An audio time-stretching and pitch-shifting library and utility program
+media-libs/rubberband 1.9.0 1.9.1-r1: An audio time-stretching and pitch-shifting library and utility program
 media-libs/sbc 1.5: Audio codec to connect bluetooth HQ audio devices as headphones or loudspeakers
 media-libs/sdl-gfx 2.0.26 2.0.26-r1: Graphics drawing primitives library for SDL
 media-libs/sdl-image 1.2.12-r2: image file loading library
