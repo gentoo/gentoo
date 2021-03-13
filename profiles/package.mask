@@ -52,6 +52,7 @@ dev-ml/iTeML
 # dependencies of oasis itself
 dev-ml/ocamlify
 dev-ml/ocamlmod
+dev-ml/ocaml-expect
 dev-ml/oasis
 
 # Sam James <sam@gentoo.org> (2021-03-12)
