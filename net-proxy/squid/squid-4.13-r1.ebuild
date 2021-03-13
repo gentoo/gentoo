@@ -3,8 +3,6 @@
 
 EAPI=7
 
-WANT_AUTOMAKE="1.15"
-
 inherit autotools flag-o-matic linux-info pam systemd toolchain-funcs
 
 DESCRIPTION="A full-featured web proxy cache"
