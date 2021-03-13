@@ -1,13 +1,14 @@
+BDEPEND=doc? ( app-doc/doxygen )
 DEFINED_PHASES=configure install
-DEPEND=virtual/mpi doc? ( app-doc/doxygen ) test? ( dev-libs/check )
+DEPEND=virtual/mpi test? ( dev-libs/check )
 DESCRIPTION=API for distributing embarrassingly parallel workloads using self-stabilization
 EAPI=7
 HOMEPAGE=https://github.com/hpc/libcircle
-IUSE=doc static-libs test
+IUSE=doc test
 KEYWORDS=~amd64 ~x86 ~amd64-linux
 LICENSE=BSD
 RDEPEND=virtual/mpi
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/hpc/libcircle/releases/download/v0.3/libcircle-0.3.0.tar.gz
-_md5_=4857bc0596af9546455ec861e88a6fcc
+_md5_=8054331052dc0430a782a20727da0b35
