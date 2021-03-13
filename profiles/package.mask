@@ -36,6 +36,7 @@
 # Stuck on oasis.eclass, out of date
 # No reverse dependencies
 dev-ml/qcheck
+dev-ml/macaque
 
 # Sam James <sam@gentoo.org> (2021-03-12)
 # Obsolete copy of dev-ml/re
