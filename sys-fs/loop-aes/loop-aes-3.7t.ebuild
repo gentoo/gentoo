@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,14 +9,14 @@ MY_P="${PN/aes/AES}-v${PV}"
 
 DESCRIPTION="Linux kernel module to encrypt disk partitions with AES cipher"
 HOMEPAGE="http://loop-aes.sourceforge.net/loop-AES.README"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
+SRC_URI="http://loop-aes.sourceforge.net/loop-AES/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~sparc ~x86"
 IUSE="cpu_flags_x86_aes extra-ciphers keyscrub cpu_flags_x86_padlock"
 
-RDEPEND="app-crypt/loop-aes-losetup"
+DEPEND="app-crypt/loop-aes-losetup"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -32,16 +32,16 @@ pkg_setup() {
 		LINUX_SOURCE=\"${KERNEL_DIR}\" \
 		KBUILD_OUTPUT=\"${KBUILD_OUTPUT}\" \
 		USE_KBUILD=y MODINST=n RUNDM=n"
-	use cpu_flags_x86_aes && BUILD_PARAMS="${BUILD_PARAMS} INTELAES=y"
-	use keyscrub && BUILD_PARAMS="${BUILD_PARAMS} KEYSCRUB=y"
-	use cpu_flags_x86_padlock && BUILD_PARAMS="${BUILD_PARAMS} PADLOCK=y"
+	use cpu_flags_x86_aes && BUILD_PARAMS+=" INTELAES=y"
+	use keyscrub && BUILD_PARAMS+=" KEYSCRUB=y"
+	use cpu_flags_x86_padlock && BUILD_PARAMS+=" PADLOCK=y"
 
 	if use extra-ciphers; then
 		MODULE_NAMES="${MODULE_NAMES}
 			loop_blowfish(block::tmp-d-kbuild)
 			loop_serpent(block::tmp-d-kbuild)
 			loop_twofish(block::tmp-d-kbuild)"
-		BUILD_PARAMS="${BUILD_PARAMS} EXTRA_CIPHERS=y"
+		BUILD_PARAMS+=" EXTRA_CIPHERS=y"
 	fi
 }
 
@@ -51,6 +51,9 @@ src_install() {
 	dodoc README
 	dobin loop-aes-keygen
 	doman loop-aes-keygen.1
+
+	into /
+	dosbin build-initrd.sh
 }
 
 pkg_postinst() {
@@ -65,12 +68,4 @@ pkg_postinst() {
 	einfo "use your processors native AES instructions giving quite a speed"
 	einfo "increase."
 	einfo
-
-	ewarn
-	ewarn "Please consider using loop-aes-losetup package instead of"
-	ewarn "util-linux[loop-aes], it will enable all loop-aes services"
-	ewarn "without patching util-linux package"
-	ewarn
-	ewarn "In future only loop-aes-losetup will be available in portage"
-	ewarn
 }
