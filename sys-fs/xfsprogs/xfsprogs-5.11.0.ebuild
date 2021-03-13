@@ -18,7 +18,7 @@ RDEPEND=">=sys-apps/util-linux-2.17.2
 	dev-libs/inih
 	icu? ( dev-libs/icu:= )
 	libedit? ( dev-libs/libedit )
-	!<sys-fs/xfsdump-3"
+"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	nls? ( sys-devel/gettext )
