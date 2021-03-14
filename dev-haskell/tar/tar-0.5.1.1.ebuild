@@ -34,6 +34,7 @@ src_prepare() {
 	default
 
 	cabal_chdeps \
+		'base       >= 4 && < 4.14' 'base       >= 4' \
 		'tasty            >= 0.10 && <0.12' 'tasty            >= 0.10' \
 		'tasty-quickcheck == 0.8.*' 'tasty-quickcheck >= 0.8'
 }
