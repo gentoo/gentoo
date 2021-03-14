@@ -1,31 +1,30 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 JAVA_PKG_IUSE="doc source"
 
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Library for testing Java code using mock objects"
-SRC_URI="http://jmock.org/downloads/${P}-jars.zip"
 HOMEPAGE="http://jmock.org"
+SRC_URI="http://jmock.org/downloads/${P}-jars.zip"
 
 LICENSE="BSD"
 SLOT="2"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
-IUSE=""
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 CDEPEND="dev-java/hamcrest-core:1.3
 	dev-java/hamcrest-library:1.3
 	dev-java/junit:4"
 
-RDEPEND=">=virtual/jre-1.6
+RDEPEND=">=virtual/jre-1.8:*
 	${CDEPEND}"
 
-DEPEND=">=virtual/jdk-1.6
-	${CDEPEND}
-	app-arch/unzip"
+DEPEND="app-arch/unzip
+	>=virtual/jdk-1.8:*
+	${CDEPEND}"
 
 JAVA_GENTOO_CLASSPATH="hamcrest-core-1.3,hamcrest-library-1.3,junit-4"
 
@@ -39,5 +38,6 @@ src_unpack() {
 }
 
 src_prepare() {
+	default
 	find -name "*.class" -delete || die
 }
