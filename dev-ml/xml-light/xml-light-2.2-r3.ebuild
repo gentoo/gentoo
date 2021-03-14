@@ -11,7 +11,7 @@ SRC_URI="http://tech.motion-twin.com/zip/${P}.zip"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
-KEYWORDS="amd64 arm ~arm64 ppc ppc64 x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 x86"
 IUSE="doc +ocamlopt"
 
 RDEPEND="dev-lang/ocaml:=[ocamlopt?]"
