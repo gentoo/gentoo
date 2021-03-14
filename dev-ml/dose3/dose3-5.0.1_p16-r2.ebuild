@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}-$(ver_cut 1-3)"
 
 LICENSE="LGPL-3"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86"
+KEYWORDS="amd64 arm ~arm64 ppc ppc64 x86"
 IUSE="+ocamlopt parmap zip bzip2 xml curl rpm4 test"
 
 BDEPEND="
