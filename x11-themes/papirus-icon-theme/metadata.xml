@@ -9,6 +9,7 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">PapirusDevelopmentTeam/papirus-icon-theme</remote-id>
 	</upstream>
