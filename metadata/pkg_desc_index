@@ -10556,7 +10556,7 @@ dev-ruby/webrick 1.7.0: An HTTP server toolkit
 dev-ruby/webrobots 0.1.2-r1 0.1.2-r2: A library to help write robots.txt compliant web robots
 dev-ruby/websocket 1.2.8 1.2.9: Universal Ruby library to handle WebSocket protocol
 dev-ruby/websocket-driver 0.6.5 0.7.2 0.7.3 0.7.3-r1: A complete implementation of the WebSocket protocols
-dev-ruby/websocket-extensions 0.1.4 0.1.5: Generic extension manager for WebSocket connections
+dev-ruby/websocket-extensions 0.1.5: Generic extension manager for WebSocket connections
 dev-ruby/whole_history_rating 0.1.2-r1: A pure ruby implementation of Remi Coulom's Whole-History Rating algorithm
 dev-ruby/will_paginate 3.3.0: Most awesome pagination solution for Ruby
 dev-ruby/windows_error 0.1.2: reference for standard Windows API Error Codes
