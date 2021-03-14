@@ -7,7 +7,7 @@ USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 inherit ruby-ng-gnome2
 
 DESCRIPTION="Ruby Glib2 bindings"
-KEYWORDS="~amd64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~ppc ~ppc64 x86"
 IUSE=""
 RDEPEND+=" >=dev-libs/glib-2"
 DEPEND+=" >=dev-libs/glib-2"
