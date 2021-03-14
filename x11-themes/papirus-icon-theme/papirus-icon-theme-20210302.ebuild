@@ -5,7 +5,7 @@ EAPI=7
 
 inherit xdg
 
-DESCRIPTION="icon theme for Linux"
+DESCRIPTION="Free and open source SVG icon theme"
 HOMEPAGE="https://github.com/PapirusDevelopmentTeam/papirus-icon-theme"
 SRC_URI="https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
