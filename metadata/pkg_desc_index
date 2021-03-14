@@ -926,7 +926,7 @@ app-backup/cpdup 1.18: A comprehensive filesystem mirroring program
 app-backup/dar 2.5.11 2.6.10 2.6.13 2.6.13-r1: A full featured backup tool, aimed for disks
 app-backup/dirvish 1.2.1: Dirvish is a fast, disk based, rotating network backup system
 app-backup/duplicity 0.8.15 0.8.17 0.8.18: Secure backup system using gnupg to encrypt data
-app-backup/duply 1.11.3 2.0.1 2.0.2 2.0.3 2.2.2: A shell frontend for duplicity
+app-backup/duply 2.2.2 2.3.1: A shell frontend for duplicity
 app-backup/flexbackup 1.2.1-r13: Flexible backup script using perl
 app-backup/fsarchiver 0.8.5-r1: Flexible filesystem archiver for backup and deployment tool
 app-backup/hdup 2.0.14: Hdup is backup program using tar, find, gzip/bzip2, mcrypt and ssh
@@ -12962,7 +12962,7 @@ media-gfx/graphicsmagick 1.3.36 9999: Collection of tools and libraries for many
 media-gfx/graphite2 1.3.14: Library providing rendering capabilities for complex non-Roman writing systems
 media-gfx/graphviz 2.44.1-r1: Open Source Graph Visualization Software
 media-gfx/grub-splashes 20091109: Collection of grub splashes
-media-gfx/gscan2pdf 1.8.11 2.9.1 2.10.2: Scan documents, perform OCR, produce PDFs and DjVus
+media-gfx/gscan2pdf 2.9.1 2.11.1: Scan documents, perform OCR, produce PDFs and DjVus
 media-gfx/gthumb 3.10.2: Image viewer and browser for Gnome
 media-gfx/gtkam 1.0-r1: A frontend for gPhoto 2
 media-gfx/gtkimageview 1.6.4: A simple image viewer widget for GTK
@@ -13222,7 +13222,7 @@ media-libs/lcms 2.11 2.12: A lightweight, speed optimized color management engin
 media-libs/lensfun 0.3.2-r1: Library for rectifying and simulating photographic lens distortions
 media-libs/leptonica 1.74.4 1.80.0: C library for image processing and analysis
 media-libs/lib3ds 1.3.0-r2 2.0.0_rc1-r1: library for managing 3D-Studio Release 3 and 4 .3DS files
-media-libs/lib3mf 1.8.1 2.1.0: Implementation of the 3D Manufacturing Format file standard
+media-libs/lib3mf 1.8.1 2.1.1: Implementation of the 3D Manufacturing Format file standard
 media-libs/libXcm 0.5.4 9999: Reference implementation of the X Color Management specification
 media-libs/libaacplus 2.0.2-r3: HE-AAC+ v2 library, based on the reference implementation
 media-libs/libaacs 0.11.0: Open implementation of the Advanced Access Content System (AACS) specification
@@ -17370,7 +17370,7 @@ sys-cluster/galera 25.3.28-r1 25.3.32 26.4.6 26.4.7: Synchronous multi-master re
 sys-cluster/ganglia 3.7.1-r2: A scalable distributed monitoring system for clusters and grids
 sys-cluster/ganglia-web 3.7.3-r1: Web frontend for sys-cluster/ganglia
 sys-cluster/gasnet 1.26.4 1.26.4-r1 1.28.0 1.28.2 1.30.0: Networking middleware for partitioned global address space (PGAS) language
-sys-cluster/glusterfs 7.7 7.8-r1 7.9 8.3 9.0 9999: GlusterFS is a powerful network/cluster filesystem
+sys-cluster/glusterfs 7.9 8.3 8.4 9.0: GlusterFS is a powerful network/cluster filesystem
 sys-cluster/heat 14.1.0 15.0.0 2020.1.9999 2020.2.9999: A CloudFormation-compatible openstack-native cloud orchestration engine.
 sys-cluster/hpl 2.0-r4 2.3: Portable Implementation of the Linpack Benchmark for Distributed-Memory Clusters
 sys-cluster/hpx 1.6.0 9999: C++ runtime system for parallel and distributed applications
@@ -17817,7 +17817,7 @@ sys-process/daemontools 0.76-r8: Collection of tools for managing UNIX services
 sys-process/daemontools-encore 1.10 1.11: Collection of tools for managing UNIX services
 sys-process/dcron 4.5-r2: A cute little cron from Matt Dillon
 sys-process/dumb-init 1.2.1 1.2.5: A minimal init system for Linux containers
-sys-process/evisum 0.5.9 0.5.11: System and process monitor written with EFL
+sys-process/evisum 0.5.11: System and process monitor written with EFL
 sys-process/fcron 3.2.1-r1 3.2.1-r3 3.3.0_beta-r1: A command scheduler with extended capabilities over cron and anacron
 sys-process/ftop 1.0-r1: Monitor open files and filesystems
 sys-process/glances 3.1.4.1-r1 3.1.5 3.1.6.2: CLI curses based monitoring tool
