@@ -4,11 +4,11 @@ DESCRIPTION=TLS OpenSSL extension to Tcl
 EAPI=6
 HOMEPAGE=http://tls.sourceforge.net/
 IUSE=tk
-KEYWORDS=amd64 ~arm ~arm64 ~hppa ~ppc ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos
+KEYWORDS=amd64 ~arm ~arm64 ~hppa ppc ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=BSD
 RDEPEND=dev-lang/tcl:0= dev-libs/openssl:0= tk? ( dev-lang/tk:0= )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://core.tcl.tk/tcltls/uv/tcltls-1.7.22.tar.gz
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=f9a392232954bd53a57357f419403759
+_md5_=abe96d9b3e369a34aeaa163408e94055

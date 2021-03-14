@@ -5,11 +5,11 @@ DESCRIPTION=GREYC's Magic Image Converter
 EAPI=7
 HOMEPAGE=https://gmic.eu/ https://github.com/dtschump/gmic
 IUSE=cli curl ffmpeg fftw gimp graphicsmagick jpeg krita opencv openexr openmp png qt5 static-libs tiff X zlib
-KEYWORDS=amd64 ~arm64 x86
+KEYWORDS=amd64 arm64 x86
 LICENSE=CeCILL-2 GPL-3
 RDEPEND=curl? ( net-misc/curl ) fftw? ( sci-libs/fftw:3.0=[threads] ) gimp? ( media-gfx/gimp:0/2 >=dev-qt/qtcore-5.2.0:5= >=dev-qt/qtgui-5.2.0:5= >=dev-qt/qtnetwork-5.2.0:5= >=dev-qt/qtwidgets-5.2.0:5= ) graphicsmagick? ( media-gfx/graphicsmagick:0= ) jpeg? ( virtual/jpeg:0 ) krita? ( >=dev-qt/qtcore-5.2.0:5= >=dev-qt/qtgui-5.2.0:5= >=dev-qt/qtnetwork-5.2.0:5= >=dev-qt/qtwidgets-5.2.0:5= ) opencv? ( >=media-libs/opencv-2.3.1a-r1:0= ) openexr? ( media-libs/ilmbase:0= media-libs/openexr:0= ) png? ( media-libs/libpng:0= ) qt5? ( >=dev-qt/qtcore-5.2.0:5= >=dev-qt/qtgui-5.2.0:5= >=dev-qt/qtnetwork-5.2.0:5= >=dev-qt/qtwidgets-5.2.0:5= ) tiff? ( media-libs/tiff:0 ) X? ( x11-libs/libX11 x11-libs/libXext ) zlib? ( sys-libs/zlib:0= ) ffmpeg? ( media-video/ffmpeg:0= )
 REQUIRED_USE=gimp? ( png zlib fftw X ) krita? ( png zlib fftw X ) qt5? ( png zlib fftw X )
 SLOT=0
 SRC_URI=https://gmic.eu/files/source/gmic_2.9.5.tar.gz
 _eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	cmake	314a813be2f09820e8978cdee941e501	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=589ad04cbee1b8a138d2515a6ebf3195
+_md5_=86ddeb9ea8f0fad6ef2ef9e9484a625e

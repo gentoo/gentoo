@@ -5,7 +5,7 @@ DESCRIPTION=A persistent caching system, key-value and data structures database
 EAPI=7
 HOMEPAGE=https://redis.io
 IUSE=+jemalloc ssl tcmalloc test lua_single_target_luajit lua_single_target_lua5-1
-KEYWORDS=amd64 ~arm ~arm64 ~hppa ~ppc ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris
+KEYWORDS=amd64 ~arm ~arm64 ~hppa ppc ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris
 LICENSE=BSD
 RDEPEND=lua_single_target_luajit? ( dev-lang/luajit:= ) lua_single_target_lua5-1? ( dev-lang/lua:5.1 ) jemalloc? ( >=dev-libs/jemalloc-5.1:= ) ssl? ( dev-libs/openssl:0= ) tcmalloc? ( dev-util/google-perftools ) acct-group/redis acct-user/redis virtual/tmpfiles
 REQUIRED_USE=?? ( jemalloc tcmalloc ) ^^ ( lua_single_target_luajit lua_single_target_lua5-1 )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://download.redis.io/releases/redis-6.0.12.tar.gz
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	lua-single	f91b5656f00869c220a6e35ae0521c54	lua-utils	736947973cfbc9de01fdb8548f942f82	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	tmpfiles	dc8e4917d734a019caa04ad3b8db560b	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=71a816616200ae3aea5db7901c5bdd06
+_md5_=6685bacc7d1b5f92064721c2a66229dd

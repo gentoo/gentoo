@@ -8442,7 +8442,7 @@ dev-python/imagesize 1.2.0: Pure Python module for getting image size from png/j
 dev-python/imapclient 2.2.0: easy-to-use, pythonic, and complete IMAP client library
 dev-python/iminuit 2.3.0 2.4.0: Minuit numerical function minimization in Python
 dev-python/immutables 0.14 0.15: A high-performance immutable mapping type for Python
-dev-python/importlib_metadata 3.4.0 3.7.0 3.7.1 3.7.2: Read metadata from Python packages
+dev-python/importlib_metadata 3.4.0 3.7.0 3.7.1 3.7.2 3.7.3: Read metadata from Python packages
 dev-python/importlib_resources 5.1.0 5.1.1 5.1.2: Read resources from Python packages
 dev-python/imread 0.7.3-r1: Read Image Files
 dev-python/incremental 17.5.0 21.3.0: Incremental is a small library that versions your Python projects
@@ -8840,7 +8840,7 @@ dev-python/pychm 0.8.6: Python bindings for the chmlib library
 dev-python/pychromecast 8.1.0: Python module to talk to Google Chromecast
 dev-python/pychroot 0.10.4 9999: a python library and cli tool that simplify chroot handling
 dev-python/pyclipper 1.2.1: Cython wrapper for the C++ translation of the Angus Johnson's Clipper library
-dev-python/pycodestyle 2.6.0: Python style guide checker (fka pep8)
+dev-python/pycodestyle 2.6.0 2.7.0: Python style guide checker (fka pep8)
 dev-python/pycollada 0.7.1: Python library for reading and writing COLLADA documents
 dev-python/pycountry 20.7.3: Database of countries, subdivisions, languages, currencies and script
 dev-python/pycparser 2.20-r1: C parser and AST generator written in Python
@@ -8863,7 +8863,7 @@ dev-python/pyelftools 0.27: pure-Python library for analyzing ELF files and DWAR
 dev-python/pyenchant 3.2.0: Python bindings for the Enchant spellchecking system
 dev-python/pyfakefs 4.3.3 4.4.0: a fake file system that mocks the Python file system modules
 dev-python/pyfeyn 1.0.0-r2: Python package for drawing Feynman diagrams
-dev-python/pyflakes 2.2.0: Passive checker for Python programs
+dev-python/pyflakes 2.2.0 2.3.0: Passive checker for Python programs
 dev-python/pyformance 0.4-r1: Performance metrics, based on Coda Hale's Yammer metrics
 dev-python/pyftpdlib 1.5.6-r1: Python FTP server library
 dev-python/pygal 2.4.0-r1: A python SVG charts generator
@@ -8889,7 +8889,7 @@ dev-python/pykerberos 1.3.1: A high-level Python wrapper for Kerberos/GSSAPI ope
 dev-python/pykka 2.0.2 2.0.3: A Python implementation of the actor model
 dev-python/pykwalify 1.8.0: Python lib/cli for JSON/YAML schema validation
 dev-python/pylama 7.7.1-r1: Code audit tool for python
-dev-python/pylast 4.1.0: Python interface to last.fm and other api-compatible websites
+dev-python/pylast 4.1.0 4.2.0: Python interface to last.fm and other api-compatible websites
 dev-python/pylatex 1.4.1: A Python library for creating LaTeX files and snippets
 dev-python/pylev 1.2.0: Python Levenshtein implementation
 dev-python/pylibacl 0.6.0: POSIX ACLs (Access Control Lists) for Python
@@ -9210,7 +9210,7 @@ dev-python/serpent 1.30.2: A simple serialization library based on ast.literal_e
 dev-python/serverfiles 0.2.1 0.3.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0-r1: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.2.2: Allow customization of the process title
-dev-python/setuptools 53.0.0 53.1.0 54.1.1: Collection of extensions to Distutils
+dev-python/setuptools 53.0.0 53.1.0 54.1.1 54.1.2: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2-r2: Setuptools revision control system plugin for Git
 dev-python/setuptools_scm 5.0.1 5.0.2: Manage versions by scm tags via setuptools
 dev-python/setuptools_scm_git_archive 1.1: A setuptools_scm plugin for git archives
@@ -17675,7 +17675,7 @@ sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel build
 sys-kernel/gentoo-kernel 5.4.94 5.4.97 5.4.99 5.4.100 5.4.101 5.4.102 5.4.103 5.4.104 5.4.105 5.10.17 5.10.18 5.10.19 5.10.20 5.10.21 5.10.22 5.10.23 5.11.2 5.11.3 5.11.4 5.11.5 5.11.6: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.94 5.4.94-r1 5.4.97 5.4.97-r1 5.4.99 5.4.99-r1 5.4.100 5.4.100-r1 5.4.101 5.4.101-r1 5.4.101-r2 5.4.102-r2 5.4.102-r3 5.4.103 5.4.103-r1 5.4.104 5.4.104-r1 5.4.105 5.10.17 5.10.17-r1 5.10.18 5.10.18-r1 5.10.19 5.10.19-r1 5.10.19-r2 5.10.20-r2 5.10.20-r3 5.10.21 5.10.21-r1 5.10.22 5.10.22-r1 5.10.23 5.11.2 5.11.2-r1 5.11.2-r2 5.11.3-r2 5.11.3-r3 5.11.4 5.11.4-r1 5.11.5 5.11.5-r1 5.11.6: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.246 4.4.257 4.4.259 4.4.260 4.4.261 4.9.246 4.9.257 4.9.259 4.9.260 4.9.261 4.14.209 4.14.221 4.14.223 4.14.224 4.14.225 4.19.160 4.19.175 4.19.178 4.19.179 4.19.180 5.4.80-r1 5.4.97 5.4.102 5.4.103 5.4.104 5.4.105 5.10.20 5.10.21 5.10.22 5.10.23 5.11.2 5.11.3 5.11.4 5.11.5 5.11.6: Full sources including the Gentoo patchset for the 5.11 kernel tree
-sys-kernel/git-sources 5.12_rc2: The very latest -git version of the Linux kernel
+sys-kernel/git-sources 5.12_rc2 5.12_rc3: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
 sys-kernel/kergen 0.1.5: Kernel config generator
