@@ -18,6 +18,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
+# Tests require network
+RESTRICT="test"
+
 ruby_add_bdepend "
 	test? ( dev-ruby/rspec-its )
 "
