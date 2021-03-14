@@ -10,7 +10,7 @@ inherit font python-any-r1
 DESCRIPTION="A Helvetica/Times/Courier replacement TrueType font set, courtesy of Red Hat"
 HOMEPAGE="https://github.com/liberationfonts/liberation-fonts"
 SRC_URI="fontforge? ( https://github.com/liberationfonts/liberation-fonts/files/6060974/${P}.tar.gz )
-	!fontforge? ( !https://github.com/liberationfonts/liberation-fonts/files/6060976/${PN}-ttf-${PV}.tar.gz )
+	!fontforge? ( https://github.com/liberationfonts/liberation-fonts/files/6060976/${PN}-ttf-${PV}.tar.gz )
 "
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~x64-solaris"
