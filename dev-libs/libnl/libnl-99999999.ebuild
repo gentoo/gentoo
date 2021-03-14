@@ -8,7 +8,7 @@ DISTUTILS_OPTIONAL=1
 inherit autotools distutils-r1 git-r3 multilib-minimal
 
 DESCRIPTION="Libraries providing APIs to netlink protocol based Linux kernel interfaces"
-HOMEPAGE="http://www.infradead.org/~tgr/libnl/ https://github.com/thom311/libnl"
+HOMEPAGE="https://www.infradead.org/~tgr/libnl/ https://github.com/thom311/libnl"
 EGIT_REPO_URI="https://github.com/thom311/libnl"
 
 LICENSE="LGPL-2.1 utils? ( GPL-2 )"
