@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Göktürk Yüksek <gokturk@gentoo.org> (2021-03-14)
+# Upstream's lack of versioning keeps breaking the Manifest.
+# They are also not responsive to license clarification questions.
+# No revdeps. Removal in 14 days. Bug #581102, #7513730
+app-admin/lastpass-binary-component
+
 # David Seifert <soap@gentoo.org> (2021-03-13)
 # Integrated into >=sys-apps/hwloc-2, completely broken, unmaintained,
 # no revdeps. Removal in 14 days. Bug #721938, #722916, #732046.
