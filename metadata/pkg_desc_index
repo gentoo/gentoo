@@ -2851,7 +2851,7 @@ app-portage/pfl 3.1-r1: Searchable online file/package database for Gentoo
 app-portage/pgo 0.0.2 0.0.3 9999: A command line interface for packages.gentoo.org
 app-portage/portage-utils 0.87 0.90 0.90.1 0.91 9999: Small and fast Portage helper tools written in C
 app-portage/porticron 0.7.1: cron script to sync portage and send update mails to root
-app-portage/portpeek 3.1.5 3.2.0: A helper program for maintaining the package.keyword and package.unmask files
+app-portage/portpeek 3.2.0: A helper program for maintaining the package.keyword and package.unmask files
 app-portage/pram 10: Tool to ease merging Pull Requests and git patches
 app-portage/prefix-toolkit 8 9: Utilities for users of Gentoo Prefix
 app-portage/repo-commit 0.4.1-r1 9999: A repository commit helper
