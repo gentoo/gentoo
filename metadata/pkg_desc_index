@@ -11991,10 +11991,10 @@ gnome-extra/gnome-shell-extension-appindicator 33 34: Support Ubuntu AppIndicato
 gnome-extra/gnome-shell-extension-applications-overview-tooltip 9 10-r1: Show tooltip with full name and description
 gnome-extra/gnome-shell-extension-bing-wallpaper 27 28: Changes your wallpaper daily to the bing.com background image
 gnome-extra/gnome-shell-extension-bluetooth-quick-connect 13 16-r1: Allow to connect bluetooth paired devices from gnome control panel
-gnome-extra/gnome-shell-extension-control-blur-effect-on-lock-screen 20200713 20200901 20201211: Control the blur effect on gnome-shell lock screen
+gnome-extra/gnome-shell-extension-control-blur-effect-on-lock-screen 20200713 20201211: Control the blur effect on gnome-shell lock screen
 gnome-extra/gnome-shell-extension-dash-to-panel 40: An icon taskbar for the Gnome Shell
-gnome-extra/gnome-shell-extension-desktop-icons 20.04.0-r1 20.04.0-r2 20.10.0: A GNOME Shell extension for providing desktop icons
-gnome-extra/gnome-shell-extension-gsconnect 41 42 44: KDE Connect implementation for Gnome Shell
+gnome-extra/gnome-shell-extension-desktop-icons 20.04.0-r1 20.10.0: A GNOME Shell extension for providing desktop icons
+gnome-extra/gnome-shell-extension-gsconnect 42 44: KDE Connect implementation for Gnome Shell
 gnome-extra/gnome-shell-extensions 3.36.7 3.38.1 3.38.2: JavaScript extensions for GNOME Shell
 gnome-extra/gnome-shell-extensions-topicons-plus 27: Moves legacy tray icons to top panel
 gnome-extra/gnome-shell-frippery 3.34.2 3.38.0: Unofficial extension pack providing GNOME 2-like features for GNOME 3
@@ -12015,7 +12015,7 @@ gnome-extra/nautilus-sendto 3.8.6: A nautilus extension for sending files to loc
 gnome-extra/nemo 4.6.5 4.8.4: A file manager for Cinnamon, forked from Nautilus
 gnome-extra/nm-applet 1.18.0 1.20.0: NetworkManager connection editor and applet
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
-gnome-extra/pch-session 3.36.3 3.38.1 3.38.2: Unofficial gnome based session with different default settings and extensions
+gnome-extra/pch-session 3.36.3 3.38.2: Unofficial gnome based session with different default settings and extensions
 gnome-extra/polkit-gnome 0.105-r2: A dbus session bus service that is used to bring up authentication dialogs
 gnome-extra/seahorse-nautilus 3.11.92: Nautilus extension for encrypting and decrypting files with GnuPG
 gnome-extra/sushi 3.34.0 3.38.0: A quick previewer for Nautilus, the GNOME file manager
@@ -12690,7 +12690,7 @@ media-fonts/croscorefonts 1.23.0 1.31.0: Open licensed fonts metrically compatib
 media-fonts/crosextrafonts-caladea 20130214: Open licensed serif font metrically compatible with Cambria
 media-fonts/crosextrafonts-carlito 20130920: Open licensed sans-serif font metrically compatible with Calibri
 media-fonts/culmus 0.120-r5 0.133: Hebrew Type1 fonts
-media-fonts/dejavu 2.35 2.37: DejaVu fonts, bitstream vera with ISO-8859-2 characters
+media-fonts/dejavu 2.37: DejaVu fonts, bitstream vera with ISO-8859-2 characters
 media-fonts/dina 2.93: A monospace bitmap font, primarily aimed at programmers
 media-fonts/droid 113-r5: Font family from Google's Android project
 media-fonts/dzongkha-fonts 2009.09-r1: Bhutanese/Tibetan fonts for dzongkha script provided by the Bhutanese government
@@ -12779,7 +12779,7 @@ media-fonts/konfont 0.1: Fontset for KON2
 media-fonts/koruri 20161105: Japanese TrueType font based on M+ outline fonts and Open Sans
 media-fonts/lfpfonts-fix 0.83-r2: Linux Font Project fixed-width fonts
 media-fonts/lfpfonts-var 0.84: Linux Font Project variable-width fonts
-media-fonts/liberation-fonts 2.1.0 2.1.2: A Helvetica/Times/Courier replacement TrueType font set, courtesy of Red Hat
+media-fonts/liberation-fonts 2.1.2 2.1.3: A Helvetica/Times/Courier replacement TrueType font set, courtesy of Red Hat
 media-fonts/libertine 5.3.0.20120702-r2 5.3.0.20120702-r3: Fonts from the Linux Libertine Open Fonts Project
 media-fonts/lklug 0.6-r1: Sinhala font
 media-fonts/lohit-assamese 2.91.5: The Lohit Assamese font
