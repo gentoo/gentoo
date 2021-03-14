@@ -10489,7 +10489,7 @@ dev-ruby/subexec 0.2.3-r1: Subexec spawns an external command with a timeout
 dev-ruby/sync 0.5.0: A module that provides a two-phase lock with a counter
 dev-ruby/syntax 1.2.2: Syntax highlighting for sourcecode and HTML
 dev-ruby/sys-uname 1.2.1 1.2.2: A Ruby interface for getting operating system information
-dev-ruby/syslogger 1.6.5: Drop-in replacement for the standard Logger, that logs to the syslog
+dev-ruby/syslogger 1.6.5 1.6.6: Drop-in replacement for the standard Logger, that logs to the syslog
 dev-ruby/systemu 2.6.5: Universal capture of STDOUT and STDERR and handling of child process PID
 dev-ruby/tdiff 0.3.4: Calculates the differences between two tree-like structures
 dev-ruby/temple 0.8.2: An abstraction and a framework for compiling templates to pure Ruby
@@ -10556,7 +10556,7 @@ dev-ruby/webrick 1.7.0: An HTTP server toolkit
 dev-ruby/webrobots 0.1.2-r1 0.1.2-r2: A library to help write robots.txt compliant web robots
 dev-ruby/websocket 1.2.8 1.2.9: Universal Ruby library to handle WebSocket protocol
 dev-ruby/websocket-driver 0.6.5 0.7.2 0.7.3 0.7.3-r1: A complete implementation of the WebSocket protocols
-dev-ruby/websocket-extensions 0.1.5: Generic extension manager for WebSocket connections
+dev-ruby/websocket-extensions 0.1.5 0.1.5-r1: Generic extension manager for WebSocket connections
 dev-ruby/whole_history_rating 0.1.2-r1: A pure ruby implementation of Remi Coulom's Whole-History Rating algorithm
 dev-ruby/will_paginate 3.3.0: Most awesome pagination solution for Ruby
 dev-ruby/windows_error 0.1.2: reference for standard Windows API Error Codes
