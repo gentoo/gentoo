@@ -1,10 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
+
 XORG_DRI=dri
 
-inherit flag-o-matic xorg-2
+inherit flag-o-matic xorg-3
 
 DESCRIPTION="ATI Rage128 video driver"
 
@@ -14,15 +15,12 @@ IUSE="dri"
 RDEPEND=">=x11-base/xorg-server-1.2"
 DEPEND="${RDEPEND}"
 
-pkg_setup() {
-	XORG_CONFIGURE_OPTIONS=(
-		$(use_enable dri)
-	)
-}
-
 src_configure() {
 	# always use C11 semantics
 	append-cflags -std=gnu11
 
-	xorg-2_src_configure
+	local XORG_CONFIGURE_OPTIONS=(
+		$(use_enable dri)
+	)
+	xorg-3_src_configure
 }
