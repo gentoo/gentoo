@@ -1174,10 +1174,10 @@ app-crypt/tpm2-tss 2.4.3 2.4.5 3.0.3: TCG Trusted Platform Module 2.0 Software S
 app-crypt/tpm2-tss-engine 1.1.0: OpenSSL Engine for TPM2 devices
 app-crypt/trousers 0.3.14-r3 0.3.15: An open-source TCG Software Stack (TSS) v1.1 implementation
 app-crypt/ubuntu-keyring 2020.02.11.2 2020.06.17.1: GnuPG archive keys of the Ubuntu archive
-app-crypt/veracrypt 1.24_p7 1.24_p8: Disk encryption with strong security based on TrueCrypt
+app-crypt/veracrypt 1.24_p8: Disk encryption with strong security based on TrueCrypt
 app-crypt/xca 2.1.2 2.1.2-r1 2.3.0: A GUI to OpenSSL, RSA public keys, certificates, signing requests etc
 app-crypt/xor-analyze 0.5-r1: program for cryptanalyzing xor 'encryption' with variable key length
-app-crypt/yubikey-manager 3.1.1-r1: Python library and command line tool for configuring a YubiKey
+app-crypt/yubikey-manager 3.1.2 4.0.0: Python library and command line tool for configuring a YubiKey
 app-crypt/yubikey-manager-qt 1.1.5: Cross-platform application for configuring any YubiKey over all USB transports
 app-crypt/zulucrypt 5.5.0_pre20180223: Front end to cryptsetup
 app-dicts/aspell-af 0.50.0: Aspell (Afrikaans) language dictionary
@@ -8312,7 +8312,7 @@ dev-python/fastjsonschema 2.15.0: Fast JSON schema validator for Python
 dev-python/fcl 0.0.12-r1: Python bindings for the Flexible Collision Library
 dev-python/feedgenerator 1.9.1-r1: Standalone version of django.utils.feedgenerator
 dev-python/feedparser 5.2.1-r1 6.0.2: Parse RSS and Atom feeds in Python
-dev-python/fido2 0.7.3 0.8.1: Python based FIDO 2.0 library
+dev-python/fido2 0.8.1 0.9.1: Python based FIDO 2.0 library
 dev-python/fields 5.0.0-r2: Container class boilerplate killer
 dev-python/filelock 3.0.12-r1: A platform independent file lock for Python
 dev-python/filetype 1.0.7: Small, dependency-free, fast Python package to infer binary file types checking
@@ -12679,7 +12679,7 @@ media-fonts/baekmuk-fonts 2.2-r2: Korean Baekmuk Font
 media-fonts/bitstream-cyberbit 2.0-r2: Cyberbit Unicode (including CJK) font
 media-fonts/cantarell 0.111 0.201 0.301: Default fontset for GNOME Shell
 media-fonts/cardo 1.04: Unicode font for classicists, medievalists and linguists
-media-fonts/cascadia-code 2009.22 2102.03: A monospaced font developed for Windows Terminal
+media-fonts/cascadia-code 2009.22 2102.03 2102.25: A monospaced font developed for Windows Terminal
 media-fonts/cheapskatefonts 1.0: Dustismo's decorative font collection
 media-fonts/clearsans 1.00: OpenType font optimized for readability on small screens
 media-fonts/cm-unicode 0.7.0-r1: Computer Modern Unicode fonts
@@ -14028,7 +14028,7 @@ media-sound/picard 2.4.2 9999: Cross-platform music tagger
 media-sound/picoxine 0.0.7: Very small xine frontend for playing audio events
 media-sound/pitchtune 0.0.4: Precise Instrument Tweaking for Crispy Harmony - tuner
 media-sound/pithos 1.5.0: Pandora.com client for the GNOME desktop
-media-sound/playerctl 2.0.2 2.2.1 2.3.1: A CLI utility to control media players over MPRIS
+media-sound/playerctl 2.3.1: A CLI utility to control media players over MPRIS
 media-sound/pms 0.42_p20170508 9999: Practical Music Search: an open source ncurses client for mpd, written in C++
 media-sound/pnmixer 0.7.2 0.7.2-r1: Volume mixer for the system tray
 media-sound/poc 0.4.1: mp3 and ogg streamer (include mp3cue and mp3cut)
@@ -18317,7 +18317,7 @@ x11-drivers/xf86-input-evdev 2.10.6: Generic Linux input driver
 x11-drivers/xf86-input-joystick 1.6.3: X.Org driver for joystick input devices
 x11-drivers/xf86-input-libinput 0.30.0: X.org input driver based on libinput
 x11-drivers/xf86-input-mtrack 0.5.0: Xorg Driver for Multitouch Trackpads
-x11-drivers/xf86-input-synaptics 1.9.0 1.9.1: Driver for Synaptics touchpads
+x11-drivers/xf86-input-synaptics 1.9.1: Driver for Synaptics touchpads
 x11-drivers/xf86-input-vmmouse 13.1.0-r1 9999: VMWare mouse input driver
 x11-drivers/xf86-input-void 1.4.1: null input driver
 x11-drivers/xf86-input-wacom 0.39.0: Driver for Wacom tablets and drawing devices
