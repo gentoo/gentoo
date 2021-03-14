@@ -9,7 +9,7 @@ SRC_URI="http://hevea.inria.fr/distri/${P}.tar.gz"
 
 LICENSE="QPL"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86"
+KEYWORDS="amd64 arm ~arm64 ppc ppc64 x86"
 IUSE="+ocamlopt"
 
 DEPEND=">=dev-lang/ocaml-3.12:=[ocamlopt=]"
