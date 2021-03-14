@@ -2424,7 +2424,7 @@ app-metrics/postfix_exporter 0.1.2 0.1.2-r1: Prometheus Exporter for Postfix
 app-metrics/postgres_exporter 0.4.7: PostgreSQL stats exporter for Prometheus
 app-metrics/process-exporter 0.4.0 0.4.0-r1 0.7.1 0.7.5: Process exporter for prometheus
 app-metrics/prom2json 0.1.0_p20170523 1.3.0: A tool to scrape a Prometheus client and dump the result as JSON
-app-metrics/prometheus 2.13.1 2.19.1 2.21.0: Prometheus monitoring system and time series database
+app-metrics/prometheus 2.13.1 2.19.1 2.21.0-r1: Prometheus monitoring system and time series database
 app-metrics/prometheus-bin 2.15.2: prometheus monitoring system and time series database
 app-metrics/pushgateway 0.9.1 0.10.0 1.0.0: Prometheus push acceptor for ephemeral and batch jobs
 app-metrics/rabbitmq_exporter 0.29.0: Rabbitmq exporter for Prometheus

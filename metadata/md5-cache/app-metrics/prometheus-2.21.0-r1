@@ -1,4 +1,4 @@
-BDEPEND=>=dev-util/promu-0.3.0 >=dev-lang/go-1.12 app-arch/unzip
+BDEPEND=>=dev-util/promu-0.3.0 >=dev-lang/go-1.12 app-arch/unzip virtual/pkgconfig
 DEFINED_PHASES=compile install postinst prepare unpack
 DEPEND=!app-metrics/prometheus-bin acct-group/prometheus acct-user/prometheus
 DESCRIPTION=Prometheus monitoring system and time series database
@@ -10,5 +10,5 @@ RDEPEND=acct-group/prometheus acct-user/prometheus
 RESTRICT=strip test
 SLOT=0
 SRC_URI=https://github.com/prometheus/prometheus/archive/v2.21.0.tar.gz -> prometheus-2.21.0.tar.gz https://dev.gentoo.org/~williamh/dist/prometheus-2.21.0-assets.tar.gz
-_eclasses_=go-module	92660621959e7fab813173772987588b
-_md5_=0bee7040d7343f8ea82d66c644e4a392
+_eclasses_=go-module	92660621959e7fab813173772987588b	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=e1e5ed4c27c51206ee827922d9cbc4bd
