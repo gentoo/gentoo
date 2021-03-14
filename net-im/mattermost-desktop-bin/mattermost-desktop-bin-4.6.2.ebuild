@@ -35,6 +35,8 @@ QA_PREBUILT="
 	opt/mattermost-desktop/mattermost-desktop
 	opt/mattermost-desktop/libnode.so
 	opt/mattermost-desktop/libffmpeg.so
+	opt/mattermost-desktop/libGLESv2.so
+	opt/mattermost-desktop/libEGL.so
 "
 
 DOCS=(
