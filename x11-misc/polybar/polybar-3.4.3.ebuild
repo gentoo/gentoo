@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 XPP_COMMIT="8c019e6d7fefd2468791bc1cbf90d68ff7c1ba33"
 I3IPCPP_COMMIT="21ce9060ac7c502225fdbd2f200b1cbdd8eca08d"
 
