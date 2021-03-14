@@ -15,7 +15,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/neovim/neovim.git"
 else
 	SRC_URI="https://github.com/neovim/neovim/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm ~arm64 x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86 ~x64-macos"
 fi
 
 LICENSE="Apache-2.0 vim"
@@ -49,7 +49,9 @@ DEPEND="${LUA_DEPS}
 	dev-libs/libuv:0=
 	>=dev-libs/libvterm-0.1.2
 	dev-libs/msgpack:0=
-	net-libs/libnsl
+	!kernel_Darwin? (
+		net-libs/libnsl
+	)
 	tui? (
 		dev-libs/libtermkey
 		>=dev-libs/unibilium-2.0.0:0=
