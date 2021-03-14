@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # Göktürk Yüksek <gokturk@gentoo.org> (2021-03-14)
+# Dead upstream. No revdeps.
+# Removal in 60 days to allow people extra time
+# for transitioning out. Bug #776262.
+app-admin/lastpass-cli
+
+# Göktürk Yüksek <gokturk@gentoo.org> (2021-03-14)
 # Upstream's lack of versioning keeps breaking the Manifest.
 # They are also not responsive to license clarification questions.
 # No revdeps. Removal in 14 days. Bug #581102, #7513730
