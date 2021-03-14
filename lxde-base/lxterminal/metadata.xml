@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
-  <use>
-    <flag name="gtk3">Use GTK+3 instead of GTK+2</flag>
-  </use>
-  <upstream>
-    <remote-id type="sourceforge">lxde</remote-id>
-  </upstream>
+<!-- maintainer-needed -->
+	<upstream>
+		<remote-id type="sourceforge">lxde</remote-id>
+	</upstream>
 </pkgmetadata>
