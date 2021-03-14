@@ -1,0 +1,12 @@
+BDEPEND=sys-devel/gettext virtual/pkgconfig
+DEFINED_PHASES=postinst postrm preinst prepare
+DEPEND=dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=nuoveXT2 iconset
+EAPI=7
+HOMEPAGE=https://lxde.org/
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ppc ~x86 ~x86-linux
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://sourceforge/lxde/LXDE%20Icon%20Theme/lxde-icon-theme-0.5.1/lxde-icon-theme-0.5.1.tar.xz
+_eclasses_=xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=777405fd0b421807d693ad11c993e297

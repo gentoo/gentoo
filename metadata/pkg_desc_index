@@ -12514,8 +12514,8 @@ kde-plasma/xdg-desktop-portal-kde 5.20.5 5.21.2: Backend implementation for xdg-
 kde-plasma/xembed-sni-proxy 5.20.5 5.21.2: Legacy xembed tray icons support for SNI-only system trays
 lxde-base/lxappearance 0.6.3-r1: LXDE GTK+ theme switcher
 lxde-base/lxappearance-obconf 0.2.3: LXAppearance plugin for configuring OpenBox
-lxde-base/lxde-common 0.99.1 0.99.2: LXDE Session default configuration files and nuoveXT2 iconset
-lxde-base/lxde-icon-theme 0.5.1: nuoveXT2 iconset
+lxde-base/lxde-common 0.99.1 0.99.2-r1: LXDE Session default configuration files and nuoveXT2 iconset
+lxde-base/lxde-icon-theme 0.5.1 0.5.1-r1: nuoveXT2 iconset
 lxde-base/lxde-meta 0.5.5-r6: Meta ebuild for LXDE, the Lightweight X11 Desktop Environment
 lxde-base/lxdm 0.5.3-r2: LXDE Display Manager
 lxde-base/lxinput 0.3.5-r1: LXDE keyboard and mouse configuration tool
