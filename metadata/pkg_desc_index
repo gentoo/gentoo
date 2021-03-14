@@ -700,7 +700,7 @@ app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 3.6: A command line interface to KeePass database files
 app-admin/kube-bench 0.2.3-r1: Kubernetes Bench for Security runs the CIS Kubernetes Benchmark
 app-admin/kubectx 0.9.1: Fast way to switch between clusters and namespaces in kubectl
-app-admin/lastpass-binary-component 4.19.0-r1: Binary component required by the LastPass Password Manager browser extension
+app-admin/lastpass-binary-component 4.67.1: Binary component required by the LastPass Password Manager browser extension
 app-admin/lastpass-cli 1.3.3: Interfaces with LastPass.com from the command line.
 app-admin/lib_users 0.14-r1: Check for mapped libs and open files that are marked as deleted
 app-admin/lnav 0.8.5 0.9.0: A curses-based tool for viewing and analyzing log files
