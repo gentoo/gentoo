@@ -6,7 +6,7 @@ EAPI=7
 inherit cmake eapi8-dosym
 
 DESCRIPTION="Implementation of the 3D Manufacturing Format file standard"
-HOMEPAGE="https://3mf.io/"
+HOMEPAGE="https://3mf.io/ https://github.com/3MFConsortium/lib3mf"
 SRC_URI="https://github.com/3MFConsortium/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
@@ -58,7 +58,6 @@ src_configure() {
 }
 
 src_install() {
-	local DOCS=( CONTRIBUTING.md README.md )
 	cmake_src_install
 
 	for suf in abi types implicit; do
