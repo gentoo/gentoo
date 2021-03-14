@@ -9217,7 +9217,7 @@ dev-python/setuptools_scm_git_archive 1.1: A setuptools_scm plugin for git archi
 dev-python/setuptools_trial 0.6.0-r1: Setuptools plugin that makes unit tests execute with trial instead of pyunit
 dev-python/sexpdata 0.0.3-r1: a simple S-expression parser/serializer
 dev-python/sgmllib3k 1.0.0: Py3k port of sgmllib
-dev-python/sh 1.14.0: Python subprocess interface
+dev-python/sh 1.14.0 1.14.1: Python subprocess interface
 dev-python/shiboken2 5.15.1: Python binding generator for C++ libraries
 dev-python/simplebayes 1.5.7 1.5.8: memory-based, optional-persistence naive bayesian text classifier
 dev-python/simpleeval 0.9.10: A simple, safe single expression evaluator library
@@ -10363,33 +10363,33 @@ dev-ruby/rspec-stubbed_env 1.0.0: Stub environment variables in a scoped context
 dev-ruby/rspec-support 3.8.2 3.8.3 3.9.4 3.10.0 3.10.1 3.10.2: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspectacular 0.70.8 0.70.8-r1: RSpec support and matchers
 dev-ruby/rss 0.2.9: Family of libraries that support various formats of XML feeds.
-dev-ruby/ruby-atk 3.3.2 3.3.6 3.3.7 3.4.3: Ruby Atk bindings
+dev-ruby/ruby-atk 3.4.3: Ruby Atk bindings
 dev-ruby/ruby-augeas 0.5.0-r3: Ruby bindings for Augeas
-dev-ruby/ruby-cairo-gobject 3.3.2 3.3.6 3.3.7 3.4.3: Ruby cairo-gobject bindings
-dev-ruby/ruby-clutter 3.3.2 3.3.6 3.3.7 3.4.3: Ruby Clutter bindings
-dev-ruby/ruby-clutter-gdk 3.3.2 3.3.6 3.3.7 3.4.3: Ruby binding of GDK specific API of Clutter
-dev-ruby/ruby-clutter-gstreamer 3.3.2 3.3.6 3.3.7 3.4.3: Ruby Clutter bindings
-dev-ruby/ruby-clutter-gtk 3.3.2 3.3.6 3.3.7 3.4.3: Ruby Clutter-GTK bindings
+dev-ruby/ruby-cairo-gobject 3.4.3: Ruby cairo-gobject bindings
+dev-ruby/ruby-clutter 3.4.3: Ruby Clutter bindings
+dev-ruby/ruby-clutter-gdk 3.4.3: Ruby binding of GDK specific API of Clutter
+dev-ruby/ruby-clutter-gstreamer 3.4.3: Ruby Clutter bindings
+dev-ruby/ruby-clutter-gtk 3.4.3: Ruby Clutter-GTK bindings
 dev-ruby/ruby-dict 0.9.4-r4: RFC 2229 client in Ruby
 dev-ruby/ruby-elf 1.0.8: Ruby library to access ELF files information
 dev-ruby/ruby-feedparser 0.9.4 0.9.6 0.9.7: Ruby library to parse ATOM/RSS feeds
 dev-ruby/ruby-filemagic 0.7.2: Ruby binding to libmagic
-dev-ruby/ruby-gdk3 3.3.2 3.3.6 3.3.7 3.4.3: Ruby GDK-3.x bindings
-dev-ruby/ruby-gdkpixbuf2 3.3.2 3.3.6 3.3.7 3.4.3: Ruby GdkPixbuf2 bindings
+dev-ruby/ruby-gdk3 3.4.3: Ruby GDK-3.x bindings
+dev-ruby/ruby-gdkpixbuf2 3.4.3: Ruby GdkPixbuf2 bindings
 dev-ruby/ruby-gegl 3.4.3: Ruby GEGL bindings
 dev-ruby/ruby-gettext 3.2.9 3.3.5 3.3.6 3.3.7: Native Language Support Library and Tools modeled after GNU gettext package
-dev-ruby/ruby-gio2 3.3.2 3.3.6 3.3.7 3.4.3: Ruby binding of gio-2
-dev-ruby/ruby-glib2 3.3.2 3.3.6 3.3.7 3.4.3: Ruby Glib2 bindings
-dev-ruby/ruby-gnome2 3.3.2 3.3.6 3.3.7 3.4.3: Ruby Gnome2 bindings
+dev-ruby/ruby-gio2 3.4.3: Ruby binding of gio-2
+dev-ruby/ruby-glib2 3.4.3: Ruby Glib2 bindings
+dev-ruby/ruby-gnome2 3.4.3: Ruby Gnome2 bindings
 dev-ruby/ruby-gnumeric 3.4.3: Ruby Gnumeric bindings
-dev-ruby/ruby-gobject-introspection 3.3.2 3.3.6 3.3.7 3.4.3: Ruby GObjectIntrospection bindings
+dev-ruby/ruby-gobject-introspection 3.4.3: Ruby GObjectIntrospection bindings
 dev-ruby/ruby-goffice 3.4.3: Ruby GOffice bindings
 dev-ruby/ruby-gsf 3.4.3: Ruby GSF bindings
-dev-ruby/ruby-gstreamer 3.3.2 3.3.6 3.3.7 3.4.3: Ruby GStreamer bindings
-dev-ruby/ruby-gtk2 3.3.2 3.3.6 3.3.7 3.4.3: Ruby Gtk2 bindings
-dev-ruby/ruby-gtk3 3.3.2 3.3.6 3.3.7 3.4.3: Ruby Gtk3 bindings
-dev-ruby/ruby-gtksourceview 3.3.2 3.3.6 3.3.7 3.4.3: Ruby bindings for gtksourceview
-dev-ruby/ruby-gtksourceview3 3.3.2 3.3.6 3.3.7 3.4.3: Ruby gtksourceview-3.x bindings
+dev-ruby/ruby-gstreamer 3.4.3: Ruby GStreamer bindings
+dev-ruby/ruby-gtk2 3.4.3: Ruby Gtk2 bindings
+dev-ruby/ruby-gtk3 3.4.3: Ruby Gtk3 bindings
+dev-ruby/ruby-gtksourceview 3.4.3: Ruby bindings for gtksourceview
+dev-ruby/ruby-gtksourceview3 3.4.3: Ruby gtksourceview-3.x bindings
 dev-ruby/ruby-gtksourceview4 3.4.3: Ruby GtkSourceView4 bindings
 dev-ruby/ruby-hmac 0.4.0-r1: A common interface to HMAC functionality as documented in RFC2104
 dev-ruby/ruby-ldap 0.9.20: A Ruby interface to some LDAP libraries
@@ -10403,20 +10403,20 @@ dev-ruby/ruby-oembed 0.13.1 0.14.0 0.14.1 0.15.0: An oEmbed consumer library wri
 dev-ruby/ruby-ole 1.2.12.2: Ruby library for easy read/write access to OLE compound documents
 dev-ruby/ruby-opengl 0.10.0: OpenGL / GLUT bindings for ruby
 dev-ruby/ruby-openid 2.9.2: A robust library for verifying and serving OpenID identities
-dev-ruby/ruby-pango 3.3.2 3.3.6 3.3.7 3.4.3: Ruby Pango bindings
-dev-ruby/ruby-poppler 3.3.2 3.3.6 3.3.7 3.4.3: Ruby poppler-glib bindings
+dev-ruby/ruby-pango 3.4.3: Ruby Pango bindings
+dev-ruby/ruby-poppler 3.4.3: Ruby poppler-glib bindings
 dev-ruby/ruby-prof 0.18.0 1.4.1 1.4.2: A module for profiling Ruby code
 dev-ruby/ruby-progressbar 1.10.1-r1 1.11.0: A Text Progress Bar Library for Ruby
 dev-ruby/ruby-rc4 0.1.5-r2: A pure Ruby implementation of the Rc4 algorithm
 dev-ruby/ruby-romkan 0.4-r6: A Romaji <-> Kana conversion library for Ruby
-dev-ruby/ruby-rsvg 3.3.2 3.3.6 3.3.7 3.4.3: Ruby bindings for librsvg
+dev-ruby/ruby-rsvg 3.4.3: Ruby bindings for librsvg
 dev-ruby/ruby-sdl 2.1.2-r2 2.1.2-r3: Ruby/SDL: Ruby bindings for SDL
 dev-ruby/ruby-shadow 2.5.0: ruby shadow bindings
 dev-ruby/ruby-shout 2.2.2: A Ruby interface to libshout2
 dev-ruby/ruby-termios 1.0.2-r1 1.1.0: A Ruby interface to termios
-dev-ruby/ruby-vte 3.3.2 3.3.6 3.3.7 3.4.3: Ruby vte bindings
-dev-ruby/ruby-vte3 3.3.2 3.3.6 3.3.7 3.4.3: Ruby VTE bindings for use with GTK3
-dev-ruby/ruby-webkit2-gtk 3.3.2 3.3.6 3.3.7 3.4.3: Ruby WebKitGtk+ for Gtk 3.0 bindings
+dev-ruby/ruby-vte 3.4.3: Ruby vte bindings
+dev-ruby/ruby-vte3 3.4.3: Ruby VTE bindings for use with GTK3
+dev-ruby/ruby-webkit2-gtk 3.4.3: Ruby WebKitGtk+ for Gtk 3.0 bindings
 dev-ruby/ruby-wnck3 3.4.3: Ruby libwnck 3 bindings
 dev-ruby/ruby-xslt 0.9.10: A Ruby class for processing XSLT
 dev-ruby/ruby-yadis 0.3.4-r2: A ruby library for performing Yadis service discovery
@@ -10489,7 +10489,7 @@ dev-ruby/subexec 0.2.3-r1: Subexec spawns an external command with a timeout
 dev-ruby/sync 0.5.0: A module that provides a two-phase lock with a counter
 dev-ruby/syntax 1.2.2: Syntax highlighting for sourcecode and HTML
 dev-ruby/sys-uname 1.2.1 1.2.2: A Ruby interface for getting operating system information
-dev-ruby/syslogger 1.6.5 1.6.6: Drop-in replacement for the standard Logger, that logs to the syslog
+dev-ruby/syslogger 1.6.5 1.6.6-r1: Drop-in replacement for the standard Logger, that logs to the syslog
 dev-ruby/systemu 2.6.5: Universal capture of STDOUT and STDERR and handling of child process PID
 dev-ruby/tdiff 0.3.4: Calculates the differences between two tree-like structures
 dev-ruby/temple 0.8.2: An abstraction and a framework for compiling templates to pure Ruby
