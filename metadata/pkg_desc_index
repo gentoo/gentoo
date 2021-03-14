@@ -1800,7 +1800,7 @@ app-editors/bluefish 2.2.12: A GTK HTML editor for the experienced web designer 
 app-editors/bvi 1.4.1: Display-oriented editor for binary files, based on the vi texteditor
 app-editors/curses-hexedit 0.9.7-r1: full screen curses hex editor (with insert/delete support)
 app-editors/dav 0.8.5-r2: A minimal console text editor
-app-editors/dhex 0.68: ncurses-based hex-editor with diff mode
+app-editors/dhex 0.68 0.69: ncurses-based hex-editor with diff mode
 app-editors/diakonos 0.9.4: A Linux editor for the masses
 app-editors/e3 2.8.2: Very tiny editor in ASM with emacs, pico, wordstar, and vi keybindings
 app-editors/ee 1.5.2: An easy to use text editor. A subset of aee
@@ -12526,7 +12526,7 @@ lxde-base/lxrandr 0.3.2: LXDE GUI interface to RandR extention
 lxde-base/lxsession 0.5.4-r1: LXDE session manager
 lxde-base/lxtask 0.1.9: LXDE Task manager
 lxde-base/lxterminal 0.3.2 0.3.2-r1: Lightweight vte-based tabbed terminal emulator for LXDE
-lxde-base/menu-cache 1.1.0: Library to create and utilize caches to speed up freedesktop application menus
+lxde-base/menu-cache 1.1.0 1.1.0-r1: Library to create and utilize caches to speed up freedesktop application menus
 lxqt-base/liblxqt 0.15.1 0.16.0: Common base library for the LXQt desktop environment
 lxqt-base/libsysstat 0.4.3 0.4.4: Qt GUI for System Statistics
 lxqt-base/lxqt-about 0.15.0 0.16.0: LXQt about dialog
@@ -19110,7 +19110,7 @@ x11-wm/muffin 4.6.3 4.8.1: Compositing window manager forked from Mutter for use
 x11-wm/musca 0.9.24_p20100226-r4: A simple dynamic window manager, with features nicked from ratpoison and dwm
 x11-wm/mutter 3.36.7-r1 3.38.2 3.38.3 3.38.3-r1: GNOME 3 compositing window manager based on Clutter
 x11-wm/notion 3_p2015061300-r1 3_p2015061300-r100 9999: Notion is a tiling, tabbed window manager for the X window system
-x11-wm/openbox 3.6.1-r3 9999: A standards compliant, fast, light-weight, extensible window manager
+x11-wm/openbox 3.6.1-r3 9999: Standards compliant, fast, light-weight, extensible window manager
 x11-wm/oroborus 2.0.20-r1: Small and fast window manager
 x11-wm/page 1.9.8 1.9.9-r3: A mouse friendly tiling window manager
 x11-wm/pekwm 0.1.17-r2: A lightweight window manager initially based on aewm++
