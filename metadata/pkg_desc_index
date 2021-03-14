@@ -16119,10 +16119,10 @@ sci-chemistry/threeV 1.2-r1: 3V: Voss Volume Voxelator
 sci-chemistry/tinker 8.2.1: Molecular modeling package that includes force fields, such as AMBER and CHARMM
 sci-chemistry/tm-align 20150914: Quick & Accurate Structural Alignment
 sci-chemistry/vmd 1.9.4_alpha43 1.9.4_alpha51: Visual Molecular Dynamics
-sci-chemistry/votca-csg 1.5.1 1.6 1.6.4 9999: Votca coarse-graining engine
+sci-chemistry/votca-csg 1.5.1 1.6 1.6.4 2021 9999: Votca coarse-graining engine
 sci-chemistry/votca-csgapps 1.5.1 1.6 1.6.4: Extra applications for votca-csg
 sci-chemistry/votca-ctp 1.5.1: Votca charge transport module
-sci-chemistry/votca-xtp 1.6 1.6.4 9999: Votca excitation and charge properties module
+sci-chemistry/votca-xtp 1.6 1.6.4 2021 9999: Votca excitation and charge properties module
 sci-chemistry/wxmacmolplt 7.5-r1: Chemical 3D graphics program with GAMESS input builder
 sci-chemistry/xds-bin 20170930: Software for processing single-crystal X-ray monochromatic diffraction data
 sci-chemistry/xyza2pipe 20121001: Cross conversion environment of NMR spectra
@@ -16378,7 +16378,7 @@ sci-libs/libh2o 0.2.1-r1: Library of routines for IF97 water & steam properties
 sci-libs/libh2oxx 0.2-r1: C++ bindings for libh2o
 sci-libs/libhomfly 1.02.6: Library to compute the homfly polynomial of a link
 sci-libs/libigl 2.2.0: A simple C++ geometry processing library
-sci-libs/libint 1.1.6 2.6.0-r2: Matrix elements (integrals) evaluation over Cartesian Gaussian functions
+sci-libs/libint 1.1.6 2.6.0-r2 2.6.0-r3: Matrix elements (integrals) evaluation over Cartesian Gaussian functions
 sci-libs/libmems 1.6_p1-r3 9999: Library for sci-biology/mauve
 sci-libs/libmuscle 3.7-r3: Library for sci-biology/mauve
 sci-libs/libnova 0.16.0: Celestial Mechanics and Astronomical Calculation Library
@@ -16490,7 +16490,7 @@ sci-libs/ufconfig 3.7.1: Common configuration scripts for the SuiteSparse librar
 sci-libs/umfpack 5.7.9: Unsymmetric multifrontal sparse LU factorization library
 sci-libs/volk 2.4.1: vector optimized library of kernels
 sci-libs/voro++ 0.4.6-r1: 3D Voronoi cell software library
-sci-libs/votca-tools 1.5.1 1.6 1.6.2 1.6.4 9999: Votca tools library
+sci-libs/votca-tools 1.5.1 1.6 1.6.2 1.6.4 2021 9999: Votca tools library
 sci-libs/vtk 8.2.0 8.2.0-r1: The Visualization Toolkit
 sci-libs/xdmf2 1.0_p141226-r4: eXtensible Data Model and Format
 sci-libs/xdrfile 1.1.4: Library to read gromacs trajectory and topology files
