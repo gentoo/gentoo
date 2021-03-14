@@ -426,6 +426,7 @@ distutils_enable_tests() {
 		setup.py)
 			;;
 		unittest)
+			test_pkg="dev-python/unittest-or-fail"
 			;;
 		*)
 			die "${FUNCNAME}: unsupported argument: ${1}"
@@ -830,7 +831,7 @@ distutils-r1_python_test() {
 			nonfatal esetup.py test --verbose
 			;;
 		unittest)
-			"${EPYTHON}" -m unittest discover -v
+			eunittest
 			;;
 		*)
 			die "Mis-synced test runner between ${FUNCNAME} and distutils_enable_testing"
