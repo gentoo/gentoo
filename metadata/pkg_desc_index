@@ -13206,7 +13206,7 @@ media-libs/id3lib 3.8.3-r8: Id3 library for C/C++
 media-libs/ilmbase 2.3.0 2.5.5: OpenEXR ILM Base libraries
 media-libs/imlib 1.9.15-r5: Image loading and rendering library
 media-libs/imlib2 1.6.1 1.7.1: Version 2 of an advanced replacement library for libraries like libXpm
-media-libs/intel-mediasdk 18.3.0 18.4.1 9999: Intel Media SDK
+media-libs/intel-mediasdk 20.3.0 9999: Intel Media SDK
 media-libs/jbig2dec 0.18 0.19: A decoder implementation of the JBIG2 image compression format
 media-libs/jbig2enc 0.28-r1 0.29: JBIG2 Encoder and libs
 media-libs/jbigkit 2.1: data compression algorithm for bi-level high-resolution images
