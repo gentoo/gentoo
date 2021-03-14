@@ -11,7 +11,7 @@ SRC_URI="https://github.com/diml/ppx_derivers/archive/${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86"
+KEYWORDS="amd64 arm ~arm64 ppc ppc64 x86"
 IUSE="+ocamlopt"
 
 RDEPEND=""
