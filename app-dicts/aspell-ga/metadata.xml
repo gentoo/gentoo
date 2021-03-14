@@ -6,4 +6,7 @@
 		<name>Conrad Kostecki</name>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">kscanne/gaelspell</remote-id>
+	</upstream>
 </pkgmetadata>

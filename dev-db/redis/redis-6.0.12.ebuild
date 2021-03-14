@@ -18,7 +18,7 @@ HOMEPAGE="https://redis.io"
 SRC_URI="https://download.redis.io/releases/${P}.tar.gz"
 
 LICENSE="BSD"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="+jemalloc ssl tcmalloc test"
 RESTRICT="!test? ( test )"
 SLOT="0"
