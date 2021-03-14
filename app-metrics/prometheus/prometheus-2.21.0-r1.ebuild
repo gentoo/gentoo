@@ -1,8 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit go-module
+
+inherit go-module systemd
+
 MY_PV=v${PV/_rc/-rc.}
 GIT_COMMIT=e83ef207b
 
@@ -44,6 +46,7 @@ src_install() {
 	dosym ../../usr/share/prometheus/console_libraries /etc/prometheus/console_libraries
 	dosym ../../usr/share/prometheus/consoles /etc/prometheus/consoles
 
+	systemd_dounit "${FILESDIR}"/prometheus.service
 	newinitd "${FILESDIR}"/prometheus.initd prometheus
 	newconfd "${FILESDIR}"/prometheus.confd prometheus
 	keepdir /var/log/prometheus /var/lib/prometheus
