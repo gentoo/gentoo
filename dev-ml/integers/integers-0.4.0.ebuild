@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ocamllabs/ocaml-integers/archive/${PV}.tar.gz -> ${P
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="+ocamlopt"
 
 RDEPEND=""
