@@ -127,6 +127,8 @@
 		</xs:choice>
 		<xs:attribute name='type' type='maintainerTypeAttrType'
 			use='required'/>
+		<xs:attribute name='proxied' type='maintainerProxiedAttrType'
+			default='no'/>
 		<xs:attribute name='restrict' type='restrictAttrType'
 			default=''/>
 	</xs:complexType>
@@ -135,6 +137,14 @@
 		<xs:restriction base='xs:token'>
 			<xs:enumeration value='person'/>
 			<xs:enumeration value='project'/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name='maintainerProxiedAttrType'>
+		<xs:restriction base='xs:token'>
+			<xs:enumeration value='yes'/>
+			<xs:enumeration value='no'/>
+			<xs:enumeration value='proxy'/>
 		</xs:restriction>
 	</xs:simpleType>
 
