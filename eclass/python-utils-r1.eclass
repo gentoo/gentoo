@@ -1299,5 +1299,28 @@ epytest() {
 	return ${?}
 }
 
+# @FUNCTION: eunittest
+# @USAGE: [<args>...]
+# @DESCRIPTION:
+# Run unit tests using dev-python/unittest-or-fail, passing the standard
+# set of options, followed by user-specified options.
+#
+# This command dies on failure and respects nonfatal in EAPIs supporting
+# nonfatal die.
+eunittest() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	[[ -n ${EPYTHON} ]] || die "EPYTHON unset, invalid call context"
+
+	local die_args=()
+	[[ ${EAPI} != [45] ]] && die_args+=( -n )
+
+	set -- "${EPYTHON}" -m unittest_or_fail discover -v "${@}"
+
+	echo "${@}" >&2
+	"${@}" || die "${die_args[@]}" "Tests failed with ${EPYTHON}"
+	return ${?}
+}
+
 _PYTHON_UTILS_R1=1
 fi
