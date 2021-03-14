@@ -16,7 +16,7 @@ SRC_URI="https://gitlab.gnome.org/World/ShellExtensions/${MY_PN}/uploads/${COMMI
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 COMMON_DEPEND="dev-libs/glib:2"
