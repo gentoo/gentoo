@@ -773,7 +773,7 @@ app-admin/sshguard 2.4.1-r1 99999: protects hosts from brute force attacks again
 app-admin/stow 2.3.1: GNU Stow is a symlink farm manager
 app-admin/su-exec 0.2: Switch user and group id and exec
 app-admin/sud 1.3-r1: A daemon to execute processes with special privileges in a nosuid environment
-app-admin/sudo 1.9.5_p2-r1 1.9.6_rc1 9999: Allows users or groups to run commands as other users
+app-admin/sudo 1.9.5_p2-r1 1.9.6 9999: Allows users or groups to run commands as other users
 app-admin/superadduser 1.0.9 1.15: Interactive adduser script from Slackware
 app-admin/supervisor 4.2.0 4.2.1 4.2.2: A system for controlling process state under UNIX
 app-admin/swatchdog 3.2.4-r1: Simple log watcher

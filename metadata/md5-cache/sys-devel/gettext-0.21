@@ -12,4 +12,4 @@ RDEPEND=>=virtual/libiconv-0-r1[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,ab
 SLOT=0
 SRC_URI=mirror://gnu/gettext/gettext-0.21.tar.gz
 _eclasses_=java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	java-utils-2	378e4cda228ea0231a0ac283cb2ad25c	libtool	f143db5a74ccd9ca28c1234deffede96	mono-env	1f24c032c78290b0d9a07d5b343051a7	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=e927164099879e5f021789cd87a61622
+_md5_=2ab23ee5bcd02a76c919b3019faae16a

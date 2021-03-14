@@ -7,5 +7,5 @@ KEYWORDS=amd64 x86
 LICENSE=GPL-3
 RDEPEND=x11-libs/gtk+:3
 SLOT=0
-SRC_URI=mirror://gnu-alpha/ssw/spread-sheet-widget-0.3.tar.gz
-_md5_=1ec230180b94eb55e0139b830d213e61
+SRC_URI=https://alpha.gnu.org/gnu/ssw/spread-sheet-widget-0.3.tar.gz
+_md5_=8b67535dc47a640acad82b6cc01d8f1e
