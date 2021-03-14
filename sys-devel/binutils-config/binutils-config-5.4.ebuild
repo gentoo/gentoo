@@ -24,7 +24,7 @@ IUSE="+native-symlinks"
 RDEPEND="sys-apps/gentoo-functions"
 
 src_compile() {
-	emake DESTDIR="${D}" PV="${PV}" USE_NATIVE_LINKS="$(usex native-symlinks)"
+	emake PV="${PV}" USE_NATIVE_LINKS="$(usex native-symlinks)"
 }
 
 src_install() {

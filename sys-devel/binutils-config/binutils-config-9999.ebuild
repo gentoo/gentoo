@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,7 +24,7 @@ IUSE="+native-symlinks"
 RDEPEND="sys-apps/gentoo-functions"
 
 src_compile() {
-	emake DESTDIR="${D}" PV="${PV}" USE_NATIVE_LINKS="$(usex native-symlinks)"
+	emake PV="${PV}" USE_NATIVE_LINKS="$(usex native-symlinks)"
 }
 
 src_install() {
