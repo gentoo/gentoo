@@ -12956,7 +12956,7 @@ media-gfx/gnuclad 0.2.4: Cladogram tree generator mainly used by the GNU/Linux d
 media-gfx/gozer 0.7-r3: tool for rendering arbitrary text as graphics, using ttfs and styles
 media-gfx/gphoto2 2.5.20 2.5.26: Free, redistributable digital camera software application
 media-gfx/gphotofs 0.5-r1: FUSE file system for interfacing with digital cameras using gphoto2
-media-gfx/gpicview 0.2.5 0.2.5-r1: A Simple and Fast Image Viewer for X
+media-gfx/gpicview 0.2.5 0.2.5-r1 0.2.5-r2: A Simple and Fast Image Viewer for X
 media-gfx/gqview 2.1.5-r2: A GTK-based image browser
 media-gfx/graphicsmagick 1.3.36 9999: Collection of tools and libraries for many image formats
 media-gfx/graphite2 1.3.14: Library providing rendering capabilities for complex non-Roman writing systems
