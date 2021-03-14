@@ -20,6 +20,7 @@
 		and more. Argparse automatically generates usage, help and error messages.
 	</longdescription>
 	<upstream>
+		<remote-id type="github">luarocks/argparse</remote-id>
 		<remote-id type="github">mpeterv/argparse</remote-id>
 	</upstream>
 </pkgmetadata>
