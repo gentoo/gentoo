@@ -1206,7 +1206,7 @@ app-dicts/aspell-fi 0.7.0: Aspell (Finnish) language dictionary
 app-dicts/aspell-fo 0.2.16.1 0.51.0: Aspell (Faroese) language dictionary
 app-dicts/aspell-fr 0.50.3: Aspell (French) language dictionary
 app-dicts/aspell-fy 0.12.0: Aspell (Frisian Frysk) language dictionary
-app-dicts/aspell-ga 0.50.4 4.5.0: Aspell (Irish) language dictionary
+app-dicts/aspell-ga 0.50.4 5.1.0: Aspell (Irish) language dictionary
 app-dicts/aspell-gd 0.1.1.1: Aspell (Scottish Gaelic) language dictionary
 app-dicts/aspell-gl 0.5.2: Aspell (Galician) language dictionary
 app-dicts/aspell-grc 0.02.0: Aspell (Ancient Greek) language dictionary
@@ -8463,7 +8463,7 @@ dev-python/ipy 1.01: Class and tools for handling of IPv4 and IPv6 addresses and
 dev-python/ipykernel 5.4.3 5.5.0: IPython Kernel for Jupyter
 dev-python/ipyparallel 6.3.0-r1: Interactive Parallel Computing with IPython
 dev-python/ipython 7.20.0 7.21.0: Advanced interactive shell for Python
-dev-python/ipython_genutils 0.2.0-r1: Vestigial utilities from IPython
+dev-python/ipython_genutils 0.2.0-r2: Vestigial utilities from IPython
 dev-python/ipywidgets 7.5.1-r1 7.6.2 7.6.3: IPython HTML widgets for Jupyter
 dev-python/irc 19.0.1: IRC client framework written in Python
 dev-python/iso8601 0.1.14: Simple module to parse ISO 8601 dates
