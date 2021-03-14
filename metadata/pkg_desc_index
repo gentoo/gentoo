@@ -16633,7 +16633,7 @@ sci-visualization/kst 2.0.8: Fast real-time large-dataset viewing and plotting t
 sci-visualization/labplot 2.8.1 9999: Scientific data analysis and visualisation based on KDE Frameworks
 sci-visualization/opendx 4.4.4-r7: 3D data visualization tool
 sci-visualization/opendx-samples 4.4.0-r2: Samples for IBM Data Explorer
-sci-visualization/paraview 5.8.1: Powerful scientific data visualization application
+sci-visualization/paraview 5.8.1 5.9.0: Powerful scientific data visualization application
 sci-visualization/pythonprop 0.30: Scripts to prepare and plot VOACAP propagation predictions
 sci-visualization/quickplot 0.10.6 1.0.1_rc: A fast interactive 2D plotter
 sci-visualization/spectromatic 1.0-r3: Generates time-frequency analysis images from wav files
