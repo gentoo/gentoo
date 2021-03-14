@@ -4057,8 +4057,6 @@ media-gfx/openscad:ccache - Use dev-util/ccache to speed up rebuilds
 media-gfx/openscad:gamepad - Add support for gamepads through dev-qt/qtgamepad
 media-gfx/openscad:headless - Build a binary without GUI
 media-gfx/openscad:spacenav - Add support for space navigator devices through dev-libs/libspnav
-media-gfx/openvdb:abi3-compat - Disables newer features to maintain compatibility with ABI3.
-media-gfx/openvdb:abi4-compat - Disables newer features to maintain compatibility with ABI4.
 media-gfx/openvdb:abi5-compat - Disables newer features to maintain compatibility with ABI5.
 media-gfx/openvdb:abi6-compat - Disables newer features to maintain compatibility with ABI6.
 media-gfx/openvdb:abi7-compat - Disables newer features to maintain compatibility with ABI7.

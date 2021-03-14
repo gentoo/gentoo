@@ -12511,20 +12511,20 @@ kde-plasma/sddm-kcm 5.20.5 5.21.2: KDE Plasma control module for SDDM
 kde-plasma/systemsettings 5.20.5 5.21.2: Control Center to configure KDE Plasma desktop
 kde-plasma/xdg-desktop-portal-kde 5.20.5 5.21.2: Backend implementation for xdg-desktop-portal that is using Qt/KDE Frameworks
 kde-plasma/xembed-sni-proxy 5.20.5 5.21.2: Legacy xembed tray icons support for SNI-only system trays
-lxde-base/lxappearance 0.6.3 0.6.3-r1: LXDE GTK+ theme switcher
-lxde-base/lxappearance-obconf 0.2.1 0.2.3: LXAppearance plugin for configuring OpenBox
+lxde-base/lxappearance 0.6.3-r1: LXDE GTK+ theme switcher
+lxde-base/lxappearance-obconf 0.2.3: LXAppearance plugin for configuring OpenBox
 lxde-base/lxde-common 0.99.1 0.99.2: LXDE Session default configuration files and nuoveXT2 iconset
-lxde-base/lxde-icon-theme 0.5.0-r1 0.5.1: nuoveXT2 iconset
+lxde-base/lxde-icon-theme 0.5.1: nuoveXT2 iconset
 lxde-base/lxde-meta 0.5.5-r6: Meta ebuild for LXDE, the Lightweight X11 Desktop Environment
 lxde-base/lxdm 0.5.3-r2: LXDE Display Manager
-lxde-base/lxinput 0.3.5 0.3.5-r1: LXDE keyboard and mouse configuration tool
+lxde-base/lxinput 0.3.5-r1: LXDE keyboard and mouse configuration tool
 lxde-base/lxlauncher 0.2.5: An open source clone of the Asus launcher for EeePC
 lxde-base/lxmenu-data 0.1.5: Provides files needed for LXDE application menus
 lxde-base/lxpanel 0.10.0-r1: Lightweight X11 desktop panel for LXDE
-lxde-base/lxrandr 0.3.1 0.3.1-r1 0.3.2: LXDE GUI interface to RandR extention
+lxde-base/lxrandr 0.3.2: LXDE GUI interface to RandR extention
 lxde-base/lxsession 0.5.4-r1: LXDE session manager
-lxde-base/lxtask 0.1.8 0.1.8-r1 0.1.9: LXDE Task manager
-lxde-base/lxterminal 0.3.1 0.3.2 0.3.2-r1: Lightweight vte-based tabbed terminal emulator for LXDE
+lxde-base/lxtask 0.1.9: LXDE Task manager
+lxde-base/lxterminal 0.3.2 0.3.2-r1: Lightweight vte-based tabbed terminal emulator for LXDE
 lxde-base/menu-cache 1.1.0: Library to create and utilize caches to speed up freedesktop application menus
 lxqt-base/liblxqt 0.15.1 0.16.0: Common base library for the LXQt desktop environment
 lxqt-base/libsysstat 0.4.3 0.4.4: Qt GUI for System Statistics
@@ -13025,7 +13025,7 @@ media-gfx/openexr_viewers 2.3.0: OpenEXR Viewers
 media-gfx/openmesh 7.1: A generic data structure to represent and manipulate polygonal meshes
 media-gfx/openscad 2019.05-r5 2021.01 9999: The Programmers Solid 3D CAD Modeller
 media-gfx/opentoonz 1.4.0: An open-source full-featured 2D animation creation software
-media-gfx/openvdb 4.0.2-r4 5.2.0-r2 6.2.1-r1 7.0.0-r1 7.1.0-r1: Library for the efficient manipulation of volumetric data
+media-gfx/openvdb 7.0.0-r1 7.1.0-r1: Library for the efficient manipulation of volumetric data
 media-gfx/optipng 0.7.7 0.7.7-r1: Compress PNG files without affecting image quality
 media-gfx/panini 0.73.0: OpenGL-based panoramic image viewer
 media-gfx/pdf2svg 0.2.3: pdf2svg is based on poppler and cairo and can convert pdf to svg files
@@ -18401,8 +18401,8 @@ x11-libs/libdmx 1.1.4: X.Org dmx library
 x11-libs/libdockapp 0.7.2 0.7.2-r2 0.7.2-r3 0.7.3: Window Maker Dock Applet Library
 x11-libs/libdrm 2.4.103 2.4.104 9999: X.Org libdrm library
 x11-libs/libfakekey 0.3-r1: Helper library for the x11-misc/matchbox-keyboard package
-x11-libs/libfm 1.2.5 1.3.1 9999: A library for file management
-x11-libs/libfm-extra 1.2.5 1.3.1: A library for file management
+x11-libs/libfm 1.3.1: A library for file management
+x11-libs/libfm-extra 1.3.1: A library for file management
 x11-libs/libfm-qt 0.15.1-r1 0.16.0: Qt Library for Building File Managers
 x11-libs/libfontenc 1.1.4: X.Org fontenc library
 x11-libs/libgxim 0.5.0: GObject-based XIM protocol library
@@ -18586,7 +18586,7 @@ x11-misc/openbox-menu 0.8.0: Another dynamic menu generator for Openbox
 x11-misc/oroborus-deskmenu 1.4.5-r1: root menu program for Oroborus
 x11-misc/oroborus-keylaunch 1.3.9-r1: utility for binding keys in Oroborus
 x11-misc/parcellite 1.2.1: A lightweight GTK+ based clipboard manager
-x11-misc/pcmanfm 1.3.1 9999: Fast lightweight tabbed filemanager
+x11-misc/pcmanfm 1.3.1: Fast lightweight tabbed filemanager
 x11-misc/pcmanfm-qt 0.15.1 0.16.0: Qt GUI Tabbed Filemanager
 x11-misc/peksystray 0.4.0: A system tray dockapp for window managers supporting docking
 x11-misc/picom 8-r1 8.2-r1 8.2-r2 9999: A lightweight compositor for X11 (previously a compton fork)
