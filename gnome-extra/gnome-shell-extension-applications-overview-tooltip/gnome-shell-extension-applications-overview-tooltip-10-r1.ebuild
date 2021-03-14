@@ -12,7 +12,7 @@ SRC_URI="https://github.com/RaphaelRochet/applications-overview-tooltip/archive/
 # https://github.com/RaphaelRochet/applications-overview-tooltip/issues/7
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 RDEPEND="
