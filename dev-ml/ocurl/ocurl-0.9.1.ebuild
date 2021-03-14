@@ -19,7 +19,7 @@ RDEPEND=">=net-misc/curl-7.9.8
 	dev-ml/camlp4:=
 	>=dev-lang/ocaml-3.12:=[ocamlopt?]"
 DEPEND="${RDEPEND}"
-KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86"
+KEYWORDS="amd64 arm ~arm64 ppc ppc64 x86"
 
 src_compile() {
 	emake -j1 all
