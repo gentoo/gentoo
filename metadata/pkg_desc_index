@@ -16378,7 +16378,7 @@ sci-libs/libh2o 0.2.1-r1: Library of routines for IF97 water & steam properties
 sci-libs/libh2oxx 0.2-r1: C++ bindings for libh2o
 sci-libs/libhomfly 1.02.6: Library to compute the homfly polynomial of a link
 sci-libs/libigl 2.2.0: A simple C++ geometry processing library
-sci-libs/libint 1.1.6 2.6.0-r2 2.6.0-r3: Matrix elements (integrals) evaluation over Cartesian Gaussian functions
+sci-libs/libint 1.1.6 2.6.0-r2 2.6.0-r4: Matrix elements (integrals) evaluation over Cartesian Gaussian functions
 sci-libs/libmems 1.6_p1-r3 9999: Library for sci-biology/mauve
 sci-libs/libmuscle 3.7-r3: Library for sci-biology/mauve
 sci-libs/libnova 0.16.0: Celestial Mechanics and Astronomical Calculation Library

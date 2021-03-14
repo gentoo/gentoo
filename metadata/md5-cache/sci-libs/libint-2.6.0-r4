@@ -11,4 +11,4 @@ RDEPEND=virtual/fortran
 SLOT=2
 SRC_URI=https://github.com/evaleev/libint/archive/v2.6.0.tar.gz -> libint-2.6.0.tar.gz
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	fortran-2	b4796813ccda91c9c0d3463fc90aa969	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=d5e5d530777226d3a7b3537e17a3dddf
+_md5_=6fc10dc3ecd023ecf78057299bd88982
