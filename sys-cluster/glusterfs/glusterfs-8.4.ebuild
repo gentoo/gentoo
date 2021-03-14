@@ -7,22 +7,17 @@ PYTHON_COMPAT=( python3_{7..9} )
 
 inherit autotools elisp-common python-single-r1 systemd
 
-if [[ ${PV#9999} != ${PV} ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/gluster/glusterfs.git"
-else
-	SRC_URI="https://download.gluster.org/pub/gluster/${PN}/$(ver_cut 1)/${PV}/${P}.tar.gz"
-	KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86"
-fi
+SRC_URI="https://download.gluster.org/pub/gluster/${PN}/$(ver_cut 1)/${PV}/${P}.tar.gz"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
 DESCRIPTION="GlusterFS is a powerful network/cluster filesystem"
-HOMEPAGE="https://www.gluster.org/"
+HOMEPAGE="https://www.gluster.org/ https://github.com/gluster/glusterfs/"
 
 LICENSE="|| ( GPL-2 LGPL-3+ )"
-SLOT="0"
-IUSE="debug emacs +fuse +georeplication infiniband ipv6 libressl +libtirpc rsyslog static-libs +syslog test vim-syntax +xml"
+SLOT="0/${PV%%.*}"
+IUSE="debug emacs +fuse +georeplication ipv6 libressl +libtirpc rsyslog static-libs +syslog test +xml"
 
-REQUIRED_USE="georeplication? ( ${PYTHON_REQUIRED_USE} )
+REQUIRED_USE="georeplication? ( ${PYTHON_REQUIRED_USE} xml )
 	ipv6? ( libtirpc )"
 
 # the tests must be run as root
@@ -40,7 +35,6 @@ RDEPEND="
 	emacs? ( >=app-editors/emacs-23.1:* )
 	fuse? ( >=sys-fs/fuse-2.7.0:0 )
 	georeplication? ( ${PYTHON_DEPS} )
-	infiniband? ( sys-fabric/libibverbs:* sys-fabric/librdmacm:* )
 	xml? ( dev-libs/libxml2 )
 	!elibc_glibc? ( sys-libs/argp-standalone )
 	libtirpc? ( net-libs/libtirpc:= )
@@ -70,10 +64,6 @@ SITEFILE="50${PN}-mode-gentoo.el"
 
 DOCS=( AUTHORS ChangeLog NEWS README.md THANKS )
 
-PATCHES=(
-	"${FILESDIR}/${PN}-7.7-flock.patch"
-)
-
 # Maintainer notes:
 # * The build system will always configure & build argp-standalone but it'll never use it
 #   if the argp.h header is found in the system. Which should be the case with
@@ -88,8 +78,8 @@ src_prepare() {
 	default
 
 	# build rpc-transport and xlators only once as shared libs
-	find rpc/rpc-transport xlators -name Makefile.am |
-		xargs sed -i 's|.*$(top_srcdir).*\.sym|\0 -shared|' || die
+	find rpc/rpc-transport xlators -name Makefile.am -exec \
+		sed -i 's|.*$(top_srcdir).*\.sym|\0 -shared|' {} + || die
 
 	# fix execution permissions
 	chmod +x libglusterfs/src/gen-defaults.py || die
@@ -103,7 +93,6 @@ src_configure() {
 		$(use_enable debug) \
 		$(use_enable fuse fuse-client) \
 		$(use_enable georeplication) \
-		$(use_enable infiniband ibverbs) \
 		$(use_enable static-libs static) \
 		$(use_enable syslog) \
 		$(use_enable test cmocka) \
@@ -140,10 +129,8 @@ src_install() {
 		elisp-site-file-install "${FILESDIR}/${SITEFILE}"
 	fi
 
-	if use vim-syntax ; then
-		insinto /usr/share/vim/vimfiles/ftdetect; doins "${FILESDIR}"/${PN}.vim
-		insinto /usr/share/vim/vimfiles/syntax; doins extras/${PN}.vim
-	fi
+	insinto /usr/share/vim/vimfiles/ftdetect; doins "${FILESDIR}"/${PN}.vim
+	insinto /usr/share/vim/vimfiles/syntax; doins extras/${PN}.vim
 
 	# insert some other tools which might be useful
 	insinto /usr/share/glusterfs/scripts
@@ -155,13 +142,6 @@ src_install() {
 	# correct permissions on installed scripts
 	# fperms 0755 /usr/share/glusterfs/scripts/*.sh
 	chmod 0755 "${ED}"/usr/share/glusterfs/scripts/*.sh || die
-
-	if use georeplication ; then
-		# move the gsync-sync-gfid tool to a binary path
-		# and set a symlink to be compliant with all other distros
-		mv "${ED}"/usr/{share/glusterfs/scripts/gsync-sync-gfid,libexec/glusterfs/} || die
-		dosym ../../../libexec/glusterfs/gsync-sync-gfid /usr/share/glusterfs/scripts/gsync-sync-gfid
-	fi
 
 	newinitd "${FILESDIR}/${PN}-r1.initd" glusterfsd
 	newinitd "${FILESDIR}/glusterd-r3.initd" glusterd

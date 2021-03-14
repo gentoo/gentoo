@@ -3,10 +3,10 @@
 
 EAPI=7
 
-inherit cmake
+inherit cmake eapi8-dosym
 
 DESCRIPTION="Implementation of the 3D Manufacturing Format file standard"
-HOMEPAGE="https://3mf.io/"
+HOMEPAGE="https://3mf.io/ https://github.com/3MFConsortium/lib3mf"
 SRC_URI="https://github.com/3MFConsortium/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
@@ -35,7 +35,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${P}-0001-Gentoo-specific-avoid-pre-stripping-library.patch
+	"${FILESDIR}"/${PN}-2.1.0-0001-Gentoo-specific-avoid-pre-stripping-library.patch
 )
 
 src_configure() {
@@ -58,9 +58,9 @@ src_configure() {
 }
 
 src_install() {
-	local DOCS=( CONTRIBUTING.md README.md )
 	cmake_src_install
 
-	cd "${ED}/usr/include/${PN}" || die
-	ln -sf Bindings/Cpp/${PN}_{abi,types,implicit}.hpp . || die
+	for suf in abi types implicit; do
+		dosym8 -r /usr/include/${PN}/Bindings/Cpp/${PN}_${suf}.hpp /usr/include/${PN}/${PN}_${suf}.hpp
+	done
 }
