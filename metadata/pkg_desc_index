@@ -4952,7 +4952,7 @@ dev-java/jline 1.0-r1 2.12.1-r1: A Java library for handling console input
 dev-java/jmdns 3.4.1-r1: JmDNS is an implementation of multi-cast DNS in Java
 dev-java/jmh-core 1.4.1 1.21: Harness for building, running, and analysing nano/micro/milli/macro benchmarks
 dev-java/jmi-interface 1.0-r4 1.0-r5: Java Metadata Interface Sample Class Interface
-dev-java/jmock 1.2.0-r1 2.6.1: Library for testing Java code using mock objects
+dev-java/jmock 1.2.0-r1 1.2.0-r2 2.6.1 2.6.1-r1: Library for testing Java code using mock objects
 dev-java/jna 3.4.1 4.2.2-r1: Java Native Access (JNA)
 dev-java/jnlp-api 6.0.18: JNLP API classes, repackaged from the icedtea-web fork of netx
 dev-java/jnr-constants 0.8.6: A set of platform constants (e.g. errno values)
