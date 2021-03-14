@@ -4,10 +4,10 @@ DESCRIPTION=Parser and printer for the opam file syntax
 EAPI=7
 HOMEPAGE=https://github.com/ocaml/opam-file-format
 IUSE=+ocamlopt
-KEYWORDS=amd64 ~arm ~arm64 ppc ppc64 x86
+KEYWORDS=amd64 arm arm64 ppc ppc64 x86
 LICENSE=LGPL-2.1
 RDEPEND=dev-lang/ocaml:=[ocamlopt?]
 SLOT=0/2.1.0
 SRC_URI=https://github.com/ocaml/opam-file-format/archive/2.1.0.tar.gz -> opam-file-format-2.1.0.tar.gz
 _eclasses_=findlib	3d3de4bef686774baeeabfa2b916631c
-_md5_=63483bdfaaa0b77220e328065e1fb8c4
+_md5_=82a2e1da0399dcbe2d56d32065b8f09e

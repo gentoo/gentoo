@@ -5,10 +5,10 @@ DESCRIPTION=Ppx rewriter that records top-level module startup times
 EAPI=7
 HOMEPAGE=https://github.com/janestreet/ppx_module_timer
 IUSE=+ocamlopt
-KEYWORDS=amd64 ~arm ~arm64 ppc ppc64 x86
+KEYWORDS=amd64 arm arm64 ppc ppc64 x86
 LICENSE=MIT
 RDEPEND=>=dev-ml/base-0.14.0:= >=dev-ml/ppx_base-0.14.0:= >=dev-ml/stdio-0.14.0:= >=dev-ml/time_now-0.14.0:= >=dev-ml/ppxlib-0.18.0:= >=dev-ml/ocaml-compiler-libs-0.11.0:= >=dev-ml/ocaml-migrate-parsetree-2.0.0:= dev-ml/cinaps:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/ppx_module_timer/archive/v0.14.0.tar.gz -> ppx_module_timer-0.14.0.tar.gz
 _eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
-_md5_=d0b9b2e2926e4c838a72f7146163c256
+_md5_=4eaa724d75147b4c0506681cebe08ce5

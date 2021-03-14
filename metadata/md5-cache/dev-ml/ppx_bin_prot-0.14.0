@@ -5,11 +5,11 @@ DESCRIPTION=Generation of bin_prot readers and writers from types
 EAPI=7
 HOMEPAGE=https://github.com/janestreet/ppx_bin_prot
 IUSE=+ocamlopt test
-KEYWORDS=amd64 ~arm ~arm64 ppc ppc64 x86
+KEYWORDS=amd64 arm arm64 ppc ppc64 x86
 LICENSE=Apache-2.0
 RDEPEND=>=dev-ml/base-0.14.0:= dev-ml/findlib:= >=dev-ml/bin_prot-0.14.0:= >=dev-ml/ppx_here-0.14.0:= >=dev-ml/ppxlib-0.18.0:= >=dev-ml/ocaml-migrate-parsetree-2.0.0:= dev-ml/cinaps:= >=dev-lang/ocaml-4:=[ocamlopt?]
 RESTRICT=!test? ( test )
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/ppx_bin_prot/archive/v0.14.0.tar.gz -> ppx_bin_prot-0.14.0.tar.gz
 _eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
-_md5_=50bd3987c44018f203e3f4d85bf709a0
+_md5_=05312be2fe0b6fd4684064fdbf0bc663

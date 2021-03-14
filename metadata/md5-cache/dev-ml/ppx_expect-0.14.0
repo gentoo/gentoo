@@ -5,11 +5,11 @@ DESCRIPTION=Cram like framework for OCaml
 EAPI=7
 HOMEPAGE=https://github.com/janestreet/ppx_expect
 IUSE=+ocamlopt test
-KEYWORDS=amd64 ~arm ~arm64 ppc ppc64 x86
+KEYWORDS=amd64 arm arm64 ppc ppc64 x86
 LICENSE=Apache-2.0
 RDEPEND=>=dev-ml/base-0.14.0:= >=dev-ml/ppx_here-0.14.0:= >=dev-ml/ppx_inline_test-0.14.1:= >=dev-ml/stdio-0.14.0:= >=dev-ml/ppxlib-0.18.0:= >=dev-ml/ocaml-compiler-libs-0.11.0:= >=dev-ml/ocaml-migrate-parsetree-2.0.0:= dev-ml/cinaps:= dev-ml/re:= >=dev-lang/ocaml-4:=[ocamlopt?]
 RESTRICT=test
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/ppx_expect/archive/v0.14.0.tar.gz -> ppx_expect-0.14.0.tar.gz
 _eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
-_md5_=587db2e03885241e3d5d27a0a2826a98
+_md5_=a3fd584763acc183bf1e311fbd65365b

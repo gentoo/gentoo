@@ -4,10 +4,10 @@ DESCRIPTION=Compressed file access ML library (ZIP, GZIP and JAR)
 EAPI=7
 HOMEPAGE=https://github.com/xavierleroy/camlzip
 IUSE=+ocamlopt
-KEYWORDS=amd64 ~arm ~arm64 ppc ppc64 x86
+KEYWORDS=amd64 arm arm64 ppc ppc64 x86
 LICENSE=LGPL-2.1
 RDEPEND=>=dev-lang/ocaml-4.05:=[ocamlopt?] >=sys-libs/zlib-1.1.3
 SLOT=1/1.10
 SRC_URI=https://github.com/xavierleroy/camlzip/archive/rel110.tar.gz -> camlzip-1.10.tar.gz
 _eclasses_=findlib	3d3de4bef686774baeeabfa2b916631c
-_md5_=be0dd83b99f3725346019b274102b18e
+_md5_=74127cf99b770d401c6cd3ef33eded35

@@ -5,10 +5,10 @@ DESCRIPTION=O'Caml Graph library
 EAPI=7
 HOMEPAGE=http://ocamlgraph.lri.fr/index.en.html
 IUSE=doc examples gtk +ocamlopt
-KEYWORDS=amd64 ~arm ~arm64 ppc ppc64 x86
+KEYWORDS=amd64 arm arm64 ppc ppc64 x86
 LICENSE=LGPL-2.1
 RDEPEND=>=dev-lang/ocaml-3.10.2:=[ocamlopt?] gtk? ( dev-ml/lablgtk:2=[gnomecanvas,ocamlopt?] )
 SLOT=0/1.8.8
 SRC_URI=http://ocamlgraph.lri.fr/download/ocamlgraph-1.8.8.tar.gz
 _eclasses_=findlib	3d3de4bef686774baeeabfa2b916631c
-_md5_=16dffb3338201823af4fca43888de69c
+_md5_=fec682d1031c5f5ae701652c09ef1972

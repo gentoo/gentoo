@@ -5848,7 +5848,7 @@ dev-lua/lanes 3.13.0-r100: Lightweight, native, lazy evaluating multithreading l
 dev-lua/ldoc 1.4.6-r100: A LuaDoc-compatible documentation generation system
 dev-lua/lgi 0.9.2 0.9.2-r100: Lua bindings using gobject-introspection
 dev-lua/lpeg 1.0.2-r101: Parsing Expression Grammars for Lua
-dev-lua/lua-argparse 0.6.0-r100: Command line argument parser for the Lua Programming Language
+dev-lua/lua-argparse 0.6.0-r100 0.7.1: Feature-rich command line parser for Lua
 dev-lua/lua-bit32 5.3.5-r101: Backported Lua bit manipulation library
 dev-lua/lua-cjson 2.1.0.8-r100: A fast JSON encoding/parsing module for Lua
 dev-lua/lua-openssl 0.7.8_p0-r101: OpenSSL binding for Lua
@@ -11811,7 +11811,7 @@ games-simulation/gl117 1.3.2-r1: An action flight simulator
 games-simulation/lincity 1.13.1-r1: city/country simulation game for X and Linux SVGALib
 games-simulation/lincity-ng 2.9_beta: City simulation game
 games-simulation/micropolis 1.0_p20180313: Free version of the well-known city building simulation
-games-simulation/openrct2 0.3.2-r1 9999: An open source re-implementation of Chris Sawyer's RollerCoaster Tycoon 2
+games-simulation/openrct2 0.3.2-r1 0.3.3 9999: An open source re-implementation of Chris Sawyer's RollerCoaster Tycoon 2
 games-simulation/openttd 1.10.3 9999: OpenTTD is a clone of Transport Tycoon Deluxe
 games-simulation/pmars-sdl 0.9.2e-r1: Portable redcode simulator's sdl port for core war
 games-simulation/searchandrescue 1.7.0: Helicopter based air rescue flight simulator

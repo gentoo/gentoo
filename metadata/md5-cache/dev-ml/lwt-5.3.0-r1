@@ -5,10 +5,10 @@ DESCRIPTION=Cooperative light-weight thread library for OCaml
 EAPI=7
 HOMEPAGE=http://ocsigen.org/lwt
 IUSE=+ocamlopt
-KEYWORDS=amd64 ~arm ~arm64 ppc ppc64 x86
+KEYWORDS=amd64 arm arm64 ppc ppc64 x86
 LICENSE=LGPL-2.1-with-linking-exception
 RDEPEND=dev-ml/seq:= dev-ml/result:= dev-ml/mmap:= dev-ml/ocplib-endian:= >=dev-ml/ppxlib-0.18.0:= dev-ml/react:= dev-ml/dune-configurator:= dev-libs/libev !<www-servers/ocsigen-1.1 >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/5.3.0
 SRC_URI=https://github.com/ocsigen/lwt/archive/5.3.0.tar.gz -> lwt-5.3.0.tar.gz
 _eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
-_md5_=b26bb2254627e4bd2c0417e64b8e8a3f
+_md5_=ffd2eb61f120553d5b477a671eca0f5d

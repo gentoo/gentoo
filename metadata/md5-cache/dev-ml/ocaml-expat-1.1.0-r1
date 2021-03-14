@@ -4,11 +4,11 @@ DESCRIPTION=OCaml bindings for expat
 EAPI=7
 HOMEPAGE=https://github.com/whitequark/ocaml-expat
 IUSE=doc +ocamlopt test
-KEYWORDS=amd64 ~arm ~arm64 ppc ppc64 x86
+KEYWORDS=amd64 arm arm64 ppc ppc64 x86
 LICENSE=MIT
 RDEPEND=dev-libs/expat >=dev-lang/ocaml-3.10.2:=[ocamlopt?]
 RESTRICT=!test? ( test )
 SLOT=0/1.1.0
 SRC_URI=https://github.com/whitequark/ocaml-expat/archive/v1.1.0.tar.gz -> ocaml-expat-1.1.0.tar.gz
 _eclasses_=findlib	3d3de4bef686774baeeabfa2b916631c
-_md5_=911a8b65acd8793cee7dbcbbc2d32bb5
+_md5_=5eb4340f24b2a108c4d7f5537c4fb451

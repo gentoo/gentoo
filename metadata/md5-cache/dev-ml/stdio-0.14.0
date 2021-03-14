@@ -5,10 +5,10 @@ DESCRIPTION=Standard IO Library for OCaml
 EAPI=7
 HOMEPAGE=https://github.com/janestreet/stdio
 IUSE=+ocamlopt
-KEYWORDS=amd64 ~arm ~arm64 ppc ppc64 x86
+KEYWORDS=amd64 arm arm64 ppc ppc64 x86
 LICENSE=Apache-2.0
 RDEPEND=>=dev-ml/base-0.11.0:= dev-ml/sexplib0:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/stdio/archive/v0.14.0.tar.gz -> stdio-0.14.0.tar.gz
 _eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
-_md5_=c64975c6fae71aefc67181ca4a323825
+_md5_=fc87acd942b4d1b7023c6fd4f3c2e8b1

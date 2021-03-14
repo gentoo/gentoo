@@ -5,10 +5,10 @@ DESCRIPTION=Folding over record fields
 EAPI=7
 HOMEPAGE=https://github.com/janestreet/fieldslib
 IUSE=+ocamlopt
-KEYWORDS=amd64 ~arm ~arm64 ppc ppc64 x86
+KEYWORDS=amd64 arm arm64 ppc ppc64 x86
 LICENSE=Apache-2.0
 RDEPEND=>=dev-ml/base-0.14.0:= dev-ml/findlib:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/fieldslib/archive/v0.14.0.tar.gz -> fieldslib-0.14.0.tar.gz
 _eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
-_md5_=d2ba827d888a473522aa52d4202aac03
+_md5_=5336cea5bac127480dceea5d70e5aec0

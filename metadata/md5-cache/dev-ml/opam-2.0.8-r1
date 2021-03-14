@@ -5,10 +5,10 @@ DESCRIPTION=A source-based package manager for OCaml
 EAPI=7
 HOMEPAGE=http://opam.ocaml.org/
 IUSE=+ocamlopt
-KEYWORDS=amd64 ~arm ~arm64 ppc ppc64 x86
+KEYWORDS=amd64 arm arm64 ppc ppc64 x86
 LICENSE=LGPL-2.1-with-linking-exception
 RDEPEND=dev-ml/cmdliner:= dev-ml/cudf:= dev-ml/dose3:= dev-ml/extlib:= ~dev-ml/opam-client-2.0.8:= dev-ml/opam-file-format:= dev-ml/re:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/2.0.8
 SRC_URI=https://github.com/ocaml/opam/archive/2.0.8.tar.gz -> opam-2.0.8.tar.gz
 _eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
-_md5_=085362c9399d48dc0caad5872f9d7331
+_md5_=3d373d211d383c5f9695dea15ff2b781

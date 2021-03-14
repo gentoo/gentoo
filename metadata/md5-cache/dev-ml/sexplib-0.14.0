@@ -5,10 +5,10 @@ DESCRIPTION=Library for automated conversion of OCaml-values to and from S-expre
 EAPI=7
 HOMEPAGE=https://github.com/janestreet/sexplib
 IUSE=+ocamlopt
-KEYWORDS=amd64 ~arm ~arm64 ppc ppc64 x86
+KEYWORDS=amd64 arm arm64 ppc ppc64 x86
 LICENSE=Apache-2.0
 RDEPEND=dev-ml/parsexp:= dev-ml/base:= dev-ml/sexplib0:= dev-ml/num:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/sexplib/archive/v0.14.0.tar.gz -> sexplib-0.14.0.tar.gz
 _eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
-_md5_=0811a64ff3845c90ab993cdb74e9e39f
+_md5_=f39d6232fb3dba5ce9fd8d3261bdc6a9

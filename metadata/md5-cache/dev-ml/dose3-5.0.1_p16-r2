@@ -5,10 +5,10 @@ DESCRIPTION=Library to perform analysis on package repositories
 EAPI=7
 HOMEPAGE=http://www.mancoosi.org/software/ https://gforge.inria.fr/projects/dose
 IUSE=+ocamlopt parmap zip bzip2 xml curl rpm4 test
-KEYWORDS=amd64 ~arm ~arm64 ppc ppc64 x86
+KEYWORDS=amd64 arm arm64 ppc ppc64 x86
 LICENSE=LGPL-3
 RDEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt=] <=dev-lang/ocaml-4.09.0:=[ocamlopt=] dev-ml/cudf:=[ocamlopt=] >=dev-ml/extlib-1.7.0:=[ocamlopt=] >=dev-ml/ocamlgraph-1.8.6:=[ocamlopt=] <dev-ml/ocamlgraph-1.8.9:=[ocamlopt=] >=dev-ml/re-1.9.0:=[ocamlopt=] parmap? ( dev-ml/parmap:=[ocamlopt=] ) zip? ( dev-ml/camlzip:=[ocamlopt=] ) bzip2? ( dev-ml/camlbz2:= ) xml? ( dev-ml/ocaml-expat:=[ocamlopt=] dev-ml/xml-light:=[ocamlopt=] ) curl? ( dev-ml/ocurl:= ) rpm4? ( app-arch/rpm )
 RESTRICT=test
 SLOT=0/5.0.1_p16
 SRC_URI=http://deb.debian.org/debian/pool/main/d/dose3/dose3_5.0.1.orig.tar.gz http://deb.debian.org/debian/pool/main/d/dose3/dose3_5.0.1-16.debian.tar.xz
-_md5_=507ee7c5cdb6b2ae561a56dcf55fb07a
+_md5_=d1802ec478cfa50243b440529704410e

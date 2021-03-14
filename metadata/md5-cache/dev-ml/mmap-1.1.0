@@ -5,10 +5,10 @@ DESCRIPTION=File mapping
 EAPI=7
 HOMEPAGE=https://github.com/mirage/mmap
 IUSE=+ocamlopt
-KEYWORDS=amd64 ~arm ~arm64 ppc ppc64 x86
+KEYWORDS=amd64 arm arm64 ppc ppc64 x86
 LICENSE=LGPL-2.1
 RDEPEND=>=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/1.1.0
 SRC_URI=https://github.com/mirage/mmap/releases/download/v1.1.0/mmap-v1.1.0.tbz
 _eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
-_md5_=b86b0fb3249152a1fe62559c66e18375
+_md5_=a1fb963ae6aed01631f0db94895fac0c
