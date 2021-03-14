@@ -19040,7 +19040,7 @@ x11-themes/nuovo-icon-theme 0.5-r1: A scalable icon theme called Nuovo
 x11-themes/nuvox 07.1-r1: NuvoX SVG icon theme
 x11-themes/obsidian-xcursors 1.0: A shiny and clean xcursor theme
 x11-themes/oxygen-gtk 1.4.1-r1 1.4.6-r1: Official GTK+:2 port of KDE's Oxygen widget style
-x11-themes/papirus-icon-theme 20191009 20191101 20191201 20200102 20200201 20200301 20200405 20200430 20200602 20200702 20200801 20200901: icon theme for Linux
+x11-themes/papirus-icon-theme 20200405 20200901 20210302: Free and open source SVG icon theme
 x11-themes/pearlgrey-xcursors 1.0: A simple crispy white-grey xcursor theme
 x11-themes/pidgin-penguins-smileys 1.0: Penguins pidgin smiley theme
 x11-themes/pulse-glass 20100616: The Pulse Glass x11 mouse cursor theme

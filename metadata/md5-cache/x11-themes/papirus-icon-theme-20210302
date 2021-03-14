@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare
+DEPEND=dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Free and open source SVG icon theme
+EAPI=7
+HOMEPAGE=https://github.com/PapirusDevelopmentTeam/papirus-icon-theme
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+SLOT=0
+SRC_URI=https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/archive/20210302.tar.gz -> papirus-icon-theme-20210302.tar.gz
+_eclasses_=xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=845f8831ddbfd25d8ca5a49eefba4b6c
