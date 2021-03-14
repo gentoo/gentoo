@@ -2188,8 +2188,8 @@ app-emulation/vkd3d 1.0 1.1 1.1-r1 1.2 9999: D3D12 to Vulkan translation library
 app-emulation/wine-desktop-common 20150204-r1: Various desktop menu items and icons for wine
 app-emulation/wine-gecko 2.47-r1 2.47.1 2.47.2: A Mozilla Gecko based version of Internet Explorer for Wine
 app-emulation/wine-mono 4.6.4 4.7.0 4.7.1 4.7.3 4.7.5 4.8.0 4.8.1 4.8.3 4.9.0 4.9.2 4.9.3 4.9.4 5.0.0 5.1.0 5.1.1 6.0.0: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
-app-emulation/wine-staging 6.0 6.1 6.2 6.3-r1 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
-app-emulation/wine-vanilla 5.0.2 5.0.3-r1 6.0 6.1 6.2 6.3-r1 9999: Free implementation of Windows(tm) on Unix, without external patchsets
+app-emulation/wine-staging 6.1 6.2 6.3-r1 6.4 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
+app-emulation/wine-vanilla 6.0 6.1 6.2 6.3-r1 6.4 9999: Free implementation of Windows(tm) on Unix, without external patchsets
 app-emulation/winetricks 20200412 20210206 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4-r2: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
@@ -8119,7 +8119,7 @@ dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.21: Syntax highlighting and autocompletion for the Python interpreter
 dev-python/bracex 2.0.1 2.1.0 2.1.1: Bash style brace expansion for Python
 dev-python/braintree 4.6.0: Braintree Python Library
-dev-python/breathe 4.25.1-r1 4.26.1 4.27.0: Sphinx Doxygen renderer
+dev-python/breathe 4.26.1 4.27.0: Sphinx Doxygen renderer
 dev-python/brotlicffi 0.8.0 1.0.9.1: Python binding to the Brotli library
 dev-python/brotlipy 0.7.0-r3: Python binding to the Brotli library
 dev-python/brython 3.7.3 3.7.4: A Python 3 implementation for client-side web programming
@@ -9009,7 +9009,7 @@ dev-python/pytest-tempdir 2019.10.12: Pytest plugin to support for a predictable
 dev-python/pytest-testmon 1.0.3: Take TDD to a new level with py.test and testmon
 dev-python/pytest-timeout 1.4.2-r1: py.test plugin to abort hanging tests
 dev-python/pytest-virtualenv 1.7.0-r1: Virtualenv fixture for py.test
-dev-python/pytest-xdist 1.34.0-r1 2.2.0-r1 2.2.1: Distributed testing and loop-on-failing modes
+dev-python/pytest-xdist 2.2.1: Distributed testing and loop-on-failing modes
 dev-python/pytest-xprocess 0.17.0 0.17.1: Manage external processes across test runs
 dev-python/pytest-xvfb 2.0.0: A pytest plugin to run Xvfb for tests
 dev-python/python-augeas 1.1.0: Python bindings for Augeas
@@ -9138,7 +9138,7 @@ dev-python/re-assert 1.1.0: Show where your regex match assertion failed
 dev-python/readme_renderer 28.0 29.0: a library for rendering "readme" descriptions for Warehouse
 dev-python/readthedocs-sphinx-ext 2.1.3: Code specific for Read the Docs and Sphinx
 dev-python/rebulk 3.0.1: Python library that performs advanced searches in strings
-dev-python/recommonmark 0.6.0-r1 0.7.1: Python docutils-compatibility bridge to CommonMark
+dev-python/recommonmark 0.7.1: Python docutils-compatibility bridge to CommonMark
 dev-python/redis-py 3.5.3: Python client for Redis key-value store
 dev-python/reedsolomon 1.5.4: Pure-Python Reed Solomon encoder/decoder
 dev-python/reflink 0.2.1-r1: Python wrapper around the reflink system calls
@@ -9244,7 +9244,7 @@ dev-python/socketio-client 0.7.2: A socket.io client library for Python
 dev-python/socketio-client-nexus 0.7.6: A socket.io 2.x client library for Python
 dev-python/socketpool 0.5.3-r3: A simple Python socket pool
 dev-python/sortedcontainers 2.3.0: Python library to sort collections and containers
-dev-python/soupsieve 2.1.0 2.2: A modern CSS selector implementation for BeautifulSoup
+dev-python/soupsieve 2.2: A modern CSS selector implementation for BeautifulSoup
 dev-python/sparql-wrapper 1.8.5: Wrapper around a SPARQL service
 dev-python/speaklater 1.3-r1: Lazy strings for Python
 dev-python/speg 0.3-r1 0.3-r2: A PEG-based parser interpreter with memoization
@@ -9353,7 +9353,7 @@ dev-python/toolz 0.11.1: List processing tools and functional utilities
 dev-python/tooz 2.7.1: Library centralizing the most common distributed primitives
 dev-python/towncrier 19.2.0: Building newsfiles for your project
 dev-python/tox 3.21.4 3.22.0 3.23.0: virtualenv-based automation of test activities
-dev-python/tqdm 4.55.2 4.56.2 4.57.0 4.58.0 4.59.0: Add a progress meter to your loops in a second
+dev-python/tqdm 4.56.2 4.57.0 4.58.0 4.59.0: Add a progress meter to your loops in a second
 dev-python/traceback2 1.4.0-r1: Backports of the traceback module
 dev-python/traitlets 4.3.3 5.0.5: A configuration system for Python applications
 dev-python/transitions 0.8.6 0.8.7: A lightweight, object-oriented state machine implementation in Python
@@ -9449,7 +9449,7 @@ dev-python/xdoctest 0.15.4: A rewrite of Python's builtin doctest module but wit
 dev-python/xlrd 1.2.0: Library to extract data from Microsoft Excel spreadsheets
 dev-python/xlsxwriter 1.3.7: Python module for creating Excel XLSX files
 dev-python/xlwt 1.3.0-r1: Python library to create spreadsheet files compatible with Excel
-dev-python/xmlschema 1.4.2 1.5.1 1.5.2 1.5.3: An XML Schema validator and decoder
+dev-python/xmlschema 1.5.1 1.5.2 1.5.3: An XML Schema validator and decoder
 dev-python/xmltodict 0.12.0-r1: Makes working with XML feel like you are working with JSON
 dev-python/xvfbwrapper 0.2.9: Python wrapper for running a display inside X virtual framebuffer
 dev-python/xxhash 2.0.0: Python binding for the xxHash library
