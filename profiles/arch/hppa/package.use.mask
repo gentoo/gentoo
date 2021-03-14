@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Rolf Eike Beer <eike@sf-mail.de> (2021-03-14)
+# dependencies not yet keyworded
+dev-ruby/globalid test
+
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-03-13)
 # virtual/jdk isn't keyworded here
 media-libs/rubberband jni
