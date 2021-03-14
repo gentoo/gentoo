@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2021-03-15)
+# Needs a port to ghc-8.10. No release for past 6 years.
+# No revdeps. Mask for removal.
+dev-haskell/geniplate
+
 # Göktürk Yüksek <gokturk@gentoo.org> (2021-03-14)
 # Dead upstream. No revdeps.
 # Removal in 60 days to allow people extra time
