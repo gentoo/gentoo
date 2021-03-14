@@ -10,7 +10,7 @@ inherit mono-env libtool java-pkg-opt-2 multilib-minimal
 DESCRIPTION="GNU locale utilities"
 HOMEPAGE="https://www.gnu.org/software/gettext/"
 if [[ "${PV}" == *_rc* ]] ; then
-	SRC_URI="mirror://gnu-alpha/${PN}/${P/_/-}.tar.bz2"
+	SRC_URI="https://alpha.gnu.org/gnu/${PN}/${P/_/-}.tar.bz2"
 	S="${WORKDIR}/${P/_/-}"
 else
 	SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"

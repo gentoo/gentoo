@@ -7,7 +7,7 @@ inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="Handy console-based calculator utility"
 HOMEPAGE="https://www.gnu.org/software/bc/bc.html"
-SRC_URI="mirror://gnu-alpha/bc/${P}.tar.bz2
+SRC_URI="https://alpha.gnu.org/gnu/bc/${P}.tar.bz2
 	mirror://gnu/bc/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
