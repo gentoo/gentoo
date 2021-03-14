@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{7..9} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Python toolkit for stream-based generation of output for the web"
-HOMEPAGE="http://genshi.edgewall.org/ https://pypi.org/project/Genshi/"
+HOMEPAGE="https://genshi.edgewall.org/ https://pypi.org/project/Genshi/"
 SRC_URI="mirror://pypi/G/${PN^}/${P^}.tar.gz"
 S="${WORKDIR}/${P^}"
 
