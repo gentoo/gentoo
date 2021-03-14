@@ -5483,7 +5483,7 @@ dev-libs/libdazzle 3.36.0 3.38.0: Experimental new features for GTK+ and GLib
 dev-libs/libdbh 5.0.19 5.0.22: A small library to create and manage 64-bit disk based hash tables
 dev-libs/libdbusmenu 16.04.0-r1: Library to pass menu structure across DBus
 dev-libs/libdbusmenu-qt 0.9.3_pre20160218-r3: Library providing Qt implementation of DBusMenu specification
-dev-libs/libdispatch 5.3.3: A library for concurrent code execution on multicore hardware
+dev-libs/libdispatch 5.3.3-r1: A library for concurrent code execution on multicore hardware
 dev-libs/libdivecomputer 0.6.0-r1 9999: Library for communication with dive computers from various manufacturers.
 dev-libs/libdivsufsort 2.0.1-r1: Suffix-sorting library (for BWT)
 dev-libs/libdnet 1.14-r1 1.14-r2: simplified, portable interface to several low-level networking routines
@@ -9380,6 +9380,7 @@ dev-python/uncertainties 3.1.4-r1: Python module for calculations with uncertain
 dev-python/unicodecsv 0.14.1-r1: Drop-in replacement for python stdlib csv module supporting unicode
 dev-python/unidecode 1.2.0: Module providing ASCII transliterations of Unicode text
 dev-python/unittest-mixins 1.6-r1: A set of mixin classes and other helpers for unittest test case classes
+dev-python/unittest-or-fail 0: Run unittests or fail if no tests were found
 dev-python/unittest2 1.1.0-r1: The new features in unittest backported to Python 2.4+
 dev-python/uranium 4.8.0: A Python framework for building 3D printing related applications
 dev-python/urdf_parser_py 0.4.3: URDF parser for Python
