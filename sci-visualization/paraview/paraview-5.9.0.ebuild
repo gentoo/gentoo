@@ -17,7 +17,7 @@ SRC_URI="https://www.paraview.org/files/v${MAJOR_PV}/${MY_P}.tar.xz"
 LICENSE="paraview GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="boost cg coprocessing development doc examples ffmpeg mpi mysql nvcontrol openmp offscreen plugins python +qt5 +sqlite test tk +webengine"
+IUSE="boost cg doc examples ffmpeg mpi mysql nvcontrol openmp offscreen plugins python +qt5 +sqlite test tk +webengine"
 
 RESTRICT="mirror test"
 
@@ -29,6 +29,10 @@ REQUIRED_USE="
 	qt5? ( sqlite )
 	?? ( offscreen qt5 )"
 
+# TODO: Verify that these two are not needed any more for the catalyst
+# module:
+#  - dev-python/PyQt5
+#  - dev-qt/qtgui:5[-gles2-only]
 RDEPEND="
 	app-arch/lz4
 	dev-libs/expat
@@ -52,10 +56,6 @@ RDEPEND="
 	x11-libs/libXext
 	x11-libs/libXmu
 	x11-libs/libXt
-	coprocessing? (
-		dev-python/PyQt5
-		dev-qt/qtgui:5[-gles2-only]
-	)
 	ffmpeg? ( media-video/ffmpeg )
 	mpi? ( virtual/mpi[cxx,romio] )
 	mysql? ( dev-db/mysql-connector-c )
@@ -135,20 +135,8 @@ src_configure() {
 		-DPARAVIEW_BUILD_SHARED_LIBS=ON
 		-DCMAKE_VERBOSE_MAKEFILE=ON
 
-		-DVTK_DEFAULT_RENDER_WINDOW_OFFSCREEN=TRUE
-
-		-DVTK_USE_OGGTHEORA_ENCODER=TRUE
-
-		-DVTK_GROUP_ENABLE_Imaging=YES
-		-DVTK_GROUP_ENABLE_Rendering=YES
-		-DVTK_GROUP_ENABLE_StandAlone=YES
-		-DVTK_GROUP_ENABLE_Views=YES
-
 		# boost
 		-DVTK_MODULE_ENABLE_VTK_IOInfovis="$(usex boost YES NO)"
-
-		# coprocessing
-		-DVTK_MODULE_ENABLE_ParaView_Catalyst="$(usex coprocessing YES NO)"
 
 		# doc
 		-DPARAVIEW_BUILD_DEVELOPER_DOCUMENTATION="$(usex doc)"
@@ -169,7 +157,6 @@ src_configure() {
 		-DVTK_MODULE_ENABLE_VTK_IOMySQL="$(usex mysql YES NO)"
 
 		# offscreen
-		-DVTK_USE_X="$(usex !offscreen)"
 		-DVTK_OPENGL_HAS_OSMESA="$(usex offscreen)"
 		-DVTK_OPENGL_HAS_OSMESA="$(usex offscreen)"
 
@@ -181,7 +168,6 @@ src_configure() {
 		-DPARAVIEW_USE_PYTHON="$(usex python)"
 
 		# qt5
-		-DPARAVIEW_INSTALL_DEVELOPMENT_FILES="$(usex development)"
 		-DPARAVIEW_USE_QT="$(usex qt5)"
 		-DModule_pqPython="$(usex qt5 "$(usex python)" "off")"
 		-DVTK_USE_NVCONTROL="$(usex nvcontrol)"
