@@ -10,7 +10,7 @@ MY_P="${P/_/.}"
 DESCRIPTION="Text formatter used for man pages"
 HOMEPAGE="https://www.gnu.org/software/groff/groff.html"
 SRC_URI="mirror://gnu/groff/${MY_P}.tar.gz
-	mirror://gnu-alpha/groff/${MY_P}.tar.gz"
+	https://alpha.gnu.org/gnu/groff/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

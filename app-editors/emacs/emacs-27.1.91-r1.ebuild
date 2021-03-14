@@ -29,7 +29,7 @@ else
 		SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 		S="${WORKDIR}/emacs"
 	elif [[ ${PV//[0-9]} != "." ]]; then
-		SRC_URI="mirror://gnu-alpha/emacs/pretest/${PN}-${PV/_/-}.tar.xz"
+		SRC_URI="https://alpha.gnu.org/gnu/emacs/pretest/${PN}-${PV/_/-}.tar.xz"
 	fi
 	SLOT="${PV%%.*}"
 	[[ ${PV} == *.*.* ]] && SLOT+="-vcs"

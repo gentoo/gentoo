@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,7 +24,7 @@ if [[ ${PV} != 9999 ]]; then
 	if [[ ${PV} == *_alpha* || ${PV} == *_beta* || ${PV} == *_rc* ]]; then
 		# The quote style is to work with <=bash-4.2 and >=bash-4.3 #503860
 		MY_P=${P/_/'~'}
-		SRC_URI="mirror://gnu-alpha/${PN}/${MY_P}.tar.xz"
+		SRC_URI="https://alpha.gnu.org/gnu/${PN}/${MY_P}.tar.xz"
 		S=${WORKDIR}/${MY_P}
 	else
 		SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"

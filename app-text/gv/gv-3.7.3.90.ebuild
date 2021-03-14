@@ -8,7 +8,7 @@ inherit desktop
 DESCRIPTION="Viewer for PostScript and PDF documents using Ghostscript"
 HOMEPAGE="https://www.gnu.org/software/gv/"
 # Change 'gnu-alpha' to 'gnu' for final release, like 3.7.4
-SRC_URI="mirror://gnu-alpha/gv/${P}.tar.gz"
+SRC_URI="https://alpha.gnu.org/gnu/gv/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
