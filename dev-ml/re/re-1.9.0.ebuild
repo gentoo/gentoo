@@ -12,7 +12,7 @@ S="${WORKDIR}/ocaml-${P}"
 
 LICENSE="LGPL-2-with-linking-exception"
 SLOT="0/${PV}"
-KEYWORDS="amd64 arm ~arm64 ppc ppc64 x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 x86"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
