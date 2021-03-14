@@ -42,7 +42,7 @@ src_configure() {
 		--with-g12-max-am=5 --with-g12-opt-am=3 \
 		--with-g12dkh-max-am=5 --with-g12dkh-opt-am=3 \
 		--enable-contracted-ints \
-		--enable-shared
+		--enable-shared \
 		$(use_enable static-libs static)
 }
 
@@ -54,6 +54,9 @@ src_compile() {
 
 src_install() {
 	default
+	if ! use static-libs; then
+		find "${ED}" -name '*.la' -delete || die "Failed to remove .la files"
+	fi
 
 	if use doc; then
 		DOCS=( doc/progman/progman.pdf )
