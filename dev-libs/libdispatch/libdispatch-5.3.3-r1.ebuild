@@ -16,7 +16,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND=""
+DEPEND="!gnustep-base/libobjc2"
 RDEPEND="${DEPEND}"
 BDEPEND="
 	sys-devel/clang
@@ -25,9 +25,10 @@ BDEPEND="
 
 S="${WORKDIR}/${MY_PN}-${MY_PV}"
 
+PATCHES=( "${FILESDIR}/remove-Werror.patch" )
+
 src_configure () {
 	if ! tc-is-clang ; then
-		have_switched_compiler=yes
 		AR=llvm-ar
 		CC=${CHOST}-clang
 		CXX=${CHOST}-clang++
