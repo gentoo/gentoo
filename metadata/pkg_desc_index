@@ -9093,7 +9093,7 @@ dev-python/python-varlink 30.3.0: Python implementation of the Varlink protocol
 dev-python/python-vitrageclient 4.1.1: A client for the OpenStack Vitrage API
 dev-python/python-xlib 0.29: A fully functional X client library for Python, written in Python
 dev-python/python-xmlsec 1.3.9: Python bindings for the XML Security Library
-dev-python/python-xmp-toolkit 2.0.1 2.0.1-r1: Library for working with XMP metadata
+dev-python/python-xmp-toolkit 2.0.1-r1: Library for working with XMP metadata
 dev-python/python-zaqarclient 2.0.1: A client for the OpenStack Zaqar API
 dev-python/python-zipstream 1.1.4: A zip archive generator
 dev-python/python-zunclient 4.1.1: A client for the OpenStack Zun API
