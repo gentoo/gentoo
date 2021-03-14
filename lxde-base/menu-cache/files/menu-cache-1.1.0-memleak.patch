@@ -1,0 +1,37 @@
+From 97e5de8682c0c44fe4e6a2df864c5fdf76cd77cc Mon Sep 17 00:00:00 2001
+From: Palo Kisa <palo.kisa@gmail.com>
+Date: Thu, 30 Nov 2017 11:36:18 +0100
+Subject: [PATCH] libmenu-cache: Fix memory leaks
+
+---
+ libmenu-cache/menu-cache.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/libmenu-cache/menu-cache.c b/libmenu-cache/menu-cache.c
+index 5025d72..273b503 100644
+--- a/libmenu-cache/menu-cache.c
++++ b/libmenu-cache/menu-cache.c
+@@ -379,11 +379,15 @@ static MenuCacheItem* read_item(GDataInputStream* f, MenuCache* cache,
+             else /* separator */
+             {
+                 item->type = MENU_CACHE_TYPE_SEP;
++                g_free(line);
+                 return item;
+             }
+         }
+         else
++        {
++            g_free(line);
+             return NULL;
++        }
+ 
+         item->id = g_strndup( line + 1, len - 1 );
+         g_free(line);
+@@ -923,6 +927,7 @@ gboolean menu_cache_item_unref(MenuCacheItem* item)
+         else
+         {
+             MenuCacheApp* app = MENU_CACHE_APP(item);
++            g_free(app->generic_name);
+             g_free( app->exec );
+             g_free(app->try_exec);
+             g_free(app->working_dir);
