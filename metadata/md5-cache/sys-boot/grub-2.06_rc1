@@ -1,16 +1,16 @@
-BDEPEND=|| ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 ) app-misc/pax-utils sys-devel/flex sys-devel/bison sys-apps/help2man sys-apps/texinfo fonts? ( media-libs/freetype:2 virtual/pkgconfig ) test? ( app-admin/genromfs app-arch/cpio app-arch/lzop app-emulation/qemu dev-libs/libisoburn sys-apps/miscfiles sys-block/parted sys-fs/squashfs-tools ) themes? ( app-arch/unzip media-libs/freetype:2 virtual/pkgconfig ) truetype? ( virtual/pkgconfig ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=compile configure install postinst prepare setup test unpack
+BDEPEND=app-misc/pax-utils sys-devel/flex sys-devel/bison sys-apps/help2man sys-apps/texinfo fonts? ( media-libs/freetype:2 virtual/pkgconfig ) test? ( app-admin/genromfs app-arch/cpio app-arch/lzop app-emulation/qemu dev-libs/libisoburn sys-apps/miscfiles sys-block/parted sys-fs/squashfs-tools ) themes? ( app-arch/unzip media-libs/freetype:2 virtual/pkgconfig ) truetype? ( virtual/pkgconfig )
+DEFINED_PHASES=compile configure install postinst prepare test unpack
 DEPEND=app-arch/xz-utils >=sys-libs/ncurses-5.2-r5:0= grub_platforms_emu? ( sdl? ( media-libs/libsdl ) ) device-mapper? ( >=sys-fs/lvm2-2.02.45 ) libzfs? ( sys-fs/zfs:= ) mount? ( sys-fs/fuse:0 ) truetype? ( media-libs/freetype:2= ) ppc? ( >=sys-apps/ibm-powerpc-utils-1.3.5 ) ppc64? ( >=sys-apps/ibm-powerpc-utils-1.3.5 )
 DESCRIPTION=GNU GRUB boot loader
 EAPI=7
 HOMEPAGE=https://www.gnu.org/software/grub/
 IUSE=device-mapper doc efiemu +fonts mount nls sdl test +themes truetype libzfs grub_platforms_coreboot grub_platforms_efi-32 grub_platforms_efi-64 grub_platforms_emu grub_platforms_ieee1275 grub_platforms_loongson grub_platforms_multiboot grub_platforms_qemu grub_platforms_qemu-mips grub_platforms_pc grub_platforms_uboot grub_platforms_xen grub_platforms_xen-32 grub_platforms_xen-pvh
+KEYWORDS=~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=GPL-3+ BSD MIT fonts? ( GPL-2-with-font-exception ) themes? ( CC-BY-SA-3.0 BitstreamVera )
-PROPERTIES=live
 RDEPEND=app-arch/xz-utils >=sys-libs/ncurses-5.2-r5:0= grub_platforms_emu? ( sdl? ( media-libs/libsdl ) ) device-mapper? ( >=sys-fs/lvm2-2.02.45 ) libzfs? ( sys-fs/zfs:= ) mount? ( sys-fs/fuse:0 ) truetype? ( media-libs/freetype:2= ) ppc? ( >=sys-apps/ibm-powerpc-utils-1.3.5 ) ppc64? ( >=sys-apps/ibm-powerpc-utils-1.3.5 ) kernel_linux? ( grub_platforms_efi-32? ( sys-boot/efibootmgr ) grub_platforms_efi-64? ( sys-boot/efibootmgr ) ) !sys-boot/grub:0 !sys-boot/grub-static nls? ( sys-devel/gettext )
 REQUIRED_USE=grub_platforms_coreboot? ( fonts ) grub_platforms_qemu? ( fonts ) grub_platforms_ieee1275? ( fonts ) grub_platforms_loongson? ( fonts )
 RESTRICT=!test? ( test )
-SLOT=2/9999
-SRC_URI=fonts? ( mirror://gnu/unifont/unifont-12.1.02/unifont-12.1.02.pcf.gz ) themes? ( mirror://sourceforge/dejavu/dejavu-sans-ttf-2.37.zip )
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	bash-completion-r1	be99724bde4274de21e581204e9d164a	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	git-r3	3e7ec3d6619213460c85e2aa48398441	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	optfeature	6a2add34e06e5a05d88471a33ccdd73e	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
+SLOT=2/2.06_rc1
+SRC_URI=https://alpha.gnu.org/gnu/grub/grub-2.06~rc1.tar.xz fonts? ( mirror://gnu/unifont/unifont-12.1.02/unifont-12.1.02.pcf.gz ) themes? ( mirror://sourceforge/dejavu/dejavu-sans-ttf-2.37.zip )
+_eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	optfeature	6a2add34e06e5a05d88471a33ccdd73e	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
 _md5_=c355c67f247122db20395e99234162db
