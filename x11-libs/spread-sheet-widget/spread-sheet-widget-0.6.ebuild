@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="GNU Spread Sheet Widget"
 HOMEPAGE="https://www.gnu.org/software/ssw/"
-SRC_URI="mirror://gnu-alpha/ssw/${P}.tar.gz"
+SRC_URI="https://alpha.gnu.org/gnu/ssw/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

@@ -7,7 +7,6 @@ gimp		https://ftp.fau.de/gimp/gimp/ ftp://ftp.fau.de/gimp/gimp/ https://artfiles
 gmt		http://ftp.iris.washington.edu/pub/gmt/ ftp://ftp.soest.hawaii.edu/gmt/ ftp://ftp.iris.washington.edu/pub/gmt/ ftp://ftp.star.nesdis.noaa.gov/pub/sod/lsa/gmt
 gnome		https://download.gnome.org/
 gnu		https://ftp.gnu.org/gnu/ https://artfiles.org/gnu.org/ https://www.mirrorservice.org/sites/ftp.gnu.org/gnu/
-gnu-alpha	https://alpha.gnu.org/gnu/
 gnupg		https://www.mirrorservice.org/sites/ftp.gnupg.org/gcrypt/ https://ftp.heanet.ie/mirrors/ftp.gnupg.org/gcrypt/ https://mirrors.dotsrc.org/gcrypt/ ftp://ftp.gnupg.org/gcrypt/
 goproxy https://proxy.golang.org/ https://goproxy.io/ https://gocenter.io/
 idsoftware	ftp://ftp.fu-berlin.de/pc/games/idgames/idstuff ftp://ftp.gamers.org/pub/idgames/idstuff

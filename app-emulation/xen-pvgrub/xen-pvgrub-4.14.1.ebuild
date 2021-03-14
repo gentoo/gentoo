@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ MY_PV=${PV/_/-}
 
 XEN_EXTFILES_URL="http://xenbits.xensource.com/xen-extfiles"
 LIBPCI_URL=ftp://atrey.karlin.mff.cuni.cz/pub/linux/pci
-GRUB_URL=mirror://gnu-alpha/grub
+GRUB_URL=https://alpha.gnu.org/gnu/grub
 
 UPSTREAM_VER=
 [[ -n ${UPSTREAM_VER} ]] && \

@@ -10,7 +10,7 @@ MY_P="${P/_/-}"
 DESCRIPTION="A spell checker replacement for ispell"
 HOMEPAGE="http://aspell.net/"
 if [[ "${PV}" = *_rc* ]] ; then
-	SRC_URI="mirror://gnu-alpha/aspell/${MY_P}.tar.gz"
+	SRC_URI="https://alpha.gnu.org/gnu/aspell/${MY_P}.tar.gz"
 else
 	SRC_URI="mirror://gnu/aspell/${MY_P}.tar.gz"
 fi

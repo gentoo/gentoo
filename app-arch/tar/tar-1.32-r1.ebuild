@@ -8,7 +8,7 @@ inherit flag-o-matic
 DESCRIPTION="Use this to make tarballs :)"
 HOMEPAGE="https://www.gnu.org/software/tar/"
 SRC_URI="mirror://gnu/tar/${P}.tar.bz2
-	mirror://gnu-alpha/tar/${P}.tar.bz2"
+	https://alpha.gnu.org/gnu/tar/${P}.tar.bz2"
 
 LICENSE="GPL-3+"
 SLOT="0"
