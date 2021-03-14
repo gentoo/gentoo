@@ -15434,7 +15434,7 @@ net-misc/sstp-client 1.0.10-r1 1.0.12: A client implementation of Secure Socket 
 net-misc/stargazer 2.408-r1: Billing system for small home and office networks
 net-misc/streamlink 1.3.1-r1 2.0.0 9999: CLI for extracting streams from websites to a video player of your choice
 net-misc/streamtuner 0.99.99-r5: Stream directory browser for browsing internet radio streams
-net-misc/stunnel 5.50-r1 5.55 5.56-r1: TLS/SSL - Port Wrapper
+net-misc/stunnel 5.50-r1 5.55 5.56-r1 5.58: TLS/SSL - Port Wrapper
 net-misc/stuntman 1.2.15: Open source implementation of the STUN protocol
 net-misc/suite3270 4.0_p13: Complete 3270 access package
 net-misc/taptap 1.0: A program to link two /dev/net/tun to form virtual ethernet
