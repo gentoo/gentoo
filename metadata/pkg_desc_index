@@ -4132,8 +4132,8 @@ dev-haskell/gtk2hs-buildtools 0.13.8.0: Tools to build the Gtk2Hs suite of User 
 dev-haskell/gtk3 0.15.5: Binding to the Gtk+ 3 graphical user interface library
 dev-haskell/hackage-security 0.5.3.0-r3: Hackage security library
 dev-haskell/haddock 2.23.1: A documentation-generation tool for Haskell libraries
-dev-haskell/haddock-api 2.16.1 2.17.3 2.23.1: A documentation-generation tool for Haskell libraries
-dev-haskell/haddock-library 1.1.1 1.2.1 1.4.2 1.8.0: Library exposing some functionality of Haddock
+dev-haskell/haddock-api 2.23.1: A documentation-generation tool for Haskell libraries
+dev-haskell/haddock-library 1.8.0: Library exposing some functionality of Haddock
 dev-haskell/hakyll 4.13.4.0 4.13.4.1: A static website compiler library
 dev-haskell/half 0.3-r1: Half-precision floating-point
 dev-haskell/hamlet 1.2.0: Haml-like template files that are compile-time checked (deprecated)
