@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 if [[ ${PV} == *9999 ]] ; then
 	: ${EGIT_REPO_URI:="https://github.com/Intel-Media-SDK/MediaSDK"}
@@ -19,15 +19,13 @@ if [[ ${PV} == *9999 ]] ; then
 	SRC_URI=""
 else
 	SRC_URI="https://github.com/Intel-Media-SDK/MediaSDK/archive/intel-mediasdk-${PV}.tar.gz"
-	S="${WORKDIR}/media-driver-intel-media-${PV}"
+	S="${WORKDIR}/MediaSDK-intel-mediasdk-${PV}"
 	KEYWORDS="~amd64"
 fi
 
 LICENSE="MIT"
 SLOT="0"
 IUSE=""
-
-S="${WORKDIR}/MediaSDK-${P}"
 
 DEPEND="
 	>=x11-libs/libva-intel-media-driver-${PV}
@@ -39,5 +37,5 @@ src_configure() {
 		-DENABLE_OPENCL=OFF
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
