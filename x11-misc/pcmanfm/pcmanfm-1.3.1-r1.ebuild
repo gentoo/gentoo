@@ -8,7 +8,7 @@ is it ja kk km ko lg lt lv ms nl pa pl pt pt_BR ro ru si sk sl sr sr@latin sv
 te th tr tt_RU ug uk vi zh_CN zh_TW"
 PLOCALE_BACKUP="en_GB"
 
-inherit eutils xdg-utils l10n readme.gentoo-r1
+inherit l10n readme.gentoo-r1 xdg-utils
 
 MY_PV="${PV/_/}"
 MY_P="${PN}-${MY_PV}"
@@ -26,7 +26,7 @@ RDEPEND=">=dev-libs/glib-2.18:2
 	>=x11-libs/gtk+-2.16:2
 	>=lxde-base/menu-cache-0.3.2
 	x11-misc/shared-mime-info
-	>=x11-libs/libfm-${PV}:=[gtk(+)]
+	~x11-libs/libfm-${PV}:=[gtk]
 	virtual/eject
 	virtual/freedesktop-icon-theme"
 DEPEND="${RDEPEND}
