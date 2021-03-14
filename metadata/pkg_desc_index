@@ -8220,7 +8220,7 @@ dev-python/deepmerge 0.1.1_p1 0.2.1: Tools to handle merging of nested data stru
 dev-python/defcon 0.6.0-r1 0.7.2 0.8.0 0.8.1: A set of UFO based objects for use in font editing applications
 dev-python/defusedxml 0.7.0_rc1 0.7.0 0.7.1: XML bomb protection for Python stdlib modules, an xml serialiser
 dev-python/denonavr 0.9.9 0.9.10 0.10.1: Automation Library for Denon AVR receivers
-dev-python/deprecated 1.2.11: Python @deprecated decorator to deprecate old API
+dev-python/deprecated 1.2.11 1.2.12: Python @deprecated decorator to deprecate old API
 dev-python/deprecation 2.1.0: A library to handle automated deprecations
 dev-python/dicttoxml 1.7.4-r1: Converts a Python dictionary or other data type to a valid XML string
 dev-python/diff-match-patch 20181111 20200713: Diff, match and patch algorithms for plain text
@@ -8431,7 +8431,7 @@ dev-python/hvac 0.10.8: hashicorp vault client in python
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 21.0.0: A featureful, correct URL for Python
-dev-python/hypothesis 6.1.1 6.2.0 6.3.4 6.4.0 6.4.2 6.4.3 6.6.0 6.7.0 6.8.0: A library for property based testing
+dev-python/hypothesis 6.1.1 6.2.0 6.3.4 6.4.0 6.4.2 6.4.3 6.6.0 6.7.0 6.8.0 6.8.1: A library for property based testing
 dev-python/icalendar 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/idna 2.10-r1 3.0 3.1: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0-r1: Patch ssl.match_hostname for Unicode(idna) domains support
@@ -8499,16 +8499,16 @@ dev-python/json-rpc 1.13.0: JSON-RPC transport implementation for python
 dev-python/jsondiff 1.2.0: Diff JSON and JSON-like structures in Python
 dev-python/jsonext 0.4.2: Well-structured helpers for serializing commonly encountered structures to JSON.
 dev-python/jsonmerge 1.6.0 1.8.0: Merge a series of JSON documents
-dev-python/jsonpatch 1.28 1.30 1.31: Apply JSON-Patches like http://tools.ietf.org/html/draft-pbryan-json-patch-04
+dev-python/jsonpatch 1.28 1.30 1.31 1.32: Apply JSON-Patches like http://tools.ietf.org/html/draft-pbryan-json-patch-04
 dev-python/jsonpickle 1.5.0 1.5.2 2.0.0: Python library for serializing any arbitrary object graph into JSON
-dev-python/jsonpointer 2.0-r1: Identify specific nodes in a JSON document (according to draft 08)
+dev-python/jsonpointer 2.0-r1 2.1: Identify specific nodes in a JSON document (according to draft 08)
 dev-python/jsonref 0.1: An implementation of JSON Reference for Python
 dev-python/jsonrpclib 0.4.2 9999: python implementation of the JSON-RPC spec (1.0 and 2.0)
 dev-python/jsonschema 3.2.0: An implementation of JSON-Schema validation for Python
 dev-python/jsonxs 0.6: Get/set values in JSON and Python datastructures
 dev-python/junit-xml 1.9: Create JUnit XML test result documents
 dev-python/jupyter 1.0.0-r3: Jupyter metapackage. Install all the Jupyter components in one go
-dev-python/jupyter_client 6.1.11: Jupyter protocol implementation and client libraries
+dev-python/jupyter_client 6.1.11 6.1.12: Jupyter protocol implementation and client libraries
 dev-python/jupyter_console 6.1.0-r2: A terminal-based console frontend for Jupyter kernels
 dev-python/jupyter_core 4.7.1: Core common functionality of Jupyter projects
 dev-python/jupyterlab_pygments 0.1.2: Pygments theme making use of JupyterLab CSS variables
@@ -9312,7 +9312,7 @@ dev-python/svg-path 4.0.2 4.1: SVG path objects and parser
 dev-python/svgwrite 1.4 1.4.1: Python Package to write SVG files
 dev-python/swagger-spec-validator 2.7.3: validate Swagger specs against Swagger 1.1 or 2.0 specification
 dev-python/sybil 2.0.1: Automated testing for the examples in your documentation
-dev-python/symengine 0.6.1-r1: Python wrappers to the symengine C++ library
+dev-python/symengine 0.6.1-r1 0.7.0: Python wrappers to the symengine C++ library
 dev-python/sympy 1.7.1-r1: Computer Algebra System in pure Python
 dev-python/tabulate 0.8.7 0.8.9: Pretty-print tabular data
 dev-python/tagpy 2018.1-r1: Python Bindings for TagLib
@@ -15479,7 +15479,7 @@ net-misc/x2goclient 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.1039_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.1432 0.4.1500: utility to download media contents from the web
-net-misc/youtube-dl 2021.02.22 2021.03.02 2021.03.03 9999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2021.02.22 2021.03.02 2021.03.03 2021.03.14 9999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r2 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.4.6 1.6.2 1.6.3: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
