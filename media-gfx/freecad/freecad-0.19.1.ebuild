@@ -6,7 +6,7 @@ EAPI=7
 # vtk needs updating to use 3.9
 PYTHON_COMPAT=( python3_{7,8} )
 
-inherit check-reqs cmake desktop optfeature python-single-r1 xdg
+inherit check-reqs cmake desktop eapi8-dosym optfeature python-single-r1 xdg
 
 DESCRIPTION="QT based Computer Aided Design application"
 HOMEPAGE="https://www.freecadweb.org/ https://github.com/FreeCAD/FreeCAD"
@@ -16,17 +16,18 @@ if [[ ${PV} = *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/FreeCAD/FreeCAD.git"
 	S="${WORKDIR}/freecad-${PV}"
 else
-	COMMIT=82ec99dbc1f0f054748059ae8bb138eb44b43073
-	SRC_URI="https://github.com/FreeCAD/FreeCAD/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+	MY_PV=$(ver_cut 1-2)
+	MY_PV=$(ver_rs 1 '_' ${MY_PV})
+	SRC_URI="https://github.com/FreeCAD/FreeCAD/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64"
-	S="${WORKDIR}/FreeCAD-${COMMIT}"
+	S="${WORKDIR}/FreeCAD-${PV}"
 fi
 
 # code is licensed LGPL-2
 # examples are licensed CC-BY-SA (without note of specific version)
 LICENSE="LGPL-2 CC-BY-SA-4.0"
 SLOT="0"
-IUSE="ccache debug headless pcl test"
+IUSE="debug headless pcl test"
 RESTRICT="!test? ( test )"
 
 FREECAD_EXPERIMENTAL_MODULES="cloud plot ship"
@@ -91,10 +92,7 @@ RDEPEND="
 	')
 "
 DEPEND="${RDEPEND}"
-BDEPEND="
-	dev-lang/swig
-	ccache? ( dev-util/ccache )
-"
+BDEPEND="dev-lang/swig"
 
 # To get required dependencies:
 # 'grep REQUIRES_MODS cMake/FreeCAD_Helpers/CheckInterModuleDependencies.cmake'
@@ -120,14 +118,14 @@ REQUIRED_USE="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${P}-0001-FindCoin3DDoc.cmake-fix-patch-for-coin-docs.patch
-	"${FILESDIR}"/${P}-0002-CMakeLists.txt-add-option-for-ccache.patch
-	"${FILESDIR}"/${P}-0003-Gentoo-specific-don-t-check-vcs.patch
+	"${FILESDIR}"/${PN}-0.19_pre20201231-0001-FindCoin3DDoc.cmake-fix-patch-for-coin-docs.patch
+	"${FILESDIR}"/${PN}-0.19_pre20201231-0003-Gentoo-specific-don-t-check-vcs.patch
+	"${FILESDIR}"/${P}-0001-Gentoo-specific-Remove-ccache-usage.patch
 )
 
-DOCS=( README.md ChangeLog.txt CODE_OF_CONDUCT.md )
+DOCS=( CODE_OF_CONDUCT.md ChangeLog.txt README.md )
 
-CHECKREQS_DISK_BUILD="7G"
+CHECKREQS_DISK_BUILD="3G"
 
 pkg_setup() {
 	check-reqs_pkg_setup
@@ -205,7 +203,7 @@ src_configure() {
 
 		-DFREECAD_BUILD_DEBIAN=OFF
 
-		-DFREECAD_USE_CCACHE=$(usex ccache)
+		-DFREECAD_USE_CCACHE=OFF
 		-DFREECAD_USE_EXTERNAL_KDL=ON
 		-DFREECAD_USE_EXTERNAL_SMESH=OFF		# no package in Gentoo
 		-DFREECAD_USE_EXTERNAL_ZIPIOS=OFF		# doesn't work yet, also no package in Gentoo tree
@@ -243,12 +241,12 @@ src_install() {
 	cmake_src_install
 
 	if ! use headless; then
-		dosym ../$(get_libdir)/${PN}/bin/FreeCAD /usr/bin/freecad
+		dosym8 -r /usr/$(get_libdir)/${PN}/bin/FreeCAD /usr/bin/freecad
 		mv "${ED}"/usr/$(get_libdir)/freecad/share/* "${ED}"/usr/share || die "failed to move shared ressources"
 	fi
-	dosym ../$(get_libdir)/${PN}/bin/FreeCADCmd /usr/bin/freecadcmd
+	dosym8 -r /usr/$(get_libdir)/${PN}/bin/FreeCADCmd /usr/bin/freecadcmd
 
-	python_optimize "${ED}"/usr/share/${PN}/data/Mod/ "${ED}"/usr/$(get_libdir)/${PN}{/Ext,/Mod}/
+	python_optimize "${ED}"/usr/share/${PN}/data/Mod/Start/StartPage "${ED}"/usr/$(get_libdir)/${PN}{/Ext,/Mod}/
 }
 
 pkg_postinst() {
