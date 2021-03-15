@@ -761,7 +761,7 @@ app-admin/reportmagic 2.21: Makes usable statistics from your web site log file 
 app-admin/restart-services 0.15.2 0.16.0 0.16.1 0.17.0: Tool to manage OpenRC and systemd services that need to be restarted
 app-admin/rex 1.13.3 9999: (R)?ex, the friendly automation framework
 app-admin/rsyslog 8.2008.0 8.2010.0 8.2012.0 8.2012.0-r1 8.2102.0: An enhanced multi-threaded syslogd with database support and more
-app-admin/sagan 1.0.0_rc3-r1 2.0.1-r3: Sagan is a multi-threaded, real time system and event log monitoring system
+app-admin/sagan 1.0.0_rc3-r1 2.0.1-r4: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20140617 20210208 99999999: Rules for Sagan log analyzer
 app-admin/salt 3000.5 3000.8 3001.6 3002.5: Salt is a remote execution and configuration manager
 app-admin/selint 1.1.0 1.2.0 9999: Policy Analysis Tools for SELinux
