@@ -12,21 +12,27 @@ SRC_URI="https://github.com/phaag/nfdump/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0/1.6.22"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug doc ftconv nfprofile nftrack readpcap sflow"
+IUSE="debug doc jnat ftconv nfpcapd nfprofile nftrack nsel readpcap sflow
+	static-libs"
+REQUIRED_USE="?? ( jnat nsel )"
 
-DEPEND="
+RDEPEND="
 	app-arch/bzip2
 	sys-libs/zlib
 	ftconv? ( net-analyzer/flow-tools )
+	nfpcapd? ( net-libs/libpcap )
 	nfprofile? ( net-analyzer/rrdtool )
 	nftrack? ( net-analyzer/rrdtool )
 	readpcap? ( net-libs/libpcap )
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 BDEPEND="
 	sys-devel/flex
 	virtual/yacc
-	doc? ( app-doc/doxygen )
+	doc? (
+		app-doc/doxygen
+		media-gfx/graphviz
+	)
 "
 
 PATCHES=(
@@ -50,9 +56,12 @@ src_configure() {
 	# --without-ftconf is not handled well #322201
 	econf \
 		$(use ftconv && echo "--enable-ftconv --with-ftpath=/usr") \
+		$(use nfpcapd && echo --enable-nfpcapd) \
 		$(use nfprofile && echo --enable-nfprofile) \
 		$(use nftrack && echo --enable-nftrack) \
 		$(use_enable debug devel) \
+		$(use_enable jnat) \
+		$(use_enable nsel) \
 		$(use_enable readpcap) \
 		$(use_enable sflow) \
 		--disable-static
@@ -62,6 +71,9 @@ src_install() {
 	default
 
 	find "${ED}" -name '*.la' -delete || die
+
+	newinitd "${FILESDIR}"/nfcapd.initd nfcapd
+	newconfd "${FILESDIR}"/nfcapd.confd nfcapd
 
 	if use doc; then
 		dodoc -r doc/html
