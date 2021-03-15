@@ -10,7 +10,7 @@ SRC_URI="https://sourceforge.net/projects/fvwm-crystal/files/${PN}/${PV}/${P}.ta
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ppc ~ppc64 x86"
 
 RDEPEND="
 	dev-libs/glib:2
