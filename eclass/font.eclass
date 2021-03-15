@@ -46,21 +46,12 @@ FONTDIR=${FONTDIR:-/usr/share/fonts/${FONT_PN}}
 # Array containing fontconfig conf files to install.
 FONT_CONF=( "" )
 
-# @ECLASS-VARIABLE: DOCS
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# Space delimited list of docs to install.
-# We always install these:
-# COPYRIGHT README{,.txt} NEWS AUTHORS BUGS ChangeLog FONTLOG.txt
-DOCS=${DOCS:-}
-
 if [[ ${CATEGORY}/${PN} != media-fonts/encodings ]]; then
 	IUSE="X"
-	DEPEND="X? (
+	BDEPEND="X? (
 			>=x11-apps/mkfontscale-1.2.0
 			media-fonts/encodings
 	)"
-	RDEPEND=""
 fi
 
 # @FUNCTION: font_xfont_config
