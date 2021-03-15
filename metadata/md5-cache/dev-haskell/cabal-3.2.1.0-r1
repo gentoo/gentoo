@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test
+DEPEND=>=dev-haskell/mtl-2.1:=[profile?] <dev-haskell/mtl-2.3:=[profile?] >=dev-haskell/parsec-3.1.13.0:=[profile?] <dev-haskell/parsec-3.2:=[profile?] >=dev-haskell/text-1.2.3.0:=[profile?] <dev-haskell/text-1.3:=[profile?] >=dev-lang/ghc-8.0:= hscolour? ( dev-haskell/hscolour )
+DESCRIPTION=A framework for packaging Haskell software
+EAPI=7
+HOMEPAGE=https://www.haskell.org/cabal/
+INHERIT=haskell-cabal
+IUSE=doc hscolour profile
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=BSD
+RDEPEND=>=dev-haskell/mtl-2.1:=[profile?] <dev-haskell/mtl-2.3:=[profile?] >=dev-haskell/parsec-3.1.13.0:=[profile?] <dev-haskell/parsec-3.2:=[profile?] >=dev-haskell/text-1.2.3.0:=[profile?] <dev-haskell/text-1.3:=[profile?] >=dev-lang/ghc-8.0:=
+RESTRICT=test
+SLOT=0/3.2.1.0
+SRC_URI=https://hackage.haskell.org/package/Cabal-3.2.1.0/Cabal-3.2.1.0.tar.gz
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	multiprocessing	cac3169468f893670dac3e7cb940e045	ghc-package	e3a4a688accbd5f1226e46b379cc1c3e	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	haskell-cabal	9d756e2e026abb59bf29f5b777bb34b2
+_md5_=af9ae8217872bc2d730592a0c8f2d5f2

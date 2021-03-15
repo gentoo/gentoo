@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm setup test
+DEPEND=>=dev-haskell/cabal-1.24.0.0:=[profile?] dev-haskell/fail:=[profile?] dev-haskell/hashtables:=[profile?] dev-haskell/random:=[profile?] >=dev-lang/ghc-7.8.2:= dev-haskell/alex >=dev-haskell/cabal-1.18.1.3 dev-haskell/happy hscolour? ( dev-haskell/hscolour )
+DESCRIPTION=Tools to build the Gtk2Hs suite of User Interface libraries
+EAPI=7
+HOMEPAGE=http://projects.haskell.org/gtk2hs/
+INHERIT=haskell-cabal
+IUSE=+closuresignals doc hscolour profile
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-haskell/cabal-1.24.0.0:=[profile?] dev-haskell/fail:=[profile?] dev-haskell/hashtables:=[profile?] dev-haskell/random:=[profile?] >=dev-lang/ghc-7.8.2:=
+SLOT=0/0.13.8.0
+SRC_URI=https://hackage.haskell.org/package/gtk2hs-buildtools-0.13.8.0/gtk2hs-buildtools-0.13.8.0.tar.gz
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	multiprocessing	cac3169468f893670dac3e7cb940e045	ghc-package	e3a4a688accbd5f1226e46b379cc1c3e	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	haskell-cabal	9d756e2e026abb59bf29f5b777bb34b2
+_md5_=3d3fe9e7c54da142da1e044256740e87

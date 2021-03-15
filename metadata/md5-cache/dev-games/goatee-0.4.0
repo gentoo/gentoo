@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm setup test
+DEPEND=>=dev-haskell/mtl-2.1:=[profile?] <dev-haskell/mtl-2.3:=[profile?] >=dev-haskell/parsec-3.1:=[profile?] <dev-haskell/parsec-3.2:=[profile?] >=dev-lang/ghc-8.6.3:= >=dev-haskell/cabal-2.4.0.1 test? ( >=dev-haskell/hunit-1.2 <dev-haskell/hunit-1.7 ) hscolour? ( dev-haskell/hscolour )
+DESCRIPTION=A monadic take on a 2,500-year-old board game - library
+EAPI=7
+HOMEPAGE=http://khumba.net/projects/goatee
+INHERIT=haskell-cabal
+IUSE=doc hscolour profile test
+KEYWORDS=~amd64 ~x86
+LICENSE=AGPL-3
+RDEPEND=>=dev-haskell/mtl-2.1:=[profile?] <dev-haskell/mtl-2.3:=[profile?] >=dev-haskell/parsec-3.1:=[profile?] <dev-haskell/parsec-3.2:=[profile?] >=dev-lang/ghc-8.6.3:=
+RESTRICT=!test? ( test )
+SLOT=0/0.4.0
+SRC_URI=https://hackage.haskell.org/package/goatee-0.4.0/goatee-0.4.0.tar.gz
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	multiprocessing	cac3169468f893670dac3e7cb940e045	ghc-package	e3a4a688accbd5f1226e46b379cc1c3e	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	haskell-cabal	9d756e2e026abb59bf29f5b777bb34b2
+_md5_=bdd85c63ba0cfc71fb8508469bab9fbd

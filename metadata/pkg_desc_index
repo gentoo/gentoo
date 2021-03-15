@@ -3804,7 +3804,7 @@ dev-games/cegui 0.8.7-r1 0.8.7-r100: Crazy Eddie's GUI System
 dev-games/clanlib 0.8.1-r1 2.3.7-r1 4.0.0: Multi-platform game development library
 dev-games/flatzebra 0.1.6 0.1.7: Generic game engine for 2D double-buffering animation
 dev-games/freecell-solver 6.2.0-r1: C library for automatically solving Freecell and some other solitaire variants
-dev-games/goatee 0.3.1.2: A monadic take on a 2,500-year-old board game - library
+dev-games/goatee 0.3.1.2 0.4.0: A monadic take on a 2,500-year-old board game - library
 dev-games/guichan 0.8.2: a portable C++ GUI library designed for games using Allegro, SDL and/or OpenGL
 dev-games/hawknl 1.68-r3: A cross-platform network library designed for games
 dev-games/hdl_dump 0.8.6.20060901 0.9.2.20180722: Game installer for PlayStation 2 HD Loader and Open PS2 Loader
@@ -3943,10 +3943,10 @@ dev-haskell/bytestring-mmap 0.2.2-r1: mmap support for strict ByteStrings
 dev-haskell/bytestring-show 0.3.5.6-r1: Efficient conversion of values into readable byte strings
 dev-haskell/bzlib 0.5.1.0: Compression and decompression in the bzip2 format
 dev-haskell/c2hs 0.28.6: C->Haskell FFI tool that gives some cross-language type safety
-dev-haskell/cabal 3.0.1.0: A framework for packaging Haskell software
+dev-haskell/cabal 3.0.1.0 3.2.1.0-r1: A framework for packaging Haskell software
 dev-haskell/cabal-doctest 1.0.8 1.0.8-r1: A Setup.hs helper for doctests running
-dev-haskell/cabal-install 3.0.0.0: The command-line interface for Cabal and Hackage
-dev-haskell/cairo 0.13.6.1: Binding to the Cairo library
+dev-haskell/cabal-install 3.0.0.0 3.2.0.0: The command-line interface for Cabal and Hackage
+dev-haskell/cairo 0.13.6.1 0.13.8.1: Binding to the Cairo library
 dev-haskell/call-stack 0.2.0: Use GHC call-stacks in a backward compatible way
 dev-haskell/casa-client 0.0.1: Client for Casa
 dev-haskell/casa-types 0.0.1: Types for Casa
@@ -4064,7 +4064,7 @@ dev-haskell/edit-distance-vector 1.0.0.4: Calculate edit distances and edit scri
 dev-haskell/editline 0.2.1.1-r1: Bindings to the editline library (libedit)
 dev-haskell/either 5.0.1.1: An either monad transformer
 dev-haskell/ekg 0.4.0.15-r7: Remote monitoring of processes
-dev-haskell/ekg-core 0.1.1.6: Tracking of system metrics
+dev-haskell/ekg-core 0.1.1.6 0.1.1.7: Tracking of system metrics
 dev-haskell/ekg-json 0.1.0.6-r1: JSON encoding of ekg metrics
 dev-haskell/email-validate 2.3.2.13: Email address validation
 dev-haskell/emojis 0.1: Conversion between emoji characters and their names.
@@ -4128,16 +4128,16 @@ dev-haskell/graphviz 2999.20.0.4: Bindings to Graphviz for graph visualisation
 dev-haskell/groupoids 4.0: This package has been absorbed into semigroupoids 4.0
 dev-haskell/gsasl 0.3.7: Bindings for GNU libgsasl
 dev-haskell/gtk 0.14.10-r3 0.15.5-r1: Binding to the Gtk+ graphical user interface library
-dev-haskell/gtk2hs-buildtools 0.13.8.0: Tools to build the Gtk2Hs suite of User Interface libraries
+dev-haskell/gtk2hs-buildtools 0.13.8.0 0.13.8.0-r1: Tools to build the Gtk2Hs suite of User Interface libraries
 dev-haskell/gtk3 0.15.5: Binding to the Gtk+ 3 graphical user interface library
-dev-haskell/hackage-security 0.5.3.0-r3: Hackage security library
-dev-haskell/haddock 2.23.1: A documentation-generation tool for Haskell libraries
-dev-haskell/haddock-api 2.23.1: A documentation-generation tool for Haskell libraries
-dev-haskell/haddock-library 1.8.0: Library exposing some functionality of Haddock
+dev-haskell/hackage-security 0.5.3.0-r3 0.6.0.1-r1: Hackage security library
+dev-haskell/haddock 2.23.1 2.24.0: A documentation-generation tool for Haskell libraries
+dev-haskell/haddock-api 2.23.1 2.24.0: A documentation-generation tool for Haskell libraries
+dev-haskell/haddock-library 1.8.0 1.9.0: Library exposing some functionality of Haddock
 dev-haskell/hakyll 4.13.4.0 4.13.4.1: A static website compiler library
 dev-haskell/half 0.3-r1: Half-precision floating-point
 dev-haskell/hamlet 1.2.0: Haml-like template files that are compile-time checked (deprecated)
-dev-haskell/happstack-server 7.6.0: Web related tools and services
+dev-haskell/happstack-server 7.6.0 7.6.1: Web related tools and services
 dev-haskell/happy 1.19.12: Happy is a parser generator for Haskell
 dev-haskell/harp 0.4.3.2: HaRP allows pattern-matching with regular expressions
 dev-haskell/hashable 1.2.7.0: A class for types that can be converted to a hash value
@@ -4168,7 +4168,7 @@ dev-haskell/hinotify 0.3.10: Haskell binding to inotify
 dev-haskell/hit 0.7.0: Git operations in haskell
 dev-haskell/hjsmin 0.2.0.4: Haskell implementation of a javascript minifier
 dev-haskell/hlint 2.1.17-r1: Source code suggestions
-dev-haskell/hoauth2 1.11.0: Haskell OAuth2 authentication client
+dev-haskell/hoauth2 1.11.0 1.16.0: Haskell OAuth2 authentication client
 dev-haskell/hostname 1.0-r1: A a cross-platform means of determining the hostname
 dev-haskell/hourglass 0.2.12: simple performant time related library
 dev-haskell/hpack 0.33.0: An alternative format for Haskell packages
@@ -4503,7 +4503,7 @@ dev-haskell/stringbuilder 0.5.1: A writer monad for multi-line string literals
 dev-haskell/stringprep 1.0.0: Implements the "StringPrep" algorithm
 dev-haskell/stringsearch 0.3.6.6-r1: Fast searching, splitting and replacing of ByteStrings
 dev-haskell/syb 0.7.1: Scrap Your Boilerplate
-dev-haskell/syb-with-class 0.6.1.11: Scrap Your Boilerplate With Class
+dev-haskell/syb-with-class 0.6.1.11 0.6.1.13: Scrap Your Boilerplate With Class
 dev-haskell/system-fileio 0.3.16.4: Consistent filesystem interaction across GHC versions (deprecated)
 dev-haskell/system-filepath 0.4.14: High-level, byte-based file and directory path manipulations (deprecated)
 dev-haskell/system-posix-redirect 1.1.0.1: A toy module to temporarily redirect a program's stdout
@@ -4536,11 +4536,11 @@ dev-haskell/test-framework-hunit 0.3.0.2-r1: HUnit support for the test-framewor
 dev-haskell/test-framework-leancheck 0.0.1: LeanCheck support for test-framework
 dev-haskell/test-framework-quickcheck2 0.3.0.5-r1: QuickCheck2 support for the test-framework package
 dev-haskell/test-framework-th 0.2.4: Automagically generate the HUnit and Quickcheck using Template Haskell
-dev-haskell/test-framework-th-prime 0.0.9: Template Haskell for test framework
+dev-haskell/test-framework-th-prime 0.0.9 0.0.10: Template Haskell for test framework
 dev-haskell/testing-feat 1.1.0.0: Functional Enumeration of Algebraic Types
 dev-haskell/testing-type-modifiers 0.1.0.1: Data type modifiers for property based testing
 dev-haskell/texmath 0.12.0.3: Conversion between formats used to represent mathematics
-dev-haskell/text 1.2.4.0-r1: An efficient packed Unicode text type
+dev-haskell/text 1.2.4.0-r1 1.2.4.1_rc1: An efficient packed Unicode text type
 dev-haskell/text-binary 0.2.1.1: Binary instances for text types
 dev-haskell/text-conversions 0.3.0: Safe conversions between textual types
 dev-haskell/text-icu 0.7.0.1: Bindings to the ICU library
@@ -4555,7 +4555,7 @@ dev-haskell/th-lift 0.8.1: Derive Template Haskell's Lift class for datatypes
 dev-haskell/th-lift-instances 0.1.14: Lift instances for template-haskell for common data types
 dev-haskell/th-orphans 0.13.3 0.13.10: Orphan instances for TH datatypes
 dev-haskell/th-reify-many 0.1.9: Recurseively reify template haskell datatype info
-dev-haskell/th-utilities 0.2.3.0: Collection of useful functions for use with Template Haskell
+dev-haskell/th-utilities 0.2.3.0 0.2.4.1: Collection of useful functions for use with Template Haskell
 dev-haskell/threads 0.5.1.6: Fork threads and wait for their result
 dev-haskell/thyme 0.3.5.5: A faster time library
 dev-haskell/time-compat 1.9.3: This packages tries to compat as much of \'time\' features as possible
@@ -11385,7 +11385,7 @@ games-board/gnuchess 6.2.7: Console based chess interface
 games-board/gnuchess-book 1.02-r1: Opening book for gnuchess
 games-board/gnugo 3.9.1-r2: A Go-playing program
 games-board/gnushogi 1.4.1-r1: Japanese version of chess (commandline + X-Version)
-games-board/goatee-gtk 0.3.1.1: A monadic take on a 2,500-year-old board game - GTK+ UI
+games-board/goatee-gtk 0.3.1.1 0.4.0: A monadic take on a 2,500-year-old board game - GTK+ UI
 games-board/grhino 0.16.1-r2: Reversi game for GNOME, supporting the Go/Game Text Protocol
 games-board/gtkatlantic 0.6.3: Monopoly-like game that works with the monopd server
 games-board/gtkboard 0.11_pre0-r2: Board games system

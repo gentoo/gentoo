@@ -1,14 +1,15 @@
 DEFINED_PHASES=compile configure install postinst postrm setup test
-DEPEND=dev-haskell/cereal:=[profile?] dev-haskell/mtl:=[profile?] dev-haskell/text:=[profile?] >=dev-lang/ghc-6.10.4:= >=dev-haskell/cabal-1.8 test? ( dev-haskell/encoding dev-haskell/hunit dev-haskell/quickcheck ) hscolour? ( dev-haskell/hscolour )
+DEPEND=dev-haskell/cereal:=[profile?] dev-haskell/mtl:=[profile?] dev-haskell/text:=[profile?] >=dev-lang/ghc-6.10.4:= >=dev-haskell/cabal-1.8 hscolour? ( dev-haskell/hscolour )
 DESCRIPTION=Encode unicode strings to ascii forms according to RFC 3492
 EAPI=7
 HOMEPAGE=https://github.com/litherum/punycode
-IUSE=doc hscolour profile test
+INHERIT=haskell-cabal
+IUSE=doc hscolour profile
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD
 RDEPEND=dev-haskell/cereal:=[profile?] dev-haskell/mtl:=[profile?] dev-haskell/text:=[profile?] >=dev-lang/ghc-6.10.4:=
 RESTRICT=test
 SLOT=0/2.0
 SRC_URI=https://hackage.haskell.org/package/punycode-2.0/punycode-2.0.tar.gz
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	ghc-package	e3a4a688accbd5f1226e46b379cc1c3e	haskell-cabal	9d756e2e026abb59bf29f5b777bb34b2	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=c9f6ed120b49920248cfee91bcf19513
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	multiprocessing	cac3169468f893670dac3e7cb940e045	ghc-package	e3a4a688accbd5f1226e46b379cc1c3e	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	haskell-cabal	9d756e2e026abb59bf29f5b777bb34b2
+_md5_=e2e0a26478b155f68a37a67f0debb5fc

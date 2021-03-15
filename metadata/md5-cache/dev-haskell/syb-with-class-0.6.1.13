@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm setup test
+DEPEND=>=dev-lang/ghc-7.4.1:= >=dev-haskell/cabal-1.10 test? ( dev-haskell/hunit ) hscolour? ( dev-haskell/hscolour )
+DESCRIPTION=Scrap Your Boilerplate With Class
+EAPI=7
+HOMEPAGE=https://hackage.haskell.org/package/syb-with-class
+INHERIT=haskell-cabal
+IUSE=doc hscolour profile test
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=>=dev-lang/ghc-7.4.1:=
+RESTRICT=!test? ( test )
+SLOT=0/0.6.1.13
+SRC_URI=https://hackage.haskell.org/package/syb-with-class-0.6.1.13/syb-with-class-0.6.1.13.tar.gz
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	multiprocessing	cac3169468f893670dac3e7cb940e045	ghc-package	e3a4a688accbd5f1226e46b379cc1c3e	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	haskell-cabal	9d756e2e026abb59bf29f5b777bb34b2
+_md5_=158359255d7bd157f2ea91beaee3d63e
