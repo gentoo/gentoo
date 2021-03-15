@@ -12,11 +12,6 @@ dev-ruby/globalid test
 # virtual/jdk isn't keyworded here
 media-libs/rubberband jni
 
-# Marek Szuba <marecki@gentoo.org> (2021-03-11)
-# Awaiting keywording of dev-python/ruamel-std-pathlib
-# on this arch (Bug #775242)
-dev-python/ruamel-yaml test
-
 # Sam James <sam@gentoo.org> (2021-03-11)
 # media-libs/libheif isn't keyworded here
 # media-libs/libavif isn't keyworded here
