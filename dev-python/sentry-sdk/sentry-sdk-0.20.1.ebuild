@@ -14,7 +14,7 @@ S="${WORKDIR}/sentry-python-${PV}"
 
 LICENSE="PSF-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 ~sparc x86"
 
 RDEPEND="
 	dev-python/urllib3[${PYTHON_USEDEP}]
