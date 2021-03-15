@@ -48,8 +48,11 @@ all_ruby_prepare() {
 	# bug 430402
 	sed -i -e '/uses maximum terminal width/,/end/ s:^:#:' spec/shell/basic_spec.rb || die
 
+	# Avoid specs depending on git, bug 724058
+	rm -f spec/quality_spec.rb || die
+
 	# Avoid currently broken readline specs (already fixed upstream)
-	rm -f spec/line_editor/readline_spec.rb spec/line_editor_spec.rb || die
+	#rm -f spec/line_editor/readline_spec.rb spec/line_editor_spec.rb || die
 }
 
 each_ruby_test() {
