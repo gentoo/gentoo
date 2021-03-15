@@ -14327,7 +14327,7 @@ media-video/x264-encoder 0.0.20190903 9999: A free commandline encoder for X264/
 media-video/xine-ui 0.99.12: Xine movie player
 media-video/xvattr 1.3-r3: X11 XVideo Querying/Setting Tool from Ogle project
 media-video/xvid4conf 1.12: GTK2-configuration dialog for xvid4
-media-video/yle-dl 20201022 20210212: Download media files from Yle Areena
+media-video/yle-dl 20210212: Download media files from Yle Areena
 net-analyzer/2ping 4.4.1 4.5: A bi-directional ping utility
 net-analyzer/alive 2.0.2-r1: a periodic ping program
 net-analyzer/amap 5.4 5.4-r1: A network scanning tool for pentesters
