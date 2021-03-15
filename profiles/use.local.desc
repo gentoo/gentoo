@@ -5210,7 +5210,6 @@ net-analyzer/httping:tfo - Enable support for TCP Fast Open
 net-analyzer/hydra:gcrypt - Enable radmin2 support through dev-libs/libgcrypt
 net-analyzer/hydra:libssh - Enable SSH support through net-libs/libssh
 net-analyzer/hydra:mongodb - MongoDB support through dev-libs/mongo-c-driver
-net-analyzer/hydra:ncp - NCP protocol (NetWare) support through ncpfs
 net-analyzer/icinga2:console - Adds support for line-editing in the console
 net-analyzer/icinga2:jumbo-build - Combine source files to speed up build process, requires more memory
 net-analyzer/icinga2:lto - Adds support for link time optimization

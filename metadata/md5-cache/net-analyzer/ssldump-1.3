@@ -1,0 +1,14 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=install prepare
+DEPEND=net-libs/libnet:1.1 net-libs/libpcap ssl? ( >=dev-libs/openssl-1:0= )
+DESCRIPTION=An SSLv3/TLS network protocol analyzer
+EAPI=7
+HOMEPAGE=https://github.com/adulau/ssldump/
+IUSE=ssl
+KEYWORDS=~amd64 ~arm ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=openssl
+RDEPEND=net-libs/libnet:1.1 net-libs/libpcap ssl? ( >=dev-libs/openssl-1:0= )
+SLOT=0
+SRC_URI=https://github.com/adulau/ssldump/archive/v1.3.tar.gz -> ssldump-1.3.tar.gz
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=80d901d0f67ec74c658666e82e393006

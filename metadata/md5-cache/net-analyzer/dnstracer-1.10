@@ -8,4 +8,4 @@ LICENSE=BSD-2
 SLOT=0
 SRC_URI=https://www.mavetju.org/download/dnstracer-1.10.tar.bz2 -> dnstracer-1.10.tar.gz
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=2766dca52f8df9ea0e7701acf087f298
+_md5_=a448b321a12e73c2650ffa3ceb1fa694

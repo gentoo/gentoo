@@ -773,7 +773,7 @@ app-admin/sshguard 2.4.1-r1 99999: protects hosts from brute force attacks again
 app-admin/stow 2.3.1: GNU Stow is a symlink farm manager
 app-admin/su-exec 0.2: Switch user and group id and exec
 app-admin/sud 1.3-r1: A daemon to execute processes with special privileges in a nosuid environment
-app-admin/sudo 1.9.5_p2-r1 1.9.6 9999: Allows users or groups to run commands as other users
+app-admin/sudo 1.9.5_p2-r1 1.9.6_p1 9999: Allows users or groups to run commands as other users
 app-admin/superadduser 1.0.9 1.15: Interactive adduser script from Slackware
 app-admin/supervisor 4.2.0 4.2.1 4.2.2: A system for controlling process state under UNIX
 app-admin/swatchdog 3.2.4-r1: Simple log watcher
@@ -806,7 +806,7 @@ app-admin/xstow 1.0.1: replacement for GNU stow with extensions
 app-admin/xtail 2.1-r1: Tail multiple logfiles at once, even if rotated
 app-admin/yadm 2.4.0: A dotfile manager for the config files in your home folder
 app-antivirus/clamav 0.102.4 0.103.1: Clam Anti-Virus Scanner
-app-antivirus/clamtk 6.06 6.09: A graphical front-end for ClamAV
+app-antivirus/clamtk 6.06 6.10: A graphical front-end for ClamAV
 app-antivirus/fangfrisch 1.3.0 1.4.0: Update and verify unofficial Clam Anti-Virus signatures
 app-arch/advancecomp 2.2_pre20190301: Recompress ZIP, PNG and MNG, considerably improving compression
 app-arch/afio 2.5.1-r2: Afio creates cpio-format archives.
@@ -9356,7 +9356,7 @@ dev-python/tox 3.21.4 3.22.0 3.23.0: virtualenv-based automation of test activit
 dev-python/tqdm 4.56.2 4.57.0 4.58.0 4.59.0: Add a progress meter to your loops in a second
 dev-python/traceback2 1.4.0-r1: Backports of the traceback module
 dev-python/traitlets 4.3.3 5.0.5: A configuration system for Python applications
-dev-python/transitions 0.8.6 0.8.7: A lightweight, object-oriented state machine implementation in Python
+dev-python/transitions 0.8.7: A lightweight, object-oriented state machine implementation in Python
 dev-python/translate-toolkit 3.3.1 3.3.2 3.3.3: Toolkit to convert between many translation formats
 dev-python/tree-sitter 0.2.1 0.2.2 0.19.0: Python bindings to the Tree-sitter parsing library
 dev-python/treq 20.9.0 21.1.0: A requests-like API built on top of twisted.web's Agent
@@ -10790,7 +10790,7 @@ dev-util/cligh 0.3 9999: Command-line interface to GitHub
 dev-util/clinfo 3.0.21.02.21 9999: A tool to display info about the system's OpenCL capabilities
 dev-util/clion 2020.3.2: A complete toolset for C and C++ development
 dev-util/cloc 1.84 1.86 1.88: Count Lines of Code
-dev-util/cmake 3.13.5 3.18.5 3.19.5 3.19.6 3.20.0_rc4: Cross platform Make
+dev-util/cmake 3.13.5 3.18.5 3.19.6 3.19.7 3.20.0_rc4: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
 dev-util/cmocka 1.1.5: Unit testing framework for C
 dev-util/codeblocks 17.12-r303 17.12-r304 20.03-r1 20.03-r2 9999: The open source, cross platform, free C, C++ and Fortran IDE
@@ -14350,7 +14350,7 @@ net-analyzer/bing 1.1.3-r2: A point-to-point bandwidth measurement tool
 net-analyzer/bmon 4.0 999: interface bandwidth monitor
 net-analyzer/braa 0.82-r1: Quick and dirty mass SNMP scanner
 net-analyzer/bwbar 1.2.3: The kernel.org "Current bandwidth utilization" bar
-net-analyzer/bwm-ng 0.6.1-r1 0.6.2: Bandwidth Monitor NG is a small and simple console-based bandwidth monitor
+net-analyzer/bwm-ng 0.6.1-r1 0.6.2 0.6.3: Bandwidth Monitor NG is a small and simple console-based bandwidth monitor
 net-analyzer/bwmon 1.3-r2: Simple ncurses bandwidth monitor
 net-analyzer/bwping 2.1 2.2: A tool to measure bandwidth and RTT between two hosts using ICMP
 net-analyzer/cacti 1.2.16-r1: Cacti is a complete frontend to rrdtool
@@ -14402,7 +14402,7 @@ net-analyzer/hexinject 1.5 1.6 1.6-r1: Network packet sniffer and injector
 net-analyzer/hping 3_pre20141226: A ping-like TCP/IP packet assembler/analyzer
 net-analyzer/httping 2.5 9999999: like ping but for HTTP requests
 net-analyzer/hunt 1.5_p6_p1: tool for checking well known weaknesses in the TCP/IP protocol
-net-analyzer/hydra 9.0 9.0-r1 9.1 9999999: Parallelized network login hacker
+net-analyzer/hydra 9.0 9.0-r1 9.1 9.2 9999999: Parallelized network login hacker
 net-analyzer/ibmonitor 1.4-r1: Interactive bandwidth monitor
 net-analyzer/icinga2 2.12.3 9999: Distributed, general purpose, network monitoring engine
 net-analyzer/ifmetric 0.3-r2: Set metrics of all IPv4 routes attached to a given network interface at once
@@ -14485,7 +14485,7 @@ net-analyzer/nettop 0.2.3-r2: top like program for network activity
 net-analyzer/netwag 5.39.0: Tcl/tk interface to netwox (Toolbox of 222 utilities for testing networks)
 net-analyzer/netwatch 1.3.0.1-r4: Ethernet/PPP IP Packet Monitor
 net-analyzer/netwox 5.39.0: Toolbox of 217 utilities for testing Ethernet/IP networks
-net-analyzer/nfdump 1.6.19 1.6.20 1.6.21: A set of tools to collect and process netflow data
+net-analyzer/nfdump 1.6.19 1.6.20 1.6.21 1.6.22: A set of tools to collect and process netflow data
 net-analyzer/ngrep 1.47: A grep for network layers
 net-analyzer/nikto 2.1.6_p20200901 2.1.6_p20210304: Web server vulnerability scanner
 net-analyzer/nipper 0.12.0: Router configuration security analysis tool
@@ -14561,7 +14561,7 @@ net-analyzer/sqlninja 0.2.6_p1-r1: A SQL Server injection & takeover tool
 net-analyzer/squid-graph 3.2-r1: Squid logfile analyzer and traffic grapher
 net-analyzer/squidsites 1.01-r2: A tool that parses Squid access log file and generates a report of the most visited sites
 net-analyzer/squidview 0.86: Interactive console program to analyse squid logs
-net-analyzer/ssldump 0.9_beta3 1.1: An SSLv3/TLS network protocol analyzer
+net-analyzer/ssldump 0.9_beta3 1.1 1.3: An SSLv3/TLS network protocol analyzer
 net-analyzer/sslscan 1.11.13-r1 2.0.6 2.0.7 2.0.8: Fast SSL configuration scanner
 net-analyzer/sslsplit 0.5.4 0.5.5 9999: Transparent SSL/TLS interception
 net-analyzer/ssmping 0.9.1: Tool for testing multicast connectivity
@@ -17194,7 +17194,7 @@ sys-apps/xinetd 2.3.15-r3 2.3.15.3 2.3.15.3-r2 2.3.15.4: powerful replacement fo
 sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System
 sys-apps/yarn 1.22.4 1.22.5 1.22.10: Fast, reliable, and secure node dependency management
 sys-apps/zorroutils 0.04 0.05: Zorro bus utility for Amigas running 2.1 and later kernels
-sys-auth/AusweisApp2 1.22.0 9999: Official authentication app for German ID cards and residence permits
+sys-auth/AusweisApp2 1.22.0 1.22.1 9999: Official authentication app for German ID cards and residence permits
 sys-auth/authenticator 0.2.4-r1 9999: Two-factor authentication code generator for GNOME
 sys-auth/docker_auth 1.3.1 1.4.0 1.5.0: Docker Registry 2 authentication server
 sys-auth/elogind 246.9.2: The systemd project's logind, extracted to a standalone package
