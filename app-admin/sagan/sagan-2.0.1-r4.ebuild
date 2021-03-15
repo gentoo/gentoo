@@ -79,11 +79,15 @@ src_install() {
 		-e "s:/var/run/sagan:${EPREFIX}/run/sagan:" \
 		"${ED}"/etc/sagan.yaml || die
 
-	diropts -g sagan -o sagan -m 775
-	keepdir /var/log/sagan
+	diropts -g sagan -o sagan -m 750
+	# bug #775902
+	keepdir /var/sagan/{,fifo}
+	keepdir /var/log/sagan/{,stats}
+
+	fowners sagan:sagan /var/log/sagan/{,stats}
 
 	touch "${ED}"/var/log/sagan/sagan.log || die
-	chown sagan.sagan "${ED}"/var/log/sagan/sagan.log || die
+	fowners sagan:sagan /var/log/sagan/sagan.log || die
 
 	newinitd "${FILESDIR}"/sagan.init-r1 sagan
 	newconfd "${FILESDIR}"/sagan.confd sagan
