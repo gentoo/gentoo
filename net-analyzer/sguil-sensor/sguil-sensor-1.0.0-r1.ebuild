@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit user
 
 MY_PV="${PV/_p/p}"
@@ -12,11 +13,11 @@ SRC_URI="https://github.com/bammv/sguil/archive/v${PV}.tar.gz -> ${P/-sensor}.ta
 LICENSE="GPL-2 QPL"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="
 	>=dev-lang/tcl-8.3:0=[-threads]
 	>=dev-tcltk/tclx-8.3
+	dev-tcltk/tls
 	>=net-analyzer/barnyard-0.2.0-r1
 	>=net-analyzer/snort-2.4.1-r1
 	dev-ml/pcre-ocaml
@@ -32,12 +33,14 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
 	sed -i \
 		-e "s:gateway:${HOSTNAME}:" \
 		-e 's:/snort_data:/var/lib/sguil:' \
 		-e 's:DAEMON 0:DAEMON 1:' \
 		-e 's:DEBUG 1:DEBUG 0:g' \
 		sensor/sensor_agent.conf || die
+
 	sed -i \
 		-e 's:/var/run/sensor_agent.pid:/run/sguil-sensor.pid:' \
 		sensor/sensor_agent.tcl || die
