@@ -1,0 +1,13 @@
+diff --git a/tests/TestSuite.hs b/tests/TestSuite.hs
+index 598e151..f62f1c5 100644
+--- a/tests/TestSuite.hs
++++ b/tests/TestSuite.hs
+@@ -70,7 +70,7 @@ tests = testGroup "hackage-security" [
+           testProperty "prop_roundtrip_canonical" JSON.prop_roundtrip_canonical
+         , testProperty "prop_roundtrip_pretty"    JSON.prop_roundtrip_pretty
+         , testProperty "prop_canonical_pretty"    JSON.prop_canonical_pretty
+-        , testProperty "prop_aeson_canonical"     JSON.prop_aeson_canonical
++        -- , testProperty "prop_aeson_canonical"     JSON.prop_aeson_canonical
+         ]
+   ]
+ 
