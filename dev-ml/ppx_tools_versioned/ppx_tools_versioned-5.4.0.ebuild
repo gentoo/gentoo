@@ -17,6 +17,7 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 IUSE="+ocamlopt"
 
+# https://github.com/ocaml-ppx/ppx_tools_versioned/issues/28#issuecomment-694146771
 DEPEND="
 	<dev-ml/ocaml-migrate-parsetree-2.0.0:=
 "
