@@ -31,6 +31,7 @@ PATCHES=(
 src_prepare() {
 	default
 	eautoreconf
+	touch aclocal/ar-lib || die #775389
 }
 
 src_configure() {
