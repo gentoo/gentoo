@@ -24,7 +24,6 @@ RDEPEND="${DEPEND}"
 BDEPEND="app-shells/tcsh"
 
 PATCHES=( "${FILESDIR}/${P}-buildsystem.patch" )
-HTML_DOCS=( "${DISTDIR}/TOPCOM-manual.html" )
 
 src_prepare () {
 	default
@@ -43,13 +42,16 @@ src_configure() {
 }
 
 src_install () {
+	if use doc ; then
+		HTML_DOCS=( "${DISTDIR}/TOPCOM-manual.html" )
+	fi
+
 	default
 
 	if use examples; then
 		docompress -x "/usr/share/doc/${PF}/examples"
 		dodoc -r examples
 	fi
-	use doc && einstalldocs
 
 	mv "${ED}/usr/bin/cube" "${ED}/usr/bin/topcom_cube" || die
 
