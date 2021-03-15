@@ -30,6 +30,10 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
 	app-arch/zip"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-3.0-autoconf-2.70.patch"
+)
+
 src_prepare() {
 	default
 
