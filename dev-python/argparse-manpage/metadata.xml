@@ -5,6 +5,7 @@
 		<email>chutzpah@gentoo.org</email>
 		<name>Patrick McLean</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">argparse-manpage</remote-id>
 		<remote-id type="github">praiskup/argparse-manpage</remote-id>
