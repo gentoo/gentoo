@@ -15,7 +15,7 @@ SRC_URI="
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 
 # Warning: do not use distutils_enable_tests to avoid a circular
 # dependency on itself!
