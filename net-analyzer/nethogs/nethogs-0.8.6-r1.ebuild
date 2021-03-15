@@ -24,6 +24,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+FILECAPS=(
+	cap_net_admin,cap_net_raw usr/sbin/nethogs
+)
+
 src_compile() {
 	tc-export CC CXX
 	emake NCURSES_LIBS="$( $(tc-getPKG_CONFIG) --libs ncurses )" "${PN}"
@@ -32,8 +36,4 @@ src_compile() {
 src_install() {
 	emake DESTDIR="${ED}" PREFIX="/usr" install
 	einstalldocs
-}
-
-pkg_postinst() {
-	ecaps cap_net_admin,cap_net_raw "${EROOT}/usr/bin/nethogs"
 }
