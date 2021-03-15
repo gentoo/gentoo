@@ -12,6 +12,10 @@
     Unknown is added to handle <maintainer/>s in <upstream/>s. Using it (or no
     explicit type) for Gentoo maintainers is prohibited. -->
   <!ATTLIST maintainer type (person|project|unknown) "unknown">
+  <!-- proxied attribute determines whether the maintainer is a proxied
+    maintainer (yes), regular dev (no) or a proxy for somebody (proxy). It is
+    valid only for Gentoo maintainers. -->
+  <!ATTLIST maintainer proxied (yes|no|proxy) "no">
 
   <!-- A long description of the package in freetext-->
   <!ELEMENT longdescription (#PCDATA|pkg|cat)* >
