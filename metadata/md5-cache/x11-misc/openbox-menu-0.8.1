@@ -1,0 +1,15 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=compile
+DEPEND=dev-libs/glib:2 lxde-base/menu-cache x11-libs/gtk+:3
+DESCRIPTION=Another dynamic menu generator for Openbox
+EAPI=7
+HOMEPAGE=http://fabrice.thiroux.free.fr/openbox-menu_en.html
+IUSE=+icons svg
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-libs/glib:2 lxde-base/menu-cache x11-libs/gtk+:3 icons? ( x11-wm/openbox[imlib,svg?] ) !icons? ( x11-wm/openbox )
+REQUIRED_USE=svg? ( icons )
+SLOT=0
+SRC_URI=https://github.com/fabriceT/openbox-menu/archive/v0.8.1.tar.gz -> openbox-menu-0.8.1.tar.gz
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=0a9e905b2fbfb0a0ac150358977a203e

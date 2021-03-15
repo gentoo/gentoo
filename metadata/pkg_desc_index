@@ -12524,7 +12524,7 @@ lxde-base/lxpanel 0.10.0-r1 0.10.1: Lightweight X11 desktop panel for LXDE
 lxde-base/lxrandr 0.3.2 0.3.2-r1: LXDE GUI interface to RandR extention
 lxde-base/lxsession 0.5.4-r1 0.5.5: LXDE session manager
 lxde-base/lxtask 0.1.9 0.1.10: LXDE Task manager
-lxde-base/lxterminal 0.3.2 0.3.2-r1: Lightweight vte-based tabbed terminal emulator for LXDE
+lxde-base/lxterminal 0.3.2 0.4.0: Lightweight vte-based tabbed terminal emulator for LXDE
 lxde-base/menu-cache 1.1.0 1.1.0-r1: Library to create and utilize caches to speed up freedesktop application menus
 lxqt-base/liblxqt 0.15.1 0.16.0: Common base library for the LXQt desktop environment
 lxqt-base/libsysstat 0.4.3 0.4.4: Qt GUI for System Statistics
@@ -18582,7 +18582,7 @@ x11-misc/numlockx 1.2: Changes keyboard's numlock state under X
 x11-misc/obconf 2.0.4 9999: ObConf is a tool for configuring the Openbox window manager
 x11-misc/obconf-qt 0.15.0 0.16.0: Qt GUI Openbox Configuration Tool
 x11-misc/obmenu-generator 0.88 0.89: A fast pipe/static menu generator for the Openbox Window Manager
-x11-misc/openbox-menu 0.8.0: Another dynamic menu generator for Openbox
+x11-misc/openbox-menu 0.8.0 0.8.1: Another dynamic menu generator for Openbox
 x11-misc/oroborus-deskmenu 1.4.5-r1: root menu program for Oroborus
 x11-misc/oroborus-keylaunch 1.3.9-r1: utility for binding keys in Oroborus
 x11-misc/parcellite 1.2.1: A lightweight GTK+ based clipboard manager
