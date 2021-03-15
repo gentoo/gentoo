@@ -82,6 +82,9 @@ COMMON_DEPEND="
 	acl? ( virtual/acl )
 	$(python_gen_cond_dep "
 		dev-python/subunit[\${PYTHON_MULTI_USEDEP},${MULTILIB_USEDEP}]
+		addc? (
+			dev-python/markdown[\${PYTHON_MULTI_USEDEP}]
+		)
 		addns? (
 			dev-python/dnspython:=[\${PYTHON_MULTI_USEDEP}]
 			net-dns/bind-tools[gssapi]
