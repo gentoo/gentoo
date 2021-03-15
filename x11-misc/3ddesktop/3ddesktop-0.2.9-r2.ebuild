@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/desk3d/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="amd64 ~ppc x86"
 
 RDEPEND="
 	>=media-libs/freetype-2
