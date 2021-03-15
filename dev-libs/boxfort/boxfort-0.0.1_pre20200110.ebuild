@@ -15,7 +15,7 @@ SRC_URI="https://github.com/Snaipe/BoxFort/archive/${BOXFORT_COMMIT}.tar.gz -> b
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64"
+KEYWORDS="amd64 ~arm ~arm64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
