@@ -5880,7 +5880,7 @@ dev-lua/penlight 1.9.2-r101: Lua utility libraries loosely based on the Python s
 dev-lua/say 1.3_p1-r101: Lua String Hashing/Indexing Library
 dev-lua/toluapp 1.0.93_p20190513-r100: A tool to integrate C/C++ code with Lua
 dev-ml/alcotest 1.2.3-r3: A lightweight and colourful test framework
-dev-ml/astring 0.8.3 0.8.5: Alternative String module for OCaml
+dev-ml/astring 0.8.5: Alternative String module for OCaml
 dev-ml/async 0.14.0: Jane Street Capital's asynchronous execution library
 dev-ml/async_extra 0.14.0: Jane Street Capital's asynchronous execution library (extra)
 dev-ml/async_kernel 0.14.0: Jane Street Capital's asynchronous execution library (core)
@@ -5892,7 +5892,7 @@ dev-ml/base_bigstring 0.14.0: String type based on Bigarray, for use in I/O and 
 dev-ml/base_quickcheck 0.14.0: Randomized testing framework, designed for compatibility with Base
 dev-ml/batteries 2.7.0: The community-maintained foundation library for your OCaml projects
 dev-ml/bigarray-compat 1.0.0: Compatibility library to use Stdlib.Bigarray when possible
-dev-ml/bin-prot 0.9.0 0.9.1 0.9.2: Binary protocol generator
+dev-ml/bin-prot 0.9.2: Binary protocol generator
 dev-ml/bin_prot 0.14.0: Binary protocol generator
 dev-ml/biniou 1.2.1: A binary data serialization format inspired by JSON for OCaml
 dev-ml/bos 0.1.6: Basic OS interaction for OCaml
@@ -5906,8 +5906,8 @@ dev-ml/camlidl 1.05-r1: CamlIDL is a stub code generator for using C/C++ librari
 dev-ml/camlp4 4.05_p1 4.08_p1 4.10_p1 4.11_p1: System for writing extensible parsers for programming languages
 dev-ml/camlp5 7.11-r1 7.12 7.13 7.14 8.00: A preprocessor-pretty-printer of ocaml
 dev-ml/camlpdf 2.3.1: OCaml library for reading, writing, and modifying PDF files
-dev-ml/camlzip 1.07 1.10: Compressed file access ML library (ZIP, GZIP and JAR)
-dev-ml/camomile 0.8.5-r2 1.0.2: Camomile is a comprehensive Unicode library for ocaml
+dev-ml/camlzip 1.10: Compressed file access ML library (ZIP, GZIP and JAR)
+dev-ml/camomile 1.0.2: Camomile is a comprehensive Unicode library for ocaml
 dev-ml/cinaps 0.14.0 0.15.0: Trivial metaprogramming tool
 dev-ml/cmdliner 1.0.4: Declarative definition of command line interfaces for OCaml
 dev-ml/configurator 0.9.1: Helper library for gathering system configuration
@@ -5925,8 +5925,8 @@ dev-ml/deriving 0.7.1: A deriving library for Ocsigen
 dev-ml/dns 1.0.0-r1: A pure OCaml implementation of the DNS protocol
 dev-ml/dose3 5.0.1_p16-r2: Library to perform analysis on package repositories
 dev-ml/dune 1.11.4 2.1.0 2.7.1 2.8.2 2.8.4: A composable build system for OCaml
-dev-ml/dune-configurator 2.7.1 2.8.2-r1 2.8.4: A composable build system for OCaml
-dev-ml/dune-private-libs 2.7.1 2.8.2-r1 2.8.4: A composable build system for OCaml
+dev-ml/dune-configurator 2.8.2-r1 2.8.4: A composable build system for OCaml
+dev-ml/dune-private-libs 2.8.2-r1 2.8.4: A composable build system for OCaml
 dev-ml/duration 0.1.3: Duration - conversions to various time units
 dev-ml/easy-format 1.2.0: Pretty-printing library for OCaml
 dev-ml/eliom 6.2.0 9999: A web framework to program client/server applications
@@ -5934,13 +5934,13 @@ dev-ml/extlib 1.7.7 1.7.8: Standard library extensions for O'Caml
 dev-ml/facile 1.1.3: OCaml constraint programming library on integer & integer set finite domains
 dev-ml/fieldslib 0.14.0: Folding over record fields
 dev-ml/findlib 1.8.1-r2: OCaml tool to find/use non-standard packages
-dev-ml/fmt 0.8.4 0.8.9-r1: Combinators to devise OCaml Format pretty-printing functions
+dev-ml/fmt 0.8.9-r1: Combinators to devise OCaml Format pretty-printing functions
 dev-ml/fpath 0.7.2: File system paths for OCaml
 dev-ml/gen 0.4.0.1: Simple, efficient iterators for OCaml
 dev-ml/graphics 5.1.1: The OCaml graphics library
 dev-ml/gsl-ocaml 1.19.1: OCaml bindings for the GSL library (successor of dev-ml/ocamlgsl)
 dev-ml/iTeML 2.7: Inline (Unit) Tests for OCaml
-dev-ml/integers 0.2.2 0.4.0: Various signed and unsigned integer types for OCaml
+dev-ml/integers 0.4.0: Various signed and unsigned integer types for OCaml
 dev-ml/jane-street-headers 0.14.0: Jane Street header files
 dev-ml/jbuilder 1.0_beta14: A composable build system for OCaml
 dev-ml/jingoo 1.4.2: OCaml template engine almost compatible with Jinja2.
@@ -5952,14 +5952,14 @@ dev-ml/lablgtk 2.18.10 3.1.1: OCaml bindings to GTK-3
 dev-ml/lablgtk-sourceview 3.1.1: OCaml bindings to GTK-3
 dev-ml/labltk 8.06.2 8.06.7 8.06.9: OCaml interface to the Tcl/Tk GUI framework
 dev-ml/llvm-ocaml 10.0.1 11.0.0 11.0.1 11.1.0 12.0.0_rc2 12.0.0_rc3 12.0.0.9999 13.0.0.9999: OCaml bindings for LLVM
-dev-ml/logs 0.6.3 0.7.0: Logging infrastructure for OCaml
+dev-ml/logs 0.7.0: Logging infrastructure for OCaml
 dev-ml/lwt 5.3.0-r1: Cooperative light-weight thread library for OCaml
 dev-ml/lwt_react 1.0.1: GLib integration for Lwt
 dev-ml/lwt_ssl 1.1.3: GLib integration for Lwt
 dev-ml/macaque 0.7.4: DSL for SQL Queries in Caml
 dev-ml/markup 1.0.0: Error-recovering streaming HTML5 and XML parsers
 dev-ml/mccs 1.1.11: Multi Criteria CUDF Solver
-dev-ml/menhir 20181006 20190924: LR(1) parser generator for the OCaml language
+dev-ml/menhir 20190924: LR(1) parser generator for the OCaml language
 dev-ml/merlin-extend 0.3: SDK to extend Merlin
 dev-ml/mirage-clock 3.1.0: A lightweight and colourful test framework
 dev-ml/mmap 1.1.0: File mapping
@@ -5979,13 +5979,13 @@ dev-ml/ocaml-doc 4.04 4.05: Ocaml reference manual (html)
 dev-ml/ocaml-expat 1.1.0-r1: OCaml bindings for expat
 dev-ml/ocaml-expect 0.0.5: Ocaml implementation of expect to help building unitary testing
 dev-ml/ocaml-fileutils 0.6.2: Pure OCaml functions to manipulate real file (POSIX like) and filename
-dev-ml/ocaml-gettext 0.3.7-r3 0.4.2: Provides support for internationalization of OCaml program
+dev-ml/ocaml-gettext 0.4.2: Provides support for internationalization of OCaml program
 dev-ml/ocaml-gettext-camomile 0.4.2: Support for internationalization of OCaml programs using the Camomile library
 dev-ml/ocaml-gettext-stub 0.4.2-r1: Support for internationalization of OCaml programs using native gettext library
 dev-ml/ocaml-hashcons 1.3: OCaml hash-consing library
 dev-ml/ocaml-ipaddr 2.8.0: OCaml library for manipulation of IP (and MAC) address representations
 dev-ml/ocaml-magic-mime 1.0.0: Convert file extensions to MIME types
-dev-ml/ocaml-migrate-parsetree 1.8.0 2.0.0 2.1.0: Convert OCaml parsetrees between different major versions
+dev-ml/ocaml-migrate-parsetree 1.8.0 2.1.0: Convert OCaml parsetrees between different major versions
 dev-ml/ocaml-re 1.7.1: Regular expression library for OCaml
 dev-ml/ocaml-sqlite3 5.0.2: SQLite3 bindings for OCaml
 dev-ml/ocaml-ssl 0.5.9 0.5.10: OCaml bindings for OpenSSL
@@ -5994,22 +5994,22 @@ dev-ml/ocamlbuild 0.11.0 0.14.0-r1: Generic build tool with built-in rules for b
 dev-ml/ocamlgraph 1.8.8-r2 2.0.0-r1: O'Caml Graph library
 dev-ml/ocamlify 0.0.2: OCamlify creates OCaml code by including files into strings or string lists
 dev-ml/ocamlmod 0.0.9: Generate OCaml modules from source files
-dev-ml/ocamlnet 4.1.2 4.1.8 4.1.8-r1: Modules for OCaml application-level Internet protocols
+dev-ml/ocamlnet 4.1.8 4.1.8-r1: Modules for OCaml application-level Internet protocols
 dev-ml/ocamlsdl 0.9.1: OCaml SDL Bindings
 dev-ml/ocamlweb 1.41: O'Caml literate programming tool
 dev-ml/ocplib-endian 1.1-r1: Functions to read and write int16/32/64 from strings, bytes, and bigarrays
-dev-ml/ocplib-simplex 0.3 0.4: A library implementing a simplex algorithm
+dev-ml/ocplib-simplex 0.4: A library implementing a simplex algorithm
 dev-ml/octavius 1.2.2: ocamldoc comment syntax parser
 dev-ml/ocurl 0.9.1: OCaml interface to the libcurl library
-dev-ml/opam 1.3.1-r2 2.0.7-r1 2.0.8-r1: A source-based package manager for OCaml
-dev-ml/opam-client 2.0.7-r1 2.0.8: opam client libraries
-dev-ml/opam-core 2.0.7 2.0.8-r1: Core libraries for opam
+dev-ml/opam 1.3.1-r2 2.0.8-r1: A source-based package manager for OCaml
+dev-ml/opam-client 2.0.8: opam client libraries
+dev-ml/opam-core 2.0.8-r1: Core libraries for opam
 dev-ml/opam-file-format 2.1.0 2.1.2: Parser and printer for the opam file syntax
-dev-ml/opam-format 2.0.7-r2 2.0.8-r2: Core libraries for opam
-dev-ml/opam-installer 2.0.7-r1 2.0.8-r1: Core installer for opam packages
-dev-ml/opam-repository 2.0.7-r1 2.0.8: opam repository libraries
-dev-ml/opam-solver 2.0.7-r1 2.0.8: opam solver
-dev-ml/opam-state 2.0.7-r1 2.0.8: opam state libraries
+dev-ml/opam-format 2.0.8-r2: Core libraries for opam
+dev-ml/opam-installer 2.0.8-r1: Core installer for opam packages
+dev-ml/opam-repository 2.0.8: opam repository libraries
+dev-ml/opam-solver 2.0.8: opam solver
+dev-ml/opam-state 2.0.8: opam state libraries
 dev-ml/optcomp 1.6-r1: Optional compilation for OCaml with cpp-like directives
 dev-ml/ounit 2.0.6: Unit testing framework for OCaml
 dev-ml/ounit2 2.2.3 2.2.4: Unit testing framework for OCaml
@@ -6028,8 +6028,8 @@ dev-ml/ppx_compare 0.14.0: Generation of comparison functions from types
 dev-ml/ppx_core 0.9.0-r1: Standard library for ppx rewriters
 dev-ml/ppx_custom_printf 0.14.0: Printf-style format-strings for user-defined string conversion
 dev-ml/ppx_derivers 1.2.1: Shared [@@deriving] plugin registry
-dev-ml/ppx_deriving 4.5 5.2: Type-driven code generation for OCaml
-dev-ml/ppx_driver 0.9.1-r1 0.11.0: Feature-full driver for OCaml AST transformers
+dev-ml/ppx_deriving 5.2: Type-driven code generation for OCaml
+dev-ml/ppx_driver 0.11.0: Feature-full driver for OCaml AST transformers
 dev-ml/ppx_enumerate 0.14.0: Generate a list containing all values of a finite type
 dev-ml/ppx_expect 0.14.0: Cram like framework for OCaml
 dev-ml/ppx_fail 0.14.0: Add location to calls to failwiths
@@ -6052,7 +6052,7 @@ dev-ml/ppx_sexp_value 0.14.0: Standard library for ppx rewriters
 dev-ml/ppx_stable 0.14.1: Stable types conversions generator
 dev-ml/ppx_string 0.14.1: Ppx extension for string interpolation
 dev-ml/ppx_tools 6.2: Tools for authors of ppx rewriters
-dev-ml/ppx_tools_versioned 5.0.1 5.2.2 5.4.0: Tools for authors of ppx rewriters
+dev-ml/ppx_tools_versioned 5.4.0: Tools for authors of ppx rewriters
 dev-ml/ppx_traverse 0.9.0: Automatic generation of open recursion classes
 dev-ml/ppx_traverse_builtins 0.9.0: Builtins for ppx_traverse
 dev-ml/ppx_type_conv 0.9.0: Support Library for type-driven code generators
@@ -6063,7 +6063,7 @@ dev-ml/ppxlib 0.18.0 0.20.0 0.21.0-r1 0.22.0-r1: Base library and tools for ppx 
 dev-ml/protocol_version_header 0.14.0: Protocol aware version negotiation for OCaml
 dev-ml/qcheck 0.7: QuickCheck inspired property-based testing for OCaml
 dev-ml/re 1.9.0: Regular expression library for OCaml
-dev-ml/re2 0.9.0 0.9.1: OCaml bindings for RE2
+dev-ml/re2 0.9.1: OCaml bindings for RE2
 dev-ml/react 1.2.1-r1: OCaml module for functional reactive programming
 dev-ml/reactiveData 0.2.1 9999: Functional reactive programming with incremental changes in data structures
 dev-ml/result 1.5: Compat result type
@@ -6092,7 +6092,7 @@ dev-ml/uutf 1.0.1: Non-blocking streaming Unicode codec for OCaml
 dev-ml/variantslib 0.14.0: OCaml variants as first class values
 dev-ml/xml-light 2.2-r3: Minimal Xml parser and printer for OCaml
 dev-ml/yojson 1.7.0: JSON parsing and pretty-printing library for OCaml
-dev-ml/zarith 1.7 1.9.1 1.10 1.11 1.12: Arithmetic and logic operations over arbitrary-precision integers
+dev-ml/zarith 1.11 1.12: Arithmetic and logic operations over arbitrary-precision integers
 dev-perl/Ace 1.920.0-r6: Object-Oriented Access to ACEDB Databases
 dev-perl/Acme-Damn 0.80.0: Module, that 'unblesses' Perl objects
 dev-perl/Algorithm-Annotate 0.100.0-r2: Represent a series of changes in annotate form

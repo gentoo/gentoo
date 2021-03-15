@@ -11,4 +11,4 @@ RDEPEND=<dev-ml/ocaml-migrate-parsetree-2.0.0:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/5.4.0
 SRC_URI=https://github.com/let-def/ppx_tools_versioned/archive/5.4.0.tar.gz -> ppx_tools_versioned-5.4.0.tar.gz
 _eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
-_md5_=75eb0ed593abf6f283eb3b66143ba579
+_md5_=9ffa83466e4c30131e889a92961c7041
