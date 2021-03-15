@@ -28,4 +28,7 @@ This package installs the reference FORTRAN 77 implementation from Netlib.
     <flag name="eselect-ldso">Enable runtime library switching by
     eselect and ld.so.</flag>
   </use>
+  <upstream>
+    <remote-id type="github">Reference-LAPACK/lapack</remote-id>
+  </upstream>
 </pkgmetadata>
