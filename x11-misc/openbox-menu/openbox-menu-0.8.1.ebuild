@@ -1,7 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit toolchain-funcs
 
 DESCRIPTION="Another dynamic menu generator for Openbox"
@@ -17,16 +18,18 @@ REQUIRED_USE="svg? ( icons )"
 DEPEND="
 	dev-libs/glib:2
 	lxde-base/menu-cache
-	x11-libs/gtk+:2
+	x11-libs/gtk+:3
 "
-RDEPEND="
-	${DEPEND}
+RDEPEND="${DEPEND}
 	icons? ( x11-wm/openbox[imlib,svg?] )
 	!icons? ( x11-wm/openbox )
 "
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
+	# git master
+	"${FILESDIR}/${P}-gtk3.patch"
+	# downstream patches
 	"${FILESDIR}/${P}-build.patch"
 	"${FILESDIR}/${P}-makefile.patch"
 )

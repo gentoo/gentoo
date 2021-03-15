@@ -6,25 +6,21 @@ Subject: [PATCH 2/2] Update Makefile build
 Introduce CC and PKG_CONFIG variables that can be redefined by user.
 Added variables WITH_ICONS and WITH_SVG that can be also redefined by user.
 Misc enhancements to file globbing.
----
- Makefile  | 36 ++++++++++++++++++++++++++----------
- README.md |  8 ++++----
- 2 files changed, 30 insertions(+), 14 deletions(-)
 
-diff --git a/Makefile b/Makefile
-index 5d8af49..e40e611 100644
+* 2021-03-15 asturm: Fix BINDIR path, add DESTDIR, adapt to GTK3 change
+
 --- a/Makefile
 +++ b/Makefile
-@@ -1,19 +1,32 @@
--LIBS= `pkg-config --libs glib-2.0 gtk+-2.0 libmenu-cache`
--CFLAGS+= -g -Wall `pkg-config --cflags glib-2.0 gtk+-2.0 libmenu-cache`
+@@ -1,19 +1,31 @@
+-LIBS= `pkg-config --libs glib-2.0 gtk+-3.0 libmenu-cache`
+-CFLAGS+= -g -Wall `pkg-config --cflags glib-2.0 gtk+-3.0 libmenu-cache`
 -CC=gcc
 +CC ?= gcc
 +PKG_CONFIG ?= pkg-config
 +
 +CFLAGS ?= -O2 -g
-+CFLAGS += -Wall $(shell $(PKG_CONFIG) --cflags glib-2.0 gtk+-2.0 libmenu-cache)
-+LIBS += $(shell $(PKG_CONFIG) --libs glib-2.0 gtk+-2.0 libmenu-cache)
++CFLAGS += -Wall $(shell $(PKG_CONFIG) --cflags glib-2.0 gtk+-3.0 libmenu-cache)
++LIBS += $(shell $(PKG_CONFIG) --libs glib-2.0 gtk+-3.0 libmenu-cache)
 +
  #-DG_DISABLE_DEPRECATED
  
@@ -42,22 +38,23 @@ index 5d8af49..e40e611 100644
  # Check SVG support with '$ ldd /usr/bin/openbox | grep svg', librsvg must appear..
 -# CFLAGS+=-DWITH_SVG
 +WITH_SVG=0
- 
--prefix= /usr/local
++
 +ifeq ($(WITH_SVG),1)
 +CFLAGS += -DWITH_SVG
 +endif
-+
-+prefix = /usr/local
- DESTDIR ?= $(prefix)
- BINDIR= ${DESTDIR}/bin
+ 
+-prefix= /usr/local
+-DESTDIR ?= $(prefix)
+-BINDIR= ${DESTDIR}/bin
++prefix = /usr
++BINDIR = ${prefix}/bin
  
 -SRC= $(shell ls src/*.c 2> /dev/null)
 +SRC= $(wildcard src/*.c)
  OBJ= $(SRC:.c=.o)
  
  all: $(OBJ) check openbox-menu
-@@ -25,13 +38,16 @@ all: $(OBJ) check openbox-menu
+@@ -25,15 +37,18 @@
  openbox-menu: $(OBJ)
  	$(CC) $(OBJ) -o openbox-menu $(LDFLAGS) $(LIBS)
  
@@ -69,14 +66,17 @@ index 5d8af49..e40e611 100644
  	@rm -rf doc
  
  install:
-+	@install -Dm 755 openbox-menu $(BINDIR)/openbox-menu
++	@install -Dm 755 openbox-menu "$(DESTDIR)$(BINDIR)/openbox-menu"
 +
 +install-strip:
  	@strip -s openbox-menu
- 	@install -Dm 755 openbox-menu $(BINDIR)/openbox-menu
+-	@install -Dm 755 openbox-menu $(BINDIR)/openbox-menu
++	@install -Dm 755 openbox-menu "$(DESTDIR)$(BINDIR)/openbox-menu"
  
+ doc:
+ 	robodoc --src . --doc doc/ --multidoc --index --html --cmode
+
 diff --git a/README.md b/README.md
-index 748e684..4db7074 100644
 --- a/README.md
 +++ b/README.md
 @@ -6,17 +6,17 @@ Type `make` then, with superuser privileges, `make install` to install it. openb

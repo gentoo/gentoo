@@ -1,0 +1,91 @@
+From 8fe1e7fa9239ed8b604a59ef2202f183f1f56eb6 Mon Sep 17 00:00:00 2001
+From: Fabrice THIROUX <fabrice.thiroux@net-c.com>
+Date: Sat, 13 Feb 2021 14:46:53 +0100
+Subject: [PATCH] Updated for gtk3. Remove icon_theme annoying variable
+
+---
+ Makefile           |  4 ++--
+ src/menu.c         |  1 -
+ src/openbox-menu.h |  1 +
+ src/utils.c        | 16 ++++++----------
+ 4 files changed, 9 insertions(+), 13 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 5d8af49..5e09ef2 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,5 +1,5 @@
+-LIBS= `pkg-config --libs glib-2.0 gtk+-2.0 libmenu-cache`
+-CFLAGS+= -g -Wall `pkg-config --cflags glib-2.0 gtk+-2.0 libmenu-cache`
++LIBS= `pkg-config --libs glib-2.0 gtk+-3.0 libmenu-cache`
++CFLAGS+= -g -Wall `pkg-config --cflags glib-2.0 gtk+-3.0 libmenu-cache`
+ CC=gcc
+ #-DG_DISABLE_DEPRECATED
+ 
+diff --git a/src/menu.c b/src/menu.c
+index 5b7e8f8..3b752d9 100644
+--- a/src/menu.c
++++ b/src/menu.c
+@@ -240,7 +240,6 @@ main (int argc, char **argv)
+ 
+ #ifdef WITH_ICONS
+ 	gtk_init (&argc, &argv);
+-	icon_theme = gtk_icon_theme_get_default ();
+ #endif
+ 
+ 	if ((ob_context = configure (argc, argv)) == NULL)
+diff --git a/src/openbox-menu.h b/src/openbox-menu.h
+index 7035e9d..f5a7bce 100644
+--- a/src/openbox-menu.h
++++ b/src/openbox-menu.h
+@@ -19,6 +19,7 @@
+ 
+ #ifndef __OPENBOXMENU_APP__
+ #define __OPENBOXMENU_APP__
++
+ #include <menu-cache.h>
+ 
+ #ifdef WITH_ICONS
+diff --git a/src/utils.c b/src/utils.c
+index 7a68316..2f4f95b 100644
+--- a/src/utils.c
++++ b/src/utils.c
+@@ -169,8 +169,6 @@ clean_exec (MenuCacheApp *app)
+ 
+ #if WITH_ICONS
+ 
+-extern GtkIconTheme *icon_theme;
+-
+ /****f* utils/item_icon_path
+  * OUTPUT
+  *   return the path for the themed icon if item.
+@@ -199,23 +197,21 @@ item_icon_path (MenuCacheItem *item)
+ 		if (g_path_is_absolute (name))
+ 			return g_strdup (name);
+ 
+-		/*  We remove the file extension as gtk_icon_theme_lookup_icon can't
+-		 *  lookup a theme icon for, ie, 'geany.png'. It has to be 'geany'.
+-		 */
+-		tmp_name = strndup (name, strrchr (name, '.') - name);
+ 	#ifdef WITH_SVG
+-		icon_info = gtk_icon_theme_lookup_icon (icon_theme, tmp_name, 16, GTK_ICON_LOOKUP_GENERIC_FALLBACK);
++		icon_info = gtk_icon_theme_lookup_icon (gtk_icon_theme_get_default(), name, 16, GTK_ICON_LOOKUP_GENERIC_FALLBACK);
+ 	#else
+-		icon_info = gtk_icon_theme_lookup_icon (icon_theme, tmp_name, 16, GTK_ICON_LOOKUP_NO_SVG | GTK_ICON_LOOKUP_GENERIC_FALLBACK);
++		icon_info = gtk_icon_theme_lookup_icon (gtk_icon_theme_get_default(), name, 16, GTK_ICON_LOOKUP_NO_SVG | GTK_ICON_LOOKUP_GENERIC_FALLBACK);
+ 	#endif
+ 		g_free (tmp_name);
+ 	}
+ 
++
++
+ 	if (!icon_info) /* 2nd fallback */
+-		icon_info = gtk_icon_theme_lookup_icon (icon_theme, "empty", 16, GTK_ICON_LOOKUP_NO_SVG);
++		icon_info = gtk_icon_theme_lookup_icon (gtk_icon_theme_get_default (), "empty", 16, GTK_ICON_LOOKUP_NO_SVG);
+ 
+ 	icon = g_strdup (gtk_icon_info_get_filename (icon_info));
+-	gtk_icon_info_free (icon_info);
++	g_object_unref (icon_info);
+ 
+ 	return icon;
+ }
