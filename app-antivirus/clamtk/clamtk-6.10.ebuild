@@ -15,7 +15,7 @@ MY_PV_THUNAR="0.06"
 DESCRIPTION="A graphical front-end for ClamAV"
 HOMEPAGE="https://gitlab.com/dave_m/clamtk/wikis/Home"
 SRC_URI="
-	https://bitbucket.org/davem_/${PN}/downloads/${P}.tar.xz
+	https://github.com/dave-theunsub/${PN}/releases/download/v${PV}/${P}.tar.xz
 	kde? ( https://bitbucket.org/davem_/${PN}-kde/downloads/${PN}-kde-${MY_PV_KDE}.tar.xz )
 	nautilus? ( https://bitbucket.org/davem_/${PN}-gnome/downloads/${PN}-gnome-${MY_PV_NAUTILUS}.tar.xz )
 	nemo? ( https://bitbucket.org/davem_/nemo-sendto-${PN}/downloads/nemo-sendto-${PN}-${MY_PV_NEMO}.tar.xz )

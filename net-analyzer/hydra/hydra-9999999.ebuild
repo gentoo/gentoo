@@ -1,18 +1,19 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit flag-o-matic git-r3 toolchain-funcs
+
+inherit git-r3 toolchain-funcs
 
 DESCRIPTION="Parallelized network login hacker"
 HOMEPAGE="https://github.com/vanhauser-thc/thc-hydra"
 EGIT_REPO_URI="https://github.com/vanhauser-thc/thc-hydra"
+S="${WORKDIR}/thc-${P}"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
 IUSE="
-	debug firebird gcrypt gtk idn libressl memcached mongodb mysql ncp ncurses
+	debug firebird gcrypt gtk idn libressl memcached mongodb mysql ncurses
 	oracle pcre postgres rdp libssh subversion zlib
 "
 
@@ -31,7 +32,6 @@ RDEPEND="
 	memcached? ( dev-libs/libmemcached[sasl] )
 	mongodb? ( dev-libs/mongo-c-driver )
 	mysql? ( dev-db/mysql-connector-c:0= )
-	ncp? ( net-fs/ncpfs )
 	ncurses? ( sys-libs/ncurses:= )
 	oracle? ( dev-db/oracle-instantclient-basic )
 	pcre? ( dev-libs/libpcre )
@@ -41,10 +41,8 @@ RDEPEND="
 	subversion? ( dev-vcs/subversion )
 	zlib? ( sys-libs/zlib )
 "
-DEPEND="
-	${RDEPEND}
-	virtual/pkgconfig
-"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
@@ -64,7 +62,6 @@ src_prepare() {
 src_configure() {
 	# Note: the top level configure script is not autoconf-based
 	tc-export CC PKG_CONFIG
-	append-cflags -fcommon
 
 	export OPTS="${CFLAGS}"
 
@@ -87,12 +84,11 @@ src_configure() {
 	hydra_sed memcached '-lmemcached' '$( "${PKG_CONFIG}" --libs libmemcached )' '-DLIBMCACHED'
 	hydra_sed mongodb '-lmongoc-1.0' '$( "${PKG_CONFIG}" --libs libmongoc-1.0 )' '-DLIBMONGODB\|-DLIBBSON'
 	hydra_sed mysql '-lmysqlclient' '$( ${CTARGET:-${CHOST}}-mysql_config --libs )' '-DLIBMYSQLCLIENT'
-	hydra_sed ncp '-lncp' '' '-DLIBNCP'
 	hydra_sed ncurses '-lcurses' '$( "${PKG_CONFIG}" --libs ncurses )' '-DLIBNCURSES'
 	hydra_sed pcre '-lpcre' '$( "${PKG_CONFIG}" --libs libpcre )' '-DHAVE_PCRE'
 	hydra_sed postgres '-lpq' '$( "${PKG_CONFIG}" --libs libpq )' '-DLIBPOSTGRES'
 	hydra_sed oracle '-locci -lclntsh' '' '-DLIBORACLE'
-	hydra_sed rdp '-lfreerdp2' '$( "${PKG_CONFIG}" --libs freerdp2 )' '-DLIBFREERDP2'
+	hydra_sed rdp '-lfreerdp2' '$( "${PKG_CONFIG}" --libs freerdp2 )' '-DLIBFREERDP'
 	# TODO: https://bugs.gentoo.org/686148
 	#hydra_sed subversion '-lsvn_client-1 -lapr-1 -laprutil-1 -lsvn_subr-1' '$( "${PKG_CONFIG}" --libs libsvn_client )' '-DLIBSVN'
 	hydra_sed subversion '-lsvn_client-1 -lapr-1 -laprutil-1 -lsvn_subr-1' '' '-DLIBSVN'

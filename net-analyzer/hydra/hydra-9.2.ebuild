@@ -2,15 +2,17 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit toolchain-funcs
 
 DESCRIPTION="Parallelized network login hacker"
 HOMEPAGE="https://github.com/vanhauser-thc/thc-hydra"
 SRC_URI="https://github.com/vanhauser-thc/thc-hydra/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/thc-${P}"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="
 	debug firebird gcrypt gtk idn libressl memcached mongodb mysql ncurses
 	oracle pcre postgres rdp libssh subversion zlib
@@ -40,11 +42,8 @@ RDEPEND="
 	subversion? ( dev-vcs/subversion )
 	zlib? ( sys-libs/zlib )
 "
-DEPEND="
-	${RDEPEND}
-	virtual/pkgconfig
-"
-S=${WORKDIR}/thc-${P}
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
@@ -65,8 +64,6 @@ src_configure() {
 	# Note: the top level configure script is not autoconf-based
 	tc-export CC PKG_CONFIG
 
-	append-cflags -fcommon
-
 	export OPTS="${CFLAGS}"
 
 	hydra_sed() {
@@ -83,20 +80,20 @@ src_configure() {
 
 	hydra_sed firebird '-lfbclient' '' '-DLIBFIREBIRD'
 	hydra_sed gcrypt '-lgcrypt' '$( ${CTARGET:-${CHOST}}-libgcrypt-config --libs )' '-DHAVE_GCRYPT'
-	hydra_sed idn '-lidn' '$( "${PKG_CONFIG}"  --libs libidn )' '-DLIBIDN -DHAVE_PR29_H'
-	hydra_sed libssh '-lssh' '$( "${PKG_CONFIG}"  --libs libssh )' '-DLIBSSH'
-	hydra_sed memcached '-lmemcached' '$( "${PKG_CONFIG}"  --libs libmemcached )' '-DLIBMCACHED'
-	hydra_sed mongodb '-lmongoc-1.0' '$( "${PKG_CONFIG}"  --libs libmongoc-1.0 )' '-DLIBMONGODB\|-DLIBBSON'
+	hydra_sed idn '-lidn' '$( "${PKG_CONFIG}" --libs libidn )' '-DLIBIDN -DHAVE_PR29_H'
+	hydra_sed libssh '-lssh' '$( "${PKG_CONFIG}" --libs libssh )' '-DLIBSSH'
+	hydra_sed memcached '-lmemcached' '$( "${PKG_CONFIG}" --libs libmemcached )' '-DLIBMCACHED'
+	hydra_sed mongodb '-lmongoc-1.0' '$( "${PKG_CONFIG}" --libs libmongoc-1.0 )' '-DLIBMONGODB\|-DLIBBSON'
 	hydra_sed mysql '-lmysqlclient' '$( ${CTARGET:-${CHOST}}-mysql_config --libs )' '-DLIBMYSQLCLIENT'
-	hydra_sed ncurses '-lcurses' '$( "${PKG_CONFIG}"  --libs ncurses )' '-DLIBNCURSES'
-	hydra_sed pcre '-lpcre' '$( "${PKG_CONFIG}"  --libs libpcre )' '-DHAVE_PCRE'
-	hydra_sed postgres '-lpq' '$( "${PKG_CONFIG}"  --libs libpq )' '-DLIBPOSTGRES'
+	hydra_sed ncurses '-lcurses' '$( "${PKG_CONFIG}" --libs ncurses )' '-DLIBNCURSES'
+	hydra_sed pcre '-lpcre' '$( "${PKG_CONFIG}" --libs libpcre )' '-DHAVE_PCRE'
+	hydra_sed postgres '-lpq' '$( "${PKG_CONFIG}" --libs libpq )' '-DLIBPOSTGRES'
 	hydra_sed oracle '-locci -lclntsh' '' '-DLIBORACLE'
-	hydra_sed rdp '-lfreerdp2' '$( "${PKG_CONFIG}"  --libs freerdp2 )' '-DLIBFREERDP2'
+	hydra_sed rdp '-lfreerdp2' '$( "${PKG_CONFIG}" --libs freerdp2 )' '-DLIBFREERDP2'
 	# TODO: https://bugs.gentoo.org/686148
-	#hydra_sed subversion '-lsvn_client-1 -lapr-1 -laprutil-1 -lsvn_subr-1' '$( "${PKG_CONFIG}"  --libs libsvn_client )' '-DLIBSVN'
+	#hydra_sed subversion '-lsvn_client-1 -lapr-1 -laprutil-1 -lsvn_subr-1' '$( "${PKG_CONFIG}" --libs libsvn_client )' '-DLIBSVN'
 	hydra_sed subversion '-lsvn_client-1 -lapr-1 -laprutil-1 -lsvn_subr-1' '' '-DLIBSVN'
-	hydra_sed zlib '-lz' '$( "${PKG_CONFIG}"  --libs zlib )' '-DHAVE_ZLIB'
+	hydra_sed zlib '-lz' '$( "${PKG_CONFIG}" --libs zlib )' '-DHAVE_ZLIB'
 
 	sh configure \
 		$(use gtk || echo --disable-xhydra) \
@@ -119,5 +116,5 @@ src_compile() {
 src_install() {
 	dobin hydra pw-inspector
 	use gtk && dobin hydra-gtk/src/xhydra
-	dodoc CHANGES README
+	dodoc CHANGES README.md
 }

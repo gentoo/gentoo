@@ -83,6 +83,7 @@ COMMON_DEPEND="
 	$(python_gen_cond_dep "
 		dev-python/subunit[\${PYTHON_MULTI_USEDEP},${MULTILIB_USEDEP}]
 		addc? (
+			dev-python/dnspython:=[\${PYTHON_MULTI_USEDEP}]
 			dev-python/markdown[\${PYTHON_MULTI_USEDEP}]
 		)
 		addns? (
