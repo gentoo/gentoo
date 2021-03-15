@@ -9,7 +9,7 @@ SRC_URI="http://pwhois.org/get/${P}.tar.gz"
 
 LICENSE="VOSTROM"
 SLOT="0"
-KEYWORDS="~amd64 ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 DEPEND="
 	net-libs/libpcap
