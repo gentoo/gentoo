@@ -10,8 +10,6 @@
 		<name>Gentoo Proxy Maintainers Project</name>
 	</maintainer>
 	<use>
-		<flag name="gtk2">Use GTK+2 instead of GTK+3</flag>
-		<flag name="gtk3">Use GTK+3 instead of GTK+2</flag>
 		<flag name="ctags">Enable ctags plugin</flag>
 		<flag name="debugger">Enable the debugger plugin which interfaces with <pkg>sys-devel/gdb</pkg></flag>
 		<flag name="enchant">Enable spell checking using enchant</flag>
