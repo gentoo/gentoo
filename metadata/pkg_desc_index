@@ -15673,7 +15673,7 @@ net-vpn/vpnc 0.5.3_p550-r2: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3-r2: Create tunnels over TCP/IP networks with shaping, encryption, and compression
 net-vpn/wireguard-modules 1.0.20210219: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
-net-vpn/wireguard-tools 1.0.20200513 1.0.20200827 1.0.20210223: Required tools for WireGuard, such as wg(8) and wg-quick(8)
+net-vpn/wireguard-tools 1.0.20200513 1.0.20200827 1.0.20210223 1.0.20210315: Required tools for WireGuard, such as wg(8) and wg-quick(8)
 net-wireless/aircrack-ng 1.6_p20200722 9999: WLAN tools for breaking 802.11 WEP/WPA keys
 net-wireless/airspy 1.0.9 9999: Usemode driver and associated tools for airspy
 net-wireless/airtraf 1.1-r4: AirTraf 802.11b Wireless traffic sniffer
