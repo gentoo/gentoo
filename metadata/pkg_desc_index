@@ -8423,7 +8423,7 @@ dev-python/httpbin 0.7.0-r2: HTTP Request and Response Service
 dev-python/httpcore 0.12.3: A minimal low-level HTTP client
 dev-python/httplib2 0.19.0-r1: A comprehensive HTTP client library
 dev-python/httpretty 1.0.5: HTTP client mock for Python
-dev-python/httpx 0.16.1 0.17.0: Fully-featured HTTP client which provides sync and async APIs
+dev-python/httpx 0.16.1 0.17.0 0.17.1: Fully-featured HTTP client which provides sync and async APIs
 dev-python/huawei-lte-api 1.4.17: API For huawei LAN/WAN LTE Modems
 dev-python/humanfriendly 8.2 9.1: Human friendly output for text interfaces using Python
 dev-python/humanize 3.2.0: Common humanization utilities
@@ -9363,7 +9363,7 @@ dev-python/treq 20.9.0 21.1.0: A requests-like API built on top of twisted.web's
 dev-python/trustme 0.7.0: #1 quality TLS certs while you wait, for the discerning tester
 dev-python/tubes 0.2.0-r1: Flow control and backpressure for event-driven applications
 dev-python/tvdb_api 2.0-r1 3.0.2: Python interface to thetvdb.com API
-dev-python/twine 3.3.0: Collection of utilities for publishing packages on PyPI
+dev-python/twine 3.3.0 3.4.0: Collection of utilities for publishing packages on PyPI
 dev-python/twisted 19.10.0 20.3.0 21.2.0: An asynchronous networking framework written in Python
 dev-python/twython 3.7.0: An easy way to access Twitter data with Python
 dev-python/txAMQP 0.8.2: Python library for communicating with AMQP peers using Twisted
@@ -14333,8 +14333,8 @@ net-analyzer/alive 2.0.2-r1: a periodic ping program
 net-analyzer/amap 5.4 5.4-r1: A network scanning tool for pentesters
 net-analyzer/angst 0.4b-r3: an active sniffer that provides methods for aggressive sniffing on switched LANs
 net-analyzer/apinger 0.6.1: Alarm Pinger
-net-analyzer/argus 3.0.8.2-r3 3.0.8.2-r4 3.0.8.3-r1: network Audit Record Generation and Utilization System
-net-analyzer/argus-clients 3.0.8 3.0.8.2 3.0.8.2-r2 3.0.8.2-r3 3.0.8.3: Clients for net-analyzer/argus
+net-analyzer/argus 3.0.8.3-r1: network Audit Record Generation and Utilization System
+net-analyzer/argus-clients 3.0.8.3: Clients for net-analyzer/argus
 net-analyzer/arp-scan 1.9.6 1.9.7 99999: ARP scanning and fingerprinting tool
 net-analyzer/arp-sk 0.0.16-r2: A swiss knife tool for ARP
 net-analyzer/arping 2.17 2.20 2.21 9999: A utility to see if a specific IP address is taken and what MAC address owns it
@@ -18459,7 +18459,7 @@ x11-libs/xforms 1.2.4-r1: A graphical user interface toolkit for X
 x11-libs/xosd 2.2.14_p2_p1: Library for overlaying text in X-Windows X-On-Screen-Display
 x11-libs/xpa 2.1.18: Messaging system providing communication between programs
 x11-libs/xtrans 1.4.0: X.Org xtrans library
-x11-misc/3ddesktop 0.2.9-r1 0.2.9-r2: OpenGL virtual desktop switching
+x11-misc/3ddesktop 0.2.9-r2: OpenGL virtual desktop switching
 x11-misc/3dfb 0.6.1-r1: 3D File Browser
 x11-misc/3dfm 1.0-r1: OpenGL-based 3D File Manager
 x11-misc/accessx 0951-r2: Interface to the XKEYBOARD extension in X11
@@ -18485,7 +18485,7 @@ x11-misc/bbweather 0.6.3-r2: blackbox weather monitor
 x11-misc/birdtray 1.9.0 9999: A new mail system tray notification icon for Thunderbird
 x11-misc/blockdpy 1-r1: Tool to block access via the physical display while x11vnc is running
 x11-misc/bumblebee 3.2.1_p20190421-r1 3.2.1_p20210112 9999: Service providing elegant and stable means of managing Optimus graphics chipsets
-x11-misc/cairo-clock 0.3.4-r1 0.3.4-r2: An analog clock displaying the system-time
+x11-misc/cairo-clock 0.3.4-r2: An analog clock displaying the system-time
 x11-misc/cbatticon 1.6.5 1.6.10: A lightweight and fast battery icon that sits in your system tray
 x11-misc/cdm 0.6.1_pre20180107 0.7: The Console Display Manager
 x11-misc/chgres 0.1-r2: A very simple command line utility for changing X resolutions
@@ -18495,7 +18495,7 @@ x11-misc/colord 1.3.5: System service to accurately color manage input and outpu
 x11-misc/compose-tables 1.7.0: X.Org Compose Key tables from libX11
 x11-misc/compton 0.1_beta2-r1: A compositor for X, and a fork of xcompmgr-dana
 x11-misc/copyq 3.13.0: Clipboard manager with advanced features
-x11-misc/dclock 2.2.2_p9 2.2.2_p12: Digital clock for the X window system
+x11-misc/dclock 2.2.2_p12: Digital clock for the X window system
 x11-misc/devilspie 0.23 0.23-r2: Window matching utility similar to Sawfish's Matched Windows
 x11-misc/devilspie2 0.43-r100: Devilspie like window matching utility, using LUA for scripting
 x11-misc/dex 0.8.0: DesktopEntry eXecution - tool to manage and launch autostart entries
@@ -18506,7 +18506,7 @@ x11-misc/dzen 0.9.5-r1 0.9.5_p2: General purpose messaging, notification, and me
 x11-misc/e16-keyedit 0.9: Key binding editor for Enlightenment DR16
 x11-misc/e16menuedit2 0.0.3: Menu editor for Enlightenment DR16 written in GTK2
 x11-misc/easystroke 0.6.0-r3: a gesture-recognition application for X11
-x11-misc/efax-gtk 3.2.14 3.2.15: A graphical frontend for the 'efax' application
+x11-misc/efax-gtk 3.2.15: A graphical frontend for the 'efax' application
 x11-misc/evolvotron 0.7.1-r1: Generative art image evolver
 x11-misc/fbdesk 1.4.1: fluxbox-util application that creates and manage icons on your Fluxbox desktop
 x11-misc/fbpager 20090221-r1: A Pager for fluxbox
@@ -18610,7 +18610,7 @@ x11-misc/redshift 1.12-r3: A screen color temperature adjusting software
 x11-misc/rendercheck 1.5-r1: Tests for compliance with X RENDER extension
 x11-misc/revelation 0.5.4-r1: A password manager for GNOME
 x11-misc/rodent 5.3.16.3-r1: A fast, small and powerful file manager and graphical shell
-x11-misc/rofi 1.5.4-r1 1.6.0 1.6.1 99999: A window switcher, run dialog and dmenu replacement
+x11-misc/rofi 1.6.1 99999: A window switcher, run dialog and dmenu replacement
 x11-misc/rofi-calc 1.5 1.6 2.0.0 9999: Do live calculations in rofi!
 x11-misc/rss-glx 0.9.1-r2: Really Slick OpenGL Screensavers for XScreenSaver
 x11-misc/safeeyes 2.0.9-r2 2.1.1 2.1.2: Linux alternative to EyeLeo
@@ -18688,12 +18688,12 @@ x11-misc/xcb 2.4-r1: Marc Lehmann's improved X Cut Buffers
 x11-misc/xclip 0.13 9999: Copy data from standard input to X clipboard
 x11-misc/xcompmgr 1.1.8: X Compositing manager
 x11-misc/xdaliclock 2.44: Dali Clock is a digital clock. When a digit changes, it melts into its new shape
-x11-misc/xdesktopwaves 1.3-r2 1.4: A cellular automata setting the background of your X Windows desktop under water
+x11-misc/xdesktopwaves 1.4: A cellular automata setting the background of your X Windows desktop under water
 x11-misc/xdg-user-dirs 0.17: Tool to help manage 'well known' user directories
 x11-misc/xdg-user-dirs-gtk 0.10-r1: Integrates xdg-user-dirs into the Gnome desktop and Gtk+ applications
 x11-misc/xdg-utils 1.1.3-r1 1.1.3_p20200220 1.1.3_p20200220-r1: Portland utils for cross-platform/cross-toolkit/cross-desktop interoperability
 x11-misc/xdialog 2.3.1: Drop-in replacement for cdialog using GTK
-x11-misc/xdiskusage 1.51 1.52: user-friendly program to show you what is using up all your disk space
+x11-misc/xdiskusage 1.52: user-friendly program to show you what is using up all your disk space
 x11-misc/xdo 0.5.7: Small X utility to perform elementary actions on windows
 x11-misc/xdock 0.3.0: emulates Window Maker docks (runs in any window manager)
 x11-misc/xdotool 3.20160805.1: Simulate keyboard input and mouse activity, move and resize windows
@@ -18707,7 +18707,7 @@ x11-misc/xgestures 0.4: A mouse gesture recognition program for X11 desktops
 x11-misc/xhkeys 2.2.1: assign particular actions to any key or key combination
 x11-misc/xiccd 0.3.0: A desktop environment-independent bridge between colord and X
 x11-misc/xidle 26052015: Monitors inactivity in X and runs the specified program when a timeout occurs
-x11-misc/xkbd 0.8.16-r1 0.8.18 999999: onscreen soft keyboard for X11
+x11-misc/xkbd 0.8.18 999999: onscreen soft keyboard for X11
 x11-misc/xkblayout-state 0_p20180118 9999: A small program to get/set the current XKB layout
 x11-misc/xkbset 0.5_p5_p1 0.5_p6 0.5_p7_p1: User preference utility for XKB extensions for X
 x11-misc/xkeyboard-config 2.31 2.32 9999: X keyboard configuration database
@@ -18726,12 +18726,12 @@ x11-misc/xprintidle 2.0 2.1: Prints user's X server idle time in milliseconds
 x11-misc/xrestop 0.4: 'Top' like statistics of X11 client's server side resource usage
 x11-misc/xrootconsole 0.6-r1: A utility that displays its input in a text box on your root window
 x11-misc/xscreensaver 5.44-r4 5.45: A modular screen saver and locker for the X Window System
-x11-misc/xscreensaver-app 2.3-r3 2.3-r4: XScreenSaver dockapp for the Window Maker window manager
+x11-misc/xscreensaver-app 2.3-r4: XScreenSaver dockapp for the Window Maker window manager
 x11-misc/xsel 1.2.0-r1 9999: Command-line program for getting and setting the contents of the X selection
 x11-misc/xsensors 0.80: A hardware health information viewer, interface to lm-sensors
 x11-misc/xsetleds 0.1.3-r1 0.1.3-r2: small tool to report and change the keyboard LED states of an X display
 x11-misc/xsettingsd 1.0.2: Provides settings to X11 applications via the XSETTINGS specification
-x11-misc/xsnap 1.5.15-r1 1.5.15-r2: Program to interactively take a 'snapshot' of a region of the screen
+x11-misc/xsnap 1.5.15-r2: Program to interactively take a 'snapshot' of a region of the screen
 x11-misc/xsnow 3.0.7 3.2.2: let it snow on your desktop and windows
 x11-misc/xsr 1.0.0: X Steps Recorder
 x11-misc/xsri 2.1.0_p17_p12: The xsri wallpaper setter from RedHat
@@ -18743,11 +18743,11 @@ x11-misc/xtermcontrol 3.7: xtermcontrol enables dynamic control of XFree86 xterm
 x11-misc/xtitle 1.0.4: Set window title and icon name for an X11 terminal window
 x11-misc/xtoolwait 1.3-r2: Xtoolwait notably decreases the startup time of an X session
 x11-misc/xtrace 1.4.0: X11 protocol trace utility
-x11-misc/xtrlock 2.12 2.13: A simplistic screen locking program for X
+x11-misc/xtrlock 2.13: A simplistic screen locking program for X
 x11-misc/xvfb-run 1.20.8_p2 1.20.10_p2 1.20.10.3: Run a command in a virtual X server environment
 x11-misc/xvkbd 4.1: virtual keyboard for X window system
 x11-misc/xwallpaper 0.6.2-r1 0.6.4 0.6.5 0.6.6 9999: Wallpaper setting utility for X
-x11-misc/xwit 3.4_p15 3.4_p16: A collection of simple routines to call some of those X11 functions
+x11-misc/xwit 3.4_p16: A collection of simple routines to call some of those X11 functions
 x11-misc/xwrits 2.26-r1: Reminds you to take wrist breaks to help you prevent repetitive stress injury
 x11-misc/xxkb 1.11.1 1.11.1-r1: eXtended XKB - assign different keymaps to different windows
 x11-misc/xystray 1.0: A simple implementation of freedesktop.org notification area for X

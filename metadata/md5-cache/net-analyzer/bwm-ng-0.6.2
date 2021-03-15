@@ -4,11 +4,12 @@ DEPEND=>=sys-apps/net-tools-1.60-r1 sys-libs/ncurses:0=
 DESCRIPTION=Bandwidth Monitor NG is a small and simple console-based bandwidth monitor
 EAPI=7
 HOMEPAGE=http://www.gropp.org/
+INHERIT=autotools
 IUSE=+csv +html
-KEYWORDS=amd64 ~arm ppc ~x86
+KEYWORDS=amd64 ~arm ppc x86
 LICENSE=GPL-2
 RDEPEND=>=sys-apps/net-tools-1.60-r1 sys-libs/ncurses:0=
 SLOT=0
 SRC_URI=https://github.com/vgropp/bwm-ng/archive/v0.6.2.tar.gz -> bwm-ng-0.6.2.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=5592c3015795cb561a1dbbabcc34503d
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9988ecbe04129214297a7bbf3d253710
+_md5_=42edc87bcec219e10a6e2ed9be2667be

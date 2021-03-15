@@ -5165,7 +5165,6 @@ media-video/x264-encoder:ffmpegsource - Enable ffmpegsource aka ffms support, di
 media-video/x264-encoder:interlaced - Enable interlaced encoding support, this can decrease encoding speed by up to 2%
 media-video/xine-ui:vdr - Enables Video Disk Recorder support
 net-analyzer/2ping:server - Install the server init scripts.
-net-analyzer/argus:libtirpc - Build against net-libs/libtirpc for RPC support
 net-analyzer/argus-clients:ft - Enable support for flow packets through net-analyzer/flow-tools
 net-analyzer/barnyard:sguil - Enable sguil (The Analyst Console for Network Security Monitoring) support
 net-analyzer/barnyard2:gre - Enable GRE support
