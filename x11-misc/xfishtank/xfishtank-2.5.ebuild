@@ -10,7 +10,7 @@ SRC_URI="https://dev.gentoo.org/~jer/${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 x86 ~x86-linux"
+KEYWORDS="amd64 ppc ~ppc64 x86 ~x86-linux"
 
 RDEPEND="
 	media-libs/imlib2[X]
