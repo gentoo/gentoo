@@ -10,7 +10,7 @@ SRC_URI="https://github.com/vanhauser-thc/thc-hydra/archive/v${PV}.tar.gz -> ${P
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 IUSE="
 	debug firebird gcrypt gtk idn libressl memcached mongodb mysql ncurses
 	oracle pcre postgres rdp libssh subversion zlib
