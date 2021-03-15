@@ -365,10 +365,6 @@ app-accessibility/orca braille
 # media-libs/x265 doesn't work on alpha (bug 519046)
 media-video/ffmpeg x265
 
-# Tobias Klausmann <klausman@gentoo.org (2014-07-16)
-# neither dietlibc nor klibc will likely ever build/work on alpha, bug #487672
->=sys-fs/dmraid-1.0.0_rc16-r3 dietlibc klibc
-
 # Pacho Ramos <pacho@gentoo.org> (2014-02-22)
 # Missing keywords, bug #495250
 >=gnome-base/gnome-extra-apps-3.10 tracker

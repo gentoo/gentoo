@@ -11,10 +11,6 @@
 dev-lang/julia system-llvm
 dev-util/perf clang
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-03-06)
-# Needs last-rited dev-libs/klibc
-sys-fs/dmraid klibc
-
 # Sam James <sam@gentoo.org> (2021-02-27)
 # Needs last-rited sci-mathematics/ggnfs
 sci-mathematics/yafu sieve
@@ -134,10 +130,6 @@ media-gfx/exact-image lua
 # Michał Górny <mgorny@gentoo.org> (2020-09-27)
 # The respective dependencies are masked for removal.
 net-im/telepathy-connection-managers gadu icq meanwhile steam yahoo
-
-# Michał Górny <mgorny@gentoo.org> (2020-09-26)
-# The respective dependencies are masked for removal.
-sci-geosciences/viking mapnik
 
 # Joonas Niilola <juippis@gentoo.org> (2020-09-23)
 # Highly experimental, may cause breakages when updating. Use with

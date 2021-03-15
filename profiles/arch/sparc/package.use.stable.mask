@@ -61,10 +61,6 @@ net-libs/libssh2 mbedtls
 net-vpn/openvpn mbedtls
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-04)
-# Needs stable dev-libs/klibc, bug #653384
-sys-fs/dmraid klibc
-
-# Rolf Eike Beer <eike@sf-mail.de> (2020-04-04)
 # Needs stable x11-terms/xterm, bug #706118
 app-editors/joe xterm
 
