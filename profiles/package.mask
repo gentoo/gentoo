@@ -254,16 +254,6 @@ dev-ml/core_extended
 # bug #729098
 ~sci-libs/proj-8.0.0
 
-# Sam James <sam@gentoo.org> (2021-02-28)
-# games-strategy/0ad-data has been merged
-# into games-strategy/0ad for simplicity.
-# Note that in most cases, the latter uses
-# upstream pre-built assets anyway.
-# Nothing should really be using this.
-# bug #735352, bug #768930
-# Removal in 14 days.
-games-strategy/0ad-data
-
 # Bernd Waibel <waebbl-gentoo@posteo.net> (2021-02-27)
 # Mask until removal of media-gfx/openexr_viewers.
 # Version has several vulnerabilities. See #717474
