@@ -33,6 +33,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}/pkgcore-0.10.13-metadata-xsd-2.patch"
+)
+
 distutils_enable_tests setup.py
 
 python_install_all() {
