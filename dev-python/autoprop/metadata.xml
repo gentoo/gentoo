@@ -5,6 +5,7 @@
         <email>3dprint@gentoo.org</email>
         <name>Gentoo 3D Printer Project</name>
     </maintainer>
+    <stabilize-allarches/>
     <longdescription>
         Properties are a feature in python that allow accessor functions (i.e. getters and setters) to masquerade as
         regular attributes. This makes it possible to provide transparent APIs for classes that need to cache results,
