@@ -117,6 +117,8 @@ src_configure() {
 }
 
 src_compile() {
+	cmake_src_compile
+
 	if use doc; then
 		export VARTEXFONTS="${T}/fonts" # bug #564944
 
@@ -126,10 +128,9 @@ src_compile() {
 				|| die "disabling dot failed"
 		fi
 
-		cmake_src_compile docs
+		# -j1 for bug #770070
+		cmake_src_compile docs -j1
 	fi
-
-	cmake_src_compile
 }
 
 src_install() {
