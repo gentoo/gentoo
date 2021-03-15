@@ -9,6 +9,7 @@
 		<email>openstack@gentoo.org</email>
 		<name>Openstack</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">python-aodhclient</remote-id>
 		<remote-id type="github">openstack/python-aodhclient</remote-id>
