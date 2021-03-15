@@ -8748,7 +8748,7 @@ dev-python/pbr 5.5.1: Inject some useful and sensible default behaviors into set
 dev-python/pdfrw 0.4_p1: PDF file reader/writer library
 dev-python/pebble 4.6.0 4.6.1: Threading and multiprocessing eye-candy
 dev-python/pecan 1.3.3-r2 1.4.0: A WSGI object-dispatching web framework, lean, fast, with few dependencies.
-dev-python/peewee 3.14.0 3.14.1 3.14.2 3.14.3: Small Python ORM
+dev-python/peewee 3.14.1 3.14.2 3.14.3: Small Python ORM
 dev-python/pelican-minify 0.9: An HTML minification plugin for Pelican, the static site generator.
 dev-python/pendulum 2.1.2-r1: Drop-in replacement for the standard datetime class
 dev-python/pep8 1.7.1: Python style guide checker
@@ -8875,7 +8875,7 @@ dev-python/pyglet 1.5.14 1.5.15: Cross-platform windowing and multimedia library
 dev-python/pygments 2.7.4 2.8.0 2.8.1: Pygments is a syntax highlighting package written in Python
 dev-python/pygments-github-lexers 0.0.5: Pygments Github custom lexers
 dev-python/pygobject 3.34.0-r1 3.36.1-r1 3.38.0: Python bindings for GObject Introspection
-dev-python/pygpgme 0.3-r2 0.3-r3: A Python wrapper for the GPGME library
+dev-python/pygpgme 0.3-r3: A Python wrapper for the GPGME library
 dev-python/pygraphviz 1.6: Python wrapper for the Graphviz Agraph data structure
 dev-python/pygresql 5.2.2: A Python interface for the PostgreSQL database
 dev-python/pyh2o 1: Python API for sci-libs/libh2o
@@ -13026,7 +13026,7 @@ media-gfx/openmesh 7.1: A generic data structure to represent and manipulate pol
 media-gfx/openscad 2019.05-r5 2021.01 9999: The Programmers Solid 3D CAD Modeller
 media-gfx/opentoonz 1.4.0: An open-source full-featured 2D animation creation software
 media-gfx/openvdb 7.0.0-r1 7.1.0-r1: Library for the efficient manipulation of volumetric data
-media-gfx/optipng 0.7.7 0.7.7-r1: Compress PNG files without affecting image quality
+media-gfx/optipng 0.7.7-r1: Compress PNG files without affecting image quality
 media-gfx/panini 0.73.0: OpenGL-based panoramic image viewer
 media-gfx/pdf2svg 0.2.3: pdf2svg is based on poppler and cairo and can convert pdf to svg files
 media-gfx/pencil 0.6.5: 2D animation and drawing program based on Qt5
