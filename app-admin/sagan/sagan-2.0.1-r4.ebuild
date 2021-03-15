@@ -102,8 +102,26 @@ src_install() {
 	dodoc -r extra/*
 }
 
+pkg_preinst() {
+	# bug #775902 revealed that we need 750 on /var/log/sagan or e.g.
+	# logrotate will fail. Let's inform the user to fix up permissions
+	# in such a case.
+	#  (fperms won't modify the live filesystem.)
+	HAD_BROKEN_PERMS=0
+
+	if has_version "<app-admin/sagan-2.0.1-r4" ; then
+		HAD_BROKEN_PERMS=1
+	fi
+}
+
 pkg_postinst() {
 	tmpfiles_process sagan.conf
+
+	if [[ "${HAD_BROKEN_PERMS}" -eq 1 ]] ; then
+		ewarn "Please fix the permissions on ${EPREFIX}/var/log/sagan:"
+		ewarn "e.g. chmod 750 /var/log/sagan"
+		ewarn "See bug #775902"
+	fi
 
 	if use smtp; then
 		ewarn "You have enabled smtp use flag. If you plan on using Sagan with"
