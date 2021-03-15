@@ -11,7 +11,7 @@ SRC_URI="http://www.digitage.co.uk/digitage/files/${PN}/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.03-debian.patch
