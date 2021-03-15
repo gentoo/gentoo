@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>marecki@gentoo.org</email>
-	<name>Marek Szuba</name>
-</maintainer>
-<upstream>
-	<remote-id type="github">ovalhub/pyicu</remote-id>
-	<remote-id type="pypi">PyICU</remote-id>
-</upstream>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">ovalhub/pyicu</remote-id>
+		<remote-id type="pypi">PyICU</remote-id>
+	</upstream>
 </pkgmetadata>
