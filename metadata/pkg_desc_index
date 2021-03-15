@@ -8774,7 +8774,7 @@ dev-python/plotly 4.14.1 4.14.3: Browser-based graphing library for Python
 dev-python/plotly-geo 1.0.0: Browser-based graphing library for Python
 dev-python/pluggy 0.13.1-r1: plugin and hook calling mechanisms for python
 dev-python/pluginbase 1.0.0: Support library for building plugins sytems in Python
-dev-python/plumbum 1.6.9 1.7.0: A library for shell script-like programs in python
+dev-python/plumbum 1.6.9 1.7.0-r1: A library for shell script-like programs in python
 dev-python/ply 3.11-r1: Python Lex-Yacc library
 dev-python/plyr 1.0.6: A python wrapper for Glyr
 dev-python/plyvel 1.3.0: Python interface to LevelDB
