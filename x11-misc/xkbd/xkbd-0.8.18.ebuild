@@ -10,7 +10,7 @@ SRC_URI="https://github.com/mahatma-kaganovich/${PN}/archive/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc x86"
+KEYWORDS="amd64 ~arm ~ppc x86"
 IUSE="debug +xft +xpm"
 
 RDEPEND="
