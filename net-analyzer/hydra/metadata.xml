@@ -10,4 +10,7 @@
 		<flag name="mongodb">MongoDB support through <pkg>dev-libs/mongo-c-driver</pkg></flag>
 		<flag name="ncp">NCP protocol (NetWare) support through ncpfs</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">vanhauser-thc/thc-hydra</remote-id>
+	</upstream>
 </pkgmetadata>
