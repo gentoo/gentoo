@@ -40,6 +40,6 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_enable debug) \
-		--with-lineak-plugindir="${EROOT}/usr/$(get_libdir)/lineakd" \
+		--with-lineak-plugindir="${EPREFIX}/usr/$(get_libdir)/lineakd" \
 		USER_LDFLAGS="${LDFLAGS}"
 }
