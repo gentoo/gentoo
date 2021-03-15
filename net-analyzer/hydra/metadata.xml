@@ -8,7 +8,6 @@
 		<flag name="gcrypt">Enable radmin2 support through <pkg>dev-libs/libgcrypt</pkg></flag>
 		<flag name="libssh">Enable SSH support through <pkg>net-libs/libssh</pkg></flag>
 		<flag name="mongodb">MongoDB support through <pkg>dev-libs/mongo-c-driver</pkg></flag>
-		<flag name="ncp">NCP protocol (NetWare) support through ncpfs</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">vanhauser-thc/thc-hydra</remote-id>
