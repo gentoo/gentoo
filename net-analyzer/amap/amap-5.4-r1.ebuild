@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="A network scanning tool for pentesters"
 HOMEPAGE="https://www.thc.org/thc-amap/"
@@ -26,23 +26,31 @@ RDEPEND="
 	!sci-biology/amap
 "
 
+PATCHES=(
+	"${FILESDIR}"/4.8-system-pcre.patch
+)
+
 src_prepare() {
 	rm -r pcre-3.9 || die
+
 	sed -i -e "s:etc/:share/amap/:g" amap-lib.c || die
+
 	# Above change requires below change. See sources...
 	sed -i '/strlen(AMAP_PREFIX/s: 5 : 12 :' amap-lib.c || die
 	sed -i 's:/usr/local:/usr:' amap.h || die
+
 	# Files to be updated are at different location, bug 207839.
 	sed -i '/AMAP_RESOURCE/s:www:freeworld:' amap.h || die
 
 	sed -i '/DATADIR/s:/etc:/share/amap:' Makefile.am || die
 
-	epatch "${FILESDIR}"/4.8-system-pcre.patch
+	default
 }
 
 src_configure() {
 	# non-autotools configure script
 	./configure || die
+
 	sed -i \
 		-e '/^XDEFINES=/s:=.*:=:' \
 		-e '/^XLIBS=/s:=.*:=:' \
@@ -50,12 +58,14 @@ src_configure() {
 		-e '/^XIPATHS=/s:=.*:=:' \
 		-e "/^CC=/d" \
 		Makefile || die
+
 	if use ssl ; then
 		sed -i \
 			-e '/^XDEFINES=/s:=:=-DOPENSSL:' \
 			-e '/^XLIBS=/s:=:=-lcrypto -lssl:' \
 			Makefile || die
 	fi
+
 	sed -i Makefile \
 		-e '/-o amap/{s|(OPT) |(OPT) $(LDFLAGS) |g}' \
 		|| die
