@@ -11145,7 +11145,7 @@ dev-vcs/python-gitlab 2.5.0 2.6.0: Python command line interface to gitlab API
 dev-vcs/qgit 2.9: Qt GUI for git repositories
 dev-vcs/rcs 5.9.3 5.9.4: Revision Control System
 dev-vcs/rcsi 0.5: A program to give information about RCS files
-dev-vcs/repo 2.8 2.11 2.12: Google tool for managing git, particularly multiple repos
+dev-vcs/repo 2.11 2.12 2.12-r1: Google tool for managing git, particularly multiple repos
 dev-vcs/rsvndump 0.6-r1: Dump a remote Subversion repository
 dev-vcs/stgit 0.23 1.0: Manage a stack of patches using GIT as a backend
 dev-vcs/subversion 1.14.0-r1 1.14.1: Advanced version control system
