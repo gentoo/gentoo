@@ -32,6 +32,27 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-03-15)
+# Unmaintained for >1 year, blocking cleanup of deprecated libraries.
+# Succeeded by LXQt many years ago (see also: lxqt-base/lxqt-meta).
+# Removal on 2021-04-14 or replacement by GTK3-based versions available
+# in ~arch. No more stabilisation is going to happen without the packages
+# getting a new maintainer. Bugs #708188, #751076, #769524
+<lxde-base/lxappearance-0.6.3-r2
+<lxde-base/lxappearance-obconf-0.2.3-r1
+<lxde-base/lxde-icon-theme-0.5.1-r1
+<lxde-base/lxde-common-0.99.2-r1
+<lxde-base/lxde-meta-0.5.5-r7
+<lxde-base/lxmenu-data-0.1.5
+<lxde-base/lxinput-0.3.5-r2
+<lxde-base/lxlauncher-0.2.5-r1
+<lxde-base/lxpanel-0.10.1
+<lxde-base/lxrandr-0.3.2-r1
+<lxde-base/lxsession-0.5.5
+<lxde-base/lxtask-0.1.10
+<lxde-base/lxterminal-0.3.2-r1
+<x11-misc/pcmanfm-1.3.2
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2021-03-15)
 # Needs a port to ghc-8.10. No release for past 6 years.
 # No revdeps. Mask for removal.
