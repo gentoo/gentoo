@@ -5,7 +5,7 @@ EAPI=7
 
 inherit flag-o-matic toolchain-funcs
 
-DESCRIPTION="very high level language"
+DESCRIPTION="Very high level language"
 HOMEPAGE="http://www.cs.arizona.edu/icon/"
 
 SRC_URI="https://github.com/gtownsend/icon/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -102,9 +102,9 @@ src_install() {
 	doman "${PN}".1
 
 	cd "${S}/doc" || die
-	DOCS=( *.txt ../README )
+	local DOCS=( *.txt ../README )
 
-	HTML_DOCS=( *.{htm,gif,jpg,css} )
+	local HTML_DOCS=( *.{htm,gif,jpg,css} )
 	einstalldocs
 
 	# Clean up items from make Install that get installed elsewhere
