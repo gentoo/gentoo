@@ -1,0 +1,40 @@
+From cc7be6516d25cfa27b25b5c0ced6b8a8514d46e5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sun, 14 Mar 2021 21:19:46 +0100
+Subject: [PATCH] data: Sync metadata.xsd for proxied="" attr
+
+---
+ data/xml-schema/metadata.xsd | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/data/xml-schema/metadata.xsd b/data/xml-schema/metadata.xsd
+index db243abb..d2e3d4ff 100644
+--- a/data/xml-schema/metadata.xsd
++++ b/data/xml-schema/metadata.xsd
+@@ -127,6 +127,8 @@
+ 		</xs:choice>
+ 		<xs:attribute name='type' type='maintainerTypeAttrType'
+ 			use='required'/>
++		<xs:attribute name='proxied' type='maintainerProxiedAttrType'
++			default='no'/>
+ 		<xs:attribute name='restrict' type='restrictAttrType'
+ 			default=''/>
+ 	</xs:complexType>
+@@ -138,6 +140,14 @@
+ 		</xs:restriction>
+ 	</xs:simpleType>
+ 
++	<xs:simpleType name='maintainerProxiedAttrType'>
++		<xs:restriction base='xs:token'>
++			<xs:enumeration value='yes'/>
++			<xs:enumeration value='no'/>
++			<xs:enumeration value='proxy'/>
++		</xs:restriction>
++	</xs:simpleType>
++
+ 	<xs:complexType name='upstreamMaintainerType'>
+ 		<xs:all>
+ 			<xs:element name='email' type='emailType'
+-- 
+2.30.2
+

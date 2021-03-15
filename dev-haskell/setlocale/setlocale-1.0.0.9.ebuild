@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,3 +22,10 @@ RDEPEND=">=dev-lang/ghc-7.6.1:=
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.16.0
 "
+
+src_prepare() {
+	default
+
+	cabal_chdeps \
+		'base >=4.6 && <4.14' 'base >=4.6'
+}
