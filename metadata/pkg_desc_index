@@ -8029,7 +8029,7 @@ dev-python/absl-py 0.10.0: Abseil Python Common Libraries
 dev-python/abydos 0.5.0: Abydos NLP/IR library
 dev-python/aesara 2.0.1-r1 2.0.2: Library for operating on mathematical expressions with multi-dimensional arrays
 dev-python/aiodns 2.0.0-r1: Simple DNS resolver for asyncio
-dev-python/aiofiles 0.5.0: File support for asyncio
+dev-python/aiofiles 0.5.0 0.6.0: File support for asyncio
 dev-python/aiohttp 3.7.4: http client/server for asyncio
 dev-python/aiohttp-cors 0.7.0-r1: Implements CORS support for aiohttp asyncio-powered asynchronous HTTP server
 dev-python/aiohttp-jinja2 0.15.0: jinja2 template renderer for aiohttp.web
