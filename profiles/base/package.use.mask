@@ -11,10 +11,6 @@
 dev-lang/julia system-llvm
 dev-util/perf clang
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-03-06)
-# Needs last-rited dev-libs/klibc
-sys-fs/dmraid klibc
-
 # Sam James <sam@gentoo.org> (2021-02-27)
 # Needs last-rited sci-mathematics/ggnfs
 sci-mathematics/yafu sieve
