@@ -22,6 +22,7 @@ BDEPEND="doc? (
 	app-text/texlive-core
 	dev-texlive/texlive-latex
 	dev-texlive/texlive-latexextra
+	dev-tex/latexmk
 	)
 	${PYTHON_DEPS}"
 DEPEND="dev-libs/gmp:=
