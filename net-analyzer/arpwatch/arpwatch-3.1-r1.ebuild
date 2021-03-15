@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit user
+
+inherit systemd user
 
 DESCRIPTION="An ethernet monitor program that keeps track of ethernet/IP address pairings"
 HOMEPAGE="https://ee.lbl.gov/"
@@ -60,6 +61,9 @@ src_install() {
 
 	newconfd "${FILESDIR}"/arpwatch.confd-r2 arpwatch
 	newinitd "${FILESDIR}"/arpwatch.initd-r2 arpwatch
+
+	systemd_dounit "${FILESDIR}/arpwatch.service"
+	systemd_install_serviced "${FILESDIR}/arpwatch.conf"
 }
 
 pkg_postinst() {
