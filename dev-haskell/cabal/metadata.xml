@@ -5,12 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		The Haskell Common Architecture for Building Applications and
-		Libraries: a framework defining a common interface for authors to more
-		easily build their Haskell applications in a portable way.
-		
-		The Haskell Cabal is part of a larger infrastructure for distributing,
-		organizing, and cataloging Haskell libraries and tools.
-	</longdescription>
 </pkgmetadata>
