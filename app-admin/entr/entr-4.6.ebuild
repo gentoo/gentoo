@@ -11,7 +11,7 @@ SRC_URI="http://entrproject.org/code/${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
