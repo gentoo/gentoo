@@ -1,13 +1,14 @@
 DEFINED_PHASES=compile configure install postinst postrm setup test
-DEPEND=>=dev-lang/ghc-8.0.1:= >=dev-haskell/cabal-1.24.0.0 hscolour? ( dev-haskell/hscolour )
-DESCRIPTION=Haskell bindings to the terminfo library
+DEPEND=dev-haskell/syb:=[profile?] >=dev-lang/ghc-7.4.1:= >=dev-haskell/cabal-1.8 hscolour? ( dev-haskell/hscolour )
+DESCRIPTION=Expands type synonyms in Template Haskell ASTs
 EAPI=7
-HOMEPAGE=https://github.com/judah/terminfo
-IUSE=doc hscolour profile
+HOMEPAGE=https://github.com/DanielSchuessler/th-expand-syns
+IUSE=doc hscolour profile test
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD
-RDEPEND=>=dev-lang/ghc-8.0.1:=
-SLOT=0/0.4.1.4
-SRC_URI=https://hackage.haskell.org/package/terminfo-0.4.1.4/terminfo-0.4.1.4.tar.gz
+RDEPEND=dev-haskell/syb:=[profile?] >=dev-lang/ghc-7.4.1:=
+RESTRICT=!test? ( test )
+SLOT=0/0.4.6.0
+SRC_URI=https://hackage.haskell.org/package/th-expand-syns-0.4.6.0/th-expand-syns-0.4.6.0.tar.gz
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	ghc-package	e3a4a688accbd5f1226e46b379cc1c3e	haskell-cabal	9d756e2e026abb59bf29f5b777bb34b2	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=4a67408a19b2bd20ebb4a1c1bfe64133
+_md5_=0785bcf5eceb5c98e40412e6900b8c80

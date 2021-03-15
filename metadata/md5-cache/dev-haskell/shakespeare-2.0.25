@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm setup test
+DEPEND=dev-haskell/aeson:=[profile?] dev-haskell/blaze-html:=[profile?] dev-haskell/blaze-markup:=[profile?] dev-haskell/exceptions:=[profile?] >=dev-haskell/parsec-2:=[profile?] <dev-haskell/parsec-4:=[profile?] >=dev-haskell/scientific-0.3.0.0:=[profile?] >=dev-haskell/text-0.7:=[profile?] dev-haskell/th-lift:=[profile?] dev-haskell/unordered-containers:=[profile?] dev-haskell/vector:=[profile?] >=dev-lang/ghc-8.0.1:= >=dev-haskell/cabal-1.24.0.0 test? ( >=dev-haskell/hspec-2 <dev-haskell/hspec-3 dev-haskell/hunit ) hscolour? ( dev-haskell/hscolour )
+DESCRIPTION=A toolkit for making compile-time interpolated templates
+EAPI=7
+HOMEPAGE=https://www.yesodweb.com/book/shakespearean-templates
+IUSE=test-coffee test-export test-roy doc hscolour profile test
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=dev-haskell/aeson:=[profile?] dev-haskell/blaze-html:=[profile?] dev-haskell/blaze-markup:=[profile?] dev-haskell/exceptions:=[profile?] >=dev-haskell/parsec-2:=[profile?] <dev-haskell/parsec-4:=[profile?] >=dev-haskell/scientific-0.3.0.0:=[profile?] >=dev-haskell/text-0.7:=[profile?] dev-haskell/th-lift:=[profile?] dev-haskell/unordered-containers:=[profile?] dev-haskell/vector:=[profile?] >=dev-lang/ghc-8.0.1:=
+RESTRICT=!test? ( test )
+SLOT=0/2.0.25
+SRC_URI=https://hackage.haskell.org/package/shakespeare-2.0.25/shakespeare-2.0.25.tar.gz
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	ghc-package	e3a4a688accbd5f1226e46b379cc1c3e	haskell-cabal	9d756e2e026abb59bf29f5b777bb34b2	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=3013209c043b7805f2e36504bfc670c7
