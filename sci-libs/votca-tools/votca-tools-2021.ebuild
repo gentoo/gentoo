@@ -37,6 +37,7 @@ DOCS=( NOTICE README.rst CHANGELOG.rst )
 src_configure() {
 	local mycmakeargs=(
 		-DINSTALL_RC_FILES=OFF
+		-DCMAKE_DISABLE_FIND_PACKAGE_MKL=ON
 	)
 	cmake_src_configure
 }
