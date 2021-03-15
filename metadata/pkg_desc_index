@@ -2777,7 +2777,7 @@ app-office/scribus 1.5.6.1 9999: Desktop publishing (DTP) and layout program
 app-office/skrooge 2.24.6: Personal finances manager, aiming at being simple and intuitive
 app-office/texmacs 1.99.11: Wysiwyg text processor with high-quality maths
 app-office/texmaker 5.0.3 5.0.4: A nice LaTeX-IDE
-app-office/texstudio 3.0.4-r1 3.0.5-r1 3.1.0-r1 3.1.1 9999: Free cross-platform LaTeX editor (fork from texmakerX)
+app-office/texstudio 3.0.5-r1 3.1.0-r1 3.1.1 9999: Free cross-platform LaTeX editor (fork from texmakerX)
 app-office/unoconv 0.9.0: Convert between document formats supported by LibreOffice
 app-office/upwork 5.4.5.1: Project collaboration and tracking software for upwork.com
 app-office/worklog-assistant-bin 2.1.3580: Hassle-free time tracking for JIRA self-hosted and OnDemand
@@ -11835,7 +11835,6 @@ games-sports/trophy 2.0.3-r1: 2D Racing Game
 games-sports/ultimatestunts 0.7.7-r1: Remake of the famous Stunts game
 games-sports/xmoto 0.6.1-r1 0.6.1-r100: A challenging 2D motocross platform game, where physics play an important role
 games-strategy/0ad 0.0.24_alpha_pre20210116040036-r2 0.0.24b_alpha: A free, real-time strategy game
-games-strategy/0ad-data 0.0.23_alpha 0.0.23b_alpha 0.0.24_alpha_pre20210116040036: Data files for 0ad
 games-strategy/colobot 0.1.12 9999: A real-time strategy game, where you can program your bots
 games-strategy/colobot-data 0.1.12: Data package for colobot (Colonize with Bots)
 games-strategy/crimson 0.5.3-r1: Tactical war game in the tradition of Battle Isle
