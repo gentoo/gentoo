@@ -3,15 +3,16 @@
 
 EAPI=7
 
-inherit git-r3 toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Parallelized network login hacker"
 HOMEPAGE="https://github.com/vanhauser-thc/thc-hydra"
-EGIT_REPO_URI="https://github.com/vanhauser-thc/thc-hydra"
+SRC_URI="https://github.com/vanhauser-thc/thc-hydra/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/thc-${P}"
 
 LICENSE="GPL-3"
 SLOT="0"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="
 	debug firebird gcrypt gtk idn libressl memcached mongodb mysql ncp ncurses
 	oracle pcre postgres rdp libssh subversion zlib
@@ -90,7 +91,7 @@ src_configure() {
 	hydra_sed pcre '-lpcre' '$( "${PKG_CONFIG}" --libs libpcre )' '-DHAVE_PCRE'
 	hydra_sed postgres '-lpq' '$( "${PKG_CONFIG}" --libs libpq )' '-DLIBPOSTGRES'
 	hydra_sed oracle '-locci -lclntsh' '' '-DLIBORACLE'
-	hydra_sed rdp '-lfreerdp2' '$( "${PKG_CONFIG}" --libs freerdp2 )' '-DLIBFREERDP'
+	hydra_sed rdp '-lfreerdp2' '$( "${PKG_CONFIG}" --libs freerdp2 )' '-DLIBFREERDP2'
 	# TODO: https://bugs.gentoo.org/686148
 	#hydra_sed subversion '-lsvn_client-1 -lapr-1 -laprutil-1 -lsvn_subr-1' '$( "${PKG_CONFIG}" --libs libsvn_client )' '-DLIBSVN'
 	hydra_sed subversion '-lsvn_client-1 -lapr-1 -laprutil-1 -lsvn_subr-1' '' '-DLIBSVN'
