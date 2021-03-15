@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -35,7 +35,9 @@ RDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.19-compiler.patch
 	"${FILESDIR}"/${PN}-1.6.19-libft.patch
+	"${FILESDIR}"/${PN}-1.6.21-remove-strict-rfc-7011-handling.patch
 )
+
 DOCS=( AUTHORS ChangeLog README.md )
 
 src_prepare() {
