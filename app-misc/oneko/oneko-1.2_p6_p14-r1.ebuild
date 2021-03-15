@@ -15,7 +15,7 @@ SRC_URI="
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~ppc ~ppc64 x86"
 
 RDEPEND="
 	x11-libs/libX11
