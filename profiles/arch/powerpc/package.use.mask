@@ -345,10 +345,6 @@ net-misc/connman ofono
 # Mask some use flags for openmpi due to unkeyworded deps
 sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
 
-# Kacper Kowalik <xarthisius@gentoo.org> (2011-11-20)
-# Dropped dietlibc wrt #364103
-sys-fs/dmraid dietlibc
-
 # Patrick McLean <chutzpah@gentoo.org> (2011-09-07)
 # missing keywords on dependencies
 media-video/x264-encoder ffmpegsource
