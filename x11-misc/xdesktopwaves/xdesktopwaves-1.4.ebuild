@@ -17,7 +17,7 @@ DEPEND="
 	${RDEPEND}
 	x11-base/xorg-proto
 "
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.4-gentoo.patch
