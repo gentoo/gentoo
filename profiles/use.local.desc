@@ -2814,8 +2814,6 @@ dev-util/geany-plugins:ctags - Enable ctags plugin
 dev-util/geany-plugins:debugger - Enable the debugger plugin which interfaces with sys-devel/gdb
 dev-util/geany-plugins:enchant - Enable spell checking using enchant
 dev-util/geany-plugins:gpg - Enable geanypg plugin which integrates GPG using app-crypt/gpgme
-dev-util/geany-plugins:gtk2 - Use GTK+2 instead of GTK+3
-dev-util/geany-plugins:gtk3 - Use GTK+3 instead of GTK+2
 dev-util/geany-plugins:gtkspell - Use gtkspell for dictionary support in GeanyVC
 dev-util/geany-plugins:markdown - Enable the markdown plugin
 dev-util/geany-plugins:pretty-printer - Enable pretty-printer plugin
@@ -4001,7 +3999,6 @@ media-gfx/gmic:cli - Build CLI interface
 media-gfx/gmic:digikam - Build media-gfx/digikam plugin
 media-gfx/gmic:krita - Build media-gfx/krita plugin
 media-gfx/gmic:opencv - Enable support for webcams using the OpenCV library
-media-gfx/gnofract4d:doc - Install user manual
 media-gfx/gnome-photos:flickr - Ensure runtime Flickr support
 media-gfx/graphicsmagick:dynamic-loading - Compile graphicsmagick with dynamically loadable modules
 media-gfx/graphicsmagick:fpx - Enable FlashPix support with media-libs/libfpx

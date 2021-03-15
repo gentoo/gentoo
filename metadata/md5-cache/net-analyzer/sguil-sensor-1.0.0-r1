@@ -4,8 +4,8 @@ EAPI=7
 HOMEPAGE=https://github.com/bammv/sguil
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2 QPL
-RDEPEND=>=dev-lang/tcl-8.3:0=[-threads] >=dev-tcltk/tclx-8.3 >=net-analyzer/barnyard-0.2.0-r1 >=net-analyzer/snort-2.4.1-r1 dev-ml/pcre-ocaml net-analyzer/sancp
+RDEPEND=>=dev-lang/tcl-8.3:0=[-threads] >=dev-tcltk/tclx-8.3 dev-tcltk/tls >=net-analyzer/barnyard-0.2.0-r1 >=net-analyzer/snort-2.4.1-r1 dev-ml/pcre-ocaml net-analyzer/sancp
 SLOT=0
 SRC_URI=https://github.com/bammv/sguil/archive/v1.0.0.tar.gz -> sguil-1.0.0.tar.gz
 _eclasses_=user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
-_md5_=f9385c31a7dd33722bb5a4824a89d212
+_md5_=cc96d57190774f3c79aaf35abbba4e07

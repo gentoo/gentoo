@@ -10875,7 +10875,7 @@ dev-util/fuzz 0.6-r1: Stress-tests programs by giving them random input
 dev-util/gcovr 4.2: A Python script for summarizing gcov data
 dev-util/gdbus-codegen 2.66.7: GDBus code and documentation generator
 dev-util/geany 1.36 1.37 1.37.1 9999: GTK+ based fast and lightweight IDE
-dev-util/geany-plugins 1.36-r2 1.37 1.37-r100 1.37-r101: A collection of different plugins for Geany
+dev-util/geany-plugins 1.37-r101: A collection of different plugins for Geany
 dev-util/gengetopt 2.23: A tool to write command line option parsing code for C programs
 dev-util/gertty 1.6.0-r1 9999: Gertty is a console-based interface to the Gerrit Code Review system.
 dev-util/git-delta 0.5.1 0.6.0: A syntax-highlighting pager for git
@@ -12947,7 +12947,7 @@ media-gfx/gimageview 0.2.27-r4: Powerful GTK+ based image & movie viewer
 media-gfx/gimp 2.10.22-r2 2.99.4 9999: GNU Image Manipulation Program
 media-gfx/gimp-arrow-brushes 20190407: Brushes for GIMP with the styles arrow, handpointer, button arrow and cursor
 media-gfx/gmic 2.9.4 2.9.5: GREYC's Magic Image Converter
-media-gfx/gnofract4d 4.0.1_p1-r1 4.3_p20201029: A program for drawing beautiful mathematically-based images known as fractals
+media-gfx/gnofract4d 4.3_p20201029: A program for drawing beautiful mathematically-based images known as fractals
 media-gfx/gnome-font-viewer 3.34.0: Font viewer utility for GNOME
 media-gfx/gnome-photos 3.34.2: Access, organize and share your photos on GNOME
 media-gfx/gnome-raw-thumbnailer 3.0.0-r1: A lightweight and fast raw image thumbnailer for GNOME
@@ -14542,7 +14542,7 @@ net-analyzer/scli 0.4.0-r1: SNMP Command Line Interface
 net-analyzer/sec 2.8.3: Simple Event Correlator
 net-analyzer/sflowtool 5.06: sflowtool is a utility for collecting and processing sFlow data
 net-analyzer/sguil-client 1.0.0: GUI Console for sguil Network Security Monitoring
-net-analyzer/sguil-sensor 1.0.0: Sensor part of sguil Network Security Monitoring
+net-analyzer/sguil-sensor 1.0.0-r1: Sensor part of sguil Network Security Monitoring
 net-analyzer/sinfo 0.0.48: A monitoring tool for networked computers
 net-analyzer/siphon 666-r2: A portable passive network mapping suite
 net-analyzer/slurm 0.4.3: Realtime network interface monitor based on FreeBSD's pppstatus
