@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2021-03-15)
+# Needs a port to network-3. No revdeps. Mask for removal
+# in a month.
+dev-haskell/network-protocol-xmpp
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2021-03-15)
 # Needs a port to ghc-8.10. No revdeps. Mask for removal
 # in a month.
 dev-haskell/test-framework-th-prime
