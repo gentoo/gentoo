@@ -1,6 +1,6 @@
-diff -Nru Xdialog-2.3.1.vanilla/configure.in Xdialog-2.3.1/configure.in
---- Xdialog-2.3.1.vanilla/configure.in	2009-02-11 09:54:10.000000000 +0000
-+++ Xdialog-2.3.1/configure.in	2009-02-11 09:59:28.000000000 +0000
+diff -Nru a/configure.in b/configure.in
+--- a/configure.in	2009-02-11 09:54:10.000000000 +0000
++++ b/configure.in	2009-02-11 09:59:28.000000000 +0000
 @@ -36,13 +36,8 @@
    CPPFLAGS="$CPPFLAGS -DUSE_GTK2"
    AC_MSG_RESULT(Compiling for GTK2)
