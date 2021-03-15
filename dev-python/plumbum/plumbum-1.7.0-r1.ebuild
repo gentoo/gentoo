@@ -8,8 +8,8 @@ inherit distutils-r1 optfeature
 DESCRIPTION="A library for shell script-like programs in python"
 HOMEPAGE="https://plumbum.readthedocs.io/en/latest/ https://github.com/tomerfiliba/plumbum"
 SRC_URI="https://files.pythonhosted.org/packages/ed/ba/431d7f420cd93c4b8ccb15ed8f1c6c76c81965634fd70345af0b19c2b7bc/${P}.tar.gz"
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-RDEPEND="dev-python/paramiko"
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+	test? ( dev-python/psutil[${PYTHON_USEDEP}] )"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -23,13 +23,16 @@ src_prepare() {
 	# Need sshd running
 	rm tests/test_remote.py || die "rm test_remote.py failed"
 	rm tests/test_utils.py || die "rm test_utils.py failed"
+	rm tests/_test_paramiko.py || die "rm _test_paramiko.py failed"
+	# Windows specific
 	rm tests/test_putty.py || die "rm test_putty.py failed"
-	# Need sudo without password
+	# Needs sudo without password
 	rm tests/test_sudo.py || die "rm test_sudo.py failed"
 }
 
 pkg_postinst() {
 	elog "To get additional features, optional runtime dependencies may be installed:"
+		optfeature "Remote commands via ssh" dev-python/paramiko
 		optfeature "Progress bars in jupyter" dev-python/ipywidgets
 		optfeature "Colored output in jupyter" dev-python/ipython
 		optfeature "Images on the command line" dev-python/pillow
