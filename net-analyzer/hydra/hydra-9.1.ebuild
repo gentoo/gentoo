@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="
-	debug firebird gcrypt gtk idn libressl memcached mongodb mysql ncp ncurses
+	debug firebird gcrypt gtk idn libressl memcached mongodb mysql ncurses
 	oracle pcre postgres rdp libssh subversion zlib
 "
 
@@ -31,7 +31,6 @@ RDEPEND="
 	memcached? ( dev-libs/libmemcached[sasl] )
 	mongodb? ( dev-libs/mongo-c-driver )
 	mysql? ( dev-db/mysql-connector-c:0= )
-	ncp? ( net-fs/ncpfs )
 	ncurses? ( sys-libs/ncurses:= )
 	oracle? ( dev-db/oracle-instantclient-basic )
 	pcre? ( dev-libs/libpcre )
@@ -89,7 +88,6 @@ src_configure() {
 	hydra_sed memcached '-lmemcached' '$( "${PKG_CONFIG}" --libs libmemcached )' '-DLIBMCACHED'
 	hydra_sed mongodb '-lmongoc-1.0' '$( "${PKG_CONFIG}" --libs libmongoc-1.0 )' '-DLIBMONGODB\|-DLIBBSON'
 	hydra_sed mysql '-lmysqlclient' '$( ${CTARGET:-${CHOST}}-mysql_config --libs )' '-DLIBMYSQLCLIENT'
-	hydra_sed ncp '-lncp' '' '-DLIBNCP'
 	hydra_sed ncurses '-lcurses' '$( "${PKG_CONFIG}" --libs ncurses )' '-DLIBNCURSES'
 	hydra_sed pcre '-lpcre' '$( "${PKG_CONFIG}" --libs libpcre )' '-DHAVE_PCRE'
 	hydra_sed postgres '-lpq' '$( "${PKG_CONFIG}" --libs libpq )' '-DLIBPOSTGRES'
