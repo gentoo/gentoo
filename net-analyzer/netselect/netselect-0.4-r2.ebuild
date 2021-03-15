@@ -1,7 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit fcaps toolchain-funcs
 
 DESCRIPTION="Ultrafast implementation of ping"
@@ -10,6 +11,7 @@ SRC_URI="
 	https://github.com/apenwarr/${PN}/archive/${P}.tar.gz
 	ipv6? ( https://dev.gentoo.org/~jer/${P}-ipv6.patch.xz )
 "
+S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="BSD"
 SLOT="0"
@@ -24,8 +26,6 @@ PATCHES=(
 DOCS=( HISTORY README )
 
 FILECAPS=( -g wheel cap_net_raw /usr/bin/netselect )
-
-S=${WORKDIR}/${PN}-${P}
 
 src_prepare() {
 	use ipv6 && eapply "${WORKDIR}"/${PN}-0.4-ipv6.patch
