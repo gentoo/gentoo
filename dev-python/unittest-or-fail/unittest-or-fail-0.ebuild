@@ -15,7 +15,7 @@ SRC_URI="
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ia64 ~s390 ~x86 ~x64-macos"
+KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x64-macos"
 
 # Warning: do not use distutils_enable_tests to avoid a circular
 # dependency on itself!
