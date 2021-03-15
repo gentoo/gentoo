@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux"
+KEYWORDS="amd64 ~arm ~hppa ~ia64 ~ppc ppc64 ~s390 ~sparc x86 ~amd64-linux"
 
 BDEPEND="dev-lang/perl"
 
