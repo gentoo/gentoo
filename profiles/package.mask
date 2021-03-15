@@ -33,7 +33,13 @@
 #--- END OF EXAMPLES ---
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2021-03-15)
-# Needs a port to ghc-8.10. No revdeps. Mask for removal.
+# Needs a port to ghc-8.10. No revdeps. Mask for removal
+# in a month.
+dev-haskell/test-framework-th-prime
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2021-03-15)
+# Needs a port to ghc-8.10. No revdeps. Mask for removal
+# in a month.
 dev-haskell/encoding
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-03-15)
