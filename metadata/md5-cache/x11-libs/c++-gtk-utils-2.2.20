@@ -1,0 +1,16 @@
+BDEPEND=virtual/pkgconfig nls? ( sys-devel/gettext ) test? ( x11-base/xorg-server[xvfb] x11-apps/xhost )
+DEFINED_PHASES=configure install test
+DEPEND=dev-libs/glib:2 gtk? ( x11-libs/gtk+:3 )
+DESCRIPTION=A number of classes and functions for programming GTK+ programs using C++
+EAPI=7
+HOMEPAGE=http://cxx-gtk-utils.sourceforge.net/
+INHERIT=virtualx
+IUSE=+gtk nls test
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=dev-libs/glib:2 gtk? ( x11-libs/gtk+:3 )
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://sourceforge/cxx-gtk-utils/c++-gtk-utils-2.2.20.tar.gz
+_eclasses_=virtualx	7e60d3b10c791ab996f717bc1f30072f
+_md5_=d9a8729f351f239d1fec909532994a2c

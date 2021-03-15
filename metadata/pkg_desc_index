@@ -1995,7 +1995,7 @@ app-emacs/muse 3.20-r1: An authoring and publishing environment for Emacs
 app-emacs/nagios-mode 0.3-r1: Major mode for editing Nagios configuration files
 app-emacs/navi2ch 1.8.4-r1: A navigator for the Japanese textboard 2ch
 app-emacs/nxml-docbook5-schemas 5.0 5.1: Add support for DocBook 5 schemas to NXML
-app-emacs/nxml-gentoo-schemas 20200303 20210203 20210314: Extension for nxml-mode with Gentoo-specific schemas
+app-emacs/nxml-gentoo-schemas 20200303 20210314: Extension for nxml-mode with Gentoo-specific schemas
 app-emacs/nxml-libvirt-schemas 5.8.0: Extension for nxml-mode with libvirt schemas
 app-emacs/nxml-svg-schemas 1.1.20081123-r1: Extension for nxml-mode with SVG 1.1 schemas
 app-emacs/ocaml-mode 4.05.0: Emacs mode for OCaml
@@ -2616,7 +2616,7 @@ app-misc/note 1.3.3-r2 1.3.26: A note taking perl program
 app-misc/nullmodem 0.0.6-r1: A Utility to loopback Pseudo-Terminals
 app-misc/nut 20.1: Record what you eat and analyze your nutrient levels
 app-misc/ondir 0.2.4: Automatically execute scripts as you traverse directories
-app-misc/oneko 1.2-r2 1.2_p5 1.2_p6_p14-r1: A cat, dog and others which chase the mouse or windows around the screen
+app-misc/oneko 1.2_p6_p14-r1: A cat, dog and others which chase the mouse or windows around the screen
 app-misc/pal 0.4.3-r2: Command-line calendar program
 app-misc/pax-utils 1.2.6 1.2.9: ELF utils that can check files for security relevant properties
 app-misc/pdfpc 4.4.1: Presenter console with multi-monitor support for PDF files
@@ -14330,7 +14330,7 @@ media-video/xvid4conf 1.12: GTK2-configuration dialog for xvid4
 media-video/yle-dl 20210212: Download media files from Yle Areena
 net-analyzer/2ping 4.4.1 4.5: A bi-directional ping utility
 net-analyzer/alive 2.0.2-r1: a periodic ping program
-net-analyzer/amap 5.4 5.4-r1: A network scanning tool for pentesters
+net-analyzer/amap 5.4-r1: A network scanning tool for pentesters
 net-analyzer/angst 0.4b-r3: an active sniffer that provides methods for aggressive sniffing on switched LANs
 net-analyzer/apinger 0.6.1: Alarm Pinger
 net-analyzer/argus 3.0.8.3-r1: network Audit Record Generation and Utilization System
@@ -14350,7 +14350,7 @@ net-analyzer/bing 1.1.3-r2: A point-to-point bandwidth measurement tool
 net-analyzer/bmon 4.0 999: interface bandwidth monitor
 net-analyzer/braa 0.82-r1: Quick and dirty mass SNMP scanner
 net-analyzer/bwbar 1.2.3: The kernel.org "Current bandwidth utilization" bar
-net-analyzer/bwm-ng 0.6.1-r1 0.6.2 0.6.3: Bandwidth Monitor NG is a small and simple console-based bandwidth monitor
+net-analyzer/bwm-ng 0.6.2 0.6.3: Bandwidth Monitor NG is a small and simple console-based bandwidth monitor
 net-analyzer/bwmon 1.3-r2: Simple ncurses bandwidth monitor
 net-analyzer/bwping 2.1 2.2: A tool to measure bandwidth and RTT between two hosts using ICMP
 net-analyzer/cacti 1.2.16-r1: Cacti is a complete frontend to rrdtool
@@ -14364,8 +14364,8 @@ net-analyzer/chronograf 1.4.3.0 1.6.2 1.7.3 1.8.5: Monitoring, processing and al
 net-analyzer/cloudshark 1.0.4: Easily upload your wireshark captures to CloudShark
 net-analyzer/cnet 3.3.4: Network simulation tool
 net-analyzer/cryptcat 1.2.1-r2: netcat clone extended with twofish encryption
-net-analyzer/cutter 1.03-r1 1.04: TCP/IP Connection cutting on Linux Firewalls and Routers
-net-analyzer/darkstat 3.0.719-r2 3.0.719-r3 9999999: Network traffic analyzer with cute web interface
+net-analyzer/cutter 1.04: TCP/IP Connection cutting on Linux Firewalls and Routers
+net-analyzer/darkstat 3.0.719-r3 9999999: Network traffic analyzer with cute web interface
 net-analyzer/dhcp_probe 1.3.0-r4: discover DHCP and BootP servers on a directly-attached Ethernet network
 net-analyzer/dhcpdump 1.8: DHCP Packet Analyzer/tcpdump postprocessor
 net-analyzer/dnsenum 1.2.2: A perl script to enumerate DNS from a server
@@ -14380,7 +14380,7 @@ net-analyzer/ettercap 0.8.3.1 9999: A suite for man in the middle attacks
 net-analyzer/fail2ban 0.11.2 9999: scans log files and bans IPs that show malicious signs
 net-analyzer/firewalk 5.0-r2: A tool for determining a firewall's rule set
 net-analyzer/flent 1.3.2: The FLExible Network Tester
-net-analyzer/flow-tools 0.68.5.1-r11 0.68.6-r1: library and programs to process reports from NetFlow data
+net-analyzer/flow-tools 0.68.6-r1: library and programs to process reports from NetFlow data
 net-analyzer/flowgrind 0.8.0-r1: Network performance measurement tool
 net-analyzer/fping 4.4 5.0: A utility to ping multiple hosts at once
 net-analyzer/fprobe 1.1-r3: libpcap-based tool to collect network traffic data and emit it as NetFlow flows
@@ -14427,7 +14427,7 @@ net-analyzer/jnettop 0.13.0-r1: A top like console network traffic visualiser
 net-analyzer/kapacitor 1.4.1-r1 1.5.1 1.5.5: Monitoring, processing and alerting on time series data
 net-analyzer/knocker 0.7.1-r3: Knocker is an easy to use security port scanner written in C
 net-analyzer/labrea 2.5_p1: 'Sticky' Honeypot and IDS
-net-analyzer/lft 3.77 3.79 3.80 3.90 3.91-r1: Layer Four Traceroute (LFT) and WhoB
+net-analyzer/lft 3.91-r1: Layer Four Traceroute (LFT) and WhoB
 net-analyzer/lilac 1.0.3-r1: Web-based configuration tool written to configure Nagios
 net-analyzer/linkchecker 10.0.0_pre20200729 10.0.1 9999: Check websites for broken links
 net-analyzer/macchanger 1.7.0_p5_p4: Utility for viewing/manipulating the MAC address of network interfaces
@@ -14510,7 +14510,7 @@ net-analyzer/ospd-openvas 1.0.1: This is an OSP server implementation to allow G
 net-analyzer/ossec-hids 3.6.0: Open Source Host-based Intrusion Detection System
 net-analyzer/ostinato 1.1: Packet generator and analyzer
 net-analyzer/p0f 3.09_beta: A tool to perform passive OS detection based on SYN packets
-net-analyzer/packit 1.6.1 1.7 9999: network packet generator and capture tool
+net-analyzer/packit 1.7 9999: network packet generator and capture tool
 net-analyzer/pathload 1.3.2-r1: Non-intrusive utility for estimation of available bandwidth of Internet paths
 net-analyzer/pbnj 2.04-r1: A tool for running Nmap scans and diff'ing the results
 net-analyzer/pinger 0.33: Cyclic multi ping utility for selected adresses using GTK/ncurses
@@ -18340,7 +18340,7 @@ x11-drivers/xf86-video-vboxvideo 1.0.0: VirtualBox guest video driver
 x11-drivers/xf86-video-vesa 2.5.0: Generic VESA video driver
 x11-drivers/xf86-video-vmware 13.3.0: VMware SVGA video driver
 x11-libs/agg 2.5-r3: High quality rendering engine library for C++
-x11-libs/c++-gtk-utils 2.0.34 2.2.19: A number of classes and functions for programming GTK+ programs using C++
+x11-libs/c++-gtk-utils 2.0.34 2.2.19 2.2.20: A number of classes and functions for programming GTK+ programs using C++
 x11-libs/cairo 1.16.0-r4 9999: A vector graphics library with cross-device output support
 x11-libs/colord-gtk 0.1.26 0.2.0: GTK support library for colord
 x11-libs/dnd 1.1-r3: OffiX' Drag'n'drop library
@@ -18649,8 +18649,8 @@ x11-misc/tdrop 0.3.0 9999: WM-Independent Dropdown Creator
 x11-misc/tint2 16.7: Lightweight panel/taskbar for Linux
 x11-misc/tinynotify-send 1.2.1-r1 9999: A notification sending utility (using libtinynotify)
 x11-misc/touchcal 0.80: Touchscreen calibration utility
-x11-misc/trayer 1.0-r3 1.0-r4: Lightweight GTK+ based systray for UNIX desktop
-x11-misc/trayer-srg 1.1.7 1.1.8: trayer fork with multi monitor support and cleaned up codebase
+x11-misc/trayer 1.0-r4: Lightweight GTK+ based systray for UNIX desktop
+x11-misc/trayer-srg 1.1.8: trayer fork with multi monitor support and cleaned up codebase
 x11-misc/unclutter 8-r4: Hides mouse pointer while not in use
 x11-misc/unclutter-xfixes 1.5 1.5-r2: Hides mouse pointer while not in use (rewrite of unclutter)
 x11-misc/urxvt-font-size 1.3 9999: Perl extension for rxvt-unicode to change the font size on the fly
@@ -18699,7 +18699,7 @@ x11-misc/xdock 0.3.0: emulates Window Maker docks (runs in any window manager)
 x11-misc/xdotool 3.20160805.1: Simulate keyboard input and mouse activity, move and resize windows
 x11-misc/xearth 1.1-r1: Xearth sets the X root window to an image of the Earth
 x11-misc/xfe 1.42 1.43.1 1.43.2: MS-Explorer-like minimalist file manager for X
-x11-misc/xfishtank 2.1-r2 2.5: Turns your root window into an aquarium
+x11-misc/xfishtank 2.5: Turns your root window into an aquarium
 x11-misc/xflux 20130927-r1 20170103: Makes the color of your computer's display adapt to the time of the day
 x11-misc/xflux-gui 1.2.0-r1: A GUI for f.lux
 x11-misc/xfractint 20.04_p16: A fractal generator
@@ -18711,7 +18711,7 @@ x11-misc/xkbd 0.8.18 999999: onscreen soft keyboard for X11
 x11-misc/xkblayout-state 0_p20180118 9999: A small program to get/set the current XKB layout
 x11-misc/xkbset 0.5_p5_p1 0.5_p6 0.5_p7_p1: User preference utility for XKB extensions for X
 x11-misc/xkeyboard-config 2.31 2.32 9999: X keyboard configuration database
-x11-misc/xkeycaps 2.47-r2 2.47_p7: GUI frontend to xmodmap
+x11-misc/xkeycaps 2.47_p7: GUI frontend to xmodmap
 x11-misc/xlockmore 5.50-r1 5.65-r1 5.66_alpha12-r1: Just another screensaver application for X
 x11-misc/xmobar 0.36: A Minimalistic Text Based Status Bar
 x11-misc/xmountains 2.9-r1: Fractal terrains of snow-capped mountains near water
