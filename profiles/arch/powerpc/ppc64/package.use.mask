@@ -1,11 +1,6 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Marek Szuba <marecki@gentoo.org> (2021-03-11)
-# Awaiting keywording of dev-python/ruamel-std-pathlib
-# on this arch (Bug #775242)
-dev-python/ruamel-yaml test
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-02-25)
 # depends on ring crate, which is not so portable
 # https://github.com/briansmith/ring/issues/389
