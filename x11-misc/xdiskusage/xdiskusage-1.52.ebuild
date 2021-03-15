@@ -9,7 +9,7 @@ SRC_URI="http://xdiskusage.sourceforge.net/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc x86"
+KEYWORDS="amd64 ~arm64 ~ppc x86"
 
 RDEPEND="
 	>=x11-libs/fltk-1.3:1
