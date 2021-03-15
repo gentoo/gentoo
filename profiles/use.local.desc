@@ -5282,8 +5282,11 @@ net-analyzer/netdata:tor - Enable monitoring of tor
 net-analyzer/netdata:xen - Enable monitoring of xen
 net-analyzer/netperf:demo - Emit interim results during the run. May affect results
 net-analyzer/nfdump:ftconv - Build the flow-tools to nfdump converter
+net-analyzer/nfdump:jnat - Build nfudmp to support JunOS NAT event logging
+net-analyzer/nfdump:nfpcapd - Build nfpcapd collector to create netflow data from precollected pcap traffic
 net-analyzer/nfdump:nfprofile - Build nfprofile used by NfSen
 net-analyzer/nfdump:nftrack - Build nfprofile used by PortTracker
+net-analyzer/nfdump:nsel - Build nfudmp to support NSEL/NEL event data
 net-analyzer/nfdump:readpcap - Build nfcapd collector to read from pcap file instead ofnetwork data
 net-analyzer/nfdump:sflow - Build sflow collector sfcpad
 net-analyzer/nmap:libssh2 - Enable SSH support through net-libs/libssh2

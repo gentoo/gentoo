@@ -11,4 +11,4 @@ RDEPEND=app-arch/bzip2 sys-libs/zlib ftconv? ( sys-libs/zlib net-analyzer/flow-t
 SLOT=0/1.6.15
 SRC_URI=https://github.com/phaag/nfdump/archive/v1.6.21.tar.gz -> nfdump-1.6.21.tar.gz
 _eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=ec61c709e09081edf5a2312fbca63488
+_md5_=16ba665049aca8713a99816dbde71728

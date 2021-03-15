@@ -1,0 +1,15 @@
+BDEPEND=sys-devel/flex virtual/yacc doc? ( app-doc/doxygen media-gfx/graphviz ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare
+DEPEND=app-arch/bzip2 sys-libs/zlib ftconv? ( net-analyzer/flow-tools ) nfpcapd? ( net-libs/libpcap ) nfprofile? ( net-analyzer/rrdtool ) nftrack? ( net-analyzer/rrdtool ) readpcap? ( net-libs/libpcap )
+DESCRIPTION=A set of tools to collect and process netflow data
+EAPI=7
+HOMEPAGE=https://github.com/phaag/nfdump
+IUSE=debug doc jnat ftconv nfpcapd nfprofile nftrack nsel readpcap sflow static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=app-arch/bzip2 sys-libs/zlib ftconv? ( net-analyzer/flow-tools ) nfpcapd? ( net-libs/libpcap ) nfprofile? ( net-analyzer/rrdtool ) nftrack? ( net-analyzer/rrdtool ) readpcap? ( net-libs/libpcap )
+REQUIRED_USE=?? ( jnat nsel )
+SLOT=0/1.6.22
+SRC_URI=https://github.com/phaag/nfdump/archive/v1.6.22.tar.gz -> nfdump-1.6.22.tar.gz
+_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=205cc176146c042f62de7c9025538d8d
