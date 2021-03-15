@@ -8,7 +8,7 @@ DESCRIPTION="Bandwidth Monitor NG is a small and simple console-based bandwidth 
 HOMEPAGE="http://www.gropp.org/"
 SRC_URI="https://github.com/vgropp/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="amd64 ~arm ppc ~x86"
+KEYWORDS="amd64 ~arm ppc x86"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="+csv +html"
