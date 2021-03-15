@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2021-03-15)
+# Needs a port to ghc-8.10. No revdeps. Mask for removal.
+dev-haskell/encoding
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-03-15)
 # Unmaintained for >1 year, blocking cleanup of deprecated libraries.
 # Succeeded by LXQt many years ago (see also: lxqt-base/lxqt-meta).
