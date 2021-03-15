@@ -5220,7 +5220,7 @@ dev-lang/go 1.15.7 1.15.10 1.16.2 9999: A concurrent garbage collected and types
 dev-lang/go-bootstrap 1.13.6: Bootstrap package for dev-lang/go
 dev-lang/gprolog 1.4.5: A native Prolog compiler with constraint solving over finite domains (FD)
 dev-lang/hy 0.17.0: A LISP dialect running in python
-dev-lang/icon 9.5.1-r1 9.5.1-r2 9.5.20h: very high level language
+dev-lang/icon 9.5.1-r1 9.5.1-r2 9.5.20h 9.5.20i: Very high level language
 dev-lang/inform 6.33.1_p2: design system for interactive fiction
 dev-lang/interprolog 2.1.2: InterProlog is a Java front-end and enhancement for Prolog
 dev-lang/ispc 1.14.1 9999: Intel SPMD Program Compiler
@@ -15197,7 +15197,7 @@ net-misc/clockspeed 0.62-r7: Simple Network Time Protocol (NTP) client
 net-misc/clusterssh 4.03.03 4.30.600 9999: Concurrent Multi-Server Terminal Access
 net-misc/cmst 2020.11.01: Qt GUI for Connman with system tray icon
 net-misc/cni-plugins 0.8.6 0.8.7 0.9.0 0.9.1: Standard networking plugins for container networking
-net-misc/connect 1.103: network connection relaying command (proxy)
+net-misc/connect 1.103 1.105: SSH Proxy Command
 net-misc/connman 1.39 1.39-r1 9999: Provides a daemon for managing internet connections
 net-misc/connman-gtk 1.1.1 1.1.1-r1: GTK GUI for Connman
 net-misc/connman-json-client 1.0_p20150721-r2: An ncurses UI for connman

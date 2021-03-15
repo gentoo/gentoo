@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=X? ( x11-libs/libX11:= ) X? ( x11-libs/libXpm x11-libs/libXt )
+DESCRIPTION=Very high level language
+EAPI=7
+HOMEPAGE=http://www.cs.arizona.edu/icon/
+IUSE=X
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos
+LICENSE=public-domain HPND
+RDEPEND=X? ( x11-libs/libX11:= )
+SLOT=0
+SRC_URI=https://github.com/gtownsend/icon/archive/v9.5.20i.tar.gz -> icon-9.5.20i.tar.gz
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=3e26417946ee019e663882d002d726d6
