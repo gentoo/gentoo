@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,25 +12,28 @@ SRC_URI="mirror://sourceforge/lxde/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~mips ~ppc ~x86 ~amd64-linux ~x86-linux"
-IUSE="gtk3"
+IUSE=""
 
-DEPEND="dev-libs/glib:2
-	!gtk3? (
-		x11-libs/gtk+:2
-		x11-libs/vte:0 )
-	gtk3? (
-		x11-libs/gtk+:3
-		x11-libs/vte:2.91 )"
+DEPEND="
+	dev-libs/glib:2
+	x11-libs/gdk-pixbuf:2
+	x11-libs/gtk+:3
+	x11-libs/libX11
+	x11-libs/pango
+	x11-libs/vte:2.91
+"
 RDEPEND="${DEPEND}"
-BDEPEND="virtual/pkgconfig
+BDEPEND="
+	>=dev-util/intltool-0.40.0
 	sys-devel/gettext
-	>=dev-util/intltool-0.40.0"
+	virtual/pkgconfig
+"
 
 src_prepare() {
-	default
+	xdg_src_prepare
 	eautoreconf
 }
 
 src_configure() {
-	econf --enable-man $(use_enable gtk3)
+	econf --enable-man --enable-gtk3
 }
