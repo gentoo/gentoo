@@ -119,7 +119,7 @@ pkg_postinst() {
 
 	if [[ "${HAD_BROKEN_PERMS}" -eq 1 ]] ; then
 		ewarn "Please fix the permissions on ${EPREFIX}/var/log/sagan:"
-		ewarn "e.g. chmod 750 /var/log/sagan"
+		ewarn "e.g. chmod 750 ${EPREFIX}/var/log/sagan"
 		ewarn "See bug #775902"
 	fi
 
