@@ -5,6 +5,7 @@
 		<email>zmedico@gentoo.org</email>
 		<name>Zac Medico</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">aiohttp_jinja2</remote-id>
 		<remote-id type="github">aio-libs/aiohttp-jinja2</remote-id>
