@@ -14341,7 +14341,7 @@ net-analyzer/arping 2.17 2.20 2.21 9999: A utility to see if a specific IP addre
 net-analyzer/arpoison 0.7: A utility to poison ARP caches
 net-analyzer/arpon 2.7.2 2.7.2-r1 3.0: ArpON (Arp handler inspectiON) is a portable Arp handler
 net-analyzer/arptools 1.0.2: a collection of libnet and libpcap based ARP utilities
-net-analyzer/arpwatch 2.1.15-r11 3.1: An ethernet monitor program that keeps track of ethernet/IP address pairings
+net-analyzer/arpwatch 2.1.15-r11 3.1-r1: An ethernet monitor program that keeps track of ethernet/IP address pairings
 net-analyzer/authforce 0.9.9-r2 0.9.9-r3: An HTTP authentication brute forcer
 net-analyzer/barnyard 0.2.0-r6: Fast output system for Snort
 net-analyzer/barnyard2 1.9-r2 1.13: Parser for Snort unified/unified2 files
