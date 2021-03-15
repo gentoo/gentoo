@@ -16,7 +16,7 @@ SRC_URI="https://github.com/${PN}-team/${MY_PN}/archive/r${PV}.tar.gz -> ${MY_P}
 
 LICENSE="EPL-1.0"
 SLOT="4"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="examples"
 
 CDEPEND="
