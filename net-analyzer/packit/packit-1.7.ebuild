@@ -10,7 +10,7 @@ SRC_URI="https://github.com/resurrecting-open-source-projects/packit/archive/${P
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 DEPEND="
 	net-libs/libnet:1.1
