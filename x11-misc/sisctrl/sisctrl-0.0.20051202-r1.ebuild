@@ -1,7 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit flag-o-matic
 
 DESCRIPTION="tool that allows you to tune SiS drivers from X"
@@ -12,6 +13,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+BDEPEND="virtual/pkgconfig"
 RDEPEND="
 	dev-libs/glib:2
 	x11-libs/gtk+:2
@@ -21,10 +23,11 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	virtual/pkgconfig
 	x11-base/xorg-proto
 "
-DOCS="AUTHORS ChangeLog NEWS README"
+
+DOCS=( AUTHORS ChangeLog NEWS README )
+
 PATCHES=(
 	"${FILESDIR}"/${P}-no-xv.patch
 )
@@ -32,5 +35,5 @@ PATCHES=(
 src_configure() {
 	append-libs -lm
 	econf \
-		--with-xv-path="${EROOT}/usr/$(get_libdir)"
+		--with-xv-path="${EPREFIX}/usr/$(get_libdir)"
 }
