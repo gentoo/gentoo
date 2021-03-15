@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{7,8,9} )
 PYTHON_REQ_USE=xml
 DISTUTILS_SINGLE_IMPL=1
 
-COMMIT=14ecc519d8390d6fa76cdc03e0d79a0fb5ca12a7
+COMMIT=146189dc050a9462f71a8b37e783aa52b73e4d9b
 MY_PN="${PN}-qt"
 inherit distutils-r1 xdg
 
