@@ -79,11 +79,15 @@ src_install() {
 		-e "s:/var/run/sagan:${EPREFIX}/run/sagan:" \
 		"${ED}"/etc/sagan.yaml || die
 
-	diropts -g sagan -o sagan -m 775
-	keepdir /var/log/sagan
+	diropts -g sagan -o sagan -m 750
+	# bug #775902
+	keepdir /var/sagan/{,fifo}
+	keepdir /var/log/sagan/{,stats}
+
+	fowners sagan:sagan /var/log/sagan/{,stats}
 
 	touch "${ED}"/var/log/sagan/sagan.log || die
-	chown sagan.sagan "${ED}"/var/log/sagan/sagan.log || die
+	fowners sagan:sagan /var/log/sagan/sagan.log || die
 
 	newinitd "${FILESDIR}"/sagan.init-r1 sagan
 	newconfd "${FILESDIR}"/sagan.confd sagan
@@ -98,8 +102,26 @@ src_install() {
 	dodoc -r extra/*
 }
 
+pkg_preinst() {
+	# bug #775902 revealed that we need 750 on /var/log/sagan or e.g.
+	# logrotate will fail. Let's inform the user to fix up permissions
+	# in such a case.
+	#  (fperms won't modify the live filesystem.)
+	HAD_BROKEN_PERMS=0
+
+	if has_version "<app-admin/sagan-2.0.1-r4" ; then
+		HAD_BROKEN_PERMS=1
+	fi
+}
+
 pkg_postinst() {
 	tmpfiles_process sagan.conf
+
+	if [[ "${HAD_BROKEN_PERMS}" -eq 1 ]] ; then
+		ewarn "Please fix the permissions on ${EPREFIX}/var/log/sagan:"
+		ewarn "e.g. chmod 750 ${EPREFIX}/var/log/sagan"
+		ewarn "See bug #775902"
+	fi
 
 	if use smtp; then
 		ewarn "You have enabled smtp use flag. If you plan on using Sagan with"
