@@ -26,7 +26,9 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="test? ( dev-python/pyyaml[${PYTHON_USEDEP}] )"
 
-python_test() {
+distutils_enable_tests unittest
+
+src_test() {
 	local -x COLUMNS=80
-	esetup.py test
+	distutils-r1_src_test
 }
