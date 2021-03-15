@@ -19,17 +19,17 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x64-mac
 
 RDEPEND="dev-python/setproctitle[${PYTHON_USEDEP}]"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-20.1.0-tests_optional_modules.patch
+)
+
 DOCS=( README.rst )
 
 distutils_enable_sphinx 'docs/source' --no-autodoc
 distutils_enable_tests pytest
 
 src_prepare() {
-	# These fail if respective optional packages have not been installed
-	rm -f tests/workers/test_g{eventlet,gevent}.py
-
 	sed -e 's:--cov=gunicorn --cov-report=xml::' -i setup.cfg || die
-
 	distutils-r1_src_prepare
 }
 
