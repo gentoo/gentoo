@@ -27,7 +27,7 @@ DEPEND="${RDEPEND}
 RESTRICT="test"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.45-build-system-fixes.patch
+	"${FILESDIR}"/${PN}-2.48-build-system-fixes.patch
 	"${FILESDIR}"/${PN}-2.38-no_perl.patch
 	"${FILESDIR}"/${PN}-2.25-ignore-RAISE_SETFCAP-install-failures.patch
 	"${FILESDIR}"/${PN}-2.21-include.patch
@@ -78,7 +78,7 @@ multilib_src_install() {
 		rm -r "${ED}"/usr/$(get_libdir)/security || die
 	fi
 
-	if use pam; then
+	if use pam ; then
 		dopammod pam_cap/pam_cap.so
 		dopamsecurity '' pam_cap/capability.conf
 	fi
