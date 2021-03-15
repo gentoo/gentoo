@@ -5636,7 +5636,7 @@ dev-libs/libugpio 0.0.7: Lib for the use of linux kernel's sysfs gpio interface 
 dev-libs/libunibreak 4.0 4.1 4.2 4.3: Line and word breaking library
 dev-libs/libuninum 2.7: A library for converting unicode strings to numbers and vice versa
 dev-libs/libunique 1.1.6-r2 3.0.2-r1: A library for writing single instance application
-dev-libs/libunistring 0.9.10: Library for manipulating Unicode and C strings according to Unicode standard
+dev-libs/libunistring 0.9.10-r1: Library for manipulating Unicode and C strings according to Unicode standard
 dev-libs/libusb 1.0.23-r1 1.0.24-r1: Userspace access to USB devices
 dev-libs/libusb-compat 0.1.5-r2 0.1.5-r3: Userspace access to USB devices (libusb-0.1 compat wrapper)
 dev-libs/libusbhp 1.0.2: Usb Hotplug Library
@@ -11483,7 +11483,7 @@ games-engines/devilutionx 1.0.3 1.1.0-r2 9999: Diablo engine for modern operatin
 games-engines/exult 1.6: an Ultima 7 game engine that runs on modern operating systems
 games-engines/frobtads 1.2.3-r1 1.2.4: Curses-based interpreter and dev tools for TADS 2 and TADS 3 text adventures
 games-engines/frotz 2.52: Interpreter for Z-code based text games
-games-engines/gargoyle 2011.1-r1 2019.1.1: An Interactive Fiction (IF) player supporting all major formats
+games-engines/gargoyle 2019.1.1: An Interactive Fiction (IF) player supporting all major formats
 games-engines/love 0.7.2-r100 0.8.0-r100 11.3-r100 9999: A framework for 2D games in Lua
 games-engines/nazghul 0.7.1-r1: A computer role-playing game (CRPG) engine with game called HaximA
 games-engines/odamex 0.8.3: Online multiplayer free software engine for DOOM
@@ -13092,7 +13092,7 @@ media-gfx/ufraw 0.22-r4: RAW Image format viewer and GIMP plugin
 media-gfx/valentina 0.6.1-r1 9999: Cloth patternmaking software
 media-gfx/videorbits 2.205: a collection of programs for creating high dynamic range images
 media-gfx/viewer 0.8.0-r1: A stereo pair image viewer (supports ppm's only)
-media-gfx/viewnior 1.6 1.7-r1 1.7-r2: Fast and simple image viewer
+media-gfx/viewnior 1.7-r2: Fast and simple image viewer
 media-gfx/w3mimgfb 0.9.1: Image viewer for w3m under frame buffer environment
 media-gfx/waifu2x-ncnn-vulkan 20200224 20200414 20200818: waifu2x converter using ncnn and vulkan
 media-gfx/wings 2.1.5 2.1.6 2.1.7 2.2.5 2.2.6.1: Wings 3D is an advanced subdivision modeler
@@ -13613,7 +13613,7 @@ media-plugins/gst-transcoder 1.14.1: GStreamer Transcoding API
 media-plugins/hdx-realtime-media-engine 2.9.200.2506-r1 2.9.300.2604: HDX RealTime Media Engine plugin for Citrix Workspace App
 media-plugins/hexter 1.1.0: Yamaha DX7 modeling DSSI plugin
 media-plugins/imlib2_loaders 1.6.1 1.7.1: Additional image loaders for Imlib2
-media-plugins/ir_lv2 1.2.4 1.3.4-r1: LV2 convolver plugin especially for creating reverb effects
+media-plugins/ir_lv2 1.3.4-r1: LV2 convolver plugin especially for creating reverb effects
 media-plugins/kodi-audiodecoder-modplug 3.0.0 9999: Modplug decoder addon for Kodi
 media-plugins/kodi-audiodecoder-nosefart 3.0.0 9999: Nosefart decoder addon for Kodi
 media-plugins/kodi-audiodecoder-sacd 0.1.1 9999: Super Audio CD ISO-Image decoder addon for Kodi
@@ -18692,7 +18692,7 @@ x11-misc/xdesktopwaves 1.3-r2 1.4: A cellular automata setting the background of
 x11-misc/xdg-user-dirs 0.17: Tool to help manage 'well known' user directories
 x11-misc/xdg-user-dirs-gtk 0.10-r1: Integrates xdg-user-dirs into the Gnome desktop and Gtk+ applications
 x11-misc/xdg-utils 1.1.3-r1 1.1.3_p20200220 1.1.3_p20200220-r1: Portland utils for cross-platform/cross-toolkit/cross-desktop interoperability
-x11-misc/xdialog 2.3.1: drop-in replacement for cdialog using GTK
+x11-misc/xdialog 2.3.1: Drop-in replacement for cdialog using GTK
 x11-misc/xdiskusage 1.51 1.52: user-friendly program to show you what is using up all your disk space
 x11-misc/xdo 0.5.7: Small X utility to perform elementary actions on windows
 x11-misc/xdock 0.3.0: emulates Window Maker docks (runs in any window manager)
@@ -18712,7 +18712,7 @@ x11-misc/xkblayout-state 0_p20180118 9999: A small program to get/set the curren
 x11-misc/xkbset 0.5_p5_p1 0.5_p6 0.5_p7_p1: User preference utility for XKB extensions for X
 x11-misc/xkeyboard-config 2.31 2.32 9999: X keyboard configuration database
 x11-misc/xkeycaps 2.47-r2 2.47_p7: GUI frontend to xmodmap
-x11-misc/xlockmore 5.50-r1 5.65-r1 5.66_alpha10-r1 5.66_alpha11-r1 5.66_alpha12-r1: Just another screensaver application for X
+x11-misc/xlockmore 5.50-r1 5.65-r1 5.66_alpha12-r1: Just another screensaver application for X
 x11-misc/xmobar 0.36: A Minimalistic Text Based Status Bar
 x11-misc/xmountains 2.9-r1: Fractal terrains of snow-capped mountains near water
 x11-misc/xnee 3.19-r2: Program suite to record, replay and distribute user actions
