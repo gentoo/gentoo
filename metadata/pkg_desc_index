@@ -4883,7 +4883,7 @@ dev-java/jargs 1.0: Command-line argument parsing library in Java
 dev-java/jarjar 1.4: Tool for repackaging third-party jars
 dev-java/java-apicheck 0_p20150907: Command line tool to check Java packages for API compatibility
 dev-java/java-config 2.3.1 9999: Java environment configuration query tool
-dev-java/java-dep-check 0.3-r1 0.4 0.4-r1: Java Dependency checker
+dev-java/java-dep-check 0.3-r1 0.4 0.4-r1 0.5: Java Dependency checker
 dev-java/java-getopt 1.0.14: Java command line option parser
 dev-java/java-service-wrapper 3.5.25-r1: A wrapper that makes it possible to install a Java Application as daemon
 dev-java/javacc 5.0-r3: Java Compiler Compiler - The Java Parser Generator
@@ -14266,7 +14266,7 @@ media-video/nvidia_video_sdk 6.0.1: NVIDIA Video Codec SDK
 media-video/obs-studio 25.0.8-r100 26.1.2 9999: Software for Recording and Streaming Live Video Content
 media-video/obs-v4l2sink 0.1.0_p20181012-r2: obs studio output plugin for Video4Linux2 device
 media-video/ogmrip 1.0.1: Graphical frontend and libraries for ripping DVDs and encoding to AVI/OGM/MKV/MP4
-media-video/openshot 2.4.4-r1 2.5.1 2.5.1_p20210130: Award-winning free and open-source video editor
+media-video/openshot 2.4.4-r1 2.5.1 2.5.1_p20210228: Award-winning free and open-source video editor
 media-video/orion 1.6.7: Cross-platform Twitch client
 media-video/oxine 0.7.1-r2: OSD frontend for Xine
 media-video/parole 4.16.0: A simple Xfce4 media player using GStreamer
