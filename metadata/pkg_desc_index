@@ -12511,19 +12511,19 @@ kde-plasma/sddm-kcm 5.20.5 5.21.2: KDE Plasma control module for SDDM
 kde-plasma/systemsettings 5.20.5 5.21.2: Control Center to configure KDE Plasma desktop
 kde-plasma/xdg-desktop-portal-kde 5.20.5 5.21.2: Backend implementation for xdg-desktop-portal that is using Qt/KDE Frameworks
 kde-plasma/xembed-sni-proxy 5.20.5 5.21.2: Legacy xembed tray icons support for SNI-only system trays
-lxde-base/lxappearance 0.6.3-r1: LXDE GTK+ theme switcher
-lxde-base/lxappearance-obconf 0.2.3: LXAppearance plugin for configuring OpenBox
+lxde-base/lxappearance 0.6.3-r1 0.6.3-r2: LXDE GTK+ theme switcher
+lxde-base/lxappearance-obconf 0.2.3 0.2.3-r1: LXAppearance plugin for configuring OpenBox
 lxde-base/lxde-common 0.99.1 0.99.2-r1: LXDE Session default configuration files and nuoveXT2 iconset
 lxde-base/lxde-icon-theme 0.5.1 0.5.1-r1: nuoveXT2 iconset
-lxde-base/lxde-meta 0.5.5-r6: Meta ebuild for LXDE, the Lightweight X11 Desktop Environment
+lxde-base/lxde-meta 0.5.5-r6 0.5.5-r7: Meta ebuild for LXDE, the Lightweight X11 Desktop Environment
 lxde-base/lxdm 0.5.3-r2: LXDE Display Manager
-lxde-base/lxinput 0.3.5-r1: LXDE keyboard and mouse configuration tool
-lxde-base/lxlauncher 0.2.5: An open source clone of the Asus launcher for EeePC
+lxde-base/lxinput 0.3.5-r1 0.3.5-r2: LXDE keyboard and mouse configuration tool
+lxde-base/lxlauncher 0.2.5 0.2.5-r1: Open source clone of the Asus launcher for EeePC
 lxde-base/lxmenu-data 0.1.5: Provides files needed for LXDE application menus
-lxde-base/lxpanel 0.10.0-r1: Lightweight X11 desktop panel for LXDE
-lxde-base/lxrandr 0.3.2: LXDE GUI interface to RandR extention
-lxde-base/lxsession 0.5.4-r1: LXDE session manager
-lxde-base/lxtask 0.1.9: LXDE Task manager
+lxde-base/lxpanel 0.10.0-r1 0.10.1: Lightweight X11 desktop panel for LXDE
+lxde-base/lxrandr 0.3.2 0.3.2-r1: LXDE GUI interface to RandR extention
+lxde-base/lxsession 0.5.4-r1 0.5.5: LXDE session manager
+lxde-base/lxtask 0.1.9 0.1.10: LXDE Task manager
 lxde-base/lxterminal 0.3.2 0.3.2-r1: Lightweight vte-based tabbed terminal emulator for LXDE
 lxde-base/menu-cache 1.1.0 1.1.0-r1: Library to create and utilize caches to speed up freedesktop application menus
 lxqt-base/liblxqt 0.15.1 0.16.0: Common base library for the LXQt desktop environment
@@ -13644,7 +13644,7 @@ media-plugins/kodi-pvr-demo 7.1.1 9999: Demo PVR for Kodi
 media-plugins/kodi-pvr-dvblink 8.0.0 9.0.0 9.0.1 9999: Kodi's DVBLink client addon
 media-plugins/kodi-pvr-dvbviewer 6.0.6 6.0.7 7.0.0 7.1.0 9999: Kodi's DVBViewer client addon
 media-plugins/kodi-pvr-filmon 5.1.0 6.0.0 9999: Kodi's Filmon client addon
-media-plugins/kodi-pvr-hts 8.2.3 9999: Tvheadend Live TV and Radio PVR client addon for Kodi
+media-plugins/kodi-pvr-hts 8.2.4 9999: Tvheadend Live TV and Radio PVR client addon for Kodi
 media-plugins/kodi-pvr-iptvsimple 7.5.0 9999: Kodi's IPTVSimple client addon
 media-plugins/kodi-pvr-mediaportal-tvserver 6.0.1 8.0.0 9999: Kodi's MediaPortal TVServer client addon
 media-plugins/kodi-pvr-mythtv 7.3.1 9999: MythTV PVR for Kodi

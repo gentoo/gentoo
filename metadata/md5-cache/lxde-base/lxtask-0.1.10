@@ -1,0 +1,12 @@
+BDEPEND=>=dev-util/intltool-0.40.0 sys-devel/gettext virtual/pkgconfig
+DEFINED_PHASES=configure
+DEPEND=dev-libs/glib:2 x11-libs/gtk+:3
+DESCRIPTION=LXDE Task manager
+EAPI=7
+HOMEPAGE=https://wiki.lxde.org/en/LXTask
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ppc ~x86 ~x86-linux
+LICENSE=GPL-2
+RDEPEND=dev-libs/glib:2 x11-libs/gtk+:3
+SLOT=0
+SRC_URI=mirror://sourceforge/lxde/lxtask-0.1.10.tar.xz
+_md5_=e53f9c2bf9db249e7b298addd5e3dbdc

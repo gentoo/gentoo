@@ -1,0 +1,12 @@
+BDEPEND=>=dev-util/intltool-0.40.0 sys-devel/gettext virtual/pkgconfig
+DEFINED_PHASES=configure
+DEPEND=dev-libs/glib:2 x11-apps/xrandr x11-libs/gtk+:3 x11-libs/libXrandr x11-base/xorg-proto
+DESCRIPTION=LXDE GUI interface to RandR extention
+EAPI=7
+HOMEPAGE=https://wiki.lxde.org/en/LXRandR
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ppc ~x86 ~x86-linux
+LICENSE=GPL-2
+RDEPEND=dev-libs/glib:2 x11-apps/xrandr x11-libs/gtk+:3 x11-libs/libXrandr
+SLOT=0
+SRC_URI=mirror://sourceforge/lxde/lxrandr-0.3.2.tar.xz
+_md5_=e3789f001c8921e369c93f1d84f24b28

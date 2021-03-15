@@ -1,0 +1,12 @@
+BDEPEND=dev-util/intltool virtual/pkgconfig
+DEFINED_PHASES=configure install
+DEPEND=dev-libs/atk dev-libs/glib:2 dev-libs/libxml2:2 gnome-base/librsvg:2 >=lxde-base/lxappearance-0.6.3-r2 media-libs/fontconfig media-libs/freetype:2 media-libs/harfbuzz:= x11-libs/cairo x11-libs/gdk-pixbuf:2 x11-libs/gtk+:3 x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXft x11-libs/pango x11-wm/openbox
+DESCRIPTION=LXAppearance plugin for configuring OpenBox
+EAPI=7
+HOMEPAGE=https://lxde.org/
+KEYWORDS=~alpha ~amd64 ~arm ~mips ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/atk dev-libs/glib:2 dev-libs/libxml2:2 gnome-base/librsvg:2 >=lxde-base/lxappearance-0.6.3-r2 media-libs/fontconfig media-libs/freetype:2 media-libs/harfbuzz:= x11-libs/cairo x11-libs/gdk-pixbuf:2 x11-libs/gtk+:3 x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXft x11-libs/pango x11-wm/openbox
+SLOT=0
+SRC_URI=mirror://sourceforge/lxde/lxappearance-obconf-0.2.3.tar.xz
+_md5_=881857873cdb11143a28c7d638116374
