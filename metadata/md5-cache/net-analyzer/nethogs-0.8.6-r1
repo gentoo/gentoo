@@ -1,0 +1,15 @@
+BDEPEND=virtual/pkgconfig filecaps? ( sys-libs/libcap )
+DEFINED_PHASES=compile install postinst
+DEPEND=net-libs/libpcap sys-libs/ncurses:0=
+DESCRIPTION=A small 'net top' tool, grouping bandwidth by process
+EAPI=7
+HOMEPAGE=https://github.com/raboof/nethogs
+INHERIT=fcaps toolchain-funcs
+IUSE=+filecaps
+KEYWORDS=amd64 ~arm ~ia64 x86
+LICENSE=GPL-2
+RDEPEND=net-libs/libpcap sys-libs/ncurses:0= filecaps? ( sys-libs/libcap )
+SLOT=0
+SRC_URI=https://github.com/raboof/nethogs/archive/v0.8.6.tar.gz -> nethogs-0.8.6.tar.gz
+_eclasses_=fcaps	da689a8e04bbbb3518888ff668fee45b	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=18653837cb056849c452092aa9fb5576

@@ -14475,12 +14475,12 @@ net-analyzer/net-snmp 5.9-r2 5.9-r3 99999999: Software for generating and retrie
 net-analyzer/netcat 110-r9 110.20180111: the network swiss army knife
 net-analyzer/netdata 1.29.0 1.29.1 1.29.2 1.29.3 9999: Linux real time system monitoring, done right!
 net-analyzer/netdiscover 0.7: An active/passive address reconnaissance tool
-net-analyzer/nethogs 0.8.5-r1 0.8.6: A small 'net top' tool, grouping bandwidth by process
+net-analyzer/nethogs 0.8.5-r1 0.8.6-r1: A small 'net top' tool, grouping bandwidth by process
 net-analyzer/neti 2.0-r1: NETI@Home research project from GATech
 net-analyzer/netio 1.32-r1 1.33: Network benchmark using TCP and UDP protocols
 net-analyzer/netperf 2.7.0-r2: Network performance benchmark
 net-analyzer/netpipe 3.7.2: network protocol independent performance evaluator
-net-analyzer/netselect 0.4-r1 9999: Ultrafast implementation of ping
+net-analyzer/netselect 0.4-r1 0.4-r2 9999: Ultrafast implementation of ping
 net-analyzer/nettop 0.2.3-r2: top like program for network activity
 net-analyzer/netwag 5.39.0: Tcl/tk interface to netwox (Toolbox of 222 utilities for testing networks)
 net-analyzer/netwatch 1.3.0.1-r4: Ethernet/PPP IP Packet Monitor

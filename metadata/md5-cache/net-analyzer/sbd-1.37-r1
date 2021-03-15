@@ -1,10 +1,11 @@
 DEFINED_PHASES=compile install prepare
 DESCRIPTION=Netcat-clone, designed to be portable and offer strong encryption
-EAPI=5
+EAPI=7
 HOMEPAGE=http://tigerteam.se/dl/sbd/
-KEYWORDS=amd64 ~hppa ~ppc x86
-LICENSE=GPL-2
+INHERIT=toolchain-funcs
+KEYWORDS=~amd64 ~hppa ~ppc ~x86
+LICENSE=GPL-2+
 SLOT=0
 SRC_URI=http://tigerteam.se/dl/sbd/sbd-1.37.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=59c9ec2d54ff2b339d8931d9eb114284
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=6a822ec81b3c49974400aab0e69ec0cc

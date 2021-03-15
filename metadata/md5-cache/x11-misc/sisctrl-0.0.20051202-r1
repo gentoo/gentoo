@@ -1,12 +1,14 @@
+BDEPEND=virtual/pkgconfig
 DEFINED_PHASES=configure
-DEPEND=dev-libs/glib:2 x11-libs/gtk+:2 x11-libs/libXrender x11-libs/libXv x11-libs/libXxf86vm virtual/pkgconfig x11-base/xorg-proto
+DEPEND=dev-libs/glib:2 x11-libs/gtk+:2 x11-libs/libXrender x11-libs/libXv x11-libs/libXxf86vm x11-base/xorg-proto
 DESCRIPTION=tool that allows you to tune SiS drivers from X
 EAPI=7
 HOMEPAGE=http://www.winischhofer.net/linuxsispart1.shtml#sisctrl
+INHERIT=flag-o-matic
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=dev-libs/glib:2 x11-libs/gtk+:2 x11-libs/libXrender x11-libs/libXv x11-libs/libXxf86vm
 SLOT=0
 SRC_URI=http://www.winischhofer.net/sis/sisctrl-0.0.20051202.tar.gz
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=23da58f4eea0cd282c1f4ac8c2fdda75
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741
+_md5_=039f9f763dee1b03676d9baca6be8ed2
