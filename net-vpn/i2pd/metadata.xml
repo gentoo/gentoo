@@ -9,7 +9,7 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>klondike@gentoo.org</email>
 		<name>Francisco Blas Izquierdo Riera</name>
 	</maintainer>

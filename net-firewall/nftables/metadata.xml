@@ -9,7 +9,7 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>klondike@gentoo.org</email>
 		<name>Francisco Blas Izquierdo Riera</name>
 	</maintainer>
