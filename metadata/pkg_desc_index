@@ -15355,7 +15355,7 @@ net-misc/omniORB 4.2.2: A robust, high-performance CORBA 2 ORB
 net-misc/omnisync 1.0_p20200130: A driver for NTPd for people who are firewall-challenged
 net-misc/openntpd 6.2_p3-r2 6.8_p1 6.8_p1-r1: Lightweight NTP server ported from OpenBSD
 net-misc/openr2 1.3.0: An open implementation of the MFC/R2 telephony signaling protocol
-net-misc/openssh 8.4_p1-r3 8.5_p1: Port of OpenBSD's free SSH release
+net-misc/openssh 8.4_p1-r3 8.5_p1 8.5_p1-r1: Port of OpenBSD's free SSH release
 net-misc/openvswitch 2.14.1: Production quality, multilayer virtual switch
 net-misc/owncloud-client 2.7.4.2934 2.7.5.3180 2.7.6.3261: Synchronize files from ownCloud Server with your computer
 net-misc/packETH 2.1: Packet generator tool for ethernet
