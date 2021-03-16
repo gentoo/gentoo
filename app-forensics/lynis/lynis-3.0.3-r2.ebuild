@@ -41,7 +41,7 @@ src_install() {
 
 	insinto /etc/${PN}
 	doins default.prf
-	sed -i -e 's/\/path\/to\///' "${S}/extras/systemd/${PN}.service" die "Sed Failed!"
+	sed -i -e 's/\/path\/to\///' "${S}/extras/systemd/${PN}.service" || die "Sed Failed!"
 	systemd_dounit "${S}/extras/systemd/${PN}.service" || die "Sed Failed!"
 	systemd_dounit "${S}/extras/systemd/${PN}.timer"
 }
