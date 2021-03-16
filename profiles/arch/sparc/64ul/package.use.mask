@@ -1,10 +1,11 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Matt Turner <mattst88@gentoo.org> (2019-08-26)
 # Upstream Git is switching to PCRE2 w/ JIT.
 # This is not available on some arches, where a fallback to PCRE1 without JIT is used.
-dev-vcs/git pcre-jit
+<dev-vcs/git-2.31.0 pcre-jit
+>=dev-vcs/git-2.31.0 pcre
 
 # Matt Turner <mattst88@gentoo.org> (2019-08-26)
 # jit not supported on sparc64

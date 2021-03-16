@@ -66,7 +66,8 @@ sys-fs/e2fsprogs cron
 # This doesn't work for (any) riscv yet.
 dev-libs/libpcre2 jit
 dev-libs/libpcre jit
-dev-vcs/git pcre-jit
+<dev-vcs/git-2.31.0 pcre-jit
+>=dev-vcs/git-2.31.0 pcre
 
 # Not yet tested / unkeyworded dependencies
 # This includes also packages which do not support python-3 or
