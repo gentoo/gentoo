@@ -4,4 +4,7 @@
 	<maintainer type="project">
 		<email>netmon@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<changelog>https://www.gnuvola.org/software/xdgdirs/NEWS</changelog>
+	</upstream>
 </pkgmetadata>
