@@ -1,9 +1,0 @@
-DEFINED_PHASES=install
-DESCRIPTION=Tree-sitter is a parser generator tool and an incremental parsing library.
-EAPI=7
-HOMEPAGE=https://github.com/tree-sitter/tree-sitter
-KEYWORDS=~amd64
-LICENSE=MIT
-SLOT=0
-SRC_URI=https://github.com/tree-sitter/tree-sitter/archive/v0.19.0.tar.gz -> tree-sitter-0.19.0.tar.gz
-_md5_=b45e4e8dbf77ac54e52dbb3ba8cc6afb

@@ -5782,7 +5782,7 @@ dev-libs/tntnet 2.2.1 2.2.1-r3 3.0: Modular, multithreaded web application serve
 dev-libs/tomsfastmath 0.13.1-r1: Fast public domain large integer arithmetic library
 dev-libs/totem-pl-parser 3.26.5: Playlist parsing library
 dev-libs/tre 0.8.0-r2: Lightweight, robust, and efficient POSIX compliant regexp matching library
-dev-libs/tree-sitter 0.19.0 0.19.2 9999: Tree-sitter is a parser generator tool and an incremental parsing library.
+dev-libs/tree-sitter 0.19.3 9999: Tree-sitter is a parser generator tool and an incremental parsing library.
 dev-libs/tvision 2.1.0_pre2-r4 2.2.1.4: Text User Interface that implements the well known CUA widgets
 dev-libs/tvmet 1.7.2-r2: Tiny Vector Matrix library using Expression Templates
 dev-libs/ucl 1.03-r1: the UCL Compression Library
