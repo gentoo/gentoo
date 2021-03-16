@@ -5164,7 +5164,7 @@ dev-java/ws-commons-util 1.0.1-r1: Utility classes that allow high performance X
 dev-java/wsdl4j 1.6.2: Web Services Description Language for Java Toolkit (WSDL4J)
 dev-java/wstx 3.2.9-r1: Woodstox is a high-performance validating namespace-aware XML-processor
 dev-java/xalan 2.7.2-r1: Transforming XML documents into HTML, text, or other XML document types
-dev-java/xalan-serializer 2.7.2: DOM Level 3 serializer from Apache Xalan, shared by Xalan and Xerces
+dev-java/xalan-serializer 2.7.2 2.7.2-r1: DOM Level 3 serializer from Apache Xalan, shared by Xalan and Xerces
 dev-java/xerces 2.12.0: Xerces Java XML parser
 dev-java/xerial-core 2.0.1: An open-source DBMS for XML/JSON/Relational data
 dev-java/xjavac 2.4.0: Xerses Java Parser
