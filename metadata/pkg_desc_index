@@ -10603,6 +10603,7 @@ dev-scheme/slib 3.2.5-r1: Portable Scheme library for all standard Scheme implem
 dev-scheme/stklos 1.10-r1: fast and light Scheme implementation
 dev-scheme/termite 0.15-r1: Erlang-style concurrency for Gambit Scheme
 dev-scheme/tinyscheme 1.41: Lightweight scheme interpreter
+dev-scheme/xdgdirs 2.2: Displays names/values of XDG Basedir variables
 dev-scheme/ypsilon 0.9.6_p3: R6RS-compliant Scheme implementation for real-time applications
 dev-tcltk/blt 2.4z-r13 2.4z-r14 2.5.3-r1: Extension to Tk, adding new widgets, geometry managers, and misc commands
 dev-tcltk/bwidget 1.9.12 1.9.14: High-level widget set for Tcl/Tk
@@ -14329,7 +14330,7 @@ media-video/xvattr 1.3-r3: X11 XVideo Querying/Setting Tool from Ogle project
 media-video/xvid4conf 1.12: GTK2-configuration dialog for xvid4
 media-video/yle-dl 20210212: Download media files from Yle Areena
 net-analyzer/2ping 4.4.1 4.5: A bi-directional ping utility
-net-analyzer/alive 2.0.2-r1: a periodic ping program
+net-analyzer/alive 2.0.2-r1 2.0.3: A periodic ping program
 net-analyzer/amap 5.4-r1: A network scanning tool for pentesters
 net-analyzer/angst 0.4b-r3: an active sniffer that provides methods for aggressive sniffing on switched LANs
 net-analyzer/apinger 0.6.1: Alarm Pinger
@@ -14425,7 +14426,7 @@ net-analyzer/isic 0.07-r1: IP Stack Integrity Checker
 net-analyzer/jmx2munin 1.0_p20120811-r1: JMX Monitoring plugin for Munin
 net-analyzer/jnettop 0.13.0-r1: A top like console network traffic visualiser
 net-analyzer/kapacitor 1.4.1-r1 1.5.1 1.5.5: Monitoring, processing and alerting on time series data
-net-analyzer/knocker 0.7.1-r3: Knocker is an easy to use security port scanner written in C
+net-analyzer/knocker 0.7.1-r3 0.8.0: Knocker is an easy to use security port scanner written in C
 net-analyzer/labrea 2.5_p1: 'Sticky' Honeypot and IDS
 net-analyzer/lft 3.91-r1: Layer Four Traceroute (LFT) and WhoB
 net-analyzer/lilac 1.0.3-r1: Web-based configuration tool written to configure Nagios
@@ -14996,7 +14997,7 @@ net-libs/libssh 0.9.5 9999: Access a working SSH implementation by means of a li
 net-libs/libssh2 1.9.0_p20200614 9999: Library implementing the SSH2 protocol
 net-libs/libtelnet 0.23 9999: Simple RFC-complient TELNET implementation as a C library
 net-libs/libtirpc 1.2.6 1.3.1: Transport Independent RPC library (SunRPC replacement)
-net-libs/libtorrent 0.13.7 0.13.7-r1 0.13.8: BitTorrent library written in C++ for *nix
+net-libs/libtorrent 0.13.7 0.13.7-r1 0.13.8-r1: BitTorrent library written in C++ for *nix
 net-libs/libtorrent-rasterbar 1.2.6 1.2.9 1.2.10 1.2.11 1.2.12: C++ BitTorrent implementation focusing on efficiency and scalability
 net-libs/libtrace 4.0.14_p1 4.0.15_p1 9999: A library and tools for trace processing
 net-libs/libupnp 1.14.0: An Portable Open Source UPnP Development Kit
