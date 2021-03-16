@@ -3,20 +3,19 @@
 
 EAPI=7
 
-inherit git-r3 gnome2-utils xdg
+inherit gnome2-utils xdg
 
 DESCRIPTION="An open-source jukebox for large collections of mp3/ogg/flac files"
 HOMEPAGE="https://gmusicbrowser.org/"
-EGIT_REPO_URI="https://github.com/squentin/${PN}.git"
+SRC_URI="https://${PN}.org/download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="dbus doc extras gstreamer libnotify mplayer"
 
-BDEPEND="sys-devel/gettext
-	doc? ( dev-perl/Text-Markdown )"
 RDEPEND="dev-lang/perl
-	dev-perl/Gtk3
+	dev-perl/Gtk2
 	virtual/perl-MIME-Base64
 	|| ( net-misc/wget dev-perl/AnyEvent-HTTP )
 	dbus? ( dev-perl/Net-DBus )
@@ -32,10 +31,6 @@ RDEPEND="dev-lang/perl
 	extras? ( dev-perl/gnome2-wnck )
 	libnotify? ( dev-perl/Gtk2-Notify )"
 DEPEND="${RDEPEND}"
-
-src_compile() {
-	emake MARKDOWN=$(usex doc "Markdown.pl" "echo")
-}
 
 src_prepare() {
 	default
