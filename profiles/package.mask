@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2021-03-16)
+# Discontinued upstream.  The last version is broken with py3.9. 
+# The last revdep stopped depending on it.
+# Removal on 2021-04-15.  Bug #776748.
+dev-python/xlrd
+
 # Joonas Niilola <juippis@gentoo.org> (2021-03-16)
 # A library without consumers, unbuildable for years, ebuilds not 
 # touched in years either. Bugs #664776, #747592. Removal in ~30 days.
