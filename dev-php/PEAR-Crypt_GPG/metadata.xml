@@ -13,4 +13,5 @@
     <remote-id type="github">pear/Crypt_GPG</remote-id>
     <remote-id type="pear">Crypt_GPG</remote-id>
   </upstream>
+  <stabilize-allarches/>
 </pkgmetadata>
