@@ -12631,7 +12631,7 @@ mail-mta/opensmtpd 6.7.1_p1 6.8.0_p2: Lightweight but featured SMTP daemon from 
 mail-mta/postfix 3.5.8-r1 3.5.9-r1 3.6_pre20210224: A fast and secure drop-in replacement for sendmail
 mail-mta/protonmail-bridge 1.6.3 1.6.6: Serves ProtonMail to IMAP/SMTP clients
 mail-mta/protonmail-bridge-bin 1.4.5 1.5.0 1.5.2: Serves ProtonMail to IMAP/SMTP clients
-mail-mta/qpsmtpd 0.84-r2 0.95 9999: qpsmtpd is a flexible smtpd daemon written in Perl
+mail-mta/qpsmtpd 0.95 9999: qpsmtpd is a flexible smtpd daemon written in Perl
 mail-mta/sendmail 8.15.2-r2 8.16.1: Widely-used Mail Transport Agent (MTA)
 mail-mta/ssmtp 2.64-r3: Extremely simple MTA to get mail off the system to a Mailhub
 mate-base/caja 1.24.0 1.24.0-r2: Caja file manager for the MATE desktop
@@ -12943,7 +12943,7 @@ media-gfx/freewrl 3.0.0-r1 9999: VRML97 and X3D compliant browser, library, and 
 media-gfx/frogr 1.3 1.5: flickr applications for GNOME
 media-gfx/geeqie 1.5.1 1.5.1-r1 1.6 9999: A lightweight GTK image viewer forked from GQview
 media-gfx/gif2apng 1.9-r1: create an APNG from a GIF
-media-gfx/gif2png 2.5.9 2.5.12 2.5.14: Converts images from gif format to png format
+media-gfx/gif2png 2.5.14: Converts images from gif format to png format
 media-gfx/gifsicle 1.92: Create, manipulate, and optimize GIF images and animations
 media-gfx/gimageview 0.2.27-r4: Powerful GTK+ based image & movie viewer
 media-gfx/gimp 2.10.22-r2 2.99.4 9999: GNU Image Manipulation Program
@@ -13002,7 +13002,7 @@ media-gfx/kphotoalbum 5.7.0: Tool for indexing, searching, and viewing images
 media-gfx/krita 4.4.2: Free digital painting application. Digital Painting, Creative Freedom!
 media-gfx/kuickshow 0.10.1: Image viewer based on KDE Frameworks
 media-gfx/kxstitch 2.2.0: Program to create cross stitch patterns
-media-gfx/libimagequant 2.12.2 2.12.3 2.14.0: Palette quantization library that powers pngquant and other PNG optimizers
+media-gfx/libimagequant 2.12.3 2.14.0: Palette quantization library that powers pngquant and other PNG optimizers
 media-gfx/librecad 2.1.3-r5 9999: Generic 2D CAD program
 media-gfx/llgal 0.13.19-r1: Command-line static web gallery generator
 media-gfx/luminance-hdr 2.6.0-r1: Graphical user interface that provides a workflow for HDR imaging
@@ -13088,7 +13088,7 @@ media-gfx/tif22pnm 0.14: tif22pnm and png22pnm command-line converters
 media-gfx/tintii 2.10.0-r1: Photo editor for selective color, saturation, and hue shift adjustments
 media-gfx/transfig 3.2.5e-r1: A set of tools for creating TeX documents with graphics
 media-gfx/ttygif 1.80_p20181218: Convert terminal recordings to animated gifs
-media-gfx/tuxpaint 0.9.21-r2 0.9.24: Drawing program designed for young children
+media-gfx/tuxpaint 0.9.24: Drawing program designed for young children
 media-gfx/tuxpaint-stamps 20090628-r1: Set of 'Rubber Stamp' images which can be used within Tux Paint
 media-gfx/ufraw 0.22-r4: RAW Image format viewer and GIMP plugin
 media-gfx/valentina 0.6.1-r1 9999: Cloth patternmaking software
@@ -13097,7 +13097,7 @@ media-gfx/viewer 0.8.0-r1: A stereo pair image viewer (supports ppm's only)
 media-gfx/viewnior 1.7-r2: Fast and simple image viewer
 media-gfx/w3mimgfb 0.9.1: Image viewer for w3m under frame buffer environment
 media-gfx/waifu2x-ncnn-vulkan 20200224 20200414 20200818: waifu2x converter using ncnn and vulkan
-media-gfx/wings 2.1.5 2.1.6 2.1.7 2.2.5 2.2.6.1: Wings 3D is an advanced subdivision modeler
+media-gfx/wings 2.2.6.1: Wings 3D is an advanced subdivision modeler
 media-gfx/word_cloud 1.6.0 1.8.0: A little word cloud generator in Python
 media-gfx/xdot 1.1 1.2 9999: Interactive viewer for Graphviz dot files
 media-gfx/xfig 3.2.7b: A menu-driven tool to draw and manipulate objects interactively in an X window
@@ -13178,7 +13178,7 @@ media-libs/gegl 0.4.26-r1 0.4.28 9999: A graph based image processing framework
 media-libs/gexiv2 0.12.1: GObject-based wrapper around the Exiv2 library
 media-libs/giblib 1.2.4-r1: a graphics library built on top of imlib2
 media-libs/giflib 5.2.1-r1: Library to handle, display and manipulate GIF images
-media-libs/glew 1.6.0-r100 1.10.0-r100 2.1.0-r1 2.2.0: The OpenGL Extension Wrangler Library
+media-libs/glew 1.6.0-r100 1.10.0-r100 2.1.0-r1: The OpenGL Extension Wrangler Library
 media-libs/glfw 3.3.2 3.3.3: The Portable OpenGL FrameWork
 media-libs/glm 0.9.9.5 0.9.9.7 0.9.9.8 0.9.9.8-r1: OpenGL Mathematics
 media-libs/glpng 1.46-r1: OpenGL PNG image library
@@ -13326,7 +13326,7 @@ media-libs/libmypaint 1.6.1: Library for making brushstrokes
 media-libs/libnjb 2.2.7: Library for communicating with the Creative Nomad JukeBox digital audio player
 media-libs/libnsbmp 0.1.6-r1: decoding library for BMP and ICO image file formats, written in C
 media-libs/libnsgif 0.2.1-r3: decoding library for the GIF image file format, written in C
-media-libs/libnspsl 0.1.3-r2 0.1.5-r1 0.1.6-r1: C library for decoding BMP and ICO images
+media-libs/libnspsl 0.1.6-r1: C library for decoding BMP and ICO images
 media-libs/libofa 0.9.3-r2: Open Fingerprint Architecture
 media-libs/libogg 1.3.4: the Ogg media file format library
 media-libs/liboggz 1.1.1: Oggz provides a simple programming interface for reading and writing Ogg files and streams
@@ -13777,7 +13777,7 @@ media-radio/KochMorse 3.4.0-r1: Morse-code tutor using the Koch method
 media-radio/adifmerg 31-r1: A small conversion and check utility for ADIF files
 media-radio/ax25-apps 0.0.8_rc5: Basic AX.25 (Amateur Radio) user tools, additional daemons
 media-radio/ax25-tools 0.0.10_rc5: Basic AX.25 (Amateur Radio) administrative tools and daemons
-media-radio/cqrlog 2.1.0-r2 2.3.0 2.3.0-r1 2.4.0: CQRLOG is an advanced ham radio logger based on MySQL database
+media-radio/cqrlog 2.4.0: CQRLOG is an advanced ham radio logger based on MySQL database
 media-radio/cwdaemon 0.10.2: A morse daemon for the parallel or serial port
 media-radio/direwolf 1.4 1.5 1.5-r1: Decoded Information from Radio Emissions for Windows Or Linux Fans
 media-radio/dxcc 20190309 20191204: A ham radio callsign DXCC lookup utility
@@ -14361,7 +14361,7 @@ net-analyzer/calamaris 2.99.4.5: parses logfiles of a wide variety of web proxy 
 net-analyzer/carl 0.9-r3 0.9-r5: An rsync logfile analyzer
 net-analyzer/cbm 0.2: Color Bandwidth Meter
 net-analyzer/chaosreader 0.96: Trace TCP/UDP/... sessions and fetch application data.
-net-analyzer/check_mk_agent 1.2.8_p27 1.4.0_p31: Agent to report data to Check_MK for monitoring
+net-analyzer/check_mk_agent 1.4.0_p31: Agent to report data to Check_MK for monitoring
 net-analyzer/chronograf 1.4.3.0 1.6.2 1.7.3 1.8.5: Monitoring, processing and alerting on time series data
 net-analyzer/cloudshark 1.0.4: Easily upload your wireshark captures to CloudShark
 net-analyzer/cnet 3.3.4: Network simulation tool
@@ -14638,7 +14638,7 @@ net-dialup/sercd 3.0.0-r2: RFC2217-compliant serial port redirector
 net-dialup/speedtouch-usb 3.0.1.2-r3: Firmware and configuration instructions for Alcatel SpeedTouch USB modems
 net-dialup/wvdial 1.61: Excellent program to automatically configure PPP sessions
 net-dialup/xc 4.3.2-r4: Modem dialout & serial terminal program
-net-dialup/xl2tpd 1.3.10 1.3.11 1.3.12 1.3.13 1.3.15: A modern version of the Layer 2 Tunneling Protocol (L2TP) daemon
+net-dialup/xl2tpd 1.3.15: A modern version of the Layer 2 Tunneling Protocol (L2TP) daemon
 net-dns/avahi 0.8-r2: System which facilitates service discovery on a local network
 net-dns/bind 9.16.12: Berkeley Internet Name Domain - Name Server
 net-dns/bind-tools 9.16.12: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
@@ -14647,14 +14647,14 @@ net-dns/coredns 1.6.9 1.7.0: A DNS server that chains middleware
 net-dns/ddclient 3.9.1: Perl client used to update dynamic DNS entries
 net-dns/djbdns 1.05-r33: Collection of DNS client/server software
 net-dns/dnrd 2.20.3-r2: A caching DNS proxy server
-net-dns/dnscap 1.10.2 1.10.3: Network capture utility designed specifically for DNS traffic
+net-dns/dnscap 1.10.3: Network capture utility designed specifically for DNS traffic
 net-dns/dnscrypt-proxy 2.0.45 9999: A flexible DNS proxy, with support for encrypted DNS protocols
 net-dns/dnsdist 1.5.0 1.5.1 1.5.1-r100: A highly DNS-, DoS- and abuse-aware loadbalancer
 net-dns/dnshijacker 1.3-r2: a libnet/libpcap based packet sniffer and spoofer
 net-dns/dnsmasq 2.83-r1 2.83-r101 2.84 2.84-r101: Small forwarding DNS server
 net-dns/dnssec-check 2.2: Tests local resolver for support of DNSSEC validation
 net-dns/dnssec-root 20181220-r1: The DNSSEC root key(s)
-net-dns/dnssec-tools 2.2.3-r1 2.2.3-r2: Tools to ease the deployment of DNSSEC related technologies
+net-dns/dnssec-tools 2.2.3-r2: Tools to ease the deployment of DNSSEC related technologies
 net-dns/dnssec-validator 2.2.3: Tools to ease the validation of DNSSEC related technologies
 net-dns/dnstop 20140915-r2: Displays various tables of DNS traffic on your network
 net-dns/dnsviz 0.8.2 0.8.2-r1 0.9.1 0.9.2: Tool suite for analysis and visualization of DNS and DNSSEC
@@ -14875,7 +14875,7 @@ net-libs/canlock 2b: A library for creating and verifying Usenet cancel locks
 net-libs/courier-authlib 0.69.0-r1 0.70.0 0.71.0 0.71.1: Courier authentication library
 net-libs/courier-unicode 2.1 2.1-r1 2.1.2: Unicode library used by the courier mail server
 net-libs/cppzmq 4.6.0: High-level CPP Binding for ZeroMQ
-net-libs/cvm 0.96-r1 0.97: Credential Validation Modules by Bruce Guenter
+net-libs/cvm 0.97: Credential Validation Modules by Bruce Guenter
 net-libs/czmq 4.2.0: High-level C Binding for ZeroMQ
 net-libs/daq 2.0.7: Data Acquisition library, for packet I/O
 net-libs/davix 0.7.6: High-performance file management over WebDAV/HTTP
@@ -14886,7 +14886,7 @@ net-libs/enet 1.2.2-r1 1.3.13 1.3.17: Relatively thin, simple and robust network
 net-libs/farstream 0.2.8-r2 0.2.9: Audio/video conferencing framework specifically designed for instant messengers
 net-libs/freaklabs-chibiarduino 1.0.8_p20190329 9999: freaklabs fork of the lightweight wireless sensor library for Arduino
 net-libs/glib-networking 2.62.4 2.64.3 2.66.0: Network-related giomodules for glib
-net-libs/gloox 1.0.22 1.0.24: A portable high-level Jabber/XMPP library for C++
+net-libs/gloox 1.0.24: A portable high-level Jabber/XMPP library for C++
 net-libs/gnet 2.0.8-r2: A simple network library
 net-libs/gnome-online-accounts 3.36.0: GNOME framework for accessing online accounts
 net-libs/gnutls 3.6.15 3.7.0-r1 3.7.1: A secure communications library implementing the SSL, TLS and DTLS protocols
@@ -14923,7 +14923,7 @@ net-libs/libcork 0.15.0-r2: A simple, easily embeddable cross-platform C library
 net-libs/libcorkipset 1.1.1.20150311_p8: A small C helper library for storing sets of IPv4 and IPv6 addresses
 net-libs/libcrafter 1.0 9999: A high level C++ network packet sniffing and crafting library
 net-libs/libdmapsharing 2.9.39: A library that implements the DMAP family of protocols
-net-libs/libdom 0.3.3-r2 0.4.0-r1 0.4.1-r1: implementation of the W3C DOM, written in C
+net-libs/libdom 0.4.1-r1: implementation of the W3C DOM, written in C
 net-libs/libecap 1.0.0 1.0.1: API for implementing ICAP content analysis and adaptation
 net-libs/libesmtp 1.0.6-r3 9999: lib that implements the client side of the SMTP protocol
 net-libs/libetpan 1.9.4-r1: A portable, efficient middleware for different kinds of mail access
@@ -14931,7 +14931,7 @@ net-libs/libflowmanager 3.0.0-r1: A library that measures and reports on packet 
 net-libs/libgadu 1.11.4 1.12.2-r1: Client-side library for the Gadu-Gadu protocol
 net-libs/libgfbgraph 0.2.3-r1: A GObject library for Facebook Graph API
 net-libs/libgrss 0.5.0-r1 0.7.0: LibGRSS is a library for easy management of RSS/Atom/Pie feeds
-net-libs/libgsasl 1.8.0-r1 1.8.1 1.10.0: The GNU SASL library
+net-libs/libgsasl 1.10.0: The GNU SASL library
 net-libs/libgssglue 0.4-r1: Exports a gssapi interface which calls other random gssapi libraries
 net-libs/libhackrf 2018.01.1 9999: library for communicating with HackRF SDR platform
 net-libs/libhtp 0.5.37: security-aware parser for the HTTP protocol and the related bits and pieces
@@ -15086,7 +15086,7 @@ net-mail/getmail 6.14: A mail retriever with reliable Maildir and mbox delivery
 net-mail/gnubiff 2.2.17-r2: A mail notification program
 net-mail/grepmail 5.30.33-r2: Search normal or compressed mailbox using a regular expression or dates
 net-mail/hyperkitty 1.3.3: A web interface to access GNU Mailman v3 archives
-net-mail/imapsync 1.882 1.977: Tool for incremental and recursive IMAP transfers between mailboxes
+net-mail/imapsync 1.977: Tool for incremental and recursive IMAP transfers between mailboxes
 net-mail/isync 1.3.1 1.3.3 1.3.5 1.4.1 9999: MailDir mailbox synchronizer
 net-mail/lbdb 0.47: Little Brother database
 net-mail/libdbx 1.0.3: Tools and library for reading Outlook Express mailboxes (.dbx format)
@@ -15108,7 +15108,7 @@ net-mail/mhonarc 2.6.19: Perl Mail-to-HTML Converter
 net-mail/mhonarc-gentoo 2.6.18-r2: Perl Mail-to-HTML Converter, Gentoo fork
 net-mail/mlmmj 1.3.0-r1: Mailing list managing made joyful
 net-mail/mpack 1.6-r4: Command-line MIME encoding and decoding utilities
-net-mail/mpop 1.4.4 1.4.7: A small, fast, and portable POP3 client
+net-mail/mpop 1.4.7: A small, fast, and portable POP3 client
 net-mail/mswatch 1.2.0-r1: A utility to watch mailstores for changes and initiate mailbox syncs
 net-mail/mu 1.4.15 1.4.15-r1: Set of tools to deal with Maildirs, in particular, searching and indexing
 net-mail/muchsync 5 6: Synchronizes mail messages and notmuch tags across machines
@@ -15254,7 +15254,7 @@ net-misc/gns3-server 2.2.17 2.2.19: GNS3 server to asynchronously manage emulato
 net-misc/gofish 1.2: Gofish gopher server
 net-misc/grdesktop 0.23-r2: Gtk3 frontend for rdesktop
 net-misc/grive 0.5.1_pre20171005 0.5.1 0.5.1-r1 0.5.2_pre20200205: An open source Linux client for Google Drive
-net-misc/gsasl 1.8.0-r1 1.8.1 1.10.0: The GNU SASL client, server, and library
+net-misc/gsasl 1.10.0: The GNU SASL client, server, and library
 net-misc/gsutil 4.50 4.59: command line tool for interacting with cloud storage services
 net-misc/gupnp-tools 0.10.0: Collection of developer-oriented UPnP tools
 net-misc/gvrpcd 1.3: A program for announcing VLANs using GVRP
@@ -15314,7 +15314,7 @@ net-misc/mobile-broadband-provider-info 20190618 20201225: Database of mobile br
 net-misc/modemmanager 1.8.2-r1 1.10.0 1.14.8 1.14.8-r1: Modem and mobile broadband management libraries
 net-misc/monmotha 2.3.8-r1: MonMotha IPTables-based firewall script
 net-misc/mosh 1.3.2 9999: Mobile shell that supports roaming and intelligent local echo
-net-misc/mrouted 3.9.8 4.2: IP multicast routing daemon
+net-misc/mrouted 4.2: IP multicast routing daemon
 net-misc/mstpd 0.0.9: Multiple spanning tree protocol daemon
 net-misc/mulk 0.7.0-r1: Download agent similar to wget/curl
 net-misc/nat-traverse 0.6: Traverse NAT gateways with the Use of UDP
@@ -15475,7 +15475,7 @@ net-misc/wget2 1.99.2 9999: GNU Wget2 is a file and recursive website downloader
 net-misc/whatmask 1.2-r1: little C program to compute different subnet mask notations
 net-misc/whois 5.5.6-r1 5.5.7 5.5.8 9999: improved Whois Client
 net-misc/wol 0.7.1-r2: Implements Wake On LAN (Magic Paket) functionality in a small program
-net-misc/wput 0.6.1-r1 0.6.2: Tiny program like wget, to upload files/whole directories via FTP
+net-misc/wput 0.6.2: Tiny program like wget, to upload files/whole directories via FTP
 net-misc/x11-ssh-askpass 1.2.4.1-r2: X11-based passphrase dialog for use with OpenSSH
 net-misc/x2goclient 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
@@ -15483,7 +15483,7 @@ net-misc/yandex-disk 0.1.5.1039_p1: CLI to access Yandex Disk file storage servi
 net-misc/you-get 0.4.1432 0.4.1500: utility to download media contents from the web
 net-misc/youtube-dl 2021.03.03 2021.03.14 9999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r2 9999: A command line utility for viewing youtube-videos in Mplayer
-net-misc/zerotier 1.4.6 1.6.2 1.6.3: A software-based managed Ethernet switch for planet Earth
+net-misc/zerotier 1.6.3: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
 net-misc/zsync 0.6.2-r1: Partial/differential file download client over HTTP which uses the rsync algorithm
 net-nds/389-ds-base 1.4.4.13: 389 Directory Server (core libraries and daemons)
@@ -15505,7 +15505,7 @@ net-news/canto-curses 0.9.9: The ncurses client for canto-daemon
 net-news/canto-daemon 0.9.7: Daemon part of Canto-NG RSS reader
 net-news/liferea 1.12.7-r1 1.12.9: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
 net-news/newsboat 2.20.1 2.21: An RSS/Atom feed reader for text terminals
-net-news/rssguard 3.5.9-r1 3.8.3: Tiny RSS and Atom feed reader
+net-news/rssguard 3.8.3: Tiny RSS and Atom feed reader
 net-news/rsstail 2.1 2.1_p20200310: A tail-like RSS-reader
 net-news/rsstool 1.0.1_rc2: cmdline tool to read, parse, merge, and write RSS (and Atom) feeds
 net-news/snownews 1.6.10: Command-line RSS feed reader
@@ -15567,8 +15567,8 @@ net-p2p/xmr-stak-rx 1.0.4 1.0.5 9999: Monero RandomX Miner
 net-print/apsfilter 7.2.8-r1: Apsfilter Prints So Fine, It Leads To Extraordinary Results
 net-print/brlaser 6: Brother laser printer driver
 net-print/c2esp 27: A CUPS filter for Kodak ESP printers
-net-print/cndrvcups-common-lb 3.60-r1 3.70: Common files for Canon drivers
-net-print/cndrvcups-lb 3.60-r2 3.70: Canon UFR II / LIPSLX Printer Driver for Linux
+net-print/cndrvcups-common-lb 3.70: Common files for Canon drivers
+net-print/cndrvcups-lb 3.70: Canon UFR II / LIPSLX Printer Driver for Linux
 net-print/cnijfilter2 5.90: IJ Printer Driver
 net-print/cnrdrvcups-lb 5.20 5.30: Canon UFR II / LIPSLX Printer Driver for Linux
 net-print/cups 2.3.3-r2 9999: The Common Unix Printing System
@@ -16970,7 +16970,7 @@ sys-apps/etckeeper 1.18.14 1.18.15: A collection of tools to let /etc be stored 
 sys-apps/ethq 0.5.0 0.6.1 9999: Ethernet NIC Queue stats viewer
 sys-apps/ethtool 5.4 5.8-r1 5.9 5.10: Utility for examining and tuning ethernet-based network interfaces
 sys-apps/exa 0.9.0-r1: A modern replacement for 'ls' written in Rust
-sys-apps/fakechroot 2.19 2.20.1: Provide a faked chroot environment without requiring root privileges
+sys-apps/fakechroot 2.20.1: Provide a faked chroot environment without requiring root privileges
 sys-apps/fakeroot 1.22 1.23 1.24 1.25.1 1.25.2 1.25.3: A fake root environment by means of LD_PRELOAD and SysV IPC (or TCP) trickery
 sys-apps/fakeroot-ng 0.18-r1: A utility to run commands with fake root privileges
 sys-apps/fbset 2.1: A utility to set the framebuffer videomode
@@ -16983,7 +16983,7 @@ sys-apps/fix-gnustack 0.1: Utility to report and remove the executable flag from
 sys-apps/flashrom 1.2-r3 9999: Utility for reading, writing, erasing and verifying flash ROM chips
 sys-apps/flatpak 1.10.0 1.10.2: Linux application sandboxing and distribution framework
 sys-apps/frandom 1.1-r1: Fast kernel-land pseudo-random number generator using the RC4 algorithm
-sys-apps/fwts 20.05.00 20.11.00: Firmware Test Suite
+sys-apps/fwts 20.11.00: Firmware Test Suite
 sys-apps/fwupd 1.4.6 1.5.6 1.5.7: Aims to make updating firmware on Linux automatic, safe and reliable
 sys-apps/fxload 20081013-r1: USB firmware uploader
 sys-apps/gawk 4.2.1-r1 5.0.1 5.1.0: GNU awk pattern-matching language
@@ -17065,7 +17065,7 @@ sys-apps/memtest86 4.3.7-r2: A stand alone memory test for x86 computers
 sys-apps/memtest86+ 5.01-r4 5.01-r5: Memory tester based on memtest86
 sys-apps/memtest86-bin 9.0_beta2 9.0_p2000: Stand alone memory testing software for x86 computers
 sys-apps/memtester 4.3.0 4.4.0 4.5.0: userspace utility for testing the memory subsystem for faults
-sys-apps/miller 5.3.0 5.10.0: A tool like sed, awk, cut, join, and sort for name-indexed data (CSV, JSON, ..)
+sys-apps/miller 5.10.0: A tool like sed, awk, cut, join, and sort for name-indexed data (CSV, JSON, ..)
 sys-apps/minijail 9 12: helper binary and library for sandboxing & restricting privs of service
 sys-apps/minised 1.15: a smaller, cheaper and faster sed implementation
 sys-apps/miscfiles 1.5-r3: Miscellaneous files
@@ -17099,7 +17099,7 @@ sys-apps/pcmciautils 018_p8-r3: PCMCIA userspace utilities for Linux
 sys-apps/pcsc-lite 1.9.0 1.9.1: PC/SC Architecture smartcard middleware library
 sys-apps/pcsc-slb-rf72-drv 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Reader
 sys-apps/pcsc-tools 1.5.6 1.5.7: PC/SC Architecture smartcard tools
-sys-apps/pick 3.0.1 4.0.0: a fuzzy search tool for the command-line
+sys-apps/pick 4.0.0: a fuzzy search tool for the command-line
 sys-apps/pkgcore 0.10.13-r2 0.10.14-r2 0.11.2-r1 0.11.3-r1 0.11.4-r1 0.11.5-r1 9999: a framework for package management
 sys-apps/pmount 0.9.99_alpha-r6: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
@@ -17175,7 +17175,7 @@ sys-apps/ucspi-proxy 0.99 1.1: Proxy program for two connections set up by a UCS
 sys-apps/ucspi-ssl 0.99e: Command-line tools for building SSL client-server applications
 sys-apps/ucspi-tcp 0.88-r18: Collection of tools for managing UNIX services
 sys-apps/ucspi-unix 1.0: A UCSPI implementation for Unix domain sockets
-sys-apps/udevil 0.4.4-r3 0.4.4-r4: mount and unmount removable devices without a password
+sys-apps/udevil 0.4.4-r4: mount and unmount removable devices without a password
 sys-apps/unscd 0.54-r1: simple & stable nscd replacement
 sys-apps/usb_modeswitch 2.5.2 2.6.0: A tool for controlling 'flip flop' (multiple devices) USB gear like UMTS sticks
 sys-apps/usbguard 0.7.6-r1 0.7.8 1.0.0 1.0.0-r1: Daemon protecting your computer against BadUSB
@@ -17588,7 +17588,7 @@ sys-fs/ext4magic 0.3.2-r1: Tool for recovery of deleted or overwritten files on 
 sys-fs/extundelete 0.2.4: A utility to undelete files from an ext3 or ext4 partition
 sys-fs/f2fs-tools 1.14.0: Tools for Flash-Friendly File System (F2FS)
 sys-fs/fatcat 1.1.0-r1: FAT filesystems explore, extract, repair, and forensic tool
-sys-fs/fatresize 1.0.4 1.1.0: Resize FAT partitions using libparted
+sys-fs/fatresize 1.1.0: Resize FAT partitions using libparted
 sys-fs/fatsort 1.6.3.622: Sorts files on FAT16/32 partitions, ideal for basic audio players
 sys-fs/fragview 0.1.1 9999: Disk fragmentation visualizer based on FIEMAP and FIBMAP ioctls
 sys-fs/fuse 2.9.9-r1 3.9.1 3.9.3 3.10.1 3.10.2: An interface for filesystems implemented in userspace
@@ -17881,7 +17881,7 @@ virtual/httpd-cgi 0-r1 0-r2: Virtual for CGI-enabled webservers
 virtual/httpd-fastcgi 0-r1: Virtual for FastCGI-enabled webservers
 virtual/httpd-php 7.3 7.4 8.0: Virtual to provide PHP-enabled webservers
 virtual/imagemagick-tools 0: Virtual for imagemagick command line tools
-virtual/imap-c-client 1 2: Virtual for IMAP c-client
+virtual/imap-c-client 2: Virtual for IMAP c-client
 virtual/inetd 0: Virtual for the internet super-server daemon
 virtual/jack 1: Virtual for JACK Audio Connection Kit
 virtual/jdk 1.8.0-r5 11-r1: Virtual for Java Development Kit (JDK)
@@ -17903,7 +17903,7 @@ virtual/libusb 0-r2 1-r1 1-r2: Virtual for libusb
 virtual/linux-sources 3-r5: Virtual for Linux kernel sources
 virtual/linuxtv-dvb-headers 5.8: Virtual Package installing the Header files for DVB
 virtual/logger 0-r1: Virtual for system loggers
-virtual/mailx 1 2 3: Virtual for mail implementations
+virtual/mailx 3: Virtual for mail implementations
 virtual/man 0-r3 0-r4: Virtual for man
 virtual/mda 0: Virtual for Message Delivery Agents
 virtual/mpi 2.0-r3 2.0-r4 2.0-r5: Virtual for Message Passing Interface (MPI) v2.0 implementation
@@ -18120,7 +18120,7 @@ www-apps/phpsysinfo 3.3.2: A customizable PHP script that displays information a
 www-apps/piwigo 2.10.2 11.2.0 11.3.0: a photo gallery software for the web
 www-apps/postfixadmin 3.2.4 3.3.5 3.3.7 3.3.8: Web Based Management tool for Postfix style virtual domains and users
 www-apps/prewikka 5.2.0: Graphical front-end analysis console for the Prelude Framework
-www-apps/radicale 2.1.11-r1 2.1.12: A simple CalDAV calendar server
+www-apps/radicale 2.1.12: A simple CalDAV calendar server
 www-apps/redmine 4.1.1-r1: Flexible project management web application using the Ruby on Rails framework
 www-apps/rocketwiki-lqfb 0.4: Small parser which translates a wiki dialect to HTML
 www-apps/roundup 2.0.0: Issue-tracking system with command-line, web, and e-mail interfaces
@@ -18157,7 +18157,7 @@ www-client/netsurf 3.10-r4: a free, open source web browser
 www-client/opera 74.0.3911.203: A fast and secure web browser
 www-client/opera-beta 75.0.3969.14 75.0.3969.35: A fast and secure web browser
 www-client/opera-developer 75.0.3967.0 76.0.3974.0 76.0.3981.0: A fast and secure web browser
-www-client/otter 1.0.01-r1 1.0.02 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
+www-client/otter 1.0.02 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qutebrowser 1.14.1 2.0.2 2.1.0 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
 www-client/seamonkey 2.53.6 2.53.7_beta1: Seamonkey Web Browser
@@ -18348,7 +18348,7 @@ x11-libs/colord-gtk 0.1.26 0.2.0: GTK support library for colord
 x11-libs/dnd 1.1-r3: OffiX' Drag'n'drop library
 x11-libs/fltk 1.3.5-r4 1.3.9999 1.4.9999: C++ user interface toolkit for X and OpenGL
 x11-libs/fox 1.6.57-r1 1.7.67: C++ Toolkit for developing Graphical User Interfaces easily and effectively
-x11-libs/fox-wrapper 2 3: wrapper for fox-config to manage multiple versions
+x11-libs/fox-wrapper 3: wrapper for fox-config to manage multiple versions
 x11-libs/gdk-pixbuf 2.42.2: Image loading library for GTK+
 x11-libs/gdk-pixbuf-xlib 2.40.2: Deprecated Xlib integration for GdkPixbuf
 x11-libs/gl2ps 1.4.2: OpenGL to PostScript printing library
@@ -18527,7 +18527,7 @@ x11-misc/gcolor2 0.4-r4: A GTK+ color selector
 x11-misc/genmenu 1.1.0-r1: menu generator for *box, WindowMaker, and Enlightenment
 x11-misc/gigolo 0.5.1: a frontend to easily manage connections to remote filesystems using GIO/GVfs
 x11-misc/gmrun 0.9.2-r2: A GTK-2 based launcher box with bash style auto completion!
-x11-misc/gpaste 3.20.3 3.36.3: Clipboard management system
+x11-misc/gpaste 3.36.3: Clipboard management system
 x11-misc/grabc 1.1-r2: Identify color of a pixel on the screen by clicking on a pixel on the screen
 x11-misc/gromit 20041213-r1: GRaphics Over MIscellaneous Things, a presentation helper
 x11-misc/grsync 1.2.6 1.2.8 1.3.0: A gtk frontend to rsync
@@ -18613,7 +18613,7 @@ x11-misc/rendercheck 1.5-r1: Tests for compliance with X RENDER extension
 x11-misc/revelation 0.5.4-r1: A password manager for GNOME
 x11-misc/rodent 5.3.16.3-r1: A fast, small and powerful file manager and graphical shell
 x11-misc/rofi 1.6.1 99999: A window switcher, run dialog and dmenu replacement
-x11-misc/rofi-calc 1.5 1.6 2.0.0 9999: Do live calculations in rofi!
+x11-misc/rofi-calc 2.0.0 9999: Do live calculations in rofi!
 x11-misc/rss-glx 0.9.1-r2: Really Slick OpenGL Screensavers for XScreenSaver
 x11-misc/safeeyes 2.0.9-r2 2.1.1 2.1.2: Linux alternative to EyeLeo
 x11-misc/screen-message 0.24 0.25 0.26: Display a multi-line message large, fullscreen, black on white
@@ -18711,7 +18711,7 @@ x11-misc/xiccd 0.3.0: A desktop environment-independent bridge between colord an
 x11-misc/xidle 26052015: Monitors inactivity in X and runs the specified program when a timeout occurs
 x11-misc/xkbd 0.8.18 999999: onscreen soft keyboard for X11
 x11-misc/xkblayout-state 0_p20180118 9999: A small program to get/set the current XKB layout
-x11-misc/xkbset 0.5_p5_p1 0.5_p6 0.5_p7_p1: User preference utility for XKB extensions for X
+x11-misc/xkbset 0.5_p7_p1: User preference utility for XKB extensions for X
 x11-misc/xkeyboard-config 2.31 2.32 9999: X keyboard configuration database
 x11-misc/xkeycaps 2.47_p7: GUI frontend to xmodmap
 x11-misc/xlockmore 5.50-r1 5.65-r1 5.66_alpha12-r1 5.66: Just another screensaver application for X
@@ -19094,7 +19094,7 @@ x11-wm/echinus 0.4.9: A window manager for X in the spirit of dwm
 x11-wm/enlightenment 0.24.2-r1: Enlightenment window manager
 x11-wm/evilwm 1.0.1-r1 1.1.1: A minimalist, no frills window manager for X
 x11-wm/fluxbox 1.3.7-r4: X11 window manager featuring tabs and an iconbar
-x11-wm/fvwm 2.6.8-r2 2.6.9: An extremely powerful ICCCM-compliant multiple virtual desktop window manager
+x11-wm/fvwm 2.6.9: An extremely powerful ICCCM-compliant multiple virtual desktop window manager
 x11-wm/goomwwm 1.0.0-r1 9999: Get out of my way, Window Manager!
 x11-wm/herbstluftwm 0.7.2-r1 0.9.1 9999: A manual tiling window manager for X
 x11-wm/i3 4.18 4.18.3 4.19-r1 4.19.1 9999: An improved dynamic tiling window manager
