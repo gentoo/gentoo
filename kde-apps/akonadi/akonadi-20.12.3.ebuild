@@ -9,7 +9,7 @@ KFMIN=5.75.0
 QTMIN=5.15.2
 VIRTUALDBUS_TEST="true"
 VIRTUALX_REQUIRED="test"
-inherit ecm kde.org
+inherit ecm kde.org readme.gentoo-r1
 
 DESCRIPTION="Storage service for PIM data and libraries for PIM apps"
 HOMEPAGE="https://community.kde.org/KDE_PIM/akonadi"
@@ -73,15 +73,9 @@ pkg_setup() {
 	use postgres && DRIVER="QPSQL"
 	use mysql && DRIVER="QMYSQL"
 
-	if use mysql && has_version ">=dev-db/mariadb-10.4"; then
-		ewarn "If an existing Akonadi QMYSQL database is being upgraded using"
-		ewarn ">=dev-db/mariadb-10.4 and KMail stops fetching and sending mail,"
-		ewarn "check ~/.local/share/akonadi/akonadiserver.error for errors like:"
-		ewarn "  \"Cannot add or update a child row: a foreign key constraint fails\""
+	if use mysql && has_version "${CATEGORY}/${PN}[mysql]" && has_version "dev-db/mariadb"; then
 		ewarn
-		ewarn "Manual steps are required to fix it, see also:"
-		ewarn "  https://bugs.gentoo.org/688746 (see Whiteboard)"
-		ewarn "  https://bugs.kde.org/show_bug.cgi?id=409224"
+		ewarn "Attention: Make sure to read README.gentoo after install."
 		ewarn
 	fi
 
@@ -116,6 +110,7 @@ EOF
 	doins "${T}"/akonadiserverrc
 
 	ecm_src_install
+	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
@@ -126,4 +121,6 @@ pkg_postinst() {
 	use postgres && elog "  QPSQL"
 	use sqlite && elog "  QSQLITE3"
 	elog "${DRIVER} has been set as your default akonadi storage backend."
+	use mysql && elog
+	use mysql && FORCE_PRINT_ELOG=1 readme.gentoo_print_elog
 }
