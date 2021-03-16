@@ -5543,7 +5543,7 @@ dev-libs/libixion 0.15.0 0.16.1 9999: General purpose formula parser & interpret
 dev-libs/libjcat 0.1.4 0.1.5 0.1.6: Library and tool for reading and writing Jcat files
 dev-libs/libkpass 6-r1: Libkpass is a C implementation to access KeePass 1.x format password databases
 dev-libs/libksba 1.3.5-r1 1.3.5-r2 1.4.0 1.5.0: X.509 and CMS (PKCS#7) library
-dev-libs/liblinear 242: A Library for Large Linear Classification
+dev-libs/liblinear 242 243: A Library for Large Linear Classification
 dev-libs/liblist 2.4: Generic linked-list manipulation routines, plus queues and stacks
 dev-libs/liblogging 1.0.6: Liblogging is an easy to use, portable, open source library for system logging
 dev-libs/liblognorm 2.0.6: Fast samples-based log normalization library
