@@ -76,6 +76,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.44-blurb-hndl-test-passwd.patch
 	"${FILESDIR}"/${PN}-5.44-gentoo.patch
 	"${FILESDIR}"/${PN}-5.45-gcc.patch
+	"${FILESDIR}"/${PN}-5.45-configure.ac-sandbox.patch
 )
 
 src_prepare() {
