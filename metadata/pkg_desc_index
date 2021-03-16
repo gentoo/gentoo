@@ -13902,7 +13902,7 @@ media-sound/glurp 0.12.3: Glurp is a GTK2 based graphical client for the Music P
 media-sound/gmorgan 0.79-r1: Opensource software rhythm station
 media-sound/gmpc 11.8.16-r1: A GTK+2 client for the Music Player Daemon
 media-sound/gmtp 1.3.11-r1: A simple MTP client for MP3 players
-media-sound/gmusicbrowser 1.1.15_p20190315 9999: An open-source jukebox for large collections of mp3/ogg/flac files
+media-sound/gmusicbrowser 1.1.15_p20190315 1.1.16 9999: An open-source jukebox for large collections of mp3/ogg/flac files
 media-sound/gnomad 2.9.6: A GTK+ music manager for the Portable Digital Entertainment (PDE) protocol
 media-sound/gnome-music 3.36.4.1 3.36.7: Music management for Gnome
 media-sound/gnome-sound-recorder 3.34.0 3.38.1: Simple sound recorder
