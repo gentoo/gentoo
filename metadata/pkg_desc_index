@@ -5856,14 +5856,14 @@ dev-lua/lua-term 0.7-r101: Terminal operations for Lua
 dev-lua/lua-utf8 0.1.3-r100: A UTF-8 support module for Lua and LuaJIT
 dev-lua/lua-zlib 1.2-r100: Simple streaming interface to zlib for Lua
 dev-lua/lua_cliargs 3.0_p2-r100: A command-line argument parsing module for Lua
-dev-lua/luacheck 0.23.0-r100: A tool for linting and static analysis of Lua code
+dev-lua/luacheck 0.23.0-r100 0.24.0: A tool for linting and static analysis of Lua code
 dev-lua/luacov 0.14.0-r100: A simple coverage analyzer for Lua scripts
 dev-lua/luadbi 0.7.2-r102: A database interface library for Lua
 dev-lua/luaevent 0.4.6-r100: Binding of libevent for Lua
 dev-lua/luaexpat 1.3.0-r103: LuaExpat is a SAX XML parser based on the Expat library
 dev-lua/luafilesystem 1.8.0-r101: File System Library for the Lua programming language
 dev-lua/luajson 1.3.4-r100: JSON Parser/Constructor for Lua
-dev-lua/lualdap 1.2.5-r100: A lua binding for the OpenLDAP client libraries
+dev-lua/lualdap 1.2.5: A lua binding for the OpenLDAP client libraries
 dev-lua/luaossl 20200709-r100: Most comprehensive OpenSSL module in the Lua universe
 dev-lua/luaposix 35.0-r101: Bindings for POSIX APIs
 dev-lua/luarocks 3.5.0: A package manager for the Lua programming language
@@ -5872,7 +5872,7 @@ dev-lua/luasocket 3.0_rc1_p20200328-r102: Networking support library for the Lua
 dev-lua/luassert 1.8.0-r101: Assertion library for Lua
 dev-lua/luasystem 0.2.1_p0-r102: Platform independent system calls for Lua
 dev-lua/lutok 0.4-r1 0.4-r2 0.4-r10: Lightweight C++ API library for Lua
-dev-lua/luv 1.32.0.0-r102 1.36.0.0: Bare libuv bindings for lua
+dev-lua/luv 1.36.0.0: Bare libuv bindings for lua
 dev-lua/mediator_lua 1.1.2_p0-r101: Mediator pattern implementation for pub-sub management
 dev-lua/messagepack 0.5.2_p20201025-r100: A pure Lua implementation of the MessagePack serialization format
 dev-lua/mpack 1.0.8-r100: Lua bindings for libmpack

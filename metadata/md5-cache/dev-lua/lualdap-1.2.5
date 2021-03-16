@@ -1,0 +1,17 @@
+BDEPEND=virtual/pkgconfig test? ( net-nds/openldap lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 ) lua_targets_lua5-4? ( dev-lang/lua:5.4 ) )
+DEFINED_PHASES=compile install prepare
+DEPEND=net-nds/openldap lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 ) lua_targets_lua5-4? ( dev-lang/lua:5.4 )
+DESCRIPTION=A lua binding for the OpenLDAP client libraries
+EAPI=7
+HOMEPAGE=https://github.com/lualdap/lualdap
+INHERIT=lua toolchain-funcs
+IUSE=test lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3 lua_targets_lua5-4
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=net-nds/openldap lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 ) lua_targets_lua5-4? ( dev-lang/lua:5.4 )
+REQUIRED_USE=|| ( lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3 lua_targets_lua5-4 )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/lualdap/lualdap/archive/v1.2.5.tar.gz -> lualdap-1.2.5.tar.gz https://github.com/keplerproject/lua-compat-5.3/archive/v0.10.tar.gz -> lua-compat-5.3-0.10.tar.gz
+_eclasses_=multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	lua-utils	736947973cfbc9de01fdb8548f942f82	lua	117840f7c4855d27ccde1c6cca990331
+_md5_=fa6fb73b96457713490ec1eb4649e766

@@ -1,0 +1,16 @@
+BDEPEND=virtual/pkgconfig doc? ( dev-python/sphinx ) test? ( dev-lua/busted[lua_targets_luajit(-)?,lua_targets_lua5-1(-)?,lua_targets_lua5-2(-)?,lua_targets_lua5-3(-)?,lua_targets_lua5-4(-)?] dev-lua/lua-argparse[lua_targets_luajit(-)?,lua_targets_lua5-1(-)?,lua_targets_lua5-2(-)?,lua_targets_lua5-3(-)?,lua_targets_lua5-4(-)?] dev-lua/lua-utf8[lua_targets_luajit(-)?,lua_targets_lua5-1(-)?,lua_targets_lua5-2(-)?,lua_targets_lua5-3(-)?,lua_targets_lua5-4(-)?] dev-lua/luafilesystem[lua_targets_luajit(-)?,lua_targets_lua5-1(-)?,lua_targets_lua5-2(-)?,lua_targets_lua5-3(-)?,lua_targets_lua5-4(-)?] )
+DEFINED_PHASES=compile install test
+DEPEND=dev-lua/lua-argparse[lua_targets_luajit(-)?,lua_targets_lua5-1(-)?,lua_targets_lua5-2(-)?,lua_targets_lua5-3(-)?,lua_targets_lua5-4(-)?] dev-lua/lua-utf8[lua_targets_luajit(-)?,lua_targets_lua5-1(-)?,lua_targets_lua5-2(-)?,lua_targets_lua5-3(-)?,lua_targets_lua5-4(-)?] dev-lua/luafilesystem[lua_targets_luajit(-)?,lua_targets_lua5-1(-)?,lua_targets_lua5-2(-)?,lua_targets_lua5-3(-)?,lua_targets_lua5-4(-)?]
+DESCRIPTION=A tool for linting and static analysis of Lua code
+EAPI=7
+HOMEPAGE=https://github.com/luarocks/luacheck
+INHERIT=lua toolchain-funcs
+IUSE=doc test lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3 lua_targets_lua5-4
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
+LICENSE=MIT
+RDEPEND=dev-lua/lua-argparse[lua_targets_luajit(-)?,lua_targets_lua5-1(-)?,lua_targets_lua5-2(-)?,lua_targets_lua5-3(-)?,lua_targets_lua5-4(-)?] dev-lua/lua-utf8[lua_targets_luajit(-)?,lua_targets_lua5-1(-)?,lua_targets_lua5-2(-)?,lua_targets_lua5-3(-)?,lua_targets_lua5-4(-)?] dev-lua/luafilesystem[lua_targets_luajit(-)?,lua_targets_lua5-1(-)?,lua_targets_lua5-2(-)?,lua_targets_lua5-3(-)?,lua_targets_lua5-4(-)?]
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/luarocks/luacheck/archive/0.24.0.tar.gz -> luacheck-0.24.0.tar.gz
+_eclasses_=multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	lua-utils	736947973cfbc9de01fdb8548f942f82	lua	117840f7c4855d27ccde1c6cca990331
+_md5_=a0ec84f4f72ec1ba1ab4a071a6299a72
