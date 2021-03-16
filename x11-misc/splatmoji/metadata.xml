@@ -5,7 +5,7 @@
 		<email>william@ewpettersson.se</email>
 		<name>William Pettersson</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy maintainers</name>
 	</maintainer>

@@ -5,7 +5,7 @@
 		<email>jollheef@riseup.net</email>
 		<name>Mikhail Klementev</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
