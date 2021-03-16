@@ -45,6 +45,7 @@ src_prepare() {
 
 	mv configure.in configure.ac || die
 	eautoreconf
+	touch ar-lib || die #775680
 }
 
 multilib_src_configure() {
