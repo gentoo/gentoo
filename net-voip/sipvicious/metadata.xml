@@ -5,10 +5,9 @@
 		<email>jaco@uls.co.za</email>
 		<name>Jaco Kroon</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="proxy">
 		<email>sam@gentoo.org</email>
 		<name>Sam James</name>
-		<description>Proxy</description>
 	</maintainer>
 	<stabilize-allarches/>
 </pkgmetadata>
