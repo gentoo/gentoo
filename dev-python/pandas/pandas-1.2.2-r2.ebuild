@@ -46,7 +46,6 @@ OPTIONAL_DEPEND="
 		>=dev-python/xarray-0.10.8[${PYTHON_USEDEP}]
 	' python3_{6,7})
 	>=dev-python/sqlalchemy-0.8.1[${PYTHON_USEDEP}]
-	>=dev-python/xlrd-1.0.0[${PYTHON_USEDEP}]
 	dev-python/xlwt[${PYTHON_USEDEP}]
 	>=dev-python/scipy-1.1[${PYTHON_USEDEP}]
 	X? (
@@ -79,7 +78,6 @@ DEPEND="${COMMON_DEPEND}
 		dev-python/pytz[${PYTHON_USEDEP}]
 		dev-python/rpy[${PYTHON_USEDEP}]
 		dev-python/sphinx[${PYTHON_USEDEP}]
-		dev-python/xlrd[${PYTHON_USEDEP}]
 		dev-python/xlwt[${PYTHON_USEDEP}]
 		dev-python/scipy[${PYTHON_USEDEP}]
 		x11-misc/xclip
@@ -122,12 +120,6 @@ python_prepare_all() {
 }
 
 python_compile() {
-	if use amd64 || use x86; then
-		# FMA apparently breaks rolling var/stdev
-		# https://github.com/pandas-dev/pandas/issues/38921
-		append-flags -mno-fma
-	fi
-
 	distutils-r1_python_compile -j1
 }
 
@@ -147,6 +139,11 @@ src_test() {
 
 python_test() {
 	local deselect=(
+		# broken on practically any hardware/CFLAGS but the one
+		# the patch author was using
+		# https://github.com/pandas-dev/pandas/issues/38921
+		pandas/tests/window/test_rolling.py::test_rolling_var_numerical_issues
+
 		# weird issue, doesn't seem very important
 		'pandas/tests/base/test_misc.py::test_memory_usage[series-with-empty-index]'
 	)
@@ -181,7 +178,7 @@ pkg_postinst() {
 	optfeature "for msgpack compression using blosc" dev-python/blosc
 	optfeature "Template engine for conditional HTML formatting" dev-python/jinja
 	optfeature "Plotting support" dev-python/matplotlib
-	optfeature "Needed for Excel I/O" ">=dev-python/openpyxl-1.6.1" dev-python/xlsxwriter dev-python/xlrd dev-python/xlwt
+	optfeature "Needed for Excel I/O" ">=dev-python/openpyxl-1.6.1" dev-python/xlsxwriter dev-python/xlwt
 	optfeature "necessary for HDF5-based storage" ">=dev-python/pytables-3.2.1"
 	optfeature "R I/O support" dev-python/rpy
 	optfeature "Needed for parts of pandas.stats" dev-python/statsmodels
