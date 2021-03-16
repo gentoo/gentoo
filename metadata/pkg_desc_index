@@ -8723,7 +8723,7 @@ dev-python/packaging 20.9: Core utilities for Python packages
 dev-python/pafy 0.5.5 9999: Python library to retrieve YouTube content and metadata
 dev-python/paho-mqtt 1.5.1: A client class with support for MQTT v5.0, v3.1.1, and v3.1
 dev-python/pallets-sphinx-themes 1.1.2: Sphinx themes for Pallets and related projects
-dev-python/pandas 1.1.5-r1 1.2.1-r2 1.2.2-r1 1.2.3-r2: Powerful data structures for data analysis and statistics
+dev-python/pandas 1.1.5-r2 1.2.1-r3 1.2.2-r2 1.2.3-r3: Powerful data structures for data analysis and statistics
 dev-python/pandas-datareader 0.9.0: Pandas DataFrame extraction from a wide range of Internet sources
 dev-python/pandocfilters 1.4.3: Utilities for writing pandoc filters in python
 dev-python/parameterized 0.8.1: Parameterized testing with any Python test framework
@@ -18134,7 +18134,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.6.2: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 89.0.4389.72 89.0.4389.82 90.0.4430.11: Open-source version of Google Chrome web browser
+www-client/chromium 89.0.4389.72 89.0.4389.90 90.0.4430.11: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5-r3 3.1_pre20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.13.4-r1 0.13.5 0.13.5-r100 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.34.4 3.36.4: GNOME webbrowser based on Webkit
