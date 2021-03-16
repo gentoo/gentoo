@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install pretend
+DEPEND=dev-libs/nettle:0= >=net-libs/gnutls-3.5.7:= test? ( dev-util/cppunit )
+DESCRIPTION=C++ library offering some basic functionality for platform-independent programs
+EAPI=7
+HOMEPAGE=https://lib.filezilla-project.org/
+INHERIT=flag-o-matic
+IUSE=test
+KEYWORDS=~amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2+
+RDEPEND=dev-libs/nettle:0= >=net-libs/gnutls-3.5.7:=
+RESTRICT=!test? ( test )
+SLOT=0/12
+SRC_URI=https://download.filezilla-project.org/libfilezilla/libfilezilla-0.27.1.tar.bz2
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741
+_md5_=439e066587c05225d636fe90a4f41c69
