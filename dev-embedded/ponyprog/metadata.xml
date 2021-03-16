@@ -5,7 +5,7 @@
 		<email>embedded@gentoo.org</email>
 		<name>Embedded Gentoo</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>ktrace@yandex.ru</email>
 		<name>Victor Kustov</name>
 	</maintainer>

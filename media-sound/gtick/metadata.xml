@@ -5,7 +5,7 @@
 		<email>sound@gentoo.org</email>
 		<name>Gentoo Sound project</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>alexander@tsoy.me</email>
 		<name>Alexander Tsoy</name>
 	</maintainer>

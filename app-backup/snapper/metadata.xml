@@ -6,7 +6,7 @@
 		It can create, delete and compare snapshots and undo changes done
 		between  snapshots. It supports both btrfs and ext4.
 	</longdescription>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>pastas4@gmail.com</email>
 		<name>Dainius Masiliūnas (GreatEmerald)</name>
 	</maintainer>

@@ -5,7 +5,7 @@
 		<email>robbat2@gentoo.org</email>
 		<name>Robin H. Johnson</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>lists@xunil.at</email>
 		<name>Stefan G. Weichinger</name>
 	</maintainer>
@@ -13,7 +13,7 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>dustin@v.igoro.us</email>
 		<description>Upstream. Please CC on bugs.</description>
 		<name>Dustin J. Mitchell</name>

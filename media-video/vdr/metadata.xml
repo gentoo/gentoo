@@ -5,7 +5,7 @@
 		<email>hd_brummy@gentoo.org</email>
 		<name>Joerg Bornkessel</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>martin.dummer@gmx.net</email>
 		<name>Martin Dummer</name>
 	</maintainer>

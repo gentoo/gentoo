@@ -5,7 +5,7 @@
 		<email>tamiko@gentoo.org</email>
 		<name>Matthias Maier</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>waebbl-gentoo@posteo.net</email>
 		<name>Bernd Waibel</name>
 	</maintainer>

@@ -12,7 +12,7 @@
 		variable gamespeed, re-record, walkcam, chasecam, full mouselook, FOV,
 		and other features without loss of compatibility with the original Doom.
 	</longdescription>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>vilhelm.gray@gmail.com</email>
 		<name>William Breathitt Gray</name>
 	</maintainer>

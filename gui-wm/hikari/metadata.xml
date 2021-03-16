@@ -7,7 +7,7 @@
         of CWM in the X days. It aims stay out of your way
         and focus more on the task than the windows.
     </longdescription>
-    <maintainer type="person">
+    <maintainer type="person" proxied="yes">
         <email>gentoo@aisha.cc</email>
         <name>Aisha Tammy</name>
     </maintainer>

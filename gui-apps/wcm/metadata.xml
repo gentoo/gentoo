@@ -6,7 +6,7 @@
         Allows to reload changes on the fly without
         needing to restart wayfire.
     </longdescription>
-    <maintainer type="person">
+    <maintainer type="person" proxied="yes">
         <email>gentoo@aisha.cc</email>
         <name>Aisha Tammy</name>
     </maintainer>

@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- bogus commit to force manifest regeneration #596462 -->
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>otakuto.gentoo@gmail.com</email>
 		<name>Tact Yoshida</name>
 	</maintainer>

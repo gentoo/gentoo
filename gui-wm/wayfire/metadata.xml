@@ -6,7 +6,7 @@
         Aims to bring desktop features such as 3D cube, fire burn,
         fisheye, wrot and all other desktop effects to wayland.
     </longdescription>
-    <maintainer type="person">
+    <maintainer type="person" proxied="yes">
         <email>gentoo@aisha.cc</email>
         <name>Aisha Tammy</name>
     </maintainer>

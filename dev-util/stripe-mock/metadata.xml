@@ -5,7 +5,7 @@
      <email>cedk@gentoo.org</email>
      <name>Cédric Krier</name>
   </maintainer>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>m.seifert@digitalernachschub.de</email>
     <name>Michael Seifert</name>
   </maintainer>

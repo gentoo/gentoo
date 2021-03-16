@@ -8,7 +8,7 @@
 		a dynamically sized bar, placed at one of the
 		screen edges.
 	</longdescription>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>gentoo@aisha.cc</email>
 		<name>Aisha Tammy</name>
 	</maintainer>

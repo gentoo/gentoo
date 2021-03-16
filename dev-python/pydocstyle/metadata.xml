@@ -9,7 +9,7 @@
     <email>monsieurp@gentoo.org</email>
     <name>Patrice Clement</name>
   </maintainer>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>andrewammerlaan@riseup.net</email>
     <name>Andrew Ammerlaan</name>
   </maintainer>
