@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -159,8 +159,8 @@ src_install() {
 	rm "${ED}"/usr/share/doc/"${PF}"/Makefile* || die "Failed to remove doc make files"
 
 	# Remove unneeded .la files (Bug #382863)
-	rm "${ED}"/usr/$(get_libdir)/snort_dynamicengine/libsf_engine.la || die
-	rm "${ED}"/usr/$(get_libdir)/snort_dynamicpreprocessor/libsf_*_preproc.la || die "Failed to remove libsf_?_preproc.la"
+	rm -f "${ED}"/usr/$(get_libdir)/snort_dynamicengine/libsf_engine.la || die
+	rm -f "${ED}"/usr/$(get_libdir)/snort_dynamicpreprocessor/libsf_*_preproc.la || die "Failed to remove libsf_?_preproc.la"
 
 	# Set the correct lib path for dynamicengine, dynamicpreprocessor, and dynamicdetection
 	sed -i -e 's|/usr/local/lib|/usr/'$(get_libdir)'|g' \
