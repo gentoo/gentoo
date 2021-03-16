@@ -14053,7 +14053,7 @@ media-sound/qsampler 0.9.1 9999: Graphical frontend to the LinuxSampler engine
 media-sound/qsynth 0.9.1 9999: Qt application to control FluidSynth
 media-sound/qtagger 1.0.1_p20150402: Simple Qt5 ID3v2 tag editor
 media-sound/qtgain 1.0.0: Simple frontend to mp3gain, vorbisgain and metaflac
-media-sound/qtractor 0.9.19 0.9.20: Audio/MIDI multi-track sequencer written in C++ with the Qt framework
+media-sound/qtractor 0.9.20: Audio/MIDI multi-track sequencer written in C++ with the Qt framework
 media-sound/qtscrobbler 0.11_pre20130123: Updates last.fm profiles using information from supported portable music players
 media-sound/quimup 1.4.4: Qt5 client for the music player daemon (MPD)
 media-sound/quodlibet 4.3.0: audio library tagger, manager, and player for GTK+
