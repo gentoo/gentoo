@@ -8458,7 +8458,7 @@ dev-python/intreehooks 1.0: Load a PEP 517 backend from inside the source tree
 dev-python/iocapture 0.1.2-r2: Capture stdout, stderr easily
 dev-python/ioflo 2.0.0 2.0.2: Automated Reasoning Engine and Flow Based Programming Framework
 dev-python/ipaddr 2.2.0-r1: Python IP address manipulation library
-dev-python/ipdb 0.10.3-r1 0.13.5 0.13.6: IPython-enabled pdb
+dev-python/ipdb 0.10.3-r1 0.13.5 0.13.6 0.13.7: IPython-enabled pdb
 dev-python/ipy 1.01: Class and tools for handling of IPv4 and IPv6 addresses and networks
 dev-python/ipykernel 5.4.3 5.5.0: IPython Kernel for Jupyter
 dev-python/ipyparallel 6.3.0-r1: Interactive Parallel Computing with IPython
@@ -9380,7 +9380,7 @@ dev-python/uncertainties 3.1.4-r1: Python module for calculations with uncertain
 dev-python/unicodecsv 0.14.1-r1: Drop-in replacement for python stdlib csv module supporting unicode
 dev-python/unidecode 1.2.0: Module providing ASCII transliterations of Unicode text
 dev-python/unittest-mixins 1.6-r1: A set of mixin classes and other helpers for unittest test case classes
-dev-python/unittest-or-fail 0: Run unittests or fail if no tests were found
+dev-python/unittest-or-fail 0 1: Run unittests or fail if no tests were found
 dev-python/unittest2 1.1.0-r1: The new features in unittest backported to Python 2.4+
 dev-python/uranium 4.8.0: A Python framework for building 3D printing related applications
 dev-python/urdf_parser_py 0.4.3: URDF parser for Python
@@ -14341,7 +14341,7 @@ net-analyzer/arping 2.17 2.20 2.21 9999: A utility to see if a specific IP addre
 net-analyzer/arpoison 0.7: A utility to poison ARP caches
 net-analyzer/arpon 2.7.2 2.7.2-r1 3.0: ArpON (Arp handler inspectiON) is a portable Arp handler
 net-analyzer/arptools 1.0.2: a collection of libnet and libpcap based ARP utilities
-net-analyzer/arpwatch 2.1.15-r11 3.1-r1: An ethernet monitor program that keeps track of ethernet/IP address pairings
+net-analyzer/arpwatch 2.1.15-r11 3.1-r2: An ethernet monitor program that keeps track of ethernet/IP address pairings
 net-analyzer/authforce 0.9.9-r2 0.9.9-r3: An HTTP authentication brute forcer
 net-analyzer/barnyard 0.2.0-r6: Fast output system for Snort
 net-analyzer/barnyard2 1.9-r2 1.13: Parser for Snort unified/unified2 files

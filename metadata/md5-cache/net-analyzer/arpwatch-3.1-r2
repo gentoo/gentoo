@@ -1,5 +1,5 @@
 BDEPEND=virtual/pkgconfig
-DEFINED_PHASES=configure install postinst setup
+DEFINED_PHASES=install postinst setup
 DEPEND=net-libs/libpcap sys-libs/ncurses:*
 DESCRIPTION=An ethernet monitor program that keeps track of ethernet/IP address pairings
 EAPI=7
@@ -12,4 +12,4 @@ RDEPEND=net-libs/libpcap sys-libs/ncurses:* selinux? ( sec-policy/selinux-arpwat
 SLOT=0
 SRC_URI=https://ee.lbl.gov/downloads/arpwatch/arpwatch-3.1.tar.gz https://dev.gentoo.org/~jer/ethercodes.dat-20200628.xz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8
-_md5_=cd25ae2a0f7434a19a3f93696184d6f2
+_md5_=ec987726bc930208bb33455d57843133
