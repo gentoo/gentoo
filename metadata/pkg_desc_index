@@ -693,7 +693,7 @@ app-admin/hcloud 1.20.0 1.21.0: A command-line interface for Hetzner Cloud
 app-admin/hddtemp 0.3_beta15-r29: A simple utility to read the temperature of SMART capable hard drives
 app-admin/helm 3.3.4 3.4.1 3.4.2: Kubernetes Package Manager
 app-admin/ide-smart 1.4-r2: A tool to read SMART information from harddiscs
-app-admin/integrit 4.1-r1: file integrity verification program
+app-admin/integrit 4.1-r1 4.2_rc1: file integrity verification program
 app-admin/keepass 2.46 2.47: A free, open source, light-weight and easy-to-use password manager
 app-admin/keepassxc 2.6.3-r1 2.6.4-r2 9999: KeePassXC - KeePass Cross-platform Community Edition
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
@@ -12688,7 +12688,7 @@ media-fonts/comic-neue 2.2 2.3: Typographically savvy casual script typeface
 media-fonts/corefonts 1-r7: Microsoft's TrueType core fonts
 media-fonts/courier-prime 1.203: A redesign of Courier
 media-fonts/cronyx-fonts 2.3.8: Cronyx Cyrillic bitmap fonts for X
-media-fonts/croscorefonts 1.23.0 1.31.0: Open licensed fonts metrically compatible with MS corefonts
+media-fonts/croscorefonts 1.31.0: Open licensed fonts metrically compatible with MS corefonts
 media-fonts/crosextrafonts-caladea 20130214: Open licensed serif font metrically compatible with Cambria
 media-fonts/crosextrafonts-carlito 20130920: Open licensed sans-serif font metrically compatible with Calibri
 media-fonts/culmus 0.120-r5 0.133: Hebrew Type1 fonts
@@ -12831,7 +12831,7 @@ media-fonts/pothana2k 2006-r1: Pothana 2000 and Vemana fonts for the Telugu scri
 media-fonts/powerline-symbols 20150224 20170508: OpenType Unicode font with symbols for Powerline/Airline
 media-fonts/proggy-fonts 1: A set of monospaced bitmap programming fonts
 media-fonts/qomolangma 2012.05: Tibetan Unicode Ucan and Umed fonts
-media-fonts/quivira 4.0 4.1: Unicode font with emoticons and elder scripts like Runes, Gothic, ancient Greek
+media-fonts/quivira 4.1: Unicode font with emoticons and elder scripts like Runes, Gothic, ancient Greek
 media-fonts/ricty 3.2.0-r2: A beautiful sans-serif monotype Japanese font designed for code listings
 media-fonts/roboto 2.138: Standard font for Android 4.0 (Ice Cream Sandwich) and later
 media-fonts/sazanami 20040629: Sazanami Japanese TrueType fonts
@@ -12849,7 +12849,7 @@ media-fonts/sil-padauk 2.8-r1: SIL fonts for Myanmar script
 media-fonts/solarize 0_pre20140818 9999: Large Linux console font (suitable for word processing)
 media-fonts/sophia-nubian 1.0: Unicode sans-serif typeface for Coptic/Nubian languages
 media-fonts/source-han-sans 1.001 1.004: Pan-CJK OpenType/CFF font family
-media-fonts/source-pro 20141211 20160608 20170111: Adobe's open source typeface family designed for UI environments
+media-fonts/source-pro 20170111: Adobe's open source typeface family designed for UI environments
 media-fonts/stix-fonts 1.1.1 2.0.0: Comprehensive OpenType font set of mathematical symbols and alphabets
 media-fonts/takao-fonts 003.02.01: A community developed derivatives of IPA Fonts
 media-fonts/tengwar-fonts 1.9d: Tengwar - the Elvish letters, created by Feanor and described by J.R.R.Tolkien)

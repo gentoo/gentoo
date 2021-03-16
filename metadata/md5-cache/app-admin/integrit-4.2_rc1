@@ -1,0 +1,13 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=compile install postinst prepare
+DESCRIPTION=file integrity verification program
+EAPI=7
+HOMEPAGE=http://integrit.sourceforge.net/
+INHERIT=autotools
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/integrit/integrit/archive/v4.2-rc1.tar.gz -> integrit-4.2_rc1.tar.gz
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9988ecbe04129214297a7bbf3d253710
+_md5_=a5dd7149a1d49878e0ed8db2b4bdce33
