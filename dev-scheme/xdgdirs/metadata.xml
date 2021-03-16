@@ -3,10 +3,8 @@
 <pkgmetadata>
 	<maintainer type="project">
 		<email>netmon@gentoo.org</email>
-		<name>Gentoo network monitoring and analysis project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">gabgio/knocker</remote-id>
-		<remote-id type="sourceforge">knocker</remote-id>
+		<changelog>https://www.gnuvola.org/software/xdgdirs/NEWS</changelog>
 	</upstream>
 </pkgmetadata>
