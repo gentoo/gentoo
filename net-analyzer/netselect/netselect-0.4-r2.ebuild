@@ -25,7 +25,7 @@ PATCHES=(
 
 DOCS=( HISTORY README )
 
-FILECAPS=( -g wheel cap_net_raw /usr/bin/netselect )
+FILECAPS=( -g wheel cap_net_raw usr/bin/netselect )
 
 src_prepare() {
 	use ipv6 && eapply "${WORKDIR}"/${PN}-0.4-ipv6.patch
