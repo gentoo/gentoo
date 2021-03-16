@@ -11926,6 +11926,7 @@ games-util/xboxdrv 0.8.8_p20190118: Userspace Xbox 360 Controller driver
 games-util/xgame 1.7.1-r1: Run games in a separate X session
 games-util/xgame-gtk2 2.0.2-r1: Run games in a separate X session
 games-util/xgamer 0.6.2: A launcher for starting games in a second X session
+games-util/xpadneo 0.9 9999: Advanced Linux Driver for Xbox One Wireless Controller
 games-util/xqf 1.0.6.2: A server browser for many FPS games (frontend for qstat)
 gnome-base/dconf 0.34.0 0.36.0 0.40.0: Simple low-level configuration system
 gnome-base/dconf-editor 3.36.4 3.38.2: Graphical tool for editing the dconf configuration database
@@ -14577,7 +14578,7 @@ net-analyzer/tcpreen 1.4.4: TCP network re-engineering tool
 net-analyzer/tcpreplay 4.3.3 999999: utilities for editing and replaying previously captured network traffic
 net-analyzer/tcpslice 1.2a_p3_p4: Extract and concatenate portions of pcap files
 net-analyzer/tcpstat 1.5-r3 1.5_p8: Reports network interface statistics
-net-analyzer/tcptrace 6.6.7_p4_p1 6.6.7_p5 6.6.7_p6: A Tool for analyzing network packet dumps
+net-analyzer/tcptrace 6.6.7_p6: A Tool for analyzing network packet dumps
 net-analyzer/tcptraceroute 1.5_beta7-r3: tcptraceroute is a traceroute implementation using TCP packets
 net-analyzer/tcptrack 1.4.2: Passive per-connection tcp bandwidth monitor
 net-analyzer/telegraf 1.10.4 1.11.5 1.12.1 1.13.3 1.14.5 1.15.2: The plugin-driven server agent for collecting & reporting metrics.
