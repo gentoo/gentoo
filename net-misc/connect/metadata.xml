@@ -16,4 +16,3 @@ Connect は SOCKS 経由のネットワーク接続と HTTP プロクシを実�
 		<remote-id type="github">gotoh/ssh-connect</remote-id>
 	</upstream>
 </pkgmetadata>
-

@@ -14,7 +14,7 @@
 		
 		The io-streams library contains simple and easy-to-use primitives for I/O
 		using streams. Most users will want to import the top-level convenience
-		module &quot;System.IO.Streams&quot;, which re-exports most of the library:
+		module "System.IO.Streams", which re-exports most of the library:
 		
 		@
 		import           System.IO.Streams (InputStream, OutputStream)
@@ -22,7 +22,7 @@
 		@
 		
 		For first-time users, @io-streams@ comes with an included tutorial, which can
-		be found in the &quot;System.IO.Streams.Tutorial&quot; module.
+		be found in the "System.IO.Streams.Tutorial" module.
 		
 		/Features/
 		
@@ -50,19 +50,19 @@
 		Stream composition leaves the original stream accessible:
 		
 		@
-		ghci&gt; input \&lt;- Streams.fromByteString \&quot;long string\&quot;
+		ghci&gt; input \&lt;- Streams.fromByteString \"long string\"
 		ghci&gt; wrapped \&lt;- Streams.takeBytes 4 input
 		ghci&gt; Streams.read wrapped
-		Just \&quot;long\&quot;
+		Just \"long\"
 		ghci&gt; Streams.read wrapped
 		Nothing
 		ghci&gt; Streams.read input
-		Just \&quot; string\&quot;
+		Just \" string\"
 		@
 		
 		Simple types and operations in the IO monad mean straightforward and simple
 		exception handling and resource cleanup using Haskell standard library
-		facilities like &#39;Control.Exception.bracket&#39;.
+		facilities like 'Control.Exception.bracket'.
 		
 		@io-streams@ comes with:
 		

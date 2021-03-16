@@ -7,7 +7,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<use>
-		<flag name='depgraph-order'>
+		<flag name="depgraph-order">
 			Process packages in depgraph order whenever possible.
 		</flag>
 	</use>

@@ -22,15 +22,15 @@
 		using @Generics@-derivable helpers.
 		
 		This package differs from &lt;http://hackage.haskell.org/package/gdiff gdiff&gt;,
-		in a two ways: @tree-diff@ doesn&#39;t have patch function,
-		and the &quot;edit-script&quot; is a tree itself, which is useful for pretty-printing.
+		in a two ways: @tree-diff@ doesn't have patch function,
+		and the "edit-script" is a tree itself, which is useful for pretty-printing.
 		
 		@
-		&gt;&gt;&gt; prettyEditExpr $ ediff (Foo 42 [True, False] &quot;old&quot;) (Foo 42 [False, False, True] &quot;new&quot;)
+		&gt;&gt;&gt; prettyEditExpr $ ediff (Foo 42 [True, False] "old") (Foo 42 [False, False, True] "new")
 		Foo
 		{fooBool = [-True, +False, False, +True],
 		fooInt = 42,
-		fooString = -&quot;old&quot; +&quot;new&quot;}
+		fooString = -"old" +"new"}
 		@
 	</longdescription>
 </pkgmetadata>

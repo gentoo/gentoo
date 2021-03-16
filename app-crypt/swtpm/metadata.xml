@@ -13,4 +13,3 @@
 		<flag name="fuse">Support sys-fs/fuse based /dev/tpm interface</flag>
 	</use>
 </pkgmetadata>
-
