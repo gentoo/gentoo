@@ -1,0 +1,56 @@
+Fix various preprocessor, compiler, and linker flags added to config wrappers.
+Previously they would add build time flags to the files which is incorrect.
+
+--- GraphicsMagick-1.3.19/configure.ac
++++ GraphicsMagick-1.3.19/configure.ac
+@@ -346,6 +346,7 @@
+ 
+ AC_OPENMP([C])
+ CFLAGS="$OPENMP_CFLAGS $CFLAGS"
++MAGICK_API_CFLAGS="$MAGICK_API_CFLAGS $OPENMP_CFLAGS"
+ #CXXFLAGS="$OPENMP_CXXFLAGS $CXXFLAGS"
+ #LDFLAGS="$LDFLAGS $OPENMP_CFLAGS"
+ AC_SUBST(OPENMP_CFLAGS)
+@@ -3407,9 +3408,10 @@
+ MAGICK_DEP_LIBS=`echo $MAGICK_DEP_LIBS | sed -e 's/  */ /g'`
+ #LIBS=`echo $LIBS | sed -e 's/  */ /g'`
+ 
+-MAGICK_API_CFLAGS=$CFLAGS
++MAGICK_API_CFLAGS=`echo $MAGICK_API_CFLAGS | sed -e 's/  */ /g'`
+ MAGICK_API_CPPFLAGS=`echo $MAGICK_API_CPPFLAGS | sed -e 's/  */ /g'`
+-MAGICK_API_LDFLAGS="-L$LIB_DIR $LDFLAGS"
++MAGICK_API_CXXFLAGS=""
++MAGICK_API_LDFLAGS="-L$LIB_DIR"
+ MAGICK_API_DEP_LIBS="$MAGICK_DEP_LIBS"
+ MAGICK_API_LIBS="-lGraphicsMagick $MAGICK_API_DEP_LIBS"
+ 
+@@ -3440,6 +3442,7 @@
+ 
+ AC_SUBST(MAGICK_API_CFLAGS)
+ AC_SUBST(MAGICK_API_CPPFLAGS)
++AC_SUBST(MAGICK_API_CXXFLAGS)
+ AC_SUBST(MAGICK_API_PC_CPPFLAGS)
+ AC_SUBST(MAGICK_API_LDFLAGS)
+ AC_SUBST(MAGICK_API_LIBS)
+--- GraphicsMagick-1.3.19/magick/GraphicsMagick-config.in
++++ GraphicsMagick-1.3.19/magick/GraphicsMagick-config.in
+@@ -30,7 +30,7 @@
+       echo @PACKAGE_VERSION@
+       ;;
+     --cflags)
+-      echo '@CFLAGS@'
++      echo '@MAGICK_API_CFLAGS@'
+       ;;
+     --cppflags)
+       echo '@MAGICK_API_CPPFLAGS@'
+--- GraphicsMagick-1.3.19/Magick++/bin/GraphicsMagick++-config.in
++++ GraphicsMagick-1.3.19/Magick++/bin/GraphicsMagick++-config.in
+@@ -33,7 +33,7 @@
+       echo '@MAGICK_API_CPPFLAGS@'
+       ;;
+     --cxxflags)
+-      echo '@CXXFLAGS@'
++      echo '@MAGICK_API_CXXFLAGS@'
+       ;;
+     --ldflags)
+       echo '@MAGICK_API_LDFLAGS@'

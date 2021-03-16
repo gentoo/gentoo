@@ -3,12 +3,11 @@
 
 EAPI=7
 
-MY_P=${PN}-${PV}
+MY_P=${PN}2-${PV}
 
 DESCRIPTION="Static HTML image gallery generator"
 HOMEPAGE="https://igal.trexler.at"
-SRC_URI="https://github.com/solbu/igal2/releases/tag/v2.4"
-
+SRC_URI="https://github.com/solbu/igal2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
@@ -22,14 +21,11 @@ DEPEND=""
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=( "${FILESDIR}"/igal-2.0-no-defined.patch )
-
 src_prepare() {
 	default
-	sed -e "s:/usr/local/lib/igal2:/usr/share/igal2:g" \
-		-i igal2 -i igal2.1 || die
-	sed -i -e "s:/usr/local/bin/igal2:/usr/bin/igal2:" \
-		utilities/igal2.sh || die
+	sed -i "s!/usr/local!${EPREFIX}/usr!" igal2 igal2.1 igal2.pl \
+		utilities/igal2-cron.sh utilities/igal2-cron1.sh utilities/igal2.sh
+
 }
 
 src_compile() { :; }

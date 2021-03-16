@@ -1,0 +1,38 @@
+diff -r 50395430a371 -r 83b4d2b4b873 coders/wpg.c
+--- a/coders/wpg.c	Sat May 30 10:18:16 2020 -0500
++++ b/coders/wpg.c	Sat May 30 17:33:51 2020 -0500
+@@ -403,7 +403,7 @@
+   x++; \
+   if((long) x>=ldblk) \
+   { \
+-    if(InsertRow(BImgBuff,y,image,bpp)==MagickFail) RetVal=-6; \
++    if(InsertRow(BImgBuff,y,image,bpp)==MagickFail) { RetVal=-6; goto unpack_wpg_raser_error; } \
+     x=0; \
+     y++; \
+     if(y>=image->rows) break; \
+@@ -537,6 +537,7 @@
+         }
+       }
+     }
++unpack_wpg_raser_error:;
+   MagickFreeMemory(BImgBuff);
+   return(RetVal);
+ }
+@@ -552,7 +553,7 @@
+   x++; \
+   if((long) x >= ldblk) \
+   { \
+-    if(InsertRow(BImgBuff,(long) y,image,bpp)==MagickFail) RetVal=-6; \
++    if(InsertRow(BImgBuff,(long) y,image,bpp)==MagickFail) { RetVal=-6; goto unpack_wpg2_error; } \
+     x=0; \
+     y++; \
+     XorMe = 0; \
+@@ -729,6 +730,7 @@
+             }
+         }
+     }
++unpack_wpg2_error:;
+   FreeUnpackWPG2RasterAllocs(BImgBuff,UpImgBuff);
+   return(RetVal);
+ }
+
