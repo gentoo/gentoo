@@ -40,11 +40,6 @@ pkg_postinst() {
 	enewuser arpwatch -1 -1 -1 arpwatch
 }
 
-src_configure() {
-	econf \
-		ac_cv_path_V_SENDMAIL=sendmail
-}
-
 src_install() {
 	dosbin arp2ethers arpfetch arpsnmp arpwatch bihourly.sh massagevendor.py update-ethercodes.sh
 	doman arpsnmp.8 arpwatch.8
