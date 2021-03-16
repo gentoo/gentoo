@@ -10,6 +10,7 @@
 		<name>Gentoo Base System</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">rsmarples/dhcpcd</remote-id>
 		<remote-id type="cpe">cpe:/a:roy_marples:dhcpcd</remote-id>
 	</upstream>
 	<use>
