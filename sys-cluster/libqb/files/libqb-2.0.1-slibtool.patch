@@ -1,0 +1,19 @@
+https://github.com/ClusterLabs/libqb/pull/440
+https://bugs.gentoo.org/775605
+
+From 84c09815fee4d1c2571ed1ef772812cac470a8f3 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Tue, 16 Mar 2021 11:13:45 -0700
+Subject: [PATCH] build: Fix undefined pthread reference.
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -38,7 +38,8 @@ bmc_SOURCES = bmc.c
+ bmc_LDADD = $(top_builddir)/lib/libqb.la
+ 
+ bmcpt_SOURCES = bmcpt.c
+-bmcpt_LDADD = $(top_builddir)/lib/libqb.la
++bmcpt_CFLAGS = $(PTHREAD_CFLAGS)
++bmcpt_LDADD = $(PTHREAD_LIBS) $(top_builddir)/lib/libqb.la
+ 
+ bms_SOURCES = bms.c
+ bms_CFLAGS = $(GLIB_CFLAGS)
