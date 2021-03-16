@@ -5492,7 +5492,7 @@ dev-libs/libdshconfig 0.20.13: Library for parsing dsh.style configuration files
 dev-libs/libdynd 0.7.2-r1: C++ dynamic multi-dimensionnal array library with Python exposure
 dev-libs/libe 0.11.0: Hyperdex libe support library
 dev-libs/libebml 1.4.2: Extensible binary format library (kinda like XML)
-dev-libs/libedit 20191211.3.1: BSD replacement for libreadline
+dev-libs/libedit 20191211.3.1 20210216.3.1: BSD replacement for libreadline
 dev-libs/libee 0.4.1: An Event Expression Library inspired by CEE
 dev-libs/libelf 0.8.13-r2: A ELF object file access library
 dev-libs/liberasurecode 1.6.2: Erasure Code API library written in C with pluggable Erasure Code backends.
@@ -10904,7 +10904,7 @@ dev-util/herdtools7 7.47 7.51: The Herd toolsuite to deal with .cat memory model
 dev-util/hermes 2.8_p20180315 9999: Lua based testing manager
 dev-util/hfstospell 0.5.2-r1: HFST spell checker library and command line tool
 dev-util/hip 4.0.0 4.0.0-r1: C++ Heterogeneous-Compute Interface for Portability
-dev-util/howdoi 2.0.7 2.0.8 2.0.10 2.0.13: A code search tool
+dev-util/howdoi 2.0.7 2.0.13 2.0.14: A code search tool
 dev-util/huc 0.1-r1: HTML umlaut conversion tool
 dev-util/hxd 0.70.02-r2: Binary to hexadecimal converter
 dev-util/hxtools 20201116: A collection of tools and scripts

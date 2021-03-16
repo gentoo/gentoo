@@ -3,12 +3,13 @@ DEFINED_PHASES=compile configure install prepare test
 DESCRIPTION=A code search tool
 EAPI=7
 HOMEPAGE=https://pypi.org/project/howdoi/
+INHERIT=distutils-r1
 IUSE=python_targets_python3_7 python_targets_python3_8
 KEYWORDS=~amd64 ~x86
 LICENSE=MIT
 RDEPEND=dev-python/appdirs[python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-)] dev-python/cachelib[python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-)] dev-python/keep[python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-)] dev-python/pygments[python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-)] >=dev-python/pyquery-1.4.1[python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-)] >=dev-python/requests-2.24.0[python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-)] python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-)]
 REQUIRED_USE=|| ( python_targets_python3_7 python_targets_python3_8 )
 SLOT=0
-SRC_URI=mirror://pypi/h/howdoi/howdoi-2.0.10.tar.gz
-_eclasses_=distutils-r1	16579e06f8839831bd5c03455bb87e3f	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	6d099888c5b4dd4868c26508df307e95	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+SRC_URI=mirror://pypi/h/howdoi/howdoi-2.0.14.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-r1	6d099888c5b4dd4868c26508df307e95	distutils-r1	16579e06f8839831bd5c03455bb87e3f
 _md5_=b8aece26017a992a5d4c0e78e19e856b
