@@ -15,6 +15,7 @@ KEYWORDS="~amd64 ~arm ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="ssl"
 
 RDEPEND="
+	dev-libs/json-c:=
 	net-libs/libnet:1.1
 	net-libs/libpcap
 	ssl? ( >=dev-libs/openssl-1:0= )
