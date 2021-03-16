@@ -1,13 +1,14 @@
-BDEPEND=virtual/pkgconfig >=dev-util/intltool-0.40.1 sys-devel/gettext
+BDEPEND=>=dev-util/intltool-0.40.1 sys-devel/gettext virtual/pkgconfig
 DEFINED_PHASES=install postinst postrm preinst prepare
 DEPEND=dev-libs/glib:2 x11-libs/gtk+:3 x11-libs/pango dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=A GTK+ based xmessage clone
 EAPI=7
 HOMEPAGE=https://savannah.gnu.org/projects/gxmessage/ http://homepages.ihug.co.nz/~trmusson/programs.html#gxmessage
+INHERIT=xdg
 KEYWORDS=amd64 ppc sparc x86
 LICENSE=GPL-3 public-domain
 RDEPEND=dev-libs/glib:2 x11-libs/gtk+:3 x11-libs/pango
 SLOT=0
 SRC_URI=mirror://gnu/gxmessage/gxmessage-3.4.3.tar.gz http://homepages.ihug.co.nz/~trmusson/stuff/gxmessage-3.4.3.tar.gz
-_eclasses_=xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=dbd3080c0bdc4779c0ff3692d84a4a06
+_eclasses_=xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
+_md5_=6c86eedd2da39db39169c84b33e0e59b

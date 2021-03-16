@@ -11,4 +11,4 @@ RDEPEND=filecaps? ( sys-libs/libcap )
 SLOT=0
 SRC_URI=https://github.com/apenwarr/netselect/archive/netselect-0.4.tar.gz ipv6? ( https://dev.gentoo.org/~jer/netselect-0.4-ipv6.patch.xz )
 _eclasses_=fcaps	da689a8e04bbbb3518888ff668fee45b	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
-_md5_=372313c97e62b44f0cc6fca34e6beaa0
+_md5_=a73f380b2ae89d1598ecb388a1ba8a75

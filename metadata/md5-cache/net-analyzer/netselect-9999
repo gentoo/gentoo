@@ -1,12 +1,14 @@
-BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=compile install prepare unpack
+BDEPEND=filecaps? ( sys-libs/libcap ) >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile install postinst prepare unpack
 DESCRIPTION=Ultrafast implementation of ping
 EAPI=7
 HOMEPAGE=http://apenwarr.ca/netselect/
-IUSE=ipv6
+INHERIT=fcaps git-r3 toolchain-funcs
+IUSE=ipv6 +filecaps
 LICENSE=BSD
 PROPERTIES=live
+RDEPEND=filecaps? ( sys-libs/libcap )
 SLOT=0
 SRC_URI=ipv6? ( https://dev.gentoo.org/~jer/netselect-0.4-ipv6.patch.xz )
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=39ad243ce779bbf376136c7815511dd2
+_eclasses_=fcaps	da689a8e04bbbb3518888ff668fee45b	git-r3	3e7ec3d6619213460c85e2aa48398441	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=c64a99c33267aed77e5b8e7cff7d5c42

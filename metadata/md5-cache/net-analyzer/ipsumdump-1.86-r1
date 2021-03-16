@@ -1,12 +1,13 @@
+BDEPEND=dev-lang/perl sys-apps/texinfo
 DEFINED_PHASES=configure
-DEPEND=net-libs/libpcap dev-lang/perl dev-libs/expat sys-apps/texinfo virtual/os-headers
+DEPEND=net-libs/libpcap dev-libs/expat virtual/os-headers
 DESCRIPTION=Simple TCP/IP Dump summarizer/analyzer
 EAPI=7
-HOMEPAGE=http://read.seas.harvard.edu/~kohler/ipsumdump/
+HOMEPAGE=https://read.seas.harvard.edu/~kohler/ipsumdump/
 IUSE=+ipv6 +nanotimestamp
 KEYWORDS=~amd64 ~x86
 LICENSE=the-Click-license
 RDEPEND=net-libs/libpcap
 SLOT=0
-SRC_URI=http://read.seas.harvard.edu/~kohler/ipsumdump/ipsumdump-1.86.tar.gz
-_md5_=42dd5a129cb225604511fca82d0a7fd4
+SRC_URI=https://read.seas.harvard.edu/~kohler/ipsumdump/ipsumdump-1.86.tar.gz
+_md5_=75b344a4b245dd9caf90dcc3237bdc24
