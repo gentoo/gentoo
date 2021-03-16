@@ -870,7 +870,7 @@ app-arch/pxz 5.0_pre20151029 9999: parallel LZMA compressor (no parallel decompr
 app-arch/qpress 1.1: A portable file archiver using QuickLZ algorithm
 app-arch/rar 6.0.0_p20201201: RAR compressor/uncompressor
 app-arch/rpm 4.14.2.1-r1 4.16.0: Red Hat Package Management Utils
-app-arch/rpm2targz 9.0.0.5g-r2: Convert a .rpm file to a .tar.gz archive
+app-arch/rpm2targz 9.0.0.5g-r2 2021.03.16: Convert a .rpm file to a .tar.gz archive
 app-arch/rzip 2.1-r3: Compression program for large files
 app-arch/sharutils 4.15.2-r1 4.15.2-r2: Tools to deal with shar archives
 app-arch/snappy 1.1.8: A high-speed compression/decompression library by Google
