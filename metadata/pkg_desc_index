@@ -13178,7 +13178,7 @@ media-libs/gegl 0.4.26-r1 0.4.28 9999: A graph based image processing framework
 media-libs/gexiv2 0.12.1: GObject-based wrapper around the Exiv2 library
 media-libs/giblib 1.2.4-r1: a graphics library built on top of imlib2
 media-libs/giflib 5.2.1-r1: Library to handle, display and manipulate GIF images
-media-libs/glew 1.6.0-r100 1.10.0-r100 2.1.0-r1: The OpenGL Extension Wrangler Library
+media-libs/glew 1.6.0-r100 1.10.0-r100 2.2.0: The OpenGL Extension Wrangler Library
 media-libs/glfw 3.3.2 3.3.3: The Portable OpenGL FrameWork
 media-libs/glm 0.9.9.5 0.9.9.7 0.9.9.8 0.9.9.8-r1: OpenGL Mathematics
 media-libs/glpng 1.46-r1: OpenGL PNG image library
@@ -14638,7 +14638,7 @@ net-dialup/sercd 3.0.0-r2: RFC2217-compliant serial port redirector
 net-dialup/speedtouch-usb 3.0.1.2-r3: Firmware and configuration instructions for Alcatel SpeedTouch USB modems
 net-dialup/wvdial 1.61: Excellent program to automatically configure PPP sessions
 net-dialup/xc 4.3.2-r4: Modem dialout & serial terminal program
-net-dialup/xl2tpd 1.3.15: A modern version of the Layer 2 Tunneling Protocol (L2TP) daemon
+net-dialup/xl2tpd 1.3.15 1.3.16: A modern version of the Layer 2 Tunneling Protocol (L2TP) daemon
 net-dns/avahi 0.8-r2: System which facilitates service discovery on a local network
 net-dns/bind 9.16.12: Berkeley Internet Name Domain - Name Server
 net-dns/bind-tools 9.16.12: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen

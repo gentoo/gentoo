@@ -1,0 +1,15 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=compile install
+DEPEND=net-libs/libpcap >=sys-kernel/linux-headers-2.6
+DESCRIPTION=A modern version of the Layer 2 Tunneling Protocol (L2TP) daemon
+EAPI=7
+HOMEPAGE=https://github.com/xelerance/xl2tpd
+INHERIT=systemd toolchain-funcs tmpfiles
+IUSE=+kernel
+KEYWORDS=~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86
+LICENSE=GPL-2+
+RDEPEND=net-libs/libpcap >=sys-kernel/linux-headers-2.6 net-dialup/ppp virtual/tmpfiles
+SLOT=0
+SRC_URI=https://github.com/xelerance/xl2tpd/archive/v1.3.16.tar.gz -> xl2tpd-1.3.16.tar.gz
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	tmpfiles	dc8e4917d734a019caa04ad3b8db560b
+_md5_=2dafc00f9318065cc37cfa615365d6b0
