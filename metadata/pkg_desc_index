@@ -11110,7 +11110,7 @@ dev-vcs/cvsync 2014.08.24.014706 9999: portable CVS repository synchronization u
 dev-vcs/darcs 2.16.3: a distributed, interactive, smart revision control system
 dev-vcs/easygit 1.7.5.2: Easy GIT (eg), a frontend for git designed for former cvs and svn users
 dev-vcs/fossil 2.12.1 2.13 2.14: Simple, high-reliability, source control management, and more
-dev-vcs/git 2.26.2 2.26.3 2.28.0 2.28.1 2.29.2 2.29.3 2.30.0 2.30.1 2.30.2 2.31.0_rc2 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
+dev-vcs/git 2.26.2 2.26.3 2.28.1 2.29.3 2.30.2 2.31.0 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
 dev-vcs/git-annex 8.20200810: manage files with git, without checking their contents into git
 dev-vcs/git-big-picture 1.0.0 1.1.1: Visualization tool for Git repositories
 dev-vcs/git-cola 3.5-r1 3.8 3.9: The highly caffeinated git GUI
@@ -17354,7 +17354,7 @@ sys-boot/yaboot 1.3.17-r4: PPC Bootloader
 sys-boot/yaboot-static 1.3.17-r2: Static yaboot ppc boot loader for machines with open firmware
 sys-cluster/ampi 0_pre20140616: MPI library for algorithmic differentiation
 sys-cluster/c3 4.0.1: The Cluster Command and Control (C3) tool suite
-sys-cluster/ceph 14.2.16-r3 14.2.17 15.2.9-r1: Ceph distributed filesystem
+sys-cluster/ceph 14.2.16-r3 14.2.18 15.2.9-r1: Ceph distributed filesystem
 sys-cluster/charliecloud 0.21 0.22 9999: Lightweight user-defined software stacks for high-performance computing
 sys-cluster/charm 6.8.2: Message-passing parallel language and runtime system
 sys-cluster/charmdebug 6.2.0-r1: A debugger for Charm++ applications
