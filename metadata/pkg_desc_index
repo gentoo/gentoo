@@ -14474,7 +14474,7 @@ net-analyzer/ndsad 1.33-r2: Cisco netflow probe from libpcap, ULOG, tee/divert s
 net-analyzer/nessus-agent-bin 8.2.1: A remote security scanner for Linux - agent component
 net-analyzer/nessus-bin 8.13.1: A remote security scanner for Linux
 net-analyzer/net-snmp 5.9-r2 5.9-r3 99999999: Software for generating and retrieving SNMP data
-net-analyzer/netcat 110-r9 110.20180111: the network swiss army knife
+net-analyzer/netcat 110-r9 110.20180111-r1: the network swiss army knife
 net-analyzer/netdata 1.29.0 1.29.1 1.29.2 1.29.3 9999: Linux real time system monitoring, done right!
 net-analyzer/netdiscover 0.7: An active/passive address reconnaissance tool
 net-analyzer/nethogs 0.8.5-r1 0.8.6-r1: A small 'net top' tool, grouping bandwidth by process
