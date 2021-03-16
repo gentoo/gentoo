@@ -7,7 +7,7 @@
 	</maintainer>
 	<longdescription>
 		Provides access to system information and functionality
-		to Lua scripts via Haskell&#39;s `System` module.
+		to Lua scripts via Haskell's `System` module.
 		
 		Intended usage for this package is to preload it by adding
 		the loader function to `package.preload`. Note that the

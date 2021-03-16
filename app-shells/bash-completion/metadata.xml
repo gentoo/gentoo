@@ -10,7 +10,7 @@
 		<name>Gentoo Shell Tools Project</name>
 	</maintainer>
 	<use>
-		<flag name='eselect'>
+		<flag name="eselect">
 			Support blacklisting of completions via 'eselect bash-completion'.
 			This enables custom Gentoo patching of upstream completion loader.
 		</flag>

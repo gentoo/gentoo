@@ -6,8 +6,8 @@
 <name>Gentoo Desktop Miscellaneous Project</name>
 </maintainer>
 <use>
-<flag name='evdev'>Enable <pkg>dev-libs/libevdev</pkg> support for xtg</flag>
-<flag name='xi'>Enable XInput2 support through <pkg>x11-libs/libXi</pkg></flag>
-<flag name='xrandr'>Enable XRandR support through <pkg>x11-libs/libXrandr</pkg></flag>
+<flag name="evdev">Enable <pkg>dev-libs/libevdev</pkg> support for xtg</flag>
+<flag name="xi">Enable XInput2 support through <pkg>x11-libs/libXi</pkg></flag>
+<flag name="xrandr">Enable XRandR support through <pkg>x11-libs/libXrandr</pkg></flag>
 </use>
 </pkgmetadata>

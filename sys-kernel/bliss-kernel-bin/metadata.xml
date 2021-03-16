@@ -3,6 +3,6 @@
 <pkgmetadata>
     <!--maintainer-needed-->
     <use>
-        <flag name='initramfs'>Build initramfs along with the kernel.</flag>
+        <flag name="initramfs">Build initramfs along with the kernel.</flag>
     </use>
 </pkgmetadata>

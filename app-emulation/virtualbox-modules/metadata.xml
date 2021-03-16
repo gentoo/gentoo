@@ -9,4 +9,3 @@
     <flag name="pax_kernel">Apply patch needed for pax enabled kernels</flag>
   </use>
 </pkgmetadata>
-
