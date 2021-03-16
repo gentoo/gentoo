@@ -14,7 +14,6 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz
 LICENSE="GPL-3 public-domain"
 SLOT="0"
 KEYWORDS="amd64 ppc sparc x86"
-IUSE=""
 
 RDEPEND="
 	dev-libs/glib:2
@@ -23,9 +22,9 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	virtual/pkgconfig
 	>=dev-util/intltool-0.40.1
 	sys-devel/gettext
+	virtual/pkgconfig
 "
 
 DOCS=( AUTHORS ChangeLog HACKING NEWS README TODO )
