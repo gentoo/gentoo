@@ -7,7 +7,7 @@
   </maintainer>
   <maintainer type="project" proxied="proxy">
     <email>proxy-maint@gentoo.org</email>
-    <description>Proxy Maintainers</description>
+    <name>Proxy Maintainers</name>
   </maintainer>
   <stabilize-allarches/>
   <longdescription>
