@@ -14530,7 +14530,7 @@ net-analyzer/quidscor 1.2.48-r1: Qualys IDS Correlation Daemon
 net-analyzer/raddump 0.3.1: RADIUS packet interpreter
 net-analyzer/rain 1.2.9_beta1-r1: powerful tool for testing stability of utilizing IP protocols
 net-analyzer/rrdcollect 0.2.10: Read system statistical data and feed it to RRDtool
-net-analyzer/rrdtool 1.7.2 1.7.2-r1 1.7.2-r100: A system to store and display time-series data
+net-analyzer/rrdtool 1.7.2-r100: A system to store and display time-series data
 net-analyzer/rtpbreak 1.3a-r1: Analyze any RTP session through heuristics over UDP network traffic
 net-analyzer/sancp 1.6.1-r6: collect network traffic statistics and store them in pcap format
 net-analyzer/sarg 2.4.0: Squid Analysis Report Generator
