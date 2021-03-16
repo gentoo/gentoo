@@ -14,9 +14,7 @@ SLOT="0/0.0.7"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-DEPEND="
-	test? ( dev-perl/IPC-Run3 )
-"
+DEPEND="test? ( dev-perl/IPC-Run3 )"
 
 DOCS=( Changes.md )
 
