@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit check-reqs eutils multibuild pax-utils
+inherit check-reqs multibuild pax-utils
 
 DESCRIPTION="Standard ML optimizing compiler and libraries"
 BASE_URI="mirror://sourceforge/${PN}"
@@ -147,12 +147,15 @@ mlton_create_bin_stubs() {
 src_prepare() {
 	if ! use binary; then
 		# For Gentoo hardened: paxmark the mlton-compiler, mllex and mlyacc executables
-		epatch "${FILESDIR}/${PN}-20180207-paxmark.patch"
+		eapply "${FILESDIR}/${PN}-20180207-paxmark.patch"
 		# Fix the bootstrap-smlnj and bootstrap-polyml Makefile targets
-		epatch "${FILESDIR}/${PN}-20180207-bootstrap.patch"
+		eapply "${FILESDIR}/${PN}-20180207-bootstrap.patch"
 	fi
+
 	default
+
 	$(mlton_create_bin_stubs)
+
 	if use binary; then
 		pax-mark m "${R}/lib/${PN}/mlton-compile"
 		pax-mark m "${R}/bin/mllex"
