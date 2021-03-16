@@ -1,7 +1,8 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit savedconfig toolchain-funcs
 
 DESCRIPTION="Simple Virtual Keyboard"
@@ -19,7 +20,7 @@ RDEPEND="
 	x11-libs/libXtst
 "
 DEPEND="
-	${DEPEND}
+	${RDEPEND}
 	x11-base/xorg-proto
 "
 
@@ -28,7 +29,7 @@ src_prepare() {
 
 	restore_config config.def.h
 
-	sed -i -e 's|pkg-config|$(PKG_CONFIG)|g' Makefile || die
+	sed -i -e 's|pkg-config|$(PKG_CONFIG)|g' Makefile config.mk || die
 }
 
 src_compile() {
