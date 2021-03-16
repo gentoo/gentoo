@@ -10,4 +10,7 @@
 		<flag name="rados">Enable support for librados from <pkg>sys-cluster/ceph</pkg></flag>
 		<flag name="rrdcgi">Build rrdcgi support</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">oetiker/rrdtool-1.x</remote-id>
+	</upstream>
 </pkgmetadata>
