@@ -5,7 +5,7 @@ EAPI=7
 inherit xorg-3
 
 DESCRIPTION="X.Org fonttosfnt application"
-KEYWORDS="amd64 arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc x86"
+KEYWORDS="amd64 arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~s390 sparc x86"
 IUSE=""
 RDEPEND="media-libs/freetype:2
 	x11-libs/libX11
