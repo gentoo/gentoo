@@ -9,12 +9,12 @@ DESCRIPTION="Computing Triangulations Of Point Configurations and Oriented Matro
 HOMEPAGE="http://www.rambau.wm.uni-bayreuth.de/TOPCOM/"
 SRC_URI="
 	http://www.rambau.wm.uni-bayreuth.de/Software/TOPCOM-${PV}.tar.gz
-	doc? ( http://www.rambau.wm.uni-bayreuth.de/TOPCOM/TOPCOM-manual.html )
+	http://www.rambau.wm.uni-bayreuth.de/TOPCOM/TOPCOM-manual.html
 "
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 LICENSE="GPL-2"
-IUSE="doc examples"
+IUSE="examples"
 
 DEPEND="
 	dev-libs/gmp:0
@@ -24,6 +24,7 @@ RDEPEND="${DEPEND}"
 BDEPEND="app-shells/tcsh"
 
 PATCHES=( "${FILESDIR}/${P}-buildsystem.patch" )
+
 HTML_DOCS=( "${DISTDIR}/TOPCOM-manual.html" )
 
 src_prepare () {
@@ -49,7 +50,6 @@ src_install () {
 		docompress -x "/usr/share/doc/${PF}/examples"
 		dodoc -r examples
 	fi
-	use doc && einstalldocs
 
 	mv "${ED}/usr/bin/cube" "${ED}/usr/bin/topcom_cube" || die
 
