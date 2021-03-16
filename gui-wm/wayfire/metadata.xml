@@ -6,17 +6,17 @@
         Aims to bring desktop features such as 3D cube, fire burn,
         fisheye, wrot and all other desktop effects to wayland.
     </longdescription>
-    <maintainer type="person">
+    <maintainer type="person" proxied="yes">
         <email>gentoo@aisha.cc</email>
         <name>Aisha Tammy</name>
     </maintainer>
-    <maintainer type="project">
+    <maintainer type="project" proxied="proxy">
         <email>proxy-maint@gentoo.org</email>
         <name>Proxy Maintainers</name>
     </maintainer>
     <use>
         <flag name="gles">use libglvnd to do animations more efficiently</flag>
-        <flag name='system-wfconfig'>use the system-wide wf-config, else build it as a submodule. DO NOT DISABLE UNLESS YOU KNOW WHAT YOU ARE DOING.</flag>
-        <flag name='system-wlroots'>use the system wide wlroots, else build it as a submodule. DO NOT DISABLE UNLESS YOU KNOW WHAT YOU ARE DOING.</flag>
+        <flag name="system-wfconfig">use the system-wide wf-config, else build it as a submodule. DO NOT DISABLE UNLESS YOU KNOW WHAT YOU ARE DOING.</flag>
+        <flag name="system-wlroots">use the system wide wlroots, else build it as a submodule. DO NOT DISABLE UNLESS YOU KNOW WHAT YOU ARE DOING.</flag>
     </use>
 </pkgmetadata>

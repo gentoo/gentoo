@@ -6,7 +6,7 @@
 		<name>Thomas Sachau (Tommy[D])</name>
 	</maintainer>
 	<use>
-		<flag name='frost'>Add support for frost boards</flag>
+		<flag name="frost">Add support for frost boards</flag>
 		<flag name="ssl">Add support for FCP connection over SSL</flag>
 	</use>
 </pkgmetadata>

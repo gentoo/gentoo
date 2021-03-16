@@ -5,7 +5,7 @@
     <bugs-to>https://github.com/flame/blis/issues/</bugs-to>
     <doc>https://github.com/flame/blis</doc>
   </upstream>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <name>Mo Zhou</name>
     <email>lumin@debian.org</email>
   </maintainer>

@@ -5,7 +5,7 @@
     <email>proaudio@gentoo.org</email>
     <name>Gentoo ProAudio Project</name>
   </maintainer>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>richard@audacityteam.org</email>
     <name>Richard Ash</name>
     <description>Upstream - please CC on bugs that concerns upstream</description>

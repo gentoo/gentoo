@@ -15,7 +15,7 @@
 	</longdescription>
 	<longdescription lang="ja">
 		perl-coreカテゴリーにはPerl プログラミング言語に関連にするライブラリと
-		ユーティリティが含まれて>います。
+		ユーティリティが含まれて&gt;います。
 	</longdescription>
 	<longdescription lang="nl">
 		De perl-core categorie bevat bibliotheken en hulpmiddelen voor het gebruik
@@ -38,4 +38,3 @@
 		programowania Perl.
 	</longdescription>
 </catmetadata>
-

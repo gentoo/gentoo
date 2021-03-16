@@ -5,7 +5,7 @@
 		<email>idl0r@gentoo.org</email>
 		<name>Christian Ruppert</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>bertrand@jacquin.bzh</email>
 		<name>Bertrand Jacquin</name>
 	</maintainer>

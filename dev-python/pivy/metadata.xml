@@ -5,7 +5,7 @@
 	<email>fordfrog@gentoo.org</email>
 	<name>Miroslav Šulc</name>
 </maintainer>
-<maintainer type="person">
+<maintainer type="person" proxied="yes">
 	<email>waebbl-gentoo@posteo.net</email>
 	<name>Bernd Waibel</name>
 </maintainer>

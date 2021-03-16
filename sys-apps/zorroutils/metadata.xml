@@ -4,11 +4,11 @@
 <maintainer type="project">
 	<email>m68k@gentoo.org</email>
 </maintainer>
-<maintainer type="person">
+<maintainer type="person" proxied="yes">
 	<email>gentoo@kolla.no</email>
 	<name>Kolbjørn Barmen</name>
 </maintainer>
-<maintainer type="project">
+<maintainer type="project" proxied="proxy">
 	<email>proxy-maint@gentoo.org</email>
 	<name>Proxy Maintainers</name>
 </maintainer>

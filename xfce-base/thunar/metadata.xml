@@ -6,7 +6,7 @@
     <name>XFCE Team</name>
   </maintainer>
   <use>
-    <flag name='trash-panel-plugin'>Build the trash status indicator plugin for
+    <flag name="trash-panel-plugin">Build the trash status indicator plugin for
       the XFCE panel</flag>
   </use>
 </pkgmetadata>

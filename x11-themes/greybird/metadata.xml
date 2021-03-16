@@ -8,7 +8,7 @@
   <longdescription>
     Greybird Xfce Desktop Suite. Contains the default Xubuntu theme for 
     gnome-shell, gtk-2, gtk-3, metacity, pantheon, unity and Xfce. Comes with 
-    light and dark variants (>=3.22.14).
+    light and dark variants (&gt;=3.22.14).
   </longdescription>
 <upstream>
 <remote-id type="github">shimmerproject/Greybird</remote-id>

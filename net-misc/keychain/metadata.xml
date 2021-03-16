@@ -5,7 +5,7 @@
 		<email>base-system@gentoo.org</email>
 		<name>Gentoo Base System</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>drobbins@funtoo.org</email>
 		<name>Daniel Robbins</name>
 		<description>Upstream contact, please CC on bugs</description>
