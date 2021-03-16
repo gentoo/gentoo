@@ -1006,7 +1006,7 @@ app-cdr/daa2iso 0.1.7e: Program for converting the DAA and GBI files to ISO
 app-cdr/disc-cover 1.5.6-r1: Creates CD-Covers via LaTeX by fetching cd-info from freedb.org or local file
 app-cdr/dolphin-plugins-mountiso 20.08.3 20.12.3: Dolphin plugin for ISO loopback device mounting
 app-cdr/dumpet 2.1_p20140601-r3: A tool to dump and debug bootable CD-like images
-app-cdr/dvd+rw-tools 7.1-r3: A set of tools for DVD+RW/-RW drives
+app-cdr/dvd+rw-tools 7.1-r3 7.1-r4: A set of tools for DVD+RW/-RW drives
 app-cdr/dvdisaster 0.79.5: Tool for creating error correction data (ecc) for optical media (DVD, CD, BD)
 app-cdr/dvdshrink 2.6.1_p10: Scriptable DVD copy software
 app-cdr/extract-xiso 2.7.1: Tool for extracting and creating optimised Xbox ISO images
@@ -2638,7 +2638,7 @@ app-misc/ranger 1.9.2 1.9.3 9999: A vim-inspired file manager for the console
 app-misc/razertool 0.0.7-r4: Unofficial tool for controlling the Razer Copperhead mouse
 app-misc/rbutil 1.4.1-r2: Rockbox open source firmware manager for music players
 app-misc/realpath 1.18: Return the canonicalized absolute pathname
-app-misc/recoll 1.25.19 1.27.12 1.28.5: Personal full text search package
+app-misc/recoll 1.25.19 1.27.12 1.28.5 1.29.2: Personal full text search package
 app-misc/regex-markup 0.10.0-r1: A tool to color syslog files as well
 app-misc/regionset 0.2: Sets the region on DVD drives
 app-misc/remind 03.01.15 03.03.05: Ridiculously functional reminder program
@@ -5631,7 +5631,7 @@ dev-libs/libtsm 4.0.1: Terminal Emulator State Machine
 dev-libs/libtubo 5.0.15: small and simple interprocess communication library
 dev-libs/libucl 0.8.1-r1 0.8.1-r100 9999: Universal configuration library parser
 dev-libs/libudfread 1.1.0 1.1.1 9999: Library for reading UDF from raw devices and image files
-dev-libs/libuev 2.2.0 2.3.0 2.3.1: A collection of useful BSD APIs
+dev-libs/libuev 2.3.0 2.3.1 2.3.2: A collection of useful BSD APIs
 dev-libs/libugpio 0.0.7: Lib for the use of linux kernel's sysfs gpio interface from C programs
 dev-libs/libunibreak 4.0 4.1 4.2 4.3: Line and word breaking library
 dev-libs/libuninum 2.7: A library for converting unicode strings to numbers and vice versa
@@ -8492,7 +8492,7 @@ dev-python/jinja2-time 0.2.0: Jinja2 Extension for Dates and Times
 dev-python/jinja2_pluralize 0.3.0: Jinja2 pluralize filters
 dev-python/jmespath 0.10.0: JSON Matching Expressions
 dev-python/joblib 1.0.1: Tools to provide lightweight pipelining in Python
-dev-python/josepy 1.6.0 1.7.0: JOSE protocol implementation in Python
+dev-python/josepy 1.6.0 1.7.0 1.8.0: JOSE protocol implementation in Python
 dev-python/js2py 0.70_p20210218: JavaScript to Python Translator & JavaScript interpreter in Python
 dev-python/jsmin 2.2.2: JavaScript minifier
 dev-python/json-rpc 1.13.0: JSON-RPC transport implementation for python
