@@ -1,10 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-[[ ${PV} == *9999 ]] && SCM="git-2"
-inherit eutils perl-module user ${SCM}
+[[ ${PV} == *9999 ]] && SCM="git-r3"
+inherit perl-module user ${SCM}
 
 DESCRIPTION="qpsmtpd is a flexible smtpd daemon written in Perl"
 HOMEPAGE="https://smtpd.github.io/qpsmtpd/"
@@ -47,7 +47,7 @@ src_unpack() {
 		unpack ${A}
 		cd "${S}"
 	else
-		git-2_src_unpack
+		git-r3_src_unpack
 		cd "${S}"
 	fi
 }
@@ -59,25 +59,23 @@ src_install() {
 	newins "${FILESDIR}"/qpsmtpd.xinetd qpsmtpd
 
 	dodir /usr/share/qpsmtpd
-	cp -Rf plugins "${D}"/usr/share/qpsmtpd/
+	cp -Rf plugins "${ED}"/usr/share/qpsmtpd/ || die
 
 	diropts -m 0755 -o smtpd -g smtpd
-	dodir /var/spool/qpsmtpd
 	keepdir /var/spool/qpsmtpd
 
-	dodir /etc/qpsmtpd
 	insinto /etc/qpsmtpd
 	doins config.sample/*
 
-	echo "/usr/share/qpsmtpd/plugins" > "${D}"/etc/qpsmtpd/plugin_dirs
-	echo "/var/spool/qpsmtpd" > "${D}"/etc/qpsmtpd/spool_dir
+	echo "/usr/share/qpsmtpd/plugins" > "${ED}"/etc/qpsmtpd/plugin_dirs || die
+	echo "/var/spool/qpsmtpd" > "${ED}"/etc/qpsmtpd/spool_dir || die
 	if use syslog; then
-		echo "logging/syslog loglevel LOGINFO priority LOG_NOTICE" > "${D}"/etc/qpsmtpd/logging
+		echo "logging/syslog loglevel LOGINFO priority LOG_NOTICE" > "${ED}"/etc/qpsmtpd/logging
 	else
 		diropts -m 0755 -o smtpd -g smtpd
 		dodir /var/log/qpsmtpd
 		keepdir /var/log/qpsmtpd
-		echo "logging/file loglevel LOGINFO /var/log/qpsmtpd/%Y-%m-%d" > "${D}"/etc/qpsmtpd/logging
+		echo "logging/file loglevel LOGINFO /var/log/qpsmtpd/%Y-%m-%d" > "${ED}"/etc/qpsmtpd/logging
 	fi
 
 	newenvd "${FILESDIR}"/qpsmtpd.envd 99qpsmtpd
