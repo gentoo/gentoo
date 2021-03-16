@@ -11,7 +11,7 @@ SRC_URI="http://www.winischhofer.net/sis/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 
 BDEPEND="virtual/pkgconfig"
 RDEPEND="
