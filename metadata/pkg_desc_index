@@ -12461,57 +12461,57 @@ kde-misc/tellico 3.3.4-r1 3.3.5: Collection manager based on KDE Frameworks
 kde-misc/ultimate-gmail-feed 2.1: Plasma 5 widget showing your Gmail feed
 kde-misc/wacomtablet 3.2.0: System settings module for Wacom tablets
 kde-misc/zanshin 0.5.71-r2: Getting things done application by KDE
-kde-plasma/bluedevil 5.20.5 5.21.2: Bluetooth stack for KDE Plasma
-kde-plasma/breeze 5.20.5 5.21.2: Breeze visual style for the Plasma desktop
-kde-plasma/breeze-grub 5.20.5 5.21.2: Breeze theme for GRUB
-kde-plasma/breeze-gtk 5.20.5 5.21.2: Official GTK+ port of Plasma's Breeze widget style
-kde-plasma/breeze-plymouth 5.20.5 5.21.2: Breeze theme for Plymouth
-kde-plasma/discover 5.20.5 5.21.2: KDE Plasma resources management GUI
-kde-plasma/drkonqi 5.20.5 5.21.2: Plasma crash handler, gives the user feedback if a program crashed
-kde-plasma/kactivitymanagerd 5.20.5 5.21.2: System service to manage user's activities, track the usage patterns etc.
-kde-plasma/kde-cli-tools 5.20.5 5.21.2: Tools based on KDE Frameworks 5 to better interact with the system
-kde-plasma/kde-gtk-config 5.20.5-r1 5.21.2: GTK2 and GTK3 configurator for KDE Plasma
-kde-plasma/kdecoration 5.20.5 5.21.2: Plugin based library to create window decorations
-kde-plasma/kdeplasma-addons 5.20.5 5.21.2: Extra Plasma applets and engines
-kde-plasma/kgamma 5.20.5 5.21.2: Screen gamma values kcontrol module
-kde-plasma/khotkeys 5.20.5 5.21.2: KDE Plasma workspace hotkey module
-kde-plasma/kinfocenter 5.20.5 5.21.2: Utility providing information about the computer hardware
-kde-plasma/kmenuedit 5.20.5 5.21.2: KDE Plasma menu editor
-kde-plasma/kscreen 5.20.5 5.21.2: KDE Plasma screen management
-kde-plasma/kscreenlocker 5.20.5 5.21.2: Library and components for secure lock screen architecture
-kde-plasma/ksshaskpass 5.20.5 5.21.2: Implementation of ssh-askpass with KDE Wallet integration
-kde-plasma/ksysguard 5.20.5 5.21.2: Network-enabled task manager and system monitor
-kde-plasma/kwallet-pam 5.20.5-r1 5.21.2: PAM module to not enter KWallet password again after login
-kde-plasma/kwayland-integration 5.20.5 5.21.2: Provides integration plugins for various KDE frameworks for Wayland
-kde-plasma/kwayland-server 5.20.5 5.21.2: Wayland Server Components built on KDE Frameworks
-kde-plasma/kwin 5.20.5-r1 5.21.2: Flexible, composited Window Manager for windowing systems on Linux
-kde-plasma/kwrited 5.20.5 5.21.2: KDE Plasma daemon listening for wall and write messages
-kde-plasma/libkscreen 5.20.5 5.21.2: Plasma screen management library
-kde-plasma/libksysguard 5.20.5 5.21.2: Task management and system monitoring library
-kde-plasma/libkworkspace 5.20.5 5.21.2: Workspace library to interact with the Plasma session manager
-kde-plasma/milou 5.20.5 5.21.2: Dedicated search application built on top of Baloo
-kde-plasma/oxygen 5.20.5 5.21.2: Oxygen visual style for the Plasma desktop
-kde-plasma/plasma-browser-integration 5.20.5 5.21.2: Integrate Chrome/Firefox better into Plasma through browser extensions
-kde-plasma/plasma-desktop 5.20.5-r1 5.21.2: KDE Plasma desktop
-kde-plasma/plasma-disks 5.20.5 5.21.2: Monitors S.M.A.R.T. capable devices for imminent failure
-kde-plasma/plasma-firewall 5.21.2: Plasma frontend for Firewalld or UFW
-kde-plasma/plasma-integration 5.20.5 5.21.2: Qt Platform Theme integration plugins for the Plasma workspaces
-kde-plasma/plasma-meta 5.20.5 5.21.2: Merge this to pull in all Plasma 5 packages
-kde-plasma/plasma-nm 5.20.5 5.21.2: KDE Plasma applet for NetworkManager
-kde-plasma/plasma-pa 5.20.5 5.21.2: Plasma applet for audio volume management using PulseAudio
-kde-plasma/plasma-sdk 5.20.5 5.21.2: Useful applications for Plasma development
-kde-plasma/plasma-systemmonitor 5.20.0-r1 5.21.2: New version of KSysGuard built on top of the new KStats daemon and using QML
-kde-plasma/plasma-thunderbolt 5.20.5 5.21.2: Plasma integration for controlling Thunderbolt devices
-kde-plasma/plasma-vault 5.20.5 5.21.2: Plasma applet and services for creating encrypted vaults
-kde-plasma/plasma-workspace 5.20.5-r4 5.21.2: KDE Plasma workspace
-kde-plasma/plasma-workspace-wallpapers 5.20.5 5.21.2: Wallpapers for the Plasma workspace
-kde-plasma/plymouth-kcm 5.20.5 5.21.2: KDE Plasma control module for Plymouth
-kde-plasma/polkit-kde-agent 5.20.5 5.21.2: PolKit agent module for KDE Plasma
-kde-plasma/powerdevil 5.20.5 5.21.2: Power management for KDE Plasma Shell
-kde-plasma/sddm-kcm 5.20.5 5.21.2: KDE Plasma control module for SDDM
-kde-plasma/systemsettings 5.20.5 5.21.2: Control Center to configure KDE Plasma desktop
-kde-plasma/xdg-desktop-portal-kde 5.20.5 5.21.2: Backend implementation for xdg-desktop-portal that is using Qt/KDE Frameworks
-kde-plasma/xembed-sni-proxy 5.20.5 5.21.2: Legacy xembed tray icons support for SNI-only system trays
+kde-plasma/bluedevil 5.20.5 5.21.3: Bluetooth stack for KDE Plasma
+kde-plasma/breeze 5.20.5 5.21.3: Breeze visual style for the Plasma desktop
+kde-plasma/breeze-grub 5.20.5 5.21.3: Breeze theme for GRUB
+kde-plasma/breeze-gtk 5.20.5 5.21.3: Official GTK+ port of Plasma's Breeze widget style
+kde-plasma/breeze-plymouth 5.20.5 5.21.3: Breeze theme for Plymouth
+kde-plasma/discover 5.20.5 5.21.3: KDE Plasma resources management GUI
+kde-plasma/drkonqi 5.20.5 5.21.3: Plasma crash handler, gives the user feedback if a program crashed
+kde-plasma/kactivitymanagerd 5.20.5 5.21.3: System service to manage user's activities, track the usage patterns etc.
+kde-plasma/kde-cli-tools 5.20.5 5.21.3: Tools based on KDE Frameworks 5 to better interact with the system
+kde-plasma/kde-gtk-config 5.20.5-r1 5.21.3: GTK2 and GTK3 configurator for KDE Plasma
+kde-plasma/kdecoration 5.20.5 5.21.3: Plugin based library to create window decorations
+kde-plasma/kdeplasma-addons 5.20.5 5.21.3: Extra Plasma applets and engines
+kde-plasma/kgamma 5.20.5 5.21.3: Screen gamma values kcontrol module
+kde-plasma/khotkeys 5.20.5 5.21.3: KDE Plasma workspace hotkey module
+kde-plasma/kinfocenter 5.20.5 5.21.3: Utility providing information about the computer hardware
+kde-plasma/kmenuedit 5.20.5 5.21.3: KDE Plasma menu editor
+kde-plasma/kscreen 5.20.5 5.21.3: KDE Plasma screen management
+kde-plasma/kscreenlocker 5.20.5 5.21.3: Library and components for secure lock screen architecture
+kde-plasma/ksshaskpass 5.20.5 5.21.3: Implementation of ssh-askpass with KDE Wallet integration
+kde-plasma/ksysguard 5.20.5 5.21.3: Network-enabled task manager and system monitor
+kde-plasma/kwallet-pam 5.20.5-r1 5.21.3: PAM module to not enter KWallet password again after login
+kde-plasma/kwayland-integration 5.20.5 5.21.3: Provides integration plugins for various KDE frameworks for Wayland
+kde-plasma/kwayland-server 5.20.5 5.21.3: Wayland Server Components built on KDE Frameworks
+kde-plasma/kwin 5.20.5-r1 5.21.3: Flexible, composited Window Manager for windowing systems on Linux
+kde-plasma/kwrited 5.20.5 5.21.3: KDE Plasma daemon listening for wall and write messages
+kde-plasma/libkscreen 5.20.5 5.21.3: Plasma screen management library
+kde-plasma/libksysguard 5.20.5 5.21.3.1: Task management and system monitoring library
+kde-plasma/libkworkspace 5.20.5 5.21.3: Workspace library to interact with the Plasma session manager
+kde-plasma/milou 5.20.5 5.21.3: Dedicated search application built on top of Baloo
+kde-plasma/oxygen 5.20.5 5.21.3: Oxygen visual style for the Plasma desktop
+kde-plasma/plasma-browser-integration 5.20.5 5.21.3: Integrate Chrome/Firefox better into Plasma through browser extensions
+kde-plasma/plasma-desktop 5.20.5-r1 5.21.3: KDE Plasma desktop
+kde-plasma/plasma-disks 5.20.5 5.21.3: Monitors S.M.A.R.T. capable devices for imminent failure
+kde-plasma/plasma-firewall 5.21.3: Plasma frontend for Firewalld or UFW
+kde-plasma/plasma-integration 5.20.5 5.21.3: Qt Platform Theme integration plugins for the Plasma workspaces
+kde-plasma/plasma-meta 5.20.5 5.21.3: Merge this to pull in all Plasma 5 packages
+kde-plasma/plasma-nm 5.20.5 5.21.3: KDE Plasma applet for NetworkManager
+kde-plasma/plasma-pa 5.20.5 5.21.3: Plasma applet for audio volume management using PulseAudio
+kde-plasma/plasma-sdk 5.20.5 5.21.3: Useful applications for Plasma development
+kde-plasma/plasma-systemmonitor 5.20.0-r1 5.21.3: New version of KSysGuard built on top of the new KStats daemon and using QML
+kde-plasma/plasma-thunderbolt 5.20.5 5.21.3: Plasma integration for controlling Thunderbolt devices
+kde-plasma/plasma-vault 5.20.5 5.21.3: Plasma applet and services for creating encrypted vaults
+kde-plasma/plasma-workspace 5.20.5-r4 5.21.3: KDE Plasma workspace
+kde-plasma/plasma-workspace-wallpapers 5.20.5 5.21.3: Wallpapers for the Plasma workspace
+kde-plasma/plymouth-kcm 5.20.5 5.21.3: KDE Plasma control module for Plymouth
+kde-plasma/polkit-kde-agent 5.20.5 5.21.3: PolKit agent module for KDE Plasma
+kde-plasma/powerdevil 5.20.5 5.21.3: Power management for KDE Plasma Shell
+kde-plasma/sddm-kcm 5.20.5 5.21.3: KDE Plasma control module for SDDM
+kde-plasma/systemsettings 5.20.5 5.21.3: Control Center to configure KDE Plasma desktop
+kde-plasma/xdg-desktop-portal-kde 5.20.5 5.21.3: Backend implementation for xdg-desktop-portal that is using Qt/KDE Frameworks
+kde-plasma/xembed-sni-proxy 5.20.5 5.21.3: Legacy xembed tray icons support for SNI-only system trays
 lxde-base/lxappearance 0.6.3-r1 0.6.3-r2: LXDE GTK+ theme switcher
 lxde-base/lxappearance-obconf 0.2.3 0.2.3-r1: LXAppearance plugin for configuring OpenBox
 lxde-base/lxde-common 0.99.1 0.99.2-r1: LXDE Session default configuration files and nuoveXT2 iconset
