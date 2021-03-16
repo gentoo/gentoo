@@ -4,10 +4,11 @@ DEPEND=net-libs/libpcap >=dev-libs/libdnet-1.7
 DESCRIPTION='Sticky' Honeypot and IDS
 EAPI=7
 HOMEPAGE=http://labrea.sourceforge.net/
+INHERIT=autotools
 KEYWORDS=amd64 ~ppc x86
 LICENSE=GPL-2
 RDEPEND=net-libs/libpcap >=dev-libs/libdnet-1.7
 SLOT=0
 SRC_URI=mirror://sourceforge/labrea/labrea-2.5-stable-1.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=919fe7763401a749c07212ad801bf5be
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9988ecbe04129214297a7bbf3d253710
+_md5_=0b7e4f76e892d0724f66878f50e89074

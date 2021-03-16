@@ -14598,7 +14598,7 @@ net-analyzer/vnstat 1.17 2.6 9999: Console-based network traffic monitor that ke
 net-analyzer/wapiti 3.0.3 3.0.4 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r2: Poor man's web vulnerability scanner
 net-analyzer/wireshark 3.4.3 3.4.4 9999: A network protocol analyzer formerly known as ethereal
-net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
+net-analyzer/xnetload 1.11.3-r1: Displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3-r1: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.8.2 9999: A framework for layer 2 attacks
 net-analyzer/zabbix 3.0.31-r2 4.0.28 4.0.29 5.0.8 5.0.9 5.0.9-r1 5.2.4 5.2.5 5.2.5-r1: ZABBIX is software for monitoring of your applications, network and servers
@@ -18712,7 +18712,7 @@ x11-misc/xkblayout-state 0_p20180118 9999: A small program to get/set the curren
 x11-misc/xkbset 0.5_p5_p1 0.5_p6 0.5_p7_p1: User preference utility for XKB extensions for X
 x11-misc/xkeyboard-config 2.31 2.32 9999: X keyboard configuration database
 x11-misc/xkeycaps 2.47_p7: GUI frontend to xmodmap
-x11-misc/xlockmore 5.50-r1 5.65-r1 5.66_alpha12-r1: Just another screensaver application for X
+x11-misc/xlockmore 5.50-r1 5.65-r1 5.66_alpha12-r1 5.66: Just another screensaver application for X
 x11-misc/xmobar 0.36: A Minimalistic Text Based Status Bar
 x11-misc/xmountains 2.9-r1: Fractal terrains of snow-capped mountains near water
 x11-misc/xnee 3.19-r2: Program suite to record, replay and distribute user actions
