@@ -28,7 +28,7 @@ RDEPEND="
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		dev-qt/qtwidgets:5
-        )"
+	)"
 
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
@@ -36,7 +36,7 @@ BDEPEND="virtual/pkgconfig"
 src_configure() {
 	local mycmakeargs=(
 		-DDISABLE_FRONTEND=$(usex !gui)
-        )
+	)
 	cmake_src_configure
 }
 
