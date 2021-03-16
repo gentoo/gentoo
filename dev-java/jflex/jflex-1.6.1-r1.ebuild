@@ -33,6 +33,8 @@ S="${WORKDIR}/${P}"
 JAVA_SRC_DIR="src/main/java"
 
 src_prepare() {
+	eapply_user
+
 	# See below for details.
 	eapply "${FILESDIR}/icedtea-arm.patch"
 
