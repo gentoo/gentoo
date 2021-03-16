@@ -7,9 +7,9 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<use>
-		<flag name='gpg'>Install dependencies needed for OpenPGP
+		<flag name="gpg">Install dependencies needed for OpenPGP
 			signature verification support</flag>
-		<flag name='tools'>Install additional utilities (benchmarks,
+		<flag name="tools">Install additional utilities (benchmarks,
 			hash testing tools, fast Manifest generators)
 			to /usr/share/gemato.</flag>
 	</use>

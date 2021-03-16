@@ -5,7 +5,7 @@
 		<email>haskell@gentoo.org</email>
 	</maintainer>
 	<use>
-		<flag name='bundled-expat'> Use bundled expat instead of <pkg>dev-libs/expat</pkg></flag>
+		<flag name="bundled-expat"> Use bundled expat instead of <pkg>dev-libs/expat</pkg></flag>
 	</use>
 	<longdescription>
 		This package provides a general purpose Haskell XML library using Expat to

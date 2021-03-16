@@ -12,8 +12,8 @@
 	<longdescription>
 		This library provides convenient combinators for working with and building parsing combinator libraries.
 		
-		Given a few simple instances, e.g. for the class &#39;Text.Parser.Combinators.Parsing&#39; in &quot;Text.Parser.Combinators.Parsing&quot; you
+		Given a few simple instances, e.g. for the class 'Text.Parser.Combinators.Parsing' in "Text.Parser.Combinators.Parsing" you
 		get access to a large number of canned definitions. Instances exist for the parsers provided by @parsec@,
-		@attoparsec@ and base’s &quot;Text.Read&quot;.
+		@attoparsec@ and base’s "Text.Read".
 	</longdescription>
 </pkgmetadata>

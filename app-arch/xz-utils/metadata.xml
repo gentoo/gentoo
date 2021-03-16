@@ -6,7 +6,7 @@
 	<name>Gentoo Base System</name>
 </maintainer>
 <use>
-	<flag name='extra-filters'>Build additional filters that are not
+	<flag name="extra-filters">Build additional filters that are not
 		used in any of the default xz presets. This includes delta
 		and BCJ coders, additional match finders and SHA256 checks.</flag>
 </use>

@@ -6,6 +6,6 @@
 		<name>Sergei Trofimovich</name>
 	</maintainer>
 	<use>
-		<flag name='machine-interface'>enable machine-interface protocol using <pkg>dev-libs/json-c</pkg></flag>
+		<flag name="machine-interface">enable machine-interface protocol using <pkg>dev-libs/json-c</pkg></flag>
 	</use>
 </pkgmetadata>

@@ -6,8 +6,8 @@
 <name>Gentoo network monitoring and analysis project</name>
 </maintainer>
 <use>
-<flag name='curl'>Build the curl component for uploading capture files using <pkg>net-misc/curl</pkg></flag>
-<flag name='sniffer'>Build the sniffer component using <pkg>net-libs/libnetfilter_queue</pkg></flag>
+<flag name="curl">Build the curl component for uploading capture files using <pkg>net-misc/curl</pkg></flag>
+<flag name="sniffer">Build the sniffer component using <pkg>net-libs/libnetfilter_queue</pkg></flag>
 </use>
 <upstream>
 <remote-id type="github">tracebox/tracebox</remote-id>

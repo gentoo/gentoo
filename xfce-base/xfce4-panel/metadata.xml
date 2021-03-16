@@ -6,7 +6,7 @@
 		<name>XFCE Team</name>
 	</maintainer>
 	<use>
-		<flag name='dbusmenu'>
+		<flag name="dbusmenu">
 			Enable <pkg>dev-libs/libdbusmenu</pkg> integration
 			(in status notifier plugin)
 		</flag>

@@ -9,10 +9,10 @@
 		<email>llvm@gentoo.org</email>
 	</maintainer>
 	<use>
-		<flag name='cuda'>Build CUDA offloading plugin (only with USE=offload)</flag>
-		<flag name='hwloc'>Enable CPU affinity support via hwloc</flag>
-		<flag name='offload'>Support offloading OpenMP using libomptarget</flag>
-		<flag name='ompt'>Enable OpenMP Tools Interface support</flag>
+		<flag name="cuda">Build CUDA offloading plugin (only with USE=offload)</flag>
+		<flag name="hwloc">Enable CPU affinity support via hwloc</flag>
+		<flag name="offload">Support offloading OpenMP using libomptarget</flag>
+		<flag name="ompt">Enable OpenMP Tools Interface support</flag>
 	</use>
 	<longdescription>The OpenMP subproject of LLVM is intended to contain all of the components required to build an executing OpenMP program that are outside the compiler itself.</longdescription>
 </pkgmetadata>

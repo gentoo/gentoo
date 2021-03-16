@@ -11,4 +11,3 @@
     <flag name="server">Build and install REST API server (currently hard-coded to TCP port 8080)</flag>
   </use>
 </pkgmetadata>
-

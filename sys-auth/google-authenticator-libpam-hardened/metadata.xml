@@ -6,7 +6,7 @@
 		<name>Michał Górny</name>
 	</maintainer>
 	<use>
-		<flag name='qrcode'>Display QRcode after setup to accomodate
+		<flag name="qrcode">Display QRcode after setup to accomodate
 			automatic setup of OTP client apps.</flag>
 	</use>
 	<upstream>

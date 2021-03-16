@@ -12,7 +12,7 @@
     <longdescription lang="en">
         Slic3r is the tool you need to convert a 3D model into printing instructions for your 3D printer. It cuts the model into horizontal slices (layers), generates toolpaths to fill them and calculates the amount of material to be extruded.
     </longdescription>
-    <upstream >
+    <upstream>
         <bugs-to>https://github.com/slic3r/Slic3r/issues</bugs-to>
         <doc>https://manual.slic3r.org/</doc>
         <remote-id type="github">slic3r/Slic3r</remote-id>

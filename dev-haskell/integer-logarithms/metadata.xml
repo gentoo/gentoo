@@ -6,11 +6,11 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<longdescription>
-		&quot;Math.NumberTheory.Logarithms&quot; and &quot;Math.NumberTheory.Powers.Integer&quot;
+		"Math.NumberTheory.Logarithms" and "Math.NumberTheory.Powers.Integer"
 		from the arithmoi package.
 		
-		Also provides &quot;GHC.Integer.Logarithms.Compat&quot; and
-		&quot;Math.NumberTheory.Power.Natural&quot; modules, as well as some
+		Also provides "GHC.Integer.Logarithms.Compat" and
+		"Math.NumberTheory.Power.Natural" modules, as well as some
 		additional functions in migrated modules.
 	</longdescription>
 </pkgmetadata>

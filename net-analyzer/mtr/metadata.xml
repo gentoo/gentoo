@@ -10,8 +10,8 @@
 		<name>Gentoo network monitoring and analysis project</name>
 	</maintainer>
 	<use>
-		<flag name='ipinfo'>Disable support for IP address lookups</flag>
-		<flag name='jansson'>Enable JSON output support through <pkg>dev-libs/jansson</pkg></flag>
+		<flag name="ipinfo">Disable support for IP address lookups</flag>
+		<flag name="jansson">Enable JSON output support through <pkg>dev-libs/jansson</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="github">traviscross/mtr</remote-id>

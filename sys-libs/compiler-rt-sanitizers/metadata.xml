@@ -5,27 +5,27 @@
 		<email>llvm@gentoo.org</email>
 	</maintainer>
 	<use>
-		<flag name='clang'>Force building using installed clang (rather
+		<flag name="clang">Force building using installed clang (rather
 			than the default CC/CXX).</flag>
-		<flag name='libfuzzer'>Build fuzzing runtime.</flag>
-		<flag name='memprof'>Build memory profiler runtime.</flag>
-		<flag name='profile'>Build profiling runtime.</flag>
-		<flag name='sanitize'>Build sanitizer runtimes.</flag>
-		<flag name='xray'>Build XRay runtime.</flag>
+		<flag name="libfuzzer">Build fuzzing runtime.</flag>
+		<flag name="memprof">Build memory profiler runtime.</flag>
+		<flag name="profile">Build profiling runtime.</flag>
+		<flag name="sanitize">Build sanitizer runtimes.</flag>
+		<flag name="xray">Build XRay runtime.</flag>
 
-		<flag name='asan'>Build Address Sanitizer runtime.</flag>
-		<flag name='dfsan'>Build Data Flow Sanitizer runtime.</flag>
-		<flag name='lsan'>Build Leak Sanitizer runtime.</flag>
-		<flag name='msan'>Build Memory Sanitizer runtime.</flag>
-		<flag name='hwasan'>Build Hardware ASAN runtime.</flag>
-		<flag name='tsan'>Build Thread Sanitizer runtime.</flag>
-		<flag name='ubsan'>
+		<flag name="asan">Build Address Sanitizer runtime.</flag>
+		<flag name="dfsan">Build Data Flow Sanitizer runtime.</flag>
+		<flag name="lsan">Build Leak Sanitizer runtime.</flag>
+		<flag name="msan">Build Memory Sanitizer runtime.</flag>
+		<flag name="hwasan">Build Hardware ASAN runtime.</flag>
+		<flag name="tsan">Build Thread Sanitizer runtime.</flag>
+		<flag name="ubsan">
 			Build Undefined Behavior Sanitizer runtime.
 		</flag>
-		<flag name='safestack'>Build SafeStack runtime.</flag>
-		<flag name='cfi'>Build Control Flow Integrity runtime.</flag>
-		<flag name='scudo'>Build Scudo Hardened Allocator.</flag>
-		<flag name='shadowcallstack'>Build ShadowCallStack.</flag>
-		<flag name='gwp-asan'>Build GWP-ASAN runtime.</flag>
+		<flag name="safestack">Build SafeStack runtime.</flag>
+		<flag name="cfi">Build Control Flow Integrity runtime.</flag>
+		<flag name="scudo">Build Scudo Hardened Allocator.</flag>
+		<flag name="shadowcallstack">Build ShadowCallStack.</flag>
+		<flag name="gwp-asan">Build GWP-ASAN runtime.</flag>
 	</use>
 </pkgmetadata>

@@ -23,9 +23,9 @@
 		facilities for author package signing.
 		
 		The library has two main entry points:
-		&quot;Hackage.Security.Client&quot; is the main entry point for
+		"Hackage.Security.Client" is the main entry point for
 		clients (the typical example being @cabal@), and
-		&quot;Hackage.Security.Server&quot; is the main entry point for
+		"Hackage.Security.Server" is the main entry point for
 		servers (the typical example being @hackage-server@).
 	</longdescription>
 </pkgmetadata>

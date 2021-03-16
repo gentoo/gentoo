@@ -25,7 +25,7 @@
 		which kinda defeats the purpose.
 		
 		This package intends to tackle both issues,
-		providing a data type &#39;Chimera&#39; for
+		providing a data type 'Chimera' for
 		lazy infinite compact streams with cache-friendly O(1) indexing.
 		
 		Additional features include:

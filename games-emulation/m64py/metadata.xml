@@ -6,8 +6,8 @@
 		<name>Michał Górny</name>
 	</maintainer>
 	<use>
-		<flag name='7z'>Ensure support for .7z archives.</flag>
-		<flag name='rar'>Ensure support for .rar archives.</flag>
+		<flag name="7z">Ensure support for .7z archives.</flag>
+		<flag name="rar">Ensure support for .rar archives.</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">m64py</remote-id>
