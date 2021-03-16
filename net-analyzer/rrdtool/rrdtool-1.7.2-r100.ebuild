@@ -9,26 +9,30 @@ GENTOO_DEPEND_ON_PERL=no
 LUA_COMPAT=( lua5-{1..4} luajit )
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit autotools lua perl-module distutils-r1 flag-o-matic multilib
+inherit autotools lua perl-module distutils-r1 flag-o-matic
 
 MY_P=${P/_/-}
 
 DESCRIPTION="A system to store and display time-series data"
 HOMEPAGE="https://oss.oetiker.ch/rrdtool/"
 SRC_URI="https://oss.oetiker.ch/rrdtool/pub/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0/8.0.0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="dbi doc graph lua perl python rados rrdcgi ruby static-libs tcl tcpd test"
+
 RESTRICT="!test? ( test )"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
+REQUIRED_USE="
+	python? ( ${PYTHON_REQUIRED_USE} )
 	lua? (
 		${LUA_REQUIRED_USE}
 		test? ( graph )
-	)"
+	)
+"
 
-CDEPEND="
+RDEPEND="
 	>=dev-libs/glib-2.28.7:2[static-libs(+)?]
 	>=dev-libs/libxml2-2.7.8:2[static-libs(+)?]
 	dbi? ( dev-db/libdbi[static-libs(+)?] )
@@ -44,39 +48,25 @@ CDEPEND="
 	tcl? ( dev-lang/tcl:0= )
 	tcpd? ( sys-apps/tcp-wrappers )
 "
-
-DEPEND="
-	${CDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	sys-apps/groff
 	virtual/pkgconfig
 	virtual/awk
-	test? ( sys-devel/bc )
+	python? ( $(python_gen_cond_dep 'dev-python/setuptools[${PYTHON_USEDEP}]') )
+	test? (
+		sys-devel/bc
+		lua? ( ${LUA_DEPS} )
+	)
 "
-RDEPEND="
-	${CDEPEND}
-"
-BDEPEND="test? (
-	lua? ( ${LUA_DEPS} )
-)"
-PDEPEND="
-	ruby? ( ~dev-ruby/rrdtool-bindings-${PV} )
-"
+
+PDEPEND="ruby? ( ~dev-ruby/rrdtool-bindings-${PV} )"
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.4.9-disable-rrd_graph-perl.patch
 	"${FILESDIR}"/${PN}-1.7.0-disable-rrd_graph-cgi.patch
 	"${FILESDIR}"/${PN}-1.7.1-configure.ac.patch
 )
-S=${WORKDIR}/${MY_P}
-
-python_compile() {
-	cd bindings/python || die
-	distutils-r1_python_compile
-}
-
-python_install() {
-	cd bindings/python || die
-	distutils-r1_python_install
-}
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -86,7 +76,7 @@ src_prepare() {
 	default
 	# At the next version bump, please see if you actually still need this
 	# before adding versions
-	if ! [ -f doc/rrdrados.pod ]; then
+	if ! [[ -f doc/rrdrados.pod ]] ; then
 		cp "${FILESDIR}"/${PN}-1.5.5-rrdrados.pod doc/rrdrados.pod
 	else
 		die "File already exists: doc/rrdrados.pod. Remove this code!"
@@ -105,7 +95,7 @@ src_prepare() {
 		-e '/^all-local:/s| @COMP_PYTHON@||' \
 		bindings/Makefile.am || die
 
-	if ! use graph; then
+	if ! use graph ; then
 		sed -i \
 			-e '2s:rpn1::; 2s:rpn2::; 6s:create-with-source-4::;' \
 			-e '7s:xport1::; 7s:dcounter1::; 7s:vformatter1::' \
@@ -122,20 +112,20 @@ src_configure() {
 
 	filter-flags -ffast-math
 
-	export RRDDOCDIR=${EPREFIX}/usr/share/doc/${PF}
+	export RRDDOCDIR="${EPREFIX}"/usr/share/doc/${PF}
 
 	# to solve bug #260380
 	[[ ${CHOST} == *-solaris* ]] && append-flags -D__EXTENSIONS__
 
 	# Stub configure.ac
 	local myconf=()
-	if ! use tcpd; then
+	if ! use tcpd ; then
 		myconf+=( "--disable-libwrap" )
 	fi
-	if ! use dbi; then
+	if ! use dbi ; then
 		myconf+=( "--disable-libdbi" )
 	fi
-	if ! use rados; then
+	if ! use rados ; then
 		myconf+=( "--disable-librados" )
 	fi
 
@@ -156,6 +146,11 @@ src_configure() {
 		--disable-ruby-site-install \
 		--disable-ruby \
 		${myconf[@]}
+}
+
+python_compile() {
+	cd bindings/python || die
+	distutils-r1_python_compile
 }
 
 lua_src_compile() {
@@ -189,15 +184,21 @@ lua_src_test() {
 
 	LUA_CPATH="${PWD}/.libs/?.so" emake LUA="${LUA}" test
 
-	popd
+	popd || die
 }
 
 src_test() {
 	export LC_ALL=C
+
 	default
-	if use lua; then
+	if use lua ; then
 		lua_foreach_impl lua_src_test
 	fi
+}
+
+python_install() {
+	cd bindings/python || die
+	distutils-r1_python_install
 }
 
 lua_src_install() {
@@ -209,24 +210,24 @@ lua_src_install() {
 		LUA_INSTALL_CMOD="${ED}/$(lua_get_cmod_dir)" \
 		install
 
-	popd
+	popd || die
 }
 
 src_install() {
 	default
 
 	if ! use doc ; then
-		rm -rf "${ED}"/usr/share/doc/${PF}/{html,txt}
+		rm -rf "${ED}"/usr/share/doc/${PF}/{html,txt} || die
 	fi
 
-	if use lua; then
+	if use lua ; then
 		lua_foreach_impl lua_src_install
 	fi
 
-	if use !rrdcgi ; then
+	if ! use rrdcgi ; then
 		# uses rrdcgi, causes invalid shebang error in Prefix, useless
 		# without rrdcgi installed
-		rm -f "${ED}"/usr/share/${PN}/examples/cgi-demo.cgi
+		rm -f "${ED}"/usr/share/${PN}/examples/cgi-demo.cgi || die
 	fi
 
 	if use perl ; then
@@ -236,7 +237,7 @@ src_install() {
 
 	dodoc CHANGES CONTRIBUTORS NEWS THREADS TODO
 
-	find "${ED}"/usr -name '*.la' -exec rm -f {} +
+	find "${ED}"/usr -name '*.la' -exec rm -f {} + || die
 
 	keepdir /var/lib/rrdcached/journal/
 	keepdir /var/lib/rrdcached/db/
