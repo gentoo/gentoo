@@ -4,10 +4,9 @@
 	<maintainer type="person" proxied="yes">
 		<email>arfrever.fta@gmail.com</email>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="proxy">
 		<email>floppym@gentoo.org</email>
 		<name>Mike Gilbert</name>
-		<description>Proxy</description>
 	</maintainer>
 	<longdescription>
 		Neon is an HTTP and WebDAV client library for Unix systems, with a C

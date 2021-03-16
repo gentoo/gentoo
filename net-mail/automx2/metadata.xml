@@ -5,10 +5,9 @@
 		<email>gentoo@seichter.de</email>
 		<name>Ralph Seichter</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="proxy">
 		<email>mschiff@gentoo.org</email>
 		<name>Marc Schiffbauer</name>
-		<description>Proxy</description>
 	</maintainer>
 	<stabilize-allarches/>
 	<longdescription>

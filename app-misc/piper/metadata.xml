@@ -9,10 +9,9 @@
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
-  <maintainer type="person">
+  <maintainer type="person" proxied="proxy">
     <email>polynomial-c@gentoo.org</email>
     <name>Lars Wendler</name>
-    <description>Proxy maintainer for Alex</description>
   </maintainer>
   <upstream>
     <remote-id type="github">libratbag/piper</remote-id>

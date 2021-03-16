@@ -5,10 +5,9 @@
 		<email>hydrapolic@gmail.com</email>
 		<name>Tomáš Mózes</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="proxy">
 		<email>whissi@gentoo.org</email>
 		<name>Thomas Deutschmann</name>
-		<description>Proxy</description>
 	</maintainer>
 	<upstream>
 		<remote-id type="github">maxmind/mod_maxminddb</remote-id>
