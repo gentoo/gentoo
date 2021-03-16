@@ -4,7 +4,7 @@
 EAPI=7
 
 VIRTUALX_REQUIRED="manual"
-LUA_COMPAT=( lua5-{1..3} luajit )
+LUA_COMPAT=( lua5-{1..4} luajit )
 
 inherit lua eutils toolchain-funcs flag-o-matic virtualx
 
@@ -30,6 +30,8 @@ DEPEND="${RDEPEND}
 			x11-libs/gtk+[introspection]
 			${VIRTUALX_DEPEND}
 		)"
+
+PATCHES=( "${FILESDIR}/${P}-lua54.patch" )
 
 lua_src_prepare() {
 	pushd "${BUILD_DIR}" || die
