@@ -17,9 +17,7 @@ IUSE=""
 
 DEPEND="sys-libs/ncurses:0=
 	virtual/libiconv"
-# This and irc-client both install /usr/bin/irc #247987
-RDEPEND="${DEPEND}
-	!net-irc/irc-client"
+RDEPEND="${DEPEND}"
 
 PATCHES=( "${FILESDIR}/${PN}-manpage-path.patch" )
 
