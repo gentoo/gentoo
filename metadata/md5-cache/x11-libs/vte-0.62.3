@@ -4,12 +4,13 @@ DEPEND=>=x11-libs/gtk+-3.24.14:3[introspection?] >=dev-libs/fribidi-1.0.0 >=dev-
 DESCRIPTION=Library providing a virtual terminal emulator widget
 EAPI=7
 HOMEPAGE=https://wiki.gnome.org/Apps/Terminal/VTE
+INHERIT=gnome.org meson vala xdg
 IUSE=+crypt debug gtk-doc +icu +introspection systemd +vala vanilla
-KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 sparc ~x86 ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris
 LICENSE=LGPL-3+ GPL-3+
 RDEPEND=>=x11-libs/gtk+-3.24.14:3[introspection?] >=dev-libs/fribidi-1.0.0 >=dev-libs/glib-2.52:2 crypt? ( >=net-libs/gnutls-3.2.7:0= ) icu? ( dev-libs/icu:= ) >=x11-libs/pango-1.22.0 >=dev-libs/libpcre2-10.21 systemd? ( >=sys-apps/systemd-220:= ) sys-libs/zlib introspection? ( >=dev-libs/gobject-introspection-1.56:= ) x11-libs/pango[introspection?]
 REQUIRED_USE=vala? ( introspection )
 SLOT=2.91
 SRC_URI=mirror://gnome/sources/vte/0.62/vte-0.62.3.tar.xz !vanilla? ( https://dev.gentoo.org/~mattst88/distfiles/vte-0.62.1-command-notify.patch.xz )
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	gnome.org	532d56d07b9eace4831aaa817d2b756a	l10n	8cdd85e169b835d518bc2fd59f780d8e	meson	e43eef9331f54965a573ed380854ff47	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	vala	5fab64090cefe75c5df431cefa0b653d	wrapper	4251d4c84c25f59094fd557e0063a974	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=71bd67b2a84e092249fa396fb2ccb2f2
+_eclasses_=gnome.org	532d56d07b9eace4831aaa817d2b756a	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	meson	e43eef9331f54965a573ed380854ff47	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	vala	5fab64090cefe75c5df431cefa0b653d	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
+_md5_=1592dad6ef6e420c85af181268d6185b

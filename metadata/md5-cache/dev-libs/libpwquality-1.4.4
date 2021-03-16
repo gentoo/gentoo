@@ -4,12 +4,13 @@ DEPEND=>=sys-libs/cracklib-2.8:=[static-libs(+)?] pam? ( sys-libs/pam ) python? 
 DESCRIPTION=Library for password quality checking and generating random passwords
 EAPI=7
 HOMEPAGE=https://github.com/libpwquality/libpwquality
+INHERIT=pam python-r1 toolchain-funcs usr-ldscript
 IUSE=pam python static-libs python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 split-usr
-KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 sparc ~x86
+KEYWORDS=~alpha amd64 ~arm ~arm64 hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 sparc ~x86
 LICENSE=|| ( BSD GPL-2 )
 RDEPEND=>=sys-libs/cracklib-2.8:=[static-libs(+)?] pam? ( sys-libs/pam ) python? ( python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] )
 REQUIRED_USE=python? ( || ( python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 ) )
 SLOT=0
 SRC_URI=https://github.com/libpwquality/libpwquality/releases/download/libpwquality-1.4.4/libpwquality-1.4.4.tar.bz2
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	pam	b097695df28f3974e3af860d6704d4f2	python-r1	6d099888c5b4dd4868c26508df307e95	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	usr-ldscript	7c918d239d0f9098867d0c8e33348fc9	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=4065d6c37d1d58caf620350102f29d6a
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	pam	b097695df28f3974e3af860d6704d4f2	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-r1	6d099888c5b4dd4868c26508df307e95	usr-ldscript	7c918d239d0f9098867d0c8e33348fc9
+_md5_=25501ab949ce0fac7b449bd554cc0717
