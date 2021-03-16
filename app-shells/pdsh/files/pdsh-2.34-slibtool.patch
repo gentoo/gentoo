@@ -1,0 +1,20 @@
+https://github.com/chaos/pdsh/pull/130
+https://bugs.gentoo.org/775593
+From 258de95760a46c6d4c84e904823425aa1a180211 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Tue, 16 Mar 2021 13:25:52 -0700
+Subject: [PATCH] build: Use LDADD instead of LDFLAGS for libcommon.la.
+--- a/src/pdsh/Makefile.am
++++ b/src/pdsh/Makefile.am
+@@ -16,9 +16,9 @@ else
+ MODULE_FLAGS =             -export-dynamic $(AIX_PDSH_LDFLAGS) -ldl
+ endif
+ 
+-pdsh_LDADD =               $(READLINE_LIBS)
+-pdsh_LDFLAGS =             $(MODULE_LIBS) $(MODULE_FLAGS) \
++pdsh_LDADD =               $(READLINE_LIBS) \
+                            $(top_builddir)/src/common/libcommon.la
++pdsh_LDFLAGS =             $(MODULE_LIBS) $(MODULE_FLAGS)
+ 
+ pdsh_inst_LDADD =          $(pdsh_LDADD)
+ pdsh_inst_LDFLAGS =        $(pdsh_LDFLAGS)

@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit toolchain-funcs
 
 DESCRIPTION="High-performance and portable C++ number theory library"
@@ -54,8 +55,11 @@ src_configure() {
 
 src_install() {
 	default
+
 	if ! use static-libs; then
-		rm "${ED}/usr/$(get_libdir)"/libntl.{la,a} || die
+		# bug #775884
+		find "${ED}" -name '*.la' -delete || die
+		rm "${ED}/usr/$(get_libdir)"/libntl.a || die
 	fi
 
 	rm -r "${ED}"/usr/share/doc/NTL || die
