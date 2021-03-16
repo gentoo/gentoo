@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit xdg-utils
+inherit xdg
 
 DESCRIPTION="A Simple and Fast Image Viewer for X"
 HOMEPAGE="http://lxde.sourceforge.net/gpicview"
