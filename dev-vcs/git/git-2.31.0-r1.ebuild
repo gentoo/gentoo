@@ -260,6 +260,11 @@ src_prepare() {
 
 	default
 
+	if use prefix ; then
+		# bug #757309
+		eapply "${FILESDIR}"/git-2.31.0-darwin-prefix-gettext.patch
+	fi
+
 	sed -i \
 		-e 's:^\(CFLAGS[[:space:]]*=\).*$:\1 $(OPTCFLAGS) -Wall:' \
 		-e 's:^\(LDFLAGS[[:space:]]*=\).*$:\1 $(OPTLDFLAGS):' \
