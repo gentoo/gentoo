@@ -5,7 +5,7 @@
     <email>gentoo@chuso.net</email>
     <name>Jesus Perez Rey</name>
   </maintainer>
-  <maintainer type="project">
+  <maintainer type="project" proxied="proxy">
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>

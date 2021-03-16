@@ -5,7 +5,7 @@
 		<email>pabloorduna98@gmail.com</email>
 		<name>Pablo Orduna</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Gentoo Proxy Maintainers Project</name>
 	</maintainer>

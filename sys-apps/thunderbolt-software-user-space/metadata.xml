@@ -5,7 +5,7 @@
 		<name>Jonas Licht</name>
 		<email>jonas.licht@gmail.com</email>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>

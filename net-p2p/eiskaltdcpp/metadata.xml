@@ -5,7 +5,7 @@
 		<email>klondike@gentoo.org</email>
 		<name>Francisco Blas (klondike) Izquierdo Riera</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
