@@ -27,7 +27,6 @@ RDEPEND="${DEPEND}"
 src_prepare() {
 	local PATCHES=(
 		"${FILESDIR}"/${PN}-2.0.0-install-headers.patch
-		"${FILESDIR}"/${P}-mesa-compat.patch
 	)
 
 	sed -i \

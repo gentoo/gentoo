@@ -23,8 +23,7 @@ RDEPEND=">=virtual/jre-1.8:*
 	vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
 	${CDEPEND}"
 
-DEPEND="dev-java/javacup:0
-	>=virtual/jdk-1.8:*
+DEPEND=">=virtual/jdk-1.8:*
 	test? ( dev-java/junit:4 )
 	${CDEPEND}"
 
@@ -34,8 +33,10 @@ S="${WORKDIR}/${P}"
 JAVA_SRC_DIR="src/main/java"
 
 src_prepare() {
+	eapply_user
+
 	# See below for details.
-	eapply_user "${FILESDIR}/icedtea-arm.patch"
+	eapply "${FILESDIR}/icedtea-arm.patch"
 
 	# We need the bundled jflex.jar.
 	rm -rv ${JAVA_SRC_DIR}/java_cup examples/pom.xml || die
