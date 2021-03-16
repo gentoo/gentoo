@@ -1,10 +1,12 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
+
+FONT_SUFFIX="otf"
 inherit font
 
-DESCRIPTION="A monospace font designed to be clear, pragmatic and very readable"
+DESCRIPTION="Monospace font designed to be clear, pragmatic and very readable"
 HOMEPAGE="https://pcaro.es/p/hermit/"
 SRC_URI="https://pcaro.es/d/otf-${P}.tar.gz"
 
@@ -13,5 +15,4 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-S=${WORKDIR}
-FONT_SUFFIX="otf"
+S="${WORKDIR}"
