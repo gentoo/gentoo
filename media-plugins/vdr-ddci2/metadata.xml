@@ -5,7 +5,7 @@
 		<email>d.scheller.oss@gmail.com</email>
 		<name>Daniel Scheller</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 	</maintainer>
 	<upstream>

@@ -5,7 +5,7 @@
 		<email>tharvik@gmail.com</email>
 		<name>Valérian Rousset</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>

@@ -15,7 +15,7 @@ Le client officiel du lobby pour les jeux de la communauté SpringRTS : Balanced
 		<email>fedja@protonmail.ch</email>
 		<name>Fedja Beader</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>

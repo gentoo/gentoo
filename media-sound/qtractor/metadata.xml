@@ -9,7 +9,7 @@
 		<email>simon.vanderveldt+gentoo@gmail.com</email>
 		<name>Simon van der Veldt</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>

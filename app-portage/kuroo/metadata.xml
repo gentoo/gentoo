@@ -5,7 +5,7 @@
 		<email>tools-portage@gentoo.org</email>
 		<name>Gentoo Portage tools team</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>

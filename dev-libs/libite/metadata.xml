@@ -5,7 +5,7 @@
 		<name>Oz Tiram</name>
 		<email>oz.tiram@gmail.com</email>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 	</maintainer>
 	<longdescription lang="en">

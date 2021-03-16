@@ -9,7 +9,7 @@
 		<email>mschiff@gentoo.org</email>
 		<name>Marc Schiffbauer</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>

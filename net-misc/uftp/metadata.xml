@@ -5,7 +5,7 @@
 	<email>azamat.hackimov@gmail.com</email>
 	<name>Azamat Hackimov</name>
 </maintainer>
-<maintainer type="project">
+<maintainer type="project" proxied="proxy">
 	<email>proxy-maint@gentoo.org</email>
 	<name>Proxy Maintainers</name>
 </maintainer>
