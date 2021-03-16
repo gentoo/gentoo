@@ -1,0 +1,96 @@
+cmake_minimum_required(VERSION 3.16)
+
+project(XaoS)
+
+# NOTE: Use GCC. Apple clang lacks quadmath support
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
+
+# add definitions
+add_definitions(-DUSE_FLOAT128 -DUSE_SFFE -DSFFE_CMPLX_GSL)
+
+# resolve symbolic links
+set(CMAKE_FIND_PACKAGE_RESOLVE_SYMLINKS ON)
+
+if(NOT CMAKE_BUILD_TYPE)
+   set_property(CACHE CMAKE_BUILD_TYPE PROPERTY VALUE Release)
+endif()
+
+include(GNUInstallDirs)
+include(FeatureSummary)
+
+# set-up some Qt stuff
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+
+# turn on additional options
+#set(CMAKE_INCLUDE_CURRENT_DIR ON)
+#set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+# look for Qt5 or Qt6
+find_package(QT NAMES Qt5 Qt6 COMPONENTS Core Widgets PrintSupport REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR}Widgets REQUIRED)
+
+# OS specific stuff
+# on macOS the Qt libraries are usually not installed into the system library folders 
+if (APPLE)
+   list(APPEND CMAKE_INSTALL_RPATH ${Qt${QT_VERSION_MAJOR}_DIR}/../..)
+endif()
+
+# the include and link paths
+include_directories(
+   src/engine
+   src/include
+   src/ui
+   src/ui-hlp
+   ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+
+link_directories(${CMAKE_CURRENT_BINARY_DIR}/lib)
+
+# set the Application icon, the first line is the property added to Info.plist
+set(MACOSX_BUNDLE_ICON_FILE XaoS.icns)
+set(xaos_ICON ${CMAKE_CURRENT_SOURCE_DIR}/src/ui/XaoS.icns)
+set_source_files_properties(${xaos_ICON} PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
+
+# Multilingual support: *.ts -> build/*.qm
+find_package(Qt${QT_VERSION_MAJOR}LinguistTools)
+file(GLOB TRANSLATION_FILES ${CMAKE_CURRENT_SOURCE_DIR}/i18n/*.ts)
+
+# qt_add_translation is universal for 5.15 and newer
+if (${QT_VERSION} VERSION_LESS 5.15.0)
+   qt5_add_translation(QM_FILES ${TRANSLATION_FILES})
+else()
+   qt_add_translation(QM_FILES ${TRANSLATION_FILES})
+endif()
+
+# grab all sources for executable
+file(GLOB CXX_FILES src/ui/*.cpp src/ui-hlp/*.cpp src/util/*.cpp src/engine/*.cpp src/sffe/*.cpp)
+file(GLOB C_FILES src/sffe/*.c)
+
+add_executable(xaos 
+   ${CXX_FILES} 
+   ${C_FILES} 
+   ${QM_FILES} 
+   ${xaos_ICON} 
+   src/ui/XaoS.qrc
+)
+
+# Link
+target_link_libraries(xaos Qt::Widgets quadmath)
+
+# install bundle
+install(TARGETS xaos DESTINATION ${CMAKE_INSTALL_BINDIR})
+
+# install translations
+install(FILES ${QM_FILES} DESTINATION ${CMAKE_INSTALL_LOCALEDIR}/${PROJECT_NAME})
+
+# install catalogs and tutorial
+install(DIRECTORY catalogs tutorial DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME})
+
+# install example files
+file(GLOB EXAMPLE_FILES ${PROJECT_DIR}/examples/*/*.xpf)
+install(FILES ${EXAMPLE_FILES} DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}/examples)
+
+feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
