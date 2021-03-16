@@ -10736,7 +10736,7 @@ dev-util/astyle 3.0.1-r1 3.1-r2: Artistic Style is a re-indenter and reformatter
 dev-util/autodia 2.140.0-r2: Parses source code, XML or data and produces an XML document in Dia format
 dev-util/autoproject 0.20_p5: Start a programming project using autotools and a command line parser generator
 dev-util/babeltrace 1.2.4: A command-line tool and library to read and convert trace files
-dev-util/bats 0.4.0 0.4.0_p20170219 1.2.1: Bats-core: Bash Automated Testing System
+dev-util/bats 0.4.0 0.4.0_p20170219 1.2.1 1.3.0: Bats-core: Bash Automated Testing System
 dev-util/bazel 0.22.0 0.24.1 0.27.2 0.29.1 1.0.1 1.2.0 1.2.0-r1 1.2.1 2.0.0 3.2.0: Fast and correct automated build system
 dev-util/bbe 0.2.2-r1: Sed-like editor for binary files
 dev-util/bcc 0.16.0-r1 0.17.0 0.17.0-r100 0.18.0-r1: Tools for BPF-based Linux IO analysis, networking, monitoring, and more

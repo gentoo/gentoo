@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst test
+DEPEND=app-shells/bash:*
+DESCRIPTION=Bats-core: Bash Automated Testing System
+EAPI=7
+HOMEPAGE=https://github.com/bats-core/bats-core/
+INHERIT=optfeature
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86
+LICENSE=MIT
+RDEPEND=app-shells/bash:*
+SLOT=0
+SRC_URI=https://github.com/bats-core/bats-core/archive/v1.3.0.tar.gz -> bats-1.3.0.tar.gz
+_eclasses_=optfeature	6a2add34e06e5a05d88471a33ccdd73e
+_md5_=6ea0f198c7a59645783ca389be2c6f89
