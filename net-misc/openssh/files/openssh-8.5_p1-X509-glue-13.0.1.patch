@@ -1,0 +1,72 @@
+--- a/openssh-8.5p1+x509-13.0.1.diff	2021-03-15 14:05:14.876485231 -0700
++++ b/openssh-8.5p1+x509-13.0.1.diff	2021-03-15 14:06:05.389154451 -0700
+@@ -46675,12 +46675,11 @@
+  
+  install-files:
+  	$(MKDIR_P) $(DESTDIR)$(bindir)
+-@@ -380,6 +364,8 @@
++@@ -380,6 +364,7 @@
+  	$(MKDIR_P) $(DESTDIR)$(mandir)/$(mansubdir)5
+  	$(MKDIR_P) $(DESTDIR)$(mandir)/$(mansubdir)8
+  	$(MKDIR_P) $(DESTDIR)$(libexecdir)
+ +	$(MKDIR_P) $(DESTDIR)$(sshcadir)
+-+	$(MKDIR_P) $(DESTDIR)$(piddir)
+  	$(MKDIR_P) -m 0755 $(DESTDIR)$(PRIVSEP_PATH)
+  	$(INSTALL) -m 0755 $(STRIP_OPT) ssh$(EXEEXT) $(DESTDIR)$(bindir)/ssh$(EXEEXT)
+  	$(INSTALL) -m 0755 $(STRIP_OPT) scp$(EXEEXT) $(DESTDIR)$(bindir)/scp$(EXEEXT)
+@@ -63967,7 +63966,7 @@
+ -	echo "putty interop tests not enabled"
+ -	exit 0
+ -fi
+-+$REGRESS_INTEROP_PUTTY || { echo "putty interop tests are not enabled" >&1;  exit 1; }
+++$REGRESS_INTEROP_PUTTY || { echo "putty interop tests are not enabled" >&1;  exit 0; }
+  
+  for c in aes 3des aes128-ctr aes192-ctr aes256-ctr chacha20 ; do
+  	verbose "$tid: cipher $c"
+@@ -63982,7 +63981,7 @@
+ -	echo "putty interop tests not enabled"
+ -	exit 0
+ -fi
+-+$REGRESS_INTEROP_PUTTY || { echo "putty interop tests are not enabled" >&1;  exit 1; }
+++$REGRESS_INTEROP_PUTTY || { echo "putty interop tests are not enabled" >&1;  exit 0; }
+  
+  for k in dh-gex-sha1 dh-group1-sha1 dh-group14-sha1 ecdh ; do
+  	verbose "$tid: kex $k"
+@@ -63997,7 +63996,7 @@
+ -	echo "putty interop tests not enabled"
+ -	exit 0
+ -fi
+-+$REGRESS_INTEROP_PUTTY || { echo "putty interop tests are not enabled" >&1;  exit 1; }
+++$REGRESS_INTEROP_PUTTY || { echo "putty interop tests are not enabled" >&1;  exit 0; }
+  
+  if [ "`${SSH} -Q compression`" = "none" ]; then
+  	comp="0"
+@@ -64129,9 +64128,9 @@
+  
+ +# cross-project configuration
+ +if test "$sshd_type" = "pkix" ; then
+-+  unset_arg=''
+++  unset_arg=
+ +else
+-+  unset_arg=none
+++  unset_arg=
+ +fi
+ +
+  cat > $OBJ/sshd_config.i << _EOF
+@@ -122247,16 +122246,6 @@
+ +int	 asnmprintf(char **, size_t, int *, const char *, ...)
+  	     __attribute__((format(printf, 4, 5)));
+  void	 msetlocale(void);
+-diff -ruN openssh-8.5p1/version.h openssh-8.5p1+x509-13.0.1/version.h
+---- openssh-8.5p1/version.h	2021-03-02 12:31:47.000000000 +0200
+-+++ openssh-8.5p1+x509-13.0.1/version.h	2021-03-15 20:07:00.000000000 +0200
+-@@ -2,5 +2,4 @@
+- 
+- #define SSH_VERSION	"OpenSSH_8.5"
+- 
+--#define SSH_PORTABLE	"p1"
+--#define SSH_RELEASE	SSH_VERSION SSH_PORTABLE
+-+#define SSH_RELEASE	PACKAGE_STRING ", " SSH_VERSION "p1"
+ diff -ruN openssh-8.5p1/version.m4 openssh-8.5p1+x509-13.0.1/version.m4
+ --- openssh-8.5p1/version.m4	1970-01-01 02:00:00.000000000 +0200
+ +++ openssh-8.5p1+x509-13.0.1/version.m4	2021-03-15 20:07:00.000000000 +0200
