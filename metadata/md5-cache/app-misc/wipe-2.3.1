@@ -1,11 +1,12 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=compile install postinst prepare
-DEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Secure file wiping utility based on Peter Gutman's patterns
-EAPI=6
+EAPI=7
 HOMEPAGE=http://wipe.sourceforge.net/
+INHERIT=autotools
 KEYWORDS=amd64 ppc ~ppc64 x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/wipe/wipe-2.3.1.tar.bz2
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=34c0801827d2f7a48aa15dc4eec83b9d
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9988ecbe04129214297a7bbf3d253710
+_md5_=499770f2ee07c2afb7f44869643e5260

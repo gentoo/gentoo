@@ -2886,7 +2886,7 @@ app-shells/mcfly 0.5.3-r1: Context-aware bash history search replacement (ctrl-r
 app-shells/mksh 59c 9999: MirBSD Korn Shell
 app-shells/mpibash 1.3-r1 9999: Parallel scripting right from the Bourne-Again Shell (Bash)
 app-shells/pdmenu 1.3.6: A simple console menu program
-app-shells/pdsh 2.26-r1: A high-performance, parallel remote shell utility
+app-shells/pdsh 2.26-r1 2.34: A high-performance, parallel remote shell utility
 app-shells/peco 0.5.7 0.5.8: Simplistic interactive filtering tool
 app-shells/posh 0.14.1: Reimplementation of Bourne shell based on pdksh
 app-shells/powerline 2.7-r1 2.7-r2 9999: The ultimate statusline/prompt utility.
