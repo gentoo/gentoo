@@ -1,0 +1,13 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=install postinst
+DESCRIPTION=Security and system auditing tool
+EAPI=7
+HOMEPAGE=https://cisofy.com/lynis/
+INHERIT=eutils bash-completion-r1 systemd
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=app-shells/bash
+SLOT=0
+SRC_URI=https://cisofy.com/files/lynis-3.0.3.tar.gz
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	be99724bde4274de21e581204e9d164a	systemd	74b223e42834adf09a2d21fe5fe13741
+_md5_=87e0057eee888bbf1da4102a40683a3a

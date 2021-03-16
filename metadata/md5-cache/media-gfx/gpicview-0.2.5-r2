@@ -1,12 +1,13 @@
-DEFINED_PHASES=configure
-DEPEND=virtual/jpeg:0 x11-libs/gtk+:3 >=dev-util/intltool-0.40 sys-devel/gettext virtual/pkgconfig
+DEFINED_PHASES=configure postinst postrm preinst prepare
+DEPEND=virtual/jpeg:0 x11-libs/gtk+:3 >=dev-util/intltool-0.40 sys-devel/gettext virtual/pkgconfig dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=A Simple and Fast Image Viewer for X
 EAPI=7
 HOMEPAGE=http://lxde.sourceforge.net/gpicview
+INHERIT=xdg
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ppc ~x86
 LICENSE=GPL-2
 RDEPEND=virtual/jpeg:0 x11-libs/gtk+:3
 SLOT=0
 SRC_URI=mirror://sourceforge/lxde/gpicview-0.2.5.tar.xz
-_eclasses_=xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=f755beb3622154bbcb6f6d9e81d349b6
+_eclasses_=xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
+_md5_=73daad87d5fb06ad163c0962feb11f91

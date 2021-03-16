@@ -2255,7 +2255,7 @@ app-forensics/foremost 1.5.7-r3: Console program to recover files based on their
 app-forensics/galleta 20040505_p1: IE Cookie Parser
 app-forensics/honggfuzz 2.4: A general purpose fuzzer with feedback support
 app-forensics/libewf 20171104-r1: Implementation of the EWF (SMART and EnCase) image format
-app-forensics/lynis 3.0.3 3.0.3-r1: Security and system auditing tool
+app-forensics/lynis 3.0.3 3.0.3-r2: Security and system auditing tool
 app-forensics/mac-robber 1.02: mac-robber is a digital forensics and incident response tool that collects data
 app-forensics/magicrescue 1.1.10: Find deleted files in block devices
 app-forensics/memdump 1.01-r1: Simple memory dumper for UNIX-Like systems
@@ -18627,7 +18627,7 @@ x11-misc/set_opacity 1.0 9999: Tool for set real compositing for windows through
 x11-misc/shared-mime-info 1.10-r1 1.15 2.0-r2 2.1: The Shared MIME-info Database specification
 x11-misc/shutter 0.94.3_p20200621 0.95: Feature-rich screenshot program
 x11-misc/simpleswitcher 20191008 99999999: lightweight EWMH window switcher with features and looks of dmenu
-x11-misc/sisctrl 0.0.20051202 0.0.20051202-r1: tool that allows you to tune SiS drivers from X
+x11-misc/sisctrl 0.0.20051202-r1: tool that allows you to tune SiS drivers from X
 x11-misc/skippy 0.5.0-r1: A full-screen task-switcher providing Apple Expose-like functionality
 x11-misc/slim 1.3.6-r5 9999: Simple Login Manager
 x11-misc/slock 1.4: simple X display locker
