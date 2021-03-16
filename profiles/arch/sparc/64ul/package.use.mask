@@ -5,7 +5,6 @@
 # Upstream Git is switching to PCRE2 w/ JIT.
 # This is not available on some arches, where a fallback to PCRE1 without JIT is used.
 <dev-vcs/git-2.31.0 pcre-jit
->=dev-vcs/git-2.31.0 pcre
 
 # Matt Turner <mattst88@gentoo.org> (2019-08-26)
 # jit not supported on sparc64
