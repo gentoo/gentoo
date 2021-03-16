@@ -202,7 +202,9 @@ media-sound/pulseaudio native-headset
 # Robin H. Johnson <robbat2@gentoo.org> (2017-08-05)
 # Upstream Git is switching to PCRE2 w/ JIT.
 # This is not available on some arches, where a fallback to PCRE1 without JIT is used.
-dev-vcs/git pcre-jit
+# Since >=dev-vcs/git-2.31.0 pcre1 support has been dropped from git.
+<dev-vcs/git-2.31.0 pcre-jit
+>=dev-vcs/git-2.31.0 pcre
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2017-07-20)
 # pulls in unkeyworded java
