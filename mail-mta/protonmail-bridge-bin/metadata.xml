@@ -9,7 +9,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>lucianposton@pm.me</email>
 		<name>Lucian Poston</name>
 	</maintainer>

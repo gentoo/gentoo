@@ -4,7 +4,7 @@
 	<longdescription lang="en">
 		Chocolate Doom aims to accurately reproduce the original DOS version of Doom and other games based on the Doom engine in a form that can be run on modern computers.
 	</longdescription>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>vilhelm.gray@gmail.com</email>
 		<name>William Breathitt Gray</name>
 	</maintainer>

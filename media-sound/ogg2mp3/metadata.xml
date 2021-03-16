@@ -5,7 +5,7 @@
     <email>chainsaw@gentoo.org</email>
     <name>Tony Vroon</name>
   </maintainer>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>james.ausmus@gmail.com</email>
     <name>James Ausmus</name>
   </maintainer>

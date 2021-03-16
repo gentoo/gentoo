@@ -7,7 +7,7 @@
 		<flag name="ldap">Enable ldap-backed authentication module</flag>
 		<flag name="perl">Install a perl module which wraps around the services' XML-RPC interface</flag>
 	</use>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>wadecline@hotmail.com</email>
 		<name>Wade Cline</name>
 	</maintainer>

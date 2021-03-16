@@ -8,7 +8,7 @@
 		be collected by Prometheus, but other push/pull collections can be added
 		as plugins.
 	</longdescription>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>vilhelm.gray@gmail.com</email>
 		<name>William Breathitt Gray</name>
 	</maintainer>

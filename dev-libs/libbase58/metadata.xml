@@ -5,7 +5,7 @@
     <email>blueness@gentoo.org</email>
     <name>Anthony G. Basile</name>
   </maintainer>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>luke-jr+gentoobugs@utopios.org</email>
     <name>Luke Dashjr</name>
   </maintainer>

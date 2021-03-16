@@ -5,7 +5,7 @@
 		<email>ultrabug@gentoo.org</email>
 		<name>Alexys Jacob</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>hydrapolic@gmail.com</email>
 		<name>Tomáš Mózes</name>
 	</maintainer>

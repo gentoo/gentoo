@@ -5,7 +5,7 @@
     <remote-id type="pypi">three-merge</remote-id>
     <remote-id type="github">spyder-ide/three-merge</remote-id>
   </upstream>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>andrewammerlaan@riseup.net</email>
     <name>Andrew Ammerlaan</name>
   </maintainer>

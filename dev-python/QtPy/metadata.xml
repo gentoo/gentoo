@@ -5,7 +5,7 @@
 		<email>python@gentoo.org</email>
 		<name>Gentoo Python Project</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>andrewammerlaan@riseup.net</email>
 		<name>Andrew Ammerlaan</name>
 	</maintainer>

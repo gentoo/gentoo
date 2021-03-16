@@ -13,7 +13,7 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>galiven@users.sourceforge.net</email>
 		<name>Andrew Schenck</name>
 		<description>Upstream Maintainer (please CC on bugs)</description>

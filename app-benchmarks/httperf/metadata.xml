@@ -5,7 +5,7 @@
 		<email>gokturk@gentoo.org</email>
 		<name>Göktürk Yüksek</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>zekeby@fastmail.com</email>
 		<name>Taha Göktuğ Yüksek</name>
 	</maintainer>

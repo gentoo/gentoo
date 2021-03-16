@@ -5,7 +5,7 @@
     <email>java@gentoo.org</email>
     <name>Gentoo Java Team</name>
   </maintainer>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>alec@alectenharmsel.com</email>
     <name>Alec Ten Harmsel</name>
   </maintainer>

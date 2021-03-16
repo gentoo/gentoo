@@ -7,11 +7,11 @@ The official lobby client for SpringRTS community games: Balanced Annihilation; 
 	<longdescription lang="fr">
 Le client officiel du lobby pour les jeux de la communauté SpringRTS : Balanced Annihilation; Journeywar; Metal Factions; Spring:1944 World War II; Star Wars: Imperial Winter; Tech Annihilation; The Cursed; Evolution RTS; ...
 	</longdescription>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>totocoq@yahoo.fr</email>
 		<name>Thomas Coquelin</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>fedja@protonmail.ch</email>
 		<name>Fedja Beader</name>
 	</maintainer>

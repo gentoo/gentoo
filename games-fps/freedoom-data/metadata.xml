@@ -22,7 +22,7 @@
 		The levels in this game tend to demand more skillful play than the
 		previous chapters. It is compatible with mods for Doom II.
 	</longdescription>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>vilhelm.gray@gmail.com</email>
 		<name>William Breathitt Gray</name>
 	</maintainer>

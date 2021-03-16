@@ -4,7 +4,7 @@
 	<maintainer type="project">
 		<email>media-video@gentoo.org</email>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>k2k@narod.ru</email>
 		<name>Evgeny Grin</name>
 	</maintainer>

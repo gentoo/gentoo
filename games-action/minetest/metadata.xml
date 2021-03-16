@@ -29,7 +29,7 @@
 		* Runs natively on Windows, Linux, OS X and FreeBSD.
 		* Supports multiple languages, translated by the community.
 	</longdescription>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>vilhelm.gray@gmail.com</email>
 		<name>William Breathitt Gray</name>
 	</maintainer>

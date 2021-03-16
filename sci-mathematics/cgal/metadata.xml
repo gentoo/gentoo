@@ -5,7 +5,7 @@
     <email>sci-mathematics@gentoo.org</email>
     <name>Gentoo Mathematics Project</name>
   </maintainer>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>gentoo@aisha.cc</email>
     <name>Aisha Tammy</name>
   </maintainer>

@@ -5,7 +5,7 @@
     <email>NP-Hardass@gentoo.org</email>
     <name>NP-Hardass</name>
   </maintainer>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>mlspamcb@noci.work</email>
     <name>Nico Baggus</name>
   </maintainer>

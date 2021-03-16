@@ -7,7 +7,7 @@
 		D-Bus secret service APIs, and docker-credential-pass to use the
 		pass framework.
 	</longdescription>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>rkitover@gmail.com</email>
 		<name>Rafael Kitover</name>
 	</maintainer>
