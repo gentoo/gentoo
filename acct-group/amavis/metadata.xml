@@ -5,7 +5,7 @@
 		<email>antivirus@gentoo.org</email>
 		<name>Gentoo Antivirus Project</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>gentoo@seichter.de</email>
 		<name>Ralph Seichter</name>
 	</maintainer>

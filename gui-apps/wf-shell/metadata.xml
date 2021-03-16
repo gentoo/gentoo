@@ -7,7 +7,7 @@
         effects. Integrates with other wayland
         applications to provide a full desktop environment
     </longdescription>
-    <maintainer type="person">
+    <maintainer type="person" proxied="yes">
         <email>gentoo@aisha.cc</email>
         <name>Aisha Tammy</name>
     </maintainer>

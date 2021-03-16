@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<stabilize-allarches/>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>matt@offtopica.uk</email>
 		<name>Matt Smith</name>
 	</maintainer>

@@ -29,7 +29,7 @@
 	<upstream>
 		<remote-id type="github">inspircd/inspircd</remote-id>
 	</upstream>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>wadecline@hotmail.com</email>
 		<name>Wade Cline</name>
 	</maintainer>

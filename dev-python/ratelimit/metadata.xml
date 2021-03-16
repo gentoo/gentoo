@@ -6,7 +6,7 @@
 		called more than once within a given time period. It prevents API providers
 		from banning your applications by conforming to set rate limits.
 	</longdescription>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>gentoo@chymera.eu</email>
 		<name>Horea Christian</name>
 	</maintainer>

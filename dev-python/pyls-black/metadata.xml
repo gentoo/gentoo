@@ -5,7 +5,7 @@
 		<remote-id type="pypi">pyls-black</remote-id>
 		<remote-id type="github">rupert/pyls-black</remote-id>
 	</upstream>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>andrewammerlaan@riseup.net</email>
 		<name>Andrew Ammerlaan</name>
 	</maintainer>

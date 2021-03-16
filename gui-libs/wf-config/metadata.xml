@@ -7,7 +7,7 @@
         make changes in the configuration and reload them on
         the fly.
     </longdescription>
-    <maintainer type="person">
+    <maintainer type="person" proxied="yes">
         <email>gentoo@aisha.cc</email>
         <name>Aisha Tammy</name>
     </maintainer>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>herdiansyah@netc.eu</email>
 		<name>Muhammad Herdiansyah</name>
 	</maintainer>

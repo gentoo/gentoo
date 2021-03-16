@@ -4,7 +4,7 @@
 <maintainer type="project">
 	<email>m68k@gentoo.org</email>
 </maintainer>
-<maintainer type="person">
+<maintainer type="person" proxied="yes">
 	<email>gentoo@kolla.no</email>
 	<name>Kolbjørn Barmen</name>
 </maintainer>

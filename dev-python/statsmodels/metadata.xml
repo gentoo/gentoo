@@ -9,7 +9,7 @@
     <email>sci-mathematics@gentoo.org</email>
     <name>Gentoo Mathematics Project</name>
   </maintainer>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>gentoo@chymera.eu</email>
     <name>Horea Christian</name>
   </maintainer>

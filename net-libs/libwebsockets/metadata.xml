@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>jaco@uls.co.za</email>
 		<name>Jaco Kroon</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>jakov.smolic@sartura.hr</email>
 		<name>Jakov Smolic</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>luka.perkov@sartura.hr</email>
 		<name>Luka Perkov</name>
 	</maintainer>
