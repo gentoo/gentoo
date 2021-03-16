@@ -30,5 +30,5 @@ src_install() {
 
 	rm -r "${ED}"/usr/share/hyphen || die
 	# bug #775587
-	rm -f "${ED}"/usr/lib*/libhyphen.la || die
+	rm -f "${ED}/usr/$(get_libdir)/libhyphen.la" || die
 }
