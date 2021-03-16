@@ -17,7 +17,7 @@ S="${WORKDIR}/${P/_/}"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 IUSE="doc full-support minimal test X"
 RESTRICT="!test? ( test )"
 
@@ -122,6 +122,12 @@ python_prepare_all() {
 }
 
 python_compile() {
+	if use amd64 || use x86; then
+		# FMA apparently breaks rolling var/stdev
+		# https://github.com/pandas-dev/pandas/issues/38921
+		append-flags -mno-fma
+	fi
+
 	distutils-r1_python_compile -j1
 }
 
@@ -141,11 +147,6 @@ src_test() {
 
 python_test() {
 	local deselect=(
-		# broken on practically any hardware/CFLAGS but the one
-		# the patch author was using
-		# https://github.com/pandas-dev/pandas/issues/38921
-		pandas/tests/window/test_rolling.py::test_rolling_var_numerical_issues
-
 		# weird issue, doesn't seem very important
 		'pandas/tests/base/test_misc.py::test_memory_usage[series-with-empty-index]'
 	)
