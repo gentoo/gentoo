@@ -12708,7 +12708,7 @@ media-fonts/farsi-fonts 0.4: Farsi (Persian) Unicode fonts
 media-fonts/fgdc-emergency 2.20: FGDC Emergency Response Symbology Prototype
 media-fonts/fifth-leg 0.6-r1: Simplistic, technical sans serif - openSUSE font
 media-fonts/fira-code 4 5.2: Monospaced font with programming ligatures
-media-fonts/fira-mono 3.205 4.202: Default monospaced typeface for FirefoxOS, designed for legibility
+media-fonts/fira-mono 4.202: Default monospaced typeface for FirefoxOS, designed for legibility
 media-fonts/fira-sans 4.002 4.105 4.202: Default monospaced typeface for FirefoxOS, designed for legibility
 media-fonts/font-adobe-100dpi 1.0.3-r2: X.Org Adobe bitmap fonts
 media-fonts/font-adobe-75dpi 1.0.3-r2: X.Org Adobe bitmap fonts
@@ -12755,7 +12755,7 @@ media-fonts/fs-fonts 0.1_alpha3: Japanese TrueType fonts designed for screen and
 media-fonts/gidole 2.0.2: Open source modern DIN fonts
 media-fonts/glass-tty-vt220 001.3-r2: Hacking with Style: TrueType VT220 Font
 media-fonts/hack 3.003: A typeface designed for source code
-media-fonts/hermit 1.1 1.21: A monospace font designed to be clear, pragmatic and very readable
+media-fonts/hermit 1.21: Monospace font designed to be clear, pragmatic and very readable
 media-fonts/heuristica 1.0.2: A font based on Adobe Utopia
 media-fonts/hunkyfonts 0.3.1: Free TrueType fonts based on Bitstream's Vera fonts with additional letters
 media-fonts/ibm-plex 2.0.0 5.1.3: The package of IBM's typeface
@@ -12782,7 +12782,7 @@ media-fonts/koruri 20161105: Japanese TrueType font based on M+ outline fonts an
 media-fonts/lfpfonts-fix 0.83-r2: Linux Font Project fixed-width fonts
 media-fonts/lfpfonts-var 0.84: Linux Font Project variable-width fonts
 media-fonts/liberation-fonts 2.1.2 2.1.3: A Helvetica/Times/Courier replacement TrueType font set, courtesy of Red Hat
-media-fonts/libertine 5.3.0.20120702-r2 5.3.0.20120702-r3: Fonts from the Linux Libertine Open Fonts Project
+media-fonts/libertine 5.3.0.20120702-r3: Fonts from the Linux Libertine Open Fonts Project
 media-fonts/lklug 0.6-r1: Sinhala font
 media-fonts/lohit-assamese 2.91.5: The Lohit Assamese font
 media-fonts/lohit-bengali 2.91.5: The Lohit Bengali font
@@ -14829,7 +14829,7 @@ net-irc/hexchat 2.14.3 2.14.3-r100 9999: Graphical IRC client based on XChat
 net-irc/ii 1.8 9999: A minimalist FIFO and filesystem-based IRC client
 net-irc/inspircd 3.8.1 3.9.0: Inspire IRCd - The Stable, High-Performance Modular IRCd
 net-irc/irccloud-desktop-bin 0.15.0: IRCCloud Desktop Client
-net-irc/ircii 20190117: An IRC and ICB client that runs under most UNIX platforms
+net-irc/ircii 20190117 20210314: An IRC and ICB client that runs under most UNIX platforms
 net-irc/ircmap 0.99-r1: Scripts to treate diagrams of IRC networks using the LINKS command
 net-irc/ircstats 1.2: IRCStats is a Linux log analyzer
 net-irc/irker 2.19: Submission tools for IRC notifications
