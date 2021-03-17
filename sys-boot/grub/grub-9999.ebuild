@@ -146,6 +146,8 @@ src_prepare() {
 
 	if [[ -n ${GRUB_AUTOGEN} || -n ${GRUB_BOOTSTRAP} ]]; then
 		python_setup
+	else
+		export PYTHON=true
 	fi
 
 	if [[ -n ${GRUB_BOOTSTRAP} ]]; then
