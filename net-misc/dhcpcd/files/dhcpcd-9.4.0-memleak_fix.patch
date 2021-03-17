@@ -1,0 +1,36 @@
+From ba9f3823ae825c341ea30f45b46d942b4ce5b8d9 Mon Sep 17 00:00:00 2001
+From: Roy Marples <roy@marples.name>
+Date: Sun, 24 Jan 2021 22:53:20 +0000
+Subject: [PATCH] Linux: fix a memory leak when dhcpcd exits or the log is
+ reopened
+
+---
+ src/logerr.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/src/logerr.c b/src/logerr.c
+index 21e933b8..35268870 100644
+--- a/src/logerr.c
++++ b/src/logerr.c
+@@ -484,13 +484,14 @@ logclose(void)
+ #endif
+ 
+ 	closelog();
++#if defined(__linux__)
++	free(_logprog);
++	_logprog = NULL;
++#endif
+ #ifndef SMALL
+ 	if (ctx->log_file == NULL)
+ 		return;
+ 	fclose(ctx->log_file);
+ 	ctx->log_file = NULL;
+ #endif
+-#if defined(__linux__)
+-	free(_logprog);
+-#endif
+ }
+-- 
+2.30.0
+
+

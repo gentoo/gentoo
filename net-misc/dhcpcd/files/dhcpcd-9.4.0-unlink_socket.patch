@@ -1,0 +1,55 @@
+From d55f8e440389fbf333e14fe9f1a7d7f4da2b5197 Mon Sep 17 00:00:00 2001
+From: Roy Marples <roy@marples.name>
+Date: Tue, 26 Jan 2021 17:37:29 +0000
+Subject: [PATCH] control: unlink privileged socket when shutting down
+ without privsep
+
+Otherwise we have a connection refused when dhcpcd starts again
+as it sees the stale socket file.
+---
+ src/control.c | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/src/control.c b/src/control.c
+index 71405ed1..a601ad0a 100644
+--- a/src/control.c
++++ b/src/control.c
+@@ -50,7 +50,7 @@
+ 
+ #ifndef SUN_LEN
+ #define SUN_LEN(su) \
+-            (sizeof(*(su)) - sizeof((su)->sun_path) + strlen((su)->sun_path))
++	    (sizeof(*(su)) - sizeof((su)->sun_path) + strlen((su)->sun_path))
+ #endif
+ 
+ static void
+@@ -350,12 +350,12 @@ control_start1(struct dhcpcd_ctx *ctx, const char *ifname, sa_family_t family,
+ 	}
+ #endif
+ 
+-	if ((fmode & S_PRIV) == S_PRIV)
+-		strlcpy(ctx->control_sock, sa.sun_path,
+-		    sizeof(ctx->control_sock));
+-	else
++	if ((fmode & S_UNPRIV) == S_UNPRIV)
+ 		strlcpy(ctx->control_sock_unpriv, sa.sun_path,
+ 		    sizeof(ctx->control_sock_unpriv));
++	else
++		strlcpy(ctx->control_sock, sa.sun_path,
++		    sizeof(ctx->control_sock));
+ 	return fd;
+ }
+ 
+@@ -368,7 +368,8 @@ control_start(struct dhcpcd_ctx *ctx, const char *ifname, sa_family_t family)
+ 	if (IN_PRIVSEP_SE(ctx)) {
+ 		make_path(ctx->control_sock, sizeof(ctx->control_sock),
+ 		    ifname, family, false);
+-		make_path(ctx->control_sock_unpriv, sizeof(ctx->control_sock),
++		make_path(ctx->control_sock_unpriv,
++		    sizeof(ctx->control_sock_unpriv),
+ 		    ifname, family, true);
+ 		return 0;
+ 	}
+-- 
+2.30.0
+
