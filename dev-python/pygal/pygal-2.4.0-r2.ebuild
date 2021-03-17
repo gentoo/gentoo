@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1
@@ -28,6 +28,8 @@ BDEPEND="
 		dev-python/pytest[${PYTHON_USEDEP}]
 	)
 "
+
+PATCHES=( "${FILESDIR}/${PV}-fix-tests.patch" )
 
 # CHANGELOG is a symlink to docs/changelog.rst
 DOCS=( docs/changelog.rst README.md )
