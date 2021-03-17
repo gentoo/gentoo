@@ -1839,7 +1839,7 @@ app-editors/mg 20200215 20200723: MicroGnuEmacs, a port from the BSDs
 app-editors/moe 1.9 1.10 1.11: A powerful and user-friendly console text editor
 app-editors/mousepad 0.5.2-r1 0.5.3-r1: GTK+-based editor for the Xfce Desktop Environment
 app-editors/nano 5.3-r1 5.5 5.6 5.6.1 9999: GNU GPL'd Pico clone with more functionality
-app-editors/ne 3.1.1: the nice editor, easy to use for the beginner and powerful for the wizard
+app-editors/ne 3.3.0: The nice editor, easy to use for the beginner and powerful for the wizard
 app-editors/nedit 5.6-r1 5.6-r2 5.7: Multi-purpose text editor for the X Window System
 app-editors/neovim 0.4.4-r100 9999: Vim-fork focused on extensibility and agility.
 app-editors/ng 1.5_beta1-r2: Emacs like micro editor Ng -- based on mg2a
