@@ -14563,7 +14563,7 @@ net-analyzer/sqlninja 0.2.6_p1-r1: A SQL Server injection & takeover tool
 net-analyzer/squid-graph 3.2-r1: Squid logfile analyzer and traffic grapher
 net-analyzer/squidsites 1.01-r2: A tool that parses Squid access log file and generates a report of the most visited sites
 net-analyzer/squidview 0.86: Interactive console program to analyse squid logs
-net-analyzer/ssldump 0.9_beta3 1.1 1.3: An SSLv3/TLS network protocol analyzer
+net-analyzer/ssldump 0.9_beta3 1.1 1.3-r1: An SSLv3/TLS network protocol analyzer
 net-analyzer/sslscan 1.11.13-r1 2.0.6 2.0.7 2.0.8: Fast SSL configuration scanner
 net-analyzer/sslsplit 0.5.4 0.5.5 9999: Transparent SSL/TLS interception
 net-analyzer/ssmping 0.9.1: Tool for testing multicast connectivity
