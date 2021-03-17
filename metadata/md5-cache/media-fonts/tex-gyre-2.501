@@ -4,10 +4,11 @@ DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DESCRIPTION=Extensive remake of freely available URW fonts
 EAPI=7
 HOMEPAGE=http://www.gust.org.pl/projects/e-foundry/tex-gyre
+INHERIT=font
 IUSE=X
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~x86
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa x86
 LICENSE=|| ( GFL LPPL-1.3c )
 SLOT=0
 SRC_URI=http://www.gust.org.pl/projects/e-foundry/tex-gyre/whole/tg2_501otf.zip
 _eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
-_md5_=8ff49c0ac051b88eac2017d237ae47cc
+_md5_=8d350e30f4b3dc6f3a3fa33dd2840231

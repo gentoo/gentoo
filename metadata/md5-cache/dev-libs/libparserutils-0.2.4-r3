@@ -3,11 +3,12 @@ DEPEND=>=dev-util/netsurf-buildsystem-1.7-r1 test? ( dev-lang/perl )
 DESCRIPTION=C library for building efficient parsers
 EAPI=7
 HOMEPAGE=http://www.netsurf-browser.org/projects/libparserutils/
+INHERIT=flag-o-matic netsurf
 IUSE=iconv test
-KEYWORDS=~amd64 ~arm ~arm64 ppc ~ppc64 ~x86
+KEYWORDS=amd64 ~arm ~arm64 ppc ~ppc64 x86
 LICENSE=MIT
 RESTRICT=!test? ( test )
 SLOT=0/0.2.4
 SRC_URI=https://download.netsurf-browser.org/libs/releases/libparserutils-0.2.4-src.tar.gz
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	netsurf	8d6ce5a28a5af61bfb3a264ac8d46867	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=cdd953494a28607821197d0267c6e385
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	netsurf	8d6ce5a28a5af61bfb3a264ac8d46867
+_md5_=728a401887efffc3e0b470bd836489d4

@@ -3,10 +3,10 @@ DEPEND=acct-group/monkeysphere acct-user/monkeysphere >=app-crypt/gnupg-2.1.17:0
 DESCRIPTION=Leverage the OpenPGP web of trust for OpenSSH and Web authentication
 EAPI=7
 HOMEPAGE=http://web.monkeysphere.info/
-KEYWORDS=~amd64 ~arm ~x86
+KEYWORDS=amd64 ~arm x86
 LICENSE=GPL-3
 RDEPEND=acct-group/monkeysphere acct-user/monkeysphere >=app-crypt/gnupg-2.1.17:0= net-misc/socat:0= dev-perl/Crypt-OpenSSL-RSA:0= dev-perl/Digest-SHA1:0= app-misc/lockfile-progs:0= net-misc/openssh
 RESTRICT=test
 SLOT=0/0
 SRC_URI=mirror://debian/pool/monkeysphere/m/monkeysphere/monkeysphere_0.44.orig.tar.gz http://archive.monkeysphere.info/debian/pool/monkeysphere/m/monkeysphere/monkeysphere_0.44.orig.tar.gz
-_md5_=79ca1cc9286f8f3bfa851280c725ad86
+_md5_=8e4a1204861fbe475350f2e08d2f559a

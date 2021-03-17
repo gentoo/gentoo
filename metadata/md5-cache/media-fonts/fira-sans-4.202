@@ -3,11 +3,12 @@ DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DESCRIPTION=Default monospaced typeface for FirefoxOS, designed for legibility
 EAPI=7
 HOMEPAGE=https://mozilla.github.io/Fira
+INHERIT=font
 IUSE=+otf ttf X
-KEYWORDS=~amd64 ~arm ~arm64 ~x86
+KEYWORDS=amd64 ~arm ~arm64 x86
 LICENSE=OFL-1.1
 REQUIRED_USE=|| ( otf ttf )
 SLOT=0
 SRC_URI=https://github.com/mozilla/Fira/archive/4.202.tar.gz -> Fira-4.202.tar.gz
 _eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
-_md5_=e0cd00a8bb24d70efdd7193b6cad1744
+_md5_=152c4bd1f4bd0cf29facb4d155b09bdb
