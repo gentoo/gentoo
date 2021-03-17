@@ -5,17 +5,17 @@ EAPI=7
 
 inherit autotools git-r3
 
-DESCRIPTION="A Tool for network monitoring and data acquisition"
+DESCRIPTION="A tool for network monitoring and data acquisition"
 HOMEPAGE="
 	https://www.tcpdump.org/
 	https://github.com/the-tcpdump-group/tcpdump
 "
-LICENSE="BSD"
 EGIT_REPO_URI="https://github.com/the-tcpdump-group/tcpdump"
 
+LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
 IUSE="+drop-root libressl +smi +ssl +samba suid test"
+
 RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( samba )"
 
