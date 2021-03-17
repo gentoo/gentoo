@@ -14782,7 +14782,7 @@ net-im/jabber-base 0.01-r2: Base layout package for various jabber services
 net-im/kouchat 1.1.0: KouChat is a simple serverless chat client for local area networks
 net-im/libcommuni 3.6.0: A cross-platform IRC framework written with Qt
 net-im/librvp 0.9.7: An RVP (Microsoft Exchange Instant Messaging) plugin for Pidgin
-net-im/mattermost-desktop-bin 4.5.1 4.5.2 4.6.1: Mattermost Desktop application
+net-im/mattermost-desktop-bin 4.5.1 4.5.2 4.6.1 4.6.2: Mattermost Desktop application
 net-im/mcabber 1.1.2 9999: A small Jabber console client with various features, like MUC, SSL, PGP
 net-im/minbif 1.0.5-r2: IRC gateway to IM networks
 net-im/neochat 1.0.1-r1 1.1.1: Client for Matrix, the decentralized communication protocol
