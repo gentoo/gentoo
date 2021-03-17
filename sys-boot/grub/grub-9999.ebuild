@@ -111,7 +111,7 @@ RDEPEND="${DEPEND}
 		grub_platforms_efi-32? ( sys-boot/efibootmgr )
 		grub_platforms_efi-64? ( sys-boot/efibootmgr )
 	)
-	!sys-boot/grub:0 !sys-boot/grub-static
+	!sys-boot/grub:0
 	nls? ( sys-devel/gettext )
 "
 
