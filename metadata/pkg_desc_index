@@ -14041,6 +14041,7 @@ media-sound/potamus 17: A lightweight audio player with a simple interface and a
 media-sound/pragha 1.3.99.1: A lightweight music player (for Xfce)
 media-sound/protux 0.50.100: Professional Audio Tools for GNU/Linux
 media-sound/ptabtools 0.5.0: Utilities for PowerTab Guitar files (.ptb)
+media-sound/puddletag 2.0.1: Audio tag editor
 media-sound/pulseaudio 13.0 13.0-r1: A networked sound server with an advanced plugin system
 media-sound/pulseaudio-ctl 1.67 1.68 1.69: CLI utility to control PulseAudio volume
 media-sound/pulseaudio-modules-bt 1.4 9999: PulseAudio modules for LDAC, aptX, aptX HD, and AAC for Bluetooth
