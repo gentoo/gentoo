@@ -6,7 +6,7 @@ EAPI=7
 inherit toolchain-funcs flag-o-matic
 
 MY_P="nc${PV}"
-DESCRIPTION="the network swiss army knife"
+DESCRIPTION="The network swiss army knife"
 HOMEPAGE="https://nc110.sourceforge.io"
 SRC_URI="mirror://sourceforge/nc110/${MY_P}.tar.xz"
 
