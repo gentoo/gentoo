@@ -15,6 +15,8 @@ SLOT="0"
 #KEYWORDS="~amd64 ~x86"
 IUSE="compat test"
 
+RESTRICT="!test? ( test )"
+
 src_prepare() {
 	cmake_src_prepare
 	sed "/LIB_INSTALL_DIR/s@/lib\"@/$(get_libdir)\"@" \

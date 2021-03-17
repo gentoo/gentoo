@@ -13,7 +13,7 @@ else
 	MY_P="${MY_P/_beta/-beta}"
 	MY_P="${MY_P/_rc/-rc}"
 	SRC_URI="https://roy.marples.name/downloads/${PN}/${MY_P}.tar.xz"
-	KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 	S="${WORKDIR}/${MY_P}"
 fi
 
@@ -34,7 +34,9 @@ RDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-9.4.0-sparc_privsep.patch" #776178
+	"${FILESDIR}/${P}-memleak_fix.patch"
+	"${FILESDIR}/${P}-unlink_socket.patch"
+	"${FILESDIR}/${P}-sparc_privsep.patch" #776178
 )
 
 src_configure() {
