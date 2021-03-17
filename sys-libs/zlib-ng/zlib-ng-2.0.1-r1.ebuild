@@ -28,6 +28,10 @@ src_configure() {
 	local mycmakeargs=(
 		-DZLIB_COMPAT="$(usex compat)"
 		-DZLIB_ENABLE_TESTS="$(usex test)"
+		# Unaligned access is controversial and undefined behaviour
+		# Let's keep it off for now
+		# https://github.com/gentoo/gentoo/pull/17167
+		-DWITH_UNALIGNED="OFF"
 	)
 	cmake_src_configure
 }
