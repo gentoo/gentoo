@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="ZLIB GPL-2+"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="kerberos tk httpd +ocamlopt +pcre ssl zip"
 RESTRICT="installsources strip"
 
