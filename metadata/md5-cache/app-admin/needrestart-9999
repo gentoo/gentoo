@@ -1,12 +1,13 @@
 BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=install unpack
-DEPEND=>=sys-apps/sed-4.2.2 dev-lang/perl:= dev-perl/libintl-perl dev-perl/Module-Find dev-perl/Module-ScanDeps dev-perl/Proc-ProcessTable dev-perl/Sort-Naturally dev-perl/TermReadKey sys-apps/init-system-helpers sys-apps/iucode_tool sys-devel/gettext
+DEPEND=>=sys-apps/sed-4.2.2 dev-lang/perl:= dev-perl/libintl-perl dev-perl/Module-Find dev-perl/Module-ScanDeps dev-perl/Proc-ProcessTable dev-perl/Sort-Naturally dev-perl/TermReadKey sys-apps/init-system-helpers amd64? ( sys-apps/iucode_tool ) x86? ( sys-apps/iucode_tool ) sys-devel/gettext
 DESCRIPTION=Restart daemons after library updates
 EAPI=7
 HOMEPAGE=https://fiasko-nw.net/~thomas/tag/needrestart.html https://github.com/liske/needrestart
+INHERIT=git-r3
 LICENSE=GPL-2+
 PROPERTIES=live
-RDEPEND=>=sys-apps/sed-4.2.2 dev-lang/perl:= dev-perl/libintl-perl dev-perl/Module-Find dev-perl/Module-ScanDeps dev-perl/Proc-ProcessTable dev-perl/Sort-Naturally dev-perl/TermReadKey sys-apps/init-system-helpers sys-apps/iucode_tool
+RDEPEND=>=sys-apps/sed-4.2.2 dev-lang/perl:= dev-perl/libintl-perl dev-perl/Module-Find dev-perl/Module-ScanDeps dev-perl/Proc-ProcessTable dev-perl/Sort-Naturally dev-perl/TermReadKey sys-apps/init-system-helpers amd64? ( sys-apps/iucode_tool ) x86? ( sys-apps/iucode_tool )
 SLOT=0
 _eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441
-_md5_=c61e296655eda0604c945d251227c84d
+_md5_=a3a910503e7f32446f8494976eb8013b

@@ -17367,7 +17367,7 @@ sys-cluster/cluster-glue 1.0.11 1.0.12 1.0.12-r1: Library pack for Heartbeat / P
 sys-cluster/corosync 3.1.0: OSI Certified implementation of a complete cluster engine
 sys-cluster/crmsh 4.2.1: Pacemaker command line interface for management and configuration
 sys-cluster/csync2 2.0 2.0-r2: Cluster synchronization tool
-sys-cluster/drbd-utils 8.9.6-r1 9.15.1: mirror/replicate block-devices across a network-connection
+sys-cluster/drbd-utils 8.9.6-r1 9.15.1-r1: mirror/replicate block-devices across a network-connection
 sys-cluster/fake 1.1.10: Switch in backup servers on a LAN
 sys-cluster/galera 25.3.28-r1 25.3.32 26.4.6 26.4.7: Synchronous multi-master replication engine that provides the wsrep API
 sys-cluster/ganglia 3.7.1-r2: A scalable distributed monitoring system for clusters and grids
