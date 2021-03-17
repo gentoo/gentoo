@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit autotools toolchain-funcs
 
 DESCRIPTION="client for the french tarot game maitretarot"
 HOMEPAGE="http://www.nongnu.org/maitretarot/"
@@ -23,8 +23,21 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-format.patch
-	"${FILESDIR}"/${PN}-0.1.98-libdir.patch
 )
+
+src_prepare() {
+	default
+
+	mv configure.{in,ac} || die
+
+	# Remove bundled macros (avoid patching same file multiple times)
+	rm -rf m4/{libmaitretarot,libmt_client}.m4 || die
+
+	# Ensure we generate auto* with the fixed macros in tree
+	# (not bundled)
+	# bug #716102
+	eautoreconf
+}
 
 src_configure() {
 	export LIBS="$( $(tc-getPKG_CONFIG) --libs ncurses )"
