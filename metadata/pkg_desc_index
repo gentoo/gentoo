@@ -15587,7 +15587,7 @@ net-print/foomatic-db-engine 4.0.12: Generates ppds out of xml foomatic printer 
 net-print/foomatic-db-ppds 4.0.20170331 4.0.20180126 4.0.20190226: linuxprinting.org PPD files for postscript printers
 net-print/gtklp 1.3.1: A GUI for cupsd
 net-print/gutenprint 5.3.3-r1 5.3.3-r2: Ghostscript and cups printer drivers
-net-print/hplip 3.20.9-r3 3.20.11 3.20.11-r1 3.21.2: HP Linux Imaging and Printing - Print, scan, fax drivers and service tools
+net-print/hplip 3.20.11-r1 3.21.2: HP Linux Imaging and Printing - Print, scan, fax drivers and service tools
 net-print/hplip-plugin 3.20.9 3.20.11 3.21.2: Proprietary plugins and firmware for HPLIP
 net-print/ink 0.5.1 0.5.2: A command line utility to display the ink level of your printer
 net-print/kyocera-1x2x-mfp-driver 1.1203-r1: Printer descriptions (PPDs) and filters for Kyocera 1x2x MFP
@@ -17676,7 +17676,7 @@ sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh 
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.94 5.4.97 5.4.99 5.4.100 5.4.101 5.4.102 5.4.103 5.4.104 5.4.105 5.10.17 5.10.18 5.10.19 5.10.20 5.10.21 5.10.22 5.10.23 5.11.2 5.11.3 5.11.4 5.11.5 5.11.6: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.94 5.4.94-r1 5.4.97 5.4.97-r1 5.4.99 5.4.99-r1 5.4.100 5.4.100-r1 5.4.101 5.4.101-r1 5.4.101-r2 5.4.102-r2 5.4.102-r3 5.4.103 5.4.103-r1 5.4.104 5.4.104-r1 5.4.105 5.10.17 5.10.17-r1 5.10.18 5.10.18-r1 5.10.19 5.10.19-r1 5.10.19-r2 5.10.20-r2 5.10.20-r3 5.10.21 5.10.21-r1 5.10.22 5.10.22-r1 5.10.23 5.11.2 5.11.2-r1 5.11.2-r2 5.11.3-r2 5.11.3-r3 5.11.4 5.11.4-r1 5.11.5 5.11.5-r1 5.11.6: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.246 4.4.257 4.4.259 4.4.260 4.4.261 4.9.246 4.9.257 4.9.259 4.9.260 4.9.261 4.14.209 4.14.221 4.14.223 4.14.224 4.14.225 4.19.160 4.19.175 4.19.178 4.19.179 4.19.180 5.4.80-r1 5.4.97 5.4.102 5.4.103 5.4.104 5.4.105 5.10.20 5.10.21 5.10.22 5.10.23 5.11.2 5.11.3 5.11.4 5.11.5 5.11.6: Full sources including the Gentoo patchset for the 5.11 kernel tree
+sys-kernel/gentoo-sources 4.4.246 4.4.257 4.4.259 4.4.260 4.4.261 4.4.262 4.9.246 4.9.257 4.9.259 4.9.260 4.9.261 4.14.209 4.14.221 4.14.223 4.14.224 4.14.225 4.19.160 4.19.175 4.19.178 4.19.179 4.19.180 5.4.80-r1 5.4.97 5.4.102 5.4.103 5.4.104 5.4.105 5.10.20 5.10.21 5.10.22 5.10.23 5.11.2 5.11.3 5.11.4 5.11.5 5.11.6: Full sources including the Gentoo patchset for the 5.11 kernel tree
 sys-kernel/git-sources 5.12_rc2 5.12_rc3: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
