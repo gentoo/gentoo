@@ -11,7 +11,7 @@ DESCRIPTION="The open source, cross platform, free C, C++ and Fortran IDE"
 HOMEPAGE="https://codeblocks.org/"
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz
 https://dev.gentoo.org/~leio/distfiles/${P}-fortran.tar.xz
 https://dev.gentoo.org/~leio/distfiles/${P}-fortran-update-v1.7.tar.xz"
