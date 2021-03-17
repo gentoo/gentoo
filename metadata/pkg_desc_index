@@ -2444,7 +2444,7 @@ app-misc/asciinema 2.0.2-r1: Command line recorder for asciinema.org service
 app-misc/astrolog 5.40-r3: A many featured astrology chart calculation program
 app-misc/astrolog-ephemeris 5.40: ephemeris files for optional extended accuracy of astrolog's calculations
 app-misc/away 0.9.5-r2: Terminal locking program with few additional features
-app-misc/banner 1.3.3 1.3.4 1.3.5: The well known banner program for Linux
+app-misc/banner 1.3.5: The well known banner program for Linux
 app-misc/bb 1.3.0_rc1-r5: Demonstration program for visual effects of aalib
 app-misc/beancounter 0.8.10-r1: Finance performance calculation engine with full data acquisition, SQL support
 app-misc/beanstalkd 1.10 1.11: A simple, fast work queue
@@ -5994,7 +5994,7 @@ dev-ml/ocamlbuild 0.11.0 0.14.0-r1: Generic build tool with built-in rules for b
 dev-ml/ocamlgraph 1.8.8-r2 2.0.0-r1: O'Caml Graph library
 dev-ml/ocamlify 0.0.2: OCamlify creates OCaml code by including files into strings or string lists
 dev-ml/ocamlmod 0.0.9: Generate OCaml modules from source files
-dev-ml/ocamlnet 4.1.8 4.1.8-r1: Modules for OCaml application-level Internet protocols
+dev-ml/ocamlnet 4.1.8-r1: Modules for OCaml application-level Internet protocols
 dev-ml/ocamlsdl 0.9.1: OCaml SDL Bindings
 dev-ml/ocamlweb 1.41: O'Caml literate programming tool
 dev-ml/ocplib-endian 1.1-r1: Functions to read and write int16/32/64 from strings, bytes, and bigarrays
@@ -14091,7 +14091,7 @@ media-sound/sndio 1.7.0-r1: small audio and MIDI framework part of the OpenBSD p
 media-sound/sndpeek 1.41-r1: real-time audio visualization
 media-sound/solfege 3.23.4: GNU program to help practicing ear training
 media-sound/sonata 1.7_beta1_p20200212: Elegant GTK+ music client for the Music Player Daemon (MPD)
-media-sound/sonic-visualiser 4.2 4.3: Music audio files viewer and analiser
+media-sound/sonic-visualiser 4.3: Music audio files viewer and analiser
 media-sound/sooperlooper 1.7.4: Live looping sampler with immediate loop recording
 media-sound/sound-juicer 3.24.0: CD ripper for GNOME
 media-sound/soundconverter 3.0.2-r1: A simple audiofile converter application for the GNOME environment
@@ -14389,7 +14389,7 @@ net-analyzer/fping 5.0: A utility to ping multiple hosts at once
 net-analyzer/fprobe 1.1-r3: libpcap-based tool to collect network traffic data and emit it as NetFlow flows
 net-analyzer/fragroute 1.2.6-r4: Testing of network intrusion detection systems, firewalls and TCP/IP stacks
 net-analyzer/ftester 1.0: Firewall and Intrusion Detection System testing tool
-net-analyzer/fwlogwatch 1.4 1.5: A packet filter and firewall log analyzer
+net-analyzer/fwlogwatch 1.5: A packet filter and firewall log analyzer
 net-analyzer/gensink 4.1-r2: A simple TCP benchmark suite
 net-analyzer/gnome-nettool 3.8.1: Graphical front-ends to various networking command-line
 net-analyzer/goaccess 1.4.2 9999: A real-time web log analyzer and interactive viewer that runs in a terminal
@@ -14578,7 +14578,7 @@ net-analyzer/tcping 1.3.6: Check if a desired port is reachable via TCP
 net-analyzer/tcpreen 1.4.4: TCP network re-engineering tool
 net-analyzer/tcpreplay 4.3.3 999999: utilities for editing and replaying previously captured network traffic
 net-analyzer/tcpslice 1.2a_p3_p4: Extract and concatenate portions of pcap files
-net-analyzer/tcpstat 1.5-r3 1.5_p8: Reports network interface statistics
+net-analyzer/tcpstat 1.5_p8: Reports network interface statistics
 net-analyzer/tcptrace 6.6.7_p6: A Tool for analyzing network packet dumps
 net-analyzer/tcptraceroute 1.5_beta7-r3: tcptraceroute is a traceroute implementation using TCP packets
 net-analyzer/tcptrack 1.4.2: Passive per-connection tcp bandwidth monitor
@@ -18565,7 +18565,7 @@ x11-misc/lightdm-gtk-greeter 2.0.7-r1 2.0.8: LightDM GTK+ Greeter
 x11-misc/lightdm-mini-greeter 0.3.4 0.4.0 0.5.0 0.5.1: A Minimal, Configurable, Single-User GTK3 LightDM Greeter
 x11-misc/lineak-defaultplugin 0.9.0-r2: Mute/unmute and other macros for LINEAK
 x11-misc/lineak-xosdplugin 0.9.0-r2: Xosd plugin for LINEAK
-x11-misc/lineakd 0.9.0-r2 0.9.0-r3: Linux support for Easy Access and Internet Keyboards
+x11-misc/lineakd 0.9.0-r3: Linux support for Easy Access and Internet Keyboards
 x11-misc/lndir 1.0.3-r2 9999: create a shadow directory of symbolic links to another directory tree
 x11-misc/lsw 0.3: list window names
 x11-misc/macopix 1.7.4-r1 1.7.4-r2 3.4.0: MaCoPiX (Mascot Constructive Pilot for X) is a desktop mascot application
@@ -18678,7 +18678,7 @@ x11-misc/x11vnc 0.9.16-r4: VNC server for real X displays
 x11-misc/x2vnc 1.7.2-r1: Control a remote computer running VNC from X
 x11-misc/x2x 1.27-r3: A utility to connect the Mouse and KeyBoard to another X
 x11-misc/xaos 3.6: Very fast real-time fractal zoomer
-x11-misc/xautolock 2.2_p5_p1 2.2_p5_p1-r1 2.2_p5_p2 2.2_p6 2.2_p7: An automatic X screen-locker/screen-saver
+x11-misc/xautolock 2.2_p7: An automatic X screen-locker/screen-saver
 x11-misc/xautomation 1.09-r1: Control X from command line and find things on screen
 x11-misc/xbatt 1.3_rc1: Notebook battery indicator for X
 x11-misc/xbattbar 1.4.9: Advanced Power Management battery status display for X
@@ -18733,7 +18733,7 @@ x11-misc/xscreensaver 5.44-r4 5.45: A modular screen saver and locker for the X 
 x11-misc/xscreensaver-app 2.3-r4: XScreenSaver dockapp for the Window Maker window manager
 x11-misc/xsel 1.2.0-r1 9999: Command-line program for getting and setting the contents of the X selection
 x11-misc/xsensors 0.80: A hardware health information viewer, interface to lm-sensors
-x11-misc/xsetleds 0.1.3-r1 0.1.3-r2: small tool to report and change the keyboard LED states of an X display
+x11-misc/xsetleds 0.1.3-r2: small tool to report and change the keyboard LED states of an X display
 x11-misc/xsettingsd 1.0.2: Provides settings to X11 applications via the XSETTINGS specification
 x11-misc/xsnap 1.5.15-r2: Program to interactively take a 'snapshot' of a region of the screen
 x11-misc/xsnow 3.0.7 3.2.2: let it snow on your desktop and windows
@@ -18753,7 +18753,7 @@ x11-misc/xvkbd 4.1: virtual keyboard for X window system
 x11-misc/xwallpaper 0.6.2-r1 0.6.4 0.6.5 0.6.6 9999: Wallpaper setting utility for X
 x11-misc/xwit 3.4_p16: A collection of simple routines to call some of those X11 functions
 x11-misc/xwrits 2.26-r1: Reminds you to take wrist breaks to help you prevent repetitive stress injury
-x11-misc/xxkb 1.11.1 1.11.1-r1: eXtended XKB - assign different keymaps to different windows
+x11-misc/xxkb 1.11.1-r1: eXtended XKB - assign different keymaps to different windows
 x11-misc/xystray 1.0: A simple implementation of freedesktop.org notification area for X
 x11-misc/yabar 0.4.0_p20190316-r1: A modern and lightweight status bar for X window managers
 x11-misc/zim 0.73.1 0.73.2 0.73.3 0.73.4 0.73.5: A desktop wiki
@@ -19052,7 +19052,7 @@ x11-themes/qtcurve 1.9.0-r1 9999: Widget styles for Qt and GTK2
 x11-themes/redhat-artwork 5.0.8-r4: RedHat's Bluecurve theme for GTK2, KDE, GDM, Metacity and Nautilus
 x11-themes/sawfish-themes 0.0.1-r3: Some nice themes for Sawfish
 x11-themes/shiki-colors 4.6: Mixes the elegance of a dark theme with the usability of a light theme
-x11-themes/silver-xcursors 0.4 0.4-r1: A high quality set of Xfree 4.3.0 animated mouse cursors
+x11-themes/silver-xcursors 0.4-r1: A high quality set of Xfree 4.3.0 animated mouse cursors
 x11-themes/slim-themes 1.2.3a-r7: SLiM (Simple Login Manager) themes pack
 x11-themes/smplayer-skins 15.2.0-r1: Skins for SMPlayer
 x11-themes/smplayer-themes 18.6.0: Icon themes for smplayer
