@@ -40,6 +40,7 @@ acct-group/consul 0-r1: System group: consul
 acct-group/consul-template 0-r1: System group: consul-template
 acct-group/consul_exporter 0: System group: consul_exporter
 acct-group/croc 0: Group for net-misc/croc
+acct-group/crontab 0: System group: crontab
 acct-group/cvmfs 0-r1: Group for the CernVM-FS network file system
 acct-group/davfs2 0-r1: System group: davfs2
 acct-group/dbmail 0: System group: dbmail
@@ -17264,7 +17265,7 @@ sys-block/blktrace 1.1.0 1.1.0-r1 1.2.0: show detailed info about what is happen
 sys-block/buffer 1.19-r3: A tapedrive tool for speeding up reading from and writing to tape
 sys-block/cec 14: Coraid Ethernet Console client
 sys-block/devio 1.2: correctly read (or write) a region of a block device
-sys-block/di 4.47.3 4.48 4.48.0.1: Disk Information Utility
+sys-block/di 4.48 4.48.0.1 4.49: Disk Information Utility
 sys-block/disktype 9-r1: Detect the content format of a disk or disk image
 sys-block/endpoint 0.1.0-r1: Endpoint turns a Linux machine with a firewire card into an SBP-2 device
 sys-block/f3 7.2 8.0: Utilities to detect broken or counterfeit flash storage
@@ -17815,7 +17816,7 @@ sys-process/bcron 0.11: A new cron system designed with secure operations in min
 sys-process/bpytop 1.0.61-r1: Linux/OSX/FreeBSD resource monitor
 sys-process/criu 3.14-r2 3.15: utility to checkpoint/restore a process tree
 sys-process/cronbase 0.3.7-r6: base for all cron ebuilds
-sys-process/cronie 1.5.5-r1: Cronie is a standard UNIX daemon cron based on the original vixie-cron
+sys-process/cronie 1.5.5-r1 1.5.6: Cronie is a standard UNIX daemon cron based on the original vixie-cron
 sys-process/cronutils 1.9: Utilities to assist running batch processing jobs
 sys-process/ctop 0.7.3: Top-like interface for container-metrics
 sys-process/daemontools 0.76-r8: Collection of tools for managing UNIX services

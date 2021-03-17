@@ -8452,7 +8452,6 @@ sys-power/suspend:crypt - Allows suspend and resume from encrypted disk
 sys-process/audit:gssapi - Enable GSSAPI support
 sys-process/criu:setproctitle - Make process titles of service workers to be more verbose
 sys-process/cronie:anacron - Install the periodic anacron command scheduler.
-sys-process/cronie:inotify - Enable inotify filesystem monitoring support.
 sys-process/fcron:debug - Enable debug code and output. Since version 3.0.5 this will no longer force foreground execution, and fcron will be able to run as a service properly.
 sys-process/fcron:mta - Enable mta support for sending emails from fcron
 sys-process/fcron:pam - Enable PAM support for fcron. This means that fcron will pass through the "fcron" stack before executing the jobs, and fcrontab will use the "fcrontab" stack to authenticate the user before editing its crontab file.
