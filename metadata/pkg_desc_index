@@ -12828,7 +12828,7 @@ media-fonts/pcf2bdf 1.04-r1: Converts PCF fonts to BDF fonts
 media-fonts/pigiarniq 2: Nunavut's official Inuktitut font
 media-fonts/polarsys-b612-fonts 1.003-r1 1.008-r1: Font designed for aircraft cockpit displays
 media-fonts/pothana2k 2006-r1: Pothana 2000 and Vemana fonts for the Telugu script
-media-fonts/powerline-symbols 20150224 20170508: OpenType Unicode font with symbols for Powerline/Airline
+media-fonts/powerline-symbols 20170508: OpenType Unicode font with symbols for Powerline/Airline
 media-fonts/proggy-fonts 1: A set of monospaced bitmap programming fonts
 media-fonts/qomolangma 2012.05: Tibetan Unicode Ucan and Umed fonts
 media-fonts/quivira 4.1: Unicode font with emoticons and elder scripts like Runes, Gothic, ancient Greek
@@ -14275,7 +14275,7 @@ media-video/oxine 0.7.1-r2: OSD frontend for Xine
 media-video/parole 4.16.0: A simple Xfce4 media player using GStreamer
 media-video/peek 1.4.0-r1 1.5.1: Simple animated Gif screen recorder
 media-video/pgmfindclip 1.13: automatically find a clipping border for a sequence of pgm images
-media-video/pipewire 0.3.18 0.3.20 0.3.21 0.3.22: Multimedia processing graphs
+media-video/pipewire 0.3.18 0.3.22: Multimedia processing graphs
 media-video/pitivi 0.999-r3: A non-linear video editor using the GStreamer multimedia framework
 media-video/projectx 0.91.0.10-r2: Converts, splits and demuxes DVB and other MPEG recordings
 media-video/qmplay2 19.12.19-r2 20.05.02 20.07.04 9999: A Qt-based video player, which can play most formats and codecs
@@ -17219,7 +17219,7 @@ sys-auth/nss-myhostname 0.3-r1: Name Service Switch module for resolving the loc
 sys-auth/nss-pam-ldapd 0.9.11-r2 0.9.11-r3: NSS module for name lookups using LDAP
 sys-auth/nss_ldap 265-r5: NSS LDAP Module
 sys-auth/oath-toolkit 2.6.2: Toolkit for using one-time password authentication with HOTP/TOTP algorithms
-sys-auth/otpcalc 0.97-r8 0.97.9: A One Time Password and S/Key calculator for GTK+
+sys-auth/otpcalc 0.97.9: A One Time Password and S/Key calculator for GTK+
 sys-auth/pam-pgsql 0.7.3.2: pam module to authenticate users via PostgreSQL
 sys-auth/pam-script 1.1.8 1.1.9: PAM module for running scripts during authorization, password change and session
 sys-auth/pam_abl 0.6.0: PAM module for blacklisting hosts and users repeatedly failed authentication
