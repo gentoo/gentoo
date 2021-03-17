@@ -9969,7 +9969,7 @@ dev-ruby/bindata 2.4.6 2.4.7 2.4.8: Parsing Binary Data in Ruby
 dev-ruby/bindex 0.8.1: Bindings for your Ruby exceptions
 dev-ruby/binding_of_caller 0.8.0 1.0.0: Retrieve the binding of a method's caller
 dev-ruby/bit-struct 0.16: Library for packed binary data stored in ruby Strings
-dev-ruby/blankslate 3.1.3: Base class with almost all of the methods from Object and Kernel being removed
+dev-ruby/blankslate 3.1.3 3.1.3-r1: Base class with almost all of the methods from Object and Kernel being removed
 dev-ruby/blinkstick 1.0.1_p20150901: ruby interface for blinkstick via libusb
 dev-ruby/bogus 0.1.6: Ensuring that the things you stub or mock actually exist
 dev-ruby/bourne 1.6.0: Extends mocha to allow tracking and querying of stub and mock invocations
@@ -10113,7 +10113,7 @@ dev-ruby/hashicorp-checkpoint 0.1.5-r1: Internal HashiCorp service to check vers
 dev-ruby/hashie 2.1.2-r1 3.6.0 4.0.0 4.1.0 4.1.0-r1: Hashie is a small collection of tools that make hashes more powerful
 dev-ruby/hashr 2.0.1: Simple Hash extension to make working with nested hashes easier
 dev-ruby/heredoc_unindent 1.2.0 1.2.0-r1: Removes leading whitespace from Ruby heredocs
-dev-ruby/hiera 3.6.0: A simple pluggable Hierarchical Database
+dev-ruby/hiera 3.6.0 3.7.0: A simple pluggable Hierarchical Database
 dev-ruby/hiera-eyaml 3.1.1: Encrypted YAML backend for hiera
 dev-ruby/hiera-eyaml-gpg 0.7.4: A GPG backend for hiera-eyaml
 dev-ruby/hiera-eyaml-plaintext 0.6-r1: A plaintext backend for hiera-eyaml
@@ -10347,7 +10347,7 @@ dev-ruby/roadie 4.0.0: Making HTML emails comfortable for the Rails rockstars
 dev-ruby/roadie-rails 2.1.1: Hooks Roadie into your Rails application to help with email generation
 dev-ruby/robots 0.10.1-r2: A simple Ruby library to parse robots.txt
 dev-ruby/rouge 3.19.0 3.23.0 3.24.0 3.25.0 3.26.0: Yet-another-markdown-parser using a strict syntax definition in pure Ruby
-dev-ruby/rqrcode 0.10.1 1.1.1: Library for encoding QR Codes
+dev-ruby/rqrcode 0.10.1 1.1.1 1.2.0: Library for encoding QR Codes
 dev-ruby/rqrcode_core 0.1.0 0.1.2 0.2.0: Library for encoding QR Codes
 dev-ruby/rr 1.2.1: A double framework featuring a selection of double techniques and a terse syntax
 dev-ruby/rrdtool-bindings 1.7.2: Ruby bindings for rrdtool
@@ -11393,7 +11393,7 @@ games-board/gtkboard 0.11_pre0-r2: Board games system
 games-board/hexxagon 1.0.2-r1: Clone of the original DOS game
 games-board/iagno 3.36.4: Dominate the board in a classic version of Reversi
 games-board/mah-jong 1.16: A networked Mah Jong program, together with a computer player
-games-board/maitretarot 0.1.98-r1: server for the french tarot game maitretarot
+games-board/maitretarot 0.1.98-r2: Server for the french tarot game maitretarot
 games-board/megamek 0.34.10-r1: an unofficial, online version of the Classic BattleTech board game
 games-board/mt_dolphin_ia 0.1.98-r2: client for the french tarot game maitretarot
 games-board/mt_ncurses_client 0.1.98-r1: client for the french tarot game maitretarot
