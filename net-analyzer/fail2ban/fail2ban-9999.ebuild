@@ -8,13 +8,12 @@ DISTUTILS_SINGLE_IMPL=1
 
 inherit bash-completion-r1 distutils-r1 git-r3 systemd tmpfiles
 
-DESCRIPTION="scans log files and bans IPs that show malicious signs"
+DESCRIPTION="Scans log files and bans IPs that show malicious signs"
 HOMEPAGE="https://www.fail2ban.org/"
 EGIT_REPO_URI="https://github.com/${PN}/${PN}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
 IUSE="selinux systemd"
 # Needs some work to enable them right now
 RESTRICT="test"

@@ -1,17 +1,19 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils toolchain-funcs flag-o-matic
+inherit toolchain-funcs flag-o-matic
 
 PATCH_VER="1.0"
 MY_P=nc${PV}
-DESCRIPTION="the network swiss army knife"
+DESCRIPTION="The network swiss army knife"
 HOMEPAGE="https://nc110.sourceforge.io"
 SRC_URI="mirror://sourceforge/nc110/${MY_P}.tgz
 	ftp://sith.mimuw.edu.pl/pub/users/baggins/IPv6/nc-v6-20000918.patch.gz
-	mirror://gentoo/${P}-patches-${PATCH_VER}.tar.bz2"
+	mirror://gentoo/${P}-patches-${PATCH_VER}.tar.bz2
+"
+S="${WORKDIR}"
 
 LICENSE="netcat"
 SLOT="0"
@@ -20,26 +22,46 @@ IUSE="crypt ipv6 static"
 
 LIB_DEPEND="crypt? ( dev-libs/libmix[static-libs(+)] )"
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
-DEPEND="${RDEPEND}
-	static? ( ${LIB_DEPEND} )"
-
-S=${WORKDIR}
+DEPEND="
+	${RDEPEND}
+	static? ( ${LIB_DEPEND} )
+"
 
 src_prepare() {
-	epatch "${DISTDIR}"/nc-v6-20000918.patch.gz patch
+	default
+
+	eapply "${WORKDIR}"/nc-v6-20000918.patch
+
 	sed -i 's:#define HAVE_BIND:#undef HAVE_BIND:' netcat.c
-	sed -i 's:#define FD_SETSIZE 16:#define FD_SETSIZE 1024:' netcat.c #34250
-	[[ ${CHOST} == *-solaris* ]] && \
-		sed -i 's:gethostbyname2(\([^)]\+\)):getipnodebyname(\1, AI_DEFAULT, NULL):' netcat.c
+	# bug 34250
+	sed -i 's:#define FD_SETSIZE 16:#define FD_SETSIZE 1024:' netcat.c
+
+	if [[ ${CHOST} == *-solaris* ]] ; then
+		sed -i 's:gethostbyname2(\([^)]\+\)):getipnodebyname(\1, AI_DEFAULT, NULL):' netcat.c || die
+	fi
 }
 
 src_compile() {
 	export XLIBS=""
 	export XFLAGS="-DLINUX -DTELNET -DGAPING_SECURITY_HOLE"
-	use ipv6 && XFLAGS="${XFLAGS} -DINET6"
-	use static && export STATIC="-static"
-	use crypt && XFLAGS="${XFLAGS} -DAESCRYPT" && XLIBS="${XLIBS} -lmix"
-	[[ ${CHOST} == *-solaris* ]] && XLIBS="${XLIBS} -lnsl -lsocket"
+
+	if use ipv6 ; then
+		XFLAGS+=" -DINET6"
+	fi
+
+	if use static ; then
+		export STATIC="-static"
+	fi
+
+	if use crypt ; then
+		XFLAGS+=" -DAESCRYPT"
+		XLIBS+=" -lmix"
+	fi
+
+	if [[ ${CHOST} == *-solaris* ]] ; then
+		XLIBS+=" -lnsl -lsocket"
+	fi
+
 	emake -e CC="$(tc-getCC) ${CFLAGS} ${LDFLAGS}" nc
 }
 
