@@ -8,7 +8,7 @@ DISTUTILS_SINGLE_IMPL=1
 
 inherit bash-completion-r1 distutils-r1 systemd tmpfiles
 
-DESCRIPTION="scans log files and bans IPs that show malicious signs"
+DESCRIPTION="Scans log files and bans IPs that show malicious signs"
 HOMEPAGE="https://www.fail2ban.org/"
 SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
