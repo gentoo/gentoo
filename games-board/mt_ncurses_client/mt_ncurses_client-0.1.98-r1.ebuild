@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -12,14 +12,14 @@ SRC_URI="https://savannah.nongnu.org/download/maitretarot/${PN}.pkg/${PV}/${P}.t
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
+BDEPEND="virtual/pkgconfig"
 DEPEND="dev-libs/glib:2
 	dev-libs/libxml2
 	dev-games/libmaitretarot
 	dev-games/libmt_client
 	sys-libs/ncurses:0"
-RDEPEND=${DEPEND}
+RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-format.patch
