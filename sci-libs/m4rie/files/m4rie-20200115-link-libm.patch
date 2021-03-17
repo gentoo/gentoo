@@ -1,0 +1,27 @@
+From afab50ea468b0b44be6e8584793c8ee98045f8f8 Mon Sep 17 00:00:00 2001
+From: "Martin R. Albrecht" <martinralbrecht@googlemail.com>
+Date: Fri, 12 Mar 2021 09:49:45 +0000
+Subject: [PATCH] we use sqrt() so link libm
+
+fixes #22
+---
+ configure.ac | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index 1f19d49..71ed81c 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -18,6 +18,9 @@ AC_PROG_CXX
+ 
+ AC_PROG_CC_C99()
+ 
++AC_SEARCH_LIBS([sqrt], [m], [], [
++  AC_MSG_ERROR([unable to find the sqrt() function])
++])
+ 
+ if test "$ac_cv_prog_cc_c99" = "no"; then
+    AC_MSG_ERROR([C99 support is required but not found.])
+-- 
+2.10.5
+
