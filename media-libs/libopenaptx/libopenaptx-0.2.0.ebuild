@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Reverse-engineered aptX and aptX HD library"
 HOMEPAGE="https://github.com/pali/libopenaptx"
@@ -13,27 +13,37 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/pali/${PN}"
 else
 	SRC_URI="https://github.com/pali/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64"
 fi
-IUSE="cpu_flags_x86_avx2"
 
-LICENSE="LGPL-2.1"
+LICENSE="LGPL-2.1+"
 SLOT="0"
 
-RDEPEND=""
-DEPEND="${RDEPEND}"
+IUSE="cpu_flags_x86_avx2"
 
 src_compile() {
+	tc-export CC AR
+
 	use cpu_flags_x86_avx2 && append-cflags "-mavx2"
 
-	emake PREFIX="${EPREFIX}"/usr DESTDIR="${D}" LIBDIR=$(get_libdir) \
-		  CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ARFLAGS="$ARFLAGS -rcs" all
+	emake \
+		PREFIX="${EPREFIX}"/usr \
+		LIBDIR=$(get_libdir) \
+		CFLAGS="${CFLAGS}" \
+		LDFLAGS="${LDFLAGS}" \
+		ARFLAGS="${ARFLAGS} -rcs" \
+		all
 }
 
 src_install() {
-	emake PREFIX="${EPREFIX}"/usr DESTDIR="${D}" LIBDIR=$(get_libdir) \
-		  CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" ARFLAGS="$ARFLAGS -rcs" install
+	emake \
+		PREFIX="${EPREFIX}"/usr \
+		DESTDIR="${D}" \
+		LIBDIR="$(get_libdir)" \
+		CFLAGS="${CFLAGS}" \
+		LDFLAGS="${LDFLAGS}" \
+		ARFLAGS="${ARFLAGS} -rcs" \
+		install
 
-	#rm static lib
-	rm -f "${D}/usr/$(get_libdir)"/libopenaptx.a || die "rm libopenaptx.a"
+	rm -f "${ED}/usr/$(get_libdir)"/libopenaptx.a || die "Failed to remove static lib"
 }
