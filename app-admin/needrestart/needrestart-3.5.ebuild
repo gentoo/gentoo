@@ -28,7 +28,8 @@ RDEPEND="
 	dev-perl/Sort-Naturally
 	dev-perl/TermReadKey
 	sys-apps/init-system-helpers
-	sys-apps/iucode_tool
+	amd64? ( sys-apps/iucode_tool )
+	x86? ( sys-apps/iucode_tool )
 "
 DEPEND="${RDEPEND}
 	sys-devel/gettext
