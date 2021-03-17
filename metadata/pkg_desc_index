@@ -9162,7 +9162,7 @@ dev-python/requests-unixsocket 0.2.0: Use requests to talk HTTP via a UNIX domai
 dev-python/requests_download 0.1.2: A convenient function to download to a file using requests
 dev-python/requests_pkcs12 1.7: Adds PKCS#12 support to the Python requests library in a clean way
 dev-python/requestsexceptions 1.4.0: Finds the correct path to exceptions in the requests library.
-dev-python/responses 0.12.1 0.13.0: Utility for mocking out the Python Requests library
+dev-python/responses 0.12.1 0.13.0 0.13.1: Utility for mocking out the Python Requests library
 dev-python/restructuredtext-lint 1.3.0: Checks PyPI validity of reStructuredText
 dev-python/retry-decorator 1.1.1: Decorator for retrying when exceptions occur
 dev-python/retrying 1.3.3: General-purpose retrying library
@@ -9213,7 +9213,7 @@ dev-python/service_identity 18.1.0-r1: Service identity verification for pyOpenS
 dev-python/setproctitle 1.2.2: Allow customization of the process title
 dev-python/setuptools 53.0.0 53.1.0 54.1.1 54.1.2: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2-r2: Setuptools revision control system plugin for Git
-dev-python/setuptools_scm 5.0.1 5.0.2: Manage versions by scm tags via setuptools
+dev-python/setuptools_scm 5.0.1 5.0.2 6.0.1: Manage versions by scm tags via setuptools
 dev-python/setuptools_scm_git_archive 1.1: A setuptools_scm plugin for git archives
 dev-python/setuptools_trial 0.6.0-r1: Setuptools plugin that makes unit tests execute with trial instead of pyunit
 dev-python/sexpdata 0.0.3-r1: a simple S-expression parser/serializer
@@ -9475,7 +9475,7 @@ dev-python/zope-i18nmessageid 5.0.1: Zope support for i18nmessageid (tagging sou
 dev-python/zope-interface 5.2.0: Interfaces for Python
 dev-python/zope-schema 6.0.0 6.0.1 6.1.0: Zope schema Architecture
 dev-python/zope-testing 4.9: Zope testing helpers
-dev-python/zope-testrunner 5.2: Zope testrunner script
+dev-python/zope-testrunner 5.2 5.3.0: Zope testrunner script
 dev-python/zstandard 0.14.0-r1 0.14.1 0.15.0 0.15.2-r1: Zstandard Bindings for Python
 dev-python/zstd 1.4.5.1: Simple python bindings to Yann Collet ZSTD compression library.
 dev-python/zxcvbn 4.4.28: A realistic password strength estimator
