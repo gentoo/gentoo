@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit flag-o-matic toolchain-funcs
 
@@ -12,10 +12,9 @@ SRC_URI="http://ne.di.unimi.it/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
-IUSE="tinfo"
 
-DEPEND="sys-libs/ncurses:0=[tinfo?]"
-
+BDEPEND="virtual/pkgconfig"
+DEPEND="sys-libs/ncurses:0="
 RDEPEND="
 	${DEPEND}
 	dev-lang/perl
@@ -29,9 +28,8 @@ src_prepare() {
 }
 
 src_configure() {
-	local sedflags="s|-lcurses|-lncurses|g"
-	use tinfo && sedflags="s|-lcurses|-ltinfo|g"
-	sed -i -e "${sedflags}" src/makefile || die
+	# bug #776799
+	sed -i -e "s/-lcurses/$($(tc-getPKG_CONFIG) --libs ncurses)/" src/makefile || die
 }
 
 src_compile() {

@@ -2,7 +2,4 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <!-- maintainer-needed -->
-<use>
-<flag name="tinfo">Link against libtinfo from sys-libs/ncurses</flag>
-</use>
 </pkgmetadata>
