@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>billie@gentoo.org</email>
+		<name>Daniel Pielmeier</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<use>
+		<flag name="cover"> Enables editing of FLAC cover art</flag>
+		<flag name="musicbrainz"> Enables support for musicbrainz, needs <pkg>dev-python/python-musicbrainz</pkg></flag>
+		<flag name="quodlibet">Enables support for editing <pkg>media-sound/quodlibet</pkg> databases</flag>
+		<flag name="acoustid">Use <pkg>media-libs/chromaprint</pkg> for acoustic fingerprinting</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">puddletag</remote-id>
+		<remote-id type="github">keithgg/puddletag</remote-id>
+	</upstream>
+</pkgmetadata>
