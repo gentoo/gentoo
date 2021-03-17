@@ -1,4 +1,4 @@
-From d29cbc586c9f073eb144d219af3d792c2d2de453 Mon Sep 17 00:00:00 2001
+From 44f6a0db3bac50deb11d15d3d847c41932afbfea Mon Sep 17 00:00:00 2001
 From: Lars Wendler <polynomial-c@gentoo.org>
 Date: Wed, 17 Mar 2021 17:44:38 +0100
 Subject: [PATCH] configure.ac: Don't use AM_CONDITIONAL inside an if statement
@@ -14,7 +14,7 @@ Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
  1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/configure.ac b/configure.ac
-index 8c575dd..6e972fc 100644
+index 8c575dd..b578431 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -260,11 +260,11 @@ if test "$enable_anacron" != no; then
@@ -27,7 +27,7 @@ index 8c575dd..6e972fc 100644
 -	fi
  fi
 +AM_CONDITIONAL([NEED_OBSTACK], [test "$have_obstack" = no])
-+AS_IF([test "$have_obstack" = no], [
++AS_IF([test "$enable_anacron" != no && test "$have_obstack" = no], [
 +	CPPFLAGS="$CPPFLAGS -I\$(top_srcdir)/obstack"
 +])
  
