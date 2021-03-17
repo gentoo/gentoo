@@ -3,16 +3,18 @@
 
 EAPI=7
 
-inherit cmake udev git-r3
+inherit cmake udev
 
-EGIT_REPO_URI="github.com/Benjamin-Dobell/Heimdall.git"
+SRC_URI="https://github.com/Benjamin-Dobell/Heimdall/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-DESCRIPTION="Tool suite used to flash firmware onto Samsung Galaxy S devices"
+DESCRIPTION="Tool suite used to flash firmware onto Samsung devices"
 HOMEPAGE="https://glassechidna.com.au/heimdall/"
 
 LICENSE="MIT"
 SLOT="0"
 IUSE="gui"
+KEYWORDS="~amd64"
+S="${WORKDIR}/Heimdall-${PV}"
 
 RDEPEND="
 	virtual/libusb:1=
@@ -21,8 +23,8 @@ RDEPEND="
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		dev-qt/qtwidgets:5
-	)
-"
+	)"
+
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
