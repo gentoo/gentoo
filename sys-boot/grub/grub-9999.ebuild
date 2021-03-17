@@ -111,7 +111,7 @@ RDEPEND="${DEPEND}
 		grub_platforms_efi-32? ( sys-boot/efibootmgr )
 		grub_platforms_efi-64? ( sys-boot/efibootmgr )
 	)
-	!sys-boot/grub:0 !sys-boot/grub-static
+	!sys-boot/grub:0
 	nls? ( sys-devel/gettext )
 "
 
@@ -121,6 +121,10 @@ QA_EXECSTACK="usr/bin/grub-emu* usr/lib/grub/*"
 QA_PRESTRIPPED="usr/lib/grub/.*"
 QA_MULTILIB_PATHS="usr/lib/grub/.*"
 QA_WX_LOAD="usr/lib/grub/*"
+
+pkg_setup() {
+	:
+}
 
 src_unpack() {
 	if [[ ${PV} == 9999 ]]; then
@@ -142,6 +146,8 @@ src_prepare() {
 
 	if [[ -n ${GRUB_AUTOGEN} || -n ${GRUB_BOOTSTRAP} ]]; then
 		python_setup
+	else
+		export PYTHON=true
 	fi
 
 	if [[ -n ${GRUB_BOOTSTRAP} ]]; then
