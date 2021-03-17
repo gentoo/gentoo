@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 inherit autotools flag-o-matic gnome2-utils xdg-utils
 
 DESCRIPTION="A background browser and setter for X"
@@ -13,6 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 IUSE="nls xinerama"
 
+BDEPEND="virtual/pkgconfig"
 RDEPEND="
 	>=dev-cpp/gtkmm-2.10:2.4
 	>=gnome-base/librsvg-2.20:2
@@ -21,7 +23,6 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 	xinerama? ( x11-base/xorg-proto )
 "
