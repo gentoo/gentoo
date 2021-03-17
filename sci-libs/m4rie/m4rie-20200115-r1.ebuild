@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit autotools
+
 DESCRIPTION="Fast dense matrix arithmetic over GF(2^e) for 2 <= e <= 16"
 HOMEPAGE="https://bitbucket.org/malb/m4rie/"
 SRC_URI="https://bitbucket.org/malb/${PN}/downloads/${P}.tar.gz"
@@ -12,8 +14,16 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="debug static-libs"
 
-DEPEND=">=sci-libs/m4ri-20140914"
+DEPEND="sci-libs/m4ri"
 RDEPEND="${DEPEND}"
+
+# Requires eautoreconf.
+PATCHES=( "${FILESDIR}/${P}-link-libm.patch" )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	# m4rie doesn't actually have any openmp code. The configure flag
