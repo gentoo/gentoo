@@ -23,6 +23,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-format.patch
+	"${FILESDIR}"/${PN}-0.1.98-libdir.patch
 )
 
 src_configure() {
