@@ -16405,7 +16405,7 @@ sci-libs/lis 1.6.5: Library of Iterative Solvers for Linear Systems
 sci-libs/lmfit 8.2.2: library for Levenberg-Marquardt least-squares minimization and curve fitting
 sci-libs/lrslib 062 071: Self-contained C implementation of the reverse search algorithm
 sci-libs/m4ri 20200125: Method of four russian for inversion (M4RI)
-sci-libs/m4rie 20200115: Fast dense matrix arithmetic over GF(2^e) for 2 <= e <= 16
+sci-libs/m4rie 20200115-r1: Fast dense matrix arithmetic over GF(2^e) for 2 <= e <= 16
 sci-libs/mathgl 2.4.4: Math Graphics Library
 sci-libs/matio 1.5.19: Library for reading and writing matlab files
 sci-libs/mc 1.5: 2D/3D AFEM code for nonlinear geometric PDE

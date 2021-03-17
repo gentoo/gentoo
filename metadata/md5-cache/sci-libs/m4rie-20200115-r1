@@ -1,0 +1,15 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare
+DEPEND=sci-libs/m4ri
+DESCRIPTION=Fast dense matrix arithmetic over GF(2^e) for 2 <= e <= 16
+EAPI=7
+HOMEPAGE=https://bitbucket.org/malb/m4rie/
+INHERIT=autotools
+IUSE=debug static-libs
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos
+LICENSE=GPL-2+
+RDEPEND=sci-libs/m4ri
+SLOT=0
+SRC_URI=https://bitbucket.org/malb/m4rie/downloads/m4rie-20200115.tar.gz
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9988ecbe04129214297a7bbf3d253710
+_md5_=dfd3defa2378b5b48fced8595274c055
