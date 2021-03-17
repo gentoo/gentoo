@@ -1,4 +1,5 @@
-
+https://bugs.gentoo.org/622806
+https://sourceforge.net/p/wrapper/patches/25/
 --- src/c/Makefile-linux-armel-32.make.old	2014-07-21 10:48:31.000000000 +0200
 +++ src/c/Makefile-linux-armel-32.make	2014-07-21 10:50:11.000000000 +0200
 @@ -33,14 +33,14 @@

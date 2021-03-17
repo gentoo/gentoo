@@ -3,26 +3,25 @@
 
 EAPI=7
 
-inherit autotools toolchain-funcs
+inherit autotools
 
-DESCRIPTION="client for the french tarot game maitretarot"
+DESCRIPTION="backend library for the maitretarot clients"
 HOMEPAGE="http://www.nongnu.org/maitretarot/"
+
 SRC_URI="https://savannah.nongnu.org/download/maitretarot/${PN}.pkg/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
-BDEPEND="virtual/pkgconfig"
 DEPEND="dev-libs/glib:2
 	dev-libs/libxml2
-	dev-games/libmaitretarot
-	dev-games/libmt_client
-	sys-libs/ncurses:0"
+	dev-games/libmaitretarot"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-format.patch
+	"${FILESDIR}"/${PN}-0.1.98-libdir.patch
 )
 
 src_prepare() {
@@ -30,16 +29,20 @@ src_prepare() {
 
 	mv configure.{in,ac} || die
 
-	# Remove bundled macros (avoid patching same file multiple times)
-	rm -rf m4/{libmaitretarot,libmt_client}.m4 || die
-
-	# Ensure we generate auto* with the fixed macros in tree
-	# (not bundled)
-	# bug #716102
+	# For the m4 libdir patch, bug #729734
 	eautoreconf
 }
 
 src_configure() {
-	export LIBS="$( $(tc-getPKG_CONFIG) --libs ncurses )"
+	econf --disable-static
+}
+
+src_install() {
 	default
+
+	# bug #716102
+	insinto /usr/share/aclocal
+	doins libmt_client.m4
+
+	find "${ED}" -name '*.la' -delete || die
 }
