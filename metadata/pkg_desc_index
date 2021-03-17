@@ -13330,6 +13330,7 @@ media-libs/libnspsl 0.1.6-r1: C library for decoding BMP and ICO images
 media-libs/libofa 0.9.3-r2: Open Fingerprint Architecture
 media-libs/libogg 1.3.4: the Ogg media file format library
 media-libs/liboggz 1.1.1: Oggz provides a simple programming interface for reading and writing Ogg files and streams
+media-libs/libopenaptx 0.2.0 9999: Reverse-engineered aptX and aptX HD library
 media-libs/libopenglrecorder 0.1.0: Library for asynchronous OpenGL recording with audio
 media-libs/libopenmpt 0.5.5: Library to decode tracked music files (modules)
 media-libs/libopenraw 0.1.3: RAW image formats decoding library
