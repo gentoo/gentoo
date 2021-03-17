@@ -212,6 +212,7 @@ src_prepare() {
 
 	# Add local patches here
 	PATCHES+=(
+		"${FILESDIR}"/247-cgroup-test.patch
 	)
 
 	if ! use vanilla; then
