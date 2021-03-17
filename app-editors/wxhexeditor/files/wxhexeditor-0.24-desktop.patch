@@ -1,0 +1,13 @@
+Index: resources/wxHexEditor.desktop
+===================================================================
+--- a/resources/wxHexEditor.desktop	2017-03-16 05:50:42.000000000 +0200
++++ b/resources/wxHexEditor.desktop	2017-03-24 12:16:39.931400635 +0200
+@@ -8,6 +8,7 @@ Exec=wxHexEditor
+ Icon=wxHexEditor
+ Terminal=false
+ Type=Application
+-Categories=Utility;TextEditor;Utility;
++Categories=Utility;TextEditor;
++Keywords=disk;drive;volume;harddisk;hdd;disc;cdrom;dvd;partition;iso;image;backup;restore;editor;
+ Keywords[en_GB]=disk;drive;volume;harddisk;hdd;disc;cdrom;dvd;partition;iso;image;backup;restore;editor;
+ 
