@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit flag-o-matic meson multilib-minimal python-any-r1 xdg-utils
 
@@ -15,7 +15,7 @@ if [[ ${PV} = 9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 LICENSE="Old-MIT ISC icu"
@@ -35,16 +35,16 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	>=dev-libs/gobject-introspection-common-1.34
-	test? ( ${PYTHON_DEPS} )
 "
 BDEPEND="
+	${PYTHON_DEPS}
 	virtual/pkgconfig
 	doc? ( dev-util/gtk-doc )
 	introspection? ( dev-util/glib-utils )
 "
 
 pkg_setup() {
-	use test && python-any-r1_pkg_setup
+	python-any-r1_pkg_setup
 	if ! use debug ; then
 		append-cppflags -DHB_NDEBUG
 	fi
@@ -62,6 +62,12 @@ src_prepare() {
 
 	# bug 618772
 	append-cxxflags -std=c++14
+
+	# bug 762415
+	local pyscript
+	for pyscript in $(find -type f -name "*.py") ; do
+		python_fix_shebang -q "${pyscript}"
+	done
 }
 
 meson_multilib_native_feature() {
