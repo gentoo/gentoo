@@ -7,8 +7,6 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<use>
-		<flag name="cover"> Enables editing of FLAC cover art</flag>
-		<flag name="musicbrainz"> Enables support for musicbrainz, needs <pkg>dev-python/python-musicbrainz</pkg></flag>
 		<flag name="quodlibet">Enables support for editing <pkg>media-sound/quodlibet</pkg> databases</flag>
 		<flag name="acoustid">Use <pkg>media-libs/chromaprint</pkg> for acoustic fingerprinting</flag>
 	</use>
