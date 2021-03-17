@@ -5762,7 +5762,7 @@ dev-libs/sdformat 9.2.0 9.3.0: Simulation Description Format (SDF) parser
 dev-libs/serd 0.30.10: Library for RDF syntax which supports reading and writing Turtle and NTriples
 dev-libs/serdisplib 2.02-r1: Library to drive several displays with built-in controllers or display modules
 dev-libs/shhopt 1.1.7-r3: library for parsing command line options
-dev-libs/simdjson 0.7.1 0.8.1 0.8.2: SIMD accelerated C++ JSON library
+dev-libs/simdjson 0.7.1 0.8.1 0.8.2 0.9.0: SIMD accelerated C++ JSON library
 dev-libs/sink 0.8.0-r2: Data access layer handling synchronization, caching and indexing
 dev-libs/skalibs 2.3.2.0 2.6.1.0 2.6.3.0 2.6.4.0 2.7.0.0 2.8.1.0 2.9.1.0 2.9.3.0: General-purpose libraries from skarnet.org
 dev-libs/smack 0.5.0: low-level IO storage which packs data into sorted compressed blobs

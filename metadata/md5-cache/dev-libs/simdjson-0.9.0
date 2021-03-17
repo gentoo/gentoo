@@ -1,0 +1,16 @@
+BDEPEND=sys-apps/file sys-apps/findutils sys-apps/grep dev-util/ninja dev-util/cmake
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=tools? ( dev-libs/cxxopts:= )
+DESCRIPTION=SIMD accelerated C++ JSON library
+EAPI=7
+HOMEPAGE=https://simdjson.org/ https://github.com/simdjson/simdjson
+INHERIT=toolchain-funcs cmake
+IUSE=test tools
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86
+LICENSE=Apache-2.0 Boost-1.0
+REQUIRED_USE=test? ( tools )
+RESTRICT=!test? ( test )
+SLOT=0/8
+SRC_URI=https://github.com/simdjson/simdjson/archive/v0.9.0.tar.gz -> simdjson-0.9.0.tar.gz
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	cmake	314a813be2f09820e8978cdee941e501
+_md5_=5b9095615d090e75bdd10f40c864f199
