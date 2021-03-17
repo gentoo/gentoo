@@ -6,11 +6,11 @@ EAPI=7
 HOMEPAGE=http://projects.camlcity.org/projects/ocamlnet.html
 INHERIT=findlib
 IUSE=kerberos tk httpd +ocamlopt +pcre ssl zip
-KEYWORDS=amd64 ~ppc x86
+KEYWORDS=amd64 ppc x86
 LICENSE=ZLIB GPL-2+
 RDEPEND=>=dev-ml/findlib-1.0 >=dev-lang/ocaml-3.10.2:=[ocamlopt?] pcre? ( >=dev-ml/pcre-ocaml-5:= ) tk? ( dev-ml/labltk:= ) ssl? ( net-libs/gnutls:= ) kerberos? ( virtual/krb5 ) zip? ( dev-ml/camlzip:= )
 RESTRICT=installsources strip
 SLOT=0/4.1.8
 SRC_URI=http://download.camlcity.org/download/ocamlnet-4.1.8.tar.gz
 _eclasses_=findlib	3d3de4bef686774baeeabfa2b916631c
-_md5_=2959cdfa20869b9b8c627154c374f6b5
+_md5_=51d153b2607f6787161eac7bba3d3ee2
