@@ -3811,7 +3811,7 @@ dev-games/hdl_dump 0.8.6.20060901 0.9.2.20180722: Game installer for PlayStation
 dev-games/higan-ananke 094: A higan helper library needed for extra rom load options
 dev-games/irrlicht 1.8.4-r1: open source high performance realtime 3D engine written in C++
 dev-games/irrlicht-headers 1.8.4: Irrlicht 3D engine headers
-dev-games/libmaitretarot 0.1.98: backend library for the maitretarot games
+dev-games/libmaitretarot 0.1.98-r1: backend library for the maitretarot games
 dev-games/libmt_client 0.1.98: backend library for the maitretarot clients
 dev-games/libnw 1.30.02: Tools and libraries for NWN file manipulation
 dev-games/libsmacker 1.1.1_p35: A cross-platform C library for decoding .smk Smacker Video files.
@@ -15642,7 +15642,7 @@ net-vpn/6tunnel 0.13: TCP proxy for applications that don't speak IPv6
 net-vpn/badvpn 1.999.127 1.999.129 1.999.130: Peer-to-peer VPN, NCD scripting language, tun2socks proxifier
 net-vpn/corkscrew 2.0-r1: a tool for tunneling SSH through HTTP proxies
 net-vpn/fp-multiuser 0.0.2: A frp server plugin to support multiple users for frp
-net-vpn/frp 0.34.3 0.35.1: A reverse proxy that exposes a server behind a NAT or firewall to the internet
+net-vpn/frp 0.34.3 0.35.1 0.36.0: A reverse proxy that exposes a server behind a NAT or firewall to the internet
 net-vpn/httptunnel 3.3_p20180119: httptunnel can create IP tunnels through firewalls/proxies using HTTP
 net-vpn/i2p 0.9.47 0.9.48: A privacy-centric, anonymous network
 net-vpn/i2pd 2.34.0 2.35.0 2.36.0: A C++ daemon for accessing the I2P anonymous network
