@@ -16432,7 +16432,7 @@ sci-libs/oc 2.0: Network Data Access Protocol client C library
 sci-libs/oce 0.18.3-r2: Development platform for CAD/CAE, 3D surface/solid modeling and data exchange
 sci-libs/octomap 1.9.5 9999: An Efficient Probabilistic 3D Mapping Framework Based on Octrees
 sci-libs/ogdi 4.1.0: Open Geographical Datastore Interface, a GIS support library
-sci-libs/openblas 0.3.12-r1 0.3.13: Optimized BLAS library based on GotoBLAS2
+sci-libs/openblas 0.3.12-r1 0.3.13 0.3.14: Optimized BLAS library based on GotoBLAS2
 sci-libs/opencascade 7.4.0-r4: Development platform for CAD/CAE, 3D surface/solid modeling and data exchange
 sci-libs/openlibm 0.7.4: High quality system independent, open source libm
 sci-libs/orocos-bfl 0.8.0: Bayesian Filtering Library
