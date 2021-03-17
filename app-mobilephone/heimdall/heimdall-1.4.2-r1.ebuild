@@ -6,6 +6,7 @@ EAPI=7
 inherit cmake udev
 
 SRC_URI="https://github.com/Benjamin-Dobell/Heimdall/archive/v${PV}.tar.gz -> ${P}.tar.bz2"
+
 S="${WORKDIR}/Heimdall-v${PV}"
 
 DESCRIPTION="Tool suite used to flash firmware onto Samsung devices"
