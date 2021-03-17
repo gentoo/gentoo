@@ -4,11 +4,12 @@ DEPEND=net-libs/libmnl:=
 DESCRIPTION=netlink interface for conntrack timeout infrastructure in kernel's packet filter
 EAPI=7
 HOMEPAGE=https://www.netfilter.org/projects/libnetfilter_cttimeout/
+INHERIT=autotools linux-info
 IUSE=kernel_linux
-KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 x86
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ppc ~ppc64 x86
 LICENSE=GPL-2
 RDEPEND=net-libs/libmnl:=
 SLOT=0
 SRC_URI=https://www.netfilter.org/projects/libnetfilter_cttimeout/files/libnetfilter_cttimeout-1.0.0.tar.bz2
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=7cca144389ab87c5f9f39c683a90654b
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9988ecbe04129214297a7bbf3d253710	linux-info	c90a203b1c14cfa77bd3e37a0e96c955
+_md5_=2dda09ea6b1ee97739b5b30575bc300d

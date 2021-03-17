@@ -4,11 +4,12 @@ DEPEND=net-libs/libmnl:=
 DESCRIPTION=Userspace library for interface to user-space helper for conntrack
 EAPI=7
 HOMEPAGE=https://www.netfilter.org/projects/libnetfilter_cthelper/
+INHERIT=autotools linux-info
 IUSE=kernel_linux
-KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 x86
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ppc ~ppc64 x86
 LICENSE=GPL-2
 RDEPEND=net-libs/libmnl:=
 SLOT=0
 SRC_URI=https://www.netfilter.org/projects/libnetfilter_cthelper/files/libnetfilter_cthelper-1.0.0.tar.bz2
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=a8df158eb17d6d342e794c0762dda388
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9988ecbe04129214297a7bbf3d253710	linux-info	c90a203b1c14cfa77bd3e37a0e96c955
+_md5_=31d6fdffcec575d6414ad4268129f2cf
