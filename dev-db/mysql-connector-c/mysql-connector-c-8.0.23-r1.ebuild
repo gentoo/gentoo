@@ -11,11 +11,20 @@ MULTILIB_CHOST_TOOLS=( /usr/bin/mysql_config )
 
 DESCRIPTION="C client library for MariaDB/MySQL"
 HOMEPAGE="https://dev.mysql.com/downloads/"
-SRC_URI="https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-boost-${PV}.tar.gz"
+
+if [[ ${PV} == "9999" ]]; then
+	EGIT_REPO_URI="https://github.com/mysql/mysql-server.git"
+
+	inherit git-r3
+else
+	SRC_URI="https://dev.mysql.com/get/Downloads/MySQL-$(ver_cut 1-2)/mysql-boost-${PV}.tar.gz"
+	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 sparc x86"
+
+	S="${WORKDIR}/mysql-${PV}"
+fi
 
 LICENSE="GPL-2"
 SLOT="0/21"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 sparc x86"
 IUSE="ldap libressl static-libs"
 
 RDEPEND="
@@ -38,8 +47,6 @@ RDEPEND+=" !=dev-db/mysql-5.7.27-r0"
 RDEPEND+=" !<dev-db/percona-server-5.7.26.29-r1"
 
 DOCS=( README )
-
-S="${WORKDIR}/mysql-${PV}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.0.22-always-build-decompress-utilities.patch
