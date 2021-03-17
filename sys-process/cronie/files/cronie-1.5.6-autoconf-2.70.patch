@@ -1,0 +1,38 @@
+From d29cbc586c9f073eb144d219af3d792c2d2de453 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Wed, 17 Mar 2021 17:44:38 +0100
+Subject: [PATCH] configure.ac: Don't use AM_CONDITIONAL inside an if statement
+
+or else configure might break:
+
+  configure: error: conditional "NEED_OBSTACK" was never defined.
+  Usually this means the macro was only invoked conditionally.
+
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ configure.ac | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 8c575dd..6e972fc 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -260,11 +260,11 @@ if test "$enable_anacron" != no; then
+ 	dnl obstack.h is part of GLIBC and may not be present on other systems,
+ 	dnl eg. musl and AIX. There, we static link in our own copy.
+ 	AC_CHECK_HEADER(obstack.h, [have_obstack=yes], [have_obstack=no], [])
+-	AM_CONDITIONAL([NEED_OBSTACK], [test "$have_obstack" = no])
+-	if test "$have_obstack" = no; then
+-		CPPFLAGS="$CPPFLAGS -I\$(top_srcdir)/obstack"
+-	fi
+ fi
++AM_CONDITIONAL([NEED_OBSTACK], [test "$have_obstack" = no])
++AS_IF([test "$have_obstack" = no], [
++	CPPFLAGS="$CPPFLAGS -I\$(top_srcdir)/obstack"
++])
+ 
+ AC_CONFIG_FILES([Makefile])
+ AC_OUTPUT
+-- 
+2.31.0
+
