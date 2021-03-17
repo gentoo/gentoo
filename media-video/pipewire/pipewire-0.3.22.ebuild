@@ -11,7 +11,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/PipeWire/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 ~x86"
 fi
 
 DESCRIPTION="Multimedia processing graphs"
