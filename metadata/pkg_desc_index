@@ -3811,8 +3811,8 @@ dev-games/hdl_dump 0.8.6.20060901 0.9.2.20180722: Game installer for PlayStation
 dev-games/higan-ananke 094: A higan helper library needed for extra rom load options
 dev-games/irrlicht 1.8.4-r1: open source high performance realtime 3D engine written in C++
 dev-games/irrlicht-headers 1.8.4: Irrlicht 3D engine headers
-dev-games/libmaitretarot 0.1.98-r1: backend library for the maitretarot games
-dev-games/libmt_client 0.1.98: backend library for the maitretarot clients
+dev-games/libmaitretarot 0.1.98-r2: backend library for the maitretarot games
+dev-games/libmt_client 0.1.98-r1: backend library for the maitretarot clients
 dev-games/libnw 1.30.02: Tools and libraries for NWN file manipulation
 dev-games/libsmacker 1.1.1_p35: A cross-platform C library for decoding .smk Smacker Video files.
 dev-games/mercator 0.3.3: WorldForge library primarily aimed at terrain
@@ -11395,7 +11395,7 @@ games-board/iagno 3.36.4: Dominate the board in a classic version of Reversi
 games-board/mah-jong 1.16: A networked Mah Jong program, together with a computer player
 games-board/maitretarot 0.1.98-r1: server for the french tarot game maitretarot
 games-board/megamek 0.34.10-r1: an unofficial, online version of the Classic BattleTech board game
-games-board/mt_dolphin_ia 0.1.98-r1: client for the french tarot game maitretarot
+games-board/mt_dolphin_ia 0.1.98-r2: client for the french tarot game maitretarot
 games-board/mt_ncurses_client 0.1.98-r1: client for the french tarot game maitretarot
 games-board/natch 2.4-r1: A program to solve chess proof games
 games-board/openyahtzee 1.9.3: A full-featured wxWidgets version of the classic dice game Yahtzee

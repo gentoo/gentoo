@@ -9,4 +9,4 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/glib:2 dev-libs/libxml2
 SLOT=0
 SRC_URI=https://savannah.nongnu.org/download/maitretarot/libmaitretarot.pkg/0.1.98/libmaitretarot-0.1.98.tar.bz2
-_md5_=3a3278cd74dd4c082b24fd230ef89465
+_md5_=6645c3296a5418e76bfce85c37f66a20
