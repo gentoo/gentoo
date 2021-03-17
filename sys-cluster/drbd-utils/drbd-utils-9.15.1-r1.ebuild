@@ -34,11 +34,14 @@ src_prepare() {
 		-i user/*/Makefile.in || die
 
 	# respect multilib
+	# bug #698304
 	sed -i -e "s:/lib/:/$(get_libdir)/:g" \
 		Makefile.in scripts/{Makefile.in,global_common.conf,drbd.conf.example} || die
 	sed -e "s:@prefix@/lib:@prefix@/$(get_libdir):" \
 		-e "s:(DESTDIR)/lib:(DESTDIR)/$(get_libdir):" \
 		-i user/*/Makefile.in || die
+
+	sed -i -e "s/lib/$(get_libdir)/" scripts/drbd.service || die
 
 	# correct install paths (really correct this time)
 	sed -i -e "s:\$(sysconfdir)/bash_completion.d:$(get_bashcompdir):" \
