@@ -14685,7 +14685,7 @@ net-dns/pdns 4.4.0-r100 4.4.1: The PowerDNS Daemon
 net-dns/pdns-recursor 4.4.2-r100: The PowerDNS Recursor
 net-dns/pdnsd 1.2.9a-r2: Proxy DNS server with permanent caching
 net-dns/rbldnsd 0.998b-r2: DNS server designed to serve blacklist zones
-net-dns/resolv_wrapper 1.1.5 1.1.6: Wrapper for DNS name resolving or DNS faking
+net-dns/resolv_wrapper 1.1.5 1.1.6 1.1.7: Wrapper for DNS name resolving or DNS faking
 net-dns/resolvconf-symlink 0: Make /etc/resolv.conf a symlink to a runtime-writable location
 net-dns/s6-dns 2.2.0.1 2.3.0.0 2.3.0.1 2.3.0.2 2.3.1.1 2.3.3.0: Suite of DNS client programs and libraries for Unix systems
 net-dns/sheerdns 1.0.3: Sheerdns is a small, simple, fast master only DNS server
