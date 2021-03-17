@@ -14,7 +14,7 @@ else
 	EGIT_REPO_URI="https://github.com/Benjamin-Dobell/Heimdall.git"
 fi
 
-DESCRIPTION="Tool suite used to flash firmware onto Samsung Galaxy S devices"
+DESCRIPTION="Tool suite used to flash firmware onto Samsung devices"
 HOMEPAGE="https://glassechidna.com.au/heimdall/"
 
 LICENSE="MIT"
