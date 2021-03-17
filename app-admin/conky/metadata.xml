@@ -18,7 +18,6 @@
 		<flag name="apcupsd">Enable support for <pkg>sys-power/apcupsd</pkg></flag>
 		<flag name="bundled-toluapp">Enable support for bundled toluapp. This only makes sense in combination with the lua-* flags</flag>
 		<flag name="cmus">Enable monitoring of music played by <pkg>media-sound/cmus</pkg></flag>
-		<flag name="eve">Enable support for the eve-online skill monitor</flag>
 		<flag name="ical">Enable support for events from iCalendar (RFC 5545) files using <pkg>dev-libs/libical</pkg></flag>
 		<flag name="iostats">Enable support for per-task I/O statistics</flag>
 		<flag name="irc">Enable support for displaying everything from an irc channel using <pkg>net-libs/libircclient</pkg></flag>
