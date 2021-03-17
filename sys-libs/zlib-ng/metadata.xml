@@ -5,6 +5,9 @@
 	<email>base-system@gentoo.org</email>
 	<name>Gentoo Base System</name>
 </maintainer>
+<use>
+	<flag name="compat">Enable compatibility to <pkg>sys-libs/zlib</pkg></flag>
+</use>
 <upstream>
 	<remote-id type="github">zlib-ng/zlib-ng</remote-id>
 </upstream>
