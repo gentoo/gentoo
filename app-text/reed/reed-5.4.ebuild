@@ -1,8 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils toolchain-funcs
+EAPI=7
+
+inherit toolchain-funcs
 
 DESCRIPTION="This is a text pager (text file viewer), used to display etexts"
 # Homepage http://www.sacredchao.net/software/reed/index.shtml does not exist.
@@ -13,19 +14,25 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 x86"
 
+BDEPEND="virtual/pkgconfig"
 DEPEND="sys-libs/ncurses"
 RDEPEND="${DEPEND}"
 
 DOCS=( AUTHORS BUGS NEWS README )
 
 src_prepare() {
-	sed -e 's:-O2:$(CFLAGS) $(LDFLAGS):' \
+	default
+
+	sed -e 's;-O2;$(CFLAGS) $(LDFLAGS);' \
 		-e 's: wrap::' \
 		-e 's:-s reed:reed:' \
-		-e 's:-lcurses:$(shell ${PKG_CONFIG} --libs ncurses):g' \
+		-e "s:-lcurses:$($(tc-getPKG_CONFIG) --libs ncurses):g" \
 		-i Makefile.in || die
-	rm wrap.1 #Collision with talkfilters, bug #247396
-	tc-export CC PKG_CONFIG
+
+	# Collision with talkfilters, bug #247396
+	rm wrap.1 || die
+
+	tc-export CC
 }
 
 src_configure() {
