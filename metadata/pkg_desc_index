@@ -17693,7 +17693,7 @@ sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.79_p2020120
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.79_p20201201 5.4.9999 5.10.11_p20210201: Raspberry Pi kernel sources
 sys-kernel/rt-sources 4.4.240_p209 4.4.245_p211 4.4.249_p212 4.9.240_p155 4.9.247_p162 4.14.206_p99 4.14.209_p101 4.14.214_p104 4.19.148_p64 4.19.160_p69 4.19.165_p70 5.4.70_p40 5.4.84_p47 5.10.1_p20 5.10.4_p22: Full Linux 5.10 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/vanilla-kernel 5.4.94 5.4.97 5.4.99 5.4.100 5.4.101 5.4.102 5.4.103 5.4.104 5.4.105 5.10.17 5.10.18 5.10.19 5.10.20 5.10.21 5.10.22 5.10.23 5.11.2 5.11.3 5.11.4 5.11.5 5.11.6: Linux kernel built from vanilla upstream sources
-sys-kernel/vanilla-sources 4.4.262 4.9.262 4.14.226 4.19.181 5.4.105 5.10.23 5.11.6: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 4.4.262 4.9.262 4.14.226 4.19.181 5.4.106 5.10.24 5.11.7: Full sources for the Linux kernel
 sys-kernel/zen-sources 5.10.16 5.11: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
 sys-libs/binutils-libs 2.34-r2 2.35.1-r1 2.35.2 2.36.1: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
