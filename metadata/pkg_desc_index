@@ -17776,6 +17776,7 @@ sys-libs/timezone-data 2021a: Timezone data (/usr/share/zoneinfo) and utilities 
 sys-libs/uclibc-ng 1.0.30-r1 1.0.32 1.0.33 1.0.35 9999: C library for developing embedded Linux systems
 sys-libs/uid_wrapper 1.2.7 1.2.8: Wrapper to fake privilege separation
 sys-libs/zlib 1.2.11-r3: Standard (de)compression library
+sys-libs/zlib-ng 2.0.0: zlib data compression library
 sys-power/acpi 1.7-r1: Displays information about ACPI devices
 sys-power/acpi_call 1.2.1 9999: A linux kernel module that enables calls to ACPI
 sys-power/acpid 2.0.31 2.0.32 2.0.32-r1 2.0.32-r2: Daemon for Advanced Configuration and Power Interface

@@ -8390,6 +8390,7 @@ sys-libs/timezone-data:leaps-timezone - Install the set of "right" timezones; th
 sys-libs/timezone-data:zic-slim - Default to 'slim' file format for /usr/share/zoneinfo. Otherwise 'fat' format is used. Not all programs can handle 'slim' format'.
 sys-libs/uclibc-ng:symlink-compat - Explicitly add sym links for libdl.so.0, libm.so.0, and friends for backward compatibility with sys-libs/uclibc-ng-1.0.17 and earlier
 sys-libs/zlib:minizip - include the minizip library for quick and dirty zip extraction
+sys-libs/zlib-ng:compat - Enable compatibility to sys-libs/zlib
 sys-power/apcupsd:modbus - Enable MODBUS support over USB
 sys-power/intel-undervolt:elogind - Use elogind hook to apply voltage after system sleep
 sys-power/nut:ipmi - Support IPMI-based UPSes.
