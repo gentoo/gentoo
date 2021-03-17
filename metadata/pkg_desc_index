@@ -637,7 +637,7 @@ app-admin/chrpath 0.13-r2 0.16: Chrpath can modify the rpath and runpath of ELF 
 app-admin/clog 1.3.0: clog is a colorized log tail utility
 app-admin/clsync 0.4.5 9999: Live sync tool based on inotify, written in GNU C
 app-admin/clustershell 1.8.3: Python framework for efficient cluster administration
-app-admin/conky 1.10.8-r9 1.10.8-r10 1.11.6-r2 1.12.1: An advanced, highly configurable system monitor for X
+app-admin/conky 1.11.6-r2 1.12.1: An advanced, highly configurable system monitor for X
 app-admin/conserver 8.2.3-r1 8.2.4-r1 8.2.5-r1 8.2.6-r1: Serial Console Manager
 app-admin/consul 1.7.4 1.7.11 1.7.12 1.8.7 1.8.8 1.9.1 1.9.3: A tool for service discovery, monitoring and configuration
 app-admin/consul-replicate 0.2.0: Consul cross-DC KV replication daemon
@@ -1866,7 +1866,7 @@ app-editors/vim 8.2.0360 8.2.0508 8.2.0638 8.2.0814 8.2.0814-r100 9999: Vim, an 
 app-editors/vim-core 8.2.0360 8.2.0508 8.2.0638 8.2.0814 9999: vim and gvim shared files
 app-editors/vis 0.5 0.7 9999: modern, legacy free, simple yet efficient vim-like editor
 app-editors/wily 1.0-r2: An emulation of ACME, Plan9's hybrid window system, shell and editor
-app-editors/wxhexeditor 0.24: A cross-platform hex editor designed specially for large files
+app-editors/wxhexeditor 0.24-r1: A cross-platform hex editor designed specially for large files
 app-editors/xemacs 21.4.24-r2 21.5.34-r5: highly customizable open source text editor and application development system
 app-editors/xmlcopyeditor 1.2.1.3-r1: XML Copy Editor is a fast, free, validating XML editor
 app-editors/xvile 9.8t: VI Like Emacs -- yet another full-featured vi clone
@@ -13818,7 +13818,7 @@ media-sound/alsaplayer 0.99.81-r1: A heavily multi-threaded pluggable audio play
 media-sound/amsynth 1.8.0: Virtual analogue synthesizer
 media-sound/apetag 1.12-r3: Command-line ape 2.0 tagger
 media-sound/apulse 0.1.13: PulseAudio emulation for ALSA
-media-sound/aqualung 1.0-r5 1.1-r1 1.1-r101: Music player for a wide range of formats designed for gapless playback
+media-sound/aqualung 1.1-r101: Music player for a wide range of formats designed for gapless playback
 media-sound/ardour 6.5-r2 6.6 9999: Digital Audio Workstation
 media-sound/ario 1.6: GTK client for MPD inspired by Rhythmbox but much lighter and faster
 media-sound/aseqview 0.2.8: ALSA sequencer event viewer/filter
@@ -14247,7 +14247,7 @@ media-video/m2vrequantizer 0.0.2_pre20060306-r1: Tool to requantize mpeg2 videos
 media-video/makemkv 1.16.1: Tool for ripping and streaming Blu-ray, HD-DVD and DVD discs
 media-video/matroxset 0.4: Matrox utility to switch output modes (activate tvout)
 media-video/mediainfo 20.09: MediaInfo supplies technical and tag information about media files
-media-video/mjpegtools 2.1.0-r4: Tools for MJPEG video
+media-video/mjpegtools 2.1.0-r4 2.2.0: Tools for MJPEG video
 media-video/mjpg-streamer 0_pre20120621-r2: MJPG-streamer takes JPGs from Linux-UVC compatible webcams
 media-video/mkclean 0.8.10: mkclean is a command line tool to clean and optimize Matroska files
 media-video/mkvalidator 0.5.2: mkvalidator is a command line tool to verify Matroska files for spec conformance
