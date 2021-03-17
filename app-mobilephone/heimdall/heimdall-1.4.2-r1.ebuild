@@ -7,8 +7,6 @@ inherit cmake udev
 
 SRC_URI="https://github.com/Benjamin-Dobell/Heimdall/archive/v${PV}.tar.gz -> ${P}.tar.bz2"
 
-S="${WORKDIR}/Heimdall-v${PV}"
-
 DESCRIPTION="Tool suite used to flash firmware onto Samsung devices"
 HOMEPAGE="https://glassechidna.com.au/heimdall/"
 
@@ -16,6 +14,7 @@ LICENSE="MIT"
 SLOT="0"
 IUSE="gui"
 KEYWORDS="~amd64"
+S="${WORKDIR}/Heimdall-v${PV}"
 
 RDEPEND="
 	virtual/libusb:1=
