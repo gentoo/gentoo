@@ -2084,7 +2084,7 @@ app-emulation/buildah 1.16.1 1.19.6: A tool that facilitates building OCI images
 app-emulation/cadvisor 0.36.0: Analyzes resource usage and performance characteristics of running containers
 app-emulation/cloud-init 19.4 20.1 20.4 9999: Cloud instance initialisation magic
 app-emulation/coldfire 0.3.1: Motorola Coldfire Emulator
-app-emulation/conmon 2.0.22 2.0.26: An OCI container runtime monitor
+app-emulation/conmon 2.0.22 2.0.26 2.0.27: An OCI container runtime monitor
 app-emulation/containerd 1.3.7 1.3.9 1.4.4: A daemon to control runC
 app-emulation/containers-storage 1.18.1 1.20.2 1.23.3: containers/storage library
 app-emulation/cri-o 1.17.1 1.18.3 1.19.0: OCI-based implementation of Kubernetes Container Runtime Interface
@@ -8076,7 +8076,7 @@ dev-python/authres 1.2.0: Parse and generate Authentication-Results headers
 dev-python/autobahn 20.7.1 20.12.2 20.12.3 21.1.1 21.2.1 21.2.2 21.3.1: WebSocket and WAMP for Twisted and Asyncio
 dev-python/automat 20.2.0: Self-service finite-state machines for the programmer on the go
 dev-python/automaton 1.12.1 2.2.0: Friendly state machines for python.
-dev-python/autopep8 1.5.5 9999: Automatically formats Python code to conform to the PEP 8 style guide
+dev-python/autopep8 1.5.5 1.5.6 9999: Automatically formats Python code to conform to the PEP 8 style guide
 dev-python/autoprop 1.0.2: Infer properties from accessor methods
 dev-python/aws-sam-translator 1.34.0 1.35.0: A library that transform SAM templates into AWS CloudFormation templates
 dev-python/aws-xray-sdk-python 2.6.0: AWS X-Ray SDK for Python
@@ -8112,8 +8112,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7 1.0.8: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r4: Amazon Web Services API
-dev-python/boto3 1.16.63 1.17.7 1.17.12 1.17.17 1.17.18 1.17.19 1.17.20 1.17.21 1.17.22 1.17.23 1.17.24 1.17.25 1.17.26 1.17.27 1.17.28 9999: The AWS SDK for Python
-dev-python/botocore 1.19.63 1.20.7 1.20.12 1.20.17 1.20.18 1.20.19 1.20.20 1.20.21 1.20.22 1.20.23 1.20.24 1.20.25 1.20.26 1.20.27 1.20.28 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.16.63 1.17.7 1.17.12 1.17.17 1.17.18 1.17.19 1.17.20 1.17.21 1.17.22 1.17.23 1.17.24 1.17.25 1.17.26 1.17.27 1.17.28 1.17.29 9999: The AWS SDK for Python
+dev-python/botocore 1.19.63 1.20.7 1.20.12 1.20.17 1.20.18 1.20.19 1.20.20 1.20.21 1.20.22 1.20.23 1.20.24 1.20.25 1.20.26 1.20.27 1.20.28 1.20.29 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.21: Syntax highlighting and autocompletion for the Python interpreter
@@ -8388,7 +8388,7 @@ dev-python/gmpy 2.0.8-r2: Python bindings for GMP, MPC, MPFR and MPIR libraries
 dev-python/google-api-core 1.26.0 1.26.1: Core Library for Google Client Libraries
 dev-python/google-api-python-client 1.8.3-r1 2.0.0 2.0.2: Google API Client for Python
 dev-python/google-apitools 0.5.31: Python library to manipulate Google APIs
-dev-python/google-auth 1.26.1 1.27.0 1.27.1: Google Authentication Library
+dev-python/google-auth 1.26.1 1.27.0 1.27.1 1.28.0: Google Authentication Library
 dev-python/google-auth-httplib2 0.0.4 0.1.0: httplib2 Transport for Google Auth
 dev-python/google-auth-oauthlib 0.4.1-r1 0.4.3: Google Authentication Library
 dev-python/google-pasta 0.1.1 0.2.0: AST-based Python refactoring library
@@ -8500,7 +8500,7 @@ dev-python/jsondiff 1.2.0: Diff JSON and JSON-like structures in Python
 dev-python/jsonext 0.4.2: Well-structured helpers for serializing commonly encountered structures to JSON.
 dev-python/jsonmerge 1.6.0 1.8.0: Merge a series of JSON documents
 dev-python/jsonpatch 1.28 1.30 1.31 1.32: Apply JSON-Patches like http://tools.ietf.org/html/draft-pbryan-json-patch-04
-dev-python/jsonpickle 1.5.0 1.5.2 2.0.0: Python library for serializing any arbitrary object graph into JSON
+dev-python/jsonpickle 2.0.0: Python library for serializing any arbitrary object graph into JSON
 dev-python/jsonpointer 2.0-r1 2.1: Identify specific nodes in a JSON document (according to draft 08)
 dev-python/jsonref 0.1: An implementation of JSON Reference for Python
 dev-python/jsonrpclib 0.4.2 9999: python implementation of the JSON-RPC spec (1.0 and 2.0)
@@ -8509,7 +8509,7 @@ dev-python/jsonxs 0.6: Get/set values in JSON and Python datastructures
 dev-python/junit-xml 1.9: Create JUnit XML test result documents
 dev-python/jupyter 1.0.0-r3: Jupyter metapackage. Install all the Jupyter components in one go
 dev-python/jupyter_client 6.1.11 6.1.12: Jupyter protocol implementation and client libraries
-dev-python/jupyter_console 6.1.0-r2: A terminal-based console frontend for Jupyter kernels
+dev-python/jupyter_console 6.1.0-r2 6.3.0: A terminal-based console frontend for Jupyter kernels
 dev-python/jupyter_core 4.7.1: Core common functionality of Jupyter projects
 dev-python/jupyterlab_pygments 0.1.2: Pygments theme making use of JupyterLab CSS variables
 dev-python/jwcrypto 0.8.0: Implements JWK,JWS,JWE specifications using python-cryptography
@@ -8657,7 +8657,7 @@ dev-python/nose2 0.9.2 0.10.0: Next generation unittest with plugins
 dev-python/nose_fixes 1.3: A plugin to make nose behave better
 dev-python/nose_warnings_filters 0.1.5-r3: A python module to inject warning filters during nosetest
 dev-python/nosexcover 1.0.11-r1: Extends nose.plugins.cover to add Cobertura-style XML reports
-dev-python/notebook 6.1.6 6.2.0: Jupyter Interactive Notebook
+dev-python/notebook 6.2.0: Jupyter Interactive Notebook
 dev-python/notify2 0.3.1-r2: Python interface to DBus notifications.
 dev-python/nototools 0.2.13: Noto fonts support tools and scripts plus web site generation
 dev-python/ntlm-auth 1.5.0: Calculates NTLM Authentication codes
@@ -9123,7 +9123,7 @@ dev-python/qdarkstyle 2.8.1: A dark style sheet for QtWidgets application
 dev-python/qrcode 6.1: QR Code generator on top of PIL
 dev-python/qscintilla-python 2.11.5 2.11.6: Python bindings for QScintilla
 dev-python/qtawesome 1.0.2: Enables iconic fonts such as Font Awesome in PyQt
-dev-python/qtconsole 5.0.2: Qt-based console for Jupyter with support for rich media output
+dev-python/qtconsole 5.0.2 5.0.3: Qt-based console for Jupyter with support for rich media output
 dev-python/qtsass 0.3.0: Compile SASS files to Qt stylesheets
 dev-python/quantities 0.12.4: Support for physical quantities with units, based on numpy
 dev-python/quex 0.71.0-r1: Mode Oriented Directly Coded Lexical Analyser Generator
@@ -9161,7 +9161,7 @@ dev-python/requests-unixsocket 0.2.0: Use requests to talk HTTP via a UNIX domai
 dev-python/requests_download 0.1.2: A convenient function to download to a file using requests
 dev-python/requests_pkcs12 1.7: Adds PKCS#12 support to the Python requests library in a clean way
 dev-python/requestsexceptions 1.4.0: Finds the correct path to exceptions in the requests library.
-dev-python/responses 0.12.1: Utility for mocking out the Python Requests library
+dev-python/responses 0.12.1 0.13.0: Utility for mocking out the Python Requests library
 dev-python/restructuredtext-lint 1.3.0: Checks PyPI validity of reStructuredText
 dev-python/retry-decorator 1.1.1: Decorator for retrying when exceptions occur
 dev-python/retrying 1.3.3: General-purpose retrying library
@@ -9363,7 +9363,7 @@ dev-python/treq 20.9.0 21.1.0: A requests-like API built on top of twisted.web's
 dev-python/trustme 0.7.0: #1 quality TLS certs while you wait, for the discerning tester
 dev-python/tubes 0.2.0-r1: Flow control and backpressure for event-driven applications
 dev-python/tvdb_api 2.0-r1 3.0.2: Python interface to thetvdb.com API
-dev-python/twine 3.3.0 3.4.0: Collection of utilities for publishing packages on PyPI
+dev-python/twine 3.3.0 3.4.0 3.4.1: Collection of utilities for publishing packages on PyPI
 dev-python/twisted 19.10.0 20.3.0 21.2.0: An asynchronous networking framework written in Python
 dev-python/twython 3.7.0: An easy way to access Twitter data with Python
 dev-python/txAMQP 0.8.2: Python library for communicating with AMQP peers using Twisted
@@ -9401,7 +9401,7 @@ dev-python/vecrec 0.3.0: 2D vector and rectangle classes
 dev-python/verboselogs 1.7: Verbose logging for Python's logging module
 dev-python/versioneer 0.19: Easy VCS-based management of project version strings
 dev-python/vine 1.3.0: Python Promises
-dev-python/virtualenv 16.7.10-r1 20.4.0 20.4.2: Virtual Python Environment builder
+dev-python/virtualenv 16.7.10-r1 20.4.0 20.4.2 20.4.3: Virtual Python Environment builder
 dev-python/virtualenv-clone 0.5.3: A script for cloning a non-relocatable virtualenv
 dev-python/virtualenvwrapper 4.8.4-r1: Set of extensions to Ian Bicking's virtualenv tool
 dev-python/visitor 0.1.3-r1: A tiny pythonic visitor implementation
@@ -13200,7 +13200,7 @@ media-libs/gstreamer-editing-services 1.16.3: SDK for making video editors and m
 media-libs/guilib 1.2.1-r1: Simple widget set for SDL
 media-libs/gupnp-dlna 0.10.5: Library providing DLNA-related functionality for MediaServers
 media-libs/hamlib 3.3-r1 4.1: Ham radio backend rig control libraries
-media-libs/harfbuzz 2.7.2 2.7.3 2.7.4 9999: An OpenType text shaping engine
+media-libs/harfbuzz 2.7.4 2.8.0 9999: An OpenType text shaping engine
 media-libs/icc-profiles-basiccolor-printing2009 1.2.0: ICC profiles for printing/offset
 media-libs/icc-profiles-openicc 1.3.1: ICC color profiles by OpenICC
 media-libs/icclib 2.14: Library for reading and writing ICC color profile files

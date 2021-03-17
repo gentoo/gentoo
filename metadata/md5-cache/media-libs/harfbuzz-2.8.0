@@ -1,0 +1,17 @@
+BDEPEND=|| ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 ) virtual/pkgconfig doc? ( dev-util/gtk-doc ) introspection? ( dev-util/glib-utils ) >=dev-util/meson-0.54.0 >=dev-util/ninja-1.8.2 dev-util/meson-format-array
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=cairo? ( x11-libs/cairo:= ) glib? ( >=dev-libs/glib-2.38:2[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) graphite? ( >=media-gfx/graphite2-1.2.1:=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) icu? ( >=dev-libs/icu-51.2-r1:=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) introspection? ( >=dev-libs/gobject-introspection-1.34:= ) truetype? ( >=media-libs/freetype-2.5.0.1:2=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) >=dev-libs/gobject-introspection-common-1.34
+DESCRIPTION=An OpenType text shaping engine
+EAPI=7
+HOMEPAGE=https://www.freedesktop.org/wiki/Software/HarfBuzz
+INHERIT=flag-o-matic meson multilib-minimal python-any-r1 xdg-utils
+IUSE=+cairo debug doc +glib +graphite icu +introspection static-libs test +truetype abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_s390_32 abi_s390_64
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=Old-MIT ISC icu
+RDEPEND=cairo? ( x11-libs/cairo:= ) glib? ( >=dev-libs/glib-2.38:2[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) graphite? ( >=media-gfx/graphite2-1.2.1:=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) icu? ( >=dev-libs/icu-51.2-r1:=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) introspection? ( >=dev-libs/gobject-introspection-1.34:= ) truetype? ( >=media-libs/freetype-2.5.0.1:2=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] )
+REQUIRED_USE=introspection? ( glib )
+RESTRICT=!test? ( test )
+SLOT=0/0.9.18
+SRC_URI=https://github.com/harfbuzz/harfbuzz/archive/2.8.0.tar.gz -> harfbuzz-2.8.0.tar.gz
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	meson	e43eef9331f54965a573ed380854ff47	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=7bafdf157bd8dbe9eb7a2ae9497b4e69
