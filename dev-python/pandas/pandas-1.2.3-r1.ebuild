@@ -141,8 +141,8 @@ src_test() {
 
 python_test() {
 	local deselect=(
-		# broken on practically any hardware/CFLAGS but the one
-		# the patch author was using
+		# test for rounding errors, fails if we have better precision
+		# e.g. on amd64 with FMA or on arm64
 		# https://github.com/pandas-dev/pandas/issues/38921
 		pandas/tests/window/test_rolling.py::test_rolling_var_numerical_issues
 
