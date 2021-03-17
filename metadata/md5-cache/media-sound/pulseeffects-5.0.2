@@ -4,11 +4,12 @@ DEPEND=>=dev-libs/boost-1.41:= >=dev-cpp/glibmm-2.56.0:2 >=dev-cpp/gtkmm-3.24:3.
 DESCRIPTION=Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
 EAPI=7
 HOMEPAGE=https://github.com/wwmm/pulseeffects
+INHERIT=gnome2-utils meson
 IUSE=bs2b calf rubberband
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
 LICENSE=GPL-3
 RDEPEND=>=dev-libs/boost-1.41:= >=dev-cpp/glibmm-2.56.0:2 >=dev-cpp/gtkmm-3.24:3.0 >=dev-libs/glib-2.56:2 >=dev-libs/libsigc++-2.10:2 >=x11-libs/gtk+-3.18:3 >=media-libs/lilv-0.24.2-r1 >=media-libs/lsp-plugins-1.1.24[lv2] >=media-libs/gstreamer-1.12.0:1.0 >=media-libs/gst-plugins-good-1.12.0:1.0 >=media-libs/gst-plugins-bad-1.12.0:1.0 bs2b? ( >=media-plugins/gst-plugins-bs2b-1.12.0:1.0 ) >=media-plugins/gst-plugins-ladspa-1.12.0:1.0 >=media-plugins/gst-plugins-lv2-1.12.0:1.0 calf? ( >=media-plugins/calf-0.90.0[lv2] ) rubberband? ( media-libs/rubberband ) >=media-libs/zita-convolver-3.0.0 media-libs/libebur128 media-video/pipewire[gstreamer] sys-apps/dbus
 SLOT=0
-SRC_URI=https://github.com/wwmm/pulseeffects/archive/v5.0.0.tar.gz -> pulseeffects-5.0.0.tar.gz
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3	l10n	8cdd85e169b835d518bc2fd59f780d8e	meson	e43eef9331f54965a573ed380854ff47	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=43ce058728f07c1bc1d7029b13a43154
+SRC_URI=https://github.com/wwmm/pulseeffects/archive/v5.0.2.tar.gz -> pulseeffects-5.0.2.tar.gz
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	meson	e43eef9331f54965a573ed380854ff47
+_md5_=15152a1ccf174f39b7ba8a6ae904551f

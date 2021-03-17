@@ -613,8 +613,8 @@ app-admin/abrt 2.14.2: Automatic bug detection and reporting tool
 app-admin/aerospike-amc-community 4.0.19-r1: Web UI based monitoring tool for Aerospike Community Edition Server
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0.13: A webserver log analyzer
-app-admin/ansible 2.10.5 2.10.6 9999: Model-driven deployment, config management, and command execution framework
-app-admin/ansible-base 2.10.4 2.10.5: Model-driven deployment, config management, and command execution framework
+app-admin/ansible 2.10.5 2.10.6 2.10.7 9999: Model-driven deployment, config management, and command execution framework
+app-admin/ansible-base 2.10.4 2.10.5 2.10.7: Model-driven deployment, config management, and command execution framework
 app-admin/ansible-cmdb 1.28 1.30: Ansible Configuration Management Database
 app-admin/ansible-lint 4.0.1 4.1.0 5.0.2: Checks ansible playbooks for practices and behaviour that can be improved
 app-admin/ansible-modules-hashivault 4.6.2: Ansible module for hashicorp vault
@@ -14044,7 +14044,7 @@ media-sound/ptabtools 0.5.0: Utilities for PowerTab Guitar files (.ptb)
 media-sound/pulseaudio 13.0 13.0-r1: A networked sound server with an advanced plugin system
 media-sound/pulseaudio-ctl 1.67 1.68 1.69: CLI utility to control PulseAudio volume
 media-sound/pulseaudio-modules-bt 1.4 9999: PulseAudio modules for LDAC, aptX, aptX HD, and AAC for Bluetooth
-media-sound/pulseeffects 4.7.2-r2 4.8.4-r1 5.0.0-r1 5.0.1 9999: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
+media-sound/pulseeffects 4.7.2-r2 4.8.4-r1 5.0.1 5.0.2 9999: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
 media-sound/pulsemixer 1.5.1 9999: CLI and curses mixer for PulseAudio
 media-sound/pwavecat 0.4.5: concatenates any number of audio files to stdout
 media-sound/qastools 0.23.0: Qt5 GUI ALSA tools: mixer, configuration browser
@@ -17404,7 +17404,7 @@ sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
 sys-cluster/neutron 16.3.0 17.1.0 2020.1.9999 2020.2.9999: A virtual network service for Openstack
 sys-cluster/nomad 1.0.4: A simple and flexible workload orchestrator
-sys-cluster/nova 21.1.2 22.1.0 2020.1.9999 2020.2.9999: Cloud computing fabric controller
+sys-cluster/nova 21.1.2 21.2.0 22.1.0 22.2.0 2020.1.9999 2020.2.9999: Cloud computing fabric controller
 sys-cluster/nullmpi 0.7: MPI substitute library
 sys-cluster/onesis 2.0.2: Diskless computing made easy
 sys-cluster/openmpi 1.4.5 1.6.5-r1 1.7.5-r1 1.8.8 1.10.7 2.0.4 2.1.6 3.0.4 3.1.4 4.0.2 4.0.3 4.0.4 4.0.5: A high-performance message passing library (MPI)
