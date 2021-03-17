@@ -33,6 +33,10 @@ RDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-9.4.0-sparc_privsep.patch" #776178
+)
+
 src_configure() {
 	local myeconfargs=(
 		--dbdir="${EPREFIX}/var/lib/dhcpcd"
