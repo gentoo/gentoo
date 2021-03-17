@@ -1,0 +1,16 @@
+BDEPEND=>=app-text/scdoc-1.9.7 >=dev-util/meson-0.54.0 >=dev-util/ninja-1.8.2 dev-util/meson-format-array virtual/pkgconfig
+DEFINED_PHASES=compile configure install test
+DEPEND=elogind? ( sys-auth/elogind ) systemd? ( sys-apps/systemd )
+DESCRIPTION=Minimal seat management daemon and universal library
+EAPI=7
+HOMEPAGE=https://sr.ht/~kennylevinsen/seatd
+INHERIT=meson systemd
+IUSE=elogind systemd
+KEYWORDS=~amd64 ~arm64 ~ppc64 ~x86
+LICENSE=MIT
+RDEPEND=elogind? ( sys-auth/elogind ) systemd? ( sys-apps/systemd )
+REQUIRED_USE=?? ( elogind systemd )
+SLOT=0/1
+SRC_URI=https://git.sr.ht/~kennylevinsen/seatd/archive/0.5.0.tar.gz -> seatd-0.5.0.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	meson	e43eef9331f54965a573ed380854ff47	systemd	74b223e42834adf09a2d21fe5fe13741
+_md5_=9fb398337cd9ad49d2b4b7846815571f
