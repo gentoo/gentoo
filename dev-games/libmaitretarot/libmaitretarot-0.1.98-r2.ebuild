@@ -16,11 +16,21 @@ RDEPEND="dev-libs/glib:2
 	dev-libs/libxml2"
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.1.98-libdir.patch
+)
+
 src_configure() {
 	econf --disable-static
 }
 
 src_install() {
 	default
+
+	# Needed for consumers like dev-games/libmt_client
+	# bug #729734
+	insinto /usr/share/aclocal
+	doins libmaitretarot.m4
+
 	find "${ED}" -name '*.la' -delete || die
 }
