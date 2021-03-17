@@ -1,8 +1,9 @@
 BDEPEND=python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_9? ( dev-lang/python:3.9 >=dev-lang/python-exec-2:=[python_targets_python3_9] ) python_single_target_python3_7? ( >=dev-python/setuptools-42.0.2[python_targets_python3_7(-)] ) python_single_target_python3_8? ( >=dev-python/setuptools-42.0.2[python_targets_python3_8(-)] ) python_single_target_python3_9? ( >=dev-python/setuptools-42.0.2[python_targets_python3_9(-)] ) virtual/pkgconfig
 DEFINED_PHASES=compile configure install postinst preinst prepare setup test
-DESCRIPTION=scans log files and bans IPs that show malicious signs
+DESCRIPTION=Scans log files and bans IPs that show malicious signs
 EAPI=7
 HOMEPAGE=https://www.fail2ban.org/
+INHERIT=bash-completion-r1 distutils-r1 systemd tmpfiles
 IUSE=selinux systemd python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9
 KEYWORDS=~alpha amd64 arm ~arm64 hppa ppc ppc64 sparc x86
 LICENSE=GPL-2
@@ -11,5 +12,5 @@ REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_8 
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/fail2ban/fail2ban/archive/0.11.2.tar.gz -> fail2ban-0.11.2.tar.gz
-_eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	distutils-r1	16579e06f8839831bd5c03455bb87e3f	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	systemd	74b223e42834adf09a2d21fe5fe13741	tmpfiles	dc8e4917d734a019caa04ad3b8db560b	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=3bbb81c3ce1ddab0b5fa977dc47cde1b
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	be99724bde4274de21e581204e9d164a	multiprocessing	cac3169468f893670dac3e7cb940e045	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-single-r1	d3100de905f978df912135806cf27188	distutils-r1	16579e06f8839831bd5c03455bb87e3f	systemd	74b223e42834adf09a2d21fe5fe13741	tmpfiles	dc8e4917d734a019caa04ad3b8db560b
+_md5_=f0ca5f73664bf10222f8d203cb36caf1

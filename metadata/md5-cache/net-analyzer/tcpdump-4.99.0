@@ -1,9 +1,10 @@
 BDEPEND=drop-root? ( virtual/pkgconfig ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install postinst prepare test
 DEPEND=net-libs/libpcap drop-root? ( acct-group/pcap acct-user/pcap sys-libs/libcap-ng ) smi? ( net-libs/libsmi ) ssl? ( !libressl? ( >=dev-libs/openssl-0.9.6m:0= ) libressl? ( dev-libs/libressl:= ) ) suid? ( acct-group/pcap acct-user/pcap ) test? ( >=net-libs/libpcap-1.9.1 dev-lang/perl )
-DESCRIPTION=A Tool for network monitoring and data acquisition
+DESCRIPTION=A tool for network monitoring and data acquisition
 EAPI=7
 HOMEPAGE=https://www.tcpdump.org/ https://github.com/the-tcpdump-group/tcpdump
+INHERIT=autotools
 IUSE=+drop-root libressl +smi +ssl +samba suid test
 KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux
 LICENSE=BSD
@@ -12,5 +13,5 @@ REQUIRED_USE=test? ( samba )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/the-tcpdump-group/tcpdump/archive/tcpdump-4.99.0.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=4806c72987e1df9b8b1426d41859b18f
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9988ecbe04129214297a7bbf3d253710
+_md5_=f51d8d6c16c250bce38d8dffd4192fb3

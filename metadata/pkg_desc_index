@@ -5247,7 +5247,7 @@ dev-lang/mono 6.6.0.161 6.10.0.104: Mono runtime and class libraries, a C# compi
 dev-lang/mono-basic 4.8: Visual Basic Compiler and Runtime
 dev-lang/mozart 2.0.1: Advanced development platform for intelligent, distributed applications
 dev-lang/mozart-stdlib 2.0.1: The Mozart Standard Library
-dev-lang/mujs 1.0.9 1.1.0: An embeddable Javascript interpreter in C.
+dev-lang/mujs 1.0.9 1.1.0: An embeddable JavaScript interpreter in C
 dev-lang/nasm 2.15.05: groovy little assembler
 dev-lang/nim 1.4.4: compiled, garbage-collected systems programming language
 dev-lang/nqp 2020.05 2020.06 2020.07 2020.08 2020.09 2020.10 2020.11 2020.12 2021.02 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
@@ -13130,7 +13130,7 @@ media-libs/audiofile 0.3.6-r4: An elegant API for accessing audio files
 media-libs/avidemux-core 2.7.6: Core libraries for simple video cutting, filtering and encoding tasks
 media-libs/avidemux-plugins 2.7.6: Plugins for the video editor media-video/avidemux
 media-libs/babl 0.1.84 9999: A dynamic, any to any, pixel format conversion library
-media-libs/bcg729 1.1.1: encoder and decoder of the ITU G729 Annex A/B speech codec
+media-libs/bcg729 1.1.1: Encoder and decoder of the ITU G729 Annex A/B speech codec
 media-libs/bio2jack 0.9-r2: A library for porting blocked I/O OSS/ALSA audio applications to JACK
 media-libs/blib 1.1.7-r2: blib is a library full of useful things to hack the Blinkenlights
 media-libs/cal3d 0.11.0-r1: Cal3D is a skeletal based character animation library
@@ -14380,7 +14380,7 @@ net-analyzer/egressor 1.0-r2: tool for checking router configuration
 net-analyzer/etherape 0.9.19: A graphical network monitor for Unix modeled after etherman
 net-analyzer/ethloop 10-r4: Local simulator for testing Linux QoS disciplines
 net-analyzer/ettercap 0.8.3.1 9999: A suite for man in the middle attacks
-net-analyzer/fail2ban 0.11.2 9999: scans log files and bans IPs that show malicious signs
+net-analyzer/fail2ban 0.11.2 9999: Scans log files and bans IPs that show malicious signs
 net-analyzer/firewalk 5.0-r2: A tool for determining a firewall's rule set
 net-analyzer/flent 1.3.2: The FLExible Network Tester
 net-analyzer/flow-tools 0.68.6-r1: library and programs to process reports from NetFlow data
@@ -14475,7 +14475,7 @@ net-analyzer/ndsad 1.33-r2: Cisco netflow probe from libpcap, ULOG, tee/divert s
 net-analyzer/nessus-agent-bin 8.2.1: A remote security scanner for Linux - agent component
 net-analyzer/nessus-bin 8.13.1: A remote security scanner for Linux
 net-analyzer/net-snmp 5.9-r2 5.9-r3 99999999: Software for generating and retrieving SNMP data
-net-analyzer/netcat 110-r9 110.20180111-r1: the network swiss army knife
+net-analyzer/netcat 110-r9 110.20180111-r1: The network swiss army knife
 net-analyzer/netdata 1.29.0 1.29.1 1.29.2 1.29.3 9999: Linux real time system monitoring, done right!
 net-analyzer/netdiscover 0.7: An active/passive address reconnaissance tool
 net-analyzer/nethogs 0.8.6-r1: A small 'net top' tool, grouping bandwidth by process
@@ -14572,7 +14572,7 @@ net-analyzer/suricata 5.0.6 6.0.2: High performance Network IDS, IPS and Network
 net-analyzer/symon 2.88: Performance and information monitoring tool
 net-analyzer/synscan 5.02: A fast asynchronous half-open TCP portscanner
 net-analyzer/syweb 0.65: Web frontend to symon
-net-analyzer/tcpdump 4.9.3-r4 4.99.0 9999: A Tool for network monitoring and data acquisition
+net-analyzer/tcpdump 4.9.3-r4 4.99.0 9999: A tool for network monitoring and data acquisition
 net-analyzer/tcpflow 1.6.1: A tool for monitoring, capturing and storing TCP connections flows
 net-analyzer/tcping 1.3.6: Check if a desired port is reachable via TCP
 net-analyzer/tcpreen 1.4.4: TCP network re-engineering tool
