@@ -5,7 +5,7 @@ EAPI=7
 
 inherit autotools
 
-DESCRIPTION="A Tool for network monitoring and data acquisition"
+DESCRIPTION="A tool for network monitoring and data acquisition"
 HOMEPAGE="https://www.tcpdump.org/ https://github.com/the-tcpdump-group/tcpdump"
 SRC_URI="https://github.com/the-tcpdump-group/${PN}/archive/${P/_}.tar.gz"
 S="${WORKDIR}/${PN}-${P/_}"
