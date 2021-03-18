@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,6 +12,7 @@ EGIT_BRANCH="surf-webkit2"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
+IUSE="tabbed"
 
 COMMON_DEPEND="
 	app-crypt/gcr[gtk]
@@ -33,6 +34,7 @@ RDEPEND="
 		x11-apps/xprop
 		x11-terms/st
 	)
+	tabbed? ( x11-misc/tabbed )
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-9999-gentoo.patch
@@ -61,6 +63,10 @@ src_prepare() {
 
 src_install() {
 	default
+
+	if use tabbed; then
+		dobin surf-open.sh
+	fi
 
 	save_config config.h
 }
