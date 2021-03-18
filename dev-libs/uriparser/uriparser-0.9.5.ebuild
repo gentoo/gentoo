@@ -24,6 +24,7 @@ BDEPEND="
 	virtual/pkgconfig
 	doc? (
 		>=app-doc/doxygen-1.5.8
+		media-gfx/graphviz
 		qt5? ( dev-qt/qthelp:5 )
 	)
 "
