@@ -6,7 +6,7 @@ EAPI=7
 inherit kernel-build
 
 MY_P=linux-${PV%.*}
-GENPATCHES_P=genpatches-${PV%.*}-$(( ${PV##*.} + 1 ))
+GENPATCHES_P=genpatches-${PV%.*}-$(( ${PV##*.} + 2 ))
 # https://koji.fedoraproject.org/koji/packageinfo?packageID=8
 CONFIG_VER=5.11.7
 CONFIG_HASH=ee22e4872dec1ab1f08fabe765e18b945ebcc29e
