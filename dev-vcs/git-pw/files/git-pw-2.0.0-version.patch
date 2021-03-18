@@ -1,0 +1,11 @@
+diff --git a/PKG-INFO b/PKG-INFO
+new file mode 100644
+index 0000000..9748ce5
+--- /dev/null
++++ b/PKG-INFO
+@@ -0,0 +1,5 @@
++Metadata-Version: 2.1
++Name: git-pw
++Version: 2.0.0
++Summary: A tool for integrating Git with Patchwork
++Home-page: https://github.com/getpatchwork/git-pw
