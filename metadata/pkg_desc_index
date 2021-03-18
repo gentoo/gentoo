@@ -15341,7 +15341,7 @@ net-misc/netpipe 1.0.0_beta2-r2: tool to reliably distribute binary data using U
 net-misc/netpipes 4.2-r2: Tools to manipulate BSD TCP/IP stream sockets
 net-misc/netsed 0.01b-r1 1.3: Small tool for altering forwarded network data in real time
 net-misc/netstat-nat 1.4.10: Display NAT connections
-net-misc/networkmanager 1.22.10-r12 1.26.4 1.26.6 1.28.0-r1: A set of co-operative tools that make networking simple and straightforward
+net-misc/networkmanager 1.22.10-r12 1.26.4 1.26.6 1.28.0-r1 1.30.2: A set of co-operative tools that make networking simple and straightforward
 net-misc/nextcloud-client 2.6.5 3.1.1 3.1.1-r1 3.1.2 3.1.3: Desktop Syncing Client for Nextcloud
 net-misc/nicstat 1.95: Network traffic statics utility for Solaris and Linux
 net-misc/npapi-sdk 0.27.2 9999: NPAPI headers bundle
