@@ -2610,7 +2610,7 @@ app-misc/muttprint 0.73-r5: Script for pretty printing of your mails
 app-misc/mvcase 0.1-r2: A modified version of mv, used to convert filenames to lower/upper case
 app-misc/mx5000tools 0.1.2-r1: Tools for controlling the LCD on a Logitech MX5000 keyboard
 app-misc/neofetch 7.1.0 9999: Simple information system script
-app-misc/nnn 1.9 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8.1 2.9 3.0 3.1 3.2 3.3 3.4 3.5: The missing terminal file browser for X
+app-misc/nnn 1.9 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8.1 2.9 3.0 3.1 3.2 3.3 3.4 3.5 3.6: The missing terminal file browser for X
 app-misc/no-more-secrets 0.3.3 9999: Recreate decrypting text from 1992 movie 'Sneakers'
 app-misc/notary 0.6.1-r1: A project that allows anyone to have trust over arbitrary collections of data
 app-misc/note 1.3.26: A note taking perl program
@@ -4833,7 +4833,7 @@ dev-java/guava 20.0: A collection of Google's core Java libraries
 dev-java/guice 4.1: A lightweight dependency injection framework for Java 5 and above
 dev-java/gwt 2.8.2: Google Web Toolkit library
 dev-java/hamcrest-core 1.1-r3 1.3-r1: Core library of matchers for building test expressions
-dev-java/hamcrest-generator 1.3-r2: Code generator for Hamcrest's library of matchers for building test expressions
+dev-java/hamcrest-generator 1.3-r2 1.3-r3: Code generator for Hamcrest's library of matchers for building test expressions
 dev-java/hamcrest-integration 1.3: Integration library of hamcrest
 dev-java/hamcrest-library 1.3-r1: Core library of matchers for building test expressions
 dev-java/hawtjni-runtime 1.10 1.15: A JNI code generator based on the generator used by the Eclipse SWT project
