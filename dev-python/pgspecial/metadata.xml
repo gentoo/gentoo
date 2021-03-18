@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person" proxied="yes">
-		<email>andreacerisara@gmail.com</email>
-		<name>Andrea Cerisara</name>
-	</maintainer>
-	<maintainer type="project" proxied="proxy">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription>
 		PGSpecial provides an API to execute meta-commands
 		(AKA "special", or "backslash commands") on PostgreSQL.
