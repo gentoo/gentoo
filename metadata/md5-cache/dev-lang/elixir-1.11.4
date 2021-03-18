@@ -1,0 +1,13 @@
+DEFINED_PHASES=install
+DEPEND=>=dev-lang/erlang-21:0=[ssl] test? ( dev-vcs/git )
+DESCRIPTION=Elixir programming language
+EAPI=7
+HOMEPAGE=https://elixir-lang.org
+IUSE=test
+KEYWORDS=~amd64 ~arm ~arm64 ~ia64 ~ppc ~sparc ~x86
+LICENSE=Apache-2.0 ErlPL-1.1
+RDEPEND=>=dev-lang/erlang-21:0=[ssl] !!sci-biology/phylip
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/elixir-lang/elixir/archive/v1.11.4.tar.gz -> elixir-1.11.4.tar.gz
+_md5_=07002b1b115d7f91a39b94cc5ba903a8
