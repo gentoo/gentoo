@@ -13658,7 +13658,7 @@ media-plugins/kodi-pvr-pctv 5.0.0 6.0.0 9999: Kodi's PCTV client addon
 media-plugins/kodi-pvr-stalker 6.0.0 6.0.1 6.0.2 7.0.0 9999: Kodi's Stalker client addon
 media-plugins/kodi-pvr-vbox 7.0.0 7.0.1 7.0.2 7.0.3 8.0.0 9999: Kodi's VBox Home TV Gateway PVR client addon
 media-plugins/kodi-pvr-vdr-vnsi 8.2.2 9999: Kodi PVR addon VNSI
-media-plugins/kodi-pvr-vuplus 7.3.3 7.4.0 9999: Kodi's VuPlus client addon
+media-plugins/kodi-pvr-vuplus 7.4.1 9999: Kodi's VuPlus client addon
 media-plugins/kodi-pvr-wmc 6.1.1 9999: Kodi's Windows Media Center client addon
 media-plugins/kodi-screensaver-asteroids 2.4.2-r1 9999: Asteroids screensaver for Kodi
 media-plugins/kodi-screensaver-biogenesis 2.3.2-r1 9999: Biogenesis screensaver for Kodi
