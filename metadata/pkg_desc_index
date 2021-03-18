@@ -18151,7 +18151,7 @@ www-client/google-chrome-beta 90.0.4430.19: The web browser from Google
 www-client/google-chrome-unstable 91.0.4442.4: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
-www-client/links 2.21: A fast and lightweight web browser running in both graphics and text mode
+www-client/links 2.21 2.22: A fast and lightweight web browser running in both graphics and text mode
 www-client/luakit 2.2.1-r100 9999: A fast, extensible, and customizable web browser
 www-client/lynx 2.9.0_pre6-r1: An excellent console-based web browser with ssl support
 www-client/microsoft-edge-dev 90.0.796.0 90.0.803.0 90.0.810.1: The web browser from Microsoft
