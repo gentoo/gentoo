@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 command="/usr/bin/vde_switch"
@@ -19,7 +19,7 @@ start_pre() {
 start() {
 	VDE_SOCKET="${VDE_SOCKET:-/run/${RC_SVCNAME}.ctl}"
 
-	ebegin "Starting ${SVC_NAME}"
+	ebegin "Starting ${RC_SVCNAME}"
 
 	start-stop-daemon --start --exec ${command} -- \
 		--pidfile=${pidfile} \
