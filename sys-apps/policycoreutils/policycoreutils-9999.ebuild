@@ -1,19 +1,14 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-PYTHON_COMPAT=( python3_{7..9} )
+EAPI="7"
+PYTHON_COMPAT=( python{3_7,3_8,3_9} )
 PYTHON_REQ_USE="xml"
 
 inherit multilib python-r1 toolchain-funcs bash-completion-r1
 
 MY_P="${P//_/-}"
-
-MY_RELEASEDATE="20200710"
 EXTRAS_VER="1.37"
-SEMNG_VER="${PV}"
-SELNX_VER="${PV}"
-SEPOL_VER="${PV}"
 
 IUSE="audit pam split-usr"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -29,7 +24,7 @@ if [[ ${PV} == 9999 ]]; then
 	S2="${WORKDIR}/policycoreutils-extra"
 	S="${S1}"
 else
-	SRC_URI="https://github.com/SELinuxProject/selinux/releases/download/${MY_RELEASEDATE}/${MY_P}.tar.gz
+	SRC_URI="https://github.com/SELinuxProject/selinux/releases/download/${PV}/${MY_P}.tar.gz
 		https://dev.gentoo.org/~perfinion/distfiles/policycoreutils-extra-${EXTRAS_VER}.tar.bz2"
 	KEYWORDS="~amd64 ~arm64 ~mips ~x86"
 	S1="${WORKDIR}/${MY_P}"
@@ -40,9 +35,9 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-DEPEND=">=sys-libs/libselinux-${SELNX_VER}:=[python,${PYTHON_USEDEP}]
-	>=sys-libs/libsemanage-${SEMNG_VER}:=[python(+),${PYTHON_USEDEP}]
-	>=sys-libs/libsepol-${SEPOL_VER}:=
+DEPEND=">=sys-libs/libselinux-${PV}:=[python,${PYTHON_USEDEP}]
+	>=sys-libs/libsemanage-${PV}:=[python(+),${PYTHON_USEDEP}]
+	>=sys-libs/libsepol-${PV}:=
 	sys-libs/libcap-ng:=
 	>=app-admin/setools-4.2.0[${PYTHON_USEDEP}]
 	audit? ( >=sys-process/audit-1.5.1[python,${PYTHON_USEDEP}] )
