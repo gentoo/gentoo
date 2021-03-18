@@ -14660,7 +14660,7 @@ net-dns/dnssec-root 20181220-r1: The DNSSEC root key(s)
 net-dns/dnssec-tools 2.2.3-r2: Tools to ease the deployment of DNSSEC related technologies
 net-dns/dnssec-validator 2.2.3: Tools to ease the validation of DNSSEC related technologies
 net-dns/dnstop 20140915-r2: Displays various tables of DNS traffic on your network
-net-dns/dnsviz 0.8.2 0.8.2-r1 0.9.1 0.9.2: Tool suite for analysis and visualization of DNS and DNSSEC
+net-dns/dnsviz 0.8.2 0.8.2-r1 0.9.1 0.9.2 0.9.3: Tool suite for analysis and visualization of DNS and DNSSEC
 net-dns/dnswalk 2.0.2: dnswalk is a DNS database debugger
 net-dns/dog 0.1.0: A command-line DNS client like dig
 net-dns/ez-ipupdate 3.0.11.13.3_beta8-r3: Dynamic DNS client for lots of dynamic dns services
