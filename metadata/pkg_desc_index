@@ -15463,7 +15463,7 @@ net-misc/usbip 4.13-r1: Userspace utilities for a general USB device sharing sys
 net-misc/utelnetd 0.1.11-r2: A small Telnet daemon, derived from the Axis tools
 net-misc/valve 1.0-r1: Copy data while enforcing a specified maximum transfer rate
 net-misc/vconfig 1.9: 802.1Q vlan control utility
-net-misc/vde 2.3.2-r6 2.3.2_p20191011 9999: Virtual distributed ethernet emulator for emulators like qemu, bochs, and uml
+net-misc/vde 2.3.2-r6 2.3.2_p20191011 2.3.2_p20191011-r1 9999: Virtual distributed ethernet emulator for emulators like qemu, bochs, and uml
 net-misc/vinagre 3.22.0-r3: VNC client for the GNOME desktop
 net-misc/vino 3.22.0-r3: An integrated VNC server for GNOME
 net-misc/vmnet 0.4: A simple virtual networking program - SLIP over stdin/out
