@@ -204,7 +204,6 @@ media-sound/pulseaudio native-headset
 # This is not available on some arches, where a fallback to PCRE1 without JIT is used.
 # Since >=dev-vcs/git-2.31.0 pcre1 support has been dropped from git.
 <dev-vcs/git-2.31.0 pcre-jit
->=dev-vcs/git-2.31.0 pcre
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2017-07-20)
 # pulls in unkeyworded java

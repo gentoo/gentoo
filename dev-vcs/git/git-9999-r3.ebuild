@@ -13,7 +13,7 @@ inherit toolchain-funcs elisp-common l10n perl-module bash-completion-r1 python-
 PLOCALES="bg ca de es fr is it ko pt_PT ru sv vi zh_CN"
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://git.kernel.org/pub/scm/git/git.git"
+	EGIT_REPO_URI="https://git.kernel.org/pub/scm/git/git.git"
 	# Please ensure that all _four_ 9999 ebuilds get updated; they track the 4 upstream branches.
 	# See https://git-scm.com/docs/gitworkflows#_graduation
 	# In order of stability:
@@ -59,7 +59,7 @@ DEPEND="
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:= )
 	sys-libs/zlib
-	pcre? ( dev-libs/libpcre2[jit(+)] )
+	pcre? ( dev-libs/libpcre2 )
 	perl? ( dev-lang/perl:=[-build(-)] )
 	tk? ( dev-lang/tk:0= )
 	curl? (
@@ -259,6 +259,11 @@ src_prepare() {
 	fi
 
 	default
+
+	if use prefix ; then
+		# bug #757309
+		eapply "${FILESDIR}"/git-2.31.0-darwin-prefix-gettext.patch
+	fi
 
 	sed -i \
 		-e 's:^\(CFLAGS[[:space:]]*=\).*$:\1 $(OPTCFLAGS) -Wall:' \

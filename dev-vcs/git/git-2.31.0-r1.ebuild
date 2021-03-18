@@ -59,7 +59,7 @@ DEPEND="
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:= )
 	sys-libs/zlib
-	pcre? ( dev-libs/libpcre2[jit(+)] )
+	pcre? ( dev-libs/libpcre2 )
 	perl? ( dev-lang/perl:=[-build(-)] )
 	tk? ( dev-lang/tk:0= )
 	curl? (
@@ -259,6 +259,11 @@ src_prepare() {
 	fi
 
 	default
+
+	if use prefix ; then
+		# bug #757309
+		eapply "${FILESDIR}"/git-2.31.0-darwin-prefix-gettext.patch
+	fi
 
 	sed -i \
 		-e 's:^\(CFLAGS[[:space:]]*=\).*$:\1 $(OPTCFLAGS) -Wall:' \

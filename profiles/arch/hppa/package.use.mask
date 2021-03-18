@@ -194,7 +194,6 @@ net-libs/gnutls test-full
 # This is not available on some arches, where a fallback to PCRE1 without JIT is used.
 # Since >=dev-vcs/git-2.31.0 pcre1 support has been dropped from git.
 <dev-vcs/git-2.31.0 pcre-jit
->=dev-vcs/git-2.31.0 pcre
 
 # Michał Górny <mgorny@gentoo.org> (2017-06-28)
 # app-misc/dtach is not keyworded, and tests are restricted anyway, so
