@@ -3,6 +3,7 @@
 
 EAPI="7"
 PYTHON_COMPAT=( python{3_7,3_8,3_9} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
 
@@ -25,6 +26,7 @@ S="${WORKDIR}/${PN}"
 
 RDEPEND="${PYTHON_DEPS}
 	>=dev-python/networkx-2.0[${PYTHON_USEDEP}]
+	dev-python/setuptools
 	>=sys-libs/libsepol-2.8:=
 	>=sys-libs/libselinux-2.8:=
 	X? (
@@ -32,6 +34,7 @@ RDEPEND="${PYTHON_DEPS}
 	)"
 DEPEND="${RDEPEND}"
 BDEPEND=">=dev-python/cython-0.27
+	dev-python/setuptools
 	test? (
 		sys-apps/checkpolicy
 	)"
@@ -41,7 +44,7 @@ python_prepare_all() {
 	sed -i "s@^lib_dirs = .*@lib_dirs = ['${ROOT:-/}usr/$(get_libdir)']@" "${S}"/setup.py || \
 		die "failed to set lib_dirs"
 
-	use X || local PATCHES=( "${FILESDIR}"/setools-4.3.0-remove-gui.patch )
+	use X || local PATCHES=( "${FILESDIR}"/setools-4.4.0-remove-gui.patch )
 	distutils-r1_python_prepare_all
 }
 
