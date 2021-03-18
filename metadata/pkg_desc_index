@@ -9951,13 +9951,13 @@ dev-ruby/astrolabe 1.3.1-r1: An object-oriented AST extension for Parser
 dev-ruby/async_sinatra 1.3.0: Asynchronous response API for Sinatra and Thin
 dev-ruby/atomic 1.1.101: An atomic reference implementation for JRuby, Rubinius, and MRI
 dev-ruby/autoprefixer-rails 9.8.6.5 10.0.1.1 10.2.4.0: Add vendor prefixes to CSS rules using values from the Can I Use website
-dev-ruby/aws-eventstream 1.1.0: Amazon Web Services event stream library
+dev-ruby/aws-eventstream 1.1.0 1.1.1: Amazon Web Services event stream library
 dev-ruby/aws-partitions 1.297.0 1.298.0 1.370.0: Provides interfaces to enumerate AWS partitions, regions, and services
 dev-ruby/aws-s3 0.6.3: Client library for Amazon's Simple Storage Service's REST API
 dev-ruby/aws-sdk 2.11.488: Official SDK for Amazon Web Services
 dev-ruby/aws-sdk-core 2.11.488 3.94.0: Provides API clients for AWS
 dev-ruby/aws-sdk-resources 2.11.488: Official SDK for Amazon Web Services
-dev-ruby/aws-sigv4 1.1.2 1.1.4: Amazon Web Services Signature Version 4 signing library
+dev-ruby/aws-sigv4 1.1.2 1.1.4 1.2.3: Amazon Web Services Signature Version 4 signing library
 dev-ruby/axiom-types 0.1.1: Define types with optional constraints for use within axiom and other libraries
 dev-ruby/backports 3.15.0 3.17.2 3.18.2 3.20.1 3.20.2: Backports of Ruby features for older Ruby
 dev-ruby/bacon 1.2.0-r2 1.2.0-r3: Small RSpec clone weighing less than 350 LoC
@@ -10359,7 +10359,7 @@ dev-ruby/rspec-expectations 2.99.2 3.8.4 3.8.6 3.9.4 3.10.0 3.10.1: A Behaviour 
 dev-ruby/rspec-its 1.2.0-r1 1.3.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-json_expectations 2.2.0: Set of matchers and helpers to allow you test your APIs responses.
 dev-ruby/rspec-mocks 2.99.2 3.8.1 3.8.2 3.9.1 3.10.0 3.10.1 3.10.2: A Behaviour Driven Development (BDD) framework for Ruby
-dev-ruby/rspec-rails 3.8.3 3.9.1 4.0.1 4.0.2: RSpec's official Ruby on Rails plugin
+dev-ruby/rspec-rails 3.8.3 3.9.1 4.0.1 4.0.2 4.1.2: RSpec's official Ruby on Rails plugin
 dev-ruby/rspec-retry 0.6.2: Retry intermittently failing rspec examples
 dev-ruby/rspec-stubbed_env 1.0.0: Stub environment variables in a scoped context for testing
 dev-ruby/rspec-support 3.8.2 3.8.3 3.9.4 3.10.0 3.10.1 3.10.2: A Behaviour Driven Development (BDD) framework for Ruby
