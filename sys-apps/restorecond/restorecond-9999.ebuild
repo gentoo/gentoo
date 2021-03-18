@@ -5,19 +5,15 @@ EAPI="7"
 
 inherit systemd toolchain-funcs
 
-MY_RELEASEDATE="20200710"
-
-MY_P="${P//_/-}"
 IUSE=""
 
 if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/SELinuxProject/selinux.git"
-	S="${WORKDIR}/${MY_P}/${PN}"
+	S="${WORKDIR}/${P}/${PN}"
 else
-	SRC_URI="https://github.com/SELinuxProject/selinux/releases/download/${MY_RELEASEDATE}/${MY_P}.tar.gz"
+	SRC_URI="https://github.com/SELinuxProject/selinux/releases/download/${PV}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
-	S="${WORKDIR}/${MY_P}"
 fi
 
 DESCRIPTION="Daemon to watch for creation and set default SELinux fcontexts"
