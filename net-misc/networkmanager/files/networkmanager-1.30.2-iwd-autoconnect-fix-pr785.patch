@@ -1,0 +1,58 @@
+From 4409900f1d05bf60647492a75e478590647b997a Mon Sep 17 00:00:00 2001
+From: Andrew Zaborowski <andrew.zaborowski@intel.com>
+Date: Thu, 18 Mar 2021 00:21:31 +0100
+Subject: [PATCH] iwd: Don't call IWD methods when device unmanaged
+
+When using IWD-side autoconnect mode (current default), in .deactivate()
+and .deactivate_async() refrain from commanding IWD to actually
+disconnect until the device is managed.  Likely the device is already
+disconnected but in any case it's up to IWD to decide in this mode.
+
+Calling IWD device's .Disconnect() D-Bus method has the side effect of
+disabling autoconnect and doing this while NM is still in platform-init
+was unexpectedly leaving the device without autoconnect after
+platform-init was done, according to user reports.
+
+Fixes: dc0e31fb7014d8a97aca96bf97a8f86f8236300c
+---
+ src/core/devices/wifi/nm-device-iwd.c | 15 +++++++++++++--
+ 1 file changed, 13 insertions(+), 2 deletions(-)
+
+diff --git a/src/core/devices/wifi/nm-device-iwd.c b/src/core/devices/wifi/nm-device-iwd.c
+index 95ade44b58..01f2a30396 100644
+--- a/src/core/devices/wifi/nm-device-iwd.c
++++ b/src/core/devices/wifi/nm-device-iwd.c
+@@ -588,10 +588,16 @@ deactivate(NMDevice *device)
+             return;
+     }
+ 
+-    cleanup_association_attempt(self, TRUE);
++    cleanup_association_attempt(self, FALSE);
+     priv->act_mode_switch = FALSE;
+ 
+-    if (!priv->dbus_station_proxy)
++    /* Don't trigger any actions on the IWD side until the device is managed */
++    if (priv->iwd_autoconnect && nm_device_get_state(device) < NM_DEVICE_STATE_DISCONNECTED)
++        return;
++
++    if (priv->dbus_station_proxy)
++        send_disconnect(self);
++    else
+         reset_mode(self, NULL, NULL, NULL);
+ }
+ 
+@@ -647,6 +653,11 @@ deactivate_async(NMDevice *                 device,
+     cleanup_association_attempt(self, FALSE);
+     priv->act_mode_switch = FALSE;
+ 
++    if (priv->iwd_autoconnect && nm_device_get_state(device) < NM_DEVICE_STATE_DISCONNECTED) {
++        nm_utils_invoke_on_idle(cancellable, disconnect_cb_on_idle, user_data);
++        return;
++    }
++
+     if (priv->dbus_station_proxy) {
+         g_dbus_proxy_call(priv->dbus_station_proxy,
+                           "Disconnect",
+-- 
+GitLab
+
