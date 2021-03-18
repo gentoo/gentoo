@@ -2402,7 +2402,7 @@ app-laptop/tp_smapi 0.43-r1: IBM ThinkPad SMAPI BIOS driver
 app-laptop/tpacpi-bat 3.0-r1 3.1 9999: Control battery thresholds of recent ThinkPads, not supported by tp_smapi
 app-laptop/tpb 0.6.4-r1: IBM ThinkPad buttons utility
 app-laptop/tuxedo-control-center-bin 1.0.4: Tool to control performance, energy, fan and comfort settings on TUXEDO laptops
-app-laptop/tuxedo-keyboard 2.0.5-r1: Kernel Module for Tuxedo Keyboard
+app-laptop/tuxedo-keyboard 2.0.5-r1 3.0.3: Kernel Module for Tuxedo Keyboard
 app-metrics/alertmanager 0.18.0 0.19.0 0.21.0: Alertmanager for alerts sent by client applications such as Prometheus
 app-metrics/bind_exporter 0.3.0: Prometheus exporter for BIND
 app-metrics/blackbox_exporter 0.15.1 0.16.0 0.17.0: Prometheus exporter for blackbox probing via HTTP, HTTPS, DNS, TCP and ICMP
