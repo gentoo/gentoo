@@ -2872,7 +2872,7 @@ app-shells/ctypes-sh 1.2: Foreign function interface for bash
 app-shells/dash 0.5.11.3-r1: Debian Almquist Shell
 app-shells/dsh 0.25.10-r1: Distributed Shell
 app-shells/esh 0.8.5-r2: A UNIX Shell with a simplified Scheme syntax
-app-shells/fish 3.1.2 3.2.0 9999: Friendly Interactive SHell
+app-shells/fish 3.1.2 3.2.0 3.2.1 9999: Friendly Interactive SHell
 app-shells/fzf 0.25.0 0.25.1: A general-purpose command-line fuzzy finder, written in GoLang
 app-shells/fzy 1.0-r1 9999: Fuzzy text selector (interactive grep) for console
 app-shells/gentoo-bashcomp 20180302 20190211: Gentoo-specific bash command-line completions (emerge, ebuild, equery, etc)
@@ -11112,7 +11112,7 @@ dev-vcs/cvsync 2014.08.24.014706 9999: portable CVS repository synchronization u
 dev-vcs/darcs 2.16.3: a distributed, interactive, smart revision control system
 dev-vcs/easygit 1.7.5.2: Easy GIT (eg), a frontend for git designed for former cvs and svn users
 dev-vcs/fossil 2.12.1 2.13 2.14: Simple, high-reliability, source control management, and more
-dev-vcs/git 2.26.2 2.26.3 2.28.1 2.29.3 2.30.2 2.31.0 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
+dev-vcs/git 2.26.2 2.26.3 2.28.1 2.29.3 2.30.2 2.31.0-r1 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
 dev-vcs/git-annex 8.20200810: manage files with git, without checking their contents into git
 dev-vcs/git-big-picture 1.0.0 1.1.1: Visualization tool for Git repositories
 dev-vcs/git-cola 3.5-r1 3.8 3.9: The highly caffeinated git GUI
