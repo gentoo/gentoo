@@ -280,5 +280,7 @@ src_install() {
 	systemd_dounit "${FILESDIR}/fp-multiuser.service"
 	newinitd "${FILESDIR}/initd" "${PN}"
 	newconfd "${FILESDIR}/confd" "${PN}"
+	insinto /etc/logrotate.d
+	newins "${FILESDIR}/logrotated" "${PN}"
 	dodoc README*.md
 }
