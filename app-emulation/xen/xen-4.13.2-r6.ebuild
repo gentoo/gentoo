@@ -15,8 +15,8 @@ if [[ $PV == *9999 ]]; then
 	EGIT_REPO_URI="git://xenbits.xen.org/xen.git"
 	SRC_URI=""
 else
-	KEYWORDS="amd64 ~arm -x86"
-	UPSTREAM_VER=3
+	KEYWORDS="~amd64 ~arm -x86"
+	UPSTREAM_VER=5
 	SECURITY_VER=
 	GENTOO_VER=
 
@@ -138,7 +138,7 @@ src_install() {
 		mkdir -p "${D}"${EFI_MOUNTPOINT}/efi/${EFI_VENDOR} || die
 	fi
 
-	emake LDFLAGS="$(raw-ldflags)" DESTDIR="${D}" -C xen ${myopt} install
+	emake LDFLAGS="$(raw-ldflags)" LD="$(tc-getLD)" DESTDIR="${D}" -C xen ${myopt} install
 
 	# make install likes to throw in some extra EFI bits if it built
 	use efi || rm -rf "${D}/usr/$(get_libdir)/efi"
