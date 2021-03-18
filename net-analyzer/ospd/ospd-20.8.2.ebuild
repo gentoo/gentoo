@@ -6,8 +6,8 @@ EAPI=7
 PYTHON_COMPAT=( python3_{7,8,9} )
 inherit distutils-r1
 
-DESCRIPTION="Base class for scanner wrappers,communication protocol for GVM"
-HOMEPAGE="https://www.greenbone.net/en/"
+DESCRIPTION="Base class for scanner wrappers, communication protocol for GVM"
+HOMEPAGE="https://www.greenbone.net/en/ https://github.com/greenbone/ospd/"
 SRC_URI="https://github.com/greenbone/ospd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
