@@ -498,6 +498,7 @@ app-emulation/fs-uae:glew - Enable support for The OpenGL Extension Wrangler Lib
 app-emulation/fs-uae-launcher:lha - Enable LHA archive support
 app-emulation/fuse:backend-X - Use X11 rendering backend
 app-emulation/fuse:backend-fbcon - Use framebuffer rendering backend
+app-emulation/fuse:backend-gtk3 - Use Gtk+ rendering backend
 app-emulation/fuse:backend-sdl - Use SDL rendering backend
 app-emulation/fuse:backend-svga - Use svgalib rendering backend
 app-emulation/fuse:memlimit - Add compile-time memory usage limiting

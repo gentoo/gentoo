@@ -1,0 +1,15 @@
+BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure prepare
+DEPEND=>=app-emulation/libspectrum-1.4.4[audiofile?,gcrypt?,zlib?] audiofile? ( >=media-libs/audiofile-0.3.6 ) jpeg? ( virtual/jpeg:0 ) png? ( media-libs/libpng:0 ) zlib? ( sys-libs/zlib )
+DESCRIPTION=Utils for the Free Unix Spectrum Emulator by Philip Kendall
+EAPI=7
+HOMEPAGE=http://fuse-emulator.sourceforge.net
+INHERIT=autotools
+IUSE=audiofile gcrypt jpeg png zlib
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=app-emulation/libspectrum-1.4.4[audiofile?,gcrypt?,zlib?] audiofile? ( >=media-libs/audiofile-0.3.6 ) jpeg? ( virtual/jpeg:0 ) png? ( media-libs/libpng:0 ) zlib? ( sys-libs/zlib )
+SLOT=0
+SRC_URI=mirror://sourceforge/fuse-emulator/fuse-utils-1.4.3.tar.gz
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9988ecbe04129214297a7bbf3d253710
+_md5_=b5ce7c07b95a80cdd3fafbac058a5b62
