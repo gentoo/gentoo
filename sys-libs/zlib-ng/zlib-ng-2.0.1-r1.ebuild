@@ -18,6 +18,8 @@ IUSE="compat ${CPU_USE[@]} test"
 
 RESTRICT="!test? ( test )"
 
+RDEPEND="compat? ( !sys-libs/zlib )"
+
 src_prepare() {
 	cmake_src_prepare
 
@@ -66,4 +68,16 @@ src_configure() {
 	# TODO: There's no s390x USE_EXPAND yet
 
 	cmake_src_configure
+}
+
+src_install() {
+	cmake_src_install
+
+	if use compat ; then
+		ewarn "zlib-ng is experimental and replacing the system zlib is dangerous"
+		ewarn "Please be careful!"
+		ewarn
+		ewarn "The following link explains the guarantees (and what is NOT guaranteed):"
+		ewarn "https://github.com/zlib-ng/zlib-ng/blob/2.0.x/PORTING.md"
+	fi
 }
