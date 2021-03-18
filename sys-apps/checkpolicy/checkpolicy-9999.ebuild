@@ -5,34 +5,27 @@ EAPI="7"
 
 inherit toolchain-funcs
 
-MY_P="${P//_/-}"
-MY_RELEASEDATE="20200710"
-
-SEPOL_VER="${PV}"
-SEMNG_VER="${PV}"
-
 DESCRIPTION="SELinux policy compiler"
 HOMEPAGE="http://userspace.selinuxproject.org"
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/SELinuxProject/selinux.git"
-	S="${WORKDIR}/${MY_P}/${PN}"
+	S="${WORKDIR}/${P}/${PN}"
 else
-	SRC_URI="https://github.com/SELinuxProject/selinux/releases/download/${MY_RELEASEDATE}/${MY_P}.tar.gz"
+	SRC_URI="https://github.com/SELinuxProject/selinux/releases/download/${PV}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
-	S="${WORKDIR}/${MY_P}"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="debug"
 
-DEPEND=">=sys-libs/libsepol-${SEPOL_VER}"
+DEPEND=">=sys-libs/libsepol-${PV}"
 BDEPEND="sys-devel/flex
 	sys-devel/bison"
 
-RDEPEND=">=sys-libs/libsepol-${SEPOL_VER}"
+RDEPEND=">=sys-libs/libsepol-${PV}"
 
 src_compile() {
 	emake \
