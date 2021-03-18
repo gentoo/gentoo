@@ -3656,7 +3656,7 @@ dev-db/percona-toolkit 2.2.20 3.0.9 3.0.13 3.1.0-r1 3.2.1 3.3.0: Advanced comman
 dev-db/percona-xtrabackup 2.4.15 2.4.20 2.4.21 8.0.13 8.0.22.15: Hot backup utility for MySQL based servers
 dev-db/percona-xtrabackup-bin 2.4.13: MySQL hot backup software. non-blocking backups for InnoDB/XtraDB databases
 dev-db/pgFormatter 5.0: PostgreSQL SQL syntax beautifier
-dev-db/pg_activity 1.6.2: Realtime PostgreSQL database server monitoring tool
+dev-db/pg_activity 1.6.2 2.1.3: Realtime PostgreSQL database server monitoring tool
 dev-db/pg_top 4.0.0-r1: 'top' for PostgreSQL
 dev-db/pgadmin4 4.29-r1 4.30-r1: GUI administration and development platform for PostgreSQL
 dev-db/pgagent 4.0.0-r1: pgAgent is a job scheduler for PostgreSQL
