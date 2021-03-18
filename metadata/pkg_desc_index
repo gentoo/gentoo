@@ -8004,7 +8004,7 @@ dev-python/APScheduler 3.6.3: In-process task scheduler with Cron-like capabilit
 dev-python/Babel 2.8.1 2.9.0: Collection of tools for internationalizing Python applications
 dev-python/BitVector 3.4.9 3.4.9-r1: A pure-Python memory-efficient packed representation for bit arrays
 dev-python/CppHeaderParser 2.7.4: Parse C++ header files and generate a data structure
-dev-python/Faker 5.6.5 6.4.1 6.5.1 6.6.0 6.6.1: A Python package that generates fake data for you
+dev-python/Faker 5.6.5 6.4.1 6.5.1 6.6.0 6.6.1 6.6.2: A Python package that generates fake data for you
 dev-python/GitPython 3.1.13 3.1.14: Library used to interact with Git repositories
 dev-python/GridDataFormats 0.5.0: Reading and writing of data on regular grids in Python
 dev-python/MechanicalSoup 0.12.0 1.0.0: A python library for automating interaction with websites
@@ -8346,7 +8346,7 @@ dev-python/flask-restful 0.3.8: Simple framework for creating REST APIs
 dev-python/flask-script 2.0.6: Flask support for writing external scripts
 dev-python/flask-security 3.4.4 3.4.5 4.0.0: Simple security for Flask apps
 dev-python/flask-sphinx-themes 1.0.2: Sphinx Themes for Flask related projects and Flask itself
-dev-python/flask-sqlalchemy 2.4.4: SQLAlchemy support for Flask applications
+dev-python/flask-sqlalchemy 2.4.4-r1 2.5.1: SQLAlchemy support for Flask applications
 dev-python/flask-wtf 0.14.3: Simple integration of Flask and WTForms
 dev-python/flatbuffers 1.12: RFC 7049 - Concise Binary Object Representation
 dev-python/fleep 1.0.1 9999: File format determination library for Python
@@ -9145,7 +9145,7 @@ dev-python/reedsolomon 1.5.4: Pure-Python Reed Solomon encoder/decoder
 dev-python/reflink 0.2.1-r1: Python wrapper around the reflink system calls
 dev-python/regex 2020.4.4-r1 2021.3.17: Alternative regular expression module to replace re
 dev-python/rencode 1.0.6: similar to bencode from the BitTorrent project
-dev-python/reno 3.2.0-r1: Release notes manager, storing release notes in a git repo and building docs
+dev-python/reno 3.2.0-r1 3.3.0: Release notes manager, storing release notes in a git repo and building docs
 dev-python/reportlab 3.5.60 3.5.63 3.5.64 3.5.65: Tools for generating printable PDF documents from any data source
 dev-python/repoze-lru 0.7-r1: A tiny LRU cache implementation and decorator
 dev-python/repoze-sphinx-autointerface 0.8: Sphinx extension: auto-generates API docs from Zope interfaces
