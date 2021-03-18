@@ -17293,7 +17293,7 @@ sys-block/mtx 1.3.12: Utilities for controlling SCSI media changers and tape dri
 sys-block/nbd 3.19 3.20 3.21 9999: Userland client/server for kernel network block device
 sys-block/ndctl 71.1-r1: Helper tools and libraries for managing non-volatile memory on Linux
 sys-block/noflushd 2.8: A daemon to spin down your disks and force accesses to be cached
-sys-block/open-iscsi 2.0.873-r1 2.0.875 2.1.3 2.1.4: A performant, transport independent, multi-platform implementation of RFC3720
+sys-block/open-iscsi 2.0.873-r1 2.0.875 2.1.3 2.1.4-r1: A performant, transport independent, multi-platform implementation of RFC3720
 sys-block/open-isns 0.98 0.99 0.100 0.101: iSNS server and client for Linux
 sys-block/parted 3.4: Create, destroy, resize, check, copy partitions and file systems
 sys-block/partimage 0.6.9-r1: Console-based application to efficiently save raw partition data to image file
