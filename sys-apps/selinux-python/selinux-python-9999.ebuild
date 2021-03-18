@@ -9,11 +9,6 @@ inherit python-r1 toolchain-funcs
 
 MY_P="${P//_/-}"
 
-MY_RELEASEDATE="20200710"
-SEPOL_VER="${PV}"
-SELNX_VER="${PV}"
-SEMNG_VER="${PV}"
-
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DESCRIPTION="SELinux core utilities"
@@ -24,7 +19,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/SELinuxProject/selinux.git"
 	S="${WORKDIR}/${MY_P}/${PN#selinux-}"
 else
-	SRC_URI="https://github.com/SELinuxProject/selinux/releases/download/${MY_RELEASEDATE}/${MY_P}.tar.gz"
+	SRC_URI="https://github.com/SELinuxProject/selinux/releases/download/${PV}/${MY_P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~mips ~x86"
 	S="${WORKDIR}/${MY_P}"
 fi
@@ -32,9 +27,9 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-DEPEND=">=sys-libs/libselinux-${SELNX_VER}:=[python]
-	>=sys-libs/libsemanage-${SEMNG_VER}:=[python(+)]
-	>=sys-libs/libsepol-${SEPOL_VER}:=
+DEPEND=">=sys-libs/libselinux-${PV}:=[python]
+	>=sys-libs/libsemanage-${PV}:=[python(+)]
+	>=sys-libs/libsepol-${PV}:=
 	>=app-admin/setools-4.2.0[${PYTHON_USEDEP}]
 	>=sys-process/audit-1.5.1[python,${PYTHON_USEDEP}]
 	${PYTHON_DEPS}"
