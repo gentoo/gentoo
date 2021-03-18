@@ -15608,7 +15608,7 @@ net-proxy/adzapper 20110915-r2: Redirector for squid to intercept advertising, p
 net-proxy/cntlm 0.93_beta5-r2: Cntlm is an NTLM/NTLMv2 authenticating HTTP proxy
 net-proxy/dante 1.4.1-r2: A free socks4,5 and msproxy implementation
 net-proxy/dnsproxy 1.17: The dnsproxy daemon is a proxy for DNS queries
-net-proxy/haproxy 1.8.28 2.0.14-r2 2.0.20 2.0.9999 2.1.4-r2 2.1.11 2.1.12 2.1.9999 2.2.5-r1 2.2.10 2.2.11 2.2.9999 2.3.6 2.3.7 2.3.9999: A TCP/HTTP reverse proxy for high availability environments
+net-proxy/haproxy 1.8.28 2.0.14-r2 2.0.20 2.0.21 2.0.9999 2.1.4-r2 2.1.11 2.1.12 2.1.9999 2.2.5-r1 2.2.10 2.2.11 2.2.9999 2.3.6 2.3.7 2.3.9999: A TCP/HTTP reverse proxy for high availability environments
 net-proxy/haproxy-dataplaneapi 2.2.0: haproxy dataplane api / sidecar
 net-proxy/hatop 0.8.0: Ncurses client and real-time monitoring and displaying of HAProxy status
 net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
