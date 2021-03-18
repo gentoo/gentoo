@@ -1,6 +1,13 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marek Szuba <marecki@gentoo.org> (2021-03-18)
+# FUSE cannot be built with multiple audio drivers, and desktop/gnome
+# profiles set both USE=pulseaudio (directly) and USE=alsa (inherited
+# from desktop). Default to the latter for now because PulseAudio support
+# in FUSE is currently considered experimental.
+app-emulation/fuse -pulseaudio
+
 # Mart Raudsepp <leio@gentoo.org> (2020-05-08)
 # evolution-data-server requires libical[vala] by default
 dev-libs/libical vala
