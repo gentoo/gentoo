@@ -29,6 +29,6 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" install
-	rm "${ED}/usr/$(get_libdir)"/*.la || die
+	rm -f "${ED}/usr/$(get_libdir)"/*.la || die
 	dodoc AUTHORS ChangeLog* NEWS PORTING README
 }
