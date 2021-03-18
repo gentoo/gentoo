@@ -72,7 +72,7 @@ pkg_setup() {
 src_prepare() {
 	sed -e 's:^\(iscsid.startup\)\s*=.*:\1 = /usr/sbin/iscsid:' \
 		-i etc/iscsid.conf || die
-	sed -e 's@\(/sbin/\)@/usr\1@' \
+	sed -e '/[^usr]\/sbin/s@\(/sbin/\)@/usr\1@' \
 		-i etc/systemd/iscsi* || die
 	default
 
@@ -115,7 +115,7 @@ src_install() {
 
 	local unit
 	local units=(
-		iscsi.service
+		iscsi{,-init}.service
 		iscsid.{service,socket}
 		iscsiuio.{service,socket}
 	)
