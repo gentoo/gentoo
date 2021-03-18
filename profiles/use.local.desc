@@ -8611,6 +8611,7 @@ www-client/seamonkey:system-libevent - Use the system-wide dev-libs/libevent ins
 www-client/seamonkey:system-libvpx - Use the system-wide media-libs/libvpx instead of bundled
 www-client/seamonkey:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
 www-client/surf:savedconfig - Without a saved config.h, this package depends on net-misc/curl and x11-terms/st for a default download mechanism
+www-client/surf:tabbed - Install surf-open.sh script for running surf in x11-misc/tabbed
 www-client/uget:aria2 - Enable support for net-misc/aria2 through xmlrpc. You'll find the plugin in the app's settings.
 www-client/uget:control-socket - Enable JSON-RPC over unix domain socket
 www-client/uget:openssl - Use dev-libs/openssl instead of net-libs/gnutls
