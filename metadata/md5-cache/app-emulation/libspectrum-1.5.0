@@ -1,0 +1,15 @@
+BDEPEND=dev-lang/perl virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare test
+DEPEND=dev-libs/glib:2 audiofile? ( >=media-libs/audiofile-0.3.6 ) bzip2? ( >=app-arch/bzip2-1.0 ) gcrypt? ( dev-libs/libgcrypt:0 ) zlib? ( sys-libs/zlib )
+DESCRIPTION=Spectrum emulation library
+EAPI=7
+HOMEPAGE=http://fuse-emulator.sourceforge.net/libspectrum.php
+INHERIT=autotools
+IUSE=audiofile bzip2 gcrypt zlib
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/glib:2 audiofile? ( >=media-libs/audiofile-0.3.6 ) bzip2? ( >=app-arch/bzip2-1.0 ) gcrypt? ( dev-libs/libgcrypt:0 ) zlib? ( sys-libs/zlib )
+SLOT=0
+SRC_URI=mirror://sourceforge/fuse-emulator/libspectrum-1.5.0.tar.gz
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9988ecbe04129214297a7bbf3d253710
+_md5_=6e4ce4a16f345a3ebc76cdf52f818e07
