@@ -1,0 +1,15 @@
+BDEPEND=dev-util/patchelf
+DEFINED_PHASES=install prepare unpack
+DEPEND=|| ( ~dev-java/openjdk-11.0.9_p11:11 ~dev-java/openjdk-bin-11.0.9_p11:11 )
+DESCRIPTION=A complete toolset for web, mobile and enterprise development
+EAPI=7
+HOMEPAGE=https://www.jetbrains.com/idea
+INHERIT=eutils desktop
+KEYWORDS=~amd64 ~arm64
+LICENSE=Apache-2.0 BSD BSD-2 CC0-1.0 CC-BY-2.5 CDDL-1.1 codehaus-classworlds CPL-1.0 EPL-1.0 EPL-2.0 GPL-2 GPL-2-with-classpath-exception ISC JDOM LGPL-2.1 LGPL-2.1+ LGPL-3-with-linking-exception MIT MPL-1.0 MPL-1.1 OFL ZLIB
+RDEPEND=|| ( ~dev-java/openjdk-11.0.9_p11:11 ~dev-java/openjdk-bin-11.0.9_p11:11 ) dev-java/jansi-native dev-libs/libdbusmenu =dev-util/lldb-10*
+RESTRICT=splitdebug
+SLOT=0
+SRC_URI=https://download.jetbrains.com/idea/ideaIC-2021.3.1-no-jbr.tar.gz -> ideaIC-3.1.203.6682.168.tar.gz amd64? ( https://bintray.com/jetbrains/intellij-jbr/download_file?file_path=jbr-11_0_8-linux-x64-b1098.1.tar.gz -> jbr-11_0_8-linux-x64-b1098.1.tar.gz )
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	desktop	c0d27bf73aa08ca05b663dbd31fbef28
+_md5_=000c9ec5587b64918efa265c45452727
