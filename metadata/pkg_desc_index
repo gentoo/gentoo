@@ -5794,7 +5794,7 @@ dev-libs/unittest++ 2.0.0-r2: A lightweight unit testing framework for C++
 dev-libs/univalue 1.0.5 9999: C++ universal value object and JSON library
 dev-libs/urdfdom 1.0.4 9999: URDF (U-Robot Description Format) library
 dev-libs/urdfdom_headers 1.0.5 9999: URDF (U-Robot Description Format) headers
-dev-libs/uriparser 0.9.4: Strictly RFC 3986 compliant URI parsing library in C
+dev-libs/uriparser 0.9.4 0.9.5: Strictly RFC 3986 compliant URI parsing library in C
 dev-libs/userspace-rcu 0.11.1 0.12.1 0.12.2: userspace RCU (read-copy-update) library
 dev-libs/utfcpp 3.1 3.1.1 3.1.2 9999: UTF-8 C++ library
 dev-libs/uthash 2.2.0 2.3.0: An easy-to-use hash implementation for C programmers
