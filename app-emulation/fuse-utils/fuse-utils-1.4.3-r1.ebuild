@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools
 
@@ -14,13 +14,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="audiofile gcrypt jpeg png zlib"
 
-RDEPEND=">=app-emulation/libspectrum-1.4.4[gcrypt?,zlib?]
+RDEPEND=">=app-emulation/libspectrum-1.4.4[audiofile?,gcrypt?,zlib?]
 	audiofile? ( >=media-libs/audiofile-0.3.6 )
 	jpeg? ( virtual/jpeg:0 )
 	png? ( media-libs/libpng:0 )
 	zlib? ( sys-libs/zlib )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/remove-local-prefix.patch
