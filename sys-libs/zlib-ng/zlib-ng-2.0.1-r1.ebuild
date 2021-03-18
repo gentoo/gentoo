@@ -18,6 +18,8 @@ IUSE="compat ${CPU_USE[@]} test"
 
 RESTRICT="!test? ( test )"
 
+RDEPEND="compat? ( !sys-libs/zlib )"
+
 src_prepare() {
 	cmake_src_prepare
 
