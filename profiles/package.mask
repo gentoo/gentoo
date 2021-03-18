@@ -537,7 +537,9 @@ net-misc/gnome-remote-desktop
 =app-arch/cpio-2.13
 
 # Lars Wendler <polynomial-c@gentoo.org> (2019-10-16)
+# Joonas Niilola <juippis@gentoo.org> (2021-03-18)
 # Depends on apache-2.2
+# Removal on 2021-04-01. Bug #655502
 dev-libs/OpenSRF
 
 # Matt Turner <mattst88@gentoo.org> (2019-09-01)
