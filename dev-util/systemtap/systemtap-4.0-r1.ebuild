@@ -15,6 +15,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 s390 sparc x86"
 IUSE="libvirt selinux sqlite +ssl test zeroconf"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-libs/elfutils-0.142
 	dev-libs/json-c:=
