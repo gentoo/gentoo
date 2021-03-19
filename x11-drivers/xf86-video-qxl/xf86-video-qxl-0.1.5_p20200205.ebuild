@@ -3,18 +3,17 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7..9} )
 
-inherit python-single-r1 xorg-3 autotools
+inherit autotools python-single-r1 xorg-3
 
-SRC_URI="https://dev.gentoo.org/~slashbeast/distfiles/${PN}/${P}.tar.xz"
 DESCRIPTION="QEMU QXL paravirt video driver"
+SRC_URI="https://dev.gentoo.org/~slashbeast/distfiles/${PN}/${P}.tar.xz"
+S="${WORKDIR}"
+
 KEYWORDS="~amd64 ~x86"
-
 IUSE="xspice"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-
-S="${WORKDIR}/"
+REQUIRED_USE="xspice? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	xspice? (
@@ -23,20 +22,25 @@ RDEPEND="
 	)
 	x11-base/xorg-server[-minimal]
 	>=x11-libs/libdrm-2.4.46"
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	>=app-emulation/spice-protocol-0.12.0
 	x11-base/xorg-proto"
+BDEPEND="virtual/pkgconfig"
+
+pkg_setup() {
+	use xspice && python-single-r1_pkg_setup
+}
 
 src_prepare() {
-	python_fix_shebang scripts
-
+	xorg-3_src_prepare
 	eautoreconf
 
-	xorg-3_src_prepare
+	use xspice && python_fix_shebang scripts
 }
 
 src_configure() {
-	XORG_CONFIGURE_OPTIONS=(
+	local XORG_CONFIGURE_OPTIONS=(
 		$(use_enable xspice)
 	)
 	xorg-3_src_configure
