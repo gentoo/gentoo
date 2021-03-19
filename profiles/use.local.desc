@@ -8597,7 +8597,6 @@ www-client/opera:widevine - Unsupported closed-source DRM capability (required b
 www-client/opera-beta:proprietary-codecs - Enable codecs for patent-encumbered audio and video formats.
 www-client/opera-beta:widevine - Unsupported closed-source DRM capability (required by Netflix VOD)
 www-client/opera-developer:proprietary-codecs - Enable codecs for patent-encumbered audio and video formats.
-www-client/opera-developer:widevine - Unsupported closed-source DRM capability (required by Netflix VOD)
 www-client/qutebrowser:scripts - Installs userscripts from the misc/userscripts directory to /usr/share/qutebrowser/userscripts.
 www-client/seamonkey:chatzilla - Build Mozilla's IRC client (default on)
 www-client/seamonkey:custom-optimization - Build with user-specified compiler optimizations (-Os, -O0, -O1, -O2, -O3) from CFLAGS (unsupported)

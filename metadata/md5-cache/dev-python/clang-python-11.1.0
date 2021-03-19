@@ -3,13 +3,14 @@ DEPEND=>=sys-devel/clang-11.1.0:* !sys-devel/llvm:0[clang(-),python(-)] !sys-dev
 DESCRIPTION=Python bindings for sys-devel/clang
 EAPI=7
 HOMEPAGE=https://llvm.org/
+INHERIT=llvm.org python-r1
 IUSE=test python_targets_python3_7 python_targets_python3_8 python_targets_python3_9
-KEYWORDS=~amd64 ~arm ~arm64 ~x86
+KEYWORDS=amd64 ~arm ~arm64 ~x86
 LICENSE=Apache-2.0-with-LLVM-exceptions UoI-NCSA
 RDEPEND=>=sys-devel/clang-11.1.0:* !sys-devel/llvm:0[clang(-),python(-)] !sys-devel/clang:0[python(-)] python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)]
 REQUIRED_USE=|| ( python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/llvm/llvm-project/archive/llvmorg-11.1.0.tar.gz
-_eclasses_=llvm.org	ac34ccc0ab197b128f6d3d2a4fe1cc5e	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	6d099888c5b4dd4868c26508df307e95	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=c2ddba904e94c7a7b985d8f0bfd33267
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	llvm.org	ac34ccc0ab197b128f6d3d2a4fe1cc5e	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-r1	6d099888c5b4dd4868c26508df307e95
+_md5_=5d092846dbbdd6f78f39652c7b8fe17d
