@@ -4,10 +4,12 @@ DEPEND=app-shells/bash:* >=dev-cpp/eigen-3.3 dev-lang/perl ~sci-libs/votca-tools
 DESCRIPTION=Votca coarse-graining engine
 EAPI=7
 HOMEPAGE=https://www.votca.org/
-IUSE=examples extras +gromacs hdf5
+INHERIT=bash-completion-r1 cmake git-r3
+IUSE=examples extras +gromacs hdf5 test
 LICENSE=Apache-2.0
 PROPERTIES=live
 RDEPEND=app-shells/bash:* >=dev-cpp/eigen-3.3 dev-lang/perl ~sci-libs/votca-tools-9999 gromacs? ( sci-chemistry/gromacs:= ) hdf5? ( sci-libs/hdf5 )
+RESTRICT=!test? ( test )
 SLOT=0
-_eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	cmake	314a813be2f09820e8978cdee941e501	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	git-r3	3e7ec3d6619213460c85e2aa48398441	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=05184860d3ab836d1d179f2263ad61c9
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	be99724bde4274de21e581204e9d164a	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	cmake	314a813be2f09820e8978cdee941e501	git-r3	3e7ec3d6619213460c85e2aa48398441
+_md5_=9cda1d192741b1fa850610bb3c343de0
