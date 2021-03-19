@@ -19176,7 +19176,7 @@ xfce-extra/xfce4-diskperf-plugin 2.6.3: A panel plug-in for disk usage and perfo
 xfce-extra/xfce4-eyes-plugin 4.5.1: A panel plug-in which adds classic eyes to your every step
 xfce-extra/xfce4-fsguard-plugin 1.1.2: A filesystem guard plug-in for the Xfce panel
 xfce-extra/xfce4-genmon-plugin 4.1.1: Cyclically spawned executable output on the panel
-xfce-extra/xfce4-hdaps 1.0.0 1.0.3: Show the status of the IBM Hard Drive Active Protection System
+xfce-extra/xfce4-hdaps 1.0.3: Show the status of the IBM Hard Drive Active Protection System
 xfce-extra/xfce4-indicator-plugin 2.4.0: A panel plugin that uses indicator-applet to show new messages
 xfce-extra/xfce4-kbdleds-plugin 0.2.3: A panel plug-in to show state of Caps, Num and Scroll Lock keys
 xfce-extra/xfce4-mailwatch-plugin 1.3.0: An mail notification panel plug-in for the Xfce desktop environment
