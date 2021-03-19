@@ -12953,7 +12953,7 @@ media-gfx/gifsicle 1.92: Create, manipulate, and optimize GIF images and animati
 media-gfx/gimageview 0.2.27-r4: Powerful GTK+ based image & movie viewer
 media-gfx/gimp 2.10.22-r2 2.99.4 9999: GNU Image Manipulation Program
 media-gfx/gimp-arrow-brushes 20190407: Brushes for GIMP with the styles arrow, handpointer, button arrow and cursor
-media-gfx/gmic 2.9.4 2.9.5: GREYC's Magic Image Converter
+media-gfx/gmic 2.9.4 2.9.5 2.9.6: GREYC's Magic Image Converter
 media-gfx/gnofract4d 4.3_p20201029: A program for drawing beautiful mathematically-based images known as fractals
 media-gfx/gnome-font-viewer 3.34.0: Font viewer utility for GNOME
 media-gfx/gnome-photos 3.34.2: Access, organize and share your photos on GNOME
