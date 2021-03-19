@@ -22,7 +22,7 @@ IUSE="+gmp +libtommath tomsfastmath"
 
 # Enforce at least one math provider
 # bug #772935
-REQUIRED_USE="?? ( gmp libtommath tomsfastmath )"
+REQUIRED_USE="|| ( gmp libtommath tomsfastmath )"
 
 BDEPEND="
 	sys-devel/libtool
