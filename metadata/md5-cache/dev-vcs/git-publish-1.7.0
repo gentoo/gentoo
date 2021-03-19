@@ -1,0 +1,15 @@
+BDEPEND=python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_9? ( dev-lang/python:3.9 >=dev-lang/python-exec-2:=[python_targets_python3_9] ) man? ( dev-lang/perl )
+DEFINED_PHASES=compile install prepare setup
+DESCRIPTION=Tool for preparing and storing patch revisions as git tag
+EAPI=7
+HOMEPAGE=https://github.com/stefanha/git-publish
+INHERIT=python-single-r1
+IUSE=+man python_single_target_python3_8 python_single_target_python3_9
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_9? ( dev-lang/python:3.9 >=dev-lang/python-exec-2:=[python_targets_python3_9] ) dev-vcs/git
+REQUIRED_USE=^^ ( python_single_target_python3_8 python_single_target_python3_9 )
+SLOT=0
+SRC_URI=https://github.com/stefanha/git-publish/archive/v1.7.0.tar.gz -> git-publish-1.7.0.tar.gz
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-single-r1	d3100de905f978df912135806cf27188
+_md5_=c837e3ce7ce0a4d4a705bc9e3950d61e

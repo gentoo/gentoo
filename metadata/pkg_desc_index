@@ -11126,6 +11126,8 @@ dev-vcs/git-mantle 0.6: Generate an overview of changes on a branch
 dev-vcs/git-merge-changelog 20170131: Git merge driver for GNU style ChangeLog files
 dev-vcs/git-num 2.0.1: Quickly reference files in Git using numbers
 dev-vcs/git-pimp 0.8: Code review or pull requests as patch email series
+dev-vcs/git-publish 1.7.0: Tool for preparing and storing patch revisions as git tag
+dev-vcs/git-pw 2.0.0: A tool for integrating Git with Patchwork
 dev-vcs/git-sh 1.3-r1: A customized bash environment suitable for git work
 dev-vcs/git-tools 2019.11 2020.09: Assorted git-related scripts
 dev-vcs/gitg 3.32.1-r1: git repository viewer for GNOME
