@@ -28,38 +28,38 @@ RDEPEND="gtk? ( dev-ml/lablgtk:2=
 DOCS=( BUGS.txt CONTRIB INSTALL NEWS README ROADMAP.txt TODO.txt )
 
 src_prepare() {
+	default
 	# https://github.com/bcpierce00/unison/issues/416
 	sed -e "/ifdef\ HEVEA/,/endif/d" -i doc/Makefile || die
 	# https://github.com/bcpierce00/unison/pull/415
 	sed -e "/myName/d" -i doc/docs.ml || die
-	default
 }
 
 src_compile() {
 	local myconf
 
 	if use threads; then
-		myconf="$myconf THREADS=true"
+		myconf+=( THREADS=true )
 	fi
 
 	if use debug; then
-		myconf="$myconf DEBUGGING=true"
+		myconf+=( DEBUGGING=true )
 	fi
 
 	if use gtk; then
-		myconf="$myconf UISTYLE=gtk2"
+		myconf+=( UISTYLE=gtk2 )
 	else
-		myconf="$myconf UISTYLE=text"
+		myconf+=( UISTYLE=text )
 	fi
 
-	use ocamlopt || myconf="$myconf NATIVE=false"
+	use ocamlopt || myconf+=( NATIVE=false )
 
 	if use doc; then
-		VARTEXFONTS="${T}/fonts" emake $myconf CFLAGS="" HEVEA=false docs
+		VARTEXFONTS="${T}/fonts" emake "${myconf[@]}" CFLAGS="" HEVEA=false docs
 	fi
 
 	# Discard cflags as it will try to pass them to ocamlc...
-	emake $myconf CFLAGS="" src
+	emake "${myconf[@]}" CFLAGS="" src
 }
 
 src_test() {
