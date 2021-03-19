@@ -11899,7 +11899,7 @@ games-util/dzip 2.9-r3: compressor/uncompressor for demo recordings from id's Qu
 games-util/etswitch 0.1.14-r1: *nix minimizer for a few games
 games-util/eureka 1.27b: Graphical map editor for games using the DOOM engine
 games-util/fteqcc 2501: QC compiler
-games-util/game-device-udev-rules 20201209: udev rules for various game hardware devices
+games-util/game-device-udev-rules 20201228: udev rules for various game hardware devices
 games-util/gamemode 1.6.1 9999: Optimise Linux system performance on demand
 games-util/gamepick 0.35-r1: Launch opengl games with custom graphic settings
 games-util/glbsp 2.24: A node builder specially designed for OpenGL ports of the DOOM game engine
