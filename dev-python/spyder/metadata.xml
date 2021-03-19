@@ -13,6 +13,7 @@
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
+  <stabilize-allarches/>
   <longdescription lang="en">
     Spyder is a powerful scientific environment written in Python,
     for Python,and designed by and for scientists, engineers and data analysts.
