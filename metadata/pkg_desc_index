@@ -17691,7 +17691,7 @@ sys-kernel/linux-docs 5.10.17: Developer documentation generated from the Linux 
 sys-kernel/linux-firmware 20200316 20200421 20200519 20200619 20200721 20200817 20200918 20201022-r3 20201218 20210208 20210315 99999999: Linux firmware files
 sys-kernel/linux-headers 3.18 4.4 4.9 4.14-r1 4.19 5.4-r1 5.9 5.10 5.11: Linux system headers
 sys-kernel/mips-sources 4.14.221 4.19.176 5.4.99: Kernel.org sources for MIPS-based machines
-sys-kernel/pf-sources 5.9_p7 5.10_p12 5.11_p1 5.11_p2 5.11_p3: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
+sys-kernel/pf-sources 5.9_p7 5.10_p12 5.11_p1 5.11_p2 5.11_p3 5.11_p4: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.79_p20201201 5.10.11_p20210201 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.79_p20201201 5.4.9999 5.10.11_p20210201: Raspberry Pi kernel sources
 sys-kernel/rt-sources 4.4.240_p209 4.4.245_p211 4.4.249_p212 4.9.240_p155 4.9.247_p162 4.14.206_p99 4.14.209_p101 4.14.214_p104 4.19.148_p64 4.19.160_p69 4.19.165_p70 5.4.70_p40 5.4.84_p47 5.10.1_p20 5.10.4_p22: Full Linux 5.10 kernel sources with the CONFIG_PREEMPT_RT patch
