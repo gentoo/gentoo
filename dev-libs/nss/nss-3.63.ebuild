@@ -94,11 +94,12 @@ nssarch() {
 	# Most of the arches are the same as $ARCH
 	local t=${1:-${CHOST}}
 	case ${t} in
-		aarch64*)echo "aarch64";;
-		hppa*)   echo "parisc";;
-		i?86*)   echo "i686";;
-		x86_64*) echo "x86_64";;
-		*)       tc-arch ${t};;
+		*86*-pc-solaris2*) echo "i86pc"   ;;
+		aarch64*)          echo "aarch64" ;;
+		hppa*)             echo "parisc"  ;;
+		i?86*)             echo "i686"    ;;
+		x86_64*)           echo "x86_64"  ;;
+		*)                 tc-arch ${t}   ;;
 	esac
 }
 
