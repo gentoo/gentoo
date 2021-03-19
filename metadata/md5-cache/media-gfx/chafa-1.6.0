@@ -5,9 +5,9 @@ DESCRIPTION=versatile and fast Unicode/ASCII/ANSI graphics renderer
 EAPI=7
 HOMEPAGE=https://hpjansson.org/chafa/ https://github.com/hpjansson/chafa
 IUSE=+tools
-KEYWORDS=amd64 ~arm64 x86
+KEYWORDS=amd64 arm64 x86
 LICENSE=LGPL-3+
 RDEPEND=dev-libs/glib:2 media-gfx/imagemagick:0= tools? ( >=media-libs/freetype-2.0.0 )
 SLOT=0
 SRC_URI=https://hpjansson.org/chafa/releases/chafa-1.6.0.tar.xz
-_md5_=b9f4551f5787b6c29f0eb8fe76e380f7
+_md5_=6c3828484f595999fb263dfe7ee58fd9

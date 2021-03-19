@@ -6179,7 +6179,8 @@ net-misc/aria2:ssh - Enable SFTP support.
 net-misc/asterisk:blocks - Utlize -fblocks (only supported by, and required when using, clang/LLVM)
 net-misc/asterisk:cluster - Enable high-availability support through the Corosync Cluster Engine
 net-misc/asterisk:codec2 - Enable Codec2 support in asterisk
-net-misc/asterisk:dahdi - Support Digium compatible hardware (formerly known as Zaptel).
+net-misc/asterisk:dahdi - Support Digium compatible hardware (formerly known as Zaptel)
+net-misc/asterisk:deprecated - Enable deprecated features (eg, app_macro)
 net-misc/asterisk:gtalk - Enable support for Google Talk services
 net-misc/asterisk:http - Enable embedded web server
 net-misc/asterisk:ilbc - Enable the Internet Low Bitrate Codec (iLBC)

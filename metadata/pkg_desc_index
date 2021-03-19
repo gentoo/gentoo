@@ -11007,7 +11007,7 @@ dev-util/rats 2.4: RATS - Rough Auditing Tool for Security
 dev-util/rbtools 1.0.3 2.0: Command line tools for use with Review Board
 dev-util/re2c 2.0.3: tool for generating C-based recognizers from regular expressions
 dev-util/rebar 2.6.4-r1: A sophisticated build-tool for Erlang projects that follows OTP principles
-dev-util/rebar-bin 3.6.2 3.13.2: A sophisticated build-tool for Erlang projects that follows OTP principles
+dev-util/rebar-bin 3.14.4: A sophisticated build-tool for Erlang projects that follows OTP principles
 dev-util/redo 0.42a 0.42c 99999: Smaller, easier, more powerful, and more reliable than make
 dev-util/regexxer 0.10-r1: An interactive tool for performing search and replace operations
 dev-util/rej 0.16-r1: A utility for solving diff/patch rejects
@@ -15168,7 +15168,7 @@ net-misc/apt-cacher-ng 3.6.3_p1 9999: Yet another caching HTTP proxy for Debian/
 net-misc/aria2 1.35.0: A download utility with segmented downloading with BitTorrent support
 net-misc/arpd 0.2-r1: ARP server claiming all unassigned addresses (for network monitoring/simulation)
 net-misc/arpsponge 3.17.11: Sweeps up stray ARP queries from a peering LAN
-net-misc/asterisk 13.38.1-r2 13.38.2 16.16.2: Asterisk: A Modular Open Source PBX System
+net-misc/asterisk 13.38.1-r2 13.38.2 13.38.2-r1 16.16.2 16.16.2-r1 18.2.2: Asterisk: A Modular Open Source PBX System
 net-misc/asterisk-core-sounds 1.6.1-r1: Core sounds for asterisk
 net-misc/asterisk-extra-sounds 1.5.2: Extra sounds for asterisk
 net-misc/asterisk-g729 13.0.3.1.9 16.0.3.1.9: G.729 codec and supporting files for asterisk
@@ -15227,7 +15227,7 @@ net-misc/dibbler 1.0.1 1.0.1-r2 1.0.1-r3: Portable DHCPv6 implementation (server
 net-misc/dleyna-server 0.6.0: Service that allows to discover and manipulate DLNA Digital Media servers (DMS)
 net-misc/drive 0.3.9.1 0.3.9.1-r1: Google Drive client for the commandline
 net-misc/dropbear 2020.81-r2: small SSH 2 client/server designed for small memory environments
-net-misc/dropbox 117.4.378: Dropbox daemon (pretends to be GUI-less)
+net-misc/dropbox 117.4.378 118.4.460: Dropbox daemon (pretends to be GUI-less)
 net-misc/dropbox-cli 2020.03.04 2020.03.04-r1: Cli interface for dropbox (python), part of nautilus-dropbox
 net-misc/econnman 1.1-r2: ConnMan User Interface written with EFL & python
 net-misc/efax 0.9a_p19_p1: A simple fax program for single-user systems

@@ -1,0 +1,16 @@
+BDEPEND=dev-util/patchelf virtual/pkgconfig
+DEFINED_PHASES=install postinst postrm preinst prepare unpack
+DEPEND=dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Dropbox daemon (pretends to be GUI-less)
+EAPI=7
+HOMEPAGE=https://www.dropbox.com/
+INHERIT=desktop pax-utils systemd xdg
+IUSE=selinux X
+KEYWORDS=~amd64 ~x86 ~x86-linux
+LICENSE=BSD-2 CC-BY-ND-3.0 FTL MIT LGPL-2 openssl dropbox
+RDEPEND=X? ( x11-themes/hicolor-icon-theme ) selinux? ( sec-policy/selinux-dropbox ) app-arch/bzip2 dev-libs/glib:2 dev-libs/libffi-compat:6 media-libs/fontconfig media-libs/freetype net-misc/wget sys-libs/zlib sys-libs/ncurses-compat:5 virtual/opengl x11-libs/libICE x11-libs/libSM x11-libs/libX11
+RESTRICT=mirror strip
+SLOT=0
+SRC_URI=amd64? ( https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86_64-118.4.460.tar.gz ) x86? ( https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86-118.4.460.tar.gz )
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
+_md5_=02fa288e29ee0a9a2f7aa62d6a0f7805
