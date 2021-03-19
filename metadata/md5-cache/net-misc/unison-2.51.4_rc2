@@ -4,12 +4,13 @@ DEPEND=gtk? ( dev-ml/lablgtk:2= )
 DESCRIPTION=Two-way cross-platform file synchronizer
 EAPI=7
 HOMEPAGE=https://www.seas.upenn.edu/~bcpierce/unison/
+INHERIT=desktop xdg-utils
 IUSE=debug doc gtk +ocamlopt threads
 KEYWORDS=~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris
 LICENSE=GPL-2
 RDEPEND=gtk? ( dev-ml/lablgtk:2= || ( net-misc/x11-ssh-askpass net-misc/ssh-askpass-fullscreen ) ) >=app-eselect/eselect-unison-0.4
 RESTRICT=!ocamlopt? ( strip )
 SLOT=2.51
-SRC_URI=https://github.com/bcpierce00/unison/archive/v2.51.4_rc1.tar.gz -> unison-2.51.4_rc1.tar.gz
+SRC_URI=https://github.com/bcpierce00/unison/archive/v2.51.4_rc2.tar.gz -> unison-2.51.4_rc2.tar.gz
 _eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=1ca11da7817b1f4537925baad8efdf29
+_md5_=116956d1dbee1a65242bade0ec33265e

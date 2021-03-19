@@ -8113,8 +8113,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7 1.0.8: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r4: Amazon Web Services API
-dev-python/boto3 1.16.63 1.17.7 1.17.12 1.17.17 1.17.18 1.17.19 1.17.20 1.17.21 1.17.22 1.17.23 1.17.24 1.17.25 1.17.26 1.17.27 1.17.28 1.17.29 1.17.30 1.17.31 9999: The AWS SDK for Python
-dev-python/botocore 1.19.63 1.20.7 1.20.12 1.20.17 1.20.18 1.20.19 1.20.20 1.20.21 1.20.22 1.20.23 1.20.24 1.20.25 1.20.26 1.20.27 1.20.28 1.20.29 1.20.30 1.20.31 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.16.63 1.17.7 1.17.12 1.17.17 1.17.18 1.17.19 1.17.20 1.17.21 1.17.22 1.17.23 1.17.24 1.17.25 1.17.26 1.17.27 1.17.28 1.17.29 1.17.30 1.17.31 1.17.32 9999: The AWS SDK for Python
+dev-python/botocore 1.19.63 1.20.7 1.20.12 1.20.17 1.20.18 1.20.19 1.20.20 1.20.21 1.20.22 1.20.23 1.20.24 1.20.25 1.20.26 1.20.27 1.20.28 1.20.29 1.20.30 1.20.31 1.20.32 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.21: Syntax highlighting and autocompletion for the Python interpreter
@@ -8526,7 +8526,7 @@ dev-python/keystonemiddleware 9.1.0: A middleware for the OpenStack Keystone API
 dev-python/kiwisolver 1.3.1: An efficient C++ implementation of the Cassowary constraint solving algorithm
 dev-python/klein 20.6.0: micro-framework for developing production-ready web services with Python
 dev-python/kombu 5.0.1: AMQP Messaging Framework for Python
-dev-python/lark-parser 0.7.8: Python module to propose a modern general-purpose parsing library for Python
+dev-python/lark-parser 0.7.8 0.11.2: Python module to propose a modern general-purpose parsing library for Python
 dev-python/latexcodec 2.0.1: Lexer and codec to work with LaTeX code in Python
 dev-python/lazr-config 2.2.2: Create configuration schemas, and process and validate configurations.
 dev-python/lazr-delegates 2.0.4: Easily write objects that delegate behavior
@@ -8857,7 +8857,7 @@ dev-python/pydecomp 0.3-r1 9999: A python library of common (de)compression and 
 dev-python/pydiff 0.2-r1: Diffs two Python files at the bytecode level
 dev-python/pydispatcher 2.1.2: Multi-producer-multi-consumer signal dispatching mechanism
 dev-python/pydns 3.2.1: Python DNS (Domain Name System) library
-dev-python/pydocstyle 5.1.1: Python docstring style checker
+dev-python/pydocstyle 5.1.1 6.0.0: Python docstring style checker
 dev-python/pydot 1.4.1 1.4.2: Python interface to Graphviz's Dot language
 dev-python/pydotplus 2.0.2: Improved version of the old pydot project
 dev-python/pyelftools 0.27: pure-Python library for analyzing ELF files and DWARF debugging information
@@ -9191,7 +9191,7 @@ dev-python/ruamel-std-pathlib 0.6.4-r2 0.8.0: Ruamel enhancements to pathlib and
 dev-python/ruamel-yaml 0.16.12-r1 0.16.13-r1: YAML parser/emitter that supports roundtrip comment preservation
 dev-python/ruamel-yaml-clib 0.2.2-r1: C-based reader/scanner and emitter for dev-python/ruamel-yaml
 dev-python/ryu 4.34: Component-based Software-defined Networking Framework
-dev-python/s3transfer 0.3.4 0.3.5: An Amazon S3 Transfer Manager
+dev-python/s3transfer 0.3.4 0.3.5 0.3.6: An Amazon S3 Transfer Manager
 dev-python/sabyenc 4.0.2: Module providing raw yEnc encoding/decoding for SABnzbd
 dev-python/sarge 0.1.5: wrapper for subprocess which provides command pipeline functionality
 dev-python/scandir 1.10.0-r2: A better directory iterator and faster os.walk()
@@ -9245,7 +9245,7 @@ dev-python/socketio-client 0.7.2: A socket.io client library for Python
 dev-python/socketio-client-nexus 0.7.6: A socket.io 2.x client library for Python
 dev-python/socketpool 0.5.3-r3: A simple Python socket pool
 dev-python/sortedcontainers 2.3.0: Python library to sort collections and containers
-dev-python/soupsieve 2.2: A modern CSS selector implementation for BeautifulSoup
+dev-python/soupsieve 2.2 2.2.1: A modern CSS selector implementation for BeautifulSoup
 dev-python/sparql-wrapper 1.8.5: Wrapper around a SPARQL service
 dev-python/speaklater 1.3-r1: Lazy strings for Python
 dev-python/speg 0.3-r1 0.3-r2: A PEG-based parser interpreter with memoization
@@ -15460,7 +15460,7 @@ net-misc/ucarp 1.5.2-r7: Portable userland implementation of Common Address Redu
 net-misc/udpcast 20200328: Multicast file transfer tool
 net-misc/udpxy 1.0.23.7-r2: Small daemon to relay multicast UDP traffic to client's TCP (HTTP) connection
 net-misc/uftp 4.10.1 5.0: Encrypted UDP based FTP with multicast
-net-misc/unison 2.48.15_p4-r2 2.51.3_p20201024 2.51.3_p20201127 2.51.4_rc1: Two-way cross-platform file synchronizer
+net-misc/unison 2.48.15_p4-r2 2.51.3_p20201024 2.51.3_p20201127 2.51.4_rc2: Two-way cross-platform file synchronizer
 net-misc/unix2tcp 0.8.2-r1: a connection forwarder that converts Unix sockets into TCP sockets
 net-misc/usbip 4.13-r1: Userspace utilities for a general USB device sharing system over IP networks
 net-misc/utelnetd 0.1.11-r2: A small Telnet daemon, derived from the Axis tools
@@ -16049,7 +16049,7 @@ sci-biology/velvet 1.2.10: A sequence assembler for very short reads
 sci-biology/wgs-assembler 7.0-r2: The Celera de novo whole-genome shotgun DNA sequence assembler, aka CABOG
 sci-biology/wise 2.4.0_alpha: Intelligent algorithms for DNA searches
 sci-biology/yass 1.14-r2: Genomic similarity search with multiple transition constrained spaced seeds
-sci-calculators/bc-gh 3.3.0 3.3.2 3.3.3: Implementation of POSIX bc with GNU extensions
+sci-calculators/bc-gh 3.3.3 3.3.4: Implementation of POSIX bc with GNU extensions
 sci-calculators/calcoo 1.3.18-r1: Scientific calculator designed to provide maximum usability
 sci-calculators/datamash 1.7: command-line program for basic numeric, textual and statistical operations
 sci-calculators/galculator 2.1.4-r1: GTK+ based algebraic and RPN calculator
@@ -16531,7 +16531,7 @@ sci-mathematics/geogebra-bin 5.0.604.0-r2: Mathematics software for geometry
 sci-mathematics/geomview 1.9.5-r1: Interactive Geometry Viewer
 sci-mathematics/gfan 0.6.2 0.6.2-r1: Compute Groebner fans and tropical varieties
 sci-mathematics/ggnfs 0.77.1-r2: A suite of algorithms to help factoring large integers
-sci-mathematics/gimps 30.3.6 30.4.9: The Great Internet Mersenne Prime Search
+sci-mathematics/gimps 30.3.6 30.5.1: The Great Internet Mersenne Prime Search
 sci-mathematics/ginac 1.7.11: C++ library and tools for symbolic calculations
 sci-mathematics/glpk 4.65 5.0: GNU Linear Programming Kit
 sci-mathematics/gmm 5.1 5.3: Generic C++ template library for sparse, dense and skyline matrices
