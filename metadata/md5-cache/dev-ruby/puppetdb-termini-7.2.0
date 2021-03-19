@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=Library needed to connect puppet to puppetdb
+EAPI=7
+HOMEPAGE=http://docs.puppetlabs.com/puppetdb/
+INHERIT=unpacker
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=Apache-2.0
+SLOT=0
+SRC_URI=http://apt.puppetlabs.com/pool/stretch/puppet/p/puppetdb-termini/puppetdb-termini_7.2.0-1stretch_all.deb
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	unpacker	45b49db67094fdafbb6a16a2299e894b
+_md5_=ccb1c2b9f7f4eb8aa4cbf71b006b0ce2
