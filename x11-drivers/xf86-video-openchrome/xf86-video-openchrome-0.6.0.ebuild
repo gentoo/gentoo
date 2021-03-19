@@ -1,42 +1,41 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
+
 XORG_DRI="always"
-inherit xorg-2
+inherit xorg-3
 
 DESCRIPTION="X.Org driver for VIA/S3G cards"
 HOMEPAGE="https://www.freedesktop.org/wiki/Openchrome/"
-LICENSE="MIT"
 
+LICENSE="MIT"
 KEYWORDS="amd64 x86"
 IUSE="debug viaregtool"
 
-RDEPEND=">=x11-base/xorg-server-1.9"
-DEPEND="
-	${RDEPEND}
+RDEPEND="
+	>=x11-base/xorg-server-1.9
 	x11-libs/libX11
 	x11-libs/libXext
-	x11-libs/libXv
 	x11-libs/libXvMC
-	x11-libs/libdrm
-"
-
-DOCS=( ChangeLog NEWS README )
+	x11-libs/libdrm"
+DEPEND="
+	${RDEPEND}
+	x11-libs/libXv"
 
 PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
 
 src_configure() {
-	XORG_CONFIGURE_OPTIONS=(
+	local XORG_CONFIGURE_OPTIONS=(
 		$(use_enable debug)
 		$(use_enable debug xv-debug)
 		$(use_enable viaregtool)
 	)
-	xorg-2_src_configure
+	xorg-3_src_configure
 }
 
 pkg_postinst() {
-	xorg-2_pkg_postinst
+	xorg-3_pkg_postinst
 
 	elog "Supported chipsets:"
 	elog "CLE266 (VT3122), KM400/P4M800 (VT3205), K8M800 (VT3204),"
