@@ -1,0 +1,146 @@
+https://github.com/linuxmint/muffin/pull/577
+https://bugs.gentoo.org/767139
+
+From c10ab2d741cf4bbeff8f40f6859c9381606dbf26 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Mon, 25 Jan 2021 22:30:35 -0800
+Subject: [PATCH 1/2] build: Add missing libtool depedencies.
+
+This fixes the build with slibtool.
+---
+ clutter/clutter/Makefile.am | 18 +++++++++++++++---
+ src/Makefile.am             |  9 +++++++--
+ 2 files changed, 22 insertions(+), 5 deletions(-)
+
+diff --git a/clutter/clutter/Makefile.am b/clutter/clutter/Makefile.am
+index a6366f4f2..ecfa568b7 100644
+--- a/clutter/clutter/Makefile.am
++++ b/clutter/clutter/Makefile.am
+@@ -666,7 +666,11 @@ Clutter-@MUFFIN_PLUGIN_API_VERSION@.gir: libmuffin-clutter-@MUFFIN_PLUGIN_API_VE
+ 
+ Clutter_@MUFFIN_PLUGIN_API_VERSION@_gir_NAMESPACE = Clutter
+ Clutter_@MUFFIN_PLUGIN_API_VERSION@_gir_VERSION = @MUFFIN_PLUGIN_API_VERSION@
+-Clutter_@MUFFIN_PLUGIN_API_VERSION@_gir_LIBS = libmuffin-clutter-@MUFFIN_PLUGIN_API_VERSION@.la
++Clutter_@MUFFIN_PLUGIN_API_VERSION@_gir_LIBS = \
++	libmuffin-clutter-@MUFFIN_PLUGIN_API_VERSION@.la \
++	$(top_builddir)/../cogl/cogl/libmuffin-cogl-@MUFFIN_PLUGIN_API_VERSION@.la \
++	$(top_builddir)/../cogl/cogl-pango/libmuffin-cogl-pango-@MUFFIN_PLUGIN_API_VERSION@.la \
++	$(top_builddir)/../cogl/cogl-path/libmuffin-cogl-path-@MUFFIN_PLUGIN_API_VERSION@.la
+ Clutter_@MUFFIN_PLUGIN_API_VERSION@_gir_FILES = \
+ 	$(clutter_include_HEADERS) \
+ 	$(clutter_deprecated_HEADERS) \
+@@ -687,7 +691,11 @@ Cally-@MUFFIN_PLUGIN_API_VERSION@.gir: Makefile Clutter-@MUFFIN_PLUGIN_API_VERSI
+ 
+ Cally_@MUFFIN_PLUGIN_API_VERSION@_gir_NAMESPACE = Cally
+ Cally_@MUFFIN_PLUGIN_API_VERSION@_gir_VERSION = @MUFFIN_PLUGIN_API_VERSION@
+-Cally_@MUFFIN_PLUGIN_API_VERSION@_gir_LIBS = libmuffin-clutter-@MUFFIN_PLUGIN_API_VERSION@.la
++Cally_@MUFFIN_PLUGIN_API_VERSION@_gir_LIBS = \
++	libmuffin-clutter-@MUFFIN_PLUGIN_API_VERSION@.la \
++	$(top_builddir)/../cogl/cogl/libmuffin-cogl-@MUFFIN_PLUGIN_API_VERSION@.la \
++	$(top_builddir)/../cogl/cogl-pango/libmuffin-cogl-pango-@MUFFIN_PLUGIN_API_VERSION@.la \
++	$(top_builddir)/../cogl/cogl-path/libmuffin-cogl-path-@MUFFIN_PLUGIN_API_VERSION@.la
+ Cally_@MUFFIN_PLUGIN_API_VERSION@_gir_FILES = $(cally_sources_h) $(cally_sources_c)
+ Cally_@MUFFIN_PLUGIN_API_VERSION@_gir_CFLAGS = $(AM_CPPFLAGS) $(CLUTTER_CFLAGS)
+ Cally_@MUFFIN_PLUGIN_API_VERSION@_gir_SCANNERFLAGS = \
+@@ -702,7 +710,11 @@ ClutterX11-@MUFFIN_PLUGIN_API_VERSION@.gir: Makefile Clutter-@MUFFIN_PLUGIN_API_
+ 
+ ClutterX11_@MUFFIN_PLUGIN_API_VERSION@_gir_NAMESPACE = ClutterX11
+ ClutterX11_@MUFFIN_PLUGIN_API_VERSION@_gir_INCLUDES = xlib-2.0
+-ClutterX11_@MUFFIN_PLUGIN_API_VERSION@_gir_LIBS = libmuffin-clutter-@MUFFIN_PLUGIN_API_VERSION@.la
++ClutterX11_@MUFFIN_PLUGIN_API_VERSION@_gir_LIBS = \
++	libmuffin-clutter-@MUFFIN_PLUGIN_API_VERSION@.la \
++	$(top_builddir)/../cogl/cogl/libmuffin-cogl-@MUFFIN_PLUGIN_API_VERSION@.la \
++	$(top_builddir)/../cogl/cogl-pango/libmuffin-cogl-pango-@MUFFIN_PLUGIN_API_VERSION@.la \
++	$(top_builddir)/../cogl/cogl-path/libmuffin-cogl-path-@MUFFIN_PLUGIN_API_VERSION@.la
+ ClutterX11_@MUFFIN_PLUGIN_API_VERSION@_gir_FILES = $(x11_introspection)
+ ClutterX11_@MUFFIN_PLUGIN_API_VERSION@_gir_CFLAGS = $(AM_CPPFLAGS) $(CLUTTER_CFLAGS)
+ ClutterX11_@MUFFIN_PLUGIN_API_VERSION@_gir_SCANNERFLAGS = \
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 9cb3af14e..37274a4bd 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -277,7 +277,12 @@ Meta-$(api_version).gir: libmuffin.la
+ @META_GIR@_INCLUDES = GObject-2.0 CDesktopEnums-3.0 Gdk-3.0 Gtk-3.0 Cogl-$(MUFFIN_PLUGIN_API_VERSION) Clutter-$(MUFFIN_PLUGIN_API_VERSION) xlib-2.0 xfixes-4.0
+ @META_GIR@_PACKAGES = gtk+-3.0
+ @META_GIR@_CFLAGS = $(AM_CPPFLAGS)
+-@META_GIR@_LIBS = libmuffin.la
++@META_GIR@_LIBS = \
++	libmuffin.la \
++	$(top_builddir)/clutter/clutter/libmuffin-clutter-@MUFFIN_PLUGIN_API_VERSION@.la \
++	$(top_builddir)/cogl/cogl/libmuffin-cogl-@MUFFIN_PLUGIN_API_VERSION@.la \
++	$(top_builddir)/cogl/cogl-pango/libmuffin-cogl-pango-@MUFFIN_PLUGIN_API_VERSION@.la \
++	$(top_builddir)/cogl/cogl-path/libmuffin-cogl-path-@MUFFIN_PLUGIN_API_VERSION@.la
+ @META_GIR@_FILES =				\
+ 	muffin-enum-types.h			\
+ 	$(libmuffininclude_base_headers)	\
+@@ -383,4 +388,4 @@ install-exec-local:
+ 	      { rm -f libmuffin-$$lib-0.so && ln -s muffin/libmuffin-$$lib-0.so libmuffin-$$lib-0.so; }; \
+ 	    } \
+ 	  ) ; \
+-	done
+\ No newline at end of file
++	done
+
+From 0762515b658b6331c076603340ce572c002f9458 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Mon, 25 Jan 2021 22:30:44 -0800
+Subject: [PATCH 2/2] build: Fix undefined references with slibtool.
+
+---
+ Makefile.am                        | 2 +-
+ src/Makefile.am                    | 2 +-
+ src/compositor/plugins/Makefile.am | 9 ++++++---
+ 3 files changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index cf8382b67..c5d589ff7 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,5 +1,5 @@
+ 
+-SUBDIRS=cogl clutter src po doc data
++SUBDIRS=cogl clutter src src/compositor/plugins po doc data
+ 
+ EXTRA_DIST = HACKING MAINTAINERS rationales.txt
+ 
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 37274a4bd..b75b1879f 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -3,7 +3,7 @@
+ 
+ lib_LTLIBRARIES = libmuffin.la
+ 
+-SUBDIRS=wm-tester tools compositor/plugins
++SUBDIRS=wm-tester tools
+ 
+ NULL =
+ 
+diff --git a/src/compositor/plugins/Makefile.am b/src/compositor/plugins/Makefile.am
+index 09ab325a5..241b514c3 100644
+--- a/src/compositor/plugins/Makefile.am
++++ b/src/compositor/plugins/Makefile.am
+@@ -2,9 +2,9 @@
+ pkglibdir=@MUFFIN_PLUGIN_DIR@
+ 
+ AM_CPPFLAGS= \
+-  $(WARN_CFLAGS) \
++	$(WARN_CFLAGS) \
+ 	$(MUFFIN_CFLAGS) \
+-  -I$(top_builddir)/src						\
++	-I$(top_builddir)/src						\
+ 	-I$(top_srcdir)/src						\
+ 	-I$(top_srcdir)/cogl						\
+ 	-I$(top_builddir)/cogl						\
+@@ -27,7 +27,10 @@ AM_CPPFLAGS= \
+ default_la_CFLAGS   = $(WARN_CFLAGS) -fPIC
+ default_la_SOURCES  = default.c
+ default_la_LDFLAGS  = $(WARN_LDFLAGS) -module -avoid-version -no-undefined
+-default_la_LIBADD   = $(CLUTTER_LIBS)
++default_la_LIBADD   = \
++	$(CLUTTER_LIBS) \
++	$(top_builddir)/src/libmuffin.la \
++	$(top_builddir)/clutter/clutter/libmuffin-clutter-@MUFFIN_PLUGIN_API_VERSION@.la
+ 
+ pkglib_LTLIBRARIES = default.la
+ 

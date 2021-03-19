@@ -61,6 +61,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.8.1-slibtool.patch
+)
+
 src_prepare() {
 	default
 	eautoreconf
