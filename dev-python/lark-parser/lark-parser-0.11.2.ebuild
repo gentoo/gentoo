@@ -4,7 +4,6 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7..9} )
-DISTUTILS_USE_SETUPTOOLS=bdepend
 
 inherit distutils-r1
 
@@ -19,7 +18,6 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/regex[${PYTHON_USEDEP}]
 		dev-python/js2py[${PYTHON_USEDEP}]
