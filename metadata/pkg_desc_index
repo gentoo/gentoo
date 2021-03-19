@@ -15143,7 +15143,7 @@ net-mail/relay-ctrl 3.1.1-r2 3.1.1-r3 3.2: SMTP Relaying Control designed for qm
 net-mail/renattach 1.2.4-r1: Filter that renames/deletes dangerous email attachments
 net-mail/ripmime 1.4.0.10-r1: extract attachment files out of a MIME-encoded email pack
 net-mail/ripole 0.2.2: Program/library to pull out attachment from OLE2 data files
-net-mail/rss2email 3.12.2-r1: A python script that converts RSS/Atom newsfeeds to email
+net-mail/rss2email 3.12.2-r1 3.12.3: A python script that converts RSS/Atom newsfeeds to email
 net-mail/safecat 1.13: Safecat implements qmail's maildir algorithm, safely copying standard input
 net-mail/sendEmail 1.56-r2: Command line based, SMTP email agent
 net-mail/serialmail 0.75-r5: A serialmail is a collection of tools for passing mail across serial links
