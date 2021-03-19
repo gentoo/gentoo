@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,13 +6,14 @@ EAPI=7
 inherit autotools
 
 DESCRIPTION="The libdbi-drivers project maintains drivers for libdbi"
-SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${P}/${P}.tar.gz"
 HOMEPAGE="http://libdbi-drivers.sourceforge.net/"
-LICENSE="LGPL-2.1"
+SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${P}/${P}.tar.gz"
 
-IUSE="doc firebird mysql oci8 postgres +sqlite static-libs"
+LICENSE="LGPL-2.1"
+SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86"
-SLOT=0
+IUSE="doc firebird mysql oci8 postgres +sqlite static-libs"
+
 REQUIRED_USE="|| ( mysql postgres sqlite firebird oci8 )"
 RESTRICT="firebird? ( bindist )"
 
@@ -29,10 +30,11 @@ BDEPEND="doc? ( app-text/openjade )"
 DOCS=( AUTHORS ChangeLog NEWS README README.osx TODO )
 
 PATCHES=(
-		#"${FILESDIR}"/${P}-fix-ac-macro.patch \
-		#"${FILESDIR}"/${PN}-0.8.3-oracle-build-fix.patch \
-		#"${FILESDIR}"/${PN}-0.8.3-firebird-fix.patch
-		"${FILESDIR}"/${PN}-0.9.0-doc-build-fix.patch
+	#"${FILESDIR}"/${P}-fix-ac-macro.patch
+	#"${FILESDIR}"/${PN}-0.8.3-oracle-build-fix.patch
+	#"${FILESDIR}"/${PN}-0.8.3-firebird-fix.patch
+	"${FILESDIR}"/${PN}-0.9.0-doc-build-fix.patch
+	"${FILESDIR}"/${PN}-0.9.0-slibtool-libdir.patch
 )
 
 pkg_setup() {
@@ -83,5 +85,5 @@ src_test() {
 src_install() {
 	default
 
-	find "${D}" -name '*.la' -type f -delete || die
+	find "${ED}" -name '*.la' -type f -delete || die
 }
