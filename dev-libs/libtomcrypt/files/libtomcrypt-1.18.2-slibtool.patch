@@ -1,0 +1,72 @@
+https://github.com/libtom/libtomcrypt/pull/433
+https://bugs.gentoo.org/777084
+
+From ccc18b9eda52c31cc70a3e46eb33b87b3c076d65 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@fredslev.dk>
+Date: Mon, 13 Aug 2018 19:20:37 -0700
+Subject: [PATCH] makefile.shared: Support rlibtool.
+
+When building libtomcrypt with rlibtool instead of libtool it will fail
+when rlibtool fails to parse the generated libtool which does not exist.
+
+Since rlibtool should be the default choice for most slibtool users in
+the future this patch will use slibtool-shared instead which will
+correctly build the shared library.
+
+This could also help build the shared library on additional targets and
+hosts where the stock libtool does not have shared libraries enabled.
+---
+ makefile.shared | 17 +++++++++++------
+ 1 file changed, 11 insertions(+), 6 deletions(-)
+
+diff --git a/makefile.shared b/makefile.shared
+index 98ec2b501..c72f2ac8d 100644
+--- a/makefile.shared
++++ b/makefile.shared
+@@ -16,19 +16,24 @@
+ 
+ PLATFORM := $(shell uname | sed -e 's/_.*//')
+ 
++ifeq ($(LIBTOOL),rlibtool)
++  TGTLIBTOOL:=slibtool-shared
++endif
++
+ ifndef LIBTOOL
+   ifeq ($(PLATFORM), Darwin)
+     LIBTOOL:=glibtool
+   else
+     LIBTOOL:=libtool
+   endif
++  TGTLIBTOOL=$(LIBTOOL)
+ endif
+ ifeq ($(PLATFORM), CYGWIN)
+   NO_UNDEFINED:=-no-undefined
+ endif
+-LTCOMPILE = $(LIBTOOL) --mode=compile --tag=CC $(CC)
+-INSTALL_CMD = $(LIBTOOL) --mode=install install
+-UNINSTALL_CMD = $(LIBTOOL) --mode=uninstall rm
++LTCOMPILE = $(TGTLIBTOOL) --mode=compile --tag=CC $(CC)
++INSTALL_CMD = $(TGTLIBTOOL) --mode=install install
++UNINSTALL_CMD = $(TGTLIBTOOL) --mode=uninstall rm
+ 
+ #Output filenames for various targets.
+ ifndef LIBNAME
+@@ -49,15 +54,15 @@ src/ciphers/aes/aes_enc.o: src/ciphers/aes/aes.c src/ciphers/aes/aes_tab.c
+ LOBJECTS = $(OBJECTS:.o=.lo)
+ 
+ $(LIBNAME): $(OBJECTS)
+-	$(LIBTOOL) --mode=link --tag=CC $(CC) $(LTC_LDFLAGS) $(LOBJECTS) $(EXTRALIBS) -o $@ -rpath $(LIBPATH) -version-info $(VERSION_LT) $(NO_UNDEFINED)
++	$(TGTLIBTOOL) --mode=link --tag=CC $(CC) $(LTC_LDFLAGS) $(LOBJECTS) $(EXTRALIBS) -o $@ -rpath $(LIBPATH) -version-info $(VERSION_LT) $(NO_UNDEFINED)
+ 
+ test: $(call print-help,test,Builds the library and the 'test' application to run all self-tests) $(LIBNAME) $(TOBJECTS)
+-	$(LIBTOOL) --mode=link --tag=CC $(CC) $(LTC_LDFLAGS) -o $(TEST) $(TOBJECTS) $(LIBNAME) $(EXTRALIBS)
++	$(TGTLIBTOOL) --mode=link --tag=CC $(CC) $(LTC_LDFLAGS) -o $(TEST) $(TOBJECTS) $(LIBNAME) $(EXTRALIBS)
+ 
+ # build the demos from a template
+ define DEMO_template
+ $(1): $(call print-help,$(1),Builds the library and the '$(1)' demo) demos/$(1).o $$(LIBNAME)
+-	$$(LIBTOOL) --mode=link --tag=CC $$(CC) $$(LTC_LDFLAGS) $$^ $$(EXTRALIBS) -o $(1)
++	$$(TGTLIBTOOL) --mode=link --tag=CC $$(CC) $$(LTC_LDFLAGS) $$^ $$(EXTRALIBS) -o $(1)
+ endef
+ 
+ $(foreach demo, $(strip $(DEMOS)), $(eval $(call DEMO_template,$(demo))))

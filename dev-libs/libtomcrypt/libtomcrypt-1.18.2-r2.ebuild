@@ -31,6 +31,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-slibtool.patch
+)
+
 mymake() {
 	# Standard boilerplate
 	# Upstream use homebrewed makefiles
