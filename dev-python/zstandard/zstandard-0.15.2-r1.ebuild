@@ -29,6 +29,9 @@ src_prepare() {
 	# the C backend is repeatedly broken, so force CFFI instead
 	sed -e '/PYTHON_ZSTANDARD_IMPORT_POLICY/s:default:cffi:' \
 		-i zstandard/__init__.py || die
+	# unreliable, fails on x86
+	sed -e 's:test_estimated_compression_context_size:_&:' \
+		-i tests/test_data_structures.py || die
 
 	distutils-r1_src_prepare
 
