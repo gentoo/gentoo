@@ -1,19 +1,18 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools desktop
 
-DESCRIPTION=" An 7x7 type midi drum sequencer for Linux"
-HOMEPAGE="http://www-ljk.imag.fr/membres/Pierre.Saramito/tk707/"
+DESCRIPTION="An 7x7 type midi drum sequencer for Linux"
+HOMEPAGE="https://www-ljk.imag.fr/membres/Pierre.Saramito/tk707/"
 SRC_URI="mirror://gentoo/${P}.tar.gz
 	mirror://gentoo/${P}-updated_tcl2c.patch.gz"
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 
 KEYWORDS="~amd64 ~ppc ~x86"
-
-IUSE=""
 
 RDEPEND="
 	>=media-libs/alsa-lib-0.9.0
