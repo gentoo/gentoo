@@ -19,7 +19,8 @@ HOMEPAGE="https://www.votca.org/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE=""
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-cpp/eigen-3.3
@@ -37,6 +38,7 @@ DOCS=( NOTICE README.rst CHANGELOG.rst )
 src_configure() {
 	local mycmakeargs=(
 		-DINSTALL_RC_FILES=OFF
+		-DENABLE_TESTING=$(usex test)
 	)
 	cmake_src_configure
 }
