@@ -24,7 +24,7 @@ distutils_enable_tests --install pytest
 
 src_prepare() {
 	# no, seriously, you don't need to install it yourself
-	sed -i -e '/pip install/d' src/tests/test_integration.py || die
+	sed -i -e '/pip/d' src/tests/test_integration.py || die
 
 	distutils-r1_src_prepare
 }
