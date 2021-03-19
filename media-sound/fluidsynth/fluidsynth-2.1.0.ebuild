@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ CMAKE_ECLASS=cmake
 inherit cmake-multilib systemd
 
 DESCRIPTION="Software real-time synthesizer based on the Soundfont 2 specifications"
-HOMEPAGE="http://www.fluidsynth.org/"
+HOMEPAGE="https://www.fluidsynth.org"
 SRC_URI="https://github.com/FluidSynth/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
