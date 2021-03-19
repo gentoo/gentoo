@@ -35,6 +35,7 @@ RDEPEND="
 	gpm? ( backend-fbcon? ( sys-libs/gpm ) )
 	joystick? ( !backend-sdl? ( media-libs/libjsw ) )
 	png? ( media-libs/libpng:0= )
+	pulseaudio? ( media-sound/pulseaudio )
 	xml? ( dev-libs/libxml2:2 )
 	zlib? ( sys-libs/zlib )"
 DEPEND="${RDEPEND}
