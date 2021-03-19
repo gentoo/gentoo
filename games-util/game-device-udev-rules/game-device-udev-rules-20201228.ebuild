@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ inherit udev
 # also has its own rules and more may be added later so we version it
 # independently.
 
-STEAM_COMMIT="3f9f151f8bb3caed0bee9e68d421562166605fd9"
+STEAM_COMMIT="ebc0f6a9e30bc0db2344df298c061c2c3b01776f"
 MY_P="steam-devices-${STEAM_COMMIT}"
 
 DESCRIPTION="udev rules for various game hardware devices"
