@@ -9,12 +9,12 @@ DESCRIPTION="The web browser from Microsoft"
 HOMEPAGE="https://www.microsoft.com/en-us/edge"
 
 if [[ ${PN} == microsoft-edge ]]; then
-	KEYWORDS="-* amd64"
 	MY_PN=${PN}-stable
 else
-	KEYWORDS="-* ~amd64"
 	MY_PN=${PN}
 fi
+
+KEYWORDS="-* ~amd64"
 
 MY_P="${MY_PN}_${PV}-1"
 

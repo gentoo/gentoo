@@ -13,12 +13,12 @@ DESCRIPTION="The web browser from Google"
 HOMEPAGE="https://www.google.com/chrome"
 
 if [[ ${PN} == google-chrome ]]; then
-	KEYWORDS="-* amd64"
 	MY_PN=${PN}-stable
 else
-	KEYWORDS="-* ~amd64"
 	MY_PN=${PN}
 fi
+
+KEYWORDS="-* amd64"
 
 MY_P="${MY_PN}_${PV}-1"
 

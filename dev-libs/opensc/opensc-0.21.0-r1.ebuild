@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -36,10 +36,6 @@ REQUIRED_USE="
 	ctapi? ( !pcsc-lite !openct )
 	|| ( pcsc-lite openct ctapi )"
 
-PATCHES=(
-	"${FILESDIR}/${P}-gcc10.patch"
-)
-
 src_prepare() {
 	default
 	elibtoolize
@@ -67,4 +63,6 @@ src_configure() {
 src_install() {
 	default
 	find "${D}" -name '*.la' -delete || die
+	insinto /etc/pkcs11/modules/
+	doins "${FILESDIR}/${PN}.module"
 }
