@@ -3863,7 +3863,7 @@ dev-go/goversion 1.2.0: Print version used to build Go executables
 dev-go/gox 1.0.1: A dead simple, no frills Go cross compile tool
 dev-go/licenseclassifier 0_pre20200402 9999: A set of tools that analyzes text to determine type of license
 dev-go/qr 0_p20161121: Basic QR code library for Go
-dev-go/qt 0_pre20200904 0_pre20200904-r1: Qt5 Go bindings
+dev-go/qt 0_pre20200904-r1: Qt5 Go bindings
 dev-go/sanitized-anchor-name 0_pre20150822 0_pre20151027 9999: A Go function to provide sanitized anchor names
 dev-go/twofactor 0_p20180418: Two-factor authentication library for Go
 dev-haskell/abstract-deque 0.3: Abstract, parameterized interface to mutable Deques
@@ -17388,14 +17388,14 @@ sys-cluster/k9scli 0.20.5 0.21.2 0.22.1: terminal based UI to manage kubernetes 
 sys-cluster/keepalived 2.0.20 2.1.5: A strong & robust keepalive facility to the Linux Virtual Server project
 sys-cluster/knem 1.1.3-r2 9999: High-Performance Intra-Node MPI Communication
 sys-cluster/kronosnet 1.19: Network abstraction layer designed for High Availability use cases
-sys-cluster/kube-apiserver 1.18.16 1.19.8 1.20.4: Kubernetes API server
-sys-cluster/kube-controller-manager 1.18.16 1.19.8 1.20.4: Kubernetes Controller Manager
-sys-cluster/kube-proxy 1.18.16 1.19.8 1.20.4: Kubernetes Proxy service
+sys-cluster/kube-apiserver 1.18.16 1.18.17 1.19.8 1.19.9 1.20.4 1.20.5: Kubernetes API server
+sys-cluster/kube-controller-manager 1.18.16 1.18.17 1.19.8 1.19.9 1.20.4 1.20.5: Kubernetes Controller Manager
+sys-cluster/kube-proxy 1.18.16 1.18.17 1.19.8 1.19.9 1.20.4 1.20.5: Kubernetes Proxy service
 sys-cluster/kube-router 0.4.0 1.0.1 1.1.0 1.1.1: A turnkey solution for Kubernetes networking
-sys-cluster/kube-scheduler 1.18.16 1.19.8 1.20.4: Kubernetes Scheduler
-sys-cluster/kubeadm 1.18.16 1.19.8 1.20.4: CLI to Easily bootstrap a secure Kubernetes cluster
-sys-cluster/kubectl 1.18.16 1.19.8 1.20.4: CLI to run commands against Kubernetes clusters
-sys-cluster/kubelet 1.18.16 1.19.8 1.20.4: Kubernetes Node Agent
+sys-cluster/kube-scheduler 1.18.16 1.18.17 1.19.8 1.19.9 1.20.4 1.20.5: Kubernetes Scheduler
+sys-cluster/kubeadm 1.18.16 1.18.17 1.19.8 1.19.9 1.20.4 1.20.5: CLI to Easily bootstrap a secure Kubernetes cluster
+sys-cluster/kubectl 1.18.16 1.18.17 1.19.8 1.19.9 1.20.4 1.20.5: CLI to run commands against Kubernetes clusters
+sys-cluster/kubelet 1.18.16 1.18.17 1.19.8 1.19.9 1.20.4 1.20.5: Kubernetes Node Agent
 sys-cluster/kubeletctl 1.5 1.6: A client for kubelet
 sys-cluster/legion 16.08.0-r1 16.10.0 17.02.0 17.05.0 17.08.0 17.10.0 18.02.0 18.05.0 18.12.0 19.06.0 9999: A data-centric parallel programming system
 sys-cluster/libcircle 0.3.0: API for distributing embarrassingly parallel workloads using self-stabilization

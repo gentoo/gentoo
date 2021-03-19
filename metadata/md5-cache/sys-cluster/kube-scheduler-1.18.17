@@ -1,0 +1,16 @@
+BDEPEND=>=dev-lang/go-1.12 app-arch/unzip
+DEFINED_PHASES=compile install postinst unpack
+DEPEND=acct-group/kube-scheduler acct-user/kube-scheduler
+DESCRIPTION=Kubernetes Scheduler
+EAPI=7
+HOMEPAGE=https://kubernetes.io
+INHERIT=go-module
+IUSE=hardened
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=acct-group/kube-scheduler acct-user/kube-scheduler !sys-cluster/kubernetes
+RESTRICT=strip test
+SLOT=0
+SRC_URI=https://github.com/kubernetes/kubernetes/archive/v1.18.17.tar.gz -> kubernetes-1.18.17.tar.gz
+_eclasses_=go-module	92660621959e7fab813173772987588b
+_md5_=eb80620979c08e10a7eeb6a36451ad24
