@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="
 	>=dev-lang/erlang-16
 	virtual/opencl
-	dev-util/rebar
+	dev-util/rebar:0
 "
 DEPEND="${RDEPEND}"
 
