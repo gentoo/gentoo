@@ -22,13 +22,13 @@ SRC_URI_BASE=(
 )
 
 if [[ ${PN} == opera ]]; then
-	KEYWORDS="-* amd64"
 	MY_PN=${PN}-stable
 	SRC_URI_BASE=( "${SRC_URI_BASE[@]/%//desktop}" )
 else
-	KEYWORDS="-* ~amd64"
 	MY_PN=${PN}
 fi
+
+KEYWORDS="-* ~amd64"
 
 FFMPEG_VERSION="89.0.4381.8"
 
@@ -48,6 +48,7 @@ RDEPEND="
 	dev-libs/glib:2
 	dev-libs/nspr
 	dev-libs/nss
+	gnome-base/gsettings-desktop-schemas
 	media-libs/alsa-lib
 	media-libs/mesa[gbm]
 	net-misc/curl
