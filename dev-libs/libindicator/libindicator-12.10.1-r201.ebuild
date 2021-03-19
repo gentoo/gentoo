@@ -29,6 +29,7 @@ BDEPEND="
 PATCHES=(
 	# Fixed version of https://bugs.launchpad.net/libindicator/+bug/1502925
 	"${FILESDIR}"/${PN}-12.10.1-nonbash.patch
+	"${FILESDIR}"/${PN}-12.10.1-no-werror.patch
 )
 
 src_prepare() {
