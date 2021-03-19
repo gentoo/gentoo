@@ -30,6 +30,7 @@ DOCS=( README.txt )
 PATCHES=(
 	"${DISTDIR}/${PN}-19.06.00-audacity-portmixer.patch"
 	"${FILESDIR}"/${PN}-19.06.00-AR.patch # bug #720966, trigger reconf
+	"${FILESDIR}"/${PN}-19.06.00-slibtool.patch
 )
 
 src_prepare() {
