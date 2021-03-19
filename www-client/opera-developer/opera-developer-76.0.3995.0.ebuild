@@ -22,22 +22,22 @@ SRC_URI_BASE=(
 )
 
 if [[ ${PN} == opera ]]; then
-	KEYWORDS="-* amd64"
 	MY_PN=${PN}-stable
 	SRC_URI_BASE=( "${SRC_URI_BASE[@]/%//desktop}" )
 else
-	KEYWORDS="-* ~amd64"
 	MY_PN=${PN}
 fi
 
-FFMPEG_VERSION="89.0.4381.8"
+KEYWORDS="-* ~amd64"
+
+FFMPEG_VERSION="90.0.4412.3"
 
 SRC_URI="${SRC_URI_BASE[@]/%//${PV}/linux/${MY_PN}_${PV}_amd64.deb}
 	proprietary-codecs? (
 		https://dev.gentoo.org/~sultan/distfiles/www-client/opera/opera-ffmpeg-codecs-${FFMPEG_VERSION}.tar.xz
 	)"
 
-IUSE="+proprietary-codecs suid widevine"
+IUSE="+proprietary-codecs suid"
 RESTRICT="bindist mirror strip"
 
 RDEPEND="
@@ -48,6 +48,7 @@ RDEPEND="
 	dev-libs/glib:2
 	dev-libs/nspr
 	dev-libs/nss
+	gnome-base/gsettings-desktop-schemas
 	media-libs/alsa-lib
 	media-libs/mesa[gbm]
 	net-misc/curl
@@ -66,7 +67,6 @@ RDEPEND="
 	x11-libs/libXfixes
 	x11-libs/libXrandr
 	x11-libs/pango
-	widevine? ( www-plugins/chrome-binary-plugins )
 "
 
 QA_PREBUILT="*"
@@ -123,13 +123,6 @@ src_install() {
 	rm "${OPERA_HOME}/resources/ffmpeg_preload_config.json" || die
 	if use proprietary-codecs; then
 		mv lib_extra "${OPERA_HOME}"
-	fi
-
-	# symlink widevine
-	rm "${OPERA_HOME}/resources/widevine_config.json" || die
-	if use widevine; then
-		echo "[\"${EPREFIX}/usr/$(get_libdir)/chromium-browser/WidevineCdm\"]" > \
-			"${OPERA_HOME}/resources/widevine_config.json" || die
 	fi
 
 	# pax mark opera, bug #562038

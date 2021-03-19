@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="|| ( GPL-2 GPL-3 ) LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~hppa ~ia64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 ~hppa ~ia64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="cairo doc icu java jpeg lapack minimal nls openmp perl png prefix profile readline static-libs test tiff tk X"
 
 # One test required profiling in v4.0.2, check the upstream bug:
