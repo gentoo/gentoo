@@ -31,7 +31,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-12.10.1-nonbash.patch
 )
 
-
 src_prepare() {
 	default
 
