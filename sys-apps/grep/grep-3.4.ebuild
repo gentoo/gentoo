@@ -39,7 +39,7 @@ src_prepare() {
 
 src_configure() {
 	use static && append-ldflags -static
-	# don't link against libsigsegv even when available
+	# don't link against libsigsegv even when available, bug #673524
 	export ac_cv_libsigsegv=no
 	# Always use pkg-config to get lib info for pcre.
 	export ac_cv_search_pcre_compile=$(
