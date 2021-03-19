@@ -18163,7 +18163,7 @@ www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.10-r4: a free, open source web browser
 www-client/opera 74.0.3911.232: A fast and secure web browser
-www-client/opera-beta 75.0.3969.14 75.0.3969.35: A fast and secure web browser
+www-client/opera-beta 75.0.3969.60: A fast and secure web browser
 www-client/opera-developer 75.0.3967.0 76.0.3974.0 76.0.3981.0: A fast and secure web browser
 www-client/otter 1.0.02 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
