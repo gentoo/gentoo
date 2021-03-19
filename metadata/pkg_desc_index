@@ -5693,7 +5693,7 @@ dev-libs/nmeap 0.3-r1: Extensible NMEA-0183 (GPS) data parser in standard C
 dev-libs/npth 1.6-r1: New GNU Portable Threads Library
 dev-libs/nsgenbind 0.6-r2 0.7-r1 0.8-r1: Generate Javascript-to-DOM bindings from w3c webidl files
 dev-libs/nspr 4.26 4.27 4.28 4.29 4.30: Netscape Portable Runtime
-dev-libs/nss 3.58-r2 3.60.1 3.61 3.62: Mozilla's Network Security Services library that implements PKI support
+dev-libs/nss 3.58-r2 3.62 3.63: Mozilla's Network Security Services library that implements PKI support
 dev-libs/nss-pem 1.0.5 1.0.6 1.0.7: PEM file reader for Network Security Services (NSS)
 dev-libs/nsync 1.20.1 1.24.0: C library that exports various synchronization primitives, such as mutexes
 dev-libs/ntl 11.4.3 11.4.4: High-performance and portable C++ number theory library
