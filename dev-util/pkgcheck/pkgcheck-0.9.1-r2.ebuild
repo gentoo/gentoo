@@ -10,7 +10,7 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/pkgcore/pkgcheck.git"
 	inherit git-r3
 else
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x64-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x64-macos"
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 fi
 
@@ -26,7 +26,8 @@ if [[ ${PV} == *9999 ]]; then
 		~sys-apps/pkgcore-9999[${PYTHON_USEDEP}]"
 else
 	RDEPEND="
-		>=dev-python/snakeoil-0.9.4[${PYTHON_USEDEP}]
+		>=dev-python/snakeoil-0.9.3[${PYTHON_USEDEP}]
+		<sys-apps/pkgcore-0.11.6[${PYTHON_USEDEP}]
 		>=sys-apps/pkgcore-0.11.4[${PYTHON_USEDEP}]"
 fi
 RDEPEND+="
@@ -34,7 +35,7 @@ RDEPEND+="
 	dev-python/lazy-object-proxy[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
 	dev-python/pathspec[${PYTHON_USEDEP}]
-	>=dev-python/tree-sitter-0.19.0[${PYTHON_USEDEP}]
+	<dev-python/tree-sitter-0.19.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
