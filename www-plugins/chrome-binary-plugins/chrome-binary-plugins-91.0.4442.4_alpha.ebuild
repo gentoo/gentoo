@@ -13,21 +13,20 @@ case ${PV} in
 		SLOT="unstable"
 		CHROMEDIR="opt/google/chrome-${SLOT}"
 		MY_PV=${PV%_alpha}-1
-		KEYWORDS="-* ~amd64"
 		;;
 	*_beta*)
 		SLOT="beta"
 		CHROMEDIR="opt/google/chrome-${SLOT}"
 		MY_PV=${PV%_beta}-1
-		KEYWORDS="-* ~amd64"
 		;;
 	*)
 		SLOT="stable"
 		CHROMEDIR="opt/google/chrome"
 		MY_PV=${PV}-1
-		KEYWORDS="-* amd64"
 		;;
 esac
+
+KEYWORDS="-* ~amd64"
 
 MY_PN="google-chrome-${SLOT}"
 MY_P="${MY_PN}_${MY_PV}"
