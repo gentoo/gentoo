@@ -15499,7 +15499,7 @@ net-nds/jxplorer 3.3.1 3.3.1.1 3.3.1.2: A fully functional ldap browser written 
 net-nds/ldapvi 1.7_p20101214: Manage LDAP entries with a text editor
 net-nds/led 1.111: A general purpose LDAP editor
 net-nds/nsscache 0.39: commandline tool to sync directory services to local cache
-net-nds/openldap 2.4.57: LDAP suite of application and development tools
+net-nds/openldap 2.4.57 2.4.58: LDAP suite of application and development tools
 net-nds/phpldapadmin 1.2.5: phpLDAPadmin is a web-based tool for managing all aspects of your LDAP server
 net-nds/rpcbind 1.2.5 9999: portmap replacement which supports RPC over various protocols
 net-nds/shelldap 1.5.1: A handy shell-like interface for browsing LDAP servers and editing their content
@@ -19204,4 +19204,4 @@ xfce-extra/xfce4-wavelan-plugin 0.6.2: A panel plug-in to display wireless inter
 xfce-extra/xfce4-weather-plugin 0.10.2 0.11.0: A weather plug-in for the Xfce desktop environment
 xfce-extra/xfce4-whiskermenu-plugin 2.5.3: Alternate application launcher for Xfce
 xfce-extra/xfce4-xkb-plugin 0.8.2: XKB layout switching panel plug-in for the Xfce desktop environment
-xfce-extra/xfdashboard 0.8.0 0.8.1 0.9.0: Maybe a GNOME shell like dashboard for the Xfce desktop environment
+xfce-extra/xfdashboard 0.8.0 0.8.1 0.9.0 0.9.1: Maybe a GNOME shell like dashboard for the Xfce desktop environment
