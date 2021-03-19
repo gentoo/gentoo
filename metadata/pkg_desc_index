@@ -12570,8 +12570,8 @@ mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for 
 mail-client/roundcube 1.4.11 9999: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/s-nail 14.9.19 14.9.22: Enhanced mailx-compatible mail client based on Heirloom mailx (nail)
 mail-client/sylpheed 3.7.0-r1: A lightweight email client and newsreader
-mail-client/thunderbird 78.8.0 78.8.1: Thunderbird Mail Client
-mail-client/thunderbird-bin 78.8.0 78.8.1: Thunderbird Mail Client
+mail-client/thunderbird 78.8.1: Thunderbird Mail Client
+mail-client/thunderbird-bin 78.8.1: Thunderbird Mail Client
 mail-client/trojita 0.7-r6 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/afew 3.0.0 3.0.1: Initial tagging script for Notmuch
