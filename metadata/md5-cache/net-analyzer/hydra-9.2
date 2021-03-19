@@ -4,11 +4,12 @@ DEPEND=gtk? ( dev-libs/atk dev-libs/glib:2 x11-libs/gdk-pixbuf:2 x11-libs/gtk+:2
 DESCRIPTION=Parallelized network login hacker
 EAPI=7
 HOMEPAGE=https://github.com/vanhauser-thc/thc-hydra
+INHERIT=toolchain-funcs
 IUSE=debug firebird gcrypt gtk idn libressl memcached mongodb mysql ncurses oracle pcre postgres rdp libssh subversion zlib
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-3
 RDEPEND=gtk? ( dev-libs/atk dev-libs/glib:2 x11-libs/gdk-pixbuf:2 x11-libs/gtk+:2 ) firebird? ( dev-db/firebird ) gcrypt? ( dev-libs/libgcrypt ) idn? ( net-dns/libidn:0= ) !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) memcached? ( dev-libs/libmemcached[sasl] ) mongodb? ( dev-libs/mongo-c-driver ) mysql? ( dev-db/mysql-connector-c:0= ) ncurses? ( sys-libs/ncurses:= ) oracle? ( dev-db/oracle-instantclient-basic ) pcre? ( dev-libs/libpcre ) postgres? ( dev-db/postgresql:* ) rdp? ( net-misc/freerdp ) libssh? ( >=net-libs/libssh-0.4.0 ) subversion? ( dev-vcs/subversion ) zlib? ( sys-libs/zlib )
 SLOT=0
 SRC_URI=https://github.com/vanhauser-thc/thc-hydra/archive/v9.2.tar.gz -> hydra-9.2.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=8393228f2380561eb10a17a4ce8af57c
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=be7ced163174443f332d552563a8c42f
