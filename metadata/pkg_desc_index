@@ -11118,6 +11118,7 @@ dev-vcs/git-big-picture 1.0.0 1.1.1: Visualization tool for Git repositories
 dev-vcs/git-cola 3.5-r1 3.8 3.9: The highly caffeinated git GUI
 dev-vcs/git-crypt 0.6.0: transparent file encryption in git
 dev-vcs/git-deploy 6.0.1_p20131024-r1: make deployments so easy that you'll let new hires do them on their first day
+dev-vcs/git-extras 6.1.0: Git utilities -- repo summary, repl, changelog population, author commit percentages and more
 dev-vcs/git-flow 1.12.3: Git extensions to provide high-level repository operations
 dev-vcs/git-lfs 2.11.0 2.13.1 9999: Command line extension and specification for managing large files with git
 dev-vcs/git-mailz 0.14: Send a collection of patches as emails
