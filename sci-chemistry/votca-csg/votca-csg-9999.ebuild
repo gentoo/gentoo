@@ -20,7 +20,8 @@ HOMEPAGE="https://www.votca.org/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="examples extras +gromacs hdf5"
+IUSE="examples extras +gromacs hdf5 test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	app-shells/bash:*
@@ -56,6 +57,7 @@ src_configure() {
 		-DCMAKE_DISABLE_FIND_PACKAGE_GROMACS=$(usex !gromacs)
 		-DCMAKE_DISABLE_FIND_PACKAGE_HDF5=$(usex !hdf5)
 		-DBUILD_CSGAPPS=$(usex extras)
+		-DENABLE_TESTING=$(usex test)
 	)
 	cmake_src_configure
 }
