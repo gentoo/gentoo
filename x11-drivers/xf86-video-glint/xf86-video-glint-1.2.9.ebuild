@@ -1,15 +1,15 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit xorg-2
+inherit xorg-3
 
 DESCRIPTION="GLINT/Permedia video driver"
 
 KEYWORDS="~alpha amd64 ~ia64 ppc sparc x86"
-IUSE=""
 
-RDEPEND=">=x11-base/xorg-server-1.0.99"
-DEPEND="${RDEPEND}
+RDEPEND="x11-base/xorg-server"
+DEPEND="
+	${RDEPEND}
 	x11-base/xorg-proto"
