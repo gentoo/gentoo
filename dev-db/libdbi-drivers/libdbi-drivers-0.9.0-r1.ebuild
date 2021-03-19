@@ -34,6 +34,7 @@ PATCHES=(
 	#"${FILESDIR}"/${PN}-0.8.3-oracle-build-fix.patch
 	#"${FILESDIR}"/${PN}-0.8.3-firebird-fix.patch
 	"${FILESDIR}"/${PN}-0.9.0-doc-build-fix.patch
+	"${FILESDIR}"/${PN}-0.9.0-slibtool-libdir.patch
 )
 
 pkg_setup() {
