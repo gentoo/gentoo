@@ -32,6 +32,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Marek Szuba <marecki@gentoo.org> (2021-03-19)
+# Depends on bundled out-of-date Qt5 libraries, and even with those
+# installed recent upstream versions fail to run. Moreover, we have now
+# got a source variant in the tree which, while still CLI-only for now,
+# is up to date and actually works.
+# Removal in 30 days. Bug #768228.
+mail-mta/protonmail-bridge-bin
+
 # Joonas Niilola <juippis@gentoo.org> (2021-03-16)
 # A library without consumers, unbuildable for years, ebuilds not 
 # touched in years either. Bugs #664776, #747592. Removal in ~30 days.
