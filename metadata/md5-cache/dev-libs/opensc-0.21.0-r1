@@ -4,6 +4,7 @@ DEPEND=zlib? ( sys-libs/zlib ) readline? ( sys-libs/readline:0= ) ssl? ( !libres
 DESCRIPTION=Libraries and applications to access smartcards
 EAPI=7
 HOMEPAGE=https://github.com/OpenSC/OpenSC/wiki
+INHERIT=bash-completion-r1 libtool
 IUSE=ctapi doc libressl openct notify +pcsc-lite readline secure-messaging ssl test zlib
 KEYWORDS=~alpha amd64 arm ~hppa ~ia64 ~m68k ppc ppc64 ~s390 ~sparc x86
 LICENSE=LGPL-2.1
@@ -11,6 +12,6 @@ RDEPEND=zlib? ( sys-libs/zlib ) readline? ( sys-libs/readline:0= ) ssl? ( !libre
 REQUIRED_USE=pcsc-lite? ( !openct !ctapi ) openct? ( !pcsc-lite !ctapi ) ctapi? ( !pcsc-lite !openct ) || ( pcsc-lite openct ctapi )
 RESTRICT=!test? ( test )
 SLOT=0
-SRC_URI=https://github.com/OpenSC/OpenSC/releases/download/0.20.0/opensc-0.20.0.tar.gz
-_eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=735511caa6fb8f721b08e4e44b7734f2
+SRC_URI=https://github.com/OpenSC/OpenSC/releases/download/0.21.0/opensc-0.21.0.tar.gz
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	be99724bde4274de21e581204e9d164a	libtool	f143db5a74ccd9ca28c1234deffede96
+_md5_=490c8d1b176a82122a18a384fe7b8b65
