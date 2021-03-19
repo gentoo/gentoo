@@ -32,7 +32,6 @@ if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64 ~x86"
 else
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
-	KEYWORDS=""
 fi
 
 RDEPEND="
