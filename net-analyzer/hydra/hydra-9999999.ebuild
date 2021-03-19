@@ -44,6 +44,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-9.2-respect-cflags-more.patch
+)
+
 src_prepare() {
 	default
 
