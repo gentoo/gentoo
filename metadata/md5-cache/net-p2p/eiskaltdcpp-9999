@@ -4,11 +4,12 @@ DEPEND=app-arch/bzip2 dev-libs/openssl:0= sys-apps/attr sys-libs/zlib virtual/li
 DESCRIPTION=Qt/DC++ based client for DirectConnect and ADC protocols
 EAPI=7
 HOMEPAGE=https://github.com/eiskaltdcpp/eiskaltdcpp
+INHERIT=cmake l10n lua-single xdg-utils toolchain-funcs git-r3
 IUSE=cli daemon dbus +dht examples gold gtk idn javascript libcanberra libnotify lua +minimal pcre +qt5 spell sqlite upnp lua_single_target_lua5-1 lua_single_target_lua5-2
 LICENSE=GPL-2 GPL-3
 PROPERTIES=live
 RDEPEND=app-arch/bzip2 dev-libs/openssl:0= sys-apps/attr sys-libs/zlib virtual/libiconv virtual/libintl cli? ( dev-lang/perl dev-perl/Data-Dump dev-perl/Term-ShellUI virtual/perl-Getopt-Long dev-perl/JSON-RPC ) daemon? ( dev-libs/jsoncpp:= ) gtk? ( dev-libs/glib:2 x11-libs/gtk+:3 x11-libs/pango x11-themes/hicolor-icon-theme libcanberra? ( media-libs/libcanberra ) libnotify? ( x11-libs/libnotify ) ) idn? ( net-dns/libidn ) lua? ( lua_single_target_lua5-1? ( dev-lang/lua:5.1 ) lua_single_target_lua5-2? ( dev-lang/lua:5.2 ) ) pcre? ( dev-libs/libpcre ) qt5? ( dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 dbus? ( dev-qt/qtdbus:5 ) javascript? ( dev-qt/qtdeclarative:5 dev-qt/qtscript:5 ) spell? ( app-text/aspell ) sqlite? ( dev-qt/qtsql:5[sqlite] ) ) upnp? ( net-libs/miniupnpc )
 REQUIRED_USE=dbus? ( qt5 ) javascript? ( qt5 ) libcanberra? ( gtk ) libnotify? ( gtk ) lua? ( ^^ ( lua_single_target_lua5-1 lua_single_target_lua5-2 ) ) spell? ( qt5 ) sqlite? ( qt5 )
 SLOT=0
-_eclasses_=cmake	314a813be2f09820e8978cdee941e501	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	git-r3	3e7ec3d6619213460c85e2aa48398441	l10n	8cdd85e169b835d518bc2fd59f780d8e	lua-single	f91b5656f00869c220a6e35ae0521c54	lua-utils	736947973cfbc9de01fdb8548f942f82	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=e8f3bb49606325024147c4fe14ae2d23
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	cmake	314a813be2f09820e8978cdee941e501	lua-utils	736947973cfbc9de01fdb8548f942f82	lua-single	f91b5656f00869c220a6e35ae0521c54	git-r3	3e7ec3d6619213460c85e2aa48398441
+_md5_=a3d586f3ec984d6a9d3d00af7955a52e

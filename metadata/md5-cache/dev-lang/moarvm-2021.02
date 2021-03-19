@@ -3,6 +3,7 @@ DEPEND=dev-libs/libatomic_ops >=dev-libs/libuv-1.26 dev-libs/libffi clang? ( >=s
 DESCRIPTION=A 6model-based VM for NQP and Rakudo Perl 6
 EAPI=7
 HOMEPAGE=http://moarvm.org
+INHERIT=flag-o-matic
 IUSE=asan clang debug doc +jit optimize static-libs ubsan
 KEYWORDS=~amd64 ~x86
 LICENSE=Artistic-2
@@ -10,5 +11,5 @@ RDEPEND=dev-libs/libatomic_ops >=dev-libs/libuv-1.26 dev-libs/libffi
 RESTRICT=test
 SLOT=0
 SRC_URI=http://moarvm.org/releases/MoarVM-2021.02.tar.gz
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=ef0e95a947fb792236912372b1c09025
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741
+_md5_=f7eb15f6e186a02e02518ef61a7840b6
