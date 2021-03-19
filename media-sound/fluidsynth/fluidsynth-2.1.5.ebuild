@@ -7,7 +7,7 @@ CMAKE_ECLASS=cmake
 inherit cmake-multilib systemd
 
 DESCRIPTION="Software real-time synthesizer based on the Soundfont 2 specifications"
-HOMEPAGE="http://www.fluidsynth.org/"
+HOMEPAGE="https://www.fluidsynth.org"
 SRC_URI="https://github.com/FluidSynth/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
