@@ -13,6 +13,7 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">facelessuser/mkdocs_pymdownx_material_extras</remote-id>
 		<remote-id type="pypi">mkdocs-pymdownx-material-extras</remote-id>
