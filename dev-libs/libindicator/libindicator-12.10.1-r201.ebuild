@@ -50,7 +50,7 @@ multilib_src_configure() {
 
 multilib_src_test() {
 	# bug #391179
-	Xemake check
+	virtx emake
 }
 
 multilib_src_install() {
