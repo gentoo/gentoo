@@ -1,0 +1,15 @@
+BDEPEND=dev-ml/dune dev-lang/ocaml
+DEFINED_PHASES=compile install postinst postrm prepare test
+DEPEND=app-emacs/auto-complete app-emacs/company-mode dev-ml/csexp:= dev-ml/yojson:= =dev-lang/ocaml-4.11*:= emacs? ( >=app-editors/emacs-23.1:* app-emacs/auto-complete app-emacs/company-mode ) >=dev-lang/ocaml-4:=[ocamlopt?]
+DESCRIPTION=Context sensitive completion for OCaml in Vim and Emacs
+EAPI=7
+HOMEPAGE=https://github.com/ocaml/merlin
+INHERIT=elisp-common dune
+IUSE=emacs +ocamlopt
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=app-emacs/auto-complete app-emacs/company-mode dev-ml/csexp:= dev-ml/yojson:= =dev-lang/ocaml-4.11*:= emacs? ( >=app-editors/emacs-23.1:* app-emacs/auto-complete app-emacs/company-mode ) >=dev-lang/ocaml-4:=[ocamlopt?]
+SLOT=0/4.1
+SRC_URI=https://github.com/ocaml/merlin/archive/v4.1.tar.gz -> merlin-4.1.tar.gz
+_eclasses_=elisp-common	d4b53ec63c580b993ed19445f411e1d2	dune	46e13a2340ab32b2ad8ae98b653695ea
+_md5_=7f716c102d084462d26dda1ba0a5c044

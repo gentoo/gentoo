@@ -5961,7 +5961,7 @@ dev-ml/macaque 0.7.4: DSL for SQL Queries in Caml
 dev-ml/markup 1.0.0: Error-recovering streaming HTML5 and XML parsers
 dev-ml/mccs 1.1.11: Multi Criteria CUDF Solver
 dev-ml/menhir 20190924: LR(1) parser generator for the OCaml language
-dev-ml/merlin 3.4.2 4.1: Context sensitive completion for OCaml in Vim and Emacs
+dev-ml/merlin 3.4.2-r1 4.1-r1: Context sensitive completion for OCaml in Vim and Emacs
 dev-ml/merlin-extend 0.3: SDK to extend Merlin
 dev-ml/mirage-clock 3.1.0: A lightweight and colourful test framework
 dev-ml/mmap 1.1.0: File mapping
