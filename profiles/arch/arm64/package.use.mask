@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-03-20)
+# Supports both 'neon32' and 'neon64'
+sys-libs/zlib-ng -cpu_flags_arm_neon
+
 # Patrick McLean <chutzpah@gentoo.org> (2021-02-25)
 # Requires unkeyworded dev-libs/pmdk, mask until keyworded
 sys-cluster/ceph pmdk rbd-rwl
