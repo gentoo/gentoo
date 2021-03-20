@@ -8766,7 +8766,7 @@ dev-python/pickleshare 0.7.5: A small 'shelve' like datastore with concurrency s
 dev-python/pid 3.0.4: Pidfile featuring stale detection and file-locking
 dev-python/piexif 1.1.3-r1: Exif manipulation with pure Python
 dev-python/pika 1.1.0: Pure-Python implementation of the AMQP
-dev-python/pikepdf 2.5.2 2.6.0 2.7.0 2.8.0 2.8.0_p1 2.8.0_p2 2.9.0: Python library to work with pdf files based on qpdf
+dev-python/pikepdf 2.5.2 2.6.0 2.7.0 2.8.0 2.8.0_p1 2.8.0_p2 2.9.0 2.9.1: Python library to work with pdf files based on qpdf
 dev-python/pilkit 2.0: A collection of utilities and processors for the Python Imaging Libary
 dev-python/pillow 8.1.1 8.1.2: Python Imaging Library (fork)
 dev-python/pip 21.0.1: Installs python packages -- replacement for easy_install
@@ -9253,7 +9253,7 @@ dev-python/soupsieve 2.2 2.2.1: A modern CSS selector implementation for Beautif
 dev-python/sparql-wrapper 1.8.5: Wrapper around a SPARQL service
 dev-python/speaklater 1.3-r1: Lazy strings for Python
 dev-python/speg 0.3-r1 0.3-r2: A PEG-based parser interpreter with memoization
-dev-python/sphinx 3.5.1 3.5.2: Python documentation generator
+dev-python/sphinx 3.5.1 3.5.2 3.5.3: Python documentation generator
 dev-python/sphinx-aiohttp-theme 0.1.6: Sphinx theme for aiohttp
 dev-python/sphinx-bootstrap-theme 0.8.0: Sphinx theme integrates the Bootstrap CSS / JavaScript framework
 dev-python/sphinx-epytext 0.0.4: Sphinx epytext extension
@@ -10986,7 +10986,7 @@ dev-util/patchutils 0.3.4 0.4.2: A collection of tools that operate on patch fil
 dev-util/patdiff 0.14.0: Colored patience diffs with word-level refinement
 dev-util/peg 0.1.18: Recursive-descent parser generators for C
 dev-util/perf 5.8 5.9.9 5.10.16 5.11: Userland tools for Linux Performance Counters
-dev-util/pkgcheck 0.7.7-r1 0.7.9-r1 0.7.9-r2 0.8.1-r2 0.8.2-r2 0.9.0-r2 0.9.1-r2 0.9.2-r1 0.9.3-r1 0.9.4 9999: pkgcore-based QA utility for ebuild repos
+dev-util/pkgcheck 0.7.7-r1 0.7.9-r1 0.7.9-r2 0.8.1-r2 0.8.2-r2 0.9.0-r2 0.9.1-r2 0.9.2-r1 0.9.3-r1 0.9.5 9999: pkgcore-based QA utility for ebuild repos
 dev-util/pkgconf 1.6.3 1.7.3-r1 1.7.4 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
 dev-util/pkgconfig 0.28-r2 0.28-r3 0.29.1 0.29.2 9999: Package config system that manages compile/link flags
 dev-util/pkgdev 0.1.1 0.1.2 9999: Collection of tools for Gentoo development
