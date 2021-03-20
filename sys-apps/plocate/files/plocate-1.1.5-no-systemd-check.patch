@@ -1,6 +1,6 @@
-diff -aur a/meson.build b/meson.build
---- a/meson.build	2021-03-05 16:35:00.411781507 -0500
-+++ b/meson.build	2021-03-05 16:35:41.641782317 -0500
+Unconditionally install systemd unit
+--- a/meson.build
++++ b/meson.build
 @@ -76,17 +76,9 @@
                 configuration: conf_data)
  install_man(updatedb_conf_man)
