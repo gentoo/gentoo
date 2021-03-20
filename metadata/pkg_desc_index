@@ -7883,7 +7883,7 @@ dev-php/agavi 1.0.8: PHP MVC application framework
 dev-php/awl 0.61: Andrew McMillan's Web Libraries
 dev-php/ca-bundle 1.1.3: Find the system CA bundle or fall back to the Mozilla one
 dev-php/cli-prompt 1.0.0 1.0.3: Allows you to prompt for user input on the command line
-dev-php/composer 2.0.11: Dependency Manager for PHP
+dev-php/composer 1.10.20 2.0.11: Dependency Manager for PHP
 dev-php/cphplib 0.51-r1: Cute PHP Library (cphplib)
 dev-php/doctrine 2.6.1 2.6.4: An object relational mapper for PHP
 dev-php/doctrine-instantiator 1.0.5 1.1.0 1.3.0 1.3.1 1.4.0: Utility to instantiate objects in PHP without invoking their constructors
@@ -9286,8 +9286,8 @@ dev-python/sphinxcontrib-serializinghtml 1.1.4: Sphinx extension which outputs o
 dev-python/sphinxcontrib-spelling 7.1.0: Sphinx spelling extension
 dev-python/sphinxcontrib-websupport 1.2.4: Sphinx websupport extension
 dev-python/spur 0.3.22: Run commands locally or over SSH using the same interface
-dev-python/spyder 4.2.3: The Scientific Python Development Environment
-dev-python/spyder-kernels 1.10.2: Kernels used by spyder on its ipython console
+dev-python/spyder 4.2.0 4.2.3: The Scientific Python Development Environment
+dev-python/spyder-kernels 1.10.0 1.10.2: Kernels used by spyder on its ipython console
 dev-python/spyder-line-profiler 0.2.1: Plugin to run the python line profiler from within the spyder editor
 dev-python/spyder-memory-profiler 0.2.1: Plugin to run the python memory_profiler from within the spyder editor
 dev-python/spyder-notebook 0.3.2: Jupyter notebook integration with Spyder
