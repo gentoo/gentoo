@@ -39,6 +39,7 @@ acct-group/colord 0: System group: colord
 acct-group/consul 0-r1: System group: consul
 acct-group/consul-template 0-r1: System group: consul-template
 acct-group/consul_exporter 0: System group: consul_exporter
+acct-group/coredns 0: A group for net-dns/coredns
 acct-group/croc 0: Group for net-misc/croc
 acct-group/crontab 0: System group: crontab
 acct-group/cvmfs 0-r1: Group for the CernVM-FS network file system
@@ -344,6 +345,7 @@ acct-user/colord 0: User for running the colord service
 acct-user/consul 0-r1: User for consul
 acct-user/consul-template 0-r1: User for consul-template
 acct-user/consul_exporter 0: user for consul_exporter
+acct-user/coredns 0: A user for net-dns/coredns
 acct-user/croc 0: User for net-misc/croc
 acct-user/cvmfs 0-r1: User for the CernVM-FS network file system
 acct-user/cyrus 0-r2: user for cyrus-imapd daemon
