@@ -2,7 +2,7 @@
 
 # Load environment settings from profile.env, which is created by
 # env-update from the files in /etc/env.d
-if [ -e /etc/profile.env ] ; then
+if [[ -e /etc/profile.env ]] ; then
 	. /etc/profile.env
 fi
 
@@ -22,7 +22,7 @@ umask 022
 # It is intentional in the following line to use || instead of -o.
 # This way the evaluation can be short-circuited and calling whoami is
 # avoided.
-if [ "$EUID" = "0" ] || [ "$USER" = "root" ] ; then
+if [[ "$EUID" = "0" ]] || [[ "$USER" = "root" ]] ; then
 	# Check to make sure ROOTPATH is sane before we use it.
 	# https://bugs.gentoo.org/656400
 	if [[ :${ROOTPATH}: == *:/usr/sbin:* ]]; then
@@ -35,7 +35,7 @@ unset ROOTPATH
 shopts=$-
 setopt nullglob
 for sh in /etc/profile.d/*.sh ; do
-	[ -r "$sh" ] && . "$sh"
+	[[ -r "${sh}" ]] && . "${sh}"
 done
 unsetopt nullglob
 set -$shopts
