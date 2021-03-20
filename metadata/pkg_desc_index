@@ -3835,6 +3835,7 @@ dev-games/simgear 2020.3.6 9999: Development library for simulation games
 dev-games/t4k-common 0.1.1: A library of code shared between tuxmath and tuxtype
 dev-games/tiled 1.4.3-r1: A general purpose tile map editor
 dev-games/wfmath 1.0.2: Worldforge math library
+dev-go/act 1.6.0: Automated Component Toolkit code generator
 dev-go/blackfriday 1.2_p20150720 1.4 9999: a markdown processor implemented in Go
 dev-go/coveraggregator 0_pre20170216-r1: Cover profile aggregator for golang
 dev-go/delve 1.3.2: A source-level debugger for the Go programming language
@@ -17108,6 +17109,7 @@ sys-apps/pcsc-slb-rf72-drv 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Rea
 sys-apps/pcsc-tools 1.5.6 1.5.7: PC/SC Architecture smartcard tools
 sys-apps/pick 4.0.0: a fuzzy search tool for the command-line
 sys-apps/pkgcore 0.10.13-r3 0.10.14-r3 0.11.2-r2 0.11.3-r2 0.11.4-r2 0.11.5-r2 0.11.6 9999: a framework for package management
+sys-apps/plocate 1.1.5: Posting locate is a much faster locate
 sys-apps/pmount 0.9.99_alpha-r6: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
 sys-apps/pnputils 0.1: Plug and Play BIOS utilities

@@ -7779,6 +7779,7 @@ sys-apps/pcsc-lite:libusb - Use dev-libs/libusb detection to hotplug new smartca
 sys-apps/pcsc-lite:policykit - Uses sys-auth/polkit to restrict access to smartcard readers or smartcars to given users.
 sys-apps/pcsc-lite:udev - Use virtual/libudev rules to handle devices' permissions and hotplug support. Unless you know what you're doing do not disable this flag on Linux kernels. This is provided as an option for completeness.
 sys-apps/pcsc-tools:network-cron - Monthly cronjob the update-smartcard_list script
+sys-apps/plocate:io-uring - Enable efficient I/O via sys-libs/liburing.
 sys-apps/policycoreutils:audit - Enable support for sys-process/audit and use the audit_* functions (like audit_getuid instead of getuid())
 sys-apps/portage:apidoc - Build html API documentation with sphinx-apidoc.
 sys-apps/portage:gentoo-dev - Enable features required for Gentoo ebuild development.
