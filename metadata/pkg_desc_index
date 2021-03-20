@@ -7974,7 +7974,7 @@ dev-php/sebastian-resource-operations 1.0.0 2.0.1: Provides a list of PHP built-
 dev-php/sebastian-type 1.1.3 1.1.4: Collection of value objects that represent the types of the PHP type system
 dev-php/sebastian-version 2.0.1: Helps with managing the version number of Git-hosted PHP projects
 dev-php/securimage 3.6.5: PHP captcha creator and validator library
-dev-php/semver 3.2.4: Semantic versioning utilities, constraint parsing, and checking
+dev-php/semver 1.4.2 1.5.1 1.7.0 1.7.1 3.2.4: Semantic versioning utilities, constraint parsing, and checking
 dev-php/simpletest 1.1.7: A PHP testing framework
 dev-php/smarty 3.1.39: A template engine for PHP
 dev-php/spdx-licenses 1.5.4: Tools for working with and validating SPDX licenses
