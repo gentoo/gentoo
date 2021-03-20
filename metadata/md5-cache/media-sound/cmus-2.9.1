@@ -1,0 +1,16 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=compile configure install
+DEPEND=sys-libs/ncurses:0=[unicode?] aac? ( media-libs/faad2 ) alsa? ( >=media-libs/alsa-lib-1.0.11 ) ao? ( media-libs/libao ) cddb? ( media-libs/libcddb ) cdio? ( dev-libs/libcdio-paranoia ) discid? ( media-libs/libdiscid ) elogind? ( sys-auth/elogind ) ffmpeg? ( media-video/ffmpeg:= ) flac? ( media-libs/flac ) jack? ( virtual/jack ) libsamplerate? ( media-libs/libsamplerate ) mad? ( >=media-libs/libmad-0.14 ) mikmod? ( media-libs/libmikmod:0 ) modplug? ( >=media-libs/libmodplug-0.7 ) mp4? ( >=media-libs/libmp4v2-1.9:0 ) musepack? ( >=media-sound/musepack-tools-444 ) opus? ( media-libs/opusfile ) pulseaudio? ( media-sound/pulseaudio ) systemd? ( sys-apps/systemd ) tremor? ( media-libs/tremor ) !tremor? ( vorbis? ( >=media-libs/libvorbis-1.0 ) ) wavpack? ( media-sound/wavpack )
+DESCRIPTION=Ncurses based music player with plugin support for many formats
+EAPI=7
+HOMEPAGE=https://cmus.github.io/
+INHERIT=bash-completion-r1 toolchain-funcs
+IUSE=aac alsa ao cddb cdio debug discid elogind examples ffmpeg +flac jack libsamplerate +mad mikmod modplug mp4 musepack opus oss pidgin pulseaudio systemd tremor +unicode +vorbis wavpack
+KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses:0=[unicode?] aac? ( media-libs/faad2 ) alsa? ( >=media-libs/alsa-lib-1.0.11 ) ao? ( media-libs/libao ) cddb? ( media-libs/libcddb ) cdio? ( dev-libs/libcdio-paranoia ) discid? ( media-libs/libdiscid ) elogind? ( sys-auth/elogind ) ffmpeg? ( media-video/ffmpeg:= ) flac? ( media-libs/flac ) jack? ( virtual/jack ) libsamplerate? ( media-libs/libsamplerate ) mad? ( >=media-libs/libmad-0.14 ) mikmod? ( media-libs/libmikmod:0 ) modplug? ( >=media-libs/libmodplug-0.7 ) mp4? ( >=media-libs/libmp4v2-1.9:0 ) musepack? ( >=media-sound/musepack-tools-444 ) opus? ( media-libs/opusfile ) pulseaudio? ( media-sound/pulseaudio ) systemd? ( sys-apps/systemd ) tremor? ( media-libs/tremor ) !tremor? ( vorbis? ( >=media-libs/libvorbis-1.0 ) ) wavpack? ( media-sound/wavpack ) pidgin? ( dev-python/dbus-python net-im/pidgin )
+REQUIRED_USE=tremor? ( vorbis ) mp4? ( aac )
+SLOT=0
+SRC_URI=https://github.com/cmus/cmus/archive/v2.9.1.tar.gz -> cmus-2.9.1.tar.gz
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	be99724bde4274de21e581204e9d164a
+_md5_=1823ada89bbcb2550c17ff773d7ca6bf

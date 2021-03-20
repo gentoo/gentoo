@@ -3,12 +3,13 @@ DEFINED_PHASES=install postinst postrm preinst prepare
 DEPEND=>=x11-libs/gtk+-2.14.0:2 dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=Streaming GTK+ Front-End based on Darkice Ice Streamer
 EAPI=7
-HOMEPAGE=http://darksnow.radiolivre.org
+HOMEPAGE=https://darksnow.radiolivre.org
+INHERIT=autotools desktop xdg
 KEYWORDS=amd64 ppc sparc x86
-LICENSE=GPL-2
+LICENSE=GPL-2+
 PDEPEND=>=media-sound/darkice-1.2
 RDEPEND=>=x11-libs/gtk+-2.14.0:2
 SLOT=0
-SRC_URI=http://darksnow.radiolivre.org/pacotes/darksnow-0.7.1.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	desktop	c0d27bf73aa08ca05b663dbd31fbef28	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=61544b87ca0bc489da5a83ff9f020520
+SRC_URI=https://darksnow.radiolivre.org/pacotes/darksnow-0.7.1.tar.gz
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9988ecbe04129214297a7bbf3d253710	desktop	c0d27bf73aa08ca05b663dbd31fbef28	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
+_md5_=9aa8c5b2b24d62b4a23d395dc68db39e

@@ -3,11 +3,12 @@ DEFINED_PHASES=install prepare
 DEPEND=>=media-libs/alsa-lib-0.9.0 >=dev-lang/tcl-8.4:0= >=dev-lang/tk-8.4:0=
 DESCRIPTION=An 7x7 type midi drum sequencer for Linux
 EAPI=7
-HOMEPAGE=http://www-ljk.imag.fr/membres/Pierre.Saramito/tk707/
+HOMEPAGE=https://www-ljk.imag.fr/membres/Pierre.Saramito/tk707/
+INHERIT=autotools desktop
 KEYWORDS=~amd64 ~ppc ~x86
-LICENSE=GPL-2
+LICENSE=GPL-2+
 RDEPEND=>=media-libs/alsa-lib-0.9.0 >=dev-lang/tcl-8.4:0= >=dev-lang/tk-8.4:0=
 SLOT=0
 SRC_URI=mirror://gentoo/tk707-0.8.tar.gz mirror://gentoo/tk707-0.8-updated_tcl2c.patch.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	desktop	c0d27bf73aa08ca05b663dbd31fbef28	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=45439ad8cec49f951b73cada94b8a5ad
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9988ecbe04129214297a7bbf3d253710	desktop	c0d27bf73aa08ca05b663dbd31fbef28
+_md5_=159f6c523b06dfda3112c3694e34bdef
