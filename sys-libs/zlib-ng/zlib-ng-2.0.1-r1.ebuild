@@ -69,3 +69,15 @@ src_configure() {
 
 	cmake_src_configure
 }
+
+src_install() {
+	cmake_src_install
+
+	if use compat ; then
+		ewarn "zlib-ng is experimental and replacing the system zlib is dangerous"
+		ewarn "Please be careful!"
+		ewarn
+		ewarn "The following link explains the guarantees (and what is NOT guaranteed):"
+		ewarn "https://github.com/zlib-ng/zlib-ng/blob/2.0.x/PORTING.md"
+	fi
+}
