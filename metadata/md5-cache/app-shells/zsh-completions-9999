@@ -1,11 +1,12 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=install postinst unpack
-DEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=Additional completion definitions for Zsh
-EAPI=6
+EAPI=7
 HOMEPAGE=https://github.com/zsh-users/zsh-completions
+INHERIT=git-r3
 LICENSE=BSD
 PROPERTIES=live
 RDEPEND=app-shells/zsh
 SLOT=0
 _eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441
-_md5_=4025dcdf6deded724423f2d9ad7f563a
+_md5_=19e1a5977600c59685defd49f70ca3de
