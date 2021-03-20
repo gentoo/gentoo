@@ -26,6 +26,7 @@
 		</flag>
 	</use>
 	<upstream>
+		<bugs-to>https://bugs.exim.org/describecomponents.cgi?product=PCRE</bugs-to>
 		<remote-id type="cpe">cpe:/a:pcre:pcre</remote-id>
 		<remote-id type="sourceforge">pcre</remote-id>
 	</upstream>
