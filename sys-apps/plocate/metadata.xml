@@ -2,16 +2,16 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>sam@gentoo.org</email>
-		<name>Sam James</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>arsen@aarsen.me</email>
 		<name>Arsen Arsenović</name>
 	</maintainer>
 	<maintainer type="person">
 		<email>jeffrey@icurse.nl</email>
 		<name>Jeffrey Lin</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
