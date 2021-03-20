@@ -11,12 +11,12 @@ SRC_URI="https://dev.gentoo.org/~ulm/emacs/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 
 BDEPEND="sys-apps/texinfo"
 
 DOCS="ChangeLog keyword-generation.sh"
 ELISP_TEXINFO="${PN}.texi"
-SITEFILE="50${PN}-gentoo-1.39.el"
+SITEFILE="50${PN}-gentoo-1.52.el"
 DOC_CONTENTS="Some optional features may require installation of additional
 	packages, like dev-python/docutils-glep for glep."
