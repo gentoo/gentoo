@@ -19,7 +19,7 @@ LICENSE="
 "
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
-IUSE="doc +futures +jit minimal +places +readline +threads +X +chez"
+IUSE="doc +chez +futures +jit minimal +places +readline +threads +X"
 
 REQUIRED_USE="futures? ( jit )"
 
