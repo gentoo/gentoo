@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_7 python3_8 )
+PYTHON_COMPAT=( python3_8 python3_9 )
+DISTUTILS_USE_SETUPTOOLS=no
 inherit distutils-r1 xdg-utils
 
 DESCRIPTION="audio library tagger, manager, and player for GTK+"
@@ -34,11 +35,11 @@ RDEPEND="dev-libs/keybinder:3[introspection]
 	udev? ( virtual/udev )"
 DEPEND="dev-util/intltool"
 
-S="${WORKDIR}/${PN}-release-${PV}/${PN}"
+S="${WORKDIR}/${PN}-release-${PV}"
 
 src_prepare() {
-	local qlconfig=${PN}/config.py
-
+	local qlconfig=quodlibet/config.py
+pwd
 	if ! use gstreamer; then
 		sed -i -e '/backend/s:gstbe:xinebe:' ${qlconfig} || die
 	fi
@@ -50,7 +51,7 @@ src_prepare() {
 
 src_install() {
 	distutils-r1_src_install
-	dodoc NEWS README
+	dodoc README.rst
 }
 
 pkg_postinst() {
