@@ -1,0 +1,51 @@
+#! /bin/sh
+set -e
+
+# check if we run on battery and if so then don't run
+if which on_ac_power >/dev/null 2>&1; then
+	ON_BATTERY=0
+	on_ac_power >/dev/null 2>&1 || ON_BATTERY=$?
+	if [ "${ON_BATTERY}" -eq 1 ]; then
+			exit 0
+	fi
+fi
+
+# check if we are already running (lockfile)
+LOCKFILE="/var/lock/plocate.daily.lock"
+if [ -e "${LOCKFILE}" ]; then
+	echo >&2 "Warning: \"${LOCKFILE}\" already present, not running updatedb."
+	exit 1
+fi
+touch "${LOCKFILE}"
+# trap the lockfile only if we really run the updatedb
+trap "rm -f ${LOCKFILE}" EXIT
+
+# source the user specified variables
+if [ -f /etc/plocate-cron.conf ]; then
+	. /etc/plocate-cron.conf
+fi
+
+# check the config file
+NODEVS=""
+if [ ! -f /etc/updatedb.conf ]; then
+	NODEVS=$(awk '$1 == "nodev" && $2 != "rootfs" { print $2 }' /proc/filesystems)
+fi
+
+# alter the priority of the updatedb process
+if [ -x /usr/bin/renice ]; then
+	/usr/bin/renice +${NICE:-19} -p $$ > /dev/null 2>&1
+fi
+if [ -x /usr/bin/ionice ] && /usr/bin/ionice -c3 true 2>/dev/null; then
+	/usr/bin/ionice -c${IONICE_CLASS:-2} -n${IONICE_PRIORITY:-7} -p $$ > /dev/null 2>&1
+fi
+
+# Cleanup old temp files from previous unsuccessful runs
+rm -f /var/lib/plocate/plocate.db.*
+
+# run the updatedb if possible
+if [ -x /usr/sbin/updatedb ]; then
+	/usr/sbin/updatedb -f "${NODEVS}"
+else
+	echo >&2 "Warning: \"/usr/sbin/updatedb\" is not executable, unable to run updatedb."
+	exit 0
+fi
