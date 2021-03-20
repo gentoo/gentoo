@@ -84,7 +84,7 @@ DEPEND="${RDEPEND}
 	dev-util/gperf
 	dev-util/ninja
 	dev-util/re2c
-	net-libs/nodejs
+	net-libs/nodejs[ssl]
 	sys-devel/bison
 "
 
