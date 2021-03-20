@@ -12,7 +12,7 @@ SRC_URI="https://plocate.sesse.net/download/${P}.tar.gz"
 LICENSE="GPL-2 GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="io-uring"
+IUSE="+io-uring"
 
 RDEPEND="
 	acct-group/locate
