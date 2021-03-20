@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -49,6 +49,10 @@ src_test() {
 
 	ebegin "Setting up test database"
 
+	local mysql_install_db="${EPREFIX}/usr/share/mariadb/scripts/mysql_install_db"
+	[[ ! -x "${mysql_install_db}" ]] && mysql_install_db="${EPREFIX}/usr/bin/mysql_install_db"
+	[[ ! -x "${mysql_install_db}" ]] && die "mysql_install_db command not found!"
+
 	local mysqld="${EPREFIX}/usr/sbin/mysqld"
 	local socket="${T}/mysql.sock"
 	local pidfile="${T}/mysql.pid"
@@ -58,24 +62,35 @@ src_test() {
 	mkdir -p "${datadir}" || die "Can't make mysql database dir";
 	chmod 755 "${datadir}" || die "Can't fix mysql database dir perms";
 
-	if $mysqld --help | grep -q MariaDB ; then
-		"${EPREFIX}"/usr/share/mysql/scripts/mysql_install_db \
-			--basedir="${EPREFIX}/usr" \
-			--datadir="${datadir}" \
-			--user=$(whoami) || die "Can't initalize database"
-	fi
+	"${mysql_install_db}" \
+		--basedir="${EPREFIX}/usr" \
+		--datadir="${datadir}" \
+		--user=$(whoami) \
+		|| die "Failed to initalize test database"
 
-	${mysqld} --no-defaults	--user=$(whoami) --skip-networking \
-							--socket="${socket}" \
-							--pid-file="${pidfile}" \
-							--datadir="${datadir}" &
-	maxtry=20
+	"${mysqld}" \
+		--no-defaults \
+		--user=$(whoami) \
+		--skip-networking \
+		--skip-grant \
+		--socket="${socket}" \
+		--pid-file="${pidfile}" \
+		--datadir="${datadir}" &
+
+	local maxtry=20
 	while ! [[ -S "${socket}" || "${maxtry}" -lt 1 ]] ; do
 		maxtry=$((${maxtry}-1))
 		echo -n "."
 		sleep 1
 	done
-	eend $?
+
+	local rc=1
+	[[ -S "${socket}" ]] && rc=0
+
+	eend ${rc}
+
+	[[ ${rc} -ne 0 ]] && die "Failed to start mysqld test instance"
+
 	export MYSQL_UNIX_PORT="${socket}"
 	perl-module_src_test
 	ebegin "Shutting down mysql test database"
