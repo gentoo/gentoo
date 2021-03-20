@@ -11,7 +11,12 @@ SRC_URI="minimal? ( https://download.racket-lang.org/installers/${PV}/${PN}-mini
 SRC_URI+=" !minimal? ( https://download.racket-lang.org/installers/${PV}/${P}-src-builtpkgs.tgz )"
 S="${WORKDIR}/${P}/src"
 
-LICENSE="GPL-3+ LGPL-3"
+# See https://blog.racket-lang.org/2019/11/completing-racket-s-relicensing-effort.html
+LICENSE="
+	|| ( MIT Apache-2.0 )
+	chez? ( Apache-2.0 )
+	!chez? ( LGPL-3 )
+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE="doc +futures +jit minimal +places +readline +threads +X +chez"
