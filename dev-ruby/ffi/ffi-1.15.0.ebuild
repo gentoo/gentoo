@@ -3,7 +3,7 @@
 
 EAPI=7
 
-USE_RUBY="ruby25 ruby26 ruby27"
+USE_RUBY="ruby25 ruby26 ruby27 ruby30"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -35,7 +35,10 @@ all_ruby_prepare() {
 	sed -i -e '/tasks/ s:^:#:' \
 		-e '/Gem::Tasks/,/end/ s:^:#:' Rakefile || die
 
-	sed -i -e '/require/c\require "./lib/ffi/version"' ${RUBY_FAKEGEM_GEMSPEC} || die
+	sed -e '/require/c\require "./lib/ffi/version"' \
+		-e 's/git ls-files -z/find * -print0/' \
+		-e '/^  lfs/,/^  end/ s:^:#:' \
+		-i ${RUBY_FAKEGEM_GEMSPEC} || die
 
 	# Fix Makefile for tests
 	sed -i -e '/CCACHE :=/ s:^:#:' \
