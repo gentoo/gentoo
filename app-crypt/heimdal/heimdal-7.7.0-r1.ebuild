@@ -73,6 +73,7 @@ PATCHES=(
 	"${FILESDIR}/heimdal_hcrypto.patch"
 	"${FILESDIR}/heimdal_build-headers-before-use.patch"
 	"${FILESDIR}/heimdal_fix-db60.patch"
+	"${FILESDIR}/heimdal_fix-autoconf-2.70.patch"
 )
 
 src_prepare() {
