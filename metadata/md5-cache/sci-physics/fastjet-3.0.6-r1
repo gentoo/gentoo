@@ -1,13 +1,15 @@
-DEFINED_PHASES=compile configure install prepare setup test
-DEPEND=cgal? ( sci-mathematics/cgal ) doc? ( app-doc/doxygen[dot] ) plugins? ( sci-physics/siscone:0= ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 plugins? ( virtual/fortran )
+BDEPEND=doc? ( app-doc/doxygen[dot] ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=compile configure install prepare setup
+DEPEND=cgal? ( sci-mathematics/cgal:= ) plugins? ( sci-physics/siscone:= ) plugins? ( virtual/fortran )
 DESCRIPTION=Fast implementation of several recombination jet algorithms
-EAPI=5
+EAPI=7
 HOMEPAGE=http://www.fastjet.fr/
-IUSE=cgal doc examples +plugins static-libs
+INHERIT=autotools flag-o-matic fortran-2
+IUSE=cgal doc examples +plugins
 KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2 QPL
-RDEPEND=cgal? ( sci-mathematics/cgal ) plugins? ( virtual/fortran )
+RDEPEND=cgal? ( sci-mathematics/cgal:= ) plugins? ( sci-physics/siscone:= ) plugins? ( virtual/fortran )
 SLOT=0
 SRC_URI=http://www.fastjet.fr/repo/fastjet-3.0.6.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	autotools-utils	961893b8004e6cf64fbef1cea6ed8bd2	desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	epatch	e8f1ec13660dc2f44b32775765d85e42	estack	055c42df72f76a4f45ec92b35e83cd56	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	fortran-2	b4796813ccda91c9c0d3463fc90aa969	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	multilib	d410501a125f99ffb560b0c523cd3d1e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=44947721331eb87625a9454a9c6c3e30
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9988ecbe04129214297a7bbf3d253710	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	fortran-2	b4796813ccda91c9c0d3463fc90aa969
+_md5_=821af05dcf6c94683029216bd92e84d7
