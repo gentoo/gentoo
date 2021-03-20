@@ -5652,7 +5652,7 @@ dev-libs/libvformat 1.13-r2: Library to read and write vcard files
 dev-libs/libvoikko 4.3 4.3.1: Spell checking, hyphenation and morphological analysis tool for Finnish language
 dev-libs/libvterm 0.0_pre20181126 0.1.1 0.1.2 0.1.3: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
 dev-libs/libvterm-neovim 0.0_pre20150309 0.0_pre20150621: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
-dev-libs/libwacom 1.1 1.7: Library for identifying Wacom tablets and their model-specific features
+dev-libs/libwacom 1.1 1.7 1.9: Library for identifying Wacom tablets and their model-specific features
 dev-libs/libwapcaplet 0.4.1-r2 0.4.2-r1 0.4.3-r1: string internment library, written in C
 dev-libs/libwbxml 0.11.7: Library and tools to parse, encode and handle WBXML documents
 dev-libs/libx86 1.1-r4: A hardware-independent library for executing real-mode x86 code
@@ -12903,7 +12903,7 @@ media-gfx/aview 1.3.0_rc1-r3: An ASCII Image Viewer
 media-gfx/blender 2.83.4-r1 2.83.10 2.83.12 2.90.1-r1 2.91.0 2.91.2: 3D Creation/Animation/Publishing System
 media-gfx/cairosvg 2.5.1 2.5.2: CLI and library to export SVG to PDF, PostScript, and PNG
 media-gfx/cellwriter 1.3.6: Grid-entry natural handwriting input panel
-media-gfx/chafa 1.4.1 1.6.0: versatile and fast Unicode/ASCII/ANSI graphics renderer
+media-gfx/chafa 1.6.0: versatile and fast Unicode/ASCII/ANSI graphics renderer
 media-gfx/clockphoto 1.2: Adjusts photo timestamps based on clock photos
 media-gfx/colorhug-client 0.2.8: Client tools for the ColorHug display colorimeter
 media-gfx/converseen 0.9.9.0: Batch image converter and resizer based on ImageMagick
@@ -18129,7 +18129,7 @@ www-apps/novnc 1.1.0 1.2.0 9999: noVNC is a VNC client implemented using HTML5 t
 www-apps/owncloud 10.5.0 10.6.0: Web-based storage application where all your data is under your own control
 www-apps/phpBB 3.3.3: An open-source PHP-based bulletin board package
 www-apps/phpsysinfo 3.3.2: A customizable PHP script that displays information about your system nicely
-www-apps/piwigo 2.10.2 11.2.0 11.3.0: a photo gallery software for the web
+www-apps/piwigo 11.3.0 11.4.0: a photo gallery software for the web
 www-apps/postfixadmin 3.2.4 3.3.5 3.3.7 3.3.8: Web Based Management tool for Postfix style virtual domains and users
 www-apps/prewikka 5.2.0: Graphical front-end analysis console for the Prelude Framework
 www-apps/radicale 2.1.12: A simple CalDAV calendar server
@@ -18288,7 +18288,7 @@ x11-apps/xinit 1.4.1 1.4.1-r1: X Window System initializer
 x11-apps/xinput 1.6.3: Utility to set XInput device parameters
 x11-apps/xinput_calibrator 0.7.5-r2: A generic touchscreen calibration program for X.Org
 x11-apps/xisxwayland 1 9999: Tool to determine whether the X server in use is Xwayland
-x11-apps/xkbcomp 1.4.4: XKB keyboard description compiler
+x11-apps/xkbcomp 1.4.4 1.4.5: XKB keyboard description compiler
 x11-apps/xkbevd 1.1.4 1.1.4-r1: XKB event daemon
 x11-apps/xkbprint 1.0.5: Print an XKB keyboard description
 x11-apps/xkbutils 1.0.4 1.0.4-r1: X.Org xkbutils application
@@ -18333,7 +18333,7 @@ x11-drivers/xf86-input-mtrack 0.5.0: Xorg Driver for Multitouch Trackpads
 x11-drivers/xf86-input-synaptics 1.9.1: Driver for Synaptics touchpads
 x11-drivers/xf86-input-vmmouse 13.1.0-r1 9999: VMWare mouse input driver
 x11-drivers/xf86-input-void 1.4.1: null input driver
-x11-drivers/xf86-input-wacom 0.39.0: Driver for Wacom tablets and drawing devices
+x11-drivers/xf86-input-wacom 0.39.0 0.40.0: Driver for Wacom tablets and drawing devices
 x11-drivers/xf86-video-amdgpu 19.1.0 9999: Accelerated Open Source driver for AMDGPU cards
 x11-drivers/xf86-video-ast 1.1.5: X.Org driver for ASpeedTech cards
 x11-drivers/xf86-video-ati 19.1.0 9999: ATI video driver

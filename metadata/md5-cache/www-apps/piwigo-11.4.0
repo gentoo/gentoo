@@ -4,12 +4,13 @@ DEPEND=>=app-admin/webapp-config-1.50.15
 DESCRIPTION=a photo gallery software for the web
 EAPI=7
 HOMEPAGE=http://piwigo.org/
+INHERIT=webapp
 IUSE=+exif +gd imagemagick vhosts
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=imagemagick? ( virtual/imagemagick-tools ) dev-lang/php[ctype,exif?,gd?,filter,iconv,json,mysqli] >=virtual/mysql-5.0 virtual/httpd-php >=app-admin/webapp-config-1.50.15
 REQUIRED_USE=|| ( gd imagemagick )
-SLOT=2.10.2
-SRC_URI=http://piwigo.org/download/dlcounter.php?code=2.10.2 -> piwigo-2.10.2.zip
+SLOT=11.4.0
+SRC_URI=http://piwigo.org/download/dlcounter.php?code=11.4.0 -> piwigo-11.4.0.zip
 _eclasses_=webapp	1d03df021d958f89f4cc78e289d0b116
-_md5_=807d358d4dbd2c6c19405c928a97bd4e
+_md5_=849dc395fb08be3dd6e01471dd9cb935
