@@ -14811,7 +14811,7 @@ net-im/signal-cli-bin 0.7.4 0.8.0: Send and receive messages of Signal Messenger
 net-im/signal-desktop-bin 1.40.1: Allows you to send and receive messages of Signal Messenger on your computer
 net-im/skype-dbus-mock 0_pre20181011: Mocked systemd dbus interface for skype 8.30+
 net-im/skypeforlinux 8.69.0.77: Instant messaging client, with support for audio and video
-net-im/slack 4.13.0: Team collaboration tool
+net-im/slack 4.12.2 4.13.0: Team collaboration tool
 net-im/spectrum2 2.0.13-r2: An open source instant messaging transport
 net-im/swift 4.0.2-r102: An elegant, secure, adaptable and intuitive XMPP Client
 net-im/teams 1.3.00.30857-r1 1.4.00.4855 1.4.00.4855-r1: Microsoft Teams, an Office 365 multimedia collaboration client, pre-release
