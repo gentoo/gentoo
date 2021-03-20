@@ -1,3 +1,4 @@
+Unconditionally install systemd unit
 --- a/meson.build
 +++ b/meson.build
 @@ -76,17 +76,9 @@
