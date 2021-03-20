@@ -1,5 +1,3 @@
-diff --git a/hamcrest-core/src/main/java/org/hamcrest/core/AllOf.java b/hamcrest-core/src/main/java/org/hamcrest/core/AllOf.java
-index a206b80..d55cf6b 100644
 --- a/hamcrest-core/src/main/java/org/hamcrest/core/AllOf.java
 +++ b/hamcrest-core/src/main/java/org/hamcrest/core/AllOf.java
 @@ -57,7 +57,7 @@ public class AllOf<T> extends DiagnosingMatcher<T> {
@@ -11,8 +9,6 @@ index a206b80..d55cf6b 100644
      }
  
      /**
-diff --git a/hamcrest-core/src/main/java/org/hamcrest/core/AnyOf.java b/hamcrest-core/src/main/java/org/hamcrest/core/AnyOf.java
-index 55d08dd..2a46631 100644
 --- a/hamcrest-core/src/main/java/org/hamcrest/core/AnyOf.java
 +++ b/hamcrest-core/src/main/java/org/hamcrest/core/AnyOf.java
 @@ -47,7 +47,7 @@ public class AnyOf<T> extends ShortcutCombination<T> {
