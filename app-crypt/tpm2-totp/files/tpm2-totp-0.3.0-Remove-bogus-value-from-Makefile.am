@@ -1,0 +1,23 @@
+From 893ab78144b95a52d73e1c125e56380fbec68a6f Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Fri, 19 Mar 2021 11:01:03 -0700
+Subject: [PATCH] build: Remove bogus value from Makefile.am.
+
+Signed-off-by: orbea <orbea@riseup.net>
+---
+ Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 984212a..cdaecbd 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -71,7 +71,7 @@ include_HEADERS += include/tpm2-totp.h
+ 
+ libtpm2_totp_la_SOURCES = src/libtpm2-totp.c
+ libtpm2_totp_la_LIBADD = $(AM_LDADD)
+-libtpm2_totp_la_LDFLAGS = $(AM_LDFLAGS) '(tpm2_totp)'
++libtpm2_totp_la_LDFLAGS = $(AM_LDFLAGS)
+ 
+ pkgconfig_DATA = dist/tpm2-totp.pc
+ 
