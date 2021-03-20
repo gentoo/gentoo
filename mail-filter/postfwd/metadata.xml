@@ -28,7 +28,4 @@
 		grouping, date and time based dependencies together with DNSBL lookups
 		and policy delegation (e.g. postgrey).
 	</longdescription>
-	<use>
-		<flag name="tools">Install additional tools for testing postfwd</flag>
-	</use>
 </pkgmetadata>
