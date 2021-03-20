@@ -5,7 +5,7 @@ EAPI=7
 
 JAVA_PKG_IUSE="doc source"
 
-inherit java-pkg-2 java-ant-2
+inherit java-pkg-2 java-pkg-simple
 
 MY_PN="hamcrest"
 MY_P="${MY_PN}-${PV}"
@@ -19,16 +19,15 @@ LICENSE="BSD-2"
 SLOT="${PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~ppc-macos ~x64-macos"
 
-DEPEND="~dev-java/hamcrest-generator-${PV}:1.3
-	>=virtual/jdk-1.8:*
+DEPEND=">=virtual/jdk-1.8:*
 	userland_GNU? ( sys-apps/findutils )"
 
 RDEPEND=">=virtual/jre-1.8:*"
+BDEPEND=">=dev-java/hamcrest-generator-${PV}:1.3"
 
-JAVA_ANT_REWRITE_CLASSPATH="true"
-JAVA_ANT_CLASSPATH_TAGS="${JAVA_ANT_CLASSPATH_TAGS} java java-to-jar"
+JAVA_SRC_DIR="${PN}/src"
 
-EANT_BUILD_TARGET="core"
+DOCS=( {CHANGES,LICENSE,README}.txt )
 
 PATCHES=(
 	# https://bugs.gentoo.org/751379
@@ -37,24 +36,26 @@ PATCHES=(
 
 src_prepare() {
 	default
-	# Empty out the contents of the generator target; it has already been built.
-	eapply "${FILESDIR}/hamcrest-1.3-empty_generator.patch"
+	java-pkg_clean
+}
 
-	# Fix problems with Javadoc target.
-	eapply "${FILESDIR}/hamcrest-core-1.3-fix_javadoc.patch"
+src_compile() {
+	java-pkg-simple_src_compile
 
-	find -iname "*.jar" -exec rm -v {} + || die "Unable to clean bundled JAR files"
+	# Need to add this in order to generate "CoreMatchers.java" as with java-ant-2 was triggered by "build.xml"
+	"$(java-config -J)" \
+		-cp $(java-config --with-dependencies --classpath hamcrest-generator:1.3):${PN}.jar \
+		org.hamcrest.generator.config.XmlConfigurator \
+		core-matchers.xml \
+		hamcrest-core/src/main/java \
+		org.hamcrest.CoreMatchers \
+		hamcrest-core/src/main/java
 
-	local cp="build/${P}.jar"
-	cp="${cp}:$(java-pkg_getjars --build-only --with-dependencies hamcrest-generator-${SLOT})"
-	EANT_EXTRA_ARGS="-Dversion=${PV} -Dgentoo.classpath=${cp}"
+	# Compile again, this time including the freshly generated "CoreMatchers.java"
+	java-pkg-simple_src_compile
 }
 
 src_install() {
-	java-pkg_newjar build/${P}.jar ${PN}.jar
-
-	dodoc README.txt CHANGES.txt
-
-	use doc && java-pkg_dojavadoc build/temp/hamcrest-all-${PV}-javadoc.jar.contents
-	use source && java-pkg_dosrc ${PN}/src/main/java/org
+	default
+	java-pkg-simple_src_install
 }
