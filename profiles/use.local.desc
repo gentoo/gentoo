@@ -3768,7 +3768,6 @@ mail-filter/opendkim:stats - Add support for statistics (requires 'opendbx' flag
 mail-filter/opendkim:unbound - Use the unbound dnssec library to perform DKIM DNS queries.
 mail-filter/opendmarc:reports - Install the reports binaries: expire, import, reports, params
 mail-filter/opendmarc:spf - Use the mail-filter/libspf2 for Sender Policy Framework checking
-mail-filter/postfwd:tools - Install additional tools for testing postfwd
 mail-filter/pyzor:gdbm - Enables the Gdbm back-end database engine for pyzord
 mail-filter/pyzor:gevent - Use dev-python/gevent to enable asynchronous operation
 mail-filter/pyzor:mysql - Enables the MySQL back-end database engine for pyzord through dev-python/mysqlclient.
@@ -5061,17 +5060,12 @@ media-video/pipewire:pulseaudio - Enable emulation to be able to run PulseAudio 
 media-video/pipewire:vulkan - Enable vulkan spa plugin integration
 media-video/qmplay2:audiofilters - Build with AudioFilters module
 media-video/qmplay2:avdevice - Build FFmpeg module with libavdevice suport
-media-video/qmplay2:avresample - Use libavresample instead of libswresample
 media-video/qmplay2:cdio - Build with AudioCD module
 media-video/qmplay2:cuvid - Build with CUVID module
 media-video/qmplay2:extensions - Build with Extensions module and enable other plugins
 media-video/qmplay2:gme - Build Chiptune with GME support
 media-video/qmplay2:inputs - Build with Inputs module
-media-video/qmplay2:lastfm - Build with LastFM support
 media-video/qmplay2:libass - Build with SSA/ASS subtitles rendering support
-media-video/qmplay2:lyrics - Build with lyrics support
-media-video/qmplay2:mediabrowser - Build with MediaBrowser support
-media-video/qmplay2:mpris2 - Build Extensions with MPRIS2 support
 media-video/qmplay2:notifications - Build additional notifications module
 media-video/qmplay2:shaders - Compile Vulkan shaders using media-libs/shaderc
 media-video/qmplay2:sid - Build Chiptune with SIDPLAY support

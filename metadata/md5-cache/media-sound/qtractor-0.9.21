@@ -1,0 +1,15 @@
+BDEPEND=dev-qt/linguist-tools:5 virtual/pkgconfig dev-util/ninja dev-util/cmake
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
+DEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 dev-qt/qtx11extras:5 media-libs/alsa-lib media-libs/libsndfile media-libs/lilv media-libs/lv2 media-libs/suil virtual/jack aubio? ( media-libs/aubio ) dssi? ( media-libs/dssi ) ladspa? ( media-libs/ladspa-sdk ) libsamplerate? ( media-libs/libsamplerate ) mad? ( media-libs/libmad ) osc? ( media-libs/liblo ) rubberband? ( media-libs/rubberband ) vorbis? ( media-libs/libvorbis ) zlib? ( sys-libs/zlib ) dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Audio/MIDI multi-track sequencer written in C++ with the Qt framework
+EAPI=7
+HOMEPAGE=https://qtractor.sourceforge.io
+INHERIT=flag-o-matic cmake xdg
+IUSE=aubio cpu_flags_x86_sse debug dssi ladspa libsamplerate mad osc rubberband vorbis zlib
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 dev-qt/qtx11extras:5 media-libs/alsa-lib media-libs/libsndfile media-libs/lilv media-libs/lv2 media-libs/suil virtual/jack aubio? ( media-libs/aubio ) dssi? ( media-libs/dssi ) ladspa? ( media-libs/ladspa-sdk ) libsamplerate? ( media-libs/libsamplerate ) mad? ( media-libs/libmad ) osc? ( media-libs/liblo ) rubberband? ( media-libs/rubberband ) vorbis? ( media-libs/libvorbis ) zlib? ( sys-libs/zlib )
+SLOT=0
+SRC_URI=mirror://sourceforge/qtractor/qtractor-0.9.21.tar.gz
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	cmake	314a813be2f09820e8978cdee941e501	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
+_md5_=1385212f88a03838e08907c3c5f2e12e

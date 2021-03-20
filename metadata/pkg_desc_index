@@ -10376,7 +10376,7 @@ dev-ruby/ruby-clutter-gstreamer 3.4.3: Ruby Clutter bindings
 dev-ruby/ruby-clutter-gtk 3.4.3: Ruby Clutter-GTK bindings
 dev-ruby/ruby-dict 0.9.4-r4: RFC 2229 client in Ruby
 dev-ruby/ruby-elf 1.0.8: Ruby library to access ELF files information
-dev-ruby/ruby-feedparser 0.9.4 0.9.6 0.9.7: Ruby library to parse ATOM/RSS feeds
+dev-ruby/ruby-feedparser 0.9.7: Ruby library to parse ATOM/RSS feeds
 dev-ruby/ruby-filemagic 0.7.2: Ruby binding to libmagic
 dev-ruby/ruby-gdk3 3.4.3: Ruby GDK-3.x bindings
 dev-ruby/ruby-gdkpixbuf2 3.4.3: Ruby GdkPixbuf2 bindings
@@ -10512,7 +10512,7 @@ dev-ruby/thread_safe 0.3.6: A collection of thread-safe versions of common core 
 dev-ruby/tidy-ext 0.1.14-r3: W3C HTML Tidy library implemented as a Ruby extension
 dev-ruby/tidy_table 0.0.5-r4 0.0.5-r5: Tool to convert an array of struct into an HTML table
 dev-ruby/tilt 2.0.9 2.0.10: Thin interface over template engines to make their usage as generic as possible
-dev-ruby/timecop 0.9.1 0.9.2 0.9.3: A gem providing 'time travel' and 'time freezing' capabilities
+dev-ruby/timecop 0.9.1 0.9.2 0.9.3 0.9.4: A gem providing 'time travel' and 'time freezing' capabilities
 dev-ruby/timers 4.3.0 4.3.2 4.3.3: Pure Ruby one-shot and periodic timers
 dev-ruby/tins 1.20.2 1.22.2 1.24.1 1.25.0 1.26.0 1.28.0: All the stuff that isn't good enough for a real library
 dev-ruby/tokyocabinet 1.32.0: Ruby bindings for Tokyo Cabinet
@@ -14063,7 +14063,7 @@ media-sound/qsampler 0.9.1 9999: Graphical frontend to the LinuxSampler engine
 media-sound/qsynth 0.9.1 9999: Qt application to control FluidSynth
 media-sound/qtagger 1.0.1_p20150402: Simple Qt5 ID3v2 tag editor
 media-sound/qtgain 1.0.0: Simple frontend to mp3gain, vorbisgain and metaflac
-media-sound/qtractor 0.9.20: Audio/MIDI multi-track sequencer written in C++ with the Qt framework
+media-sound/qtractor 0.9.20 0.9.21: Audio/MIDI multi-track sequencer written in C++ with the Qt framework
 media-sound/qtscrobbler 0.11_pre20130123: Updates last.fm profiles using information from supported portable music players
 media-sound/quimup 1.4.4: Qt5 client for the music player daemon (MPD)
 media-sound/quodlibet 4.3.0: audio library tagger, manager, and player for GTK+
