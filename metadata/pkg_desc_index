@@ -768,7 +768,7 @@ app-admin/sagan 1.0.0_rc3-r1 2.0.1-r4: Sagan is a multi-threaded, real time syst
 app-admin/sagan-rules 20140617 20210208 99999999: Rules for Sagan log analyzer
 app-admin/salt 3000.5 3000.8 3001.6 3002.5: Salt is a remote execution and configuration manager
 app-admin/selint 1.1.0 1.2.0 9999: Policy Analysis Tools for SELinux
-app-admin/serf 0.8.1-r1 0.9.5: Service orchestration and management tool
+app-admin/serf 0.8.1-r1 0.8.2 0.9.5: Service orchestration and management tool
 app-admin/setools 4.3.0 9999: Policy Analysis Tools for SELinux
 app-admin/socklog 2.1.0: small secure replacement for syslogd with automatic log rotation
 app-admin/spectre-meltdown-checker 0.39 0.40 0.41 0.42 0.43 0.44 9999: Spectre & Meltdown vulnerability/mitigation checker for Linux
@@ -15080,7 +15080,7 @@ net-mail/b4 0.6.1: Utility for fetching patchsets from public-inbox
 net-mail/checkpassword 0.90-r4: A uniform password checking interface for root applications
 net-mail/checkpassword-pam 0.99-r1: checkpassword-compatible authentication program w/pam support
 net-mail/cmd5checkpw 0.30-r2 0.30-r3: A checkpassword compatible authentication program that used CRAM-MD5 authentication mode
-net-mail/courier-imap 4.18.2 5.0.7 5.0.8 5.0.10 5.0.11: An IMAP daemon designed specifically for maildirs
+net-mail/courier-imap 4.18.2 5.0.7 5.0.8 5.0.10 5.0.11 5.0.14: An IMAP daemon designed specifically for maildirs
 net-mail/courierpassd 1.1.2-r1: Courierpassd is a utility for changing a user's password from across a network
 net-mail/cyrus-imapd 3.0.13 3.0.14: The Cyrus IMAP Server
 net-mail/dbmail 3.2.3-r3 3.2.5: Fast and scalable sql based email services
