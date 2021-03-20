@@ -41,6 +41,13 @@ src_test() {
 		einfo "USER set to '${USER}'"
 	fi
 
+	local mysql_install_db_cmd="${EPREFIX}/usr/share/mariadb/scripts/mysql_install_db"
+	[[ ! -x "${mysql_install_db_cmd}" ]] && mysql_install_db_cmd="${EPREFIX}/usr/bin/mysql_install_db"
+	[[ ! -x "${mysql_install_db_cmd}" ]] && die "mysql_install_db command not found!"
+
+	local mysqld_cmd="${EPREFIX}/usr/sbin/mysqld"
+	[[ ! -x "${mysqld_cmd}" ]] && die "mysqld command not found!"
+
 	local PIDFILE="${T}/mysqld.pid"
 	if pkill -0 -F "${PIDFILE}" &>/dev/null ; then
 		einfo "Killing already running mysqld process ..."
@@ -54,16 +61,16 @@ src_test() {
 
 	einfo "Creating mysql test instance ..."
 	mkdir -p "${T}"/mysql || die
-	"${BROOT}"/usr/share/mariadb/scripts/mysql_install_db \
+	"${mysql_install_db_cmd}" \
 		--no-defaults \
 		--auth-root-authentication-method=normal \
-		--basedir="${BROOT}/usr" \
+		--basedir="${EPREFIX}/usr" \
 		--datadir="${T}"/mysql 1>"${T}"/mysqld_install.log \
 		|| die
 
 	einfo "Starting mysql test instance ..."
 	# TODO: random port
-	mysqld \
+	"${mysqld_cmd}" \
 		--no-defaults \
 		--character-set-server=utf8 \
 		--bind-address=127.0.0.1 \
