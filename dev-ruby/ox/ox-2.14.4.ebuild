@@ -1,12 +1,15 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-USE_RUBY="ruby25 ruby26 ruby27"
+USE_RUBY="ruby25 ruby26 ruby27 ruby30"
 
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
 RUBY_FAKEGEM_GEMSPEC="ox.gemspec"
+
+RUBY_FAKEGEM_EXTENSIONS=(ext/ox/extconf.rb)
+RUBY_FAKEGEM_EXTENSION_LIBDIR=lib/ox
 
 inherit ruby-fakegem
 
@@ -18,15 +21,6 @@ LICENSE="BSD"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 SLOT="0"
 IUSE=""
-
-each_ruby_configure() {
-	${RUBY} -Cext/ox extconf.rb || die
-}
-
-each_ruby_compile() {
-	emake V=1 -Cext/ox
-	cp ext/ox/ox$(get_modname) lib/ox/ || die
-}
 
 each_ruby_test() {
 	${RUBY} test/tests.rb || die
