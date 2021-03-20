@@ -219,6 +219,7 @@ acct-group/sagan 0: Group for the Sagan log monitoring system
 acct-group/sancp 0: gid for net-analyzer/sancp
 acct-group/sanlock 0-r1: shared storage lock manager
 acct-group/scponly 0-r1: group for scponly
+acct-group/serf 0: A group for app-admin/serf
 acct-group/shellinaboxd 0-r1: shellinabox group
 acct-group/sigh 0: System group: sigh
 acct-group/simplevirt 0-r1: System group: simplevirt
@@ -513,6 +514,7 @@ acct-user/sagan 0-r1: User for the Sagan log monitoring system
 acct-user/sancp 0: uid for net-analyzer/sancp
 acct-user/sanlock 0-r1: shared storage lock manager
 acct-user/scponly 0-r1: user for chrooted scponly
+acct-user/serf 0: A user for app-admin/serf
 acct-user/shellinaboxd 0-r1: shellinabox user
 acct-user/sigh 0: System user: sigh
 acct-user/sks 0: User for the SKS OpenPGP keyserver
@@ -766,7 +768,7 @@ app-admin/sagan 1.0.0_rc3-r1 2.0.1-r4: Sagan is a multi-threaded, real time syst
 app-admin/sagan-rules 20140617 20210208 99999999: Rules for Sagan log analyzer
 app-admin/salt 3000.5 3000.8 3001.6 3002.5: Salt is a remote execution and configuration manager
 app-admin/selint 1.1.0 1.2.0 9999: Policy Analysis Tools for SELinux
-app-admin/serf 0.8.1-r1: Service orchestration and management tool
+app-admin/serf 0.8.1-r1 0.9.5: Service orchestration and management tool
 app-admin/setools 4.3.0 9999: Policy Analysis Tools for SELinux
 app-admin/socklog 2.1.0: small secure replacement for syslogd with automatic log rotation
 app-admin/spectre-meltdown-checker 0.39 0.40 0.41 0.42 0.43 0.44 9999: Spectre & Meltdown vulnerability/mitigation checker for Linux
@@ -14066,7 +14068,7 @@ media-sound/qtgain 1.0.0: Simple frontend to mp3gain, vorbisgain and metaflac
 media-sound/qtractor 0.9.20 0.9.21: Audio/MIDI multi-track sequencer written in C++ with the Qt framework
 media-sound/qtscrobbler 0.11_pre20130123: Updates last.fm profiles using information from supported portable music players
 media-sound/quimup 1.4.4: Qt5 client for the music player daemon (MPD)
-media-sound/quodlibet 4.3.0: audio library tagger, manager, and player for GTK+
+media-sound/quodlibet 4.3.0 4.3.0-r1 4.4.0: audio library tagger, manager, and player for GTK+
 media-sound/rawrec 0.9.991: CLI program to play and record audiofiles
 media-sound/rcenter 0.6.2: Rcenter - A program to control the EMU10K Remote Control
 media-sound/redoflacs 0.30: Bash commandline flac compressor, verifier, organizer, analyzer, retagger
