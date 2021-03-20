@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=!app-eselect/eselect-opencl
+DESCRIPTION=Unified C language headers for the OpenCL API
+EAPI=7
+HOMEPAGE=https://github.com/KhronosGroup/OpenCL-Headers
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=!app-eselect/eselect-opencl
+SLOT=0
+SRC_URI=https://github.com/KhronosGroup/OpenCL-Headers/archive/v2020.12.18.tar.gz -> opencl-headers-2020.12.18.tar.gz
+_md5_=7a8ea133482b49cb5394b6b104ac1a24

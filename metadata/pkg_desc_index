@@ -2725,7 +2725,7 @@ app-mobilephone/anyremote 6.5: Bluetooth, infrared or cable remote control servi
 app-mobilephone/dfu-util 0.9 9999: implements the Host (PC) side of the USB DFU (Device Firmware Upgrade) protocol
 app-mobilephone/gammu 1.41.0: A tool to handle your cellular phone
 app-mobilephone/gnocky 0.0.7: GTK-2 version of gnokii
-app-mobilephone/gnokii 0.6.31-r1 0.6.31-r2 0.6.31-r3 9999: User space driver and tools for use with mobile phones
+app-mobilephone/gnokii 0.6.31-r3 9999: User space driver and tools for use with mobile phones
 app-mobilephone/heimdall 1.4.2 9999: Tool suite used to flash firmware onto Samsung Galaxy S devices
 app-mobilephone/qtadb 0.8.1-r1: Android phone manager via ADB
 app-mobilephone/scmxx 0.9.0: Exchange data with Siemens phones
@@ -5698,7 +5698,7 @@ dev-libs/nss 3.58-r2 3.62 3.63: Mozilla's Network Security Services library that
 dev-libs/nss-pem 1.0.5 1.0.6 1.0.7: PEM file reader for Network Security Services (NSS)
 dev-libs/nsync 1.20.1 1.24.0: C library that exports various synchronization primitives, such as mutexes
 dev-libs/ntl 11.4.3 11.4.4: High-performance and portable C++ number theory library
-dev-libs/ocl-icd 2.2.12-r3: Alternative to vendor specific OpenCL ICD loaders
+dev-libs/ocl-icd 2.2.12-r3 2.2.14: Alternative to vendor specific OpenCL ICD loaders
 dev-libs/onigmo 6.1.3 6.2.0: Onigmo is a regular expressions library forked from Oniguruma
 dev-libs/oniguruma 6.9.4 6.9.6 6.9.6-r1 9999: Regular expression library for different character encodings
 dev-libs/opencl-clang 10.0.0.1-r1 10.0.0.2-r1 11.0.0 11.1.0_pre20201222: OpenCL-oriented thin wrapper library around clang
@@ -10974,7 +10974,7 @@ dev-util/nvidia-cuda-toolkit 8.0.61 9.2.88 10.2.89-r2 11.1.1-r1 11.2.0-r2: NVIDI
 dev-util/objconv 2.51: object code file converted (COFF, ELF, OMF, MACHO)
 dev-util/omake 0.9.8.6.0_rc1 0.10.2 0.10.3: Make replacement
 dev-util/open-vcdiff 0.8.4-r1: An encoder/decoder for the VCDIFF (RFC3284) format
-dev-util/opencl-headers 2020.03.13-r1 2020.06.16: Unified C language headers for the OpenCL API
+dev-util/opencl-headers 2020.03.13-r1 2020.06.16 2020.12.18: Unified C language headers for the OpenCL API
 dev-util/oprofile 1.3.0 1.4.0: A transparent low-overhead system-wide profiler
 dev-util/ostree 2019.5 2020.6 2020.7 2020.8: Operating system and container binary deployment and upgrades
 dev-util/packer 1.6.5: A tool to create identical machine images for multiple platforms
