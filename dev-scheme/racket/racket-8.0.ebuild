@@ -31,7 +31,7 @@ RDEPEND="
 	dev-libs/libffi
 	virtual/jpeg:0
 	readline? ( dev-libs/libedit )
-	X? ( x11-libs/gtk+[X?] )
+	X? ( x11-libs/gtk+:3[X?] )
 	!dev-tex/slatex
 "
 DEPEND="${RDEPEND}"
