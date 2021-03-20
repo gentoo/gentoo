@@ -47,7 +47,7 @@ src_compile() {
 	fi
 
 	cd "${S}"/Source || die
-	go build -o ../${PN} *.go || die
+	go build -x -o ../${PN} *.go || die
 }
 
 src_install() {
