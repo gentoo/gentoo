@@ -17365,7 +17365,7 @@ sys-boot/yaboot 1.3.17-r4: PPC Bootloader
 sys-boot/yaboot-static 1.3.17-r2: Static yaboot ppc boot loader for machines with open firmware
 sys-cluster/ampi 0_pre20140616: MPI library for algorithmic differentiation
 sys-cluster/c3 4.0.1: The Cluster Command and Control (C3) tool suite
-sys-cluster/ceph 14.2.16-r3 14.2.18 15.2.9-r1: Ceph distributed filesystem
+sys-cluster/ceph 14.2.16-r3 14.2.18 15.2.9-r1 15.2.10: Ceph distributed filesystem
 sys-cluster/charliecloud 0.21 0.22 9999: Lightweight user-defined software stacks for high-performance computing
 sys-cluster/charm 6.8.2: Message-passing parallel language and runtime system
 sys-cluster/charmdebug 6.2.0-r1: A debugger for Charm++ applications
