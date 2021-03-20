@@ -4,11 +4,12 @@ DEPEND=ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0
 DESCRIPTION=A HTTP regression testing and benchmarking utility
 EAPI=7
 HOMEPAGE=https://www.joedog.org/siege-home https://github.com/JoeDog/siege
+INHERIT=autotools bash-completion-r1
 IUSE=libressl ssl
-KEYWORDS=amd64 ~arm ~hppa ~mips ppc x86 ~x64-macos
+KEYWORDS=~amd64 ~arm ~hppa ~mips ~ppc ~x86 ~x64-macos
 LICENSE=GPL-3
 RDEPEND=ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) )
 SLOT=0
-SRC_URI=http://download.joedog.org/siege/siege-4.0.5.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	bash-completion-r1	be99724bde4274de21e581204e9d164a	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=bf71ae254bfaf6173b43164ee0922492
+SRC_URI=http://download.joedog.org/siege/siege-4.0.8.tar.gz
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9988ecbe04129214297a7bbf3d253710	bash-completion-r1	be99724bde4274de21e581204e9d164a
+_md5_=e7df52837a1693ca190c3fb1d28babe9

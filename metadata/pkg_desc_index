@@ -978,7 +978,7 @@ app-benchmarks/libc-bench 20110206: Time and memory-efficiency tests of various 
 app-benchmarks/nbench 2.2.3-r1: Linux/Unix of release 2 of BYTE Magazine's BYTEmark benchmark
 app-benchmarks/pipebench 0.40-r2: Measures the speed of stdin/stdout communication
 app-benchmarks/ramspeed 3.5.0-r2: Benchmarking for memory and cache
-app-benchmarks/siege 4.0.4 4.0.5 4.0.7: A HTTP regression testing and benchmarking utility
+app-benchmarks/siege 4.0.7 4.0.8: A HTTP regression testing and benchmarking utility
 app-benchmarks/stress 1.0.4-r2: A deliberately simple workload generator for POSIX systems
 app-benchmarks/stress-ng 0.12.05: Stress test for a computer system with various selectable ways
 app-benchmarks/sysbench 1.0.20-r100: A scriptable multi-threaded benchmark tool based on LuaJIT
@@ -9982,7 +9982,7 @@ dev-ruby/bsearch 1.5.0-r2 1.5.0-r3: A binary search library for Ruby
 dev-ruby/bson 4.9.4 4.10.0: A Ruby BSON implementation for MongoDB. (Includes binary C-based extension.)
 dev-ruby/buftok 0.2.0-r1: Statefully split input data by a specifiable token
 dev-ruby/builder 3.2.3 3.2.4: A builder to facilitate programatic generation of XML markup
-dev-ruby/bundler 2.1.4 2.2.10 2.2.11 2.2.12 2.2.13 2.2.14: An easy way to vendor gem dependencies
+dev-ruby/bundler 2.1.4 2.2.10 2.2.11 2.2.12 2.2.13 2.2.14 2.2.15: An easy way to vendor gem dependencies
 dev-ruby/bundler-audit 0.7.0.1 0.8.0: Provides patch-level verification for Bundled apps
 dev-ruby/bunny 2.16.1 2.17.0: Another synchronous Ruby AMQP client
 dev-ruby/c21e 1.2.1: Run cross-platform executables
@@ -10250,11 +10250,11 @@ dev-ruby/niceogiri 1.1.2: Some wrappers around and helpers for XML manipulation 
 dev-ruby/nio4r 2.5.4 2.5.5 2.5.5-r1 2.5.7: A high performance selector API for monitoring IO objects
 dev-ruby/nokogiri 1.11.1-r1 1.11.1-r2 1.11.2: Nokogiri is an HTML, XML, SAX, and Reader parser
 dev-ruby/nokogiri-diff 0.2.0-r2: Calculate the differences between two XML/HTML documents
-dev-ruby/nokogumbo 2.0.2 2.0.3 2.0.4: A Nokogiri interface to the Gumbo HTML5 parser
+dev-ruby/nokogumbo 2.0.2 2.0.3 2.0.4 2.0.5: A Nokogiri interface to the Gumbo HTML5 parser
 dev-ruby/notify 0.5.2-r1: A function to notify on cross platform
 dev-ruby/ntlm-http 0.1.1-r2: Ruby/NTLM HTTP provides NTLM authentication over http
 dev-ruby/oauth 0.5.4 0.5.5: A RubyGem for implementing both OAuth clients and servers
-dev-ruby/oauth2 1.4.4: Wrapper for the OAuth 2.0 protocol with a similar style to the OAuth gem
+dev-ruby/oauth2 1.4.4 1.4.7: Wrapper for the OAuth 2.0 protocol with a similar style to the OAuth gem
 dev-ruby/octokit 4.18.0-r1 4.19.0 4.20.0: Ruby toolkit for the Github API
 dev-ruby/omniauth 1.9.1: A generalized Rack framework for multiple-provider authentication
 dev-ruby/open4 1.3.4: Open3::popen3 with exit status
@@ -10263,7 +10263,7 @@ dev-ruby/optimist 3.0.1: A commandline option parser for Ruby that just gets out
 dev-ruby/optionable 0.2.0: Robust options validation for Ruby methods
 dev-ruby/org-ruby 0.9.12: Ruby routines for parsing org-mode files
 dev-ruby/origin 2.3.1: Origin is a simple DSL for generating MongoDB selectors and options
-dev-ruby/ox 2.13.4 2.14.0 2.14.1 2.14.2 2.14.3: A fast XML parser and Object marshaller
+dev-ruby/ox 2.14.1 2.14.2 2.14.3 2.14.4: A fast XML parser and Object marshaller
 dev-ruby/packetfu 1.1.13: A mid-level packet manipulation library
 dev-ruby/paint 2.2.0 2.2.1: Terminal painter
 dev-ruby/parallel 1.19.2 1.20.0 1.20.1: Run any code in parallel Processes or Threads
@@ -10742,7 +10742,7 @@ dev-util/babeltrace 1.2.4: A command-line tool and library to read and convert t
 dev-util/bats 0.4.0 0.4.0_p20170219 1.2.1 1.3.0: Bats-core: Bash Automated Testing System
 dev-util/bazel 0.22.0 0.24.1 0.27.2 0.29.1 1.0.1 1.2.0 1.2.0-r1 1.2.1 2.0.0 3.2.0: Fast and correct automated build system
 dev-util/bbe 0.2.2-r1: Sed-like editor for binary files
-dev-util/bcc 0.16.0-r1 0.17.0 0.17.0-r100 0.18.0-r1: Tools for BPF-based Linux IO analysis, networking, monitoring, and more
+dev-util/bcc 0.16.0-r1 0.17.0 0.17.0-r100 0.18.0-r1 0.19.0: Tools for BPF-based Linux IO analysis, networking, monitoring, and more
 dev-util/bcpp 20210108: Indents C/C++ source code
 dev-util/bdelta 0.3.1-r1: Binary Delta - Efficient difference algorithm and format
 dev-util/bear 2.4.3 2.4.4: Build EAR generates a compilation database for clang tooling
@@ -18581,7 +18581,7 @@ x11-misc/makedepend 1.0.6: create dependencies in makefiles
 x11-misc/matchbox-keyboard 0.1-r1: Matchbox-keyboard is an on screen 'virtual' or 'software' keyboard
 x11-misc/mate-notification-daemon 1.24.0 1.24.1: MATE Notification daemon
 x11-misc/menulibre 2.2.1-r2: Advanced freedesktop.org compliant menu editor
-x11-misc/menumaker 0.99.11 0.99.12: Utility that scans through the system and generates a menu of installed programs
+x11-misc/menumaker 0.99.12: Utility that scans through the system and generates a menu of installed programs
 x11-misc/mgm 1.2-r1: Moaning Goat Meter: load and status meter written in Perl
 x11-misc/mixer_app 1.8.0-r1: mixer_app has volume controllers that can be configured to handle sound sources
 x11-misc/mozo 1.24.0 1.24.0-r1: Mozo menu editor for MATE
