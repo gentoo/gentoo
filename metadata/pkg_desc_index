@@ -11958,7 +11958,7 @@ gnome-base/gnome-mime-data 2.18.0: MIME data for Gnome
 gnome-base/gnome-panel 3.36.2: The GNOME Flashback Panel
 gnome-base/gnome-session 3.36.0-r1 3.38.0: Gnome session manager
 gnome-base/gnome-settings-daemon 3.36.1 3.38.1: Gnome Settings Daemon
-gnome-base/gnome-shell 3.36.7 3.38.2 3.38.3: Provides core UI functions for the GNOME 3 desktop
+gnome-base/gnome-shell 3.36.7 3.38.2 3.38.3 3.38.4: Provides core UI functions for the GNOME 3 desktop
 gnome-base/gnome-vfs 2.24.4-r5: Gnome Virtual Filesystem
 gnome-base/gsettings-desktop-schemas 3.34.0 3.36.1 3.38.0: Collection of GSettings schemas for GNOME desktop
 gnome-base/gvfs 1.44.1: Virtual filesystem implementation for GIO
@@ -19123,7 +19123,7 @@ x11-wm/matwm2 0.1.2_pre3-r1: Simple EWMH compatible window manager with titlebar
 x11-wm/metacity 3.36.1: GNOME Flashback window manager
 x11-wm/muffin 4.6.3 4.8.1: Compositing window manager forked from Mutter for use with Cinnamon
 x11-wm/musca 0.9.24_p20100226-r4: A simple dynamic window manager, with features nicked from ratpoison and dwm
-x11-wm/mutter 3.36.7-r1 3.38.2 3.38.3 3.38.3-r1: GNOME 3 compositing window manager based on Clutter
+x11-wm/mutter 3.36.7-r1 3.38.2 3.38.3 3.38.3-r1 3.38.4: GNOME 3 compositing window manager based on Clutter
 x11-wm/notion 3_p2015061300-r1 3_p2015061300-r100 9999: Notion is a tiling, tabbed window manager for the X window system
 x11-wm/openbox 3.6.1-r3 9999: Standards compliant, fast, light-weight, extensible window manager
 x11-wm/oroborus 2.0.20-r1: Small and fast window manager
