@@ -17401,7 +17401,7 @@ sys-cluster/kubelet 1.18.16 1.18.17 1.19.8 1.19.9 1.20.4 1.20.5: Kubernetes Node
 sys-cluster/kubeletctl 1.5 1.6: A client for kubelet
 sys-cluster/legion 16.08.0-r1 16.10.0 17.02.0 17.05.0 17.08.0 17.10.0 18.02.0 18.05.0 18.12.0 19.06.0 9999: A data-centric parallel programming system
 sys-cluster/libcircle 0.3.0: API for distributing embarrassingly parallel workloads using self-stabilization
-sys-cluster/libqb 0.17.2 1.0.5 1.9.0 2.0.1-r1: Library providing high performance logging, tracing, ipc, and poll
+sys-cluster/libqb 2.0.1-r1: Library providing high performance logging, tracing, ipc, and poll
 sys-cluster/libquo 1.2.9 9999: run-time tuning of process binding policies made easy
 sys-cluster/lmod 8.4.20 9999: Environment Module System based on Lua
 sys-cluster/lustre 2.13.0-r1: Lustre is a parallel distributed file system
