@@ -2725,6 +2725,7 @@ dev-scheme/kawa:sax - Assume SAX2 is available with dev-java/sax
 dev-scheme/kawa:servlets - Build support for generating servlets with Java servletapi
 dev-scheme/kawa:swing - Assume Swing is available
 dev-scheme/kawa:xqtests - Support XQuery Test Suite
+dev-scheme/racket:chez - Build Racket on Chez (Racket CS)
 dev-scheme/racket:futures - Enable racket/future library for fine-grained hardware parallelism
 dev-scheme/racket:places - Enable racket/place library for share-nothing parallelism and message-passing communication. Compared to futures, places are heavyweight, but they have a simpler performance model.
 dev-scheme/racket:threads - Enable support for green threads

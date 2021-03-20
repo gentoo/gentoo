@@ -10597,7 +10597,7 @@ dev-scheme/guile-json 4.5.2: JSON module for Guile
 dev-scheme/guile-sqlite3 0.1.3: Guile bindings of sqlite3
 dev-scheme/jscheme 7.2-r1: A Scheme dialect with a simple Java interface called Javadot notation
 dev-scheme/kawa 1.14-r2: Kawa, the Java-based Scheme system & Language Framework
-dev-scheme/racket 7.0 7.1 7.2 7.3: General purpose, multi-paradigm Lisp-Scheme programming language
+dev-scheme/racket 7.0 7.1 7.2 7.3 8.0: General purpose, multi-paradigm Lisp-Scheme programming language
 dev-scheme/scheme48 1.9.2-r1: Scheme48 is an implementation of the Scheme Programming Language
 dev-scheme/scm 5.5.6-r3 5.5.6-r4: SCM is a Scheme implementation from the author of slib
 dev-scheme/scmxlate 20090410-r1: Scmxlate is a configuration tool for software packages written in Scheme
