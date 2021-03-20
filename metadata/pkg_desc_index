@@ -10147,7 +10147,7 @@ dev-ruby/imagesize 0.1.1_p20100902-r1: Measure image size (GIF, PNG, JPEG, etc)
 dev-ruby/inflecto 0.0.2: Inflector for ruby
 dev-ruby/instance_storage 1.0.0: Manage class instances with dictionary
 dev-ruby/instantiator 0.0.7: Instantiate an arbitrary Ruby class
-dev-ruby/introspection 0.0.4: Dynamic inspection of the hierarchy of method definitions on a Ruby object
+dev-ruby/introspection 0.0.4 0.0.4-r1: Dynamic inspection of the hierarchy of method definitions on a Ruby object
 dev-ruby/iobuffer 1.1.2-r3 1.1.2-r4: IO::Buffer is a byte queue which is intended for non-blocking I/O applications
 dev-ruby/itextomml 1.6.0: Native Ruby bindings to itex2MML, which converts itex equations to MathML
 dev-ruby/jbuilder 2.10.0 2.10.1 2.11.0 2.11.2: Create JSON structures via a Builder-style DSL
@@ -10161,7 +10161,7 @@ dev-ruby/jwt 2.2.2: A Ruby implementation of JSON Web Token draft 06
 dev-ruby/kirbybase 2.6.1-r2: A simple Ruby DBMS that stores data in plaintext files
 dev-ruby/kissfft 0.0.2: ruby interface to kissfft
 dev-ruby/kpeg 1.1.0-r1: A simple PEG library for Ruby
-dev-ruby/kramdown 2.3.0: Yet-another-markdown-parser but fast, pure Ruby, using strict syntax definition
+dev-ruby/kramdown 2.3.1: Yet-another-markdown-parser but fast, pure Ruby, using strict syntax definition
 dev-ruby/kramdown-parser-gfm 1.1.0: A kramdown parser for the GFM dialect of Markdown
 dev-ruby/kramdown-syntax-coderay 1.0.1: Uses coderay to highlight code blocks/spans
 dev-ruby/launchy 2.4.3-r2 2.5.0: Helper class for launching cross-platform applications
@@ -10178,7 +10178,7 @@ dev-ruby/locale 2.1.3: A pure ruby library which provides basic APIs for localiz
 dev-ruby/lockfile 2.1.3: A ruby library for creating NFS safe lockfiles
 dev-ruby/log4r 1.1.10-r2: A comprehensive and flexible logging library written in Ruby
 dev-ruby/log_buddy 0.7.0: Log statements along with their name easily
-dev-ruby/logue 1.0.13-r1 1.0.16 1.0.18: A module that adds logging/trace functionality
+dev-ruby/logue 1.0.18: A module that adds logging/trace functionality
 dev-ruby/loofah 2.7.0 2.8.0 2.9.0: Library for manipulating and transforming HTML/XML documents and fragments.
 dev-ruby/loquacious 1.9.1-r2: Descriptive configuration files for Ruby written in Ruby
 dev-ruby/lumberjack 1.0.13 1.2.6 1.2.7 1.2.8: A simple, powerful, and very fast logging utility
@@ -17683,7 +17683,7 @@ sys-kernel/dracut 050-r2 051-r1 053 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.94 5.4.97 5.4.99 5.4.100 5.4.101 5.4.102 5.4.103 5.4.104 5.4.105 5.4.106 5.10.17 5.10.18 5.10.19 5.10.20 5.10.21 5.10.22 5.10.23 5.10.24 5.11.2 5.11.3 5.11.4 5.11.5 5.11.6 5.11.7: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.94 5.4.94-r1 5.4.97 5.4.97-r1 5.4.99 5.4.99-r1 5.4.100 5.4.100-r1 5.4.101 5.4.101-r1 5.4.101-r2 5.4.102-r2 5.4.102-r3 5.4.103 5.4.103-r1 5.4.104 5.4.104-r1 5.4.105 5.4.106 5.10.17 5.10.17-r1 5.10.18 5.10.18-r1 5.10.19 5.10.19-r1 5.10.19-r2 5.10.20-r2 5.10.20-r3 5.10.21 5.10.21-r1 5.10.22 5.10.22-r1 5.10.23 5.10.24 5.11.2 5.11.2-r1 5.11.2-r2 5.11.3-r2 5.11.3-r3 5.11.4 5.11.4-r1 5.11.5 5.11.5-r1 5.11.6 5.11.7: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel-bin 5.4.94 5.4.94-r1 5.4.97 5.4.97-r1 5.4.99 5.4.99-r1 5.4.100 5.4.100-r1 5.4.101 5.4.101-r1 5.4.101-r2 5.4.102-r2 5.4.102-r3 5.4.103 5.4.103-r1 5.4.104 5.4.104-r1 5.4.105 5.4.105-r1 5.4.106 5.10.17 5.10.17-r1 5.10.18 5.10.18-r1 5.10.19 5.10.19-r1 5.10.19-r2 5.10.20-r2 5.10.20-r3 5.10.21 5.10.21-r1 5.10.22 5.10.22-r1 5.10.23 5.10.23-r1 5.10.24 5.11.2 5.11.2-r1 5.11.2-r2 5.11.3-r2 5.11.3-r3 5.11.4 5.11.4-r1 5.11.5 5.11.5-r1 5.11.6 5.11.6-r1 5.11.7: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.246 4.4.257 4.4.259 4.4.260 4.4.261 4.4.262 4.9.246 4.9.257 4.9.259 4.9.260 4.9.261 4.9.262 4.14.209 4.14.221 4.14.223 4.14.224 4.14.225 4.14.226 4.19.160 4.19.175 4.19.178 4.19.179 4.19.180 4.19.181 5.4.80-r1 5.4.97 5.4.102 5.4.103 5.4.104 5.4.105 5.4.106 5.10.20 5.10.21 5.10.22 5.10.23 5.10.24 5.11.2 5.11.3 5.11.4 5.11.5 5.11.6 5.11.7 5.11.7-r1: Full sources including the Gentoo patchset for the 5.11 kernel tree
 sys-kernel/git-sources 5.12_rc2 5.12_rc3: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2 3: Gentoo fork of installkernel script from debianutils
