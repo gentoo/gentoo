@@ -37,6 +37,8 @@ BDEPEND="
 	)
 "
 
-PATCHES=( "${FILESDIR}/${P}-version.patch" )
-
+src_compile() {
+	export PBR_VERSION=${PV}
+	distutils-r1_src_compile
+}
 distutils_enable_tests pytest
