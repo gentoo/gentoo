@@ -34,7 +34,7 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}/${P}-Remove-bogus-value-from-Makefile.am"
-	)
+)
 
 src_prepare() {
 	default
@@ -51,5 +51,5 @@ src_configure() {
 
 src_install() {
 	default
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }
