@@ -9,6 +9,8 @@ DESCRIPTION="Posting locate is a much faster locate"
 HOMEPAGE="https://plocate.sesse.net/"
 SRC_URI="https://plocate.sesse.net/download/${P}.tar.gz"
 
+# GPL-2 for updatedb
+# GPL-2+ for plocate itself
 LICENSE="GPL-2 GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64"
