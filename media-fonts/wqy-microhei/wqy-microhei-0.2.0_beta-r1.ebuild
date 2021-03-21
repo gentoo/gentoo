@@ -1,14 +1,15 @@
-# Copyright 2009-2020 Gentoo Authors
+# Copyright 2009-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
+
 inherit font
 
-MY_P="${P/_/-}"
-DESCRIPTION="A droid derived Sans-Serif style CJK font"
-HOMEPAGE="http://wqy.sourceforge.net/en/"
-SRC_URI="mirror://sourceforge/wqy/${MY_P}.tar.gz
+DESCRIPTION="Droid derived Sans-Serif style CJK font"
+HOMEPAGE="http://wenq.org/wqy2/index.cgi https://sourceforge.net/projects/wqy/"
+SRC_URI="mirror://sourceforge/wqy/${P/_/-}.tar.gz
 	https://dev.gentoo.org/~dlan/distfiles/${PN}.ttc.xd3"
+S="${WORKDIR}/${PN}"
 
 LICENSE="Apache-2.0 GPL-3"
 SLOT="0"
@@ -18,15 +19,14 @@ IUSE=""
 # Only installs fonts
 RESTRICT="strip binchecks"
 
-S="${WORKDIR}/${PN}"
-FONT_S="${S}"
+DOCS=( AUTHORS.txt ChangeLog.txt README.txt )
 
 FONT_SUFFIX="ttc"
-DOCS="AUTHORS.txt ChangeLog.txt README.txt"
 
-DEPEND="${DEPEND}
-	dev-util/xdelta:3"
+BDEPEND="dev-util/xdelta:3"
 
 src_prepare() {
-	xdelta3 -f -d -s "${S}"/wqy-microhei.ttc "${DISTDIR}"/wqy-microhei.ttc.xd3 "${S}"/wqy-microhei.ttc || die
+	xdelta3 -f -d -s wqy-microhei.ttc "${DISTDIR}"/wqy-microhei.ttc.xd3 \
+		wqy-microhei.ttc || die
+	default
 }
