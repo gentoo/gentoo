@@ -9,6 +9,7 @@
 		<email>cjk@gentoo.org</email>
 		<name>Cjk</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="sourceforge">mdk-ut</remote-id>
 		<remote-id type="sourceforge-jp">users</remote-id>
