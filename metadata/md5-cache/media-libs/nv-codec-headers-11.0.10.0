@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DESCRIPTION=FFmpeg version of headers required to interface with Nvidias codec APIs
+EAPI=7
+HOMEPAGE=https://git.videolan.org/?p=ffmpeg/nv-codec-headers.git
+INHERIT=multilib-minimal
+IUSE=abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_s390_32 abi_s390_64
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=>=x11-drivers/nvidia-drivers-455.28[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?]
+SLOT=0
+SRC_URI=https://github.com/FFmpeg/nv-codec-headers/releases/download/n11.0.10.0/nv-codec-headers-11.0.10.0.tar.gz
+_eclasses_=multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566
+_md5_=54457298363844d3332c4ab1738ffe9c

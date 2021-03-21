@@ -13413,7 +13413,7 @@ media-libs/mutagen 1.45.1: Audio metadata tag reader and writer implemented in p
 media-libs/nas 1.9.4-r2: Network Audio System
 media-libs/netpbm 10.70.00 10.76.00: A set of utilities for converting to/from the netpbm (and related) formats
 media-libs/noise-suppression-for-voice 0.9_p20200705 0.91 9999: A real-time noise suppression plugin for voice
-media-libs/nv-codec-headers 8.1.24.2 9.0.18.1 9.1.23.1 10.0.26.0 10.0.26.1: FFmpeg version of headers required to interface with Nvidias codec APIs
+media-libs/nv-codec-headers 8.1.24.2 9.0.18.1 9.1.23.1 10.0.26.0 10.0.26.1 11.0.10.0: FFmpeg version of headers required to interface with Nvidias codec APIs
 media-libs/openal 1.21.0 1.21.1-r1: A software implementation of the OpenAL 3D audio API
 media-libs/opencollada 1.6.68: Stream based read/write library for COLLADA files
 media-libs/opencolorio 1.1.1: A color management framework for visual effects and animation
@@ -18152,7 +18152,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.6.2: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 89.0.4389.72 89.0.4389.90 90.0.4430.30: Open-source version of Google Chrome web browser
+www-client/chromium 89.0.4389.72 89.0.4389.90 90.0.4430.30 91.0.4449.6: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5-r3 3.1_pre20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.13.5-r100 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.34.4 3.36.4: GNOME webbrowser based on Webkit
