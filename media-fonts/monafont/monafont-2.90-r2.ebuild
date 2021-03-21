@@ -1,17 +1,17 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
+MY_P="${P/_/}"
 inherit font
 
-MY_P="${P/_/}"
-
 DESCRIPTION="Japanese bitmap and TrueType fonts suitable for browsing 2ch"
-HOMEPAGE="http://monafont.sourceforge.net"
+HOMEPAGE="http://monafont.sourceforge.net/"
 SRC_URI="
 	mirror://sourceforge/${PN}/${MY_P}.tar.bz2
 	truetype? ( mirror://sourceforge/${PN}/${PN}-ttf-${PV}.zip )"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="public-domain"
 SLOT="0"
@@ -24,9 +24,8 @@ BDEPEND="
 	app-arch/unzip
 	dev-lang/perl
 	x11-apps/bdftopcf
-	x11-apps/mkfontscale"
-
-S="${WORKDIR}/${MY_P}"
+	x11-apps/mkfontscale
+"
 
 FONT_S="${WORKDIR}"
 FONT_SUFFIX="ttf"
@@ -50,15 +49,16 @@ src_install() {
 	insinto "${FONTDIR}"
 	newins fonts.alias.mona fonts.alias
 
-	dodoc README*
+	dodoc README.{ascii,euc}
 
 	if use truetype; then
-		DOCS="${WORKDIR}/README-ttf.txt"
+		local DOCS=( ${WORKDIR}/README-ttf.txt )
 		font_src_install
 	fi
 }
 
 pkg_postinst() {
+	font_pkg_postinst
 	elog
 	elog "You need to add following line into 'Section \"Files\"' in"
 	elog "XF86Config and reboot X Window System, to use these fonts."
