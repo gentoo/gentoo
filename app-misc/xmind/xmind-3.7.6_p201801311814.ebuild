@@ -39,7 +39,7 @@ src_configure() {
 	if use amd64; then
 		XDIR="XMind_amd64"
 	else
-		XDIR="XMind_i388"
+		XDIR="XMind_i386"
 	fi
 	mv "$XDIR" XMind || die
 	# force data instance & config area to be at home/.xmind directory
