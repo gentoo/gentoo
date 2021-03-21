@@ -12,7 +12,7 @@ HOMEPAGE="https://clojure.org/"
 SRC_URI="https://github.com/${PN}/${PN}/archive/${P}.tar.gz"
 
 LICENSE="EPL-1.0 Apache-2.0 BSD"
-SLOT="1.10"
+SLOT="$(ver_cut 1-2)"
 
 KEYWORDS="~amd64 ~x86 ~x86-linux"
 
@@ -30,7 +30,7 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	>=virtual/jdk-1.8"
 
-S="${WORKDIR}/${PN}-${PN}-${PV}"
+S="${WORKDIR}/${PN}-${P}"
 
 DOCS=( changes.md CONTRIBUTING.md readme.txt )
 
