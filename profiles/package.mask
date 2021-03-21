@@ -430,11 +430,11 @@ www-apps/webmcp
 # https://bugs.gentoo.org/751739
 =sys-apps/opentmpfiles-0.3.1
 
-# Stephan Hartmann <sultan@gentoo.org> (2021-01-29)
+# Stephan Hartmann <sultan@gentoo.org> (2021-03-21)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
 # and accept a more unstable release.
->=www-client/chromium-90
+>=www-client/chromium-91
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-10-26)
 # Historical metapackage that exists in slot 5 only for transition from KDE SC4.
