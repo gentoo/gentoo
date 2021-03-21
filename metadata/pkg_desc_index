@@ -8603,11 +8603,11 @@ dev-python/mkdocs 1.1.2: Project documentation with Markdown
 dev-python/mkdocs-bootstrap 1.1-r1: Bootstrap theme for MkDocs
 dev-python/mkdocs-bootswatch 1.1-r1: Bootswatch themes for MkDocs
 dev-python/mkdocs-git-revision-date-localized-plugin 0.8: Display the localized date of the last git modification of a markdown file
-dev-python/mkdocs-material 6.1.7 6.2.5: A Material Design theme for MkDocs
+dev-python/mkdocs-material 6.2.5 7.0.6: A Material Design theme for MkDocs
 dev-python/mkdocs-material-extensions 1.0.1: Extension pack for Python Markdown
 dev-python/mkdocs-minify-plugin 0.3.0 0.4.0: An MkDocs plugin to minify HTML and/or JS files prior to being written to disk
 dev-python/mkdocs-redirects 1.0.1: Plugin for Mkdocs page redirects
-dev-python/mkdocs_pymdownx_material_extras 1.0.7 1.1.3: Custom alterations based on Mkdocs-Material
+dev-python/mkdocs_pymdownx_material_extras 1.0.7 1.1.3 1.2.2: Custom alterations based on Mkdocs-Material
 dev-python/mmtf-python 1.1.2-r1: The python implementation of the MMTF API, decoder and encoder
 dev-python/mock 4.0.3: Rolling backport of unittest.mock for all Pythons
 dev-python/mongoengine 0.22.1 0.23.0: A Python Object-Document-Mapper for working with MongoDB
@@ -8971,7 +8971,7 @@ dev-python/pysnmp 4.4.12-r1 999999: Python SNMP library
 dev-python/pysnmp-mibs 0.1.6: SNMP framework in Python - MIBs
 dev-python/pysol_cards 0.10.1: Deal PySol FreeCell cards
 dev-python/pyspectrum2 0.2.0: Implements a protobuf-based interface for Spectrum2 python-based backends
-dev-python/pyspelling 2.7.0 2.7.1: Spell checker automation tool
+dev-python/pyspelling 2.7.1 2.7.2: Spell checker automation tool
 dev-python/pyspf 2.0.14: Python implementation of the Sender Policy Framework (SPF)
 dev-python/pysrt 1.1.2 9999: Python library used to edit or create SubRip files
 dev-python/pysvg 0.2.2_p3: Python SVG document creation library
@@ -9291,7 +9291,7 @@ dev-python/sphinxcontrib-serializinghtml 1.1.4: Sphinx extension which outputs o
 dev-python/sphinxcontrib-spelling 7.1.0: Sphinx spelling extension
 dev-python/sphinxcontrib-websupport 1.2.4: Sphinx websupport extension
 dev-python/spur 0.3.22: Run commands locally or over SSH using the same interface
-dev-python/spyder 4.2.0 4.2.3: The Scientific Python Development Environment
+dev-python/spyder 4.2.0 4.2.3 4.2.4: The Scientific Python Development Environment
 dev-python/spyder-kernels 1.10.0 1.10.2: Kernels used by spyder on its ipython console
 dev-python/spyder-line-profiler 0.2.1: Plugin to run the python line profiler from within the spyder editor
 dev-python/spyder-memory-profiler 0.2.1: Plugin to run the python memory_profiler from within the spyder editor
@@ -9341,7 +9341,7 @@ dev-python/testresources 2.0.1: A pyunit extension for managing expensive test r
 dev-python/testscenarios 0.5.0-r1: A pyunit extension for dependency injection
 dev-python/testtools 2.4.0-r1: Extensions to the Python standard library unit testing framework
 dev-python/text-unidecode 1.3: The most basic port of the Text::Unidecode Perl library
-dev-python/textdistance 4.2.0: Compute distance between the two texts
+dev-python/textdistance 4.2.1: Compute distance between the two texts
 dev-python/texttable 1.6.3: Module for creating simple ASCII tables
 dev-python/textx 1.4: Meta-language for DSL implementation inspired by Xtext
 dev-python/theano 1.0.5-r1: Define and optimize multi-dimensional arrays mathematical expressions
