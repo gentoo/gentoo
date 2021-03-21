@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: common-lisp-3.eclass
@@ -136,7 +136,7 @@ common-lisp-install-one-asdf() {
 	[[ $# != 1 ]] && die "${FUNCNAME[0]} must receive exactly one argument"
 
 	# the suffix «.asd» is optional
-	local source=${1/.asd}.asd
+	local source=${1%.asd}.asd
 	common-lisp-install-one-source true "${source}" "$(dirname "${source}")"
 	local target="${CLSOURCEROOT%/}/${CLPACKAGE}/${source}"
 	dosym "${target}" "${CLSYSTEMROOT%/}/$(basename ${target})"
