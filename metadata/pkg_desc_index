@@ -3582,6 +3582,7 @@ dev-cpp/mm-common 1.0.1 1.0.2: Build infrastructure and utilities for GNOME C++ 
 dev-cpp/ms-gsl 3.1.0 9999: Guideline Support Library implementation by Microsoft
 dev-cpp/muParser 2.2.6.1: Library for parsing mathematical expressions
 dev-cpp/nlohmann_json 3.6.1-r1 3.7.0 3.7.3 3.9.1: JSON for Modern C++
+dev-cpp/notcurses 2.2.3: Blingful TUIs and character graphics
 dev-cpp/pangomm 2.42.1-r1 2.42.2: C++ interface for pango
 dev-cpp/picojson 1.3.0: Header-file-only, JSON parser serializer in C++
 dev-cpp/pngpp 0.2.9: A simple but powerful C++ interface to libpng
