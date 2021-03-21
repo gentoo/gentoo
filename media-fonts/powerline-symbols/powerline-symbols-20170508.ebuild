@@ -1,7 +1,8 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit font
 
 DESCRIPTION="OpenType Unicode font with symbols for Powerline/Airline"
@@ -14,7 +15,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm x86"
 IUSE=""
 
-FONT_S="${S}"
-FONT_SUFFIX="otf"
 FONT_CONF=( 10-powerline-symbols.conf )
-DOCS="README.rst"
+FONT_SUFFIX="otf"
+
+DOCS=( README.rst )
