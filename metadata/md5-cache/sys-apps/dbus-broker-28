@@ -1,0 +1,15 @@
+BDEPEND=doc? ( dev-python/docutils ) virtual/pkgconfig >=dev-util/meson-0.54.0 >=dev-util/ninja-1.8.2 dev-util/meson-format-array
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=audit? ( >=sys-process/audit-2.7 >=sys-libs/libcap-ng-0.6 ) launcher? ( >=dev-libs/expat-2.2 >=sys-apps/systemd-230:0= ) selinux? ( sys-libs/libselinux )
+DESCRIPTION=Linux D-Bus Message Broker
+EAPI=7
+HOMEPAGE=https://github.com/bus1/dbus-broker/wiki
+INHERIT=meson
+IUSE=audit doc +launcher selinux
+KEYWORDS=~amd64 ~ppc64
+LICENSE=Apache-2.0
+RDEPEND=audit? ( >=sys-process/audit-2.7 >=sys-libs/libcap-ng-0.6 ) launcher? ( >=dev-libs/expat-2.2 >=sys-apps/systemd-230:0= ) selinux? ( sys-libs/libselinux ) launcher? ( sys-apps/dbus )
+SLOT=0
+SRC_URI=https://github.com/bus1/dbus-broker/archive/v28/dbus-broker-28.tar.gz https://github.com/c-util/c-dvar/archive/eeb91604574f7c5b12b270f8355f7e6cf1720f4c/c-dvar-eeb91604574f7c5b12b270f8355f7e6cf1720f4c.tar.gz https://github.com/c-util/c-list/archive/f1eadf27377ef2f74b3cfd16185f54a219df2aae/c-list-f1eadf27377ef2f74b3cfd16185f54a219df2aae.tar.gz https://github.com/c-util/c-stdaux/archive/c5f166d02ff68af5cdcbad1bdcea2cb134e34ce4/c-stdaux-c5f166d02ff68af5cdcbad1bdcea2cb134e34ce4.tar.gz https://github.com/c-util/c-rbtree/archive/8aa7bd1828eedb19960f9eef98d15543ec9f34eb/c-rbtree-8aa7bd1828eedb19960f9eef98d15543ec9f34eb.tar.gz https://github.com/c-util/c-ini/archive/204410a08d3a6c8221f6f0baf0355ce5af0232ed/c-ini-204410a08d3a6c8221f6f0baf0355ce5af0232ed.tar.gz https://github.com/c-util/c-utf8/archive/8a8f07d623492d4b45532527f945b118a2b4299b/c-utf8-8a8f07d623492d4b45532527f945b118a2b4299b.tar.gz https://github.com/c-util/c-shquote/archive/83ccc2893385fcca1424b188f0f6c45a62f2b38d/c-shquote-83ccc2893385fcca1424b188f0f6c45a62f2b38d.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	meson	e43eef9331f54965a573ed380854ff47
+_md5_=0092aa7dc741c8f2af747fc734e09658
