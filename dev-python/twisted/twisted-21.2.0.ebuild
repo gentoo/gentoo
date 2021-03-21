@@ -62,6 +62,7 @@ BDEPEND="
 	>=dev-python/incremental-16.10.1[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/appdirs-1.4.0[${PYTHON_USEDEP}]
+		dev-python/bcrypt[${PYTHON_USEDEP}]
 		>=dev-python/constantly-15.1.0[${PYTHON_USEDEP}]
 		>=dev-python/cryptography-0.9.1[${PYTHON_USEDEP}]
 		dev-python/cython-test-exception-raiser[${PYTHON_USEDEP}]
