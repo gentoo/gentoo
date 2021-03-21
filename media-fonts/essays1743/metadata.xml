@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>fonts@gentoo.org</email>
-	<name>Fonts</name>
-</maintainer>
+	<maintainer type="project">
+		<email>fonts@gentoo.org</email>
+		<name>Fonts</name>
+	</maintainer>
+	<use>
+			<flag name="otf">Install the OpenType version of the font</flag>
+			<flag name="ttf">Install the TrueType version of the font</flag>
+	</use>
 </pkgmetadata>
