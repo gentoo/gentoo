@@ -45,6 +45,6 @@ src_install() {
 	# x.y.1 or x.y.3, to install the source dir as a man page.
 	# exploit the fact that there's a bijection from html<>man.
 	for i in ../*.html ; do
-		doman ../$(basename $i .html)
+		doman ../$(basename ${i} .html)
 	done
 }
