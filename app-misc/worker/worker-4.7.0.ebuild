@@ -5,7 +5,7 @@ EAPI=7
 
 LUA_COMPAT=( lua5-{1..4} )
 
-inherit autotools lua-single unpacker verify-sig
+inherit lua-single unpacker verify-sig
 
 DESCRIPTION="Worker Filemanager: Amiga Directory Opus 4 clone"
 HOMEPAGE="http://www.boomerangsworld.de/cms/worker/"
@@ -37,10 +37,8 @@ DOCS=( AUTHORS ChangeLog INSTALL NEWS README README_LARGEFILES THANKS )
 
 src_prepare() {
 	default
-
-	# Don't use /usr/share/appdata
-	sed -i -e "s:/appdata:/metainfo:" contrib/Makefile.am || die
-	eautoreconf
+	# https://bugs.gentoo.org/709450
+	sed -i -r 's/appdatadir = \$\(datadir\)\/appdata/appdatadir = \$\(datadir\)\/metainfo/g' contrib/Makefile.in || die
 }
 
 src_unpack() {
