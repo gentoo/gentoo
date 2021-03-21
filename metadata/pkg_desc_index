@@ -5341,7 +5341,7 @@ dev-libs/cdk 5.0.20160131: A library of curses widgets
 dev-libs/cereal 1.3.0: Header-only C++11 serialization library
 dev-libs/cgilib 0.7-r1: A simple and lightweight interface to the CGI for C and C++ programs
 dev-libs/cgreen 1.3.0: Unit test and mocking framework for C and C++
-dev-libs/check 0.15.2: A unit test framework for C
+dev-libs/check 0.15.2-r1: A unit test framework for C
 dev-libs/chmlib 0.40-r1: Library for MS CHM (compressed html) file format
 dev-libs/cl 1.2.3 1.2.4 9999: OpenCL bindings for Erlang
 dev-libs/clhpp 2.0.12: Khronos OpenCL C++ bindings
