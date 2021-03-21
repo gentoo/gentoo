@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gnome.org.eclass
@@ -45,8 +45,12 @@ fi
 # @ECLASS-VARIABLE: GNOME_ORG_PVP
 # @INTERNAL
 # @DESCRIPTION:
-# Major and minor numbers of the version number.
-: ${GNOME_ORG_PVP:=$(ver_cut 1-2)}
+# Components of the version number that correspond to a 6 month release.
+if ver_test -ge 40.0; then
+	: ${GNOME_ORG_PVP:=$(ver_cut 1)}
+else
+	: ${GNOME_ORG_PVP:=$(ver_cut 1-2)}
+fi
 
 SRC_URI="mirror://gnome/sources/${GNOME_ORG_MODULE}/${GNOME_ORG_PVP}/${GNOME_ORG_MODULE}-${PV}.tar.${GNOME_TARBALL_SUFFIX}"
 
