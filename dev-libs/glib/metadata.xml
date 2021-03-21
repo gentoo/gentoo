@@ -10,6 +10,10 @@
 			Enable dependencies required by glib libraries
 			using dbus service to manage settings saving
 		</flag>
+		<flag name="elf">
+			Enable support for listing and extracting from
+			ELF resource files with gresource tool
+		</flag>
 		<flag name="mime">
 			Pull in shared MIME database that many glib-based
 			applications require at runtime to detect or open files. Warning:
