@@ -3606,7 +3606,7 @@ dev-db/apgdiff 2.4: A simple PostgreSQL diff tool that is useful for schema upgr
 dev-db/barman 2.10 2.12: Administration tool for disaster recovery of PostgreSQL servers
 dev-db/bucardo 5.4.1: An asynchronous PostgreSQL replication system
 dev-db/cdb 0.75-r4: Fast, reliable, simple package for creating and reading constant databases
-dev-db/citus 9.5.2 9.5.4 10.0.1 10.0.2: Open-source postgresql extension for clustering/multi-node setups
+dev-db/citus 9.5.4 10.0.2 10.0.3: Open-source postgresql extension for clustering/multi-node setups
 dev-db/cockroach 2.1.5 19.1.1: open source database for building cloud services
 dev-db/cpp-driver 2.9.0 2.11.0: DataStax C/C++ Driver for Cassandra
 dev-db/datadraw 3.1.1: feature rich database generator for high performance C applications
