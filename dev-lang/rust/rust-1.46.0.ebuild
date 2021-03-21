@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7..9} )
 
-inherit prefix bash-completion-r1 check-reqs estack flag-o-matic llvm multiprocessing multilib-build python-any-r1 rust-toolchain toolchain-funcs
+inherit bash-completion-r1 check-reqs estack flag-o-matic llvm multiprocessing multilib-build prefix python-any-r1 rust-toolchain toolchain-funcs
 
 if [[ ${PV} = *beta* ]]; then
 	betaver=${PV//*beta}
@@ -49,7 +49,10 @@ IUSE="clippy cpu_flags_x86_sse2 debug doc libressl miri nightly parallel-compile
 # 2. Update the := to specify *max* version, e.g. < 11.
 # 3. Specify LLVM_MAX_SLOT, e.g. 10.
 LLVM_DEPEND="
-	sys-devel/llvm:10[${LLVM_TARGET_USEDEPS// /,}]
+	|| (
+		sys-devel/llvm:10[${LLVM_TARGET_USEDEPS// /,}]
+		sys-devel/llvm:9[${LLVM_TARGET_USEDEPS// /,}]
+	)
 	<sys-devel/llvm-11:=
 	wasm? ( sys-devel/lld )
 "
@@ -189,6 +192,16 @@ pkg_setup() {
 	fi
 }
 
+patchelf_stage0() {
+	local filetype=$(file -b $1)
+	if [[ ${filetype} == *ELF*interpreter* ]]; then
+		einfo "$1's interpreter changed"
+		patchelf $1 --set-interpreter $2 || die
+	elif [[ ${filetype} == *script* ]]; then
+		hprefixify $1
+	fi
+}
+
 src_prepare() {
 	if ! use system-bootstrap; then
 		local rust_stage0_root="${WORKDIR}"/rust-stage0
@@ -198,26 +211,10 @@ src_prepare() {
 			--destdir="${rust_stage0_root}" --prefix=/ || die
 
 		if use prefix; then
-			interpreter=`ldconfig -p | grep ld-linux | awk '{print $NF}' || die "Cannot find your ld.so, why?"`
-			ebegin "Changing interpreter to $interpreter for Gentoo prefix"
-			for f in `ls -Ud ${rust_stage0_root}/bin/*  || die "Cannot find binary of rust_stage0, why?"`; do
-				if file $f | grep -q ELF; then
-					einfo "$f's interpreter changed"
-					patchelf $f --set-interpreter $interpreter || die "Cannot patchelf, why?"
-				else
-					hprefixify $f
-				fi
-			done
-			eend $?
-
-			RPATH=${EPREFIX}/usr/$(get_libdir)
-			ebegin "Changing rparh to ${RPATH} for Gentoo prefix"
-			for f in `ls -Ud ${rust_stage0_root}/lib/*  || die "Cannot find lib of rust_stage0, why?"`; do
-				if file $f | grep -q ELF; then
-					einfo "$f's rpath changed"
-					patchelf $f --remove-rpath || die "Cannot patchelf, why?"
-					patchelf $f --set-rpath ${RPATH} || die "Cannot patchelf, why?"
-				fi
+			local interpreter=$(patchelf --print-interpreter ${EPREFIX}/bin/bash)
+			ebegin "Changing interpreter to ${interpreter} for Gentoo prefix"
+			for filename in $(find ${rust_stage0_root}/bin -type f);do
+				patchelf_stage0 ${filename} ${interpreter} \; || die
 			done
 			eend $?
 		fi
