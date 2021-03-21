@@ -1856,7 +1856,7 @@ app-editors/pyvim 3.0.2: An implementation of Vim in Python
 app-editors/qemacs 0.4.1_pre20170225: QEmacs is a very small but powerful UNIX editor
 app-editors/qhexedit2 0.8.6_p20190316: Hex editor library, Qt application written in C++ with Python bindings
 app-editors/qxmledit 0.9.12: Simple Qt-based XML editor
-app-editors/retext 7.1.0 7.2.0-r1 9999: Simple editor for Markdown and reStructuredText
+app-editors/retext 7.1.0 7.2.1 9999: Simple editor for Markdown and reStructuredText
 app-editors/sandy 0.4-r1: an ncurses text editor with an easy-to-read, hackable C source
 app-editors/scite 4.4.4-r10: A very powerful, highly configurable, small editor with syntax coloring
 app-editors/shed 1.15: Simple Hex EDitor
