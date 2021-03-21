@@ -110,7 +110,7 @@ set_secure_path() {
 		done
 		SECURE_PATH=${newpath#:}
 	}
-	cleanpath /bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/opt/bin${SECURE_PATH:+:${SECURE_PATH}}
+	cleanpath /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/bin${SECURE_PATH:+:${SECURE_PATH}}
 
 	# finally, strip gcc paths #136027
 	rmpath() {
@@ -198,6 +198,7 @@ src_install() {
 		insinto /etc/openldap/schema
 		newins doc/schema.OpenLDAP sudo.schema
 	fi
+
 	if use pam; then
 		pamd_mimic system-auth sudo auth account session
 		pamd_mimic system-auth sudo-i auth account session
