@@ -13,9 +13,7 @@ SRC_URI="https://github.com/greenbone/gvmd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 SLOT="0"
 LICENSE="GPL-2+"
 KEYWORDS="~amd64 ~x86"
-IUSE="extras +postgres sqlite test"
-# keep deprecated USE Flags for revdep of gvm
-REQUIRED_USE="postgres !sqlite"
+IUSE="extras test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
