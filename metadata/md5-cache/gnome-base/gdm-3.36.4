@@ -4,6 +4,7 @@ DEPEND=app-text/iso-codes >=dev-libs/glib-2.44:2 dev-libs/libgudev >=x11-libs/gt
 DESCRIPTION=GNOME Display Manager for managing graphical display servers and user logins
 EAPI=7
 HOMEPAGE=https://wiki.gnome.org/Projects/GDM
+INHERIT=gnome2 pam readme.gentoo-r1 systemd toolchain-funcs udev
 IUSE=accessibility audit bluetooth-sound branding elogind fprint +introspection ipv6 plymouth selinux smartcard systemd tcpd test wayland xinerama
 KEYWORDS=amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86
 LICENSE=GPL-2+ branding? ( CC-BY-SA-4.0 )
@@ -12,5 +13,5 @@ REQUIRED_USE=^^ ( elogind systemd )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://gnome/sources/gdm/3.36/gdm-3.36.4.tar.xz branding? ( https://www.mail-archive.com/tango-artists@lists.freedesktop.org/msg00043/tango-gentoo-v1.1.tar.gz )
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	gnome.org	532d56d07b9eace4831aaa817d2b756a	gnome2	c156bb2ac81c822dd861424ce19bc168	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	pam	b097695df28f3974e3af860d6704d4f2	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	udev	452708c3f55cf6e918b045adb949a9e6	wrapper	4251d4c84c25f59094fd557e0063a974	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	gnome.org	532d56d07b9eace4831aaa817d2b756a	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	gnome2	c156bb2ac81c822dd861424ce19bc168	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	pam	b097695df28f3974e3af860d6704d4f2	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	74b223e42834adf09a2d21fe5fe13741	udev	452708c3f55cf6e918b045adb949a9e6
 _md5_=ce130335dd0ef667348d613da6d04059

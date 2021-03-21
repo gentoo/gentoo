@@ -3,11 +3,12 @@ DEFINED_PHASES=configure prepare
 DESCRIPTION=NetworkManager L2TP plugin
 EAPI=7
 HOMEPAGE=https://github.com/nm-l2tp/network-manager-l2tp
+INHERIT=eutils gnome.org autotools
 IUSE=gnome static-libs
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=>=net-misc/networkmanager-1.2[ppp] dev-libs/dbus-glib net-dialup/ppp[eap-tls] net-dialup/xl2tpd >=dev-libs/glib-2.32 || ( net-vpn/strongswan net-vpn/libreswan ) gnome? ( x11-libs/gtk+:3 app-crypt/libsecret gnome-extra/nm-applet )
 SLOT=0
 SRC_URI=https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/1.8.0/NetworkManager-l2tp-1.8.0.tar.xz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	gnome.org	532d56d07b9eace4831aaa817d2b756a	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	gnome.org	532d56d07b9eace4831aaa817d2b756a	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=2665255fc25e57e774b796a3b473682d

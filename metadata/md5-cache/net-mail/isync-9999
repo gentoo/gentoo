@@ -4,10 +4,11 @@ DEPEND=>=sys-libs/db-4.2:= sasl? ( dev-libs/cyrus-sasl ) ssl? ( !libressl? ( >=d
 DESCRIPTION=MailDir mailbox synchronizer
 EAPI=7
 HOMEPAGE=http://isync.sourceforge.net/
+INHERIT=git-r3 autotools
 IUSE=libressl sasl ssl zlib
 LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=>=sys-libs/db-4.2:= sasl? ( dev-libs/cyrus-sasl ) ssl? ( !libressl? ( >=dev-libs/openssl-0.9.6:0= ) libressl? ( dev-libs/libressl:0= ) ) zlib? ( sys-libs/zlib:0= )
 SLOT=0
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=c87ce9c2cea5773dcad7b2e7bc06efc7

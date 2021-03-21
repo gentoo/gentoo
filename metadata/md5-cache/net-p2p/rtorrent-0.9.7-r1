@@ -3,6 +3,7 @@ DEPEND=~net-libs/libtorrent-0.13.7 >=dev-libs/libsigc++-2.2.2:2 >=net-misc/curl-
 DESCRIPTION=BitTorrent Client using libtorrent
 EAPI=6
 HOMEPAGE=https://rakshasa.github.io/rtorrent/
+INHERIT=autotools linux-info systemd
 IUSE=daemon debug selinux test xmlrpc kernel_linux
 KEYWORDS=amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris
 LICENSE=GPL-2
@@ -10,5 +11,5 @@ RDEPEND=~net-libs/libtorrent-0.13.7 >=dev-libs/libsigc++-2.2.2:2 >=net-misc/curl
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=http://rtorrent.net/downloads/rtorrent-0.9.7.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	systemd	74b223e42834adf09a2d21fe5fe13741
 _md5_=5811d52a2ce3aa6435c8a3fec25fa1fe

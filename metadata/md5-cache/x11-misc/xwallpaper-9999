@@ -4,10 +4,11 @@ DEPEND=x11-libs/pixman x11-libs/xcb-util x11-libs/xcb-util-image jpeg? ( media-l
 DESCRIPTION=Wallpaper setting utility for X
 EAPI=7
 HOMEPAGE=https://github.com/stoeckmann/xwallpaper
+INHERIT=autotools git-r3
 IUSE=jpeg png seccomp xpm
 LICENSE=ISC
 PROPERTIES=live
 RDEPEND=x11-libs/pixman x11-libs/xcb-util x11-libs/xcb-util-image jpeg? ( media-libs/libjpeg-turbo:= ) png? ( media-libs/libpng:0= ) seccomp? ( >=sys-libs/libseccomp-2.3.1:0= ) xpm? ( x11-libs/libXpm )
 SLOT=0
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	git-r3	3e7ec3d6619213460c85e2aa48398441
 _md5_=01ff7d901a4b9fcd98a0bb6d95a83c01

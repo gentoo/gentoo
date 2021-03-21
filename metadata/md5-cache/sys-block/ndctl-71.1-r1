@@ -4,6 +4,7 @@ DEPEND=dev-libs/json-c:= sys-apps/keyutils:= sys-apps/kmod:= sys-apps/util-linux
 DESCRIPTION=Helper tools and libraries for managing non-volatile memory on Linux
 EAPI=7
 HOMEPAGE=https://github.com/pmem/ndctl
+INHERIT=autotools bash-completion-r1
 IUSE=bash-completion systemd test
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2 LGPL-2.1 MIT CC0-1.0
@@ -11,5 +12,5 @@ RDEPEND=dev-libs/json-c:= sys-apps/keyutils:= sys-apps/kmod:= sys-apps/util-linu
 RESTRICT=!test? ( test ) test
 SLOT=0/6
 SRC_URI=https://github.com/pmem/ndctl/archive/v71.1.tar.gz -> ndctl-71.1.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	bash-completion-r1	be99724bde4274de21e581204e9d164a	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	bash-completion-r1	be99724bde4274de21e581204e9d164a
 _md5_=9107cdeceb066fb281eceb3960efbdcf

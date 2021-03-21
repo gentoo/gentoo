@@ -4,11 +4,12 @@ DEPEND=x11-libs/libXext x11-libs/libXfixes x11-libs/libXScrnSaver >=x11-libs/pix
 DESCRIPTION=X.Org driver for Intel cards
 EAPI=7
 HOMEPAGE=https://www.x.org/wiki/ https://gitlab.freedesktop.org/xorg/driver/xf86-video-intel
+INHERIT=linux-info xorg-3 flag-o-matic
 IUSE=debug +sna tools +udev uxa xvmc kernel_linux dri
 LICENSE=MIT
 PROPERTIES=live
 RDEPEND=x11-libs/libXext x11-libs/libXfixes x11-libs/libXScrnSaver >=x11-libs/pixman-0.27.1 >=x11-libs/libdrm-2.4.52[video_cards_intel] >=x11-base/xorg-server-1.18 tools? ( x11-libs/libX11 x11-libs/libxcb x11-libs/libXcursor x11-libs/libXdamage x11-libs/libXinerama x11-libs/libXrandr x11-libs/libXrender x11-libs/libxshmfence x11-libs/libXtst ) udev? ( virtual/libudev:= ) xvmc? ( x11-libs/libXvMC >=x11-libs/libxcb-1.5 x11-libs/xcb-util ) x11-base/xorg-server:= dri? ( x11-base/xorg-server[-minimal] x11-libs/libdrm ) >=x11-base/xorg-server-1.20[xorg] >=x11-libs/libpciaccess-0.14
 REQUIRED_USE=|| ( sna uxa )
 SLOT=0
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	git-r3	3e7ec3d6619213460c85e2aa48398441	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	xorg-3	87a9e316d5b1fa9345e77329cc0ebe3b
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	git-r3	3e7ec3d6619213460c85e2aa48398441	xorg-3	87a9e316d5b1fa9345e77329cc0ebe3b
 _md5_=c5f99e81fd4c564244de4d256aa65812

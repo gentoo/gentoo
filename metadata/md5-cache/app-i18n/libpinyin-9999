@@ -4,10 +4,11 @@ DEPEND=dev-libs/glib:2 sys-libs/db:=
 DESCRIPTION=Libraries for handling of Hanyu Pinyin and Zhuyin Fuhao
 EAPI=7
 HOMEPAGE=https://github.com/libpinyin/libpinyin https://sourceforge.net/projects/libpinyin/
+INHERIT=autotools git-r3
 LICENSE=GPL-3+
 PROPERTIES=live
 RDEPEND=dev-libs/glib:2 sys-libs/db:=
 SLOT=0/13
 SRC_URI=mirror://sourceforge/libpinyin/models/model19.text.tar.gz -> libpinyin-model19.text.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	git-r3	3e7ec3d6619213460c85e2aa48398441
 _md5_=8cbc8859e2e0c1fa49edb743b8c0e814

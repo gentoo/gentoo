@@ -4,6 +4,7 @@ DEPEND=dev-libs/expat dev-qt/qtcore:5 sci-libs/shapelib:= sys-libs/zlib[minizip]
 DESCRIPTION=GPS waypoints, tracks and routes converter
 EAPI=7
 HOMEPAGE=https://www.gpsbabel.org/ https://github.com/gpsbabel/gpsbabel
+INHERIT=autotools desktop qmake-utils git-r3
 IUSE=doc +gui
 LICENSE=GPL-2
 PROPERTIES=live
@@ -11,5 +12,5 @@ RDEPEND=dev-libs/expat dev-qt/qtcore:5 sci-libs/shapelib:= sys-libs/zlib[minizip
 RESTRICT=test
 SLOT=0
 SRC_URI=doc? ( https://www.gpsbabel.org/style3.css -> gpsbabel.org-style3.css )
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	desktop	c0d27bf73aa08ca05b663dbd31fbef28	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	desktop	c0d27bf73aa08ca05b663dbd31fbef28	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	git-r3	3e7ec3d6619213460c85e2aa48398441
 _md5_=b59ceb948cc64657c16daf50ae22bb6c

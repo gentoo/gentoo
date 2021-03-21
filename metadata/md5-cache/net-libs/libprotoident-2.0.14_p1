@@ -4,11 +4,12 @@ DEPEND=>=net-libs/libtrace-4.0.1 >=net-libs/libflowmanager-3.0.0
 DESCRIPTION=A library that performs application layer protocol identification for flows
 EAPI=7
 HOMEPAGE=https://research.wand.net.nz/software/libprotoident.php
+INHERIT=autotools
 IUSE=static-libs tools
 KEYWORDS=~amd64 ~x86
 LICENSE=LGPL-3+
 RDEPEND=>=net-libs/libtrace-4.0.1 >=net-libs/libflowmanager-3.0.0
 SLOT=0/2
 SRC_URI=https://github.com/wanduow/libprotoident/archive/2.0.14-1.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=25ebc010301df54983df97a8d332ed1b

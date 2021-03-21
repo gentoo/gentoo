@@ -3,10 +3,11 @@ DEPEND=dev-perl/File-MMagic emacs? ( >=app-editors/emacs-23.1:* ) l10n_ja? ( app
 DESCRIPTION=Namazu is a full-text search engine
 EAPI=6
 HOMEPAGE=http://www.namazu.org/
+INHERIT=autotools elisp-common
 IUSE=emacs l10n_ja nls static-libs tk
 LICENSE=GPL-2
 RDEPEND=dev-perl/File-MMagic emacs? ( >=app-editors/emacs-23.1:* ) l10n_ja? ( app-i18n/nkf || ( dev-perl/Text-Kakasi app-i18n/kakasi app-text/chasen app-text/mecab ) ) nls? ( virtual/libintl ) tk? ( dev-lang/tk:0 www-client/lynx )
 SLOT=0
 SRC_URI=http://www.namazu.org/test/namazu-2.0.22pre7.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	d4b53ec63c580b993ed19445f411e1d2	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	d4b53ec63c580b993ed19445f411e1d2
 _md5_=7c83a1517db606b27a96b3fa0e3e0ab3

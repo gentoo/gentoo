@@ -3,11 +3,12 @@ DEPEND=dmalloc? ( dev-libs/dmalloc ) >=app-portage/elt-patches-20170815 || ( >=s
 DESCRIPTION=Genomic similarity search with multiple transition constrained spaced seeds
 EAPI=6
 HOMEPAGE=http://bioinfo.lifl.fr/yass/
+INHERIT=autotools
 IUSE=dmalloc lowmem threads
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=dmalloc? ( dev-libs/dmalloc )
 SLOT=0
 SRC_URI=http://bioinfo.lifl.fr/yass/files/yass-1.14.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=3a4ba9b4e7b8efec51cfc79d261fefd3

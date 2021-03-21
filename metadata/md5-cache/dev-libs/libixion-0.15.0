@@ -4,6 +4,7 @@ DEPEND=dev-libs/boost:= dev-util/mdds:1/1.5 python? ( python_single_target_pytho
 DESCRIPTION=General purpose formula parser & interpreter
 EAPI=7
 HOMEPAGE=https://gitlab.com/ixion/ixion
+INHERIT=autotools python-single-r1
 IUSE=debug python +threads python_single_target_python3_7 python_single_target_python3_8
 KEYWORDS=amd64 ~arm arm64 ~ppc ~ppc64 x86
 LICENSE=MIT
@@ -11,5 +12,5 @@ RDEPEND=dev-libs/boost:= dev-util/mdds:1/1.5 python? ( python_single_target_pyth
 REQUIRED_USE=python? ( ^^ ( python_single_target_python3_7 python_single_target_python3_8 ) )
 SLOT=0/0.15
 SRC_URI=https://kohei.us/files/ixion/src/libixion-0.15.0.tar.xz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-single-r1	d3100de905f978df912135806cf27188
 _md5_=b016d8d0da3f999e04d56cc27234981f

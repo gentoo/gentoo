@@ -4,11 +4,12 @@ DEPEND=dev-libs/glib:2 x11-libs/gtk+:2 media-libs/libexif:=
 DESCRIPTION=GTK+ frontend to the libexif library (parsing, editing, and saving EXIF data)
 EAPI=7
 HOMEPAGE=http://libexif.sf.net
+INHERIT=autotools
 IUSE=nls
 KEYWORDS=~alpha amd64 ~ia64 ppc sparc x86 ~amd64-linux ~x86-linux ~x86-solaris
 LICENSE=GPL-2
 RDEPEND=dev-libs/glib:2 x11-libs/gtk+:2 media-libs/libexif:=
 SLOT=0
 SRC_URI=mirror://sourceforge/libexif/libexif-gtk-0.3.5.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=7937c6843e16a2938c6ce42bdd234ea2

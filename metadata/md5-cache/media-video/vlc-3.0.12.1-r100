@@ -4,6 +4,7 @@ DEPEND=net-dns/libidn:= sys-libs/zlib[minizip] virtual/libintl virtual/opengl a5
 DESCRIPTION=Media player and framework with support for most multimedia files and streaming
 EAPI=7
 HOMEPAGE=https://www.videolan.org/vlc/
+INHERIT=autotools flag-o-matic lua-single toolchain-funcs virtualx xdg
 IUSE=a52 alsa aom archive aribsub bidi bluray cddb chromaprint chromecast dav1d dbus dc1394 debug directx dts +dvbpsi dvd +encode faad fdk +ffmpeg flac fluidsynth fontconfig +gcrypt gme gnome-keyring gstreamer ieee1394 jack jpeg kate libass libcaca libnotify +libsamplerate libtar libtiger linsys lirc live lua macosx-notifications mad matroska modplug mp3 mpeg mtp musepack ncurses nfs ogg omxil optimisememory opus png projectm pulseaudio +qt5 rdp run-as-root samba sdl-image sftp shout sid skins soxr speex srt ssl svg taglib theora tremor truetype twolame udev upnp vaapi v4l vdpau vnc vorbis vpx wayland +X x264 x265 xml zeroconf zvbi cpu_flags_arm_neon cpu_flags_ppc_altivec cpu_flags_x86_mmx cpu_flags_x86_sse lua_single_target_lua5-1 lua_single_target_lua5-2 test
 KEYWORDS=amd64 ~arm arm64 ppc ppc64 -sparc x86
 LICENSE=LGPL-2.1 GPL-2
@@ -12,5 +13,5 @@ REQUIRED_USE=chromecast? ( encode ) directx? ( ffmpeg ) fontconfig? ( truetype )
 RESTRICT=!test? ( test )
 SLOT=0/5-9
 SRC_URI=https://code.videolan.org/videolan/vlc-3.0/-/archive/3.0.12.1/vlc-3.0-3.0.12.1.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	lua-single	f91b5656f00869c220a6e35ae0521c54	lua-utils	736947973cfbc9de01fdb8548f942f82	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	virtualx	7e60d3b10c791ab996f717bc1f30072f	wrapper	4251d4c84c25f59094fd557e0063a974	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	lua-utils	736947973cfbc9de01fdb8548f942f82	lua-single	f91b5656f00869c220a6e35ae0521c54	virtualx	7e60d3b10c791ab996f717bc1f30072f	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
 _md5_=19aac78048624d6ab1c5f2f209b65b76

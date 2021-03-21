@@ -4,6 +4,7 @@ DEPEND=sys-libs/libseccomp:= apparmor? ( sec-policy/apparmor-profiles sys-apps/a
 DESCRIPTION=Service and tools for management of snap packages
 EAPI=7
 HOMEPAGE=http://snapcraft.io/
+INHERIT=autotools bash-completion-r1 golang-vcs-snapshot linux-info readme.gentoo-r1 systemd xdg-utils
 IUSE=apparmor +cgroup-hybrid +forced-devmode gtk kde systemd kernel_linux
 KEYWORDS=~amd64
 LICENSE=GPL-3 Apache-2.0 BSD BSD-2 LGPL-3-with-linking-exception MIT
@@ -13,5 +14,5 @@ REQUIRED_USE=!forced-devmode? ( apparmor cgroup-hybrid ) systemd
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/snapcore/snapd/releases/download/2.47.1/snapd_2.47.1.vendor.tar.xz -> snapd-2.47.1.tar.xz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	bash-completion-r1	be99724bde4274de21e581204e9d164a	golang-base	904cd4c642d6923795b9bd99b6fe0e74	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	bash-completion-r1	be99724bde4274de21e581204e9d164a	golang-base	904cd4c642d6923795b9bd99b6fe0e74	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	74b223e42834adf09a2d21fe5fe13741	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=427a36701f4f5769038cb0a9be3c1209

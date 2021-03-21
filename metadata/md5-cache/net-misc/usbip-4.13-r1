@@ -3,6 +3,7 @@ DEPEND=>=dev-libs/glib-2.6 sys-apps/hwids >=sys-kernel/linux-headers-3.17 virtua
 DESCRIPTION=Userspace utilities for a general USB device sharing system over IP networks
 EAPI=6
 HOMEPAGE=https://www.kernel.org/
+INHERIT=autotools kernel-2
 IUSE=tcpd symlink build
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
@@ -10,5 +11,5 @@ RDEPEND=>=dev-libs/glib-2.6 sys-apps/hwids >=sys-kernel/linux-headers-3.17 virtu
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.13.tar.xz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	estack	055c42df72f76a4f45ec92b35e83cd56	kernel-2	29b0ddf528a34e7e8c7c179cfbdb5c26	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	estack	055c42df72f76a4f45ec92b35e83cd56	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	kernel-2	29b0ddf528a34e7e8c7c179cfbdb5c26
 _md5_=7d8cd139f4cd66e96ed87d0eb695bde3

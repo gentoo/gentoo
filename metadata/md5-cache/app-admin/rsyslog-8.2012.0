@@ -4,6 +4,7 @@ DEPEND=>=dev-libs/libfastjson-0.99.8:= >=dev-libs/libestr-0.1.9 >=sys-libs/zlib-
 DESCRIPTION=An enhanced multi-threaded syslogd with database support and more
 EAPI=7
 HOMEPAGE=https://www.rsyslog.com/
+INHERIT=autotools linux-info python-any-r1 systemd
 IUSE=clickhouse curl dbi debug doc elasticsearch +gcrypt gnutls imhttp impcap jemalloc kafka kerberos kubernetes libressl mdblookup mongodb mysql normalize omhttp omhttpfs omudpspoof +openssl postgres rabbitmq redis relp rfc3195 rfc5424hmac snmp +ssl systemd test usertools +uuid xxhash zeromq kernel_linux
 KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~x86
 LICENSE=GPL-3 LGPL-3 Apache-2.0
@@ -12,5 +13,5 @@ REQUIRED_USE=kubernetes? ( normalize ) ssl? ( || ( gnutls openssl ) )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://www.rsyslog.com/files/download/rsyslog/rsyslog-8.2012.0.tar.gz doc? ( https://www.rsyslog.com/files/download/rsyslog/rsyslog-doc-8.2012.0.tar.gz )
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	systemd	74b223e42834adf09a2d21fe5fe13741
 _md5_=8f48475d0f3f75f3c4df5f8c7fc14652

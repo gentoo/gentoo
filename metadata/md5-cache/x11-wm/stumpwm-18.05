@@ -3,6 +3,7 @@ DEPEND=dev-lisp/alexandria dev-lisp/cl-ppcre dev-lisp/clx >=dev-lisp/sbcl-1.3.0 
 DESCRIPTION=Stumpwm is a Window Manager written entirely in Common Lisp.
 EAPI=6
 HOMEPAGE=https://stumpwm.github.io/
+INHERIT=common-lisp-3 autotools elisp-common xdg-utils versionator
 IUSE=contrib doc emacs
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
@@ -11,5 +12,5 @@ RDEPEND=dev-lisp/alexandria dev-lisp/cl-ppcre dev-lisp/clx >=dev-lisp/sbcl-1.3.0
 RESTRICT=strip mirror
 SLOT=0
 SRC_URI=https://github.com/stumpwm/stumpwm/archive/18.05.tar.gz -> stumpwm-18.05.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	common-lisp-3	cc559c74a20195d5ca316bc53265018d	desktop	c0d27bf73aa08ca05b663dbd31fbef28	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	edos2unix	33e347e171066657f91f8b0c72ec8773	elisp-common	d4b53ec63c580b993ed19445f411e1d2	epatch	e8f1ec13660dc2f44b32775765d85e42	estack	055c42df72f76a4f45ec92b35e83cd56	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	multilib	d410501a125f99ffb560b0c523cd3d1e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	d3fb3ba33acc3bbbdc4d7970227c100d	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	estack	055c42df72f76a4f45ec92b35e83cd56	epatch	e8f1ec13660dc2f44b32775765d85e42	l10n	8cdd85e169b835d518bc2fd59f780d8e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	preserve-libs	ef207dc62baddfddfd39a164d9797648	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	common-lisp-3	cc559c74a20195d5ca316bc53265018d	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	d4b53ec63c580b993ed19445f411e1d2	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	versionator	d3fb3ba33acc3bbbdc4d7970227c100d
 _md5_=bfbe165f138147235de2728b12309b86

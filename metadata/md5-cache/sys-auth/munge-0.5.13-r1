@@ -3,11 +3,12 @@ DEPEND=app-arch/bzip2 sys-libs/zlib gcrypt? ( dev-libs/libgcrypt:0 ) !gcrypt? ( 
 DESCRIPTION=An authentication service for creating and validating credentials
 EAPI=6
 HOMEPAGE=https://github.com/dun/munge
+INHERIT=autotools user prefix
 IUSE=debug gcrypt static-libs
 KEYWORDS=~alpha amd64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86
 LICENSE=GPL-3
 RDEPEND=app-arch/bzip2 sys-libs/zlib gcrypt? ( dev-libs/libgcrypt:0 ) !gcrypt? ( dev-libs/openssl:0= )
 SLOT=0
 SRC_URI=https://github.com/dun/munge/releases/download/munge-0.5.13/munge-0.5.13.tar.xz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	prefix	de7d8e2b10085ed5ff09ad70e4753e5c
 _md5_=1a46b20b9c22c3556b894440ed0d1573

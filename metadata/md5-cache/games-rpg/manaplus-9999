@@ -4,11 +4,12 @@ DEPEND=>=dev-games/physfs-1.0.0 media-fonts/dejavu media-fonts/liberation-fonts 
 DESCRIPTION=OpenSource 2D MMORPG client for Evol Online and The Mana World
 EAPI=7
 HOMEPAGE=https://manaplus.org
+INHERIT=autotools git-r3
 IUSE=mumble nls opengl pugixml +sdl2 test
 LICENSE=GPL-2+
 PROPERTIES=live
 RDEPEND=>=dev-games/physfs-1.0.0 media-fonts/dejavu media-fonts/liberation-fonts media-fonts/mplus-outline-fonts media-fonts/wqy-microhei media-libs/libpng:0= net-misc/curl sys-libs/zlib x11-apps/xmessage x11-libs/libX11 x11-misc/xdg-utils mumble? ( media-sound/mumble ) nls? ( virtual/libintl ) opengl? ( virtual/opengl ) pugixml? ( dev-libs/pugixml ) !pugixml? ( dev-libs/libxml2 ) sdl2? ( media-libs/libsdl2[X,opengl?,video] media-libs/sdl2-gfx media-libs/sdl2-image[png] media-libs/sdl2-mixer[vorbis] media-libs/sdl2-net media-libs/sdl2-ttf ) !sdl2? ( media-libs/libsdl[X,opengl?,video] media-libs/sdl-gfx media-libs/sdl-image[png] media-libs/sdl-mixer[vorbis] media-libs/sdl-net media-libs/sdl-ttf )
 RESTRICT=!test? ( test )
 SLOT=0
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	git-r3	3e7ec3d6619213460c85e2aa48398441
 _md5_=ee1082ba8ddc7bacb6012359b925ccd2

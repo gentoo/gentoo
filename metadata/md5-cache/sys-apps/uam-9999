@@ -3,9 +3,10 @@ DEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/aut
 DESCRIPTION=Simple udev-based automounter for removable USB media
 EAPI=6
 HOMEPAGE=https://github.com/mgorny/uam/
+INHERIT=autotools git-r3 udev
 LICENSE=BSD
 PROPERTIES=live
 RDEPEND=acct-group/plugdev virtual/udev
 SLOT=0
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	udev	452708c3f55cf6e918b045adb949a9e6
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	git-r3	3e7ec3d6619213460c85e2aa48398441	udev	452708c3f55cf6e918b045adb949a9e6
 _md5_=fffbee941cc24d1a9111dcfbcd202671

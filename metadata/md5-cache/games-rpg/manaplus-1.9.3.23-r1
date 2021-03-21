@@ -4,6 +4,7 @@ DEPEND=>=dev-games/physfs-1.0.0 media-fonts/dejavu media-fonts/liberation-fonts 
 DESCRIPTION=OpenSource 2D MMORPG client for Evol Online and The Mana World
 EAPI=7
 HOMEPAGE=https://manaplus.org
+INHERIT=autotools
 IUSE=mumble nls opengl pugixml +sdl2 test
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2+
@@ -11,5 +12,5 @@ RDEPEND=>=dev-games/physfs-1.0.0 media-fonts/dejavu media-fonts/liberation-fonts
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=http://download.evolonline.org/manaplus/download/1.9.3.23/manaplus-1.9.3.23.tar.xz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=9b37f4d2ec258511d986ff2783e9b2b4

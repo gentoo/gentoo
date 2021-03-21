@@ -4,6 +4,7 @@ DEPEND=>=dev-python/testtools-0.9.34[python_targets_pypy3(-)?,python_targets_pyt
 DESCRIPTION=A streaming protocol for test results
 EAPI=7
 HOMEPAGE=https://launchpad.net/subunit https://pypi.org/project/python-subunit/
+INHERIT=distutils-r1 multilib-minimal autotools
 IUSE=static-libs test python_targets_pypy3 python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_s390_32 abi_s390_64
 KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86
 LICENSE=Apache-2.0 BSD
@@ -12,5 +13,5 @@ REQUIRED_USE=|| ( python_targets_pypy3 python_targets_python3_7 python_targets_p
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://launchpad.net/subunit/trunk/1.4.0/+download/subunit-1.4.0.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	distutils-r1	16579e06f8839831bd5c03455bb87e3f	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	6d099888c5b4dd4868c26508df307e95	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-r1	6d099888c5b4dd4868c26508df307e95	distutils-r1	16579e06f8839831bd5c03455bb87e3f	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=679b722b4f22a5ab66806c6b861dde7b

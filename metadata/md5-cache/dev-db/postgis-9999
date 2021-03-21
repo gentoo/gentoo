@@ -3,6 +3,7 @@ DEPEND=postgres_targets_postgres12? ( dev-db/postgresql:12=[server] ) postgres_t
 DESCRIPTION=Geographic Objects for PostgreSQL
 EAPI=6
 HOMEPAGE=https://postgis.net
+INHERIT=autotools eapi7-ver postgres-multi git-r3
 IUSE=address-standardizer doc gtk static-libs test topology postgres_targets_postgres12 postgres_targets_postgres11 postgres_targets_postgres10 postgres_targets_postgres9_6 postgres_targets_postgres9_5
 LICENSE=GPL-2
 PROPERTIES=live
@@ -10,5 +11,5 @@ RDEPEND=postgres_targets_postgres12? ( dev-db/postgresql:12=[server] ) postgres_
 REQUIRED_USE=test? ( doc ) || ( postgres_targets_postgres12 postgres_targets_postgres11 postgres_targets_postgres10 postgres_targets_postgres9_6 postgres_targets_postgres9_5 )
 RESTRICT=test
 SLOT=0
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	postgres	9613fb90112e2a521b6a8315187c2966	postgres-multi	b784ac6c30437f2ded3f16482b56374c	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	postgres	9613fb90112e2a521b6a8315187c2966	postgres-multi	b784ac6c30437f2ded3f16482b56374c	git-r3	3e7ec3d6619213460c85e2aa48398441
 _md5_=1d8795abc4943a12a0e8f48f254b61ca

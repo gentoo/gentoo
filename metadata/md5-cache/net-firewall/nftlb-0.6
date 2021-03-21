@@ -4,6 +4,7 @@ DEPEND=net-firewall/nftables:=[modern-kernel] dev-libs/jansson:= dev-libs/libev:
 DESCRIPTION=nftables load balancer
 EAPI=7
 HOMEPAGE=https://github.com/zevenet/nftlb
+INHERIT=linux-info autotools
 IUSE=kernel_linux
 KEYWORDS=~amd64 ~x86
 LICENSE=AGPL-3
@@ -11,5 +12,5 @@ RDEPEND=net-firewall/nftables:=[modern-kernel] dev-libs/jansson:= dev-libs/libev
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/zevenet/nftlb/archive/v0.6.tar.gz -> nftlb-0.6.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=ac400f553096573b5598cf6747051b93

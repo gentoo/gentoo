@@ -4,10 +4,11 @@ DEPEND=>=dev-libs/glib-2.28:2 >=media-libs/gupnp-dlna-0.9.4:2.0 >=net-libs/dleyn
 DESCRIPTION=A library to discover and manipulate DLNA renderers
 EAPI=7
 HOMEPAGE=https://01.org/dleyna/
+INHERIT=autotools
 KEYWORDS=amd64
 LICENSE=LGPL-2.1
 RDEPEND=>=dev-libs/glib-2.28:2 >=media-libs/gupnp-dlna-0.9.4:2.0 >=net-libs/dleyna-core-0.6.0 >=net-libs/gssdp-1.2.0:0= >=net-libs/gupnp-1.2.0:0= >=net-libs/gupnp-av-0.11.5 >=net-libs/libsoup-2.28.2:2.4 net-libs/dleyna-connector-dbus
 SLOT=0
 SRC_URI=https://01.org/sites/default/files/downloads/dleyna/dleyna-renderer-0.6.0.tar_2.gz -> dleyna-renderer-0.6.0.tar.gz https://dev.gentoo.org/~juippis/distfiles/tmp/dleyna-renderer-0.6.0-gupnp-1.2.patch
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=647b836bcb668caddb11a93c607bbb85

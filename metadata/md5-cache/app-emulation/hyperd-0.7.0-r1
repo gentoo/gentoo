@@ -3,6 +3,7 @@ DEPEND=libvirt? ( >=app-emulation/libvirt-1.2.2 ) xen? ( app-emulation/xen ) sys
 DESCRIPTION=Hypervisor-based Runtime for OCI
 EAPI=6
 HOMEPAGE=https://github.com/hyperhq/hyperd
+INHERIT=autotools systemd golang-vcs-snapshot
 IUSE=libvirt xen
 KEYWORDS=~amd64
 LICENSE=Apache-2.0
@@ -10,5 +11,5 @@ RDEPEND=libvirt? ( >=app-emulation/libvirt-1.2.2 ) xen? ( app-emulation/xen )
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/hyperhq/hyperd/archive/v0.7.0.tar.gz -> hyperd-0.7.0.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	golang-base	904cd4c642d6923795b9bd99b6fe0e74	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	systemd	74b223e42834adf09a2d21fe5fe13741	golang-base	904cd4c642d6923795b9bd99b6fe0e74	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec
 _md5_=4fbb40a84615d0d49d904a653f9e7d12

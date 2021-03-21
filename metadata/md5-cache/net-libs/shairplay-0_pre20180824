@@ -4,11 +4,12 @@ DEPEND=tools? ( media-libs/libao )
 DESCRIPTION=Apple airplay and raop protocol server
 EAPI=7
 HOMEPAGE=https://github.com/juhovh/shairplay
+INHERIT=autotools
 IUSE=alac +playfair static-libs tools
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD LGPL-2.1 MIT playfair? ( GPL-3+ )
 RDEPEND=alac? ( media-sound/alac_decoder net-libs/shairplay[tools] ) tools? ( dev-libs/openssl:0= net-dns/avahi[mdnsresponder-compat] )
 SLOT=0
 SRC_URI=https://github.com/juhovh/shairplay/archive/096b61ad14c90169f438e690d096e3fcf87e504e.tar.gz -> shairplay-0_pre20180824.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=e79d7870766d919f0e0c88ff4f349a99

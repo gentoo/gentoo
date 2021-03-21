@@ -3,6 +3,7 @@ DEPEND=>=app-emulation/libspectrum-1.4.4 dev-libs/glib:2 alsa? ( media-libs/alsa
 DESCRIPTION=Free Unix Spectrum Emulator by Philip Kendall
 EAPI=6
 HOMEPAGE=http://fuse-emulator.sourceforge.net
+INHERIT=autotools
 IUSE=alsa ao backend-fbcon backend-sdl backend-svga backend-X gpm joystick memlimit png xml
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-2+
@@ -10,5 +11,5 @@ RDEPEND=>=app-emulation/libspectrum-1.4.4 dev-libs/glib:2 alsa? ( media-libs/als
 REQUIRED_USE=?? ( backend-fbcon backend-sdl backend-svga backend-X )
 SLOT=0
 SRC_URI=mirror://sourceforge/fuse-emulator/fuse-1.5.7.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=73274ec6f9409db706923839bd498d71

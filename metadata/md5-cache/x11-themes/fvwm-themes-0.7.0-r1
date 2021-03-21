@@ -3,11 +3,12 @@ DEPEND=>=x11-wm/fvwm-2.6.2 gnome? ( virtual/imagemagick-tools ) >=app-portage/el
 DESCRIPTION=A configuration framework for the fvwm window manager
 EAPI=6
 HOMEPAGE=http://fvwm-themes.sourceforge.net/
+INHERIT=autotools
 IUSE=gnome
 KEYWORDS=~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc x86
 LICENSE=GPL-2
 RDEPEND=>=x11-wm/fvwm-2.6.2
 SLOT=0
 SRC_URI=mirror://sourceforge/fvwm-themes/fvwm-themes-0.7.0.tar.bz2
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=ec8679ca26be12281a46b9ad1fe2f379

@@ -4,11 +4,12 @@ DEPEND=>=dev-games/physfs-2[zip] dev-libs/openssl:0= dev-qt/qtcore:5 dev-qt/qtgu
 DESCRIPTION=3D real-time strategy game
 EAPI=7
 HOMEPAGE=https://wz2100.net/
+INHERIT=autotools toolchain-funcs xdg
 IUSE=debug nls videos
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2+ CC-BY-SA-3.0 public-domain
 RDEPEND=>=dev-games/physfs-2[zip] dev-libs/openssl:0= dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtopengl:5 dev-qt/qtscript:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 media-libs/freetype:2 media-libs/glew:= media-libs/harfbuzz media-libs/libogg media-libs/libpng:0 media-libs/libsdl2[opengl,video,X] media-libs/libtheora media-libs/libvorbis media-libs/openal sys-libs/zlib virtual/glu virtual/opengl x11-libs/libX11 x11-libs/libXrandr nls? ( virtual/libintl ) media-fonts/dejavu
 SLOT=0
 SRC_URI=mirror://sourceforge/warzone2100/warzone2100-3.3.0_src.tar.xz videos? ( mirror://sourceforge/warzone2100/warzone2100/Videos/2.2/high-quality-en/sequences.wz -> warzone2100-videos-2.2.wz )
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
 _md5_=d2293da6344e801db069f58b22760a25

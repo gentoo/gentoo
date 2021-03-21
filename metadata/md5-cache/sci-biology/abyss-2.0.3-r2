@@ -3,11 +3,12 @@ DEPEND=dev-cpp/sparsehash dev-libs/boost:= misc-haskell? ( dev-libs/gmp:0= dev-l
 DESCRIPTION=Assembly By Short Sequences - a de novo, parallel, paired-end sequence assembler
 EAPI=6
 HOMEPAGE=http://www.bcgsc.ca/platform/bioinfo/software/abyss/
+INHERIT=autotools toolchain-funcs
 IUSE=+mpi openmp misc-haskell
 KEYWORDS=~amd64 ~x86
 LICENSE=abyss
 RDEPEND=dev-cpp/sparsehash dev-libs/boost:= misc-haskell? ( dev-libs/gmp:0= dev-libs/libffi:0= ) mpi? ( sys-cluster/openmpi )
 SLOT=0
 SRC_URI=https://github.com/bcgsc/abyss/archive/2.0.3.tar.gz -> abyss-2.0.3.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=14d874a3152b5d75a6be53f68e24fd47

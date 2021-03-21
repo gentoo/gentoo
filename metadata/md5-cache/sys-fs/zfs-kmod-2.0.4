@@ -4,6 +4,7 @@ DEPEND=kernel_linux? ( sys-apps/kmod[tools] dist-kernel? ( virtual/dist-kernel:=
 DESCRIPTION=Linux ZFS kernel module for sys-fs/zfs
 EAPI=7
 HOMEPAGE=https://github.com/openzfs/zfs
+INHERIT=autotools dist-kernel-utils flag-o-matic linux-mod toolchain-funcs
 IUSE=custom-cflags debug +rootfs kernel_linux kernel_linux dist-kernel
 KEYWORDS=~amd64 ~arm64 ~ppc64
 LICENSE=CDDL MIT debug? ( GPL-2+ )
@@ -11,5 +12,5 @@ RDEPEND=!sys-kernel/spl kernel_linux? ( sys-apps/kmod[tools] dist-kernel? ( virt
 RESTRICT=debug? ( strip ) test
 SLOT=0
 SRC_URI=https://github.com/openzfs/zfs/releases/download/zfs-2.0.4/zfs-2.0.4.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	dist-kernel-utils	ba761317b3fcd25e34c3fb8e5bf1e45f	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	linux-mod	6eea2d40e8514773bec08ae1be26800b	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	dist-kernel-utils	ba761317b3fcd25e34c3fb8e5bf1e45f	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	linux-mod	6eea2d40e8514773bec08ae1be26800b
 _md5_=dada342eb472dab83d63f9465bd5d1dc

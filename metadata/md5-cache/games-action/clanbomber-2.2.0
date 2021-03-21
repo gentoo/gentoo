@@ -4,10 +4,11 @@ DEPEND=dev-libs/boost:= media-fonts/dejavu media-libs/libsdl[sound,joystick,vide
 DESCRIPTION=Bomberman-like multiplayer game
 EAPI=7
 HOMEPAGE=https://savannah.nongnu.org/projects/clanbomber/
+INHERIT=autotools desktop
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3+
 RDEPEND=dev-libs/boost:= media-fonts/dejavu media-libs/libsdl[sound,joystick,video] media-libs/sdl-gfx media-libs/sdl-image[png] media-libs/sdl-mixer media-libs/sdl-ttf
 SLOT=0
 SRC_URI=https://download.savannah.gnu.org/releases/clanbomber/clanbomber-2.2.0.tar.xz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	desktop	c0d27bf73aa08ca05b663dbd31fbef28	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	desktop	c0d27bf73aa08ca05b663dbd31fbef28
 _md5_=f921a79daf7f03c986c3c3a8b45d54c8

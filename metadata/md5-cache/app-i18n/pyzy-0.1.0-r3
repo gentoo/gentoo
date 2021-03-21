@@ -4,11 +4,12 @@ DEPEND=dev-db/sqlite:3 dev-libs/glib:2 sys-apps/util-linux boost? ( dev-libs/boo
 DESCRIPTION=The Chinese PinYin and Bopomofo conversion library
 EAPI=7
 HOMEPAGE=https://github.com/pyzy/pyzy
+INHERIT=autotools python-any-r1
 IUSE=boost doc opencc
 KEYWORDS=amd64 x86
 LICENSE=LGPL-2.1
 RDEPEND=dev-db/sqlite:3 dev-libs/glib:2 sys-apps/util-linux boost? ( dev-libs/boost ) opencc? ( app-i18n/opencc:= )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~dlan/distfiles/pyzy-0.1.0.tar.xz https://dev.gentoo.org/~dlan/distfiles/pyzy-0.1.0-patches.tar.xz https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/pyzy/pyzy-database-1.0.0.tar.bz2
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88
 _md5_=aa0b8b8fc9433324ba12e51263e2f44d

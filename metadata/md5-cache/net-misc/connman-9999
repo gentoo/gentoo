@@ -4,11 +4,12 @@ DEPEND=>=dev-libs/glib-2.16 >=sys-apps/dbus-1.2.24 sys-libs/readline:0= bluetoot
 DESCRIPTION=Provides a daemon for managing internet connections
 EAPI=7
 HOMEPAGE=https://01.org/connman
+INHERIT=autotools systemd tmpfiles git-r3
 IUSE=bluetooth debug doc +ethernet examples iptables iwd l2tp networkmanager +nftables ofono openconnect openvpn policykit pptp tools vpnc +wifi wireguard wispr
 LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=>=dev-libs/glib-2.16 >=sys-apps/dbus-1.2.24 sys-libs/readline:0= bluetooth? ( net-wireless/bluez ) iptables? ( >=net-firewall/iptables-1.4.8 ) iwd? ( net-wireless/iwd ) l2tp? ( net-dialup/xl2tpd ) nftables? ( >=net-libs/libnftnl-1.0.4:0= >=net-libs/libmnl-1.0.0:0= ) ofono? ( net-misc/ofono ) openconnect? ( net-vpn/openconnect ) openvpn? ( net-vpn/openvpn ) policykit? ( sys-auth/polkit ) pptp? ( net-dialup/pptpclient ) vpnc? ( net-vpn/vpnc ) wifi? ( >=net-wireless/wpa_supplicant-2.0[dbus] ) wireguard? ( >=net-libs/libmnl-1.0.0:0= ) wispr? ( net-libs/gnutls ) virtual/tmpfiles
 REQUIRED_USE=^^ ( iptables nftables )
 SLOT=0
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	tmpfiles	dc8e4917d734a019caa04ad3b8db560b	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	systemd	74b223e42834adf09a2d21fe5fe13741	tmpfiles	dc8e4917d734a019caa04ad3b8db560b	git-r3	3e7ec3d6619213460c85e2aa48398441
 _md5_=4bd5b982dd32ba7d4734c50127a32b9f

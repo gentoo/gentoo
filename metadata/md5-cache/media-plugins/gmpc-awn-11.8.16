@@ -4,11 +4,12 @@ DEPEND=>=media-sound/gmpc-11.8.16 dev-libs/dbus-glib
 DESCRIPTION=This plugin integrates GMPC with the Avant Window Navigator
 EAPI=7
 HOMEPAGE=https://gmpc.fandom.com/wiki/GMPC_PLUGIN_AWN
+INHERIT=autotools
 IUSE=nls
 KEYWORDS=amd64 x86
 LICENSE=GPL-2
 RDEPEND=>=media-sound/gmpc-11.8.16 dev-libs/dbus-glib
 SLOT=0
 SRC_URI=https://download.sarine.nl/Programs/gmpc/11.8/gmpc-awn-11.8.16.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=489f9a114d674a41e13f262832bb117d

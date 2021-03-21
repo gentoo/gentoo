@@ -4,10 +4,11 @@ DEPEND=!dev-libs/boost:0/1.57.0 >=media-libs/libmpdclient-2.1 dev-libs/boost:=[i
 DESCRIPTION=featureful ncurses based MPD client inspired by ncmpc
 EAPI=7
 HOMEPAGE=https://ncmpcpp.rybczak.net/ https://github.com/ncmpcpp/ncmpcpp
+INHERIT=autotools git-r3
 IUSE=clock outputs taglib visualizer
 LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=!dev-libs/boost:0/1.57.0 >=media-libs/libmpdclient-2.1 dev-libs/boost:=[icu,nls,threads] dev-libs/icu:= net-misc/curl sys-libs/ncurses:=[unicode] sys-libs/readline:* taglib? ( media-libs/taglib ) visualizer? ( sci-libs/fftw:3.0= )
 SLOT=0
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	git-r3	3e7ec3d6619213460c85e2aa48398441
 _md5_=2c005ac6e257da374650529c25be9a70

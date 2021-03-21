@@ -4,11 +4,12 @@ DEPEND=net-libs/libsrtp:= alsa? ( media-libs/alsa-lib ) amr? ( media-libs/openco
 DESCRIPTION=Open source SIP, Media, and NAT Traversal Library
 EAPI=7
 HOMEPAGE=https://www.pjsip.org/
+INHERIT=autotools flag-o-matic toolchain-funcs
 IUSE=amr debug epoll examples ipv6 libressl opus resample silk ssl static-libs webrtc g711 g722 g7221 gsm ilbc speex l16 g729 sdl ffmpeg v4l2 openh264 libyuv vpx alsa portaudio
 KEYWORDS=amd64 ~arm ~arm64 ~ppc ~ppc64 x86
 LICENSE=GPL-2
 RDEPEND=net-libs/libsrtp:= alsa? ( media-libs/alsa-lib ) amr? ( media-libs/opencore-amr ) ffmpeg? ( media-video/ffmpeg:= ) g729? ( media-libs/bcg729 ) gsm? ( media-sound/gsm ) ilbc? ( media-libs/libilbc ) openh264? ( media-libs/openh264 ) opus? ( media-libs/opus ) portaudio? ( media-libs/portaudio ) resample? ( media-libs/libsamplerate ) sdl? ( media-libs/libsdl ) speex? ( media-libs/speex media-libs/speexdsp ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) )
 SLOT=0/2.10
 SRC_URI=https://github.com/pjsip/pjproject/archive/2.10.tar.gz -> pjproject-2.10.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741
 _md5_=f15c5b36824e70734370859d583d8f6c

@@ -4,10 +4,11 @@ DEPEND=dev-libs/boost:= dev-libs/crypto++:= sys-libs/binutils-libs:0= sys-libs/r
 DESCRIPTION=aMule, the all-platform eMule p2p client
 EAPI=7
 HOMEPAGE=http://www.amule.org/
+INHERIT=wxwidgets xdg-utils autotools git-r3
 IUSE=daemon debug geoip nls remote stats upnp +X
 LICENSE=GPL-2+
 PROPERTIES=live
 RDEPEND=dev-libs/boost:= dev-libs/crypto++:= sys-libs/binutils-libs:0= sys-libs/readline:0= sys-libs/zlib >=x11-libs/wxGTK-3.0.4:3.0-gtk3[X?] daemon? ( acct-user/amule ) geoip? ( dev-libs/geoip ) nls? ( virtual/libintl ) remote? ( acct-user/amule media-libs/libpng:0= ) stats? ( media-libs/gd:=[jpeg,png] ) upnp? ( net-libs/libupnp:0 )
 SLOT=0
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	git-r3	3e7ec3d6619213460c85e2aa48398441	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	wxwidgets	e1e6e1eb5b3d911b3abd712f611e2312	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	wxwidgets	e1e6e1eb5b3d911b3abd712f611e2312	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	git-r3	3e7ec3d6619213460c85e2aa48398441
 _md5_=8e6fbfb7df064a96d0ccf2f1ec3213f6

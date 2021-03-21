@@ -4,6 +4,7 @@ DEPEND=tcl? ( dev-lang/tcl:0= ) tk? ( dev-lang/tk:0= )
 DESCRIPTION=HFS FS Access utils
 EAPI=7
 HOMEPAGE=https://www.mars.org/home/rob/proj/hfs/
+INHERIT=autotools toolchain-funcs
 IUSE=tcl tk
 KEYWORDS=amd64 ~arm ~arm64 ppc ppc64 sparc x86
 LICENSE=GPL-2
@@ -12,5 +13,5 @@ REQUIRED_USE=tk? ( tcl )
 RESTRICT=!tcl? ( test )
 SLOT=0
 SRC_URI=mirror://debian/pool/main/h/hfsutils/hfsutils_3.2.6.orig.tar.gz mirror://debian/pool/main/h/hfsutils/hfsutils_3.2.6-14.debian.tar.xz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=c04de12c4f58ab8fa3b0ae0d43d84ce1

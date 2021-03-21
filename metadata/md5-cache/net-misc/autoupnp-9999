@@ -4,10 +4,11 @@ DEPEND=net-libs/miniupnpc:0= libnotify? ( x11-libs/libtinynotify:0= )
 DESCRIPTION=Automatic open port forwarder using UPnP
 EAPI=7
 HOMEPAGE=https://github.com/mgorny/autoupnp/
+INHERIT=autotools git-r3
 IUSE=libnotify
 LICENSE=BSD
 PROPERTIES=live
 RDEPEND=net-libs/miniupnpc:0= libnotify? ( x11-libs/libtinynotify:0= )
 SLOT=0
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	git-r3	3e7ec3d6619213460c85e2aa48398441
 _md5_=2242114e86534818d89cebafdc79329f

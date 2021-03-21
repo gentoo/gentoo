@@ -4,6 +4,7 @@ DEPEND=net-libs/gnutls:= lua? ( lua_single_target_lua5-1? ( dev-lang/lua:5.1 ) l
 DESCRIPTION=Prelude-SIEM Framework Library
 EAPI=7
 HOMEPAGE=https://www.prelude-siem.org
+INHERIT=autotools distutils-r1 lua-single ruby-single
 IUSE=lua perl python ruby python_targets_python3_7 python_targets_python3_8 lua_single_target_lua5-1 lua_single_target_lua5-2 lua_single_target_lua5-3
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2+
@@ -11,5 +12,5 @@ RDEPEND=net-libs/gnutls:= lua? ( lua_single_target_lua5-1? ( dev-lang/lua:5.1 ) 
 REQUIRED_USE=lua? ( ^^ ( lua_single_target_lua5-1 lua_single_target_lua5-2 lua_single_target_lua5-3 ) ) python? ( || ( python_targets_python3_7 python_targets_python3_8 ) )
 SLOT=0
 SRC_URI=https://www.prelude-siem.org/pkg/src/5.2.0/libprelude-5.2.0.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	distutils-r1	16579e06f8839831bd5c03455bb87e3f	libtool	f143db5a74ccd9ca28c1234deffede96	lua-single	f91b5656f00869c220a6e35ae0521c54	lua-utils	736947973cfbc9de01fdb8548f942f82	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	6d099888c5b4dd4868c26508df307e95	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	ruby-single	e6530f43a549f120f9396ccb852288f5	ruby-utils	03dfa7f54d59d740c2964dc7256d2820	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	multiprocessing	cac3169468f893670dac3e7cb940e045	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-r1	6d099888c5b4dd4868c26508df307e95	distutils-r1	16579e06f8839831bd5c03455bb87e3f	lua-utils	736947973cfbc9de01fdb8548f942f82	lua-single	f91b5656f00869c220a6e35ae0521c54	ruby-utils	03dfa7f54d59d740c2964dc7256d2820	ruby-single	e6530f43a549f120f9396ccb852288f5
 _md5_=45aca8915c200145c863bf5e7b4a173b

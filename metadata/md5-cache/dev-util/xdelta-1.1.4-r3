@@ -4,10 +4,11 @@ DEPEND=>=dev-libs/glib-2 >=sys-libs/zlib-1.1.4:=
 DESCRIPTION=Computes changes between binary or text files and creates deltas
 EAPI=7
 HOMEPAGE=https://xdelta.googlecode.com/
+INHERIT=autotools toolchain-funcs
 KEYWORDS=~alpha amd64 ~hppa ~ia64 ppc ppc64 sparc x86
 LICENSE=GPL-2+
 RDEPEND=>=dev-libs/glib-2 >=sys-libs/zlib-1.1.4:=
 SLOT=0
 SRC_URI=https://xdelta.googlecode.com/files/xdelta-1.1.4.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=37e67d3070cb5f59e282429a7c4d0e88

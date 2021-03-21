@@ -4,11 +4,12 @@ DEPEND=>=sys-libs/ncurses-5.9-r3:0 magic? ( sys-apps/file ) gtk? ( x11-libs/gtk+
 DESCRIPTION=Console file manager with vi(m)-like keybindings
 EAPI=7
 HOMEPAGE=https://vifm.info/
+INHERIT=autotools vim-doc xdg
 IUSE=developer +extended-keys gtk +magic +vim +vim-syntax X
 KEYWORDS=amd64 ppc x86
 LICENSE=GPL-2
 RDEPEND=>=sys-libs/ncurses-5.9-r3:0 magic? ( sys-apps/file ) gtk? ( x11-libs/gtk+:2 ) X? ( x11-libs/libX11 ) vim? ( || ( app-editors/vim app-editors/gvim ) ) vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
 SLOT=0
 SRC_URI=https://github.com/vifm/vifm/archive/v0.11.tar.gz -> vifm-0.11.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	vim-doc	dd0828b15877b2a09c07f4719e45891f	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	vim-doc	dd0828b15877b2a09c07f4719e45891f	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
 _md5_=9916547319765fdd0ddf586d8187d1ae

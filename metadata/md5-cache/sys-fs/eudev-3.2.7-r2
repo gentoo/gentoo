@@ -3,6 +3,7 @@ DEPEND=>=sys-apps/util-linux-2.20 introspection? ( >=dev-libs/gobject-introspect
 DESCRIPTION=Linux dynamic and persistent device naming support (aka userspace devfs)
 EAPI=6
 HOMEPAGE=https://github.com/gentoo/eudev
+INHERIT=autotools linux-info multilib multilib-minimal toolchain-funcs
 IUSE=+hwdb +kmod introspection rule-generator selinux static-libs test kernel_linux abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_s390_32 abi_s390_64
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86
 LICENSE=LGPL-2.1 MIT GPL-2
@@ -11,5 +12,5 @@ RDEPEND=>=sys-apps/util-linux-2.20 introspection? ( >=dev-libs/gobject-introspec
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~blueness/eudev/eudev-3.2.7.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566
 _md5_=3fc23fbe7287c00e58e8545a153fc200

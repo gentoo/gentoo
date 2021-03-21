@@ -4,11 +4,12 @@ DEPEND=>=media-libs/leptonica-1.74:=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-
 DESCRIPTION=An OCR Engine, originally developed at HP, now open source.
 EAPI=7
 HOMEPAGE=https://github.com/tesseract-ocr
+INHERIT=autotools multilib-minimal toolchain-funcs
 IUSE=doc jpeg opencl openmp png static-libs tiff training webp abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_s390_32 abi_s390_64
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~sparc ~x86
 LICENSE=Apache-2.0
 RDEPEND=>=media-libs/leptonica-1.74:=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?,zlib,tiff?,jpeg?,png?,webp?] opencl? ( virtual/opencl[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] media-libs/tiff:0=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] media-libs/leptonica:=[tiff] ) training? ( dev-libs/icu:= x11-libs/pango:= x11-libs/cairo:= ) || ( >=app-text/tessdata_fast-4.0.0 >=app-text/tessdata_best-4.0.0 >=app-text/tessdata_legacy-4.0.0 )
 SLOT=0
 SRC_URI=https://github.com/tesseract-ocr/tesseract/archive/4.1.0.tar.gz -> tesseract-4.1.0.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566
 _md5_=4d0aa425a196193538b3e8931d56d4fc

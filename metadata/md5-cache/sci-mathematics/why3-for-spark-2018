@@ -3,6 +3,7 @@ DEPEND=>=dev-lang/ocaml-4.02.3:=[ocamlopt=] dev-ml/menhir:= coq? ( sci-mathemati
 DESCRIPTION=Platform for deductive program verification
 EAPI=6
 HOMEPAGE=http://why3.lri.fr/
+INHERIT=autotools
 IUSE=coq doc emacs gtk html hypothesis-selection +ocamlopt profiling zarith zip
 KEYWORDS=amd64
 LICENSE=GPL-3
@@ -11,5 +12,5 @@ REQUIRED_USE=html? ( doc )
 RESTRICT=strip
 SLOT=0
 SRC_URI=http://mirrors.cdn.adacore.com/art/5b0819dec7a447df26c27a43 -> why3-for-spark-gpl-2018-src.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=20e6b2aaad136eb93d0246a13f2c4863

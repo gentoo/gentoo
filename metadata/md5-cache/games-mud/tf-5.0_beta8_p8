@@ -4,11 +4,12 @@ DEPEND=dev-libs/libpcre sys-libs/ncurses:= ssl? ( dev-libs/openssl:0= )
 DESCRIPTION=A small, flexible, screen-oriented MUD client (aka TinyFugue)
 EAPI=7
 HOMEPAGE=http://tinyfugue.sourceforge.net/
+INHERIT=autotools
 IUSE=+atcp doc +gmcp ipv6 +option102 ssl
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=dev-libs/libpcre sys-libs/ncurses:= ssl? ( dev-libs/openssl:0= )
 SLOT=0
 SRC_URI=mirror://sourceforge/tinyfugue/tf-50b8.tar.gz mirror://debian/pool/main/t/tf5/tf5_5.0beta8-8.debian.tar.xz http://homepage.mac.com/mikeride/abelinc/scripts/allrootpatch.txt -> tf-allrootpatch.txt http://homepage.mac.com/mikeride/abelinc/scripts/allsrcpatch.txt -> tf-allsrcpatch.txt doc? ( mirror://sourceforge/tinyfugue/tf-50b8-help.tar.gz )
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=1932ca71508c3a45f21be819e7e83b25

@@ -4,6 +4,7 @@ DEPEND=sys-libs/readline:0= dev-libs/libpcre[jit?] jemalloc? ( dev-libs/jemalloc
 DESCRIPTION=Varnish is a state-of-the-art, high-performance HTTP accelerator
 EAPI=7
 HOMEPAGE=https://varnish-cache.org/
+INHERIT=autotools systemd python-r1
 IUSE=jemalloc jit static-libs python_targets_python3_7 python_targets_python3_8 python_targets_python3_9
 KEYWORDS=amd64 ~mips ~ppc ~ppc64 x86
 LICENSE=BSD-2 GPL-2
@@ -12,5 +13,5 @@ REQUIRED_USE=|| ( python_targets_python3_7 python_targets_python3_8 python_targe
 RESTRICT=test
 SLOT=0/2
 SRC_URI=http://varnish-cache.org/_downloads/varnish-6.3.2.tgz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	python-r1	6d099888c5b4dd4868c26508df307e95	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	systemd	74b223e42834adf09a2d21fe5fe13741	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-r1	6d099888c5b4dd4868c26508df307e95
 _md5_=fd656dded105d386e483230e6556d136

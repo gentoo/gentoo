@@ -4,6 +4,7 @@ DEPEND=net-libs/libpcap sys-libs/ncurses:0=[unicode?] openssl? ( dev-libs/openss
 DESCRIPTION=Ncurses SIP Messages flow viewer
 EAPI=7
 HOMEPAGE=https://github.com/irontec/sngrep
+INHERIT=autotools
 IUSE=eep gnutls ipv6 openssl pcre unicode
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
@@ -11,5 +12,5 @@ RDEPEND=net-libs/libpcap sys-libs/ncurses:0=[unicode?] openssl? ( dev-libs/opens
 REQUIRED_USE=gnutls? ( !openssl )
 SLOT=0
 SRC_URI=https://github.com/irontec/sngrep/releases/download/v1.4.7/sngrep-1.4.7.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=f30ddd22de98a3441c88df52177e17c5

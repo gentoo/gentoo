@@ -4,11 +4,12 @@ DEPEND=app-text/libpaper media-libs/fontconfig >=media-libs/freetype-2.4.9:2= >=
 DESCRIPTION=Interpreter for the PostScript language and PDF
 EAPI=7
 HOMEPAGE=https://ghostscript.com/
+INHERIT=autotools flag-o-matic toolchain-funcs
 IUSE=cups dbus gtk +jpeg2k l10n_de static-libs unicode X l10n_ja l10n_ko l10n_zh-CN l10n_zh-TW
 KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=AGPL-3 CPL-1.0
 RDEPEND=app-text/libpaper media-libs/fontconfig >=media-libs/freetype-2.4.9:2= >=media-libs/jbig2dec-0.19:= >=media-libs/lcms-2.6:2 >=media-libs/libpng-1.6.2:0= >=media-libs/tiff-4.0.1:0= >=sys-libs/zlib-1.2.7 virtual/jpeg:0 cups? ( >=net-print/cups-1.3.8 ) dbus? ( sys-apps/dbus ) gtk? ( || ( x11-libs/gtk+:3 x11-libs/gtk+:2 ) ) jpeg2k? ( >=media-libs/openjpeg-2.1.0:2= ) unicode? ( net-dns/libidn:0= ) X? ( x11-libs/libXt x11-libs/libXext ) app-text/poppler-data >=media-fonts/urw-fonts-2.4.9 l10n_ja? ( media-fonts/kochi-substitute ) l10n_ko? ( media-fonts/baekmuk-fonts ) l10n_zh-CN? ( media-fonts/arphicfonts ) l10n_zh-TW? ( media-fonts/arphicfonts )
 SLOT=0/9.53
 SRC_URI=https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs9533/ghostscript-9.53.3.tar.xz https://dev.gentoo.org/~whissi/dist/ghostscript-gpl/ghostscript-gpl-9.53-patchset-01.tar.xz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741
 _md5_=e62e9094fbe24deb228d96f4ac71e509

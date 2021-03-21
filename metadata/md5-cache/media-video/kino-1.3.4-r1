@@ -3,11 +3,12 @@ DEPEND=>=x11-libs/gtk+-2.6.0:2 >=gnome-base/libglade-2.5.0 >=dev-libs/glib-2:2 x
 DESCRIPTION=Kino is a non-linear DV editor for GNU/Linux
 EAPI=6
 HOMEPAGE=http://www.kinodv.org/
+INHERIT=autotools ltprune udev xdg
 IUSE=alsa dvdr gpac lame quicktime sox vorbis
 KEYWORDS=amd64 ppc ppc64 x86
 LICENSE=GPL-2
 RDEPEND=>=x11-libs/gtk+-2.6.0:2 >=gnome-base/libglade-2.5.0 >=dev-libs/glib-2:2 x11-libs/libXv dev-libs/libxml2:2 media-libs/audiofile >=sys-libs/libraw1394-1.0.0 >=sys-libs/libavc1394-0.4.1 >=media-libs/libdv-0.103 media-libs/libsamplerate media-libs/libiec61883 media-libs/libv4l:0= alsa? ( >=media-libs/alsa-lib-1.0.9 ) >=media-video/ffmpeg-3:0= quicktime? ( >=media-libs/libquicktime-0.9.5 ) media-video/mjpegtools media-sound/rawrec dvdr? ( media-video/dvdauthor app-cdr/dvd+rw-tools ) gpac? ( media-video/gpac ) lame? ( media-sound/lame ) sox? ( media-sound/sox ) vorbis? ( media-sound/vorbis-tools )
 SLOT=0
 SRC_URI=mirror://sourceforge/kino/kino-1.3.4.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	udev	452708c3f55cf6e918b045adb949a9e6	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	udev	452708c3f55cf6e918b045adb949a9e6	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
 _md5_=4b2370983162e0bef3c572d6f2727bc2

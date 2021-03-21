@@ -3,10 +3,11 @@ DEPEND=virtual/mpi sci-libs/hdf5[mpi] >=app-portage/elt-patches-20170815 || ( >=
 DESCRIPTION=High-Performance I/O Library for Particle-based Simulations
 EAPI=6
 HOMEPAGE=http://www-vis.lbl.gov/Research/H5hut/
+INHERIT=autotools
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD
 RDEPEND=virtual/mpi sci-libs/hdf5[mpi]
 SLOT=0
 SRC_URI=https://amas.psi.ch/H5hut/raw-attachment/wiki/DownloadSources/H5hut-1.99.13.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=226b3979dbccb30102891de69f9f2c87

@@ -4,11 +4,12 @@ DEPEND=app-arch/bzip2 >=dev-tcltk/expect-5.45.4 dev-db/sqlite:3 dev-libs/expat d
 DESCRIPTION=GPS data editor and analyzer
 EAPI=7
 HOMEPAGE=https://github.com/viking-gps/viking/
+INHERIT=autotools xdg-utils
 IUSE=doc +exif libexif geoclue gps +magic nls oauth
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=app-arch/bzip2 >=dev-tcltk/expect-5.45.4 dev-db/sqlite:3 dev-libs/expat dev-libs/glib:2 dev-libs/nettle net-misc/curl sys-libs/zlib x11-libs/gdk-pixbuf:2 x11-libs/gtk+:2 geoclue? ( >=app-misc/geoclue-2.4.4:2.0 ) gps? ( >=sci-geosciences/gpsd-3.20 ) exif? ( libexif? ( media-libs/libexif ) !libexif? ( media-libs/gexiv2 ) ) magic? ( sys-apps/file ) oauth? ( net-libs/liboauth ) sci-geosciences/gpsbabel
 SLOT=0
 SRC_URI=https://github.com/viking-gps/viking/archive/viking-1.8.tar.gz doc? ( https://github.com/viking-gps/viking/releases/download/viking-1.8/viking.pdf )
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=a6205dcf414a15021067d08f54552249

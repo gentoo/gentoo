@@ -3,11 +3,12 @@ DEPEND=app-arch/bzip2 app-arch/xz-utils net-misc/curl sys-libs/zlib auth? ( mysq
 DESCRIPTION=multiplayer strategy game (Civilization Clone)
 EAPI=6
 HOMEPAGE=http://www.freeciv.org/
+INHERIT=autotools eutils flag-o-matic gnome2-utils ltprune
 IUSE=auth aimodules dedicated +gtk ipv6 mapimg modpack mysql nls qt5 readline sdl +server +sound sqlite system-lua
 KEYWORDS=~amd64 ~ppc64 ~x86
 LICENSE=GPL-2+
 RDEPEND=app-arch/bzip2 app-arch/xz-utils net-misc/curl sys-libs/zlib auth? ( mysql? ( dev-db/mysql-connector-c:0= ) sqlite? ( dev-db/sqlite:3 ) !mysql? ( ( !sqlite? ( dev-db/mysql-connector-c:0= ) ) ) ) readline? ( sys-libs/readline:0= ) dedicated? ( aimodules? ( dev-libs/libltdl:0 ) ) !dedicated? ( media-libs/libpng:0 gtk? ( x11-libs/gtk+:2 ) mapimg? ( media-gfx/imagemagick:= ) modpack? ( x11-libs/gtk+:2 ) nls? ( virtual/libintl ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) sdl? ( media-libs/libsdl[video] media-libs/sdl-gfx media-libs/sdl-image[png] media-libs/sdl-ttf ) server? ( aimodules? ( sys-devel/libtool:2 ) ) sound? ( media-libs/libsdl[sound] media-libs/sdl-mixer[vorbis] ) !sdl? ( !gtk? ( x11-libs/gtk+:2 ) ) ) system-lua? ( >=dev-lang/lua-5.2 )
 SLOT=0
 SRC_URI=mirror://sourceforge/freeciv/freeciv-2.5.12.tar.bz2
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	epatch	e8f1ec13660dc2f44b32775765d85e42	estack	055c42df72f76a4f45ec92b35e83cd56	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	multilib	d410501a125f99ffb560b0c523cd3d1e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	estack	055c42df72f76a4f45ec92b35e83cd56	epatch	e8f1ec13660dc2f44b32775765d85e42	l10n	8cdd85e169b835d518bc2fd59f780d8e	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	preserve-libs	ef207dc62baddfddfd39a164d9797648	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3
 _md5_=34fbf5c624b723b6632d386d15270578

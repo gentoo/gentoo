@@ -4,11 +4,12 @@ DEPEND=dev-libs/json-c:= >=sys-auth/libyubikey-1.6 virtual/libusb:1
 DESCRIPTION=Library and tool for personalization of Yubico's YubiKey
 EAPI=7
 HOMEPAGE=https://github.com/Yubico/yubikey-personalization
+INHERIT=autotools udev
 IUSE=static-libs
 KEYWORDS=amd64 ~arm64 ~ppc64 x86
 LICENSE=BSD-2
 RDEPEND=dev-libs/json-c:= >=sys-auth/libyubikey-1.6 virtual/libusb:1
 SLOT=0
 SRC_URI=https://github.com/Yubico/yubikey-personalization/archive/v1.20.0.tar.gz -> ykpers-1.20.0.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	udev	452708c3f55cf6e918b045adb949a9e6
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	udev	452708c3f55cf6e918b045adb949a9e6
 _md5_=2eac5f2fedfd60cdc0d23189dc521c74

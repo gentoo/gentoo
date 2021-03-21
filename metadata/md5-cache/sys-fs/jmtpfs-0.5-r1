@@ -4,10 +4,11 @@ DEPEND=>=media-libs/libmtp-1.1.0 >=sys-fs/fuse-2.6:0 virtual/pkgconfig
 DESCRIPTION=A FUSE and libmtp based filesystem for accessing MTP devices
 EAPI=7
 HOMEPAGE=https://github.com/JasonFerrara/jmtpfs
+INHERIT=autotools
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
 RDEPEND=>=media-libs/libmtp-1.1.0 >=sys-fs/fuse-2.6:0
 SLOT=0
 SRC_URI=https://github.com/JasonFerrara/jmtpfs/archive/v0.5.tar.gz -> jmtpfs-0.5.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=763047d70fba4965b72a269978ce2927

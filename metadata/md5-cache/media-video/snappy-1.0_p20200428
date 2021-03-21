@@ -4,10 +4,11 @@ DEPEND=>=dev-libs/glib-2.32:2 >=media-libs/clutter-1.20.0:1.0 media-libs/clutter
 DESCRIPTION=A simple media player written using GStreamer and Clutter
 EAPI=7
 HOMEPAGE=https://wiki.gnome.org/Apps/Snappy
+INHERIT=gnome2
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2 LGPL-2
 RDEPEND=>=dev-libs/glib-2.32:2 >=media-libs/clutter-1.20.0:1.0 media-libs/clutter-gst:3.0 >=media-libs/clutter-gtk-1.6.0:1.0 >=x11-libs/gtk+-3.5.0:3 x11-libs/libXtst >=media-libs/gstreamer-1.6.0:1.0 >=media-libs/gst-plugins-base-1.6.0:1.0 media-plugins/gst-plugins-meta:1.0 !!<net-misc/spice-gtk-0.19
 SLOT=0
 SRC_URI=https://gitlab.gnome.org/GNOME/snappy/-/archive/ebf8e3ed30013e6577fa8994db40743d2ec05e94/snappy-ebf8e3ed30013e6577fa8994db40743d2ec05e94.tar.bz2
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	gnome.org	532d56d07b9eace4831aaa817d2b756a	gnome2	c156bb2ac81c822dd861424ce19bc168	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	gnome.org	532d56d07b9eace4831aaa817d2b756a	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	gnome2	c156bb2ac81c822dd861424ce19bc168
 _md5_=4716d250dadd94c9a2c6937e6b645866

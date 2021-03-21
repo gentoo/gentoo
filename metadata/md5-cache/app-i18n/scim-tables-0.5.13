@@ -4,11 +4,12 @@ DEPEND=>=app-i18n/scim-1.4.7-r2 nls? ( virtual/libintl )
 DESCRIPTION=Smart Common Input Method (SCIM) Generic Table Input Method Server
 EAPI=7
 HOMEPAGE=http://www.scim-im.org/
+INHERIT=autotools
 IUSE=nls
 KEYWORDS=amd64 ~arm ppc x86
 LICENSE=GPL-2
 RDEPEND=>=app-i18n/scim-1.4.7-r2 nls? ( virtual/libintl )
 SLOT=0
 SRC_URI=mirror://sourceforge/scim/scim-tables-0.5.13.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=061b6d21cfb678015d9301f87e3cd4f9

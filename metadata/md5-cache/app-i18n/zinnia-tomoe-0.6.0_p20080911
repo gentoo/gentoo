@@ -3,10 +3,11 @@ DEPEND=app-i18n/zinnia >=app-portage/elt-patches-20170815 || ( >=sys-devel/autom
 DESCRIPTION=Handwriting model files trained with Tomoe data
 EAPI=6
 HOMEPAGE=https://taku910.github.io/zinnia/ https://github.com/taku910/zinnia https://sourceforge.net/projects/zinnia/
+INHERIT=autotools
 KEYWORDS=amd64 ~arm64 ~ppc64 x86
 LICENSE=LGPL-2.1
 RDEPEND=app-i18n/zinnia
 SLOT=0
 SRC_URI=mirror://sourceforge/zinnia/zinnia-tomoe-0.6.0-20080911.tar.bz2
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=9e2c2789194b6b085f72d177164bf8b7

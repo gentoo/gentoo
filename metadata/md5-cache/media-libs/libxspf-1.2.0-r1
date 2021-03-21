@@ -4,6 +4,7 @@ DEPEND=>=dev-libs/expat-2 >=dev-libs/uriparser-0.7.5 test? ( >=dev-util/cpptest-
 DESCRIPTION=Playlist handling library
 EAPI=7
 HOMEPAGE=http://libspiff.sourceforge.net/
+INHERIT=autotools
 IUSE=test
 KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris
 LICENSE=BSD LGPL-2.1
@@ -11,5 +12,5 @@ RDEPEND=>=dev-libs/expat-2 >=dev-libs/uriparser-0.7.5
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://sourceforge/libspiff/libxspf-1.2.0.tar.bz2
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=bdf62f89ae5e3964cdf275b05e25b84c

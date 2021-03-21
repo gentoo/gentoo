@@ -4,11 +4,12 @@ DEPEND=>=app-emulation/lxc-3.0
 DESCRIPTION=Old style template scripts for LXC
 EAPI=7
 HOMEPAGE=https://linuxcontainers.org/ https://github.com/lxc/lxc-templates
+INHERIT=autotools verify-sig
 IUSE=verify-sig
 KEYWORDS=amd64 ~arm ~arm64 ~ppc64 x86
 LICENSE=LGPL-3
 RDEPEND=>=app-emulation/lxc-3.0
 SLOT=0
 SRC_URI=https://linuxcontainers.org/downloads/lxc/lxc-templates-3.0.4.tar.gz verify-sig? ( https://linuxcontainers.org/downloads/lxc/lxc-templates-3.0.4.tar.gz.asc )
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	verify-sig	40b4f4f782cf67118f594ce604cc4c0a
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	verify-sig	40b4f4f782cf67118f594ce604cc4c0a
 _md5_=ef8d3bb6cc39fcf19af7ea93e472c553

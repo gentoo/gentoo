@@ -4,6 +4,7 @@ DEPEND=>=app-text/wv-1.2 >=dev-libs/fribidi-0.10.4 >=dev-libs/glib-2.16:2 >=dev-
 DESCRIPTION=Fully featured yet light and fast cross platform word processor
 EAPI=7
 HOMEPAGE=http://www.abisource.com/
+INHERIT=autotools xdg
 IUSE=calendar collab cups debug eds +goffice grammar +introspection latex map math ots +plugins readline redland spell wordperfect wmf thesaurus
 KEYWORDS=~alpha amd64 ~arm ~arm64 ~ia64 ~mips x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
@@ -11,5 +12,5 @@ RDEPEND=>=app-text/wv-1.2 >=dev-libs/fribidi-0.10.4 >=dev-libs/glib-2.16:2 >=dev
 REQUIRED_USE=!plugins? ( !collab !grammar !latex !math !ots !readline !thesaurus !wordperfect !wmf )
 SLOT=2
 SRC_URI=http://www.abisource.com/downloads/abiword/3.0.4/source/abiword-3.0.4.tar.gz https://dev.gentoo.org/~soap/distfiles/abiword-3.0.4-patchset-r2.tar.xz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
 _md5_=90b32670e983caa5c2faebbbac47d92a

@@ -4,11 +4,12 @@ DEPEND=|| ( app-text/openjade app-text/opensp ) app-text/sgml-common dev-lang/pe
 DESCRIPTION=A toolset for processing LinuxDoc DTD SGML files
 EAPI=7
 HOMEPAGE=https://gitlab.com/agmartin/linuxdoc-tools
+INHERIT=autotools latex-package perl-functions sgml-catalog-r1 toolchain-funcs
 IUSE=doc
 KEYWORDS=amd64 ~ia64 ppc ~sparc x86
 LICENSE=GPL-3+ MIT SGMLUG
 RDEPEND=|| ( app-text/openjade app-text/opensp ) app-text/sgml-common dev-lang/perl:= sys-apps/groff virtual/latex-base >=app-text/sgml-common-0.6.3-r7
 SLOT=0
 SRC_URI=https://gitlab.com/agmartin/linuxdoc-tools/-/archive/0.9.73/linuxdoc-tools-0.9.73.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	latex-package	e5f296c98696dd02059bc6a5a03282e2	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	sgml-catalog-r1	e6ff98989cdecb4311b67afb96edb6f8	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	latex-package	e5f296c98696dd02059bc6a5a03282e2	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	sgml-catalog-r1	e6ff98989cdecb4311b67afb96edb6f8
 _md5_=66c0c6261850b64fa14be1a728a2ad31

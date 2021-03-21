@@ -4,11 +4,12 @@ DEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ope
 DESCRIPTION=Utility for controlling IPMI enabled devices.
 EAPI=7
 HOMEPAGE=http://ipmitool.sf.net/
+INHERIT=autotools eutils flag-o-matic systemd
 IUSE=libressl openbmc openipmi static
 KEYWORDS=~amd64 ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86
 LICENSE=BSD
 RDEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) openbmc? ( sys-apps/systemd:0= ) sys-libs/readline:0=
 SLOT=0
 SRC_URI=https://github.com/ipmitool/ipmitool/archive/7fd7c0f2ba39e223868a8d83d81d4074f057d6fc.tar.gz -> ipmitool-1.8.18_p20201004.tar.gz https://dev.gentoo.org/~robbat2/distfiles/ipmitool_1.8.18-9.debian-ported-gentoo.tar.xz https://dev.gentoo.org/~robbat2/distfiles/enterprise-numbers.2020-10-21.xz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	systemd	74b223e42834adf09a2d21fe5fe13741
 _md5_=e037cd884adaad45e3794a5f0905fae6

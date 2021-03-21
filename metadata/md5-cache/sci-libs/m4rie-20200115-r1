@@ -11,5 +11,5 @@ LICENSE=GPL-2+
 RDEPEND=sci-libs/m4ri
 SLOT=0
 SRC_URI=https://bitbucket.org/malb/m4rie/downloads/m4rie-20200115.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9988ecbe04129214297a7bbf3d253710
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=dfd3defa2378b5b48fced8595274c055

@@ -4,6 +4,7 @@ DEPEND=python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-e
 DESCRIPTION=Dropbox Nautilus Extension
 EAPI=7
 HOMEPAGE=https://github.com/dropbox/nautilus-dropbox
+INHERIT=autotools python-single-r1 xdg-utils
 IUSE=debug python_single_target_python3_7 python_single_target_python3_8
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3 CC-BY-ND-3.0
@@ -11,5 +12,5 @@ RDEPEND=python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-
 REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_8 )
 SLOT=0
 SRC_URI=https://linux.dropboxstatic.com/packages/nautilus-dropbox-2019.02.14.tar.bz2
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-single-r1	d3100de905f978df912135806cf27188	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=c8bde113cb71ef0ae95b893fba8177a4

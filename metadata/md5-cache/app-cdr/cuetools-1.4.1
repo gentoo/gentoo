@@ -3,11 +3,12 @@ DEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.
 DESCRIPTION=Utilities to manipulate and convert cue and toc files
 EAPI=5
 HOMEPAGE=https://github.com/svend/cuetools
+INHERIT=autotools eutils
 IUSE=flac mp3 vorbis
 KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=GPL-2
 RDEPEND=flac? ( media-libs/flac ) mp3? ( media-sound/mp3info ) vorbis? ( media-sound/vorbis-tools )
 SLOT=0
 SRC_URI=https://github.com/svend/cuetools/archive/1.4.1.tar.gz -> cuetools-1.4.1.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	epatch	e8f1ec13660dc2f44b32775765d85e42	estack	055c42df72f76a4f45ec92b35e83cd56	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	multilib	d410501a125f99ffb560b0c523cd3d1e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	estack	055c42df72f76a4f45ec92b35e83cd56	epatch	e8f1ec13660dc2f44b32775765d85e42	l10n	8cdd85e169b835d518bc2fd59f780d8e	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	preserve-libs	ef207dc62baddfddfd39a164d9797648	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e
 _md5_=bffa6513f64df8eb8f594d4c1000d828

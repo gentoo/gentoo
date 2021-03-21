@@ -4,10 +4,11 @@ DEPEND=dev-libs/glib:2 >=dev-libs/json-c-0.10-r1 dev-libs/libbsd dev-libs/libpcr
 DESCRIPTION=Firmware Test Suite
 EAPI=7
 HOMEPAGE=https://wiki.ubuntu.com/Kernel/Reference/fwts
+INHERIT=autotools
 KEYWORDS=~amd64
 LICENSE=GPL-2
 RDEPEND=dev-libs/glib:2 >=dev-libs/json-c-0.10-r1 dev-libs/libbsd dev-libs/libpcre sys-apps/dmidecode sys-apps/dtc sys-apps/pciutils sys-power/iasl sys-power/pmtools
 SLOT=0
 SRC_URI=https://launchpad.net/ubuntu/+archive/primary/+files/fwts_20.11.00.orig.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=5e668622aedbc2542431f9475c93de0b

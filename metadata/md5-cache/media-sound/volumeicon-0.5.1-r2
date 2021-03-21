@@ -4,11 +4,12 @@ DEPEND=dev-libs/glib:2 media-libs/alsa-lib x11-libs/gtk+:3[X] x11-libs/libX11 li
 DESCRIPTION=A lightweight volume control that sits in your systray
 EAPI=7
 HOMEPAGE=http://nullwise.com/volumeicon.html
+INHERIT=autotools
 IUSE=libnotify
 KEYWORDS=amd64 x86
 LICENSE=GPL-3
 RDEPEND=dev-libs/glib:2 media-libs/alsa-lib x11-libs/gtk+:3[X] x11-libs/libX11 libnotify? ( >=x11-libs/libnotify-0.7 )
 SLOT=0
 SRC_URI=http://nullwise.com/volumeicon/volumeicon-0.5.1.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=40de992d219a501518bd58cad8cbdc65

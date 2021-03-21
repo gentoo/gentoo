@@ -4,6 +4,7 @@ DEPEND=alsa? ( media-libs/alsa-lib ) ao? ( >=media-libs/libao-0.8.5 ) emacs? ( >
 DESCRIPTION=A handy MIDI to WAV converter with OSS and ALSA output support
 EAPI=7
 HOMEPAGE=http://timidity.sourceforge.net/
+INHERIT=autotools desktop elisp-common systemd toolchain-funcs user xdg
 IUSE=alsa ao emacs flac gtk jack motif nas ncurses oss selinux slang speex tk vorbis X
 KEYWORDS=amd64 arm arm64 ~hppa ppc ppc64 sparc x86
 LICENSE=GPL-2
@@ -12,5 +13,5 @@ RDEPEND=alsa? ( media-libs/alsa-lib ) ao? ( >=media-libs/libao-0.8.5 ) emacs? ( 
 REQUIRED_USE=tk? ( X )
 SLOT=0
 SRC_URI=mirror://sourceforge/timidity/TiMidity++-2.15.0.tar.xz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	desktop	c0d27bf73aa08ca05b663dbd31fbef28	elisp-common	d4b53ec63c580b993ed19445f411e1d2	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	desktop	c0d27bf73aa08ca05b663dbd31fbef28	elisp-common	d4b53ec63c580b993ed19445f411e1d2	systemd	74b223e42834adf09a2d21fe5fe13741	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
 _md5_=7e55d9648fab3bd63c8bc8363e9a1758

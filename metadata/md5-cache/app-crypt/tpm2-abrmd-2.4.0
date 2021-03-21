@@ -4,6 +4,7 @@ DEPEND=acct-group/tss acct-user/tss sys-apps/dbus dev-libs/glib:= app-crypt/tpm2
 DESCRIPTION=TPM2 Access Broker & Resource Manager
 EAPI=7
 HOMEPAGE=https://github.com/tpm2-software/tpm2-abrmd
+INHERIT=autotools systemd
 IUSE=static-libs test
 KEYWORDS=~amd64
 LICENSE=BSD
@@ -11,5 +12,5 @@ RDEPEND=acct-group/tss acct-user/tss sys-apps/dbus dev-libs/glib:= app-crypt/tpm
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/tpm2-software/tpm2-abrmd/releases/download/2.4.0/tpm2-abrmd-2.4.0.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	systemd	74b223e42834adf09a2d21fe5fe13741
 _md5_=2ac6b0e0fafb6fb5efdca9bbd6b508ac

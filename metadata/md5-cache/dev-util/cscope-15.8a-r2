@@ -3,11 +3,12 @@ DEPEND=>=sys-libs/ncurses-5.2:0= emacs? ( >=app-editors/emacs-23.1:* ) sys-devel
 DESCRIPTION=Interactively examine a C program
 EAPI=6
 HOMEPAGE=http://cscope.sourceforge.net/
+INHERIT=autotools elisp-common toolchain-funcs
 IUSE=emacs
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x86-solaris
 LICENSE=BSD GPL-2+
 RDEPEND=>=sys-libs/ncurses-5.2:0= emacs? ( >=app-editors/emacs-23.1:* )
 SLOT=0
 SRC_URI=mirror://sourceforge/cscope/cscope-15.8a.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	d4b53ec63c580b993ed19445f411e1d2	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	d4b53ec63c580b993ed19445f411e1d2
 _md5_=5166834f6a1bab4ce14a63c29fd78298

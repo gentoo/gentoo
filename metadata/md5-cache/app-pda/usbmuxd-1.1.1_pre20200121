@@ -4,11 +4,12 @@ DEPEND=acct-user/usbmux >=app-pda/libimobiledevice-1.2.1_pre0:= >=app-pda/libpli
 DESCRIPTION=USB multiplex daemon for use with Apple iPhone/iPod Touch devices
 EAPI=7
 HOMEPAGE=https://www.libimobiledevice.org/
+INHERIT=autotools systemd udev
 IUSE=systemd
 KEYWORDS=amd64 ~arm ~ppc ~ppc64 x86
 LICENSE=GPL-2 GPL-3 LGPL-2.1+
 RDEPEND=acct-user/usbmux >=app-pda/libimobiledevice-1.2.1_pre0:= >=app-pda/libplist-1.11:= virtual/libusb:1 virtual/udev
 SLOT=0
 SRC_URI=https://cgit.libimobiledevice.org/usbmuxd.git/snapshot/usbmuxd-8a69f1a78a58476f77b66916091d2405d0cd815f.tar.bz2 -> usbmuxd-1.1.1_pre20200121.tar.bz2
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	udev	452708c3f55cf6e918b045adb949a9e6
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	systemd	74b223e42834adf09a2d21fe5fe13741	udev	452708c3f55cf6e918b045adb949a9e6
 _md5_=c78f712cbea8b556dd3c85d6e4c8a775

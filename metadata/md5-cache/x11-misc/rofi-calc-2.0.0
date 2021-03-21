@@ -4,10 +4,11 @@ DEPEND=x11-misc/rofi >=sci-libs/libqalculate-2.0
 DESCRIPTION=Do live calculations in rofi!
 EAPI=7
 HOMEPAGE=https://github.com/svenstaro/rofi-calc
+INHERIT=autotools
 KEYWORDS=~amd64 ~x86
 LICENSE=MIT
 RDEPEND=x11-misc/rofi >=sci-libs/libqalculate-2.0
 SLOT=0
 SRC_URI=https://github.com/svenstaro/rofi-calc/archive/v2.0.0.tar.gz -> rofi-calc-2.0.0.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=4b2c4a4388b24914beae50e3b15167a3

@@ -4,11 +4,12 @@ DEPEND=>=sys-libs/ncurses-5.7-r6:= media-libs/fontconfig x11-libs/libX11 x11-lib
 DESCRIPTION=rxvt clone with xft and unicode support
 EAPI=7
 HOMEPAGE=http://software.schmorp.de/pkg/rxvt-unicode.html
+INHERIT=autotools cvs desktop vcs-clean prefix
 IUSE=256-color blink fading-colors +font-styles gdk-pixbuf iso14755 +mousewheel +perl startup-notification unicode3 +utmp +wtmp xft
 LICENSE=GPL-3
 PROPERTIES=live
 RDEPEND=>=sys-libs/ncurses-5.7-r6:= media-libs/fontconfig x11-libs/libX11 x11-libs/libXrender gdk-pixbuf? ( x11-libs/gdk-pixbuf ) kernel_Darwin? ( dev-perl/Mac-Pasteboard ) perl? ( dev-lang/perl:= ) startup-notification? ( x11-libs/startup-notification ) xft? ( x11-libs/libXft )
 RESTRICT=test
 SLOT=0
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	cvs	e4da99a0528be81320ec609333490bef	desktop	c0d27bf73aa08ca05b663dbd31fbef28	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	cvs	e4da99a0528be81320ec609333490bef	desktop	c0d27bf73aa08ca05b663dbd31fbef28	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	prefix	de7d8e2b10085ed5ff09ad70e4753e5c
 _md5_=0f824f95b26d8c8e8b85d58902de0b02

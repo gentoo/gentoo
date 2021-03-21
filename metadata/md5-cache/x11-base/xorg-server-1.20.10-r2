@@ -4,6 +4,7 @@ DEPEND=media-libs/libglvnd[X] !libressl? ( dev-libs/openssl:0= ) libressl? ( dev
 DESCRIPTION=X.Org X servers
 EAPI=7
 HOMEPAGE=https://www.x.org/wiki/ https://gitlab.freedesktop.org/xorg/xserver/xorg-server
+INHERIT=xorg-3 multilib flag-o-matic toolchain-funcs
 IUSE=dmx kdrive wayland xephyr xnest xorg xvfb debug +elogind ipv6 libressl minimal selinux suid systemd test +udev unwind xcsecurity doc
 KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux
 LICENSE=MIT
@@ -13,5 +14,5 @@ REQUIRED_USE=!minimal? ( || ( dmx kdrive wayland xephyr xnest xorg xvfb ) ) elog
 RESTRICT=!test? ( test )
 SLOT=0/1.20.10
 SRC_URI=https://www.x.org/releases/individual/xserver/xorg-server-1.20.10.tar.bz2
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	xorg-3	87a9e316d5b1fa9345e77329cc0ebe3b
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	xorg-3	87a9e316d5b1fa9345e77329cc0ebe3b
 _md5_=2840b1ab242e83e6ee6bef2872be1f54

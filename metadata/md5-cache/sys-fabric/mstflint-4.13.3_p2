@@ -4,11 +4,12 @@ DEPEND=dev-db/sqlite:3= sys-libs/zlib:= inband? ( sys-fabric/libibmad ) ssl? ( d
 DESCRIPTION=Mstflint - an open source version of MFT (Mellanox Firmware Tools)
 EAPI=7
 HOMEPAGE=https://github.com/Mellanox/mstflint
+INHERIT=autotools
 IUSE=inband ssl
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( GPL-2 BSD-2 )
 RDEPEND=dev-db/sqlite:3= sys-libs/zlib:= inband? ( sys-fabric/libibmad ) ssl? ( dev-libs/openssl:= )
 SLOT=0
 SRC_URI=https://github.com/Mellanox/mstflint/archive/v4.13.3-2.tar.gz -> mstflint-4.13.3_p2.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=1ab18f6cfed4593bf3841a1cc815a516

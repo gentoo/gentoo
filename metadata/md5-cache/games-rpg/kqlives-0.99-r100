@@ -4,6 +4,7 @@ DEPEND=lua_single_target_lua5-1? ( dev-lang/lua:5.1 ) >=gnome-base/libglade-2.4 
 DESCRIPTION=A console-style role playing game
 EAPI=7
 HOMEPAGE=http://kqlives.sourceforge.net/
+INHERIT=autotools desktop lua-single
 IUSE=cheats nls +lua_single_target_lua5-1
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
@@ -11,5 +12,5 @@ RDEPEND=lua_single_target_lua5-1? ( dev-lang/lua:5.1 ) >=gnome-base/libglade-2.4
 REQUIRED_USE=^^ ( lua_single_target_lua5-1 )
 SLOT=0
 SRC_URI=mirror://sourceforge/kqlives/kq-0.99.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	desktop	c0d27bf73aa08ca05b663dbd31fbef28	libtool	f143db5a74ccd9ca28c1234deffede96	lua-single	f91b5656f00869c220a6e35ae0521c54	lua-utils	736947973cfbc9de01fdb8548f942f82	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	desktop	c0d27bf73aa08ca05b663dbd31fbef28	lua-utils	736947973cfbc9de01fdb8548f942f82	lua-single	f91b5656f00869c220a6e35ae0521c54
 _md5_=91a32e6e7a9cfcc3e0f353551d06f66d

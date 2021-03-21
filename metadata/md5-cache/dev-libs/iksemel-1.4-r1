@@ -3,11 +3,12 @@ DEPEND=ssl? ( net-libs/gnutls:= ) ssl? ( virtual/pkgconfig ) >=app-portage/elt-p
 DESCRIPTION=eXtensible Markup Language parser library designed for Jabber applications
 EAPI=6
 HOMEPAGE=https://github.com/meduketto/iksemel
+INHERIT=autotools
 IUSE=ssl static-libs
 KEYWORDS=amd64 ~arm ~arm64 ppc ~ppc64 x86
 LICENSE=LGPL-2.1
 RDEPEND=ssl? ( net-libs/gnutls:= )
 SLOT=0
 SRC_URI=https://iksemel.googlecode.com/files/iksemel-1.4.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=06269e826cbaa9b075103779af77653b

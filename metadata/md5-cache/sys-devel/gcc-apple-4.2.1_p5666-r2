@@ -3,6 +3,7 @@ DEPEND=>=sys-libs/zlib-1.1.4 >=sys-libs/ncurses-5.2-r2 nls? ( sys-devel/gettext 
 DESCRIPTION=Apple branch of the GNU Compiler Collection, Developer Tools 4.0
 EAPI=5
 HOMEPAGE=https://gcc.gnu.org
+INHERIT=eutils toolchain flag-o-matic autotools prefix toolchain-funcs
 IUSE=bootstrap fortran nls +openmp objc objc++ +cxx test vanilla +nls
 KEYWORDS=~ppc-macos ~x64-macos
 LICENSE=GPL-2 GPL-3
@@ -11,5 +12,5 @@ RDEPEND=>=sys-libs/zlib-1.1.4 >=sys-libs/ncurses-5.2-r2 nls? ( sys-devel/gettext
 RESTRICT=!test? ( test ) strip
 SLOT=42
 SRC_URI=http://www.opensource.apple.com/darwinsource/tarballs/other/gcc-5666.3.tar.gz http://www.opensource.apple.com/darwinsource/tarballs/other/libstdcxx-39.tar.gz fortran? ( mirror://gnu/gcc/gcc-4.2.4/gcc-fortran-4.2.4.tar.bz2 https://dev.gentoo.org/~grobian/distfiles/gcc-apple-4.2.1_p5646-gfortran.patch )
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	desktop	c0d27bf73aa08ca05b663dbd31fbef28	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	edos2unix	33e347e171066657f91f8b0c72ec8773	epatch	e8f1ec13660dc2f44b32775765d85e42	estack	055c42df72f76a4f45ec92b35e83cd56	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	gnuconfig	f9125410be4c062f2fcefc8ec59fc223	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	multilib	d410501a125f99ffb560b0c523cd3d1e	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain	1db6586d659f34fb03fe4b58674408b6	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	estack	055c42df72f76a4f45ec92b35e83cd56	epatch	e8f1ec13660dc2f44b32775765d85e42	l10n	8cdd85e169b835d518bc2fd59f780d8e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	preserve-libs	ef207dc62baddfddfd39a164d9797648	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	gnuconfig	f9125410be4c062f2fcefc8ec59fc223	libtool	f143db5a74ccd9ca28c1234deffede96	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	toolchain	1db6586d659f34fb03fe4b58674408b6	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=fe049e2fdb356ee5ec3a248f2b5445a8

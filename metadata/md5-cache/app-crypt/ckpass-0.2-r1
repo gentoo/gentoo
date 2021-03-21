@@ -3,10 +3,11 @@ DEPEND=>=dev-libs/libkpass-6 >=app-portage/elt-patches-20170815 || ( >=sys-devel
 DESCRIPTION=ncurses based password database client compatible with KeePass 1.x databases
 EAPI=6
 HOMEPAGE=http://ckpass.sourceforge.net/
+INHERIT=autotools
 KEYWORDS=~amd64
 LICENSE=GPL-3
 RDEPEND=>=dev-libs/libkpass-6
 SLOT=0
 SRC_URI=mirror://sourceforge/ckpass/ckpass-0.2.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=dc52b059700596b6176c307b55353509

@@ -4,11 +4,12 @@ DEPEND=dev-libs/glib:2 >=app-emulation/spice-protocol-0.14.0 media-libs/alsa-lib
 DESCRIPTION=SPICE VD Linux Guest Agent
 EAPI=7
 HOMEPAGE=https://www.spice-space.org/
+INHERIT=autotools linux-info
 IUSE=gtk selinux systemd kernel_linux
 KEYWORDS=amd64 x86
 LICENSE=LGPL-2.1
 RDEPEND=dev-libs/glib:2 >=app-emulation/spice-protocol-0.14.0 media-libs/alsa-lib >=x11-libs/libpciaccess-0.10 x11-libs/libdrm x11-libs/libXfixes x11-libs/libXrandr x11-libs/libX11 x11-libs/libXinerama gtk? ( x11-libs/gtk+:3 ) systemd? ( sys-apps/systemd ) selinux? ( sec-policy/selinux-vdagent )
 SLOT=0
 SRC_URI=https://www.spice-space.org/download/releases/spice-vdagent-0.19.0.tar.bz2
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	linux-info	c90a203b1c14cfa77bd3e37a0e96c955
 _md5_=b82d43105c4694cc4801a1a05683bfd6

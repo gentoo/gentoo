@@ -4,11 +4,12 @@ DEPEND=dev-libs/libnl:= dev-libs/openssl:= dev-libs/popt net-libs/libnfnetlink s
 DESCRIPTION=A strong & robust keepalive facility to the Linux Virtual Server project
 EAPI=7
 HOMEPAGE=https://www.keepalived.org/
+INHERIT=autotools systemd
 IUSE=+bfd dbus -json regex snmp
 KEYWORDS=~alpha amd64 ~hppa ~ia64 ppc ppc64 ~s390 ~sparc x86
 LICENSE=GPL-2
 RDEPEND=dev-libs/libnl:= dev-libs/openssl:= dev-libs/popt net-libs/libnfnetlink sys-apps/iproute2 regex? ( >=dev-libs/libpcre2-8 ) dbus? ( sys-apps/dbus dev-libs/glib:2 ) json? ( dev-libs/json-c:= ) snmp? ( net-analyzer/net-snmp )
 SLOT=0
 SRC_URI=https://www.keepalived.org/software/keepalived-2.0.20.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	systemd	74b223e42834adf09a2d21fe5fe13741
 _md5_=cfeedae235d02a90f45d4bbdeed8c53e

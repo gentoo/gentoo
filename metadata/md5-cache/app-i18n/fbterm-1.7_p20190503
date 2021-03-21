@@ -4,11 +4,12 @@ DEPEND=media-libs/fontconfig media-libs/freetype:2 >=sys-libs/ncurses-6.1 gpm? (
 DESCRIPTION=Fast terminal emulator for the Linux framebuffer
 EAPI=7
 HOMEPAGE=https://github.com/gjedeer/fbterm
+INHERIT=autotools fcaps toolchain-funcs vcs-snapshot
 IUSE=gpm video_cards_vesa +filecaps
 KEYWORDS=~amd64 ~arm ~arm64 ~x86
 LICENSE=GPL-2
 RDEPEND=media-libs/fontconfig media-libs/freetype:2 >=sys-libs/ncurses-6.1 gpm? ( sys-libs/gpm ) video_cards_vesa? ( dev-libs/libx86 ) filecaps? ( sys-libs/libcap )
 SLOT=0
 SRC_URI=https://github.com/gjedeer/fbterm/archive/ccea326dd73f4d6b6442fde7ba7c2be9cd35c6df.tar.gz -> fbterm-1.7_p20190503.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	fcaps	da689a8e04bbbb3518888ff668fee45b	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	fcaps	da689a8e04bbbb3518888ff668fee45b	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
 _md5_=f572746833bc262acfb9965de544b614

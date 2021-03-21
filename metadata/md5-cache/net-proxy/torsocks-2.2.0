@@ -3,10 +3,11 @@ DEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.
 DESCRIPTION=Use most socks-friendly applications with Tor
 EAPI=6
 HOMEPAGE=https://github.com/dgoulet/torsocks
+INHERIT=autotools versionator
 IUSE=static-libs
 KEYWORDS=amd64 ~arm x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=https://github.com/dgoulet/torsocks/archive/v2.2.0.tar.gz -> torsocks-2.2.0.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	estack	055c42df72f76a4f45ec92b35e83cd56	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	versionator	d3fb3ba33acc3bbbdc4d7970227c100d
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	estack	055c42df72f76a4f45ec92b35e83cd56	versionator	d3fb3ba33acc3bbbdc4d7970227c100d
 _md5_=cd16f652c9427ae33a0a5847ba4f9ffa

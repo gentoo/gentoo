@@ -3,11 +3,12 @@ DEPEND=>=net-libs/nghttp2-1.0 >=www-servers/apache-2.4.20[-apache2_modules_http2
 DESCRIPTION=HTTP/2 module for Apache
 EAPI=6
 HOMEPAGE=https://github.com/icing/mod_h2
+INHERIT=apache-module autotools
 IUSE=ssl
 KEYWORDS=~amd64 ~x86
 LICENSE=Apache-2.0
 RDEPEND=>=net-libs/nghttp2-1.0 >=www-servers/apache-2.4.20[-apache2_modules_http2,ssl?] =www-servers/apache-2.4*
 SLOT=0
 SRC_URI=https://github.com/icing/mod_h2/archive/v1.15.16.tar.gz -> mod_h2-1.15.16.tar.gz
-_eclasses_=apache-module	b40f49b22e6e55c4a17f7ecded4f0425	autotools	9988ecbe04129214297a7bbf3d253710	depend.apache	94458fe4e9466f4803360408e60e11fd	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=depend.apache	94458fe4e9466f4803360408e60e11fd	apache-module	b40f49b22e6e55c4a17f7ecded4f0425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=aa19076ea90409c8366c7e5f87f72075

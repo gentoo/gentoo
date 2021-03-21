@@ -4,10 +4,11 @@ DEPEND=media-libs/freeglut media-libs/glew:0= media-libs/libpng:0= net-misc/curl
 DESCRIPTION=Chart Program to use with Flightgear Flight Simulator
 EAPI=7
 HOMEPAGE=http://atlas.sourceforge.net/
+INHERIT=autotools
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2+
 RDEPEND=media-libs/freeglut media-libs/glew:0= media-libs/libpng:0= net-misc/curl sys-libs/zlib virtual/glu virtual/jpeg:0 virtual/opengl >=games-simulation/flightgear-3.0.0
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~reavertm/atlas-hgcode-d4e5360f8273823205d9dc066547f5077ffc13e2.zip
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=8f761dd23d4e0dcc8162372aaaea101c

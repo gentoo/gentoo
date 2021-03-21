@@ -4,11 +4,12 @@ DEPEND=dev-libs/atk dev-libs/expat dev-libs/glib:2 media-sound/fluidsynth:= gtk?
 DESCRIPTION=A set of open source instruments and effects for digital audio workstations
 EAPI=7
 HOMEPAGE=http://calf-studio-gear.org/
+INHERIT=autotools xdg git-r3
 IUSE=cpu_flags_x86_sse experimental gtk jack lash lv2 static-libs
 LICENSE=LGPL-2.1
 PROPERTIES=live
 RDEPEND=dev-libs/atk dev-libs/expat dev-libs/glib:2 media-sound/fluidsynth:= gtk? ( x11-libs/cairo x11-libs/gdk-pixbuf x11-libs/gtk+:2 x11-libs/pango ) jack? ( virtual/jack ) lash? ( media-sound/lash ) lv2? ( media-libs/lv2 )
 REQUIRED_USE=jack? ( gtk )
 SLOT=0
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	git-r3	3e7ec3d6619213460c85e2aa48398441
 _md5_=a263e4d57848cb51ff8d0c67712b045c

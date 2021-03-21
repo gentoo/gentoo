@@ -4,10 +4,11 @@ DEPEND=dev-libs/libconfig:= sys-libs/ncurses:0=
 DESCRIPTION=DF-SHOW is a Unix-like rewrite of some of the applications from DF-EDIT
 EAPI=7
 HOMEPAGE=https://github.com/roberthawdon/dfshow
+INHERIT=autotools bash-completion-r1
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
 RDEPEND=dev-libs/libconfig:= sys-libs/ncurses:0=
 SLOT=0
 SRC_URI=https://github.com/roberthawdon/dfshow/archive/v0.9.1-beta.tar.gz -> dfshow-0.9.1_beta.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	bash-completion-r1	be99724bde4274de21e581204e9d164a	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	bash-completion-r1	be99724bde4274de21e581204e9d164a
 _md5_=87080b9df4e6e49d5d988235669ea8a0

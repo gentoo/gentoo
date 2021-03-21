@@ -4,6 +4,7 @@ DEPEND=>=dev-libs/glib-2.32.0 >=dev-libs/libzip-0.8:= cxx? ( dev-cpp/glibmm:2 ) 
 DESCRIPTION=Basic hardware drivers for logic analyzers and input/output file format support
 EAPI=7
 HOMEPAGE=https://sigrok.org/wiki/Libsigrok
+INHERIT=python-r1 java-pkg-opt-2 ruby-ng udev xdg-utils git-r3 autotools
 IUSE=+cxx ftdi java parport python ruby serial static-libs test +udev usb python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 elibc_FreeBSD java ruby_targets_ruby26 ruby_targets_ruby25
 LICENSE=GPL-3
 PROPERTIES=live
@@ -11,5 +12,5 @@ RDEPEND=java? ( >=virtual/jre-1.4 ) !static-libs? ( >=dev-libs/glib-2.32.0 >=dev
 REQUIRED_USE=java? ( cxx ) python? ( cxx || ( python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 ) ) ruby? ( cxx || ( ruby_targets_ruby26 ruby_targets_ruby25 ) )
 RESTRICT=!test? ( test )
 SLOT=0/9999
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	estack	055c42df72f76a4f45ec92b35e83cd56	git-r3	3e7ec3d6619213460c85e2aa48398441	java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	java-utils-2	378e4cda228ea0231a0ac283cb2ad25c	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	python-r1	6d099888c5b4dd4868c26508df307e95	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	ruby-ng	676004cfb6cdf3dedf1c778d56346624	ruby-utils	03dfa7f54d59d740c2964dc7256d2820	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	udev	452708c3f55cf6e918b045adb949a9e6	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-r1	6d099888c5b4dd4868c26508df307e95	java-utils-2	378e4cda228ea0231a0ac283cb2ad25c	java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	estack	055c42df72f76a4f45ec92b35e83cd56	ruby-utils	03dfa7f54d59d740c2964dc7256d2820	ruby-ng	676004cfb6cdf3dedf1c778d56346624	udev	452708c3f55cf6e918b045adb949a9e6	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=cf9bfc4136504da895d5442deb50f719

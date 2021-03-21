@@ -4,11 +4,12 @@ DEPEND=acct-group/argus acct-user/argus net-libs/libnsl:= net-libs/libpcap net-l
 DESCRIPTION=network Audit Record Generation and Utilization System
 EAPI=7
 HOMEPAGE=https://openargus.org/
+INHERIT=autotools toolchain-funcs
 IUSE=debug sasl tcpd
 KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=GPL-3
 RDEPEND=acct-group/argus acct-user/argus net-libs/libnsl:= net-libs/libpcap net-libs/libtirpc sys-libs/zlib sasl? ( dev-libs/cyrus-sasl ) tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
 SLOT=0
 SRC_URI=https://www.qosient.com/argus/dev/argus-3.0.8.3.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=9eb47322446c6d7cef073c20103a6c53

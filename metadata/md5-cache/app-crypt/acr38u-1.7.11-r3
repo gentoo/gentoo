@@ -4,10 +4,11 @@ DEPEND=>=sys-apps/pcsc-lite-1.6.4 virtual/libusb:0
 DESCRIPTION=Non CCID driver for ACR38 AC1038-based Smart Card Reader
 EAPI=7
 HOMEPAGE=https://www.acs.com.hk
+INHERIT=autotools toolchain-funcs udev
 KEYWORDS=~amd64 ~x86
 LICENSE=LGPL-2.1
 RDEPEND=>=sys-apps/pcsc-lite-1.6.4 virtual/libusb:0
 SLOT=0
 SRC_URI=https://www.linuxunderground.be/ACR38_LINUX_100711_P.tar.bz2
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	udev	452708c3f55cf6e918b045adb949a9e6
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	udev	452708c3f55cf6e918b045adb949a9e6
 _md5_=2a4bdc4274705db13041e106920806a5

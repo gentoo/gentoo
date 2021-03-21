@@ -3,11 +3,12 @@ DEPEND=sys-libs/ncurses:0= !dev-java/nailgun canna? ( app-i18n/canna ) sys-apps/
 DESCRIPTION=Emacs like micro editor Ng -- based on mg2a
 EAPI=6
 HOMEPAGE=http://tt.sakura.ne.jp/~amura/ng/
+INHERIT=autotools toolchain-funcs
 IUSE=canna
 KEYWORDS=amd64 ppc x86
 LICENSE=Emacs
 RDEPEND=sys-libs/ncurses:0= !dev-java/nailgun canna? ( app-i18n/canna )
 SLOT=0
 SRC_URI=http://tt.sakura.ne.jp/~amura/archives/ng/ng-1.5beta1.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=40a2c5f8d08ec6fb0157b3125fc344b7

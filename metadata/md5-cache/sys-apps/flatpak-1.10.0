@@ -4,6 +4,7 @@ DEPEND=acct-group/flatpak acct-user/flatpak >=app-arch/libarchive-2.8:= app-arch
 DESCRIPTION=Linux application sandboxing and distribution framework
 EAPI=7
 HOMEPAGE=https://flatpak.org/
+INHERIT=autotools linux-info python-any-r1
 IUSE=doc gtk kde introspection policykit seccomp systemd kernel_linux
 KEYWORDS=amd64 ~arm arm64 ~ppc64 x86
 LICENSE=LGPL-2.1+
@@ -12,5 +13,5 @@ RDEPEND=acct-group/flatpak acct-user/flatpak >=app-arch/libarchive-2.8:= app-arc
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/flatpak/flatpak/releases/download/1.10.0/flatpak-1.10.0.tar.xz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88
 _md5_=7ff7513ee97aa7afcc64860dda74c91c

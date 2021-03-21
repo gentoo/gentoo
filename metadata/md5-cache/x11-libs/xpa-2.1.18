@@ -11,5 +11,5 @@ LICENSE=LGPL-2.1
 RDEPEND=dev-lang/tcl:0= x11-libs/libXt:0
 SLOT=0/1
 SRC_URI=https://github.com/ericmandel/xpa/archive/v2.1.18.tar.gz -> xpa-2.1.18.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9988ecbe04129214297a7bbf3d253710
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=1e3cf9c48f11e0b0b12fff005f22c38b

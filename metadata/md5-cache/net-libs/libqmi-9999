@@ -4,10 +4,11 @@ DEPEND=>=dev-libs/glib-2.48 dev-libs/libgudev mbim? ( >=net-libs/libmbim-1.18.0 
 DESCRIPTION=Qualcomm MSM (Mobile Station Modem) Interface (QMI) modem protocol library
 EAPI=7
 HOMEPAGE=https://www.freedesktop.org/wiki/Software/libqmi/ https://gitlab.freedesktop.org/mobile-broadband/libqmi
+INHERIT=multilib git-r3 autotools
 IUSE=doc +mbim
 LICENSE=LGPL-2
 PROPERTIES=live
 RDEPEND=>=dev-libs/glib-2.48 dev-libs/libgudev mbim? ( >=net-libs/libmbim-1.18.0 )
 SLOT=0/5.7
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=55fc6ba8794183c43c99d2127e68b90b

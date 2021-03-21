@@ -3,11 +3,12 @@ DEPEND=allegro? ( media-libs/allegro:0 ) gif? ( media-libs/giflib:= ) glut? ( me
 DESCRIPTION=DevIL image library
 EAPI=6
 HOMEPAGE=http://openil.sourceforge.net/
+INHERIT=autotools
 IUSE=allegro cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 gif glut jpeg mng nvtt openexr opengl png sdl static-libs tiff X xpm
 KEYWORDS=amd64 ~arm arm64 ~hppa ~mips ppc ppc64 x86
 LICENSE=LGPL-2.1
 RDEPEND=allegro? ( media-libs/allegro:0 ) gif? ( media-libs/giflib:= ) glut? ( media-libs/freeglut ) jpeg? ( virtual/jpeg:0 ) mng? ( media-libs/libmng:= ) nvtt? ( media-gfx/nvidia-texture-tools ) openexr? ( media-libs/openexr:= ) opengl? ( virtual/opengl virtual/glu ) png? ( media-libs/libpng:0= ) sdl? ( media-libs/libsdl ) tiff? ( media-libs/tiff:0 ) X? ( x11-libs/libXext x11-libs/libX11 x11-libs/libXrender ) xpm? ( x11-libs/libXpm )
 SLOT=0
 SRC_URI=mirror://sourceforge/openil/DevIL-1.7.8.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=61d6a840bf18a217786275278fad129e

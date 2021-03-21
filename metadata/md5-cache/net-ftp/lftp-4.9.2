@@ -4,6 +4,7 @@ DEPEND=>=sys-libs/ncurses-5.1:= >=sys-libs/readline-5.1:= dev-libs/expat sys-lib
 DESCRIPTION=A sophisticated ftp/sftp/http/https/torrent client and file transfer program
 EAPI=7
 HOMEPAGE=https://lftp.tech/
+INHERIT=autotools libtool xdg-utils
 IUSE=convert-mozilla-cookies +gnutls idn ipv6 libressl nls socks5 +ssl verify-file
 KEYWORDS=~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos
 LICENSE=GPL-3
@@ -11,5 +12,5 @@ RDEPEND=>=sys-libs/ncurses-5.1:= >=sys-libs/readline-5.1:= dev-libs/expat sys-li
 RESTRICT=test
 SLOT=0
 SRC_URI=https://lftp.tech/ftp/lftp-4.9.2.tar.xz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=8da23f9e91f94eae1f96061a5ba01194

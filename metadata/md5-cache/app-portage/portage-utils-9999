@@ -3,10 +3,11 @@ DEPEND=qmanifest? ( openmp? ( || ( >=sys-devel/gcc-4.2:*[openmp] sys-devel/clang
 DESCRIPTION=Small and fast Portage helper tools written in C
 EAPI=6
 HOMEPAGE=https://wiki.gentoo.org/wiki/Portage-utils
+INHERIT=git-r3 autotools
 IUSE=nls static openmp +qmanifest +qtegrity libressl
 LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=qmanifest? ( openmp? ( || ( >=sys-devel/gcc-4.2:*[openmp] sys-devel/clang-runtime:*[openmp] ) ) static? ( app-crypt/libb2:=[static-libs] !libressl? ( dev-libs/openssl:0=[static-libs] ) libressl? ( dev-libs/libressl:0=[static-libs] ) sys-libs/zlib:=[static-libs] app-crypt/gpgme:=[static-libs] ) !static? ( app-crypt/libb2:= !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) sys-libs/zlib:= app-crypt/gpgme:= ) ) qtegrity? ( openmp? ( || ( >=sys-devel/gcc-4.2:*[openmp] sys-devel/clang-runtime:*[openmp] ) ) static? ( !libressl? ( dev-libs/openssl:0=[static-libs] ) libressl? ( dev-libs/libressl:0=[static-libs] ) ) !static? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) )
 SLOT=0
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=0b6d80525f972bd5a0086917badb65cc

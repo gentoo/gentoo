@@ -3,11 +3,12 @@ DEPEND=nls? ( sys-devel/gettext ) >=app-portage/elt-patches-20170815 || ( >=sys-
 DESCRIPTION=Abook is a text-based addressbook program designed to use with mutt mail client
 EAPI=6
 HOMEPAGE=http://abook.sourceforge.net/
+INHERIT=autotools
 IUSE=nls
 KEYWORDS=~alpha amd64 ppc ppc64 sparc x86
 LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses sys-libs/readline dev-libs/libvformat nls? ( virtual/libintl )
 SLOT=0
 SRC_URI=http://abook.sourceforge.net/devel/abook-0.6.1.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=455b6640ffb44a895765e2bf2b436e67

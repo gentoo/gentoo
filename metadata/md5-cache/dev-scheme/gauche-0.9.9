@@ -4,6 +4,7 @@ DEPEND=sys-libs/gdbm mbedtls? ( net-libs/mbedtls:= ) test? ( !libressl? ( dev-li
 DESCRIPTION=A Unix system friendly Scheme Interpreter
 EAPI=7
 HOMEPAGE=http://practical-scheme.net/gauche/
+INHERIT=autotools
 IUSE=ipv6 libressl mbedtls test
 KEYWORDS=~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux
 LICENSE=BSD
@@ -11,5 +12,5 @@ RDEPEND=sys-libs/gdbm mbedtls? ( net-libs/mbedtls:= )
 RESTRICT=!test? ( test )
 SLOT=0/0.97
 SRC_URI=mirror://sourceforge/gauche/Gauche-0.9.9.tgz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=274612ca0565d7ea17ffa2f5ad3a75bc

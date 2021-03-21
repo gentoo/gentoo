@@ -4,6 +4,7 @@ DEPEND=acct-group/plugdev >=dev-lang/jimtcl-0.76:0= capstone? ( dev-libs/capston
 DESCRIPTION=OpenOCD - Open On-Chip Debugger
 EAPI=7
 HOMEPAGE=http://openocd.sourceforge.net
+INHERIT=autotools udev
 IUSE=capstone +cmsis-dap dummy +ftdi +jlink parport +usb verbose-io
 KEYWORDS=~amd64 ~arm ~x86
 LICENSE=GPL-2+
@@ -11,5 +12,5 @@ RDEPEND=acct-group/plugdev >=dev-lang/jimtcl-0.76:0= capstone? ( dev-libs/capsto
 RESTRICT=strip
 SLOT=0
 SRC_URI=mirror://sourceforge/project/openocd/openocd/0.11.0/openocd-0.11.0.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	udev	452708c3f55cf6e918b045adb949a9e6
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	udev	452708c3f55cf6e918b045adb949a9e6
 _md5_=4b7abb3f3f4a17fb46e145f0c351d821

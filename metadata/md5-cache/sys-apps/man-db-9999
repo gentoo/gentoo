@@ -4,11 +4,12 @@ DEPEND=!sys-apps/man >=dev-libs/libpipeline-1.5.0 sys-apps/groff gdbm? ( sys-lib
 DESCRIPTION=a man replacement that utilizes berkdb instead of flat files
 EAPI=7
 HOMEPAGE=http://www.nongnu.org/man-db/
+INHERIT=systemd prefix autotools git-r3
 IUSE=berkdb +gdbm +manpager nls +seccomp selinux static-libs zlib
 LICENSE=GPL-3
 PDEPEND=manpager? ( app-text/manpager )
 PROPERTIES=live
 RDEPEND=!sys-apps/man >=dev-libs/libpipeline-1.5.0 sys-apps/groff gdbm? ( sys-libs/gdbm:= ) !gdbm? ( berkdb? ( sys-libs/db:= ) ) !berkdb? ( !gdbm? ( sys-libs/gdbm:= ) ) seccomp? ( sys-libs/libseccomp ) zlib? ( sys-libs/zlib ) acct-group/man acct-user/man selinux? ( sec-policy/selinux-mandb )
 SLOT=0
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	git-r3	3e7ec3d6619213460c85e2aa48398441
 _md5_=5b268f178d71ddb28410d57317e9d199

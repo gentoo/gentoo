@@ -4,6 +4,7 @@ DEPEND=>=dev-libs/boost-1.58.0:=[threads(+)] >dev-libs/libsecp256k1-0.1_pre20200
 DESCRIPTION=An end-user Qt GUI for the Bitcoin crypto-currency
 EAPI=7
 HOMEPAGE=https://bitcoincore.org/ https://bitcoinknots.org/
+INHERIT=autotools bash-completion-r1 db-use desktop xdg-utils
 IUSE=+asm dbus kde knots +qrcode sqlite +system-leveldb test upnp +wallet zeromq
 KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=MIT
@@ -11,5 +12,5 @@ RDEPEND=>=dev-libs/boost-1.58.0:=[threads(+)] >dev-libs/libsecp256k1-0.1_pre2020
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/bitcoin/bitcoin/archive/95ea54ba089610019a74c1176a2c7c0dba144b1c.tar.gz -> bitcoin-v0.21.0.tar.gz https://bitcoinknots.org/files/0.21.x/0.21.0.knots20210130/bitcoin-0.21.0.knots20210130.patches.txz -> bitcoin-0.21.0.knots20210130.patches.tar.xz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	bash-completion-r1	be99724bde4274de21e581204e9d164a	db-use	5b886219e6035ca01d8b1c58eba91679	desktop	c0d27bf73aa08ca05b663dbd31fbef28	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	bash-completion-r1	be99724bde4274de21e581204e9d164a	db-use	5b886219e6035ca01d8b1c58eba91679	desktop	c0d27bf73aa08ca05b663dbd31fbef28	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=655a3b3a333285adc9827fb767161b3e

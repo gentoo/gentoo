@@ -4,11 +4,12 @@ DEPEND=net-dns/c-ares >=net-misc/curl-7.15.0 sys-libs/ncurses:0 sys-libs/zlib !d
 DESCRIPTION=3D tank combat simulator game
 EAPI=7
 HOMEPAGE=https://www.bzflag.org/
+INHERIT=autotools desktop flag-o-matic
 IUSE=dedicated upnp
 KEYWORDS=~amd64 ~x86
 LICENSE=LGPL-2.1
 RDEPEND=net-dns/c-ares >=net-misc/curl-7.15.0 sys-libs/ncurses:0 sys-libs/zlib !dedicated? ( media-libs/libsdl2[joystick,sound,video] media-libs/glew:= virtual/glu virtual/opengl ) upnp? ( net-libs/miniupnpc )
 SLOT=0
 SRC_URI=https://download.bzflag.org/bzflag/source/2.4.20/bzflag-2.4.20.tar.bz2
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741
 _md5_=14df0c24011b26a8750d770de49bfab6

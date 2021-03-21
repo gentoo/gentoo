@@ -3,11 +3,12 @@ DEPEND=dev-libs/fcgi systemd? ( sys-apps/systemd ) virtual/pkgconfig >=app-porta
 DESCRIPTION=Simple FastCGI wrapper for CGI scripts (CGI support for nginx)
 EAPI=5
 HOMEPAGE=https://github.com/gnosek/fcgiwrap
+INHERIT=autotools systemd toolchain-funcs
 IUSE=systemd
 KEYWORDS=amd64 ~arm x86
 LICENSE=BSD
 RDEPEND=dev-libs/fcgi systemd? ( sys-apps/systemd )
 SLOT=0
 SRC_URI=https://github.com/gnosek/fcgiwrap/archive/1.1.0.tar.gz -> fcgiwrap-1.1.0.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	systemd	74b223e42834adf09a2d21fe5fe13741
 _md5_=9eb91debe6007cb524505361e26a403f

@@ -4,11 +4,12 @@ DEPEND=>=net-libs/nDPI-3.0:= dev-db/mysql-connector-c:= dev-db/sqlite:3 dev-libs
 DESCRIPTION=Network traffic analyzer with web interface
 EAPI=7
 HOMEPAGE=https://www.ntop.org/
+INHERIT=autotools user toolchain-funcs
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
 RDEPEND=>=net-libs/nDPI-3.0:= dev-db/mysql-connector-c:= dev-db/sqlite:3 dev-libs/hiredis:= dev-libs/json-c:= dev-libs/libmaxminddb dev-libs/libsodium:= dev-libs/openssl net-analyzer/rrdtool net-libs/libpcap >=net-libs/zeromq-3:= net-misc/curl sys-libs/libcap sys-libs/zlib dev-db/redis
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/ntop/ntopng/archive/4.0.tar.gz -> ntopng-4.0.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8
 _md5_=c906d2f45ea9fa6f656c83b39cfdb920

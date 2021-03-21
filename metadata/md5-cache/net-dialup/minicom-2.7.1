@@ -3,11 +3,12 @@ DEPEND=sys-libs/ncurses:= nls? ( sys-devel/gettext ) >=app-portage/elt-patches-2
 DESCRIPTION=Serial Communication Program
 EAPI=6
 HOMEPAGE=https://salsa.debian.org/minicom-team/minicom
+INHERIT=autotools
 IUSE=nls
 KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses:= net-dialup/lrzsz
 SLOT=0
 SRC_URI=https://alioth-archive.debian.org/releases/minicom/Source/2.7.1/minicom-2.7.1.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=2675251bc7c554812a5f905871c5e6eb

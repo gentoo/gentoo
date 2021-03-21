@@ -4,6 +4,7 @@ DEPEND=dev-libs/nettle:= net-mail/ytnef sys-libs/zlib:= x11-libs/cairo x11-libs/
 DESCRIPTION=An email client (and news reader) based on GTK+
 EAPI=7
 HOMEPAGE=https://www.claws-mail.org/
+INHERIT=autotools desktop xdg
 IUSE=+appindicator archive bogofilter calendar clamav dbus debug dillo doc gdata +gnutls +imap ipv6 ldap +libcanberra +libnotify litehtml networkmanager nls nntp +notification pdf perl +pgp rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind xface
 KEYWORDS=~alpha amd64 arm ~arm64 ~hppa ppc ppc64 ~sparc x86
 LICENSE=GPL-3
@@ -11,5 +12,5 @@ RDEPEND=dev-libs/nettle:= net-mail/ytnef sys-libs/zlib:= x11-libs/cairo x11-libs
 REQUIRED_USE=appindicator? ( notification ) libcanberra? ( notification ) libnotify? ( notification ) networkmanager? ( dbus ) smime? ( pgp )
 SLOT=0
 SRC_URI=https://www.claws-mail.org/download.php?file=releases/claws-mail-3.17.8.tar.xz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	desktop	c0d27bf73aa08ca05b663dbd31fbef28	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	desktop	c0d27bf73aa08ca05b663dbd31fbef28	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
 _md5_=6e58c10943c6c273ea575910411a3ae1

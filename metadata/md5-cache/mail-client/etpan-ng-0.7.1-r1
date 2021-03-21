@@ -3,11 +3,12 @@ DEPEND=>=net-libs/libetpan-0.35 sys-libs/ncurses:= ldap? ( net-nds/openldap ) vi
 DESCRIPTION=etPan is a console mail client that is based on libEtPan
 EAPI=6
 HOMEPAGE=http://www.etpan.org/other.html
+INHERIT=autotools
 IUSE=debug ldap
 KEYWORDS=~amd64 x86
 LICENSE=BSD
 RDEPEND=>=net-libs/libetpan-0.35 sys-libs/ncurses:= ldap? ( net-nds/openldap )
 SLOT=0
 SRC_URI=mirror://sourceforge/libetpan/etpan-ng-0.7.1.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=985fe039a3682b3a19292ca0e417fa33

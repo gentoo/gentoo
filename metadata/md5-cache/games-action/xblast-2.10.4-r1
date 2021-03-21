@@ -3,10 +3,11 @@ DEPEND=media-libs/libpng:0 x11-libs/libICE x11-libs/libX11 x11-libs/libXt >=app-
 DESCRIPTION=Bomberman clone w/network support for up to 6 players
 EAPI=6
 HOMEPAGE=http://xblast.sourceforge.net/
+INHERIT=autotools
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=media-libs/libpng:0 x11-libs/libICE x11-libs/libX11
 SLOT=0
 SRC_URI=mirror://sourceforge/xblast/xblast-2.10.4.tar.gz mirror://sourceforge/xblast/images-2005-01-06.tar.gz mirror://sourceforge/xblast/levels-2005-01-06.tar.gz mirror://sourceforge/xblast/models-2005-01-06.tar.gz mirror://sourceforge/xblast/musics-2005-01-06.tar.gz mirror://sourceforge/xblast/sounds.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=1054ff1acd04e35e9131d3a61691fd4e

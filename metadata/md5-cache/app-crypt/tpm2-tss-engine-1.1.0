@@ -4,6 +4,7 @@ DEPEND=app-crypt/tpm2-tss dev-libs/openssl:0= test? ( dev-util/cmocka )
 DESCRIPTION=OpenSSL Engine for TPM2 devices
 EAPI=7
 HOMEPAGE=https://github.com/tpm2-software/tpm2-tools
+INHERIT=autotools bash-completion-r1
 IUSE=test
 KEYWORDS=~amd64
 LICENSE=BSD
@@ -11,5 +12,5 @@ RDEPEND=app-crypt/tpm2-tss dev-libs/openssl:0=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/tpm2-software/tpm2-tss-engine/releases/download/v1.1.0/tpm2-tss-engine-1.1.0.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	bash-completion-r1	be99724bde4274de21e581204e9d164a	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	bash-completion-r1	be99724bde4274de21e581204e9d164a
 _md5_=35b9e401f608d099547ae7a61d21aeeb

@@ -3,11 +3,12 @@ DEPEND=media-fonts/terminus-font aalib? ( media-libs/aalib[slang] ) dia? ( app-o
 DESCRIPTION=Fbi-IMproved is a framebuffer image viewer based on Fbi and inspired from Vim
 EAPI=6
 HOMEPAGE=https://savannah.nongnu.org/projects/fbi-improved
+INHERIT=autotools
 IUSE=aalib bmp dia djvu exif fbcon gif graphicsmagick imagemagick jpeg pcx pdf png postscript readline sdl static svg tiff xfig
 KEYWORDS=~amd64 ~arm ~x86
 LICENSE=GPL-2
 RDEPEND=media-fonts/terminus-font aalib? ( media-libs/aalib[slang] ) dia? ( app-office/dia ) djvu? ( app-text/djvu ) exif? ( media-libs/libexif ) gif? ( media-libs/giflib ) graphicsmagick? ( media-gfx/graphicsmagick ) imagemagick? ( virtual/imagemagick-tools ) jpeg? ( virtual/jpeg:0 ) pdf? ( >=app-text/poppler-0.31 ) png? ( media-libs/libpng:0= ) postscript? ( app-text/libspectre ) readline? ( sys-libs/readline:0= ) sdl? ( media-libs/libsdl ) svg? ( media-gfx/inkscape ) tiff? ( media-libs/tiff:0 ) xfig? ( media-gfx/xfig )
 SLOT=0
 SRC_URI=http://download.savannah.gnu.org/releases/fbi-improved/fim-0.5-rc3.tar.bz2
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=99e4c3ed309f6f64bdcf848ac033b0b8

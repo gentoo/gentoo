@@ -4,6 +4,7 @@ DEPEND=dev-libs/boost:= sys-libs/ncurses:= sys-libs/readline:0= >=dev-embedded/g
 DESCRIPTION=Small device C compiler (for various microprocessors)
 EAPI=7
 HOMEPAGE=http://sdcc.sourceforge.net/
+INHERIT=autotools toolchain-funcs
 IUSE=avr ds390 ds400 gbz80 hc08 mcs51 pic14 pic16 r2k r3ka s08 stm8 tlcs90 z180 z80 +boehm-gc device-lib doc non-free packihx +sdbinutils sdcdb +sdcpp ucsim
 KEYWORDS=amd64 x86
 LICENSE=GPL-2 ZLIB non-free? ( MicroChip-SDCC ) packihx? ( public-domain )
@@ -12,5 +13,5 @@ REQUIRED_USE=avr? ( sdbinutils ) ds390? ( sdbinutils ) ds400? ( sdbinutils ) gbz
 RESTRICT=strip
 SLOT=0
 SRC_URI=mirror://sourceforge/sdcc/sdcc-src-3.8.0.tar.bz2 doc? ( mirror://sourceforge/sdcc/sdcc-doc-3.8.0.tar.bz2 )
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=ca5555d72568395bc18b36038803fcbd

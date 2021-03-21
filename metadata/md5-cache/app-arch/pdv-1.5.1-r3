@@ -3,11 +3,12 @@ DEPEND=X? ( >=x11-libs/motif-2.3:0 >=x11-libs/libX11-1.0.0 >=x11-libs/libXt-1.0.
 DESCRIPTION=build a self-extracting and self-installing binary package
 EAPI=6
 HOMEPAGE=https://sourceforge.net/projects/pdv
+INHERIT=autotools toolchain-funcs
 IUSE=X
 KEYWORDS=amd64 ~hppa ppc x86 ~x86-linux ~ppc-macos
 LICENSE=MIT
 RDEPEND=X? ( >=x11-libs/motif-2.3:0 >=x11-libs/libX11-1.0.0 >=x11-libs/libXt-1.0.0 >=x11-libs/libXext-1.0.0 )
 SLOT=0
 SRC_URI=mirror://sourceforge/pdv/pdv-1.5.1.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=9b143c032372f537d2f47a1d10b21752

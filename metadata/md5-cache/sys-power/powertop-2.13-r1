@@ -4,11 +4,12 @@ DEPEND=dev-libs/libnl:3 sys-apps/pciutils sys-libs/ncurses:=[unicode?]
 DESCRIPTION=tool to diagnose issues with power consumption and power management
 EAPI=7
 HOMEPAGE=https://01.org/powertop/ https://github.com/fenrus75/powertop/
+INHERIT=autotools linux-info
 IUSE=nls unicode X kernel_linux
 KEYWORDS=amd64 arm ~arm64 ppc sparc x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=dev-libs/libnl:3 sys-apps/pciutils sys-libs/ncurses:=[unicode?] X? ( x11-apps/xset ) virtual/libintl
 SLOT=0
 SRC_URI=https://github.com/fenrus75/powertop/archive/v2.13.tar.gz -> powertop-2.13.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	linux-info	c90a203b1c14cfa77bd3e37a0e96c955
 _md5_=a40049aff5f22c7d94398cce1942b52f

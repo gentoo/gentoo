@@ -12,5 +12,5 @@ RDEPEND=acct-user/asterisk acct-group/asterisk dev-db/sqlite:3 dev-libs/popt >=d
 REQUIRED_USE=gtalk? ( xmpp ) lua? ( ^^ ( lua_single_target_lua5-1 lua_single_target_lua5-2 lua_single_target_lua5-3 lua_single_target_lua5-4 ) ) ^^ ( voicemail_storage_file voicemail_storage_odbc voicemail_storage_imap ) voicemail_storage_odbc? ( odbc )
 SLOT=0/16
 SRC_URI=https://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-16.16.2.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9988ecbe04129214297a7bbf3d253710	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	lua-utils	736947973cfbc9de01fdb8548f942f82	lua-single	f91b5656f00869c220a6e35ae0521c54	systemd	74b223e42834adf09a2d21fe5fe13741	tmpfiles	dc8e4917d734a019caa04ad3b8db560b
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	lua-utils	736947973cfbc9de01fdb8548f942f82	lua-single	f91b5656f00869c220a6e35ae0521c54	systemd	74b223e42834adf09a2d21fe5fe13741	tmpfiles	dc8e4917d734a019caa04ad3b8db560b
 _md5_=bec42aa387b626b825dcf369f95f405f

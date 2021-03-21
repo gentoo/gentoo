@@ -3,10 +3,11 @@ DEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.
 DESCRIPTION=Extract files from Amiga adf disk images
 EAPI=6
 HOMEPAGE=http://lclevy.free.fr/adflib/
+INHERIT=autotools
 IUSE=static-libs
 KEYWORDS=amd64 ~hppa ppc x86 ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://lclevy.free.fr/adflib/adflib-0.7.12.tar.bz2
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=21f6b67ace0e0bdac02a2dcec29ff3f3

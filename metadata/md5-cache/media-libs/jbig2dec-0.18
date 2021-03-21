@@ -4,6 +4,7 @@ DEPEND=png? ( media-libs/libpng:0= )
 DESCRIPTION=A decoder implementation of the JBIG2 image compression format
 EAPI=7
 HOMEPAGE=https://jbig2dec.com/
+INHERIT=autotools python-any-r1
 IUSE=png static-libs test
 KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=AGPL-3
@@ -11,5 +12,5 @@ RDEPEND=png? ( media-libs/libpng:0= )
 RESTRICT=!test? ( test )
 SLOT=0/0.18
 SRC_URI=https://github.com/ArtifexSoftware/jbig2dec/archive/0.18.tar.gz -> jbig2dec-0.18.tar.gz test? ( http://jbig2dec.sourceforge.net/ubc/jb2streams.zip )
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88
 _md5_=50a3a0ee83bb3b3f72b74a52a0c492d9

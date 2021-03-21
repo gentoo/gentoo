@@ -4,6 +4,7 @@ DEPEND=sys-libs/ncurses:0= sys-libs/readline:0=
 DESCRIPTION=A curses front-end for GDB, the GNU debugger
 EAPI=7
 HOMEPAGE=https://cgdb.github.io/
+INHERIT=autotools multilib-minimal
 IUSE=test abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_s390_32 abi_s390_64
 KEYWORDS=amd64 arm ppc ppc64 x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
@@ -11,5 +12,5 @@ RDEPEND=sys-libs/ncurses:0= sys-libs/readline:0= sys-devel/gdb
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/cgdb/cgdb/archive/v0.7.1.tar.gz -> cgdb-0.7.1.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566
 _md5_=7c83e46dcd0358c3c40169c37926da7f

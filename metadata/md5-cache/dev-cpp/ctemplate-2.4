@@ -4,6 +4,7 @@ DEPEND=test? ( || ( dev-lang/python:3.8 dev-lang/python:3.7 ) )
 DESCRIPTION=A simple but powerful template language for C++
 EAPI=7
 HOMEPAGE=https://github.com/olafvdspek/ctemplate
+INHERIT=autotools elisp-common python-any-r1
 IUSE=doc emacs vim-syntax static-libs test
 KEYWORDS=amd64 arm ppc x86 ~amd64-linux ~x86-linux
 LICENSE=BSD
@@ -11,5 +12,5 @@ RDEPEND=emacs? ( >=app-editors/emacs-23.1:* ) vim-syntax? ( >=app-editors/vim-co
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/OlafvdSpek/ctemplate/archive/ctemplate-2.4.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	elisp-common	d4b53ec63c580b993ed19445f411e1d2	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	elisp-common	d4b53ec63c580b993ed19445f411e1d2	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88
 _md5_=9eb528c7c0d65105b21a0c40b7f3e146

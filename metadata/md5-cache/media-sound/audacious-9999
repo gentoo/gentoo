@@ -4,6 +4,7 @@ DEPEND=>=dev-libs/dbus-glib-0.60 >=dev-libs/glib-2.28 dev-qt/qtcore:5 dev-qt/qtg
 DESCRIPTION=Lightweight and versatile audio player
 EAPI=7
 HOMEPAGE=https://audacious-media-player.org/
+INHERIT=autotools git-r3 xdg
 IUSE=nls
 LICENSE=BSD-2
 PDEPEND=~media-plugins/audacious-plugins-9999
@@ -11,5 +12,5 @@ PROPERTIES=live
 RDEPEND=>=dev-libs/dbus-glib-0.60 >=dev-libs/glib-2.28 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 >=x11-libs/cairo-1.2.6 >=x11-libs/pango-1.8.0 virtual/freedesktop-icon-theme
 SLOT=0
 SRC_URI=mirror://gentoo/gentoo_ice-xmms-0.2.tar.bz2
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	git-r3	3e7ec3d6619213460c85e2aa48398441	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
 _md5_=dc81d59b818b03d599f73c33a2527ac9

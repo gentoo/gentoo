@@ -4,6 +4,7 @@ DEPEND=acct-group/bitcoin acct-user/bitcoin >=dev-libs/boost-1.58.0:=[threads(+)
 DESCRIPTION=Original Bitcoin crypto-currency wallet for automated services
 EAPI=7
 HOMEPAGE=https://bitcoincore.org/ https://bitcoinknots.org/
+INHERIT=autotools bash-completion-r1 db-use systemd
 IUSE=+asm examples knots +sqlite system-leveldb test upnp +wallet zeromq
 KEYWORDS=~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=MIT
@@ -11,5 +12,5 @@ RDEPEND=acct-group/bitcoin acct-user/bitcoin >=dev-libs/boost-1.58.0:=[threads(+
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/bitcoin/bitcoin/archive/95ea54ba089610019a74c1176a2c7c0dba144b1c.tar.gz -> bitcoin-v0.21.0.tar.gz https://bitcoinknots.org/files/0.21.x/0.21.0.knots20210130/bitcoin-0.21.0.knots20210130.patches.txz -> bitcoin-0.21.0.knots20210130.patches.tar.xz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	bash-completion-r1	be99724bde4274de21e581204e9d164a	db-use	5b886219e6035ca01d8b1c58eba91679	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	bash-completion-r1	be99724bde4274de21e581204e9d164a	db-use	5b886219e6035ca01d8b1c58eba91679	systemd	74b223e42834adf09a2d21fe5fe13741
 _md5_=94571d9f0bd977fa8829d919b24f0597

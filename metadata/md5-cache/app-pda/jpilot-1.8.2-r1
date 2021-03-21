@@ -4,11 +4,12 @@ DEPEND=app-pda/pilot-link dev-libs/libgcrypt:0= x11-libs/gtk+:2
 DESCRIPTION=Desktop Organizer Software for the Palm Pilot
 EAPI=7
 HOMEPAGE=http://www.jpilot.org/
+INHERIT=autotools
 IUSE=nls
 KEYWORDS=~alpha amd64 ~arm ~ia64 ppc ppc64 x86
 LICENSE=GPL-2
 RDEPEND=app-pda/pilot-link dev-libs/libgcrypt:0= x11-libs/gtk+:2
 SLOT=0
 SRC_URI=http://jpilot.org/tarballs/jpilot-1.8.2.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=cfa55a624605a94685a5a164b5a05ffc

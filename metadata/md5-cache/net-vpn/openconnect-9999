@@ -4,6 +4,7 @@ DEPEND=dev-libs/libxml2 sys-libs/zlib !gnutls? ( >=dev-libs/openssl-1.0.1h:0= ) 
 DESCRIPTION=Free client for Cisco AnyConnect SSL VPN software
 EAPI=7
 HOMEPAGE=http://www.infradead.org/openconnect.html
+INHERIT=linux-info python-any-r1 git-r3 autotools
 IUSE=doc +gnutls gssapi libproxy lz4 nls smartcard stoken test kernel_linux
 LICENSE=LGPL-2.1 GPL-2
 PROPERTIES=live
@@ -11,5 +12,5 @@ RDEPEND=dev-libs/libxml2 sys-libs/zlib !gnutls? ( >=dev-libs/openssl-1.0.1h:0= )
 RESTRICT=!test? ( test )
 SLOT=0/5
 SRC_URI=ftp://ftp.infradead.org/pub/vpnc-scripts/vpnc-scripts-20200226.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=52e4338657b8ff6a42eabf922e475b73

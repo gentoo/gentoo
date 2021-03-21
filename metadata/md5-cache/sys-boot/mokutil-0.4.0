@@ -3,10 +3,11 @@ DEPEND=dev-libs/openssl:= sys-libs/efivar:= >=app-portage/elt-patches-20170815 |
 DESCRIPTION=The utility to manipulate machines owner keys which managed in shim
 EAPI=6
 HOMEPAGE=https://github.com/lcp/mokutil
+INHERIT=autotools
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
 RDEPEND=dev-libs/openssl:= sys-libs/efivar:=
 SLOT=0
 SRC_URI=https://github.com/lcp/mokutil/archive/e19adc575c1f9d8f08b7fbc594a0887ace63f83f.tar.gz -> mokutil-0.4.0.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=16cfd172c54e8c8000508de86efdeaaf

@@ -4,10 +4,11 @@ DEPEND=~dev-libs/libmspack-9999:= virtual/pkgconfig
 DESCRIPTION=Extracts files from Microsoft cabinet archive files
 EAPI=7
 HOMEPAGE=https://www.cabextract.org.uk/
+INHERIT=autotools toolchain-funcs git-r3
 IUSE=extras
 LICENSE=GPL-3
 PROPERTIES=live
 RDEPEND=~dev-libs/libmspack-9999:= extras? ( dev-lang/perl )
 SLOT=0
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	git-r3	3e7ec3d6619213460c85e2aa48398441
 _md5_=763c982f8f434f6dfc80d7ee227f2342

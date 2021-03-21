@@ -4,11 +4,12 @@ DEPEND=gtk? ( dev-libs/glib:2 x11-libs/gtk+:3 ) jansson? ( dev-libs/jansson ) nc
 DESCRIPTION=My TraceRoute, an Excellent network diagnostic tool
 EAPI=7
 HOMEPAGE=https://www.bitwizard.nl/mtr/
+INHERIT=autotools bash-completion-r1 fcaps git-r3
 IUSE=gtk +ipinfo +ipv6 jansson ncurses +filecaps
 LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=gtk? ( dev-libs/glib:2 x11-libs/gtk+:3 ) jansson? ( dev-libs/jansson ) ncurses? ( sys-libs/ncurses:0= ) filecaps? ( sys-libs/libcap )
 RESTRICT=test
 SLOT=0
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	bash-completion-r1	be99724bde4274de21e581204e9d164a	fcaps	da689a8e04bbbb3518888ff668fee45b	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	bash-completion-r1	be99724bde4274de21e581204e9d164a	fcaps	da689a8e04bbbb3518888ff668fee45b	git-r3	3e7ec3d6619213460c85e2aa48398441
 _md5_=38d6b3e0d322b93d76c2ce216505178c

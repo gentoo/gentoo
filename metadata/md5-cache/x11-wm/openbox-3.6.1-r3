@@ -4,6 +4,7 @@ DEPEND=dev-libs/glib:2 >=dev-libs/libxml2-2.0 >=media-libs/fontconfig-2 x11-libs
 DESCRIPTION=Standards compliant, fast, light-weight, extensible window manager
 EAPI=7
 HOMEPAGE=http://openbox.org/wiki/Main_Page
+INHERIT=autotools python-single-r1
 IUSE=branding debug imlib nls session startup-notification svg xdg python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9
 KEYWORDS=~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 sparc x86 ~x86-linux
 LICENSE=GPL-2
@@ -11,5 +12,5 @@ RDEPEND=dev-libs/glib:2 >=dev-libs/libxml2-2.0 >=media-libs/fontconfig-2 x11-lib
 REQUIRED_USE=xdg? ( ^^ ( python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9 ) )
 SLOT=3
 SRC_URI=http://openbox.org/dist/openbox/openbox-3.6.1.tar.gz branding? ( https://dev.gentoo.org/~hwoarang/distfiles/surreal-gentoo.tar.gz )
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-single-r1	d3100de905f978df912135806cf27188
 _md5_=18b28f1115e5998c53fb2ed17dde34fc

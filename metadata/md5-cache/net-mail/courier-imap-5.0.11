@@ -13,5 +13,5 @@ REQUIRED_USE=|| ( berkdb gdbm )
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/courier/courier-imap-5.0.11.tar.bz2
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9988ecbe04129214297a7bbf3d253710	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	74b223e42834adf09a2d21fe5fe13741
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	74b223e42834adf09a2d21fe5fe13741
 _md5_=c9f9ee9d1d199f462d1742ebb63755e4

@@ -4,10 +4,11 @@ DEPEND=sys-libs/ncurses:0=
 DESCRIPTION=Console Mixer Program for OSS
 EAPI=7
 HOMEPAGE=http://www.fh-worms.de/~inf222
+INHERIT=autotools
 KEYWORDS=amd64 ~ppc sparc x86
 LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses:0=
 SLOT=0
 SRC_URI=http://www.Fh-Worms.DE./~inf222/code/c/gom/released/gom-0.29.103.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=93f91cf420828d55abe0f7efc80a81a7

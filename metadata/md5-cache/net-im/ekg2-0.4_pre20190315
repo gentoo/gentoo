@@ -4,11 +4,12 @@ DEPEND=dev-libs/glib:2 gadu? ( <net-libs/libgadu-1.12:0= ) gpg? ( app-crypt/gpgm
 DESCRIPTION=Text-based, multi-protocol instant messenger
 EAPI=7
 HOMEPAGE=https://github.com/ekg2/ekg2/
+INHERIT=autotools
 IUSE=gadu gpm gpg gtk minimal ncurses nls nntp openssl perl readline rss spell sqlite ssl xmpp unicode zlib
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-2
 RDEPEND=dev-libs/glib:2 gadu? ( <net-libs/libgadu-1.12:0= ) gpg? ( app-crypt/gpgme:1= ) gtk? ( x11-libs/gtk+:2 ) nls? ( virtual/libintl:0= ) openssl? ( dev-libs/openssl:0= ) perl? ( dev-lang/perl:0= ) readline? ( sys-libs/readline:0= ) rss? ( dev-libs/expat:0= ) ssl? ( net-libs/gnutls:0= ) xmpp? ( dev-libs/expat:0= ) zlib? ( sys-libs/zlib:0= ) ncurses? ( sys-libs/ncurses:0=[unicode=] gpm? ( sys-libs/gpm:0= ) spell? ( app-text/aspell:0= ) ) sqlite? ( dev-db/sqlite:3= )
 SLOT=0
 SRC_URI=https://github.com/ekg2/ekg2/archive/f427d083ee899d42532c046100490a915b0e8a82.tar.gz -> ekg2-f427d083ee899d42532c046100490a915b0e8a82.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=c9b89420dd00350757194904908f799c

@@ -4,11 +4,12 @@ DEPEND=>dev-libs/libsecp256k1-0.1_pre20170321:=[recovery]
 DESCRIPTION=Bitcoin Core consensus library
 EAPI=7
 HOMEPAGE=https://bitcoincore.org/ https://bitcoinknots.org/
+INHERIT=autotools
 IUSE=+asm knots
 KEYWORDS=amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux
 LICENSE=MIT
 RDEPEND=>dev-libs/libsecp256k1-0.1_pre20170321:=[recovery]
 SLOT=0
 SRC_URI=https://github.com/bitcoin/bitcoin/archive/bf0dc356ac4a2bdeda1908af021dea2de0dfb35a.tar.gz -> bitcoin-v0.20.1.tar.gz https://bitcoinknots.org/files/0.20.x/0.20.1.knots20200815/bitcoin-0.20.1.knots20200815.patches.txz -> bitcoin-0.20.1.knots20200815.patches.tar.xz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=6d8a42347d5806c36db5a4e57de84e63

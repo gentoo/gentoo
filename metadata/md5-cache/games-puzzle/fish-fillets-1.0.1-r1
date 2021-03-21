@@ -3,10 +3,11 @@ DEPEND=>=media-libs/libsdl-1.2[sound,video] >=media-libs/sdl-mixer-1.2.5[vorbis]
 DESCRIPTION=Underwater puzzle game - find a safe way out
 EAPI=6
 HOMEPAGE=http://fillets.sourceforge.net/
+INHERIT=autotools desktop
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=>=media-libs/libsdl-1.2[sound,video] >=media-libs/sdl-mixer-1.2.5[vorbis] >=media-libs/sdl-image-1.2.2[png] media-libs/smpeg x11-libs/libX11 media-libs/sdl-ttf dev-libs/fribidi >=dev-lang/lua-5:0
 SLOT=0
 SRC_URI=mirror://sourceforge/fillets/fillets-ng-1.0.1.tar.gz mirror://sourceforge/fillets/fillets-ng-data-1.0.0.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	desktop	c0d27bf73aa08ca05b663dbd31fbef28	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	desktop	c0d27bf73aa08ca05b663dbd31fbef28
 _md5_=de86afe409d07ddab620efb86ccdf5b6

@@ -4,6 +4,7 @@ DEPEND=tcl? ( >=dev-lang/tcl-8.4:0 ) test? ( >=dev-lang/tcl-8.4:0 ) java? ( >=vi
 DESCRIPTION=Oracle Berkeley DB
 EAPI=7
 HOMEPAGE=http://www.oracle.com/technetwork/database/database-technologies/berkeleydb/overview/index.html
+INHERIT=autotools db flag-o-matic java-pkg-opt-2 multilib toolchain-funcs
 IUSE=doc java cxx tcl test doc test examples elibc_FreeBSD java
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sparc ~x86
 LICENSE=Sleepycat
@@ -12,5 +13,5 @@ REQUIRED_USE=test? ( tcl )
 RESTRICT=!test? ( test )
 SLOT=5.1
 SRC_URI=http://download.oracle.com/berkeley-db/db-5.1.29.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	db	c42a9015ada022c979cd2ca4bc247821	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	java-utils-2	378e4cda228ea0231a0ac283cb2ad25c	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	multiprocessing	cac3169468f893670dac3e7cb940e045	db	c42a9015ada022c979cd2ca4bc247821	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	java-utils-2	378e4cda228ea0231a0ac283cb2ad25c	java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f
 _md5_=ea99e94268f6173e400bda571fada607

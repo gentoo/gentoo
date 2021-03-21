@@ -4,6 +4,7 @@ DEPEND=>=dev-libs/icu-67.1:= >=dev-libs/nspr-4.25 sys-libs/readline:0= >=sys-lib
 DESCRIPTION=SpiderMonkey is Mozilla's JavaScript engine written in C and C++
 EAPI=7
 HOMEPAGE=https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey
+INHERIT=autotools check-reqs flag-o-matic llvm multiprocessing python-any-r1 toolchain-funcs
 IUSE=clang cpu_flags_arm_neon debug +jit lto test
 KEYWORDS=~amd64 ~arm ~arm64 ~mips ppc64 ~s390 x86
 LICENSE=MPL-2.0
@@ -11,5 +12,5 @@ RDEPEND=>=dev-libs/icu-67.1:= >=dev-libs/nspr-4.25 sys-libs/readline:0= >=sys-li
 RESTRICT=!test? ( test )
 SLOT=78
 SRC_URI=https://archive.mozilla.org/pub/firefox/releases/78.7.1esr/source/firefox-78.7.1esr.source.tar.xz -> firefox-78.7.1esr.source.tar.xz https://dev.gentoo.org/~whissi/mozilla/patchsets/firefox-78esr-patches-09.tar.xz https://dev.gentoo.org/~polynomial-c/mozilla/patchsets/firefox-78esr-patches-09.tar.xz https://dev.gentoo.org/~axs/mozilla/patchsets/firefox-78esr-patches-09.tar.xz https://dev.gentoo.org/~whissi/mozilla/patchsets/spidermonkey-78-patches-03.tar.xz https://dev.gentoo.org/~polynomial-c/mozilla/patchsets/spidermonkey-78-patches-03.tar.xz https://dev.gentoo.org/~axs/mozilla/patchsets/spidermonkey-78-patches-03.tar.xz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	check-reqs	7e3fd1855a5e1b50bb9e80827b3f672d	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	llvm	96482dd3973a93c32659252dfeba1433	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	check-reqs	7e3fd1855a5e1b50bb9e80827b3f672d	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	llvm	96482dd3973a93c32659252dfeba1433	multiprocessing	cac3169468f893670dac3e7cb940e045	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88
 _md5_=dbbfe3b2afe0362cc481b2eefaeb97a1

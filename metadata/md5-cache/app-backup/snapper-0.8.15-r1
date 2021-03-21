@@ -4,6 +4,7 @@ DEPEND=dev-libs/boost:=[threads] dev-libs/json-c dev-libs/libxml2 dev-libs/icu:=
 DESCRIPTION=Command-line program for btrfs and lvm snapshot management
 EAPI=7
 HOMEPAGE=http://snapper.io/
+INHERIT=autotools systemd bash-completion-r1
 IUSE=doc lvm pam test systemd xattr
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
@@ -11,5 +12,5 @@ RDEPEND=dev-libs/boost:=[threads] dev-libs/json-c dev-libs/libxml2 dev-libs/icu:
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/openSUSE/snapper/archive/v0.8.15.tar.gz -> snapper-0.8.15.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	bash-completion-r1	be99724bde4274de21e581204e9d164a	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	systemd	74b223e42834adf09a2d21fe5fe13741	bash-completion-r1	be99724bde4274de21e581204e9d164a
 _md5_=3a30ea492a169b54796740ae237e81a9

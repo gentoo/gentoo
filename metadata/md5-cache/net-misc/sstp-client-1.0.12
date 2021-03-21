@@ -3,11 +3,12 @@ DEPEND=>=dev-libs/libevent-2.0.10 dev-libs/openssl:0= net-dialup/ppp:= virtual/p
 DESCRIPTION=A client implementation of Secure Socket Tunneling Protocol (SSTP)
 EAPI=6
 HOMEPAGE=http://sstp-client.sourceforge.net/
+INHERIT=autotools linux-info user
 IUSE=static kernel_linux
 KEYWORDS=~amd64 ~arm ~arm64 ~x86
 LICENSE=GPL-2+-with-openssl-exception
 RDEPEND=>=dev-libs/libevent-2.0.10 dev-libs/openssl:0= net-dialup/ppp:=
 SLOT=0
 SRC_URI=mirror://sourceforge/sstp-client/sstp-client-1.0.12.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8
 _md5_=d08ee2d3c054162bdda266c5e69594fb

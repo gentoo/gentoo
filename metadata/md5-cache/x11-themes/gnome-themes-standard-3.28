@@ -4,10 +4,11 @@ DEPEND=dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=Standard Themes for GNOME Applications
 EAPI=7
 HOMEPAGE=https://gitlab.gnome.org/GNOME/gnome-themes-extra
+INHERIT=autotools gnome.org xdg
 KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris
 LICENSE=LGPL-2.1+
 RDEPEND=>=gnome-base/gsettings-desktop-schemas-3.4
 SLOT=0
 SRC_URI=mirror://gnome/sources/gnome-themes-extra/3.28/gnome-themes-extra-3.28.tar.xz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	gnome.org	532d56d07b9eace4831aaa817d2b756a	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	gnome.org	532d56d07b9eace4831aaa817d2b756a	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
 _md5_=f4dfc2ad6f2f052d9dc9d7287a641935

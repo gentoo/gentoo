@@ -4,11 +4,12 @@ DEPEND=gmp? ( dev-libs/gmp:0= ) mpi? ( virtual/mpi ) zlib? ( sys-libs/zlib ) dev
 DESCRIPTION=Symbolic Manipulation System
 EAPI=7
 HOMEPAGE=https://www.nikhef.nl/~form/ https://github.com/vermaseren/form/
+INHERIT=autotools toolchain-funcs
 IUSE=devref doc doxygen gmp mpi threads zlib
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
 RDEPEND=gmp? ( dev-libs/gmp:0= ) mpi? ( virtual/mpi ) zlib? ( sys-libs/zlib )
 SLOT=0
 SRC_URI=https://github.com/vermaseren/form/releases/download/v4.2.1/form-4.2.1.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=e557506e2128502d6824ad28c0694bbd

@@ -4,10 +4,11 @@ DEPEND=ftdi? ( dev-embedded/libftdi:1 ) readline? ( sys-libs/readline:= ) usb? (
 DESCRIPTION=Tool for communicating over JTAG with flash chips, CPUs, and many more
 EAPI=7
 HOMEPAGE=http://urjtag.sourceforge.net/
+INHERIT=git-r3 autotools
 IUSE=ftdi readline usb
 LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=ftdi? ( dev-embedded/libftdi:1 ) readline? ( sys-libs/readline:= ) usb? ( virtual/libusb:1 ) !dev-embedded/jtag
 SLOT=0
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=05244e6898e0ec57bb4e557051bb8ccc

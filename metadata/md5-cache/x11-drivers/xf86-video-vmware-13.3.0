@@ -4,11 +4,12 @@ DEPEND=kernel_linux? ( x11-libs/libdrm[libkms,video_cards_vmware] media-libs/mes
 DESCRIPTION=VMware SVGA video driver
 EAPI=7
 HOMEPAGE=https://www.x.org/wiki/ https://gitlab.freedesktop.org/xorg/driver/xf86-video-vmware
+INHERIT=xorg-3
 IUSE=kernel_linux
 KEYWORDS=amd64 x86
 LICENSE=MIT
 RDEPEND=kernel_linux? ( x11-libs/libdrm[libkms,video_cards_vmware] media-libs/mesa[xa] ) x11-base/xorg-server:= x11-base/xorg-server[-minimal] x11-libs/libdrm >=x11-base/xorg-server-1.20[xorg] >=x11-libs/libpciaccess-0.14
 SLOT=0
 SRC_URI=https://www.x.org/releases/individual/driver/xf86-video-vmware-13.3.0.tar.bz2
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	xorg-3	87a9e316d5b1fa9345e77329cc0ebe3b
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	xorg-3	87a9e316d5b1fa9345e77329cc0ebe3b
 _md5_=642dd3ddba3ec2134abd3b76cff5e13e

@@ -3,10 +3,11 @@ DEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/aut
 DESCRIPTION=A spoof of the famous Mortal Kombat game
 EAPI=6
 HOMEPAGE=http://openmortal.sourceforge.net/
+INHERIT=autotools desktop
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=media-libs/libsdl[video] media-libs/sdl-image media-libs/sdl-mixer media-libs/sdl-ttf media-libs/sdl-net >=media-libs/freetype-2.4.0:2 dev-lang/perl
 SLOT=0
 SRC_URI=mirror://sourceforge/openmortal/openmortal-0.7.tar.bz2
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	desktop	c0d27bf73aa08ca05b663dbd31fbef28	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	desktop	c0d27bf73aa08ca05b663dbd31fbef28
 _md5_=0eeb45ce9b49d84dfc1017ffee2e9134

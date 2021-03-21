@@ -3,6 +3,7 @@ DEPEND=openssl? ( !libressl? ( dev-libs/openssl:0=[abi_x86_32(-)?,abi_x86_64(-)?
 DESCRIPTION=Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
 EAPI=6
 HOMEPAGE=https://github.com/cisco/libsrtp
+INHERIT=autotools multilib-minimal
 IUSE=aesicm console debug doc libressl openssl static-libs syslog test abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_s390_32 abi_s390_64
 KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 -sparc x86 ~ppc-macos ~x64-macos
 LICENSE=BSD
@@ -10,5 +11,5 @@ RDEPEND=openssl? ( !libressl? ( dev-libs/openssl:0=[abi_x86_32(-)?,abi_x86_64(-)
 RESTRICT=!test? ( test )
 SLOT=2/1
 SRC_URI=https://github.com/cisco/libsrtp/archive/v2.2.0.tar.gz -> libsrtp-2.2.0.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566
 _md5_=957f40d080a5760e6b1dc331834e3f16

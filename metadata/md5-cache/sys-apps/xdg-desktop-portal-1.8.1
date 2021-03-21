@@ -4,11 +4,12 @@ DEPEND=dev-libs/glib:2 dev-libs/json-glib sys-fs/fuse:0 geolocation? ( >=app-mis
 DESCRIPTION=Desktop integration portal
 EAPI=7
 HOMEPAGE=https://flatpak.org/ https://github.com/flatpak/xdg-desktop-portal
+INHERIT=autotools systemd
 IUSE=geolocation screencast
 KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
 LICENSE=LGPL-2.1
 RDEPEND=dev-libs/glib:2 dev-libs/json-glib sys-fs/fuse:0 geolocation? ( >=app-misc/geoclue-2.5.3:2.0 ) screencast? ( >=media-video/pipewire-0.3:= ) sys-apps/dbus
 SLOT=0
 SRC_URI=https://github.com/flatpak/xdg-desktop-portal/releases/download/1.8.1/xdg-desktop-portal-1.8.1.tar.xz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	systemd	74b223e42834adf09a2d21fe5fe13741
 _md5_=dbf1134f21d164460738a9aa710ad047

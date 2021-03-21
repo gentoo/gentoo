@@ -4,10 +4,11 @@ DEPEND=>=dev-libs/libax25-0.0.12_rc2 sys-libs/ncurses:= virtual/pkgconfig !dev-r
 DESCRIPTION=Basic AX.25 (Amateur Radio) user tools, additional daemons
 EAPI=7
 HOMEPAGE=http://www.linux-ax25.org
+INHERIT=autotools
 KEYWORDS=amd64 ppc x86
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/libax25-0.0.12_rc2 sys-libs/ncurses:=
 SLOT=0
 SRC_URI=http://www.linux-ax25.org/pub/ax25-apps/ax25-apps-0.0.8-rc5.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=8ea0eed8307544a210c7935fe9e74886

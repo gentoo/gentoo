@@ -4,11 +4,12 @@ DEPEND=dev-libs/maloc[mpi=] dev-libs/libf2c sci-libs/amd sci-libs/cgcode sci-lib
 DESCRIPTION=Portable Understructure for Numerical Computing
 EAPI=7
 HOMEPAGE=http://fetk.org/codes/punc/index.html
+INHERIT=autotools fortran-2 toolchain-funcs
 IUSE=debug doc mpi
 KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=dev-libs/maloc[mpi=] dev-libs/libf2c sci-libs/amd sci-libs/cgcode sci-libs/arpack[mpi=] sci-libs/superlu sci-libs/umfpack virtual/blas virtual/lapack mpi? ( virtual/mpi ) virtual/fortran
 SLOT=0
 SRC_URI=http://www.fetk.org/codes/download/punc-1.5.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	fortran-2	b4796813ccda91c9c0d3463fc90aa969	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	fortran-2	b4796813ccda91c9c0d3463fc90aa969
 _md5_=3d47ec3cf38024643b37e1b336c4cdd5

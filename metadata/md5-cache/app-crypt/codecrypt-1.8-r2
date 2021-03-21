@@ -3,11 +3,12 @@ DEPEND=dev-libs/gmp:= cryptopp? ( >=dev-libs/crypto++-7:= ) sci-libs/fftw:3.0= >
 DESCRIPTION=Post-quantum cryptography tool
 EAPI=6
 HOMEPAGE=http://e-x-a.org/codecrypt/
+INHERIT=autotools
 IUSE=+cryptopp
 KEYWORDS=~amd64 ~arm ~x86
 LICENSE=LGPL-3
 RDEPEND=dev-libs/gmp:= cryptopp? ( >=dev-libs/crypto++-7:= ) sci-libs/fftw:3.0=
 SLOT=0
 SRC_URI=http://e-x-a.org/codecrypt/files/codecrypt-1.8.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=a9b788f82504865edead89ec21dc9cde

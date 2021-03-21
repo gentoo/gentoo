@@ -3,10 +3,11 @@ DEPEND=media-libs/freeglut sys-libs/zlib >=app-portage/elt-patches-20170815 || (
 DESCRIPTION=GUI for sci-biology/maq, a short read mapping assembler
 EAPI=6
 HOMEPAGE=http://maq.sourceforge.net/
+INHERIT=autotools
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
 RDEPEND=media-libs/freeglut sys-libs/zlib sci-biology/maq
 SLOT=0
 SRC_URI=mirror://sourceforge/maq/maqview-0.2.5.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=dee50558d10e75ff9e96f4c3f177c55f

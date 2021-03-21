@@ -4,6 +4,7 @@ DEPEND=app-arch/bzip2:= app-arch/xz-utils:= dev-libs/libffi:= >=sys-libs/zlib-1.
 DESCRIPTION=An interpreted, interactive, object-oriented programming language
 EAPI=7
 HOMEPAGE=https://www.python.org/
+INHERIT=autotools flag-o-matic multiprocessing pax-utils python-utils-r1 toolchain-funcs verify-sig
 IUSE=bluetooth build examples gdbm hardened ipv6 libressl +ncurses +readline sqlite +ssl test +threads tk wininst +xml verify-sig
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86
 LICENSE=PSF-2
@@ -12,5 +13,5 @@ RDEPEND=app-arch/bzip2:= app-arch/xz-utils:= dev-libs/libffi:= >=sys-libs/zlib-1
 RESTRICT=!test? ( test )
 SLOT=3.6/3.6m
 SRC_URI=https://www.python.org/ftp/python/3.6.12/Python-3.6.12.tar.xz https://dev.gentoo.org/~mgorny/dist/python/python-gentoo-patches-3.6.12_p3.tar.xz verify-sig? ( https://www.python.org/ftp/python/3.6.12/Python-3.6.12.tar.xz.asc )
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	verify-sig	40b4f4f782cf67118f594ce604cc4c0a	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	multiprocessing	cac3169468f893670dac3e7cb940e045	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	verify-sig	40b4f4f782cf67118f594ce604cc4c0a
 _md5_=b97db235fc82aa3dd4e67fc48bccf87a

@@ -4,6 +4,7 @@ DEPEND=gtk? ( dev-libs/glib:2 media-libs/libsdl2[joystick] >=x11-libs/gtk+-3.22:
 DESCRIPTION=Super Nintendo Entertainment System (SNES) emulator
 EAPI=7
 HOMEPAGE=https://github.com/snes9xgit/snes9x
+INHERIT=autotools flag-o-matic meson xdg
 IUSE=alsa debug gtk libretro multilib netplay opengl oss png pulseaudio portaudio wayland xinerama +xv
 KEYWORDS=~amd64 ~ppc64 ~x86
 LICENSE=Snes9x GPL-2 GPL-2+ LGPL-2.1 LGPL-2.1+ ISC MIT ZLIB Info-ZIP
@@ -11,5 +12,5 @@ RDEPEND=gtk? ( dev-libs/glib:2 media-libs/libsdl2[joystick] >=x11-libs/gtk+-3.22
 RESTRICT=bindist
 SLOT=0
 SRC_URI=https://github.com/snes9xgit/snes9x/archive/1.60.tar.gz -> snes9x-1.60.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	meson	e43eef9331f54965a573ed380854ff47	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	meson	e43eef9331f54965a573ed380854ff47	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
 _md5_=2aeace55bfe8d44a39d26eb044b883ce

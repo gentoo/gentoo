@@ -4,6 +4,7 @@ DEPEND=>=app-text/poppler-0.90.1[cairo] >=app-text/poppler-data-0.4.9 >=dev-libs
 DESCRIPTION=GNU Image Manipulation Program
 EAPI=7
 HOMEPAGE=https://www.gimp.org/
+INHERIT=autotools git-r3 gnome2 lua-single python-single-r1 toolchain-funcs vala virtualx
 IUSE=aalib alsa aqua debug doc gnome heif javascript jpeg2k lua mng openexr postscript python udev unwind vala vector-icons webp wmf xpm cpu_flags_ppc_altivec cpu_flags_x86_mmx cpu_flags_x86_sse +lua_single_target_luajit python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9 test
 LICENSE=GPL-3 LGPL-3
 PROPERTIES=live
@@ -11,5 +12,5 @@ RDEPEND=>=app-text/poppler-0.90.1[cairo] >=app-text/poppler-data-0.4.9 >=dev-lib
 REQUIRED_USE=lua? ( ^^ ( lua_single_target_luajit ) ) python? ( ^^ ( python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9 ) )
 RESTRICT=!test? ( test )
 SLOT=0/3
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	git-r3	3e7ec3d6619213460c85e2aa48398441	gnome.org	532d56d07b9eace4831aaa817d2b756a	gnome2	c156bb2ac81c822dd861424ce19bc168	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	lua-single	f91b5656f00869c220a6e35ae0521c54	lua-utils	736947973cfbc9de01fdb8548f942f82	multilib	d410501a125f99ffb560b0c523cd3d1e	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	vala	5fab64090cefe75c5df431cefa0b653d	virtualx	7e60d3b10c791ab996f717bc1f30072f	wrapper	4251d4c84c25f59094fd557e0063a974	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	git-r3	3e7ec3d6619213460c85e2aa48398441	gnome.org	532d56d07b9eace4831aaa817d2b756a	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	gnome2	c156bb2ac81c822dd861424ce19bc168	lua-utils	736947973cfbc9de01fdb8548f942f82	lua-single	f91b5656f00869c220a6e35ae0521c54	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-single-r1	d3100de905f978df912135806cf27188	vala	5fab64090cefe75c5df431cefa0b653d	virtualx	7e60d3b10c791ab996f717bc1f30072f
 _md5_=b09fbe7616ea2cb029f4dcdcaf4f2292

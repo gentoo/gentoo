@@ -4,10 +4,11 @@ DEPEND=app-arch/libarchive:= media-libs/libepoxy media-libs/libsdl2[sound,joysti
 DESCRIPTION=A portable Nintendo Entertainment System emulator written in C++
 EAPI=7
 HOMEPAGE=http://0ldsk00l.ca/nestopia/
+INHERIT=autotools xdg git-r3
 IUSE=doc
 LICENSE=GPL-2+
 PROPERTIES=live
 RDEPEND=app-arch/libarchive:= media-libs/libepoxy media-libs/libsdl2[sound,joystick,video] sys-libs/zlib x11-libs/gtk+:3
 SLOT=0
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	git-r3	3e7ec3d6619213460c85e2aa48398441
 _md5_=f466865cee20aecebc483b4f5d0c2334

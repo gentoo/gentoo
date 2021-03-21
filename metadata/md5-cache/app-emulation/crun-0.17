@@ -4,6 +4,7 @@ DEPEND=sys-kernel/linux-headers >=dev-libs/yajl-2.0.0 caps? ( sys-libs/libcap ) 
 DESCRIPTION=A fast and low-memory footprint OCI Container Runtime fully written in C
 EAPI=7
 HOMEPAGE=https://github.com/containers/crun
+INHERIT=autotools python-any-r1
 IUSE=+bpf +caps criu +seccomp systemd static-libs
 KEYWORDS=~amd64 ~arm ~arm64 ~ppc64
 LICENSE=GPL-2+ LGPL-2.1+
@@ -11,5 +12,5 @@ RDEPEND=sys-kernel/linux-headers >=dev-libs/yajl-2.0.0 caps? ( sys-libs/libcap )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/containers/crun/releases/download/0.17/crun-0.17.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88
 _md5_=6b0d04aed4be5366a903ad28131dda19

@@ -4,6 +4,7 @@ DEPEND=>=sys-libs/ncurses-5.4-r5:0= >=sys-libs/readline-4.3-r5:0= imagemagick? (
 DESCRIPTION=A vector graphics language that provides a framework for technical drawing
 EAPI=7
 HOMEPAGE=https://asymptote.sourceforge.io/
+INHERIT=autotools elisp-common latex-package python-r1
 IUSE=+boehm-gc doc emacs examples fftw gsl +imagemagick latex offscreen +opengl python sigsegv svg test vim-syntax X python_targets_python3_7 python_targets_python3_8
 KEYWORDS=amd64 ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=GPL-3
@@ -12,5 +13,5 @@ REQUIRED_USE=|| ( python_targets_python3_7 python_targets_python3_8 ) offscreen?
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://sourceforge/asymptote/asymptote-2.68.src.tgz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	elisp-common	d4b53ec63c580b993ed19445f411e1d2	latex-package	e5f296c98696dd02059bc6a5a03282e2	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	python-r1	6d099888c5b4dd4868c26508df307e95	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	elisp-common	d4b53ec63c580b993ed19445f411e1d2	latex-package	e5f296c98696dd02059bc6a5a03282e2	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-r1	6d099888c5b4dd4868c26508df307e95
 _md5_=b7b8323ef40bb3498baf0a4688e0c44e

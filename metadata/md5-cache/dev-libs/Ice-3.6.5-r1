@@ -4,6 +4,7 @@ DEPEND=>=dev-libs/expat-2.0.1 >=app-arch/bzip2-1.0.5 !libressl? ( dev-libs/opens
 DESCRIPTION=ICE middleware C++ library and generator tools
 EAPI=7
 HOMEPAGE=https://zeroc.com/products/ice
+INHERIT=db-use mono-env php-ext-source-r3 python-r1 ruby-ng toolchain-funcs
 IUSE=debug doc examples libressl +readline mono php python ruby test php_targets_php7-4 python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 ruby_targets_ruby26
 KEYWORDS=~amd64 ~arm ~x86
 LICENSE=GPL-2
@@ -12,5 +13,5 @@ REQUIRED_USE=python? ( || ( python_targets_python3_7 python_targets_python3_8 py
 RESTRICT=test
 SLOT=0/36
 SRC_URI=https://github.com/zeroc-ice/ice/archive/v3.6.5.tar.gz -> Ice-3.6.5.tar.gz doc? ( https://download.zeroc.com/Ice/3.6/Ice-3.6.4.pdf )
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	db-use	5b886219e6035ca01d8b1c58eba91679	estack	055c42df72f76a4f45ec92b35e83cd56	libtool	f143db5a74ccd9ca28c1234deffede96	mono-env	1f24c032c78290b0d9a07d5b343051a7	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	php-ext-source-r3	a700d476900e6b3556f80fe0655c4303	python-r1	6d099888c5b4dd4868c26508df307e95	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	ruby-ng	676004cfb6cdf3dedf1c778d56346624	ruby-utils	03dfa7f54d59d740c2964dc7256d2820	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	db-use	5b886219e6035ca01d8b1c58eba91679	mono-env	1f24c032c78290b0d9a07d5b343051a7	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	php-ext-source-r3	a700d476900e6b3556f80fe0655c4303	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-r1	6d099888c5b4dd4868c26508df307e95	estack	055c42df72f76a4f45ec92b35e83cd56	ruby-utils	03dfa7f54d59d740c2964dc7256d2820	ruby-ng	676004cfb6cdf3dedf1c778d56346624
 _md5_=af0d3c31ad88d0f543a9b23a54c46a3d

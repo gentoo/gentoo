@@ -4,11 +4,12 @@ DEPEND=>=dev-libs/yajl-2.0.2 dev-libs/confuse:= dev-libs/libnl:3 media-libs/alsa
 DESCRIPTION=generates a status bar for dzen2, xmobar or similar
 EAPI=7
 HOMEPAGE=https://i3wm.org/i3status/
+INHERIT=fcaps autotools
 IUSE=pulseaudio +filecaps
 KEYWORDS=amd64 ~arm x86
 LICENSE=BSD
 RDEPEND=>=dev-libs/yajl-2.0.2 dev-libs/confuse:= dev-libs/libnl:3 media-libs/alsa-lib pulseaudio? ( || ( media-sound/pulseaudio media-sound/apulse[sdk] ) ) filecaps? ( sys-libs/libcap )
 SLOT=0
 SRC_URI=https://i3wm.org/i3status/i3status-2.13.tar.bz2
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	fcaps	da689a8e04bbbb3518888ff668fee45b	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=fcaps	da689a8e04bbbb3518888ff668fee45b	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=c0c3c4a3a6086cfc41c4cb3047a80d80

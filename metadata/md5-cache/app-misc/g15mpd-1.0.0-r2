@@ -4,10 +4,11 @@ DEPEND=>=app-misc/g15daemon-1.9 dev-libs/libg15 dev-libs/libg15render >=media-li
 DESCRIPTION=MPD (music player daemon) plugin to G15daemon
 EAPI=7
 HOMEPAGE=https://sourceforge.net/projects/g15daemon/
+INHERIT=autotools
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-2
 RDEPEND=>=app-misc/g15daemon-1.9 dev-libs/libg15 dev-libs/libg15render >=media-libs/libmpd-0.17 sys-libs/zlib x11-libs/libX11 x11-libs/libXtst
 SLOT=0
 SRC_URI=mirror://sourceforge/g15daemon/g15mpd-1.0.0.tar.bz2
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=47e8d343788b6cb94d74e6590266fa88

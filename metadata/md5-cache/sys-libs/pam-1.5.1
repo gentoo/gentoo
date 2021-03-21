@@ -4,6 +4,7 @@ DEPEND=virtual/libcrypt:=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips
 DESCRIPTION=Linux-PAM (Pluggable Authentication Modules)
 EAPI=7
 HOMEPAGE=https://github.com/linux-pam/linux-pam
+INHERIT=autotools db-use fcaps toolchain-funcs usr-ldscript multilib-minimal
 IUSE=audit berkdb debug nis selinux +filecaps split-usr abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_s390_32 abi_s390_64
 KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86
 LICENSE=|| ( BSD GPL-2 )
@@ -11,5 +12,5 @@ PDEPEND=>=sys-auth/pambase-20200616
 RDEPEND=virtual/libcrypt:=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] >=virtual/libintl-0-r1[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] audit? ( >=sys-process/audit-2.2.2[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) berkdb? ( >=sys-libs/db-4.8.30-r1:=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) selinux? ( >=sys-libs/libselinux-2.2.2-r4[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) nis? ( net-libs/libnsl[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] >=net-libs/libtirpc-0.2.4-r2[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) filecaps? ( sys-libs/libcap )
 SLOT=0
 SRC_URI=https://github.com/linux-pam/linux-pam/releases/download/v1.5.1/Linux-PAM-1.5.1.tar.xz https://github.com/linux-pam/linux-pam/releases/download/v1.5.1/Linux-PAM-1.5.1-docs.tar.xz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	db-use	5b886219e6035ca01d8b1c58eba91679	fcaps	da689a8e04bbbb3518888ff668fee45b	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	usr-ldscript	7c918d239d0f9098867d0c8e33348fc9
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	db-use	5b886219e6035ca01d8b1c58eba91679	fcaps	da689a8e04bbbb3518888ff668fee45b	usr-ldscript	7c918d239d0f9098867d0c8e33348fc9	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566
 _md5_=64b6d4bad2251067941491c1b7df450e

@@ -4,11 +4,12 @@ DEPEND=>=app-pda/libplist-1.0:= >=dev-db/sqlite-3:3 >=dev-libs/glib-2.16:2 dev-l
 DESCRIPTION=Shared library to access the contents of an iPod
 EAPI=7
 HOMEPAGE=http://www.gtkpod.org/libgpod/
+INHERIT=autotools mono-env udev
 IUSE=+gtk +udev ios mono
 KEYWORDS=amd64 ppc x86
 LICENSE=LGPL-2
 RDEPEND=>=app-pda/libplist-1.0:= >=dev-db/sqlite-3:3 >=dev-libs/glib-2.16:2 dev-libs/libxml2:2 sys-apps/sg3_utils gtk? ( x11-libs/gdk-pixbuf:2 ) ios? ( app-pda/libimobiledevice:= ) udev? ( virtual/udev ) mono? ( >=dev-lang/mono-1.9.1 >=dev-dotnet/gtk-sharp-2.12 )
 SLOT=0
 SRC_URI=mirror://sourceforge/gtkpod/libgpod-0.8.3.tar.bz2
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	mono-env	1f24c032c78290b0d9a07d5b343051a7	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	udev	452708c3f55cf6e918b045adb949a9e6
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	mono-env	1f24c032c78290b0d9a07d5b343051a7	udev	452708c3f55cf6e918b045adb949a9e6
 _md5_=a908950eaa1e05c139f3f5d5f36ace9f

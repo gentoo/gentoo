@@ -4,6 +4,7 @@ DEPEND=gdal? ( sci-libs/gdal:= ) gshhg? ( sci-geosciences/gshhg-gmt ) netcdf? ( 
 DESCRIPTION=Powerful map generator
 EAPI=7
 HOMEPAGE=https://gmt.soest.hawaii.edu/
+INHERIT=autotools
 IUSE=doc examples debug +gdal gmttria +gshhg htmldoc +metric mex +netcdf octave postscript tutorial
 KEYWORDS=amd64 x86
 LICENSE=GPL-2+ gmttria? ( Artistic )
@@ -11,5 +12,5 @@ RDEPEND=gdal? ( sci-libs/gdal:= ) gshhg? ( sci-geosciences/gshhg-gmt ) netcdf? (
 REQUIRED_USE=mex? ( octave )
 SLOT=0
 SRC_URI=mirror://gmt/gmt-4.5.18-src.tar.bz2 gmttria? ( mirror://gmt/gmt-4.5.18-non-gpl-src.tar.bz2 )
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=1a77238c1f4834be9099938e2fae1fb5

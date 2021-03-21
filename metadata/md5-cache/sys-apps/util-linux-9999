@@ -4,6 +4,7 @@ DEPEND=virtual/libcrypt:= audit? ( >=sys-process/audit-2.6:= ) caps? ( sys-libs/
 DESCRIPTION=Various useful Linux utilities
 EAPI=7
 HOMEPAGE=https://www.kernel.org/pub/linux/utils/util-linux/ https://github.com/karelzak/util-linux
+INHERIT=toolchain-funcs libtool flag-o-matic bash-completion-r1 usr-ldscript pam python-r1 multilib-minimal multiprocessing systemd git-r3 autotools
 IUSE=audit build caps +cramfs cryptsetup fdformat hardlink kill +logger ncurses nls pam python +readline selinux slang static-libs su +suid systemd test tty-helpers udev unicode userland_GNU split-usr python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_s390_32 abi_s390_64
 LICENSE=GPL-2 GPL-3 LGPL-2.1 BSD-4 MIT public-domain
 PROPERTIES=live
@@ -11,5 +12,5 @@ RDEPEND=virtual/libcrypt:= audit? ( >=sys-process/audit-2.6:= ) caps? ( sys-libs
 REQUIRED_USE=python? ( || ( python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 ) )
 RESTRICT=!test? ( test )
 SLOT=0
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	bash-completion-r1	be99724bde4274de21e581204e9d164a	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	git-r3	3e7ec3d6619213460c85e2aa48398441	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	multiprocessing	cac3169468f893670dac3e7cb940e045	pam	b097695df28f3974e3af860d6704d4f2	python-r1	6d099888c5b4dd4868c26508df307e95	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	usr-ldscript	7c918d239d0f9098867d0c8e33348fc9	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	bash-completion-r1	be99724bde4274de21e581204e9d164a	usr-ldscript	7c918d239d0f9098867d0c8e33348fc9	pam	b097695df28f3974e3af860d6704d4f2	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-r1	6d099888c5b4dd4868c26508df307e95	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	multiprocessing	cac3169468f893670dac3e7cb940e045	systemd	74b223e42834adf09a2d21fe5fe13741	git-r3	3e7ec3d6619213460c85e2aa48398441	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=ec98229bdfdf40ab67f59be2303cce67

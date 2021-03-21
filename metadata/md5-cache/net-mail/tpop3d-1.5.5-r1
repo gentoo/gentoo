@@ -4,11 +4,12 @@ DEPEND=sha1? ( >=dev-libs/openssl-0.9.6:0= ) ssl? ( >=dev-libs/openssl-0.9.6:0= 
 DESCRIPTION=An extensible POP3 server with vmail-sql/MySQL support
 EAPI=7
 HOMEPAGE=https://savannah.nongnu.org/projects/tpop3d/
+INHERIT=flag-o-matic autotools
 IUSE=authexternal debug flatfile gdbm ldap maildir mbox mysql offensive pam passwd perl postgres +sha1 shadow ssl tcpd
 KEYWORDS=~amd64 x86
 LICENSE=GPL-2
 RDEPEND=sha1? ( >=dev-libs/openssl-0.9.6:0= ) ssl? ( >=dev-libs/openssl-0.9.6:0= ) ldap? ( >=net-nds/openldap-2.0.7 ) mysql? ( dev-db/mysql-connector-c:0= ) postgres? ( dev-db/postgresql[server] ) perl? ( >=dev-lang/perl-5.6.1 ) pam? ( sys-libs/pam >=net-mail/mailbase-0.00-r8 ) tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
 SLOT=0
 SRC_URI=mirror://nongnu/tpop3d/tpop3d-1.5.5.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=16c73fbce67cd1a214546d3d569935ae

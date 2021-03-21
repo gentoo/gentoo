@@ -4,11 +4,12 @@ DEPEND=postgres_targets_postgres13? ( dev-db/postgresql:13= ) postgres_targets_p
 DESCRIPTION=Connection pool server for PostgreSQL
 EAPI=7
 HOMEPAGE=https://www.pgpool.net/
+INHERIT=autotools postgres-multi
 IUSE=doc libressl memcached pam ssl static-libs postgres_targets_postgres13 postgres_targets_postgres12 postgres_targets_postgres11 postgres_targets_postgres10 postgres_targets_postgres9_6 postgres_targets_postgres9_5
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD
 RDEPEND=postgres_targets_postgres13? ( dev-db/postgresql:13= ) postgres_targets_postgres12? ( dev-db/postgresql:12= ) postgres_targets_postgres11? ( dev-db/postgresql:11= ) postgres_targets_postgres10? ( dev-db/postgresql:10= ) postgres_targets_postgres9_6? ( dev-db/postgresql:9.6= ) postgres_targets_postgres9_5? ( dev-db/postgresql:9.5= ) net-libs/libnsl:0= memcached? ( dev-libs/libmemcached ) pam? ( sys-auth/pambase ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) )
 SLOT=0
 SRC_URI=https://www.pgpool.net/download.php?f=pgpool-II-4.2.2.tar.gz -> pgpool-II-4.2.2.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	postgres	9613fb90112e2a521b6a8315187c2966	postgres-multi	b784ac6c30437f2ded3f16482b56374c	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	postgres	9613fb90112e2a521b6a8315187c2966	postgres-multi	b784ac6c30437f2ded3f16482b56374c
 _md5_=ecd46e19f0152032b90ac246796ce27e

@@ -3,6 +3,7 @@ DEPEND=X? ( x11-libs/motif:0 ) gmp? ( >=dev-libs/gmp-5 ) elibc_glibc? ( threads?
 DESCRIPTION=Poly/ML is a full implementation of Standard ML
 EAPI=6
 HOMEPAGE=https://www.polyml.org
+INHERIT=autotools pax-utils
 IUSE=X elibc_glibc +gmp portable test +threads
 KEYWORDS=~amd64 ~x86
 LICENSE=LGPL-2.1
@@ -10,5 +11,5 @@ RDEPEND=X? ( x11-libs/motif:0 ) gmp? ( >=dev-libs/gmp-5 ) elibc_glibc? ( threads
 RESTRICT=!test? ( test )
 SLOT=0/5.8
 SRC_URI=https://codeload.github.com/polyml/polyml/tar.gz/v5.8 -> polyml-5.8.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	pax-utils	a41d1fd1c111289ffa04490de6ee79d7
 _md5_=94b55b6bf7fe6b07acc3a898fb8e84ef

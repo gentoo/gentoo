@@ -4,11 +4,12 @@ DEPEND=media-libs/libsdl2[video] media-libs/sdl2-mixer[midi?,vorbis?] media-libs
 DESCRIPTION=A Doom source port that is minimalist and historically accurate
 EAPI=7
 HOMEPAGE=https://www.chocolate-doom.org
+INHERIT=autotools prefix python-any-r1 xdg
 IUSE=bash-completion doc libsamplerate +midi png vorbis
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD GPL-2+
 RDEPEND=media-libs/libsdl2[video] media-libs/sdl2-mixer[midi?,vorbis?] media-libs/sdl2-net libsamplerate? ( media-libs/libsamplerate ) png? ( media-libs/libpng:= )
 SLOT=0
 SRC_URI=https://github.com/chocolate-doom/chocolate-doom/archive/chocolate-doom-3.0.1.tar.gz https://gist.githubusercontent.com/vilhelmgray/28d4713cb6387ad62ab76cfac1443355/raw/f7600d93ca45a5102969b8f89974a3c36a3563f5/chocolate-doom-3.0.1-overhaul-manpages-add-parameters.patch
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
 _md5_=8b0725a5853e3db368fbcc6b8d6fc557

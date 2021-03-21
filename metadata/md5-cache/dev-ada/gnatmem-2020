@@ -4,6 +4,7 @@ DEPEND=ada_target_gnat_2016? ( dev-lang/gnat-gpl:4.9.4 ) ada_target_gnat_2017? (
 DESCRIPTION=Monitors dynamic allocation and deallocation activity in a program
 EAPI=7
 HOMEPAGE=http://libre.adacore.com/
+INHERIT=ada multiprocessing autotools
 IUSE=ada_target_gnat_2016 ada_target_gnat_2017 ada_target_gnat_2018 ada_target_gnat_2019
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
@@ -11,5 +12,5 @@ RDEPEND=ada_target_gnat_2016? ( dev-lang/gnat-gpl:4.9.4 ) ada_target_gnat_2017? 
 REQUIRED_USE=^^ ( ada_target_gnat_2016 ada_target_gnat_2017 ada_target_gnat_2018 ada_target_gnat_2019 )
 SLOT=0
 SRC_URI=https://community.download.adacore.com/v1/77354fedca0441f882e17b6a73ac5631bff26237?filename=gnatmem-2020-20200429-19911-src.tar.gz -> gnatmem-2020-20200429-19911-src.tar.gz
-_eclasses_=ada	2e62916779222e4f23755b01896c54af	autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=ada	2e62916779222e4f23755b01896c54af	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=184cd2807208df6d6b165d62b719b977

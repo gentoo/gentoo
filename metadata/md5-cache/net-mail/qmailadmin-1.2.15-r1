@@ -4,6 +4,7 @@ DEPEND=virtual/qmail >=net-mail/vpopmail-5.4.33 net-mail/autorespond maildrop? (
 DESCRIPTION=A web interface for managing a qmail system with virtual domains
 EAPI=7
 HOMEPAGE=http://www.inter7.com/qmailadmin.html
+INHERIT=qmail webapp autotools
 IUSE=maildrop vhosts
 KEYWORDS=amd64 arm ~hppa ~ia64 ppc s390 sparc x86
 LICENSE=GPL-2
@@ -11,5 +12,5 @@ RDEPEND=virtual/qmail >=net-mail/vpopmail-5.4.33 net-mail/autorespond maildrop? 
 RESTRICT=userpriv
 SLOT=0
 SRC_URI=mirror://sourceforge/qmailadmin/qmailadmin-1.2.15.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	fixheadtails	662e80584ee2337b981d7188078e7c74	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	qmail	d71e87f6dc80bb9af62fd46856dc0a92	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	webapp	1d03df021d958f89f4cc78e289d0b116	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	fixheadtails	662e80584ee2337b981d7188078e7c74	qmail	d71e87f6dc80bb9af62fd46856dc0a92	webapp	1d03df021d958f89f4cc78e289d0b116	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=ddabd0ab0ef927ccfe64695b91fb81f5

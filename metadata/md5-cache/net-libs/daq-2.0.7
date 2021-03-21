@@ -4,11 +4,12 @@ DEPEND=dump? ( >=net-libs/libpcap-1.0.0 ) ipq? ( >=net-firewall/iptables-1.4.10 
 DESCRIPTION=Data Acquisition library, for packet I/O
 EAPI=7
 HOMEPAGE=https://www.snort.org/
+INHERIT=autotools multilib
 IUSE=ipv6 +afpacket +dump +pcap nfq ipq static-libs
 KEYWORDS=amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~sparc x86
 LICENSE=GPL-2
 RDEPEND=dump? ( >=net-libs/libpcap-1.0.0 ) ipq? ( >=net-firewall/iptables-1.4.10 dev-libs/libdnet net-libs/libnetfilter_queue ) nfq? ( >=net-firewall/iptables-1.4.10 dev-libs/libdnet net-libs/libnetfilter_queue ) pcap? ( >=net-libs/libpcap-1.0.0 )
 SLOT=0
 SRC_URI=https://www.snort.org/downloads/snort/daq-2.0.7.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=89f5520690b07c4f029c011d7ff8f2a8

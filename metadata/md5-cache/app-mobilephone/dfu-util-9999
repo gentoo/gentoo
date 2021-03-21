@@ -3,9 +3,10 @@ DEPEND=virtual/libusb:1 virtual/pkgconfig >=app-portage/elt-patches-20170815 || 
 DESCRIPTION=implements the Host (PC) side of the USB DFU (Device Firmware Upgrade) protocol
 EAPI=6
 HOMEPAGE=http://dfu-util.sourceforge.net/
+INHERIT=autotools git-r3
 LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=virtual/libusb:1
 SLOT=0
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	git-r3	3e7ec3d6619213460c85e2aa48398441
 _md5_=edd1eefa3393642f54c8d5d4ea4429fd

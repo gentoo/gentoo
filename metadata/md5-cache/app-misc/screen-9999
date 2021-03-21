@@ -4,10 +4,11 @@ DEPEND=>=sys-libs/ncurses-5.2:0= pam? ( sys-libs/pam ) sys-apps/texinfo
 DESCRIPTION=screen manager with VT100/ANSI terminal emulation
 EAPI=7
 HOMEPAGE=https://www.gnu.org/software/screen/
+INHERIT=autotools flag-o-matic pam tmpfiles toolchain-funcs git-r3
 IUSE=debug nethack pam selinux multiuser
 LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=>=sys-libs/ncurses-5.2:0= pam? ( sys-libs/pam ) acct-group/utmp selinux? ( sec-policy/selinux-screen ) virtual/tmpfiles
 SLOT=0
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	git-r3	3e7ec3d6619213460c85e2aa48398441	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	pam	b097695df28f3974e3af860d6704d4f2	tmpfiles	dc8e4917d734a019caa04ad3b8db560b	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	pam	b097695df28f3974e3af860d6704d4f2	tmpfiles	dc8e4917d734a019caa04ad3b8db560b	git-r3	3e7ec3d6619213460c85e2aa48398441
 _md5_=9b8a0e63f4e55890c1e1ced299dba9b4

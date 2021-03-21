@@ -4,11 +4,12 @@ DEPEND=dev-libs/popt >=media-libs/libgphoto2-2.5.17:=[exif?] aalib? ( media-libs
 DESCRIPTION=Free, redistributable digital camera software application
 EAPI=7
 HOMEPAGE=http://www.gphoto.org/
+INHERIT=autotools
 IUSE=aalib exif ncurses nls readline
 KEYWORDS=~alpha amd64 ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86
 LICENSE=GPL-2
 RDEPEND=dev-libs/popt >=media-libs/libgphoto2-2.5.17:=[exif?] aalib? ( media-libs/aalib virtual/jpeg:0 ) exif? ( media-libs/libexif ) ncurses? ( dev-libs/cdk:0= ) readline? ( sys-libs/readline:0= )
 SLOT=0
 SRC_URI=mirror://sourceforge/gphoto/gphoto2-2.5.26.tar.bz2
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=9fc31ab1be44efd19e58bf1ac65d4ced

@@ -4,11 +4,12 @@ DEPEND=!media-libs/jpeg:0 !media-libs/jpeg:62 java? ( >=virtual/jdk-1.5 ) java? 
 DESCRIPTION=MMX, SSE, and SSE2 SIMD accelerated JPEG library
 EAPI=7
 HOMEPAGE=https://libjpeg-turbo.org/ https://sourceforge.net/projects/libjpeg-turbo/
+INHERIT=autotools libtool java-pkg-opt-2 toolchain-funcs multilib-minimal
 IUSE=java static-libs elibc_FreeBSD java abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_s390_32 abi_s390_64
 KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos
 LICENSE=BSD IJG ZLIB
 RDEPEND=!media-libs/jpeg:0 !media-libs/jpeg:62 java? ( >=virtual/jre-1.5 ) java? ( >=dev-java/java-config-2.2.0-r3 )
 SLOT=0/0.1
 SRC_URI=mirror://sourceforge/libjpeg-turbo/libjpeg-turbo-1.5.3.tar.gz mirror://gentoo/libjpeg8_8d-2.debian.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	java-utils-2	378e4cda228ea0231a0ac283cb2ad25c	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	java-utils-2	378e4cda228ea0231a0ac283cb2ad25c	java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566
 _md5_=719d4a86a2af5c96cabcdbd10ee5d3f4

@@ -4,9 +4,10 @@ DEPEND=>=media-libs/giblib-1.2.3 x11-libs/libX11 x11-libs/libXcomposite x11-libs
 DESCRIPTION=Screen capture utility using imlib2 library
 EAPI=7
 HOMEPAGE=https://github.com/resurrecting-open-source-projects/scrot
+INHERIT=autotools bash-completion-r1 git-r3
 LICENSE=feh LGPL-2+
 PROPERTIES=live
 RDEPEND=>=media-libs/giblib-1.2.3 x11-libs/libX11 x11-libs/libXcomposite x11-libs/libXfixes || ( media-libs/imlib2[gif] media-libs/imlib2[jpeg] media-libs/imlib2[png] media-libs/imlib2[tiff] )
 SLOT=0
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	bash-completion-r1	be99724bde4274de21e581204e9d164a	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	bash-completion-r1	be99724bde4274de21e581204e9d164a	git-r3	3e7ec3d6619213460c85e2aa48398441
 _md5_=833593bb6b5e56e157be66202a511091

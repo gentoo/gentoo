@@ -4,10 +4,11 @@ DEPEND=net-libs/libpcap !slang? ( sys-libs/ncurses ) slang? ( >=sys-libs/slang-1
 DESCRIPTION=Full screen visualization of the network traffic
 EAPI=7
 HOMEPAGE=http://soft.risp.ru/trafshow/index_en.shtml
+INHERIT=autotools
 IUSE=slang
 KEYWORDS=amd64 ~hppa ~ppc ppc64 sparc x86
 LICENSE=BSD
 SLOT=3
 SRC_URI=ftp://ftp.nsk.su/pub/RinetSoftware/trafshow-5.2.3.tgz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=f826b241de7f5267d6b92dab4715e7ef

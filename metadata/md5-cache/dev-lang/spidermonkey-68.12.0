@@ -4,6 +4,7 @@ DEPEND=>=dev-libs/icu-63.1:= >=dev-libs/nspr-4.21 sys-libs/readline:0= >=sys-lib
 DESCRIPTION=SpiderMonkey is Mozilla's JavaScript engine written in C and C++
 EAPI=7
 HOMEPAGE=https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey
+INHERIT=autotools check-reqs python-any-r1 toolchain-funcs
 IUSE=cpu_flags_arm_neon debug +jit test
 KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86
 LICENSE=MPL-2.0
@@ -11,5 +12,5 @@ RDEPEND=>=dev-libs/icu-63.1:= >=dev-libs/nspr-4.21 sys-libs/readline:0= >=sys-li
 RESTRICT=!test? ( test )
 SLOT=68
 SRC_URI=https://archive.mozilla.org/pub/firefox/releases/68.12.0esr/source/firefox-68.12.0esr.source.tar.xz https://dev.gentoo.org/~anarchy/mozilla/patchsets/firefox-68.0-patches-15.tar.xz https://dev.gentoo.org/~whissi/mozilla/patchsets/firefox-68.0-patches-15.tar.xz https://dev.gentoo.org/~polynomial-c/mozilla/patchsets/firefox-68.0-patches-15.tar.xz https://dev.gentoo.org/~axs/mozilla/patchsets/firefox-68.0-patches-15.tar.xz https://dev.gentoo.org/~whissi/mozilla/patchsets/spidermonkey-68.6.0-patches-04.tar.xz https://dev.gentoo.org/~polynomial-c/mozilla/patchsets/spidermonkey-68.6.0-patches-04.tar.xz https://dev.gentoo.org/~axs/mozilla/patchsets/spidermonkey-68.6.0-patches-04.tar.xz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	check-reqs	7e3fd1855a5e1b50bb9e80827b3f672d	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	check-reqs	7e3fd1855a5e1b50bb9e80827b3f672d	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88
 _md5_=4db9772300253d006506766ad24e1561

@@ -4,6 +4,7 @@ DEPEND=>=virtual/libiconv-0-r1
 DESCRIPTION=Hybrid lossless audio compression tools
 EAPI=7
 HOMEPAGE=https://www.wavpack.com/
+INHERIT=autotools multilib-minimal
 IUSE=test abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_s390_32 abi_s390_64
 KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-solaris
 LICENSE=BSD
@@ -11,5 +12,5 @@ RDEPEND=>=virtual/libiconv-0-r1
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/dbry/wavpack/archive/e4e8d191e8dd74cbdbeaef3232c16a7ef517e68d.tar.gz -> wavpack-5.3.2.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566
 _md5_=0429b964e6f1c365c16dd07bffff2f49

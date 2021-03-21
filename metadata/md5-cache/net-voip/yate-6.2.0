@@ -3,11 +3,12 @@ DEFINED_PHASES=compile configure install prepare
 DESCRIPTION=The Yate AV Suite
 EAPI=7
 HOMEPAGE=http://yate.null.ro/
+INHERIT=autotools
 IUSE=doc cpu_flags_x86_sse2 sctp dahdi zaptel wpcard tdmcard wanpipe +ilbc +ilbc-webrtc +isac-float isac-fixed postgres mysql +gsm +speex spandsp +ssl +zlib amrnb
 KEYWORDS=~amd64 ~arm ~x86
 LICENSE=GPL-2
 RDEPEND=postgres? ( dev-db/postgresql:* ) mysql? ( dev-db/mysql-connector-c:= ) gsm? ( media-sound/gsm ) speex? ( media-libs/speex ) ssl? ( dev-libs/openssl:0= ) zlib? ( sys-libs/zlib ) ilbc? ( media-libs/libilbc:= ) spandsp? ( >=media-libs/spandsp-0.0.3 ) dahdi? ( net-misc/dahdi )
 SLOT=0/6.2.0
 SRC_URI=http://voip.null.ro/tarballs/yate6/yate-6.2.0-1.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=c5b2ea32b3c46325639ea545b05c62c7

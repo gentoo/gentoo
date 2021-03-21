@@ -4,11 +4,12 @@ DEPEND=net-libs/gnutls:= >=dev-libs/libprelude-5.1.0 <dev-libs/libprelude-6 dbx?
 DESCRIPTION=Bus communication for all Prelude modules
 EAPI=7
 HOMEPAGE=https://www.prelude-siem.org
+INHERIT=autotools systemd tmpfiles
 IUSE=dbx geoip tcpwrapper xml
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2+
 RDEPEND=net-libs/gnutls:= >=dev-libs/libprelude-5.1.0 <dev-libs/libprelude-6 dbx? ( >=dev-libs/libpreludedb-5.1.0 <dev-libs/libpreludedb-6 ) geoip? ( dev-libs/libmaxminddb ) tcpwrapper? ( sys-apps/tcp-wrappers ) xml? ( dev-libs/libxml2 ) virtual/tmpfiles
 SLOT=0
 SRC_URI=https://www.prelude-siem.org/pkg/src/5.1.0/prelude-manager-5.1.0.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	tmpfiles	dc8e4917d734a019caa04ad3b8db560b	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	systemd	74b223e42834adf09a2d21fe5fe13741	tmpfiles	dc8e4917d734a019caa04ad3b8db560b
 _md5_=253ccd38dbb26489a6fd4b855ffc2900

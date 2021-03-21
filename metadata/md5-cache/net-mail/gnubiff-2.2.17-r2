@@ -3,11 +3,12 @@ DEPEND=>=x11-libs/gtk+-3:3 >=gnome-base/libglade-2.3 dev-libs/popt password? ( d
 DESCRIPTION=A mail notification program
 EAPI=6
 HOMEPAGE=http://gnubiff.sourceforge.net/
+INHERIT=autotools
 IUSE=debug fam nls password
 KEYWORDS=amd64 x86
 LICENSE=GPL-3
 RDEPEND=>=x11-libs/gtk+-3:3 >=gnome-base/libglade-2.3 dev-libs/popt password? ( dev-libs/openssl:0= ) fam? ( virtual/fam ) x11-libs/libX11 x11-libs/pango x11-libs/gdk-pixbuf
 SLOT=0
 SRC_URI=mirror://sourceforge/gnubiff/gnubiff-2.2.17.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=ef50615c906cd6ae00bfeb90e7bf0a1d

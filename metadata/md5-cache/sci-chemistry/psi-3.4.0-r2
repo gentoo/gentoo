@@ -4,6 +4,7 @@ DEPEND=!sci-visualization/extrema virtual/blas virtual/lapack >=sci-libs/libint-
 DESCRIPTION=Suite for ab initio quantum chemistry computing various molecular properties
 EAPI=7
 HOMEPAGE=http://www.psicode.org/
+INHERIT=autotools fortran-2 toolchain-funcs
 IUSE=test
 KEYWORDS=amd64 x86
 LICENSE=GPL-2
@@ -11,5 +12,5 @@ RDEPEND=!sci-visualization/extrema virtual/blas virtual/lapack >=sci-libs/libint
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/psicode/psi-3.4.0.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	fortran-2	b4796813ccda91c9c0d3463fc90aa969	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	fortran-2	b4796813ccda91c9c0d3463fc90aa969
 _md5_=ecd9eddd7cba15554c7599004f94761a

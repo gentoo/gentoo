@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=net-libs/libpcap >=dev-libs/libdnet-1.7
 SLOT=0
 SRC_URI=mirror://sourceforge/labrea/labrea-2.5-stable-1.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9988ecbe04129214297a7bbf3d253710
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=0b7e4f76e892d0724f66878f50e89074

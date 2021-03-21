@@ -4,11 +4,12 @@ DEPEND=dev-libs/libxml2 >=media-libs/libpng-1.2.8:0= >=sys-libs/zlib-1.2.3 virtu
 DESCRIPTION=NX compression technology core libraries
 EAPI=7
 HOMEPAGE=https://github.com/ArcticaProject/nx-libs
+INHERIT=autotools toolchain-funcs
 IUSE=elibc_glibc
 KEYWORDS=amd64 ~ppc x86
 LICENSE=GPL-2
 RDEPEND=dev-libs/libxml2 >=media-libs/libpng-1.2.8:0= >=sys-libs/zlib-1.2.3 virtual/jpeg:* x11-libs/libX11 x11-libs/libXcomposite x11-libs/libXdamage x11-libs/libXdmcp x11-libs/libXext x11-libs/libXfixes x11-libs/libXfont2 x11-libs/libXinerama x11-libs/libXpm x11-libs/libXrandr x11-libs/libXrender x11-libs/libXtst x11-libs/pixman
 SLOT=0
 SRC_URI=https://github.com/ArcticaProject/nx-libs/archive/3.5.99.25.tar.gz -> nx-libs-3.5.99.25.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=0712180b536fe5a0d493c637ab8ba4d4

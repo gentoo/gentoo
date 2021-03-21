@@ -3,10 +3,11 @@ DEPEND=dev-libs/confuse:0= dev-libs/libxml2:2 sys-libs/readline:0= >=net-libs/li
 DESCRIPTION=Command line client for ISDS
 EAPI=6
 HOMEPAGE=http://xpisar.wz.cz/shigofumi/
+INHERIT=autotools git-r3
 IUSE=debug doc nls xattr
 LICENSE=GPL-3
 PROPERTIES=live
 RDEPEND=dev-libs/confuse:0= dev-libs/libxml2:2 sys-libs/readline:0= >=net-libs/libisds-0.7 xattr? ( sys-apps/attr )
 SLOT=0
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	git-r3	3e7ec3d6619213460c85e2aa48398441
 _md5_=2ae53855088f6629680b3eb80359ad2c

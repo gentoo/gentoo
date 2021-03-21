@@ -3,10 +3,11 @@ DEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.
 DESCRIPTION=A set of eselect modules for Java
 EAPI=6
 HOMEPAGE=https://wiki.gentoo.org/wiki/Project:Java
+INHERIT=autotools
 KEYWORDS=amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-2
 RDEPEND=!app-eselect/eselect-ecj !app-eselect/eselect-maven !<dev-java/java-config-2.2 app-admin/eselect
 SLOT=0
 SRC_URI=https://gitweb.gentoo.org/proj/eselect-java.git/snapshot/eselect-java-0.4.0.tar.xz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=2e2749de86ddd3fd10a9f3f099e4702d

@@ -4,11 +4,12 @@ DEPEND=audiofile? ( media-libs/audiofile:= ) mad? ( media-libs/libmad:= )
 DESCRIPTION=Audio file volume normalizer
 EAPI=7
 HOMEPAGE=http://normalize.nongnu.org/
+INHERIT=autotools
 IUSE=audiofile mad nls
 KEYWORDS=amd64 ppc ppc64 sparc x86
 LICENSE=GPL-2
 RDEPEND=audiofile? ( media-libs/audiofile:= ) mad? ( media-libs/libmad:= )
 SLOT=0
 SRC_URI=https://savannah.nongnu.org/download/normalize/normalize-0.7.7.tar.bz2 https://dev.gentoo.org/~radhermit/distfiles/normalize-0.7.7-m4.patch.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=7e4f3b78c770ae20eba61813f3a7af00

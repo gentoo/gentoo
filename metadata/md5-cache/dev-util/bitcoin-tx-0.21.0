@@ -4,11 +4,12 @@ DEPEND=>=dev-libs/boost-1.58.0:=[threads(+)] >dev-libs/libsecp256k1-0.1_pre20200
 DESCRIPTION=Command-line Bitcoin transaction tool
 EAPI=7
 HOMEPAGE=https://bitcoincore.org/ https://bitcoinknots.org/
+INHERIT=autotools bash-completion-r1
 IUSE=knots
 KEYWORDS=~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=MIT
 RDEPEND=>=dev-libs/boost-1.58.0:=[threads(+)] >dev-libs/libsecp256k1-0.1_pre20200911:=[recovery,schnorr] >=dev-libs/univalue-1.0.4:=
 SLOT=0
 SRC_URI=https://github.com/bitcoin/bitcoin/archive/95ea54ba089610019a74c1176a2c7c0dba144b1c.tar.gz -> bitcoin-v0.21.0.tar.gz https://bitcoinknots.org/files/0.21.x/0.21.0.knots20210130/bitcoin-0.21.0.knots20210130.patches.txz -> bitcoin-0.21.0.knots20210130.patches.tar.xz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	bash-completion-r1	be99724bde4274de21e581204e9d164a	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	bash-completion-r1	be99724bde4274de21e581204e9d164a
 _md5_=8e3a00b80fdf0d34ba241e1f5a569e70

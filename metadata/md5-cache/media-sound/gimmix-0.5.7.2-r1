@@ -4,11 +4,12 @@ DEPEND=media-libs/libmpd:= gnome-base/libglade:= x11-libs/gtk+:2 cover? ( net-li
 DESCRIPTION=a graphical music player daemon (MPD) client using GTK+2
 EAPI=7
 HOMEPAGE=https://launchpad.net/gimmix
+INHERIT=autotools xdg
 IUSE=cover lyrics taglib
 KEYWORDS=amd64 ~ppc x86
 LICENSE=GPL-2
 RDEPEND=media-libs/libmpd:= gnome-base/libglade:= x11-libs/gtk+:2 cover? ( net-libs/libnxml:= net-misc/curl:= ) lyrics? ( net-libs/libnxml:= net-misc/curl:= ) taglib? ( media-libs/taglib:= )
 SLOT=0
 SRC_URI=mirror://gentoo/gimmix-0.5.7.2.tar.bz2
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
 _md5_=e1852d532657e8738b586050fe85f0ba

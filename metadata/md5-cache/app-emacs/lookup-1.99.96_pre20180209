@@ -3,10 +3,11 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DESCRIPTION=An interface to search CD-ROM books and network dictionaries
 EAPI=7
 HOMEPAGE=https://lookup2.github.io/lookup2/
+INHERIT=autotools elisp
 KEYWORDS=amd64 x86
 LICENSE=GPL-2+
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://github.com/lookup2/lookup2/archive/c4f4986aac6c339e03b9e56a5dfc7c8f5c0bb5e0.tar.gz -> lookup-1.99.96_pre20180209.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	d4b53ec63c580b993ed19445f411e1d2	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	elisp-common	d4b53ec63c580b993ed19445f411e1d2	elisp	00840e1f4eb277c757dbfa5abf73c4c7
 _md5_=c43429b01f078f24a86c9009de00d3f9

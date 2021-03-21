@@ -4,10 +4,11 @@ DEPEND=virtual/libusb:0 ncurses? ( sys-libs/ncurses:0= ) gtk? ( x11-libs/gtk+:2 
 DESCRIPTION=Spectrum Analyzer for Meta-Geek Wi-Spy and GSG Ubertooth hardware
 EAPI=7
 HOMEPAGE=https://www.kismetwireless.net/spectools/
+INHERIT=autotools eutils toolchain-funcs udev flag-o-matic git-r3
 IUSE=debug +ncurses +gtk
 LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=virtual/libusb:0 ncurses? ( sys-libs/ncurses:0= ) gtk? ( x11-libs/gtk+:2 x11-libs/cairo x11-libs/gdk-pixbuf x11-libs/pango dev-libs/glib:= )
 SLOT=0
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	git-r3	3e7ec3d6619213460c85e2aa48398441	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	udev	452708c3f55cf6e918b045adb949a9e6	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	udev	452708c3f55cf6e918b045adb949a9e6	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	git-r3	3e7ec3d6619213460c85e2aa48398441
 _md5_=7f5d4cdb14e0e190c1d9d9bb7f21b43c

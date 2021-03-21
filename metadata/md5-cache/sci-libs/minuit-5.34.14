@@ -3,10 +3,11 @@ DEPEND=doc? ( app-doc/doxygen ) >=app-portage/elt-patches-20170815 || ( >=sys-de
 DESCRIPTION=A C++ physics analysis tool for function minimization
 EAPI=6
 HOMEPAGE=https://seal.web.cern.ch/seal/snapshot/work-packages/mathlibs/minuit/
+INHERIT=autotools
 IUSE=doc openmp static-libs
 KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://www.cern.ch/mathlibs/sw/5_34_14/Minuit2/Minuit2-5.34.14.tar.gz -> minuit-5.34.14.tar.gz doc? ( http://seal.cern.ch/documents/minuit/mnusersguide.pdf http://seal.cern.ch/documents/minuit/mntutorial.pdf )
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=f7f0a14df8baf02e4f7f08a6c579e83a

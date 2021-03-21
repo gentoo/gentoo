@@ -3,10 +3,11 @@ DEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.
 DESCRIPTION=Chrpath can modify the rpath and runpath of ELF executables
 EAPI=6
 HOMEPAGE=https://directory.fsf.org/wiki/Chrpath
+INHERIT=autotools
 IUSE=static-libs
 KEYWORDS=amd64 arm ~mips ppc ppc64 x86 ~amd64-linux ~x86-linux ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-2+
 SLOT=0
 SRC_URI=https://alioth-archive.debian.org/releases/chrpath/chrpath/0.13/chrpath-0.13.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=0edcc9aace78f91ec5388c1620540119

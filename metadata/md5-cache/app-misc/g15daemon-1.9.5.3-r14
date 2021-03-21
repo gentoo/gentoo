@@ -4,11 +4,12 @@ DEPEND=virtual/libusb:0 >=dev-libs/libg15-1.2.4 >=dev-libs/libg15render-1.2 perl
 DESCRIPTION=Takes control of the G15 keyboard, through the linux kernel uinput device driver
 EAPI=7
 HOMEPAGE=https://sourceforge.net/projects/g15daemon/
+INHERIT=autotools flag-o-matic linux-info perl-module toolchain-funcs udev
 IUSE=perl static-libs kernel_linux
 KEYWORDS=amd64 ppc ppc64 x86
 LICENSE=GPL-2
 RDEPEND=virtual/libusb:0 >=dev-libs/libg15-1.2.4 >=dev-libs/libg15render-1.2 perl? ( dev-lang/perl dev-perl/GDGraph >=dev-perl/Inline-0.4 )
 SLOT=0
 SRC_URI=mirror://sourceforge/g15daemon/g15daemon-1.9.5.3.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	udev	452708c3f55cf6e918b045adb949a9e6	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83	udev	452708c3f55cf6e918b045adb949a9e6
 _md5_=f22b807108279314eed77f2babdc377d

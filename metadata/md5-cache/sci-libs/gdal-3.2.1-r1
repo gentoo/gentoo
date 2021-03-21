@@ -4,6 +4,7 @@ DEPEND=dev-libs/expat dev-libs/json-c:= dev-libs/libpcre dev-libs/libxml2:2 dev-
 DESCRIPTION=Translator library for raster geospatial data formats (includes OGR support)
 EAPI=7
 HOMEPAGE=https://gdal.org/
+INHERIT=autotools bash-completion-r1 distutils-r1 flag-o-matic java-pkg-opt-2 perl-module toolchain-funcs
 IUSE=armadillo +aux-xml curl debug doc fits geos gif gml hdf5 java jpeg jpeg2k lzma mdb mysql netcdf odbc ogdi opencl oracle pdf perl png postgres python spatialite sqlite threads webp xls zstd python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 elibc_FreeBSD java
 KEYWORDS=amd64 ~arm arm64 ~ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=BSD Info-ZIP MIT
@@ -11,5 +12,5 @@ RDEPEND=dev-libs/expat dev-libs/json-c:= dev-libs/libpcre dev-libs/libxml2:2 dev
 REQUIRED_USE=mdb? ( java ) python? ( || ( python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 ) ) spatialite? ( sqlite )
 SLOT=0/3.2
 SRC_URI=https://download.osgeo.org/gdal/3.2.1/gdal-3.2.1.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	bash-completion-r1	be99724bde4274de21e581204e9d164a	distutils-r1	16579e06f8839831bd5c03455bb87e3f	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	java-utils-2	378e4cda228ea0231a0ac283cb2ad25c	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83	python-r1	6d099888c5b4dd4868c26508df307e95	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	bash-completion-r1	be99724bde4274de21e581204e9d164a	multiprocessing	cac3169468f893670dac3e7cb940e045	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-r1	6d099888c5b4dd4868c26508df307e95	distutils-r1	16579e06f8839831bd5c03455bb87e3f	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	java-utils-2	378e4cda228ea0231a0ac283cb2ad25c	java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
 _md5_=fdc3e25c743c59f889e97cf1198f1d67

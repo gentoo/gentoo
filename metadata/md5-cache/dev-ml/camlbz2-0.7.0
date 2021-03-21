@@ -4,11 +4,12 @@ DEPEND=app-arch/bzip2 >=dev-lang/ocaml-3.12:=[ocamlopt] >=dev-ml/findlib-1.0.4-r
 DESCRIPTION=OCaml bindings for libbz (AKA, bzip2)
 EAPI=7
 HOMEPAGE=https://gitlab.com/irill/camlbz2
+INHERIT=autotools findlib
 IUSE=doc
 KEYWORDS=amd64 arm arm64 ppc ppc64 x86
 LICENSE=LGPL-2.1
 RDEPEND=app-arch/bzip2 >=dev-lang/ocaml-3.12:=[ocamlopt]
 SLOT=0/0.7.0
 SRC_URI=https://gitlab.com/irill/camlbz2/-/archive/0.7.0/camlbz2-0.7.0.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	findlib	3d3de4bef686774baeeabfa2b916631c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	findlib	3d3de4bef686774baeeabfa2b916631c
 _md5_=61ee3e5a6e052b646a3e2f46321e9a37

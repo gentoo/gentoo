@@ -4,10 +4,11 @@ DEPEND=media-video/ffmpeg:0= x11-libs/wxGTK:3.0[X] dev-util/desktop-file-utils x
 DESCRIPTION=Analyse your audio files by showing their spectrogram
 EAPI=7
 HOMEPAGE=http://www.spek-project.org/
+INHERIT=autotools wxwidgets xdg
 KEYWORDS=~amd64
 LICENSE=GPL-3
 RDEPEND=media-video/ffmpeg:0= x11-libs/wxGTK:3.0[X]
 SLOT=0
 SRC_URI=https://github.com/alexkay/spek/archive/0.8.3.tar.gz -> spek-0.8.3.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	wxwidgets	e1e6e1eb5b3d911b3abd712f611e2312	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	wxwidgets	e1e6e1eb5b3d911b3abd712f611e2312	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
 _md5_=f432f91b43e4b8f7b9ebccc7ff3054c8

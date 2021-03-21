@@ -4,6 +4,7 @@ DEPEND=libmpeg2? ( media-libs/libmpeg2:= ) ffmpeg? ( media-video/ffmpeg ) imagem
 DESCRIPTION=Mark commercial breaks in VDR recordings
 EAPI=7
 HOMEPAGE=https://github.com/madmartin/noad
+INHERIT=autotools toolchain-funcs
 IUSE=+ffmpeg imagemagick libmpeg2
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2+
@@ -11,5 +12,5 @@ RDEPEND=libmpeg2? ( media-libs/libmpeg2:= ) ffmpeg? ( media-video/ffmpeg ) image
 REQUIRED_USE=|| ( ffmpeg libmpeg2 )
 SLOT=0
 SRC_URI=https://github.com/madmartin/noad/archive/v0.8.6.tar.gz -> noad-0.8.6.tar.gz http://vdr.websitec.de/download/noad/noad-0.8.6-ffmpeg3.4.diff.bz2
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=8735ed276cae83bd0c717667b9e04db0

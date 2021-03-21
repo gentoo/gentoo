@@ -3,10 +3,11 @@ DEPEND=virtual/pkgconfig =net-voip/yate-9999:=[gsm] bladerf? ( net-wireless/blad
 DESCRIPTION=The Yate GSM base station
 EAPI=6
 HOMEPAGE=https://yatebts.com
+INHERIT=autotools subversion
 IUSE=rad1 usrp1 uhd +bladerf cpu_flags_x86_sse3 cpu_flags_x86_sse4_1
 LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND==net-voip/yate-9999:=[gsm] bladerf? ( net-wireless/bladerf:= ) uhd? ( net-wireless/uhd ) virtual/libusb:1
 SLOT=0
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	estack	055c42df72f76a4f45ec92b35e83cd56	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	subversion	ed3498da4fb92dcfb0d6089c85d1465f	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	estack	055c42df72f76a4f45ec92b35e83cd56	subversion	ed3498da4fb92dcfb0d6089c85d1465f
 _md5_=77a3ce1763f4193a68e0130584b263a9

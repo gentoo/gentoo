@@ -3,11 +3,12 @@ DEPEND=>=net-libs/libtirpc-0.2.3:= systemd? ( sys-apps/systemd:= ) tcpd? ( sys-a
 DESCRIPTION=portmap replacement which supports RPC over various protocols
 EAPI=6
 HOMEPAGE=https://sourceforge.net/projects/rpcbind/
+INHERIT=systemd autotools git-r3
 IUSE=debug remotecalls selinux systemd tcpd warmstarts
 LICENSE=BSD
 PROPERTIES=live
 RDEPEND=>=net-libs/libtirpc-0.2.3:= systemd? ( sys-apps/systemd:= ) tcpd? ( sys-apps/tcp-wrappers ) selinux? ( sec-policy/selinux-rpcbind )
 REQUIRED_USE=systemd? ( warmstarts )
 SLOT=0
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	git-r3	3e7ec3d6619213460c85e2aa48398441
 _md5_=dc8f9c4351fa4ecd5fb6f4bdcacceef9

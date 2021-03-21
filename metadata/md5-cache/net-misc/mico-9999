@@ -4,11 +4,12 @@ DEPEND=gtk? ( x11-libs/gtk+:2 ) postgres? ( dev-db/postgresql:* ) ssl? ( dev-lib
 DESCRIPTION=A freely available and fully compliant implementation of the CORBA standard
 EAPI=7
 HOMEPAGE=http://www.mico.org/
+INHERIT=flag-o-matic toolchain-funcs autotools darcs
 IUSE=gtk postgres ssl tcl threads X
 LICENSE=GPL-2 LGPL-2
 PROPERTIES=live
 RDEPEND=gtk? ( x11-libs/gtk+:2 ) postgres? ( dev-db/postgresql:* ) ssl? ( dev-libs/openssl:0= ) tcl? ( dev-lang/tcl:0 ) X? ( x11-libs/libXt )
 RESTRICT=test
 SLOT=0
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	darcs	2affb9c1b0522b809ad117a9ccc42669	edos2unix	33e347e171066657f91f8b0c72ec8773	estack	055c42df72f76a4f45ec92b35e83cd56	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	estack	055c42df72f76a4f45ec92b35e83cd56	darcs	2affb9c1b0522b809ad117a9ccc42669
 _md5_=6f072aeecd243baca71308c7f3fa3971

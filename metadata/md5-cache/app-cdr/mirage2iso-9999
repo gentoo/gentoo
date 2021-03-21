@@ -3,11 +3,12 @@ DEPEND=>=dev-libs/libmirage-2.0.0:0= dev-libs/glib:2= pinentry? ( dev-libs/libas
 DESCRIPTION=CD/DVD image converter using libmirage
 EAPI=6
 HOMEPAGE=https://github.com/mgorny/mirage2iso/
+INHERIT=autotools git-r3
 IUSE=pinentry test
 LICENSE=BSD
 PROPERTIES=live
 RDEPEND=>=dev-libs/libmirage-2.0.0:0= dev-libs/glib:2= pinentry? ( dev-libs/libassuan:0= ) pinentry? ( app-crypt/pinentry )
 RESTRICT=!test? ( test )
 SLOT=0
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	git-r3	3e7ec3d6619213460c85e2aa48398441
 _md5_=7bfb098ed27dfa0637e042008d0d70ea

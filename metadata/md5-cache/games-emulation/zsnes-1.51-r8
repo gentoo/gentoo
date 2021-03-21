@@ -4,11 +4,12 @@ DEPEND=media-libs/libsdl[sound,video,abi_x86_32(-)] >=sys-libs/zlib-1.2.3-r1[abi
 DESCRIPTION=SNES (Super Nintendo) emulator that uses x86 assembly
 EAPI=7
 HOMEPAGE=https://www.zsnes.com/ http://ipherswipsite.com/zsnes/
+INHERIT=autotools desktop flag-o-matic toolchain-funcs pax-utils
 IUSE=ao custom-cflags +debug opengl png
 KEYWORDS=-* ~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=media-libs/libsdl[sound,video,abi_x86_32(-)] >=sys-libs/zlib-1.2.3-r1[abi_x86_32(-)] ao? ( media-libs/libao[abi_x86_32(-)] ) debug? ( sys-libs/ncurses:0=[abi_x86_32(-)] ) opengl? ( virtual/opengl[abi_x86_32(-)] ) png? ( media-libs/libpng:0=[abi_x86_32(-)] )
 SLOT=0
 SRC_URI=mirror://sourceforge/zsnes/zsnes151src.tar.bz2 -> zsnes-1.51-20071031.tar.bz2
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	pax-utils	a41d1fd1c111289ffa04490de6ee79d7
 _md5_=c1849e6bafd47d7f282c788236667f81

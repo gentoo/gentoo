@@ -4,6 +4,7 @@ DEPEND=readline? ( >=sys-libs/readline-4.1:0= ) >=dev-libs/libevent-2.0.9:=[thre
 DESCRIPTION=Network Time Protocol suite/programs
 EAPI=7
 HOMEPAGE=http://www.ntp.org/
+INHERIT=autotools toolchain-funcs flag-o-matic systemd
 IUSE=caps debug ipv6 libressl openntpd parse-clocks readline samba selinux snmp ssl +threads vim-syntax zeroconf
 KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux
 LICENSE=HPND BSD ISC
@@ -11,5 +12,5 @@ PDEPEND=openntpd? ( net-misc/openntpd )
 RDEPEND=readline? ( >=sys-libs/readline-4.1:0= ) >=dev-libs/libevent-2.0.9:=[threads?] kernel_linux? ( caps? ( sys-libs/libcap ) ) zeroconf? ( net-dns/avahi[mdnsresponder-compat] ) snmp? ( net-analyzer/net-snmp ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) parse-clocks? ( net-misc/pps-tools ) acct-group/ntp acct-user/ntp selinux? ( sec-policy/selinux-ntp ) vim-syntax? ( app-vim/ntp-syntax ) !net-misc/ntpsec !openntpd? ( !net-misc/openntpd )
 SLOT=0
 SRC_URI=http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-4.2/ntp-4.2.8p15.tar.gz https://dev.gentoo.org/~polynomial-c/ntp-4.2.8p15-manpages.tar.xz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	systemd	74b223e42834adf09a2d21fe5fe13741
 _md5_=5fe0fd1db1b88a2696c0c7e91e9027d4

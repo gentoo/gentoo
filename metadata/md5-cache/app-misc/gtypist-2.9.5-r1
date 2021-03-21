@@ -4,11 +4,12 @@ DEPEND=>=sys-libs/ncurses-5.2:0= emacs? ( >=app-editors/emacs-23.1:* ) xemacs? (
 DESCRIPTION=Universal typing tutor
 EAPI=7
 HOMEPAGE=https://www.gnu.org/software/gtypist/
+INHERIT=elisp-common autotools
 IUSE=nls emacs xemacs
 KEYWORDS=amd64 ppc x86 ~amd64-linux
 LICENSE=GPL-2 public-domain
 RDEPEND=>=sys-libs/ncurses-5.2:0= emacs? ( >=app-editors/emacs-23.1:* ) xemacs? ( !emacs? ( app-editors/xemacs app-xemacs/fsf-compat ) )
 SLOT=0
 SRC_URI=mirror://gnu/gtypist/gtypist-2.9.5.tar.xz http://colemak.com/pub/learn/colemak.typ
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	elisp-common	d4b53ec63c580b993ed19445f411e1d2	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=elisp-common	d4b53ec63c580b993ed19445f411e1d2	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=c1a2ec824b4ae4cf4e4415cf96f50261

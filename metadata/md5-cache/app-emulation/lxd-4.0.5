@@ -4,11 +4,12 @@ DEPEND=app-arch/xz-utils >=app-emulation/lxc-3.0.0[apparmor?,seccomp(+)] dev-lib
 DESCRIPTION=Fast, dense and secure container management
 EAPI=7
 HOMEPAGE=https://linuxcontainers.org/lxd/introduction/ https://github.com/lxc/lxd
+INHERIT=autotools bash-completion-r1 linux-info optfeature systemd verify-sig
 IUSE=apparmor ipv6 nls verify-sig kernel_linux verify-sig
 KEYWORDS=~amd64
 LICENSE=Apache-2.0
 RDEPEND=app-arch/xz-utils >=app-emulation/lxc-3.0.0[apparmor?,seccomp(+)] dev-libs/dqlite dev-libs/lzo dev-libs/raft net-dns/dnsmasq[dhcp,ipv6?] acct-group/lxd net-firewall/ebtables net-firewall/iptables[ipv6?] sys-apps/iproute2[ipv6?] sys-fs/fuse:* sys-fs/lxcfs sys-fs/squashfs-tools[lzma] virtual/acl
 SLOT=0
 SRC_URI=https://linuxcontainers.org/downloads/lxd/lxd-4.0.5.tar.gz verify-sig? ( https://linuxcontainers.org/downloads/lxd/lxd-4.0.5.tar.gz.asc )
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	bash-completion-r1	be99724bde4274de21e581204e9d164a	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	optfeature	6a2add34e06e5a05d88471a33ccdd73e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	verify-sig	40b4f4f782cf67118f594ce604cc4c0a
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	bash-completion-r1	be99724bde4274de21e581204e9d164a	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	optfeature	6a2add34e06e5a05d88471a33ccdd73e	systemd	74b223e42834adf09a2d21fe5fe13741	verify-sig	40b4f4f782cf67118f594ce604cc4c0a
 _md5_=cb46572fd76ead0fbb8e5223f383546c

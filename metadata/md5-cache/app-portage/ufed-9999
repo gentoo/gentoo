@@ -4,9 +4,10 @@ DEPEND=dev-lang/perl sys-libs/ncurses:0= virtual/pkgconfig
 DESCRIPTION=Gentoo Linux USE flags editor
 EAPI=7
 HOMEPAGE=https://wiki.gentoo.org/wiki/Ufed
+INHERIT=git-r3 autotools out-of-source
 LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=dev-lang/perl sys-libs/ncurses:0=
 SLOT=0
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	out-of-source	15edba2977da53bbf4d1e5a60abc0e34	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	out-of-source	15edba2977da53bbf4d1e5a60abc0e34
 _md5_=6c12e9141b744af946d48cebf16b7979

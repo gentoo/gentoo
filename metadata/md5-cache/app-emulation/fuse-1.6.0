@@ -12,5 +12,5 @@ RDEPEND=>=app-emulation/libspectrum-1.5.0[zlib?] dev-libs/glib:2 alsa? ( media-l
 REQUIRED_USE=?? ( alsa ao backend-sdl pulseaudio ) ?? ( backend-X backend-fbcon backend-gtk3 backend-sdl backend-svga )
 SLOT=0
 SRC_URI=mirror://sourceforge/fuse-emulator/fuse-1.6.0.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9988ecbe04129214297a7bbf3d253710	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
 _md5_=b56831d1f04ddd2043573f4ef820c6a6

@@ -4,6 +4,7 @@ DEPEND=acct-group/netdata acct-user/netdata app-misc/jq >=app-shells/bash-4:0 ||
 DESCRIPTION=Linux real time system monitoring, done right!
 EAPI=7
 HOMEPAGE=https://github.com/netdata/netdata https://my-netdata.io/
+INHERIT=autotools fcaps linux-info python-single-r1 systemd
 IUSE=caps +compression cpu_flags_x86_sse2 cups +dbengine ipmi +jsonc kinesis +lto mongodb mysql nfacct nodejs postgres prometheus +python tor xen +filecaps kernel_linux python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3+ MIT BSD
@@ -11,5 +12,5 @@ RDEPEND=acct-group/netdata acct-user/netdata app-misc/jq >=app-shells/bash-4:0 |
 REQUIRED_USE=mysql? ( python ) python? ( ^^ ( python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9 ) ) tor? ( python )
 SLOT=0
 SRC_URI=https://github.com/netdata/netdata/archive/v1.29.2.tar.gz -> netdata-1.29.2.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	fcaps	da689a8e04bbbb3518888ff668fee45b	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	fcaps	da689a8e04bbbb3518888ff668fee45b	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-single-r1	d3100de905f978df912135806cf27188	systemd	74b223e42834adf09a2d21fe5fe13741
 _md5_=fdf6793f2b37b332b576a01b7cb90802

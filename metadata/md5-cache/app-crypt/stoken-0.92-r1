@@ -3,11 +3,12 @@ DEPEND=dev-libs/nettle gtk? ( >=x11-libs/gtk+-3.12:3 ) >=app-portage/elt-patches
 DESCRIPTION=Software Token for Linux/UNIX
 EAPI=6
 HOMEPAGE=https://github.com/cernekee/stoken
+INHERIT=autotools
 IUSE=gtk static
 KEYWORDS=amd64 arm arm64 ppc64 x86
 LICENSE=LGPL-2.1+
 RDEPEND=dev-libs/nettle gtk? ( >=x11-libs/gtk+-3.12:3 )
 SLOT=0
 SRC_URI=https://github.com/cernekee/stoken/archive/v0.92.tar.gz -> stoken-0.92.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=f7f3e8835360a2ddb4cea0fd1a89ef00

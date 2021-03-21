@@ -3,10 +3,11 @@ DEPEND=dev-libs/json-c:0= >=sys-apps/dbus-1.4 sys-libs/ncurses:0 >=app-portage/e
 DESCRIPTION=An ncurses UI for connman
 EAPI=6
 HOMEPAGE=https://github.com/eurogiciel-oss/connman-json-client
+INHERIT=autotools vcs-snapshot
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=dev-libs/json-c:0= >=sys-apps/dbus-1.4 sys-libs/ncurses:0
 SLOT=0
 SRC_URI=https://github.com/eurogiciel-oss/connman-json-client/archive/3c34b2ee62d2e188090d20e7ed2fd94bab9c47f2.tar.gz -> connman-json-client-1.0_p20150721.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
 _md5_=dad5970aa8c9ed835be618fea95823e5

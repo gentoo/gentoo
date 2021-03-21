@@ -11,5 +11,5 @@ LICENSE=GPL-2
 RDEPEND=pacemaker? ( sys-cluster/pacemaker ) udev? ( virtual/udev )
 SLOT=0
 SRC_URI=https://www.linbit.com/downloads/drbd/utils/drbd-utils-9.15.1.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9988ecbe04129214297a7bbf3d253710	bash-completion-r1	be99724bde4274de21e581204e9d164a	udev	452708c3f55cf6e918b045adb949a9e6
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	bash-completion-r1	be99724bde4274de21e581204e9d164a	udev	452708c3f55cf6e918b045adb949a9e6
 _md5_=1f007aedcc925d341ec2d350f9e44d2d

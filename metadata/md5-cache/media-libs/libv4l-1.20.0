@@ -4,11 +4,12 @@ DEPEND=dvb? ( virtual/libudev[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_
 DESCRIPTION=Separate libraries ebuild from upstream v4l-utils package
 EAPI=7
 HOMEPAGE=https://git.linuxtv.org/v4l-utils.git
+INHERIT=autotools linux-info multilib-minimal
 IUSE=dvb jpeg kernel_linux abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_s390_32 abi_s390_64
 KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux
 LICENSE=LGPL-2.1+
 RDEPEND=dvb? ( virtual/libudev[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) !elibc_glibc? ( sys-libs/argp-standalone ) jpeg? ( >=virtual/jpeg-0-r2:0=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) !media-tv/v4l2-ctl !<media-tv/ivtv-utils-1.4.0-r2
 SLOT=0/0
 SRC_URI=https://linuxtv.org/downloads/v4l-utils/v4l-utils-1.20.0.tar.bz2
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566
 _md5_=773b17b435904b99a2719ea5994c97c3

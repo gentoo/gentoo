@@ -3,11 +3,12 @@ DEPEND=x11-libs/pango media-libs/libsdl[video] virtual/pkgconfig >=app-portage/e
 DESCRIPTION=connect the text rendering engine of GNOME to SDL
 EAPI=6
 HOMEPAGE=http://sdlpango.sourceforge.net/
+INHERIT=autotools
 IUSE=static-libs
 KEYWORDS=~alpha amd64 ~hppa ~ia64 ppc sparc x86
 LICENSE=GPL-2
 RDEPEND=x11-libs/pango media-libs/libsdl[video]
 SLOT=0
 SRC_URI=mirror://sourceforge/sdlpango/SDL_Pango-0.1.2.tar.gz http://zarb.org/~gc/t/SDL_Pango-0.1.2-API-adds.patch
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=fcb9196d13acecb33f8b558ce9ed0faa

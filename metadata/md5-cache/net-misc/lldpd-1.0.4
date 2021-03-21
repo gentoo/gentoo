@@ -4,6 +4,7 @@ DEPEND=dev-libs/libbsd >=dev-libs/libevent-2.0.5:= sys-libs/readline:0= snmp? ( 
 DESCRIPTION=Implementation of IEEE 802.1ab (LLDP)
 EAPI=7
 HOMEPAGE=https://vincentbernat.github.com/lldpd/
+INHERIT=eutils user systemd bash-completion-r1 autotools tmpfiles
 IUSE=cdp doc +dot1 +dot3 edp fdp graph +lldpmed old-kernel sanitizers seccomp sonmp snmp static-libs test readline xml zsh-completion
 KEYWORDS=~amd64 ~x86
 LICENSE=ISC
@@ -12,5 +13,5 @@ REQUIRED_USE=graph? ( doc )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=http://media.luffy.cx/files/lldpd/lldpd-1.0.4.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	bash-completion-r1	be99724bde4274de21e581204e9d164a	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	tmpfiles	dc8e4917d734a019caa04ad3b8db560b	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	bash-completion-r1	be99724bde4274de21e581204e9d164a	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	tmpfiles	dc8e4917d734a019caa04ad3b8db560b
 _md5_=d5dad6b01962a90e52438c4db0368714

@@ -4,11 +4,12 @@ DEPEND=>=sys-cluster/libqb-2.0.0:= dev-libs/libnl:3 sys-libs/zlib:= app-arch/bzi
 DESCRIPTION=Network abstraction layer designed for High Availability use cases
 EAPI=7
 HOMEPAGE=https://kronosnet.org
+INHERIT=autotools
 IUSE=doc nss +openssl zstd lz4 lzo2
 KEYWORDS=amd64 ~arm ~arm64 ~hppa ppc ppc64 x86
 LICENSE=LGPL-2.1
 RDEPEND=>=sys-cluster/libqb-2.0.0:= dev-libs/libnl:3 sys-libs/zlib:= app-arch/bzip2:= app-arch/xz-utils zstd? ( app-arch/zstd:= ) lzo2? ( dev-libs/lzo:2 ) lz4? ( app-arch/lz4:= ) nss? ( dev-libs/nss ) openssl? ( dev-libs/openssl:= )
 SLOT=0/1
 SRC_URI=https://kronosnet.org/releases/kronosnet-1.19.tar.xz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=a816416dbda4fe39e718d6de1498fd74

@@ -4,11 +4,12 @@ DEPEND=dev-libs/lzo app-arch/bzip2 sys-libs/zlib:= x86? ( dev-lang/nasm ) virtua
 DESCRIPTION=Long Range ZIP or Lzma RZIP optimized for compressing large files
 EAPI=7
 HOMEPAGE=https://github.com/ckolivas/lrzip
+INHERIT=autotools
 IUSE=static-libs
 KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-2
 RDEPEND=dev-libs/lzo app-arch/bzip2 sys-libs/zlib:=
 SLOT=0
 SRC_URI=https://github.com/ckolivas/lrzip/archive/b9220181288c5c9920ff00f00005b31a9e40e387.tar.gz -> lrzip-0.631_p20190619.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=b35ba635d393c6f1840536a3ada1f487

@@ -4,10 +4,11 @@ DEPEND=sys-libs/gdbm:0=
 DESCRIPTION=Console based chess interface
 EAPI=7
 HOMEPAGE=http://sjeng.sourceforge.net/
+INHERIT=autotools prefix
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=sys-libs/gdbm:0=
 SLOT=0
 SRC_URI=mirror://sourceforge/sjeng/Sjeng-Free-11.2.tar.gz mirror://debian/pool/main/s/sjeng/sjeng_11.2-8.1.diff.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	prefix	de7d8e2b10085ed5ff09ad70e4753e5c
 _md5_=f00b415c5172501bb304cf4cd5721b6f

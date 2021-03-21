@@ -4,11 +4,12 @@ DEPEND=dev-libs/glib:2 media-libs/libpng:0= sys-devel/gettext gnutls? ( net-libs
 DESCRIPTION=MaCoPiX (Mascot Constructive Pilot for X) is a desktop mascot application
 EAPI=7
 HOMEPAGE=http://rosegray.sakura.ne.jp/macopix/index-e.html https://github.com/chimari/MaCoPiX
+INHERIT=autotools
 IUSE=gnutls nls
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-2 free-noncomm
 RDEPEND=dev-libs/glib:2 media-libs/libpng:0= sys-devel/gettext gnutls? ( net-libs/gnutls ) !gnutls? ( dev-libs/openssl:0= ) x11-libs/gtk+:3
 SLOT=0
 SRC_URI=http://rosegray.sakura.ne.jp/macopix/macopix-3.4.0.tar.gz http://rosegray.sakura.ne.jp/macopix/macopix-mascot-HxB-euc-ja-0.30.tar.gz http://rosegray.sakura.ne.jp/macopix/macopix-mascot-marimite-euc-ja-2.20.tar.gz http://rosegray.sakura.ne.jp/macopix/macopix-mascot-cosmos-euc-ja-1.02.tar.gz http://rosegray.sakura.ne.jp/macopix/macopix-mascot-mizuiro-euc-ja-1.02.tar.gz http://rosegray.sakura.ne.jp/macopix/macopix-mascot-pia2-euc-ja-1.02.tar.gz http://rosegray.sakura.ne.jp/macopix/macopix-mascot-tsukihime-euc-ja-1.02.tar.gz http://rosegray.sakura.ne.jp/macopix/macopix-mascot-triangle_heart-euc-ja-1.02.tar.gz http://rosegray.sakura.ne.jp/macopix/macopix-mascot-comic_party-euc-ja-1.02.tar.gz http://rosegray.sakura.ne.jp/macopix/macopix-mascot-kanon-euc-ja-1.02.tar.gz http://rosegray.sakura.ne.jp/macopix/macopix-mascot-one-euc-ja-1.02.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=ff9a6bb9dcab99cce23052d071f81a58

@@ -4,10 +4,11 @@ DEPEND=sys-devel/gnuconfig >=sys-devel/autoconf-2.69:* >=sys-devel/automake-1.13
 DESCRIPTION=A shared library tool for developers
 EAPI=7
 HOMEPAGE=https://www.gnu.org/software/libtool/
+INHERIT=autotools prefix git-r3
 IUSE=vanilla
 LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=sys-devel/gnuconfig >=sys-devel/autoconf-2.69:* >=sys-devel/automake-1.13:* dev-libs/libltdl:0
 SLOT=2
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	git-r3	3e7ec3d6619213460c85e2aa48398441
 _md5_=fb3c40fd5cb71f5d07a4ea57bed79991

@@ -4,11 +4,12 @@ DEPEND=>=dev-libs/libgcrypt-1.2.0:0= dev-libs/nss >=sys-apps/keyutils-1.5.11-r1:
 DESCRIPTION=eCryptfs userspace utilities
 EAPI=7
 HOMEPAGE=https://launchpad.net/ecryptfs
+INHERIT=autotools flag-o-matic linux-info pam
 IUSE=doc gpg gtk nls openssl pam pkcs11 suid tpm kernel_linux
 KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/libgcrypt-1.2.0:0= dev-libs/nss >=sys-apps/keyutils-1.5.11-r1:= sys-process/lsof gpg? ( app-crypt/gpgme:= ) gtk? ( x11-libs/gtk+:2 ) openssl? ( >=dev-libs/openssl-0.9.7:= ) pam? ( sys-libs/pam ) pkcs11? ( >=dev-libs/openssl-0.9.7:= >=dev-libs/pkcs11-helper-1.04 ) tpm? ( app-crypt/trousers )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~bkohler/dist/ecryptfs-utils-111_p20170609.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	pam	b097695df28f3974e3af860d6704d4f2	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	pam	b097695df28f3974e3af860d6704d4f2
 _md5_=3684b6430a61f2f7c13b895322ced54f

@@ -4,6 +4,7 @@ DEPEND=dev-libs/elfutils:= dev-libs/libxml2:2=
 DESCRIPTION=Suite of tools for checking ABI differences between ELF objects
 EAPI=7
 HOMEPAGE=https://sourceware.org/libabigail/
+INHERIT=autotools python-any-r1 out-of-source
 IUSE=doc test
 KEYWORDS=~amd64
 LICENSE=LGPL-3+
@@ -11,5 +12,5 @@ RDEPEND=dev-libs/elfutils:= dev-libs/libxml2:2=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://mirrors.kernel.org/sourceware/libabigail/libabigail-1.6.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	out-of-source	15edba2977da53bbf4d1e5a60abc0e34	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	out-of-source	15edba2977da53bbf4d1e5a60abc0e34
 _md5_=967e5b06f96db3db4845f199e7596119

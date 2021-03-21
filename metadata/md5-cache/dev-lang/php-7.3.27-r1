@@ -4,6 +4,7 @@ DEPEND=>=app-eselect/eselect-php-0.9.1[apache2?,fpm?] >=dev-libs/libpcre2-10.30[
 DESCRIPTION=The PHP language runtime engine
 EAPI=7
 HOMEPAGE=https://www.php.net/
+INHERIT=flag-o-matic systemd autotools
 IUSE=embed +cli cgi fpm apache2 phpdbg threads acl argon2 bcmath berkdb bzip2 calendar cdb cjk coverage +ctype curl debug enchant exif +fileinfo +filter firebird +flatfile ftp gd gdbm gmp +hash +iconv imap inifile intl iodbc ipv6 +jit +json kerberos ldap ldap-sasl libedit libressl lmdb mhash mssql mysql mysqli nls oci8-instant-client odbc +opcache pcntl pdo +phar +posix postgres qdbm readline recode selinux +session session-mm sharedmem +simplexml snmp soap sockets sodium spell sqlite ssl sysvipc systemd test tidy +tokenizer tokyocabinet truetype unicode wddx webp +xml xmlreader xmlwriter xmlrpc xpm xslt zip zip-encryption zlib
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos
 LICENSE=PHP-3.01 BSD Zend-2.0 bcmath? ( LGPL-2.1+ ) fpm? ( BSD-2 ) gd? ( gd ) unicode? ( BSD-2 LGPL-2.1 )
@@ -12,5 +13,5 @@ REQUIRED_USE=|| ( cli cgi fpm apache2 embed phpdbg ) cli? ( ^^ ( readline libedi
 RESTRICT=!test? ( test )
 SLOT=7.3
 SRC_URI=https://www.php.net/distributions/php-7.3.27.tar.xz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	systemd	74b223e42834adf09a2d21fe5fe13741	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=cee86d9aa3ea8f65564586a40954e16a

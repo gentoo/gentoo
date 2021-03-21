@@ -4,6 +4,7 @@ DEPEND=app-arch/bzip2:0= app-arch/xz-utils:0= app-text/ghostscript-gpl dev-libs/
 DESCRIPTION=Language and environment for statistical computing and graphics
 EAPI=7
 HOMEPAGE=http://www.r-project.org/
+INHERIT=bash-completion-r1 autotools eutils flag-o-matic fortran-2 multilib toolchain-funcs
 IUSE=cairo doc icu java jpeg lapack minimal nls openmp perl png prefix profile readline static-libs test tiff tk X
 KEYWORDS=~amd64 ~arm64 ~hppa ~ia64 ~sparc ~x86 ~amd64-linux ~x86-linux
 LICENSE=|| ( GPL-2 GPL-3 ) LGPL-2.1
@@ -12,5 +13,5 @@ REQUIRED_USE=png? ( || ( cairo X ) ) jpeg? ( || ( cairo X ) ) tiff? ( || ( cairo
 RESTRICT=minimal? ( test ) !test? ( test )
 SLOT=0
 SRC_URI=mirror://cran/src/base/R-3/R-3.6.3.tar.gz https://raw.githubusercontent.com/deepayan/rcompletion/78d6830e28ea90a046da79a9b4f70c39594bb6d6/bash_completion/R -> R-78d6830e28ea90a046da79a9b4f70c39594bb6d6.bash_completion
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	bash-completion-r1	be99724bde4274de21e581204e9d164a	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	fortran-2	b4796813ccda91c9c0d3463fc90aa969	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	be99724bde4274de21e581204e9d164a	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	fortran-2	b4796813ccda91c9c0d3463fc90aa969
 _md5_=a1a6c22efc6505eae63b641d716a56d2

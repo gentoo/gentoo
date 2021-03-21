@@ -4,6 +4,7 @@ DEPEND=>=net-libs/libmnl-1.0.4:0= >=net-libs/libnftnl-1.1.9:0= gmp? ( dev-libs/g
 DESCRIPTION=Linux kernel (3.13+) firewall, NAT and packet mangling tools
 EAPI=7
 HOMEPAGE=https://netfilter.org/projects/nftables/
+INHERIT=autotools linux-info python-r1 systemd
 IUSE=debug doc +gmp json +modern-kernel python +readline static-libs xtables kernel_linux python_targets_python3_7 python_targets_python3_8 python_targets_python3_9
 KEYWORDS=~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=GPL-2
@@ -11,5 +12,5 @@ RDEPEND=>=net-libs/libmnl-1.0.4:0= >=net-libs/libnftnl-1.1.9:0= gmp? ( dev-libs/
 REQUIRED_USE=python? ( || ( python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 ) )
 SLOT=0
 SRC_URI=https://netfilter.org/projects/nftables/files/nftables-0.9.8.tar.bz2
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	python-r1	6d099888c5b4dd4868c26508df307e95	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-r1	6d099888c5b4dd4868c26508df307e95	systemd	74b223e42834adf09a2d21fe5fe13741
 _md5_=df1763db44dd87733d0502fc3db9b8a7

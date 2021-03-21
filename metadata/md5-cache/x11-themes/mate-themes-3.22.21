@@ -4,11 +4,12 @@ DEPEND=>=x11-libs/gdk-pixbuf-2:2 >=x11-libs/gtk+-2:2 >=x11-themes/gtk-engines-2.
 DESCRIPTION=A set of MATE themes, with sets for users with limited or low vision
 EAPI=7
 HOMEPAGE=https://mate-desktop.org
+INHERIT=autotools xdg
 KEYWORDS=~amd64 ~arm ~arm64 ~x86
 LICENSE=CC-BY-SA-3.0 GPL-3+ LGPL-2.1+ LGPL-3
 RDEPEND=>=x11-libs/gdk-pixbuf-2:2 >=x11-libs/gtk+-2:2 >=x11-themes/gtk-engines-2.15.3:2 x11-themes/gtk-engines-murrine
 RESTRICT=binchecks strip
 SLOT=0/3.22
 SRC_URI=https://pub.mate-desktop.org/releases/themes/3.22/mate-themes-3.22.21.tar.xz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
 _md5_=044dff52f2e1cdae5200e9e3fe54872a

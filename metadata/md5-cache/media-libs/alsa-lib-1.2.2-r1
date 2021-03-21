@@ -4,6 +4,7 @@ DEPEND=python? ( python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lan
 DESCRIPTION=Advanced Linux Sound Architecture Library
 EAPI=7
 HOMEPAGE=https://alsa-project.org/
+INHERIT=autotools multilib-minimal python-single-r1
 IUSE=alisp debug doc elibc_uclibc python +thread-safety abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_s390_32 abi_s390_64 python_single_target_python3_7 python_single_target_python3_8
 KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux
 LICENSE=LGPL-2.1
@@ -11,5 +12,5 @@ RDEPEND=python? ( python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-la
 REQUIRED_USE=python? ( ^^ ( python_single_target_python3_7 python_single_target_python3_8 ) )
 SLOT=0
 SRC_URI=https://www.alsa-project.org/files/pub/lib/alsa-lib-1.2.2.tar.bz2
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-single-r1	d3100de905f978df912135806cf27188
 _md5_=3751b9d2e58129a6175717db67a98e1f

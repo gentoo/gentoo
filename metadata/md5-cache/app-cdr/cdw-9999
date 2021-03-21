@@ -4,9 +4,10 @@ DEPEND=app-cdr/cdrtools app-cdr/dvd+rw-tools dev-libs/libburn dev-libs/libcdio:=
 DESCRIPTION=An ncurses based console frontend for cdrtools and dvd+rw-tools
 EAPI=7
 HOMEPAGE=http://cdw.sourceforge.net
+INHERIT=autotools cvs toolchain-funcs
 LICENSE=GPL-2+
 PROPERTIES=live
 RDEPEND=app-cdr/cdrtools app-cdr/dvd+rw-tools dev-libs/libburn dev-libs/libcdio:=[-minimal] sys-libs/ncurses:0=[unicode]
 SLOT=0
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	cvs	e4da99a0528be81320ec609333490bef	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	cvs	e4da99a0528be81320ec609333490bef
 _md5_=a5a0c7ac314bbbc17574262cdad70363

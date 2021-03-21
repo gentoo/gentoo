@@ -3,11 +3,12 @@ DEPEND=png? ( media-libs/libpng:0= ) jpeg? ( virtual/jpeg:0 ) tiff? ( media-libs
 DESCRIPTION=pslib is a C-library to create PostScript files on the fly
 EAPI=6
 HOMEPAGE=http://pslib.sourceforge.net/
+INHERIT=autotools
 IUSE=debug jpeg png static-libs tiff
 KEYWORDS=amd64 ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=png? ( media-libs/libpng:0= ) jpeg? ( virtual/jpeg:0 ) tiff? ( media-libs/tiff:0= )
 SLOT=0
 SRC_URI=mirror://sourceforge/pslib/pslib-0.4.5.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
 _md5_=826396099657e4ee285f360c6ddaaa26

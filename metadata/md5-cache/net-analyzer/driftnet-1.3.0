@@ -4,6 +4,7 @@ DEPEND=net-libs/libpcap net-libs/libwebsockets:=[client,http-proxy,socks5] gtk? 
 DESCRIPTION=Watches network traffic and displays media from TCP streams observed
 EAPI=7
 HOMEPAGE=http://www.ex-parrot.com/~chris/driftnet/
+INHERIT=autotools fcaps toolchain-funcs
 IUSE=debug gtk suid test +filecaps
 KEYWORDS=amd64 ~arm64 ppc -sparc x86
 LICENSE=GPL-2
@@ -11,5 +12,5 @@ RDEPEND=net-libs/libpcap net-libs/libwebsockets:=[client,http-proxy,socks5] gtk?
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/deiv/driftnet/archive/v1.3.0.tar.gz -> driftnet-1.3.0.tar.gz
-_eclasses_=autotools	9988ecbe04129214297a7bbf3d253710	fcaps	da689a8e04bbbb3518888ff668fee45b	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	fcaps	da689a8e04bbbb3518888ff668fee45b
 _md5_=49d3199b747fd9fc15324de277d0c4cc
