@@ -778,7 +778,7 @@ app-admin/sshguard 2.4.1-r1 99999: protects hosts from brute force attacks again
 app-admin/stow 2.3.1: GNU Stow is a symlink farm manager
 app-admin/su-exec 0.2: Switch user and group id and exec
 app-admin/sud 1.3-r1: A daemon to execute processes with special privileges in a nosuid environment
-app-admin/sudo 1.9.5_p2-r1 1.9.6_p1 9999: Allows users or groups to run commands as other users
+app-admin/sudo 1.9.5_p2-r1 1.9.6_p1-r1 9999: Allows users or groups to run commands as other users
 app-admin/superadduser 1.0.9 1.15: Interactive adduser script from Slackware
 app-admin/supervisor 4.2.0 4.2.1 4.2.2: A system for controlling process state under UNIX
 app-admin/swatchdog 3.2.4-r1: Simple log watcher
@@ -5588,7 +5588,7 @@ dev-libs/libparserutils 0.2.4-r1 0.2.4-r3: C library for building efficient pars
 dev-libs/libpcre 8.44: Perl-compatible regular expression library
 dev-libs/libpcre-debian 8-r2: libpcre(posix).so.3 symlinks for compatibility with Debian
 dev-libs/libpcre2 10.35 10.36 10.36-r1: Perl-compatible regular expression library
-dev-libs/libpeas 1.26.0 1.26.0-r100 1.28.0 1.28.0-r100: A GObject plugins library
+dev-libs/libpeas 1.26.0 1.26.0-r100 1.28.0 1.28.0-r100 1.30.0: A GObject plugins library
 dev-libs/libpfm 4.10.1-r1 4.11.0: Hardware-based performance monitoring interface for Linux
 dev-libs/libpipeline 1.5.2 1.5.3: a pipeline manipulation library
 dev-libs/libplatform 2.1.0.1-r1 9999: Platform support library used by libCEC and binary add-ons for Kodi
@@ -15683,7 +15683,7 @@ net-vpn/protonvpn-cli 2.2.6: A VPN command-line tool from protonvpn - python rew
 net-vpn/strongswan 5.9.0 5.9.1: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
 net-vpn/tailscale 1.2.10-r1 1.4.0 1.4.1 1.4.5: Tailscale vpn client
 net-vpn/tinc 1.0.35-r2 1.0.36 1.1_pre17-r1: tinc is an easy to configure VPN implementation
-net-vpn/tor 0.4.4.6 0.4.4.7 0.4.5.6: Anonymizing overlay network for TCP
+net-vpn/tor 0.4.4.6 0.4.4.8 0.4.5.7: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550-r2: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3-r2: Create tunnels over TCP/IP networks with shaping, encryption, and compression

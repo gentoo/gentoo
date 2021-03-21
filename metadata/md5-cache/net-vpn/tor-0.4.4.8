@@ -4,12 +4,13 @@ DEPEND=dev-libs/libevent:=[ssl] sys-libs/zlib caps? ( sys-libs/libcap ) man? ( a
 DESCRIPTION=Anonymizing overlay network for TCP
 EAPI=7
 HOMEPAGE=http://www.torproject.org/
+INHERIT=flag-o-matic readme.gentoo-r1 systemd
 IUSE=caps doc libressl lzma +man scrypt seccomp selinux +server systemd tor-hardening test zstd
 KEYWORDS=~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86 ~ppc-macos
 LICENSE=BSD GPL-2
 RDEPEND=acct-user/tor acct-group/tor dev-libs/libevent:=[ssl] sys-libs/zlib caps? ( sys-libs/libcap ) man? ( app-text/asciidoc ) !libressl? ( dev-libs/openssl:0=[-bindist] ) libressl? ( dev-libs/libressl:0= ) lzma? ( app-arch/xz-utils ) scrypt? ( app-crypt/libscrypt ) seccomp? ( >=sys-libs/libseccomp-2.4.1 ) systemd? ( sys-apps/systemd ) zstd? ( app-arch/zstd ) selinux? ( sec-policy/selinux-tor )
 RESTRICT=!test? ( test )
 SLOT=0
-SRC_URI=https://www.torproject.org/dist/tor-0.4.5.6.tar.gz https://archive.torproject.org/tor-package-archive/tor-0.4.5.6.tar.gz
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=eeb92484b9b2b4c04cc8cc683be562de
+SRC_URI=https://www.torproject.org/dist/tor-0.4.4.8.tar.gz https://archive.torproject.org/tor-package-archive/tor-0.4.4.8.tar.gz
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	74b223e42834adf09a2d21fe5fe13741
+_md5_=3ccddeca835c997a68f75dedc5160849
