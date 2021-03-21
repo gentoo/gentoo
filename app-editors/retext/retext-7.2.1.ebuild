@@ -34,7 +34,7 @@ RDEPEND="
 	dev-python/chardet[${PYTHON_USEDEP}]
 	dev-python/docutils[${PYTHON_USEDEP}]
 	dev-python/markdown[${PYTHON_USEDEP}]
-	dev-python/markups[${PYTHON_USEDEP}]
+	>=dev-python/markups-3.1.1[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/python-markdown-math[${PYTHON_USEDEP}]
 	dev-python/PyQt5[dbus,gui,printsupport,widgets,${PYTHON_USEDEP}]
