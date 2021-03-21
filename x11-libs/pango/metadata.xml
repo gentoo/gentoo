@@ -6,6 +6,7 @@
   <name>Gentoo GNOME Desktop</name>
 </maintainer>
 <use>
+  <flag name="sysprof">Enable profiling data capture support using <pkg>dev-util/sysprof-capture</pkg></flag>
   <flag name="X">Build and install the legacy pangoxft library</flag>
 </use>
 <upstream>
