@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,12 +11,11 @@ HOMEPAGE="https://www.greenbone.net/en/"
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
-IUSE="cli +cron +extras +gsa ldap ospd postgres radius +sqlite"
-REQUIRED_USE="|| ( postgres sqlite )"
+IUSE="cli +cron +extras +gsa ldap ospd radius"
 
 RDEPEND="
 	>=net-analyzer/gvm-libs-10.0.1[extras?,ldap?,radius?]
-	>=net-analyzer/gvmd-8.0.1[extras?,postgres?,sqlite?]
+	>=net-analyzer/gvmd-8.0.1[extras?]
 	>=net-analyzer/openvas-scanner-6.0.1[cron?,extras?]
 	cli? ( >=net-analyzer/gvm-tools-2.0.0 )
 	gsa? ( >=net-analyzer/greenbone-security-assistant-8.0.1[extras?] )
