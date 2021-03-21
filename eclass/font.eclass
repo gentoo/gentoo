@@ -1,19 +1,20 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: font.eclass
 # @MAINTAINER:
 # fonts@gentoo.org
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: Eclass to make font installation uniform
 
 case ${EAPI:-0} in
-	[56]) inherit eutils ;;
+	6) inherit eutils ;;
 	7) ;;
 	*) die "EAPI ${EAPI} is not supported by font.eclass." ;;
 esac
 
 if [[ ! ${_FONT_ECLASS} ]]; then
+_FONT_ECLASS=1
 
 EXPORT_FUNCTIONS pkg_setup src_install pkg_postinst pkg_postrm
 
@@ -75,8 +76,8 @@ font_xfont_config() {
 		einfo "Creating fonts.scale & fonts.dir in ${dir_name##*/}"
 		mkfontscale "${ED%/}/${FONTDIR}/${1//${S}/}" || eerror "failed to create fonts.scale"
 		mkfontdir \
-			-e ${EPREFIX}/usr/share/fonts/encodings \
-			-e ${EPREFIX}/usr/share/fonts/encodings/large \
+			-e "${EPREFIX}"/usr/share/fonts/encodings \
+			-e "${EPREFIX}"/usr/share/fonts/encodings/large \
 			"${ED%/}/${FONTDIR}/${1//${S}/}" || eerror "failed to create fonts.dir"
 		[[ -e fonts.alias ]] && doins fonts.alias
 	fi
@@ -254,5 +255,4 @@ font_pkg_postrm() {
 	_update_fontcache
 }
 
-_FONT_ECLASS=1
 fi
