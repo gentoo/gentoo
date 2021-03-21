@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Stephan Hartmann <sultan@gentoo.org> (2021-03-21)
+# Requires unreleased sys-devel/icu-69.1
+>=www-client/chromium-91 system-icu
+
 # Michał Górny <mgorny@gentoo.org> (2021-03-06)
 # LLVM 9 has been removed.
 dev-lang/julia system-llvm
