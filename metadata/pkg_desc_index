@@ -2094,7 +2094,7 @@ app-emulation/containerd 1.3.7 1.3.9 1.4.4: A daemon to control runC
 app-emulation/containers-storage 1.18.1 1.20.2 1.23.3: containers/storage library
 app-emulation/cri-o 1.17.1 1.18.3 1.19.0: OCI-based implementation of Kubernetes Container Runtime Interface
 app-emulation/cri-tools 1.18.0: CLI and validation tools for Kubelet Container Runtime (CRI)
-app-emulation/crossover-bin 19.0.2 20.0.2-r1 20.0.4: Commercial version of app-emulation/wine with paid support
+app-emulation/crossover-bin 20.0.4: Commercial version of app-emulation/wine with paid support
 app-emulation/crun 0.16 0.17: A fast and low-memory footprint OCI Container Runtime fully written in C
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 3.7.0 9999: Golden Disk Image builder.
@@ -2752,7 +2752,7 @@ app-office/gnucash 4.4: A personal finance manager
 app-office/gnumeric 1.12.48: The GNOME Spreadsheet
 app-office/grisbi 1.2.2: Grisbi is a personal accounting application for Linux
 app-office/gtg 0.4.0: Personal organizer for the GNOME desktop environment
-app-office/homebank 5.2.8 5.4.2 5.4.3: Free, easy, personal accounting for everyone
+app-office/homebank 5.4.3: Free, easy, personal accounting for everyone
 app-office/hourglass 0.7.2-r1: A PSP (personal software process) time tracking utility written in Java
 app-office/ical 3.0-r2: Tk-based Calendar program
 app-office/impressive 0.13.0_beta2: Stylish way of giving presentations with Python
@@ -5303,7 +5303,7 @@ dev-libs/Ice 3.6.5 3.6.5-r1: ICE middleware C++ library and generator tools
 dev-libs/OpenNI 1.5.7.10 1.5.7.10-r1 9999: OpenNI SDK
 dev-libs/OpenNI2 2.2_beta2 9999: OpenNI2 SDK
 dev-libs/OpenSRF 2.1.1: Framework for the high-level development of the Evergreen ILS software
-dev-libs/amdgpu-pro-opencl 18.20.684755 19.30.838629 20.40.1147286: Proprietary OpenCL implementation for AMD GPUs
+dev-libs/amdgpu-pro-opencl 20.40.1147286: Proprietary OpenCL implementation for AMD GPUs
 dev-libs/aml 0.2.0 9999: event timer executor loop
 dev-libs/angelscript 2.34.0 2.35.0: A flexible, cross-platform scripting library
 dev-libs/antlr-c 3.5.2-r1: The ANTLR3 C Runtime
@@ -5656,7 +5656,7 @@ dev-libs/libvoikko 4.3 4.3.1: Spell checking, hyphenation and morphological anal
 dev-libs/libvterm 0.0_pre20181126 0.1.1 0.1.2 0.1.3: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
 dev-libs/libvterm-neovim 0.0_pre20150309 0.0_pre20150621: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
 dev-libs/libwacom 1.1 1.7 1.9: Library for identifying Wacom tablets and their model-specific features
-dev-libs/libwapcaplet 0.4.1-r2 0.4.2-r1 0.4.3-r1: string internment library, written in C
+dev-libs/libwapcaplet 0.4.3-r1: string internment library, written in C
 dev-libs/libwbxml 0.11.7: Library and tools to parse, encode and handle WBXML documents
 dev-libs/libx86 1.1-r4: A hardware-independent library for executing real-mode x86 code
 dev-libs/libx86emu 1.1: A library for emulating x86
@@ -5697,7 +5697,7 @@ dev-libs/nettle 3.6-r2 3.6-r3 3.7 3.7.1: Low-level cryptographic library
 dev-libs/newt 0.52.21-r1: Redhat's Newt windowing toolkit development files
 dev-libs/nmeap 0.3-r1: Extensible NMEA-0183 (GPS) data parser in standard C
 dev-libs/npth 1.6-r1: New GNU Portable Threads Library
-dev-libs/nsgenbind 0.6-r2 0.7-r1 0.8-r1: Generate Javascript-to-DOM bindings from w3c webidl files
+dev-libs/nsgenbind 0.8-r1: Generate Javascript-to-DOM bindings from w3c webidl files
 dev-libs/nspr 4.26 4.27 4.28 4.29 4.30: Netscape Portable Runtime
 dev-libs/nss 3.58-r2 3.62 3.63: Mozilla's Network Security Services library that implements PKI support
 dev-libs/nss-pem 1.0.5 1.0.6 1.0.7: PEM file reader for Network Security Services (NSS)
@@ -13080,7 +13080,7 @@ media-gfx/sam2p 0.49.4_p20190718-r1: Utility to convert raster images to EPS, PD
 media-gfx/sane-backends 1.0.30-r2 1.0.31: Scanner Access Now Easy - Backends
 media-gfx/sane-frontends 1.0.14-r6: Scanner Access Now Easy
 media-gfx/scantailor-advanced 1.0.16-r1: Interactive post-processing tool for scanned pages
-media-gfx/scour 0.37 0.38.1 0.38.2: Take an SVG file and produce a cleaner and more concise file
+media-gfx/scour 0.38.2: Take an SVG file and produce a cleaner and more concise file
 media-gfx/scrot 1.4 9999: Screen capture utility using imlib2 library
 media-gfx/sfftobmp 3.1.2-r1: sff to bmp converter
 media-gfx/shotwell 0.30.10 0.30.11: Open source photo manager for GNOME
@@ -14690,7 +14690,7 @@ net-dns/ndu 0.4-r4: DNS serial number incrementer and reverse zone builder
 net-dns/nsd 4.3.4 4.3.5: An authoritative only, high performance, open source name server
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
 net-dns/opendnssec 1.3.18-r1 1.4.8.2 1.4.12-r1 2.0.1-r1 2.0.3-r1: An open-source turn-key solution for DNSSEC
-net-dns/openresolv 3.9.0 3.10.0 3.11.0: A framework for managing DNS information
+net-dns/openresolv 3.11.0: A framework for managing DNS information
 net-dns/pdns 4.4.0-r100 4.4.1: The PowerDNS Daemon
 net-dns/pdns-recursor 4.4.2-r100: The PowerDNS Recursor
 net-dns/pdnsd 1.2.9a-r2: Proxy DNS server with permanent caching
@@ -15363,7 +15363,7 @@ net-misc/nyx 2.1.0-r1: Utility to monitor real time Tor status information
 net-misc/ofono 1.31: Open Source mobile telephony (GSM/UMTS) daemon
 net-misc/oidc-agent 3.3.5-r1 4.0.2: Agent and tools for managing OpenID Connect tokens on the command line
 net-misc/oidentd 2.5.0: Another (RFC1413 compliant) ident daemon
-net-misc/olsrd 0.9.6.1 0.9.6.1-r1 0.9.7 0.9.8: An implementation of the Optimized Link State Routing protocol
+net-misc/olsrd 0.9.6.1 0.9.8: An implementation of the Optimized Link State Routing protocol
 net-misc/omniORB 4.2.2: A robust, high-performance CORBA 2 ORB
 net-misc/omnisync 1.0_p20200130: A driver for NTPd for people who are firewall-challenged
 net-misc/openntpd 6.2_p3-r2 6.8_p1 6.8_p1-r1: Lightweight NTP server ported from OpenBSD
@@ -15454,7 +15454,7 @@ net-misc/suite3270 4.0_p13: Complete 3270 access package
 net-misc/taptap 1.0: A program to link two /dev/net/tun to form virtual ethernet
 net-misc/taylor-uucp 1.07-r4: Taylor UUCP
 net-misc/tcpsound 0.3.1-r1: Play sounds in response to network traffic
-net-misc/teamviewer 15.14.3 15.14.5 15.15.5: All-In-One Solution for Remote Access and Support over the Internet
+net-misc/teamviewer 15.15.5: All-In-One Solution for Remote Access and Support over the Internet
 net-misc/telnet-bsd 1.2-r1: Telnet and telnetd ported from OpenBSD with IPv6 support
 net-misc/throttle 1.2-r1: Bandwidth limiting pipe
 net-misc/tiers 1.1: Random network topography generator
@@ -17219,7 +17219,7 @@ sys-auth/google-authenticator 1.08 1.09 9999: PAM Module for two step verificati
 sys-auth/google-authenticator-libpam-hardened 9999: PAM Module for two step verification via mobile platform
 sys-auth/google-authenticator-wrappers 1 2 3: Set of scripts to manage google-auth setup on Gentoo Infra
 sys-auth/keystone 17.0.0 18.0.0 2020.1.9999 2020.2.9999: The Openstack authentication, authorization, and service catalog
-sys-auth/libfprint 0.99.0 1.0 1.90.1-r1 1.90.2-r1 1.90.6: library to add support for consumer fingerprint readers
+sys-auth/libfprint 1.0 1.90.6: library to add support for consumer fingerprint readers
 sys-auth/libnss-cache 0.10.2: libnss-cache is a library that serves nss lookups
 sys-auth/libnss-compat 1.2: NSS module to provide compat entry support
 sys-auth/libnss-mysql 1.5_p20060915-r5: NSS MySQL Library
@@ -17559,8 +17559,8 @@ sys-fs/android-file-transfer-linux 3.9 4.1 4.2 9999: Android File Transfer for L
 sys-fs/archivemount 0.8.12: Mount archives using libarchive and FUSE
 sys-fs/arm-fdisk 3.0.6-r1: edit disk partitions on Acorn machines
 sys-fs/atari-fdisk 0.7.1.5.4: create and edit the partition table of a disk partitioned in Atari format
-sys-fs/aufs-headers 4.1_p20170130 4.14_p20180709 4.14_p20190603: User space headers for aufs3
-sys-fs/aufs-util 4.1_p20170130 4.14_p20180709 4.14_p20190603: Utilities are always necessary for aufs
+sys-fs/aufs-headers 4.14_p20190603: User space headers for aufs3
+sys-fs/aufs-util 4.14_p20190603: Utilities are always necessary for aufs
 sys-fs/autorun 3.17: auto cdrom mounter for the lazy user
 sys-fs/avfs 1.1.1 1.1.3: AVFS is a virtual filesystem that allows browsing of compressed files
 sys-fs/bashmount 4.3.2: Bash script that uses udisks to mount removable devices without GUI
