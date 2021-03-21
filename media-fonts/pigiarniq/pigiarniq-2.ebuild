@@ -1,21 +1,19 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit font
 
 DESCRIPTION="Nunavut's official Inuktitut font"
 HOMEPAGE="http://www.ch.gov.nu.ca/en/ComputerTools.aspx"
 SRC_URI="http://ch.gov.nu.ca/fonts/pigiarniq.zip -> ${P}.zip"
+S="${WORKDIR}"
 
 LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-DEPEND="app-arch/unzip"
-RDEPEND=""
+BDEPEND="app-arch/unzip"
 
-S=${WORKDIR}
-FONT_S=${WORKDIR}
 FONT_SUFFIX="ttf"
