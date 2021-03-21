@@ -130,7 +130,7 @@ src_compile() {
 		popd > /dev/null || die
 
 		if use ancient; then
-			pushd ${MY_A_P}$(use fontforge || echo .TTF)/fonts > /dev/null || die
+			pushd ${MY_A_P}$(usex fontforge '' .TTF)/fonts > /dev/null || die
 				mv *.ttf "${FONT_S}" || die
 			popd > /dev/null || die
 		fi
@@ -161,7 +161,7 @@ src_install() {
 			ewarn "QA: missed font file: ${font}"
 		done
 
-	pushd ${PN}$(usex fontforge '' -src)-${PV} > /dev/null || die
+	pushd ${PN}$(usex fontforge -src '')-${PV} > /dev/null || die
 		dodoc CHANGES
 	popd > /dev/null || die
 
