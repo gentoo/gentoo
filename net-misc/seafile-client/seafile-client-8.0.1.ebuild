@@ -16,8 +16,9 @@ IUSE="libressl shibboleth test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-db/sqlite:3
-	dev-libs/libevent
+	<dev-libs/glib-2.68.0
 	dev-libs/jansson
+	dev-libs/libevent
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
