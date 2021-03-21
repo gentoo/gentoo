@@ -11,7 +11,7 @@ SRC_URI="http://comicneue.com/${P}.zip"
 S="${WORKDIR}"
 
 LICENSE="OFL-1.1"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
 SLOT="0"
 
 DEPEND="app-arch/unzip"
