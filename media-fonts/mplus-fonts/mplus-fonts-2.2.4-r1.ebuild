@@ -1,30 +1,29 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-FONT_PN=mplus
+EAPI=7
 
+FONT_PN=mplus
+MY_P="mplus_bitmap_fonts-${PV}"
 inherit font
 
-MY_P="mplus_bitmap_fonts-${PV}"
-
 DESCRIPTION="M+ Japanese bitmap fonts"
-HOMEPAGE="http://mplus-fonts.sourceforge.jp/"
+HOMEPAGE="https://mplus-fonts.osdn.jp/about-en.html"
 SRC_URI="mirror://sourceforge.jp/${PN}/5030/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="mplus-fonts"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 s390 sparc x86"
 IUSE="X"
 
-DEPEND=">=x11-apps/mkfontscale-1.2.0
-	x11-apps/bdftopcf"
-RDEPEND=""
-
-S="${WORKDIR}/${MY_P}"
-
 # Only installs fonts
 RESTRICT="strip binchecks"
+
+BDEPEND="
+	x11-apps/bdftopcf
+	>=x11-apps/mkfontscale-1.2.0
+"
 
 src_install() {
 	DESTDIR="${D}${FONTDIR}" ./install_mplus_fonts || die
