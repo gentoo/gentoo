@@ -5434,7 +5434,7 @@ dev-libs/intel-neo 20.16.16582 20.37.17906 20.44.18297: Intel Graphics Compute R
 dev-libs/isl 0.23-r1: A library for manipulating integer points bounded by linear constraints
 dev-libs/ivykis 0.42.4: Library for asynchronous I/O readiness notification
 dev-libs/jansson 2.13.1-r1: C library for encoding, decoding and manipulating JSON data
-dev-libs/jemalloc 5.2.1: Jemalloc is a general-purpose scalable concurrent allocator
+dev-libs/jemalloc 5.2.1 5.2.1-r1: Jemalloc is a general-purpose scalable concurrent allocator
 dev-libs/jerasure 2.0.0-r1 2.0.0-r2: A Library in C Facilitating Erasure Coding for Storage Applications
 dev-libs/json-c 0.15 9999: A JSON implementation in C
 dev-libs/json-glib 1.4.4 1.6.0 1.6.2: Library providing GLib serialization and deserialization for the JSON format
@@ -19155,7 +19155,7 @@ xfce-base/exo 4.16.0 4.16.1: Extensions, widgets and framework library with sess
 xfce-base/garcon 0.8.0: Xfce's freedesktop.org specification compatible menu implementation library
 xfce-base/libxfce4ui 4.16.0: Unified widget and session management libs for Xfce
 xfce-base/libxfce4util 4.16.0: A basic utility library for the Xfce desktop environment
-xfce-base/thunar 4.16.2 4.16.3 4.16.4 4.16.5 4.17.0: File manager for the Xfce desktop environment
+xfce-base/thunar 4.16.2 4.16.3 4.16.4 4.16.5 4.16.6 4.17.0 4.17.1: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.16.1: A tool to find and launch installed applications for the Xfce desktop
 xfce-base/xfce4-meta 4.14-r2 4.16 4.16-r2: The Xfce Desktop Environment (meta package)
 xfce-base/xfce4-panel 4.16.1 4.16.2: Panel for the Xfce desktop environment
