@@ -1,0 +1,14 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl] >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install postinst postrm preinst prepare unpack
+DEPEND=>=sys-libs/ncurses-5.9-r3:0 magic? ( sys-apps/file ) gtk? ( x11-libs/gtk+:2 ) X? ( x11-libs/libX11 ) dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Console file manager with vi(m)-like keybindings
+EAPI=7
+HOMEPAGE=https://vifm.info/
+INHERIT=git-r3 autotools vim-doc xdg
+IUSE=developer +extended-keys gtk +magic +vim +vim-syntax X
+LICENSE=GPL-2
+PROPERTIES=live
+RDEPEND=>=sys-libs/ncurses-5.9-r3:0 magic? ( sys-apps/file ) gtk? ( x11-libs/gtk+:2 ) X? ( x11-libs/libX11 ) vim? ( || ( app-editors/vim app-editors/gvim ) ) vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
+SLOT=0
+_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	vim-doc	dd0828b15877b2a09c07f4719e45891f	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
+_md5_=a48fb846738941a9c50f0272436a6cef
