@@ -16,5 +16,9 @@
 		<flag name="jack">Enable SPA JACK plugin and emulation to be able to run JACK applications on top of PipeWire</flag>
 		<flag name="pulseaudio">Enable emulation to be able to run PulseAudio applications on top of PipeWire</flag>
 		<flag name="vulkan">Enable vulkan spa plugin integration</flag>
+		<flag name="aptx">Enable Bluetooth aptX(HD) codec via media-libs/libopenaptx</flag>
+		<flag name="ldac">Enable Bluetooth LDAC codec via media-libs/libldac</flag>
+		<flag name="ofono">Enable Bluetooth ofono HFP backend</flag>
+		<flag name="tools">Build pw-cat/pw-play/pw-record</flag>
 	</use>
 </pkgmetadata>
