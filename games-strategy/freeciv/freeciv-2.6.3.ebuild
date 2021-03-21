@@ -1,29 +1,43 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools eutils flag-o-matic gnome2-utils ltprune
+EAPI=7
+
+MY_PV="${PV/_beta/-beta}"
+MY_PV="${MY_PV/_rc/-RC}"
+MY_P="${PN}-${MY_PV}"
+inherit desktop flag-o-matic qmake-utils xdg
 
 DESCRIPTION="multiplayer strategy game (Civilization Clone)"
 HOMEPAGE="http://www.freeciv.org/"
-SRC_URI="mirror://sourceforge/freeciv/${P}.tar.bz2"
+
+if [[ ${PV} != *_beta* ]] && [[ ${PV} != *_rc* ]] ; then
+	SRC_URI="mirror://sourceforge/freeciv/${MY_P}.tar.bz2"
+	KEYWORDS="~amd64 ~ppc64 ~x86"
+fi
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
-IUSE="auth aimodules dedicated +gtk ipv6 mapimg modpack mysql nls qt5 readline sdl +server +sound sqlite system-lua"
+IUSE="aimodules auth dedicated +gtk ipv6 mapimg modpack mysql nls qt5 readline sdl +server +sound sqlite system-lua"
 
 # postgres isn't yet really supported by upstream
-RDEPEND="app-arch/bzip2
+BDEPEND="
+	virtual/pkgconfig
+	!dedicated? (
+		x11-base/xorg-proto
+		nls? ( sys-devel/gettext )
+	)
+"
+DEPEND="
+	app-arch/bzip2
 	app-arch/xz-utils
 	net-misc/curl
 	sys-libs/zlib
 	auth? (
+		!mysql? ( ( !sqlite? ( dev-db/mysql-connector-c:0= ) ) )
 		mysql? ( dev-db/mysql-connector-c:0= )
 		sqlite? ( dev-db/sqlite:3 )
-		!mysql? ( ( !sqlite? ( dev-db/mysql-connector-c:0= ) ) )
 	)
-	readline? ( sys-libs/readline:0= )
 	dedicated? ( aimodules? ( dev-libs/libltdl:0 ) )
 	!dedicated? (
 		media-libs/libpng:0
@@ -36,26 +50,25 @@ RDEPEND="app-arch/bzip2
 			dev-qt/qtgui:5
 			dev-qt/qtwidgets:5
 		)
+		!sdl? ( !gtk? ( x11-libs/gtk+:2 ) )
 		sdl? (
-			media-libs/libsdl[video]
-			media-libs/sdl-gfx
-			media-libs/sdl-image[png]
-			media-libs/sdl-ttf
+			media-libs/libsdl2[video]
+			media-libs/sdl2-gfx
+			media-libs/sdl2-image[png]
+			media-libs/sdl2-ttf
 		)
 		server? ( aimodules? ( sys-devel/libtool:2 ) )
 		sound? (
-			media-libs/libsdl[sound]
-			media-libs/sdl-mixer[vorbis]
+			media-libs/libsdl2[sound]
+			media-libs/sdl2-mixer[vorbis]
 		)
-		!sdl? ( !gtk? ( x11-libs/gtk+:2 ) )
 	)
-	system-lua? ( >=dev-lang/lua-5.2 )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	!dedicated? (
-		x11-base/xorg-proto
-		nls? ( sys-devel/gettext )
-	)"
+	readline? ( sys-libs/readline:0= )
+	system-lua? ( >=dev-lang/lua-5.3:= )
+"
+RDEPEND="${DEPEND}"
+
+S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	if use !dedicated && use !server ; then
@@ -68,8 +81,6 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	eautoreconf
-
 	# install the .desktop in /usr/share/applications
 	# install the icons in /usr/share/pixmaps
 	sed -i \
@@ -80,52 +91,59 @@ src_prepare() {
 		server/Makefile.in \
 		tools/Makefile.in \
 		data/icons/Makefile.in || die
-	sed -i -e 's/=SDL/=X-SDL/' bootstrap/freeciv-sdl.desktop.in || die
 }
 
 src_configure() {
-	local myclient mydatabase myeconfargs
+	local myclient=() mydatabase=() myeconfargs=()
 
 	if use auth ; then
 		if ! use mysql && ! use sqlite ; then
 			einfo "No database backend chosen, defaulting"
 			einfo "to mysql!"
-			mydatabase=mysql
+			mydatabase=( mysql )
 		else
-			use mysql && mydatabase+=" mysql"
-			use sqlite && mydatabase+=" sqlite3"
+			use mysql && mydatabase+=( mysql )
+			use sqlite && mydatabase+=( sqlite3 )
 		fi
 	else
-		mydatabase=no
+		mydatabase=( no )
 	fi
 
 	if use dedicated ; then
-		myclient="no"
-		myeconfargs+=( --enable-server )
+		myclient=( no )
+		myeconfargs+=(
+			--enable-server
+			--enable-freeciv-manual=html
+		)
 	else
 		if use !sdl && use !gtk && ! use qt5 ; then
 			einfo "No client backend given, defaulting to"
-			einfo "gtk2 client!"
-			myclient="gtk2"
+			einfo "gtk3 client!"
+			myclient=( gtk3 )
 		else
-			use sdl && myclient+=" sdl"
-			use gtk && myclient+=" gtk2"
+			use sdl && myclient+=( sdl2 )
+			use gtk && myclient+=( gtk3 )
 			if use qt5 ; then
-				myclient+=" qt"
+				local -x MOCCMD=$(qt5_get_bindir)/moc
+				myclient+=( qt )
 				append-cxxflags -std=c++11
 			fi
 		fi
-		myeconfargs+=( $(use_enable server) --without-ggz-client )
+		myeconfargs+=(
+			$(use_enable server)
+			$(use_enable server freeciv-manual html )
+		)
 	fi
 
 	myeconfargs+=(
 		--enable-aimodules="$(usex aimodules "yes" "no")"
-		--enable-client="${myclient}"
-		--enable-fcdb="${mydatabase}"
-		--enable-fcmp="$(usex modpack "gtk2" "no")"
+		--enable-client="${myclient[*]}"
+		--enable-fcdb="${mydatabase[*]}"
+		--enable-fcmp="$(usex modpack "gtk3" "no")"
 		# disabling shared libs will break aimodules USE flag
 		--enable-shared
 		--localedir=/usr/share/locale
+		--with-appdatadir="${EPREFIX}"/usr/share/metainfo
 		$(use_enable ipv6)
 		$(use_enable mapimg)
 		$(use_enable nls)
@@ -140,8 +158,8 @@ src_install() {
 	default
 
 	if use dedicated ; then
-		rm -rf "${ED%/}/usr/share/pixmaps"
-		rm -f "${ED%/}"/usr/share/man/man6/freeciv-{client,gtk2,gtk3,modpack,qt,sdl,xaw}*
+		rm -rf "${ED}"/usr/share/pixmaps || die
+		rm -f "${ED}"/usr/share/man/man6/freeciv-{client,gtk2,gtk3,modpack,qt,sdl,xaw}* || die
 	else
 		if use server ; then
 			# Create and install the html manual. It can't be done for dedicated
@@ -151,29 +169,17 @@ src_install() {
 			# something like that, but then it's a PITA to avoid orphan files...
 			./tools/freeciv-manual || die
 			docinto html
-			dodoc manual*.html
+			dodoc classic*.html
 		fi
 		if use sdl ; then
 			make_desktop_entry freeciv-sdl "Freeciv (SDL)" freeciv-client
 		else
-			rm -f "${ED%/}"/usr/share/man/man6/freeciv-sdl*
+			rm -f "${ED}"/usr/share/man/man6/freeciv-sdl*
 		fi
-		rm -f "${ED%/}"/usr/share/man/man6/freeciv-xaw*
+		rm -f "${ED}"/usr/share/man/man6/freeciv-xaw*
 	fi
-	find "${ED}" -name "freeciv-manual*" -delete
+	find "${ED}" -name "freeciv-manual*" -delete || die
 
-	rm -f "${ED%/}/usr/$(get_libdir)"/*.a
-	prune_libtool_files
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
-pkg_postinst() {
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
+	rm -f "${ED}/usr/$(get_libdir)"/*.a || die
+	find "${ED}" -type f -name "*.la" -delete || die
 }
