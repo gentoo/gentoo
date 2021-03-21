@@ -1,4 +1,4 @@
-# Copyright 2017-2020 Gentoo Authors
+# Copyright 2017-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,13 +12,13 @@ else
 	KEYWORDS="~amd64 ~ppc64"
 	SRC_URI="https://github.com/bus1/dbus-broker/archive/v${PV}/${P}.tar.gz"
 	declare -Ag SUBPROJECTS=(
-		[c-dvar]=70f0f21e86a34577e674e202d5d09ef167102f02
-		[c-ini]=867f06a12a702c6869924575503877caa0adde75
-		[c-list]=ac7c831398219acd8d63038e866035a6f86f9e21
-		[c-rbtree]=a3b1f80548d1c736208c55e9251c49ada649dd62
-		[c-shquote]=95e4713a0de475688a5727a5d776dccbc69d3d28
-		[c-stdaux]=346623b40eb8137cae7568a69ee42253ff098ff7
-		[c-utf8]=af5bf7f330078d285e5f58584abd6de01c4cfd7d
+		[c-dvar]=eeb91604574f7c5b12b270f8355f7e6cf1720f4c
+		[c-ini]=204410a08d3a6c8221f6f0baf0355ce5af0232ed
+		[c-list]=f1eadf27377ef2f74b3cfd16185f54a219df2aae
+		[c-rbtree]=8aa7bd1828eedb19960f9eef98d15543ec9f34eb
+		[c-shquote]=83ccc2893385fcca1424b188f0f6c45a62f2b38d
+		[c-stdaux]=c5f166d02ff68af5cdcbad1bdcea2cb134e34ce4
+		[c-utf8]=8a8f07d623492d4b45532527f945b118a2b4299b
 	)
 	for sp in "${!SUBPROJECTS[@]}"; do
 		commit=${SUBPROJECTS[${sp}]}
