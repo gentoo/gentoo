@@ -1,29 +1,27 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
+MY_P="${PN}-8-update7-linux"
 inherit desktop font optfeature xdg
 
-MY_PV="8-update7"
-MY_P="${PN}-${MY_PV}-linux"
-
-DESCRIPTION="A brainstorming and mind mapping software tool"
+DESCRIPTION="Brainstorming and mind mapping software tool"
 HOMEPAGE="https://www.xmind.net"
 SRC_URI="http://dl2.xmind.net/xmind-downloads/${MY_P}.zip
 	https://dev.gentoo.org/~creffett/distfiles/xmind-icons.tar.xz"
+S="${WORKDIR}"
+
 LICENSE="EPL-1.0 LGPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~x86"
 IUSE=""
 
-DEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
 RDEPEND="
 	>=virtual/jre-1.8
 	x11-libs/gtk+:2
 "
-
-S=${WORKDIR}
 
 QA_PRESTRIPPED="opt/xmind/XMind/libcairo-swt.so"
 QA_FLAGS_IGNORED="
@@ -36,12 +34,7 @@ FONT_SUFFIX="ttf"
 FONT_S="${S}/fonts"
 
 src_configure() {
-	if use amd64; then
-		XDIR="XMind_amd64"
-	else
-		XDIR="XMind_i386"
-	fi
-	mv "$XDIR" XMind || die
+	mv "XMind_$(usex amd64 amd64 i386)" XMind || die
 	# force data instance & config area to be at home/.xmind directory
 	sed \
 		-e '/-configuration/d' \
@@ -82,4 +75,9 @@ pkg_postinst() {
 	font_pkg_postinst
 	xdg_pkg_postinst
 	optfeature "audio notes support" media-sound/lame
+}
+
+pkg_postrm() {
+	font_pkg_postrm
+	xdg_pkg_postrm
 }
