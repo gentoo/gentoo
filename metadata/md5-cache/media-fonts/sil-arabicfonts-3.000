@@ -1,0 +1,14 @@
+BDEPEND=app-arch/unzip
+DEFINED_PHASES=install postinst postrm setup unpack
+DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
+DESCRIPTION=SIL Opentype Unicode fonts for Arabic Languages
+EAPI=7
+HOMEPAGE=https://software.sil.org/arabicfonts/
+INHERIT=font
+IUSE=X
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86
+LICENSE=OFL-1.1
+SLOT=0
+SRC_URI=https://software.sil.org/downloads/r/scheherazade/ScheherazadeNew-3.000.zip https://software.sil.org/downloads/r/lateef/LateefGR-1.200.zip
+_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
+_md5_=47adfb148ea5b82e4c272ac8159e394c

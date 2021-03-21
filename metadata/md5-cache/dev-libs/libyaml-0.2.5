@@ -1,6 +1,5 @@
-BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=doc? ( app-doc/doxygen ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=compile configure install prepare
-DEPEND=doc? ( app-doc/doxygen )
 DESCRIPTION=YAML 1.1 parser and emitter written in C
 EAPI=7
 HOMEPAGE=https://github.com/yaml/libyaml
@@ -12,4 +11,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/yaml/libyaml/archive/0.2.5.tar.gz -> libyaml-0.2.5.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
-_md5_=0c2b3967573de629523211821ff2bf7e
+_md5_=3a1c619c199871a158ea5714de6d9015

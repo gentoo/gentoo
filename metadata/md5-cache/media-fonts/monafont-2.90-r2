@@ -3,7 +3,8 @@ DEFINED_PHASES=compile install postinst postrm prepare setup
 DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DESCRIPTION=Japanese bitmap and TrueType fonts suitable for browsing 2ch
 EAPI=7
-HOMEPAGE=http://monafont.sourceforge.net
+HOMEPAGE=http://monafont.sourceforge.net/
+INHERIT=font
 IUSE=truetype X
 KEYWORDS=~alpha amd64 arm ~hppa ~ia64 ppc ppc64 s390 sparc x86
 LICENSE=public-domain
@@ -11,4 +12,4 @@ RESTRICT=strip binchecks
 SLOT=0
 SRC_URI=mirror://sourceforge/monafont/monafont-2.90.tar.bz2 truetype? ( mirror://sourceforge/monafont/monafont-ttf-2.90.zip )
 _eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
-_md5_=5a9185d9ee22cfdf1e09668a3150962a
+_md5_=1dd6c5c6b8c6b150824f69a6fbb5191c

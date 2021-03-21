@@ -1,14 +1,14 @@
 BDEPEND=app-arch/unzip
 DEFINED_PHASES=install postinst postrm setup
 DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
-DESCRIPTION=Unicode sans-serif typeface for Coptic/Nubian languages
+DESCRIPTION=Unicode font for the standardized Yi script
 EAPI=7
-HOMEPAGE=https://software.sil.org/SophiaNubian/
+HOMEPAGE=https://software.sil.org/nuosu/
 INHERIT=font
 IUSE=X
 KEYWORDS=~amd64 ~arm ~arm64 ~x86
 LICENSE=OFL-1.1
 SLOT=0
-SRC_URI=https://software.sil.org/downloads/r/sophianubian/SophiaNubian-1.0.zip -> sophia-nubian-1.0.zip
+SRC_URI=https://software.sil.org/downloads/r/nuosu/NuosuSIL-2.200.zip
 _eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
-_md5_=0ee40982e3c330e45dfbdde60911996c
+_md5_=eaa4fa80a47456784a4ccdda4b765609

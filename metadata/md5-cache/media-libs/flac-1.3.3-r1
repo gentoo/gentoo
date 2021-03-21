@@ -1,14 +1,15 @@
-BDEPEND=app-arch/xz-utils virtual/pkgconfig !elibc_uclibc? ( sys-devel/gettext )
+BDEPEND=app-arch/xz-utils virtual/pkgconfig abi_x86_32? ( dev-lang/nasm ) !elibc_uclibc? ( sys-devel/gettext )
 DEFINED_PHASES=compile configure install test
-DEPEND=ogg? ( >=media-libs/libogg-1.3.0[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) abi_x86_32? ( dev-lang/nasm )
+DEPEND=ogg? ( >=media-libs/libogg-1.3.0[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] )
 DESCRIPTION=free lossless audio encoder and decoder
 EAPI=7
 HOMEPAGE=https://xiph.org/flac/
+INHERIT=multilib-minimal
 IUSE=+cxx debug ogg cpu_flags_ppc_altivec cpu_flags_ppc_vsx cpu_flags_x86_sse static-libs abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_s390_32 abi_s390_64
 KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x64-solaris ~x86-solaris
 LICENSE=BSD FDL-1.2 GPL-2 LGPL-2.1
 RDEPEND=ogg? ( >=media-libs/libogg-1.3.0[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] )
 SLOT=0
 SRC_URI=https://downloads.xiph.org/releases/flac/flac-1.3.3.tar.xz
-_eclasses_=multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=586addcd409d74876192d632fa5ae914
+_eclasses_=multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566
+_md5_=0975c1a6a7008c433755886afcf99d9b

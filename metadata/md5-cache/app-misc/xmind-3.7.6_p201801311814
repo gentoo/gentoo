@@ -1,7 +1,8 @@
+BDEPEND=app-arch/unzip
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup
-DEPEND=app-arch/unzip X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings ) dev-util/desktop-file-utils x11-misc/shared-mime-info
-DESCRIPTION=A brainstorming and mind mapping software tool
-EAPI=6
+DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings ) dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Brainstorming and mind mapping software tool
+EAPI=7
 HOMEPAGE=https://www.xmind.net
 INHERIT=desktop font optfeature xdg
 IUSE=X
@@ -10,5 +11,5 @@ LICENSE=EPL-1.0 LGPL-3
 RDEPEND=>=virtual/jre-1.8 x11-libs/gtk+:2
 SLOT=0
 SRC_URI=http://dl2.xmind.net/xmind-downloads/xmind-8-update7-linux.zip https://dev.gentoo.org/~creffett/distfiles/xmind-icons.tar.xz
-_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	estack	055c42df72f76a4f45ec92b35e83cd56	epatch	e8f1ec13660dc2f44b32775765d85e42	l10n	8cdd85e169b835d518bc2fd59f780d8e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	preserve-libs	ef207dc62baddfddfd39a164d9797648	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	font	dd073b36fe3fd8b868c23bc23209db45	optfeature	6a2add34e06e5a05d88471a33ccdd73e	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
-_md5_=e6a06affc3e2ae1cba871160a04ee545
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	font	dd073b36fe3fd8b868c23bc23209db45	optfeature	6a2add34e06e5a05d88471a33ccdd73e	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
+_md5_=8f08617aae6e900bb72a1ecefa3f53d9

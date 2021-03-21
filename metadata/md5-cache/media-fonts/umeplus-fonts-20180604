@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst postrm setup
+DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
+DESCRIPTION=Modified Ume and M+ fonts for Japanese
+EAPI=7
+HOMEPAGE=http://linuxplayers.g1.xrea.com/modified_fonts_01.html
+INHERIT=font
+IUSE=X
+KEYWORDS=~amd64 ~x86 ~ppc-macos
+LICENSE=mplus-fonts public-domain
+RESTRICT=binchecks strip
+SLOT=0
+SRC_URI=https://free.nchc.org.tw/osdn//users/21/21734/umeplus-fonts-20180604.tar.xz
+_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
+_md5_=03722f67686a92156da9e12c98a43383

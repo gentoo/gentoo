@@ -3852,6 +3852,8 @@ media-fonts/culmus:fancy - Install fancy fonts
 media-fonts/culmus:fontforge - Use media-gfx/fontforge to build fonts from source
 media-fonts/culmus:taamey - Install taamey fonts
 media-fonts/dejavu:fontforge - Use media-gfx/fontforge to build fonts from source
+media-fonts/essays1743:otf - Install the OpenType version of the font
+media-fonts/essays1743:ttf - Install the TrueType version of the font
 media-fonts/fira-mono:otf - Install the OpenType version of the font
 media-fonts/fira-mono:ttf - Install the TrueType version of the font
 media-fonts/fira-sans:otf - Install the OpenType version of the font

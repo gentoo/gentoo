@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst postrm setup
+DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
+DESCRIPTION=Japanese TrueType font based on M+ outline fonts and Open Sans
+EAPI=7
+HOMEPAGE=https://koruri.github.io/
+INHERIT=font
+IUSE=X
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
+LICENSE=mplus-fonts Apache-2.0
+RESTRICT=binchecks strip
+SLOT=0
+SRC_URI=https://github.com/Koruri/Koruri/releases/download/Koruri-20180915/Koruri-20180915.tar.xz
+_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
+_md5_=c32672445843add4f7a5dbda4cc25770
