@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure test
+DESCRIPTION=Run arbitrary commands when files change
+EAPI=7
+HOMEPAGE=http://entrproject.org
+INHERIT=toolchain-funcs
+IUSE=test
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
+LICENSE=ISC
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=http://entrproject.org/code/entr-4.8.tar.gz
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=9d86d14b38beceb592935863ae6e725f

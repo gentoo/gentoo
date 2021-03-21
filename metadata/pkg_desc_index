@@ -663,7 +663,7 @@ app-admin/ec2-ami-tools 1.5.7: Command-line tools that serve as client interface
 app-admin/eclean-kernel 0.4.3 1.99.4 2.99.1 2.99.2 9999: Remove outdated built kernels
 app-admin/elektra 0.8.20-r1: Framework to store config parameters in hierarchical key-value pairs
 app-admin/emacs-updater 1.16: Rebuild Emacs packages
-app-admin/entr 4.6: Run arbitrary commands when files change
+app-admin/entr 4.6 4.8: Run arbitrary commands when files change
 app-admin/eselect 1.4.16 1.4.17 9999: Gentoo's multi-purpose configuration and management tool
 app-admin/evtxtools 1.1.1-r1: Read, decode and dump Windows Vista/2008/7 event log file
 app-admin/exo 1.24.0: Command-line tool for everything at Exoscale: compute, storage, dns.
