@@ -1,0 +1,15 @@
+BDEPEND=ssl? ( || ( dev-libs/openssl:0 dev-libs/libressl:0 ) )
+DEFINED_PHASES=compile config install postinst postrm prepare setup unpack
+DEPEND=media-video/vdr >=dev-libs/tntnet-3[ssl=] >=dev-libs/cxxtools-3 pcre? ( >=dev-libs/libpcre-8.12[cxx] ) >=media-tv/gentoo-vdr-scripts-0.4.2 virtual/linuxtv-dvb-headers
+DESCRIPTION=VDR Plugin: Web Access To Settings
+EAPI=7
+HOMEPAGE=https://github.com/MarkusEh/vdr-plugin-live
+INHERIT=ssl-cert vdr-plugin-2
+IUSE=pcre ssl ssl
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0 GPL-2+ RSA
+RDEPEND=media-video/vdr >=dev-libs/tntnet-3[ssl=] >=dev-libs/cxxtools-3 pcre? ( >=dev-libs/libpcre-8.12[cxx] ) >=media-tv/gentoo-vdr-scripts-0.4.2 >=app-eselect/eselect-vdr-0.0.2
+SLOT=0
+SRC_URI=https://github.com/MarkusEh/vdr-plugin-live/archive/v3.0.6.tar.gz -> vdr-live-3.0.6.tar.gz
+_eclasses_=ssl-cert	8bf95e2477512d096a10bf218de41d5e	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	unpacker	45b49db67094fdafbb6a16a2299e894b	vdr-plugin-2	ade3484daa974237ce8f3ac2d064988f
+_md5_=bb76db42a21c2368acb2e7da0b632287

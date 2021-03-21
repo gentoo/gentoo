@@ -5694,7 +5694,7 @@ dev-libs/msgpack 3.3.0: MessagePack is a binary-based efficient data interchange
 dev-libs/mxml 3.2: A small XML parsing library that you can use to read XML data files or strings
 dev-libs/nanomsg 1.1.5: High-performance messaging interface for distributed applications
 dev-libs/ncnn 20200226 20200413 20200727: A high-performance neural network inference framework
-dev-libs/nettle 3.6-r2 3.6-r3 3.7 3.7.1: Low-level cryptographic library
+dev-libs/nettle 3.6-r2 3.6-r3 3.7.1 3.7.2: Low-level cryptographic library
 dev-libs/newt 0.52.21-r1: Redhat's Newt windowing toolkit development files
 dev-libs/nmeap 0.3-r1: Extensible NMEA-0183 (GPS) data parser in standard C
 dev-libs/npth 1.6-r1: New GNU Portable Threads Library
@@ -13731,14 +13731,14 @@ media-plugins/vdr-femon 2.0.4 2.4.0: VDR Plugin: DVB Frontend Status Monitor (si
 media-plugins/vdr-ffnetdev 0.1.2: VDR Plugin: Output device which offers OSD via VNC and Video as raw mpeg over network
 media-plugins/vdr-filebrowser 0.2.1: VDR plugin: file manager plugin for moving or renaming files in VDR
 media-plugins/vdr-freecell 0.0.2-r3 0.0.2-r4: VDR plugin: play 'Freecell' on the On Screen Display
-media-plugins/vdr-fritzbox 1.5.3-r1: VDR Plugin: Inform about incoming phone-calls and use the fritz!box phonebook
+media-plugins/vdr-fritzbox 1.5.3-r1 1.5.3-r2: VDR Plugin: Inform about incoming phone-calls and use the fritz!box phonebook
 media-plugins/vdr-graphlcd 1.0.1-r1: VDR Plugin: support output on Graphical LCD
 media-plugins/vdr-imonlcd 1.0.2: VDR Plugin: shows information about the current state of VDR on iMON LCD
 media-plugins/vdr-iptv 2.2.1-r1 2.4.0: VDR plugin: Add a logical device capable of receiving IPTV
 media-plugins/vdr-joystick 0.0.3: VDR plugin: allows using a joystick as a remote control for VDR
 media-plugins/vdr-launcher 0.0.4: VDR Plugin: launch other plugins - even when their menu-entry is hidden
 media-plugins/vdr-lcdproc 0.0.10.9 0.0.10.9-r1: VDR plugin: use LCD device for additional output
-media-plugins/vdr-live 0.3.0_p20130504-r1 2.3.1: VDR Plugin: Web Access To Settings
+media-plugins/vdr-live 0.3.0_p20130504-r1 2.3.1 3.0.6: VDR Plugin: Web Access To Settings
 media-plugins/vdr-loadepg 0.2.7: VDR : Loadepg Plugin; Canal+ group (Mediahighway)
 media-plugins/vdr-menuorg 0.5.1-r1: VDR plugin: make osd menu configurable via config-file
 media-plugins/vdr-mlist 1.0.2: VDR plugin: Show a history of the last OSD message
@@ -13760,7 +13760,7 @@ media-plugins/vdr-remote 0.7.0: VDR Plugin: use various devices for controlling 
 media-plugins/vdr-remoteosd 1.0.0 1.0.0-r1: VDR Plugin: server/client remoteosd
 media-plugins/vdr-remotetimers 1.0.2 1.0.2-r1: VDR plugin: edit timers on remote vdr instances
 media-plugins/vdr-rpihddevice 1.0.3 1.0.5: VDR Plugin: Output Device for Raspberry Pi
-media-plugins/vdr-rssreader 2.2.1-r1: VDR Plugin: RSS reader
+media-plugins/vdr-rssreader 2.2.1-r1 2.4.0: VDR Plugin: RSS reader
 media-plugins/vdr-satip 2.2.5 2.4.0_p20210131: VDR Plugin: integrates SAT>IP network devices seamlessly into VDR
 media-plugins/vdr-scheduler 0.1.3 0.1.6: VDR plugin: allows to control externel jobs from within VDR
 media-plugins/vdr-screenshot 0.0.15: VDR Plugin: takes screenshots of the current video or tv screen
@@ -14331,7 +14331,7 @@ media-video/v4l2loopback 0.12.5-r1 9999: v4l2 loopback device whose output is it
 media-video/vamps 0.99.2-r2: Very fast requantisizing tool for backup DVDs
 media-video/vcdimager 2.0.1: GNU VCDimager
 media-video/vcsi 7-r1: Create thumbnail sheets from video files
-media-video/vdr 2.2.0-r5 2.2.0-r6 2.4.1-r2 2.4.1-r3 2.4.6-r1: Video Disk Recorder - turns a pc into a powerful set top box for DVB
+media-video/vdr 2.2.0-r6 2.4.1-r3 2.4.6-r1: Video Disk Recorder - turns a pc into a powerful set top box for DVB
 media-video/vdr2jpeg 0.2.0 0.2.0-r5: Addon needed for XXV - WWW Admin for the Video Disk Recorder
 media-video/vdrsync 0.1.3_pre050322-r1 0.1.3_pre050322-r2: converting vdr-recordings to mpeg2, dvd or other similar formats
 media-video/vdrtools-genindex 0.1.3-r2: VDR: genindex Script
