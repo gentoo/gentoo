@@ -460,6 +460,7 @@ acct-user/nova 0-r1: user for the openstack nova service
 acct-user/nsd 0-r1: user for nsd daemon
 acct-user/nslcd 0-r1: User for nss-pam-ldapd
 acct-user/ntp 0-r1: user for ntp daemon
+acct-user/nvpd 0: User for nvidia-persistenced
 acct-user/nzbget 0: User for net-nntp/nzbget
 acct-user/oidentd 0-r1: System user: oidentd
 acct-user/opendkim 0-r1: User for OpenDKIM
@@ -10974,8 +10975,8 @@ dev-util/netsurf-buildsystem 1.8-r1 1.9: Build system used for netsurf and its l
 dev-util/ninja 1.10.0 1.10.1 1.10.2 1.10.2-r1 9999: A small build system similar to make
 dev-util/ninka 2.0_pre1_p20170402: A license identification tool for source code
 dev-util/numdiff 5.9.0: File comparision, ignoring small numeric differences and formats
-dev-util/nvidia-cuda-sdk 8.0.61 9.2.88 10.2.89: NVIDIA CUDA Software Development Kit
-dev-util/nvidia-cuda-toolkit 8.0.61 9.2.88 10.2.89-r2 11.1.1-r1 11.2.0-r2: NVIDIA CUDA Toolkit (compiler and friends)
+dev-util/nvidia-cuda-sdk 8.0.61-r1 9.2.88-r1 10.2.89-r1: NVIDIA CUDA Software Development Kit
+dev-util/nvidia-cuda-toolkit 8.0.61-r1 9.2.88-r1 10.2.89-r3 11.1.1-r2 11.2.0-r3: NVIDIA CUDA Toolkit (compiler and friends)
 dev-util/objconv 2.51: object code file converted (COFF, ELF, OMF, MACHO)
 dev-util/omake 0.9.8.6.0_rc1 0.10.2 0.10.3: Make replacement
 dev-util/open-vcdiff 0.8.4-r1: An encoder/decoder for the VCDIFF (RFC3284) format
@@ -10989,7 +10990,7 @@ dev-util/patchutils 0.3.4 0.4.2: A collection of tools that operate on patch fil
 dev-util/patdiff 0.14.0: Colored patience diffs with word-level refinement
 dev-util/peg 0.1.18: Recursive-descent parser generators for C
 dev-util/perf 5.8 5.9.9 5.10.16 5.11: Userland tools for Linux Performance Counters
-dev-util/pkgcheck 0.7.7-r1 0.7.9-r1 0.7.9-r2 0.8.1-r2 0.8.2-r2 0.9.0-r2 0.9.1-r2 0.9.2-r1 0.9.3-r1 0.9.5 9999: pkgcore-based QA utility for ebuild repos
+dev-util/pkgcheck 0.7.7-r1 0.7.9-r1 0.7.9-r2 0.8.1-r2 0.8.2-r2 0.9.0-r2 0.9.1-r2 0.9.2-r2 0.9.3-r1 0.9.5 9999: pkgcore-based QA utility for ebuild repos
 dev-util/pkgconf 1.6.3 1.7.3-r1 1.7.4 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
 dev-util/pkgconfig 0.28-r2 0.28-r3 0.29.1 0.29.2 9999: Package config system that manages compile/link flags
 dev-util/pkgdev 0.1.1 0.1.2 9999: Collection of tools for Gentoo development
@@ -12109,6 +12110,8 @@ gui-apps/wf-shell 0.5.0 0.6.1 0.7.0 9999: A compiz like 3D wayland compositor
 gui-apps/wl-clipboard 1.0.0 2.0.0 9999: Wayland clipboard utilities
 gui-libs/amtk 5.0.2 5.2.0: Actions, Menus and Toolbars Kit for GTK+ applications
 gui-libs/display-manager-init 1.0-r3: RC init files for starting display and login managers
+gui-libs/egl-wayland 1.1.6: EGLStream-based Wayland external platform (for NVIDIA)
+gui-libs/eglexternalplatform 1.1: EGL External Platform interface
 gui-libs/gdk-pixbuf-loader-webp 0.0.2: WebP GDK Pixbuf Loader library
 gui-libs/greetd 0.6.1 0.7.0: ipc based login daemon
 gui-libs/gtk-layer-shell 0.1.0-r1: Library to create desktop components for Wayland using the Layer Shell protocol
@@ -15683,7 +15686,7 @@ net-vpn/protonvpn-cli 2.2.6: A VPN command-line tool from protonvpn - python rew
 net-vpn/strongswan 5.9.0 5.9.1: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
 net-vpn/tailscale 1.2.10-r1 1.4.0 1.4.1 1.4.5: Tailscale vpn client
 net-vpn/tinc 1.0.35-r2 1.0.36 1.1_pre17-r1: tinc is an easy to configure VPN implementation
-net-vpn/tor 0.4.4.6 0.4.4.8 0.4.5.7: Anonymizing overlay network for TCP
+net-vpn/tor 0.4.4.6 0.4.4.8 0.4.5.7 0.4.6.1_alpha: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550-r2: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3-r2: Create tunnels over TCP/IP networks with shaping, encryption, and compression
@@ -18327,7 +18330,7 @@ x11-base/xorg-drivers 1.20-r2 9999: Meta package containing deps on all xorg dri
 x11-base/xorg-proto 2020.1 2021.3 9999: X.Org combined protocol headers
 x11-base/xorg-server 1.20.10-r2 1.20.10-r3 9999: X.Org X servers
 x11-base/xorg-x11 7.4-r3: An X11 implementation maintained by the X.Org Foundation (meta package)
-x11-drivers/nvidia-drivers 390.141 450.102.04 460.39-r1 460.56: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 390.141 390.141-r1 450.102.04 450.102.04-r1 460.39-r1 460.56 460.67: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-elographics 1.4.2: Elographics input driver
 x11-drivers/xf86-input-evdev 2.10.6: Generic Linux input driver
 x11-drivers/xf86-input-joystick 1.6.3: X.Org driver for joystick input devices
@@ -18610,7 +18613,7 @@ x11-misc/picom 8-r1 8.2-r1 8.2-r2 9999: A lightweight compositor for X11 (previo
 x11-misc/piedock 1.6.9: A little bit like the famous OS X dock but in shape of a pie menu
 x11-misc/polybar 3.4.3 3.5.5: A fast and easy-to-use tool for creating status bars
 x11-misc/prime-run 1.0: Run programs on the discrete nVidia video card
-x11-misc/primus 0.2 0.2-r3: Faster OpenGL offloading for Bumblebee
+x11-misc/primus 0.2-r3: Faster OpenGL offloading for Bumblebee
 x11-misc/projecteur 0.8 0.9.1: Linux Desktop Application for the Logitech Spotlight device
 x11-misc/py3status 3.34: py3status is an extensible i3status wrapper written in python
 x11-misc/qarma 1: Zenity Clone for Qt5

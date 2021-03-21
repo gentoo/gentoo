@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst prepare pretend setup unpack
+DESCRIPTION=NVIDIA CUDA Toolkit (compiler and friends)
+EAPI=7
+HOMEPAGE=https://developer.nvidia.com/cuda-zone
+INHERIT=check-reqs cuda toolchain-funcs unpacker
+IUSE=debugger doc eclipse profiler
+KEYWORDS=-* ~amd64 ~amd64-linux
+LICENSE=NVIDIA-CUDA
+RDEPEND=<sys-devel/gcc-9[cxx] >=x11-drivers/nvidia-drivers-440.33.01[X,uvm(+)] debugger? ( dev-libs/openssl-compat:1.0.0 sys-libs/libtermcap-compat sys-libs/ncurses-compat:5[tinfo] ) eclipse? ( dev-libs/openssl-compat:1.0.0 >=virtual/jre-1.6 ) profiler? ( dev-libs/openssl-compat:1.0.0 >=virtual/jre-1.6 )
+RESTRICT=bindist mirror
+SLOT=0/10.2.89
+SRC_URI=https://developer.download.nvidia.com/compute/cuda/10.2/Prod/local_installers/cuda_10.2.89_440.33.01_linux.run
+_eclasses_=check-reqs	7e3fd1855a5e1b50bb9e80827b3f672d	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	cuda	c2f1b334711bbbf2130f339636dc7515	unpacker	45b49db67094fdafbb6a16a2299e894b
+_md5_=33d38e82e0114b2b2fab937cea2f9e25

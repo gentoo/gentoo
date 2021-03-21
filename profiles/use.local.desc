@@ -8707,9 +8707,8 @@ x11-base/xorg-server:xnest - Build the Xnest server
 x11-base/xorg-server:xorg - Build the Xorg X server (HIGHLY RECOMMENDED)
 x11-base/xorg-server:xvfb - Build the Xvfb server
 x11-base/xorg-x11:fonts - Install fonts from X.Org
-x11-drivers/nvidia-drivers:X - Install the X.org driver, OpenGL libraries, XvMC libraries, and VDPAU libraries
 x11-drivers/nvidia-drivers:compat - Install non-GLVND libGL for backwards compatibility
-x11-drivers/nvidia-drivers:driver - Install the kernel driver module
+x11-drivers/nvidia-drivers:driver - Install kernel driver modules
 x11-drivers/nvidia-drivers:kms - Enable support for kernel mode setting (KMS)
 x11-drivers/nvidia-drivers:tools - Install additional tools such as nvidia-settings
 x11-drivers/nvidia-drivers:uvm - Install the Unified Memory kernel module (nvidia-uvm) for sharing memory between CPU and GPU in CUDA programs
