@@ -1,7 +1,8 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit font
 
 # Note to maintainers:
@@ -15,18 +16,18 @@ SRC_URI="
 	l10n_ko? ( https://github.com/adobe-fonts/${PN}/raw/${PV}R/SubsetOTF/SourceHanSansKR.zip -> ${PN}-ko-${PV}.zip )
 	l10n_zh-CN? ( https://github.com/adobe-fonts/${PN}/raw/${PV}R/SubsetOTF/SourceHanSansCN.zip -> ${PN}-zh_CN-${PV}.zip )
 	l10n_zh-TW? ( https://github.com/adobe-fonts/${PN}/raw/${PV}R/SubsetOTF/SourceHanSansTW.zip -> ${PN}-zh_TW-${PV}.zip )"
+S="${WORKDIR}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ppc ppc64 sparc x86 ~x64-macos"
 IUSE="l10n_ja l10n_ko +l10n_zh-CN l10n_zh-TW"
 REQUIRED_USE="|| ( l10n_ja l10n_ko l10n_zh-CN l10n_zh-TW )"
-
-S=${WORKDIR}
-FONT_SUFFIX="otf"
 RESTRICT="binchecks strip"
 
-DEPEND="app-arch/unzip"
+FONT_SUFFIX="otf"
+
+BDEPEND="app-arch/unzip"
 
 src_install() {
 	use l10n_ja && FONT_S="${S}/SourceHanSansJP" font_src_install
