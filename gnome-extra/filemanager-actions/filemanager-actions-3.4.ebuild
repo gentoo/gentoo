@@ -27,6 +27,7 @@ RDEPEND="
 	x11-libs/gdk-pixbuf:2
 "
 DEPEND="${RDEPEND}
+	app-text/gnome-doc-utils
 	dev-util/gdbus-codegen
 	>=dev-util/intltool-0.50.2
 	virtual/pkgconfig
