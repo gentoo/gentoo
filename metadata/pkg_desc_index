@@ -8433,7 +8433,7 @@ dev-python/httpretty 1.0.5: HTTP client mock for Python
 dev-python/httpx 0.16.1 0.17.0 0.17.1: Fully-featured HTTP client which provides sync and async APIs
 dev-python/huawei-lte-api 1.4.17: API For huawei LAN/WAN LTE Modems
 dev-python/humanfriendly 8.2 9.1: Human friendly output for text interfaces using Python
-dev-python/humanize 3.2.0: Common humanization utilities
+dev-python/humanize 3.2.0 3.3.0: Common humanization utilities
 dev-python/hvac 0.10.8: hashicorp vault client in python
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
@@ -8475,7 +8475,7 @@ dev-python/ipywidgets 7.5.1-r1 7.6.2 7.6.3: IPython HTML widgets for Jupyter
 dev-python/irc 19.0.1: IRC client framework written in Python
 dev-python/iso8601 0.1.14: Simple module to parse ISO 8601 dates
 dev-python/isodate 0.6.0-r1: ISO 8601 date/time/duration parser and formatter
-dev-python/isort 5.7.0: A python utility/library to sort imports
+dev-python/isort 5.7.0 5.8.0: A python utility/library to sort imports
 dev-python/itsdangerous 1.1.0-r1: Various helpers to pass trusted data to untrusted environments and back
 dev-python/itypes 1.1.0: basic immutable container types for python
 dev-python/jaraco-classes 3.2.0 3.2.1: Classes used by other projects by developer jaraco
