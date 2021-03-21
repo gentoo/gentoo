@@ -1,11 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
+
 inherit font
 
-DESCRIPTION="A geometric sans-serif font with a technological feel"
-HOMEPAGE="http://ndiscovered.com/exo-2/"
+DESCRIPTION="Geometric sans-serif font with a technological feel"
+HOMEPAGE="https://www.ndiscover.com/exo-2-0/"
 SRC_URI="https://dev.gentoo.org/~jstein/dist/${P}.tar.xz"
 # repackaged from two upstream zips (exo-2, exo condensed & expanded) + license
 

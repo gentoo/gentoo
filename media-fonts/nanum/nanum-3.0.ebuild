@@ -1,21 +1,19 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
 inherit font
 
-DESCRIPTION="The Nanum Korean fonts distributed by Naver"
-HOMEPAGE="http://hangeul.naver.com/2014/nanum"
+DESCRIPTION="Korean fonts distributed by Naver"
+HOMEPAGE="https://hangeul.naver.com/2017/nanum"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="OFL-1.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-RESTRICT="binchecks strip"
 
-DEPEND=""
-RDEPEND=""
+RESTRICT="binchecks strip"
 
 FONT_SUFFIX="ttf"

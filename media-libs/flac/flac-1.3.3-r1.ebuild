@@ -15,12 +15,11 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-li
 IUSE="+cxx debug ogg cpu_flags_ppc_altivec cpu_flags_ppc_vsx cpu_flags_x86_sse static-libs"
 
 RDEPEND="ogg? ( >=media-libs/libogg-1.3.0[${MULTILIB_USEDEP}] )"
-DEPEND="${RDEPEND}
-	abi_x86_32? ( dev-lang/nasm )
-"
+DEPEND="${RDEPEND}"
 BDEPEND="
 	app-arch/xz-utils
 	virtual/pkgconfig
+	abi_x86_32? ( dev-lang/nasm )
 	!elibc_uclibc? ( sys-devel/gettext )
 "
 

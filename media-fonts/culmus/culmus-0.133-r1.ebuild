@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
 inherit font
 
@@ -39,109 +39,114 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="ancient fancy fontforge taamey"
 
-FONT_CONF=( "${T}/65-culmus.conf" )
+FONT_CONF=( "${T}"/65-culmus.conf )
 
 RDEPEND="!media-fonts/culmus-ancient"
 # >=x11-apps/mkfontscale-1.0.9-r1 as Heavy weight support is required
-DEPEND="${RDEPEND}
+BDEPEND="
 	app-arch/unzip
 	>=x11-apps/mkfontscale-1.0.9-r1
-	fontforge? ( media-gfx/fontforge )"
+	fontforge? ( media-gfx/fontforge )
+"
 
-S=${WORKDIR}
+S="${WORKDIR}"
 # Put all fonts, generated or not here
-FONT_S=${S}/FONTS
+FONT_S="${S}/FONTS"
+
+PATCHES=( "${FILESDIR}/${P}-fontconfig-test.patch" ) # bug 695708
 
 src_unpack() {
 	unpack ${P}.tar.gz # For type1 fonts...
 	unpack ${PN}-type1-${TYPE1_PV}.tar.gz
 	use fontforge && unpack ${PN}-src-${PV}.tar.gz
 
-	use ancient && unpack ${MY_A_P}$(use fontforge || echo .TTF).tgz
+	use ancient && unpack ${MY_A_P}$(usex fontforge '' .TTF).tgz
 
 	if use fancy; then
 		unpack $(printf "%s.tar.gz " ${FANCY_FONTS})
 		unpack $(printf "%s.zip " ${FANCY_YG_FONTS})
-		mv TTF/* .
+		mv TTF/* . || die
 	fi
 
 	if use taamey; then
 		for font in ${TAAMEY_FONTS}; do
-			mkdir ${font}
-			pushd ${font}
-			unpack ${font}.zip
-			popd >/dev/null
+			mkdir ${font} || die
+			pushd ${font} > /dev/null || die
+				unpack ${font}.zip
+			popd > /dev/null || die
 		done
 	fi
 }
 
 src_prepare() {
 	default
-	cp "${P}/culmus.conf" "${T}/65-culmus.conf" || die
+	cp "${P}"/culmus.conf "${T}"/65-culmus.conf || die
 }
 
 src_compile() {
-	mkdir -p "${FONT_S}"
+	mkdir -p "${FONT_S}" || die
 	if use fontforge; then
-		pushd ${P}
-		mv *.afm *.pfa "${FONT_S}"
-		rm *.ttf
-		popd >/dev/null
+		pushd ${P} > /dev/null || die
+			mv *.afm *.pfa "${FONT_S}" || die
+			rm *.ttf || die
+		popd > /dev/null || die
 
-		pushd ${PN}-type1-${TYPE1_PV}
-		mv *.afm *.pfa "${FONT_S}"
-		popd >/dev/null
+		pushd ${PN}-type1-${TYPE1_PV} > /dev/null || die
+			mv *.afm *.pfa "${FONT_S}" || die
+		popd > /dev/null || die
 
-		pushd ${PN}-src-${PV}
-		for f in *.sfd; do
-			"${WORKDIR}"/${PN}-src-${PV}/GenerateTTF.pe ${f} "${FONT_S}" || die
-		done
-		popd >/dev/null
+		pushd ${PN}-src-${PV} > /dev/null || die
+			for f in *.sfd; do
+				"${WORKDIR}"/${PN}-src-${PV}/GenerateTTF.pe ${f} "${FONT_S}" || die
+			done
+		popd > /dev/null || die
 
 		if use ancient; then
-			pushd ${MY_A_P}/src
-			export FONTFORGE_LANGUAGE=ff
-			make clean
-			make all || die "Failed to build fonts"
-			mv *.ttf "${FONT_S}"
-			popd >/dev/null
+			pushd ${MY_A_P}/src > /dev/null || die
+				export FONTFORGE_LANGUAGE=ff
+				make clean || die
+				make all || die "Failed to build fonts"
+				mv *.ttf "${FONT_S}" || die
+			popd > /dev/null || die
 		fi
 
 		if use taamey; then
 			for font in ${TAAMEY_FONTS}; do
-				rm -rf ${font}/TTF
-				pushd ${font}/SFD
-				for f in *.sfd; do
-					"${WORKDIR}"/${PN}-src-${PV}/GenerateTTF.pe ${f} "${FONT_S}" || die
-				done
-				popd >/dev/null
+				rm -rf ${font}/TTF || die
+				pushd ${font}/SFD > /dev/null || die
+					for f in *.sfd; do
+						"${WORKDIR}"/${PN}-src-${PV}/GenerateTTF.pe ${f} "${FONT_S}" || die
+					done
+				popd > /dev/null || die
 			done
 		fi
 	else
-		pushd ${P}
-		mv *.afm *.pfa *.ttf "${FONT_S}"
-		popd >/dev/null
+		pushd ${P} > /dev/null || die
+			mv *.afm *.pfa *.ttf "${FONT_S}" || die
+		popd >/dev/null || die
 
-		pushd ${PN}-type1-${TYPE1_PV}
-		mv *.afm *.pfa "${FONT_S}"
-		popd >/dev/null
+		pushd ${PN}-type1-${TYPE1_PV} > /dev/null || die
+			mv *.afm *.pfa "${FONT_S}" || die
+		popd > /dev/null || die
 
 		if use ancient; then
-			pushd ${MY_A_P}$(use fontforge || echo .TTF)/fonts
-			mv *.ttf "${FONT_S}"
-			popd >/dev/null
+			pushd ${MY_A_P}$(use fontforge || echo .TTF)/fonts > /dev/null || die
+				mv *.ttf "${FONT_S}" || die
+			popd > /dev/null || die
 		fi
 
 		if use taamey; then
 			for font in ${TAAMEY_FONTS}; do
-				pushd ${font}/TTF
-				mv *.ttf "${FONT_S}"
-				popd >/dev/null
+				pushd ${font}/TTF > /dev/null || die
+					mv *.ttf "${FONT_S}" || die
+				popd > /dev/null || die
 			done
 		fi
 	fi
 
-	use fancy && mv *.afm *.pfa *.ttf "${FONT_S}"
+	if use fancy; then
+		mv *.afm *.pfa *.ttf "${FONT_S}" || die
+	fi
 }
 
 src_install() {
@@ -150,31 +155,31 @@ src_install() {
 	FONT_SUFFIX="pfa afm $((use fancy || use taamey) && echo ttf)" \
 		font_src_install
 
-	rm -rf "${FONT_S}"
+	rm -rf "${FONT_S}" || die
 	find "${WORKDIR}" -name '*.ttf' -o -name '*.pfa' -o -name '*.pfm' |
 		while read font; do
 			ewarn "QA: missed font file: ${font}"
 		done
 
-	pushd ${PN}$(use fontforge && echo -src)-${PV}
-	dodoc CHANGES
-	popd >/dev/null
+	pushd ${PN}$(usex fontforge '' -src)-${PV} > /dev/null || die
+		dodoc CHANGES
+	popd > /dev/null || die
 
 	if use ancient; then
-		pushd "${WORKDIR}/${MY_A_P}$(use fontforge || echo .TTF)/"
+		pushd "${WORKDIR}/${MY_A_P}$(usex fontforge '' .TTF)/" > /dev/null || die
 		newdoc CHANGES{,.ancient} || die
 		newdoc README{,.ancient} || die
-		popd >/dev/null
+		popd > /dev/null || die
 	fi
 
 	if use taamey; then
 		for font in ${TAAMEY_FONTS}; do
-			pushd ${font}
-			[[ -f ChangeLog ]] && { newdoc ChangeLog{,.${font}} || die; }
-			newdoc README{,.${font}} || die
-			insinto /usr/share/doc/${PF}/${font}
-			doins -r Samples
-			popd >/dev/null
+			pushd ${font} > /dev/null || die
+				[[ -f ChangeLog ]] && { newdoc ChangeLog{,.${font}} || die; }
+				newdoc README{,.${font}} || die
+				insinto /usr/share/doc/${PF}/${font}
+				doins -r Samples
+			popd > /dev/null || die
 		done
 	fi
 }

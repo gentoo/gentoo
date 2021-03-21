@@ -1,27 +1,26 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
+
+MY_P=${P/-fonts/}
 inherit font
 
-MY_P=${P/_/-}
-MY_P=${MY_P/-fonts/}
-DESCRIPTION="fonts gpl'd by Han The Thanh, based on URW++ fonts with Vietnamese glyphs added"
+DESCRIPTION="Vietnamese version of the standard PostScript fonts from URW++"
 # Check updates on:
-# http://vntex.sf.net/fonts/urwvn-ttf/download
+# http://vntex.sourceforge.net/fonts/urwvn-ttf/download/
 # https://sourceforge.net/projects/vntex/files
-HOMEPAGE="http://vntex.sf.net"
+HOMEPAGE="http://vntex.sourceforge.net/"
 SRC_URI="mirror://sourceforge/project/vntex/urwvn-ttf/${MY_P}-ttf.tar.bz2"
+S="${WORKDIR}/${MY_P}-ttf"
 
-LICENSE="GPL-2 Aladdin" # see bug #434262
+LICENSE="GPL-2 Aladdin" # bug #434262
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc s390 sparc x86"
 IUSE=""
 
-S="${WORKDIR}/${MY_P}-ttf"
-FONT_SUFFIX="ttf"
-FONT_S=${S}
 FONT_CONF=( "${FILESDIR}/65-urwvn.conf" )
+FONT_SUFFIX="ttf"
 
 pkg_postinst() {
 	font_pkg_postinst

@@ -1,24 +1,23 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-inherit font
+EAPI=7
 
 MY_PN="ae_fonts"
-S="${WORKDIR}"/${MY_PN}_${PV}
+inherit font
 
 DESCRIPTION="Arabeyes Arabic TrueType fonts"
 HOMEPAGE="https://www.arabeyes.org/Khotot#2.0"
 SRC_URI="mirror://sourceforge/arabeyes/${MY_PN}_${PV}.tar.bz2"
-LICENSE="GPL-2"
+S="${WORKDIR}/${MY_PN}_${PV}"
 
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 arm ~ia64 ppc s390 sparc x86"
 
-FONT_SUFFIX="ttf"
+DOCS=( README ChangeLog )
 
-DOCS="README ChangeLog"
+FONT_SUFFIX="ttf"
 
 src_install() {
 	local d
