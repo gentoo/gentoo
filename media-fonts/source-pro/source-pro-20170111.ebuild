@@ -1,7 +1,8 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit font
 
 SANSV="2.020R-ro/1.075R-it"
@@ -15,20 +16,22 @@ HOMEPAGE="https://adobe-fonts.github.io/source-sans-pro/
 SRC_URI="https://github.com/adobe-fonts/source-sans-pro/archive/${SANSV}.tar.gz -> source-sans-pro-${PV}.tar.gz
 	https://github.com/adobe-fonts/source-serif-pro/archive/${SERIFV}.tar.gz -> source-serif-pro-${PV}.tar.gz
 	https://github.com/adobe-fonts/source-code-pro/archive/${CODEV}.tar.gz -> source-code-pro-${PV}.tar.gz"
+S="${WORKDIR}"
 
 LICENSE="OFL-1.1"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 ~ia64 ppc ppc64 sparc x86 ~x64-macos"
 IUSE="cjk"
 
-RDEPEND="media-libs/fontconfig
-	cjk? ( media-fonts/source-han-sans )"
-
-S=${WORKDIR}
-FONT_S="${S}"
-FONT_SUFFIX="otf"
-FONT_CONF=( "${FILESDIR}"/63-${PN}.conf )
 RESTRICT="binchecks strip"
+
+RDEPEND="
+	media-libs/fontconfig
+	cjk? ( media-fonts/source-han-sans )
+"
+
+FONT_CONF=( "${FILESDIR}"/63-${PN}.conf )
+FONT_SUFFIX="otf"
 
 src_prepare() {
 	default
