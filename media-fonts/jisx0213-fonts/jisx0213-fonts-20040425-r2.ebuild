@@ -1,8 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
+FONT_PN="${PN/-fonts/}"
+FONTDIR="/usr/share/fonts/${FONT_PN}"
 inherit font font-ebdftopcf
 
 DESCRIPTION="Japanese fixed fonts that cover JIS0213 charset"
@@ -20,6 +22,7 @@ SRC_URI="mirror://gentoo/jiskan16-2004-1.bdf.gz
 	mirror://gentoo/A12.bdf.gz
 	mirror://gentoo/jiskan24-2000-1.bdf.gz
 	mirror://gentoo/jiskan24-2000-2.bdf.gz"
+S="${WORKDIR}"
 
 LICENSE="public-domain"
 SLOT="0"
@@ -27,13 +30,8 @@ KEYWORDS="~alpha amd64 arm ~ia64 ppc s390 sparc x86"
 IUSE=""
 RESTRICT="binchecks strip"
 
-S="${WORKDIR}"
-
-FONT_S="${S}"
-FONT_PN="${PN/-fonts/}"
-FONTDIR="/usr/share/fonts/${FONT_PN}"
-
 pkg_postinst() {
+	font_pkg_postinst
 	if use X; then
 		elog "You need you add following line into 'Section \"Files\"' in"
 		elog "XF86Config and reboot X Window System, to use these fonts."
