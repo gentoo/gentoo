@@ -1,0 +1,15 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=install postinst
+DEPEND=acct-group/prometheus acct-user/prometheus !app-metrics/prometheus
+DESCRIPTION=prometheus monitoring system and time series database
+EAPI=7
+HOMEPAGE=https://prometheus.io
+INHERIT=systemd
+KEYWORDS=-* ~amd64
+LICENSE=Apache-2.0
+RDEPEND=acct-group/prometheus acct-user/prometheus !app-metrics/prometheus
+RESTRICT=strip
+SLOT=0
+SRC_URI=https://github.com/prometheus/prometheus/releases/download/v2.25.2/prometheus-2.25.2.linux-amd64.tar.gz
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741
+_md5_=9272c20d6b1ecdeb8dee6bd7447bb5fe

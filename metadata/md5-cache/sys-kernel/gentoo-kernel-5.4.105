@@ -3,13 +3,14 @@ DEFINED_PHASES=compile config configure install postinst postrm preinst prepare 
 DESCRIPTION=Linux kernel built with Gentoo patches
 EAPI=7
 HOMEPAGE=https://www.kernel.org/
+INHERIT=kernel-build
 IUSE=debug savedconfig +initramfs test
-KEYWORDS=~amd64 ~arm64 ~ppc64 ~x86
+KEYWORDS=amd64 ~arm64 ~ppc64 ~x86
 LICENSE=GPL-2
 PDEPEND=>=virtual/dist-kernel-5.4.105
 RDEPEND=!sys-kernel/gentoo-kernel-bin:5.4.105 || ( sys-kernel/installkernel-gentoo sys-kernel/installkernel-systemd-boot ) initramfs? ( >=sys-kernel/dracut-049-r3 ) virtual/libelf
 RESTRICT=!test? ( test ) test? ( userpriv ) arm? ( test )
 SLOT=5.4.105
 SRC_URI=https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.tar.xz https://dev.gentoo.org/~mpagano/dist/genpatches/genpatches-5.4-108.base.tar.xz https://dev.gentoo.org/~mpagano/dist/genpatches/genpatches-5.4-108.extras.tar.xz https://github.com/mgorny/gentoo-kernel-config/archive/v5.4.89.tar.gz -> gentoo-kernel-config-5.4.89.tar.gz amd64? ( https://src.fedoraproject.org/rpms/kernel/raw/2809b7faa6a8cb232cd825096c146b7bdc1e08ea/f/kernel-x86_64.config -> kernel-x86_64.config.5.4.21 ) arm64? ( https://src.fedoraproject.org/rpms/kernel/raw/2809b7faa6a8cb232cd825096c146b7bdc1e08ea/f/kernel-aarch64.config -> kernel-aarch64.config.5.4.21 ) ppc64? ( https://src.fedoraproject.org/rpms/kernel/raw/2809b7faa6a8cb232cd825096c146b7bdc1e08ea/f/kernel-ppc64le.config -> kernel-ppc64le.config.5.4.21 ) x86? ( https://src.fedoraproject.org/rpms/kernel/raw/2809b7faa6a8cb232cd825096c146b7bdc1e08ea/f/kernel-i686.config -> kernel-i686.config.5.4.21 )
-_eclasses_=dist-kernel-utils	ba761317b3fcd25e34c3fb8e5bf1e45f	kernel-build	b34a23faa4245fd914731f4abd7f70d4	kernel-install	2154935526abef328cb31b7a02890f47	mount-boot	060ced4c5e0fd737db17cbb609bbf557	multilib	d410501a125f99ffb560b0c523cd3d1e	portability	b2e405b5a3f051d58b50c9ffc6b883cf	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	savedconfig	0bc45cb0429003c9abc73bae24a0d5bd	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=4f80f63e54afe6ee78426218f659326e
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	portability	b2e405b5a3f051d58b50c9ffc6b883cf	savedconfig	0bc45cb0429003c9abc73bae24a0d5bd	dist-kernel-utils	ba761317b3fcd25e34c3fb8e5bf1e45f	mount-boot	060ced4c5e0fd737db17cbb609bbf557	kernel-install	2154935526abef328cb31b7a02890f47	kernel-build	b34a23faa4245fd914731f4abd7f70d4
+_md5_=a24d73377fcf719054cff5e3364f967d
