@@ -175,10 +175,10 @@ src_install() {
 	if use taamey; then
 		for font in ${TAAMEY_FONTS}; do
 			pushd ${font} > /dev/null || die
+				docinto ${font}
 				[[ -f ChangeLog ]] && { newdoc ChangeLog{,.${font}} || die; }
 				newdoc README{,.${font}} || die
-				insinto /usr/share/doc/${PF}/${font}
-				doins -r Samples
+				dodoc -r Samples
 			popd > /dev/null || die
 		done
 	fi
