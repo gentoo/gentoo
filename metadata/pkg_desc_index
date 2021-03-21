@@ -3616,7 +3616,7 @@ dev-db/firebird 3.0.4.33054.0: Relational database offering many ANSI SQL:2003 a
 dev-db/freetds 1.2.18: Tabular Datastream Library
 dev-db/gigabase 3.83-r2: OO-DBMS with interfaces for C/C++/Java/PHP/Perl
 dev-db/go-etcd 2.0.0-r1: Go client library for etcd
-dev-db/gqlplus 1.16: a front-end for Oracle program sqlplus with command-line editing
+dev-db/gqlplus 1.16-r1: a front-end for Oracle program sqlplus with command-line editing
 dev-db/henplus 0.9.8-r1: Java-based multisession SQL shell for databases with JDBC support
 dev-db/hsqldb 1.8.1.3-r2: The leading SQL relational database engine written in Java
 dev-db/influxdb 1.5.1 1.6.3 1.6.4 1.8.0 1.8.0-r1 1.8.1 1.8.2 1.8.3: Scalable datastore for metrics, events, and real-time analytics
@@ -14594,7 +14594,7 @@ net-analyzer/tcpstat 1.5_p8: Reports network interface statistics
 net-analyzer/tcptrace 6.6.7_p6: A Tool for analyzing network packet dumps
 net-analyzer/tcptraceroute 1.5_beta7-r3: tcptraceroute is a traceroute implementation using TCP packets
 net-analyzer/tcptrack 1.4.2: Passive per-connection tcp bandwidth monitor
-net-analyzer/telegraf 1.10.4 1.11.5 1.12.1 1.13.3 1.14.5 1.15.2: The plugin-driven server agent for collecting & reporting metrics.
+net-analyzer/telegraf 1.10.4 1.11.5 1.12.1 1.13.3 1.14.5 1.15.2 1.18.0: The plugin-driven server agent for collecting & reporting metrics.
 net-analyzer/testssl 3.0.4: Tool to check TLS/SSL cipher support
 net-analyzer/thc-ipv6 3.2-r1 9999: complete tool set to attack the inherent protocol weaknesses of IPV6 and ICMP6
 net-analyzer/thcrut 1.2.5-r2: Network discovery and fingerprinting tool
