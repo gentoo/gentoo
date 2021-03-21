@@ -43,6 +43,12 @@ BDEPEND="
 
 distutils_enable_tests setup.py
 
+src_prepare() {
+	# remove stray files from source dist
+	find -name '*.so' -delete || die
+	distutils-r1_src_prepare
+}
+
 src_test() {
 	local -x PYTHONDONTWRITEBYTECODE=
 	distutils-r1_src_test
