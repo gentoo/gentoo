@@ -15004,7 +15004,7 @@ net-libs/libsignal-protocol-c 2.3.2 2.3.3 9999: Signal Protocol C Library
 net-libs/libsignon-glib 2.1: GLib binding for the D-Bus API provided by signond
 net-libs/libslirp 4.3.1-r1 4.4.0: A general purpose TCP-IP emulator used by virtual machine hypervisors to provide virtual networking services.
 net-libs/libsmi 0.5.0-r1: A Library to Access SMI MIB Information
-net-libs/libsoup 2.70.0: HTTP client/server library for GNOME
+net-libs/libsoup 2.70.0 2.72.0: HTTP client/server library for GNOME
 net-libs/libsrsirc 0.0.14-r1: A lightweight, cross-platform IRC library
 net-libs/libsrtp 1.6.0-r1 2.2.0 2.3.0-r1: Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
 net-libs/libssh 0.9.5 9999: Access a working SSH implementation by means of a library
