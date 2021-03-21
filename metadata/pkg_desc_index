@@ -8568,7 +8568,7 @@ dev-python/loguru 0.5.3: Python logging made (stupidly) simple
 dev-python/logutils 0.3.5: The logutils package provides a set of handlers for the Python standard
 dev-python/loky 2.9.0: Robust and reusable Executor for joblib
 dev-python/lunr 0.5.8 0.5.9: A Python implementation of Lunr.js
-dev-python/lxml 4.6.2-r1: A Pythonic binding for the libxml2 and libxslt libraries
+dev-python/lxml 4.6.2-r1 4.6.3: A Pythonic binding for the libxml2 and libxslt libraries
 dev-python/lz4 3.1.3: LZ4 Bindings for Python
 dev-python/m2crypto 0.35.2-r1 0.36.0-r1 0.37.1: A Python crypto and SSL toolkit
 dev-python/m2r 0.2.1: Markdown to reStructuredText converter
@@ -9480,7 +9480,7 @@ dev-python/zope-deprecation 4.4.0: Zope Deprecation Infrastructure
 dev-python/zope-event 4.5.0-r1: Event publishing / dispatch, used by Zope Component Architecture
 dev-python/zope-exceptions 4.4: General purpose exceptions for Zope packages
 dev-python/zope-i18nmessageid 5.0.1: Zope support for i18nmessageid (tagging source of i18n strings)
-dev-python/zope-interface 5.2.0: Interfaces for Python
+dev-python/zope-interface 5.2.0 5.3.0: Interfaces for Python
 dev-python/zope-schema 6.0.0 6.0.1 6.1.0: Zope schema Architecture
 dev-python/zope-testing 4.9: Zope testing helpers
 dev-python/zope-testrunner 5.2 5.3.0: Zope testrunner script
