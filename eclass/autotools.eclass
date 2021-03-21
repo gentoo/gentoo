@@ -447,7 +447,16 @@ eautopoint() {
 # use gettext directly.  So we have to copy it in manually since
 # we can't let `autopoint` do it for us.
 config_rpath_update() {
-	local dst src=$(type -P gettext | sed 's:bin/gettext:share/gettext/config.rpath:')
+	local dst src
+
+	case ${EAPI:-0} in
+		0|1|2|3|4|5|6)
+			src="${EPREFIX}/usr/share/gettext/config.rpath"
+			;;
+		*)
+			src="${BROOT}/usr/share/gettext/config.rpath"
+			;;
+	esac
 
 	[[ $# -eq 0 ]] && set -- $(find -name config.rpath)
 	[[ $# -eq 0 ]] && return 0
