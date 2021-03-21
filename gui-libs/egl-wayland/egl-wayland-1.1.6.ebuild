@@ -22,6 +22,10 @@ DEPEND="
 	media-libs/libglvnd"
 BDEPEND="dev-util/wayland-scanner"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-remove-werror.patch
+)
+
 src_install() {
 	meson_src_install
 
