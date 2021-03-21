@@ -5753,7 +5753,7 @@ dev-libs/replicant 0.8.1: Hyperdex replicant support library
 dev-libs/rinutils 0.6.0 0.8.0: Set of C headers containing macros and static functions
 dev-libs/rlog 1.4: A C++ logging library
 dev-libs/rocclr 3.8.0 3.9.0 3.10.0 4.0.0: Radeon Open Compute Common Language Runtime
-dev-libs/rocksdb 6.14.6-r1 6.15.5: Embeddable, persistent key-value store for fast storage
+dev-libs/rocksdb 6.14.6-r1 6.15.5 6.17.3: Embeddable, persistent key-value store for fast storage
 dev-libs/rocm-comgr 3.9.0 3.10.0 4.0.0: Radeon Open Compute Code Object Manager
 dev-libs/rocm-device-libs 3.7.0 3.8.0 3.9.0-r1 3.10.0 4.0.0 9999: Radeon Open Compute Device Libraries
 dev-libs/rocm-hostcall 2.7.0: Radeon Open Compute hostcall API
