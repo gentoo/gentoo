@@ -5400,14 +5400,14 @@ dev-libs/gf-complete 2.0.0-r1: A Comprehensive Open Source Library for Galois Fi
 dev-libs/gf2x 1.3.0: C/C++ routines for fast arithmetic in GF(2)[x]
 dev-libs/girara 0.3.5 9999: UI library that focuses on simplicity and minimalism
 dev-libs/gjs 1.64.4 1.66.1 1.66.2: Javascript bindings for GNOME
-dev-libs/glib 2.66.7: The GLib library of C routines
+dev-libs/glib 2.66.7 2.68.0: The GLib library of C routines
 dev-libs/gmime 2.6.23-r1 3.2.7: Utilities for creating and parsing messages using MIME
 dev-libs/gmp 6.2.1 6.2.1-r1: Library for arbitrary-precision arithmetic on different type of numbers
 dev-libs/gnulib 2019.03.17.09.24.57 9999-r1: Gnulib is a library of common routines intended to be shared at the source level
 dev-libs/go-fuse 0_p20140812-r1 0_p20150422 9999: native bindings for the FUSE kernel module
 dev-libs/go-usb 9999: CGO bindings for libusb
-dev-libs/gobject-introspection 1.62.0-r1 1.64.1-r1 1.66.1: Introspection system for GObject-based libraries
-dev-libs/gobject-introspection-common 1.62.0 1.64.1 1.66.1: Build infrastructure for GObject Introspection
+dev-libs/gobject-introspection 1.62.0-r1 1.64.1-r1 1.66.1 1.68.0: Introspection system for GObject-based libraries
+dev-libs/gobject-introspection-common 1.62.0 1.64.1 1.66.1 1.68.0: Build infrastructure for GObject Introspection
 dev-libs/gom 0.4: GObject to SQLite object mapper library
 dev-libs/gost-engine 1.1.0.3_p20181031-r2 9999: A reference implementation of the Russian GOST crypto algorithms for OpenSSL
 dev-libs/granite 5.2.5-r1 5.5.0: Elementary OS library that extends GTK+
@@ -8881,7 +8881,7 @@ dev-python/pygit2 1.5.0: Python bindings for libgit2
 dev-python/pyglet 1.5.14 1.5.15: Cross-platform windowing and multimedia library for Python
 dev-python/pygments 2.8.0 2.8.1: Pygments is a syntax highlighting package written in Python
 dev-python/pygments-github-lexers 0.0.5: Pygments Github custom lexers
-dev-python/pygobject 3.34.0-r1 3.36.1-r1 3.38.0: Python bindings for GObject Introspection
+dev-python/pygobject 3.34.0-r1 3.36.1-r1 3.38.0 3.40.0: Python bindings for GObject Introspection
 dev-python/pygpgme 0.3-r3: A Python wrapper for the GPGME library
 dev-python/pygraphviz 1.6: Python wrapper for the Graphviz Agraph data structure
 dev-python/pygresql 5.2.2: A Python interface for the PostgreSQL database
@@ -10881,7 +10881,7 @@ dev-util/ftjam 2.5.3_rc2-r2: A 100% compatible, enhanced implementation of the m
 dev-util/ftnchek 3.3.1-r2: Static analyzer a la 'lint' for Fortran 77
 dev-util/fuzz 0.6-r1: Stress-tests programs by giving them random input
 dev-util/gcovr 4.2: A Python script for summarizing gcov data
-dev-util/gdbus-codegen 2.66.7: GDBus code and documentation generator
+dev-util/gdbus-codegen 2.66.7 2.68.0: GDBus code and documentation generator
 dev-util/geany 1.36 1.37 1.37.1 9999: GTK+ based fast and lightweight IDE
 dev-util/geany-plugins 1.37-r101: A collection of different plugins for Geany
 dev-util/gengetopt 2.23: A tool to write command line option parsing code for C programs
@@ -10890,7 +10890,7 @@ dev-util/git-delta 0.5.1 0.6.0: A syntax-highlighting pager for git
 dev-util/github-cli 1.4.0 1.5.0 1.7.0 9999: GitHub CLI
 dev-util/gitlab-ci-linter 2.2.0: linter for .gitlab-ci.yml files
 dev-util/glade 3.36.0: A user interface designer for GTK+ and GNOME
-dev-util/glib-utils 2.66.7: Build utilities for GLib using projects
+dev-util/glib-utils 2.66.7 2.68.0: Build utilities for GLib using projects
 dev-util/global 6.6.4: tag system to find an object location in various sources
 dev-util/glslang 10.11.0.0_pre20200924 10.11.0.0_pre20201216 9999: Khronos reference front-end for GLSL and ESSL, and sample SPIR-V generator
 dev-util/gn 0.1726 0.1807: GN is a meta-build system that generates build files for Ninja
@@ -14897,7 +14897,7 @@ net-libs/dleyna-renderer 0.6.0: A library to discover and manipulate DLNA render
 net-libs/enet 1.2.2-r1 1.3.13 1.3.17: Relatively thin, simple and robust network communication layer on top of UDP
 net-libs/farstream 0.2.8-r2 0.2.9: Audio/video conferencing framework specifically designed for instant messengers
 net-libs/freaklabs-chibiarduino 1.0.8_p20190329 9999: freaklabs fork of the lightweight wireless sensor library for Arduino
-net-libs/glib-networking 2.62.4 2.64.3 2.66.0: Network-related giomodules for glib
+net-libs/glib-networking 2.62.4 2.64.3 2.66.0 2.68.0: Network-related giomodules for glib
 net-libs/gloox 1.0.24: A portable high-level Jabber/XMPP library for C++
 net-libs/gnet 2.0.8-r2: A simple network library
 net-libs/gnome-online-accounts 3.36.0: GNOME framework for accessing online accounts

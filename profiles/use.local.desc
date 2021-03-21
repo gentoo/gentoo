@@ -2009,6 +2009,7 @@ dev-libs/gf2x:custom-tune - Extra long compile time for tuning hardware specific
 dev-libs/gf2x:fft - Build an FFT API for multiplication of 2 polynomials over GF(2)
 dev-libs/gjs:sysprof - Enable profiling data capture support using dev-util/sysprof-capture
 dev-libs/glib:dbus - Enable dependencies required by glib libraries using dbus service to manage settings saving
+dev-libs/glib:elf - Enable support for listing and extracting from ELF resource files with gresource tool
 dev-libs/glib:mime - Pull in shared MIME database that many glib-based applications require at runtime to detect or open files. Warning: do not disable this flag unless installing on a headless server.
 dev-libs/glib:sysprof - Enable profiling data capture support using dev-util/sysprof-capture
 dev-libs/glib:systemtap - Build support for profiling and tracing using dev-util/systemtap
