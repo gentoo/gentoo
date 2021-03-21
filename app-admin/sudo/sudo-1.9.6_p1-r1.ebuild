@@ -80,11 +80,6 @@ src_prepare() {
 }
 
 set_secure_path() {
-	# FIXME: secure_path is a compile time setting. using PATH or
-	# ROOTPATH is not perfect, env-update may invalidate this, but until it
-	# is available as a sudoers setting this will have to do.
-	einfo "Setting secure_path ..."
-
 	# first extract the default ROOTPATH from build env
 	SECURE_PATH=$(unset ROOTPATH; . "${EPREFIX}"/etc/profile.env;
 		echo "${ROOTPATH}")
@@ -110,7 +105,7 @@ set_secure_path() {
 		done
 		SECURE_PATH=${newpath#:}
 	}
-	cleanpath /bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/opt/bin${SECURE_PATH:+:${SECURE_PATH}}
+	cleanpath /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/bin${SECURE_PATH:+:${SECURE_PATH}}
 
 	# finally, strip gcc paths #136027
 	rmpath() {
@@ -122,8 +117,6 @@ set_secure_path() {
 		SECURE_PATH=${newpath#:}
 	}
 	rmpath '*/gcc-bin/*' '*/gnat-gcc-bin/*' '*/gnat-gcc/*'
-
-	einfo "... done"
 }
 
 src_configure() {
@@ -198,6 +191,7 @@ src_install() {
 		insinto /etc/openldap/schema
 		newins doc/schema.OpenLDAP sudo.schema
 	fi
+
 	if use pam; then
 		pamd_mimic system-auth sudo auth account session
 		pamd_mimic system-auth sudo-i auth account session
