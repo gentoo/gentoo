@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/workerfm/${P}.tar.zst
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
-IUSE="avfs debug dbus examples libnotify lua +magic xinerama xft"
+IUSE="avfs debug dbus examples libnotify lua +magic +verify-sig xinerama xft"
 
 VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/RalfHoffmann.asc"
 VERIFY_SIG_RUN_DEFAULT_SRC_UNPACK="no"
