@@ -17823,7 +17823,7 @@ sys-process/atop 2.3.0-r1 2.4.0 2.5.0-r1 2.6.0: Resource-specific view of proces
 sys-process/audit 2.8.5-r2 3.0: Userspace utilities for storing and processing auditing records
 sys-process/bashtop 0.9.25: Resource monitor that shows usage and stats
 sys-process/bcron 0.11: A new cron system designed with secure operations in mind by Bruce Guenter
-sys-process/bpytop 1.0.61-r1: Linux/OSX/FreeBSD resource monitor
+sys-process/bpytop 1.0.61-r1 1.0.63: Linux/OSX/FreeBSD resource monitor
 sys-process/criu 3.14-r2 3.15: utility to checkpoint/restore a process tree
 sys-process/cronbase 0.3.7-r6: base for all cron ebuilds
 sys-process/cronie 1.5.5-r1 1.5.6: Cronie is a standard UNIX daemon cron based on the original vixie-cron
