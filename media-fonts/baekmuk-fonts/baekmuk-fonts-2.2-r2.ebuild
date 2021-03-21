@@ -1,19 +1,19 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
-
-inherit font font-ebdftopcf
+EAPI=7
 
 BDF_P="${P/fonts/bdf}"
 TTF_P="${P/fonts/ttf}"
 UNI_P="${PN/fonts/unicode-bdf}-20020418"
+inherit font font-ebdftopcf
 
 DESCRIPTION="Korean Baekmuk Font"
-HOMEPAGE="http://kldp.net/baekmuk/"
-SRC_URI="http://kldp.net/${PN/-*}/release/865-${BDF_P}.tar.gz -> ${BDF_P}.tar.gz
-	http://kldp.net/${PN/-*}/release/865-${TTF_P}.tar.gz -> ${TTF_P}.tar.gz
+HOMEPAGE="https://kldp.net/baekmuk/"
+SRC_URI="https://kldp.net/${PN/-*}/release/865-${BDF_P}.tar.gz -> ${BDF_P}.tar.gz
+	https://kldp.net/${PN/-*}/release/865-${TTF_P}.tar.gz -> ${TTF_P}.tar.gz
 	unicode? ( mirror://gentoo/${UNI_P}.tar.bz2 )"
+S="${WORKDIR}"
 
 LICENSE="BSD"
 SLOT="0"
@@ -21,18 +21,16 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sp
 IUSE="unicode"
 RESTRICT="binchecks strip"
 
-S="${WORKDIR}"
-
 src_unpack() {
 	unpack ${BDF_P}.tar.gz ${TTF_P}.tar.gz
 	if use unicode; then
-		cd "${WORKDIR}"/${BDF_P}/bdf
+		cd ${BDF_P}/bdf || die
 		unpack ${UNI_P}.tar.bz2
 	fi
 }
 
 src_compile() {
-	cd ${BDF_P}/bdf
+	cd ${BDF_P}/bdf || die
 	font-ebdftopcf_src_compile
 }
 
