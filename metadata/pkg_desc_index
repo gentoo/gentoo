@@ -836,7 +836,7 @@ app-arch/fastjar 0.98-r3: A jar program written in C
 app-arch/file-roller 3.36.3 3.38.0: Archive manager for GNOME
 app-arch/funzix 1.0: unpacker for the bogus ZIX format
 app-arch/gcab 1.4: Library and tool for working with Microsoft Cabinet (CAB) files
-app-arch/gnome-autoar 0.3.0: Automatic archives creating and extracting library
+app-arch/gnome-autoar 0.3.0 0.3.1: Automatic archives creating and extracting library
 app-arch/gtk-splitter 2.2.1-r2: Split files into smaller pieces and combine them back together
 app-arch/gzip 1.9 1.10: Standard GNU compressor
 app-arch/hardlink 0.3.2: A tool which replaces copies of a file with hardlinks
@@ -5392,7 +5392,7 @@ dev-libs/flatbuffers 1.12.0: Memory efficient serialization library
 dev-libs/folks 0.14.0: Library for aggregating people from multiple sources
 dev-libs/foma 0.9.18: A set of utilities for constructing finite-state automata and transducers
 dev-libs/freexl 1.0.5 1.0.6: Simple XLS data extraction library
-dev-libs/fribidi 1.0.9: A free implementation of the unicode bidirectional algorithm
+dev-libs/fribidi 1.0.9 1.0.10: A free implementation of the unicode bidirectional algorithm
 dev-libs/fstrm 0.6.0: Frame Streams implementation in C
 dev-libs/gdl 3.34.0: GNOME docking library
 dev-libs/geoip 1.6.12: GeoIP Legacy C API
@@ -11945,10 +11945,10 @@ gnome-base/gdm 3.36.3 3.36.4: GNOME Display Manager for managing graphical displ
 gnome-base/gnome 3.36.5: Meta package for GNOME 3, merge this package to install
 gnome-base/gnome-applets 3.36.4: Applets for the GNOME Flashback Panel
 gnome-base/gnome-common 3.18.0-r1: Common files for development of Gnome packages
-gnome-base/gnome-control-center 3.36.4 3.36.5 3.38.3 3.38.4: GNOME's main interface to configure various aspects of the desktop
+gnome-base/gnome-control-center 3.36.4 3.36.5 3.38.3 3.38.4 3.38.5: GNOME's main interface to configure various aspects of the desktop
 gnome-base/gnome-core-apps 3.36.5: Sub-meta package for the core applications integrated with GNOME 3
 gnome-base/gnome-core-libs 3.36.4 3.36.5: Sub-meta package for the core libraries of GNOME 3
-gnome-base/gnome-desktop 3.36.8 3.38.3: Library with common API for various GNOME modules
+gnome-base/gnome-desktop 3.36.8 3.38.3 3.38.4: Library with common API for various GNOME modules
 gnome-base/gnome-extra-apps 3.36.5: Sub-meta package for the applications of GNOME 3
 gnome-base/gnome-flashback 3.36.4: GNOME Flashback session
 gnome-base/gnome-keyring 3.36.0: Password and keyring managing daemon
@@ -17687,7 +17687,7 @@ sys-kernel/dracut 050-r2 051-r1 053 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.94 5.4.97 5.4.99 5.4.100 5.4.101 5.4.102 5.4.103 5.4.104 5.4.105 5.4.106 5.10.17 5.10.18 5.10.19 5.10.20 5.10.21 5.10.22 5.10.23 5.10.24 5.11.2 5.11.3 5.11.4 5.11.5 5.11.6 5.11.7: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.94 5.4.94-r1 5.4.97 5.4.97-r1 5.4.99 5.4.99-r1 5.4.100 5.4.100-r1 5.4.101 5.4.101-r1 5.4.101-r2 5.4.102-r2 5.4.102-r3 5.4.103 5.4.103-r1 5.4.104 5.4.104-r1 5.4.105 5.4.105-r1 5.4.106 5.10.17 5.10.17-r1 5.10.18 5.10.18-r1 5.10.19 5.10.19-r1 5.10.19-r2 5.10.20-r2 5.10.20-r3 5.10.21 5.10.21-r1 5.10.22 5.10.22-r1 5.10.23 5.10.23-r1 5.10.24 5.11.2 5.11.2-r1 5.11.2-r2 5.11.3-r2 5.11.3-r3 5.11.4 5.11.4-r1 5.11.5 5.11.5-r1 5.11.6 5.11.6-r1 5.11.7: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel-bin 5.4.94 5.4.94-r1 5.4.97 5.4.97-r1 5.4.99 5.4.99-r1 5.4.100 5.4.100-r1 5.4.101 5.4.101-r1 5.4.101-r2 5.4.102-r2 5.4.102-r3 5.4.103 5.4.103-r1 5.4.104 5.4.104-r1 5.4.105 5.4.106 5.10.17 5.10.17-r1 5.10.18 5.10.18-r1 5.10.19 5.10.19-r1 5.10.19-r2 5.10.20-r2 5.10.20-r3 5.10.21 5.10.21-r1 5.10.22 5.10.22-r1 5.10.23 5.10.24 5.11.2 5.11.2-r1 5.11.2-r2 5.11.3-r2 5.11.3-r3 5.11.4 5.11.4-r1 5.11.5 5.11.5-r1 5.11.6 5.11.7: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.246 4.4.257 4.4.259 4.4.260 4.4.261 4.4.262 4.9.246 4.9.257 4.9.259 4.9.260 4.9.261 4.9.262 4.14.209 4.14.221 4.14.223 4.14.224 4.14.225 4.14.226 4.19.160 4.19.175 4.19.178 4.19.179 4.19.180 4.19.181 4.19.182 5.4.80-r1 5.4.97 5.4.102 5.4.103 5.4.104 5.4.105 5.4.106 5.4.107 5.10.20 5.10.21 5.10.22 5.10.23 5.10.24 5.10.25 5.11.2 5.11.3 5.11.4 5.11.5 5.11.6 5.11.7 5.11.7-r1 5.11.8: Full sources including the Gentoo patchset for the 5.11 kernel tree
 sys-kernel/git-sources 5.12_rc2 5.12_rc3: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2 3: Gentoo fork of installkernel script from debianutils
