@@ -1,19 +1,19 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=6
 
-inherit cuda flag-o-matic portability toolchain-funcs unpacker
+inherit cuda flag-o-matic portability toolchain-funcs unpacker versionator
 
-MYD=$(ver_cut 1-2 ${PV})
-DRIVER_PV="440.33.01"
+MYD=$(get_version_component_range 1-2)
+DRIVER_PV="396.26"
 
 DESCRIPTION="NVIDIA CUDA Software Development Kit"
 HOMEPAGE="https://developer.nvidia.com/cuda-zone"
-SRC_URI="https://developer.download.nvidia.com/compute/cuda/${MYD}/Prod/local_installers/cuda_${PV}_${DRIVER_PV}_linux.run"
+SRC_URI="https://developer.nvidia.com/compute/cuda/${MYD}/Prod/local_installers/cuda_${PV}_${DRIVER_PV}_linux -> cuda_${PV}_${DRIVER_PV}_linux.run"
 
 LICENSE="CUDPP"
-SLOT="0/${PV}"
+SLOT="0"
 KEYWORDS="~amd64 ~amd64-linux"
 IUSE="+cuda debug +doc +examples opencl mpi"
 
@@ -23,14 +23,14 @@ RDEPEND="
 	examples? (
 		media-libs/freeimage
 		media-libs/glew:0=
-		!prefix? ( >=x11-drivers/nvidia-drivers-${DRIVER_PV}[uvm] )
+		>=x11-drivers/nvidia-drivers-396.24[uvm(+)]
 		mpi? ( virtual/mpi )
 		)"
 DEPEND="${RDEPEND}"
 
 RESTRICT="test"
 
-S=${WORKDIR}/builds/cuda-samples
+S=${WORKDIR}/samples
 
 QA_EXECSTACK=(
 	opt/cuda/sdk/0_Simple/cdpSimplePrint/cdpSimplePrint
@@ -39,10 +39,22 @@ QA_EXECSTACK=(
 	opt/cuda/sdk/bin/x86_64/linux/release/cdpSimpleQuicksort
 	)
 
-src_prepare() {
-	cuda_src_prepare
+src_unpack() {
+	# We first need to unpack the cuda_${PV}_linux.run file
+	# which includes the cuda-samples*run file.
+	unpacker
+	unpacker run_files/cuda-samples*run
+}
 
+pkg_setup() {
+	if use cuda || use opencl; then
+		cuda_pkg_setup
+	fi
+}
+
+src_prepare() {
 	export RAWLDFLAGS="$(raw-ldflags)"
+#	epatch "${FILESDIR}"/${P}-asneeded.patch
 
 	local file
 	while IFS="" read -d $'\0' -r file; do
@@ -61,10 +73,9 @@ src_prepare() {
 			-e "s|../../common/lib/\$(OSLOWER)/libGLEW.a|$($(tc-getPKG_CONFIG) --libs glew)|g" \
 			-e "s|../../common/lib/\$(OSLOWER)/\$(OS_ARCH)/libGLEW.a|$($(tc-getPKG_CONFIG) --libs glew)|g" \
 			-i "${file}" || die
+			# -e "/ALL_LDFLAGS/s|:=|:= ${RAWLDFLAGS} |g" \
 	done < <(find . -type f -name 'Makefile' -print0)
 
-	# Upstream suggested us skip cudaNvSci https://github.com/NVIDIA/cuda-samples/issues/22
-	rm -rf 0_Simple/cudaNvSci || die
 	rm -rf common/inc/GL || die
 	find . -type f -name '*.a' -delete || die
 
@@ -99,12 +110,12 @@ src_install() {
 	if use doc; then
 		ebegin "Installing docs ..."
 			while IFS="" read -d $'\0' -r f; do
-				treecopy "${f}" "${ED}"/usr/share/doc/${PF}/
+				treecopy "${f}" "${ED%/}"/usr/share/doc/${PF}/
 			done < <(find -type f \( -name 'readme.txt' -o -name '*.pdf' \) -print0)
 
 			while IFS="" read -d $'\0' -r f; do
-				docompress -x "${f#${ED}}"
-			done < <(find "${ED}"/usr/share/doc/${PF}/ -type f -name 'readme.txt' -print0)
+				docompress -x "${f#${ED%/}}"
+			done < <(find "${ED%/}"/usr/share/doc/${PF}/ -type f -name 'readme.txt' -print0)
 		eend
 	fi
 
@@ -130,12 +141,4 @@ src_install() {
 			fi
 		done < <(find . -type f -print0)
 	eend
-}
-
-pkg_postinst() {
-	if use examples && use prefix; then
-		ewarn "Gentoo Prefix does not manage kernel modules.  You need to make certain"
-		ewarn "the function counterpart to >=x11-drivers/nvidia-drivers-${DRIVER_PV}[uvm]"
-		ewarn "is available from the host"
-	fi
 }

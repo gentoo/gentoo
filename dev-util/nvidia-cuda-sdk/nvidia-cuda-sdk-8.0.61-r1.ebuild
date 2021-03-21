@@ -1,16 +1,16 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit cuda flag-o-matic portability toolchain-funcs unpacker versionator
+inherit cuda eutils flag-o-matic portability toolchain-funcs unpacker versionator
 
 MYD=$(get_version_component_range 1-2)
-DRIVER_PV="396.26"
+DRIVER_PV="375.26"
 
 DESCRIPTION="NVIDIA CUDA Software Development Kit"
 HOMEPAGE="https://developer.nvidia.com/cuda-zone"
-SRC_URI="https://developer.nvidia.com/compute/cuda/${MYD}/Prod/local_installers/cuda_${PV}_${DRIVER_PV}_linux -> cuda_${PV}_${DRIVER_PV}_linux.run"
+SRC_URI="https://developer.nvidia.com/compute/cuda/${MYD}/Prod2/local_installers/cuda_${PV}_${DRIVER_PV}_linux-run -> cuda_${PV}_${DRIVER_PV}_linux.run"
 
 LICENSE="CUDPP"
 SLOT="0"
@@ -23,7 +23,7 @@ RDEPEND="
 	examples? (
 		media-libs/freeimage
 		media-libs/glew:0=
-		>=x11-drivers/nvidia-drivers-396.24[uvm]
+		>=x11-drivers/nvidia-drivers-375.26[uvm(+)]
 		mpi? ( virtual/mpi )
 		)"
 DEPEND="${RDEPEND}"
