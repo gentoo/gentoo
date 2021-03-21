@@ -5,16 +5,20 @@ EAPI=7
 
 LUA_COMPAT=( lua5-{1..2} )
 
-inherit autotools lua-single
+inherit autotools lua-single unpacker verify-sig
 
 DESCRIPTION="Worker Filemanager: Amiga Directory Opus 4 clone"
 HOMEPAGE="http://www.boomerangsworld.de/cms/worker/"
-SRC_URI="http://www.boomerangsworld.de/cms/worker/downloads/${P}.tar.bz2"
+SRC_URI="mirror://sourceforge/workerfm/${P}.tar.zst
+	verify-sig? ( mirror://sourceforge/workerfm/${P}.tar.zst.asc -> ${P}.tar.zst.sig )"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
 IUSE="avfs debug dbus examples libnotify lua +magic xinerama xft"
+
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/RalfHoffmann.asc"
+VERIFY_SIG_RUN_DEFAULT_SRC_UNPACK="no"
 
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 
@@ -26,7 +30,8 @@ RDEPEND="x11-libs/libX11
 	xft? ( x11-libs/libXft )
 	xinerama? ( x11-libs/libXinerama )"
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="virtual/pkgconfig
+	verify-sig? ( >=app-crypt/openpgp-keys-worker-20210320 )"
 
 DOCS=( AUTHORS ChangeLog INSTALL NEWS README README_LARGEFILES THANKS )
 
@@ -36,6 +41,13 @@ src_prepare() {
 	# Don't use /usr/share/appdata
 	sed -i -e "s:/appdata:/metainfo:" contrib/Makefile.am || die
 	eautoreconf
+}
+
+src_unpack() {
+	# first verify signatures
+	verify-sig_src_unpack
+	# finally unpack .tar.zst
+	unpacker_src_unpack
 }
 
 src_configure() {
