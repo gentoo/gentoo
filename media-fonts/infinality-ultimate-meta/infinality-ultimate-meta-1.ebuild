@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 DESCRIPTION="Meta package for infinality-ultimate with fonts"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
@@ -9,7 +9,7 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 LICENSE="metapackage"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="minimal +latin +free ms"
+IUSE="+free +latin minimal ms"
 
 LANGS="as bn bo brx doi dz gu hi ja km kn ko kok ks mai ml mr ne or pa
 	sa sat sd si syc ta te zh"
@@ -18,7 +18,8 @@ for lang in ${LANGS}; do
 done
 unset lang LANGS
 
-RDEPEND="media-libs/fontconfig-ultimate
+RDEPEND="
+	media-libs/fontconfig-ultimate
 	free? (
 		media-fonts/noto
 		media-fonts/heuristica
