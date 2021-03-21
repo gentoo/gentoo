@@ -30,6 +30,19 @@ BDEPEND="
 	test? ( sys-apps/dbus )
 "
 
+src_prepare() {
+	xdg_src_prepare
+
+	if ! use test ; then
+		# Don't build tests unconditionally
+		# This is a hack to avoid needing gnutls[pkcs11] when USE=-test
+		# It may become a real runtime dependency in future
+		# Please check!
+		# bug #777462
+		sed -i "/^subdir('tls\/tests')/d" meson.build || die
+	fi
+}
+
 multilib_src_configure() {
 	local emesonargs=(
 		-Dgnutls=enabled
