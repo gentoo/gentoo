@@ -13726,7 +13726,7 @@ media-plugins/vdr-dvdswitch 0.2.2 0.2.3: VDR Plugin: to play dvds and dvd file s
 media-plugins/vdr-epgsearch 2.2.0 2.4.0_p20200402-r1: VDR plugin: create timers from epg content based on saved search expressions
 media-plugins/vdr-epgsync 1.0.1 1.0.1-r1: VDR Plugin: Import the EPG of another VDR via vdr-svdrpservice
 media-plugins/vdr-exec 0.0.3: VDR plugin: Exec commands like timers at defined times
-media-plugins/vdr-extrecmenu 1.2.4 1.2.4-r1: VDR Plugin: Extended recordings menu
+media-plugins/vdr-extrecmenu 1.2.4 1.2.4-r2: VDR Plugin: Extended recordings menu
 media-plugins/vdr-femon 2.0.4 2.4.0: VDR Plugin: DVB Frontend Status Monitor (signal strength/noise)
 media-plugins/vdr-ffnetdev 0.1.2: VDR Plugin: Output device which offers OSD via VNC and Video as raw mpeg over network
 media-plugins/vdr-filebrowser 0.2.1: VDR plugin: file manager plugin for moving or renaming files in VDR
