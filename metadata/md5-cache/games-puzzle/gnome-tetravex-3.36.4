@@ -4,6 +4,7 @@ DEPEND=>=dev-libs/glib-2.42.0:2 gui? ( >=x11-libs/gtk+-3.22.23:3 ) || ( dev-lang
 DESCRIPTION=Complete the puzzle by matching numbered tiles
 EAPI=7
 HOMEPAGE=https://wiki.gnome.org/Apps/Tetravex
+INHERIT=gnome.org gnome2-utils meson vala xdg
 IUSE=cli +gui
 KEYWORDS=amd64 ~arm ~arm64 x86
 LICENSE=GPL-2+ CC-BY-SA-3.0
@@ -11,5 +12,5 @@ RDEPEND=>=dev-libs/glib-2.42.0:2 gui? ( >=x11-libs/gtk+-3.22.23:3 )
 REQUIRED_USE=|| ( cli gui )
 SLOT=0
 SRC_URI=mirror://gnome/sources/gnome-tetravex/3.36/gnome-tetravex-3.36.4.tar.xz
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	gnome.org	532d56d07b9eace4831aaa817d2b756a	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3	l10n	8cdd85e169b835d518bc2fd59f780d8e	meson	e43eef9331f54965a573ed380854ff47	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	vala	5fab64090cefe75c5df431cefa0b653d	wrapper	4251d4c84c25f59094fd557e0063a974	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=gnome.org	4d6de9e2337521f60965d1a9a118761f	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	meson	e43eef9331f54965a573ed380854ff47	vala	5fab64090cefe75c5df431cefa0b653d	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
 _md5_=19c2a4b4566e7736ed1af3ed7a8df036

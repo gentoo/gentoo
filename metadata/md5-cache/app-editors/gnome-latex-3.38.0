@@ -4,11 +4,12 @@ DEPEND=>=app-text/gspell-1.8:0= >=dev-libs/glib-2.56:2 >=dev-libs/libgee-0.10:0.
 DESCRIPTION=Integrated LaTeX environment for GNOME
 EAPI=7
 HOMEPAGE=https://wiki.gnome.org/Apps/GNOME-LaTeX
+INHERIT=gnome2
 IUSE=+introspection +latexmk rubber
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3+
 RDEPEND=>=app-text/gspell-1.8:0= >=dev-libs/glib-2.56:2 >=dev-libs/libgee-0.10:0.8= gnome-base/gsettings-desktop-schemas >=x11-libs/gtk+-3.22:3 >=x11-libs/gtksourceview-4.0:4 >=gui-libs/amtk-5.2:5 >=gui-libs/tepl-5.0:5 x11-libs/gdk-pixbuf:2 x11-libs/pango introspection? ( >=dev-libs/gobject-introspection-1.30.0:= ) gnome-base/dconf virtual/latex-base x11-themes/hicolor-icon-theme latexmk? ( dev-tex/latexmk ) rubber? ( dev-tex/rubber )
 SLOT=0
 SRC_URI=mirror://gnome/sources/gnome-latex/3.38/gnome-latex-3.38.0.tar.xz
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	gnome.org	532d56d07b9eace4831aaa817d2b756a	gnome2	c156bb2ac81c822dd861424ce19bc168	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	gnome.org	4d6de9e2337521f60965d1a9a118761f	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	gnome2	c156bb2ac81c822dd861424ce19bc168
 _md5_=8fe0e62be663a2248ecbc397d433fea8

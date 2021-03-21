@@ -4,11 +4,12 @@ DEPEND=ncurses? ( sys-libs/ncurses:0= ) pam? ( sys-auth/pambase sys-libs/pam ) a
 DESCRIPTION=OpenRC manages the services, startup and shutdown of a host
 EAPI=7
 HOMEPAGE=https://github.com/openrc/openrc/
+INHERIT=flag-o-matic pam toolchain-funcs git-r3
 IUSE=audit bash debug ncurses pam newnet prefix +netifrc selinux sysv-utils unicode
 LICENSE=BSD-2
 PDEPEND=netifrc? ( net-misc/netifrc )
 PROPERTIES=live
 RDEPEND=ncurses? ( sys-libs/ncurses:0= ) pam? ( sys-auth/pambase sys-libs/pam ) audit? ( sys-process/audit ) sys-process/psmisc !<sys-process/procps-3.3.9-r2 selinux? ( sys-apps/policycoreutils >=sys-libs/libselinux-2.6 ) !<sys-apps/baselayout-2.1-r1 !<sys-fs/udev-init-scripts-27 bash? ( app-shells/bash ) !prefix? ( sysv-utils? ( !sys-apps/systemd[sysv-utils(-)] !sys-apps/sysvinit ) !sysv-utils? ( >=sys-apps/sysvinit-2.86-r6[selinux?] ) virtual/tmpfiles ) selinux? ( >=sec-policy/selinux-base-policy-2.20170204-r4 >=sec-policy/selinux-openrc-2.20170204-r4 ) !<app-shells/gentoo-bashcomp-20180302 !<app-shells/gentoo-zsh-completions-20180228
 SLOT=0
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	git-r3	3e7ec3d6619213460c85e2aa48398441	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	pam	b097695df28f3974e3af860d6704d4f2	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=9043ba9bd435ef780a06e8e9b0ef5d24
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	pam	b097695df28f3974e3af860d6704d4f2	git-r3	3e7ec3d6619213460c85e2aa48398441
+_md5_=359e78eb1d41552632ab3b286b5ab38c

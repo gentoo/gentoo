@@ -4,6 +4,7 @@ DEPEND=>=x11-themes/hicolor-icon-theme-0.10 dev-util/desktop-file-utils x11-misc
 DESCRIPTION=GNOME default icon theme
 EAPI=7
 HOMEPAGE=https://git.gnome.org/browse/adwaita-icon-theme/
+INHERIT=gnome2
 IUSE=branding
 KEYWORDS=amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=|| ( LGPL-3 CC-BY-SA-3.0 ) branding? ( CC-BY-SA-4.0 )
@@ -11,5 +12,5 @@ RDEPEND=>=x11-themes/hicolor-icon-theme-0.10 >=gnome-base/librsvg-2.48:2
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=mirror://gnome/sources/adwaita-icon-theme/3.38/adwaita-icon-theme-3.38.0.tar.xz branding? ( https://www.mail-archive.com/tango-artists@lists.freedesktop.org/msg00043/tango-gentoo-v1.1.tar.gz )
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	gnome.org	532d56d07b9eace4831aaa817d2b756a	gnome2	c156bb2ac81c822dd861424ce19bc168	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	gnome.org	4d6de9e2337521f60965d1a9a118761f	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	gnome2	c156bb2ac81c822dd861424ce19bc168
 _md5_=cc3b7469e925e93317b3b80fe5cf9b3e

@@ -4,11 +4,12 @@ DEPEND=>=x11-libs/gtk+-2.24.15:2[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,a
 DESCRIPTION=Adwaita GTK+2 theme engine
 EAPI=7
 HOMEPAGE=https://gitlab.gnome.org/GNOME/gnome-themes-extra/
+INHERIT=gnome.org multilib-minimal
 IUSE=abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_s390_32 abi_s390_64
 KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris
 LICENSE=LGPL-2.1+
 RDEPEND=>=x11-libs/gtk+-2.24.15:2[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?]
 SLOT=0
 SRC_URI=mirror://gnome/sources/gnome-themes-extra/3.28/gnome-themes-extra-3.28.tar.xz
-_eclasses_=gnome.org	532d56d07b9eace4831aaa817d2b756a	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=gnome.org	4d6de9e2337521f60965d1a9a118761f	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566
 _md5_=af7f9934623339042d14595c85f37644

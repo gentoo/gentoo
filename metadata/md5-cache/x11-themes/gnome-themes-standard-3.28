@@ -10,5 +10,5 @@ LICENSE=LGPL-2.1+
 RDEPEND=>=gnome-base/gsettings-desktop-schemas-3.4
 SLOT=0
 SRC_URI=mirror://gnome/sources/gnome-themes-extra/3.28/gnome-themes-extra-3.28.tar.xz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	gnome.org	532d56d07b9eace4831aaa817d2b756a	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	gnome.org	4d6de9e2337521f60965d1a9a118761f	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
 _md5_=f4dfc2ad6f2f052d9dc9d7287a641935

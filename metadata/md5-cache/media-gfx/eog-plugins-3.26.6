@@ -4,6 +4,7 @@ DEPEND=>=dev-libs/glib-2.38:2 >=dev-libs/libpeas-0.7.4:= >=media-gfx/eog-3.15.90
 DESCRIPTION=Eye of GNOME plugins
 EAPI=7
 HOMEPAGE=https://wiki.gnome.org/Apps/EyeOfGnome/Plugins
+INHERIT=gnome2 python-single-r1
 IUSE=+exif map picasa +python python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9
 KEYWORDS=amd64 ~x86
 LICENSE=GPL-2
@@ -11,5 +12,5 @@ RDEPEND=>=dev-libs/glib-2.38:2 >=dev-libs/libpeas-0.7.4:= >=media-gfx/eog-3.15.9
 REQUIRED_USE=map? ( exif ) python? ( ^^ ( python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9 ) )
 SLOT=0
 SRC_URI=mirror://gnome/sources/eog-plugins/3.26/eog-plugins-3.26.6.tar.xz
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	gnome.org	532d56d07b9eace4831aaa817d2b756a	gnome2	c156bb2ac81c822dd861424ce19bc168	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	gnome.org	4d6de9e2337521f60965d1a9a118761f	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	gnome2	c156bb2ac81c822dd861424ce19bc168	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-single-r1	d3100de905f978df912135806cf27188
 _md5_=ce561998f492a77cfddb8a684a32af86

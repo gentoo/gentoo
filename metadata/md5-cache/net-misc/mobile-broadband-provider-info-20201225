@@ -10,5 +10,5 @@ LICENSE=CC-PD
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://gnome/sources/mobile-broadband-provider-info/20201225/mobile-broadband-provider-info-20201225.tar.xz
-_eclasses_=gnome.org	532d56d07b9eace4831aaa817d2b756a
+_eclasses_=gnome.org	4d6de9e2337521f60965d1a9a118761f
 _md5_=5a94ee478dc4eddf47f6bba920f5336d

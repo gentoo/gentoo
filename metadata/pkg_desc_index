@@ -5529,7 +5529,7 @@ dev-libs/libgdata 0.17.12 0.17.13: GLib-based library for accessing online servi
 dev-libs/libgee 0.20.3: GObject-based interfaces and classes for commonly used data structures
 dev-libs/libgit2 1.1.0-r2: A linkable library for Git
 dev-libs/libgit2-glib 0.99.0.1-r2: Git library for GLib
-dev-libs/libgnome-games-support 1.6.1: Library for code common to Gnome games
+dev-libs/libgnome-games-support 1.6.1 1.8.0: Library for code common to GNOME games
 dev-libs/libgnt 2.14.0 2.14.1: Pidgin's GLib Ncurses Toolkit
 dev-libs/libgpg-error 1.38 1.39 1.41: Contains error handling functions used by GnuPG software
 dev-libs/libgpiod 1.1.1 1.4.1: C library and tools for interacting with the linux GPIO character device
@@ -11291,8 +11291,8 @@ games-arcade/funnyboat 1.5_p11-r1: A side scrolling shooter game starring a stea
 games-arcade/gav 0.9.0-r1: GPL Arcade Volleyball
 games-arcade/gish-demo 1.6-r1: Play as an amorphous ball of tar that rolls and squishes around
 games-arcade/gnake 0.94b-r1: An ncurses-based Nibbles clone
-games-arcade/gnome-nibbles 3.36.1: Nibbles clone for Gnome
-games-arcade/gnome-robots 3.36.1: Avoid the robots and make them crash into each other
+games-arcade/gnome-nibbles 3.36.1 3.38.2: Nibbles clone for GNOME
+games-arcade/gnome-robots 3.36.1 40.0: Avoid the robots and make them crash into each other
 games-arcade/gnujump 1.0.8-r1: Xjump clone with added features
 games-arcade/grande-KXL 0.6-r1: ZANAC type game
 games-arcade/gunocide2ex 1.0: fast-paced 2D shoot'em'up
@@ -11385,7 +11385,7 @@ games-board/cockatrice 20200823: An open-source multiplatform software for playi
 games-board/crafty 24.1-r1: Bob Hyatt's strong chess engine
 games-board/domination 1.1.1.6-r1: The well-known board game, written in java
 games-board/eboard 1.1.1-r2: chess interface for POSIX systems
-games-board/four-in-a-row 3.36.4: Make lines of the same color to win
+games-board/four-in-a-row 3.36.4 3.38.1: Make lines of the same color to win
 games-board/freedoko 0.7.16 0.7.16-r1: FreeDoko is a Doppelkopf-game
 games-board/fruit 2.1-r1: UCI-only chess engine
 games-board/gambit 1.0.4-r1: Qt-based chess application + engine "gupta"
@@ -11962,7 +11962,7 @@ gnome-base/gnome-session 3.36.0-r1 3.38.0: Gnome session manager
 gnome-base/gnome-settings-daemon 3.36.1 3.38.1: Gnome Settings Daemon
 gnome-base/gnome-shell 3.36.7 3.38.2 3.38.3 3.38.4: Provides core UI functions for the GNOME 3 desktop
 gnome-base/gnome-vfs 2.24.4-r5: Gnome Virtual Filesystem
-gnome-base/gsettings-desktop-schemas 3.34.0 3.36.1 3.38.0: Collection of GSettings schemas for GNOME desktop
+gnome-base/gsettings-desktop-schemas 3.34.0 3.36.1 3.38.0 40.0: Collection of GSettings schemas for GNOME desktop
 gnome-base/gvfs 1.44.1: Virtual filesystem implementation for GIO
 gnome-base/libglade 2.6.4-r3: Library to construct graphical interfaces at runtime
 gnome-base/libgnomecanvas 2.30.3-r1: The Gnome 2 Canvas library
@@ -17693,7 +17693,7 @@ sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 9999: Gentoo automatic kernel build
 sys-kernel/gentoo-kernel 5.4.94 5.4.97 5.4.99 5.4.100 5.4.101 5.4.102 5.4.103 5.4.104 5.4.105 5.4.106 5.10.17 5.10.18 5.10.19 5.10.20 5.10.21 5.10.22 5.10.23 5.10.24 5.11.2 5.11.3 5.11.4 5.11.5 5.11.6 5.11.7: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.94 5.4.94-r1 5.4.97 5.4.97-r1 5.4.99 5.4.99-r1 5.4.100 5.4.100-r1 5.4.101 5.4.101-r1 5.4.101-r2 5.4.102-r2 5.4.102-r3 5.4.103 5.4.103-r1 5.4.104 5.4.104-r1 5.4.105 5.4.105-r2 5.4.106 5.4.106-r1 5.10.17 5.10.17-r1 5.10.18 5.10.18-r1 5.10.19 5.10.19-r1 5.10.19-r2 5.10.20-r2 5.10.20-r3 5.10.21 5.10.21-r1 5.10.22 5.10.22-r1 5.10.23 5.10.23-r2 5.10.24 5.10.24-r1 5.11.2 5.11.2-r1 5.11.2-r2 5.11.3-r2 5.11.3-r3 5.11.4 5.11.4-r1 5.11.5 5.11.5-r1 5.11.6 5.11.7: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.246 4.4.257 4.4.259 4.4.260 4.4.261 4.4.262 4.9.246 4.9.257 4.9.259 4.9.260 4.9.261 4.9.262 4.14.209 4.14.221 4.14.223 4.14.224 4.14.225 4.14.226 4.19.160 4.19.175 4.19.178 4.19.179 4.19.180 4.19.181 4.19.182 5.4.80-r1 5.4.97 5.4.102 5.4.103 5.4.104 5.4.105 5.4.106 5.4.107 5.10.20 5.10.21 5.10.22 5.10.23 5.10.24 5.10.25 5.11.2 5.11.3 5.11.4 5.11.5 5.11.6 5.11.7 5.11.7-r1 5.11.8: Full sources including the Gentoo patchset for the 5.11 kernel tree
-sys-kernel/git-sources 5.12_rc2 5.12_rc3: The very latest -git version of the Linux kernel
+sys-kernel/git-sources 5.12_rc2 5.12_rc3 5.12_rc4: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2 3: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
 sys-kernel/kergen 0.1.5: Kernel config generator

@@ -9,5 +9,5 @@ LICENSE=HPND
 RDEPEND=!<dev-libs/gobject-introspection-1.68.0
 SLOT=0
 SRC_URI=mirror://gnome/sources/gobject-introspection/1.68/gobject-introspection-1.68.0.tar.xz
-_eclasses_=gnome.org	532d56d07b9eace4831aaa817d2b756a
+_eclasses_=gnome.org	4d6de9e2337521f60965d1a9a118761f
 _md5_=ab1ee10fec78a03a96bd069731af4454

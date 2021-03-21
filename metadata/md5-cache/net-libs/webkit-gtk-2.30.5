@@ -4,6 +4,7 @@ DEPEND=>=x11-libs/cairo-1.16.0:=[X?] >=media-libs/fontconfig-2.13.0:1.0 >=media-
 DESCRIPTION=Open source web browser engine
 EAPI=7
 HOMEPAGE=https://www.webkitgtk.org
+INHERIT=check-reqs cmake flag-o-matic gnome2 pax-utils python-any-r1 ruby-single toolchain-funcs virtualx
 IUSE=aqua +egl examples gamepad +geolocation gles2-only gnome-keyring +gstreamer gtk-doc +introspection +jpeg2k +jumbo-build libnotify +opengl seccomp spell systemd wayland +X test
 KEYWORDS=amd64 arm arm64 ppc64 ~sparc x86
 LICENSE=LGPL-2+ BSD
@@ -12,5 +13,5 @@ REQUIRED_USE=gles2-only? ( egl !opengl ) gstreamer? ( opengl? ( egl ) ) wayland?
 RESTRICT=test
 SLOT=4/37
 SRC_URI=https://www.webkitgtk.org/releases/webkitgtk-2.30.5.tar.xz
-_eclasses_=check-reqs	7e3fd1855a5e1b50bb9e80827b3f672d	cmake	314a813be2f09820e8978cdee941e501	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	gnome.org	532d56d07b9eace4831aaa817d2b756a	gnome2	c156bb2ac81c822dd861424ce19bc168	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	ruby-single	e6530f43a549f120f9396ccb852288f5	ruby-utils	03dfa7f54d59d740c2964dc7256d2820	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	virtualx	7e60d3b10c791ab996f717bc1f30072f	wrapper	4251d4c84c25f59094fd557e0063a974	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=check-reqs	7e3fd1855a5e1b50bb9e80827b3f672d	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	cmake	314a813be2f09820e8978cdee941e501	libtool	f143db5a74ccd9ca28c1234deffede96	gnome.org	4d6de9e2337521f60965d1a9a118761f	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	gnome2	c156bb2ac81c822dd861424ce19bc168	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	ruby-utils	03dfa7f54d59d740c2964dc7256d2820	ruby-single	e6530f43a549f120f9396ccb852288f5	virtualx	7e60d3b10c791ab996f717bc1f30072f
 _md5_=b7d44e57a67758f02d7f0032a700e9b6
