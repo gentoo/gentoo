@@ -2833,7 +2833,7 @@ app-portage/g-octave 0.4.1-r7: A tool that generates and installs ebuilds for Oc
 app-portage/g-sorcery 0.2.1-r1: framework for ebuild generators
 app-portage/gander 0.0.1: Statistic submission client for Goose (anser.gentoo.org)
 app-portage/gemato 15.2 16.1 16.2 9999: Stand-alone Manifest generation & verification tool
-app-portage/genlop 0.30.9-r1 0.30.10-r1 0.30.10-r2 9999: A nice emerge.log parser
+app-portage/genlop 0.30.10-r2 9999: A nice emerge.log parser
 app-portage/gentoolkit 0.5.0-r2 0.5.1 9999: Collection of administration scripts for Gentoo
 app-portage/gentoopm 0.3.2-r1 9999: A common interface to Gentoo package managers
 app-portage/getdelta 0.7.9-r2: dynamic deltup client
@@ -14741,7 +14741,7 @@ net-fs/davfs2 1.6.0: Linux FUSE (or coda) driver that allows you to mount a WebD
 net-fs/docker-volume-netshare 0.35: Docker NFS, AWS EFS, Ceph & Samba/CIFS Volume Plugin
 net-fs/libnfs 4.0.0 9999: Client library for accessing NFS shares over a network
 net-fs/mc 2021.03.06.22.16.44 2021.03.12.03.36.59: Minio client provides alternatives for ls, cat on cloud storage and filesystems
-net-fs/minio 2021.03.04.00.53.13 2021.03.12.00.00.47: An Amazon S3 compatible object storage server
+net-fs/minio 2021.03.04.00.53.13 2021.03.12.00.00.47 2021.03.17.02.33.02: An Amazon S3 compatible object storage server
 net-fs/netatalk 3.1.12-r1: Open Source AFP server
 net-fs/nfs-utils 2.5.1 2.5.2 2.5.3: NFS client and server daemons
 net-fs/nfs4-acl-tools 0.3.5 0.3.7: Commandline and GUI tools that deal directly with NFSv4 ACLs
