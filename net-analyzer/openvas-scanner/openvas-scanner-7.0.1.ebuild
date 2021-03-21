@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ SRC_URI="https://github.com/greenbone/openvas-scanner/archive/v${PV}.tar.gz -> $
 SLOT="0"
 LICENSE="GPL-2 GPL-2+"
 KEYWORDS="~amd64 ~x86"
-IUSE="cron extras test"
+IUSE="cron extras snmp test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
@@ -27,7 +27,7 @@ DEPEND="
 	dev-libs/libgcrypt:=
 	dev-libs/libksba
 	>=net-analyzer/gvm-libs-11.0.1
-	net-analyzer/net-snmp
+	snmp? ( net-analyzer/net-snmp:= )
 	net-libs/gnutls:=
 	net-libs/libpcap
 	net-libs/libssh:="
@@ -47,6 +47,10 @@ BDEPEND="
 		dev-perl/SQL-Translator
 	)
 	test? ( dev-libs/cgreen )"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-disable-automagic-dep.patch
+)
 
 BUILD_DIR="${WORKDIR}/${MY_PN}-${PV}_build"
 S="${WORKDIR}/${MY_PN}-${PV}"
@@ -75,6 +79,7 @@ src_configure() {
 		"-DLOCALSTATEDIR=${EPREFIX}/var"
 		"-DSYSCONFDIR=${EPREFIX}/etc"
 		"-DSBINDIR=${EPREFIX}/usr/bin"
+		"-DBUILD_WITH_SNMP=$(usex snmp)"
 	)
 	cmake_src_configure
 }
