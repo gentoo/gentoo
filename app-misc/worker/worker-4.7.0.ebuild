@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/workerfm/${P}.tar.zst
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
-IUSE="avfs debug dbus examples libnotify lua +magic +verify-sig xinerama xft"
+IUSE="avfs debug dbus examples libnotify lua +magic +openssl +verify-sig xinerama xft"
 
 VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/RalfHoffmann.asc"
 VERIFY_SIG_RUN_DEFAULT_SRC_UNPACK="no"
@@ -27,6 +27,7 @@ RDEPEND="x11-libs/libX11
 	dbus? (	sys-apps/dbus )
 	lua? ( ${LUA_DEPS} )
 	magic? ( sys-apps/file )
+	openssl? ( dev-libs/openssl )
 	xft? ( x11-libs/libXft )
 	xinerama? ( x11-libs/libXinerama )"
 DEPEND="${RDEPEND}"
@@ -51,6 +52,8 @@ src_unpack() {
 src_configure() {
 	# there is no ./configure flag to disable libXinerama support
 	export ac_cv_lib_Xinerama_XineramaQueryScreens=$(usex xinerama)
+	# there is no ./configure flag to disable openssl support
+	export ac_cv_header_openssl_sha_h=$(usex openssl)
 	econf \
 		--without-hal \
 		--enable-utf8 \
