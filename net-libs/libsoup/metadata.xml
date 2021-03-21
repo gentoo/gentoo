@@ -10,5 +10,6 @@
 		<flag name="gssapi">Enable GSSAPI support</flag>
 		<flag name="samba">Use <pkg>net-fs/samba</pkg> for NTLM Single
 			Sign-On</flag>
+		<flag name="sysprof">Enable profiling data capture support using <pkg>dev-util/sysprof-capture</pkg></flag>
 	</use>
 </pkgmetadata>
