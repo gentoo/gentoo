@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,6 +24,8 @@ S="${WORKDIR}/vdr-plugin-extrecmenu-${GIT_VERSION}"
 
 src_prepare() {
 	rm "${S}"/po/{ca_ES,da_DK,el_GR,et_EE,hr_HR,hu_HU,nl_NL,nn_NO,pl_PL,pt_PT,ro_RO,ru_RU,sl_SI,sv_SE,tr_TR}.po || die
+
+	eapply "${FILESDIR}/${P}_c++11.patch"
 
 	cd "${WORKDIR}" || die
 	eapply -p0 "${FILESDIR}/${DVDARCHIVE%.sh}-configfile.patch"
