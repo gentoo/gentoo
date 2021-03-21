@@ -2764,8 +2764,8 @@ app-office/ktimetracker 5.0.1: Todo management and time tracker
 app-office/ledger 3.2.1: Double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 8.0.4 8.1.0: Library with common classes and functionality used by KDE finance applications
 app-office/libreoffice 6.4.7.2 7.0.5.2 7.1.9999 9999: A full office productivity suite
-app-office/libreoffice-bin 6.4.7.2_p2 6.4.7.2_p3: A full office productivity suite. Binary package
-app-office/libreoffice-bin-debug 6.4.7.2_p2 6.4.7.2_p3: LibreOffice, a full office productivity suite. Binary package, debug info
+app-office/libreoffice-bin 6.4.7.2_p3: A full office productivity suite. Binary package
+app-office/libreoffice-bin-debug 6.4.7.2_p3: LibreOffice, a full office productivity suite. Binary package, debug info
 app-office/libreoffice-l10n 6.4.7.2 7.0.5.2: Translations for the Libreoffice suite
 app-office/libreoffice-voikko 5.0-r1: Free Finnish spell checking and hyphenation for LibreOffice
 app-office/lyx 2.3.5.2-r2 2.3.6.1: WYSIWYM frontend for LaTeX, DocBook, etc.
@@ -5329,7 +5329,7 @@ dev-libs/bemenu 0.5.0 9999: dmenu clone for wayland
 dev-libs/bglibs 2.04-r1 2.04-r2: Bruce Guenter's Libraries Collection
 dev-libs/bitset 2.8.4-r1: A compressed bitset with supporting data structures and algorithms
 dev-libs/boehm-gc 8.0.4: The Boehm-Demers-Weiser conservative garbage collector
-dev-libs/boost 1.74.0-r2 1.75.0: Boost Libraries for C++
+dev-libs/boost 1.75.0: Boost Libraries for C++
 dev-libs/boost-mpl-cartesian_product 20161205: an extension to the Boost.MPL library
 dev-libs/botan 2.17.3: C++ crypto library
 dev-libs/boxfort 0.0.1_pre20200110 0.0.1_pre20200902: Convenient & cross-platform sandboxing C library
@@ -10760,7 +10760,7 @@ dev-util/bitrise 1.24.0: Run your Bitrise.io automations on any Mac or Linux mac
 dev-util/bless 0.6.2-r1 0.6.3: GTK# Hex Editor
 dev-util/bloaty 0_p20170420 1.1 9999: A size profiler for binaries
 dev-util/bnfc 2.8.3: A compiler front-end generator
-dev-util/boost-build 1.74.0 1.75.0: A system for large project software construction, simple to use and powerful
+dev-util/boost-build 1.75.0: A system for large project software construction, simple to use and powerful
 dev-util/bpftrace 0.11.4 9999: High-level tracing language for eBPF
 dev-util/bsdiff 4.3-r4: bsdiff: Binary Differencer using a suffix alg
 dev-util/btyacc 3.0-r3: Backtracking YACC - modified from Berkeley YACC
