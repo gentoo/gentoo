@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit meson
+inherit flag-o-matic meson
 
 DESCRIPTION="EGLStream-based Wayland external platform (for NVIDIA)"
 HOMEPAGE="https://github.com/NVIDIA/egl-wayland"
@@ -25,6 +25,13 @@ BDEPEND="dev-util/wayland-scanner"
 PATCHES=(
 	"${FILESDIR}"/${P}-remove-werror.patch
 )
+
+src_configure() {
+	# EGLStream is not intended for X11, always build without (bug #777558)
+	append-cppflags -DEGL_NO_X11
+
+	meson_src_configure
+}
 
 src_install() {
 	meson_src_install
