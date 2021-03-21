@@ -14,6 +14,7 @@ HOMEPAGE="https://www.twistedmatrix.com/trac/"
 SRC_URI="
 	https://github.com/twisted/twisted/archive/${P}.tar.gz
 	https://dev.gentoo.org/~mgorny/dist/twisted-regen-cache.gz"
+S=${WORKDIR}/${PN}-${P}
 
 LICENSE="MIT"
 SLOT="0"
@@ -59,7 +60,7 @@ RDEPEND="
 	!dev-python/twisted-web
 "
 BDEPEND="
-	>=dev-python/incremental-16.10.1[${PYTHON_USEDEP}]
+	>=dev-python/incremental-21.3.0[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/appdirs-1.4.0[${PYTHON_USEDEP}]
 		dev-python/bcrypt[${PYTHON_USEDEP}]
@@ -76,9 +77,9 @@ BDEPEND="
 	)
 "
 
-S=${WORKDIR}/${PN}-${P}
-
 python_prepare_all() {
+	eapply "${FILESDIR}"/${P}-incremental-21.patch
+
 	# upstream test for making releases; not very useful and requires
 	# sphinx (including on py2)
 	rm src/twisted/python/test/test_release.py || die
