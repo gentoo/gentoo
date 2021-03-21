@@ -687,7 +687,7 @@ app-admin/glance 20.0.0 20.0.1 21.0.0 2020.1.9999 2020.2.9999: Services for disc
 app-admin/gnome-abrt 1.3.6: A utility for viewing problems that have occurred with the system
 app-admin/gnome-system-log 3.9.90: System log viewer for GNOME
 app-admin/go-updater 0.2.0: Checks if Gentoo go packages are compiled with the system's golang version
-app-admin/gopass 1.11.0 1.12.2: a simple but powerful password manager for the terminal
+app-admin/gopass 1.11.0 1.12.4: a simple but powerful password manager for the terminal
 app-admin/gopass-hibp 1.12.0: Gopass haveibeenpwnd.com integration
 app-admin/gopass-jsonapi 1.11.1: Gopass Browser Bindings
 app-admin/gopass-summon-provider 1.12.0: Gopass Summon Provider
@@ -18152,7 +18152,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.6.2: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 89.0.4389.72 89.0.4389.90 90.0.4430.11: Open-source version of Google Chrome web browser
+www-client/chromium 89.0.4389.72 89.0.4389.90 90.0.4430.30: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5-r3 3.1_pre20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.13.5-r100 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.34.4 3.36.4: GNOME webbrowser based on Webkit
