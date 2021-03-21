@@ -3,17 +3,17 @@
 
 EAPI=7
 
-MY_PN="padauk"
+MY_PN="Padauk"
 inherit font
 
 DESCRIPTION="SIL fonts for Myanmar script"
-HOMEPAGE="http://scripts.sil.org/padauk"
-SRC_URI="mirror://gentoo/${MY_PN}-${PV}.zip"
-S="${WORKDIR}/${MY_PN}-2.80"
+HOMEPAGE="https://software.sil.org/padauk/"
+SRC_URI="https://software.sil.org/downloads/r/padauk/${MY_PN}-${PV}.zip"
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="OFL"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE=""
 
 BDEPEND="app-arch/unzip"
