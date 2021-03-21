@@ -1,0 +1,65 @@
+From ab934c065177422a7121e44c792c56c32962c4e4 Mon Sep 17 00:00:00 2001
+From: Thomas Grainger <tagrain@gmail.com>
+Date: Tue, 2 Mar 2021 11:27:56 +0000
+Subject: [PATCH] update tests for incremental >= 21.3.0
+
+---
+ pyproject.toml                           | 2 +-
+ setup.cfg                                | 2 +-
+ src/twisted/python/test/test_versions.py | 6 +++---
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index a7d531b003d..ca12b3ef7e0 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -2,7 +2,7 @@
+ requires = [
+     "setuptools >= 35.0.2",
+     "wheel >= 0.29.0",
+-    "incremental >= 16.10.1",
++    "incremental >= 21.3.0",
+ ]
+ build-backend = "setuptools.build_meta"
+ 
+diff --git a/setup.cfg b/setup.cfg
+index 17501b91ecf..07094f7ea6b 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -28,7 +28,7 @@ python_requires = >=3.6.7
+ install_requires =
+     zope.interface >= 4.4.2
+     constantly >= 15.1
+-    incremental >= 16.10.1
++    incremental >= 21.3.0
+     Automat >= 0.8.0
+     hyperlink >= 17.1.1
+     attrs >= 19.2.0
+diff --git a/src/twisted/python/test/test_versions.py b/src/twisted/python/test/test_versions.py
+index 022010a6eec..6707169b1f8 100644
+--- a/src/twisted/python/test/test_versions.py
++++ b/src/twisted/python/test/test_versions.py
+@@ -126,7 +126,7 @@ def test_strWithPrerelease(self):
+         Calling C{str} on a version with a prerelease includes the prerelease.
+         """
+         self.assertEqual(
+-            str(Version("dummy", 1, 0, 0, prerelease=1)), "[dummy, version 1.0.0rc1]"
++            str(Version("dummy", 1, 0, 0, prerelease=1)), "[dummy, version 1.0.0.rc1]"
+         )
+ 
+     def testShort(self):
+@@ -145,7 +145,7 @@ def test_getVersionStringWithPrerelease(self):
+         """
+         self.assertEqual(
+             getVersionString(Version("whatever", 8, 0, 0, prerelease=1)),
+-            "whatever 8.0.0rc1",
++            "whatever 8.0.0.rc1",
+         )
+ 
+     def test_base(self):
+@@ -158,4 +158,4 @@ def test_baseWithPrerelease(self):
+         """
+         The base version includes 'preX' for versions with prereleases.
+         """
+-        self.assertEqual(Version("foo", 1, 0, 0, prerelease=8).base(), "1.0.0rc8")
++        self.assertEqual(Version("foo", 1, 0, 0, prerelease=8).base(), "1.0.0.rc8")
