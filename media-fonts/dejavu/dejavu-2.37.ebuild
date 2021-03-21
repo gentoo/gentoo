@@ -1,16 +1,17 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit font versionator xdg-utils
+EAPI=7
+
+inherit font xdg-utils
 
 DESCRIPTION="DejaVu fonts, bitstream vera with ISO-8859-2 characters"
 HOMEPAGE="https://dejavu-fonts.github.io/"
 
 # If you want to test snapshot from dejavu.sf.net/snapshots/
 # just rename ebuild to dejavu-2.22.20071220.2156.ebuild
-MY_PV=$(get_version_component_range 1-2)
-snapv=$(get_version_component_range 3-4)
+MY_PV=$(ver_cut 1-2)
+snapv=$(ver_cut 3-4)
 snapv=${snapv/./-}
 MY_BP=${PN}-fonts-ttf-${MY_PV}
 MY_SP=${PN}-fonts-${MY_PV}
@@ -28,13 +29,17 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="fontforge"
 
-DEPEND="fontforge? (
-		>=x11-apps/mkfontscale-1.2.0
-		>=media-gfx/fontforge-20080429
-		dev-perl/Font-TTF
+BDEPEND="
+	fontforge? (
 		app-i18n/unicode-data
-		>media-libs/fontconfig-2.6.0:1.0 )
+		dev-perl/Font-TTF
+		>=media-gfx/fontforge-20080429
+		>media-libs/fontconfig-2.6.0:1.0
+		>=x11-apps/mkfontscale-1.2.0
+	)
 "
+
+DOCS=( AUTHORS NEWS README.md status.txt langcover.txt unicover.txt )
 
 FONT_CONF=(
 	fontconfig/20-unhint-small-dejavu-sans-mono.conf
@@ -44,10 +49,8 @@ FONT_CONF=(
 	fontconfig/57-dejavu-sans.conf
 	fontconfig/57-dejavu-serif.conf
 )
-
 FONT_S="ttf"
 FONT_SUFFIX="ttf"
-DOCS="AUTHORS NEWS README.md status.txt langcover.txt unicover.txt"
 
 src_unpack() {
 	default
