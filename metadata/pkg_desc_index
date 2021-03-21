@@ -2146,7 +2146,7 @@ app-emulation/libvirt-snmp 0.0.4: Provides SNMP functionality for libvirt
 app-emulation/lxc 4.0.6: A userspace interface for the Linux kernel containment features
 app-emulation/lxc-templates 3.0.4: Old style template scripts for LXC
 app-emulation/lxd 4.0.4-r7 4.0.5: Fast, dense and secure container management
-app-emulation/nemu 2.2.1 9999: ncurses interface for QEMU
+app-emulation/nemu 2.2.1 2.5.0 9999: ncurses interface for QEMU
 app-emulation/open-vm-tools 11.2.0_p16938113-r1 11.2.5_p17337674: Opensourced tools for VMware guests
 app-emulation/pcem 17: A PC emulator that specializes in running old operating systems and software
 app-emulation/phpvirtualbox 5.2.1: Web-based administration for VirtualBox in PHP
@@ -3151,7 +3151,7 @@ app-text/tesseract 3.05.02 4.1.0-r1 4.1.1 9999: An OCR Engine, originally develo
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
 app-text/texlive 2020-r9: A complete TeX distribution
 app-text/texlive-core 2020-r12: A complete TeX distribution
-app-text/tidy-html5 5.6.0: Tidy the layout and correct errors in HTML, HTML5 and XML documents
+app-text/tidy-html5 5.6.0 5.7.28: Tidy the layout and correct errors in HTML, HTML5 and XML documents
 app-text/tkinfo 2.8-r1: Info Browser in TK
 app-text/tkman 2.2-r1: TkMan man and info page browser
 app-text/tofrodos 1.7.13: Utility that converts ASCII files between the MSDOS and the Unix format
