@@ -203,7 +203,7 @@ LICENSE="MIT Apache-2.0 BSD MPL-2.0 BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
 
-RESTRICT="test"
+RESTRICT="strip test"
 
 DEPEND=">=dev-lang/go-1.16"
 RDEPEND="
