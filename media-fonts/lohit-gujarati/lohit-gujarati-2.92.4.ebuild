@@ -1,24 +1,24 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit font
+EAPI=7
+
 FONTDIR="/usr/share/fonts/indic/${PN}"
 FONT_SUFFIX="ttf"
+inherit font
 
 DESCRIPTION="The Lohit Gujarati font"
 HOMEPAGE="https://pagure.io/lohit"
 SRC_URI="https://releases.pagure.org/lohit/${PN}-${FONT_SUFFIX}-${PV}.tar.gz"
+S="${WORKDIR}/${PN}-${FONT_SUFFIX}-${PV}"
 
 LICENSE="OFL-1.1"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 ~ia64 ppc ppc64 s390 sparc x86 ~ppc-macos"
 IUSE=""
 
-DEPEND="!<media-fonts/lohit-fonts-2.20150220"
-RDEPEND="${DEPEND}"
-
 RESTRICT="test binchecks"
-S=${WORKDIR}/${PN}-${FONT_SUFFIX}-${PV}
-FONT_S=${S}
+
+RDEPEND="!<media-fonts/lohit-fonts-2.20150220"
+
 FONT_CONF=( "66-${PN}.conf" )
