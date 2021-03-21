@@ -10,7 +10,7 @@ SRC_URI="https://www.dockapps.net/download/${P}.tar.gz"
 
 LICENSE="MIT public-domain"
 SLOT="0/3"
-KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~ppc ppc64 sparc ~x86"
 # X required for font eclass
 IUSE="+X static-libs"
 REQUIRED_USE="X"
