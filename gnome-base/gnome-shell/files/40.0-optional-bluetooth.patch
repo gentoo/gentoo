@@ -1,0 +1,59 @@
+From 1ef0033f8148466256b403c9d8c79b9fed1dd343 Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Thu, 28 Feb 2019 00:50:19 +0200
+Subject: [PATCH 2/2] build: Make bluetooth support optional
+
+---
+ js/misc/meson.build | 2 +-
+ meson.build         | 7 ++++++-
+ meson_options.txt   | 6 ++++++
+ 3 files changed, 13 insertions(+), 2 deletions(-)
+
+diff --git a/js/misc/meson.build b/js/misc/meson.build
+index 2702c3dbc..7a6c831b9 100644
+--- a/js/misc/meson.build
++++ b/js/misc/meson.build
+@@ -3,7 +3,7 @@ jsconf.set('PACKAGE_NAME', meson.project_name())
+ jsconf.set('PACKAGE_VERSION', meson.project_version())
+ jsconf.set('GETTEXT_PACKAGE', meson.project_name())
+ jsconf.set('LIBMUTTER_API_VERSION', mutter_api_version)
+-jsconf.set10('HAVE_BLUETOOTH', bt_dep.found())
++jsconf.set10('HAVE_BLUETOOTH', have_bluetooth)
+ jsconf.set10('HAVE_NETWORKMANAGER', have_networkmanager)
+ jsconf.set('datadir', datadir)
+ jsconf.set('libexecdir', libexecdir)
+diff --git a/meson.build b/meson.build
+index 14b75c1c9..8b1c7a380 100644
+--- a/meson.build
++++ b/meson.build
+@@ -94,7 +94,12 @@ x11_dep = dependency('x11')
+ schemas_dep = dependency('gsettings-desktop-schemas', version: schemas_req)
+ gnome_desktop_dep = dependency('gnome-desktop-3.0', version: gnome_desktop_req)
+ 
+-bt_dep = dependency('gnome-bluetooth-1.0', version: bt_req, required: false)
++if get_option('bluetooth')
++  bt_dep = dependency('gnome-bluetooth-1.0', version: bt_req)
++  have_bluetooth = true
++else
++  have_bluetooth = false
++endif
+ gst_dep = dependency('gstreamer-1.0', version: gst_req, required: false)
+ gst_base_dep = dependency('gstreamer-base-1.0', required: false)
+ pipewire_dep = dependency('libpipewire-0.3', required: false)
+diff --git a/meson_options.txt b/meson_options.txt
+index ef76b73c3..41cc0ff9d 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -1,3 +1,9 @@
++option('bluetooth',
++  type: 'boolean',
++  value: true,
++  description: 'Enable bluetooth support'
++)
++
+ option('extensions_tool',
+   type: 'boolean',
+   value: true,
+-- 
+2.26.2
+
