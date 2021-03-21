@@ -12,6 +12,7 @@
 	<use>
 		<flag name="cron">Install a cron job to update GVM's feed daily.</flag>
 		<flag name="extras">Html docs support</flag>
+		<flag name="snmp">Build againts net-analyzer/net-snmp for "improved SNMP support"</flag>
 	</use>
 	<longdescription lang="en">
 	Open Vulnerability Assessment System (OpenVAS) Scanner is the Greenbone Vulnerability Management (GVM) Solution.
