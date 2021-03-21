@@ -15,7 +15,10 @@ SLOT="0"
 
 IUSE="+crypt gtk-doc +introspection test +vala"
 RESTRICT="!test? ( test )"
-REQUIRED_USE="vala? ( introspection )"
+REQUIRED_USE="
+	vala? ( introspection )
+	gtk-doc? ( crypt )
+"
 
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 
