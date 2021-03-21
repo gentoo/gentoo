@@ -25,14 +25,14 @@ DEPEND="${RDEPEND}
 	sys-apps/texinfo"
 BDEPEND="doc? ( app-doc/doxygen )"
 
-PATCHES=( "${FILESDIR}/check-0.14.0-r2-disable-automagic-dep.patch" )
+PATCHES=(
+	"${FILESDIR}"/check-0.14.0-r2-disable-automagic-dep.patch
+	"${FILESDIR}"/${P}-Fix-pkgconfig-file-s-libdir-value.patch
+)
 
-src_prepare() {
-	cmake_src_prepare
-
-	# Fix wrong libdir, probably caused by multilib
-	sed -i "s|\${libdir}|/usr/$(get_libdir)|g" check.pc.in || die "sed .pc failed."
-}
+#src_prepare() {
+#	cmake_src_prepare
+#}
 
 multilib_src_configure() {
 	local mycmakeargs=(
