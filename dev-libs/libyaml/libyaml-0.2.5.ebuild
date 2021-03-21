@@ -15,7 +15,7 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sp
 IUSE="doc static-libs test"
 RESTRICT="!test? ( test )"
 
-DEPEND="doc? ( app-doc/doxygen )"
+BDEPEND="doc? ( app-doc/doxygen )"
 
 src_prepare() {
 	default
