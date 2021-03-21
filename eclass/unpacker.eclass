@@ -340,6 +340,12 @@ _unpacker() {
 	local m=$(echo "${a}" | tr '[:upper:]' '[:lower:]')
 	a=$(find_unpackable_file "${a}")
 
+	# do nothing with release signatures
+	case ${m} in
+	*.asc|*.sig)
+		return $?
+	esac
+
 	# first figure out the decompression method
 	local comp=""
 	case ${m} in
