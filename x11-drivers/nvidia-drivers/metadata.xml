@@ -8,21 +8,19 @@
 	<maintainer type="person">
 		<email>soap@gentoo.org</email>
 	</maintainer>
-	<longdescription>
-		Nvidia provides different branches of its drivers for different batches of its
-		hardware. When maintaining these ebuilds or other ebuilds depending on them,
-		you will need to keep in mind that the major versions represent these different
-		branches.
-
-		You can use http://www.nvidia.com/Download/Find.aspx to figure out which branch
-		best matches your hardware.
-	</longdescription>
 	<use>
-		<flag name="X">Install the X.org driver, OpenGL libraries, XvMC libraries, and VDPAU libraries</flag>
 		<flag name="compat">Install non-GLVND libGL for backwards compatibility</flag>
-		<flag name="driver">Install the kernel driver module</flag>
+		<flag name="driver">Install kernel driver modules</flag>
 		<flag name="kms">Enable support for kernel mode setting (KMS)</flag>
 		<flag name="tools">Install additional tools such as nvidia-settings</flag>
 		<flag name="uvm">Install the Unified Memory kernel module (nvidia-uvm) for sharing memory between CPU and GPU in CUDA programs</flag>
 	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:nvidia:gpu_driver</remote-id>
+		<remote-id type="github">NVIDIA/nvidia-installer</remote-id>
+		<remote-id type="github">NVIDIA/nvidia-modprobe</remote-id>
+		<remote-id type="github">NVIDIA/nvidia-persistenced</remote-id>
+		<remote-id type="github">NVIDIA/nvidia-settings</remote-id>
+		<remote-id type="github">NVIDIA/nvidia-xconfig</remote-id>
+	</upstream>
 </pkgmetadata>
