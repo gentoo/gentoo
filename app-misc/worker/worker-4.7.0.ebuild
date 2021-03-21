@@ -3,7 +3,7 @@
 
 EAPI=7
 
-LUA_COMPAT=( lua5-{1..2} )
+LUA_COMPAT=( lua5-{1..4} )
 
 inherit autotools lua-single unpacker verify-sig
 
