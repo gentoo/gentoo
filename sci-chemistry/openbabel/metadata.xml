@@ -14,4 +14,8 @@
 	<upstream>
 		<remote-id type="sourceforge">openbabel</remote-id>
 	</upstream>
+	<use>
+		<flag name="inchi">Build support for IUPAC International Chemical Identifier format</flag>
+		<flag name="json">Build support for JSON formats (ChemDoodle, PubChem, etc...)</flag>
+	</use>
 </pkgmetadata>
