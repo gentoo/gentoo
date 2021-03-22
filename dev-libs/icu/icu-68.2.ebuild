@@ -91,6 +91,11 @@ multilib_src_configure() {
 		--with-cross-build="${WORKDIR}"/host
 	)
 
+	# work around cross-endian testing failures with LTO #757681
+	if tc-is-cross-compiler && is-flagq '-flto*' ; then
+		myeconfargs+=( --disable-strict )
+	fi
+
 	# icu tries to use clang by default
 	tc-export CC CXX
 
