@@ -17,7 +17,7 @@ SRC_URI="https://github.com/Cantera/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+cti fortran pch +python test"
+IUSE="+cti fortran lapack pch +python test"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -27,6 +27,7 @@ REQUIRED_USE="
 
 RDEPEND="
 	${PYTHON_DEPS}
+	lapack? ( virtual/lapack )
 	python? (
 		$(python_gen_cond_dep '
 			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
@@ -34,7 +35,7 @@ RDEPEND="
 		')
 	)
 	dev-cpp/yaml-cpp
-	<sci-libs/sundials-5.3.0:0=
+	<sci-libs/sundials-5.3.0:0=[lapack?]
 "
 
 DEPEND="
@@ -88,6 +89,7 @@ src_configure() {
 		env_vars="all"
 		extra_inc_dirs="/usr/include/eigen3"
 	)
+	use lapack && scons_vars+=( blas_lapack_libs="lapack,blas" )
 	use test || scons_vars+=( googletest="none" )
 
 	scons_targets=(
