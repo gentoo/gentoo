@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (2021-03-22)
+# Has unidentified race condition on very fast CPUs that causes maintainer-
+# mode to be triggered.
+# Most likely caused by the following upstream commit:
+#   https://git.savannah.gnu.org/cgit/autoconf.git/commit/?id=aba75f6d4a9c875a9d5d90a07c6b3678db66a4bf
+sys-devel/autoconf:2.71
+
 # Sam James <sam@gentoo.org> (2021-03-22)
 # Many reverse dependencies need to be ported due to changes in new glib
 # Masking until they've been updated, see tracker bug for details
