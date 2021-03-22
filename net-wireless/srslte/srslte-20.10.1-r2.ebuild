@@ -37,7 +37,7 @@ DEPEND="
 	zeromq? ( net-libs/zeromq:= )
 "
 RDEPEND="${DEPEND}"
-BDEPEND=""
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	sed -i '/ -Werror"/d' CMakeLists.txt || die
