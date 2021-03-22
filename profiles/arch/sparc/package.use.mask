@@ -140,10 +140,6 @@ dev-util/geany-plugins git
 dev-util/geany-plugins workbench
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
-# uses slot 0 of dev-lang/spidermonkey that is broken on sparc
-www-client/elinks javascript
-
-# Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
 # Required dependencies are not keyworded.
 x11-themes/qtcurve plasma
 
