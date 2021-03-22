@@ -8124,8 +8124,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7 1.0.8: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r4: Amazon Web Services API
-dev-python/boto3 1.16.63 1.17.7 1.17.12 1.17.17 1.17.18 1.17.19 1.17.20 1.17.21 1.17.22 1.17.23 1.17.24 1.17.25 1.17.26 1.17.27 1.17.28 1.17.29 1.17.30 1.17.31 1.17.32 1.17.33 9999: The AWS SDK for Python
-dev-python/botocore 1.19.63 1.20.7 1.20.12 1.20.17 1.20.18 1.20.19 1.20.20 1.20.21 1.20.22 1.20.23 1.20.24 1.20.25 1.20.26 1.20.27 1.20.28 1.20.29 1.20.30 1.20.31 1.20.32 1.20.33 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.16.63 1.17.7 1.17.12 1.17.17 1.17.18 1.17.19 1.17.20 1.17.21 1.17.22 1.17.23 1.17.24 1.17.25 1.17.26 1.17.27 1.17.28 1.17.29 1.17.30 1.17.31 1.17.32 1.17.33 1.17.34 9999: The AWS SDK for Python
+dev-python/botocore 1.19.63 1.20.7 1.20.12 1.20.17 1.20.18 1.20.19 1.20.20 1.20.21 1.20.22 1.20.23 1.20.24 1.20.25 1.20.26 1.20.27 1.20.28 1.20.29 1.20.30 1.20.31 1.20.32 1.20.33 1.20.34 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.21: Syntax highlighting and autocompletion for the Python interpreter
@@ -8151,7 +8151,7 @@ dev-python/cbor 1.0.0-r1: RFC 7049 - Concise Binary Object Representation
 dev-python/cbor2 5.1.2 5.2.0: Pure Python CBOR (de)serializer with extensive tag support
 dev-python/certifi 10001-r1: Thin replacement for certifi using system certificate store
 dev-python/cffi 1.14.4 1.14.5: Foreign Function Interface for Python calling C code
-dev-python/cfn-python-lint 0.44.7 0.46.0 0.47.2: CloudFormation Linter
+dev-python/cfn-python-lint 0.44.7 0.46.0 0.47.2 0.48.0: CloudFormation Linter
 dev-python/cftime 1.4.1: Time-handling functionality from netcdf4-python
 dev-python/cgroup-utils 0.8: Tools and libraries for control groups of Linux
 dev-python/chai 1.1.2: Easy to use mocking, stubbing and spying framework
@@ -8184,7 +8184,7 @@ dev-python/collective-checkdocs 0.2-r1: Distutils command to view/validate packa
 dev-python/colorama 0.4.3-r1 0.4.4: ANSI escape character sequences for colored terminal text & cursor positioning
 dev-python/colorclass 2.2.0-r1: Colorful worry-free console applications for multiple platforms
 dev-python/coloredlogs 14.0: Colored stream handler for the logging module
-dev-python/colorlog 4.7.2: Log formatting with colors
+dev-python/colorlog 4.7.2 4.8.0: Log formatting with colors
 dev-python/colorspacious 1.1.2: Powerful, accurate, and easy-to-use Python library for colorspace conversions
 dev-python/commonmark 0.9.1: Python parser for the CommonMark Markdown spec
 dev-python/configargparse 1.2.3 1.3 1.4: Drop-in replacement for argparse supporting config files and env variables
@@ -8667,7 +8667,7 @@ dev-python/nose-random 1.0.0: Nose plugin to facilitate randomized unit testing
 dev-python/nose2 0.9.2 0.10.0: Next generation unittest with plugins
 dev-python/nose_fixes 1.3: A plugin to make nose behave better
 dev-python/nose_warnings_filters 0.1.5-r3: A python module to inject warning filters during nosetest
-dev-python/notebook 6.2.0: Jupyter Interactive Notebook
+dev-python/notebook 6.2.0 6.3.0: Jupyter Interactive Notebook
 dev-python/notify2 0.3.1-r2: Python interface to DBus notifications.
 dev-python/nototools 0.2.13: Noto fonts support tools and scripts plus web site generation
 dev-python/ntlm-auth 1.5.0: Calculates NTLM Authentication codes
@@ -8806,7 +8806,7 @@ dev-python/progress 1.5: Easy to use progress bars
 dev-python/progressbar 2.5: Text progressbar library for python
 dev-python/progressbar2 3.39.3 3.53.1: Text progressbar library for python
 dev-python/prometheus_client 0.9.0: Python client for the Prometheus monitoring system
-dev-python/prompt_toolkit 3.0.16 3.0.17: Building powerful interactive command lines in Python
+dev-python/prompt_toolkit 3.0.16 3.0.17 3.0.18: Building powerful interactive command lines in Python
 dev-python/protobuf-python 3.12.2-r1 3.12.4-r1 3.13.0-r1 3.14.0 9999: Google's Protocol Buffers - Python bindings
 dev-python/prov 1.5.3: W3C provenance data dodel library
 dev-python/pslab-python 1.0.1-r1: Python library for communicating with Pocket Science Lab
@@ -9218,7 +9218,7 @@ dev-python/serpent 1.30.2: A simple serialization library based on ast.literal_e
 dev-python/serverfiles 0.2.1 0.3.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 18.1.0-r1: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.2.2: Allow customization of the process title
-dev-python/setuptools 53.0.0 53.1.0 54.1.1 54.1.2: Collection of extensions to Distutils
+dev-python/setuptools 53.0.0 53.1.0 54.1.1 54.1.2 54.2.0: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2-r2: Setuptools revision control system plugin for Git
 dev-python/setuptools_scm 5.0.1 5.0.2 6.0.1: Manage versions by scm tags via setuptools
 dev-python/setuptools_scm_git_archive 1.1: A setuptools_scm plugin for git archives
@@ -10842,7 +10842,7 @@ dev-util/dbus-test-runner 19.04.0-r1: Run executables under a new DBus session f
 dev-util/ddd 3.3.12-r4: Graphical front-end for command-line debuggers
 dev-util/debhelper 13.2.1: Collection of programs that can be used to automate common tasks in debian/rules
 dev-util/debootstrap 1.0.123: Debian/Ubuntu bootstrap scripts
-dev-util/debugedit 4.16.1.2: Stand-alone debugedit from RPM
+dev-util/debugedit 4.16.1.2 4.16.1.3: Stand-alone debugedit from RPM
 dev-util/dejagnu 1.6 1.6.2: Framework for testing other programs
 dev-util/desktop-file-utils 0.24 0.26-r1: Command line utilities to work with desktop menu entries
 dev-util/devhelp 3.36.2 3.38.1: An API documentation browser for GNOME
@@ -15704,7 +15704,7 @@ net-wireless/bladerf-firmware 2.2.0 2.3.2 2.4.0: bladeRF FX3 firmware images
 net-wireless/bladerf-fpga 0.7.3 0.11.0 0.12.0: bladeRF FPGA bitstreams
 net-wireless/blueberry 1.3.9: A Bluetooth configuration tool
 net-wireless/blueman 2.1.4 9999: Simple and intuitive GTK+ Bluetooth Manager
-net-wireless/bluez 5.55 5.56: Bluetooth Tools and System Daemons for Linux
+net-wireless/bluez 5.55 5.56 5.56-r1: Bluetooth Tools and System Daemons for Linux
 net-wireless/bluez-hcidump 2.5: Bluetooth HCI packet analyzer
 net-wireless/bluez-tools 0_p20161212: A set of tools to manage bluetooth devices for linux
 net-wireless/broadcom-sta 6.30.223.271-r6: Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver
