@@ -53,7 +53,7 @@
 mail-mta/protonmail-bridge-bin
 
 # Joonas Niilola <juippis@gentoo.org> (2021-03-16)
-# A library without consumers, unbuildable for years, ebuilds not 
+# A library without consumers, unbuildable for years, ebuilds not
 # touched in years either. Bugs #664776, #747592. Removal in ~30 days.
 dev-libs/zookeeper-c
 
