@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare test
+DEPEND=test? ( dev-lang/perl )
+DESCRIPTION=Grep-like tool to search for binary strings
+EAPI=7
+HOMEPAGE=https://github.com/tmbinc/bgrep/
+INHERIT=toolchain-funcs
+IUSE=test
+KEYWORDS=~amd64
+LICENSE=BSD
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/tmbinc/bgrep/archive/58c0b83f7ef13cd8d3d7352fadef88a006a514cd.tar.gz -> bgrep-0.2_p20210221.tar.gz
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=6fbd54d1ab63ef265c96092e61b240d6

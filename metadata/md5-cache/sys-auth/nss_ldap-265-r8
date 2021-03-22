@@ -12,4 +12,4 @@ RDEPEND=>=net-nds/openldap-2.4.38-r1[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-
 SLOT=0
 SRC_URI=http://www.padl.com/download/nss_ldap-265.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	fixheadtails	662e80584ee2337b981d7188078e7c74	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	prefix	de7d8e2b10085ed5ff09ad70e4753e5c
-_md5_=072a8c8e8da8aa7fd19c949b2caf193f
+_md5_=474a6529fec4cf85db2b434f8cb64bae
