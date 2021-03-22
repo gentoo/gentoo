@@ -3,11 +3,12 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DESCRIPTION=Frame configuration management for GNU Emacs modelled after GNU Screen
 EAPI=7
 HOMEPAGE=https://www.emacswiki.org/emacs/EmacsLispScreen https://github.com/knu/elscreen
+INHERIT=elisp
 IUSE=wanderlust
 KEYWORDS=~alpha amd64 ~hppa ~ia64 ~ppc ~ppc64 sparc x86
 LICENSE=GPL-2+ GPL-3+
 RDEPEND=wanderlust? ( app-emacs/wanderlust ) >=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://github.com/knu/elscreen/archive/20180321.tar.gz -> elscreen-20180321.tar.gz
-_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	d4b53ec63c580b993ed19445f411e1d2
+_eclasses_=elisp-common	36f97076abd90f943a34f8bcd58b5bcc	elisp	00840e1f4eb277c757dbfa5abf73c4c7
 _md5_=762284baff9387cb5cc2ccad2a046618

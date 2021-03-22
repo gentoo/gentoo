@@ -3,10 +3,11 @@ DEPEND=sci-mathematics/pari >=app-editors/emacs-23.1:*
 DESCRIPTION=sci-mathematics/pari emacs mode
 EAPI=6
 HOMEPAGE=http://iml.univ-mrs.fr/~ramare/ServeurPerso/GP-PARI/
+INHERIT=elisp
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=sci-mathematics/pari >=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=http://iml.univ-mrs.fr/~ramare/ServeurPerso/GP-PARI/latest-pari-distrib/pariemacs-3.14.tar.gz
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	d4b53ec63c580b993ed19445f411e1d2
+_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	36f97076abd90f943a34f8bcd58b5bcc	elisp	00840e1f4eb277c757dbfa5abf73c4c7
 _md5_=8ee143a7579375bbf2417a32b2dce359

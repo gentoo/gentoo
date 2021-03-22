@@ -4,6 +4,7 @@ DEPEND=dev-cpp/eigen:3 dev-libs/boost:= dev-libs/double-conversion:= dev-libs/gl
 DESCRIPTION=The Programmers Solid 3D CAD Modeller
 EAPI=7
 HOMEPAGE=https://www.openscad.org/
+INHERIT=elisp-common qmake-utils xdg
 IUSE=ccache emacs
 KEYWORDS=amd64 ~arm64 x86
 LICENSE=GPL-2
@@ -11,5 +12,5 @@ RDEPEND=dev-cpp/eigen:3 dev-libs/boost:= dev-libs/double-conversion:= dev-libs/g
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/openscad/openscad/releases/download/openscad-2019.05/openscad-2019.05.src.tar.gz -> openscad-2019.05.tar.gz
-_eclasses_=elisp-common	d4b53ec63c580b993ed19445f411e1d2	multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=elisp-common	36f97076abd90f943a34f8bcd58b5bcc	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
 _md5_=876b9c8a09d1e11258a60d82e75f43f3

@@ -3,10 +3,11 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup test unpa
 DESCRIPTION=A modern list library for Emacs
 EAPI=7
 HOMEPAGE=https://github.com/magnars/dash.el
+INHERIT=elisp
 KEYWORDS=amd64 ~arm arm64 ~ppc64 x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-3+
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://github.com/magnars/dash.el/archive/2.16.0.tar.gz -> dash-2.16.0.tar.gz
-_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	d4b53ec63c580b993ed19445f411e1d2
+_eclasses_=elisp-common	36f97076abd90f943a34f8bcd58b5bcc	elisp	00840e1f4eb277c757dbfa5abf73c4c7
 _md5_=458cece7a89bda772136ecc61d30aedb

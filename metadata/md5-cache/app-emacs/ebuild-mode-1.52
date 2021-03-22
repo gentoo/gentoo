@@ -9,5 +9,5 @@ LICENSE=GPL-2+
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/emacs/ebuild-mode-1.52.tar.xz
-_eclasses_=elisp-common	d4b53ec63c580b993ed19445f411e1d2	elisp	00840e1f4eb277c757dbfa5abf73c4c7	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
+_eclasses_=elisp-common	36f97076abd90f943a34f8bcd58b5bcc	elisp	00840e1f4eb277c757dbfa5abf73c4c7	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
 _md5_=0ef662e7420c21e39fb6366ee01efa2e

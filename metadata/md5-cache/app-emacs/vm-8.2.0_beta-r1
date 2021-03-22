@@ -3,11 +3,12 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DESCRIPTION=The VM mail reader for Emacs
 EAPI=7
 HOMEPAGE=http://www.nongnu.org/viewmail/
+INHERIT=elisp
 IUSE=bbdb ssl
 KEYWORDS=~alpha amd64 ~ia64 ppc ~ppc64 x86
 LICENSE=GPL-2+
 RDEPEND=bbdb? ( app-emacs/bbdb ) ssl? ( net-misc/stunnel ) >=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://launchpad.net/vm/8.2.x/8.2.0b/+download/vm-8.2.0b.tgz
-_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	d4b53ec63c580b993ed19445f411e1d2
+_eclasses_=elisp-common	36f97076abd90f943a34f8bcd58b5bcc	elisp	00840e1f4eb277c757dbfa5abf73c4c7
 _md5_=9bbe4b329ef0101820c50af46c7e1d1d

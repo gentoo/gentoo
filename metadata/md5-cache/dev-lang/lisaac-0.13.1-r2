@@ -3,11 +3,12 @@ DEPEND=vim-syntax? ( app-editors/vim ) emacs? ( >=app-editors/emacs-23.1:* )
 DESCRIPTION=An object prototype based language
 EAPI=7
 HOMEPAGE=http://isaacproject.u-strasbg.fr/li.html
+INHERIT=elisp-common toolchain-funcs
 IUSE=vim-syntax emacs examples
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
 RDEPEND=vim-syntax? ( app-editors/vim ) emacs? ( >=app-editors/emacs-23.1:* )
 SLOT=0
 SRC_URI=http://isaacproject.u-strasbg.fr/download/lisaac-0.13.1.tar.gz
-_eclasses_=elisp-common	d4b53ec63c580b993ed19445f411e1d2	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=elisp-common	36f97076abd90f943a34f8bcd58b5bcc	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
 _md5_=869b91654ce56a5adce08ce0c225679a

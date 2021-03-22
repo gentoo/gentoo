@@ -4,11 +4,12 @@ DEPEND=>=app-emacs/apel-10.8 >=app-emacs/flim-1.14.9
 DESCRIPTION=A library to provide MIME feature for GNU Emacs
 EAPI=7
 HOMEPAGE=https://github.com/wanderlust/semi
+INHERIT=elisp
 IUSE=l10n_ja
 KEYWORDS=~alpha amd64 ~ia64 ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=GPL-2+
 RDEPEND=>=app-emacs/apel-10.8 >=app-emacs/flim-1.14.9 >=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://github.com/wanderlust/semi/archive/4cf114c95fb49ad75eb6916f678b45b04bad8122.tar.gz -> semi-1.14.7_p20190517.tar.gz
-_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	d4b53ec63c580b993ed19445f411e1d2
+_eclasses_=elisp-common	36f97076abd90f943a34f8bcd58b5bcc	elisp	00840e1f4eb277c757dbfa5abf73c4c7
 _md5_=6e2ee292f29141e9a931b2f03610c166

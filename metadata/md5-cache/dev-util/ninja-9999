@@ -3,11 +3,12 @@ DEFINED_PHASES=compile install postinst postrm setup test unpack
 DESCRIPTION=A small build system similar to make
 EAPI=7
 HOMEPAGE=https://ninja-build.org/
+INHERIT=bash-completion-r1 elisp-common python-any-r1 toolchain-funcs git-r3
 IUSE=doc emacs test vim-syntax
 LICENSE=Apache-2.0
 PROPERTIES=live
 RDEPEND=emacs? ( >=app-editors/emacs-23.1:* ) vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
 RESTRICT=!test? ( test )
 SLOT=0
-_eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	elisp-common	d4b53ec63c580b993ed19445f411e1d2	git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	be99724bde4274de21e581204e9d164a	elisp-common	36f97076abd90f943a34f8bcd58b5bcc	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	git-r3	3e7ec3d6619213460c85e2aa48398441
 _md5_=57691513ead437168f53a83c1bfc9913

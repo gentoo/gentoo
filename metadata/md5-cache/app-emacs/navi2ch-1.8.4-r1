@@ -3,10 +3,11 @@ DEPEND=>=app-editors/emacs-23.1:*
 DESCRIPTION=A navigator for the Japanese textboard 2ch
 EAPI=6
 HOMEPAGE=http://navi2ch.sourceforge.net/
+INHERIT=elisp readme.gentoo-r1
 KEYWORDS=amd64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=GPL-2+
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=mirror://sourceforge/navi2ch/navi2ch-1.8.4.tar.gz
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	d4b53ec63c580b993ed19445f411e1d2	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
+_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	36f97076abd90f943a34f8bcd58b5bcc	elisp	00840e1f4eb277c757dbfa5abf73c4c7	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
 _md5_=359774a25ee966f5690be38cc758152a

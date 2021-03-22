@@ -3,11 +3,12 @@ DEPEND=dev-libs/ffcall emacs? ( >=app-editors/emacs-23.1:* )
 DESCRIPTION=GNU Forth is a fast and portable implementation of the ANSI Forth language
 EAPI=7
 HOMEPAGE=https://www.gnu.org/software/gforth
+INHERIT=elisp-common
 IUSE=+check emacs
 KEYWORDS=~amd64 ~ppc ~x86 ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris
 LICENSE=GPL-3
 RDEPEND=dev-libs/ffcall emacs? ( >=app-editors/emacs-23.1:* )
 SLOT=0
 SRC_URI=mirror://gnu/gforth/gforth-0.7.3.tar.gz
-_eclasses_=elisp-common	d4b53ec63c580b993ed19445f411e1d2
+_eclasses_=elisp-common	36f97076abd90f943a34f8bcd58b5bcc
 _md5_=7725916e4a9058691242d9015aa39fcc

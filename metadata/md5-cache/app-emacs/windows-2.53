@@ -3,10 +3,11 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DESCRIPTION=Window manager for GNU Emacs
 EAPI=7
 HOMEPAGE=https://www.gentei.org/~yuuji/software/
+INHERIT=elisp
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD-2
 RDEPEND=app-emacs/revive >=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/windows-2.53.el.xz
-_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	d4b53ec63c580b993ed19445f411e1d2
+_eclasses_=elisp-common	36f97076abd90f943a34f8bcd58b5bcc	elisp	00840e1f4eb277c757dbfa5abf73c4c7
 _md5_=1a414a30b7d0e3a3b47f793ec5adb13b

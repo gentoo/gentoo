@@ -1935,7 +1935,7 @@ app-emacs/edit-list 0.3: Edit a single list
 app-emacs/edit-server 1.15: Service edit requests from a web browser for editing of textareas
 app-emacs/editorconfig-emacs 0.7.8-r1: EditorConfig plugin for emacs
 app-emacs/elscreen 20180321: Frame configuration management for GNU Emacs modelled after GNU Screen
-app-emacs/emacs-common-gentoo 1.6-r4 1.7: Common files needed by all GNU Emacs versions
+app-emacs/emacs-common 1.6-r4 1.8: Common files needed by all GNU Emacs versions
 app-emacs/emacs-daemon 0.22: Gentoo support for Emacs running as a server in the background
 app-emacs/emacs-jabber 0.8.92: A Jabber client for Emacs
 app-emacs/emacs-w3m 1.4.625_pre20180518 1.4.632_pre20181112: emacs-w3m is an interface program of w3m on Emacs
@@ -15775,7 +15775,7 @@ net-wireless/soapysdr 0.7.2 9999: vendor and platform neutral SDR support librar
 net-wireless/soapysdrplay 0.1.0 0.2.0 9999: Soapy SDR plugin for SDRPlay
 net-wireless/soapyuhd 0.4.1 9999: Soapy SDR plugins for UHD supported SDR devices
 net-wireless/spectools 2016.01.1 9999: Spectrum Analyzer for Meta-Geek Wi-Spy and GSG Ubertooth hardware
-net-wireless/srslte 20.10.1-r1 9999: Open source SDR LTE software suite from Software Radio Systems
+net-wireless/srslte 20.10.1-r2 9999: Open source SDR LTE software suite from Software Radio Systems
 net-wireless/suscan 0.1.0-r1: a realtime DSP processing library
 net-wireless/suwidgets 0.1.0-r1: graphical library containing all SigDigger's custom widgets
 net-wireless/tempestsdr 0.0_p20200221 9999: Remote video eavesdropping using a software-defined radio platform

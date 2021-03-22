@@ -3,6 +3,7 @@ DEPEND=virtual/commonlisp dev-lisp/asdf >=sys-apps/texinfo-5.1 doc? ( virtual/te
 DESCRIPTION=SLIME, the Superior Lisp Interaction Mode (Extended)
 EAPI=6
 HOMEPAGE=http://common-lisp.net/project/slime/
+INHERIT=elisp
 IUSE=doc xref
 KEYWORDS=~amd64 ~ppc ~sparc ~x86
 LICENSE=GPL-2 xref? ( xref.lisp )
@@ -10,5 +11,5 @@ RDEPEND=virtual/commonlisp dev-lisp/asdf >=app-editors/emacs-23.1:*
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/slime/slime/archive/v2.20.tar.gz -> slime-2.20.tar.gz
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	d4b53ec63c580b993ed19445f411e1d2
+_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	36f97076abd90f943a34f8bcd58b5bcc	elisp	00840e1f4eb277c757dbfa5abf73c4c7
 _md5_=43334091c0b7ac890b211407410d8ee0

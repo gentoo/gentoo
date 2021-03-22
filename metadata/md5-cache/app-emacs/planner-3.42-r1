@@ -3,6 +3,7 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DESCRIPTION=Maintain a local Wiki using Emacs-friendly markup
 EAPI=7
 HOMEPAGE=https://www.emacswiki.org/emacs/PlannerMode
+INHERIT=elisp
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-3+
 PDEPEND=app-emacs/remember
@@ -10,5 +11,5 @@ RDEPEND=>=app-emacs/muse-3.02.6a app-emacs/bbdb app-emacs/emacs-w3m >=app-editor
 RESTRICT=test
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/planner-3.42.tar.gz
-_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	d4b53ec63c580b993ed19445f411e1d2
+_eclasses_=elisp-common	36f97076abd90f943a34f8bcd58b5bcc	elisp	00840e1f4eb277c757dbfa5abf73c4c7
 _md5_=cddd455a6413785e32fd1056ec109509

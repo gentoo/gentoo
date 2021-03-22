@@ -3,10 +3,11 @@ DEPEND=>=app-editors/emacs-23.1:*
 DESCRIPTION=An improved Go mode for emacs
 EAPI=6
 HOMEPAGE=https://github.com/dominikh/go-mode.el
+INHERIT=elisp
 KEYWORDS=~amd64
 LICENSE=BSD
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://github.com/dominikh/go-mode.el/archive/v1.5.0.tar.gz -> go-mode-1.5.0.tar.gz
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	d4b53ec63c580b993ed19445f411e1d2
+_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	36f97076abd90f943a34f8bcd58b5bcc	elisp	00840e1f4eb277c757dbfa5abf73c4c7
 _md5_=1db9b6722e79d0fb313dd9baeddba9a9
