@@ -573,6 +573,9 @@ qemu_src_configure() {
 		tc-enables-pie && conf_opts+=( --enable-pie )
 	fi
 
+	# Meson will not use a cross-file unless cross_prefix is set.
+	tc-is-cross-compiler && conf_opts+=( --cross-prefix="${CHOST}-" )
+
 	# Plumb through equivalent of EXTRA_ECONF to allow experiments
 	# like bug #747928.
 	conf_opts+=( ${EXTRA_CONF_QEMU} )

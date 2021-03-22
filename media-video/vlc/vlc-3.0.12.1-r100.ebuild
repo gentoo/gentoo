@@ -272,6 +272,9 @@ src_prepare() {
 	sed -e "/test.*build.*host/s/\$(host)/nothanks/" \
 		-i Makefile.am -i bin/Makefile.am || die "Failed to disable vlc-cache-gen"
 
+	# Fix gettext version mismatch errors.
+	sed -i -e s/GETTEXT_VERSION/GETTEXT_REQUIRE_VERSION/ configure.ac || die
+
 	eautoreconf
 
 	# Disable automatic running of tests.
