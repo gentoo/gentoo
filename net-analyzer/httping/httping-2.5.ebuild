@@ -52,6 +52,8 @@ src_configure() {
 	if use ncurses ; then
 		local ncurses_flags="$($(tc-getPKG_CONFIG) --libs ncurses)"
 
+		# Don't require ncurses with unicode support
+		# bug #731950
 		sed -i -e "s/-lncursesw/${ncurses_flags}/" Makefile || die
 		append-ldflags "${ncurses_flags}"
 	fi
