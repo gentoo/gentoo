@@ -3181,7 +3181,7 @@ app-text/wv 1.2.9-r2: Tool for conversion of MSWord doc and rtf files to somethi
 app-text/wv2 0.4.2-r2: Excellent MS Word filter lib, used in most Office suites
 app-text/xapers 0.9.0: Personal document indexing system
 app-text/xapian-omega 1.4.14 1.4.15 1.4.16 1.4.17 1.4.18: An application built on Xapian, consisting of indexers and a CGI search frontend
-app-text/xchm 1.31 9999: Utility for viewing Compiled HTML Help (CHM) files
+app-text/xchm 1.31 1.32 9999: Utility for viewing Compiled HTML Help (CHM) files
 app-text/xdvik 22.87.03-r2: DVI previewer for X Window System
 app-text/xhtml1 20020801-r6: DTDs for the eXtensible HyperText Markup Language 1.0
 app-text/xhtml11 20101123: DTDs for the eXtensible HyperText Markup Language 1.0
