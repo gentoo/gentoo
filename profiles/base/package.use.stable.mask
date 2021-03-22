@@ -92,7 +92,6 @@ dev-perl/DBD-mysql mariadb
 app-misc/gcstar stats
 app-misc/g15daemon perl
 dev-lang/php coverage
-dev-util/lcov png
 dev-perl/Business-ISBN barcode
 dev-perl/Template-Toolkit gd
 media-fonts/unifont utils fontforge
