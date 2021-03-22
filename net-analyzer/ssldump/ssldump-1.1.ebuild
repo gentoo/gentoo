@@ -13,7 +13,7 @@ SRC_URI="
 
 LICENSE="openssl"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~arm ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="ssl"
 
 RDEPEND="
