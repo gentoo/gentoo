@@ -58,8 +58,6 @@ python_prepare_all() {
 
 python_test() {
 	local deselect=(
-		# require geckodriver
-		notebook/tests/selenium
 		# trash doesn't seem to work for us
 		notebook/services/contents/tests/test_contents_api.py::GenericFileCheckpointsAPITest::test_checkpoints_follow_file
 		notebook/services/contents/tests/test_contents_api.py::GenericFileCheckpointsAPITest::test_delete
@@ -73,7 +71,8 @@ python_test() {
 		notebook/services/kernels/tests/test_kernels_api.py::KernelCullingTest::test_culling
 	)
 
-	epytest ${deselect[@]/#/--deselect }
+	# selenium tests require geckodriver
+	epytest --ignore notebook/tests/selenium ${deselect[@]/#/--deselect }
 }
 
 python_install() {
