@@ -128,6 +128,11 @@ LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD MIT Unlicense"
 SLOT="0"
 KEYWORDS="~amd64"
 
+RDEPEND="
+	acct-group/unbound-telemetry
+	acct-user/unbound-telemetry
+"
+
 DOCS=(
 	README.md
 )
