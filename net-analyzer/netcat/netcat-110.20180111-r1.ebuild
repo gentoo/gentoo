@@ -9,35 +9,39 @@ MY_P="nc${PV}"
 DESCRIPTION="The network swiss army knife"
 HOMEPAGE="https://nc110.sourceforge.io"
 SRC_URI="mirror://sourceforge/nc110/${MY_P}.tar.xz"
+S="${WORKDIR}/nc110"
 
 LICENSE="netcat"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc64-solaris ~x64-solaris"
 IUSE="ipv6 static"
 
-S="${WORKDIR}/nc110"
-
 src_prepare() {
 	default
+
 	sed -i \
 		-e '/#define HAVE_BIND/s:#define:#undef:' \
 		-e '/#define FD_SETSIZE 16/s:16:1024: #34250' \
 		netcat.c || die
-	if [[ ${CHOST} == *-solaris* ]]; then
+
+	if [[ ${CHOST} == *-solaris* ]] ; then
 		sed -i 's:gethostbyname2 *(\([^)]\+\)):getipnodebyname (\1, AI_DEFAULT, NULL):' netcat.c || die
 	fi
 }
 
 src_configure() {
-	if ! use ipv6; then
+	if ! use ipv6 ; then
 		sed -i '/#define INET6/d' generic.h || die
 	fi
+
 	append-cppflags -DTELNET -DGAPING_SECURITY_HOLE
 }
 
 src_compile() {
 	local xlibs
+
 	[[ ${CHOST} == *-solaris* ]] && xlibs+=" -lnsl -lsocket"
+
 	emake \
 		LD="$(tc-getCC) ${LDFLAGS}" \
 		DFLAGS="${CPPFLAGS}" \
@@ -49,8 +53,10 @@ src_compile() {
 
 src_install() {
 	dobin nc
+
 	dodoc README* netcat.blurb
 	doman nc.1
+
 	docinto scripts
 	dodoc scripts/*
 }
