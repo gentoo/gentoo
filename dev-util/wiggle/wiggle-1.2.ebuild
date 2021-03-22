@@ -11,7 +11,7 @@ SRC_URI="https://neil.brown.name/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -38,7 +38,9 @@ BDEPEND="
 	test? ( sys-process/time )
 "
 
-PATCHES=( "${FILESDIR}"/${P}-cflags.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-cflags.patch
+)
 
 src_prepare() {
 	default
@@ -50,6 +52,8 @@ src_prepare() {
 }
 
 src_compile() {
+	tc-export PKG_CONFIG
+
 	emake CC="$(tc-getCC)" ${PN}
 }
 

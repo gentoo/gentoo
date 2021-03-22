@@ -1,12 +1,12 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils fixheadtails flag-o-matic toolchain-funcs
+inherit fixheadtails flag-o-matic toolchain-funcs
 
-DESCRIPTION="tool for applying patches that patch cannot apply because of conflicting changes"
-HOMEPAGE="https://neil.brown.name/wiggle https://neil.brown.name/git?p=wiggle"
+DESCRIPTION="Tool for applying patches that patch cannot apply because of conflicting changes"
+HOMEPAGE="https://neil.brown.name/wiggle https://git.neil.brown.name/?p=wiggle.git"
 SRC_URI="https://neil.brown.name/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -16,7 +16,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 # The 'p' tool does support bitkeeper, but I'm against just dumping it in here
-# due to it's size.  I've explictly listed every other dependancy here due to
+# due to it's size.  I've explictly listed every other dependency here due to
 # the nature of the shell program 'p'
 RDEPEND="
 	dev-util/diffstat
@@ -30,12 +30,16 @@ RDEPEND="
 	sys-apps/coreutils
 	sys-devel/patch
 	sys-libs/ncurses:0=
-	"
-DEPEND="${RDEPEND}
+"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	sys-apps/groff
-	test? ( sys-process/time )"
+	test? ( sys-process/time )
+"
 
 src_prepare() {
+	default
+
 	# Fix the reference to the help file so `p help' works
 	sed -i "s:\$0.help:${EPREFIX}/usr/share/wiggle/p.help:" p || die "sed failed on p"
 
