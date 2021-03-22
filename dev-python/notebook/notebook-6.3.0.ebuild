@@ -7,7 +7,7 @@ DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{7..9} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1
+inherit distutils-r1 xdg-utils
 
 DESCRIPTION="Jupyter Interactive Notebook"
 HOMEPAGE="https://jupyter.org"
@@ -86,4 +86,14 @@ python_install() {
 pkg_preinst() {
 	# remove old mathjax folder if present
 	rm -rf "${EROOT}"/usr/lib*/python*/site-packages/notebook/static/components/MathJax || die
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
 }
