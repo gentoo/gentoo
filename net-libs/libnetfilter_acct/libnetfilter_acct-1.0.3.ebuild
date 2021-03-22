@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils linux-info ltprune multilib
+EAPI=7
+
+inherit linux-info
 
 DESCRIPTION="library providing interface to extended accounting infrastructure"
 HOMEPAGE="https://netfilter.org/projects/libnetfilter_acct/"
@@ -13,15 +14,10 @@ SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 x86 ~amd64-linux"
 IUSE="examples"
 
-RDEPEND="
-	net-libs/libmnl
-"
-DEPEND="
-	${RDEPEND}
-	virtual/pkgconfig
-"
+BDEPEND="virtual/pkgconfig"
+RDEPEND="net-libs/libmnl"
+DEPEND="${RDEPEND}"
 
-DOCS=( README )
 CONFIG_CHECK="~NETFILTER_NETLINK_ACCT"
 
 pkg_setup() {
@@ -29,16 +25,8 @@ pkg_setup() {
 	linux-info_pkg_setup
 }
 
-src_configure() {
-	econf \
-		--libdir="${EPREFIX}"/$(get_libdir)
-}
-
 src_install() {
 	default
-
-	dodir /usr/$(get_libdir)/pkgconfig/
-	mv "${ED}"/{,usr/}$(get_libdir)/pkgconfig/${PN}.pc || die
 
 	if use examples; then
 		find examples/ -name "Makefile*" -exec rm -f '{}' + || die 'find failed'
@@ -46,5 +34,5 @@ src_install() {
 		docompress -x /usr/share/doc/${P}/examples
 	fi
 
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }
