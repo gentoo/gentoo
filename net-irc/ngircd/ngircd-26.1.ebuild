@@ -36,11 +36,9 @@ RDEPEND="
 	tcpd? ( sys-apps/tcp-wrappers )
 	zlib? ( sys-libs/zlib )
 "
-
-BDEPEND="sys-devel/automake:1.11"
-
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
+	sys-devel/automake:1.11
 	test? (
 		dev-tcltk/expect
 		net-misc/netkit-telnetd
@@ -50,7 +48,7 @@ DEPEND="
 src_prepare() {
 	default
 
-	if ! use prefix; then
+	if ! use prefix ; then
 		sed -i \
 			-e "s:;ServerUID = 65534:ServerUID = ngircd:" \
 			-e "s:;ServerGID = 65534:ServerGID = ngircd:" \
@@ -63,8 +61,8 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf=(
-		--sysconfdir="${EPREFIX}"/etc/"${PN}"
+	local myeconf=(
+		--sysconfdir="${EPREFIX}"/etc/${PN}
 		$(use_enable debug sniffer)
 		$(use_enable debug)
 		$(use_enable irc-plus ircplus)
@@ -77,8 +75,8 @@ src_configure() {
 		$(use_with zlib)
 	)
 
-	if use ssl; then
-		if use gnutls; then
+	if use ssl ; then
+		if use gnutls ; then
 			myconf+=(
 				$( use_with gnutls )
 			)
@@ -89,16 +87,17 @@ src_configure() {
 		fi
 	fi
 
-	econf "${myconf[@]}"
+	econf "${myeconf[@]}"
 }
 
 src_install() {
 	default
+
 	newinitd "${FILESDIR}"/ngircd.init-r1.d ngircd
 }
 
 pkg_postinst() {
-	if [[ -z ${REPLACING_VERSIONS} ]] && use pam; then
+	if [[ -z ${REPLACING_VERSIONS} ]] && use pam ; then
 		elog "ngircd will use PAMIsOptionalPAM by default, please change this option."
 		elog "You may not be able to login until you change this."
 	fi
