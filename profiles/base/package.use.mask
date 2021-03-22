@@ -212,11 +212,6 @@ dev-util/meson test
 # Ada support is not yet ready for sys-devel/gcc
 sys-devel/gcc ada
 
-# Joshua Kinard <kumba@gentoo.org> (2020-03-28)
-# NCP support is masked pending removal of net-fs/ncpfs
-# Bug #681820
-net-analyzer/hydra ncp
-
 # Michał Górny <mgorny@gentoo.org> (2020-03-28)
 # Requires masked dev-vcs/bzr.  Remove the mask if breezy is packaged
 # and the package is confirmed to work with it.
