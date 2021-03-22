@@ -125,7 +125,6 @@ net-libs/webkit-gtk seccomp
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2018-09-11)
 # All glibc versions that include RPC code are masked now.
 dev-perl/Lab-VXI11 libtirpc
-net-analyzer/argus libtirpc
 net-analyzer/snort libtirpc
 net-firewall/conntrack-tools libtirpc
 net-fs/autofs libtirpc
