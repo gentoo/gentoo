@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils toolchain-funcs
+inherit eutils toolchain-funcs flag-o-matic
 
 DESCRIPTION="http protocol ping-like program"
 HOMEPAGE="http://www.vanheusden.com/httping/"
@@ -43,13 +43,19 @@ src_prepare() {
 		mkdir nl || die
 		mv httping-nl.1 nl/httping.1 || die
 	fi
+
 }
 
 src_configure() {
 	# not an autotools script
 	echo > makefile.inc || die
 
-	use ncurses && LDFLAGS+=" $( $( tc-getPKG_CONFIG ) --libs ncurses )"
+	if use ncurses ; then
+		local ncurses_flags="$($(tc-getPKG_CONFIG) --libs ncurses)"
+
+		sed -i -e "s/-lncursesw/${ncurses_flags}/" Makefile || die
+		append-ldflags "${ncurses_flags}"
+	fi
 }
 
 src_compile() {
