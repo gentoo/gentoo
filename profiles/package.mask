@@ -32,6 +32,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2021-03-22)
+# Many reverse dependencies need to be ported due to changes in new glib
+# Masking until they've been updated, see tracker bug for details
+# bug #777675
+=dev-libs/gobject-introspection-common-2.68.0
+=dev-libs/gobject-introspection-2.68.0
+=dev-util/gdbus-codegen-2.68.0
+=dev-util/glib-utils-2.68.0
+=dev-libs/glib-2.68.0
+=net-libs/glib-networking-2.68.0
+=dev-python/pygobject2-2.68.0
+
 # Marek Szuba <marecki@gentoo.org> (2021-03-19)
 # Depends on bundled out-of-date Qt5 libraries, and even with those
 # installed recent upstream versions fail to run. Moreover, we have now
@@ -41,7 +53,7 @@
 mail-mta/protonmail-bridge-bin
 
 # Joonas Niilola <juippis@gentoo.org> (2021-03-16)
-# A library without consumers, unbuildable for years, ebuilds not 
+# A library without consumers, unbuildable for years, ebuilds not
 # touched in years either. Bugs #664776, #747592. Removal in ~30 days.
 dev-libs/zookeeper-c
 
