@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="DocBook XML catalog auto-updater"
-HOMEPAGE="https://sources.gentoo.org/gentoo-src/build-docbook-catalog/"
+HOMEPAGE="https://gitweb.gentoo.org/proj/build-docbook-catalog.git/"
 SRC_URI="mirror://gentoo/${P}.tar.xz
 	https://dev.gentoo.org/~haubi/distfiles/${P}.tar.xz"
 
