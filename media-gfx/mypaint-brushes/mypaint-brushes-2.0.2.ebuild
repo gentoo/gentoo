@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,9 +13,10 @@ LICENSE="CC0-1.0"
 SLOT="2.0" # due to pkgconfig name "mypaint-brushes-2.0"
 KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~ppc ppc64 x86"
 
-DOCS=( AUTHORS NEWS README.md )  # to exclude README symlink
+# Chosen to exclude README symlink
+DOCS=( AUTHORS NEWS README.md )
 
 src_prepare() {
-	eapply_user
+	default
 	eautoreconf
 }
