@@ -51,6 +51,8 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-7.0.1-disable-automagic-dep.patch
+	#qa fix for rpath
+	"${FILESDIR}"/${P}-rpath-qa-fix.patch
 )
 
 src_prepare() {
