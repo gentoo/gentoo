@@ -922,7 +922,7 @@ app-backup/bareos 17.2.10 18.2.10 19.2.9: Featureful client/server network backu
 app-backup/borgbackup 1.1.11-r2 1.1.13 1.1.14 1.1.15 9999: Deduplicating backup program with compression and authenticated encryption
 app-backup/borgmatic 1.5.12: Automatically create, prune and verify backups with borgbackup
 app-backup/borgweb 0.2.0-r2 0.3.0: Browser-based user interface for BorgBackup
-app-backup/btrbk 0.29.1 0.30.0 0.31.0 0.31.1 9999: Tool for creating snapshots and remote backups of btrfs subvolumes
+app-backup/btrbk 0.29.1 0.31.2 9999: Tool for creating snapshots and remote backups of btrfs subvolumes
 app-backup/burp 2.2.18-r1 2.3.36: Network backup and restore client and server for Unix and Windows
 app-backup/ccollect 0.8: Pseudo incremental backup with different exclude lists using hardlinks and rsync
 app-backup/cdbackup 0.7.1-r1: Allows streaming backup utilities to dump/restore from CD-R(W)s or DVD(+/-RW)s
@@ -13658,7 +13658,7 @@ media-plugins/kodi-inputstream-rtmp 3.1.1-r1 3.3.0 3.4.0 9999: Kodi's RTMP input
 media-plugins/kodi-peripheral-joystick 1.7.0 1.7.1 9999: Libretro compatibility layer for the Kodi Game API
 media-plugins/kodi-peripheral-steamcontroller 9999: Steam controller driver for Kodi
 media-plugins/kodi-pvr-argustv 6.0.1 6.0.2 7.0.0 9999: Kodi's ARGUS TV client addon
-media-plugins/kodi-pvr-demo 7.1.1 9999: Demo PVR for Kodi
+media-plugins/kodi-pvr-demo 7.1.2 9999: Demo PVR for Kodi
 media-plugins/kodi-pvr-dvblink 8.0.0 9.0.0 9.0.1 9999: Kodi's DVBLink client addon
 media-plugins/kodi-pvr-dvbviewer 6.0.6 6.0.7 7.0.0 7.1.0 9999: Kodi's DVBViewer client addon
 media-plugins/kodi-pvr-filmon 5.1.0 6.0.0 9999: Kodi's Filmon client addon
