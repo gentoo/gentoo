@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="person">
+        <email>candrews@gentoo.org</email>
+        <name>Craig Andrews</name>
+    </maintainer>
+    <maintainer type="person" proxied="yes">
+        <email>k2k@narod.ru</email>
+        <name>Karlson2k (Evgeny Grin)</name>
+    </maintainer>
+    <upstream>
+        <remote-id type="github">xbmc/screensaver.stars</remote-id>
+    </upstream>
+</pkgmetadata>
