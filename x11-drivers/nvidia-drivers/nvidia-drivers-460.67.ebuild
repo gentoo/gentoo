@@ -94,7 +94,7 @@ HTML_DOCS=( html/. )
 
 pkg_setup() {
 	use driver || return
-	BUILD_PARAMS='NV_VERBOSE=1 IGNORE_CC_MISMATCH=yes SYSSRC="${KERNEL_DIR}"'
+	BUILD_PARAMS='NV_VERBOSE=1 IGNORE_CC_MISMATCH=yes SYSSRC="${KV_DIR}" SYSOUT="${KV_OUT_DIR}"'
 	BUILD_TARGETS="modules" # defaults' clean sometimes deletes modules
 	MODULE_NAMES="
 		nvidia(video:kernel)
