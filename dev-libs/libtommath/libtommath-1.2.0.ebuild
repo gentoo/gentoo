@@ -19,7 +19,7 @@ BDEPEND="sys-devel/libtool"
 src_prepare() {
 	default
 
-	# need libtool for cross compilation. Bug #376643
+	# need libtool for cross compilation, bug #376643
 	cat <<-EOF > configure.ac
 	AC_INIT(libtommath, 0)
 	AM_INIT_AUTOMAKE
@@ -28,9 +28,10 @@ src_prepare() {
 	AC_OUTPUT
 	EOF
 
-	touch NEWS README AUTHORS ChangeLog Makefile.am
+	touch NEWS README AUTHORS ChangeLog Makefile.am || die
 
 	eautoreconf
+
 	export LIBTOOL="${S}"/libtool
 }
 
