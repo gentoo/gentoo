@@ -9,6 +9,7 @@
 # Original Author: Alexis Ballier <aballier@gentoo.org>
 # @SUPPORTED_EAPIS: 3 4 5
 # @BLURB: Provides common ebuild phases for oasis-based packages.
+# @DEPRECATED: Use opam.eclass, dune.eclass, or findlib.eclass (if necessary)
 # @DESCRIPTION:
 # Provides common ebuild phases for oasis-based packages.
 # Most of these packages will just have to inherit the eclass, set their
