@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit fixheadtails toolchain-funcs
 
@@ -30,11 +30,13 @@ RDEPEND="
 	sys-apps/coreutils
 	sys-devel/patch
 	sys-libs/ncurses:0=
-	"
-DEPEND="${RDEPEND}
+"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	sys-apps/groff
 	virtual/pkgconfig
-	test? ( sys-process/time )"
+	test? ( sys-process/time )
+"
 
 PATCHES=( "${FILESDIR}"/${P}-cflags.patch )
 
