@@ -1,8 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit git-r3 toolchain-funcs
+
+inherit git-r3 toolchain-funcs flag-o-matic
 
 DESCRIPTION="like ping but for HTTP requests"
 HOMEPAGE="https://www.vanheusden.com/httping/"
@@ -10,7 +11,6 @@ EGIT_REPO_URI="https://github.com/flok99/httping"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
 IUSE="debug fftw libressl l10n_nl ncurses ssl +tfo"
 
 RDEPEND="
@@ -21,10 +21,8 @@ RDEPEND="
 		libressl? ( dev-libs/libressl:0= )
 	)
 "
-DEPEND="
-	${RDEPEND}
-	ncurses? ( virtual/pkgconfig )
-"
+DEPEND="${RDEPEND}"
+BDEPEND="ncurses? ( virtual/pkgconfig )"
 
 # This would bring in test? ( dev-util/cppcheck ) but unlike
 # upstream we should only care about compile/run time testing
@@ -49,7 +47,14 @@ src_configure() {
 	# not an autotools script
 	echo > makefile.inc || die
 
-	use ncurses && LDFLAGS+=" $( $( tc-getPKG_CONFIG ) --libs ncurses )"
+	if use ncurses ; then
+		local ncurses_flags="$($(tc-getPKG_CONFIG) --libs ncurses)"
+
+		# Don't require ncurses with unicode support
+		# bug #731950
+		sed -i -e "s/-lncursesw/${ncurses_flags}/" Makefile || die
+		append-ldflags "${ncurses_flags}"
+        fi
 }
 
 src_compile() {
