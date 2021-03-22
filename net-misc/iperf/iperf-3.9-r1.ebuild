@@ -2,10 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit systemd
 
 DESCRIPTION="A TCP, UDP, and SCTP network bandwidth measurement tool"
-HOMEPAGE="https://github.com/esnet/iperf/"
+HOMEPAGE="https://github.com/esnet/iperf"
 SRC_URI="https://github.com/esnet/iperf/archive/${PV/_/}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${P/_/}"
 
@@ -21,7 +22,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-DOCS=( "README.md" "RELNOTES.md" )
+DOCS=( README.md RELNOTES.md )
 
 src_configure() {
 	econf \
@@ -35,5 +36,6 @@ src_install() {
 	newconfd "${FILESDIR}"/iperf.confd iperf3
 	newinitd "${FILESDIR}"/iperf3.initd iperf3
 	systemd_dounit contrib/iperf3.service
+
 	find "${ED}" -name '*.la' -delete || die
 }
