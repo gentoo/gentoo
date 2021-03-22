@@ -23,10 +23,13 @@ RDEPEND="
 	virtual/logger
 	virtual/mta
 	selinux? ( sec-policy/selinux-fail2ban )
-	systemd? ( $(python_gen_cond_dep '|| (
-		dev-python/python-systemd[${PYTHON_MULTI_USEDEP}]
-		sys-apps/systemd[python(-),${PYTHON_MULTI_USEDEP}]
-	)' 'python*' ) )
+	systemd? (
+		$(python_gen_cond_dep '
+			|| (
+				dev-python/python-systemd[${PYTHON_USEDEP}]
+				sys-apps/systemd[python(-),${PYTHON_USEDEP}]
+			)' 'python*' )
+		)
 "
 
 DOCS=( ChangeLog DEVELOP README.md THANKS TODO doc/run-rootless.txt )
@@ -51,14 +54,16 @@ python_compile() {
 python_install_all() {
 	distutils-r1_python_install_all
 
-	rm -rf "${D}"/usr/share/doc/${PN} "${D}"/run || die
+	rm -rf "${ED}"/usr/share/doc/${PN} "${ED}"/run || die
 
-	# not FILESDIR
+	# Not ${FILESDIR}
 	newconfd files/gentoo-confd ${PN}
 	newinitd files/gentoo-initd ${PN}
+
 	sed -e "s:@BINDIR@:${EPREFIX}/usr/bin:g" files/${PN}.service.in > "${T}/${PN}.service" || die
 	systemd_dounit "${T}/${PN}.service"
 	dotmpfiles files/${PN}-tmpfiles.conf
+
 	doman man/*.{1,5}
 
 	# Use INSTALL_MASK if you do not want to touch /etc/logrotate.d.
@@ -91,20 +96,20 @@ pkg_postinst() {
 		elog "http://www.fail2ban.org/wiki/index.php/HOWTO_Upgrade_from_0.6_to_0.8"
 	fi
 
-	if ! has_version dev-python/pyinotify && ! has_version app-admin/gamin; then
+	if ! has_version dev-python/pyinotify && ! has_version app-admin/gamin ; then
 		elog "For most jail.conf configurations, it is recommended you install either"
 		elog "dev-python/pyinotify or app-admin/gamin (in order of preference)"
 		elog "to control how log file modifications are detected"
 	fi
 
-	if ! has_version dev-lang/python[sqlite]; then
+	if ! has_version dev-lang/python[sqlite] ; then
 		elog "If you want to use ${PN}'s persistent database, then reinstall"
 		elog "dev-lang/python with USE=sqlite. If you do not use the"
 		elog "persistent database feature, then you should set"
 		elog "dbfile = :memory: in fail2ban.conf accordingly."
 	fi
 
-	if has_version sys-apps/systemd[-python]; then
+	if has_version sys-apps/systemd[-python] ; then
 		elog "If you want to track logins through sys-apps/systemd's"
 		elog "journal backend, then reinstall sys-apps/systemd with USE=python"
 	fi
