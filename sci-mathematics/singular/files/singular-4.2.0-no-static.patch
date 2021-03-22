@@ -1,0 +1,69 @@
+From ef9d66230f9697caaa77dbfc275650412d0d9c0d Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Mon, 22 Mar 2021 09:02:58 -0400
+Subject: [PATCH 1/1] Singular/Makefile.am: drop -static linker flags.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+There are a few hard-coded "-static" flags in the Makefile.am for
+Singular that are causing weird problems for shared builds. The
+visible symptom on Gentoo was a few insecure rpaths being stripped
+from the "Singular" executable, but François Bissey was able to track
+down the root cause, namely the "-static" that is causing libtool to
+act weird.
+
+In retrospect, this problem was also reported on Stack Overflow at,
+
+  https://stackoverflow.com/questions/17905121
+
+The Gentoo bug is,
+
+  https://bugs.gentoo.org/712004
+
+If we experience no problems with this patch, it will be sent upstream.
+---
+ Singular/Makefile.am | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/Singular/Makefile.am b/Singular/Makefile.am
+index 7fe43bffb..1e440765d 100644
+--- a/Singular/Makefile.am
++++ b/Singular/Makefile.am
+@@ -153,7 +153,7 @@ Singular_SOURCES = tesths.cc fegetopt.c fegetopt.h utils.cc  utils.h
+ 
+ Singular_LDADD = libSingular.la ${OMALLOC_LIBS} ${BUILTIN_FLAGS}
+ 
+-Singular_LDFLAGS = -static ${AM_LDFLAGS} ${BUILTIN_FLAGS}
++Singular_LDFLAGS = ${AM_LDFLAGS} ${BUILTIN_FLAGS}
+ 
+ Singulard_SOURCES = tesths.cc fegetopt.c fegetopt.h utils.cc  utils.h
+ 
+@@ -166,7 +166,6 @@ dist_script_SCRIPTS = singularsurf singularsurf_jupyter singularsurf_win surfex
+ 
+ #### ESingular
+ ESingular_CPPFLAGS = ${AM_CPPFLAGS} -DESINGULAR -DPROTO
+-# ESingular_LDFLAGS = -static ${AM_LDFLAGS}
+ ESingular_LDADD =  ${top_builddir}/libpolys/reporter/libreporter.la \
+ ${top_builddir}/libpolys/misc/libmisc.la ${OMALLOC_LIBS} \
+ ${top_builddir}/resources/libsingular_resources.la
+@@ -176,7 +175,6 @@ ESingular_SOURCES = emacs.cc fegetopt.c fegetopt.h feOptES.inc feOpt.cc
+ 
+ #### same for TSingular
+ TSingular_CPPFLAGS = ${AM_CPPFLAGS} -DTSINGULAR -DPROTO
+-# TSingular_LDFLAGS = -static ${AM_LDFLAGS}
+ TSingular_LDADD = ${top_builddir}/libpolys/reporter/libreporter.la \
+ ${top_builddir}/libpolys/misc/libmisc.la ${OMALLOC_LIBS} \
+ ${top_builddir}/resources/libsingular_resources.la
+@@ -191,7 +189,7 @@ libparse_CPPFLAGS = ${AM_CPPFLAGS} -DSTANDALONE_PARSER
+ libparse_SOURCES = libparse.cc fegetopt.c fegetopt.h utils.cc  utils.h
+ 
+ libparse_LDADD =
+-libparse_LDFLAGS = -static ${AM_LDFLAGS}
++libparse_LDFLAGS = ${AM_LDFLAGS}
+ 
+ #########################################################
+ # the Singular library (*.lib files)
+-- 
+2.26.2
+
