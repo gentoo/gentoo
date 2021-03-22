@@ -45,12 +45,8 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-libtool-clang.patch
+	"${FILESDIR}"/${P}-respect-ldflags.patch
 )
-
-src_prepare() {
-	default
-	sed -i -e 's/-O3 -s//g' util/Makefile || die
-}
 
 src_configure() {
 	econf \
@@ -83,5 +79,5 @@ src_install() {
 		-C util install
 	doicon icons/xpaint.svg
 	make_desktop_entry "${PN}"
-	find "${D}" \( -name '*.la' -o -name '*.a' \) -type f -delete || die
+	find "${ED}" \( -name '*.la' -o -name '*.a' \) -type f -delete || die
 }
