@@ -1,0 +1,23 @@
+This trivial patch allows applications to request and receive
+realtime priority up to 88. This is now done by PipeWire starting
+with version 0.3.23.
+
+diff --git a/rtkit-daemon.c b/rtkit-daemon.c
+--- a/rtkit-daemon.c
++++ b/rtkit-daemon.c
+@@ -89,13 +89,13 @@ static const char introspect_xml[] = {
+ #define TIMESPEC_MSEC(ts) (((int64_t) (ts).tv_sec * 1000LL) + ((int64_t) (ts).tv_nsec / 1000000LL))
+ 
+ /* If we actually execute a request we temporarily upgrade our realtime priority to this level */
+-static unsigned our_realtime_priority = 21;
++static unsigned our_realtime_priority = 89;
+ 
+ /* Normally we run at this nice level */
+ static int our_nice_level = 1;
+ 
+ /* The maximum realtime priority to hand out */
+-static unsigned max_realtime_priority = 20;
++static unsigned max_realtime_priority = 88;
+ 
+ /* The minimum nice level to hand out */
+ static int min_nice_level = -15;
