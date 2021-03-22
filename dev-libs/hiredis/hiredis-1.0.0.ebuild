@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -17,12 +17,14 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	ssl? ( dev-libs/openssl )
-	test? ( dev-db/redis )"
+	test? ( dev-db/redis )
+"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.0.0-disable-network-tests.patch
+)
 
 src_prepare() {
-	local PATCHES=(
-		"${FILESDIR}/${PN}-1.0.0-disable-network-tests.patch"
-	)
 	default
 
 	# use GNU ld syntax on Solaris
@@ -52,25 +54,28 @@ src_test() {
 	local REDIS_PID="${T}"/hiredis.pid
 	local REDIS_SOCK="${T}"/hiredis.sock
 	local REDIS_PORT=56379
-	local REDIS_TEST_CONFIG="daemonize yes
+	local REDIS_TEST_CONFIG="
+		daemonize yes
 		pidfile ${REDIS_PID}
 		port ${REDIS_PORT}
 		bind 127.0.0.1
-		unixsocket //${REDIS_SOCK}"
+		unixsocket //${REDIS_SOCK}
+	"
 
 	_build hiredis-test
 
-	/usr/sbin/redis-server - <<< "${REDIS_TEST_CONFIG}" || die
+	"${EPREFIX}"/usr/sbin/redis-server - <<< "${REDIS_TEST_CONFIG}" || die
 	./hiredis-test -h 127.0.0.1 -p ${REDIS_PID} -s ${REDIS_SOCK}
 	local ret=$?
 
 	kill "$(<"${REDIS_PID}")" || die
-	[ ${ret} != "0" ] && die "tests failed"
+	[[ ${ret} != "0" ]] && die "tests failed"
 }
 
 src_install() {
 	_build PREFIX="${ED}/usr" install
-	if ! use static-libs; then
+
+	if ! use static-libs ; then
 		find "${ED}" -name '*.a' -delete || die
 	fi
 
