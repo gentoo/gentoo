@@ -72,7 +72,6 @@ DEPEND="
 		net-misc/curl
 		webdav? ( dev-libs/expat )
 	)
-	emacs? ( >=app-editors/emacs-23.1:* )
 	iconv? ( virtual/libiconv )
 "
 
@@ -116,6 +115,7 @@ BDEPEND="
 		app-text/xmlto
 		sys-apps/texinfo
 	)
+	emacs? ( >=app-editors/emacs-23.1:* )
 	gnome-keyring? ( virtual/pkgconfig )
 	nls? ( sys-devel/gettext )
 	test? (	app-crypt/gnupg	)
