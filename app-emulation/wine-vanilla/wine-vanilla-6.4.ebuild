@@ -153,8 +153,6 @@ if [[ ${#PATCHES_BIN[@]} -ge 1 ]] || [[ ${PV} == 9999 ]]; then
 fi
 
 wine_compiler_check() {
-	[[ ${MERGE_TYPE} = "binary" ]] && return 0
-
 	# GCC-specific bugs
 	if tc-is-gcc; then
 		# bug #549768
