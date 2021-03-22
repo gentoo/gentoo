@@ -99,10 +99,6 @@ sys-block/tgt rbd
 # dev-lua/busted is not keyworded yet
 dev-lua/mpack test
 
-# Felix Janda <felix.janda@posteo.de> (2020-08-01)
-# Requires unkeyworded dev-lang/spidermonkey:17
->=www-client/elinks-0.13.3 javascript
-
 # Sam James <sam@gentoo.org> (2020-07-09)
 # mariadb[rocksdb] fails to build on arm64
 # bug #731998
