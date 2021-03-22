@@ -13675,11 +13675,15 @@ media-plugins/kodi-pvr-vdr-vnsi 8.2.2 9999: Kodi PVR addon VNSI
 media-plugins/kodi-pvr-vuplus 7.4.1 9999: Kodi's VuPlus client addon
 media-plugins/kodi-pvr-wmc 6.1.1 9999: Kodi's Windows Media Center client addon
 media-plugins/kodi-screensaver-asteroids 2.4.2-r1 9999: Asteroids screensaver for Kodi
+media-plugins/kodi-screensaver-asterwave 3.3.0 9999: AsterWave screensaver for Kodi
 media-plugins/kodi-screensaver-biogenesis 2.3.2-r1 9999: Biogenesis screensaver for Kodi
+media-plugins/kodi-screensaver-cpblobs 3.4.0 9999: CpBlobs screensaver for Kodi
 media-plugins/kodi-screensaver-greynetic 2.3.1-r1 9999: Greynetic screensaver for Kodi
 media-plugins/kodi-screensaver-matrixtrails 2.6.0 9999: Matrix Trails screensaver for Kodi
 media-plugins/kodi-screensaver-pingpong 2.2.2-r1 9999: Ping-pong screensaver for Kodi
 media-plugins/kodi-screensaver-pyro 3.3.0 9999: Pyro screensaver for Kodi
+media-plugins/kodi-screensaver-shadertoy 3.2.0 9999: Shadertoy screensaver for Kodi
+media-plugins/kodi-screensaver-stars 2.4.0 9999: Stars screensaver for Kodi
 media-plugins/kodi-vfs-libarchive 2.0.0 9999: Libarchive VFS add-on for Kodi
 media-plugins/kodi-vfs-rar 4.0.0 9999: RAR VFS addon for Kodi
 media-plugins/kodi-vfs-sacd 2.0.0 9999: SACD VFS addon for Kodi
