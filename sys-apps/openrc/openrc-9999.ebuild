@@ -71,8 +71,8 @@ src_compile() {
 	unset LIBDIR #266688
 
 	MAKE_ARGS="${MAKE_ARGS}
-		BRANDING=\"Gentoo Linux\"
 		LIBNAME=$(get_libdir)
+		LIBDIR=${EPREFIX}/$(get_libdir)
 		LIBEXECDIR=${EPREFIX}/lib/rc
 		MKBASHCOMP=yes
 		MKNET=$(usex newnet)
@@ -86,6 +86,7 @@ src_compile() {
 		SH=$(usex bash /bin/bash /bin/sh)"
 
 	use prefix && MAKE_ARGS="${MAKE_ARGS} MKPREFIX=yes PREFIX=${EPREFIX}"
+export BRANDING="Gentoo Linux"
 	export DEBUG=$(usev debug)
 	export MKTERMCAP=$(usev ncurses)
 
