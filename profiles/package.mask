@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Jimi Huotari <chiitoo@gentoo.org> (2021-03-26)
+# No consumers since 2020-09-05 (dev-libs/liboobs), and no known
+# stand-alone use.
+# Removal on 2021-04-25.
+app-admin/system-tools-backends
+
 # Michał Górny <mgorny@gentoo.org> (2021-03-26)
 # Pins to a vulnerable version of dev-python/urllib3.  No maintainer
 # in Gentoo.
