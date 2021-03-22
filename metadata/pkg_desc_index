@@ -11095,7 +11095,7 @@ dev-util/watchman 4.9.0: A file watching service
 dev-util/wayland-scanner 1.19.0 9999: wayland-scanner tool
 dev-util/webhook 2.7.0: lightweight incoming webhook server to run shell commands
 dev-util/weka 3.7.13 3.8.0: A Java data mining package
-dev-util/wiggle 0.9-r1 1.0: tool for applying patches that patch cannot apply because of conflicting changes
+dev-util/wiggle 0.9-r1 1.0 1.2: Tool for applying patches that patch cannot apply because of conflicting changes
 dev-util/wstool 0.1.18 9999: Commands to manage several local SCM repositories for ROS
 dev-util/xdelta 1.1.4-r3 3.0.11 3.1.0: Computes changes between binary or text files and creates deltas
 dev-util/xfce4-dev-tools 4.14.0 4.15.1 4.16.0: A set of scripts and m4/autoconf macros that ease build system maintenance
@@ -17081,7 +17081,7 @@ sys-apps/memtest86 4.3.7-r2: A stand alone memory test for x86 computers
 sys-apps/memtest86+ 5.01-r4 5.01-r5: Memory tester based on memtest86
 sys-apps/memtest86-bin 9.0_beta2 9.0_p2000: Stand alone memory testing software for x86 computers
 sys-apps/memtester 4.3.0 4.4.0 4.5.0: userspace utility for testing the memory subsystem for faults
-sys-apps/miller 5.10.0: A tool like sed, awk, cut, join, and sort for name-indexed data (CSV, JSON, ..)
+sys-apps/miller 5.10.0 5.10.1: A tool like sed, awk, cut, join, and sort for name-indexed data (CSV, JSON, ..)
 sys-apps/minijail 9 12: helper binary and library for sandboxing & restricting privs of service
 sys-apps/minised 1.15: a smaller, cheaper and faster sed implementation
 sys-apps/miscfiles 1.5-r3: Miscellaneous files

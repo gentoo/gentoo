@@ -1,0 +1,15 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=install prepare test
+DEPEND=sys-devel/flex
+DESCRIPTION=A tool like sed, awk, cut, join, and sort for name-indexed data (CSV, JSON, ..)
+EAPI=7
+HOMEPAGE=https://johnkerl.org/miller/doc/index.html
+INHERIT=autotools
+IUSE=doc test
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=BSD-2
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/johnkerl/miller/archive/v5.10.1.tar.gz -> miller-5.10.1.tar.gz
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
+_md5_=228bfe315db98d5f7f3d9e96e12732d8

@@ -1,8 +1,10 @@
+BDEPEND=sys-apps/groff test? ( sys-process/time )
 DEFINED_PHASES=compile install prepare
-DEPEND=dev-util/diffstat dev-util/patchutils sys-apps/diffutils sys-apps/findutils virtual/awk sys-apps/grep sys-apps/less sys-apps/sed sys-apps/coreutils sys-devel/patch sys-libs/ncurses:0= sys-apps/groff test? ( sys-process/time )
-DESCRIPTION=tool for applying patches that patch cannot apply because of conflicting changes
-EAPI=5
-HOMEPAGE=https://neil.brown.name/wiggle https://neil.brown.name/git?p=wiggle
+DEPEND=dev-util/diffstat dev-util/patchutils sys-apps/diffutils sys-apps/findutils virtual/awk sys-apps/grep sys-apps/less sys-apps/sed sys-apps/coreutils sys-devel/patch sys-libs/ncurses:0=
+DESCRIPTION=Tool for applying patches that patch cannot apply because of conflicting changes
+EAPI=7
+HOMEPAGE=https://neil.brown.name/wiggle https://git.neil.brown.name/?p=wiggle.git
+INHERIT=fixheadtails flag-o-matic toolchain-funcs
 IUSE=test
 KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
@@ -10,5 +12,5 @@ RDEPEND=dev-util/diffstat dev-util/patchutils sys-apps/diffutils sys-apps/findut
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://neil.brown.name/wiggle/wiggle-0.9.tar.gz
-_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	epatch	e8f1ec13660dc2f44b32775765d85e42	estack	055c42df72f76a4f45ec92b35e83cd56	eutils	2d5b3f4b315094768576b6799e4f926e	fixheadtails	662e80584ee2337b981d7188078e7c74	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	multilib	d410501a125f99ffb560b0c523cd3d1e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=44ecb554ba16eda3336f53c5a03edf5e
+_eclasses_=fixheadtails	662e80584ee2337b981d7188078e7c74	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741
+_md5_=0bceca3ee09a1e9d5316a1702be28df4
