@@ -26,7 +26,7 @@ IUSE="bladerf simcard soapysdr uhd zeromq"
 
 DEPEND="
 	dev-libs/boost:=
-	dev-libs/libconfig:=
+	dev-libs/libconfig:=[cxx]
 	net-misc/lksctp-tools
 	net-libs/mbedtls:=
 	sci-libs/fftw:3.0=
