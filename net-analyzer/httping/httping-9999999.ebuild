@@ -51,7 +51,7 @@ src_configure() {
 		# bug #731950
 		sed -i -e "s/-lncursesw/${ncurses_flags}/" Makefile || die
 		append-ldflags "${ncurses_flags}"
-        fi
+	fi
 }
 
 src_compile() {
