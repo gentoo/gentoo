@@ -17,7 +17,7 @@ KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~
 IUSE="alsa aqua athena dbus games gconf gif gpm gtk gui gzip-el jpeg kerberos livecd m17n-lib motif png sound source svg tiff toolkit-scroll-bars Xaw3d xft +xpm"
 
 RDEPEND="acct-group/mail
-	app-emacs/emacs-common-gentoo[games?,gui(-)?]
+	app-emacs/emacs-common[games?,gui(-)?]
 	net-libs/liblockfile
 	sys-libs/ncurses:0=
 	kerberos? ( virtual/krb5 )

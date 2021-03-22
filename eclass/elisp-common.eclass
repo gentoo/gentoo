@@ -494,7 +494,7 @@ elisp-site-regen() {
 		mv "${T}"/site-gentoo.el "${sitelisp}"/site-gentoo.el
 		eend $? "elisp-site-regen: Replacing site-gentoo.el failed" || die
 		case ${#sflist[@]} in
-			0) [[ ${PN} = emacs-common-gentoo ]] \
+			0) [[ ${PN} = emacs-common ]] \
 				|| ewarn "... Huh? No site initialisation files found." ;;
 			1) einfo "... ${#sflist[@]} site initialisation file included." ;;
 			*) einfo "... ${#sflist[@]} site initialisation files included." ;;
