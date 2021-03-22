@@ -7,7 +7,9 @@ PYTHON_COMPAT=( python3_{7..9} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Load a PEP 517 backend from inside the source tree"
-HOMEPAGE="https://pypi.org/project/intreehooks https://github.com/takluyver/intreehooks"
+HOMEPAGE="
+	https://pypi.org/project/intreehooks/
+	https://github.com/takluyver/intreehooks/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
