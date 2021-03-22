@@ -4,10 +4,11 @@ DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DESCRIPTION=This package contains character-cell fonts for use with X
 EAPI=7
 HOMEPAGE=http://www.jmknoble.net/fonts/
+INHERIT=font
 IUSE=X
-KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~ppc ~s390 ~sparc ~x86
+KEYWORDS=~alpha ~amd64 ~arm ~ia64 ppc ~s390 ~sparc ~x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://www.pobox.com/~jmknoble/fonts/jmk-x11-fonts-3.0.tar.gz
 _eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
-_md5_=b40b9059c36764b71dfa25fc87179d0e
+_md5_=44ce7c7ca33e18077598273cc44ae391

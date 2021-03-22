@@ -3,11 +3,12 @@ DEPEND=sys-apps/dbus client? ( sys-libs/readline:0= ) ~dev-libs/ell-0.38 virtual
 DESCRIPTION=Wireless daemon for linux
 EAPI=6
 HOMEPAGE=https://git.kernel.org/pub/scm/network/wireless/iwd.git/
+INHERIT=flag-o-matic linux-info systemd
 IUSE=+client +crda +monitor ofono wired cpu_flags_x86_aes cpu_flags_x86_ssse3 standalone systemd kernel_linux
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ia64 ppc ppc64 ~sparc ~x86
 LICENSE=GPL-2
 RDEPEND=sys-apps/dbus client? ( sys-libs/readline:0= ) ~dev-libs/ell-0.38 net-wireless/wireless-regdb crda? ( net-wireless/crda ) standalone? ( systemd? ( sys-apps/systemd ) !systemd? ( virtual/resolvconf ) )
 SLOT=0
 SRC_URI=https://www.kernel.org/pub/linux/network/wireless/iwd-1.12.tar.xz
-_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	edos2unix	33e347e171066657f91f8b0c72ec8773	epatch	e8f1ec13660dc2f44b32775765d85e42	estack	055c42df72f76a4f45ec92b35e83cd56	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	multilib	d410501a125f99ffb560b0c523cd3d1e	preserve-libs	ef207dc62baddfddfd39a164d9797648	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=09ba1e2ca8bbc282a916f8c25028b218
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	estack	055c42df72f76a4f45ec92b35e83cd56	epatch	e8f1ec13660dc2f44b32775765d85e42	l10n	8cdd85e169b835d518bc2fd59f780d8e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	preserve-libs	ef207dc62baddfddfd39a164d9797648	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	systemd	74b223e42834adf09a2d21fe5fe13741
+_md5_=60829b4ee006778017f33280191609ec

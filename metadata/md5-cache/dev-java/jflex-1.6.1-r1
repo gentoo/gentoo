@@ -5,7 +5,7 @@ EAPI=7
 HOMEPAGE=https://www.jflex.de/
 INHERIT=java-pkg-2 java-pkg-simple
 IUSE=examples test vim-syntax elibc_FreeBSD doc source elibc_FreeBSD
-KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86 ~ppc-macos ~x64-macos
+KEYWORDS=~amd64 ~arm ~arm64 ppc64 ~x86 ~ppc-macos ~x64-macos
 LICENSE=BSD
 PDEPEND=dev-java/javacup:0
 RDEPEND=>=virtual/jre-1.8:* vim-syntax? ( || ( app-editors/vim app-editors/gvim ) ) dev-java/ant-core:0 >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://jflex.de/jflex-1.6.1.tar.gz
 _eclasses_=java-utils-2	378e4cda228ea0231a0ac283cb2ad25c	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-pkg-simple	a814c0c1adac3d7902bc7023902a2e1a
-_md5_=47eab6c7641c63c18fcb34ccbf080a20
+_md5_=2b6eb6bc356e7b6e1060637d24ec33f9

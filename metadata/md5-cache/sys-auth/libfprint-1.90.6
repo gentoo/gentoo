@@ -4,11 +4,12 @@ DEPEND=dev-libs/glib:2 >=dev-libs/libgusb-0.3.1 dev-libs/nss virtual/libusb:1= x
 DESCRIPTION=library to add support for consumer fingerprint readers
 EAPI=7
 HOMEPAGE=https://cgit.freedesktop.org/libfprint/libfprint/ https://github.com/freedesktop/libfprint https://gitlab.freedesktop.org/libfprint/libfprint
+INHERIT=meson udev
 IUSE=examples +introspection
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=~alpha ~amd64 ~arm arm64 ~ia64 ppc ppc64 ~sparc ~x86
 LICENSE=LGPL-2.1
 RDEPEND=dev-libs/glib:2 >=dev-libs/libgusb-0.3.1 dev-libs/nss virtual/libusb:1= x11-libs/gtk+:3 x11-libs/pixman x11-libs/libX11 x11-libs/libXv !>=sys-auth/libfprint-1.90:0
 SLOT=2
 SRC_URI=https://gitlab.freedesktop.org/libfprint/libfprint/-/archive/v1.90.6/libfprint-v1.90.6.tar.gz -> libfprint-1.90.6.tar.gz
-_eclasses_=meson	e43eef9331f54965a573ed380854ff47	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	udev	452708c3f55cf6e918b045adb949a9e6
-_md5_=e2c401bcb23974a6f4db0b309fe4792a
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	meson	e43eef9331f54965a573ed380854ff47	udev	452708c3f55cf6e918b045adb949a9e6
+_md5_=13ffd3d038ff233215b22ad4636ff087

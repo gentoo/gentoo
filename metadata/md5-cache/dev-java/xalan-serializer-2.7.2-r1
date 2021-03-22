@@ -5,10 +5,10 @@ EAPI=7
 HOMEPAGE=https://xalan.apache.org/
 INHERIT=java-pkg-2 java-pkg-simple
 IUSE=elibc_FreeBSD doc source elibc_FreeBSD
-KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~amd64 ~arm ~arm64 ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=Apache-2.0
 RDEPEND=>=virtual/jre-1.8:* >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
 SLOT=0
 SRC_URI=mirror://apache/xalan/xalan-j/source/xalan-j_2_7_2-src.tar.gz
 _eclasses_=java-utils-2	378e4cda228ea0231a0ac283cb2ad25c	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-pkg-simple	a814c0c1adac3d7902bc7023902a2e1a
-_md5_=b9f5e75e3889f27498cc28c215d8425f
+_md5_=0d0da119e81ad7a53f76eb9a10161500
