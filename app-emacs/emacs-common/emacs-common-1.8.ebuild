@@ -5,11 +5,9 @@ EAPI=7
 
 inherit elisp-common desktop xdg-utils readme.gentoo-r1
 
-MY_P="emacs-common-gentoo-${PV}"
 DESCRIPTION="Common files needed by all GNU Emacs versions"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Emacs"
-SRC_URI="https://dev.gentoo.org/~ulm/emacs/${MY_P}.tar.xz"
-S="${WORKDIR}/${MY_P}"
+SRC_URI="https://dev.gentoo.org/~ulm/emacs/${P}.tar.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"
