@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit toolchain-funcs user
 
@@ -15,17 +15,12 @@ KEYWORDS="amd64 arm ~hppa ppc ppc64 sparc x86"
 IUSE="gd selinux test"
 RESTRICT="!test? ( test )"
 
-COMMON_DEPEND="
-	gd? ( media-libs/gd[png] )
-"
+RDEPEND="gd? ( media-libs/gd[png] )"
 DEPEND="
-	${COMMON_DEPEND}
+	${RDEPEND}
 	test? ( dev-libs/check )
 "
-RDEPEND="
-	${COMMON_DEPEND}
-	selinux? ( sec-policy/selinux-vnstatd )
-"
+RDEPEND+=" selinux? ( sec-policy/selinux-vnstatd )"
 
 pkg_setup() {
 	enewgroup vnstat
@@ -42,6 +37,7 @@ src_prepare() {
 		-e 's|vnstat[.]pid|vnstatd/vnstatd.pid|' \
 		-e 's|/var/run|/run|' \
 		cfg/${PN}.conf || die
+
 	sed -i \
 		-e '/PIDFILE/s|/var/run|/run|' \
 		src/common.h || die

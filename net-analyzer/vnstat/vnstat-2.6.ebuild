@@ -15,18 +15,15 @@ KEYWORDS="amd64 arm arm64 ~hppa ~mips ppc ppc64 sparc x86"
 IUSE="gd selinux test"
 RESTRICT="!test? ( test )"
 
-COMMON_DEPEND="
+RDEPEND="
 	dev-db/sqlite
 	gd? ( media-libs/gd[png] )
 "
 DEPEND="
-	${COMMON_DEPEND}
+	${RDEPEND}
 	test? ( dev-libs/check )
 "
-RDEPEND="
-	${COMMON_DEPEND}
-	selinux? ( sec-policy/selinux-vnstatd )
-"
+RDEPEND+=" selinux? ( sec-policy/selinux-vnstatd )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.2-conf.patch
