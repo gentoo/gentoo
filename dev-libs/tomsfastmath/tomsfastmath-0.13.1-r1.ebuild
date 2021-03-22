@@ -6,8 +6,7 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="Fast public domain large integer arithmetic library"
-HOMEPAGE="https://www.libtom.net/TomsFastMath/
-	https://github.com/libtom/tomsfastmath"
+HOMEPAGE="https://www.libtom.net/TomsFastMath/ https://github.com/libtom/tomsfastmath"
 SRC_URI="https://github.com/libtom/tomsfastmath/releases/download/v${PV}/tfm-${PV}.tar.xz"
 
 LICENSE="Unlicense"
@@ -21,8 +20,8 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
 BDEPEND="sys-devel/libtool"
 
 PATCHES=(
-	"${FILESDIR}/${P}-makefile-fix.patch"
-	"${FILESDIR}/${PN}-0.13.1-export-fp_isprime_ex.patch"
+	"${FILESDIR}"/${P}-makefile-fix.patch
+	"${FILESDIR}"/${PN}-0.13.1-export-fp_isprime_ex.patch
 )
 
 _emake() {
@@ -50,7 +49,7 @@ src_test() {
 	# We choose to be verbose during the test process
 	# because the output is quite repetitive with no
 	# clear demarcation b/t tests
-	local tests=( "test" "stest" "rsatest" )
+	local tests=( test stest rsatest )
 
 	local test
 	for test in "${tests[@]}"; do
