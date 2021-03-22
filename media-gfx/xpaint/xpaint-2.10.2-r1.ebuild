@@ -18,6 +18,7 @@ IUSE="pgf tiff"
 RDEPEND="
 	media-libs/fontconfig
 	media-libs/freetype:2
+	media-libs/libjpeg-turbo:=
 	media-libs/libpng:0=
 	x11-libs/libICE
 	x11-libs/libX11
@@ -28,7 +29,6 @@ RDEPEND="
 	x11-libs/libXpm
 	x11-libs/libXt
 	sys-libs/zlib
-	media-libs/libjpeg-turbo:=
 	pgf? ( media-libs/libpgf )
 	tiff? (
 		media-libs/jbigkit:0=
@@ -39,8 +39,13 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	sys-devel/bison
 	sys-devel/flex
+	sys-devel/libtool
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}"/${P}-libtool-clang.patch
+)
 
 src_prepare() {
 	default
@@ -78,6 +83,5 @@ src_install() {
 		-C util install
 	doicon icons/xpaint.svg
 	make_desktop_entry "${PN}"
-	find "${D}" -name '*.la' -type f -delete || die
-	find "${D}" -name '*.a' -type f -delete || die
+	find "${D}" \( -name '*.la' -o -name '*.a' \) -type f -delete || die
 }

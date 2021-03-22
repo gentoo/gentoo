@@ -1,0 +1,13 @@
+libtool doesn't work if compiling with clang.  Need to add --tag=CC
+See bug https://bugs.gentoo.org/731010
+--- a/xpaintrw/Makefile.am
++++ b/xpaintrw/Makefile.am
+@@ -25,7 +25,7 @@
+ 
+ xpaint_DEFINES = $(ARCH_DEFINES) $(EXTRA_DEFINES) $(XAWLIB_DEFINES)
+ 
+-LIBTOOL = /usr/bin/libtool
++LIBTOOL = /usr/bin/libtool --tag=CC
+ AM_CFLAGS   = @X_CFLAGS@ @SPECIAL_CFLAGS@ $(xpaint_DEFINES)
+ AM_YFLAGS     = -d
+ CLEANFILES    = 
