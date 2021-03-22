@@ -3,9 +3,10 @@
 
 EAPI=7
 
+# git.foss21.org is the official repository per upstream
 DESCRIPTION="A skinny libtool implementation, written in C"
-HOMEPAGE="https://git.midipix.org/cgit.cgi/slibtool"
-SRC_URI="https://git.midipix.org/cgit.cgi/${PN}/snapshot/${P}.tar.xz"
+HOMEPAGE="https://git.foss21.org/slibtool"
+SRC_URI="https://dl.midipix.org/slibtool/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"

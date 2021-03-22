@@ -3,6 +3,7 @@
 
 EAPI=7
 
+# git.foss21.org is the official repository per upstream
 DESCRIPTION="A skinny libtool implementation, written in C"
 HOMEPAGE="https://git.foss21.org/slibtool"
 if [[ "${PV}" == *9999 ]] ; then
