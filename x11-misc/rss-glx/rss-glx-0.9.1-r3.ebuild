@@ -41,6 +41,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-imagemagick-7.patch
 	"${FILESDIR}"/${P}-c++11-narrowing.patch
 	"${FILESDIR}"/${P}-hang.patch
+	"${FILESDIR}"/${P}-matrixview-copy-font.patch
 )
 
 src_prepare() {
