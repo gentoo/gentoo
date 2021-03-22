@@ -2436,6 +2436,7 @@ app-metrics/pushgateway 0.9.1 0.10.0 1.0.0: Prometheus push acceptor for ephemer
 app-metrics/rabbitmq_exporter 0.29.0: Rabbitmq exporter for Prometheus
 app-metrics/redis_exporter 0.20.2 1.1.1 1.2.0 1.2.1: Prometheus Exporter for Redis Metrics. Supports Redis 2.x, 3.x and 4.x
 app-metrics/snmp_exporter 0.15.0: Prometheus exporter for snmp metrics
+app-metrics/unbound-telemetry 0.1.0_pre20210321: Prometheus exporter for Unbound DNS resolver
 app-metrics/uwsgi_exporter 0.7.0 0.8.0: uWSGI metrics exporter for prometheus.io
 app-metrics/vault_exporter 0.1.2-r1: Vault exporter for Prometheus
 app-misc/OpenRGB 0.4 0.5 9999: Open source RGB lighting control that doesn't depend on manufacturer software
