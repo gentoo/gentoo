@@ -55,7 +55,10 @@ IUSE="+blksha1 +curl cgi doc emacs gnome-keyring +gpg highlight +iconv libressl 
 
 # Common to both DEPEND and RDEPEND
 DEPEND="
-	gnome-keyring? ( app-crypt/libsecret )
+	gnome-keyring? (
+		app-crypt/libsecret
+		dev-libs/glib:2
+	)
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:= )
 	sys-libs/zlib
@@ -111,6 +114,7 @@ BDEPEND="
 		app-text/xmlto
 		sys-apps/texinfo
 	)
+	gnome-keyring? ( virtual/pkgconfig )
 	nls? ( sys-devel/gettext )
 	test? (	app-crypt/gnupg	)
 "
@@ -338,7 +342,7 @@ src_compile() {
 
 	if use gnome-keyring ; then
 		pushd contrib/credential/libsecret &>/dev/null || die
-		git_emake || die "emake git-credential-libsecret failed"
+		git_emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" PKG_CONFIG="$(tc-getPKG_CONFIG)"
 		popd &>/dev/null || die
 	fi
 
