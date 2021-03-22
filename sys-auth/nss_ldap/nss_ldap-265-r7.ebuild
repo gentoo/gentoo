@@ -106,8 +106,8 @@ multilib_src_configure() {
 	use debug && myconf+=( --enable-debugging )
 	use kerberos && myconf+=( --enable-configurable-krb5-ccname-gssapi )
 
-	# Note: this was "${EPREFIX}/$(get_libdir)" while the 32-bit ABI ended
-	# up in /usr/lib. Intentional...?
+	# Neede to be careful with changing this
+	# bug #581306
 	multilib_is_native_abi && myconf+=( --libdir="${EPREFIX}/usr/$(get_libdir)" )
 
 	ECONF_SOURCE=${S} econf "${myconf[@]}"
