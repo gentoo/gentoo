@@ -11,7 +11,7 @@ EGIT_REPO_URI="https://repo.or.cz/${PN}.git"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="bindist libressl ssl readline ipv6 tcpd"
+IUSE="bindist libressl ipv6 readline ssl tcpd"
 
 BDEPEND="app-text/yodl"
 DEPEND="
@@ -35,7 +35,7 @@ DOCS=( BUGREPORTS CHANGES DEVELOPMENT EXAMPLES FAQ FILES PORTING README SECURITY
 
 pkg_setup() {
 	# bug #587740
-	if use readline && use ssl; then
+	if use readline && use ssl ; then
 		elog "You are enabling both readline and openssl USE flags, the licenses"
 		elog "for these packages conflict. You may not be able to legally"
 		elog "redistribute the resulting binary."
