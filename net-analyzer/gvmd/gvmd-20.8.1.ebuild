@@ -7,8 +7,9 @@ CMAKE_MAKEFILE_GENERATOR="emake"
 inherit cmake flag-o-matic systemd toolchain-funcs
 
 DESCRIPTION="Greenbone vulnerability manager, previously named openvas-manager"
-HOMEPAGE="https://www.greenbone.net/en/"
-SRC_URI="https://github.com/greenbone/gvmd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://www.greenbone.net/en/ https://github.com/greenbone/gvmd/"
+SRC_URI="https://github.com/greenbone/gvmd/archive/v${PV}.tar.gz -> ${P}.tar.gz
+		https://github.com/j-licht/gvmd_report_formats/archive/v0.1.tar.gz -> gvm-report-formats-0.1.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2+"
@@ -17,10 +18,12 @@ IUSE="extras test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
+	acct-group/gvm
+	acct-user/gvm
 	dev-db/postgresql:*[uuid]
 	dev-libs/libgcrypt:0=
 	dev-libs/libical
-	>=net-analyzer/gvm-libs-11.0.1
+	>=net-analyzer/gvm-libs-20.8.0
 	net-libs/gnutls:=[tools]
 	extras?   (
 		app-text/xmlstarlet
@@ -28,7 +31,6 @@ DEPEND="
 
 RDEPEND="
 	${DEPEND}
-	acct-user/gvm
 	net-analyzer/ospd-openvas"
 
 BDEPEND="
@@ -43,16 +45,11 @@ BDEPEND="
 	)
 	test? ( dev-libs/cgreen )"
 
-PATCHES=(
-	# Replace deprecated glibc sys_siglist with strsignal
-	"${FILESDIR}/${P}-glibc_siglist.patch"
-)
-
 src_prepare() {
 	cmake_src_prepare
 	# QA-Fix | Use correct FHS/Gentoo policy paths for 9.0.0
-	sed -i -e "s*share/doc/gvm/html/*share/doc/gvmd-${PV}/html/*g" "$S"/doc/CMakeLists.txt || die
-	sed -i -e "s*/doc/gvm/*/doc/gvmd-${PV}/*g" "$S"/CMakeLists.txt || die
+	sed -i -e "s*share/doc/gvm/html/*share/doc/gvmd-${PV}/html/*g" doc/CMakeLists.txt || die
+	sed -i -e "s*/doc/gvm/*/doc/gvmd-${PV}/*g" CMakeLists.txt || die
 	# QA-Fix | Remove !CLANG Doxygen warnings for 9.0.0
 	if use extras; then
 		if ! tc-is-clang; then
@@ -96,6 +93,9 @@ src_install() {
 	fi
 	cmake_src_install
 
+	#QA-Fix
+	rm -r "${D}/usr/etc" || die
+
 	insinto /etc/gvm
 	doins -r "${FILESDIR}"/*sync*
 
@@ -118,4 +118,8 @@ src_install() {
 	# Set proper permissions on required files/directories
 	keepdir /var/lib/gvm/gvmd
 	fowners -R gvm:gvm /var/lib/gvm
+
+	#add report formats from old version for migration
+	insinto /usr/share/gvm/gvmd/
+	doins -r "${WORKDIR}/gvmd_report_formats-0.1/report_formats/"
 }

@@ -1,0 +1,22 @@
+diff --git a/util/CMakeLists.txt b/util/CMakeLists.txt
+index 3f10a4b8..223752e0 100644
+--- a/util/CMakeLists.txt
++++ b/util/CMakeLists.txt
+@@ -102,7 +102,7 @@ if (BUILD_WITH_RADIUS)
+     find_library (LIBRADCLI radcli)
+   endif (NOT LIBFREERADIUS)
+   if (NOT LIBFREERADIUS AND NOT LIBRADCLI)
+-    message (STATUS "  No suitable radius library found - radius support disabled")
++    message (SEND_ERROR "  No suitable radius library found")
+   elseif (LIBFREERADIUS)
+     message (STATUS "  Found ${LIBFREERADIUS} - radius support enabled")
+     set (RADIUS_LDFLAGS "-lfreeradius-client")
+@@ -122,7 +122,7 @@ if (BUILD_WITH_LDAP)
+     find_library (LIBLDAP ldap)
+   endif (NOT LIBLDAP)
+   if (NOT LIBLDAP)
+-    message (STATUS "  No ldap library found - ldap support disabled")
++    message (SEND_ERROR "  No ldap library found")
+   else (NOT LIBLDAP)
+     message (STATUS "  Found ${LIBLDAP} - ldap support enabled")
+     add_definitions (-DENABLE_LDAP_AUTH=1)

@@ -6,36 +6,37 @@ EAPI=7
 CMAKE_MAKEFILE_GENERATOR="emake"
 inherit cmake flag-o-matic toolchain-funcs
 
-MY_PN="openvas"
-MY_DN="openvassd"
-
-DESCRIPTION="Open Vulnerability Assessment Scanner"
-HOMEPAGE="https://www.greenbone.net/en/"
-SRC_URI="https://github.com/greenbone/openvas-scanner/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+DESCRIPTION="Greenbone vulnerability management libraries, previously named openvas-libraries"
+HOMEPAGE="https://www.greenbone.net/en/ https://github.com/greenbone/gvm-libs/"
+SRC_URI="https://github.com/greenbone/gvm-libs/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
-LICENSE="GPL-2 GPL-2+"
+LICENSE="GPL-2+"
 KEYWORDS="~amd64 ~x86"
-IUSE="cron extras snmp test"
+IUSE="extras ldap test radius"
 RESTRICT="!test? ( test )"
 
 DEPEND="
+	acct-group/gvm
 	acct-user/gvm
 	app-crypt/gpgme:=
-	dev-db/redis
 	dev-libs/glib
+	dev-libs/hiredis
 	dev-libs/libgcrypt:=
-	dev-libs/libksba
-	>=net-analyzer/gvm-libs-11.0.1
-	snmp? ( net-analyzer/net-snmp:= )
+	dev-libs/libxml2:=
+	dev-perl/UUID
 	net-libs/gnutls:=
-	net-libs/libpcap
-	net-libs/libssh:="
+	net-libs/libssh:=
+	net-libs/libpcap:=
+	sys-libs/zlib
+	ldap? ( net-nds/openldap )
+	radius? ( net-dialup/freeradius-client )"
 
 RDEPEND="
 	${DEPEND}"
 
 BDEPEND="
+	dev-vcs/git
 	sys-devel/bison
 	sys-devel/flex
 	virtual/pkgconfig
@@ -52,14 +53,9 @@ PATCHES=(
 	"${FILESDIR}"/${P}-disable-automagic-dep.patch
 )
 
-BUILD_DIR="${WORKDIR}/${MY_PN}-${PV}_build"
-S="${WORKDIR}/${MY_PN}-${PV}"
-
 src_prepare() {
 	cmake_src_prepare
-	# QA-Fix | Correct FHS/Gentoo policy paths for 7.0.0
-	sed -i -e "s*/doc/openvas-scanner/*/doc/openvas-scanner-${PV}/*g" "$S"/src/CMakeLists.txt || die
-	# QA-Fix | Remove !CLANG doxygen warnings for 7.0.0
+	# QA-Fix | Remove doxygen warnings for !CLANG
 	if use extras; then
 		if ! tc-is-clang; then
 		   local f
@@ -72,14 +68,22 @@ src_prepare() {
 		   done
 		fi
 	fi
+
+	#Remove tests that doesn't work in the network sandbox
+	if use test; then
+		sed -i 's/add_test (networking-test networking-test)/ /g' base/CMakeLists.txt || die
+		sed -i 's/add_test (util-test util-test)/ /g' boreas/CMakeLists.txt || die
+	fi
 }
 
 src_configure() {
 	local mycmakeargs=(
 		"-DLOCALSTATEDIR=${EPREFIX}/var"
 		"-DSYSCONFDIR=${EPREFIX}/etc"
-		"-DSBINDIR=${EPREFIX}/usr/bin"
-		"-DBUILD_WITH_SNMP=$(usex snmp)"
+		"-DGVM_PID_DIR=${EPREFIX}/var/lib/gvm"
+		"-DBUILD_TESTS=$(usex test)"
+		"-DBUILD_WITH_RADIUS=$(usex radius)"
+		"-DBUILD_WITH_LDAP=$(usex ldap)"
 	)
 	cmake_src_configure
 }
@@ -102,25 +106,7 @@ src_install() {
 	fi
 	cmake_src_install
 
-	if use cron; then
-		# Install the cron job if they want it.
-		exeinto /etc/gvm
-		doexe "${FILESDIR}/gvm-feed-sync.sh"
-		fowners gvm:gvm /etc/gvm/gvm-feed-sync.sh
-
-		insinto /etc/cron.d
-		newins "${FILESDIR}"/gvm-feed-sync.cron gvm
-	fi
-
-	insinto /etc/logrotate.d
-	newins "${FILESDIR}/${MY_DN}.logrotate" "${MY_DN}"
-
 	# Set proper permissions on required files/directories
-	keepdir /var/log/gvm
-	fowners gvm:gvm /var/log/gvm
-	keepdir /var/lib/openvas/{gnupg,plugins}
-	fowners -R gvm:gvm /var/lib/openvas
-
-	insinto /etc/openvas
-	doins "${FILESDIR}/openvas.conf"
+	keepdir /var/lib/gvm
+	fowners -R gvm:gvm /var/lib/gvm
 }

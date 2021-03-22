@@ -10,7 +10,7 @@ MY_PN="openvas"
 MY_DN="openvassd"
 
 DESCRIPTION="Open Vulnerability Assessment Scanner"
-HOMEPAGE="https://www.greenbone.net/en/"
+HOMEPAGE="https://www.greenbone.net/en/ https://github.com/greenbone/openvas-scanner/"
 SRC_URI="https://github.com/greenbone/openvas-scanner/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
@@ -20,13 +20,14 @@ IUSE="cron extras snmp test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
+	acct-group/gvm
 	acct-user/gvm
 	app-crypt/gpgme:=
 	dev-db/redis
 	dev-libs/glib
 	dev-libs/libgcrypt:=
 	dev-libs/libksba
-	>=net-analyzer/gvm-libs-11.0.1
+	>=net-analyzer/gvm-libs-20.8.0
 	snmp? ( net-analyzer/net-snmp:= )
 	net-libs/gnutls:=
 	net-libs/libpcap
@@ -49,11 +50,8 @@ BDEPEND="
 	test? ( dev-libs/cgreen )"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-disable-automagic-dep.patch
+	"${FILESDIR}"/${PN}-7.0.1-disable-automagic-dep.patch
 )
-
-BUILD_DIR="${WORKDIR}/${MY_PN}-${PV}_build"
-S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_prepare() {
 	cmake_src_prepare
@@ -71,6 +69,11 @@ src_prepare() {
 				"${f}" || die "couldn't disable CLANG parsing"
 		   done
 		fi
+	fi
+
+	#Remove tests that doesn't work in the network sandbox
+	if use test; then
+		sed -i 's/add_test (pcap-test pcap-test)/ /g' misc/CMakeLists.txt || die
 	fi
 }
 
@@ -105,7 +108,7 @@ src_install() {
 	if use cron; then
 		# Install the cron job if they want it.
 		exeinto /etc/gvm
-		doexe "${FILESDIR}/gvm-feed-sync.sh"
+		newexe "${FILESDIR}/gvm-feed-sync-${PV}.sh" gvm-feed-sync.sh
 		fowners gvm:gvm /etc/gvm/gvm-feed-sync.sh
 
 		insinto /etc/cron.d
