@@ -234,35 +234,6 @@ dev-haskell/geniplate
 # for transitioning out. Bug #776262.
 app-admin/lastpass-cli
 
-# Sam James <sam@gentoo.org> (2021-03-13)
-# Stuck on oasis.eclass, out of date
-# No reverse dependencies
-# (For ounit: please port your applications to dev-ml/ounit2
-# Should be a case of just a sed in most cases.)
-# Removal in 14 days. Nothing should really
-# be able to use any of these right now anyway.
-# bug #775785, bug #749696, bug #711414
-dev-ml/qcheck
-dev-ml/macaque
-dev-ml/pgocaml
-dev-ml/csv
-dev-ml/gen
-dev-ml/tyxml
-dev-ml/stringext
-dev-ml/deriving
-dev-ml/type-conv
-dev-ml/optcomp
-dev-ml/lwt_react
-dev-ml/batteries
-dev-ml/ocaml-magic-mime
-dev-ml/iTeML
-dev-ml/ocaml-re
-dev-ml/ocamlify
-dev-ml/ocamlmod
-dev-ml/ocaml-expect
-dev-ml/oasis
-dev-ml/ounit
-
 # Hans de Graaff <graaff@gentoo.org> (2021-03-12)
 # Requires a (proxy) maintainer with access to Oracle development
 # libraries. Please express your interest on bug 772128 if you can
@@ -350,31 +321,6 @@ dev-libs/libgpuarray
 # Bug 729876 and several others; removal in 30days
 dev-libs/klibc
 
-# Alfredo Tupone <tupone@gentoo.org> (2021-03-07)
-# unbuildable
-# Removal on 2021-04-05
-www-servers/ocsigenserver
-dev-ml/eliom
-dev-ml/js_of_ocaml
-dev-ml/ocaml-conduit
-dev-ml/dns
-dev-ml/ocaml-cohttp
-dev-ml/ocaml-dispatch
-dev-ml/ocaml-cstruct
-dev-ml/ocaml-ipaddr
-dev-ml/ocaml-uri
-dev-ml/re2
-dev-ml/bin-prot
-dev-ml/configurator
-dev-ml/ppx_traverse
-dev-ml/ppx_type_conv
-dev-ml/bin-prot
-dev-ml/ppx_driver
-dev-ml/ppx_core
-dev-ml/ppx_ast
-dev-ml/ppx_traverse_builtins
-dev-ml/jbuilder
-
 # Conrad Kostecki <conikost@gentoo.org> (2021-03-05)
 # Deprecated by upstream and unsupported due EOL.
 # Multiple bugs open and unmaintained.
@@ -417,11 +363,6 @@ app-office/moneyguru
 # in some cases.
 # bug #772998
 ~net-misc/openntpd-6.8_p1
-
-# Alfredo Tupone <tupone@gentoo.org> (2021-03-03)
-# no package uses it
-# Removal on 2021-04-02
-dev-ml/core_extended
 
 # Sam James <sam@gentoo.org> (2021-03-01)
 # Mask new proj 8.x as it removes deprecated
