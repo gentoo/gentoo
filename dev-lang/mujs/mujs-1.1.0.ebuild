@@ -39,16 +39,15 @@ src_compile() {
 }
 
 src_install() {
-	local myeconfargs=(
+	local myemakeargs=(
 		DESTDIR="${ED}"
-		install-shared
 		libdir="/usr/$(get_libdir)"
 		prefix="/usr"
 		VERSION="${PV}"
 		$(usex static-libs install-static '')
 	)
 
-	emake "${myeconfargs[@]}"
+	emake "${myemakeargs[@]}" install-shared
 
 	mv -v "${ED}"/usr/$(get_libdir)/lib${PN}.so{,.${PV}} || die
 
