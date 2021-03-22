@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Jimi Huotari <chiitoo@gentoo.org> (2021-03-22)
+# No consumers since 2020-09-05 (dev-libs/liboobs), and no known
+# stand-alone use.
+# Removal in 30 days.
+app-admin/system-tools-backends
+
 # Marek Szuba <marecki@gentoo.org> (2021-03-19)
 # Depends on bundled out-of-date Qt5 libraries, and even with those
 # installed recent upstream versions fail to run. Moreover, we have now
