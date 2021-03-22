@@ -5299,6 +5299,7 @@ net-analyzer/nsca:crypt - Build support for crypted communication with nsca, thr
 net-analyzer/nsca:minimal - Only build and install the send_nsca command and not the daemon. This allows a very minimal install with no overhead when setting up a node.
 net-analyzer/openvas-scanner:cron - Install a cron job to update GVM's feed daily.
 net-analyzer/openvas-scanner:extras - Html docs support
+net-analyzer/openvas-scanner:snmp - Build againts net-analyzer/net-snmp for "improved SNMP support"
 net-analyzer/ospd:extras - Html docs support
 net-analyzer/ossec-hids:agent - Build "agent" installation target (see package description)
 net-analyzer/ossec-hids:hybrid - Build "hybrid" installation target
