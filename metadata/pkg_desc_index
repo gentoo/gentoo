@@ -5286,7 +5286,7 @@ dev-lang/scala-bin 2.13.1: The Scala Programming Language
 dev-lang/smlnj 110.82: Standard ML of New Jersey compiler and libraries
 dev-lang/snobol 1.4.1-r1: Phil Budne's port of Macro SNOBOL4 in C, for modern machines
 dev-lang/spark 2018-r1 2019: Software development for high-reliability applications.
-dev-lang/spidermonkey 1.8.5-r9 52.9.1_pre1-r2 60.5.2_p0-r4 68.12.0 78.6.0 78.7.1 78.8.0: SpiderMonkey is Mozilla's JavaScript engine written in C and C++
+dev-lang/spidermonkey 1.8.5-r9 52.9.1_pre1-r2 60.5.2_p0-r4 68.12.0 78.6.0 78.7.1 78.8.0 78.9.0: SpiderMonkey is Mozilla's JavaScript engine written in C and C++
 dev-lang/squirrel 3.1_p20200612: A interpreted language mainly used for games
 dev-lang/srf 1.0-r2: The Simple Recursive Functions programming language
 dev-lang/swi-prolog 8.2.2 8.2.3 8.3.18 8.3.19 8.3.20: versatile implementation of the Prolog programming language
@@ -10783,7 +10783,7 @@ dev-util/cargo-license 0.3.0: Cargo subcommand to see license of dependencies
 dev-util/catalyst 3.0.14 3.0.15-r1 3.0.17 9999: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 4.16.0: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/catkin 0.8.9 9999: Cmake macros and associated python code used to build some parts of ROS
-dev-util/cbindgen 0.17.0 0.18.0: A tool for generating C bindings to Rust code
+dev-util/cbindgen 0.18.0: A tool for generating C bindings to Rust code
 dev-util/ccache 4.1 4.2: fast compiler cache
 dev-util/cccc 3.1.5-r1 3.1.6: Source metrics (line counts, complexity, etc) for Java and C++
 dev-util/ccls 0.20201219 9999: C/C++/ObjC language server
@@ -18161,8 +18161,8 @@ www-client/elinks 0.13.5-r100 9999: Advanced and well-established text-mode web 
 www-client/epiphany 3.34.4 3.36.4: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 78.8.0 86.0 86.0.1: Firefox Web Browser
-www-client/firefox-bin 78.8.0 86.0 86.0.1: Firefox Web Browser
+www-client/firefox 78.8.0 78.9.0 86.0 86.0.1 87.0: Firefox Web Browser
+www-client/firefox-bin 78.8.0 78.9.0 86.0 86.0.1 87.0: Firefox Web Browser
 www-client/google-chrome 89.0.4389.90: The web browser from Google
 www-client/google-chrome-beta 90.0.4430.30: The web browser from Google
 www-client/google-chrome-unstable 91.0.4449.6: The web browser from Google
