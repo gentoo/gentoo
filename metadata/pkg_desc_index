@@ -7792,7 +7792,7 @@ dev-php/PEAR-Crypt_HMAC2 1.0.0-r1: Implementation of Hashed Message Authenticati
 dev-php/PEAR-DB 1.9.2-r1 1.9.3 1.10.0: Database abstraction layer for PHP
 dev-php/PEAR-DB_DataObject 1.11.5-r1: SQL builder and data modeling layer
 dev-php/PEAR-Date 1.5.0_alpha4-r1: Date and Time Zone classes
-dev-php/PEAR-Exception 1.0.0: The PEAR Exception base class
+dev-php/PEAR-Exception 1.0.0 1.0.2: The PEAR Exception base class
 dev-php/PEAR-File 1.4.1-r1: Common file and directory routines
 dev-php/PEAR-File_Archive 1.5.5-r1: Easily manipulate archives in PHP
 dev-php/PEAR-File_Find 1.3.3: A class that facillitates the search of filesystems
