@@ -167,6 +167,8 @@ src_prepare() {
 		-e "s,/usr/include /usr/local/include.*echo \$KPATHSEA_INCLUDES.*,${EPREFIX}/usr/include\"," \
 		texk/web2c/configure || die
 
+	sed -i 's/-L\. -lweb2c/libweb2c\.a/' texk/web2c/web2c/Makefile.in || die
+
 	eapply "${WORKDIR}"/patches
 
 	default
