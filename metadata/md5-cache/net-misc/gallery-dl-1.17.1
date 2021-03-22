@@ -3,6 +3,7 @@ DEFINED_PHASES=compile configure install postinst prepare test
 DESCRIPTION=Download image galleries and collections from several image hosting sites
 EAPI=7
 HOMEPAGE=https://github.com/mikf/gallery-dl
+INHERIT=distutils-r1 optfeature
 IUSE=test python_targets_python3_7 python_targets_python3_8 python_targets_python3_9
 KEYWORDS=~amd64
 LICENSE=GPL-2
@@ -10,6 +11,6 @@ RDEPEND=>=dev-python/requests-2.11.0[python_targets_python3_7(-)?,python_targets
 REQUIRED_USE=|| ( python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 )
 RESTRICT=test !test? ( test )
 SLOT=0
-SRC_URI=https://github.com/mikf/gallery-dl/archive/v1.16.0.tar.gz -> gallery-dl-1.16.0.tar.gz
-_eclasses_=distutils-r1	16579e06f8839831bd5c03455bb87e3f	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	optfeature	6a2add34e06e5a05d88471a33ccdd73e	python-r1	6d099888c5b4dd4868c26508df307e95	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=001ab2389dab3d2c7194a6e9854072df
+SRC_URI=https://github.com/mikf/gallery-dl/archive/v1.17.1.tar.gz -> gallery-dl-1.17.1.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-r1	6d099888c5b4dd4868c26508df307e95	distutils-r1	16579e06f8839831bd5c03455bb87e3f	optfeature	6a2add34e06e5a05d88471a33ccdd73e
+_md5_=7fe4f2a27fea5dbd734f2fbc674fb9a3
