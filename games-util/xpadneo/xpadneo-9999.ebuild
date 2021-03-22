@@ -22,7 +22,7 @@ SLOT="0"
 
 S+="/hid-${PN}"
 MODULE_NAMES="hid-${PN}(kernel/drivers/hid::src)"
-BUILD_PARAMS='V=1 LD="$(tc-getLD)" KERNEL_SOURCE_DIR="${KERNEL_DIR}"'
+BUILD_PARAMS='V=1 LD="$(tc-getLD)" KERNEL_SOURCE_DIR="${KV_OUT_DIR}"'
 BUILD_TARGETS="src/version.h modules"
 
 CONFIG_CHECK="INPUT_FF_MEMLESS"
