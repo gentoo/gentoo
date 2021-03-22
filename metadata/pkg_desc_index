@@ -17233,7 +17233,7 @@ sys-auth/munge 0.5.13-r1: An authentication service for creating and validating 
 sys-auth/nss-mdns 0.14.1 9999: Name Service Switch module for Multicast DNS
 sys-auth/nss-myhostname 0.3-r1: Name Service Switch module for resolving the local hostname
 sys-auth/nss-pam-ldapd 0.9.11-r2 0.9.11-r3: NSS module for name lookups using LDAP
-sys-auth/nss_ldap 265-r5: NSS LDAP Module
+sys-auth/nss_ldap 265-r5 265-r6: NSS LDAP Module
 sys-auth/oath-toolkit 2.6.2: Toolkit for using one-time password authentication with HOTP/TOTP algorithms
 sys-auth/otpcalc 0.97.9: A One Time Password and S/Key calculator for GTK+
 sys-auth/pam-pgsql 0.7.3.2: pam module to authenticate users via PostgreSQL
