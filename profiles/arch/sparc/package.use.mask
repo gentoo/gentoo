@@ -1,6 +1,15 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-03-19)
+# On sparc, we have to force sys-apps/grep[libsigsegv]
+# for accurate stack overflow handling. dev-libs/libsigsegv
+# lacks USE=static-libs, so for now, this means we can't
+# build a static grep on sparc.
+# No real pressing need to add it.
+# bug #768135
+sys-apps/grep static
+
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-03-13)
 # virtual/jdk isn't keyworded here
 media-libs/rubberband jni
