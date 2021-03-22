@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -422,8 +422,9 @@ multilib_src_configure() {
 		break
 	done
 
-	# LTO support, bug #566282
+	# LTO support, bug #566282, bug #754654
 	is-flagq "-flto*" && myconf+=( "--enable-lto" )
+	filter-flags "-flto*"
 
 	# Mandatory configuration
 	myconf=(
