@@ -19,6 +19,7 @@ DEPEND="
 	acct-group/postgrey
 	acct-user/postgrey
 "
+# TODO: Use db.eclass?
 RDEPEND="
 	${DEPEND}
 	>=dev-lang/perl-5.6.0
@@ -35,7 +36,8 @@ RDEPEND="
 
 src_prepare() {
 	default
-	# bug 479400
+
+	# bug #479400
 	sed -i 's@#!/usr/bin/perl -T -w@#!/usr/bin/perl -w@' postgrey || die "sed failed"
 	sed -i -e '/git/d' Makefile || die
 }
@@ -66,7 +68,9 @@ src_install() {
 	# init.d + conf.d files
 	insopts -o root -g root -m 755
 	newinitd "${FILESDIR}"/${PN}-1.34-r3.rc.new ${PN}
+
 	insopts -o root -g root -m 640
 	newconfd "${FILESDIR}"/${PN}.conf.new ${PN}
+
 	systemd_dounit "${FILESDIR}"/postgrey.service
 }
