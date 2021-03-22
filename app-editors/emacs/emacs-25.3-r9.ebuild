@@ -16,7 +16,7 @@ KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 sparc x86 ~a
 IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif gpm gsettings gtk gui gzip-el imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif png selinux sound source ssl svg tiff toolkit-scroll-bars wide-int Xaw3d xft +xpm zlib"
 
 RDEPEND="acct-group/mail
-	app-emacs/emacs-common-gentoo[games?,gui(-)?]
+	app-emacs/emacs-common[games?,gui(-)?]
 	net-libs/liblockfile
 	sys-libs/ncurses:0=
 	acl? ( virtual/acl )
