@@ -12,15 +12,12 @@ SRC_URI="https://www.vanheusden.com/${PN}/${P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~hppa ~mips ~ppc ppc64 ~sparc x86"
-IUSE="debug fftw libressl l10n_nl ncurses ssl +tfo"
+IUSE="debug fftw l10n_nl ncurses ssl +tfo"
 
 RDEPEND="
 	fftw? ( sci-libs/fftw:3.0 )
 	ncurses? ( sys-libs/ncurses:0= )
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
+	ssl? ( dev-libs/openssl:0= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="ncurses? ( virtual/pkgconfig )"
