@@ -17,7 +17,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="BSD-2"
 SLOT="2/$(ver_cut 1-2)" # soname version
 KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 ~sparc x86 ~ppc-macos"
-IUSE="bindist bzip2 boost doc libressl lzma python sqlite ssl static-libs zlib"
+IUSE="bindist doc boost bzip2 libressl lzma python ssl static-libs sqlite zlib"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 BDEPEND="
