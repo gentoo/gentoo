@@ -1,12 +1,13 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils toolchain-funcs flag-o-matic
+EAPI=7
+
+inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="http protocol ping-like program"
-HOMEPAGE="http://www.vanheusden.com/httping/"
-SRC_URI="http://www.vanheusden.com/${PN}/${P}.tgz"
+HOMEPAGE="https://www.vanheusden.com/httping/"
+SRC_URI="https://www.vanheusden.com/${PN}/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -21,10 +22,8 @@ RDEPEND="
 		libressl? ( dev-libs/libressl:0= )
 	)
 "
-DEPEND="
-	${RDEPEND}
-	ncurses? ( virtual/pkgconfig )
-"
+DEPEND="${RDEPEND}"
+BDEPEND="ncurses? ( virtual/pkgconfig )"
 
 # This would bring in test? ( dev-util/cppcheck ) but unlike
 # upstream we should only care about compile/run time testing
