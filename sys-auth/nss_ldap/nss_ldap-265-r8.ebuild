@@ -108,7 +108,7 @@ multilib_src_configure() {
 
 	# Neede to be careful with changing this
 	# bug #581306
-	multilib_is_native_abi && myconf+=( --libdir="${EPREFIX}/usr/$(get_libdir)" )
+	multilib_is_native_abi && myconf+=( --libdir="${EPREFIX}/$(get_libdir)" )
 
 	ECONF_SOURCE=${S} econf "${myconf[@]}"
 }
