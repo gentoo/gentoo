@@ -13,6 +13,7 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Python client for Redis key-value store"
 HOMEPAGE="https://github.com/andymccurdy/redis-py"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
@@ -26,8 +27,6 @@ DEPEND="
 		dev-python/mock[${PYTHON_USEDEP}]
 	)
 "
-
-S="${WORKDIR}/${MY_P}"
 
 python_prepare_all() {
 	distutils-r1_python_prepare_all
@@ -54,10 +53,11 @@ python_compile() {
 src_test() {
 	local redis_pid="${T}"/redis.pid
 	local redis_port=6379
-	local redis_test_config="daemonize yes
-				pidfile ${redis_pid}
-				port ${redis_port}
-				bind 127.0.0.1
+	local redis_test_config="
+		daemonize yes
+		pidfile ${redis_pid}
+		port ${redis_port}
+		bind 127.0.0.1
 	"
 
 	# Spawn Redis itself for testing purposes
@@ -65,7 +65,7 @@ src_test() {
 	# I'm not restricting tests yet because this doesn't happen for anyone else AFAICT.
 	elog "Spawning Redis"
 	elog "NOTE: Port ${redis_port} must be free"
-	/usr/sbin/redis-server - <<< "${redis_test_config}" || die
+	"${EPREFIX}"/usr/sbin/redis-server - <<< "${redis_test_config}" || die
 
 	# Run the tests
 	distutils-r1_src_test
