@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="systemd"
 
 DEPEND="
-	dev-libs/libconfig:=
+	dev-libs/libconfig:=[cxx]
 	dev-libs/libevdev
 	virtual/libudev
 	systemd? ( sys-apps/systemd )
