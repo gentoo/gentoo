@@ -8361,7 +8361,7 @@ dev-python/flatbuffers 1.12: RFC 7049 - Concise Binary Object Representation
 dev-python/fleep 1.0.1 9999: File format determination library for Python
 dev-python/flexmock 0.10.4: Testing library to create mocks, stubs and fakes
 dev-python/flit 2.1.0: Simplified packaging of Python modules
-dev-python/flit_core 2.1.0: Simplified packaging of Python modules (core module)
+dev-python/flit_core 2.1.0 3.2.0: Simplified packaging of Python modules (core module)
 dev-python/flufl-bounce 3.0.1: Email bounce detectors.
 dev-python/flufl-i18n 2.0.2 3.1.4 3.1.5: A high level API for Python internationalization
 dev-python/flufl-lock 5.0.1 5.0.4 5.0.5: NFS-safe file locking with timeouts for POSIX systems
@@ -8943,7 +8943,7 @@ dev-python/pypng 0.0.20: Pure Python PNG image encoder/decoder
 dev-python/pypowervm 1.1.24: Python binding for the PowerVM REST API
 dev-python/pyprof2calltree 1.4.4 1.4.5: convert python profile data to kcachegrind calltree form
 dev-python/pyproj 2.6.1_p1 3.0.1: Python interface to the PROJ library
-dev-python/pyproject2setuppy 10: Cheap setup.py hack to install flit & poetry-based projects
+dev-python/pyproject2setuppy 10 11: Cheap setup.py hack to install flit & poetry-based projects
 dev-python/pypugjs 5.9.5 5.9.8: Pug (Jade) syntax adapter for Django, Jinja2 and Mako templates
 dev-python/pypy 7.3.3_p2-r1: A fast, compliant alternative implementation of the Python language
 dev-python/pypy-exe 7.3.3_p2: PyPy executable (build from source)
