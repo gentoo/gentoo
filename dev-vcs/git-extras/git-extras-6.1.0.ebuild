@@ -50,6 +50,6 @@ src_install() {
 	#insinto /usr/share/zsh/site-functions
 	#newins "${S}"/etc/${PN}-completion.zsh _${PN}
 
-    #insinto /usr/share/fish/vendor_completions.d
-    #doins "${S}"/etc/${PN}.fish
+	#insinto /usr/share/fish/vendor_completions.d
+	#doins "${S}"/etc/${PN}.fish
 }
