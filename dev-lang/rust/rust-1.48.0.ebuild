@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -110,6 +110,7 @@ REQUIRED_USE="|| ( ${ALL_LLVM_TARGETS[*]} )
 	test? ( ${ALL_LLVM_TARGETS[*]} )
 	wasm? ( llvm_targets_WebAssembly )
 	x86? ( cpu_flags_x86_sse2 )
+	prefix? ( system-bootstrap )
 "
 
 # we don't use cmake.eclass, but can get a warnings

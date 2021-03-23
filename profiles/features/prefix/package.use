@@ -4,3 +4,7 @@ sys-apps/portage -rsync-verify
 # Yiyang Wu <xgreenlandforwyy@gmail.com> (2021-03-03)
 # bazel should link libstdc++ statically in prefix to avoid finding host's libstdc++ when building other packages
 dev-util/bazel static-libs
+
+# Yiyang Wu <xgreenlandforwyy@gmail.com> (2021-03-03)
+# rust should use system-boostrap because interpreter of binaries in dev-lang/rust-bin is changed to the correct one, while the downloaded rust binary is not
+dev-lang/rust system-bootstrap
