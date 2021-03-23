@@ -154,7 +154,7 @@ src_configure() {
 
 	if use grass; then
 		mycmakeargs+=(
-			-DGRASS_PREFIX7=/usr/$(get_libdir)/grass70
+			-DGRASS_PREFIX7=/usr/$(get_libdir)/grass78
 		)
 	fi
 
