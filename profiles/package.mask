@@ -124,9 +124,11 @@ sys-apps/netloc
 # Sam James <sam@gentoo.org> (2021-03-13)
 # Stuck on oasis.eclass, out of date
 # No reverse dependencies
-# bug #775785
+# (For ounit: please port your applications to dev-ml/ounit2
+# Should be a case of just a sed in most cases.)
 # Removal in 14 days. Nothing should really
 # be able to use any of these right now anyway.
+# bug #775785, bug #749696, bug #711414
 dev-ml/qcheck
 dev-ml/macaque
 dev-ml/pgocaml
@@ -141,16 +143,11 @@ dev-ml/lwt_react
 dev-ml/batteries
 dev-ml/ocaml-magic-mime
 dev-ml/iTeML
-# Stuck on old oasis.eclass
-# bug #749696, #711414
 dev-ml/ocaml-re
-# Dependencies of Oasis itself
 dev-ml/ocamlify
 dev-ml/ocamlmod
 dev-ml/ocaml-expect
 dev-ml/oasis
-# Please port your applications to dev-ml/ounit2
-# Should be a case of just a sed in most cases
 dev-ml/ounit
 
 # Hans de Graaff <graaff@gentoo.org> (2021-03-12)
