@@ -11,6 +11,7 @@ inherit cmake desktop xdg-utils l10n pax-utils
 if [[ ${PV} == *9999 ]]
 then
 	EGIT_REPO_URI="https://github.com/dolphin-emu/dolphin"
+	EGIT_SUBMODULES=()
 	inherit git-r3
 else
 	inherit vcs-snapshot
@@ -69,7 +70,7 @@ BDEPEND="
 # vulkan-loader required for vulkan backend which can be selected
 # at runtime.
 RDEPEND="${RDEPEND}
-	media-libs/vulkan-loader"
+	vulkan? ( media-libs/vulkan-loader )"
 
 src_prepare() {
 	cmake_src_prepare
@@ -131,8 +132,11 @@ src_prepare() {
 	l10n_find_plocales_changes "Languages/po/" "" '.po'
 	l10n_for_each_disabled_locale_do remove_locale
 
-	 # About 50% compile-time speedup
+	# About 50% compile-time speedup
 	use vulkan || sed -i -e '/Externals\/glslang/d' CMakeLists.txt
+
+	# Remove dirty suffix: needed for netplay
+	sed -i -e 's/--dirty/&=""/' CMakeLists.txt
 }
 
 src_configure() {
