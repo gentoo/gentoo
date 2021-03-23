@@ -16,7 +16,7 @@ KEYWORDS="~amd64"
 BDEPEND="virtual/awk"
 
 PATCHES=(
-	"${FILESDIR}/${P}-respect-flags.patch"
+	"${FILESDIR}/${PN}-2.1.1-respect-flags.patch"
 )
 
 src_configure() {
