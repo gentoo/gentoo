@@ -1,0 +1,10 @@
+DEFINED_PHASES=-
+DEPEND=sys-devel/flex virtual/yacc
+DESCRIPTION=Generate C function prototypes from C source code
+EAPI=7
+HOMEPAGE=https://invisible-island.net/cproto/
+KEYWORDS=~alpha ~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=public-domain
+SLOT=0
+SRC_URI=ftp://ftp.invisible-island.net/cproto/cproto-4.7s.tgz
+_md5_=7e37f42f3107bd706b0cd567198b913b

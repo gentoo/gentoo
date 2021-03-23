@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure
+DEPEND=dev-lang/perl:= dev-perl/Devel-Size virtual/perl-Data-Dumper virtual/perl-File-Temp virtual/perl-IO
+DESCRIPTION=A shell tool for executing jobs in parallel locally or on remote machines
+EAPI=7
+HOMEPAGE=https://www.gnu.org/software/parallel/ https://git.savannah.gnu.org/cgit/parallel.git/
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-macos
+LICENSE=GPL-3+
+RDEPEND=dev-lang/perl:= dev-perl/Devel-Size virtual/perl-Data-Dumper virtual/perl-File-Temp virtual/perl-IO
+SLOT=0
+SRC_URI=mirror://gnu/parallel/parallel-20210322.tar.bz2
+_md5_=1aba88738741437753af8b3318e2b9a5

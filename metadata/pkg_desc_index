@@ -630,7 +630,7 @@ app-admin/apache-tools 2.4.41 2.4.43 2.4.46: Useful Apache tools - htdigest, htp
 app-admin/apachetop 0.19.7: A realtime Apache log analyzer
 app-admin/apg 2.3.0b_p20150129: Another Password Generator
 app-admin/augeas 1.11.0 1.11.0-r1 1.12.0: A library for changing configuration files
-app-admin/authbind 2.1.1: Bind sockets to privileged ports without root
+app-admin/authbind 2.1.1 2.1.2: Bind sockets to privileged ports without root
 app-admin/aws-elb-tools 1.0.15.1-r1: Serves as the client interface to the Elastic Load Balancing web service
 app-admin/bastille 3.0.9-r2: Bastille-Linux is a security hardening tool
 app-admin/bitwarden-desktop-bin 1.23.1: Bitwarden password manager desktop client
@@ -1067,7 +1067,7 @@ app-crypt/coolkey 1.1.0-r7: Linux Driver support for the CoolKey and CAC product
 app-crypt/crackpkcs12 0.2.10: multithreaded program to crack PKCS#12 files
 app-crypt/debian-archive-keyring 2019.1-r1 2021.1 2021.1.1: GnuPG archive keys of the Debian archive
 app-crypt/dehydrated 0.7.0: A client for signing certificates with an ACME-server
-app-crypt/dieharder 3.31.1-r3: An advanced suite for testing the randomness of RNG's
+app-crypt/dieharder 3.31.1-r3: An advanced suite for testing the randomness of RNGs
 app-crypt/easy-rsa 3.0.4 3.0.5 3.0.6 3.0.7 3.0.8: Small RSA key management package, based on OpenSSL
 app-crypt/efitools 1.8.1 1.9.2: Tools for manipulating UEFI secure boot platforms
 app-crypt/eid-mw 5.0.14 9999: Electronic Identity Card middleware supplied by the Belgian Federal Government
@@ -10816,7 +10816,7 @@ dev-util/cppi 1.18: a cpp directive indenter
 dev-util/cpptest 2.0.0-r1: Simple but powerful unit testing framework for C++
 dev-util/cppunit 1.14.0 1.15.1-r2 9999: C++ port of the famous JUnit framework for unit testing
 dev-util/cpputest 4.0: Unit testing and mocking framework for C/C++
-dev-util/cproto 4.7q 4.7r: Generate C function prototypes from C source code
+dev-util/cproto 4.7q 4.7r 4.7s: Generate C function prototypes from C source code
 dev-util/cpuinfo-collection 20101114: huge collection of /proc/cpuinfo files
 dev-util/cram 0.7 0.7-r1: Functional testing framework for command line applications
 dev-util/crash 7.2.9 9999: Red Hat crash utility; used for analyzing kernel core dumps
@@ -11114,7 +11114,7 @@ dev-vcs/cvs2cl 2.71-r1: produces a GNU-style ChangeLog for CVS-controlled source
 dev-vcs/cvsgraph 1.7.0: CVS/RCS repository grapher
 dev-vcs/cvsps 2.2_beta1-r1 3.13-r2: Generates patchset information from a CVS repository (supports fast-import)
 dev-vcs/cvsspam 0.2.12: Utility to send colored HTML CVS-mails
-dev-vcs/cvsutils 0.2.5-r1: A small bundle of utilities to work with CVS repositories
+dev-vcs/cvsutils 0.2.5-r1 0.2.6: A small bundle of utilities to work with CVS repositories
 dev-vcs/cvsync 2014.08.24.014706 9999: portable CVS repository synchronization utility
 dev-vcs/darcs 2.16.3: a distributed, interactive, smart revision control system
 dev-vcs/easygit 1.7.5.2: Easy GIT (eg), a frontend for git designed for former cvs and svn users
@@ -17856,7 +17856,7 @@ sys-process/minit 0.10-r1: a small yet feature-complete init
 sys-process/nmon 16g 16i 16j 16m: Nigel's performance MONitor for CPU, memory, network, disks, etc...
 sys-process/numactl 2.0.12 2.0.13 2.0.14 9999: Utilities and libraries for NUMA systems
 sys-process/numad 0.5-r3 9999: The NUMA daemon that manages application locality
-sys-process/parallel 20201222 20210122 20210222: A shell tool for executing jobs in parallel locally or on remote machines
+sys-process/parallel 20201222 20210122 20210222 20210322: A shell tool for executing jobs in parallel locally or on remote machines
 sys-process/pkill-darwin 1.0: pgrep(1) and pkill(1) for Darwin
 sys-process/prll 0.6.4: A utility for parallelizing execution of shell functions
 sys-process/procenv 0.51: command-line utility to show process environment
