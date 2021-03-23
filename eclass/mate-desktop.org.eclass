@@ -6,7 +6,7 @@
 # mate@gentoo.org
 # @AUTHOR:
 # Authors: NP-Hardass <NP-Hardass@gentoo.org> based upon the gnome.org eclass.
-# @SUPPORTED_EAPIS: 6
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: Helper eclass for mate-desktop.org hosted archives
 # @DESCRIPTION:
 # Provide a default SRC_URI and EGIT_REPO_URI for MATE packages as well as
@@ -14,7 +14,7 @@
 
 # EAPIs < 6 are banned.
 case "${EAPI:-0}" in
-	6) ;;
+	6|7) ;;
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 
@@ -22,7 +22,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 fi
 
-inherit versionator
+[[ ${EAPI:-0} -eq 6 ]] && inherit eapi7-ver
 
 # @ECLASS-VARIABLE: MATE_TARBALL_SUFFIX
 # @INTERNAL
@@ -47,7 +47,7 @@ inherit versionator
 # @DESCRIPTION:
 # Major and minor numbers of the version number, unless live.
 # If live ebuild, will be set to '9999'.
-: ${MATE_BRANCH:=$(get_version_component_range 1-2)}
+: ${MATE_BRANCH:=$(ver_cut 1-2)}
 
 # Set SRC_URI or EGIT_REPO_URI based on whether live
 if [[ ${PV} == 9999 ]]; then
