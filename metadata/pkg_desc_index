@@ -8857,6 +8857,7 @@ dev-python/pycson 0.8 0.8-r1: A python parser for the Coffeescript Object Notati
 dev-python/pycuda 2019.1.2: Python wrapper for NVIDIA CUDA
 dev-python/pycups 1.9.73-r2: Python bindings for the CUPS API
 dev-python/pycurl 7.43.0.6: python binding for curl/libcurl
+dev-python/pycurl-requests 0.2.0: Requests-compatible interface for PycURL
 dev-python/pycxx 7.1.2-r2: Set of facilities to extend Python with C++
 dev-python/pydantic 1.6.1 1.8.1: Data parsing and validation using Python type hints
 dev-python/pydata-sphinx-theme 0.4.3 0.5.0: Bootstrap-based Sphinx theme from the PyData community
