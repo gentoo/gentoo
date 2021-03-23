@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
 DESCRIPTION="GNU macro processor"
 HOMEPAGE="https://www.gnu.org/software/m4/m4.html"
@@ -13,22 +13,24 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sp
 IUSE="examples"
 
 # remember: cannot dep on autoconf since it needs us
-DEPEND="app-arch/xz-utils"
-RDEPEND=""
+BDEPEND="app-arch/xz-utils"
 
-src_prepare() {
-	eapply "${FILESDIR}"/${P}-darwin17-printf-n.patch
-	eapply "${FILESDIR}"/${P}-glibc228.patch #663924
-	default
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-darwin17-printf-n.patch
+	"${FILESDIR}"/${P}-glibc228.patch #663924
+)
 
 src_configure() {
-	# Disable automagic dependency over libsigsegv; see bug #278026
-	export ac_cv_libsigsegv=no
+	local -a myeconfargs=(
+		--enable-changeword
 
-	local myconf=""
-	[[ ${USERLAND} != "GNU" ]] && myconf="--program-prefix=g"
-	econf --enable-changeword ${myconf}
+		# Disable automagic dependency over libsigsegv; see bug #278026
+		ac_cv_libsigsegv=no
+	)
+
+	[[ ${USERLAND} != GNU ]] && myeconfargs+=( --program-prefix=g )
+
+	econf "${myeconfargs[@]}"
 }
 
 src_test() {
@@ -42,8 +44,7 @@ src_install() {
 	# gm4, it might find gm4 from outside the prefix on for instance Darwin
 	use prefix && dosym m4 /usr/bin/gm4
 	if use examples ; then
-		docinto examples
-		dodoc -r examples/
+		dodoc -r examples
 		rm -f "${ED}"/usr/share/doc/${PF}/examples/Makefile*
 	fi
 }
