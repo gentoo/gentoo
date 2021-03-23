@@ -18,9 +18,9 @@ LICENSE="POSTGRESQL GPL-2"
 DESCRIPTION="PostgreSQL RDBMS"
 HOMEPAGE="https://www.postgresql.org/"
 
-IUSE="debug icu kerberos kernel_linux ldap libressl llvm nls pam perl
-	  python +readline selinux server systemd ssl static-libs tcl
-	  threads uuid xml zlib"
+IUSE="debug icu kerberos kernel_linux ldap libressl llvm lz4
+	nls pam perl python +readline selinux server systemd
+	ssl static-libs tcl threads uuid xml zlib"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -37,6 +37,7 @@ llvm? (
 	sys-devel/llvm:=
 	sys-devel/clang:=
 )
+lz4? ( app-arch/lz4 )
 pam? ( sys-libs/pam )
 perl? ( >=dev-lang/perl-5.8:= )
 python? ( ${PYTHON_DEPS} )
@@ -78,8 +79,8 @@ uuid? (
 DEPEND="${CDEPEND}
 >=dev-lang/perl-5.8
 app-text/docbook-dsssl-stylesheets
-app-text/docbook-sgml-dtd:4.2
-app-text/docbook-xml-dtd:4.2
+app-text/docbook-sgml-dtd:4.5
+app-text/docbook-xml-dtd:4.5
 app-text/docbook-xsl-stylesheets
 app-text/openjade
 dev-libs/libxml2
@@ -168,6 +169,7 @@ src_configure() {
 		$(use_with kerberos gssapi) \
 		$(use_with ldap) \
 		$(use_with llvm) \
+		$(use_with lz4) \
 		$(use_with pam) \
 		$(use_with perl) \
 		$(use_with python) \
