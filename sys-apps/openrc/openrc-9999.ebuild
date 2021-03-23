@@ -18,15 +18,11 @@ fi
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="audit bash debug ncurses pam newnet prefix +netifrc selinux sysv-utils
-	unicode"
+IUSE="audit bash debug ncurses pam newnet prefix +netifrc selinux sysv-utils unicode"
 
 COMMON_DEPEND="
 	ncurses? ( sys-libs/ncurses:0= )
-	pam? (
-		sys-auth/pambase
-		sys-libs/pam
-	)
+	pam? ( sys-auth/pambase )
 	audit? ( sys-process/audit )
 	sys-process/psmisc
 	!<sys-process/procps-3.3.9-r2
@@ -68,8 +64,6 @@ src_prepare() {
 }
 
 src_compile() {
-	unset LIBDIR #266688
-
 	MAKE_ARGS="${MAKE_ARGS}
 		LIBNAME=$(get_libdir)
 		LIBDIR=${EPREFIX}/$(get_libdir)
