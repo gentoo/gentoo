@@ -1,5 +1,5 @@
---- arc-5.21m/tmclock.c
-+++ arc-5.21m/tmclock.c
+--- a/tmclock.c
++++ b/tmclock.c
 @@ -14,7 +14,7 @@
  /* Julian day number of the Unix* clock's origin, 01 Jan 1970. */
  #define JD1970 2440587L
