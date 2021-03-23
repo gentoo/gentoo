@@ -22,7 +22,7 @@ IUSE="audit bash debug ncurses pam newnet prefix +netifrc selinux sysv-utils uni
 
 COMMON_DEPEND="
 	ncurses? ( sys-libs/ncurses:0= )
-	pam? ( sys-auth/pambase )
+	pam? ( sys-libs/pam )
 	audit? ( sys-process/audit )
 	sys-process/psmisc
 	!<sys-process/procps-3.3.9-r2
