@@ -3662,7 +3662,7 @@ dev-db/oracle-instantclient-odbc 12: Transition package moving to single dev-db/
 dev-db/oracle-instantclient-sqlplus 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/percona-server 8.0.21.12 8.0.22.13: Fully compatible, enhanced and open source drop-in replacement for MySQL
 dev-db/percona-toolkit 2.2.20 3.0.9 3.0.13 3.1.0-r1 3.2.1 3.3.0: Advanced command-line tools to perform a variety of MySQL and system tasks
-dev-db/percona-xtrabackup 2.4.15 2.4.20 2.4.21 8.0.13 8.0.22.15: Hot backup utility for MySQL based servers
+dev-db/percona-xtrabackup 2.4.15 2.4.20 2.4.21 2.4.22 8.0.13 8.0.22.15 8.0.23.16: Hot backup utility for MySQL based servers
 dev-db/percona-xtrabackup-bin 2.4.13: MySQL hot backup software. non-blocking backups for InnoDB/XtraDB databases
 dev-db/pgFormatter 5.0: PostgreSQL SQL syntax beautifier
 dev-db/pg_activity 2.1.3: Realtime PostgreSQL database server monitoring tool
