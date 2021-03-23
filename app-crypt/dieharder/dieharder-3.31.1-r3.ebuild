@@ -5,7 +5,7 @@ EAPI=7
 
 inherit autotools flag-o-matic
 
-DESCRIPTION="An advanced suite for testing the randomness of RNG's"
+DESCRIPTION="An advanced suite for testing the randomness of RNGs"
 HOMEPAGE="https://www.phy.duke.edu/~rgb/General/dieharder.php"
 SRC_URI="https://www.phy.duke.edu/~rgb/General/${PN}/${P}.tgz"
 
@@ -42,7 +42,7 @@ src_compile() {
 
 src_install() {
 	if use doc; then
-		DOCS=( ChangeLog manual/dieharder.pdf manual/dieharder.ps)
+		DOCS=( ChangeLog manual/dieharder.pdf manual/dieharder.ps )
 		HTML_DOCS=( dieharder.html )
 	fi
 
