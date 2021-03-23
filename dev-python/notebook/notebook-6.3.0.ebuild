@@ -7,7 +7,7 @@ DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{7..9} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1
+inherit distutils-r1 xdg-utils
 
 DESCRIPTION="Jupyter Interactive Notebook"
 HOMEPAGE="https://jupyter.org"
@@ -58,8 +58,6 @@ python_prepare_all() {
 
 python_test() {
 	local deselect=(
-		# require geckodriver
-		notebook/tests/selenium
 		# trash doesn't seem to work for us
 		notebook/services/contents/tests/test_contents_api.py::GenericFileCheckpointsAPITest::test_checkpoints_follow_file
 		notebook/services/contents/tests/test_contents_api.py::GenericFileCheckpointsAPITest::test_delete
@@ -73,7 +71,8 @@ python_test() {
 		notebook/services/kernels/tests/test_kernels_api.py::KernelCullingTest::test_culling
 	)
 
-	epytest ${deselect[@]/#/--deselect }
+	# selenium tests require geckodriver
+	epytest --ignore notebook/tests/selenium ${deselect[@]/#/--deselect }
 }
 
 python_install() {
@@ -87,4 +86,14 @@ python_install() {
 pkg_preinst() {
 	# remove old mathjax folder if present
 	rm -rf "${EROOT}"/usr/lib*/python*/site-packages/notebook/static/components/MathJax || die
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
 }
