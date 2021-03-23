@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI="7"
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
@@ -23,17 +23,15 @@ RDEPEND="${PYTHON_DEPS}
 	>=dev-python/boto-2.49.0[${PYTHON_USEDEP}]
 	>=dev-python/crcmod-1.7[${PYTHON_USEDEP}]
 	>=dev-python/fasteners-0.14.1[${PYTHON_USEDEP}]
-	>=dev-python/gcs-oauth2-boto-plugin-2.5[${PYTHON_USEDEP}]
+	>=dev-python/gcs-oauth2-boto-plugin-2.7[${PYTHON_USEDEP}]
 	>=dev-python/google-apitools-0.5.30[${PYTHON_USEDEP}]
 	>=dev-python/google-reauth-python-0.1.0[${PYTHON_USEDEP}]
-	>=dev-python/httplib2-0.11.3[${PYTHON_USEDEP}]
+	>=dev-python/httplib2-0.18[${PYTHON_USEDEP}]
 	>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
 	>=dev-python/monotonic-1.4[${PYTHON_USEDEP}]
-	>=dev-python/oauth2client-4.1.3[${PYTHON_USEDEP}]
 	>=dev-python/pyopenssl-0.13[${PYTHON_USEDEP}]
 	>=dev-python/retry-decorator-1.0.0[${PYTHON_USEDEP}]
-	>=dev-python/six-1.12.0[${PYTHON_USEDEP}]
-	>=dev-python/PySocks-1.01[${PYTHON_USEDEP}]"
+	>=dev-python/six-1.12.0[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 
 PATCHES=(
@@ -58,12 +56,10 @@ python_prepare_all() {
 	rm -r gslib/vendored/boto/boto || die
 
 	# failes to compile with py3
-	rm gslib/vendored/boto/tests/mturk//cleanup_tests.py || die
+	rm gslib/vendored/boto/tests/mturk/cleanup_tests.py || die
 
 	sed -i \
 		-e 's/mock==/mock>=/' \
-		-e 's/oauth2client==/oauth2client>=/' \
-		-e 's/SocksiPy-branch==/PySocks>=/' \
 		setup.py || die
 	# Sanity check we didn't miss any updates.
 	grep '==' setup.py && die "Need to update version requirements"
