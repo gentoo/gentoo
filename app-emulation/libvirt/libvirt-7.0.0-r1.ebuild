@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit meson bash-completion-r1 eutils linux-info python-any-r1 readme.gentoo-r1 tmpfiles
+inherit meson bash-completion-r1 eutils linux-info python-any-r1 readme.gentoo-r1 tmpfiles verify-sig
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
@@ -13,7 +13,8 @@ if [[ ${PV} = *9999* ]]; then
 	SRC_URI=""
 	SLOT="0"
 else
-	SRC_URI="https://libvirt.org/sources/${P}.tar.xz"
+	SRC_URI="https://libvirt.org/sources/${P}.tar.xz
+		verify-sig? ( https://libvirt.org/sources/${P}.tar.xz.asc )"
 	KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 	SLOT="0/${PV}"
 fi
@@ -21,6 +22,7 @@ fi
 DESCRIPTION="C toolkit to manipulate virtual machines"
 HOMEPAGE="https://www.libvirt.org/"
 LICENSE="LGPL-2.1"
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libvirt.org.asc
 IUSE="
 	apparmor audit +caps dtrace firewalld fuse glusterfs iscsi
 	iscsi-direct +libvirtd lvm libssh lxc nfs nls numa openvz
@@ -44,7 +46,8 @@ BDEPEND="
 	dev-libs/libxslt
 	dev-perl/XML-XPath
 	dev-python/docutils
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	verify-sig? ( app-crypt/openpgp-keys-libvirt )"
 
 # gettext.sh command is used by the libvirt command wrappers, and it's
 # non-optional, so put it into RDEPEND.
