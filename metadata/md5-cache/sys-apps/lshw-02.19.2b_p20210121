@@ -1,0 +1,14 @@
+BDEPEND=gtk? ( virtual/pkgconfig ) sqlite? ( virtual/pkgconfig )
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=Hardware Lister
+EAPI=7
+HOMEPAGE=https://www.ezix.org/project/wiki/HardwareLiSter
+INHERIT=desktop flag-o-matic toolchain-funcs l10n
+IUSE=gtk sqlite static
+LICENSE=GPL-2
+RDEPEND=sys-apps/hwids gtk? ( x11-libs/gtk+:3 ) sqlite? ( dev-db/sqlite:3 )
+REQUIRED_USE=static? ( !gtk !sqlite )
+SLOT=0
+SRC_URI=https://ezix.org/src/pkg/lshw/archive/fdab06ac0b190ea0aa02cd468f904ed69ce0d9f1.tar.gz -> lshw-B.02.19.2_p20210121.tar.gz
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741
+_md5_=95dd5103b8598599e65e763f6bc65c4a
