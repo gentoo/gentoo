@@ -16,6 +16,7 @@ if [[ ${MY_PV} == "9999" ]] ; then
 	EGIT_BRANCH="master"
 	inherit git-r3
 	SRC_URI=""
+	#KEYWORDS=""
 else
 	MAJOR_V=$(ver_cut 1)
 	MINOR_V=$(ver_cut 2)
@@ -180,8 +181,6 @@ if [[ ${#PATCHES_BIN[@]} -ge 1 ]] || [[ ${MY_PV} == 9999 ]]; then
 fi
 
 wine_compiler_check() {
-	[[ ${MERGE_TYPE} = "binary" ]] && return 0
-
 	# GCC-specific bugs
 	if tc-is-gcc; then
 		# bug #549768
