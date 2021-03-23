@@ -1,27 +1,27 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils multilib flag-o-matic
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Bind sockets to privileged ports without root"
-HOMEPAGE="http://www.chiark.greenend.org.uk/ucgi/~ian/git/authbind.git/"
+HOMEPAGE="https://www.chiark.greenend.org.uk/ucgi/~ian/git/authbind.git/"
 SRC_URI="mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 
-DEPEND=""
-RDEPEND=""
+BDEPEND="virtual/awk"
 
-src_prepare() {
-	epatch "${FILESDIR}/${P}-respect-flags.patch"
-}
+PATCHES=(
+	"${FILESDIR}/${P}-respect-flags.patch"
+)
 
 src_configure() {
+	tc-export CC LD
+
 	sed -i \
 		-e "s|^prefix=.*|prefix=/usr|" \
 		-e "s|^lib_dir=.*|lib_dir=\$(prefix)/$(get_libdir)|" \
@@ -38,7 +38,8 @@ src_install() {
 	dobin authbind
 	doman authbind.1 authbind-helper.8
 
-	ln -s libauthbind.so.* libauthbind.so.$(awk -F= '/MAJOR=/ { print $2 }' < Makefile)
+	local major=$(awk -F= '/MAJOR=/ { print $2 }' Makefile || die)
+	ln -s libauthbind.so.* libauthbind.so.${major} || die
 	dolib.so libauthbind.so*
 
 	exeinto /usr/libexec/authbind
