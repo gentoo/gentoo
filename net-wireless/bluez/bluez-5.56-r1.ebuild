@@ -118,7 +118,7 @@ src_prepare() {
 	if use cups; then
 		sed -i \
 			-e "s:cupsdir = \$(libdir)/cups:cupsdir = $(cups-config --serverbin):" \
-			Makefile.{in,tools} || die
+			Makefile.{am,in,tools} || die
 	fi
 
 	eautoreconf
