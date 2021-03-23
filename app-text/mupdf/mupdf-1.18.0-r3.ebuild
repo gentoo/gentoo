@@ -13,7 +13,7 @@ S="${WORKDIR}/${P}-source"
 LICENSE="AGPL-3"
 SLOT="0/${PV}"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~s390 x86"
-IUSE="X +javascript libressl opengl ssl"
+IUSE="+javascript libressl opengl ssl X"
 REQUIRED_USE="opengl? ( javascript )"
 
 # Although we use the bundled, patched version of freeglut in mupdf (because of
@@ -37,7 +37,8 @@ RDEPEND="
 	X? (
 		x11-libs/libX11
 		x11-libs/libXext
-	)"
+	)
+"
 DEPEND="${RDEPEND}"
 
 PATCHES=(
@@ -112,11 +113,11 @@ _emake() {
 }
 
 src_compile() {
-	_emake XCFLAGS="-fpic"
+	_emake XCFLAGS="-fPIC"
 }
 
 src_install() {
-	if use X || use opengl ; then
+	if use opengl || use X ; then
 		domenu platform/debian/${PN}.desktop
 		doicon platform/debian/${PN}.xpm
 	else

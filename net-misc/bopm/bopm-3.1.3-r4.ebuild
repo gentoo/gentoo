@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools user
 
@@ -12,10 +12,6 @@ SRC_URI="http://static.blitzed.org/www.blitzed.org/${PN}/files/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ppc ~x86"
-IUSE=""
-
-RDEPEND=""
-DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-remove-njabl.patch
@@ -50,8 +46,9 @@ src_install() {
 	default
 
 	# Remove libopm related files, because bopm links statically to it
-	# If anybody wants libopm, please install net-libs/libopm
-	rm -r "${ED}"usr/$(get_libdir) "${ED}"usr/include || die
+	# TODO: Do we really want libopm? It's gone now.
+	# (was: "If anybody wants libopm, please install net-libs/libopm")
+	rm -r "${ED}"/usr/$(get_libdir) "${ED}"/usr/include || die
 
 	newinitd "${FILESDIR}"/bopm.init.d-r2 ${PN}
 	newconfd "${FILESDIR}"/bopm.conf.d-r1 ${PN}
