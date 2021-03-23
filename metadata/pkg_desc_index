@@ -19179,7 +19179,7 @@ xfce-extra/thunar-volman 4.16.0: Daemon that enforces volume-related policies
 xfce-extra/transd 0_p20120503-r1: A small daemon to watch for window creation and set window transparency values
 xfce-extra/tumbler 4.16.0: A thumbnail service for Thunar
 xfce-extra/xfce4-alsa-plugin 0.3.0: Simple ALSA volume control for xfce4-panel
-xfce-extra/xfce4-battery-plugin 1.1.3: A battery monitor panel plugin for the Xfce desktop environment
+xfce-extra/xfce4-battery-plugin 1.1.3 1.1.4: A battery monitor panel plugin for the Xfce desktop environment
 xfce-extra/xfce4-calculator-plugin 0.7.1: A calculator plugin for the Xfce4 panel
 xfce-extra/xfce4-clipman-plugin 1.6.1: A clipboard manager plug-in for the Xfce panel
 xfce-extra/xfce4-cpufreq-plugin 1.2.4 1.2.5: A panel plugin for showing information about cpufreq settings
