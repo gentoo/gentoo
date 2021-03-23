@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
-inherit eutils flag-o-matic libtool ltprune multilib-minimal toolchain-funcs
+inherit flag-o-matic libtool multilib-minimal toolchain-funcs
 
 DESCRIPTION="The Fast Lexical Analyzer"
 HOMEPAGE="https://flex.sourceforge.net/ https://github.com/westes/flex"
@@ -17,8 +17,7 @@ RESTRICT="!test? ( test )"
 
 # We want bison explicitly and not yacc in general #381273
 RDEPEND="sys-devel/m4"
-DEPEND="${RDEPEND}
-	app-arch/xz-utils
+BDEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
 	test? ( sys-devel/bison )"
 
@@ -59,8 +58,7 @@ multilib_src_compile() {
 	if multilib_is_native_abi; then
 		default
 	else
-		cd src || die
-		emake -f Makefile -f - lib <<< 'lib: $(lib_LTLIBRARIES)'
+		emake -C src -f Makefile -f - lib <<< 'lib: $(lib_LTLIBRARIES)'
 	fi
 }
 
@@ -72,15 +70,14 @@ multilib_src_install() {
 	if multilib_is_native_abi; then
 		default
 	else
-		cd src || die
-		emake DESTDIR="${D}" install-libLTLIBRARIES install-includeHEADERS
+		emake -C src DESTDIR="${D}" install-libLTLIBRARIES install-includeHEADERS
 	fi
 }
 
 multilib_src_install_all() {
 	einstalldocs
 	dodoc ONEWS
-	prune_libtool_files --all
+	find "${ED}" -name '*.la' -type f -delete || die
 	rm "${ED}"/usr/share/doc/${PF}/COPYING || die
 	dosym flex /usr/bin/lex
 }
