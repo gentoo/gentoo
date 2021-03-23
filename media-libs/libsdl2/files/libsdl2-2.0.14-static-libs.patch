@@ -24,11 +24,11 @@ Bug: https://bugzilla.libsdl.org/show_bug.cgi?id=1431
  
  $(objects)/$(SDLMAIN_TARGET): $(SDLMAIN_OBJECTS)
 -	$(RUN_CMD_LTLINK)$(LIBTOOL) --tag=CC --mode=link $(CC) -static -o $@ $(SDLMAIN_OBJECTS) -rpath $(libdir)
-+	$(RUN_CMD_LTLINK)$(LIBTOOL) --tag=CC --mode=link $(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS) $(EXTRA_LDFLAGS) $(LT_LDFLAGS) -all-static
++	$(RUN_CMD_LTLINK)$(LIBTOOL) --tag=CC --mode=link $(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS) $(EXTRA_LDFLAGS) $(LT_LDFLAGS) -static
  
  $(objects)/$(SDLTEST_TARGET): $(SDLTEST_OBJECTS)
 -	$(RUN_CMD_LTLINK)$(LIBTOOL) --tag=CC --mode=link $(CC) -static -o $@ $(SDLTEST_OBJECTS) -rpath $(libdir)
-+	$(RUN_CMD_LTLINK)$(LIBTOOL) --tag=CC --mode=link $(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS) $(EXTRA_LDFLAGS) $(LT_LDFLAGS) -all-static
++	$(RUN_CMD_LTLINK)$(LIBTOOL) --tag=CC --mode=link $(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS) $(EXTRA_LDFLAGS) $(LT_LDFLAGS) -static
  
  install: all install-bin install-hdrs install-lib install-data
  install-bin:
