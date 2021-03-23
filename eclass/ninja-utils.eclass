@@ -47,9 +47,9 @@ eninja() {
 	[[ ${EAPI:-0} != [245] ]] && nonfatal_args+=( -n )
 
 	if [[ -z ${NINJAOPTS+set} ]]; then
-		NINJAOPTS="-j$(makeopts_jobs) -l$(makeopts_loadavg "${MAKEOPTS}" 0)"
+		NINJAOPTS="-v -j$(makeopts_jobs) -l$(makeopts_loadavg "${MAKEOPTS}" 0)"
 	fi
-	set -- ninja -v ${NINJAOPTS} "$@"
+	set -- ninja ${NINJAOPTS} "$@"
 	echo "$@" >&2
 	"$@" || die "${nonfatal_args[@]}" "${*} failed"
 }
