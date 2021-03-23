@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit meson
 
@@ -11,7 +11,6 @@ SRC_URI="https://gitlab.gnome.org/Community/gentoo/${PN}/-/archive/${PV}/${P}.ta
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-IUSE=""
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
@@ -22,7 +21,8 @@ RDEPEND="
 	!<x11-libs/gtk+-2.24.28-r1:2
 	!<x11-libs/gtk+-3.22.2:3
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	app-text/docbook-xml-dtd:4.3
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt
