@@ -1,0 +1,16 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-libs/libuv
+DESCRIPTION=C implementation of the Raft consensus protocol
+EAPI=7
+HOMEPAGE=https://github.com/canonical/raft
+INHERIT=autotools
+IUSE=test zfs
+KEYWORDS=~amd64 ~arm64
+LICENSE=LGPL-3-with-linking-exception
+RDEPEND=dev-libs/libuv
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/canonical/raft/archive/v0.10.0.tar.gz -> raft-0.10.0.tar.gz
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
+_md5_=2f0d0e00b6f00aa852247b7deb6af826
