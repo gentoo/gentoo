@@ -1,5 +1,3 @@
-diff --git a/Makefile b/Makefile
-index c1eed73..932ea60 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -34,10 +34,9 @@ INSTALL_PROGRAM ?= install -o root -g root -m 755 -s
