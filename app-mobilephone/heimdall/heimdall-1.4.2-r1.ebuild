@@ -15,15 +15,15 @@ else
 fi
 
 DESCRIPTION="Tool suite used to flash firmware onto Samsung devices"
-HOMEPAGE="https://glassechidna.com.au/heimdall/"
+HOMEPAGE="https://glassechidna.com.au/heimdall/ https://github.com/Benjamin-Dobell/Heimdall"
 
 LICENSE="MIT"
 SLOT="0"
 IUSE="gui"
 
 RDEPEND="
-	virtual/libusb:1=
 	sys-libs/zlib
+	virtual/libusb:1=
 	gui? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
