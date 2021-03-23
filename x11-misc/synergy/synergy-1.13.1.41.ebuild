@@ -52,6 +52,10 @@ DEPEND="
 	${RDEPEND}
 	x11-base/xorg-proto
 "
+BDEPEND="
+	gui? (
+		dev-qt/linguist-tools:5
+	)"
 
 DOCS=( ChangeLog doc/synergy.conf.example{,-advanced,-basic} )
 
