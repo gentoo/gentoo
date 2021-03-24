@@ -368,12 +368,6 @@ sys-auth/authenticator
 # Removal on 2021-03-27.  Bug #731038, #772812.
 media-gfx/videorbits
 
-# David Seifert <soap@gentoo.org> (2021-02-21)
-# Drive-by addition, never maintained by maintainer, tests failing,
-# missing dependencies, python3.7 only, no reverse dependencies.
-# Removal on 2021-03-23.  Bug #738004, #751316, #766989.
-dev-python/moviepy
-
 # Sam James <sam@gentoo.org> (2021-02-18)
 # 0.9.27 included a regression wrt deletes
 # bug #768948
