@@ -10810,7 +10810,6 @@ dev-util/comparator 2.12: ESR's utility for making fast comparisons among large 
 dev-util/complexity 1.10: a tool designed for analyzing the complexity of C program functions
 dev-util/conan 1.28.0 1.28.1: Distributed C/C++ package manager
 dev-util/conf2struct 1.0-r1 1.3-r1 9999: Create C parsers for libconfig and command-line
-dev-util/confix-wrapper 1: Wrapper to select either confix1.py or confix2.py
 dev-util/cookiecutter 1.7.2 1.7.2-r1: Command-line utility to create projects from cookiecutters (project templates)
 dev-util/cppcheck 1.88 2.2: Static analyzer of C/C++ code
 dev-util/cppi 1.18: a cpp directive indenter
@@ -14011,7 +14010,7 @@ media-sound/mpd 0.21.26 0.22.3 0.22.4-r1 0.22.5 0.22.6: The Music Player Daemon 
 media-sound/mpdas 0.4.2: AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22 9999: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.8.1-r2: Music Player For Console
-media-sound/mpg123 1.25.13 1.26.3 1.26.4: a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
+media-sound/mpg123 1.26.3 1.26.4 1.26.5: a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mpg321 0.3.2: A realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mplay 0.80: A Curses front-end for mplayer
 media-sound/mps-youtube 0.2.8-r2 9999: Terminal-based YouTube player and downloader
@@ -17787,7 +17786,6 @@ sys-libs/queue-standalone 0.1-r1: Install <sys/queue.h> from glibc.
 sys-libs/readline 8.0_p4 8.1: Another cute console display library
 sys-libs/rpmatch-standalone 1.0: Standalone rpmatch library for use with musl
 sys-libs/slang 2.3.2: Multi-platform library designed to allow a developer to create robust software
-sys-libs/suacomp 0.6.14 9999: library wrapping the interix lib-c to make it less buggy
 sys-libs/talloc 2.3.1 2.3.2: Samba talloc library
 sys-libs/tapi 1.30 2.0.0: Text-based Application Programming Interface
 sys-libs/tdb 1.4.3: Simple database API
