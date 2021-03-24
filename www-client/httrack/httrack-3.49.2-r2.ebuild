@@ -33,9 +33,11 @@ src_prepare() {
 	# linker lld with profile 17.1 on amd64 (see https://bugs.gentoo.org/732272).
 	# The grep sandwich acts as a regression test so that a future
 	# version bump cannot break patching without noticing.
-	grep -wq '{ZLIB_HOME}/lib' m4/check_zlib.m4 || die
-	sed "s,{ZLIB_HOME}/lib,{ZLIB_HOME}/$(get_libdir)," -i m4/check_zlib.m4 || die
-	grep -w '{ZLIB_HOME}/lib' m4/check_zlib.m4 && die
+	if [[ "$(get_libdir)" != lib ]]; then
+		grep -wq '{ZLIB_HOME}/lib' m4/check_zlib.m4 || die
+		sed "s,{ZLIB_HOME}/lib,{ZLIB_HOME}/$(get_libdir)," -i m4/check_zlib.m4 || die
+		grep -w '{ZLIB_HOME}/lib' m4/check_zlib.m4 && die
+	fi
 
 	eautoreconf
 }
