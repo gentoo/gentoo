@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -82,7 +82,7 @@ src_install() {
 	dodir /var/lib/VirtualGL
 	fowners root:video /var/lib/VirtualGL
 	fperms 0750 /var/lib/VirtualGL
-	newinitd "${FILESDIR}/vgl.initd-r3" vgl
+	newinitd "${FILESDIR}/vgl.initd-r4" vgl
 	newconfd "${FILESDIR}/vgl.confd-r2" vgl
 
 	exeinto /usr/libexec
