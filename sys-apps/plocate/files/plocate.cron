@@ -1,6 +1,11 @@
 #! /bin/sh
 set -e
 
+# Do not run the cron job if plocate's systemd timer is enabled.
+if systemctl is-enabled --quiet plocate-updatedb.timer >/dev/null 2>&1; then
+	exit
+fi
+
 # check if we run on battery and if so then don't run
 if which on_ac_power >/dev/null 2>&1; then
 	ON_BATTERY=0
