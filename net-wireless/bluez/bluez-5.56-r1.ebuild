@@ -115,13 +115,14 @@ src_prepare() {
 		eapply "${FILESDIR}"/0001-Allow-using-obexd-without-systemd-in-the-user-session-r2.patch
 	fi
 
+	eautoreconf
+
 	if use cups; then
+		# Only not .am to not need to run eautoreconf only because of this
 		sed -i \
 			-e "s:cupsdir = \$(libdir)/cups:cupsdir = $(cups-config --serverbin):" \
-			Makefile.{am,in,tools} || die
+			Makefile.{in,tools} || die
 	fi
-
-	eautoreconf
 
 	multilib_copy_sources
 }
