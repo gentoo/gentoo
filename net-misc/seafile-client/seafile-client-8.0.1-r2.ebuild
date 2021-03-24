@@ -16,7 +16,6 @@ IUSE="libressl shibboleth test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-db/sqlite:3
-	<dev-libs/glib-2.68.0
 	dev-libs/jansson
 	dev-libs/libevent
 	dev-qt/qtcore:5
@@ -37,6 +36,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-select-qt5.patch"
 	"${FILESDIR}/${PN}-7.0.9-libressl.patch"
 	"${FILESDIR}/${PN}-7.0.9-qt-5.15.patch"
+	"${FILESDIR}/${P}-glib-2.68.0.patch"
 )
 
 src_configure() {
