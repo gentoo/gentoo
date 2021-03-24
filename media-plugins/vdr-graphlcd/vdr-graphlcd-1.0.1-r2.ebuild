@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -45,13 +45,17 @@ pkg_setup() {
 src_prepare() {
 	vdr-plugin-2_src_prepare
 
-	sed -i "s:/usr/local:/usr:" Makefile || die
-	sed -i "s:i18n.c:i18n.h:g" Makefile || die
-	sed -i "s:include \$(VDRDIR)/Make.global:-include \$(VDRDIR)/Make.global:" Makefile || die
+	sed -e "s:/usr/local:/usr:" \
+		-e "s:i18n.c:i18n.h:g" \
+		-e "s:include \$(VDRDIR)/Make.global:-include \$(VDRDIR)/Make.global:" \
+		-i Makefile || die
 
-	sed -i "s:SKIP_INSTALL_DOC ?= 0:SKIP_INSTALL_DOC ?= 1:" Makefile || die
+	sed -e "s:SKIP_INSTALL_DOC ?= 0:SKIP_INSTALL_DOC ?= 1:" -i Makefile || die
 
 	eapply "${FILESDIR}/${P}_no-font.patch"
+
+	# bug 740296
+	sed -e "s:\"PLUGIN_GRAPHLCDCONF:\" PLUGIN_GRAPHLCDCONF:" -i plugin.c || die
 }
 
 src_install() {
