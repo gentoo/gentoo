@@ -25,6 +25,8 @@ RDEPEND="gtk? ( dev-ml/lablgtk:2=
 	|| ( net-misc/x11-ssh-askpass net-misc/ssh-askpass-fullscreen ) )
 	>=app-eselect/eselect-unison-0.4"
 
+QA_FLAGS_IGNORED="/usr/bin/unison{,-fsmonitor}-2.51"
+
 DOCS=( BUGS.txt CONTRIB INSTALL NEWS README ROADMAP.txt TODO.txt )
 
 src_prepare() {
