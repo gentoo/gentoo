@@ -13,7 +13,7 @@ inherit check-reqs chromium-2 desktop flag-o-matic multilib ninja-utils pax-util
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://chromium.org/"
-PATCHSET="1"
+PATCHSET="2"
 PATCHSET_NAME="chromium-$(ver_cut 1)-patchset-${PATCHSET}"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
 	https://files.pythonhosted.org/packages/ed/7b/bbf89ca71e722b7f9464ebffe4b5ee20a9e5c9a555a56e2d3914bb9119a6/setuptools-44.1.0.zip
@@ -231,11 +231,7 @@ src_prepare() {
 	python_setup
 
 	local PATCHES=(
-		"${WORKDIR}/patches/chromium-78-protobuf-RepeatedPtrField-export.patch"
-		"${WORKDIR}/patches/chromium-88-compiler.patch"
-		"${WORKDIR}/patches/chromium-90-ruy-include.patch"
-		"${WORKDIR}/patches/chromium-91-ToV8Traits-template-specialization.patch"
-		"${WORKDIR}/patches/chromium-91-ToV8Traits-attribute.patch"
+		"${WORKDIR}/patches"
 		"${FILESDIR}/chromium-89-EnumTable-crash.patch"
 		"${FILESDIR}/chromium-shim_headers.patch"
 	)
@@ -446,6 +442,7 @@ src_prepare() {
 		third_party/vulkan
 		third_party/web-animations-js
 		third_party/webdriver
+		third_party/webgpu-cts
 		third_party/webrtc
 		third_party/webrtc/common_audio/third_party/ooura
 		third_party/webrtc/common_audio/third_party/spl_sqrt_floor
