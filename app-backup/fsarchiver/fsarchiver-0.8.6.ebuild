@@ -23,6 +23,13 @@ CDEPEND="dev-libs/libgcrypt:0=
 "
 DEPEND="${CDEPEND}
 	static? (
+		app-arch/bzip2[static-libs]
+		dev-libs/libgcrypt:0=[static-libs]
+		dev-libs/libgpg-error[static-libs]
+		sys-apps/util-linux[static-libs]
+		>=sys-fs/e2fsprogs-1.41.4[static-libs]
+		sys-libs/e2fsprogs-libs[static-libs]
+		sys-libs/zlib[static-libs]
 		lz4? ( app-arch/lz4[static-libs] )
 		lzma? ( app-arch/xz-utils[static-libs] )
 		lzo? ( dev-libs/lzo[static-libs] )
