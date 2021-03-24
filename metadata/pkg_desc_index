@@ -5545,7 +5545,7 @@ dev-libs/libical 3.0.8 3.0.9: An implementation of basic iCAL protocols
 dev-libs/libiconv 1.15: GNU charset conversion library for libc which doesn't implement it
 dev-libs/libindicate 12.10.1-r3: Library to raise flags on DBus for other components of the desktop
 dev-libs/libindicator 12.10.1-r201 12.10.1-r301: A set of symbols and convience functions that all indicators would like to use
-dev-libs/libinput 1.16.4 1.16.5 1.17.0: Library to handle input devices in Wayland
+dev-libs/libinput 1.16.4 1.16.5 1.17.0 1.17.1: Library to handle input devices in Wayland
 dev-libs/libintl 0.21: the GNU international library (split out of gettext)
 dev-libs/libisoburn 1.5.2 1.5.4: Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn
 dev-libs/libisofs 1.5.2 1.5.4: Open-source library for reading, mastering and writing optical discs
@@ -14953,7 +14953,7 @@ net-libs/libgfbgraph 0.2.3-r1: A GObject library for Facebook Graph API
 net-libs/libgrss 0.5.0-r1 0.7.0: LibGRSS is a library for easy management of RSS/Atom/Pie feeds
 net-libs/libgsasl 1.10.0: The GNU SASL library
 net-libs/libgssglue 0.4-r1: Exports a gssapi interface which calls other random gssapi libraries
-net-libs/libhackrf 2018.01.1 9999: library for communicating with HackRF SDR platform
+net-libs/libhackrf 2018.01.1 2021.03.1 9999: library for communicating with HackRF SDR platform
 net-libs/libhtp 0.5.37: security-aware parser for the HTTP protocol and the related bits and pieces
 net-libs/libhubbub 0.3.7: HTML5 compliant parsing library, written in C
 net-libs/libident 0.32-r1: A small library to interface to the Ident protocol server
@@ -15729,7 +15729,7 @@ net-wireless/gr-paint 0.0_p20200517-r1 9999: Paints monochrome images into the w
 net-wireless/gr-rds 0.0_p20200807 9999: GNU Radio FM RDS Receiver
 net-wireless/gr-scan 20160211: Frequency scanner for GNU Radio
 net-wireless/gr-scopy 0.0_p20201005 9999: Scopy IIO blocks for GNU Radio
-net-wireless/hackrf-tools 2018.01.1-r2 9999: tools for communicating with HackRF SDR platform
+net-wireless/hackrf-tools 2018.01.1-r2 2021.03.1 9999: tools for communicating with HackRF SDR platform
 net-wireless/hidclient 20120728: Use your machine as a bluetooh keyboard/mouse
 net-wireless/horst 5.1 9999: Small 802.11 wireless LAN analyzer
 net-wireless/hostap-utils 0.4.7-r1: Utilities for Intersil Prism2/2.5/3 based IEEE 802.11b wireless LAN products
