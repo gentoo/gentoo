@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -33,6 +33,10 @@ DOCS=(
 	ChangeLog
 	docs/developers
 	docs/scim.cfg
+)
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.4.18-slibtool.patch
 )
 
 src_prepare() {
