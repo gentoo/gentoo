@@ -9540,7 +9540,7 @@ dev-qt/qttranslations 5.15.2: Translation files for the Qt5 framework
 dev-qt/qtvirtualkeyboard 5.15.2: Customizable input framework and virtual keyboard for Qt
 dev-qt/qtwayland 5.15.2-r1: Wayland platform plugin for Qt
 dev-qt/qtwebchannel 5.15.2: Qt5 module for integrating C++ and QML applications with HTML/JavaScript clients
-dev-qt/qtwebengine 5.15.2 5.15.2_p20210224: Library for rendering dynamic web content in Qt5 C++ and QML applications
+dev-qt/qtwebengine 5.15.2_p20210224: Library for rendering dynamic web content in Qt5 C++ and QML applications
 dev-qt/qtwebkit 5.212.0_pre20200309-r1: WebKit rendering library for the Qt5 framework (deprecated)
 dev-qt/qtwebsockets 5.15.2: Implementation of the WebSocket protocol for the Qt5 framework
 dev-qt/qtwebview 5.15.2: Module for displaying web content in a QML application using the Qt5 framework
