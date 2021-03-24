@@ -8050,7 +8050,7 @@ dev-python/aiorpcX 0.18.5 0.19 0.19.1 0.20.1 0.20.2 0.21.0: Generic async RPC im
 dev-python/aiosmtpd 1.2 1.2.2 1.2.4 1.3.2 1.4.0 1.4.1 1.4.2: asyncio based SMTP server
 dev-python/alabaster 0.7.12: A configurable sidebar-enabled Sphinx theme
 dev-python/alagitpull 0.0.23-r1: alabaster sub-theme used on git-pull docs
-dev-python/alembic 1.5.4 1.5.5 1.5.6 1.5.7: database migrations tool, written by the author of SQLAlchemy
+dev-python/alembic 1.5.4 1.5.5 1.5.6 1.5.7 1.5.8: database migrations tool, written by the author of SQLAlchemy
 dev-python/ament_package 0.9.2: Parser for the manifest files in the ament buildsystem
 dev-python/amodem 1.15.1-r1: Transmit data between two computers using audio
 dev-python/aniso8601 8.1.1 9.0.0 9.0.1: A library for parsing ISO 8601 strings
@@ -8124,8 +8124,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7 1.0.8: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r4: Amazon Web Services API
-dev-python/boto3 1.16.63 1.17.7 1.17.12 1.17.17 1.17.18 1.17.19 1.17.20 1.17.21 1.17.22 1.17.23 1.17.24 1.17.25 1.17.26 1.17.27 1.17.28 1.17.29 1.17.30 1.17.31 1.17.32 1.17.33 1.17.34 9999: The AWS SDK for Python
-dev-python/botocore 1.19.63 1.20.7 1.20.12 1.20.17 1.20.18 1.20.19 1.20.20 1.20.21 1.20.22 1.20.23 1.20.24 1.20.25 1.20.26 1.20.27 1.20.28 1.20.29 1.20.30 1.20.31 1.20.32 1.20.33 1.20.34 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.16.63 1.17.7 1.17.12 1.17.17 1.17.18 1.17.19 1.17.20 1.17.21 1.17.22 1.17.23 1.17.24 1.17.25 1.17.26 1.17.27 1.17.28 1.17.29 1.17.30 1.17.31 1.17.32 1.17.33 1.17.34 1.17.35 9999: The AWS SDK for Python
+dev-python/botocore 1.19.63 1.20.7 1.20.12 1.20.17 1.20.18 1.20.19 1.20.20 1.20.21 1.20.22 1.20.23 1.20.24 1.20.25 1.20.26 1.20.27 1.20.28 1.20.29 1.20.30 1.20.31 1.20.32 1.20.33 1.20.34 1.20.35 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.21: Syntax highlighting and autocompletion for the Python interpreter
@@ -8397,7 +8397,7 @@ dev-python/github3 1.3.0: A wrapper for the GitHub API written in python
 dev-python/glance_store 2.3.0: A library for glance
 dev-python/glooey 0.3.4-r1: An object-oriented GUI library for pyglet
 dev-python/gmpy 2.0.8-r2: Python bindings for GMP, MPC, MPFR and MPIR libraries
-dev-python/google-api-core 1.26.0 1.26.1 1.26.1-r1: Core Library for Google Client Libraries
+dev-python/google-api-core 1.26.0 1.26.1 1.26.1-r1 1.26.2: Core Library for Google Client Libraries
 dev-python/google-api-python-client 1.8.3-r1 2.0.0 2.0.2: Google API Client for Python
 dev-python/google-apitools 0.5.31: Python library to manipulate Google APIs
 dev-python/google-auth 1.26.1 1.27.0 1.27.1 1.28.0: Google Authentication Library
@@ -9091,7 +9091,7 @@ dev-python/python-senlinclient 2.1.1: A client for the OpenStack Senlin API
 dev-python/python-sense-hat 2.2.0-r2: Raspberry Pi Sense HAT python library
 dev-python/python-slip 0.6.5-r1: Miscellaneous convenience, extension and workaround code for Python
 dev-python/python-slugify 1.2.6 4.0.1: A Python Slugify application that handles Unicode
-dev-python/python-socks 1.2.0 1.2.1 1.2.2: SOCKS4, SOCKS5, HTTP tunneling functionality for Python
+dev-python/python-socks 1.2.0 1.2.1 1.2.2 1.2.3: SOCKS4, SOCKS5, HTTP tunneling functionality for Python
 dev-python/python-sshpubkeys 3.3.1: OpenSSH public key parser for Python
 dev-python/python-stdnum 1.16: A module to handle standardized numbers and codes
 dev-python/python-swiftclient 3.10.1: Python bindings to the OpenStack Object Storage API
@@ -9112,7 +9112,7 @@ dev-python/python3-saml 1.9.0 1.10.0 1.10.1: OneLogin's SAML Python Toolkit
 dev-python/python_orocos_kdl 1.4.0-r1 9999: Python bindings for KDL
 dev-python/pythondialog 3.5.1: A Python module for making simple text/console-mode user interfaces
 dev-python/pytidylib 0.3.2-r1: Python wrapper for HTML Tidy (tidylib)
-dev-python/pytools 2021.1 2021.1.2 2021.2 9999: Collection of tools missing from the Python standard library
+dev-python/pytools 2021.1 2021.1.2 2021.2 2021.2.1 9999: Collection of tools missing from the Python standard library
 dev-python/pytrie 0.4.0: A pure Python implementation of the trie data structure
 dev-python/pytz 2021.1: World timezone definitions for Python
 dev-python/pytzdata 2020.1: The Olson timezone database for Python
