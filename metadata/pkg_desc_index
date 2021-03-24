@@ -936,7 +936,7 @@ app-backup/dirvish 1.2.1: Dirvish is a fast, disk based, rotating network backup
 app-backup/duplicity 0.8.15 0.8.17 0.8.18: Secure backup system using gnupg to encrypt data
 app-backup/duply 2.2.2 2.3.1: A shell frontend for duplicity
 app-backup/flexbackup 1.2.1-r13: Flexible backup script using perl
-app-backup/fsarchiver 0.8.5-r1: Flexible filesystem archiver for backup and deployment tool
+app-backup/fsarchiver 0.8.5-r1 0.8.6: Flexible filesystem archiver for backup and deployment tool
 app-backup/hdup 2.0.14: Hdup is backup program using tar, find, gzip/bzip2, mcrypt and ssh
 app-backup/kfoldersync 3.4.1: Folder synchronization and backup tool based on KDE Frameworks
 app-backup/kup 0.8.0: Backup scheduler for the Plasma desktop
@@ -2190,7 +2190,7 @@ app-emulation/virtio-win 0.1.190.1: VirtIO drivers for Windows virtual machines 
 app-emulation/virtualbox 6.1.16-r1 6.1.18: Family of powerful x86 virtualization products for enterprise and home use
 app-emulation/virtualbox-additions 6.1.16-r1 6.1.18: CD image containing guest additions for VirtualBox
 app-emulation/virtualbox-extpack-oracle 6.1.16.140961-r1 6.1.18.142142: PUEL extensions for VirtualBox
-app-emulation/virtualbox-guest-additions 6.1.16-r1 6.1.18: VirtualBox kernel modules and user-space tools for Gentoo guests
+app-emulation/virtualbox-guest-additions 6.1.16-r1 6.1.18 6.1.18-r1: VirtualBox kernel modules and user-space tools for Gentoo guests
 app-emulation/virtualbox-modules 6.1.16-r1 6.1.18: Kernel Modules for Virtualbox
 app-emulation/vkd3d 1.0 1.1 1.1-r1 1.2 9999: D3D12 to Vulkan translation library
 app-emulation/wine-desktop-common 20150204-r1: Various desktop menu items and icons for wine
@@ -2536,7 +2536,7 @@ app-misc/g15daemon 1.9.5.3-r14 1.9.5.3-r15 1.9.5.3-r21 9999: Takes control of th
 app-misc/g15macro 1.0.3-r2: Macro recording plugin to G15daemon
 app-misc/g15message 1.0.0-r2: A simple message/alert client for G15daemon
 app-misc/g15mpd 1.0.0-r2: MPD (music player daemon) plugin to G15daemon
-app-misc/g15stats 1.9.7-r1: CPU, memory, swap, network stats for G15 Keyboard
+app-misc/g15stats 1.9.7-r2: CPU, memory, swap, network stats for G15 Keyboard
 app-misc/g810-led 0.3.6 0.4.2: Led controller for Logitech G- Keyboards
 app-misc/gcal 3.6.3 4.1: The GNU Calendar - a replacement for cal
 app-misc/gcalcli 4.2.0-r1: Google Calendar Command Line Interface
@@ -2613,7 +2613,7 @@ app-misc/mime-types 9: Provides /etc/mime.types file
 app-misc/mkcert 1.4.1: A zero-config tool to make locally trusted development certificates
 app-misc/mmv 1.01b_p18-r1 1.01b_p19: Move/copy/append/link multiple files according to a set of wildcard patterns
 app-misc/mosquitto 1.6.8 1.6.9 1.6.10 1.6.12: An Open Source MQTT v3 Broker
-app-misc/mouseremote 0.90-r2: X10 MouseRemote
+app-misc/mouseremote 0.90-r2 0.90-r3: X10 MouseRemote
 app-misc/muttprint 0.73-r5: Script for pretty printing of your mails
 app-misc/mvcase 0.1-r2: A modified version of mv, used to convert filenames to lower/upper case
 app-misc/mx5000tools 0.1.2-r1: Tools for controlling the LCD on a Logitech MX5000 keyboard
@@ -2698,7 +2698,7 @@ app-misc/tmuxp 1.5.4 1.6.5 1.7.2: tmux session manager. built on libtmux
 app-misc/todo 2.11.0 2.12.0-r1: A CLI-based TODO list manager
 app-misc/toilet 0.3-r1: The Other Implementations letters. Figlet replacement
 app-misc/towitoko 2.0.7-r3: Driver for Towitoko smartcard readers
-app-misc/tpconfig 3.1.3-r2: Touchpad config for ALPS and Synaptics TPs. Controls tap/click behaviour
+app-misc/tpconfig 3.1.3-r2 3.1.3-r3: Touchpad config for ALPS and Synaptics TPs. Controls tap/click behaviour
 app-misc/tpipe 1.6-r1: Command to duplicate standard input to more than one program
 app-misc/tprint 1.1.0-r1: Transparent Print Utility for terminals
 app-misc/tracker 2.3.4 2.3.5: A tagging metadata database, search tool and indexer
@@ -16942,7 +16942,7 @@ sys-apps/bat 0.17.1-r1: cat(1) clone with syntax highlighting and Git integratio
 sys-apps/biosdevname 0.7.3: Sets BIOS-given device names instead of kernel eth* names
 sys-apps/biosdisk 1.01: FreeDOS based BIOS updating utility for Dell machines
 sys-apps/bleachbit 4.0.0 4.2.0: Clean junk to free disk space and to maintain privacy
-sys-apps/bolt 0.9-r2: Userspace system daemon to enable security levels for Thunderbolt 3
+sys-apps/bolt 0.9-r2 0.9-r3: Userspace system daemon to enable security levels for Thunderbolt 3
 sys-apps/bubblewrap 0.4.1: Unprivileged sandboxing tool, namespaces-powered chroot-like solution
 sys-apps/busybox 1.32.0-r1 1.32.1 1.33.0 9999: Utilities for rescue and embedded systems
 sys-apps/byld 1.0.3: build a Linux distribution on a single floppy
@@ -17003,7 +17003,7 @@ sys-apps/flashrom 1.2-r3 9999: Utility for reading, writing, erasing and verifyi
 sys-apps/flatpak 1.10.0 1.10.2: Linux application sandboxing and distribution framework
 sys-apps/frandom 1.1-r1: Fast kernel-land pseudo-random number generator using the RC4 algorithm
 sys-apps/fwts 20.11.00: Firmware Test Suite
-sys-apps/fwupd 1.4.6 1.5.6 1.5.7: Aims to make updating firmware on Linux automatic, safe and reliable
+sys-apps/fwupd 1.4.6 1.5.6 1.5.7-r1: Aims to make updating firmware on Linux automatic, safe and reliable
 sys-apps/fxload 20081013-r1: USB firmware uploader
 sys-apps/gawk 4.2.1-r1 5.0.1 5.1.0: GNU awk pattern-matching language
 sys-apps/gcp 0.2.1: File copying utility with progress and I/O indicator
@@ -17809,7 +17809,7 @@ sys-power/hibernate-script 2.0-r6: Hibernate script supporting multiple suspend 
 sys-power/iasl 20200326 20200717: Intel ACPI Source Language (ASL) compiler
 sys-power/intel-undervolt 1.7-r1 9999: Intel CPU undervolting and throttling configuration tool
 sys-power/nut 2.7.4-r6: Network-UPS Tools
-sys-power/nvclock 0.8_p20110102-r2: NVIDIA Overclocking Utility
+sys-power/nvclock 0.8_p20110102-r2 0.8_p20110102-r3: NVIDIA Overclocking Utility
 sys-power/nvram-reboot 2004.10.03-r1: PowerOff Boot-Images for nvram-wakeup (not needed for GRUB)
 sys-power/pmtools 20110323-r1: Collection of tools for ACPI and power management
 sys-power/powermgmt-base 1.31-r2: Script to test whether computer is running on AC power
@@ -18506,7 +18506,7 @@ x11-misc/bbtime 0.1.5-r1: blackbox time watcher
 x11-misc/bbweather 0.6.3-r2: blackbox weather monitor
 x11-misc/birdtray 1.9.0 9999: A new mail system tray notification icon for Thunderbird
 x11-misc/blockdpy 1-r1: Tool to block access via the physical display while x11vnc is running
-x11-misc/bumblebee 3.2.1_p20190421-r1 3.2.1_p20210112 9999: Service providing elegant and stable means of managing Optimus graphics chipsets
+x11-misc/bumblebee 3.2.1_p20190421-r1 3.2.1_p20210112-r1 9999: Service providing elegant and stable means of managing Optimus graphics chipsets
 x11-misc/cairo-clock 0.3.4-r2: An analog clock displaying the system-time
 x11-misc/cbatticon 1.6.5 1.6.10: A lightweight and fast battery icon that sits in your system tray
 x11-misc/cdm 0.6.1_pre20180107 0.7: The Console Display Manager
@@ -18682,7 +18682,7 @@ x11-misc/urxvtconfig 1.0-r1: GUI configuration tool for the rxvt-unicode termina
 x11-misc/util-macros 1.19.2-r2 1.19.3: X.Org autotools utility macros
 x11-misc/vdpauinfo 1.4 99999: Displays info about your card's VDPAU support
 x11-misc/viewglob 2.0.4-r1: Graphical display of directories and globs referenced at the shell prompt
-x11-misc/virtualgl 2.6.4-r1 2.6.5 9999: Run OpenGL applications remotely with full 3D hardware acceleration
+x11-misc/virtualgl 2.6.4-r1 2.6.5-r1 9999: Run OpenGL applications remotely with full 3D hardware acceleration
 x11-misc/vnc2swf 0.5.0-r1: A tool for recording Flash SWF movies from VNC sessions
 x11-misc/vym 2.7.1 9999: View Your Mind, a mindmap tool
 x11-misc/wayv 0.3-r3: Wayv is hand-writing/gesturing recognition software for X
@@ -18692,7 +18692,7 @@ x11-misc/whaw 0.2: Window manager independent Window Layout tool
 x11-misc/wininfo 0.7-r1: An X app that follows your pointer providing information about the windows below
 x11-misc/wmctrl 1.07-r2: Command line tool to interact with an EWMH/NetWM compatible X Window Manager
 x11-misc/wmname 0.1-r1: utility to set the name of your window manager
-x11-misc/x11vnc 0.9.16-r4: VNC server for real X displays
+x11-misc/x11vnc 0.9.16-r4 0.9.16-r5: VNC server for real X displays
 x11-misc/x2vnc 1.7.2-r1: Control a remote computer running VNC from X
 x11-misc/x2x 1.27-r3: A utility to connect the Mouse and KeyBoard to another X
 x11-misc/xaos 3.6: Very fast real-time fractal zoomer
