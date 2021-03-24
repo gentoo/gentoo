@@ -20,14 +20,6 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="compat? ( !sys-libs/zlib )"
 
-src_prepare() {
-	cmake_src_prepare
-
-	# https://github.com/zlib-ng/zlib-ng/issues/881
-	sed "/LIB_INSTALL_DIR/s@/lib\"@/$(get_libdir)\"@" \
-		-i CMakeLists.txt || die
-}
-
 src_configure() {
 	local mycmakeargs=(
 		-DZLIB_COMPAT="$(usex compat)"
