@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools elisp-common eutils xdg-utils
+inherit autotools elisp-common eutils flag-o-matic xdg-utils
 
 DESCRIPTION="Free computer algebra environment based on Macsyma"
 HOMEPAGE="http://maxima.sourceforge.net/"
@@ -20,7 +20,7 @@ SUPP_RL=(   .    .     y               .    .         y     )
 # . - just --enable-<lisp>, <flag> - --enable-<flag>
 CONF_FLAG=( .    .     .               ecl  ccl       .     )
 # patch file version; . - no patch
-PATCH_V=(   2    1     .               .    3         1     )
+PATCH_V=(   2    1     .               4    3         1     )
 
 IUSE="emacs tk nls unicode X test ${LISPS[*]}"
 RESTRICT="!test? ( test )"
@@ -142,7 +142,14 @@ src_configure() {
 		done
 	fi
 
+	# Using raw-ldflags fixes the error,
+	#
+	#   x86_64-pc-linux-gnu/bin/ld: fatal error: -O1 -Wl: invalid option
+	#   value (expected an integer): 1 -Wl
+	#
+	# when building the maxima.fas library for ECL.
 	econf ${CONFS} \
+		LDFLAGS="$(raw-ldflags)" \
 		$(use_with tk wish) \
 		$(use_enable emacs) \
 		--with-lispdir="${EPREFIX}/${SITELISP}/${PN}"
@@ -187,6 +194,13 @@ src_install() {
 		insinto /usr/share/${PN}/${PV}/doc/imaxima
 		doins interfaces/emacs/imaxima/README
 		doins -r interfaces/emacs/imaxima/imath-example
+	fi
+
+	if use ecls; then
+		# Use ECL to find the path where it expects to load packages from.
+		ECLLIB=$(ecl -eval "(princ (SI:GET-LIBRARY-PATHNAME))" -eval "(quit)")
+		insinto "${ECLLIB#${EPREFIX}}"
+		doins src/binary-ecl/maxima.fas
 	fi
 }
 
