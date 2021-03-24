@@ -12,7 +12,6 @@
 	<use>
 		<flag name="freeimage">Use <pkg>media-libs/freeimage</pkg> for additional image support</flag>
 		<flag name="heif">Add HEIF/HEIC image support</flag>
-		<flag name="libnsgif">Add animated GIF support</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">eXeC64/imv</remote-id>
