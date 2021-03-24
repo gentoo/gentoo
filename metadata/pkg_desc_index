@@ -18544,7 +18544,7 @@ x11-misc/gbdfed 1.6: gbdfed Bitmap Font Editor
 x11-misc/gccmakedep 1.0.3-r1 9999: create dependencies in makefiles using 'gcc -M'
 x11-misc/gcolor2 0.4-r4: A GTK+ color selector
 x11-misc/genmenu 1.1.0-r1: menu generator for *box, WindowMaker, and Enlightenment
-x11-misc/gigolo 0.5.1: a frontend to easily manage connections to remote filesystems using GIO/GVfs
+x11-misc/gigolo 0.5.1 0.5.2: a frontend to easily manage connections to remote filesystems using GIO/GVfs
 x11-misc/gmrun 0.9.2-r2: A GTK-2 based launcher box with bash style auto completion!
 x11-misc/gpaste 3.36.3: Clipboard management system
 x11-misc/grabc 1.1-r2: Identify color of a pixel on the screen by clicking on a pixel on the screen
