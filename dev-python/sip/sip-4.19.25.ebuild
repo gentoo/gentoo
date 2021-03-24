@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{7..9} )
 inherit python-r1 toolchain-funcs
 
-DESCRIPTION="Python extension module generator for C and C++ libraries"
+DESCRIPTION="Python bindings generator for C/C++ libraries"
 HOMEPAGE="https://www.riverbankcomputing.com/software/sip/intro"
 
 MY_PN=sip
