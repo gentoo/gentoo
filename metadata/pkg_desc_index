@@ -14663,7 +14663,7 @@ net-dns/avahi 0.8-r2: System which facilitates service discovery on a local netw
 net-dns/bind 9.16.12 9.16.13: Berkeley Internet Name Domain - Name Server
 net-dns/bind-tools 9.16.12 9.16.13: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
 net-dns/c-ares 1.17.1: C library that resolves names asynchronously
-net-dns/coredns 1.6.9 1.7.0: A DNS server that chains middleware
+net-dns/coredns 1.6.9 1.7.0 1.8.3: A DNS server that chains middleware
 net-dns/ddclient 3.9.1: Perl client used to update dynamic DNS entries
 net-dns/djbdns 1.05-r33: Collection of DNS client/server software
 net-dns/dnrd 2.20.3-r2: A caching DNS proxy server
