@@ -23,6 +23,10 @@ SLOT="0/$(ver_cut 1-2)"
 RDEPEND="sys-process/numactl"
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/roct-thunk-interface-4.1.0-append-flags.patch"
+)
+
 src_prepare() {
 	sed -e "s:get_version ( \"1.0.0\" ):get_version ( \"${PV}\" ):" -i CMakeLists.txt || die
 	cmake_src_prepare
