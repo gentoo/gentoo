@@ -24,6 +24,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/bottle[${PYTHON_USEDEP}]
+		dev-python/django[${PYTHON_USEDEP}]
 		dev-python/flask-sqlalchemy[${PYTHON_USEDEP}]
 		dev-python/flask[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
