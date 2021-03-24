@@ -11,7 +11,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	MY_P="${PN}-v${PV}"
 	SRC_URI="https://download.flashrom.org/releases/${MY_P}.tar.bz2"
-	KEYWORDS="amd64 arm arm64 ppc ppc64 sparc x86"
+	KEYWORDS="amd64 arm arm64 ppc ppc64 x86"
 	S="${WORKDIR}/${MY_P}"
 fi
 
