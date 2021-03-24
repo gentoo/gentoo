@@ -12,7 +12,7 @@ SRC_URI="https://github.com/fdupoux/${PN}/releases/download/${PV}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug lz4 lzma lzo static zstd"
+IUSE="debug lz4 lzma lzo static +zstd"
 
 CDEPEND="dev-libs/libgcrypt:0=
 	>=sys-fs/e2fsprogs-1.41.4
