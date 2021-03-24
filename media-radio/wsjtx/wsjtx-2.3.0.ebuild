@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 RDEPEND="
-	dev-libs/boost[python]
+	dev-libs/boost:=[python]
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5
@@ -28,7 +28,7 @@ RDEPEND="
 	dev-qt/qttest:5
 	dev-qt/qtprintsupport:5
 	virtual/libusb:1
-	>=media-libs/hamlib-4.0
+	>=media-libs/hamlib-4.0:=
 	media-libs/portaudio
 	sci-libs/fftw:3.0[threads,fortran]
 	virtual/fortran
