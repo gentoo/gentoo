@@ -3,7 +3,9 @@
 
 EAPI=6
 
-inherit autotools elisp-common eutils xdg-utils
+PYTHON_COMPAT=( python3_{7,8,9} )
+
+inherit autotools elisp-common eutils flag-o-matic python-single-r1 xdg-utils
 
 DESCRIPTION="Free computer algebra environment based on Macsyma"
 HOMEPAGE="http://maxima.sourceforge.net/"
@@ -20,7 +22,7 @@ SUPP_RL=(   .    .     y               .    .         y     )
 # . - just --enable-<lisp>, <flag> - --enable-<flag>
 CONF_FLAG=( .    .     .               ecl  ccl       .     )
 # patch file version; . - no patch
-PATCH_V=(   2    1     .               .    3         1     )
+PATCH_V=(   2    1     .               4    3         1     )
 
 IUSE="emacs tk nls unicode X test ${LISPS[*]}"
 RESTRICT="!test? ( test )"
@@ -72,16 +74,23 @@ done
 
 unset LISP
 
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
 RDEPEND="${RDEPEND}
 	${DEF_DEP}"
 
-DEPEND="${RDEPEND}
+# Python is used in e.g. doc/info/build_html.sh to build the docs.
+DEPEND="${PYTHON_DEPS}
+	${RDEPEND}
 	test? ( sci-visualization/gnuplot )
 	sys-apps/texinfo"
 
 TEXMF="${EPREFIX}"/usr/share/texmf-site
 
 pkg_setup() {
+	# Set the PYTHON variable to whatever it should be.
+	python-single-r1_pkg_setup
+
 	local n=${#LISPS[*]}
 
 	for ((n--; n >= 0; n--)); do
@@ -97,7 +106,7 @@ pkg_setup() {
 
 src_prepare() {
 	local n PATCHES v
-	PATCHES=( emacs-0 rmaxima-0 wish-2 xdg-utils-1 python-0 )
+	PATCHES=( emacs-0 rmaxima-0 wish-2 xdg-utils-1 dont-hardcode-python )
 
 	n=${#PATCHES[*]}
 	for ((n--; n >= 0; n--)); do
@@ -142,14 +151,25 @@ src_configure() {
 		done
 	fi
 
+	# Using raw-ldflags fixes the error,
+	#
+	#   x86_64-pc-linux-gnu/bin/ld: fatal error: -O1 -Wl: invalid option
+	#   value (expected an integer): 1 -Wl
+	#
+	# when building the maxima.fas library for ECL.
+	#
 	econf ${CONFS} \
+		LDFLAGS="$(raw-ldflags)" \
 		$(use_with tk wish) \
 		$(use_enable emacs) \
 		--with-lispdir="${EPREFIX}/${SITELISP}/${PN}"
 }
 
 src_compile() {
-	emake
+	# The variable PYTHONBIN is used in one place while building the
+	# German documentation. Some day that script should be converted
+	# to use the value of @PYTHON@ obtained during ./configure.
+	emake PYTHONBIN="${PYTHON}"
 	if use emacs; then
 		pushd interfaces/emacs/emaxima > /dev/null
 		elisp-compile *.el
@@ -187,6 +207,13 @@ src_install() {
 		insinto /usr/share/${PN}/${PV}/doc/imaxima
 		doins interfaces/emacs/imaxima/README
 		doins -r interfaces/emacs/imaxima/imath-example
+	fi
+
+	if use ecls; then
+		# Use ECL to find the path where it expects to load packages from.
+		ECLLIB=$(ecl -eval "(princ (SI:GET-LIBRARY-PATHNAME))" -eval "(quit)")
+		insinto "${ECLLIB#${EPREFIX}}"
+		doins src/binary-ecl/maxima.fas
 	fi
 }
 
