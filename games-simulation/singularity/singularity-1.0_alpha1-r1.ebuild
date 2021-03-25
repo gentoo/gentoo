@@ -25,8 +25,11 @@ DEPEND="
 		dev-python/polib[${PYTHON_MULTI_USEDEP}]
 	')
 "
+# sdl-mixer is used at runtime (through pygame)
+# bug #731702
 RDEPEND="
 	${RDEPEND}
+	media-libs/sdl-mixer[vorbis,wav]
 	!sys-cluster/singularity
 "
 BDEPEND="app-arch/unzip"
