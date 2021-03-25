@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,14 +17,18 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="${PYTHON_DEPS}
+DEPEND="
+	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		dev-python/numpy[${PYTHON_MULTI_USEDEP}]
 		dev-python/pygame[${PYTHON_MULTI_USEDEP}]
 		dev-python/polib[${PYTHON_MULTI_USEDEP}]
 	')
 "
-DEPEND="${RDEPEND}"
+RDEPEND="
+	${RDEPEND}
+	!sys-cluster/singularity
+"
 BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}/${P/_alpha/a}"
