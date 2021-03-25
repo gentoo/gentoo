@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -46,6 +46,7 @@ DEPEND="${CDEPEND}
 	${PYTHON_DEPS}
 	dev-perl/JSON
 	virtual/pkgconfig
+	sys-apps/texinfo
 	>=sys-devel/autoconf-2.62
 	test? ( X? ( ${VIRTUALX_DEPEND} ) )"
 
