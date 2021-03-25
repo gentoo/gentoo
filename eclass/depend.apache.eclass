@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: depend.apache.eclass
 # @MAINTAINER:
-# apache-devs@gentoo.org
+# apache-bugs@gentoo.org
 # @SUPPORTED_EAPIS: 0 2 3 4 5 6 7
 # @BLURB: Functions to allow ebuilds to depend on apache
 # @DESCRIPTION:
