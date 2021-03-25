@@ -8187,14 +8187,14 @@ dev-python/coloredlogs 14.0: Colored stream handler for the logging module
 dev-python/colorlog 4.7.2 4.8.0: Log formatting with colors
 dev-python/colorspacious 1.1.2: Powerful, accurate, and easy-to-use Python library for colorspace conversions
 dev-python/commonmark 0.9.1: Python parser for the CommonMark Markdown spec
-dev-python/configargparse 1.2.3 1.3 1.4: Drop-in replacement for argparse supporting config files and env variables
+dev-python/configargparse 1.3 1.4: Drop-in replacement for argparse supporting config files and env variables
 dev-python/configclass 0.2.0: A Python to class to hold configuration values
 dev-python/configobj 5.0.6-r1: Simple config file reader and writer
 dev-python/configshell-fb 1.1.28: A Python library for building configuration shells
 dev-python/confuse 1.0.0 1.4.0: Confuse is a configuration library for Python that uses YAML
 dev-python/consonance 0.1.3-r1: WhatsApp's handshake implementation using Noise Protocol
 dev-python/constantly 15.1.0-r1: Symbolic constants in Python
-dev-python/construct 2.10.59 2.10.60 2.10.61 2.10.63: A powerful declarative parser for binary data
+dev-python/construct 2.10.61 2.10.63: A powerful declarative parser for binary data
 dev-python/contextlib2 0.6.0_p1-r1: Backports and enhancements for the contextlib module
 dev-python/cookies 2.2.1-r1: Friendlier RFC 6265-compliant cookie parser/renderer
 dev-python/coreapi 2.3.3-r1: Python client library for Core API
@@ -8340,7 +8340,7 @@ dev-python/flask-api 2.0: Browsable web APIs for Flask
 dev-python/flask-assets 0.12: Flask webassets integration
 dev-python/flask-babel 2.0.0: i18n and l10n support for Flask based on Babel and pytz
 dev-python/flask-babelex 0.9.4: Adds i18n/l10n support to Flask applications
-dev-python/flask-compress 1.8.0 1.9.0: Compress responses in your Flask app with gzip
+dev-python/flask-compress 1.9.0: Compress responses in your Flask app with gzip
 dev-python/flask-cors 3.0.10: A Flask extension for Cross Origin Resource Sharing (CORS)
 dev-python/flask-debug 0.4.3-r1: Flask extension that displays various debugging insights during development
 dev-python/flask-gravatar 0.5.0: Small extension for Flask to make usage of Gravatar service easy
@@ -8760,7 +8760,7 @@ dev-python/pelican-minify 0.9: An HTML minification plugin for Pelican, the stat
 dev-python/pendulum 2.1.2-r1: Drop-in replacement for the standard datetime class
 dev-python/pep8 1.7.1: Python style guide checker
 dev-python/pexpect 4.8.0-r1: Python module for spawning child apps and responding to expected patterns
-dev-python/pgspecial 1.11.10 1.12.1: Python implementation of PostgreSQL meta commands
+dev-python/pgspecial 1.12.1: Python implementation of PostgreSQL meta commands
 dev-python/phonenumbers 8.12.18 8.12.19 8.12.20: Python port of Google's libphonenumber
 dev-python/phply 1.2.5: Lexer and parser for PHP source implemented using PLY
 dev-python/picklemagic 0.0_pre20160415: A library for analysing python pickles safely
@@ -8905,7 +8905,7 @@ dev-python/pylibmc 1.6.1-r1: Libmemcached wrapper written as a Python extension
 dev-python/pylint 2.6.2 2.7.1 2.7.2: Python code static checker
 dev-python/pylru 1.2.0: A least recently used (LRU) cache for Python
 dev-python/pyls-black 0.4.6: Black plugin for the Python Language Server
-dev-python/pyls-spyder 0.3.0 0.3.2: Spyder extensions for the python language server
+dev-python/pyls-spyder 0.3.2: Spyder extensions for the python language server
 dev-python/pymad 0.10: Python wrapper for libmad MP3 decoding in python
 dev-python/pymdown-extensions 8.0.1 8.1.1: Extensions for Python Markdown.
 dev-python/pymdown-lexers 0_pre20180905: Additional lexers for use in Pygments
@@ -9090,7 +9090,7 @@ dev-python/python-senlinclient 2.1.1: A client for the OpenStack Senlin API
 dev-python/python-sense-hat 2.2.0-r2: Raspberry Pi Sense HAT python library
 dev-python/python-slip 0.6.5-r1: Miscellaneous convenience, extension and workaround code for Python
 dev-python/python-slugify 1.2.6 4.0.1: A Python Slugify application that handles Unicode
-dev-python/python-socks 1.2.0 1.2.1 1.2.2 1.2.3: SOCKS4, SOCKS5, HTTP tunneling functionality for Python
+dev-python/python-socks 1.2.1 1.2.2 1.2.3: SOCKS4, SOCKS5, HTTP tunneling functionality for Python
 dev-python/python-sshpubkeys 3.3.1: OpenSSH public key parser for Python
 dev-python/python-stdnum 1.16: A module to handle standardized numbers and codes
 dev-python/python-swiftclient 3.10.1: Python bindings to the OpenStack Object Storage API
