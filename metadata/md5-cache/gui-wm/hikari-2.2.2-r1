@@ -12,4 +12,4 @@ RDEPEND=dev-libs/libinput:= dev-libs/libucl >=gui-libs/wlroots-0.11.0[X?] media-
 SLOT=0
 SRC_URI=https://hikari.acmelabs.space/releases/hikari-2.2.2.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
-_md5_=ae1db3758bf94b339ae7f1e9be3d5f00
+_md5_=ef5762ec931d31d3d0101f111754a884
