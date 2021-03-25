@@ -71,6 +71,11 @@ PDEPEND="
 	>=kde-frameworks/kded-${PVCUT}:5
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-MimeTypeFinderJob-file.so.patch # KDE-Bug 434455
+	"${FILESDIR}"/${P}-gcc11-include-order.patch # bug 766480
+)
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package acl ACL)
