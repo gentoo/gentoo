@@ -20,7 +20,10 @@ DEPEND=""
 # bug 594250
 QA_MULTILIB_PATHS="usr/lib/os-prober/.*"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.76-exherbo.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.76-exherbo.patch
+	"${FILESDIR}"/${PN}-1.78-btrfsfix.patch
+)
 
 DOC_CONTENTS="
 	If you intend for os-prober to detect versions of Windows installed on
