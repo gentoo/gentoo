@@ -12,7 +12,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Backports of Ruby features for older Ruby"
 HOMEPAGE="https://github.com/marcandre/backports"
-SRC_URI="https://github.com/marcandre/backports/archive/v${PV}.tar.gz -> $P{P}.tar.gz"
+SRC_URI="https://github.com/marcandre/backports/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
