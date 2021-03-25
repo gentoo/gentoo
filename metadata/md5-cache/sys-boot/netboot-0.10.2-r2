@@ -3,11 +3,12 @@ DEPEND=berkdb? ( sys-libs/db:= ) lzo? ( dev-libs/lzo:2= ) odbc? ( dev-db/unixODB
 DESCRIPTION=Allows to remote boot a computer over an IP network
 EAPI=7
 HOMEPAGE=http://netboot.sourceforge.net/
+INHERIT=toolchain-funcs
 IUSE=berkdb +bootrom +lzo odbc static-libs
 KEYWORDS=amd64 x86
 LICENSE=GPL-2+
 RDEPEND=berkdb? ( sys-libs/db:= ) lzo? ( dev-libs/lzo:2= ) odbc? ( dev-db/unixODBC:= )
 SLOT=0
 SRC_URI=mirror://sourceforge/netboot/netboot-0.10.2.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=f236856939ded5e3ceee9d3625de6f92
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=48bbb1f9dd37c398f2e41935975786ad
