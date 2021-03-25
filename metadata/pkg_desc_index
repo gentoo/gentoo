@@ -12406,7 +12406,7 @@ kde-frameworks/kiconthemes 5.77.0 5.80.0: Framework for icon theming and configu
 kde-frameworks/kidletime 5.77.0 5.80.0: Framework for detection and notification of device idle time
 kde-frameworks/kimageformats 5.77.0 5.80.0: Framework providing additional format plugins for Qt's image I/O system
 kde-frameworks/kinit 5.77.0 5.80.0: Helper library to speed up start of applications on KDE work spaces
-kde-frameworks/kio 5.77.0-r2 5.80.1: Framework providing transparent file and data management
+kde-frameworks/kio 5.77.0-r2 5.80.1-r1: Framework providing transparent file and data management
 kde-frameworks/kirigami 5.77.0-r1 5.80.0: Lightweight user interface framework for mobile and convergent applications
 kde-frameworks/kitemmodels 5.77.0 5.80.0: Framework providing data models to help with tasks such as sorting and filtering
 kde-frameworks/kitemviews 5.77.0 5.80.0: Framework providing additional widgets for item models
@@ -12450,7 +12450,7 @@ kde-misc/kdeconnect 20.08.3 20.12.3: Adds communication between KDE Plasma and y
 kde-misc/kdiff3 1.8.5: Frontend to diff3 based on KDE Frameworks
 kde-misc/kdirstat 3.2.1: GUI equivalent to the du command based on KDE Frameworks
 kde-misc/kimtoy 1.92_pre20190225: Input method frontend for Plasma
-kde-misc/kio-fuse 5.0.0-r1: FUSE interface for KIO
+kde-misc/kio-fuse 5.0.0-r1 5.0.1: FUSE interface for KIO
 kde-misc/kio-gdrive 20.08.3 20.12.3: KIO Slave for Google Drive service
 kde-misc/kio-gopher 0.1.99-r1: Gopher Kioslave for Konqueror
 kde-misc/kio-locate 0.5.3-r3: Locate KIO slave
@@ -12918,7 +12918,7 @@ media-gfx/curaengine 4.8.0: A 3D model slicing engine for 3D printing
 media-gfx/darktable 2.6.2 3.4.0-r1 3.4.1 9999: A virtual lighttable and darkroom for photographers
 media-gfx/dawn 3.90b-r1: 3D geometrical postscript renderer
 media-gfx/dcraw 9.28.0-r2: Command-line decoder for raw digital photos
-media-gfx/digikam 7.1.0-r1: Digital photo management application
+media-gfx/digikam 7.1.0-r1 7.2.0: Digital photo management application
 media-gfx/ditaa 0.10 0.11.0: A utility that converts ascii-art diagrams to bitmap diagrams
 media-gfx/dmtx-utils 0.7.5 0.7.6: Tools for reading and writing Data Matrix barcodes
 media-gfx/dpic 20200901: Converts PIC plots into pstricks, PGF/TikZ, PostScript, MetaPost and TeX
@@ -13011,7 +13011,7 @@ media-gfx/jpegtoavi 1.5: JPEG to AVI/MJPEG animation command-line conversion too
 media-gfx/kcoloredit 2.0.0_p20171121-r1: Tool for editing color palettes
 media-gfx/kgraphviewer 2.4.3-r1: Graphviz dot graph file viewer
 media-gfx/kphotoalbum 5.7.0: Tool for indexing, searching, and viewing images
-media-gfx/krita 4.4.2: Free digital painting application. Digital Painting, Creative Freedom!
+media-gfx/krita 4.4.2 4.4.3: Free digital painting application. Digital Painting, Creative Freedom!
 media-gfx/kuickshow 0.10.1: Image viewer based on KDE Frameworks
 media-gfx/kxstitch 2.2.0: Program to create cross stitch patterns
 media-gfx/libimagequant 2.12.3 2.14.0: Palette quantization library that powers pngquant and other PNG optimizers
@@ -13960,7 +13960,7 @@ media-sound/jack_capture 0.9.73 9999: JACK Recording utility
 media-sound/jalv 1.6.6: Simple but fully featured LV2 host for Jack
 media-sound/jamin 0.98.9_pre20170111: Audio mastering interface for JACK Audio Connection Kit (JACK)
 media-sound/justeport 0.2: Stream audio to your AirPort Express
-media-sound/kid3 3.8.4 3.8.5: Simple tag editor based on Qt
+media-sound/kid3 3.8.4 3.8.5 3.8.6: Simple tag editor based on Qt
 media-sound/klick 0.12.2-r2: An advanced command-line based metronome for JACK
 media-sound/kmetronome 1.2.0: MIDI based metronome using ALSA sequencer
 media-sound/kmidimon 1.0.0: MIDI monitor for ALSA sequencer
