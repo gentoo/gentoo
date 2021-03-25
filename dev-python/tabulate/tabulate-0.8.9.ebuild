@@ -15,7 +15,7 @@ S="${WORKDIR}/python-${P}"
 
 SLOT="0"
 LICENSE="MIT"
-KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	dev-python/wcwidth[${PYTHON_USEDEP}]"
