@@ -213,6 +213,12 @@ BYTECOMPFLAGS="-L ."
 # Cached value of Emacs version detected in elisp-check-emacs-version().
 _ELISP_EMACS_VERSION=""
 
+# @ECLASS-VARIABLE: _EMACS_NATIVE_COMP
+# @INTERNAL
+# @DESCRIPTION:
+# Cached value of Emacs support for nativecomp detected in elisp-emacs-nativecomp().
+_EMACS_NATIVE_COMP=""
+
 # @FUNCTION: elisp-emacs-version
 # @RETURN: exit status of Emacs
 # @DESCRIPTION:
@@ -295,6 +301,20 @@ elisp-need-emacs() {
 	return 0
 }
 
+# @FUNCTION: elisp-emacs-nativecomp
+# @RETURN: exit status of Emacs
+# @DESCRIPTION:
+# Output whether currently active Emacs was built with nativecomp.
+
+elisp-emacs-nativecomp() {
+	if [[ -z ${_EMACS_NATIVE_COMP} ]]; then
+		local cmd="(progn (require 'comp) (comp-ensure-native-compiler))"
+		${EMACS} ${EMACSFLAGS} --eval "${cmd}" > /dev/null 2>&1
+		_EMACS_NATIVE_COMP=$?
+	fi
+	return $_EMACS_NATIVE_COMP
+}
+
 # @FUNCTION: elisp-compile
 # @USAGE: <list of elisp files>
 # @DESCRIPTION:
@@ -314,6 +334,13 @@ elisp-compile() {
 	ebegin "Compiling GNU Emacs Elisp files"
 	${EMACS} ${EMACSFLAGS} ${BYTECOMPFLAGS} -f batch-byte-compile "$@"
 	eend $? "elisp-compile: batch-byte-compile failed" || die
+
+
+	if elisp-emacs-nativecomp; then
+		ebegin "Native compiling GNU Emacs Elisp files"
+		${EMACS} ${EMACSFLAGS} ${BYTECOMPFLAGS} -f batch-native-compile "$@"
+		eend $? "elisp-compile: batch-native-compile failed" || die
+	fi
 }
 
 # @FUNCTION: elisp-make-autoload-file
