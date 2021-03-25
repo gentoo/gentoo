@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ IUSE="cpu_flags_x86_3dnow cpu_flags_x86_3dnowext a52 aalib +alsa altivec aqua bi
 bs2b cddb +cdio cdparanoia cpudetection debug dga
 doc dts dv dvb +dvd +dvdnav +enca +encode faac faad fbcon
 ftp ggi gsm +iconv ipv6 jack joystick jpeg kernel_linux ladspa
-+libass libcaca libmpeg2 lirc live lzo mad md5sum +cpu_flags_x86_mmx cpu_flags_x86_mmxext mng mp3 nas
++libass libcaca libmpeg2 lirc live lzo mad md5sum cpu_flags_x86_mmx cpu_flags_x86_mmxext mng mp3 nas
 +network nut openal opengl +osdmenu oss png pnm pulseaudio pvr
 radio rar rtc rtmp samba selinux +shm sdl speex cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_ssse3
 tga theora tremor +truetype toolame twolame +unicode v4l vcd vdpau vidix
