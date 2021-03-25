@@ -5,11 +5,11 @@ EAPI=6
 HOMEPAGE=http://tls.sourceforge.net/
 INHERIT=autotools
 IUSE=tk
-KEYWORDS=amd64 ~arm ~arm64 ~hppa ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
+KEYWORDS=amd64 ~arm arm64 ~hppa ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=BSD
 RDEPEND=dev-lang/tcl:0= dev-libs/openssl:0= tk? ( dev-lang/tk:0= )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://core.tcl.tk/tcltls/uv/tcltls-1.7.22.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
-_md5_=1330966bbdf819b3825b49b698681ded
+_md5_=8519d0b9be31d23456dee2b6fd0f6a5d
