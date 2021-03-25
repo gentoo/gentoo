@@ -31,8 +31,10 @@ RDEPEND="
 	x11-misc/xkeyboard-config
 "
 
+# Needeed in DEPEND only (not BDEPEND as need to be right location etc)
+DEPEND+=" dev-libs/wayland-protocols"
+
 BDEPEND="
-	dev-libs/wayland-protocols
 	sys-devel/bmake
 	virtual/pkgconfig
 "
