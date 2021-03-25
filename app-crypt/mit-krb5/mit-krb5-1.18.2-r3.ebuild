@@ -65,6 +65,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.18-libressl.patch"
 	"${FILESDIR}/CVE-2020-28196.patch"
 	"${FILESDIR}/${PN}-1.18.2-krb5-config.patch"
+	"${FILESDIR}/${PN}-1.18.2-autoconf-2.70.patch"
 )
 
 MULTILIB_CHOST_TOOLS=(
