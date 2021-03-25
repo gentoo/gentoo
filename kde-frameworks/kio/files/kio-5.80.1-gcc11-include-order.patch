@@ -1,0 +1,36 @@
+From 493188b3d616f3223ccf3a41327a4c7e69282df8 Mon Sep 17 00:00:00 2001
+From: Ahmad Samir <a.samirh78@gmail.com>
+Date: Mon, 15 Mar 2021 14:29:42 +0200
+Subject: [PATCH] Fix #include's order
+
+According to[1] <limits> needs to be included first when building with
+GCC 11.
+
+[1] https://invent.kde.org/frameworks/kio/-/issues/3
+
+GIT_SILENT
+---
+ src/kntlm/des.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/kntlm/des.cpp b/src/kntlm/des.cpp
+index d90e6d21a..78c7a3fd2 100644
+--- a/src/kntlm/des.cpp
++++ b/src/kntlm/des.cpp
+@@ -26,11 +26,11 @@
+ 
+ #include "des.h"
+ 
++#include <limits> // This needs to be first with GCC 11
++
+ #include <qendian.h>
+ #include <string.h>
+ 
+-#include <limits>
+-
+ static void permute_ip(unsigned char *inblock, DES_KEY *key, unsigned char *outblock);
+ static void permute_fp(unsigned char *inblock, DES_KEY *key, unsigned char *outblock);
+ static void perminit_ip(DES_KEY *key);
+-- 
+GitLab
+
