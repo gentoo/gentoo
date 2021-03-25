@@ -581,7 +581,7 @@
     <name>Community Relations</name>
     <url>https://wiki.gentoo.org/wiki/Project:ComRel</url>
     <description>Community Relations handles many personnel-related tasks, solving conflicts and also ensuring that the Gentoo Code of Conduct and proper and professional behavior is followed across Gentoo's borders.</description>
-    <subproject ref="undertakers@gentoo.org"/>
+    <subproject ref="retirement@gentoo.org"/>
     <member>
       <email>chewi@gentoo.org</email>
       <name>James Le Cuirot</name>
@@ -2784,7 +2784,7 @@
     </member>
   </project>
   <project>
-    <email>undertakers@gentoo.org</email>
+    <email>retirement@gentoo.org</email>
     <name>Retirement</name>
     <url>https://wiki.gentoo.org/wiki/Project:Retirement</url>
     <description>The Community Relations Retirement project handles developer retirement, both when developers announce their retirement as well as due to developer inactivity.</description>
