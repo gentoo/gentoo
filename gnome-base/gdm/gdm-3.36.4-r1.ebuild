@@ -4,7 +4,7 @@
 EAPI=7
 GNOME2_EAUTORECONF="yes"
 
-inherit gnome2 pam readme.gentoo-r1 systemd toolchain-funcs udev
+inherit desktop gnome2 pam readme.gentoo-r1 systemd toolchain-funcs udev
 
 DESCRIPTION="GNOME Display Manager for managing graphical display servers and user logins"
 HOMEPAGE="https://wiki.gnome.org/Projects/GDM"
