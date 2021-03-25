@@ -145,7 +145,7 @@ RDEPEND="${DEPEND}
 		dev-python/jsonpatch[${PYTHON_USEDEP}]
 		dev-python/more-itertools[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
-		<dev-python/pyjwt-2.0[${PYTHON_USEDEP}]
+		dev-python/pyjwt[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/routes[${PYTHON_USEDEP}]
 		diskprediction? (
