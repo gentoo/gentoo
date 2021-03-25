@@ -9,6 +9,7 @@
 		<email>python@gentoo.org</email>
 		<name>Python</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">python/mypy</remote-id>
 		<remote-id type="pypi">mypy</remote-id>
