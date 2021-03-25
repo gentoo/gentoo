@@ -34,6 +34,8 @@ PATCHES=(
 	"${FILESDIR}"/jq-1.7-runpath.patch
 	"${FILESDIR}"/jq-1.7-warnings.patch
 	"${FILESDIR}"/jq-1.7-visible-null.patch
+	# https://bugs.gentoo.org/776385
+	"${FILESDIR}"/jq-1.7_pre20201109-no-git-bdep.patch
 )
 
 RESTRICT="!test? ( test )"
