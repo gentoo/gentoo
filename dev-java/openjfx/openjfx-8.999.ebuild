@@ -1,11 +1,11 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 JAVA_PKG_IUSE="doc source"
 
-inherit java-pkg-2 java-pkg-simple multiprocessing toolchain-funcs
+inherit flag-o-matic java-pkg-2 java-pkg-simple multiprocessing toolchain-funcs
 
 EGRADLE_VER="4.10.3"
 EHG_COMMIT="9f49e3b6147f"
@@ -184,6 +184,7 @@ src_configure() {
 }
 
 src_compile() {
+	append-cflags '-fcommon'
 	tc-export_build_env CC CXX PKG_CONFIG
 	rm -r tests buildSrc/src/test || die
 	egradle openExportLinux
