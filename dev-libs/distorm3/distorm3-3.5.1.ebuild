@@ -9,12 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="The ultimate disassembler library (X86-32, X86-64)"
 HOMEPAGE="http://www.ragestorm.net/distorm/"
-
-MY_PN=distorm3
-MY_P=${MY_PN}-${PV}
-
-SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 DEPEND=""
 RDEPEND=""
