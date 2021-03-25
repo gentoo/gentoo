@@ -2143,7 +2143,7 @@ app-emulation/libguestfs 1.38.6-r103: Tools for accessing, inspect and modifying
 app-emulation/libguestfs-appliance 1.38.0: VM appliance disk image used in libguestfs package
 app-emulation/libspectrum 1.4.4 1.5.0: Spectrum emulation library
 app-emulation/libvirt 6.8.0-r2 7.0.0-r1 7.1.0 9999: C toolkit to manipulate virtual machines
-app-emulation/libvirt-glib 1.0.0-r1 2.0.0 3.0.0: GLib and GObject mappings for libvirt
+app-emulation/libvirt-glib 3.0.0 4.0.0: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.4: Provides SNMP functionality for libvirt
 app-emulation/lxc 4.0.6: A userspace interface for the Linux kernel containment features
 app-emulation/lxc-templates 3.0.4: Old style template scripts for LXC
