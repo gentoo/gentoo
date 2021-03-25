@@ -1,0 +1,35 @@
+https://bugs.gentoo.org/778167
+
+From f78edbe30816f049e1360cb6e203fabfdf7b98df Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Fri, 6 Nov 2020 08:14:57 +0000
+Subject: [PATCH] Fix compatibility with upcoming autoconf 2.70
+
+Mainline autoconf generates no shell code for AC_CONFIG_AUX_DIR().
+Call it unconditionally to avoid a syntax error.
+
+[ghudson@mit.edu: rewrote commit message]
+
+ticket: 8960 (new)
+tags: pullup
+target_version: 1.18-next
+target_version: 1.17-next
+---
+ src/aclocal.m4 | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+--- src/aclocal.m4
++++ src/aclocal.m4
+@@ -13,11 +13,7 @@ fi
+ ac_topdir=$srcdir/$ac_reltopdir
+ ac_config_fragdir=$ac_reltopdir/config
+ # echo "Looking for $srcdir/$ac_config_fragdir"
+-if test -d "$srcdir/$ac_config_fragdir"; then
+-  AC_CONFIG_AUX_DIR(K5_TOPDIR/config)
+-else
+-  AC_MSG_ERROR([can not find config/ directory in $ac_reltopdir])
+-fi
++AC_CONFIG_AUX_DIR(K5_TOPDIR/config)
+ ])dnl
+ dnl
+ dnl Version info.
