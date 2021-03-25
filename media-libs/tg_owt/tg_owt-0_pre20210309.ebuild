@@ -64,9 +64,9 @@ src_prepare() {
 	# See https://bugs.debian.org/982556
 	sed -i -e 's/#ifndef NO_MAIN_THREAD_WRAPPING/#if 0/' src/rtc_base/thread.cc || die
 
-	# Causes forced inclusion of SSE2, only needed on MAC
+	# Causes forced inclusion of SSE2, so we strip it out on non-amd64 arches
 	# https://github.com/desktop-app/tg_owt/pull/57
-	sed -i '/modules\/desktop_capture/d' CMakeLists.txt || die
+	use amd64 || sed -i '/modules\/desktop_capture/d' CMakeLists.txt || die
 
 	cmake_src_prepare
 }
