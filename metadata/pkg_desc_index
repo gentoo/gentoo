@@ -11017,7 +11017,7 @@ dev-util/rebar-bin 3.14.4: A sophisticated build-tool for Erlang projects that f
 dev-util/redo 0.42a 0.42c 99999: Smaller, easier, more powerful, and more reliable than make
 dev-util/regexxer 0.10-r1: An interactive tool for performing search and replace operations
 dev-util/rej 0.16-r1: A utility for solving diff/patch rejects
-dev-util/rocm-cmake 3.8.0 3.9.0 3.10.0 4.0.0 9999: Radeon Open Compute CMake Modules
+dev-util/rocm-cmake 3.8.0 3.9.0 3.10.0 4.0.0 4.1.0 9999: Radeon Open Compute CMake Modules
 dev-util/rocm-smi 4.0.0 9999: ROCm System Management Interface
 dev-util/rocminfo 3.7.0 3.8.0 3.9.0 3.10.0 4.0.0 9999: ROCm Application for Reporting System Info
 dev-util/roctracer 4.0.0-r1: Callback/Activity Library for Performance tracing AMD GPU's
@@ -17488,7 +17488,7 @@ sys-devel/libtool 2.4.6-r6 9999: A shared library tool for developers
 sys-devel/lld 10.0.1 10.0.1-r1 11.0.0 11.0.0-r1 11.0.1 11.0.1-r1 11.1.0 11.1.0-r1 12.0.0_rc2 12.0.0_rc3 12.0.0.9999 13.0.0.9999: The LLVM linker (link editor)
 sys-devel/llvm 10.0.1 11.0.0 11.0.1 11.1.0 12.0.0_rc2 12.0.0_rc3 12.0.0.9999 13.0.0.9999: Low Level Virtual Machine
 sys-devel/llvm-common 10.0.1 11.0.0 11.0.1 11.1.0 12.0.0_rc2 12.0.0_rc3 12.0.0.9999 13.0.0.9999: Common files shared between multiple slots of LLVM
-sys-devel/llvm-roc 3.7.0-r1 3.8.0 3.9.0 3.10.0 4.0.0 4.0.0-r2 4.0.1: Radeon Open Compute llvm,lld,clang
+sys-devel/llvm-roc 3.7.0-r1 3.8.0 3.9.0 3.10.0 4.0.0 4.0.0-r2 4.0.1 4.1.0: Radeon Open Compute llvm,lld,clang
 sys-devel/llvmgold 10 11 12 13: LLVMgold plugin symlink for autoloading
 sys-devel/m4 1.4.17 1.4.18-r1: GNU macro processor
 sys-devel/make 4.2.1-r4 4.3: Standard tool to compile source trees
