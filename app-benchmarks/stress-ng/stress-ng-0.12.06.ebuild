@@ -27,9 +27,16 @@ RDEPEND="${DEPEND}"
 
 DOCS=( "README" "README.Android" "TODO" "syscalls.txt" )
 
-PATCHES=( "${FILESDIR}/${PN}-0.11.23-makefile.patch" )
+src_prepare() {
+	default
+
+	# Don't install compressed man page.
+	# Respect users CFLAGS.
+	sed -e 's/stress-ng.1.gz/stress-ng.1/' -e 's/-O2//' -i Makefile
+}
 
 src_compile() {
+	export VERBOSE=1
 	tc-export CC
 
 	default
