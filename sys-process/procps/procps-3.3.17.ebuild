@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs flag-o-matic multilib-minimal usr-ldscript
+inherit flag-o-matic multilib-minimal toolchain-funcs usr-ldscript
 
 DESCRIPTION="standard informational utilities and process-handling tools"
 HOMEPAGE="http://procps-ng.sourceforge.net/ https://gitlab.com/procps-ng/procps"
@@ -15,19 +15,19 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~
 IUSE="elogind +kill modern-top +ncurses nls selinux static-libs systemd test unicode"
 RESTRICT="!test? ( test )"
 
-COMMON_DEPEND="
+DEPEND="
 	elogind? ( sys-auth/elogind )
 	ncurses? ( >=sys-libs/ncurses-5.7-r7:=[unicode?] )
 	selinux? ( sys-libs/libselinux[${MULTILIB_USEDEP}] )
 	systemd? ( sys-apps/systemd[${MULTILIB_USEDEP}] )
 "
-DEPEND="${COMMON_DEPEND}
+BDEPEND="
 	elogind? ( virtual/pkgconfig )
 	ncurses? ( virtual/pkgconfig )
 	systemd? ( virtual/pkgconfig )
-	test? ( dev-util/dejagnu )"
-RDEPEND="
-	${COMMON_DEPEND}
+	test? ( dev-util/dejagnu )
+"
+RDEPEND="${DEPEND}
 	kill? (
 		!sys-apps/coreutils[kill]
 		!sys-apps/util-linux[kill]
@@ -37,13 +37,9 @@ RDEPEND="
 	!<app-i18n/man-pages-pl-0.7-r1
 "
 
-#S="${WORKDIR}/${PN}-ng-${PV}"
-
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.3.11-sysctl-manpage.patch # 565304
 	"${FILESDIR}"/${PN}-3.3.12-proc-tests.patch # 583036
-
-	# Upstream fixes
 )
 
 multilib_src_configure() {
@@ -83,5 +79,6 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
+	einstalldocs
 	find "${ED}" -type f -name '*.la' -delete || die
 }
