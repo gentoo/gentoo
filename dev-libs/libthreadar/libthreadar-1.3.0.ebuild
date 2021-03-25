@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/libthreadar/${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~sparc"
 
 DOCS=( AUTHORS ChangeLog NEWS README THANKS )
 

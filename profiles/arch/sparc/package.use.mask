@@ -14,10 +14,6 @@ sys-apps/grep static
 # virtual/jdk isn't keyworded here
 media-libs/rubberband jni
 
-# Viorel Munteanu <ceamac.paragon@gmail.com> (2020-03-11)
-# new package dev-libs/libthreadar has no keywords
-app-backup/dar threads
-
 # Sam James <sam@gentoo.org> (2021-03-13)
 # media-libs/libheif isn't keyworded here
 # media-libs/libavif isn't keyworded here
