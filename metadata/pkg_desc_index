@@ -14751,7 +14751,7 @@ net-fs/openafs 1.8.7: The OpenAFS distributed file system
 net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS installation
 net-fs/s3backer 1.4.5: FUSE-based single file backing store via Amazon S3
 net-fs/s3fs 1.80 1.86: Amazon S3 mounting via fuse
-net-fs/samba 4.12.9-r1 4.12.11 4.12.12 4.13.4 4.13.5 4.14.0: Samba Suite Version 4
+net-fs/samba 4.12.9-r1 4.12.11 4.12.12 4.12.14 4.13.4 4.13.5 4.13.7 4.14.0 4.14.2: Samba Suite Version 4
 net-fs/smbnetfs 0.6.3: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/sshfs 3.7.0 3.7.1: Fuse-filesystem utilizing the sftp service
@@ -17002,7 +17002,7 @@ sys-apps/flashrom 1.2-r3 9999: Utility for reading, writing, erasing and verifyi
 sys-apps/flatpak 1.10.0 1.10.2: Linux application sandboxing and distribution framework
 sys-apps/frandom 1.1-r1: Fast kernel-land pseudo-random number generator using the RC4 algorithm
 sys-apps/fwts 20.11.00: Firmware Test Suite
-sys-apps/fwupd 1.4.6 1.5.6 1.5.7-r1: Aims to make updating firmware on Linux automatic, safe and reliable
+sys-apps/fwupd 1.4.6 1.4.7 1.5.6 1.5.7-r1 1.5.8: Aims to make updating firmware on Linux automatic, safe and reliable
 sys-apps/fxload 20081013-r1: USB firmware uploader
 sys-apps/gawk 4.2.1-r1 5.0.1 5.1.0: GNU awk pattern-matching language
 sys-apps/gcp 0.2.1: File copying utility with progress and I/O indicator
@@ -17572,7 +17572,7 @@ sys-fs/bashmount 4.3.2: Bash script that uses udisks to mount removable devices 
 sys-fs/bcache-tools 1.0.8_p20140220-r1 1.1: Tools for bcache
 sys-fs/bees 0.6.4 9999: Best-Effort Extent-Same, a btrfs dedup agent
 sys-fs/bindfs 1.14.9 1.15.0 1.15.1: FUSE filesystem for bind mounting with altered permissions
-sys-fs/btrfs-progs 5.4.1 5.10.1 5.11 9999: Btrfs filesystem utilities
+sys-fs/btrfs-progs 5.4.1 5.10.1 5.11 5.11.1 9999: Btrfs filesystem utilities
 sys-fs/btrfsmaintenance 0.4.2 0.5: Scripts for btrfs maintenance tasks like periodic scrub, balance, trim or defrag
 sys-fs/cachefilesd 0.10.9 0.10.10-r1: Provides a caching directory on an already mounted filesystem
 sys-fs/clamfs 1.2.0: A FUSE-based user-space file system with on-access anti-virus file scanning
@@ -17730,7 +17730,7 @@ sys-libs/glibc 2.19-r2 2.25-r11 2.30-r9 2.31-r7 2.32-r6 2.32-r7 2.32-r8 2.33 999
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 5.4.1-r1: Multi-platform helper library for other libraries
 sys-libs/kpmcore 4.2.0 20.12.3: Library for managing partitions
-sys-libs/ldb 2.1.4-r1 2.2.0-r2: LDAP-like embedded database
+sys-libs/ldb 2.1.4-r1 2.1.5 2.2.0-r2 2.2.1 2.3.0: LDAP-like embedded database
 sys-libs/libaal 1.0.7-r1 1.0.7-r2: library required by reiser4progs
 sys-libs/libapparmor 2.13.4 3.0.0 3.0.1: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.4-r2: Library for the 1394 AV/C (Audio/Video Control) Digital Interface Command Set
