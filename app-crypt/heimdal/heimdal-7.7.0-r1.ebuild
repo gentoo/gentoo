@@ -46,6 +46,7 @@ DEPEND="${CDEPEND}
 	${PYTHON_DEPS}
 	dev-perl/JSON
 	virtual/pkgconfig
+	sys-apps/texinfo
 	>=sys-devel/autoconf-2.62
 	test? ( X? ( ${VIRTUALX_DEPEND} ) )"
 
