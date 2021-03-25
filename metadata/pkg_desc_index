@@ -18506,7 +18506,7 @@ x11-misc/bbtime 0.1.5-r1: blackbox time watcher
 x11-misc/bbweather 0.6.3-r2: blackbox weather monitor
 x11-misc/birdtray 1.9.0 9999: A new mail system tray notification icon for Thunderbird
 x11-misc/blockdpy 1-r1: Tool to block access via the physical display while x11vnc is running
-x11-misc/bumblebee 3.2.1_p20190421-r1 3.2.1_p20210112-r1 9999: Service providing elegant and stable means of managing Optimus graphics chipsets
+x11-misc/bumblebee 3.2.1_p20190421-r1 3.2.1_p20210112-r1 3.2.1_p20210112-r2 9999: Service providing elegant and stable means of managing Optimus graphics chipsets
 x11-misc/cairo-clock 0.3.4-r2: An analog clock displaying the system-time
 x11-misc/cbatticon 1.6.5 1.6.10: A lightweight and fast battery icon that sits in your system tray
 x11-misc/cdm 0.6.1_pre20180107 0.7: The Console Display Manager
@@ -18682,7 +18682,7 @@ x11-misc/urxvtconfig 1.0-r1: GUI configuration tool for the rxvt-unicode termina
 x11-misc/util-macros 1.19.2-r2 1.19.3: X.Org autotools utility macros
 x11-misc/vdpauinfo 1.4 99999: Displays info about your card's VDPAU support
 x11-misc/viewglob 2.0.4-r1: Graphical display of directories and globs referenced at the shell prompt
-x11-misc/virtualgl 2.6.4-r1 2.6.5-r1 9999: Run OpenGL applications remotely with full 3D hardware acceleration
+x11-misc/virtualgl 2.6.4-r1 2.6.5-r1 2.6.5-r2 9999: Run OpenGL applications remotely with full 3D hardware acceleration
 x11-misc/vnc2swf 0.5.0-r1: A tool for recording Flash SWF movies from VNC sessions
 x11-misc/vym 2.7.1 9999: View Your Mind, a mindmap tool
 x11-misc/wayv 0.3-r3: Wayv is hand-writing/gesturing recognition software for X
