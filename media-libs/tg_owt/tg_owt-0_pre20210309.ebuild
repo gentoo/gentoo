@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -63,6 +63,11 @@ src_prepare() {
 	# Can cause race conditions when no webcam is available or webcam is blocked
 	# See https://bugs.debian.org/982556
 	sed -i -e 's/#ifndef NO_MAIN_THREAD_WRAPPING/#if 0/' src/rtc_base/thread.cc || die
+
+	# Causes forced inclusion of SSE2, only needed on MAC
+	# https://github.com/desktop-app/tg_owt/pull/57
+	sed -i '/modules\/desktop_capture/d' CMakeLists.txt || die
+
 	cmake_src_prepare
 }
 
