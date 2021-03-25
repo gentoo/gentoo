@@ -7,6 +7,7 @@ CHROMIUM_LANGS="
 	af
 	am
 	ar
+	az
 	be
 	bg
 	bn
@@ -57,6 +58,7 @@ CHROMIUM_LANGS="
 	nb
 	nl
 	nn
+	pa
 	pl
 	pt-BR
 	pt-PT
@@ -67,6 +69,7 @@ CHROMIUM_LANGS="
 	sl
 	sq
 	sr
+	sr-Latn
 	sv
 	sw
 	ta
