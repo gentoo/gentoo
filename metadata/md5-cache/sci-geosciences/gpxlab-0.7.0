@@ -1,0 +1,14 @@
+BDEPEND=dev-qt/linguist-tools:5
+DEFINED_PHASES=compile install postinst postrm preinst prepare
+DEPEND=dev-qt/qtwidgets:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtcore:5 dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=An application to display and manage GPS tracks
+EAPI=7
+HOMEPAGE=https://github.com/BourgeoisLab/GPXLab
+INHERIT=desktop qmake-utils l10n xdg
+KEYWORDS=~amd64
+LICENSE=GPL-3
+RDEPEND=dev-qt/qtwidgets:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtcore:5
+SLOT=0
+SRC_URI=https://github.com/BourgeoisLab/GPXLab/archive/refs/tags/v0.7.0.tar.gz -> gpxlab-0.7.0.tar.gz
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	l10n	8cdd85e169b835d518bc2fd59f780d8e	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
+_md5_=44c78cbaa46c2bc0685873cef5d109cc
