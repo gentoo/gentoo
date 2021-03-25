@@ -3,10 +3,11 @@ DEPEND==www-servers/apache-2*
 DESCRIPTION=set of tools to manipulate and maintain webserver logfiles
 EAPI=6
 HOMEPAGE=https://sourceforge.net/projects/log-toolkit/
+INHERIT=depend.apache
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-2
 RDEPEND==www-servers/apache-2*
 SLOT=0
 SRC_URI=mirror://sourceforge/log-toolkit/log-toolkit-0.9.6.tar.bz2
-_eclasses_=depend.apache	94458fe4e9466f4803360408e60e11fd
+_eclasses_=depend.apache	d54e0d0bd6b36c476594edc2cee2e332
 _md5_=ca230131ca3e047726b2bcafca3c0ec5

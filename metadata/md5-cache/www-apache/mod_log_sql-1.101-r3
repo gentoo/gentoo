@@ -3,11 +3,12 @@ DEPEND=dev-db/mysql-connector-c:0= dbi? ( dev-db/libdbi ) ssl? ( dev-libs/openss
 DESCRIPTION=An Apache module for logging to an SQL (MySQL) database
 EAPI=6
 HOMEPAGE=http://www.outoforder.cc/projects/apache/mod_log_sql/
+INHERIT=apache-module
 IUSE=dbi ssl
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=Artistic
 RDEPEND=dev-db/mysql-connector-c:0= dbi? ( dev-db/libdbi ) ssl? ( dev-libs/openssl:0= ) =www-servers/apache-2.4*
 SLOT=0
 SRC_URI=http://www.outoforder.cc/downloads/mod_log_sql/mod_log_sql-1.101.tar.bz2
-_eclasses_=apache-module	b40f49b22e6e55c4a17f7ecded4f0425	depend.apache	94458fe4e9466f4803360408e60e11fd
+_eclasses_=depend.apache	d54e0d0bd6b36c476594edc2cee2e332	apache-module	6d6745b832afba32cbcfba34e3ee328f
 _md5_=552744328c9c679fbb6b3f956ff61074

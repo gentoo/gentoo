@@ -3,10 +3,11 @@ DEPEND==www-servers/apache-2*
 DESCRIPTION=Log rotation support for mod_log_config based on strftime(3)
 EAPI=5
 HOMEPAGE=https://github.com/JBlond/mod_log_rotate
+INHERIT=apache-module
 KEYWORDS=amd64 x86
 LICENSE=Apache-2.0
 RDEPEND==www-servers/apache-2*
 SLOT=0
 SRC_URI=https://github.com/JBlond/mod_log_rotate/archive/1.01.tar.gz -> mod_log_rotate-1.01.tar.gz
-_eclasses_=apache-module	b40f49b22e6e55c4a17f7ecded4f0425	depend.apache	94458fe4e9466f4803360408e60e11fd	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	depend.apache	d54e0d0bd6b36c476594edc2cee2e332	apache-module	6d6745b832afba32cbcfba34e3ee328f
 _md5_=7d459621374740fafd92778f891fcb96

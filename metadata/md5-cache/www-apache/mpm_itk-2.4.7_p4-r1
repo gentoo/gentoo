@@ -3,11 +3,12 @@ DEPEND=sys-libs/libcap >=www-servers/apache-2.4.7[-threads] =www-servers/apache-
 DESCRIPTION=Run virtual hosts under separate users/groups
 EAPI=5
 HOMEPAGE=http://mpm-itk.sesse.net/
+INHERIT=apache-module linux-info
 IUSE=kernel_linux
 KEYWORDS=amd64 x86
 LICENSE=Apache-2.0
 RDEPEND=sys-libs/libcap >=www-servers/apache-2.4.7[-threads] =www-servers/apache-2.4*
 SLOT=0
 SRC_URI=http://mpm-itk.sesse.net/mpm-itk-2.4.7-04.tar.gz
-_eclasses_=apache-module	b40f49b22e6e55c4a17f7ecded4f0425	depend.apache	94458fe4e9466f4803360408e60e11fd	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	depend.apache	d54e0d0bd6b36c476594edc2cee2e332	apache-module	6d6745b832afba32cbcfba34e3ee328f	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	linux-info	c90a203b1c14cfa77bd3e37a0e96c955
 _md5_=e2302fb4dc670544053645a47efc57a2

@@ -3,11 +3,12 @@ DEPEND=net-nds/openldap ssl? ( dev-libs/openssl ) =www-servers/apache-2*
 DESCRIPTION=Look up Apache ~user directories in an LDAP directory
 EAPI=5
 HOMEPAGE=https://www.horde.net/~jwm/software/mod_ldap_userdir/
+INHERIT=apache-module depend.apache
 IUSE=ssl
 KEYWORDS=amd64 ppc x86
 LICENSE=GPL-1
 RDEPEND=net-nds/openldap ssl? ( dev-libs/openssl ) =www-servers/apache-2*[ldap] =www-servers/apache-2*
 SLOT=0
 SRC_URI=https://horde.net/~jwm/software/mod_ldap_userdir/mod_ldap_userdir-1.1.19.tar.gz
-_eclasses_=apache-module	b40f49b22e6e55c4a17f7ecded4f0425	depend.apache	94458fe4e9466f4803360408e60e11fd	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	depend.apache	d54e0d0bd6b36c476594edc2cee2e332	apache-module	6d6745b832afba32cbcfba34e3ee328f
 _md5_=15f068a2fe98e26904a377cbd166424f

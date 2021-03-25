@@ -3,10 +3,11 @@ DEPEND=dev-db/mysql-connector-c:= >=sys-libs/zlib-1.1.4 =www-servers/apache-2*
 DESCRIPTION=An Apache2 module for mass virtual hosting using a MySQL database
 EAPI=6
 HOMEPAGE=http://www.synthemesc.com/mod_vdbh/
+INHERIT=apache-module
 KEYWORDS=ppc x86
 LICENSE=Apache-1.1
 RDEPEND=dev-db/mysql-connector-c:= >=sys-libs/zlib-1.1.4 =www-servers/apache-2*
 SLOT=0
 SRC_URI=http://www.synthemesc.com/downloads/mod_vdbh/mod_vdbh-1.0.3.tar.gz
-_eclasses_=apache-module	b40f49b22e6e55c4a17f7ecded4f0425	depend.apache	94458fe4e9466f4803360408e60e11fd
+_eclasses_=depend.apache	d54e0d0bd6b36c476594edc2cee2e332	apache-module	6d6745b832afba32cbcfba34e3ee328f
 _md5_=71895d8a4ea30aebabf5ed07de448f15
