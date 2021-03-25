@@ -17,7 +17,7 @@ SRC_URI="mirror://gentoo/${MY_P}.tgz"
 
 LICENSE="BSD-2"
 SLOT="${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 x86"
 
 DEPEND="dev-java/hamcrest-core:${SLOT}
 	>=virtual/jdk-1.8:*
