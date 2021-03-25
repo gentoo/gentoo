@@ -11,11 +11,9 @@ SRC_URI="mirror://debian/pool/main/${PN::1}/${PN}/${PN}_${PV}.tar.xz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 # grub-mount needed per bug #607518
 RDEPEND="sys-boot/grub:2[mount]"
-DEPEND=""
 
 # bug 594250
 QA_MULTILIB_PATHS="usr/lib/os-prober/.*"
