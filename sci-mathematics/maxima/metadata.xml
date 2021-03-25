@@ -28,6 +28,9 @@
     (<pkg>dev-lisp/gcl</pkg>)</flag>
     <flag name="sbcl">Compile maxima with Steel Bank Common Lisp
     (<pkg>dev-lisp/sbcl</pkg>)</flag>
+    <flag name="vtk">
+      Support plotting with <pkg>sci-libs/vtk</pkg>
+    </flag>
   </use>
   <upstream>
     <remote-id type="sourceforge">maxima</remote-id>
