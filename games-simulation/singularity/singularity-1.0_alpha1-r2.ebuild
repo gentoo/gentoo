@@ -28,7 +28,7 @@ DEPEND="
 # sdl-mixer is used at runtime (through pygame)
 # bug #731702
 RDEPEND="
-	${RDEPEND}
+	${DEPEND}
 	media-libs/sdl-mixer[vorbis,wav]
 	!sys-cluster/singularity
 "
