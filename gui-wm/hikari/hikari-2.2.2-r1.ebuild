@@ -46,7 +46,7 @@ pkg_setup() {
 
 src_compile() {
 	emake \
-		VERSION="{PV}" \
+		VERSION="${PV}" \
 		CC="$(tc-getCC)" \
 		CFLAGS_EXTRA="${CFLAGS}" \
 		LDFLAGS_EXTRA="${LDFLAGS}" \
