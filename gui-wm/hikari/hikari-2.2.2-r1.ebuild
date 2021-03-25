@@ -42,7 +42,12 @@ BDEPEND="
 PATCHES=( "${FILESDIR}"/${PN}-2.2.1-pkgconfig.patch )
 
 pkg_setup() {
+	# We set `bmake` and we also have to remove any reference to -l in MAKEOPTS
+	# as `bmake` does not support load average
+	# We do this in a crude way until flag-o-matic supports MAKEOPTS
+	# bug 778191
 	export MAKE=bmake
+	export MAKEOPTS=$(echo ${MAKEOPTS} | sed 's/-l \?[\.0-9]\+//' || die)
 	tc-export CC PKG_CONFIG
 }
 
