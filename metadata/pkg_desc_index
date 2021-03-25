@@ -987,7 +987,7 @@ app-benchmarks/pipebench 0.40-r2: Measures the speed of stdin/stdout communicati
 app-benchmarks/ramspeed 3.5.0-r2: Benchmarking for memory and cache
 app-benchmarks/siege 4.0.7 4.0.8: A HTTP regression testing and benchmarking utility
 app-benchmarks/stress 1.0.4-r2: A deliberately simple workload generator for POSIX systems
-app-benchmarks/stress-ng 0.12.05: Stress test for a computer system with various selectable ways
+app-benchmarks/stress-ng 0.12.06: Stress test for a computer system with various selectable ways
 app-benchmarks/sysbench 1.0.20-r100: A scriptable multi-threaded benchmark tool based on LuaJIT
 app-benchmarks/tiobench 0.4.2: Portable, robust, fully-threaded I/O benchmark program
 app-benchmarks/wrk 4.1.0-r100: A HTTP benchmarking tool
