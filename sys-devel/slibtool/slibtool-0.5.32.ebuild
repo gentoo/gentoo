@@ -13,7 +13,7 @@ if [[ "${PV}" == *9999 ]] ; then
 	EGIT_REPO_URI="https://git.foss21.org/slibtool"
 else
 	SRC_URI="https://dl.midipix.org/slibtool/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~ia64 ~sparc"
+	KEYWORDS="~amd64 ~arm ~ia64 ~sparc ~x64-macos"
 fi
 
 LICENSE="MIT"
