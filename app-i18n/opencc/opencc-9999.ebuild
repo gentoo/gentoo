@@ -57,8 +57,6 @@ src_prepare() {
 }
 
 src_configure() {
-	local -x CXXFLAGS="${CXXFLAGS} -I${ESYSROOT}/usr/include/rapidjson"
-
 	local mycmakeargs=(
 		-DBUILD_DOCUMENTATION=$(usex doc ON OFF)
 		-DENABLE_BENCHMARK=$(usex test ON OFF)
