@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7,8} )
 
 inherit autotools elisp-common eutils flag-o-matic python-single-r1 xdg-utils
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2 GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
 # Supported lisps
 LISPS=(     sbcl cmucl gcl             ecls clozurecl clisp )
@@ -24,7 +24,7 @@ CONF_FLAG=( .    .     .               ecl  ccl       .     )
 # patch file version; . - no patch
 PATCH_V=(   2    1     .               4    3         1     )
 
-IUSE="emacs tk nls unicode X test ${LISPS[*]}"
+IUSE="emacs gui nls unicode vtk X test ${LISPS[*]}"
 RESTRICT="!test? ( test )"
 
 # Languages
@@ -34,15 +34,30 @@ for lang in ${LANGS}; do
 done
 
 # texlive-latexrecommended needed by imaxima for breqn.sty
+#
+# VTK is an optional plotting backend that can be enabled by
+# running "draw_renderer: 'vtk;" within maxima.
+#
+# It's NON-optional for the scene() command, but that command is
+# currently useless since Tcl/Tk support was dropped in sci-libs/vtk.
+# Thus we include VTK only as an optional dependency.
 RDEPEND="
-	X? ( x11-misc/xdg-utils
-		 sci-visualization/gnuplot[gd]
-		 tk? ( dev-lang/tk:0 ) )
-	emacs? ( >=app-editors/emacs-23.1:*
+	X? (
+		x11-misc/xdg-utils
+		sci-visualization/gnuplot[gd]
+		vtk? (
+			${PYTHON_DEPS}
+			sci-libs/vtk[python,rendering,${PYTHON_SINGLE_USEDEP}]
+		)
+	)
+	emacs? (
+		>=app-editors/emacs-23.1:*
 		virtual/latex-base
 		app-emacs/auctex
 		app-text/ghostscript-gpl
-		dev-texlive/texlive-latexrecommended )"
+		dev-texlive/texlive-latexrecommended
+	)
+	gui? ( dev-lang/tk:0 )"
 
 # generating lisp dependencies
 depends() {
@@ -74,7 +89,9 @@ done
 
 unset LISP
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+# Maxima can make use of X features like plotting (and launching a PNG
+# viewer) from the console, but you can't use the xmaxima GUI without X.
+REQUIRED_USE="${PYTHON_REQUIRED_USE} gui? ( X )"
 
 RDEPEND="${RDEPEND}
 	${DEF_DEP}"
@@ -106,7 +123,8 @@ pkg_setup() {
 
 src_prepare() {
 	local n PATCHES v
-	PATCHES=( emacs-0 rmaxima-0 wish-2 xdg-utils-1 dont-hardcode-python )
+	PATCHES=( emacs-0 rmaxima-0 wish-2 xdg-utils-1
+			  dont-hardcode-python support-new-vtk )
 
 	n=${#PATCHES[*]}
 	for ((n--; n >= 0; n--)); do
@@ -160,7 +178,7 @@ src_configure() {
 	#
 	econf ${CONFS} \
 		LDFLAGS="$(raw-ldflags)" \
-		$(use_with tk wish) \
+		$(use_with gui wish) \
 		$(use_enable emacs) \
 		--with-lispdir="${EPREFIX}/${SITELISP}/${PN}"
 }
@@ -185,7 +203,7 @@ src_install() {
 	docompress -x /usr/share/info
 	emake DESTDIR="${D}" emacsdir="${EPREFIX}/${SITELISP}/${PN}" install
 
-	use tk && make_desktop_entry xmaxima xmaxima \
+	use gui && make_desktop_entry xmaxima xmaxima \
 		/usr/share/${PN}/${PV}/xmaxima/maxima-new.png \
 		"Science;Math;Education"
 
