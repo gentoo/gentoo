@@ -40,6 +40,7 @@ DEPEND="
 	media-libs/libjpeg-turbo:=
 	media-libs/opus
 	media-video/ffmpeg:=
+	x11-libs/libXtst
 	!pulseaudio? ( media-sound/apulse[sdk] )
 	pulseaudio? ( media-sound/pulseaudio )
 "
