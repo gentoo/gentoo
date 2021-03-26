@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils qmake-utils systemd toolchain-funcs readme.gentoo-r1 desktop
+inherit desktop qmake-utils readme.gentoo-r1 systemd toolchain-funcs
 
 DESCRIPTION="IEEE 802.1X/WPA supplicant for secure wireless transfers"
 HOMEPAGE="https://w1.fi/wpa_supplicant/"
@@ -18,7 +18,7 @@ else
 fi
 
 SLOT="0"
-IUSE="ap bindist broadcom-sta dbus eap-sim eapol-test fasteap +fils +hs2-0 libressl macsec +mbo +mesh p2p privsep ps3 qt5 readline selinux smartcard tdls uncommon-eap-types wimax wps kernel_linux kernel_FreeBSD"
+IUSE="ap bindist broadcom-sta dbus eap-sim eapol-test fasteap +fils +hs2-0 macsec +mbo +mesh p2p privsep ps3 qt5 readline selinux smartcard tdls uncommon-eap-types wimax wps kernel_linux kernel_FreeBSD"
 
 # CONFIG_PRIVSEP=y does not have sufficient support for the new driver
 # interface functions used for MACsec, so this combination cannot be used
@@ -29,7 +29,9 @@ REQUIRED_USE="
 	broadcom-sta? ( !fils !mesh !mbo )
 "
 
-CDEPEND="dbus? ( sys-apps/dbus )
+DEPEND="
+	>=dev-libs/openssl-1.0.2k:0=[bindist=]
+	dbus? ( sys-apps/dbus )
 	kernel_linux? (
 		dev-libs/libnl:3
 		net-wireless/crda
@@ -46,15 +48,11 @@ CDEPEND="dbus? ( sys-apps/dbus )
 		sys-libs/ncurses:0=
 		sys-libs/readline:0=
 	)
-	!libressl? ( >=dev-libs/openssl-1.0.2k:0=[bindist=] )
-	libressl? ( dev-libs/libressl:0= )
 "
-DEPEND="${CDEPEND}
-	virtual/pkgconfig
-"
-RDEPEND="${CDEPEND}
+RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-networkmanager )
 "
+BDEPEND="virtual/pkgconfig"
 
 DOC_CONTENTS="
 	If this is a clean installation of wpa_supplicant, you
@@ -131,7 +129,7 @@ src_prepare() {
 
 src_configure() {
 	# Toolchain setup
-	tc-export CC
+	tc-export CC PKG_CONFIG
 
 	cp defconfig .config || die
 
@@ -232,7 +230,7 @@ src_configure() {
 
 	Kconfig_style_config TLS openssl
 	Kconfig_style_config FST
-	if ! use bindist || use libressl; then
+	if ! use bindist ; then
 		Kconfig_style_config EAP_PWD
 		if use fils; then
 			Kconfig_style_config FILS
@@ -248,8 +246,6 @@ src_configure() {
 		Kconfig_style_config SAE
 		Kconfig_style_config DPP
 		Kconfig_style_config SUITEB192
-	fi
-	if ! use bindist && ! use libressl; then
 		Kconfig_style_config SUITEB
 	fi
 
@@ -449,15 +445,8 @@ pkg_postinst() {
 	fi
 
 	if use bindist; then
-		if ! use libressl; then
-			ewarn "Using bindist use flag presently breaks WPA3 (specifically SAE, OWE, DPP, and FILS)."
-			ewarn "This is incredibly undesirable"
-		fi
-	fi
-	if use libressl; then
-		ewarn "Libressl doesn't support SUITEB (part of WPA3)"
-		ewarn "but it does support SUITEB192 (the upgraded strength version of the same)"
-		ewarn "You probably don't care.  Patches welcome"
+		ewarn "Using bindist use flag presently breaks WPA3 (specifically SAE, OWE, DPP, and FILS)."
+		ewarn "This is incredibly undesirable"
 	fi
 
 	# Mea culpa, feel free to remove that after some time --mgorny.
