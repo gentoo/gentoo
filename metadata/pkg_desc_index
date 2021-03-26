@@ -12022,7 +12022,7 @@ gnome-extra/gucharmap 3.0.1-r200 12.0.1 12.0.1-r1 13.0.4: Unicode character map 
 gnome-extra/libgda 5.2.8-r1 5.2.9: GNOME database access library
 gnome-extra/libgsf 1.14.46 1.14.47: The GNOME Structured File Library
 gnome-extra/mousetweaks 3.32.0: Mouse accessibility enhancements for the GNOME desktop
-gnome-extra/nautilus-dropbox 2019.02.14: Dropbox Nautilus Extension
+gnome-extra/nautilus-dropbox 2019.02.14 2020.03.04: Dropbox Nautilus Extension
 gnome-extra/nautilus-sendto 3.8.6: A nautilus extension for sending files to locations
 gnome-extra/nemo 4.6.5 4.8.4: A file manager for Cinnamon, forked from Nautilus
 gnome-extra/nm-applet 1.18.0 1.20.0: NetworkManager connection editor and applet
