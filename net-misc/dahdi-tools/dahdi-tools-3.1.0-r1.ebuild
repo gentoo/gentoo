@@ -60,5 +60,7 @@ src_install() {
 	bashcomp_alias dahdi $(sed -nre 's/^complete -F .* //p' "${ED}${bashcompdir}/dahdi" ||
 		die "Error parsing dahdi bash completion file for commands")
 
-	rm "${ED}"/usr/$(get_libdir)/libtonezone.{la,a} || die "Unable to remove static libs from install."
+	rm "${ED}"/usr/$(get_libdir)/libtonezone.a || die "Unable to remove static libs from install."
+	# Delete *if* the libtool file exists, bug #778380
+	find "${ED}" -name '*.la' -delete || die
 }
