@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Jonas Licht <jonas.licht@gmail.com> (2021-03-26)
+# requires sys-cluster/ceph, which is masked in this profile as well
+net-analyzer/nagios-plugins-ceph
+
 # Bernd Waibel <waebbl-gentoo@posteo.net> (2021-02-13)
 # Is reverse-dependency of dev-qt/qtwebengine
 media-gfx/freecad
