@@ -42,10 +42,6 @@ if [[ "${PV}" != "9999" ]]; then
 	S="${WORKDIR}/OpenCC-ver.${PV}"
 fi
 
-PATCHES=(
-	"${FILESDIR}/${PN}-1.1.0-parallel_build.patch"
-)
-
 DOCS=(AUTHORS NEWS.md README.md)
 
 src_prepare() {
