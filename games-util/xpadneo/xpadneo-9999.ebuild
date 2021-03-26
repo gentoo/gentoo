@@ -33,7 +33,7 @@ src_install() {
 	insinto /etc/modprobe.d
 	doins etc-modprobe.d/${PN}.conf
 
-	udev_dorules etc-udev-rules.d/98-${PN}.rules
+	udev_dorules etc-udev-rules.d/60-${PN}.rules
 
 	dodoc -r ../docs/{[^i]*.md,descriptors,reports} ../NEWS.md
 }

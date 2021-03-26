@@ -9,7 +9,6 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">NVIDIA/eglexternalplatform</remote-id>
 	</upstream>
