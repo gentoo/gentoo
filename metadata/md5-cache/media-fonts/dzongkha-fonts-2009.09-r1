@@ -1,6 +1,5 @@
-BDEPEND=app-arch/unzip
+BDEPEND=app-arch/unzip X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DEFINED_PHASES=install postinst postrm setup unpack
-DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DESCRIPTION=Bhutanese/Tibetan fonts for dzongkha script provided by the Bhutanese government
 EAPI=7
 HOMEPAGE=https://www.dit.gov.bt/downloads
@@ -11,5 +10,5 @@ LICENSE=all-rights-reserved
 RESTRICT=mirror bindist
 SLOT=0
 SRC_URI=https://www.dit.gov.bt/sites/default/files/dzongkhafonts.zip -> dzongkha-fonts-2009.09.zip
-_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
+_eclasses_=font	0667878c2b594871023dd1833d05996f
 _md5_=b21cb88ad4a21dc25aa5ae8711c4768e

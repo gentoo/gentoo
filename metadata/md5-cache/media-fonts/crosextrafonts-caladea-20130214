@@ -1,5 +1,5 @@
+BDEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DEFINED_PHASES=install postinst postrm setup
-DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DESCRIPTION=Open licensed serif font metrically compatible with Cambria
 EAPI=7
 HOMEPAGE=https://bugs.chromium.org/p/chromium/issues/detail?id=168879
@@ -10,5 +10,5 @@ LICENSE=Apache-2.0
 RESTRICT=binchecks strip test
 SLOT=0
 SRC_URI=https://commondatastorage.googleapis.com/chromeos-localmirror/distfiles/crosextrafonts-20130214.tar.gz
-_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
+_eclasses_=font	0667878c2b594871023dd1833d05996f
 _md5_=bf2dec3aec1586c33a8e0e7b144f64d7

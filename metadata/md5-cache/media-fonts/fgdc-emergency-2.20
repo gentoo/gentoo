@@ -1,12 +1,14 @@
+BDEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DEFINED_PHASES=install postinst postrm setup
-DEPEND=app-arch/unzip X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
+DEPEND=app-arch/unzip
 DESCRIPTION=FGDC Emergency Response Symbology Prototype
 EAPI=7
 HOMEPAGE=http://www.fgdc.gov/HSWG/
+INHERIT=font
 IUSE=X
 KEYWORDS=amd64 x86
 LICENSE=public-domain
 SLOT=0
 SRC_URI=http://www.fgdc.gov/HSWG/symbol_downloads/ers_v220.zip
-_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
+_eclasses_=font	0667878c2b594871023dd1833d05996f
 _md5_=1fd2ab4906e05727a127a895880dbad2

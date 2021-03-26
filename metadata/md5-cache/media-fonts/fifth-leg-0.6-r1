@@ -1,5 +1,5 @@
+BDEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DEFINED_PHASES=install postinst postrm setup
-DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DESCRIPTION=Simplistic, technical sans serif - openSUSE font
 EAPI=7
 HOMEPAGE=https://jimmac.eu/
@@ -9,5 +9,5 @@ KEYWORDS=~amd64 ~x86
 LICENSE=OFL
 SLOT=0
 SRC_URI=https://api.opensuse.org/public/source/openSUSE:12.2/fifth-leg-font/opensuse-font-fifth-leg-0.6.tar.bz2
-_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
+_eclasses_=font	0667878c2b594871023dd1833d05996f
 _md5_=e6cad9448d968834eb0005719909665a

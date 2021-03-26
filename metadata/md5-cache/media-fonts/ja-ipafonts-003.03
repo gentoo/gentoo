@@ -1,6 +1,5 @@
-BDEPEND=app-arch/unzip
+BDEPEND=app-arch/unzip X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DEFINED_PHASES=install postinst postrm setup
-DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DESCRIPTION=TrueType fonts developed by Japanese Information-technology Promotion Agency
 EAPI=7
 HOMEPAGE=http://ipafont.ipa.go.jp/
@@ -11,5 +10,5 @@ LICENSE=IPAfont
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=http://dl.ipafont.ipa.go.jp/IPAfont/IPAfont00303.zip
-_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
+_eclasses_=font	0667878c2b594871023dd1833d05996f
 _md5_=73cf2c1465e8669eb4b3e39952ea0d34

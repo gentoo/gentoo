@@ -1,6 +1,5 @@
-BDEPEND=app-arch/unzip >=x11-apps/mkfontscale-1.0.9-r1 fontforge? ( media-gfx/fontforge )
+BDEPEND=app-arch/unzip >=x11-apps/mkfontscale-1.0.9-r1 fontforge? ( media-gfx/fontforge ) X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DEFINED_PHASES=compile install postinst postrm prepare setup unpack
-DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DESCRIPTION=Hebrew Type1 fonts
 EAPI=7
 HOMEPAGE=http://culmus.sourceforge.net/
@@ -11,5 +10,5 @@ LICENSE=|| ( GPL-2 LICENSE-BITSTREAM ) ancient? ( MIT ) fancy? ( GPL-2 )
 RDEPEND=!media-fonts/culmus-ancient
 SLOT=0
 SRC_URI=mirror://sourceforge/culmus/culmus-0.133.tar.gz mirror://sourceforge/culmus/culmus-type1-0.105.tar.gz fontforge? ( mirror://sourceforge/culmus/culmus-src-0.133.tar.gz ) ancient? ( !fontforge? ( mirror://sourceforge/culmus/AncientSemiticFonts-0.06-1.TTF.tgz ) fontforge? ( mirror://sourceforge/culmus/AncientSemiticFonts-0.06-1.tgz ) ) fancy? ( http://culmus.sourceforge.net/fancy/journal.tar.gz http://culmus.sourceforge.net/fancy/hillel.tar.gz http://culmus.sourceforge.net/fancy/anka.tar.gz http://culmus.sourceforge.net/fancy/comix.tar.gz http://culmus.sourceforge.net/fancy/gan.tar.gz http://culmus.sourceforge.net/fancy/ozrad.tar.gz http://culmus.sourceforge.net/fancy/ktav-yad.tar.gz http://culmus.sourceforge.net/fancy/dorian.tar.gz http://culmus.sourceforge.net/fancy/gladia.tar.gz http://culmus.sourceforge.net/fancy/horev.tar.gz ) fancy? ( http://culmus.sourceforge.net/fancy-yg/ShmuelCLM.zip http://culmus.sourceforge.net/fancy-yg/MakabiYG.zip ) taamey? ( http://culmus.sourceforge.net/taamim/TaameyDavidCLM.zip http://culmus.sourceforge.net/taamim/TaameyFrankCLM.zip http://culmus.sourceforge.net/taamim/KeterAramTsova.zip http://culmus.sourceforge.net/taamim/KeterYG.zip )
-_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
+_eclasses_=font	0667878c2b594871023dd1833d05996f
 _md5_=22f6c4abca3d2b9222229b1b46176c01

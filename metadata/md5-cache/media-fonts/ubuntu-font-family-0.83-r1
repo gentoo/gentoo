@@ -1,6 +1,5 @@
-BDEPEND=app-arch/unzip
+BDEPEND=app-arch/unzip X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DEFINED_PHASES=install postinst postrm prepare setup
-DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DESCRIPTION=Set of matching libre/open fonts funded by Canonical
 EAPI=7
 HOMEPAGE=https://design.ubuntu.com/font/
@@ -10,5 +9,5 @@ KEYWORDS=amd64 ~arm ~arm64 x86
 LICENSE=UbuntuFontLicense-1.0
 SLOT=0
 SRC_URI=https://assets.ubuntu.com/v1/fad7939b-ubuntu-font-family-0.83.zip -> ubuntu-font-family-0.83.zip
-_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
+_eclasses_=font	0667878c2b594871023dd1833d05996f
 _md5_=738703ca2ae2bba8c656f3d6d8d2f9d6

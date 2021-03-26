@@ -1,5 +1,5 @@
+BDEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DEFINED_PHASES=install postinst postrm prepare setup
-DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DESCRIPTION=Adobe's open source typeface family designed for UI environments
 EAPI=7
 HOMEPAGE=https://adobe-fonts.github.io/source-sans-pro/ https://adobe-fonts.github.io/source-serif-pro/ https://adobe-fonts.github.io/source-code-pro/
@@ -11,5 +11,5 @@ RDEPEND=media-libs/fontconfig cjk? ( media-fonts/source-han-sans )
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=https://github.com/adobe-fonts/source-sans-pro/archive/2.020R-ro/1.075R-it.tar.gz -> source-sans-pro-20170111.tar.gz https://github.com/adobe-fonts/source-serif-pro/archive/2.000R.tar.gz -> source-serif-pro-20170111.tar.gz https://github.com/adobe-fonts/source-code-pro/archive/2.030R-ro/1.050R-it.tar.gz -> source-code-pro-20170111.tar.gz
-_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
+_eclasses_=font	0667878c2b594871023dd1833d05996f
 _md5_=78370064de319035b242347c431b9e2b

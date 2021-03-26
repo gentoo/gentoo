@@ -1,14 +1,14 @@
-BDEPEND=buildfont? ( || ( dev-lang/python:3.8 dev-lang/python:3.7 ) app-arch/zopfli || ( ( dev-lang/python:3.8 dev-python/fonttools[python_targets_python3_8(-),-python_single_target_python3_8(-)] dev-python/nototools[python_targets_python3_8(-),-python_single_target_python3_8(-)] ) ( dev-lang/python:3.7 dev-python/fonttools[python_targets_python3_7(-),-python_single_target_python3_7(-)] dev-python/nototools[python_targets_python3_7(-),-python_single_target_python3_7(-)] ) ) media-gfx/pngquant x11-libs/cairo || ( media-gfx/imagemagick[png] media-gfx/graphicsmagick[png] ) )
+BDEPEND=buildfont? ( || ( dev-lang/python:3.8 dev-lang/python:3.7 ) app-arch/zopfli || ( ( dev-lang/python:3.8 dev-python/fonttools[python_targets_python3_8(-),-python_single_target_python3_8(-)] dev-python/nototools[python_targets_python3_8(-),-python_single_target_python3_8(-)] ) ( dev-lang/python:3.7 dev-python/fonttools[python_targets_python3_7(-),-python_single_target_python3_7(-)] dev-python/nototools[python_targets_python3_7(-),-python_single_target_python3_7(-)] ) ) media-gfx/pngquant x11-libs/cairo || ( media-gfx/imagemagick[png] media-gfx/graphicsmagick[png] ) ) X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DEFINED_PHASES=compile install postinst postrm prepare setup
-DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DESCRIPTION=Google Noto Emoji fonts
 EAPI=7
 HOMEPAGE=https://www.google.com/get/noto/ https://github.com/googlefonts/noto-emoji
+INHERIT=font python-any-r1
 IUSE=buildfont X
 KEYWORDS=amd64 ~arm arm64 ~ppc64 x86
 LICENSE=Apache-2.0 OFL-1.1
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=https://github.com/googlefonts/noto-emoji/archive/ac1703e9d7feebbf5443a986e08332b1e1c5afcf.tar.gz -> noto-emoji-20200317.tar.gz
-_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45	multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=font	0667878c2b594871023dd1833d05996f	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88
 _md5_=0800457671b32750f9c1060c22c05d5a

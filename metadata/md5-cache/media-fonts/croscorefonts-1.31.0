@@ -1,5 +1,5 @@
+BDEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DEFINED_PHASES=install postinst postrm setup
-DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DESCRIPTION=Open licensed fonts metrically compatible with MS corefonts
 EAPI=7
 HOMEPAGE=https://www.google.com/webfonts/specimen/Arimo https://www.google.com/webfonts/specimen/Cousine https://www.google.com/webfonts/specimen/Tinos
@@ -10,5 +10,5 @@ LICENSE=Apache-2.0
 RESTRICT=binchecks strip test
 SLOT=0
 SRC_URI=https://commondatastorage.googleapis.com/chromeos-localmirror/distfiles/croscorefonts-1.31.0.tar.bz2
-_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
+_eclasses_=font	0667878c2b594871023dd1833d05996f
 _md5_=7951dd7c358c157c9495d387710d8042

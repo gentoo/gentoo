@@ -1,12 +1,13 @@
+BDEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DEFINED_PHASES=install postinst postrm setup
-DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DESCRIPTION=A set of monospaced bitmap programming fonts
 EAPI=7
 HOMEPAGE=http://upperbounds.net/ https://proggyfonts.net/
+INHERIT=font
 IUSE=X
 KEYWORDS=~alpha amd64 ~ia64 ppc ppc64 sparc x86
 LICENSE=MIT
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~jstein/dist/proggy-fonts-1.tar.bz2
-_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
+_eclasses_=font	0667878c2b594871023dd1833d05996f
 _md5_=109084db28e66a02dc1bde089ffe3440

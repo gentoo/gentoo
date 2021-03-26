@@ -1,5 +1,5 @@
+BDEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DEFINED_PHASES=install postinst postrm setup
-DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DESCRIPTION=John Stracke's Essays 1743 font
 EAPI=7
 HOMEPAGE=https://www.thibault.org/fonts/essays/
@@ -10,5 +10,5 @@ LICENSE=|| ( LGPL-2.1 OFL-1.1 )
 REQUIRED_USE=|| ( otf ttf )
 SLOT=0
 SRC_URI=otf? ( https://www.thibault.org/fonts/essays/essays1743-2.100-1-otf.tar.gz ) ttf? ( https://www.thibault.org/fonts/essays/essays1743-2.100-1-ttf.tar.gz )
-_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
+_eclasses_=font	0667878c2b594871023dd1833d05996f
 _md5_=01e99dee4f04f1fe7efb34037e9b573e

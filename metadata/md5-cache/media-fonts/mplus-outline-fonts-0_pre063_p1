@@ -1,6 +1,5 @@
-BDEPEND=ipafont? ( media-fonts/ja-ipafonts media-gfx/fontforge )
+BDEPEND=ipafont? ( media-fonts/ja-ipafonts media-gfx/fontforge ) X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DEFINED_PHASES=compile install postinst postrm prepare setup
-DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DESCRIPTION=M+ Japanese outline fonts
 EAPI=7
 HOMEPAGE=https://mplus-fonts.osdn.jp/about-en.html
@@ -11,5 +10,5 @@ LICENSE=mplus-fonts ipafont? ( IPAfont )
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=mirror://sourceforge.jp/mplus-fonts/62344/mplus-TESTFLIGHT-063a.tar.xz
-_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
+_eclasses_=font	0667878c2b594871023dd1833d05996f
 _md5_=f175417a144fea47739db572d02d76c9

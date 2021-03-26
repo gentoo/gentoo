@@ -1,13 +1,14 @@
+BDEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DEFINED_PHASES=install postinst postrm setup
-DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DESCRIPTION=The package of IBM's typeface
 EAPI=7
 HOMEPAGE=https://github.com/IBM/plex
+INHERIT=font
 IUSE=otf +ttf X
 KEYWORDS=amd64 x86
 LICENSE=OFL-1.1
 REQUIRED_USE=^^ ( otf ttf )
 SLOT=0
 SRC_URI=https://github.com/IBM/plex/archive/v5.1.3.tar.gz -> ibm-plex-5.1.3.tar.gz
-_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
+_eclasses_=font	0667878c2b594871023dd1833d05996f
 _md5_=95fb2b8af77e968119a90d262c208e97

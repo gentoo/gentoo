@@ -1,6 +1,5 @@
-BDEPEND=app-arch/unzip
+BDEPEND=app-arch/unzip X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DEFINED_PHASES=install postinst postrm setup
-DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DESCRIPTION=Comprehensive OpenType font set of mathematical symbols and alphabets
 EAPI=7
 HOMEPAGE=https://www.stixfonts.org/
@@ -11,5 +10,5 @@ LICENSE=OFL-1.1
 RESTRICT=binchecks strip test
 SLOT=0
 SRC_URI=https://raw.githubusercontent.com/stipub/stixfonts/v2.11/zipfiles/static_otf.zip -> stix-fonts-2.11-otf.zip https://raw.githubusercontent.com/stipub/stixfonts/v2.11/docs/FONTLOG.txt -> stix-fonts-2.11-FONTLOG.txt https://raw.githubusercontent.com/stipub/stixfonts/v2.11/docs/STIXTwoMath-Regular.pdf -> stix-fonts-2.11-STIXTwoMath-Regular.pdf https://raw.githubusercontent.com/stipub/stixfonts/v2.11/docs/STIXTwoText-Regular.pdf -> stix-fonts-2.11-STIXTwoText-Regular.pdf
-_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
+_eclasses_=font	0667878c2b594871023dd1833d05996f
 _md5_=9333b40ce575f9346cd433cd6cc8a8ed

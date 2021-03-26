@@ -1,12 +1,14 @@
+BDEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DEFINED_PHASES=install postinst postrm setup
-DEPEND=app-arch/unzip X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
+DEPEND=app-arch/unzip
 DESCRIPTION=Pothana 2000 and Vemana fonts for the Telugu script
 EAPI=7
 HOMEPAGE=http://www.kavya-nandanam.com/
+INHERIT=font
 IUSE=doc X
 KEYWORDS=amd64 ppc ppc64 x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://gentoo/pothana2k-2006.zip
-_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
+_eclasses_=font	0667878c2b594871023dd1833d05996f
 _md5_=f43789ceff5eae7052f45a164dc45335

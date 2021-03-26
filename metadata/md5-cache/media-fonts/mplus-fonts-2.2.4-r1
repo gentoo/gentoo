@@ -1,6 +1,5 @@
-BDEPEND=x11-apps/bdftopcf >=x11-apps/mkfontscale-1.2.0
+BDEPEND=x11-apps/bdftopcf >=x11-apps/mkfontscale-1.2.0 X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DEFINED_PHASES=install postinst postrm setup
-DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DESCRIPTION=M+ Japanese bitmap fonts
 EAPI=7
 HOMEPAGE=https://mplus-fonts.osdn.jp/about-en.html
@@ -11,5 +10,5 @@ LICENSE=mplus-fonts
 RESTRICT=strip binchecks
 SLOT=0
 SRC_URI=mirror://sourceforge.jp/mplus-fonts/5030/mplus_bitmap_fonts-2.2.4.tar.gz
-_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
+_eclasses_=font	0667878c2b594871023dd1833d05996f
 _md5_=d299e7357a8c0dbc636cf70a74ba40f0

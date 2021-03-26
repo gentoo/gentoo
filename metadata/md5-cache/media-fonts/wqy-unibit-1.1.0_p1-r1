@@ -1,6 +1,5 @@
-BDEPEND=media-gfx/ebdftopcf
+BDEPEND=media-gfx/ebdftopcf X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DEFINED_PHASES=compile install postinst postrm prepare setup
-DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DESCRIPTION=WenQuanYi Unibit CJK font
 EAPI=7
 HOMEPAGE=http://wenq.org/wqy2/index.cgi https://sourceforge.net/projects/wqy/
@@ -11,5 +10,5 @@ LICENSE=GPL-2
 RESTRICT=strip binchecks
 SLOT=0
 SRC_URI=mirror://sourceforge/wqy/wqy-unibit-bdf-1.1.0-1.tar.gz
-_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
+_eclasses_=font	0667878c2b594871023dd1833d05996f
 _md5_=bdfb5f1b6393e6847c5337125f165418

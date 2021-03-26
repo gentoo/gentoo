@@ -1,6 +1,5 @@
-BDEPEND=dev-util/xdelta:3
+BDEPEND=dev-util/xdelta:3 X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DEFINED_PHASES=install postinst postrm prepare setup
-DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DESCRIPTION=Droid derived Sans-Serif style CJK font
 EAPI=7
 HOMEPAGE=http://wenq.org/wqy2/index.cgi https://sourceforge.net/projects/wqy/
@@ -11,5 +10,5 @@ LICENSE=Apache-2.0 GPL-3
 RESTRICT=strip binchecks
 SLOT=0
 SRC_URI=mirror://sourceforge/wqy/wqy-microhei-0.2.0-beta.tar.gz https://dev.gentoo.org/~dlan/distfiles/wqy-microhei.ttc.xd3
-_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
+_eclasses_=font	0667878c2b594871023dd1833d05996f
 _md5_=9fb0365c26f6609ac55f2de58d5ae54b

@@ -1,6 +1,5 @@
-BDEPEND=app-arch/unzip
+BDEPEND=app-arch/unzip X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DEFINED_PHASES=install postinst postrm setup
-DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DESCRIPTION=OpenType font optimized for readability on small screens
 EAPI=7
 HOMEPAGE=https://01.org/clear-sans
@@ -11,5 +10,5 @@ LICENSE=Apache-2.0
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=https://01.org/sites/default/files/downloads/clear-sans/clearsans-1.00.zip
-_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
+_eclasses_=font	0667878c2b594871023dd1833d05996f
 _md5_=6099aacc1185f28e2af1ea3a2330b314

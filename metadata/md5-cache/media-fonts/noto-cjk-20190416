@@ -1,5 +1,5 @@
+BDEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DEFINED_PHASES=install postinst postrm setup
-DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DESCRIPTION=Google's CJK font family
 EAPI=7
 HOMEPAGE=https://www.google.com/get/noto/ https://github.com/googlei18n/noto-cjk
@@ -10,5 +10,5 @@ LICENSE=OFL-1.1
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=https://github.com/googlei18n/noto-cjk/archive/be6c059ac1587e556e2412b27f5155c8eb3ddbe6.tar.gz -> noto-cjk-20190416.tar.gz
-_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
+_eclasses_=font	0667878c2b594871023dd1833d05996f
 _md5_=b7344e0c74831ffd75c17083d3c945ac

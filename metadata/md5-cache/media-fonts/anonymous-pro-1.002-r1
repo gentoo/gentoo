@@ -1,6 +1,5 @@
-BDEPEND=app-arch/unzip
+BDEPEND=app-arch/unzip X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DEFINED_PHASES=install postinst postrm setup
-DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DESCRIPTION=Monospaced truetype font designed with coding in mind
 EAPI=7
 HOMEPAGE=https://www.marksimonson.com/fonts/view/anonymous-pro
@@ -11,5 +10,5 @@ LICENSE=OFL-1.1
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=https://www.marksimonson.com/assets/content/fonts/AnonymousPro-1.002.zip
-_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
+_eclasses_=font	0667878c2b594871023dd1833d05996f
 _md5_=f3a24b6c2d1b2eacad09c1bfa8fa9228

@@ -1,6 +1,5 @@
-BDEPEND=app-arch/unzip
+BDEPEND=app-arch/unzip X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DEFINED_PHASES=install postinst postrm setup
-DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DESCRIPTION=Unicode sans-serif typeface for Coptic/Nubian languages
 EAPI=7
 HOMEPAGE=https://software.sil.org/SophiaNubian/
@@ -10,5 +9,5 @@ KEYWORDS=~amd64 ~arm ~arm64 ~x86
 LICENSE=OFL-1.1
 SLOT=0
 SRC_URI=https://software.sil.org/downloads/r/sophianubian/SophiaNubian-1.0.zip -> sophia-nubian-1.0.zip
-_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
+_eclasses_=font	0667878c2b594871023dd1833d05996f
 _md5_=0ee40982e3c330e45dfbdde60911996c

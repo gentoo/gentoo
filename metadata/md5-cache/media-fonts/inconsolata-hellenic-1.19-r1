@@ -1,6 +1,5 @@
-BDEPEND=app-arch/unzip
+BDEPEND=app-arch/unzip X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DEFINED_PHASES=install postinst postrm setup
-DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DESCRIPTION=Hellenisation of the wonderful, monospace, open/free font Inconsolata
 EAPI=7
 HOMEPAGE=https://www.cosmix.org/software/
@@ -10,5 +9,5 @@ KEYWORDS=~amd64 ~arm ~arm64 ~x86
 LICENSE=OFL-1.1
 SLOT=0
 SRC_URI=https://www.cosmix.org/software/files/InconsolataHellenic.zip -> inconsolata-hellenic-1.19.zip
-_eclasses_=font	dd073b36fe3fd8b868c23bc23209db45
+_eclasses_=font	0667878c2b594871023dd1833d05996f
 _md5_=6406f2dad5ae8dad903081010cd66afe
