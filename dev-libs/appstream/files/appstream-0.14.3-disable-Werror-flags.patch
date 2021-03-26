@@ -1,0 +1,12 @@
+--- a/meson.build
++++ b/meson.build
+@@ -52,9 +52,6 @@
+     add_project_arguments(maintainer_c_args, language: 'cpp')
+ endif
+ 
+-# a few compiler warning flags we always want enabled
+-add_project_arguments('-Werror=implicit-function-declaration', '-Wno-unused-parameter', language: 'c')
+-add_project_arguments('-Wno-unused-parameter', language: 'cpp')
+ add_project_arguments('-DAS_COMPILATION', language: 'c')
+ 
+ # Vendor extensions in system headers
