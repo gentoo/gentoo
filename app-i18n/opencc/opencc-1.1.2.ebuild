@@ -42,11 +42,6 @@ if [[ "${PV}" != "9999" ]]; then
 	S="${WORKDIR}/OpenCC-ver.${PV}"
 fi
 
-PATCHES=(
-	"${FILESDIR}/${PN}-1.1.0-parallel_build.patch"
-	"${FILESDIR}/${PN}-1.1.1-system_libraries.patch"
-)
-
 DOCS=(AUTHORS NEWS.md README.md)
 
 src_prepare() {
@@ -55,11 +50,13 @@ src_prepare() {
 	cmake_src_prepare
 
 	sed -e "s:\${DIR_SHARE_OPENCC}/doc:share/doc/${PF}:" -i doc/CMakeLists.txt || die
+
+	# https://github.com/BYVoid/OpenCC/issues/550
+	# https://github.com/BYVoid/OpenCC/commit/736b93d3d16fdf0548bdaae2922569199615e919
+	sed -e "s:#ifdef ENABLE_DARTS:#if 1:" -i src/Common.hpp || die
 }
 
 src_configure() {
-	local -x CXXFLAGS="${CXXFLAGS} -I${ESYSROOT}/usr/include/rapidjson"
-
 	local mycmakeargs=(
 		-DBUILD_DOCUMENTATION=$(usex doc ON OFF)
 		-DENABLE_BENCHMARK=$(if use test && has_version -d dev-cpp/benchmark; then echo ON; else echo OFF; fi)
