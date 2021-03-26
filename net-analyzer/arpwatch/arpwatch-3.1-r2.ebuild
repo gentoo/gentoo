@@ -16,7 +16,7 @@ SRC_URI="
 	https://dev.gentoo.org/~jer/ethercodes.dat-${ETHERCODES_DATE}.xz
 "
 
-KEYWORDS="amd64 ~hppa ~ppc sparc x86"
+KEYWORDS="amd64 ~hppa ppc sparc x86"
 IUSE="selinux"
 
 DEPEND="
