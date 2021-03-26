@@ -50,6 +50,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-disable-automagic-dep.patch
+	"${FILESDIR}"/${P}-fix-linking-with-lld.patch
 )
 
 BUILD_DIR="${WORKDIR}/${MY_PN}-${PV}_build"
