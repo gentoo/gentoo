@@ -19,10 +19,10 @@ IUSE="debug"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
+	$(python_gen_cond_dep 'dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]' )
+	dev-libs/glib:2
 	gnome-base/nautilus
-	net-misc/dropbox
-	>=dev-libs/glib-2.14
-	$(python_gen_cond_dep 'dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]' )"
+	net-misc/dropbox"
 
 DEPEND="${RDEPEND}"
 
@@ -59,9 +59,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	xdg_icon_cache_update;
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	xdg_icon_cache_update;
+	xdg_icon_cache_update
 }
