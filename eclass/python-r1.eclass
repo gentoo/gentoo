@@ -121,7 +121,7 @@ fi
 # @CODE
 # RDEPEND="${PYTHON_DEPS}
 #	dev-foo/mydep"
-# DEPEND="${RDEPEND}"
+# BDEPEND="${PYTHON_DEPS}"
 # @CODE
 #
 # Example value:
@@ -357,12 +357,12 @@ _python_gen_usedep() {
 # Example:
 # @CODE
 # PYTHON_COMPAT=( python{2_7,3_4} )
-# DEPEND="doc? ( dev-python/epydoc[$(python_gen_usedep 'python2*')] )"
+# BDEPEND="doc? ( dev-python/epydoc[$(python_gen_usedep 'python2*')] )"
 # @CODE
 #
 # It will cause the dependency to look like:
 # @CODE
-# DEPEND="doc? ( dev-python/epydoc[python_targets_python2_7?] )"
+# BDEPEND="doc? ( dev-python/epydoc[python_targets_python2_7?] )"
 # @CODE
 python_gen_usedep() {
 	debug-print-function ${FUNCNAME} "${@}"
@@ -548,7 +548,7 @@ python_gen_impl_dep() {
 #
 # Example use:
 # @CODE
-# DEPEND="$(python_gen_any_dep '
+# BDEPEND="$(python_gen_any_dep '
 #	dev-python/foo[${PYTHON_SINGLE_USEDEP}]
 #	|| ( dev-python/bar[${PYTHON_USEDEP}]
 #		dev-python/baz[${PYTHON_USEDEP}] )' -2)"
@@ -739,7 +739,7 @@ python_foreach_impl() {
 #
 # Pure mode example:
 # @CODE
-# DEPEND="doc? ( dev-python/epydoc[$(python_gen_usedep 'python2*')] )"
+# BDEPEND="doc? ( dev-python/epydoc[$(python_gen_usedep 'python2*')] )"
 # REQUIRED_USE="doc? ( $(python_gen_useflags 'python2*') )"
 #
 # src_compile() {
@@ -753,7 +753,7 @@ python_foreach_impl() {
 #
 # Any-of mode example:
 # @CODE
-# DEPEND="doc? (
+# BDEPEND="doc? (
 #	$(python_gen_any_dep 'dev-python/epydoc[${PYTHON_USEDEP}]' 'python2*') )"
 #
 # python_check_deps() {
