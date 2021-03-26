@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Library for mp3splt to split mp3 and ogg files without decoding"
 HOMEPAGE="http://mp3splt.sourceforge.net/mp3splt_page/home.php"
@@ -45,6 +45,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# Breaks consumers like media-sound/libmp3splt otherwise
+	# bug #778476
+	append-libs -ldl
+
 	local myeconfargs=(
 		--disable-cutter # TODO package cutter <http://cutter.sourceforge.net/>
 		--disable-optimise
