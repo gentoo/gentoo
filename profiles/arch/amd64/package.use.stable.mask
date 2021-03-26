@@ -62,7 +62,7 @@ media-radio/wsjtx doc
 # Pulls too much unstable ruby deps (some are not even keyworded)
 net-misc/chrony html
 
-# NP-Hardass <NP-Hardass@gentoo.org> (2017-09-27)
+# Adam Feldman <NP-Hardass@gentoo.org> (2017-09-27)
 # patchset variants are not stable
 virtual/wine staging
 
