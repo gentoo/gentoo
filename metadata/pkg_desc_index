@@ -8015,7 +8015,7 @@ dev-python/APScheduler 3.6.3: In-process task scheduler with Cron-like capabilit
 dev-python/Babel 2.8.1 2.9.0: Collection of tools for internationalizing Python applications
 dev-python/BitVector 3.4.9 3.4.9-r1: A pure-Python memory-efficient packed representation for bit arrays
 dev-python/CppHeaderParser 2.7.4: Parse C++ header files and generate a data structure
-dev-python/Faker 5.6.5 6.4.1 6.5.1 6.6.0 6.6.1 6.6.2: A Python package that generates fake data for you
+dev-python/Faker 5.6.5 6.4.1 6.5.1 6.6.0 6.6.1 6.6.2 6.6.3: A Python package that generates fake data for you
 dev-python/GitPython 3.1.13 3.1.14: Library used to interact with Git repositories
 dev-python/GridDataFormats 0.5.0: Reading and writing of data on regular grids in Python
 dev-python/MechanicalSoup 0.12.0 1.0.0: A python library for automating interaction with websites
@@ -8124,8 +8124,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7 1.0.8: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r4: Amazon Web Services API
-dev-python/boto3 1.16.63 1.17.7 1.17.12 1.17.17 1.17.18 1.17.19 1.17.20 1.17.21 1.17.22 1.17.23 1.17.24 1.17.25 1.17.26 1.17.27 1.17.28 1.17.29 1.17.30 1.17.31 1.17.32 1.17.33 1.17.34 1.17.35 1.17.36 9999: The AWS SDK for Python
-dev-python/botocore 1.19.63 1.20.7 1.20.12 1.20.17 1.20.18 1.20.19 1.20.20 1.20.21 1.20.22 1.20.23 1.20.24 1.20.25 1.20.26 1.20.27 1.20.28 1.20.29 1.20.30 1.20.31 1.20.32 1.20.33 1.20.34 1.20.35 1.20.36 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.16.63 1.17.7 1.17.12 1.17.17 1.17.18 1.17.19 1.17.20 1.17.21 1.17.22 1.17.23 1.17.24 1.17.25 1.17.26 1.17.27 1.17.28 1.17.29 1.17.30 1.17.31 1.17.32 1.17.33 1.17.34 1.17.35 1.17.36 1.17.38 9999: The AWS SDK for Python
+dev-python/botocore 1.19.63 1.20.7 1.20.12 1.20.17 1.20.18 1.20.19 1.20.20 1.20.21 1.20.22 1.20.23 1.20.24 1.20.25 1.20.26 1.20.27 1.20.28 1.20.29 1.20.30 1.20.31 1.20.32 1.20.33 1.20.34 1.20.35 1.20.36 1.20.38 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.21: Syntax highlighting and autocompletion for the Python interpreter
@@ -8151,7 +8151,7 @@ dev-python/cbor 1.0.0-r1: RFC 7049 - Concise Binary Object Representation
 dev-python/cbor2 5.1.2 5.2.0: Pure Python CBOR (de)serializer with extensive tag support
 dev-python/certifi 10001-r1: Thin replacement for certifi using system certificate store
 dev-python/cffi 1.14.4 1.14.5: Foreign Function Interface for Python calling C code
-dev-python/cfn-python-lint 0.44.7 0.46.0 0.47.2 0.48.0: CloudFormation Linter
+dev-python/cfn-python-lint 0.44.7 0.46.0 0.47.2 0.48.0 0.48.1: CloudFormation Linter
 dev-python/cftime 1.4.1: Time-handling functionality from netcdf4-python
 dev-python/cgroup-utils 0.8: Tools and libraries for control groups of Linux
 dev-python/chai 1.1.2: Easy to use mocking, stubbing and spying framework
@@ -8170,7 +8170,7 @@ dev-python/cjkwrap 2.2-r1: A library for wrapping and filling UTF-8 CJK text
 dev-python/clang-python 10.0.1 11.0.0 11.0.1 11.1.0 12.0.0_rc2 12.0.0_rc3 12.0.0.9999 13.0.0.9999: Python bindings for sys-devel/clang
 dev-python/cleo 0.8.1: Python tool for building testable command-line interfaces
 dev-python/cli_helpers 2.1.0 9999: Python helpers for common CLI tasks
-dev-python/click 6.7-r2 6.7-r3 7.1.2-r1: A Python package for creating beautiful command line interfaces
+dev-python/click 7.1.2-r1: A Python package for creating beautiful command line interfaces
 dev-python/click-default-group 1.2.2: Extends click. Group to invoke a command without explicit subcommand name
 dev-python/click-log 0.3.2: Logging integration for Click.
 dev-python/click-plugins 1.0.3 1.1.1: Module for click to enable registering CLI commands via setuptools entry-points
@@ -8205,7 +8205,7 @@ dev-python/cppy 1.1.0: C++ header library which makes it easier to write Python 
 dev-python/crashtest 0.3.1: Python library that makes exceptions handling and inspection easier
 dev-python/crcmod 1.7-r4: Python CRC Generator module
 dev-python/croniter 1.0.6 1.0.8 1.0.9: Python module to provide iteration for datetime object
-dev-python/cryptography 3.2.1 3.3.1 3.3.2: Library providing cryptographic recipes and primitives
+dev-python/cryptography 3.2.1 3.3.1 3.3.2 3.4.7: Library providing cryptographic recipes and primitives
 dev-python/css-parser 1.0.4-r1: A CSS Cascading Style Sheets library (fork of cssutils)
 dev-python/cssselect 1.1.0-r1: parses CSS3 Selectors and translates them to XPath 1.0
 dev-python/cssselect2 0.4.1: Parses CSS3 Selectors and translates them to XPath 1.0
@@ -8231,7 +8231,7 @@ dev-python/decorator 4.4.2-r1: Simplifies the usage of decorators for the averag
 dev-python/deepmerge 0.1.1_p1 0.2.1: Tools to handle merging of nested data structures in python
 dev-python/defcon 0.6.0-r1 0.7.2 0.8.0 0.8.1: A set of UFO based objects for use in font editing applications
 dev-python/defusedxml 0.7.0_rc1 0.7.0 0.7.1: XML bomb protection for Python stdlib modules, an xml serialiser
-dev-python/denonavr 0.9.9 0.9.10 0.10.1: Automation Library for Denon AVR receivers
+dev-python/denonavr 0.9.9 0.9.10 0.10.1 0.10.3: Automation Library for Denon AVR receivers
 dev-python/deprecated 1.2.11 1.2.12: Python @deprecated decorator to deprecate old API
 dev-python/deprecation 2.1.0: A library to handle automated deprecations
 dev-python/dicttoxml 1.7.4-r1: Converts a Python dictionary or other data type to a valid XML string
@@ -8290,7 +8290,7 @@ dev-python/doublex 1.9.2: Python test doubles
 dev-python/doublex-expects 0.7.1: Expects matchers for Doublex test doubles assertions
 dev-python/drf-yasg 1.20.0: Automated generation of Swagger/OpenAPI 2.0 schemas from Django Rest framework
 dev-python/duecredit 0.7.0 0.8.0: Publications (and donations) tracer
-dev-python/dulwich 0.20.6 0.20.15 0.20.18 0.20.19 0.20.20: Pure-Python implementation of the Git file formats and protocols
+dev-python/dulwich 0.20.6 0.20.15 0.20.18 0.20.19 0.20.20 0.20.21: Pure-Python implementation of the Git file formats and protocols
 dev-python/easy-thumbnails 2.7 2.7.1: Easy thumbnails for Django
 dev-python/easyprocess 0.3: Easy to use Python subprocess interface
 dev-python/ebuildtester 0.1.16 0.1.16-r1 0.1.27: A dockerized approach to test a Gentoo package within a clean stage3 container
@@ -8561,7 +8561,7 @@ dev-python/lit 10.0.1 11.0.0 11.0.1 11.1.0 12.0.0_rc2 12.0.0_rc3 12.0.0.9999 13.
 dev-python/livereload 2.6.3: Python LiveReload is an awesome tool for web developers
 dev-python/llfuse 1.3.6 1.4.0 1.4.1: Python bindings for the low-level FUSE API
 dev-python/llvmlite 0.34.0 0.35.0 0.36.0: Python wrapper around the llvm C++ library
-dev-python/lmdb 1.1.0 1.1.1-r1: Python bindings for the Lightning Database
+dev-python/lmdb 1.1.1-r1: Python bindings for the Lightning Database
 dev-python/lmfit 1.0.1 1.0.2: Non-Linear Least-Squares Minimization and Curve-Fitting for Python
 dev-python/locket 0.2.1: File-based locks for Python
 dev-python/lockfile 0.12.2-r2: Platform-independent file locking module
@@ -8951,7 +8951,7 @@ dev-python/pypy3-exe 7.3.3_p37_p1 7.3.3_p37_p2: PyPy3 executable (build from sou
 dev-python/pypy3-exe-bin 7.3.3_p37_p1 7.3.3_p37_p2: PyPy3 executable (pre-built version)
 dev-python/pyqrcode 1.2.1-r1: A pure Python QR code generator with SVG, EPS, PNG and terminal output
 dev-python/pyqt-distutils 0.7.3: distutils extension to work with PyQt applications and UI files
-dev-python/pyqtgraph 0.11.0_rc0: A pure-python graphics and GUI library built on PyQt and numpy
+dev-python/pyqtgraph 0.11.0_rc0 0.12.0: A pure-python graphics and GUI library built on PyQt and numpy
 dev-python/pyquery 1.4.3: A jQuery-like library for python
 dev-python/pyre2 1.0.7: Python bindings for dev-libs/re2
 dev-python/pyrfc3339 1.1: Generates and parses RFC 3339 timestamps
@@ -9013,6 +9013,7 @@ dev-python/pytest-salt-factories 0.121.1: The new generation of the pytest-salt 
 dev-python/pytest-services 2.2.1: Collection of fixtures and utility functions to run service processes for pytest
 dev-python/pytest-shutil 1.7.0-r1: A goodie-bag of unix shell and environment tools for py.test
 dev-python/pytest-subtesthack 0.1.1 0.1.2: A hack for test fixtures, needed for hypothesis inside py.test
+dev-python/pytest-subtests 0.4.0: unittest subTest() support and subtests fixture
 dev-python/pytest-tempdir 2019.10.12: Pytest plugin to support for a predictable and repeatable temporary directory
 dev-python/pytest-testmon 1.0.3: Take TDD to a new level with py.test and testmon
 dev-python/pytest-timeout 1.4.2-r1: py.test plugin to abort hanging tests
@@ -9156,7 +9157,7 @@ dev-python/reno 3.2.0-r1 3.3.0: Release notes manager, storing release notes in 
 dev-python/reportlab 3.5.60 3.5.63 3.5.64 3.5.65 3.5.66: Tools for generating printable PDF documents from any data source
 dev-python/repoze-lru 0.7-r1: A tiny LRU cache implementation and decorator
 dev-python/repoze-sphinx-autointerface 0.8: Sphinx extension: auto-generates API docs from Zope interfaces
-dev-python/requests 2.24.0-r1 2.25.0 2.25.1-r1: HTTP library for human beings
+dev-python/requests 2.25.1-r1: HTTP library for human beings
 dev-python/requests-cache 0.5.2: Persistent cache for requests library
 dev-python/requests-credssp 1.1.1 1.2.0: HTTPS CredSSP authentication with the requests library
 dev-python/requests-file 1.4.3: File transport adapter for Requests
@@ -9299,7 +9300,7 @@ dev-python/spyder-notebook 0.3.2: Jupyter notebook integration with Spyder
 dev-python/spyder-terminal 0.5.0: Run system terminals inside Spyder
 dev-python/spyder-unittest 0.4.1: Plugin for Spyder to run tests and view the results
 dev-python/spyder-vim 0_pre20201026: Plugin for Spyder to enable Vim keybindings
-dev-python/sqlalchemy 1.3.17 1.3.20 1.3.21 1.3.22 1.3.23 1.4.0 1.4.1 1.4.2: Python SQL toolkit and Object Relational Mapper
+dev-python/sqlalchemy 1.3.17 1.3.20 1.3.21 1.3.22 1.3.23 1.4.0 1.4.1 1.4.2 1.4.3: Python SQL toolkit and Object Relational Mapper
 dev-python/sqlalchemy-migrate 0.13.0: SQLAlchemy Schema Migration Tools
 dev-python/sqlalchemy-rqlite 1.1: A SQLAlchemy dialect for rqlite
 dev-python/sqlparse 0.3.1 0.4.1: A non-validating SQL parser module for Python
@@ -9394,7 +9395,7 @@ dev-python/uranium 4.8.0: A Python framework for building 3D printing related ap
 dev-python/urdf_parser_py 0.4.3: URDF parser for Python
 dev-python/uritemplate 3.0.1-r1: Python implementation of RFC6570, URI Template
 dev-python/urlgrabber 4.0.0-r1 4.1.0: Python module for downloading files
-dev-python/urllib3 1.25.11 1.26.3-r1 1.26.4: HTTP library with thread-safe connection pooling, file post, and more
+dev-python/urllib3 1.26.4: HTTP library with thread-safe connection pooling, file post, and more
 dev-python/urwid 2.1.1: Curses-based user interface library for Python
 dev-python/urwidtrees 1.0.3: Tree widgets for urwid
 dev-python/utidylib 0.6-r1: TidyLib Python wrapper
@@ -14143,7 +14144,7 @@ media-sound/ttaenc 3.4.1-r1: True Audio Compressor Software
 media-sound/tudor-volumed 0_pre20110427: Lightweight, desktop environment agnostic volume management daemon
 media-sound/twolame 0.3.13-r2 0.4.0: An optimised MPEG Audio Layer 2 (MP2) encoder
 media-sound/umix 1.0.2-r1: Program for adjusting soundcard volumes
-media-sound/umurmur 0.2.17-r4 0.2.18 0.2.19 9999: Minimalistic Murmur (Mumble server)
+media-sound/umurmur 0.2.17-r4 0.2.19 0.2.20 9999: Minimalistic Murmur (Mumble server)
 media-sound/upmpdcli 1.5.7: UPnP Media Renderer front-end for MPD, the Music Player Daemon
 media-sound/vb2rip 1.4: Konami VB2 sound format ripping utility
 media-sound/vbrfixc 0.24: Vbrfix fixes MP3s and re-constructs VBR headers
