@@ -1,0 +1,16 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=configure prepare setup
+DEPEND=x11-libs/agg[truetype] sys-libs/zlib expat? ( dev-libs/expat ) jpeg? ( virtual/jpeg ) lua? ( lua_single_target_luajit? ( dev-lang/luajit:= ) lua_single_target_lua5-1? ( dev-lang/lua:5.1 ) lua_single_target_lua5-2? ( dev-lang/lua:5.2 ) lua_single_target_lua5-3? ( dev-lang/lua:5.3 ) lua_single_target_lua5-4? ( dev-lang/lua:5.4 ) ) openexr? ( media-libs/openexr ) php? ( dev-lang/php:* ) perl? ( dev-lang/perl ) png? ( >=media-libs/libpng-1.2.43 ) ruby? ( dev-lang/ruby:* ) tiff? ( media-libs/tiff ) truetype? ( >=media-libs/freetype-2 ) X? ( x11-libs/libXext x11-libs/libXt x11-libs/libICE x11-libs/libSM ) swig? ( dev-lang/swig )
+DESCRIPTION=A fast, modern and generic image processing library
+EAPI=7
+HOMEPAGE=http://www.exactcode.de/site/open_source/exactimage/
+INHERIT=eutils lua-single multilib toolchain-funcs
+IUSE=expat jpeg lua openexr php perl png ruby swig tiff truetype X lua_single_target_luajit lua_single_target_lua5-1 lua_single_target_lua5-2 lua_single_target_lua5-3 lua_single_target_lua5-4
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/agg[truetype] sys-libs/zlib expat? ( dev-libs/expat ) jpeg? ( virtual/jpeg ) lua? ( lua_single_target_luajit? ( dev-lang/luajit:= ) lua_single_target_lua5-1? ( dev-lang/lua:5.1 ) lua_single_target_lua5-2? ( dev-lang/lua:5.2 ) lua_single_target_lua5-3? ( dev-lang/lua:5.3 ) lua_single_target_lua5-4? ( dev-lang/lua:5.4 ) ) openexr? ( media-libs/openexr ) php? ( dev-lang/php:* ) perl? ( dev-lang/perl ) png? ( >=media-libs/libpng-1.2.43 ) ruby? ( dev-lang/ruby:* ) tiff? ( media-libs/tiff ) truetype? ( >=media-libs/freetype-2 ) X? ( x11-libs/libXext x11-libs/libXt x11-libs/libICE x11-libs/libSM )
+REQUIRED_USE=lua? ( swig )
+SLOT=0
+SRC_URI=http://dl.exactcode.de/oss/exact-image/exact-image-1.0.2.tar.bz2
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	lua-utils	736947973cfbc9de01fdb8548f942f82	lua-single	f91b5656f00869c220a6e35ae0521c54
+_md5_=69443bf02cd1b7e8eff1438aa6001420

@@ -12933,7 +12933,7 @@ media-gfx/eom 1.24.0-r2 1.24.1: The MATE image viewer
 media-gfx/ephoto 1.5: Enlightenment image viewer written with EFL
 media-gfx/esci-interpreter-gt-s80 0.2.1.1: Epson GT-S50 and GT-S80 scanner plugins for SANE 'epkowa' backend
 media-gfx/evoluspencil 3.1.0-r1: A simple GUI prototyping tool to create mockups
-media-gfx/exact-image 0.8.1-r3 1.0.2: A fast, modern and generic image processing library
+media-gfx/exact-image 1.0.2-r1: A fast, modern and generic image processing library
 media-gfx/exif 0.6.22: Small CLI util to show EXIF infos hidden in JPEG files
 media-gfx/exiv2 0.27.3: EXIF, IPTC and XMP metadata C++ library and command line utility
 media-gfx/farbfeld 4 9999: farbfeld simple image format tools
