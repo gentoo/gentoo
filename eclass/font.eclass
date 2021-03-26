@@ -61,14 +61,14 @@ font_xfont_config() {
 	local dir_name
 	if in_iuse X && use X ; then
 		dir_name="${1:-${FONT_PN}}"
-		rm -f "${ED}/${FONTDIR}/${1//${S}/}"/{fonts.{dir,scale},encodings.dir} \
+		rm -f "${ED}${FONTDIR}/${1//${S}/}"/{fonts.{dir,scale},encodings.dir} \
 			|| die "failed to prepare ${FONTDIR}/${1//${S}/}"
 		einfo "Creating fonts.scale & fonts.dir in ${dir_name##*/}"
-		mkfontscale "${ED}/${FONTDIR}/${1//${S}/}" || eerror "failed to create fonts.scale"
+		mkfontscale "${ED}${FONTDIR}/${1//${S}/}" || eerror "failed to create fonts.scale"
 		mkfontdir \
 			-e "${EPREFIX}"/usr/share/fonts/encodings \
 			-e "${EPREFIX}"/usr/share/fonts/encodings/large \
-			"${ED}/${FONTDIR}/${1//${S}/}" || eerror "failed to create fonts.dir"
+			"${ED}${FONTDIR}/${1//${S}/}" || eerror "failed to create fonts.dir"
 		[[ -e fonts.alias ]] && doins fonts.alias
 	fi
 }
@@ -139,8 +139,8 @@ font_cleanup_dirs() {
 font_pkg_setup() {
 	# make sure we get no collisions
 	# setup is not the nicest place, but preinst doesn't cut it
-	if [[ -e "${EROOT}/${FONTDIR}/fonts.cache-1" ]] ; then
-		rm "${EROOT}/${FONTDIR}/fonts.cache-1" || die "failed to remove fonts.cache-1"
+	if [[ -e "${EROOT}${FONTDIR}/fonts.cache-1" ]] ; then
+		rm "${EROOT}${FONTDIR}/fonts.cache-1" || die "failed to remove fonts.cache-1"
 	fi
 }
 
