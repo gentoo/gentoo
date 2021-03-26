@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-06-18)
@@ -18,7 +18,7 @@ sys-firmware/seabios -binary
 # Force the host target to avoid dependency hell
 dev-lang/rust llvm_targets_X86
 
-# NP-Hardass <NP-Hardass@gentoo.org> (2017-05-23)
+# Adam Feldman <NP-Hardass@gentoo.org> (2017-05-23)
 # Packages with optional 64-bit variant
 app-emulation/wine-vanilla -abi_x86_64
 app-emulation/wine-staging -abi_x86_64
