@@ -8009,7 +8009,6 @@ sys-cluster/cluster-glue:ipmilan - Install the ipmilan plugin (requires sys-libs
 sys-cluster/cluster-glue:libnet - Force use of net-libs/libnet
 sys-cluster/corosync:augeas - Enable augeas support
 sys-cluster/corosync:watchdog - Enable watchdog support
-sys-cluster/drbd-utils:heartbeat - Enable Heartbeat integration
 sys-cluster/drbd-utils:pacemaker - Enable Pacemaker integration
 sys-cluster/drbd-utils:xen - Enable Xen integration
 sys-cluster/galera:garbd - Install Galera Arbitrator - a stateless daemon which acts as a lightweight group member
