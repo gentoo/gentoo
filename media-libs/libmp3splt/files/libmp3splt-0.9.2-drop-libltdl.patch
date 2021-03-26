@@ -1,0 +1,205 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -42,7 +42,7 @@
+ 
+ AC_PREREQ([2.62])
+ AC_INIT([libmp3splt],[libmp3splt_version],[m@ioalex.net])
+-AC_CONFIG_AUX_DIR([libltdl/config])
++LT_INIT
+ AM_INIT_AUTOMAKE
+ AC_CONFIG_HEADERS([config.h])
+ AM_MAINTAINER_MODE([enable])
+@@ -78,20 +78,6 @@
+ AC_DEFINE_UNQUOTED([SPLT_SONAME], "$SONAME", [library SONAME])
+ 
+ #################################################################
+-# Enable libtool, check for libltdl and define @LIBLTDL@ and @INCLTDL@
+-#################################################################
+-
+-ifdef([LT_CONFIG_LTDL_DIR],
+-      [ LT_CONFIG_LTDL_DIR([libltdl]) ],
+-      [])
+-
+-ifdef([LT_INIT],
+-      [ LT_INIT([win32-dll]) ],
+-      [ AC_PROG_LIBTOOL ])
+-
+-AC_WITH_LTDL
+-
+-#################################################################
+ # Check for the type of the host
+ #################################################################
+ 
+@@ -161,9 +147,6 @@
+ #check for -lm
+ AC_CHECK_LIB(m, pow, [ haslm="yes" ] , [ AC_MSG_ERROR([libm not found !]) ] )
+ 
+-#check for -ltld
+-AC_CHECK_LIB(ltdl, lt_dlopen, [ hasltdl="yes" ], [ AC_MSG_ERROR([libltdl not found - check libtool installation !]) ] ) 
+-
+ #################################################################
+ # helper for windows compilation
+ #################################################################
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -3,7 +3,7 @@
+ include_HEADERS = $(top_srcdir)/include/libmp3splt/mp3splt.h \
+ $(top_srcdir)/include/libmp3splt/version.h
+ 
+-INCLUDES=-DSPLT_PLUGINS_DIR=\"$(libdir)/libmp3splt$(SONAME)\" -DLIBMP3SPLT_VERSION=\"$(VERSION)\" @INCLTDL@
++INCLUDES=-DSPLT_PLUGINS_DIR=\"$(libdir)/libmp3splt$(SONAME)\" -DLIBMP3SPLT_VERSION=\"$(VERSION)\"
+ 
+ lib_LTLIBRARIES = libmp3splt.la
+ 
+@@ -30,8 +30,6 @@
+ 
+ libmp3splt_la_LIBADD += -lws2_32 -lintl -lshlwapi
+ 
+-else
+-libmp3splt_la_LIBADD += @LIBLTDL@ 
+ endif
+ 
+ libmp3splt_la_SOURCES = \
+--- a/src/mp3splt.c
++++ b/src/mp3splt.c
+@@ -45,7 +45,7 @@
+ #include <sys/stat.h>
+ #include <string.h>
+ 
+-#include <ltdl.h>
++#include <dlfcn.h>
+ 
+ #include "splt.h"
+ 
+@@ -119,13 +119,6 @@
+   int *err = &erro;
+   if (error != NULL) { err = error; }
+ 
+-  if (lt_dlinit() != 0)
+-  {
+-    *err = SPLT_ERROR_CANNOT_INIT_LIBLTDL;
+-  }
+-  else
+-  {
+-
+ #ifdef ENABLE_NLS
+  #ifndef __WIN32__
+     bindtextdomain(MP3SPLT_LIB_GETTEXT_DOMAIN, LOCALEDIR);
+@@ -135,8 +128,7 @@
+  #endif
+ #endif
+ 
+-    state = splt_t_new_state(state, err);
+-  }
++  state = splt_t_new_state(state, err);
+ 
+   return state;
+ }
+--- a/src/plugins.c
++++ b/src/plugins.c
+@@ -37,7 +37,7 @@
+ #include <dirent.h>
+ #include <errno.h>
+ 
+-#include <ltdl.h>
++#include <dlfcn.h>
+ #include <stdlib.h>
+ 
+ #ifdef __WIN32__
+@@ -400,7 +400,7 @@
+   }
+   if (pl_data->plugin_handle)
+   {
+-    lt_dlclose(pl_data->plugin_handle);
++    dlclose(pl_data->plugin_handle);
+     pl_data->plugin_handle = NULL;
+   }
+   if (pl_data->func)
+@@ -477,13 +477,12 @@
+     splt_d_print_debug(state,"\nTrying to open the plugin _%s_ ...\n",
+         pl->data[i].plugin_filename);
+ 
+-    //ltdl currently does not supports windows unicode path/filename
+-    pl->data[i].plugin_handle = lt_dlopen(pl->data[i].plugin_filename);
++    pl->data[i].plugin_handle = dlopen(pl->data[i].plugin_filename, RTLD_NOW);
+     //error
+     if (! pl->data[i].plugin_handle)
+     {
+       splt_d_print_debug(state,"Error loading the plugin _%s_\n", pl->data[i].plugin_filename);
+-      splt_d_print_debug(state," - error message from libltdl: _%s_\n", lt_dlerror());
++      splt_d_print_debug(state," - error message from dlopen: _%s_\n", dlerror());
+ 
+       //keep the index of this failed plugin in order to remove it
+       //afterwards
+@@ -503,7 +502,7 @@
+       splt_d_print_debug(state," - success !\n");
+ 
+       pl->data[i].func->splt_pl_set_plugin_info =
+-        lt_dlsym(pl->data[i].plugin_handle, "splt_pl_set_plugin_info");
++        dlsym(pl->data[i].plugin_handle, "splt_pl_set_plugin_info");
+       if (pl->data[i].func->splt_pl_set_plugin_info != NULL)
+       {
+         pl->data[i].func->splt_pl_set_plugin_info(&pl->data[i].info,&error);
+@@ -613,34 +612,34 @@
+     int err = 0;
+     for (i = 0;i < pl->number_of_plugins_found;i++)
+     {
+-      pl->data[i].plugin_handle = lt_dlopen(pl->data[i].plugin_filename);
++      pl->data[i].plugin_handle = dlopen(pl->data[i].plugin_filename, RTLD_NOW);
+ 
+       pl->data[i].func->splt_pl_check_plugin_is_for_file =
+-        lt_dlsym(pl->data[i].plugin_handle, "splt_pl_check_plugin_is_for_file");
++        dlsym(pl->data[i].plugin_handle, "splt_pl_check_plugin_is_for_file");
+       pl->data[i].func->splt_pl_search_syncerrors =
+-        lt_dlsym(pl->data[i].plugin_handle, "splt_pl_search_syncerrors");
++        dlsym(pl->data[i].plugin_handle, "splt_pl_search_syncerrors");
+       pl->data[i].func->splt_pl_import_internal_sheets =
+-        lt_dlsym(pl->data[i].plugin_handle, "splt_pl_import_internal_sheets");
++        dlsym(pl->data[i].plugin_handle, "splt_pl_import_internal_sheets");
+       pl->data[i].func->splt_pl_dewrap =
+-        lt_dlsym(pl->data[i].plugin_handle, "splt_pl_dewrap");
++        dlsym(pl->data[i].plugin_handle, "splt_pl_dewrap");
+       pl->data[i].func->splt_pl_offset_split =
+-        lt_dlsym(pl->data[i].plugin_handle, "splt_pl_offset_split");
++        dlsym(pl->data[i].plugin_handle, "splt_pl_offset_split");
+       pl->data[i].func->splt_pl_split =
+-        lt_dlsym(pl->data[i].plugin_handle, "splt_pl_split");
++        dlsym(pl->data[i].plugin_handle, "splt_pl_split");
+       pl->data[i].func->splt_pl_init =
+-        lt_dlsym(pl->data[i].plugin_handle, "splt_pl_init");
++        dlsym(pl->data[i].plugin_handle, "splt_pl_init");
+       pl->data[i].func->splt_pl_end =
+-        lt_dlsym(pl->data[i].plugin_handle, "splt_pl_end");
++        dlsym(pl->data[i].plugin_handle, "splt_pl_end");
+       pl->data[i].func->splt_pl_scan_silence =
+-        lt_dlsym(pl->data[i].plugin_handle, "splt_pl_scan_silence");
++        dlsym(pl->data[i].plugin_handle, "splt_pl_scan_silence");
+       pl->data[i].func->splt_pl_scan_trim_silence =
+-        lt_dlsym(pl->data[i].plugin_handle, "splt_pl_scan_trim_silence");
++        dlsym(pl->data[i].plugin_handle, "splt_pl_scan_trim_silence");
+       pl->data[i].func->splt_pl_set_original_tags =
+-        lt_dlsym(pl->data[i].plugin_handle, "splt_pl_set_original_tags");
++        dlsym(pl->data[i].plugin_handle, "splt_pl_set_original_tags");
+       pl->data[i].func->splt_pl_clear_original_tags =
+-        lt_dlsym(pl->data[i].plugin_handle, "splt_pl_clear_original_tags");
++        dlsym(pl->data[i].plugin_handle, "splt_pl_clear_original_tags");
+       pl->data[i].func->splt_pl_set_plugin_info =
+-        lt_dlsym(pl->data[i].plugin_handle, "splt_pl_set_plugin_info");
++        dlsym(pl->data[i].plugin_handle, "splt_pl_set_plugin_info");
+       if (pl->data[i].func->splt_pl_set_plugin_info != NULL)
+       {
+         splt_p_free_plugin_data_info(&pl->data[i]);
+--- a/src/splt.h
++++ b/src/splt.h
+@@ -34,11 +34,6 @@
+ #include <stdio.h>
+ #include <sys/types.h>
+ 
+-//libtool 1.4e is buggy on mingw if we include ltdl.h
+-#ifndef __WIN32__
+-#include <ltdl.h>
+-#endif
+-
+ #include "mp3splt.h"
+ 
+ struct _splt_freedb_one_result {
