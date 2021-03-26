@@ -16195,7 +16195,7 @@ sci-electronics/puff 20100127-r1: microwave CAD software
 sci-electronics/pulseview 0.4.2 9999: Qt based logic analyzer GUI for sigrok
 sci-electronics/qelectrotech 0.70 0.80 9999: Qt5 application to design electric diagrams
 sci-electronics/quartus-prime-lite 15.1.0.185-r2 15.1.0.185-r3: Full-featured EDA product for altera devices
-sci-electronics/sigrok-cli 0.7.1-r1 9999: Command-line client for the sigrok logic analyzer software
+sci-electronics/sigrok-cli 0.7.1-r1 0.7.2 9999: Command-line client for the sigrok logic analyzer software
 sci-electronics/spice 3.5.5-r2: general-purpose circuit simulation program
 sci-electronics/splat 1.4.2: RF Signal Propagation, Loss, And Terrain analysis tool
 sci-electronics/systemc 2.3.4-r1: A C++ based modeling platform for VLSI and system-level co-design
