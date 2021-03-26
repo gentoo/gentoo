@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-any-r1.eclass
@@ -116,8 +116,7 @@ EXPORT_FUNCTIONS pkg_setup
 #
 # Example use:
 # @CODE
-# DEPEND="${RDEPEND}
-#	${PYTHON_DEPS}"
+# BDEPEND="${PYTHON_DEPS}"
 # @CODE
 #
 # Example value:
@@ -222,7 +221,7 @@ if [[ ! ${_PYTHON_ANY_R1} ]]; then
 #
 # Example use:
 # @CODE
-# DEPEND="$(python_gen_any_dep '
+# BDEPEND="$(python_gen_any_dep '
 #	dev-python/foo[${PYTHON_SINGLE_USEDEP}]
 #	|| ( dev-python/bar[${PYTHON_USEDEP}]
 #		dev-python/baz[${PYTHON_USEDEP}] )')"
