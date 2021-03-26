@@ -37,12 +37,12 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-ulogd )
 "
 BDEPEND="
-    doc? (
-        app-text/linuxdoc-tools
-        app-text/texlive-core
-        dev-texlive/texlive-fontsrecommended
-        virtual/latex-base
-    )
+	doc? (
+		app-text/linuxdoc-tools
+		app-text/texlive-core
+		dev-texlive/texlive-fontsrecommended
+		virtual/latex-base
+	)
 "
 
 DISABLE_AUTOFORMATTING=1
