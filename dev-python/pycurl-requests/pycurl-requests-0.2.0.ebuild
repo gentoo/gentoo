@@ -10,7 +10,7 @@ DESCRIPTION="Requests-compatible interface for PycURL"
 HOMEPAGE="https://github.com/dcoles/pycurl-requests"
 SRC_URI="https://github.com/dcoles/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="MIT"
+LICENSE="MIT Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
