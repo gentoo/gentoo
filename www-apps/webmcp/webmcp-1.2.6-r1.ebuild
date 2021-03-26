@@ -1,9 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit toolchain-funcs
+LUA_COMPAT=( lua5-{1..4} luajit )
+
+inherit lua-single toolchain-funcs
 
 MY_P=${PN}-v${PV}
 DESCRIPTION="Web application framework written in Lua and C"
@@ -13,18 +15,26 @@ SRC_URI="https://www.public-software-group.org/pub/projects/${PN}/v${PV}/${MY_P}
 LICENSE="HPND"
 KEYWORDS="~amd64"
 SLOT=0
-IUSE=""
 
-RDEPEND="dev-lang/lua:0=
-	dev-db/postgresql:="
+RDEPEND="
+	${LUA_DEPS}
+	dev-db/postgresql:=
+"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}"/${MY_P}
 
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
+src_prepare() {
+	default
+
+	# Use correct LUA version
+	sed -e "s/-llua/$(lua_get_LIBS)/g" -i libraries/multirand/Makefile -i libraries/mondelefant/Makefile -i libraries/extos/Makefile || die
+}
+
 src_compile() {
-	emake CC=$(tc-getCC) LD=$(tc-getCC) MYLDFLAGS="${LDFLAGS}"
+	emake CC="$(tc-getCC) $(lua_get_CFLAGS)" LD="$(tc-getCC)" MYLDFLAGS="${LDFLAGS}"
 	# Dereference symlinks
 	cd framework
 	mkdir lib.link
