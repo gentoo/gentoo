@@ -14748,7 +14748,7 @@ net-fs/libnfs 4.0.0 9999: Client library for accessing NFS shares over a network
 net-fs/mc 2021.03.06.22.16.44 2021.03.12.03.36.59: Minio client provides alternatives for ls, cat on cloud storage and filesystems
 net-fs/minio 2021.03.04.00.53.13 2021.03.12.00.00.47 2021.03.17.02.33.02: An Amazon S3 compatible object storage server
 net-fs/netatalk 3.1.12-r1: Open Source AFP server
-net-fs/nfs-utils 2.5.1 2.5.2 2.5.3: NFS client and server daemons
+net-fs/nfs-utils 2.5.1 2.5.2 2.5.3-r1: NFS client and server daemons
 net-fs/nfs4-acl-tools 0.3.5 0.3.7: Commandline and GUI tools that deal directly with NFSv4 ACLs
 net-fs/openafs 1.8.7: The OpenAFS distributed file system
 net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS installation
