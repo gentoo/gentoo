@@ -17363,7 +17363,7 @@ sys-boot/milo 2.4.18: The Alpha MIniLOader, for Alpha Machines without SRM
 sys-boot/mokutil 0.4.0: The utility to manipulate machines owner keys which managed in shim
 sys-boot/netboot 0.10.2-r2: Allows to remote boot a computer over an IP network
 sys-boot/nettrom 2.3.3: NetWinder ARM bootloader and utilities
-sys-boot/os-prober 1.77: Utility to detect other OSs on a set of drives
+sys-boot/os-prober 1.77 1.78: Utility to detect other OSs on a set of drives
 sys-boot/palo 2.14 9999: PALO : PArisc Linux Loader
 sys-boot/plymouth 0.9.3-r1 0.9.5-r1 9999: Graphical boot animation (splash) and logger
 sys-boot/plymouth-openrc-plugin 0.1.3: Plymouth plugin for OpenRC
