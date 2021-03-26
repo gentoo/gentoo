@@ -12706,7 +12706,7 @@ media-fonts/cronyx-fonts 2.3.8: Cronyx Cyrillic bitmap fonts for X
 media-fonts/croscorefonts 1.31.0: Open licensed fonts metrically compatible with MS corefonts
 media-fonts/crosextrafonts-caladea 20130214: Open licensed serif font metrically compatible with Cambria
 media-fonts/crosextrafonts-carlito 20130920: Open licensed sans-serif font metrically compatible with Calibri
-media-fonts/culmus 0.120-r5 0.133-r1: Hebrew Type1 fonts
+media-fonts/culmus 0.133-r1: Hebrew Type1 fonts
 media-fonts/dejavu 2.37: DejaVu fonts, bitstream vera with ISO-8859-2 characters
 media-fonts/dina 2.93: Monospace bitmap font, primarily aimed at programmers
 media-fonts/droid 113-r5: Font family from Google's Android project
@@ -14364,7 +14364,7 @@ net-analyzer/arping 2.17 2.20 2.21 9999: A utility to see if a specific IP is ta
 net-analyzer/arpoison 0.7: A utility to poison ARP caches
 net-analyzer/arpon 3.0: ArpON (Arp handler inspectiON) is a portable Arp handler
 net-analyzer/arptools 1.0.2: a collection of libnet and libpcap based ARP utilities
-net-analyzer/arpwatch 2.1.15-r11 3.1-r2: An ethernet monitor program that keeps track of ethernet/IP address pairings
+net-analyzer/arpwatch 3.1-r2: An ethernet monitor program that keeps track of ethernet/IP address pairings
 net-analyzer/authforce 0.9.9-r2 0.9.9-r3: An HTTP authentication brute forcer
 net-analyzer/barnyard 0.2.0-r6: Fast output system for Snort
 net-analyzer/barnyard2 1.13: Parser for Snort unified/unified2 files
@@ -14425,7 +14425,7 @@ net-analyzer/hexinject 1.6-r1: Network packet sniffer and injector
 net-analyzer/hping 3_pre20141226: A ping-like TCP/IP packet assembler/analyzer
 net-analyzer/httping 2.5 9999999: like ping but for HTTP requests
 net-analyzer/hunt 1.5_p6_p1: tool for checking well known weaknesses in the TCP/IP protocol
-net-analyzer/hydra 9.0 9.0-r1 9.1 9.2 9999999: Parallelized network login hacker
+net-analyzer/hydra 9.1 9.2 9999999: Parallelized network login hacker
 net-analyzer/ibmonitor 1.4-r1: Interactive bandwidth monitor
 net-analyzer/icinga2 2.12.3 9999: Distributed, general purpose, network monitoring engine
 net-analyzer/ifmetric 0.3-r2: Set metrics of all IPv4 routes attached to a given network interface at once
@@ -15262,7 +15262,7 @@ net-misc/fakeidentd 2.6-r1: A static, secure identd. One source file only!
 net-misc/fatrat 1.2.0_beta2_p20161204: Qt5-based download/upload manager
 net-misc/felix 3.1.3: Calico's per-host agent, responsible for programming routes and security policy
 net-misc/freerdp 2.2.0 2.9999 9999: Free implementation of the Remote Desktop Protocol
-net-misc/frr 7.5 7.5.1: The FRRouting Protocol Suite
+net-misc/frr 7.5 7.5.1-r1: The FRRouting Protocol Suite
 net-misc/gallery-dl 1.16.5 1.17.1 9999: Download image galleries and collections from several image hosting sites
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
 net-misc/geoipupdate 2.3.1 3.1.1 4.3.0: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
