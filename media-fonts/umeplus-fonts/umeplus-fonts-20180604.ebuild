@@ -11,7 +11,7 @@ SRC_URI="https://free.nchc.org.tw/osdn//users/21/21734/${P}.tar.xz"
 
 LICENSE="mplus-fonts public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~ppc-macos"
+KEYWORDS="amd64 x86 ~ppc-macos"
 IUSE=""
 RESTRICT="binchecks strip"
 
