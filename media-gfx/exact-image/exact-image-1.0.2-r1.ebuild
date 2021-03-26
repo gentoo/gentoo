@@ -1,9 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils multilib toolchain-funcs
+LUA_COMPAT=( lua5-{1..4} luajit )
+
+inherit eutils lua-single multilib toolchain-funcs
 
 DESCRIPTION="A fast, modern and generic image processing library"
 HOMEPAGE="http://www.exactcode.de/site/open_source/exactimage/"
@@ -13,12 +15,14 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="expat jpeg lua openexr php perl png ruby swig tiff truetype X"
+REQUIRED_USE="lua? ( swig )"
 
-RDEPEND="x11-libs/agg[truetype]
+RDEPEND="
+	x11-libs/agg[truetype]
 	sys-libs/zlib
 	expat? ( dev-libs/expat )
 	jpeg? ( virtual/jpeg )
-	lua? ( dev-lang/lua:0= )
+	lua? ( ${LUA_DEPS} )
 	openexr? ( media-libs/openexr )
 	php? ( dev-lang/php:* )
 	perl? ( dev-lang/perl )
@@ -31,15 +35,20 @@ RDEPEND="x11-libs/agg[truetype]
 		x11-libs/libXt
 		x11-libs/libICE
 		x11-libs/libSM
-	)"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	swig? ( dev-lang/swig )"
+	)
+"
+DEPEND="
+	${RDEPEND}
+	swig? ( dev-lang/swig )
+"
+
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.7.5-libpng14.patch
-	"${FILESDIR}"/${P}-libpng15.patch
 	"${FILESDIR}"/${P}-gcc6.patch
+	"${FILESDIR}"/${P}-g++.patch
+	"${FILESDIR}"/${P}-dcraw.patch
+	"${FILESDIR}"/${P}-php.patch
 )
 
 src_prepare() {
@@ -80,7 +89,7 @@ src_configure() {
 		$(use_with jpeg libjpeg) \
 		$(use_with tiff libtiff) \
 		$(use_with png libpng) \
-		--without-libungif \
+		--without-libgif \
 		--without-jasper \
 		$(use_with openexr) \
 		$(use_with expat) \
@@ -88,6 +97,7 @@ src_configure() {
 		--without-bardecode \
 		$(use_with lua) \
 		$(use_with swig) \
+		--without-python \
 		$(use_with perl) \
 		--without-python \
 		$(use_with php) \
