@@ -1,6 +1,0 @@
-# Copyright 2018-2019 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
-
-# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2018-11-19)
-# iasl is not keyworded on many platforms yet
-sys-firmware/seabios binary
