@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
+	<maintainer type="person" proxied="yes">
+		<email>plevine457@gmail.com</email>
+		<name>Peter Levine</name>
+	</maintainer>
+	<maintainer type="person" proxied="proxy">
+		<email>bkohler@gentoo.org</email>
+		<name>Ben Kohler</name>
+	</maintainer>
 </pkgmetadata>
