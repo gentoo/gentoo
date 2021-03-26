@@ -18,15 +18,16 @@ RDEPEND="
 	>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 	dri? ( >=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}] )
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}
+	dri? ( x11-base/xorg-proto )
+"
+BDEPEND="
 	virtual/pkgconfig
 	doc? (
 		app-doc/doxygen
 		media-gfx/graphviz
 		virtual/latex-base
-		)
-	dri? ( x11-base/xorg-proto )
+	)
 "
 
 src_prepare() {

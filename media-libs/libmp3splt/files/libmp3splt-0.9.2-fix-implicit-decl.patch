@@ -1,0 +1,304 @@
+--- a/plugins/flac.c
++++ b/plugins/flac.c
+@@ -27,6 +27,7 @@
+  *
+  *********************************************************/
+ 
++#include <stdlib.h>
+ #include <string.h>
+ 
+ #include "splt.h"
+--- a/plugins/ogg.c
++++ b/plugins/ogg.c
+@@ -41,6 +41,7 @@
+ The Plug-in that handles ogg vorbis files
+ */
+ 
++#include <stdlib.h>
+ #include <time.h>
+ #include <string.h>
+ #include <locale.h>
+--- a/plugins/ogg_new_stream_handler.c
++++ b/plugins/ogg_new_stream_handler.c
+@@ -38,6 +38,7 @@
+ 
+ #include "ogg_new_stream_handler.h"
+ 
++#include <stdlib.h>
+ #include <string.h>
+ 
+ splt_ogg_new_stream_handler *splt_ogg_nsh_new(splt_state *state, splt_ogg_state *oggstate, 
+--- a/plugins/ogg_silence.c
++++ b/plugins/ogg_silence.c
+@@ -36,6 +36,7 @@
+  *
+  *********************************************************/
+ 
++#include <stdlib.h>
+ #include <string.h>
+ #include <math.h>
+ 
+--- a/plugins/ogg_utils.c
++++ b/plugins/ogg_utils.c
+@@ -36,6 +36,7 @@
+  *
+  *********************************************************/
+ 
++#include <stdlib.h>
+ #include <string.h>
+ #include <math.h>
+ 
+--- a/plugins/silence_processors.c
++++ b/plugins/silence_processors.c
+@@ -26,6 +26,8 @@
+ 
+ #include "silence_processors.h"
+ 
++#include <stdlib.h>
++
+ static void write_to_full_log(splt_state *state, double time, float level, int shots, int found,
+     double begin_position, double end_position);
+ 
+--- a/src/cddb.c
++++ b/src/cddb.c
+@@ -28,6 +28,8 @@
+ 
+   The cddb search functionality
+  */
++
++#include <stdlib.h>
+ #include <string.h>
+ #include <ctype.h>
+ #include <math.h>
+--- a/src/client.c
++++ b/src/client.c
+@@ -29,6 +29,7 @@
+  *
+  *********************************************************/
+ 
++#include <stdlib.h>
+ #include <string.h>
+ 
+ #include "splt.h"
+--- a/src/cue.c
++++ b/src/cue.c
+@@ -28,6 +28,8 @@
+ 
+ All that is needed in order to be able to read and write cue files.
+  */
++
++#include <stdlib.h>
+ #include <string.h>
+ #include <ctype.h>
+ 
+--- a/src/debug.c
++++ b/src/debug.c
+@@ -29,6 +29,7 @@
+  *
+  *********************************************************/
+ 
++#include <stdlib.h>
+ #include <string.h>
+ #include <stdarg.h>
+ 
+--- a/src/errors.c
++++ b/src/errors.c
+@@ -35,6 +35,7 @@
+ that is meant to be used directly are all in mp3splt.c.
+ */
+ 
++#include <stdlib.h>
+ #include <string.h>
+ #include <errno.h>
+ 
+--- a/src/freedb.c
++++ b/src/freedb.c
+@@ -32,6 +32,7 @@
+ that is meant to be used directly are all in mp3splt.c.
+ */
+ 
++#include <stdlib.h>
+ #include <string.h>
+ #include <unistd.h>
+ 
+--- a/src/freedb_utils.c
++++ b/src/freedb_utils.c
+@@ -33,6 +33,8 @@
+ 
+ Utilities used by the functions in freedb.c
+  */
++
++#include <stdlib.h>
+ #include <string.h>
+ 
+ #include "splt.h"
+--- a/src/input_output.c
++++ b/src/input_output.c
+@@ -28,6 +28,8 @@
+ 
+ This file contains all I/O functions this library uses.
+ */
++
++#include <stdlib.h>
+ #include <string.h>
+ #include <sys/stat.h>
+ #include <unistd.h>
+--- a/src/mp3splt.c
++++ b/src/mp3splt.c
+@@ -42,6 +42,7 @@
+ should therefore not be too hard a task...
+  */
+ 
++#include <stdlib.h>
+ #include <sys/stat.h>
+ #include <string.h>
+ 
+--- a/src/oformat_parser.c
++++ b/src/oformat_parser.c
+@@ -33,6 +33,8 @@
+ 
+ Automatic generation of filenams for split files from tags.
+  */
++
++#include <stdlib.h>
+ #include <string.h>
+ #include <ctype.h>
+ #include <math.h>
+--- a/src/options.c
++++ b/src/options.c
+@@ -31,6 +31,8 @@
+ 
+ #include "splt.h"
+ 
++#include <stdlib.h>
++
+ extern int global_debug;
+ 
+ void splt_o_set_options_default_values(splt_state *state)
+--- a/src/output_format.c
++++ b/src/output_format.c
+@@ -33,6 +33,8 @@
+ 
+ The format of output file names
+ */
++
++#include <stdlib.h>
+ #include <string.h>
+ #include <math.h>
+ 
+--- a/src/pair.c
++++ b/src/pair.c
+@@ -35,6 +35,8 @@
+ */
+ #include "splt.h"
+ 
++#include <stdlib.h>
++
+ splt_int_pair *splt_int_pair_new(int first, int second)
+ {
+   splt_int_pair *pair = malloc(sizeof(splt_int_pair));
+--- a/src/proxy.c
++++ b/src/proxy.c
+@@ -31,6 +31,7 @@
+ 
+ #include "splt.h"
+ 
++#include <stdlib.h>
+ #include <string.h>
+ 
+ static void splt_pr_free_proxy_address(splt_state *state);
+--- a/src/silence_utils.c
++++ b/src/silence_utils.c
+@@ -35,6 +35,8 @@
+ */
+ #include "splt.h"
+ 
++#include <stdlib.h>
++
+ int splt_siu_ssplit_new(struct splt_ssplit **silence_list, 
+     float begin_position, float end_position, int len, int *error)
+ {
+--- a/src/socket_manager.c
++++ b/src/socket_manager.c
+@@ -33,6 +33,7 @@
+ Manages a socket connection
+ */
+ 
++#include <stdlib.h>
+ #include <unistd.h>
+ 
+ #ifdef __WIN32__
+--- a/src/split_points.c
++++ b/src/split_points.c
+@@ -34,6 +34,8 @@
+ All functions needed for handling split points (adding to the list,
+ checking, of this split point already exists,...)
+ */
++
++#include <stdlib.h>
+ #include <string.h>
+ #include <math.h>
+ 
+--- a/src/splt.c
++++ b/src/splt.c
+@@ -34,6 +34,7 @@
+ Actually split the input file
+ */
+ 
++#include <stdlib.h>
+ #include <sys/stat.h>
+ #include <string.h>
+ #include <math.h>
+--- a/src/sync_errors.c
++++ b/src/sync_errors.c
+@@ -46,6 +46,8 @@
+ 
+ #include "splt.h"
+ 
++#include <stdlib.h>
++
+ void splt_se_set_sync_errors_default_values(splt_state *state)
+ {
+   splt_syncerrors *serrors = state->serrors;
+--- a/src/tags_parser.c
++++ b/src/tags_parser.c
+@@ -33,6 +33,8 @@
+ 
+   Parse tags (Artist, Album, Year,...)
+  */
++
++#include <stdlib.h>
+ #include <string.h>
+ #include <ctype.h>
+ 
+--- a/src/tags_utils.c
++++ b/src/tags_utils.c
+@@ -25,6 +25,7 @@
+  * USA.
+  *********************************************************/
+ 
++#include <stdlib.h>
+ #include <string.h>
+ 
+ #include "splt.h"
+--- a/src/types_func.c
++++ b/src/types_func.c
+@@ -35,6 +35,7 @@
+ split.
+  */
+ 
++#include <stdlib.h>
+ #include <string.h>
+ 
+ #include "splt.h"
+--- a/src/wrap.c
++++ b/src/wrap.c
+@@ -34,6 +34,8 @@
+ Automatically split mp3 files created with mp3wrap into the original 
+ tracks
+ */
++
++#include <stdlib.h>
+ #include <string.h>
+ 
+ #include "splt.h"
