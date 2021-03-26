@@ -277,6 +277,7 @@ acct-group/ttrssd 0: Group for www-apps/tt-rss
 acct-group/tty 0-r1: System group: tty
 acct-group/turnserver 0-r1: A group for a turn server like coturn
 acct-group/ubridge 0-r1: Group for net-misc/ubridge
+acct-group/ulogd 0: Group for ulogd
 acct-group/ultimaker 0-r1: Group for ultimaker
 acct-group/unbound 0-r1: unbound program group
 acct-group/unbound-telemetry 0: System group: unbound-telemetry
@@ -568,6 +569,7 @@ acct-user/tss 0-r1: Trusted Software Stack for TPMs user
 acct-user/ttrssd 0: User for www-apps/tt-rss
 acct-user/turnserver 0-r1: A user for a turn server like coturn
 acct-user/tvheadend 0-r1: User for tvheadend
+acct-user/ulogd 0: User for ulogd
 acct-user/ultimaker 0-r1: User for ultimaker
 acct-user/unbound 0-r1: unbound program user
 acct-user/unbound-telemetry 0: user for unbound-telemetry
@@ -800,7 +802,7 @@ app-admin/testdisk 7.1: Checks and undeletes partitions + PhotoRec, signature ba
 app-admin/tmpreaper 1.6.14: A utility for removing files based on when they were last accessed
 app-admin/tmpwatch 2.11-r2: Files which haven't been accessed are removed from specified directories
 app-admin/tripwire 2.4.3.7: Open Source File Integrity Checker and IDS
-app-admin/ulogd 2.0.7-r1: A userspace logging daemon for netfilter/iptables related logging
+app-admin/ulogd 2.0.7-r1 2.0.7-r2: A userspace logging daemon for netfilter/iptables related logging
 app-admin/undertaker-scripts 1: Scripts to help retiring Gentoo developers
 app-admin/usbview 2.0: Display the topology of devices on the USB bus
 app-admin/vault 1.5.6 1.5.7 1.6.1 1.6.3: A tool for managing secrets
@@ -10822,7 +10824,7 @@ dev-util/cram 0.7 0.7-r1: Functional testing framework for command line applicat
 dev-util/crash 7.2.9 9999: Red Hat crash utility; used for analyzing kernel core dumps
 dev-util/cscope 15.8a-r1 15.8a-r2 15.9: Interactively examine a C program
 dev-util/csup 20060318-r1: A rewrite of CVSup
-dev-util/ctags 20190331 20210321.0: Exuberant Ctags creates tags files for code browsing in editors
+dev-util/ctags 20190331 20210321.0 99999999: Exuberant Ctags creates tags files for code browsing in editors
 dev-util/cucumber 3.1.2 3.2.0: Executable feature scenarios
 dev-util/cucumber-core 3.2.1: Executable feature scenarios
 dev-util/cucumber-cucumber-expressions 10.2.0 10.2.1 10.3.0: a simpler alternative to Regular Expressions
@@ -12990,7 +12992,7 @@ media-gfx/igal 2.0-r1: Static HTML image gallery generator
 media-gfx/imagemagick 6.9.12.3 6.9.12.4 7.0.11.3 7.0.11.4 9999: A collection of tools and libraries for many image formats
 media-gfx/imageworsener 1.3.3: Utility for image scaling and processing
 media-gfx/img2pdf 0.3.6 0.4.0: Losslessly convert raster images to PDF
-media-gfx/imv 4.1.0-r1 4.2.0 9999: Minimal image viewer designed for tiling window manager users
+media-gfx/imv 4.2.0 9999: Minimal image viewer designed for tiling window manager users
 media-gfx/inkscape 1.0.1-r1 1.0.2-r1 9999: SVG based generic vector-drawing program
 media-gfx/iscan 2.30.4.2-r1 3.63.0 3.65.0: EPSON Image Scan v3 for Linux
 media-gfx/iscan-data 1.39.0.1: Image Scan! for Linux data files
@@ -18443,7 +18445,7 @@ x11-libs/libtinynotify-systemwide 0.1 9999: A system-wide notifications module f
 x11-libs/libva 2.5.0-r1 2.6.1 2.7.1 2.8.0 2.9.0 2.9.1 2.10.0 9999: Video Acceleration (VA) API for Linux
 x11-libs/libva-compat 1.8.3: Video Acceleration (VA) API for Linux
 x11-libs/libva-intel-driver 2.4.1 9999: HW video decode support for Intel integrated graphics
-x11-libs/libva-intel-media-driver 20.1.1-r2 20.2.0-r2 20.4.5 9999: Intel Media Driver for VAAPI (iHD)
+x11-libs/libva-intel-media-driver 20.1.1-r2 20.2.0-r2 20.4.5 21.1.2_pre 9999: Intel Media Driver for VAAPI (iHD)
 x11-libs/libva-vdpau-driver 0.7.4-r5: VDPAU Backend for Video Acceleration (VA) API
 x11-libs/libvdpau 1.4 99999: VDPAU wrapper and trace libraries
 x11-libs/libwnck 2.31.0 2.31.0-r1 3.36.0: A window navigation construction kit

@@ -1,9 +1,10 @@
-BDEPEND=|| ( dev-lang/python:3.8 dev-lang/python:3.7 ) virtual/pkgconfig virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=|| ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 ) virtual/pkgconfig virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile configure install setup unpack
 DEPEND=acct-group/bitlbee acct-user/bitlbee dev-libs/glib:2 purple? ( net-im/pidgin ) libevent? ( dev-libs/libevent:= ) otr? ( >=net-libs/libotr-4 ) gnutls? ( net-libs/gnutls:= ) !gnutls? ( nss? ( dev-libs/nss ) !nss? ( libressl? ( dev-libs/libressl:= ) !libressl? ( dev-libs/openssl:0= ) ) ) selinux? ( sec-policy/selinux-bitlbee ) test? ( dev-libs/check )
 DESCRIPTION=irc to IM gateway that support multiple IM protocols
 EAPI=7
 HOMEPAGE=https://www.bitlbee.org/
+INHERIT=python-any-r1 systemd toolchain-funcs git-r3
 IUSE=debug +gnutls ipv6 libevent libressl nss otr +plugins selinux test xinetd msn oscar purple twitter +xmpp
 LICENSE=GPL-2
 PROPERTIES=live
@@ -11,5 +12,5 @@ RDEPEND=acct-group/bitlbee acct-user/bitlbee dev-libs/glib:2 purple? ( net-im/pi
 REQUIRED_USE=|| ( purple xmpp msn oscar ) xmpp? ( !nss ) test? ( plugins )
 RESTRICT=!test? ( test )
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=373e7131fcc48a2fb4c03504bb1f70b1
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	systemd	74b223e42834adf09a2d21fe5fe13741	git-r3	3e7ec3d6619213460c85e2aa48398441
+_md5_=bd2b69fa0c090ef1af1a21b161b1a477

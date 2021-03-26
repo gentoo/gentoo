@@ -4027,7 +4027,6 @@ media-gfx/imagemagick:q32 - Set quantum depth value to 32
 media-gfx/imagemagick:q8 - Set quantum depth value to 8
 media-gfx/imv:freeimage - Use media-libs/freeimage for additional image support
 media-gfx/imv:heif - Add HEIF/HEIC image support
-media-gfx/imv:libnsgif - Add animated GIF support
 media-gfx/inkscape:cdr - Enable support for CorelDRAW files via media-libs/libcdr
 media-gfx/inkscape:dia - Enable DIA flow chart import via app-office/dia
 media-gfx/inkscape:inkjar - Enable support for OpenOffice.org SVG jar files
