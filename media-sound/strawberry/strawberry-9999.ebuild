@@ -74,6 +74,7 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-cpp/gtest-1.8.0
 	dev-libs/boost
 	dev-qt/qtopengl:5
+	dev-qt/qttest:5
 	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
 "
