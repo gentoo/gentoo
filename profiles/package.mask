@@ -329,22 +329,6 @@ dev-ml/core_extended
 # bug #729098
 ~sci-libs/proj-8.0.0
 
-# Bernd Waibel <waebbl-gentoo@posteo.net> (2021-02-27)
-# Mask until removal of media-gfx/openexr_viewers.
-# Version has several vulnerabilities. See #717474
-=media-libs/ilmbase-2.3.0
-
-# Bernd Waibel <waebbl-gentoo@posteo.net> (2021-02-27)
-# Mask until removal of media-gfx/openexr_viewers.
-# Version has several vulnerabilities. See #717474
-=media-libs/openexr-2.3.0
-
-# Bernd Waibel <waebbl-gentoo@posteo.net> (2021-02-27)
-# No longer actively supported upstream.
-# Removal needed to clean-up {ilmbase,openexr}-2.3.0
-# Masked for removal in 30 days.
-media-gfx/openexr_viewers
-
 # Sam James <sam@gentoo.org> (2021-02-27)
 # Fails to build with GCC 10 (or otherwise!)
 # bug #708508, bug #728026, bug #542280
