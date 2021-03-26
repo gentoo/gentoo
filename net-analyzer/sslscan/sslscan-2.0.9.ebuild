@@ -5,7 +5,7 @@ EAPI=7
 
 # sslscan builds against a static openssl library to allow weak ciphers
 # to be enabled so that they can be tested.
-OPENSSL_RELEASE_TAG="OpenSSL_1_1_1i"
+OPENSSL_RELEASE_TAG="OpenSSL_1_1_1k"
 
 inherit toolchain-funcs
 
