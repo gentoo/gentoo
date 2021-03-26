@@ -31,6 +31,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/h5py[${PYTHON_USEDEP}]
+		dev-python/PyQt5[svg,testlib,${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		dev-vcs/git
 	)"
