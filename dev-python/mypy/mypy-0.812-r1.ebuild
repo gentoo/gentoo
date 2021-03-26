@@ -49,12 +49,13 @@ src_unpack() {
 	default
 	rmdir "${S}/mypy/typeshed" || die
 	mv "${WORKDIR}/typeshed-${TYPESHED_COMMIT}" "${S}/mypy/typeshed" || die
+
+	export MYPY_USE_MYPYC=0
 }
 
 python_test() {
 	# Some mypy/test/testcmdline.py::PythonCmdlineSuite tests
 	# fail with high COLUMNS values
 	local -x COLUMNS=80
-	pytest -vv -n "$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")" ||
-		die "Tests failed with ${EPYTHON}"
+	epytest -n "$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")"
 }
