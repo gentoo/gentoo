@@ -13233,7 +13233,7 @@ media-libs/kodi-platform 9999: Kodi platform support library
 media-libs/kquickimageeditor 0.1.3: QtQuick components providing basic image editing capabilities
 media-libs/kvazaar 1.2.0-r1 2.0.0 9999: Open-source HEVC encoder
 media-libs/ladspa-sdk 1.15-r1: The Linux Audio Developer's Simple Plugin API
-media-libs/lasi 1.1.2 1.1.3: C++ library for postscript stream output
+media-libs/lasi 1.1.3: C++ library for postscript stream output
 media-libs/lastfmlib 0.4.0-r1: C++ library to scrobble tracks on Last.fm
 media-libs/lcms 2.11 2.12: A lightweight, speed optimized color management engine
 media-libs/lensfun 0.3.2-r1: Library for rectifying and simulating photographic lens distortions
