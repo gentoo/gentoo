@@ -5878,7 +5878,7 @@ dev-lua/lualdap 1.2.5: A lua binding for the OpenLDAP client libraries
 dev-lua/luaossl 20200709-r100: Most comprehensive OpenSSL module in the Lua universe
 dev-lua/luaposix 35.0-r101: Bindings for POSIX APIs
 dev-lua/luarocks 3.5.0: A package manager for the Lua programming language
-dev-lua/luasec 0.9-r102: Lua binding for OpenSSL library to provide TLS/SSL communication
+dev-lua/luasec 0.9-r102 1.0: Lua binding for OpenSSL library to provide TLS/SSL communication
 dev-lua/luasocket 3.0_rc1_p20200328-r102: Networking support library for the Lua language
 dev-lua/luassert 1.8.0-r101: Assertion library for Lua
 dev-lua/luasystem 0.2.1_p0-r102: Platform independent system calls for Lua
@@ -16558,7 +16558,7 @@ sci-mathematics/lrcalc 1.2 2.0: Littlewood-Richardson Calculator
 sci-mathematics/mathematica 10.3.1-r1 12.1.0 12.1.1-r1: Wolfram Mathematica
 sci-mathematics/mathmod 4.1-r1: Plot parametric and implicit surfaces
 sci-mathematics/mathomatic 16.0.5: Automatic algebraic manipulator
-sci-mathematics/maxima 5.42.1 5.44.0-r2: Free computer algebra environment based on Macsyma
+sci-mathematics/maxima 5.42.1 5.44.0-r4: Free computer algebra environment based on Macsyma
 sci-mathematics/minisat 2.2.0_p20130925-r1: Small yet efficient SAT solver with reference paper
 sci-mathematics/msieve 1.53-r1 9999: A C library implementing a suite of algorithms to factor large integers
 sci-mathematics/nauty 2.6.7: Computing automorphism groups of graphs and digraphs
