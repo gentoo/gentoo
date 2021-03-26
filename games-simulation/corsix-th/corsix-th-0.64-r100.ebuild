@@ -39,7 +39,7 @@ DEPEND="${RDEPEND}"
 # of Lua (or to be precise: if in src_configure cmake has been told to use
 # LuaJIT documentation generation looks for LuaJIT, otherwise any
 # dev-lang/lua slot will do; see the first few lines of the bundled file
-# CMake/GenerateDoc.cmake for details) - but since dev-lang/lua:0 conflicts
+# CMake/GenerateDoc.cmake for details) - but since dev-lang/lua conflicts
 # with the other slots of same, try to keep the deptree sane until we get
 # rid of unslotted Lua.
 BDEPEND="
