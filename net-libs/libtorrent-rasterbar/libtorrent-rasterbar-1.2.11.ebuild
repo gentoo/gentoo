@@ -16,7 +16,7 @@ SRC_URI="https://github.com/arvidn/libtorrent/archive/v${PV}.tar.gz -> libtorren
 
 LICENSE="BSD"
 SLOT="0/10"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~sparc x86"
 IUSE="debug +dht doc examples libressl python +ssl static-libs test"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
