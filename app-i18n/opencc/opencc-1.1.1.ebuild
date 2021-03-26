@@ -1,4 +1,4 @@
-# Copyright 2010-2020 Gentoo Authors
+# Copyright 2010-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -33,8 +33,8 @@ DEPEND="dev-cpp/tclap
 	dev-libs/marisa:0=
 	dev-libs/rapidjson
 	test? (
-		dev-cpp/benchmark
 		dev-cpp/gtest
+		!hppa? ( !sparc? ( dev-cpp/benchmark ) )
 	)"
 RDEPEND="dev-libs/marisa:0="
 
@@ -62,7 +62,7 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DBUILD_DOCUMENTATION=$(usex doc ON OFF)
-		-DENABLE_BENCHMARK=$(usex test ON OFF)
+		-DENABLE_BENCHMARK=$(if use test && has_version -d dev-cpp/benchmark; then echo ON; else echo OFF; fi)
 		-DENABLE_GTEST=$(usex test ON OFF)
 		-DUSE_SYSTEM_DARTS=ON
 		-DUSE_SYSTEM_GOOGLE_BENCHMARK=ON
