@@ -1815,7 +1815,7 @@ app-editors/diakonos 0.9.4: A Linux editor for the masses
 app-editors/e3 2.8.2: Very tiny editor in ASM with emacs, pico, wordstar, and vi keybindings
 app-editors/ee 1.5.2: An easy to use text editor. A subset of aee
 app-editors/elvis 2.2.0-r6 2.2.0-r7 2.2.0-r8: A vi/ex clone
-app-editors/emacs 18.59-r13 23.4-r20 24.5-r10 25.3-r9 26.3-r4 27.1-r4 27.1.91-r1 27.1.9999-r1 27.2_rc1 28.0.9999: The extensible, customizable, self-documenting real-time display editor
+app-editors/emacs 18.59-r13 23.4-r20 24.5-r10 25.3-r9 26.3-r4 27.1-r4 27.2 27.2.9999 28.0.9999: The extensible, customizable, self-documenting real-time display editor
 app-editors/emact 2.58.0: EmACT, a fork of Conroy's MicroEmacs
 app-editors/ersatz-emacs 20060515-r1: A very minimal imitation of the famous GNU Emacs editor
 app-editors/fe 2.0: A small and easy to use folding editor
@@ -17497,7 +17497,7 @@ sys-devel/llvm 10.0.1 11.0.0 11.0.1 11.1.0 12.0.0_rc2 12.0.0_rc3 12.0.0.9999 13.
 sys-devel/llvm-common 10.0.1 11.0.0 11.0.1 11.1.0 12.0.0_rc2 12.0.0_rc3 12.0.0.9999 13.0.0.9999: Common files shared between multiple slots of LLVM
 sys-devel/llvm-roc 3.7.0-r1 3.8.0 3.9.0 3.10.0 4.0.0 4.0.0-r2 4.0.1 4.1.0: Radeon Open Compute llvm,lld,clang
 sys-devel/llvmgold 10 11 12 13: LLVMgold plugin symlink for autoloading
-sys-devel/m4 1.4.17 1.4.18-r1: GNU macro processor
+sys-devel/m4 1.4.18-r2: GNU macro processor
 sys-devel/make 4.2.1-r4 4.3: Standard tool to compile source trees
 sys-devel/multilib-gcc-wrapper 0-r2: Wrappers for gcc tools to be used on non-native CHOSTs
 sys-devel/native-cctools 4 5: Host OS native assembler as and static linker ld
