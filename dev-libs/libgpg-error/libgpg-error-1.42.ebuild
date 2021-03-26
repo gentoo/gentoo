@@ -28,6 +28,7 @@ MULTILIB_WRAPPED_HEADERS=(
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.37-remove_broken_check.patch"
+	"${FILESDIR}/${P}-cross_compile.patch"
 )
 
 src_prepare() {
