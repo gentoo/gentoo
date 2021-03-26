@@ -15,7 +15,7 @@ SRC_URI="mirror://apache/tomcat/tomcat-10/v${PV}/src/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="5.0"
-KEYWORDS="~amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
 IUSE=""
 
 DEPEND=">=virtual/jdk-1.8"
