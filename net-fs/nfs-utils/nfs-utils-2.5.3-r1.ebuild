@@ -92,9 +92,10 @@ src_configure() {
 	export libsqlite3_cv_is_recent=yes # Our DEPEND forces this.
 	export ac_cv_header_keyutils_h=$(usex nfsidmap)
 	local myeconfargs=(
+		--disable-static
 		--with-statedir="${EPREFIX}"/var/lib/nfs
 		--enable-tirpc
-		--with-tirpcinclude="${EPREFIX}"/usr/include/tirpc/
+		--with-tirpcinclude="${ESYSROOT}"/usr/include/tirpc/
 		--with-pluginpath="${EPREFIX}"/usr/$(get_libdir)/libnfsidmap
 		--with-rpcgen
 		--with-systemd="$(systemd_get_systemunitdir)"
@@ -174,6 +175,8 @@ src_install() {
 	keepdir /var/lib/nfs #368505
 	keepdir /var/lib/nfs/v4recovery #603628
 
+	# no static archives
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
