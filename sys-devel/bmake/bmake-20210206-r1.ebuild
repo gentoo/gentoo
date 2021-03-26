@@ -20,6 +20,12 @@ S="${WORKDIR}/${PN}"
 # Skip failing test (sandbox and csh)
 PATCHES=( "${FILESDIR}"/${P}-tests.patch )
 
+src_prepare() {
+	default
+	cd "${WORKDIR}" || die
+	eapply "${FILESDIR}"/${P}-lib-mk.patch
+}
+
 src_configure() {
 	econf \
 		--with-mksrc=../mk \
