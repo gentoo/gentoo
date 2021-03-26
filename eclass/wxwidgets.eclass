@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: wxwidgets.eclass
@@ -22,6 +22,7 @@
 # wxGTK was built with.
 
 if [[ -z ${_WXWIDGETS_ECLASS} ]]; then
+_WXWIDGETS_ECLASS=1
 
 inherit flag-o-matic
 
@@ -80,7 +81,7 @@ esac
 # See: http://docs.wxwidgets.org/trunk/overview_debugging.html
 
 setup-wxwidgets() {
-	local wxtoolkit wxdebug wxconf
+	local w wxtoolkit wxdebug wxconf
 
 	[[ -z ${WX_GTK_VER} ]] \
 		&& die "WX_GTK_VER must be set before calling $FUNCNAME."
@@ -116,17 +117,17 @@ setup-wxwidgets() {
 	fi
 
 	wxconf="${wxtoolkit}-unicode-${wxdebug}${WX_GTK_VER}"
+	for w in "${CHOST:-${CBUILD}}-${wxconf}" "${wxconf}"; do
+		[[ -f ${ESYSROOT:-${EPREFIX}}/usr/$(get_libdir)/wx/config/${w} ]] && wxconf=${w} && break
+	done || die "Failed to find configuration ${wxconf}"
 
-	[[ ! -f ${EPREFIX}/usr/$(get_libdir)/wx/config/${wxconf} ]] \
-		&& die "Failed to find configuration ${wxconf}"
-
-	export WX_CONFIG="${EPREFIX}/usr/$(get_libdir)/wx/config/${wxconf}"
+	export WX_CONFIG="${ESYSROOT:-${EPREFIX}}/usr/$(get_libdir)/wx/config/${wxconf}"
 	export WX_ECLASS_CONFIG="${WX_CONFIG}"
 
-	echo
+	einfo
 	einfo "Requested wxWidgets:        ${WX_GTK_VER}"
 	einfo "Using wxWidgets:            ${wxconf}"
-	echo
+	einfo
 }
 
 case ${EAPI:-0} in
@@ -138,5 +139,4 @@ case ${EAPI:-0} in
 		;;
 esac
 
-_WXWIDGETS_ECLASS=1
 fi
