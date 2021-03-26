@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ia64 ~ppc ~x86"
 IUSE="dbi doc json mysql nfacct +nfct +nflog pcap postgres selinux sqlite ulog"
 
-COMMON_DEPEND="
+DEPEND="
 	|| ( net-firewall/iptables net-firewall/nftables )
 	>=net-libs/libnfnetlink-1.0.1
 	dbi? ( dev-db/libdbi )
@@ -30,20 +30,19 @@ COMMON_DEPEND="
 	postgres? ( dev-db/postgresql:= )
 	sqlite? ( dev-db/sqlite:3 )
 "
-
-DEPEND="${COMMON_DEPEND}
+RDEPEND="
+	${DEPEND}
 	acct-user/ulogd
 	acct-group/ulogd
-	doc? (
-		app-text/linuxdoc-tools
-		app-text/texlive-core
-		dev-texlive/texlive-fontsrecommended
-		virtual/latex-base
-	)
-"
-
-RDEPEND="${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-ulogd )
+"
+BDEPEND="
+    doc? (
+        app-text/linuxdoc-tools
+        app-text/texlive-core
+        dev-texlive/texlive-fontsrecommended
+        virtual/latex-base
+    )
 "
 
 DISABLE_AUTOFORMATTING=1
@@ -68,7 +67,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	default_src_prepare
+	default
 
 	# Change default settings to:
 	# - keep log files in /var/log/ulogd instead of /var/log;
@@ -110,7 +109,7 @@ src_install() {
 	use doc && HTML_DOCS=( doc/${PN}.html )
 
 	default_src_install
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 
 	readme.gentoo_create_doc
 	doman ${PN}.8
