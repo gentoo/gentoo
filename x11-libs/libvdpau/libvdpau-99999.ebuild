@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,15 +18,16 @@ RDEPEND="
 	>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 	dri? ( >=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}] )
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}
+	dri? ( x11-base/xorg-proto )
+"
+BDEPEND="
 	virtual/pkgconfig
 	doc? (
 		app-doc/doxygen
 		media-gfx/graphviz
 		virtual/latex-base
-		)
-	dri? ( x11-base/xorg-proto )
+	)
 "
 
 src_prepare() {
