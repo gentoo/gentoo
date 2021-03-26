@@ -118,10 +118,7 @@ setup-wxwidgets() {
 
 	wxconf="${wxtoolkit}-unicode-${wxdebug}${WX_GTK_VER}"
 	for w in "${CHOST:-${CBUILD}}-${wxconf}" "${wxconf}"; do
-		if [[ -f ${ESYSROOT:-${EPREFIX}}/usr/$(get_libdir)/wx/config/${w} ]]; then
-			wxconf=${w}
-			break
-		fi
+		[[ -f ${ESYSROOT:-${EPREFIX}}/usr/$(get_libdir)/wx/config/${w} ]] && wxconf=${w} && break
 	done || die "Failed to find configuration ${wxconf}"
 
 	export WX_CONFIG="${ESYSROOT:-${EPREFIX}}/usr/$(get_libdir)/wx/config/${wxconf}"
