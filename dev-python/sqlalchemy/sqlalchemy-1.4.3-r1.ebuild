@@ -36,6 +36,13 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+src_prepare() {
+	# remove optional/partial dep on greenlet, greenlet is not very portable
+	sed -i -e '/greenlet/d' setup.cfg || die
+
+	distutils-r1_src_prepare
+}
+
 python_test() {
 	# Disable tests hardcoding function call counts specific to Python versions.
 	epytest --ignore test/aaa_profiling \
