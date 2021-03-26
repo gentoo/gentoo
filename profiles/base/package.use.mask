@@ -504,7 +504,7 @@ app-editors/emacs:25 cairo
 app-editors/emacs:26 cairo
 
 # Matthew Brewer <tomboy64@sina.cn> (2016-06-02)
-# Acked-by: Amy Winston <amynka@gentoo.org>
+# Acked-by: Amy Liffey <amynka@gentoo.org>
 # Currently broken upstream.
 >=dev-lang/rakudo-2016.05 java
 
@@ -513,7 +513,7 @@ app-editors/emacs:26 cairo
 sys-devel/gcc vtv
 
 # Matthew Brewer <tomboy64@sina.cn> (2016-05-08)
-# Acked-by: Amy Winston <amynka@gentoo.org>
+# Acked-by: Amy Liffey <amynka@gentoo.org>
 # Upstream supports using Clang's address sanitizer, but apparently
 # invokes it wrong.
 dev-lang/moarvm asan
