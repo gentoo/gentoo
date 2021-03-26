@@ -12820,7 +12820,7 @@ media-fonts/monafont 2.90-r2: Japanese bitmap and TrueType fonts suitable for br
 media-fonts/monoid 0.61: Open source coding font
 media-fonts/montecarlo 0-r1: Monospace font, created by programmers, for programmers
 media-fonts/mplus-fonts 2.2.4-r1: M+ Japanese bitmap fonts
-media-fonts/mplus-outline-fonts 0_pre063 0_pre063_p1: M+ Japanese outline fonts
+media-fonts/mplus-outline-fonts 0_pre063_p1: M+ Japanese outline fonts
 media-fonts/nanum 3.0: Korean fonts distributed by Naver
 media-fonts/nanumfont 2.0-r2: Korean monospace font distributed by NHN
 media-fonts/noto 20200521 20201226: Google's font family that aims to support all the world's languages
@@ -12852,7 +12852,7 @@ media-fonts/sgi-fonts 1.0: SGI fonts collection
 media-fonts/shinonome 0.9.11: Japanese bitmap fonts for X
 media-fonts/signika 1.001: Sans-serif with gentle character designed for signage
 media-fonts/sil-abyssinica 1.500: SIL Opentype Unicode fonts for Ethiopic languages
-media-fonts/sil-arabicfonts 2.100 3.000: SIL Opentype Unicode fonts for Arabic Languages
+media-fonts/sil-arabicfonts 3.000: SIL Opentype Unicode fonts for Arabic Languages
 media-fonts/sil-charis 5.000-r1: Serif typeface for Roman and Cyrillic languages
 media-fonts/sil-doulos 5.000-r1: SIL font for Roman and Cyrillic Languages
 media-fonts/sil-ezra 2.51: SIL Ezra - Unicode Opentype fonts for Biblical Hebrew
@@ -12870,11 +12870,11 @@ media-fonts/terminus-font 4.49: A clean fixed font for the console and X11
 media-fonts/termsyn 1.8.7: Monospaced font based on terminus and tamsyn
 media-fonts/tex-gyre 2.501: Extensive remake of freely available URW fonts
 media-fonts/texcm-ttf 1.0: TeX's Computer Modern Fonts for MathML
-media-fonts/thaifonts-scalable 0.6.1 0.7.2: Collection of free fonts for Thai
+media-fonts/thaifonts-scalable 0.7.2: Collection of free fonts for Thai
 media-fonts/tibetan-machine-font 1.901: Fonts for the Tibetan and Himalayan languages
 media-fonts/ttf-bitstream-vera 1.10-r3: Bitstream Vera font family
 media-fonts/ubuntu-font-family 0.83-r1: Set of matching libre/open fonts funded by Canonical
-media-fonts/umeplus-fonts 20160402 20180604: Modified Ume and M+ fonts for Japanese
+media-fonts/umeplus-fonts 20180604: Modified Ume and M+ fonts for Japanese
 media-fonts/unfonts 1.0.2_pre080608-r1: Korean Un fonts collection
 media-fonts/unfonts-extra 1.0.2_pre080608-r1: Korean Un fonts extras collection
 media-fonts/unifont 13.0.01: GNU Unifont - a Pan-Unicode X11 bitmap iso10646 font
