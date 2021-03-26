@@ -51,6 +51,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-7.0.1-disable-automagic-dep.patch
+	"${FILESDIR}"/${PN}-7.0.1-fix-linking-with-lld.patch
 	#qa fix for rpath
 	"${FILESDIR}"/${P}-rpath-qa-fix.patch
 )
