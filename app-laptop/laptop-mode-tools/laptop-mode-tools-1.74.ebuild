@@ -1,32 +1,33 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils multilib systemd udev
+inherit optfeature systemd tmpfiles udev
 
 MY_P="${PN}_${PV}"
 
 DESCRIPTION="Linux kernel laptop_mode user-space utilities"
 HOMEPAGE="https://github.com/rickysarraf/laptop-mode-tools/wiki"
 SRC_URI="https://github.com/rickysarraf/${PN}/releases/download/${PV}/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="+acpi apm"
 
-RDEPEND="sys-apps/iproute2
+RDEPEND="
 	sys-apps/ethtool
+	sys-apps/iproute2
 	sys-apps/which
 	|| (
 		sys-apps/sdparm
 		sys-apps/hdparm
 	)
 	acpi? ( sys-power/acpid )
-	apm? ( sys-apps/apmd )"
-
-S="${WORKDIR}/${MY_P}"
+	apm? ( sys-apps/apmd )
+"
 
 src_compile() { :; }
 
@@ -40,12 +41,14 @@ src_install() {
 		TMPFILES_D="/usr/lib/tmpfiles.d" \
 		ACPI="$(usex acpi force disabled)" \
 		PMU="disabled" \
-		APM="$(usex apm )" \
+		APM="$(usex apm)" \
 		SYSTEMD=yes \
 		sh ./install.sh || die
 
 	dodoc Documentation/*.txt README.md
 	newinitd "${FILESDIR}"/laptop_mode.init-1.4 laptop_mode
+
+	newtmpfiles "${S}"/etc/systemd/laptop-mode.conf.tmpfiles laptop-mode.conf
 
 	rm "${ED}/usr/lib/pm-utils/sleep.d/01laptop-mode" || die "could not remove PM utils config."
 }
@@ -53,7 +56,10 @@ src_install() {
 pkg_postinst() {
 	local daemon_name
 	optfeature "bluetooth support" net-wireless/bluez
-	if [[ -z "${REPLACING_VERSIONS}" ]]; then
+
+	tmpfiles_process laptop-mode.conf
+
+	if [[ -z "${REPLACING_VERSIONS}" ]] ; then
 		if use acpi || use apm; then
 			if use acpi; then
 				daemon_name="acpid"
