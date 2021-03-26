@@ -15,7 +15,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="mplus-fonts ipafont? ( IPAfont )"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ia64 ~ppc x86 ~ppc-macos"
+KEYWORDS="amd64 ~hppa ~ia64 ppc x86 ~ppc-macos"
 IUSE="ipafont"
 RESTRICT="binchecks strip"
 
