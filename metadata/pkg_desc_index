@@ -2352,7 +2352,7 @@ app-i18n/mozc 2.23.2815.102 2.26.4220_p20201212102434_p20201219202429 9999: Mozc
 app-i18n/multiskkserv 20100128: SKK server that handles multiple dictionaries
 app-i18n/nabi 1.0.0: Simple Hanguk X Input Method
 app-i18n/nkf 2.1.4 2.1.5: Network Kanji code conversion Filter with UTF-8/16 support
-app-i18n/opencc 1.0.5 1.0.6 1.1.0 1.1.1 9999: Library for conversion between Traditional and Simplified Chinese characters
+app-i18n/opencc 1.0.5 1.0.6 1.1.0 1.1.1 1.1.2 9999: Library for conversion between Traditional and Simplified Chinese characters
 app-i18n/poedit 2.2.4 2.3.1: GUI gettext translations editor
 app-i18n/pyzy 0.1.0-r3: The Chinese PinYin and Bopomofo conversion library
 app-i18n/qkc 1.00: Quick KANJI code Converter
@@ -3697,7 +3697,7 @@ dev-db/spatialite-tools 4.3.0-r1 5.0.1-r1: A collection of CLI tools supporting 
 dev-db/sqlcipher 3.4.2 4.0.1: Full Database Encryption for SQLite
 dev-db/sqlcl-bin 20.4.1.351.1718: Oracle SQLcl is the new SQL*Plus
 dev-db/sqldeveloper 4.2.0.17.089.1709 20.2.0.175.1842 20.4.0.379.2205: Oracle SQL Developer is a graphical tool for database development
-dev-db/sqlite 3.33.0 3.34.0: SQL database engine
+dev-db/sqlite 3.33.0 3.34.0 3.34.1 3.35.0 3.35.1 3.35.2: SQL database engine
 dev-db/sqlitebrowser 3.11.1-r1 3.12.1 9999: A light GUI editor for SQLite databases
 dev-db/sqliteman 1.2.2-r4: Powerful GUI manager for the Sqlite3 database
 dev-db/sqlitestudio 3.2.1-r1: Powerful cross-platform SQLite database manager
@@ -5709,7 +5709,7 @@ dev-libs/nsync 1.20.1 1.24.0: C library that exports various synchronization pri
 dev-libs/ntl 11.4.3 11.4.4: High-performance and portable C++ number theory library
 dev-libs/ocl-icd 2.2.12-r3 2.2.14: Alternative to vendor specific OpenCL ICD loaders
 dev-libs/onigmo 6.1.3 6.2.0: Onigmo is a regular expressions library forked from Oniguruma
-dev-libs/oniguruma 6.9.4 6.9.6 6.9.6-r1 9999: Regular expression library for different character encodings
+dev-libs/oniguruma 6.9.6-r1 9999: Regular expression library for different character encodings
 dev-libs/opencl-clang 10.0.0.1-r1 10.0.0.2-r1 11.0.0 11.1.0_pre20201222: OpenCL-oriented thin wrapper library around clang
 dev-libs/opencl-icd-loader 2020.03.13-r1 2020.06.16: Official Khronos OpenCL ICD Loader
 dev-libs/opencryptoki 3.6.1: PKCS#11 provider cryptographic hardware
@@ -5751,7 +5751,7 @@ dev-libs/rapidjson 1.1.0-r2 1.1.0-r3 9999: A fast JSON parser/generator for C++ 
 dev-libs/rapidxml 1.13 1.13-r1: Fast XML parser
 dev-libs/rasqal 0.9.33: Library that handles Resource Description Framework (RDF)
 dev-libs/rccl 4.0.0-r2: ROCm Communication Collectives Library (RCCL)
-dev-libs/re2 0.2020.11.01: An efficient, principled regular expression library
+dev-libs/re2 0.2020.11.01 0.2021.02.02: An efficient, principled regular expression library
 dev-libs/redland 1.0.17-r2: High-level interface for the Resource Description Framework
 dev-libs/redland-bindings 1.0.17.1-r1 1.0.17.1-r100: Language bindings for Redland
 dev-libs/replicant 0.8.1: Hyperdex replicant support library
@@ -8584,7 +8584,7 @@ dev-python/markdown2 2.4.0: Python Markdown language reimplementation
 dev-python/markups 3.1.0 3.1.1: A wrapper around various text markups
 dev-python/markupsafe 1.1.1-r1: Implements a XML/HTML/XHTML Markup safe string for Python
 dev-python/marshmallow 3.5.1 3.10.0: A lightweight library for converting complex datatypes to and from native Python datatypes.
-dev-python/matplotlib 3.3.4: Pure python plotting library with matlab like syntax
+dev-python/matplotlib 3.3.4 3.4.0: Pure python plotting library with matlab like syntax
 dev-python/matterhook 0.2 0.2-r1: Interact with Mattermost incoming webhooks easily
 dev-python/mccabe 0.6.1-r1 0.6.1-r2: flake8 plugin: McCabe complexity checker
 dev-python/mdx_gh_links 0.2: An extension which adds links to GitHub users, repositories, issues and commits
@@ -8628,7 +8628,7 @@ dev-python/multidict 5.1.0: multidict implementation
 dev-python/munch 2.5.0-r1: A dot-accessible dictionary (a la JavaScript objects)
 dev-python/munkres 1.1.2: Module implementing munkres algorithm for the Assignment Problem
 dev-python/mygpoclient 1.8: A gpodder.net client library
-dev-python/mypy 0.790 0.800 0.812: Optional static typing for Python
+dev-python/mypy 0.790 0.800 0.812-r1: Optional static typing for Python
 dev-python/mypy_extensions 0.4.3-r1: Optional static typing for Python
 dev-python/mysql-connector-python 8.0.22 8.0.23: Python client library for MariaDB/MySQL
 dev-python/mysqlclient 1.4.6-r1: Fork of MySQL-python
@@ -9300,7 +9300,7 @@ dev-python/spyder-notebook 0.3.2: Jupyter notebook integration with Spyder
 dev-python/spyder-terminal 0.5.0: Run system terminals inside Spyder
 dev-python/spyder-unittest 0.4.1: Plugin for Spyder to run tests and view the results
 dev-python/spyder-vim 0_pre20201026: Plugin for Spyder to enable Vim keybindings
-dev-python/sqlalchemy 1.3.17 1.3.20 1.3.21 1.3.22 1.3.23 1.4.0 1.4.1 1.4.2 1.4.3: Python SQL toolkit and Object Relational Mapper
+dev-python/sqlalchemy 1.3.17 1.3.20 1.3.21 1.3.22 1.3.23 1.4.0 1.4.1 1.4.2 1.4.3-r1: Python SQL toolkit and Object Relational Mapper
 dev-python/sqlalchemy-migrate 0.13.0: SQLAlchemy Schema Migration Tools
 dev-python/sqlalchemy-rqlite 1.1: A SQLAlchemy dialect for rqlite
 dev-python/sqlparse 0.3.1 0.4.1: A non-validating SQL parser module for Python
@@ -10822,7 +10822,7 @@ dev-util/cram 0.7 0.7-r1: Functional testing framework for command line applicat
 dev-util/crash 7.2.9 9999: Red Hat crash utility; used for analyzing kernel core dumps
 dev-util/cscope 15.8a-r1 15.8a-r2 15.9: Interactively examine a C program
 dev-util/csup 20060318-r1: A rewrite of CVSup
-dev-util/ctags 20190331: Exuberant Ctags creates tags files for code browsing in editors
+dev-util/ctags 20190331 20210321.0: Exuberant Ctags creates tags files for code browsing in editors
 dev-util/cucumber 3.1.2 3.2.0: Executable feature scenarios
 dev-util/cucumber-core 3.2.1: Executable feature scenarios
 dev-util/cucumber-cucumber-expressions 10.2.0 10.2.1 10.3.0: a simpler alternative to Regular Expressions
