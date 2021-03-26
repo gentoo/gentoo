@@ -239,7 +239,7 @@ src_configure() {
 	unset LDFLAGS
 
 	tc-export CC NM OBJCOPY RANLIB STRIP
-	tc-export BUILD_CC # Bug 485592
+	tc-export BUILD_CC BUILD_PKG_CONFIG
 
 	MULTIBUILD_VARIANTS=()
 	local p
