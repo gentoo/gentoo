@@ -174,6 +174,11 @@ src_prepare() {
 	eapply "${FILESDIR}"/2.28.2-non-jumbo-fix.patch
 	eapply "${FILESDIR}"/2.28.4-non-jumbo-fix2.patch
 	eapply "${FILESDIR}"/2.30.3-fix-noGL-build.patch
+	if use elibc_musl ; then
+		# Taken from https://git.alpinelinux.org/aports/tree/community/webkit2gtk/musl-fixes.patch?id=be463923b10a7268117c27c7e5515fc32457918c
+		eapply "${FILESDIR}/${PN}-2.28.1-musl.patch"
+		eapply "${FILESDIR}/${PN}-2.28.4-lower-stack-usage.patch"
+	fi
 	cmake_src_prepare
 	gnome2_src_prepare
 }
@@ -264,6 +269,10 @@ src_configure() {
 		-DPORT=GTK
 		${ruby_interpreter}
 	)
+
+	if use elibc_musl ; then
+		mycmakeargs+=( -DENABLE_SAMPLING_PROFILER=OFF )
+	fi
 
 	# Allow it to use GOLD when possible as it has all the magic to
 	# detect when to use it and using gold for this concrete package has

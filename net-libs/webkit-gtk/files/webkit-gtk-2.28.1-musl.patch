@@ -1,0 +1,68 @@
+--- a/Source/JavaScriptCore/runtime/MachineContext.h
++++ b/Source/JavaScriptCore/runtime/MachineContext.h
+@@ -188,7 +188,7 @@ static inline void*& stackPointerImpl(mcontext_t& machineContext)
+ #error Unknown Architecture
+ #endif
+ 
+-#elif OS(FUCHSIA) || defined(__GLIBC__) || defined(__BIONIC__)
++#elif OS(FUCHSIA) || defined(__linux__)
+ 
+ #if CPU(X86)
+     return reinterpret_cast<void*&>((uintptr_t&) machineContext.gregs[REG_ESP]);
+@@ -335,7 +335,7 @@ static inline void*& framePointerImpl(mcontext_t& machineContext)
+ #error Unknown Architecture
+ #endif
+ 
+-#elif OS(FUCHSIA) || defined(__GLIBC__) || defined(__BIONIC__)
++#elif OS(FUCHSIA) || defined(__linux__)
+ 
+ // The following sequence depends on glibc's sys/ucontext.h.
+ #if CPU(X86)
+@@ -482,7 +482,7 @@ static inline void*& instructionPointerImpl(mcontext_t& machineContext)
+ #error Unknown Architecture
+ #endif
+ 
+-#elif OS(FUCHSIA) || defined(__GLIBC__) || defined(__BIONIC__)
++#elif OS(FUCHSIA) || defined(__linux__)
+ 
+ // The following sequence depends on glibc's sys/ucontext.h.
+ #if CPU(X86)
+@@ -639,7 +639,7 @@ inline void*& argumentPointer<1>(mcontext_t& machineContext)
+ #error Unknown Architecture
+ #endif
+ 
+-#elif OS(FUCHSIA) || defined(__GLIBC__) || defined(__BIONIC__)
++#elif OS(FUCHSIA) || defined(__linux__)
+ 
+ // The following sequence depends on glibc's sys/ucontext.h.
+ #if CPU(X86)
+@@ -756,7 +756,7 @@ inline void*& llintInstructionPointer(mcontext_t& machineContext)
+ #error Unknown Architecture
+ #endif
+ 
+-#elif OS(FUCHSIA) || defined(__GLIBC__) || defined(__BIONIC__)
++#elif OS(FUCHSIA) || defined(__linux__)
+ 
+ // The following sequence depends on glibc's sys/ucontext.h.
+ #if CPU(X86)
+ 
+--- a/Source/WebCore/xml/XPathGrammar.cpp
++++ b/Source/WebCore/xml/XPathGrammar.cpp
+@@ -966,7 +966,7 @@ int yydebug;
+ #if YYERROR_VERBOSE
+ 
+ # ifndef yystrlen
+-#  if defined __GLIBC__ && defined _STRING_H
++#  if defined __linux__ && defined _STRING_H
+ #   define yystrlen strlen
+ #  else
+ /* Return the length of YYSTR.  */
+@@ -989,7 +989,7 @@ yystrlen (yystr)
+ # endif
+ 
+ # ifndef yystpcpy
+-#  if defined __GLIBC__ && defined _STRING_H && defined _GNU_SOURCE
++#  if defined __linux__ && defined _STRING_H && defined _GNU_SOURCE
+ #   define yystpcpy stpcpy
+ #  else
+ /* Copy YYSRC to YYDEST, returning the address of the terminating '\0' in
