@@ -120,10 +120,6 @@ dev-qt/qt-creator clang
 # Depends on masked net-libs/libkvkontakte
 kde-apps/kipi-plugins vkontakte
 
-# Alfredo Tupone <tupone@gentoo.org> (2020-11-06)
-# waiting for lua to be slotted
-media-gfx/exact-image lua
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-08)
 # USE=doc broken on 1.47.0 and later
 # error: unresolved link to `crate::os::unix::ffi::OsStrExt`
