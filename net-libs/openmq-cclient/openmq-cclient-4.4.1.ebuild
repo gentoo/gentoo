@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-inherit versionator autotools
+inherit autotools epatch versionator
 
 DESCRIPTION="C-Client Library for Open Source Java Message Service (JMS)"
 HOMEPAGE="https://mq.java.net/"
@@ -69,6 +69,11 @@ src_prepare() {
 		AC_PROG_LIBTOOL
 		AC_OUTPUT(Makefile)
 	EOF
+
+	# bug #778329
+	sed -e 's/--no-undefined/-no-undefined/' \
+		-e "s/'\*Test\*' ')')/'\*Test\*' ')' | grep -v examples)/" \
+		-i "${S}"/Makefile.in || die
 
 	eautoreconf
 }
