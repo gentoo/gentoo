@@ -18149,7 +18149,7 @@ www-apps/rutorrent 3.8-r1 9999: ruTorrent is a front-end for the popular Bittorr
 www-apps/trickster 0.1.9: Dashboard Accelerator for Prometheus
 www-apps/tt-rss 20200922 99999999: Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX
 www-apps/webdavcgi 1.1.2: A Perl CGI for accessing and sharing files, or calendar/addressbooks via WebDAV.
-www-apps/webmcp 1.2.6: Web application framework written in Lua and C
+www-apps/webmcp 1.2.6-r1: Web application framework written in Lua and C
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.7: Wordpress PHP and MySQL based content management system (CMS)
