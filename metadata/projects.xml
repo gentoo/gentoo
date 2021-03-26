@@ -1216,7 +1216,7 @@
     </member>
     <member>
       <email>NP-Hardass@gentoo.org</email>
-      <name>NP-Hardass</name>
+      <name>Adam Feldman</name>
     </member>
   </project>
   <project>
@@ -1781,7 +1781,7 @@
     <description>The MATE Project aims to bring the current and complete MATE Desktop Environment to Gentoo.</description>
     <member is-lead="1">
       <email>NP-Hardass@gentoo.org</email>
-      <name>NP-Hardass</name>
+      <name>Adam Feldman</name>
     </member>
   </project>
   <project>
@@ -2064,7 +2064,7 @@
     </member>
     <member>
       <email>NP-Hardass@gentoo.org</email>
-      <name>NP-Hardass</name>
+      <name>Adam Feldman</name>
       <role>Hosted Overlays for Developers and Projects</role>
     </member>
     <member>
@@ -3468,7 +3468,7 @@
     </member>
     <member>
       <email>NP-Hardass@gentoo.org</email>
-      <name>NP-Hardass</name>
+      <name>Adam Feldman</name>
     </member>
     <member>
       <email>ryao@gentoo.org</email>
