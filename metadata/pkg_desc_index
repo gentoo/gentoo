@@ -8561,7 +8561,7 @@ dev-python/line_profiler 3.0.2: Line-by-line profiler
 dev-python/linecache2 1.0.0-r1: Backports of the linecache module
 dev-python/lit 10.0.1 11.0.0 11.0.1 11.1.0 12.0.0_rc2 12.0.0_rc3 12.0.0.9999 13.0.0.9999: A stand-alone install of the LLVM suite testing tool
 dev-python/livereload 2.6.3: Python LiveReload is an awesome tool for web developers
-dev-python/llfuse 1.3.6 1.4.0 1.4.1: Python bindings for the low-level FUSE API
+dev-python/llfuse 1.4.1: Python bindings for the low-level FUSE API
 dev-python/llvmlite 0.34.0 0.35.0 0.36.0: Python wrapper around the llvm C++ library
 dev-python/lmdb 1.1.1-r1: Python bindings for the Lightning Database
 dev-python/lmfit 1.0.1 1.0.2: Non-Linear Least-Squares Minimization and Curve-Fitting for Python
@@ -8630,7 +8630,7 @@ dev-python/multidict 5.1.0: multidict implementation
 dev-python/munch 2.5.0-r1: A dot-accessible dictionary (a la JavaScript objects)
 dev-python/munkres 1.1.2: Module implementing munkres algorithm for the Assignment Problem
 dev-python/mygpoclient 1.8: A gpodder.net client library
-dev-python/mypy 0.790 0.800 0.812-r1: Optional static typing for Python
+dev-python/mypy 0.812-r1: Optional static typing for Python
 dev-python/mypy_extensions 0.4.3-r1: Optional static typing for Python
 dev-python/mysql-connector-python 8.0.22 8.0.23: Python client library for MariaDB/MySQL
 dev-python/mysqlclient 1.4.6-r1: Fork of MySQL-python
@@ -9391,7 +9391,7 @@ dev-python/uncertainties 3.1.4-r1: Python module for calculations with uncertain
 dev-python/unicodecsv 0.14.1-r1: Drop-in replacement for python stdlib csv module supporting unicode
 dev-python/unidecode 1.2.0: Module providing ASCII transliterations of Unicode text
 dev-python/unittest-mixins 1.6-r1: A set of mixin classes and other helpers for unittest test case classes
-dev-python/unittest-or-fail 0 1: Run unittests or fail if no tests were found
+dev-python/unittest-or-fail 1: Run unittests or fail if no tests were found
 dev-python/unittest2 1.1.0-r1: The new features in unittest backported to Python 2.4+
 dev-python/uranium 4.8.0: A Python framework for building 3D printing related applications
 dev-python/urdf_parser_py 0.4.3: URDF parser for Python
@@ -17700,8 +17700,8 @@ sys-kernel/cryptodev 1.9-r1 1.11 9999: device that allows access to Linux kernel
 sys-kernel/dracut 050-r2 051-r1 053 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 4.2.0 9999: Gentoo automatic kernel building scripts
-sys-kernel/gentoo-kernel 5.4.94 5.4.97 5.4.99 5.4.100 5.4.101 5.4.102 5.4.103 5.4.104 5.4.105 5.4.106 5.4.108 5.10.17 5.10.18 5.10.19 5.10.20 5.10.21 5.10.22 5.10.23 5.10.24 5.10.26 5.11.2 5.11.3 5.11.4 5.11.5 5.11.6 5.11.7 5.11.9 5.11.10: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.94 5.4.94-r1 5.4.97 5.4.97-r1 5.4.99 5.4.99-r1 5.4.100 5.4.100-r1 5.4.101 5.4.101-r1 5.4.101-r2 5.4.102-r2 5.4.102-r3 5.4.103 5.4.103-r1 5.4.104 5.4.104-r1 5.4.105 5.4.105-r2 5.4.106 5.4.106-r1 5.4.108 5.10.17 5.10.17-r1 5.10.18 5.10.18-r1 5.10.19 5.10.19-r1 5.10.19-r2 5.10.20-r2 5.10.20-r3 5.10.21 5.10.21-r1 5.10.22 5.10.22-r1 5.10.23 5.10.23-r2 5.10.24 5.10.24-r1 5.10.26 5.11.2 5.11.2-r1 5.11.2-r2 5.11.3-r2 5.11.3-r3 5.11.4 5.11.4-r1 5.11.5 5.11.5-r1 5.11.6 5.11.7 5.11.9 5.11.10: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel 5.4.105 5.4.106 5.4.108 5.10.24 5.10.26 5.11.5 5.11.6 5.11.7 5.11.9 5.11.10: Linux kernel built with Gentoo patches
+sys-kernel/gentoo-kernel-bin 5.4.105 5.4.105-r2 5.4.106 5.4.106-r1 5.4.108 5.10.24 5.10.24-r1 5.10.26 5.11.5 5.11.5-r1 5.11.6 5.11.7 5.11.9 5.11.10: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.246 4.4.257 4.4.261 4.4.262 4.4.263 4.9.246 4.9.257 4.9.261 4.9.262 4.9.263 4.14.209 4.14.221 4.14.225 4.14.226 4.14.227 4.19.160 4.19.175 4.19.181 4.19.182 4.19.183 5.4.80-r1 5.4.97 5.4.105 5.4.106 5.4.107 5.4.108 5.10.24 5.10.25 5.10.26 5.11.6 5.11.7 5.11.8-r1 5.11.9 5.11.10: Full sources including the Gentoo patchset for the 5.11 kernel tree
 sys-kernel/git-sources 5.12_rc2 5.12_rc3 5.12_rc4: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2 3: Gentoo fork of installkernel script from debianutils
@@ -17716,7 +17716,7 @@ sys-kernel/pf-sources 5.9_p7 5.10_p12 5.11_p1 5.11_p2 5.11_p3 5.11_p4 5.11_p5: L
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.79_p20201201 5.10.11_p20210201 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.79_p20201201-r1 5.4.9999 5.10.11_p20210201: Raspberry Pi kernel sources
 sys-kernel/rt-sources 4.4.240_p209 4.4.245_p211 4.4.249_p212 4.9.240_p155 4.9.247_p162 4.14.206_p99 4.14.209_p101 4.14.214_p104 4.19.148_p64 4.19.160_p69 4.19.165_p70 5.4.70_p40 5.4.84_p47 5.10.1_p20 5.10.4_p22: Full Linux 5.10 kernel sources with the CONFIG_PREEMPT_RT patch
-sys-kernel/vanilla-kernel 5.4.94 5.4.97 5.4.99 5.4.100 5.4.101 5.4.102 5.4.103 5.4.104 5.4.105 5.4.106 5.4.108 5.10.17 5.10.18 5.10.19 5.10.20 5.10.21 5.10.22 5.10.23 5.10.24 5.10.26 5.11.2 5.11.3 5.11.4 5.11.5 5.11.6 5.11.7 5.11.9 5.11.10: Linux kernel built from vanilla upstream sources
+sys-kernel/vanilla-kernel 5.4.105 5.4.106 5.4.108 5.10.24 5.10.26 5.11.5 5.11.6 5.11.7 5.11.9 5.11.10: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-sources 4.4.263 4.9.263 4.14.227 4.19.183 5.4.108 5.10.26 5.11.10: Full sources for the Linux kernel
 sys-kernel/zen-sources 5.10.16 5.11: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
@@ -17894,7 +17894,7 @@ virtual/commonlisp 0: Virtual for Common Lisp
 virtual/cron 0-r2: Virtual for cron
 virtual/daemontools 0: Virtual for daemontools
 virtual/dev-manager 0-r2: Virtual for the device filesystem manager
-virtual/dist-kernel 5.4.94 5.4.97 5.4.99 5.4.100 5.4.101 5.4.102 5.4.103 5.4.104 5.4.105 5.4.106 5.4.108 5.10.17 5.10.18 5.10.19 5.10.20 5.10.21 5.10.22 5.10.23 5.10.24 5.10.26 5.11.2 5.11.3 5.11.4 5.11.5 5.11.6 5.11.7 5.11.9 5.11.10: Virtual to depend on any Distribution Kernel
+virtual/dist-kernel 5.4.105 5.4.106 5.4.108 5.10.24 5.10.26 5.11.5 5.11.6 5.11.7 5.11.9 5.11.10: Virtual to depend on any Distribution Kernel
 virtual/editor 0-r3: Virtual for editor
 virtual/eject 0-r1: Virtual for the eject command
 virtual/fam 0-r1: A virtual package to choose between gamin and fam
@@ -18474,7 +18474,7 @@ x11-libs/spread-sheet-widget 0.3-r1 0.6: GNU Spread Sheet Widget
 x11-libs/startup-notification 0.12-r1: Application startup notification and feedback library
 x11-libs/tslib 1.21 1.22: Touchscreen Access Library
 x11-libs/vte 0.28.2-r209 0.60.3 0.62.1 0.62.2 0.62.3: Library providing a virtual terminal emulator widget
-x11-libs/wxGTK 3.0.4-r2 3.0.4-r302: GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit
+x11-libs/wxGTK 3.0.4-r2 3.0.4-r302 3.0.4-r303: GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit
 x11-libs/xapps 1.8.9 2.0.6: Cross-desktop libraries and common resources
 x11-libs/xbae 4.60.4: Motif-based widget to display a grid of cells as a spreadsheet
 x11-libs/xcb-util 0.4.0-r2: X C-language Bindings sample implementations
