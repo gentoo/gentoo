@@ -13,7 +13,7 @@ SRC_URI="http://jmock.org/downloads/${P}-jars.zip"
 
 LICENSE="BSD"
 SLOT="2"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 
 CDEPEND="dev-java/hamcrest-core:1.3
 	dev-java/hamcrest-library:1.3
