@@ -17,7 +17,7 @@ SRC_URI="mirror://gentoo/${MY_P}.tgz"
 
 LICENSE="BSD-2"
 SLOT="${PV}"
-KEYWORDS="amd64 ~arm ~arm64 ppc64 x86 ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~ppc-macos ~x64-macos"
 
 CDEPEND="dev-java/qdox:1.12"
 
