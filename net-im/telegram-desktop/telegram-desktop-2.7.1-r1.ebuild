@@ -21,6 +21,7 @@ IUSE="+dbus enchant +gtk +hunspell libressl pulseaudio +spell wayland +X"
 RDEPEND="
 	!net-im/telegram-desktop-bin
 	app-arch/lz4:=
+	dev-cpp/glibmm:2
 	dev-libs/xxhash
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5[dbus?,jpeg,png,wayland?,X(-)?]
