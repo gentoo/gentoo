@@ -8940,6 +8940,10 @@ x11-themes/zuki-themes:gnome-shell - Install theme for gnome-base/gnome-shell
 x11-themes/zuki-themes:mate - Install Metacity theme for mate-base/mate
 x11-themes/zuki-themes:xfce - Install theme for xfce-base/xfwm4
 x11-themes/zukitwo:gnome-shell - Install theme for gnome-base/gnome-shell
+x11-wm/ctwm:jpeg - Enable jpeg image support with virtual/jpeg
+x11-wm/ctwm:rplay - Enable sound support from media-sound/rplay
+x11-wm/ctwm:test - Enable upstream test suite, build required binary
+x11-wm/ctwm:xpm - Enable xpm icon support with x11-libs/libXpm
 x11-wm/e16:container - Use container window (experimental)
 x11-wm/e16:debug - Build libtrip debugging library
 x11-wm/e16:dialogs - Enable support for configuration dialogs
