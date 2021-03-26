@@ -2285,7 +2285,7 @@ app-i18n/cstools 3.42-r1: A charset conversion tool cstocs and two Perl modules 
 app-i18n/dbskkd-cdb 2.00 3.00: SKK dictionary server based on cdb
 app-i18n/enca 1.19-r3: Detect and convert encoding of text files
 app-i18n/fbterm 1.7_p20190503: Fast terminal emulator for the Linux framebuffer
-app-i18n/fcitx 4.2.9.6 4.2.9.7 4.2.9.8 4.9999: Fcitx (Flexible Context-aware Input Tool with eXtension) input method framework
+app-i18n/fcitx 4.2.9.8 4.9999: Fcitx (Flexible Context-aware Input Tool with eXtension) input method framework
 app-i18n/fcitx-anthy 0.2.3 4.9999: Japanese Anthy input methods for Fcitx
 app-i18n/fcitx-chewing 0.2.3 4.9999: Chinese Chewing input method for Fcitx
 app-i18n/fcitx-cloudpinyin 0.3.6 4.9999: Internet look-up support for Chinese Pinyin input methods for Fcitx
@@ -2309,7 +2309,7 @@ app-i18n/ibus-handwrite 3.0.0: Hand write recognition/input for IBus
 app-i18n/ibus-hangul 1.5.3-r1 1.5.4: Korean Hangul engine for IBus
 app-i18n/ibus-input-pad 1.4.99_pre20140916: Input Pad for IBus
 app-i18n/ibus-kkc 1.5.22: Japanese Kana Kanji conversion engine for IBus
-app-i18n/ibus-libpinyin 1.11.1-r1 1.11.92-r1: Intelligent Pinyin and Bopomofo input methods based on LibPinyin for IBus
+app-i18n/ibus-libpinyin 1.11.92-r1: Intelligent Pinyin and Bopomofo input methods based on LibPinyin for IBus
 app-i18n/ibus-m17n 1.4.3 1.4.4: M17N engine for IBus
 app-i18n/ibus-pinyin 1.5.0-r4: Chinese Pinyin and Bopomofo engines for IBus
 app-i18n/ibus-rime 1.4.0 1.5.0: Chinese Rime Input Method Engine for IBus
@@ -14624,7 +14624,7 @@ net-analyzer/yersinia 0.8.2 9999: A framework for layer 2 attacks
 net-analyzer/zabbix 3.0.31-r2 4.0.28 4.0.29 5.0.8 5.0.9 5.0.9-r1 5.2.4 5.2.5 5.2.5-r1: ZABBIX is software for monitoring of your applications, network and servers
 net-analyzer/zmap 2.1.1-r2 9999: Fast network scanner designed for Internet-wide network surveys
 net-analyzer/zniper 1.0-r1: Displays and kill active TCP connections seen by the selected interface
-net-dialup/accel-ppp 1.12.0_p20200913 1.12.0_p20200913-r100 9999: High performance PPTP, PPPoE and L2TP server
+net-dialup/accel-ppp 1.12.0_p20200913-r100 9999: High performance PPTP, PPPoE and L2TP server
 net-dialup/cistronradius 1.6.8-r2: Authentication and accounting server for terminal servers using RADIUS
 net-dialup/cutecom 0.51.0-r1: A serial terminal, like minicom, written in Qt
 net-dialup/dial 1.2-r2: A simple client for DWUN
@@ -14669,7 +14669,7 @@ net-dns/dnscap 1.10.3: Network capture utility designed specifically for DNS tra
 net-dns/dnscrypt-proxy 2.0.45 9999: A flexible DNS proxy, with support for encrypted DNS protocols
 net-dns/dnsdist 1.5.0 1.5.1 1.5.1-r100: A highly DNS-, DoS- and abuse-aware loadbalancer
 net-dns/dnshijacker 1.3-r2: a libnet/libpcap based packet sniffer and spoofer
-net-dns/dnsmasq 2.83-r1 2.83-r101 2.84 2.84-r101: Small forwarding DNS server
+net-dns/dnsmasq 2.83-r101 2.84-r101: Small forwarding DNS server
 net-dns/dnssec-check 2.2: Tests local resolver for support of DNSSEC validation
 net-dns/dnssec-root 20181220-r1: The DNSSEC root key(s)
 net-dns/dnssec-tools 2.2.3-r2: Tools to ease the deployment of DNSSEC related technologies
@@ -14884,7 +14884,7 @@ net-libs/NativeThread 0_pre20190914: NativeThread for priorities on linux for fr
 net-libs/accounts-qml 0.7-r1: QML bindings for accounts-qt and signond
 net-libs/accounts-qt 1.16: Qt5 bindings for libaccounts-glib
 net-libs/aqbanking 6.2.5: Generic Online Banking Interface
-net-libs/axtls 2.1.5 2.1.5-r1 2.1.5-r100: Embedded client/server TLSv1 SSL library and small HTTP(S) server
+net-libs/axtls 2.1.5-r100: Embedded client/server TLSv1 SSL library and small HTTP(S) server
 net-libs/balde 0.1.1: A microframework for C based on GLib and bad intentions
 net-libs/balde-markdown 0.1: A balde extension that adds Markdown support
 net-libs/biblesync 2.1.0: A multicast protocol to support Bible software shared co-navigation
@@ -15094,7 +15094,7 @@ net-mail/cyrus-imapd 3.0.13 3.0.14: The Cyrus IMAP Server
 net-mail/dbmail 3.2.3-r3 3.2.5: Fast and scalable sql based email services
 net-mail/django-mailman3 1.3.4: Django-based interfaces interacting with Mailman 3
 net-mail/dot-forward 0.71-r4: reads sendmail's .forward files under qmail
-net-mail/dovecot 2.3.13-r1 2.3.13-r100 2.3.14: An IMAP and POP3 server written with security primarily in mind
+net-mail/dovecot 2.3.13-r100 2.3.14: An IMAP and POP3 server written with security primarily in mind
 net-mail/email 3.1.3-r1: Advanced CLI tool for sending email
 net-mail/eps 1.7-r1: Inter7 Email Processing and mht System library
 net-mail/ezmlm-idx 7.0.0-r3 7.2.2: Simple yet powerful mailing list manager for qmail
