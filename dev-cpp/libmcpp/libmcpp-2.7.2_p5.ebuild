@@ -17,7 +17,6 @@ S="${WORKDIR}"/${MY_P}
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ia64 ~x86 ~x86-linux ~x64-macos"
-IUSE="static-libs"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.7.2-fix-build-system.patch
@@ -38,13 +37,11 @@ src_prepare() {
 src_configure() {
 	econf \
 		--enable-mcpplib \
-		$(use_enable static-libs static)
+		--disable-static
 }
 
 src_install() {
 	default
 
-	if ! use static-libs; then
-		find "${D}" -name '*.la' -delete || die
-	fi
+	find "${ED}" -name '*.la' -delete || die
 }
