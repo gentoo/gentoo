@@ -17,6 +17,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Orlitzky <mjo@gentoo.org> (2021-03-27)
+# Unmask the use of 64-bit dev-lisp/clozurecl on 64-bit arches.
+# Only maxima makes a distinction between the 32-bit and 64-bit
+# USE flags.
+sci-mathematics/fricas -clozurecl
+<sci-mathematics/maxima-5.44.0-r5 -clozurecl
+sci-mathematics/maxima -clozurecl64
+
 # Thomas Deutschmann <whissi@gentoo.org> (2021-02-17)
 # Unmask PCRE JIT support where dev-libs/libpcre2[jit] is available
 dev-lang/php -jit

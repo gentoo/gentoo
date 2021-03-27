@@ -1,6 +1,14 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michael Orlitzky <mjo@gentoo.org> (2021-03-27)
+# The clozurecl and clozurecl64 flags are now arch-specific in maxima,
+# so we mask them both by default beginning with v5.44.0-r5 where
+# their meanings first diverged. You should unmask "clozurecl" on
+# 32-bit arches and unmask "clozurecl64" on 64-bit ones.
+# We don't list "clozurecl" here since it's already in use.mask.
+>=sci-mathematics/maxima-5.44.0-r5 clozurecl64
+
 # Sam James <sam@gentoo.org> (2021-03-02)
 # Java build is extremely sensitive to environment
 # Previously stable-masked but moved here
