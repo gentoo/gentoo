@@ -4,10 +4,11 @@ DEPEND=fdk? ( media-libs/fdk-aac:0= ) ffmpeg? ( media-video/ffmpeg ) media-libs/
 DESCRIPTION=PulseAudio modules for LDAC, aptX, aptX HD, and AAC for Bluetooth
 EAPI=7
 HOMEPAGE=https://github.com/EHfive/pulseaudio-modules-bt
+INHERIT=git-r3 cmake-utils readme.gentoo-r1
 IUSE=fdk +ffmpeg +ldac +native-headset ofono-headset
 LICENSE=GPL-3
 PROPERTIES=live
 RDEPEND=fdk? ( media-libs/fdk-aac:0= ) ffmpeg? ( media-video/ffmpeg ) media-libs/sbc ldac? ( media-libs/libldac ) >=net-wireless/bluez-5 >=sys-apps/dbus-1.0.0 ofono-headset? ( >=net-misc/ofono-1.13 ) >=media-sound/pulseaudio-13[-bluetooth]
 SLOT=0
-_eclasses_=cmake-utils	77cd39e6009811bf97a59d91ffd5b54f	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	git-r3	3e7ec3d6619213460c85e2aa48398441	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	cmake-utils	b9d98d57da01a3e48e748e46650335ed	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
 _md5_=d4876b3d51892815dc12394b488d9e52
