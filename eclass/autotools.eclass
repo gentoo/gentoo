@@ -145,12 +145,14 @@ unset _automake_atom _autoconf_atom
 # @DESCRIPTION:
 # Additional options to pass to automake during
 # eautoreconf call.
+: ${AM_OPTS:=}
 
 # @ECLASS-VARIABLE: AT_NOEAUTOHEADER
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Don't run eautoheader command if set to 'yes'; only used to work around
 # packages that don't want their headers being modified.
+: ${AT_NOEAUTOHEADER:=}
 
 # @ECLASS-VARIABLE: AT_NOEAUTOMAKE
 # @DEFAULT_UNSET
@@ -158,6 +160,7 @@ unset _automake_atom _autoconf_atom
 # Don't run eautomake command if set to 'yes'; only used to workaround
 # broken packages.  Generally you should, instead, fix the package to
 # not call AM_INIT_AUTOMAKE if it doesn't actually use automake.
+: ${AT_NOEAUTOMAKE:=}
 
 # @ECLASS-VARIABLE: AT_NOELIBTOOLIZE
 # @DEFAULT_UNSET
@@ -165,6 +168,7 @@ unset _automake_atom _autoconf_atom
 # Don't run elibtoolize command if set to 'yes',
 # useful when elibtoolize needs to be ran with
 # particular options
+: ${AT_NOELIBTOOLIZE:=}
 
 # @ECLASS-VARIABLE: AT_M4DIR
 # @DEFAULT_UNSET
