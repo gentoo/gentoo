@@ -5,7 +5,7 @@ EAPI=7
 
 inherit flag-o-matic
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://git.sv.gnu.org/nano.git"
+	EGIT_REPO_URI="https://git.savannah.gnu.org/git/nano.git"
 	inherit git-r3 autotools
 else
 	MY_P="${PN}-${PV/_}"
