@@ -5534,7 +5534,7 @@ dev-libs/libgdata 0.17.12 0.17.13: GLib-based library for accessing online servi
 dev-libs/libgee 0.20.3: GObject-based interfaces and classes for commonly used data structures
 dev-libs/libgit2 1.1.0-r2: A linkable library for Git
 dev-libs/libgit2-glib 0.99.0.1-r2: Git library for GLib
-dev-libs/libgnome-games-support 1.6.1 1.8.0: Library for code common to GNOME games
+dev-libs/libgnome-games-support 1.6.1 1.8.0 1.8.1: Library for code common to GNOME games
 dev-libs/libgnt 2.14.0 2.14.1: Pidgin's GLib Ncurses Toolkit
 dev-libs/libgpg-error 1.38 1.41 1.42: Contains error handling functions used by GnuPG software
 dev-libs/libgpiod 1.1.1 1.4.1: C library and tools for interacting with the linux GPIO character device
@@ -11392,8 +11392,8 @@ games-board/fruit 2.1-r1: UCI-only chess engine
 games-board/gambit 1.0.4-r1: Qt-based chess application + engine "gupta"
 games-board/gmchess 0.29.6-r3: Chinese chess with gtkmm and c++
 games-board/gnome-chess 3.36.1: Play the classic two-player boardgame of chess
-games-board/gnome-mahjongg 3.36.2: Disassemble a pile of tiles by removing matching pairs
-games-board/gnome-mines 3.36.1: Clear hidden mines from a minefield
+games-board/gnome-mahjongg 3.36.2 3.38.3: Disassemble a pile of tiles by removing matching pairs
+games-board/gnome-mines 3.36.1 40.0: Clear hidden mines from a minefield
 games-board/gnubg 1.06.002-r1: GNU BackGammon
 games-board/gnuchess 6.2.7: Console based chess interface
 games-board/gnuchess-book 1.02-r1: Opening book for gnuchess
@@ -11425,7 +11425,7 @@ games-board/simsu 1.3.9: Basic sudoku game
 games-board/sjeng 11.2_p8_p1: Console based chess interface
 games-board/stockfish 10 13: Free UCI chess engine, claimed to be the strongest in the world
 games-board/tablebase-syzygy 0_pre20131213 0_pre20131213-r100: Syzygy chess endgame tablebases for up to 6 pieces
-games-board/tali 3.36.4 3.38.2 3.38.3: Beat the odds in a poker-style dice game
+games-board/tali 3.36.4 3.38.2 3.38.3 40.0: Beat the odds in a poker-style dice game
 games-board/tetzle 2.1.3: Jigsaw puzzle game that uses tetrominoes for the pieces
 games-board/xboard 4.9.1: GUI for gnuchess and for internet chess servers
 games-board/xfreecell 1.0.5b-r1: A freecell game for X
@@ -11673,11 +11673,11 @@ games-puzzle/galaxis 1.8-r1: Curses-based clone of the nifty little Macintosh fr
 games-puzzle/gemdropx 0.9-r2: A puzzle game where it's your job to clear the screen of gems
 games-puzzle/gfifteen 1.0.3-r1: Graphical implementation of the sliding puzzle game fifteen
 games-puzzle/glightoff 1.0.0-r1: A simple (but not so easy to solve!) puzzle game
-games-puzzle/gnome-klotski 3.36.3: Slide blocks to solve the puzzle
-games-puzzle/gnome-sudoku 3.36.0: Test your logic skills in this number grid puzzle
-games-puzzle/gnome-taquin 3.36.4: Move tiles so that they reach their places
-games-puzzle/gnome-tetravex 3.36.4: Complete the puzzle by matching numbered tiles
-games-puzzle/gnome2048 3.36.0 3.36.4: Move the tiles until you obtain the 2048 tile
+games-puzzle/gnome-klotski 3.36.3 3.38.2: Slide blocks to solve the puzzle
+games-puzzle/gnome-sudoku 3.36.0 40.0: Test your logic skills in this number grid puzzle
+games-puzzle/gnome-taquin 3.36.4 3.38.1: Move tiles so that they reach their places
+games-puzzle/gnome-tetravex 3.36.4 3.38.2: Complete the puzzle by matching numbered tiles
+games-puzzle/gnome2048 3.36.0 3.36.4 3.38.2: Move the tiles until you obtain the 2048 tile
 games-puzzle/gnudoku 0.93-r1: A program for creating and solving Su Doku puzzles
 games-puzzle/gnurobbo 0.68: Robbo, a popular Atari XE/XL game ported to Linux
 games-puzzle/gottet 1.1.9: Tetris clone based on Qt5
@@ -11690,7 +11690,7 @@ games-puzzle/hexalate 1.1.6: A color matching game
 games-puzzle/hitori 3.36.0: Logic puzzle game for GNOME
 games-puzzle/icebreaker 1.9.6-r1: Trap and capture penguins on Antarctica
 games-puzzle/ksokoban 0.5.0_pre20190225 9999: The Japanese warehouse keeper game
-games-puzzle/lightsoff 3.36.0: Turn off all the lights
+games-puzzle/lightsoff 3.36.0 40.0.1: Turn off all the lights
 games-puzzle/lmarbles 1.0.8-r1: puzzle game inspired by Atomix and written in SDL
 games-puzzle/lpairs 1.0.4-r1: A classical memory game
 games-puzzle/ltris 1.0.19-r1: Very polished Tetris clone
@@ -11712,7 +11712,7 @@ games-puzzle/pingus 0.7.6-r3 9999: free Lemmings clone
 games-puzzle/pipepanic 0.1.3-r1: A simple pipe connecting game
 games-puzzle/pipewalker 0.9.4-r1: Rotating pieces puzzle game
 games-puzzle/quadra 1.2.0-r1: A tetris clone with multiplayer support
-games-puzzle/quadrapassel 3.36.05: Fit falling blocks together
+games-puzzle/quadrapassel 3.36.05 3.38.1: Fit falling blocks together
 games-puzzle/rezerwar 0.4.2-r2: Puzzle game like the known tetromino and the average pipe games
 games-puzzle/scramble 0.9.5-r1: Create as many words as you can before the time runs out
 games-puzzle/sdl-jewels 1.1.1-r1: Swap and match 3 or more jewels in a line in order to score points
