@@ -78,7 +78,7 @@ src_configure() {
 		$(use_with lzo)
 		$(use_with mecab)
 		$(use_enable msgpack message-pack)
-		$(use_with msgpack message-pack "${EPREFIX}/usr")
+		$(use_with msgpack message-pack "${ESYSROOT}/usr")
 		$(use_enable nfkc)
 		$(use_with sphinx sphinx-build)
 		$(use_enable static-libs static)
