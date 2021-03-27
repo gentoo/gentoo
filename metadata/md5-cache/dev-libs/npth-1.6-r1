@@ -1,5 +1,5 @@
 BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
-DEFINED_PHASES=configure prepare
+DEFINED_PHASES=configure install prepare
 DESCRIPTION=New GNU Portable Threads Library
 EAPI=7
 HOMEPAGE=https://git.gnupg.org/cgi-bin/gitweb.cgi?p=npth.git
@@ -9,4 +9,4 @@ LICENSE=LGPL-2.1+
 SLOT=0
 SRC_URI=mirror://gnupg/npth/npth-1.6.tar.bz2
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
-_md5_=6306d0a5eb564144bbe43fd20c8634be
+_md5_=7e61f76b13a35fdad14b6d5066232af3
