@@ -350,7 +350,7 @@ pkg_postinst() {
 	elog
 	elog "Then you need to recompile Boost and all its reverse dependencies"
 	elog "using the same toolchain. In general, *every* change of the C++ toolchain"
-	elog "requires a complete rebuild of the boost-dependent ecosystem."
+	elog "requires a complete rebuild of the Boost-dependent ecosystem."
 	elog
 	elog "See for instance https://bugs.gentoo.org/638138"
 }

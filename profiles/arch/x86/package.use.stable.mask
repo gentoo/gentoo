@@ -60,7 +60,7 @@ media-gfx/digikam mediaplayer
 # Stable mask dev-ruby/haml test till rails is stabilized.
 dev-ruby/haml test
 
-# NP-Hardass <NP-Hardass@gentoo.org> (2017-09-27)
+# Adam Feldman <NP-Hardass@gentoo.org> (2017-09-27)
 # patchset variants are not stable
 virtual/wine staging
 

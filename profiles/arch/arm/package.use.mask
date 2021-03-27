@@ -267,7 +267,7 @@ media-sound/rhythmbox upnp-av
 # Allow jdbc on this arch
 dev-db/mariadb -jdbc
 
-# Amy Winston <amynka@gentoo.org> (2016-06-12)
+# Amy Liffey <amynka@gentoo.org> (2016-06-12)
 # does not build on arm at all (upstream bug)
 dev-scheme/racket futures jit
 
