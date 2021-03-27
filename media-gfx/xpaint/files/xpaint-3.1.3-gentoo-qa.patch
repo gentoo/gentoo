@@ -1,6 +1,6 @@
-The original Makefiles did not pass CFLAGS and LDFLAGS, causing QA warnings
-See also bug https://bugs.gentoo.org/727632
-Also remove -O3 and stripping, leave portage control that
+The original Makefile did not pass CFLAGS and LDFLAGS
+See bug https://bugs.gentoo.org/727632
+Also remove -O3 and stripping
 --- a/vxp2ps/Makefile
 +++ b/vxp2ps/Makefile
 @@ -3,16 +3,16 @@
@@ -20,7 +20,7 @@ Also remove -O3 and stripping, leave portage control that
  
  install: all
 -	install -c -s vxp2ps vxp2tex vxp2dkw "$(DESTDIR)"/usr/bin
-+	install -c vxp2ps vxp2tex vxp2dkw "$(DESTDIR)"/usr/bin
++	install -c vxp2ps vxp2tex vxp2dkw "$(DESTDIR)$(BINDIR)"
  
  clean:
  	rm -f core *~ vxp2ps vxp2tex vxp2dkw

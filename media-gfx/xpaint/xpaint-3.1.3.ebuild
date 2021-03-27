@@ -42,11 +42,13 @@ BDEPEND="
 	sys-devel/flex
 	sys-devel/libtool
 	virtual/pkgconfig
+	x11-misc/imake
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.10.2-libtool-clang.patch
-	"${FILESDIR}"/${P}-cflags-ldflags-strip.patch
+	"${FILESDIR}"/${P}-libtool-clang.patch
+	"${FILESDIR}"/${P}-gentoo-qa.patch
+	"${FILESDIR}"/${P}-gentoo-prefix.patch
 )
 
 src_prepare() {
@@ -55,6 +57,12 @@ src_prepare() {
 }
 
 src_configure() {
+	# regenerate resources in app-defaults
+	# Local.xawdefs is missing and imake was complaining about it, so use it to redefine SHAREDIR
+	echo "SHAREDIR = \"${EPREFIX}\"/usr/share/xpaint" > Local.xawdefs || die
+	xmkmf || die
+	mv Makefile Makefile.resources || die
+
 	econf \
 		$(use_enable tiff) \
 		--disable-libdvipgm \
@@ -75,7 +83,11 @@ src_compile() {
 		WITH_PGF="$(usex pgf "yes" "no")" \
 		CC="$(tc-getCC)" \
 		CXX="$(tc-getCXX)" \
+		includedir="${EPREFIX}"/usr/include \
 		-C util
+
+	# regenerate resources in app-defaults
+	(rm XPaint.ad && emake -f Makefile.resources XPaint.ad) || die
 }
 
 src_install() {
