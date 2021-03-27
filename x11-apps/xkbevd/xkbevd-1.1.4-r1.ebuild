@@ -7,7 +7,7 @@ inherit xorg-3
 
 DESCRIPTION="XKB event daemon"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
 
 RDEPEND="
 	x11-libs/libX11
