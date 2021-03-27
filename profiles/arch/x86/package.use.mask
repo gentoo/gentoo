@@ -334,10 +334,6 @@ sys-apps/hwloc -gl -nvml
 # Unmask here, as it's masked in base.
 net-libs/gnutls -dane
 
-# Ben de Groot <yngwin@gentoo.org> (2012-07-30)
-# dependency keyworded here, masked in base
-media-libs/freetype -infinality
-
 # Michał Górny <mgorny@gentoo.org> (2012-04-11)
 # JIT compilation in zpaq generates code for x86/amd64.
 app-arch/zpaq -jit
