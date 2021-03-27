@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # DEPRECATED
@@ -18,6 +18,7 @@
 # base_src_install_docs() - einstalldocs from eutils.eclass
 
 # @ECLASS: base.eclass
+# @DEPRECATED: EAPI 2+ internals, see eclassdocs
 # @MAINTAINER:
 # QA Team <qa@gentoo.org>
 # @AUTHOR:
