@@ -118,6 +118,11 @@ if [[ -n ${WANT_LIBTOOL} ]] ; then
 	export WANT_LIBTOOL
 fi
 
+# @ECLASS-VARIABLE: AUTOTOOLS_DEPEND
+# @INTERNAL
+# @DESCRIPTION:
+# Contains the combination of requested automake/autoconf/libtool
+# versions in *DEPEND format.
 AUTOTOOLS_DEPEND="${_automake_atom}
 	${_autoconf_atom}
 	${_libtool_atom}"
