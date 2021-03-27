@@ -14,7 +14,7 @@ DESCRIPTION="Simple mime type detection using magic numbers, filenames, and exte
 HOMEPAGE="https://github.com/basecamp/marcel"
 SRC_URI="https://github.com/basecamp/marcel/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="MIT"
+LICENSE="Apache-2.0 MIT"
 SLOT="$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="test"
