@@ -22,7 +22,7 @@
 		via GitHub Issues.
 	</longdescription>
 	<use>
-		<flag name="http">Enable http support via curl</flag>
+		<flag name="http">Enable http support via net-misc/curl</flag>
 		<flag name="rtti">Flag to enable/disable rtti within the library</flag>
 		<flag name="unity-build">
 			Build using a single unified .cpp file for each service library.
@@ -266,7 +266,7 @@
 				(such as sensors, actuators, embedded devices, or smart appliances) and the AWS Cloud
 				over MQTT and HTTP.
 			greengrass    : Extends AWS onto physical devices so they can act locally on the data they
-				generate.
+				generate. Installed are both Version 1 and Version 2.
 			iot1click     : A service for simple devices to trigger AWS Lambda functions that execute a
 				specific action.
 			iotanalytics  : Provides advanced data analysis for AWS IoT.
@@ -276,8 +276,8 @@
 			iotthingsgraph: Integrated set of tools that enable developers to build IoT applications using
 				devices and services that use different data representation standards and communication
 				protocols.
-			Also enables iot1click-devices, iot1click-projects, iot-data, iotevents-data, iot-jobs-data and
-			iotsecuretunneling.
+			Also enables iot1click-devices, iot1click-projects, iotdeviceadvisor, iot-data, iotevents-data, iotfleethub,
+			iot-jobs-data, iotsecuretunneling and iotwireless.
 		</flag>
 		<flag name="kendra">
 			Amazon Kendra is a search service, powered by machine learning, that enables users to search
@@ -301,7 +301,7 @@
 		</flag>
 		<flag name="lex">
 			Amazon Lex is an AWS service for building conversational interfaces into applications using
-			voice and text.
+			voice and text. Installed are both Version1 and Version 2.
 			Also enables lex-models.
 		</flag>
 		<flag name="lambda">AWS Lambda: Run code without provisioning or managing servers.</flag>
@@ -362,7 +362,7 @@
 			you would like to have any of the following modules to have their own USE flag, please open a
 			bug report and it will most probably get one.
 			The modules are:
-			AWSMigrationHub, alexaforbusiness, appflow, braket, clouddirectory, comprehend,
+			AWSMigrationHub, alexaforbusiness, appflow, appintegrations, braket, clouddirectory, comprehend,
 			comprehendmedical, connect, connect-contact-lens, customer-profiles, datapipeline, databrew,
 			datasync, directconnect, discovery, dms, docdb, ds, dynamodb, gamelift, glue, groundstation,
 			healthlake, importexport, kafka, lakeformation, migrationhub-config, mq, mturk-requester,
@@ -469,6 +469,11 @@
 			requests based on conditions such as the IP addresses that requests originate from or values in
 			the requests.
 			Also enables fms, network-firewall, waf-regional and wafv2
+		</flag>
+		<flag name="wellarchitected">
+			Use the AWS Well-Architected Tool to review your workloads against current AWS architectural best practices.
+			The AWS Well-Architected Tool measures the workload and provides recommendations on how to improve your
+			architecture.
 		</flag>
 	</use>
 </pkgmetadata>
