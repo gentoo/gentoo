@@ -26,6 +26,7 @@
 		<flag name="inputs">Build with Inputs module</flag>
 		<flag name="libass">Build with SSA/ASS subtitles rendering support</flag>
 		<flag name="notifications">Build additional notifications module</flag>
+		<flag name="pipewire">Build with PipeWire support</flag>
 		<flag name="sid">Build Chiptune with SIDPLAY support</flag>
 		<flag name="shaders">Compile Vulkan shaders using <pkg>media-libs/shaderc</pkg></flag>
 		<flag name="videofilters">Build with VideoFilters module</flag>
