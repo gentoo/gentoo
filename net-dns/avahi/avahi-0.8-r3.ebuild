@@ -14,7 +14,7 @@ SRC_URI="https://github.com/lathiat/avahi/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
-IUSE="autoipd bookmarks +dbus doc gdbm gtk gtk2 howl-compat +introspection ipv6 kernel_linux mdnsresponder-compat mono nls python qt5 selinux systemd test"
+IUSE="autoipd bookmarks +dbus doc gdbm gtk howl-compat +introspection ipv6 kernel_linux mdnsresponder-compat mono nls python qt5 selinux systemd test"
 
 REQUIRED_USE="
 	python? ( dbus gdbm ${PYTHON_REQUIRED_USE} )
@@ -33,7 +33,6 @@ DEPEND="
 	dev-libs/glib:2[${MULTILIB_USEDEP}]
 	gdbm? ( sys-libs/gdbm:=[${MULTILIB_USEDEP}] )
 	qt5? ( dev-qt/qtcore:5 )
-	gtk2? ( x11-libs/gtk+:2[${MULTILIB_USEDEP}] )
 	gtk?  ( x11-libs/gtk+:3[${MULTILIB_USEDEP}] )
 	dbus? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
 	kernel_linux? ( sys-libs/libcap )
@@ -108,6 +107,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	local myconf=(
+		--disable-gtk
 		--disable-monodoc
 		--disable-python-dbus
 		--disable-qt3
@@ -122,8 +122,7 @@ multilib_src_configure() {
 		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
 		$(use_enable dbus)
 		$(use_enable gdbm)
-		$(use_enable gtk2 gtk)
-		$(use_enable gtk  gtk3)
+		$(use_enable gtk gtk3)
 		$(use_enable howl-compat compat-howl)
 		$(use_enable mdnsresponder-compat compat-libdns_sd)
 		$(use_enable nls)
@@ -167,7 +166,7 @@ multilib_src_compile() {
 
 multilib_src_install() {
 	emake install DESTDIR="${D}"
-	use bookmarks && use python && use dbus && use gtk2 || \
+	use bookmarks && use python && use dbus || \
 		rm -f "${ED}"/usr/bin/avahi-bookmarks
 
 	# https://github.com/lathiat/avahi/issues/28
