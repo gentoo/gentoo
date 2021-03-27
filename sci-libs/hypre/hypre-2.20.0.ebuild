@@ -60,7 +60,7 @@ src_configure() {
 	tc-export CC CXX
 	append-flags -Dhypre_dgesvd=dgesvd_
 
-	if use openmp && [[ $(tc-getCC)$ == *gcc* ]] ; then
+	if use openmp && [[ $(tc-getCC) == *gcc* ]] ; then
 		append-flags -fopenmp && append-ldflags -fopenmp
 	fi
 
