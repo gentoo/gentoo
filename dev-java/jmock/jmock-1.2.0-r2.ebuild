@@ -13,7 +13,7 @@ SRC_URI="http://jmock.org/downloads/${P}-jars.zip"
 
 LICENSE="BSD"
 SLOT="1.0"
-KEYWORDS="amd64 ~arm ~arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 
 CDEPEND="dev-java/junit:0"
 

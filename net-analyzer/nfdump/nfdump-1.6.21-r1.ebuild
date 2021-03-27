@@ -10,7 +10,7 @@ SRC_URI="https://github.com/phaag/nfdump/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/1.6.15"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug doc ftconv nfprofile nftrack readpcap sflow static-libs"
 
 COMMON_DEPEND="

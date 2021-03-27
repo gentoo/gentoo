@@ -11,8 +11,8 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/pkgcore/pkgdev.git"
 	inherit git-r3
 else
-	KEYWORDS="~amd64"
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+	KEYWORDS="~amd64 ~x64-macos"
 fi
 
 DESCRIPTION="Collection of tools for Gentoo development"
@@ -31,9 +31,9 @@ if [[ ${PV} == *9999 ]] ; then
 else
 	# https://github.com/pkgcore/pkgdev/blob/main/requirements/install.txt
 	RDEPEND="
-		>=dev-python/snakeoil-0.9.4[${PYTHON_USEDEP}]
+		>=dev-python/snakeoil-0.9.6[${PYTHON_USEDEP}]
 		>=dev-util/pkgcheck-0.9.1[${PYTHON_USEDEP}]
-		>=sys-apps/pkgcore-0.11.5[${PYTHON_USEDEP}]
+		>=sys-apps/pkgcore-0.11.7[${PYTHON_USEDEP}]
 	"
 fi
 
