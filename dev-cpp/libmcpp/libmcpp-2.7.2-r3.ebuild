@@ -25,6 +25,10 @@ PATCHES=(
 
 src_prepare() {
 	default
+
+	# bug #778461
+	sed -i 's/-lmcpp/libmcpp.la/' src/Makefile.am || die
+
 	eautoreconf
 }
 
