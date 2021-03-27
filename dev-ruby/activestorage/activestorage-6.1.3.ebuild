@@ -35,7 +35,7 @@ ruby_add_rdepend "
 	~dev-ruby/activejob-${PV}:*
 	~dev-ruby/activerecord-${PV}:*
 	~dev-ruby/activesupport-${PV}:*
-	>=dev-ruby/marcel-0.3.1 =dev-ruby/marcel-0.3*
+	>=dev-ruby/marcel-0.3.1:0
 	>=dev-ruby/mimemagic-0.3.2 =dev-ruby/mimemagic-0.3*
 "
 
