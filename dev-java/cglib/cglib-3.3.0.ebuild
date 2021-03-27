@@ -3,7 +3,8 @@
 
 EAPI=7
 
-JAVA_PKG_IUSE="source test"
+# doc USE flag is not in IUSE as the docs does not compile because of errors
+JAVA_PKG_IUSE="examples source test"
 MAVEN_ID="cglib:cglib:3.3.0"
 JAVA_TESTING_FRAMEWORKS="junit-4"
 
@@ -41,10 +42,16 @@ JAVA_RESOURCE_DIRS="${MY_P}/${PN}/src/main/resources"
 JAVA_TEST_GENTOO_CLASSPATH="junit-4"
 JAVA_TEST_SRC_DIR="${MY_P}/${PN}/src/test/java"
 JAVA_TEST_EXCLUDES=(
-	"net.sf.cglib.CodeGenTestCase"
+	"net.sf.cglib.CodeGenTestCase"		# not a test class
 	"net.sf.cglib.TestAll"
-	"net.sf.cglib.TestGenerator"
-	"net.sf.cglib.proxy.TestEnhancer"	# To be solved
-	"net.sf.cglib.proxy.TestInterceptor"
-	"net.sf.cglib.reflect.TestFastClass"
+	"net.sf.cglib.TestGenerator"		# not a test class
+	"net.sf.cglib.proxy.TestEnhancer"	# broken tests
+	"net.sf.cglib.proxy.TestInterceptor"	# not a test class
+	"net.sf.cglib.reflect.TestFastClass"	# broken tests
 )
+
+src_install() {
+	java-pkg-simple_src_install
+
+	use examples && java-pkg_doexamples --subdir samples ${MY_P}/cglib-sample/src/main/java
+}
