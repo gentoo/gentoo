@@ -9,7 +9,7 @@ HOMEPAGE="http://www.jemarch.net/poke"
 SRC_URI="mirror://gnu/poke/${P}.tar.gz"
 KEYWORDS="~amd64 ~x86"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 IUSE="machine-interface nls static-libs test"
 
