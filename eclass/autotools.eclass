@@ -159,6 +159,7 @@ unset _automake_atom _autoconf_atom
 # particular options
 
 # @ECLASS-VARIABLE: AT_M4DIR
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Additional director(y|ies) aclocal should search
 : ${AT_M4DIR:=}
