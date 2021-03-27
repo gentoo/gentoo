@@ -1,11 +1,13 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit desktop flag-o-matic multilib toolchain-funcs xdg
 
-DESCRIPTION="A file manager that implements the popular two-pane design"
-HOMEPAGE="https://github.com/tom2tom/emelfm2"
+EMELFM2_LINGUAS=( de fr ja pl ru zh_CN )
+inherit desktop flag-o-matic toolchain-funcs xdg
+
+DESCRIPTION="File manager that implements the popular two-pane design"
+HOMEPAGE="https://emelfm2.net/ https://github.com/tom2tom/emelfm2"
 SRC_URI="http://emelfm2.net/rel/${P}.tar.bz2"
 
 LICENSE="GPL-3 LGPL-3"
@@ -13,29 +15,25 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc ~ppc64 ~sparc x86"
 IUSE="acl ansi gimp +gtk3 kernel_linux nls policykit spell udisks"
 
-EMELFM2_LINGUAS=( de fr ja pl ru zh_CN )
-COMMON_DEPEND="
+REQUIRED_USE="spell? ( !gtk3 )"
+RESTRICT="test"
+
+DEPEND="
 	>=dev-libs/glib-2.26:2
-	!gtk3? ( >=x11-libs/gtk+-2.12:2 )
 	acl? ( sys-apps/acl )
 	gimp? ( media-gfx/gimp:0/2 )
 	gtk3? ( x11-libs/gtk+:3 )
+	!gtk3? ( >=x11-libs/gtk+-2.12:2 )
 	policykit? ( sys-auth/polkit )
 	spell? ( >=app-text/gtkspell-2.0.14:2 )
 "
-RDEPEND="
-	${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	udisks? ( sys-fs/udisks:2 )
 "
-DEPEND="
-	${COMMON_DEPEND}
+BDEPEND="
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 "
-REQUIRED_USE="
-	spell? ( !gtk3 )
-"
-RESTRICT="test"
 
 src_prepare() {
 	default
@@ -95,12 +93,4 @@ src_install() {
 	newicon icons/${PN}_48.png ${PN}.png
 
 	rm "${ED}"/usr/share/doc/${PF}/LGPL || die
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
 }
