@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit libtool multilib-minimal
+inherit autotools multilib-minimal
 
 DESCRIPTION="A rendering library for Kate streams using Pango and Cairo"
 HOMEPAGE="https://code.google.com/p/libtiger/"
@@ -25,9 +25,15 @@ BDEPEND="
 	doc? ( app-doc/doxygen )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.3.4-fix-autoreconf.patch
+	"${FILESDIR}"/${PN}-0.3.4-fix-undefined-references-slibtool.patch
+)
+
 src_prepare() {
 	default
-	elibtoolize
+
+	eautoreconf
 }
 
 multilib_src_configure() {
