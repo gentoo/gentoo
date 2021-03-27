@@ -34,16 +34,19 @@ esac
 inherit libtool
 
 # @ECLASS-VARIABLE: WANT_AUTOCONF
+# @PRE_INHERIT
 # @DESCRIPTION:
 # The major version of autoconf your package needs
 : ${WANT_AUTOCONF:=latest}
 
 # @ECLASS-VARIABLE: WANT_AUTOMAKE
+# @PRE_INHERIT
 # @DESCRIPTION:
 # The major version of automake your package needs
 : ${WANT_AUTOMAKE:=latest}
 
 # @ECLASS-VARIABLE: WANT_LIBTOOL
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Do you want libtool?  Valid values here are "latest" and "none".
 : ${WANT_LIBTOOL:=latest}
@@ -117,6 +120,7 @@ AUTOTOOLS_DEPEND="${_automake_atom}
 RDEPEND=""
 
 # @ECLASS-VARIABLE: AUTOTOOLS_AUTO_DEPEND
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Set to 'no' to disable automatically adding to DEPEND.  This lets
 # ebuilds form conditional depends by using ${AUTOTOOLS_DEPEND} in
