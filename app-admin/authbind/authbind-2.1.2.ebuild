@@ -8,6 +8,7 @@ inherit flag-o-matic toolchain-funcs
 DESCRIPTION="Bind sockets to privileged ports without root"
 HOMEPAGE="https://www.chiark.greenend.org.uk/ucgi/~ian/git/authbind.git/"
 SRC_URI="mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV}.tar.gz"
+S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -16,7 +17,7 @@ KEYWORDS="~amd64"
 BDEPEND="virtual/awk"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2.1.1-respect-flags.patch"
+	"${FILESDIR}/${PN}-2.1.2-respect-flags.patch"
 )
 
 src_configure() {
