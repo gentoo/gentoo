@@ -11,7 +11,7 @@ SRC_URI="https://github.com/Airblader/unclutter-xfixes/archive/v${PV}.tar.gz -> 
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	dev-libs/libev
