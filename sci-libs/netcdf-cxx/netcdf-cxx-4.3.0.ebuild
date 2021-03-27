@@ -14,7 +14,7 @@ SRC_URI="https://github.com/Unidata/netcdf-cxx4/archive/v${PV}.tar.gz -> ${P}.ta
 LICENSE="UCAR-Unidata"
 SLOT="0/1"
 KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
-IUSE="examples static-libs"
+IUSE="examples"
 
 RDEPEND=">=sci-libs/netcdf-4.2:=[hdf5]"
 DEPEND="${RDEPEND}"
@@ -22,7 +22,7 @@ DEPEND="${RDEPEND}"
 S="${WORKDIR}/${MYP}"
 
 src_configure() {
-	econf $(use_enable static-libs static)
+	econf --disable-static
 }
 
 src_install() {
