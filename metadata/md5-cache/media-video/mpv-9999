@@ -4,7 +4,7 @@ DEPEND=>=media-video/ffmpeg-4.0:0=[encode,threads,vaapi?,vdpau?] alsa? ( >=media
 DESCRIPTION=Media player based on MPlayer and mplayer2
 EAPI=7
 HOMEPAGE=https://mpv.io/ https://github.com/mpv-player/mpv
-INHERIT=bash-completion-r1 flag-o-matic lua-single pax-utils python-r1 toolchain-funcs waf-utils xdg-utils git-r3
+INHERIT=bash-completion-r1 flag-o-matic lua-single optfeature pax-utils python-r1 toolchain-funcs waf-utils xdg-utils git-r3
 IUSE=+alsa aqua archive bluray cdda +cli coreaudio cplugins cuda debug doc drm dvb dvd +egl gamepad gbm +iconv jack javascript jpeg lcms libcaca libmpv +lua openal +opengl pulseaudio raspberry-pi rubberband sdl selinux test tools +uchardet vaapi vdpau vulkan wayland +X +xv zlib zimg lua_single_target_luajit lua_single_target_lua5-1 lua_single_target_lua5-2 python_targets_python3_7 python_targets_python3_8 python_targets_python3_9
 LICENSE=LGPL-2.1+ GPL-2+ BSD ISC
 PROPERTIES=live
@@ -13,5 +13,5 @@ REQUIRED_USE=|| ( cli libmpv ) aqua? ( opengl ) cuda? ( opengl ) egl? ( || ( gbm
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://waf.io/waf-2.0.9
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	be99724bde4274de21e581204e9d164a	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	lua-utils	736947973cfbc9de01fdb8548f942f82	lua-single	f91b5656f00869c220a6e35ae0521c54	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-r1	6d099888c5b4dd4868c26508df307e95	multiprocessing	cac3169468f893670dac3e7cb940e045	waf-utils	0a6e492cdcbd52b1304cfcd9eba5abc6	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	git-r3	3e7ec3d6619213460c85e2aa48398441
-_md5_=9fddde796e8096b1e1f99bb902d6bd72
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	be99724bde4274de21e581204e9d164a	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	lua-utils	736947973cfbc9de01fdb8548f942f82	lua-single	f91b5656f00869c220a6e35ae0521c54	optfeature	6a2add34e06e5a05d88471a33ccdd73e	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-r1	6d099888c5b4dd4868c26508df307e95	multiprocessing	cac3169468f893670dac3e7cb940e045	waf-utils	0a6e492cdcbd52b1304cfcd9eba5abc6	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	git-r3	3e7ec3d6619213460c85e2aa48398441
+_md5_=59a31cbf9f3aa2114cb8b676bbb6a630
