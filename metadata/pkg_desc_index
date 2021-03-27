@@ -5541,7 +5541,7 @@ dev-libs/libgpiod 1.1.1 1.4.1: C library and tools for interacting with the linu
 dev-libs/libgpuarray 0.6.0 0.6.7: Library to manipulate tensors on the GPU
 dev-libs/libgudev 233-r1 234: GObject bindings for libudev
 dev-libs/libgusb 0.3.3 0.3.5 0.3.6: GObject wrapper for libusb
-dev-libs/libgweather 3.36.1: Location and timezone database and weather-lookup library
+dev-libs/libgweather 3.36.1 3.36.2 40.0: Location and timezone database and weather-lookup library
 dev-libs/libhid 0.2.17: Provides a generic and flexible way to access and interact with USB HID devices
 dev-libs/libical 3.0.8 3.0.9: An implementation of basic iCAL protocols
 dev-libs/libiconv 1.15: GNU charset conversion library for libc which doesn't implement it
@@ -14641,7 +14641,7 @@ net-dialup/linux-atm 2.5.2: Tools for ATM
 net-dialup/lrzsz 0.12.20-r4: Communication package providing the X, Y, and ZMODEM file transfer protocols
 net-dialup/mgetty 1.2.1-r1 1.2.1-r3: A programm for sending and receiving fax and voice
 net-dialup/mingetty 1.08-r1: A compact getty program for virtual consoles only
-net-dialup/minicom 2.7.1: Serial Communication Program
+net-dialup/minicom 2.7.1 2.8: Serial Communication Program
 net-dialup/moserial 3.0.12 3.0.15: A clean and friendly gtk-based serial terminal
 net-dialup/mwavem 2.0-r2: User level application for IBM Mwave modem
 net-dialup/neocon 20110228: A simple serial console utility that tries to open ttys repeatedly
