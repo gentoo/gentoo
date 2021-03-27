@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools eutils
+inherit autotools
 
 DESCRIPTION="replacement for GNU stow with extensions"
 HOMEPAGE="http://xstow.sourceforge.net/"
@@ -17,8 +17,11 @@ IUSE="ncurses"
 DEPEND="ncurses? ( sys-libs/ncurses:0= )"
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-ncurses.patch
+)
+
 src_prepare() {
-	eapply "${FILESDIR}"/${P}-ncurses.patch
 	eautoreconf
 	default
 }
@@ -29,7 +32,7 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" docdir="${EPREFIX}""/usr/share/doc/${PF}/html" install
+	emake DESTDIR="${D}" docdir="${EPREFIX}"/usr/share/doc/${PF}/html install
 	dodoc AUTHORS ChangeLog NEWS README TODO
 
 	# create new STOWDIR
