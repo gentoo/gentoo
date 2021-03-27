@@ -3,6 +3,10 @@
 
 EAPI=6
 
+# Temporarily needed for slibtool patch
+# It's upstreamed so should be able to drop in future
+# bug #778041
+GNOME2_EAUTORECONF="yes"
 inherit gnome2 multilib
 
 DESCRIPTION="A library for using 3D graphics hardware to draw pretty pictures"
@@ -56,6 +60,10 @@ DEPEND="${COMMON_DEPEND}
 # Need classic mesa swrast for tests, llvmpipe causes a test failure
 # For some reason GL3 conformance test all fails again...
 RESTRICT="test"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-slibtool.patch
+)
 
 src_prepare() {
 	# Do not build examples

@@ -1,0 +1,26 @@
+https://gitlab.gnome.org/GNOME/cogl/-/merge_requests/35
+https://bugs.gentoo.org/778041
+
+From 2bd3cbed45d633fb15625d58e6b7cb8721b0ba98 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Thu, 25 Mar 2021 07:17:20 -0700
+Subject: [PATCH] cogl-gles2: Fix undefined references.
+
+---
+ cogl-gles2/Makefile.am | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/cogl-gles2/Makefile.am b/cogl-gles2/Makefile.am
+index 72ec1eae..1328444e 100644
+--- a/cogl-gles2/Makefile.am
++++ b/cogl-gles2/Makefile.am
+@@ -17,6 +17,7 @@ endif
+ AM_CFLAGS = $(COGL_DEP_CFLAGS) $(COGL_EXTRA_CFLAGS) $(MAINTAINER_CFLAGS)
+ 
+ libcogl_gles2_la_SOURCES = cogl-gles2-api.c
++libcogl_gles2_la_LIBADD  = $(top_builddir)/cogl/libcogl.la
+ libcogl_gles2_la_LDFLAGS = \
+ 	-no-undefined \
+ 	-version-info @COGL_LT_CURRENT@:@COGL_LT_REVISION@:@COGL_LT_AGE@ \
+-- 
+GitLab
