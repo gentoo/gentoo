@@ -6,7 +6,7 @@ EAPI=7
 inherit xorg-3
 
 DESCRIPTION="Display information utility for X"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris ~x86-winnt"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris ~x86-winnt"
 IUSE="dga dmx xinerama"
 
 RDEPEND="
