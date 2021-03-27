@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,6 +21,8 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/mimemagic-0.3.2:0"
+
+ruby_add_bdepend "test? ( dev-ruby/rack )"
 
 all_ruby_prepare() {
 	sed -i -e '2irequire "pathname"' test/test_helper.rb || die
