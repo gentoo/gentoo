@@ -38,6 +38,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.19-compiler.patch
 	"${FILESDIR}"/${PN}-1.6.19-libft.patch
+	"${FILESDIR}"/${P}-libtool-archives-slibtool.patch
 )
 
 DOCS=( AUTHORS ChangeLog README.md )
