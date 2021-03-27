@@ -11,7 +11,7 @@ DESCRIPTION="QEMU QXL paravirt video driver"
 SRC_URI="https://dev.gentoo.org/~slashbeast/distfiles/${PN}/${P}.tar.xz"
 S="${WORKDIR}"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="xspice"
 REQUIRED_USE="xspice? ( ${PYTHON_REQUIRED_USE} )"
 
