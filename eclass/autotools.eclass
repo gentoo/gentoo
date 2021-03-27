@@ -19,7 +19,7 @@ if [[ ${__AUTOTOOLS_AUTO_DEPEND+set} == "set" ]] ; then
 	# eclass at that point, but that adds overhead, and it's trivial
 	# to re-order inherit in eclasses/ebuilds instead.  #409611
 	if [[ ${__AUTOTOOLS_AUTO_DEPEND} != ${AUTOTOOLS_AUTO_DEPEND} ]] ; then
-		die "AUTOTOOLS_AUTO_DEPEND changed value between inherits; please inherit autotools.eclass first! ${__AUTOTOOLS_AUTO_DEPEND} -> ${AUTOTOOLS_AUTO_DEPEND}"
+		die "AUTOTOOLS_AUTO_DEPEND changed value between inherits; please inherit ${ECLASS} first! ${__AUTOTOOLS_AUTO_DEPEND} -> ${AUTOTOOLS_AUTO_DEPEND}"
 	fi
 fi
 
@@ -648,7 +648,7 @@ _autotools_m4dir_include() {
 			# We handle it below
 			-${flag}) ;;
 			*)
-				[[ ! -d ${x} ]] && ewarn "autotools.eclass: '${x}' does not exist"
+				[[ ! -d ${x} ]] && ewarn "${ECLASS}: '${x}' does not exist"
 				include_opts+=" -${flag} ${x}"
 				;;
 		esac
