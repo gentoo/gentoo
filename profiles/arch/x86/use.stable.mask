@@ -26,10 +26,6 @@ firebird
 # sys-libs/libapparmor
 apparmor
 
-# Andrey Grozin <grozin@gentoo.org> (2014-06-25)
-# no stable versions on x86
-clozurecl
-
 # Michał Górny <mgorny@gentoo.org> (2014-03-30)
 # PyPy is unstable on this arch.
 python_targets_pypy3
