@@ -27,7 +27,11 @@ if [[ -z ${_AUTOTOOLS_ECLASS} ]]; then
 _AUTOTOOLS_ECLASS=1
 
 case ${EAPI:-0} in
-	0|1|2|3|4|5|6|7) ;;
+	0|1|2|3|4|5|6)
+		# Needed for eqawarn
+		inherit eutils
+		;;
+	7) ;;
 	*) die "${ECLASS}: EAPI ${EAPI} not supported" ;;
 esac
 
