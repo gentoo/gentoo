@@ -5,9 +5,9 @@ EAPI=7
 
 inherit flag-o-matic libtool multilib-build multilib-minimal toolchain-funcs
 
-DESCRIPTION="A high-quality and portable font engine"
+DESCRIPTION="High-quality and portable font engine"
 HOMEPAGE="https://www.freetype.org/"
-IUSE="X +adobe-cff bindist brotli bzip2 +cleartype_hinting debug fontforge harfbuzz infinality +png static-libs utils"
+IUSE="X +adobe-cff brotli bzip2 +cleartype_hinting debug fontforge harfbuzz infinality +png static-libs utils"
 
 if [[ "${PV}" != 9999 ]] ; then
 	SRC_URI="mirror://sourceforge/freetype/${P/_/}.tar.xz
@@ -24,7 +24,6 @@ fi
 
 LICENSE="|| ( FTL GPL-2+ )"
 SLOT="2"
-RESTRICT="!bindist? ( bindist )" # bug 541408
 
 RDEPEND="
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
@@ -137,11 +136,8 @@ src_prepare() {
 	# via environment (new since v2.8)
 	enable_option PCF_CONFIG_OPTION_LONG_FAMILY_NAMES
 
-	if ! use bindist; then
-		# See http://freetype.org/patents.html
-		# ClearType is covered by several Microsoft patents in the US
-		enable_option FT_CONFIG_OPTION_SUBPIXEL_RENDERING
-	fi
+	# See https://freetype.org/patents.html (expired!)
+	enable_option FT_CONFIG_OPTION_SUBPIXEL_RENDERING
 
 	if ! use adobe-cff; then
 		enable_option CFF_CONFIG_OPTION_OLD_ENGINE
