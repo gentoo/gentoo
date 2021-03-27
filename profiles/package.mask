@@ -39,6 +39,26 @@
 net-wireless/cubicsdr
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-04-24)
+# dev-dotnet/gtk-sharp is effectively unmaintained. Last upstream release
+# in 2016, version packaged in Gentoo from 2013. gtk-sharp-3 never made it
+# out of beta state. An actively developed fork that targets GTK3 exists:
+# https://github.com/GtkSharp/GtkSharp
+# Removal on 2021-05-24. Tracker bug #769041
+dev-dotnet/gtk-sharp
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-04-24)
+# Depends on deprecated dev-dotnet/gtk-sharp, bug #769077
+# Removal on 2021-05-24
+app-misc/gnutu
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-04-24)
+# Depends on deprecated dev-dotnet/gtk-sharp, bug #769083
+# Alternatives (all in app-editors category): curses-hexedit, dhex, ghex,
+# hexcurse, okteta, qhexedit2, shed, wxhexeditor
+# Removal on 2021-05-24
+dev-util/bless
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-04-24)
 # Unmaintained, depends on dev-dotnet/gtk-sharp which is dead upstream.
 # Removal on 2021-05-24; bugs #769050, #769059
 dev-dotnet/gkeyfile-sharp
