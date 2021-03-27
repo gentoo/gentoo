@@ -342,7 +342,7 @@ eaclocal() {
 _elibtoolize() {
 	local LIBTOOLIZE=${LIBTOOLIZE:-$(type -P glibtoolize > /dev/null && echo glibtoolize || echo libtoolize)}
 
-	if [[ $1 == "--auto-ltdl" ]] ; then
+	if [[ ${1} == "--auto-ltdl" ]] ; then
 		shift
 		_at_uses_libltdl && set -- "$@" --ltdl
 	fi
@@ -517,8 +517,8 @@ autotools_env_setup() {
 autotools_run_tool() {
 	# Process our own internal flags first
 	local autofail=true m4flags=false missing_ok=false return_output=false
-	while [[ -n $1 ]] ; do
-		case $1 in
+	while [[ -n ${1} ]] ; do
+		case ${1} in
 			--at-no-fail) autofail=false ;;
 			--at-m4flags) m4flags=true ;;
 			--at-missing) missing_ok=true ;;
@@ -530,11 +530,11 @@ autotools_run_tool() {
 	done
 
 	if [[ ${EBUILD_PHASE} != "unpack" && ${EBUILD_PHASE} != "prepare" ]] ; then
-		eqawarn "Running '$1' in ${EBUILD_PHASE} phase"
+		eqawarn "Running '${1}' in ${EBUILD_PHASE} phase"
 	fi
 
 	if ${missing_ok} && ! type -P ${1} >/dev/null ; then
-		einfo "Skipping '$*' because '$1' not installed"
+		einfo "Skipping '$*' because '${1}' not installed"
 		return 0
 	fi
 
@@ -563,19 +563,19 @@ autotools_run_tool() {
 		return
 	fi
 
-	printf "***** $1 *****\n***** PWD: ${PWD}\n***** $*\n\n" > "${STDERR_TARGET}"
+	printf "***** ${1} *****\n***** PWD: ${PWD}\n***** $*\n\n" > "${STDERR_TARGET}"
 
-	ebegin "Running $@"
+	ebegin "Running '$@'"
 	"$@" >> "${STDERR_TARGET}" 2>&1
 	if ! eend $? && ${autofail} ; then
 		echo
-		eerror "Failed running '$1'!"
+		eerror "Failed running '${1}'!"
 		eerror
 		eerror "Include in your bug report the contents of:"
 		eerror
 		eerror "  ${STDERR_TARGET}"
 		echo
-		die "Failed running '$1'!"
+		die "Failed running '${1}'!"
 	fi
 }
 
