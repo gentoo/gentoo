@@ -11014,7 +11014,7 @@ dev-util/radare2 4.5.1-r1 5.1.1 9999: unix-like reverse engineering framework an
 dev-util/ragel 6.10 7.0.0.12 7.0.3 7.0.4: Compiles finite state machines from regular languages into executable code
 dev-util/rats 2.4: RATS - Rough Auditing Tool for Security
 dev-util/rbtools 1.0.3 2.0: Command line tools for use with Review Board
-dev-util/re2c 2.0.3 2.1: tool for generating C-based recognizers from regular expressions
+dev-util/re2c 2.0.3 2.1.1: tool for generating C-based recognizers from regular expressions
 dev-util/rebar 2.6.4-r1: A sophisticated build-tool for Erlang projects that follows OTP principles
 dev-util/rebar-bin 3.14.4: A sophisticated build-tool for Erlang projects that follows OTP principles
 dev-util/redo 0.42a 0.42c 99999: Smaller, easier, more powerful, and more reliable than make
