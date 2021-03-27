@@ -169,6 +169,7 @@ unset _automake_atom _autoconf_atom
 : ${AT_M4DIR:=}
 
 # @ECLASS-VARIABLE: AT_SYS_M4DIR
+# @DEFAULT_UNSET
 # @INTERNAL
 # @DESCRIPTION:
 # For system integrators, a list of additional aclocal search paths.
