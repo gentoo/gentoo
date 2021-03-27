@@ -5,6 +5,10 @@
 		<email>tgbugs@gmail.com</email>
 		<name>Tom Gillespie</name>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>marco@scardovi.com</email>
+		<name>Marco Scardovi</name>
+	</maintainer>
 	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
