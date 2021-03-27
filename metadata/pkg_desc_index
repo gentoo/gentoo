@@ -901,7 +901,7 @@ app-arch/unrar 6.0.3 6.0.4: Uncompress rar files
 app-arch/unrpa 2.3.0: Ren'Py's RPA data file extractor
 app-arch/unshield 1.4.3: InstallShield CAB file extractor
 app-arch/unzip 6.0_p25-r1: unzipper for pkzip-compressed files
-app-arch/upx 3.96: Ultimate Packer for eXecutables (free version using UCL compression and not NRV)
+app-arch/upx 3.96-r1: Ultimate Packer for eXecutables (free version using UCL compression and not NRV)
 app-arch/upx-bin 3.96: Ultimate Packer for eXecutables, binary version with proprietary NRV compression
 app-arch/vimball 0.5.1 9999: a command-line vimball archive extractor
 app-arch/wimlib 1.13.3: The open source Windows Imaging (WIM) library
@@ -14746,7 +14746,7 @@ net-fs/davfs2 1.6.0: Linux FUSE (or coda) driver that allows you to mount a WebD
 net-fs/docker-volume-netshare 0.35: Docker NFS, AWS EFS, Ceph & Samba/CIFS Volume Plugin
 net-fs/libnfs 4.0.0 9999: Client library for accessing NFS shares over a network
 net-fs/mc 2021.03.06.22.16.44 2021.03.12.03.36.59: Minio client provides alternatives for ls, cat on cloud storage and filesystems
-net-fs/minio 2021.03.04.00.53.13 2021.03.12.00.00.47 2021.03.17.02.33.02: An Amazon S3 compatible object storage server
+net-fs/minio 2021.03.04.00.53.13 2021.03.12.00.00.47 2021.03.17.02.33.02 2021.03.26.00.00.41: An Amazon S3 compatible object storage server
 net-fs/netatalk 3.1.12-r1: Open Source AFP server
 net-fs/nfs-utils 2.5.1 2.5.2 2.5.3-r1: NFS client and server daemons
 net-fs/nfs4-acl-tools 0.3.5 0.3.7: Commandline and GUI tools that deal directly with NFSv4 ACLs
