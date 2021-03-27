@@ -529,8 +529,8 @@ autotools_run_tool() {
 		shift
 	done
 
-	if [[ ${EBUILD_PHASE} != "unpack" && ${EBUILD_PHASE} != "prepare" ]] ; then
-		eqawarn "Running '${1}' in ${EBUILD_PHASE} phase"
+	if [[ ${EBUILD_PHASE_FUNC} != "src_unpack" && ${EBUILD_PHASE_FUNC} != "src_prepare" ]] ; then
+		eqawarn "Running '${1}' in ${EBUILD_PHASE_FUNC} phase"
 	fi
 
 	if ${missing_ok} && ! type -P ${1} >/dev/null ; then
