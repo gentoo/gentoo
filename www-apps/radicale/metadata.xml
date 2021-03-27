@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <!-- maintainer-needed -->
-    <stabilize-allarches/>
-    <upstream>
-        <remote-id type="pypi">Radicale</remote-id>
-    </upstream>
-    <use>
-        <flag name="bcrypt">Depend on passlib to enable bcrypt and md5 authentication methods</flag>
-    </use>
+	<maintainer type="person" proxied="yes">
+		<email>marco@scardovi.com</email>
+		<name>Marco Scardovi</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">Radicale</remote-id>
+	</upstream>
+	<use>
+		<flag name="bcrypt">Depend on passlib to enable bcrypt and md5 authentication methods</flag>
+	</use>
 </pkgmetadata>
