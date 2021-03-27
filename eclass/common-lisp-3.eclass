@@ -197,6 +197,7 @@ common-lisp-export-impl-args() {
 	CL_BINARY="${1}"
 	case "${CL_BINARY}" in
 		sbcl)
+			CL_BINARY="${CL_BINARY} --non-interactive"
 			CL_NORC="--sysinit /dev/null --userinit /dev/null"
 			CL_LOAD="--load"
 			CL_EVAL="--eval"
