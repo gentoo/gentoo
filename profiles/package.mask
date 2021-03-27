@@ -535,7 +535,6 @@ net-misc/gnome-remote-desktop
 >=dev-cpp/pangomm-2.48
 
 # Andrew Ammerlaan <andrewammerlaan@riseup.net> (2020-01-26)
-# Proxy Maintainers <proxy-maint@gentoo.org>
 # v3.6.4 uses huge amounts of memory: Bug #705682
 # v3.6.1 is the latest version without this issue
 >=dev-libs/libsass-3.6.2

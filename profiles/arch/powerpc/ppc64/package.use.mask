@@ -171,7 +171,7 @@ www-client/seamonkey ipc
 x11-misc/rss-glx quesoglc
 
 # Brent Baude <ranger@gentoo.org> (2009-05-05)
-# Masking webkit from  libproxy due to TOC failure on webkit
+# Masking webkit from libproxy due to TOC failure on webkit
 # and stupid 64bit toolchain.
 net-libs/libproxy webkit
 
