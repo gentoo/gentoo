@@ -253,7 +253,7 @@ eautoreconf() {
 	done
 	${rerun_aclocal} && eaclocal
 
-	if [[ ${WANT_AUTOCONF} = 2.1 ]] ; then
+	if [[ ${WANT_AUTOCONF} == "2.1" ]] ; then
 		eautoconf
 	else
 		eautoconf --force
