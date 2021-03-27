@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,6 +21,10 @@ DEPEND="${RDEPEND}
 	dev-lang/perl"
 
 S="${WORKDIR}/${P}-src"
+
+PATCHES=(
+	"${FILESDIR}/${P}_CVE-2021-20285.patch"
+)
 
 src_compile() {
 	tc-export CXX
