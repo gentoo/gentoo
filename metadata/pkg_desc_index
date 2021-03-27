@@ -13118,7 +13118,7 @@ media-gfx/xdot 1.1 1.2 9999: Interactive viewer for Graphviz dot files
 media-gfx/xfig 3.2.7b: A menu-driven tool to draw and manipulate objects interactively in an X window
 media-gfx/xli 1.17.0-r5: X Load Image: view images or load them to root window
 media-gfx/xloadimage 4.1-r12: utility to view many different types of images under X11
-media-gfx/xpaint 2.10.2-r1: Image editor with tiff, jpeg and png support
+media-gfx/xpaint 2.10.2-r1 3.1.3: Image editor with tiff, jpeg and png support
 media-gfx/xsane 0.999-r3: graphical scanning frontend
 media-gfx/xv 3.10a-r19: Interactive image manipulation program supporting a wide variety of formats
 media-gfx/xzgv 0.9.1: Fast and simple GTK+ image viewer
@@ -13354,7 +13354,7 @@ media-libs/libopenshot-audio 0.1.9_pre20190502 0.2.0: Library for audio editing 
 media-libs/libopusenc 0.2.1: High-level API for encoding .opus files
 media-libs/libpagemaker 0.0.4 9999: C++ Library that parses the file format of Aldus/Adobe PageMaker documents
 media-libs/libpano13 2.9.19: Helmut Dersch's panorama toolbox library
-media-libs/libpgf 7.19.3: Library to load, handle and manipulate images in the PGF format
+media-libs/libpgf 7.19.3 7.21.7: Library to load, handle and manipulate images in the PGF format
 media-libs/libplacebo 2.43.0 2.43.1 2.72.2 9999: Reusable library for GPU-accelerated image processing primitives
 media-libs/libpng 1.6.37-r2: Portable Network Graphics library
 media-libs/libpng-compat 1.2.59 1.5.30: Portable Network Graphics library
@@ -18147,7 +18147,7 @@ www-apps/phpsysinfo 3.3.2: A customizable PHP script that displays information a
 www-apps/piwigo 11.3.0 11.4.0: a photo gallery software for the web
 www-apps/postfixadmin 3.2.4 3.3.5 3.3.7 3.3.8: Web Based Management tool for Postfix style virtual domains and users
 www-apps/prewikka 5.2.0: Graphical front-end analysis console for the Prelude Framework
-www-apps/radicale 2.1.12: A simple CalDAV calendar server
+www-apps/radicale 2.1.12 3.0.6: A simple CalDAV calendar server
 www-apps/redmine 4.1.1-r1: Flexible project management web application using the Ruby on Rails framework
 www-apps/rocketwiki-lqfb 0.4: Small parser which translates a wiki dialect to HTML
 www-apps/roundup 2.0.0: Issue-tracking system with command-line, web, and e-mail interfaces
@@ -18399,7 +18399,7 @@ x11-libs/libXScrnSaver 1.2.3: X.Org XScrnSaver library
 x11-libs/libXau 1.0.9-r1: X.Org X authorization library
 x11-libs/libXaw 1.0.13-r2: X.Org Xaw library
 x11-libs/libXaw3d 1.6.3: X.Org Xaw3d library
-x11-libs/libXaw3dXft 1.6.2d: Xaw3dXft library
+x11-libs/libXaw3dXft 1.6.2d 1.6.2h: Xaw3dXft library
 x11-libs/libXcomposite 0.4.5: X.Org Xcomposite library
 x11-libs/libXcursor 1.2.0: X.Org Xcursor library
 x11-libs/libXdamage 1.1.5: X.Org Xdamage library
