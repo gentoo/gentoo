@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -46,6 +46,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-20130531-use-blas-lapack-system.patch
 	"${FILESDIR}"/${PN}-20131206-lis-api-change.patch
 	"${FILESDIR}"/${PN}-20131206-DEFAULT_SOURCE-replacement.patch
+	"${FILESDIR}"/${PN}-20131206-slibtool.patch
 )
 
 src_prepare() {
