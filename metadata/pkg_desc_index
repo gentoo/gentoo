@@ -10194,7 +10194,7 @@ dev-ruby/mab 0.0.3: Markup as Ruby
 dev-ruby/magic 0.2.9-r1: Ruby FFI bindings to libmagic
 dev-ruby/mail 2.7.1: An email handling library
 dev-ruby/maildir 2.2.3: A library for reading and writing arbitrary messages in DJB's maildir format
-dev-ruby/marcel 0.3.3-r1: Simple mime type detection using magic numbers, filenames, and extensions
+dev-ruby/marcel 0.3.3-r1 1.0.0: Simple mime type detection using magic numbers, filenames, and extensions
 dev-ruby/maruku 0.7.3: A Markdown-superset interpreter written in Ruby
 dev-ruby/mash 0.1.1-r2: Mash is an extended Hash that gives simple pseudo-object functionality
 dev-ruby/maxitest 3.5.0 3.6.0: Minitest + all the features you always wanted
@@ -10211,7 +10211,7 @@ dev-ruby/method_source 0.9.2 1.0.0: Retrieve the source code for a method
 dev-ruby/middleware 0.1.0: Generalized implementation of the middleware abstraction for Ruby
 dev-ruby/mime-types 2.99.2 3.3.1: Provides a mailcap-like MIME Content-Type lookup for Ruby
 dev-ruby/mime-types-data 3.2020.0512 3.2020.1104 3.2021.0212 3.2021.0225: Registry for information about MIME media type definitions
-dev-ruby/mimemagic 0.3.9: Fast mime detection by extension or content
+dev-ruby/mimemagic 0.3.9 0.3.10: Fast mime detection by extension or content
 dev-ruby/mini_magick 4.10.1 4.11.0: Manipulate images with minimal use of memory
 dev-ruby/mini_mime 1.0.2 1.0.3: A lightweight mime type lookup toy
 dev-ruby/minispec-metadata 3.3.1: Define and access metadata in MiniTest::Spec descriptions and specs
