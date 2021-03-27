@@ -101,6 +101,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.6.0-redhat.patch
 	"${FILESDIR}"/${PN}-3.4.2-cmake-lua-version.patch
 	"${FILESDIR}"/${PN}-9999-ui-needs-wiretap.patch
+	"${FILESDIR}"/${P}-cmake-3.20.patch
 )
 
 pkg_setup() {

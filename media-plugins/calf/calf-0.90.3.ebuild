@@ -46,6 +46,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.90.1-no-automagic.patch"
 	"${FILESDIR}/${PN}-0.90.1-htmldir.patch"
 	"${FILESDIR}/${PN}-0.90.1-desktop.patch"
+	"${FILESDIR}/${PN}-0.90.3-slibtool.patch"
 )
 
 src_prepare() {
