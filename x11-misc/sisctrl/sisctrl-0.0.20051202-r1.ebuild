@@ -35,5 +35,5 @@ PATCHES=(
 src_configure() {
 	append-libs -lm
 	econf \
-		--with-xv-path="${EPREFIX}/usr/$(get_libdir)"
+		--with-xv-path="${ESYSROOT}/usr/$(get_libdir)"
 }
