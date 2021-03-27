@@ -64,9 +64,9 @@ inherit libtool
 # version.
 # If a newer slot is stable on any arch, and is NOT reflected in this list,
 # then circular dependencies may arise during emerge @system bootstraps.
-# 
-# See bug 312315 and 465732 for further information and context.
-# 
+#
+# See bug #312315 and bug #465732 for further information and context.
+#
 # Do NOT change this variable in your ebuilds!
 # If you want to force a newer minor version, you can specify the correct
 # WANT value by using a colon:  <PV>:<WANT_AUTOMAKE>
