@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake xdg-utils
+inherit cmake xdg
 
 DESCRIPTION="A Qt-based video player, which can play most formats and codecs"
 HOMEPAGE="https://github.com/zaps166/QMPlay2"
@@ -21,11 +21,11 @@ LICENSE="LGPL-3"
 SLOT="0"
 
 IUSE="avdevice +audiofilters +alsa cdio cuvid dbus extensions
-	gme inputs libass modplug notifications opengl portaudio
+	gme inputs libass modplug notifications opengl pipewire portaudio
 	pulseaudio sid shaders vaapi vdpau +videofilters visualizations vulkan xv"
 
 REQUIRED_USE="
-	audiofilters? ( || ( alsa portaudio pulseaudio ) )
+	audiofilters? ( || ( alsa pipewire portaudio pulseaudio ) )
 	extensions? ( dbus )
 	shaders? ( vulkan )"
 
@@ -49,6 +49,7 @@ RDEPEND="
 	gme? ( media-libs/game-music-emu )
 	libass? ( media-libs/libass )
 	opengl? ( virtual/opengl )
+	pipewire? ( media-video/pipewire )
 	portaudio? ( media-libs/portaudio )
 	pulseaudio? ( media-sound/pulseaudio )
 	sid? ( media-libs/libsidplayfp )
@@ -108,6 +109,7 @@ src_configure() {
 		-DUSE_CUVID=$(usex cuvid)
 		-DUSE_INPUTS=$(usex inputs)
 		-DUSE_MODPLUG=$(usex modplug)
+		-DUSE_PIPEWIRE=$(usex pipewire)
 		-DUSE_PORTAUDIO=$(usex portaudio)
 		-DUSE_PULSEAUDIO=$(usex pulseaudio)
 		-DUSE_VIDEOFILTERS=$(usex videofilters)
@@ -134,16 +136,4 @@ src_configure() {
 	fi
 
 	cmake_src_configure
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
 }
