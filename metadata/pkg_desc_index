@@ -3577,7 +3577,7 @@ dev-cpp/libcutl 1.10.0: A collection of C++ libraries (successor of libcult)
 dev-cpp/libglademm 2.6.7-r2: C++ bindings for libglade
 dev-cpp/libgnomecanvasmm 2.26.0-r1: C++ bindings for libgnomecanvas
 dev-cpp/libjson-rpc-cpp 1.3.0: JSON-RPC (1.0 & 2.0) framework for C++
-dev-cpp/libmcpp 2.7.2-r3: A portable C++ preprocessor
+dev-cpp/libmcpp 2.7.2-r3 2.7.2_p5: A portable C++ preprocessor
 dev-cpp/libodb 2.5.0_beta19: Common ODB runtime library
 dev-cpp/libodb-sqlite 2.5.0_beta19: Common ODB runtime library
 dev-cpp/libxmlpp 2.40.1-r1 3.0.1-r1: C++ wrapper for the libxml2 XML parser library
@@ -16366,7 +16366,7 @@ sci-libs/hdf5 1.10.5 1.10.5-r1: General purpose library and file format for stor
 sci-libs/hipCUB 4.0.0-r1: A thin wrapper library on top of rocPRIM or CUB
 sci-libs/hipSPARSE 4.0.0-r2: ROCm SPARSE marshalling library
 sci-libs/htslib 1.10.2: C library for high-throughput sequencing data formats
-sci-libs/hypre 2.18.2: Parallel matrix preconditioners library
+sci-libs/hypre 2.18.2-r1 2.20.0: Parallel matrix preconditioners library
 sci-libs/idlcoyote 20161220 99999999: GDL library from D. Fannings IDL courses
 sci-libs/idlmarkwardt 20160319: Craig Markwardt IDL procedures (MPFIT, CMSVLIB, etc)
 sci-libs/ignition-common 3.5.0: Set of libraries designed to rapidly develop robot applications
