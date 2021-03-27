@@ -1,11 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-AUTOTOOLS_AUTORECONF=true
-
-inherit autotools-utils eutils
+inherit autotools desktop
 
 DESCRIPTION="A fast interactive 2D plotter"
 HOMEPAGE="http://quickplot.sourceforge.net/"
@@ -20,23 +18,26 @@ RDEPEND="
 	media-libs/libsndfile
 	>=sys-libs/readline-0.6.2:0=
 	x11-libs/gtk+:3"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
+	default
+
 	sed '/libquickplot_la_LIBADD/s:$: -lm:g' -i Makefile.am || die
-	autotools-utils_src_prepare
+
+	eautoreconf
 }
 
 src_configure() {
-	local myeconfargs=(
-		--htmldir="${EPREFIX}/usr/share/doc/${PF}/html"
-	)
-	autotools-utils_src_configure
+	econf --disable-static
 }
 
 src_install() {
-	autotools-utils_src_install
+	default
+
+	find "${ED}" -name '*.la' -delete || die
+
 	make_desktop_entry 'quickplot --no-pipe' Quickplot quickplot Graphics
 	mv "${ED}"/usr/share/applications/quickplot*.desktop \
 		"${ED}"/usr/share/applications/quickplot.desktop || die
