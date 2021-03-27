@@ -1,15 +1,16 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils gnome2-utils flag-o-matic
+EAPI=7
+
+inherit flag-o-matic gnome2-utils toolchain-funcs
 
 DESCRIPTION="Crayon Physics-like drawing puzzle game using the same excellent Box2D engine"
-HOMEPAGE="http://thp.io/2015/numptyphysics/"
+HOMEPAGE="https://thp.io/2015/numptyphysics/"
 
 # This is only the SRC_URI for the user levels. The code is in git repo.
 SRC_URI="user-levels? (
-	https://github.com/thp/numptyphysics/archive/0.3.4.tar.gz -> ${P}.tar.gz
+	https://github.com/thp/numptyphysics/archive/${PV}.tar.gz -> ${P}.tar.gz
 	http://numptyphysics.garage.maemo.org/levels/butelo/butelo.npz
 	http://numptyphysics.garage.maemo.org/levels/catalyst/catalyst.npz
 	http://numptyphysics.garage.maemo.org/levels/christeck/christeck.npz
@@ -39,20 +40,22 @@ KEYWORDS="~amd64"
 IUSE="+user-levels"
 
 RDEPEND="
+	dev-libs/glib:2
 	media-libs/libsdl2[opengl,video]
 	media-libs/sdl2-image[png]
 	media-libs/sdl2-ttf
 	virtual/opengl
-	dev-libs/glib:2
 "
-DEPEND="${DEPEND}
-	virtual/pkgconfig
-"
+DEPEND="${DEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-src_prepare() {
-	default
-	append-cxxflags -std=c++11 -Isrc
-	eapply "${FILESDIR}"/${P}-gentoo.patch
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.3.5-gentoo.patch
+)
+
+src_compile() {
+	tc-export CC CXX
+	emake
 }
 
 pkg_preinst() {
