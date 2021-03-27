@@ -5323,11 +5323,11 @@ dev-libs/atf 0.21-r2: Libraries to write tests in C, C++ and shell
 dev-libs/atk 2.34.1 2.36.0: GTK+ & GNOME Accessibility Toolkit
 dev-libs/avro-c 1.9.1: c library for the apache avro data serialization system
 dev-libs/aws-c-cal 0.4.5: Crypto Abstraction Layer: Cross-Platform C99 wrapper for cryptography primitives
-dev-libs/aws-c-common 0.4.62: Core c99 package for AWS SDK for C
-dev-libs/aws-c-event-stream 0.2.5-r1: C99 implementation of the vnd.amazon.eventstream content-type
-dev-libs/aws-c-io 0.7.0-r1: AWS SDK for C module, handles IO and TLS work for application protocols
+dev-libs/aws-c-common 0.4.62 0.5.2: Core c99 package for AWS SDK for C
+dev-libs/aws-c-event-stream 0.2.5-r1 0.2.7: C99 implementation of the vnd.amazon.eventstream content-type
+dev-libs/aws-c-io 0.7.0-r1 0.9.2: AWS SDK for C module, handles IO and TLS work for application protocols
 dev-libs/aws-checksums 0.1.10: Cross-Platform HW accelerated CRC32c and CRC32 with software fallbacks
-dev-libs/aws-sdk-cpp 1.8.105: AWS SDK for C++
+dev-libs/aws-sdk-cpp 1.8.105 1.8.160: AWS SDK for C++
 dev-libs/bareos-fastlzlib 0_pre20140912 0_pre20150524: Fork of zlib-like interface to fast block compression (LZ4 or FastLZ) libraries
 dev-libs/bcm2835 1.57 1.68: Provides access to GPIO and other IO functions on the Broadcom BCM2835
 dev-libs/bemenu 0.5.0 9999: dmenu clone for wayland
@@ -5768,7 +5768,7 @@ dev-libs/rocm-opencl-runtime 3.8.0 3.9.0 3.10.0 4.0.0: Radeon Open Compute OpenC
 dev-libs/rocr-runtime 3.8.0 3.9.0 3.10.0 4.0.0 9999: Radeon Open Compute Runtime
 dev-libs/roct-thunk-interface 4.0.0 4.1.0 9999: Radeon Open Compute Thunk Interface
 dev-libs/rremove 1.0.5: A simple library to recursively delete non-empty directories
-dev-libs/s2n 0.10.21-r1: simple, small, fast and secure C99 implementation of the TLS/SSL protocols
+dev-libs/s2n 0.10.21-r1 1.0.0: Simple, small, fast and secure C99 implementation of the TLS/SSL protocols
 dev-libs/satyr 0.31: Satyr is a collection of low-level algorithms for program failure processing
 dev-libs/sdformat 9.2.0 9.3.0: Simulation Description Format (SDF) parser
 dev-libs/serd 0.30.10: Library for RDF syntax which supports reading and writing Turtle and NTriples
