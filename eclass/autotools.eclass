@@ -269,6 +269,7 @@ eautoreconf() {
 # @FUNCTION: _at_uses_pkg
 # @USAGE: <macros>
 # @INTERNAL
+# @DESCRIPTION:
 # See if the specified macros are enabled.
 _at_uses_pkg() {
 	if [[ -n $(autotools_check_macro "$@") ]] ; then
