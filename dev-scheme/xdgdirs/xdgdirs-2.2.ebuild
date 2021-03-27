@@ -9,7 +9,7 @@ SRC_URI="https://www.gnuvola.org/software/xdgdirs/${P}.tar.xz"
 
 LICENSE="GPL-3+ FDL-1.3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~hppa"
 IUSE="test"
 
 RESTRICT="!test? ( test )"
