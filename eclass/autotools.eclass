@@ -524,11 +524,11 @@ autotools_run_tool() {
 	done
 
 	if [[ ${EBUILD_PHASE} != "unpack" && ${EBUILD_PHASE} != "prepare" ]]; then
-		ewarn "QA Warning: running $1 in ${EBUILD_PHASE} phase"
+		ewarn "QA Warning: running '$1' in ${EBUILD_PHASE} phase"
 	fi
 
 	if ${missing_ok} && ! type -P ${1} >/dev/null ; then
-		einfo "Skipping '$*' due $1 not installed"
+		einfo "Skipping '$*' because '$1' not installed"
 		return 0
 	fi
 
@@ -563,13 +563,13 @@ autotools_run_tool() {
 	"$@" >> "${STDERR_TARGET}" 2>&1
 	if ! eend $? && ${autofail} ; then
 		echo
-		eerror "Failed Running $1 !"
+		eerror "Failed running '$1'!"
 		eerror
-		eerror "Include in your bugreport the contents of:"
+		eerror "Include in your bug report the contents of:"
 		eerror
 		eerror "  ${STDERR_TARGET}"
 		echo
-		die "Failed Running $1 !"
+		die "Failed running '$1'!"
 	fi
 }
 
