@@ -33,7 +33,7 @@ DEPEND+=" test? ( app-text/mupdf media-gfx/imagemagick[jpeg,png,tiff] media-vide
 ruby_add_rdepend "
 	~dev-ruby/actionpack-${PV}:*
 	~dev-ruby/activerecord-${PV}:*
-	>=dev-ruby/marcel-0.3.1 =dev-ruby/marcel-0.3*
+	>=dev-ruby/marcel-0.3.1:0
 "
 
 ruby_add_bdepend "
