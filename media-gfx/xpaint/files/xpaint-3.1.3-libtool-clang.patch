@@ -1,0 +1,26 @@
+libtool doesn't work if compiling with clang.  Need to add --tag=CC
+Also don't hardcode /usr/bin/tool in gentoo prefix
+See bug https://bugs.gentoo.org/731010
+--- a/configure.ac
++++ b/configure.ac
+@@ -17,6 +17,9 @@
+ AC_LANG_C
+ AM_PROG_AR
+ 
++dnl search libtool
++AC_PATH_PROG([PROGLIBTOOL], [libtool])
++
+ ## basic types
+ 
+ AC_TYPE_INT8_T
+--- a/xpaintrw/Makefile.am
++++ b/xpaintrw/Makefile.am
+@@ -28,7 +28,7 @@
+ 
+ xpaint_DEFINES = $(ARCH_DEFINES) $(EXTRA_DEFINES) $(XAWLIB_DEFINES)
+ 
+-LIBTOOL = /usr/bin/libtool
++LIBTOOL = @PROGLIBTOOL@ --tag=CC
+ AM_CFLAGS   = @X_CFLAGS@ @SPECIAL_CFLAGS@ $(xpaint_DEFINES)
+ AM_YFLAGS     = -d
+ CLEANFILES    = 
