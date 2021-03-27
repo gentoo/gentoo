@@ -23,7 +23,7 @@ if [[ ${__AUTOTOOLS_AUTO_DEPEND+set} == "set" ]] ; then
 	fi
 fi
 
-if [[ -z ${_AUTOTOOLS_ECLASS} ]]; then
+if [[ -z ${_AUTOTOOLS_ECLASS} ]] ; then
 _AUTOTOOLS_ECLASS=1
 
 case ${EAPI:-0} in
@@ -78,7 +78,7 @@ _LATEST_AUTOMAKE=( 1.16.2-r1:1.16 )
 
 _automake_atom="sys-devel/automake"
 _autoconf_atom="sys-devel/autoconf"
-if [[ -n ${WANT_AUTOMAKE} ]]; then
+if [[ -n ${WANT_AUTOMAKE} ]] ; then
 	case ${WANT_AUTOMAKE} in
 		# Even if the package doesn't use automake, we still need to depend
 		# on it because we run aclocal to process m4 macros.  This matches
@@ -370,6 +370,7 @@ eautoconf() {
 		echo
 		die "No configure.{ac,in} present!"
 	fi
+
 	if [[ ${WANT_AUTOCONF} != "2.1" && -e configure.in ]] ; then
 		eqawarn "This package has a configure.in file which has long been deprecated.  Please"
 		eqawarn "update it to use configure.ac instead as newer versions of autotools will die"
@@ -414,7 +415,7 @@ eautomake() {
 	if [[ -z ${makefile_name} ]] ; then
 		_at_uses_automake || return 0
 
-	elif [[ -z ${FROM_EAUTORECONF} && -f ${makefile_name%.am}.in ]]; then
+	elif [[ -z ${FROM_EAUTORECONF} && -f ${makefile_name%.am}.in ]] ; then
 		local used_automake
 		local installed_automake
 
@@ -422,7 +423,7 @@ eautomake() {
 		used_automake=$(head -n 1 < ${makefile_name%.am}.in | \
 			sed -e 's:.*by automake \(.*\) from .*:\1:')
 
-		if [[ ${installed_automake} != ${used_automake} ]]; then
+		if [[ ${installed_automake} != ${used_automake} ]] ; then
 			ewarn "Automake used for the package (${used_automake}) differs from" \
 				"the installed version (${installed_automake})."
 			ewarn "Forcing a full rebuild of the autotools to workaround."
@@ -437,8 +438,8 @@ eautomake() {
 	# Older versions of automake do not support --force-missing.  But we want
 	# to use this whenever possible to update random bundled files, bug #133489.
 	case $(_automake_version) in
-	1.4|1.4[.-]*) ;;
-	*) extra_opts+=( --force-missing ) ;;
+		1.4|1.4[.-]*) ;;
+		*) extra_opts+=( --force-missing ) ;;
 	esac
 
 	autotools_run_tool automake --add-missing --copy "${extra_opts[@]}" "$@"
@@ -486,7 +487,7 @@ config_rpath_update() {
 autotools_env_setup() {
 	# We do the "latest" → version switch here because it solves
 	# possible order problems, see bug #270010 as an example.
-	if [[ ${WANT_AUTOMAKE} == "latest" ]]; then
+	if [[ ${WANT_AUTOMAKE} == "latest" ]] ; then
 		local pv
 		for pv in ${_LATEST_AUTOMAKE[@]/#*:} ; do
 			# Break on first hit to respect _LATEST_AUTOMAKE order.
@@ -518,17 +519,17 @@ autotools_run_tool() {
 	local autofail=true m4flags=false missing_ok=false return_output=false
 	while [[ -n $1 ]] ; do
 		case $1 in
-		--at-no-fail) autofail=false;;
-		--at-m4flags) m4flags=true;;
-		--at-missing) missing_ok=true;;
-		--at-output)  return_output=true;;
-		# whatever is left goes to the actual tool
-		*) break;;
+			--at-no-fail) autofail=false ;;
+			--at-m4flags) m4flags=true ;;
+			--at-missing) missing_ok=true ;;
+			--at-output)  return_output=true ;;
+			# whatever is left goes to the actual tool
+			*) break ;;
 		esac
 		shift
 	done
 
-	if [[ ${EBUILD_PHASE} != "unpack" && ${EBUILD_PHASE} != "prepare" ]]; then
+	if [[ ${EBUILD_PHASE} != "unpack" && ${EBUILD_PHASE} != "prepare" ]] ; then
 		eqawarn "Running '$1' in ${EBUILD_PHASE} phase"
 	fi
 
