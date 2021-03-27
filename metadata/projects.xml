@@ -360,6 +360,10 @@
       <role>Specialized block devices and lots of other miscellaneous stuff</role>
     </member>
     <member>
+      <email>soap@gentoo.org</email>
+      <name>David Seifert</name>
+    </member>
+    <member>
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
     </member>
