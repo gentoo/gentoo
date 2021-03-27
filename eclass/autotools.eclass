@@ -528,7 +528,7 @@ autotools_run_tool() {
 	done
 
 	if [[ ${EBUILD_PHASE} != "unpack" && ${EBUILD_PHASE} != "prepare" ]]; then
-		ewarn "QA Warning: running '$1' in ${EBUILD_PHASE} phase"
+		eqawarn "Running '$1' in ${EBUILD_PHASE} phase"
 	fi
 
 	if ${missing_ok} && ! type -P ${1} >/dev/null ; then
