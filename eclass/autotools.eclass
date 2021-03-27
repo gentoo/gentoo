@@ -78,7 +78,7 @@ if [[ -n ${WANT_AUTOMAKE} ]]; then
 	case ${WANT_AUTOMAKE} in
 		# Even if the package doesn't use automake, we still need to depend
 		# on it because we run aclocal to process m4 macros.  This matches
-		# the autoreconf tool, so this requirement is correct.  #401605
+		# the autoreconf tool, so this requirement is correct, bug #401605.
 		none) ;;
 		latest)
 			# Use SLOT deps if we can.  For EAPI=0, we get pretty close.
@@ -188,13 +188,13 @@ unset _automake_atom _autoconf_atom
 eautoreconf() {
 	local x g
 
-	# Subdirs often share a common build dir #529404.  If so, we can't safely
+	# Subdirs often share a common build dir, bug #529404.  If so, we can't safely
 	# run in parallel because many tools clobber the content in there.  Libtool
 	# and automake both `rm && cp` while aclocal reads the output.  We might be
 	# able to handle this if we split the steps and grab locks on the dirs the
 	# tools actually write to.  Then we'd run all the common tools that use
 	# those inputs.  Doing this in bash does not scale easily.
-	# If we do re-enable parallel support, make sure #426512 is handled.
+	# If we do re-enable parallel support, make sure bug #426512 is handled.
 	if [[ -z ${AT_NO_RECURSIVE} ]] ; then
 		# Take care of subdirs
 		for x in $(autotools_check_macro_val AC_CONFIG_SUBDIRS) ; do
@@ -300,8 +300,8 @@ eaclocal_amflags() {
 		[[ -e ${amflags_file} ]] || continue
 		# setup the env in case the pkg does something crazy
 		# in their ACLOCAL_AMFLAGS.  like run a shell script
-		# which turns around and runs autotools. #365401
-		# or split across multiple lines. #383525
+		# which turns around and runs autotools (bug #365401)
+		# or split across multiple lines (bug #383525)
 		autotools_env_setup
 		aclocal_opts=$(sed -n \
 			"/^ACLOCAL_AMFLAGS[[:space:]]*=/{ \
@@ -323,7 +323,7 @@ eaclocal_amflags() {
 # specified parametes. The name of the tool run is the same of the function
 # without e prefix.
 # They also force installing the support files for safety.
-# Respects AT_M4DIR for additional directories to search for macro's.
+# Respects AT_M4DIR for additional directories to search for macros.
 eaclocal() {
 	[[ ! -f aclocal.m4 || -n $(grep -e 'generated.*by aclocal' aclocal.m4) ]] && \
 		autotools_run_tool --at-m4flags aclocal "$@" $(eaclocal_amflags)
@@ -372,7 +372,7 @@ eautoconf() {
 	fi
 
 	# Install config.guess and config.sub which are required by many macros
-	# in Autoconf >=2.70.
+	# in autoconf >=2.70.
 	local _gnuconfig
 	case ${EAPI:-0} in
 		0|1|2|3|4|5|6)
@@ -430,7 +430,7 @@ eautomake() {
 		|| extra_opts+=( --foreign )
 
 	# Older versions of automake do not support --force-missing.  But we want
-	# to use this whenever possible to update random bundled files #133489.
+	# to use this whenever possible to update random bundled files, bug #133489.
 	case $(_automake_version) in
 	1.4|1.4[.-]*) ;;
 	*) extra_opts+=( --force-missing ) ;;
@@ -534,7 +534,7 @@ autotools_run_tool() {
 
 	autotools_env_setup
 
-	# Allow people to pass in full paths. #549268
+	# Allow people to pass in full paths, bug #549268
 	local STDERR_TARGET="${T}/${1##*/}.out"
 	# most of the time, there will only be one run, but if there are
 	# more, make sure we get unique log filenames
