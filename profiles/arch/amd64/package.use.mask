@@ -305,10 +305,6 @@ dev-python/pypy3-exe cpu_flags_x86_sse2
 # Unmask here, as it's masked in base.
 net-libs/gnutls -dane
 
-# Ben de Groot <yngwin@gentoo.org> (2012-07-30)
-# dependency keyworded here, masked in base
-media-libs/freetype -infinality
-
 # Alexandre Rostovtsev <tetromino@gentoo.org> (2012-04-12)
 # Temporary mask-in-base, unmask-in-arch for dev-python/mako keywording for
 # gobject-introspection[doctool], bug #411761
