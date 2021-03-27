@@ -16,8 +16,7 @@ fi
 DESCRIPTION="Common linux commands in a multicall binary"
 HOMEPAGE="https://landley.net/code/toybox/"
 
-# The source code does not explicitly say that it's BSD, but the author has repeatedly said it
-LICENSE="BSD-2"
+LICENSE="0BSD"
 SLOT="0"
 
 src_prepare() {
