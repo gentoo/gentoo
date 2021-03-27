@@ -10,7 +10,7 @@
 # Author: Donnie Berkholz <dberkholz@gentoo.org>
 # @SUPPORTED_EAPIS: 4 5
 # @BLURB: Reduces code duplication in the modularized X11 ebuilds.
-# @DEPRECATED: Use xorg-3.eclass
+# @DEPRECATED: xorg-3.eclass
 # @DESCRIPTION:
 # This eclass makes trivial X ebuilds possible for apps, fonts, drivers,
 # and more. Many things that would normally be done in various functions
