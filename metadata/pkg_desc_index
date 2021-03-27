@@ -4743,7 +4743,7 @@ dev-java/c3p0 0.9.5.1: JDBC drivers with JNDI-bindable DataSources
 dev-java/cal10n 0.8.1: java library for writing localized messages using resource bundle
 dev-java/cdegroot-db 0.08-r2: OO database written in Java
 dev-java/cdi-api 1.2 1.2-r1: Contexts and Dependency Injection for the Java EE platform
-dev-java/cglib 3.1: cglib is a powerful, high performance and quality Code Generation Library
+dev-java/cglib 3.1 3.3.0: cglib is a powerful, high performance and quality Code Generation Library
 dev-java/classmate 0.9.0-r1 1.0.0 1.1.0 1.2.0: Zero-dependency Java library for accurately introspecting type information
 dev-java/cldc-api 1.1-r1: Java ME Connected Limited Device Configuration API
 dev-java/codemodel 2.6: Java library for code generators
