@@ -18,7 +18,9 @@
   <use>
     <flag name="clisp">Compile maxima with GNU CLISP
     (<pkg>dev-lisp/clisp</pkg>)</flag>
-    <flag name="clozurecl">Compile maxima with Clozure Common Lisp
+    <flag name="clozurecl">Compile maxima with 32-bit Clozure Common Lisp
+    (<pkg>dev-lisp/clozurecl</pkg>)</flag>
+    <flag name="clozurecl64">Compile maxima with 64-bit Clozure Common Lisp
     (<pkg>dev-lisp/clozurecl</pkg>)</flag>
     <flag name="cmucl">Compile maxima with CMU Common Lisp
     (<pkg>dev-lisp/cmucl</pkg>)</flag>
