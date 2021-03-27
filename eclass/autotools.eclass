@@ -4,7 +4,7 @@
 # @ECLASS: autotools.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Regenerates auto* build scripts
 # @DESCRIPTION:
 # This eclass is for safely handling autotooled software packages that need to
@@ -27,7 +27,7 @@ if [[ -z ${_AUTOTOOLS_ECLASS} ]] ; then
 _AUTOTOOLS_ECLASS=1
 
 case ${EAPI:-0} in
-	0|1|2|3|4|5|6)
+	5|6)
 		# Needed for eqawarn
 		inherit eutils
 		;;
@@ -132,7 +132,7 @@ RDEPEND=""
 : ${AUTOTOOLS_AUTO_DEPEND:=yes}
 if [[ ${AUTOTOOLS_AUTO_DEPEND} != "no" ]] ; then
 	case ${EAPI:-0} in
-		0|1|2|3|4|5|6) DEPEND=${AUTOTOOLS_DEPEND} ;;
+		4|5|6) DEPEND=${AUTOTOOLS_DEPEND} ;;
 		7) BDEPEND=${AUTOTOOLS_DEPEND} ;;
 	esac
 fi
