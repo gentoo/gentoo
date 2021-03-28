@@ -25,7 +25,7 @@ src_install() {
 	default
 
 	if use examples ; then
-		insinto /usr/share/doc/${PF}
-		doins -r examples
+		docinto examples
+		dodoc -r examples
 	fi
 }
