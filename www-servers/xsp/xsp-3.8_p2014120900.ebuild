@@ -27,7 +27,6 @@ PATCHES=(
 	"${FILESDIR}/aclocal-fix.patch"
 )
 
-
 METAFILETOBUILD=xsp.sln
 
 src_prepare() {
