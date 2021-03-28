@@ -20,6 +20,7 @@ KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="doc test developer"
 RESTRICT="!test? ( test )"
 
+BDEPEND="app-arch/unzip"
 RDEPEND="dev-db/sqlite:3"
 DEPEND="${RDEPEND}"
 
