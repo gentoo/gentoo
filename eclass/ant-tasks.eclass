@@ -84,7 +84,7 @@ MY_P="apache-ant-${MY_PV}"
 
 # Default values for standard ebuild variables, can be overridden from ebuild.
 DESCRIPTION="Apache Ant's optional tasks depending on ${ANT_TASK_DEPNAME}"
-HOMEPAGE="http://ant.apache.org/"
+HOMEPAGE="https://ant.apache.org/"
 SRC_URI="${UPSTREAM_PREFIX}/${MY_P}-src.tar.bz2
 	${GENTOO_PREFIX}/ant-${PV}-gentoo.tar.bz2"
 LICENSE="Apache-2.0"
