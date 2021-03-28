@@ -45,7 +45,6 @@ RDEPEND="
 	ocaml? (
 		dev-lang/ocaml
 		dev-ml/camlidl
-		cairo? ( dev-ml/cairo-ocaml[gtk] )
 	)
 	octave? ( sci-mathematics/octave:0= )
 	pdf? ( media-libs/libharu:0= )
