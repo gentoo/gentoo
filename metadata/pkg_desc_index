@@ -15587,7 +15587,7 @@ net-p2p/tremc 0.9.2: Ncurses interface for the Transmission BitTorrent client
 net-p2p/tvrss 1.8_beta: TV RSS is a tool for automating torrent downloads
 net-p2p/vuze 5.7.6.0: BitTorrent client in Java, formerly called Azureus
 net-p2p/vuze-coreplugins 5.7.6.0: Core plugins for Vuze that are included in upstream distribution
-net-p2p/xmr-stak 2.8.3 2.9.0 2.10.6 2.10.7 2.10.8 9999: Unified all-in-one Monero miner
+net-p2p/xmr-stak 2.10.8 9999: Unified all-in-one Monero miner
 net-p2p/xmr-stak-rx 1.0.4 1.0.5 9999: Monero RandomX Miner
 net-print/apsfilter 7.2.8-r1: Apsfilter Prints So Fine, It Leads To Extraordinary Results
 net-print/brlaser 6: Brother laser printer driver
