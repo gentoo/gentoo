@@ -4,7 +4,7 @@
 EAPI=7
 inherit toolchain-funcs
 
-KEYWORDS="amd64 ~arm ~ppc x86"
+KEYWORDS="amd64 arm ~ppc x86"
 
 DESCRIPTION="A simple CLI program for displaying network statistics in real time"
 HOMEPAGE="http://ifstatus.sourceforge.net/"

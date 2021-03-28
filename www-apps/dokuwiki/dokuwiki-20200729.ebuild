@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,7 +23,7 @@ DESCRIPTION="DokuWiki is a simple to use Wiki aimed at a small company's documen
 HOMEPAGE="https://wiki.dokuwiki.org"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ~sparc ~x86"
 IUSE="gd"
 
 DEPEND=""
