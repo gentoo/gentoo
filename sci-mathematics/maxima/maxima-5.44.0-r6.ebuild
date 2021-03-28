@@ -204,6 +204,13 @@ src_install() {
 		insinto /usr/share/${PN}/${PV}/doc/imaxima
 		doins interfaces/emacs/imaxima/README
 		doins -r interfaces/emacs/imaxima/imath-example
+
+		if ! use gcl; then
+			# This emacs package is used to run gcl, maxima, gdb, etc.
+			# all at once and possibly in the same buffer. As such, it's
+			# no use without gcl (more to the point: it requires gcl.el).
+			find "${ED}" -name 'dbl.el' -type f -delete || die
+		fi
 	fi
 
 	if use ecls; then
