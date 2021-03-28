@@ -3,7 +3,7 @@
 
 EAPI=7
 
-USE_RUBY="ruby25 ruby26 ruby27"
+USE_RUBY="ruby25 ruby26 ruby27 ruby30"
 inherit autotools flag-o-matic multilib-minimal ruby-single
 
 DESCRIPTION="Alternative to vendor specific OpenCL ICD loaders"
