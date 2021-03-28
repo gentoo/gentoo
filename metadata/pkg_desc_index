@@ -9987,8 +9987,8 @@ dev-ruby/bourne 1.6.0: Extends mocha to allow tracking and querying of stub and 
 dev-ruby/brass 1.2.1: BRASS is a very basic assertions framework for Ruby
 dev-ruby/brotli 0.2.3 0.4.0 0.4.0-r1: Brotli compressor/decompressor
 dev-ruby/bsearch 1.5.0-r2 1.5.0-r3: A binary search library for Ruby
-dev-ruby/bson 4.9.4 4.10.0: A Ruby BSON implementation for MongoDB. (Includes binary C-based extension.)
-dev-ruby/buftok 0.2.0-r1: Statefully split input data by a specifiable token
+dev-ruby/bson 4.9.4 4.10.0 4.12.0: A Ruby BSON implementation for MongoDB. (Includes binary C-based extension.)
+dev-ruby/buftok 0.2.0-r1 0.3.0: Statefully split input data by a specifiable token
 dev-ruby/builder 3.2.3 3.2.4: A builder to facilitate programatic generation of XML markup
 dev-ruby/bundler 2.1.4 2.2.10 2.2.11 2.2.12 2.2.13 2.2.14 2.2.15: An easy way to vendor gem dependencies
 dev-ruby/bundler-audit 0.7.0.1 0.8.0: Provides patch-level verification for Bundled apps
@@ -10545,7 +10545,7 @@ dev-ruby/turbolinks-source 5.2.0: Turbolinks JavaScript assets
 dev-ruby/twitter 7.0.0: Ruby wrapper around the Twitter API
 dev-ruby/twitter-text 3.1.0: Text handling for Twitter
 dev-ruby/typed-array 0.1.2-r1: Gem provides enforced-type functionality to Arrays
-dev-ruby/typeprof 0.11.0 0.12.0: Performs a type analysis of non-annotated Ruby code
+dev-ruby/typeprof 0.11.0 0.12.0 0.13.0: Performs a type analysis of non-annotated Ruby code
 dev-ruby/typhoeus 0.6.9-r1 1.3.1 1.4.0: Runs HTTP requests in parallel while cleanly encapsulating handling logic
 dev-ruby/tzinfo 1.2.5 1.2.7 1.2.8 2.0.4: Daylight-savings aware timezone library
 dev-ruby/uconv 0.6.1-r2: A module to convert ISO/IEC 10646 (Unicode) string and Japanese strings
