@@ -13,7 +13,7 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://git.tuxfamily.org/chrony/chrony.git"
 else
 	SRC_URI="https://download.tuxfamily.org/${PN}/${P/_/-}.tar.gz"
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 sparc x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 sparc x86"
 fi
 
 S="${WORKDIR}/${P/_/-}"
