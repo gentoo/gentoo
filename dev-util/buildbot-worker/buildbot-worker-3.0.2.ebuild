@@ -4,11 +4,8 @@
 EAPI="7"
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-EGIT_REPO_URI="https://github.com/buildbot/buildbot.git"
-
 DISTUTILS_USE_SETUPTOOLS="rdepend"
 
-inherit git-r3
 inherit readme.gentoo-r1 distutils-r1
 
 DESCRIPTION="BuildBot Worker (slave) Daemon"
@@ -16,10 +13,11 @@ HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pyp
 
 MY_V="${PV/_p/.post}"
 MY_P="${PN}-${MY_V}"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 
 IUSE="test"
 RESTRICT="!test? ( test )"
@@ -37,7 +35,7 @@ DEPEND="${RDEPEND}
 	)
 "
 
-S="${S}/worker"
+S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	DOC_CONTENTS="The \"buildbot\" user and the \"buildbot_worker\" init script has been added
