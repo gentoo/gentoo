@@ -8,25 +8,17 @@ inherit llvm pax-utils toolchain-funcs
 # correct versions for stdlibs are in deps/checksums
 # for everything else, run with network-sandbox and wait for the crash
 
-MY_PV="${PV//_rc/-rc}"
-MY_DSFMT_V="2.2.4"
 MY_LIBUV_V="fb3e3364c33ae48c827f6b103e05c3f0e78b79a9"
 MY_LIBWHICH_V="81e9723c0273d78493dc8c8ed570f68d9ce7e89e"
 MY_LLVM_V="11.0.1"
-MY_PKG_V="05fa7f93f73afdabd251247d03144de9f7b36b50"
-MY_UNICODE_V="13.0.0"
-MY_UTF8PROC_V="3203baa7374d67132384e2830b2183c92351bffc"
 
 DESCRIPTION="High-performance programming language for technical computing"
 HOMEPAGE="https://julialang.org/"
+
 SRC_URI="
-	https://github.com/JuliaLang/${PN}/releases/download/v${MY_PV}/${PN}-${MY_PV}.tar.gz
+	https://github.com/JuliaLang/julia/releases/download/v${PV}/${P}.tar.gz
 	https://api.github.com/repos/JuliaLang/libuv/tarball/${MY_LIBUV_V} -> ${PN}-libuv-${MY_LIBUV_V}.tar.gz
-	https://api.github.com/repos/JuliaLang/utf8proc/tarball/${MY_UTF8PROC_V} -> ${PN}-utf8proc-${MY_UTF8PROC_V}.tar.gz
 	https://api.github.com/repos/vtjnash/libwhich/tarball/${MY_LIBWHICH_V} -> ${PN}-libwhich-${MY_LIBWHICH_V}.tar.gz
-	https://github.com/MersenneTwister-Lab/dSFMT/archive/v${MY_DSFMT_V}.tar.gz -> ${PN}-dsfmt-${MY_DSFMT_V}.tar.gz
-	http://www.unicode.org/Public/${MY_UNICODE_V}/ucd/UnicodeData.txt -> ${PN}-UnicodeData-${MY_UNICODE_V}.txt
-	https://dev.gentoo.org/~patrick/Pkg-${MY_PKG_V}.tar.gz -> ${PN}-Pkg-${MY_PKG_V}.tar.gz
 	!system-llvm? ( https://github.com/llvm/llvm-project/releases/download/llvmorg-${MY_LLVM_V}/llvm-${MY_LLVM_V}.src.tar.xz )
 "
 
@@ -41,19 +33,16 @@ RDEPEND="
 "
 LLVM_MAX_SLOT=11
 
-# Silence some QA warnings. The julia build system does not use user
-# defined CFLAGS for some of the generated binary modules.
-QA_FLAGS_IGNORED='.*'
-
 RDEPEND+="
-	dev-libs/double-conversion:0=
+	app-arch/p7zip
 	dev-libs/gmp:0=
 	dev-libs/libgit2:0
 	>=dev-libs/libpcre2-10.23:0=[jit,unicode]
 	dev-libs/mpfr:0=
-	dev-libs/openspecfun
-	net-libs/libssh2
+	dev-libs/libutf8proc:0=
+	dev-util/patchelf
 	>=net-libs/mbedtls-2.2
+	net-misc/curl[http2,ssh]
 	sci-libs/amd:0=
 	sci-libs/arpack:0=
 	sci-libs/camd:0=
@@ -64,10 +53,8 @@ RDEPEND+="
 	sci-libs/openlibm:0=
 	sci-libs/spqr:0=
 	sci-libs/umfpack:0=
-	sci-mathematics/glpk:0=
-	sci-mathematics/z3
+	>=sci-mathematics/dsfmt-2.2.4
 	>=sys-libs/libunwind-1.1:0=
-	sys-libs/readline:0=
 	sys-libs/zlib:0=
 	>=virtual/blas-3.6
 	virtual/lapack"
@@ -77,37 +64,23 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.6.0-fix_build_system.patch
-	"${FILESDIR}"/${PN}-1.1.0-fix_llvm_install.patch
-	"${FILESDIR}"/${PN}-1.4.0-no_symlink_llvm.patch
+	"${FILESDIR}/${PN}"-1.1.0-fix_llvm_install.patch
+	"${FILESDIR}/${PN}"-1.4.0-no_symlink_llvm.patch
+	"${FILESDIR}/${PN}"-1.6.0-fix-system-csl.patch
 )
-
-S="${WORKDIR}/${PN}-${MY_PV}"
 
 pkg_setup() {
 	use system-llvm && llvm_pkg_setup
 }
 
 src_unpack() {
-	tounpack=(${A})
+	local tounpack=(${A})
 	# the main source tree, followed by deps
-	unpack "${A/%\ */}"
+	unpack "${tounpack[0]}"
 
 	mkdir -p "${S}/deps/srccache/"
 	for i in "${tounpack[@]:1}"; do
-		if [[ $i == *Pkg* ]] || [[ $i = *Statistics* ]]; then
-			# Bundled Pkg and Statistics packages go into ./stdlib
-			local tarball="${i#julia-}"
-			cp "${DISTDIR}/${i}" "${S}/stdlib/srccache/${tarball}" || die
-			# and we have to fix up the sha1sum
-			local name="${tarball%-*}"
-			local sha1="${tarball#*-}"
-			sha1="${sha1%.tar*}"
-			einfo "using patched stdlib package \"${name}\""
-			sed -i -e "s/PKG_SHA1 = .*/PKG_SHA1 = ${sha1}/" "${S}/stdlib/Pkg.version" || die
-		else
-			cp "${DISTDIR}/${i}" "${S}/deps/srccache/${i#julia-}" || die
-		fi
+		cp "${DISTDIR}/${i}" "${S}/deps/srccache/${i#julia-}" || die
 	done
 }
 
@@ -120,19 +93,8 @@ src_prepare() {
 	# - respect EPREFIX and Gentoo specific paths
 
 	sed -i \
-		-e "s|GENTOOCFLAGS|${CFLAGS}|g" \
-		-e "s|/usr/include|${EPREFIX}/usr/include|g" \
-		deps/Makefile || die
-
-	sed -i \
-		-e "s|GENTOOCFLAGS|${CFLAGS}|g" \
-		-e "s|GENTOOLIBDIR|$(get_libdir)|" \
+		-e "\|SHIPFLAGS :=|c\\SHIPFLAGS := ${CFLAGS}" \
 		Make.inc || die
-
-	sed -i \
-		-e "s|,lib)|,$(get_libdir))|g" \
-		-e "s|\$(BUILD)/lib|\$(BUILD)/$(get_libdir)|g" \
-		Makefile || die
 
 	sed -i \
 		-e "s|ar -rcs|$(tc-getAR) -rcs|g" \
@@ -140,64 +102,63 @@ src_prepare() {
 
 	# disable doc install starting	git fetching
 	sed -i -e 's~install: $(build_depsbindir)/stringreplace $(BUILDROOT)/doc/_build/html/en/index.html~install: $(build_depsbindir)/stringreplace~' Makefile || die
-
-	# now using sha512 additionally, so need to recreate checksum -
-	sha512sum "${S}/stdlib/srccache/Pkg-${MY_PKG_V}.tar.gz" | awk '{ print $1; }' >  "${S}/deps/checksums/Pkg-${MY_PKG_V}.tar.gz/sha512" || die
 }
 
 src_configure() {
-	# julia does not play well with the system versions of dsfmt, libuv,
-	# and utf8proc
-
 	use system-llvm && ewarn "You have enabled system-llvm. This is unsupported by upstream and may not work."
 
+	# julia does not play well with the system versions of libuv
 	# USE_SYSTEM_LIBM=0 implies using external openlibm
 	cat <<-EOF > Make.user
+		LOCALBASE:="${EPREFIX}/usr"
+		override prefix:="${EPREFIX}/usr"
+		override libdir:="\$(prefix)/$(get_libdir)"
+		override CC:=$(tc-getCC)
+		override CXX:=$(tc-getCXX)
+		override AR:=$(tc-getAR)
+
+		BUNDLE_DEBUG_LIBS:=0
 		USE_BINARYBUILDER:=0
+		USE_SYSTEM_CSL:=1
 		USE_SYSTEM_LLVM:=$(usex system-llvm 1 0)
 		USE_SYSTEM_LIBUNWIND:=1
 		USE_SYSTEM_PCRE:=1
 		USE_SYSTEM_LIBM:=0
 		USE_SYSTEM_OPENLIBM:=1
-		USE_SYSTEM_DSFMT:=0
+		USE_SYSTEM_DSFMT:=1
 		USE_SYSTEM_BLAS:=1
 		USE_SYSTEM_LAPACK:=1
 		USE_SYSTEM_GMP:=1
 		USE_SYSTEM_MPFR:=1
 		USE_SYSTEM_SUITESPARSE:=1
 		USE_SYSTEM_LIBUV:=0
-		USE_SYSTEM_UTF8PROC:=0
+		USE_SYSTEM_UTF8PROC:=1
 		USE_SYSTEM_MBEDTLS:=1
 		USE_SYSTEM_LIBSSH2:=1
+		USE_SYSTEM_NGHTTP2:=1
 		USE_SYSTEM_CURL:=1
 		USE_SYSTEM_LIBGIT2:=1
 		USE_SYSTEM_PATCHELF:=1
 		USE_SYSTEM_ZLIB:=1
 		USE_SYSTEM_P7ZIP:=1
-		VERBOSE=1
-		libdir="${EROOT}/usr/$(get_libdir)"
+		VERBOSE:=1
 	EOF
 }
 
 src_compile() {
-
 	# Julia accesses /proc/self/mem on Linux
 	addpredict /proc/self/mem
 
-	emake \
-		prefix="${EPREFIX}/usr" DESTDIR="${D}" \
-		CC="$(tc-getCC)" CXX="$(tc-getCXX)" AR="$(tc-getAR)"
+	default
 	pax-mark m "$(file usr/bin/julia-* | awk -F : '/ELF/ {print $1}')"
 }
 
 src_install() {
-	emake install \
-		prefix="${EPREFIX}/usr" DESTDIR="${D}" \
-		CC="$(tc-getCC)" CXX="$(tc-getCXX)" AR="$(tc-getAR)" \
-		BUNDLE_DEBUG_LIBS=0
+	emake install DESTDIR="${D}"
 
 	if ! use system-llvm ; then
-		cp "${S}/usr/lib/libLLVM"-?jl.so "${ED}/usr/$(get_libdir)/julia/" || die
+		local llvmslot=$(ver_cut 1 ${MY_LLVM_V})
+		cp "${S}/usr/lib/libLLVM-${llvmslot}jl.so" "${ED}/usr/$(get_libdir)/julia/" || die
 	fi
 
 	dodoc README.md
