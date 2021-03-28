@@ -46,7 +46,8 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.20.1-no-hardcode-blasv2.patch
+	"${FILESDIR}"/numpy-1.20.1-no-hardcode-blasv2.patch
+	"${FILESDIR}"/numpy-1.20.2-fix-ccompiler-tests.patch
 )
 
 distutils_enable_tests pytest
@@ -118,12 +119,9 @@ python_test() {
 	distutils_install_for_testing --single-version-externally-managed \
 		--record "${TMPDIR}/record.txt" ${NUMPY_FCONFIG}
 
-	cd "${TMPDIR}" || die
-
-	"${EPYTHON}" -c "
-import numpy, sys
-r = numpy.test(label='full', verbose=3)
-sys.exit(0 if r else 1)" || die "Tests fail with ${EPYTHON}"
+	cd "${TEST_DIR}/lib" || die
+	epytest \
+		--deselect 'numpy/typing/tests/test_typing.py::test_fail[array_constructors.py]'
 }
 
 python_install() {

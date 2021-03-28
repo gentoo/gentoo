@@ -1,0 +1,36 @@
+From 6f2f26e08c6e0d476593c82ad31d13847f30cbf4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sun, 28 Mar 2021 10:00:14 +0200
+Subject: [PATCH] BUG: Fix test_ccompiler_opt when path contains dots
+
+Fix test_ccompiler_opt not to be confused by dots occurring on the path
+to the temporary directory, by using only the source file's basename
+when grabbing options.  Otherwise, the test can fail with mismatches
+such as:
+
+    E           AssertionError: 'sources_status' returns different targets than the compiled targets
+    E           ['AVX512F', 'AVX2'] != ['(20 2/TEMP/TMPB0YHSCAI/TEST_TARGETS AVX512F)', '(20 2/TEMP/TMPB0YHSCAI/TEST_TARGETS AVX2)']
+
+This is because our TMPDIR value includes numpy version, i.e. 1.20.2.
+The splitting happens on the first dot that is part of the directory
+path rather than test filename.
+---
+ numpy/distutils/tests/test_ccompiler_opt.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/numpy/distutils/tests/test_ccompiler_opt.py b/numpy/distutils/tests/test_ccompiler_opt.py
+index 287a683c8..d2b0a4c58 100644
+--- a/numpy/distutils/tests/test_ccompiler_opt.py
++++ b/numpy/distutils/tests/test_ccompiler_opt.py
+@@ -112,7 +112,7 @@ class _Test_CCompilerOpt(object):
+             gflags = {}
+             fake_objects = opt.try_dispatch([file])
+             for source, flags in fake_objects:
+-                gtar = source.split('.')[1:-1]
++                gtar = path.basename(source).split('.')[1:-1]
+                 glen = len(gtar)
+                 if glen == 0:
+                     gtar = "baseline"
+-- 
+2.31.1
+
