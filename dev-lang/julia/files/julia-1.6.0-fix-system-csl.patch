@@ -1,0 +1,271 @@
+From 71d7a8a8c12b72bfa362ae955d2ce4dfbdf5b8ba Mon Sep 17 00:00:00 2001
+From: Elliot Saba <staticfloat@gmail.com>
+Date: Fri, 26 Mar 2021 18:40:07 +0000
+Subject: [PATCH 1/2] [build] Add `symlink_system_library` calls for CSL
+
+We differentiate between a `USE_BINARYBUILDER_CSL=0` configuration
+(where we copy the CSL libraries into the Julia build tree) versus a
+`USE_SYSTEM_CSL=1` configuration (where we symlink them in a manner
+similar to other system libararies)
+---
+ Make.inc      | 23 +++++++++++++-
+ base/Makefile | 88 ++++++++++++++++++++++++++++++---------------------
+ deps/csl.mk   | 40 ++++++++---------------
+ 3 files changed, 87 insertions(+), 64 deletions(-)
+
+diff --git a/Make.inc b/Make.inc
+index 519720a861ed7..7cba05806e684 100644
+--- a/Make.inc
++++ b/Make.inc
+@@ -596,6 +596,21 @@ else
+   SHLIB_EXT := so
+ endif
+ 
++ifeq ($(OS),WINNT)
++define versioned_libname
++$$(if $(2),$(1)-$(2).$(SHLIB_EXT),$(1).$(SHLIB_EXT))
++endef
++else ifeq ($(OS),Darwin)
++define versioned_libname
++$$(if $(2),$(1).$(2).$(SHLIB_EXT),$(1).$(SHLIB_EXT))
++endef
++else
++define versioned_libname
++$$(if $(2),$(1).$(SHLIB_EXT).$(2),$(1).$(SHLIB_EXT))
++endef
++endif
++
++
+ ifeq ($(SHLIB_EXT), so)
+ define SONAME_FLAGS
+   -Wl,-soname=$1
+@@ -1147,6 +1162,8 @@ BB_TRIPLET_LIBGFORTRAN := $(subst $(SPACE),-,$(filter-out cxx%,$(subst -,$(SPACE
+ BB_TRIPLET_CXXABI := $(subst $(SPACE),-,$(filter-out libgfortran%,$(subst -,$(SPACE),$(BB_TRIPLET_LIBGFORTRAN_CXXABI))))
+ BB_TRIPLET := $(subst $(SPACE),-,$(filter-out cxx%,$(filter-out libgfortran%,$(subst -,$(SPACE),$(BB_TRIPLET_LIBGFORTRAN_CXXABI)))))
+ 
++LIBGFORTRAN_VERSION := $(subst libgfortran,,$(filter libgfortran%,$(subst -,$(SPACE),$(BB_TRIPLET_LIBGFORTRAN))))
++
+ # This is the set of projects that BinaryBuilder dependencies are hooked up for.
+ BB_PROJECTS := BLASTRAMPOLINE OPENBLAS LLVM SUITESPARSE OPENLIBM GMP MBEDTLS LIBSSH2 NGHTTP2 MPFR CURL LIBGIT2 PCRE LIBUV LIBUNWIND DSFMT OBJCONV ZLIB P7ZIP CSL
+ define SET_BB_DEFAULT
+@@ -1479,8 +1496,12 @@ ifneq ($(findstring $(OS),Linux FreeBSD),)
+ LIBGCC_NAME := libgcc_s.$(SHLIB_EXT).1
+ endif
+ 
+-
++# USE_SYSTEM_CSL causes it to get symlinked into build_private_shlibdir
++ifeq ($(USE_SYSTEM_CSL),1)
++LIBGCC_BUILD_DEPLIB := $(call dep_lib_path,$(build_libdir),$(build_private_shlibdir)/$(LIBGCC_NAME))
++else
+ LIBGCC_BUILD_DEPLIB := $(call dep_lib_path,$(build_libdir),$(build_shlibdir)/$(LIBGCC_NAME))
++endif
+ LIBGCC_INSTALL_DEPLIB := $(call dep_lib_path,$(libdir),$(private_shlibdir)/$(LIBGCC_NAME))
+ 
+ # USE_SYSTEM_LIBM and USE_SYSTEM_OPENLIBM causes it to get symlinked into build_private_shlibdir
+diff --git a/base/Makefile b/base/Makefile
+index e024e546f94d3..2bef6aab7f1f4 100644
+--- a/base/Makefile
++++ b/base/Makefile
+@@ -169,53 +169,69 @@ endif
+ #	echo "$$P"
+ 
+ define symlink_system_library
+-symlink_$1: $$(build_private_libdir)/$1.$$(SHLIB_EXT)
+-$$(build_private_libdir)/$1.$$(SHLIB_EXT):
+-	REALPATH=`$$(call spawn,$$(build_depsbindir)/libwhich) -p $$(notdir $$@)` && \
+-	$$(call resolve_path,REALPATH) && \
+-	[ -e "$$$$REALPATH" ] && \
+-	([ ! -e "$$@" ] || rm "$$@") && \
+-	echo ln -sf "$$$$REALPATH" "$$@" && \
+-	ln -sf "$$$$REALPATH" "$$@"
+-ifneq ($2,)
+-ifneq ($$(USE_SYSTEM_$2),0)
+-SYMLINK_SYSTEM_LIBRARIES += symlink_$1
+-endif
++libname_$2 := $$(notdir $(call versioned_libname,$2,$3))
++libpath_$2 := $$(shell $$(call spawn,$$(build_depsbindir)/libwhich) -p $$(libname_$2) 2>/dev/null)
++symlink_$2: $$(build_private_libdir)/$$(libname_$2)
++$$(build_private_libdir)/$$(libname_$2):
++	@if [ -e "$$(libpath_$2)" ]; then \
++		REALPATH=$$(libpath_$2); \
++		$$(call resolve_path,REALPATH) && \
++		[ -e "$$$$REALPATH" ] && \
++		([ ! -e "$$@" ] || rm "$$@") && \
++		echo ln -sf "$$$$REALPATH" "$$@" && \
++		ln -sf "$$$$REALPATH" "$$@"; \
++	else \
++		if [ "$4" != "ALLOW_FAILURE" ]; then \
++			echo "System library symlink failure: Unable to locate $$(libname_$2) on your system!" >&2; \
++			false; \
++		fi; \
++	fi
++ifneq ($$(USE_SYSTEM_$1),0)
++SYMLINK_SYSTEM_LIBRARIES += symlink_$2
+ endif
+ endef
+ 
+ # the following excludes: libuv.a, libutf8proc.a
+ 
+-$(eval $(call symlink_system_library,$(LIBMNAME)))
+ ifneq ($(USE_SYSTEM_LIBM),0)
+-SYMLINK_SYSTEM_LIBRARIES += symlink_$(LIBMNAME)
++$(eval $(call symlink_system_library,LIBM,$(LIBMNAME)))
+ else ifneq ($(USE_SYSTEM_OPENLIBM),0)
+-SYMLINK_SYSTEM_LIBRARIES += symlink_$(LIBMNAME)
++$(eval $(call symlink_system_library,OPENLIBM,$(LIBMNAME)))
+ endif
+ 
+-$(eval $(call symlink_system_library,libpcre2-8,PCRE))
+-$(eval $(call symlink_system_library,libdSFMT,DSFMT))
+-$(eval $(call symlink_system_library,$(LIBBLASNAME),BLAS))
++$(eval $(call symlink_system_library,CSL,libgcc_s,1))
++ifneq (,$(LIBGFORTRAN_VERSION))
++$(eval $(call symlink_system_library,CSL,libgfortran,$(LIBGFORTRAN_VERSION)))
++endif
++$(eval $(call symlink_system_library,CSL,libquadmath,0))
++$(eval $(call symlink_system_library,CSL,libstdc++,6))
++# We allow libssp, libatomic and libgomp to fail as they are not available on all systems
++$(eval $(call symlink_system_library,CSL,libssp,0,ALLOW_FAILURE))
++$(eval $(call symlink_system_library,CSL,libatomic,1,ALLOW_FAILURE))
++$(eval $(call symlink_system_library,CSL,libgomp,1,ALLOW_FAILURE))
++$(eval $(call symlink_system_library,PCRE,libpcre2-8))
++$(eval $(call symlink_system_library,DSFMT,libdSFMT))
++$(eval $(call symlink_system_library,BLAS,$(LIBBLASNAME)))
+ ifneq ($(LIBLAPACKNAME),$(LIBBLASNAME))
+-$(eval $(call symlink_system_library,$(LIBLAPACKNAME),LAPACK))
++$(eval $(call symlink_system_library,LAPACK,$(LIBLAPACKNAME)))
+ endif
+-$(eval $(call symlink_system_library,libgmp,GMP))
+-$(eval $(call symlink_system_library,libmpfr,MPFR))
+-$(eval $(call symlink_system_library,libmbedtls,MBEDTLS))
+-$(eval $(call symlink_system_library,libmbedcrypto,MBEDTLS))
+-$(eval $(call symlink_system_library,libmbedx509,MBEDTLS))
+-$(eval $(call symlink_system_library,libssh2,LIBSSH2))
+-$(eval $(call symlink_system_library,libnghttp2,NGHTTP2))
+-$(eval $(call symlink_system_library,libcurl,CURL))
+-$(eval $(call symlink_system_library,libgit2,LIBGIT2))
+-$(eval $(call symlink_system_library,libamd,SUITESPARSE))
+-$(eval $(call symlink_system_library,libcamd,SUITESPARSE))
+-$(eval $(call symlink_system_library,libccolamd,SUITESPARSE))
+-$(eval $(call symlink_system_library,libcholmod,SUITESPARSE))
+-$(eval $(call symlink_system_library,libcolamd,SUITESPARSE))
+-$(eval $(call symlink_system_library,libumfpack,SUITESPARSE))
+-$(eval $(call symlink_system_library,libspqr,SUITESPARSE))
+-$(eval $(call symlink_system_library,libsuitesparseconfig,SUITESPARSE))
++$(eval $(call symlink_system_library,GMP,libgmp))
++$(eval $(call symlink_system_library,MPFR,libmpfr))
++$(eval $(call symlink_system_library,MBEDTLS,libmbedtls))
++$(eval $(call symlink_system_library,MBEDTLS,libmbedcrypto))
++$(eval $(call symlink_system_library,MBEDTLS,libmbedx509))
++$(eval $(call symlink_system_library,LIBSSH2,libssh2))
++$(eval $(call symlink_system_library,NGHTTP2,libnghttp2))
++$(eval $(call symlink_system_library,CURL,libcurl))
++$(eval $(call symlink_system_library,LIBGIT2,libgit2))
++$(eval $(call symlink_system_library,SUITESPARSE,libamd))
++$(eval $(call symlink_system_library,SUITESPARSE,libcamd))
++$(eval $(call symlink_system_library,SUITESPARSE,libccolamd))
++$(eval $(call symlink_system_library,SUITESPARSE,libcholmod))
++$(eval $(call symlink_system_library,SUITESPARSE,libcolamd))
++$(eval $(call symlink_system_library,SUITESPARSE,libumfpack))
++$(eval $(call symlink_system_library,SUITESPARSE,libspqr))
++$(eval $(call symlink_system_library,SUITESPARSE,libsuitesparseconfig))
+ # EXCLUDED LIBRARIES (installed/used, but not vendored for use with dlopen):
+ # libunwind
+ endif # WINNT
+diff --git a/deps/csl.mk b/deps/csl.mk
+index 095d4ceec4a1e..423201cbb5a0c 100644
+--- a/deps/csl.mk
++++ b/deps/csl.mk
+@@ -19,48 +19,34 @@ $$(build_shlibdir)/$(1): | $$(build_shlibdir)
+ 	[ -n "$$$${SRC_LIB}" ] && cp $$$${SRC_LIB} $$(build_shlibdir)
+ endef
+ 
+-ifeq ($(OS),WINNT)
+-define gen_libname
+-$$(if $(2),lib$(1)-$(2).$(SHLIB_EXT),lib$(1).$(SHLIB_EXT))
+-endef
+-else ifeq ($(OS),Darwin)
+-define gen_libname
+-$$(if $(2),lib$(1).$(2).$(SHLIB_EXT),lib$(1).$(SHLIB_EXT))
+-endef
+-else
+-define gen_libname
+-$$(if $(2),lib$(1).$(SHLIB_EXT).$(2),lib$(1).$(SHLIB_EXT))
+-endef
+-endif
+-
+ # libgfortran has multiple names; we're just going to copy any version we can find
+ # Since we're only looking in the location given by `$(FC)` this should only succeed for one.
+-$(eval $(call copy_csl,$(call gen_libname,gfortran,3)))
+-$(eval $(call copy_csl,$(call gen_libname,gfortran,4)))
+-$(eval $(call copy_csl,$(call gen_libname,gfortran,5)))
++$(eval $(call copy_csl,$(call versioned_libname,libgfortran,3)))
++$(eval $(call copy_csl,$(call versioned_libname,libgfortran,4)))
++$(eval $(call copy_csl,$(call versioned_libname,libgfortran,5)))
+ 
+ # These are all libraries that we should always have
+-$(eval $(call copy_csl,$(call gen_libname,quadmath,0)))
+-$(eval $(call copy_csl,$(call gen_libname,stdc++,6)))
+-$(eval $(call copy_csl,$(call gen_libname,ssp,0)))
+-$(eval $(call copy_csl,$(call gen_libname,atomic,1)))
+-$(eval $(call copy_csl,$(call gen_libname,gomp,1)))
++$(eval $(call copy_csl,$(call versioned_libname,libquadmath,0)))
++$(eval $(call copy_csl,$(call versioned_libname,libstdc++,6)))
++$(eval $(call copy_csl,$(call versioned_libname,libssp,0)))
++$(eval $(call copy_csl,$(call versioned_libname,libatomic,1)))
++$(eval $(call copy_csl,$(call versioned_libname,libgomp,1)))
+ 
+ ifeq ($(OS),WINNT)
+ # Windwos has special gcc_s names
+ ifeq ($(ARCH),i686)
+-$(eval $(call copy_csl,$(call gen_libname,gcc_s_sjlj,1)))
++$(eval $(call copy_csl,$(call versioned_libname,libgcc_s_sjlj,1)))
+ else
+-$(eval $(call copy_csl,$(call gen_libname,gcc_s_seh,1)))
++$(eval $(call copy_csl,$(call versioned_libname,libgcc_s_seh,1)))
+ endif
+ else
+-$(eval $(call copy_csl,$(call gen_libname,gcc_s,1)))
++$(eval $(call copy_csl,$(call versioned_libname,libgcc_s,1)))
+ endif
+ # winpthread is only Windows, pthread is only others
+ ifeq ($(OS),WINNT)
+-$(eval $(call copy_csl,$(call gen_libname,winpthread,1)))
++$(eval $(call copy_csl,$(call versioned_libname,libwinpthread,1)))
+ else
+-$(eval $(call copy_csl,$(call gen_libname,pthread,0)))
++$(eval $(call copy_csl,$(call versioned_libname,libpthread,0)))
+ endif
+ 
+ get-csl:
+
+From 6536b8519b25db844f2a1866d056879cb87d1c66 Mon Sep 17 00:00:00 2001
+From: Elliot Saba <staticfloat@gmail.com>
+Date: Fri, 26 Mar 2021 22:32:04 +0000
+Subject: [PATCH 2/2] Expand `JL_PRIVATE_LIBS-1` for versioned library names as
+ well
+
+Without this, we fail to install things like `libgcc_s.so.1` when
+installed into the private libdir by `symlink_system_libraries`.
+---
+ Makefile | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 823ff3b86339d..e08f0e959e1b3 100644
+--- a/Makefile
++++ b/Makefile
+@@ -290,8 +290,11 @@ endif
+ 		done \
+ 	done
+ 	for suffix in $(JL_PRIVATE_LIBS-1) ; do \
+-		lib=$(build_private_libdir)/$${suffix}.$(SHLIB_EXT); \
+-		$(INSTALL_M) $$lib $(DESTDIR)$(private_libdir) ; \
++		for lib in $(build_private_libdir)/$${suffix}.$(SHLIB_EXT)*; do \
++			if [ "$${lib##*.}" != "dSYM" ]; then \
++				$(INSTALL_M) $$lib $(DESTDIR)$(private_libdir) ; \
++			fi \
++		done \
+ 	done
+ endif
+ 	# Install `7z` into libexec/
