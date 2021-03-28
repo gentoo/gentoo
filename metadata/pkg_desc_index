@@ -6692,7 +6692,7 @@ dev-perl/Filter 1.570.0 1.600.0: Interface for creation of Perl Filters
 dev-perl/Finance-Quote 1.470.0 1.490.0: Get stock and mutual fund quotes from various exchanges
 dev-perl/Finance-YahooQuote 0.250.0-r1 0.260.0: Get stock quotes from Yahoo! Finance
 dev-perl/Font-AFM 1.200.0-r1 1.200.0-r3: Parse Adobe Font Metric files
-dev-perl/Font-TTF 1.60.0 1.60.0-r1: module for compiling and altering fonts
+dev-perl/Font-TTF 1.60.0-r1: module for compiling and altering fonts
 dev-perl/Format-Human-Bytes 0.60.0-r2: Format a bytecount and make it human readable
 dev-perl/FreezeThaw 0.500.100-r1 0.500.100-r2: converting Perl structures to strings and back
 dev-perl/Frontier-RPC 0.07_beta4-r2 0.07_beta4-r3: Perform remote procedure calls using extensible markup language
@@ -12004,7 +12004,7 @@ gnome-extra/gnome-power-manager 3.32.0: GNOME power statistics
 gnome-extra/gnome-search-tool 3.6.0: Search tool for GNOME 3
 gnome-extra/gnome-shell-extension-appindicator 33 34: Support Ubuntu AppIndicators and KStatusNotifierItems in Gnome
 gnome-extra/gnome-shell-extension-applications-overview-tooltip 9 10-r1 11: Show tooltip with full name and description
-gnome-extra/gnome-shell-extension-bing-wallpaper 27 28 29: Changes your wallpaper daily to the bing.com background image
+gnome-extra/gnome-shell-extension-bing-wallpaper 27 28 30: Changes your wallpaper daily to the bing.com background image
 gnome-extra/gnome-shell-extension-bluetooth-quick-connect 13 16-r1: Allow to connect bluetooth paired devices from gnome control panel
 gnome-extra/gnome-shell-extension-control-blur-effect-on-lock-screen 20200713 20201211: Control the blur effect on gnome-shell lock screen
 gnome-extra/gnome-shell-extension-dash-to-panel 40: An icon taskbar for the Gnome Shell
@@ -12891,7 +12891,7 @@ media-fonts/wqy-bitmapfont 1.0.0_rc1: WenQuanYi Bitmap Song CJK font
 media-fonts/wqy-microhei 0.2.0_beta-r1: Droid derived Sans-Serif style CJK font
 media-fonts/wqy-unibit 1.1.0_p1-r1: WenQuanYi Unibit CJK font
 media-fonts/wqy-zenhei 0.9.46: WenQuanYi Hei-Ti Style (sans-serif) Chinese outline font
-media-fonts/x11fonts-jmk 3.0-r3 3.0-r4: This package contains character-cell fonts for use with X
+media-fonts/x11fonts-jmk 3.0-r4: This package contains character-cell fonts for use with X
 media-fonts/zh-kcfonts 1.05-r3: Kuo Chauo Chinese Fonts collection in BIG5 encoding
 media-gfx/aaphoto 0.45: Automatic color correction and resizing of photos
 media-gfx/aewan 1.0.01-r1: A curses-based ascii-art editor
@@ -17441,7 +17441,7 @@ sys-cluster/ploop 1.14.1: openvz tool and a library to control ploop block devic
 sys-cluster/pmix 2.1.1: The Process Management Interface (PMI) Exascale
 sys-cluster/poolmon 0.5 0.6: A director mailserver pool monitoring script for Dovecot
 sys-cluster/projections 6.2.1: Projections Performance Analysis Framework for Charm++ Applications
-sys-cluster/rdma-core 30.0-r2 31.0 32.0 32.0-r1 33.0 33.0-r1 9999: Userspace components for the Linux Kernel's drivers/infiniband subsystem
+sys-cluster/rdma-core 30.0-r2 31.0 32.0 32.0-r1 33.0 33.0-r1 34.0 9999: Userspace components for the Linux Kernel's drivers/infiniband subsystem
 sys-cluster/resource-agents 3.9.6 4.0.1 4.6.1: Resources pack for Heartbeat / Pacemaker
 sys-cluster/sanlock 3.8.2: shared storage lock manager
 sys-cluster/singularity 3.7.1 3.7.2: Application containers for Linux
