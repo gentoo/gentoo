@@ -13,5 +13,5 @@ REQUIRED_USE=|| ( purple xmpp msn oscar ) xmpp? ( !nss ) test? ( plugins )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://get.bitlbee.org/src/bitlbee-3.6.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	systemd	74b223e42834adf09a2d21fe5fe13741
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-any-r1	690a993463cd2ebcde40ccdf1bd9ba98	systemd	74b223e42834adf09a2d21fe5fe13741
 _md5_=85f46e8e53f86f490a95f87097f402ff

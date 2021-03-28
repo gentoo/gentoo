@@ -4,6 +4,7 @@ DEPEND=acct-user/gpsd >=net-misc/pps-tools-0.0.20120407 bluetooth? ( net-wireles
 DESCRIPTION=GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
 EAPI=7
 HOMEPAGE=https://gpsd.io/
+INHERIT=distutils-r1 scons-utils toolchain-funcs udev
 IUSE=+gpsd_protocols_aivdm +gpsd_protocols_ashtech +gpsd_protocols_earthmate +gpsd_protocols_evermore +gpsd_protocols_fury +gpsd_protocols_fv18 +gpsd_protocols_garmin +gpsd_protocols_garmintxt +gpsd_protocols_geostar +gpsd_protocols_gpsclock +gpsd_protocols_greis +gpsd_protocols_isync +gpsd_protocols_itrax +gpsd_protocols_mtk3301 +gpsd_protocols_navcom +gpsd_protocols_nmea0183 +gpsd_protocols_nmea2000 +gpsd_protocols_ntrip +gpsd_protocols_oceanserver +gpsd_protocols_oncore +gpsd_protocols_passthrough +gpsd_protocols_rtcm104v2 +gpsd_protocols_rtcm104v3 +gpsd_protocols_sirf +gpsd_protocols_skytraq +gpsd_protocols_superstar2 +gpsd_protocols_tnt +gpsd_protocols_tripmate +gpsd_protocols_tsip +gpsd_protocols_ublox bluetooth +cxx dbus debug ipv6 latency-timing ncurses ntp python qt5 +shm +sockets static test udev usb X python_targets_python3_7 python_targets_python3_8 python_targets_python3_9
 KEYWORDS=amd64 arm ~arm64 ~ppc ~ppc64 ~sparc x86
 LICENSE=BSD GPL-2
@@ -12,5 +13,5 @@ REQUIRED_USE=X? ( python ) gpsd_protocols_nmea2000? ( gpsd_protocols_aivdm ) gps
 RESTRICT=!test? ( test )
 SLOT=0/27
 SRC_URI=mirror://nongnu/gpsd/gpsd-3.21.tar.xz
-_eclasses_=distutils-r1	16579e06f8839831bd5c03455bb87e3f	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	6d099888c5b4dd4868c26508df307e95	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	scons-utils	0c3d02e3e56d99a17ac273db118e8a24	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	udev	452708c3f55cf6e918b045adb949a9e6
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-r1	a0dcde4775c7b2f7530678fc8143340e	distutils-r1	2ac0db834bfc8d76a5ad34d536d15b35	scons-utils	0c3d02e3e56d99a17ac273db118e8a24	udev	452708c3f55cf6e918b045adb949a9e6
 _md5_=1e6b979f0427b4072c97d952f874440c

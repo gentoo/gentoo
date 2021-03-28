@@ -2,6 +2,7 @@ DEFINED_PHASES=install setup
 DESCRIPTION=Synchronize files between a PC and an Android device using ADB
 EAPI=6
 HOMEPAGE=https://github.com/google/adb-sync
+INHERIT=python-single-r1
 IUSE=+channel +python_single_target_python3_7
 KEYWORDS=~amd64
 LICENSE=Apache-2.0
@@ -9,5 +10,5 @@ RDEPEND=python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-
 REQUIRED_USE=^^ ( python_single_target_python3_7 )
 SLOT=0
 SRC_URI=https://github.com/google/adb-sync/tarball/b0a2a10 -> adb-sync-0_p20181127.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-single-r1	c7de0087e87a282f2faec351822e097c
 _md5_=5182b3fc903a74971cd3096fa12cbba4

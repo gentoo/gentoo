@@ -4,6 +4,7 @@ DEPEND=python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-e
 DESCRIPTION=A tool to test PAM applications and PAM modules
 EAPI=7
 HOMEPAGE=https://cwrap.org/pam_wrapper.html
+INHERIT=cmake-multilib python-single-r1
 IUSE=test abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_s390_32 abi_s390_64 python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9
 KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86
 LICENSE=GPL-3
@@ -12,5 +13,5 @@ REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_8 
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://www.samba.org/ftp/pub/cwrap/pam_wrapper-1.1.3.tar.gz https://ftp.samba.org/pub/cwrap/pam_wrapper-1.1.3.tar.gz
-_eclasses_=cmake	314a813be2f09820e8978cdee941e501	cmake-multilib	a5c3801ef28d6532f611ba480516d0ac	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	cmake	314a813be2f09820e8978cdee941e501	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	cmake-multilib	a5c3801ef28d6532f611ba480516d0ac	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-single-r1	c7de0087e87a282f2faec351822e097c
 _md5_=55901aa88d698aee086d352a2840fb49

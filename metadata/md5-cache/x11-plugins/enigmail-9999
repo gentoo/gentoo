@@ -4,9 +4,10 @@ DEPEND=( >=app-crypt/gnupg-2.0 || ( app-crypt/pinentry[gtk(-)] app-crypt/pinentr
 DESCRIPTION=Mozilla extension to provide GPG support in mail clients
 EAPI=7
 HOMEPAGE=https://www.enigmail.net/
+INHERIT=python-any-r1 git-r3
 LICENSE=MPL-2.0 GPL-3
 PROPERTIES=live
 RDEPEND=( >=app-crypt/gnupg-2.0 || ( app-crypt/pinentry[gtk(-)] app-crypt/pinentry[qt5(-)] ) ) !<mail-client/thunderbird-78
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	d410501a125f99ffb560b0c523cd3d1e	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-any-r1	690a993463cd2ebcde40ccdf1bd9ba98	git-r3	3e7ec3d6619213460c85e2aa48398441
 _md5_=134b7becc1a2667e87f69732a9128aac

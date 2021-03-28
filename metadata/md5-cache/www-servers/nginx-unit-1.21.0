@@ -3,6 +3,7 @@ DEPEND=perl? ( dev-lang/perl:= ) php7-2? ( dev-lang/php:7.2[embed] ) php7-3? ( d
 DESCRIPTION=Dynamic web and application server
 EAPI=7
 HOMEPAGE=https://unit.nginx.org
+INHERIT=flag-o-matic python-single-r1 toolchain-funcs
 IUSE=perl python ruby php7-2 php7-3 php7-4 ssl python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9
 KEYWORDS=amd64
 LICENSE=Apache-2.0
@@ -10,5 +11,5 @@ RDEPEND=perl? ( dev-lang/perl:= ) php7-2? ( dev-lang/php:7.2[embed] ) php7-3? ( 
 REQUIRED_USE=|| ( perl python ruby php7-2 php7-3 php7-4 ssl ) python? ( ^^ ( python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9 ) )
 SLOT=0
 SRC_URI=https://unit.nginx.org/download/unit-1.21.0.tar.gz -> nginx-unit-1.21.0.tar.gz
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-single-r1	c7de0087e87a282f2faec351822e097c
 _md5_=5a370d96b48dd31dac2945503af505e0

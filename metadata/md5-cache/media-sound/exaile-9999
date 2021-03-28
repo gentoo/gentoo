@@ -4,6 +4,7 @@ DEPEND=dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=GTK+ based media player aiming to be similar to Amarok
 EAPI=7
 HOMEPAGE=https://www.exaile.org/
+INHERIT=python-single-r1 xdg git-r3
 IUSE=libnotify nls scrobbler python_single_target_python3_7 python_single_target_python3_8
 LICENSE=GPL-2 GPL-3
 PROPERTIES=live
@@ -11,5 +12,5 @@ RDEPEND=python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-
 REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_8 )
 RESTRICT=test
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	d410501a125f99ffb560b0c523cd3d1e	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-single-r1	c7de0087e87a282f2faec351822e097c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	git-r3	3e7ec3d6619213460c85e2aa48398441
 _md5_=2f1c084a003452763d9d21f316ac365a

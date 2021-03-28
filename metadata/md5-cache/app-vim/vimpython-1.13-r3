@@ -3,6 +3,7 @@ DEPEND=app-arch/unzip || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 DESCRIPTION=vim plugin: A set of menus/shortcuts to work with Python files
 EAPI=7
 HOMEPAGE=https://www.vim.org/scripts/script.php?script_id=30
+INHERIT=vim-plugin python-single-r1
 IUSE=python_single_target_python3_7 python_single_target_python3_8
 KEYWORDS=~alpha amd64 ~ia64 ppc sparc x86
 LICENSE=vim
@@ -10,5 +11,5 @@ RDEPEND=python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-
 REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_8 )
 SLOT=0
 SRC_URI=mirror://gentoo/vimpython-1.13.tar.bz2 https://dev.gentoo.org/~radhermit/vim/vimpython-1.13.tar.bz2
-_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	multilib	d410501a125f99ffb560b0c523cd3d1e	python-single-r1	d3100de905f978df912135806cf27188	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	vim-doc	dd0828b15877b2a09c07f4719e45891f	vim-plugin	3160d9cb05ef44497be1485db0fe7590
+_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	vim-doc	dd0828b15877b2a09c07f4719e45891f	vim-plugin	3160d9cb05ef44497be1485db0fe7590	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-single-r1	c7de0087e87a282f2faec351822e097c
 _md5_=60cd83e3a61a0403fd6eb4966a404e22

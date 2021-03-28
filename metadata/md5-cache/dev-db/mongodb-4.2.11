@@ -4,6 +4,7 @@ DEPEND=acct-group/mongodb acct-user/mongodb >=app-arch/snappy-1.1.3 >=dev-cpp/ya
 DESCRIPTION=A high-performance, open source, schema-free document-oriented database
 EAPI=7
 HOMEPAGE=https://www.mongodb.com
+INHERIT=check-reqs flag-o-matic multiprocessing pax-utils python-any-r1 scons-utils systemd toolchain-funcs
 IUSE=debug kerberos libressl lto ssl test +tools
 KEYWORDS=amd64 ~arm64
 LICENSE=Apache-2.0 SSPL-1
@@ -12,5 +13,5 @@ RDEPEND=acct-group/mongodb acct-user/mongodb >=app-arch/snappy-1.1.3 >=dev-cpp/y
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://fastdl.mongodb.org/src/mongodb-src-r4.2.11.tar.gz
-_eclasses_=check-reqs	7e3fd1855a5e1b50bb9e80827b3f672d	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	python-any-r1	0a79a9b53fce4525f438f8ea9695fb88	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	scons-utils	0c3d02e3e56d99a17ac273db118e8a24	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=check-reqs	7e3fd1855a5e1b50bb9e80827b3f672d	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	multiprocessing	cac3169468f893670dac3e7cb940e045	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-any-r1	690a993463cd2ebcde40ccdf1bd9ba98	scons-utils	0c3d02e3e56d99a17ac273db118e8a24	systemd	74b223e42834adf09a2d21fe5fe13741
 _md5_=ef96b931f2250c85dec5c26e0b1f3cb2

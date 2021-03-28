@@ -12,4 +12,4 @@ RESTRICT=strip
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~grozin/gcl-2.6.13_pre99.tar.xz
 _eclasses_=elisp-common	36f97076abd90f943a34f8bcd58b5bcc	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741
-_md5_=46807a30eed77eb6c217f84dc4528a6c
+_md5_=320917b02f0ef1c670edbb0159bf4afe

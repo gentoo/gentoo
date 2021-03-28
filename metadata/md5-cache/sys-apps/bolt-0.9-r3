@@ -11,5 +11,5 @@ LICENSE=LGPL-2.1
 RDEPEND=>=dev-libs/glib-2.56.0:2 dev-util/glib-utils virtual/libudev virtual/udev dev-util/umockdev sys-auth/polkit[introspection] systemd? ( sys-apps/systemd ) doc? ( app-text/asciidoc )
 SLOT=0
 SRC_URI=https://gitlab.freedesktop.org/bolt/bolt/-/archive/0.9/bolt-0.9.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	2dc8e06a3429719b43e9140f7292a425	meson	e43eef9331f54965a573ed380854ff47	systemd	74b223e42834adf09a2d21fe5fe13741
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	543b53e4d003ebd889082f4673e52af5	meson	e43eef9331f54965a573ed380854ff47	systemd	74b223e42834adf09a2d21fe5fe13741
 _md5_=e1d50be433d6073ce0408abe6b4f59a9
