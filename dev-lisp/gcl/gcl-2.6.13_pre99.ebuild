@@ -51,7 +51,6 @@ src_configure() {
 
 src_compile() {
 	emake -j1
-	use athena && pdflatex xgcl-2/dwdoc.tex
 }
 
 src_test() {

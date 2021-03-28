@@ -33,8 +33,8 @@
 # functions, you should consider calling the defaults (and especially
 # distutils-r1_python_prepare_all).
 #
-# Please note that distutils-r1 sets RDEPEND and DEPEND unconditionally
-# for you.
+# Please note that distutils-r1 sets RDEPEND and BDEPEND (or DEPEND
+# in earlier EAPIs) unconditionally for you.
 #
 # Also, please note that distutils-r1 will always inherit python-r1
 # as well. Thus, all the variables defined and documented there are
@@ -426,6 +426,7 @@ distutils_enable_tests() {
 		setup.py)
 			;;
 		unittest)
+			test_pkg="dev-python/unittest-or-fail"
 			;;
 		*)
 			die "${FUNCNAME}: unsupported argument: ${1}"
@@ -830,7 +831,7 @@ distutils-r1_python_test() {
 			nonfatal esetup.py test --verbose
 			;;
 		unittest)
-			"${EPYTHON}" -m unittest discover -v
+			eunittest
 			;;
 		*)
 			die "Mis-synced test runner between ${FUNCNAME} and distutils_enable_testing"
