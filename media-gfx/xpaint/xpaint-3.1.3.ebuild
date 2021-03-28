@@ -40,7 +40,6 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	sys-devel/bison
 	sys-devel/flex
-	sys-devel/libtool
 	virtual/pkgconfig
 	x11-misc/imake
 "
