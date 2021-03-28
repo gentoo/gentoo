@@ -43,5 +43,5 @@ ht_fix_all() {
 	MATCHES=$(grep -l -s -i -R -e "head -[ 0-9]" -e "tail [+-][ 0-9]" * | sort -u)
 	[[ -n ${MATCHES} ]] \
 		&& ht_fix_file ${MATCHES} \
-		|| einfo "No need for ht_fix_all anymore !"
+		|| einfo "No need for ht_fix_all anymore!"
 }
