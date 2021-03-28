@@ -1,0 +1,15 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install
+DEPEND=>=sci-libs/netcdf-4.2:0=
+DESCRIPTION=C++ library for netCDF
+EAPI=7
+HOMEPAGE=https://www.unidata.ucar.edu/software/netcdf/
+INHERIT=autotools
+IUSE=examples
+KEYWORDS=amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux
+LICENSE=UCAR-Unidata
+RDEPEND=>=sci-libs/netcdf-4.2:0=
+SLOT=3
+SRC_URI=https://www.unidata.ucar.edu/downloads/netcdf/ftp/netcdf-cxx-4.2.tar.gz
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
+_md5_=1dc1217971cbf578858ccf0c79a2f723
