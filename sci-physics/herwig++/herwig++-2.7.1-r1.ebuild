@@ -30,13 +30,11 @@ DEPEND="
 	>=sys-devel/boost-m4-0.4_p20160328
 "
 
-
 src_prepare() {
 	default
 
 	eapply -p0 "${FILESDIR}"/${PN}-2.6.3-looptools.patch
 	eapply "${FILESDIR}"/${PN}-2.7.1-fix-boost-1.67.patch
-
 
 	# fixes bug 570458, which is due to an outdated bundled boost.m4
 	rm m4/boost.m4 || die
