@@ -337,9 +337,12 @@ xorg-3_flags_setup() {
 
 	# Win32 require special define
 	[[ ${CHOST} == *-winnt* ]] && append-cppflags -DWIN32 -D__STDC__
-	# hardened ldflags
-	[[ ${PN} == xorg-server || ${PN} == xf86-video-* || ${PN} == xf86-input-* ]] \
-		&& append-ldflags -Wl,-z,lazy
+
+	# Hardened flags break module autoloading et al (also fixes #778494)
+	if [[ ${PN} == xorg-server || ${PN} == xf86-video-* || ${PN} == xf86-input-* ]]; then
+		filter-flags -fno-plt
+		append-ldflags -Wl,-z,lazy
+	fi
 
 	# Quite few libraries fail on runtime without these:
 	if has static-libs ${IUSE//+}; then
