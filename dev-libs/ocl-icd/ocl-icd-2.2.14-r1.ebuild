@@ -36,6 +36,19 @@ multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf --enable-pthread-once --disable-official-khronos-headers
 }
 
+multilib_src_compile() {
+	local candidates=(${USE_RUBY})
+	local ruby=
+	for (( idx=${#candidates[@]}-1 ; idx>=0 ; idx-- )) ; do
+		if ${candidates[idx]} --version &> /dev/null; then
+			ruby=${candidates[idx]} && break
+		fi
+	done
+	[[ -z ${ruby} ]] && die "No ruby executable found"
+
+	emake RUBY=${ruby}
+}
+
 multilib_src_install() {
 	default
 
