@@ -5760,13 +5760,13 @@ dev-libs/redland-bindings 1.0.17.1-r100: Language bindings for Redland
 dev-libs/replicant 0.8.1: Hyperdex replicant support library
 dev-libs/rinutils 0.6.0 0.8.0: Set of C headers containing macros and static functions
 dev-libs/rlog 1.4: A C++ logging library
-dev-libs/rocclr 3.8.0 3.9.0 3.10.0 4.0.0: Radeon Open Compute Common Language Runtime
+dev-libs/rocclr 3.8.0 3.9.0 3.10.0 4.0.0 4.1.0: Radeon Open Compute Common Language Runtime
 dev-libs/rocksdb 6.14.6-r1 6.15.5 6.17.3: Embeddable, persistent key-value store for fast storage
-dev-libs/rocm-comgr 3.9.0 3.10.0 4.0.0: Radeon Open Compute Code Object Manager
+dev-libs/rocm-comgr 3.9.0 3.10.0 4.0.0 4.1.0: Radeon Open Compute Code Object Manager
 dev-libs/rocm-device-libs 3.7.0 3.8.0 3.9.0-r1 3.10.0 4.0.0 4.1.0 9999: Radeon Open Compute Device Libraries
 dev-libs/rocm-hostcall 2.7.0: Radeon Open Compute hostcall API
-dev-libs/rocm-opencl-runtime 3.8.0 3.9.0 3.10.0 4.0.0: Radeon Open Compute OpenCL Compatible Runtime
-dev-libs/rocr-runtime 3.8.0 3.9.0 3.10.0 4.0.0 9999: Radeon Open Compute Runtime
+dev-libs/rocm-opencl-runtime 3.8.0 3.9.0 3.10.0 4.0.0 4.1.0: Radeon Open Compute OpenCL Compatible Runtime
+dev-libs/rocr-runtime 3.8.0 3.9.0 3.10.0 4.0.0 4.1.0 9999: Radeon Open Compute Runtime
 dev-libs/roct-thunk-interface 4.0.0 4.1.0 9999: Radeon Open Compute Thunk Interface
 dev-libs/rremove 1.0.5: A simple library to recursively delete non-empty directories
 dev-libs/s2n 0.10.21-r1 1.0.0: Simple, small, fast and secure C99 implementation of the TLS/SSL protocols
@@ -11023,7 +11023,7 @@ dev-util/regexxer 0.10-r1: An interactive tool for performing search and replace
 dev-util/rej 0.16-r1: A utility for solving diff/patch rejects
 dev-util/rocm-cmake 3.8.0 3.9.0 3.10.0 4.0.0 4.1.0 9999: Radeon Open Compute CMake Modules
 dev-util/rocm-smi 4.0.0 9999: ROCm System Management Interface
-dev-util/rocminfo 3.7.0 3.8.0 3.9.0 3.10.0 4.0.0 9999: ROCm Application for Reporting System Info
+dev-util/rocminfo 3.7.0 3.8.0 3.9.0 3.10.0 4.0.0 4.1.0 9999: ROCm Application for Reporting System Info
 dev-util/roctracer 4.0.0-r1: Callback/Activity Library for Performance tracing AMD GPU's
 dev-util/rosdep 0.20.0 9999: Command-line tool for installing ROS system dependencies
 dev-util/rosinstall 0.7.8 9999: Command-line tools for maintaining a workspace of projects for ROS
