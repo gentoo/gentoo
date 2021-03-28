@@ -63,6 +63,9 @@ vala_api_versions() {
 	done
 }
 
+# @FUNCTION: _vala_use_depend
+# @INTERNAL
+# @DESCRIPTION:
 # Outputs VALA_USE_DEPEND as a a USE-dependency string
 _vala_use_depend() {
 	local u="" vala_use
