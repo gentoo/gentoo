@@ -1,18 +1,16 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-AUTOTOOLS_AUTORECONF=1
-AUTOTOOLS_IN_SOURCE_BUILD=1
-
-inherit autotools-utils eutils flag-o-matic multilib
+inherit autotools flag-o-matic
 
 MYP=Herwig++-${PV}
 
 DESCRIPTION="High-Energy Physics event generator"
-HOMEPAGE="http://herwig.hepforge.org/"
-SRC_URI="http://www.hepforge.org/archive/herwig/${MYP}.tar.bz2"
+HOMEPAGE="https://herwig.hepforge.org/"
+SRC_URI="https://www.hepforge.org/archive/herwig/${MYP}.tar.bz2"
+S="${WORKDIR}/${MYP}"
 
 SLOT="0/15"
 LICENSE="GPL-2"
@@ -27,36 +25,46 @@ RDEPEND="
 	<=sci-physics/looptools-2.8:0=
 	~sci-physics/thepeg-1.9.2:0=
 	fastjet? ( sci-physics/fastjet:0= )"
-DEPEND="${RDEPEND}
-	>=sys-devel/boost-m4-0.4_p20160328"
+DEPEND="
+	${RDEPEND}
+	>=sys-devel/boost-m4-0.4_p20160328
+"
 
-S="${WORKDIR}/${MYP}"
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${PN}-2.6.3-looptools.patch \
-		"${FILESDIR}"/${PN}-2.7.1-fix-boost-1.67.patch
+	default
+
+	eapply -p0 "${FILESDIR}"/${PN}-2.6.3-looptools.patch
+	eapply "${FILESDIR}"/${PN}-2.7.1-fix-boost-1.67.patch
+
+
 	# fixes bug 570458, which is due to an outdated bundled boost.m4
 	rm m4/boost.m4 || die
+
 	find -name 'Makefile.am' -exec \
 		sed -i -e '1ipkgdatadir=$(datadir)/herwig++' {} \; || die
-	autotools-utils_src_prepare
+
+	eautoreconf
 }
 
 src_configure() {
-	use prefix && \
-		append-ldflags -Wl,-rpath,"${EPREFIX}"/usr/$(get_libdir)/ThePEG
+	if use prefix ; then
+		append-ldflags -Wl,-rpath,"${EPREFIX}/usr/$(get_libdir)/ThePEG"
+	fi
+
 	local myeconfargs=(
 		--with-boost="${EPREFIX}"/usr
 		--with-thepeg="${EPREFIX}"/usr
 		$(use_enable c++11 stdcxx11)
 		$(use_with fastjet fastjet "${EPREFIX}"/usr)
 	)
-	autotools-utils_src_configure
+
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
-	autotools-utils_src_install
+	default
+
 	sed -i -e "s|${ED}||g" "${ED}"/usr/share/herwig++/defaults/PDF.in || die
 	sed -i -e "s|${ED}||g" "${ED}"/usr/share/herwig++/HerwigDefaults.rpo || die
 }
