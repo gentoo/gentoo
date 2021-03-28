@@ -1,4 +1,4 @@
-# Copyright 2013-2020 Gentoo Authors
+# Copyright 2013-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: multilib-build.eclass
@@ -663,7 +663,6 @@ multilib_native_with() {
 # of <false1> (or 'no' if unspecified) and <false2>. Arguments
 # are the same as for usex in the EAPI.
 #
-# Note: in EAPI 4 you need to inherit eutils to use this function.
 multilib_native_usex() {
 	if multilib_is_native_abi; then
 		usex "${@}"
