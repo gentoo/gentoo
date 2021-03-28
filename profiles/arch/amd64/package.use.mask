@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -289,8 +289,8 @@ games-emulation/mupen64plus-core new-dynarec
 # Tim Harder <radhermit@gentoo.org> (2013-08-13)
 # dev-lang/luajit keyworded for amd64 (masked in base)
 # dev-scheme/racket keyworded for amd64 (masked in base)
-app-editors/vim -luajit -racket
-app-editors/gvim -luajit -racket
+app-editors/vim -racket
+app-editors/gvim -racket
 
 # Kacper Kowalik <xarthisius@gentoo.org> (2013-08-09)
 # Works on amd64

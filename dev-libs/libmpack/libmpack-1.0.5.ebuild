@@ -54,9 +54,9 @@ src_install() {
 	emake "${myemakeargs[@]}" install
 
 	if [[ ${CHOST} == *-darwin* ]] ; then
-        local file="libmpack.0.0.0.dylib"
-        install_name_tool -id "${EPREFIX}/usr/$(get_libdir)/${file}" "${ED}/usr/$(get_libdir)/${file}" || die "Failed to adjust install_name"
-    fi
+		local file="libmpack.0.0.0.dylib"
+		install_name_tool -id "${EPREFIX}/usr/$(get_libdir)/${file}" "${ED}/usr/$(get_libdir)/${file}" || die "Failed to adjust install_name"
+	fi
 
 	find "${ED}" -name '*.la' -delete || die
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file specifies packages that are considered deprecated (but not
@@ -45,12 +45,6 @@ x11-libs/gtkglext
 # virtual/libffi has only one dev-libs/libffi provider. Use that instead.
 # bug #699796.
 virtual/libffi
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-09)
-# Test coverage reporting is not useful for Gentoo ebuilds.  The deps
-# against coverage plugins are either entirely spurious, or the build
-# systems need to be fixed to work without them.
-dev-python/nosexcover
 
 # Zac Medico <zmedico@gentoo.org> (2019-12-06)
 # These golang libraries should be vendored either by upstream or via
