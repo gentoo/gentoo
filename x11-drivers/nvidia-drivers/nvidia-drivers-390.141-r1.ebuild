@@ -226,13 +226,13 @@ src_install() {
 		fi
 
 		local libdir=.
-		if multilib_is_native_abi; then
+		if [[ -d 32 && ${ABI} == x86 ]]; then
+			libdir+=/32
+		else
 			libs+=(
 				nvidia-cfg
 				nvidia-wfb
 			)
-		else
-			libdir+=/32
 		fi
 
 		local lib soname
