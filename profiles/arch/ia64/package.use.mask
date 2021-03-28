@@ -425,10 +425,6 @@ app-text/asciidoc test
 # needs sys-libs/libcap-ng that is masked right now
 sys-apps/smartmontools caps
 
-# Raúl Porcel <armin76@gentoo.org> (2010-12-05)
-# Needs testing
-www-client/elinks javascript
-
 # Raúl Porcel <armin76@gentoo.org> (2010-06-26)
 # custom-optimization doesn't work on ia64
 www-client/seamonkey custom-optimization
