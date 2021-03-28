@@ -5846,7 +5846,7 @@ dev-lisp/clx 0.7.5: CLX is the Common Lisp interface to the X11 protocol primari
 dev-lisp/cmucl 21c: CMU Common Lisp is an implementation of ANSI Common Lisp
 dev-lisp/ecls 16.1.3 20.4.24 21.2.1 21.2.1-r1: ECL is an embeddable Common Lisp implementation
 dev-lisp/flexi-streams 1.0.16 1.0.17: Flexible bivalent streams for Common Lisp
-dev-lisp/gcl 2.6.10 2.6.12 2.6.13_pre98 2.6.13_pre99: GNU Common Lisp
+dev-lisp/gcl 2.6.10 2.6.12 2.6.13_pre99: GNU Common Lisp
 dev-lisp/hyperspec 7.0-r1: Common Lisp ANSI-standard Hyperspec
 dev-lisp/roswell 20.05.14.106: A lisp installer and launcher for major environment
 dev-lisp/sbcl 1.3.11 1.4.9 2.0.10 2.0.11 2.1.0 2.1.1 2.1.2: Steel Bank Common Lisp (SBCL) is an implementation of ANSI Common Lisp
@@ -8374,7 +8374,7 @@ dev-python/fqdn 1.5.0-r1 1.5.1: RFC-compliant FQDN validation and manipulation f
 dev-python/freezegun 1.1.0: Let your Python tests travel through time
 dev-python/frozen-flask 0.15: Freezes a Flask application into a set of static files
 dev-python/frozendict 1.2: A simple immutable mapping for python
-dev-python/fs 2.4.12: Filesystem abstraction layer
+dev-python/fs 2.4.12 2.4.13: Filesystem abstraction layer
 dev-python/fsspec 0.8.5 0.8.7: A specification that python filesystems should adhere to
 dev-python/fudge 1.1.1: Replace real objects with fakes (mocks, stubs, etc) while testing
 dev-python/funcparserlib 0.3.6-r1: Recursive descent parsing library based on functional combinators
@@ -8445,7 +8445,7 @@ dev-python/hvac 0.10.8: hashicorp vault client in python
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 21.0.0: A featureful, correct URL for Python
-dev-python/hypothesis 6.2.0 6.3.4 6.4.3 6.6.0 6.8.1: A library for property based testing
+dev-python/hypothesis 6.2.0 6.3.4 6.4.3 6.6.0 6.8.1 6.8.3: A library for property based testing
 dev-python/icalendar 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/idna 2.10-r1 3.0 3.1: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0-r1: Patch ssl.match_hostname for Unicode(idna) domains support
@@ -8456,7 +8456,7 @@ dev-python/imagesize 1.2.0: Pure Python module for getting image size from png/j
 dev-python/imapclient 2.2.0: easy-to-use, pythonic, and complete IMAP client library
 dev-python/iminuit 2.3.0 2.4.0: Minuit numerical function minimization in Python
 dev-python/immutables 0.14 0.15: A high-performance immutable mapping type for Python
-dev-python/importlib_metadata 3.4.0 3.7.0 3.7.1 3.7.2 3.7.3 3.8.0: Read metadata from Python packages
+dev-python/importlib_metadata 3.4.0 3.7.0 3.7.1 3.7.2 3.7.3 3.8.0 3.8.1: Read metadata from Python packages
 dev-python/importlib_resources 5.1.0 5.1.1 5.1.2: Read resources from Python packages
 dev-python/imread 0.7.3-r1: Read Image Files
 dev-python/incremental 17.5.0 21.3.0: Incremental is a small library that versions your Python projects
@@ -8675,7 +8675,7 @@ dev-python/ntlm-auth 1.5.0: Calculates NTLM Authentication codes
 dev-python/ntplib 0.3.3: Python NTP library
 dev-python/nuitka 0.6.11: Python to native compiler
 dev-python/numexpr 2.7.2_p1: Fast numerical array expression evaluator for Python and NumPy
-dev-python/numpy 1.19.5 1.20.1: Fast array and numerical python library
+dev-python/numpy 1.19.5 1.20.2: Fast array and numerical python library
 dev-python/numpydoc 0.9.1 1.1.0: Sphinx extension to support docstrings in Numpy format
 dev-python/oauth2 1.9.0_p1-r1: Library for OAuth version 1.0
 dev-python/oauth2client 4.1.3-r1: Library for accessing resources protected by OAuth 2.0
@@ -9180,7 +9180,7 @@ dev-python/rfc3339-validator 0.1.2 0.1.3: A pure python RFC3339 validator
 dev-python/rfc3986 1.4.0: Validating URI References per RFC 3986
 dev-python/rfc3986-validator 0.1.1: Pure python RFC3986 validator
 dev-python/rfc3987 1.3.8-r1: Parsing and validation of URIs (RFC 3986) and IRIs (RFC 3987)
-dev-python/rich 9.11.1 9.12.4 9.13.0: Python library for renrering rich text, tables, etc. to the terminal
+dev-python/rich 9.11.1 9.12.4 9.13.0 10.0.0: Python library for renrering rich text, tables, etc. to the terminal
 dev-python/rjsmin 1.1.0: Javascript minifier written in python.
 dev-python/robot-detection 0.4.0: Module to detect if a given HTTP User Agent is a web crawler.
 dev-python/roman 3.3: An Integer to Roman numerals converter
@@ -9245,7 +9245,7 @@ dev-python/slimit 0.8.1-r1: A JavaScript minifier written in Python
 dev-python/slixmpp 1.7.0 9999: Python 3 library for XMPP
 dev-python/smartypants 2.0.1 9999: ASCII quote-dot-dash to HTML entity converter
 dev-python/smmap 4.0.0: A pure Python implementation of a sliding window memory map manager
-dev-python/snakeoil 0.8.8 0.8.9 0.9.0 0.9.1 0.9.2-r1 0.9.3 0.9.4 0.9.5 0.9.6 9999: misc common functionality and useful optimizations
+dev-python/snakeoil 0.9.1 0.9.3 0.9.4 0.9.5 0.9.6 9999: misc common functionality and useful optimizations
 dev-python/snaketrace 0.1.1: An strace-like tool for Python audit events
 dev-python/snappy 0.6.0: Python library for the snappy compression library from Google
 dev-python/snapshottest 0.5.1: Snapshot Testing utils for Python
@@ -10991,7 +10991,7 @@ dev-util/patchutils 0.3.4 0.4.2: A collection of tools that operate on patch fil
 dev-util/patdiff 0.14.0: Colored patience diffs with word-level refinement
 dev-util/peg 0.1.18: Recursive-descent parser generators for C
 dev-util/perf 5.8 5.9.9 5.10.16 5.11: Userland tools for Linux Performance Counters
-dev-util/pkgcheck 0.7.7-r1 0.7.9-r1 0.7.9-r2 0.8.1-r2 0.8.2-r2 0.9.0-r2 0.9.1-r2 0.9.2-r2 0.9.3-r1 0.9.5 0.9.6 9999: pkgcore-based QA utility for ebuild repos
+dev-util/pkgcheck 0.9.2-r2 0.9.3-r1 0.9.5 0.9.7 9999: pkgcore-based QA utility for ebuild repos
 dev-util/pkgconf 1.6.3 1.7.3-r1 1.7.4 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
 dev-util/pkgconfig 0.28-r2 0.28-r3 0.29.1 0.29.2 9999: Package config system that manages compile/link flags
 dev-util/pkgdev 0.1.2 0.1.3 9999: Collection of tools for Gentoo development
@@ -17125,7 +17125,7 @@ sys-apps/pcsc-lite 1.9.0 1.9.1: PC/SC Architecture smartcard middleware library
 sys-apps/pcsc-slb-rf72-drv 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Reader
 sys-apps/pcsc-tools 1.5.6 1.5.7: PC/SC Architecture smartcard tools
 sys-apps/pick 4.0.0: a fuzzy search tool for the command-line
-sys-apps/pkgcore 0.10.13-r3 0.10.14-r3 0.11.2-r2 0.11.3-r2 0.11.4-r2 0.11.5-r2 0.11.6 0.11.8 9999: a framework for package management
+sys-apps/pkgcore 0.11.4-r2 0.11.5-r2 0.11.6 0.11.8 9999: a framework for package management
 sys-apps/plocate 1.1.5: Posting locate is a much faster locate
 sys-apps/pmount 0.9.99_alpha-r6: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
