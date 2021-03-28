@@ -16,6 +16,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_BRANCH="master"
 	inherit git-r3
 	SRC_URI=""
+	#KEYWORDS=""
 else
 	MAJOR_V=$(ver_cut 1)
 	SRC_URI="https://dl.winehq.org/wine/source/${MAJOR_V}.x/${MY_P}.tar.xz"
@@ -109,7 +110,7 @@ RDEPEND="${COMMON_DEPEND}
 	!app-emulation/wine:0
 	dos? ( >=games-emulation/dosbox-0.74_p20160629 )
 	gecko? ( app-emulation/wine-gecko:2.47.2[abi_x86_32?,abi_x86_64?] )
-	mono? ( app-emulation/wine-mono:5.1.1 )
+	mono? ( app-emulation/wine-mono:6.0.0 )
 	perl? (
 		dev-lang/perl
 		dev-perl/XML-Simple
@@ -152,8 +153,6 @@ if [[ ${#PATCHES_BIN[@]} -ge 1 ]] || [[ ${PV} == 9999 ]]; then
 fi
 
 wine_compiler_check() {
-	[[ ${MERGE_TYPE} = "binary" ]] && return 0
-
 	# GCC-specific bugs
 	if tc-is-gcc; then
 		# bug #549768

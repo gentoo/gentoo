@@ -16,6 +16,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_BRANCH="master"
 	inherit git-r3
 	SRC_URI=""
+	#KEYWORDS=""
 else
 	MAJOR_V=$(ver_cut 1)
 	SRC_URI="https://dl.winehq.org/wine/source/${MAJOR_V}.x/${MY_P}.tar.xz"
