@@ -14745,7 +14745,7 @@ net-fs/cvmfs 2.7.2-r1 2.7.3: HTTP read-only file system for distributing softwar
 net-fs/davfs2 1.6.0: Linux FUSE (or coda) driver that allows you to mount a WebDAV resource
 net-fs/docker-volume-netshare 0.35: Docker NFS, AWS EFS, Ceph & Samba/CIFS Volume Plugin
 net-fs/libnfs 4.0.0 9999: Client library for accessing NFS shares over a network
-net-fs/mc 2021.03.06.22.16.44 2021.03.12.03.36.59: Minio client provides alternatives for ls, cat on cloud storage and filesystems
+net-fs/mc 2021.03.06.22.16.44 2021.03.12.03.36.59 2021.03.23.05.46.11: Minio client provides alternatives for ls, cat on cloud storage and filesystems
 net-fs/minio 2021.03.04.00.53.13 2021.03.12.00.00.47 2021.03.17.02.33.02 2021.03.26.00.00.41: An Amazon S3 compatible object storage server
 net-fs/netatalk 3.1.12-r1: Open Source AFP server
 net-fs/nfs-utils 2.5.1 2.5.2 2.5.3-r1: NFS client and server daemons
