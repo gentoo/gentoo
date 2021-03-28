@@ -14910,7 +14910,7 @@ net-libs/glib-networking 2.62.4 2.64.3 2.66.0 2.68.0: Network-related giomodules
 net-libs/gloox 1.0.24: A portable high-level Jabber/XMPP library for C++
 net-libs/gnet 2.0.8-r2: A simple network library
 net-libs/gnome-online-accounts 3.36.0: GNOME framework for accessing online accounts
-net-libs/gnutls 3.6.15 3.7.0-r1 3.7.1: A secure communications library implementing the SSL, TLS and DTLS protocols
+net-libs/gnutls 3.6.15 3.7.1: A secure communications library implementing the SSL, TLS and DTLS protocols
 net-libs/google-cloud-cpp 0.2.0-r1 0.5.0 0.9.0 0.10.0 0.10.0-r1: Google Cloud Client Library for C++
 net-libs/grpc 1.28.1-r1 1.32.0: Modern open source high performance RPC framework
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
