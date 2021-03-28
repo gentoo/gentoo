@@ -11,7 +11,7 @@ inherit autotools dotnet systemd user
 EGIT_COMMIT="e272a2c006211b6b03be2ef5bbb9e3f8fefd0768"
 DESCRIPTION="XSP is a small web server that can host ASP.NET pages"
 HOMEPAGE="http://www.mono-project.com/ASP.NET"
-SRC_URI="https://github.com/mono/xsp/archive/${EGIT_COMMIT}.zip -> ${P}.zip"
+SRC_URI="https://github.com/mono/xsp/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/xsp-${EGIT_COMMIT}"
 
 LICENSE="MIT"
@@ -20,7 +20,6 @@ KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="developer doc test"
 RESTRICT="!test? ( test )"
 
-BDEPEND="app-arch/unzip"
 RDEPEND="dev-db/sqlite:3"
 DEPEND="${RDEPEND}"
 
