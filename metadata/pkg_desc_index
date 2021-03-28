@@ -18246,7 +18246,7 @@ www-servers/tomcat 7.0.108 8.5.63 8.5.64 9.0.43 9.0.44 10.0.2 10.0.4: Tomcat Ser
 www-servers/tornado 6.0.4 6.1: Python web framework and asynchronous networking library
 www-servers/uwsgi 2.0.19.1-r100 2.0.19.1-r101: uWSGI server for Python web applications
 www-servers/varnish 6.0.6 6.3.2 6.4.0 6.5.0 6.5.1: Varnish is a state-of-the-art, high-performance HTTP accelerator
-www-servers/xsp 2014.12-r2014120900: XSP is a small web server that can host ASP.NET pages
+www-servers/xsp 3.8_p2014120900 4.7.1: XSP is a small web server that can host ASP.NET pages
 x11-apps/amlc 0.5.1: Another Modeline Calculator, generates quality X11 display configs easily
 x11-apps/appres 1.0.5-r1: list X application resource database
 x11-apps/bdftopcf 1.1-r1: X.Org bdftopcf application
