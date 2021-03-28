@@ -38,7 +38,7 @@ src_prepare() {
 	fi
 
 	eautoconf
-    eautomake --gnu --add-missing --force --copy
+	eautomake --gnu --add-missing --force --copy
 }
 
 src_configure() {
