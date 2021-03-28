@@ -4,8 +4,6 @@
 EAPI=7
 
 USE_DOTNET="net35 net40 net45"
-PATCHDIR="${FILESDIR}/2.2/"
-
 inherit autotools dotnet systemd user
 
 DESCRIPTION="XSP is a small web server that can host ASP.NET pages"
@@ -15,17 +13,17 @@ SRC_URI="https://github.com/mono/xsp/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="doc test developer"
+IUSE="developer doc test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-db/sqlite:3"
 DEPEND="${RDEPEND}"
 
-METAFILETOBUILD=xsp.sln
-
 PATCHES=(
 	"${FILESDIR}/aclocal-fix.patch"
 )
+
+METAFILETOBUILD=xsp.sln
 
 src_prepare() {
 	default
@@ -69,7 +67,9 @@ pkg_preinst() {
 }
 
 src_install() {
-	mv_command="cp -ar" default
+	default
+
+	local PATCHDIR="${FILESDIR}/2.2/"
 
 	newinitd "${PATCHDIR}"/xsp.initd xsp
 	newinitd "${PATCHDIR}"/mod-mono-server-r1.initd mod-mono-server
