@@ -48,6 +48,10 @@ fi
 # before inheriting this eclass.
 : ${XORG_MULTILIB:="no"}
 
+# Due to changes to autotools.eclass, we need to define some variables before inheriting
+WANT_AUTOCONF="latest"
+WANT_AUTOMAKE="latest"
+
 # we need to inherit autotools first to get the deps
 inherit autotools libtool multilib toolchain-funcs flag-o-matic \
 	${FONT_ECLASS} ${GIT_ECLASS}
@@ -142,8 +146,6 @@ if [[ ${PN} != util-macros ]] ; then
 	# Required even by xorg-server
 	[[ ${PN} == "font-util" ]] || EAUTORECONF_DEPEND+=" >=media-fonts/font-util-1.2.0"
 fi
-WANT_AUTOCONF="latest"
-WANT_AUTOMAKE="latest"
 for arch in ${XORG_EAUTORECONF_ARCHES}; do
 	EAUTORECONF_DEPENDS+=" ${arch}? ( ${EAUTORECONF_DEPEND} )"
 done
