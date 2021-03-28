@@ -15,7 +15,7 @@ start() {
 		--umask 0027 \
 		--stderr-logger /usr/bin/logger \
 		--pidfile ${PIDFILE} --make-pidfile \
-		--exec /usr/bin/radicale -- --foreground
+		--exec /usr/bin/radicale
 	eend $?
 }
 
