@@ -88,7 +88,7 @@ test-distutils_enable_tests pytest \
 test-distutils_enable_tests nose \
 	"${BASE_IUSE} test" "${TEST_RESTRICT}" "${BASE_DEPS} test? ( python_single_target_python3_8? ( >=dev-python/nose-1.3.7-r4[python_targets_python3_8(-)] ) )"
 test-distutils_enable_tests unittest \
-	"${BASE_IUSE}" "" "${BASE_DEPS}"
+	"${BASE_IUSE} test" "${TEST_RESTRICT}" "${BASE_DEPS} test? ( python_single_target_python3_8? ( dev-python/unittest-or-fail[python_targets_python3_8(-)] ) )"
 test-distutils_enable_tests setup.py \
 	"${BASE_IUSE}" "" "${BASE_DEPS}"
 eoutdent
@@ -102,7 +102,7 @@ test-distutils_enable_tests pytest \
 test-distutils_enable_tests nose \
 	"${BASE_IUSE} test" "${TEST_RESTRICT}" "${BASE_DEPS} test? ( ${BASE_RDEPEND} python_single_target_python3_8? ( >=dev-python/nose-1.3.7-r4[python_targets_python3_8(-)] ) )"
 test-distutils_enable_tests unittest \
-	"${BASE_IUSE} test" "${TEST_RESTRICT}" "${BASE_DEPS} test? ( ${BASE_RDEPEND} )"
+	"${BASE_IUSE} test" "${TEST_RESTRICT}" "${BASE_DEPS} test? ( ${BASE_RDEPEND} python_single_target_python3_8? ( dev-python/unittest-or-fail[python_targets_python3_8(-)] ) )"
 test-distutils_enable_tests setup.py \
 	"${BASE_IUSE} test" "${TEST_RESTRICT}" "${BASE_DEPS} test? ( ${BASE_RDEPEND} )"
 eoutdent
