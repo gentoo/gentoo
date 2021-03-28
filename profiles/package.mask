@@ -32,7 +32,7 @@
 
 #--- END OF EXAMPLES ---
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2021-04-28)
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-03-28)
 # No release since 2012, depends on deprecated dev-ml/lablgtk:2, no more
 # revdeps in Gentoo ebuild repository.
 # Removal on 2021-04-07, bug #769326
