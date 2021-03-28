@@ -11,7 +11,7 @@ SRC_URI="https://gitlab.freedesktop.org/libfprint/libfprint/-/archive/v${PV}/${P
 
 LICENSE="LGPL-2.1"
 SLOT="2"
-KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ppc ppc64 ~sparc x86"
 IUSE="examples +introspection"
 
 RDEPEND="dev-libs/glib:2
