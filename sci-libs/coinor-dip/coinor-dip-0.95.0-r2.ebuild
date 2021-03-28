@@ -32,6 +32,9 @@ src_prepare() {
 	default
 	# Prevent unneeded call to pkg-config that needs ${ED}'s in path.
 	sed -i '/--libs.*addlibs.txt/d' Makefile.in || die
+
+	# Prevent python:2.7 automagic for dippy (bug #778965)
+	sed -i 's/@HAVE_PYTHON_TRUE@/#/' src/Makefile.in || die
 }
 
 src_configure() {
