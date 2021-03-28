@@ -14851,7 +14851,7 @@ net-irc/hexchat 2.14.3-r100 9999: Graphical IRC client based on XChat
 net-irc/ii 1.8 9999: A minimalist FIFO and filesystem-based IRC client
 net-irc/inspircd 3.8.1 3.9.0: Inspire IRCd - The Stable, High-Performance Modular IRCd
 net-irc/irccloud-desktop-bin 0.16.0: IRCCloud Desktop Client
-net-irc/ircii 20190117 20210314: An IRC and ICB client that runs under most UNIX platforms
+net-irc/ircii 20210314: An IRC and ICB client that runs under most UNIX platforms
 net-irc/ircmap 0.99-r1: Scripts to treate diagrams of IRC networks using the LINKS command
 net-irc/ircstats 1.2: IRCStats is a Linux log analyzer
 net-irc/irker 2.19: Submission tools for IRC notifications
