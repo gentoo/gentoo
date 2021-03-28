@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools mono-env udev
+inherit autotools udev
 
 DESCRIPTION="Shared library to access the contents of an iPod"
 HOMEPAGE="http://www.gtkpod.org/libgpod/"
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/gtkpod/${P}.tar.bz2"
 LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE="+gtk +udev ios mono"
+IUSE="+gtk ios +udev"
 
 RDEPEND="
 	>=app-pda/libplist-1.0:=
@@ -23,10 +23,6 @@ RDEPEND="
 	gtk? ( x11-libs/gdk-pixbuf:2 )
 	ios? ( app-pda/libimobiledevice:= )
 	udev? ( virtual/udev )
-	mono? (
-		>=dev-lang/mono-1.9.1
-		>=dev-dotnet/gtk-sharp-2.12
-	)
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -40,40 +36,34 @@ BDEPEND="
 DOCS=( AUTHORS NEWS README{,.overview,.sqlite,.SysInfo} TROUBLESHOOTING )
 
 PATCHES=(
-	"${FILESDIR}"/${P}-comment.patch #537968
-	"${FILESDIR}"/${P}-segfault.patch #565052
-	"${FILESDIR}"/${P}-mono4.patch
+	"${FILESDIR}"/${P}-comment.patch # bug 537968
+	"${FILESDIR}"/${P}-segfault.patch # bug 565052
 	"${FILESDIR}"/${P}-pkgconfig_overlinking.patch
 )
 
-pkg_setup() {
-	use mono && mono-env_pkg_setup
-}
-
 src_prepare() {
 	default
-
-	# mono-4 fixes from Fedora
-	sed -e "s#public DateTime#public System.DateTime#g" \
-		-i bindings/mono/libgpod-sharp/Artwork.cs || die
 	eautoreconf
 }
 
 src_configure() {
-	econf \
-		--disable-static \
-		$(use_enable udev) \
-		$(use_enable gtk gdk-pixbuf) \
-		--disable-pygobject \
-		--without-hal \
-		$(use_with ios libimobiledevice) \
-		--with-udev-dir="$(get_udevdir)" \
-		--without-python \
-		$(use_with mono)
+	local myeconfargs=(
+		--disable-pygobject
+		--disable-static
+		--without-hal
+		--without-mono
+		--without-python
+		--with-udev-dir="$(get_udevdir)"
+		$(use_enable gtk gdk-pixbuf)
+		$(use_with ios libimobiledevice)
+		$(use_enable udev)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
 	default
+	rm "${ED}"/usr/$(get_libdir)/pkgconfig/libgpod-sharp.pc || die
 	rmdir "${ED}"/tmp || die
-	find "${D}" -name '*.la' -type f -delete || die
+	find "${ED}" -name '*.la' -type f -delete || die
 }
