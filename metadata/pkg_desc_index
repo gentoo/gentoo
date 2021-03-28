@@ -14602,7 +14602,7 @@ net-analyzer/tcpstat 1.5_p8: Reports network interface statistics
 net-analyzer/tcptrace 6.6.7_p6: A Tool for analyzing network packet dumps
 net-analyzer/tcptraceroute 1.5_beta7-r3: tcptraceroute is a traceroute implementation using TCP packets
 net-analyzer/tcptrack 1.4.2: Passive per-connection tcp bandwidth monitor
-net-analyzer/telegraf 1.10.4 1.11.5 1.12.1 1.13.3 1.14.5 1.15.2 1.18.0: The plugin-driven server agent for collecting & reporting metrics.
+net-analyzer/telegraf 1.13.3 1.14.5 1.15.2 1.18.0: The plugin-driven server agent for collecting & reporting metrics.
 net-analyzer/testssl 3.0.4: Tool to check TLS/SSL cipher support
 net-analyzer/thc-ipv6 3.2-r1 9999: complete tool set to attack the inherent protocol weaknesses of IPV6 and ICMP6
 net-analyzer/thcrut 1.2.5-r2: Network discovery and fingerprinting tool
