@@ -8882,7 +8882,7 @@ dev-python/pygame 1.9.6-r1 2.0.0_pre10 2.0.0 2.0.1 9999: Python bindings for SDL
 dev-python/pygame_sdl2 6.99.12.4-r5 7.3.5-r1 7.3.5-r2: Reimplementation of portions of the pygame API using SDL2
 dev-python/pyghmi 1.5.22: A pure python implementation of IPMI protocol
 dev-python/pygit2 1.5.0: Python bindings for libgit2
-dev-python/pyglet 1.5.14 1.5.15: Cross-platform windowing and multimedia library for Python
+dev-python/pyglet 1.5.15: Cross-platform windowing and multimedia library for Python
 dev-python/pygments 2.8.0 2.8.1: Pygments is a syntax highlighting package written in Python
 dev-python/pygments-github-lexers 0.0.5: Pygments Github custom lexers
 dev-python/pygobject 3.34.0-r1 3.36.1-r1 3.38.0 3.40.0: Python bindings for GObject Introspection
