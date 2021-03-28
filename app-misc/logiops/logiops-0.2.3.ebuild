@@ -7,7 +7,7 @@ inherit cmake linux-info
 
 DESCRIPTION="An unofficial userspace driver for HID++ Logitech devices"
 HOMEPAGE="https://github.com/PixlOne/logiops"
-SRC_URI="https://github.com/PixlOne/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/PixlOne/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
