@@ -117,7 +117,7 @@ chromium_remove_language_paks() {
 # @DESCRIPTION:
 # EBUILD_DEATH_HOOK function to display some warnings/information about build environment.
 chromium_pkg_die() {
-	if [[ "${EBUILD_PHASE}" != "compile" ]]; then
+	if [[ "${EBUILD_PHASE_FUNC}" != "src_compile" ]]; then
 		return
 	fi
 
