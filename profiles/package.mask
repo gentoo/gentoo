@@ -400,11 +400,6 @@ media-gfx/videorbits
 # Removal in 3 months. Bug #769440.
 media-gfx/gqview
 
-# Michał Górny <mgorny@gentoo.org> (2021-02-07)
-# Fails tests (and does not seem to test the old installed version
-# at least partially).  Needs further testing.
->=dev-python/numpy-1.20
-
 # Michał Górny <mgorny@gentoo.org> (2021-02-01)
 # LibreSSL support is discontinued.  Please read the relevant news item
 # and either migrate to dev-libs/openssl, or use the unsupported
