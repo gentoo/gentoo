@@ -1,17 +1,16 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
 USE_DOTNET="net35 net40 net45"
 PATCHDIR="${FILESDIR}/2.2/"
 
-inherit base eutils systemd dotnet user autotools autotools-utils
-
-DESCRIPTION="XSP is a small web server that can host ASP.NET pages"
-HOMEPAGE="http://www.mono-project.com/ASP.NET"
+inherit autotools dotnet systemd user
 
 EGIT_COMMIT="e272a2c006211b6b03be2ef5bbb9e3f8fefd0768"
+DESCRIPTION="XSP is a small web server that can host ASP.NET pages"
+HOMEPAGE="http://www.mono-project.com/ASP.NET"
 SRC_URI="https://github.com/mono/xsp/archive/${EGIT_COMMIT}.zip -> ${P}.zip"
 S="${WORKDIR}/xsp-${EGIT_COMMIT}"
 
@@ -21,44 +20,48 @@ KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="doc test developer"
 RESTRICT="!test? ( test )"
 
+BDEPEND="app-arch/unzip"
 RDEPEND="dev-db/sqlite:3"
 DEPEND="${RDEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}/aclocal-fix.patch"
+METAFILETOBUILD=xsp.sln
 
-	if [ -z "$LIBTOOL" ]; then
-		LIBTOOL=`which glibtool 2>/dev/null`
-		if [ ! -x "$LIBTOOL" ]; then
-			LIBTOOL=`which libtool`
-		fi
+PATCHES=(
+	"${FILESDIR}/aclocal-fix.patch"
+)
+
+src_prepare() {
+	default
+
+	eaclocal -I build/m4/shamrock -I build/m4/shave ${ACLOCAL_FLAGS}
+	if test -z "${NO_LIBTOOLIZE}" ; then
+		_elibtoolize --force --copy
 	fi
-	eaclocal -I build/m4/shamrock -I build/m4/shave $ACLOCAL_FLAGS
-	if test -z "$NO_LIBTOOLIZE"; then
-		${LIBTOOL}ize --force --copy
-	fi
+
 	eautoconf
+	eautomake --gnu --add-missing --force --copy
 }
 
 src_configure() {
-	myeconfargs=("--enable-maintainer-mode")
-	use test && myeconfargs+=("--with_unit_tests")
-	use doc || myeconfargs+=("--disable-docs")
-	eautomake --gnu --add-missing --force --copy #nowarn
-	autotools-utils_src_configure
-	./configure || die
+	local myeconfargs=(
+		"--enable-maintainer-mode"
+	)
+
+	use test && myeconfargs+=( "--with_unit_tests" )
+	use doc || myeconfargs+=( "--disable-docs" )
+
+	econf "${myeconfargs[@]}"
 }
 
-METAFILETOBUILD=xsp.sln
+#src_compile() {
+#	exbuild xsp.sln
 
-src_compile() {
-	exbuild xsp.sln
-	if use developer; then
-		exbuild /p:DebugSymbols=True ${METAFILETOBUILD}
-	else
-		exbuild /p:DebugSymbols=False ${METAFILETOBUILD}
-	fi
-}
+#	if use developer ; then
+#		exbuild /p:DebugSymbols=True ${METAFILETOBUILD}
+#	else
+#		exbuild /p:DebugSymbols=False ${METAFILETOBUILD}
+#	fi
+#}
 
 pkg_preinst() {
 	enewgroup aspnet
@@ -69,7 +72,8 @@ pkg_preinst() {
 }
 
 src_install() {
-	mv_command="cp -ar" autotools-utils_src_install
+	default
+
 	newinitd "${PATCHDIR}"/xsp.initd xsp
 	newinitd "${PATCHDIR}"/mod-mono-server-r1.initd mod-mono-server
 	newconfd "${PATCHDIR}"/xsp.confd xsp
@@ -78,6 +82,7 @@ src_install() {
 	insinto /etc/xsp4
 	doins "${FILESDIR}"/systemd/mono.webapp
 	insinto /etc/xsp4/conf.d
+
 	# mono-xsp4.service was original name from
 	# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=770458;filename=mono-xsp4.service;att=1;msg=5
 	# I think that using the same commands as in debian
