@@ -63,7 +63,7 @@ _ALTERNATIVES_ECLASS=1
 
 # @FUNCTION: alternatives_auto_makesym
 # @DESCRIPTION:
-# automatic deduction based on a symlink and a regex mask
+# Automatic deduction (Bash pathname expansion) based on a symlink and a regex mask
 alternatives_auto_makesym() {
 	local SYMLINK REGEX ALT myregex
 	SYMLINK=$1
@@ -84,6 +84,9 @@ alternatives_auto_makesym() {
 	alternatives_makesym ${SYMLINK} ${ALT}
 }
 
+# @FUNCTION: alternatives_makesym
+# @DESCRIPTION:
+# Creates symlink based on a symlink and regex mask literally
 alternatives_makesym() {
 	local ALTERNATIVES=""
 	local SYMLINK=""
