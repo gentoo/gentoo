@@ -12,7 +12,7 @@ HOMEPAGE="http://eterna.com.au/ircii/"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
 IUSE=""
 
 DEPEND="sys-libs/ncurses:0=
