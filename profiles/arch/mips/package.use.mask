@@ -158,10 +158,6 @@ net-fs/samba ads cluster
 mail-client/mutt tokyocabinet
 
 # Matt Turner <mattst88@gentoo.org> (2010-12-26)
-# dev-lang/spidermonkey not keyworded
-www-client/elinks javascript
-
-# Matt Turner <mattst88@gentoo.org> (2010-12-26)
 # media-gfx/ufraw not keyworded
 media-gfx/imagemagick raw
 
