@@ -2600,7 +2600,7 @@ app-misc/linuxspa 0.7.1-r2: Linux Serial Protocol Analyser
 app-misc/lirc 0.10.1-r3 0.10.1-r4: decode and send infra-red signals of many commonly used remote controls
 app-misc/livecd-tools 2.8 2.9 9999: Gentoo LiveCD tools for autoconfiguration of hardware
 app-misc/lockfile-progs 0.1.17: Programs to safely lock/unlock files and mailboxes
-app-misc/logiops 0.2.2 0.2.2_p20200108: An unofficial userspace driver for HID++ Logitech devices
+app-misc/logiops 0.2.3: An unofficial userspace driver for HID++ Logitech devices
 app-misc/logitech-applet 0.4_pre1-r3: Control utility for some special features of some special Logitech USB mice!
 app-misc/logserial 0.4.2: A tool for logging raw data from a serial device
 app-misc/lsx 0.1-r1: list executables
