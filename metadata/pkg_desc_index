@@ -12004,7 +12004,7 @@ gnome-extra/gnome-power-manager 3.32.0: GNOME power statistics
 gnome-extra/gnome-search-tool 3.6.0: Search tool for GNOME 3
 gnome-extra/gnome-shell-extension-appindicator 33 34: Support Ubuntu AppIndicators and KStatusNotifierItems in Gnome
 gnome-extra/gnome-shell-extension-applications-overview-tooltip 9 10-r1 11: Show tooltip with full name and description
-gnome-extra/gnome-shell-extension-bing-wallpaper 27 28: Changes your wallpaper daily to the bing.com background image
+gnome-extra/gnome-shell-extension-bing-wallpaper 27 28 29: Changes your wallpaper daily to the bing.com background image
 gnome-extra/gnome-shell-extension-bluetooth-quick-connect 13 16-r1: Allow to connect bluetooth paired devices from gnome control panel
 gnome-extra/gnome-shell-extension-control-blur-effect-on-lock-screen 20200713 20201211: Control the blur effect on gnome-shell lock screen
 gnome-extra/gnome-shell-extension-dash-to-panel 40: An icon taskbar for the Gnome Shell
