@@ -5,9 +5,6 @@
 		<email>patrick@gentoo.org</email>
 		<name>Patrick Lauer</name>
 	</maintainer>
-	<use>
-		<flag name="sieve">Use msieve for the sieving steps of NFS</flag>
-	</use>
 	<upstream>
 		<remote-id type="sourceforge">yafu</remote-id>
 	</upstream>
