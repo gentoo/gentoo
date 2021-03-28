@@ -34,7 +34,7 @@ BDEPEND="
 	test? ( ${RDEPEND} )
 "
 
-HTML_DOCS=( "doc/us/." )
+HTML_DOCS=( "docs/." )
 
 src_prepare() {
 	default
@@ -53,6 +53,7 @@ lua_src_compile() {
 		"LBER_LIBDIR=/usr/$(get_libdir)"
 		"LDAP_LIBDIR=/usr/$(get_libdir)"
 		"LUA_INCDIR=$(lua_get_include_dir)"
+		"LUA_LIBDIR=/usr/$(get_libdir)"
 	)
 
 	emake "${myemakeargs[@]}"
