@@ -5729,7 +5729,7 @@ dev-libs/pcl 1.12-r1: Portable Coroutine Library
 dev-libs/pegtl 2.8.3-r1 3.2.0: Header-only library for creating parsers according to Parsing Expression Grammar
 dev-libs/pigpio 79: A library for the Raspberry which allows control of the GPIOs
 dev-libs/pkcs11-helper 1.25.1: PKCS#11 helper library
-dev-libs/plasma-wayland-protocols 1.1.1: Plasma Specific Protocols for Wayland
+dev-libs/plasma-wayland-protocols 1.1.1 1.2.0: Plasma Specific Protocols for Wayland
 dev-libs/pmdk 1.9.2: Persistent Memory Development Kit
 dev-libs/poco 1.9.0-r2 1.10.1: C++ libraries for building network-based applications
 dev-libs/popt 1.16-r2 1.18: Parse Options - Command line parser
@@ -13437,7 +13437,7 @@ media-libs/partio 1.10.1 9999: Library for particle IO and manipulation
 media-libs/phat 0.4.1-r1: PHAT is a collection of GTK+ widgets geared toward pro-audio apps
 media-libs/phonon 4.11.1-r1: KDE multimedia abstraction library
 media-libs/phonon-gstreamer 4.10.0: GStreamer backend for the Phonon multimedia library
-media-libs/phonon-vlc 0.11.1 0.11.2: VLC backend for the Phonon multimedia library
+media-libs/phonon-vlc 0.11.1 0.11.2 0.11.3: VLC backend for the Phonon multimedia library
 media-libs/plib 1.8.5-r2 1.8.5-r3: multimedia library used by many games
 media-libs/plotutils 2.6-r2: Powerful C/C++ function library for exporting 2-D vector graphics
 media-libs/pnglite 0.1.17: Small and simple library for loading and writing PNG images
@@ -13896,7 +13896,7 @@ media-sound/deinvert 9999: A voice inversion descrambler
 media-sound/denemo 2.3.0-r1: A music notation editor
 media-sound/din 49.1 50: a software musical instrument and audio synthesizer
 media-sound/dir2ogg 0.13-r1: Converts mp3, m4a, wma, and wav files to Ogg Vorbis format
-media-sound/drumstick 2.0.0: Qt/C++ wrapper for ALSA sequencer
+media-sound/drumstick 2.0.0 2.1.0: Qt/C++ wrapper for ALSA sequencer
 media-sound/dvda-author 10.06-r1: Author a DVD-Audio DVD
 media-sound/easytag 2.4.3-r1: GTK+ utility for editing MP2, MP3, MP4, FLAC, Ogg and other media tags
 media-sound/ecasound 2.9.3: a package for multitrack audio processing
@@ -15005,7 +15005,7 @@ net-libs/libprotoident 2.0.14_p1 9999: A library that performs application layer
 net-libs/libproxy 0.4.17: Library for automatic proxy configuration management
 net-libs/libpsl 0.21.0 0.21.1: C library for the Public Suffix List
 net-libs/libqmi 1.22.2 1.26.6 9999: Qualcomm MSM (Mobile Station Modem) Interface (QMI) modem protocol library
-net-libs/libquotient 0.6.4 0.6.5: Qt5-based SDK to develop applications for Matrix
+net-libs/libquotient 0.6.5 0.6.6: Qt5-based SDK to develop applications for Matrix
 net-libs/librouteros 1.1.2: Library for accessing MikroTik's RouterOS via its API
 net-libs/librsync 2.3.1: Remote delta-compression library
 net-libs/libsearpc 3.2.0-r1: A simple C language RPC framework
@@ -16657,7 +16657,7 @@ sci-visualization/grace 5.1.25_p7 5.1.25_p9: Motif based XY-plotting tool
 sci-visualization/gri 2.12.23-r1: Language for scientific graphics programming
 sci-visualization/gwyddion 2.56: Framework for Scanning Mode Microscopy data analysis
 sci-visualization/kst 2.0.8: Fast real-time large-dataset viewing and plotting tool
-sci-visualization/labplot 2.8.1 9999: Scientific data analysis and visualisation based on KDE Frameworks
+sci-visualization/labplot 2.8.1 2.8.2 9999: Scientific data analysis and visualisation based on KDE Frameworks
 sci-visualization/opendx 4.4.4-r7: 3D data visualization tool
 sci-visualization/opendx-samples 4.4.0-r2: Samples for IBM Data Explorer
 sci-visualization/paraview 5.8.1 5.9.0: Powerful scientific data visualization application
@@ -18146,7 +18146,7 @@ www-apps/owncloud 10.5.0 10.6.0: Web-based storage application where all your da
 www-apps/phpBB 3.3.3: An open-source PHP-based bulletin board package
 www-apps/phpsysinfo 3.3.2: A customizable PHP script that displays information about your system nicely
 www-apps/piwigo 11.3.0 11.4.0: a photo gallery software for the web
-www-apps/postfixadmin 3.2.4 3.3.5 3.3.7 3.3.8: Web Based Management tool for Postfix style virtual domains and users
+www-apps/postfixadmin 3.3.5 3.3.7 3.3.8: Web Based Management tool for Postfix style virtual domains and users
 www-apps/prewikka 5.2.0: Graphical front-end analysis console for the Prelude Framework
 www-apps/radicale 2.1.12 3.0.6: A simple CalDAV calendar server
 www-apps/redmine 4.1.1-r1: Flexible project management web application using the Ruby on Rails framework
