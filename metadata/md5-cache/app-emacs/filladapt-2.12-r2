@@ -1,13 +1,13 @@
 BDEPEND=>=app-editors/emacs-23.1:*
 DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
-DESCRIPTION=A full-featured scriptable IRC client for the Emacs text editor
+DESCRIPTION=Filladapt enhances the behavior of Emacs' fill functions
 EAPI=7
-HOMEPAGE=http://www.zenirc.org/
+HOMEPAGE=http://www.wonderworks.com/
 INHERIT=elisp readme.gentoo-r1
-KEYWORDS=amd64 x86
+KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-2+
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
-SRC_URI=ftp://ftp.zenirc.org/pub/zenirc/zenirc-2.112.tar.gz
+SRC_URI=mirror://gentoo/filladapt-2.12.el.gz
 _eclasses_=elisp-common	36f97076abd90f943a34f8bcd58b5bcc	elisp	00840e1f4eb277c757dbfa5abf73c4c7	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
-_md5_=1c4731458aa3e285a538bcf2ae02301e
+_md5_=1ce88440a6f07b0d94e16745577d5eac

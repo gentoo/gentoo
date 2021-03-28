@@ -1,13 +1,13 @@
+BDEPEND=>=app-editors/emacs-23.1:*
 DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
-DEPEND=>=app-editors/emacs-23.1:*
 DESCRIPTION=Redo/undo system for Emacs
-EAPI=5
+EAPI=7
 HOMEPAGE=https://www.emacswiki.org/emacs/RedoPlus https://www11.atwiki.jp/s-irie/pages/18.html
-INHERIT=readme.gentoo elisp
+INHERIT=elisp readme.gentoo-r1
 KEYWORDS=~alpha amd64 x86
 LICENSE=GPL-2+
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/redo+-1.19.el.xz
-_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	epatch	e8f1ec13660dc2f44b32775765d85e42	l10n	8cdd85e169b835d518bc2fd59f780d8e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	preserve-libs	ef207dc62baddfddfd39a164d9797648	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	readme.gentoo	3b23843470b60724ee8b179916815a4e	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	36f97076abd90f943a34f8bcd58b5bcc	elisp	00840e1f4eb277c757dbfa5abf73c4c7
-_md5_=a29539a37d1f2edba167895bdc6d22e3
+_eclasses_=elisp-common	36f97076abd90f943a34f8bcd58b5bcc	elisp	00840e1f4eb277c757dbfa5abf73c4c7	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
+_md5_=7377c748b7b3ee970e32b6198d7eb8e2
