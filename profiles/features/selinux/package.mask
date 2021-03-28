@@ -63,3 +63,4 @@ sys-apps/systemd-readahead
 sys-process/systemd-cron
 sys-apps/dbus-broker
 sys-kernel/installkernel-systemd-boot
+sys-power/switcheroo-control
