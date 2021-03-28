@@ -1,4 +1,4 @@
-# Copyright 2007-2020 Gentoo Authors
+# Copyright 2007-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ant-tasks.eclass
@@ -33,12 +33,14 @@ inherit java-pkg-2 java-ant-2
 EXPORT_FUNCTIONS src_unpack src_compile src_install
 
 # @ECLASS-VARIABLE: ANT_TASK_JDKVER
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Affects the >=virtual/jdk version set in DEPEND string. Defaults to 1.8, can
 # be overridden from ebuild BEFORE inheriting this eclass.
 ANT_TASK_JDKVER=${ANT_TASK_JDKVER-1.8}
 
 # @ECLASS-VARIABLE: ANT_TASK_JREVER
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Affects the >=virtual/jre version set in DEPEND string. Defaults to 1.8, can
 # be overridden from ebuild BEFORE inheriting this eclass.
@@ -60,12 +62,14 @@ ANT_TASK_NAME="${PN#ant-}"
 ANT_TASK_DEPNAME=${ANT_TASK_DEPNAME-${ANT_TASK_NAME}}
 
 # @ECLASS-VARIABLE: ANT_TASK_DISABLE_VM_DEPS
+# @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If set, no JDK/JRE deps are added.
 
 # @VARIABLE: ANT_TASK_PV
 # @INTERNAL
+# @DESCRIPTION:
 # Version of ant-core this task is intended to register and thus load with.
 ANT_TASK_PV="${PV}"
 
