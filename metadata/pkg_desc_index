@@ -10895,7 +10895,7 @@ dev-util/gitlab-ci-linter 2.2.0: linter for .gitlab-ci.yml files
 dev-util/glade 3.36.0: A user interface designer for GTK+ and GNOME
 dev-util/glib-utils 2.66.7 2.68.0: Build utilities for GLib using projects
 dev-util/global 6.6.4: tag system to find an object location in various sources
-dev-util/glslang 10.11.0.0_pre20200924 10.11.0.0_pre20201216 9999: Khronos reference front-end for GLSL and ESSL, and sample SPIR-V generator
+dev-util/glslang 10.11.0.0_pre20201216 11.2.0 9999: Khronos reference front-end for GLSL and ESSL, and sample SPIR-V generator
 dev-util/gn 0.1726 0.1807: GN is a meta-build system that generates build files for Ninja
 dev-util/gnome-builder 3.36.1 3.38.1 3.38.2: An IDE for writing GNOME-based software
 dev-util/gnome-devel-docs 3.32.1: Documentation for developing for the GNOME desktop environment
@@ -11051,9 +11051,9 @@ dev-util/shtool 2.0.8-r1: Set of stable and portable shell scripts
 dev-util/shunit2 2.1.6-r1: Unit-test framework for Bourne-based shell scripts
 dev-util/smem 1.5-r1: A tool that can give numerous reports on memory usage on Linux systems
 dev-util/source-highlight 3.1.9: Generate highlighted source code as an (x)html document
-dev-util/spirv-headers 1.5.4.1 9999: Machine-readable files for the SPIR-V Registry
+dev-util/spirv-headers 1.5.4.1 1.5.4.2_pre20210327 9999: Machine-readable files for the SPIR-V Registry
 dev-util/spirv-llvm-translator 10.0.0 10.0.0_p20200909 11.0.0 11.1.0_pre20210212: Bi-directional translator between SPIR-V and LLVM IR
-dev-util/spirv-tools 2020.6 9999: Provides an API and commands for processing SPIR-V modules
+dev-util/spirv-tools 2020.6 2021.0_pre20210327 9999: Provides an API and commands for processing SPIR-V modules
 dev-util/splint 3.1.2-r2: Check C programs for vulnerabilities and programming mistakes
 dev-util/squashdelta 0.1.1 9999: Efficient (partially uncompressed) SquashFS binary delta tool
 dev-util/squashmerge 0.1 9999: dev-util/squashdelta delta merge tool
@@ -11089,8 +11089,8 @@ dev-util/visual-regexp 3.0-r1 3.1: Type the regexp and visualize it on a sample 
 dev-util/visualvm 1.4.1: Integrates commandline JDK tools and profiling capabilities
 dev-util/vmtouch 1.3.0 1.3.1: Virtual Memory Toucher, portable file system cache diagnostics and control
 dev-util/vtable-dumper 1.2: A tool to list content of virtual tables in a shared library
-dev-util/vulkan-headers 1.2.162 9999: Vulkan Header files and API registry
-dev-util/vulkan-tools 1.2.162 9999: Official Vulkan Tools and Utilities for Windows, Linux, Android, and MacOS
+dev-util/vulkan-headers 1.2.162 1.2.170 9999: Vulkan Header files and API registry
+dev-util/vulkan-tools 1.2.162 1.2.170 9999: Official Vulkan Tools and Utilities for Windows, Linux, Android, and MacOS
 dev-util/wasmer 0.11.0: universal web assembly runtime
 dev-util/watchman 4.9.0: A file watching service
 dev-util/wayland-scanner 1.19.0 9999: wayland-scanner tool
@@ -13473,7 +13473,7 @@ media-libs/sdl2-net 2.0.1: Simple Direct Media Layer Network Support Library
 media-libs/sdl2-ttf 2.0.15: library that allows you to use TrueType fonts in SDL applications
 media-libs/sg 1.5: Socket Graphics tool for displaying polygons
 media-libs/sge 030809: Graphics extensions library for SDL
-media-libs/shaderc 2020.4_pre20201106 2020.5_pre20201216: Collection of tools, libraries and tests for shader compilation
+media-libs/shaderc 2020.5_pre20201216 2020.6_pre20210327: Collection of tools, libraries and tests for shader compilation
 media-libs/simage 1.8.0-r1 1.8.1 9999: Image and video texturing library
 media-libs/smpeg 0.4.4-r10: SDL MPEG Player Library
 media-libs/smpeg2 2.0.0-r3: SDL MPEG Player Library
@@ -13505,8 +13505,8 @@ media-libs/vitamtp 2.5.9_pre20160829 9999: Library to interact with PS Vita's US
 media-libs/vo-aacenc 0.1.3 9999: VisualOn AAC encoder library
 media-libs/vo-amrwbenc 0.1.3 9999: VisualOn AMR-WB encoder library
 media-libs/volpack 1.0_p7-r1: Volume rendering library
-media-libs/vulkan-layers 1.2.162 9999: Vulkan Validation Layers
-media-libs/vulkan-loader 1.2.162-r1 9999: Vulkan Installable Client Driver (ICD) Loader
+media-libs/vulkan-layers 1.2.162 1.2.170 9999: Vulkan Validation Layers
+media-libs/vulkan-loader 1.2.162-r1 1.2.170 9999: Vulkan Installable Client Driver (ICD) Loader
 media-libs/waffle 1.6.1-r1 1.6.2 1.7.0 9999: Library that allows selection of GL API and of window system at runtime
 media-libs/webrtc-audio-processing 0.3.1: AudioProcessing library from the webrtc.org code base
 media-libs/woff2 1.0.2-r1 1.0.2-r2: Encode/decode WOFF2 font format
@@ -14721,7 +14721,7 @@ net-firewall/firewalld 0.7.1-r3 0.7.3-r1 0.9.1: A firewall daemon with D-BUS int
 net-firewall/fwbuilder 5.3.7: GUI management for iptables, PF, Cisco ASA/PIX/FWSM, Cisco router ACL and more
 net-firewall/fwknop 2.6.10-r2: Single Packet Authorization and Port Knocking application
 net-firewall/ipkungfu 0.6.1-r1: A nice iptables firewall script
-net-firewall/ipset 6.38-r1 7.10 7.11: IPset tool for iptables, successor to ippool
+net-firewall/ipset 7.10 7.11: IPset tool for iptables, successor to ippool
 net-firewall/ipt_netflow 2.5.1-r1 9999: Netflow iptables module
 net-firewall/iptables 1.8.5 1.8.6 1.8.7: Linux kernel (2.4+) firewall, NAT and packet mangling tools
 net-firewall/itval 1.2_p20121104-r1: Iptables policy testing and validation tool
