@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2021-03-28)
+# Sandbox violations, bug #778827
+>=games-board/gnome-mahjongg-3.38
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-03-28)
 # No release since 2012, depends on deprecated dev-ml/lablgtk:2, no more
 # revdeps in Gentoo ebuild repository.
