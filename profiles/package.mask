@@ -349,11 +349,6 @@ dev-ml/core_extended
 # Masked for removal in 30 days.
 media-gfx/openexr_viewers
 
-# David Seifert <soap@gentoo.org> (2021-02-25)
-# Unmaintained, python 3.7 only, relies on wrong libgd, which isn't
-# packaged.  Removal on 2021-03-27.  Bug #683358, #696476, #741936.
-sys-auth/authenticator
-
 # Sam James <sam@gentoo.org> (2021-02-18)
 # 0.9.27 included a regression wrt deletes
 # bug #768948
