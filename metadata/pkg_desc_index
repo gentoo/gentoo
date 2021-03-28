@@ -19169,7 +19169,7 @@ xfce-base/exo 4.16.0 4.16.1: Extensions, widgets and framework library with sess
 xfce-base/garcon 0.8.0: Xfce's freedesktop.org specification compatible menu implementation library
 xfce-base/libxfce4ui 4.16.0: Unified widget and session management libs for Xfce
 xfce-base/libxfce4util 4.16.0: A basic utility library for the Xfce desktop environment
-xfce-base/thunar 4.16.2 4.16.3 4.16.4 4.16.5 4.16.6 4.17.0 4.17.1: File manager for the Xfce desktop environment
+xfce-base/thunar 4.16.5 4.16.6 4.17.0 4.17.1: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.16.1: A tool to find and launch installed applications for the Xfce desktop
 xfce-base/xfce4-meta 4.14-r2 4.16 4.16-r2: The Xfce Desktop Environment (meta package)
 xfce-base/xfce4-panel 4.16.1 4.16.2: Panel for the Xfce desktop environment
