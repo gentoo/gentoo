@@ -3,9 +3,9 @@
 
 EAPI=7
 
+# TODO: We can probably yank the USE_DOTNET/dotnet.eclass stuff
+# but let's be conservative for now
 USE_DOTNET="net35 net40 net45"
-PATCHDIR="${FILESDIR}/2.2/"
-
 inherit autotools dotnet systemd user
 
 EGIT_COMMIT="e272a2c006211b6b03be2ef5bbb9e3f8fefd0768"
@@ -17,18 +17,19 @@ S="${WORKDIR}/xsp-${EGIT_COMMIT}"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="doc test developer"
+IUSE="developer doc test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="app-arch/unzip"
 RDEPEND="dev-db/sqlite:3"
 DEPEND="${RDEPEND}"
 
-METAFILETOBUILD=xsp.sln
-
 PATCHES=(
 	"${FILESDIR}/aclocal-fix.patch"
 )
+
+
+METAFILETOBUILD=xsp.sln
 
 src_prepare() {
 	default
@@ -73,6 +74,8 @@ pkg_preinst() {
 
 src_install() {
 	default
+
+	local PATCHDIR="${FILESDIR}/2.2/"
 
 	newinitd "${PATCHDIR}"/xsp.initd xsp
 	newinitd "${PATCHDIR}"/mod-mono-server-r1.initd mod-mono-server
