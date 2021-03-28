@@ -16464,7 +16464,7 @@ sci-libs/parmetis 4.0.3-r1: Parallel (MPI) unstructured graph partitioning libra
 sci-libs/pastix 5.2.2.22-r1 5.2.3: Parallel solver for very large sparse linear systems
 sci-libs/pcl 1.11.1 9999: 2D/3D image and point cloud processing
 sci-libs/pgplot 5.2.2-r7: FORTRAN/C device-independent scientific graphic library
-sci-libs/plplot 5.15.0-r100: Multi-language scientific plotting library
+sci-libs/plplot 5.15.0-r101: Multi-language scientific plotting library
 sci-libs/primegen 0.97-r2: Small, fast library to generate primes in order
 sci-libs/profnet 1.0.22: Neural network architecture for profacc
 sci-libs/profphd-utils 1.0.10-r1: Additional utils for profphd
@@ -17131,7 +17131,7 @@ sys-apps/pmount 0.9.99_alpha-r6: Policy based mounter that gives the ability to 
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
 sys-apps/pnputils 0.1: Plug and Play BIOS utilities
 sys-apps/policycoreutils 3.1-r2 9999: SELinux core utilities
-sys-apps/portage 2.3.99-r2 3.0.12 3.0.13 3.0.17-r2 9999: Portage is the package management and distribution system for Gentoo
+sys-apps/portage 2.3.99-r2 3.0.13 3.0.17-r2 9999: Portage is the package management and distribution system for Gentoo
 sys-apps/powerpc-utils 1.1.3.18-r4: PowerPC utilities and additional OldWorld apps
 sys-apps/prctl 1.6-r1: Tool to query and modify process behavior
 sys-apps/preload 0.6.4-r3: Adaptive readahead daemon
