@@ -15,7 +15,7 @@ SRC_URI="https://gitlab.ow2.org/asm/asm/-/archive/${MY_P}/asm-${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="3"
-KEYWORDS="amd64 ~ppc64 ~x86 ~sparc-solaris ~x86-solaris"
+KEYWORDS="amd64 ~ppc64 x86 ~sparc-solaris ~x86-solaris"
 
 DEPEND=">=virtual/jdk-1.8:*"
 RDEPEND=">=virtual/jre-1.8:*"
