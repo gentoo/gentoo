@@ -50,10 +50,6 @@ dev-libs/efl avif lua_single_target_luajit physics
 # No drivers on this architecture support Vulkan
 media-libs/mesa vulkan vulkan-overlay zink
 
-# Felix Janda <felix.janda@posteo.de> (2020-08-01)
-# Requires masked dev-lang/spidermonkey:17
->=www-client/elinks-0.13.3 javascript
-
 # Robin H. Johnson <robbat2@gentoo.org> (2020-07-02)
 # Mask io-uring & zbc pending keywording
 sys-block/fio -io-uring -zbc
