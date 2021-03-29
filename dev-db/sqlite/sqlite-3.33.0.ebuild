@@ -40,7 +40,7 @@ RDEPEND="sys-libs/zlib:0=[${MULTILIB_USEDEP}]
 	icu? ( dev-libs/icu:0=[${MULTILIB_USEDEP}] )
 	readline? ( sys-libs/readline:0=[${MULTILIB_USEDEP}] )
 	tcl? ( dev-lang/tcl:0=[${MULTILIB_USEDEP}] )
-	tools? ( dev-lang/tcl:0=[${MULTILIB_USEDEP}] )"
+	tools? ( dev-lang/tcl:0= )"
 DEPEND="${RDEPEND}
 	test? ( >=dev-lang/tcl-8.6:0[${MULTILIB_USEDEP}] )"
 
@@ -274,7 +274,14 @@ multilib_src_configure() {
 	options+=($(use_enable static-libs static))
 
 	# tcl, test, tools USE flags.
-	options+=(--enable-tcl)
+	if use tcl || use test || { use tools && multilib_is_native_abi; }; then
+		options+=(
+			--enable-tcl
+			--with-tcl="${ESYSROOT}/usr/$(get_libdir)"
+		)
+	else
+		options+=(--disable-tcl)
+	fi
 
 	if [[ "${CHOST}" == *-mint* ]]; then
 		# sys/mman.h not available in MiNTLib.
