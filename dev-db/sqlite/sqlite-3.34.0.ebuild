@@ -152,6 +152,7 @@ multilib_src_configure() {
 	options+=(
 		--enable-load-extension
 		--enable-threadsafe
+		--exec-prefix="${ESYSROOT}/usr"
 	)
 
 	# Support detection of misuse of SQLite API.
@@ -311,7 +312,10 @@ multilib_src_configure() {
 	options+=($(use_enable static-libs static))
 
 	# tcl, test, tools USE flags.
-	options+=(--enable-tcl)
+	options+=(
+		--enable-tcl
+		--with-tcl="${ESYSROOT}/usr/$(get_libdir)"
+	)
 
 	if [[ "${CHOST}" == *-mint* ]]; then
 		# sys/mman.h not available in MiNTLib.
