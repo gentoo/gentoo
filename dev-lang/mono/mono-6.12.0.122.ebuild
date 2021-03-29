@@ -90,6 +90,14 @@ multilib_src_configure() {
 		$(use_enable nls)
 	)
 
+	# Workaround(?) for bug #779025
+	# May be able to do a real fix by adjusting path used?
+	if multilib_is_native_abi ; then
+		myeconfargs+=( --enable-system-aot )
+	else
+		myeconfargs+=( --disable-system-aot )
+	fi
+
 	econf "${myeconfargs[@]}"
 }
 
