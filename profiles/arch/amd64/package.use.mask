@@ -18,7 +18,7 @@
 #--- END OF EXAMPLES ---
 
 # Mike Gilbert <floppym@gentoo.org> (2021-03-29)
-# TPM only exists on ARM and x86.
+# Unmask TPM on supported archs.
 sys-apps/systemd -tpm
 
 # Michael Orlitzky <mjo@gentoo.org> (2021-03-27)
