@@ -10,7 +10,7 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/pkgcore/pkgcore.git"
 	inherit git-r3
 else
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x64-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 fi
 
@@ -24,14 +24,18 @@ RDEPEND="dev-python/lxml[${PYTHON_USEDEP}]"
 if [[ ${PV} == *9999 ]]; then
 	RDEPEND+=" ~dev-python/snakeoil-9999[${PYTHON_USEDEP}]"
 else
-	RDEPEND+=" >=dev-python/snakeoil-0.9.3[${PYTHON_USEDEP}]"
+	RDEPEND+=" >=dev-python/snakeoil-0.9.6[${PYTHON_USEDEP}]"
 fi
 BDEPEND="
 	test? (
-		dev-python/pytest[${PYTHON_USEDEP}]
+		>=dev-python/pytest-6[${PYTHON_USEDEP}]
 		dev-vcs/git
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}/pkgcore-0.10.18-sighdlr.patch"
+)
 
 distutils_enable_tests setup.py
 
