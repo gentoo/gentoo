@@ -37,6 +37,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/pkgcore-0.10.13-metadata-xsd-2.patch"
+	"${FILESDIR}/pkgcore-0.10.18-sighdlr.patch"
 )
 
 distutils_enable_tests setup.py
