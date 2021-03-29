@@ -8905,7 +8905,7 @@ dev-python/pylatex 1.4.1: A Python library for creating LaTeX files and snippets
 dev-python/pylev 1.2.0: Python Levenshtein implementation
 dev-python/pylibacl 0.6.0: POSIX ACLs (Access Control Lists) for Python
 dev-python/pylibmc 1.6.1-r1: Libmemcached wrapper written as a Python extension
-dev-python/pylint 2.6.2 2.7.1 2.7.2: Python code static checker
+dev-python/pylint 2.6.2 2.7.1 2.7.2-r1: Python code static checker
 dev-python/pylru 1.2.0: A least recently used (LRU) cache for Python
 dev-python/pyls-black 0.4.6: Black plugin for the Python Language Server
 dev-python/pyls-spyder 0.3.2: Spyder extensions for the python language server
@@ -17704,7 +17704,7 @@ sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 4.2.1-r1 9999: Gentoo automatic ker
 sys-kernel/gentoo-kernel 5.4.105 5.4.106 5.4.108 5.10.24 5.10.26 5.11.5 5.11.6 5.11.7 5.11.9 5.11.10: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.105 5.4.105-r2 5.4.106 5.4.106-r1 5.4.108 5.4.108-r1 5.10.24 5.10.24-r1 5.10.26 5.11.5 5.11.5-r1 5.11.6 5.11.6-r1 5.11.7 5.11.7-r1 5.11.9 5.11.9-r1 5.11.10: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.257 4.4.261 4.4.262 4.4.263 4.9.257 4.9.261 4.9.262 4.9.263 4.14.221 4.14.225 4.14.226 4.14.227 4.19.175 4.19.181 4.19.182 4.19.183 5.4.97 5.4.105 5.4.106 5.4.107 5.4.108 5.10.24 5.10.25 5.10.26 5.11.6 5.11.7 5.11.8-r1 5.11.9 5.11.10: Full sources including the Gentoo patchset for the 5.11 kernel tree
-sys-kernel/git-sources 5.12_rc2 5.12_rc3 5.12_rc4: The very latest -git version of the Linux kernel
+sys-kernel/git-sources 5.12_rc2 5.12_rc3 5.12_rc4 5.12_rc5: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2 3: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
 sys-kernel/kergen 0.1.5: Kernel config generator
