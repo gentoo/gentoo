@@ -37,6 +37,7 @@ BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 	${PYTHON_DEPS}
+	$(python_gen_any_dep 'dev-python/pygobject[${PYTHON_USEDEP}]')
 	$(vala_depend)
 "
 
@@ -45,6 +46,10 @@ PATCHES=(
 	"${FILESDIR}"/40.0-tests-locale.patch # Don't fail tests when a locale is not present, https://gitlab.gnome.org/GNOME/libgweather/-/merge_requests/58
 	"${FILESDIR}"/40.0-autoskip-network-test.patch
 )
+
+python_check_deps() {
+	has_version -b "dev-python/pygobject[${PYTHON_USEDEP}]"
+}
 
 pkg_setup() {
 	python-any-r1_pkg_setup
