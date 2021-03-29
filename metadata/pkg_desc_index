@@ -11059,6 +11059,7 @@ dev-util/spirv-tools 2020.6 2021.0_pre20210327 9999: Provides an API and command
 dev-util/splint 3.1.2-r2: Check C programs for vulnerabilities and programming mistakes
 dev-util/squashdelta 0.1.1 9999: Efficient (partially uncompressed) SquashFS binary delta tool
 dev-util/squashmerge 0.1 9999: dev-util/squashdelta delta merge tool
+dev-util/src-cli 3.26.2: command line interface for the Sourcegraph code search tool
 dev-util/statifier 1.7.4-r1: Statifier is a tool for creating portable, self-containing Linux executables
 dev-util/stepman 0.10.5: Step collection manager for Bitrise CLI
 dev-util/strace 5.8 5.10 5.11 9999: A useful diagnostic, instructional, and debugging tool
