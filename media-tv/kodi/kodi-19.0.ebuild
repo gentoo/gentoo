@@ -26,7 +26,7 @@ else
 	MY_PV=${MY_PV/_rc/RC}
 	MY_P="${PN}-${MY_PV}"
 	SRC_URI+=" https://github.com/xbmc/xbmc/archive/${MY_PV}-${CODENAME}.tar.gz -> ${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="~amd64 ~arm arm64 ~x86"
 	S=${WORKDIR}/xbmc-${MY_PV}-${CODENAME}
 fi
 
