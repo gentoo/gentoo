@@ -35,6 +35,14 @@ src_prepare() {
 	vala_src_prepare
 }
 
+src_configure() {
+	local emesonargs=(
+		-Dcompile-schemas=disabled
+		-Dupdate-icon-cache=disabled
+	)
+	meson_src_configure
+}
+
 pkg_postinst() {
 	xdg_pkg_postinst
 	gnome2_schemas_update
