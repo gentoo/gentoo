@@ -2931,7 +2931,7 @@ app-text/antiword 0.37-r1: free MS Word reader
 app-text/antixls 0.3b: Print out an XLS file with minimal formatting, or extract the data into CSV
 app-text/apvlv 0.1.5-r2: Alf's PDF Viewer Like Vim
 app-text/asa 1.1-r1: ASA Carriage control conversion for ouput by Fortran programs
-app-text/asciidoc 9.0.2 9.0.4 9.0.5: A plain text human readable/writable document format
+app-text/asciidoc 9.0.2-r1 9.0.4-r1 9.0.5-r1: A plain text human readable/writable document format
 app-text/aspell 0.60.8 0.60.8-r1: Free and Open Source spell checker designed to replace Ispell
 app-text/atril 1.24.0-r1 1.24.0-r2: Atril document viewer for MATE
 app-text/bact 0.13-r1: Boosting Algorithm for Classification of Trees
@@ -18626,7 +18626,7 @@ x11-misc/piedock 1.6.9: A little bit like the famous OS X dock but in shape of a
 x11-misc/polybar 3.4.3 3.5.5: A fast and easy-to-use tool for creating status bars
 x11-misc/prime-run 1.0: Run programs on the discrete nVidia video card
 x11-misc/primus 0.2-r3: Faster OpenGL offloading for Bumblebee
-x11-misc/projecteur 0.8 0.9.1: Linux Desktop Application for the Logitech Spotlight device
+x11-misc/projecteur 0.9.1: Linux Desktop Application for the Logitech Spotlight device
 x11-misc/py3status 3.35: py3status is an extensible i3status wrapper written in python
 x11-misc/qarma 1: Zenity Clone for Qt5
 x11-misc/qcomicbook 0.9.1: Viewer for comic book archives containing jpeg/png images
