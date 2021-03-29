@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Jonas Stein <jstein@gentoo.org> (2021-03-29)
+# Depends on gtk-2, no release since 2010. 
+# Removal on 2021-05-01.  
+# Bug #779148.
+app-editors/beaver
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-03-27)
 # Dead upstream. Bugs #437056, #453964, #550592, #768303
 # Removal on 2021-04-26.
