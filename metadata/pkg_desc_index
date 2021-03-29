@@ -5388,7 +5388,7 @@ dev-libs/editline 1.17.1: line editing library for UNIX call compatible with the
 dev-libs/eekboard 1.0.8_p20121001-r1: An easy to use virtual keyboard toolkit
 dev-libs/efl 1.25.1-r10 1.25.1-r11: Enlightenment Foundation Libraries all-in-one package
 dev-libs/elfutils 0.181 0.182 0.183: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
-dev-libs/ell 0.36 0.38 9999: Embedded Linux Library provides core, low-level functionality for system daemons
+dev-libs/ell 0.38 0.39 9999: Embedded Linux Library provides core, low-level functionality for system daemons
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
 dev-libs/expat 2.2.10 2.3.0: Stream-oriented XML parser library
 dev-libs/faxpp 0.4-r1: Small, fast and conformant XML pull parser written in C
@@ -15223,8 +15223,8 @@ net-misc/clusterssh 4.03.03 4.30.600 9999: Concurrent Multi-Server Terminal Acce
 net-misc/cmst 2020.11.01: Qt GUI for Connman with system tray icon
 net-misc/cni-plugins 0.8.6 0.8.7 0.9.0 0.9.1: Standard networking plugins for container networking
 net-misc/connect 1.103 1.105: SSH Proxy Command
-net-misc/connman 1.39 1.39-r1 9999: Provides a daemon for managing internet connections
-net-misc/connman-gtk 1.1.1 1.1.1-r1: GTK GUI for Connman
+net-misc/connman 1.39-r1 9999: Provides a daemon for managing internet connections
+net-misc/connman-gtk 1.1.1-r1: GTK GUI for Connman
 net-misc/connman-json-client 1.0_p20150721-r2: An ncurses UI for connman
 net-misc/connman-notify 0_pre20191003-r2: Desktop notification integration for connman
 net-misc/connman-ui 0_p20150622 9999: A full-featured GTK based trayicon UI for ConnMan
@@ -15244,7 +15244,7 @@ net-misc/dibbler 1.0.1 1.0.1-r2 1.0.1-r3: Portable DHCPv6 implementation (server
 net-misc/dleyna-server 0.6.0: Service that allows to discover and manipulate DLNA Digital Media servers (DMS)
 net-misc/drive 0.3.9.1 0.3.9.1-r1: Google Drive client for the commandline
 net-misc/dropbear 2020.81-r2: small SSH 2 client/server designed for small memory environments
-net-misc/dropbox 117.4.378 118.4.460: Dropbox daemon (pretends to be GUI-less)
+net-misc/dropbox 118.4.460: Dropbox daemon (pretends to be GUI-less)
 net-misc/dropbox-cli 2020.03.04 2020.03.04-r1: Cli interface for dropbox (python), part of nautilus-dropbox
 net-misc/econnman 1.1-r2: ConnMan User Interface written with EFL & python
 net-misc/efax 0.9a_p19_p1: A simple fax program for single-user systems
@@ -15741,7 +15741,7 @@ net-wireless/hostap-utils 0.4.7-r1: Utilities for Intersil Prism2/2.5/3 based IE
 net-wireless/hostapd 2.9-r3 9999: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/inspectrum 0.2.3 9999: Tool for analysing captured signals from software-defined radio receivers
 net-wireless/iw 5.9: nl80211 configuration utility for wireless devices using the mac80211 stack
-net-wireless/iwd 1.11 1.12 9999: Wireless daemon for linux
+net-wireless/iwd 1.12 1.13 9999: Wireless daemon for linux
 net-wireless/iwgtk 0.4: Lightweight, graphical wifi management utility for Linux
 net-wireless/jackit 0.0_p20170918-r1: Exploit Code for Mousejack
 net-wireless/kismet 2020.12.3 9999: IEEE 802.11 wireless LAN sniffer
@@ -16565,7 +16565,7 @@ sci-mathematics/lrcalc 1.2 2.0: Littlewood-Richardson Calculator
 sci-mathematics/mathematica 10.3.1-r1 12.1.0 12.1.1-r1: Wolfram Mathematica
 sci-mathematics/mathmod 4.1-r1: Plot parametric and implicit surfaces
 sci-mathematics/mathomatic 16.0.5: Automatic algebraic manipulator
-sci-mathematics/maxima 5.42.1 5.44.0-r4: Free computer algebra environment based on Macsyma
+sci-mathematics/maxima 5.42.1 5.44.0-r4 5.44.0-r6: Free computer algebra environment based on Macsyma
 sci-mathematics/minisat 2.2.0_p20130925-r1: Small yet efficient SAT solver with reference paper
 sci-mathematics/msieve 1.53-r1 9999: A C library implementing a suite of algorithms to factor large integers
 sci-mathematics/nauty 2.6.7: Computing automorphism groups of graphs and digraphs
@@ -17615,7 +17615,7 @@ sys-fs/ext3grep 0.10.2: Recover deleted files on an ext3 file system
 sys-fs/ext4magic 0.3.2-r1: Tool for recovery of deleted or overwritten files on ext3/ext4 filesystems
 sys-fs/extundelete 0.2.4: A utility to undelete files from an ext3 or ext4 partition
 sys-fs/f2fs-tools 1.14.0: Tools for Flash-Friendly File System (F2FS)
-sys-fs/fatcat 1.1.0-r1: FAT filesystems explore, extract, repair, and forensic tool
+sys-fs/fatcat 1.1.0-r2: FAT filesystems explore, extract, repair, and forensic tool
 sys-fs/fatresize 1.1.0: Resize FAT partitions using libparted
 sys-fs/fatsort 1.6.3.622: Sorts files on FAT16/32 partitions, ideal for basic audio players
 sys-fs/fragview 0.1.1 9999: Disk fragmentation visualizer based on FIEMAP and FIBMAP ioctls
@@ -19150,7 +19150,7 @@ x11-wm/ratpoison 1.4.9 9999: window manager without mouse dependency
 x11-wm/sawfish 1.12.90-r1: Extensible window manager using a Lisp-based scripting language
 x11-wm/selectwm 0.4.1-r1: window manager selector tool
 x11-wm/sithwm 1.2.3: Minimalist Window Manager for X
-x11-wm/spectrwm 3.1.0 3.4.1: Small dynamic tiling window manager for X11
+x11-wm/spectrwm 3.4.1: Small dynamic tiling window manager for X11
 x11-wm/stumpwm 18.05: Stumpwm is a Window Manager written entirely in Common Lisp.
 x11-wm/stumpwm-contrib 20180128 99999999: Extension Modules for StumpWM
 x11-wm/subtle 0.11.3244 9999: A manual tiling window manager
