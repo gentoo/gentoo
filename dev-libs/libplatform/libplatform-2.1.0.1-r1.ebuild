@@ -21,5 +21,5 @@ if [[ ${PV} == *9999 ]] ; then
 else
 	SRC_URI="https://github.com/Pulse-Eight/${MY_PN}/archive/${MY_PN_PREFIX}-${MY_PN}-${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${MY_PN}-${MY_PN_PREFIX}-${MY_PN}-${PV}"
-	KEYWORDS="amd64 ~arm ~arm64 x86"
+	KEYWORDS="amd64 ~arm arm64 x86"
 fi
