@@ -36,6 +36,5 @@ src_compile() {
 
 src_install() {
 	emake "${MAKEARGS[@]}" DESTDIR="${D}" install
-	keepdir /var/db/repos
 	einstalldocs
 }
