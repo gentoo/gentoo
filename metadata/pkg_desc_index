@@ -842,7 +842,7 @@ app-arch/fastjar 0.98-r3: A jar program written in C
 app-arch/file-roller 3.36.3 3.38.0: Archive manager for GNOME
 app-arch/funzix 1.0: unpacker for the bogus ZIX format
 app-arch/gcab 1.4: Library and tool for working with Microsoft Cabinet (CAB) files
-app-arch/gnome-autoar 0.3.0 0.3.1: Automatic archives creating and extracting library
+app-arch/gnome-autoar 0.3.1: Automatic archives creating and extracting library
 app-arch/gtk-splitter 2.2.1-r2: Split files into smaller pieces and combine them back together
 app-arch/gzip 1.9 1.10: Standard GNU compressor
 app-arch/hardlink 0.3.2: A tool which replaces copies of a file with hardlinks
@@ -15185,7 +15185,7 @@ net-misc/apt-cacher-ng 3.6.3_p1 9999: Yet another caching HTTP proxy for Debian/
 net-misc/aria2 1.35.0: A download utility with segmented downloading with BitTorrent support
 net-misc/arpd 0.2-r1: ARP server claiming all unassigned addresses (for network monitoring/simulation)
 net-misc/arpsponge 3.17.11: Sweeps up stray ARP queries from a peering LAN
-net-misc/asterisk 13.38.1-r2 13.38.2 13.38.2-r1 16.16.2 16.16.2-r1 18.2.2: Asterisk: A Modular Open Source PBX System
+net-misc/asterisk 13.38.2 13.38.2-r1 16.16.2 16.16.2-r1 18.2.2: Asterisk: A Modular Open Source PBX System
 net-misc/asterisk-core-sounds 1.6.1-r1: Core sounds for asterisk
 net-misc/asterisk-extra-sounds 1.5.2: Extra sounds for asterisk
 net-misc/asterisk-g729 13.0.3.1.9 16.0.3.1.9: G.729 codec and supporting files for asterisk
