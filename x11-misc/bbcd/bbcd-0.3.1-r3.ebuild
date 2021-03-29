@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,8 @@ IUSE=""
 
 RDEPEND="media-libs/libcdaudio
 	x11-libs/libX11"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	x11-libs/libXt"
 
 PATCHES=(
 	"${FILESDIR}"/${P}_${PV}a.diff
