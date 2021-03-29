@@ -3006,7 +3006,7 @@ app-text/flpsed 0.7.3: Pseudo PostScript editor
 app-text/foliate 2.4.2-r1 2.5.0: gtk ebook reader built with gjs
 app-text/ghostscript-gpl 9.52-r1 9.53.3-r5: Interpreter for the PostScript language and PDF
 app-text/gnome-doc-utils 0.20.10-r2: A collection of documentation utilities for the Gnome project
-app-text/gocr 0.50: An OCR (Optical Character Recognition) reader
+app-text/gocr 0.50 0.52: An OCR (Optical Character Recognition) reader
 app-text/grip 4.5.2-r2: Preview GitHub Markdown files like Readme locally before committing them
 app-text/groonga 6.1.2 8.0.2: An Embeddable Fulltext Search Engine
 app-text/groonga-normalizer-mysql 1.1.1: Groonga plugin that provides MySQL compatible normalizers
