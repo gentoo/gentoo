@@ -2707,7 +2707,7 @@ app-misc/tprint 1.1.0-r1: Transparent Print Utility for terminals
 app-misc/tracker 2.3.4 2.3.5: A tagging metadata database, search tool and indexer
 app-misc/tracker-miners 2.3.3 2.3.4 2.3.5: Collection of data extractors for Tracker/Nepomuk
 app-misc/transfolio 1.0.1-r1: Enables data transfer between the PC and the Atari Portfolio
-app-misc/trash-cli 0.20.11.23 0.20.12.26: Python scripts to manipulate trash cans via the command line
+app-misc/trash-cli 0.20.11.23-r1 0.20.12.26-r1: Python scripts to manipulate trash cans via the command line
 app-misc/ttyload 0.5.3: color-coded graph of load averages over time
 app-misc/ttyrec 1.0.8-r2: ttyrec provides tools to record and replay a terminal session
 app-misc/ttysnoop 0.12d: Tool to snoop on login tty's through another tty-device or pseudo-tty
@@ -15657,7 +15657,7 @@ net-proxy/trojan 1.16.0-r2: An unidentifiable mechanism that helps you bypass GF
 net-proxy/tsocks 1.8_beta5-r9: Transparent SOCKS v4 proxying library
 net-proxy/wwwoffle 2.9i-r1: Web caching proxy suitable for non-permanent Internet connections
 net-proxy/ziproxy 3.3.1-r2: A forwarding, non-caching, compressing web proxy server
-net-voip/sipvicious 0.3.0: SIPVicious is a SIP security package
+net-voip/sipvicious 0.3.0 0.3.3: SIPVicious is a SIP security package
 net-voip/telepathy-gabble 0.18.4-r2: A XMPP connection manager, handles single and multi user chats and voice calls
 net-voip/telepathy-rakia 0.8.0-r1: A SIP connection manager for Telepathy based around the Sofia-SIP library
 net-voip/telepathy-salut 0.8.1-r3: A link-local XMPP connection manager for Telepathy

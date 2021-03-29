@@ -1,0 +1,15 @@
+BDEPEND=python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_9? ( dev-lang/python:3.9 >=dev-lang/python-exec-2:=[python_targets_python3_9] ) python_single_target_python3_7? ( >=dev-python/setuptools-42.0.2[python_targets_python3_7(-)] ) python_single_target_python3_8? ( >=dev-python/setuptools-42.0.2[python_targets_python3_8(-)] ) python_single_target_python3_9? ( >=dev-python/setuptools-42.0.2[python_targets_python3_9(-)] )
+DEFINED_PHASES=compile configure install prepare setup test
+DESCRIPTION=SIPVicious is a SIP security package
+EAPI=7
+HOMEPAGE=https://github.com/EnableSecurity/sipvicious/wiki
+INHERIT=distutils-r1
+IUSE=python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+
+RDEPEND=python_single_target_python3_7? ( dev-python/dnspython[python_targets_python3_7(-)] dev-python/reportlab[python_targets_python3_7(-)] ) python_single_target_python3_8? ( dev-python/dnspython[python_targets_python3_8(-)] dev-python/reportlab[python_targets_python3_8(-)] ) python_single_target_python3_9? ( dev-python/dnspython[python_targets_python3_9(-)] dev-python/reportlab[python_targets_python3_9(-)] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_9? ( dev-lang/python:3.9 >=dev-lang/python-exec-2:=[python_targets_python3_9] ) python_single_target_python3_7? ( >=dev-python/setuptools-42.0.2[python_targets_python3_7(-)] ) python_single_target_python3_8? ( >=dev-python/setuptools-42.0.2[python_targets_python3_8(-)] ) python_single_target_python3_9? ( >=dev-python/setuptools-42.0.2[python_targets_python3_9(-)] )
+REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9 ) ^^ ( python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9 )
+SLOT=0
+SRC_URI=https://github.com/EnableSecurity/sipvicious/archive/v0.3.3.tar.gz -> sipvicious-0.3.3.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-single-r1	c7de0087e87a282f2faec351822e097c	distutils-r1	2ac0db834bfc8d76a5ad34d536d15b35
+_md5_=097fdc6ecf54e32d10a89c4873c117b7
