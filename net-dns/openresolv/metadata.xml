@@ -5,6 +5,5 @@
 		<email>bkohler@gentoo.org</email>
 		<name>Ben Kohler</name>
 	</maintainer>
-	<!-- maintainer-needed -->
 	<stabilize-allarches/>
 </pkgmetadata>
