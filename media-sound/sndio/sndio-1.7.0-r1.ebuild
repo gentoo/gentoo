@@ -11,7 +11,7 @@ SRC_URI="http://www.sndio.org/${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0/7.0"
-KEYWORDS="amd64 ~arm arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
 IUSE="alsa"
 
 DEPEND="
