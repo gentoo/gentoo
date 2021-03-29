@@ -13183,7 +13183,7 @@ media-libs/fontconfig-ultimate 2015.08.01: A set of font rendering and replaceme
 media-libs/freealut 1.1.0-r4: The OpenAL Utility Toolkit
 media-libs/freeglut 3.2.1: A free OpenGL utility toolkit, the open-sourced alternative to the GLUT library
 media-libs/freeimage 3.18.0-r1 3.18.0-r2: Image library supporting many formats
-media-libs/freetype 2.10.4 9999: A high-quality and portable font engine
+media-libs/freetype 2.10.4 9999: High-quality and portable font engine
 media-libs/freeverb3 3.2.1-r2: Reverb and Impulse Response Convolution plug-ins (Audacious/JACK)
 media-libs/ftgl 2.1.3_rc5: library to use arbitrary fonts in OpenGL applications
 media-libs/game-music-emu 0.6.2: Video game music file emulators
