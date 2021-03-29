@@ -106,6 +106,13 @@ RESTRICT="!test? ( test )"
 
 S="${WORKDIR}/${MY_P}"
 
+# automagic-libX11 (merged before 1.2): https://gitlab.com/inkscape/inkscape/-/merge_requests/3208
+PATCHES=(
+	"${FILESDIR}/${PN}-1.1.2-r1-poppler-22.03.0.patch" # bug 835424
+	"${FILESDIR}/${PN}-1.1.2-r1-poppler-22.04.0.patch" # bug 835661 / bug 843275
+	"${FILESDIR}/inkscape-1.0.2-automagic-libX11.patch" # bug 768663
+)
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
