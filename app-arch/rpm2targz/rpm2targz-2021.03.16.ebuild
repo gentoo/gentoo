@@ -21,3 +21,8 @@ RDEPEND="app-arch/cpio"
 src_configure() {
 	tc-export CC
 }
+
+src_install() {
+	emake DESTDIR="${D}" prefix="${EPREFIX}"/usr install
+	einstalldocs
+}
