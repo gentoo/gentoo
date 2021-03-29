@@ -8076,7 +8076,7 @@ dev-python/asgiref 3.3.1: ASGI utilities (successor to WSGI)
 dev-python/asn1crypto 1.4.0: Python ASN.1 library with a focus on performance and a pythonic API
 dev-python/asteval 0.9.21 0.9.22 0.9.23: Evaluator of Python expression using ast module
 dev-python/astor 0.8.1: Read/rewrite/write Python ASTs
-dev-python/astroid 2.4.2-r1 2.5 2.5.1: Abstract Syntax Tree for logilab packages
+dev-python/astroid 2.4.2-r1 2.5 2.5.1 2.5.2: Abstract Syntax Tree for logilab packages
 dev-python/asttokens 2.0.4: Annotate Python AST trees with source text and token information
 dev-python/astunparse 1.6.3: Astun parser for python
 dev-python/async-lru 1.0.2_p20201029: Simple lru_cache for asyncio
@@ -8234,7 +8234,7 @@ dev-python/decorator 4.4.2-r1: Simplifies the usage of decorators for the averag
 dev-python/deepmerge 0.1.1_p1 0.2.1: Tools to handle merging of nested data structures in python
 dev-python/defcon 0.6.0-r1 0.7.2 0.8.0 0.8.1: A set of UFO based objects for use in font editing applications
 dev-python/defusedxml 0.7.0_rc1 0.7.0 0.7.1: XML bomb protection for Python stdlib modules, an xml serialiser
-dev-python/denonavr 0.9.9 0.9.10 0.10.1 0.10.3: Automation Library for Denon AVR receivers
+dev-python/denonavr 0.9.9 0.9.10 0.10.1 0.10.3 0.10.4: Automation Library for Denon AVR receivers
 dev-python/deprecated 1.2.11 1.2.12: Python @deprecated decorator to deprecate old API
 dev-python/deprecation 2.1.0: A library to handle automated deprecations
 dev-python/dicttoxml 1.7.4-r1: Converts a Python dictionary or other data type to a valid XML string
@@ -8586,7 +8586,7 @@ dev-python/markdown 2.6.11 3.3.3 3.3.4: Python implementation of the markdown ma
 dev-python/markdown2 2.4.0: Python Markdown language reimplementation
 dev-python/markups 3.1.0 3.1.1: A wrapper around various text markups
 dev-python/markupsafe 1.1.1-r1: Implements a XML/HTML/XHTML Markup safe string for Python
-dev-python/marshmallow 3.5.1 3.10.0: A lightweight library for converting complex datatypes to and from native Python datatypes.
+dev-python/marshmallow 3.5.1 3.10.0 3.11.0: A library for converting to and from native Python datatypes
 dev-python/matplotlib 3.3.4 3.4.0: Pure python plotting library with matlab like syntax
 dev-python/matterhook 0.2 0.2-r1: Interact with Mattermost incoming webhooks easily
 dev-python/mccabe 0.6.1-r1 0.6.1-r2: flake8 plugin: McCabe complexity checker
@@ -17126,7 +17126,7 @@ sys-apps/pcsc-lite 1.9.0 1.9.1: PC/SC Architecture smartcard middleware library
 sys-apps/pcsc-slb-rf72-drv 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Reader
 sys-apps/pcsc-tools 1.5.6 1.5.7: PC/SC Architecture smartcard tools
 sys-apps/pick 4.0.0: a fuzzy search tool for the command-line
-sys-apps/pkgcore 0.11.4-r2 0.11.5-r2 0.11.6 0.11.8 9999: a framework for package management
+sys-apps/pkgcore 0.11.4-r3 0.11.5-r3 0.11.6-r1 0.11.8-r1 9999: a framework for package management
 sys-apps/plocate 1.1.5: Posting locate is a much faster locate
 sys-apps/pmount 0.9.99_alpha-r6: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
