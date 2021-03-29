@@ -37,7 +37,6 @@
 # Removal on 2021-04-26.
 app-eselect/eselect-infinality
 app-eselect/eselect-lcdfilter
-media-fonts/infinality-ultimate-meta
 media-libs/fontconfig-ultimate
 media-libs/fontconfig-infinality
 
