@@ -2867,7 +2867,7 @@ app-portage/portpeek 3.2.0: A helper program for maintaining the package.keyword
 app-portage/pram 10: Tool to ease merging Pull Requests and git patches
 app-portage/prefix-toolkit 8 9: Utilities for users of Gentoo Prefix
 app-portage/repo-commit 0.4.1-r1 9999: A repository commit helper
-app-portage/repoman 2.3.23 3.0.2 9999: Repoman is a Quality Assurance tool for Gentoo ebuilds
+app-portage/repoman 2.3.23 3.0.2 3.0.3 9999: Repoman is a Quality Assurance tool for Gentoo ebuilds
 app-portage/smart-live-rebuild 1.3.7 9999: Check live packages for updates and emerge them as necessary
 app-portage/splat 0.08-r1: Simple Portage Log Analyzer Tool
 app-portage/tatt 0.7-r1 0.8 9999: Arch testing tool
@@ -8457,7 +8457,7 @@ dev-python/imagesize 1.2.0: Pure Python module for getting image size from png/j
 dev-python/imapclient 2.2.0: easy-to-use, pythonic, and complete IMAP client library
 dev-python/iminuit 2.3.0 2.4.0: Minuit numerical function minimization in Python
 dev-python/immutables 0.14 0.15: A high-performance immutable mapping type for Python
-dev-python/importlib_metadata 3.4.0 3.7.0 3.7.1 3.7.2 3.7.3 3.8.0 3.8.1: Read metadata from Python packages
+dev-python/importlib_metadata 3.4.0 3.7.0 3.7.1 3.7.2 3.7.3 3.8.0 3.8.1 3.8.2: Read metadata from Python packages
 dev-python/importlib_resources 5.1.0 5.1.1 5.1.2: Read resources from Python packages
 dev-python/imread 0.7.3-r1: Read Image Files
 dev-python/incremental 17.5.0 21.3.0: Incremental is a small library that versions your Python projects
@@ -8487,7 +8487,7 @@ dev-python/isort 5.7.0 5.8.0: A python utility/library to sort imports
 dev-python/itsdangerous 1.1.0-r1: Various helpers to pass trusted data to untrusted environments and back
 dev-python/itypes 1.1.0: basic immutable container types for python
 dev-python/jaraco-classes 3.2.1: Classes used by other projects by developer jaraco
-dev-python/jaraco-collections 3.2.0: Models and classes to supplement the stdlib collections module
+dev-python/jaraco-collections 3.2.0 3.3.0: Models and classes to supplement the stdlib collections module
 dev-python/jaraco-context 4.0.0: Context managers by jaraco
 dev-python/jaraco-envs 2.1.0 2.1.1: Classes for orchestrating Python (virtual) environments.
 dev-python/jaraco-functools 3.2.1 3.3.0: Additional functions used by other projects by developer jaraco
@@ -9246,7 +9246,7 @@ dev-python/slimit 0.8.1-r1: A JavaScript minifier written in Python
 dev-python/slixmpp 1.7.0 9999: Python 3 library for XMPP
 dev-python/smartypants 2.0.1 9999: ASCII quote-dot-dash to HTML entity converter
 dev-python/smmap 4.0.0: A pure Python implementation of a sliding window memory map manager
-dev-python/snakeoil 0.9.3 0.9.4 0.9.5 0.9.6 9999: misc common functionality and useful optimizations
+dev-python/snakeoil 0.9.4 0.9.5 0.9.6 9999: misc common functionality and useful optimizations
 dev-python/snaketrace 0.1.1: An strace-like tool for Python audit events
 dev-python/snappy 0.6.0: Python library for the snappy compression library from Google
 dev-python/snapshottest 0.5.1: Snapshot Testing utils for Python
@@ -10992,7 +10992,7 @@ dev-util/patchutils 0.3.4 0.4.2: A collection of tools that operate on patch fil
 dev-util/patdiff 0.14.0: Colored patience diffs with word-level refinement
 dev-util/peg 0.1.18: Recursive-descent parser generators for C
 dev-util/perf 5.8 5.9.9 5.10.16 5.11: Userland tools for Linux Performance Counters
-dev-util/pkgcheck 0.9.2-r2 0.9.3-r1 0.9.5 0.9.7 9999: pkgcore-based QA utility for ebuild repos
+dev-util/pkgcheck 0.9.3-r1 0.9.5 0.9.7 9999: pkgcore-based QA utility for ebuild repos
 dev-util/pkgconf 1.6.3 1.7.3-r1 1.7.4 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
 dev-util/pkgconfig 0.28-r2 0.28-r3 0.29.1 0.29.2 9999: Package config system that manages compile/link flags
 dev-util/pkgdev 0.1.2 0.1.3 9999: Collection of tools for Gentoo development
@@ -11470,7 +11470,7 @@ games-emulation/mastergear-bin 4.7: SEGA Master System / Game Gear emulator
 games-emulation/mednafen 0.9.46: Argument-driven multi-system emulator utilizing OpenGL and SDL
 games-emulation/mednaffe 0.8.7: A front-end (GUI) for mednafen emulator
 games-emulation/mekanix 070-r1: SG-1000, SC-3000, SF-7000, SSC, SMS, GG, COLECO, and OMV emulator
-games-emulation/mgba 0.7.3 0.8.3 0.8.4 9999: Game Boy Advance emulator written in C
+games-emulation/mgba 0.8.4 0.9.0 9999: Game Boy Advance emulator written in C
 games-emulation/mupen64plus 2.5.9: A fork of Mupen64 Nintendo 64 emulator, meta-package
 games-emulation/mupen64plus-audio-sdl 2.5.9: A fork of Mupen64 Nintendo 64 emulator, SDL audio plugin
 games-emulation/mupen64plus-core 2.5.9-r2: A fork of Mupen64 Nintendo 64 emulator, core library
@@ -14861,7 +14861,7 @@ net-irc/irssi-xmpp 0.54: An irssi plugin providing Jabber/XMPP support
 net-irc/irssistats 0.75-r1: Generates HTML IRC stats based on irssi logs
 net-irc/konversation 1.7.7-r1 20.12.3: User friendly IRC Client
 net-irc/kvirc 5.2_pre20200605155236 9999: Advanced IRC Client
-net-irc/limnoria 9999 20200124: Python based extensible IRC infobot and channel bot
+net-irc/limnoria 9999 20200124 20210326: Python based extensible IRC infobot and channel bot
 net-irc/muh 2.2a-r1: Persistent IRC bouncer
 net-irc/ngircd 26.1: An IRC server written from scratch
 net-irc/ninja 1.5.9_pre14-r1: Ninja IRC Client
@@ -17126,7 +17126,7 @@ sys-apps/pcsc-lite 1.9.0 1.9.1: PC/SC Architecture smartcard middleware library
 sys-apps/pcsc-slb-rf72-drv 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Reader
 sys-apps/pcsc-tools 1.5.6 1.5.7: PC/SC Architecture smartcard tools
 sys-apps/pick 4.0.0: a fuzzy search tool for the command-line
-sys-apps/pkgcore 0.11.4-r3 0.11.5-r3 0.11.6-r1 0.11.8-r1 9999: a framework for package management
+sys-apps/pkgcore 0.11.5-r3 0.11.6-r1 0.11.8-r1 9999: a framework for package management
 sys-apps/plocate 1.1.5: Posting locate is a much faster locate
 sys-apps/pmount 0.9.99_alpha-r6: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
