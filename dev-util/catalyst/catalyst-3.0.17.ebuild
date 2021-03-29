@@ -9,7 +9,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_BRANCH="master"
 else
 	SRC_URI="https://gitweb.gentoo.org/proj/catalyst.git/snapshot/${P}.tar.bz2"
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv s390 sparc x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 s390 sparc x86"
 fi
 
 PYTHON_COMPAT=( python3_{8,9} )
@@ -27,9 +27,11 @@ IUSE="ccache doc +iso kernel_linux system-bootloader"
 DEPEND="
 	app-text/asciidoc
 	>=dev-python/snakeoil-0.6.5[${PYTHON_USEDEP}]
+	<dev-python/snakeoil-0.9.6[${PYTHON_USEDEP}]
 "
 RDEPEND="
 	>=dev-python/snakeoil-0.6.5[${PYTHON_USEDEP}]
+	<dev-python/snakeoil-0.9.6[${PYTHON_USEDEP}]
 	>=dev-python/pydecomp-0.3[${PYTHON_USEDEP}]
 	app-arch/lbzip2
 	app-crypt/shash
