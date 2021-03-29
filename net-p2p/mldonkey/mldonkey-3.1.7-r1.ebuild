@@ -17,9 +17,8 @@ IUSE="bittorrent doc fasttrack gd gnutella gtk guionly magic +ocamlopt upnp"
 
 REQUIRED_USE="guionly? ( gtk )"
 
-RDEPEND="dev-lang/perl
+COMMON_DEPEND="dev-lang/perl
 	dev-ml/camlp4:=
-	net-analyzer/netcat
 	gd? ( media-libs/gd[truetype] )
 	gtk? (
 		gnome-base/librsvg
@@ -36,10 +35,12 @@ RDEPEND="dev-lang/perl
 	)
 	!guionly? ( acct-user/p2p )
 "
+RDEPEND="${COMMON_DEPEND}
+	|| ( net-analyzer/netcat net-analyzer/openbsd-netcat )"
 # Can't yet use newer OCaml
 # -unsafe-string usage:
 # https://github.com/ygrek/mldonkey/issues/46
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	<dev-lang/ocaml-4.10:=[ocamlopt?]
 	bittorrent? (
 		|| (
