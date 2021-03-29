@@ -27,9 +27,11 @@ IUSE="ccache doc +iso kernel_linux system-bootloader"
 DEPEND="
 	app-text/asciidoc
 	>=dev-python/snakeoil-0.6.5[${PYTHON_USEDEP}]
+	<dev-python/snakeoil-0.9.6[${PYTHON_USEDEP}]
 "
 RDEPEND="
 	>=dev-python/snakeoil-0.6.5[${PYTHON_USEDEP}]
+	<dev-python/snakeoil-0.9.6[${PYTHON_USEDEP}]
 	>=dev-python/pydecomp-0.3[${PYTHON_USEDEP}]
 	app-arch/lbzip2
 	app-crypt/shash
