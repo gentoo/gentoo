@@ -1,11 +1,11 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit cmake python-any-r1
+inherit cmake python-any-r1 toolchain-funcs
 
 # yes, it needs SOURCE, not just installed one
 GTEST_COMMIT="aee0f9d9b5b87796ee8a0ab26b7587ec30e8858e"
@@ -34,6 +34,10 @@ BDEPEND="
 
 RESTRICT="!test? ( test )"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-20200923-arm_no_crypto.patch"
+)
+
 src_prepare() {
 	cmake_src_prepare
 
@@ -53,6 +57,12 @@ src_prepare() {
 }
 
 src_configure() {
+	if use arm || use arm64; then
+		if [[ $($(tc-getCXX) ${CXXFLAGS} -E -P - <<<$'#if defined(__ARM_FEATURE_CRYPTO)\nHAVE_ARM_FEATURE_CRYPTO\n#endif') != *HAVE_ARM_FEATURE_CRYPTO* ]]; then
+			append-cxxflags -DABSL_ARCH_ARM_NO_CRYPTO
+		fi
+	fi
+
 	local mycmakeargs=(
 		-DABSL_ENABLE_INSTALL=TRUE
 		-DABSL_LOCAL_GOOGLETEST_DIR="${WORKDIR}/googletest-${GTEST_COMMIT}"
