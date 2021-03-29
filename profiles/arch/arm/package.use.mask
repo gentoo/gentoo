@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Mike Gilbert <floppym@gentoo.org> (2021-03-29)
-# TPM only exists on ARM and x86.
+# Unmask TPM on supported archs.
 sys-apps/systemd -tpm
 
 # Sam James <sam@gentoo.org> (2021-02-17)
