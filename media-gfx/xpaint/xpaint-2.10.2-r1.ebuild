@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop toolchain-funcs
+inherit autotools desktop toolchain-funcs
 
 DESCRIPTION="Image editor with tiff, jpeg and png support"
 HOMEPAGE="http://sf-xpaint.sourceforge.net/"
@@ -47,6 +47,11 @@ PATCHES=(
 	"${FILESDIR}"/${P}-libtool-clang.patch
 	"${FILESDIR}"/${P}-respect-ldflags.patch
 )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	econf \
