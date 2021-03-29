@@ -19,7 +19,10 @@ KEYWORDS="amd64 x86"
 BDEPEND="
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/psutil[${PYTHON_USEDEP}]
 	)"
+
+RDEPEND="
+	dev-python/psutil[${PYTHON_USEDEP}]
+"
 
 distutils_enable_tests nose
