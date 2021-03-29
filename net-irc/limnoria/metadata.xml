@@ -5,6 +5,10 @@
 		<email>np-hardass@gentoo.org</email>
 		<name>Adam Feldman</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>wraeth@gentoo.org</email>
+		<name>Sam Jorna</name>
+	</maintainer>
 	<stabilize-allarches/>
 	<use>
 		<flag name="crypt">Enables user authentication with GPG</flag>

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ else
 	MY_PV="${PV/_beta/-b}"
 	SRC_URI="https://github.com/${PN}-emu/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 	[[ "${PV}" == *_beta* ]] || \
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 x86"
 	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 LICENSE="MPL-2.0"
