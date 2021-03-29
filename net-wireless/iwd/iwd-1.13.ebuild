@@ -45,7 +45,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-[[ ${PV} == *9999* ]] && DEPEND+=" dev-python/docutils"
+[[ ${PV} == *9999* ]] && BDEPEND+=" dev-python/docutils"
 
 pkg_setup() {
 	CONFIG_CHECK="
