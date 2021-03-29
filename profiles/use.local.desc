@@ -3862,12 +3862,11 @@ media-fonts/fira-sans:otf - Install the OpenType version of the font
 media-fonts/fira-sans:ttf - Install the TrueType version of the font
 media-fonts/fontawesome:otf - Install the OpenType version of the font
 media-fonts/fontawesome:ttf - Install the TrueType version of the font
+media-fonts/fonts-meta:free - Install fonts for the "free" preset
+media-fonts/fonts-meta:latin - Install additional latin fonts
+media-fonts/fonts-meta:ms - Install (free) fonts for the "ms" preset
 media-fonts/ibm-plex:otf - Install OTF fonts
 media-fonts/ibm-plex:ttf - Install TTF fonts
-media-fonts/infinality-ultimate-meta:free - Install fonts for the "free" preset
-media-fonts/infinality-ultimate-meta:latin - Install additional latin fonts
-media-fonts/infinality-ultimate-meta:minimal - Install a minimal set of fonts
-media-fonts/infinality-ultimate-meta:ms - Install (free) fonts for the "ms" preset
 media-fonts/intlfonts:bdf - Install BDF fonts in addition to PCF
 media-fonts/intlfonts:non-free - Install non-free Tibetan fonts
 media-fonts/liberation-fonts:fontforge - Use media-gfx/fontforge to build fonts from source
