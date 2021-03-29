@@ -10,7 +10,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/sahlberg/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~ppc ppc64 ~sparc x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 DESCRIPTION="iscsi client library and utilities"
@@ -23,9 +23,9 @@ RDEPEND="dev-libs/libgcrypt:0="
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-fno-common.patch
-	"${FILESDIR}"/${P}-fno-common-2.patch
-	"${FILESDIR}"/${P}-fno-common-3.patch
+	"${FILESDIR}"/${PN}-1.18.0-fno-common.patch
+	"${FILESDIR}"/${PN}-1.18.0-fno-common-2.patch
+	"${FILESDIR}"/${PN}-1.18.0-fno-common-3.patch
 )
 
 src_prepare() {
@@ -43,4 +43,5 @@ src_configure() {
 src_install() {
 	default
 	find "${ED}" -name '*.la' -delete || die
+	rm "${ED}"/usr/bin/ld_iscsi.so || die
 }
