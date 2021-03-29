@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit flag-o-matic linux-info systemd
 
 #Set this variable to the required external ell version
@@ -24,15 +24,15 @@ SLOT="0"
 IUSE="+client +crda +monitor ofono wired cpu_flags_x86_aes cpu_flags_x86_ssse3
 standalone systemd"
 
-COMMON_DEPEND="
+DEPEND="
 	sys-apps/dbus
 	client? ( sys-libs/readline:0= )
 "
 
-[[ -z "${ELL_REQ}" ]] || COMMON_DEPEND+=" ~dev-libs/ell-${ELL_REQ}"
+[[ -z "${ELL_REQ}" ]] || DEPEND+=" ~dev-libs/ell-${ELL_REQ}"
 
 RDEPEND="
-	${COMMON_DEPEND}
+	${DEPEND}
 	net-wireless/wireless-regdb
 	crda? ( net-wireless/crda )
 	standalone? (
@@ -41,12 +41,11 @@ RDEPEND="
 	)
 "
 
-DEPEND="
-	${COMMON_DEPEND}
+BDEPEND="
 	virtual/pkgconfig
 "
 
-[[ ${PV} == *9999* ]] && DEPEND+=" dev-python/docutils"
+[[ ${PV} == *9999* ]] && BDEPEND+=" dev-python/docutils"
 
 pkg_setup() {
 	CONFIG_CHECK="
