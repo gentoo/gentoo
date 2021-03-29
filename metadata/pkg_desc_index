@@ -17184,7 +17184,7 @@ sys-apps/superdiag 1.4.0.20201120: Provides the capability to determine the heal
 sys-apps/superiotool 6637 99999999: util to detect Super I/O chips and functionality
 sys-apps/syscriptor 1.5.15: display misc information about your hardware
 sys-apps/syslog-notify 0.2: Notifications for syslog entries via libnotify
-sys-apps/systemd 246-r2 246.6 247.2-r4 248_rc4 9999: System and service manager for Linux
+sys-apps/systemd 246-r2 246.6 247.2-r4 248_rc4-r1 9999: System and service manager for Linux
 sys-apps/systemd-readahead 216: Split of readahead systemd implementation
 sys-apps/systemd-tmpfiles 246: Creates, deletes and cleans up volatile and temporary files and directories
 sys-apps/sysvinit 2.97 2.98-r1 2.99: /sbin/init - parent of all processes
