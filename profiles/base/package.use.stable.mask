@@ -31,12 +31,6 @@ sci-libs/openblas relapack
 # temporarily block tests so that bugs can be resolved
 dev-php/theseer-Autoload test
 
-# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-12-25)
-# Packages needing stable slotted Lua.
->=app-i18n/fcitx-4.2.9.8:4 lua
->=app-i18n/ibus-libpinyin-1.11.92 lua
-app-i18n/ibus-pinyin lua
-
 # James Le Cuirot <sam@gentoo.org> (2020-11-23)
 # Cinnamon is not stable on any architecture.
 x11-themes/arc-theme cinnamon
