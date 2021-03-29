@@ -36,12 +36,12 @@ src_prepare() {
 
 src_compile() {
 	tc-export CC PKG_CONFIG
-	emake -C linux PREFIX="/usr" LIBDIR="/usr/$(get_libdir)"
+	emake -C linux PREFIX="${EPREFIX}/usr" LIBDIR="${EPREFIX}/usr/$(get_libdir)"
 }
 
 src_install() {
-	emake -C linux PREFIX="/usr" LIBDIR="/usr/$(get_libdir)" \
-		SYSCONFDIR="/etc" DOCDIR="/usr/share/doc/${P}" \
+	emake -C linux PREFIX="${EPREFIX}/usr" LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
+		SYSCONFDIR="${EPREFIX}/etc" DOCDIR="${EPREFIX}/usr/share/doc/${P}" \
 		DESTDIR="${D}" install
 
 	dodoc README.md ${PN}_*.conf {initscreen,screenshot}.sh
