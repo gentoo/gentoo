@@ -8,8 +8,9 @@ PYTHON_REQ_USE="ncurses,readline"
 
 FIRMWARE_ABI_VERSION="4.0.0-r50"
 
-inherit eutils linux-info toolchain-funcs multilib python-r1 \
-	udev fcaps readme.gentoo-r1 pax-utils l10n xdg-utils
+inherit eutils linux-info toolchain-funcs multilib python-r1
+inherit udev fcaps readme.gentoo-r1 pax-utils l10n xdg-utils
+inherit flag-o-matic
 
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://git.qemu.org/git/qemu.git"
@@ -359,6 +360,10 @@ check_targets() {
 }
 
 src_prepare() {
+	# workaround -fcommon breakage: bug #726560
+	[[ ${PV} == 5.2.0 ]] || die "Check if -fcommon hack is needed"
+	filter-flags -fcommon
+
 	check_targets IUSE_SOFTMMU_TARGETS softmmu
 	check_targets IUSE_USER_TARGETS linux-user
 
