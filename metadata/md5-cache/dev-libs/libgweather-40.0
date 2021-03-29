@@ -1,10 +1,10 @@
-BDEPEND=dev-util/glib-utils gtk-doc? ( >=dev-util/gtk-doc-1.11 app-text/docbook-xml-dtd:4.3 ) >=sys-devel/gettext-0.19.8 virtual/pkgconfig || ( dev-lang/vala:0.50[vapigen(+)] dev-lang/vala:0.48[vapigen(+)] dev-lang/vala:0.46[vapigen(+)] dev-lang/vala:0.44[vapigen(+)] dev-lang/vala:0.40[vapigen(+)] dev-lang/vala:0.36[vapigen(+)] ) app-arch/xz-utils >=dev-util/meson-0.54.0 >=dev-util/ninja-1.8.2 dev-util/meson-format-array
-DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
+BDEPEND=dev-util/glib-utils gtk-doc? ( >=dev-util/gtk-doc-1.11 app-text/docbook-xml-dtd:4.3 ) >=sys-devel/gettext-0.19.8 virtual/pkgconfig || ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 ) || ( ( dev-lang/python:3.9 dev-python/pygobject[python_targets_python3_9(-),-python_single_target_python3_9(-)] ) ( dev-lang/python:3.8 dev-python/pygobject[python_targets_python3_8(-),-python_single_target_python3_8(-)] ) ( dev-lang/python:3.7 dev-python/pygobject[python_targets_python3_7(-),-python_single_target_python3_7(-)] ) ) || ( dev-lang/vala:0.50[vapigen(+)] dev-lang/vala:0.48[vapigen(+)] dev-lang/vala:0.46[vapigen(+)] dev-lang/vala:0.44[vapigen(+)] dev-lang/vala:0.40[vapigen(+)] dev-lang/vala:0.36[vapigen(+)] ) app-arch/xz-utils >=dev-util/meson-0.54.0 >=dev-util/ninja-1.8.2 dev-util/meson-format-array
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test
 DEPEND=>=dev-libs/glib-2.44.0:2 >=x11-libs/gtk+-3.13.5:3[introspection?] >=net-libs/libsoup-2.44:2.4 >=dev-libs/libxml2-2.6.0:2 sci-geosciences/geocode-glib >=sys-libs/timezone-data-2010k glade? ( >=dev-util/glade-3.16:3.10 ) introspection? ( >=dev-libs/gobject-introspection-1.54:= ) dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=Location and timezone database and weather-lookup library
 EAPI=7
 HOMEPAGE=https://wiki.gnome.org/Projects/LibGWeather
-INHERIT=gnome.org gnome2-utils meson vala xdg
+INHERIT=gnome.org gnome2-utils meson python-any-r1 vala xdg
 IUSE=glade gtk-doc +introspection +vala
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris
 LICENSE=GPL-2+
@@ -12,5 +12,5 @@ RDEPEND=>=dev-libs/glib-2.44.0:2 >=x11-libs/gtk+-3.13.5:3[introspection?] >=net-
 REQUIRED_USE=vala? ( introspection )
 SLOT=2/3-16-2
 SRC_URI=mirror://gnome/sources/libgweather/40/libgweather-40.0.tar.xz
-_eclasses_=gnome.org	4d6de9e2337521f60965d1a9a118761f	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	543b53e4d003ebd889082f4673e52af5	meson	e43eef9331f54965a573ed380854ff47	vala	5fab64090cefe75c5df431cefa0b653d	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
-_md5_=87f9e726bd94859d314ebc7a92995699
+_eclasses_=gnome.org	4d6de9e2337521f60965d1a9a118761f	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	543b53e4d003ebd889082f4673e52af5	meson	e43eef9331f54965a573ed380854ff47	python-any-r1	690a993463cd2ebcde40ccdf1bd9ba98	vala	5fab64090cefe75c5df431cefa0b653d	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
+_md5_=4907262a3b826a9cb5e68835215bbaf1
