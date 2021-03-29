@@ -2759,7 +2759,7 @@ app-office/gnucash 4.4: A personal finance manager
 app-office/gnumeric 1.12.48: The GNOME Spreadsheet
 app-office/grisbi 1.2.2: Grisbi is a personal accounting application for Linux
 app-office/gtg 0.4.0: Personal organizer for the GNOME desktop environment
-app-office/homebank 5.4.3: Free, easy, personal accounting for everyone
+app-office/homebank 5.4.3 5.5.1: Free, easy, personal accounting for everyone
 app-office/hourglass 0.7.2-r1: A PSP (personal software process) time tracking utility written in Java
 app-office/ical 3.0-r2: Tk-based Calendar program
 app-office/impressive 0.13.0_beta2: Stylish way of giving presentations with Python
