@@ -24,8 +24,7 @@ RDEPEND="$(python_gen_cond_dep '
 		dev-python/reportlab[${PYTHON_USEDEP}]
 	')"
 
-src_prepare()
-{
+src_prepare() {
 	default
 	sed -re 's:man/man1:share/man/man1:' -i setup.py || die "Error updating man page installation location."
 }
