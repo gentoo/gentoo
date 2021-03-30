@@ -1,5 +1,5 @@
---- Makefile.orig	2008-06-27 13:57:47.000000000 +0400
-+++ Makefile	2013-02-05 00:42:25.241748516 +0400
+--- a/Makefile
++++ b/Makefile
 @@ -38,9 +38,8 @@
  INSTALLMANPATH = $(INSTALLBASE)/man
  INSTALLMANMODE = 444
