@@ -11875,7 +11875,7 @@ games-strategy/majesty-demo 1.0.0-r1: Control your own kingdom in this simulatio
 games-strategy/maxr 0.2.9: Mechanized Assault and Exploration Reloaded
 games-strategy/megaglest 3.11.1-r100 3.13.0: Cross-platform 3D realtime strategy game
 games-strategy/megaglest-data 3.11.1-r1 3.13.0: Data files for the cross-platform 3D realtime strategy game MegaGlest
-games-strategy/naev 0.7.0-r100 0.8.1: A 2D space trading and combat game, in a similar vein to Escape Velocity
+games-strategy/naev 0.8.1 0.8.2: A 2D space trading and combat game, in a similar vein to Escape Velocity
 games-strategy/netherearth 0.52-r1: A remake of the SPECTRUM game Nether Earth
 games-strategy/openra 20190314-r100: A free RTS engine supporting games like Command & Conquer, Red Alert and Dune2k
 games-strategy/s25rttr 0.9.0_pre20200723-r100: Open source remake of The Settlers II: Gold Edition (needs original data files)
