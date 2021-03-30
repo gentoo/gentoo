@@ -14,6 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
+	app-arch/libarchive:=
 	!dev-libs/elfutils
 	!dev-libs/libelf"
 DEPEND="${RDEPEND}"
@@ -23,8 +24,14 @@ BDEPEND="
 	>=sys-devel/bmake-20210206
 	virtual/yacc"
 
+PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
+
 src_prepare() {
 	default
+
+	# needs unpackaged TET tools
+	rm -r test || die
+
 	sed -i -e "s@cc@$(tc-getCC)@" common/native-elf-format || die
 	sed -i -e "s@readelf@$(tc-getREADELF)@" common/native-elf-format || die
 }
@@ -40,16 +47,17 @@ _bmake() {
 
 src_compile() {
 	export MAKESYSPATH="${BROOT}"/usr/share/mk/bmake
-	_bmake -C common
-	_bmake -C libelf
+	_bmake
 }
 
 src_install() {
-	doheader common/elfdefinitions.h
-	doheader libelf/{gelf,libelf}.h
+	_bmake \
+		DESTDIR="${D}" \
+		BINDIR="${EPREFIX}"/usr/${CHOST}-elftoolchain/usr/bin \
+		LIBDIR="${EPREFIX}"/usr/$(get_libdir) \
+		DOCDIR="${EPREFIX}"/usr/share/doc/${PF} \
+		install
 
-	dolib.so libelf/libelf.so.1
-	dosym libelf.so.1 /usr/$(get_libdir)/libelf.so
-
-	dodoc README
+	# remove static libraries
+	find "${ED}" -name '*.a' -delete || die
 }
