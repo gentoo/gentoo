@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2021-03-30)
+# Seems to break dev-tex/culmus-latex
+# Masking until we can investigate & fix
+# bug #737406
+=media-fonts/culmus-0.133-r1
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-03-30)
 # Completely broken since profile 17.1, package needs a real maintainer,
 # bugfix and 3.0.4 version bump. Bugs #677374, #692928
