@@ -43,8 +43,8 @@ src_install() {
 }
 
 pkg_postinst() {
-	[[ -z $(ls "${ROOT}"sys/block/*/queue/protect 2>/dev/null) ]] && \
-	[[ -z $(ls "${ROOT}"sys/block/*/device/unload_heads 2>/dev/null) ]] && \
+	[[ -z $(ls "${ROOT}"/sys/block/*/queue/protect 2>/dev/null) ]] && \
+	[[ -z $(ls "${ROOT}"/sys/block/*/device/unload_heads 2>/dev/null) ]] && \
 		ewarn "Your kernel does NOT support shock protection."
 
 	readme.gentoo_print_elog
@@ -56,9 +56,9 @@ ${PN} requires a kernel module to function properly. The recommended
 approach is to install app-laptop/tp_smapi[hdaps], but the in-tree
 module provided by CONFIG_SENSORS_HDAPS may work as well.
 
-Common daemon parameters can be set in ${EROOT}etc/conf.d/${PN}. If the
+Common daemon parameters can be set in ${EROOT}/etc/conf.d/${PN}. If the
 package was installed with USE=libconfig, then the parameters can also
-be set in ${EROOT}etc/${PN}.conf, although the former will take
+be set in ${EROOT}/etc/${PN}.conf, although the former will take
 precedence over the latter if both are used.
 
 You can change the default sampling rate by modifing
