@@ -143,7 +143,7 @@ src_install() {
 
 	if ! use minimal ; then
 		sed "s@%SEAT_MANAGER%@elogind@" \
-			"${FILESDIR}"/${PN}-r1 \
+			"${FILESDIR}"/${PN}-r2 \
 			> "${T}"/${PN} || die
 		doinitd "${T}"/${PN}
 
