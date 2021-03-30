@@ -26,7 +26,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${P}-parallelmake.patch"
-	"${FILESDIR}/${P}-deansification.patch"
+	"${FILESDIR}/${PN}-4.0.4.19-deansification.patch"
 )
 
 src_prepare() {
