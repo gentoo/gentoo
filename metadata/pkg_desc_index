@@ -15285,7 +15285,7 @@ net-misc/haeredes 0.5.2: Confirm delegation of NS and MX records
 net-misc/hashcash 1.22-r2: Utility to generate hashcash tokens
 net-misc/hath 0.5.0: Hath manipulates network blocks in CIDR notation
 net-misc/htbinit 0.8.5-r7: Sets up Hierachical Token Bucket based traffic control (QoS) with iproute2
-net-misc/htpdate 1.0.7 1.2.0 1.2.2: Synchronize local workstation with time offered by remote webservers
+net-misc/htpdate 1.2.0 1.2.2: Synchronize local workstation with time offered by remote webservers
 net-misc/httpie 2.3.0 2.4.0: Modern command line HTTP client
 net-misc/httpstat 1.3.1: httpstat visualizes cURL statistics in a way of beauty and clarity
 net-misc/httptype 1.3.9-r1: Returns the http host software of a website
@@ -16563,7 +16563,7 @@ sci-mathematics/lrcalc 1.2 2.0: Littlewood-Richardson Calculator
 sci-mathematics/mathematica 10.3.1-r1 12.1.0 12.1.1-r1: Wolfram Mathematica
 sci-mathematics/mathmod 4.1-r1: Plot parametric and implicit surfaces
 sci-mathematics/mathomatic 16.0.5: Automatic algebraic manipulator
-sci-mathematics/maxima 5.42.1 5.44.0-r4 5.44.0-r6: Free computer algebra environment based on Macsyma
+sci-mathematics/maxima 5.42.1 5.44.0-r4 5.44.0-r7: Free computer algebra environment based on Macsyma
 sci-mathematics/minisat 2.2.0_p20130925-r1: Small yet efficient SAT solver with reference paper
 sci-mathematics/msieve 1.53-r1 9999: A C library implementing a suite of algorithms to factor large integers
 sci-mathematics/nauty 2.6.7: Computing automorphism groups of graphs and digraphs
