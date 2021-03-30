@@ -20,7 +20,9 @@ DEPEND="
 	app-emulation/spice-protocol
 	dev-libs/glib:2
 	dev-libs/json-glib
+	dev-libs/libpcre2
 	dev-libs/libsodium:=
+	dev-libs/wayland
 	net-libs/libsoup
 	x11-libs/gdk-pixbuf
 	x11-libs/gtk+:3
