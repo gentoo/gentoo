@@ -13,15 +13,10 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_PV}/${PN}-${MY_PV}-src.zip"
 SLOT="0"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~x86"
-IUSE="+sieve"
 
 DEPEND="
 	dev-libs/gmp:0=
-	sci-mathematics/gmp-ecm
-	sieve? (
-		sci-mathematics/ggnfs
-		sci-mathematics/msieve
-	)"
+	sci-mathematics/gmp-ecm"
 RDEPEND="${DEPEND}"
 BDEPEND="app-arch/unzip"
 
@@ -48,7 +43,6 @@ src_configure() {
 
 src_compile() {
 	local VAR
-	use sieve && VAR="NFS=1"
 	use amd64 && emake $VAR x86_64
 	use x86 && emake $VAR x86
 }
