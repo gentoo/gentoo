@@ -21,7 +21,7 @@ EMULTILIB_PKG="true"
 LICENSE="GPL-2 NVIDIA-r2"
 SLOT="0/${PV%%.*}"
 # TODO: for arm64, keyword virtual/opencl on arm64
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 IUSE="compat +driver +kms multilib static-libs +tools uvm wayland +X"
 REQUIRED_USE="
 	tools? ( X )
