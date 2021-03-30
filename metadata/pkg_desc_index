@@ -4792,7 +4792,7 @@ dev-java/dnsjava 2.1.8: An implementation of DNS in Java
 dev-java/dom4j 1.6.1-r8: XML Java library
 dev-java/dtdparser 1.21-r2: A Java DTD Parser
 dev-java/dynalang 0.4-r1: Library of interoperable metaobject protocols for dynamic languages
-dev-java/easymock 3.3.1: Mock Objects for interfaces in JUnit tests by generating them on the fly
+dev-java/easymock 3.3.1 3.3.1-r1: Mock Objects for interfaces in JUnit tests by generating them on the fly
 dev-java/easymock-classextension 3.2-r1: Mock Objects for interfaces in JUnit tests by generating them on the fly
 dev-java/ecj-gcj 4.4.2: Subset of Eclipse Compiler for Java compiled by gcj, serving as javac in gcj-jdk
 dev-java/eclipse-ecj 4.4.2-r1 4.5.1 4.10 4.13-r2 4.15: Eclipse Compiler for Java
@@ -4829,7 +4829,7 @@ dev-java/gin 2.1.2: Google Gin (GWT INjection)
 dev-java/glassfish-deployment-api 3.1.1: J2EE Application Deployment Specification V.1.2
 dev-java/glassfish-ejb-api 3.2: Project GlassFish Enterprise JavaBean API
 dev-java/glassfish-interceptor-api 3.1: Project GlassFish Interceptor API
-dev-java/glassfish-jms-api 1.1.2.2.04-r1: Java Transaction API
+dev-java/glassfish-jms-api 1.1.2.2.04-r2: Java Transaction API
 dev-java/glassfish-persistence 1.0-r1: Glassfish implementation of persistence API
 dev-java/glassfish-servlet-api 3.1.1: Glassfish reference implementation of Servlet API 2.5 and JSP API 2.1
 dev-java/glassfish-transaction-api 1.1.2.2.04-r1: Java Transaction API
@@ -8018,7 +8018,7 @@ dev-python/APScheduler 3.6.3: In-process task scheduler with Cron-like capabilit
 dev-python/Babel 2.8.1 2.9.0: Collection of tools for internationalizing Python applications
 dev-python/BitVector 3.4.9 3.4.9-r1: A pure-Python memory-efficient packed representation for bit arrays
 dev-python/CppHeaderParser 2.7.4: Parse C++ header files and generate a data structure
-dev-python/Faker 5.6.5 6.4.1 6.5.1 6.6.0 6.6.1 6.6.2 6.6.3: A Python package that generates fake data for you
+dev-python/Faker 5.6.5 6.4.1 6.5.1 6.6.0 6.6.1 6.6.2 6.6.3 7.0.1: A Python package that generates fake data for you
 dev-python/GitPython 3.1.13 3.1.14: Library used to interact with Git repositories
 dev-python/GridDataFormats 0.5.0: Reading and writing of data on regular grids in Python
 dev-python/MechanicalSoup 0.12.0 1.0.0: A python library for automating interaction with websites
@@ -8127,14 +8127,14 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7 1.0.8: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r4: Amazon Web Services API
-dev-python/boto3 1.16.63 1.17.7 1.17.12 1.17.17 1.17.18 1.17.19 1.17.20 1.17.21 1.17.22 1.17.23 1.17.24 1.17.25 1.17.26 1.17.27 1.17.28 1.17.29 1.17.30 1.17.31 1.17.32 1.17.33 1.17.34 1.17.35 1.17.36 1.17.38 1.17.39 9999: The AWS SDK for Python
-dev-python/botocore 1.19.63 1.20.7 1.20.12 1.20.17 1.20.18 1.20.19 1.20.20 1.20.21 1.20.22 1.20.23 1.20.24 1.20.25 1.20.26 1.20.27 1.20.28 1.20.29 1.20.30 1.20.31 1.20.32 1.20.33 1.20.34 1.20.35 1.20.36 1.20.38 1.20.39 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.16.63 1.17.7 1.17.12 1.17.17 1.17.18 1.17.19 1.17.20 1.17.21 1.17.22 1.17.23 1.17.24 1.17.25 1.17.26 1.17.27 1.17.28 1.17.29 1.17.30 1.17.31 1.17.32 1.17.33 1.17.34 1.17.35 1.17.36 1.17.38 1.17.39 1.17.40 9999: The AWS SDK for Python
+dev-python/botocore 1.19.63 1.20.7 1.20.12 1.20.17 1.20.18 1.20.19 1.20.20 1.20.21 1.20.22 1.20.23 1.20.24 1.20.25 1.20.26 1.20.27 1.20.28 1.20.29 1.20.30 1.20.31 1.20.32 1.20.33 1.20.34 1.20.35 1.20.36 1.20.38 1.20.39 1.20.40 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.21: Syntax highlighting and autocompletion for the Python interpreter
 dev-python/bracex 2.1.1: Bash style brace expansion for Python
 dev-python/braintree 4.6.0: Braintree Python Library
-dev-python/breathe 4.27.0: Sphinx Doxygen renderer
+dev-python/breathe 4.27.0 4.28.0: Sphinx Doxygen renderer
 dev-python/brotlicffi 1.0.9.1: Python binding to the Brotli library
 dev-python/brotlipy 0.7.0-r3: Python binding to the Brotli library
 dev-python/brython 3.7.3 3.7.4: A Python 3 implementation for client-side web programming
@@ -8400,12 +8400,12 @@ dev-python/github3 1.3.0: A wrapper for the GitHub API written in python
 dev-python/glance_store 2.3.0: A library for glance
 dev-python/glooey 0.3.4-r1: An object-oriented GUI library for pyglet
 dev-python/gmpy 2.0.8-r2: Python bindings for GMP, MPC, MPFR and MPIR libraries
-dev-python/google-api-core 1.26.0 1.26.1 1.26.1-r1 1.26.2: Core Library for Google Client Libraries
+dev-python/google-api-core 1.26.0 1.26.1 1.26.1-r1 1.26.2 1.26.3: Core Library for Google Client Libraries
 dev-python/google-api-python-client 1.8.3-r1 2.0.0 2.0.2: Google API Client for Python
 dev-python/google-apitools 0.5.31: Python library to manipulate Google APIs
 dev-python/google-auth 1.27.0 1.27.1 1.28.0: Google Authentication Library
 dev-python/google-auth-httplib2 0.0.4 0.1.0: httplib2 Transport for Google Auth
-dev-python/google-auth-oauthlib 0.4.1-r1 0.4.3: Google Authentication Library
+dev-python/google-auth-oauthlib 0.4.1-r1 0.4.3 0.4.4: Google Authentication Library
 dev-python/google-pasta 0.1.1 0.2.0: AST-based Python refactoring library
 dev-python/google-reauth-python 0.1.0-r1 0.1.1: Python based U2F host library
 dev-python/googleapis-common-protos 1.52.0 1.53.0: python classes generated from the common protos in the googleapis repository
@@ -9459,7 +9459,7 @@ dev-python/xcffib 0.11.1: A drop in replacement for xpyb, an XCB python binding
 dev-python/xdg 5.0.1-r1: Implementation of the XDG Base Directory Specification in Python
 dev-python/xdoctest 0.15.4: A rewrite of Python's builtin doctest module but without all the weirdness
 dev-python/xlrd 1.2.0 2.0.1: Library to extract data from Microsoft Excel spreadsheets
-dev-python/xlsxwriter 1.3.7: Python module for creating Excel XLSX files
+dev-python/xlsxwriter 1.3.7 1.3.8: Python module for creating Excel XLSX files
 dev-python/xlwt 1.3.0-r1: Python library to create spreadsheet files compatible with Excel
 dev-python/xmlschema 1.5.1 1.5.2 1.5.3: An XML Schema validator and decoder
 dev-python/xmltodict 0.12.0-r1: Makes working with XML feel like you are working with JSON
@@ -11015,7 +11015,7 @@ dev-util/radare2 4.5.1-r1 5.1.1 9999: unix-like reverse engineering framework an
 dev-util/ragel 6.10 7.0.0.12 7.0.3 7.0.4: Compiles finite state machines from regular languages into executable code
 dev-util/rats 2.4: RATS - Rough Auditing Tool for Security
 dev-util/rbtools 1.0.3 2.0: Command line tools for use with Review Board
-dev-util/re2c 2.0.3 2.1.1: tool for generating C-based recognizers from regular expressions
+dev-util/re2c 2.0.3 2.1.1 2.1.1-r1: tool for generating C-based recognizers from regular expressions
 dev-util/rebar 2.6.4-r1: A sophisticated build-tool for Erlang projects that follows OTP principles
 dev-util/rebar-bin 3.14.4: A sophisticated build-tool for Erlang projects that follows OTP principles
 dev-util/redo 0.42a 0.42c 99999: Smaller, easier, more powerful, and more reliable than make
@@ -17173,7 +17173,7 @@ sys-apps/semodule-utils 3.1 9999: SELinux policy module utilities
 sys-apps/sensei-raw-ctl 0.0_pre20180729: SteelSeries Sensei Raw configuration tool
 sys-apps/servicelog 1.1.15: Provides utilities for logging service-related events
 sys-apps/setserial 2.17-r5: Configure your serial ports with it
-sys-apps/sg3_utils 1.44 1.45-r1 1.46: Apps for querying the sg SCSI interface
+sys-apps/sg3_utils 1.42 1.44 1.45-r1 1.46: Apps for querying the sg SCSI interface
 sys-apps/shadow 4.8-r5 4.8.1-r3: Utilities to deal with user accounts
 sys-apps/smartmontools 7.1-r1 7.2 9999: Tools to monitor storage systems to provide advanced warning of disk degradation
 sys-apps/smc-sum 2.5.1.20201112: Updates the BIOS and IPMI firmware and system settings on Supermicro mainboards
