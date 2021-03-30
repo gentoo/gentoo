@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure
+DESCRIPTION=Dynamic DNS client with plugins for several dynamic dns services
+EAPI=7
+HOMEPAGE=https://savannah.nongnu.org/projects/updatedd/
+KEYWORDS=~amd64 ~arm ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl dev-perl/IO-Socket-Timeout
+SLOT=0
+SRC_URI=https://savannah.nongnu.org/download/updatedd/updatedd_2.6.tar.gz
+_md5_=e7276cfe6e8afef98a3b8c4849f7e4d4
