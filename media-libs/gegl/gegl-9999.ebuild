@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{7..9} )
 VALA_USE_DEPEND=vapigen
 
-inherit meson gnome2-utils python-any-r1 vala
+inherit meson gnome2-utils optfeature python-any-r1 vala
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -111,9 +111,6 @@ src_configure() {
 		-Ddocs=false
 		-Dexiv2=disabled
 		-Dgdk-pixbuf=enabled
-		#  - There are two checks for dot, one controllable by --with(out)-graphviz
-		#    which toggles HAVE_GRAPHVIZ that is not used anywhere.  Yes.
-		-Dgraphviz=disabled
 		-Djasper=disabled
 		#  - libspiro: not in portage main tree
 		-Dlibspiro=disabled
@@ -145,4 +142,8 @@ src_configure() {
 		$(meson_use introspection)
 	)
 	meson_src_configure
+}
+
+pkg_postinst() {
+	optfeature "'Show Image Graph' under GIMP[debug] menu 'File - Debug'" media-gfx/graphviz
 }
