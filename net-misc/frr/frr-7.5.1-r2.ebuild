@@ -33,6 +33,7 @@ COMMON_DEPEND="
 	snmp? ( net-analyzer/net-snmp )"
 
 BDEPEND="
+	dev-util/clippy
 	sys-devel/flex
 	virtual/yacc
 	doc? ( dev-python/sphinx )"
@@ -68,6 +69,7 @@ src_configure() {
 		--sysconfdir="${EPREFIX}"/etc/frr \
 		--localstatedir="${EPREFIX}"/run/frr \
 		--with-moduledir="${EPREFIX}"/usr/lib/frr/modules \
+		--with-clippy="${BROOT}"/usr/bin/clippy
 		--enable-exampledir="${EPREFIX}"/usr/share/doc/${PF}/samples \
 		--enable-user=frr \
 		--enable-group=frr \
