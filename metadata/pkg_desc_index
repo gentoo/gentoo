@@ -4710,7 +4710,7 @@ dev-java/appframework 1.03-r5: Set of Java classes to build desktop applications
 dev-java/apple-java-extensions-bin 1.5-r1: Apple eAWT and eIO APIs for Java on Mac OS X
 dev-java/apt-mirror 1.0-r1: Annotation processing apt mirror API introduced in J2SE 5.0
 dev-java/args4j 2.32 2.33: args4j is a Java command line arguments parser
-dev-java/asm 3.3.1-r1 3.3.1-r2 5.0.3 5.1 5.1-r1 6.2.1 7.3.1 8.0.1 9.1: Bytecode manipulation framework for Java
+dev-java/asm 3.3.1-r2 5.1-r1 6.2.1 7.3.1 8.0.1 9.1: Bytecode manipulation framework for Java
 dev-java/asm-analysis 6.2.1 7.3.1 8.0.1 9.1: Bytecode manipulation framework for Java (Static code analysis API)
 dev-java/asm-commons 6.2.1 7.3.1 8.0.1 9.1: Bytecode manipulation framework for Java (Common class adaptors)
 dev-java/asm-tree 6.2.1 7.3.1 8.0.1 9.1: Bytecode manipulation framework for Java (Tree API)
@@ -12766,7 +12766,7 @@ media-fonts/font-util 1.3.2-r1: X.Org font utilities
 media-fonts/font-winitzki-cyrillic 1.0.3-r2: X.Org Winitzki cyrillic font
 media-fonts/font-xfree86-type1 1.0.4-r2: X.Org XFree86 Type 1 font
 media-fonts/fontawesome 5.14.0 5.15.1 5.15.2 9999: The iconic font
-media-fonts/fonts-meta 1-r1: Meta package for fonts to cover most needs
+media-fonts/fonts-meta 1-r2: Meta package for fonts to cover most needs
 media-fonts/free-bangla-font 0.2: Unicode compliant Open Type Bangla fonts
 media-fonts/freefont 20120503: OpenType and TrueType Unicode fonts from the Free UCS Outline Fonts Project
 media-fonts/freefonts 0.10-r4: A Collection of Free Type1 Fonts
