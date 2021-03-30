@@ -17,7 +17,7 @@ HOMEPAGE="https://www.freedesktop.org/wiki/Software/libqmi/ https://gitlab.freed
 
 LICENSE="LGPL-2"
 SLOT="0/5.7"	# soname of libqmi-glib.so
-IUSE="doc +mbim"
+IUSE="gtk-doc +mbim"
 
 RDEPEND=">=dev-libs/glib-2.48
 	dev-libs/libgudev
@@ -25,7 +25,7 @@ RDEPEND=">=dev-libs/glib-2.48
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
-	doc? ( dev-util/gtk-doc )"
+	gtk-doc? ( dev-util/gtk-doc )"
 [[ ${PV} == "9999" ]] && BDEPEND+=" dev-util/gtk-doc" #469214
 
 src_prepare() {
@@ -39,7 +39,7 @@ src_configure() {
 		--disable-static
 		--disable-qrtr # libqrtr-glib not packaged
 		$(use_enable mbim mbim-qmux)
-		$(use_enable {,gtk-}doc)
+		$(use_enable gtk-doc)
 	)
 	econf "${myconf[@]}"
 }
