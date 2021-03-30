@@ -163,6 +163,8 @@ dev-haskell/encoding
 <lxde-base/lxsession-0.5.5
 <lxde-base/lxtask-0.1.10
 <lxde-base/lxterminal-0.3.2-r1
+<x11-libs/libfm-1.3.2
+<x11-libs/libfm-extra-1.3.2
 <x11-misc/pcmanfm-1.3.2
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2021-03-15)
