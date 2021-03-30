@@ -5520,7 +5520,7 @@ dev-libs/libf2c 20130927-r1: Library that converts FORTRAN to C source
 dev-libs/libfastjson 0.99.8 0.99.9: Fork of the json-c library, which is optimized for liblognorm processing
 dev-libs/libffi 3.3-r2: a portable, high level programming interface to various calling conventions
 dev-libs/libffi-compat 3.2.1-r3: a portable, high level programming interface to various calling conventions
-dev-libs/libfido2 1.5.0-r1 1.6.0: Provides library functionality for FIDO 2.0
+dev-libs/libfido2 1.5.0-r1 1.6.0 1.7.0: Provides library functionality for FIDO 2.0
 dev-libs/libfilezilla 0.25.0 0.26.0 0.27.0-r1 0.27.1: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libflatarray 0.4.0_pre20201009: Struct of arrays library with object oriented interface for C++
 dev-libs/libfmt 7.0.3 7.1.2 7.1.3 9999: Small, safe and fast formatting library
@@ -18191,7 +18191,7 @@ www-client/opera-developer 76.0.3989.0 76.0.3995.0 76.0.4009.0: A fast and secur
 www-client/otter 1.0.02 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qutebrowser 2.1.0 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
-www-client/seamonkey 2.53.6 2.53.7_beta1: Seamonkey Web Browser
+www-client/seamonkey 2.53.6 2.53.7: Seamonkey Web Browser
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r3 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.1 9999: Download manager using gtk+ and libcurl
