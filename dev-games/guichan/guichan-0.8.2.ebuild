@@ -12,7 +12,7 @@ SRC_URI="https://guichan.googlecode.com/files/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="allegro opengl sdl static-libs"
+IUSE="allegro opengl sdl"
 
 DEPEND="
 	allegro? ( media-libs/allegro:0 )
@@ -42,7 +42,7 @@ src_configure() {
 		$(use_enable opengl) \
 		$(use_enable sdl) \
 		$(use_enable sdl sdlimage) \
-		$(use_enable static-libs static)
+		--disable-static
 }
 
 src_install() {
