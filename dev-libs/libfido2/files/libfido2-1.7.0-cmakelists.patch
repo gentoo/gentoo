@@ -1,0 +1,30 @@
+--- libfido2-1.7.0/CMakeLists.txt
++++ libfido2-1.7.0/CMakeLists.txt
+@@ -246,14 +246,12 @@
+ 
+ 	add_compile_options(-Wall)
+ 	add_compile_options(-Wextra)
+-	add_compile_options(-Werror)
+ 	add_compile_options(-Wshadow)
+ 	add_compile_options(-Wcast-qual)
+ 	add_compile_options(-Wwrite-strings)
+ 	add_compile_options(-Wmissing-prototypes)
+ 	add_compile_options(-Wbad-function-cast)
+ 	add_compile_options(-pedantic)
+-	add_compile_options(-pedantic-errors)
+ 
+ 	if(HAVE_SHORTEN_64_TO_32)
+ 		add_compile_options(-Wshorten-64-to-32)
+--- libfido2-1.7.0/man/CMakeLists.txt
++++ libfido2-1.7.0/man/CMakeLists.txt
+@@ -3,10 +3,8 @@
+ # license that can be found in the LICENSE file.
+ 
+ find_program(MANDOC_PATH mandoc)
+-find_program(GZIP_PATH gzip)
+ 
+ message(STATUS "MANDOC_PATH: ${MANDOC_PATH}")
+-message(STATUS "GZIP_PATH: ${GZIP_PATH}")
+ 
+ list(APPEND MAN_SOURCES
+ 	eddsa_pk_new.3
