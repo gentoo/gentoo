@@ -8069,7 +8069,7 @@ dev-python/argh 0.26.2-r2: A simple argparse wrapper
 dev-python/argon2-cffi 20.1.0: CFFI bindings to the Argon2 password hashing library
 dev-python/argparse-manpage 1.4 1.5: Automatically build man-pages for your Python project
 dev-python/arpeggio 1.10.0: Parser interpreter based on PEG grammars
-dev-python/arrow 0.17.0 1.0.0 1.0.1 1.0.2 1.0.3: Better dates and times for Python
+dev-python/arrow 1.0.1 1.0.3: Better dates and times for Python
 dev-python/asgiref 3.3.1: ASGI utilities (successor to WSGI)
 dev-python/asn1crypto 1.4.0: Python ASN.1 library with a focus on performance and a pythonic API
 dev-python/asteval 0.9.21 0.9.22 0.9.23: Evaluator of Python expression using ast module
@@ -8093,7 +8093,7 @@ dev-python/autopep8 1.5.5 1.5.6 9999: Automatically formats Python code to confo
 dev-python/autoprop 1.0.2 2.0.0: Infer properties from accessor methods
 dev-python/aws-sam-translator 1.34.0 1.35.0: A library that transform SAM templates into AWS CloudFormation templates
 dev-python/aws-xray-sdk-python 2.6.0 2.7.0: AWS X-Ray SDK for Python
-dev-python/awscli 1.18.160 1.19.3: Universal Command Line Environment for AWS
+dev-python/awscli 1.19.3: Universal Command Line Environment for AWS
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
 dev-python/backcall 0.2.0: Specifications for callback functions passed in to an API
 dev-python/backports-tempfile 1.0-r1: Backport of new features in Python's tempfile module
@@ -8112,7 +8112,7 @@ dev-python/betamax 0.8.1: python-requests HTTP exchanges recorder
 dev-python/betamax-matchers 0.4.0: A group of experimental matchers for Betamax
 dev-python/bibtexparser 1.1.0: A BibTeX parser written in python
 dev-python/binaryornot 0.4.4-r2: Ultra-lightweight pure Python package to guess whether a file is binary or text
-dev-python/bitarray 1.6.3 1.7.0 1.7.1 1.8.0 1.8.1: efficient arrays of booleans -- C extension
+dev-python/bitarray 1.7.0 1.7.1 1.8.1: efficient arrays of booleans -- C extension
 dev-python/bitstring 3.1.7: A pure Python module for creation and analysis of binary data
 dev-python/black 20.8_beta1: The uncompromising Python code formatter
 dev-python/bleach 3.3.0: an easy whitelist-based HTML-sanitizing tool
@@ -8125,8 +8125,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7 1.0.8: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r4: Amazon Web Services API
-dev-python/boto3 1.16.63 1.17.7 1.17.12 1.17.17 1.17.18 1.17.19 1.17.20 1.17.21 1.17.22 1.17.23 1.17.24 1.17.25 1.17.26 1.17.27 1.17.28 1.17.29 1.17.30 1.17.31 1.17.32 1.17.33 1.17.34 1.17.35 1.17.36 1.17.38 1.17.39 1.17.40 9999: The AWS SDK for Python
-dev-python/botocore 1.19.63 1.20.7 1.20.12 1.20.17 1.20.18 1.20.19 1.20.20 1.20.21 1.20.22 1.20.23 1.20.24 1.20.25 1.20.26 1.20.27 1.20.28 1.20.29 1.20.30 1.20.31 1.20.32 1.20.33 1.20.34 1.20.35 1.20.36 1.20.38 1.20.39 1.20.40 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.17.17 1.17.22 1.17.27 1.17.33 1.17.39 1.17.40 9999: The AWS SDK for Python
+dev-python/botocore 1.20.17 1.20.22 1.20.27 1.20.33 1.20.39 1.20.40 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.21: Syntax highlighting and autocompletion for the Python interpreter
@@ -8138,7 +8138,7 @@ dev-python/brotlipy 0.7.0-r3: Python binding to the Brotli library
 dev-python/brython 3.7.3 3.7.4: A Python 3 implementation for client-side web programming
 dev-python/bsddb3 6.2.9: Python bindings for Berkeley DB
 dev-python/cached-property 1.5.2: A cached-property for decorating methods in classes
-dev-python/cachelib 0.1 0.1.1: Collection of cache libraries in the same API interface. Extracted from werkzeug
+dev-python/cachelib 0.1.1: Collection of cache libraries in the same API interface. Extracted from werkzeug
 dev-python/cachetools 4.2.1: Extensible memoizing collections and decorators
 dev-python/cairocffi 1.2.0: CFFI-based drop-in replacement for Pycairo
 dev-python/cangjie 1.3-r1: Python wrapper for libcangjie
@@ -8368,7 +8368,7 @@ dev-python/flit_core 2.1.0 3.2.0: Simplified packaging of Python modules (core m
 dev-python/flufl-bounce 3.0.1: Email bounce detectors.
 dev-python/flufl-i18n 2.0.2 3.1.4 3.1.5: A high level API for Python internationalization
 dev-python/flufl-lock 5.0.1 5.0.4 5.0.5: NFS-safe file locking with timeouts for POSIX systems
-dev-python/fonttools 4.18.2 4.21.1: Library for manipulating TrueType, OpenType, AFM and Type1 fonts
+dev-python/fonttools 4.21.1: Library for manipulating TrueType, OpenType, AFM and Type1 fonts
 dev-python/fqdn 1.5.0-r1 1.5.1: RFC-compliant FQDN validation and manipulation for Python
 dev-python/freezegun 1.1.0: Let your Python tests travel through time
 dev-python/frozen-flask 0.15: Freezes a Flask application into a set of static files
@@ -8444,7 +8444,7 @@ dev-python/hvac 0.10.8: hashicorp vault client in python
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 21.0.0: A featureful, correct URL for Python
-dev-python/hypothesis 6.2.0 6.3.4 6.4.3 6.6.0 6.8.1 6.8.3: A library for property based testing
+dev-python/hypothesis 6.3.4 6.6.0 6.8.1 6.8.3: A library for property based testing
 dev-python/icalendar 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/idna 2.10-r1 3.0 3.1: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0-r1: Patch ssl.match_hostname for Unicode(idna) domains support
@@ -8455,12 +8455,12 @@ dev-python/imagesize 1.2.0: Pure Python module for getting image size from png/j
 dev-python/imapclient 2.2.0: easy-to-use, pythonic, and complete IMAP client library
 dev-python/iminuit 2.3.0 2.4.0: Minuit numerical function minimization in Python
 dev-python/immutables 0.14 0.15: A high-performance immutable mapping type for Python
-dev-python/importlib_metadata 3.4.0 3.7.0 3.7.1 3.7.2 3.7.3 3.8.2 3.9.0 3.10.0: Read metadata from Python packages
+dev-python/importlib_metadata 3.7.0 3.7.2 3.7.3 3.8.2 3.10.0: Read metadata from Python packages
 dev-python/importlib_resources 5.1.0 5.1.1 5.1.2: Read resources from Python packages
 dev-python/imread 0.7.3-r1: Read Image Files
 dev-python/incremental 17.5.0 21.3.0: Incremental is a small library that versions your Python projects
 dev-python/indexed_gzip 0.8.10: Fast random access of gzip files in Python
-dev-python/inflect 5.0.2 5.2.0 5.3.0: Correctly inflect words and numbers
+dev-python/inflect 5.2.0 5.3.0: Correctly inflect words and numbers
 dev-python/inflection 0.5.1: A port of Ruby on Rails' inflector to Python
 dev-python/influxdb 5.3.0-r1: InfluxDB client
 dev-python/iniconfig 1.1.1: Brain-dead simple config-ini parsing
@@ -8532,7 +8532,7 @@ dev-python/kaptan 0.5.12-r1: Configuration manager in your pocket
 dev-python/kazoo 2.8.0: A high-level Python library that makes it easier to use Apache Zookeeper
 dev-python/kconfiglib 14.1.0: A flexible Python Kconfig implementation
 dev-python/keep 2.10 2.10.1: Personal shell command keeper and snippets manager
-dev-python/keyring 22.0.1 22.3.0 23.0.0 23.0.1: Provides access to the system keyring service
+dev-python/keyring 22.3.0 23.0.0 23.0.1: Provides access to the system keyring service
 dev-python/keystoneauth 4.2.1: This package contains tools for authenticating to an OpenStack-based cloud.
 dev-python/keystonemiddleware 9.1.0: A middleware for the OpenStack Keystone API
 dev-python/kiwisolver 1.3.1: An efficient C++ implementation of the Cassowary constraint solving algorithm
@@ -8580,7 +8580,7 @@ dev-python/mako 1.1.4: A Python templating language
 dev-python/mamba 0.11.1: Python test runner born under the banner of Behavior Driven Development
 dev-python/mando 0.6.4: Create Python CLI apps with little to no effort at all!
 dev-python/manuel 1.10.1: Lets you mix and match traditional doctests with custom test syntax
-dev-python/markdown 2.6.11 3.3.3 3.3.4: Python implementation of the markdown markup language
+dev-python/markdown 2.6.11 3.3.4: Python implementation of the markdown markup language
 dev-python/markdown2 2.4.0: Python Markdown language reimplementation
 dev-python/markups 3.1.0 3.1.1: A wrapper around various text markups
 dev-python/markupsafe 1.1.1-r1: Implements a XML/HTML/XHTML Markup safe string for Python
@@ -8870,7 +8870,7 @@ dev-python/pydot 1.4.1 1.4.2: Python interface to Graphviz's Dot language
 dev-python/pydotplus 2.0.2: Improved version of the old pydot project
 dev-python/pyelftools 0.27: pure-Python library for analyzing ELF files and DWARF debugging information
 dev-python/pyenchant 3.2.0: Python bindings for the Enchant spellchecking system
-dev-python/pyfakefs 4.3.3 4.4.0: a fake file system that mocks the Python file system modules
+dev-python/pyfakefs 4.4.0: a fake file system that mocks the Python file system modules
 dev-python/pyfeyn 1.0.0-r2: Python package for drawing Feynman diagrams
 dev-python/pyflakes 2.2.0 2.3.0 2.3.1: Passive checker for Python programs
 dev-python/pyformance 0.4-r1: Performance metrics, based on Coda Hale's Yammer metrics
@@ -8903,7 +8903,7 @@ dev-python/pylatex 1.4.1: A Python library for creating LaTeX files and snippets
 dev-python/pylev 1.2.0: Python Levenshtein implementation
 dev-python/pylibacl 0.6.0: POSIX ACLs (Access Control Lists) for Python
 dev-python/pylibmc 1.6.1-r1: Libmemcached wrapper written as a Python extension
-dev-python/pylint 2.6.2 2.7.1 2.7.2-r1: Python code static checker
+dev-python/pylint 2.7.1 2.7.2-r1: Python code static checker
 dev-python/pylru 1.2.0: A least recently used (LRU) cache for Python
 dev-python/pyls-black 0.4.6: Black plugin for the Python Language Server
 dev-python/pyls-spyder 0.3.2: Spyder extensions for the python language server
@@ -9192,7 +9192,7 @@ dev-python/rply 0.7.8: Pure python parser generator that also works with RPython
 dev-python/rpy 3.4.2: Python interface to the R Programming Language
 dev-python/rpyc 5.0.1: Remote Python Call (RPyC), a transparent and symmetric RPC library
 dev-python/rq 1.7.0: simple, lightweight library for creating and processing background jobs
-dev-python/rsa 4.7.1 4.7.2: Pure-Python RSA implementation
+dev-python/rsa 4.7.2: Pure-Python RSA implementation
 dev-python/rst-linker 2.1.1 2.2.0: Sphinx plugin to add links and timestamps to the changelog
 dev-python/rtimulib 7.2.1-r1: Python Binding for RTIMULib, a versatile IMU library
 dev-python/rtslib-fb 2.1.74: A Python object API for managing the Linux LIO kernel target
@@ -9363,7 +9363,7 @@ dev-python/toolz 0.11.1: List processing tools and functional utilities
 dev-python/tooz 2.7.1: Library centralizing the most common distributed primitives
 dev-python/towncrier 19.2.0: Building newsfiles for your project
 dev-python/tox 3.22.0 3.23.0: virtualenv-based automation of test activities
-dev-python/tqdm 4.57.0 4.58.0 4.59.0: Add a progress meter to your loops in a second
+dev-python/tqdm 4.58.0 4.59.0: Add a progress meter to your loops in a second
 dev-python/traceback2 1.4.0-r1: Backports of the traceback module
 dev-python/traitlets 4.3.3 5.0.5: A configuration system for Python applications
 dev-python/transitions 0.8.7: A lightweight, object-oriented state machine implementation in Python
