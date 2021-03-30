@@ -35,7 +35,7 @@ src_prepare() {
 
 src_install() {
 	default
-	rm -rf "${ED%/}"/usr/share/doc || die
+	rm -rf "${ED}"/usr/share/doc || die
 
 	echo PRELINK_PATH_MASK=\""${EPREFIX}"/usr/bin/bbkeys\" > "${T}"/99bbkeys || die
 	doenvd "${T}"/99bbkeys
