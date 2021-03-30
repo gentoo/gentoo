@@ -405,12 +405,6 @@ dev-scheme/greg
 # packaged.  Removal on 2021-03-27.  Bug #683358, #696476, #741936.
 sys-auth/authenticator
 
-# David Seifert <soap@gentoo.org> (2021-02-25)
-# Last release in 2006, no other distro carries this anymore,
-# blocks sci-libs/fftw:2.1 removal, no revdeps.
-# Removal on 2021-03-27.  Bug #731038, #772812.
-media-gfx/videorbits
-
 # Sam James <sam@gentoo.org> (2021-02-18)
 # 0.9.27 included a regression wrt deletes
 # bug #768948
