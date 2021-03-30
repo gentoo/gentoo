@@ -730,7 +730,7 @@ app-admin/mei-amt-check 0_p20170515: AMT status checker
 app-admin/metalog 3-r2 20181125 20200113-r1: A highly configurable replacement for syslogd/klogd
 app-admin/mktwpol 1.0.1: Bash scripts to install tripwire and generate tripwire policy files
 app-admin/mongo-tools 4.2.11 4.2.12 100.2.0 100.2.1 100.3.0: A high-performance, open source, schema-free document-oriented database
-app-admin/monit 5.27.1 5.27.1-r1 5.27.2: Monitoring and managing daemons or similar programs running on a Unix system
+app-admin/monit 5.27.1 5.27.2 5.28.0: Monitoring and managing daemons or similar programs running on a Unix system
 app-admin/mtail 3.0.0_rc35 3.0.0_rc36: A tool for extracting metrics from application logs
 app-admin/multilog-watch 1.12-r1: Watches a multilog file for irregularities
 app-admin/needrestart 3.3 3.5 9999: Restart daemons after library updates
@@ -10799,6 +10799,7 @@ dev-util/clazy 1.9: Compiler plugin which allows clang to understand Qt semantic
 dev-util/cligh 0.3 9999: Command-line interface to GitHub
 dev-util/clinfo 3.0.21.02.21 9999: A tool to display info about the system's OpenCL capabilities
 dev-util/clion 2020.3.3: A complete toolset for C and C++ development
+dev-util/clippy 7.5.1: Standalone clippy tool built from FRR sources
 dev-util/cloc 1.84 1.86 1.88: Count Lines of Code
 dev-util/cmake 3.13.5 3.18.5 3.19.6 3.19.7 3.20.0: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
@@ -15261,7 +15262,7 @@ net-misc/fakeidentd 2.6-r1: A static, secure identd. One source file only!
 net-misc/fatrat 1.2.0_beta2_p20161204: Qt5-based download/upload manager
 net-misc/felix 3.1.3: Calico's per-host agent, responsible for programming routes and security policy
 net-misc/freerdp 2.2.0 2.9999 9999: Free implementation of the Remote Desktop Protocol
-net-misc/frr 7.5 7.5.1-r1: The FRRouting Protocol Suite
+net-misc/frr 7.5.1-r2: The FRRouting Protocol Suite
 net-misc/gallery-dl 1.16.5 1.17.1 9999: Download image galleries and collections from several image hosting sites
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
 net-misc/geoipupdate 2.3.1 3.1.1 4.3.0: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
