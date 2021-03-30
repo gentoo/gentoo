@@ -675,7 +675,7 @@ app-admin/exo 1.26.0: Command-line tool for everything at Exoscale: compute, sto
 app-admin/fam 2.7.0_p17_p3: FAM, the File Alteration Monitor
 app-admin/fetchlog 1.4-r1: Displays the last new messages of a logfile
 app-admin/fifo-cronolog 1.1.1-r1: cronolog wrapper for use with dumb daemons like squid, varnish and so on
-app-admin/filebeat 7.9.3 7.10.2: Lightweight log shipper for Logstash and Elasticsearch
+app-admin/filebeat 7.9.3 7.10.2 7.12.0: Lightweight log shipper for Logstash and Elasticsearch
 app-admin/filewatcher 2.4.6-r1: File control configuration system and IDS
 app-admin/fluentd 1.2.6-r1 1.3.1 1.3.2 1.3.3 1.4.0 1.4.1 1.4.2 1.9.0: data collector and unified logging layer (project under CNCF)
 app-admin/fsvs 1.2.5-r2: Backup/restore for subversion backends
@@ -720,7 +720,7 @@ app-admin/logmon 0.4.4-r1: Split-screen terminal/ncurses based log viewer
 app-admin/logrotate 3.14.0 3.17.0 3.18.0: Rotates, compresses, and mails system logs
 app-admin/logsentry 1.1.1-r2: Automatically monitor system logs and mail security violations
 app-admin/logstalgia 1.1.2: Replays or streams an access_log as a retro arcade game-like simulation
-app-admin/logstash-bin 6.8.13 7.8.1 7.9.2 7.9.3 7.10.2: Tool for managing events and logs
+app-admin/logstash-bin 6.8.15 7.10.2 7.12.0: Tool for managing events and logs
 app-admin/logsurfer+ 1.8-r3: Real Time Log Monitoring and Alerting
 app-admin/longrun 0.9-r4: A utility to control Transmeta's Crusoe and Efficeon processors
 app-admin/lsyncd 2.2.3: Live Syncing (Mirror) Daemon
@@ -2518,7 +2518,7 @@ app-misc/dvorakng 0.6.0: Dvorak typing tutor
 app-misc/dvtm 0.15-r2 0.15-r3 9999: Dynamic virtual terminal manager
 app-misc/editor-wrapper 4-r1: Wrapper scripts that will execute EDITOR or PAGER
 app-misc/egads 0.9.5-r1: Entropy Gathering And Distribution System
-app-misc/elasticsearch 6.8.14 7.9.3 7.10.2: Open Source, Distributed, RESTful, Search Engine
+app-misc/elasticsearch 6.8.15 7.10.2 7.12.0: Free and Open, Distributed, RESTful Search Engine
 app-misc/emelfm2 0.9.1-r5: File manager that implements the popular two-pane design
 app-misc/empty 0.6.20b 0.6.21b: Small shell utility, similar to expect(1)
 app-misc/enum 1.1-r1: Replacement for GNU seq and BSD jot
@@ -8092,7 +8092,7 @@ dev-python/autobahn 20.7.1 20.12.2 20.12.3 21.1.1 21.2.1 21.2.2 21.3.1: WebSocke
 dev-python/automat 20.2.0: Self-service finite-state machines for the programmer on the go
 dev-python/automaton 1.12.1 2.2.0: Friendly state machines for python.
 dev-python/autopep8 1.5.5 1.5.6 9999: Automatically formats Python code to conform to the PEP 8 style guide
-dev-python/autoprop 1.0.2: Infer properties from accessor methods
+dev-python/autoprop 1.0.2 2.0.0: Infer properties from accessor methods
 dev-python/aws-sam-translator 1.34.0 1.35.0: A library that transform SAM templates into AWS CloudFormation templates
 dev-python/aws-xray-sdk-python 2.6.0 2.7.0: AWS X-Ray SDK for Python
 dev-python/awscli 1.18.160 1.19.3: Universal Command Line Environment for AWS
@@ -8457,7 +8457,7 @@ dev-python/imagesize 1.2.0: Pure Python module for getting image size from png/j
 dev-python/imapclient 2.2.0: easy-to-use, pythonic, and complete IMAP client library
 dev-python/iminuit 2.3.0 2.4.0: Minuit numerical function minimization in Python
 dev-python/immutables 0.14 0.15: A high-performance immutable mapping type for Python
-dev-python/importlib_metadata 3.4.0 3.7.0 3.7.1 3.7.2 3.7.3 3.8.2 3.9.0: Read metadata from Python packages
+dev-python/importlib_metadata 3.4.0 3.7.0 3.7.1 3.7.2 3.7.3 3.8.2 3.9.0 3.10.0: Read metadata from Python packages
 dev-python/importlib_resources 5.1.0 5.1.1 5.1.2: Read resources from Python packages
 dev-python/imread 0.7.3-r1: Read Image Files
 dev-python/incremental 17.5.0 21.3.0: Incremental is a small library that versions your Python projects
@@ -8586,7 +8586,7 @@ dev-python/markdown 2.6.11 3.3.3 3.3.4: Python implementation of the markdown ma
 dev-python/markdown2 2.4.0: Python Markdown language reimplementation
 dev-python/markups 3.1.0 3.1.1: A wrapper around various text markups
 dev-python/markupsafe 1.1.1-r1: Implements a XML/HTML/XHTML Markup safe string for Python
-dev-python/marshmallow 3.5.1 3.10.0 3.11.0: A library for converting to and from native Python datatypes
+dev-python/marshmallow 3.5.1 3.10.0 3.11.0 3.11.1: A library for converting to and from native Python datatypes
 dev-python/matplotlib 3.3.4 3.4.0: Pure python plotting library with matlab like syntax
 dev-python/matterhook 0.2 0.2-r1: Interact with Mattermost incoming webhooks easily
 dev-python/mccabe 0.6.1-r1 0.6.1-r2: flake8 plugin: McCabe complexity checker
@@ -15507,7 +15507,7 @@ net-misc/x11-ssh-askpass 1.2.4.1-r2: X11-based passphrase dialog for use with Op
 net-misc/x2goclient 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.1039_p1: CLI to access Yandex Disk file storage service
-net-misc/you-get 0.4.1432 0.4.1500: utility to download media contents from the web
+net-misc/you-get 0.4.1432 0.4.1500 0.4.1520: utility to download media contents from the web
 net-misc/youtube-dl 2021.03.14 2021.03.25 9999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r2 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.6.3: A software-based managed Ethernet switch for planet Earth
@@ -18130,7 +18130,7 @@ www-apps/jekyll-sass-converter 2.1.0: A basic Sass converter for Jekyll
 www-apps/jekyll-sitemap 1.4.0: Automatically generate a sitemap.xml for your Jekyll site
 www-apps/jekyll-watch 2.2.1 2.2.1-r1: Rebuild your Jekyll site when a file changes with the --watch switch
 www-apps/karma-bin 0.24 0.27 0.33 0.39 0.40 0.41 0.43: Alerts dashboard for Prometheus Alertmanager
-www-apps/kibana-bin 6.8.13 7.8.1 7.9.2 7.9.3 7.10.2: Analytics and search dashboard for Elasticsearch
+www-apps/kibana-bin 6.8.15 7.10.2 7.12.0: Analytics and search dashboard for Elasticsearch
 www-apps/klaus 1.5.1 1.5.2: A simple, easy-to-set-up Git web viewer
 www-apps/liquid_feedback_core 2.2.6 3.0.4: Internet platforms for proposition development and decision making
 www-apps/liquid_feedback_frontend 2.2.7 3.0.6: Internet platforms for proposition development and decision making
@@ -18993,7 +18993,7 @@ x11-themes/comix-xcursors 0.8.2: X11 mouse theme with a comics feeling
 x11-themes/commonbox-styles 0.6: Common styles for fluxbox, blackbox, and openbox
 x11-themes/commonbox-styles-extra 0.2-r2: Extra styles pack for flux|black|open(box)
 x11-themes/constantine-backgrounds 12.1.1.4-r1: Fedora 12 official background artwork
-x11-themes/e-flat-theme 0_pre20210315: A modern, flat theme for Enlightenment WM
+x11-themes/e-flat-theme 0_pre20210315 0_pre20210330: A modern, flat theme for Enlightenment WM
 x11-themes/e-gtk-theme 0.19.3: A GTK theme to match Enlightenment WM's default theme
 x11-themes/e16-themes 1.0.2: All the official E16 themes
 x11-themes/echo-icon-theme 0.3.89.0_pre20081031: SVG icon theme from the Echo Icon project
