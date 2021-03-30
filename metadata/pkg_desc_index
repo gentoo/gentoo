@@ -14967,7 +14967,7 @@ net-libs/libiscsi 1.18.0 1.19.0 9999: iscsi client library and utilities
 net-libs/libisds 0.11.1 9999: Client library for accessing ISDS Soap services
 net-libs/libktorrent 2.2.0-r1 20.12.3: BitTorrent library based on KDE Frameworks
 net-libs/liblockfile 1.16: Implements functions designed to lock the standard mailboxes
-net-libs/libmbim 1.18.0 1.24.4: Mobile Broadband Interface Model (MBIM) modem protocol helper library
+net-libs/libmbim 1.18.0 1.24.4 1.24.6: Mobile Broadband Interface Model (MBIM) modem protocol helper library
 net-libs/libmediawiki 5.37.0-r1: C++ interface for MediaWiki based web service as wikipedia.org
 net-libs/libmicrodns 0.1.2 9999: Minimal mDNS resolver (and announcer) library
 net-libs/libmicrohttpd 0.9.65-r1 0.9.68-r1 0.9.69 0.9.70-r1 0.9.71 0.9.72: Small C library to run an HTTP server as part of another application
@@ -15007,7 +15007,7 @@ net-libs/libpri 1.6.0: Primary Rate ISDN (PRI) library
 net-libs/libprotoident 2.0.14_p1 9999: A library that performs application layer protocol identification for flows
 net-libs/libproxy 0.4.17: Library for automatic proxy configuration management
 net-libs/libpsl 0.21.0 0.21.1: C library for the Public Suffix List
-net-libs/libqmi 1.22.2 1.26.6 9999: Qualcomm MSM (Mobile Station Modem) Interface (QMI) modem protocol library
+net-libs/libqmi 1.22.2 1.26.6 1.28.2 9999: Qualcomm MSM (Mobile Station Modem) Interface (QMI) modem protocol library
 net-libs/libquotient 0.6.5 0.6.6: Qt5-based SDK to develop applications for Matrix
 net-libs/librouteros 1.1.2: Library for accessing MikroTik's RouterOS via its API
 net-libs/librsync 2.3.1: Remote delta-compression library
