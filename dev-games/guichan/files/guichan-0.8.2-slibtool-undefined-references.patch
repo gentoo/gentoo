@@ -1,0 +1,48 @@
+https://bugs.gentoo.org/779040
+
+commit a1e784de2edc4784c440246998fb8ad28065cc39
+Author: orbea <orbea@riseup.net>
+Date:   Tue Mar 30 07:34:15 2021 -0700
+
+    build: Fix the build with -no-undefined.
+
+--- a/src/allegro/Makefile.am
++++ b/src/allegro/Makefile.am
+@@ -3,6 +3,7 @@ lib_LTLIBRARIES = libguichan_allegro.la
+ INCLUDES = -I$(top_srcdir)/include
+ 
+ libguichan_allegro_la_LDFLAGS = -no-undefined -release $(LT_RELEASE) -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
++libguichan_allegro_la_LIBADD = $(top_srcdir)/src/libguichan.la -lalleg
+ 
+ libguichan_allegro_la_SOURCES =		\
+ 		allegro.cpp		\
+@@ -10,4 +11,4 @@ libguichan_allegro_la_SOURCES =		\
+ 		allegrographics.cpp	\
+ 		allegroimage.cpp	\
+ 		allegroimageloader.cpp	\
+-		allegroinput.cpp
+\ No newline at end of file
++		allegroinput.cpp
+--- a/src/opengl/Makefile.am
++++ b/src/opengl/Makefile.am
+@@ -3,6 +3,7 @@ lib_LTLIBRARIES = libguichan_opengl.la
+ INCLUDES = -I$(top_srcdir)/include
+ 
+ libguichan_opengl_la_LDFLAGS = -no-undefined -release $(LT_RELEASE) -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) 
++libguichan_opengl_la_LIBADD = $(top_srcdir)/src/libguichan.la -lGL
+ 
+ libguichan_opengl_la_SOURCES =	\
+ 	opengl.cpp		\
+diff --git a/src/sdl/Makefile.am b/src/sdl/Makefile.am
+index 61b3d50..728ca3c 100644
+--- a/src/sdl/Makefile.am
++++ b/src/sdl/Makefile.am
+@@ -6,7 +6,7 @@ INCLUDES = -I$(top_srcdir)/include
+ 
+ libguichan_sdl_la_LDFLAGS = -no-undefined -release $(LT_RELEASE) -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
+ 
+-libguichan_sdl_la_LIBADD = -lSDL_image -L$(top_srcdir)/src -lguichan
++libguichan_sdl_la_LIBADD = $(top_srcdir)/src/libguichan.la -lSDL -lSDL_image
+ 
+ libguichan_sdl_la_SOURCES =	\
+ 	sdl.cpp			\
