@@ -12,4 +12,4 @@ RDEPEND=x11-libs/libXft x11-libs/libXt x11-libs/libX11 nls? ( >=sys-devel/gettex
 SLOT=0
 SRC_URI=https://github.com/bbidulock/blackboxwm/archive/0.76.tar.gz -> blackbox-0.76.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
-_md5_=4983a7081970a0babbb64467ff79ad7f
+_md5_=e39b6b1a5a9566dd441d8b661a85190c
