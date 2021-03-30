@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils udev
+inherit cmake udev
 
 DESCRIPTION="library for communicating with HackRF SDR platform"
 HOMEPAGE="http://greatscottgadgets.com/hackrf/"
@@ -36,7 +36,7 @@ src_configure() {
 			-DUDEV_RULES_PATH="$(get_udevdir)/rules.d"
 		)
 	fi
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 pkg_postinst() {
