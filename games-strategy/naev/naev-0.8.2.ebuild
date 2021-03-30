@@ -4,7 +4,8 @@
 EAPI=7
 
 LUA_COMPAT=( lua5-1 luajit )
-inherit lua-single meson virtualx xdg
+PYTHON_COMPAT=( python3_{7..9} )
+inherit lua-single meson python-any-r1 virtualx xdg
 
 DESCRIPTION="A 2D space trading and combat game, in a similar vein to Escape Velocity"
 HOMEPAGE="https://naev.org/ https://github.com/naev/naev"
@@ -34,6 +35,7 @@ RDEPEND="
 	)"
 DEPEND="${RDEPEND}"
 BDEPEND="
+	${PYTHON_DEPS}
 	doc? (
 		app-doc/doxygen
 		dev-lua/ldoc
