@@ -7,5 +7,9 @@
 	</maintainer>
 	<use>
 		<flag name="client">Build the ncurses/readline full featured CLI</flag>
+		<flag name="libssh">
+			Enables <pkg>net-libs/libssh</pkg> binding, mendatory for RPKI
+			support
+		</flag>
 	</use>
 </pkgmetadata>
