@@ -23,6 +23,7 @@ RDEPEND="media-libs/fontconfig
 		media-fonts/heuristica
 		media-fonts/liberation-fonts
 		media-fonts/noto
+		media-fonts/noto-emoji
 		media-fonts/wqy-microhei
 		latin? (
 			media-fonts/cantarell
@@ -90,6 +91,9 @@ RDEPEND="media-libs/fontconfig
 	)
 	ms? (
 		media-fonts/corefonts
+		media-fonts/croscorefonts
+		media-fonts/crosextrafonts-caladea
+		media-fonts/crosextrafonts-carlito
 		media-fonts/dejavu
 		media-fonts/droid
 		media-fonts/inconsolata
