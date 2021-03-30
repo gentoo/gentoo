@@ -429,13 +429,6 @@ dev-libs/go-usb
 # Removal on 2021-04-29
 app-office/ical
 
-# Craig Andrews <candrews@gentoo.org> (2021-03-29)
-# Unmaintained upstream.
-# Project is also not useful due to changes in cryptocurrency mining.
-# Open security issue, bug #779004
-# Removal on 2021-04-29, bug #779166
-net-p2p/xmr-stak
-
 # Jonas Stein <jstein@gentoo.org> (2021-03-29)
 # Depends on gtk-2, no release since 2010.
 # Removal on 2021-05-01.
