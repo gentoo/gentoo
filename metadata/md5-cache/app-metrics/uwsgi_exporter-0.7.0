@@ -3,10 +3,11 @@ DEPEND=dev-util/promu >=dev-lang/go-1.10 virtual/pkgconfig
 DESCRIPTION=uWSGI metrics exporter for prometheus.io
 EAPI=6
 HOMEPAGE=https://github.com/timonwong/uwsgi_exporter
+INHERIT=user golang-build golang-vcs-snapshot systemd
 KEYWORDS=~amd64
 LICENSE=Apache-2.0 BSD ISC MIT
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/timonwong/uwsgi_exporter/archive/v0.7.0.tar.gz -> uwsgi_exporter-0.7.0.tar.gz
-_eclasses_=golang-base	904cd4c642d6923795b9bd99b6fe0e74	golang-build	91472d4e18894e738c69b415e236a664	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+_eclasses_=user-info	a2abd4e2f4c3b9b06d64bf1329359a02	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	golang-base	904cd4c642d6923795b9bd99b6fe0e74	golang-build	91472d4e18894e738c69b415e236a664	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6
 _md5_=abf688fcc9fd4b931179faf1637fb89c

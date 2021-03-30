@@ -4,11 +4,12 @@ DEPEND=hidapi? ( dev-libs/hidapi:= ) !hidapi? ( virtual/libusb:= )
 DESCRIPTION=Led controller for Logitech G- Keyboards
 EAPI=7
 HOMEPAGE=https://github.com/MatMoul/g810-led
+INHERIT=eutils systemd toolchain-funcs udev
 IUSE=+hidapi
 KEYWORDS=~amd64
 LICENSE=GPL-3
 RDEPEND=hidapi? ( dev-libs/hidapi:= ) !hidapi? ( virtual/libusb:= )
 SLOT=0
 SRC_URI=https://github.com/MatMoul/g810-led/archive/v0.4.2.tar.gz -> g810-led-0.4.2.tar.gz
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	udev	452708c3f55cf6e918b045adb949a9e6	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	udev	452708c3f55cf6e918b045adb949a9e6
 _md5_=419bb591a511eba15fbce091eb073725

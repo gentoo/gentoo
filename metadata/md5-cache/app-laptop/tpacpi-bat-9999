@@ -3,9 +3,10 @@ DEPEND=virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=Control battery thresholds of recent ThinkPads, not supported by tp_smapi
 EAPI=6
 HOMEPAGE=https://github.com/teleshoes/tpacpi-bat
+INHERIT=systemd git-r3
 LICENSE=GPL-3
 PROPERTIES=live
 RDEPEND=sys-power/acpi_call dev-lang/perl
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	git-r3	3e7ec3d6619213460c85e2aa48398441
 _md5_=a73e100edef8c0b95c13516384577120

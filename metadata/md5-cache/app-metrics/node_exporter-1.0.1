@@ -4,11 +4,12 @@ DEPEND=>=dev-util/promu-0.3.0 acct-group/node_exporter acct-user/node_exporter
 DESCRIPTION=Prometheus exporter for machine metrics
 EAPI=7
 HOMEPAGE=https://github.com/prometheus/node_exporter
+INHERIT=go-module systemd
 KEYWORDS=~amd64
 LICENSE=Apache-2.0 BSD BSD-2 MIT
 RDEPEND=acct-group/node_exporter acct-user/node_exporter
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/prometheus/node_exporter/archive/v1.0.1.tar.gz -> node_exporter-1.0.1.tar.gz
-_eclasses_=go-module	92660621959e7fab813173772987588b	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=go-module	92660621959e7fab813173772987588b	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6
 _md5_=3435da7faa1539774badf38d5d22225f

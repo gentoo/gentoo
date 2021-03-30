@@ -3,6 +3,7 @@ DEPEND=virtual/perl-ExtUtils-MakeMaker virtual/pkgconfig dev-util/desktop-file-u
 DESCRIPTION=The X2Go server
 EAPI=6
 HOMEPAGE=http://www.x2go.org
+INHERIT=multilib systemd toolchain-funcs user xdg
 IUSE=+fuse postgres +sqlite
 KEYWORDS=amd64 x86
 LICENSE=GPL-2
@@ -10,5 +11,5 @@ RDEPEND=dev-lang/perl:= dev-perl/Capture-Tiny dev-perl/Config-Simple dev-perl/Fi
 REQUIRED_USE=|| ( postgres sqlite )
 SLOT=0
 SRC_URI=http://code.x2go.org/releases/source/x2goserver/x2goserver-4.1.0.2.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
 _md5_=76e965dfd154aca74c7f4d41ed32b60b

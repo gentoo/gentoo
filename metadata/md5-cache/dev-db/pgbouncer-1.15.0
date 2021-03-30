@@ -4,6 +4,7 @@ DEPEND=>=dev-libs/libevent-2.0:= >=sys-libs/glibc-2.10 acct-user/pgbouncer c-are
 DESCRIPTION=Lightweight connection pooler for PostgreSQL
 EAPI=7
 HOMEPAGE=https://www.pgbouncer.org/
+INHERIT=systemd
 IUSE=+c-ares debug doc pam ssl systemd -udns
 KEYWORDS=amd64 x86
 LICENSE=BSD
@@ -12,5 +13,5 @@ REQUIRED_USE=?? ( c-ares udns )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://www.pgbouncer.org/downloads/files/1.15.0/pgbouncer-1.15.0.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6
 _md5_=ac1ea4530ccf802746299280130b37d8

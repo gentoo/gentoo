@@ -4,11 +4,12 @@ DEPEND=app-text/docbook-xsl-stylesheets dev-libs/libxslt dev-perl/Config-General
 DESCRIPTION=Linux SCSI target framework (tgt)
 EAPI=7
 HOMEPAGE=http://stgt.sourceforge.net
+INHERIT=toolchain-funcs systemd
 IUSE=fcoe fcp ibmvio infiniband rbd
 KEYWORDS=~amd64 ~arm64 ~ppc ~x86
 LICENSE=GPL-2
 RDEPEND=app-text/docbook-xsl-stylesheets dev-libs/libxslt dev-perl/Config-General rbd? ( sys-cluster/ceph ) infiniband? ( sys-fabric/libibverbs:= sys-fabric/librdmacm:= ) dev-libs/libaio sys-apps/sg3_utils
 SLOT=0
 SRC_URI=https://github.com/fujita/tgt/archive/v1.0.80.tar.gz -> tgt-1.0.80.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6
 _md5_=bde141e4d734964628389c4e200ae7a7

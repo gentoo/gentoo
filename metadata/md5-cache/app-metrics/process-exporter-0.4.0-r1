@@ -3,10 +3,11 @@ DEPEND=>=dev-lang/go-1.10 virtual/pkgconfig
 DESCRIPTION=Process exporter for prometheus
 EAPI=6
 HOMEPAGE=https://github.com/ncabatoff/process-exporter
+INHERIT=golang-build golang-vcs-snapshot systemd
 KEYWORDS=~amd64
 LICENSE=MIT
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/ncabatoff/process-exporter/archive/v0.4.0.tar.gz -> process-exporter-0.4.0.tar.gz
-_eclasses_=golang-base	904cd4c642d6923795b9bd99b6fe0e74	golang-build	91472d4e18894e738c69b415e236a664	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=golang-base	904cd4c642d6923795b9bd99b6fe0e74	golang-build	91472d4e18894e738c69b415e236a664	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6
 _md5_=bdaf99ce5d6546926132898136af7258

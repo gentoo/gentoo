@@ -11,5 +11,5 @@ LICENSE=GPL-3
 RDEPEND=dev-libs/boost:= dev-libs/dbus-glib dev-libs/glib:2 sys-apps/dbus virtual/libudev:= virtual/libusb:1 x11-libs/libX11
 SLOT=0
 SRC_URI=https://github.com/chewi/xboxdrv/archive/6e5e8a57628095d8d0c8bbb38187afb0f3a42112.tar.gz -> xboxdrv-0.8.8_p20190118.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-any-r1	690a993463cd2ebcde40ccdf1bd9ba98	multiprocessing	cac3169468f893670dac3e7cb940e045	scons-utils	0c3d02e3e56d99a17ac273db118e8a24	systemd	74b223e42834adf09a2d21fe5fe13741	udev	452708c3f55cf6e918b045adb949a9e6
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-any-r1	690a993463cd2ebcde40ccdf1bd9ba98	multiprocessing	cac3169468f893670dac3e7cb940e045	scons-utils	0c3d02e3e56d99a17ac273db118e8a24	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	udev	452708c3f55cf6e918b045adb949a9e6
 _md5_=4d4296ed15b5c28cf4a14134911ced29

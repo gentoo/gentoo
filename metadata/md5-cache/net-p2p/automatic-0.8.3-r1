@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=acct-user/automatic dev-libs/libxml2:2 dev-libs/libpcre:3 net-misc/curl
 SLOT=0
 SRC_URI=https://github.com/1100101/Automatic/archive/v0.8.3.tar.gz -> automatic-0.8.3.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	74b223e42834adf09a2d21fe5fe13741
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6
 _md5_=2976ef7a624c252d2a31c3bf7c62c2f7

@@ -3,10 +3,11 @@ DEPEND=>=sys-apps/systemd-207 virtual/pkgconfig virtual/pkgconfig
 DESCRIPTION=systemd integration files for Gentoo
 EAPI=6
 HOMEPAGE=https://wiki.gentoo.org/wiki/Project:Systemd
+INHERIT=systemd
 KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86
 LICENSE=BSD
 RDEPEND=>=sys-apps/systemd-207 !sys-fs/eudev !sys-fs/udev
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~floppym/dist/gentoo-systemd-integration-7.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6
 _md5_=154ffb9a4a56d126855d25269af725a7

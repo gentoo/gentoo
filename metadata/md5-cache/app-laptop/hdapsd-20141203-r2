@@ -11,5 +11,5 @@ LICENSE=GPL-2
 RDEPEND=libconfig? ( dev-libs/libconfig:= )
 SLOT=0
 SRC_URI=https://github.com/evgeni/hdapsd/releases/download/20141203/hdapsd-20141203.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	74b223e42834adf09a2d21fe5fe13741
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6
 _md5_=c736c6c4c452338c45445a2295611653

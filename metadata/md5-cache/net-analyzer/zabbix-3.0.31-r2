@@ -4,6 +4,7 @@ DEPEND=curl? ( net-misc/curl ) java? ( >=virtual/jdk-1.8:* ) ldap? ( =dev-libs/c
 DESCRIPTION=ZABBIX is software for monitoring of your applications, network and servers
 EAPI=7
 HOMEPAGE=https://www.zabbix.com/
+INHERIT=webapp java-pkg-opt-2 systemd toolchain-funcs tmpfiles user-info
 IUSE=+agent java curl frontend ipv6 xmpp ldap libxml2 mysql openipmi oracle +postgres proxy server ssh ssl snmp sqlite odbc static elibc_FreeBSD java
 KEYWORDS=amd64 x86
 LICENSE=GPL-2
@@ -11,5 +12,5 @@ RDEPEND=curl? ( net-misc/curl ) java? ( >=virtual/jdk-1.8:* ) ldap? ( =dev-libs/
 REQUIRED_USE=|| ( agent frontend proxy server ) proxy? ( ^^ ( mysql oracle postgres sqlite odbc ) ) server? ( ^^ ( mysql oracle postgres odbc ) ) static? ( !oracle !snmp )
 SLOT=0/3.0
 SRC_URI=https://cdn.zabbix.com/stable/3.0.31/zabbix-3.0.31.tar.gz
-_eclasses_=java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	java-utils-2	378e4cda228ea0231a0ac283cb2ad25c	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	tmpfiles	dc8e4917d734a019caa04ad3b8db560b	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	webapp	1d03df021d958f89f4cc78e289d0b116
+_eclasses_=webapp	1d03df021d958f89f4cc78e289d0b116	java-utils-2	378e4cda228ea0231a0ac283cb2ad25c	java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	tmpfiles	dc8e4917d734a019caa04ad3b8db560b	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
 _md5_=481a1fd3aa9685fdcdc23a2f3b856031

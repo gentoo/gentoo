@@ -3,6 +3,7 @@ DEFINED_PHASES=compile configure install postinst prepare pretend setup
 DESCRIPTION=A high-level tool for configuring Netfilter
 EAPI=7
 HOMEPAGE=https://shorewall.org/
+INHERIT=linux-info prefix systemd
 IUSE=doc +init +ipv4 ipv6 lite4 lite6 selinux kernel_linux
 KEYWORDS=~alpha amd64 ~hppa ppc ppc64 sparc x86
 LICENSE=GPL-2
@@ -10,5 +11,5 @@ RDEPEND=>=net-firewall/iptables-1.4.20 >=sys-apps/iproute2-3.8.0[-minimal] >=sys
 REQUIRED_USE=ipv6? ( ipv4 ) || ( ipv4 lite4 lite6 )
 SLOT=0
 SRC_URI=https://shorewall.org/pub/shorewall/5.2/shorewall-5.2.8/shorewall-core-5.2.8.tar.bz2 ipv4? ( https://shorewall.org/pub/shorewall/5.2/shorewall-5.2.8/shorewall-5.2.8.tar.bz2 ) ipv6? ( https://shorewall.org/pub/shorewall/5.2/shorewall-5.2.8/shorewall6-5.2.8.tar.bz2 ) lite4? ( https://shorewall.org/pub/shorewall/5.2/shorewall-5.2.8/shorewall-lite-5.2.8.tar.bz2 ) lite6? ( https://shorewall.org/pub/shorewall/5.2/shorewall-5.2.8/shorewall6-lite-5.2.8.tar.bz2 ) init? ( https://shorewall.org/pub/shorewall/5.2/shorewall-5.2.8/shorewall-init-5.2.8.tar.bz2 ) doc? ( https://shorewall.org/pub/shorewall/5.2/shorewall-5.2.8/shorewall-docs-html-5.2.8.tar.bz2 )
-_eclasses_=linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6
 _md5_=1e25f32ed82400cd5f5be80d9e26cddf

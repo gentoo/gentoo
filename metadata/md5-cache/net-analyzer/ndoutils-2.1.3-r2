@@ -3,10 +3,11 @@ DEPEND=dev-db/mysql-connector-c dev-perl/DBD-mysql dev-perl/DBI >=net-analyzer/n
 DESCRIPTION=Nagios addon to store Nagios data in a MySQL database
 EAPI=6
 HOMEPAGE=https://www.nagios.org/
+INHERIT=systemd
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-2
 RDEPEND=dev-db/mysql-connector-c dev-perl/DBD-mysql dev-perl/DBI >=net-analyzer/nagios-core-4.4.5 virtual/mysql
 SLOT=0
 SRC_URI=https://github.com/NagiosEnterprises/ndoutils/archive/ndoutils-2.1.3.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6
 _md5_=2cda80fdaec646972cdf96e44903c20f

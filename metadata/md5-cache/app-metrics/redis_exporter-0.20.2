@@ -3,10 +3,11 @@ DEPEND=>=dev-lang/go-1.10 virtual/pkgconfig
 DESCRIPTION=Prometheus Exporter for Redis Metrics. Supports Redis 2.x, 3.x and 4.x
 EAPI=6
 HOMEPAGE=https://github.com/oliver006/redis_exporter
+INHERIT=user golang-build golang-vcs-snapshot systemd
 KEYWORDS=~amd64
 LICENSE=MIT Apache-2.0 BSD
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/oliver006/redis_exporter/archive/v0.20.2.tar.gz -> redis_exporter-0.20.2.tar.gz
-_eclasses_=golang-base	904cd4c642d6923795b9bd99b6fe0e74	golang-build	91472d4e18894e738c69b415e236a664	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	74b223e42834adf09a2d21fe5fe13741	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+_eclasses_=user-info	a2abd4e2f4c3b9b06d64bf1329359a02	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	golang-base	904cd4c642d6923795b9bd99b6fe0e74	golang-build	91472d4e18894e738c69b415e236a664	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6
 _md5_=f1a722daf763a138991c70d85ed14e82
