@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,21 +8,29 @@ inherit autotools pam
 DESCRIPTION="PAM module providing ability to authenticate via a bluetooth compatible device"
 HOMEPAGE="http://pam.0xdef.net/"
 SRC_URI="http://pam.0xdef.net/source/${P}.tar.bz2"
+S="${WORKDIR}"/${PN}
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="sys-libs/pam
-	net-wireless/bluez"
+DEPEND="
+	net-wireless/bluez
+	sys-libs/pam
+"
 RDEPEND="${DEPEND}"
 
-S=${WORKDIR}/${PN}
+PATCHES=(
+	"${FILESDIR}"/${P}-char-locales.patch #412941
+	"${FILESDIR}"/${P}-bad-log.patch
+)
 
 src_prepare() {
 	default
-	eapply "${FILESDIR}"/${P}-char-locales.patch #412941
-	eapply "${FILESDIR}"/${P}-bad-log.patch
+
+	# bug #778407
+	sed -i "s|-rpath='/lib/security'|-rpath /lib/security|" src/Makefile.am || die
+
 	mv configure.{in,ac} || die
 	eautoreconf
 }

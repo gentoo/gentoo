@@ -1,5 +1,5 @@
---- guichan-0.8.2/configure.in
-+++ guichan-0.8.2/configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -38,7 +38,7 @@
  AC_SUBST(LT_AGE)
  
