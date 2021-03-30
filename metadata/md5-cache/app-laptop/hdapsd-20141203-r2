@@ -1,0 +1,15 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=configure install postinst setup
+DEPEND=libconfig? ( dev-libs/libconfig:= )
+DESCRIPTION=IBM ThinkPad Hard Drive Active Protection System (HDAPS) daemon
+EAPI=7
+HOMEPAGE=https://github.com/evgeni/hdapsd/
+INHERIT=linux-info readme.gentoo-r1 systemd
+IUSE=libconfig kernel_linux
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=libconfig? ( dev-libs/libconfig:= )
+SLOT=0
+SRC_URI=https://github.com/evgeni/hdapsd/releases/download/20141203/hdapsd-20141203.tar.gz
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	74b223e42834adf09a2d21fe5fe13741
+_md5_=de796c57affc4a4b54c93b1f4979cc80

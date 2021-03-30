@@ -2398,7 +2398,7 @@ app-i18n/zinnia 0.06-r3: Zinnia - Online hand recognition system with machine le
 app-i18n/zinnia-tomoe 0.6.0_p20080911: Handwriting model files trained with Tomoe data
 app-laptop/dispad 0.3.1-r1: Daemon to disable trackpads while typing
 app-laptop/hdaps-gl 0.0.7: OpenGL visualization for HDAPS data
-app-laptop/hdapsd 20141203-r1: IBM ThinkPad Hard Drive Active Protection System (HDAPS) daemon
+app-laptop/hdapsd 20141203-r1 20141203-r2: IBM ThinkPad Hard Drive Active Protection System (HDAPS) daemon
 app-laptop/i8kutils 1.42 1.43: Dell Inspiron and Latitude utilities
 app-laptop/ibam 0.5.2-r4: Intelligent Battery Monitor
 app-laptop/laptop-mode-tools 1.72.2-r1 1.74: Linux kernel laptop_mode user-space utilities
