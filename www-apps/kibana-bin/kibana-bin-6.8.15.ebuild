@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,36 +22,29 @@ IUSE="x-pack"
 RDEPEND="
 	acct-group/kibana
 	acct-user/kibana
-	>=net-libs/nodejs-10.21.0
+	>=net-libs/nodejs-10.15.2
 	<net-libs/nodejs-14
 	x-pack? (
 		dev-libs/expat
 		dev-libs/nss
 	)"
 
-# Do not complain about CFLAGS etc since we don't use them
-QA_FLAGS_IGNORED='.*'
-
 S="${WORKDIR}/${MY_P}-linux-x86_64"
 
 src_prepare() {
 	default
 
-	# remove unused directory
-	rm -r data || die
+	# remove empty unused directory
+	rmdir data || die
 
 	# remove bundled nodejs
 	rm -r node || die
-	sed -i 's@\(^NODE="\).*@\1/usr/bin/node"@g' \
-		bin/kibana || die
 
 	# move optimize/plugins to /var/lib/kibana
 	rm -r optimize plugins || die
 
 	# handle node.js version with RDEPEND
-	sed -i /node_version_validator/d \
-		src/setup_node_env/index.js \
-		src/setup_node_env/prebuilt_dev_only_entry.js || die
+	sed -i /node_version_validator/d src/setup_node_env/index.js || die
 }
 
 src_install() {

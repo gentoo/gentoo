@@ -1,18 +1,16 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit systemd tmpfiles
 
-DESCRIPTION="Open Source, Distributed, RESTful, Search Engine"
-HOMEPAGE="https://www.elastic.co/products/elasticsearch"
-SRC_URI="x-pack? ( https://artifacts.elastic.co/downloads/${PN}/${P}-no-jdk-linux-x86_64.tar.gz )
-	!x-pack? ( https://artifacts.elastic.co/downloads/${PN}/${PN}-oss-${PV}-no-jdk-linux-x86_64.tar.gz )"
-LICENSE="Apache-2.0 BSD-2 LGPL-3 MIT public-domain x-pack? ( Elastic )"
+DESCRIPTION="Free and Open, Distributed, RESTful Search Engine"
+HOMEPAGE="https://www.elastic.co/elasticsearch/"
+SRC_URI="https://artifacts.elastic.co/downloads/${PN}/${P}-no-jdk-linux-x86_64.tar.gz"
+LICENSE="Apache-2.0 BSD-2 Elastic-2.0 LGPL-3 MIT public-domain"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="x-pack"
 
 RDEPEND="acct-group/elasticsearch
 	acct-user/elasticsearch
@@ -45,10 +43,7 @@ src_install() {
 	doexe "${FILESDIR}/elasticsearch-systemd-pre-exec"
 
 	fperms -R +x /usr/share/${PN}/bin
-
-	if use x-pack; then
-		fperms -R +x /usr/share/${PN}/modules/x-pack-ml/platform/linux-x86_64/bin
-	fi
+	fperms -R +x /usr/share/${PN}/modules/x-pack-ml/platform/linux-x86_64/bin
 
 	keepdir /var/{lib,log}/${PN}
 	fowners ${PN}:${PN} /var/{lib,log}/${PN}
@@ -58,8 +53,8 @@ src_install() {
 	insinto /etc/sysctl.d
 	newins "${FILESDIR}/${PN}.sysctl.d" ${PN}.conf
 
-	newconfd "${FILESDIR}/${PN}.conf.3" ${PN}
-	newinitd "${FILESDIR}/${PN}.init.7" ${PN}
+	newconfd "${FILESDIR}/${PN}.conf.4" ${PN}
+	newinitd "${FILESDIR}/${PN}.init.8" ${PN}
 
 	systemd_install_serviced "${FILESDIR}/${PN}.service.conf"
 	systemd_newunit "${FILESDIR}"/${PN}.service.3 ${PN}.service

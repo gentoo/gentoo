@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,8 +10,8 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Tool for managing events and logs"
 HOMEPAGE="https://www.elastic.co/products/logstash"
-SRC_URI="x-pack? ( https://artifacts.elastic.co/downloads/${MY_PN}/${MY_P}.tar.gz )
-	!x-pack? ( https://artifacts.elastic.co/downloads/${MY_PN}/${MY_PN}-oss-${PV}.tar.gz )"
+SRC_URI="x-pack? ( https://artifacts.elastic.co/downloads/${MY_PN}/${MY_P}-linux-x86_64.tar.gz )
+	!x-pack? ( https://artifacts.elastic.co/downloads/${MY_PN}/${MY_PN}-oss-${PV}-linux-x86_64.tar.gz )"
 
 # source: LICENSE.txt and NOTICE.txt
 LICENSE="Apache-2.0 MIT x-pack? ( Elastic )"
@@ -24,9 +24,24 @@ QA_PREBUILT="opt/logstash/vendor/jruby/lib/jni/*/libjffi*.so"
 
 RDEPEND="acct-group/logstash
 	acct-user/logstash
-	virtual/jre:1.8"
+	virtual/jre"
 
 S="${WORKDIR}/${MY_P}"
+
+src_prepare() {
+	default
+
+	local d
+	for d in aarch64-Linux arm-Linux Darwin i386-Linux i386-SunOS \
+		i386-Windows mips64el-Linux ppc64-AIX ppc64le-Linux ppc64-Linux \
+		ppc-AIX sparcv9-Linux sparcv9-SunOS x86_64-DragonFlyBSD \
+		x86_64-FreeBSD x86_64-OpenBSD x86_64-SunOS x86_64-Windows; do
+			rm -r vendor/jruby/lib/jni/$d || die
+	done
+
+	# remove bundled java
+	rm -r jdk || die
+}
 
 src_install() {
 	keepdir /etc/"${MY_PN}"/{conf.d,patterns,plugins}
