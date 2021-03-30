@@ -7496,7 +7496,6 @@ sci-mathematics/why3-for-spark:profiling - Enable profiling
 sci-mathematics/why3-for-spark:zarith - Use dev-ml/zarith
 sci-mathematics/why3-for-spark:zip - Enable compression of session files
 sci-mathematics/yacas:jupyter - Add support for jupyter notebook
-sci-mathematics/yafu:sieve - Use msieve for the sieving steps of NFS
 sci-mathematics/z3:isabelle - Add integration support for the Isabelle/HOL theorem prover.
 sci-misc/boinc:cuda - Use nvidia cuda toolkit for speeding up computations. NOTE: works only for subset of nvidia graphic cards so make sure your card is supported before opening a bug about it.
 sci-misc/h5utils:hdf - Build hdf to hdf5 (and vice-versa) converter

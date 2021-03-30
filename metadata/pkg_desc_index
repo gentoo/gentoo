@@ -711,7 +711,6 @@ app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 3.6: A command line interface to KeePass database files
 app-admin/kube-bench 0.2.3-r1: Kubernetes Bench for Security runs the CIS Kubernetes Benchmark
 app-admin/kubectx 0.9.1: Fast way to switch between clusters and namespaces in kubectl
-app-admin/lastpass-binary-component 4.67.1: Binary component required by the LastPass Password Manager browser extension
 app-admin/lastpass-cli 1.3.3: Interfaces with LastPass.com from the command line.
 app-admin/lib_users 0.14-r1: Check for mapped libs and open files that are marked as deleted
 app-admin/lnav 0.8.5 0.9.0: A curses-based tool for viewing and analyzing log files
@@ -5205,7 +5204,6 @@ dev-java/yanfs 1.0: Yet Another NFS - a Java NFS library
 dev-java/zeus-jscl 1.64-r1: Zeus Java Swing Components Library
 dev-java/zstd-jni 1.4.9.1: JNI bindings for Zstd native library
 dev-lang/R 3.4.1 3.6.3-r1 4.0.2 4.0.4: Language and environment for statistical computing and graphics
-dev-lang/ats 0.2.9: ATS Programming Language
 dev-lang/bas 2.4: An interpreter for the classic dialect of the programming language BASIC
 dev-lang/bashforth 0.58a: String-threaded Forth interpreter in Bash
 dev-lang/bff 1.0.5: A brainfuck interpreter
@@ -10598,7 +10596,6 @@ dev-scheme/gauche-kakasi 0.1: Kakasi binding for Gauche
 dev-scheme/gauche-mecab 1.0.2: MeCab binding for Gauche
 dev-scheme/gauche-qdbm 0.2-r1: QDBM binding for Gauche
 dev-scheme/goosh 1.3-r1: Small process-control library for Guile
-dev-scheme/greg 2.0.0-r1: Testing-Framework for guile
 dev-scheme/guile 1.8.8-r3 2.0.14-r3 2.2.6 2.2.7 3.0.4: GNU Ubiquitous Intelligent Language for Extensions
 dev-scheme/guile-gcrypt 0.3.0: Guile bindings of libgcrypt
 dev-scheme/guile-git 0.4.0: Guile bindings of git
@@ -13110,7 +13107,6 @@ media-gfx/tuxpaint 0.9.24: Drawing program designed for young children
 media-gfx/tuxpaint-stamps 20090628-r1: Set of 'Rubber Stamp' images which can be used within Tux Paint
 media-gfx/ufraw 0.22-r4: RAW Image format viewer and GIMP plugin
 media-gfx/valentina 0.6.1-r1 9999: Cloth patternmaking software
-media-gfx/videorbits 2.205: a collection of programs for creating high dynamic range images
 media-gfx/viewer 0.8.0-r1: A stereo pair image viewer (supports ppm's only)
 media-gfx/viewnior 1.7-r2: Fast and simple image viewer
 media-gfx/w3mimgfb 0.9.1: Image viewer for w3m under frame buffer environment
@@ -16552,7 +16548,6 @@ sci-mathematics/genius 1.0.25: Genius Mathematics Tool and the GEL Language
 sci-mathematics/geogebra-bin 5.0.604.0-r2: Mathematics software for geometry
 sci-mathematics/geomview 1.9.5-r1: Interactive Geometry Viewer
 sci-mathematics/gfan 0.6.2 0.6.2-r1: Compute Groebner fans and tropical varieties
-sci-mathematics/ggnfs 0.77.1-r2: A suite of algorithms to help factoring large integers
 sci-mathematics/gimps 30.3.6 30.5.2: The Great Internet Mersenne Prime Search
 sci-mathematics/ginac 1.7.11: C++ library and tools for symbolic calculations
 sci-mathematics/glpk 4.65 5.0: GNU Linear Programming Kit
@@ -16602,7 +16597,7 @@ sci-mathematics/unuran 1.8.1: Universal Non-Uniform Random number generator
 sci-mathematics/why3-for-spark 2018 2019-r2 2020: Platform for deductive program verification
 sci-mathematics/wxmaxima 18.11.4 20.12.2 21.01.0: Graphical frontend to Maxima, using the wxWidgets toolkit
 sci-mathematics/yacas 1.7.0-r1: General purpose computer algebra system
-sci-mathematics/yafu 1.34.3 9999: Yet another factoring utility
+sci-mathematics/yafu 1.34.3-r1 9999: Yet another factoring utility
 sci-mathematics/z3 4.8.10: An efficient theorem prover
 sci-misc/ViSP-images 3.3.0: ViSP images data set
 sci-misc/apertium 3.2.0: Shallow-transfer machine Translation engine and toolbox
@@ -17108,7 +17103,6 @@ sys-apps/mtree 1.0.4: Directory hierarchy mapping tool from FreeBSD
 sys-apps/nawk 20121220-r3 20180827: Brian Kernighan's pattern scanning and processing language
 sys-apps/net-tools 1.60_p20180626073013 2.10 9999: Standard Linux networking tools
 sys-apps/netkit-base 0.17-r9: Old-style inetd
-sys-apps/netloc 0.5: Portable Network Locality (netloc)
 sys-apps/netplug 1.2.9.2-r2 1.2.9.2-r3: Brings up/down ethernet ports automatically with cable detection
 sys-apps/newrelic-sysmond 1.1.2.124-r1: NewRelic System Monitor
 sys-apps/noexec 1.1.0-r1: a package for preventing processes from using exec system calls
@@ -17226,7 +17220,6 @@ sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System
 sys-apps/yarn 1.22.4 1.22.5 1.22.10: Fast, reliable, and secure node dependency management
 sys-apps/zorroutils 0.04 0.05: Zorro bus utility for Amigas running 2.1 and later kernels
 sys-auth/AusweisApp2 1.22.0 1.22.1 9999: Official authentication app for German ID cards and residence permits
-sys-auth/authenticator 0.2.4-r1 9999: Two-factor authentication code generator for GNOME
 sys-auth/docker_auth 1.3.1 1.4.0 1.5.0: Docker Registry 2 authentication server
 sys-auth/elogind 246.9.2 246.10: The systemd project's logind, extracted to a standalone package
 sys-auth/fprintd 0.8.1-r3 1.90.8 1.90.9: D-Bus service to access fingerprint readers
@@ -17704,7 +17697,7 @@ sys-kernel/dracut 050-r2 051-r1 053 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 4.2.1-r1 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.105 5.4.106 5.4.108 5.10.24 5.10.26 5.11.5 5.11.6 5.11.7 5.11.9 5.11.10: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.105 5.4.105-r2 5.4.106 5.4.106-r1 5.4.108 5.4.108-r1 5.10.24 5.10.24-r1 5.10.26 5.11.5 5.11.5-r1 5.11.6 5.11.6-r1 5.11.7 5.11.7-r1 5.11.9 5.11.9-r1 5.11.10: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel-bin 5.4.105 5.4.105-r2 5.4.106 5.4.106-r1 5.4.108 5.4.108-r1 5.10.24 5.10.24-r1 5.10.26 5.10.26-r1 5.11.5 5.11.5-r1 5.11.6 5.11.6-r1 5.11.7 5.11.7-r1 5.11.9 5.11.9-r1 5.11.10 5.11.10-r1: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.257 4.4.261 4.4.262 4.4.263 4.9.257 4.9.261 4.9.262 4.9.263 4.14.221 4.14.225 4.14.226 4.14.227 4.19.175 4.19.181 4.19.182 4.19.183 5.4.97 5.4.105 5.4.106 5.4.107 5.4.108 5.10.24 5.10.25 5.10.26 5.11.6 5.11.7 5.11.8-r1 5.11.9 5.11.10: Full sources including the Gentoo patchset for the 5.11 kernel tree
 sys-kernel/git-sources 5.12_rc2 5.12_rc3 5.12_rc4 5.12_rc5: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2 3: Gentoo fork of installkernel script from debianutils
