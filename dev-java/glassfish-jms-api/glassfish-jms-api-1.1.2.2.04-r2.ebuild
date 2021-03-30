@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,8 +20,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE=""
 
-RDEPEND=">=virtual/jre-1.4"
-DEPEND=">=virtual/jdk-1.4"
+RDEPEND=">=virtual/jre-1.8:*"
+DEPEND=">=virtual/jdk-1.8:*"
 BDEPEND="app-arch/unzip"
 
 S=${WORKDIR}/${MY_PN}
