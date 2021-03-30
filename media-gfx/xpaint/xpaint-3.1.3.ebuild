@@ -41,7 +41,6 @@ BDEPEND="
 	sys-devel/bison
 	sys-devel/flex
 	virtual/pkgconfig
-	x11-misc/imake
 "
 
 PATCHES=(
@@ -56,12 +55,6 @@ src_prepare() {
 }
 
 src_configure() {
-	# regenerate resources in app-defaults
-	# Local.xawdefs is missing and imake was complaining about it, so use it to redefine SHAREDIR
-	echo "SHAREDIR = \"${EPREFIX}\"/usr/share/xpaint" > Local.xawdefs || die
-	xmkmf || die
-	mv Makefile Makefile.resources || die
-
 	econf \
 		$(use_enable tiff) \
 		--disable-libdvipgm \
@@ -77,6 +70,9 @@ src_compile() {
 	emake substads
 	emake xpaint.1
 
+	# regenerate resources in app-defaults
+	rm XPaint.ad || die
+
 	default
 	emake \
 		WITH_PGF="$(usex pgf "yes" "no")" \
@@ -84,9 +80,6 @@ src_compile() {
 		CXX="$(tc-getCXX)" \
 		includedir="${EPREFIX}"/usr/include \
 		-C util
-
-	# regenerate resources in app-defaults
-	(rm XPaint.ad && emake -f Makefile.resources XPaint.ad) || die
 }
 
 src_install() {
