@@ -1,5 +1,5 @@
---- a/sendEmail	2013-03-25 08:59:12.000000000 +0000
-+++ b/sendEmail	2013-03-25 08:59:22.000000000 +0000
+--- a/sendEmail
++++ b/sendEmail
 @@ -1903,7 +1903,7 @@
      if ($conf{'tls_server'} == 1 and $conf{'tls_client'} == 1 and $opt{'tls'} =~ /^(yes|auto)$/) {
          printmsg("DEBUG => Starting TLS", 2);
