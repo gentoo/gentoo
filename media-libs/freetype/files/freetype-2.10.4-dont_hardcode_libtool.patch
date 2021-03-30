@@ -1,0 +1,42 @@
+From 597566b2301deeff4e9832aebdab1bf659a2accf Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Mon, 22 Mar 2021 16:15:37 -0700
+Subject: [PATCH] * Makefile, mac/Makefile (LINK_CMD): Don't hard-code
+ `libtool`.
+
+---
+ Makefile     |    3 +--
+ mac/Makefile |    3 +--
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 810142f..949402f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -165,8 +165,7 @@ else
+ 
+   ifeq ($(PLATFORM),unix)
+     override CC = $(CCraw)
+-    LINK_CMD    = $(subst /,$(SEP),$(OBJ_BUILD)/libtool) \
+-                  --mode=link $(CC) \
++    LINK_CMD    = $(LIBTOOL) --mode=link $(CC) \
+                   $(subst /,$(COMPILER_SEP),$(LDFLAGS))
+     LINK_LIBS   = $(subst /,$(COMPILER_SEP),$(FTLIB) $(EFENCE)) $(LIB_CLOCK_GETTIME)
+   else
+diff --git a/mac/Makefile b/mac/Makefile
+index 73ae99c..52038a4 100644
+--- a/mac/Makefile
++++ b/mac/Makefile
+@@ -68,8 +68,7 @@ else
+   LINK_ITEMS = $T$(subst /,$(COMPILER_SEP),$@ $<)
+ 
+   CC        = $(CCraw)
+-  LINK_CMD  = $(subst /,$(SEP),$(OBJ_BUILD)/libtool) \
+-		--mode=link $(CC) \
++  LINK_CMD  = $(LIBTOOL) --mode=link $(CC) \
+ 		$(subst /,$(COMPILER_SEP),$(LDFLAGS))
+   ifeq ($(findstring CoreServices,$(LDFLAGS)),)
+     LINK_LIBS = $(subst /,$(COMPILER_SEP),$(FTLIB) $(EFENCE)) $(MATH) \
+-- 
+GitLab
+
