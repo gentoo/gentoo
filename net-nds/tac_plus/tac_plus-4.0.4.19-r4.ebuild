@@ -17,6 +17,7 @@ KEYWORDS="amd64 ppc x86"
 IUSE="debug finger maxsess tcpd skey static-libs"
 
 DEPEND="
+	net-libs/libnsl
 	sys-libs/pam
 	skey? ( >=sys-auth/skey-1.1.5-r1 )
 	tcpd? ( sys-apps/tcp-wrappers )
