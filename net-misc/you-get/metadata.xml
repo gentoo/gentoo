@@ -5,6 +5,7 @@
     <email>dlan@gentoo.org</email>
     <name>Yixun Lan</name>
   </maintainer>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="github">soimort/you-get</remote-id>
   </upstream>
