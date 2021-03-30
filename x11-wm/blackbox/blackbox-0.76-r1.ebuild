@@ -51,5 +51,5 @@ src_install() {
 	dodoc AUTHORS ChangeLog* COMPLIANCE README* TODO
 
 	find "${D}" -name '*.la' -delete || die
-	use static-libs || rm /usr/$(get_libdir)/libbt.a || die
+	use static-libs || rm "${D}"/usr/$(get_libdir)/libbt.a || die
 }
