@@ -17173,7 +17173,7 @@ sys-apps/semodule-utils 3.1 9999: SELinux policy module utilities
 sys-apps/sensei-raw-ctl 0.0_pre20180729: SteelSeries Sensei Raw configuration tool
 sys-apps/servicelog 1.1.15: Provides utilities for logging service-related events
 sys-apps/setserial 2.17-r5: Configure your serial ports with it
-sys-apps/sg3_utils 1.42 1.44 1.45-r1: Apps for querying the sg SCSI interface
+sys-apps/sg3_utils 1.44 1.45-r1 1.46: Apps for querying the sg SCSI interface
 sys-apps/shadow 4.8-r5 4.8.1-r3: Utilities to deal with user accounts
 sys-apps/smartmontools 7.1-r1 7.2 9999: Tools to monitor storage systems to provide advanced warning of disk degradation
 sys-apps/smc-sum 2.5.1.20201112: Updates the BIOS and IPMI firmware and system settings on Supermicro mainboards
