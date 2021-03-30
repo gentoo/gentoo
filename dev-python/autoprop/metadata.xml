@@ -1,26 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <maintainer type="project">
-        <email>3dprint@gentoo.org</email>
-        <name>Gentoo 3D Printer Project</name>
-    </maintainer>
-    <stabilize-allarches/>
-    <longdescription>
-        Properties are a feature in python that allow accessor functions (i.e. getters and setters) to masquerade as
-        regular attributes. This makes it possible to provide transparent APIs for classes that need to cache results,
-        lazily load data, maintain invariants, or react in any other way to attribute access.
+	<maintainer type="project">
+		<email>3dprint@gentoo.org</email>
+		<name>Gentoo 3D Printer Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<longdescription>
+		Properties are a feature in python that allow accessor functions (i.e. getters and setters) to masquerade as
+		regular attributes. This makes it possible to provide transparent APIs for classes that need to cache results,
+		lazily load data, maintain invariants, or react in any other way to attribute access.
 
-        Unfortunately, making a property requires an annoying amount of boilerplate code. There are a few ways to
-        do it, but the most common and most succinct requires you to decorate two functions
-        (with two different decorators) and to type the name of the attribute three times.
+		Unfortunately, making a property requires an annoying amount of boilerplate code. There are a few ways to
+		do it, but the most common and most succinct requires you to decorate two functions
+		(with two different decorators) and to type the name of the attribute three times.
 
-        The autoprop module simplifies this process by searching your class for accessor methods and adding properties
-        corresponding to any such methods it finds.
-    </longdescription>
-    <upstream>
-        <bugs-to>https://github.com/kalekundert/autoprop/issues</bugs-to>
-        <remote-id type="github">kalekundert/autoprop</remote-id>
-        <remote-id type="pypi">autoprop</remote-id>
-    </upstream>
+		The autoprop module simplifies this process by searching your class for accessor methods and adding properties
+		corresponding to any such methods it finds.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/kalekundert/autoprop/issues</bugs-to>
+		<remote-id type="github">kalekundert/autoprop</remote-id>
+		<remote-id type="pypi">autoprop</remote-id>
+	</upstream>
 </pkgmetadata>
