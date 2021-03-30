@@ -1,20 +1,23 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 inherit autotools pam python-single-r1 systemd
 
 DESCRIPTION="The FRRouting Protocol Suite"
 HOMEPAGE="https://frrouting.org/"
 SRC_URI="https://github.com/FRRouting/frr/archive/${P}.tar.gz"
+# FRR tarballs have weird format.
+S="${WORKDIR}/frr-${P}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-
 IUSE="doc fpm grpc ipv6 kernel_linux nhrp ospfapi pam rpki snmp systemd test"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
 	${PYTHON_DEPS}
@@ -27,36 +30,24 @@ COMMON_DEPEND="
 	nhrp? ( net-dns/c-ares:0= )
 	pam? ( sys-libs/pam )
 	rpki? ( >=net-libs/rtrlib-0.6.3[ssh] )
-	snmp? ( net-analyzer/net-snmp )
-"
+	snmp? ( net-analyzer/net-snmp )"
 
 BDEPEND="
-	doc? ( dev-python/sphinx )
+	dev-util/clippy
 	sys-devel/flex
 	virtual/yacc
-"
+	doc? ( dev-python/sphinx )"
 
 DEPEND="
 	${COMMON_DEPEND}
-	test? ( $(python_gen_cond_dep 'dev-python/pytest[${PYTHON_USEDEP}]') )
-"
+	test? ( $(python_gen_cond_dep 'dev-python/pytest[${PYTHON_USEDEP}]') )"
 
 RDEPEND="
 	${COMMON_DEPEND}
 	$(python_gen_cond_dep 'dev-python/ipaddr[${PYTHON_USEDEP}]')
-	!!net-misc/quagga
-"
+	!net-misc/quagga"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-7.5-ipctl-forwarding.patch"
-)
-
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-
-RESTRICT="!test? ( test )"
-
-# FRR tarballs have weird format.
-S="${WORKDIR}/frr-${P}"
+PATCHES=( "${FILESDIR}"/${PN}-7.5-ipctl-forwarding.patch )
 
 src_prepare() {
 	default
@@ -71,14 +62,15 @@ src_configure() {
 		--with-pkg-extra-version="-gentoo" \
 		--enable-configfile-mask=0640 \
 		--enable-logfile-mask=0640 \
-		--prefix=/usr \
-		--libdir=/usr/lib/frr \
-		--sbindir=/usr/lib/frr \
-		--libexecdir=/usr/lib/frr \
-		--sysconfdir=/etc/frr \
-		--localstatedir=/run/frr \
-		--with-moduledir=/usr/lib/frr/modules \
-		--enable-exampledir=/usr/share/doc/${PF}/samples \
+		--prefix="${EPREFIX}"/usr \
+		--libdir="${EPREFIX}"/usr/lib/frr \
+		--sbindir="${EPREFIX}"/usr/lib/frr \
+		--libexecdir="${EPREFIX}"/usr/lib/frr \
+		--sysconfdir="${EPREFIX}"/etc/frr \
+		--localstatedir="${EPREFIX}"/run/frr \
+		--with-moduledir="${EPREFIX}"/usr/lib/frr/modules \
+		--with-clippy="${BROOT}"/usr/bin/clippy
+		--enable-exampledir="${EPREFIX}"/usr/share/doc/${PF}/samples \
 		--enable-user=frr \
 		--enable-group=frr \
 		--enable-vty-group=frr \
@@ -100,12 +92,12 @@ src_configure() {
 src_compile() {
 	default
 
-	use doc && (cd doc; make html)
+	use doc && emake -C doc html
 }
 
 src_install() {
 	default
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 
 	# Install user documentation if asked
 	use doc && dodoc -r doc/user/_build/html
@@ -139,12 +131,12 @@ src_install() {
 	newins redhat/frr.logrotate frr
 
 	# Install PAM configuration file
-	use pam && newpamd "${FILESDIR}/frr.pam" frr
+	use pam && newpamd "${FILESDIR}"/frr.pam frr
 
 	# Install init scripts
 	systemd_dounit tools/frr.service
-	newinitd "${FILESDIR}/frr-openrc-v1" frr
+	newinitd "${FILESDIR}"/frr-openrc-v1 frr
 
 	# Conflict files, installed by net-libs/libsmi, bug #758383
-	rm "${D}/usr/share/yang/ietf-interfaces.yang" || die
+	rm "${ED}"/usr/share/yang/ietf-interfaces.yang || die
 }

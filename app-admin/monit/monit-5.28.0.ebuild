@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit bash-completion-r1 pam systemd eutils
+inherit bash-completion-r1 pam systemd
 
 DESCRIPTION="Monitoring and managing daemons or similar programs running on a Unix system"
 HOMEPAGE="http://mmonit.com/monit/"
@@ -24,8 +24,6 @@ BDEPEND="
 	sys-devel/flex
 	sys-devel/bison
 "
-
-PATCHES=( "${FILESDIR}/monit-fix-unmonitor.patch" )
 
 src_prepare() {
 	default
