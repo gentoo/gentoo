@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Find and use installed modules in a (sub)category"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm x86 ~x86-solaris"
+KEYWORDS="amd64 ~arm ~arm64 x86 ~x86-solaris"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
