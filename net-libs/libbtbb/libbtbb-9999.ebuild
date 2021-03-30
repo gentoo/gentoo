@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit multilib cmake-utils
+inherit multilib cmake
 
 DESCRIPTION="A library to decode Bluetooth baseband packets"
 HOMEPAGE="http://libbtbb.sourceforge.net/"
@@ -47,7 +47,7 @@ which_plugins() {
 src_prepare() {
 	CMAKE_USE_DIR="${S}"
 	BUILD_DIR="${S}"_build
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	if use wireshark-plugins; then
 		which_plugins
@@ -60,7 +60,7 @@ src_prepare() {
 				CMAKE_USE_DIR="${S}"/wireshark/plugins-legacy/${i}
 			fi
 			BUILD_DIR="${WORKDIR}"/${i}_build
-			cmake-utils_src_prepare
+			cmake_src_prepare
 		done
 	fi
 }
@@ -73,7 +73,7 @@ src_configure() {
 		-DBUILD_STATIC_LIB=$(usex static-libs)
 		-DBUILD_ROOT="${ED}"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 
 	if use wireshark-plugins; then
 		for i in ${plugins}
@@ -87,7 +87,7 @@ src_configure() {
 			local mycmakeargs=(
 			-DCMAKE_INSTALL_LIBDIR="/usr/$(get_libdir)/wireshark/plugins/$(get_PV net-analyzer/wireshark)"
 			)
-			cmake-utils_src_configure
+			cmake_src_configure
 		done
 	fi
 }
@@ -95,7 +95,7 @@ src_configure() {
 src_compile() {
 	CMAKE_USE_DIR="${S}"
 	BUILD_DIR="${S}"_build
-	cmake-utils_src_compile
+	cmake_src_compile
 
 	if use wireshark-plugins; then
 		for i in ${plugins}
@@ -106,7 +106,7 @@ src_compile() {
 				CMAKE_USE_DIR="${S}"/wireshark/plugins-legacy/${i}
 			fi
 			BUILD_DIR="${WORKDIR}"/${i}_build
-			cmake-utils_src_compile
+			cmake_src_compile
 		done
 	fi
 }
@@ -114,7 +114,7 @@ src_compile() {
 src_test() {
 	CMAKE_USE_DIR="${S}"
 	BUILD_DIR="${S}"_build
-	cmake-utils_src_test
+	cmake_src_test
 
 	if use wireshark-plugins; then
 		for i in ${plugins}
@@ -125,7 +125,7 @@ src_test() {
 				CMAKE_USE_DIR="${S}"/wireshark/plugins-legacy/${i}
 			fi
 			BUILD_DIR="${WORKDIR}"/${i}_build
-			cmake-utils_src_test
+			cmake_src_test
 		done
 	fi
 }
@@ -133,7 +133,7 @@ src_test() {
 src_install() {
 	CMAKE_USE_DIR="${S}"
 	BUILD_DIR="${S}"_build
-	cmake-utils_src_install
+	cmake_src_install
 
 	if use wireshark-plugins; then
 		for i in ${plugins}
@@ -144,7 +144,7 @@ src_install() {
 				CMAKE_USE_DIR="${S}"/wireshark/plugins-legacy/${i}
 			fi
 			BUILD_DIR="${WORKDIR}"/${i}_build
-			cmake-utils_src_install
+			cmake_src_install
 		done
 	fi
 }
