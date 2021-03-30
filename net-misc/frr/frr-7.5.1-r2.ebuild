@@ -57,36 +57,39 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		--disable-static \
-		--with-pkg-extra-version="-gentoo" \
-		--enable-configfile-mask=0640 \
-		--enable-logfile-mask=0640 \
-		--prefix="${EPREFIX}"/usr \
-		--libdir="${EPREFIX}"/usr/lib/frr \
-		--sbindir="${EPREFIX}"/usr/lib/frr \
-		--libexecdir="${EPREFIX}"/usr/lib/frr \
-		--sysconfdir="${EPREFIX}"/etc/frr \
-		--localstatedir="${EPREFIX}"/run/frr \
-		--with-moduledir="${EPREFIX}"/usr/lib/frr/modules \
+	local myconf=(
+		--disable-static
+		--with-pkg-extra-version="-gentoo"
+		--enable-configfile-mask=0640
+		--enable-logfile-mask=0640
+		--prefix="${EPREFIX}"/usr
+		--libdir="${EPREFIX}"/usr/lib/frr
+		--sbindir="${EPREFIX}"/usr/lib/frr
+		--libexecdir="${EPREFIX}"/usr/lib/frr
+		--sysconfdir="${EPREFIX}"/etc/frr
+		--localstatedir="${EPREFIX}"/run/frr
+		--with-moduledir="${EPREFIX}"/usr/lib/frr/modules
 		--with-clippy="${BROOT}"/usr/bin/clippy
-		--enable-exampledir="${EPREFIX}"/usr/share/doc/${PF}/samples \
-		--enable-user=frr \
-		--enable-group=frr \
-		--enable-vty-group=frr \
-		--enable-multipath=64 \
-		$(use_enable doc) \
-		$(use_enable fpm) \
-		$(use_enable grpc) \
-		$(use_enable ipv6 ospf6d) \
-		$(use_enable ipv6 ripngd) \
-		$(use_enable ipv6 rtadv) \
-		$(use_enable kernel_linux realms) \
-		$(use_enable nhrp nhrpd) \
-		$(usex ospfapi '--enable-ospfclient' '' '' '') \
-		$(use_enable rpki) \
-		$(use_enable snmp) \
+		--enable-exampledir="${EPREFIX}"/usr/share/doc/${PF}/samples
+		--enable-user=frr
+		--enable-group=frr
+		--enable-vty-group=frr
+		--enable-multipath=64
+		$(use_enable doc)
+		$(use_enable fpm)
+		$(use_enable grpc)
+		$(use_enable ipv6 ospf6d)
+		$(use_enable ipv6 ripngd)
+		$(use_enable ipv6 rtadv)
+		$(use_enable kernel_linux realms)
+		$(use_enable nhrp nhrpd)
+		$(usex ospfapi '--enable-ospfclient' '' '' '')
+		$(use_enable rpki)
+		$(use_enable snmp)
 		$(use_enable systemd)
+	)
+
+	econf "${myconf[@]}"
 }
 
 src_compile() {
