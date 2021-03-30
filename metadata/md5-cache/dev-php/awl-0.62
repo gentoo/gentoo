@@ -1,0 +1,13 @@
+BDEPEND=test? ( dev-php/phpunit )
+DEFINED_PHASES=compile install test
+DESCRIPTION=Andrew McMillan's Web Libraries
+EAPI=7
+HOMEPAGE=https://gitlab.com/davical-project/awl
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 GPL-2+ GPL-3+ LGPL-2+ LGPL-3+
+RDEPEND=dev-lang/php:*[pdo,postgres,xml]
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://www.davical.org/downloads/awl_0.62.orig.tar.xz -> awl-0.62.tar.xz
+_md5_=be2148d562c0ba965fba9573bc3e7965

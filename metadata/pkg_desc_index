@@ -7791,7 +7791,7 @@ dev-php/PEAR-Console_Getargs 1.4.0: A command-line arguments parser
 dev-php/PEAR-Console_Getopt 1.4.3: Command-line option parser
 dev-php/PEAR-Console_Table 1.3.0-r1 1.3.1: Class that makes it easy to build console style tables
 dev-php/PEAR-Crypt_CHAP 1.5.0-r3: Generating CHAP packets
-dev-php/PEAR-Crypt_GPG 1.6.2 1.6.3 1.6.4: PHP interface to the GNU Privacy Guard (GnuPG)
+dev-php/PEAR-Crypt_GPG 1.6.2 1.6.3 1.6.4 1.6.5: PHP interface to the GNU Privacy Guard (GnuPG)
 dev-php/PEAR-Crypt_HMAC 1.0.1-r2: Calculates RFC 2104 compliant hashes
 dev-php/PEAR-Crypt_HMAC2 1.0.0-r1: Implementation of Hashed Message Authentication Code for PHP5
 dev-php/PEAR-DB 1.9.2-r1 1.9.3 1.10.0: Database abstraction layer for PHP
@@ -7892,7 +7892,7 @@ dev-php/Text_Template 1.1.1 1.2.1: A simple template engine
 dev-php/YAML 1.0.6-r3: The Symfony YAML Component
 dev-php/adodb 5.20.14 5.20.18 5.20.20: Database abstraction layer for PHP
 dev-php/agavi 1.0.8: PHP MVC application framework
-dev-php/awl 0.61: Andrew McMillan's Web Libraries
+dev-php/awl 0.61 0.62: Andrew McMillan's Web Libraries
 dev-php/ca-bundle 1.1.3: Find the system CA bundle or fall back to the Mozilla one
 dev-php/cli-prompt 1.0.0 1.0.3: Allows you to prompt for user input on the command line
 dev-php/composer 1.10.20 2.0.11: Dependency Manager for PHP
@@ -12992,7 +12992,7 @@ media-gfx/icc-examin 0.56_p20171007 9999: Viewer for ICC and CGATS, argyll gamut
 media-gfx/icon-slicer 0.3: utility for generating icon themes and libXcursor cursor themes
 media-gfx/icoutils 0.32.3: Tools to extract and convert images in icon and cursor files (.ico, .cur)
 media-gfx/igal 2.0-r1: Static HTML image gallery generator
-media-gfx/imagemagick 6.9.12.3 6.9.12.4 7.0.11.3 7.0.11.4 9999: A collection of tools and libraries for many image formats
+media-gfx/imagemagick 6.9.12.3 6.9.12.4 6.9.12.5 7.0.11.3 7.0.11.4 7.0.11.5 9999: A collection of tools and libraries for many image formats
 media-gfx/imageworsener 1.3.3: Utility for image scaling and processing
 media-gfx/img2pdf 0.3.6 0.4.0: Losslessly convert raster images to PDF
 media-gfx/imv 4.2.0 9999: Minimal image viewer designed for tiling window manager users
@@ -17308,7 +17308,7 @@ sys-block/libfabric 1.11.2: The Open Fabrics Interfaces (OFI) framework
 sys-block/libzbc 5.5.1 5.9.0: A library and tools for working with ZBC and ZAC disks
 sys-block/libzbd 1.2.0-r1: Zoned block device manipulation library and tools
 sys-block/lsiutil 1.62-r3: LSI Logic Fusion MPT Command Line Interface management tool
-sys-block/mbuffer 20200505 20200929 20210209: M(easuring)buffer is a replacement for buffer with additional functionality
+sys-block/mbuffer 20200505 20200929 20210209 20210328: M(easuring)buffer is a replacement for buffer with additional functionality
 sys-block/megacli 8.07.14-r2 8.07.14-r3: LSI Logic MegaRAID Command Line Interface management tool
 sys-block/megactl 0.4.1-r3: LSI MegaRAID control utility
 sys-block/megamgr 5.20-r2: LSI Logic MegaRAID Text User Interface management tool
