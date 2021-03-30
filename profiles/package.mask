@@ -383,12 +383,6 @@ dev-ml/core_extended
 media-gfx/openexr_viewers
 
 # Sam James <sam@gentoo.org> (2021-02-27)
-# Fails to build with GCC 10 (or otherwise!)
-# bug #708508, bug #728026, bug #542280
-# Removal in 30 days
-sci-mathematics/ggnfs
-
-# Sam James <sam@gentoo.org> (2021-02-27)
 # Broken with newer(?) dev-scheme/guile, dead upstream
 # bug #642736, bug #773196
 # Removal in 30 days
