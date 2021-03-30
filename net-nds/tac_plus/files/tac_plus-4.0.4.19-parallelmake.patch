@@ -1,7 +1,5 @@
-Index: tacacs+-F4.0.4.19/Makefile.am
-===================================================================
---- tacacs+-F4.0.4.19.orig/Makefile.am
-+++ tacacs+-F4.0.4.19/Makefile.am
+--- a/Makefile.am
++++ b/Makefile.am
 @@ -16,7 +16,7 @@ if TACSKEY
  tac_plus_SOURCES += skey_fn.c
  endif
