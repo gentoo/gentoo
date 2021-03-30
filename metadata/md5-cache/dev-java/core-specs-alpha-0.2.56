@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install preinst prepare setup
+DEPEND=dev-java/ant-core:0 >=virtual/jdk-1.8:* >=dev-java/java-config-2.2.0-r3 >=dev-java/ant-core-1.8.2:0 >=dev-java/javatoolkit-0.3.0-r2
+DESCRIPTION=A Clojure library with specs to describe Clojure core macros and functions
+EAPI=7
+HOMEPAGE=https://clojure.org/ https://github.com/clojure/core.specs.alpha
+INHERIT=java-pkg-2 java-ant-2
+IUSE=elibc_FreeBSD elibc_FreeBSD
+KEYWORDS=~amd64 ~x86 ~x86-linux
+LICENSE=EPL-1.0
+RDEPEND=>=virtual/jre-1.8:* >=dev-java/java-config-2.2.0-r3
+SLOT=0.2
+SRC_URI=https://github.com/clojure/core.specs.alpha/archive/core.specs.alpha-0.2.56.tar.gz -> core-specs-alpha-0.2.56.tar.gz
+_eclasses_=java-utils-2	378e4cda228ea0231a0ac283cb2ad25c	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	java-ant-2	fb9e1462d72ecaf7c91ae1d169606d9f
+_md5_=faa81bdb522e13991a71394907889ff5

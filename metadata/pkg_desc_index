@@ -2206,7 +2206,7 @@ app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulato
 app-emulation/xe-guest-utilities 6.2.0_p1120: XenServer Virtual Machine Tools
 app-emulation/xen 4.13.2-r5 4.13.2-r6 4.13.2-r7 4.14.1-r2 4.14.1-r3: The Xen virtual machine monitor
 app-emulation/xen-pvgrub 4.13.2 4.14.1: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
-app-emulation/xen-tools 4.13.2-r2 4.13.2-r3 4.14.1 4.14.1-r1: Xen tools including QEMU and xl
+app-emulation/xen-tools 4.13.2-r2 4.13.2-r3 4.13.2-r4 4.14.1 4.14.1-r1 4.14.1-r2: Xen tools including QEMU and xl
 app-emulation/xtrs 4.9d-r5: Radio Shack TRS-80 emulator
 app-eselect/eselect-QtPy 1.0: Manage Qt for Python implementations
 app-eselect/eselect-audicle 1.0.1-r1: Manages the /usr/bin/audicle symlink
@@ -4781,7 +4781,7 @@ dev-java/commons-primitives 1.0-r3: The Jakarta-Commons Primitives Component
 dev-java/commons-validator 1.4.0 1.4.1: Commons component to validate user input, or data input
 dev-java/commons-vfs 1.0-r1 2.0-r1: A single API for accessing various different file systems
 dev-java/constantine 0.7-r1: Provides Java values for common platform C constants
-dev-java/core-specs-alpha 0.1.24 0.2.44: A Clojure library with specs to describe Clojure core macros and functions.
+dev-java/core-specs-alpha 0.1.24 0.2.44 0.2.56: A Clojure library with specs to describe Clojure core macros and functions
 dev-java/cortado 0.6.0-r1: Multimedia framework for Java written by Fluendo
 dev-java/cpptasks 1.0_beta5: Ant-tasks to compile various source languages and produce executables
 dev-java/cssparser 0.9.25 0.9.26: API for parsing CSS 2 in Java
@@ -5424,7 +5424,7 @@ dev-libs/hidapi 0.8.0_rc1_p20140719-r1: A multi-platform library for USB and Blu
 dev-libs/hiredis 0.14.1 1.0.0: Minimalistic C client library for the Redis database
 dev-libs/http-fetcher 1.1.0-r1: Library for downloading files via HTTP using the GET method
 dev-libs/hyperleveldb 1.2.2-r1: Hyperdex fork/extension of leveldb
-dev-libs/hyperscan 5.3.0 5.4.0: High-performance regular expression matching library
+dev-libs/hyperscan 5.4.0: High-performance regular expression matching library
 dev-libs/hyphen 2.8.8-r1: ALTLinux hyphenation library
 dev-libs/icu 68.2: International Components for Unicode
 dev-libs/icu-layoutex 68.2: External layout part of International Components for Unicode
@@ -15425,7 +15425,7 @@ net-misc/s6-networking 2.3.0.2 2.3.0.3 2.3.0.4 2.3.1.1 2.3.2.0: Suite of small n
 net-misc/samplicator 1.3.6 1.3.8_rc1: UDP packets forwarder and duplicator
 net-misc/scponly 4.8-r6 4.8-r7: A tiny pseudoshell which only permits scp and sftp
 net-misc/seafile 8.0.1: File syncing and sharing software with file encryption and group sharing
-net-misc/seafile-client 8.0.1-r1: Seafile desktop client
+net-misc/seafile-client 8.0.1-r2: Seafile desktop client
 net-misc/secpanel 0.6.1-r1: Graphical frontend for managing and running SSH and SCP connections
 net-misc/selfdhcp 0.2a-r2: Small stealth network autoconfigure software
 net-misc/ser2net 2.10.0: Serial To Network Proxy
@@ -17228,7 +17228,7 @@ sys-auth/google-authenticator 1.08 1.09 9999: PAM Module for two step verificati
 sys-auth/google-authenticator-libpam-hardened 9999: PAM Module for two step verification via mobile platform
 sys-auth/google-authenticator-wrappers 1 2 3: Set of scripts to manage google-auth setup on Gentoo Infra
 sys-auth/keystone 17.0.0 18.0.0 2020.1.9999 2020.2.9999: The Openstack authentication, authorization, and service catalog
-sys-auth/libfprint 1.0 1.90.6: library to add support for consumer fingerprint readers
+sys-auth/libfprint 1.0 1.90.6 1.90.7: Library to add support for consumer fingerprint readers
 sys-auth/libnss-cache 0.10.2: libnss-cache is a library that serves nss lookups
 sys-auth/libnss-compat 1.2: NSS module to provide compat entry support
 sys-auth/libnss-mysql 1.5_p20060915-r5: NSS MySQL Library
