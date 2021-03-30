@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN}"
 LICENSE="CAOSL"
 SLOT="0"
 IUSE=""
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 x86 ~amd64-linux ~x86-linux"
 RESTRICT="test"
 
 COMMON_DEPEND="
