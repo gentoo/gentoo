@@ -13,7 +13,7 @@ HOMEPAGE="http://www.makemkv.com/"
 SRC_URI="http://www.makemkv.com/download/${MY_P}.tar.gz
 	http://www.makemkv.com/download/${MY_PB}.tar.gz"
 
-LICENSE="LGPL-2.1 MPL-1.1 MakeMKV-EULA openssl"
+LICENSE="GPL-2 LGPL-2.1 MPL-1.1 MakeMKV-EULA openssl"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE="+gui libressl"
@@ -37,7 +37,6 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	media-video/ccextractor
 	net-misc/wget
 "
 BDEPEND="
@@ -50,6 +49,7 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-path.patch
+	"${FILESDIR}"/${PN}-flags.patch
 )
 
 src_configure() {
@@ -64,6 +64,13 @@ src_configure() {
 }
 
 src_install() {
+	local myarch
+	case "${ARCH}" in
+		arm) myarch=armel ;;
+		x86) myarch=i386 ;;
+		*) myarch=${ARCH} ;;
+	esac
+
 	default
 
 	# add missing symlinks for QA
@@ -77,7 +84,7 @@ src_install() {
 	cd "${WORKDIR}"/${MY_PB} || die
 
 	# install prebuilt bin
-	dobin bin/$(usex x86 i386 ${ARCH})/makemkvcon
+	dobin bin/"${myarch}"/makemkvcon
 
 	# additional tool is actually part of makemkvcon
 	dosym makemkvcon /usr/bin/sdftool
@@ -85,9 +92,6 @@ src_install() {
 	# install profiles and locales
 	insinto /usr/share/MakeMKV
 	doins src/share/*
-
-	# add symlink rather than relying on MMCCEXTRACTOR env var
-	dosym ccextractor /usr/bin/mmccextr
 }
 
 pkg_postinst() {
