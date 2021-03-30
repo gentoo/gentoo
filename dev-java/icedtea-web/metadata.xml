@@ -8,11 +8,6 @@
 	<longdescription>
 		FOSS Java Web Start and optional browser plugin implementation based on NetX, to be used with icedtea.
 	</longdescription>
-	<use>
-		<flag name="javascript">Enable support for using proxy auto config (PAC) files.</flag>
-		<flag name="nsplugin">Enable the browser plugin (NPPlugin).</flag>
-		<flag name="tagsoup">Depend on dev-java/tagsoup which allows parsing malformed .jnlp files</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">AdoptOpenJDK/IcedTea-Web</remote-id>
 	</upstream>
