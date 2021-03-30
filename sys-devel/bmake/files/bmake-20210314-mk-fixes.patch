@@ -1,0 +1,66 @@
+# https://bugs.gentoo.org/779340
+# https://bugs.gentoo.org/778458
+# - Fix incorrect linking of shared libraries
+# - Respect LDFLAGS
+# - Do not strip prog binaries
+--- a/mk/lib.mk
++++ b/mk/lib.mk
+@@ -170,7 +170,7 @@ LD_solib= lib${LIB}_pic.a
+ .elif ${TARGET_OSNAME} == "Linux"
+ SHLIB_LD = ${CC}
+ # this is ambiguous of course
+-LD_shared=-shared -Wl,"-soname lib${LIB}.so.${SHLIB_MAJOR}"
++LD_shared=-shared -Wl,-soname,lib${LIB}.so.${SHLIB_MAJOR}
+ LD_solib= -Wl,--whole-archive lib${LIB}_pic.a -Wl,--no-whole-archive
+ .if ${COMPILER_TYPE} == "gcc"
+ # Linux uses GNU ld, which is a multi-pass linker
+@@ -455,11 +455,11 @@ lib${LIB}.${LD_so}: ${SOLIB} ${DPADD}
+ 	    --whole-archive ${SOLIB} --no-whole-archive ${SHLIB_LDADD} \
+ 	    ${SHLIB_LDENDFILE}
+ .else
+-	${SHLIB_LD} ${LD_x} ${LD_shared} \
++	${SHLIB_LD} ${LD_x} ${LD_shared} ${LDFLAGS} \
+ 	    -o ${.TARGET} ${SOLIB} ${SHLIB_LDADD}
+ .endif
+ .else
+-	${SHLIB_LD} -o ${.TARGET} ${LD_shared} ${LD_solib} ${DLLIB} ${SHLIB_LDADD}
++	${SHLIB_LD} -o ${.TARGET} ${LD_shared} ${LDFLAGS} ${LD_solib} ${DLLIB} ${SHLIB_LDADD}
+ .endif
+ .endif
+ .if !empty(SHLIB_LINKS)
+--- a/mk/prog.mk
++++ b/mk/prog.mk
+@@ -178,7 +178,7 @@ proginstall:
+ .if defined(PROG)
+ 	[ -d ${DESTDIR}${BINDIR} ] || \
+ 	${INSTALL} -d ${PROG_INSTALL_OWN} -m 775 ${DESTDIR}${BINDIR}
+-	${INSTALL} ${COPY} ${STRIP_FLAG} ${PROG_INSTALL_OWN} -m ${BINMODE} \
++	${INSTALL} ${COPY} ${PROG_INSTALL_OWN} -m ${BINMODE} \
+ 	    ${PROG} ${DESTDIR}${BINDIR}/${PROG_NAME}
+ .endif
+ .if defined(HIDEGAME)
+--- a/mk/sys/Linux.mk
++++ b/mk/sys/Linux.mk
+@@ -19,12 +19,13 @@ NEED_SOLINKS ?=yes
+ AR ?=		ar
+ ARFLAGS ?=	rl
+ RANLIB ?=		ranlib
++LDFLAGS ?=
+ 
+ AS ?=		as
+ AFLAGS=
+ COMPILE.s ?=	${AS} ${AFLAGS}
+ LINK.s ?=		${CC} ${AFLAGS} ${LDFLAGS}
+-COMPILE.S ?=	${CC} ${AFLAGS} ${CPPFLAGS} -c
++COMPILE.S ?=	${CC} ${AFLAGS} ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} -c
+ LINK.S ?=		${CC} ${AFLAGS} ${CPPFLAGS} ${LDFLAGS}
+ .if exists(/usr/local/bin/gcc)
+ CC ?=		gcc -pipe
+@@ -65,7 +66,6 @@ LFLAGS=
+ LEX.l ?=		${LEX} ${LFLAGS}
+ 
+ LD ?=		ld
+-LDFLAGS=
+ 
+ LINT ?=		lint
+ LINTFLAGS ?=	-chapbx
