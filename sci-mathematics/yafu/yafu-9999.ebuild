@@ -12,16 +12,10 @@ ESVN_REPO_URI="https://svn.code.sf.net/p/yafu/code/"
 
 SLOT="0"
 LICENSE="public-domain"
-KEYWORDS=""
-# nfs is overloaded, so using less confusing sieve here
-IUSE="+sieve"
 
 DEPEND="
 	dev-libs/gmp:0=
-	sci-mathematics/gmp-ecm
-	sieve? (
-		sci-mathematics/msieve
-		sci-mathematics/ggnfs )"
+	sci-mathematics/gmp-ecm"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
@@ -44,7 +38,6 @@ src_compile() {
 	cd trunk
 	# hmm, not that useful:
 	#VAR="TIMING=1 "
-	use sieve && VAR+="NFS=1"
 	use amd64 && emake $VAR x86_64
 	use x86 && emake $VAR x86
 }

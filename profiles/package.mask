@@ -159,17 +159,6 @@ dev-haskell/geniplate
 # for transitioning out. Bug #776262.
 app-admin/lastpass-cli
 
-# Göktürk Yüksek <gokturk@gentoo.org> (2021-03-14)
-# Upstream's lack of versioning keeps breaking the Manifest.
-# They are also not responsive to license clarification questions.
-# No revdeps. Removal in 14 days. Bug #581102, #7513730
-app-admin/lastpass-binary-component
-
-# David Seifert <soap@gentoo.org> (2021-03-13)
-# Integrated into >=sys-apps/hwloc-2, completely broken, unmaintained,
-# no revdeps. Removal in 14 days. Bug #721938, #722916, #732046.
-sys-apps/netloc
-
 # Sam James <sam@gentoo.org> (2021-03-13)
 # Stuck on oasis.eclass, out of date
 # No reverse dependencies
@@ -381,35 +370,6 @@ dev-ml/core_extended
 # Removal needed to clean-up {ilmbase,openexr}-2.3.0
 # Masked for removal in 30 days.
 media-gfx/openexr_viewers
-
-# Sam James <sam@gentoo.org> (2021-02-27)
-# Fails to build with GCC 10 (or otherwise!)
-# bug #708508, bug #728026, bug #542280
-# Removal in 30 days
-sci-mathematics/ggnfs
-
-# Sam James <sam@gentoo.org> (2021-02-27)
-# Fails to build with GCC 10, out of date.
-# bug #723192, bug #737058
-# Removal in 30 days
-dev-lang/ats
-
-# Sam James <sam@gentoo.org> (2021-02-27)
-# Broken with newer(?) dev-scheme/guile, dead upstream
-# bug #642736, bug #773196
-# Removal in 30 days
-dev-scheme/greg
-
-# David Seifert <soap@gentoo.org> (2021-02-25)
-# Unmaintained, python 3.7 only, relies on wrong libgd, which isn't
-# packaged.  Removal on 2021-03-27.  Bug #683358, #696476, #741936.
-sys-auth/authenticator
-
-# David Seifert <soap@gentoo.org> (2021-02-25)
-# Last release in 2006, no other distro carries this anymore,
-# blocks sci-libs/fftw:2.1 removal, no revdeps.
-# Removal on 2021-03-27.  Bug #731038, #772812.
-media-gfx/videorbits
 
 # Sam James <sam@gentoo.org> (2021-02-18)
 # 0.9.27 included a regression wrt deletes

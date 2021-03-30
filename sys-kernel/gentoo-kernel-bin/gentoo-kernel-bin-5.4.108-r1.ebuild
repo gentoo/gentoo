@@ -13,8 +13,8 @@ DESCRIPTION="Pre-built Linux kernel with genpatches"
 HOMEPAGE="https://www.kernel.org/"
 SRC_URI+="
 	https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/${MY_P}.tar.xz
-	https://dev.gentoo.org/~alicef/dist/genpatches/${GENPATCHES_P}.base.tar.xz
-	https://dev.gentoo.org/~alicef/dist/genpatches/${GENPATCHES_P}.extras.tar.xz
+	https://dev.gentoo.org/~mpagano/dist/genpatches/${GENPATCHES_P}.base.tar.xz
+	https://dev.gentoo.org/~mpagano/dist/genpatches/${GENPATCHES_P}.extras.tar.xz
 	arm64? (
 		https://dev.gentoo.org/~sam/binpkg/arm64/kernel/sys-kernel/gentoo-kernel/${BINPKG}.xpak
 			-> ${BINPKG}.arm64.xpak
@@ -26,9 +26,7 @@ LICENSE="GPL-2"
 KEYWORDS="~arm64"
 
 RDEPEND="
-	!sys-kernel/gentoo-kernel:${SLOT}
-	!sys-kernel/vanilla-kernel:${SLOT}
-	!sys-kernel/vanilla-kernel-bin:${SLOT}"
+	!sys-kernel/gentoo-kernel:${SLOT}"
 PDEPEND="
 	>=virtual/dist-kernel-${PV}"
 BDEPEND="
@@ -38,6 +36,9 @@ BDEPEND="
 	virtual/yacc"
 
 QA_PREBUILT='*'
+
+KV_LOCALVERSION='-gentoo-dist'
+KPV=${PV}${KV_LOCALVERSION}
 
 src_unpack() {
 	default
@@ -88,14 +89,14 @@ src_configure() {
 	)
 
 	mkdir modprep || die
-	cp "usr/src/linux-${PV}/.config" modprep/ || die
+	cp "usr/src/linux-${KPV}/.config" modprep/ || die
 	emake -C "${MY_P}" "${makeargs[@]}" modules_prepare
 }
 
 src_test() {
-	kernel-install_test "${PV}" \
-		"usr/src/linux-${PV}/$(dist-kernel_get_image_path)" \
-		"lib/modules/${PV}"
+	kernel-install_test "${KPV}" \
+		"${WORKDIR}/usr/src/linux-${KPV}/$(dist-kernel_get_image_path)" \
+		"lib/modules/${KPV}"
 }
 
 src_install() {
@@ -109,5 +110,5 @@ src_install() {
 			'(' -name '.*' -a -not -name '.config' ')' \
 		')' -delete || die
 	rm modprep/source || die
-	cp -p -R modprep/. "${ED}/usr/src/linux-${PV}"/ || die
+	cp -p -R modprep/. "${ED}/usr/src/linux-${KPV}"/ || die
 }

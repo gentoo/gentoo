@@ -15,10 +15,6 @@
 dev-lang/julia system-llvm
 dev-util/perf clang
 
-# Sam James <sam@gentoo.org> (2021-02-27)
-# Needs last-rited sci-mathematics/ggnfs
-sci-mathematics/yafu sieve
-
 # Thomas Deutschmann <whissi@gentoo.org> (2021-02-17)
 # PCRE JIT support via dev-libs/libpcre2[jit] is only available for certain architectures
 dev-lang/php jit
