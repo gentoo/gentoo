@@ -72,7 +72,7 @@ BDEPEND="
 	vala? ( $(vala_depend) )
 "
 
-DOCS=( AUTHORS docs/ChangeLog docs/NEWS.txt )
+DOCS=( AUTHORS docs/ChangeLog docs/NEWS.adoc )
 
 python_check_deps() {
 	use test || return 0
