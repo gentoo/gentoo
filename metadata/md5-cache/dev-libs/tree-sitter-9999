@@ -1,10 +1,11 @@
 BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=install unpack
+DEFINED_PHASES=install prepare unpack
 DESCRIPTION=Tree-sitter is a parser generator tool and an incremental parsing library.
 EAPI=7
 HOMEPAGE=https://github.com/tree-sitter/tree-sitter
+INHERIT=toolchain-funcs git-r3
 LICENSE=MIT
 PROPERTIES=live
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441
-_md5_=fb0d05231060f5fc714d35343d2c4962
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	git-r3	3e7ec3d6619213460c85e2aa48398441
+_md5_=0b96d63ba6f8900e8deb4fd5fe3cb098
