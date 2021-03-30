@@ -12,7 +12,7 @@ SRC_URI="https://github.com/bbidulock/blackboxwm/archive/${PV}.tar.gz -> ${P}.ta
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="nls truetype debug"
+IUSE="debug nls static-libs truetype"
 
 RDEPEND="x11-libs/libXft
 	x11-libs/libXt
@@ -51,4 +51,5 @@ src_install() {
 	dodoc AUTHORS ChangeLog* COMPLIANCE README* TODO
 
 	find "${D}" -name '*.la' -delete || die
+	use static-libs || rm /usr/$(get_libdir)/libbt.a || die
 }
