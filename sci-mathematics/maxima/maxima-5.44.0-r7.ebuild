@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8} )
 
-inherit autotools elisp-common eutils flag-o-matic python-single-r1 xdg-utils
+inherit autotools elisp-common flag-o-matic python-single-r1 xdg-utils
 
 DESCRIPTION="Free computer algebra environment based on Macsyma"
 HOMEPAGE="http://maxima.sourceforge.net/"
@@ -115,6 +115,7 @@ src_prepare() {
 	rm src/Makefile.in || die
 	touch src/*.mk
 	touch src/Makefile.am
+
 	eautoreconf
 }
 
@@ -181,10 +182,6 @@ src_compile() {
 src_install() {
 	docompress -x /usr/share/info
 	emake DESTDIR="${D}" emacsdir="${EPREFIX}/${SITELISP}/${PN}" install
-
-	use gui && make_desktop_entry xmaxima xmaxima \
-		/usr/share/${PN}/${PV}/xmaxima/maxima-new.png \
-		"Science;Math;Education"
 
 	# do not use dodoc because interfaces can't read compressed files
 	# read COPYING before attempt to remove it from dodoc
