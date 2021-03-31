@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: xemacs-packages.eclass
@@ -15,6 +15,7 @@
 # mule, or contrib.
 
 # @ECLASS-VARIABLE: XEMACS_EXPERIMENTAL
+# @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If set then the package is downloaded from the experimental packages
