@@ -47,6 +47,7 @@ lua_src_compile() {
 		PREFIX="${ED}/usr" \
 		INST_LIBDIR="${ED}/$(lua_get_cmod_dir)" \
 		INST_LUADIR="${ED}/$(lua_get_lmod_dir)" \
+		LUA_INCDIR="${EPREFIX}/$(lua_get_include_dir)" \
 		CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC="$(tc-getCC)" || die
 
 	popd || die
