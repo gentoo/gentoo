@@ -8,5 +8,5 @@ LICENSE=Apache-2.0 BSD BSD-2 ISC MIT
 PROPERTIES=live
 RESTRICT=strip
 SLOT=0
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	be99724bde4274de21e581204e9d164a	go-module	92660621959e7fab813173772987588b	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	8e7c071081c68c2c398b77fe3a1d6908	go-module	92660621959e7fab813173772987588b	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=165951ec43000252b3785674c823d8f7

@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=acct-group/ipfs acct-user/ipfs !net-p2p/go-ipfs sys-fs/fuse:0
 SLOT=0
 SRC_URI=amd64? ( https://dist.ipfs.io/go-ipfs/v0.7.0/go-ipfs_v0.7.0_linux-amd64.tar.gz ) x86? ( https://dist.ipfs.io/go-ipfs/v0.7.0/go-ipfs_v0.7.0_linux-386.tar.gz ) arm? ( https://dist.ipfs.io/go-ipfs/v0.7.0/go-ipfs_v0.7.0_linux-arm.tar.gz ) https://raw.githubusercontent.com/ipfs/go-ipfs/v0.7.0/misc/completion/ipfs-completion.bash -> go-ipfs-bin-0.7.0.bash
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	be99724bde4274de21e581204e9d164a	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	8e7c071081c68c2c398b77fe3a1d6908	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6
 _md5_=7f7ab9e589362938a5cb2a3945bb5b64

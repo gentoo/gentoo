@@ -671,7 +671,7 @@ app-admin/emacs-updater 1.16: Rebuild Emacs packages
 app-admin/entr 4.6 4.8: Run arbitrary commands when files change
 app-admin/eselect 1.4.16 1.4.17 9999: Gentoo's multi-purpose configuration and management tool
 app-admin/evtxtools 1.1.1-r1: Read, decode and dump Windows Vista/2008/7 event log file
-app-admin/exo 1.26.0: Command-line tool for everything at Exoscale: compute, storage, dns.
+app-admin/exo 1.27.0: Command-line tool for everything at Exoscale: compute, storage, dns.
 app-admin/fam 2.7.0_p17_p3: FAM, the File Alteration Monitor
 app-admin/fetchlog 1.4-r1: Displays the last new messages of a logfile
 app-admin/fifo-cronolog 1.1.1-r1: cronolog wrapper for use with dumb daemons like squid, varnish and so on
@@ -700,7 +700,7 @@ app-admin/graylog 3.3.10 3.3.11 4.0.2 4.0.5: Free and open source log management
 app-admin/gtkdiskfree 2.0.4_p20200224: Graphical tool to show free disk space like df
 app-admin/hardinfo 0.6_alpha_pre20201116: System information and benchmark tool for Linux systems
 app-admin/haskell-updater 1.2.12-r1 1.3.1 1.3.2: Rebuild Haskell dependencies in Gentoo
-app-admin/hcloud 1.20.0 1.21.1: A command-line interface for Hetzner Cloud
+app-admin/hcloud 1.20.0 1.22.0: A command-line interface for Hetzner Cloud
 app-admin/hddtemp 0.3_beta15-r29: A simple utility to read the temperature of SMART capable hard drives
 app-admin/helm 3.3.4 3.4.1 3.4.2: Kubernetes Package Manager
 app-admin/ide-smart 1.4-r2: A tool to read SMART information from harddiscs
@@ -914,7 +914,7 @@ app-arch/zoo 2.10-r5: Manipulate archives of files in compressed form
 app-arch/zopfli 1.0.2 1.0.3: Very good, but slow, deflate or zlib compression
 app-arch/zpaq 7.15: Journaling incremental deduplicating archiving compressor
 app-arch/zpaq-extras 3: A set of additional compression profiles for app-arch/zpaq
-app-arch/zstd 1.4.4-r4 1.4.5 1.4.8-r1 1.4.9: zstd fast compression library
+app-arch/zstd 1.4.9: zstd fast compression library
 app-backup/amanda 3.5.1-r3: The Advanced Maryland Automatic Network Disk Archiver
 app-backup/attic 0.16-r1 9999: Attic is a deduplicating backup program written in Python.
 app-backup/backintime 1.2.1 9999: Backup system inspired by TimeVault and FlyBack
@@ -933,7 +933,7 @@ app-backup/cdbackup 0.7.1-r1: Allows streaming backup utilities to dump/restore 
 app-backup/cdbkup 1.0-r2: performs full/incremental backups of local/remote filesystems onto CD-R(W)s
 app-backup/consul-backinator 1.6.5: consul backup and restore utility
 app-backup/cpdup 1.18: A comprehensive filesystem mirroring program
-app-backup/dar 2.6.13 2.6.13-r1: A full featured backup tool, aimed for disks
+app-backup/dar 2.6.13 2.6.14: A full featured backup tool, aimed for disks
 app-backup/dirvish 1.2.1: Dirvish is a fast, disk based, rotating network backup system
 app-backup/duplicity 0.8.15 0.8.17 0.8.18: Secure backup system using gnupg to encrypt data
 app-backup/duply 2.2.2 2.3.1: A shell frontend for duplicity
@@ -1125,7 +1125,7 @@ app-crypt/mit-krb5-appl 1.0.3: Kerberized applications split from the main MIT K
 app-crypt/monkeysphere 0.44: Leverage the OpenPGP web of trust for OpenSSH and Web authentication
 app-crypt/moolticute 0.43.19 9999: Mooltipass crossplatform daemon/tools
 app-crypt/nasty 0.6-r1: Proof-of-concept GPG passphrase recovery tool
-app-crypt/nitrocli 0.3.4 0.3.5: A command line tool for interacting with Nitrokey devices
+app-crypt/nitrocli 0.3.4 0.3.5 0.4.0: A command line tool for interacting with Nitrokey devices.
 app-crypt/nitrokey-app 1.4.2 9999: Cross platform personalization tool for the Nitrokey
 app-crypt/nwipe 0.30: Securely erase disks using a variety of recognized methods
 app-crypt/onak 0.5.0: onak is an OpenPGP keyserver
@@ -3137,7 +3137,7 @@ app-text/scrollkeeper-dtd 1.0-r1: DTD from the Scrollkeeper package
 app-text/sdcv 0.5.2: Console version of Stardict program
 app-text/sgml-common 0.6.3-r7: Base ISO character entities and utilities for SGML
 app-text/sgrep 1.94a: Use structural criteria to grep and index text, SGML, XML and HTML and filter
-app-text/sigil 1.3.0 1.4.3: Multi-platform WYSIWYG ebook editor for ePub format
+app-text/sigil 1.4.3 1.5.1: Multi-platform WYSIWYG ebook editor for ePub format
 app-text/simple-fb2-reader 1.1.3: A simple gtk3 reader for fb2 ebooks
 app-text/sloccount 2.26-r3: Tools for counting Source Lines of Code (SLOC) for a large number of languages
 app-text/spellutils 0.7: spellutils includes 'newsbody' (useful for spellchecking in mails, etc.)
@@ -5631,7 +5631,7 @@ dev-libs/libtar 1.2.20-r4: C library for manipulating tar archives
 dev-libs/libtasn1 4.13 4.15.0-r1 4.16.0: ASN.1 library
 dev-libs/libtecla 1.6.3: Tecla command-line editing library
 dev-libs/libtermkey 0.20 0.22: Library for easy processing of keyboard entry from terminal-based programs
-dev-libs/libthreadar 1.3.0: Threading library used by dar archiver
+dev-libs/libthreadar 1.3.1: Threading library used by dar archiver
 dev-libs/libtimezonemap 0.4.6: GTK+3 timezone map widget
 dev-libs/libtomcrypt 1.18.2-r2: LibTomCrypt is a comprehensive, modular and portable cryptographic toolkit
 dev-libs/libtomfloat 0.02-r1: library for floating point number manipulation
@@ -11501,7 +11501,7 @@ games-engines/frotz 2.52: Interpreter for Z-code based text games
 games-engines/gargoyle 2019.1.1: An Interactive Fiction (IF) player supporting all major formats
 games-engines/love 0.7.2-r100 0.8.0-r100 11.3-r100 9999: A framework for 2D games in Lua
 games-engines/nazghul 0.7.1-r1: A computer role-playing game (CRPG) engine with game called HaximA
-games-engines/odamex 0.8.3: Online multiplayer free software engine for DOOM
+games-engines/odamex 0.8.3 0.9.0: Online multiplayer free software engine for DOOM
 games-engines/openmw 0.46.0 9999: Open source reimplementation of TES III: Morrowind
 games-engines/openxcom 1.0.0_p20180317-r1 9999: Open-source reimplementation of the popular UFO: Enemy Unknown
 games-engines/qtads 3.0.0: Multimedia interpreter for TADS text adventures
@@ -14166,7 +14166,7 @@ media-sound/wavpack 5.3.2-r1 5.4.0: Hybrid lossless audio compression tools
 media-sound/wavplay 2.0: A command line player/recorder for wav files
 media-sound/wavsplit 1.2.1-r2: Simple command line tool to split WAV files
 media-sound/whipper 0.9.0: A Python CD-DA ripper preferring accuracy over speed (forked from morituri)
-media-sound/wildmidi 0.4.3: MIDI processing library and player using the GUS patch set
+media-sound/wildmidi 0.4.3 0.4.4: MIDI processing library and player using the GUS patch set
 media-sound/wmsound-data 1.0.0: A bunch of sounds for WindowMaker Sound Server
 media-sound/xfmpc 0.3.0: Music Player Daemon (MPD) client for the Xfce desktop environment
 media-sound/xineadump 0.1-r1: Utility for Xine decoding support in transKode
@@ -16998,7 +16998,7 @@ sys-apps/fakeroot 1.22 1.23 1.24 1.25.1 1.25.2 1.25.3-r1: A fake root environmen
 sys-apps/fakeroot-ng 0.18-r1: A utility to run commands with fake root privileges
 sys-apps/fbset 2.1: A utility to set the framebuffer videomode
 sys-apps/fd 8.1.1 8.2.1: Alternative to find that provides sensible defaults for 80% of the use cases
-sys-apps/file 5.37-r1 5.38-r1 5.39-r3 5.39-r4 9999: identify a file's format by scanning binary data for patterns
+sys-apps/file 5.39-r4 5.40 9999: identify a file's format by scanning binary data for patterns
 sys-apps/findutils 4.7.0 4.8.0: GNU utilities for finding files
 sys-apps/firejail 0.9.64.4 9999: Security sandbox for any type of processes
 sys-apps/firejail-lts 0.9.56.2-r1 0.9.56.2-r2: Security sandbox for any type of processes; LTS version
@@ -18108,7 +18108,7 @@ www-apps/davical 1.1.9.3 1.1.9.3-r1: A CalDAV and CardDAV Server
 www-apps/dokuwiki 20180422a 20180422b 20200729: DokuWiki is a simple to use Wiki aimed at a small company's documentation needs.
 www-apps/dotproject 2.1.7-r1: dotProject is a PHP web-based project management framework
 www-apps/drupal 7.78 8.9.13 9.0.11 9.1.3: PHP-based open-source platform and content management system
-www-apps/gitea 1.13.4 9999: A painless self-hosted Git service
+www-apps/gitea 1.13.6 9999: A painless self-hosted Git service
 www-apps/gitit 0.13.0.0-r1: Wiki using happstack, git or darcs, and pandoc
 www-apps/grafana-bin 7.4.5 7.5.1 7.5.2: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/hugo 0.78.1: The world's fastest framework for building websites

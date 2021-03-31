@@ -3,6 +3,7 @@ DEPEND=sys-libs/ncurses:= virtual/libelf:= capstone? ( dev-libs/capstone:0= ) lu
 DESCRIPTION=Function (graph) tracer for user-space
 EAPI=7
 HOMEPAGE=https://github.com/namhyung/uftrace
+INHERIT=bash-completion-r1
 IUSE=bash-completion capstone luajit
 KEYWORDS=~amd64
 LICENSE=GPL-2
@@ -10,5 +11,5 @@ RDEPEND=sys-libs/ncurses:= virtual/libelf:= capstone? ( dev-libs/capstone:0= ) l
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/namhyung/uftrace/archive/v0.9.4.tar.gz -> uftrace-0.9.4.tar.gz
-_eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	8e7c071081c68c2c398b77fe3a1d6908
 _md5_=1067b86503a0828769b706b17707b4ea

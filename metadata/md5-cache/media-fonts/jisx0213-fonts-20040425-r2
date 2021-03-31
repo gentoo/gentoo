@@ -11,5 +11,5 @@ LICENSE=public-domain
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=mirror://gentoo/jiskan16-2004-1.bdf.gz mirror://gentoo/jiskan16-2000-1.bdf.gz mirror://gentoo/jiskan16-2000-2.bdf.gz mirror://gentoo/K14-2004-1.bdf.gz mirror://gentoo/K14-2000-1.bdf.gz mirror://gentoo/K14-2000-2.bdf.gz mirror://gentoo/K12-1.bdf.gz mirror://gentoo/K12-2.bdf.gz mirror://gentoo/A14.bdf.gz mirror://gentoo/A12.bdf.gz mirror://gentoo/jiskan24-2000-1.bdf.gz mirror://gentoo/jiskan24-2000-2.bdf.gz
-_eclasses_=font	0667878c2b594871023dd1833d05996f	font-ebdftopcf	55a13ddfd89119edce2c55e8bb8e5581
+_eclasses_=font	0667878c2b594871023dd1833d05996f	font-ebdftopcf	001dd168de549653fcba973f58d54a9b
 _md5_=da69d5e35f88505c1e545ea734268066

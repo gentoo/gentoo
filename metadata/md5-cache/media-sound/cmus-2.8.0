@@ -4,6 +4,7 @@ DEPEND=sys-libs/ncurses:0=[unicode?] aac? ( media-libs/faad2 ) alsa? ( >=media-l
 DESCRIPTION=Ncurses based music player with plugin support for many formats
 EAPI=7
 HOMEPAGE=https://cmus.github.io/
+INHERIT=bash-completion-r1 toolchain-funcs
 IUSE=aac alsa ao cddb cdio debug discid elogind examples ffmpeg +flac jack libsamplerate +mad mikmod modplug mp4 musepack opus oss pidgin pulseaudio systemd tremor +unicode +vorbis wavpack
 KEYWORDS=amd64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
@@ -11,5 +12,5 @@ RDEPEND=sys-libs/ncurses:0=[unicode?] aac? ( media-libs/faad2 ) alsa? ( >=media-
 REQUIRED_USE=tremor? ( vorbis ) mp4? ( aac )
 SLOT=0
 SRC_URI=https://github.com/cmus/cmus/archive/v2.8.0.tar.gz -> cmus-2.8.0.tar.gz
-_eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	8e7c071081c68c2c398b77fe3a1d6908
 _md5_=b4ba14b0fbc884a780f84c69edbca81e

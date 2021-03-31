@@ -4,11 +4,12 @@ DEPEND=>=dev-libs/glib-2.24:2 x11-libs/libX11 x11-libs/libXext xinerama? ( x11-l
 DESCRIPTION=A manual tiling window manager for X
 EAPI=7
 HOMEPAGE=https://herbstluftwm.org/
+INHERIT=toolchain-funcs bash-completion-r1
 IUSE=examples xinerama zsh-completion
 KEYWORDS=amd64 x86
 LICENSE=BSD-2
 RDEPEND=>=dev-libs/glib-2.24:2 x11-libs/libX11 x11-libs/libXext xinerama? ( x11-libs/libXinerama ) app-shells/bash zsh-completion? ( app-shells/zsh )
 SLOT=0
 SRC_URI=https://herbstluftwm.org/tarballs/herbstluftwm-0.7.2.tar.gz
-_eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	8e7c071081c68c2c398b77fe3a1d6908
 _md5_=cb6d5f55039f794a9ae26e3e17e922c6

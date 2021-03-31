@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.28:2 >=x11-libs/gtk+-3.19.5:3[X] sys-apps/dbus x11-libs/libX11 !x11-misc/notify-osd
 SLOT=0
 SRC_URI=mirror://gnome/sources/notification-daemon/3.20/notification-daemon-3.20.0.tar.xz
-_eclasses_=gnome.org	4d6de9e2337521f60965d1a9a118761f
+_eclasses_=gnome.org	df5c6c53843e1be0aad724138e78bbc3
 _md5_=b10480ae2de775e7f58a23c3eb1a8b2e

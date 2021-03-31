@@ -13,5 +13,5 @@ REQUIRED_USE=pcsc-lite? ( !openct !ctapi ) openct? ( !pcsc-lite !ctapi ) ctapi? 
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/OpenSC/OpenSC/releases/download/0.21.0/opensc-0.21.0.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	be99724bde4274de21e581204e9d164a	libtool	f143db5a74ccd9ca28c1234deffede96
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	8e7c071081c68c2c398b77fe3a1d6908	libtool	f143db5a74ccd9ca28c1234deffede96
 _md5_=490c8d1b176a82122a18a384fe7b8b65

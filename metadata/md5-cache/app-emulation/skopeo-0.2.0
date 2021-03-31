@@ -4,6 +4,7 @@ DEPEND=>=app-crypt/gpgme-1.5.5:= >=dev-libs/libassuan-2.4.3:= dev-libs/libgpg-er
 DESCRIPTION=Command line utility foroperations on container images and image repositories
 EAPI=7
 HOMEPAGE=https://github.com/containers/skopeo
+INHERIT=go-module bash-completion-r1
 IUSE=btrfs
 KEYWORDS=~amd64
 LICENSE=Apache-2.0 BSD BSD-2 CC-BY-SA-4.0 ISC MIT
@@ -11,5 +12,5 @@ RDEPEND=>=app-crypt/gpgme-1.5.5:= >=dev-libs/libassuan-2.4.3:= dev-libs/libgpg-e
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/containers/skopeo/archive/v0.2.0.tar.gz -> skopeo-0.2.0.tar.gz
-_eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	go-module	92660621959e7fab813173772987588b	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=go-module	92660621959e7fab813173772987588b	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	8e7c071081c68c2c398b77fe3a1d6908
 _md5_=9807f9c2b3d2ade2db04c47608c47102

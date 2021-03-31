@@ -10,5 +10,5 @@ LICENSE=LGPL-2
 RDEPEND=>=dev-libs/glib-2.30 >=sys-auth/polkit-0.102 x11-libs/gtk+:3
 SLOT=0
 SRC_URI=mirror://gnome/sources/polkit-gnome/0.105/polkit-gnome-0.105.tar.xz
-_eclasses_=gnome.org	4d6de9e2337521f60965d1a9a118761f
+_eclasses_=gnome.org	df5c6c53843e1be0aad724138e78bbc3
 _md5_=1b2969e2b2ef3ed5cdea546ebe17c5a6

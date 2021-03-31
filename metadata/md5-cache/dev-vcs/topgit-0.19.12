@@ -3,6 +3,7 @@ DEFINED_PHASES=compile install
 DESCRIPTION=A different patch queue manager
 EAPI=7
 HOMEPAGE=https://mackyle.github.io/topgit/topgit.html https://github.com/mackyle/topgit
+INHERIT=bash-completion-r1
 IUSE=test
 KEYWORDS=amd64 x86
 LICENSE=GPL-2
@@ -10,5 +11,5 @@ RDEPEND=>=dev-vcs/git-2.10.0
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/mackyle/topgit/archive/topgit-0.19.12.tar.gz
-_eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	8e7c071081c68c2c398b77fe3a1d6908
 _md5_=be33ba537a4dc59e6ff436e37ebd5f35

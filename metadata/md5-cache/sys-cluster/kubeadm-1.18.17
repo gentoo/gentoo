@@ -11,5 +11,5 @@ RDEPEND=!sys-cluster/kubernetes
 RESTRICT=strip test
 SLOT=0
 SRC_URI=https://github.com/kubernetes/kubernetes/archive/v1.18.17.tar.gz -> kubernetes-1.18.17.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	be99724bde4274de21e581204e9d164a	go-module	92660621959e7fab813173772987588b
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	8e7c071081c68c2c398b77fe3a1d6908	go-module	92660621959e7fab813173772987588b
 _md5_=29e4c4d50021ed3acd0583c09ff5c99c
