@@ -22,6 +22,7 @@ esac
 QA_FLAGS_IGNORED='.*'
 
 # @ECLASS-VARIABLE: OPAM_INSTALLER_DEP
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Override dependency for OPAM_INSTALLER
 : ${OPAM_INSTALLER_DEP:="dev-ml/opam-installer"}
