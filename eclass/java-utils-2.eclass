@@ -1,4 +1,4 @@
-# Copyright 2004-2020 Gentoo Authors
+# Copyright 2004-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-utils-2.eclass
@@ -1484,7 +1484,6 @@ java-pkg_ensure-vm-version-sufficient() {
 
 # @FUNCTION: java-pkg_is-vm-version-sufficient
 # @INTERNAL
-# @DESCRIPTION:
 # @RETURN: zero - VM is sufficient; non-zero - VM is not sufficient
 java-pkg_is-vm-version-sufficient() {
 	debug-print-function ${FUNCNAME} $*
