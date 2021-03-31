@@ -3,6 +3,7 @@
 
 # @ECLASS: ssl-cert.eclass
 # @MAINTAINER:
+# maintainer-needed@gentoo.org
 # @AUTHOR:
 # Max Kalika <max@gentoo.org>
 # @SUPPORTED_EAPIS: 1 2 3 4 5 6 7
