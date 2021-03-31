@@ -14063,7 +14063,7 @@ media-sound/puddletag 2.0.1: Audio tag editor
 media-sound/pulseaudio 13.0 13.0-r1: A networked sound server with an advanced plugin system
 media-sound/pulseaudio-ctl 1.67 1.68 1.69: CLI utility to control PulseAudio volume
 media-sound/pulseaudio-modules-bt 1.4 9999: PulseAudio modules for LDAC, aptX, aptX HD, and AAC for Bluetooth
-media-sound/pulseeffects 4.7.2-r2 4.8.4-r1 5.0.2 9999: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
+media-sound/pulseeffects 4.7.2-r2 4.8.4-r1 5.0.3 9999: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
 media-sound/pulsemixer 1.5.1 9999: CLI and curses mixer for PulseAudio
 media-sound/pwavecat 0.4.5: concatenates any number of audio files to stdout
 media-sound/qastools 0.23.0: Qt5 GUI ALSA tools: mixer, configuration browser
