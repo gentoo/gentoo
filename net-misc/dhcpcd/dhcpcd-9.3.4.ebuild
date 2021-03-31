@@ -35,6 +35,7 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-9.4.0-sparc_privsep.patch" #776178
+	"${FILESDIR}/${PN}-9.3.4-include_termios.patch" #777600
 )
 
 src_configure() {

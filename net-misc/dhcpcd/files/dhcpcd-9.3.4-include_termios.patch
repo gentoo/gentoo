@@ -1,0 +1,22 @@
+From 7c08f3777a69c69e87a149bb35681ce2ed2f0490 Mon Sep 17 00:00:00 2001
+From: Mikhail Efremov <sem@altlinux.org>
+Date: Tue, 8 Dec 2020 16:15:28 +0000
+Subject: [PATCH] Linux: Fix privsep build by including sys/termios.h for all
+ platforms
+
+---
+ src/privsep-linux.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/privsep-linux.c b/src/privsep-linux.c
+index e588ecd7..1fbe97fa 100644
+--- a/src/privsep-linux.c
++++ b/src/privsep-linux.c
+@@ -29,6 +29,7 @@
+ #include <sys/ioctl.h>
+ #include <sys/prctl.h>
+ #include <sys/syscall.h>
++#include <sys/termios.h>	/* For TCGETS */
+ 
+ #include <linux/audit.h>
+ #include <linux/filter.h>
