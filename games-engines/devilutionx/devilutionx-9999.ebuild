@@ -25,7 +25,7 @@ fi
 LICENSE="public-domain"
 SLOT="0"
 
-IUSE="debug +hellfire lto"
+IUSE="debug lto"
 
 RDEPEND="
 	dev-libs/libsodium
@@ -50,7 +50,6 @@ src_configure() {
 		-DDISABLE_LTO="$(usex !lto)"
 		-DDIST="ON"
 		-DUBSAN="OFF"
-		-DHELLFIRE="$(usex hellfire)"
 	)
 	cmake_src_configure
 
