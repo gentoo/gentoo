@@ -2925,7 +2925,7 @@ java-pkg_announce-qa-violation() {
 		nodie="true"
 		shift
 	fi
-	echo "Java QA Notice: $@" >&2
+	eqawarn "Java QA Notice: $@"
 	increment-qa-violations
 	[[ -z "${nodie}" ]] && is-java-strict && die "${@}"
 }
