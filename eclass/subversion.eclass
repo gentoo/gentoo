@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: subversion.eclass
@@ -40,6 +40,7 @@ case ${EAPI} in
 esac
 
 # @ECLASS-VARIABLE: ESVN_STORE_DIR
+# @USER_VARIABLE
 # @DESCRIPTION:
 # subversion sources store directory. Users may override this in /etc/portage/make.conf
 [[ -z ${ESVN_STORE_DIR} ]] && ESVN_STORE_DIR="${PORTAGE_ACTUAL_DISTDIR:-${DISTDIR}}/svn-src"
