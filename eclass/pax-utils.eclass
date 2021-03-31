@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: pax-utils.eclass
@@ -176,6 +176,10 @@ host-is-pax() {
 # them elsewhere as they are not supported (i.e. they may be removed
 # or their function may change arbitrarily).
 
+# @FUNCTION: _pax_list_files
+# @INTERNAL
+# @USAGE: <command to display items> [items]
+# @DESCRIPTION:
 # Display a list of things, one per line, indented a bit, using the
 # display command in $1.
 _pax_list_files() {
