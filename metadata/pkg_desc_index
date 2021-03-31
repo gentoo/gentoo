@@ -17027,7 +17027,7 @@ sys-apps/haveged 1.9.8c-r1 1.9.14-r1: A simple entropy daemon using the HAVEGE a
 sys-apps/hd-idle 1.05-r1: Utility for spinning down hard disks after a period of idle time
 sys-apps/hdparm 9.58 9.60: Utility to change hard drive performance parameters
 sys-apps/heirloom-tools 070715-r3: Heirloom toolchest - original Unix tools
-sys-apps/help2man 1.47.17 1.48.1 1.48.2: GNU utility to convert program --help output to a man page
+sys-apps/help2man 1.47.17 1.48.2 1.48.3: GNU utility to convert program --help output to a man page
 sys-apps/hexdump-esr 1.8: Eric Raymond's hex dumper
 sys-apps/highway 1.1.0: High performance source code search tool
 sys-apps/hotplug2stdout 1.2.1: A tool for reading kernel uevent(s) to stdout
