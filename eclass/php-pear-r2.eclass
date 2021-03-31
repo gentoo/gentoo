@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: php-pear-r2.eclass
@@ -39,7 +39,8 @@ RDEPEND=">=dev-php/pear-1.8.1"
 
 # @ECLASS-VARIABLE: PEAR-P
 # @INTERNAL
-# @DESCRIPTION: Combines PHP_PEAR_PKG_NAME and PEAR_PV
+# @DESCRIPTION:
+# Combines PHP_PEAR_PKG_NAME and PEAR_PV
 PEAR_P="${PHP_PEAR_PKG_NAME}-${PEAR_PV}"
 
 # @ECLASS-VARIABLE: PHP_PEAR_DOMAIN
