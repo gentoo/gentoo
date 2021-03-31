@@ -37,7 +37,7 @@ S="${WORKDIR}"
 
 # @FUNCTION: freedict_src_install
 # @DESCRIPTION:
-# Installs translation specific dict.dz and index files.
+# Installs translation-specific dict.dz and index files.
 freedict_src_install() {
 	insinto /usr/$(get_libdir)/dict
 	doins ${FREEDICT_P}.dict.dz
