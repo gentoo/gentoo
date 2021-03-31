@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: haskell-cabal.eclass
@@ -42,6 +42,7 @@
 inherit eutils ghc-package multilib toolchain-funcs
 
 # @ECLASS-VARIABLE: CABAL_EXTRA_CONFIGURE_FLAGS
+# @USER_VARIABLE
 # @DESCRIPTION:
 # User-specified additional parameters passed to 'setup configure'.
 # example: /etc/portage/make.conf:
@@ -49,12 +50,14 @@ inherit eutils ghc-package multilib toolchain-funcs
 : ${CABAL_EXTRA_CONFIGURE_FLAGS:=}
 
 # @ECLASS-VARIABLE: CABAL_EXTRA_BUILD_FLAGS
+# @USER_VARIABLE
 # @DESCRIPTION:
 # User-specified additional parameters passed to 'setup build'.
 # example: /etc/portage/make.conf: CABAL_EXTRA_BUILD_FLAGS=-v
 : ${CABAL_EXTRA_BUILD_FLAGS:=}
 
 # @ECLASS-VARIABLE: GHC_BOOTSTRAP_FLAGS
+# @USER_VARIABLE
 # @DESCRIPTION:
 # User-specified additional parameters for ghc when building
 # _only_ 'setup' binary bootstrap.
@@ -63,6 +66,7 @@ inherit eutils ghc-package multilib toolchain-funcs
 : ${GHC_BOOTSTRAP_FLAGS:=}
 
 # @ECLASS-VARIABLE: CABAL_EXTRA_HADDOCK_FLAGS
+# @USER_VARIABLE
 # @DESCRIPTION:
 # User-specified additional parameters passed to 'setup haddock'.
 # example: /etc/portage/make.conf:
@@ -70,6 +74,7 @@ inherit eutils ghc-package multilib toolchain-funcs
 : ${CABAL_EXTRA_HADDOCK_FLAGS:=}
 
 # @ECLASS-VARIABLE: CABAL_EXTRA_HOOGLE_FLAGS
+# @USER_VARIABLE
 # @DESCRIPTION:
 # User-specified additional parameters passed to 'setup haddock --hoogle'.
 # example: /etc/portage/make.conf:
@@ -77,6 +82,7 @@ inherit eutils ghc-package multilib toolchain-funcs
 : ${CABAL_EXTRA_HOOGLE_FLAGS:=}
 
 # @ECLASS-VARIABLE: CABAL_EXTRA_HSCOLOUR_FLAGS
+# @USER_VARIABLE
 # @DESCRIPTION:
 # User-specified additional parameters passed to 'setup hscolour'.
 # example: /etc/portage/make.conf:
@@ -85,6 +91,7 @@ inherit eutils ghc-package multilib toolchain-funcs
 
 
 # @ECLASS-VARIABLE: CABAL_EXTRA_TEST_FLAGS
+# @USER_VARIABLE
 # @DESCRIPTION:
 # User-specified additional parameters passed to 'setup test'.
 # example: /etc/portage/make.conf:
