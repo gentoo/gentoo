@@ -39,8 +39,8 @@ _assert_pkg_ebuild_phase() {
 	*)
 		eerror "'$1()' called from '${EBUILD_PHASE}' phase which is not OK:"
 		eerror "You may only call from pkg_{setup,{pre,post}{inst,rm}} functions."
-		eerror "Package fails at QA and at life.  Please file a bug."
-		die "Bad package!  $1 is only for use in some pkg_* functions!"
+		eerror "Package has serious QA issues.  Please file a bug."
+		die "Bad package!  ${1} is only for use in some pkg_* functions!"
 	esac
 }
 
