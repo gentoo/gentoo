@@ -1,6 +1,5 @@
-diff -up mhash-0.9.9.9/lib/tiger.c.BAD mhash-0.9.9.9/lib/tiger.c
---- mhash-0.9.9.9/lib/tiger.c.BAD	2009-07-02 16:42:47.683029940 -0400
-+++ mhash-0.9.9.9/lib/tiger.c	2009-07-02 16:43:46.085049317 -0400
+--- a/lib/tiger.c
++++ b/lib/tiger.c
 @@ -252,7 +252,9 @@ void tiger_update(struct tiger_ctx *ctx,
  void tiger_final(struct tiger_ctx *ctx)
  {

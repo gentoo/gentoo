@@ -14,8 +14,8 @@ Gentoo-Bug-URL: https://bugs.gentoo.org/show_bug.cgi?id=255006
 Patch-URL: http://bugs.gentoo.org/attachment.cgi?id=178560
 Signed-off-by: Thomas Harning <harningt@gmail.com>
 
---- mhash-0.9.9/lib/mhash.c	2007-02-21 01:18:46.000000000 -0500
-+++ mhash-0.9.9-new/lib/mhash.c	2009-01-15 01:57:53.000000000 -0500
+--- a/lib/mhash.c
++++ b/lib/mhash.c
 @@ -719,6 +719,8 @@
  	mutils_memcpy( &ret->state_size, &mem[pos], sizeof(ret->state_size));
  	pos += sizeof( ret->state_size);
