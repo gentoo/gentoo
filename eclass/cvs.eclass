@@ -62,6 +62,7 @@ _CVS_ECLASS=1
 # CVS options given after the cvs checkout command.
 
 # @ECLASS-VARIABLE: ECVS_OFFLINE
+# @USER_VARIABLE
 # @DESCRIPTION:
 # Set this variable to a non-empty value to disable the automatic updating of
 # a CVS source tree. This is intended to be set outside the cvs source
