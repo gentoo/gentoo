@@ -152,6 +152,8 @@ ESVN_PATCHES="${ESVN_PATCHES:-}"
 ESVN_RESTRICT="${ESVN_RESTRICT:-}"
 
 # @ECLASS-VARIABLE: ESVN_OFFLINE
+# @USER_VARIABLE
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Set this variable to a non-empty value to disable the automatic updating of
 # an svn source tree. This is intended to be set outside the subversion source
@@ -159,6 +161,7 @@ ESVN_RESTRICT="${ESVN_RESTRICT:-}"
 ESVN_OFFLINE="${ESVN_OFFLINE:-${EVCS_OFFLINE}}"
 
 # @ECLASS-VARIABLE: ESVN_UMASK
+# @USER_VARIABLE
 # @DESCRIPTION:
 # Set this variable to a custom umask. This is intended to be set by users.
 # By setting this to something like 002, it can make life easier for people
@@ -169,6 +172,7 @@ ESVN_OFFLINE="${ESVN_OFFLINE:-${EVCS_OFFLINE}}"
 ESVN_UMASK="${ESVN_UMASK:-${EVCS_UMASK}}"
 
 # @ECLASS-VARIABLE: ESVN_UP_FREQ
+# @USER_VARIABLE
 # @DESCRIPTION:
 # Set the minimum number of hours between svn up'ing in any given svn module. This is particularly
 # useful for split KDE ebuilds where we want to ensure that all submodules are compiled for the same
@@ -176,6 +180,7 @@ ESVN_UMASK="${ESVN_UMASK:-${EVCS_UMASK}}"
 ESVN_UP_FREQ="${ESVN_UP_FREQ:=}"
 
 # @ECLASS-VARIABLE: ESCM_LOGDIR
+# @USER_VARIABLE
 # @DESCRIPTION:
 # User configuration variable. If set to a path such as e.g. /var/log/scm any
 # package inheriting from subversion.eclass will record svn revision to
