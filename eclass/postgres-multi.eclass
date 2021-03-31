@@ -25,6 +25,7 @@ esac
 
 
 # @ECLASS-VARIABLE: POSTGRES_COMPAT
+# @PRE_INHERIT
 # @REQUIRED
 # @DESCRIPTION:
 # A Bash array containing a list of compatible PostgreSQL slots as
