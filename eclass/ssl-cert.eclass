@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ssl-cert.eclass
@@ -26,16 +26,19 @@ case "${EAPI:-0}" in
 esac
 
 # @ECLASS-VARIABLE: SSL_CERT_MANDATORY
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Set to non zero if ssl-cert is mandatory for ebuild.
 : ${SSL_CERT_MANDATORY:=0}
 
 # @ECLASS-VARIABLE: SSL_CERT_USE
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Use flag to append dependency to.
 : ${SSL_CERT_USE:=ssl}
 
 # @ECLASS-VARIABLE: SSL_DEPS_SKIP
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Set to non zero to skip adding to DEPEND and IUSE.
 : ${SSL_DEPS_SKIP:=0}
