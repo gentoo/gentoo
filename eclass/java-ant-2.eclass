@@ -16,7 +16,10 @@
 # or java-pkg-opt-2 eclass.
 
 case ${EAPI} in
-	6|7|8) ;;
+	6)
+		# For eqawarn
+		inherit eqawarn ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -154,7 +157,7 @@ java-ant_bsfix() {
 
 	[[ "${JAVA_PKG_BSFIX}" != "on" ]] && return
 	if ! java-pkg_needs-vm; then
-		echo "QA Notice: Package is using java-ant, but doesn't depend on a Java VM"
+		eqawarn "Package is using java-ant, but doesn't depend on a Java VM"
 	fi
 
 	pushd "${S}" >/dev/null || die
