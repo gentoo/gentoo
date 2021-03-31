@@ -26,7 +26,8 @@ DEPEND="${RDEPEND}
 	sys-devel/flex
 	"
 src_configure() {
-	econf $(use_enable test glibtest)
+	econf $(use_enable test glibtest) \
+		--disable-python-bindings
 }
 
 src_install() {
