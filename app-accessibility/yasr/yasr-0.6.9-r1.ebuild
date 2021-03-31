@@ -26,9 +26,11 @@ PATCHES=(
 src_prepare() {
 	default
 
-	local x="${BROOT}"/usr/share/gettext/po/Makefile.in.in
-	# bug 330879
-	[[ -e $x ]] && cp -f $x po/ || die
+	if use nls ; then
+		local x="${BROOT}"/usr/share/gettext/po/Makefile.in.in
+		# bug 330879
+		[[ -e $x ]] && cp -f $x po/ || die
+	fi
 
 	rm -r "${S}"/m4 || die
 
