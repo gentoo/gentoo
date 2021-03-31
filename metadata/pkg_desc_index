@@ -1118,7 +1118,7 @@ app-crypt/mcrypt 2.6.8-r3: replacement of the old unix crypt(1)
 app-crypt/md4sum 0.02.03-r2: md4 and edonkey hash algorithm tool
 app-crypt/md5deep 4.4: Expanded md5sum program with recursive and comparison options
 app-crypt/md6sum 1.0-r2: A C implementation of MD6
-app-crypt/mhash 0.9.9.9-r2: library providing a uniform interface to a large number of hash algorithms
+app-crypt/mhash 0.9.9.9-r2: Library providing a uniform interface to a large number of hash algorithms
 app-crypt/minisign 0.8 0.9 9999: Dead simple tool to sign files and verify signatures
 app-crypt/mit-krb5 1.18.2-r3 1.18.3-r1 1.19.1: MIT Kerberos V
 app-crypt/mit-krb5-appl 1.0.3: Kerberized applications split from the main MIT Kerberos V distribution
@@ -13385,7 +13385,7 @@ media-libs/libtgvoip 2.4.4_p20201030 2.4.4_p20210302: VoIP library for Telegram 
 media-libs/libtheora 1.1.1-r2: The Theora Video Compression Codec
 media-libs/libtiger 0.3.4-r1: A rendering library for Kate streams using Pango and Cairo
 media-libs/libtimidity 0.2.6: MIDI to WAVE converter library
-media-libs/libuninameslist 20091231-r1: Library of unicode annotation data
+media-libs/libuninameslist 20091231-r1 20200413: Library of unicode annotation data
 media-libs/libuvc 0.0.6-r1: A cross-platform library for USB video devices, built atop libusb
 media-libs/libv4l 1.20.0: Separate libraries ebuild from upstream v4l-utils package
 media-libs/libvisio 0.1.7 9999: Library parsing the file format of MS Visio documents
