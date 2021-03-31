@@ -16,7 +16,13 @@
 # other files that come with automake, e.g. depcomp, mkinstalldirs, etc.
 #
 
-DEPEND="sys-devel/gnuconfig"
+case ${EAPI:-0} in
+	5|6|7)
+		;;
+	*)
+		die "EAPI ${EAPI} is unsupported!"
+		;;
+esac
 
 if [[ -z ${_GNUCONFIG_ECLASS} ]] ; then
  _GNUCONFIG_CLASS=1
@@ -99,12 +105,25 @@ gnuconfig_do_update() {
 # This searches the standard locations for the newest config.{sub|guess}, and
 # returns the directory where they can be found.
 gnuconfig_findnewest() {
-	local locations=(
-		"${EPREFIX}"/usr/share/misc/config.sub
-		"${EPREFIX}"/usr/share/gnuconfig/config.sub
-		"${EPREFIX}"/usr/share/automake*/config.sub
-		"${EPREFIX}"/usr/share/libtool/config.sub
+	local locations=()
+	local prefix
+
+	case ${EAPI} in
+		5|6)
+			prefix="${EPREFIX}"
+			;;
+		*)
+			prefix="${BROOT}"
+			;;
+	esac
+
+	locations+=(
+		"${prefix}"/usr/share/misc/config.sub
+		"${prefix}"/usr/share/gnuconfig/config.sub
+		"${prefix}"/usr/share/automake*/config.sub
+		"${prefix}"/usr/share/libtool/config.sub
 	)
+
 	grep -s '^timestamp' "${locations[@]}" | \
 		sort -r -n -t\' -k2 | \
 		sed -n '1{s,/config.sub:.*$,,;p;q}'
