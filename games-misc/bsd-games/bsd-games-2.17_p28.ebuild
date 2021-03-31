@@ -47,15 +47,13 @@ src_prepare() {
 		eapply "${debian_patch_dir}"/${patch}
 	done
 
+	# Additional patches on top of Debian patchset
 	eapply "${FILESDIR}"/${PN}-2.17-64bitutmp.patch
-	eapply -p0 "${FILESDIR}"/${PN}-2.17-bg.patch
-	eapply -p0 "${FILESDIR}"/${PN}-2.17-gcc4.patch
+	eapply "${FILESDIR}"/${PN}-2.17-bg.patch
+	eapply "${FILESDIR}"/${PN}-2.17-gcc4.patch
 	eapply "${FILESDIR}"/${PN}-2.17-rename-getdate-clash.patch
 
 	default
-
-	# TODO: Check this?
-	# Used by gentoo config.params. See bug 531200
 
 	# Use pkg-config to query Libs: from ncurses.pc (for eg. -ltinfo) wrt #459652
 	sed -i \
@@ -74,7 +72,7 @@ src_prepare() {
 		-e '/^LDFLAGS/s/LDFLAGS := /LDFLAGS := \$(LDFLAGS) /' \
 		Makeconfig.in || die
 
-    # export GAMES_BINDIR GAMES_DATADIR GAMES_STATEDIR
+	# Used by config.params
 	export GAMES_BINDIR=/usr/bin
 	export GAMES_DATADIR=/usr/share
 	export GAMES_STATEDIR=/var/games
