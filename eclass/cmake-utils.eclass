@@ -94,6 +94,7 @@ _CMAKE_UTILS_ECLASS=1
 # "no" to disable (default) or anything else to enable.
 
 # @ECLASS-VARIABLE: CMAKE_EXTRA_CACHE_FILE
+# @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Specifies an extra cache file to pass to cmake. This is the analog of EXTRA_ECONF
@@ -101,6 +102,7 @@ _CMAKE_UTILS_ECLASS=1
 # Should be set by user in a per-package basis in /etc/portage/package.env.
 
 # @ECLASS-VARIABLE: CMAKE_UTILS_QA_SRC_DIR_READONLY
+# @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # After running cmake-utils_src_prepare, sets ${S} to read-only. This is
