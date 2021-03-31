@@ -55,19 +55,19 @@ esac
 # Defaults to the patchset name appended to the working directory.
 [[ -n "${GENTOO_PATCHDIR}" ]] || GENTOO_PATCHDIR="${WORKDIR}/${GENTOO_PATCHNAME}"
 
-# @VARIABLE: GENTOO_DEVELOPER
+# @ECLASS_VARIABLE: GENTOO_DEVELOPER
 # @PRE_INHERIT
 # @DESCRIPTION:
 # This variable needs to be set in the ebuild and contains the name of the
 # gentoo developer who created the patch tarball
 
-# @VARIABLE: GENTOO_PATCHSTAMP
+# @ECLASS_VARIABLE: GENTOO_PATCHSTAMP
 # @PRE_INHERIT
 # @DESCRIPTION:
 # This variable needs to be set in the ebuild and contains the date the patch
 # tarball was created at in YYYYMMDD format
 
-# @VARIABLE: GENTOO_PATCH_A
+# @ECLASS_VARIABLE: GENTOO_PATCH_A
 # @PRE_INHERIT
 # @DESCRIPTION:
 # This variable should contain the entire filename of patch tarball.
@@ -77,19 +77,19 @@ esac
 SRC_URI="mirror://apache/httpd/httpd-${PV}.tar.bz2
 	https://dev.gentoo.org/~${GENTOO_DEVELOPER}/dist/apache/${GENTOO_PATCH_A}"
 
-# @VARIABLE: IUSE_MPMS_FORK
+# @ECLASS_VARIABLE: IUSE_MPMS_FORK
 # @PRE_INHERIT
 # @DESCRIPTION:
 # This variable needs to be set in the ebuild and contains a list of forking
 # (i.e.  non-threaded) MPMs
 
-# @VARIABLE: IUSE_MPMS_THREAD
+# @ECLASS_VARIABLE: IUSE_MPMS_THREAD
 # @PRE_INHERIT
 # @DESCRIPTION:
 # This variable needs to be set in the ebuild and contains a list of threaded
 # MPMs
 
-# @VARIABLE: IUSE_MODULES
+# @ECLASS_VARIABLE: IUSE_MODULES
 # @PRE_INHERIT
 # @DESCRIPTION:
 # This variable needs to be set in the ebuild and contains a list of available
