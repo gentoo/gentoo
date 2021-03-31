@@ -65,12 +65,12 @@ if [[ "${SSL_DEPS_SKIP}" == "0" ]]; then
 fi
 
 # @FUNCTION: gen_cnf
+# @INTERNAL
 # @USAGE:
 # @DESCRIPTION:
 # Initializes variables and generates the needed
 # OpenSSL configuration file and a CA serial file
 #
-# Access: private
 gen_cnf() {
 	# Location of the config file
 	SSL_CONF="${T}/${$}ssl.cnf"
@@ -117,13 +117,13 @@ gen_cnf() {
 }
 
 # @FUNCTION: get_base
+# @INTERNAL
 # @USAGE: [if_ca]
 # @RETURN: <base path>
 # @DESCRIPTION:
 # Simple function to determine whether we're creating
 # a CA (which should only be done once) or final part
 #
-# Access: private
 get_base() {
 	if [ "${1}" ] ; then
 		echo "${T}/${$}ca"
@@ -133,11 +133,11 @@ get_base() {
 }
 
 # @FUNCTION: gen_key
+# @INTERNAL
 # @USAGE: <base path>
 # @DESCRIPTION:
 # Generates an RSA key
 #
-# Access: private
 gen_key() {
 	local base=$(get_base "$1")
 	ebegin "Generating ${SSL_BITS} bit RSA key${1:+ for CA}"
@@ -153,12 +153,12 @@ gen_key() {
 }
 
 # @FUNCTION: gen_csr
+# @INTERNAL
 # @USAGE: <base path>
 # @DESCRIPTION:
 # Generates a certificate signing request using
 # the key made by gen_key()
 #
-# Access: private
 gen_csr() {
 	local base=$(get_base "$1")
 	ebegin "Generating Certificate Signing Request${1:+ for CA}"
@@ -170,6 +170,7 @@ gen_csr() {
 }
 
 # @FUNCTION: gen_crt
+# @INTERNAL
 # @USAGE: <base path>
 # @DESCRIPTION:
 # Generates either a self-signed CA certificate using
@@ -177,7 +178,6 @@ gen_csr() {
 # a signed server certificate using the CA cert previously
 # created by gen_crt()
 #
-# Access: private
 gen_crt() {
 	local base=$(get_base "$1")
 	if [ "${1}" ] ; then
@@ -200,12 +200,12 @@ gen_crt() {
 }
 
 # @FUNCTION: gen_pem
+# @INTERNAL
 # @USAGE: <base path>
 # @DESCRIPTION:
 # Generates a PEM file by concatinating the key
 # and cert file created by gen_key() and gen_cert()
 #
-# Access: private
 gen_pem() {
 	local base=$(get_base "$1")
 	ebegin "Generating PEM Certificate"
@@ -224,7 +224,6 @@ gen_pem() {
 #
 # Example: "install_cert /foo/bar" installs ${ROOT}/foo/bar.{key,csr,crt,pem}
 #
-# Access: public
 install_cert() {
 	if [ $# -lt 1 ] ; then
 		eerror "At least one argument needed"
