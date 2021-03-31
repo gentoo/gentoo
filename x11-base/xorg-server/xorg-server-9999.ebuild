@@ -87,9 +87,7 @@ CDEPEND="
 	)
 	!!x11-drivers/nvidia-drivers[-libglvnd(+)]
 "
-
 DEPEND="${CDEPEND}
-	sys-devel/flex
 	>=x11-base/xorg-proto-2018.4
 	dmx? (
 		doc? (
@@ -99,13 +97,15 @@ DEPEND="${CDEPEND}
 				www-client/w3m
 			)
 		)
-	)"
-
+	)
+"
 RDEPEND="${CDEPEND}
 	!systemd? ( gui-libs/display-manager-init )
 	selinux? ( sec-policy/selinux-xserver )
 "
-
+BDEPEND="
+	sys-devel/flex
+"
 PDEPEND="
 	xorg? ( >=x11-base/xorg-drivers-$(ver_cut 1-2) )"
 
