@@ -1,8 +1,8 @@
 Respect CC,CFLAGS, fix install paths, don't strip binaries
 
 https://bugs.gentoo.org/show_bug.cgi?id=374805
---- Makefile.in
-+++ Makefile.in
+--- a/Makefile.in
++++ b/Makefile.in
 @@ -1,12 +1,15 @@
 -prefix		= $(DESTDIR)@prefix@
 -exec_prefix	= $(DESTDIR)@exec_prefix@
