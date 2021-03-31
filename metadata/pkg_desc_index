@@ -1183,7 +1183,7 @@ app-crypt/tpm2-totp 0.3.0: Attest the trustworthiness of a device against a huma
 app-crypt/tpm2-tss 2.4.3 2.4.5 3.0.3: TCG Trusted Platform Module 2.0 Software Stack
 app-crypt/tpm2-tss-engine 1.1.0: OpenSSL Engine for TPM2 devices
 app-crypt/trousers 0.3.14-r3 0.3.15: An open-source TCG Software Stack (TSS) v1.1 implementation
-app-crypt/ubuntu-keyring 2020.02.11.2 2020.06.17.1: GnuPG archive keys of the Ubuntu archive
+app-crypt/ubuntu-keyring 2020.02.11.2 2020.06.17.1 2021.03.26: GnuPG archive keys of the Ubuntu archive
 app-crypt/veracrypt 1.24_p8: Disk encryption with strong security based on TrueCrypt
 app-crypt/xca 2.1.2 2.1.2-r1 2.3.0: A GUI to OpenSSL, RSA public keys, certificates, signing requests etc
 app-crypt/xor-analyze 0.5-r1: program for cryptanalyzing xor 'encryption' with variable key length
@@ -12636,7 +12636,7 @@ mail-filter/spamprobe 1.4d-r1: Fast, intelligent, automatic spam detector using 
 mail-filter/spf-engine 2.0.2-r1 2.9.2: Policy daemon and milter for Postfix SPF verification
 mail-filter/sqlgrey 1.7.6-r2 1.8.0: A postfix policy service implementing a grey-listing policy
 mail-filter/zdkimfilter 1.8 2.1 2.2: DKIM filter for Courier-MTA
-mail-mta/courier 1.0.5 1.0.13 1.0.14 1.0.17: An MTA designed specifically for maildirs
+mail-mta/courier 1.0.5 1.0.13 1.0.14 1.0.17 1.1.2: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2-r1: User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
 mail-mta/exim 4.93.0.4-r2 4.94-r2: A highly configurable, drop-in replacement for sendmail
 mail-mta/msmtp 1.8.12 1.8.14 1.8.15: An SMTP client and SMTP plugin for mail user agents such as Mutt
