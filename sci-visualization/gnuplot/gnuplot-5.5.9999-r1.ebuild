@@ -183,8 +183,8 @@ src_install() {
 		# Demo files
 		insinto /usr/share/${PN}/${GP_VERSION}
 		doins -r demo
-		rm -f "${ED}"/usr/share/${PN}/${GP_VERSION}/demo/Makefile*
-		rm -f "${ED}"/usr/share/${PN}/${GP_VERSION}/demo/binary*
+		rm "${ED}"/usr/share/${PN}/${GP_VERSION}/demo/binary{1,2,3} || die
+		rm "${ED}"/usr/share/${PN}/${GP_VERSION}/demo/plugin/*.{o,so} || die
 	fi
 
 	if use doc; then
