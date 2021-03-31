@@ -53,6 +53,7 @@ ANT_TASK_JREVER=${ANT_TASK_JREVER-1.8}
 ANT_TASK_NAME="${PN#ant-}"
 
 # @ECLASS-VARIABLE: ANT_TASK_DEPNAME
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Specifies JAVA_PKG_NAME (PN{-SLOT} used with java-pkg_jar-from) of the package
 # that this one depends on. Defaults to the name of ant task, ebuild can
