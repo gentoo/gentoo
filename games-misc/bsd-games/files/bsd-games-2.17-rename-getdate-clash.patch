@@ -1,5 +1,3 @@
-diff --git a/hack/extern.h b/hack/extern.h
-index e2ef242..7c5085f 100644
 --- a/hack/extern.h
 +++ b/hack/extern.h
 @@ -583,7 +583,7 @@ int role_index(int);
@@ -11,8 +9,6 @@ index e2ef242..7c5085f 100644
  int phase_of_the_moon(void);
  int night(void);
  int midnight(void);
-diff --git a/hack/hack.end.c b/hack/hack.end.c
-index 3145fd7..36e4796 100644
 --- a/hack/hack.end.c
 +++ b/hack/hack.end.c
 @@ -360,7 +360,7 @@ topten()
@@ -24,8 +20,6 @@ index 3145fd7..36e4796 100644
  
  	/* assure minimum number of points */
  	if (t0->points < POINTSMIN)
-diff --git a/hack/hack.unix.c b/hack/hack.unix.c
-index 13f9724..ef17788 100644
 --- a/hack/hack.unix.c
 +++ b/hack/hack.unix.c
 @@ -118,7 +118,7 @@ getyear()

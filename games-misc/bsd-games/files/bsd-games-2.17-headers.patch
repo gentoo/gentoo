@@ -1,7 +1,7 @@
 http://bugs.gentoo.org/128348
 
---- include/stdio.h
-+++ include/stdio.h
+--- a/include/stdio.h
++++ b/include/stdio.h
 @@ -35,5 +35,11 @@
  #include_next <stdio.h>
  
