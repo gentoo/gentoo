@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: darcs.eclass
@@ -71,6 +71,7 @@ SRC_URI=""
 : ${EDARCS_REPOSITORY:=}
 
 # @ECLASS-VARIABLE: EDARCS_OFFLINE
+# @USER_VARIABLE
 # @DESCRIPTION:
 # Set this variable to a non-empty value to disable the automatic updating of
 # a darcs repository. This is intended to be set outside the darcs source
