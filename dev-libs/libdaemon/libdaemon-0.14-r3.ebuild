@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit multilib-minimal
+inherit autotools multilib-minimal
 
 DESCRIPTION="Simple library for creating daemon processes in C"
 HOMEPAGE="http://0pointer.de/lennart/projects/libdaemon/"
@@ -22,6 +22,11 @@ PATCHES=(
 
 src_prepare() {
 	default
+
+	# Refresh bundled libtool (ltmain.sh)
+	# (elibtoolize is insufficient)
+	# bug #668404
+	eautoreconf
 
 	# doxygen is broken with out-of-source builds
 	multilib_copy_sources
