@@ -44,6 +44,7 @@ src_prepare() {
 		append-cppflags $($(tc-getPKG_CONFIG) --cflags libiodbc)
 
 	default
+
 	eautoreconf
 }
 
@@ -64,11 +65,26 @@ src_configure() {
 
 src_install() {
 	default
+
 	if use examples; then
+		# The top-level Makefile descends into the "examples" directory
+		# unconditionally, building a program and excreting build
+		# artifacts that we don't want to install. Note: this still
+		# leaves the example program /usr/bin/glpsol installed. An
+		# additional "emake ... uninstall" could probably take care
+		# of that if desired.
+		emake -C examples clean
+
+		# Installing the Makefiles for the examples does the user no
+		# good without the top-level Makefile.
+		rm examples/Makefile{.in,.am,} \
+			|| die "failed to remove example Makefiles"
+
 		insinto "/usr/share/doc/${PF}"
 		doins -r examples
 		docompress -x "/usr/share/doc/${PF}/examples"
 	fi
+
 	use doc && dodoc doc/*.pdf doc/notes/*.pdf doc/*.txt
 
 	# no static archives
