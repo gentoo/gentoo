@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cargo.eclass
@@ -204,7 +204,6 @@ cargo_src_unpack() {
 # @FUNCTION: cargo_live_src_unpack
 # @DESCRIPTION:
 # Runs 'cargo fetch' and vendors downloaded crates for offline use, used in live ebuilds
-
 cargo_live_src_unpack() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -316,7 +315,6 @@ cargo_live_src_unpack() {
 # In some cases crates may need '--no-default-features' option,
 # as there is no way to disable single feature, except disabling all.
 # It can be passed directly to cargo_src_configure().
-
 cargo_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -361,7 +359,6 @@ cargo_src_compile() {
 # In come case workspaces need alternative --path parameter
 # default is '--path ./' if nothing specified.
 # '--path ./somedir' can be passed directly to cargo_src_install()
-
 cargo_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
