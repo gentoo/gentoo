@@ -43,6 +43,7 @@ if [[ ${CATEGORY} = media-fonts ]]; then
 fi
 
 # @ECLASS-VARIABLE: XORG_MULTILIB
+# @PRE_INHERIT
 # @DESCRIPTION:
 # If set to 'yes', the multilib support for package will be enabled. Set
 # before inheriting this eclass.
@@ -68,18 +69,21 @@ EXPORT_FUNCTIONS ${EXPORTED_FUNCTIONS}
 IUSE=""
 
 # @ECLASS-VARIABLE: XORG_EAUTORECONF
+# @PRE_INHERIT
 # @DESCRIPTION:
 # If set to 'yes' and configure.ac exists, eautoreconf will run. Set
 # before inheriting this eclass.
 : ${XORG_EAUTORECONF:="no"}
 
 # @ECLASS-VARIABLE: XORG_BASE_INDIVIDUAL_URI
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Set up SRC_URI for individual modular releases. If set to an empty
 # string, no SRC_URI will be provided by the eclass.
 : ${XORG_BASE_INDIVIDUAL_URI="https://www.x.org/releases/individual"}
 
 # @ECLASS-VARIABLE: XORG_MODULE
+# @PRE_INHERIT
 # @DESCRIPTION:
 # The subdirectory to download source from. Possible settings are app,
 # doc, data, util, driver, font, lib, proto, xserver. Set above the
@@ -99,6 +103,7 @@ if [[ ${XORG_MODULE} == auto ]]; then
 fi
 
 # @ECLASS-VARIABLE: XORG_PACKAGE_NAME
+# @PRE_INHERIT
 # @DESCRIPTION:
 # For git checkout the git repository might differ from package name.
 # This variable can be used for proper directory specification
@@ -148,6 +153,7 @@ if [[ ${FONT} == yes ]]; then
 		>=x11-apps/mkfontscale-1.2.0"
 
 	# @ECLASS-VARIABLE: FONT_DIR
+	# @PRE_INHERIT
 	# @DESCRIPTION:
 	# If you're creating a font package and the suffix of PN is not equal to
 	# the subdirectory of /usr/share/fonts/ it should install into, set
