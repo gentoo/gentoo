@@ -17,6 +17,8 @@ RDEPEND="sys-libs/ncurses:0="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}"/${P}-missing-include.patch )
+
 src_prepare() {
 	default
 
