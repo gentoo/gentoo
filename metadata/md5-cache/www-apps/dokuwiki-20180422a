@@ -3,11 +3,12 @@ DEPEND=|| ( virtual/httpd-cgi virtual/httpd-fastcgi ) >=app-admin/webapp-config-
 DESCRIPTION=DokuWiki is a simple to use Wiki aimed at a small company's documentation needs.
 EAPI=6
 HOMEPAGE=https://wiki.dokuwiki.org
+INHERIT=webapp
 IUSE=gd vhosts
 KEYWORDS=~amd64 ~ppc ~sparc ~x86
 LICENSE=GPL-2
 RDEPEND=>=dev-lang/php-5.3[xml] virtual/httpd-php:* gd? ( || ( dev-lang/php[gd] media-gfx/imagemagick ) ) >=app-admin/webapp-config-1.50.15
 SLOT=20180422a
 SRC_URI=https://download.dokuwiki.org/src/dokuwiki/dokuwiki-2018-04-22a.tgz
-_eclasses_=webapp	1d03df021d958f89f4cc78e289d0b116
+_eclasses_=webapp	990ad6a000cf18d1ef87117e8c7b0a54
 _md5_=703050eb8a5e22b36f9fb368f0a0acdf

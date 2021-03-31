@@ -3,9 +3,10 @@ DEPEND=net-im/pidgin dev-libs/json-glib virtual/pkgconfig >=dev-vcs/git-1.8.2.1[
 DESCRIPTION=SkypeWeb Plugin for Pidgin
 EAPI=5
 HOMEPAGE=https://github.com/EionRobb/skype4pidgin
+INHERIT=git-r3
 LICENSE=GPL-3+
 PROPERTIES=live
 RDEPEND=net-im/pidgin dev-libs/json-glib
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441
+_eclasses_=git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=1f83946d74eac1c1d51e413dcd26c431

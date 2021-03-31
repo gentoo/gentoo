@@ -3,10 +3,11 @@ DEPEND=x11-libs/gtk+:2 dev-perl/Gtk2 dev-perl/IO-stringy virtual/perl-Pod-Parser
 DESCRIPTION=a Gtk2 widget for displaying Plain old Documentation (POD)
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Gtk2-Ex-PodViewer
+INHERIT=perl-module
 KEYWORDS=amd64 x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=x11-libs/gtk+:2 dev-perl/Gtk2 dev-perl/IO-stringy virtual/perl-Pod-Parser virtual/perl-Pod-Simple dev-perl/Gtk2-Ex-Simple-List dev-perl/Locale-gettext dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/G/GB/GBROWN/Gtk2-Ex-PodViewer-0.18.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	ae176ff49e02bcbe576f6436b031c518
 _md5_=844ac7f31fcc3ac42b307fbb99fe49e4

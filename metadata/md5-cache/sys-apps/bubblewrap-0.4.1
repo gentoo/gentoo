@@ -4,6 +4,7 @@ DEPEND=sys-libs/libseccomp sys-libs/libcap selinux? ( >=sys-libs/libselinux-2.1.
 DESCRIPTION=Unprivileged sandboxing tool, namespaces-powered chroot-like solution
 EAPI=7
 HOMEPAGE=https://github.com/containers/bubblewrap/
+INHERIT=bash-completion-r1 linux-info
 IUSE=selinux +suid kernel_linux
 KEYWORDS=amd64 arm arm64 ~ppc ppc64 x86
 LICENSE=LGPL-2+
@@ -11,5 +12,5 @@ RDEPEND=sys-libs/libseccomp sys-libs/libcap selinux? ( >=sys-libs/libselinux-2.1
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/containers/bubblewrap/releases/download/v0.4.1/bubblewrap-0.4.1.tar.xz
-_eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	be99724bde4274de21e581204e9d164a	linux-info	30ded7f9adbdd03d3e848cdd74f6c395
 _md5_=08dea5ee5a9f89810dc573cc3f8d4305

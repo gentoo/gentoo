@@ -3,10 +3,11 @@ DEFINED_PHASES=install unpack
 DESCRIPTION=HP Lights-Out Online Configuration Utility (HPONCFG)
 EAPI=7
 HOMEPAGE=http://h20564.www2.hpe.com/hpsc/swd/public/detail?swItemId=MTX_5ab6295f49964f16a699064f29
+INHERIT=pax-utils rpm
 KEYWORDS=-* ~amd64
 LICENSE=hpe
 RDEPEND=elibc_glibc? ( >sys-libs/glibc-2.14 )
 SLOT=0
 SRC_URI=amd64? ( https://downloads.linux.hpe.com/SDR/repo/spp/RHEL/7/x86_64/current/hponcfg-5.5.0-0.x86_64.rpm )
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	estack	055c42df72f76a4f45ec92b35e83cd56	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	rpm	760ff223c2c4299b68ea901e24c4cabd	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=pax-utils	d3fc79d3d50544347e324864f95206e2	estack	055c42df72f76a4f45ec92b35e83cd56	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	rpm	760ff223c2c4299b68ea901e24c4cabd
 _md5_=0b8b0bd7484167da29c189fcf49fa763

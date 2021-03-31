@@ -11,5 +11,5 @@ LICENSE=GPL-2+
 RDEPEND=>=app-emacs/apel-10.8 >=app-emacs/flim-1.14.9 >=app-emacs/semi-1.14.7 bbdb? ( app-emacs/bbdb ) >=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://github.com/wanderlust/wanderlust/archive/b9a529a54b9e7eafa4ed230ad28efffe0d25a20e.tar.gz -> wanderlust-2.15.9_p20190623.tar.gz
-_eclasses_=elisp-common	36f97076abd90f943a34f8bcd58b5bcc	elisp	00840e1f4eb277c757dbfa5abf73c4c7
+_eclasses_=elisp-common	36f97076abd90f943a34f8bcd58b5bcc	elisp	023dd24ad9e6d5e62907e7007f548ca3
 _md5_=5b15c148c95529b83eb33d507b8ec4db

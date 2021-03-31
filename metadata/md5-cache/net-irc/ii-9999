@@ -3,8 +3,9 @@ DEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=A minimalist FIFO and filesystem-based IRC client
 EAPI=6
 HOMEPAGE=https://tools.suckless.org/ii/
+INHERIT=git-r3 toolchain-funcs
 LICENSE=MIT
 PROPERTIES=live
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=git-r3	b8e8c92aa5fe8df7187e466138eb4e52	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
 _md5_=87e5fb124a9c4f1cea229d47ffda8bd8

@@ -2,10 +2,11 @@ DEFINED_PHASES=install postinst postrm
 DESCRIPTION=Framework for caching of arbitrary data
 EAPI=6
 HOMEPAGE=https://pear.php.net/package/Cache
+INHERIT=php-pear-r2
 KEYWORDS=~alpha amd64 arm ~hppa ~ia64 ppc ppc64 ~s390 sparc x86
 LICENSE=PHP-2.02
 RDEPEND=>=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://pear.php.net/get/Cache-1.5.6.tgz
-_eclasses_=php-pear-r2	04ac1c3f5c35d8296eb969ef31e8477c
+_eclasses_=php-pear-r2	4a7c293febeea04349068d5716ad29ff
 _md5_=a6a19b55ec680d053fe2472ce4780a57

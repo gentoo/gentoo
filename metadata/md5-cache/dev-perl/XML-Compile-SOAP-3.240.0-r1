@@ -3,6 +3,7 @@ DEPEND=dev-perl/File-Slurp-Tiny >=dev-perl/libwww-perl-6.80.0 >=dev-perl/Log-Rep
 DESCRIPTION=Soap 1.1 XML Compiler
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/XML-Compile-SOAP
+INHERIT=perl-module
 IUSE=test examples
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
@@ -10,5 +11,5 @@ RDEPEND=dev-perl/File-Slurp-Tiny >=dev-perl/libwww-perl-6.80.0 >=dev-perl/Log-Re
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MA/MARKOV/XML-Compile-SOAP-3.24.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	ae176ff49e02bcbe576f6436b031c518
 _md5_=360b1cef7a67d79bb6e2ea71a9523a6f

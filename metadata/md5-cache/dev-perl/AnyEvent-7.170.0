@@ -4,6 +4,7 @@ DEPEND=dev-lang/perl
 DESCRIPTION=Provides a uniform interface to various event loops
 EAPI=7
 HOMEPAGE=https://metacpan.org/release/AnyEvent
+INHERIT=perl-module optfeature virtualx
 IUSE=test
 KEYWORDS=~alpha amd64 arm ~arm64 ~ia64 ppc ppc64 sparc x86 ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
@@ -11,5 +12,5 @@ RDEPEND=dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/ML/MLEHMANN/AnyEvent-7.17.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	optfeature	6a2add34e06e5a05d88471a33ccdd73e	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83	virtualx	7e60d3b10c791ab996f717bc1f30072f
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	ae176ff49e02bcbe576f6436b031c518	optfeature	6a2add34e06e5a05d88471a33ccdd73e	virtualx	d828f8a6cfc731f2683d0967d3f2f95a
 _md5_=d08b20ffeefb0d43ae179260061cd5db

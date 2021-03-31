@@ -10,5 +10,5 @@ PROPERTIES=live
 RDEPEND=filecaps? ( sys-libs/libcap )
 SLOT=0
 SRC_URI=ipv6? ( https://dev.gentoo.org/~jer/netselect-0.4-ipv6.patch.xz )
-_eclasses_=fcaps	da689a8e04bbbb3518888ff668fee45b	git-r3	3e7ec3d6619213460c85e2aa48398441	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_eclasses_=fcaps	da689a8e04bbbb3518888ff668fee45b	git-r3	b8e8c92aa5fe8df7187e466138eb4e52	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
 _md5_=c64a99c33267aed77e5b8e7cff7d5c42

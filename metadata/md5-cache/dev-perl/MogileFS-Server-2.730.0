@@ -3,6 +3,7 @@ DEPEND=dev-perl/Net-Netmask >=dev-perl/Danga-Socket-1.610.0 >=dev-perl/Sys-Sysca
 DESCRIPTION=Server for the MogileFS distributed file system
 EAPI=6
 HOMEPAGE=http://www.danga.com/mogilefs/ https://metacpan.org/release/MogileFS-Server
+INHERIT=user perl-module
 IUSE=mysql +sqlite test postgres
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=|| ( Artistic GPL-2 )
@@ -11,5 +12,5 @@ REQUIRED_USE=test? ( sqlite ) || ( mysql sqlite postgres )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DO/DORMANDO/MogileFS-Server-2.73.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+_eclasses_=user-info	a2abd4e2f4c3b9b06d64bf1329359a02	user	26d8ce6329c43cbac965617f1c0627e2	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	ae176ff49e02bcbe576f6436b031c518
 _md5_=e89db0fae443c06b26498ea31a739835

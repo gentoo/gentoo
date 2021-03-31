@@ -3,6 +3,7 @@ DEPEND=app-arch/unzip >=app-admin/webapp-config-1.50.15
 DESCRIPTION=Lightweight CalDAV+CardDAV server
 EAPI=7
 HOMEPAGE=https://sabre.io/baikal/
+INHERIT=webapp
 IUSE=+mysql sqlite vhosts
 KEYWORDS=~amd64 ~arm ~ppc64
 LICENSE=GPL-3
@@ -10,5 +11,5 @@ RDEPEND=>=dev-lang/php-6[ctype,filter,json(+),pdo,session,xml,xmlreader,xmlwrite
 REQUIRED_USE=|| ( mysql sqlite )
 SLOT=0.7.2
 SRC_URI=https://github.com/sabre-io/Baikal/releases/download/0.7.2/baikal-0.7.2.zip
-_eclasses_=webapp	1d03df021d958f89f4cc78e289d0b116
+_eclasses_=webapp	990ad6a000cf18d1ef87117e8c7b0a54
 _md5_=8e23b9c1f1d48a1e3580f19d9149d721

@@ -3,11 +3,12 @@ DEPEND=app-arch/unzip >=virtual/jdk-1.8:* >=dev-java/java-config-2.2.0-r3 source
 DESCRIPTION=Implementation of xz data compression in pure java
 EAPI=7
 HOMEPAGE=https://tukaani.org/xz/java.html
+INHERIT=java-pkg-2 java-pkg-simple
 IUSE=elibc_FreeBSD doc examples source elibc_FreeBSD
 KEYWORDS=amd64 ~arm arm64 ppc64 x86
 LICENSE=public-domain
 RDEPEND=>=virtual/jre-1.8:* >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
 SLOT=0
 SRC_URI=https://tukaani.org/xz/xz-java-1.8.zip
-_eclasses_=java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-pkg-simple	a814c0c1adac3d7902bc7023902a2e1a	java-utils-2	378e4cda228ea0231a0ac283cb2ad25c
+_eclasses_=java-utils-2	2440f41421207d084e5e3f1fb001b34e	java-pkg-2	45c44ec10db6affb3ebee1ac72039888	java-pkg-simple	c85bf2d75a5f53e7b39fc9104701ebfb
 _md5_=f1356a24e35d53befcd5efdca3e82dd7

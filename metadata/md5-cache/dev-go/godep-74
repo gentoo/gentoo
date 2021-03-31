@@ -3,10 +3,11 @@ DEPEND=>=dev-lang/go-1.10
 DESCRIPTION=dependency tool for go
 EAPI=6
 HOMEPAGE=https://github.com/tools/godep
+INHERIT=golang-vcs-snapshot golang-build
 KEYWORDS=~amd64
 LICENSE=BSD
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/tools/godep/archive/v74.tar.gz -> godep-74.tar.gz
-_eclasses_=golang-base	904cd4c642d6923795b9bd99b6fe0e74	golang-build	91472d4e18894e738c69b415e236a664	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec
+_eclasses_=golang-base	b8fb27dacacea08140c53857f439fc7d	golang-vcs-snapshot	ff485cabd3f37b060f110b0be95092ec	golang-build	91472d4e18894e738c69b415e236a664
 _md5_=7c2391e9a22f872e92f81650b52363ba

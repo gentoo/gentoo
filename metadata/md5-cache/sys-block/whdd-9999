@@ -3,9 +3,10 @@ DEPEND=dev-util/dialog:= sys-libs/ncurses:0=[unicode] >=dev-vcs/git-1.8.2.1[curl
 DESCRIPTION=Diagnostic and recovery tool for block devices
 EAPI=6
 HOMEPAGE=https://whdd.github.io
+INHERIT=toolchain-funcs git-r3
 LICENSE=GPL-3
 PROPERTIES=live
 RDEPEND=dev-util/dialog:= sys-libs/ncurses:0=[unicode] sys-apps/smartmontools
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=7cf65bdf0f3074a9c108f5ea33536f7d

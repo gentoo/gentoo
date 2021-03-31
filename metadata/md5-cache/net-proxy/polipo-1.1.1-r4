@@ -9,5 +9,5 @@ KEYWORDS=amd64 x86
 LICENSE=MIT GPL-2
 SLOT=0
 SRC_URI=http://www.pps.jussieu.fr/~jch/software/files/polipo/polipo-1.1.1.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	user	26d8ce6329c43cbac965617f1c0627e2	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6
 _md5_=4b2284c020342d06c9d2e8d848868a88

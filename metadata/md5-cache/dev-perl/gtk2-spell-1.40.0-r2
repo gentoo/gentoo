@@ -3,6 +3,7 @@ DEPEND=x11-libs/gtk+:2 >=app-text/gtkspell-2:2 >=dev-perl/glib-perl-1.240.0 >=de
 DESCRIPTION=Bindings for GtkSpell with Gtk2.x
 EAPI=6
 HOMEPAGE=http://gtk2-perl.sf.net/ https://metacpan.org/release/Gtk2-Spell
+INHERIT=perl-module virtualx
 IUSE=test
 KEYWORDS=amd64 ~hppa ~ppc x86 ~amd64-linux ~x86-linux ~x86-solaris
 LICENSE=LGPL-2.1
@@ -10,5 +11,5 @@ RDEPEND=x11-libs/gtk+:2 >=app-text/gtkspell-2:2 >=dev-perl/glib-perl-1.240.0 >=d
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/T/TS/TSCH/Gtk2-Spell-1.04.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83	virtualx	7e60d3b10c791ab996f717bc1f30072f
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	ae176ff49e02bcbe576f6436b031c518	virtualx	d828f8a6cfc731f2683d0967d3f2f95a
 _md5_=b214f871ac180d76dd4f627855064037

@@ -3,9 +3,10 @@ DEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=GDL library from D. Fannings IDL courses
 EAPI=6
 HOMEPAGE=http://www.idlcoyote.com/
+INHERIT=git-r3
 LICENSE=BSD GPL-2
 PROPERTIES=live
 RDEPEND=dev-lang/gdl
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441
+_eclasses_=git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=510b2f169b9963d450eb9e3c34b08438

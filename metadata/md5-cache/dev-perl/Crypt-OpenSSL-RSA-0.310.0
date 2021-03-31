@@ -4,6 +4,7 @@ DEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) dev-
 DESCRIPTION=RSA encoding and decoding using the OpenSSL libraries
 EAPI=7
 HOMEPAGE=https://metacpan.org/release/Crypt-OpenSSL-RSA
+INHERIT=perl-module
 IUSE=libressl test
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos
 LICENSE=|| ( Artistic GPL-1+ )
@@ -11,5 +12,5 @@ RDEPEND=dev-perl/Crypt-OpenSSL-Bignum dev-perl/Crypt-OpenSSL-Random !libressl? (
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/T/TO/TODDR/Crypt-OpenSSL-RSA-0.31.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	ae176ff49e02bcbe576f6436b031c518
 _md5_=4eca5435dc54bb7c9d75c6711cf36387

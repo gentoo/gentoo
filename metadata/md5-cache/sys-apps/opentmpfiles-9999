@@ -3,10 +3,11 @@ DEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=A standalone utility to process systemd-style tmpfiles.d files
 EAPI=6
 HOMEPAGE=https://github.com/openrc/opentmpfiles
+INHERIT=prefix git-r3
 IUSE=selinux
 LICENSE=BSD-2
 PROPERTIES=live
 RDEPEND=!<sys-apps/openrc-0.23 selinux? ( sec-policy/selinux-base-policy )
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	prefix	de7d8e2b10085ed5ff09ad70e4753e5c
+_eclasses_=prefix	de7d8e2b10085ed5ff09ad70e4753e5c	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=916c44cdd12679aeb84f6491100493d3

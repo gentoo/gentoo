@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=net-nds/openldap
 SLOT=0
 SRC_URI=http://gp2x.org/adtool/adtool-1.3.3.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	out-of-source	15edba2977da53bbf4d1e5a60abc0e34
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	out-of-source	15edba2977da53bbf4d1e5a60abc0e34
 _md5_=5d6a06d9f8372c144c7b03cb1d4d29fb

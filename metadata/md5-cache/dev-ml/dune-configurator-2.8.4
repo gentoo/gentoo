@@ -4,6 +4,7 @@ DEPEND=~dev-ml/dune-private-libs-2.8.4:=[ocamlopt=] dev-ml/csexp:=[ocamlopt=] de
 DESCRIPTION=A composable build system for OCaml
 EAPI=7
 HOMEPAGE=https://github.com/ocaml/dune
+INHERIT=dune
 IUSE=+ocamlopt test
 KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
 LICENSE=MIT
@@ -11,5 +12,5 @@ RDEPEND=~dev-ml/dune-private-libs-2.8.4:=[ocamlopt=] dev-ml/csexp:=[ocamlopt=] d
 RESTRICT=!test? ( test )
 SLOT=0/2.8.4
 SRC_URI=https://github.com/ocaml/dune/archive/2.8.4.tar.gz -> dune-2.8.4.tar.gz
-_eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
+_eclasses_=dune	3cafc471b3e2c22dfa1c289440929c5b
 _md5_=f6945ecc3f0c437e485db49779afb240

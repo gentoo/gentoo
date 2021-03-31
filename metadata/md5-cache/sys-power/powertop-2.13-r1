@@ -11,5 +11,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/libnl:3 sys-apps/pciutils sys-libs/ncurses:=[unicode?] X? ( x11-apps/xset ) virtual/libintl
 SLOT=0
 SRC_URI=https://github.com/fenrus75/powertop/archive/v2.13.tar.gz -> powertop-2.13.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	linux-info	c90a203b1c14cfa77bd3e37a0e96c955
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	linux-info	30ded7f9adbdd03d3e848cdd74f6c395
 _md5_=a40049aff5f22c7d94398cce1942b52f

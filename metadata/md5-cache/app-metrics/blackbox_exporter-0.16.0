@@ -3,6 +3,7 @@ DEPEND=>=dev-lang/go-1.12 dev-util/promu >=dev-lang/go-1.10
 DESCRIPTION=Prometheus exporter for blackbox probing via HTTP, HTTPS, DNS, TCP and ICMP
 EAPI=6
 HOMEPAGE=https://github.com/prometheus/blackbox_exporter
+INHERIT=fcaps user golang-build golang-vcs-snapshot
 IUSE=+filecaps
 KEYWORDS=~amd64
 LICENSE=Apache-2.0 BSD BSD-2 MIT
@@ -10,5 +11,5 @@ RDEPEND=filecaps? ( sys-libs/libcap )
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/prometheus/blackbox_exporter/archive/v0.16.0.tar.gz -> blackbox_exporter-0.16.0.tar.gz
-_eclasses_=fcaps	da689a8e04bbbb3518888ff668fee45b	golang-base	904cd4c642d6923795b9bd99b6fe0e74	golang-build	91472d4e18894e738c69b415e236a664	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+_eclasses_=fcaps	da689a8e04bbbb3518888ff668fee45b	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	user	26d8ce6329c43cbac965617f1c0627e2	golang-base	b8fb27dacacea08140c53857f439fc7d	golang-build	91472d4e18894e738c69b415e236a664	golang-vcs-snapshot	ff485cabd3f37b060f110b0be95092ec
 _md5_=cd98d517a64961ed18f0f7f4b9fd85dc

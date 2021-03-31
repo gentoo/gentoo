@@ -10,5 +10,5 @@ LICENSE=GPL-1+ CC-BY-3.0
 RDEPEND=>=sys-libs/ncurses-5.2-r2:0= xterm? ( >=x11-terms/xterm-239 )
 SLOT=0
 SRC_URI=mirror://sourceforge/joe-editor/joe-4.3.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba
 _md5_=3d2ae181b00647475d579a566a39b0ba

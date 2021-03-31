@@ -4,6 +4,7 @@ DEPEND=dev-ml/cmdliner:=[ocamlopt] dev-lang/ocaml:=[ocamlopt] dev-ml/result:=[oc
 DESCRIPTION=Combinators to devise OCaml Format pretty-printing functions
 EAPI=7
 HOMEPAGE=https://erratique.ch/software/fmt https://github.com/dbuenzli/fmt
+INHERIT=findlib opam
 IUSE=test
 KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
 LICENSE=ISC
@@ -11,5 +12,5 @@ RDEPEND=dev-ml/cmdliner:=[ocamlopt] dev-lang/ocaml:=[ocamlopt] dev-ml/result:=[o
 RESTRICT=!test? ( test )
 SLOT=0/0.8.9
 SRC_URI=https://erratique.ch/software/fmt/releases/fmt-0.8.9.tbz
-_eclasses_=findlib	3d3de4bef686774baeeabfa2b916631c	opam	b2f22dc6e8db7cf1649d72fd9ee5a986
+_eclasses_=findlib	3d3de4bef686774baeeabfa2b916631c	opam	b961a62d9389bc7b60bcadb0c851459b
 _md5_=d159ad92e3706f47246bf040e6370a27

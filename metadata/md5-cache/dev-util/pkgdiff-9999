@@ -4,9 +4,10 @@ DEPEND=>=dev-lang/perl-5
 DESCRIPTION=Package Changes Analyzer (pkgdiff)
 EAPI=7
 HOMEPAGE=https://github.com/lvc/pkgdiff
+INHERIT=git-r3
 LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=>=dev-lang/perl-5 app-text/wdiff dev-perl/File-LibMagic sys-apps/diffutils sys-apps/gawk sys-devel/binutils
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441
+_eclasses_=git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=31c0edc67866aa7144473c1c8caf0658

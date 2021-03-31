@@ -4,10 +4,11 @@ DEPEND=dev-ml/topkg dev-ml/findlib >=dev-lang/ocaml-4:=
 DESCRIPTION=Unicode character properties for OCaml
 EAPI=7
 HOMEPAGE=https://erratique.ch/software/uucp https://github.com/dbuenzli/uucp
+INHERIT=opam
 KEYWORDS=~amd64 ~x86
 LICENSE=ISC
 RDEPEND=dev-ml/topkg dev-ml/findlib >=dev-lang/ocaml-4:=
 SLOT=0/13.0.0
 SRC_URI=https://erratique.ch/software/uucp/releases/uucp-13.0.0.tbz
-_eclasses_=opam	b2f22dc6e8db7cf1649d72fd9ee5a986
+_eclasses_=opam	b961a62d9389bc7b60bcadb0c851459b
 _md5_=4a27ceec805efbcff4b7cd52397326e9

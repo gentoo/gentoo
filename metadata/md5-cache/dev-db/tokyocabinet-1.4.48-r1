@@ -11,5 +11,5 @@ LICENSE=LGPL-2.1
 RDEPEND=bzip2? ( app-arch/bzip2 ) zlib? ( sys-libs/zlib )
 SLOT=0
 SRC_URI=https://fallabs.com/tokyocabinet/tokyocabinet-1.4.48.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba
 _md5_=94d1e5302e830271385facc08eee3c70

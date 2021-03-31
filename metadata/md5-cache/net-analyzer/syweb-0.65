@@ -3,11 +3,12 @@ DEPEND=|| ( virtual/httpd-cgi virtual/httpd-fastcgi ) >=app-admin/webapp-config-
 DESCRIPTION=Web frontend to symon
 EAPI=5
 HOMEPAGE=http://www.xs4all.nl/~wpd/symon/
+INHERIT=webapp
 IUSE=vhosts
 KEYWORDS=~amd64 ~sparc ~x86
 LICENSE=BSD-2
 RDEPEND=virtual/httpd-php net-analyzer/rrdtool >=app-admin/webapp-config-1.50.15
 SLOT=0
 SRC_URI=http://www.xs4all.nl/~wpd/symon/philes/syweb-0.65.tar.gz
-_eclasses_=webapp	1d03df021d958f89f4cc78e289d0b116
+_eclasses_=webapp	990ad6a000cf18d1ef87117e8c7b0a54
 _md5_=70ec7f21b4690ff98e09ee0bf419a38e

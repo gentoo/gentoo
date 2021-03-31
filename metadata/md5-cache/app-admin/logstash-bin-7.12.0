@@ -11,5 +11,5 @@ RDEPEND=acct-group/logstash acct-user/logstash virtual/jre >=dev-java/java-confi
 RESTRICT=strip
 SLOT=0
 SRC_URI=x-pack? ( https://artifacts.elastic.co/downloads/logstash/logstash-7.12.0-linux-x86_64.tar.gz ) !x-pack? ( https://artifacts.elastic.co/downloads/logstash/logstash-oss-7.12.0-linux-x86_64.tar.gz )
-_eclasses_=java-utils-2	378e4cda228ea0231a0ac283cb2ad25c	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb
+_eclasses_=java-utils-2	2440f41421207d084e5e3f1fb001b34e	java-pkg-2	45c44ec10db6affb3ebee1ac72039888
 _md5_=155ba86266876b1ea31938fc485922db

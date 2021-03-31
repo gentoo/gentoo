@@ -4052,7 +4052,6 @@ media-gfx/nomacs:plugins - Build officially support plugins
 media-gfx/nvidia-texture-tools:cg - Enable NVIDIA C graphics compiler toolkit plug-in
 media-gfx/nvidia-texture-tools:glew - Enable support for The OpenGL Extension Wrangler Library (media-libs/glew)
 media-gfx/openclipart:gzip - Compresses clip art using gzip
-media-gfx/openexr_viewers:cg - Add support for nvidia's cg shaders
 media-gfx/openscad:ccache - Use dev-util/ccache to speed up rebuilds
 media-gfx/openscad:gamepad - Add support for gamepads through dev-qt/qtgamepad
 media-gfx/openscad:headless - Build a binary without GUI

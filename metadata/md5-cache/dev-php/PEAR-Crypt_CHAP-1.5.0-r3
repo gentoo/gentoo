@@ -3,6 +3,7 @@ DEPEND=test? ( || ( ( dev-php/pecl-mcrypt >=dev-lang/php-7.2:*[hash(+)] ) <dev-l
 DESCRIPTION=Generating CHAP packets
 EAPI=7
 HOMEPAGE=https://pear.php.net/package/Crypt_CHAP
+INHERIT=php-pear-r2
 IUSE=test
 KEYWORDS=amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86
 LICENSE=BSD
@@ -10,5 +11,5 @@ RDEPEND=|| ( ( dev-php/pecl-mcrypt >=dev-lang/php-7.2:*[hash(+)] ) <dev-lang/php
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://pear.php.net/get/Crypt_CHAP-1.5.0.tgz
-_eclasses_=php-pear-r2	04ac1c3f5c35d8296eb969ef31e8477c
+_eclasses_=php-pear-r2	4a7c293febeea04349068d5716ad29ff
 _md5_=efbbe8edfda6f3009bc420d3de084e43

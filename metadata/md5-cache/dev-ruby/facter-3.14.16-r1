@@ -4,6 +4,7 @@ DEPEND=>=dev-cpp/cpp-hocon-0.2.1:= >=dev-libs/leatherman-1.0.0:= dev-libs/openss
 DESCRIPTION=A cross-platform ruby library for retrieving facts from operating systems
 EAPI=7
 HOMEPAGE=http://www.puppetlabs.com/puppet/related-projects/facter/
+INHERIT=cmake eutils ruby-ng
 IUSE=test ruby_targets_ruby25 ruby_targets_ruby26 ruby_targets_ruby27
 KEYWORDS=amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc x86
 LICENSE=Apache-2.0
@@ -12,5 +13,5 @@ REQUIRED_USE=|| ( ruby_targets_ruby25 ruby_targets_ruby26 ruby_targets_ruby27 )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/puppetlabs/facter/archive/3.14.16.tar.gz -> facter-3.14.16.tar.gz
-_eclasses_=cmake	314a813be2f09820e8978cdee941e501	edos2unix	33e347e171066657f91f8b0c72ec8773	estack	055c42df72f76a4f45ec92b35e83cd56	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	ruby-ng	676004cfb6cdf3dedf1c778d56346624	ruby-utils	03dfa7f54d59d740c2964dc7256d2820	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	cmake	518e4c9a6a38dfd7afc54b6a7c5de3da	estack	055c42df72f76a4f45ec92b35e83cd56	ruby-utils	03dfa7f54d59d740c2964dc7256d2820	ruby-ng	40ad5ce3f20bff3a06352fd3fb633cfd
 _md5_=dea72c42ef0ec27061e8566cd6e6545a

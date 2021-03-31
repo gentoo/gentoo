@@ -2,10 +2,11 @@ DEFINED_PHASES=install postinst postrm
 DESCRIPTION=Determines Web browser, version, and platform from an HTTP user agent string
 EAPI=6
 HOMEPAGE=https://pear.php.net/package/Net_UserAgent_Detect
+INHERIT=php-pear-r2
 KEYWORDS=~alpha amd64 ~hppa ~ia64 ppc ppc64 sparc x86
 LICENSE=PHP-2.02
 RDEPEND=>=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://pear.php.net/get/Net_UserAgent_Detect-2.5.2.tgz
-_eclasses_=php-pear-r2	04ac1c3f5c35d8296eb969ef31e8477c
+_eclasses_=php-pear-r2	4a7c293febeea04349068d5716ad29ff
 _md5_=720dca76c96078e1490080e42a530d93

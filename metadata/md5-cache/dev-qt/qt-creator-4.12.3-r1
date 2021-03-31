@@ -4,6 +4,7 @@ DEPEND=>=dev-cpp/yaml-cpp-0.6.2:= >=dev-qt/qtconcurrent-5.12.3:5 >=dev-qt/qtcore
 DESCRIPTION=Lightweight IDE for C++/QML development centering around Qt
 EAPI=7
 HOMEPAGE=https://doc.qt.io/qtcreator/
+INHERIT=llvm qmake-utils virtualx xdg
 IUSE=doc systemd test +webengine android +autotest baremetal beautifier boot2qt +clang clearcase cmake cppcheck ctfvisualizer cvs +designer git glsl +help ios lsp mcu mercurial modeling nim perforce perfprofiler python qbs +qmldesigner qmlprofiler qnx remotelinux scxml serialterminal silversearcher subversion valgrind webassembly winrt l10n_cs l10n_da l10n_de l10n_fr l10n_ja l10n_pl l10n_ru l10n_sl l10n_uk l10n_zh-CN l10n_zh-TW test
 KEYWORDS=~amd64 ~arm ~x86
 LICENSE=GPL-3
@@ -12,5 +13,5 @@ REQUIRED_USE=boot2qt? ( remotelinux ) clang? ( test? ( qbs ) ) mcu? ( cmake ) py
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://download.qt.io/official_releases/qtcreator/4.12/4.12.3/qt-creator-opensource-src-4.12.3.tar.xz
-_eclasses_=llvm	96482dd3973a93c32659252dfeba1433	multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	virtualx	7e60d3b10c791ab996f717bc1f30072f	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=llvm	96482dd3973a93c32659252dfeba1433	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	virtualx	d828f8a6cfc731f2683d0967d3f2f95a	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
 _md5_=5c9c7b683d4e4841f5283154aec317a5

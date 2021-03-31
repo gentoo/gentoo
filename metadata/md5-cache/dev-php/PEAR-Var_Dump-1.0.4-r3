@@ -3,6 +3,7 @@ DEPEND=test? ( dev-php/PEAR-PEAR )
 DESCRIPTION=Dump structured information about a variable
 EAPI=6
 HOMEPAGE=https://pear.php.net/package/Var_Dump
+INHERIT=php-pear-r2
 IUSE=examples test
 KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=PHP-3.01
@@ -10,5 +11,5 @@ RDEPEND=>=dev-php/pear-1.8.1
 RESTRICT=test
 SLOT=0
 SRC_URI=https://pear.php.net/get/Var_Dump-1.0.4.tgz
-_eclasses_=php-pear-r2	04ac1c3f5c35d8296eb969ef31e8477c
+_eclasses_=php-pear-r2	4a7c293febeea04349068d5716ad29ff
 _md5_=02b5fbb419ef21434c3df1528f43148a

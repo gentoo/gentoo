@@ -4,11 +4,12 @@ DEPEND=dev-lang/ocaml:= dev-ml/async:= dev-ml/base:= dev-ml/core:= dev-ml/dune-c
 DESCRIPTION=An Async-pipe-based interface with OpenSSL.
 EAPI=7
 HOMEPAGE=https://github.com/janestreet/async_ssl
+INHERIT=dune
 IUSE=+ocamlopt
 KEYWORDS=~amd64
 LICENSE=MIT
 RDEPEND=dev-lang/ocaml:= dev-ml/async:= dev-ml/base:= dev-ml/core:= dev-ml/dune-configurator:= dev-ml/ppx_jane:= dev-ml/stdio:= dev-ml/ocaml-ctypes:= dev-libs/openssl:0= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/async_ssl/archive/v0.14.0.tar.gz -> async_ssl-0.14.0.tar.gz
-_eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
+_eclasses_=dune	3cafc471b3e2c22dfa1c289440929c5b
 _md5_=c6b0631777d3f80527b6befcfb36b1bf

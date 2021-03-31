@@ -3,6 +3,7 @@ DEPEND=test? ( dev-php/PEAR-PEAR dev-php/phpunit )
 DESCRIPTION=Implementation of Hashed Message Authentication Code for PHP5
 EAPI=6
 HOMEPAGE=https://pear.php.net/package/Crypt_HMAC2
+INHERIT=php-pear-r2
 IUSE=test
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD
@@ -10,5 +11,5 @@ RDEPEND=>=dev-php/pear-1.8.1
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://pear.php.net/get/Crypt_HMAC2-1.0.0.tgz
-_eclasses_=php-pear-r2	04ac1c3f5c35d8296eb969ef31e8477c
+_eclasses_=php-pear-r2	4a7c293febeea04349068d5716ad29ff
 _md5_=fa80b4a637b4715886aed11ed6e62104

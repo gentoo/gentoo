@@ -4,11 +4,12 @@ DEPEND=>=dev-lang/perl-5.8 virtual/latex-base dev-texlive/texlive-plaingeneric d
 DESCRIPTION=Compare two latex files and mark up significant differences
 EAPI=7
 HOMEPAGE=https://www.ctan.org/tex-archive/support/latexdiff/ https://github.com/ftilmann/latexdiff/
+INHERIT=git-r3
 IUSE=test
 LICENSE=GPL-3
 PROPERTIES=live
 RDEPEND=>=dev-lang/perl-5.8 virtual/latex-base dev-texlive/texlive-plaingeneric dev-perl/Algorithm-Diff
 RESTRICT=!test? ( test )
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441
+_eclasses_=git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=e9ef1ccc2ce7bdf15e32bf3f1b099b68

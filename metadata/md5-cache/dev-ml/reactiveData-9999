@@ -3,10 +3,11 @@ DEPEND=dev-ml/react:= dev-ml/findlib dev-ml/ocamlbuild >=dev-lang/ocaml-4:= dev-
 DESCRIPTION=Functional reactive programming with incremental changes in data structures
 EAPI=5
 HOMEPAGE=https://github.com/ocsigen/reactiveData
+INHERIT=opam git-r3
 IUSE=+ocamlopt
 LICENSE=LGPL-3-with-linking-exception
 PROPERTIES=live
 RDEPEND=dev-ml/react:= >=dev-lang/ocaml-4:=
 SLOT=0/9999
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	opam	b2f22dc6e8db7cf1649d72fd9ee5a986
+_eclasses_=opam	b961a62d9389bc7b60bcadb0c851459b	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=1d4dfd3b44004e20724207b8a3e4a350

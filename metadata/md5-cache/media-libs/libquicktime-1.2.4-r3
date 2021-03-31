@@ -4,6 +4,7 @@ DEPEND=sys-libs/zlib >=virtual/libintl-0-r1[abi_x86_32(-)?,abi_x86_64(-)?,abi_x8
 DESCRIPTION=An enhanced version of the quicktime4linux library
 EAPI=7
 HOMEPAGE=http://libquicktime.sourceforge.net/
+INHERIT=libtool multilib-minimal
 IUSE=aac alsa doc dv encode ffmpeg gtk jpeg lame cpu_flags_x86_mmx opengl png static-libs vorbis X x264 abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_s390_32 abi_s390_64
 KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 sparc x86
 LICENSE=LGPL-2.1
@@ -11,5 +12,5 @@ RDEPEND=sys-libs/zlib >=virtual/libintl-0-r1[abi_x86_32(-)?,abi_x86_64(-)?,abi_x
 REQUIRED_USE=opengl? ( X )
 SLOT=0
 SRC_URI=mirror://sourceforge/libquicktime/libquicktime-1.2.4.tar.gz
-_eclasses_=libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib-build	ac696f0bea6c503f5980bfd5a0f312e5	multilib-minimal	8bddda43703ba94d8341f4e247f97566
 _md5_=4454c0d60af825d013497fce9d3492e4

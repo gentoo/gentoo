@@ -3,11 +3,12 @@ DEPEND=|| ( dev-lang/php[xml,gd] dev-lang/php[xml,gd-external] ) >=app-admin/web
 DESCRIPTION=ruTorrent is a front-end for the popular Bittorrent client rTorrent
 EAPI=6
 HOMEPAGE=https://github.com/Novik/ruTorrent
+INHERIT=webapp
 IUSE=vhosts
 KEYWORDS=~alpha ~amd64 ~ppc ~x86
 LICENSE=GPL-2
 RDEPEND=virtual/httpd-php >=app-admin/webapp-config-1.50.15
 SLOT=3.8-r1
 SRC_URI=https://github.com/Novik/ruTorrent/archive/v3.8.tar.gz -> rutorrent-3.8.tar.gz
-_eclasses_=webapp	1d03df021d958f89f4cc78e289d0b116
+_eclasses_=webapp	990ad6a000cf18d1ef87117e8c7b0a54
 _md5_=aedbdca363febe9f4a87b952a8d423ad

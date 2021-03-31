@@ -3,6 +3,7 @@ DEPEND=postgres_targets_postgres13? ( dev-db/postgresql:13= ) postgres_targets_p
 DESCRIPTION=Unit testing for PostgreSQL
 EAPI=7
 HOMEPAGE=https://pgtap.org/
+INHERIT=postgres-multi
 IUSE=postgres_targets_postgres13 postgres_targets_postgres12 postgres_targets_postgres11 postgres_targets_postgres10 postgres_targets_postgres9_6 postgres_targets_postgres9_5
 KEYWORDS=~amd64
 LICENSE=POSTGRESQL
@@ -10,5 +11,5 @@ RDEPEND=postgres_targets_postgres13? ( dev-db/postgresql:13= ) postgres_targets_
 RESTRICT=test
 SLOT=0
 SRC_URI=https://api.pgxn.org/dist/pgtap/1.1.0/pgtap-1.1.0.zip
-_eclasses_=multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	postgres	9613fb90112e2a521b6a8315187c2966	postgres-multi	b784ac6c30437f2ded3f16482b56374c	user	b0a0d4ca9e3f79c38f8f4143b8d5a2d8	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+_eclasses_=multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	user	26d8ce6329c43cbac965617f1c0627e2	postgres	c90f34fec636bb31d36838ad7e11b37b	postgres-multi	45f967e4809b0f1162e4e2c726308439
 _md5_=57ebab1e552aaa1af9864a13d76cf10b

@@ -4,11 +4,12 @@ DEPEND=notmuch? ( net-mail/notmuch:= )
 DESCRIPTION=Email client for your terminal
 EAPI=7
 HOMEPAGE=https://aerc-mail.org
+INHERIT=go-module git-r3
 IUSE=notmuch
 LICENSE=Apache-2.0 BSD BSD-2 MIT
 PROPERTIES=live
 RDEPEND=notmuch? ( net-mail/notmuch:= )
 RESTRICT=strip
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	go-module	92660621959e7fab813173772987588b
+_eclasses_=go-module	92660621959e7fab813173772987588b	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=b2de5d2205611f037ecc5ab45c17545d

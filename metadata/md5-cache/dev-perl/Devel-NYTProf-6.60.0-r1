@@ -4,6 +4,7 @@ DEPEND=sys-libs/zlib:0= dev-lang/perl
 DESCRIPTION=Powerful feature-rich perl source code profiler
 EAPI=7
 HOMEPAGE=https://metacpan.org/release/Devel-NYTProf
+INHERIT=perl-module toolchain-funcs
 IUSE=test examples
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=|| ( Artistic GPL-1+ )
@@ -11,5 +12,5 @@ RDEPEND=>=dev-perl/File-Which-1.90.0 virtual/perl-Getopt-Long dev-perl/JSON-Mayb
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/T/TI/TIMB/Devel-NYTProf-6.06.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	ae176ff49e02bcbe576f6436b031c518	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
 _md5_=7284f70bdcef22579caa667422f188e0

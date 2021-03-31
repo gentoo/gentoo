@@ -3,6 +3,7 @@ DEPEND=>=dev-lang/tk-8.4:0= test? ( x11-base/xorg-server[xvfb] x11-apps/xhost )
 DESCRIPTION=A flexible listbox widget for Tk
 EAPI=6
 HOMEPAGE=http://tktreectrl.sourceforge.net/
+INHERIT=virtualx
 IUSE=X debug shellicon threads test
 KEYWORDS=amd64 ~ppc x86 ~amd64-linux ~x86-linux
 LICENSE=tcltk
@@ -10,5 +11,5 @@ RDEPEND=>=dev-lang/tk-8.4:0=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://sourceforge/tktreectrl/tktreectrl-2.4.1.tar.gz
-_eclasses_=virtualx	7e60d3b10c791ab996f717bc1f30072f
+_eclasses_=virtualx	d828f8a6cfc731f2683d0967d3f2f95a
 _md5_=c98d33726c93060da0227d28206b5bc8

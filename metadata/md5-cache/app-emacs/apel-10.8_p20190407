@@ -9,5 +9,5 @@ LICENSE=GPL-2+
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://github.com/wanderlust/apel/archive/d146ddbf8818e81d3577d5eee7825d377bec0c73.tar.gz -> apel-10.8_p20190407.tar.gz
-_eclasses_=elisp-common	36f97076abd90f943a34f8bcd58b5bcc	elisp	00840e1f4eb277c757dbfa5abf73c4c7
+_eclasses_=elisp-common	36f97076abd90f943a34f8bcd58b5bcc	elisp	023dd24ad9e6d5e62907e7007f548ca3
 _md5_=4be424453c9d846b4599113e886a2269

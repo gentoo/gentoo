@@ -4,10 +4,11 @@ DEPEND=dev-db/sqlite:= dev-libs/libpcre:= sys-fs/fuse:=
 DESCRIPTION=A file-based build system
 EAPI=7
 HOMEPAGE=http://gittup.org/tup
+INHERIT=linux-info toolchain-funcs git-r3
 IUSE=kernel_linux
 LICENSE=GPL-2 MIT public-domain BSD BSD-2
 PROPERTIES=live
 RDEPEND=dev-db/sqlite:= dev-libs/libpcre:= sys-fs/fuse:=
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	linux-info	30ded7f9adbdd03d3e848cdd74f6c395	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=612056ff9358bdb4c37c34a7d3120b74

@@ -3,9 +3,10 @@ DEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=Gnulib is a library of common routines intended to be shared at the source level
 EAPI=6
 HOMEPAGE=https://www.gnu.org/software/gnulib
+INHERIT=git-r3
 IUSE=doc
 LICENSE=GPL-2
 PROPERTIES=live
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441
+_eclasses_=git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=e9573a93c839c0d5b0f0ae1e4ebf6cd2

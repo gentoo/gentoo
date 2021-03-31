@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=!app-eselect/eselect-ecj !app-eselect/eselect-maven !<dev-java/java-config-2.2 app-admin/eselect
 SLOT=0
 SRC_URI=https://gitweb.gentoo.org/proj/eselect-java.git/snapshot/eselect-java-0.4.0.tar.xz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba
 _md5_=2e2749de86ddd3fd10a9f3f099e4702d

@@ -4,6 +4,7 @@ DEPEND=dev-ml/base:= dev-ml/core_kernel:= dev-ml/jst-config:= dev-ml/ppx_jane:= 
 DESCRIPTION=Jane Street's alternative to the standard library
 EAPI=7
 HOMEPAGE=https://github.com/janestreet/core
+INHERIT=dune
 IUSE=+ocamlopt
 KEYWORDS=amd64 arm arm64 ppc ppc64 x86
 LICENSE=MIT
@@ -11,5 +12,5 @@ RDEPEND=dev-ml/base:= dev-ml/core_kernel:= dev-ml/jst-config:= dev-ml/ppx_jane:=
 RESTRICT=test
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/core/archive/v0.14.0.tar.gz -> core-0.14.0.tar.gz
-_eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
+_eclasses_=dune	3cafc471b3e2c22dfa1c289440929c5b
 _md5_=2e0ab8acde9a464b624508e79902d39a

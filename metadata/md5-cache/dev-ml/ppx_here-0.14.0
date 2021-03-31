@@ -4,6 +4,7 @@ DEPEND=>=dev-ml/base-0.14.0:= dev-ml/findlib:= >=dev-ml/ppxlib-0.18.0:= >=dev-ml
 DESCRIPTION=Expands [%here] into its location
 EAPI=7
 HOMEPAGE=https://github.com/janestreet/ppx_here
+INHERIT=dune
 IUSE=+ocamlopt
 KEYWORDS=amd64 arm arm64 ppc ppc64 x86
 LICENSE=Apache-2.0
@@ -11,5 +12,5 @@ RDEPEND=>=dev-ml/base-0.14.0:= dev-ml/findlib:= >=dev-ml/ppxlib-0.18.0:= >=dev-m
 RESTRICT=test
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/ppx_here/archive/v0.14.0.tar.gz -> ppx_here-0.14.0.tar.gz
-_eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
+_eclasses_=dune	3cafc471b3e2c22dfa1c289440929c5b
 _md5_=1a4fe6084e2d1be4e74756ffd9eb534d

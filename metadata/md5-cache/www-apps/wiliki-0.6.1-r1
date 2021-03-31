@@ -3,11 +3,12 @@ DEPEND=dev-scheme/gauche cgi? ( virtual/httpd-cgi ) fastcgi? ( virtual/httpd-fas
 DESCRIPTION=WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 EAPI=6
 HOMEPAGE=https://practical-scheme.net/wiliki/
+INHERIT=webapp
 IUSE=cgi fastcgi vhosts
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD
 RDEPEND=dev-scheme/gauche cgi? ( virtual/httpd-cgi ) fastcgi? ( virtual/httpd-fastcgi ) >=app-admin/webapp-config-1.50.15
 SLOT=0
 SRC_URI=mirror://sourceforge/wiliki/WiLiKi-0.6.1.tgz
-_eclasses_=webapp	1d03df021d958f89f4cc78e289d0b116
+_eclasses_=webapp	990ad6a000cf18d1ef87117e8c7b0a54
 _md5_=0e11ab1e6a54533f88979487dc32c942

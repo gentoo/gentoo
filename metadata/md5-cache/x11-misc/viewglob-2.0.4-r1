@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/glib:2 x11-libs/gtk+:2 || ( app-shells/bash:* app-shells/zsh )
 SLOT=0
 SRC_URI=mirror://sourceforge/viewglob/viewglob-2.0.4.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
 _md5_=56c3d2e0291c4c58b82c83e3007b4da1

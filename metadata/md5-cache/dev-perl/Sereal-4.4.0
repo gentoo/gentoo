@@ -3,6 +3,7 @@ DEPEND=>=dev-perl/Sereal-Encoder-4.4.0 >=dev-perl/Sereal-Decoder-4.4.0 virtual/p
 DESCRIPTION=Fast, compact, powerful binary (de-)serialization
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Sereal
+INHERIT=perl-module
 IUSE=test
 KEYWORDS=amd64 ~ia64 ppc ppc64 sparc x86
 LICENSE=|| ( Artistic GPL-1+ )
@@ -10,5 +11,5 @@ RDEPEND=>=dev-perl/Sereal-Encoder-4.4.0 >=dev-perl/Sereal-Decoder-4.4.0 dev-lang
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/Y/YV/YVES/Sereal-4.004.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	ae176ff49e02bcbe576f6436b031c518
 _md5_=6b8d731a89767f691b60f67fc58deadd

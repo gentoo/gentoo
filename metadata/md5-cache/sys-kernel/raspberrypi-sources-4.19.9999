@@ -3,11 +3,12 @@ DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 ) >=dev-vcs/git-
 DESCRIPTION=Raspberry Pi kernel sources
 EAPI=6
 HOMEPAGE=https://github.com/raspberrypi/linux
+INHERIT=kernel-2 git-r3 eapi7-ver
 IUSE=symlink build
 LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=!build? ( dev-lang/perl sys-devel/bc sys-devel/bison sys-devel/flex sys-devel/make >=sys-libs/ncurses-5.2 virtual/libelf virtual/pkgconfig )
 RESTRICT=binchecks strip
 SLOT=4.19.9999
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	estack	055c42df72f76a4f45ec92b35e83cd56	git-r3	3e7ec3d6619213460c85e2aa48398441	kernel-2	29b0ddf528a34e7e8c7c179cfbdb5c26	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	estack	055c42df72f76a4f45ec92b35e83cd56	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	kernel-2	198f6aa4709a3392bdc99b64f962e342	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=8dcf97f6c79d5b87810786fcf985d174

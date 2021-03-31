@@ -4,6 +4,7 @@ DEPEND=>=virtual/jdk-1.8:* test? ( dev-java/ant-junit:0 ) dev-java/ant-core:0 de
 DESCRIPTION=Ivy is a free java based dependency manager
 EAPI=7
 HOMEPAGE=https://ant.apache.org/ivy/
+INHERIT=java-pkg-2 java-ant-2
 IUSE=elibc_FreeBSD doc examples source test elibc_FreeBSD
 KEYWORDS=amd64 ppc64 x86 ~amd64-linux ~x86-linux
 LICENSE=Apache-2.0
@@ -11,5 +12,5 @@ RDEPEND=>=virtual/jre-1.8:* dev-java/ant-core:0 dev-java/commons-cli:1 dev-java/
 RESTRICT=!test? ( test ) !test? ( test )
 SLOT=0
 SRC_URI=http://www.jaya.free.fr/downloads/ivy/1.4.1/ivy-1.4.1-src.zip
-_eclasses_=java-ant-2	fb9e1462d72ecaf7c91ae1d169606d9f	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	378e4cda228ea0231a0ac283cb2ad25c	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=java-utils-2	2440f41421207d084e5e3f1fb001b34e	java-pkg-2	45c44ec10db6affb3ebee1ac72039888	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	java-ant-2	51fb0a4707d58382310390ad47ab0ab0
 _md5_=e50b16c69bea67395114d6ad149471cc

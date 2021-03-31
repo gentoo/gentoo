@@ -3,6 +3,7 @@ DEPEND=x11-libs/gtk+:2 >=gnome-base/libgnomecanvas-2 >=dev-perl/glib-perl-1.040 
 DESCRIPTION=Perl interface to the Gnome Canvas
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Gnome2-Canvas
+INHERIT=perl-module virtualx
 IUSE=examples test
 KEYWORDS=~alpha amd64 ~ia64 ~ppc sparc x86
 LICENSE=LGPL-2
@@ -10,5 +11,5 @@ RDEPEND=x11-libs/gtk+:2 >=gnome-base/libgnomecanvas-2 >=dev-perl/glib-perl-1.040
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/T/TS/TSCH/Gnome2-Canvas-1.002.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83	virtualx	7e60d3b10c791ab996f717bc1f30072f
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	ae176ff49e02bcbe576f6436b031c518	virtualx	d828f8a6cfc731f2683d0967d3f2f95a
 _md5_=05f59fb64c7652a9ed64c473f0da8345

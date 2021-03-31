@@ -10,5 +10,5 @@ LICENSE=GPL-2+
 RDEPEND=bbdb? ( app-emacs/bbdb ) ssl? ( net-misc/stunnel ) >=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://launchpad.net/vm/8.2.x/8.2.0b/+download/vm-8.2.0b.tgz
-_eclasses_=elisp-common	36f97076abd90f943a34f8bcd58b5bcc	elisp	00840e1f4eb277c757dbfa5abf73c4c7
+_eclasses_=elisp-common	36f97076abd90f943a34f8bcd58b5bcc	elisp	023dd24ad9e6d5e62907e7007f548ca3
 _md5_=9bbe4b329ef0101820c50af46c7e1d1d

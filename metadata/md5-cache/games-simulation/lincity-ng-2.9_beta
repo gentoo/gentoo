@@ -10,5 +10,5 @@ LICENSE=GPL-2 BitstreamVera CC-BY-SA-2.0
 RDEPEND=dev-games/physfs dev-libs/libxml2:2 media-libs/libsdl[sound,joystick,opengl,video] media-libs/sdl-gfx media-libs/sdl-image[png] media-libs/sdl-mixer[vorbis] media-libs/sdl-ttf sys-libs/zlib virtual/opengl
 SLOT=0
 SRC_URI=https://github.com/lincity-ng/lincity-ng/archive/lincity-ng-2.9-beta.tar.gz -> lincity-ng-2.9_beta.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	multiprocessing	cac3169468f893670dac3e7cb940e045
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	multiprocessing	cac3169468f893670dac3e7cb940e045
 _md5_=a6383cb8910c35022ddcfecfe0355162

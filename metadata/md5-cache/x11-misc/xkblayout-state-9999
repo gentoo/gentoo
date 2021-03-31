@@ -3,9 +3,10 @@ DEPEND=x11-libs/libX11 >=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=A small program to get/set the current XKB layout
 EAPI=6
 HOMEPAGE=https://github.com/nonpop/xkblayout-state
+INHERIT=git-r3 toolchain-funcs
 LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=x11-libs/libX11
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=git-r3	b8e8c92aa5fe8df7187e466138eb4e52	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
 _md5_=7bdbda28ec8c69531fa5973a816ba829

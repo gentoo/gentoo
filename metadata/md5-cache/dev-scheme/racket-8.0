@@ -11,5 +11,5 @@ RDEPEND=dev-db/sqlite:3 media-libs/libpng:0 x11-libs/cairo[X?] x11-libs/pango[X?
 REQUIRED_USE=futures? ( jit )
 SLOT=0
 SRC_URI=minimal? ( https://download.racket-lang.org/installers/8.0/racket-minimal-8.0-src-builtpkgs.tgz ) !minimal? ( https://download.racket-lang.org/installers/8.0/racket-8.0-src-builtpkgs.tgz )
-_eclasses_=pax-utils	a41d1fd1c111289ffa04490de6ee79d7
+_eclasses_=pax-utils	d3fc79d3d50544347e324864f95206e2
 _md5_=ea84c4f812992a3415121c1f72c446ff

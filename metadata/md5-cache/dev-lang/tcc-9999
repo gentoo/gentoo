@@ -3,11 +3,12 @@ DEPEND=dev-lang/perl >=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=A very small C compiler for ix86/amd64
 EAPI=6
 HOMEPAGE=https://bellard.org/tcc/
+INHERIT=toolchain-funcs git-r3
 IUSE=test
 LICENSE=LGPL-2.1
 PROPERTIES=live
 RDEPEND=!dev-lang/tendra
 RESTRICT=!test? ( test )
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=3b1279f10cfd0e0f7bb214767c7b6f2b

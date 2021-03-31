@@ -11,5 +11,5 @@ LICENSE=GPL-2
 RDEPEND=sdl? ( media-libs/libsdl ) X? ( x11-libs/libICE x11-libs/libSM x11-libs/libXt x11-libs/libXv )
 SLOT=0
 SRC_URI=http://libmpeg2.sourceforge.net/files/libmpeg2-0.5.1.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib-build	9a65133006c608964888346a412cc454	multilib-minimal	8bddda43703ba94d8341f4e247f97566
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib-build	ac696f0bea6c503f5980bfd5a0f312e5	multilib-minimal	8bddda43703ba94d8341f4e247f97566
 _md5_=64d2653a51062d3890cb73729906ccc4

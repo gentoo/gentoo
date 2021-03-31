@@ -4,6 +4,7 @@ DEPEND=>=sys-devel/binutils-config-3 sys-libs/zlib sys-devel/gnuconfig
 DESCRIPTION=Tools necessary to build programs
 EAPI=7
 HOMEPAGE=https://sourceware.org/binutils/
+INHERIT=eutils libtool flag-o-matic gnuconfig multilib toolchain-funcs git-r3
 IUSE=cet default-gold doc +gold multitarget +nls +plugins static-libs test vanilla
 LICENSE=GPL-3+
 PROPERTIES=live
@@ -11,5 +12,5 @@ RDEPEND=>=sys-devel/binutils-config-3 sys-libs/zlib
 REQUIRED_USE=default-gold? ( gold )
 RESTRICT=!test? ( test )
 SLOT=9999
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	git-r3	3e7ec3d6619213460c85e2aa48398441	gnuconfig	f9125410be4c062f2fcefc8ec59fc223	l10n	8cdd85e169b835d518bc2fd59f780d8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	gnuconfig	f9125410be4c062f2fcefc8ec59fc223	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=482509bc5bdab962d8718606b44b768a

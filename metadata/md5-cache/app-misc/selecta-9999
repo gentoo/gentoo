@@ -3,9 +3,10 @@ DEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=A fuzzy text selector for files and anything else you need to select
 EAPI=6
 HOMEPAGE=https://github.com/garybernhardt/selecta
+INHERIT=git-r3
 LICENSE=MIT
 PROPERTIES=live
 RDEPEND=>=dev-lang/ruby-1.9.3
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441
+_eclasses_=git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=3121a5fe9c5109e92972ce831556cfef

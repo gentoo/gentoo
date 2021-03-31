@@ -3,11 +3,12 @@ DEPEND=net-misc/rsync >=app-admin/webapp-config-1.50.15
 DESCRIPTION=Web frontend for sys-cluster/ganglia
 EAPI=6
 HOMEPAGE=http://ganglia.sourceforge.net
+INHERIT=webapp
 IUSE=vhosts vhosts
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=BSD
 RDEPEND=net-misc/rsync >=app-admin/webapp-config-1.50.15 >=sys-cluster/ganglia-3.3.7[-minimal] dev-lang/php:*[ctype,gd,json,xml] virtual/httpd-php media-fonts/dejavu >=app-admin/webapp-config-1.50.15
 SLOT=0
 SRC_URI=https://github.com/ganglia/ganglia-web/archive/3.7.3.tar.gz -> ganglia-web-3.7.3.tar.gz
-_eclasses_=webapp	1d03df021d958f89f4cc78e289d0b116
+_eclasses_=webapp	990ad6a000cf18d1ef87117e8c7b0a54
 _md5_=ede46f6098f1cd2ff2e16258a6a507bf

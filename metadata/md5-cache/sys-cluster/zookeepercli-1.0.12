@@ -4,10 +4,11 @@ DEPEND=>=dev-lang/go-1.9:=
 DESCRIPTION=Simple, lightweight, dependable CLI for ZooKeeper
 EAPI=7
 HOMEPAGE=https://github.com/outbrain/zookeepercli
+INHERIT=golang-vcs-snapshot
 KEYWORDS=~amd64
 LICENSE=Apache-2.0 BSD
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/outbrain/zookeepercli/archive/v1.0.12.tar.gz -> zookeepercli-1.0.12.tar.gz https://github.com/outbrain/golib/archive/ab954725f502c2be1491afadbbc66da2f99a45ae.tar.gz -> github.com-outbrain-golib-ab954725f502c2be1491afadbbc66da2f99a45ae.tar.gz https://github.com/samuel/go-zookeeper/archive/c4fab1ac1bec58281ad0667dc3f0907a9476ac47.tar.gz -> github.com-samuel-go-zookeeper-c4fab1ac1bec58281ad0667dc3f0907a9476ac47.tar.gz
-_eclasses_=golang-base	904cd4c642d6923795b9bd99b6fe0e74	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec
+_eclasses_=golang-base	b8fb27dacacea08140c53857f439fc7d	golang-vcs-snapshot	ff485cabd3f37b060f110b0be95092ec
 _md5_=e968169a9c0d6d6f63f41220823a5e57

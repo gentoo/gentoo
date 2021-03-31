@@ -4,6 +4,7 @@ DEPEND=>=net-dialup/ppp-2.4.5 >=net-libs/libtirpc-1.0.3 sys-libs/readline:= dmal
 DESCRIPTION=Userspace tools for kernel L2TP implementation
 EAPI=7
 HOMEPAGE=https://sourceforge.net/projects/openl2tp/
+INHERIT=linux-info
 IUSE=+client debug dmalloc doc +examples rpc server stats kernel_linux
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
@@ -11,5 +12,5 @@ RDEPEND=>=net-dialup/ppp-2.4.5 >=net-libs/libtirpc-1.0.3 sys-libs/readline:= dma
 REQUIRED_USE=|| ( client server )
 SLOT=0
 SRC_URI=mirror://sourceforge/openl2tp/openl2tp-1.8.tar.gz
-_eclasses_=linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	linux-info	30ded7f9adbdd03d3e848cdd74f6c395
 _md5_=8e4e3b66159800d82a9a267a7028ef85

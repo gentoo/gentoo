@@ -4,11 +4,12 @@ DEPEND=iconv? ( virtual/libiconv ) idn? ( net-dns/libidn2:= ) nls? ( virtual/lib
 DESCRIPTION=improved Whois Client
 EAPI=7
 HOMEPAGE=https://github.com/rfc1036/whois
+INHERIT=toolchain-funcs git-r3
 IUSE=iconv idn nls xcrypt
 LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=iconv? ( virtual/libiconv ) idn? ( net-dns/libidn2:= ) nls? ( virtual/libintl ) xcrypt? ( >=sys-libs/libxcrypt-4.1 )
 RESTRICT=test
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=d0589ea6e23c23fb691e84b249477832

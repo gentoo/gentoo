@@ -3,10 +3,11 @@ DEPEND=>=net-libs/libdom-0.1.2-r1[xml] >=dev-libs/libwapcaplet-0.2.2-r1 dev-util
 DESCRIPTION=framebuffer abstraction library, written in C
 EAPI=7
 HOMEPAGE=http://www.netsurf-browser.org/projects/libsvgtiny/
-KEYWORDS=~amd64 ~arm ~ppc ~ppc64
+INHERIT=netsurf
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64
 LICENSE=MIT
 RDEPEND=>=net-libs/libdom-0.1.2-r1[xml] >=dev-libs/libwapcaplet-0.2.2-r1
 SLOT=0/0.1.7
 SRC_URI=https://download.netsurf-browser.org/libs/releases/libsvgtiny-0.1.7-src.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	netsurf	8d6ce5a28a5af61bfb3a264ac8d46867	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=23325385cc716bb1a56079df1087448e
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	netsurf	af8fe1901b583a379a6a32af919cea05
+_md5_=a85616ce70fe58bec1cea0920ebff127

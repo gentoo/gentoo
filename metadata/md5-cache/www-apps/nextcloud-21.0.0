@@ -3,6 +3,7 @@ DEPEND=>=app-admin/webapp-config-1.50.15
 DESCRIPTION=Personal cloud that runs on your own server
 EAPI=7
 HOMEPAGE=https://nextcloud.com/
+INHERIT=webapp
 IUSE=+curl +imagemagick mysql postgres +sqlite vhosts
 KEYWORDS=~amd64 ~arm ~arm64 ~x86
 LICENSE=AGPL-3
@@ -10,5 +11,5 @@ RDEPEND=dev-lang/php[curl?,filter,gd,hash(+),intl,json(+),mysql?,pdo,posix,postg
 REQUIRED_USE=|| ( mysql postgres sqlite )
 SLOT=21.0.0
 SRC_URI=https://download.nextcloud.com/server/releases/nextcloud-21.0.0.tar.bz2
-_eclasses_=webapp	1d03df021d958f89f4cc78e289d0b116
+_eclasses_=webapp	990ad6a000cf18d1ef87117e8c7b0a54
 _md5_=a09e2eb0f38ccb7d17832856088d7d81

@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/gtk+:2 dev-libs/glib:2 net-libs/libnet:1.1
 SLOT=0
 SRC_URI=http://gspoof.sourceforge.net/src/gspoof-3.2.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	desktop	c0d27bf73aa08ca05b663dbd31fbef28
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	desktop	c0d27bf73aa08ca05b663dbd31fbef28
 _md5_=0a69d3fa8b2ce85aa835e0295ca58afd

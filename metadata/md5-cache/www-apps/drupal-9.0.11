@@ -3,6 +3,7 @@ DEPEND=|| ( virtual/httpd-cgi virtual/httpd-fastcgi ) >=app-admin/webapp-config-
 DESCRIPTION=PHP-based open-source platform and content management system
 EAPI=6
 HOMEPAGE=https://www.drupal.org/
+INHERIT=webapp
 IUSE=+mysql postgres sqlite +uploadprogress vhosts
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
@@ -10,5 +11,5 @@ RDEPEND=dev-lang/php[gd,hash(+),mysql?,pdo,postgres?,simplexml,sqlite?,xml] virt
 REQUIRED_USE=|| ( mysql postgres sqlite )
 SLOT=9.0.11
 SRC_URI=https://ftp.drupal.org/files/projects/drupal-9.0.11.tar.gz
-_eclasses_=webapp	1d03df021d958f89f4cc78e289d0b116
+_eclasses_=webapp	990ad6a000cf18d1ef87117e8c7b0a54
 _md5_=b6ec4ee3b1ed75fd18f01c064305d900

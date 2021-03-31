@@ -11,5 +11,5 @@ RDEPEND=acct-group/redmine acct-user/redmine ruby_targets_ruby25? ( dev-lang/rub
 REQUIRED_USE=|| ( ruby_targets_ruby25 ruby_targets_ruby26 )
 SLOT=0
 SRC_URI=https://www.redmine.org/releases/redmine-4.1.1.tar.gz
-_eclasses_=depend.apache	d54e0d0bd6b36c476594edc2cee2e332	estack	055c42df72f76a4f45ec92b35e83cd56	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	ruby-utils	03dfa7f54d59d740c2964dc7256d2820	ruby-ng	676004cfb6cdf3dedf1c778d56346624
+_eclasses_=depend.apache	d54e0d0bd6b36c476594edc2cee2e332	estack	055c42df72f76a4f45ec92b35e83cd56	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	ruby-utils	03dfa7f54d59d740c2964dc7256d2820	ruby-ng	40ad5ce3f20bff3a06352fd3fb633cfd
 _md5_=60b5737f516bb65bf8c1cb6f3fff21b1

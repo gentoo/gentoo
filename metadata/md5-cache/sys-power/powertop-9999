@@ -10,5 +10,5 @@ LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=dev-libs/libnl:3 sys-apps/pciutils sys-libs/ncurses:=[unicode?] X? ( x11-apps/xset ) virtual/libintl
 SLOT=0
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	git-r3	3e7ec3d6619213460c85e2aa48398441	linux-info	c90a203b1c14cfa77bd3e37a0e96c955
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	git-r3	b8e8c92aa5fe8df7187e466138eb4e52	linux-info	30ded7f9adbdd03d3e848cdd74f6c395
 _md5_=f4c47c4060f0d397033fc57592d5678b

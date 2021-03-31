@@ -1,0 +1,15 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare
+DEPEND=net-libs/libnsl sys-libs/pam skey? ( >=sys-auth/skey-1.1.5-r1 ) tcpd? ( sys-apps/tcp-wrappers )
+DESCRIPTION=An updated version of Cisco's TACACS+ server
+EAPI=7
+HOMEPAGE=http://www.shrubbery.net/tac_plus/
+INHERIT=autotools pam
+IUSE=debug finger maxsess tcpd skey static-libs
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=HPND RSA GPL-2
+RDEPEND=net-libs/libnsl sys-libs/pam skey? ( >=sys-auth/skey-1.1.5-r1 ) tcpd? ( sys-apps/tcp-wrappers )
+SLOT=0
+SRC_URI=ftp://ftp.shrubbery.net/pub/tac_plus/tacacs+-F4.0.4.27a.tar.gz
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	pam	b097695df28f3974e3af860d6704d4f2
+_md5_=64c6c707ab642792249f3bf75b68dd92

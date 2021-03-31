@@ -3,9 +3,10 @@ DEPEND=app-admin/eselect >=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=Unified compiler shadow link directory updater
 EAPI=6
 HOMEPAGE=https://github.com/mgorny/shadowman
+INHERIT=git-r3
 LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=app-admin/eselect
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441
+_eclasses_=git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=c1e230bbbbb4ce15e2415e377f9e44b5

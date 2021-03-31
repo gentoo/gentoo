@@ -4,10 +4,11 @@ DEPEND=dev-perl/Module-Install dev-lang/perl
 DESCRIPTION=Nagios plugin to monitor the values of onboard sensors and disk temperatures
 EAPI=7
 HOMEPAGE=https://github.com/matteocorti/check_lm_sensors
+INHERIT=perl-module vcs-snapshot
 KEYWORDS=~amd64
 LICENSE=GPL-3+
 RDEPEND=dev-perl/JSON-MaybeXS dev-perl/Monitoring-Plugin virtual/perl-Getopt-Long dev-lang/perl:=
 SLOT=0
 SRC_URI=https://github.com/matteocorti/check_lm_sensors/archive/80db8aa58be8f5d7800564d62305281be1ec8e6b.tar.gz -> nagios-plugin-check_lm_sensors-4.1.1_p20191028.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	ae176ff49e02bcbe576f6436b031c518	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
 _md5_=d4cedf04004e22b99a4c096bc31936fa

@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=wg-quick? ( || ( net-firewall/nftables net-firewall/iptables ) virtual/resolvconf )
 SLOT=0
 SRC_URI=https://git.zx2c4.com/wireguard-tools/snapshot/wireguard-tools-1.0.20210315.tar.xz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	bash-completion-r1	be99724bde4274de21e581204e9d164a	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	linux-info	30ded7f9adbdd03d3e848cdd74f6c395	bash-completion-r1	be99724bde4274de21e581204e9d164a	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6
 _md5_=1adeb48ef3ff3d1a94e27147939737ff

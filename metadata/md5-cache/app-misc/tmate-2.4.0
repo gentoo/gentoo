@@ -11,5 +11,5 @@ LICENSE=ISC
 RDEPEND=sys-libs/zlib[static-libs?] sys-libs/libutempter[static-libs?] dev-libs/libevent[static-libs?] dev-libs/msgpack[static-libs?] >=net-libs/libssh-0.6.0[static-libs?] !libressl? ( dev-libs/openssl:0=[static-libs?] ) libressl? ( dev-libs/libressl:0=[static-libs?] )
 SLOT=0
 SRC_URI=https://github.com/tmate-io/tmate/archive/2.4.0.tar.gz -> tmate-2.4.0.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba
 _md5_=997987075070a17f1dbb8ac964984675

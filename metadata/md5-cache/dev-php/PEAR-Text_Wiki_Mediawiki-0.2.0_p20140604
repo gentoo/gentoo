@@ -3,6 +3,7 @@ DEPEND=test? ( >=dev-php/PEAR-Text_Wiki-1.2.2_p20170904 <dev-php/phpunit-6 )
 DESCRIPTION=Mediawiki parser for Text_Wiki
 EAPI=6
 HOMEPAGE=https://pear.php.net/package/Text_Wiki_Mediawiki
+INHERIT=php-pear-r2 vcs-snapshot
 IUSE=test
 KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=LGPL-2.1
@@ -10,5 +11,5 @@ RDEPEND=>=dev-php/PEAR-Text_Wiki-1.2.2_p20170904 >=dev-php/pear-1.8.1
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/pear/Text_Wiki_Mediawiki/archive/11a902741d3f8cc6010fb97b825d66345143e4dc.tar.gz -> Text_Wiki_Mediawiki-0.2.0_p20140604.tar.gz
-_eclasses_=php-pear-r2	04ac1c3f5c35d8296eb969ef31e8477c	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
+_eclasses_=php-pear-r2	4a7c293febeea04349068d5716ad29ff	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
 _md5_=a60c8fa33e634993f2bab8de258d94d6

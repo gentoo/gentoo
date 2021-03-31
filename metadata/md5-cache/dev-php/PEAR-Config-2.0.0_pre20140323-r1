@@ -3,6 +3,7 @@ DEPEND=test? ( xml? ( dev-php/PEAR-XML_Parser dev-php/PEAR-XML_Util ) )
 DESCRIPTION=Provides multiple methods for configuration manipulation
 EAPI=6
 HOMEPAGE=https://pear.php.net/package/Config
+INHERIT=php-pear-r2 vcs-snapshot
 IUSE=test xml
 KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86
 LICENSE=PHP-2.02
@@ -10,5 +11,5 @@ RDEPEND=xml? ( dev-php/PEAR-XML_Parser dev-php/PEAR-XML_Util ) >=dev-php/pear-1.
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/pear/Config/archive/606a24034ad80f9d6ccb5a8b698b702b392e4674.tar.gz -> Config-2.0.0_pre20140323.tar.gz
-_eclasses_=php-pear-r2	04ac1c3f5c35d8296eb969ef31e8477c	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
+_eclasses_=php-pear-r2	4a7c293febeea04349068d5716ad29ff	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
 _md5_=11985c8731416a88891e3549d881dc0d

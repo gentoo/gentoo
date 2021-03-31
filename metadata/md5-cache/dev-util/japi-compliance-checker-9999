@@ -4,9 +4,10 @@ DEPEND=>=dev-lang/perl-5
 DESCRIPTION=Java API compliance checker
 EAPI=7
 HOMEPAGE=https://github.com/lvc/japi-compliance-checker
+INHERIT=git-r3
 LICENSE=LGPL-2.1
 PROPERTIES=live
 RDEPEND=>=dev-lang/perl-5 >=virtual/jdk-1.8:*
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441
+_eclasses_=git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=37d785f9072e1ae6f182e7841666600d

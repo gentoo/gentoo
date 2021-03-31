@@ -4,11 +4,12 @@ DEPEND=dev-lang/perl
 DESCRIPTION=Get, unpack, build and install modules from CPAN
 EAPI=7
 HOMEPAGE=https://metacpan.org/release/App-cpanminus
+INHERIT=perl-module git-r3
 IUSE=test
 LICENSE=|| ( Artistic GPL-1+ )
 PROPERTIES=live
 RDEPEND=dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	ae176ff49e02bcbe576f6436b031c518	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=b50fcd3c4356fd6a933ed19698a369f0

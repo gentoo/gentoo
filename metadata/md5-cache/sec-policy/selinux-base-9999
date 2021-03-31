@@ -4,10 +4,11 @@ DEPEND=>=sys-apps/policycoreutils-2.8
 DESCRIPTION=Gentoo base policy for SELinux
 EAPI=7
 HOMEPAGE=https://wiki.gentoo.org/wiki/Project:SELinux
+INHERIT=git-r3
 IUSE=doc +unknown-perms systemd +ubac +unconfined
 LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=>=sys-apps/policycoreutils-2.8
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441
+_eclasses_=git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=7834c3da78da54ffc4cee354da7a01d0

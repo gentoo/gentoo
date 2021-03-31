@@ -4,11 +4,12 @@ DEPEND=|| ( virtual/httpd-cgi virtual/httpd-fastcgi ) >=app-admin/webapp-config-
 DESCRIPTION=A browser-based multilingual IMAP client with an application-like user interface
 EAPI=7
 HOMEPAGE=https://roundcube.net
+INHERIT=webapp git-r3
 IUSE=change-password enigma ldap mysql postgres sqlite ssl spell vhosts
 LICENSE=GPL-3 BSD PHP-2.02 PHP-3 MIT public-domain
 PROPERTIES=live
 RDEPEND=|| ( virtual/httpd-cgi virtual/httpd-fastcgi ) >=dev-lang/php-5.4.0[filter,gd,iconv,json(+),ldap?,pdo,postgres?,session,sqlite?,ssl?,unicode,xml] virtual/httpd-php change-password? ( dev-lang/php[sockets] ) enigma? ( app-crypt/gnupg ) mysql? ( || ( dev-lang/php[mysql] dev-lang/php[mysqli] ) ) spell? ( dev-lang/php[curl,spell] ) >=app-admin/webapp-config-1.50.15
 REQUIRED_USE=|| ( mysql postgres sqlite )
 SLOT=9999
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	webapp	1d03df021d958f89f4cc78e289d0b116
+_eclasses_=webapp	990ad6a000cf18d1ef87117e8c7b0a54	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=6ad90ddd99b8bc0c943618acd9252e91

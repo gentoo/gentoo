@@ -12,5 +12,5 @@ RDEPEND=!elibc_Darwin? ( unwind? ( sys-libs/libunwind ) ) libbsd? ( dev-libs/lib
 RESTRICT=!test? ( test )
 SLOT=0/5
 SRC_URI=https://github.com/zeromq/libzmq/releases/download/v4.3.4/zeromq-4.3.4.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba
 _md5_=ce3ad12a0e200f03b17fb4df2d300d7f

@@ -3,11 +3,12 @@ DEPEND=app-arch/unzip >=app-admin/webapp-config-1.50.15
 DESCRIPTION=Web-based solution for managing scientific literature, references and citations
 EAPI=7
 HOMEPAGE=http://www.refbase.net/
+INHERIT=webapp
 IUSE=vhosts
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=>=dev-lang/php-5.3[mysql,mysqli(+),session] virtual/httpd-php app-admin/webapp-config app-text/bibutils >=app-admin/webapp-config-1.50.15
 SLOT=0.9.6_p20180223
 SRC_URI=https://sourceforge.net/code-snapshots/svn/r/re/refbase/code/refbase-code-r1422-branches-bleeding-edge.zip -> refbase-0.9.6_p20180223.zip
-_eclasses_=webapp	1d03df021d958f89f4cc78e289d0b116
+_eclasses_=webapp	990ad6a000cf18d1ef87117e8c7b0a54
 _md5_=3ecc11f6a99a55b6faecdc1fafe6ead3

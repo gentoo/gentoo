@@ -3,6 +3,7 @@ DEPEND=>=virtual/jdk-1.8:* app-arch/unzip app-arch/zip >=dev-java/java-config-2.
 DESCRIPTION=Fast and correct automated build system
 EAPI=7
 HOMEPAGE=https://bazel.build/
+INHERIT=bash-completion-r1 java-pkg-2 multiprocessing
 IUSE=examples tools prefix static-libs elibc_FreeBSD
 KEYWORDS=~amd64
 LICENSE=Apache-2.0
@@ -11,5 +12,5 @@ REQUIRED_USE=prefix? ( static-libs )
 RESTRICT=strip test
 SLOT=0
 SRC_URI=https://github.com/bazelbuild/bazel/releases/download/3.2.0/bazel-3.2.0-dist.zip
-_eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	378e4cda228ea0231a0ac283cb2ad25c	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	be99724bde4274de21e581204e9d164a	java-utils-2	2440f41421207d084e5e3f1fb001b34e	java-pkg-2	45c44ec10db6affb3ebee1ac72039888	multiprocessing	cac3169468f893670dac3e7cb940e045
 _md5_=2a18cfc0241e70401226fa9cb3b6d33c

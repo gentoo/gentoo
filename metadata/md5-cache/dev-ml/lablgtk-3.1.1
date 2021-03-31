@@ -4,6 +4,7 @@ DEPEND=app-text/gtkspell:3= x11-libs/gtk+:3= dev-ml/cairo2:= x11-libs/gtksourcev
 DESCRIPTION=OCaml bindings to GTK-3
 EAPI=7
 HOMEPAGE=https://github.com/garrigue/lablgtk
+INHERIT=dune
 IUSE=+ocamlopt sourceview
 KEYWORDS=amd64 ~arm ~arm64 ppc ppc64 x86
 LICENSE=LGPL-2.1-with-linking-exception
@@ -11,5 +12,5 @@ PDEPEND=sourceview? ( dev-ml/lablgtk-sourceview:3/3.1.1 )
 RDEPEND=app-text/gtkspell:3= x11-libs/gtk+:3= dev-ml/cairo2:= x11-libs/gtksourceview:3.0= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=3/3.1.1
 SRC_URI=https://github.com/garrigue/lablgtk/releases/download/3.1.1/lablgtk3-3.1.1.tbz
-_eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
+_eclasses_=dune	3cafc471b3e2c22dfa1c289440929c5b
 _md5_=7045653533ff3dba2bf756c23164546f

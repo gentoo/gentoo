@@ -12,5 +12,5 @@ RDEPEND=libressl? ( dev-libs/libressl:0= ) !libressl? ( internal-tls? ( dev-libs
 REQUIRED_USE=?? ( libressl suiteb )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~andrey_utkin/distfiles/net-wireless_hostapd_2.7-r2_extras.tar.xz https://w1.fi/releases/hostapd-2.9.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	portability	b2e405b5a3f051d58b50c9ffc6b883cf	savedconfig	0bc45cb0429003c9abc73bae24a0d5bd
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	portability	c10bdc40668533b1faf15b1d89df0303	savedconfig	0bc45cb0429003c9abc73bae24a0d5bd
 _md5_=dc10e84719ec1ed3754ea9647c1a20aa

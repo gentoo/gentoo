@@ -11,5 +11,5 @@ PDEPEND=rpc? ( net-nds/rpcbind )
 RDEPEND=sys-fs/e2fsprogs ldap? ( >=net-nds/openldap-2.3.35 ) netlink? ( sys-apps/dbus dev-libs/libnl:3 ) rpc? ( elibc_glibc? ( sys-libs/glibc[-rpc(-)] ) net-libs/libtirpc net-libs/rpcsvc-proto ) tcpd? ( sys-apps/tcp-wrappers )
 SLOT=0
 SRC_URI=mirror://sourceforge/linuxquota/quota-4.05.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba
 _md5_=1f8ebdb468586a36cb028da3e9c0c836

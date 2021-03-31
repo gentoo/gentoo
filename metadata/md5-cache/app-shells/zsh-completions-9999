@@ -8,5 +8,5 @@ LICENSE=BSD
 PROPERTIES=live
 RDEPEND=app-shells/zsh
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441
+_eclasses_=git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=2a88abb1a77010aec7d89cdde6d1e156

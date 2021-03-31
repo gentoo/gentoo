@@ -3,6 +3,7 @@ DEPEND=>=virtual/jdk-1.8:* test? ( dev-java/ant-junit:0 ) dev-java/jsch:0 dev-ja
 DESCRIPTION=Ivy is a free java based dependency manager
 EAPI=7
 HOMEPAGE=https://ant.apache.org/ivy/
+INHERIT=java-pkg-2 java-ant-2 eutils
 IUSE=elibc_FreeBSD doc examples source test elibc_FreeBSD
 KEYWORDS=amd64 ppc64 x86 ~amd64-linux ~x86-linux
 LICENSE=Apache-2.0
@@ -10,5 +11,5 @@ RDEPEND=>=virtual/jre-1.8:* dev-java/jsch:0 dev-java/bcpg:1.50 dev-java/ant-core
 RESTRICT=test
 SLOT=2
 SRC_URI=mirror://apache/ant/ivy/2.3.0/apache-ivy-2.3.0-src.tar.gz
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	java-ant-2	fb9e1462d72ecaf7c91ae1d169606d9f	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	378e4cda228ea0231a0ac283cb2ad25c	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=java-utils-2	2440f41421207d084e5e3f1fb001b34e	java-pkg-2	45c44ec10db6affb3ebee1ac72039888	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	java-ant-2	51fb0a4707d58382310390ad47ab0ab0	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e
 _md5_=ebca6278a48a239b4a0d275013662ae2

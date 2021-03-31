@@ -3,6 +3,7 @@ DEPEND=dev-ml/jbuilder test? ( dev-ml/ounit ppx? ( dev-ml/ppx_driver dev-ml/ppx_
 DESCRIPTION=Map OCaml arrays onto C-like structs
 EAPI=5
 HOMEPAGE=https://github.com/mirage/ocaml-cstruct https://mirage.io
+INHERIT=findlib opam
 IUSE=async +lwt +ppx test
 KEYWORDS=~amd64
 LICENSE=ISC
@@ -10,5 +11,5 @@ RDEPEND=async? ( dev-ml/async_kernel:= dev-ml/async_unix:= dev-ml/core_kernel:= 
 RESTRICT=!test? ( test )
 SLOT=0/3.1.1
 SRC_URI=https://github.com/mirage/ocaml-cstruct/archive/v3.1.1.tar.gz -> ocaml-cstruct-3.1.1.tar.gz
-_eclasses_=findlib	3d3de4bef686774baeeabfa2b916631c	opam	b2f22dc6e8db7cf1649d72fd9ee5a986
+_eclasses_=findlib	3d3de4bef686774baeeabfa2b916631c	opam	b961a62d9389bc7b60bcadb0c851459b
 _md5_=7baef6bed6fb57211c8515e34f89827f

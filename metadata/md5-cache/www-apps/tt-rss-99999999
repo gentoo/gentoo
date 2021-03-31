@@ -4,11 +4,12 @@ DEPEND=!vhosts? ( daemon? ( acl? ( sys-apps/acl ) ) ) || ( virtual/httpd-cgi vir
 DESCRIPTION=Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX
 EAPI=7
 HOMEPAGE=https://tt-rss.org/
+INHERIT=git-r3 prefix webapp
 IUSE=+acl daemon gd +mysqli postgres vhosts
 LICENSE=GPL-3
 PROPERTIES=live
 RDEPEND=daemon? ( acl? ( sys-apps/acl ) ) daemon? ( acct-user/ttrssd acct-group/ttrssd || ( ( virtual/httpd-php:7.4 dev-lang/php:7.4[gd?,mysqli?,postgres?,curl,fileinfo,intl,json(+),pdo,unicode,xml,cli,pcntl] ) ( virtual/httpd-php:7.3 dev-lang/php:7.3[gd?,mysqli?,postgres?,curl,fileinfo,intl,json(+),pdo,unicode,xml,cli,pcntl] ) ( virtual/httpd-php:7.2 dev-lang/php:7.2[gd?,mysqli?,postgres?,curl,fileinfo,intl,json(+),pdo,unicode,xml,cli,pcntl] ) ) ) !daemon? ( || ( ( virtual/httpd-php:7.4 dev-lang/php:7.4[gd?,mysqli?,postgres?,curl,fileinfo,intl,json(+),pdo,unicode,xml] ) ( virtual/httpd-php:7.3 dev-lang/php:7.3[gd?,mysqli?,postgres?,curl,fileinfo,intl,json(+),pdo,unicode,xml] ) ( virtual/httpd-php:7.2 dev-lang/php:7.2[gd?,mysqli?,postgres?,curl,fileinfo,intl,json(+),pdo,unicode,xml] ) ) ) >=app-admin/webapp-config-1.50.15
 REQUIRED_USE=|| ( mysqli postgres )
 SLOT=99999999
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	webapp	1d03df021d958f89f4cc78e289d0b116
+_eclasses_=git-r3	b8e8c92aa5fe8df7187e466138eb4e52	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	webapp	990ad6a000cf18d1ef87117e8c7b0a54
 _md5_=19f1f62571b2c4b81928c114af48d088

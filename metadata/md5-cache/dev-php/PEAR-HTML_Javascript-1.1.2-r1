@@ -2,10 +2,11 @@ DEFINED_PHASES=install postinst postrm
 DESCRIPTION=Provides an interface for creating simple JS scripts within PHP
 EAPI=6
 HOMEPAGE=https://pear.php.net/package/HTML_Javascript
+INHERIT=php-pear-r2
 KEYWORDS=~alpha amd64 ~hppa ~ia64 ppc ppc64 sparc x86
 LICENSE=PHP-3
 RDEPEND=>=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://pear.php.net/get/HTML_Javascript-1.1.2.tgz
-_eclasses_=php-pear-r2	04ac1c3f5c35d8296eb969ef31e8477c
+_eclasses_=php-pear-r2	4a7c293febeea04349068d5716ad29ff
 _md5_=ab920670587e7f56a25abfbb9b7048fe

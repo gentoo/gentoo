@@ -4,10 +4,11 @@ DEPEND=dev-lang/perl
 DESCRIPTION=RSA public-key cryptosystem
 EAPI=7
 HOMEPAGE=https://metacpan.org/release/Crypt-RSA
+INHERIT=perl-module
 KEYWORDS=~alpha ~amd64 ~hppa ~x86 ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/Class-Loader-2.0.0 dev-perl/Convert-ASCII-Armour dev-perl/Crypt-Blowfish dev-perl/Crypt-CBC >=dev-perl/Crypt-Primes-0.380.0 >=dev-perl/Crypt-Random-0.340.0 dev-perl/Data-Buffer virtual/perl-Data-Dumper dev-perl/Digest-MD2 virtual/perl-Digest-MD5 dev-perl/Digest-SHA1 >=dev-perl/Math-Pari-2.10.603 dev-perl/Sort-Versions dev-perl/Tie-EncryptedHash dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/V/VI/VIPUL/Crypt-RSA-1.99.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	ae176ff49e02bcbe576f6436b031c518
 _md5_=6cff43e4b49aa33a537e0d06e73406c8

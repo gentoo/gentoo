@@ -4,11 +4,12 @@ DEPEND=dev-ml/async_kernel:= dev-ml/async_rpc_kernel:= dev-ml/async_unix:= dev-m
 DESCRIPTION=Jane Street Capital's asynchronous execution library (extra)
 EAPI=7
 HOMEPAGE=https://github.com/janestreet/async_extra
+INHERIT=dune
 IUSE=+ocamlopt
 KEYWORDS=~amd64
 LICENSE=MIT
 RDEPEND=dev-ml/async_kernel:= dev-ml/async_rpc_kernel:= dev-ml/async_unix:= dev-ml/core_kernel:= dev-ml/ppx_jane:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/async_extra/archive/v0.14.0.tar.gz -> async_extra-0.14.0.tar.gz
-_eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
+_eclasses_=dune	3cafc471b3e2c22dfa1c289440929c5b
 _md5_=6f93872f9c4f8cacf08ea54031356e9c

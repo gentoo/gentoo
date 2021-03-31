@@ -3,11 +3,12 @@ DEPEND=>=dev-libs/libpcre-3.9
 DESCRIPTION=A USENET software package designed for small sites
 EAPI=5
 HOMEPAGE=http://leafnode.sourceforge.net/
+INHERIT=epatch
 IUSE=ipv6
 KEYWORDS=amd64 ppc x86
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/libpcre-3.9 virtual/inetd
 SLOT=0
 SRC_URI=mirror://sourceforge/leafnode/leafnode-1.11.11.tar.bz2
-_eclasses_=epatch	e8f1ec13660dc2f44b32775765d85e42	estack	055c42df72f76a4f45ec92b35e83cd56
+_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	epatch	f62592ba170464d52e9a05f584161347
 _md5_=2db8e5d410ad078878c9ff21c976ccea

@@ -3,6 +3,7 @@ DEPEND=test? ( dev-php/PEAR-PEAR )
 DESCRIPTION=Wraps PHP's session functions providing extras like db storage for session data
 EAPI=6
 HOMEPAGE=https://pear.php.net/package/HTTP_Session2
+INHERIT=php-pear-r2
 IUSE=minimal test
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD
@@ -10,5 +11,5 @@ RDEPEND=!minimal? ( >=dev-php/PEAR-MDB2-2.4.1 >=dev-php/PEAR-DB-1.7.11 ) >=dev-p
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://pear.php.net/get/HTTP_Session2-0.7.3.tgz
-_eclasses_=php-pear-r2	04ac1c3f5c35d8296eb969ef31e8477c
+_eclasses_=php-pear-r2	4a7c293febeea04349068d5716ad29ff
 _md5_=e2b63bc62bc4f129cb0dd783a67ce086

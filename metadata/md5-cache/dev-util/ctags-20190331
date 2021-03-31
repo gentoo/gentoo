@@ -10,5 +10,5 @@ LICENSE=GPL-2+
 RDEPEND=json? ( dev-libs/jansson ) xml? ( dev-libs/libxml2:2 ) yaml? ( dev-libs/libyaml ) app-eselect/eselect-ctags
 SLOT=0
 SRC_URI=https://github.com/universal-ctags/ctags/archive/95975bd157cc1326120977ce530f0477bcbf43b1.tar.gz -> ctags-20190331.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba
 _md5_=f2c74c52897fd650767648e57415845f

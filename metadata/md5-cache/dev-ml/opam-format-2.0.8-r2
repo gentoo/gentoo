@@ -4,11 +4,12 @@ DEPEND=~dev-ml/opam-core-2.0.8:= dev-ml/re:= dev-ml/opam-file-format:= dev-ml/do
 DESCRIPTION=Core libraries for opam
 EAPI=7
 HOMEPAGE=https://opam.ocaml.org/ https://github.com/ocaml/opam
+INHERIT=dune
 IUSE=+ocamlopt
 KEYWORDS=amd64 arm arm64 ppc ppc64 x86
 LICENSE=LGPL-2.1
 RDEPEND=~dev-ml/opam-core-2.0.8:= dev-ml/re:= dev-ml/opam-file-format:= dev-ml/dose3:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/2.0.8
 SRC_URI=https://github.com/ocaml/opam/archive/2.0.8.tar.gz -> opam-2.0.8.tar.gz
-_eclasses_=dune	46e13a2340ab32b2ad8ae98b653695ea
+_eclasses_=dune	3cafc471b3e2c22dfa1c289440929c5b
 _md5_=e5014d9e9429ede0929734664e1addea

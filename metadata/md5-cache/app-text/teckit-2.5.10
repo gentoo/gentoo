@@ -10,5 +10,5 @@ LICENSE=|| ( CPL-0.5 LGPL-2.1 )
 RDEPEND=dev-libs/expat sys-libs/zlib
 SLOT=0
 SRC_URI=https://github.com/silnrsi/teckit/releases/download/v2.5.10/teckit-2.5.10.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba
 _md5_=1fc439fd119b1b7f66e798d06bcffcc9

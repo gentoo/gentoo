@@ -10,5 +10,5 @@ LICENSE=HPND MIT
 RDEPEND=dev-libs/gmp:*
 SLOT=0/20180207
 SRC_URI=!binary? ( mirror://sourceforge/mlton/mlton-20180207.src.tgz ) !bootstrap-smlnj? ( amd64? ( mirror://sourceforge/mlton/mlton-20180207-1.amd64-linux.tgz ) )
-_eclasses_=check-reqs	7e3fd1855a5e1b50bb9e80827b3f672d	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	pax-utils	a41d1fd1c111289ffa04490de6ee79d7
+_eclasses_=check-reqs	97b90bd8fb799993925e6b3a683184e5	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	pax-utils	d3fc79d3d50544347e324864f95206e2
 _md5_=95f3c66df46c11efd9ff7c45962157a9

@@ -4,6 +4,7 @@ DEPEND=>=media-libs/libsdl-1.2.5[joystick] truetype? ( >=media-libs/sdl-ttf-2.0.
 DESCRIPTION=Ruby/SDL: Ruby bindings for SDL
 EAPI=7
 HOMEPAGE=https://www.kmc.gr.jp/~ohai/rubysdl.en.html
+INHERIT=ruby-ng
 IUSE=image mixer truetype mpeg sge ruby_targets_ruby25 ruby_targets_ruby26 ruby_targets_ruby27
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=LGPL-2.1
@@ -11,5 +12,5 @@ RDEPEND=>=media-libs/libsdl-1.2.5[joystick] truetype? ( >=media-libs/sdl-ttf-2.0
 REQUIRED_USE=|| ( ruby_targets_ruby25 ruby_targets_ruby26 ruby_targets_ruby27 )
 SLOT=0
 SRC_URI=https://github.com/ohai/rubysdl/archive/rel-2-1-2.tar.gz -> ruby-sdl-2.1.2.tar.gz
-_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	multilib	d410501a125f99ffb560b0c523cd3d1e	ruby-ng	676004cfb6cdf3dedf1c778d56346624	ruby-utils	03dfa7f54d59d740c2964dc7256d2820	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	ruby-utils	03dfa7f54d59d740c2964dc7256d2820	ruby-ng	40ad5ce3f20bff3a06352fd3fb633cfd
 _md5_=882af1e6fe35386324397103df789c85

@@ -4,11 +4,12 @@ DEPEND=dev-perl/Module-Build dev-lang/perl
 DESCRIPTION=Serve static files with HTTP::Server::Simple
 EAPI=7
 HOMEPAGE=https://metacpan.org/release/HTTP-Server-Simple-Static
+INHERIT=perl-module
 IUSE=examples
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/CGI-3.460.0 virtual/perl-Exporter dev-perl/File-LibMagic virtual/perl-File-Spec dev-perl/HTTP-Date >=dev-perl/HTTP-Server-Simple-0.10.0 virtual/perl-IO dev-perl/URI dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/S/SJ/SJQUINNEY/HTTP-Server-Simple-Static-0.14.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	ae176ff49e02bcbe576f6436b031c518
 _md5_=523b43f96f1cf2d5a14c37eaebac49a9

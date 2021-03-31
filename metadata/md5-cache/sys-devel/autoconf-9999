@@ -3,11 +3,12 @@ DEFINED_PHASES=configure install prepare unpack
 DESCRIPTION=Used to create autoconfiguration files
 EAPI=7
 HOMEPAGE=https://www.gnu.org/software/autoconf/autoconf.html
+INHERIT=git-r3 toolchain-autoconf
 IUSE=emacs
 LICENSE=GPL-3
 PDEPEND=emacs? ( app-emacs/autoconf-mode )
 PROPERTIES=live
 RDEPEND=>=sys-devel/m4-1.4.16 >=dev-lang/perl-5.6 >=sys-devel/autoconf-wrapper-14 sys-devel/gnuconfig !~sys-devel/autoconf-9999:2.5
 SLOT=9999
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	toolchain-autoconf	c85a87c2280cd1204e1433d3e1123e41
+_eclasses_=git-r3	b8e8c92aa5fe8df7187e466138eb4e52	toolchain-autoconf	c85a87c2280cd1204e1433d3e1123e41
 _md5_=9eaf63765ec50add253302d3bf761b9c

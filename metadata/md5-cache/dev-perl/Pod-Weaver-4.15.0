@@ -3,6 +3,7 @@ DEPEND=>=dev-perl/Config-MVP-2.0.0 dev-perl/Config-MVP-Reader-INI dev-perl/DateT
 DESCRIPTION=Weave together a Pod document from an outline
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Pod-Weaver
+INHERIT=perl-module
 IUSE=test
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
@@ -10,5 +11,5 @@ RDEPEND=>=dev-perl/Config-MVP-2.0.0 dev-perl/Config-MVP-Reader-INI dev-perl/Date
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RJ/RJBS/Pod-Weaver-4.015.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	ae176ff49e02bcbe576f6436b031c518
 _md5_=40b2b5ed6b9319c87cf09027558dee94

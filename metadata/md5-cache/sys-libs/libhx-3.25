@@ -10,5 +10,5 @@ KEYWORDS=amd64 ppc x86
 LICENSE=GPL-3
 SLOT=0/32
 SRC_URI=https://inai.de/files/libhx/libHX-3.25.tar.xz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba
 _md5_=3dd3068a4c0b0a9881904f6fe5b00fda

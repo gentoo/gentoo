@@ -4,6 +4,7 @@ DEPEND=!dedicated? ( media-libs/libsdl2[sound,video] icu? ( dev-libs/icu-layoute
 DESCRIPTION=OpenTTD is a clone of Transport Tycoon Deluxe
 EAPI=7
 HOMEPAGE=https://www.openttd.org/
+INHERIT=toolchain-funcs xdg git-r3
 IUSE=aplaymidi debug dedicated iconv icu +lzma lzo +openmedia +png cpu_flags_x86_sse +timidity +truetype zlib
 LICENSE=GPL-2
 PDEPEND=!dedicated? ( openmedia? ( games-misc/openmsx games-misc/opensfx ) aplaymidi? ( media-sound/alsa-utils ) !aplaymidi? ( timidity? ( media-sound/timidity++ ) ) ) openmedia? ( >=games-misc/opengfx-0.4.7 )
@@ -11,5 +12,5 @@ PROPERTIES=live
 RDEPEND=!dedicated? ( media-libs/libsdl2[sound,video] icu? ( dev-libs/icu-layoutex dev-libs/icu-le-hb >=dev-libs/icu-58.1:= ) truetype? ( media-libs/fontconfig media-libs/freetype:2 sys-libs/zlib:= ) ) lzma? ( app-arch/xz-utils ) lzo? ( dev-libs/lzo:2 ) iconv? ( virtual/libiconv ) png? ( media-libs/libpng:0= sys-libs/zlib:= ) zlib? ( sys-libs/zlib:= )
 RESTRICT=test
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=cc1875ce7eb66492aa0191cdcec15009

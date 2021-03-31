@@ -4,13 +4,14 @@ DEPEND=dev-libs/libparserutils dev-libs/libwapcaplet net-libs/libhubbub xml? ( e
 DESCRIPTION=implementation of the W3C DOM, written in C
 EAPI=7
 HOMEPAGE=http://www.netsurf-browser.org/projects/libdom/
+INHERIT=netsurf
 IUSE=expat test xml
-KEYWORDS=~amd64 ~arm ~ppc ~ppc64
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64
 LICENSE=MIT
 RDEPEND=dev-libs/libparserutils dev-libs/libwapcaplet net-libs/libhubbub xml? ( expat? ( >=dev-libs/expat-2.1.0-r3 ) !expat? ( >=dev-libs/libxml2-2.9.1-r4 ) )
 REQUIRED_USE=test? ( xml )
 RESTRICT=!test? ( test )
 SLOT=0/0.4.1
 SRC_URI=https://download.netsurf-browser.org/libs/releases/libdom-0.4.1-src.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	netsurf	8d6ce5a28a5af61bfb3a264ac8d46867	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=f8ea31beb2259b8946e187369ba34321
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	netsurf	af8fe1901b583a379a6a32af919cea05
+_md5_=422a52c3d2550792f1857e5bf8975a80

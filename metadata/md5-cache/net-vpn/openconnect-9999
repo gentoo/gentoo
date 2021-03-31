@@ -12,5 +12,5 @@ RDEPEND=dev-libs/libxml2 sys-libs/zlib !gnutls? ( >=dev-libs/openssl-1.0.1h:0= )
 RESTRICT=!test? ( test )
 SLOT=0/5
 SRC_URI=ftp://ftp.infradead.org/pub/vpnc-scripts/vpnc-scripts-20200226.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-any-r1	690a993463cd2ebcde40ccdf1bd9ba98	git-r3	3e7ec3d6619213460c85e2aa48398441	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	linux-info	30ded7f9adbdd03d3e848cdd74f6c395	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-any-r1	690a993463cd2ebcde40ccdf1bd9ba98	git-r3	b8e8c92aa5fe8df7187e466138eb4e52	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba
 _md5_=52e4338657b8ff6a42eabf922e475b73

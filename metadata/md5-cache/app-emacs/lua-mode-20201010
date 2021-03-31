@@ -10,5 +10,5 @@ RDEPEND=>=app-editors/emacs-24.3:*
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/immerrr/lua-mode/archive/v20201010.tar.gz -> lua-mode-20201010.tar.gz
-_eclasses_=elisp-common	36f97076abd90f943a34f8bcd58b5bcc	elisp	00840e1f4eb277c757dbfa5abf73c4c7
+_eclasses_=elisp-common	36f97076abd90f943a34f8bcd58b5bcc	elisp	023dd24ad9e6d5e62907e7007f548ca3
 _md5_=a1d9845466590f6dd8a11badfcb047d8

@@ -3,11 +3,12 @@ DEPEND=>=app-admin/webapp-config-1.50.15
 DESCRIPTION=Web-based administration for Postgres database in php
 EAPI=7
 HOMEPAGE=http://phppgadmin.sourceforge.net/
+INHERIT=webapp
 IUSE=vhosts
 KEYWORDS=~amd64
 LICENSE=GPL-2
 RDEPEND=dev-lang/php[postgres,session] >=app-admin/webapp-config-1.50.15
 SLOT=7.13.0
 SRC_URI=https://github.com/phppgadmin/phppgadmin/releases/download/REL_7-13-0/phpPgAdmin-7.13.0.tar.bz2
-_eclasses_=webapp	1d03df021d958f89f4cc78e289d0b116
+_eclasses_=webapp	990ad6a000cf18d1ef87117e8c7b0a54
 _md5_=09646c47f0ba2de3c85d0301979ce10a

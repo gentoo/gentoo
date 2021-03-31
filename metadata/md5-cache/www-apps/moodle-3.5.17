@@ -3,11 +3,12 @@ DEPEND=>=app-admin/webapp-config-1.50.15
 DESCRIPTION=The Moodle Course Management System
 EAPI=7
 HOMEPAGE=https://moodle.org
+INHERIT=webapp
 IUSE=mysqli mssql postgres imap ldap odbc vhosts vhosts
 KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
 LICENSE=GPL-3+
 RDEPEND=>=dev-lang/php-7.0[mysqli?,mssql?,postgres?,imap?,ldap?,odbc?,ctype,curl,iconv,json,session,simplexml,xml,zip,gd,intl,soap,ssl,tokenizer,xmlrpc] virtual/httpd-php virtual/cron >=app-admin/webapp-config-1.50.15
 SLOT=3.5.17
 SRC_URI=https://download.moodle.org/stable35/moodle-3.5.17.tgz
-_eclasses_=webapp	1d03df021d958f89f4cc78e289d0b116
+_eclasses_=webapp	990ad6a000cf18d1ef87117e8c7b0a54
 _md5_=96531b830097a8d2a4913e76740cac3c

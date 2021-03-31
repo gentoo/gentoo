@@ -9,5 +9,5 @@ LICENSE=GPL-2+
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/rpm-spec-mode-0.15.el.xz
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	36f97076abd90f943a34f8bcd58b5bcc	estack	055c42df72f76a4f45ec92b35e83cd56	epatch	e8f1ec13660dc2f44b32775765d85e42	elisp	00840e1f4eb277c757dbfa5abf73c4c7
+_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	36f97076abd90f943a34f8bcd58b5bcc	estack	055c42df72f76a4f45ec92b35e83cd56	epatch	f62592ba170464d52e9a05f584161347	elisp	023dd24ad9e6d5e62907e7007f548ca3
 _md5_=c2e58e28a9eb5afcfb8279229609d7a2

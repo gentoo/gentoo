@@ -3,6 +3,7 @@ DEPEND=ruby_targets_ruby25? ( dev-lang/ruby:2.5 )
 DESCRIPTION=Framework to build server orchestration or parallel job execution systems
 EAPI=6
 HOMEPAGE=https://docs.puppet.com/mcollective/
+INHERIT=ruby-ng
 IUSE=doc +client ruby_targets_ruby25
 KEYWORDS=amd64 x86
 LICENSE=Apache-2.0
@@ -10,5 +11,5 @@ RDEPEND=>=dev-ruby/stomp-1.4.4 ruby_targets_ruby25? ( dev-lang/ruby:2.5 )
 REQUIRED_USE=|| ( ruby_targets_ruby25 )
 SLOT=0
 SRC_URI=https://github.com/puppetlabs/marionette-collective/archive/2.12.4.tar.gz -> mcollective-2.12.4.tar.gz
-_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	multilib	d410501a125f99ffb560b0c523cd3d1e	ruby-ng	676004cfb6cdf3dedf1c778d56346624	ruby-utils	03dfa7f54d59d740c2964dc7256d2820	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	ruby-utils	03dfa7f54d59d740c2964dc7256d2820	ruby-ng	40ad5ce3f20bff3a06352fd3fb633cfd
 _md5_=0f24a50802ecc41c21621cde2fafeb51

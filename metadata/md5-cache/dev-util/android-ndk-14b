@@ -3,11 +3,12 @@ DEPEND=app-arch/p7zip
 DESCRIPTION=Open Handset Alliance's Android NDK (Native Dev Kit)
 EAPI=6
 HOMEPAGE=https://developer.android.com/ndk/
+INHERIT=check-reqs
 KEYWORDS=~amd64
 LICENSE=android
 RDEPEND=>=dev-util/android-sdk-update-manager-10 >=sys-devel/make-3.81 || ( sys-libs/ncurses:0/5[tinfo] sys-libs/ncurses-compat:5[tinfo] )
 RESTRICT=mirror strip installsources test
 SLOT=0
 SRC_URI=https://dl.google.com/android/repository/android-ndk-r14b-linux-x86_64.zip
-_eclasses_=check-reqs	7e3fd1855a5e1b50bb9e80827b3f672d
+_eclasses_=check-reqs	97b90bd8fb799993925e6b3a683184e5
 _md5_=96a416094bd36de9b381d0b20eed0715

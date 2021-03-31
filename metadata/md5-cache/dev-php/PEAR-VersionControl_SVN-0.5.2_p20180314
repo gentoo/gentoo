@@ -3,6 +3,7 @@ DEPEND=test? ( dev-vcs/subversion <dev-php/phpunit-6 )
 DESCRIPTION=Simple OO wrapper interface for the Subversion command-line client
 EAPI=6
 HOMEPAGE=https://pear.php.net/package/VersionControl_SVN
+INHERIT=php-pear-r2 vcs-snapshot
 IUSE=test
 KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=BSD
@@ -10,5 +11,5 @@ RDEPEND=>=dev-php/pear-1.8.1
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/pear/VersionControl_SVN/archive/6c9580df92f0cc77a6eb6fcc216c56913bf308e7.tar.gz -> PEAR-VersionControl_SVN-0.5.2_p20180314.tar.gz
-_eclasses_=php-pear-r2	04ac1c3f5c35d8296eb969ef31e8477c	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
+_eclasses_=php-pear-r2	4a7c293febeea04349068d5716ad29ff	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
 _md5_=8eac8158352c469789766acf0a23c1b6

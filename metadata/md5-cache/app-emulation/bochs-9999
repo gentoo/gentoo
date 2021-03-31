@@ -4,11 +4,12 @@ DEPEND=X? ( x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXpm ) sdl
 DESCRIPTION=LGPL-ed pc emulator
 EAPI=7
 HOMEPAGE=http://bochs.sourceforge.net/
+INHERIT=subversion
 IUSE=3dnow avx debugger doc gdb ncurses readline svga sdl +smp vnc X +x86-64
 LICENSE=LGPL-2.1
 PROPERTIES=live
 RDEPEND=X? ( x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXpm ) sdl? ( media-libs/libsdl ) svga? ( media-libs/svgalib ) readline? ( sys-libs/readline:= ) ncurses? ( sys-libs/ncurses:= )
 REQUIRED_USE=avx? ( x86-64 ) gdb? ( !debugger !smp ) debugger? ( !gdb )
 SLOT=0
-_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	subversion	ed3498da4fb92dcfb0d6089c85d1465f
+_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	subversion	c500a1b7795f44153bd96fc2597e3c05
 _md5_=06d5ea22735ec2185c21604b4b897575

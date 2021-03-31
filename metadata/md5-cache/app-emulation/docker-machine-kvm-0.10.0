@@ -3,11 +3,12 @@ DEPEND=>=dev-lang/go-1.6:= app-emulation/libvirt:=[qemu,virt-network] >=dev-lang
 DESCRIPTION=KVM driver for docker-machine
 EAPI=6
 HOMEPAGE=https://github.com/dhiltgen/docker-machine-kvm
+INHERIT=golang-build golang-vcs-snapshot
 KEYWORDS=~amd64
 LICENSE=Apache-2.0 BSD CC-BY-SA-4.0 MIT MPL-2.0 ZLIB
 RDEPEND=app-emulation/libvirt:=[qemu,virt-network]
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/dhiltgen/docker-machine-kvm/archive/v0.10.0.tar.gz -> docker-machine-kvm-0.10.0.tar.gz https://github.com/docker/machine/archive/v0.10.0.tar.gz -> github.com-docker-machine-v0.10.0.tar.gz https://github.com/libvirt/libvirt-go/archive/c3209e4ba8b8dda65c85ca0ac04302e55895caf7.tar.gz -> github.com-libvirt-libvirt-go-c3209e4ba8b8dda65c85ca0ac04302e55895caf7.tar.gz
-_eclasses_=golang-base	904cd4c642d6923795b9bd99b6fe0e74	golang-build	91472d4e18894e738c69b415e236a664	golang-vcs-snapshot	b9726cec9cc93f8884b4634e4ddacdec
+_eclasses_=golang-base	b8fb27dacacea08140c53857f439fc7d	golang-build	91472d4e18894e738c69b415e236a664	golang-vcs-snapshot	ff485cabd3f37b060f110b0be95092ec
 _md5_=824d434c472198a061c0bd8aacf9d5b3

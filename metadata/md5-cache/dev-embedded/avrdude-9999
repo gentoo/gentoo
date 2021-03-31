@@ -10,5 +10,5 @@ PROPERTIES=live
 RDEPEND=virtual/libusb:1 virtual/libusb:0 ftdi? ( dev-embedded/libftdi:= ) ncurses? ( sys-libs/ncurses:0= ) readline? ( sys-libs/readline:0= )
 SLOT=0
 SRC_URI=doc? ( mirror://nongnu/avrdude/avrdude-doc-6.3.tar.gz mirror://nongnu/avrdude/avrdude-doc-6.3.pdf )
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	estack	055c42df72f76a4f45ec92b35e83cd56	subversion	ed3498da4fb92dcfb0d6089c85d1465f
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	estack	055c42df72f76a4f45ec92b35e83cd56	subversion	c500a1b7795f44153bd96fc2597e3c05
 _md5_=fca682fa0ac9452ba708ab37dd494665

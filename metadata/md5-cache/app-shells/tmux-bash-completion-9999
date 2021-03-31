@@ -3,9 +3,10 @@ DEPEND=>=app-misc/tmux-2.2 app-shells/bash-completion >=dev-vcs/git-1.8.2.1[curl
 DESCRIPTION=bash-completion scripts for tmux
 EAPI=6
 HOMEPAGE=https://github.com/imomaliev/tmux-bash-completion
+INHERIT=bash-completion-r1 git-r3
 LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=>=app-misc/tmux-2.2 app-shells/bash-completion
 SLOT=0
-_eclasses_=bash-completion-r1	be99724bde4274de21e581204e9d164a	git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	be99724bde4274de21e581204e9d164a	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=73621ef711bf68408774e732c74660d4

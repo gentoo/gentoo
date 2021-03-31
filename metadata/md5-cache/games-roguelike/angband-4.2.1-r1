@@ -12,5 +12,5 @@ RDEPEND=X? ( media-fonts/font-misc-misc x11-libs/libX11 ) ncurses? ( sys-libs/nc
 REQUIRED_USE=sound? ( sdl ) || ( X ncurses )
 SLOT=0
 SRC_URI=https://rephial.org/downloads/4.2/angband-4.2.1.tar.gz https://dev.gentoo.org/~steils/distfiles/angband-4.2.1-man.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b	desktop	c0d27bf73aa08ca05b663dbd31fbef28	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	desktop	c0d27bf73aa08ca05b663dbd31fbef28	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=6b92bc2bfd331bd0cfae2a02d7a4b4c2

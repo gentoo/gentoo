@@ -4,6 +4,7 @@ DEPEND=mysql? ( dev-db/mysql-connector-c:= ) mariadb? ( dev-db/mariadb-connector
 DESCRIPTION=A modern, simple and very fast Mysql library for Ruby - binding to libmysql
 EAPI=7
 HOMEPAGE=https://github.com/brianmario/mysql2
+INHERIT=multilib ruby-fakegem
 IUSE=mysql mariadb ruby_targets_ruby25 ruby_targets_ruby26 ruby_targets_ruby27 ruby_targets_ruby30 test
 KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86
 LICENSE=MIT
@@ -12,5 +13,5 @@ REQUIRED_USE=^^ ( mariadb mysql ) || ( ruby_targets_ruby25 ruby_targets_ruby26 r
 RESTRICT=!test? ( test )
 SLOT=0.5
 SRC_URI=https://rubygems.org/gems/mysql2-0.5.3.gem
-_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	multilib	d410501a125f99ffb560b0c523cd3d1e	ruby-fakegem	ec7b495f660dc38b1da9b6a19c75ecdd	ruby-ng	676004cfb6cdf3dedf1c778d56346624	ruby-utils	03dfa7f54d59d740c2964dc7256d2820	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	ruby-utils	03dfa7f54d59d740c2964dc7256d2820	ruby-ng	40ad5ce3f20bff3a06352fd3fb633cfd	ruby-fakegem	d9894561694732185fbcad470b121f2e
 _md5_=221172c4222b8cb4b0bcbd19441fdbee

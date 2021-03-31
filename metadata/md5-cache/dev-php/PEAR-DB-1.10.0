@@ -3,6 +3,7 @@ DEPEND=test? ( dev-php/PEAR-PEAR )
 DESCRIPTION=Database abstraction layer for PHP
 EAPI=7
 HOMEPAGE=https://pear.php.net/package/DB
+INHERIT=php-pear-r2
 IUSE=test
 KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86
 LICENSE=PHP-3
@@ -10,5 +11,5 @@ RDEPEND=>=dev-php/pear-1.8.1
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://pear.php.net/get/DB-1.10.0.tgz
-_eclasses_=php-pear-r2	04ac1c3f5c35d8296eb969ef31e8477c
+_eclasses_=php-pear-r2	4a7c293febeea04349068d5716ad29ff
 _md5_=38e2fd1c2cb6cc139bf60621d7e1f022

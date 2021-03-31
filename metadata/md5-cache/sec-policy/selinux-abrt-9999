@@ -4,9 +4,10 @@ DEPEND=>=sys-apps/policycoreutils-2.0.82 >=sec-policy/selinux-base-policy-9999
 DESCRIPTION=SELinux policy for abrt
 EAPI=7
 HOMEPAGE=https://wiki.gentoo.org/wiki/Project:SELinux
+INHERIT=selinux-policy-2
 LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=>=sys-apps/policycoreutils-2.0.82 >=sec-policy/selinux-base-policy-9999
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	selinux-policy-2	271dc44108583884b3658988f5c8c3bb
+_eclasses_=git-r3	b8e8c92aa5fe8df7187e466138eb4e52	selinux-policy-2	271dc44108583884b3658988f5c8c3bb
 _md5_=c903dc2bfd640b0ef6283cd6bf561d66

@@ -3,9 +3,10 @@ DEPEND=sys-apps/help2man >=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=User land tool for cleaning up old perl installs
 EAPI=6
 HOMEPAGE=https://www.gentoo.org/proj/en/perl/
+INHERIT=prefix git-r3
 LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=app-shells/bash dev-lang/perl || ( ( sys-apps/portage app-portage/portage-utils ) sys-apps/pkgcore )
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	prefix	de7d8e2b10085ed5ff09ad70e4753e5c
+_eclasses_=prefix	de7d8e2b10085ed5ff09ad70e4753e5c	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=2942768348a45de6e7de4174a05c205d

@@ -3,10 +3,11 @@ DEPEND=crypt? ( >=app-crypt/gpgme-1.0.0 ) otr? ( >=net-libs/libotr-3.1.0 ) aspel
 DESCRIPTION=A small Jabber console client with various features, like MUC, SSL, PGP
 EAPI=7
 HOMEPAGE=http://mcabber.com/
+INHERIT=readme.gentoo-r1 mercurial
 IUSE=aspell crypt idn otr spell ssl vim-syntax l10n_cs l10n_de l10n_fr l10n_it l10n_nl l10n_pl l10n_ru l10n_uk
 LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=crypt? ( >=app-crypt/gpgme-1.0.0 ) otr? ( >=net-libs/libotr-3.1.0 ) aspell? ( app-text/aspell ) vim-syntax? ( || ( app-editors/vim app-editors/gvim ) ) idn? ( net-dns/libidn:= ) spell? ( app-text/enchant:0 ) dev-libs/glib:2 net-libs/libnsl:0= sys-libs/ncurses:0= >=net-libs/loudmouth-1.4.3-r1[ssl?]
 SLOT=0
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	mercurial	d22fe98ea362174612a57c233239102f	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	mercurial	9f2bfb53237de8f79541b5592ed52f7a
 _md5_=37a08e8c25f7ee5d161fa82b38e116da

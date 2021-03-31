@@ -3,6 +3,7 @@ DEPEND=test? ( dev-php/phpunit dev-php/PEAR-PEAR )
 DESCRIPTION=Abstracts parsing and rendering rules for Wiki markup in structured plain text
 EAPI=6
 HOMEPAGE=https://pear.php.net/package/Text_Wiki
+INHERIT=php-pear-r2 vcs-snapshot
 IUSE=test
 KEYWORDS=~alpha amd64 ~hppa ~ia64 ppc ppc64 sparc x86
 LICENSE=LGPL-2.1
@@ -10,5 +11,5 @@ RDEPEND=>=dev-php/pear-1.8.1
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/pear/Text_Wiki/archive/32fd5f483f34645f4efd96d385d8950ea26d4a2a.tar.gz -> Text_Wiki-1.2.2_p20170904.tar.gz
-_eclasses_=php-pear-r2	04ac1c3f5c35d8296eb969ef31e8477c	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
+_eclasses_=php-pear-r2	4a7c293febeea04349068d5716ad29ff	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
 _md5_=b3913444ae3ac2766203f892bcbf1546

@@ -3,6 +3,7 @@ DEPEND=test? ( ruby_targets_ruby25? ( =dev-ruby/rspec-core-3.8*[ruby_targets_rub
 DESCRIPTION=A Behaviour Driven Development (BDD) framework for Ruby
 EAPI=6
 HOMEPAGE=https://github.com/rspec/rspec
+INHERIT=ruby-fakegem eapi7-ver
 IUSE=test ruby_targets_ruby25 ruby_targets_ruby26 test
 KEYWORDS=~alpha amd64 arm arm64 ~hppa ppc ppc64 s390 sparc x86
 LICENSE=MIT
@@ -11,5 +12,5 @@ REQUIRED_USE=|| ( ruby_targets_ruby25 ruby_targets_ruby26 )
 RESTRICT=!test? ( test ) !test? ( test )
 SLOT=3
 SRC_URI=https://rubygems.org/gems/rspec-3.8.0.gem
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	estack	055c42df72f76a4f45ec92b35e83cd56	multilib	d410501a125f99ffb560b0c523cd3d1e	ruby-fakegem	ec7b495f660dc38b1da9b6a19c75ecdd	ruby-ng	676004cfb6cdf3dedf1c778d56346624	ruby-utils	03dfa7f54d59d740c2964dc7256d2820	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	ruby-utils	03dfa7f54d59d740c2964dc7256d2820	ruby-ng	40ad5ce3f20bff3a06352fd3fb633cfd	ruby-fakegem	d9894561694732185fbcad470b121f2e	eapi7-ver	f9ec87e93172b25ce65a85303dc06964
 _md5_=8b776e6ec0124398d2400b655e48fa5b

@@ -4,10 +4,11 @@ DEPEND=dev-lang/perl
 DESCRIPTION=Perl module enabling one to delete subroutines
 EAPI=7
 HOMEPAGE=https://metacpan.org/release/Sub-Delete
+INHERIT=perl-module
 KEYWORDS=~amd64 ~riscv ~x86 ~x64-macos
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=virtual/perl-Exporter-5.570.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/S/SP/SPROUT/Sub-Delete-1.00002.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	ae176ff49e02bcbe576f6436b031c518
 _md5_=d99b4ec05b5a78dd3c5bd2fed1bb81cf

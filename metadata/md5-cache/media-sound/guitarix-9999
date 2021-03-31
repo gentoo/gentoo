@@ -11,5 +11,5 @@ PROPERTIES=live
 RDEPEND=dev-cpp/eigen:3 dev-cpp/glibmm:2 dev-cpp/gtkmm:3.0 dev-libs/glib:2 >=media-libs/libsndfile-1.0.17 >=media-libs/zita-convolver-3:= media-libs/zita-resampler >=net-misc/curl-7.26.0 >=sci-libs/fftw-3.3.8:3.0= x11-libs/gtk+:3 lv2? ( media-libs/lv2 ) standalone? ( dev-libs/boost:= media-libs/liblrdf media-libs/lilv virtual/jack bluetooth? ( net-wireless/bluez ) nsm? ( media-libs/liblo ) zeroconf? ( net-dns/avahi ) ) standalone? ( media-fonts/roboto )
 REQUIRED_USE=|| ( lv2 standalone )
 SLOT=0
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-any-r1	690a993463cd2ebcde40ccdf1bd9ba98	multiprocessing	cac3169468f893670dac3e7cb940e045	waf-utils	0a6e492cdcbd52b1304cfcd9eba5abc6	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	git-r3	3e7ec3d6619213460c85e2aa48398441
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-any-r1	690a993463cd2ebcde40ccdf1bd9ba98	multiprocessing	cac3169468f893670dac3e7cb940e045	waf-utils	0a6e492cdcbd52b1304cfcd9eba5abc6	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=b965fadf93ede15e3852f5b13e2f58cf

@@ -9,5 +9,5 @@ LICENSE=BSD LGPL-2.1
 RDEPEND=media-libs/alsa-lib >=media-libs/liblo-0.12 virtual/jack >=media-libs/ladspa-sdk-1.12-r2 >=media-libs/libsndfile-1.0.11 >=media-libs/libsamplerate-0.1.1-r1
 SLOT=0
 SRC_URI=mirror://sourceforge/dssi/dssi-1.1.1.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba
 _md5_=84a5f5bd6d6da015ae4b4d6cf1791528

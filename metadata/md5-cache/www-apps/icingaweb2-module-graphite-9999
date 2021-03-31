@@ -4,9 +4,10 @@ DEPEND=>=net-analyzer/icinga2-2.4.0 >=www-apps/icingaweb2-2.5.0
 DESCRIPTION=Icinga Web 2 plugin for Graphite
 EAPI=7
 HOMEPAGE=https://www.icinga.com/docs/graphite/latest/
+INHERIT=git-r3
 LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=>=net-analyzer/icinga2-2.4.0 >=www-apps/icingaweb2-2.5.0
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441
+_eclasses_=git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=7f883890d58b1c68fcf6436c2c98b750

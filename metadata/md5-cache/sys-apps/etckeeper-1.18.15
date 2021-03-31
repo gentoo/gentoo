@@ -11,5 +11,5 @@ RDEPEND=app-portage/portage-utils cron? ( virtual/cron ) || ( dev-vcs/git dev-vc
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://git.joeyh.name/index.cgi/etckeeper.git/snapshot/etckeeper-1.18.15.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	be99724bde4274de21e581204e9d164a	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	tmpfiles	dc8e4917d734a019caa04ad3b8db560b
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	be99724bde4274de21e581204e9d164a	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	tmpfiles	5cd6e8cf3288d5b19ff8b5c78c7e3e31
 _md5_=9c6879b526650496990d9c39466529d5

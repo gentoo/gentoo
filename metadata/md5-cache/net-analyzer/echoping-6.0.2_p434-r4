@@ -13,5 +13,5 @@ REQUIRED_USE=gnutls? ( ssl )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~jer/echoping-6.0.2_p434.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	4ba6c345bf49883c84d5fa5c9bf40c0b
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba
 _md5_=1efaa81a89a4badc8233f90b806ecd87

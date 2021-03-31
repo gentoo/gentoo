@@ -4,9 +4,10 @@ DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 DESCRIPTION=vim plugin: lean & mean statusline for vim that's light as air
 EAPI=7
 HOMEPAGE=https://github.com/vim-airline/vim-airline/ https://www.vim.org/scripts/script.php?script_id=4661
+INHERIT=vim-plugin git-r3
 LICENSE=MIT
 PROPERTIES=live
 RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 SLOT=0
-_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	git-r3	3e7ec3d6619213460c85e2aa48398441	vim-doc	dd0828b15877b2a09c07f4719e45891f	vim-plugin	3160d9cb05ef44497be1485db0fe7590
+_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	vim-doc	dd0828b15877b2a09c07f4719e45891f	vim-plugin	3160d9cb05ef44497be1485db0fe7590	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=048ebd29f5e099ef22c7357ef45c099c

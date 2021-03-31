@@ -4,11 +4,12 @@ DEPEND=lzo? ( dev-libs/lzo:2 ) socks5? ( net-proxy/dante ) ssl? ( dev-libs/opens
 DESCRIPTION=Create tunnels over TCP/IP networks with shaping, encryption, and compression
 EAPI=7
 HOMEPAGE=http://vtun.sourceforge.net/
+INHERIT=linux-info
 IUSE=lzo socks5 ssl zlib kernel_linux
 KEYWORDS=~alpha amd64 ppc ~sparc x86
 LICENSE=GPL-2
 RDEPEND=lzo? ( dev-libs/lzo:2 ) socks5? ( net-proxy/dante ) ssl? ( dev-libs/openssl:0= ) zlib? ( sys-libs/zlib )
 SLOT=0
 SRC_URI=mirror://sourceforge/vtun/vtun-3.0.3.tar.gz
-_eclasses_=linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	linux-info	30ded7f9adbdd03d3e848cdd74f6c395
 _md5_=e1a9629499af817eb9f822757d95adde

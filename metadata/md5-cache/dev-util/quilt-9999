@@ -9,5 +9,5 @@ LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=dev-util/diffstat mail-mta/sendmail sys-apps/ed elibc_Darwin? ( app-misc/getopt ) elibc_SunOS? ( app-misc/getopt ) >=sys-apps/coreutils-8.32-r1 graphviz? ( media-gfx/graphviz )
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	be99724bde4274de21e581204e9d164a
+_eclasses_=git-r3	b8e8c92aa5fe8df7187e466138eb4e52	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	be99724bde4274de21e581204e9d164a
 _md5_=636c8e0dde49da4d49212e66386877e6
