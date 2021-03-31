@@ -21,6 +21,7 @@ inherit portability
 
 # @ECLASS-VARIABLE: CDROM_OPTIONAL
 # @DEFAULT_UNSET
+# @PRE_INHERIT
 # @DESCRIPTION:
 # By default, the eclass sets PROPERTIES="interactive" on the assumption
 # that people will be using these.  If your package optionally supports
