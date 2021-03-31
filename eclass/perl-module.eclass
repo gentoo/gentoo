@@ -172,6 +172,7 @@ LICENSE="${LICENSE:-|| ( Artistic GPL-1+ )}"
 # Named MODULE_SECTION in EAPI=5.
 
 # @ECLASS-VARIABLE: DIST_EXAMPLES
+# @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # (EAPI=6 and later) This Bash array allows passing a list of example files to be installed
