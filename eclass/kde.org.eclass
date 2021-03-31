@@ -47,6 +47,7 @@ EXPORT_FUNCTIONS pkg_nofetch src_unpack
 : ${KDE_RELEASE_SERVICE:=false}
 
 # @ECLASS-VARIABLE: KDE_SELINUX_MODULE
+# @PRE_INHERIT
 # @DESCRIPTION:
 # If set to "none", do nothing.
 # For any other value, add selinux to IUSE, and depending on that useflag
