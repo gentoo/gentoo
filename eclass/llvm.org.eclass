@@ -40,7 +40,6 @@ esac
 # == internal control bits ==
 
 # @ECLASS-VARIABLE: _LLVM_MASTER_MAJOR
-# @PRE_INHERIT
 # @INTERNAL
 # @DESCRIPTION:
 # The major version of current LLVM trunk.  Used to determine
@@ -48,7 +47,6 @@ esac
 _LLVM_MASTER_MAJOR=13
 
 # @ECLASS-VARIABLE: _LLVM_SOURCE_TYPE
-# @PRE_INHERIT
 # @INTERNAL
 # @DESCRIPTION:
 # Source type to use: 'git' or 'tar'.
