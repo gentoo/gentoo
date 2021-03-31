@@ -6,7 +6,6 @@
     <name>Lars Wendler</name>
   </maintainer>
   <use>
-    <flag name="hellfire">Enable support for Diablo Hellfire Expansion</flag>
     <flag name="lto">Build with link time optimization enabled</flag>
   </use>
   <upstream>
