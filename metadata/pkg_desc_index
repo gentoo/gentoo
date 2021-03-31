@@ -773,7 +773,7 @@ app-admin/rex 1.13.3 9999: (R)?ex, the friendly automation framework
 app-admin/rsyslog 8.2008.0 8.2010.0 8.2012.0 8.2012.0-r1 8.2102.0: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 1.0.0_rc3-r1 2.0.1-r4: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20140617 20210208 99999999: Rules for Sagan log analyzer
-app-admin/salt 3000.5 3000.8 3001.6 3002.5: Salt is a remote execution and configuration manager
+app-admin/salt 3000.8 3001.6 3002.5: Salt is a remote execution and configuration manager
 app-admin/selint 1.1.0 1.2.0 9999: Policy Analysis Tools for SELinux
 app-admin/serf 0.8.1-r1 0.8.2 0.9.5: Service orchestration and management tool
 app-admin/setools 4.3.0 9999: Policy Analysis Tools for SELinux
@@ -3002,7 +3002,7 @@ app-text/fbpdf 0_p20200614: framebuffer pdf and djvu viewer
 app-text/fbreader 0.99.4-r5: E-Book Reader. Supports many e-book formats
 app-text/fictionup 0.1 0.2.1: A command-line markdown to fb2 convertor
 app-text/flpsed 0.7.3: Pseudo PostScript editor
-app-text/foliate 2.4.2-r1 2.5.0: gtk ebook reader built with gjs
+app-text/foliate 2.4.2-r1 2.5.0 2.6.2: gtk ebook reader built with gjs
 app-text/ghostscript-gpl 9.52-r1 9.53.3-r5: Interpreter for the PostScript language and PDF
 app-text/gnome-doc-utils 0.20.10-r2: A collection of documentation utilities for the Gnome project
 app-text/gocr 0.50 0.52: An OCR (Optical Character Recognition) reader
@@ -3689,7 +3689,7 @@ dev-db/pspg 3.1.5 4.3.0: A better pager for psql and mysql
 dev-db/psqlodbc 11.01.0000 13.00.0000: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r2: Quick Database Manager
 dev-db/qt5-sqlcipher 1.0.11: Qt SQL driver plugin for SQLCipher
-dev-db/redis 5.0.9-r1 5.0.12 6.0.9-r100 6.0.12 6.2.1: A persistent caching system, key-value and data structures database
+dev-db/redis 5.0.12 6.0.12 6.2.1: A persistent caching system, key-value and data structures database
 dev-db/repmgr 5.1.0: PostgreSQL Replication Manager
 dev-db/rqlite 5.10.2: Replicated SQLite using the Raft consensus protocol
 dev-db/sadisplay 0.4.9: SqlAlchemy schema display script
@@ -5848,7 +5848,7 @@ dev-lisp/flexi-streams 1.0.16 1.0.17: Flexible bivalent streams for Common Lisp
 dev-lisp/gcl 2.6.10 2.6.12 2.6.13_pre99: GNU Common Lisp
 dev-lisp/hyperspec 7.0-r1: Common Lisp ANSI-standard Hyperspec
 dev-lisp/roswell 20.05.14.106: A lisp installer and launcher for major environment
-dev-lisp/sbcl 1.3.11 1.4.9 2.0.10 2.0.11 2.1.0 2.1.1 2.1.2: Steel Bank Common Lisp (SBCL) is an implementation of ANSI Common Lisp
+dev-lisp/sbcl 1.3.11 1.4.9 2.0.10 2.0.11 2.1.0 2.1.1 2.1.2 2.1.3: Steel Bank Common Lisp (SBCL) is an implementation of ANSI Common Lisp
 dev-lisp/trivial-gray-streams 20170830 99999999: A thin compatibility layer between Gray Stream Common Lisp implementations
 dev-lisp/uiop 3.1.5 3.3.1 3.3.2: UIOP is a portability layer spun off ASDF3
 dev-lua/LuaBitOp 1.0.2-r102: Bit Operations Library for the Lua Programming Language
@@ -8125,8 +8125,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7 1.0.8: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r4: Amazon Web Services API
-dev-python/boto3 1.17.17 1.17.22 1.17.27 1.17.33 1.17.39 1.17.40 9999: The AWS SDK for Python
-dev-python/botocore 1.20.17 1.20.22 1.20.27 1.20.33 1.20.39 1.20.40 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.17.17 1.17.22 1.17.27 1.17.33 1.17.39 1.17.40 1.17.41 9999: The AWS SDK for Python
+dev-python/botocore 1.20.17 1.20.22 1.20.27 1.20.33 1.20.39 1.20.40 1.20.41 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.21: Syntax highlighting and autocompletion for the Python interpreter
@@ -8195,7 +8195,7 @@ dev-python/configshell-fb 1.1.28: A Python library for building configuration sh
 dev-python/confuse 1.0.0 1.4.0: Confuse is a configuration library for Python that uses YAML
 dev-python/consonance 0.1.3-r1: WhatsApp's handshake implementation using Noise Protocol
 dev-python/constantly 15.1.0-r1: Symbolic constants in Python
-dev-python/construct 2.10.61 2.10.63: A powerful declarative parser for binary data
+dev-python/construct 2.10.61 2.10.63 2.10.64: A powerful declarative parser for binary data
 dev-python/contextlib2 0.6.0_p1-r1: Backports and enhancements for the contextlib module
 dev-python/cookies 2.2.1-r1: Friendlier RFC 6265-compliant cookie parser/renderer
 dev-python/coreapi 2.3.3-r1: Python client library for Core API
@@ -8264,7 +8264,7 @@ dev-python/django-picklefield 3.0.1: Pickled object field for Django.
 dev-python/django-prometheus 2.1.0: Library to export Django metrics for Prometheus
 dev-python/django-q 1.3.3: A multiprocessing distributed task queue for Django
 dev-python/django-redis 4.10.0: Full featured redis cache backend for Django
-dev-python/django-rq 2.3.2 2.4.0: An app that provides django integration for RQ (Redis Queue)
+dev-python/django-rq 2.3.2 2.4.0 2.4.1: An app that provides django integration for RQ (Redis Queue)
 dev-python/django-sortedm2m 3.0.2: Drop-in replacement for django's many to many field with sorted relations
 dev-python/django-tables2 2.3.4: Table/data-grid framework for Django
 dev-python/django-tagging 0.5.0: Generic tagging application for Django
@@ -8434,7 +8434,7 @@ dev-python/http-parser 0.9.0: HTTP request/response parser for python in C
 dev-python/httpauth 0.3: A WSGI middleware that secures routes using HTTP Digest Authentication
 dev-python/httpbin 0.7.0-r2: HTTP Request and Response Service
 dev-python/httpcore 0.12.3: A minimal low-level HTTP client
-dev-python/httplib2 0.19.0-r1: A comprehensive HTTP client library
+dev-python/httplib2 0.19.0-r1 0.19.1: A comprehensive HTTP client library
 dev-python/httpretty 1.0.5: HTTP client mock for Python
 dev-python/httpx 0.16.1 0.17.0 0.17.1: Fully-featured HTTP client which provides sync and async APIs
 dev-python/huawei-lte-api 1.4.17: API For huawei LAN/WAN LTE Modems
@@ -8473,7 +8473,7 @@ dev-python/ioflo 2.0.0 2.0.2: Automated Reasoning Engine and Flow Based Programm
 dev-python/ipaddr 2.2.0-r1: Python IP address manipulation library
 dev-python/ipdb 0.10.3-r1 0.13.5 0.13.6 0.13.7: IPython-enabled pdb
 dev-python/ipy 1.01: Class and tools for handling of IPv4 and IPv6 addresses and networks
-dev-python/ipykernel 5.5.0: IPython Kernel for Jupyter
+dev-python/ipykernel 5.5.0 5.5.3: IPython Kernel for Jupyter
 dev-python/ipyparallel 6.3.0-r1: Interactive Parallel Computing with IPython
 dev-python/ipython 7.21.0 7.22.0: Advanced interactive shell for Python
 dev-python/ipython_genutils 0.2.0-r2: Vestigial utilities from IPython
@@ -8737,7 +8737,7 @@ dev-python/pandocfilters 1.4.3: Utilities for writing pandoc filters in python
 dev-python/parameterized 0.8.1: Parameterized testing with any Python test framework
 dev-python/paramiko 2.7.2: SSH2 protocol library
 dev-python/parsedatetime 2.6: Parse human-readable date/time strings
-dev-python/parso 0.7.0-r1 0.7.1-r1 0.8.1: a python parser that supports error recovery and round-trip parsing
+dev-python/parso 0.7.0-r1 0.7.1-r1 0.8.1 0.8.2: a python parser that supports error recovery and round-trip parsing
 dev-python/partd 1.1.0: Appendable key-value storage
 dev-python/parver 0.3.1: Parse and manipulate version numbers
 dev-python/passlib 1.7.4: Password hashing framework supporting over 20 schemes
@@ -8769,7 +8769,7 @@ dev-python/pickleshare 0.7.5: A small 'shelve' like datastore with concurrency s
 dev-python/pid 3.0.4: Pidfile featuring stale detection and file-locking
 dev-python/piexif 1.1.3-r1: Exif manipulation with pure Python
 dev-python/pika 1.1.0: Pure-Python implementation of the AMQP
-dev-python/pikepdf 2.7.0 2.8.0_p2 2.9.2: Python library to work with pdf files based on qpdf
+dev-python/pikepdf 2.7.0 2.8.0_p2 2.9.2 2.10.0: Python library to work with pdf files based on qpdf
 dev-python/pilkit 2.0: A collection of utilities and processors for the Python Imaging Libary
 dev-python/pillow 8.1.2: Python Imaging Library (fork)
 dev-python/pip 21.0.1: Installs python packages -- replacement for easy_install
@@ -8903,7 +8903,7 @@ dev-python/pylatex 1.4.1: A Python library for creating LaTeX files and snippets
 dev-python/pylev 1.2.0: Python Levenshtein implementation
 dev-python/pylibacl 0.6.0: POSIX ACLs (Access Control Lists) for Python
 dev-python/pylibmc 1.6.1-r1: Libmemcached wrapper written as a Python extension
-dev-python/pylint 2.7.1 2.7.2-r1: Python code static checker
+dev-python/pylint 2.7.1 2.7.2-r1 2.7.4: Python code static checker
 dev-python/pylru 1.2.0: A least recently used (LRU) cache for Python
 dev-python/pyls-black 0.4.6: Black plugin for the Python Language Server
 dev-python/pyls-spyder 0.3.2: Spyder extensions for the python language server
@@ -9092,7 +9092,7 @@ dev-python/python-senlinclient 2.1.1: A client for the OpenStack Senlin API
 dev-python/python-sense-hat 2.2.0-r2: Raspberry Pi Sense HAT python library
 dev-python/python-slip 0.6.5-r1: Miscellaneous convenience, extension and workaround code for Python
 dev-python/python-slugify 1.2.6 4.0.1: A Python Slugify application that handles Unicode
-dev-python/python-socks 1.2.1 1.2.2 1.2.3: SOCKS4, SOCKS5, HTTP tunneling functionality for Python
+dev-python/python-socks 1.2.1 1.2.2 1.2.3 1.2.4: SOCKS4, SOCKS5, HTTP tunneling functionality for Python
 dev-python/python-sshpubkeys 3.3.1: OpenSSH public key parser for Python
 dev-python/python-stdnum 1.16: A module to handle standardized numbers and codes
 dev-python/python-swiftclient 3.10.1: Python bindings to the OpenStack Object Storage API
@@ -9179,7 +9179,7 @@ dev-python/rfc3339-validator 0.1.2 0.1.3: A pure python RFC3339 validator
 dev-python/rfc3986 1.4.0: Validating URI References per RFC 3986
 dev-python/rfc3986-validator 0.1.1: Pure python RFC3986 validator
 dev-python/rfc3987 1.3.8-r1: Parsing and validation of URIs (RFC 3986) and IRIs (RFC 3987)
-dev-python/rich 9.11.1 9.12.4 9.13.0 10.0.0: Python library for renrering rich text, tables, etc. to the terminal
+dev-python/rich 9.11.1 9.12.4 9.13.0 10.0.0 10.0.1: Python library for renrering rich text, tables, etc. to the terminal
 dev-python/rjsmin 1.1.0: Javascript minifier written in python.
 dev-python/robot-detection 0.4.0: Module to detect if a given HTTP User Agent is a web crawler.
 dev-python/roman 3.3: An Integer to Roman numerals converter
@@ -9191,7 +9191,7 @@ dev-python/routes 2.5.1: A re-implementation of Rails routes system, mapping URL
 dev-python/rply 0.7.8: Pure python parser generator that also works with RPython
 dev-python/rpy 3.4.2: Python interface to the R Programming Language
 dev-python/rpyc 5.0.1: Remote Python Call (RPyC), a transparent and symmetric RPC library
-dev-python/rq 1.7.0: simple, lightweight library for creating and processing background jobs
+dev-python/rq 1.7.0 1.8.0: simple, lightweight library for creating and processing background jobs
 dev-python/rsa 4.7.2: Pure-Python RSA implementation
 dev-python/rst-linker 2.1.1 2.2.0: Sphinx plugin to add links and timestamps to the changelog
 dev-python/rtimulib 7.2.1-r1: Python Binding for RTIMULib, a versatile IMU library
@@ -9205,7 +9205,7 @@ dev-python/sabyenc 4.0.2: Module providing raw yEnc encoding/decoding for SABnzb
 dev-python/sarge 0.1.5: wrapper for subprocess which provides command pipeline functionality
 dev-python/scandir 1.10.0-r2: A better directory iterator and faster os.walk()
 dev-python/scikit-build 0.11.1: Improved build system generator for Python C/C++/Fortran/Cython extensions
-dev-python/scipy 1.1.0 1.4.1 1.5.2 1.5.3 1.5.4 1.6.0 1.6.1: Scientific algorithms library for Python
+dev-python/scipy 1.1.0 1.4.1 1.5.2 1.5.3 1.5.4 1.6.0 1.6.1 1.6.2: Scientific algorithms library for Python
 dev-python/scripttest 1.3.0-r1: A very small text templating language
 dev-python/scrypt 0.8.16: Bindings for the scrypt key derivation function library
 dev-python/seaborn 0.11.1: Statistical data visualization
@@ -9244,7 +9244,7 @@ dev-python/slimit 0.8.1-r1: A JavaScript minifier written in Python
 dev-python/slixmpp 1.7.0 9999: Python 3 library for XMPP
 dev-python/smartypants 2.0.1 9999: ASCII quote-dot-dash to HTML entity converter
 dev-python/smmap 4.0.0: A pure Python implementation of a sliding window memory map manager
-dev-python/snakeoil 0.9.4 0.9.5 0.9.6 9999: misc common functionality and useful optimizations
+dev-python/snakeoil 0.9.2-r1 0.9.4 0.9.5 0.9.6 9999: misc common functionality and useful optimizations
 dev-python/snaketrace 0.1.1: An strace-like tool for Python audit events
 dev-python/snappy 0.6.0: Python library for the snappy compression library from Google
 dev-python/snapshottest 0.5.1: Snapshot Testing utils for Python
@@ -9301,7 +9301,7 @@ dev-python/spyder-notebook 0.3.2: Jupyter notebook integration with Spyder
 dev-python/spyder-terminal 0.5.0: Run system terminals inside Spyder
 dev-python/spyder-unittest 0.4.1: Plugin for Spyder to run tests and view the results
 dev-python/spyder-vim 0_pre20201026: Plugin for Spyder to enable Vim keybindings
-dev-python/sqlalchemy 1.3.17 1.3.20 1.3.21 1.3.22 1.3.23 1.4.0 1.4.1 1.4.2 1.4.3-r1: Python SQL toolkit and Object Relational Mapper
+dev-python/sqlalchemy 1.3.17 1.3.20 1.3.21 1.3.22 1.3.23 1.3.24 1.4.0 1.4.1 1.4.2 1.4.3-r1 1.4.4: Python SQL toolkit and Object Relational Mapper
 dev-python/sqlalchemy-migrate 0.13.0: SQLAlchemy Schema Migration Tools
 dev-python/sqlalchemy-rqlite 1.1: A SQLAlchemy dialect for rqlite
 dev-python/sqlparse 0.3.1 0.4.1: A non-validating SQL parser module for Python
@@ -9448,7 +9448,7 @@ dev-python/wsgiproxy2 0.4.6-r1: HTTP proxying tools for WSGI apps
 dev-python/wsproto 0.15.0 1.0.0: WebSockets state-machine based protocol implementation
 dev-python/wstools 0.4.8: WSDL parsing services package for Web Services for Python
 dev-python/wtforms 2.3.3: Flexible forms validation and rendering library for python web development
-dev-python/wurlitzer 2.0.1: Capture C-level stdout/stderr in Python
+dev-python/wurlitzer 2.0.1 2.1.0: Capture C-level stdout/stderr in Python
 dev-python/www-authenticate 0.9.2: WWW-Authenticate header parser
 dev-python/wxpython 4.0.7 4.0.7-r1: A blending of the wxWindows C++ class library with Python
 dev-python/xapp 2.0.2: Python bindings for x11-libs/xapps
@@ -10990,7 +10990,7 @@ dev-util/patchutils 0.3.4 0.4.2: A collection of tools that operate on patch fil
 dev-util/patdiff 0.14.0: Colored patience diffs with word-level refinement
 dev-util/peg 0.1.18: Recursive-descent parser generators for C
 dev-util/perf 5.8 5.9.9 5.10.16 5.11: Userland tools for Linux Performance Counters
-dev-util/pkgcheck 0.9.3-r1 0.9.5 0.9.7 9999: pkgcore-based QA utility for ebuild repos
+dev-util/pkgcheck 0.8.2-r2 0.9.3-r1 0.9.5 0.9.7 9999: pkgcore-based QA utility for ebuild repos
 dev-util/pkgconf 1.6.3 1.7.3-r1 1.7.4 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
 dev-util/pkgconfig 0.28-r2 0.28-r3 0.29.1 0.29.2 9999: Package config system that manages compile/link flags
 dev-util/pkgdev 0.1.2 0.1.3 9999: Collection of tools for Gentoo development
@@ -11634,7 +11634,7 @@ games-misc/wumpus 1.4-r1: Classic Hunt the Wumpus Adventure Game
 games-misc/xcowsay 1.5.1: Displays a cute cow and message on your desktop
 games-misc/xcruiser 0.30-r1: Fly about 3D-formed file system
 games-misc/xpenguins 2.2-r2: Cute little penguins invading your desktop
-games-mud/circlemud 3.1: a multi-user dungeon game system server
+games-mud/circlemud 3.1-r1: A multi-user dungeon game system server
 games-mud/crystal 0.2.4-r1: The crystal MUD client
 games-mud/gmudix 1.0-r1: GTK+ MUD client with many features and an easy scripting language
 games-mud/gnome-mud 0.11.2-r2 9999: GNOME MUD client
@@ -11682,7 +11682,7 @@ games-puzzle/gnome2048 3.36.0 3.36.4 3.38.2: Move the tiles until you obtain the
 games-puzzle/gnudoku 0.93-r1: A program for creating and solving Su Doku puzzles
 games-puzzle/gnurobbo 0.68: Robbo, a popular Atari XE/XL game ported to Linux
 games-puzzle/gottet 1.1.9: Tetris clone based on Qt5
-games-puzzle/greedy 0.2.0-r1: fun little ncurses puzzle game
+games-puzzle/greedy 0.2.0-r2: fun little ncurses puzzle game
 games-puzzle/groundhog 1.4-r1: Put the balls in the pockets of the same color by manipulating a maze of tubes
 games-puzzle/gtkballs 3.1.5-r2: An entertaining game based on the old DOS game lines
 games-puzzle/gweled 0.9.1-r2: Bejeweled clone game
@@ -11865,7 +11865,7 @@ games-strategy/freeorion 0.4.10.1-r1 9999: A free turn-based space empire and ga
 games-strategy/freesynd 0.7.5: Portable engine reimplementation for the classic Bullfrog game Syndicate
 games-strategy/galaxyhack 1.74-r1: Multiplayer AI script based strategy game
 games-strategy/hedgewars 1.0.0-r100: A turn-based strategy, artillery, action and comedy game
-games-strategy/ja2-stracciatella 0.12.1_p7072 0.17.0: An improved, cross-platform, stable Jagged Alliance 2 runtime
+games-strategy/ja2-stracciatella 0.17.0: An improved, cross-platform, stable Jagged Alliance 2 runtime
 games-strategy/ja2-stracciatella-data 1: A port of Jagged Alliance 2 to SDL (data files)
 games-strategy/julius 1.4.1: Feature-faithful open source re-implementation of Caesar III
 games-strategy/knights-demo 1.32-r2: Anglo-Saxon medieval army battles and resource management
@@ -13893,7 +13893,7 @@ media-sound/deadbeef 1.8.4 1.8.7-r1: DeaDBeeF is a modular audio player similar 
 media-sound/declick 0.6.5-r1: Dynamic digital declicker for audio sample files
 media-sound/deinvert 9999: A voice inversion descrambler
 media-sound/denemo 2.3.0-r1: A music notation editor
-media-sound/din 49.1 50: a software musical instrument and audio synthesizer
+media-sound/din 49.1 50 50.1: a software musical instrument and audio synthesizer
 media-sound/dir2ogg 0.13-r1: Converts mp3, m4a, wma, and wav files to Ogg Vorbis format
 media-sound/drumstick 2.0.0 2.1.0: Qt/C++ wrapper for ALSA sequencer
 media-sound/dvda-author 10.06-r1: Author a DVD-Audio DVD
@@ -14297,7 +14297,7 @@ media-video/pgmfindclip 1.13: automatically find a clipping border for a sequenc
 media-video/pipewire 0.3.18 0.3.22 0.3.24: Multimedia processing graphs
 media-video/pitivi 0.999-r3: A non-linear video editor using the GStreamer multimedia framework
 media-video/projectx 0.91.0.10-r2: Converts, splits and demuxes DVB and other MPEG recordings
-media-video/qmplay2 20.07.04 9999: A Qt-based video player, which can play most formats and codecs
+media-video/qmplay2 20.07.04 21.03.09 9999: A Qt-based video player, which can play most formats and codecs
 media-video/raspberrypi-omxplayer 0_p20160217-r1 0_p20160528-r2 0_p20160528-r3 9999: Command line media player for the Raspberry Pi
 media-video/rav1e 0.3.5 0.4.0 9999: The fastest and safest AV1 encoder
 media-video/recmpeg 1.0.5: Simple libfame-based video encoder, compresses raw video sequences to MPEG video
@@ -15504,7 +15504,7 @@ net-misc/x2goclient 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.1039_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.1432 0.4.1500 0.4.1520: utility to download media contents from the web
-net-misc/youtube-dl 2021.03.14 2021.03.25 9999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2021.03.14 2021.03.25 2021.03.31 9999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r2 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.6.3: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -16335,7 +16335,7 @@ sci-libs/cxsparse 3.2.0: Extended sparse matrix package
 sci-libs/dcmtk 3.6.5: The DICOM Toolkit
 sci-libs/dealii 9.2.0 9999: Solving partial differential equations with the finite element method
 sci-libs/djbfft 0.76-r2: Extremely fast library for floating-point convolution
-sci-libs/dlib 19.16-r1: Numerical and networking C++ library
+sci-libs/dlib 19.16-r1 19.22: Numerical and networking C++ library
 sci-libs/dmlc-core 0_p20170719: Common bricks library for building distributed machine learning.
 sci-libs/dsdp 5.8-r3: Software for interior-point for semidefinite programming
 sci-libs/eccodes 2.18.0: A set of encoding/decoding APIs and tools for WMO GRIB, BUFR, and GTS messages
@@ -16564,7 +16564,7 @@ sci-mathematics/mathmod 4.1-r1: Plot parametric and implicit surfaces
 sci-mathematics/mathomatic 16.0.5: Automatic algebraic manipulator
 sci-mathematics/maxima 5.42.1 5.44.0-r4 5.44.0-r7: Free computer algebra environment based on Macsyma
 sci-mathematics/minisat 2.2.0_p20130925-r1: Small yet efficient SAT solver with reference paper
-sci-mathematics/msieve 1.53-r1 9999: A C library implementing a suite of algorithms to factor large integers
+sci-mathematics/msieve 1.53-r1: A C library implementing a suite of algorithms to factor large integers
 sci-mathematics/nauty 2.6.7: Computing automorphism groups of graphs and digraphs
 sci-mathematics/nestedsums 1.5.2-r1: A GiNaC-based library for symbolic expansion of certain transcendental functions
 sci-mathematics/normaliz 3.1.3 3.3.0: Tool for computations in affine monoids and more
@@ -16649,7 +16649,7 @@ sci-visualization/g3data 1.5.4: Tool for extracting data from graphs
 sci-visualization/gcalc 3.1_rc1-r1: Java Mathematical Graphing System
 sci-visualization/ggobi 2.1.11: Visualization program for exploring high-dimensional data
 sci-visualization/gle 4.2.5-r1: Graphics Layout Engine
-sci-visualization/gnuplot 5.4.1-r1 5.5.9999-r1: Command-line driven interactive plotting program
+sci-visualization/gnuplot 5.4.1-r1 5.4.1-r2 5.5.9999-r1: Command-line driven interactive plotting program
 sci-visualization/gr 0.50.0-r2 0.53.0: Universal framework for cross-platform visualization applications
 sci-visualization/grace 5.1.25_p7 5.1.25_p9: Motif based XY-plotting tool
 sci-visualization/gri 2.12.23-r1: Language for scientific graphics programming
@@ -17122,7 +17122,7 @@ sys-apps/pcsc-lite 1.9.0 1.9.1: PC/SC Architecture smartcard middleware library
 sys-apps/pcsc-slb-rf72-drv 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Reader
 sys-apps/pcsc-tools 1.5.6 1.5.7: PC/SC Architecture smartcard tools
 sys-apps/pick 4.0.0: a fuzzy search tool for the command-line
-sys-apps/pkgcore 0.11.5-r3 0.11.6-r1 0.11.8-r1 9999: a framework for package management
+sys-apps/pkgcore 0.11.2-r2 0.11.5-r3 0.11.6-r1 0.11.8-r1 9999: a framework for package management
 sys-apps/plocate 1.1.5: Posting locate is a much faster locate
 sys-apps/pmount 0.9.99_alpha-r6: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
@@ -17696,8 +17696,8 @@ sys-kernel/cryptodev 1.9-r1 1.11 9999: device that allows access to Linux kernel
 sys-kernel/dracut 050-r2 051-r1 053 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 4.2.1-r1 9999: Gentoo automatic kernel building scripts
-sys-kernel/gentoo-kernel 5.4.105 5.4.106 5.4.108 5.10.24 5.10.26 5.11.5 5.11.6 5.11.7 5.11.9 5.11.10: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.105 5.4.105-r2 5.4.106 5.4.106-r1 5.4.108 5.4.108-r1 5.10.24 5.10.24-r1 5.10.26 5.10.26-r1 5.11.5 5.11.5-r1 5.11.6 5.11.6-r1 5.11.7 5.11.7-r1 5.11.9 5.11.9-r1 5.11.10 5.11.10-r1: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel 5.4.105 5.4.106 5.4.108 5.4.109 5.10.24 5.10.26 5.10.27 5.11.5 5.11.6 5.11.7 5.11.9 5.11.10 5.11.11: Linux kernel built with Gentoo patches
+sys-kernel/gentoo-kernel-bin 5.4.105 5.4.105-r2 5.4.106 5.4.106-r1 5.4.108 5.4.108-r1 5.4.109 5.10.24 5.10.24-r1 5.10.26 5.10.26-r1 5.10.27 5.11.5 5.11.5-r1 5.11.6 5.11.6-r1 5.11.7 5.11.7-r1 5.11.9 5.11.9-r1 5.11.10 5.11.10-r1 5.11.11: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.257 4.4.261 4.4.262 4.4.263 4.4.264 4.9.257 4.9.261 4.9.262 4.9.263 4.9.264 4.14.221 4.14.225 4.14.226 4.14.227 4.14.228 4.19.175 4.19.181 4.19.182 4.19.183 4.19.184 5.4.97 5.4.105 5.4.106 5.4.107 5.4.108 5.4.109 5.10.24 5.10.25 5.10.26 5.10.27 5.11.6 5.11.7 5.11.8-r1 5.11.9 5.11.10 5.11.11: Full sources including the Gentoo patchset for the 5.11 kernel tree
 sys-kernel/git-sources 5.12_rc2 5.12_rc3 5.12_rc4 5.12_rc5: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2 3: Gentoo fork of installkernel script from debianutils
@@ -17712,7 +17712,7 @@ sys-kernel/pf-sources 5.9_p7 5.10_p12 5.11_p1 5.11_p2 5.11_p3 5.11_p4 5.11_p5: L
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.79_p20201201 5.10.11_p20210201 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.79_p20201201-r1 5.4.9999 5.10.11_p20210201: Raspberry Pi kernel sources
 sys-kernel/rt-sources 4.4.240_p209 4.4.245_p211 4.4.249_p212 4.9.240_p155 4.9.247_p162 4.14.206_p99 4.14.209_p101 4.14.214_p104 4.19.148_p64 4.19.160_p69 4.19.165_p70 5.4.70_p40 5.4.84_p47 5.10.1_p20 5.10.4_p22: Full Linux 5.10 kernel sources with the CONFIG_PREEMPT_RT patch
-sys-kernel/vanilla-kernel 5.4.105 5.4.106 5.4.108 5.10.24 5.10.26 5.11.5 5.11.6 5.11.7 5.11.9 5.11.10: Linux kernel built from vanilla upstream sources
+sys-kernel/vanilla-kernel 5.4.105 5.4.106 5.4.108 5.4.109 5.10.24 5.10.26 5.10.27 5.11.5 5.11.6 5.11.7 5.11.9 5.11.10 5.11.11: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-sources 4.4.264 4.9.264 4.14.228 4.19.184 5.4.109 5.10.27 5.11.11: Full sources for the Linux kernel
 sys-kernel/zen-sources 5.10.16 5.11: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
@@ -17891,7 +17891,7 @@ virtual/commonlisp 0: Virtual for Common Lisp
 virtual/cron 0-r2: Virtual for cron
 virtual/daemontools 0: Virtual for daemontools
 virtual/dev-manager 0-r2: Virtual for the device filesystem manager
-virtual/dist-kernel 5.4.105 5.4.106 5.4.108 5.10.24 5.10.26 5.11.5 5.11.6 5.11.7 5.11.9 5.11.10: Virtual to depend on any Distribution Kernel
+virtual/dist-kernel 5.4.105 5.4.106 5.4.108 5.4.109 5.10.24 5.10.26 5.10.27 5.11.5 5.11.6 5.11.7 5.11.9 5.11.10 5.11.11: Virtual to depend on any Distribution Kernel
 virtual/editor 0-r3: Virtual for editor
 virtual/eject 0-r1: Virtual for the eject command
 virtual/fam 0-r1: A virtual package to choose between gamin and fam

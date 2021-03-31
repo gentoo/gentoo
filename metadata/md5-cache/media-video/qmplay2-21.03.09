@@ -1,15 +1,16 @@
-BDEPEND=dev-qt/linguist-tools:5 virtual/pkgconfig dev-util/ninja dev-util/cmake >=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=compile configure install postinst postrm preinst prepare test unpack
+BDEPEND=dev-qt/linguist-tools:5 virtual/pkgconfig dev-util/ninja dev-util/cmake
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
 DEPEND=dev-qt/qtcore:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 media-video/ffmpeg || ( dev-qt/qtgui:5[X(-)] dev-qt/qtgui:5[xcb(-)] ) alsa? ( media-libs/alsa-lib ) cdio? ( dev-libs/libcdio[cddb] ) dbus? ( dev-qt/qtdbus:5 ) extensions? ( dev-qt/qtdeclarative:5 media-libs/taglib ) gme? ( media-libs/game-music-emu ) libass? ( media-libs/libass ) opengl? ( virtual/opengl ) pipewire? ( media-video/pipewire ) portaudio? ( media-libs/portaudio ) pulseaudio? ( media-sound/pulseaudio ) sid? ( media-libs/libsidplayfp ) shaders? ( >=media-libs/shaderc-2020.1 ) vaapi? ( >=media-video/ffmpeg-4.1.3[vaapi] x11-libs/libva[drm,opengl] ) vdpau? ( media-video/ffmpeg[vdpau] ) videofilters? ( dev-qt/qtconcurrent:5 ) vulkan? ( >=dev-qt/qtgui-5.14.1:5[vulkan] >=media-libs/vulkan-loader-1.2.133 ) xv? ( x11-libs/libXv ) dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=A Qt-based video player, which can play most formats and codecs
 EAPI=7
 HOMEPAGE=https://github.com/zaps166/QMPlay2
-INHERIT=cmake xdg git-r3
+INHERIT=cmake xdg
 IUSE=avdevice +audiofilters +alsa cdio cuvid dbus extensions gme inputs libass modplug notifications opengl pipewire portaudio pulseaudio sid shaders vaapi vdpau +videofilters visualizations vulkan xv
+KEYWORDS=~amd64 ~x86
 LICENSE=LGPL-3
-PROPERTIES=live
 RDEPEND=dev-qt/qtcore:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 media-video/ffmpeg || ( dev-qt/qtgui:5[X(-)] dev-qt/qtgui:5[xcb(-)] ) alsa? ( media-libs/alsa-lib ) cdio? ( dev-libs/libcdio[cddb] ) dbus? ( dev-qt/qtdbus:5 ) extensions? ( dev-qt/qtdeclarative:5 media-libs/taglib ) gme? ( media-libs/game-music-emu ) libass? ( media-libs/libass ) opengl? ( virtual/opengl ) pipewire? ( media-video/pipewire ) portaudio? ( media-libs/portaudio ) pulseaudio? ( media-sound/pulseaudio ) sid? ( media-libs/libsidplayfp ) shaders? ( >=media-libs/shaderc-2020.1 ) vaapi? ( >=media-video/ffmpeg-4.1.3[vaapi] x11-libs/libva[drm,opengl] ) vdpau? ( media-video/ffmpeg[vdpau] ) videofilters? ( dev-qt/qtconcurrent:5 ) vulkan? ( >=dev-qt/qtgui-5.14.1:5[vulkan] >=media-libs/vulkan-loader-1.2.133 ) xv? ( x11-libs/libXv )
 REQUIRED_USE=audiofilters? ( || ( alsa pipewire portaudio pulseaudio ) ) extensions? ( dbus ) shaders? ( vulkan )
 SLOT=0
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	cmake	518e4c9a6a38dfd7afc54b6a7c5de3da	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
+SRC_URI=https://github.com/zaps166/QMPlay2/releases/download/21.03.09/QMPlay2-src-21.03.09.tar.xz
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	cmake	518e4c9a6a38dfd7afc54b6a7c5de3da	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
 _md5_=a138106c514968865f63835ee3041402
