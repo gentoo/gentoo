@@ -22,7 +22,6 @@ RDEPEND=""
 # Public functions
 #
 
-# @FUNCTION: ebdftopcf
 ebdftopcf() {
 	local bdffiles
 	bdffiles="$@"
@@ -37,7 +36,6 @@ ebdftopcf() {
 # Public inheritable functions
 #
 
-# @FUNCTION: font-ebdftopcf_src_compile
 font-ebdftopcf_src_compile() {
 	use X && FONT_SUFFIX="pcf.gz"
 	use X || FONT_SUFFIX="bdf"
