@@ -7,7 +7,8 @@ EXPORT_FUNCTIONS pkg_setup
 # @ECLASS: postgres.eclass
 # @MAINTAINER:
 # PostgreSQL <pgsql-bugs@gentoo.org>
-# @AUTHOR: Aaron W. Swenson <titanofold@gentoo.org>
+# @AUTHOR:
+# Aaron W. Swenson <titanofold@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: An eclass for PostgreSQL-related packages
 # @DESCRIPTION:
