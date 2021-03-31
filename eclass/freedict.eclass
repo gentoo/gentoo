@@ -5,7 +5,7 @@
 # @MAINTAINER:
 # maintainer-needed@gentoo.org
 # @AUTHOR:
-# Original author: Seemant Kulleen
+# Original author: Seemant Kulleen <seemant@gentoo.org>
 # @SUPPORTED_EAPIS: 7
 # @BLURB: Ease the installation of freedict translation dictionaries
 # @DESCRIPTION:
