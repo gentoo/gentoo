@@ -189,7 +189,7 @@ src_install() {
 
 	if use doc; then
 		# Manual, FAQ
-		dodoc docs/gnuplot.pdf #FAQ.pdf
+		dodoc docs/gnuplot.pdf FAQ.pdf
 		# Documentation for making PostScript files
 		docinto psdoc
 		dodoc docs/psdoc/{*.doc,*.tex,*.ps,*.gpi,README}
