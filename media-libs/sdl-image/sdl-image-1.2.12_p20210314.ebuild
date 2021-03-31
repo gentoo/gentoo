@@ -5,7 +5,7 @@ EAPI=7
 inherit multilib-minimal
 
 MY_P="${P/sdl-/SDL_}"
-MY_COMMIT="93e58981dcd947f9f153309fda46b0d1cb4eca83"
+MY_COMMIT="5d792dde2f764daf15dc48521774a3354330db69"
 DESCRIPTION="Image file loading library"
 HOMEPAGE="https://www.libsdl.org/projects/SDL_image/release-1.2.html"
 SRC_URI="https://github.com/libsdl-org/SDL_image/archive/${MY_COMMIT}.tar.gz -> ${MY_P}.tar.gz"
