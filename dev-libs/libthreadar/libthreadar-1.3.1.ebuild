@@ -23,9 +23,7 @@ src_configure() {
 	# Do _not_ use $(use_enable) until you have verified that the
 	# logic has been fixed by upstream.
 
-	local myconf=( --disable-static )
-
-	econf "${myconf[@]}"
+	econf --disable-static
 }
 
 src_install() {
