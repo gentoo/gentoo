@@ -148,6 +148,11 @@ src_prepare() {
 		if ! use X; then
 			sed -i -e "/EXES\ +=\ ftdiff/ s:^:#:" Makefile || die
 		fi
+
+		# Taken from upstream (https://bugs.gentoo.org/775881)
+		eapply "${FILESDIR}/${P}-slibtool_build_fix.patch"
+		eapply "${FILESDIR}/${P}-dont_hardcode_libtool.patch"
+		eapply "${FILESDIR}/ft2demos-2.10.4-install_target.patch"
 		cd "${S}" || die
 	fi
 
@@ -204,15 +209,10 @@ multilib_src_compile() {
 multilib_src_install() {
 	default
 
-	if multilib_is_native_abi && use utils; then
+	if multilib_is_native_abi && use utils ; then
 		einfo "Installing utils"
-		rm "${WORKDIR}"/ft2demos-${PV}/bin/README || die
-		dodir /usr/bin #654780
-		local ft2demo
-		for ft2demo in ../ft2demos-${PV}/bin/*; do
-			./libtool --mode=install $(type -P install) -m 755 "${ft2demo}" \
-				"${ED}"/usr/bin || die
-		done
+		emake DESTDIR="${D}" FT2DEMOS=1 \
+			TOP_DIR_2="${WORKDIR}/ft2demos-${PV}" install
 	fi
 }
 

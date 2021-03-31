@@ -1,45 +1,44 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 JAVA_PKG_IUSE="doc source test"
+inherit desktop java-pkg-2 java-ant-2 prefix virtualx
 
-inherit java-pkg-2 java-ant-2 prefix virtualx
-
-DESCRIPTION="A fully functional ldap browser written in Java"
+DESCRIPTION="Fully functional LDAP browser written in Java"
 HOMEPAGE="http://jxplorer.org/"
 SRC_URI="mirror://sourceforge/${PN}/${P}-project.zip"
-LICENSE="CAOSL"
+S="${WORKDIR}/${PN}"
 
-IUSE=""
+LICENSE="CAOSL"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+IUSE=""
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 RESTRICT="test"
 
-CDEPEND="
-	>=dev-java/javahelp-2.0.02_p46:0"
-
-RDEPEND="
-	${CDEPEND}
-	>=virtual/jre-1.5"
-
-DEPEND="
-	${CDEPEND}
+COMMON_DEPEND="
+	>=dev-java/javahelp-2.0.02_p46:0
+"
+RDEPEND="${COMMON_DEPEND}
+	>=virtual/jre-1.5
+"
+DEPEND="${COMMON_DEPEND}
 	virtual/jdk:1.8
-	test? ( dev-java/junit:0 )"
-
-S="${WORKDIR}/${PN}"
+	test? ( dev-java/junit:0 )
+"
 
 JAVA_ANT_REWRITE_CLASSPATH="yes"
 EANT_GENTOO_CLASSPATH="javahelp"
 EANT_TEST_ANT_TASKS="ant-junit"
 
+PATCHES=( "${FILESDIR}"/3.3-disable-jxworkbench.patch )
+
 src_prepare() {
-	epatch "${FILESDIR}"/3.3-disable-jxworkbench.patch
+	default
 
 	rm -v jars/*.jar || die
-	sed -i -e 's/<fileset dir="${jasper}.*//g' "${S}/build.xml" || die
+	sed -i -e 's/<fileset dir="${jasper}.*//g' build.xml || die
 
 	if use test; then
 		EANT_GENTOO_CLASSPATH_EXTRA=$(java-pkg_getjars --build-only junit)

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: virtualx.eclass
@@ -25,6 +25,7 @@ esac
 [[ ${EAPI} == [45] ]] && inherit eutils
 
 # @ECLASS-VARIABLE: VIRTUALX_REQUIRED
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Variable specifying the dependency on xorg-server and xhost.
 # Possible special values are "always" and "manual", which specify

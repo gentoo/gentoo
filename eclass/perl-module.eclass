@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: perl-module.eclass
@@ -172,6 +172,7 @@ LICENSE="${LICENSE:-|| ( Artistic GPL-1+ )}"
 # Named MODULE_SECTION in EAPI=5.
 
 # @ECLASS-VARIABLE: DIST_EXAMPLES
+# @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # (EAPI=6 and later) This Bash array allows passing a list of example files to be installed
@@ -358,6 +359,7 @@ perl-module_src_compile() {
 #   network  : do not try to disable network tests
 
 # @ECLASS-VARIABLE: DIST_TEST_OVERRIDE
+# @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # (EAPI=6 and later) Variable that controls if tests are run in the test phase

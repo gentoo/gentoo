@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kernel-2.eclass
@@ -1631,9 +1631,9 @@ kernel-2_pkg_setup() {
 			echo
 			ewarn "Be warned !! >=sys-devel/gcc-4.0.0 isn't supported with linux-2.4!"
 			ewarn "Either switch to another gcc-version (via gcc-config) or use a"
-			ewarn "newer kernel that supports gcc-4."
+			ewarn "newer kernel that supports >=sys-devel/gcc-4."
 			echo
-			ewarn "Also be aware that bugreports about gcc-4 not working"
+			ewarn "Also, be aware that bug reports about gcc-4 not working"
 			ewarn "with linux-2.4 based ebuilds will be closed as INVALID!"
 			echo
 		fi

@@ -48,6 +48,7 @@ _CMAKE_ECLASS=1
 # Set to enable in-source build.
 
 # @ECLASS-VARIABLE: CMAKE_MAKEFILE_GENERATOR
+# @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Specify a makefile generator to be used by cmake.
@@ -81,6 +82,7 @@ _CMAKE_ECLASS=1
 : ${CMAKE_WARN_UNUSED_CLI:=yes}
 
 # @ECLASS-VARIABLE: CMAKE_EXTRA_CACHE_FILE
+# @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Specifies an extra cache file to pass to cmake. This is the analog of EXTRA_ECONF
@@ -88,6 +90,7 @@ _CMAKE_ECLASS=1
 # Should be set by user in a per-package basis in /etc/portage/package.env.
 
 # @ECLASS-VARIABLE: CMAKE_QA_SRC_DIR_READONLY
+# @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # After running cmake_src_prepare, sets ${S} to read-only. This is

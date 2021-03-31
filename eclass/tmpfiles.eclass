@@ -1,4 +1,4 @@
-# Copyright 2016-2019 Gentoo Authors
+# Copyright 2016-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: tmpfiles.eclass
@@ -61,6 +61,7 @@ case "${EAPI}" in
 esac
 
 # @ECLASS-VARIABLE: TMPFILES_OPTIONAL
+# @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # When not empty, disables the dependency on virtual/tmpfiles.

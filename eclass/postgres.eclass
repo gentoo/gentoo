@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 inherit user
@@ -7,7 +7,8 @@ EXPORT_FUNCTIONS pkg_setup
 # @ECLASS: postgres.eclass
 # @MAINTAINER:
 # PostgreSQL <pgsql-bugs@gentoo.org>
-# @AUTHOR: Aaron W. Swenson <titanofold@gentoo.org>
+# @AUTHOR:
+# Aaron W. Swenson <titanofold@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: An eclass for PostgreSQL-related packages
 # @DESCRIPTION:
@@ -32,6 +33,7 @@ _POSTGRES_ALL_VERSIONS=( 9999 13 12 11 10 9.6 9.5 9.4 9.3 9.2 )
 
 
 # @ECLASS-VARIABLE: POSTGRES_COMPAT
+# @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # A Bash array containing a list of compatible PostgreSQL slots as
@@ -49,6 +51,7 @@ _POSTGRES_ALL_VERSIONS=( 9999 13 12 11 10 9.6 9.5 9.4 9.3 9.2 )
 POSTGRES_DEP="dev-db/postgresql:="
 
 # @ECLASS-VARIABLE: POSTGRES_USEDEP
+# @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Add the 2-Style and/or 4-Style use dependencies without brackets to be used

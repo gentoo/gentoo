@@ -20,6 +20,7 @@
 # phase rather than 'default'.
 
 # @ECLASS-VARIABLE: CMAKE_ECLASS
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Default is "cmake-utils" for compatibility in EAPI-7. Specify "cmake" for
 # ebuilds that ported to cmake.eclass already. Future EAPI is "cmake" only.

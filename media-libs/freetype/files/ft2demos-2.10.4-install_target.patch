@@ -1,0 +1,58 @@
+From b88cd2f027e77bd26d1334fc13c4eda796423d19 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Wed, 24 Mar 2021 09:04:41 -0700
+Subject: [PATCH] [build] Add an `install` target for binaries and man pages.
+
+* Makefile (MANPAGES): New variable.
+(install) <unix>: New target.
+---
+ Makefile |   19 ++++++++++++++++++-
+ 1 file changed, 18 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 949402f..8352f61 100644
+--- a/Makefile
++++ b/Makefile
+@@ -194,7 +194,7 @@ else
+                 $(LINK_LIBS) $(subst /,$(COMPILER_SEP),$(GRAPH_LIB)) \
+                 $(GRAPH_LINK) $(MATH)
+ 
+-  .PHONY: exes clean distclean
++  .PHONY: exes clean distclean install
+ 
+ 
+   ###################################################################
+@@ -317,6 +317,11 @@ else
+   # EXES += fttimer
+   # EXES += testname
+ 
++  # Not all demo programs have a man page; we thus check for existence in a
++  # loop.
++  #
++  MANPAGES := $(foreach man,$(EXES),$(wildcard $(TOP_DIR_2)/man/$(man).1))
++
+   exes: $(EXES:%=$(BIN_DIR_2)/%$E)
+ 
+ 
+@@ -567,6 +572,18 @@ else
+                         $(GRAPH_LIB) $(COMMON_OBJ) $(FTCOMMON_OBJ)
+ 	  $(LINK_NEW)
+ 
++  ifeq ($(PLATFORM),unix)
++    install: exes
++	    $(MKINSTALLDIRS) $(DESTDIR)$(bindir) \
++                             $(DESTDIR)$(mandir)/man1
++	    $(foreach bin,$(EXES), \
++              $(LIBTOOL) --mode=install \
++                $(INSTALL) $(BIN_DIR_2)/$(bin) \
++                           $(DESTDIR)$(bindir)/$(bin);)
++	    $(foreach man,$(MANPAGES), \
++              $(INSTALL) $(man) \
++                         $(DESTDIR)$(mandir)/man1/$(notdir $(man));)
++  endif
+ endif
+ 
+ 
+-- 
+GitLab
+

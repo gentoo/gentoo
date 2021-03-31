@@ -15,6 +15,7 @@
 # src_install for dune-based packages.
 
 # @ECLASS-VARIABLE: DUNE_PKG_NAME
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Sets the actual dune package name, if different from gentoo package name.
 # Set before inheriting the eclass.

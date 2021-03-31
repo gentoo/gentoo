@@ -36,7 +36,7 @@ src_install() {
 		newins "${WORKDIR}/hackrf-${PV}/firmware-bin/hackrf_jawbreaker_usb.dfu" hackrf_jawbreaker_usb-${PV}.dfu
 		newins "${WORKDIR}/hackrf-${PV}/firmware-bin/hackrf_one_usb.bin" hackrf_one_usb-${PV}.bin
 		newins "${WORKDIR}/hackrf-${PV}/firmware-bin/hackrf_one_usb.dfu" hackrf_one_usb-${PV}.dfu
-		newins "${WORKDIR}/hackrf-${PV}/firmware-bin/hackrf_cpld_default.xsvf" hackrf_cpld_default-${PV}.xsvf
+		newins "${WORKDIR}/hackrf-${PV}/firmware/cpld/sgpio_if/default.xsvf" hackrf_cpld_default-${PV}.xsvf
 		ln -s hackrf_one_usb-${PV}.bin "${ED}/usr/share/hackrf/hackrf_one_usb_rom_to_ram.bin"
 		ln -s hackrf_one_usb-${PV}.bin "${ED}/usr/share/hackrf/hackrf_one_usb.bin"
 		ln -s hackrf_one_usb-${PV}.dfu "${ED}/usr/share/hackrf/hackrf_one_usb_ram.dfu"
