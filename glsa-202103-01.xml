@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202103-01">
+  <title>Salt: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Salt, the worst of
+    which could allow remote attacker to execute arbitrary commands.
+  </synopsis>
+  <product type="ebuild">salt</product>
+  <announced>2021-03-31</announced>
+  <revised count="1">2021-03-31</revised>
+  <bug>767919</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-admin/salt" auto="yes" arch="*">
+      <unaffected range="ge">3000.8</unaffected>
+      <vulnerable range="lt">3000.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Salt is a fast, intelligent and scalable automation engine.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Salt. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary commands via
+      salt-api, cause a Denial of Service condition, bypass access restrictions
+      or disclose sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Salt users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-admin/salt-3000.8"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-28243">CVE-2020-28243</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-28972">CVE-2020-28972</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-35662">CVE-2020-35662</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-25281">CVE-2021-25281</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-25282">CVE-2021-25282</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-25283">CVE-2021-25283</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-25284">CVE-2021-25284</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-3144">CVE-2021-3144</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-3148">CVE-2021-3148</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-3197">CVE-2021-3197</uri>
+  </references>
+  <metadata tag="requester" timestamp="2021-03-31T11:41:15Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2021-03-31T12:14:53Z">whissi</metadata>
+</glsa>
