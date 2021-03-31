@@ -81,9 +81,9 @@ src_unpack() {
 	_egit_repo_handler ${EBUILD_PHASE}
 
 	if [[ "${PV}" == 9999 ]] ; then
-		# Need to copy stuff from dlg submodule (#758902)
-		local dlg_inc_dir="${S}/submodules/dlg/include/dlg"
-		local dlg_src_dir="${S}/submodules/dlg/src/dlg"
+		# Need to copy stuff from dlg subproject (#758902)
+		local dlg_inc_dir="${S}/subprojects/dlg/include/dlg"
+		local dlg_src_dir="${S}/subprojects/dlg/src/dlg"
 		local dlg_dest_dir="${S}/include"
 		mkdir -p "${dlg_dest_dir}/dlg" || die
 		cp "${dlg_inc_dir}"/{dlg,output}.h "${dlg_dest_dir}/dlg" || die
@@ -93,14 +93,22 @@ src_unpack() {
 
 src_prepare() {
 	if [[ "${PV}" == 9999 ]] ; then
+		# Do NOT automagically mess with submodules!!!
+		sed '/setup: copy_submodule/d' -i builds/toplevel.mk || die
 		# inspired by shipped autogen.sh script
-		eval $(sed -nf version.sed include/freetype/freetype.h)
+		eval $(sed -n \
+			-e 's/^#define  *\(FREETYPE_MAJOR\)  *\([0-9][0-9]*\).*/\1=\2/p' \
+			-e 's/^#define  *\(FREETYPE_MINOR\)  *\([0-9][0-9]*\).*/\1=\2/p' \
+			-e 's/^#define  *\(FREETYPE_PATCH\)  *\([0-9][0-9]*\).*/\1=\2/p' \
+			include/freetype/freetype.h || die)
+		FREETYPE="${FREETYPE_MAJOR}.${FREETYPE_MINOR}"
+		[[ "${FREETYPE_PATCH}" != 0 ]] && FREETYPE+=".${FREETYPE_PATCH}"
 		pushd builds/unix &>/dev/null || die
-		sed -e "s;@VERSION@;$freetype_major$freetype_minor$freetype_patch;" \
+		sed -e "s;@VERSION@;${FREETYPE};" \
 			< configure.raw > configure.ac || die
 		# eautoheader produces broken ftconfig.in
 		AT_NOEAUTOHEADER="yes" AT_M4DIR="." eautoreconf
-		unset freetype_major freetype_minor freetype_patch
+		unset FREETYPE_MAJOR FREETYPE_MINOR FREETYPE_PATCH FREETYPE
 		popd &>/dev/null || die
 	fi
 
@@ -124,11 +132,11 @@ src_prepare() {
 	# Will be the new default for >=freetype-2.7.0
 	disable_option "TT_CONFIG_OPTION_SUBPIXEL_HINTING  2"
 
-	if use infinality && use cleartype-hinting; then
+	if use infinality && use cleartype-hinting ; then
 		enable_option "TT_CONFIG_OPTION_SUBPIXEL_HINTING  ( 1 | 2 )"
-	elif use infinality; then
+	elif use infinality ; then
 		enable_option "TT_CONFIG_OPTION_SUBPIXEL_HINTING  1"
-	elif use cleartype-hinting; then
+	elif use cleartype-hinting ; then
 		enable_option "TT_CONFIG_OPTION_SUBPIXEL_HINTING  2"
 	fi
 
@@ -139,19 +147,19 @@ src_prepare() {
 	# See https://freetype.org/patents.html (expired!)
 	enable_option FT_CONFIG_OPTION_SUBPIXEL_RENDERING
 
-	if ! use adobe-cff; then
+	if ! use adobe-cff ; then
 		enable_option CFF_CONFIG_OPTION_OLD_ENGINE
 	fi
 
-	if use debug; then
+	if use debug ; then
 		enable_option FT_DEBUG_LEVEL_TRACE
 		enable_option FT_DEBUG_MEMORY
 	fi
 
-	if use utils; then
+	if use utils ; then
 		cd "${WORKDIR}/ft2demos-${PV}" || die
 		# Disable tests needing X11 when USE="-X". (bug #177597)
-		if ! use X; then
+		if ! use X ; then
 			sed -i -e "/EXES\ +=\ ftdiff/ s:^:#:" Makefile || die
 		fi
 		cd "${S}" || die
@@ -198,7 +206,7 @@ multilib_src_configure() {
 multilib_src_compile() {
 	default
 
-	if multilib_is_native_abi && use utils; then
+	if multilib_is_native_abi && use utils ; then
 		einfo "Building utils"
 		# fix for Prefix, bug #339334
 		emake \
@@ -210,25 +218,20 @@ multilib_src_compile() {
 multilib_src_install() {
 	default
 
-	if multilib_is_native_abi && use utils; then
+	if multilib_is_native_abi && use utils ; then
 		einfo "Installing utils"
-		rm "${WORKDIR}"/ft2demos-${PV}/bin/README || die
-		dodir /usr/bin #654780
-		local ft2demo
-		for ft2demo in ../ft2demos-${PV}/bin/*; do
-			./libtool --mode=install $(type -P install) -m 755 "${ft2demo}" \
-				"${ED}"/usr/bin || die
-		done
+		emake DESTDIR="${D}" FT2DEMOS=1 \
+			TOP_DIR_2="${WORKDIR}/ft2demos-${PV}" install
 	fi
 }
 
 multilib_src_install_all() {
-	if use fontforge; then
+	if use fontforge ; then
 		# Probably fontforge needs less but this way makes things simplier...
 		einfo "Installing internal headers required for fontforge"
 		local header
 		find src/truetype include/freetype/internal -name '*.h' | \
-		while read header; do
+		while read header ; do
 			mkdir -p "${ED}/usr/include/freetype2/internal4fontforge/$(dirname ${header})" || die
 			cp ${header} "${ED}/usr/include/freetype2/internal4fontforge/$(dirname ${header})" || die
 		done
@@ -240,8 +243,8 @@ multilib_src_install_all() {
 		dodoc -r docs/*
 	fi
 
-	find "${ED}" -name '*.la' -delete || die
+	find "${ED}" -type f -name '*.la' -delete || die
 	if ! use static-libs ; then
-		find "${ED}" -name '*.a' -delete || die
+		find "${ED}" -type f -name '*.a' -delete || die
 	fi
 }
