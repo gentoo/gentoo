@@ -8,7 +8,15 @@
 # Author: Alexey Shvetsov <alexxy@gentoo.org>
 # @BLURB: Simplify working with OFED packages
 
-inherit eutils rpm versionator
+inherit rpm
+
+case ${EAPI:-0} in
+	0|1|2|3|4|5|6)
+		inherit eutils versionator
+		;;
+	*)
+		;;
+esac
 
 EXPORT_FUNCTIONS src_unpack
 
@@ -27,7 +35,6 @@ LICENSE="|| ( GPL-2 BSD-2 )"
 # @DESCRIPTION:
 # Sets RC version
 
-
 # @ECLASS-VARIABLE: OFED_SUFFIX
 # @DESCRIPTION:
 # Defines OFED package suffix eg -1.ofed1.4
@@ -45,7 +52,7 @@ SLOT="${OFED_VER}"
 OFED_VERSIONS=(
 	"3.5"
 	"3.12"
-	)
+)
 
 # @FUNCTION: block_other_ofed_versions
 # @DESCRIPTION:
@@ -60,7 +67,14 @@ block_other_ofed_versions() {
 	done
 }
 
-OFED_BASE_VER=$(get_version_component_range 1-3 ${OFED_VER})
+case ${EAPI:-0} in
+	0|1|2|3|4|5|6)
+		OFED_BASE_VER=$(get_version_component_range 1-3 ${OFED_VER})
+		;;
+	*)
+		OFED_BASE_VER=$(ver_cut 1-3 ${OFED_VER})
+		;;
+esac
 
 if [ -z $OFED_RC ] ; then
 	SRC_URI="https://www.openfabrics.org/downloads/OFED/ofed-${OFED_BASE_VER}/OFED-${OFED_VER}.tgz"
