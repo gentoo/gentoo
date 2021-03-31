@@ -17,12 +17,14 @@
 inherit ruby-ng
 
 # @ECLASS-VARIABLE: RUBY_FAKEGEM_NAME
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Sets the Gem name for the generated fake gemspec.
 # This variable MUST be set before inheriting the eclass.
 RUBY_FAKEGEM_NAME="${RUBY_FAKEGEM_NAME:-${PN}}"
 
 # @ECLASS-VARIABLE: RUBY_FAKEGEM_VERSION
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Sets the Gem version for the generated fake gemspec.
 # This variable MUST be set before inheriting the eclass.
