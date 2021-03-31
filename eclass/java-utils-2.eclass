@@ -2591,14 +2591,14 @@ java-pkg_needs-vm() {
 
 # @FUNCTION: java-pkg_get-current-vm
 # @INTERNAL
-# @RETURN - The current VM being used
+# @RETURN: The current VM being used
 java-pkg_get-current-vm() {
 	java-config -f
 }
 
 # @FUNCTION: java-pkg_get-vm-vendor
 # @INTERNAL
-# @RETURN - The vendor of the current VM
+# @RETURN: The vendor of the current VM
 java-pkg_get-vm-vendor() {
 	debug-print-function ${FUNCNAME} $*
 
@@ -2609,7 +2609,7 @@ java-pkg_get-vm-vendor() {
 
 # @FUNCTION: java-pkg_get-vm-version
 # @INTERNAL
-# @RETURN - The version of the current VM
+# @RETURN: The version of the current VM
 java-pkg_get-vm-version() {
 	debug-print-function ${FUNCNAME} $*
 
@@ -2618,12 +2618,12 @@ java-pkg_get-vm-version() {
 
 # @FUNCTION: java-pkg_build-vm-from-handle
 # @INTERNAL
+# @RETURN: VM handle of an available JDK
 # @DESCRIPTION:
 # Selects a build vm from a list of vm handles. First checks for the system-vm
 # beeing usable, then steps through the listed handles till a suitable vm is
 # found.
 #
-# @RETURN - VM handle of an available JDK
 java-pkg_build-vm-from-handle() {
 	debug-print-function ${FUNCNAME} "$*"
 
