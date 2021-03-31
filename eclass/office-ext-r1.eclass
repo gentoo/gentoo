@@ -20,6 +20,7 @@ esac
 EXPORT_FUNCTIONS src_unpack src_install
 
 # @ECLASS-VARIABLE: OFFICE_REQ_USE
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Useflags required on office implementation for the extension.
 #
@@ -45,6 +46,7 @@ fi
 [[ -z ${OFFICE_IMPLEMENTATIONS} ]] && OFFICE_IMPLEMENTATIONS=( "libreoffice" )
 
 # @ECLASS-VARIABLE: OFFICE_EXTENSIONS
+# @PRE_INHERIT
 # @REQUIRED
 # @DESCRIPTION:
 # Array containing list of extensions to install.
