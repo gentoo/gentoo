@@ -23,6 +23,7 @@
 # inherit emboss-r2
 
 # @ECLASS-VARIABLE: EBO_DESCRIPTION
+# @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Completes the generic description of the embassy module as follows:
