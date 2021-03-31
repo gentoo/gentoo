@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: mercurial.eclass
@@ -35,6 +35,7 @@ DEPEND="dev-vcs/mercurial"
 : ${EHG_REVISION:="default"}
 
 # @ECLASS-VARIABLE: EHG_STORE_DIR
+# @USER_VARIABLE
 # @DESCRIPTION:
 # Mercurial sources store directory. Users may override this in /etc/portage/make.conf
 [[ -z "${EHG_STORE_DIR}" ]] && EHG_STORE_DIR="${PORTAGE_ACTUAL_DISTDIR:-${DISTDIR}}/hg-src"
