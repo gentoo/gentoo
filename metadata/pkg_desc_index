@@ -5295,7 +5295,7 @@ dev-lang/swig 3.0.12 4.0.0 4.0.2: Simplified Wrapper and Interface Generator
 dev-lang/tcc 0.9.27 9999: A very small C compiler for ix86/amd64
 dev-lang/tcl 8.5.17-r1 8.6.8 8.6.9-r1 8.6.10 8.6.11: Tool Command Language
 dev-lang/teyjus 2.1 2.1-r1: Higher-order logic programming language Lambda Prolog
-dev-lang/tk 8.5.17-r1 8.6.8 8.6.9 8.6.9.1 8.6.10 8.6.11 8.6.11.1: Tk Widget Set
+dev-lang/tk 8.6.8 8.6.9 8.6.9.1 8.6.10 8.6.11 8.6.11.1: Tk Widget Set
 dev-lang/tuprolog 3.1.0-r1 3.2.0: tuProlog is a light-weight Prolog for Internet applications and infrastructures
 dev-lang/vala 0.36.20 0.40.20 0.40.23 0.40.24 0.44.11 0.46.10 0.46.13 0.48.6 0.48.9 0.48.11 0.48.12 0.50.2: Compiler for the GObject type system
 dev-lang/whitespace 0.4: Whitespace, an esoteric programming language
@@ -10618,8 +10618,8 @@ dev-tcltk/blt 2.4z-r13 2.4z-r14 2.5.3-r1: Extension to Tk, adding new widgets, g
 dev-tcltk/bwidget 1.9.12 1.9.14: High-level widget set for Tcl/Tk
 dev-tcltk/expect 5.45.4: tool for automating interactive applications
 dev-tcltk/expect-lite 4.9.0: quick and easy command line automation tool built on top of expect
-dev-tcltk/itcl 3.4.1 4.0.3 4.1.1 4.2.0: Object Oriented Enhancements for Tcl/Tk
-dev-tcltk/itk 3.4.1 4.0.0 4.0.1 4.1.0: Object Oriented Enhancements for Tcl/Tk
+dev-tcltk/itcl 4.1.1 4.2.0: Object Oriented Enhancements for Tcl/Tk
+dev-tcltk/itk 4.1.0: Object Oriented Enhancements for Tcl/Tk
 dev-tcltk/iwidgets 4.1.1: Widget collection for incrTcl/incrTk
 dev-tcltk/mysqltcl 3.052-r1: TCL MySQL Interface
 dev-tcltk/scwoop 4.1-r1: Simple Composite Widget Object Oriented Package
