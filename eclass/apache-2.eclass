@@ -38,6 +38,7 @@ esac
 # ==============================================================================
 
 # @ECLASS_VARIABLE: GENTOO_PATCHNAME
+# @PRE_INHERIT
 # @DESCRIPTION:
 # This internal variable contains the prefix for the patch tarball.
 # Defaults to the full name and version (including revision) of the package.
@@ -47,6 +48,7 @@ esac
 [[ -n "${GENTOO_PATCHNAME}" ]] || GENTOO_PATCHNAME="gentoo-${PF}"
 
 # @ECLASS_VARIABLE: GENTOO_PATCHDIR
+# @PRE_INHERIT
 # @DESCRIPTION:
 # This internal variable contains the working directory where patches and config
 # files are located.
@@ -54,16 +56,19 @@ esac
 [[ -n "${GENTOO_PATCHDIR}" ]] || GENTOO_PATCHDIR="${WORKDIR}/${GENTOO_PATCHNAME}"
 
 # @VARIABLE: GENTOO_DEVELOPER
+# @PRE_INHERIT
 # @DESCRIPTION:
 # This variable needs to be set in the ebuild and contains the name of the
 # gentoo developer who created the patch tarball
 
 # @VARIABLE: GENTOO_PATCHSTAMP
+# @PRE_INHERIT
 # @DESCRIPTION:
 # This variable needs to be set in the ebuild and contains the date the patch
 # tarball was created at in YYYYMMDD format
 
 # @VARIABLE: GENTOO_PATCH_A
+# @PRE_INHERIT
 # @DESCRIPTION:
 # This variable should contain the entire filename of patch tarball.
 # Defaults to the name of the patchset, with a datestamp.
@@ -73,16 +78,19 @@ SRC_URI="mirror://apache/httpd/httpd-${PV}.tar.bz2
 	https://dev.gentoo.org/~${GENTOO_DEVELOPER}/dist/apache/${GENTOO_PATCH_A}"
 
 # @VARIABLE: IUSE_MPMS_FORK
+# @PRE_INHERIT
 # @DESCRIPTION:
 # This variable needs to be set in the ebuild and contains a list of forking
 # (i.e.  non-threaded) MPMs
 
 # @VARIABLE: IUSE_MPMS_THREAD
+# @PRE_INHERIT
 # @DESCRIPTION:
 # This variable needs to be set in the ebuild and contains a list of threaded
 # MPMs
 
 # @VARIABLE: IUSE_MODULES
+# @PRE_INHERIT
 # @DESCRIPTION:
 # This variable needs to be set in the ebuild and contains a list of available
 # built-in modules
@@ -209,10 +217,12 @@ unset -f _apache2_set_module_depends
 # ==============================================================================
 
 # @ECLASS_VARIABLE: MY_MPM
+# @INTERNAL
 # @DESCRIPTION:
 # This internal variable contains the selected MPM after a call to setup_mpm()
 
 # @FUNCTION: setup_mpm
+# @INTERNAL
 # @DESCRIPTION:
 # This internal function makes sure that only one of APACHE2_MPMS was selected
 # or a default based on USE=threads is selected if APACHE2_MPMS is empty
@@ -251,6 +261,7 @@ setup_mpm() {
 # disable these modules for custom minimal installation at their own risk.
 
 # @FUNCTION: check_module_critical
+# @INTERNAL
 # @DESCRIPTION:
 # This internal function warns the user about modules critical for the default
 # apache configuration.
@@ -275,16 +286,19 @@ check_module_critical() {
 }
 
 # @ECLASS_VARIABLE: MY_CONF
+# @INTERNAL
 # @DESCRIPTION:
 # This internal variable contains the econf options for the current module
 # selection after a call to setup_modules()
 
 # @ECLASS_VARIABLE: MY_MODS
+# @INTERNAL
 # @DESCRIPTION:
 # This internal variable contains a sorted, space separated list of currently
 # selected modules after a call to setup_modules()
 
 # @FUNCTION: setup_modules
+# @INTERNAL
 # @DESCRIPTION:
 # This internal function selects all built-in modules based on USE flags and
 # APACHE2_MODULES USE_EXPAND flags
@@ -379,6 +393,7 @@ setup_modules() {
 # module.
 
 # @FUNCTION: generate_load_module
+# @INTERNAL
 # @DESCRIPTION:
 # This internal function generates the LoadModule lines for httpd.conf based on
 # the current module selection and MODULE_DEFINES
@@ -414,6 +429,7 @@ generate_load_module() {
 }
 
 # @FUNCTION: check_upgrade
+# @INTERNAL
 # @DESCRIPTION:
 # This internal function checks if the previous configuration file for built-in
 # modules exists in ROOT and prevents upgrade in this case. Users are supposed
