@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]];then
 	EGIT_REPO_URI="https://github.com/wwmm/pulseeffects"
 else
 	SRC_URI="https://github.com/wwmm/pulseeffects/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
 LICENSE="GPL-3"
@@ -41,7 +41,7 @@ RDEPEND="
 	rubberband? ( media-libs/rubberband )
 	>=media-libs/zita-convolver-3.0.0
 	media-libs/libebur128
-	media-video/pipewire[gstreamer]
+	>=media-video/pipewire-0.3.24[gstreamer]
 	sys-apps/dbus"
 # see 47a950b00c6db383ad07502a8fc396ecca98c1ce for dev-libs/appstream-glib
 # and sys-devel/gettext depends reasoning
