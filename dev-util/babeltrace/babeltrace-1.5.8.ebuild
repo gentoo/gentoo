@@ -27,7 +27,7 @@ DEPEND="${RDEPEND}
 	"
 src_configure() {
 	econf $(use_enable test glibtest) \
-		--disable-python-bindings
+		--enable-debug-info
 }
 
 src_install() {
