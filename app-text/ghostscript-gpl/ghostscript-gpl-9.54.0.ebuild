@@ -13,7 +13,7 @@ MY_P="${MY_PN}-${PV/_}"
 PVM=$(ver_cut 1-2)
 PVM_S=$(ver_rs 1-2 "")
 
-MY_PATCHSET="ghostscript-gpl-9.53-patchset-01.tar.xz"
+MY_PATCHSET="ghostscript-gpl-9.54-patchset-01.tar.xz"
 
 SRC_URI="https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs${PVM_S}/${MY_P}.tar.xz"
 
