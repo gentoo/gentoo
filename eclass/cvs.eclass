@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cvs.eclass
@@ -131,6 +131,7 @@ _CVS_ECLASS=1
 #: ${ECVS_BRANCH:="HEAD"}
 
 # @ECLASS-VARIABLE: ECVS_AUTH
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Authentication method to use
 #
