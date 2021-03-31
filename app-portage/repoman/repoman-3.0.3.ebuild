@@ -14,7 +14,8 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/portage.git"
 	S="${WORKDIR}/${P}/repoman"
 else
-	SRC_URI="https://dev.gentoo.org/~zmedico/portage/archives/${P}.tar.bz2"
+	SRC_URI="https://dev.gentoo.org/~zmedico/portage/archives/${P}.tar.bz2
+		https://github.com/gentoo/portage/compare/285d3ae987a079f32b909c6e6eddde9bc45a4a25...b09b4071151d8e3a81f3576843d00f88eb407799.patch -> ${P}-unit-test-bug-779055.patch"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
@@ -32,7 +33,13 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+python_prepare_all() {
+	eapply -p2 "${DISTDIR}/${P}-unit-test-bug-779055.patch"
+	distutils-r1_python_prepare_all
+}
+
 python_test() {
+	unset REPOMAN_DEFAULT_OPTS
 	esetup.py test
 }
 
