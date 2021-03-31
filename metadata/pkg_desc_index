@@ -3003,7 +3003,7 @@ app-text/fbreader 0.99.4-r5: E-Book Reader. Supports many e-book formats
 app-text/fictionup 0.1 0.2.1: A command-line markdown to fb2 convertor
 app-text/flpsed 0.7.3: Pseudo PostScript editor
 app-text/foliate 2.4.2-r1 2.5.0 2.6.2: gtk ebook reader built with gjs
-app-text/ghostscript-gpl 9.52-r1 9.53.3-r5: Interpreter for the PostScript language and PDF
+app-text/ghostscript-gpl 9.52-r1 9.53.3-r5 9.54.0: Interpreter for the PostScript language and PDF
 app-text/gnome-doc-utils 0.20.10-r2: A collection of documentation utilities for the Gnome project
 app-text/gocr 0.50 0.52: An OCR (Optical Character Recognition) reader
 app-text/grip 4.5.2-r2: Preview GitHub Markdown files like Readme locally before committing them
@@ -18412,7 +18412,7 @@ x11-libs/libXpm 3.5.13: X.Org Xpm library
 x11-libs/libXpresent 1.0.0-r1: X Present Extension C Library
 x11-libs/libXrandr 1.5.2: X.Org Xrandr library
 x11-libs/libXrender 0.9.10-r2: X.Org Xrender library
-x11-libs/libXres 1.2.0-r1: X.Org XRes library
+x11-libs/libXres 1.2.0-r1 1.2.1: X.Org XRes library
 x11-libs/libXt 1.2.0 1.2.1: X.Org X Toolkit Intrinsics library
 x11-libs/libXtst 1.2.3-r2: X.Org Xlib-based client API for the XTEST & RECORD extensions library
 x11-libs/libXv 1.0.11-r2: X.Org Xv library
