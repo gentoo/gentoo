@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ruby-ng.eclass
@@ -111,6 +111,7 @@ ruby_implementation_depend() {
 # @FUNCTION: _ruby_get_all_impls
 # @INTERNAL
 # @RETURN: list of valid values in USE_RUBY
+# @DESCRIPTION:
 # Return a list of valid implementations in USE_RUBY, skipping the old
 # implementations that are no longer supported.
 _ruby_get_all_impls() {
