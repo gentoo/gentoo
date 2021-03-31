@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: xorg-3.eclass
@@ -42,6 +42,7 @@ if [[ ${CATEGORY} = media-fonts ]]; then
 fi
 
 # @ECLASS-VARIABLE: XORG_MULTILIB
+# @PRE_INHERIT
 # @DESCRIPTION:
 # If set to 'yes', the multilib support for package will be enabled. Set
 # before inheriting this eclass.
@@ -67,18 +68,21 @@ EXPORT_FUNCTIONS ${EXPORTED_FUNCTIONS}
 IUSE=""
 
 # @ECLASS-VARIABLE: XORG_EAUTORECONF
+# @PRE_INHERIT
 # @DESCRIPTION:
 # If set to 'yes' and configure.ac exists, eautoreconf will run. Set
 # before inheriting this eclass.
 : ${XORG_EAUTORECONF:="no"}
 
 # @ECLASS-VARIABLE: XORG_BASE_INDIVIDUAL_URI
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Set up SRC_URI for individual modular releases. If set to an empty
 # string, no SRC_URI will be provided by the eclass.
 : ${XORG_BASE_INDIVIDUAL_URI="https://www.x.org/releases/individual"}
 
 # @ECLASS-VARIABLE: XORG_MODULE
+# @PRE_INHERIT
 # @DESCRIPTION:
 # The subdirectory to download source from. Possible settings are app,
 # doc, data, util, driver, font, lib, proto, xserver. Set above the
@@ -99,6 +103,7 @@ if [[ ${XORG_MODULE} == auto ]]; then
 fi
 
 # @ECLASS-VARIABLE: XORG_PACKAGE_NAME
+# @PRE_INHERIT
 # @DESCRIPTION:
 # For git checkout the git repository might differ from package name.
 # This variable can be used for proper directory specification
@@ -107,6 +112,7 @@ fi
 HOMEPAGE="https://www.x.org/wiki/ https://gitlab.freedesktop.org/xorg/${XORG_MODULE}${XORG_PACKAGE_NAME}"
 
 # @ECLASS-VARIABLE: XORG_TARBALL_SUFFIX
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Most X11 projects provide tarballs as tar.bz2 or tar.xz. This eclass defaults
 # to bz2.
@@ -156,6 +162,7 @@ if [[ ${FONT} == yes ]]; then
 	BDEPEND+=" x11-apps/bdftopcf"
 
 	# @ECLASS-VARIABLE: FONT_DIR
+	# @PRE_INHERIT
 	# @DESCRIPTION:
 	# If you're creating a font package and the suffix of PN is not equal to
 	# the subdirectory of /usr/share/fonts/ it should install into, set
@@ -172,6 +179,7 @@ fi
 BDEPEND+=" virtual/pkgconfig"
 
 # @ECLASS-VARIABLE: XORG_DRI
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Possible values are "always" or the value of the useflag DRI capabilities
 # are required for. Default value is "no"
@@ -205,6 +213,7 @@ fi
 
 
 # @ECLASS-VARIABLE: XORG_DOC
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Possible values are "always" or the value of the useflag doc packages
 # are required for. Default value is "no"
