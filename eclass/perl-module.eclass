@@ -359,6 +359,7 @@ perl-module_src_compile() {
 #   network  : do not try to disable network tests
 
 # @ECLASS-VARIABLE: DIST_TEST_OVERRIDE
+# @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # (EAPI=6 and later) Variable that controls if tests are run in the test phase
