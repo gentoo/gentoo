@@ -15,6 +15,7 @@
 # Support for aspell-0.60 has been added by Sergey Ulanov.
 
 # @ECLASS-VARIABLE: ASPELL_LANG
+# @PRE_INHERIT
 # @REQUIRED
 # @DESCRIPTION:
 # Pure cleartext string that is included into DESCRIPTION.
@@ -28,6 +29,7 @@
 readonly ASPELL_SPELLANG=${PN/aspell-/}
 
 # @ECLASS-VARIABLE: ASPELL_VERSION
+# @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # What major version of Aspell is this dictionary for? Valid values are 5, 6 or undefined.
