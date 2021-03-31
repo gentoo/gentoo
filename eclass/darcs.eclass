@@ -101,6 +101,7 @@ case ${EAPI:-0} in
 esac
 
 # @FUNCTION: darcs_patchcount
+# @INTERNAL
 # @DESCRIPTION:
 # Internal function to determine amount of patches in repository.
 darcs_patchcount() {
@@ -110,6 +111,7 @@ darcs_patchcount() {
 }
 
 # @FUNCTION: darcs_fetch
+# @INTERNAL
 # @DESCRIPTION:
 # Internal function is called from darcs_src_unpack
 darcs_fetch() {
