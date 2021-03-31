@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ros-catkin.eclass
@@ -61,11 +61,13 @@ DEPEND="${RDEPEND}
 "
 
 # @ECLASS-VARIABLE: CATKIN_HAS_MESSAGES
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Set it to a non-empty value before inherit to tell the eclass the package has messages to build.
 # Messages will be built based on ROS_MESSAGES USE_EXPANDed variable.
 
 # @ECLASS-VARIABLE: CATKIN_MESSAGES_TRANSITIVE_DEPS
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Some messages have dependencies on other messages.
 # In that case, CATKIN_MESSAGES_TRANSITIVE_DEPS should contain a space-separated list of atoms
