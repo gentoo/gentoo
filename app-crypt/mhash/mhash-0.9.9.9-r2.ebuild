@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit autotools
+
 DESCRIPTION="Library providing a uniform interface to a large number of hash algorithms"
 HOMEPAGE="http://mhash.sourceforge.net/"
 SRC_URI="mirror://sourceforge/mhash/${P}.tar.gz"
@@ -35,6 +37,11 @@ src_prepare() {
 	sed -i \
 		-e 's/--netscape//' \
 		"${S}"/doc/Makefile.in || die
+
+	# Refresh bundled libtool (ltmain.sh)
+	# (elibtoolize is not sufficient)
+	# bug #668666
+	eautoreconf
 }
 
 src_configure() {
