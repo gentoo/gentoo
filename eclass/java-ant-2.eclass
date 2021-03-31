@@ -1,11 +1,12 @@
-# Copyright 2004-2019 Gentoo Authors
+# Copyright 2004-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-ant-2.eclass
 # @MAINTAINER:
 # java@gentoo.org
 # @AUTHOR:
-# kiorky (kiorky@cryptelium.net), Petteri Räty (betelgeuse@gentoo.org)
+# kiorky <kiorky@cryptelium.net>
+# Petteri Räty <betelgeuse@gentoo.org>
 # @BLURB: eclass for ant based Java packages
 # @DESCRIPTION:
 # Eclass for Ant-based Java packages. Provides support for both automatic and
