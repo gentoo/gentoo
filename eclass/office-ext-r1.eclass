@@ -93,9 +93,8 @@ for i in ${OFFICE_IMPLEMENTATIONS[@]}; do
 done
 REQUIRED_USE+=" )"
 
-DEPEND="${RDEPEND}
-	app-arch/unzip
-"
+BDEPEND="app-arch/unzip"
+DEPEND+=" ${RDEPEND}"
 
 # Most projects actually do not provide any relevant sourcedir as they are oxt.
 S="${WORKDIR}"
