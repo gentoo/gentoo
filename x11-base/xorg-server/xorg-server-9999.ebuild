@@ -105,6 +105,7 @@ RDEPEND="${CDEPEND}
 "
 BDEPEND="
 	sys-devel/flex
+	wayland? ( dev-util/wayland-scanner )
 "
 PDEPEND="
 	xorg? ( >=x11-base/xorg-drivers-$(ver_cut 1-2) )"
