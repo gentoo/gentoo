@@ -15,6 +15,7 @@
 [[ ${EAPI} == [0123456] ]] && inherit eapi7-ver versionator
 
 # @ECLASS-VARIABLE: GNOME_TARBALL_SUFFIX
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Most projects hosted on gnome.org mirrors provide tarballs as tar.bz2 or
 # tar.xz. This eclass defaults to bz2 for EAPI 0, 1, 2, 3 and defaults to xz for
