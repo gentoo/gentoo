@@ -18,11 +18,13 @@
 # These are as follows:
 
 # @ECLASS-VARIABLE: MODULES_OPTIONAL_USE
+# @PRE_INHERIT
 # @DESCRIPTION:
 # A string containing the USE flag to use for making this eclass optional
 # The recommended non-empty value is 'modules'
 
 # @ECLASS-VARIABLE: MODULES_OPTIONAL_USE_IUSE_DEFAULT
+# @PRE_INHERIT
 # @DESCRIPTION:
 # A boolean to control the IUSE default state for the MODULES_OPTIONAL_USE USE
 # flag. Default value is unset (false). True represented by 1 or 'on', other
