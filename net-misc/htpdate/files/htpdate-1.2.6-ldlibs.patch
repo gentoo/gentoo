@@ -1,0 +1,35 @@
+From ea14fbcd91e5575bf16bc64b7660a6d02a855d7a Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Wed, 31 Mar 2021 15:46:38 +0200
+Subject: [PATCH] Makefile: Libraries belong into LDLIBS variable
+
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 21668a6..a531f90 100644
+--- a/Makefile
++++ b/Makefile
+@@ -8,7 +8,7 @@ PKG_CONFIG ?= pkg-config
+ 
+ ifdef ENABLE_HTTPS
+ CFLAGS += -DENABLE_HTTPS
+-LDFLAGS += $(shell $(PKG_CONFIG) --libs openssl)
++LDLIBS = $(shell $(PKG_CONFIG) --libs openssl)
+ endif
+ 
+ INSTALL = install -c
+@@ -16,7 +16,7 @@ INSTALL = install -c
+ all: htpdate
+ 
+ htpdate: htpdate.c
+-	$(CC) $(CFLAGS) $(CPPFLAGS) -o htpdate htpdate.c $(LDFLAGS)
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o htpdate htpdate.c $(LDLIBS)
+ 
+ install: all
+ 	mkdir -p $(bindir)
+-- 
+2.31.1
+
