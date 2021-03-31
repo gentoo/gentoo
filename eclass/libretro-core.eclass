@@ -1,4 +1,4 @@
-# Copyright 2018-2020 Gentoo Authors
+# Copyright 2018-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: libretro-core.eclass
@@ -53,11 +53,13 @@ if [[ -z "${LIBRETRO_CORE_NAME}" ]]; then
 fi
 
 # @ECLASS-VARIABLE: LIBRETRO_COMMIT_SHA
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Commit SHA used for SRC_URI will die if not set in <9999 ebuilds.
 # Needs to be set before inherit.
 
 # @ECLASS-VARIABLE: LIBRETRO_REPO_NAME
+# @PRE_INHERIT
 # @REQUIRED
 # @DESCRIPTION:
 # Contains the real repo name of the core formatted as "repouser/reponame".
