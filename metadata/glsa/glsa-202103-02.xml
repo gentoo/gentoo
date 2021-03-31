@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202103-02">
+  <title>Redis: Remote code execution</title>
+  <synopsis>A vulnerability in Redis could lead to remote code execution.</synopsis>
+  <product type="ebuild">redis</product>
+  <announced>2021-03-31</announced>
+  <revised count="1">2021-03-31</revised>
+  <bug>773328</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-db/redis" auto="yes" arch="*">
+      <unaffected range="ge">5.0.12</unaffected>
+      <unaffected range="ge">6.0.12</unaffected>
+      <vulnerable range="lt">6.0.12</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Redis is an open source (BSD licensed), in-memory data structure store,
+      used as a database, cache and message broker.
+    </p>
+  </background>
+  <description>
+    <p>It was discovered that there were a number of integer overflow issues in
+      Redis.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, able to connect to a Redis instance, could send a
+      malicious crafted large request possibly resulting in the execution of
+      arbitrary code with the privileges of the process or a Denial of Service
+      condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Redis 5.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/redis-5.0.12"
+    </code>
+    
+    <p>All Redis 6.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/redis-6.0.12"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-21309">CVE-2021-21309</uri>
+  </references>
+  <metadata tag="requester" timestamp="2021-03-31T11:56:33Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2021-03-31T12:15:15Z">whissi</metadata>
+</glsa>

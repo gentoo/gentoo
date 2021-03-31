@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202103-04">
+  <title>SQLite: Remote code execution</title>
+  <synopsis>A vulnerability in SQLite could lead to remote code execution.</synopsis>
+  <product type="ebuild">sqlite</product>
+  <announced>2021-03-31</announced>
+  <revised count="1">2021-03-31</revised>
+  <bug>777990</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-db/sqlite" auto="yes" arch="*">
+      <unaffected range="ge">3.34.1</unaffected>
+      <vulnerable range="lt">3.34.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>SQLite is a C library that implements an SQL database engine.</p>
+  </background>
+  <description>
+    <p>It was discovered that SQLite incorrectly handled certain sub-queries.</p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All SQLite users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/sqlite-3.34.1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-20227">CVE-2021-20227</uri>
+  </references>
+  <metadata tag="requester" timestamp="2021-03-31T12:07:59Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2021-03-31T12:15:38Z">whissi</metadata>
+</glsa>
