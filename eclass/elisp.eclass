@@ -1,4 +1,4 @@
-# Copyright 2002-2020 Gentoo Authors
+# Copyright 2002-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: elisp.eclass
@@ -27,6 +27,7 @@
 # ${PN}.el in src_unpack().
 
 # @ECLASS-VARIABLE: NEED_EMACS
+# @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If you need anything different from Emacs 23, use the NEED_EMACS
