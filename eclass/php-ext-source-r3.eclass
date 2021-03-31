@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: php-ext-source-r3.eclass
@@ -22,6 +22,7 @@ case ${EAPI:-0} in
 esac
 
 # @ECLASS-VARIABLE: PHP_EXT_NAME
+# @PRE_INHERIT
 # @REQUIRED
 # @DESCRIPTION:
 # The extension name. This must be set, otherwise the eclass dies.
@@ -87,6 +88,7 @@ esac
 : ${PHP_INI_NAME:=${PHP_EXT_NAME}}
 
 # @ECLASS-VARIABLE: PHP_EXT_NEEDED_USE
+# @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # A list of USE flags to append to each PHP target selected
