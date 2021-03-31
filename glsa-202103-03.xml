@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202103-03">
+  <title>OpenSSL: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in OpenSSL, the worst of
+    which could allow remote attackers to cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">openssl</product>
+  <announced>2021-03-31</announced>
+  <revised count="1">2021-03-31</revised>
+  <bug>769785</bug>
+  <bug>777681</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-libs/openssl" auto="yes" arch="*">
+      <unaffected range="ge">1.1.1k</unaffected>
+      <vulnerable range="lt">1.1.1k</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenSSL is an Open Source toolkit implementing the Secure Sockets Layer
+      (SSL v2/v3) and Transport Layer Security (TLS v1/v1.1/v1.2/v1.3) as well
+      as a general purpose cryptography library.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in OpenSSL. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenSSL users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/openssl-1.1.1k"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-23840">CVE-2021-23840</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-23841">CVE-2021-23841</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-3449">CVE-2021-3449</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2021-3450">CVE-2021-3450</uri>
+  </references>
+  <metadata tag="requester" timestamp="2021-03-31T11:28:32Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2021-03-31T12:15:28Z">whissi</metadata>
+</glsa>
