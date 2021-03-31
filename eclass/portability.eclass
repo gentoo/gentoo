@@ -13,7 +13,6 @@ _PORTABILITY_ECLASS=1
 
 # @FUNCTION: treecopy
 # @USAGE: <orig1> [orig2 orig3 ....] <dest>
-# @RETURN:
 # @DESCRIPTION:
 # mimic cp --parents copy, but working on BSD userland as well
 treecopy() {
