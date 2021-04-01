@@ -1,5 +1,9 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Force the flag which corresponds to ARCH.
 riscv
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2021-04-01)
+# sys-libs/libunwind not supported on RISC-V.
+llvm-libunwind
