@@ -5816,7 +5816,7 @@ dev-libs/vc 1.4.1: SIMD Vector Class Library for C++
 dev-libs/vc-intrinsics 0_p20200904: LLVM intrinsics representing SIMD semantics of a program targeting GPU
 dev-libs/voikko-fi 2.4: Finnish dictionary for libvoikko based spell checkers (vvfst format)
 dev-libs/volume_key 0.3.12-r3: Library for manipulating and storing storage volume encryption keys
-dev-libs/wayland 1.18.0 1.19.0 9999: Wayland protocol libraries
+dev-libs/wayland 1.19.0 9999: Wayland protocol libraries
 dev-libs/wayland-protocols 1.20 9999: Wayland protocol files
 dev-libs/weston 8.0.0 9.0.0 9999: Wayland reference compositor
 dev-libs/xalan-c 1.11.0_pre1153059: XSLT processor for transforming XML into HTML, text, or other XML types
@@ -13406,7 +13406,7 @@ media-libs/lsp-plugins 1.1.22 1.1.24 1.1.29 9999: Linux Studio Plugins
 media-libs/lv2 1.18.2: A simple but extensible successor of LADSPA
 media-libs/lvtk 1.2.0-r1: A set of C++ wrappers around the LV2 C API
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 20.2.6 20.3.4 20.3.5 21.0.0 21.0.1 9999: OpenGL-like graphic library for Linux
+media-libs/mesa 20.3.5 21.0.1 9999: OpenGL-like graphic library for Linux
 media-libs/mlt 6.24.0-r1: Open source multimedia framework for television broadcasting
 media-libs/munt-mt32emu 2.3.0 2.4.2: Library for emulating the Roland MT-32, CM-32L, CM-64 and LAPC-I
 media-libs/musicbrainz 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
