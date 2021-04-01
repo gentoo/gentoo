@@ -1,29 +1,28 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit desktop eutils xdg-utils
+inherit desktop optfeature wrapper xdg-utils
 
 MY_PN="KeePass"
 DESCRIPTION="A free, open source, light-weight and easy-to-use password manager"
 HOMEPAGE="https://keepass.info/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_PN}-${PV}-Source.zip"
+S="${WORKDIR}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="aot"
 
-COMMON_DEPEND="dev-lang/mono"
-DEPEND="${COMMON_DEPEND}
-	app-arch/unzip
-"
-RDEPEND="${COMMON_DEPEND}
+BDEPEND="app-arch/unzip"
+DEPEND="dev-lang/mono"
+RDEPEND="
+	${DEPEND}
 	dev-dotnet/libgdiplus[cairo]
 "
 
-S="${WORKDIR}"
 PATCHES=( "${FILESDIR}/${PN}-2.36-xsl-path-detection.patch" )
 
 # bug #687052
@@ -101,10 +100,7 @@ pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
 
-	if ! has_version x11-misc/xdotool ; then
-		elog "Optional dependencies:"
-		elog "	x11-misc/xdotool (enables autotype/autofill)"
-	fi
+	optfeature "enables autotype/autofill" x11-misc/xdotool
 
 	elog "Some systems may experience issues with copy and paste operations."
 	elog "If you encounter this, please install x11-misc/xsel."
