@@ -6,7 +6,7 @@ EAPI=7
 HOMEPAGE=https://gitlab.gnome.org/GNOME/gnome-settings-daemon
 INHERIT=gnome.org gnome2-utils python-any-r1 meson udev virtualx xdg
 IUSE=+colord +cups debug elogind input_devices_wacom modemmanager networkmanager smartcard systemd test +udev wayland test
-KEYWORDS=~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x86-solaris
 LICENSE=GPL-2+ LGPL-2+
 RDEPEND=>=sci-geosciences/geocode-glib-3.10 >=dev-libs/glib-2.56:2 >=gnome-base/gnome-desktop-3.34.2:3= >=gnome-base/gsettings-desktop-schemas-3.35.91 >=x11-libs/gtk+-3.15.3:3[X,wayland?] >=dev-libs/libgweather-3.9.5:2= colord? ( >=x11-misc/colord-1.3.5:= >=media-libs/lcms-2.2:2 ) media-libs/libcanberra[gtk3] >=app-misc/geoclue-2.3.1:2.0 >=x11-libs/libnotify-0.7.3 >=media-sound/pulseaudio-2[glib] >=sys-auth/polkit-0.114 >=sys-power/upower-0.99.8:= x11-libs/libX11 udev? ( dev-libs/libgudev:= ) wayland? ( dev-libs/wayland ) input_devices_wacom? ( >=dev-libs/libwacom-0.7 >=x11-libs/pango-1.20.0 x11-libs/gdk-pixbuf:2 ) smartcard? ( >=dev-libs/nss-3.11.2 ) cups? ( >=net-print/cups-1.4[dbus] ) modemmanager? ( >=app-crypt/gcr-3.7.5:= >=net-misc/modemmanager-1.0:= ) networkmanager? ( >=net-misc/networkmanager-1.0 ) media-libs/alsa-lib x11-libs/libXi x11-libs/libXext media-libs/fontconfig systemd? ( >=sys-apps/systemd-243 sys-apps/dbus[user-session] ) gnome-base/dconf elogind? ( sys-auth/elogind ) !<gnome-base/gnome-session-3.33.90 !<gnome-base/gdm-3.33.90 !<gnome-extra/gnome-shell-extensions-3.34.1 !<gnome-base/gnome-flashback-3.33.1
 REQUIRED_USE=^^ ( elogind systemd ) input_devices_wacom? ( udev ) wayland? ( udev )
@@ -14,4 +14,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://gnome/sources/gnome-settings-daemon/3.38/gnome-settings-daemon-3.38.1.tar.xz
 _eclasses_=gnome.org	df5c6c53843e1be0aad724138e78bbc3	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-any-r1	690a993463cd2ebcde40ccdf1bd9ba98	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	meson	e43eef9331f54965a573ed380854ff47	udev	452708c3f55cf6e918b045adb949a9e6	virtualx	d828f8a6cfc731f2683d0967d3f2f95a	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
-_md5_=8b405b34358f6b86e1494cd781f39b94
+_md5_=f2f6f0bfecd18b88fe9db7527fe66f5f

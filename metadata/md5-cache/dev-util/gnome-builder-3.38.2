@@ -6,7 +6,7 @@ EAPI=7
 HOMEPAGE=https://wiki.gnome.org/Apps/Builder
 INHERIT=gnome.org gnome2-utils llvm meson python-single-r1 readme.gentoo-r1 virtualx xdg
 IUSE=clang +devhelp doc +git +glade gtk-doc spell sysprof test python_single_target_python3_7 python_single_target_python3_8 test
-KEYWORDS=amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-3+ GPL-2+ LGPL-3+ LGPL-2+ MIT CC-BY-SA-3.0 CC0-1.0
 RDEPEND=>=dev-libs/libdazzle-3.37.0[introspection] >=dev-libs/glib-2.65.0:2 >=x11-libs/gtk+-3.22.26:3[introspection] >=x11-libs/gtksourceview-4.0.0:4[introspection] >=dev-libs/json-glib-1.2.0 >=dev-libs/jsonrpc-glib-3.19.91 >=x11-libs/pango-1.38.0 >=dev-libs/libpeas-1.22.0[python,python_single_target_python3_7(-)?,python_single_target_python3_8(-)?] >=dev-libs/template-glib-3.28.0[introspection] >=x11-libs/vte-0.40.2:2.91[introspection] >=net-libs/webkit-gtk-2.26:4=[introspection] >=dev-libs/libxml2-2.9.0 git? ( dev-libs/libgit2:=[ssh,threads] >=dev-libs/libgit2-glib-0.28.0.1[ssh] ) dev-libs/libpcre:3 dev-libs/libpcre2 >=dev-libs/gobject-introspection-1.54.0:= python_single_target_python3_7? ( >=dev-python/pygobject-3.22.0:3[python_targets_python3_7(-)] ) python_single_target_python3_8? ( >=dev-python/pygobject-3.22.0:3[python_targets_python3_8(-)] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) clang? ( sys-devel/clang:= ) devhelp? ( >=dev-util/devhelp-3.25.1:= ) glade? ( >=dev-util/glade-3.22.0:3.10= ) spell? ( >=app-text/gspell-1.8:0= app-text/enchant:2 ) sysprof? ( >=dev-util/sysprof-3.37.1:0/4[gtk] )
 REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_8 )
@@ -14,4 +14,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://gnome/sources/gnome-builder/3.38/gnome-builder-3.38.2.tar.xz
 _eclasses_=gnome.org	df5c6c53843e1be0aad724138e78bbc3	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3	llvm	96482dd3973a93c32659252dfeba1433	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	543b53e4d003ebd889082f4673e52af5	meson	e43eef9331f54965a573ed380854ff47	python-single-r1	c7de0087e87a282f2faec351822e097c	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	virtualx	d828f8a6cfc731f2683d0967d3f2f95a	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
-_md5_=35b782b6063cff9e5c1cdbe6e816fef8
+_md5_=ef62c90eb80c45b3d7b108f4abc8c1f7
