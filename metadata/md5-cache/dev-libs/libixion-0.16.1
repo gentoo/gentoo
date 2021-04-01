@@ -5,10 +5,11 @@ EAPI=7
 HOMEPAGE=https://gitlab.com/ixion/ixion
 INHERIT=python-single-r1
 IUSE=debug python +threads python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64
 LICENSE=MIT
 RDEPEND=dev-libs/boost:= dev-util/mdds:1/1.5 python? ( python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_9? ( dev-lang/python:3.9 >=dev-lang/python-exec-2:=[python_targets_python3_9] ) )
 REQUIRED_USE=python? ( ^^ ( python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9 ) )
 SLOT=0/0.16
 SRC_URI=https://kohei.us/files/ixion/src/libixion-0.16.1.tar.xz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-single-r1	c7de0087e87a282f2faec351822e097c
-_md5_=c5bd2524606e1ad13dd881d3f66439e9
+_md5_=be79114372bac6f21dda0a7b16dfa8fc

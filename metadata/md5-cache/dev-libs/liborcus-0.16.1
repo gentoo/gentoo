@@ -5,10 +5,11 @@ EAPI=7
 HOMEPAGE=https://gitlab.com/orcus/orcus/blob/master/README.md
 INHERIT=python-single-r1
 IUSE=python +spreadsheet-model tools python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64
 LICENSE=MIT
 RDEPEND=dev-libs/boost:=[zlib(+)] sys-libs/zlib python? ( python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_9? ( dev-lang/python:3.9 >=dev-lang/python-exec-2:=[python_targets_python3_9] ) ) spreadsheet-model? ( dev-libs/libixion:0/0.16 )
 REQUIRED_USE=python? ( ^^ ( python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9 ) )
 SLOT=0/0.16
 SRC_URI=https://kohei.us/files/orcus/src/liborcus-0.16.1.tar.xz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-single-r1	c7de0087e87a282f2faec351822e097c
-_md5_=b15c5517f3e2e8b3186048e157fa7d51
+_md5_=de3c2bbfb38b995efde07a0cec231c5e

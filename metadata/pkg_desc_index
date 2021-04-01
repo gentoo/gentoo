@@ -2771,10 +2771,10 @@ app-office/kraft 0.95: Software to manage quotes and invoices in small enterpris
 app-office/ktimetracker 5.0.1: Todo management and time tracker
 app-office/ledger 3.2.1: Double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 8.0.4 8.1.0: Library with common classes and functionality used by KDE finance applications
-app-office/libreoffice 6.4.7.2 7.0.5.2 7.1.9999 9999: A full office productivity suite
+app-office/libreoffice 6.4.7.2 7.0.5.2 7.1.2.2 7.1.9999 9999: A full office productivity suite
 app-office/libreoffice-bin 6.4.7.2_p3: A full office productivity suite. Binary package
 app-office/libreoffice-bin-debug 6.4.7.2_p3: LibreOffice, a full office productivity suite. Binary package, debug info
-app-office/libreoffice-l10n 6.4.7.2 7.0.5.2: Translations for the Libreoffice suite
+app-office/libreoffice-l10n 6.4.7.2 7.0.5.2 7.1.2.2: Translations for the Libreoffice suite
 app-office/libreoffice-voikko 5.0-r1: Free Finnish spell checking and hyphenation for LibreOffice
 app-office/lyx 2.3.5.2-r2 2.3.6.1: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/magicpoint 1.13a_p20121015-r1: An X11 based presentation tool
@@ -16551,6 +16551,7 @@ sci-mathematics/genius 1.0.25: Genius Mathematics Tool and the GEL Language
 sci-mathematics/geogebra-bin 5.0.604.0-r2: Mathematics software for geometry
 sci-mathematics/geomview 1.9.5-r1: Interactive Geometry Viewer
 sci-mathematics/gfan 0.6.2 0.6.2-r1: Compute Groebner fans and tropical varieties
+sci-mathematics/giac 1.7.0.1: A free C++ Computer Algebra System library and its interfaces
 sci-mathematics/gimps 30.3.6 30.5.2: The Great Internet Mersenne Prime Search
 sci-mathematics/ginac 1.7.11: C++ library and tools for symbolic calculations
 sci-mathematics/glpk 4.65 5.0-r1: GNU Linear Programming Kit
