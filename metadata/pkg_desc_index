@@ -2104,7 +2104,7 @@ app-emulation/cri-tools 1.18.0: CLI and validation tools for Kubelet Container R
 app-emulation/crossover-bin 20.0.4: Commercial version of app-emulation/wine with paid support
 app-emulation/crun 0.16 0.17: A fast and low-memory footprint OCI Container Runtime fully written in C
 app-emulation/dinero 4.7-r1: Cache simulator
-app-emulation/diskimage-builder 3.7.0 9999: Golden Disk Image builder.
+app-emulation/diskimage-builder 3.7.0 3.8.0 9999: Golden Disk Image builder.
 app-emulation/distrobuilder 1.1: System container image builder for LXC and LXD
 app-emulation/dlx 1.0.0 1.5.20: DLX Simulator
 app-emulation/docker 19.03.15 20.10.5: The core functions you need to create Docker images and run Docker containers
