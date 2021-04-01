@@ -1,10 +1,6 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Thomas Deutschmann <whissi@gentoo.org> (2021-03-28)
-# sys-kernel/linux-firmware isn't keyworded for riscv
-sys-kernel/genkernel firmware
-
 # Sam James <sam@gentoo.org> (2021-03-11)
 # media-libs/libheif isn't keyworded here
 # media-libs/libavif isn't keyworded here
@@ -153,6 +149,6 @@ sys-devel/gettext cvs
 sys-devel/llvm doc
 sys-fs/squashfs-tools lzma
 sys-libs/libcap-ng python
-sys-process/audit gssapi python
+sys-process/audit gssapi
 x11-base/xorg-server  unwind
 x11-libs/libvdpau doc
