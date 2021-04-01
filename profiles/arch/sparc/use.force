@@ -1,2 +1,6 @@
 # Force the flag which corresponds to ARCH.
 sparc
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2021-04-01)
+# sys-libs/libunwind not supported on SPARC.
+llvm-libunwind
