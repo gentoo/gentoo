@@ -1,11 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=5
 
 JAVA_PKG_IUSE="doc examples source"
-
-inherit eutils java-pkg-2 java-ant-2
+inherit eutils epatch java-pkg-2 java-ant-2
 
 DESCRIPTION="A speech synthesis system written entirely in Java"
 SRC_URI="mirror://sourceforge/${PN}/${P}-src.zip"
@@ -22,7 +21,6 @@ DEPEND=">=virtual/jdk-1.4
 LICENSE="jsapi? ( sun-bcla-jsapi ) freetts"
 SLOT="0"
 KEYWORDS="amd64 ppc64 x86"
-
 IUSE="jsapi mbrola"
 
 # Tests aren't present.
