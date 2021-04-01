@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,12 +12,12 @@ SRC_URI="https://github.com/google/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 x86 ~amd64-linux ~x86-linux"
-IUSE="gflags static-libs test unwind"
+IUSE="gflags +libunwind static-libs test"
 RESTRICT="test"
 
 RDEPEND="
 	gflags? ( >=dev-cpp/gflags-2.0-r1[${MULTILIB_USEDEP}] )
-	unwind? ( sys-libs/libunwind[${MULTILIB_USEDEP}] )"
+	libunwind? ( sys-libs/libunwind[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	test? ( >=dev-cpp/gtest-1.8.0[${MULTILIB_USEDEP}] )"
 
@@ -37,7 +37,7 @@ multilib_src_configure() {
 		$(use_enable gflags) \
 		$(use_enable static-libs static) \
 		$(use_enable test gtest-config) \
-		$(use_enable unwind)
+		$(use_enable libunwind unwind)
 }
 
 multilib_src_install_all() {
