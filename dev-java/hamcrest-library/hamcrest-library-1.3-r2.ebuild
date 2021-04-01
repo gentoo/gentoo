@@ -4,6 +4,7 @@
 EAPI=7
 
 JAVA_PKG_IUSE="source"
+MAVEN_ID="org.hamcrest:hamcrest-library:1.3"
 
 inherit java-pkg-2 java-pkg-simple
 
