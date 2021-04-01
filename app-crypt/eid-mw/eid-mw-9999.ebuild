@@ -20,7 +20,7 @@ RDEPEND=">=sys-apps/pcsc-lite-1.2.9
 		dev-libs/libxml2
 		net-misc/curl[ssl]
 		net-libs/libproxy
-		app-crypt/pinentry[gtk]
+		>=app-crypt/pinentry-1.1.0-r4[gtk]
 	)
 	p11-kit? ( app-crypt/p11-kit )"
 
@@ -85,11 +85,11 @@ pkg_postinst() {
 
 		local peimpl=$(eselect --brief --colour=no pinentry show)
 		case "${peimpl}" in
-		*gtk*) ;;
+		*gnome*|*qt*) ;;
 		*)	ewarn "The pinentry front-end currently selected is not supported by eid-mw."
 			ewarn "You may be prompted for your pin code in an inaccessible shell!!"
-			ewarn "Please select pinentry-gtk-2 as default pinentry provider:"
-			ewarn " # eselect pinentry set pinentry-gtk-2"
+			ewarn "Please select pinentry-gnome3 as default pinentry provider:"
+			ewarn " # eselect pinentry set pinentry-gnome3"
 		;;
 		esac
 	fi
