@@ -17,6 +17,7 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE="debug dnstap libressl protobuf snmp sodium systemd test"
 REQUIRED_USE="${LUA_REQUIRED_USE}
 	dnstap? ( protobuf )"
+RESTRICT="!test? ( test )"
 
 DEPEND="${LUA_DEPS}
 	protobuf? (
