@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/FileRoller"
 LICENSE="GPL-2+ CC-BY-SA-3.0"
 SLOT="0"
 IUSE="libnotify nautilus"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 
 # gdk-pixbuf used extensively in the source
 # cairo used in eggtreemultidnd.c
