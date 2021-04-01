@@ -16,7 +16,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	MDDS_SLOT="1/1.5"
 	SRC_URI="https://kohei.us/files/orcus/src/${P}.tar.xz"
-# 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64" # no ~x86 to avoid blocked update
 fi
 
 LICENSE="MIT"
