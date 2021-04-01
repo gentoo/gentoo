@@ -431,9 +431,10 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 RDEPEND="
-    acct-user/redis_exporter
-    acct-group/redis_exporter"
+	acct-user/redis_exporter
+	acct-group/redis_exporter"
 DEPEND="${RDEPEND}"
+RESTRICT+=" test"
 
 src_prepare() {
 	default
@@ -451,7 +452,7 @@ src_compile() {
 }
 
 src_test() {
-	go test -work "${EGO_PN}" || die
+	go test -work ./... || die
 }
 
 src_install() {
