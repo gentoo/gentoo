@@ -9,9 +9,10 @@ if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://git.zx2c4.com/password-store"
 	inherit git-r3
 else
-	SRC_URI="https://git.zx2c4.com/password-store/snapshot/password-store-${PV}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~x64-macos"
-	S="${WORKDIR}/password-store-${PV}"
+	KEYWORDS="~amd64 ~arm64 ~x86 ~x64-macos"
+	COMMIT_ID="918992c19231b33b3d4a3288a7288a620e608cb4"
+	SRC_URI="https://git.zx2c4.com/password-store/snapshot/password-store-${COMMIT_ID}.tar.xz"
+	S="${WORKDIR}/${PN}"
 fi
 
 DESCRIPTION="Stores, retrieves, generates, and synchronizes passwords securely"
@@ -34,6 +35,13 @@ RDEPEND="
 	dmenu? ( x11-misc/dmenu x11-misc/xdotool )
 	emacs? ( >=app-editors/emacs-23.1:* >=app-emacs/f-0.11.0 >=app-emacs/s-1.9.0 >=app-emacs/with-editor-2.5.11 )
 "
+
+src_unpack() {
+	default
+
+	# Hack: Tests fail if the path length is too long
+	mv "${WORKDIR}/password-store-${COMMIT_ID}" "${WORKDIR}/${PN}"
+}
 
 src_prepare() {
 	default
