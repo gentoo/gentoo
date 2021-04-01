@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa"
+KEYWORDS="~amd64 ~hppa ~x86"
 
 BDEPEND="app-arch/xz-utils"
 DEPEND="
