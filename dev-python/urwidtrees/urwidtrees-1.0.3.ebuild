@@ -17,6 +17,10 @@ KEYWORDS="amd64 ~x86"
 
 RDEPEND=">=dev-python/urwid-1.1.0[${PYTHON_USEDEP}]"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.0.3-0001-Update-mock-dependency-to-install-when-necessary.patch #770391
+)
+
 distutils_enable_sphinx docs/source
 
 src_prepare() {
