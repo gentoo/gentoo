@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_COMMIT=41efdba45afa770db99bc7484a8ad340ccc597d2
 inherit desktop toolchain-funcs xdg-utils
@@ -9,6 +9,7 @@ inherit desktop toolchain-funcs xdg-utils
 DESCRIPTION="A multi-system game emulator formerly known as bsnes"
 HOMEPAGE="https://byuu.org/emulation/higan/ https://gitlab.com/higan/higan"
 SRC_URI="https://gitlab.com/higan/higan/repository/${MY_COMMIT}/archive.tar.bz2 -> ${P}.tar.bz2"
+S="${WORKDIR}"/${PN}-${MY_COMMIT}-${MY_COMMIT}
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -41,12 +42,11 @@ RDEPEND="
 	sdl? ( media-libs/libsdl[X,joystick,video] )
 	udev? ( virtual/udev )
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	app-arch/p7zip
 	virtual/pkgconfig
 "
-
-S=${WORKDIR}/${PN}-${MY_COMMIT}-${MY_COMMIT}
 
 PATCHES=(
 	"${FILESDIR}"/${P}-header-locations.patch
@@ -61,6 +61,7 @@ disable_module() {
 
 src_prepare() {
 	default
+
 	sed -i \
 		-e "/handle/s#/usr/local/lib#/usr/$(get_libdir)#" \
 		nall/dl.hpp || die "fixing libdir failed!"
@@ -110,6 +111,7 @@ src_install() {
 	if use icarus; then
 		newbin "${S}"/icarus/out/icarus icarus
 	fi
+
 	newbin "${S}"/higan/out/${PN} ${PN}.bin
 	newbin "${FILESDIR}"/${P}-wrapper ${PN}
 	make_desktop_entry "${PN}" "${PN}"
@@ -120,10 +122,6 @@ src_install() {
 
 	doicon -s 512 higan/data/${PN}.png
 	doicon        higan/data/${PN}.svg
-}
-
-pkg_preinst() {
-	games_pkg_preinst
 }
 
 pkg_postinst() {
