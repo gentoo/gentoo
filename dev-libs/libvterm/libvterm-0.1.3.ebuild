@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator"
 HOMEPAGE="http://www.leonerd.org.uk/code/libvterm/"
