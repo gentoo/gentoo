@@ -1,8 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit autotools eutils flag-o-matic
+EAPI=7
+
+inherit autotools desktop flag-o-matic
 
 DESCRIPTION="Analysis of Compiler Options via Evolutionary Algorithm GUI"
 HOMEPAGE="http://www.coyotegulch.com/products/acovea/"
@@ -18,8 +19,8 @@ RDEPEND=">=app-benchmarks/acovea-5
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-	use unicode && epatch "${FILESDIR}"/${P}-unicode.patch
-	epatch "${FILESDIR}"/${P}-{libbrahe,libsigc,gcc4.3}.patch
+	use unicode && eapply "${FILESDIR}"/${P}-unicode.patch
+	eapply "${FILESDIR}"/${P}-{libbrahe,libsigc,gcc4.3}.patch
 	append-cxxflags -std=c++11
 	eautoreconf
 }
