@@ -65,6 +65,7 @@ pkg_setup() {
 PATCHES=(
 	"${FILESDIR}"/${PN}-$(ver_cut 1-3)-sdl-config.patch
 	"${FILESDIR}"/${PN}-$(ver_cut 1-3)-gamma.patch
+	"${FILESDIR}"/${PN}-$(ver_cut 1-3)-slibtool.patch
 )
 
 DOCS=( BUGS CREDITS README-SDL.txt TODO WhatsNew )
