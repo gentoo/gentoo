@@ -1,4 +1,4 @@
-# Copyright 2014-2019 Gentoo Authors
+# Copyright 2014-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -36,9 +36,9 @@ else
 	SRC_URI="https://github.com/Gnurou/${PN}/releases/download/${PV}/${PN}-${TAGAINIJISHO_VERSION}.tar.gz"
 fi
 if [[ "${PV}" != 9999 ]]; then
-	# Upstream: http://ftp.monash.edu.au/pub/nihongo/JMdict.gz
+	# Upstream: https://www.edrdg.org/pub/Nihongo/JMdict.gz
 	SRC_URI+=" https://home.apache.org/~arfrever/distfiles/JMdict-${JMDICT_DATE}.gz"
-	# Upstream: http://www.edrdg.org/kanjidic/kanjidic2.xml.gz
+	# Upstream: https://www.edrdg.org/pub/Nihongo/kanjidic2.xml.gz
 	SRC_URI+=" https://home.apache.org/~arfrever/distfiles/kanjidic2-${KANJIDIC2_DATE}.xml.gz"
 fi
 if [[ "${PV}" == 9999 || "${PV}" == *_pre* ]]; then
@@ -94,7 +94,7 @@ src_unpack() {
 			JMDICT_DATE="${yesterday}"
 		else
 			# Download file from today or yesterday.
-			wget http://ftp.monash.edu.au/pub/nihongo/JMdict.gz -O JMdict.gz || die
+			wget https://www.edrdg.org/pub/Nihongo/JMdict.gz -O JMdict.gz || die
 			JMDICT_DATE="$(gzip -cd JMdict.gz | grep -E "^<!-- JMdict created: [[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2} -->$" | sed -e "s/.*\([[:digit:]]\{4\}-[[:digit:]]\{2\}-[[:digit:]]\{2\}\).*/\1/")"
 			if [[ ${JMDICT_DATE} != ${today} && ${JMDICT_DATE} != ${yesterday} ]]; then
 				die "Unexpected date in JMdict.gz: '${JMDICT_DATE}'"
@@ -114,7 +114,7 @@ src_unpack() {
 			KANJIDIC2_DATE="${yesterday}"
 		else
 			# Download file from today or yesterday.
-			wget http://www.edrdg.org/kanjidic/kanjidic2.xml.gz -O kanjidic2.xml.gz || die
+			wget https://www.edrdg.org/pub/Nihongo/kanjidic2.xml.gz -O kanjidic2.xml.gz || die
 			KANJIDIC2_DATE="$(gzip -cd kanjidic2.xml.gz | grep -E "^<date_of_creation>[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}</date_of_creation>$" | sed -e "s/.*\([[:digit:]]\{4\}-[[:digit:]]\{2\}-[[:digit:]]\{2\}\).*/\1/")"
 			if [[ ${KANJIDIC2_DATE} != ${today} && ${KANJIDIC2_DATE} != ${yesterday} ]]; then
 				die "Unexpected date in kanjidic2.xml.gz: '${KANJIDIC2_DATE}'"
