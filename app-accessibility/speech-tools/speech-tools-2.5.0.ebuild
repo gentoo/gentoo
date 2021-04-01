@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=7
 
-inherit multilib toolchain-funcs
+inherit toolchain-funcs
 
 MY_P=${P/speech-/speech_}
 PATCHSET="r3"
@@ -12,6 +12,7 @@ DESCRIPTION="Speech tools for Festival Text to Speech engine"
 HOMEPAGE="http://www.cstr.ed.ac.uk/projects/speech_tools/"
 SRC_URI="http://www.festvox.org/packed/festival/$(ver_cut 1-2)/${MY_P}-release.tar.gz
 	https://dev.gentoo.org/~neurogeek/${PN}/speech_tools-2.1-${PATCHSET}-patches.tar.gz"
+S="${WORKDIR}/speech_tools"
 
 LICENSE="FESTIVAL HPND BSD rc regexp-UofT"
 SLOT="0"
@@ -22,14 +23,13 @@ RDEPEND="
 	media-libs/alsa-lib
 	sys-libs/ncurses:0=
 	nas? ( media-libs/nas )
-	X? ( x11-libs/libX11
+	X? (
+		x11-libs/libX11
 		x11-libs/libXt
 	)
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
-
-S="${WORKDIR}/speech_tools"
 
 DOCS=( README.md lib/cstrutt.dtd lib/example_data )
 
@@ -67,14 +67,14 @@ src_prepare() {
 	sed -i -e 's,{{HORRIBLELIBARCHKLUDGE}},"/usr/$(get_libdir)",' \
 		main/siod_main.cc || die
 
-	#WRT bug #309983
+	# bug #309983
 	sed -i -e "s:\(GCC_SYSTEM_OPTIONS =\).*:\1:" \
 		"${S}"/config/systems/sparc_SunOS5.mak || die
 
 	sed -i -e "s|\$(OMP_OPTS)|$(use openmp && echo -fopenmp)|g" \
 		-e "s|\$(OMP_DEFS)|$(use openmp && echo -DOMP_WAGON=1)|g" \
 		-e "/MAKE_SHARED_LIB =/s|-shared|$(use openmp && echo -fopenmp) -shared|" \
-		config/compilers/gcc_defaults.mak
+		config/compilers/gcc_defaults.mak || die
 }
 
 src_configure() {
@@ -95,8 +95,14 @@ src_configure() {
 }
 
 src_compile() {
-	emake -j1 CC="$(tc-getCC)" CXX="$(tc-getCXX)" CXX_OTHER_FLAGS="${CXXFLAGS}" CC_OTHER_FLAGS="${CFLAGS}" \
-		AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)" LDFLAGS="${LDFLAGS}"
+	emake -j1 \
+		CC="$(tc-getCC)" \
+		CXX="$(tc-getCXX)" \
+		CC_OTHER_FLAGS="${CFLAGS}" \
+		CXX_OTHER_FLAGS="${CXXFLAGS}" \
+		LDFLAGS="${LDFLAGS}" \
+		AR="$(tc-getAR)" \
+		RANLIB="$(tc-getRANLIB)"
 }
 
 src_install() {
@@ -135,6 +141,6 @@ src_install() {
 	done
 
 	# Remove bcat (only useful for testing on windows, see bug #418301).
-	rm "${D}/usr/bin/bcat" || die
-	rm "${D}/usr/$(get_libdir)/speech-tools/bcat" || die
+	rm "${ED}/usr/bin/bcat" || die
+	rm "${ED}/usr/$(get_libdir)/speech-tools/bcat" || die
 }
