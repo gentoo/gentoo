@@ -1846,7 +1846,7 @@ app-editors/kile 2.9.93-r1: Latex Editor and TeX shell based on KDE Frameworks
 app-editors/le 1.16.5: Terminal text editor
 app-editors/leafpad 0.8.18.1-r1: Simple GTK2 text editor
 app-editors/levee 3.5a: Really tiny vi clone, for things like rescue disks
-app-editors/lpe 1.2.6.13: a lightweight programmers editor
+app-editors/lpe 1.2.6.13 1.2.8_p20210401: A lightweight programmers editor
 app-editors/mg 20200723 20210314: MicroGnuEmacs, a port from the BSDs
 app-editors/moe 1.9 1.10 1.11: A powerful and user-friendly console text editor
 app-editors/mousepad 0.5.2-r1 0.5.3-r1: GTK+-based editor for the Xfce Desktop Environment

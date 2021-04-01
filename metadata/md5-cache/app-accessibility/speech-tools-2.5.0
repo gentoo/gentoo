@@ -4,11 +4,12 @@ DEPEND=media-libs/alsa-lib sys-libs/ncurses:0= nas? ( media-libs/nas ) X? ( x11-
 DESCRIPTION=Speech tools for Festival Text to Speech engine
 EAPI=7
 HOMEPAGE=http://www.cstr.ed.ac.uk/projects/speech_tools/
+INHERIT=toolchain-funcs
 IUSE=nas openmp X
 KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
 LICENSE=FESTIVAL HPND BSD rc regexp-UofT
 RDEPEND=media-libs/alsa-lib sys-libs/ncurses:0= nas? ( media-libs/nas ) X? ( x11-libs/libX11 x11-libs/libXt )
 SLOT=0
 SRC_URI=http://www.festvox.org/packed/festival/2.5/speech_tools-2.5.0-release.tar.gz https://dev.gentoo.org/~neurogeek/speech-tools/speech_tools-2.1-r3-patches.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=4f4589873eb806be6aa2bc82992e52cf
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=5b77e61b95b7d2950ad9210aa9d24f8b

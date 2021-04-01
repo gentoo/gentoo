@@ -3,7 +3,7 @@ DEPEND=nas? ( media-libs/nas ) X? ( x11-libs/libX11 x11-libs/libXt ) >=media-lib
 DESCRIPTION=Speech tools for Festival Text to Speech engine
 EAPI=5
 HOMEPAGE=http://www.cstr.ed.ac.uk/projects/speech_tools/
-INHERIT=eutils flag-o-matic multilib toolchain-funcs
+INHERIT=eutils epatch flag-o-matic multilib toolchain-funcs
 IUSE=nas X
 KEYWORDS=~alpha amd64 ~arm ~hppa ~ia64 ~mips ppc ppc64 sparc x86
 LICENSE=FESTIVAL HPND BSD rc regexp-UofT
@@ -11,4 +11,4 @@ RDEPEND=nas? ( media-libs/nas ) X? ( x11-libs/libX11 x11-libs/libXt ) >=media-li
 SLOT=0
 SRC_URI=http://www.festvox.org/packed/festival/2.1/speech_tools-2.1-release.tar.gz https://dev.gentoo.org/~neurogeek/speech-tools/speech_tools-2.1-r3-patches.tar.gz
 _eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	estack	055c42df72f76a4f45ec92b35e83cd56	epatch	f62592ba170464d52e9a05f584161347	l10n	8cdd85e169b835d518bc2fd59f780d8e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	preserve-libs	ef207dc62baddfddfd39a164d9797648	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741
-_md5_=57a9830ef724a0ad44b328ab3f1a7347
+_md5_=0a90d8c411d89f751466bf0c52df528b
