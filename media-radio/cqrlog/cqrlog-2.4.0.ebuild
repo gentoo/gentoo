@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit optfeature
+
 DESCRIPTION="CQRLOG is an advanced ham radio logger based on MySQL database"
 HOMEPAGE="https://www.cqrlog.com/ https://github.com/ok2cqr/cqrlog"
 SRC_URI="https://github.com/ok2cqr/cqrlog/archive/v${PV}.tar.gz -> ${P}.tar.gz"
