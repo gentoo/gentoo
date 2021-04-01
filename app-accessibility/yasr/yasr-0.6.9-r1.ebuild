@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools
 
@@ -14,8 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE="nls"
 
-RDEPEND=""
-DEPEND="nls? ( sys-devel/gettext )"
+BDEPEND="nls? ( sys-devel/gettext )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.6.9-automake113.patch
@@ -26,8 +25,12 @@ PATCHES=(
 
 src_prepare() {
 	default
-	local x=/usr/share/gettext/po/Makefile.in.in
-	[[ -e $x ]] && cp -f $x po/ || die #330879
+
+	if use nls ; then
+		local x="${BROOT}"/usr/share/gettext/po/Makefile.in.in
+		# bug 330879
+		[[ -e $x ]] && cp -f $x po/ || die
+	fi
 
 	rm -r "${S}"/m4 || die
 
@@ -50,5 +53,5 @@ src_configure() {
 pkg_postinst() {
 	elog
 	elog "Speech-dispatcher is configured as the default synthesizer for yasr."
-	elog "If this is not what you want, edit /etc/yasr/yasr.conf."
+	elog "If this is not what you want, edit ${EROOT}/etc/yasr/yasr.conf."
 }
