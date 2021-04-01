@@ -46,5 +46,6 @@ src_install() {
 		dodoc examples/{README,TODO,test.msg,*.cxx,*.h}
 	fi
 
-	rm "${ED}"/usr/$(get_libdir)/libmimetic.la || die
+	# bug #778887
+	find "${ED}" -name '*.la' -delete || die
 }
