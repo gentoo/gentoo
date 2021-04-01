@@ -55,6 +55,9 @@ src_prepare() {
 	# Disable tests for now, bug 406399
 	sed -i '/^SUBDIRS/s:tests::' bin/Makefile.in lib/Makefile.in || die
 
+	# it's meant to fix Solaris, but it actually breaks
+	sed -i -e 's/-zrelax=transtls//' configure.ac configure || die
+
 	# bug #220361
 	rm aclocal.m4 || die
 	rm -rf libtool.m4/ || die
