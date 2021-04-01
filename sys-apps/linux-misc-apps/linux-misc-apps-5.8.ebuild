@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs linux-info autotools flag-o-matic
+inherit autotools flag-o-matic linux-info toolchain-funcs
 
 DESCRIPTION="Misc tools bundled with kernel sources"
 HOMEPAGE="https://kernel.org/"
