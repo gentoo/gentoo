@@ -209,6 +209,7 @@ acct-group/radicale 0-r1: Group for the www-apps/radicale
 acct-group/radius 0-r1: FreeRadius program group
 acct-group/rbldns 0-r1: System group: rbldns
 acct-group/redis 0-r1: Redis program group
+acct-group/redis_exporter 0: System group: redis_exporter
 acct-group/redmine 0-r1: System group: redmine
 acct-group/render 0-r1: System group: render
 acct-group/root 0: System group: root
@@ -510,6 +511,7 @@ acct-user/radicale 0-r1: User for www-apps/radicale
 acct-user/radius 0-r1: FreeRadius program user
 acct-user/rbldns 0-r1: System user: rbldns
 acct-user/redis 0-r1: Redis program user
+acct-user/redis_exporter 0: A user for app-metrics/redis_exporter
 acct-user/redmine 0-r1: Redmine application user
 acct-user/root 0-r1: System user: root
 acct-user/rspamd 0-r1: User for rspamd - Rapid spam filtering system
@@ -2439,7 +2441,7 @@ app-metrics/prometheus 2.13.1 2.19.1 2.21.0-r1 2.25.0 2.25.2: Prometheus monitor
 app-metrics/prometheus-bin 2.25.0 2.25.2: prometheus monitoring system and time series database
 app-metrics/pushgateway 0.9.1 0.10.0 1.0.0: Prometheus push acceptor for ephemeral and batch jobs
 app-metrics/rabbitmq_exporter 0.29.0: Rabbitmq exporter for Prometheus
-app-metrics/redis_exporter 0.20.2 1.1.1 1.2.0 1.2.1: Prometheus Exporter for Redis Metrics. Supports Redis 2.x, 3.x and 4.x
+app-metrics/redis_exporter 0.20.2 1.1.1 1.2.0 1.2.1 1.20.0: Prometheus Exporter for Redis Metrics. Supports Redis 2.x, 3.x and 4.x
 app-metrics/snmp_exporter 0.15.0: Prometheus exporter for snmp metrics
 app-metrics/unbound-telemetry 0.1.0_pre20210321-r1: Prometheus exporter for Unbound DNS resolver
 app-metrics/uwsgi_exporter 0.7.0 0.8.0: uWSGI metrics exporter for prometheus.io
