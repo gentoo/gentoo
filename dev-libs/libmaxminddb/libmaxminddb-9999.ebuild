@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs git-r3
+inherit autotools toolchain-funcs git-r3
 
 DESCRIPTION="C library for the MaxMind DB file format"
 HOMEPAGE="https://github.com/maxmind/libmaxminddb"
