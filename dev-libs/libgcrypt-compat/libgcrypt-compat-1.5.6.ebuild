@@ -53,5 +53,5 @@ multilib_src_configure() {
 
 multilib_src_install() {
 	emake -C src DESTDIR="${D}" install-libLTLIBRARIES
-	rm -v "${ED}"/usr/$(get_libdir)/*.{la,so} || die
+	rm -vf "${ED}"/usr/$(get_libdir)/*.{la,so} || die
 }
