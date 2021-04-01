@@ -25,6 +25,10 @@ BDEPEND="
 	gnome-base/gnome-common
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.6.4-slibtool-undefined-references.patch
+)
+
 src_prepare() {
 	gnome2_src_prepare
 
