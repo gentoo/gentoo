@@ -1,0 +1,17 @@
+diff -Naur a/src/procattr.c b/src/procattr.c
+--- a/src/procattr.c	2020-07-10 11:17:15.000000000 -0400
++++ b/src/procattr.c	2021-03-30 16:31:51.224025979 -0400
+@@ -34,13 +34,6 @@
+   #define OVERRIDE_GETTID 0
+ #endif
+ 
+-#if OVERRIDE_GETTID
+-static pid_t gettid(void)
+-{
+-	return syscall(__NR_gettid);
+-}
+-#endif
+-
+ static void procattr_thread_destructor(void __attribute__((unused)) *unused)
+ {
+ 	if (prev_current != UNSET)
