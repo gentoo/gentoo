@@ -62,10 +62,6 @@ media-video/vlc -libplacebo
 # works on ppc64
 app-emulation/qemu -spice -usbredir
 
-# Georgy Yakovlev <gyakovlev@gentoo.org (2020-05-03)
-# works on ppc64
-sys-devel/llvm -gold
-
 # Jimi Huotari <chiitoo@gentoo.org> (2020-05-17)
 # Mask until 'app-arch/lxqt-archiver' is keyworded.
 lxqt-base/lxqt-meta archiver

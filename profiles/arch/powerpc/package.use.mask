@@ -122,10 +122,6 @@ net-analyzer/icinga2 mariadb
 # grub pc is not supported on powerpc
 sys-boot/grub:2 grub_platforms_pc grub_platforms_efi-32 grub_platforms_efi-64 grub_platforms_xen grub_platforms_xen-pvh
 
-# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2018-06-08)
-# sys-devel/llvmgold not yet keyworded
-sys-devel/llvm gold
-
 # Tomáš Mózes <hydrapolic@gmail.com> (2018-06-05)
 # Unkeyworded dependencies.
 app-admin/syslog-ng kafka mongodb
