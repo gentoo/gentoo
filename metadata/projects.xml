@@ -2480,7 +2480,7 @@
     <email>pr@gentoo.org</email>
     <name>Public Relations</name>
     <url>https://wiki.gentoo.org/wiki/Project:Public_Relations</url>
-    <description>The Public Relations project improves Gentoo's visibility toward the rest of the world. We maintain a presence for Gentoo on various web silos such as Facebook, Twitter, and various chat services.</description>
+    <description>The Public Relations project improves Gentoo's visibility toward the rest of the world. We maintain a presence for Gentoo on various walled garden web silos such as Facebook, Twitter, and various chat services.</description>
     <subproject ref="news@gentoo.org" inherit-members="1"/>
     <subproject ref="planet@gentoo.org"/>
     <subproject ref="www@gentoo.org"/>
@@ -2488,6 +2488,11 @@
       <email>alicef@gentoo.org</email>
       <name>Alice Ferrazzi</name>
       <role>Mastodon (Admin), Twitter (Admin), Events, Telegram (admin)</role>
+    </member>
+    <member>
+      <email>arzano@gentoo.org</email>
+      <name>Max Magorsch</name>
+      <role>Creative marketing specialist</role>
     </member>
     <member>
       <email>dabbott@gentoo.org</email>
@@ -2502,11 +2507,12 @@
     <member is-lead="1">
       <email>maffblaster@gentoo.org</email>
       <name>Matthew Marchese</name>
-      <role>Cafepress store, Facebook (admin), Twitter, Telegram (admin)</role>
+      <role>Cafepress store, Twitter, Telegram (admin)</role>
     </member>
     <member>
       <email>rich0@gentoo.org</email>
       <name>Richard Freeman</name>
+      <role>Reddit</role>
     </member>
     <member>
       <email>sping@gentoo.org</email>
