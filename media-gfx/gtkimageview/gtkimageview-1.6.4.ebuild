@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-GNOME2_LA_PUNT="yes"
+EAPI=7
 
+GNOME2_LA_PUNT="yes"
 inherit autotools gnome2
 
 DESCRIPTION="A simple image viewer widget for GTK"
@@ -19,10 +19,15 @@ IUSE="examples static-libs"
 RESTRICT="test"
 
 RDEPEND="x11-libs/gtk+:2"
-DEPEND="${RDEPEND}
-	gnome-base/gnome-common
+DEPEND="gnome-base/gnome-common"
+BDEPEND="
 	dev-util/gtk-doc-am
+	gnome-base/gnome-common
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.6.4-slibtool-undefined-references.patch
+)
 
 src_prepare() {
 	gnome2_src_prepare
@@ -47,6 +52,7 @@ src_configure() {
 
 src_install() {
 	gnome2_src_install
+
 	if use examples ; then
 		docinto examples
 		dodoc tests/ex-*.c
