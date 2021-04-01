@@ -35,7 +35,7 @@ case ${EAPI:-0} in
 	*) die "${ECLASS}: EAPI ${EAPI} not supported" ;;
 esac
 
-inherit libtool
+inherit gnuconfig libtool
 
 # @ECLASS-VARIABLE: WANT_AUTOCONF
 # @PRE_INHERIT
@@ -400,15 +400,7 @@ eautoconf() {
 
 	# Install config.guess and config.sub which are required by many macros
 	# in autoconf >=2.70.
-	local _gnuconfig
-	case ${EAPI:-0} in
-		0|1|2|3|4|5|6)
-			_gnuconfig="${EPREFIX}/usr/share/gnuconfig"
-		;;
-		*)
-			_gnuconfig="${BROOT}/usr/share/gnuconfig"
-		;;
-	esac
+	local _gnuconfig=$(gnuconfig_findnewest)
 	cp "${_gnuconfig}"/config.{guess,sub} . || die
 
 	autotools_run_tool --at-m4flags autoconf "$@"
