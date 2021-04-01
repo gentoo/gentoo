@@ -431,8 +431,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 RDEPEND="
-    acct-user/redis_exporter
-    acct-group/redis_exporter"
+	acct-user/redis_exporter
+	acct-group/redis_exporter"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
