@@ -17695,7 +17695,7 @@ sys-fs/zfs-auto-snapshot 1.2.4 1.2.4-r1 9999: ZFS Automatic Snapshot Service for
 sys-fs/zfs-kmod 0.8.6 2.0.3 2.0.4 9999: Linux ZFS kernel module for sys-fs/zfs
 sys-kernel/bliss-initramfs 8.1.0-r1 9.3.0: Boot your system's rootfs from Encrypted/OpenZFS.
 sys-kernel/bliss-kernel-bin 4.14.178 5.4.51: Precompiled Vanilla Kernel (Kernel Ready-to-Eat [KRE])
-sys-kernel/cryptodev 1.9-r1 1.11 9999: device that allows access to Linux kernel cryptographic drivers
+sys-kernel/cryptodev 1.11 1.12 9999: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 050-r2 051-r1 053 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 4.2.1-r1 9999: Gentoo automatic kernel building scripts
