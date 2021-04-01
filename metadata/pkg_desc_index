@@ -2441,7 +2441,7 @@ app-metrics/prometheus 2.13.1 2.19.1 2.21.0-r1 2.25.0 2.25.2: Prometheus monitor
 app-metrics/prometheus-bin 2.25.0 2.25.2: prometheus monitoring system and time series database
 app-metrics/pushgateway 0.9.1 0.10.0 1.0.0: Prometheus push acceptor for ephemeral and batch jobs
 app-metrics/rabbitmq_exporter 0.29.0: Rabbitmq exporter for Prometheus
-app-metrics/redis_exporter 0.20.2 1.1.1 1.2.0 1.2.1 1.20.0: Prometheus Exporter for Redis Metrics. Supports Redis 2.x, 3.x and 4.x
+app-metrics/redis_exporter 1.2.1 1.20.0: Prometheus Exporter for Redis Metrics. Supports Redis 2.x, 3.x and 4.x
 app-metrics/snmp_exporter 0.15.0: Prometheus exporter for snmp metrics
 app-metrics/unbound-telemetry 0.1.0_pre20210321-r1: Prometheus exporter for Unbound DNS resolver
 app-metrics/uwsgi_exporter 0.7.0 0.8.0: uWSGI metrics exporter for prometheus.io
