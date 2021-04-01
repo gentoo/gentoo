@@ -15,4 +15,4 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 # https://bugs.gentoo.org/773415
-RDEPEND="!dev-python/pyxdg[${PYTHON_USEDEP}]"
+RDEPEND="!dev-python/pyxdg"
