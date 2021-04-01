@@ -740,7 +740,7 @@ app-admin/newsyslog 1.1.0.81-r1: a highly configurable program for managing and 
 app-admin/ngxtop 0.0.3_pre141201 0.0.3_pre141201-r1: real-time metrics for nginx server (and others)
 app-admin/op-cli-bin 1.7.0: command line interface for the 1password password manager
 app-admin/openrc-settingsd 1.0.1-r1: System settings D-Bus service for OpenRC
-app-admin/pass 1.7.3 9999: Stores, retrieves, generates, and synchronizes passwords securely
+app-admin/pass 1.7.3 1.7.4_pre20210216 9999: Stores, retrieves, generates, and synchronizes passwords securely
 app-admin/pass-otp 1.2.0: A pass extension for managing one-time-password (OTP) tokens.
 app-admin/passwordsafe 1.12.0-r1 1.13.0: Password manager with wxGTK based frontend
 app-admin/paxtest 0.9.15-r1: PaX regression test suite
