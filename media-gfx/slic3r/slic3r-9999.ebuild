@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit git-r3 perl-module
+inherit desktop git-r3 perl-module
 
 DESCRIPTION="A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)"
 HOMEPAGE="https://slic3r.org"

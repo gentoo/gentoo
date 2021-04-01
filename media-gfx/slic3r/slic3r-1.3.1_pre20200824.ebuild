@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit desktop eutils perl-module
+inherit desktop perl-module
 
 COMMIT="92abbc42dfdd5385c1f9c3a450e2f3da835f8b8d"
 
