@@ -12,7 +12,7 @@ if [[ "${PV}" == 9999 ]]; then
 elif [[ "${PV}" == *_pre* ]]; then
 	inherit vcs-snapshot
 
-	TAGAINIJISHO_GIT_REVISION=""
+	TAGAINIJISHO_GIT_REVISION="54a7145903cadb0ebfa58c543553dc0931a36066"
 fi
 if [[ "${PV}" != 9999 ]]; then
 	TAGAINIJISHO_VERSION="${PV%_p*_p*}"
@@ -47,7 +47,7 @@ fi
 
 LICENSE="GPL-3+ public-domain"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 if [[ "${PV}" == 9999 ]]; then
 	PROPERTIES="live"
