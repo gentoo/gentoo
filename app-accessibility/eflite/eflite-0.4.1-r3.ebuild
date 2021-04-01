@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-inherit autotools eutils user
+EAPI=5
+
+inherit autotools eutils epatch user
 
 DESCRIPTION="A speech server that allows screen readers to interact with festival lite"
 HOMEPAGE="http://eflite.sourceforge.net"
@@ -17,7 +18,7 @@ DEPEND=">=app-accessibility/flite-1.4"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	sed -i 's:/etc/es.conf:/etc/eflite/es.conf:g' *
+	sed -i 's:/etc/es.conf:/etc/eflite/es.conf:g' * || die
 	epatch "${FILESDIR}"/${PN}-0.4.1-flite14.patch
 	eautoreconf
 }
