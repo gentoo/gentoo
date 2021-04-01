@@ -109,7 +109,7 @@ src_install() {
 		doexe libicu*.so.56 libQt5*.so.5
 		doins qt.conf
 
-		local dirs="Qt* generic iconengines imageformats \
+		local dirs="Qt* bearer generic iconengines imageformats \
 			platforminputcontexts platforms wayland* xcbglintegrations"
 		doins -r ${dirs}
 		find ${dirs} -type f '(' -name '*.so' -o -name '*.so.*' ')' \
