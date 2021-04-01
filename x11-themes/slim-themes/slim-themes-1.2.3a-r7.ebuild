@@ -1,12 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils
+EAPI=7
 
 DESCRIPTION="SLiM (Simple Login Manager) themes pack"
 HOMEPAGE="https://sourceforge.net/projects/slim.berlios/"
-SRC_URI="mirror://sourceforge/project/slim.berlios/slim-1.2.3-themepack1a.tar.gz
+SRC_URI="
+	mirror://sourceforge/project/slim.berlios/slim-1.2.3-themepack1a.tar.gz
 	mirror://sourceforge/project/slim.berlios/slim-gentoo-simple.tar.bz2
 	mirror://gentoo/slim-archlinux.tar.gz
 	mirror://sourceforge/project/slim.berlios/slim-debian-moreblue.tar.bz2
@@ -26,27 +26,21 @@ SRC_URI="mirror://sourceforge/project/slim.berlios/slim-1.2.3-themepack1a.tar.gz
 	http://www.xfce-look.org/CONTENT/content-files/48605-xfce-g-box-slim-0.1.tar.gz
 	http://www.konstantinhansen.de/source/slim_themes/gentoo_10_purple/gentoo_10_purple.tar.bz2 -> gentoo_10_purple-r1.tar.bz2
 	http://www.konstantinhansen.de/source/slim_themes/gentoo_10_blue/gentoo_10_blue.tar.bz2 -> gentoo_10_blue-r1.tar.bz2
-	http://www.konstantinhansen.de/source/slim_themes/gentoo_10_dark/gentoo_10_dark.tar.bz2 -> gentoo_10_dark-r1.tar.bz2"
+	http://www.konstantinhansen.de/source/slim_themes/gentoo_10_dark/gentoo_10_dark.tar.bz2 -> gentoo_10_dark-r1.tar.bz2
+"
+S="${WORKDIR}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 arm ~arm64 ~mips ppc ppc64 sparc x86"
-IUSE=""
 
 RDEPEND="x11-misc/slim"
-DEPEND=""
 
 RESTRICT="strip binchecks"
 
-S="${WORKDIR}"
-
-src_prepare() {
-	epatch "${FILESDIR}/slim-theme-flat.diff"
-}
-
-src_compile() {
-	:
-}
+PATCHES=(
+	"${FILESDIR}/slim-theme-flat.diff"
+)
 
 src_install() {
 	for i in capernoited flower2 gentoo isolated lotus-{sage,midnight} \
