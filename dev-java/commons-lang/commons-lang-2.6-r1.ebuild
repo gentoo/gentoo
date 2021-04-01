@@ -2,7 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
+
 JAVA_PKG_IUSE="doc source test"
+MAVEN_ID="commons-lang:commons-lang:2.6"
 
 inherit java-pkg-2 java-ant-2
 
