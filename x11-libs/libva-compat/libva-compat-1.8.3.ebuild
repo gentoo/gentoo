@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -68,5 +68,5 @@ multilib_src_configure() {
 
 multilib_src_install() {
 	emake -C va DESTDIR="${D}" install-libLTLIBRARIES
-	rm -v "${ED}"/usr/$(get_libdir)/*.{la,so} || die
+	rm -vf "${ED}"/usr/$(get_libdir)/*.{la,so} || die
 }
