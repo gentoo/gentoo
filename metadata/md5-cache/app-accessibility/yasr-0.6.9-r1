@@ -1,7 +1,7 @@
+BDEPEND=nls? ( sys-devel/gettext ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure postinst prepare
-DEPEND=nls? ( sys-devel/gettext ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=General-purpose console screen reader
-EAPI=6
+EAPI=7
 HOMEPAGE=http://yasr.sourceforge.net/
 INHERIT=autotools
 IUSE=nls
@@ -10,4 +10,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/yasr/yasr-0.6.9.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba
-_md5_=2815edeec3cc0f478d042f7e3c83da3e
+_md5_=863ad6ea3c59592366f368536de984fb
