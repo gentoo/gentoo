@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/gspell"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/2" # subslot = libgspell-1 soname version
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc x86"
 
 IUSE="+introspection +vala"
 REQUIRED_USE="vala? ( introspection )"
