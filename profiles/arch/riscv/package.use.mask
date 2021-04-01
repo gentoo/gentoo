@@ -149,6 +149,6 @@ sys-devel/gettext cvs
 sys-devel/llvm doc
 sys-fs/squashfs-tools lzma
 sys-libs/libcap-ng python
-sys-process/audit gssapi python
+sys-process/audit gssapi
 x11-base/xorg-server  unwind
 x11-libs/libvdpau doc
