@@ -1941,7 +1941,7 @@ app-emacs/edit-list 0.3: Edit a single list
 app-emacs/edit-server 1.15: Service edit requests from a web browser for editing of textareas
 app-emacs/editorconfig-emacs 0.7.8-r1: EditorConfig plugin for emacs
 app-emacs/elscreen 20180321: Frame configuration management for GNU Emacs modelled after GNU Screen
-app-emacs/emacs-common 1.6-r4 1.8: Common files needed by all GNU Emacs versions
+app-emacs/emacs-common 1.8: Common files needed by all GNU Emacs versions
 app-emacs/emacs-daemon 0.22: Gentoo support for Emacs running as a server in the background
 app-emacs/emacs-jabber 0.8.92: A Jabber client for Emacs
 app-emacs/emacs-w3m 1.4.625_pre20180518 1.4.632_pre20181112: emacs-w3m is an interface program of w3m on Emacs
@@ -4863,7 +4863,7 @@ dev-java/htmlparser-org 1.6: Java library used to parse HTML (from htmlparser.or
 dev-java/httpcomponents-client 4.5: A low level toolset of Java components focused on HTTP and associated protocols
 dev-java/httpcomponents-core 4.4.1-r1: A low level toolset of Java components focused on HTTP and associated protocols
 dev-java/ical4j 1.0.5: a Java library for handling iCalendar data streams
-dev-java/icedtea 3.17.0 3.17.1: A harness to build OpenJDK using Free Software build tools and dependencies
+dev-java/icedtea 3.17.0 3.17.1 3.18.0: A harness to build OpenJDK using Free Software build tools and dependencies
 dev-java/icedtea-bin 3.16.0: A Gentoo-made binary build of the IcedTea JDK
 dev-java/icedtea-sound 1.0.1: Plugins for javax.sound
 dev-java/icedtea-web 1.6.1-r1 1.6.2 1.8.4-r1: FOSS Java browser plugin and Web Start implementation
