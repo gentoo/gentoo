@@ -6,7 +6,7 @@ EAPI=7
 LUA_COMPAT=( lua5-3 )
 LUA_REQ_USE="deprecated"
 
-inherit autotools desktop flag-o-matic lua-single toolchain-funcs
+inherit autotools lua-single toolchain-funcs
 
 DESCRIPTION="Network exploration tool and security / port scanner"
 HOMEPAGE="https://nmap.org/"
