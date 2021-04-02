@@ -9,7 +9,7 @@ if [[ ${PV} = 9999* ]]; then
 	EXPERIMENTAL="true"
 fi
 
-inherit meson readme.gentoo-r1 toolchain-funcs xdg-utils $GIT_ECLASS
+inherit meson readme.gentoo-r1 toolchain-funcs xdg-utils ${GIT_ECLASS}
 
 DESCRIPTION="Wayland reference compositor"
 HOMEPAGE="https://wayland.freedesktop.org/ https://gitlab.freedesktop.org/wayland/weston"
