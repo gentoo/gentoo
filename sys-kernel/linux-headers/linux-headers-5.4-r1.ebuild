@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -33,14 +33,14 @@ src_prepare() {
 	default
 }
 
+src_test() {
+	emake ARCH=$(tc-arch-kernel) headers_check
+}
+
 src_install() {
 	kernel-2_src_install
 
 	# hrm, build system sucks
 	find "${ED}" '(' -name '.install' -o -name '*.cmd' ')' -delete
 	find "${ED}" -depth -type d -delete 2>/dev/null
-}
-
-src_test() {
-	emake ARCH=$(tc-arch-kernel) headers_check
 }
