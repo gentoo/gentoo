@@ -24,35 +24,10 @@ www-misc/profile-sync-daemon
 # systemd has no support in the SELinux policy at the moment.
 # Please see: https://wiki.gentoo.org/wiki/SELinux/FAQ#Can_I_use_SELinux_with_systemd.3F
 app-admin/systemdgenie
-app-eselect/eselect-gnome-shell-extensions
 app-office/wps-office
 sys-apps/systemd
 app-admin/calamares
 dev-python/python-systemd
-gnome-base/gdm
-gnome-base/gnome
-gnome-base/gnome-applets
-gnome-base/gnome-extra-apps
-gnome-base/gnome-flashback
-gnome-base/gnome-light
-gnome-base/gnome-panel
-gnome-base/gnome-shell
-gnome-extra/chrome-gnome-shell
-gnome-extra/gnome-logs
-gnome-extra/gnome-shell-extensions
-gnome-extra/gnome-shell-frippery
-gnome-extra/gnome-shell-extensions-topicons-plus
-gnome-extra/gnome-shell-extension-appindicator
-gnome-extra/gnome-shell-extension-applications-overview-tooltip
-gnome-extra/gnome-shell-extension-bing-wallpaper
-gnome-extra/gnome-shell-extension-bluetooth-quick-connect
-gnome-extra/gnome-shell-extension-control-blur-effect-on-lock-screen
-gnome-extra/gnome-shell-extension-dash-to-panel
-gnome-extra/gnome-shell-extension-desktop-icons
-gnome-extra/gnome-shell-extension-desktop-icons-ng
-gnome-extra/gnome-shell-extension-gsconnect
-gnome-extra/gnome-shell-extension-pop-shell
-gnome-extra/gnome-tweaks
 x11-themes/zukitwo-shell
 gnome-extra/office-runner
 gnome-extra/pch-session
