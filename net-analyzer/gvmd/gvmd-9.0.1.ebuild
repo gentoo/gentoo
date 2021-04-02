@@ -51,8 +51,8 @@ PATCHES=(
 src_prepare() {
 	cmake_src_prepare
 	# QA-Fix | Use correct FHS/Gentoo policy paths for 9.0.0
-	sed -i -e "s*share/doc/gvm/html/*share/doc/gvmd-${PV}/html/*g" "$S"/doc/CMakeLists.txt || die
-	sed -i -e "s*/doc/gvm/*/doc/gvmd-${PV}/*g" "$S"/CMakeLists.txt || die
+	sed -i -e "s*share/doc/gvm/html/*share/doc/gvmd-${PV}/html/*g" "${S}"/doc/CMakeLists.txt || die
+	sed -i -e "s*/doc/gvm/*/doc/gvmd-${PV}/*g" "${S}"/CMakeLists.txt || die
 	# QA-Fix | Remove !CLANG Doxygen warnings for 9.0.0
 	if use extras; then
 		if ! tc-is-clang; then
