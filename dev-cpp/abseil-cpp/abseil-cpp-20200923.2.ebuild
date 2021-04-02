@@ -50,6 +50,7 @@ src_prepare() {
 		absl/copts/copts.py || die
 
 	# now generate cmake files
+	python_fix_shebang absl/copts/generate_copts.py
 	absl/copts/generate_copts.py || die
 
 	sed -i 's/-Werror//g' \
