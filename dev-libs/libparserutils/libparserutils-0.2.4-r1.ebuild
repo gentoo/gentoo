@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit flag-o-matic toolchain-funcs
+inherit flag-o-matic
 
-DESCRIPTION="library for building efficient parsers, written in C"
+DESCRIPTION="Library for building efficient parsers, written in C"
 HOMEPAGE="http://www.netsurf-browser.org/projects/libparserutils/"
 SRC_URI="https://download.netsurf-browser.org/libs/releases/${P}-src.tar.gz"
 
@@ -15,9 +15,10 @@ KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 x86"
 IUSE="iconv test"
 RESTRICT="!test? ( test )"
 
-DEPEND="
+BDEPEND="
 	>=dev-util/netsurf-buildsystem-1.7-r1
-	test? (	dev-lang/perl )"
+	test? (	dev-lang/perl )
+"
 
 DOCS=( README docs/Todo )
 
