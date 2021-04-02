@@ -14845,7 +14845,7 @@ net-irc/atheme-services 7.2.11: A portable and secure set of open-source and mod
 net-irc/bnc 2.9.4-r1: BNC (BouNCe) is used as a gateway to an IRC Server
 net-irc/cgiirc 0.5.10: A perl/CGI program to use IRC from a web browser
 net-irc/dccserver 0.5-r1: linux implementation of the mirc dccserver command
-net-irc/eggdrop 1.8.3 1.8.4 1.8.4-r1: An IRC bot extensible with C or TCL
+net-irc/eggdrop 1.8.4-r1 1.9.0: An IRC bot extensible with C or TCL
 net-irc/emech 3.0.99_p3: UNIX compatible IRC bot programmed in the C language
 net-irc/epic5 2.0.1: Epic5 IRC Client
 net-irc/hexchat 2.14.3-r100 9999: Graphical IRC client based on XChat
