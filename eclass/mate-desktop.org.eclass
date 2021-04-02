@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: mate-desktop.org.eclass
@@ -35,13 +35,13 @@ inherit versionator
 # @DESCRIPTION:
 # Name of the package as hosted on mate-desktop.org.
 # Leave unset if package name matches PN.
-: ${MATE_DESKTOP_ORG_PN:=$PN}
+: ${MATE_DESKTOP_ORG_PN:=${PN}}
 
 # @ECLASS-VARIABLE: MATE_DESKTOP_ORG_PV
 # @DESCRIPTION:
 # Package version string as listed on mate-desktop.org.
 # Leave unset if package version string matches PV.
-: ${MATE_DESKTOP_ORG_PV:=$PV}
+: ${MATE_DESKTOP_ORG_PV:=${PV}}
 
 # @ECLASS-VARIABLE: MATE_BRANCH
 # @DESCRIPTION:
