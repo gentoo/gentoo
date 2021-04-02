@@ -3166,7 +3166,7 @@ app-text/tofrodos 1.7.13: Utility that converts ASCII files between the MSDOS an
 app-text/tokyodystopia 0.9.15: A fulltext search engine for Tokyo Cabinet
 app-text/trang 20151127: Multi-format schema converter based on RELAX NG
 app-text/tree 1.8.0: Lists directories recursively, and produces an indented listing of files
-app-text/ttf2pk2 2.0_p20200406: Freetype 2 based TrueType font to TeX's PK format converter
+app-text/ttf2pk2 2.0_p20200406 2.0_p20210325: Freetype 2 based TrueType font to TeX's PK format converter
 app-text/ttf2pt1 3.4.4-r1: True Type Font to Postscript Type 1 Converter
 app-text/txt2man 1.7.1: Scripts to convert regular ASCII text to man pages
 app-text/txt2pdbdoc 1.4.4: Text/HTML to Doc file converter for the Palm Pilot
