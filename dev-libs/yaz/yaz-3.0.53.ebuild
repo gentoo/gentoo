@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils autotools
+
+inherit autotools
 
 DESCRIPTION="C/C++ toolkit for Z39.50v3 clients and servers"
 HOMEPAGE="http://www.indexdata.dk/yaz"
