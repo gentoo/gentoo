@@ -4,13 +4,14 @@
 EAPI=7
 
 JAVA_PKG_IUSE="doc source"
-MAVEN_ID="org.brotli:dec:0.1.2"
+MAVEN_ID="org.brotli:dec:${PV}"
 
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Brotli decompressor"
 HOMEPAGE="https://github.com/google/brotli"
-SRC_URI="https://repo1.maven.org/maven2/org/brotli/dec/0.1.2/dec-0.1.2-sources.jar -> ${P}-sources.jar"
+SRC_URI="https://repo1.maven.org/maven2/org/brotli/dec/${PV}/dec-${PV}-sources.jar -> ${P}-sources.jar"
+
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
