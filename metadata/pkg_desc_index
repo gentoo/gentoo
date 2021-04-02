@@ -8092,7 +8092,7 @@ dev-python/autobahn 20.7.1 20.12.2 20.12.3 21.1.1 21.2.1 21.2.2 21.3.1: WebSocke
 dev-python/automat 20.2.0: Self-service finite-state machines for the programmer on the go
 dev-python/automaton 1.12.1 2.2.0: Friendly state machines for python.
 dev-python/autopep8 1.5.5 1.5.6 9999: Automatically formats Python code to conform to the PEP 8 style guide
-dev-python/autoprop 1.0.2 2.0.0 2.1.0: Infer properties from accessor methods
+dev-python/autoprop 1.0.2 2.0.0 2.1.0 2.1.1: Infer properties from accessor methods
 dev-python/aws-sam-translator 1.34.0 1.35.0: A library that transform SAM templates into AWS CloudFormation templates
 dev-python/aws-xray-sdk-python 2.6.0 2.7.0: AWS X-Ray SDK for Python
 dev-python/awscli 1.19.3: Universal Command Line Environment for AWS
@@ -8127,8 +8127,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7 1.0.8: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r4: Amazon Web Services API
-dev-python/boto3 1.17.17 1.17.22 1.17.27 1.17.33 1.17.39 1.17.40 1.17.41 1.17.42 9999: The AWS SDK for Python
-dev-python/botocore 1.20.17 1.20.22 1.20.27 1.20.33 1.20.39 1.20.40 1.20.41 1.20.42 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.17.17 1.17.22 1.17.27 1.17.33 1.17.39 1.17.40 1.17.41 1.17.42 1.17.43 9999: The AWS SDK for Python
+dev-python/botocore 1.20.17 1.20.22 1.20.27 1.20.33 1.20.39 1.20.40 1.20.41 1.20.42 1.20.43 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.21: Syntax highlighting and autocompletion for the Python interpreter
@@ -8230,7 +8230,7 @@ dev-python/dbusmock 0.22.0 0.23.0: Easily create mock objects on D-Bus for softw
 dev-python/dbutils 1.3 2.0: Database connections for multi-threaded environments
 dev-python/ddt 1.2.2 1.4.2: A library to multiply test cases
 dev-python/debtcollector 2.2.0: Python deprecation patterns and strategies that collect technical debt
-dev-python/decorator 4.4.2-r1: Simplifies the usage of decorators for the average programmer
+dev-python/decorator 4.4.2-r1 5.0.0: Simplifies the usage of decorators for the average programmer
 dev-python/deepmerge 0.1.1_p1 0.2.1: Tools to handle merging of nested data structures in python
 dev-python/defcon 0.6.0-r1 0.7.2 0.8.0 0.8.1: A set of UFO based objects for use in font editing applications
 dev-python/defusedxml 0.7.0_rc1 0.7.0 0.7.1: XML bomb protection for Python stdlib modules, an xml serialiser
@@ -8370,7 +8370,7 @@ dev-python/flit_core 2.1.0 3.2.0: Simplified packaging of Python modules (core m
 dev-python/flufl-bounce 3.0.1: Email bounce detectors.
 dev-python/flufl-i18n 2.0.2 3.1.4 3.1.5: A high level API for Python internationalization
 dev-python/flufl-lock 5.0.1 5.0.4 5.0.5: NFS-safe file locking with timeouts for POSIX systems
-dev-python/fonttools 4.21.1: Library for manipulating TrueType, OpenType, AFM and Type1 fonts
+dev-python/fonttools 4.21.1 4.22.0: Library for manipulating TrueType, OpenType, AFM and Type1 fonts
 dev-python/fqdn 1.5.0-r1 1.5.1: RFC-compliant FQDN validation and manipulation for Python
 dev-python/freezegun 1.1.0: Let your Python tests travel through time
 dev-python/frozen-flask 0.15: Freezes a Flask application into a set of static files
@@ -8446,7 +8446,7 @@ dev-python/hvac 0.10.8: hashicorp vault client in python
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 21.0.0: A featureful, correct URL for Python
-dev-python/hypothesis 6.3.4 6.6.0 6.8.1 6.8.3: A library for property based testing
+dev-python/hypothesis 6.3.4 6.6.0 6.8.1 6.8.3 6.8.4: A library for property based testing
 dev-python/icalendar 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/idna 2.10-r1 3.0 3.1: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0-r1: Patch ssl.match_hostname for Unicode(idna) domains support
@@ -8647,7 +8647,7 @@ dev-python/nautilus-python 1.2.3-r1: Python bindings for the Nautilus file manag
 dev-python/nbclient 0.5.3: A client library for executing Jupyter notebooks
 dev-python/nbconvert 6.0.7: Converting Jupyter Notebooks
 dev-python/nbdime 2.0.0-r1: Diff and merge of Jupyter Notebooks
-dev-python/nbformat 5.1.2-r1: Reference implementation of the Jupyter Notebook format
+dev-python/nbformat 5.1.2-r1 5.1.3: Reference implementation of the Jupyter Notebook format
 dev-python/nbsphinx 0.7.1-r1 0.8.2: Jupyter Notebook Tools for Sphinx
 dev-python/nbval 0.9.6: A py.test plugin to validate Jupyter notebooks
 dev-python/ndg-httpsclient 0.5.1: Provides enhanced HTTPS support for httplib and urllib2 using PyOpenSSL
@@ -9370,7 +9370,7 @@ dev-python/tqdm 4.58.0 4.59.0: Add a progress meter to your loops in a second
 dev-python/traceback2 1.4.0-r1: Backports of the traceback module
 dev-python/traitlets 4.3.3 5.0.5: A configuration system for Python applications
 dev-python/transitions 0.8.7: A lightweight, object-oriented state machine implementation in Python
-dev-python/translate-toolkit 3.3.2 3.3.3: Toolkit to convert between many translation formats
+dev-python/translate-toolkit 3.3.2 3.3.3 3.3.4: Toolkit to convert between many translation formats
 dev-python/tree-sitter 0.2.1 0.2.2 0.19.0: Python bindings to the Tree-sitter parsing library
 dev-python/treq 20.9.0 21.1.0: A requests-like API built on top of twisted.web's Agent
 dev-python/trustme 0.7.0: #1 quality TLS certs while you wait, for the discerning tester
@@ -18162,7 +18162,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.7: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 89.0.4389.90 89.0.4389.114 90.0.4430.51 91.0.4455.2: Open-source version of Google Chrome web browser
+www-client/chromium 89.0.4389.114 90.0.4430.51 91.0.4455.2: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5-r3 3.1_pre20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.13.5-r100 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.34.4 3.36.4: GNOME webbrowser based on Webkit
