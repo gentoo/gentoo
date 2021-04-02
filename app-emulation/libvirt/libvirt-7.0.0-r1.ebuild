@@ -296,9 +296,9 @@ src_install() {
 	rm -rf "${D}"/run || die
 
 	# Fix up doc paths for revisions
-	if [ $PV != $PVR ]; then
-		mv "${D}"/usr/share/doc/${PN}-${PV}/* "${D}"/usr/share/doc/${PF} || die
-		rmdir "${D}"/usr/share/doc/${PN}-${PV} || die
+	if [ ${PV} != ${PVR} ]; then
+		mv "${ED}"/usr/share/doc/${PN}-${PV}/* "${ED}"/usr/share/doc/${PF} || die
+		rmdir "${ED}"/usr/share/doc/${PN}-${PV} || die
 	fi
 
 	newbashcomp "${S}/tools/bash-completion/vsh" virsh
@@ -325,7 +325,7 @@ src_install() {
 pkg_preinst() {
 	# we only ever want to generate this once
 	if [[ -e "${ROOT}"/etc/libvirt/qemu/networks/default.xml ]]; then
-		rm -rf "${D}"/etc/libvirt/qemu/networks/default.xml || die
+		rm -rf "${ED}"/etc/libvirt/qemu/networks/default.xml || die
 	fi
 }
 
