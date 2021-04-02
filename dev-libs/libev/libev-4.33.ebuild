@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools eutils multilib-minimal
+inherit autotools multilib-minimal
 
 DESCRIPTION="A high-performance event loop/event model with lots of feature"
 HOMEPAGE="http://software.schmorp.de/pkg/libev.html"
@@ -36,7 +36,8 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	if ! use static-libs; then
-		find "${D}" -name '*.la' -type f -delete || die
+		find "${ED}" -name '*.la' -type f -delete || die
 	fi
+
 	einstalldocs
 }
