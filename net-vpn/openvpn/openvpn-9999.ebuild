@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -65,7 +65,7 @@ src_configure() {
 	SYSTEMD_UNIT_DIR=$(systemd_get_systemunitdir) \
 	TMPFILES_DIR="/usr/lib/tmpfiles.d" \
 	econf \
-		--with-plugindir="${EPREFIX}/usr/$(get_libdir)/$PN" \
+		--with-plugindir="${EPREFIX}/usr/$(get_libdir)/${PN}" \
 		$(use_enable inotify async-push) \
 		$(use_enable ssl crypto) \
 		$(use_with ssl crypto-library $(usex mbedtls mbedtls openssl)) \
@@ -88,7 +88,9 @@ src_test() {
 
 src_install() {
 	default
-	find "${ED}/usr" -name '*.la' -delete
+
+	find "${ED}/usr" -name '*.la' -delete || die
+
 	# install documentation
 	dodoc AUTHORS ChangeLog PORTS README README.IPv6
 
