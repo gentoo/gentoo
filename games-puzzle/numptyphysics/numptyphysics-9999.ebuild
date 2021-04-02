@@ -44,7 +44,7 @@ RDEPEND="
 	media-libs/sdl2-ttf
 	virtual/opengl
 "
-DEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
