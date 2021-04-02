@@ -1,10 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils savedconfig toolchain-funcs user
+EAPI=7
 
-DESCRIPTION="a port scan detection tool"
+inherit savedconfig toolchain-funcs user
+
+DESCRIPTION="A port scan detection tool"
 SRC_URI="http://www.openwall.com/scanlogd/${P}.tar.gz"
 HOMEPAGE="http://www.openwall.com/scanlogd/"
 
@@ -20,8 +21,12 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-gentoo.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-gentoo.patch
+	default
 	restore_config params.h
 	tc-export CC
 }
