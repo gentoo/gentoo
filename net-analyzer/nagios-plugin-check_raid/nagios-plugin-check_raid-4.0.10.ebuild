@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ inherit eutils perl-module
 DESCRIPTION="Nagios/Icinga plugin to check current server's RAID status"
 HOMEPAGE="https://github.com/glensc/nagios-plugin-check_raid"
 #COMMIT=""
-MY_PV="${COMMIT:-$PV}"
+MY_PV="${COMMIT:-${PV}}"
 MY_P="${PN}-${MY_PV}"
 SRC_URI="https://github.com/glensc/nagios-plugin-check_raid/archive/${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
 
