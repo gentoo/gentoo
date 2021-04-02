@@ -36,9 +36,11 @@
 # TexLive 2021 mask
 # Only unmask these versions if you know what you are doing
 # DO NOT report bugs until fully unmasked (work in progress)
+~app-text/dvipsk-2021.1_p20210325
 ~app-text/ps2pkm-1.8_p20210325
 ~dev-libs/kpathsea-6.3.3_p20210325
 ~dev-libs/ptexenc-1.3.9_p20210325
+~dev-tex/bibtexu-3.71_p20210325
 
 # Michał Górny <mgorny@gentoo.org> (2021-03-31)
 # New versions remove PORTAGE_CONFIGROOT support, breaking a lot
