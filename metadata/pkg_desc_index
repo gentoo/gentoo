@@ -5454,7 +5454,7 @@ dev-libs/kdiagram 2.8.0: Powerful libraries (KChart, KGantt) for creating busine
 dev-libs/keybinder 0.3.1-r201 0.3.2-r300: A library for registering global keyboard shortcuts
 dev-libs/keystone 0.9.1-r1 9999: assembly/assembler framework + bindings
 dev-libs/klibc 2.0.4-r3: A minimal libc subset for use with initramfs
-dev-libs/kpathsea 6.3.2_p20200406: Path searching library for TeX-related files
+dev-libs/kpathsea 6.3.2_p20200406 6.3.3_p20210325: Path searching library for TeX-related files
 dev-libs/kpeoplevcard 0.1: Library to expose vcards to KPeople
 dev-libs/kproperty 3.2.0: Property editing framework with editor widget similar to Qt Designer
 dev-libs/kqoauth 0.98-r3: Library for Qt that implements the OAuth 1.0 authentication specification
