@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,7 +25,7 @@ src_configure() {
 
 src_install() {
 	default
-	# remove cruft from non-fhs complient
+	# remove cruft from non-fhs compliant
 	rm -r "${ED}"usr/share/pal || die
 	rm -r "${ED}"usr/{docs,manifests,news} || die
 	use static-libs || prune_libtool_files --all
