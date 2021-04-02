@@ -51,7 +51,9 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_enable nls)
+	econf \
+		--without-included-gettext \
+		$(use_enable nls)
 }
 
 src_install() {
