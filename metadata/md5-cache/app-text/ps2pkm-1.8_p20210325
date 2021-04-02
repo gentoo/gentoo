@@ -1,0 +1,12 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=configure
+DEPEND=>=dev-libs/kpathsea-6.2.1
+DESCRIPTION=Tool that converts a PostScript type1 font into a corresponding TeX PK font
+EAPI=7
+HOMEPAGE=http://tug.org/texlive/
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris
+LICENSE=MIT
+RDEPEND=>=dev-libs/kpathsea-6.2.1
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~zlogene/distfiles/texlive/texlive-20210325-source.tar.xz
+_md5_=5ab600b50918adf0e4f8c8055fbd490d

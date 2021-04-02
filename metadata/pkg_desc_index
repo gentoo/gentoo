@@ -3112,7 +3112,7 @@ app-text/podofo 0.9.6_p20190928-r100: PoDoFo is a C++ library to work with the P
 app-text/poppler 20.11.0 21.02.0 21.03.0 9999: PDF rendering library based on the xpdf-3.0 code base
 app-text/poppler-data 0.4.10: Data files for poppler to support uncommon encodings without xpdfrc
 app-text/ps2eps 1.68: Generate Encapsulated Postscript Format files from one-page Postscript documents
-app-text/ps2pkm 1.8_p20200406: Tool that converts a PostScript type1 font into a corresponding TeX PK font
+app-text/ps2pkm 1.8_p20200406 1.8_p20210325: Tool that converts a PostScript type1 font into a corresponding TeX PK font
 app-text/psiconv 0.8.3-r1: An interpreter for Psion 5(MX) file formats
 app-text/pspdftool 0.03: Tool for prepress preparation of PDF and PostScript documents
 app-text/pspresent 1.3-r1: A tool to display full-screen PostScript presentations
