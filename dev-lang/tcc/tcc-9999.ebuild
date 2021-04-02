@@ -6,7 +6,7 @@ EAPI="6"
 DESCRIPTION="A very small C compiler for ix86/amd64"
 HOMEPAGE="https://bellard.org/tcc/"
 
-if [[ $PV == *9999* ]]; then
+if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://repo.or.cz/r/tinycc.git"
 	SRC_URI=""
 	scm_eclass=git-r3
