@@ -13,11 +13,11 @@ if [[ ${PV} = *9999 ]] ; then
 	EGIT_BRANCH=master
 	EGIT_REPO_URI="https://github.com/intel/libva"
 else
-	SRC_URI="https://github.com/intel/libva/releases/download/${PV}/${P}.tar.bz2"
+	# SRC_URI="https://github.com/intel/libva/releases/download/${PV}/${P}.tar.bz2"
 	# The upstream provides periodically tarball with pre-built 'configure'.
 	# To simplify updates, portage use tarballs without pre-build 'configure'
 	# which are always available.
-	# SRC_URI="https://github.com/intel/libva/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/intel/libva/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 fi
 
