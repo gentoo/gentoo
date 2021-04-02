@@ -4,7 +4,7 @@
 EAPI="7"
 
 [[ ${PV} == *9999 ]] && SCM="git-r3"
-inherit toolchain-funcs flag-o-matic systemd linux-info $SCM
+inherit toolchain-funcs flag-o-matic systemd linux-info ${SCM}
 
 MY_P="${PN}-${PV/_beta/-dev}"
 
