@@ -7,7 +7,7 @@ inherit desktop qmake-utils xdg
 
 DESCRIPTION="Convert an image file showing a graph or map into numbers"
 HOMEPAGE="https://markummitchell.github.io/engauge-digitizer/"
-SRC_URI="https://github.com/markummitchell/engauge-digitizer/archive/v$PV.tar.gz -> engauge-digitizer-$PV.tar.gz"
+SRC_URI="https://github.com/markummitchell/engauge-digitizer/archive/v${PV}.tar.gz -> engauge-digitizer-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
