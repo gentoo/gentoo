@@ -67,7 +67,6 @@ src_configure() {
 	local mycmakeargs=(
 		-DABSL_ENABLE_INSTALL=TRUE
 		-DABSL_LOCAL_GOOGLETEST_DIR="${WORKDIR}/googletest-${GTEST_COMMIT}"
-		-DABSL_RUN_TESTS=$(usex test)
 		$(usex cxx17 -DCMAKE_CXX_STANDARD=17 '') # it has to be a useflag for some consumers
 		$(usex test -DBUILD_TESTING=ON '') #intentional usex
 	)
