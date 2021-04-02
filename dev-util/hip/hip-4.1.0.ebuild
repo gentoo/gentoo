@@ -85,7 +85,6 @@ src_configure() {
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/hip"
 		-DBUILD_HIPIFY_CLANG=OFF
 		-DHIP_PLATFORM=rocclr
-		-DHIP_RUNTIME=ROCclr
 		-DHIP_COMPILER=clang
 		-DROCM_PATH="${EPREFIX}/usr"
 		-DHSA_PATH="${EPREFIX}/usr"
