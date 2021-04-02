@@ -16566,7 +16566,7 @@ sci-mathematics/lrcalc 1.2 2.0: Littlewood-Richardson Calculator
 sci-mathematics/mathematica 10.3.1-r1 12.1.0 12.1.1-r1: Wolfram Mathematica
 sci-mathematics/mathmod 4.1-r1: Plot parametric and implicit surfaces
 sci-mathematics/mathomatic 16.0.5: Automatic algebraic manipulator
-sci-mathematics/maxima 5.42.1 5.44.0-r4 5.44.0-r7: Free computer algebra environment based on Macsyma
+sci-mathematics/maxima 5.42.1 5.44.0-r4 5.44.0-r8: Free computer algebra environment based on Macsyma
 sci-mathematics/minisat 2.2.0_p20130925-r1: Small yet efficient SAT solver with reference paper
 sci-mathematics/msieve 1.53-r1: A C library implementing a suite of algorithms to factor large integers
 sci-mathematics/nauty 2.6.7: Computing automorphism groups of graphs and digraphs

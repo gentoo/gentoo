@@ -1,0 +1,17 @@
+BDEPEND=python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) clisp? ( dev-lisp/clisp ) clozurecl? ( dev-lisp/clozurecl app-misc/rlwrap ) clozurecl64? ( dev-lisp/clozurecl app-misc/rlwrap ) cmucl? ( dev-lisp/cmucl app-misc/rlwrap ) ecls? ( dev-lisp/ecls app-misc/rlwrap ) gcl? ( dev-lisp/gcl[ansi,readline] ) sbcl? ( dev-lisp/sbcl app-misc/rlwrap ) test? ( sci-visualization/gnuplot ) sys-apps/texinfo >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=compile configure install postinst postrm prepare setup
+DEPEND=clisp? ( dev-lisp/clisp ) clozurecl? ( dev-lisp/clozurecl app-misc/rlwrap ) clozurecl64? ( dev-lisp/clozurecl app-misc/rlwrap ) cmucl? ( dev-lisp/cmucl app-misc/rlwrap ) ecls? ( dev-lisp/ecls app-misc/rlwrap ) gcl? ( dev-lisp/gcl[ansi,readline] ) sbcl? ( dev-lisp/sbcl app-misc/rlwrap ) emacs? ( >=app-editors/emacs-23.1:* ) gui? ( dev-lang/tk:0 )
+DESCRIPTION=Free computer algebra environment based on Macsyma
+EAPI=7
+HOMEPAGE=http://maxima.sourceforge.net/
+INHERIT=autotools elisp-common flag-o-matic python-single-r1 xdg-utils
+IUSE=clisp clozurecl clozurecl64 cmucl ecls emacs gcl gui nls +sbcl unicode vtk X test l10n_de l10n_es l10n_pt l10n_pt-BR python_single_target_python3_7 python_single_target_python3_8
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2 GPL-2+
+RDEPEND=clisp? ( dev-lisp/clisp ) clozurecl? ( dev-lisp/clozurecl app-misc/rlwrap ) clozurecl64? ( dev-lisp/clozurecl app-misc/rlwrap ) cmucl? ( dev-lisp/cmucl app-misc/rlwrap ) ecls? ( dev-lisp/ecls app-misc/rlwrap ) gcl? ( dev-lisp/gcl[ansi,readline] ) sbcl? ( dev-lisp/sbcl app-misc/rlwrap ) emacs? ( >=app-editors/emacs-23.1:* ) gui? ( dev-lang/tk:0 ) X? ( x11-misc/xdg-utils sci-visualization/gnuplot[gd] vtk? ( python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) sci-libs/vtk[python,rendering,python_single_target_python3_7(-)?,python_single_target_python3_8(-)?] ) ) emacs? ( virtual/latex-base app-emacs/auctex app-text/ghostscript-gpl dev-texlive/texlive-latexrecommended )
+REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_8 ) || ( clisp clozurecl clozurecl64 cmucl ecls gcl sbcl ) gui? ( X )
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://sourceforge/maxima/maxima-5.44.0.tar.gz
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	elisp-common	36f97076abd90f943a34f8bcd58b5bcc	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-single-r1	c7de0087e87a282f2faec351822e097c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=598601282f0c52b99f92992077c65440
