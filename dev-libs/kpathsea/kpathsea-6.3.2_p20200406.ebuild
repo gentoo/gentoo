@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit texlive-common libtool prefix
+inherit texlive-common libtool prefix tmpfiles
 
 TEXMFD_VERSION="10"
 
@@ -68,8 +68,7 @@ src_install() {
 
 	# The default configuration expects it to be world writable, bug #266680
 	# People can still change it with texconfig though.
-	dodir /var/cache/fonts
-	fperms 1777 /var/cache/fonts
+	dotmpfiles "${FILESDIR}"/kpathsea.conf
 
 	# Take care of fmtutil.cnf and texmf.cnf
 	dodir /etc/texmf/{fmtutil.d,texmf.d}
@@ -98,6 +97,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	tmpfiles_process "${FILESDIR}"/kpathsea.conf
+
 	etexmf-update
 }
 
