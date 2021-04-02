@@ -20,7 +20,7 @@ DEPEND="
 	>=media-libs/hamlib-4:="
 RDEPEND="${DEPEND}"
 
-PATCHES=( "$FILESDIR"/grig-0.8.1-hamlib4.patch )
+PATCHES=( "${FILESDIR}"/grig-0.8.1-hamlib4.patch )
 
 src_configure() {
 	econf --enable-hardware
