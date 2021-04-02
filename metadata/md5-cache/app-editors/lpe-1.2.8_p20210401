@@ -12,4 +12,4 @@ RDEPEND=sys-libs/ncurses:0= sys-libs/slang
 SLOT=0
 SRC_URI=https://github.com/AdamMajer/lpe/archive/203c88eae66c6a3bffd050286af6d9aacf85816e.tar.gz -> lpe-1.2.8_p20210401.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba
-_md5_=3a0ca8c97a67108ad65366a2238f3ba9
+_md5_=c49328f5e9b80b096a22f1b00be022b1
