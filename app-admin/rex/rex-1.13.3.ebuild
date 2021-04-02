@@ -103,7 +103,7 @@ BDEPEND="
 [[ ${PV} == 9999 ]] && BDEPEND+=" ${DZIL_DEPENDS}"
 
 src_unpack() {
-	if [[ $PV == 9999 ]]; then
+	if [[ ${PV} == 9999 ]]; then
 		"${VCS_ECLASS}"_src_unpack
 		mkdir -p "${S}" || die "Can't make ${S}"
 	else
