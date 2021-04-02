@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -35,6 +35,7 @@ src_prepare() {
 		absl/copts/copts.py || die
 
 	# now generate cmake files
+	python_fix_shebang absl/copts/generate_copts.py
 	absl/copts/generate_copts.py || die
 }
 
