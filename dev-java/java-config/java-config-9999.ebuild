@@ -9,7 +9,7 @@ DISTUTILS_USE_SETUPTOOLS=no
 
 inherit distutils-r1
 
-if [[ $PV = *9999 ]]; then
+if [[ ${PV} = *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/java-config.git"
 else
