@@ -11,6 +11,7 @@ SOURCES_NAME="linux-UFRII-drv-v${MY_PV}-uken"
 DESCRIPTION="Common files for Canon drivers"
 HOMEPAGE="https://www.canon-europe.com/support/products/imagerunner/imagerunner-1730i.aspx"
 SRC_URI="http://gdlp01.c-wss.com/gds/8/0100007658/08/${SOURCES_NAME}-05.tar.gz"
+S="${WORKDIR}/${SOURCES_NAME}/Sources/${P/-lb-${PV}/-4.10}"
 
 # GPL-2 License inside LICENSE-EN.txt files
 LICENSE="Canon-UFR-II GPL-2 MIT"
@@ -22,9 +23,7 @@ RDEPEND="
 	>=gnome-base/libglade-2.4:2.0
 	>=net-print/cups-1.1.17
 	>=x11-libs/gtk+-2.4:2"
-DEPEND="${DEPEND}"
-
-S="${WORKDIR}/${SOURCES_NAME}/Sources/${P/-lb-${PV}/-4.10}"
+DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
 
