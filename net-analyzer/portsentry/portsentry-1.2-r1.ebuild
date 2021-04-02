@@ -13,7 +13,7 @@ S="${WORKDIR}"/${PN}_beta
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 ppc x86 ~x64-macos"
 IUSE="kernel_Darwin kernel_linux kernel_FreeBSD kernel_SunOS"
 
 RDEPEND="kernel_Darwin? ( app-shells/tcsh )"
