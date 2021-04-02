@@ -9,5 +9,5 @@ KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86 ~x86-linux
 LICENSE=GPL-2
 RDEPEND=dev-java/ecj-gcj:* dev-lang/perl ~sys-devel/gcc-5.4.0[awt?,gcj] >=dev-java/java-config-2.2.0-r3 >=app-eselect/eselect-java-0.4.0
 SLOT=0
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	pax-utils	d3fc79d3d50544347e324864f95206e2	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	java-vm-2	3a5fd6d2dc28e64872910bdd6c6b8d7b
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	pax-utils	d3fc79d3d50544347e324864f95206e2	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	java-vm-2	1b9686c0df06500159478dfaf5c21338
 _md5_=9523fa2844511511e13c0b1eceedd033

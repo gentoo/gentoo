@@ -701,7 +701,7 @@ app-admin/gopass-summon-provider 1.12.0: Gopass Summon Provider
 app-admin/graylog 3.3.10 3.3.11 4.0.2 4.0.5: Free and open source log management
 app-admin/gtkdiskfree 2.0.4_p20200224: Graphical tool to show free disk space like df
 app-admin/hardinfo 0.6_alpha_pre20201116: System information and benchmark tool for Linux systems
-app-admin/haskell-updater 1.2.12-r1 1.3.1 1.3.2: Rebuild Haskell dependencies in Gentoo
+app-admin/haskell-updater 1.3.2: Rebuild Haskell dependencies in Gentoo
 app-admin/hcloud 1.20.0 1.22.0: A command-line interface for Hetzner Cloud
 app-admin/hddtemp 0.3_beta15-r29: A simple utility to read the temperature of SMART capable hard drives
 app-admin/helm 3.3.4 3.4.1 3.4.2: Kubernetes Package Manager
@@ -1121,7 +1121,7 @@ app-crypt/md4sum 0.02.03-r2: md4 and edonkey hash algorithm tool
 app-crypt/md5deep 4.4: Expanded md5sum program with recursive and comparison options
 app-crypt/md6sum 1.0-r2: A C implementation of MD6
 app-crypt/mhash 0.9.9.9-r2: Library providing a uniform interface to a large number of hash algorithms
-app-crypt/minisign 0.8 0.9 9999: Dead simple tool to sign files and verify signatures
+app-crypt/minisign 0.9 9999: Dead simple tool to sign files and verify signatures
 app-crypt/mit-krb5 1.18.2-r3 1.18.3-r1 1.19.1: MIT Kerberos V
 app-crypt/mit-krb5-appl 1.0.3: Kerberized applications split from the main MIT Kerberos V distribution
 app-crypt/monkeysphere 0.44: Leverage the OpenPGP web of trust for OpenSSH and Web authentication
@@ -2160,7 +2160,7 @@ app-emulation/podman 3.0.1: Library and podman tool for running OCI-based contai
 app-emulation/protontricks 1.4.3 1.4.4: app-emulation/winetricks wrapper for Proton (Steam Play) games
 app-emulation/punes 0.107: Nintendo Entertainment System (NES) emulator
 app-emulation/q4wine 1.3.12: Qt GUI configuration tool for Wine
-app-emulation/qemu 5.2.0-r1 5.2.0-r2 5.2.0-r3 9999: QEMU + Kernel-based Virtual Machine userland tools
+app-emulation/qemu 5.2.0-r2 5.2.0-r3 9999: QEMU + Kernel-based Virtual Machine userland tools
 app-emulation/qemu-guest-agent 4.2.0-r1 5.0.0: QEMU Guest Agent (qemu-ga) for use when running inside a VM
 app-emulation/qemu-init-scripts 0.3.0-r1: Kvm and qemu init scripts
 app-emulation/qemu-riscv64-bin 5.0.0: Statically linked x86-64 binary of app-emulation/qemu, riscv64 emulator
@@ -3960,9 +3960,9 @@ dev-haskell/bytestring-show 0.3.5.6-r1: Efficient conversion of values into read
 dev-haskell/bzlib 0.5.1.0: Compression and decompression in the bzip2 format
 dev-haskell/c2hs 0.28.6: C->Haskell FFI tool that gives some cross-language type safety
 dev-haskell/cabal 3.0.1.0 3.2.1.0-r1: A framework for packaging Haskell software
-dev-haskell/cabal-doctest 1.0.8 1.0.8-r1: A Setup.hs helper for doctests running
+dev-haskell/cabal-doctest 1.0.8-r1: A Setup.hs helper for doctests running
 dev-haskell/cabal-install 3.0.0.0 3.2.0.0: The command-line interface for Cabal and Hackage
-dev-haskell/cairo 0.13.6.1 0.13.8.1: Binding to the Cairo library
+dev-haskell/cairo 0.13.8.1: Binding to the Cairo library
 dev-haskell/call-stack 0.2.0: Use GHC call-stacks in a backward compatible way
 dev-haskell/casa-client 0.0.1: Client for Casa
 dev-haskell/casa-types 0.0.1: Types for Casa
@@ -4080,7 +4080,7 @@ dev-haskell/edit-distance-vector 1.0.0.4: Calculate edit distances and edit scri
 dev-haskell/editline 0.2.1.1-r1: Bindings to the editline library (libedit)
 dev-haskell/either 5.0.1.1: An either monad transformer
 dev-haskell/ekg 0.4.0.15-r7: Remote monitoring of processes
-dev-haskell/ekg-core 0.1.1.6 0.1.1.7: Tracking of system metrics
+dev-haskell/ekg-core 0.1.1.7: Tracking of system metrics
 dev-haskell/ekg-json 0.1.0.6-r1: JSON encoding of ekg metrics
 dev-haskell/email-validate 2.3.2.13: Email address validation
 dev-haskell/emojis 0.1: Conversion between emoji characters and their names.
@@ -4101,7 +4101,7 @@ dev-haskell/extra 1.7.8: Extra functions I use
 dev-haskell/fail 4.9.0.0: Forward-compatible MonadFail class
 dev-haskell/failure 0.2.0.3: A simple type class for success/failure computations. (deprecated)
 dev-haskell/fast-logger 3.0.1: A fast logging system
-dev-haskell/fclabels 2.0.3.3 2.0.5: First class accessor labels implemented as lenses
+dev-haskell/fclabels 2.0.5: First class accessor labels implemented as lenses
 dev-haskell/fdo-notify 0.3.1: Desktop Notifications client
 dev-haskell/feed 1.3.0.1: Interfacing with RSS (v 0.9x, 2.x, 1.0) + Atom feeds
 dev-haskell/fgl 5.7.0.2: Martin Erwig's Functional Graph Library
@@ -4144,13 +4144,13 @@ dev-haskell/graphviz 2999.20.0.4: Bindings to Graphviz for graph visualisation
 dev-haskell/groupoids 4.0: This package has been absorbed into semigroupoids 4.0
 dev-haskell/gsasl 0.3.7: Bindings for GNU libgsasl
 dev-haskell/gtk 0.14.10-r3 0.15.5-r1: Binding to the Gtk+ graphical user interface library
-dev-haskell/gtk2hs-buildtools 0.13.8.0 0.13.8.0-r1: Tools to build the Gtk2Hs suite of User Interface libraries
+dev-haskell/gtk2hs-buildtools 0.13.8.0-r1: Tools to build the Gtk2Hs suite of User Interface libraries
 dev-haskell/gtk3 0.15.5: Binding to the Gtk+ 3 graphical user interface library
 dev-haskell/hackage-security 0.5.3.0-r3 0.6.0.1-r1: Hackage security library
 dev-haskell/haddock 2.23.1 2.24.0: A documentation-generation tool for Haskell libraries
 dev-haskell/haddock-api 2.23.1 2.24.0: A documentation-generation tool for Haskell libraries
 dev-haskell/haddock-library 1.8.0 1.9.0: Library exposing some functionality of Haddock
-dev-haskell/hakyll 4.13.4.0 4.13.4.1: A static website compiler library
+dev-haskell/hakyll 4.13.4.1: A static website compiler library
 dev-haskell/half 0.3-r1: Half-precision floating-point
 dev-haskell/hamlet 1.2.0: Haml-like template files that are compile-time checked (deprecated)
 dev-haskell/happstack-server 7.6.0 7.6.1: Web related tools and services
@@ -4184,7 +4184,7 @@ dev-haskell/hinotify 0.3.10: Haskell binding to inotify
 dev-haskell/hit 0.7.0: Git operations in haskell
 dev-haskell/hjsmin 0.2.0.4: Haskell implementation of a javascript minifier
 dev-haskell/hlint 2.1.17-r1: Source code suggestions
-dev-haskell/hoauth2 1.11.0 1.16.0: Haskell OAuth2 authentication client
+dev-haskell/hoauth2 1.16.0: Haskell OAuth2 authentication client
 dev-haskell/hostname 1.0-r1: A a cross-platform means of determining the hostname
 dev-haskell/hourglass 0.2.12: simple performant time related library
 dev-haskell/hpack 0.33.0: An alternative format for Haskell packages
@@ -4300,7 +4300,7 @@ dev-haskell/maccatcher 2.1.5-r1: Obtain the host MAC address on *NIX and Windows
 dev-haskell/magic 1.1: Interface to C file/magic library
 dev-haskell/markdown-unlit 0.5.0: Literate Haskell support for Markdown
 dev-haskell/math-functions 0.3.3.0: Special functions and Chebyshev polynomials
-dev-haskell/megaparsec 8.0.0 9.0.1: Monadic parser combinators
+dev-haskell/megaparsec 9.0.1: Monadic parser combinators
 dev-haskell/memory 0.15.0: memory and related abstraction stuff
 dev-haskell/memotrie 0.6.10: Trie-based memo functions
 dev-haskell/mersenne-random-pure64 0.2.2.0: Generate high quality pseudorandom numbers purely using a Mersenne Twister
@@ -4479,7 +4479,7 @@ dev-haskell/sendfile 0.7.11.1: A portable sendfile library
 dev-haskell/setenv 0.1.1.3: A cross-platform library for setting environment variables
 dev-haskell/setlocale 1.0.0.9: Haskell bindings to setlocale
 dev-haskell/sha 1.6.4.4: Implementations of the SHA suite of message digest functions
-dev-haskell/shakespeare 2.0.21 2.0.25: A toolkit for making compile-time interpolated templates
+dev-haskell/shakespeare 2.0.25: A toolkit for making compile-time interpolated templates
 dev-haskell/shakespeare-css 1.1.0: Stick your haskell variables into css at compile time. (deprecated)
 dev-haskell/shakespeare-i18n 1.1.0: A type-based approach to internationalization. (deprecated)
 dev-haskell/shakespeare-js 1.3.0: Stick your haskell variables into javascript/coffeescript at compile time
@@ -4566,12 +4566,12 @@ dev-haskell/text-show 3.8.5: Efficient conversion of values into Text
 dev-haskell/text-stream-decode 0.1.0.5: Streaming decoding functions for UTF encodings. (deprecated)
 dev-haskell/tf-random 0.5: High-quality splittable pseudorandom number generator
 dev-haskell/th-abstraction 0.3.2.0: Nicer interface for reified information about data types
-dev-haskell/th-expand-syns 0.4.5.0 0.4.6.0: Expands type synonyms in Template Haskell ASTs
+dev-haskell/th-expand-syns 0.4.6.0: Expands type synonyms in Template Haskell ASTs
 dev-haskell/th-lift 0.8.1: Derive Template Haskell's Lift class for datatypes
 dev-haskell/th-lift-instances 0.1.14: Lift instances for template-haskell for common data types
-dev-haskell/th-orphans 0.13.3 0.13.10: Orphan instances for TH datatypes
+dev-haskell/th-orphans 0.13.10: Orphan instances for TH datatypes
 dev-haskell/th-reify-many 0.1.9: Recurseively reify template haskell datatype info
-dev-haskell/th-utilities 0.2.3.0 0.2.4.1: Collection of useful functions for use with Template Haskell
+dev-haskell/th-utilities 0.2.4.1: Collection of useful functions for use with Template Haskell
 dev-haskell/threads 0.5.1.6: Fork threads and wait for their result
 dev-haskell/thyme 0.3.5.5: A faster time library
 dev-haskell/time-compat 1.9.3: This packages tries to compat as much of \'time\' features as possible
@@ -4615,7 +4615,7 @@ dev-haskell/uuid 1.3.13-r1: For creating, comparing, parsing and printing Univer
 dev-haskell/uuid-types 1.0.3-r1: Type definitions for Universally Unique Identifiers
 dev-haskell/uulib 0.9.24: Haskell Utrecht Tools Library
 dev-haskell/validity 0.9.0.3: Validity typeclass
-dev-haskell/vault 0.3.1.3 0.3.1.4: a persistent store for values of arbitrary types
+dev-haskell/vault 0.3.1.4: a persistent store for values of arbitrary types
 dev-haskell/vector 0.12.1.2: Efficient Arrays
 dev-haskell/vector-algorithms 0.8.0.3: Efficient algorithms for vector arrays
 dev-haskell/vector-binary-instances 0.2.5.1: Instances of Data.Binary and Data.Serialize for vector
@@ -5216,7 +5216,7 @@ dev-lang/cll1h 0.6-r1: C<<1 programming language system
 dev-lang/clojure 1.8.0 1.9.0-r1 1.10.0: General-purpose programming language with an emphasis on functional programming
 dev-lang/closure-compiler-bin 20170218: JavaScript optimizing compiler
 dev-lang/coffee-script 2.5.1: A little language that compiles into javascript
-dev-lang/crystal 0.36.1 1.0.0: The Crystal Programming Language
+dev-lang/crystal 1.0.0: The Crystal Programming Language
 dev-lang/cxprolog 0.98.2: A WAM based Prolog system
 dev-lang/duktape 2.4.0 2.5.0-r1 2.6.0: Embeddable Javascript engine
 dev-lang/elixir 1.10.4 1.11.3 1.11.4: Elixir programming language
@@ -5378,7 +5378,7 @@ dev-libs/dbus-glib 0.110: D-Bus bindings for glib
 dev-libs/device-atlas-api-c 2.1.4: API to detect devices based on the User-Agent HTTP header
 dev-libs/dietlibc 0.34_pre20140729-r1 0.34: A libc optimized for small size
 dev-libs/ding-libs 0.6.1 0.6.1-r1: set of utility libraries (mostly used by sssd)
-dev-libs/distorm3 3.5.1 3.5.2: The ultimate disassembler library (X86-32, X86-64)
+dev-libs/distorm3 3.5.2: The ultimate disassembler library (X86-32, X86-64)
 dev-libs/dmalloc 5.5.2-r7 999999: A Debug Malloc Library
 dev-libs/dotconf 1.3-r1: dot.conf configuration file parser
 dev-libs/double-conversion 3.1.5: Binary-decimal and decimal-binary conversion routines for IEEE doubles
@@ -5387,7 +5387,7 @@ dev-libs/eb 4.4.1-r1: EB is a C library and utilities for accessing CD-ROM books
 dev-libs/editline 1.17.1: line editing library for UNIX call compatible with the FSF readline
 dev-libs/eekboard 1.0.8_p20121001-r1: An easy to use virtual keyboard toolkit
 dev-libs/efl 1.25.1-r10 1.25.1-r11: Enlightenment Foundation Libraries all-in-one package
-dev-libs/elfutils 0.181 0.182 0.183: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
+dev-libs/elfutils 0.182 0.183: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
 dev-libs/ell 0.38 0.39 9999: Embedded Linux Library provides core, low-level functionality for system daemons
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
 dev-libs/expat 2.2.10 2.3.0: Stream-oriented XML parser library
@@ -10788,7 +10788,7 @@ dev-util/catalyst 3.0.17 9999: Release metatool used for creating releases based
 dev-util/catfish 4.16.0: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/catkin 0.8.9 9999: Cmake macros and associated python code used to build some parts of ROS
 dev-util/cbindgen 0.18.0: A tool for generating C bindings to Rust code
-dev-util/ccache 4.1 4.2 4.2.1: fast compiler cache
+dev-util/ccache 4.2 4.2.1: fast compiler cache
 dev-util/cccc 3.1.5-r1 3.1.6: Source metrics (line counts, complexity, etc) for Java and C++
 dev-util/ccls 0.20201219 9999: C/C++/ObjC language server
 dev-util/cflow 1.6: C function call hierarchy analyzer
@@ -10853,7 +10853,7 @@ dev-util/devhelp 3.36.2 3.38.1: An API documentation browser for GNOME
 dev-util/dialog 1.3.20170131 1.3.20200228 1.3.20200327: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1-r2: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3-r1: Filter files out of unified diffs using POSIX extended regular expressions
-dev-util/diffoscope 169 170: Will try to get to the bottom of what makes files or directories different
+dev-util/diffoscope 170: Will try to get to the bottom of what makes files or directories different
 dev-util/diffstat 1.63 1.64: Display a histogram of diff changes
 dev-util/diffuse 0.5.0_alpha7-r1 0.6.0: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r3: A tool for differing and merging directories
@@ -11000,7 +11000,7 @@ dev-util/pkgdev 0.1.2 0.1.3 9999: Collection of tools for Gentoo development
 dev-util/pkgdiff 1.7.2 9999: Package Changes Analyzer (pkgdiff)
 dev-util/plan9port 0_pre20200526 9999: Port of many Plan 9 programs and libraries
 dev-util/ply 2.1.1-r1: Dynamic instrumentation of the Linux kernel with BPF and kprobes
-dev-util/poke 1.0 1.1: extensible editor for structured binary data
+dev-util/poke 1.1: extensible editor for structured binary data
 dev-util/premake 3.7 4.3-r1 4.4_beta5 5.0.0_alpha12: A makefile generation tool
 dev-util/pretrace 0.4-r2: start dynamically linked applications under debugging environment
 dev-util/promu 0.5.0 0.7.0 0.11.1: Prometheus Utility Tool
@@ -11016,13 +11016,13 @@ dev-util/radare2 4.5.1-r1 5.1.1 9999: unix-like reverse engineering framework an
 dev-util/ragel 6.10 7.0.0.12 7.0.3 7.0.4: Compiles finite state machines from regular languages into executable code
 dev-util/rats 2.4: RATS - Rough Auditing Tool for Security
 dev-util/rbtools 1.0.3 2.0: Command line tools for use with Review Board
-dev-util/re2c 2.0.3 2.1.1 2.1.1-r1: tool for generating C-based recognizers from regular expressions
+dev-util/re2c 2.0.3 2.1.1-r1: tool for generating C-based recognizers from regular expressions
 dev-util/rebar 2.6.4-r1: A sophisticated build-tool for Erlang projects that follows OTP principles
 dev-util/rebar-bin 3.14.4: A sophisticated build-tool for Erlang projects that follows OTP principles
 dev-util/redo 0.42a 0.42c 99999: Smaller, easier, more powerful, and more reliable than make
 dev-util/regexxer 0.10-r1: An interactive tool for performing search and replace operations
 dev-util/rej 0.16-r1: A utility for solving diff/patch rejects
-dev-util/rizin 0.1.1 0.1.2: reverse engineering framework for binary analysis
+dev-util/rizin 0.1.2: reverse engineering framework for binary analysis
 dev-util/rocm-cmake 3.8.0 3.9.0 3.10.0 4.0.0 4.1.0 9999: Radeon Open Compute CMake Modules
 dev-util/rocm-smi 4.0.0 9999: ROCm System Management Interface
 dev-util/rocminfo 3.7.0 3.8.0 3.9.0 3.10.0 4.0.0 4.1.0 9999: ROCm Application for Reporting System Info
@@ -11403,7 +11403,7 @@ games-board/gnuchess 6.2.7: Console based chess interface
 games-board/gnuchess-book 1.02-r1: Opening book for gnuchess
 games-board/gnugo 3.9.1-r2: A Go-playing program
 games-board/gnushogi 1.4.1-r1: Japanese version of chess (commandline + X-Version)
-games-board/goatee-gtk 0.3.1.1 0.4.0: A monadic take on a 2,500-year-old board game - GTK+ UI
+games-board/goatee-gtk 0.4.0: A monadic take on a 2,500-year-old board game - GTK+ UI
 games-board/grhino 0.16.1-r2: Reversi game for GNOME, supporting the Go/Game Text Protocol
 games-board/gtkatlantic 0.6.3: Monopoly-like game that works with the monopd server
 games-board/gtkboard 0.11_pre0-r2: Board games system
