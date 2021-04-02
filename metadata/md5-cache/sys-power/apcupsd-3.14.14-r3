@@ -1,0 +1,15 @@
+BDEPEND=virtual/pkgconfig virtual/pkgconfig
+DEFINED_PHASES=compile configure install postinst setup
+DEPEND=>=sys-apps/util-linux-2.23[tty-helpers(-)] cgi? ( >=media-libs/gd-1.8.4 ) modbus? ( usb? ( virtual/libusb:0 ) ) gnome? ( >=x11-libs/gtk+-2.4.0:2 dev-libs/glib:2 >=gnome-base/gconf-2.0 ) snmp? ( >=net-analyzer/net-snmp-5.7.2 )
+DESCRIPTION=APC UPS daemon with integrated tcp/ip remote shutdown
+EAPI=7
+HOMEPAGE=http://www.apcupsd.org/
+INHERIT=linux-info flag-o-matic systemd udev tmpfiles
+IUSE=snmp +usb +modbus cgi gnome kernel_linux kernel_linux
+KEYWORDS=~amd64 ~arm ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=>=sys-apps/util-linux-2.23[tty-helpers(-)] cgi? ( >=media-libs/gd-1.8.4 ) modbus? ( usb? ( virtual/libusb:0 ) ) gnome? ( >=x11-libs/gtk+-2.4.0:2 dev-libs/glib:2 >=gnome-base/gconf-2.0 ) snmp? ( >=net-analyzer/net-snmp-5.7.2 ) virtual/mailx virtual/tmpfiles
+SLOT=0
+SRC_URI=mirror://sourceforge/apcupsd/apcupsd-3.14.14.tar.gz
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	linux-info	30ded7f9adbdd03d3e848cdd74f6c395	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	udev	452708c3f55cf6e918b045adb949a9e6	tmpfiles	5cd6e8cf3288d5b19ff8b5c78c7e3e31
+_md5_=49396094c932bf082a4023284689fd77
