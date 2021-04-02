@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ inherit cmake cuda fortran-2
 
 DESCRIPTION="C++ template library for linear algebra"
 HOMEPAGE="http://eigen.tuxfamily.org/index.php?title=Main_Page"
-SRC_URI="https://gitlab.com/libeigen/eigen/-/archive/3.3.7/${P}.tar.bz2 -> ${P}-gitlab.tar.bz2"
+SRC_URI="https://gitlab.com/libeigen/eigen/-/archive/${PV}/${P}.tar.bz2 -> ${P}-gitlab.tar.bz2"
 
 LICENSE="MPL-2.0"
 SLOT="3"
