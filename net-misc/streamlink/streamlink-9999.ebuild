@@ -13,7 +13,7 @@ PYTHON_REQ_USE='xml(+),threads(+)'
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit distutils-r1 $GIT_ECLASS
+inherit distutils-r1 ${GIT_ECLASS}
 
 DESCRIPTION="CLI for extracting streams from websites to a video player of your choice"
 HOMEPAGE="https://streamlink.github.io/"
@@ -55,7 +55,7 @@ BDEPEND="
 src_prepare() {
 	distutils-r1_src_prepare
 	if [[ ${PV} != 9999* ]]; then
-		mv ${WORKDIR}/streamlink.1-${PV}.man ${WORKDIR}/streamlink.1 || die
+		mv "${WORKDIR}"/streamlink.1-${PV}.man "${WORKDIR}"/streamlink.1 || die
 	fi
 }
 
@@ -71,6 +71,6 @@ python_test() {
 python_install_all() {
 	distutils-r1_python_install_all
 	if [[ ${PV} != 9999* ]]; then
-		doman ${WORKDIR}/streamlink.1
+		doman "${WORKDIR}"/streamlink.1
 	fi
 }
