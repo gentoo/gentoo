@@ -1292,7 +1292,16 @@ epytest() {
 	local die_args=()
 	[[ ${EAPI} != [45] ]] && die_args+=( -n )
 
-	set -- "${EPYTHON}" -m pytest -vv -ra "${@}"
+	local args=(
+		# verbose progress reporting and tracebacks
+		-vv
+		# list all non-passed tests in the summary for convenience
+		# (includes failures, skips, xfails...)
+		-ra
+		# print local variables in tracebacks, useful for debugging
+		-l
+	)
+	set -- "${EPYTHON}" -m pytest "${args[@]}" "${@}"
 
 	echo "${@}" >&2
 	"${@}" || die "${die_args[@]}" "pytest failed with ${EPYTHON}"
