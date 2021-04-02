@@ -13388,7 +13388,7 @@ media-libs/libtgvoip 2.4.4_p20201030 2.4.4_p20210302: VoIP library for Telegram 
 media-libs/libtheora 1.1.1-r2: The Theora Video Compression Codec
 media-libs/libtiger 0.3.4-r1: A rendering library for Kate streams using Pango and Cairo
 media-libs/libtimidity 0.2.6: MIDI to WAVE converter library
-media-libs/libuninameslist 20091231-r1 20200413: Library of unicode annotation data
+media-libs/libuninameslist 20091231-r1 20200413-r1: Library of unicode annotation data
 media-libs/libuvc 0.0.6-r1: A cross-platform library for USB video devices, built atop libusb
 media-libs/libv4l 1.20.0: Separate libraries ebuild from upstream v4l-utils package
 media-libs/libvisio 0.1.7 9999: Library parsing the file format of MS Visio documents
