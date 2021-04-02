@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{7,8,9} )
 PYTHON_REQ_USE="xml"
 
-inherit libtool flag-o-matic python-r1 autotools prefix multilib-minimal
+inherit autotools flag-o-matic prefix python-r1 multilib-minimal
 
 DESCRIPTION="XML C parser and toolkit"
 HOMEPAGE="http://www.xmlsoft.org/ https://gitlab.gnome.org/GNOME/libxml2"
@@ -102,8 +102,8 @@ src_prepare() {
 	# Please do not remove, as else we get references to PORTAGE_TMPDIR
 	# in /usr/lib/python?.?/site-packages/libxml2mod.la among things.
 	# We now need to run eautoreconf at the end to prevent maintainer mode.
-#	elibtoolize
-#	epunt_cxx # if we don't eautoreconf
+	#elibtoolize
+	#epunt_cxx # if we don't eautoreconf
 
 	eautoreconf
 }
