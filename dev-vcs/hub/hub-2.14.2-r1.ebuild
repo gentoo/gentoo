@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,6 +16,11 @@ KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 RDEPEND=">=dev-vcs/git-1.7.3"
 
 src_compile() {
+	# The eclass setting GOFLAGS at all overrides this default
+	# in the upstream Makefile. It'll *FALL BACK* to bundled/vendored
+	# modules but without this, it'll try fetching. On platforms
+	# without network-sandbox (or relying on it), this is not okay.
+	export GOFLAGS="${GOFLAGS} -mod=vendor"
 	emake bin/hub man-pages
 }
 
