@@ -6,14 +6,14 @@ EAPI=7
 PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit desktop eutils python-any-r1 scons-utils toolchain-funcs xdg
-if [[ "$PV" = 9999 ]]; then
+if [[ "${PV}" = 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/dxx-rebirth/dxx-rebirth"
 	PROPERTIES="live"
 else
 	MY_COMMIT=''
-	S="$WORKDIR/$PN-$MY_COMMIT"
-	SRC_URI="https://codeload.github.com/dxx-rebirth/dxx-rebirth/tar.gz/$MY_COMMIT -> $PN-$PVR.tar.gz"
+	S="${WORKDIR}/${PN}-${MY_COMMIT}"
+	SRC_URI="https://codeload.github.com/dxx-rebirth/dxx-rebirth/tar.gz/${MY_COMMIT} -> ${PN}-${PVR}.tar.gz"
 	unset MY_COMMIT
 
 	# Other architectures are reported to work, but not tested regularly by
@@ -219,7 +219,7 @@ src_compile() {
 src_install() {
 	# Use upstream install target to handle the various combinations of
 	# enabled/disabled engines and optional editor support.
-	dxx_scons register_compile_target=0 register_install_target=1 DESTDIR="$D" "$D"
+	dxx_scons register_compile_target=0 register_install_target=1 DESTDIR="${D}" "${D}"
 	local DV
 	for DV in 1 2; do
 		if ! use d${DV}x; then
