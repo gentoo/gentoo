@@ -1,5 +1,6 @@
 BDEPEND=virtual/pkgconfig doc? ( app-doc/doxygen ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-vcs/subversion[http(+)] net-misc/rsync
 DEFINED_PHASES=compile configure install preinst prepare unpack
+DEPEND=postgres? ( dev-db/postgresql:* ) mysql? ( dev-db/mysql-connector-c:= ) gsm? ( media-sound/gsm ) speex? ( media-libs/speex ) ssl? ( dev-libs/openssl:0= ) zlib? ( sys-libs/zlib ) ilbc? ( media-libs/libilbc:= ) spandsp? ( >=media-libs/spandsp-0.0.3 ) dahdi? ( net-misc/dahdi )
 DESCRIPTION=The Yate AV Suite
 EAPI=7
 HOMEPAGE=http://yate.null.ro/
@@ -10,4 +11,4 @@ PROPERTIES=live
 RDEPEND=postgres? ( dev-db/postgresql:* ) mysql? ( dev-db/mysql-connector-c:= ) gsm? ( media-sound/gsm ) speex? ( media-libs/speex ) ssl? ( dev-libs/openssl:0= ) zlib? ( sys-libs/zlib ) ilbc? ( media-libs/libilbc:= ) spandsp? ( >=media-libs/spandsp-0.0.3 ) dahdi? ( net-misc/dahdi )
 SLOT=0/9999
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	estack	055c42df72f76a4f45ec92b35e83cd56	subversion	c500a1b7795f44153bd96fc2597e3c05
-_md5_=c5b2ea32b3c46325639ea545b05c62c7
+_md5_=8b495c7ea152be00158e0f74ea99b1ca

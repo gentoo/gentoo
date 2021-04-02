@@ -1,5 +1,6 @@
 BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install prepare setup unpack
+DEPEND=>=dev-libs/libxml2-2.9.1-r4[abi_x86_32(-)] >=gnome-base/libglade-2.4:2.0 >=net-print/cups-1.1.17 ~net-print/cndrvcups-common-lb-3.70 >=x11-libs/gtk+-2.4:2
 DESCRIPTION=Canon UFR II / LIPSLX Printer Driver for Linux
 EAPI=7
 HOMEPAGE=https://www.canon-europe.com/support/products/imagerunner/imagerunner-1730i.aspx
@@ -10,4 +11,4 @@ RDEPEND=>=dev-libs/libxml2-2.9.1-r4[abi_x86_32(-)] >=gnome-base/libglade-2.4:2.0
 SLOT=0
 SRC_URI=http://gdlp01.c-wss.com/gds/8/0100007658/08/linux-UFRII-drv-v370-uken-05.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba
-_md5_=f3a629043b9e2acd3128602ea194fb6a
+_md5_=a22b0f2fa51a2adb1380a9dd598cca65

@@ -1,5 +1,6 @@
 BDEPEND=virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile postinst postrm preinst unpack
+DEPEND=dev-libs/glib:2 media-libs/libsdl2[opengl,video] media-libs/sdl2-image[png] media-libs/sdl2-ttf virtual/opengl
 DESCRIPTION=Crayon Physics-like drawing puzzle game using the same excellent Box2D engine
 EAPI=7
 HOMEPAGE=https://thp.io/2015/numptyphysics/
@@ -11,4 +12,4 @@ RDEPEND=dev-libs/glib:2 media-libs/libsdl2[opengl,video] media-libs/sdl2-image[p
 SLOT=0
 SRC_URI=user-levels? ( http://numptyphysics.garage.maemo.org/levels/butelo/butelo.npz http://numptyphysics.garage.maemo.org/levels/catalyst/catalyst.npz http://numptyphysics.garage.maemo.org/levels/christeck/christeck.npz http://numptyphysics.garage.maemo.org/levels/dneary/dneary.npz http://numptyphysics.garage.maemo.org/levels/gnuton/gnuton.npz http://numptyphysics.garage.maemo.org/levels/gudger/gudger.npz http://numptyphysics.garage.maemo.org/levels/guile/guile.npz http://numptyphysics.garage.maemo.org/levels/hurd/hurd.npz http://numptyphysics.garage.maemo.org/levels/ioan/ioan.npz http://numptyphysics.garage.maemo.org/levels/jhoff80/jhoff80.npz http://numptyphysics.garage.maemo.org/levels/leonet/leonet.npz http://numptyphysics.garage.maemo.org/levels/melvin/melvin.npz http://numptyphysics.garage.maemo.org/levels/noodleman/noodleman.npz http://numptyphysics.garage.maemo.org/levels/papky/papky.npz http://numptyphysics.garage.maemo.org/levels/perli/perli.npz http://numptyphysics.garage.maemo.org/levels/qole/qole.npz http://numptyphysics.garage.maemo.org/levels/siminz/siminz.npz http://numptyphysics.garage.maemo.org/levels/szymanowski/szymanowski.npz http://numptyphysics.garage.maemo.org/levels/therealbubba/therealbubba.npz http://numptyphysics.garage.maemo.org/levels/werre/werre.npz http://numptyphysics.garage.maemo.org/levels/zeez/zeez.npz )
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	git-r3	b8e8c92aa5fe8df7187e466138eb4e52	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3
-_md5_=4e60ab1f5cf8ecccecbabc251fa0caec
+_md5_=88fa535505f4e117b4ac094ced263704

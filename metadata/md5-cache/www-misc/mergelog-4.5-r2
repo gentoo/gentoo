@@ -1,5 +1,6 @@
 BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=prepare
+DEPEND=sys-libs/zlib
 DESCRIPTION=A utility to merge apache logs in chronological order
 EAPI=7
 HOMEPAGE=http://mergelog.sourceforge.net
@@ -10,4 +11,4 @@ RDEPEND=sys-libs/zlib
 SLOT=0
 SRC_URI=mirror://sourceforge/mergelog/mergelog-4.5.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba
-_md5_=42ab66bb3beb3705516d787a75fec1fb
+_md5_=17cf42e287175eb0ed1c266a4eefc19f

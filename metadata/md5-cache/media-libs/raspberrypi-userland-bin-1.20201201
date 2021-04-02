@@ -9,4 +9,4 @@ RDEPEND=!media-libs/raspberrypi-userland
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=https://github.com/raspberrypi/firmware/archive/1.20201201.tar.gz -> raspberrypi-firmware-1.20201201.tar.gz
-_md5_=2cbd2f4cda01784dbdd8f72b1a5426de
+_md5_=f2f5f8115216d2d3a10a48bf2ffe1e3a

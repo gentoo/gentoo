@@ -1,12 +1,14 @@
 BDEPEND=virtual/pkgconfig
 DEFINED_PHASES=compile install
+DEPEND=>=dev-libs/fribidi-0.19.2-r2
 DESCRIPTION=A commandline tool displaying logical Hebrew/Arabic
 EAPI=7
 HOMEPAGE=https://packages.qa.debian.org/b/bidiv.html
+INHERIT=toolchain-funcs
 KEYWORDS=~alpha ~amd64 ~ppc ~sparc ~x86
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/fribidi-0.19.2-r2
 SLOT=0
 SRC_URI=mirror://debian/pool/main/b/bidiv/bidiv_1.5.orig.tar.gz mirror://debian/pool/main/b/bidiv/bidiv_1.5-4.debian.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=4bde109ba04b9f2c5ab4eacda4d2d46f
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=68b45812153e356e878502789b9bd17d

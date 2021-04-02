@@ -4,10 +4,12 @@ DEPEND=dev-libs/libxml2:2 media-gfx/exiv2:= gtk? ( x11-libs/gtk+:2 )
 DESCRIPTION=Tool for adjusting EXIF tags of your photos with a recorded GPS trace
 EAPI=7
 HOMEPAGE=https://github.com/freefoote/gpscorrelate
+INHERIT=desktop toolchain-funcs
 IUSE=doc gtk
 KEYWORDS=~amd64 ~hppa ~x86
 LICENSE=GPL-2
+RDEPEND=dev-libs/libxml2:2 media-gfx/exiv2:= gtk? ( x11-libs/gtk+:2 )
 SLOT=0
 SRC_URI=http://freefoote.dview.net/linux/gpscorrelate-1.6.1.tar.gz
-_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=e110af0e5ffedfb94dfae9fd469e47a1
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=35a9494c1f952f97687e1c16e8b4e1dd

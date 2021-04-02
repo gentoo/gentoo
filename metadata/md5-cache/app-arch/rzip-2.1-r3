@@ -1,5 +1,5 @@
 DEFINED_PHASES=postinst prepare
-DEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=app-arch/bzip2:= >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Compression program for large files
 EAPI=6
 HOMEPAGE=https://rzip.samba.org/
@@ -10,4 +10,4 @@ RDEPEND=app-arch/bzip2:=
 SLOT=0
 SRC_URI=https://rzip.samba.org/ftp/rzip/rzip-2.1.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba
-_md5_=9936984d9a894967d2b370008c455325
+_md5_=a0e77b664f8c34d3b0e327391f4e05b5

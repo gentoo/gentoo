@@ -1,4 +1,4 @@
-BDEPEND=doc? ( dev-python/sphinx app-text/texlive-core dev-texlive/texlive-latex dev-texlive/texlive-latexextra dev-tex/latexmk ) || ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 ) dev-util/ninja dev-util/cmake
+BDEPEND=doc? ( dev-python/sphinx app-text/texlive-core dev-texlive/texlive-latex dev-texlive/texlive-latexextra dev-tex/latexmk ) || ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 ) sys-devel/make dev-util/cmake
 DEFINED_PHASES=compile configure install prepare setup test
 DEPEND=dev-libs/gmp:= dev-libs/mpfr:= ntl? ( dev-libs/ntl:= ) virtual/cblas
 DESCRIPTION=Fast Library for Number Theory
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0/15
 SRC_URI=http://www.flintlib.org/flint-2.7.1.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	cmake	518e4c9a6a38dfd7afc54b6a7c5de3da	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-any-r1	690a993463cd2ebcde40ccdf1bd9ba98
-_md5_=8752edf7400dfaf2c6c7011d71d9e9d4
+_md5_=b073e4512011b89fcdf29a0845cd39b7

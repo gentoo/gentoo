@@ -7618,7 +7618,7 @@ dev-perl/URI-redis 0.20.0: URI for Redis connection info
 dev-perl/USB-LibUSB 0.60.0 0.90.0: Perl interface to the libusb-1.0 API
 dev-perl/USB-TMC 0.6.0 0.7.0: Perl interface to the USB Test & Measurement (USBTMC) backend
 dev-perl/UUID 0.270.0: Perl extension for using UUID interfaces as defined in e2fsprogs
-dev-perl/UUID-Tiny 1.40.0: Pure Perl UUID Support With Functional Interface
+dev-perl/UUID-Tiny 1.40.0-r1: Pure Perl UUID Support With Functional Interface
 dev-perl/UltraDNS 0.60.0-r2: Client API for the NeuStar UltraDNS Transaction Protocol
 dev-perl/Unicode-EastAsianWidth 1.330.0-r1: East Asian Width properties
 dev-perl/Unicode-LineBreak 2017.4.0-r1 2019.1.0: UAX #14 Unicode Line Breaking Algorithm
@@ -11713,7 +11713,7 @@ games-puzzle/pauker 1.8-r1: A java based flashcard program
 games-puzzle/penguzzle 1.0-r2: Tcl/Tk variant of the well-known 15-puzzle game
 games-puzzle/picpuz 2.5-r1: A jigsaw puzzle program
 games-puzzle/pingus 0.7.6-r3 9999: free Lemmings clone
-games-puzzle/pipepanic 0.1.3-r1: A simple pipe connecting game
+games-puzzle/pipepanic 0.1.3-r2: A simple pipe connecting game
 games-puzzle/pipewalker 0.9.4-r1: Rotating pieces puzzle game
 games-puzzle/quadra 1.2.0-r1: A tetris clone with multiplayer support
 games-puzzle/quadrapassel 3.36.05 3.38.1: Fit falling blocks together
@@ -16215,7 +16215,7 @@ sci-geosciences/geocode-glib 3.26.2: GLib helper library for geocoding services
 sci-geosciences/gmt 4.5.18-r1 5.4.4: Powerful map generator
 sci-geosciences/gnome-maps 3.36.4 3.36.4.1 3.36.6: A map application for GNOME
 sci-geosciences/gpsbabel 1.5.4-r1 9999: GPS waypoints, tracks and routes converter
-sci-geosciences/gpscorrelate 1.6.1-r1: Tool for adjusting EXIF tags of your photos with a recorded GPS trace
+sci-geosciences/gpscorrelate 1.6.1-r2: Tool for adjusting EXIF tags of your photos with a recorded GPS trace
 sci-geosciences/gpsd 3.21 9999: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
 sci-geosciences/gpx-viewer 0.4.0-r1: Simple program to visualize a gpx file
 sci-geosciences/gpxlab 0.7.0: An application to display and manage GPS tracks
