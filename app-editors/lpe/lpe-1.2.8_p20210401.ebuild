@@ -37,7 +37,13 @@ src_prepare() {
 	# That is, if you need eautoreconf
 	sed -i \
 		-e "s:-lncurses:$($(tc-getPKG_CONFIG) --libs-only-l ncurses):" \
-		src/Makefile.in || die
+		configure.ac || die
+
+	# Actually use what configure discovers (above)
+	# bug #779778
+	sed -i \
+		-e 's:-lncurses:@NCURSES_LIB@:' \
+		src/Makefile.am || die
 
 	# Refresh outdated libtool (elibtoolize insufficient)
 	# Fixes undefined references on macOS/Darwin
@@ -45,7 +51,9 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_enable nls)
+	econf \
+		--without-included-gettext \
+		$(use_enable nls)
 }
 
 src_install() {
