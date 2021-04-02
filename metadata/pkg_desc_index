@@ -3158,7 +3158,7 @@ app-text/tessdata_legacy 4.0.0 4.1.0: Trained models for app-text/tesseract comp
 app-text/tesseract 3.05.02 4.1.0-r1 4.1.1 9999: An OCR Engine, originally developed at HP, now open source.
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
 app-text/texlive 2020-r9: A complete TeX distribution
-app-text/texlive-core 2020-r12: A complete TeX distribution
+app-text/texlive-core 2020-r12 2021: A complete TeX distribution
 app-text/tidy-html5 5.6.0 5.7.28: Tidy the layout and correct errors in HTML, HTML5 and XML documents
 app-text/tkinfo 2.8-r1: Info Browser in TK
 app-text/tkman 2.2-r1: TkMan man and info page browser
@@ -13686,7 +13686,7 @@ media-plugins/kodi-screensaver-pingpong 2.2.2-r1 9999: Ping-pong screensaver for
 media-plugins/kodi-screensaver-pyro 3.3.0 9999: Pyro screensaver for Kodi
 media-plugins/kodi-screensaver-shadertoy 3.2.0 9999: Shadertoy screensaver for Kodi
 media-plugins/kodi-screensaver-stars 2.4.0 9999: Stars screensaver for Kodi
-media-plugins/kodi-vfs-libarchive 2.0.0 9999: Libarchive VFS add-on for Kodi
+media-plugins/kodi-vfs-libarchive 2.0.1 9999: Libarchive VFS add-on for Kodi
 media-plugins/kodi-vfs-rar 4.0.0 9999: RAR VFS addon for Kodi
 media-plugins/kodi-vfs-sacd 2.0.0 9999: SACD VFS addon for Kodi
 media-plugins/kodi-vfs-sftp 2.0.0 9999: SFTP VFS addon for Kodi
