@@ -236,7 +236,7 @@ src_install() {
 pkg_postinst() {
 	xdg_pkg_postinst
 	if ! use data; then
-		elog "$PN requires game data to play."
+		elog "${PN} requires game data to play."
 		elog "Game data is not included in this package.  To play the game,"
 		elog "emerge the packages required by USE=data or install the game"
 		elog "data by hand."
