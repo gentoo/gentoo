@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 MY_P="${P/-/_}"
-inherit autotools elisp-common eutils xdg-utils
+inherit autotools elisp-common l10n xdg-utils
 
 DESCRIPTION="Extensible window manager using a Lisp-based scripting language"
 HOMEPAGE="https://sawfish.fandom.com/wiki/Main_Page"
