@@ -1,15 +1,17 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit readme.gentoo-r1
 
+MY_P="${PN}-${PV/_rc/rc}"
 DESCRIPTION="An IRC bot extensible with C or TCL"
 HOMEPAGE="https://www.eggheads.org/"
-SRC_URI="https://ftp.eggheads.org/pub/eggdrop/source/${PV:0:3}/${P}.tar.gz"
+SRC_URI="https://ftp.eggheads.org/pub/eggdrop/source/${PV:0:3}/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ppc sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~sparc ~x86"
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="debug doc ipv6 ssl static"
@@ -25,21 +27,11 @@ RDEPEND="
 
 DOCS=( AUTHORS FEATURES INSTALL NEWS README THANKS UPGRADING )
 
-src_prepare() {
-	# https://bugs.gentoo.org/335230
-	# https://github.com/eggheads/eggdrop/issues/526
-	sed -i \
-		-e '/\$(LD)/s/-o/$(CFLAGS) $(LDFLAGS) &/' \
-		src/mod/*.mod/Makefile* src/Makefile.in || die
-	default
-}
-
 src_configure() {
 	econf $(use_enable ssl tls) \
 		$(use_enable ipv6 ipv6)
 
-	# https://github.com/eggheads/eggdrop/issues/527
-	emake -j1 config
+	emake config
 }
 
 src_compile() {
@@ -57,8 +49,7 @@ src_compile() {
 }
 
 src_install() {
-	# https://github.com/eggheads/eggdrop/issues/527
-	emake -j1 DEST="${D}"/opt/eggdrop install
+	emake DEST="${D}"/opt/eggdrop install
 
 	use doc && HTML_DOCS=( doc/html/. )
 	rm -r "${D}"/opt/eggdrop/doc/html || die
