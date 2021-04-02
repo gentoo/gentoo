@@ -3,6 +3,8 @@
 
 EAPI=7
 
+# ninja doesn't like "-lcblas" so using make.
+CMAKE_MAKEFILE_GENERATOR="emake"
 PYTHON_COMPAT=( python3_{7..9} )
 inherit cmake python-any-r1
 
@@ -33,9 +35,6 @@ DEPEND="dev-libs/gmp:=
 	ntl? ( dev-libs/ntl:= )
 	virtual/cblas"
 RDEPEND="${DEPEND}"
-
-# ninja doesn't like "-lcblas" so using make.
-CMAKE_MAKEFILE_GENERATOR="emake"
 
 src_configure() {
 	local mycmakeargs=(
