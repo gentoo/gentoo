@@ -1,7 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 inherit autotools eutils
 
 DESCRIPTION="Utility for controlling IPMI enabled devices."
@@ -61,9 +62,9 @@ src_prepare() {
 			-e '/0120-openssl1.1.patch/d' \
 			debian/patches/series
 		for p in $(cat debian/patches/series) ; do
-			echo $p
+			echo ${p}
 			if ! nonfatal eapply -p1 debian/patches/$p ; then
-				echo "failed $p"
+				echo "failed ${p}"
 				fail=1
 			fi
 		done
@@ -84,7 +85,7 @@ src_prepare() {
 		#"${pd}"/0010.0010-utf8.patch
 	)
 	for p in "${PATCHES[@]}" ; do
-		eapply -p1 $p || die "failed $p"
+		eapply -p1 ${p} || die "failed ${p}"
 	done
 
 	eautoreconf
