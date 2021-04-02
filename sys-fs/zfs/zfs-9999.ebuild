@@ -34,7 +34,6 @@ DEPEND="
 	net-libs/libtirpc[static-libs?]
 	sys-apps/util-linux[static-libs?]
 	sys-libs/zlib[static-libs(+)?]
-	virtual/awk
 	virtual/libudev[static-libs(-)?]
 	libressl? ( dev-libs/libressl:0=[static-libs?] )
 	!libressl? ( dev-libs/openssl:0=[static-libs?] )
@@ -53,10 +52,12 @@ BDEPEND="virtual/awk
 	)
 "
 
+# awk is used for some scripts, completions, and the Dracut module
 RDEPEND="${DEPEND}
 	!kernel-builtin? ( ~sys-fs/zfs-kmod-${PV} )
 	!prefix? ( virtual/udev )
 	sys-fs/udev-init-scripts
+	virtual/awk
 	rootfs? (
 		app-arch/cpio
 		app-misc/pax-utils
