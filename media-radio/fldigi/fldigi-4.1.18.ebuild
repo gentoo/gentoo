@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS ChangeLog NEWS README )
 
-PATCHES=( "$FILESDIR"/$PN-c++11.patch )
+PATCHES=( "${FILESDIR}"/${PN}-c++11.patch )
 
 src_configure() {
 	local myconf=""
