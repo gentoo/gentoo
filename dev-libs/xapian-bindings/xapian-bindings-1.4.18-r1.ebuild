@@ -17,7 +17,7 @@ PHP_EXT_OPTIONAL_USE="php"
 USE_RUBY="ruby24 ruby25 ruby26"
 RUBY_OPTIONAL="yes"
 
-inherit java-pkg-opt-2 lua mono-env multibuild php-ext-source-r3 python-r1 ruby-ng toolchain-funcs
+inherit java-pkg-opt-2 lua mono-env multibuild php-ext-source-r3 python-r1 ruby-ng
 
 DESCRIPTION="SWIG and JNI bindings for Xapian"
 HOMEPAGE="https://www.xapian.org/"
@@ -311,7 +311,7 @@ src_install() {
 		java-pkg_dojar java/built/xapian.jar
 		# TODO: make the build system not install this...
 		java-pkg_doso java/.libs/libxapian_jni.so
-		rm -rf "${D}var" || die "could not remove java cruft!"
+		rm -rf "${ED}/var" || die "could not remove java cruft!"
 	fi
 
 	if use lua; then
@@ -334,8 +334,8 @@ src_install() {
 	fi
 
 	# For some USE combinations this directory is not created
-	if [[ -d "${D}/usr/share/doc/xapian-bindings" ]]; then
-		mv "${D}/usr/share/doc/xapian-bindings" "${D}/usr/share/doc/${PF}" || die
+	if [[ -d "${ED}/usr/share/doc/xapian-bindings" ]]; then
+		mv "${ED}/usr/share/doc/xapian-bindings" "${ED}/usr/share/doc/${PF}" || die
 	fi
 
 	dodoc AUTHORS HACKING NEWS TODO README
