@@ -575,7 +575,7 @@ acct-user/tvheadend 0-r1: User for tvheadend
 acct-user/ulogd 0: User for ulogd
 acct-user/ultimaker 0-r1: User for ultimaker
 acct-user/unbound 0-r1: unbound program user
-acct-user/unbound-telemetry 0: user for unbound-telemetry
+acct-user/unbound-telemetry 0 1: user for unbound-telemetry
 acct-user/unifi 0-r1: A user for the UniFi Controller
 acct-user/unifi-video 0: User for Unifi Video
 acct-user/unrealircd 0-r1: System user: unrealircd
@@ -10892,7 +10892,7 @@ dev-util/geany-plugins 1.37-r101: A collection of different plugins for Geany
 dev-util/gengetopt 2.23: A tool to write command line option parsing code for C programs
 dev-util/gertty 1.6.0-r1 9999: Gertty is a console-based interface to the Gerrit Code Review system.
 dev-util/git-delta 0.5.1 0.6.0 0.7.1: A syntax-highlighting pager for git
-dev-util/github-cli 1.4.0 1.5.0 1.7.0 9999: GitHub CLI
+dev-util/github-cli 1.4.0 1.5.0 1.7.0 1.8.1 9999: GitHub CLI
 dev-util/gitlab-ci-linter 2.2.0: linter for .gitlab-ci.yml files
 dev-util/glade 3.36.0: A user interface designer for GTK+ and GNOME
 dev-util/glib-utils 2.66.7 2.68.0: Build utilities for GLib using projects
@@ -15324,7 +15324,7 @@ net-misc/linux-eoip 0.5: Linux support for proprietary MIkrotik EoIP protocol
 net-misc/linuxptp 2.0-r1: The Linux Precision Time Protocol (PTP) implementation
 net-misc/liveice 2000530-r2: Live Source Client For IceCast
 net-misc/lksctp-tools 1.0.18-r1: Tools for Linux Kernel Stream Control Transmission Protocol implementation
-net-misc/lldpd 1.0.3 1.0.4 1.0.5-r1 1.0.6 1.0.7: Implementation of IEEE 802.1ab (LLDP)
+net-misc/lldpd 1.0.7 1.0.9: Implementation of IEEE 802.1ab (LLDP)
 net-misc/mcproxy 1.1.1-r1: A multicast proxy for IGMP/MLD
 net-misc/megatools 1.10.3: Command line tools and C library for accessing Mega cloud storage
 net-misc/memcached 1.6.9: High-performance, distributed memory object caching system
