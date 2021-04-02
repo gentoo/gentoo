@@ -4,7 +4,7 @@ https://bugs.gentoo.org/767139
 From c10ab2d741cf4bbeff8f40f6859c9381606dbf26 Mon Sep 17 00:00:00 2001
 From: orbea <orbea@riseup.net>
 Date: Mon, 25 Jan 2021 22:30:35 -0800
-Subject: [PATCH 1/2] build: Add missing libtool depedencies.
+Subject: [PATCH 1/2] build: Add missing libtool dependencies.
 
 This fixes the build with slibtool.
 ---
