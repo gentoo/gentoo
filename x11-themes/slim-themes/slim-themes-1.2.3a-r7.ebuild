@@ -39,7 +39,7 @@ RDEPEND="x11-misc/slim"
 RESTRICT="strip binchecks"
 
 PATCHES=(
-	"${FILESDIR}/slim-theme-flat.diff"
+	"${FILESDIR}/slim-theme-flat.patch"
 )
 
 src_install() {
