@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -270,7 +270,7 @@ pkg_postinst() {
 
 	if use ldap; then
 		elog
-		elog "You have enabled ldap support with {$PN}."
+		elog "You have enabled ldap support with ${PN}."
 		elog "The man page does NOT contain any information on it yet."
 		elog "Consider using a more recent version or CVS."
 		elog
