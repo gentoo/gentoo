@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit autotools eutils epatch user
+inherit autotools epatch user
 
 DESCRIPTION="A speech server that allows screen readers to interact with festival lite"
 HOMEPAGE="http://eflite.sourceforge.net"
