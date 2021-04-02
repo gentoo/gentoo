@@ -1,15 +1,15 @@
-BDEPEND=virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=virtual/pkgconfig virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile configure install postinst prepare unpack
-DEPEND=dbus? ( sys-apps/dbus ) kernel_linux? ( dev-libs/libnl:3 net-wireless/crda eap-sim? ( sys-apps/pcsc-lite ) ) !kernel_linux? ( net-libs/libpcap ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 ) readline? ( sys-libs/ncurses:0= sys-libs/readline:0= ) !libressl? ( >=dev-libs/openssl-1.0.2k:0=[bindist=] ) libressl? ( dev-libs/libressl:0= ) virtual/pkgconfig
+DEPEND=>=dev-libs/openssl-1.0.2k:0=[bindist=] dbus? ( sys-apps/dbus ) kernel_linux? ( dev-libs/libnl:3 net-wireless/crda eap-sim? ( sys-apps/pcsc-lite ) ) !kernel_linux? ( net-libs/libpcap ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 ) readline? ( sys-libs/ncurses:0= sys-libs/readline:0= )
 DESCRIPTION=IEEE 802.1X/WPA supplicant for secure wireless transfers
 EAPI=7
 HOMEPAGE=https://w1.fi/wpa_supplicant/
-INHERIT=eutils qmake-utils systemd toolchain-funcs readme.gentoo-r1 desktop git-r3
-IUSE=ap bindist broadcom-sta dbus eap-sim eapol-test fasteap +fils +hs2-0 libressl macsec +mbo +mesh p2p privsep ps3 qt5 readline selinux smartcard tdls uncommon-eap-types wimax wps kernel_linux kernel_FreeBSD
+INHERIT=desktop qmake-utils readme.gentoo-r1 systemd toolchain-funcs git-r3
+IUSE=ap bindist broadcom-sta dbus eap-sim eapol-test fasteap +fils +hs2-0 macsec +mbo +mesh p2p privsep ps3 qt5 readline selinux smartcard tdls uncommon-eap-types wimax wps kernel_linux kernel_FreeBSD
 LICENSE=|| ( GPL-2 BSD )
 PROPERTIES=live
-RDEPEND=dbus? ( sys-apps/dbus ) kernel_linux? ( dev-libs/libnl:3 net-wireless/crda eap-sim? ( sys-apps/pcsc-lite ) ) !kernel_linux? ( net-libs/libpcap ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 ) readline? ( sys-libs/ncurses:0= sys-libs/readline:0= ) !libressl? ( >=dev-libs/openssl-1.0.2k:0=[bindist=] ) libressl? ( dev-libs/libressl:0= ) selinux? ( sec-policy/selinux-networkmanager )
+RDEPEND=>=dev-libs/openssl-1.0.2k:0=[bindist=] dbus? ( sys-apps/dbus ) kernel_linux? ( dev-libs/libnl:3 net-wireless/crda eap-sim? ( sys-apps/pcsc-lite ) ) !kernel_linux? ( net-libs/libpcap ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 ) readline? ( sys-libs/ncurses:0= sys-libs/readline:0= ) selinux? ( sec-policy/selinux-networkmanager )
 REQUIRED_USE=macsec? ( !privsep ) privsep? ( !macsec ) broadcom-sta? ( !fils !mesh !mbo )
 SLOT=0
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	desktop	c0d27bf73aa08ca05b663dbd31fbef28	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
-_md5_=591387d1b946788e6a381c5c605234e0
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
+_md5_=00685838841780e6963a70d9c5e27fa1
