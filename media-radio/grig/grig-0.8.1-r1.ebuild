@@ -29,5 +29,5 @@ src_configure() {
 src_install() {
 	default
 	make_desktop_entry ${PN} "GRig" "/usr/share/pixmaps/grig/grig-logo.png" "HamRadio"
-	rm -rf "${D}/usr/share/grig" || die "cleanup docs failed"
+	rm -rf "${ED}/usr/share/grig" || die "cleanup docs failed"
 }
