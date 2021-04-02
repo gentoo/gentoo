@@ -247,7 +247,7 @@ src_install() {
 
 	if use gtk ; then
 		# Fix tray paths for e16 (x11-wm/enlightenment) and other
-		# implementations that are not complient with new hicolor theme yet, #323355
+		# implementations that are not compliant with new hicolor theme yet, #323355
 		local pixmapdir
 		for d in 16 22 32 48; do
 			pixmapdir=${ED}/usr/share/pixmaps/pidgin/tray/hicolor/${d}x${d}/actions
