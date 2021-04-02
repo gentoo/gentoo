@@ -8127,8 +8127,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7 1.0.8: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r4: Amazon Web Services API
-dev-python/boto3 1.17.17 1.17.22 1.17.27 1.17.33 1.17.39 1.17.40 1.17.41 1.17.42 1.17.43 9999: The AWS SDK for Python
-dev-python/botocore 1.20.17 1.20.22 1.20.27 1.20.33 1.20.39 1.20.40 1.20.41 1.20.42 1.20.43 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.17.17 1.17.22 1.17.27 1.17.33 1.17.39 1.17.40 1.17.41 1.17.42 1.17.43 1.17.44 9999: The AWS SDK for Python
+dev-python/botocore 1.20.17 1.20.22 1.20.27 1.20.33 1.20.39 1.20.40 1.20.41 1.20.42 1.20.43 1.20.44 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.21: Syntax highlighting and autocompletion for the Python interpreter
@@ -9297,7 +9297,7 @@ dev-python/sphinxcontrib-spelling 7.1.0: Sphinx spelling extension
 dev-python/sphinxcontrib-websupport 1.2.4: Sphinx websupport extension
 dev-python/spur 0.3.22: Run commands locally or over SSH using the same interface
 dev-python/spyder 4.2.0 4.2.3 4.2.5: The Scientific Python Development Environment
-dev-python/spyder-kernels 1.10.0 1.10.2: Kernels used by spyder on its ipython console
+dev-python/spyder-kernels 1.10.0 1.10.2 2.0.1: Kernels used by spyder on its ipython console
 dev-python/spyder-line-profiler 0.2.1: Plugin to run the python line profiler from within the spyder editor
 dev-python/spyder-memory-profiler 0.2.1: Plugin to run the python memory_profiler from within the spyder editor
 dev-python/spyder-notebook 0.3.2: Jupyter notebook integration with Spyder
