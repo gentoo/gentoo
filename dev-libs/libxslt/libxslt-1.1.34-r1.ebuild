@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit libtool multilib-minimal toolchain-funcs
+inherit libtool multilib-minimal
 
 # Note: Please bump this in sync with dev-libs/libxml2.
 DESCRIPTION="XSLT libraries and tools"
@@ -13,7 +13,6 @@ SRC_URI="ftp://xmlsoft.org/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-
 IUSE="crypt debug examples static-libs elibc_Darwin"
 
 BDEPEND=">=virtual/pkgconfig-1"
