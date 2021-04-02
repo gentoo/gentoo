@@ -27,7 +27,7 @@ src_prepare() {
 	eapply_user
 	# fix missing prototype for malloc
 	sed -i -e "/^#include /i #include <stdlib.h>" ax25ipd/routing.c || die
-	eapply "$FILESDIR"/$PN-0.0.8_rc5-tinfo.patch
+	eapply "${FILESDIR}"/${PN}-0.0.8_rc5-tinfo.patch
 	eautoreconf
 }
 
