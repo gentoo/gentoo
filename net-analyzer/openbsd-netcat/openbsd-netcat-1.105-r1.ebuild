@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit toolchain-funcs eutils
+inherit toolchain-funcs
 
 DESCRIPTION="The OpenBSD network swiss army knife"
 HOMEPAGE="http://www.openbsd.org/cgi-bin/cvsweb/src/usr.bin/nc/"
