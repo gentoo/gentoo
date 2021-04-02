@@ -22,7 +22,7 @@ LICENSE="
 "
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
-IUSE="cxx17 test"
+IUSE="+cxx17 test"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
