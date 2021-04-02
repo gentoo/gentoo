@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools
 
 MY_PV="$(ver_rs 1- '')"
@@ -10,6 +11,7 @@ SOURCES_NAME="linux-UFRII-drv-v${MY_PV}-uken"
 DESCRIPTION="Canon UFR II / LIPSLX Printer Driver for Linux"
 HOMEPAGE="https://www.canon-europe.com/support/products/imagerunner/imagerunner-1730i.aspx"
 SRC_URI="http://gdlp01.c-wss.com/gds/8/0100007658/08/${SOURCES_NAME}-05.tar.gz"
+S="${WORKDIR}/${SOURCES_NAME}/Sources/${P}"
 
 LICENSE="Canon-UFR-II"
 SLOT="0"
@@ -23,10 +25,7 @@ RDEPEND="
 	~net-print/cndrvcups-common-lb-${PV}
 	>=x11-libs/gtk+-2.4:2
 "
-DEPEND="${DEPEND}"
-BDEPEND=""
-
-S="${WORKDIR}/${SOURCES_NAME}/Sources/${P}"
+DEPEND="${RDEPEND}"
 
 MAKEOPTS+=" -j1"
 
@@ -79,7 +78,7 @@ src_install() {
 	default
 	einstalldocs
 
-	find "${D}" -name '*.la' -type f -delete || die
+	find "${ED}" -name '*.la' -type f -delete || die
 
 	insinto /usr/share/cups/model
 	doins ppd/*.ppd
