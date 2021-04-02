@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_7 )
 
-if [[ $PV = *9999* ]]; then
+if [[ ${PV} = *9999* ]]; then
 	scm_eclass=git-r3
 	EGIT_REPO_URI="https://github.com/Becksteinlab/${PN}.git"
 	EGIT_BRANCH="develop"
