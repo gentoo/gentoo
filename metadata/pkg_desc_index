@@ -10860,7 +10860,7 @@ dev-util/dirdiff 2.1-r3: A tool for differing and merging directories
 dev-util/dissembler 0.9-r1: polymorphs bytecode to a printable ASCII string
 dev-util/distro-info 0.22 1.0: Provides information about the Debian distributions' releases
 dev-util/distro-info-data 0.29 0.42 0.46: Information about the Debian distributions' releases (data files)
-dev-util/dmake 4.12.2: Improved make
+dev-util/dmake 4.12.2 4.13.1: Improved make
 dev-util/docker-distribution-pruner 0_p20170401: Clean all old container revisions from registry
 dev-util/docker-ls 0.3.1: Tools for browsing and manipulating docker registries
 dev-util/dogtail 0.9.11: GUI test tool and automation framework using accessibility framework
