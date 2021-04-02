@@ -1,8 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit autotools eutils
+EAPI=7
+
+inherit autotools
 
 DESCRIPTION="A network monitoring tool with bandwidth tracking"
 HOMEPAGE="http://www.adaptive-enterprises.com.au/~d/software/pktstat/"
@@ -12,18 +13,21 @@ LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 
+BDEPEND="virtual/pkgconfig"
 RDEPEND="
 	net-libs/libpcap
 	>=sys-libs/ncurses-5.3-r1
 "
-DEPEND="
-	${RDEPEND}
-	virtual/pkgconfig
-"
+DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-tinfo.patch
+	"${FILESDIR}"/${P}-smtp_line.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-tinfo.patch
-	epatch "${FILESDIR}"/${P}-smtp_line.patch
+	default
+
 	eautoreconf
 }
 
