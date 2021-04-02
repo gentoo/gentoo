@@ -1,0 +1,15 @@
+BDEPEND=>=app-portage/elt-patches-20170815
+DEFINED_PHASES=configure install prepare
+DEPEND=iconv? ( virtual/libiconv ) dev-libs/kpathsea
+DESCRIPTION=Library for Japanese pTeX providing a better way of handling character encodings
+EAPI=7
+HOMEPAGE=http://tutimura.ath.cx/ptexlive/?ptexenc
+INHERIT=libtool
+IUSE=iconv static-libs
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-macos ~x64-macos
+LICENSE=BSD
+RDEPEND=iconv? ( virtual/libiconv ) dev-libs/kpathsea
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~zlogene/distfiles/texlive/texlive-20210325-source.tar.xz
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96
+_md5_=36f9581280f27f8a3f56dcf15b47e065
