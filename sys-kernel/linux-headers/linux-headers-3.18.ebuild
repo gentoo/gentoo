@@ -30,6 +30,16 @@ src_prepare() {
 	[[ -n ${PATCH_VER} ]] && eapply "${WORKDIR}/${PV}"/*.patch
 }
 
+src_test() {
+	einfo "Possible unescaped attribute/type usage"
+	egrep -r \
+		-e '(^|[[:space:](])(asm|volatile|inline)[[:space:](]' \
+		-e '\<([us](8|16|32|64))\>' \
+		.
+
+	emake ARCH=$(tc-arch-kernel) headers_check
+}
+
 src_install() {
 	kernel-2_src_install
 
@@ -39,14 +49,4 @@ src_install() {
 
 	# provided by libdrm (for now?)
 	rm -rf "${ED}"/$(kernel_header_destdir)/drm
-}
-
-src_test() {
-	einfo "Possible unescaped attribute/type usage"
-	egrep -r \
-		-e '(^|[[:space:](])(asm|volatile|inline)[[:space:](]' \
-		-e '\<([us](8|16|32|64))\>' \
-		.
-
-	emake ARCH=$(tc-arch-kernel) headers_check
 }

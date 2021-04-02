@@ -30,14 +30,6 @@ src_prepare() {
 	[[ -n ${PATCH_VER} ]] && eapply "${WORKDIR}/${PV}"/*.patch
 }
 
-src_install() {
-	kernel-2_src_install
-
-	# hrm, build system sucks
-	find "${ED}" '(' -name '.install' -o -name '*.cmd' ')' -delete
-	find "${ED}" -depth -type d -delete 2>/dev/null
-}
-
 src_test() {
 	einfo "Possible unescaped attribute/type usage"
 	egrep -r \
@@ -46,4 +38,12 @@ src_test() {
 		.
 
 	emake ARCH=$(tc-arch-kernel) headers_check
+}
+
+src_install() {
+	kernel-2_src_install
+
+	# hrm, build system sucks
+	find "${ED}" '(' -name '.install' -o -name '*.cmd' ')' -delete
+	find "${ED}" -depth -type d -delete 2>/dev/null
 }
