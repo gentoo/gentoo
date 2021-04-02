@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils toolchain-funcs flag-o-matic
+inherit flag-o-matic toolchain-funcs
 
-DESCRIPTION="small secure replacement for syslogd with automatic log rotation"
+DESCRIPTION="Small secure replacement for syslogd with automatic log rotation"
 HOMEPAGE="http://smarden.org/socklog/"
 SRC_URI="http://smarden.org/socklog/${P}.tar.gz"
 
