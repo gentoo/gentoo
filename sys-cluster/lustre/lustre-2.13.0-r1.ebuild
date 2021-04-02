@@ -7,7 +7,7 @@ WANT_AUTOCONF="2.5"
 WANT_AUTOMAKE="1.15"
 WANT_LIBTOOL="latest"
 
-if [[ $PV = *9999* ]]; then
+if [[ ${PV} = *9999* ]]; then
 	scm="git-r3"
 	SRC_URI=""
 	EGIT_REPO_URI="git://git.whamcloud.com/fs/lustre-release.git"
