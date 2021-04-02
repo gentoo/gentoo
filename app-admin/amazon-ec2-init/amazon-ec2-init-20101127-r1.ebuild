@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -19,7 +19,7 @@ RDEPEND="net-misc/wget"
 DEPEND=""
 
 # EAPI 4+ requires $S to be set
-S="$WORKDIR"
+S="${WORKDIR}"
 
 src_install() {
 	newinitd "${FILESDIR}/amazon-ec2.init" amazon-ec2
