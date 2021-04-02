@@ -2988,7 +2988,7 @@ app-text/docbook2X 0.8.8-r4: Tools to convert docbook to man and info
 app-text/docx2txt 1.4: Convert MS Office docx files to plain text
 app-text/dos2unix 7.3.5 7.4.1 7.4.2: Convert DOS or MAC text files to UNIX format or vice versa
 app-text/dvipng 1.17: Translate DVI files into PNG or GIF graphics
-app-text/dvipsk 2020.1_p20200406: DVI-to-PostScript translator
+app-text/dvipsk 2020.1_p20200406 2021.1_p20210325: DVI-to-PostScript translator
 app-text/dvisvgm 2.10.1-r1 2.11-r1: Converts DVI files to SVG
 app-text/ebook-tools 0.2.2-r2: Tools for accessing and converting various ebook file formats
 app-text/editorconfig-core-c 0.12.3-r2 0.12.4: EditorConfig core library written in C
@@ -10656,7 +10656,7 @@ dev-tex/biber 2.14 2.16: A BibTeX replacement for users of biblatex
 dev-tex/biblatex 3.14 3.16: Reimplementation of the bibliographic facilities provided by LaTeX
 dev-tex/biblatex-gost 1.17: Biblatex styles for Russian GOST 7.0.5-2008 bibliography standard
 dev-tex/bibtex2html 1.99: A bibtex to HTML converter
-dev-tex/bibtexu 3.71_p20200406: 8-bit Implementation of BibTeX 0.99 with a Very Large Capacity
+dev-tex/bibtexu 3.71_p20200406 3.71_p20210325: 8-bit Implementation of BibTeX 0.99 with a Very Large Capacity
 dev-tex/catdvi 0.14-r2: DVI to plain text translator
 dev-tex/cpp2latex 2.3-r2: A program to convert C++ code to LaTeX source
 dev-tex/culmus-latex 0.7-r1: Culmus fonts support for latex
