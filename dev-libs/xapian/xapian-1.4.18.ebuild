@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit eutils multilib-minimal
+inherit multilib-minimal
 
 MY_P="${PN}-core-${PV}"
 
@@ -41,7 +41,7 @@ multilib_src_configure() {
 
 	myconf="${myconf} --enable-backend-glass --enable-backend-chert --program-suffix="
 
-	ECONF_SOURCE=${S} econf $myconf
+	ECONF_SOURCE=${S} econf ${myconf}
 }
 
 MULTILIB_WRAPPED_HEADERS=(
@@ -65,10 +65,10 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	if use doc; then
-		rm -rf "${D}/usr/share/doc/xapian-core-${PV}" || die
+		rm -rf "${ED}/usr/share/doc/xapian-core-${PV}" || die
 	fi
 
 	dodoc AUTHORS HACKING PLATFORMS README NEWS
 
-	find "${D}" -name "*.la" -type f -delete || die
+	find "${ED}" -name "*.la" -type f -delete || die
 }
