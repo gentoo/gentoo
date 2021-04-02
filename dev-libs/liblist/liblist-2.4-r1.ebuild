@@ -1,9 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
-inherit autotools
 
 DESCRIPTION="Generic linked-list manipulation routines, plus queues and stacks"
 HOMEPAGE="http://ohnopub.net/liblist"
@@ -14,13 +12,13 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc ~ppc64 x86 ~amd64-linux"
 IUSE="doc examples"
 
-RDEPEND="
+BDEPEND="
 	doc? (
 		dev-texlive/texlive-metapost
 		media-gfx/transfig
 		virtual/latex-base
-	)"
-DEPEND="${RDEPEND}"
+	)
+"
 
 src_configure() {
 	econf \
@@ -42,7 +40,7 @@ src_install() {
 	docompress -x /usr/share/doc/${PF}/{list.0,paper.dvi,examples}
 
 	# no static archives
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
