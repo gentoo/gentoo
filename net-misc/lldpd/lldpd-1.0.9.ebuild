@@ -10,8 +10,8 @@ HOMEPAGE="https://vincentbernat.github.com/lldpd/"
 SRC_URI="http://media.luffy.cx/files/${PN}/${P}.tar.gz"
 
 LICENSE="ISC"
-SLOT="0/4.8.0"
-KEYWORDS="amd64 x86"
+SLOT="0/4.9.0"
+KEYWORDS="~amd64 ~x86"
 IUSE="cdp doc +dot1 +dot3 edp fdp graph +lldpmed old-kernel sanitizers
 	seccomp sonmp snmp static-libs test readline xml zsh-completion"
 RESTRICT="!test? ( test )"
@@ -20,7 +20,7 @@ RDEPEND="
 	acct-group/lldpd
 	acct-user/lldpd
 	dev-libs/libbsd
-	>=dev-libs/libevent-2.0.5:=
+	>=dev-libs/libevent-2.1.11:=
 	sys-libs/readline:0=
 	seccomp? ( sys-libs/libseccomp:= )
 	snmp? ( net-analyzer/net-snmp[extensible(+)] )
@@ -38,11 +38,6 @@ BDEPEND="virtual/pkgconfig
 "
 
 REQUIRED_USE="graph? ( doc )"
-
-PATCHES=(
-	"${FILESDIR}/lldpd-1.0.5-seccomp.patch"
-	"${FILESDIR}/lldpd-1.0.5-cpp.patch"
-)
 
 src_prepare() {
 	default
