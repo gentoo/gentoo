@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Implementation of the 3D Manufacturing Format file standard"
 HOMEPAGE="https://3mf.io/"
-SRC_URI="https://github.com/3MFConsortium/$PN/archive/v$PV.tar.gz -> $P.tar.gz"
+SRC_URI="https://github.com/3MFConsortium/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
