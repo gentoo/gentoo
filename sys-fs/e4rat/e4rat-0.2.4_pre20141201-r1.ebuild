@@ -1,7 +1,8 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 inherit cmake-utils linux-info readme.gentoo-r1
 
 DESCRIPTION="Toolset to accelerate the boot process and application startup"
@@ -12,7 +13,6 @@ SRC_URI="https://dev.gentoo.org/~pacho/${PN}/${PN}-0.2.4_pre20141201.tar.xz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
 RDEPEND="
 	dev-lang/perl:=
@@ -21,7 +21,7 @@ RDEPEND="
 	sys-process/audit[static-libs(+)]
 	sys-process/lsof
 "
-DEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 
 CONFIG_CHECK="~AUDITSYSCALL"
 
