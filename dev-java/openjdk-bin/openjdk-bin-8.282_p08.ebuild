@@ -27,13 +27,14 @@ DESCRIPTION="Prebuilt Java JDK binaries provided by AdoptOpenJDK"
 HOMEPAGE="https://adoptopenjdk.net"
 SRC_URI="
 	$(abi_uri aarch64 arm64 jdk${MY_PV})
+	$(abi_uri arm arm jdk${MY_PV})
 	$(abi_uri ppc64le ppc64)
 	$(abi_uri x64 amd64)
 	$(abi_uri x64 x64-macos)
 "
 
 LICENSE="GPL-2-with-classpath-exception"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x64-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x64-macos"
 
 IUSE="alsa cups examples headless-awt selinux source"
 
