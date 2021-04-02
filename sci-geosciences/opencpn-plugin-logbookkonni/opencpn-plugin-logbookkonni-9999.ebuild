@@ -43,8 +43,8 @@ src_prepare() {
 src_install() {
 	# install layouts as zip
 	cmake-utils_src_install
-	cd "$WORKDIR"
-	zip -r "$D"/usr/share/opencpn/plugins/logbookkonni_pi/data/LogbookKonni_Layouts.zip Clouds HTMLLayouts ODTLayouts
+	cd "${WORKDIR}" || die
+	zip -r "${D}"/usr/share/opencpn/plugins/logbookkonni_pi/data/LogbookKonni_Layouts.zip Clouds HTMLLayouts ODTLayouts || die
 }
 
 pkg_postinst() {
