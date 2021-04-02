@@ -5,7 +5,7 @@ EAPI=7
 
 inherit texlive-common libtool prefix tmpfiles
 
-TEXMFD_VERSION="10"
+TEXMFD_VERSION="11"
 
 DESCRIPTION="Path searching library for TeX-related files"
 HOMEPAGE="http://tug.org/texlive/"
@@ -19,7 +19,7 @@ IUSE="doc source static-libs"
 
 S=${WORKDIR}/texlive-${PV#*_p}-source/texk/${PN}
 
-TL_VERSION=2020
+TL_VERSION=2021
 EXTRA_TL_MODULES="kpathsea"
 EXTRA_TL_DOC_MODULES="kpathsea.doc"
 
