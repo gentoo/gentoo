@@ -9,7 +9,7 @@ MY_PN="wine-nine-standalone"
 DESCRIPTION="A standalone version of the WINE parts of Gallium Nine"
 HOMEPAGE="https://github.com/iXit/wine-nine-standalone"
 
-if [[ $PV = 9999* ]]; then
+if [[ ${PV} = 9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/iXit/${MY_PN}.git"
 else
