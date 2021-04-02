@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools eutils multilib user systemd tmpfiles
+
+inherit autotools systemd tmpfiles user
 
 DESCRIPTION="A powerful latency measurement tool"
 HOMEPAGE="https://oss.oetiker.ch/smokeping/"
@@ -11,7 +12,6 @@ SRC_URI="https://oss.oetiker.ch/smokeping/pub/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-
 IUSE="apache2 curl dig echoping ipv6 radius"
 
 DEPEND="
@@ -45,7 +45,6 @@ DEPEND="
 	ipv6? ( >=dev-perl/Socket6-0.20 )
 	radius? ( dev-perl/Authen-Radius )
 "
-
 RDEPEND="${DEPEND}"
 
 pkg_setup() {
@@ -58,8 +57,9 @@ src_prepare() {
 
 	sed -i -e '/^SUBDIRS = / s|thirdparty||g' Makefile.am || die
 	sed -i -e '/^perllibdir = / s|= .*|= $(libdir)|g' lib/Makefile.am || die
-	rm -r lib/{BER.pm,SNMP_Session.pm,SNMP_util.pm} || die # dev-perl/SNMP_Session
-	echo ${PV} > VERSION
+	# bundled(?) dev-perl/SNMP_Session
+	rm -r lib/{BER.pm,SNMP_Session.pm,SNMP_util.pm} || die
+	echo ${PV} > VERSION || die
 
 	eautoreconf
 }
@@ -79,14 +79,14 @@ src_install() {
 	default
 
 	newinitd "${FILESDIR}"/${PN}.init.5 ${PN}
-	dotmpfiles "${FILESDIR}"/"${PN}".conf
-	systemd_dounit "${FILESDIR}"/"${PN}".service
+	dotmpfiles "${FILESDIR}"/${PN}.conf
+	systemd_dounit "${FILESDIR}"/${PN}.service
 
-	mv "${D}/etc/smokeping/basepage.html.dist" "${D}/etc/smokeping/basepage.html"
-	mv "${D}/etc/smokeping/config.dist" "${D}/etc/smokeping/config"
-	mv "${D}/etc/smokeping/smokemail.dist" "${D}/etc/smokeping/smokemail"
-	mv "${D}/etc/smokeping/smokeping_secrets.dist" "${D}/etc/smokeping/smokeping_secrets"
-	mv "${D}/etc/smokeping/tmail.dist" "${D}/etc/smokeping/tmail"
+	mv "${ED}/etc/smokeping/basepage.html.dist" "${ED}/etc/smokeping/basepage.html" || die
+	mv "${ED}/etc/smokeping/config.dist" "${ED}/etc/smokeping/config" || die
+	mv "${ED}/etc/smokeping/smokemail.dist" "${ED}/etc/smokeping/smokemail" || die
+	mv "${ED}/etc/smokeping/smokeping_secrets.dist" "${ED}/etc/smokeping/smokeping_secrets" || die
+	mv "${ED}/etc/smokeping/tmail.dist" "${ED}/etc/smokeping/tmail" || die
 
 	sed -i \
 		-e '/^imgcache/{s:\(^imgcache[ \t]*=\).*:\1 /var/lib/smokeping/.simg:}' \
@@ -98,27 +98,27 @@ src_install() {
 		-e '/^tmail/{s:\(^tmail[ \t]*=\).*:\1 /etc/smokeping/tmail:}' \
 		-e '/^secrets/{s:\(^secrets[ \t]*=\).*:\1 /etc/smokeping/smokeping_secrets:}' \
 		-e '/^template/{s:\(^template[ \t]*=\).*:\1 /etc/smokeping/basepage.html:}' \
-		"${D}/etc/${PN}/config" || die
+		"${ED}/etc/${PN}/config" || die
 
 	sed -i \
 		-e '/^<script/{s:cropper/:/cropper/:}' \
-		"${D}/etc/${PN}/basepage.html" || die
+		"${ED}/etc/${PN}/basepage.html" || die
 
 	sed -i \
 		-e 's/$FindBin::RealBin\/..\/etc\/config/\/etc\/smokeping\/config/g' \
-		"${D}/usr/bin/smokeping" "${D}/usr/bin/smokeping_cgi" || die
+		"${ED}/usr/bin/smokeping" "${ED}/usr/bin/smokeping_cgi" || die
 
 	sed -i \
 		-e 's:etc/config.dist:/etc/smokeping/config:' \
-		"${D}/usr/bin/tSmoke" || die
+		"${ED}/usr/bin/tSmoke" || die
 
 	sed -i \
 		-e 's:/usr/etc/config:/etc/smokeping/config:' \
-		"${D}/var/www/localhost/smokeping/smokeping.fcgi.dist" || die
+		"${ED}/var/www/localhost/smokeping/smokeping.fcgi.dist" || die
 
 	dodir /var/www/localhost/cgi-bin
-		mv "${D}/var/www/localhost/smokeping/smokeping.fcgi.dist" \
-		"${D}/var/www/localhost/cgi-bin/smokeping.fcgi"
+	mv "${ED}/var/www/localhost/smokeping/smokeping.fcgi.dist" \
+		"${ED}/var/www/localhost/cgi-bin/smokeping.fcgi" || die
 
 	fperms 700 /etc/${PN}/smokeping_secrets
 
@@ -142,6 +142,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	chown smokeping:smokeping "${ROOT}/var/lib/${PN}"
-	chmod 755 "${ROOT}/var/lib/${PN}"
+	chown smokeping:smokeping "${EROOT}"/var/lib/${PN} || die
+	chmod 755 "${EROOT}"/var/lib/${PN} || die
 }
