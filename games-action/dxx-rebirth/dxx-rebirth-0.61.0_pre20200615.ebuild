@@ -9,7 +9,6 @@ inherit desktop eutils python-any-r1 scons-utils toolchain-funcs xdg
 if [[ "${PV}" = 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/dxx-rebirth/dxx-rebirth"
-	PROPERTIES="live"
 else
 	# dxx-rebirth-0.61.0_pre20190720.ebuild
 	#MY_COMMIT='a17792c89fd49dd12fdf5981670dd7f64b42850f'
