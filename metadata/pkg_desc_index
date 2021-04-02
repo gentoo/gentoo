@@ -3702,7 +3702,7 @@ dev-db/spatialite-tools 4.3.0-r1 5.0.1-r1: A collection of CLI tools supporting 
 dev-db/sqlcipher 3.4.2 4.0.1: Full Database Encryption for SQLite
 dev-db/sqlcl-bin 20.4.1.351.1718: Oracle SQLcl is the new SQL*Plus
 dev-db/sqldeveloper 4.2.0.17.089.1709 20.2.0.175.1842 20.4.0.379.2205: Oracle SQL Developer is a graphical tool for database development
-dev-db/sqlite 3.33.0 3.34.0 3.34.1 3.35.0 3.35.1 3.35.2 3.35.3: SQL database engine
+dev-db/sqlite 3.34.1 3.35.0 3.35.1 3.35.2 3.35.3: SQL database engine
 dev-db/sqlitebrowser 3.11.1-r1 3.12.1 9999: A light GUI editor for SQLite databases
 dev-db/sqliteman 1.2.2-r4: Powerful GUI manager for the Sqlite3 database
 dev-db/sqlitestudio 3.2.1-r1: Powerful cross-platform SQLite database manager
@@ -5754,7 +5754,7 @@ dev-libs/rapidjson 1.1.0-r2 1.1.0-r3 9999: A fast JSON parser/generator for C++ 
 dev-libs/rapidxml 1.13 1.13-r1: Fast XML parser
 dev-libs/rasqal 0.9.33: Library that handles Resource Description Framework (RDF)
 dev-libs/rccl 4.0.0-r2: ROCm Communication Collectives Library (RCCL)
-dev-libs/re2 0.2020.11.01 0.2021.02.02: An efficient, principled regular expression library
+dev-libs/re2 0.2020.11.01 0.2021.02.02 0.2021.04.01: An efficient, principled regular expression library
 dev-libs/redland 1.0.17-r2: High-level interface for the Resource Description Framework
 dev-libs/redland-bindings 1.0.17.1-r100: Language bindings for Redland
 dev-libs/replicant 0.8.1: Hyperdex replicant support library
