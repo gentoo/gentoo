@@ -8771,7 +8771,7 @@ dev-python/pickleshare 0.7.5: A small 'shelve' like datastore with concurrency s
 dev-python/pid 3.0.4: Pidfile featuring stale detection and file-locking
 dev-python/piexif 1.1.3-r1: Exif manipulation with pure Python
 dev-python/pika 1.1.0: Pure-Python implementation of the AMQP
-dev-python/pikepdf 2.7.0 2.8.0_p2 2.9.2 2.10.0: Python library to work with pdf files based on qpdf
+dev-python/pikepdf 2.10.0: Python library to work with pdf files based on qpdf
 dev-python/pilkit 2.0: A collection of utilities and processors for the Python Imaging Libary
 dev-python/pillow 8.1.2 8.2.0: Python Imaging Library (fork)
 dev-python/pip 21.0.1: Installs python packages -- replacement for easy_install
