@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 LUA_COMPAT=( lua5-3 )
 LUA_REQ_USE="deprecated"
 
-inherit autotools flag-o-matic git-r3 lua-single toolchain-funcs
+inherit autotools git-r3 lua-single toolchain-funcs
 
 DESCRIPTION="Network exploration tool and security / port scanner"
 HOMEPAGE="https://nmap.org/"
