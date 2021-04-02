@@ -1,0 +1,16 @@
+Workarounds build error:
+Error: dl failure on line 895
+Error relocating .../libjvm.so: _ZN14ArrayAllocatorImL10MemoryType7EE4freeEv: symbol not found
+
+Possibly due to g++ 10.x error on not properly instantiating the template.
+
+--- openjdk/hotspot/src/share/vm/utilities/bitMap.cpp.orig	2020-11-10 14:07:08.372045326 +0200
++++ openjdk/hotspot/src/share/vm/utilities/bitMap.cpp	2020-11-10 14:08:07.911412813 +0200
+@@ -42,6 +42,7 @@
+ # include "os_bsd.inline.hpp"
+ #endif
+ 
++template class ArrayAllocator<BitMap::bm_word_t, mtInternal>;
+ 
+ BitMap::BitMap(bm_word_t* map, idx_t size_in_bits) :
+   _map(map), _size(size_in_bits), _map_allocator(false)
