@@ -27,9 +27,7 @@ RDEPEND="
 	media-libs/openal
 	x11-libs/wxGTK:${WX_GTK_VER}[tiff,X]
 "
-
-DEPEND="${DEPEND}"
-
+DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 DOCS=( "README.md" "TESTED.md" )
