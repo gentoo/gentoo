@@ -18340,7 +18340,7 @@ x11-base/xorg-drivers 1.20-r2 9999: Meta package containing deps on all xorg dri
 x11-base/xorg-proto 2020.1 2021.3 9999: X.Org combined protocol headers
 x11-base/xorg-server 1.20.10-r2 1.20.10-r3 9999: X.Org X servers
 x11-base/xorg-x11 7.4-r3: An X11 implementation maintained by the X.Org Foundation (meta package)
-x11-drivers/nvidia-drivers 390.141 390.141-r1 450.102.04 450.102.04-r1 460.39-r1 460.56 460.67: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 390.141 390.141-r1 450.102.04 450.102.04-r1 460.39-r1 460.56 460.67 465.19.01: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-elographics 1.4.2: Elographics input driver
 x11-drivers/xf86-input-evdev 2.10.6: Generic Linux input driver
 x11-drivers/xf86-input-joystick 1.6.3: X.Org driver for joystick input devices
