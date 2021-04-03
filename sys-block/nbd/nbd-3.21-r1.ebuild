@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit systemd
+
 DESCRIPTION="Userland client/server for kernel network block device"
 HOMEPAGE="http://nbd.sourceforge.net/"
 if [[ "${PV}" = 9999 ]] ; then
@@ -57,4 +59,9 @@ src_configure() {
 		$(use_with netlink libnl)
 	)
 	econf "${myeconfargs[@]}"
+}
+
+src_install() {
+	default
+	systemd_dounit systemd/nbd@.service
 }
