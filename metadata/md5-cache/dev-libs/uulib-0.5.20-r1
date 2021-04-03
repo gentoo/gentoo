@@ -1,12 +1,12 @@
-BDEPEND=sys-devel/libtool >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=sys-devel/libtool
 DEFINED_PHASES=compile configure prepare
 DESCRIPTION=Library that supports Base64 (MIME), uuencode, xxencode and binhex coding
 EAPI=7
 HOMEPAGE=http://www.fpx.de/fp/Software/UUDeview/
-INHERIT=autotools toolchain-funcs
+INHERIT=toolchain-funcs
 KEYWORDS=~alpha amd64 arm ~hppa ~ia64 ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://www.fpx.de/fp/Software/UUDeview/download/uudeview-0.5.20.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba
-_md5_=52cbbd8e45fc30ac01b55005b020e818
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=9d9728d751e5d84b4588daa3555b4ec4

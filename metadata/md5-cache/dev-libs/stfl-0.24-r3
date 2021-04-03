@@ -3,7 +3,7 @@ DEPEND=sys-libs/ncurses:0=[unicode] perl? ( dev-lang/perl:= ) ruby? ( dev-lang/r
 DESCRIPTION=A library which implements a curses-based widget set for text terminals
 EAPI=7
 HOMEPAGE=http://www.clifford.at/stfl/
-INHERIT=eutils multilib perl-module python-r1 toolchain-funcs
+INHERIT=perl-module python-r1 toolchain-funcs
 IUSE=examples perl python ruby static-libs python_targets_python3_7 python_targets_python3_8 python_targets_python3_9
 KEYWORDS=amd64 ~arm ppc ~ppc64 x86
 LICENSE=LGPL-3
@@ -12,5 +12,5 @@ REQUIRED_USE=python? ( || ( python_targets_python3_7 python_targets_python3_8 py
 RESTRICT=test
 SLOT=0
 SRC_URI=http://www.clifford.at/stfl/stfl-0.24.tar.gz
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	ae176ff49e02bcbe576f6436b031c518	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-r1	a0dcde4775c7b2f7530678fc8143340e
-_md5_=79382f8a9bb4bce495aeaed033fbb79c
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	ae176ff49e02bcbe576f6436b031c518	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-r1	a0dcde4775c7b2f7530678fc8143340e
+_md5_=24da50f81897046e40771f54d60467b4
