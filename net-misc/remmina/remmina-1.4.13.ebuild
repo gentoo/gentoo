@@ -96,9 +96,6 @@ src_configure() {
 pkg_postinst() {
 	xdg_pkg_postinst
 
-	elog "To get additional features, some optional runtime dependencies"
-	elog "may be installed:"
-	elog ""
 	optfeature "encrypted VNC connections" net-libs/libvncserver[gcrypt]
 	optfeature "XDMCP support" x11-base/xorg-server[xephyr]
 }
