@@ -1,12 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit versionator toolchain-funcs
+inherit toolchain-funcs
 
-MY_PV=$(replace_all_version_separators _ "$(get_version_component_range 2-)")
-MY_PN=df
+MY_PV=$(ver_cut 2- $(ver_rs 2- '_'))
+MY_PN="df"
 MY_P=${MY_PN}_${MY_PV}
 
 DESCRIPTION="A single-player fantasy game"
@@ -31,8 +31,13 @@ RDEPEND="media-libs/glew:0
 DEPEND="${RDEPEND}
 	media-libs/libsndfile
 	media-libs/openal
-	sys-libs/ncurses-compat:5[unicode]
-	virtual/pkgconfig"
+	sys-libs/ncurses[unicode]"
+BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}/${P}-segfault-fix-729002.patch"
+	"${FILESDIR}/${P}-ncurses.patch"
+)
 
 S=${WORKDIR}/${MY_PN}_linux
 
@@ -41,8 +46,9 @@ QA_PREBUILT="${gamesdir#/}/libs/Dwarf_Fortress"
 RESTRICT="strip"
 
 src_prepare() {
-	rm -f libs/*.so* || die
+	rm libs/*.so* || die
 	sed -i -e '1i#include <cmath>' g_src/ttf_manager.cpp || die
+
 	default
 }
 

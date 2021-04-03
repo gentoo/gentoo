@@ -1,0 +1,22 @@
+diff --git a/g_src/renderer_curses.cpp b/g_src/renderer_curses.cpp
+index 2d90d9c..a5d6282 100644
+--- a/g_src/renderer_curses.cpp
++++ b/g_src/renderer_curses.cpp
+@@ -294,6 +294,8 @@ extern "C" {
+     if (!stub_initialized) {
+       stub_initialized = true;
+       // We prefer libncursesw, but we'll accept libncurses if we have to
++      handle = dlopen("libncursesw.so.6", RTLD_LAZY);
++      if (handle) goto opened;
+       handle = dlopen("libncursesw.so.5", RTLD_LAZY);
+       if (handle) goto opened;
+       handle = dlopen("libncursesw.so", RTLD_LAZY);
+@@ -302,6 +304,8 @@ extern "C" {
+       sleep(5);
+       handle = dlopen("libncurses.dylib", RTLD_LAZY);
+       if (handle) goto opened;
++      handle = dlopen("libncurses.so.6", RTLD_LAZY);
++      if (handle) goto opened;
+       handle = dlopen("libncurses.so.5", RTLD_LAZY);
+       if (handle) goto opened;
+       handle = dlopen("libncurses.so", RTLD_LAZY);
