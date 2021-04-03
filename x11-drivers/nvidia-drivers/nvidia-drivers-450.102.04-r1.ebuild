@@ -354,7 +354,7 @@ pkg_preinst() {
 
 	# try to find driver mismatches using temporary supported-gpus.json
 	for g in $(grep -l 0x10de /sys/bus/pci/devices/*/vendor 2>/dev/null); do
-		g=$(grep -io "\"$(<${g%vendor}device)\"[^}]*branch\":\"[0-9]*" \
+		g=$(grep -io "\"devid\":\"$(<${g%vendor}device)\"[^}]*branch\":\"[0-9]*" \
 			"${ED}"/usr/share/nvidia/supported-gpus.json 2>/dev/null)
 		if [[ ${g} ]]; then
 			g=$((${g##*\"}+1))
