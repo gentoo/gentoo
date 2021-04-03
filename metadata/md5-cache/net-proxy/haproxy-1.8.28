@@ -13,4 +13,4 @@ REQUIRED_USE=pcre-jit? ( pcre ) pcre2-jit? ( pcre2 ) pcre? ( !pcre2 ) device-atl
 SLOT=0/1.8
 SRC_URI=http://haproxy.1wt.eu/download/1.8/src/haproxy-1.8.28.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	linux-info	30ded7f9adbdd03d3e848cdd74f6c395
-_md5_=1aaedb1e137eb52dfcacab5a579fe21b
+_md5_=489487276345fea034701499121b62ea

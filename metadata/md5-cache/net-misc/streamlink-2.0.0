@@ -14,4 +14,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/streamlink/streamlink/releases/download/2.0.0/streamlink-2.0.0.tar.gz https://dev.gentoo.org/~leio/distfiles/streamlink.1-2.0.0.man.xz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-single-r1	c7de0087e87a282f2faec351822e097c	distutils-r1	2ac0db834bfc8d76a5ad34d536d15b35
-_md5_=c1de693a9ba7efe401041782dde9efc4
+_md5_=6986b45b108aa7d9e64828a39806fc5b

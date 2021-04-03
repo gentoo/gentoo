@@ -9,4 +9,4 @@ RDEPEND=!<games-action/dxx-rebirth-0.60 !games-action/d1x-rebirth
 REQUIRED_USE=|| ( l10n_de opl3-musicpack sc55-musicpack textures )
 SLOT=0
 SRC_URI=l10n_de? ( https://www.dxx-rebirth.com/download/dxx/res/d1xr-briefings-ger.dxa ) opl3-musicpack? ( https://www.dxx-rebirth.com/download/dxx/res/d1xr-opl3-music.dxa ) sc55-musicpack? ( https://www.dxx-rebirth.com/download/dxx/res/d1xr-sc55-music.dxa ) textures? ( https://www.dxx-rebirth.com/download/dxx/res/d1xr-hires.dxa )
-_md5_=a3644cf7090476c6352e5bb7df5a7a83
+_md5_=09477b9cb2e0cd5e0774b897ef377bd4
