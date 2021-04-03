@@ -61,6 +61,5 @@ src_prepare() {
 pkg_postinst() {
 	kernel-2_pkg_postinst
 
-	elog "Optional features:"
-	optfeature "Userspace KSM helper" sys-process/uksmd
+	optfeature "userspace KSM helper" sys-process/uksmd
 }
