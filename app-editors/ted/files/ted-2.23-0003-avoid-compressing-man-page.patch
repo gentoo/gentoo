@@ -1,0 +1,32 @@
+From 38fc26c86b07f2d9404fe80ff758a92b2a9cfc85 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Sat, 3 Apr 2021 11:22:28 +0200
+Subject: [PATCH] avoid compressing man page
+
+Fix a QA issue
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+---
+ tedPackage/makefile.in | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/tedPackage/makefile.in b/tedPackage/makefile.in
+index 2b39dd2..a1040ca 100644
+--- a/tedPackage/makefile.in
++++ b/tedPackage/makefile.in
+@@ -194,9 +194,9 @@ datadir:	README		\
+ 	( cd $(PKGDATADIR)/Ted && umask 0 && tar xvf - ) < TedDatadir.tar
+ 	cp $(PKGDATADIR)/Ted/TedDocument-en_US.rtf TedDocument-en_US.rtf
+ 	( umask 022 && mkdir -p $(PKGMANDIR) )
+-	sh ./customize.sh $(CUSTOMIZE_ARGS) < $(PKGDATADIR)/Ted/doc/Ted.1 | \
+-					    gzip -9 > $(PKGMANDIR)/Ted.1.gz
+-	chmod 644 $(PKGMANDIR)/Ted.1.gz
++	sh ./customize.sh $(CUSTOMIZE_ARGS) < $(PKGDATADIR)/Ted/doc/Ted.1 \
++					    > $(PKGMANDIR)/Ted.1
++	chmod 644 $(PKGMANDIR)/Ted.1
+ 	:
+ 	cp $(PKGLSMNAME) $(PKGTEDVARIADIR)/$(PKGLSMNAME)
+ 	cp Ted.desktop $(PKGDESKTOPDIR)/Ted.desktop
+-- 
+2.31.1
+
