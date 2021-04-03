@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -70,7 +70,7 @@ src_prepare() {
 
 	if [[ ! -e configure ]] || use doc ; then
 		if use doc; then
-			cp "${EROOT}"/usr/share/aclocal/gtk-doc.m4 m4 || die
+			cp "${BROOT}"/usr/share/aclocal/gtk-doc.m4 m4 || die
 			gtkdocize --copy --docdir libkmod/docs || die
 		else
 			touch libkmod/docs/gtk-doc.make
