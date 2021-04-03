@@ -1,0 +1,24 @@
+From e4bc4e0d60484507d2808a8d271b7e0b3675f098 Mon Sep 17 00:00:00 2001
+From: Aleix Pol <aleixpol@kde.org>
+Date: Sat, 27 Mar 2021 12:29:14 +0100
+Subject: [PATCH] Bump version to 1.2.0
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 32534c5c..0228c329 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ cmake_minimum_required(VERSION 3.5)
+ 
+-project(PlasmaWaylandProtocols VERSION 1.1.1)
++project(PlasmaWaylandProtocols VERSION 1.2.0)
+ 
+ include(FeatureSummary)
+ include(CMakePackageConfigHelpers)
+-- 
+GitLab
+
