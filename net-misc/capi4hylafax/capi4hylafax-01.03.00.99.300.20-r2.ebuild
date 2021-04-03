@@ -1,7 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 inherit autotools epatch optfeature versionator
 
 FAX_SPOOL_DIR="${ROOT}/var/spool/fax"
@@ -111,7 +112,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo
+	elog
 	elog "To use capi4hylafax:"
 	elog "Make sure that your isdn/capi devices are owned by"
 	elog "the \"uucp\" user (see udev or devfsd config)."
@@ -133,13 +134,12 @@ pkg_postinst() {
 	elog "You should also check special options in:"
 	elog "/etc/conf.d/${PN}"
 	elog
-	elog "The following optional dependency is also available:"
 	optfeature "hylafax integration" net-misc/hylafax
 	elog
 	elog "Then append the following line to your hylafax"
 	elog "config file (${FAX_SPOOL_DIR}/etc/config):"
 	elog "SendFaxCmd:			 /usr/bin/c2faxsend"
-	einfo
+	elog
 }
 
 pkg_config() {
