@@ -24,6 +24,7 @@
     <flag name="spdk">Enable SPDK user-mode storage driver toolkit</flag>
     <flag name="fuse">Build fuse client</flag>
     <flag name="grafana">Install grafana dashboards</flag>
+    <flag name="jaeger">Enable jaegertracing and it's dependent libraries</flag>
     <flag name="kafka">Rados Gateway's pubsub support for Kafka push endpoint</flag>
     <flag name="lttng">Add support for LTTng</flag>
     <flag name="mgr">Build the ceph-mgr daemon</flag>
@@ -32,8 +33,11 @@
     <flag name="rabbitmq">Use rabbitmq-c to build rgw amqp push endpoint</flag>
     <flag name="radosgw">Add radosgw support</flag>
     <flag name="rbd-rwl">Enable librbd persistent write back cache</flag>
+    <flag name="rbd-ssd">Enable librbd persistent write back cache for SSDs</flag>
+    <flag name="rgw-lua">Rados Gateway's support for dynamically adding lua packagess</flag>
     <flag name="system-boost">Use system <pkg>dev-libs/boost</pkg> instead of the bundled one</flag>
     <flag name="uring">Build with support for <pkg>sys-libs/liburing</pkg></flag>
+    <flag name="zbd">Enable <pkg>sys-block/libzbd</pkg> bluestore backend</flag>
     <flag name="xfs">Add xfs support</flag>
     <flag name="zfs">Add zfs support</flag>
   </use>

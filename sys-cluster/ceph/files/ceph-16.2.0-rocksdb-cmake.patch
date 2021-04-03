@@ -1,0 +1,15 @@
+diff --git a/cmake/modules/BuildRocksDB.cmake b/cmake/modules/BuildRocksDB.cmake
+index 58ce26a6ac..2f8702c1dc 100644
+--- a/cmake/modules/BuildRocksDB.cmake
++++ b/cmake/modules/BuildRocksDB.cmake
+@@ -6,10 +6,6 @@ function(build_rocksdb)
+   # CMAKE_PREFIX_PATH, for which reason we'll have to use some other separator.
+   string(REPLACE ";" "!" CMAKE_PREFIX_PATH_ALT_SEP "${CMAKE_PREFIX_PATH}")
+   list(APPEND rocksdb_CMAKE_ARGS -DCMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH_ALT_SEP})
+-  if(CMAKE_TOOLCHAIN_FILE)
+-    list(APPEND rocksdb_CMAKE_ARGS
+-         -DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE})
+-  endif()
+ 
+   if(ALLOCATOR STREQUAL "jemalloc")
+     list(APPEND rocksdb_CMAKE_ARGS -DWITH_JEMALLOC=ON)
