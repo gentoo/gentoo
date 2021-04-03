@@ -118,7 +118,6 @@ python_install_all() {
 	insinto /usr/share/zsh/site-functions
 	newins "${WORKDIR}/${P}/extra/_beet" _beet
 
-	elog "Optional dependencies:"
 	optfeature "badfiles support" "media-libs/flac media-sound/mp3val"
 	optfeature "chromaprint support" "dev-python/pyacoustid media-libs/chromaprint[tools]"
 	optfeature "discogs support" dev-python/discogs-client
