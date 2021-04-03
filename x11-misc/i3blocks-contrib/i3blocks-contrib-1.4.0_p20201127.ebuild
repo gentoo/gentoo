@@ -31,7 +31,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "The following deps may be required for certain ${PN} scripts:"
+	optfeature_header "The following deps may be required for certain ${PN} scripts:"
 	optfeature "backlight" sys-power/acpilight x11-apps/xbacklight
 	optfeature "battery{,2,bar}" sys-power/acpi
 	optfeature "cpu_usage" app-admin/sysstat
