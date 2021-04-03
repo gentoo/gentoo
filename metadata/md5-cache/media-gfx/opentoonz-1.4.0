@@ -1,4 +1,4 @@
-BDEPEND=dev-qt/linguist-tools:5 virtual/pkgconfig dev-util/ninja dev-util/cmake
+BDEPEND=dev-qt/linguist-tools:5 virtual/pkgconfig sys-devel/make dev-util/cmake
 DEFINED_PHASES=compile configure install postinst postrm prepare test
 DEPEND=app-arch/lz4:= >=dev-libs/boost-1.55.0:= dev-libs/lzo:2 >=dev-qt/qtcore-5.9:5 >=dev-qt/qtgui-5.9:5 >=dev-qt/qtmultimedia-5.9:5[widgets] >=dev-qt/qtnetwork-5.9:5 >=dev-qt/qtopengl-5.9:5 >=dev-qt/qtprintsupport-5.9:5 >=dev-qt/qtscript-5.9:5 >=dev-qt/qtsvg-5.9:5 >=dev-qt/qtwidgets-5.9:5 >=dev-qt/qtxml-5.9:5 media-libs/freeglut media-libs/freetype:2 media-libs/glew:= media-libs/libjpeg-turbo >=media-libs/libmypaint-1.3.0:= media-libs/libpng:= >=sci-libs/superlu-4.1:= sys-libs/zlib virtual/cblas virtual/libusb:1 virtual/opengl
 DESCRIPTION=An open-source full-featured 2D animation creation software
@@ -11,4 +11,4 @@ RDEPEND=app-arch/lz4:= >=dev-libs/boost-1.55.0:= dev-libs/lzo:2 >=dev-qt/qtcore-
 SLOT=0
 SRC_URI=https://github.com/opentoonz/opentoonz/archive/v1.4.0.tar.gz -> opentoonz-1.4.0.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	cmake	518e4c9a6a38dfd7afc54b6a7c5de3da
-_md5_=924f5f00dd783d3c07bda533be14fc92
+_md5_=87f5cc8867bcc1d3a12a343249519fff

@@ -1,15 +1,15 @@
-BDEPEND=|| ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 ) nls? ( dev-util/intltool ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=|| ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 ) nls? ( dev-util/intltool )
 DEFINED_PHASES=configure install setup
 DEPEND=dev-libs/glib:2 dev-libs/json-c:= gegl? ( media-libs/babl >=media-libs/gegl-0.4.14:0.4[introspection?] ) introspection? ( >=dev-libs/gobject-introspection-1.32 ) openmp? ( >sys-devel/gcc-5:*[openmp] ) nls? ( sys-devel/gettext )
 DESCRIPTION=Library for making brushstrokes
 EAPI=7
 HOMEPAGE=https://github.com/mypaint/libmypaint
-INHERIT=autotools python-any-r1 toolchain-funcs
+INHERIT=python-any-r1 toolchain-funcs
 IUSE=gegl introspection nls openmp
 KEYWORDS=~alpha amd64 ~arm arm64 ~hppa ~ia64 ~ppc ppc64 x86
 LICENSE=ISC
 RDEPEND=dev-libs/glib:2 dev-libs/json-c:= gegl? ( media-libs/babl >=media-libs/gegl-0.4.14:0.4[introspection?] ) introspection? ( >=dev-libs/gobject-introspection-1.32 ) openmp? ( >sys-devel/gcc-5:*[openmp] ) nls? ( sys-devel/gettext ) !<media-gfx/mypaint-1.2.1
 SLOT=0/0.0.0
 SRC_URI=https://github.com/mypaint/libmypaint/releases/download/v1.6.1/libmypaint-1.6.1.tar.xz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-any-r1	690a993463cd2ebcde40ccdf1bd9ba98
-_md5_=5ff9b443cbd4eda7305fd56d85774c4c
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-any-r1	690a993463cd2ebcde40ccdf1bd9ba98
+_md5_=2e4005bb8e8040d38114441475d7a233

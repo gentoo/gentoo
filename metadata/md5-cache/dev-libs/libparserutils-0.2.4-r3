@@ -1,5 +1,5 @@
+BDEPEND=>=dev-util/netsurf-buildsystem-1.7-r1 test? ( dev-lang/perl )
 DEFINED_PHASES=compile configure install test
-DEPEND=>=dev-util/netsurf-buildsystem-1.7-r1 test? ( dev-lang/perl )
 DESCRIPTION=C library for building efficient parsers
 EAPI=7
 HOMEPAGE=http://www.netsurf-browser.org/projects/libparserutils/
@@ -11,4 +11,4 @@ RESTRICT=!test? ( test )
 SLOT=0/0.2.4
 SRC_URI=https://download.netsurf-browser.org/libs/releases/libparserutils-0.2.4-src.tar.gz
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	netsurf	af8fe1901b583a379a6a32af919cea05
-_md5_=57bcb1deb81c6a4cdac2806ff5fecdc3
+_md5_=a73f7f5bf781c249576259bb5ec07152

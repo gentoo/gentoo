@@ -1,7 +1,8 @@
+BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install postinst prepare
-DEPEND=net-misc/curl dev-libs/openssl:0= libnotify? ( >=x11-libs/libnotify-0.7 ) virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=net-misc/curl dev-libs/openssl:0= libnotify? ( >=x11-libs/libnotify-0.7 )
 DESCRIPTION=Last.fm scrobbler for cmus music player
-EAPI=6
+EAPI=7
 HOMEPAGE=https://github.com/Arkq/cmusfm
 INHERIT=autotools readme.gentoo-r1
 IUSE=libnotify
@@ -11,4 +12,4 @@ RDEPEND=net-misc/curl dev-libs/openssl:0= libnotify? ( >=x11-libs/libnotify-0.7 
 SLOT=0
 SRC_URI=https://github.com/Arkq/cmusfm/archive/v0.3.3.tar.gz -> cmusfm-0.3.3.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
-_md5_=f4df7693086be9d2bc4d9fa52aaadf04
+_md5_=aab2c0e10f4733ba896571de8b6ab21a

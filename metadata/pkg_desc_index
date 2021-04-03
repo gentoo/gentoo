@@ -613,7 +613,7 @@ app-accessibility/freetts 1.2.2: A speech synthesis system written entirely in J
 app-accessibility/julius 4.2.2: Large Vocabulary Continuous Speech Recognition Engine
 app-accessibility/kontrast 1.0.2 20.12.3: Tool to check contrast for colors to verify they are correctly accessible
 app-accessibility/mbrola 3.0.1h-r6: Speech synthesizer based on the concatenation of diphones. Includes samples
-app-accessibility/nfbtrans 7.74-r2: braille translator from the National Federation of the Blind
+app-accessibility/nfbtrans 7.74-r2: Braille translator from the National Federation of the Blind
 app-accessibility/orca 3.36.5 3.36.6: Extensible screen reader that provides access to the desktop
 app-accessibility/powiedz 1.0-r2: Polish speech synthesizer based on rsynth
 app-accessibility/sound-icons 0.1: a collection of Sound Icons for speech-dispatcher
@@ -779,7 +779,7 @@ app-admin/salt 3000.8 3001.6 3002.5 3003: Salt is a remote execution and configu
 app-admin/selint 1.1.0 1.2.0 9999: Policy Analysis Tools for SELinux
 app-admin/serf 0.8.1-r1 0.8.2 0.9.5: Service orchestration and management tool
 app-admin/setools 4.3.0 4.4.0 9999: Policy Analysis Tools for SELinux
-app-admin/socklog 2.1.0: small secure replacement for syslogd with automatic log rotation
+app-admin/socklog 2.1.0: Small secure replacement for syslogd with automatic log rotation
 app-admin/spectre-meltdown-checker 0.39 0.40 0.41 0.42 0.43 0.44 9999: Spectre & Meltdown vulnerability/mitigation checker for Linux
 app-admin/sshguard 2.4.1-r1 2.4.2 99999: protects hosts from brute force attacks against ssh
 app-admin/stow 2.3.1: GNU Stow is a symlink farm manager
@@ -809,7 +809,7 @@ app-admin/undertaker-scripts 1: Scripts to help retiring Gentoo developers
 app-admin/usbview 2.0: Display the topology of devices on the USB bus
 app-admin/vault 1.5.6 1.5.7 1.6.1 1.6.3: A tool for managing secrets
 app-admin/verynice 1.1-r3: A tool for dynamically adjusting the nice-level of processes
-app-admin/watchfolder 0.3.3-r1: watches directories and processes files
+app-admin/watchfolder 0.3.3-r1: Watches directories and processes files
 app-admin/webalizer 2.23.08: Webserver log file analyzer
 app-admin/webapp-config 1.55-r1 9999: Gentoo's installer for web-based applications
 app-admin/whowatch 1.8.6 99999: Displays information about users currently logged on in real time
@@ -862,7 +862,7 @@ app-arch/lziprecover 1.22: Lziprecover is a data recovery tool and decompressor 
 app-arch/lzlib 1.11 1.12: Library for lzip compression
 app-arch/lzma 9.20-r1 19.00: LZMA Stream Compressor from the SDK
 app-arch/lzop 1.04: Utility for fast (even real-time) compression/decompression
-app-arch/makeself 2.2.0-r2: shell script that generates a self-extractible tar.gz
+app-arch/makeself 2.2.0-r2: Shell script that generates a self-extractible tar.gz
 app-arch/mscompress 0.3-r1: Microsoft compress.exe/expand.exe compatible (de)compressor
 app-arch/mt-st 1.3 1.4 9999: control magnetic tape drive operation
 app-arch/ncompress 4.2.4.5 4.2.4.6 5.0: Classic compress & uncompress programs for .Z (LZW) files
@@ -5558,7 +5558,7 @@ dev-libs/libjcat 0.1.4 0.1.5 0.1.6: Library and tool for reading and writing Jca
 dev-libs/libkpass 6-r1: Libkpass is a C implementation to access KeePass 1.x format password databases
 dev-libs/libksba 1.3.5-r1 1.3.5-r2 1.4.0 1.5.0: X.509 and CMS (PKCS#7) library
 dev-libs/liblinear 242 243: A Library for Large Linear Classification
-dev-libs/liblist 2.4: Generic linked-list manipulation routines, plus queues and stacks
+dev-libs/liblist 2.4-r1: Generic linked-list manipulation routines, plus queues and stacks
 dev-libs/liblogging 1.0.6: Liblogging is an easy to use, portable, open source library for system logging
 dev-libs/liblognorm 2.0.6: Fast samples-based log normalization library
 dev-libs/liblouis 3.13.0: An open-source braille translator and back-translator
@@ -14523,7 +14523,7 @@ net-analyzer/nsat 1.5-r5: Network Security Analysis Tool, an application-level n
 net-analyzer/nsca 2.7.2-r103: Nagios Service Check Acceptor
 net-analyzer/nstats 0.4-r3: Displays statistics about ethernet traffic including protocol breakdown
 net-analyzer/ntopng 3.8.1-r4 4.0: Network traffic analyzer with web interface
-net-analyzer/nttcp 1.47-r3: tool to test TCP and UDP throughput
+net-analyzer/nttcp 1.47-r3: Tool to test TCP and UDP throughput
 net-analyzer/nuttcp 8.1.4: Network performance measurement tool
 net-analyzer/odhcploc 20111021-r1: Open DHCP Locator
 net-analyzer/oinkmaster 2.0: Rule management for SNORT
@@ -14560,7 +14560,7 @@ net-analyzer/rtpbreak 1.3a-r1: Analyze any RTP session through heuristics over U
 net-analyzer/sancp 1.6.1-r6: collect network traffic statistics and store them in pcap format
 net-analyzer/sarg 2.4.0: Squid Analysis Report Generator
 net-analyzer/sbd 1.37-r1: Netcat-clone, designed to be portable and offer strong encryption
-net-analyzer/scanlogd 2.2.7: a port scan detection tool
+net-analyzer/scanlogd 2.2.7: A port scan detection tool
 net-analyzer/scanssh 2.1.2: network scanner that gathers info on SSH protocols and versions
 net-analyzer/scapy 2.4.4-r1 9999: A Python interactive packet manipulation program for mastering the network
 net-analyzer/scli 0.4.0-r1: SNMP Command Line Interface
@@ -15020,7 +15020,7 @@ net-libs/libsrsirc 0.0.14-r1: A lightweight, cross-platform IRC library
 net-libs/libsrtp 1.6.0-r1 2.2.0 2.3.0-r1: Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
 net-libs/libssh 0.9.5 9999: Access a working SSH implementation by means of a library
 net-libs/libssh2 1.9.0_p20200614-r1 9999: Library implementing the SSH2 protocol
-net-libs/libtelnet 0.23 9999: Simple RFC-complient TELNET implementation as a C library
+net-libs/libtelnet 0.23 9999: Simple RFC-compliant TELNET implementation as a C library
 net-libs/libtirpc 1.2.6 1.3.1: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.7 0.13.7-r1 0.13.8-r1: BitTorrent library written in C++ for *nix
 net-libs/libtorrent-rasterbar 1.2.6 1.2.9 1.2.10 1.2.11 1.2.12: C++ BitTorrent implementation focusing on efficiency and scalability

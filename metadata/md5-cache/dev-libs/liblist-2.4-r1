@@ -1,0 +1,11 @@
+BDEPEND=doc? ( dev-texlive/texlive-metapost media-gfx/transfig virtual/latex-base )
+DEFINED_PHASES=configure install postinst
+DESCRIPTION=Generic linked-list manipulation routines, plus queues and stacks
+EAPI=7
+HOMEPAGE=http://ohnopub.net/liblist
+IUSE=doc examples
+KEYWORDS=amd64 ~ppc ~ppc64 x86 ~amd64-linux
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=ftp://ohnopublishing.net/mirror/liblist-2.4.tar.bz2
+_md5_=500c77c56d60e60ba83d8bd6cd6e9710

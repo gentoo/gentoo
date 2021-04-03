@@ -4,7 +4,7 @@ DEPEND=app-arch/bzip2:0= >=dev-db/sqlite-3.9.0 dev-libs/libpcre[cxx] >=net-misc/
 DESCRIPTION=A curses-based tool for viewing and analyzing log files
 EAPI=7
 HOMEPAGE=https://lnav.org
-INHERIT=toolchain-funcs autotools
+INHERIT=autotools
 IUSE=unicode
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD-2
@@ -12,4 +12,4 @@ RDEPEND=app-arch/bzip2:0= >=dev-db/sqlite-3.9.0 dev-libs/libpcre[cxx] >=net-misc
 SLOT=0
 SRC_URI=https://github.com/tstack/lnav/releases/download/v0.9.0/lnav-0.9.0.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba
-_md5_=da5a95efc75059744a074299f04e053e
+_md5_=5f7e483fe1fdefe3f83af582c34c9c7a

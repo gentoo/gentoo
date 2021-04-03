@@ -1,13 +1,12 @@
-BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=doc? ( app-doc/doxygen ) >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile install prepare unpack
-DEPEND=doc? ( app-doc/doxygen )
 DESCRIPTION=Libraries providing APIs to netlink protocol based Linux kernel interfaces
 EAPI=7
 HOMEPAGE=https://www.infradead.org/~tgr/libnl/
-INHERIT=git-r3 multilib toolchain-funcs
+INHERIT=git-r3 toolchain-funcs
 IUSE=doc static-libs
 LICENSE=LGPL-2.1
 PROPERTIES=live
 SLOT=1.1
-_eclasses_=git-r3	b8e8c92aa5fe8df7187e466138eb4e52	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=751899fc69824481be2f264c58acab49
+_eclasses_=git-r3	b8e8c92aa5fe8df7187e466138eb4e52	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=d04db0328e46831a4782ca6431dc242a
