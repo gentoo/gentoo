@@ -8358,7 +8358,7 @@ dev-python/flask-paranoid 0.2.0-r1: Simple user session protection extension for
 dev-python/flask-principal 0.4.0-r1: Identity management for flask
 dev-python/flask-restful 0.3.8: Simple framework for creating REST APIs
 dev-python/flask-script 2.0.6: Flask support for writing external scripts
-dev-python/flask-security 3.4.4 3.4.5 4.0.0: Simple security for Flask apps
+dev-python/flask-security 3.4.4 3.4.5 4.0.0 4.0.1: Simple security for Flask apps
 dev-python/flask-sphinx-themes 1.0.2: Sphinx Themes for Flask related projects and Flask itself
 dev-python/flask-sqlalchemy 2.4.4-r1 2.5.1: SQLAlchemy support for Flask applications
 dev-python/flask-wtf 0.14.3: Simple integration of Flask and WTForms
@@ -8442,7 +8442,7 @@ dev-python/httpx 0.16.1 0.17.0 0.17.1: Fully-featured HTTP client which provides
 dev-python/huawei-lte-api 1.4.17: API For huawei LAN/WAN LTE Modems
 dev-python/humanfriendly 8.2 9.1: Human friendly output for text interfaces using Python
 dev-python/humanize 3.2.0 3.3.0: Common humanization utilities
-dev-python/hvac 0.10.8: hashicorp vault client in python
+dev-python/hvac 0.10.8 0.10.9: hashicorp vault client in python
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 21.0.0: A featureful, correct URL for Python
@@ -9115,7 +9115,7 @@ dev-python/python3-saml 1.9.0 1.10.0 1.10.1: OneLogin's SAML Python Toolkit
 dev-python/python_orocos_kdl 1.4.0-r1 9999: Python bindings for KDL
 dev-python/pythondialog 3.5.1: A Python module for making simple text/console-mode user interfaces
 dev-python/pytidylib 0.3.2-r1: Python wrapper for HTML Tidy (tidylib)
-dev-python/pytools 2021.1 2021.1.2 2021.2 2021.2.1 9999: Collection of tools missing from the Python standard library
+dev-python/pytools 2021.1 2021.1.2 2021.2 2021.2.1 2021.2.2 9999: Collection of tools missing from the Python standard library
 dev-python/pytrie 0.4.0: A pure Python implementation of the trie data structure
 dev-python/pytz 2021.1: World timezone definitions for Python
 dev-python/pytzdata 2020.1: The Olson timezone database for Python
