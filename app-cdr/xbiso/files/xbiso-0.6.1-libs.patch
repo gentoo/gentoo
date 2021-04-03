@@ -1,5 +1,5 @@
---- a/configure.in	2014-12-02 18:56:23.000000000 +0300
-+++ b/configure.in	2014-12-02 19:09:46.724190436 +0300
+--- a/configure.in
++++ b/configure.in
 @@ -6,13 +6,13 @@
  
  dnl Checks for libraries.
