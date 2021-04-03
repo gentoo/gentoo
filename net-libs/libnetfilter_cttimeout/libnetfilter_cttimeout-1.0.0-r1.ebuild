@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools linux-info
+inherit linux-info
 
 DESCRIPTION="netlink interface for conntrack timeout infrastructure in kernel's packet filter"
 HOMEPAGE="https://www.netfilter.org/projects/libnetfilter_cttimeout/"
