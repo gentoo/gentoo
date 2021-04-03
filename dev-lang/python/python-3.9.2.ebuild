@@ -60,6 +60,7 @@ DEPEND="${RDEPEND}
 	test? ( app-arch/xz-utils[extra-filters(+)] )"
 BDEPEND="
 	virtual/pkgconfig
+	sys-devel/autoconf-archive
 	verify-sig? ( app-crypt/openpgp-keys-python )
 	!sys-devel/gcc[libffi(-)]"
 RDEPEND+=" !build? ( app-misc/mime-types )"
