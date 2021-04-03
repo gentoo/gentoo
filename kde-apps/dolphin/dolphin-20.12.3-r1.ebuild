@@ -90,7 +90,6 @@ src_test() {
 
 pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
-		elog "Optional dependencies:"
 		optfeature "compress/extract and other actions" kde-apps/ark:${SLOT}
 		optfeature "crypto actions" kde-apps/kleopatra:${SLOT}
 		optfeature "video file thumbnails" kde-apps/ffmpegthumbs:${SLOT}
