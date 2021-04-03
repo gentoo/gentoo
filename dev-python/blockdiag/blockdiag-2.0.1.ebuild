@@ -51,8 +51,7 @@ python_prepare_all() {
 
 pkg_postinst() {
 	# TODO: Better descriptions!
-	einfo "For additional functionality, install the following optional packages:"
-	optfeature "for PDF format" dev-python/reportlab
+	optfeature "PDF format" dev-python/reportlab
 	optfeature "misc extra support" media-gfx/imagemagick
 	optfeature "Ctypes-based simple MagickWand API binding for Python" dev-python/wand
 }
