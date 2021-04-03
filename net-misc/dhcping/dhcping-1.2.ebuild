@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-DESCRIPTION="Utility for sending a dhcp request to a dhcp server to see if it is responding"
+DESCRIPTION="Utility to send DHCP requests to DHCP servers to see if responding"
 HOMEPAGE="http://www.mavetju.org/unix/general.php"
 SRC_URI="http://www.mavetju.org/download/${P}.tar.gz"
 
