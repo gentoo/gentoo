@@ -30,14 +30,6 @@ RDEPEND="${DEPEND}"
 
 PATCHES=( "${FILESDIR}/${PN}-3.2-stdint.patch" )
 
-src_unpack() {
-	if [[ ${PV} == *9999 ]]; then
-		git-r3_src_unpack
-	fi
-
-	default
-}
-
 src_prepare() {
 	sed -e '/^CFLAGS=/s,CFLAGS=,CFLAGS?=,' \
 		-i Makefile || die
