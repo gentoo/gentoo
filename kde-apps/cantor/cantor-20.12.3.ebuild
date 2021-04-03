@@ -102,7 +102,6 @@ src_configure() {
 
 pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
-		elog "Optional dependencies:"
 		optfeature "Maxima backend" sci-mathematics/maxima
 		optfeature "Octave backend" sci-mathematics/octave
 		optfeature "LaTeX support" virtual/latex-base
