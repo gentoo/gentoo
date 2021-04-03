@@ -25,6 +25,7 @@ RDEPEND="
 	dev-python/QtPy[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	>=dev-python/spyder-4.1.0[${PYTHON_USEDEP}]
+	<dev-python/spyder-5[${PYTHON_USEDEP}]
 	dev-python/traitlets[${PYTHON_USEDEP}]
 "
 
