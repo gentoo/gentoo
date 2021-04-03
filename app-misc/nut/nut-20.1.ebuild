@@ -1,7 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
+
 inherit toolchain-funcs
 
 DESCRIPTION="Record what you eat and analyze your nutrient levels"
@@ -15,7 +16,8 @@ KEYWORDS="~alpha amd64 ~arm ppc x86"
 src_compile() {
 	emake \
 		CC="$(tc-getCC)" \
-		OPT="${CFLAGS}" FOODDIR=\\\"/usr/share/nut\\\" \
+		OPT="${CFLAGS}" \
+		FOODDIR=\\\"/usr/share/nut\\\" \
 		nut
 }
 
