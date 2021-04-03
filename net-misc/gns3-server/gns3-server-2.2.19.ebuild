@@ -54,14 +54,11 @@ python_install() {
 }
 
 pkg_postinst() {
-	elog "net-misc/gns3-server has several optional packages that must be merged manually for additional functionality."
-	elog ""
-	elog "The following is a list of packages that can be added:"
 	optfeature "QEMU Support" "app-emulation/qemu"
 	optfeature "Virtualbox Support" "app-emulation/virtualbox"
 	optfeature "Docker Support" "app-emulation/docker"
 	optfeature "Wireshark Support" "net-analyzer/wireshark"
-	elog ""
+	elog
 	elog "The following packages are currently unsupported:"
 	elog "iouyap and vpcs"
 }
