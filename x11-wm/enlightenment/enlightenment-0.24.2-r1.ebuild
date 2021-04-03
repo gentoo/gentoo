@@ -97,7 +97,7 @@ pkg_postinst() {
 	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
 
-	elog "Additional programs to complete full EFL suite: "
+	optfeature_header "Additional programs to complement the full EFL suite:"
 	optfeature "efl-based pinentry interface" app-crypt/pinentry[efl]
 	optfeature "better monitor backlight and brightness controls" app-misc/ddcutil
 	optfeature "office file thumbnails" app-office/libreoffice app-office/libreoffice-bin
