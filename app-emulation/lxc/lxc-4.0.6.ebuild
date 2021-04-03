@@ -167,7 +167,6 @@ pkg_postinst() {
 
 	elog "Please run 'lxc-checkconfig' to see optional kernel features."
 	elog
-	elog "Optional uninstalled dependencies:"
 	optfeature "automatic template scripts" app-emulation/lxc-templates
 	optfeature "Debian-based distribution container image support" dev-util/debootstrap
 	optfeature "snapshot & restore functionality" sys-process/criu
