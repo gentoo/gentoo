@@ -36,7 +36,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "Optional dependency:"
 	optfeature "image file import" media-gfx/img2pdf
 
 	xdg_desktop_database_update
