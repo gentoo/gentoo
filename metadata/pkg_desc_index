@@ -13410,7 +13410,7 @@ media-libs/lvtk 1.2.0-r1: A set of C++ wrappers around the LV2 C API
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
 media-libs/mesa 20.3.5 21.0.1 9999: OpenGL-like graphic library for Linux
 media-libs/mlt 6.24.0-r1: Open source multimedia framework for television broadcasting
-media-libs/munt-mt32emu 2.3.0 2.4.2: Library for emulating the Roland MT-32, CM-32L, CM-64 and LAPC-I
+media-libs/munt-mt32emu 2.4.2 2.5.0: Library for emulating the Roland MT-32, CM-32L, CM-64 and LAPC-I
 media-libs/musicbrainz 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
 media-libs/mutagen 1.45.1: Audio metadata tag reader and writer implemented in pure Python
 media-libs/nas 1.9.4-r2: Network Audio System
