@@ -17313,7 +17313,7 @@ sys-block/megarc 1.11-r2: LSI Logic MegaRAID Text User Interface management tool
 sys-block/mpt-status 1.2.0-r1: Query tool to access the running configuration and status of LSI SCSI HBAs
 sys-block/ms-sys 2.5.3 2.6.0 2.7.0: A command-line program for writing Microsoft compatible boot records
 sys-block/mtx 1.3.12: Utilities for controlling SCSI media changers and tape drives
-sys-block/nbd 3.19 3.20 3.21 9999: Userland client/server for kernel network block device
+sys-block/nbd 3.19 3.20 3.21-r1 9999: Userland client/server for kernel network block device
 sys-block/ndctl 71.1-r1: Helper tools and libraries for managing non-volatile memory on Linux
 sys-block/noflushd 2.8: A daemon to spin down your disks and force accesses to be cached
 sys-block/open-iscsi 2.0.873-r1 2.0.875 2.1.3 2.1.4-r1: A performant, transport independent, multi-platform implementation of RFC3720

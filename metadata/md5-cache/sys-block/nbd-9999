@@ -1,14 +1,14 @@
-BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=configure prepare unpack
+BDEPEND=virtual/pkgconfig virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=configure install prepare unpack
 DEPEND=>=dev-libs/glib-2.26.0 gnutls? ( >=net-libs/gnutls-2.12.0 ) netlink? ( >=dev-libs/libnl-3.1 ) zlib? ( sys-libs/zlib ) app-text/docbook-sgml-dtd:4.5 app-text/docbook-sgml-utils
 DESCRIPTION=Userland client/server for kernel network block device
 EAPI=7
 HOMEPAGE=http://nbd.sourceforge.net/
-INHERIT=autotools git-r3
+INHERIT=systemd autotools git-r3
 IUSE=debug gnutls netlink zlib
 LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=>=dev-libs/glib-2.26.0 gnutls? ( >=net-libs/gnutls-2.12.0 ) netlink? ( >=dev-libs/libnl-3.1 ) zlib? ( sys-libs/zlib )
 SLOT=0
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
-_md5_=5a7d9bdeb683b1c36f802a2c04a5e283
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
+_md5_=6a45b4b37469819044573537da7a3d7d
