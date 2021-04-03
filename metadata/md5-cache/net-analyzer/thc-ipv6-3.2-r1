@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile install prepare unpack
+DEFINED_PHASES=compile install prepare
 DEPEND=net-libs/libnetfilter_queue net-libs/libpcap ssl? ( dev-libs/openssl:0= )
 DESCRIPTION=Complete tool set to attack the inherent protocol weaknesses of IPV6 and ICMP6
 EAPI=7
@@ -11,4 +11,4 @@ RDEPEND=net-libs/libnetfilter_queue net-libs/libpcap ssl? ( dev-libs/openssl:0= 
 SLOT=0
 SRC_URI=https://github.com/vanhauser-thc/thc-ipv6/archive/3.2.tar.gz -> thc-ipv6-3.2.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
-_md5_=126525c0d99ac85dfe230be003a213bd
+_md5_=e0b4b8c5115b8b73af8429ac38489833

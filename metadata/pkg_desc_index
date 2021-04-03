@@ -14372,7 +14372,7 @@ net-analyzer/barnyard 0.2.0-r6: Fast output system for Snort
 net-analyzer/barnyard2 1.13: Parser for Snort unified/unified2 files
 net-analyzer/bigeye 0.3-r4: network utility dump and simple honeypot utility
 net-analyzer/bing 1.1.3-r2: A point-to-point bandwidth measurement tool
-net-analyzer/bmon 4.0 999: interface bandwidth monitor
+net-analyzer/bmon 4.0 999: Interface bandwidth monitor
 net-analyzer/braa 0.82-r1: Quick and dirty mass SNMP scanner
 net-analyzer/bwbar 1.2.3: The kernel.org "Current bandwidth utilization" bar
 net-analyzer/bwm-ng 0.6.2 0.6.3: Bandwidth Monitor NG is a small and simple console-based bandwidth monitor
@@ -14568,7 +14568,7 @@ net-analyzer/sec 2.8.3: Simple Event Correlator
 net-analyzer/sflowtool 5.06: sflowtool is a utility for collecting and processing sFlow data
 net-analyzer/sguil-client 1.0.0: GUI Console for sguil Network Security Monitoring
 net-analyzer/sguil-sensor 1.0.0-r1: Sensor part of sguil Network Security Monitoring
-net-analyzer/sinfo 0.0.48: A monitoring tool for networked computers
+net-analyzer/sinfo 0.0.48-r1: A monitoring tool for networked computers
 net-analyzer/siphon 666-r2: A portable passive network mapping suite
 net-analyzer/slurm 0.4.3: Realtime network interface monitor based on FreeBSD's pppstatus
 net-analyzer/smokeping 2.7.3: A powerful latency measurement tool

@@ -1,7 +1,7 @@
-BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=configure prepare setup unpack
-DEPEND=>=sys-libs/ncurses-5.3-r2:0= dev-libs/confuse:= dev-libs/libnl:3 virtual/pkgconfig
-DESCRIPTION=interface bandwidth monitor
+DEPEND=>=sys-libs/ncurses-5.3-r2:0= dev-libs/confuse:= dev-libs/libnl:3
+DESCRIPTION=Interface bandwidth monitor
 EAPI=7
 HOMEPAGE=http://www.infradead.org/~tgr/bmon/ https://github.com/tgraf/bmon/
 INHERIT=autotools git-r3 linux-info toolchain-funcs
@@ -11,4 +11,4 @@ PROPERTIES=live
 RDEPEND=>=sys-libs/ncurses-5.3-r2:0= dev-libs/confuse:= dev-libs/libnl:3
 SLOT=0
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	git-r3	b8e8c92aa5fe8df7187e466138eb4e52	linux-info	30ded7f9adbdd03d3e848cdd74f6c395
-_md5_=fd8f1b853623f600722d17e6078cbbed
+_md5_=c08eda68d470598387fd53b33674f1e1
