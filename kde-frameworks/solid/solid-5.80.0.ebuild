@@ -43,7 +43,6 @@ src_configure() {
 
 pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
-		elog "Optional dependencies:"
 		optfeature "Media player devices support" app-misc/media-player-info
 	fi
 	ecm_pkg_postinst
