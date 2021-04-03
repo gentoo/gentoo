@@ -7976,6 +7976,7 @@ sys-cluster/ceph:diskprediction - Enable local diskprediction module to predict 
 sys-cluster/ceph:dpdk - Enable DPDK messaging
 sys-cluster/ceph:fuse - Build fuse client
 sys-cluster/ceph:grafana - Install grafana dashboards
+sys-cluster/ceph:jaeger - Enable jaegertracing and it's dependent libraries
 sys-cluster/ceph:kafka - Rados Gateway's pubsub support for Kafka push endpoint
 sys-cluster/ceph:lttng - Add support for LTTng
 sys-cluster/ceph:mgr - Build the ceph-mgr daemon
@@ -7984,10 +7985,13 @@ sys-cluster/ceph:pmdk - Enable PMDK libraries
 sys-cluster/ceph:rabbitmq - Use rabbitmq-c to build rgw amqp push endpoint
 sys-cluster/ceph:radosgw - Add radosgw support
 sys-cluster/ceph:rbd-rwl - Enable librbd persistent write back cache
+sys-cluster/ceph:rbd-ssd - Enable librbd persistent write back cache for SSDs
+sys-cluster/ceph:rgw-lua - Rados Gateway's support for dynamically adding lua packagess
 sys-cluster/ceph:spdk - Enable SPDK user-mode storage driver toolkit
 sys-cluster/ceph:system-boost - Use system dev-libs/boost instead of the bundled one
 sys-cluster/ceph:uring - Build with support for sys-libs/liburing
 sys-cluster/ceph:xfs - Add xfs support
+sys-cluster/ceph:zbd - Enable sys-block/libzbd bluestore backend
 sys-cluster/ceph:zfs - Add zfs support
 sys-cluster/charliecloud:ch-image - Build the internal builder ch-image (previously named ch-grow)
 sys-cluster/charm:ampi - Build implementation of MPI on top of Charm++

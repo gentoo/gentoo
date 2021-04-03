@@ -1,0 +1,14 @@
+BDEPEND=sys-devel/m4 >=sys-apps/checkpolicy-2.0.21
+DEFINED_PHASES=compile install postinst postrm prepare unpack
+DEPEND=sec-policy/selinux-apache >=sys-apps/policycoreutils-2.0.82 >=sec-policy/selinux-base-policy-2.20210203-r1
+DESCRIPTION=SELinux policy for apcupsd
+EAPI=7
+HOMEPAGE=https://wiki.gentoo.org/wiki/Project:SELinux
+INHERIT=selinux-policy-2
+KEYWORDS=~amd64 -arm ~arm64 ~mips ~x86
+LICENSE=GPL-2
+RDEPEND=sec-policy/selinux-apache >=sys-apps/policycoreutils-2.0.82 >=sec-policy/selinux-base-policy-2.20210203-r1
+SLOT=0
+SRC_URI=https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_2_20210203/refpolicy-2.20210203.tar.bz2 https://dev.gentoo.org/~perfinion/patches/selinux-base-policy/patchbundle-selinux-base-policy-2.20210203-r1.tar.bz2
+_eclasses_=selinux-policy-2	271dc44108583884b3658988f5c8c3bb
+_md5_=a844372b39152107c9a31577a55f09cd
