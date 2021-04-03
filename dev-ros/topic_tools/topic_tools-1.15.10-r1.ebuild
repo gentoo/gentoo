@@ -22,7 +22,6 @@ RDEPEND="
 	dev-ros/roscpp
 	dev-ros/rostime
 	dev-ros/xmlrpcpp
-	dev-ros/rosmsg[${PYTHON_SINGLE_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	test? (
@@ -30,6 +29,7 @@ DEPEND="${RDEPEND}
 		dev-ros/rosunit[${PYTHON_SINGLE_USEDEP}]
 		dev-ros/rosbash[${PYTHON_SINGLE_USEDEP}]
 		dev-ros/rostopic[${PYTHON_SINGLE_USEDEP}]
+		dev-ros/rosmsg[${PYTHON_SINGLE_USEDEP}]
 		dev-cpp/gtest
 		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
 	)"
