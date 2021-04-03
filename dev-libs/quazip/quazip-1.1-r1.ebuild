@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake flag-o-matic
+inherit cmake
 
 DESCRIPTION="Simple C++ wrapper over Gilles Vollant's ZIP/UNZIP package"
 HOMEPAGE="https://stachenov.github.io/quazip/"
@@ -37,6 +37,7 @@ src_configure() {
 		-DQUAZIP_QT_MAJOR_VERSION=5
 		-DBUILD_TESTING=$(usex test)
 	)
+
 	cmake_src_configure
 }
 
