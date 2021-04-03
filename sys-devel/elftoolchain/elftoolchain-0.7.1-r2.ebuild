@@ -21,7 +21,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-vcs/subversion
 	sys-apps/lsb-release
-	>=sys-devel/bmake-20210206
+	>=sys-devel/bmake-20210314-r1
 	virtual/yacc"
 
 PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
@@ -36,27 +36,22 @@ src_prepare() {
 	sed -i -e "s@readelf@$(tc-getREADELF)@" common/native-elf-format || die
 }
 
-_bmake() {
-	bmake \
-		AR="$(tc-getAR)" \
-		CC="$(tc-getCC)" \
-		LD="$(tc-getLD)" \
-		RANLIB="$(tc-getRANLIB)" \
-		"$@" || die
+src_configure() {
+	tc-export AR CC LD RANLIB
+	export MAKESYSPATH="${BROOT}"/usr/share/mk/bmake
 }
 
 src_compile() {
-	export MAKESYSPATH="${BROOT}"/usr/share/mk/bmake
-	_bmake
+	bmake || die
 }
 
 src_install() {
-	_bmake \
+	bmake \
 		DESTDIR="${D}" \
-		BINDIR="${EPREFIX}"/usr/${CHOST}-elftoolchain/usr/bin \
+		BINDIR="${EPREFIX}"/usr/bin/${CHOST}-elftoolchain \
 		LIBDIR="${EPREFIX}"/usr/$(get_libdir) \
 		DOCDIR="${EPREFIX}"/usr/share/doc/${PF} \
-		install
+		install || die
 
 	# remove static libraries
 	find "${ED}" -name '*.a' -delete || die
