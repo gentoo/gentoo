@@ -1,0 +1,14 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0a0d8672a7..a76e7e1842 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -631,6 +631,9 @@ if(WITH_SYSTEM_BOOST)
+     set_property(TARGET Boost::iostreams APPEND PROPERTY
+       INTERFACE_LINK_LIBRARIES ZLIB::ZLIB)
+   endif()
++  if (WITH_JAEGER)
++    include_directories("${CMAKE_SOURCE_DIR}/boost/include")
++  endif()
+ else()
+   set(BOOST_J 1 CACHE STRING
+     "max jobs for Boost build") # override w/-DBOOST_J=<n>
