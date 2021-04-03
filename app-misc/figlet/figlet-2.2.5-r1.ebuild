@@ -1,8 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils bash-completion-r1 toolchain-funcs
+EAPI=7
+
+inherit bash-completion-r1 toolchain-funcs
 
 DESCRIPTION="program for making large letters out of ordinary text"
 HOMEPAGE="http://www.figlet.org/"
