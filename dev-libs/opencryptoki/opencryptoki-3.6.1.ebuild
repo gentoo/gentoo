@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools multilib flag-o-matic user
+inherit autotools flag-o-matic user
 
 DESCRIPTION="PKCS#11 provider cryptographic hardware"
 HOMEPAGE="https://sourceforge.net/projects/opencryptoki"
@@ -74,24 +74,25 @@ src_configure() {
 
 src_install() {
 	default
+
 	find "${ED}" -name '*.la' -delete || die
 
 	# Install libopencryptoki in the standard directory for libraries.
 	mv "${ED}"/usr/$(get_libdir)/opencryptoki/libopencryptoki.so* "${ED}"/usr/$(get_libdir) || die
-	rm "${ED}"/usr/$(get_libdir)/pkcs11/libopencryptoki.so
+	rm "${ED}"/usr/$(get_libdir)/pkcs11/libopencryptoki.so || die
 	dosym ../libopencryptoki.so /usr/$(get_libdir)/pkcs11/libopencryptoki.so
 
 	# Remove compatibility symlinks as we _never_ required those and
 	# they seem unused even upstream.
-	find "${ED}" -name 'PKCS11_*' -delete
+	find "${ED}" -name 'PKCS11_*' -delete || die
 
 	# We replace their ld.so and init files (mostly designed for RedHat
 	# as far as I can tell) with our own replacements.
-	rm -rf "${ED}"/etc/ld.so.conf.d "${ED}"/etc/rc.d
+	rm -rf "${ED}"/etc/ld.so.conf.d "${ED}"/etc/rc.d || die
 
 	# make sure that we don't modify the init script if the USE flags
 	# are enabled for the needed services.
-	cp "${FILESDIR}"/pkcsslotd.init.2 "${T}"/pkcsslotd.init
+	cp "${FILESDIR}"/pkcsslotd.init.2 "${T}"/pkcsslotd.init || die
 	use tpm || sed -i -e '/use tcsd/d' "${T}"/pkcsslotd.init
 	newinitd "${T}/pkcsslotd.init" pkcsslotd
 
