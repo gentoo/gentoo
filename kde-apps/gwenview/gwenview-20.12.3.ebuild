@@ -103,7 +103,6 @@ src_configure() {
 
 pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
-		elog "Optional dependencies:"
 		optfeature "SVG support" kde-apps/svgpart:${SLOT}
 	fi
 	ecm_pkg_postinst
