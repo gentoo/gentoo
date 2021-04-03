@@ -5,7 +5,7 @@ EAPI=7
 
 LUA_COMPAT=( luajit )
 
-inherit autotools lua-single user systemd tmpfiles multilib
+inherit autotools lua-single user systemd tmpfiles
 
 DESCRIPTION="The de facto standard for intrusion detection/prevention"
 HOMEPAGE="https://www.snort.org"

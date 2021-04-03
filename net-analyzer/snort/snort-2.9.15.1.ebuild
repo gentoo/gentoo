@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools user systemd tmpfiles multilib
+
+inherit autotools user systemd tmpfiles
 
 DESCRIPTION="The de facto standard for intrusion detection/prevention"
 HOMEPAGE="https://www.snort.org"
