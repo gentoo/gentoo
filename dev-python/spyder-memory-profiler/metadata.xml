@@ -12,4 +12,5 @@
 	<upstream>
 		<remote-id type="pypi">spyder-memory-profiler</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>
