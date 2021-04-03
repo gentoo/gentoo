@@ -3137,7 +3137,7 @@ app-text/rtf2html 0.2.0-r1: RTF to HTML converter
 app-text/sablotron 1.0.3-r2: An XSLT Parser in C++
 app-text/scdoc 1.11.0 1.11.1 9999: Standalone tool for generating man pages with a simple syntax
 app-text/scrollkeeper-dtd 1.0-r1: DTD from the Scrollkeeper package
-app-text/sdcv 0.5.2: Console version of Stardict program
+app-text/sdcv 0.5.2 0.5.3: Console version of Stardict program
 app-text/sgml-common 0.6.3-r7: Base ISO character entities and utilities for SGML
 app-text/sgrep 1.94a: Use structural criteria to grep and index text, SGML, XML and HTML and filter
 app-text/sigil 1.4.3 1.5.1: Multi-platform WYSIWYG ebook editor for ePub format
