@@ -33,7 +33,7 @@ pkg_postinst() {
 	# only by searching for occurrences of vicious.spawn (the recommended way of calling
 	# external helpers because it supports async) and popen (still used by many contrib widgets).
 	# Moreover, dependencies of all non-Linux widgets have been excluded on purpose.
-	elog "These widgets need some dependencies:"
+	optfeature_header "These widgets need some dependencies:"
 	optfeature "cmus" "media-sound/cmus"
 	optfeature "fs" "sys-apps/coreutils" # df
 	optfeature "gmail" "net-misc/curl"
