@@ -350,7 +350,6 @@ multilib_src_install_all() {
 }
 
 pkg_postinst() {
-	elog "Optional backends:"
 	optfeature "Epson-specific backend" media-gfx/iscan
 	optfeature "HP-specific backend" net-print/hplip
 
