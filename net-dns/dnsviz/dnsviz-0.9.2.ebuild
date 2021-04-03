@@ -47,7 +47,6 @@ python_test() {
 }
 
 pkg_postinst() {
-	elog "Support for extra feature can be get from:"
 	optfeature "Support for pre-deployment testing" net-dns/bind
 	optfeature "Support for DNSSEC signatures using GOST algorithm or digest" dev-libs/ghost-engine
 }
