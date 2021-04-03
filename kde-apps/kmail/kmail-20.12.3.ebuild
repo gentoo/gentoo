@@ -104,7 +104,6 @@ src_configure() {
 
 pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
-		elog "Optional dependencies:"
 		optfeature "Virus detection" app-antivirus/clamav
 		optfeature "Spam filtering" mail-filter/bogofilter mail-filter/spamassassin
 		optfeature "Fancy e-mail headers and useful plugins" kde-apps/kdepim-addons:${SLOT}
