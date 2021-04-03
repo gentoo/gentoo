@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils perl-module
+inherit perl-module
 
 DESCRIPTION="Nagios/Icinga plugin to check current server's RAID status"
 HOMEPAGE="https://github.com/glensc/nagios-plugin-check_raid"
@@ -31,22 +31,22 @@ RDEPEND="${DEPEND}
 		megaraid-scsi? ( sys-block/megarc )
 		mpt-sas2? ( sys-block/sas2ircu )
 		mpt? ( sys-block/mpt-status )
-		"
+"
 
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	# Upstream has a custom Makefile that is meant to build bundles.
-	mv -f Makefile Makefile.upstream
-	sed -i '/CPANfile/d' Makefile.PL
+	mv -f Makefile Makefile.upstream || die
+	sed -i '/CPANfile/d' Makefile.PL || die
 	default
 }
 
 src_install() {
 	default
 	plugindir="/usr/$(get_libdir)/nagios/plugins"
-	dodir "$plugindir"
-	mv -f "${D}"/usr/bin/check_raid.pl "${D}"/"${plugindir}"
+	dodir "${plugindir}"
+	mv -f "${ED}"/usr/bin/check_raid.pl "${ED}"/"${plugindir}" || die
 	dodoc README.md CHANGELOG.md CONTRIBUTING.md check_raid.cfg
 }
 
