@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -96,21 +96,20 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "Optional dependencies:"
-	optfeature "Graphical reports, new charts, old charts" "dev-perl/GD dev-perl/Chart dev-perl/Template-GD dev-perl/GDTextUtil dev-perl/GDGraph"
-	optfeature "Move bugs between installations, automatic update notifications" "dev-perl/MIME-tools dev-perl/libwww-perl dev-perl/XML-Twig"
-	optfeature "Patch Viewer" "dev-perl/PatchReader"
+	optfeature "graphical reports, new charts, old charts" "dev-perl/GD dev-perl/Chart dev-perl/Template-GD dev-perl/GDTextUtil dev-perl/GDGraph"
+	optfeature "moving bugs between installations, automatic update notifications" "dev-perl/MIME-tools dev-perl/libwww-perl dev-perl/XML-Twig"
+	optfeature "patch viewer" "dev-perl/PatchReader"
 	optfeature "LDAP authentication" "dev-perl/perl-ldap"
 	optfeature "SMTP authentication" "dev-perl/Authen-SASL"
 	optfeature "XML-RPC Interface" "dev-perl/SOAP-Lite dev-perl/XMLRPC-Lite dev-perl/Test-Taint"
-	optfeature "JSON-RPC Interface, REST Interface" "dev-perl/JSON-RPC dev-perl/Test-Taint"
-	optfeature "More HTML in Product/Group description" "dev-perl/HTML-Scrubber"
-	optfeature "Automatic charset detection for text attachments" "dev-perl/Encode-Detect"
-	optfeature "Inbound Email" "dev-perl/Email-Reply dev-perl/HTML-FormatText-WithLinks"
-	optfeature "Mail Queueing" "dev-perl/TheSchwarz dev-perl/Daemon-Generic"
-	optfeature "Sniff MIME type of attachments" "dev-perl/File-MimeInfo dev-perl/IO-stringy"
+	optfeature "JSON-RPC interface, REST interface" "dev-perl/JSON-RPC dev-perl/Test-Taint"
+	optfeature "more HTML in Product/Group description" "dev-perl/HTML-Scrubber"
+	optfeature "automatic charset detection for text attachments" "dev-perl/Encode-Detect"
+	optfeature "inbound email" "dev-perl/Email-Reply dev-perl/HTML-FormatText-WithLinks"
+	optfeature "mail queueing" "dev-perl/TheSchwarz dev-perl/Daemon-Generic"
+	optfeature "MIME type sniffing of attachments" "dev-perl/File-MimeInfo dev-perl/IO-stringy"
 	optfeature "Memcached support" "dev-perl/Cache-Memcached"
-	optfeature "SSL Support for SMTP" "dev-perl/IO-Socket-SSL"
+	optfeature "SSL support for SMTP" "dev-perl/IO-Socket-SSL"
 
 	ewarn "If Apache is the chosen webserver, please consider turning the apache2 use flag on"
 	ewarn "Not doing so may result in unexpected runtime errors"
