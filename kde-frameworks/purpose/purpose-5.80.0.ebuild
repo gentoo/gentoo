@@ -57,7 +57,6 @@ src_configure() {
 
 pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
-		elog "Optional dependencies:"
 		optfeature "Send through KDE Connect" kde-misc/kdeconnect
 	fi
 	ecm_pkg_postinst
