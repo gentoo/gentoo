@@ -1,9 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit eutils
+EAPI=7
 
 DESCRIPTION="Fast XML parser"
 HOMEPAGE="http://rapidxml.sourceforge.net/"
@@ -12,10 +10,13 @@ SRC_URI="mirror://sourceforge/rapidxml/rapidxml-${PV}.zip"
 LICENSE="Boost-1.0 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+
+BDEPEND="app-arch/unzip"
 
 src_install() {
 	insinto /usr/include/rapidxml
 	doins *.hpp
-	dohtml manual.html
+
+	docinto html
+	dodoc manual.html
 }
