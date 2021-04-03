@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -197,23 +197,22 @@ python_test() {
 pkg_postinst() {
 	xdg_pkg_postinst
 
-	elog "To get additional features, optional runtime dependencies may be installed:"
-		optfeature "2D/3D plotting in the Python and IPython consoles" dev-python/matplotlib
-		optfeature "View and edit DataFrames and Series in the Variable Explorer" dev-python/pandas
-		optfeature "View and edit two or three dimensional arrays in the Variable Explorer" dev-python/numpy
-		optfeature "Symbolic mathematics in the IPython console" dev-python/sympy
-		optfeature "Import Matlab workspace files in the Variable Explorer" dev-python/scipy
-		optfeature "Run Cython files in the IPython console" dev-python/cython
-		optfeature "The hdf5/h5py plugin" dev-python/h5py
-		optfeature "The line profiler plugin" dev-python/spyder-line-profiler
-		optfeature "The memory profiler plugin" dev-python/spyder-memory-profiler
-		# spyder-autopep8 does not have a release (yet)
-		# and are not compatible with >=spyder-4.0.0 at the moment
-		# optfeature "The autopep8 plugin" dev-python/spyder-autopep8
-		optfeature "Vim key bindings" dev-python/spyder-vim
-		optfeature "Unittest support" dev-python/spyder-unittest
-		optfeature "Jupyter notebook support" dev-python/spyder-notebook
-		optfeature "System terminal inside spyder" dev-python/spyder-terminal
-		# spyder-reports not yet updated to >=spyder-4.0.0
-		# optfeature "Markdown reports using Pweave" dev-python/spyder-reports
+	optfeature "2D/3D plotting in the Python and IPython consoles" dev-python/matplotlib
+	optfeature "View and edit DataFrames and Series in the Variable Explorer" dev-python/pandas
+	optfeature "View and edit two or three dimensional arrays in the Variable Explorer" dev-python/numpy
+	optfeature "Symbolic mathematics in the IPython console" dev-python/sympy
+	optfeature "Import Matlab workspace files in the Variable Explorer" dev-python/scipy
+	optfeature "Run Cython files in the IPython console" dev-python/cython
+	optfeature "The hdf5/h5py plugin" dev-python/h5py
+	optfeature "The line profiler plugin" dev-python/spyder-line-profiler
+	optfeature "The memory profiler plugin" dev-python/spyder-memory-profiler
+	# spyder-autopep8 does not have a release (yet)
+	# and are not compatible with >=spyder-4.0.0 at the moment
+	# optfeature "The autopep8 plugin" dev-python/spyder-autopep8
+	optfeature "Vim key bindings" dev-python/spyder-vim
+	optfeature "Unittest support" dev-python/spyder-unittest
+	optfeature "Jupyter notebook support" dev-python/spyder-notebook
+	optfeature "System terminal inside spyder" dev-python/spyder-terminal
+	# spyder-reports not yet updated to >=spyder-4.0.0
+	# optfeature "Markdown reports using Pweave" dev-python/spyder-reports
 }
