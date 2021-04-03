@@ -10,7 +10,6 @@ HOMEPAGE="http://vispatch.sourceforge.net/"
 SRC_URI="mirror://sourceforge/vispatch/${P}.tgz"
 S="${WORKDIR}"/${P}/source
 
-
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
