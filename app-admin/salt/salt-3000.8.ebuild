@@ -117,7 +117,6 @@ PATCHES=(
 	"${WORKDIR}/salt-3000.2-py38-misc.patch"
 	"${FILESDIR}/salt-3000.2-py38-logwarn.patch"
 	"${FILESDIR}/salt-2019.2.8-ansible-roster-fix.patch"
-	"${FILESDIR}/salt-3000.8-tests.patch"
 )
 
 python_prepare_all() {
