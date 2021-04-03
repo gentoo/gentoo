@@ -110,7 +110,6 @@ src_configure() {
 		--includedir="${EPREFIX}"/usr/include
 		--localstatedir="${EPREFIX}"/var
 		--disable-stripping
-		--with-install-root="${D}"
 		--with-writable-directory="${EPREFIX}"/run/brltty
 		$(use_enable api)
 		$(use_with beeper beep-package)
@@ -163,12 +162,12 @@ src_install() {
 		findlib_src_preinst
 	fi
 
-	emake OCAML_LDCONF= install
+	emake INSTALL_ROOT="${D}" OCAML_LDCONF= install
 
 	if use python; then
 		python_install() {
 			cd "Bindings/Python" || die
-			emake install
+			emake INSTALL_ROOT="${D}" install
 		}
 		python_foreach_impl run_in_build_dir python_install
 	fi
