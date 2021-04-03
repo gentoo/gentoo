@@ -91,7 +91,6 @@ src_configure() {
 
 pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
-		elog "Optional dependencies:"
 		optfeature "Display 'current' pictures of planets" x11-misc/xplanet
 	fi
 	ecm_pkg_postinst
