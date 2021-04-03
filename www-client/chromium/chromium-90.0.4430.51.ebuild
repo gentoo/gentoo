@@ -70,6 +70,7 @@ COMMON_DEPEND="
 	)
 	sys-apps/dbus:=
 	sys-apps/pciutils:=
+	<sys-libs/glibc-2.33
 	virtual/udev
 	x11-libs/cairo:=
 	x11-libs/gdk-pixbuf:2
