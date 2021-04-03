@@ -19,7 +19,7 @@ RDEPEND="
 	>=dev-db/sqlite-3:3
 	>=dev-libs/glib-2.16:2
 	dev-libs/libxml2:2
-	sys-apps/sg3_utils
+	sys-apps/sg3_utils:0=
 	gtk? ( x11-libs/gdk-pixbuf:2 )
 	ios? ( app-pda/libimobiledevice:= )
 	udev? ( virtual/udev )
