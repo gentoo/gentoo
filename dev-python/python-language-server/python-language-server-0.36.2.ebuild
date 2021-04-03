@@ -56,7 +56,6 @@ python_prepare_all() {
 }
 
 pkg_postinst() {
-	elog "To get additional features, optional runtime dependencies may be installed:"
 	optfeature "Automatically formats Python code to conform to the PEP 8 style guide" dev-python/autopep8
 	optfeature "A wrapper around PyFlakes, pep8 & mccabe" dev-python/flake8
 	optfeature "flake8 plugin: McCabe complexity checker" dev-python/mccabe
