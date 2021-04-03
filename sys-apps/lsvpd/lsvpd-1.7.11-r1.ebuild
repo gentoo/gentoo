@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ IUSE=""
 
 RDEPEND="
 	dev-db/sqlite:3
-	sys-apps/sg3_utils
+	sys-apps/sg3_utils:0=
 	sys-libs/librtas
 	sys-libs/libvpd
 	sys-libs/zlib
