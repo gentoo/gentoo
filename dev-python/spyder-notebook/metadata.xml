@@ -12,4 +12,5 @@
 	<upstream>
 		<remote-id type="pypi">spyder-notebook</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>
