@@ -12,7 +12,7 @@ HOMEPAGE="https://abseil.io"
 SRC_URI="https://github.com/abseil/abseil-cpp/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
-SLOT="0"
+SLOT="0/${PV%%.*}"
 KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE=""
 

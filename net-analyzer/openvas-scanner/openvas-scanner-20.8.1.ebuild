@@ -4,7 +4,7 @@
 EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="emake"
-inherit cmake flag-o-matic toolchain-funcs
+inherit cmake toolchain-funcs
 
 MY_PN="openvas"
 MY_DN="openvassd"

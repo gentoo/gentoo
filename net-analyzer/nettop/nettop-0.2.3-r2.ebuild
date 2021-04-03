@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils toolchain-funcs
+inherit epatch toolchain-funcs
 
-DESCRIPTION="top like program for network activity"
+DESCRIPTION="top-like program for network activity"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 

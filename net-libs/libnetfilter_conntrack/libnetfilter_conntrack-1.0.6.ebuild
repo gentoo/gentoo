@@ -1,10 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools linux-info
 
-DESCRIPTION="programming interface (API) to the in-kernel connection tracking state table"
+inherit linux-info
+
+DESCRIPTION="Programming interface (API) to the in-kernel connection tracking state table"
 HOMEPAGE="https://www.netfilter.org/projects/libnetfilter_conntrack/"
 SRC_URI="https://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2"
 
@@ -31,7 +32,7 @@ pkg_setup() {
 		die "${PN} requires at least 2.6.18 kernel version"
 	fi
 
-	#netfilter core team has changed some option names with kernel 2.6.20
+	# netfilter core team has changed some option names with kernel 2.6.20
 	if kernel_is lt 2 6 20 ; then
 		CONFIG_CHECK="~IP_NF_CONNTRACK_NETLINK"
 	else

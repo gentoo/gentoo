@@ -1,8 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
-inherit autotools multilib
+EAPI=7
+
+inherit autotools
 
 DESCRIPTION="Data Acquisition library, for packet I/O"
 HOMEPAGE="https://www.snort.org/"
@@ -27,6 +28,7 @@ DEPEND="
 	pcap? ( ${PCAP_DEPEND} )
 "
 RDEPEND="${DEPEND}"
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.0.6-parallel-grammar.patch #673390
 	"${FILESDIR}"/${PN}-2.0.6-static-libs.patch
@@ -34,7 +36,6 @@ PATCHES=(
 
 src_prepare() {
 	default
-
 	eautoreconf
 }
 
@@ -66,7 +67,7 @@ src_install() {
 	# This has been bugged upstream
 	if ! use static-libs; then
 		for z in libdaq_static libdaq_static_modules; do
-			rm "${D}"/usr/$(get_libdir)/${z}.a
+			rm "${ED}"/usr/$(get_libdir)/${z}.a || die
 		done
 	fi
 }
