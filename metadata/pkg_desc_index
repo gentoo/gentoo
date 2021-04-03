@@ -11936,7 +11936,7 @@ games-util/uglygs 0_rc11-r1: Quickly searches the network for game servers
 games-util/umodpack 0.5_beta16-r3: Portable (un)packer for Unreal Tournament's Umod files
 games-util/uz2unpack 0.1: UZ2 Decompressor for UT2003/UT2004
 games-util/vispatch 1.4.6: WaterVIS utility for glquake
-games-util/wiiload 0.5: load homebrew apps over the network to your Wii
+games-util/wiiload 0.5: Load homebrew apps over the network to your Wii
 games-util/wit 3.02a: command line tools to manipulate Wii/GameCube ISO images and WBFS containers
 games-util/wxchtdecoder 1.5a-r1: A program to decode .CHT files in Snes9x and ZSNES to plain text
 games-util/xboxdrv 0.8.8_p20190118: Userspace Xbox 360 Controller driver
@@ -13349,7 +13349,7 @@ media-libs/libogg 1.3.4: the Ogg media file format library
 media-libs/liboggz 1.1.1: Oggz provides a simple programming interface for reading and writing Ogg files and streams
 media-libs/libopenaptx 0.2.0 9999: Reverse-engineered aptX and aptX HD library
 media-libs/libopenglrecorder 0.1.0: Library for asynchronous OpenGL recording with audio
-media-libs/libopenmpt 0.5.5: Library to decode tracked music files (modules)
+media-libs/libopenmpt 0.5.7: Library to decode tracked music files (modules)
 media-libs/libopenraw 0.1.3: RAW image formats decoding library
 media-libs/libopenshot 0.2.4_pre20190609 0.2.5-r1: Video editing library used by OpenShot
 media-libs/libopenshot-audio 0.1.9_pre20190502 0.2.0: Library for audio editing and playback used by OpenShot
@@ -14035,7 +14035,7 @@ media-sound/normalize 0.7.7-r1: Audio file volume normalizer
 media-sound/ogg2mp3 0.6.1-r1: Perl script to convert Ogg Vorbis files to MP3 files
 media-sound/oggtst 0.0: A tool for calculating ogg-vorbis playing time
 media-sound/ogmtools 1.5-r2: Information, extraction or creation for OGG media streams
-media-sound/openmpt123 0.5.5: libopenmpt-based command line player for tracked music files (modules)
+media-sound/openmpt123 0.5.7: libopenmpt-based command line player for tracked music files (modules)
 media-sound/opus-tools 0.2: Royalty-free, highly versatile audio codec
 media-sound/orpheus 1.6-r3: Command line MP3 player
 media-sound/pamix 1.6 1.6-r1 9999: A PulseAudio NCurses mixer
@@ -18192,7 +18192,7 @@ www-client/seamonkey 2.53.6 2.53.7: Seamonkey Web Browser
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r3 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.1 9999: Download manager using gtk+ and libcurl
-www-client/vivaldi 3.6.2165.40 3.7.2218.45 3.7.2218.49: A browser for our friends
+www-client/vivaldi 3.6.2165.40 3.7.2218.49 3.7.2218.52: A browser for our friends
 www-client/vivaldi-snapshot 3.7.2218.42 3.8.2238.3: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
