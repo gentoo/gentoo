@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils flag-o-matic multilib user
+inherit flag-o-matic user
 
 DESCRIPTION="50+ standard plugins for Icinga, Naemon, Nagios, Shinken, Sensu"
 HOMEPAGE="https://www.monitoring-plugins.org/"
