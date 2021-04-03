@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools toolchain-funcs
+inherit autotools
 
 DESCRIPTION="An SSLv3/TLS network protocol analyzer"
 HOMEPAGE="https://github.com/adulau/ssldump/"

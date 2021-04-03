@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit toolchain-funcs eutils
+inherit toolchain-funcs
 
 DESCRIPTION="Files which haven't been accessed are removed from specified directories"
 HOMEPAGE="https://pagure.io/tmpwatch"
@@ -14,8 +14,14 @@ SLOT="0"
 KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 sparc x86"
 IUSE="selinux"
 
-RDEPEND="selinux? ( sec-policy/selinux-tmpreaper )"
-DEPEND=""
+# psmisc for fuser
+DEPEND="
+	!kernel_Darwin? ( sys-process/psmisc )
+"
+RDEPEND="
+	${DEPEND}
+	selinux? ( sec-policy/selinux-tmpreaper )
+"
 
 PATCHES=(
 	"${FILESDIR}/${P}-boottime.patch"

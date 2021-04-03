@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs cmake
+inherit cmake
 
 DESCRIPTION="SIMD accelerated C++ JSON library"
 HOMEPAGE="

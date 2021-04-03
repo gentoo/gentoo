@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit eutils multilib-minimal
+inherit multilib-minimal
 
 MY_P="${PN}-core-${PV}"
 
@@ -42,7 +42,7 @@ multilib_src_configure() {
 
 	myconf="${myconf} --enable-backend-flint --enable-backend-remote"
 
-	ECONF_SOURCE=${S} econf $myconf
+	ECONF_SOURCE=${S} econf ${myconf}
 }
 
 MULTILIB_WRAPPED_HEADERS=(
@@ -61,11 +61,11 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	use doc || rm -rf "${ED}usr/share/doc/xapian-core-${PV}"
+	use doc || rm -rf "${ED%/}/usr/share/doc/xapian-core-${PV}"
 
 	dodoc AUTHORS HACKING PLATFORMS README NEWS
 
-	find "${D}" -name "*.la" -type f -delete || die
+	find "${ED}" -name "*.la" -type f -delete || die
 }
 
 multilib_src_test() {

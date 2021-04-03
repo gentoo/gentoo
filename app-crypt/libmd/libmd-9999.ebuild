@@ -14,6 +14,8 @@ SLOT="0"
 
 src_prepare() {
 	default
+
+	eautoreconf
 }
 
 src_configure() {

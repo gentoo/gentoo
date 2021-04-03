@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools multilib-minimal libtool
+inherit autotools multilib-minimal
 
 DESCRIPTION="ASN.1 library"
 HOMEPAGE="https://www.gnu.org/software/libtasn1/"
