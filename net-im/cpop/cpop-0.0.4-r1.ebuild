@@ -1,8 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils
+
+inherit epatch
 
 DESCRIPTION="GTK+ network popup message client. Compatible with the jpop protocol"
 HOMEPAGE="http://www.draxil.uklinux.net/hip/index.pl?page=cpop"
