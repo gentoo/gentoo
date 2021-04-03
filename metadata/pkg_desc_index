@@ -5275,7 +5275,7 @@ dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.30.3 5.30.3-r1 5.30.3-r2 5.32.0-r1 5.32.1: Larry Wall's Practical Extraction and Report Language
 dev-lang/php 7.3.27 7.3.27-r1 7.4.15 7.4.16 8.0.3: The PHP language runtime engine
 dev-lang/polyml 5.8: Poly/ML is a full implementation of Standard ML
-dev-lang/python 2.7.18_p7 3.6.13 3.6.13_p1 3.7.10 3.7.10_p1 3.8.8 3.8.8_p1 3.8.9 3.9.2 3.9.2_p1 3.9.3 3.10.0_alpha6-r2: An interpreted, interactive, object-oriented programming language
+dev-lang/python 2.7.18_p7 2.7.18_p8 3.6.13 3.6.13_p1 3.7.10 3.7.10_p1 3.8.8 3.8.8_p1 3.8.9 3.9.2 3.9.2_p1 3.9.3 3.10.0_alpha6-r2: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6-r4: Python script wrapper
 dev-lang/python-exec-conf 2.4.6: Configuration file for dev-lang/python-exec
 dev-lang/qu-prolog 10.6: Extended Prolog supporting quantifiers, object-variables and substitutions
@@ -8042,7 +8042,7 @@ dev-python/WSME 0.10.0: Simplify the writing of REST APIs, and extend them with 
 dev-python/XenAPI 2.14: Xen API SDK, for communication with Citrix XenServer and Xen Cloud Platform
 dev-python/absl-py 0.10.0: Abseil Python Common Libraries
 dev-python/abydos 0.5.0: Abydos NLP/IR library
-dev-python/aesara 2.0.1-r1 2.0.2 2.0.3 2.0.4: Library for operating on mathematical expressions with multi-dimensional arrays
+dev-python/aesara 2.0.1-r1 2.0.2 2.0.3 2.0.4 2.0.5: Library for operating on mathematical expressions with multi-dimensional arrays
 dev-python/aiodns 2.0.0-r1: Simple DNS resolver for asyncio
 dev-python/aiofiles 0.5.0 0.6.0: File support for asyncio
 dev-python/aiohttp 3.7.4: http client/server for asyncio
