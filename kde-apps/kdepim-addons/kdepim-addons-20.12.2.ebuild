@@ -80,7 +80,6 @@ src_configure() {
 
 pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
-		elog "Optional dependencies:"
 		optfeature "regex support for Sieve editor plugin" kde-misc/kregexpeditor
 	fi
 	ecm_pkg_postinst
