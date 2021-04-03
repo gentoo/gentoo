@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils flag-o-matic multilib
+inherit flag-o-matic
 
 DESCRIPTION="50+ standard plugins for Icinga, Naemon, Nagios, Shinken, Sensu"
 HOMEPAGE="https://www.monitoring-plugins.org/"
