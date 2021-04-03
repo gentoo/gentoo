@@ -36,7 +36,7 @@ all_ruby_prepare() {
 	sed -i -e '/oj/ s:^:#:' gemfiles/* || die
 
 	# Update old test dependencies
-	sed -i -e '/rake/ s/~>/>=/' -e 's/1.7.0/1.7/' gemfiles/* || die
+	sed -i -e '/rake/ s/~>/>=/' -e 's/1.7.0/1.7/' -e '3igem "json"' gemfiles/* || die
 }
 
 each_ruby_test() {
