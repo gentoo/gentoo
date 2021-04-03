@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+ <maintainer type="person">
+  <email>sveneusewig@yahoo.de</email>
+  <name>Sven Eusewig</name>
+ </maintainer>
+ <maintainer type="project">
+  <email>proxy-maint@gentoo.org</email>
+ </maintainer>
+  <use>
+    <flag name="debug">Enable debugging informations</flag>
+    <flag name="doc">Build documentation (requires app-doc/doxygen)</flag>
+    <flag name="static-libs">Enable build of static libraries</flag>
+  </use>
+</pkgmetadata>
