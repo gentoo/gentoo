@@ -4,7 +4,7 @@ DEPEND=>=net-libs/libpcap-1.3.0 >=net-libs/daq-2.0.2 >=dev-libs/libpcre-8.33 dev
 DESCRIPTION=The de facto standard for intrusion detection/prevention
 EAPI=7
 HOMEPAGE=https://www.snort.org
-INHERIT=autotools user systemd tmpfiles multilib
+INHERIT=autotools user systemd tmpfiles
 IUSE=+active-response control-socket debug file-inspect +flexresp3 +gre high-availability inline-init-failopen large-pcap-64bit +libtirpc linux-smp-stats +non-ether-decoders open-appid +perfprofiling +ppm +react reload-error-restart selinux shared-rep side-channel sourcefire static +threads
 KEYWORDS=~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86
 LICENSE=GPL-2
@@ -13,4 +13,4 @@ REQUIRED_USE=!kernel_linux? ( !shared-rep )
 SLOT=0
 SRC_URI=https://www.snort.org/downloads/archive/snort/snort-2.9.16.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	user	26d8ce6329c43cbac965617f1c0627e2	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	tmpfiles	5cd6e8cf3288d5b19ff8b5c78c7e3e31
-_md5_=c1a7e087d2c7066b4de72971827e6c05
+_md5_=8d2a413d97c623ac049d9522b9dd8d90

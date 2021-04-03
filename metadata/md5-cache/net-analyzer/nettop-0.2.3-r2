@@ -1,13 +1,13 @@
 DEFINED_PHASES=install prepare
 DEPEND=sys-libs/slang net-libs/libpcap
-DESCRIPTION=top like program for network activity
+DESCRIPTION=top-like program for network activity
 EAPI=5
 HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
-INHERIT=eutils toolchain-funcs
+INHERIT=epatch toolchain-funcs
 KEYWORDS=amd64 ~arm ppc x86
 LICENSE=BSD
 RDEPEND=sys-libs/slang net-libs/libpcap
 SLOT=0
 SRC_URI=mirror://gentoo/nettop-0.2.3.tar.gz
-_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	estack	055c42df72f76a4f45ec92b35e83cd56	epatch	f62592ba170464d52e9a05f584161347	l10n	8cdd85e169b835d518bc2fd59f780d8e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	preserve-libs	ef207dc62baddfddfd39a164d9797648	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e
-_md5_=c9d178de240c0ef103097575474454de
+_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	epatch	f62592ba170464d52e9a05f584161347	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=288c2f81a29b479a2404d0a11d0f289c

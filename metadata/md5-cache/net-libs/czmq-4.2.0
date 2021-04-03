@@ -1,15 +1,13 @@
-BDEPEND=app-text/asciidoc app-text/xmlto virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=app-text/asciidoc app-text/xmlto virtual/pkgconfig
 DEFINED_PHASES=configure install
 DEPEND=>=net-libs/zeromq-4:=[drafts?] http-client? ( net-misc/curl ) http-server? ( net-libs/libmicrohttpd:= ) lz4? ( app-arch/lz4:= ) systemd? ( sys-apps/systemd ) uuid? ( sys-apps/util-linux:0= )
 DESCRIPTION=High-level C Binding for ZeroMQ
 EAPI=7
 HOMEPAGE=http://czmq.zeromq.org
-INHERIT=autotools
 IUSE=curl drafts http-client http-server lz4 static-libs systemd +uuid
 KEYWORDS=amd64 arm ~arm64 ~hppa x86
 LICENSE=MPL-2.0
 RDEPEND=>=net-libs/zeromq-4:=[drafts?] http-client? ( net-misc/curl ) http-server? ( net-libs/libmicrohttpd:= ) lz4? ( app-arch/lz4:= ) systemd? ( sys-apps/systemd ) uuid? ( sys-apps/util-linux:0= )
 SLOT=0/4
 SRC_URI=https://github.com/zeromq/czmq/releases/download/v4.2.0/czmq-4.2.0.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba
-_md5_=887194b60bb2622f339b06d58e5878e1
+_md5_=7ee8ef22d4a71ce0a7a279c1fd3292c9

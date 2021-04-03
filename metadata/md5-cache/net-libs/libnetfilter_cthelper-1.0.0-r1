@@ -1,15 +1,15 @@
-BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=virtual/pkgconfig
 DEFINED_PHASES=setup
 DEPEND=net-libs/libmnl:=
 DESCRIPTION=Userspace library for interface to user-space helper for conntrack
 EAPI=7
 HOMEPAGE=https://www.netfilter.org/projects/libnetfilter_cthelper/
-INHERIT=autotools linux-info
+INHERIT=linux-info
 IUSE=kernel_linux
 KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ppc ppc64 x86
 LICENSE=GPL-2
 RDEPEND=net-libs/libmnl:=
 SLOT=0
 SRC_URI=https://www.netfilter.org/projects/libnetfilter_cthelper/files/libnetfilter_cthelper-1.0.0.tar.bz2
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	linux-info	30ded7f9adbdd03d3e848cdd74f6c395
-_md5_=cdc4314f59cbaea4d8993bd00c882817
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	linux-info	30ded7f9adbdd03d3e848cdd74f6c395
+_md5_=4272b794dd1a93ea66406eacacdba532

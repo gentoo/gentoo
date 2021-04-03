@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install postinst
-DEPEND=>=sys-libs/ncurses-4.2:0= virtual/pkgconfig
+DEPEND=>=sys-libs/ncurses-4.2:0=
 DESCRIPTION=A simple CLI program for displaying network statistics in real time
 EAPI=7
 HOMEPAGE=http://ifstatus.sourceforge.net/
@@ -10,4 +10,4 @@ RDEPEND=>=sys-libs/ncurses-4.2:0=
 SLOT=0
 SRC_URI=mirror://sourceforge/ifstatus/ifstatus-v2.0.0.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
-_md5_=6a8c8fcc78f2d340cd8d57ead4f81cb6
+_md5_=d29a3b457edb12ced1a01866d13ddbab
