@@ -3,11 +3,11 @@ DEPEND=dev-util/promu >=dev-lang/go-1.10
 DESCRIPTION=A tool to scrape a Prometheus client and dump the result as JSON
 EAPI=6
 HOMEPAGE=https://github.com/prometheus/prom2json
-INHERIT=user golang-build golang-vcs-snapshot
+INHERIT=golang-build golang-vcs-snapshot
 KEYWORDS=~amd64
 LICENSE=Apache-2.0
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/prometheus/prom2json/archive/4a7436442837da72f9e211d99f0145dff3246b66.tar.gz -> prom2json-0.1.0_p20170523.tar.gz
-_eclasses_=user-info	a2abd4e2f4c3b9b06d64bf1329359a02	user	26d8ce6329c43cbac965617f1c0627e2	golang-base	b8fb27dacacea08140c53857f439fc7d	golang-build	91472d4e18894e738c69b415e236a664	golang-vcs-snapshot	ff485cabd3f37b060f110b0be95092ec
-_md5_=699f93213d211f4afbfd735d1264a53d
+_eclasses_=golang-base	b8fb27dacacea08140c53857f439fc7d	golang-build	91472d4e18894e738c69b415e236a664	golang-vcs-snapshot	ff485cabd3f37b060f110b0be95092ec
+_md5_=f2e651a7fc1ba8c87fc1f61d90d038c9

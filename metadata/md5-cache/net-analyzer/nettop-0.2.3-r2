@@ -1,13 +1,13 @@
 DEFINED_PHASES=install prepare
 DEPEND=sys-libs/slang net-libs/libpcap
 DESCRIPTION=top-like program for network activity
-EAPI=5
+EAPI=7
 HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
-INHERIT=epatch toolchain-funcs
+INHERIT=toolchain-funcs
 KEYWORDS=amd64 ~arm ppc x86
 LICENSE=BSD
 RDEPEND=sys-libs/slang net-libs/libpcap
 SLOT=0
 SRC_URI=mirror://gentoo/nettop-0.2.3.tar.gz
-_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	epatch	f62592ba170464d52e9a05f584161347	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
-_md5_=288c2f81a29b479a2404d0a11d0f289c
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=fc3d52e2eb84e472ddc9edc5fda3214a

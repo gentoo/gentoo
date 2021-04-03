@@ -1,11 +1,11 @@
 DEFINED_PHASES=compile install
 DESCRIPTION=program for making large letters out of ordinary text
-EAPI=6
+EAPI=7
 HOMEPAGE=http://www.figlet.org/
-INHERIT=eutils bash-completion-r1 toolchain-funcs
+INHERIT=bash-completion-r1 toolchain-funcs
 KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos
 LICENSE=BSD
 SLOT=0
 SRC_URI=ftp://ftp.figlet.org/pub/figlet/program/unix/figlet-2.2.5.tar.gz
-_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	estack	055c42df72f76a4f45ec92b35e83cd56	epatch	f62592ba170464d52e9a05f584161347	l10n	8cdd85e169b835d518bc2fd59f780d8e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	preserve-libs	ef207dc62baddfddfd39a164d9797648	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	bash-completion-r1	8e7c071081c68c2c398b77fe3a1d6908
-_md5_=eccbc5d1d4bbeb901114cac3abd49195
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	8e7c071081c68c2c398b77fe3a1d6908
+_md5_=5b23ae985e959a0941d702931de7744d

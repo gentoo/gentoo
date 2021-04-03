@@ -3,7 +3,7 @@ DEPEND=python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-e
 DESCRIPTION=Cross-platform application for configuring any YubiKey over all USB transports
 EAPI=7
 HOMEPAGE=https://developers.yubico.com/yubikey-manager-qt https://github.com/Yubico/yubikey-manager-qt
-INHERIT=eutils qmake-utils python-single-r1 desktop
+INHERIT=qmake-utils python-single-r1 desktop
 IUSE=python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9
 KEYWORDS=~amd64
 LICENSE=BSD-2
@@ -11,5 +11,5 @@ RDEPEND=python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-
 REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9 )
 SLOT=0
 SRC_URI=https://developers.yubico.com/yubikey-manager-qt/Releases/yubikey-manager-qt-1.1.5.tar.gz
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-single-r1	c7de0087e87a282f2faec351822e097c	desktop	c0d27bf73aa08ca05b663dbd31fbef28
-_md5_=3315ebe7765e757074bae98fb11c2461
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-single-r1	c7de0087e87a282f2faec351822e097c	desktop	c0d27bf73aa08ca05b663dbd31fbef28
+_md5_=252e3edd91381c54603692fa2a6ebd99

@@ -1038,7 +1038,7 @@ app-cdr/nrg2iso 0.4-r2: Convert CD images from nrg (Nero) to iso
 app-cdr/plextor-tool 0.5.0: Tool to change the parameters of a Plextor CD-ROM drive
 app-cdr/tkdvd 4.0.9-r1: A Tcl/Tk GUI for writing DVDs and CDs
 app-cdr/uif2iso 0.1.7c-r1: Convert CD images from uif (MagicISO) to iso
-app-cdr/xbiso 0.6.1-r2 0.6.1-r3: Xbox xdvdfs ISO extraction utility
+app-cdr/xbiso 0.6.1-r3: Xbox xdvdfs ISO extraction utility
 app-cdr/xcdroast 0.98_alpha16-r3: Lightweight cdrtools front-end for CD and DVD writing
 app-cdr/xfburn 0.6.2: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
@@ -5751,7 +5751,7 @@ dev-libs/qtkeychain 0.10.0 0.11.1: Qt API for storing passwords securely
 dev-libs/quazip 0.9.1 1.1-r1: Simple C++ wrapper over Gilles Vollant's ZIP/UNZIP package
 dev-libs/raft 0.9.25 0.10.0: C implementation of the Raft consensus protocol
 dev-libs/rapidjson 1.1.0-r2 1.1.0-r3 9999: A fast JSON parser/generator for C++ with both SAX/DOM style API
-dev-libs/rapidxml 1.13 1.13-r1: Fast XML parser
+dev-libs/rapidxml 1.13-r1: Fast XML parser
 dev-libs/rasqal 0.9.33: Library that handles Resource Description Framework (RDF)
 dev-libs/rccl 4.0.0-r2: ROCm Communication Collectives Library (RCCL)
 dev-libs/re2 0.2020.11.01 0.2021.02.02 0.2021.04.01: An efficient, principled regular expression library
@@ -15240,7 +15240,7 @@ net-misc/dhcdrop 0.5-r1: Effectively suppresses illegal DHCP servers on the LAN
 net-misc/dhcp 4.4.2-r3: ISC Dynamic Host Configuration Protocol (DHCP) client/server
 net-misc/dhcpcd 8.1.9-r1 9.3.4 9.4.0 9.4.0-r1 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
 net-misc/dhcpcd-ui 0.7.8: Desktop notification and configuration for dhcpcd
-net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see if it is responding
+net-misc/dhcping 1.2: Utility to send DHCP requests to DHCP servers to see if responding
 net-misc/dibbler 1.0.1 1.0.1-r2 1.0.1-r3: Portable DHCPv6 implementation (server, client and relay)
 net-misc/dleyna-server 0.6.0: Service that allows to discover and manipulate DLNA Digital Media servers (DMS)
 net-misc/drive 0.3.9.1 0.3.9.1-r1: Google Drive client for the commandline
