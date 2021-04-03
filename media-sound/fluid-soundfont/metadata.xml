@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
+	<maintainer type="person" proxied="yes">
+		<email>89q1r14hd@relay.firefox.com</email>
+		<name>Niklāvs Koļesņikovs</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>sound@gentoo.org</email>
+		<name>Gentoo Sound project</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<maintainer>
+			<email>getfrank@gmail.com</email>
+			<name>Frank Wen</name>
+		</maintainer>
+	</upstream>
+	<use>
+		<flag name="gm">Install the much larger General MIDI set (for playing MIDI music)</flag>
+		<flag name="gs">Install the set of Roland Sound Canvas extensions (only SFX sounds)</flag>
+	</use>
 </pkgmetadata>
