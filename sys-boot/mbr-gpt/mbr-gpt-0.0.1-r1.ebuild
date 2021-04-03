@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,7 @@ DEPEND=""
 RDEPEND=""
 
 # It's a mostly an MBR block and it does use the executable stack.
-QA_WX_LOAD="usr/lib/$PN/boot.elf"
+QA_WX_LOAD="usr/lib/${PN}/boot.elf"
 QA_PRESTRIPPED="${QA_WX_LOAD}"
 QA_FLAGS_IGNORED="${QA_WX_LOAD}"
 
@@ -45,9 +45,9 @@ src_compile() {
 src_install() {
 	# get_libdir is not correct here. We want this to go into a 32-bit library
 	# location.
-	insinto /usr/lib/$PN
+	insinto /usr/lib/${PN}
 	doins mbr
-	exeinto /usr/lib/$PN
+	exeinto /usr/lib/${PN}
 	exeopts -m 700
 	doexe boot.elf
 	dodoc AUTHORS

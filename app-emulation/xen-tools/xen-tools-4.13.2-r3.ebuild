@@ -10,7 +10,7 @@ inherit bash-completion-r1 flag-o-matic multilib python-single-r1 toolchain-func
 
 MY_PV=${PV/_/-}
 
-if [[ $PV == *9999 ]]; then
+if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	REPO="xen.git"
 	EGIT_REPO_URI="git://xenbits.xen.org/${REPO}"

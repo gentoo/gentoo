@@ -3,7 +3,7 @@
 
 EAPI=7
 
-if [[ $PV == *9999* ]]; then
+if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
 	scm_eclass=git-r3
 else

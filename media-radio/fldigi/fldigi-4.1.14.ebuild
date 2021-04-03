@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS ChangeLog NEWS README )
 
-PATCHES=( "$FILESDIR"/$PN-c++11.patch )
+PATCHES=( "${FILESDIR}"/${PN}-c++11.patch )
 
 src_configure() {
 	local myconf=""

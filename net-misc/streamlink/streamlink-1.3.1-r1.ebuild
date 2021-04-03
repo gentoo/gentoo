@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ PYTHON_REQ_USE='xml(+),threads(+)'
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit distutils-r1 $GIT_ECLASS
+inherit distutils-r1 ${GIT_ECLASS}
 
 DESCRIPTION="CLI for extracting streams from websites to a video player of your choice"
 HOMEPAGE="https://streamlink.github.io/"

@@ -23,6 +23,6 @@ DEPEND="
 
 RDEPEND="${DEPEND}"
 
-PATCHES=( "$FILESDIR/remove-unnecessary-dep.patch")
+PATCHES=( "${FILESDIR}/remove-unnecessary-dep.patch")
 
 distutils_enable_tests pytest

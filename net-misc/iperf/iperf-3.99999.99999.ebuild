@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools git-r3
+inherit git-r3
 
 DESCRIPTION="A TCP, UDP, and SCTP network bandwidth measurement tool"
 HOMEPAGE="https://github.com/esnet/iperf"

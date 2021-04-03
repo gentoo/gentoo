@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
 [[ ${PV} == *9999 ]] && SCM="git-r3"
-inherit toolchain-funcs flag-o-matic systemd linux-info $SCM
+inherit toolchain-funcs flag-o-matic systemd linux-info ${SCM}
 
 MY_P="${PN}-${PV/_beta/-dev}"
 
@@ -54,9 +54,9 @@ S="${WORKDIR}/${MY_P}"
 DOCS=( CHANGELOG CONTRIBUTING MAINTAINERS README )
 CONTRIBS=( halog iprange )
 # ip6range is present in 1.6, but broken.
-ver_test $PV -ge 1.7.0 && CONTRIBS+=( ip6range spoa_example tcploop )
+ver_test ${PV} -ge 1.7.0 && CONTRIBS+=( ip6range spoa_example tcploop )
 # TODO: mod_defender - requires apache / APR, modsecurity - the same
-ver_test $PV -ge 1.8.0 && CONTRIBS+=( hpack )
+ver_test ${PV} -ge 1.8.0 && CONTRIBS+=( hpack )
 
 haproxy_use() {
 	(( $# != 2 )) && die "${FUNCNAME} <USE flag> <make option>"
@@ -123,8 +123,8 @@ src_install() {
 	dosbin haproxy
 	dosym ../sbin/haproxy /usr/bin/haproxy
 
-	newconfd "${FILESDIR}/${PN}.confd" $PN
-	newinitd "${FILESDIR}/${PN}.initd-r6" $PN
+	newconfd "${FILESDIR}/${PN}.confd" ${PN}
+	newinitd "${FILESDIR}/${PN}.initd-r6" ${PN}
 
 	doman doc/haproxy.1
 
