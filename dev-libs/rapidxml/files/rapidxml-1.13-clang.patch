@@ -1,5 +1,5 @@
---- rapidxml_print.hpp.orig	2015-06-21 15:46:43.330070116 +0200
-+++ rapidxml_print.hpp	2015-06-21 15:50:58.745053512 +0200
+--- a/rapidxml_print.hpp
++++ b/rapidxml_print.hpp
 @@ -102,6 +102,20 @@
          ///////////////////////////////////////////////////////////////////////////
          // Internal printing operations
