@@ -1,8 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils toolchain-funcs
+
+inherit epatch toolchain-funcs
 
 DESCRIPTION="Qualys IDS Correlation Daemon"
 HOMEPAGE="http://quidscor.sourceforge.net/"
@@ -37,6 +38,7 @@ src_compile() {
 src_install() {
 	emake PREFIX=/usr STAGING_PREFIX="${D}" install
 	dodoc ChangeLog FAQ MANIFEST README TODO
+
 	# fix ugly install
 	cd "${D}"/usr || die
 	mv etc .. || die
