@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit autotools eutils
+EAPI=7
+
+inherit autotools
 
 DESCRIPTION="A monitoring tool for networked computers"
 HOMEPAGE="http://www.ant.uni-bremen.de/whomes/rinas/sinfo/"
@@ -18,15 +19,18 @@ RDEPEND="
 	dev-libs/boost
 	sys-libs/ncurses:=
 "
-DEPEND="
-	${RDEPEND}
-	virtual/pkgconfig
-"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.0.47-tinfo.patch
+	"${FILESDIR}"/${P}-gcc6.patch
+)
 
 src_prepare() {
+	default
+
 	cp "${FILESDIR}"/${P}-acinclude.m4 acinclude.m4 || die
-	epatch "${FILESDIR}"/${PN}-0.0.47-tinfo.patch
-	epatch "${FILESDIR}"/${P}-gcc6.patch
 	eautoreconf
 }
 
