@@ -1,35 +1,38 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools flag-o-matic
 
-DESCRIPTION="utilities for editing and replaying previously captured network traffic"
+inherit autotools
+
+DESCRIPTION="Utilities for editing and replaying previously captured network traffic"
 HOMEPAGE="http://tcpreplay.appneta.com/ https://github.com/appneta/tcpreplay"
-LICENSE="BSD GPL-3"
 SRC_URI="https://github.com/appneta/${PN}/releases/download/v${PV}/${P}.tar.xz"
+S="${WORKDIR}"/${P/_/-}
 
+LICENSE="BSD GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~sparc x86"
 IUSE="debug pcapnav +tcpdump"
 
-DEPEND="
+# libpcapnav for pcapnav-config
+BDEPEND="
+	net-libs/libpcapnav
 	>=sys-devel/autogen-5.18.4[libopts]
+"
+DEPEND="
 	dev-libs/libdnet
 	>=net-libs/libpcap-0.9
-	tcpdump? ( net-analyzer/tcpdump )
 	pcapnav? ( net-libs/libpcapnav )
+	tcpdump? ( net-analyzer/tcpdump )
 "
 RDEPEND="${DEPEND}"
 
-DOCS=(
-	docs/{CHANGELOG,CREDIT,HACKING,TODO}
-)
+DOCS=( docs/{CHANGELOG,CREDIT,HACKING,TODO} )
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.3.0-enable-pcap_findalldevs.patch
 )
-
-S=${WORKDIR}/${P/_/-}
 
 src_prepare() {
 	default
@@ -50,8 +53,8 @@ src_configure() {
 	# By default it uses static linking. Avoid that, bug 252940
 	econf \
 		$(use_enable debug) \
-		$(use_with pcapnav pcapnav-config /usr/bin/pcapnav-config) \
-		$(use_with tcpdump tcpdump /usr/sbin/tcpdump) \
+		$(use_with pcapnav pcapnav-config "${BROOT}"/usr/bin/pcapnav-config) \
+		$(use_with tcpdump tcpdump "${ESYSROOT}"/usr/sbin/tcpdump) \
 		--enable-dynamic-link \
 		--enable-local-libopts \
 		--enable-shared \
