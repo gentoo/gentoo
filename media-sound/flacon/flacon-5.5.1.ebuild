@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -66,9 +66,7 @@ src_test() {
 }
 
 pkg_postinst() {
-	elog "${PN} optionally supports formats listed below."
-	elog "(List will be empty if all extra packages are installed.)"
-	elog "Please install the required packages and restart ${PN}."
+	optfeature_header "${PN} optionally supports formats listed below."
 	optfeature 'FLAC input and output support' media-libs/flac
 	optfeature 'WavPack input and output support' media-sound/wavpack
 	optfeature 'APE input support' media-sound/mac
