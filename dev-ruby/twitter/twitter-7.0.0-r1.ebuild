@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-USE_RUBY="ruby24 ruby25 ruby26"
+USE_RUBY="ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_RECIPE_DOC="yard"
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
@@ -22,7 +22,7 @@ IUSE=""
 
 ruby_add_rdepend "
 	>=dev-ruby/addressable-2.3
-	>=dev-ruby/buftok-0.2.0
+	=dev-ruby/buftok-0.2.0*
 	>=dev-ruby/equalizer-0.0.11
 	=dev-ruby/equalizer-0.0*
 	dev-ruby/http:4
