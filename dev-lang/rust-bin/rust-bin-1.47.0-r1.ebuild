@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit bash-completion-r1 rust-toolchain toolchain-funcs multilib-minimal
+inherit bash-completion-r1 prefix rust-toolchain toolchain-funcs multilib-minimal
 
 MY_P="rust-${PV}"
 
@@ -14,10 +14,11 @@ SRC_URI="$(rust_all_arch_uris ${MY_P})"
 LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
 SLOT="stable"
 KEYWORDS="amd64 arm arm64 ppc64 x86"
-IUSE="clippy cpu_flags_x86_sse2 doc rls rustfmt"
+IUSE="clippy cpu_flags_x86_sse2 doc prefix rls rustfmt"
 
 DEPEND=""
 RDEPEND=">=app-eselect/eselect-rust-20190311"
+BDEPEND="prefix? ( dev-util/patchelf )"
 
 REQUIRED_USE="x86? ( cpu_flags_x86_sse2 )"
 
@@ -37,6 +38,16 @@ pkg_pretend() {
 src_unpack() {
 	default
 	mv "${WORKDIR}/${MY_P}-$(rust_abi)" "${S}" || die
+}
+
+patchelf_for_bin() {
+	local filetype=$(file -b ${1})
+	if [[ ${filetype} == *ELF*interpreter* ]]; then
+		einfo "${1}'s interpreter changed"
+		patchelf ${1} --set-interpreter ${2} || die
+	elif [[ ${filetype} == *script* ]]; then
+		hprefixify ${1}
+	fi
 }
 
 multilib_src_install() {
@@ -59,6 +70,16 @@ multilib_src_install() {
 		--mandir="${ED}/opt/${P}/man" \
 		--disable-ldconfig \
 		|| die
+
+	if use prefix; then
+		local interpreter=$(patchelf --print-interpreter ${EPREFIX}/bin/bash)
+		ebegin "Changing interpreter to ${interpreter} for Gentoo prefix at ${ED}/opt/${P}/bin"
+		find "${ED}/opt/${P}/bin" -type f -print0 | \
+			while IFS=  read -r -d '' filename; do
+				patchelf_for_bin ${filename} ${interpreter} \; || die
+			done
+		eend $?
+	fi
 
 	local symlinks=(
 		cargo
