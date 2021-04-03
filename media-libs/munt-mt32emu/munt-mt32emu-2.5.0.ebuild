@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
-MY_P="munt_${PV//./_}"
+MY_P="libmt32emu_${PV//./_}"
 DESCRIPTION="Library for emulating the Roland MT-32, CM-32L, CM-64 and LAPC-I"
 HOMEPAGE="https://github.com/munt/munt"
 SRC_URI="https://github.com/munt/munt/archive/${MY_P}.tar.gz"
@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 S="${WORKDIR}/munt-${MY_P}/mt32emu"
 
 PATCHES=(
-	"${FILESDIR}"/docs.patch
+	"${FILESDIR}"/${PN}-2.4.2-docs.patch
 )
 
 src_configure() {
@@ -24,5 +24,5 @@ src_configure() {
 		-DLIB_INSTALL_DIR="${EPREFIX}/usr/$(get_libdir)"
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
