@@ -23,9 +23,9 @@ RDEPEND="
 	sys-libs/zlib
 	virtual/jpeg
 	virtual/libiconv
-	x11-libs/gtk+:2
 	x11-libs/libXft
 	x11-libs/libXpm
+	x11-libs/motif
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -38,6 +38,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-0002-fix-unrecognized-option-with-GTK.patch
 	"${FILESDIR}"/${P}-0003-avoid-compressing-man-page.patch
 	"${FILESDIR}"/${P}-freetype261.patch
+	"${FILESDIR}"/${P}-use-Motif-toolkit-instead-of-GTK-by-default.patch
 )
 
 src_prepare() {
@@ -66,9 +67,13 @@ src_configure() {
 	tc-export AR CC RANLIB
 
 	local dir
-	for dir in appFrame appUtil bitmap docBuf ind Ted tedPackage; do
+	for dir in appUtil textEncoding utilPs bitmap docFont docBase docBuf ind drawMeta docRtf docEdit docLayout docHtml; do
 		cd "${S}"/${dir}
 		econf --cache-file=../config.cache
+	done
+	for dir in appFrame; do
+		cd "${S}"/${dir}
+		econf --cache-file=../config.cache --with-MOTIF
 	done
 }
 
