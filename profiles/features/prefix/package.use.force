@@ -1,0 +1,9 @@
+# Copyright 2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-04-03)
+# We want to use rust-bin (with fixes) or source-built rust
+# to bootstrap rust properly.
+# See https://github.com/gentoo/gentoo/pull/19815 for discussion
+# And https://bugs.gentoo.org/682370 https://bugs.gentoo.org/682370
+dev-lang/rust system-bootstrap
