@@ -123,7 +123,6 @@ src_configure() {
 
 pkg_postinst() {
 	ecm_pkg_postinst
-	elog "Optional dependency:"
 	optfeature "color management support" x11-misc/colord
 	elog
 	elog "In Plasma 5.20, default behavior of the Task Switcher to move minimised"
