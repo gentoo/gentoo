@@ -6,7 +6,7 @@ EAPI=7
 LUA_COMPAT=( lua5-1 luajit )
 PYTHON_COMPAT=( python3_{7..9} )
 
-inherit autotools flag-o-matic linux-info lua-single python-single-r1 systemd tmpfiles
+inherit autotools linux-info lua-single python-single-r1 systemd tmpfiles
 
 DESCRIPTION="High performance Network IDS, IPS and Network Security Monitoring engine"
 HOMEPAGE="https://suricata-ids.org/"
@@ -121,7 +121,7 @@ src_install() {
 	python_optimize
 
 	if use bpf; then
-		rm -f ebpf/Makefile.{am,in}
+		rm -f ebpf/Makefile.{am,in} || die
 		dodoc -r ebpf/
 		keepdir /usr/libexec/suricata/ebpf
 	fi
