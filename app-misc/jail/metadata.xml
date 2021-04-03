@@ -7,9 +7,9 @@
 		<bugs-to>https://github.com/spiculator/jail/issues</bugs-to>
 	</upstream>
 	<longdescription>
-Jail Chroot Project is an attempt of write a tool that builds a chrooted environment. 
-The main goal of Jail is to be as simple as possible, and highly portable. The most 
-difficult step when building a chrooted environment is to set up the right libraries and 
-files. Here, Jail comes to the rescue with a tool to automagically configures and builds 
+Jail Chroot Project is an attempt of write a tool that builds a chrooted environment.
+The main goal of Jail is to be as simple as possible, and highly portable. The most
+difficult step when building a chrooted environment is to set up the right libraries and
+files. Here, Jail comes to the rescue with a tool to automagically configures and builds
 all the required files, directories and libraries.</longdescription>
 </pkgmetadata>
