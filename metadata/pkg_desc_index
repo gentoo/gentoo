@@ -10069,7 +10069,7 @@ dev-ruby/elasticsearch 6.8.0 6.8.1 6.8.2: Ruby integrations for ES, elasticsearc
 dev-ruby/elasticsearch-api 6.8.0 6.8.1 6.8.2: Ruby integrations for ES, elasticsearch-api module
 dev-ruby/elasticsearch-transport 6.8.0 6.8.1 6.8.2: Ruby integrations for ES, elasticsearch-transport module
 dev-ruby/em-websocket 0.5.1 0.5.2: EventMachine based WebSocket server
-dev-ruby/equalizer 0.0.11: Module to define equality, equivalence and inspection methods
+dev-ruby/equalizer 0.0.11 0.0.11-r1: Module to define equality, equivalence and inspection methods
 dev-ruby/equatable 0.6.1: Allows ruby objects to implement equality comparison and inspection methods
 dev-ruby/erubi 1.9.0 1.10.0: a ERB template engine for ruby; a simplified fork of Erubis
 dev-ruby/erubis 2.7.0-r2: Erubis is an implementation of eRuby
@@ -10544,7 +10544,7 @@ dev-ruby/tty-screen 0.7.1 0.8.1: Terminal screen size detection which works on L
 dev-ruby/tty-which 0.4.1 0.4.2: Platform independent implementation of Unix which command
 dev-ruby/turbolinks 5.2.1: Makes following links in your web application faster
 dev-ruby/turbolinks-source 5.2.0: Turbolinks JavaScript assets
-dev-ruby/twitter 7.0.0: Ruby wrapper around the Twitter API
+dev-ruby/twitter 7.0.0-r1: Ruby wrapper around the Twitter API
 dev-ruby/twitter-text 3.1.0: Text handling for Twitter
 dev-ruby/typed-array 0.1.2-r1: Gem provides enforced-type functionality to Arrays
 dev-ruby/typeprof 0.11.0 0.12.0 0.13.0: Performs a type analysis of non-annotated Ruby code
