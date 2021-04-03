@@ -105,8 +105,6 @@ python_install_all() {
 
 pkg_postinst() {
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
-		elog
-		elog "You may consider installing the following optional packages:"
 		optfeature "ccache support" dev-util/ccache
 	fi
 }
