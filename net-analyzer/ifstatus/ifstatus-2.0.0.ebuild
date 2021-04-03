@@ -16,7 +16,7 @@ KEYWORDS="amd64 arm ~ppc x86"
 
 RDEPEND=">=sys-libs/ncurses-4.2:0="
 DEPEND="${RDEPEND}"
-BDEPEND+"virtual/pkgconfig"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.0.0-tinfo.patch
