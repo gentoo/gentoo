@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit flag-o-matic multilib udev user
+inherit flag-o-matic udev user
 
 DESCRIPTION="library for accessing smart card terminals"
 HOMEPAGE="https://github.com/OpenSC/openct/wiki"
@@ -13,7 +13,7 @@ KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE="doc pcsc-lite usb debug"
+IUSE="doc debug pcsc-lite usb"
 
 RDEPEND="pcsc-lite? ( >=sys-apps/pcsc-lite-1.7.2-r1:= )
 	usb? ( virtual/libusb:0 )
@@ -35,7 +35,8 @@ src_configure() {
 		--enable-non-privileged \
 		--with-daemon-user=openctd \
 		--with-daemon-groups=usb \
-		--enable-shared --disable-static \
+		--enable-shared \
+		--disable-static \
 		$(use_enable doc) \
 		$(use_enable doc api-doc) \
 		$(use_enable pcsc-lite pcsc) \
@@ -45,8 +46,9 @@ src_configure() {
 
 src_install() {
 	default
-	find "${D}" -name '*.la' -delete || die
-	rm "${D}"/usr/$(get_libdir)/openct-ifd.*
+
+	find "${ED}" -name '*.la' -delete || die
+	rm "${ED}"/usr/$(get_libdir)/openct-ifd.* || die
 
 	udev_newrules etc/openct.udev 70-openct.rules
 
