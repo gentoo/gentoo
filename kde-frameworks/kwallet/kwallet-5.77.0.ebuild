@@ -45,7 +45,6 @@ src_configure() {
 
 pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
-		elog "Optional dependencies:"
 		optfeature "Auto-unlocking after account login" kde-plasma/kwallet-pam
 		optfeature "KWallet management" kde-apps/kwalletmanager:5
 		elog "For more information, read https://wiki.gentoo.org/wiki/KDE#KWallet"
