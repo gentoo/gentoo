@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools linux-info
+inherit linux-info
 
 DESCRIPTION="Userspace library for interface to user-space helper for conntrack"
 HOMEPAGE="https://www.netfilter.org/projects/libnetfilter_cthelper/"
