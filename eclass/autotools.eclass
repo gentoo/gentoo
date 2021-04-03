@@ -475,7 +475,7 @@ config_rpath_update() {
 	local dst src
 
 	case ${EAPI:-0} in
-		0|1|2|3|4|5|6)
+		4|5|6)
 			src="${EPREFIX}/usr/share/gettext/config.rpath"
 			;;
 		*)
