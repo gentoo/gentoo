@@ -7,7 +7,7 @@ MODULES_OPTIONAL_USE="driver"
 inherit desktop linux-info linux-mod multilib-build \
 	optfeature systemd toolchain-funcs unpacker
 
-NV_KERNEL_MAX="5.10"
+NV_KERNEL_MAX="5.11"
 NV_BIN_URI="https://download.nvidia.com/XFree86/Linux-"
 NV_GIT_URI="https://github.com/NVIDIA/nvidia-"
 
@@ -76,7 +76,7 @@ PATCHES=(
 	"${FILESDIR}"/nvidia-modprobe-390.141-uvm-perms.patch
 )
 DOCS=(
-	README.txt NVIDIA_Changelog supported-gpus.json
+	README.txt NVIDIA_Changelog supported-gpus/supported-gpus.json
 	nvidia-settings/doc/{FRAMELOCK,NV-CONTROL-API}.txt
 )
 HTML_DOCS=( html/. )
@@ -94,6 +94,11 @@ pkg_setup() {
 	of drivers (no custom config), and optional nvidia-drm.modeset=1.
 	Cannot be directly selected in the kernel's menuconfig, so enable
 	options such as CONFIG_DRM_FBDEV_EMULATION instead."
+
+	if kernel_is -lt 5 10; then
+		CONFIG_CHECK+=" PM" # needed since 460.67 (bug #778920)
+		local ERROR_PM="CONFIG_PM: is not set but needed with kernel version <5.10"
+	fi
 
 	BUILD_PARAMS='NV_VERBOSE=1 IGNORE_CC_MISMATCH=yes SYSSRC="${KV_DIR}" SYSOUT="${KV_OUT_DIR}"'
 	BUILD_TARGETS="modules" # defaults' clean sometimes deletes modules
@@ -250,13 +255,13 @@ src_install() {
 		linux-mod_src_install
 
 		insinto /etc/modprobe.d
-		newins "${FILESDIR}"/nvidia-430.conf nvidia.conf
+		newins "${FILESDIR}"/nvidia-460.conf nvidia.conf
 		doins "${FILESDIR}"/nvidia-blacklist-nouveau.conf
 		doins "${FILESDIR}"/nvidia-rmmod.conf
 
 		# used for gpu verification with binpkgs (not kept)
 		insinto /usr/share/nvidia
-		doins supported-gpus.json
+		doins supported-gpus/supported-gpus.json
 	fi
 
 	if use X; then
@@ -335,9 +340,9 @@ src_install() {
 
 	# install systemd sleep services
 	exeinto /lib/systemd/system-sleep
-	doexe nvidia
-	dobin nvidia-sleep.sh
-	systemd_dounit nvidia-{hibernate,resume,suspend}.service
+	doexe systemd/system-sleep/nvidia
+	dobin systemd/nvidia-sleep.sh
+	systemd_dounit systemd/system/nvidia-{hibernate,resume,suspend}.service
 
 	einstalldocs
 }

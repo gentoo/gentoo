@@ -72,18 +72,6 @@ BDEPEND="
 
 QA_PREBUILT="opt/* usr/lib*"
 
-CONFIG_CHECK="
-	~DRM_KMS_HELPER
-	~SYSVIPC
-	~!AMD_MEM_ENCRYPT_ACTIVE_BY_DEFAULT
-	~!LOCKDEP
-	!DEBUG_MUTEXES"
-ERROR_DRM_KMS_HELPER="CONFIG_DRM_KMS_HELPER: is not set but needed for Xorg auto-detection
-	of drivers (no custom config), and optional nvidia-drm.modeset=1.
-	Cannot be directly selected in the kernel's menuconfig, so enable
-	options such as CONFIG_DRM_FBDEV_EMULATION instead.
-	390.xx branch: also used by a GLX workaround needed for OpenGL."
-
 PATCHES=(
 	"${FILESDIR}"/nvidia-modprobe-390.141-uvm-perms.patch
 	"${FILESDIR}"/nvidia-settings-390.141-fno-common.patch
@@ -96,6 +84,19 @@ HTML_DOCS=( html/. )
 
 pkg_setup() {
 	use driver || return
+
+	local CONFIG_CHECK="
+		~DRM_KMS_HELPER
+		~SYSVIPC
+		~!AMD_MEM_ENCRYPT_ACTIVE_BY_DEFAULT
+		~!LOCKDEP
+		!DEBUG_MUTEXES"
+	local ERROR_DRM_KMS_HELPER="CONFIG_DRM_KMS_HELPER: is not set but needed for Xorg auto-detection
+	of drivers (no custom config), and optional nvidia-drm.modeset=1.
+	Cannot be directly selected in the kernel's menuconfig, so enable
+	options such as CONFIG_DRM_FBDEV_EMULATION instead.
+	390.xx branch: also used by a GLX workaround needed for OpenGL."
+
 	BUILD_PARAMS='NV_VERBOSE=1 IGNORE_CC_MISMATCH=yes SYSSRC="${KV_DIR}" SYSOUT="${KV_OUT_DIR}"'
 	use x86 && BUILD_PARAMS+=' ARCH=i386' # needed for recognition
 	BUILD_TARGETS="modules" # defaults' clean sometimes deletes modules
@@ -104,9 +105,10 @@ pkg_setup() {
 		nvidia-drm(video:kernel)
 		nvidia-modeset(video:kernel)"
 	use amd64 && MODULE_NAMES+=" nvidia-uvm(video:kernel)" # no x86 support
+
 	linux-mod_pkg_setup
 
-	if [[ ${MERGE_TYPE} != binary ]] && kernel_is gt ${NV_KERNEL_MAX/./ }; then
+	if [[ ${MERGE_TYPE} != binary ]] && kernel_is -gt ${NV_KERNEL_MAX/./ }; then
 		ewarn "Kernel ${KV_MAJOR}.${KV_MINOR} is either known to break this version of nvidia-drivers"
 		ewarn "or was not tested with it. It is recommended to use one of:"
 		ewarn "  <=sys-kernel/gentoo-kernel-${NV_KERNEL_MAX}"
@@ -153,16 +155,18 @@ src_prepare() {
 	gzip -d nvidia-{cuda-mps-control,smi}.1.gz || die
 }
 
-nvidia-drivers_make() {
-	emake -C nvidia-${1} ${2} \
-		DESTDIR="${ED}" PREFIX=/usr LIBDIR="${ED}/usr/$(get_libdir)" \
-		HOST_CC="$(tc-getBUILD_CC)" HOST_LD="$(tc-getBUILD_LD)" \
-		DO_STRIP= MANPAGE_GZIP= \
-		NV_USE_BUNDLED_LIBJANSSON=0 NV_VERBOSE=1 OUTPUTDIR=out
-}
-
 src_compile() {
+	nvidia-drivers_make() {
+		emake -C nvidia-${1} ${2} \
+			PREFIX="${EPREFIX}/usr" \
+			HOST_CC="$(tc-getBUILD_CC)" \
+			HOST_LD="$(tc-getBUILD_LD)" \
+			NV_USE_BUNDLED_LIBJANSSON=0 \
+			NV_VERBOSE=1 DO_STRIP= OUTPUTDIR=out
+	}
+
 	tc-export AR CC LD OBJCOPY
+
 	# may no longer be relevant but kept as a safety
 	export DISTCC_DISABLE=1 CCACHE_DISABLE=1
 
@@ -183,60 +187,69 @@ src_compile() {
 	fi
 }
 
-nvidia-drivers_libs_install() {
-	local libs=(
-		EGL_nvidia
-		GLESv1_CM_nvidia
-		GLESv2_nvidia
-		cuda
-		nvcuvid
-		nvidia-compiler
-		nvidia-eglcore
-		nvidia-encode
-		nvidia-fatbinaryloader
-		nvidia-glcore
-		nvidia-glsi
-		nvidia-ml
-		nvidia-opencl
-		nvidia-ptxjitcompiler
-		nvidia-tls
-	)
-
-	if use X; then
-		libs+=(
-			GLX_nvidia
-			nvidia-fbc
-			nvidia-ifr
-			vdpau_nvidia
-		)
-	fi
-
-	local libdir=.
-	if multilib_is_native_abi; then
-		libs+=(
-			nvidia-cfg
-			nvidia-wfb
-		)
-	else
-		libdir+=/32
-	fi
-
-	local lib soname
-	for lib in "${libs[@]}"; do
-		[[ ${lib:0:3} != lib ]] && lib=lib${lib}.so.${PV}
-
-		# auto-detect soname and create appropriate symlinks
-		soname=$(scanelf -qF'%S#F' "${lib}") || die "Scanning ${lib} failed"
-		if [[ ${soname} && ${soname} != ${lib} ]]; then
-			ln -s ${lib} ${libdir}/${soname} || die
-		fi
-		ln -s ${lib} ${libdir}/${lib%.so*}.so || die
-
-		dolib.so ${libdir}/${lib%.so*}*
-	done
-}
-
 src_install() {
+	nvidia-drivers_make_install() {
+		emake -C nvidia-${1} install \
+			DESTDIR="${D}" \
+			PREFIX="${EPREFIX}/usr" \
+			LIBDIR="${ED}/usr/$(get_libdir)" \
+			NV_USE_BUNDLED_LIBJANSSON=0 \
+			NV_VERBOSE=1 DO_STRIP= MANPAGE_GZIP= OUTPUTDIR=out
+	}
+
+	nvidia-drivers_libs_install() {
+		local libs=(
+			EGL_nvidia
+			GLESv1_CM_nvidia
+			GLESv2_nvidia
+			cuda
+			nvcuvid
+			nvidia-compiler
+			nvidia-eglcore
+			nvidia-encode
+			nvidia-fatbinaryloader
+			nvidia-glcore
+			nvidia-glsi
+			nvidia-ml
+			nvidia-opencl
+			nvidia-ptxjitcompiler
+			nvidia-tls
+		)
+
+		if use X; then
+			libs+=(
+				GLX_nvidia
+				nvidia-fbc
+				nvidia-ifr
+				vdpau_nvidia
+			)
+		fi
+
+		local libdir=.
+		if [[ -d 32 && ${ABI} == x86 ]]; then
+			libdir+=/32
+		else
+			libs+=(
+				nvidia-cfg
+				nvidia-wfb
+			)
+		fi
+
+		local lib soname
+		for lib in "${libs[@]}"; do
+			lib=lib${lib}.so.${PV}
+
+			# auto-detect soname and create appropriate symlinks
+			soname=$(scanelf -qF'%S#F' ${lib}) || die "Scanning ${lib} failed"
+			if [[ ${soname} && ${soname} != ${lib} ]]; then
+				ln -s ${lib} ${libdir}/${soname} || die
+			fi
+			ln -s ${lib} ${libdir}/${lib%.so*}.so || die
+
+			dolib.so ${libdir}/${lib%.so*}*
+		done
+	}
+
 	if use driver; then
 		linux-mod_src_install
 
@@ -271,20 +284,20 @@ src_install() {
 	newins nvidia-application-profiles{-${PV},}-rc
 
 	# install built helpers
-	nvidia-drivers_make modprobe install
+	nvidia-drivers_make_install modprobe
 	# allow video group to load mods and create devs (bug #505092)
 	fowners root:video /usr/bin/nvidia-modprobe
 	fperms 4710 /usr/bin/nvidia-modprobe
 
-	nvidia-drivers_make persistenced install
+	nvidia-drivers_make_install persistenced
 	newconfd "${FILESDIR}/nvidia-persistenced.confd" nvidia-persistenced
 	newinitd "${FILESDIR}/nvidia-persistenced.initd" nvidia-persistenced
 	systemd_dounit nvidia-persistenced.service
 
-	use X && nvidia-drivers_make xconfig install
+	use X && nvidia-drivers_make_install xconfig
 
 	if use tools; then
-		nvidia-drivers_make settings install
+		nvidia-drivers_make_install settings
 		doicon nvidia-settings/doc/nvidia-settings.png
 		domenu nvidia-settings/doc/nvidia-settings.desktop
 
@@ -316,7 +329,7 @@ src_install() {
 	doman nvidia-smi.1
 
 	# install prebuilt-only libraries
-	mv tls/* . || die # alternate tls lib needed for libglx.so
+	mv tls/libnvidia-tls.so.${PV} . || die # alt tls lib needed by libglx.so
 	multilib_foreach_abi nvidia-drivers_libs_install
 
 	einstalldocs
