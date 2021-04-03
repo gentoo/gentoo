@@ -17,8 +17,8 @@ SLOT="0"
 LICENSE="GPL-2 LPPL-1.3c TeX"
 
 SRC_URI="https://dev.gentoo.org/~zlogene/distfiles/texlive/${MY_P}.tar.xz
-	https://dev.gentoo.org/~zlogene/distfiles/texlive/texlive-tlpdb-${PV}.tar.xz"
-	#https://dev.gentoo.org/~zlogene/distfiles/texlive/${PN}-patches-${PV}-${PATCHLEVEL}.tar.xz
+	https://dev.gentoo.org/~zlogene/distfiles/texlive/texlive-tlpdb-${PV}.tar.xz
+	https://dev.gentoo.org/~zlogene/distfiles/texlive/${PN}-patches-${PV}-${PATCHLEVEL}.tar.xz"
 
 # We ship binextra collection alongside
 TL_CORE_BINEXTRA_MODULES="
@@ -162,7 +162,7 @@ src_prepare() {
 		-e "s,/usr/include /usr/local/include.*echo \$KPATHSEA_INCLUDES.*,${EPREFIX}/usr/include\"," \
 		texk/web2c/configure || die
 
-	#eapply "${WORKDIR}"/patches
+	eapply "${WORKDIR}"/patches
 
 	default
 
