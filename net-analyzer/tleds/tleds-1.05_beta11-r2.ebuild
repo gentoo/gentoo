@@ -22,12 +22,10 @@ IUSE="X"
 DEPEND="X? ( x11-libs/libX11 )"
 RDEPEND="${DEPEND}"
 
-src_prepare() {
-	default
-
-	eapply "${WORKDIR}"/${MY_P}.patch
-	eapply "${FILESDIR}"/${P}-gentoo.patch
-}
+PATCHES=(
+	"${WORKDIR}"/${MY_P}.patch
+	"${FILESDIR}"/${P}-gentoo.patch
+)
 
 src_compile() {
 	emake \
