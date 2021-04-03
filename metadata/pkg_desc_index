@@ -9457,7 +9457,7 @@ dev-python/wxpython 4.0.7 4.0.7-r1: A blending of the wxWindows C++ class librar
 dev-python/xapp 2.0.2: Python bindings for x11-libs/xapps
 dev-python/xarray 0.16.2 0.17.0: N-D labeled arrays and datasets in Python
 dev-python/xcffib 0.11.1: A drop in replacement for xpyb, an XCB python binding
-dev-python/xdg 5.0.1-r1: Implementation of the XDG Base Directory Specification in Python
+dev-python/xdg 5.0.1-r2: Implementation of the XDG Base Directory Specification in Python
 dev-python/xdoctest 0.15.4: A rewrite of Python's builtin doctest module but without all the weirdness
 dev-python/xlrd 1.2.0 2.0.1: Library to extract data from Microsoft Excel spreadsheets
 dev-python/xlsxwriter 1.3.7 1.3.8: Python module for creating Excel XLSX files
@@ -15033,7 +15033,7 @@ net-libs/libyang 1.0.215 1.0.225: YANG data modeling language library
 net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs
 net-libs/liquid-dsp 1.3.2 9999: digital signal processing library for software-defined radios
 net-libs/loudmouth 1.5.3-r1 1.5.3-r2 1.5.3-r3: Lightweight C Jabber library
-net-libs/mbedtls 2.16.8 2.16.9 2.16.10 2.24.0 2.26.0: Cryptographic library for embedded systems
+net-libs/mbedtls 2.16.10 2.24.0 2.26.0: Cryptographic library for embedded systems
 net-libs/meanwhile 1.0.2-r1: Meanwhile (Sametime protocol) library
 net-libs/miniupnpc 2.2.1 2.2.2: UPnP client library and a simple UPnP client
 net-libs/nDPI 3.0-r1 3.0-r2 3.2-r1 3.2-r2 3.4 9999: Open Source Deep Packet Inspection Software Toolkit
@@ -17469,7 +17469,7 @@ sys-devel/binutils-apple 3.2.6 8.2.1-r1 8.2.1-r101 11.3.1-r1: Darwin assembler a
 sys-devel/binutils-config 5.3.2 5.4 9999: Utility to change the binutils version being used
 sys-devel/binutils-hppa64 2.32-r1 2.33.1 2.34-r2 2.35.1-r1 2.35.2 2.36.1: Tools necessary to build programs
 sys-devel/bison 3.6.4 3.7.3 3.7.5 3.7.6: A general-purpose (yacc-compatible) parser generator
-sys-devel/bmake 20210206-r1 20210314: NetBSD's portable make
+sys-devel/bmake 20210206-r1 20210314 20210314-r1: NetBSD's portable make
 sys-devel/boost-m4 0.4_p20160328: Another set of autoconf macros for compiling against boost
 sys-devel/clang 10.0.1 11.0.0 11.0.1 11.1.0 12.0.0_rc2 12.0.0_rc3 12.0.0_rc4 12.0.0.9999 13.0.0.9999: C language family frontend for LLVM
 sys-devel/clang-common 10.0.1 11.0.0 11.0.1 11.1.0 12.0.0_rc2 12.0.0_rc3 12.0.0_rc4 12.0.0.9999 13.0.0.9999: Common files shared between multiple slots of clang
@@ -17480,7 +17480,7 @@ sys-devel/ct-ng 1.23.0 1.24.0: crosstool-ng is a tool to build cross-compiling t
 sys-devel/dev86 0.16.21-r3: Bruce's C compiler - Simple C compiler to generate 8086 code
 sys-devel/distcc 3.3.3-r3: Distribute compilation of C code across several machines on a network
 sys-devel/dwz 0.13: DWARF optimization and duplicate removal tool
-sys-devel/elftoolchain 0.7.1-r1: Libraries/utilities to handle ELF objects (BSD drop in replacement for libelf)
+sys-devel/elftoolchain 0.7.1-r2: Libraries/utilities to handle ELF objects (BSD drop in replacement for libelf)
 sys-devel/flex 2.6.1 2.6.3 2.6.3-r1 2.6.4 2.6.4-r1: The Fast Lexical Analyzer
 sys-devel/gcc 6.5.0-r3 7.5.0-r1 8.4.0-r1 8.4.0-r2 9.3.0-r1 9.3.0-r2 10.2.0-r5 10.2.1_pre9999 11.0.1_pre9999: The GNU Compiler Collection
 sys-devel/gcc-apple 4.2.1_p5666-r2: Apple branch of the GNU Compiler Collection, Developer Tools 4.0

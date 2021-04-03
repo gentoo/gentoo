@@ -1,5 +1,5 @@
-BDEPEND=dev-vcs/subversion sys-apps/lsb-release >=sys-devel/bmake-20210206 virtual/yacc
-DEFINED_PHASES=compile install prepare
+BDEPEND=dev-vcs/subversion sys-apps/lsb-release >=sys-devel/bmake-20210314-r1 virtual/yacc
+DEFINED_PHASES=compile configure install prepare
 DEPEND=app-arch/libarchive:= !dev-libs/elfutils !dev-libs/libelf
 DESCRIPTION=Libraries/utilities to handle ELF objects (BSD drop in replacement for libelf)
 EAPI=7
@@ -11,4 +11,4 @@ RDEPEND=app-arch/libarchive:= !dev-libs/elfutils !dev-libs/libelf
 SLOT=0
 SRC_URI=https://netcologne.dl.sourceforge.net/project/elftoolchain/Sources/elftoolchain-0.7.1/elftoolchain-0.7.1.tar.bz2
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
-_md5_=7c20cc11af024036cff72f382d165ffc
+_md5_=1daf3a7007f5e4054a60540a3d4e5ada

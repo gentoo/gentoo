@@ -1,9 +1,14 @@
-DEFINED_PHASES=-
+BDEPEND=test? ( || ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 ) )
+DEFINED_PHASES=setup
 DESCRIPTION=TCP proxy for applications that don't speak IPv6
 EAPI=7
 HOMEPAGE=https://github.com/wojtekka/6tunnel
+INHERIT=python-any-r1
+IUSE=test
 KEYWORDS=amd64 ~s390 x86
 LICENSE=GPL-2
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/wojtekka/6tunnel/releases/download/0.13/6tunnel-0.13.tar.gz
-_md5_=b760016278afaf4072e8dbb236eb30f5
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-any-r1	690a993463cd2ebcde40ccdf1bd9ba98
+_md5_=dfaaf26f9ba79bd2c07519308ae52e70
