@@ -73,7 +73,6 @@ src_install() {
 pkg_postinst() {
 	xdg_pkg_postinst
 
-	elog "To get additional features, optional runtime dependencies may be installed:"
 	optfeature "writing Exif information" media-libs/exiftool
 	optfeature "drawing tool" dev-perl/Goo-Canvas
 	optfeature "image hostings uploading" "dev-perl/JSON-MaybeXS dev-perl/Net-OAuth dev-perl/Path-Class"
