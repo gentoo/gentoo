@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PYTHON_COMPAT=( python3_{7,8} )
 
-inherit eutils python-r1 toolchain-funcs
+inherit python-r1 toolchain-funcs
 
 DESCRIPTION="Library to parse proxy auto-config files"
 HOMEPAGE="http://pacparser.manugarg.com/"
@@ -22,7 +22,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 # spidermonkey-1.7.0 is bundled
 # tested unbundling with spidermonkey-1.8* and 1.7
-# and got many failures : unbundling not worth.
+# and got many failures: unbundling not worth it.
 
 src_prepare() {
 	default
@@ -52,11 +52,13 @@ src_test() {
 src_install() {
 	emake DESTDIR="${ED}" LIB_PREFIX="${ED}/usr/$(get_libdir)" -C src install
 	dodoc README.md
+
 	if use python; then
 		python_foreach_impl emake DESTDIR="${D}" \
 			LIB_PREFIX="${D}/usr/$(get_libdir)" -C src install-pymod
 		python_foreach_impl python_optimize
 	fi
+
 	if use doc; then
 		docompress -x /usr/share/doc/${PF}/{html,examples}
 	else
