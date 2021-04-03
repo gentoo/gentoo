@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools toolchain-funcs
+inherit toolchain-funcs
 
 MY_P=uudeview-${PV}
 
