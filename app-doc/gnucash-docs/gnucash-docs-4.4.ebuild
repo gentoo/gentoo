@@ -60,6 +60,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	optfeature "You need dev-java/fop to generate pdf files." dev-java/fop
-	optfeature "You need gnome-extra/yelp to view the docs." gnome-extra/yelp
+	optfeature "generating PDF files" dev-java/fop
+	optfeature "viewing the docs" gnome-extra/yelp
 }
