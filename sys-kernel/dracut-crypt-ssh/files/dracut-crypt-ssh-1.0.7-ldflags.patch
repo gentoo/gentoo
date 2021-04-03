@@ -1,0 +1,18 @@
+# https://bugs.gentoo.org/726014
+--- a/modules/60crypt-ssh/helper/Makefile
++++ b/modules/60crypt-ssh/helper/Makefile
+@@ -17,11 +17,11 @@ clean:
+ 	rm -f *.o console_auth unlock crypttab-test
+ 
+ console_auth:	auth.c
+-	$(CC) $(CFLAGS) $^ -o $@
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $^ -o $@
+ 
+ unlock:	crypttab.o unlock.o
+-	$(CC) $(CFLAGS) -lblkid $^ -o $@
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -lblkid $^ -o $@
+ 
+ crypttab-test: crypttab-test.c crypttab.o crypttab-test-data
+-	$(CC) crypttab-test.c $(CFLAGS) crypttab.o -lblkid -o crypttab-test
++	$(CC) crypttab-test.c $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) crypttab.o -lblkid -o crypttab-test
+ 	./crypttab-test
