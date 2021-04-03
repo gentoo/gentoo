@@ -1,0 +1,19 @@
+diff --git a/tests/t_list b/tests/t_list
+index a8c92c4..c410cf2 100755
+--- a/tests/t_list
++++ b/tests/t_list
+@@ -1,11 +1,10 @@
+ #!/bin/sh
+ 
+ PATH_TO_SDCV="$1"
+-ndicts=`"$PATH_TO_SDCV" -l | wc -l`
++TEST_DIR="$2"
++ndicts=`"$PATH_TO_SDCV" --data-dir "${TEST_DIR}" -l | wc -l`
+ ndicts=$(($ndicts-1))
+-ncom=`find /usr/share/stardict/dic -name "*.ifo" | wc -l`
+-nspe=`find "${XDG_DATA_HOME:-$HOME/.local/share}"/stardict/dic -name "*.ifo" | wc -l`
+-nmy=$(($ncom+$nspe))
++nmy=`find "${TEST_DIR}" -name "*.ifo" | wc -l`
+ 
+ if [ $nmy -ne $ndicts ]; then
+ 	echo "should be: $nmy, we have: $ndicts" >&2
