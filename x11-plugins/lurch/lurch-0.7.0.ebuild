@@ -11,7 +11,7 @@ SRC_URI="https://github.com/gkdr/lurch/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"  # likely not GPL-3+, https://github.com/gkdr/lurch/issues/165
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 # NOTE: Some of these dependencies seem like leftovers in the build system
