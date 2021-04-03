@@ -14578,7 +14578,7 @@ net-analyzer/sniffit 0.5: Interactive Packet Sniffer
 net-analyzer/snmpclitools 0.6.4: Pure-Python SNMP management tools, formerly pysnmp-apps
 net-analyzer/snmptt 1.4.2: SNMP Trap Translator
 net-analyzer/snort 2.9.15.1 2.9.16 2.9.16-r100: The de facto standard for intrusion detection/prevention
-net-analyzer/snortalog 2.4.3-r1: a powerful perl script that summarizes snort logs
+net-analyzer/snortalog 2.4.3-r1: A powerful perl script that summarizes snort logs
 net-analyzer/snortsam 2.70: Snort plugin that allows automated blocking of IP addresses on several firewalls
 net-analyzer/softflowd 1.0.0: flow-based network traffic analyser capable of Cisco NetFlow data export
 net-analyzer/speedtest-cli 2.1.2-r1: Command line interface for testing internet bandwidth using speedtest.net
@@ -14598,7 +14598,7 @@ net-analyzer/tcpdump 4.9.3-r4 4.99.0 9999: A tool for network monitoring and dat
 net-analyzer/tcpflow 1.6.1: A tool for monitoring, capturing and storing TCP connections flows
 net-analyzer/tcping 1.3.6: Check if a desired port is reachable via TCP
 net-analyzer/tcpreen 1.4.4: TCP network re-engineering tool
-net-analyzer/tcpreplay 4.3.3 999999: utilities for editing and replaying previously captured network traffic
+net-analyzer/tcpreplay 4.3.3 999999: Utilities for editing and replaying previously captured network traffic
 net-analyzer/tcpslice 1.2a_p3_p4: Extract and concatenate portions of pcap files
 net-analyzer/tcpstat 1.5_p8: Reports network interface statistics
 net-analyzer/tcptrace 6.6.7_p6: A Tool for analyzing network packet dumps
@@ -14606,7 +14606,7 @@ net-analyzer/tcptraceroute 1.5_beta7-r3: tcptraceroute is a traceroute implement
 net-analyzer/tcptrack 1.4.2: Passive per-connection tcp bandwidth monitor
 net-analyzer/telegraf 1.13.3 1.14.5 1.15.2 1.18.0: The plugin-driven server agent for collecting & reporting metrics.
 net-analyzer/testssl 3.0.4: Tool to check TLS/SSL cipher support
-net-analyzer/thc-ipv6 3.2-r1 9999: complete tool set to attack the inherent protocol weaknesses of IPV6 and ICMP6
+net-analyzer/thc-ipv6 3.2-r1 9999: Complete tool set to attack the inherent protocol weaknesses of IPV6 and ICMP6
 net-analyzer/thcrut 1.2.5-r2: Network discovery and fingerprinting tool
 net-analyzer/thrulay 0.9-r1: Measure the capacity of a network by sending a bulk TCP stream over it
 net-analyzer/tleds 1.05_beta11-r2: Blinks keyboard LEDs indicating outgoing and incoming network packets on selected network interface

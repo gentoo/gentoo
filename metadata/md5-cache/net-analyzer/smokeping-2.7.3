@@ -4,12 +4,12 @@ DEPEND=>=dev-lang/perl-5.8.8-r8 >=dev-perl/SNMP_Session-1.13 >=net-analyzer/fpin
 DESCRIPTION=A powerful latency measurement tool
 EAPI=7
 HOMEPAGE=https://oss.oetiker.ch/smokeping/
-INHERIT=autotools eutils multilib user systemd tmpfiles
+INHERIT=autotools systemd tmpfiles user
 IUSE=apache2 curl dig echoping ipv6 radius
 KEYWORDS=amd64 x86
 LICENSE=GPL-2
 RDEPEND=>=dev-lang/perl-5.8.8-r8 >=dev-perl/SNMP_Session-1.13 >=net-analyzer/fping-2.4_beta2-r2[suid] >=net-analyzer/rrdtool-1.2[graph,perl] dev-perl/CGI dev-perl/CGI-Session dev-perl/Config-Grammar dev-perl/Digest-HMAC dev-perl/FCGI dev-perl/IO-Socket-SSL dev-perl/IO-Tty dev-perl/Net-DNS dev-perl/Net-OpenSSH dev-perl/Net-SNMP dev-perl/Net-Telnet dev-perl/libwww-perl dev-perl/perl-ldap virtual/perl-libnet dev-perl/CGI-Fast !apache2? ( virtual/httpd-cgi ) apache2? ( >=www-apache/mod_perl-2.0.1 www-apache/mod_fcgid ) curl? ( >=net-misc/curl-7.21.4 ) dig? ( net-dns/bind-tools ) echoping? ( >=net-analyzer/echoping-6.0.2 ) ipv6? ( >=dev-perl/Socket6-0.20 ) radius? ( dev-perl/Authen-Radius ) virtual/tmpfiles
 SLOT=0
 SRC_URI=https://oss.oetiker.ch/smokeping/pub/smokeping-2.7.3.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	user	26d8ce6329c43cbac965617f1c0627e2	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	tmpfiles	5cd6e8cf3288d5b19ff8b5c78c7e3e31
-_md5_=8d896132d8f7c9ef8fa6c5dccd2df45d
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	tmpfiles	5cd6e8cf3288d5b19ff8b5c78c7e3e31	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	user	26d8ce6329c43cbac965617f1c0627e2
+_md5_=b5a94ecc4c84cbc4408db8ef060cf87f
