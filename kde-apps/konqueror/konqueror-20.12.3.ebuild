@@ -79,7 +79,6 @@ src_configure() {
 
 pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
-		elog "Optional dependencies:"
 		optfeature "bookmarks support" kde-apps/keditbookmarks:${SLOT}
 		optfeature "filemanager component" kde-apps/dolphin:${SLOT}
 		optfeature "SVG support" kde-apps/svg:${SLOT}
