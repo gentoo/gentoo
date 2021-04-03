@@ -68,7 +68,6 @@ src_configure() {
 
 pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
-		elog "Optional dependencies:"
 		optfeature "Postal addresses" kde-apps/kdepim-addons:${SLOT}
 	fi
 	ecm_pkg_postinst
