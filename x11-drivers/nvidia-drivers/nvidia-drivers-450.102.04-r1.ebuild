@@ -219,7 +219,9 @@ src_install() {
 		fi
 
 		local libdir=.
-		if multilib_is_native_abi; then
+		if [[ ${ABI} == x86 ]]; then
+			libdir+=/32
+		else
 			libs+=(
 				nvidia-cbl
 				nvidia-cfg
@@ -227,8 +229,6 @@ src_install() {
 				nvoptix
 			)
 			use amd64 && libs+=( nvidia-ngx )
-		else
-			libdir+=/32
 		fi
 
 		local lib soname
