@@ -1,5 +1,3 @@
-diff --git a/src/cw.c b/src/cw.c
-index d7b4875..a7811d8 100644
 --- a/src/cw.c
 +++ b/src/cw.c
 @@ -1336,7 +1336,7 @@ unsigned char is_cwfile(char *file){
@@ -11,8 +9,6 @@ index d7b4875..a7811d8 100644
   return(0);
  }
  /* sets left and right borders. */
-diff --git a/src/cwu.c b/src/cwu.c
-index 823618d..63f566b 100644
 --- a/src/cwu.c
 +++ b/src/cwu.c
 @@ -37,12 +37,12 @@ signed int main(signed int argc,char **argv){

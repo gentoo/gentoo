@@ -1,5 +1,3 @@
-diff --git a/bin/colorcfg b/bin/colorcfg
-index cf73b50..3e78c73 100755
 --- a/bin/colorcfg
 +++ b/bin/colorcfg
 @@ -10,13 +10,7 @@ echo "[ cw/color wrapper: user setup script. ]"
