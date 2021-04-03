@@ -24,4 +24,5 @@ Adds additional resources that are used in the PyMdown Extensions documentation,
 While this is not specifically meant for outside consumption, and was originally written for @facelessuser projects, it can be freely used if desired.
 Files are copied from the pymdown-extensions project.
 	</longdescription>
+	<stabilize-allarches/>
 </pkgmetadata>
