@@ -32,6 +32,7 @@ BDEPEND="
 "
 
 PATCHES=(
+	"${WORKDIR}"/${PN}-3.1-verbose-build.patch
 	"${FILESDIR}"/${PN}-3.1-no-install-manpages-automatically.patch
 )
 
@@ -41,8 +42,6 @@ dab drop4 gofish gomoku hangman klondike robots sail snake spirhunt
 worm wump}
 
 src_prepare() {
-	eapply "${WORKDIR}"/${PN}-3.1-verbose-build.patch
-
 	default
 
 	# Use completely our own CFLAGS/LDFLAGS, no stripping and so on
