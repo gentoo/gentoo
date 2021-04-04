@@ -9,7 +9,7 @@ EAPI=7
 #
 #CMAKE_MAKEFILE_GENERATOR="emake"
 
-inherit cmake desktop
+inherit cmake
 
 DESCRIPTION="Diablo engine for modern operating systems"
 HOMEPAGE="https://github.com/diasurgical/devilutionX"
