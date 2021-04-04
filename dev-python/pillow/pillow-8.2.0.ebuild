@@ -39,7 +39,10 @@ BDEPEND="
 	test? (
 		${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]
-		media-gfx/imagemagick[png]
+		|| (
+			media-gfx/imagemagick[png]
+			media-gfx/graphicsmagick[png]
+		)
 	)
 "
 
