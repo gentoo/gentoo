@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs flag-o-matic
+inherit toolchain-funcs
 
 DEB_PATCH_VER=28
 DESCRIPTION="Collection of games from NetBSD"
