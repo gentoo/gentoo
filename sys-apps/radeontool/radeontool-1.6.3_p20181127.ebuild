@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 x86"
 
 RDEPEND="x11-libs/libpciaccess"
 DEPEND="${RDEPEND}"
