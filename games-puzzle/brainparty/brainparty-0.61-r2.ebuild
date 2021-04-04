@@ -1,28 +1,29 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit desktop toolchain-funcs
 
 DESCRIPTION="A puzzle-solving, brain-stretching game for all ages"
 HOMEPAGE="http://www.tuxradar.com/brainparty"
 SRC_URI="https://launchpad.net/brainparty/trunk/${PV}/+download/${PN}${PV}.tar.gz"
+S="${WORKDIR}"/${PN}
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="
 	media-libs/libsdl[sound,opengl,video]
 	media-libs/sdl-gfx
 	media-libs/sdl-image[png]
 	media-libs/sdl-mixer[vorbis]
-	media-libs/sdl-ttf"
+	media-libs/sdl-ttf
+	virtual/opengl
+	virtual/glu
+"
 DEPEND="${RDEPEND}"
-
-S=${WORKDIR}/${PN}
 
 PATCHES=(
 	"${FILESDIR}"/${P}-savegame.patch
