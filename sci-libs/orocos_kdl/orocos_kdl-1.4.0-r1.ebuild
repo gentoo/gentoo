@@ -32,7 +32,8 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.4.0-0001-don-t-install-kdl.tag-file.patch
+	"${FILESDIR}"/${P}-0001-don-t-install-kdl.tag-file.patch
+	"${FILESDIR}"/${P}-0002-add-LIB_SUFFIX-in-pkg-config-file.patch
 )
 
 src_configure() {
@@ -75,5 +76,6 @@ src_install() {
 
 	# Need to have package.xml in our custom gentoo path
 	insinto /usr/share/ros_packages/${PN}
-	doins "${S}/package.xml"
+	doins "${ED}/usr/share/${PN}/package.xml"
+	rm "${ED}/usr/share/${PN}/package.xml" || die
 }
