@@ -1,8 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils
+EAPI=7
+
+inherit desktop
 
 DESCRIPTION="An Al Bhed translator"
 HOMEPAGE="http://liquidchile.net/software/gbhed/"
@@ -14,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="gtk"
 
 DEPEND="gtk? ( x11-libs/gtk+:2 )"
-RDEPEND=${DEPEND}
+RDEPEND="${DEPEND}"
 
 src_prepare() {
 	default
@@ -36,7 +37,9 @@ src_install() {
 	if use gtk ; then
 		insinto /usr/share/${PN}/pixmaps
 		doins pixmaps/*.{jpg,png,xpm}
+
 		newicon pixmaps/gbhed48.png ${PN}.png
+
 		make_desktop_entry gbhed ${PN}
 		doman doc/gbhed.1
 	fi
