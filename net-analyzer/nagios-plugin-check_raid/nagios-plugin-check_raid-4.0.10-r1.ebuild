@@ -37,7 +37,7 @@ S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	# Upstream has a custom Makefile that is meant to build bundles.
-	mv -f Makefile Makefile.upstream || die
+	#mv -f Makefile Makefile.upstream || die
 	sed -i '/CPANfile/d' Makefile.PL || die
 	default
 }
