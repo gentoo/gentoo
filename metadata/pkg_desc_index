@@ -3157,7 +3157,7 @@ app-text/tessdata_fast 4.0.0 4.1.0: Fast integer versions of trained models for 
 app-text/tessdata_legacy 4.0.0 4.1.0: Trained models for app-text/tesseract compatible with the legacy engine
 app-text/tesseract 3.05.02 4.1.0-r1 4.1.1 9999: An OCR Engine, originally developed at HP, now open source.
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
-app-text/texlive 2020-r9: A complete TeX distribution
+app-text/texlive 2020-r9 2021: A complete TeX distribution
 app-text/texlive-core 2020-r12 2021: A complete TeX distribution
 app-text/tidy-html5 5.6.0 5.7.28: Tidy the layout and correct errors in HTML, HTML5 and XML documents
 app-text/tkinfo 2.8-r1: Info Browser in TK
@@ -19087,7 +19087,7 @@ x11-wm/goomwwm 1.0.0-r1 9999: Get out of my way, Window Manager!
 x11-wm/herbstluftwm 0.7.2-r1 0.9.1 9999: A manual tiling window manager for X
 x11-wm/i3 4.18 4.18.3 4.19-r1 4.19.1 9999: An improved dynamic tiling window manager
 x11-wm/i3-gaps 4.18.2 4.19 4.19.1: i3 fork with gaps and some more features
-x11-wm/icewm 2.1.2 2.2.1 2.3.0: Ice Window Manager with Themes
+x11-wm/icewm 2.2.1 2.3.0 2.3.1: Ice Window Manager with Themes
 x11-wm/jwm 2.3.2 2.3.7: Very fast and lightweight still powerful window manager for X
 x11-wm/larswm 7.5.3-r2: Tiling window manager for X11, based on 9wm by David Hogan
 x11-wm/lumina 1.6.0 9999: Lumina desktop environment
