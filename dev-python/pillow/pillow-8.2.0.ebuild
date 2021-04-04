@@ -76,14 +76,10 @@ python_configure_all() {
 	tc-export PKG_CONFIG
 }
 
-src_test() {
-	virtx distutils-r1_src_test
-}
-
 python_test() {
 	"${EPYTHON}" selftest.py --installed || die "selftest failed with ${EPYTHON}"
 	# no:relaxed: pytest-relaxed plugin make our tests fail. deactivate if installed
-	pytest -vv -p no:relaxed || die "Tests fail with ${EPYTHON}"
+	virtx epytest -p no:relaxed
 }
 
 python_install() {
