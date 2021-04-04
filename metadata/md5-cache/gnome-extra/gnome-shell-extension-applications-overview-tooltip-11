@@ -3,10 +3,10 @@ DESCRIPTION=Show tooltip with full name and description
 EAPI=7
 HOMEPAGE=https://github.com/RaphaelRochet/applications-overview-tooltip
 INHERIT=gnome2-utils
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=public-domain
 RDEPEND=app-eselect/eselect-gnome-shell-extensions >=gnome-base/gnome-shell-3.38
 SLOT=0
 SRC_URI=https://github.com/RaphaelRochet/applications-overview-tooltip/archive/v11.tar.gz -> gnome-shell-extension-applications-overview-tooltip-11.tar.gz
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3
-_md5_=4797c417df4b09ce38609cab9293d8f2
+_md5_=3281f9bc38a033494143b28a41cfa7e3

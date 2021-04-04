@@ -6,10 +6,10 @@ EAPI=7
 HOMEPAGE=https://github.com/andyholmes/gnome-shell-extension-gsconnect
 INHERIT=gnome2-utils meson readme.gentoo-r1 xdg
 IUSE=nautilus
-KEYWORDS=amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-2+
 RDEPEND=dev-libs/glib:2 app-eselect/eselect-gnome-shell-extensions >=dev-libs/gjs-1.48 =gnome-base/gnome-shell-3.38* gnome-base/gvfs gnome-extra/evolution-data-server || ( media-libs/libcanberra media-libs/gsound ) nautilus? ( dev-python/nautilus-python gnome-base/nautilus[introspection] )
 SLOT=0
 SRC_URI=https://github.com/andyholmes/gnome-shell-extension-gsconnect/archive/v44.tar.gz -> gnome-shell-extension-gsconnect-44.tar.gz
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	543b53e4d003ebd889082f4673e52af5	meson	e43eef9331f54965a573ed380854ff47	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
-_md5_=5b54f06cbc8df18ee6362845eb74b1f2
+_md5_=f026dbd4b93f0fb622816876c838beab
