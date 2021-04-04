@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-04-04)
+# Package needs a real maintainer to fix broken IUSE=java and version bump.
+# Bug #778758 contains a version bump with java removed. Do pick it up.
+# Removal on 2021-05-04.
+www-apache/mod_jk
+
 # Mikle Kolyada <zlogene@gentoo.org> (2021-04-02)
 # TexLive 2021 mask
 # Only unmask these versions if you know what you are doing
