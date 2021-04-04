@@ -17359,6 +17359,7 @@ sys-cluster/ganglia 3.7.1-r2: A scalable distributed monitoring system for clust
 sys-cluster/ganglia-web 3.7.3-r1: Web frontend for sys-cluster/ganglia
 sys-cluster/gasnet 1.26.4 1.26.4-r1 1.28.0 1.28.2 1.30.0: Networking middleware for partitioned global address space (PGAS) language
 sys-cluster/glusterfs 7.9 8.3 8.4 9.0: GlusterFS is a powerful network/cluster filesystem
+sys-cluster/gmqtt 0.3.0: MQTT broker library with cluster support that implements MQTT V5.0 and V3.1.1
 sys-cluster/heat 14.1.0 15.0.0 2020.1.9999 2020.2.9999: A CloudFormation-compatible openstack-native cloud orchestration engine.
 sys-cluster/hpl 2.0-r4 2.3: Portable Implementation of the Linpack Benchmark for Distributed-Memory Clusters
 sys-cluster/hpx 1.6.0 9999: C++ runtime system for parallel and distributed applications
