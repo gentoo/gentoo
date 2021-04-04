@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install preinst prepare setup test
+DEPEND=>=virtual/jdk-1.8 test? ( dev-java/junit:0 dev-java/ant-junit:0 ) >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip ) >=dev-java/ant-core-1.8.2:0 >=dev-java/javatoolkit-0.3.0-r2
+DESCRIPTION=Jakarta-Commons Collections Component
+EAPI=7
+HOMEPAGE=https://commons.apache.org/collections/
+INHERIT=java-pkg-2 java-ant-2 java-utils-2
+IUSE=test elibc_FreeBSD doc source test elibc_FreeBSD elibc_FreeBSD
+KEYWORDS=~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-macos
+LICENSE=Apache-2.0
+RDEPEND=>=virtual/jre-1.8 >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://apache/commons/collections/source/commons-collections-3.2.1-src.tar.gz
+_eclasses_=java-utils-2	2440f41421207d084e5e3f1fb001b34e	java-pkg-2	45c44ec10db6affb3ebee1ac72039888	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	java-ant-2	51fb0a4707d58382310390ad47ab0ab0
+_md5_=7532d174a8193a6c447be9d9c943a096

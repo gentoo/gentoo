@@ -3552,7 +3552,7 @@ dev-ada/gtkada 2017-r1 2018-r2 2019-r1: A complete Ada graphical toolkit
 dev-ada/libgpr 2019-r1 2020: Ada library to handle GPRbuild project files
 dev-ada/xmlada 2019-r1 2020: Set of modules that provide a simple manipulation of XML streams
 dev-cpp/ETL 0.04.15-r1: Multi-platform class and template library
-dev-cpp/abseil-cpp 20200225.2-r1 20200923.2-r1 20210324.0-r1: Abseil Common Libraries (C++), LTS Branch
+dev-cpp/abseil-cpp 20200225.2-r1 20200923.2-r1 20210324.0-r2: Abseil Common Libraries (C++), LTS Branch
 dev-cpp/aixlog 1.5.0 9999: Header-only C++ logging library
 dev-cpp/amqp-cpp 4.3.10: AMQP-CPP is a C++ library for communicating with a RabbitMQ message broker
 dev-cpp/antlr-cpp 2.7.7-r1 4.7.2: The ANTLR 4 C++ Runtime
@@ -4755,7 +4755,7 @@ dev-java/commons-beanutils 1.9.2: Provides easy-to-use wrappers around Reflectio
 dev-java/commons-chain 1.2: API exposing the Chain of Responsability design pattern - by the ASF
 dev-java/commons-cli 1.3.1 1.4: A Java library for working with the command line arguments and options
 dev-java/commons-codec 1.7 1.11: Implementations of common encoders and decoders in Java
-dev-java/commons-collections 3.2.1-r1 3.2.1-r2 4.1: Extends the JCF classes with new interfaces, implementations and utilities
+dev-java/commons-collections 3.2.1-r1 3.2.1-r2 3.2.1-r3 4.1 4.1-r1: Extends the JCF classes with new interfaces, implementations and utilities
 dev-java/commons-compress 1.10 1.20: Java API for working with archive files
 dev-java/commons-configuration 1.6-r2: Generic interface for reading configuration data from a variety of sources
 dev-java/commons-daemon 1.0.15 1.1.0: Tools to allow Java programs to run as UNIX daemons
@@ -17662,7 +17662,7 @@ sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 4.2.1-r1 9999: Gentoo automatic ker
 sys-kernel/gentoo-kernel 5.4.105 5.4.106 5.4.108 5.4.109 5.10.24 5.10.26 5.10.27 5.11.5 5.11.6 5.11.7 5.11.9 5.11.10 5.11.11: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.105 5.4.105-r2 5.4.106 5.4.106-r1 5.4.108 5.4.108-r1 5.4.109 5.4.109-r1 5.10.24 5.10.24-r1 5.10.26 5.10.26-r1 5.10.27 5.10.27-r1 5.11.5 5.11.5-r1 5.11.6 5.11.6-r1 5.11.7 5.11.7-r1 5.11.9 5.11.9-r1 5.11.10 5.11.10-r1 5.11.11 5.11.11-r1: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.257 4.4.261 4.4.262 4.4.263 4.4.264 4.9.257 4.9.261 4.9.262 4.9.263 4.9.264 4.14.221 4.14.225 4.14.226 4.14.227 4.14.228 4.19.175 4.19.181 4.19.182 4.19.183 4.19.184 5.4.97 5.4.105 5.4.106 5.4.107 5.4.108 5.4.109 5.10.24 5.10.25 5.10.26 5.10.27 5.11.6 5.11.7 5.11.8-r1 5.11.9 5.11.10 5.11.11: Full sources including the Gentoo patchset for the 5.11 kernel tree
-sys-kernel/git-sources 5.12_rc2 5.12_rc3 5.12_rc4 5.12_rc5: The very latest -git version of the Linux kernel
+sys-kernel/git-sources 5.12_rc2 5.12_rc3 5.12_rc4 5.12_rc5 5.12_rc6: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2 3: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
 sys-kernel/kergen 0.1.5: Kernel config generator
