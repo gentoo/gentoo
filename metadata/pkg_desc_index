@@ -2183,7 +2183,7 @@ app-emulation/spectemu 0.99.3-r1: 48k ZX Spectrum Emulator
 app-emulation/spice 0.14.3 9999: SPICE server
 app-emulation/spice-html5 0.2.1 0.2.2: Spice Javascript client
 app-emulation/spice-protocol 0.14.1 0.14.3 9999: Headers defining the SPICE protocol
-app-emulation/spice-vdagent 0.19.0-r1 0.20.0: SPICE VD Linux Guest Agent
+app-emulation/spice-vdagent 0.19.0-r1 0.21.0: SPICE VD Linux Guest Agent
 app-emulation/spim 8.0-r3: MIPS Simulator
 app-emulation/uade 2.13-r1: Unix Amiga Delitracker Emulator - plays old Amiga tunes through UAE emulation
 app-emulation/umoci 0.2.1 0.4.6: Manipulation tool for OCI images
@@ -17156,7 +17156,7 @@ sys-apps/tomoyo-tools 2.5.0_p20130214: TOMOYO Linux tools
 sys-apps/toybox 0.8.0 0.8.1 0.8.3 0.8.4 9999: Common linux commands in a multicall binary
 sys-apps/tuned 2.13.0-r1 2.15.0-r1: Daemon for monitoring and adaptive tuning of system devices
 sys-apps/uam 0.3.2-r1 9999: Simple udev-based automounter for removable USB media
-sys-apps/ucspi-proxy 0.99 1.1: Proxy program for two connections set up by a UCSPI server and a UCSPI client
+sys-apps/ucspi-proxy 1.1: Proxy program for two connections set up by a UCSPI server and a UCSPI client
 sys-apps/ucspi-ssl 0.99e: Command-line tools for building SSL client-server applications
 sys-apps/ucspi-tcp 0.88-r18: Collection of tools for managing UNIX services
 sys-apps/ucspi-unix 1.0: A UCSPI implementation for Unix domain sockets
@@ -17165,7 +17165,7 @@ sys-apps/unscd 0.54-r1: simple & stable nscd replacement
 sys-apps/usb_modeswitch 2.5.2 2.6.0: A tool for controlling 'flip flop' (multiple devices) USB gear like UMTS sticks
 sys-apps/usbguard 0.7.6-r1 0.7.8 1.0.0 1.0.0-r1: Daemon protecting your computer against BadUSB
 sys-apps/usbmon 6-r1 6.1: Userland for USB monitoring framework
-sys-apps/usbredir 0.7.1_p20170503 0.7.1_p20180211 0.8.0 9999: TCP daemon and set of libraries for usbredir protocol (redirecting USB traffic)
+sys-apps/usbredir 0.8.0 0.9.0 9999: TCP daemon and set of libraries for usbredir protocol (redirecting USB traffic)
 sys-apps/usbutils 012 013 013-r1: USB enumeration utilities
 sys-apps/usermode-utilities 20070815-r4: Tools for use with Usermode Linux virtual machines
 sys-apps/utempter 0.5.5.6: App that allows non-privileged apps to write utmp (login) info
