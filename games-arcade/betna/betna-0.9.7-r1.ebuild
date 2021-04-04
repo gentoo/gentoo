@@ -1,8 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils games
+EAPI=7
+
+inherit desktop toolchain-funcs
 
 DESCRIPTION="Defend your volcano from the attacking ants by firing rocks/bullets at them"
 HOMEPAGE="http://koti.mbnet.fi/makegho/c/betna/"
@@ -11,15 +12,16 @@ SRC_URI="http://koti.mbnet.fi/makegho/c/betna/${P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 DEPEND="media-libs/libsdl[video]"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
+	default
+
 	sed -i \
 		-e '/blobprintf.*char msg/s/char msg/const char msg/' \
-		-e "s:images/:${GAMES_DATADIR}/${PN}/:" \
+		-e "s:images/:/var/lib/${PN}/:" \
 		src/main.cpp || die
 
 	sed -i \
@@ -30,17 +32,23 @@ src_prepare() {
 		Makefile || die
 }
 
+src_configure() {
+	tc-export CXX
+}
+
 src_compile() {
 	emake clean
 	emake
 }
 
 src_install() {
-	dogamesbin betna
-	insinto "${GAMES_DATADIR}"/${PN}
-	doins images/*
-	newicon images/target.bmp ${PN}.bmp
-	make_desktop_entry ${PN} Betna /usr/share/pixmaps/${PN}.bmp
+	dobin betna
 	dodoc README Q\&A
-	prepgamesdirs
+
+	insinto /var/lib/${PN}
+	doins images/*
+
+	newicon images/target.bmp ${PN}.bmp
+
+	make_desktop_entry ${PN} Betna /usr/share/pixmaps/${PN}.bmp
 }
