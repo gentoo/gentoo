@@ -17,10 +17,10 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
 
 RDEPEND="games-misc/fortune-mod"
 
-src_prepare()
-{
-	sed -e 's#INSTALLDIR = .*#INSTALLDIR = /share/fortune#' -i Makefile
-	eapply_user
+src_prepare() {
+	default
+
+	sed -e 's#INSTALLDIR = .*#INSTALLDIR = /share/fortune#' -i Makefile || die
 }
 
 src_install() {
