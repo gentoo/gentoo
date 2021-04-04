@@ -6,10 +6,10 @@ EAPI=7
 HOMEPAGE=https://github.com/evgeni/hdapsd/
 INHERIT=linux-info readme.gentoo-r1 systemd
 IUSE=libconfig kernel_linux
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 x86
 LICENSE=GPL-2
 RDEPEND=libconfig? ( dev-libs/libconfig:= )
 SLOT=0
 SRC_URI=https://github.com/evgeni/hdapsd/releases/download/20141203/hdapsd-20141203.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	linux-info	30ded7f9adbdd03d3e848cdd74f6c395	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6
-_md5_=c736c6c4c452338c45445a2295611653
+_md5_=e49067f2ce45a2a01f97d03c3b9e5d65

@@ -5,11 +5,11 @@ EAPI=7
 HOMEPAGE=https://github.com/AdoptOpenJDK/IcedTea-Web
 INHERIT=autotools bash-completion-r1 cargo readme.gentoo-r1 xdg-utils
 IUSE=doc debug
-KEYWORDS=~amd64 ~arm64 ~ppc64 ~x86
+KEYWORDS=~amd64 ~arm64 ~ppc64 x86
 LICENSE=GPL-2 GPL-2-with-linking-exception LGPL-2
 RDEPEND=>=app-eselect/eselect-java-0.2.0 >=virtual/jre-1.8
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/AdoptOpenJDK/icedtea-web/archive/icedtea-web-1.8.4.tar.gz https://crates.io/api/v1/crates/dunce/0.1.1/download -> dunce-0.1.1.crate
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	bash-completion-r1	8e7c071081c68c2c398b77fe3a1d6908	multiprocessing	cac3169468f893670dac3e7cb940e045	cargo	9addecaaccf5f5938f36c0163768a6e6	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=a5d75324fe15f1cfc7cc5a4da06837c3
+_md5_=1129c375a447c275a67a044af084297a
