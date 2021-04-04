@@ -1,0 +1,14 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=install prepare
+DEPEND=media-libs/libsdl[joystick,sound,video] media-libs/sdl-mixer[mod]
+DESCRIPTION=platform game inspired by games like Manic Miner and Jet Set Willy
+EAPI=7
+HOMEPAGE=http://dragontech.sourceforge.net/index.php?main=pachi&lang=en
+INHERIT=autotools desktop
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl[joystick,sound,video] media-libs/sdl-mixer[mod] acct-group/gamestat
+SLOT=0
+SRC_URI=mirror://gentoo/pachi-1.0.tar.bz2
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	desktop	c0d27bf73aa08ca05b663dbd31fbef28
+_md5_=1edccb755b6783a2219a26a3b776a923

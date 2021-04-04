@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure
+DEPEND=media-libs/libsdl[video]
+DESCRIPTION=Falling-blocks arcade game with a 2-player hotseat mode
+EAPI=7
+HOMEPAGE=http://blockrage.sourceforge.net/
+INHERIT=toolchain-funcs
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl[video]
+SLOT=0
+SRC_URI=mirror://sourceforge/blockrage/blockrage-0.2.3.tar.gz
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=1d04b08ef9df6f9b07ecc7cc57d71f72

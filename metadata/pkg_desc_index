@@ -11226,14 +11226,14 @@ games-arcade/balloonchase 0.9.6-r1: Fly a hot air balloon and try to blow the ot
 games-arcade/barbarian-bin 1.01-r1: Save Princess Mariana through one-on-one battles with demonic barbarians
 games-arcade/batrachians 0.1.6-r1: A fly-eating frog video game
 games-arcade/berusky 1.7.1-r1: Free logic game based on an ancient puzzle named Sokoban
-games-arcade/betna 0.9.7: Defend your volcano from the attacking ants by firing rocks/bullets at them
+games-arcade/betna 0.9.7-r1: Defend your volcano from the attacking ants by firing rocks/bullets at them
 games-arcade/blobby 1.0-r1: Beach ball game with blobs of goo
 games-arcade/blobwars 2.00 2.00-r1: Platform game about a blob and his quest to rescue MIAs from an alien invader
-games-arcade/blockrage 0.2.3: Falling-blocks arcade game with a 2-player hotseat mode
-games-arcade/bomns 0.99.2: A fast-paced multiplayer deathmatch arcade game
+games-arcade/blockrage 0.2.3-r1: Falling-blocks arcade game with a 2-player hotseat mode
+games-arcade/bomns 0.99.2-r1: A fast-paced multiplayer deathmatch arcade game
 games-arcade/briquolo 0.5.7: Breakout with 3D representation based on OpenGL
-games-arcade/bumprace 1.5.3: simple arcade racing game
-games-arcade/burgerspace 1.9.2: Clone of the 1982 BurgerTime video game by Data East
+games-arcade/bumprace 1.5.3-r1: simple arcade racing game
+games-arcade/burgerspace 1.9.2-r1: Clone of the 1982 BurgerTime video game by Data East
 games-arcade/cavezofphear 0.5.1: A boulder dash / digger-like game for console using ncurses
 games-arcade/cdogs-sdl 0.10.1: Classic overhead run-and-gun game
 games-arcade/ceferino 0.97.8-r2: Super-Pang clone (destroy bouncing balloons with your grapnel)
@@ -11246,7 +11246,7 @@ games-arcade/crack-attack 1.1.14-r2: Addictive OpenGL-based block game
 games-arcade/criticalmass 1.0.2-r1: SDL/OpenGL space shoot'em up game
 games-arcade/defendguin 0.0.12-r1: A clone of the arcade game Defender, but with a Linux theme
 games-arcade/digger 20140423-r1: Digger Remastered
-games-arcade/dynamitejack 1.0.23-r1: A stealth game with bombs in glorious 2D
+games-arcade/dynamitejack 1.0.23-r2: A stealth game with bombs in glorious 2D
 games-arcade/emilia-pinball 0.3.1-r1: SDL OpenGL pinball game
 games-arcade/epiar 0.5-r1: A space adventure/combat game
 games-arcade/excido 0.1.5c-r3: A fast paced action game
@@ -11291,7 +11291,7 @@ games-arcade/opensonic 0.1.4-r3: Free open-source game based on the Sonic the He
 games-arcade/opentyrian 2.1.20130907-r2: Open-source port of the DOS game Tyrian, vertical scrolling shooter
 games-arcade/orthorobot 0-r1 0-r2: Perspective based puzzle game, where you flatten the view to move across gaps
 games-arcade/oshu 2.0.1 9999: Lightweight osu! port
-games-arcade/pachi 1.0: platform game inspired by games like Manic Miner and Jet Set Willy
+games-arcade/pachi 1.0-r1: platform game inspired by games like Manic Miner and Jet Set Willy
 games-arcade/pacmanarena 0.15-r2: 3D Pacman clone with a few surprises. Rockets, bombs and explosions abound
 games-arcade/penguin-command 1.6.11-r1: A clone of the classic Missile Command game
 games-arcade/pengupop 2.2.5-r1: Networked multiplayer-only Puzzle Bubble clone
@@ -11396,7 +11396,7 @@ games-board/xfreecell 1.0.5b-r1: A freecell game for X
 games-board/xgammon 0.98-r2: very nice backgammon game for X
 games-board/xmahjongg 3.7-r1: friendly GUI version of xmahjongg
 games-board/xmille 2.0-r4: Mille Bournes card game
-games-board/xscrabble 2.10-r2: An X11 clone of the well-known Scrabble
+games-board/xscrabble 2.10-r3: An X11 clone of the well-known Scrabble
 games-board/xskat 4.0-r1: Famous german card game
 games-emulation/advancemame 3.9: GNU/Linux port of the MAME emulator with GUI menu
 games-emulation/advancescan 1.16-r1: A command line rom manager for MAME, MESS, AdvanceMAME, AdvanceMESS and Raine
@@ -11459,7 +11459,7 @@ games-engines/box2d 2.4.1: C++ engine for simulating rigid bodies in 2D games
 games-engines/dMagnetic 0.30: A Magnetic Scrolls Interpreter for playing a collection of old text adventures
 games-engines/devilutionx 1.0.3 1.1.0-r2 9999: Diablo engine for modern operating systems
 games-engines/exult 1.6: an Ultima 7 game engine that runs on modern operating systems
-games-engines/frobtads 1.2.3-r1 1.2.4: Curses-based interpreter and dev tools for TADS 2 and TADS 3 text adventures
+games-engines/frobtads 1.2.4: Curses-based interpreter and dev tools for TADS 2 and TADS 3 text adventures
 games-engines/frotz 2.52: Interpreter for Z-code based text games
 games-engines/gargoyle 2019.1.1: An Interactive Fiction (IF) player supporting all major formats
 games-engines/love 0.7.2-r100 0.8.0-r100 11.3-r100 9999: A framework for 2D games in Lua
@@ -11500,7 +11500,7 @@ games-fps/nexuiz 2.5.2-r1: Deathmatch FPS based on DarkPlaces, an advanced Quake
 games-fps/prboom-plus 2.6: An enhanced clone of the classic first-person shooter Doom
 games-fps/quake1-data 2.40: iD Software's Quake 1 ... the data files
 games-fps/quake1-demodata 1.06: Demo data for Quake 1
-games-fps/quake1-killer 2.2z: The Killer Quake Patch
+games-fps/quake1-killer 2.2z-r1: The Killer Quake Patch
 games-fps/quake1-rally 1.2: TC which turns Quake into a Rally racing game
 games-fps/quake1-teamfortress 2.9: The classic Team Fortress Quake World mod
 games-fps/quake1-textures 20050820: Collection of graphical improvements for Quake 1
@@ -11617,7 +11617,7 @@ games-puzzle/bastet 0.43.2: a simple, evil, ncurses-based Tetris(R) clone
 games-puzzle/bff-or-die 20200614: Time travelling alien couch co-op puzzle game for 1-4 players
 games-puzzle/biniax2 1.30-r1: Logic game with arcade and tactics modes
 games-puzzle/braincurses 0.5b-r1 1.1.0: A version of the classic game Mastermind
-games-puzzle/brainparty 0.61-r1: A puzzle-solving, brain-stretching game for all ages
+games-puzzle/brainparty 0.61-r2: A puzzle-solving, brain-stretching game for all ages
 games-puzzle/brainworkshop 5_beta20200310: Short-term-memory training N-Back game
 games-puzzle/color-lines 0.6-r1: Color lines game written with SDL with bonus features
 games-puzzle/colorcode 0.8.5: Free advanced MasterMind clone
@@ -11680,7 +11680,7 @@ games-puzzle/quadrapassel 3.36.05 3.38.1: Fit falling blocks together
 games-puzzle/rezerwar 0.4.2-r2: Puzzle game like the known tetromino and the average pipe games
 games-puzzle/scramble 0.9.5-r1: Create as many words as you can before the time runs out
 games-puzzle/sdl-jewels 1.1.1-r1: Swap and match 3 or more jewels in a line in order to score points
-games-puzzle/seatris 0.0.14: A color ncurses tetris clone
+games-puzzle/seatris 0.0.14-r1: A color ncurses tetris clone
 games-puzzle/sgt-puzzles 20190415 99999999: Simon Tatham's Portable Puzzle Collection
 games-puzzle/splice 20121120: An experimental and artistic puzzler set in a microbial world
 games-puzzle/swell-foop 3.34.1: Clear the screen by removing groups of colored and shaped tiles
@@ -11702,8 +11702,8 @@ games-puzzle/world-of-goo-demo 1.41-r3: A puzzle game with a strong emphasis on 
 games-puzzle/world-of-goo-gog 1.51.29337: A puzzle game with a strong emphasis on physics (GOG edition)
 games-puzzle/world-of-goo-hb 1.53: A puzzle game with a strong emphasis on physics (Humble Bundle edition)
 games-puzzle/xblockout 1.1.6-r2: X Window block dropping game in 3 Dimension
-games-puzzle/xbomb 2.2b: Minesweeper clone with hexagonal, rectangular and triangular grid
-games-puzzle/xlogical 1.0.7: SDL logical clone
+games-puzzle/xbomb 2.2b-r1: Minesweeper clone with hexagonal, rectangular and triangular grid
+games-puzzle/xlogical 1.0.7-r1: SDL logical clone
 games-puzzle/xpired 1.22-r1: A Sokoban-styled puzzle game with lots more action
 games-puzzle/xtris 1.15-r1: A networked Tetris-like game
 games-puzzle/xwelltris 1.0.1: 2.5D tetris like game
@@ -11711,7 +11711,7 @@ games-puzzle/xye 0.12.2: Free version of the classic game Kye
 games-puzzle/zaz 1.0.0-r1: A puzzle game where the player has to arrange balls in triplets
 games-roguelike/FTL 1.5.13: Faster Than Light: A spaceship simulation real-time roguelike-like game
 games-roguelike/FTL-gog 1.6.9.25330: Top-down roguelike space ship simulator
-games-roguelike/adom 1.1.1-r1: Ancient Domains Of Mystery rogue-like game
+games-roguelike/adom 1.1.1-r2: Ancient Domains Of Mystery rogue-like game
 games-roguelike/angband 4.2.1 4.2.1-r1: A roguelike dungeon exploration game based on the books of J.R.R. Tolkien
 games-roguelike/crossfire-client 1.71.0-r100: Client for the nethack-style but more in the line of UO
 games-roguelike/dwarf-fortress 0.44.12: A single-player fantasy game
@@ -11732,7 +11732,7 @@ games-rpg/baldurs-gate-ee 2.3.67.3-r1 2.5.23121: Baldur's Gate: Enhanced Edition
 games-rpg/bass 1.3 1.3-r1: Beneath a Steel Sky: a SciFi thriller set in a bleak vision of the future
 games-rpg/bastion 20161016: An original action role-playing game set in a lush imaginative world
 games-rpg/broken-age 2.4.800398: A point-and-click adventure from Tim Schafer's Double Fine Productions
-games-rpg/coe2 2007-r1: Precursor to the Dominions series
+games-rpg/coe2 2007-r2: Precursor to the Dominions series
 games-rpg/comi 1: The Curse of Monkey Island, the third game in the series
 games-rpg/costume-quest 2.0.0.3: A Halloween adventure from Tim Schafer's Double Fine Productions
 games-rpg/daimonin-client 0.10.8: A graphical 2D tile-based MMORPG
@@ -14659,7 +14659,7 @@ net-dns/mydns 1.2.8.31-r1 1.2.8.31-r2: A DNS-Server which gets its data from a M
 net-dns/ndu 0.4-r4: DNS serial number incrementer and reverse zone builder
 net-dns/nsd 4.3.4 4.3.5: An authoritative only, high performance, open source name server
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
-net-dns/opendnssec 1.3.18-r1 1.4.8.2 1.4.12-r1 2.0.1-r1 2.0.3-r1: An open-source turn-key solution for DNSSEC
+net-dns/opendnssec 1.4.12-r1 2.0.1-r1 2.0.3-r1: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.11.0 3.12.0: A framework for managing DNS information
 net-dns/pdns 4.4.0-r100 4.4.1: The PowerDNS Daemon
 net-dns/pdns-recursor 4.4.2-r100 4.4.3: The PowerDNS Recursor

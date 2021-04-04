@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=media-libs/libsdl[video]
+DESCRIPTION=Defend your volcano from the attacking ants by firing rocks/bullets at them
+EAPI=7
+HOMEPAGE=http://koti.mbnet.fi/makegho/c/betna/
+INHERIT=desktop toolchain-funcs
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl[video]
+SLOT=0
+SRC_URI=http://koti.mbnet.fi/makegho/c/betna/betna-0.9.7.tgz
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=cde6a5bbfdc6beaf6fae98ccc1e47a41

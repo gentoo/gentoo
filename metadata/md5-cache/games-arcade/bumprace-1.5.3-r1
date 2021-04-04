@@ -1,0 +1,13 @@
+DEFINED_PHASES=install
+DEPEND=media-libs/libsdl[sound,video] media-libs/sdl-image[gif,jpeg,png] media-libs/sdl-mixer[mod] virtual/jpeg:0 sys-libs/zlib
+DESCRIPTION=simple arcade racing game
+EAPI=7
+HOMEPAGE=http://www.linux-games.com/bumprace/
+INHERIT=desktop
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl[sound,video] media-libs/sdl-image[gif,jpeg,png] media-libs/sdl-mixer[mod] virtual/jpeg:0 sys-libs/zlib
+SLOT=0
+SRC_URI=http://user.cs.tu-berlin.de/~karlb/bumprace/bumprace-1.5.3.tar.gz
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28
+_md5_=0f98e93cc4c7a22c5419bb4bbbf2b159

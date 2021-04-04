@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DEPEND=media-libs/libsdl[sound,opengl,video] media-libs/sdl-gfx media-libs/sdl-image[png] media-libs/sdl-mixer[vorbis] media-libs/sdl-ttf virtual/opengl virtual/glu
+DESCRIPTION=A puzzle-solving, brain-stretching game for all ages
+EAPI=7
+HOMEPAGE=http://www.tuxradar.com/brainparty
+INHERIT=desktop toolchain-funcs
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=media-libs/libsdl[sound,opengl,video] media-libs/sdl-gfx media-libs/sdl-image[png] media-libs/sdl-mixer[vorbis] media-libs/sdl-ttf virtual/opengl virtual/glu
+SLOT=0
+SRC_URI=https://launchpad.net/brainparty/trunk/0.61/+download/brainparty0.61.tar.gz
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=fcf8f100fd6ebc3d8c74c69b4ad4cdbf

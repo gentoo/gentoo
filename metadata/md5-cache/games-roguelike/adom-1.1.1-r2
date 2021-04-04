@@ -1,0 +1,13 @@
+DEFINED_PHASES=install
+DESCRIPTION=Ancient Domains Of Mystery rogue-like game
+EAPI=7
+HOMEPAGE=https://www.adom.de/
+INHERIT=edos2unix
+KEYWORDS=~amd64 ~x86
+LICENSE=adom
+RDEPEND=sys-libs/ncurses-compat:5[abi_x86_32(-)]
+RESTRICT=strip
+SLOT=0
+SRC_URI=https://www.adom.de/adom/download/linux/adom-111-elf.tar.gz
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773
+_md5_=553ebbabec8b4ff099af0096d9c01245
