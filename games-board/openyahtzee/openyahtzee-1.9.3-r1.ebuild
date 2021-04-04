@@ -35,6 +35,6 @@ pkg_pretend() {
 
 src_configure() {
 	append-cxxflags -std=c++11
-	need-wxwidgets unicode
+	setup-wxwidgets
 	econf --datadir=/usr/share
 }
