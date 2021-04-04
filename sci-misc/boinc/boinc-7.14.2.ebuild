@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -92,11 +92,10 @@ src_prepare() {
 	sed -i -e "s:BOINC_SET_COMPILE_FLAGS::" configure.ac || die "sed failed"
 
 	eautoreconf
-
-	use X && need-wxwidgets unicode
 }
 
 src_configure() {
+	use X && setup-wxwidgets unicode
 	econf --disable-server \
 		--enable-client \
 		--enable-dynamic-client-linkage \
