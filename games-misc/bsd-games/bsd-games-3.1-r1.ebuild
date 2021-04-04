@@ -20,6 +20,7 @@ DEPEND="
 	!games-misc/wtf
 	!app-misc/banner
 	!games-puzzle/hangman
+	!games-misc/wumpus
 "
 RDEPEND="
 	${DEPEND}
