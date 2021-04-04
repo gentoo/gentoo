@@ -1,16 +1,17 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8} )
 
-inherit desktop eutils python-single-r1 xdg
+inherit desktop edos2unix python-single-r1 xdg
 
 COMMIT="ea817f7e163c4fb07a60b2066c694cba92d23818"
 DESCRIPTION="Short-term-memory training N-Back game"
 HOMEPAGE="https://github.com/samcv/brainworkshop"
 SRC_URI="https://github.com/samcv/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
