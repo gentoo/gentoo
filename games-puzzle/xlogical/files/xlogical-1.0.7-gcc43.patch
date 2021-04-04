@@ -1,5 +1,5 @@
---- gamelogic.cpp
-+++ gamelogic.cpp
+--- a/gamelogic.cpp
++++ b/gamelogic.cpp
 @@ -25,6 +25,7 @@
  #include<fstream>
  #include<cstdio>
@@ -8,8 +8,8 @@
  
  #ifndef WIN32
  #include<unistd.h>
---- levelmap.cpp
-+++ levelmap.cpp
+--- a/levelmap.cpp
++++ b/levelmap.cpp
 @@ -21,6 +21,7 @@
  ////////////////////////////////////////////////////////////////////////
  
@@ -18,8 +18,8 @@
  #include <cstdio>
  #include <cctype>
  #include <cstring>
---- mapedit.cpp
-+++ mapedit.cpp
+--- a/mapedit.cpp
++++ b/mapedit.cpp
 @@ -26,6 +26,8 @@
  #include<cstdio>
  #include<list>
@@ -29,8 +29,8 @@
  
  #ifndef WIN32
  #include<unistd.h>
---- modlist.cpp
-+++ modlist.cpp
+--- a/modlist.cpp
++++ b/modlist.cpp
 @@ -22,6 +22,7 @@
  
  #include <iostream>
@@ -39,8 +39,8 @@
  
  #ifdef WIN32
  #include <afxwin.h>
---- tile_spinner.cpp
-+++ tile_spinner.cpp
+--- a/tile_spinner.cpp
++++ b/tile_spinner.cpp
 @@ -24,6 +24,7 @@
  
  
