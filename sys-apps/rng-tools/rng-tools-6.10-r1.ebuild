@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -72,7 +72,7 @@ src_install() {
 		local DOC_CONTENTS="
 The PKCS11 entropy source may require extra packages (e.g. 'dev-libs/opensc')
 to support various smartcard readers. Make sure 'PKCS11_OPTIONS' in:
-	'${EROOT}/etc/conf.d/rngd'
+	'${EPREFIX}/etc/conf.d/rngd'
 reflects the correct PKCS11 engine path to be used by rngd.
 "
 		readme.gentoo_create_doc
