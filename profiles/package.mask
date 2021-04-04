@@ -311,12 +311,6 @@ dev-libs/libgpuarray
 # Bug 729876 and several others; removal in 30days
 dev-libs/klibc
 
-# Conrad Kostecki <conikost@gentoo.org> (2021-03-05)
-# Deprecated by upstream and unsupported due EOL.
-# Multiple bugs open and unmaintained.
-# Removal in 30 days.
-sys-apps/newrelic-sysmond
-
 # Sam James <sam@gentoo.org> (2021-03-03)
 # Declared abandoned upstream and stuck
 # on Python 3.7.
