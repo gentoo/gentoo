@@ -91,7 +91,7 @@ src_prepare() {
 	fi
 
 	if use kde || use wxwidgets; then
-		need-wxwidgets unicode
+		setup-wxwidgets unicode
 		einfo "Preparing dependency list"
 		emake depend
 	fi
