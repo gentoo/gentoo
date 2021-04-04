@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs flag-o-matic
+inherit toolchain-funcs
 
 DESCRIPTION="collection of games from NetBSD"
 HOMEPAGE="https://www.polyomino.org.uk/computer/software/bsd-games/"
