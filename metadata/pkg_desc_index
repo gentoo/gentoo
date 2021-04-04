@@ -17102,7 +17102,7 @@ sys-apps/pv 1.6.6: Pipe Viewer: a tool for monitoring the progress of data throu
 sys-apps/qcontrol 0.4.2-r100: Send commands to some microcontrollers, e.g., to change LEDs or sound a buzzer
 sys-apps/qdirstat 1.7: Qt-based directory statistics
 sys-apps/qingy 1.0.0-r5: A DirectFB getty replacement
-sys-apps/radeontool 1.6.3 1.6.3_p20181127: Utility to get/set registers and controlling backlight on radeon based GPUs
+sys-apps/radeontool 1.6.3_p20181127: Utility to get/set registers and controlling backlight on radeon based GPUs
 sys-apps/razercfg 0.42: Utility for advanced configuration of Razer mice
 sys-apps/readahead-list 1.20060421.1016-r3: Preloads files into the page cache to accelerate program loading
 sys-apps/rename 1.3-r2: Easily rename files
