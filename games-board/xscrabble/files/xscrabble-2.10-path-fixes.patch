@@ -1,5 +1,5 @@
---- build
-+++ build
+--- a/build
++++ b/build
 @@ -1,9 +1,10 @@
  #!/bin/sh
  
@@ -9,8 +9,8 @@
 -LIBDIR=/usr/games/lib/scrabble
 +APPDEFAULTS=$DESTDIR/usr/$LIBDIR/X11/app-defaults
 +REAL_APPDEFAULTS=/usr/$LIBDIR/X11/app-defaults
-+BINDIR=$DESTDIR/usr/games/bin
-+LIBDIR=$DESTDIR/usr/share/games/xscrabble
++BINDIR=$DESTDIR/usr/bin
++LIBDIR=$DESTDIR/usr/share/xscrabble
  
  # Version (don't modify without knowing!!)
  MAJOR=2
