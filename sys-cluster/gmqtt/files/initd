@@ -3,7 +3,7 @@
 description="Gmqtt Broker Service"
 pidfile=${pidfile:-"/run/${RC_SVCNAME}.pid"}
 command="/usr/bin/gmqttd"
-command_user="nobody:nobody"
+command_user="${command_user:="nobody:nobody"}"
 command_args="${GMQTTD_OPTS=:-"-c /etc/gmqtt/gmqttd.yml start"}"
 command_background="true"
 logfile=/var/log/gmqtt/${RC_SVCNAME}.log
