@@ -4,7 +4,7 @@ DEPEND=app-arch/xz-utils >=dev-qt/qtdbus-5.15.2:5 >=dev-qt/qtgui-5.15.2:5 >=dev-
 DESCRIPTION=Storage service for PIM data and libraries for PIM apps
 EAPI=7
 HOMEPAGE=https://community.kde.org/KDE_PIM/akonadi
-INHERIT=ecm kde.org
+INHERIT=ecm kde.org readme.gentoo-r1
 IUSE=+kaccounts +mysql postgres sqlite tools xml test debug designer test
 KEYWORDS=~amd64 ~arm64 ~ppc64 ~x86
 LICENSE=LGPL-2.1+
@@ -13,5 +13,5 @@ REQUIRED_USE=|| ( mysql postgres sqlite ) test? ( tools )
 RESTRICT=!test? ( test ) !test? ( test ) test
 SLOT=5
 SRC_URI=mirror://kde/stable/release-service/20.12.3/src/akonadi-20.12.3.tar.xz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	cmake	518e4c9a6a38dfd7afc54b6a7c5de3da	virtualx	d828f8a6cfc731f2683d0967d3f2f95a	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	ecm	23462b13731a265a5d99e493ec4a7720	kde.org	8ab7639dfaec743469a517f35332a111
-_md5_=4b0c18724414feb2f40e170731fd2895
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	cmake	518e4c9a6a38dfd7afc54b6a7c5de3da	virtualx	d828f8a6cfc731f2683d0967d3f2f95a	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	ecm	23462b13731a265a5d99e493ec4a7720	kde.org	8ab7639dfaec743469a517f35332a111	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
+_md5_=3e3d4353824379896c8cbe7b01638fa6
