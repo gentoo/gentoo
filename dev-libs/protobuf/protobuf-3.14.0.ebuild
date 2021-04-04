@@ -46,6 +46,9 @@ src_prepare() {
 	# https://github.com/protocolbuffers/protobuf/issues/7413
 	sed -e "/^AC_PROG_CXX_FOR_BUILD$/d" -i configure.ac || die
 
+	# https://github.com/protocolbuffers/protobuf/issues/8082
+	sed -e "/^TEST_F(IoTest, LargeOutput) {$/,/^}$/d" -i src/google/protobuf/io/zero_copy_stream_unittest.cc || die
+
 	eautoreconf
 }
 
