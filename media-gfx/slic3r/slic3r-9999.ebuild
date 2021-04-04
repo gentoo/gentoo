@@ -73,7 +73,6 @@ DEPEND="
 PERL_S="${S}/xs"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.3.1_pre20200824-boost-1.73.patch"
 	"${FILESDIR}/${PN}-1.3.0-no-locallib.patch"
 	"${FILESDIR}/${PN}-1.3.0-use-system-clipper.patch"
 )
