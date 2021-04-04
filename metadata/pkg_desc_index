@@ -10648,44 +10648,44 @@ dev-tex/style-check 0.14: Parses LaTeX-formatted text in search of forbidden phr
 dev-tex/tex4ht 20090611_p1038-r8 20090611_p1038-r11: Converts (La)TeX to (X)HTML, XML and OO.org
 dev-tex/tth 4.08: Translate TEX into HTML
 dev-tex/vc 0.6: The vc (version control) bundle
-dev-texlive/texlive-basic 2020-r1: TeXLive Essential programs and files
-dev-texlive/texlive-bibtexextra 2020: TeXLive BibTeX additional styles
-dev-texlive/texlive-context 2020: TeXLive ConTeXt and packages
-dev-texlive/texlive-fontsextra 2020: TeXLive Additional fonts
-dev-texlive/texlive-fontsrecommended 2020: TeXLive Recommended fonts
-dev-texlive/texlive-fontutils 2020: TeXLive Graphics and font utilities
-dev-texlive/texlive-formatsextra 2020-r2: TeXLive Additional formats
-dev-texlive/texlive-games 2020: TeXLive Games typesetting
-dev-texlive/texlive-humanities 2020: TeXLive Humanities packages
-dev-texlive/texlive-langarabic 2020: TeXLive Arabic
-dev-texlive/texlive-langchinese 2020: TeXLive Chinese
-dev-texlive/texlive-langcjk 2020: TeXLive Chinese/Japanese/Korean (base)
-dev-texlive/texlive-langcyrillic 2020: TeXLive Cyrillic
-dev-texlive/texlive-langczechslovak 2020: TeXLive Czech/Slovak
-dev-texlive/texlive-langenglish 2020: TeXLive US and UK English
-dev-texlive/texlive-langeuropean 2020: TeXLive Other European languages
-dev-texlive/texlive-langfrench 2020: TeXLive French
-dev-texlive/texlive-langgerman 2020: TeXLive German
-dev-texlive/texlive-langgreek 2020: TeXLive Greek
-dev-texlive/texlive-langitalian 2020: TeXLive Italian
-dev-texlive/texlive-langjapanese 2020: TeXLive Japanese
-dev-texlive/texlive-langkorean 2020: TeXLive Korean
-dev-texlive/texlive-langother 2020: TeXLive Other languages
-dev-texlive/texlive-langpolish 2020: TeXLive Polish
-dev-texlive/texlive-langportuguese 2020: TeXLive Portuguese
-dev-texlive/texlive-langspanish 2020: TeXLive Spanish
-dev-texlive/texlive-latex 2020: TeXLive LaTeX fundamental packages
-dev-texlive/texlive-latexextra 2020-r2: TeXLive LaTeX additional packages
-dev-texlive/texlive-latexrecommended 2020: TeXLive LaTeX recommended packages
-dev-texlive/texlive-luatex 2020-r2: TeXLive LuaTeX packages
-dev-texlive/texlive-mathscience 2020: TeXLive Mathematics, natural sciences, computer science packages
-dev-texlive/texlive-metapost 2020-r1: TeXLive MetaPost and Metafont packages
-dev-texlive/texlive-music 2020: TeXLive Music packages
-dev-texlive/texlive-pictures 2020-r2: TeXLive Graphics, pictures, diagrams
-dev-texlive/texlive-plaingeneric 2020: TeXLive Plain (La)TeX packages
-dev-texlive/texlive-pstricks 2020: TeXLive PSTricks
-dev-texlive/texlive-publishers 2020: TeXLive Publisher styles, theses, etc.
-dev-texlive/texlive-xetex 2020: TeXLive XeTeX and packages
+dev-texlive/texlive-basic 2020-r1 2021: TeXLive Essential programs and files
+dev-texlive/texlive-bibtexextra 2020 2021: TeXLive BibTeX additional styles
+dev-texlive/texlive-context 2020 2021: TeXLive ConTeXt and packages
+dev-texlive/texlive-fontsextra 2020 2021: TeXLive Additional fonts
+dev-texlive/texlive-fontsrecommended 2020 2021: TeXLive Recommended fonts
+dev-texlive/texlive-fontutils 2020 2021: TeXLive Graphics and font utilities
+dev-texlive/texlive-formatsextra 2020-r2 2021: TeXLive Additional formats
+dev-texlive/texlive-games 2020 2021: TeXLive Games typesetting
+dev-texlive/texlive-humanities 2020 2021: TeXLive Humanities packages
+dev-texlive/texlive-langarabic 2020 2021: TeXLive Arabic
+dev-texlive/texlive-langchinese 2020 2021: TeXLive Chinese
+dev-texlive/texlive-langcjk 2020 2021: TeXLive Chinese/Japanese/Korean (base)
+dev-texlive/texlive-langcyrillic 2020 2021: TeXLive Cyrillic
+dev-texlive/texlive-langczechslovak 2020 2021: TeXLive Czech/Slovak
+dev-texlive/texlive-langenglish 2020 2021: TeXLive US and UK English
+dev-texlive/texlive-langeuropean 2020 2021: TeXLive Other European languages
+dev-texlive/texlive-langfrench 2020 2021: TeXLive French
+dev-texlive/texlive-langgerman 2020 2021: TeXLive German
+dev-texlive/texlive-langgreek 2020 2021: TeXLive Greek
+dev-texlive/texlive-langitalian 2020 2021: TeXLive Italian
+dev-texlive/texlive-langjapanese 2020 2021: TeXLive Japanese
+dev-texlive/texlive-langkorean 2020 2021: TeXLive Korean
+dev-texlive/texlive-langother 2020 2021: TeXLive Other languages
+dev-texlive/texlive-langpolish 2020 2021: TeXLive Polish
+dev-texlive/texlive-langportuguese 2020 2021: TeXLive Portuguese
+dev-texlive/texlive-langspanish 2020 2021: TeXLive Spanish
+dev-texlive/texlive-latex 2020 2021: TeXLive LaTeX fundamental packages
+dev-texlive/texlive-latexextra 2020-r2 2021: TeXLive LaTeX additional packages
+dev-texlive/texlive-latexrecommended 2020 2021: TeXLive LaTeX recommended packages
+dev-texlive/texlive-luatex 2020-r2 2021: TeXLive LuaTeX packages
+dev-texlive/texlive-mathscience 2020 2021: TeXLive Mathematics, natural sciences, computer science packages
+dev-texlive/texlive-metapost 2020-r1 2021: TeXLive MetaPost and Metafont packages
+dev-texlive/texlive-music 2020 2021: TeXLive Music packages
+dev-texlive/texlive-pictures 2020-r2 2021: TeXLive Graphics, pictures, diagrams
+dev-texlive/texlive-plaingeneric 2020 2021: TeXLive Plain (La)TeX packages
+dev-texlive/texlive-pstricks 2020 2021: TeXLive PSTricks
+dev-texlive/texlive-publishers 2020 2021: TeXLive Publisher styles, theses, etc.
+dev-texlive/texlive-xetex 2020 2021: TeXLive XeTeX and packages
 dev-util/App-SVN-Bisect 1.1-r1: Binary search through svn revisions
 dev-util/abi-compliance-checker 2.3 9999: A tool for checking backward compatibility of a C/C++ library
 dev-util/abi-dumper 1.1 1.2: Dump ABI of an ELF object containing DWARF debug info
