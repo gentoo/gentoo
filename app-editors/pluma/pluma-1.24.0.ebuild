@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -77,5 +77,5 @@ src_test() {
 
 	unset DBUS_SESSION_BUS_ADDRESS
 
-	GSETTINGS_SCHEMA_DIR="${S}/data" Xemake check
+	GSETTINGS_SCHEMA_DIR="${S}/data" virtx emake check
 }
