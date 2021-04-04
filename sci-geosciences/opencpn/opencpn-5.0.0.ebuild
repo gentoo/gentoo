@@ -1,18 +1,19 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 WX_GTK_VER="3.0"
-inherit cmake-utils wxwidgets
+inherit wxwidgets xdg cmake
 
 DOC_VERSION="4.8.2.0"
 
 DESCRIPTION="a free, open source software for marine navigation"
 HOMEPAGE="https://opencpn.org/"
-SRC_URI="https://github.com/OpenCPN/OpenCPN/archive/v${PV}.tar.gz -> ${P}.tar.gz
-doc? ( https://launchpad.net/~opencpn/+archive/ubuntu/${PN}/+files/${PN}-doc_${DOC_VERSION}.orig.tar.xz )
-"
+SRC_URI="
+	https://github.com/OpenCPN/OpenCPN/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	doc? ( https://launchpad.net/~opencpn/+archive/ubuntu/${PN}/+files/${PN}-doc_${DOC_VERSION}.orig.tar.xz )"
+S="${WORKDIR}/OpenCPN-${PV}"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -30,18 +31,15 @@ RDEPEND="
 	opengl? ( virtual/opengl )
 	x11-libs/gtk+:2
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
-	!sci-geosciences/opencpn-plugin-wmm
-"
-DEPEND="${RDEPEND}
-	sys-devel/gettext"
+	!sci-geosciences/opencpn-plugin-wmm"
+DEPEND="${RDEPEND}"
+BDEPEND="sys-devel/gettext"
 
-S="${WORKDIR}/OpenCPN-${PV}"
-
-PATCHES=(
-	"${FILESDIR}/${PV}-CMakeLists.txt.patch"
-)
+PATCHES=( "${FILESDIR}"/${P}-cmake.patch )
 
 src_configure() {
+	use doc && HTML_DOCS=( "${S}"/../${PN}/doc/. )
+
 	setup-wxwidgets
 	local mycmakeargs=(
 		-DUSE_S57=ON
@@ -50,17 +48,12 @@ src_configure() {
 		-DBUNDLE_TCDATA=ON
 	)
 
-	cmake-utils_src_configure
-}
-
-src_install() {
-	if use doc; then
-		dohtml -r "${S}"/../${PN}/doc/*
-	fi
-	cmake-utils_src_install
+	cmake_src_configure
 }
 
 pkg_postinst() {
+	xdg_pkg_postinst
+
 	if use doc; then
 		einfo "Documentation is available at file:///usr/share/doc/${PF}/html/help_en_US.html"
 	fi
