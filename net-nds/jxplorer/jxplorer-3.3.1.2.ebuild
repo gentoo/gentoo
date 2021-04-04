@@ -48,7 +48,7 @@ src_prepare() {
 }
 
 src_test() {
-	VIRTUALX_COMMAND="java-pkg-2_src_test" virtualmake
+	VIRTUALX_COMMAND="java-pkg-2_src_test" virtx emake -j1
 }
 
 src_install() {
