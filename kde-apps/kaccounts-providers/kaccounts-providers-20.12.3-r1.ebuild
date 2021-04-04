@@ -14,7 +14,7 @@ HOMEPAGE="https://community.kde.org/KTp"
 LICENSE="LGPL-2.1"
 SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
-IUSE=""
+IUSE="+webengine"
 
 BDEPEND="
 	dev-util/intltool
@@ -22,7 +22,6 @@ BDEPEND="
 DEPEND="
 	>=dev-qt/qtdeclarative-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
-	>=dev-qt/qtwebengine-${QTMIN}:5
 	>=dev-qt/qtxml-${QTMIN}:5
 	>=kde-apps/kaccounts-integration-${PVCUT}:5
 	>=kde-frameworks/kcoreaddons-${KFMIN}:5
@@ -30,8 +29,18 @@ DEPEND="
 	>=kde-frameworks/ki18n-${KFMIN}:5
 	>=kde-frameworks/kio-${KFMIN}:5
 	>=kde-frameworks/kpackage-${KFMIN}:5
+	webengine? ( >=dev-qt/qtwebengine-${QTMIN}:5 )
 "
 RDEPEND="${DEPEND}
 	net-libs/signon-oauth2
 	net-libs/signon-ui
 "
+
+PATCHES=( "${FILESDIR}/${P}-qtwebengine-optional.patch" ) # bug 753274
+
+src_configure() {
+	local mycmakeargs=(
+		$(cmake_use_find_package webengine Qt5WebEngine)
+	)
+	ecm_src_configure
+}
