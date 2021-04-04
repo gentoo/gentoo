@@ -14,7 +14,7 @@ GTEST_FILE="gtest-1.10.0_p20200702.tar.gz"
 DESCRIPTION="Abseil Common Libraries (C++), LTS Branch"
 HOMEPAGE="https://abseil.io"
 SRC_URI="https://github.com/abseil/abseil-cpp/archive/${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/google/googletest/archive/${GTEST_COMMIT}.tar.gz -> ${GTEST_FILE}"
+	test? ( https://github.com/google/googletest/archive/${GTEST_COMMIT}.tar.gz -> ${GTEST_FILE} )"
 
 LICENSE="
 	Apache-2.0
@@ -54,8 +54,10 @@ src_prepare() {
 	python_fix_shebang absl/copts/generate_copts.py
 	absl/copts/generate_copts.py || die
 
-	sed -i 's/-Werror//g' \
-		"${WORKDIR}/googletest-${GTEST_COMMIT}"/googletest/cmake/internal_utils.cmake || die
+	if use test; then
+		sed -i 's/-Werror//g' \
+			"${WORKDIR}/googletest-${GTEST_COMMIT}"/googletest/cmake/internal_utils.cmake || die
+	fi
 }
 
 src_configure() {
