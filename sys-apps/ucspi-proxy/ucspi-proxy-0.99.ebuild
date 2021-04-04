@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -24,8 +24,13 @@ src_prepare() {
 src_configure() {
 	echo "$(tc-getCC) ${CFLAGS}" > conf-cc
 	echo "$(tc-getCC) ${LDFLAGS}" > conf-ld
-	echo "${D}/usr/bin" > conf-bin
-	echo "${D}/usr/share/man" > conf-man
+	echo "/usr/bin" > conf-bin
+	echo "/usr/share/man" > conf-man
 	echo "/usr/include/bglibs" > conf-bgincs
 	echo "/usr/$(get_libdir)/bglibs" > conf-bglibs
+}
+
+src_install() {
+	local -x install_prefix="${D}"
+	default
 }
