@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ EGIT_REPO_URI="https://anongit.freedesktop.org/git/spice/spice.git"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS=""
-IUSE="gstreamer libressl lz4 opus sasl smartcard static-libs"
+IUSE="gstreamer libressl lz4 opus sasl smartcard static-libs test"
 
 # the libspice-server only uses the headers of libcacard
 RDEPEND="
@@ -73,6 +73,7 @@ src_configure() {
 		$(meson_use sasl)
 		$(meson_feature opus)
 		$(meson_feature smartcard)
+		$(meson_use test tests)
 		-Dmanual=false
 		-Dtests=false
 	)
