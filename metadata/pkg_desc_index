@@ -3042,7 +3042,7 @@ app-text/jabref 2.10-r4: Java GUI for managing BibTeX and other bibliographies
 app-text/jabref-bin 3.7 3.8 3.8.1 3.8.2 4.0 4.1 4.3.1 4.9999: Java GUI manages bibliographies in a BibTeX database
 app-text/jo 1.4 99999: JSON output from a shell
 app-text/kbibtex 0.9.2: BibTeX editor to edit bibliographies used with LaTeX
-app-text/kjots 5.0.2-r2 5.1.0: Note taking utility by KDE
+app-text/kjots 5.1.0: Note taking utility by KDE
 app-text/krop 0.6.0 9999: A tool to crop PDF files
 app-text/languagetool 4.5 4.6: A proof-reading tool for many languages
 app-text/lcdf-typetools 2.108: Font utilities for eg manipulating OTF
@@ -14765,7 +14765,7 @@ net-im/librvp 0.9.7: An RVP (Microsoft Exchange Instant Messaging) plugin for Pi
 net-im/mattermost-desktop-bin 4.6.2: Mattermost Desktop application
 net-im/mcabber 1.1.2 9999: A small Jabber console client with various features, like MUC, SSL, PGP
 net-im/minbif 1.0.5-r2: IRC gateway to IM networks
-net-im/neochat 1.0.1-r1 1.1.1: Client for Matrix, the decentralized communication protocol
+net-im/neochat 1.1.1: Client for Matrix, the decentralized communication protocol
 net-im/openmittsu 0.9.13.46 0.9.15.0: An open source chat client for Threema-style end-to-end encrypted chat networks
 net-im/pidgin 2.14.1 2.14.2: GTK Instant Messenger client
 net-im/poezio 0.13.1-r1 9999: Console XMPP client that looks like most famous IRC clients
@@ -14965,7 +14965,7 @@ net-libs/libprotoident 2.0.14_p1 9999: A library that performs application layer
 net-libs/libproxy 0.4.17: Library for automatic proxy configuration management
 net-libs/libpsl 0.21.0 0.21.1: C library for the Public Suffix List
 net-libs/libqmi 1.22.2 1.26.6 1.28.2 9999: Qualcomm MSM (Mobile Station Modem) Interface (QMI) modem protocol library
-net-libs/libquotient 0.6.5 0.6.6: Qt5-based SDK to develop applications for Matrix
+net-libs/libquotient 0.6.6: Qt5-based SDK to develop applications for Matrix
 net-libs/librouteros 1.1.2: Library for accessing MikroTik's RouterOS via its API
 net-libs/librsync 2.3.1: Remote delta-compression library
 net-libs/libsearpc 3.2.0-r1: A simple C language RPC framework
@@ -18431,7 +18431,7 @@ x11-libs/scw 0.4.7-r2: A GTK+ widget set specifically designed for chat programs
 x11-libs/snorenotify 0.7.0-r1: Multi platform Qt notification framework
 x11-libs/spread-sheet-widget 0.3-r1 0.6: GNU Spread Sheet Widget
 x11-libs/startup-notification 0.12-r1: Application startup notification and feedback library
-x11-libs/tslib 1.21 1.22: Touchscreen Access Library
+x11-libs/tslib 1.22: Touchscreen Access Library
 x11-libs/vte 0.28.2-r209 0.60.3 0.62.1 0.62.2 0.62.3: Library providing a virtual terminal emulator widget
 x11-libs/wxGTK 3.0.4-r2 3.0.4-r302 3.0.4-r303: GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit
 x11-libs/xapps 1.8.9 2.0.6: Cross-desktop libraries and common resources

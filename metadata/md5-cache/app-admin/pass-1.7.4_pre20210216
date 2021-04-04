@@ -4,10 +4,10 @@ EAPI=7
 HOMEPAGE=https://www.passwordstore.org/
 INHERIT=bash-completion-r1 elisp-common
 IUSE=+git wayland X zsh-completion fish-completion emacs dmenu importers elibc_Darwin
-KEYWORDS=~amd64 ~arm64 ~x86 ~x64-macos
+KEYWORDS=~amd64 ~arm64 ~ppc64 ~x86 ~x64-macos
 LICENSE=GPL-2
 RDEPEND=app-crypt/gnupg media-gfx/qrencode >=app-text/tree-1.7.0 git? ( dev-vcs/git ) wayland? ( gui-apps/wl-clipboard ) X? ( x11-misc/xclip ) elibc_Darwin? ( app-misc/getopt ) zsh-completion? ( app-shells/gentoo-zsh-completions ) fish-completion? ( app-shells/fish ) dmenu? ( x11-misc/dmenu x11-misc/xdotool ) emacs? ( >=app-editors/emacs-23.1:* >=app-emacs/f-0.11.0 >=app-emacs/s-1.9.0 >=app-emacs/with-editor-2.5.11 )
 SLOT=0
 SRC_URI=https://git.zx2c4.com/password-store/snapshot/password-store-918992c19231b33b3d4a3288a7288a620e608cb4.tar.xz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	8e7c071081c68c2c398b77fe3a1d6908	elisp-common	36f97076abd90f943a34f8bcd58b5bcc
-_md5_=62012920c3923f0fbc89712454586256
+_md5_=f65f18a9cc0e8f3f9d1b19c4f928b283
