@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit linux-mod toolchain-funcs udev
+inherit linux-mod udev
 
 DESCRIPTION="Advanced Linux Driver for Xbox One Wireless Controller"
 HOMEPAGE="https://atar-axis.github.io/xpadneo/"
