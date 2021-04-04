@@ -39,3 +39,9 @@ src_prepare() {
 src_configure() {
 	econf --disable-static
 }
+
+src_install() {
+	default
+
+	find "${ED}" -name '*.la' -delete || die
+}
