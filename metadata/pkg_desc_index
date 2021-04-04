@@ -1138,6 +1138,7 @@ app-crypt/openpgp-keys-django 20201105 20201201: OpenPGP keys used to sign Djang
 app-crypt/openpgp-keys-gentoo-auth 20200704: Gentoo Authority Keys (GLEP 79)
 app-crypt/openpgp-keys-gentoo-release 20200704: OpenPGP keys used for Gentoo releases (snapshots, stages)
 app-crypt/openpgp-keys-kernel 20201103: OpenPGP keys used to sign Linux kernel releases
+app-crypt/openpgp-keys-libvirt 20210401: OpenPGP keys used by libvirt
 app-crypt/openpgp-keys-linuxcontainers 20201014: OpenPGP keys used to sign LXC-related packages
 app-crypt/openpgp-keys-miniupnp 20201006: OpenPGP keys used to sign miniupnp* packages
 app-crypt/openpgp-keys-python 20210121: OpenPGP keys used to sign CPython releases
@@ -2148,7 +2149,7 @@ app-emulation/libdsk 1.5.8: LIBDSK is a library for accessing discs and disc ima
 app-emulation/libguestfs 1.38.6-r103: Tools for accessing, inspect and modifying virtual machine (VM) disk images
 app-emulation/libguestfs-appliance 1.38.0: VM appliance disk image used in libguestfs package
 app-emulation/libspectrum 1.4.4 1.5.0: Spectrum emulation library
-app-emulation/libvirt 6.8.0-r2 7.0.0-r1 7.1.0 9999: C toolkit to manipulate virtual machines
+app-emulation/libvirt 6.8.0-r2 7.0.0-r1 7.1.0 7.2.0 9999: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 3.0.0 4.0.0: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.4: Provides SNMP functionality for libvirt
 app-emulation/lxc 4.0.6: A userspace interface for the Linux kernel containment features
@@ -8515,7 +8516,7 @@ dev-python/libpillowfight 0.3.0: Small library containing various image processi
 dev-python/libpy_simdjson 0.4.0: Python bindings for simdjson using libpy
 dev-python/libsass 0.20.1: A straightforward binding of libsass for Python
 dev-python/libtmux 0.8.5: python api for tmux
-dev-python/libvirt-python 6.8.0 7.0.0 7.1.0 9999: libvirt Python bindings
+dev-python/libvirt-python 6.8.0 7.0.0 7.1.0 7.2.0 9999: libvirt Python bindings
 dev-python/line_profiler 3.0.2: Line-by-line profiler
 dev-python/linecache2 1.0.0-r1: Backports of the linecache module
 dev-python/lit 10.0.1 11.0.0 11.0.1 11.1.0 12.0.0_rc2 12.0.0_rc3 12.0.0_rc4 12.0.0.9999 13.0.0.9999: A stand-alone install of the LLVM suite testing tool
