@@ -1,44 +1,41 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-WX_GTK_VER="3.0"
+EAPI=7
 
-inherit eutils wxwidgets
+WX_GTK_VER="3.0"
+inherit wxwidgets
 
 DESCRIPTION="flashtool for the multi purpose programming adapter usbprog"
 HOMEPAGE="http://www.embedded-projects.net/index.php?page_id=215"
-#SRC_URI="mirror://berlios/${PN}/${P}.tar.bz2"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="static-libs X"
+IUSE="gui"
 
 RDEPEND="
-	X? ( x11-libs/wxGTK:${WX_GTK_VER} )
-	>=dev-libs/libxml2-2.0.0
+	dev-libs/libxml2
 	net-misc/curl
+	sys-libs/readline:0=
 	virtual/libusb:0
-	sys-libs/readline:0
-"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-"
+	gui? ( x11-libs/wxGTK:${WX_GTK_VER} )"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-wx3.0.patch
-}
+PATCHES=( "${FILESDIR}"/${P}-wx3.0.patch )
 
 src_configure() {
-	use X && need-wxwidgets unicode
+	use gui && setup-wxwidgets unicode
 	econf \
-		$(use_enable X gui) \
-		$(use_enable static-libs static)
+		--disable-static \
+		$(use_enable gui)
 }
 
 src_install() {
 	default
-	use static-libs || find "${ED}" -name '*.la' -delete
+
+	# no static archives
+	find "${ED}" -name '*.la' -delete || die
 }
