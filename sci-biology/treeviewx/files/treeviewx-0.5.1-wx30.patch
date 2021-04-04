@@ -1,14 +1,6 @@
- tv.cpp    |  4 ++--
- tview.cpp | 12 ++++++++----
- 2 files changed, 10 insertions(+), 6 deletions(-)
-
-diff --git a/tv.cpp b/tv.cpp
-old mode 100755
-new mode 100644
-index 1abe90b..0df45a8
 --- a/tv.cpp
 +++ b/tv.cpp
-@@ -163,9 +163,9 @@ bool MyApp::OnInit(void)
+@@ -163,9 +163,9 @@
  {
  	// Optional command line argument is name of file to open
  #if wxUSE_UNICODE
@@ -20,10 +12,6 @@ index 1abe90b..0df45a8
  #endif
  	// Read input/output files
  	if (argc > 1)
-diff --git a/tview.cpp b/tview.cpp
-old mode 100755
-new mode 100644
-index 93972c3..4b2d593
 --- a/tview.cpp
 +++ b/tview.cpp
 @@ -62,9 +62,13 @@
@@ -40,7 +28,7 @@ index 93972c3..4b2d593
  
  // GUI interface
  #include "tv.h"
-@@ -186,7 +190,7 @@ void TView::OnSavePicture (wxCommandEvent& WXUNUSED(event))
+@@ -186,7 +190,7 @@
  	wxFrame *f = GetMainFrame();
  	wxFileDialog dialog((wxWindow *)f, wxT("Save Picture as"), wxT(""),
  		pictureFileName, wxT("Enhanced metafile (*.emf)|*.emf"),
@@ -49,16 +37,16 @@ index 93972c3..4b2d593
  
      if (dialog.ShowModal() == wxID_OK)
      {
-@@ -206,7 +210,7 @@ void TView::OnSavePicture (wxCommandEvent& WXUNUSED(event))
+@@ -206,7 +210,7 @@
  	#endif 
  	wxFileDialog dialog((wxWindow *)f, wxT("Save Picture as"), wxT(""),
  		pictureFileName, wxT("SVG vector picture files (*.svg)|*.svg"),
 -		wxSAVE|wxOVERWRITE_PROMPT);
 +		wxFD_SAVE|wxFD_OVERWRITE_PROMPT);
  
-     if (dialog.ShowModal() == wxID_OK)
+     if ((dialog.ShowModal() == wxID_OK) && (p.GetNumTrees() != 0))
      {
-@@ -361,7 +365,7 @@ bool TView::OnClose(bool deleteWindow)
+@@ -361,7 +365,7 @@
  
  	// Clear the canvas in  case we're in single-window mode,
  	// and the canvas stays.
@@ -67,7 +55,7 @@ index 93972c3..4b2d593
  	canvas->ClearBackground();
  #else
  	canvas->Clear();
-@@ -686,7 +690,7 @@ void TView::OnLeafFont (wxCommandEvent& WXUNUSED(event))
+@@ -686,7 +690,7 @@
  	wxFontData data;
  	data.SetInitialFont (LeafFont);
  
