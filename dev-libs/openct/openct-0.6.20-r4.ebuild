@@ -48,7 +48,7 @@ src_install() {
 	default
 
 	find "${ED}" -name '*.la' -delete || die
-	rm "${ED}"/usr/$(get_libdir)/openct-ifd.* || die
+	rm -f "${ED}"/usr/$(get_libdir)/openct-ifd.* || die
 
 	udev_newrules etc/openct.udev 70-openct.rules
 
