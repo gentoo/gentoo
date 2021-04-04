@@ -1,9 +1,10 @@
-DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test unpack
-DEPEND=>=dev-libs/glib-2.28:2 >=sys-apps/dbus-1.1 >=dev-libs/dbus-glib-0.82 >=net-libs/telepathy-glib-0.19.2[introspection?] dev-libs/libxml2 dev-libs/libxslt dev-db/sqlite:3 introspection? ( >=dev-libs/gobject-introspection-0.9.6 ) || ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 ) dev-util/glib-utils >=dev-util/gtk-doc-am-1.10 >=dev-util/intltool-0.35 virtual/pkgconfig >=app-portage/elt-patches-20170815 app-arch/xz-utils dev-util/desktop-file-utils x11-misc/shared-mime-info test? ( x11-base/xorg-server[xvfb] x11-apps/xhost )
+BDEPEND=|| ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 ) dev-util/glib-utils >=dev-util/gtk-doc-am-1.10 >=dev-util/intltool-0.35 virtual/pkgconfig >=app-portage/elt-patches-20170815 app-arch/xz-utils test? ( x11-base/xorg-server[xvfb] x11-apps/xhost )
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test
+DEPEND=>=dev-libs/glib-2.28:2 >=sys-apps/dbus-1.1 >=dev-libs/dbus-glib-0.82 >=net-libs/telepathy-glib-0.19.2[introspection?] dev-libs/libxml2 dev-libs/libxslt dev-db/sqlite:3 introspection? ( >=dev-libs/gobject-introspection-0.9.6 ) dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=Daemon that centralizes the communication logging within the Telepathy framework
-EAPI=5
+EAPI=7
 HOMEPAGE=https://telepathy.freedesktop.org/wiki/Logger
-INHERIT=epatch gnome2 python-any-r1 virtualx
+INHERIT=gnome2 python-any-r1 virtualx
 IUSE=+introspection test
 KEYWORDS=~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-linux
 LICENSE=LGPL-2.1+
@@ -11,5 +12,5 @@ RDEPEND=>=dev-libs/glib-2.28:2 >=sys-apps/dbus-1.1 >=dev-libs/dbus-glib-0.82 >=n
 RESTRICT=!test? ( test )
 SLOT=0/3
 SRC_URI=https://telepathy.freedesktop.org/releases/telepathy-logger/telepathy-logger-0.8.2.tar.bz2 https://gitlab.freedesktop.org/telepathy/telepathy-logger/-/merge_requests/1.patch -> telepathy-logger-0.8.2-py3.patch
-_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	estack	055c42df72f76a4f45ec92b35e83cd56	epatch	f62592ba170464d52e9a05f584161347	l10n	8cdd85e169b835d518bc2fd59f780d8e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	preserve-libs	ef207dc62baddfddfd39a164d9797648	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	libtool	f143db5a74ccd9ca28c1234deffede96	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	versionator	d3fb3ba33acc3bbbdc4d7970227c100d	gnome.org	df5c6c53843e1be0aad724138e78bbc3	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	gnome2	c156bb2ac81c822dd861424ce19bc168	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-any-r1	690a993463cd2ebcde40ccdf1bd9ba98	virtualx	d828f8a6cfc731f2683d0967d3f2f95a
-_md5_=2c981723a944bad53ac4eea307076a09
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	gnome.org	df5c6c53843e1be0aad724138e78bbc3	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	gnome2	c156bb2ac81c822dd861424ce19bc168	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-any-r1	690a993463cd2ebcde40ccdf1bd9ba98	virtualx	d828f8a6cfc731f2683d0967d3f2f95a
+_md5_=d3978c70c71f9db4f89d6c875009c343
