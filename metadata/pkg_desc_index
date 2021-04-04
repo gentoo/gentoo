@@ -16418,7 +16418,7 @@ sci-libs/openblas 0.3.12-r1 0.3.13 0.3.14: Optimized BLAS library based on GotoB
 sci-libs/opencascade 7.4.0-r4: Development platform for CAD/CAE, 3D surface/solid modeling and data exchange
 sci-libs/openlibm 0.7.4: High quality system independent, open source libm
 sci-libs/orocos-bfl 0.8.0: Bayesian Filtering Library
-sci-libs/orocos_kdl 1.4.0 9999: Kinematics and Dynamics Library (KDL)
+sci-libs/orocos_kdl 1.4.0-r1 9999: Kinematics and Dynamics Library (KDL)
 sci-libs/p4est 2.2-r100 9999: Scalable Algorithms for Parallel Adaptive Mesh Refinement on Forests of Octrees
 sci-libs/parmetis 4.0.3-r1: Parallel (MPI) unstructured graph partitioning library
 sci-libs/pastix 5.2.2.22-r1 5.2.3: Parallel solver for very large sparse linear systems
