@@ -11074,7 +11074,7 @@ dev-vcs/colorcvs 1.4-r2: A tool based on colorgcc to beautify cvs output
 dev-vcs/colorsvn 0.3.3: Subversion output colorizer
 dev-vcs/cssc 1.4.1: The GNU Project's replacement for SCCS
 dev-vcs/cvs 1.12.12-r13: Concurrent Versions System - source code revision control tools
-dev-vcs/cvs-fast-export 1.55: fast-export history from a CVS repository or RCS collection
+dev-vcs/cvs-fast-export 1.55 1.56: fast-export history from a CVS repository or RCS collection
 dev-vcs/cvs2cl 2.71-r1: produces a GNU-style ChangeLog for CVS-controlled sources
 dev-vcs/cvsgraph 1.7.0: CVS/RCS repository grapher
 dev-vcs/cvsps 2.2_beta1-r1 3.13-r2: Generates patchset information from a CVS repository (supports fast-import)
@@ -18033,7 +18033,7 @@ www-apache/mod_fastcgi_handler 0.6-r2: A simple FastCGI handler module
 www-apache/mod_fcgid 2.3.9-r1: Binary-compatible alternative to mod_fastcgi with better process management
 www-apache/mod_gnutls 0.8.2-r2 0.11.0: mod_gnutls uses GnuTLS for SSL/TLS encryption in Apache2 (compare to mod_ssl)
 www-apache/mod_h2 1.15.16 1.15.17 9999: HTTP/2 module for Apache
-www-apache/mod_jk 1.2.42 1.2.48: Provides an AJP Apache2-JK-connector for the Tomcat servlet engine
+www-apache/mod_jk 1.2.48: Provides an AJP Apache2-JK-connector for the Tomcat servlet engine
 www-apache/mod_ldap_userdir 1.1.19: Look up Apache ~user directories in an LDAP directory
 www-apache/mod_limitipconn 0.24-r3: Limit the number of simultaneous apache connections
 www-apache/mod_log_rotate 1.01: Log rotation support for mod_log_config based on strftime(3)

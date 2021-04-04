@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=app-text/asciidoc
+DESCRIPTION=fast-export history from a CVS repository or RCS collection
+EAPI=7
+HOMEPAGE=http://www.catb.org/~esr/cvs-fast-export/
+INHERIT=toolchain-funcs
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RESTRICT=test
+SLOT=0
+SRC_URI=http://www.catb.org/~esr/cvs-fast-export/cvs-fast-export-1.56.tar.gz
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=75fd51e1296a2aeb6e565f66b6882469
