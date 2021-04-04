@@ -332,11 +332,6 @@ net-misc/capi4hylafax
 # Removal in 30 days.
 app-misc/towitoko
 
-# Conrad Kostecki <conikost@gentoo.org> (2021-03-04)
-# Dead upstream and unmaintained.
-# Removal in 30 days.
-app-misc/logserial
-
 # Sam James <sam@gentoo.org> (2021-03-03)
 # Declared abandoned upstream and stuck
 # on Python 3.7.
