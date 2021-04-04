@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools desktop toolchain-funcs
+inherit autotools desktop
 
 DESCRIPTION="Breakout with 3D representation based on OpenGL"
 HOMEPAGE="http://briquolo.free.fr/en/index.html"
