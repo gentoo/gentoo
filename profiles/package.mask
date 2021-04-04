@@ -381,12 +381,6 @@ app-office/moneyguru
 # Mask development versions now that they were bumped...
 =net-misc/kea-1.9*
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2021-02-08)
-# Abandoned upstream. Was never ported from gtk-2.
-# A possible alternative is media-gfx/geeqie (gqview fork).
-# Removal in 3 months. Bug #769440.
-media-gfx/gqview
-
 # Michał Górny <mgorny@gentoo.org> (2021-02-01)
 # LibreSSL support is discontinued.  Please read the relevant news item
 # and either migrate to dev-libs/openssl, or use the unsupported
