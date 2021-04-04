@@ -11371,7 +11371,7 @@ games-board/megamek 0.34.10-r1: an unofficial, online version of the Classic Bat
 games-board/mt_dolphin_ia 0.1.98-r2: client for the french tarot game maitretarot
 games-board/mt_ncurses_client 0.1.98-r1: client for the french tarot game maitretarot
 games-board/natch 2.4-r1: A program to solve chess proof games
-games-board/openyahtzee 1.9.3: A full-featured wxWidgets version of the classic dice game Yahtzee
+games-board/openyahtzee 1.9.3-r1: A full-featured wxWidgets version of the classic dice game Yahtzee
 games-board/pasang-emas 3.1.0-r1: A traditional game of Brunei
 games-board/peg-e 1.2.8: A peg solitaire game
 games-board/phalanx 22-r1: A chess engine suitable for beginner and intermediate players
@@ -11851,7 +11851,7 @@ games-strategy/war1gus 2.4.3 3.0.0: Warcraft: Orcs & Humans for the Stratagus ga
 games-strategy/wargus 2.4.3 3.0.0-r1: Warcraft II for the Stratagus game engine
 games-strategy/wargus-data 0-r1: Warcraft II data for wargus (needs DOS CD)
 games-strategy/warmux 11.04.1-r1: A free Worms clone
-games-strategy/warzone2100 3.2.3 3.3.0 3.4.1: 3D real-time strategy game
+games-strategy/warzone2100 3.3.0 3.4.1: 3D real-time strategy game
 games-strategy/wesnoth 1.14.14 1.15.11: Battle for Wesnoth - A fantasy turn-based strategy game
 games-strategy/widelands 0.20-r1 9999: A game similar to Settlers 2
 games-strategy/xbattleai 1.2.2-r2: A multi-player game of strategy and coordination

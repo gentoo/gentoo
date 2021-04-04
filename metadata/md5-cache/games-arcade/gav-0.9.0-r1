@@ -10,4 +10,4 @@ RDEPEND=media-libs/sdl-image[jpeg,png] media-libs/sdl-net media-libs/libsdl[joys
 SLOT=0
 SRC_URI=mirror://sourceforge/gav/gav-0.9.0.tar.gz mirror://gentoo/fabeach.tgz mirror://gentoo/florindo.tgz mirror://gentoo/inverted.tgz mirror://gentoo/naive.tgz mirror://gentoo/unnamed.tgz mirror://gentoo/yisus.tgz mirror://gentoo/yisus2.tgz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
-_md5_=33f0f635d8b35a433a14d092da8fd6cf
+_md5_=6c115922efec4f8515dce30828226a48
