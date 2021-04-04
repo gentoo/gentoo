@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-WX_GTK_VER="3.0"
+EAPI=7
 
+WX_GTK_VER="3.0"
 inherit autotools wxwidgets xdg
 
 DESCRIPTION="XML Copy Editor is a fast, free, validating XML editor"
@@ -21,12 +21,10 @@ RDEPEND="
 	dev-libs/libxslt
 	dev-libs/xerces-c[icu]
 	dev-libs/libpcre
-	x11-libs/wxGTK:${WX_GTK_VER}[X]
-"
+	x11-libs/wxGTK:${WX_GTK_VER}[X]"
 DEPEND="${RDEPEND}
-	dev-libs/boost
-	dev-util/intltool
-"
+	dev-libs/boost"
+BDEPEND="dev-util/intltool"
 
 PATCHES=( "${FILESDIR}"/${P}-no-automagic-enchant.patch )
 
@@ -40,5 +38,7 @@ src_prepare() {
 
 src_configure() {
 	setup-wxwidgets unicode
-	econf $(use_enable nls)
+	econf \
+		--with-wx-config="${WX_CONFIG}" \
+		$(use_enable nls)
 }
