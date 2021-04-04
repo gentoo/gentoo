@@ -1,5 +1,5 @@
---- fortune/fortune.c.old	2006-03-11 15:33:14.000000000 +0100
-+++ fortune/fortune.c	2006-03-11 15:43:16.000000000 +0100
+--- a/fortune/fortune.c
++++ b/fortune/fortune.c
 @@ -974,7 +974,7 @@
  	  if (!ret)
  	    ret=add_file(percent, fullpathname, NULL, &File_list,
