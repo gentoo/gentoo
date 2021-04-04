@@ -2180,7 +2180,7 @@ app-emulation/slirp4netns 1.1.8 1.1.9: User-mode networking for unprivileged net
 app-emulation/snapd 2.47.1-r1 2.48: Service and tools for management of snap packages
 app-emulation/softgun 0.22: ARM software emulator
 app-emulation/spectemu 0.99.3-r1: 48k ZX Spectrum Emulator
-app-emulation/spice 0.14.3 9999: SPICE server
+app-emulation/spice 0.14.3 0.14.3-r1 9999: SPICE server
 app-emulation/spice-html5 0.2.1 0.2.2: Spice Javascript client
 app-emulation/spice-protocol 0.14.1 0.14.3 9999: Headers defining the SPICE protocol
 app-emulation/spice-vdagent 0.19.0-r1 0.21.0: SPICE VD Linux Guest Agent
@@ -9278,7 +9278,7 @@ dev-python/stomp-py 6.1.0: Python client library for the STOMP messaging protoco
 dev-python/strict-rfc3339 0.7-r1: Strict, simple, lightweight RFC3339 functions
 dev-python/stripe 2.56.0: Stripe python bindings
 dev-python/subunit 1.4.0: A streaming protocol for test results
-dev-python/suds 0.6-r1 0.8.4: Lightweight SOAP client
+dev-python/suds 0.8.4: Lightweight SOAP client
 dev-python/sure 1.4.11: idiomatic assertion toolkit with human-friendly failure messages
 dev-python/svg-path 4.0.2 4.1: SVG path objects and parser
 dev-python/svgwrite 1.4 1.4.1: Python Package to write SVG files
@@ -15625,7 +15625,7 @@ net-vpn/6tunnel 0.13: TCP proxy for applications that don't speak IPv6
 net-vpn/badvpn 1.999.127 1.999.129 1.999.130: Peer-to-peer VPN, NCD scripting language, tun2socks proxifier
 net-vpn/corkscrew 2.0-r1: a tool for tunneling SSH through HTTP proxies
 net-vpn/fp-multiuser 0.0.2: A frp server plugin to support multiple users for frp
-net-vpn/frp 0.34.3 0.35.1 0.36.0: A reverse proxy that exposes a server behind a NAT or firewall to the internet
+net-vpn/frp 0.36.0 0.36.2: A reverse proxy that exposes a server behind a NAT or firewall to the internet
 net-vpn/httptunnel 3.3_p20180119: httptunnel can create IP tunnels through firewalls/proxies using HTTP
 net-vpn/i2p 0.9.47 0.9.48: A privacy-centric, anonymous network
 net-vpn/i2pd 2.36.0: A C++ daemon for accessing the I2P anonymous network
@@ -17536,7 +17536,7 @@ sys-fs/aufs-util 4.14_p20190603: Utilities are always necessary for aufs
 sys-fs/autorun 3.17: auto cdrom mounter for the lazy user
 sys-fs/avfs 1.1.1 1.1.3: AVFS is a virtual filesystem that allows browsing of compressed files
 sys-fs/bashmount 4.3.2: Bash script that uses udisks to mount removable devices without GUI
-sys-fs/bcache-tools 1.0.8_p20140220-r1 1.1: Tools for bcache
+sys-fs/bcache-tools 1.1: Tools for bcache
 sys-fs/bees 0.6.4 9999: Best-Effort Extent-Same, a btrfs dedup agent
 sys-fs/bindfs 1.14.9 1.15.0 1.15.1: FUSE filesystem for bind mounting with altered permissions
 sys-fs/btrfs-progs 5.4.1 5.10.1 5.11 5.11.1 9999: Btrfs filesystem utilities

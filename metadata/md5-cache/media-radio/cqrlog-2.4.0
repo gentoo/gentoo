@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-lang/lazarus-1.8.0 >=dev-lang/fpc-3.0.2 dev-libs/atk dev-libs/glib virtual/mysql[server] x11-libs/cairo x11-libs/gdk-pixbuf x11-libs/gtk+ x11-libs/libX11 x11-libs/pango
 SLOT=0
 SRC_URI=https://github.com/ok2cqr/cqrlog/archive/v2.4.0.tar.gz -> cqrlog-2.4.0.tar.gz
-_eclasses_=optfeature	6a2add34e06e5a05d88471a33ccdd73e
+_eclasses_=optfeature	a3678a005063e7c50aed4e37d04197ab
 _md5_=40c1a82aeaeb987dc266112eda8dab12

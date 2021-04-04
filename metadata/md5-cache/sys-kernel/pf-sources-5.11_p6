@@ -11,5 +11,5 @@ RDEPEND=!build? ( dev-lang/perl sys-devel/bc sys-devel/bison sys-devel/flex sys-
 RESTRICT=binchecks strip
 SLOT=5.11_p6
 SRC_URI=https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.11.tar.xz https://github.com/pfactum/pf-kernel/compare/v5.11...v5.11-pf6.diff -> pf-sources-5.11_p6.patch https://dev.gentoo.org/~mpagano/genpatches/tarballs/genpatches-5.11-1.base.tar.xz https://dev.gentoo.org/~mpagano/genpatches/tarballs/genpatches-5.11-1.extras.tar.xz https://dev.gentoo.org/~mpagano/genpatches/trunk/5.11/5020_BMQ-and-PDS-io-scheduler-v5.11-r2.patch https://dev.gentoo.org/~mpagano/genpatches/trunk/5.11/5021_BMQ-and-PDS-gentoo-defaults-v5.11-r2.patch
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	estack	055c42df72f76a4f45ec92b35e83cd56	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	kernel-2	198f6aa4709a3392bdc99b64f962e342	optfeature	6a2add34e06e5a05d88471a33ccdd73e
-_md5_=b17106a9c6a522cdd8bd14637fdad1bd
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	estack	055c42df72f76a4f45ec92b35e83cd56	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	kernel-2	198f6aa4709a3392bdc99b64f962e342	optfeature	a3678a005063e7c50aed4e37d04197ab
+_md5_=4b0ab021a3784308f684f27c417054f8

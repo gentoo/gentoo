@@ -13,5 +13,5 @@ REQUIRED_USE=|| ( mysql postgres sqlite )
 RESTRICT=!test? ( test )
 SLOT=5.0.6-r1
 SRC_URI=https://ftp.mozilla.org/pub/mozilla.org/webtools/bugzilla-5.0.6.tar.gz
-_eclasses_=optfeature	6a2add34e06e5a05d88471a33ccdd73e	webapp	990ad6a000cf18d1ef87117e8c7b0a54
-_md5_=10ab9c43065ea3fad37a7e6692c40732
+_eclasses_=optfeature	a3678a005063e7c50aed4e37d04197ab	webapp	990ad6a000cf18d1ef87117e8c7b0a54
+_md5_=5a391e923a051e3b8afc08261d145495

@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=sys-apps/ethtool sys-apps/iproute2 sys-apps/which || ( sys-apps/sdparm sys-apps/hdparm ) acpi? ( sys-power/acpid ) apm? ( sys-apps/apmd ) virtual/tmpfiles
 SLOT=0
 SRC_URI=https://github.com/rickysarraf/laptop-mode-tools/releases/download/1.74/laptop-mode-tools_1.74.tar.gz
-_eclasses_=optfeature	6a2add34e06e5a05d88471a33ccdd73e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	tmpfiles	5cd6e8cf3288d5b19ff8b5c78c7e3e31	udev	452708c3f55cf6e918b045adb949a9e6
+_eclasses_=optfeature	a3678a005063e7c50aed4e37d04197ab	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	tmpfiles	5cd6e8cf3288d5b19ff8b5c78c7e3e31	udev	452708c3f55cf6e918b045adb949a9e6
 _md5_=998cb8745c3c64d862fb34cef69f38ed

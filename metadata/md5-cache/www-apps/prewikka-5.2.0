@@ -12,5 +12,5 @@ RDEPEND=>=dev-libs/libprelude-5.2.0[python,python_targets_python3_7(-)?,python_t
 REQUIRED_USE=|| ( python_targets_python3_7 python_targets_python3_8 )
 SLOT=0
 SRC_URI=https://www.prelude-siem.org/pkg/src/5.2.0/prewikka-5.2.0.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-r1	a0dcde4775c7b2f7530678fc8143340e	distutils-r1	2ac0db834bfc8d76a5ad34d536d15b35	optfeature	6a2add34e06e5a05d88471a33ccdd73e
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-r1	a0dcde4775c7b2f7530678fc8143340e	distutils-r1	2ac0db834bfc8d76a5ad34d536d15b35	optfeature	a3678a005063e7c50aed4e37d04197ab
 _md5_=339a735a0f4d126757ae42a536a7b268

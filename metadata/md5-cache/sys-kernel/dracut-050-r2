@@ -12,5 +12,5 @@ RDEPEND=app-arch/cpio >=app-shells/bash-4.0:0 sys-apps/coreutils[xattr(-)] >=sys
 RESTRICT=test
 SLOT=0
 SRC_URI=https://www.kernel.org/pub/linux/utils/boot/dracut/dracut-050.tar.xz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	8e7c071081c68c2c398b77fe3a1d6908	linux-info	30ded7f9adbdd03d3e848cdd74f6c395	optfeature	6a2add34e06e5a05d88471a33ccdd73e	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6
-_md5_=eac6e8b3a4ba296929241a1fb2fef7fe
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	8e7c071081c68c2c398b77fe3a1d6908	linux-info	30ded7f9adbdd03d3e848cdd74f6c395	optfeature	a3678a005063e7c50aed4e37d04197ab	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6
+_md5_=f04016930c5af9a636a6ec19c6acea9f
