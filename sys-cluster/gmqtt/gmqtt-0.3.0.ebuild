@@ -402,11 +402,11 @@ go-module_set_globals
 SRC_URI="https://github.com/DrmagicE/gmqtt/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	${EGO_SUM_SRC_URI}"
 
-LICENSE="MIT"
+LICENSE="MIT Apache-2.0 BSD BSD-2 ISC MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
-RESTRICT="test"
+RESTRICT+=" test"
 
 src_compile() {
 	GOBIN=${S}/bin CGO_ENABLED=0 go install ./... || die
