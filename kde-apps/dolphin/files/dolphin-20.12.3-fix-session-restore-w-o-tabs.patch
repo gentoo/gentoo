@@ -1,0 +1,70 @@
+From 175538020824355115cd98637ce83ecc53badd44 Mon Sep 17 00:00:00 2001
+From: Nate Graham <nate@kde.org>
+Date: Thu, 18 Mar 2021 13:42:59 -0600
+Subject: [PATCH] Don't re-open already-open URLs when using session-restore
+ feature
+
+If Dolphin would be asked to open a location that is already open, don't
+open it again in a new tab; instead switch to that view. Supports tabs
+and split view.
+
+BUG: 434911
+FIXED-IN: 21.04
+---
+ src/dolphintabwidget.cpp | 24 ++++++++++++++++++------
+ 1 file changed, 18 insertions(+), 6 deletions(-)
+
+diff --git a/src/dolphintabwidget.cpp b/src/dolphintabwidget.cpp
+index d61a9f74f..17fa0ff4e 100644
+--- a/src/dolphintabwidget.cpp
++++ b/src/dolphintabwidget.cpp
+@@ -186,14 +186,20 @@ void DolphinTabWidget::openDirectories(const QList<QUrl>& dirs, bool splitView)
+ {
+     Q_ASSERT(dirs.size() > 0);
+ 
++    bool somethingWasAlreadyOpen = false;
++
+     QList<QUrl>::const_iterator it = dirs.constBegin();
+     while (it != dirs.constEnd()) {
+         const QUrl& primaryUrl = *(it++);
+         const QPair<int, bool> indexInfo = indexByUrl(primaryUrl);
+         const int index = indexInfo.first;
+         const bool isInPrimaryView = indexInfo.second;
++
++        // When the user asks for a URL that's already open, activate it instead
++        // of opening a second copy
+         if (index >= 0) {
+-            setCurrentIndex(index);
++            somethingWasAlreadyOpen = true;
++            activateTab(index);
+             const auto tabPage = tabPageAt(index);
+             if (isInPrimaryView) {
+                 tabPage->primaryViewContainer()->setActive(true);
+@@ -204,13 +210,19 @@ void DolphinTabWidget::openDirectories(const QList<QUrl>& dirs, bool splitView)
+             // Required for updateViewState() call in openFiles() to work as expected
+             // If there is a selection, updateViewState() calls are effectively a no-op
+             tabPage->activeViewContainer()->view()->clearSelection();
+-            continue;
+-        }
+-        if (splitView && (it != dirs.constEnd())) {
++        } else if (splitView) {
+             const QUrl& secondaryUrl = *(it++);
+-            openNewActivatedTab(primaryUrl, secondaryUrl);
++            if (somethingWasAlreadyOpen) {
++                openNewTab(primaryUrl, secondaryUrl);
++            } else {
++                openNewActivatedTab(primaryUrl, secondaryUrl);
++            }
+         } else {
+-            openNewActivatedTab(primaryUrl);
++            if (somethingWasAlreadyOpen) {
++                openNewTab(primaryUrl);
++            } else {
++                openNewActivatedTab(primaryUrl);
++            }
+         }
+     }
+ }
+-- 
+GitLab
+
