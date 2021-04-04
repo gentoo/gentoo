@@ -11,7 +11,9 @@ SRC_URI="https://github.com/msharov/bsd-games/archive/refs/tags/v${PV}.tar.gz ->
 SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-verbose-build.patch.gz"
 
 LICENSE="BSD"
-SLOT="0"
+# Subslot indicates the fork / new version
+# 3 doesn't include the same games as the classic variant, etc
+SLOT="0/3"
 KEYWORDS="~amd64"
 
 DEPEND="
