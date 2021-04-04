@@ -1,14 +1,16 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils desktop xdg-utils
+inherit desktop wrapper xdg-utils
 
 DESCRIPTION="A top-down shooter with a touch of RPG"
 HOMEPAGE="https://crimsonland.com/"
 SRC_URI="Crimsonland-Linux-x86-${PV}.tar"
 #	https://dev.gentoo.org/~chewi/distfiles/${PN}.png"
+S="${WORKDIR}"
+
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
@@ -18,8 +20,6 @@ RDEPEND="
 	media-libs/libsdl2[abi_x86_32,opengl,video]
 	media-libs/openal[abi_x86_32]
 "
-
-S="${WORKDIR}"
 
 DIR="/opt/${PN}"
 QA_PREBUILT="${DIR}/*"
