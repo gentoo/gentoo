@@ -1,11 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 WX_GTK_VER="3.0"
-
-inherit eutils multilib wxwidgets
+inherit wxwidgets
 
 DESCRIPTION="C++ wrapper around the public domain SQLite 3.x database"
 HOMEPAGE="http://wxcode.sourceforge.net/components/wxsqlite3/"
@@ -14,17 +13,16 @@ SRC_URI="mirror://sourceforge/wxcode/${P}.tar.gz"
 LICENSE="wxWinLL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
-DEPEND="
-	x11-libs/wxGTK:3.0[X]
+RDEPEND="
+	x11-libs/wxGTK:${WX_GTK_VER}[X]
 	dev-db/sqlite:3"
-RDEPEND="${DEPEND}"
-
-#S="${WORKDIR}/${P%.1}"
+DEPEND="${RDEPEND}"
 
 src_prepare() {
-	rm -rf sqlite3 || die
+	default
+
+	rm -r sqlite3 || die
 	cp configure30 configure || die
 	sed \
 		-e "s:@WXVERSION@:${WX_GTK_VER}:g" \
@@ -34,22 +32,22 @@ src_prepare() {
 }
 
 src_configure() {
+	setup-wxwidgets
 	econf \
 		--enable-shared \
 		--enable-unicode \
 		--with-wx-config="${WX_CONFIG}" \
 		--with-wxshared \
-		--with-sqlite3-prefix="${PREFIX}/usr"
+		--with-sqlite3-prefix="${ESYSROOT}"/usr
 }
 
 src_install() {
+	HTML_DOCS=( docs/html/. )
 	default
+
+	dodoc Readme.txt
+	dodoc -r samples
 
 	insinto /usr/$(get_libdir)/pkgconfig
 	doins ${PN}.pc
-
-	dodoc Readme.txt
-	dohtml -r docs/html/*
-	docinto samples
-	dodoc -r samples/*
 }
