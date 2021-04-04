@@ -25,7 +25,7 @@ RDEPEND="${DEPEND} "
 
 pkg_setup() {
 	if [ -f "${ROOT}/${EPREFIX}/var/lib/texmf/web2c/metapost/mplib-luatex.mem" ]; then
-		einfo "Removing ${ROOT%/}${EPREFIX}/var/lib/texmf/web2c/metapost/mplib-luatex.mem"
+		einfo "Removing ${ROOT}/${EPREFIX}/var/lib/texmf/web2c/metapost/mplib-luatex.mem"
 		rm -f "${ROOT}/${EPREFIX}/var/lib/texmf/web2c/metapost/mplib-luatex.mem"
 	fi
 }
