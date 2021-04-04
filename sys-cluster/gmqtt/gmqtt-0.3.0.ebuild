@@ -423,7 +423,7 @@ src_install() {
 	docompress -x /usr/share/doc/${PF}/default_config.yml
 	dodoc CONTRIBUTING.md README*.md cmd/gmqttd/default_config.yml
 	docinto federation
-	dodoc -r plugin/federation/examples
+	dodoc -r plugin/federation/{examples,README.md}
 }
 
 pkg_postinst() {
