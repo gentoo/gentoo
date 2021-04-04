@@ -3,10 +3,11 @@ DEPEND=>=dev-ml/findlib-1.0.4-r1
 DESCRIPTION=Library for arbitrary-precision integer and rational arithmetic
 EAPI=7
 HOMEPAGE=https://github.com/ocaml/num
+INHERIT=findlib
 IUSE=+ocamlopt
 KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris
 LICENSE=LGPL-2.1-with-linking-exception
 SLOT=0
 SRC_URI=https://github.com/ocaml/num/archive/v1.4.tar.gz -> num-1.4.tar.gz
-_eclasses_=findlib	3d3de4bef686774baeeabfa2b916631c
+_eclasses_=findlib	197b318e28cee28e11c2b474328b50dd
 _md5_=1a1d0c89f9f20c80eeb2e2cdd9a8e064

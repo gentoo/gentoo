@@ -12,5 +12,5 @@ RDEPEND=>=dev-ml/base-0.14.0:= >=dev-ml/ppx_here-0.14.0:= >=dev-ml/ppx_inline_te
 RESTRICT=test
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/ppx_expect/archive/v0.14.0.tar.gz -> ppx_expect-0.14.0.tar.gz
-_eclasses_=dune	3cafc471b3e2c22dfa1c289440929c5b
+_eclasses_=dune	2d138ae1c0f7d4624876ad486529731f
 _md5_=a3fd584763acc183bf1e311fbd65365b

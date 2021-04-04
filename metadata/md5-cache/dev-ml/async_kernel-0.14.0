@@ -11,5 +11,5 @@ LICENSE=MIT
 RDEPEND=dev-ml/core_kernel:= dev-ml/ppx_jane:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/async_kernel/archive/v0.14.0.tar.gz -> async_kernel-0.14.0.tar.gz
-_eclasses_=dune	3cafc471b3e2c22dfa1c289440929c5b
+_eclasses_=dune	2d138ae1c0f7d4624876ad486529731f
 _md5_=9eebc82e7622bb7dcd6d69ac9d6b17c7

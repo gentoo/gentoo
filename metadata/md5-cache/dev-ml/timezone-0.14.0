@@ -11,5 +11,5 @@ LICENSE=MIT
 RDEPEND=dev-ml/core_kernel:= dev-ml/ppx_jane:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/timezone/archive/v0.14.0.tar.gz -> timezone-0.14.0.tar.gz
-_eclasses_=dune	3cafc471b3e2c22dfa1c289440929c5b
+_eclasses_=dune	2d138ae1c0f7d4624876ad486529731f
 _md5_=57fdee2208259bf8f4c66f316bc12aa1

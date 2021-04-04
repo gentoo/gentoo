@@ -12,5 +12,5 @@ RDEPEND=dev-ml/cudf:= sci-mathematics/glpk:= >=dev-lang/ocaml-4:=[ocamlopt?]
 RESTRICT=!test? ( test )
 SLOT=0/1.1.11
 SRC_URI=https://github.com/AltGr/ocaml-mccs/archive/1.1+11.tar.gz -> mccs-1.1.11.tar.gz
-_eclasses_=dune	3cafc471b3e2c22dfa1c289440929c5b
+_eclasses_=dune	2d138ae1c0f7d4624876ad486529731f
 _md5_=1e0afbbb3bfe46af104a4070faf72297

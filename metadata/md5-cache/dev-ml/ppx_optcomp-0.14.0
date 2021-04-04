@@ -11,5 +11,5 @@ LICENSE=Apache-2.0
 RDEPEND=>=dev-ml/base-0.14.0:= dev-ml/findlib:= >=dev-ml/stdio-0.14.0:= >=dev-ml/ppxlib-0.18.0:= >=dev-ml/ocaml-compiler-libs-0.11.0:= >=dev-ml/ocaml-migrate-parsetree-2.0.0:= dev-ml/cinaps:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/ppx_optcomp/archive/v0.14.0.tar.gz -> ppx_optcomp-0.14.0.tar.gz
-_eclasses_=dune	3cafc471b3e2c22dfa1c289440929c5b
+_eclasses_=dune	2d138ae1c0f7d4624876ad486529731f
 _md5_=e52b529b2569ef93e105e4519651b994

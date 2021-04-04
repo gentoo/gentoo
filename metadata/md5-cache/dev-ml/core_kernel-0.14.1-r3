@@ -12,5 +12,5 @@ RDEPEND=dev-lang/ocaml:= dev-ml/base:= dev-ml/base_bigstring:= dev-ml/base_quick
 RESTRICT=test
 SLOT=0/0.14.1
 SRC_URI=https://github.com/janestreet/core_kernel/archive/v0.14.1.tar.gz -> core_kernel-0.14.1.tar.gz
-_eclasses_=dune	3cafc471b3e2c22dfa1c289440929c5b
+_eclasses_=dune	2d138ae1c0f7d4624876ad486529731f
 _md5_=4638604d54f6190e569e1f7d2bf3bc23

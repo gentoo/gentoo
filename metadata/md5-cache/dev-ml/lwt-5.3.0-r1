@@ -11,5 +11,5 @@ LICENSE=LGPL-2.1-with-linking-exception
 RDEPEND=dev-ml/seq:= dev-ml/result:= dev-ml/mmap:= dev-ml/ocplib-endian:= >=dev-ml/ppxlib-0.18.0:= dev-ml/react:= dev-ml/dune-configurator:= dev-libs/libev !<www-servers/ocsigen-1.1 >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/5.3.0
 SRC_URI=https://github.com/ocsigen/lwt/archive/5.3.0.tar.gz -> lwt-5.3.0.tar.gz
-_eclasses_=dune	3cafc471b3e2c22dfa1c289440929c5b
+_eclasses_=dune	2d138ae1c0f7d4624876ad486529731f
 _md5_=ffd2eb61f120553d5b477a671eca0f5d

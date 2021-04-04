@@ -11,5 +11,5 @@ LICENSE=MIT
 RDEPEND=dev-ml/base:= dev-ml/jane-street-headers:= dev-ml/jst-config:= dev-ml/ppx_base:= dev-ml/ppx_optcomp:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/time_now/archive/v0.14.0.tar.gz -> time_now-0.14.0.tar.gz
-_eclasses_=dune	3cafc471b3e2c22dfa1c289440929c5b
+_eclasses_=dune	2d138ae1c0f7d4624876ad486529731f
 _md5_=6780d7d8a0d3e403af5af3c845f0872e

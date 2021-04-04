@@ -11,5 +11,5 @@ LICENSE=Apache-2.0
 RDEPEND=dev-ml/parsexp:= dev-ml/base:= dev-ml/sexplib0:= dev-ml/num:= >=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/sexplib/archive/v0.14.0.tar.gz -> sexplib-0.14.0.tar.gz
-_eclasses_=dune	3cafc471b3e2c22dfa1c289440929c5b
+_eclasses_=dune	2d138ae1c0f7d4624876ad486529731f
 _md5_=f39d6232fb3dba5ce9fd8d3261bdc6a9

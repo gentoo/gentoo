@@ -3,6 +3,7 @@ DEPEND=>=dev-lang/ocaml-4.05:=[ocamlopt=] !mpir? ( dev-libs/gmp:0= ) mpir? ( sci
 DESCRIPTION=Arithmetic and logic operations over arbitrary-precision integers
 EAPI=7
 HOMEPAGE=https://github.com/ocaml/Zarith
+INHERIT=findlib toolchain-funcs
 IUSE=doc mpir +ocamlopt
 KEYWORDS=amd64 ~arm ~arm64 ppc x86
 LICENSE=LGPL-2.1-with-linking-exception
@@ -10,5 +11,5 @@ RDEPEND=>=dev-lang/ocaml-4.05:=[ocamlopt=] !mpir? ( dev-libs/gmp:0= ) mpir? ( sc
 RESTRICT=!ocamlopt? ( test )
 SLOT=0/1.11
 SRC_URI=https://github.com/ocaml/Zarith/archive/release-1.11.tar.gz -> zarith-1.11.tar.gz
-_eclasses_=findlib	3d3de4bef686774baeeabfa2b916631c	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=findlib	197b318e28cee28e11c2b474328b50dd	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
 _md5_=6655366fb5950ec24ab1af21a7194873

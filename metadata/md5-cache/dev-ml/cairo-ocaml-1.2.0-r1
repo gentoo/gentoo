@@ -11,5 +11,5 @@ LICENSE=LGPL-2.1
 RDEPEND=dev-lang/ocaml:= x11-libs/cairo gtk? ( dev-ml/lablgtk:2= ) pango? ( x11-libs/pango )
 SLOT=0/1.2.0
 SRC_URI=https://cgit.freedesktop.org/cairo-ocaml/snapshot/cairo-ocaml-1.2.0.tar.bz2
-_eclasses_=findlib	3d3de4bef686774baeeabfa2b916631c	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba
+_eclasses_=findlib	197b318e28cee28e11c2b474328b50dd	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba
 _md5_=ec999f68294fcd1f84c8923368840afc

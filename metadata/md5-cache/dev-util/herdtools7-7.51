@@ -10,5 +10,5 @@ LICENSE=CeCILL-B
 RDEPEND=>=dev-lang/ocaml-4.02.0 >=dev-lang/ocaml-4:=
 SLOT=0
 SRC_URI=https://github.com/herd/herdtools7/archive/7.51.tar.gz -> herdtools7-7.51.tar.gz
-_eclasses_=opam	b961a62d9389bc7b60bcadb0c851459b
+_eclasses_=opam	bb6e97cce1eab4343c4db2c51acf1349
 _md5_=974f9fc0521c1807ea539d583457c728

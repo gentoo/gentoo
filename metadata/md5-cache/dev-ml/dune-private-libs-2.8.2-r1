@@ -12,5 +12,5 @@ RDEPEND=dev-ml/csexp:=[ocamlopt=] dev-ml/findlib:=[ocamlopt=] >=dev-lang/ocaml-4
 RESTRICT=!test? ( test )
 SLOT=0/2.8.2
 SRC_URI=https://github.com/ocaml/dune/archive/2.8.2.tar.gz -> dune-2.8.2.tar.gz
-_eclasses_=dune	3cafc471b3e2c22dfa1c289440929c5b
+_eclasses_=dune	2d138ae1c0f7d4624876ad486529731f
 _md5_=ab53b8f2ee2fff859aa237b91f027217

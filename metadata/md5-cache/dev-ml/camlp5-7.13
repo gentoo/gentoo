@@ -3,11 +3,12 @@ DEPEND=>=dev-lang/ocaml-3.10:=[ocamlopt?] >=dev-ml/findlib-1.0.4-r1
 DESCRIPTION=A preprocessor-pretty-printer of ocaml
 EAPI=7
 HOMEPAGE=https://camlp5.github.io/
+INHERIT=findlib vcs-clean
 IUSE=doc +ocamlopt
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
 LICENSE=BSD
 RDEPEND=>=dev-lang/ocaml-3.10:=[ocamlopt?]
 SLOT=0/7.13
 SRC_URI=https://github.com/camlp5/camlp5/archive/rel713.tar.gz -> camlp5-7.13.tar.gz
-_eclasses_=findlib	3d3de4bef686774baeeabfa2b916631c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_eclasses_=findlib	197b318e28cee28e11c2b474328b50dd	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
 _md5_=28ab10a8b30abc4108982ece5dfd8b0b

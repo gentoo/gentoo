@@ -12,5 +12,5 @@ RDEPEND=dev-ml/base:= dev-ml/core_kernel:= dev-ml/jst-config:= dev-ml/ppx_jane:=
 RESTRICT=test
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/core/archive/v0.14.0.tar.gz -> core-0.14.0.tar.gz
-_eclasses_=dune	3cafc471b3e2c22dfa1c289440929c5b
+_eclasses_=dune	2d138ae1c0f7d4624876ad486529731f
 _md5_=2e0ab8acde9a464b624508e79902d39a

@@ -11,5 +11,5 @@ LICENSE=ISC
 RDEPEND=>=dev-lang/ocaml-4:=[ocamlopt?]
 SLOT=0
 SRC_URI=https://github.com/mirage/bigarray-compat/archive/v1.0.0.tar.gz -> bigarray-compat-1.0.0.tar.gz
-_eclasses_=dune	3cafc471b3e2c22dfa1c289440929c5b
+_eclasses_=dune	2d138ae1c0f7d4624876ad486529731f
 _md5_=ce6d5d9dccb2a19dc4320443beca2ee1

@@ -12,5 +12,5 @@ RDEPEND=dev-ml/cinaps:= dev-ml/ppx_derivers:= >=dev-lang/ocaml-4:=[ocamlopt?]
 RESTRICT=!test? ( test )
 SLOT=0/1.8.0
 SRC_URI=https://github.com/let-def/ocaml-migrate-parsetree/archive/v1.8.0.tar.gz -> ocaml-migrate-parsetree-1.8.0.tar.gz
-_eclasses_=dune	3cafc471b3e2c22dfa1c289440929c5b
+_eclasses_=dune	2d138ae1c0f7d4624876ad486529731f
 _md5_=670e238ce3e197999804086ecd9e5c8f

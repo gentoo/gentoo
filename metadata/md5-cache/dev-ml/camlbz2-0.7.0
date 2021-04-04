@@ -11,5 +11,5 @@ LICENSE=LGPL-2.1
 RDEPEND=app-arch/bzip2 >=dev-lang/ocaml-3.12:=[ocamlopt]
 SLOT=0/0.7.0
 SRC_URI=https://gitlab.com/irill/camlbz2/-/archive/0.7.0/camlbz2-0.7.0.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	findlib	3d3de4bef686774baeeabfa2b916631c
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	findlib	197b318e28cee28e11c2b474328b50dd
 _md5_=61ee3e5a6e052b646a3e2f46321e9a37

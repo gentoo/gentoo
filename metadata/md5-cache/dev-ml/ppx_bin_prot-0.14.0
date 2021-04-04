@@ -12,5 +12,5 @@ RDEPEND=>=dev-ml/base-0.14.0:= dev-ml/findlib:= >=dev-ml/bin_prot-0.14.0:= >=dev
 RESTRICT=!test? ( test )
 SLOT=0/0.14.0
 SRC_URI=https://github.com/janestreet/ppx_bin_prot/archive/v0.14.0.tar.gz -> ppx_bin_prot-0.14.0.tar.gz
-_eclasses_=dune	3cafc471b3e2c22dfa1c289440929c5b
+_eclasses_=dune	2d138ae1c0f7d4624876ad486529731f
 _md5_=05312be2fe0b6fd4684064fdbf0bc663

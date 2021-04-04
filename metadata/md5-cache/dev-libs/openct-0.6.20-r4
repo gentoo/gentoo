@@ -12,4 +12,4 @@ RDEPEND=pcsc-lite? ( >=sys-apps/pcsc-lite-1.7.2-r1:= ) usb? ( virtual/libusb:0 )
 SLOT=0
 SRC_URI=mirror://sourceforge/opensc/openct/openct-0.6.20.tar.gz
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	udev	452708c3f55cf6e918b045adb949a9e6	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	user	26d8ce6329c43cbac965617f1c0627e2
-_md5_=fc7fcdb7b79ce6e898910a1042ca7258
+_md5_=f2edf08cc52636eb03322a48fe2501e4
