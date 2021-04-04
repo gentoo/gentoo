@@ -1,6 +1,6 @@
 === modified file 'PAMmodule.c'
---- PAMmodule.c	2007-05-28 17:50:59 +0000
-+++ PAMmodule.c	2007-05-28 18:13:33 +0000
+--- a/PAMmodule.c
++++ b/PAMmodule.c
 @@ -9,8 +9,9 @@
  
 +#include <Python.h>
