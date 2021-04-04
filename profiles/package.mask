@@ -39,6 +39,7 @@
 ~app-text/dvipsk-2021.1_p20210325
 ~app-text/ps2pkm-1.8_p20210325
 ~app-text/ttf2pk2-2.0_p20210325
+~app-text/texlive-2021
 ~app-text/texlive-core-2021
 ~dev-libs/kpathsea-6.3.3_p20210325
 ~dev-libs/ptexenc-1.3.9_p20210325
