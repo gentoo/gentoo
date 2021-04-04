@@ -17,7 +17,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="sys-apps/less"
-RDEPEND="${DEPEND}"
+RDEPEND="
+	${DEPEND}
+	!games-misc/bsd-games:0/3
+"
 
 src_unpack() {
 	cp "${DISTDIR}"/wump.{info,c,6} "${S}/" || die
