@@ -1,0 +1,41 @@
+From f6a7845b8f3cd3188053ba58f9fe7053558aec86 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sat, 27 Mar 2021 13:32:55 +0100
+Subject: [PATCH] [MetadataMover] Update filename terms when moving/renaming
+ file
+
+After the removal of BasicIndexingJob::index() (bd1041ea2826e295 "Make
+renames a DB only operation") the filename terms where left empty.
+
+BUG: 433116
+---
+ src/file/metadatamover.cpp                | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/file/metadatamover.cpp b/src/file/metadatamover.cpp
+index 70ca9822..2bff5a2e 100644
+--- a/src/file/metadatamover.cpp
++++ b/src/file/metadatamover.cpp
+@@ -8,6 +8,7 @@
+ 
+ #include "metadatamover.h"
+ #include "database.h"
++#include "termgenerator.h"
+ #include "transaction.h"
+ #include "baloodebug.h"
+ 
+@@ -99,6 +100,11 @@ void MetadataMover::updateMetadata(Transaction* tr, const QString& from, const Q
+     }
+ 
+     Document doc;
++
++    const QByteArray fileName = toPath.mid(lastSlash + 1);
++    TermGenerator tg(doc);
++    tg.indexFileNameText(QFile::decodeName(fileName));
++
+     doc.setId(id);
+     doc.setParentId(parentId);
+     doc.setUrl(toPath);
+-- 
+GitLab
+
