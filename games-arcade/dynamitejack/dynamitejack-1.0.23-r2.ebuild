@@ -1,22 +1,24 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # TODO: icon
 
-EAPI=5
-inherit eutils games
+EAPI=7
+
+inherit desktop wrapper
 
 DESCRIPTION="A stealth game with bombs in glorious 2D"
 HOMEPAGE="http://www.galcon.com/dynamitejack/"
 SRC_URI="${P}.tgz"
+S="${WORKDIR}"/${PN}
 
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE=""
+
 RESTRICT="bindist fetch splitdebug"
 
-MYGAMEDIR=${GAMES_PREFIX_OPT}/${PN}
+MYGAMEDIR=/opt/${PN}
 QA_PREBUILT="${MYGAMEDIR#/}/bin/*"
 
 # linked to pulseaudio
@@ -40,8 +42,6 @@ RDEPEND="
 	>=x11-libs/libXi-1.7.2[abi_x86_32(-)]
 	>=x11-libs/libXtst-1.2.1-r1[abi_x86_32(-)]"
 
-S=${WORKDIR}/${PN}
-
 pkg_nofetch() {
 	einfo "Please buy & download ${SRC_URI} from:"
 	einfo "  ${HOMEPAGE}"
@@ -59,9 +59,8 @@ src_install() {
 	insinto "${MYGAMEDIR}"
 	doins -r *
 
-	games_make_wrapper ${PN} "./main" "${MYGAMEDIR}/bin"
+	make_wrapper ${PN} "./main" "${MYGAMEDIR}/bin"
 	make_desktop_entry ${PN}
 
 	fperms +x "${MYGAMEDIR}"/bin/main
-	prepgamesdirs
 }
