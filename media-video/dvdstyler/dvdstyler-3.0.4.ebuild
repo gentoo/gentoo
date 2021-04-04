@@ -1,23 +1,24 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 MY_P=${P/dvds/DVDS}
 WX_GTK_VER=3.0
 
-inherit wxwidgets eutils
+inherit wxwidgets
 
 DESCRIPTION="A cross-platform free DVD authoring application"
-HOMEPAGE="http://www.dvdstyler.org/"
+HOMEPAGE="https://www.dvdstyler.org/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug +udev"
 
-COMMON_DEPEND="
+DEPEND="
 	app-cdr/cdrtools
 	>=app-cdr/dvd+rw-tools-7.1
 	media-libs/libexif:=
@@ -28,26 +29,22 @@ COMMON_DEPEND="
 	virtual/jpeg:0
 	x11-libs/wxGTK:${WX_GTK_VER}=[gstreamer,X]
 	sys-apps/dbus
-	udev? ( >=virtual/libudev-215:= )
-"
-RDEPEND="${COMMON_DEPEND}
+	udev? ( >=virtual/libudev-215:= )"
+RDEPEND="${DEPEND}
 	>=app-cdr/dvdisaster-0.72.4
-	media-video/mjpegtools
-"
-DEPEND="${COMMON_DEPEND}
+	media-video/mjpegtools"
+BDEPEND="
 	app-arch/zip
 	app-text/xmlto
 	sys-devel/gettext
 	virtual/yacc
-	virtual/pkgconfig
-"
+	virtual/pkgconfig"
 
-S="${WORKDIR}/${MY_P}"
+PATCHES=( "${FILESDIR}"/ffmpeg4.patch )
 
 src_prepare() {
-	epatch "${FILESDIR}/ffmpeg4.patch"
+	default
 
-	need-wxwidgets unicode
 	# disable obsolete GNOME 2.x libraries wrt #508854
 	sed -i -e '/PKG_CONFIG/s:libgnomeui-2.0:dIsAbLeAuToMaGiC&:' configure || die
 	# rmdir: failed to remove `tempfoobar': Directory not empty
@@ -61,13 +58,13 @@ src_prepare() {
 }
 
 src_configure() {
+	setup-wxwidgets unicode
 	econf \
-		--docdir=/usr/share/doc/${PF} \
 		$(use_enable debug) \
-		--with-wx-config=${WX_CONFIG}
+		--with-wx-config="${WX_CONFIG}"
 }
 
 src_install() {
 	default
-	rm -f "${ED}"/usr/share/doc/${PF}/{COPYING*,INSTALL*}
+	rm "${ED}"/usr/share/doc/${PF}/{COPYING*,INSTALL*} || die
 }
