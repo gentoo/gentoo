@@ -1,0 +1,25 @@
+--- a/Makefile
++++ b/Makefile
+@@ -15,11 +15,10 @@
+ 
+ SOURCES=gui.cpp ihex.cpp usb.cpp
+ 
+-CXXFLAGS=-O2 -std=c++11
++CXXFLAGS+=-std=c++11
+ 
+ tek.lin: $(patsubst %.cpp,%-lin.o,$(SOURCES))
+-	$(LIN_CXX) $(CXXFLAGS) $^ `$(LIN_WXCONFIG) --libs` -lusb-1.0 -o $@
+-	$(LIN_STRIP) -s $@
++	$(CXX) $(LDFLAGS) $^ `$(WX_CONFIG) --libs` -lusb-1.0 -o $@ $(LIBS)
+ 
+ tek.mac: $(patsubst %.cpp,%-mac.o,$(SOURCES))
+ 	$(OSX_CXX) $(CXXFLAGS) $^ `$(OSX_WXCONFIG) --libs --static` -lusb-1.0 -o $@ -v
+@@ -30,7 +29,7 @@
+ 	$(WIN_STRIP) -s $@
+ 
+ %-lin.o: %.cpp
+-	$(LIN_CXX) -c $(CXXFLAGS) `$(LIN_WXCONFIG) --cxxflags` $(filter %.cpp,$^) -o $@
++	$(CXX) -c $(CXXFLAGS) $(CPPFLAGS) `$(WX_CONFIG) --cxxflags` $(filter %.cpp,$^) -o $@
+ 
+ %-win.o: %.cpp
+ 	$(WIN_CXX) -c $(CXXFLAGS) `$(WIN_WXCONFIG) --cxxflags` $(filter %.cpp,$^) -o $@
