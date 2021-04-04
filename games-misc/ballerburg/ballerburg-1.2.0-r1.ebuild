@@ -3,7 +3,7 @@
 
 EAPI=7
 
-CMAKE_MAKEFILE_GENERATOR=emake
+CMAKE_MAKEFILE_GENERATOR="emake"
 inherit cmake
 
 DESCRIPTION="Linux port of the classical Atari ST game Ballerburg"

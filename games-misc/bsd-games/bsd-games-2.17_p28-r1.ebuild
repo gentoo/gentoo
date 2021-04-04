@@ -5,20 +5,23 @@ EAPI=7
 
 inherit toolchain-funcs
 
-DESCRIPTION="collection of games from NetBSD"
+DEB_PATCH_VER=28
+DESCRIPTION="Collection of games from NetBSD"
 HOMEPAGE="https://www.polyomino.org.uk/computer/software/bsd-games/"
-SRC_URI="https://github.com/msharov/bsd-games/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-verbose-build.patch.gz"
+#SRC_URI="https://www.polyomino.org.uk/computer/software/bsd-games/${PN}-$(ver_cut 1-2).tar.gz"
+SRC_URI="http://deb.debian.org/debian/pool/main/b/bsdgames/bsdgames_2.17.orig.tar.gz"
+SRC_URI+=" mirror://debian/pool/main/b/bsdgames/bsdgames_$(ver_cut 1-2)-${DEB_PATCH_VER}.debian.tar.xz"
+S="${WORKDIR}/${PN}-$(ver_cut 1-2)"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~alpha ~amd64 ~x86"
 
 DEPEND="
 	sys-apps/miscfiles
-	sys-libs/ncurses:=
-	!games-misc/wtf
+	sys-libs/ncurses:0
 	!app-misc/banner
+	!games-misc/wtf
 	!games-puzzle/hangman
 "
 RDEPEND="
@@ -31,50 +34,59 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-3.1-no-install-manpages-automatically.patch
-)
-
 # Set GAMES_TO_BUILD variable to whatever you want
-GAMES_TO_BUILD=${GAMES_TO_BUILD:=adventure atc battlestar caesar cribbage
-dab drop4 gofish gomoku hangman klondike robots sail snake spirhunt
-worm wump}
+GAMES_TO_BUILD=${GAMES_TO_BUILD:=adventure arithmetic atc
+backgammon banner battlestar bcd boggle caesar canfield countmail cribbage
+dab dm fish gomoku hack hangman hunt mille monop morse
+number phantasia pig pom primes ppt quiz rain random robots sail snake
+tetris trek wargames worm worms wtf}
 
 src_prepare() {
-	eapply "${WORKDIR}"/${PN}-3.1-verbose-build.patch
+	local debian_patch_dir="${WORKDIR}"/debian/patches
+	for patch in $(<"${debian_patch_dir}"/series) ; do
+		eapply "${debian_patch_dir}"/${patch}
+	done
+
+	# Additional patches on top of Debian patchset
+	eapply "${FILESDIR}"/${PN}-2.17-64bitutmp.patch
+	eapply "${FILESDIR}"/${PN}-2.17-bg.patch
+	eapply "${FILESDIR}"/${PN}-2.17-gcc4.patch
+	eapply "${FILESDIR}"/${PN}-2.17-rename-getdate-clash.patch
 
 	default
 
-	# Use completely our own CFLAGS/LDFLAGS, no stripping and so on
+	# Use pkg-config to query Libs: from ncurses.pc (for eg. -ltinfo) wrt #459652
 	sed -i \
-		-e 's/+= -std=c11 @pkgcflags@ ${CFLAGS}/= -std=c11 @pkgcflags@ ${CFLAGS}/' \
-		-e 's/+= @pkgldflags@ ${LDFLAGS}/= @pkgldflags@ ${LDFLAGS}/' \
-		-e s'/${INSTALL} -m 755 -s/${INSTALL} -m 755/' \
-		-e '/man[6]dir/d' \
-		Config.mk.in || die
+		-e "/ncurses_lib/s:-lncurses:'$($(tc-getPKG_CONFIG) --libs-only-l ncurses)':" \
+		configure || die
 
-	# Yes, this stinks.
-	# Right now, the custom configure script calls pkg-config manually
-	# and seds it a bunch, and this is easier.
-	if has_version sys-libs/ncurses[unicode] ; then
-		# Force looking for both ncurses and ncursesw
-		sed -i -e 's/pkgs="ncurses"/pkgs="ncursesw"/' configure || die
-	fi
+	sed -i \
+		-e "s:/usr/games:/usr/bin:" \
+		wargames/wargames || die
 
+	sed -i \
+		-e '/^CC :=/d' \
+		-e '/^CXX :=/d' \
+		-e '/^CFLAGS/s/OPTIMIZE/CFLAGS/' \
+		-e '/^CXXFLAGS/s/OPTIMIZE/CXXFLAGS/' \
+		-e '/^LDFLAGS/s/LDFLAGS := /LDFLAGS := \$(LDFLAGS) /' \
+		Makeconfig.in || die
+
+	# Used by config.params
+	export GAMES_BINDIR=/usr/bin
+	export GAMES_DATADIR=/usr/share
+	export GAMES_STATEDIR=/var/games
 	cp "${FILESDIR}"/config.params-gentoo config.params || die
+
 	echo bsd_games_cfg_usrlibdir=\"$(get_libdir)\" >> ./config.params || die
 	echo bsd_games_cfg_build_dirs=\"${GAMES_TO_BUILD}\" >> ./config.params || die
 	echo bsd_games_cfg_docdir=\"/usr/share/doc/${PF}\" >> ./config.params || die
 }
 
-src_configure() {
-	tc-export AR CC RANLIB
-
-	econf
-}
-
 src_compile() {
-	emake CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
+	tc-export CC CXX
+
+	emake
 }
 
 src_test() {
@@ -83,8 +95,12 @@ src_test() {
 }
 
 src_install() {
-	dodir /var/games
+	# TODO: ${PN} or no?
+	dodir /var/games /usr/share/man/man{1,6}
 	emake -j1 DESTDIR="${D}" install
+
+	dodoc AUTHORS BUGS ChangeLog ChangeLog.0 \
+		README PACKAGING SECURITY THANKS TODO YEAR2000
 
 	_build_game() {
 		has ${1} ${GAMES_TO_BUILD}
@@ -106,6 +122,9 @@ src_install() {
 	_build_game snake && fperms g+s /usr/bin/snake
 	_build_game tetris && fperms g+s /usr/bin/tetris-bsd
 
+	elog "Renaming monop to monop-bsd to avoid collision with dev-lang/mono"
+	mv "${ED}"/usr/bin/monop "${ED}"/usr/bin/monop-bsd || die
+
 	# state files
 	_build_game atc && _do_statefile atc_score
 	_build_game battlestar && _do_statefile battlestar.log
@@ -113,33 +132,16 @@ src_install() {
 	_build_game cribbage && _do_statefile criblog
 	_build_game hack && keepdir /var/games/hack
 	_build_game robots && _do_statefile robots_roll
-	_build_game sail && _do_statefile saillog
+	_build_game sail && _do_statefile sail/saillog
 	_build_game snake && _do_statefile snake.log && _do_statefile snakerawscores
 	_build_game tetris && _do_statefile tetris-bsd.scores
 
 	# extra docs
-	_build_game atc && docinto atc
+	_build_game atc && { docinto atc ; dodoc atc/BUGS; }
 	_build_game boggle && { docinto boggle ; dodoc boggle/README; }
 	_build_game hack && { docinto hack ; dodoc hack/{OWNER,Original_READ_ME,READ_ME,help}; }
 	_build_game hunt && { docinto hunt ; dodoc hunt/README; }
 	_build_game phantasia && { docinto phantasia ; dodoc phantasia/{OWNER,README}; }
-
-	# Install the man pages manually to make life easier (circumventing compression)
-	local game
-	for game in ${GAMES_TO_BUILD[@]} ; do
-		if [[ -e ${game}/${game}.1 ]] ; then
-			doman ${game}/${game}.1
-		else
-			doman ${game}/${game}.6
-		fi
-	done
-
-	# Since factor is usually not installed, and primes.6 is a symlink to
-	# factor.6, make sure that primes.6 is ok ...
-	if _build_game primes && [[ ! $(_build_game factor) ]] ; then
-		rm -f "${ED}"/usr/share/man/man6/{factor,primes}.6 || die
-		newman factor/factor.6 primes.6
-	fi
 
 	# All of this needs to be owned by the gamestat group
 	fowners -R :gamestat /var/games/
