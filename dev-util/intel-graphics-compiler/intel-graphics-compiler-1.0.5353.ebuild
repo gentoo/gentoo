@@ -54,6 +54,8 @@ multilib_src_configure() {
 	local llvm_slot=$(find_best_llvm_slot)
 	einfo "Selecting LLVM slot ${llvm_slot}: $(best_version -d sys-devel/llvm:${llvm_slot})"
 	local llvm_prefix=$(get_llvm_prefix ${llvm_slot})
+	local llvm_ver=$(best_version -d sys-devel/llvm:${llvm_slot})
+	llvm_ver=${llvm_ver##*-}
 
 	# Since late March 2020 cmake.eclass does not set -DNDEBUG any more, and the way
 	# IGC uses this definition causes problems for some users (see Bug #718824).
@@ -64,7 +66,7 @@ multilib_src_configure() {
 		-DCCLANG_SONAME_VERSION=${llvm_slot}
 		-DCMAKE_LIBRARY_PATH="${llvm_prefix}"/$(get_libdir)
 		-DIGC_OPTION__FORCE_SYSTEM_LLVM=ON
-		-DIGC_PREFERRED_LLVM_VERSION=${llvm_slot}
+		-DIGC_PREFERRED_LLVM_VERSION=${llvm_ver}
 		-DIGC_BUILD__VC_ENABLED=no
 	)
 	cmake_src_configure
