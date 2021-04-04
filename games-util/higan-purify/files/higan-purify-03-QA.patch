@@ -1,5 +1,5 @@
---- purify_v03-source/purify/Makefile
-+++ purify_v03-source/purify/Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -2,8 +2,8 @@
  include phoenix/Makefile
  
@@ -20,8 +20,8 @@
  else ifeq ($(platform),win)
  	windres phoenix/windows/phoenix.rc obj/phoenix-resource.o
  	$(cpp) -shared -o phoenix.dll obj/phoenix.o $(phoenixlink)
---- purify_v03-source/purify/phoenix/Makefile
-+++ purify_v03-source/purify/phoenix/Makefile
+--- a/phoenix/Makefile
++++ b/phoenix/Makefile
 @@ -4,13 +4,13 @@
    endif
  
