@@ -49,7 +49,6 @@ src_compile() {
 
 	# First `make` is also a config, so set all the path vars here
 	emake -j1 \
-		DIST="${D}" \
 		CC="$(tc-getCC)" \
 		LIBDIR="/usr/$(get_libdir)/bcc" \
 		INCLDIR="/usr/$(get_libdir)/bcc" \
@@ -63,7 +62,6 @@ src_compile() {
 
 	cd bootblocks || die
 	emake \
-		DIST="${D}" \
 		HOSTCC="$(tc-getCC)"
 
 }
