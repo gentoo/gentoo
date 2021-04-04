@@ -851,7 +851,7 @@ RDEPEND="acct-user/coredns
 	acct-group/coredns"
 
 FILECAPS=(
-	-m 755 'cap_net_bind_service=ei' usr/bin/${PN}
+	-m 755 'cap_net_bind_service=+ep' usr/bin/${PN}
 )
 
 src_compile() {
