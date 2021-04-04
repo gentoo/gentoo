@@ -1,7 +1,7 @@
 https://bugs.gentoo.org/602446
 
---- frobtads-1.2.4/configure.ac
-+++ frobtads-1.2.4/configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -88,6 +88,7 @@
  # doesn't hust to try pdcurses as a last resort.)
  #
