@@ -4085,7 +4085,6 @@ dev-haskell/ekg-json 0.1.0.6-r1: JSON encoding of ekg metrics
 dev-haskell/email-validate 2.3.2.13: Email address validation
 dev-haskell/emojis 0.1: Conversion between emoji characters and their names.
 dev-haskell/enclosed-exceptions 1.0.3: Catching all exceptions from within an enclosed computation
-dev-haskell/encoding 0.8.5: A library for various character encodings
 dev-haskell/entropy 0.4.1.6: A platform independent entropy source
 dev-haskell/enumerator 0.4.20: Reliable, high-performance processing with left-fold enumerators
 dev-haskell/equivalence 0.3.5: Maintaining an equivalence relation implemented as union-find using STT
@@ -4122,7 +4121,6 @@ dev-haskell/free 5.1.3: Monads for free
 dev-haskell/fsnotify 0.3.0.1: Cross platform library for file change notification
 dev-haskell/generic-deriving 1.13.1: Generic programming library for generalised deriving
 dev-haskell/generics-sop 0.5.1.0: Generic Programming using True Sums of Products
-dev-haskell/geniplate 0.6.0.5: Use Template Haskell to generate Uniplate-like functions
 dev-haskell/geniplate-mirror 0.7.7: Use Template Haskell to generate Uniplate-like functions
 dev-haskell/genvalidity 0.10.0.2: Testing utilities for the validity library
 dev-haskell/genvalidity-hspec 0.7.0.4: Standard spec's for GenValidity instances
@@ -4355,7 +4353,6 @@ dev-haskell/network-conduit 1.1.0: Stream socket data using conduits. (deprecate
 dev-haskell/network-data 0.5.3: Library for network data structures and their serialization
 dev-haskell/network-info 0.2.0.10: Access the local computer's basic network configuration
 dev-haskell/network-multicast 0.3.2: Simple multicast library
-dev-haskell/network-protocol-xmpp 0.4.9: Client library for the XMPP protocol
 dev-haskell/network-uri 2.5.0.0 2.6.3.0: URI manipulation
 dev-haskell/newtype 0.2.2.0: A typeclass and set of functions for working with newtypes
 dev-haskell/newtype-generics 0.5.4: A typeclass for working with newtypes, with generics support
@@ -4552,7 +4549,6 @@ dev-haskell/test-framework-hunit 0.3.0.2-r1: HUnit support for the test-framewor
 dev-haskell/test-framework-leancheck 0.0.1: LeanCheck support for test-framework
 dev-haskell/test-framework-quickcheck2 0.3.0.5-r1: QuickCheck2 support for the test-framework package
 dev-haskell/test-framework-th 0.2.4: Automagically generate the HUnit and Quickcheck using Template Haskell
-dev-haskell/test-framework-th-prime 0.0.9 0.0.10: Template Haskell for test framework
 dev-haskell/testing-feat 1.1.0.0: Functional Enumeration of Algebraic Types
 dev-haskell/testing-type-modifiers 0.1.0.1: Data type modifiers for property based testing
 dev-haskell/texmath 0.12.0.3: Conversion between formats used to represent mathematics
@@ -12938,7 +12934,6 @@ media-gfx/gozer 0.7-r3: tool for rendering arbitrary text as graphics, using ttf
 media-gfx/gphoto2 2.5.20 2.5.26: Free, redistributable digital camera software application
 media-gfx/gphotofs 0.5-r1: FUSE file system for interfacing with digital cameras using gphoto2
 media-gfx/gpicview 0.2.5 0.2.5-r1 0.2.5-r2: A Simple and Fast Image Viewer for X
-media-gfx/gqview 2.1.5-r2: A GTK-based image browser
 media-gfx/graphicsmagick 1.3.36 9999: Collection of tools and libraries for many image formats
 media-gfx/graphite2 1.3.14: Library providing rendering capabilities for complex non-Roman writing systems
 media-gfx/graphviz 2.44.1-r1: Open Source Graph Visualization Software

@@ -1456,7 +1456,6 @@ dev-haskell/cpu:executable - build 'cpuid' tool
 dev-haskell/criterion:embed-data-files - Embed the data files in the binary for a relocatable executable
 dev-haskell/crypto-api:all-cpolys - Build all the CMAC polynomes up to 10000 bits instead of just the usual ones
 dev-haskell/cryptonite:integer-gmp - Whether or not to use GMP for some functions
-dev-haskell/encoding:systemencoding - Provide the getSystemEncoding action to query the locale.
 dev-haskell/entropy:halvm - Build for the HaLVM.
 dev-haskell/filestore:maxcount - Make use of a recent (>= 2.3.0) Darcs feature which vastly improves the performance of 'latest'. You should disable this flag if you plan to use gitit with an older version of Darcs, or 'latest' will raise an error.
 dev-haskell/foundation:experimental - enable building experimental features, known as highly unstable or without good support cross-platform
