@@ -1,27 +1,26 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 WX_GTK_VER="3.0"
-inherit eutils autotools wxwidgets
+inherit autotools desktop wxwidgets
 
 MY_P="${PN}_v${PV}"
 DESCRIPTION="Open source clone of the four-player board game Blokus"
 HOMEPAGE="https://sourceforge.net/projects/blokish/"
 SRC_URI="mirror://sourceforge/blokish/${MY_P}.tgz"
+S="${WORKDIR}"/${PN}
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-DEPEND="x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]
+DEPEND="
+	x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]
 	virtual/glu
 	virtual/opengl"
-RDEPEND=${DEPEND}
-
-S=${WORKDIR}/${PN}
+RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gcc43.patch
