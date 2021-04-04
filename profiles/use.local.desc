@@ -1677,9 +1677,6 @@ dev-java/icedtea:smartcard - Build the PCSC driver against pcsc-lite
 dev-java/icedtea:system-lcms - Build against the system LCMS installation rather than the in-tree copy.
 dev-java/icedtea:zero - Enable Zero assembler port (usually for non-HotSpot architectures)
 dev-java/icedtea-bin:headless-awt - Don't install the X backend for AWT, needed by some GUIs (used to be X flag)
-dev-java/icedtea-web:javascript - Enable support for using proxy auto config (PAC) files.
-dev-java/icedtea-web:nsplugin - Enable the browser plugin (NPPlugin).
-dev-java/icedtea-web:tagsoup - Depend on dev-java/tagsoup which allows parsing malformed .jnlp files
 dev-java/jdbc-mysql:c3p0 - Enable c3p0 support
 dev-java/jdbc-mysql:log4j - Enable log4 support
 dev-java/jfreesvg:debug - Enable debugging during compilation.
@@ -3042,8 +3039,7 @@ games-emulation/hatari:capsimage - Use dev-libs/spsdeclib to read .IPF, .RAW, an
 games-emulation/hatari:microphone - Use media-libs/portaudio for Falcon microphone handling
 games-emulation/hatari:portmidi - Use media-libs/portmidi as an alternative MIDI backend
 games-emulation/hatari:sdl2 - Use libsdl2 instead of libsdl
-games-emulation/higan:icarus - Build icarus library manager
-games-emulation/higan:udev - Enable udev based input
+games-emulation/higan:gtk - Use GTK3 (Qt5 if disabled) user interface backend
 games-emulation/m64py:7z - Ensure support for .7z archives.
 games-emulation/m64py:rar - Ensure support for .rar archives.
 games-emulation/mednafen:debugger - Build with internal debugger

@@ -1016,7 +1016,7 @@ app-cdr/cuegen 1.2.0: CUEgen is a FLAC-compatible cuesheet generator for Linux
 app-cdr/cuetools 1.4.1: Utilities to manipulate and convert cue and toc files
 app-cdr/daa2iso 0.1.7e: Program for converting the DAA and GBI files to ISO
 app-cdr/disc-cover 1.5.6-r1: Creates CD-Covers via LaTeX by fetching cd-info from freedb.org or local file
-app-cdr/dolphin-plugins-mountiso 20.08.3 20.12.3: Dolphin plugin for ISO loopback device mounting
+app-cdr/dolphin-plugins-mountiso 20.08.3 20.12.3-r1: Dolphin plugin for ISO loopback device mounting
 app-cdr/dumpet 2.1_p20140601-r3: A tool to dump and debug bootable CD-like images
 app-cdr/dvd+rw-tools 7.1-r3 7.1-r4: A set of tools for DVD+RW/-RW drives
 app-cdr/dvdisaster 0.79.5: Tool for creating error correction data (ecc) for optical media (DVD, CD, BD)
@@ -4862,7 +4862,7 @@ dev-java/ical4j 1.0.5: a Java library for handling iCalendar data streams
 dev-java/icedtea 3.17.1 3.18.0: A harness to build OpenJDK using Free Software build tools and dependencies
 dev-java/icedtea-bin 3.16.0: A Gentoo-made binary build of the IcedTea JDK
 dev-java/icedtea-sound 1.0.1: Plugins for javax.sound
-dev-java/icedtea-web 1.6.1-r1 1.6.2 1.8.4-r1: FOSS Java browser plugin and Web Start implementation
+dev-java/icedtea-web 1.8.4-r1: FOSS Java browser plugin and Web Start implementation
 dev-java/icu4j 54.1.1 55.1 56.1: A set of Java libraries providing Unicode and Globalization support
 dev-java/ini4j 0.5.1 0.5.2: Simple Java API Windows style .ini file handling
 dev-java/invokebinder 1.6: Provide a friendly DSL for binding method handles
@@ -5726,7 +5726,7 @@ dev-libs/pcl 1.12-r1: Portable Coroutine Library
 dev-libs/pegtl 2.8.3-r1 3.2.0: Header-only library for creating parsers according to Parsing Expression Grammar
 dev-libs/pigpio 79: A library for the Raspberry which allows control of the GPIOs
 dev-libs/pkcs11-helper 1.25.1: PKCS#11 helper library
-dev-libs/plasma-wayland-protocols 1.1.1 1.2.0: Plasma Specific Protocols for Wayland
+dev-libs/plasma-wayland-protocols 1.1.1 1.2.0-r1: Plasma Specific Protocols for Wayland
 dev-libs/pmdk 1.9.2: Persistent Memory Development Kit
 dev-libs/poco 1.9.0-r2 1.10.1: C++ libraries for building network-based applications
 dev-libs/popt 1.16-r2 1.18: Parse Options - Command line parser
@@ -11413,7 +11413,7 @@ games-emulation/gngb 20060309-r1: Gameboy / Gameboy Color emulator
 games-emulation/gngeo 0.8-r2: A NeoGeo emulator
 games-emulation/gnuboy 1.0.3-r2: Gameboy emulator with multiple renderers
 games-emulation/hatari 2.2.1-r1: Atari ST emulator
-games-emulation/higan 106_p1-r1: A multi-system game emulator formerly known as bsnes
+games-emulation/higan 116_pre20210404: Multi-system emulator focused on accuracy, preservation, and configurability
 games-emulation/jrommanager 1.8_p27-r1: A Mame and Retrogaming Rom Manager, Java alternative to ClrMamePro
 games-emulation/libretro-bnes 0.0.1_pre20180723 9999: bNES libretro port
 games-emulation/libretro-dosbox 0.0.1_pre20180723 9999: DOSBox libretro port
@@ -12119,7 +12119,7 @@ kde-apps/calendarjanitor 20.12.2 20.12.3: Tool to scan calendar data for buggy i
 kde-apps/calendarsupport 20.12.2 20.12.3: Calendar support library
 kde-apps/cantor 20.08.3 20.12.3: Interface for doing mathematics and scientific computing
 kde-apps/cervisia 20.08.3 20.12.3: CVS frontend by KDE
-kde-apps/dolphin 20.08.3 20.12.3: Plasma filemanager focusing on usability
+kde-apps/dolphin 20.08.3 20.12.3-r1: Plasma filemanager focusing on usability
 kde-apps/dolphin-plugins-dropbox 20.08.3 20.12.3: Dolphin plugin for Dropbox service integration
 kde-apps/dolphin-plugins-git 20.08.3 20.12.3: Dolphin plugin for Git integration
 kde-apps/dolphin-plugins-mercurial 20.08.3 20.12.3: Dolphin plugin for Mercurial integration
@@ -12328,7 +12328,7 @@ kde-apps/umbrello 20.08.3 20.12.3: KDE UML Modeller
 kde-apps/yakuake 20.08.3 20.12.3: Quake-style terminal emulator based on konsole
 kde-apps/zeroconf-ioslave 20.08.3 20.12.3: DNSSD (DNS Service Discovery - part of Rendezvous) ioslave and kded module
 kde-frameworks/attica 5.77.0 5.80.0: Framework providing access to Open Collaboration Services
-kde-frameworks/baloo 5.77.0-r1 5.80.0: Framework for searching and managing metadata
+kde-frameworks/baloo 5.77.0-r1 5.80.0-r1: Framework for searching and managing metadata
 kde-frameworks/bluez-qt 5.77.0 5.80.0: Qt wrapper for Bluez 5 DBus API
 kde-frameworks/breeze-icons 5.77.0-r1 5.80.0: Breeze SVG icon theme
 kde-frameworks/breeze-icons-rcc 5.77.0-r1 5.80.0: Breeze SVG icon theme binary resource
@@ -12360,17 +12360,17 @@ kde-frameworks/kdoctools 5.77.0 5.80.0: Tools to generate documentation in vario
 kde-frameworks/kemoticons 5.77.0 5.80.0: Framework for converting text emoticons to graphical representations
 kde-frameworks/kf-env 5: Environment setting required for all KDE Frameworks apps to run
 kde-frameworks/kfilemetadata 5.77.0 5.80.0: Library for extracting file metadata
-kde-frameworks/kglobalaccel 5.77.0 5.80.0: Framework to handle global shortcuts
+kde-frameworks/kglobalaccel 5.77.0 5.80.0-r1: Framework to handle global shortcuts
 kde-frameworks/kguiaddons 5.77.0 5.80.0: Framework providing assorted high-level user interface components
 kde-frameworks/kholidays 5.77.0 5.80.0: Library to determine holidays and other special events for a geographical region
 kde-frameworks/khtml 5.77.0 5.80.0: KHTML web rendering engine
 kde-frameworks/ki18n 5.77.0 5.80.0: Framework based on Gettext for internationalizing user interface text
-kde-frameworks/kiconthemes 5.77.0 5.80.0: Framework for icon theming and configuration
+kde-frameworks/kiconthemes 5.77.0 5.80.0-r1: Framework for icon theming and configuration
 kde-frameworks/kidletime 5.77.0 5.80.0: Framework for detection and notification of device idle time
 kde-frameworks/kimageformats 5.77.0 5.80.0: Framework providing additional format plugins for Qt's image I/O system
 kde-frameworks/kinit 5.77.0 5.80.0: Helper library to speed up start of applications on KDE work spaces
-kde-frameworks/kio 5.77.0-r2 5.80.1-r1: Framework providing transparent file and data management
-kde-frameworks/kirigami 5.77.0-r1 5.80.0: Lightweight user interface framework for mobile and convergent applications
+kde-frameworks/kio 5.77.0-r2 5.80.1-r2: Framework providing transparent file and data management
+kde-frameworks/kirigami 5.77.0-r1 5.80.0-r1: Lightweight user interface framework for mobile and convergent applications
 kde-frameworks/kitemmodels 5.77.0 5.80.0: Framework providing data models to help with tasks such as sorting and filtering
 kde-frameworks/kitemviews 5.77.0 5.80.0: Framework providing additional widgets for item models
 kde-frameworks/kjobwidgets 5.77.0 5.80.0: Framework providing assorted widgets for showing the progress of jobs
@@ -12387,7 +12387,7 @@ kde-frameworks/kquickcharts 5.77.0 5.80.0: QtQuick plugin providing high-perform
 kde-frameworks/kross 5.77.0 5.80.0: Framework for embedding scripting into applications
 kde-frameworks/krunner 5.77.0 5.80.0: Framework for providing different actions given a string query
 kde-frameworks/kservice 5.77.0 5.80.0: Advanced plugin and service introspection
-kde-frameworks/ktexteditor 5.77.0 5.80.0: Framework providing a full text editor component
+kde-frameworks/ktexteditor 5.77.0 5.80.0-r1: Framework providing a full text editor component
 kde-frameworks/ktextwidgets 5.77.0 5.80.0: Framework providing an assortment of widgets for displaying and editing text
 kde-frameworks/kunitconversion 5.77.0 5.80.0: Framework for converting units
 kde-frameworks/kwallet 5.77.0 5.80.0: Framework providing desktop-wide storage for passwords
@@ -12405,7 +12405,7 @@ kde-frameworks/qqc2-desktop-style 5.77.0 5.80.0: Style for QtQuickControls 2 tha
 kde-frameworks/solid 5.77.0 5.80.0: Provider for platform independent hardware discovery, abstraction and management
 kde-frameworks/sonnet 5.77.0 5.80.0: Framework for providing spell-checking through abstraction of popular backends
 kde-frameworks/syndication 5.77.0 5.80.0: Library for parsing RSS and Atom feeds
-kde-frameworks/syntax-highlighting 5.77.0-r3 5.79.1 5.80.0: Framework for syntax highlighting
+kde-frameworks/syntax-highlighting 5.77.0-r3 5.80.0-r1: Framework for syntax highlighting
 kde-frameworks/threadweaver 5.77.0 5.80.0: Framework for managing threads using job and queue-based interfaces
 kde-misc/basket 2.49b: Multiple information organizer - a DropDrawers clone
 kde-misc/colord-kde 0.5.0-r2: Provides interfaces and session daemon to colord
@@ -12442,7 +12442,7 @@ kde-plasma/breeze 5.20.5 5.21.3: Breeze visual style for the Plasma desktop
 kde-plasma/breeze-grub 5.20.5 5.21.3: Breeze theme for GRUB
 kde-plasma/breeze-gtk 5.20.5 5.21.3: Official GTK+ port of Plasma's Breeze widget style
 kde-plasma/breeze-plymouth 5.20.5 5.21.3: Breeze theme for Plymouth
-kde-plasma/discover 5.20.5 5.21.3: KDE Plasma resources management GUI
+kde-plasma/discover 5.20.5 5.20.5-r1 5.21.3: KDE Plasma resources management GUI
 kde-plasma/drkonqi 5.20.5 5.21.3: Plasma crash handler, gives the user feedback if a program crashed
 kde-plasma/kactivitymanagerd 5.20.5 5.21.3: System service to manage user's activities, track the usage patterns etc.
 kde-plasma/kde-cli-tools 5.20.5 5.21.3: Tools based on KDE Frameworks 5 to better interact with the system
@@ -13394,7 +13394,7 @@ media-libs/partio 1.10.1 9999: Library for particle IO and manipulation
 media-libs/phat 0.4.1-r1: PHAT is a collection of GTK+ widgets geared toward pro-audio apps
 media-libs/phonon 4.11.1-r1: KDE multimedia abstraction library
 media-libs/phonon-gstreamer 4.10.0: GStreamer backend for the Phonon multimedia library
-media-libs/phonon-vlc 0.11.1 0.11.2 0.11.3: VLC backend for the Phonon multimedia library
+media-libs/phonon-vlc 0.11.1 0.11.3: VLC backend for the Phonon multimedia library
 media-libs/plib 1.8.5-r2 1.8.5-r3: multimedia library used by many games
 media-libs/plotutils 2.6-r2: Powerful C/C++ function library for exporting 2-D vector graphics
 media-libs/pnglite 0.1.17: Small and simple library for loading and writing PNG images
