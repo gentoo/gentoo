@@ -70,6 +70,5 @@ pkg_postinst() {
 	webapp_pkg_postinst
 
 	elog ""
-	elog "Optional runtime dependencies:"
 	optfeature "LDAP authentication" dev-lang/php[ldap]
 }

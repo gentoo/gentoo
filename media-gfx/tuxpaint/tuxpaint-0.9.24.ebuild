@@ -66,6 +66,5 @@ src_install() {
 
 pkg_postinst() {
 	xdg_pkg_postinst
-	elog "Optional uninstalled features:"
 	optfeature "additional graphic stamps" media-gfx/tuxpaint-stamps
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -54,10 +54,9 @@ pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_icon_cache_update
 
-	elog "Consider installing the following for additional features:"
 	optfeature "D-Bus" dev-python/dbus-python
-	optfeature "Desktop notifications" "x11-libs/libnotify[introspection]"
-	optfeature "Global keyboard shortcuts" "dev-libs/keybinder:3[introspection]"
+	optfeature "desktop notifications" "x11-libs/libnotify[introspection]"
+	optfeature "global keyboard shortcuts" "dev-libs/keybinder:3[introspection]"
 }
 
 pkg_postrm() {

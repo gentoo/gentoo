@@ -40,8 +40,7 @@ python_install_all() {
 }
 
 pkg_postinst() {
-	elog "Note that alternative worker types need additional packages to be installed:"
+	optfeature_header "Alternative worker types need additional packages to be installed:"
 	optfeature "eventlet-based greenlets workers" "dev-python/eventlet"
 	optfeature "gevent-based greenlets workers" "dev-python/gevent"
-	elog
 }

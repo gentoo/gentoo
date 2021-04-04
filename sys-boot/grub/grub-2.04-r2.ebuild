@@ -290,9 +290,8 @@ pkg_postinst() {
 
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		elog
-		elog "You may consider installing the following optional packages:"
-		optfeature "Detect other operating systems (grub-mkconfig)" sys-boot/os-prober
-		optfeature "Create rescue media (grub-mkrescue)" dev-libs/libisoburn
-		optfeature "Enable RAID device detection" sys-fs/mdadm
+		optfeature "detecting other operating systems (grub-mkconfig)" sys-boot/os-prober
+		optfeature "creating rescue media (grub-mkrescue)" dev-libs/libisoburn
+		optfeature "enabling RAID device detection" sys-fs/mdadm
 	fi
 }

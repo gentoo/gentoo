@@ -35,6 +35,5 @@ python_install_all() {
 }
 
 pkg_postinst() {
-	elog "Optional dependencies:"
 	optfeature "caching support" dev-python/beaker
 }

@@ -49,7 +49,6 @@ src_install() {
 pkg_postinst() {
 	elog "Sample configuration file has been installed to "
 	elog " /usr/share/doc/yle-dl-${PV}/yledl.conf.sample"
-	elog ""
-	elog "Optional download engines: "
+	elog
 	optfeature "youtube-dl download engine" net-misc/youtube-dl
 }

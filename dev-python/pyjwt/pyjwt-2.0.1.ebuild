@@ -26,6 +26,5 @@ DEPEND="
 distutils_enable_tests pytest
 
 pkg_postinst() {
-	elog "Available optional features:"
 	optfeature "cryptography" dev-python/cryptography
 }

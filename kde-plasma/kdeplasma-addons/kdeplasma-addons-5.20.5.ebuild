@@ -72,7 +72,6 @@ src_configure() {
 
 pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
-		elog "Optional dependencies:"
 		optfeature "Disk quota applet" sys-fs/quota
 	fi
 	ecm_pkg_postinst

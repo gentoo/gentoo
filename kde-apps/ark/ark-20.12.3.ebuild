@@ -67,7 +67,6 @@ src_test() {
 
 pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
-		elog "Optional dependencies:"
 		optfeature "rar archive creation/extraction" app-arch/rar
 		optfeature "rar archive extraction only" app-arch/unar app-arch/unrar
 		optfeature "7-Zip archive support" app-arch/p7zip

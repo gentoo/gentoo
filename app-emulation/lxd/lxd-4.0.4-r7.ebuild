@@ -145,7 +145,6 @@ pkg_postinst() {
 	elog
 	elog "Please run 'lxc-checkconfig' to see all optional kernel features."
 	elog
-	elog "Optional features:"
 	optfeature "btrfs storage backend" sys-fs/btrfs-progs
 	optfeature "lvm2 storage backend" sys-fs/lvm2
 	optfeature "zfs storage backend" sys-fs/zfs

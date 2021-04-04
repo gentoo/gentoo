@@ -52,7 +52,6 @@ RDEPEND="${DEPEND}
 
 pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
-		elog "Optional dependencies:"
 		optfeature "Configure looks for GTK+" kde-plasma/kde-gtk-config
 	fi
 	ecm_pkg_postinst

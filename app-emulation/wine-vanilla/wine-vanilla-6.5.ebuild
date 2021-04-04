@@ -479,7 +479,7 @@ multilib_src_test() {
 		fi
 
 		WINEPREFIX="${T}/.wine-${ABI}" \
-		Xemake test
+		virtx emake test
 	fi
 }
 
