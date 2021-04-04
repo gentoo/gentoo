@@ -1,15 +1,15 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-WX_GTK_VER=3.0
-
-inherit autotools eutils wxwidgets
+WX_GTK_VER="3.0"
+inherit autotools desktop edos2unix wxwidgets
 
 DESCRIPTION="Multi-player tank battle in 3D (OpenGL)"
 HOMEPAGE="http://www.scorched3d.co.uk/"
 SRC_URI="mirror://sourceforge/scorched3d/Scorched3D-${PV}-src.tar.gz"
+S="${WORKDIR}/scorched"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -37,10 +37,8 @@ RDEPEND="
 		sci-libs/fftw:3.0=
 	)
 	mysql? ( virtual/mysql )"
-DEPEND="${RDEPEND}
-	!dedicated? ( virtual/pkgconfig )"
-
-S=${WORKDIR}/scorched
+DEPEND="${RDEPEND}"
+BDEPEND="!dedicated? ( virtual/pkgconfig )"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-fixups.patch
@@ -53,10 +51,6 @@ PATCHES=(
 	"${FILESDIR}"/${P}-fix-c++14.patch
 )
 
-pkg_setup() {
-	setup-wxwidgets
-}
-
 src_prepare() {
 	edos2unix \
 		src/launcher/wxdialogs/SettingsDialog.cpp \
@@ -68,6 +62,7 @@ src_prepare() {
 }
 
 src_configure() {
+	setup-wxwidgets
 	econf \
 		--datadir="${EPREFIX}"/usr/share/${PN} \
 		--with-fftw="${EPREFIX}"/usr \
@@ -84,7 +79,7 @@ src_install() {
 	default
 
 	# remove bundled fonts
-	rm "${ED%/}"/usr/share/${PN}/data/fonts/* || die
+	rm "${ED}"/usr/share/${PN}/data/fonts/* || die
 	dosym ../../../fonts/dejavu/DejaVuSans.ttf /usr/share/${PN}/data/fonts/dejavusans.ttf
 	dosym ../../../fonts/dejavu/DejaVuSansCondensed-Bold.ttf /usr/share/${PN}/data/fonts/dejavusconbd.ttf
 	dosym ../../../fonts/dejavu/DejaVuSansMono-Bold.ttf /usr/share/${PN}/data/fonts/dejavusmobd.ttf
