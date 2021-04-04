@@ -75,6 +75,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-MimeTypeFinderJob-file.so.patch # KDE-Bug 434455
 	"${FILESDIR}"/${P}-gcc11-include-order.patch # bug 766480
 	"${FILESDIR}"/${P}-fix-create-files-on-ftp.patch # KDE-Bug 429541
+	"${FILESDIR}"/${P}-fix-crash-in-ThumbnailProtocol.patch # KDE-Bug 430862
 )
 
 src_configure() {
