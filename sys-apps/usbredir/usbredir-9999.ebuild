@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils flag-o-matic autotools git-r3 ltprune
+inherit eutils flag-o-matic autotools git-r3
 
 DESCRIPTION="TCP daemon and set of libraries for usbredir protocol (redirecting USB traffic)"
 HOMEPAGE="https://www.spice-space.org/usbredir.html"
@@ -18,7 +18,7 @@ RDEPEND="virtual/libusb:1"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-DOCS="ChangeLog README* TODO *.txt"
+DOCS="README* TODO *.txt"
 
 src_prepare() {
 	default
@@ -34,8 +34,8 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 
 	# noinst_PROGRAMS
-	dobin usbredirtestclient/usbredirtestclient
+	dobin usbredirtestclient/.libs/usbredirtestclient
 }
