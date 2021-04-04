@@ -36,6 +36,7 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-20200923-arm_no_crypto.patch"
+	"${FILESDIR}/${PN}-20210324-pkgconfig_path.patch"
 )
 
 src_prepare() {
