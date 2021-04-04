@@ -44,12 +44,19 @@ src_prepare() {
 	# Now, move the additional themes in the proper directory
 	mv ../{fabeach,florindo,inverted,naive,unnamed,yisus,yisus2} themes || die
 
-	# no reason to have executable bit set on themes
+	# No reason to have executable bit set on themes
 	find themes -type f -exec chmod a-x '{}' \; || die
+
+	# Respect LD, bug #779976
+	sed -i -e 's/LD = ld/LD ?= ld/' CommonHeader || die
+	sed -i -e 's/$(LD)/& $(LDFLAGS)/' */Makefile || die
 }
 
 src_configure() {
 	tc-export CXX
+
+	# Nobody _really_ sets LD. Tell the compiler what to do instead.
+	export LD="${CXX}"
 }
 
 src_compile() {
