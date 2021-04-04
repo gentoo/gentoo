@@ -1,5 +1,5 @@
---- src/Makefile.old	2015-07-03 18:06:15.000000000 +0200
-+++ src/Makefile	2015-07-03 18:08:50.000000000 +0200
+--- a/src/Makefile
++++ b/src/Makefile
 @@ -69,13 +69,7 @@
  #  -Ofast     Optimize till it hurts : "-O3" + enable opts not valid for all standard-compliants
  #  -Os        Optimize for size
