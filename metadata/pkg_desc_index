@@ -11545,9 +11545,9 @@ games-kids/lletters 0.1.95-r4: Game that helps young kids learn their letters an
 games-kids/memonix 1.6-r1: Brain teasers, puzzle and memory games for kid's in one pack
 games-kids/tuxmath 2.0.3-r1: Educational arcade game where you have to solve maths problems
 games-kids/tuxtype 1.8.3-r1: Typing tutorial with lots of eye-candy
-games-misc/asr-manpages 1.3_rc6: set of humorous manual pages developed on alt.sysadmin.recovery
+games-misc/asr-manpages 1.3_rc6: Set of humorous manual pages developed on alt.sysadmin.recovery
 games-misc/ballerburg 1.2.0-r1: Linux port of the classical Atari ST game Ballerburg
-games-misc/bsd-games 2.17_p28 3.1: collection of games from NetBSD
+games-misc/bsd-games 2.17_p28-r1 3.1-r1: collection of games from NetBSD
 games-misc/bsod 0.1-r1: This program will let you experience the authentic Microsoft Windows experience
 games-misc/c++robots 0-r1: ongoing 'King of the Hill' (KotH) tournament
 games-misc/cowsay 3.04: Configurable talking ASCII cow (and other characters)
@@ -11593,7 +11593,7 @@ games-misc/sound-of-sorting 0.6.6_pre20151107-r1: Visualization and Audibilizati
 games-misc/typespeed 0.6.5-r2: Test your typing speed, and get your fingers CPS
 games-misc/usolitaire 0.2.1: solitaire in your terminal
 games-misc/wtf 20210130: Translates acronyms for you
-games-misc/wumpus 1.4-r1: Classic Hunt the Wumpus Adventure Game
+games-misc/wumpus 1.4-r2: Classic Hunt the Wumpus Adventure Game
 games-misc/xcowsay 1.5.1: Displays a cute cow and message on your desktop
 games-misc/xcruiser 0.30-r1: Fly about 3D-formed file system
 games-misc/xpenguins 2.2-r2: Cute little penguins invading your desktop

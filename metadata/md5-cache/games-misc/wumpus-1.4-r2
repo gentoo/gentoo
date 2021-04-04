@@ -1,12 +1,13 @@
 DEFINED_PHASES=compile install unpack
 DEPEND=sys-apps/less
 DESCRIPTION=Classic Hunt the Wumpus Adventure Game
-EAPI=6
+EAPI=7
 HOMEPAGE=http://cvsweb.netbsd.org/bsdweb.cgi/src/games/wump/
+INHERIT=toolchain-funcs
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD
-RDEPEND=sys-apps/less
+RDEPEND=sys-apps/less !games-misc/bsd-games:0/3
 SLOT=0
 SRC_URI=ftp://ftp.netbsd.org/pub/NetBSD/NetBSD-release-1-6/src/games/wump/wump.c ftp://ftp.netbsd.org/pub/NetBSD/NetBSD-release-1-6/src/games/wump/wump.6 ftp://ftp.netbsd.org/pub/NetBSD/NetBSD-release-1-6/src/games/wump/wump.info
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=e8fbb01ac4d5391add35df8be9b8221d
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=d3922606c58dce0b7735507106251f0e

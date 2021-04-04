@@ -3,7 +3,7 @@ DEFINED_PHASES=install nofetch prepare unpack
 DESCRIPTION=Intense music-driven arcade shooter powered by your music
 EAPI=7
 HOMEPAGE=http://www.coldbeamgames.com/
-INHERIT=desktop wrapper unpacker
+INHERIT=desktop unpacker wrapper
 IUSE=bundled-libs
 KEYWORDS=-* ~amd64 ~x86
 LICENSE=all-rights-reserved
@@ -11,5 +11,5 @@ RDEPEND=virtual/opengl amd64? ( !bundled-libs? ( >=media-libs/libpng-compat-1.2.
 RESTRICT=bindist fetch splitdebug
 SLOT=0
 SRC_URI=beathazard-installer_03-08-13
-_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	wrapper	4251d4c84c25f59094fd557e0063a974	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	unpacker	517f16af48ee3ab88180dd58b5143213
-_md5_=168ef7d57685f11f52eb7547ef683f3c
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	unpacker	517f16af48ee3ab88180dd58b5143213	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=16e898fa87c52db11fd1a6c813c8ed4a

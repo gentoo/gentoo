@@ -1,10 +1,10 @@
 DEFINED_PHASES=install
 DESCRIPTION=set of fortunes based on the Tao-Teh-Ching
-EAPI=5
+EAPI=7
 HOMEPAGE=http://fortunes.quotationsbook.com/fortunes/collection/67/TAO
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris
 LICENSE=GPL-1
 RDEPEND=games-misc/fortune-mod
 SLOT=0
 SRC_URI=mirror://gentoo/fortune-tao.tar.gz
-_md5_=8a1ee85826a560f859ce879dc042749c
+_md5_=6bedace975790f4640a5b64a4bcaeee4

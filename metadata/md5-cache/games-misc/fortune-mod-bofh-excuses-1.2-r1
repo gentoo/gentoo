@@ -7,4 +7,4 @@ LICENSE=public-domain
 RDEPEND=games-misc/fortune-mod
 SLOT=0
 SRC_URI=mirror://gentoo/fortune-bofh-excuses-1.2.tar.gz
-_md5_=832be3c4775dbff96fba0aa4b2e2a20a
+_md5_=65a67b6a13139fdba1f086a1a33cc689

@@ -7,4 +7,4 @@ LICENSE=public-domain
 RDEPEND=games-misc/fortune-mod
 SLOT=0
 SRC_URI=https://github.com/Nanolx/fortunes-flashrider/archive/1.10.tar.gz -> fortunes-flashrider-1.10.tar.gz
-_md5_=65efd71980a70fb09ef3b720e6cd91cd
+_md5_=f7d91335975b53398589856903036f72
