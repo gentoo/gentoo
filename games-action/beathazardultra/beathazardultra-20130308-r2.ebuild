@@ -5,7 +5,7 @@
 
 EAPI=7
 
-inherit desktop wrapper unpacker
+inherit desktop unpacker wrapper
 
 DESCRIPTION="Intense music-driven arcade shooter powered by your music"
 HOMEPAGE="http://www.coldbeamgames.com/"
