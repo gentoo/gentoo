@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2021-04-04)
+# Reported to contain an unintentional ABI breakage leading to crashes
+# when loading extensions on 32-bit systems.
+=dev-lang/python-3.9.3
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-04-04)
 # Package needs a real maintainer to fix broken IUSE=java and version bump.
 # Bug #778758 contains a version bump with java removed. Do pick it up.
