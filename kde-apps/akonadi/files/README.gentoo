@@ -1,0 +1,39 @@
+Akonadi QMYSQL backends that were created using <dev-db/mariadb-10.5.9-r3 may
+be in need of a manual fix. Failure to do so could result in akonadi service
+to stop fetching and sending mail for KMail or any other kind of issues in PIM
+applications depending on akonadi like KOrganizer, KAddressBook etc.
+
+Note:
+  - All commands that follow are to be run by a regular user.
+  - They will have to be repeated for any other user of KDE PIM.
+  - Use your favorite terminal.
+
+  1) Check if "mysql" system db is present:
+     $ mysql -S /run/user/$(id -u)/akonadi/mysql.socket -e 'select schema_name \
+         from information_schema.schemata where schema_name = "mysql"'
+
+     The output obtained should look like this:
+        +-------------+
+        | schema_name |
+        +-------------+
+        | mysql       |
+        +-------------+
+
+     If so, then automatic DB upgrades will succeed, no further action necessary.
+
+  2) If, however, the above query returned empty, add the missing database:
+     $ mysql -S /run/user/$(id -u)/akonadi/mysql.socket -e 'create database mysql'
+
+     Future MariaDB releases should upgrade without manual intervention now.
+
+  3) Optional: You may have come here with an already defunct akonadi service.
+     To manually fix the akonadi MariaDB backend:
+     $ mysql_upgrade -S /run/user/$(id -u)/akonadi/default/mysql.socket \
+         --defaults-file=~/.local/share/akonadi/mysql.conf
+
+     Don't forget to restart the akonadi service afterwards:
+     $ akonadictl restart
+
+References:
+  [1] https://bugs.gentoo.org/688746
+  [2] https://bugs.kde.org/show_bug.cgi?id=409224
