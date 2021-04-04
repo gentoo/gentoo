@@ -36,10 +36,9 @@ src_prepare() {
 	# bug #440744
 	sed -i  -e 's/ -Wall -g -fexceptions//g' configure.ac || die
 	eautoreconf
-
-	need-wxwidgets unicode
 }
 
 src_configure() {
+	setup-wxwidgets unicode
 	econf $(use_enable nls)
 }

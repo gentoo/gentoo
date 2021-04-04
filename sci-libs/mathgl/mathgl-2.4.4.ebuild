@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -81,11 +81,12 @@ src_prepare() {
 	sed -i -e 's/update-mime-database/true/' udav/CMakeLists.txt || die
 	sed -i -e 's/update-desktop-database/true/' udav/CMakeLists.txt || die
 
-	use wxwidgets && need-wxwidgets unicode
 	cmake_src_prepare
 }
 
 src_configure() {
+	use wxwidgets && setup-wxwidgets unicode
+
 	local mycmakeargs=()
 	if use hdf; then
 		mycmakeargs+=(
