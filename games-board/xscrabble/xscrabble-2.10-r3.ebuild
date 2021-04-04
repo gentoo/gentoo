@@ -1,8 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils multilib games
+EAPI=7
+
+inherit toolchain-funcs
 
 DESCRIPTION="An X11 clone of the well-known Scrabble"
 HOMEPAGE="http://freshmeat.net/projects/xscrabble/?topic_id=80"
@@ -15,21 +16,38 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="l10n_fr"
 
-RDEPEND="x11-libs/libXaw"
-DEPEND="${RDEPEND}
+DEPEND="x11-libs/libXaw"
+RDEPEND="
+	${DEPEND}
+	acct-group/gamestat
+"
+BDEPEND="
 	x11-misc/gccmakedep
-	x11-misc/imake"
+	x11-misc/imake
+"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-path-fixes.patch
+	"${FILESDIR}"/${P}-build.patch
+	"${FILESDIR}"/${P}-implicit-declaration.patch
+)
 
 src_unpack() {
 	unpack ${P}.tgz
-	cp "${DISTDIR}"/xscrabble_en.tgz .
-	use l10n_fr && cp "${DISTDIR}"/xscrabble_fr.tgz .
+	cp "${DISTDIR}"/xscrabble_en.tgz . || die
+
+	if use l10n_fr ; then
+		cp "${DISTDIR}"/xscrabble_fr.tgz . || die
+	fi
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-path-fixes.patch \
-		"${FILESDIR}"/${P}-build.patch
+	default
 	sed -i '/install/s/-s //' build || die "sed failed"
+}
+
+src_configure() {
+	tc-export CC
 }
 
 src_compile() {
@@ -37,20 +55,37 @@ src_compile() {
 }
 
 src_install() {
-	local f
 	export DESTDIR="${D}" LIBDIR="$(get_libdir)"
+
 	./build install || die "install failed"
+
 	if use l10n_fr ; then
 		./build lang fr || die "fr failed"
 	fi
+
 	./build lang en || die "en failed"
-	for f in "${D}"/usr/"${LIBDIR}"/X11/app-defaults/* ; do
+
+	local f
+	for f in "${ED}/usr/${LIBDIR}"/X11/app-defaults/* ; do
 		[[ -L ${f} ]] && continue
 		sed -i \
-			-e "s:/usr/games/lib/scrabble/:${GAMES_DATADIR}/${PN}/:" \
+			-e "s:/usr/games/lib/scrabble/:/usr/share/${PN}/:" \
 			-e "s:fr/eng:fr/en:" \
 			${f} || die "sed ${f} failed"
 	done
+
 	dodoc CHANGES README
-	prepgamesdirs
+
+	local paths=( /usr/share/${PN}/en/scrabble_scores )
+	if use l10n_fr ; then
+		paths+=( /usr/share/${PN}/fr/scrabble_scores )
+	fi
+
+	local path
+	for path in ${paths[@]} ; do
+		fowners root:gamestat ${path}
+		fperms 660 ${path}
+	done
+
+	fperms g+s /usr/bin/${PN}
 }
