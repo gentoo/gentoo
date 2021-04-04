@@ -19,6 +19,8 @@ SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="php"
 
+RESTRICT+=" test"
+
 RDEPEND="
 	dev-libs/libxml2
 	dev-libs/libxslt
@@ -52,7 +54,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-20.08.3-no-qtwebkit.patch
+	"${FILESDIR}"/${PN}-20.08.3-no-qtwebkit.patch # TODO: fix tests, bug #774219
 	"${FILESDIR}"/${PN}-20.08.3-gentoo-docbundledir.patch # fix hardcoded path
 )
 
