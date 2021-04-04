@@ -16,6 +16,8 @@ SLOT="0"
 KEYWORDS=""
 IUSE="gstreamer libressl lz4 opus sasl smartcard static-libs test"
 
+RESTRICT="!test? ( test )"
+
 # the libspice-server only uses the headers of libcacard
 RDEPEND="
 	dev-lang/orc

@@ -15,6 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="libressl lz4 sasl smartcard static-libs gstreamer test"
 
+RESTRICT="!test? ( test )"
+
 # the libspice-server only uses the headers of libcacard
 RDEPEND="
 	dev-lang/orc[static-libs(+)?]
