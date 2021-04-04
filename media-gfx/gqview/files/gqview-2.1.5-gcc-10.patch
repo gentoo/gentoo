@@ -1,9 +1,0 @@
---- a/src/bar_exif.h
-+++ b/src/bar_exif.h
-@@ -26,4 +26,4 @@ gint bar_exif_is_advanced(GtkWidget *bar);
- 
--const gchar **bar_exif_key_list;
--const gint bar_exif_key_count;
-+extern const gchar **bar_exif_key_list;
-+extern const gint bar_exif_key_count;
- 

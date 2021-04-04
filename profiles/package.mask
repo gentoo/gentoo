@@ -186,21 +186,6 @@ mail-mta/protonmail-bridge-bin
 # touched in years either. Bugs #664776, #747592. Removal in ~30 days.
 dev-libs/zookeeper-c
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2021-03-15)
-# Needs a port to network-3. No revdeps. Mask for removal
-# in a month.
-dev-haskell/network-protocol-xmpp
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2021-03-15)
-# Needs a port to ghc-8.10. No revdeps. Mask for removal
-# in a month.
-dev-haskell/test-framework-th-prime
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2021-03-15)
-# Needs a port to ghc-8.10. No revdeps. Mask for removal
-# in a month.
-dev-haskell/encoding
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-03-15)
 # Unmaintained for >1 year, blocking cleanup of deprecated libraries.
 # Succeeded by LXQt many years ago (see also: lxqt-base/lxqt-meta).
@@ -223,11 +208,6 @@ dev-haskell/encoding
 <x11-libs/libfm-1.3.2
 <x11-libs/libfm-extra-1.3.2
 <x11-misc/pcmanfm-1.3.2
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2021-03-15)
-# Needs a port to ghc-8.10. No release for past 6 years.
-# No revdeps. Mask for removal.
-dev-haskell/geniplate
 
 # Göktürk Yüksek <gokturk@gentoo.org> (2021-03-14)
 # Dead upstream. No revdeps.
@@ -380,12 +360,6 @@ app-office/moneyguru
 # Lars Wendler <polynomial-c@gentoo.org> (2021-02-15)
 # Mask development versions now that they were bumped...
 =net-misc/kea-1.9*
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2021-02-08)
-# Abandoned upstream. Was never ported from gtk-2.
-# A possible alternative is media-gfx/geeqie (gqview fork).
-# Removal in 3 months. Bug #769440.
-media-gfx/gqview
 
 # Michał Górny <mgorny@gentoo.org> (2021-02-01)
 # LibreSSL support is discontinued.  Please read the relevant news item
