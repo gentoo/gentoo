@@ -1,10 +1,8 @@
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index fcec1191a..8df2a9e21 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -408,9 +408,9 @@ IF((_wx_selected_config MATCHES "qt-armv7"))
+@@ -408,9 +408,9 @@
  ENDIF()
-
+ 
  IF((_wx_selected_config MATCHES "qt-armv7"))
 -  SET(wxWidgets_USE_LIBS base core xml html adv aui)
 +  SET(wxWidgets_FIND_COMPONENTS base core xml html adv aui)
@@ -12,38 +10,38 @@ index fcec1191a..8df2a9e21 100644
 -  SET(wxWidgets_USE_LIBS net xml html adv aui core base webview)
 +  SET(wxWidgets_FIND_COMPONENTS net xml html adv aui core base webview)
  ENDIF()
-
+ 
  OPTION (USE_GL "Enable OpenGL support" ON)
-@@ -436,7 +436,7 @@ IF (ARCH MATCHES "arm*" AND (NOT QT_ANDROID) AND CMAKE_SYSTEM_NAME MATCHES ".*Li
+@@ -436,7 +436,7 @@
      SET(OPENGLES_FOUND "YES")
      SET(OPENGL_FOUND "YES")
-
+ 
 -    SET(wxWidgets_USE_LIBS ${wxWidgets_USE_LIBS} gl )
 +    SET(wxWidgets_FIND_COMPONENTS ${wxWidgets_FIND_COMPONENTS} gl )
      add_subdirectory(src/glshim)
-
+ 
      SET(OPENGL_LIBRARIES "GL_static" "EGL" "X11" "drm"  )
-@@ -455,7 +455,7 @@ IF(QT_ANDROID)
+@@ -455,7 +455,7 @@
    SET(OPENGLES_FOUND "YES")
    SET(OPENGL_FOUND "YES")
-
+ 
 -  SET(wxWidgets_USE_LIBS ${wxWidgets_USE_LIBS} gl )
 +  SET(wxWidgets_FIND_COMPONENTS ${wxWidgets_FIND_COMPONENTS} gl )
    add_subdirectory(src/glshim)
  ENDIF(QT_ANDROID)
-
-@@ -468,7 +468,7 @@ IF ((NOT OPENGLES_FOUND) AND (NOT QT_ANDROID))
+ 
+@@ -468,7 +468,7 @@
    ENDIF(USE_GL)
-
+ 
    IF(OPENGL_FOUND)
 -    SET(wxWidgets_USE_LIBS gl ${wxWidgets_USE_LIBS} )
 +    SET(wxWidgets_FIND_COMPONENTS gl ${wxWidgets_FIND_COMPONENTS} )
      INCLUDE_DIRECTORIES(${OPENGL_INCLUDE_DIR})
-
+ 
      MESSAGE (STATUS "Found OpenGL...." )
-@@ -529,14 +529,14 @@ IF(NOT QT_ANDROID)
+@@ -529,14 +529,14 @@
    ENDIF(MSVC)
-
+ 
    IF(WIN32 OR APPLE OR QT_ANDROID)
 -    FIND_PACKAGE(wxWidgets)
 +    FIND_PACKAGE(wxWidgets COMPONENTS ${wxWidgets_FIND_COMPONENTS})
@@ -59,7 +57,16 @@ index fcec1191a..8df2a9e21 100644
      endif ()
      IF(MSYS)
        # this is to convert msys to windows paths, and handle the missing /usr
-@@ -1053,14 +1053,14 @@ IF(NOT WIN32 AND NOT APPLE AND NOT QT_ANDROID)
+@@ -725,7 +725,7 @@
+   INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/src/serial/include)
+ 
+   ## Add serial library
+-  add_library(SERIAL ${serial_SRCS})
++  add_library(SERIAL STATIC ${serial_SRCS})
+   if(APPLE)
+     target_link_libraries(SERIAL ${FOUNDATION_LIBRARY} ${IOKIT_LIBRARY})
+   elseif(UNIX)
+@@ -1053,14 +1053,14 @@
      set(wxWidgets_CONFIG_OPTIONS ${wxWidgets_CONFIG_OPTIONS} --toolkit=gtk3)
      MESSAGE(STATUS "Building against GTK3...")
    ENDIF(GTK2_FOUND)
