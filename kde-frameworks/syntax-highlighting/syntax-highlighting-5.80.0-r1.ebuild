@@ -8,6 +8,8 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="Framework for syntax highlighting"
+SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${P}-fix-path-style-w-alt-value.patch.xz"
+
 LICENSE="MIT"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="nls"
@@ -22,6 +24,8 @@ DEPEND="
 	>=dev-qt/qtxmlpatterns-${QTMIN}:5
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${WORKDIR}/${P}-fix-path-style-w-alt-value.patch" )
 
 src_install() {
 	ecm_src_install

@@ -36,6 +36,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-dont-mount-ISO-multiple-times.patch" # KDE-bug 434617
+)
+
 src_prepare() {
 	ecm_src_prepare
 	# kxmlgui, qtnetwork only required by dropbox

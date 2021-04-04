@@ -62,6 +62,10 @@ RDEPEND="${DEPEND}
 	>=kde-apps/kio-extras-${PVCUT}:5
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-session-restore-w-o-tabs.patch" # KDE-bug 434911
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_PackageKitQt5=ON

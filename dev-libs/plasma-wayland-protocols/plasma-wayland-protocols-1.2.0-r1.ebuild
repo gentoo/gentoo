@@ -17,3 +17,5 @@ fi
 
 LICENSE="LGPL-2.1"
 SLOT="0"
+
+PATCHES=( "${FILESDIR}/${P}-version.patch" )

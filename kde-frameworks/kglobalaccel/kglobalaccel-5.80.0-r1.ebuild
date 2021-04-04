@@ -3,33 +3,34 @@
 
 EAPI=7
 
-ECM_TEST="forceoptional"
 PVCUT=$(ver_cut 1-2)
 QTMIN=5.15.2
 VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
-DESCRIPTION="Framework for searching and managing metadata"
-LICENSE="LGPL-2+"
+DESCRIPTION="Framework to handle global shortcuts"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE=""
+LICENSE="LGPL-2+"
+IUSE="nls"
 
-RESTRICT+=" test" # bug 624250
-
+BDEPEND="
+	nls? ( >=dev-qt/linguist-tools-${QTMIN}:5 )
+"
 DEPEND="
-	>=dev-db/lmdb-0.9.17
 	>=dev-qt/qtdbus-${QTMIN}:5
-	>=dev-qt/qtdeclarative-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
+	>=dev-qt/qtx11extras-${QTMIN}:5
 	=kde-frameworks/kconfig-${PVCUT}*:5
 	=kde-frameworks/kcoreaddons-${PVCUT}*:5
 	=kde-frameworks/kcrash-${PVCUT}*:5
 	=kde-frameworks/kdbusaddons-${PVCUT}*:5
-	=kde-frameworks/kfilemetadata-${PVCUT}*:5
-	=kde-frameworks/ki18n-${PVCUT}*:5
-	=kde-frameworks/kidletime-${PVCUT}*:5
-	=kde-frameworks/kio-${PVCUT}*:5
-	=kde-frameworks/solid-${PVCUT}*:5
+	=kde-frameworks/kwindowsystem-${PVCUT}*:5[X]
+	x11-libs/libxcb
+	x11-libs/xcb-util-keysyms
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-dont-run-w-root-privs.patch # bug 767478, KDE-bug 423059
+)

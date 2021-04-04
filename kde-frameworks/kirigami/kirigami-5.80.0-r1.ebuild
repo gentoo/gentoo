@@ -37,6 +37,10 @@ RDEPEND="${DEPEND}
 	>=dev-qt/qtgraphicaleffects-${QTMIN}:5
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-crash-in-SizeGroup.patch" # KDE-bug #434079
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_EXAMPLES=$(usex examples)

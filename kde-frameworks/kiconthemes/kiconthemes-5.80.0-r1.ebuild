@@ -30,3 +30,9 @@ DEPEND="
 	=kde-frameworks/kwidgetsaddons-${PVCUT}*:5
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}/${P}-fix-svg-icons.patch" # bug 779079
+	"${FILESDIR}/${P}-revert-private-header-to-avoid-extern.patch"
+	"${FILESDIR}/${P}-revert-avoid-plugin-load-racecondition.patch"
+)

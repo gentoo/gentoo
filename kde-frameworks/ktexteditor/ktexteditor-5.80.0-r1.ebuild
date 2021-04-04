@@ -49,6 +49,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-minimap-location-highlighting.patch # KDE-bug 434690
+)
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package editorconfig EditorConfig)

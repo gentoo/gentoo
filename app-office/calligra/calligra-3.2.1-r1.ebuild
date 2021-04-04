@@ -176,7 +176,7 @@ src_configure() {
 		-DWITH_Poppler=$(usex pdf)
 		-DWITH_Eigen3=$(usex calligra_features_sheets)
 		-DBUILD_UNMAINTAINED=$(usex calligra_features_stage)
-		-ENABLE_CSTESTER_TESTING=$(usex test)
+		-DENABLE_CSTESTER_TESTING=$(usex test)
 		-DWITH_Freetype=$(usex truetype)
 	)
 
