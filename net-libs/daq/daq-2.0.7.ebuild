@@ -67,7 +67,7 @@ src_install() {
 	# This has been bugged upstream
 	if ! use static-libs; then
 		for z in libdaq_static libdaq_static_modules; do
-			rm "${ED}"/usr/$(get_libdir)/${z}.a || die
+			rm -f "${ED}"/usr/$(get_libdir)/${z}.a || die
 		done
 	fi
 }
