@@ -12,7 +12,7 @@ HOMEPAGE="http://www.iodbc.org/"
 SRC_URI="https://github.com/openlink/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 LICENSE="|| ( LGPL-2 BSD )"
 SLOT="0"
 IUSE="gtk"
