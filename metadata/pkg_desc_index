@@ -2895,7 +2895,7 @@ app-shells/ksh 2020.0.0-r1 9999: The Original Korn Shell, 1993 revision (ksh93)
 app-shells/kshdb 1.1.0: Korn Shell Debugger
 app-shells/localshell 1.3.4-r1: Localshell allows per-user/group local control of shell execution
 app-shells/loksh 6.8 6.8.1: Linux port of OpenBSD's ksh
-app-shells/mcfly 0.5.3-r1: Context-aware bash history search replacement (ctrl-r)
+app-shells/mcfly 0.5.3-r1 0.5.6: Context-aware bash history search replacement (ctrl-r)
 app-shells/mksh 59c 9999: MirBSD Korn Shell
 app-shells/mpibash 1.3-r1 9999: Parallel scripting right from the Bourne-Again Shell (Bash)
 app-shells/pdmenu 1.3.6: A simple console menu program
