@@ -12,7 +12,7 @@
 
 # Michał Górny <mgorny@gentoo.org> (2021-03-06)
 # LLVM 9 has been removed.
-dev-lang/julia system-llvm
+<dev-lang/julia-1.6.0 system-llvm
 dev-util/perf clang
 
 # Thomas Deutschmann <whissi@gentoo.org> (2021-02-17)
