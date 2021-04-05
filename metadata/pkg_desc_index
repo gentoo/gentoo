@@ -17629,7 +17629,7 @@ sys-fs/static-dev 0.1: A skeleton, statically managed /dev
 sys-fs/sysfsutils 2.1.0 2.1.1: System Utilities Based on Sysfs
 sys-fs/tmsu 0.7.4 0.7.5: Files tagger and virtual tag-based filesystem
 sys-fs/treesize 0.54.1-r1: A disk consumption analyzing tool
-sys-fs/udev 243-r2 245.5-r1 246-r1 247.2 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
+sys-fs/udev 243-r2 245.5-r1 246-r1 247.2 248 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
 sys-fs/udev-init-scripts 33 34 9999: udev startup scripts for openrc
 sys-fs/udftools 2.1 2.2 2.3: Ben Fennema's tools for packet writing and the UDF filesystem
 sys-fs/udiskie 2.3.2 2.3.3: An automatic disk mounting service using udisks
