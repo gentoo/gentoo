@@ -7,7 +7,7 @@ inherit xorg-3
 
 DESCRIPTION="start an X program on a remote machine"
 
-KEYWORDS="amd64 arm ~arm64 ~mips ppc ppc64 s390 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm ~arm64 ~mips ppc ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="x11-libs/libX11"
 DEPEND="${RDEPEND}"
