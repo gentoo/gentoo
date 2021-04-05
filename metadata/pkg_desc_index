@@ -5116,10 +5116,10 @@ dev-java/simplyhtml 0.13.1-r1: Text processing application based on HTML and CSS
 dev-java/sjsxp 1.0.1-r3: Sun Java Streaming XML Parser
 dev-java/skinlf 6.7-r1: Skin Look and Feel - Skinning Engine for the Swing toolkit
 dev-java/slf4j-api 1.7.7 1.7.30: The slf4j API
-dev-java/slf4j-ext 1.7.5 1.7.7: Simple Logging Facade for Java
-dev-java/slf4j-log4j12 1.7.7: Simple Logging Facade for Java (SLF4J) log4j bindings
-dev-java/slf4j-nop 1.7.7: Simple Logging Facade for Java
-dev-java/slf4j-simple 1.7.7: Simple Logging Facade for Java
+dev-java/slf4j-ext 1.7.5 1.7.7 1.7.30: Extensions to the SLF4J API
+dev-java/slf4j-log4j12 1.7.7 1.7.30: SLF4J LOG4J-12 Binding
+dev-java/slf4j-nop 1.7.7 1.7.30: SLF4J NOP Binding
+dev-java/slf4j-simple 1.7.7 1.7.30: SLF4J Simple binding
 dev-java/snakeyaml 1.16: A YAML 1.1 parser and emitter for Java 5
 dev-java/snappy 1.0.3_rc3 1.1.0.1: Snappy compressor/decompressor for Java
 dev-java/snip 0.11-r1: an Apache ANT optional task that extracts snippets of code from text files

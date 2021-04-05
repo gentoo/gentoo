@@ -12,4 +12,4 @@ RDEPEND=>=virtual/jre-1.8:* >=dev-java/java-config-2.2.0-r3 source? ( app-arch/z
 SLOT=1.3
 SRC_URI=mirror://gentoo/hamcrest-1.3.tgz
 _eclasses_=java-utils-2	2440f41421207d084e5e3f1fb001b34e	java-pkg-2	45c44ec10db6affb3ebee1ac72039888	java-pkg-simple	c85bf2d75a5f53e7b39fc9104701ebfb
-_md5_=c997bb2586110705233851976c88fc5a
+_md5_=ce7f9e03500ce2d1e016bd3fec55aab4
