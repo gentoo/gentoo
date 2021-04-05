@@ -24,4 +24,7 @@
 		<flag name="wavelet">enable wavelet signal processing blocks</flag>
 		<flag name="zeromq">enable zeromq message passing blocks</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">gnuradio/gnuradio</remote-id>
+	</upstream>
 </pkgmetadata>
