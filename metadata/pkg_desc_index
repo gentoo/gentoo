@@ -3841,7 +3841,7 @@ dev-games/openscenegraph-qt 3.5.7-r1: Qt support for OpenSceneGraph
 dev-games/paklib 0.3: library for accessing Quake pak files
 dev-games/physfs 3.0.2 9999: Abstraction layer for filesystem and archive access
 dev-games/poker-eval 138.0: A fast C library for evaluating poker hands
-dev-games/ps2-packer 0.4.4: another ELF packer for the PS2
+dev-games/ps2-packer 0.4.4-r1: Another ELF packer for the PS2
 dev-games/quake4-sdk 1.4.2 1.4.2-r1: Quake4 SDK
 dev-games/recastnavigation 1.5.1_p20200511: Navigation mesh construction toolset for games
 dev-games/simgear 2020.3.6 9999: Development library for simulation games

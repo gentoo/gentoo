@@ -13,4 +13,4 @@ RESTRICT=installsources strip
 SLOT=0
 SRC_URI=https://github.com/docker/docker-ce/archive/v19.03.15.tar.gz -> docker-19.03.15.tar.gz
 _eclasses_=golang-base	b8fb27dacacea08140c53857f439fc7d	golang-vcs-snapshot	ff485cabd3f37b060f110b0be95092ec	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	8e7c071081c68c2c398b77fe3a1d6908	linux-info	30ded7f9adbdd03d3e848cdd74f6c395	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	udev	452708c3f55cf6e918b045adb949a9e6
-_md5_=044336b6f236ea087e4c7e22fa806bc4
+_md5_=5ab0dc46068e6b86cbd0aca5c7b3b56a

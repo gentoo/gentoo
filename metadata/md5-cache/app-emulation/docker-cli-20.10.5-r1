@@ -12,4 +12,4 @@ RESTRICT=installsources strip
 SLOT=0
 SRC_URI=https://github.com/docker/cli/archive/v20.10.5.tar.gz -> docker-cli-20.10.5.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	8e7c071081c68c2c398b77fe3a1d6908	golang-base	b8fb27dacacea08140c53857f439fc7d	golang-vcs-snapshot	ff485cabd3f37b060f110b0be95092ec
-_md5_=5269899c65312ecfd58f75e2e3ceb79d
+_md5_=0381ad4e2acffd64fbaff0d8040e7bcb
