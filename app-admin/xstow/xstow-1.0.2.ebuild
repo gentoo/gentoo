@@ -18,7 +18,7 @@ DEPEND="ncurses? ( sys-libs/ncurses:0= )"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-ncurses.patch
+	"${FILESDIR}"/${PN}-1.0.1-ncurses.patch
 )
 
 src_prepare() {
