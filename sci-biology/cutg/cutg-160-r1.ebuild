@@ -1,49 +1,42 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 DESCRIPTION="Codon usage tables calculated from GenBank"
 HOMEPAGE="http://www.kazusa.or.jp/codon/"
 SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
 
-SLOT="0"
 LICENSE="public-domain"
+SLOT="0"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 # Minimal build keeps only the indexed files (if applicable) and the
 # documentation. The non-indexed database is not installed.
 IUSE="emboss minimal"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-
-DEPEND="emboss? ( sci-biology/emboss )"
-RDEPEND="${DEPEND}"
-
 RESTRICT="binchecks strip"
+
+RDEPEND="emboss? ( sci-biology/emboss )"
+BDEPEND="${RDEPEND}"
 
 src_compile() {
 	if use emboss; then
 		mkdir CODONS || die
 		ebegin "Indexing CUTG for usage with EMBOSS."
-		EMBOSS_DATA="." cutgextract -auto -directory "${S}" || die \
-			"Indexing CUTG failed."
+		EMBOSS_DATA="." cutgextract -auto -directory "${S}" || die "Indexing CUTG failed"
 		eend
 	fi
 }
 
 src_install() {
-	local file
 	dodoc README CODON_LABEL SPSUM_LABEL
+
 	if ! use minimal; then
-		dodir /usr/share/${PN}
-		mv *.codon *.spsum "${ED}"/usr/share/${PN} || die \
-			"Installing raw CUTG database failed."
+		insinto /usr/share/cutg
+		doins *.codon *.spsum
 	fi
 
 	if use emboss; then
-		dodir /usr/share/EMBOSS/data/CODONS
-		cd CODONS || die
-		for file in *; do
-			mv ${file} "${ED}"/usr/share/EMBOSS/data/CODONS/ || die \
-				"Installing the EMBOSS-indexed database failed."
-		done
+		insinto /usr/share/EMBOSS/data
+		doins -r CODONS
 	fi
 }
