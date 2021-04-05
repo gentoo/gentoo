@@ -11171,7 +11171,7 @@ games-action/heretic2 1.06c-r1: Third-person classic magical action-adventure ga
 games-action/heretic2-demo 1.06a: Third-person classic magical action-adventure game
 games-action/heroes 0.21-r2: Heroes Enjoy Riding Over Empty Slabs: similar to Tron and Nibbles
 games-action/hotline-miami 1.0.9a_p20140221-r1: High-octane action game overflowing with raw brutality
-games-action/intrusion2 1.024: Fast paced action sidescroller set in a sci-fi environment
+games-action/intrusion2 1.024-r1: Fast paced action sidescroller set in a sci-fi environment
 games-action/koth 0.8.0-r1: Multiplayer, networked game of little tanks with really big weapons
 games-action/lugaru 1.2: 3D arcade with unique fighting system and anthropomorphic characters
 games-action/luola 1.3.2-r1: A 2D multiplayer arcade game resembling V-Wing
@@ -11242,7 +11242,7 @@ games-arcade/criticalmass 1.0.2-r1: SDL/OpenGL space shoot'em up game
 games-arcade/defendguin 0.0.12-r1: A clone of the arcade game Defender, but with a Linux theme
 games-arcade/digger 20140423-r1: Digger Remastered
 games-arcade/dynamitejack 1.0.23-r2: A stealth game with bombs in glorious 2D
-games-arcade/emilia-pinball 0.3.1-r1: SDL OpenGL pinball game
+games-arcade/emilia-pinball 0.3.1-r2: SDL OpenGL pinball game
 games-arcade/epiar 0.5-r1: A space adventure/combat game
 games-arcade/excido 0.1.5c-r3: A fast paced action game
 games-arcade/fishsupper 0.1.6-r1: A simple arcade/puzzle game, loosely based on the retro classic Frogger

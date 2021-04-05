@@ -1,0 +1,13 @@
+DEFINED_PHASES=install nofetch unpack
+DESCRIPTION=Fast paced action sidescroller set in a sci-fi environment
+EAPI=7
+HOMEPAGE=http://intrusion2.com
+INHERIT=desktop wrapper
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=all-rights-reserved
+RDEPEND=amd64? ( >=dev-libs/glib-2.34.3:2[abi_x86_32(-)] >=dev-libs/atk-2.10.0[abi_x86_32(-)] >=media-libs/gst-plugins-base-0.10.36[abi_x86_32(-)] >=media-libs/gstreamer-0.10.36-r2[abi_x86_32(-)] >=media-libs/fontconfig-2.10.92[abi_x86_32(-)] >=media-libs/freetype-2.5.0.1[abi_x86_32(-)] >=x11-libs/gdk-pixbuf-2.30.7[abi_x86_32(-)] >=x11-libs/gtk+-2.24.23:2[abi_x86_32(-)] >=x11-libs/pango-1.36.3[abi_x86_32(-)] >=x11-libs/libSM-1.2.1-r1[abi_x86_32(-)] >=x11-libs/libX11-1.6.2[abi_x86_32(-)] >=x11-libs/libXext-1.3.2[abi_x86_32(-)] >=x11-libs/libXinerama-1.1.3[abi_x86_32(-)] >=x11-libs/libXtst-1.2.1-r1[abi_x86_32(-)] ) x86? ( >=dev-libs/glib-2.34.3:2 >=dev-libs/atk-2.10.0 >=media-libs/gst-plugins-base-0.10.36 >=media-libs/gstreamer-0.10.36-r2 >=media-libs/fontconfig-2.10.92 >=media-libs/freetype-2.5.0.1 >=x11-libs/gdk-pixbuf-2.30.7 >=x11-libs/gtk+-2.24.23:2 >=x11-libs/pango-1.36.3 >=x11-libs/libSM-1.2.1-r1 >=x11-libs/libX11-1.6.2 >=x11-libs/libXext-1.3.2 >=x11-libs/libXinerama-1.1.3 >=x11-libs/libXtst-1.2.1-r1 )
+RESTRICT=bindist fetch
+SLOT=0
+SRC_URI=intrusion2-1370288626-bin
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=0f113c3ffa39101e3cae44f7de69e82e
