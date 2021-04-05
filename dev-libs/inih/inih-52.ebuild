@@ -9,7 +9,7 @@ DESCRIPTION="inih (INI not invented here) simple .INI file parser"
 HOMEPAGE="https://github.com/benhoyt/inih"
 
 SRC_URI="https://github.com/benhoyt/inih/archive/r${PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~s390 sparc x86"
 
 LICENSE="BSD"
 SLOT="0"
