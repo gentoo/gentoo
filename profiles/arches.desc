@@ -22,7 +22,7 @@ mips		testing
 ppc		stable
 ppc64		stable
 riscv		testing
-s390		stable
+s390		testing
 sparc		stable
 x86		stable
 
