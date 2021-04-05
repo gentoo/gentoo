@@ -8652,7 +8652,6 @@ dev-python/os-client-config 2.1.0: OpenStack Client Configuation Library
 dev-python/os-ken 1.2.0: OpenStack Cinder brick library for managing local volume attaches
 dev-python/os-resource-classes 1.0.0: A list of standardized resource classes for OpenStack.
 dev-python/os-service-types 1.7.0: A library to handle official service types for OpenStack and it's aliases.
-dev-python/os-testr 2.0.0: A testr wrapper to provide functionality for OpenStack projects
 dev-python/os-traits 2.4.0: os-traits is a library containing standardized trait strings.
 dev-python/os-vif 2.2.0: OpenStack Cinder brick library for managing local volume attaches
 dev-python/os-win 4.2.0 5.1.0: Windows / Hyper-V library for OpenStack projects.
@@ -9296,7 +9295,6 @@ dev-python/terminaltables 3.1.0 9999: Generate simple tables in terminals from a
 dev-python/test_server 0.0.31: Server to test HTTP clients
 dev-python/testfixtures 6.17.1: A collection of helpers and mock objects for unit tests and doc tests
 dev-python/testpath 0.4.4-r1: Test utilities for code working with files and commands
-dev-python/testrepository 0.0.20: A repository of test results
 dev-python/testresources 2.0.1: A pyunit extension for managing expensive test resources
 dev-python/testscenarios 0.5.0-r1: A pyunit extension for dependency injection
 dev-python/testtools 2.4.0-r1: Extensions to the Python standard library unit testing framework
