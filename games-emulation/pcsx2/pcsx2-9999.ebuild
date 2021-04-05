@@ -3,6 +3,7 @@
 
 EAPI=7
 
+WX_GTK_VER="3.0-gtk3"
 inherit cmake fcaps flag-o-matic git-r3 toolchain-funcs wxwidgets
 
 DESCRIPTION="A PlayStation 2 emulator"
@@ -38,7 +39,7 @@ RDEPEND="
 	x11-libs/libICE
 	x11-libs/libX11
 	x11-libs/libXext
-	x11-libs/wxGTK:3.0-gtk3[X]
+	x11-libs/wxGTK:${WX_GTK_VER}[X]
 "
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-cpp/gtest )"
@@ -81,7 +82,7 @@ src_configure() {
 		-DUSE_VTUNE=FALSE
 	)
 
-	WX_GTK_VER="3.0-gtk3" setup-wxwidgets
+	setup-wxwidgets
 	cmake_src_configure
 }
 
