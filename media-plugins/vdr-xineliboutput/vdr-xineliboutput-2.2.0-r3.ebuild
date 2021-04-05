@@ -1,15 +1,16 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit flag-o-matic toolchain-funcs vdr-plugin-2
+inherit vdr-plugin-2
 
 GENTOO_VDR_CONDITIONAL=yes
 
 DESCRIPTION="VDR Plugin: Xinelib PlugIn"
 HOMEPAGE="https://sourceforge.net/projects/xineliboutput/"
-SRC_URI="mirror://sourceforge/${PN#vdr-}/${P}.tgz"
+SRC_URI="mirror://sourceforge/${PN#vdr-}/${P}.tgz
+		http://vdr.websitec.de/download/${PN}/${P}_c++11.patch.bz2"
 
 SLOT="0"
 LICENSE="GPL-2+"
@@ -71,6 +72,9 @@ src_prepare() {
 
 	# bug 711978
 	sed -e "s:X11  opengl:X11  OpenGl:" -i configure || die
+
+	# bug 771036, fix compile llvm/clang 
+	eapply "${WORKDIR}/${P}_c++11.patch"
 }
 
 src_configure() {
@@ -100,7 +104,6 @@ src_configure() {
 		$(use_enable cec libcec) \
 		$(use_enable jpeg libjpeg) \
 		$(use_enable xinerama) \
-		$(use_enable vdpau) \
 		$(use_enable dbus dbus-glib-1) \
 		$(use_enable nls i18n) \
 		$(use_enable bluray libbluray) \
