@@ -1,7 +1,7 @@
+BDEPEND=emboss? ( sci-biology/emboss )
 DEFINED_PHASES=compile install
-DEPEND=emboss? ( sci-biology/emboss )
 DESCRIPTION=Codon usage tables calculated from GenBank
-EAPI=5
+EAPI=7
 HOMEPAGE=http://www.kazusa.or.jp/codon/
 IUSE=emboss minimal
 KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
@@ -10,4 +10,4 @@ RDEPEND=emboss? ( sci-biology/emboss )
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~jlec/distfiles/cutg-160.tar.xz
-_md5_=bbbd347ac6eafe2416778cd68a45bf1a
+_md5_=b2140a376a1ceedf750f2cdd153309cf
