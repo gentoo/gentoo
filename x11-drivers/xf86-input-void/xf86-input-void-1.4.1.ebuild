@@ -7,7 +7,7 @@ inherit xorg-3
 
 DESCRIPTION="null input driver"
 
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="x11-base/xorg-server"
 DEPEND="${RDEPEND}"
