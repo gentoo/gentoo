@@ -11196,7 +11196,7 @@ games-action/supermariowar 2.0_beta1-r1: Fan-made multiplayer Super Mario Bros. 
 games-action/supertuxkart 1.1 1.2: A kart racing game starring Tux, the linux penguin (TuxKart fork)
 games-action/swordandsworcery 1.02: An exploratory action adventure game with an emphasis on audiovisual style
 games-action/teeworlds 0.7.5: Online multi-player platform 2D shooter
-games-action/towbowl-tactics 0.5: Tow Bowl Tactics is a game based on Games Workshop's Blood Bowl
+games-action/towbowl-tactics 0.5-r1: Tow Bowl Tactics is a game based on Games Workshop's Blood Bowl
 games-action/transcend 0.3-r1: Retro-style, abstract, 2D shooter
 games-action/trine 1.08-r3: A physics-based action game with character-dependent solutions to challenges
 games-action/trine-enchanted-edition 2.12.508-r3: The original sidescrolling action platformer under the Trine 2 engine
@@ -17091,7 +17091,7 @@ sys-apps/progress 0.15: Coreutils Viewer: show progress for cp, rm, dd, and so f
 sys-apps/proot 5.1.0-r2: User-space implementation of chroot, mount --bind, and binfmt_misc
 sys-apps/pv 1.6.6: Pipe Viewer: a tool for monitoring the progress of data through a pipe
 sys-apps/qcontrol 0.4.2-r100: Send commands to some microcontrollers, e.g., to change LEDs or sound a buzzer
-sys-apps/qdirstat 1.7: Qt-based directory statistics
+sys-apps/qdirstat 1.7 1.7.1: Qt-based directory statistics
 sys-apps/qingy 1.0.0-r5: A DirectFB getty replacement
 sys-apps/radeontool 1.6.3_p20181127: Utility to get/set registers and controlling backlight on radeon based GPUs
 sys-apps/razercfg 0.42: Utility for advanced configuration of Razer mice

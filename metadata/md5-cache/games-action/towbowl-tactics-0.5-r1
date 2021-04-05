@@ -1,0 +1,14 @@
+BDEPEND=app-arch/unzip
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-libs/libxml2 media-libs/smpeg media-libs/libsdl[sound,video] media-libs/sdl-net media-libs/sdl-image[jpeg,png] media-libs/sdl-mixer
+DESCRIPTION=Tow Bowl Tactics is a game based on Games Workshop's Blood Bowl
+EAPI=7
+HOMEPAGE=http://www.towbowltactics.com/index_en.html
+INHERIT=desktop edos2unix toolchain-funcs
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/libxml2 media-libs/smpeg media-libs/libsdl[sound,video] media-libs/sdl-net media-libs/sdl-image[jpeg,png] media-libs/sdl-mixer
+SLOT=0
+SRC_URI=http://www.towbowltactics.com/download/tbt.0.5.src.zip
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=9b13cf2ffc968a4839b48dece7495a7b
