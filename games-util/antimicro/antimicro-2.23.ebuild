@@ -31,6 +31,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${P}-linking-errors.patch
 	"${FILESDIR}"/${PN}-2.23-no-compress-man-page.patch
+	"${FILESDIR}"/${PN}-2.23-SDL2-include.patch
 )
 
 src_prepare() {

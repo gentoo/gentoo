@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/649242
+Thanks-to: Tim Barnes
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -585,6 +585,7 @@
+     endif(WITH_XTEST)
+ 
+     if(USE_SDL_2)
++        include_directories(${SDL2_INCLUDE_DIRS})
+         list(APPEND LIBS ${SDL2_LIBRARIES})
+     else()
+         list(APPEND LIBS ${SDL_LIBRARIES})
