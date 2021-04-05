@@ -2,9 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-MY_PV="${PV/_/-}"
 
+WX_GTK_VER="3.0-gtk3"
 inherit cmake fcaps flag-o-matic multilib toolchain-funcs wxwidgets
+
+MY_PV="${PV/_/-}"
 
 DESCRIPTION="A PlayStation 2 emulator"
 HOMEPAGE="https://pcsx2.net/"
@@ -32,7 +34,7 @@ RDEPEND="
 	x11-libs/libICE[abi_x86_32(-)]
 	x11-libs/libX11[abi_x86_32(-)]
 	x11-libs/libXext[abi_x86_32(-)]
-	>=x11-libs/wxGTK-3.0.4-r301:3.0-gtk3[abi_x86_32(-),X]
+	x11-libs/wxGTK:${WX_GTK_VER}[abi_x86_32(-),X]
 "
 DEPEND="${RDEPEND}"
 
@@ -93,7 +95,7 @@ src_configure() {
 		-DUSE_VTUNE=FALSE
 	)
 
-	WX_GTK_VER="3.0-gtk3" setup-wxwidgets
+	setup-wxwidgets
 	cmake_src_configure
 }
 
