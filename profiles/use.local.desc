@@ -899,7 +899,6 @@ app-misc/sphinx:re2 - use the dev-libs/re2 regular expression library
 app-misc/sphinx:stemmer - Enable language stemming support
 app-misc/task:sync - Enable "task sync" support
 app-misc/tmux:utempter - Include libutempter support
-app-misc/towitoko:moneyplex - Makes libtowitoko work for the moneyplex home banking software
 app-misc/tracker:miners - Install the app-misc/tracker-miners package for actual data mining support for tracker
 app-misc/tracker:stemmer - Add word stemming via dev-libs/snowball-stemmer.
 app-misc/tracker-miners:cue - Enable cue sheet parsing

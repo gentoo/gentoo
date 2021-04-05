@@ -2608,7 +2608,6 @@ app-misc/livecd-tools 2.8 2.9 9999: Gentoo LiveCD tools for autoconfiguration of
 app-misc/lockfile-progs 0.1.17: Programs to safely lock/unlock files and mailboxes
 app-misc/logiops 0.2.3: An unofficial userspace driver for HID++ Logitech devices
 app-misc/logitech-applet 0.4_pre1-r3: Control utility for some special features of some special Logitech USB mice!
-app-misc/logserial 0.4.2: A tool for logging raw data from a serial device
 app-misc/lsx 0.1-r1: list executables
 app-misc/ltunify 0.2-r2: Tool for working with Logitech Unifying receivers and devices
 app-misc/lxsplit 0.2.4-r1: Command-line file splitter/joiner for Linux
@@ -2705,7 +2704,6 @@ app-misc/tmux2html 0.1.11: Render full tmux windows or individual panes as HTML
 app-misc/tmuxp 1.5.4 1.6.5 1.7.2: tmux session manager. built on libtmux
 app-misc/todo 2.11.0 2.12.0-r1: A CLI-based TODO list manager
 app-misc/toilet 0.3-r1: The Other Implementations letters. Figlet replacement
-app-misc/towitoko 2.0.7-r3: Driver for Towitoko smartcard readers
 app-misc/tpconfig 3.1.3-r2 3.1.3-r3: Touchpad config for ALPS and Synaptics TPs. Controls tap/click behaviour
 app-misc/tpipe 1.6-r1: Command to duplicate standard input to more than one program
 app-misc/tprint 1.1.0-r1: Transparent Print Utility for terminals
@@ -2745,7 +2743,6 @@ app-mobilephone/gnokii 0.6.31-r3 9999: User space driver and tools for use with 
 app-mobilephone/heimdall 1.4.2 1.4.2-r1 9999: Tool suite used to flash firmware onto Samsung devices
 app-mobilephone/qtadb 0.8.1-r1: Android phone manager via ADB
 app-mobilephone/scmxx 0.9.0: Exchange data with Siemens phones
-app-mobilephone/smsclient 2.0.9a-r1: Utility to send SMS messages to mobile phones and pagers
 app-mobilephone/smstools 3.1.21-r2: Send and receive short messages through GSM modems
 app-mobilephone/sobexsrv 1.0.1-r3: Scripting/Secure OBEX Server (for BlueZ Linux)
 app-mobilephone/vmoconv 1.0-r1: A tool that converts Siemens phones VMO and VMI audio files to gsm and wav
@@ -2874,7 +2871,6 @@ app-portage/prefix-toolkit 8 9: Utilities for users of Gentoo Prefix
 app-portage/repo-commit 0.4.1-r1 9999: A repository commit helper
 app-portage/repoman 2.3.23 3.0.2 3.0.3 9999: Repoman is a Quality Assurance tool for Gentoo ebuilds
 app-portage/smart-live-rebuild 1.3.7 9999: Check live packages for updates and emerge them as necessary
-app-portage/splat 0.08-r1: Simple Portage Log Analyzer Tool
 app-portage/tatt 0.7-r1 0.8 9999: Arch testing tool
 app-portage/ufed 0.96 9999: Gentoo Linux USE flags editor
 app-portage/unsymlink-lib 20: Convert your system to SYMLINK_LIB=no
@@ -14666,7 +14662,6 @@ net-dns/rbldnsd 0.998b-r2: DNS server designed to serve blacklist zones
 net-dns/resolv_wrapper 1.1.5 1.1.6 1.1.7: Wrapper for DNS name resolving or DNS faking
 net-dns/resolvconf-symlink 0: Make /etc/resolv.conf a symlink to a runtime-writable location
 net-dns/s6-dns 2.2.0.1 2.3.0.0 2.3.0.1 2.3.0.2 2.3.1.1 2.3.3.0: Suite of DNS client programs and libraries for Unix systems
-net-dns/sheerdns 1.0.3: Sheerdns is a small, simple, fast master only DNS server
 net-dns/totd 1.5.1: Trick Or Treat Daemon, a DNS proxy for 6to4
 net-dns/unbound 1.13.0 1.13.0-r1 1.13.1: A validating, recursive and caching DNS resolver
 net-dns/updatedd 2.6-r5 2.6-r6: Dynamic DNS client with plugins for several dynamic dns services
@@ -15169,7 +15164,6 @@ net-misc/bwwhois 5.5.2-r2: Perl-based whois client designed to work with the new
 net-misc/cadaver 0.23.3: Command-line WebDAV client
 net-misc/calico-cni-plugin 3.1.3: Calico Networking for CNI
 net-misc/calicoctl 3.1.3: CLI to manage Calico network and security policy
-net-misc/capi4hylafax 01.03.00.99.300.20-r2: capi4hylafax adds a faxcapi modem to the hylafax enviroment
 net-misc/casync 2_p20190407: Content-Addressable Data Synchronization Tool
 net-misc/cbqinit 0.7.3-r3: Sets up class-based queue traffic control (QoS) with iproute2
 net-misc/cbugzilla 0.2.1: CLI and C api to get data from Bugzilla
@@ -17066,7 +17060,6 @@ sys-apps/nawk 20121220-r3 20180827: Brian Kernighan's pattern scanning and proce
 sys-apps/net-tools 1.60_p20180626073013 2.10 9999: Standard Linux networking tools
 sys-apps/netkit-base 0.17-r9: Old-style inetd
 sys-apps/netplug 1.2.9.2-r2 1.2.9.2-r3: Brings up/down ethernet ports automatically with cable detection
-sys-apps/newrelic-sysmond 1.1.2.124-r1: NewRelic System Monitor
 sys-apps/noexec 1.1.0-r1: a package for preventing processes from using exec system calls
 sys-apps/nosig 2: Block signals before running programs (a generic "nohup")
 sys-apps/nvme-cli 1.9-r3 1.10.1 1.11.1: NVM-Express user space tooling for Linux
