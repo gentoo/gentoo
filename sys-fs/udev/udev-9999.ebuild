@@ -6,18 +6,18 @@ PYTHON_COMPAT=( python3_{7..9} )
 
 inherit bash-completion-r1 linux-info meson ninja-utils multilib-minimal python-any-r1 toolchain-funcs udev usr-ldscript
 
-if [[ ${PV} = 9999* ]]; then
+if [[ ${PV} = 9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/systemd/systemd.git"
 	inherit git-r3
 else
-	if [[ ${PV} == *.* ]]; then
+	if [[ ${PV} == *.* ]] ; then
 		MY_PN=systemd-stable
 	else
 		MY_PN=systemd
 	fi
-	MY_PV=${PV/_/-}
-	MY_P=${MY_PN}-${MY_PV}
-	S=${WORKDIR}/${MY_P}
+	MY_PV="${PV/_/-}"
+	MY_P="${MY_PN}-${MY_PV}"
+	S="${WORKDIR}/${MY_P}"
 	SRC_URI="https://github.com/systemd/${MY_PN}/archive/v${MY_PV}/${MY_P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 fi
@@ -72,19 +72,19 @@ PDEPEND=">=sys-apps/hwids-20140304[udev]
 	>=sys-fs/udev-init-scripts-34"
 
 pkg_setup() {
-	if [[ ${MERGE_TYPE} != buildonly ]]; then
+	if [[ ${MERGE_TYPE} != buildonly ]] ; then
 		CONFIG_CHECK="~BLK_DEV_BSG ~DEVTMPFS ~!IDE ~INOTIFY_USER ~!SYSFS_DEPRECATED ~!SYSFS_DEPRECATED_V2 ~SIGNALFD ~EPOLL ~FHANDLE ~NET ~!FW_LOADER_USER_HELPER ~UNIX"
 		linux-info_pkg_setup
 
 		# CONFIG_FHANDLE was introduced by 2.6.39
 		local MINKV=2.6.39
 
-		if kernel_is -lt ${MINKV//./ }; then
+		if kernel_is -lt ${MINKV//./ } ; then
 			eerror "Your running kernel is too old to run this version of ${P}"
 			eerror "You need to upgrade kernel at least to ${MINKV}"
 		fi
 
-		if kernel_is -lt 3 7; then
+		if kernel_is -lt 3 7 ; then
 			ewarn "Your running kernel is too old to have firmware loader and"
 			ewarn "this version of ${P} doesn't have userspace firmware loader"
 			ewarn "If you need firmware support, you need to upgrade kernel at least to 3.7"
@@ -100,7 +100,7 @@ src_prepare() {
 }
 
 meson_multilib_native_use() {
-	if multilib_is_native_abi && use "$1"; then
+	if multilib_is_native_abi && use "$1" ; then
 		echo true
 	else
 		echo false
@@ -141,10 +141,10 @@ src_configure() {
 
 multilib_src_compile() {
 	# meson creates this link
-	local libudev=$(readlink src/udev/libudev.so.1)
+	local libudev=$(readlink libudev.so.1)
 
 	local targets=(
-		src/udev/${libudev}
+		${libudev}
 	)
 	if use static-libs; then
 		targets+=( src/udev/libudev.a )
@@ -170,16 +170,16 @@ multilib_src_compile() {
 }
 
 multilib_src_install() {
-	local libudev=$(readlink src/udev/libudev.so.1)
+	local libudev=$(readlink libudev.so.1)
 
-	dolib.so src/udev/{${libudev},libudev.so.1,libudev.so}
+	dolib.so {${libudev},libudev.so.1,libudev.so}
 	gen_usr_ldscript -a udev
 	use static-libs && dolib.a src/udev/libudev.a
 
 	insinto "/usr/$(get_libdir)/pkgconfig"
 	doins src/libudev/libudev.pc
 
-	if multilib_is_native_abi; then
+	if multilib_is_native_abi ; then
 		into /
 		dobin udevadm
 
@@ -226,7 +226,7 @@ multilib_src_install_all() {
 
 pkg_postinst() {
 	# Update hwdb database in case the format is changed by udev version.
-	if has_version 'sys-apps/hwids[udev]'; then
+	if has_version 'sys-apps/hwids[udev]' ; then
 		udevadm hwdb --update --root="${ROOT}"
 		# Only reload when we are not upgrading to avoid potential race w/ incompatible hwdb.bin and the running udevd
 		# https://cgit.freedesktop.org/systemd/systemd/commit/?id=1fab57c209035f7e66198343074e9cee06718bda
