@@ -3199,7 +3199,7 @@ app-text/xml2doc 20030510-r1: Tool to convert simple XML to a variety of formats
 app-text/xmldiff 2.3 2.4: A tool that figures out the differences between two similar XML files
 app-text/xmlformat 1.04: Reformat XML documents to your custom style
 app-text/xmlstarlet 1.6.1: A set of tools to transform, query, validate, and edit XML documents
-app-text/xmlto 0.0.28-r3 0.0.28-r4: Script for converting XML and DocBook documents to a variety of output formats
+app-text/xmlto 0.0.28-r3 0.0.28-r5: Script for converting XML and DocBook documents to a variety of output formats
 app-text/xournal 0.4.8.2016 9999: An application for notetaking, sketching, and keeping a journal using a stylus
 app-text/xournalpp 1.0.20 9999: Handwriting notetaking software with PDF annotation support
 app-text/xpdf 4.03: The PDF viewer and tools
@@ -14594,7 +14594,7 @@ net-dialup/isdn-firmware 2005.8.15.2: ISDN firmware for active ISDN cards (AVM, 
 net-dialup/kpnadsl4linux 1.11: ADSL4Linux, a PPTP start/stop/etc. program especially for Dutch users
 net-dialup/linux-atm 2.5.2: Tools for ATM
 net-dialup/lrzsz 0.12.20-r4: Communication package providing the X, Y, and ZMODEM file transfer protocols
-net-dialup/mgetty 1.2.1-r1 1.2.1-r3: A programm for sending and receiving fax and voice
+net-dialup/mgetty 1.2.1-r3: A programm for sending and receiving fax and voice
 net-dialup/mingetty 1.08-r1: A compact getty program for virtual consoles only
 net-dialup/minicom 2.7.1 2.8: Serial Communication Program
 net-dialup/moserial 3.0.12 3.0.15: A clean and friendly gtk-based serial terminal
