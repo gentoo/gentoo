@@ -6,7 +6,7 @@ EAPI=7
 HOMEPAGE=https://kid3.kde.org/
 INHERIT=cmake kde.org python-any-r1 xdg
 IUSE=acoustid flac kde mp3 mp4 +mpris +taglib test vorbis
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 x86
 LICENSE=GPL-2+
 RDEPEND=dev-qt/qtcore:5 dev-qt/qtdeclarative:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 sys-libs/readline:0= acoustid? ( media-libs/chromaprint media-video/ffmpeg ) flac? ( media-libs/flac[cxx] media-libs/libvorbis ) kde? ( kde-frameworks/kconfig:5 kde-frameworks/kconfigwidgets:5 kde-frameworks/kcoreaddons:5 kde-frameworks/kio:5 kde-frameworks/kwidgetsaddons:5 kde-frameworks/kxmlgui:5 ) mp3? ( media-libs/id3lib ) mp4? ( media-libs/libmp4v2:0 ) mpris? ( dev-qt/qtdbus:5 ) taglib? ( >=media-libs/taglib-1.9.1 ) vorbis? ( media-libs/libogg media-libs/libvorbis ) !media-sound/kid3:4
 REQUIRED_USE=flac? ( vorbis )
@@ -14,4 +14,4 @@ RESTRICT=!test? ( test )
 SLOT=5
 SRC_URI=mirror://sourceforge/kid3/kid3-3.8.5.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	cmake	518e4c9a6a38dfd7afc54b6a7c5de3da	kde.org	8ab7639dfaec743469a517f35332a111	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-any-r1	690a993463cd2ebcde40ccdf1bd9ba98	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
-_md5_=506e47f9781afab9fb250cd74fc1fb8e
+_md5_=f89937ff663af7b6d1c25fd621678576
