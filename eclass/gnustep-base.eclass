@@ -1,16 +1,29 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gnustep-base.eclass
 # @MAINTAINER:
 # GNUstep Herd <gnustep@gentoo.org>
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Internal handling of GNUstep pacakges
 # @DESCRIPTION:
 # Inner gnustep eclass, should only be inherited directly by gnustep-base
 # packages
 
-inherit eutils flag-o-matic
+case ${EAPI:-0} in
+	[0-4]) die "gnustep-base.eclass: EAPI ${EAPI} is too old." ;;
+	[5-7]) ;;
+	*) die "EAPI ${EAPI} is not supported by gnustep-base.eclass." ;;
+esac
+
+EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_compile src_install pkg_postinst
+
+if [[ -z ${_GNUSTEP_BASE_ECLASS} ]]; then
+_GNUSTEP_BASE_ECLASS=1
+
+inherit flag-o-matic
+
+[[ ${EAPI} == [567] ]] && inherit eutils
 
 # IUSE variables across all GNUstep packages
 # "debug": enable code for debugging
@@ -40,13 +53,6 @@ gnustep-base_pkg_setup() {
 	filter-flags -fomit-frame-pointer
 }
 
-gnustep-base_src_unpack() {
-	unpack ${A}
-	cd "${S}"
-
-	gnustep-base_src_prepare
-}
-
 gnustep-base_src_prepare() {
 	if [[ -f ./GNUmakefile ]] ; then
 		# Kill stupid includes that are simply overdone or useless on normal
@@ -63,22 +69,18 @@ gnustep-base_src_prepare() {
 		eend $?
 	fi
 
-	! has ${EAPI:-0} 0 1 2 3 4 5 && default
+	! has ${EAPI:-0} 5 && default
 }
 
 gnustep-base_src_configure() {
 	egnustep_env
 	if [[ -x ./configure ]] ; then
-		econf || die "configure failed"
+		econf
 	fi
 }
 
 gnustep-base_src_compile() {
 	egnustep_env
-	case ${EAPI:-0} in
-		0|1) gnustep-base_src_configure ;;
-	esac
-
 	egnustep_make
 }
 
@@ -105,6 +107,8 @@ gnustep-base_pkg_postinst() {
 	elog "  ${SCRIPT_PATH}/config-${PN}.sh"
 }
 
+# @FUNCTION: egnustep_env
+# @DESCRIPTION:
 # Clean/reset an ebuild to the installed GNUstep environment
 egnustep_env() {
 	# Get additional variables
@@ -113,9 +117,9 @@ egnustep_env() {
 	# Makefiles path
 	local GS_MAKEFILES
 	if [[ -d ${EPREFIX}/usr/share/GNUstep/Makefiles ]]; then
-		GS_MAKEFILES=${EPREFIX}/usr/share/GNUstep/Makefiles
+		GS_MAKEFILES="${EPREFIX}"/usr/share/GNUstep/Makefiles
 	else
-		GS_MAKEFILES=${GNUSTEP_PREFIX}/System/Library/Makefiles
+		GS_MAKEFILES="${GNUSTEP_PREFIX}"/System/Library/Makefiles
 	fi
 	if [[ -f ${GS_MAKEFILES}/GNUstep.sh ]] ; then
 		# Reset GNUstep variables
@@ -129,7 +133,6 @@ egnustep_env() {
 			sed -e "s#\(GNUSTEP_USER_.*DIR.*=\)#\1${WORKDIR}/#" \
 				-i "${WORKDIR}"/GNUstep.conf || die "GNUstep.conf sed failed"
 		fi
-
 
 		if [[ ! -d ${EPREFIX}/usr/share/GNUstep/Makefiles ]]; then
 			# Set rpath in ldflags when available
@@ -159,8 +162,7 @@ egnustep_env() {
 			&& GS_ENV=( "${GS_ENV[@]}" "debug=yes" ) \
 			|| GS_ENV=( "${GS_ENV[@]}" "debug=no" )
 
-		if has_version "gnustep-base/gnustep-make[libobjc2]";
-		then
+		if has_version "gnustep-base/gnustep-make[libobjc2]"; then
 			# Set clang for packages that do not respect gnustep-make
 			# settings (gnustep-base's configure for example)
 			export CC=clang CXX=clang CPP="clang -E" LD="clang"
@@ -171,36 +173,42 @@ egnustep_env() {
 	die "gnustep-make not installed!"
 }
 
+# @FUNCTION: egnustep_make
+# @DESCRIPTION:
 # Make utilizing GNUstep Makefiles
 egnustep_make() {
 	if [[ -f ./Makefile || -f ./makefile || -f ./GNUmakefile ]] ; then
-		emake ${*} "${GS_ENV[@]}" all || die "package make failed"
+		emake ${*} "${GS_ENV[@]}" all
 		return 0
 	fi
 	die "no Makefile found"
 }
 
+# @FUNCTION: egnustep_install
+# @DESCRIPTION:
 # Make-install utilizing GNUstep Makefiles
 egnustep_install() {
 	if [[ ! -d ${EPREFIX}/usr/share/GNUstep/Makefiles ]]; then
 		# avoid problems due to our "weird" prefix, make sure it exists
-		mkdir -p "${D}"${GNUSTEP_SYSTEM_TOOLS}
+		mkdir -p "${D}"${GNUSTEP_SYSTEM_TOOLS} || die
 	fi
 	if [[ -f ./[mM]akefile || -f ./GNUmakefile ]] ; then
-		emake ${*} "${GS_ENV[@]}" install || die "package install failed"
+		emake ${*} "${GS_ENV[@]}" install
 		return 0
 	fi
 	die "no Makefile found"
 }
 
+# @FUNCTION: egnustep_doc
+# @DESCRIPTION:
 # Make and install docs using GNUstep Makefiles
 egnustep_doc() {
 	if [[ -d "${S}"/Documentation ]] ; then
 		# Check documentation presence
 		pushd "${S}"/Documentation || die
 		if [[ -f ./[mM]akefile || -f ./GNUmakefile ]] ; then
-			emake "${GS_ENV[@]}" all || die "doc make failed"
-			emake "${GS_ENV[@]}" install || die "doc install failed"
+			emake "${GS_ENV[@]}" all
+			emake "${GS_ENV[@]}" install
 		fi
 		popd || die
 	fi
@@ -258,12 +266,9 @@ EOF
 	if [[ -d ${EPREFIX}/usr/share/GNUstep/Makefiles ]]; then
 		exeinto /usr/bin
 	else
-		exeinto ${GNUSTEP_SYSTEM_TOOLS#${EPREFIX}}/Gentoo
+		exeinto "${GNUSTEP_SYSTEM_TOOLS#${EPREFIX}}"/Gentoo
 	fi
 	doexe "${T}"/${cfile}
 }
 
-case ${EAPI:-0} in
-	0|1) EXPORT_FUNCTIONS pkg_setup src_unpack src_compile src_install pkg_postinst ;;
-	*) EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_compile src_install pkg_postinst ;;
-esac
+fi
