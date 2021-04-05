@@ -1,0 +1,17 @@
+BDEPEND=php_targets_php7-3? ( dev-lang/php:7.3[json,ssl,zlib] ) php_targets_php7-4? ( dev-lang/php:7.4[json,ssl,zlib] ) php_targets_php8-0? ( dev-lang/php:8.0[ssl,zlib] ) virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-devel/m4 sys-devel/libtool php_targets_php7-3? ( dev-lang/php:7.3 ) php_targets_php7-4? ( dev-lang/php:7.4 ) php_targets_php8-0? ( dev-lang/php:8.0 )
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=php_targets_php7-3? ( dev-lang/php:7.3[json,ssl,zlib] ) php_targets_php7-4? ( dev-lang/php:7.4[json,ssl,zlib] ) php_targets_php8-0? ( dev-lang/php:8.0[ssl,zlib] ) >=dev-libs/libbson-1.17.0 >=dev-libs/mongo-c-driver-1.17.0[sasl?,ssl] !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) sasl? ( dev-libs/cyrus-sasl ) test? ( dev-db/mongodb ) php_targets_php7-3? ( dev-lang/php:7.3 ) php_targets_php7-4? ( dev-lang/php:7.4 ) php_targets_php8-0? ( dev-lang/php:8.0 )
+DESCRIPTION=MongoDB database driver for PHP
+EAPI=7
+HOMEPAGE=https://pecl.php.net/mongodb
+INHERIT=php-ext-pecl-r3
+IUSE=libressl sasl test php_targets_php7-3 php_targets_php7-4 php_targets_php8-0
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=php_targets_php7-3? ( dev-lang/php:7.3[json,ssl,zlib] ) php_targets_php7-4? ( dev-lang/php:7.4[json,ssl,zlib] ) php_targets_php8-0? ( dev-lang/php:8.0[ssl,zlib] ) >=dev-libs/libbson-1.17.0 >=dev-libs/mongo-c-driver-1.17.0[sasl?,ssl] !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) sasl? ( dev-libs/cyrus-sasl ) php_targets_php7-3? ( dev-lang/php:7.3 ) php_targets_php7-4? ( dev-lang/php:7.4 ) php_targets_php8-0? ( dev-lang/php:8.0 )
+REQUIRED_USE=|| ( php_targets_php7-3 php_targets_php7-4 php_targets_php8-0 )
+RESTRICT=x86? ( test ) !test? ( test )
+SLOT=0
+SRC_URI=https://pecl.php.net/get/mongodb-1.9.0.tgz
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	php-ext-source-r3	59705d3e8b4658c589d46b4c7f90150c	php-ext-pecl-r3	597ff70c7422e3b3cebf00f526a32626
+_md5_=ac1ea5245456c2e983a7c3d7af2e6178
