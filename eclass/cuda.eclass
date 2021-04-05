@@ -1,21 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-case "${EAPI:-0}" in
-	0|1|2|3|4)
-		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
-		;;
-	5|6|7)
-		;;
-	*)
-		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
-		;;
-esac
 
 # @ECLASS: cuda.eclass
 # @MAINTAINER:
 # Gentoo Science Project <sci@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: Common functions for cuda packages
 # @DESCRIPTION:
 # This eclass contains functions to be used with cuda package. Currently it is
@@ -25,10 +14,20 @@ esac
 # @EXAMPLE:
 # inherit cuda
 
+case ${EAPI:-0} in
+	[0-5]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
+	[67]) ;;
+	*) die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
+esac
+
+EXPORT_FUNCTIONS src_prepare
+
 if [[ -z ${_CUDA_ECLASS} ]]; then
+_CUDA_ECLASS=1
 
 inherit flag-o-matic toolchain-funcs
-[[ ${EAPI} == [56] ]] && inherit eapi7-ver
+
+[[ ${EAPI} == 6 ]] && inherit eapi7-ver
 
 # @ECLASS-VARIABLE: NVCCFLAGS
 # @DESCRIPTION:
@@ -195,7 +194,4 @@ cuda_src_prepare() {
 	cuda_sanitize
 }
 
-EXPORT_FUNCTIONS src_prepare
-
-_CUDA_ECLASS=1
 fi
