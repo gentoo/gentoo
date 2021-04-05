@@ -1,5 +1,5 @@
---- src/Makefile.am.old	2011-04-26 10:46:05.102070461 +0200
-+++ src/Makefile.am	2011-04-26 10:46:16.872813136 +0200
+--- a/src/Makefile.am
++++ b/src/Makefile.am
 @@ -9,7 +9,7 @@
  
  INCLUDES = -I../base -I../addon
