@@ -3,11 +3,11 @@
 
 EAPI=7
 
-inherit cmake desktop xdg-utils flag-o-matic multilib
+inherit cmake desktop xdg-utils flag-o-matic
 
 PATCHSET_VER="0"
 
-DESCRIPTION="versatile implementation of the Prolog programming language"
+DESCRIPTION="Versatile implementation of the Prolog programming language"
 HOMEPAGE="https://www.swi-prolog.org/"
 SRC_URI="https://www.swi-prolog.org/download/stable/src/swipl-${PV}.tar.gz"
 
@@ -49,17 +49,15 @@ DEPEND="${RDEPEND}
 	java? ( test? ( =dev-java/junit-3.8* ) )"
 
 S="${WORKDIR}/swipl-${PV}"
-BUILD_DIR="${S}/build"
-CMAKE_USE_DIR="${S}"
 
 src_prepare() {
 	if [[ -d "${WORKDIR}"/${PV} ]] ; then
 		eapply "${WORKDIR}"/${PV}
 	fi
-	eapply_user
 
-	sed -i -e "s|\(SWIPL_INSTALL_PREFIX\)   lib/.*)|\1   $(get_libdir)/swipl)|" CMakeLists.txt || die
-	sed -i -e "s|\(SWIPL_INSTALL_CMAKE_CONFIG_DIR\) lib/|\1   $(get_libdir)/|" CMakeLists.txt || die
+	sed -e "s|\(SWIPL_INSTALL_PREFIX\)   lib/.*)|\1   $(get_libdir)/swipl)|" \
+		-e "s|\(SWIPL_INSTALL_CMAKE_CONFIG_DIR\) lib/|\1   $(get_libdir)/|" \
+		-i CMakeLists.txt || die
 
 	cmake_src_prepare
 }
@@ -68,7 +66,7 @@ src_configure() {
 	append-flags -fno-strict-aliasing
 	use debug && append-flags -DO_DEBUG
 
-	mycmakeargs=(
+	local mycmakeargs=(
 		-DSWIPL_INSTALL_PREFIX=$(get_libdir)/swipl
 		-DUSE_GMP=$(usex gmp)
 		-DINSTALL_DOCUMENTATION=$(use doc && usex archive)
@@ -83,7 +81,7 @@ src_configure() {
 		-DSWIPL_PACKAGES_QT=$(usex qt5)
 		-DSWIPL_PACKAGES_X=$(usex X)
 		-DSWIPL_PACKAGES_TERM=$(if use libedit || use readline; then echo yes; else echo no; fi)
-		)
+	)
 
 	cmake_src_configure
 }
