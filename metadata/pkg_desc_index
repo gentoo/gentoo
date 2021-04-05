@@ -9401,7 +9401,7 @@ dev-python/whoosh 2.7.4-r1: Fast, pure-Python full text indexing, search and spe
 dev-python/widgetsnbextension 3.5.1-r1: IPython HTML widgets for Jupyter
 dev-python/wrapt 1.12.1: Module for decorators, wrappers and monkey patching
 dev-python/ws4py 0.5.1-r1 9999: WebSocket client and server library for Python 2 and 3 as well as PyPy
-dev-python/wsaccel 0.6.2_p20170108 0.6.3: Accelerator for ws4py, autobahn and tornado
+dev-python/wsaccel 0.6.3: Accelerator for ws4py, autobahn and tornado
 dev-python/wsgiproxy2 0.4.6-r1: HTTP proxying tools for WSGI apps
 dev-python/wsproto 0.15.0 1.0.0: WebSockets state-machine based protocol implementation
 dev-python/wstools 0.4.8: WSDL parsing services package for Web Services for Python
