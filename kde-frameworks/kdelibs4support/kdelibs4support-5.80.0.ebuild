@@ -77,7 +77,10 @@ RDEPEND="${COMMON_DEPEND}
 	=kde-frameworks/kitemmodels-${PVCUT}*:5
 "
 
-PATCHES=( "${FILESDIR}/${PN}-5.79.0-no-kdesignerplugin.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-no-kdesignerplugin.patch"
+	"${FILESDIR}/${P}-unused-dep.patch"
+)
 
 src_prepare() {
 	ecm_src_prepare
