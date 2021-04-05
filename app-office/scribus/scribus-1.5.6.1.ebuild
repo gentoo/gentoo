@@ -73,6 +73,7 @@ RDEPEND="${DEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${P}-poppler-21.03.0-{1,2}.patch
+	"${FILESDIR}"/${P}-poppler-21.04.0.patch
 	# non(?)-upstreamable
 	"${FILESDIR}"/${PN}-1.5.3-fpic.patch
 	"${FILESDIR}"/${PN}-1.5.6-docdir.patch
