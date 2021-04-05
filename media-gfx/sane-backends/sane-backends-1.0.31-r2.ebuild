@@ -153,7 +153,6 @@ RDEPEND="
 		|| (
 			net-dns/avahi[dbus]
 			net-dns/avahi[gtk]
-			net-dns/avahi[gtk2]
 		)
 		net-dns/avahi[${MULTILIB_USEDEP}]
 		net-misc/curl[${MULTILIB_USEDEP}]
