@@ -816,7 +816,7 @@ app-admin/webalizer 2.23.08: Webserver log file analyzer
 app-admin/webapp-config 1.55-r1 9999: Gentoo's installer for web-based applications
 app-admin/whowatch 1.8.6 99999: Displays information about users currently logged on in real time
 app-admin/xkcdpass 1.17.6-r1: Password generator inspired by XKCD 936
-app-admin/xstow 1.0.1: Replacement for GNU stow with extensions
+app-admin/xstow 1.0.1 1.0.2: Replacement for GNU stow with extensions
 app-admin/xtail 2.1-r1: Tail multiple logfiles at once, even if rotated
 app-admin/yadm 2.4.0: A dotfile manager for the config files in your home folder
 app-antivirus/clamav 0.102.4 0.103.1: Clam Anti-Virus Scanner

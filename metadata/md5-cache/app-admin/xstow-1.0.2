@@ -1,0 +1,15 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=ncurses? ( sys-libs/ncurses:0= )
+DESCRIPTION=Replacement for GNU stow with extensions
+EAPI=7
+HOMEPAGE=http://xstow.sourceforge.net/
+INHERIT=autotools
+IUSE=ncurses
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=ncurses? ( sys-libs/ncurses:0= )
+SLOT=0
+SRC_URI=mirror://sourceforge/xstow/xstow-1.0.2.tar.bz2
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba
+_md5_=1576edb938b5551390d30ac326ee4957

@@ -8,4 +8,4 @@ KEYWORDS=amd64 ~arm ~arm64 ppc ppc64 x86
 LICENSE=LGPL-2.1+
 SLOT=0
 SRC_URI=https://lib3ds.googlecode.com/files/lib3ds-20080909.zip
-_md5_=95fd26bba96ea4bb4025a294d464118a
+_md5_=21dcdc76da89d409becd8079a29253cc
