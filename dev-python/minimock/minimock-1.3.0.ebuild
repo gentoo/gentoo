@@ -16,7 +16,7 @@ SRC_URI="https://github.com/lowks/minimock/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
+KEYWORDS="amd64 arm ~arm64 ppc x86"
 
 DOCS=( CHANGELOG.txt README.rst )
 

@@ -32,6 +32,19 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2021-04-05)
+# Masked for testing and for dependence on masked pango
+gui-libs/gtk
+>=gnome-base/gnome-shell-40
+>=gnome-extra/gnome-shell-extensions-40
+>=x11-wm/mutter-40
+
+# David Seifert <soap@gentoo.org> (2021-04-05)
+# Completely broken, unmaintained, does not build. Newer version
+# use Maven, good luck with that. Bugs #418625, #431644, #515816
+# #542940, #574632, #780396, removal in 30 days.
+sci-biology/gatk
+
 # David Seifert <soap@gentoo.org> (2021-04-05)
 # Tests broken since perl 5.22, last release in 2008,
 # Bug #625492, removal in 30 days.
