@@ -5,7 +5,7 @@ EAPI=6
 HOMEPAGE=https://github.com/rspec/rspec-core
 INHERIT=ruby-fakegem eapi7-ver
 IUSE=highlight test ruby_targets_ruby25 ruby_targets_ruby26 doc test test
-KEYWORDS=~alpha amd64 arm arm64 ~hppa ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 arm arm64 ~hppa ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=MIT
 RDEPEND=ruby_targets_ruby25? ( =dev-ruby/rspec-support-3.8*[ruby_targets_ruby25(-)] !!<dev-ruby/rspec-core-2.14.8-r4[ruby_targets_ruby25(-)] highlight? ( >=dev-ruby/coderay-1.1.1[ruby_targets_ruby25(-)] ) ) ruby_targets_ruby26? ( =dev-ruby/rspec-support-3.8*[ruby_targets_ruby26(-)] !!<dev-ruby/rspec-core-2.14.8-r4[ruby_targets_ruby26(-)] highlight? ( >=dev-ruby/coderay-1.1.1[ruby_targets_ruby26(-)] ) ) ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_targets_ruby26? ( dev-lang/ruby:2.6 ) ruby_targets_ruby25? ( virtual/rubygems[ruby_targets_ruby25(-)] ) ruby_targets_ruby26? ( virtual/rubygems[ruby_targets_ruby26(-)] )
 REQUIRED_USE=|| ( ruby_targets_ruby25 ruby_targets_ruby26 )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test ) !test? ( test ) !test? ( test )
 SLOT=3
 SRC_URI=https://github.com/rspec/rspec-core/archive/v3.8.2.tar.gz -> rspec-core-3.8.2-git.tgz
 _eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	ruby-utils	03dfa7f54d59d740c2964dc7256d2820	ruby-ng	40ad5ce3f20bff3a06352fd3fb633cfd	ruby-fakegem	d9894561694732185fbcad470b121f2e	eapi7-ver	f9ec87e93172b25ce65a85303dc06964
-_md5_=06ca20419c317d58bc7a37e8060c57f6
+_md5_=64e5ac10434de7f62bf02c5ebf1f326d

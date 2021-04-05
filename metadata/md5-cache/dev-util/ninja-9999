@@ -11,4 +11,4 @@ RDEPEND=emacs? ( >=app-editors/emacs-23.1:* ) vim-syntax? ( || ( app-editors/vim
 RESTRICT=!test? ( test )
 SLOT=0
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	8e7c071081c68c2c398b77fe3a1d6908	elisp-common	36f97076abd90f943a34f8bcd58b5bcc	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-any-r1	690a993463cd2ebcde40ccdf1bd9ba98	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
-_md5_=57691513ead437168f53a83c1bfc9913
+_md5_=139af70ef1ff78e1e66d5793dec1a9f2

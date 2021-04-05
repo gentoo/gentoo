@@ -5,11 +5,11 @@ EAPI=6
 HOMEPAGE=https://metacpan.org/release/Term-Screen
 INHERIT=perl-module
 IUSE=test examples
-KEYWORDS=amd64 s390 x86
+KEYWORDS=amd64 ~s390 x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/J/JS/JSTOWE/Term-Screen-1.06.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	ae176ff49e02bcbe576f6436b031c518
-_md5_=d2e267860cddf50f6787a6f6054d3192
+_md5_=fce11a4278692535c85a1ce9867fbc49

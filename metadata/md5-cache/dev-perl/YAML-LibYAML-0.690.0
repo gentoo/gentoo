@@ -4,10 +4,10 @@ DESCRIPTION=Perl YAML Serialization using XS and libyaml
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/YAML-LibYAML
 INHERIT=perl-module
-KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/T/TI/TINITA/YAML-LibYAML-0.69.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	ae176ff49e02bcbe576f6436b031c518
-_md5_=922a102e248c2468e23e5739d4d30152
+_md5_=eed2c134272f940bfb856ae551e87c47

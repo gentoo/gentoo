@@ -5,7 +5,7 @@ EAPI=6
 HOMEPAGE=https://people.redhat.com/sgrubb/audit/
 INHERIT=autotools multilib multilib-minimal toolchain-funcs preserve-libs python-r1 linux-info systemd usr-ldscript
 IUSE=gssapi ldap python static-libs abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_s390_32 abi_s390_64 python_targets_python3_7 python_targets_python3_8 kernel_linux split-usr
-KEYWORDS=~alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv s390 sparc x86
+KEYWORDS=~alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86
 LICENSE=GPL-2+ LGPL-2.1+
 RDEPEND=gssapi? ( virtual/krb5 ) ldap? ( net-nds/openldap ) sys-libs/libcap-ng python? ( python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-)] )
 REQUIRED_USE=python? ( || ( python_targets_python3_7 python_targets_python3_8 ) )
@@ -13,4 +13,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/linux-audit/audit-userspace/archive/80866dc78b5db17010516e24344eaed8dcc6fb99.tar.gz -> audit-2.8.5_p80866dc78b5d.tar.gz https://github.com/linux-audit/audit-userspace/commit/017e6c6ab95df55f34e339d2139def83e5dada1f.patch -> audit-017e6c6ab95df55f34e339d2139def83e5dada1f.patch
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib-build	ac696f0bea6c503f5980bfd5a0f312e5	multilib-minimal	8bddda43703ba94d8341f4e247f97566	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-r1	a0dcde4775c7b2f7530678fc8143340e	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	linux-info	30ded7f9adbdd03d3e848cdd74f6c395	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	usr-ldscript	7c918d239d0f9098867d0c8e33348fc9
-_md5_=c671e55889b45fed4e7820c3d6969f5d
+_md5_=0c0836438a9b67f5bb3ae6047ed1892b

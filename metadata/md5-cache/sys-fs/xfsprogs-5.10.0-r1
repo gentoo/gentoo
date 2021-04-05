@@ -6,10 +6,10 @@ EAPI=7
 HOMEPAGE=https://xfs.wiki.kernel.org/
 INHERIT=flag-o-matic toolchain-funcs systemd usr-ldscript
 IUSE=icu libedit nls split-usr
-KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 s390 sparc x86
+KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86
 LICENSE=LGPL-2.1
 RDEPEND=>=sys-apps/util-linux-2.17.2 dev-libs/inih icu? ( dev-libs/icu:= ) libedit? ( dev-libs/libedit )
 SLOT=0
 SRC_URI=https://www.kernel.org/pub/linux/utils/fs/xfs/xfsprogs/xfsprogs-5.10.0.tar.xz
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	usr-ldscript	7c918d239d0f9098867d0c8e33348fc9
-_md5_=a92da17b81595862582d09d76de075f3
+_md5_=b5797b931ed86ea6b8a121c6dba6a3c3

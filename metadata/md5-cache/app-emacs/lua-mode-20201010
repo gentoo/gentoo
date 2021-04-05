@@ -4,11 +4,11 @@ DESCRIPTION=An Emacs major mode for editing Lua scripts
 EAPI=7
 HOMEPAGE=http://lua-users.org/wiki/LuaEditorSupport http://immerrr.github.io/lua-mode/
 INHERIT=elisp
-KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux
+KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2+
 RDEPEND=>=app-editors/emacs-24.3:*
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/immerrr/lua-mode/archive/v20201010.tar.gz -> lua-mode-20201010.tar.gz
 _eclasses_=elisp-common	36f97076abd90f943a34f8bcd58b5bcc	elisp	023dd24ad9e6d5e62907e7007f548ca3
-_md5_=a1d9845466590f6dd8a11badfcb047d8
+_md5_=9cdecc6edb42d13868b26fb8fc35523c

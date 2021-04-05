@@ -5,11 +5,11 @@ EAPI=6
 HOMEPAGE=https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey
 INHERIT=autotools toolchain-funcs multilib python-any-r1 versionator pax-utils
 IUSE=debug minimal static-libs test
-KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 s390 x86 ~x64-macos
+KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 x86 ~x64-macos
 LICENSE=NPL-1.1
 RDEPEND=>=dev-libs/nspr-4.7.0 sys-libs/readline:0= x64-macos? ( dev-libs/jemalloc )
 RESTRICT=!test? ( test )
 SLOT=0/mozjs185
 SRC_URI=https://archive.mozilla.org/pub/js/js185-1.0.0.tar.gz https://dev.gentoo.org/~axs/distfiles/spidermonkey-slot0-patches-02.tar.xz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-any-r1	690a993463cd2ebcde40ccdf1bd9ba98	estack	055c42df72f76a4f45ec92b35e83cd56	versionator	d3fb3ba33acc3bbbdc4d7970227c100d	pax-utils	d3fc79d3d50544347e324864f95206e2
-_md5_=1fa1ad1970656da5a59d0b10be4faa4e
+_md5_=ad59235e0a2d56a2fdda42c7ca67e198

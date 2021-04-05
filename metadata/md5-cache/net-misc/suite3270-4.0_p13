@@ -6,10 +6,10 @@ EAPI=7
 HOMEPAGE=http://x3270.bgp.nu/
 INHERIT=font
 IUSE=cjk doc ncurses ssl tcl X X
-KEYWORDS=amd64 ppc s390 sparc x86
+KEYWORDS=amd64 ppc ~s390 sparc x86
 LICENSE=GPL-2
 RDEPEND=ssl? ( dev-libs/openssl:0= ) X? ( x11-libs/libX11 x11-libs/libXaw x11-libs/libXmu x11-libs/libXt ) ncurses? ( sys-libs/ncurses:= sys-libs/readline:0= ) tcl? ( dev-lang/tcl:0 )
 SLOT=0
 SRC_URI=mirror://sourceforge/x3270/suite3270-4.0ga13-src.tgz
 _eclasses_=font	0667878c2b594871023dd1833d05996f
-_md5_=61414bab4281bc7c8a1d5e28f334edc1
+_md5_=7d5177fdd344c07eda411a8ccd407ed0

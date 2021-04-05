@@ -6,10 +6,10 @@ EAPI=7
 HOMEPAGE=http://libdbi.sourceforge.net/
 INHERIT=autotools
 IUSE=doc static-libs
-KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86
+KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86
 LICENSE=LGPL-2.1
 PDEPEND=>=dev-db/libdbi-drivers-0.9.0
 SLOT=0
 SRC_URI=mirror://sourceforge/libdbi/libdbi-0.9.0.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba
-_md5_=857fe083868b9043c27e772cf7f56517
+_md5_=1757fc2703975a24439d2a46c8e31dc1

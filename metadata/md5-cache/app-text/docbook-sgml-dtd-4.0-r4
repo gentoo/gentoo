@@ -3,10 +3,11 @@ DEPEND=>=app-arch/unzip-5.41
 DESCRIPTION=Docbook SGML DTD 4.0
 EAPI=7
 HOMEPAGE=https://docbook.org/sgml/
-KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x64-solaris
+INHERIT=sgml-catalog-r1
+KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x64-solaris
 LICENSE=docbook
 RDEPEND=>=app-text/sgml-common-0.6.3-r7
 SLOT=4.0
 SRC_URI=https://www.oasis-open.org/docbook/sgml/4.0/docbk40.zip
 _eclasses_=sgml-catalog-r1	e6ff98989cdecb4311b67afb96edb6f8
-_md5_=07285fc0e376f06f628ea5026fe1ea6e
+_md5_=f9f8514e75d95792cd84b5db88da122e

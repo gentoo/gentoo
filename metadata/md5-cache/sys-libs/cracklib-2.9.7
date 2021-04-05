@@ -6,11 +6,11 @@ EAPI=7
 HOMEPAGE=https://github.com/cracklib/cracklib/
 INHERIT=distutils-r1 libtool multilib-minimal usr-ldscript
 IUSE=nls python static-libs zlib python_targets_python3_7 python_targets_python3_8 abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_s390_32 abi_s390_64 split-usr
-KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
+KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=LGPL-2.1
 RDEPEND=python? ( python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-)] ) zlib? ( >=sys-libs/zlib-1.2.8-r1:=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] )
 REQUIRED_USE=python? ( || ( python_targets_python3_7 python_targets_python3_8 ) )
 SLOT=0
 SRC_URI=https://github.com/cracklib/cracklib/releases/download/v2.9.7/cracklib-2.9.7.tar.bz2
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-r1	a0dcde4775c7b2f7530678fc8143340e	distutils-r1	2ac0db834bfc8d76a5ad34d536d15b35	libtool	f143db5a74ccd9ca28c1234deffede96	multilib-build	ac696f0bea6c503f5980bfd5a0f312e5	multilib-minimal	8bddda43703ba94d8341f4e247f97566	usr-ldscript	7c918d239d0f9098867d0c8e33348fc9
-_md5_=36938d0f937e20fde8cf9c4e3464b3bf
+_md5_=70ad615d3c43e01403fade7357db767e

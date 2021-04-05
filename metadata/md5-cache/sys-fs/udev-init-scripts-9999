@@ -10,4 +10,4 @@ RDEPEND=>=virtual/udev-217 !<sys-apps/openrc-0.14
 RESTRICT=test
 SLOT=0
 _eclasses_=git-r3	b8e8c92aa5fe8df7187e466138eb4e52
-_md5_=0091708055174cf64a532e81ae36745d
+_md5_=fbf07156a1f7b17a35bec968f78d0585

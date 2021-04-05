@@ -1,7 +1,7 @@
 DEFINED_PHASES=-
 DESCRIPTION=Virtual for FastCGI-enabled webservers
 EAPI=5
-KEYWORDS=~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux
+KEYWORDS=~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux
 RDEPEND=|| ( www-apache/mod_fcgid www-servers/lighttpd www-servers/bozohttpd www-servers/nginx www-servers/resin www-servers/cherokee )
 SLOT=0
-_md5_=ab6d28ac9734f507b4247fb39ba1a194
+_md5_=7e743b77237b8659310fead68c42a3bc

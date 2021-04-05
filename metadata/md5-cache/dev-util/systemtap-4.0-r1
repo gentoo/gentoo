@@ -6,7 +6,7 @@ EAPI=7
 HOMEPAGE=https://www.sourceware.org/systemtap/
 INHERIT=linux-info autotools python-single-r1 user
 IUSE=libvirt selinux sqlite +ssl test zeroconf kernel_linux python_single_target_python3_7 python_single_target_python3_8
-KEYWORDS=~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 s390 sparc x86
+KEYWORDS=~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 ~s390 sparc x86
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/elfutils-0.142 dev-libs/json-c:= sys-libs/ncurses:0= sys-libs/readline:0= python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) libvirt? ( >=app-emulation/libvirt-1.0.2 ) selinux? ( sys-libs/libselinux ) sqlite? ( dev-db/sqlite:3 ) ssl? ( dev-libs/nspr dev-libs/nss ) zeroconf? ( net-dns/avahi )
 REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_8 )
@@ -14,4 +14,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://www.sourceware.org/systemtap/ftp/releases/systemtap-4.0.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	linux-info	30ded7f9adbdd03d3e848cdd74f6c395	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-single-r1	c7de0087e87a282f2faec351822e097c	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	user	26d8ce6329c43cbac965617f1c0627e2
-_md5_=f4ebcf899a8aa1c3b98e92b83c141acd
+_md5_=f4fb891067165a9f6fd36040d91a5498

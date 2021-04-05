@@ -4,11 +4,12 @@ DEPEND=fuse? ( sys-fs/fuse:0= ) ncurses? ( sys-libs/ncurses:0= ) openssl? ( dev-
 DESCRIPTION=User space utilities for the zSeries (s390) Linux kernel and device drivers
 EAPI=7
 HOMEPAGE=https://github.com/ibm-s390-tools/s390-tools
+INHERIT=toolchain-funcs udev
 IUSE=cryptsetup fuse ncurses openssl pfm snmp zlib
-KEYWORDS=-* s390
+KEYWORDS=-* ~s390
 LICENSE=MIT
 RDEPEND=fuse? ( sys-fs/fuse:0= ) ncurses? ( sys-libs/ncurses:0= ) openssl? ( dev-libs/openssl:0= cryptsetup? ( >=sys-fs/cryptsetup-2.0.3:= dev-libs/json-c:= ) ) pfm? ( app-misc/pfm ) snmp? ( net-analyzer/net-snmp ) zlib? ( sys-libs/zlib )
 SLOT=0
 SRC_URI=https://github.com/ibm-s390-tools/s390-tools/archive/v2.12.0.tar.gz -> s390-tools-2.12.0.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	udev	452708c3f55cf6e918b045adb949a9e6
-_md5_=c3f0876eb8acde2711dffc0946bcdff6
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	udev	452708c3f55cf6e918b045adb949a9e6
+_md5_=8cecf98c30a142db29e12eaafe840ac6

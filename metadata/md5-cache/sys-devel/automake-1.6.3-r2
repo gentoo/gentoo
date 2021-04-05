@@ -3,9 +3,9 @@ DEPEND=dev-lang/perl >=sys-devel/automake-wrapper-10 >=sys-devel/autoconf-2.69:*
 DESCRIPTION=Used to generate Makefile.in from Makefile.am
 EAPI=7
 HOMEPAGE=https://www.gnu.org/software/automake/
-KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86
+KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86
 LICENSE=GPL-2
 RDEPEND=dev-lang/perl >=sys-devel/automake-wrapper-10 >=sys-devel/autoconf-2.69:* sys-devel/gnuconfig
 SLOT=1.6
 SRC_URI=mirror://gnu/automake/automake-1.6.3.tar.bz2
-_md5_=3b4057919d6cdc74c4d8509a7357d6fa
+_md5_=bbc552c030c6dcf188e26a90461c6bbd

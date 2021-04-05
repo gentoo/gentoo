@@ -5,10 +5,10 @@ DESCRIPTION=Perl API for memcached
 EAPI=7
 HOMEPAGE=http://www.danga.com/memcached/ https://metacpan.org/release/Cache-Memcached
 INHERIT=perl-module
-KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
+KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=|| ( Artistic GPL-1 )
 RDEPEND=virtual/perl-Encode virtual/perl-Storable dev-perl/String-CRC32 virtual/perl-Time-HiRes dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DO/DORMANDO/Cache-Memcached-1.30.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	ae176ff49e02bcbe576f6436b031c518
-_md5_=e08e8c4b75f565c13720f995d90b1534
+_md5_=a6d4459d8ab669db452d8df4544f19c9
