@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools eutils
+
+inherit autotools
 
 DESCRIPTION="An Angband variant, with a Japanese/fantasy theme"
 HOMEPAGE="http://hengband.sourceforge.jp/en/"
@@ -14,15 +15,21 @@ SLOT="0"
 KEYWORDS="~x86"
 IUSE="X l10n_ja"
 
-RDEPEND=">=sys-libs/ncurses-5:0
-	X? ( x11-libs/libX11 )"
-DEPEND="${RDEPEND}
-	X? ( x11-libs/libXt )"
+RDEPEND="
+	>=sys-libs/ncurses-5:0=
+	X? ( x11-libs/libX11 )
+"
+DEPEND="
+	${RDEPEND}
+	X? ( x11-libs/libXt )
+"
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}/${PN}-1.6.2-added_faq.patch"
+PATCHES=(
+	"${FILESDIR}/${PN}-1.6.2-added_faq.patch"
 	"${FILESDIR}/${PN}-1.6.2-autoconf-ncurses.patch"
-	"${FILESDIR}/${PN}-1.6.2-ovflfix.patch" )
+	"${FILESDIR}/${PN}-1.6.2-ovflfix.patch"
+)
 
 src_prepare() {
 	# Removing Xaw dependency as is not used
