@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0/25
 SRC_URI=https://github.com/protocolbuffers/protobuf/archive/v3.14.0.tar.gz -> protobuf-3.14.0.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	elisp-common	36f97076abd90f943a34f8bcd58b5bcc	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib-build	ac696f0bea6c503f5980bfd5a0f312e5	multilib-minimal	8bddda43703ba94d8341f4e247f97566
-_md5_=4d434eb3cab2c166fb2ff0a759f65972
+_md5_=aafa4eb376bc5fb889c60f1f7fc87a47

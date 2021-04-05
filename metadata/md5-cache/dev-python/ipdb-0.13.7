@@ -6,7 +6,7 @@ EAPI=7
 HOMEPAGE=https://pypi.org/project/ipdb/
 INHERIT=distutils-r1
 IUSE=test python_targets_python3_7 python_targets_python3_8 python_targets_python3_9
-KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 x86
 LICENSE=GPL-2
 RDEPEND=>=dev-python/ipython-7.17[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] >=dev-python/setuptools-42.0.2[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)]
 REQUIRED_USE=|| ( python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 )
@@ -14,4 +14,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://pypi/i/ipdb/ipdb-0.13.7.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-r1	a0dcde4775c7b2f7530678fc8143340e	distutils-r1	2ac0db834bfc8d76a5ad34d536d15b35
-_md5_=522af1818b9673864cf8ce66d02b2b59
+_md5_=859c66f1868946146338e1efa94ae9f3
