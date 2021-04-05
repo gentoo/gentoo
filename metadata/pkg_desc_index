@@ -18919,7 +18919,7 @@ x11-terms/qterminal 0.16.1-r1 9999: Qt-based multitab terminal emulator
 x11-terms/root-tail 1.2-r4: Terminal to display (multiple) log files on the root window
 x11-terms/roxterm 3.9.4: A terminal emulator designed to integrate with the ROX environment
 x11-terms/rxvt-unicode 9.22-r7 9999: rxvt clone with xft and unicode support
-x11-terms/sakura 3.7.0 3.7.1: sakura is a terminal emulator based on GTK and VTE
+x11-terms/sakura 3.7.1: sakura is a terminal emulator based on GTK and VTE
 x11-terms/st 0.8.4 9999: simple terminal implementation for X
 x11-terms/terminator 2.0.1 2.1.0: Multiple GNOME terminals in one window
 x11-terms/terminology 1.9.0: Feature rich terminal emulator using the Enlightenment Foundation Libraries
