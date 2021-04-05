@@ -1,7 +1,5 @@
-Allow compilation on Darwin
-
---- netcat.c
-+++ netcat.c
+--- a/netcat.c
++++ b/netcat.c
 @@ -43,11 +43,13 @@
  #include <arpa/telnet.h>
  #include <arpa/inet.h>
@@ -73,8 +71,8 @@ Allow compilation on Darwin
  int
  main(int argc, char *argv[])
  {
---- socks.c
-+++ socks.c
+--- a/socks.c
++++ b/socks.c
 @@ -38,7 +38,7 @@
  #include <string.h>
  #include <unistd.h>

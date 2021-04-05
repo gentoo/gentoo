@@ -29,7 +29,7 @@ src_prepare() {
 	default
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		# this undoes some of the Debian/Linux changes
-		epatch "${FILESDIR}"/${P}-darwin.patch
+		eapply "${FILESDIR}"/${P}-darwin.patch
 	fi
 }
 
