@@ -30,6 +30,6 @@ src_install() {
 	default
 
 	if ! use static-libs; then
-		rm "${ED}/usr/$(get_libdir)/${PN}.la" || die
+		find "${ED}" -name '*.la' -delete || die
 	fi
 }
