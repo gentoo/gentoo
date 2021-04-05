@@ -10,6 +10,6 @@ LICENSE=Apache-2.0
 RDEPEND=>=virtual/jre-1.8:* dev-java/joda-convert:0 >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
 RESTRICT=!test? ( test ) !test? ( test )
 SLOT=0
-SRC_URI=https://github.com/JodaOrg/joda-time/archive/refs/tags/v2.10.10.tar.gz -> joda-time-2.10.10-sources.tar.gz
+SRC_URI=https://github.com/JodaOrg/joda-time/archive/refs/tags/v2.10.10.tar.gz -> joda-time-2.10.10.tar.gz
 _eclasses_=java-utils-2	2440f41421207d084e5e3f1fb001b34e	java-pkg-2	45c44ec10db6affb3ebee1ac72039888	java-pkg-simple	c85bf2d75a5f53e7b39fc9104701ebfb
-_md5_=953f1fd38239840d44c41112e67f2c9e
+_md5_=7f308f5c8265f8d5943dfc1c7a7610f9
