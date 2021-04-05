@@ -1,15 +1,15 @@
-BDEPEND=sys-devel/bison sys-devel/flex sys-devel/libtool virtual/pkgconfig
-DEFINED_PHASES=compile configure install
+BDEPEND=sys-devel/bison sys-devel/flex sys-devel/libtool virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=compile configure install prepare
 DEPEND=media-libs/fontconfig media-libs/freetype:2 media-libs/libjpeg-turbo:= media-libs/libpng:0= x11-libs/libICE x11-libs/libX11 >=x11-libs/libXaw3dXft-1.6.2c[unicode] x11-libs/libXext x11-libs/libXft x11-libs/libXmu x11-libs/libXpm x11-libs/libXt sys-libs/zlib pgf? ( media-libs/libpgf ) tiff? ( media-libs/jbigkit:0= media-libs/tiff:0 )
 DESCRIPTION=Image editor with tiff, jpeg and png support
 EAPI=7
 HOMEPAGE=http://sf-xpaint.sourceforge.net/
-INHERIT=desktop toolchain-funcs
+INHERIT=autotools desktop toolchain-funcs
 IUSE=pgf tiff
 KEYWORDS=amd64 x86
 LICENSE=GPL-3
 RDEPEND=media-libs/fontconfig media-libs/freetype:2 media-libs/libjpeg-turbo:= media-libs/libpng:0= x11-libs/libICE x11-libs/libX11 >=x11-libs/libXaw3dXft-1.6.2c[unicode] x11-libs/libXext x11-libs/libXft x11-libs/libXmu x11-libs/libXpm x11-libs/libXt sys-libs/zlib pgf? ( media-libs/libpgf ) tiff? ( media-libs/jbigkit:0= media-libs/tiff:0 )
 SLOT=0
 SRC_URI=mirror://sourceforge/sf-xpaint/xpaint-2.10.2.tar.bz2
-_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
-_md5_=13de029235347461cad0b1b52ef7e89d
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	desktop	c0d27bf73aa08ca05b663dbd31fbef28
+_md5_=ad5a40002c718ea0015096e1c6a1065b

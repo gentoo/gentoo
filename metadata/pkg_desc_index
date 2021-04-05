@@ -17078,7 +17078,7 @@ sys-apps/pcsc-slb-rf72-drv 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Rea
 sys-apps/pcsc-tools 1.5.6 1.5.7: PC/SC Architecture smartcard tools
 sys-apps/pick 4.0.0: a fuzzy search tool for the command-line
 sys-apps/pkgcore 0.11.2-r2 0.11.5-r3 0.11.6-r1 0.11.8-r1 9999: a framework for package management
-sys-apps/plocate 1.1.5: Posting locate is a much faster locate
+sys-apps/plocate 1.1.5 1.1.6: Posting locate is a much faster locate
 sys-apps/pmount 0.9.99_alpha-r6: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
 sys-apps/pnputils 0.1: Plug and Play BIOS utilities
