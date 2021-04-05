@@ -3,8 +3,8 @@
 
 EAPI=7
 
-WX_GTK_VER="3.0"
-inherit multilib toolchain-funcs wrapper wxwidgets
+WX_GTK_VER="3.0-gtk3"
+inherit multilib toolchain-funcs wrapper wxwidgets xdg
 
 DESCRIPTION="Port of 7-Zip archiver for Unix"
 HOMEPAGE="http://p7zip.sourceforge.net/"
