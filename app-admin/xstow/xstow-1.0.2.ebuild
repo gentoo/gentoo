@@ -5,7 +5,7 @@ EAPI=7
 
 inherit autotools
 
-DESCRIPTION="replacement for GNU stow with extensions"
+DESCRIPTION="Replacement for GNU stow with extensions"
 HOMEPAGE="http://xstow.sourceforge.net/"
 SRC_URI="mirror://sourceforge/xstow/${P}.tar.bz2"
 
@@ -22,13 +22,12 @@ PATCHES=(
 )
 
 src_prepare() {
-	eautoreconf
 	default
+	eautoreconf
 }
 
 src_configure() {
 	econf $(use_with ncurses curses)
-	default
 }
 
 src_install() {
