@@ -7850,7 +7850,7 @@ dev-php/agavi 1.0.8: PHP MVC application framework
 dev-php/awl 0.61 0.62: Andrew McMillan's Web Libraries
 dev-php/ca-bundle 1.1.3: Find the system CA bundle or fall back to the Mozilla one
 dev-php/cli-prompt 1.0.0 1.0.3: Allows you to prompt for user input on the command line
-dev-php/composer 1.10.20 2.0.11: Dependency Manager for PHP
+dev-php/composer 1.10.20 2.0.11 2.0.12: Dependency Manager for PHP
 dev-php/cphplib 0.51-r1: Cute PHP Library (cphplib)
 dev-php/doctrine 2.6.1 2.6.4: An object relational mapper for PHP
 dev-php/doctrine-instantiator 1.0.5 1.1.0 1.3.0 1.3.1 1.4.0: Utility to instantiate objects in PHP without invoking their constructors
@@ -12946,7 +12946,7 @@ media-gfx/icc-examin 0.56_p20171007 9999: Viewer for ICC and CGATS, argyll gamut
 media-gfx/icon-slicer 0.3: utility for generating icon themes and libXcursor cursor themes
 media-gfx/icoutils 0.32.3: Tools to extract and convert images in icon and cursor files (.ico, .cur)
 media-gfx/igal 2.0-r1: Static HTML image gallery generator
-media-gfx/imagemagick 6.9.12.3 6.9.12.4 6.9.12.5 7.0.11.3 7.0.11.4 7.0.11.5 9999: A collection of tools and libraries for many image formats
+media-gfx/imagemagick 6.9.12.3 6.9.12.4 6.9.12.5 6.9.12.6 7.0.11.3 7.0.11.4 7.0.11.5 7.0.11.6 9999: A collection of tools and libraries for many image formats
 media-gfx/imageworsener 1.3.3: Utility for image scaling and processing
 media-gfx/img2pdf 0.3.6 0.4.0: Losslessly convert raster images to PDF
 media-gfx/imv 4.2.0 9999: Minimal image viewer designed for tiling window manager users
