@@ -26,7 +26,7 @@ S="${WORKDIR}"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~ia64 ppc s390 sparc x86"
+KEYWORDS="~alpha amd64 arm ~ia64 ppc ~s390 sparc x86"
 IUSE=""
 RESTRICT="binchecks strip"
 
