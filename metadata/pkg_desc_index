@@ -3573,7 +3573,7 @@ dev-cpp/gtest 1.10.0_p20200702 9999: Google C++ Testing Framework
 dev-cpp/gtkmm 2.24.5-r1 3.24.2-r1 3.24.3 3.24.4: C++ interface for GTK+
 dev-cpp/gtksourceviewmm 2.10.3-r2 3.18.0-r1: C++ bindings for gtksourceview
 dev-cpp/htmlcxx 0.87: A simple non-validating CSS 1 and HTML parser for C++
-dev-cpp/kokkos 3.0.00 3.1.00 3.1.01: Kokkos C++ Performance Portability Programming EcoSystem
+dev-cpp/kokkos 3.0.00 3.1.01: Kokkos C++ Performance Portability Programming EcoSystem
 dev-cpp/libcmis 0.5.2-r1 9999: C++ client library for the CMIS interface
 dev-cpp/libcutl 1.10.0: A collection of C++ libraries (successor of libcult)
 dev-cpp/libglademm 2.6.7-r2: C++ bindings for libglade
@@ -11920,7 +11920,7 @@ gnome-base/gnome-mime-data 2.18.0: MIME data for Gnome
 gnome-base/gnome-panel 3.36.2: The GNOME Flashback Panel
 gnome-base/gnome-session 3.36.0-r1 3.38.0 3.38.0-r1: Gnome session manager
 gnome-base/gnome-settings-daemon 3.36.1 3.38.1: Gnome Settings Daemon
-gnome-base/gnome-shell 3.36.7 3.38.2 3.38.3 3.38.4: Provides core UI functions for the GNOME 3 desktop
+gnome-base/gnome-shell 3.36.7 3.38.2 3.38.3 3.38.4 40.0: Provides core UI functions for the GNOME 3 desktop
 gnome-base/gnome-vfs 2.24.4-r5: Gnome Virtual Filesystem
 gnome-base/gsettings-desktop-schemas 3.34.0 3.36.1 3.38.0 40.0: Collection of GSettings schemas for GNOME desktop
 gnome-base/gvfs 1.44.1: Virtual filesystem implementation for GIO
@@ -11969,7 +11969,7 @@ gnome-extra/gnome-shell-extension-control-blur-effect-on-lock-screen 20200713 20
 gnome-extra/gnome-shell-extension-dash-to-panel 40: An icon taskbar for the Gnome Shell
 gnome-extra/gnome-shell-extension-desktop-icons 20.04.0-r1 20.10.0: A GNOME Shell extension for providing desktop icons
 gnome-extra/gnome-shell-extension-gsconnect 42 44 45: KDE Connect implementation for Gnome Shell
-gnome-extra/gnome-shell-extensions 3.36.7 3.38.1 3.38.2: JavaScript extensions for GNOME Shell
+gnome-extra/gnome-shell-extensions 3.36.7 3.38.1 3.38.2 40.0: JavaScript extensions for GNOME Shell
 gnome-extra/gnome-shell-extensions-topicons-plus 27: Moves legacy tray icons to top panel
 gnome-extra/gnome-shell-frippery 3.34.2 3.38.0: Unofficial extension pack providing GNOME 2-like features for GNOME 3
 gnome-extra/gnome-software 3.34.2 3.36.1: Gnome install & update software
@@ -12074,6 +12074,7 @@ gui-libs/egl-wayland 1.1.6: EGLStream-based Wayland external platform (for NVIDI
 gui-libs/eglexternalplatform 1.1: EGL External Platform interface
 gui-libs/gdk-pixbuf-loader-webp 0.0.2: WebP GDK Pixbuf Loader library
 gui-libs/greetd 0.6.1 0.7.0: ipc based login daemon
+gui-libs/gtk 4.2.0: Gimp ToolKit +
 gui-libs/gtk-layer-shell 0.1.0-r1: Library to create desktop components for Wayland using the Layer Shell protocol
 gui-libs/libhandy 0.0.13 1.0.2 1.0.3: Building blocks for modern adaptive GNOME apps
 gui-libs/libwpe 1.8.0: Platform-agnostic interfaces for WPE WebKit
@@ -12428,11 +12429,11 @@ kde-misc/markdownpart 0.1.1 20.12.3: Markdown viewer KParts plugin based on QTex
 kde-misc/openofficeorg-thumbnail 1.0.0-r500: Thumbnail-plugin that generates thumbnails for ODF files
 kde-misc/plasma-applet-network-monitor 1.7.3-r1: Plasma 5 applet for monitoring active network connections
 kde-misc/plasma-applet-weather-widget 1.6.10-r1: Plasma 5 applet for weather forecasts
-kde-misc/plasma-pass 1.1.0 1.2.0: Plasma applet to access password from pass
+kde-misc/plasma-pass 1.2.0: Plasma applet to access password from pass
 kde-misc/playbar2 2.5-r1: MPRIS2 client, written in QML for Plasma 5
 kde-misc/rsibreak 0.12.13: Small utility which bothers you at certain intervals
 kde-misc/skanlite 2.2.0: Simple image scanning application based on libksane and KDE Frameworks
-kde-misc/tellico 3.3.4-r1 3.3.5: Collection manager based on KDE Frameworks
+kde-misc/tellico 3.3.5: Collection manager based on KDE Frameworks
 kde-misc/ultimate-gmail-feed 2.1: Plasma 5 widget showing your Gmail feed
 kde-misc/wacomtablet 3.2.0: System settings module for Wacom tablets
 kde-misc/zanshin 0.5.71-r2: Getting things done application by KDE
@@ -16098,10 +16099,10 @@ sci-chemistry/threeV 1.2-r1: 3V: Voss Volume Voxelator
 sci-chemistry/tinker 8.2.1: Molecular modeling package that includes force fields, such as AMBER and CHARMM
 sci-chemistry/tm-align 20150914: Quick & Accurate Structural Alignment
 sci-chemistry/vmd 1.9.4_alpha43 1.9.4_alpha51: Visual Molecular Dynamics
-sci-chemistry/votca-csg 1.5.1 1.6 1.6.4 2021 9999: Votca coarse-graining engine
-sci-chemistry/votca-csgapps 1.5.1 1.6 1.6.4: Extra applications for votca-csg
+sci-chemistry/votca-csg 1.5.1 1.6.4 2021 9999: Votca coarse-graining engine
+sci-chemistry/votca-csgapps 1.5.1 1.6.4: Extra applications for votca-csg
 sci-chemistry/votca-ctp 1.5.1: Votca charge transport module
-sci-chemistry/votca-xtp 1.6 1.6.4 2021 9999: Votca excitation and charge properties module
+sci-chemistry/votca-xtp 1.6.4 2021 9999: Votca excitation and charge properties module
 sci-chemistry/wxmacmolplt 7.5-r1: Chemical 3D graphics program with GAMESS input builder
 sci-chemistry/xds-bin 20170930: Software for processing single-crystal X-ray monochromatic diffraction data
 sci-chemistry/xyza2pipe 20121001: Cross conversion environment of NMR spectra
@@ -16147,7 +16148,7 @@ sci-electronics/pcb 4.2.2: GPL Electronic Design Automation: Printed Circuit Boa
 sci-electronics/petrify 4.2-r1: Synthesize Petri nets into asynchronous circuits
 sci-electronics/puff 20100127-r1: microwave CAD software
 sci-electronics/pulseview 0.4.2 9999: Qt based logic analyzer GUI for sigrok
-sci-electronics/qelectrotech 0.70 0.80 9999: Qt5 application to design electric diagrams
+sci-electronics/qelectrotech 0.80 9999: Qt5 application to design electric diagrams
 sci-electronics/quartus-prime-lite 15.1.0.185-r2 15.1.0.185-r3: Full-featured EDA product for altera devices
 sci-electronics/sigrok-cli 0.7.1-r1 0.7.2 9999: Command-line client for the sigrok logic analyzer software
 sci-electronics/spice 3.5.5-r2: general-purpose circuit simulation program
@@ -16470,7 +16471,7 @@ sci-libs/ufconfig 3.7.1: Common configuration scripts for the SuiteSparse librar
 sci-libs/umfpack 5.7.9: Unsymmetric multifrontal sparse LU factorization library
 sci-libs/volk 2.4.1: vector optimized library of kernels
 sci-libs/voro++ 0.4.6-r1: 3D Voronoi cell software library
-sci-libs/votca-tools 1.5.1 1.6 1.6.2 1.6.4 2021 9999: Votca tools library
+sci-libs/votca-tools 1.5.1 1.6.4 2021 9999: Votca tools library
 sci-libs/vtk 8.2.0 8.2.0-r1: The Visualization Toolkit
 sci-libs/xdmf2 1.0_p141226-r4: eXtensible Data Model and Format
 sci-libs/xdrfile 1.1.4: Library to read gromacs trajectory and topology files
@@ -16486,7 +16487,7 @@ sci-mathematics/calc 2.12.5.4: Arbitrary precision C-like arithmetic system
 sci-mathematics/cgal 5.1 5.2: C++ library for geometric algorithms and data structures
 sci-mathematics/cliquer 1.21 1.22: C routines for finding cliques in an arbitrary weighted graph
 sci-mathematics/coq 8.11.2 8.12.0-r1 8.13.0: Proof assistant written in O'Caml
-sci-mathematics/cvc4 1.7-r1: automatic theorem prover for satisfiability modulo theories (SMT) problems
+sci-mathematics/cvc4 1.7-r1: Automatic theorem prover for satisfiability modulo theories (SMT) problems
 sci-mathematics/dataplot 20131220: Program for scientific visualization and statistical analyis
 sci-mathematics/diagrtb 2.64: Calculation of some eigenvectors of a large real, symmetrical, matrix
 sci-mathematics/dunshire 0.1.1-r1: Python library to solve linear games over symmetric cones
@@ -18097,7 +18098,7 @@ www-apps/novnc 1.1.0 1.2.0 9999: noVNC is a VNC client implemented using HTML5 t
 www-apps/owncloud 10.5.0 10.6.0: Web-based storage application where all your data is under your own control
 www-apps/phpBB 3.3.3: An open-source PHP-based bulletin board package
 www-apps/phpsysinfo 3.3.2: A customizable PHP script that displays information about your system nicely
-www-apps/piwigo 11.3.0 11.4.0: a photo gallery software for the web
+www-apps/piwigo 11.4.0: a photo gallery software for the web
 www-apps/postfixadmin 3.3.5 3.3.7 3.3.8: Web Based Management tool for Postfix style virtual domains and users
 www-apps/prewikka 5.2.0: Graphical front-end analysis console for the Prelude Framework
 www-apps/radicale 2.1.12 3.0.6: A simple CalDAV calendar server
@@ -19089,7 +19090,7 @@ x11-wm/matwm2 0.1.2_pre3-r1: Simple EWMH compatible window manager with titlebar
 x11-wm/metacity 3.36.1: GNOME Flashback window manager
 x11-wm/muffin 4.6.3 4.8.1: Compositing window manager forked from Mutter for use with Cinnamon
 x11-wm/musca 0.9.24_p20100226-r4: A simple dynamic window manager, with features nicked from ratpoison and dwm
-x11-wm/mutter 3.36.7-r1 3.38.2 3.38.3 3.38.3-r1 3.38.4: GNOME 3 compositing window manager based on Clutter
+x11-wm/mutter 3.36.7-r1 3.38.2 3.38.3 3.38.3-r1 3.38.4 40.0: GNOME 3 compositing window manager based on Clutter
 x11-wm/notion 3_p2015061300-r100 9999: Notion is a tiling, tabbed window manager for the X window system
 x11-wm/openbox 3.6.1-r3 9999: Standards compliant, fast, light-weight, extensible window manager
 x11-wm/oroborus 2.0.20-r1: Small and fast window manager

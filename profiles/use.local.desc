@@ -3351,6 +3351,11 @@ gui-apps/waypipe:systemtap - Enable SystemTAP/DTrace tracing
 gui-apps/wayvnc:gbm - enable GPU-side screencopy (experimental)
 gui-apps/wayvnc:tracing - Trace kernel and memory calls
 gui-apps/wf-recorder:opencl - Enable OpenCL
+gui-libs/gtk:broadway - Enable the GDK Broadway backend.
+gui-libs/gtk:cloudprint - Enable printing via Google Cloud Print.
+gui-libs/gtk:colord - Use x11-misc/colord for color management in printing
+gui-libs/gtk:sysprof - Enable profiling data capture support using dev-util/sysprof-capture
+gui-libs/gtk:vulkan - Enable support for the Vulkan graphics API
 gui-libs/libhandy:glade - Install module and catalog for dev-util/glade
 gui-libs/neatvnc:examples - Build and install examples
 gui-libs/neatvnc:jpeg - Enable fast encodings
