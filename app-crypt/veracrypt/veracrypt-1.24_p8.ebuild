@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
+WX_GTK_VER="3.0-gtk3"
 inherit desktop eapi7-ver linux-info pax-utils toolchain-funcs wxwidgets
 
 MY_PV="$(ver_cut 1-2)-Update$(ver_cut 4)_MacOSX"
@@ -18,8 +20,6 @@ SLOT="0"
 KEYWORDS="amd64"
 IUSE="+asm cpu_flags_x86_sse2 cpu_flags_x86_sse4_1 cpu_flags_x86_ssse3 doc X"
 RESTRICT="bindist mirror"
-
-WX_GTK_VER="3.0-gtk3"
 
 RDEPEND="
 	sys-fs/lvm2

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="http://suso.suso.org/programs/randomsig/downloads/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 s390 sparc x86"
+KEYWORDS="~amd64 ~s390 sparc x86"
 
 RDEPEND="dev-lang/perl"
 DEPEND="${RDEPEND}"

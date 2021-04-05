@@ -14,7 +14,7 @@ else
 	MY_P="${MY_P/_rc/-rc}"
 	SRC_URI="https://roy.marples.name/downloads/${PN}/${MY_P}.tar.xz
 		https://dev.gentoo.org/~polynomial-c/${P}-patches-01.tar.xz"
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
 	S="${WORKDIR}/${MY_P}"
 fi
 
