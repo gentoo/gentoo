@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 WX_GTK_VER="3.0"
 DIST_AUTHOR=AZAWAWI
@@ -24,6 +24,7 @@ DEPEND="${RDEPEND}
 	>=dev-perl/ExtUtils-XSpp-0.160.200
 	>=dev-perl/Module-Build-0.360.0
 "
+BDEPEND=${DEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.34-flags.patch
