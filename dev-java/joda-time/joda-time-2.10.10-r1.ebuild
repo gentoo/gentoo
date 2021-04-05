@@ -14,7 +14,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Date and time library to replace JDK date handling"
 HOMEPAGE="https://www.joda.org/joda-time/"
-SRC_URI="https://github.com/JodaOrg/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}-sources.tar.gz"
+SRC_URI="https://github.com/JodaOrg/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -50,3 +50,26 @@ JAVA_TEST_SRC_DIR="${P}/src/test/java"
 JAVA_TEST_RESOURCE_DIRS=(
 	"${P}/src/test/resources"
 )
+
+src_compile() {
+	java-pkg-simple_src_compile
+
+	# Generate the missing "org/joda/time/tz/data/ZoneInfoMap"
+	# Arguments from https://github.com/JodaOrg/joda-time/blob/v2.10.10/pom.xml#L413-L427
+	"$(java-config -J)" \
+		-cp ${PN}.jar \
+		org.joda.time.tz.ZoneInfoCompiler \
+		-src "${JAVA_SRC_DIR}/org/joda/time/tz/src" \
+		-dst "${P}/src/main/resources/org/joda/time/tz/data" \
+		africa \
+		antarctica \
+		asia \
+		australasia \
+		europe \
+		northamerica \
+		southamerica \
+		etcetera \
+		backward
+
+	java-pkg_addres ${PN}.jar "${P}"/src/main/resources || die
+}

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ ROS_SUBDIR=tools/${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="Command-line tools for displaying information about message and services"
+DESCRIPTION="Command-line tool for displaying debug information about ROS nodes"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
@@ -18,14 +18,10 @@ RDEPEND="
 	dev-ros/genmsg[${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep "dev-python/rospkg[\${PYTHON_USEDEP}]")
 	dev-ros/roslib[${PYTHON_SINGLE_USEDEP}]
-	dev-ros/rosbag[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rosgraph[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rostopic[${PYTHON_SINGLE_USEDEP}]
 "
 DEPEND="${RDEPEND}
-	test? ( dev-ros/test_rosmaster[${PYTHON_SINGLE_USEDEP}] )
-"
-PATCHES=( "${FILESDIR}/duplicates.patch" )
-
-src_test() {
-	export ROS_PACKAGE_PATH="${S}/../../:${ROS_PACKAGE_PATH}"
-	ros-catkin_src_test
-}
+	test? (
+		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+	)"

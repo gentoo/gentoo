@@ -177,7 +177,7 @@ ros-catkin_src_configure() {
 	local mycmakeargs=(
 		"-DCATKIN_ENABLE_TESTING=$(usex test)"
 		"-DCATKIN_BUILD_BINARY_PACKAGE=ON"
-		"-DCATKIN_PREFIX_PATH=${SYSROOT:-${EROOT}}/usr"
+		"-DCATKIN_PREFIX_PATH=${SYSROOT:-${EPREFIX}}/usr"
 		"${mycatkincmakeargs[@]}"
 	)
 

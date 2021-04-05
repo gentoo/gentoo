@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,15 +8,13 @@ ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="Classes to help timestamp hardware events"
+DESCRIPTION="Classes and tools that are useful throughout the driver stacks"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/roslib
-	dev-ros/roscpp
+	dev-ros/driver_base
+	dev-ros/timestamp_tools
 "
-DEPEND="${RDEPEND}
-	test? ( dev-cpp/gtest )"
-PATCHES=( "${FILESDIR}/tests.patch" "${FILESDIR}/boost.patch" )
+DEPEND="${RDEPEND}"
