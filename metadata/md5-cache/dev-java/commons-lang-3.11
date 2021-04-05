@@ -12,4 +12,4 @@ RESTRICT=!test? ( test ) !test? ( test )
 SLOT=3.11
 SRC_URI=mirror://apache/commons/lang/source/commons-lang3-3.11-src.tar.gz -> commons-lang-3.11.tar.gz
 _eclasses_=java-utils-2	2440f41421207d084e5e3f1fb001b34e	java-pkg-2	45c44ec10db6affb3ebee1ac72039888	java-pkg-simple	c85bf2d75a5f53e7b39fc9104701ebfb
-_md5_=87b4deb59539fe3635e54bb7be41715e
+_md5_=c27e718913ed291d2bf86ccb12a326ea

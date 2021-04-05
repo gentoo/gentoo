@@ -5115,7 +5115,7 @@ dev-java/shared-objects 1.4-r4: Core factory for maximal sharing of arbitrary ob
 dev-java/simplyhtml 0.13.1-r1: Text processing application based on HTML and CSS files
 dev-java/sjsxp 1.0.1-r3: Sun Java Streaming XML Parser
 dev-java/skinlf 6.7-r1: Skin Look and Feel - Skinning Engine for the Swing toolkit
-dev-java/slf4j-api 1.7.7: Simple Logging Facade for Java
+dev-java/slf4j-api 1.7.7 1.7.30: The slf4j API
 dev-java/slf4j-ext 1.7.5 1.7.7: Simple Logging Facade for Java
 dev-java/slf4j-log4j12 1.7.7: Simple Logging Facade for Java (SLF4J) log4j bindings
 dev-java/slf4j-nop 1.7.7: Simple Logging Facade for Java
