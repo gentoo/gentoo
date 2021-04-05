@@ -1,5 +1,3 @@
-diff --git a/other/CMakeLists.txt b/other/CMakeLists.txt
-index bb8977b..3e7ebe7 100644
 --- a/other/CMakeLists.txt
 +++ b/other/CMakeLists.txt
 @@ -1,7 +1,3 @@
