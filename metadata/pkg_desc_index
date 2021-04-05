@@ -8269,7 +8269,7 @@ dev-python/errorhandler 2.0.1: Logging framework handler
 dev-python/et_xmlfile 1.0.1: An implementation of lxml.xmlfile for the standard library
 dev-python/eventlet 0.30.0 0.30.2: Highly concurrent networking library
 dev-python/exam 0.10.6: Helpers for better testing
-dev-python/exdown 0.8.6: Extract code blocks from markdown
+dev-python/exdown 0.8.6 0.8.8: Extract code blocks from markdown
 dev-python/execnet 1.8.0: Rapid multi-Python deployment
 dev-python/executing 0.5.4: Get information about what a Python frame is currently doing
 dev-python/expects 0.9.0: Expressive and extensible TDD/BDD assertion library for Python
@@ -9109,7 +9109,7 @@ dev-python/recommonmark 0.7.1: Python docutils-compatibility bridge to CommonMar
 dev-python/redis-py 3.5.3: Python client for Redis key-value store
 dev-python/reedsolomon 1.5.4: Pure-Python Reed Solomon encoder/decoder
 dev-python/reflink 0.2.1-r1: Python wrapper around the reflink system calls
-dev-python/regex 2020.4.4-r1 2021.3.17: Alternative regular expression module to replace re
+dev-python/regex 2020.4.4-r1 2021.3.17 2021.4.4: Alternative regular expression module to replace re
 dev-python/rencode 1.0.6: similar to bencode from the BitTorrent project
 dev-python/reno 3.2.0-r1 3.3.0: Release notes manager, storing release notes in a git repo and building docs
 dev-python/reportlab 3.5.60 3.5.63 3.5.64 3.5.65 3.5.66: Tools for generating printable PDF documents from any data source
