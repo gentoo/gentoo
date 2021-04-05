@@ -3,11 +3,12 @@
 
 EAPI=7
 
-inherit autotools multilib
+inherit autotools
 
 DESCRIPTION="An enhanced version of the Roguelike game Angband"
 HOMEPAGE="http://www.zangband.org/"
 SRC_URI="ftp://ftp.sunet.se/pub/games/Angband/Variant/ZAngband/${P}.tar.gz"
+S="${WORKDIR}"/${PN}
 
 LICENSE="Moria"
 SLOT="0"
@@ -20,16 +21,20 @@ RDEPEND="
 		dev-lang/tk:0=
 		)
 	x11-libs/libXaw"
-DEPEND="${RDEPEND}
-	x11-base/xorg-proto"
+DEPEND="
+	${RDEPEND}
+	x11-base/xorg-proto
+"
 
-S=${WORKDIR}/${PN}
+DOCS=( readme z_faq.txt z_update.txt )
 
-PATCHES=( "${FILESDIR}"/${P}-tk85.patch
+PATCHES=(
+	"${FILESDIR}"/${P}-tk85.patch
 	"${FILESDIR}"/${P}-rng.patch
 	"${FILESDIR}"/${P}-tinfo.patch
 	"${FILESDIR}"/${P}-configure.patch
-	"${FILESDIR}"/${P}-makefile.patch )
+	"${FILESDIR}"/${P}-makefile.patch
+)
 
 src_prepare() {
 	default
@@ -49,14 +54,10 @@ src_configure() {
 	econf "${myconf[@]}"
 }
 
-DOCS=( readme
-	z_faq.txt
-	z_update.txt )
-
 src_install() {
 	# Install the basic files but remove unneeded crap
-	emake DESTDIR="${D}/" installbase
-	rm "${D}"/{angdos.cfg,readme,z_faq.txt,z_update.txt}
+	emake DESTDIR="${D}/usr/" installbase
+	rm "${ED}"/usr/{angdos.cfg,readme,z_faq.txt,z_update.txt} || die
 
 	# Install everything else and fix the permissions
 	dobin zangband
