@@ -15,9 +15,12 @@ IUSE="ipv6 +uuid"
 RDEPEND="x11-base/xorg-proto
 	>=x11-libs/libICE-1.0.8-r1[${MULTILIB_USEDEP}]
 	x11-libs/xtrans
-	!elibc_FreeBSD? ( !elibc_SunOS? ( !elibc_Darwin? (
-		uuid? ( >=sys-apps/util-linux-2.24.1-r3[${MULTILIB_USEDEP}] )
-	) ) )"
+	uuid? (
+		elibc_Darwin? ( sys-libs/native-uuid )
+		!elibc_FreeBSD? ( !elibc_SunOS? ( !elibc_Darwin? (
+			>=sys-apps/util-linux-2.24.1-r3[${MULTILIB_USEDEP}]
+		) ) )
+	)"
 DEPEND="${RDEPEND}"
 
 src_configure() {
