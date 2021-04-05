@@ -7542,7 +7542,7 @@ dev-perl/Time-Moment 0.430.0: Represents a date and time of day with an offset f
 dev-perl/Time-Monotonic 0.9.8: A clock source that only increments and never jumps
 dev-perl/Time-Out 0.110.0-r1: Easily timeout long running operations
 dev-perl/Time-ParseDate 2015.103.0: A Date/Time Parsing Perl Module
-dev-perl/Time-Period 1.250.0: Time period Perl module
+dev-perl/Time-Period 1.250.0-r1: Time period Perl module
 dev-perl/Time-Piece-MySQL 0.60.0-r1: MySQL-specific functions for Time::Piece
 dev-perl/Time-Stopwatch 1.0.0: Use tied scalars as timers
 dev-perl/Time-TAI64 2.110.0-r2: Time manipulation in the TAI64* formats
@@ -8188,7 +8188,7 @@ dev-python/debtcollector 2.2.0: Python deprecation patterns and strategies that 
 dev-python/decorator 4.4.2-r1 5.0.0 5.0.3 5.0.5: Simplifies the usage of decorators for the average programmer
 dev-python/deepmerge 0.1.1_p1 0.2.1: Tools to handle merging of nested data structures in python
 dev-python/defcon 0.6.0-r1 0.7.2 0.8.0 0.8.1: A set of UFO based objects for use in font editing applications
-dev-python/defusedxml 0.7.0_rc1 0.7.0 0.7.1: XML bomb protection for Python stdlib modules, an xml serialiser
+dev-python/defusedxml 0.7.1: XML bomb protection for Python stdlib modules, an xml serialiser
 dev-python/denonavr 0.9.9 0.9.10 0.10.1 0.10.3 0.10.4 0.10.5: Automation Library for Denon AVR receivers
 dev-python/deprecated 1.2.11 1.2.12: Python @deprecated decorator to deprecate old API
 dev-python/deprecation 2.1.0: A library to handle automated deprecations
@@ -8413,11 +8413,11 @@ dev-python/imapclient 2.2.0: easy-to-use, pythonic, and complete IMAP client lib
 dev-python/iminuit 2.3.0 2.4.0: Minuit numerical function minimization in Python
 dev-python/immutables 0.14 0.15: A high-performance immutable mapping type for Python
 dev-python/importlib_metadata 3.7.0 3.7.2 3.7.3 3.8.2 3.10.0: Read metadata from Python packages
-dev-python/importlib_resources 5.1.0 5.1.1 5.1.2: Read resources from Python packages
+dev-python/importlib_resources 5.1.2: Read resources from Python packages
 dev-python/imread 0.7.3-r1: Read Image Files
-dev-python/incremental 17.5.0 21.3.0: Incremental is a small library that versions your Python projects
+dev-python/incremental 21.3.0: Incremental is a small library that versions your Python projects
 dev-python/indexed_gzip 0.8.10: Fast random access of gzip files in Python
-dev-python/inflect 5.2.0 5.3.0: Correctly inflect words and numbers
+dev-python/inflect 5.3.0: Correctly inflect words and numbers
 dev-python/inflection 0.5.1: A port of Ruby on Rails' inflector to Python
 dev-python/influxdb 5.3.0-r1: InfluxDB client
 dev-python/iniconfig 1.1.1: Brain-dead simple config-ini parsing
@@ -8469,7 +8469,7 @@ dev-python/json-rpc 1.13.0: JSON-RPC transport implementation for python
 dev-python/jsondiff 1.2.0: Diff JSON and JSON-like structures in Python
 dev-python/jsonext 0.4.2: Well-structured helpers for serializing commonly encountered structures to JSON.
 dev-python/jsonmerge 1.6.0 1.8.0: Merge a series of JSON documents
-dev-python/jsonpatch 1.28 1.30 1.31 1.32: Apply JSON-Patches like http://tools.ietf.org/html/draft-pbryan-json-patch-04
+dev-python/jsonpatch 1.32: Apply JSON-Patches like http://tools.ietf.org/html/draft-pbryan-json-patch-04
 dev-python/jsonpickle 2.0.0: Python library for serializing any arbitrary object graph into JSON
 dev-python/jsonpointer 2.0-r1 2.1: Identify specific nodes in a JSON document (according to draft 08)
 dev-python/jsonref 0.1: An implementation of JSON Reference for Python
@@ -8755,7 +8755,7 @@ dev-python/poyo 0.5.0: A lightweight YAML Parser for Python
 dev-python/precis-i18n 1.0.3: Internationalized Usernames and Passwords
 dev-python/pretend 1.0.9-r1: A library for stubbing in Python
 dev-python/pretty-yaml 20.4.0: PyYAML-based module to produce pretty and readable YAML-serialized data
-dev-python/prettytable 0.7.2-r1 2.0.0 2.1.0: Easily displaying tabular data in a visually appealing ASCII table format
+dev-python/prettytable 0.7.2-r1 2.1.0: Easily displaying tabular data in a visually appealing ASCII table format
 dev-python/priority 1.3.0: A pure-Python implementation of the HTTP/2 priority tree
 dev-python/process-tests 2.1.1: Tools for testing processes
 dev-python/progress 1.5: Easy to use progress bars

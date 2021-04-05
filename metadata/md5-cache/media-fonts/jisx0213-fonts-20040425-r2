@@ -1,6 +1,5 @@
-BDEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
+BDEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings ) X? ( media-gfx/ebdftopcf )
 DEFINED_PHASES=compile install postinst postrm setup
-DEPEND=X? ( media-gfx/ebdftopcf )
 DESCRIPTION=Japanese fixed fonts that cover JIS0213 charset
 EAPI=7
 HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
@@ -11,5 +10,5 @@ LICENSE=public-domain
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=mirror://gentoo/jiskan16-2004-1.bdf.gz mirror://gentoo/jiskan16-2000-1.bdf.gz mirror://gentoo/jiskan16-2000-2.bdf.gz mirror://gentoo/K14-2004-1.bdf.gz mirror://gentoo/K14-2000-1.bdf.gz mirror://gentoo/K14-2000-2.bdf.gz mirror://gentoo/K12-1.bdf.gz mirror://gentoo/K12-2.bdf.gz mirror://gentoo/A14.bdf.gz mirror://gentoo/A12.bdf.gz mirror://gentoo/jiskan24-2000-1.bdf.gz mirror://gentoo/jiskan24-2000-2.bdf.gz
-_eclasses_=font	0667878c2b594871023dd1833d05996f	font-ebdftopcf	001dd168de549653fcba973f58d54a9b
+_eclasses_=font	0667878c2b594871023dd1833d05996f	font-ebdftopcf	ac9717767a0d33e24acca6c309eaf01f
 _md5_=da69d5e35f88505c1e545ea734268066

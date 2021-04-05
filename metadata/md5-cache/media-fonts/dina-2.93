@@ -1,6 +1,5 @@
-BDEPEND=app-arch/unzip X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
+BDEPEND=app-arch/unzip X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings ) X? ( media-gfx/ebdftopcf )
 DEFINED_PHASES=compile install postinst postrm setup
-DEPEND=X? ( media-gfx/ebdftopcf )
 DESCRIPTION=Monospace bitmap font, primarily aimed at programmers
 EAPI=7
 HOMEPAGE=https://www.dcmembers.com/jibsen/download/61/
@@ -11,5 +10,5 @@ LICENSE=MIT
 RESTRICT=strip binchecks
 SLOT=0
 SRC_URI=https://www.donationcoder.com/forum/index.php?action=dlattach;topic=36049.0;attach=78562 -> dina-2.93.zip
-_eclasses_=font	0667878c2b594871023dd1833d05996f	font-ebdftopcf	001dd168de549653fcba973f58d54a9b
+_eclasses_=font	0667878c2b594871023dd1833d05996f	font-ebdftopcf	ac9717767a0d33e24acca6c309eaf01f
 _md5_=f1b82f1f6dec684927cc234803736c2a

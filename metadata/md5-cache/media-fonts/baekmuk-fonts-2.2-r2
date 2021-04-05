@@ -1,6 +1,5 @@
-BDEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
+BDEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings ) X? ( media-gfx/ebdftopcf )
 DEFINED_PHASES=compile install postinst postrm setup unpack
-DEPEND=X? ( media-gfx/ebdftopcf )
 DESCRIPTION=Korean Baekmuk Font
 EAPI=7
 HOMEPAGE=https://kldp.net/baekmuk/
@@ -11,5 +10,5 @@ LICENSE=BSD
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=https://kldp.net/baekmuk/release/865-baekmuk-bdf-2.2.tar.gz -> baekmuk-bdf-2.2.tar.gz https://kldp.net/baekmuk/release/865-baekmuk-ttf-2.2.tar.gz -> baekmuk-ttf-2.2.tar.gz unicode? ( mirror://gentoo/baekmuk-unicode-bdf-20020418.tar.bz2 )
-_eclasses_=font	0667878c2b594871023dd1833d05996f	font-ebdftopcf	001dd168de549653fcba973f58d54a9b
+_eclasses_=font	0667878c2b594871023dd1833d05996f	font-ebdftopcf	ac9717767a0d33e24acca6c309eaf01f
 _md5_=382ab5c25f3c61821016fbf2ddcc3db0
