@@ -13,7 +13,9 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="
+RDEPEND="
+	dev-qt/designer:5
+	dev-qt/qttest:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtgui:5
 	dev-qt/qtcore:5
@@ -22,7 +24,8 @@ DEPEND="
 	dev-qt/qtserialport:5
 	virtual/libusb:1
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	dev-qt/linguist-tools:5"
 BDEPEND=""
 
 src_prepare() {
