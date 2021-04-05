@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit linux-mod udev
+inherit linux-mod toolchain-funcs udev
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
