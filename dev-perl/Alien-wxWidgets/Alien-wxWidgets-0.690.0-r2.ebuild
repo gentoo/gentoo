@@ -16,7 +16,7 @@ IUSE="gstreamer opengl test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=x11-libs/wxGTK-3:3.0[gstreamer=,opengl=,tiff,X]
+	>=x11-libs/wxGTK-3:${WX_GTK_VER}[gstreamer=,opengl=,tiff,X]
 	>=dev-perl/Module-Pluggable-2.600.0
 "
 BDEPEND="${RDEPEND}
