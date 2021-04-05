@@ -142,7 +142,7 @@ src_install() {
 			dodir /usr/share/kde4/services/ServiceMenus # drop these lines after konqueror:4/krusader:4 are gone
 			for item in "${ED}"/usr/share/kservices5/ServiceMenus/*.desktop; do
 				item="$(basename ${item})"
-				dosym ${EROOT}"/usr/share/kservices5/ServiceMenus/${item}" "/usr/share/kde4/services/ServiceMenus/${item}"
+				dosym "${EPREFIX}/usr/share/kservices5/ServiceMenus/${item}" "/usr/share/kde4/services/ServiceMenus/${item}"
 			done
 		fi
 	fi
