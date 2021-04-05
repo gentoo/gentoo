@@ -11,7 +11,7 @@ MAVEN_ID="org.objenesis:objenesis-test:3.2"
 
 inherit java-pkg-2 java-pkg-simple
 
-DESCRIPTION="A library for instantiating Java objects"
+DESCRIPTION="Test library for Objenesis library"
 HOMEPAGE="http://objenesis.org"
 SRC_URI="https://github.com/easymock/objenesis/archive/refs/tags/${PV}.tar.gz -> objenesis-${PV}.tar.gz"
 
