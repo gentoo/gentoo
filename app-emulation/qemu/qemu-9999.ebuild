@@ -6,10 +6,10 @@ EAPI="7"
 PYTHON_COMPAT=( python3_{7,8,9} )
 PYTHON_REQ_USE="ncurses,readline"
 
-FIRMWARE_ABI_VERSION="4.0.0-r50"
+FIRMWARE_ABI_VERSION="5.2.0-r50"
 
-inherit eutils linux-info toolchain-funcs multilib python-r1 \
-	udev fcaps readme.gentoo-r1 pax-utils l10n xdg-utils
+inherit eutils linux-info toolchain-funcs multilib python-r1
+inherit udev fcaps readme.gentoo-r1 pax-utils l10n xdg-utils
 
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://git.qemu.org/git/qemu.git"
@@ -169,25 +169,27 @@ SOFTMMU_TOOLS_DEPEND="
 	zstd? ( >=app-arch/zstd-1.4.0[static-libs(+)] )
 "
 
+SEABIOS_VERSION="1.14.0"
+
 X86_FIRMWARE_DEPEND="
 	pin-upstream-blobs? (
-		~sys-firmware/edk2-ovmf-201905[binary]
-		~sys-firmware/ipxe-1.0.0_p20190728[binary,qemu]
-		~sys-firmware/seabios-1.12.0[binary,seavgabios]
-		~sys-firmware/sgabios-0.1_pre8[binary]
+		~sys-firmware/edk2-ovmf-202008[binary]
+		~sys-firmware/ipxe-1.21.1[binary,qemu]
+		~sys-firmware/seabios-${SEABIOS_VERSION}[binary,seavgabios]
+		~sys-firmware/sgabios-0.1_pre10[binary]
 	)
 	!pin-upstream-blobs? (
 		sys-firmware/edk2-ovmf
 		sys-firmware/ipxe[qemu]
-		>=sys-firmware/seabios-1.10.2[seavgabios]
+		>=sys-firmware/seabios-${SEABIOS_VERSION}[seavgabios]
 		sys-firmware/sgabios
 	)"
 PPC_FIRMWARE_DEPEND="
 	pin-upstream-blobs? (
-		~sys-firmware/seabios-1.12.0[binary,seavgabios]
+		~sys-firmware/seabios-${SEABIOS_VERSION}[binary,seavgabios]
 	)
 	!pin-upstream-blobs? (
-		>=sys-firmware/seabios-1.10.2[seavgabios]
+		>=sys-firmware/seabios-${SEABIOS_VERSION}[seavgabios]
 	)
 "
 
