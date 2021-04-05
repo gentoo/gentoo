@@ -1,5 +1,5 @@
 BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 x86-winnt? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 ) >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 virtual/pkgconfig virtual/pkgconfig
-DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DEFINED_PHASES=compile configure install postinst postrm prepare unpack
 DEPEND=x11-apps/sessreg x11-apps/xconsole x11-apps/xinit x11-apps/xrdb x11-apps/xsm x11-libs/libX11 x11-libs/libXaw x11-libs/libXdmcp x11-libs/libXmu x11-libs/libXt pam? ( sys-libs/pam ) systemd? ( >=sys-apps/systemd-209 ) truetype? ( x11-libs/libXrender x11-libs/libXft ) xinerama? ( x11-libs/libXinerama ) xpm? ( x11-libs/libXpm ) elibc_glibc? ( dev-libs/libbsd ) x11-base/xorg-proto
 DESCRIPTION=X.Org xdm application
 EAPI=7
@@ -12,4 +12,4 @@ RDEPEND=x11-apps/sessreg x11-apps/xconsole x11-apps/xinit x11-apps/xrdb x11-apps
 SLOT=0
 SRC_URI=https://www.x.org/releases/individual/app/xdm-1.1.12.tar.bz2
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	xorg-3	212a355607d8ee9cf75132010ead368c	pam	b097695df28f3974e3af860d6704d4f2	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6
-_md5_=b5353035ee953fa16da3c3e4876cf0cb
+_md5_=7c5885a219f57ea42520be0e7e3e1668
