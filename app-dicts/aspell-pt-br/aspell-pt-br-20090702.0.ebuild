@@ -12,7 +12,7 @@ SRC_URI="mirror://gnu/aspell/dict/pt_BR/${MY_P}.tar.bz2"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 # Contains a conflict
 RDEPEND="!<app-dicts/aspell-pt-0.50.2-r1"
