@@ -50,11 +50,6 @@ sci-biology/gatk
 # Bug #625492, removal in 30 days.
 sci-biology/diya
 
-# Matthew Thode <mthode@mthode.org> (2021-04-04)
-# Removing more unneeded openstack packages
-dev-python/testrepository
-dev-python/os-testr
-
 # Michał Górny <mgorny@gentoo.org> (2021-04-04)
 # Reported to contain an unintentional ABI breakage leading to crashes
 # when loading extensions on 32-bit systems.
