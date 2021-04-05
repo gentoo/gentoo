@@ -12602,7 +12602,7 @@ mail-mta/netqmail 1.06-r14: qmail -- a secure, reliable, efficient, simple messa
 mail-mta/notqmail 1.08-r3 9999: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 2.2-r1: Simple relay-only local mail transport agent
 mail-mta/opensmtpd 6.7.1_p1 6.8.0_p2: Lightweight but featured SMTP daemon from OpenBSD
-mail-mta/postfix 3.5.8-r1 3.5.9-r1 3.6_pre20210224: A fast and secure drop-in replacement for sendmail
+mail-mta/postfix 3.5.8-r1 3.5.9-r1 3.6_pre20210405: A fast and secure drop-in replacement for sendmail
 mail-mta/protonmail-bridge 1.6.3 1.6.6: Serves ProtonMail to IMAP/SMTP clients
 mail-mta/protonmail-bridge-bin 1.4.5 1.5.0 1.5.2: Serves ProtonMail to IMAP/SMTP clients
 mail-mta/qpsmtpd 0.95 9999: qpsmtpd is a flexible smtpd daemon written in Perl
