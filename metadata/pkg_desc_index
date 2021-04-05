@@ -3842,7 +3842,7 @@ dev-games/paklib 0.3: library for accessing Quake pak files
 dev-games/physfs 3.0.2 9999: Abstraction layer for filesystem and archive access
 dev-games/poker-eval 138.0: A fast C library for evaluating poker hands
 dev-games/ps2-packer 0.4.4-r1: Another ELF packer for the PS2
-dev-games/quake4-sdk 1.4.2 1.4.2-r1: Quake4 SDK
+dev-games/quake4-sdk 1.4.2-r1: Quake4 SDK
 dev-games/recastnavigation 1.5.1_p20200511: Navigation mesh construction toolset for games
 dev-games/simgear 2020.3.6 9999: Development library for simulation games
 dev-games/t4k-common 0.1.1: A library of code shared between tuxmath and tuxtype
@@ -6077,7 +6077,7 @@ dev-perl/Alien-Gnuplot 1.33.0: Find and verify functionality of the gnuplot exec
 dev-perl/Alien-LibGumbo 0.50.0-r2: Gumbo parser library
 dev-perl/Alien-Libxml2 0.160.0 0.170.0: Install the C libxml2 library on your system
 dev-perl/Alien-SDL 1.446.0-r1: building, finding and using SDL binaries
-dev-perl/Alien-wxWidgets 0.690.0-r1: Building, finding and using wxWidgets binaries
+dev-perl/Alien-wxWidgets 0.690.0-r2: Building, finding and using wxWidgets binaries
 dev-perl/Any-Moose 0.270.0: Use Moose or Mouse modules (DEPRECATED)
 dev-perl/AnyEvent 7.170.0: Provides a uniform interface to various event loops
 dev-perl/AnyEvent-CacheDNS 0.80.0: Simple DNS resolver with caching
@@ -7613,10 +7613,10 @@ dev-perl/Weather-Com 2.0.0-r1: fetching weather information from weather.com
 dev-perl/WebService-Linode 0.28.0: Perl interface to the Linode.com API
 dev-perl/WebService-MusicBrainz 1.0.4: Web service API to MusicBrainz database
 dev-perl/WordNet-QueryData 1.490.0-r2: Direct perl interface to WordNet database
-dev-perl/Wx 0.993.200-r1: Perl bindings for wxGTK
+dev-perl/Wx 0.993.200-r2: Perl bindings for wxGTK
 dev-perl/Wx-GLCanvas 0.90.0: interface to wxWidgets' OpenGL canvas
-dev-perl/Wx-Perl-ProcessStream 0.320.0-r3: access IO of external processes via events
-dev-perl/Wx-Scintilla 0.390.0-r3: Scintilla source code editing component for wxWidgets
+dev-perl/Wx-Perl-ProcessStream 0.320.0-r4: access IO of external processes via events
+dev-perl/Wx-Scintilla 0.390.0-r4: Scintilla source code editing component for wxWidgets
 dev-perl/X-Osd 0.700.0-r2: Perl glue to libxosd (X OnScreen Display)
 dev-perl/X11-FreeDesktop-DesktopEntry 0.40.0-r1: An interface to Freedesktop.org .desktop files
 dev-perl/X11-Protocol 0.560.0-r1 0.560.0-r2: Client-side interface to the X11 Protocol
@@ -11704,7 +11704,7 @@ games-puzzle/xye 0.12.2: Free version of the classic game Kye
 games-puzzle/zaz 1.0.0-r1: A puzzle game where the player has to arrange balls in triplets
 games-roguelike/FTL 1.5.13: Faster Than Light: A spaceship simulation real-time roguelike-like game
 games-roguelike/FTL-gog 1.6.9.25330: Top-down roguelike space ship simulator
-games-roguelike/adom 1.1.1-r2: Ancient Domains Of Mystery rogue-like game
+games-roguelike/adom 1.1.1-r1 1.1.1-r2 3.3.3: Ancient Domains Of Mystery rogue-like game
 games-roguelike/angband 4.2.1 4.2.1-r1: A roguelike dungeon exploration game based on the books of J.R.R. Tolkien
 games-roguelike/crossfire-client 1.71.0-r100: Client for the nethack-style but more in the line of UO
 games-roguelike/dwarf-fortress 0.44.12: A single-player fantasy game

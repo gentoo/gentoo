@@ -1,6 +1,6 @@
 DEFINED_PHASES=install unpack
 DESCRIPTION=Quake4 SDK
-EAPI=6
+EAPI=7
 HOMEPAGE=https://www.iddevnet.com/quake4/
 INHERIT=unpacker
 KEYWORDS=-* amd64 x86
@@ -9,4 +9,4 @@ RESTRICT=bindist mirror strip
 SLOT=0
 SRC_URI=mirror://idsoftware/quake4/source/linux/quake4-linux-1.4.2-sdk.x86.run
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	unpacker	517f16af48ee3ab88180dd58b5143213
-_md5_=7fd8522f27dd4318b7e77c6307b71c21
+_md5_=afb89f51eb01becb8e2e8bef849a4eb6
