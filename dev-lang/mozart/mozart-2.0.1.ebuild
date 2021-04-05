@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils java-pkg-2 java-ant-2
+inherit cmake java-pkg-2 java-ant-2
 
 PATCHSET_VER="1"
 
@@ -31,50 +31,46 @@ DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest:= )"
 
 S="${WORKDIR}/${PN}2-${PV}"
-BUILD_DIR="${S}/build"
-CMAKE_USE_DIR="${S}"
 
 src_prepare() {
 	if [[ -d "${WORKDIR}"/${PV} ]] ; then
 		eapply "${WORKDIR}"/${PV}
 	fi
-	eapply_user
 
-	touch "${S}"/stdlib/CMakeLists.txt
-	touch "${S}"/vm/vm/test/gtest/CMakeLists.txt
+	touch stdlib/CMakeLists.txt || die
+	touch vm/vm/test/gtest/CMakeLists.txt || die
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
-	mycmakeargs=(
+	local mycmakeargs=(
 		-DMOZART_BOOST_USE_STATIC_LIBS=OFF
-		-DEMACS=$(if use emacs; then echo /usr/bin/emacs; fi)
-		)
+		-DEMACS=$(usex emacs "/usr/bin/emacs" "")
+	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
 	EANT_GENTOO_CLASSPATH="scala:2.12"
-	cd "${S}"/bootcompiler
+	pushd bootcompiler > /dev/null || die
 	ANT_OPTS="-Xss2M" eant jar
+	popd > /dev/null || die
 
-	cd "${S}"
-	cmake-utils_src_compile
+	cmake_src_compile
 }
 
 src_test() {
-	cmake-utils_src_compile vmtest platform-test
-	cmake-utils_src_test -V
+	cmake_build vmtest platform-test
+	cmake_src_test -V
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
-	cd "${BUILD_DIR}"
-	dolib.so vm/vm/main/libmozartvm.so
-	dolib.so vm/boostenv/main/libmozartvmboost.so
+	dolib.so "${BUILD_DIR}"/vm/vm/main/libmozartvm.so
+	dolib.so "${BUILD_DIR}"/vm/boostenv/main/libmozartvmboost.so
 }
 
 pkg_postinst() {
