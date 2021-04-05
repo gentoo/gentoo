@@ -15717,6 +15717,7 @@ net-wireless/neard 0.16: Near Field Communication (NFC) management daemon
 net-wireless/osmo-fl2k 0.1.1 9999: turns FL2000-based USB 3.0 to VGA adapters into low cost DACs
 net-wireless/portapack-firmware 20190405: Firmware and scripts for controlling the Portapack from Sharebrained
 net-wireless/portapack-havoc 0.0_p20180612: Custom firmware for the HackRF SDR + PortaPack H1 addon
+net-wireless/qdmr 0.6.4: GUI application for configuring and programming cheap DMR radios
 net-wireless/reaver 1.6.5: Brute force attack against Wifi Protected Setup
 net-wireless/rfkill 0.5-r2 0.5-r3 1.0: Tool to read and control rfkill status through /dev/rfkill
 net-wireless/rtl-sdr 0.5.3_p20170919 0.5.4 0.6.0-r1 0.6.0_p2020802 9999: turns your Realtek RTL2832 based DVB dongle into a SDR receiver
