@@ -295,12 +295,6 @@ dev-ruby/pg:0
 # Masked for removal on 2021-04-06.
 sci-physics/herwig++
 
-# Conrad Kostecki <conikost@gentoo.org> (2021-03-07)
-# Upstream since 2004 gone, does not supportnon-English characters,
-# multiple bugs open and unmaintained.
-# Removal in 30 days.
-app-portage/splat
-
 # David Seifert <soap@gentoo.org> (2021-03-06)
 # Unmaintained, abandoned upstream, tests fail, broken USE=doc, no revdeps
 # in tree. Removal on 2021-04-03.  Bug #623488, #697804, #774447.
