@@ -206,8 +206,8 @@ riscv		default/linux/riscv/17.0/rv32imac/ilp32d	exp
 
 # S390 Profiles
 # @MAINTAINER: s390@gentoo.org
-s390		default/linux/s390/17.0				exp
-s390		default/linux/s390/17.0/s390x			exp
+s390		default/linux/s390/17.0				dev
+s390		default/linux/s390/17.0/s390x			dev
 
 # SPARC Profiles
 # @MAINTAINER: sparc@gentoo.org
