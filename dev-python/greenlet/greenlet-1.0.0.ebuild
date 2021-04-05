@@ -19,6 +19,5 @@ KEYWORDS="~alpha amd64 arm arm64 -hppa -ia64 ~mips ppc ppc64 s390 sparc x86 ~amd
 distutils_enable_sphinx docs
 
 python_test() {
-	"${EPYTHON}" -m unittest discover -v greenlet.tests ||
-		die "Tests failed with ${EPYTHON}"
+	eunittest greenlet.tests
 }
