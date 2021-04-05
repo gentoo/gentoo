@@ -5008,7 +5008,7 @@ dev-java/jts-core 1.14: JTS Topology Suite for Java
 dev-java/juel 2.1.0-r2: Implementation of the Unified Expression Language (EL) - JSR-245
 dev-java/jump 0.5-r1: Java-based extensible high-precision math library
 dev-java/jung 1.7.6-r1: The Java Universal Network/Graph Framework
-dev-java/junit 3.8.2-r2 4.12-r1 4.13.1: Simple framework to write repeatable tests
+dev-java/junit 3.8.2-r2 4.12-r1 4.13.1 4.13.2: Simple framework to write repeatable tests
 dev-java/junit-addons 1.4-r1: JUnit-addons is a collection of helper classes for JUnit
 dev-java/junitperf 1.9.1-r2: Simple framework to write repeatable tests
 dev-java/junrar 0.6: Unrar java implementation
@@ -5062,7 +5062,8 @@ dev-java/netty-handler 4.0.36: Async event-driven framework for high performance
 dev-java/netty-tcnative 1.1.33.15 2.0.31: Fork of Tomcat Native that incorporates various patches
 dev-java/netty-transport 4.0.21-r1 4.0.36: Async event-driven framework for high performance network applications
 dev-java/neuroph 2.4: A lightweight Java neural network framework
-dev-java/objenesis 1.3-r1: A small Java library with one purpose: To instantiate a new object of a class
+dev-java/objenesis 1.3-r1 3.2: A library for instantiating Java objects
+dev-java/objenesis-test 3.2: Test library for Objenesis library
 dev-java/odfdom 0.8.6-r1: The ODFDOM reference implementation, written in Java
 dev-java/offo-hyphenation 2.0: Hyphenation patterns for Apache Fop
 dev-java/ognl 3.0.8: Object-Graph Navigation Language: get/set properties of objects
