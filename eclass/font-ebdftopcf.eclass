@@ -4,9 +4,9 @@
 # @ECLASS: font-ebdftopcf.eclass
 # @MAINTAINER:
 # fonts@gentoo.org
-# @SUPPORTED_EAPIS: 7
 # @AUTHOR:
 # Robin H. Johnson <robbat2@gentoo.org>
+# @SUPPORTED_EAPIS: 7
 # @BLURB: Eclass to make PCF font generator from BDF uniform and optimal
 # @DESCRIPTION:
 # The manpage for this eclass is in media-gfx/ebdftopcf.
