@@ -9264,7 +9264,7 @@ dev-python/sqlalchemy-migrate 0.13.0: SQLAlchemy Schema Migration Tools
 dev-python/sqlalchemy-rqlite 1.1: A SQLAlchemy dialect for rqlite
 dev-python/sqlparse 0.3.1 0.4.1: A non-validating SQL parser module for Python
 dev-python/sshtunnel 0.3.1: Pure Python SSH tunnels
-dev-python/ssl-fetch 0.4 9999: A small convenience library for fetching files securely
+dev-python/ssl-fetch 0.4 9999: Small convenience library for fetching files securely
 dev-python/stapler 1.0.0_p20200531-r1: Suite of tools for PDF files manipulation written in Python
 dev-python/statsd 3.3.0: A simple statsd client
 dev-python/statsmodels 0.12.2: Statistical computations and models for use with SciPy

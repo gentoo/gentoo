@@ -1,11 +1,10 @@
 DEFINED_PHASES=install
 DESCRIPTION=update_blastdb.pl for local blast db maintainance
-EAPI=5
+EAPI=7
 HOMEPAGE=http://www.ncbi.nlm.nih.gov/books/bv.fcgi?rid=toolkit
 KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=public-domain
 RDEPEND=dev-lang/perl !sci-biology/ncbi-tools++
 SLOT=0
 SRC_URI=ftp://ftp.ncbi.nih.gov/toolbox/ncbi_tools++/ARCHIVE/12_0_0/ncbi_cxx--12_0_0.tar.gz
-_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	versionator	d3fb3ba33acc3bbbdc4d7970227c100d
-_md5_=bc882208706b78e231cbfd78c7b5799e
+_md5_=899b0a0aa3b8be8b9530aff68709f438
