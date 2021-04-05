@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit autotools
+
 DESCRIPTION="Script for converting XML and DocBook documents to a variety of output formats"
 HOMEPAGE="https://pagure.io/xmlto"
 SRC_URI="https://releases.pagure.org/${PN}/${P}.tar.bz2"
@@ -12,12 +14,14 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="latex text"
 
-RDEPEND="app-text/docbook-xsl-stylesheets
+RDEPEND="
+	app-text/docbook-xsl-stylesheets
 	app-text/docbook-xml-dtd:4.2
 	dev-libs/libxslt
 	|| ( sys-apps/util-linux app-misc/getopt )
 	text? ( || ( virtual/w3m www-client/elinks www-client/links www-client/lynx ) )
-	latex? ( dev-texlive/texlive-formatsextra )"
+	latex? ( dev-texlive/texlive-formatsextra )
+"
 # We only depend on flex when we patch the input lexer.
 DEPEND="${RDEPEND}"
 
@@ -25,6 +29,7 @@ DOCS=( AUTHORS ChangeLog FAQ NEWS README THANKS )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.0.22-format_fo_passivetex_check.patch
+	"${FILESDIR}"/${PN}-0.0.28-allow-links.patch
 )
 
 src_prepare() {
@@ -34,6 +39,8 @@ src_prepare() {
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		sed -i -e 's/\(attrib\|val\)/XMLTO\1/g' xmlif/xmlif.l || die
 	fi
+
+	eautoreconf
 }
 
 src_configure() {
