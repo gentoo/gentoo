@@ -165,8 +165,8 @@ src_compile() {
 
 	# setup CFLAGS and LDFLAGS for separate build target
 	# see https://github.com/tianon/docker-overlay/pull/10
-	export CGO_CFLAGS="-I${ROOT}/usr/include"
-	export CGO_LDFLAGS="-L${ROOT}/usr/$(get_libdir)"
+	export CGO_CFLAGS="-I${ESYSROOT}/usr/include"
+	export CGO_LDFLAGS="-L${ESYSROOT}/usr/$(get_libdir)"
 
 	# let's set up some optional features :)
 	export DOCKER_BUILDTAGS=''
