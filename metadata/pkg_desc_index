@@ -17460,7 +17460,7 @@ sys-devel/prelink 20151030-r1 99999999: Modifies ELFs to avoid runtime symbol re
 sys-devel/qconf 2.5: ./configure like generator for qmake-based projects
 sys-devel/remake 4.2.1.1.4-r1: patched version of GNU make with improved error reporting, tracing and debugging
 sys-devel/rust-std 1.46.0 1.47.0 1.48.0 1.49.0 1.50.0: Rust standard library, standalone (for crossdev)
-sys-devel/slibtool 0.5.31 0.5.32 9999: A skinny libtool implementation, written in C
+sys-devel/slibtool 0.5.32 0.5.33 9999: A skinny libtool implementation, written in C
 sys-devel/smatch 1.60 9999: static analysis tool for C
 sys-devel/sparse 0.6.3 9999: C semantic parser
 sys-devel/ucpp 1.3.4 1.3.5: Library for preprocessing C compliant to ISO-C99
