@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 PYTHON_COMPAT=( python3_{7..9} )
 
@@ -16,14 +16,10 @@ if [[ ${PV} == *9999* || -n "${EGIT_COMMIT}" ]] ; then
 	EGIT_REPO_URI="git://git.seabios.org/seabios.git"
 	inherit git-r3
 else
-	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 
-	# Binary versions taken from fedora:
-	# http://download.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/s/
-	#   seabios-bin-1.10.2-1.fc27.noarch.rpm
-	#   seavgabios-bin-1.10.2-1.fc27.noarch.rpm
 	SRC_URI="
-		!binary? ( https://code.coreboot.org/p/seabios/downloads/get/${P}.tar.gz )
+		!binary? ( https://www.seabios.org/downloads/${P}.tar.gz )
 		binary? ( https://dev.gentoo.org/~tamiko/distfiles/${P}-bin.tar.xz )"
 fi
 
@@ -34,19 +30,35 @@ LICENSE="LGPL-3 GPL-3"
 SLOT="0"
 IUSE="+binary debug +seavgabios"
 
-REQUIRED_USE="debug? ( !binary )
-	!amd64? ( !x86? ( binary ) )"
+REQUIRED_USE="debug? ( !binary )"
 
-# The amd64/x86 check is needed to workaround #570892.
 SOURCE_DEPEND="
 	>=sys-power/iasl-20060912
 	${PYTHON_DEPS}"
 DEPEND="
 	!binary? (
-		amd64? ( ${SOURCE_DEPEND} )
-		x86? ( ${SOURCE_DEPEND} )
+		${SOURCE_DEPEND}
 	)"
 RDEPEND=""
+
+choose_target_chost() {
+	if [[ -n "${CC}" ]]; then
+		${CC} -dumpmachine
+		return
+	fi
+
+	if use amd64 || use x86; then
+		# Use the native compiler
+		echo "${CHOST}"
+		return
+	fi
+
+	local i
+	for i in x86_64 i686 i586 i486 i386 ; do
+		i=${i}-pc-linux-gnu
+		type -P ${i}-gcc > /dev/null && echo ${i} && return
+	done
+}
 
 pkg_pretend() {
 	if ! use binary; then
@@ -58,6 +70,14 @@ pkg_pretend() {
 		ewarn "you will not receive any support if you have compiled your"
 		ewarn "own SeaBIOS. Virtual machines subtly fail based on changes"
 		ewarn "in SeaBIOS."
+		if [[ -z "$(choose_target_chost)" ]]; then
+			elog
+			eerror "Before you can compile ${PN}[-binary], you need to install a x86 cross-compiler"
+			eerror "Run the following commands:"
+			eerror "  emerge crossdev"
+			eerror "  crossdev --stable -t x86_64-pc-linux-gnu"
+			die "cross-compiler is needed"
+		fi
 	fi
 }
 
@@ -70,6 +90,13 @@ src_unpack() {
 
 	# This simplifies the logic between binary & source builds.
 	mkdir -p "${S}"
+}
+
+src_prepare() {
+	default
+
+	# Ensure precompiled iasl files are never used
+	find "${WORKDIR}" -name '*.hex' -delete || die
 }
 
 src_configure() {
@@ -89,6 +116,7 @@ _emake() {
 		CC="$(tc-getCC)" \
 		LD="$(tc-getLD)" \
 		AR="$(tc-getAR)" \
+		AS="$(tc-getAS)" \
 		OBJCOPY="$(tc-getOBJCOPY)" \
 		RANLIB="$(tc-getRANLIB)" \
 		OBJDUMP="$(tc-getOBJDUMP)" \
@@ -100,12 +128,13 @@ _emake() {
 src_compile() {
 	use binary && return
 
-	for t in 128k 256k ; do
-		cp "${FILESDIR}/seabios/config.seabios-${t}" .config || die
-		_emake oldnoconfig
-		_emake out/bios.bin
-		mv out/bios.bin ../bios-${t}.bin || die
-	done
+	local TARGET_CHOST=$(choose_target_chost)
+
+	cp "${FILESDIR}/seabios/config.seabios-256k" .config || die
+	_emake oldnoconfig
+	CHOST="${TARGET_CHOST}" _emake iasl
+	CHOST="${TARGET_CHOST}" _emake out/bios.bin
+	mv out/bios.bin ../bios-256k.bin || die
 
 	if use seavgabios ; then
 		local config t targets=(
@@ -120,17 +149,14 @@ src_compile() {
 			emake clean distclean
 			cp "${FILESDIR}/seavgabios/config.vga-${t}" .config || die
 			_emake oldnoconfig
-			_emake out/vgabios.bin
+			CHOST="${TARGET_CHOST}" _emake out/vgabios.bin
 			cp out/vgabios.bin ../vgabios-${t}.bin || die
 		done
 	fi
 }
 
 src_install() {
-
 	insinto /usr/share/seabios
-	use binary && doins ../bios.bin
-	use !binary && newins ../bios-128k.bin bios.bin
 	doins ../bios-256k.bin
 
 	if use seavgabios ; then
