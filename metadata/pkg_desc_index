@@ -5535,7 +5535,6 @@ dev-libs/libgnome-games-support 1.6.1 1.8.0 1.8.1: Library for code common to GN
 dev-libs/libgnt 2.14.0 2.14.1: Pidgin's GLib Ncurses Toolkit
 dev-libs/libgpg-error 1.38 1.41 1.42: Contains error handling functions used by GnuPG software
 dev-libs/libgpiod 1.1.1 1.4.1: C library and tools for interacting with the linux GPIO character device
-dev-libs/libgpuarray 0.6.0 0.6.7: Library to manipulate tensors on the GPU
 dev-libs/libgudev 233-r1 234: GObject bindings for libudev
 dev-libs/libgusb 0.3.3 0.3.5 0.3.6: GObject wrapper for libusb
 dev-libs/libgweather 3.36.1 3.36.2 40.0: Location and timezone database and weather-lookup library
