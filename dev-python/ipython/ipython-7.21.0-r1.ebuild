@@ -15,11 +15,11 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 ~ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples matplotlib notebook nbconvert qt5 +smp test"
 RESTRICT="!test? ( test )"
 
-CDEPEND="
+RDEPEND="
 	dev-python/backcall[${PYTHON_USEDEP}]
 	dev-python/decorator[${PYTHON_USEDEP}]
 	>=dev-python/jedi-0.16[${PYTHON_USEDEP}]
@@ -32,17 +32,13 @@ CDEPEND="
 	matplotlib? ( dev-python/matplotlib[${PYTHON_USEDEP}] )
 "
 
-RDEPEND="${CDEPEND}
-	nbconvert? ( dev-python/nbconvert[${PYTHON_USEDEP}] )"
-
 BDEPEND="
 	test? (
-		${CDEPEND}
 		app-text/dvipng[truetype]
 		>=dev-python/ipykernel-5.1.0[${PYTHON_USEDEP}]
 		dev-python/nbformat[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
-		>=dev-python/numpy-1.16[${PYTHON_USEDEP}]
+		>=dev-python/numpy-1.14[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/testpath[${PYTHON_USEDEP}]
 	)
@@ -53,6 +49,10 @@ BDEPEND="
 		dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
 	)"
 
+distutils_enable_tests pytest
+
+RDEPEND+="
+	nbconvert? ( dev-python/nbconvert[${PYTHON_USEDEP}] )"
 PDEPEND="
 	notebook? (
 		dev-python/notebook[${PYTHON_USEDEP}]
@@ -79,6 +79,10 @@ python_prepare_all() {
 		sed -e "/^    'sphinx.ext.intersphinx',/d" -i docs/source/conf.py || die
 	fi
 
+	# Rename the test directory to reduce sys.path pollution
+	# https://github.com/ipython/ipython/issues/12892
+	mv IPython/extensions/{,ipython_}tests || die
+
 	distutils-r1_python_prepare_all
 }
 
@@ -91,13 +95,6 @@ python_compile_all() {
 
 src_test() {
 	virtx distutils-r1_src_test
-}
-
-python_test() {
-	distutils_install_for_testing
-	pushd "${TEST_DIR}" >/dev/null || die
-	"${TEST_DIR}"/scripts/iptest || die
-	popd >/dev/null || die
 }
 
 python_install() {
