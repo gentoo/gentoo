@@ -6,10 +6,10 @@ EAPI=7
 HOMEPAGE=https://github.com/edenhill/librdkafka
 INHERIT=python-any-r1 toolchain-funcs
 IUSE=lz4 sasl ssl static-libs zstd
-KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc x86
 LICENSE=BSD-2
 RDEPEND=!static-libs? ( lz4? ( app-arch/lz4:= ) sasl? ( dev-libs/cyrus-sasl:= ) ssl? ( dev-libs/openssl:0= ) zstd? ( app-arch/zstd:= ) sys-libs/zlib:= )
 SLOT=0/1
 SRC_URI=https://github.com/edenhill/librdkafka/archive/v1.6.1.tar.gz -> librdkafka-1.6.1.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-any-r1	690a993463cd2ebcde40ccdf1bd9ba98
-_md5_=73c3dc4f412d66fd0fbe00a224d9ffad
+_md5_=0e1649c0df3d8e4907f724c3937610b8
