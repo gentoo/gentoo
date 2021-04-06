@@ -1,8 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils unpacker cdrom multilib games
+EAPI=7
+
+inherit cdrom multilib unpacker wrapper
 
 DESCRIPTION="Third-person classic magical action-adventure game"
 HOMEPAGE="http://lokigames.com/products/heretic2/
@@ -10,16 +11,18 @@ HOMEPAGE="http://lokigames.com/products/heretic2/
 SRC_URI="mirror://lokigames/${PN}/${P/%?/b}-unified-x86.run
 	mirror://lokigames/${PN}/${P}-unified-x86.run
 	mirror://lokigames/${PN}/${PN}-maps-1.0.run"
+S="${WORKDIR}"
 
 LICENSE="LOKI-EULA"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 RESTRICT="strip mirror bindist"
-QA_TEXTRELS="${GAMES_PREFIX_OPT:1}/${PN}/base/*.so"
 
-DEPEND="games-util/loki_patch"
-RDEPEND="virtual/opengl
+QA_TEXTRELS="opt/${PN}/base/*.so"
+
+BDEPEND="games-util/loki_patch"
+RDEPEND="
+	virtual/opengl
 	amd64? (
 		>=virtual/opengl-7.0-r1[abi_x86_32(-)]
 		>=x11-libs/libX11-1.6.2[abi_x86_32(-)]
@@ -28,17 +31,16 @@ RDEPEND="virtual/opengl
 	x86? (
 		x11-libs/libX11
 		x11-libs/libXext
-	)"
-
-S=${WORKDIR}
+	)
+"
 
 src_unpack() {
 	cdrom_get_cds bin/x86/glibc-2.1/${PN}
-	mkdir ${A}
+	mkdir ${A} || die
 
 	local f
 	for f in * ; do
-		cd "${S}"/${f}
+		cd "${S}"/${f} || die
 		unpack_makeself ${f}
 	done
 }
@@ -46,39 +48,38 @@ src_unpack() {
 src_install() {
 	has_multilib_profile && ABI=x86
 
-	local dir=${GAMES_PREFIX_OPT}/${PN}
+	local dir=opt/${PN}
 
-	cd "${CDROM_ROOT}"
+	cd "${CDROM_ROOT}" || die
 
-	insinto "${dir}"
+	insinto ${dir}
 	doins -r base help Manual.html README README.more
 
-	exeinto "${dir}"
+	exeinto ${dir}
 	doexe bin/x86/glibc-2.1/${PN}
 
-	games_make_wrapper ${PN} ./${PN} "${dir}" "${dir}"
+	make_wrapper ${PN} ./${PN} "${dir}" "${dir}"
 	sed -i \
 		-e 's/^exec /__GL_ExtensionStringVersion=17700 exec /' \
-		"${D}/${GAMES_BINDIR}/${PN}" || die
+		"${ED}/usr/bin/${PN}" || die
 	newicon icon.xpm ${PN}.xpm
 	make_desktop_entry ${PN} "Heretic II"
 
-	cd "${D}/${dir}"
-	ln -s "${CDROM_ROOT}"/*.gz .
+	cd "${ED}/${dir}" || die
+	ln -s "${CDROM_ROOT}"/*.gz . || die
 	unpack ./*.gz
-	rm -f *.gz
+	rm -f *.gz || die
 
 	local d
 	for d in "${S}"/* ; do
-		pushd "${d}" > /dev/null
-		loki_patch patch.dat "${D}/${dir}" || die
-		popd > /dev/null
+		pushd "${d}" > /dev/null || die
+		loki_patch patch.dat "${ED}/${dir}" || die
+		popd > /dev/null || die
 	done
 
-	rmdir gl_drivers
+	rmdir gl_drivers || die
+
 	sed -i \
 		"128i set gl_driver \"/usr/$(get_libdir)/libGL.so\"" \
 		base/default.cfg || die
-
-	prepgamesdirs
 }
