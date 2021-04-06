@@ -1,21 +1,23 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils gnome2-utils check-reqs games
+CHECKREQS_DISK_BUILD="22000M"
+CHECKREQS_DISK_USR="21600M"
+inherit check-reqs desktop gnome2-utils wrapper
 
 DESCRIPTION="Sequel to 1988 Wasteland, post-apocalyptic computer RPG inspiration for Fallout"
 HOMEPAGE="https://wasteland.inxile-entertainment.com/"
 SRC_URI="gog_wasteland_2_${PV}.tar.gz"
+S="${WORKDIR}/Wasteland 2"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 RESTRICT="bindist fetch mirror"
 
-QA_PREBUILT="${GAMES_PREFIX_OPT}/${PN}/*"
+QA_PREBUILT="opt/${PN}/*"
 
 RDEPEND="
 	>=dev-libs/atk-2.12.0-r1[abi_x86_32(-)]
@@ -34,11 +36,6 @@ RDEPEND="
 	virtual/opengl
 "
 
-S="${WORKDIR}/Wasteland 2"
-
-CHECKREQS_DISK_BUILD="22000M"
-CHECKREQS_DISK_USR="21600M"
-
 pkg_nofetch() {
 	einfo
 	einfo "Please buy Wasteland 2"
@@ -53,30 +50,26 @@ pkg_nofetch() {
 }
 
 src_install() {
-	local dir=${GAMES_PREFIX_OPT}/${PN}
+	local dir=opt/${PN}
 
 	# over 20GB of data
-	dodir "${dir}"
-	mv game/WL2_Data "${D%/}${dir}"/ || die
-	exeinto "${dir}"
+	dodir ${dir}
+	mv game/WL2_Data "${ED}/${dir}"/ || die
+	exeinto ${dir}
 	doexe game/WL2
 
-	games_make_wrapper ${PN} ./WL2 "${dir}"
+	make_wrapper ${PN} ./WL2 "${dir}"
 	newicon -s 256 support/gog-wasteland-2.png ${PN}.png
 	make_desktop_entry ${PN} "Wasteland 2"
 
 	dodoc docs/*.pdf
-
-	prepgamesdirs
 }
 
 pkg_preinst() {
-	games_pkg_preinst
 	gnome2_icon_savelist
 }
 
 pkg_postinst() {
-	games_pkg_postinst
 	gnome2_icon_cache_update
 }
 
