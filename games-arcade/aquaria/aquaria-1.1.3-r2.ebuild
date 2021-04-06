@@ -1,27 +1,26 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit unpacker eutils games
+EAPI=7
+
+inherit desktop unpacker wrapper
 
 DESCRIPTION="A 2D scroller set in a massive ocean world"
 HOMEPAGE="http://www.bit-blot.com/aquaria/"
 SRC_URI="aquaria-lnx-humble-bundle.mojo.run"
+S="${WORKDIR}"/data
 
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE=""
 RESTRICT="strip fetch bindist"
 
-DEPEND="app-arch/unzip"
 RDEPEND="
 	>=media-libs/libsdl-1.2.15-r4[abi_x86_32(-)]
 	>=media-libs/openal-1.15.1[abi_x86_32(-)]"
+BDEPEND="app-arch/unzip"
 
-S=${WORKDIR}/data
-
-dir=${GAMES_PREFIX_OPT}/${PN}
+dir=opt/${PN}
 QA_PREBUILT="${dir#/}/aquaria"
 
 pkg_nofetch() {
@@ -36,19 +35,17 @@ src_unpack() {
 }
 
 src_install() {
-	insinto "${dir}"
-	exeinto "${dir}"
+	insinto ${dir}
+	exeinto ${dir}
 
 	doins -r *.xml */
-	doexe "${PN}"
-	doicon "${PN}.png"
+	doexe ${PN}
+	doicon ${PN}.png
 
 	dodoc README-linux.txt
 	mv "${ED}/${dir}"/docs "${ED}/usr/share/doc/${PF}/html" || die
-	dosym /usr/share/doc/${PF}/html "${dir}"/docs
+	dosym  ../../../usr/share/doc/${PF}/html ${dir}/docs
 
-	games_make_wrapper "${PN}" "./${PN}" "${dir}"
+	make_wrapper "${PN}" "./${PN}" "${dir}"
 	make_desktop_entry "${PN}" "Aquaria"
-
-	prepgamesdirs
 }
