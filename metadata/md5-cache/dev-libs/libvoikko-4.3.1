@@ -6,7 +6,7 @@ EAPI=7
 HOMEPAGE=https://voikko.puimula.org/
 INHERIT=python-r1 verify-sig
 IUSE=+expvfst +hfst verify-sig python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 verify-sig
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-2+
 RDEPEND=python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] hfst? ( >=dev-util/hfstospell-0.5.0 )
 REQUIRED_USE=|| ( python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 )
@@ -14,4 +14,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://www.puimula.org/voikko-sources/libvoikko/libvoikko-4.3.1.tar.gz verify-sig? ( https://www.puimula.org/voikko-sources/libvoikko/libvoikko-4.3.1.tar.gz.asc )
 _eclasses_=multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-r1	a0dcde4775c7b2f7530678fc8143340e	verify-sig	40b4f4f782cf67118f594ce604cc4c0a
-_md5_=663db16aed1464f7db29fdd02d7783f9
+_md5_=8a9cbaa4e6c2bdc3e5e9367effea99c1
