@@ -43,6 +43,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.2.0_pre-no_bundled_font.patch" #704508
 )
 
+DOCS=( docs/CHANGELOG.md )
+
 src_configure() {
 	local mycmakeargs=(
 		-DASAN="OFF"
