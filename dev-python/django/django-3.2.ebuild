@@ -28,11 +28,10 @@ IUSE="doc sqlite test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	<dev-python/asgiref-3.3.2[${PYTHON_USEDEP}]
+	>=dev-python/asgiref-3.3.4[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
 	>=dev-python/sqlparse-0.2.2[${PYTHON_USEDEP}]"
 BDEPEND="
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (
 		$(python_gen_impl_dep sqlite)
 		${RDEPEND}
