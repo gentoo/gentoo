@@ -38,17 +38,12 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-DOCS=( AUTHORS ChangeLog NEWS README TODO )
+DOCS=( AUTHORS ChangeLog NEWS readme.md TODO )
 
 RESTRICT="test"
 
 src_prepare() {
 	cmake_src_prepare
-
-	if ! use doc ; then
-		sed -e "/find_package(Doxygen/s/^/# disabled by -doc/" \
-			-i CMakeLists.txt || die
-	fi
 
 	if ! use fluidsynth ; then
 		sed -e "/pkg_check_modules(FLUIDSYNTH/s/^/# disabled by -fluidsynth/" \
@@ -65,6 +60,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTING=OFF
 		-DUSE_DBUS=ON
+		-DBUILD_DOCS=$(usex doc)
 	)
 	cmake_src_configure
 }

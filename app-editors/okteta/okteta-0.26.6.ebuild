@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,8 +6,8 @@ EAPI=7
 ECM_DESIGNERPLUGIN="true"
 ECM_HANDBOOK="forceoptional"
 ECM_TEST="true"
-KFMIN=5.60.0
-QTMIN=5.12.3
+KFMIN=5.74.0
+QTMIN=5.15.2
 VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
@@ -17,7 +17,7 @@ https://utils.kde.org/projects/okteta/"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm64 x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
 LICENSE="GPL-2 handbook? ( FDL-1.2 )"
@@ -50,7 +50,7 @@ DEPEND="
 	>=kde-frameworks/kservice-${KFMIN}:5
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
-	crypt? ( app-crypt/qca:2[qt5(+)] )
+	crypt? ( >=app-crypt/qca-2.3.0:2 )
 "
 RDEPEND="${DEPEND}"
 
