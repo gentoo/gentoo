@@ -20,7 +20,6 @@ RESTRICT="strip mirror bindist"
 
 QA_TEXTRELS="opt/${PN}/base/*.so"
 
-BDEPEND="games-util/loki_patch"
 RDEPEND="
 	virtual/opengl
 	amd64? (
@@ -33,6 +32,7 @@ RDEPEND="
 		x11-libs/libXext
 	)
 "
+BDEPEND="games-util/loki_patch"
 
 src_unpack() {
 	cdrom_get_cds bin/x86/glibc-2.1/${PN}
