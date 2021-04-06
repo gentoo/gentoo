@@ -91,7 +91,6 @@ EOF
 		ebegin "Installing ${MY_PN}-server files"
 		dosbin "${smw_server}"
 
-		dodir ${smw_serverdir}
 		insinto ${smw_serverdir}
 		doins "${S}"/src/server/serverconfig
 
