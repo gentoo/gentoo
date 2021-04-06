@@ -613,7 +613,7 @@ app-accessibility/espeakup 0.71-r1 0.80 9999: espeakup is a small lightweight co
 app-accessibility/flite 1.4-r4 2.1 2.2: Flite text to speech engine
 app-accessibility/freetts 1.2.2: A speech synthesis system written entirely in Java
 app-accessibility/julius 4.2.2: Large Vocabulary Continuous Speech Recognition Engine
-app-accessibility/kontrast 1.0.2 20.12.3: Tool to check contrast for colors to verify they are correctly accessible
+app-accessibility/kontrast 20.12.3: Tool to check contrast for colors to verify they are correctly accessible
 app-accessibility/mbrola 3.0.1h-r6: Speech synthesizer based on the concatenation of diphones. Includes samples
 app-accessibility/nfbtrans 7.74-r2: Braille translator from the National Federation of the Blind
 app-accessibility/orca 3.36.5 3.36.6: Extensible screen reader that provides access to the desktop
@@ -1018,7 +1018,7 @@ app-cdr/cuegen 1.2.0: CUEgen is a FLAC-compatible cuesheet generator for Linux
 app-cdr/cuetools 1.4.1: Utilities to manipulate and convert cue and toc files
 app-cdr/daa2iso 0.1.7e: Program for converting the DAA and GBI files to ISO
 app-cdr/disc-cover 1.5.6-r1: Creates CD-Covers via LaTeX by fetching cd-info from freedb.org or local file
-app-cdr/dolphin-plugins-mountiso 20.08.3 20.12.3-r1: Dolphin plugin for ISO loopback device mounting
+app-cdr/dolphin-plugins-mountiso 20.12.3-r1: Dolphin plugin for ISO loopback device mounting
 app-cdr/dumpet 2.1_p20140601-r3: A tool to dump and debug bootable CD-like images
 app-cdr/dvd+rw-tools 7.1-r3 7.1-r4: A set of tools for DVD+RW/-RW drives
 app-cdr/dvdisaster 0.79.5: Tool for creating error correction data (ecc) for optical media (DVD, CD, BD)
@@ -5725,7 +5725,7 @@ dev-libs/pcl 1.12-r1: Portable Coroutine Library
 dev-libs/pegtl 2.8.3-r1 3.2.0: Header-only library for creating parsers according to Parsing Expression Grammar
 dev-libs/pigpio 79: A library for the Raspberry which allows control of the GPIOs
 dev-libs/pkcs11-helper 1.25.1: PKCS#11 helper library
-dev-libs/plasma-wayland-protocols 1.1.1 1.2.0-r1: Plasma Specific Protocols for Wayland
+dev-libs/plasma-wayland-protocols 1.1.1 1.2.1: Plasma Specific Protocols for Wayland
 dev-libs/pmdk 1.9.2: Persistent Memory Development Kit
 dev-libs/poco 1.9.0-r2 1.10.1: C++ libraries for building network-based applications
 dev-libs/popt 1.16-r2 1.18: Parse Options - Command line parser
@@ -12096,235 +12096,235 @@ java-virtuals/servlet-api 2.3 2.4 2.5-r2 3.0-r2 3.1-r1: Virtual for servlet api
 java-virtuals/stax-api 1-r4: Virtual for Streaming API for XML (StAX)
 java-virtuals/transaction-api 1.1: Virtual for Transaction API (javax.transaction)
 java-virtuals/xmlrpc-api 0: Virtual for XML RPC API (javax.xml.rpc)
-kde-apps/akonadi 20.12.2-r1 20.12.3: Storage service for PIM data and libraries for PIM apps
-kde-apps/akonadi-calendar 20.12.2 20.12.3: Library for akonadi calendar integration
-kde-apps/akonadi-contacts 20.12.2 20.12.3: Library for akonadi contact integration
-kde-apps/akonadi-import-wizard 20.12.2 20.12.3: Assistant to import PIM data from other applications into Akonadi
-kde-apps/akonadi-mime 20.12.2 20.12.3: Library for akonadi mime types
-kde-apps/akonadi-notes 20.12.2 20.12.3: Library for akonadi notes integration
-kde-apps/akonadi-search 20.12.2-r1 20.12.3: Libraries and daemons to implement searching in Akonadi
-kde-apps/akonadiconsole 20.12.2 20.12.3: Application for debugging Akonadi Resources
-kde-apps/akregator 20.12.2 20.12.3: News feed aggregator
-kde-apps/analitza 20.08.3 20.12.3: KDE library for mathematical features
-kde-apps/ark 20.08.3 20.12.3: File archiver by KDE
-kde-apps/artikulate 20.08.3 20.12.3: Language learning application that helps improving pronunciation skills
-kde-apps/audiocd-kio 20.08.3 20.12.3: kioslave for accessing audio CDs
-kde-apps/baloo-widgets 20.08.3 20.12.3: Widget library for baloo
-kde-apps/blinken 20.08.3 20.12.3: Memory enhancement game based on KDE Frameworks
-kde-apps/bomber 20.08.3 20.12.3: Single player arcade bombing game
-kde-apps/bovo 20.08.3 20.12.3: Five-in-a-row Board Game
-kde-apps/calendarjanitor 20.12.2 20.12.3: Tool to scan calendar data for buggy instances
-kde-apps/calendarsupport 20.12.2 20.12.3: Calendar support library
-kde-apps/cantor 20.08.3 20.12.3: Interface for doing mathematics and scientific computing
-kde-apps/cervisia 20.08.3 20.12.3: CVS frontend by KDE
-kde-apps/dolphin 20.08.3 20.12.3-r1: Plasma filemanager focusing on usability
-kde-apps/dolphin-plugins-dropbox 20.08.3 20.12.3: Dolphin plugin for Dropbox service integration
-kde-apps/dolphin-plugins-git 20.08.3 20.12.3: Dolphin plugin for Git integration
-kde-apps/dolphin-plugins-mercurial 20.08.3 20.12.3: Dolphin plugin for Mercurial integration
-kde-apps/dolphin-plugins-subversion 20.08.3 20.12.3: Dolphin plugin for Subversion integration
-kde-apps/dragon 20.08.3 20.12.3: Simple video player
-kde-apps/eventviews 20.12.2 20.12.3: Calendar viewer for KDE PIM
-kde-apps/ffmpegthumbs 20.08.3 20.12.3: FFmpeg based thumbnail generator for video files
-kde-apps/filelight 20.08.3 20.12.3: Visualise disk usage with interactive map of concentric, segmented rings
-kde-apps/granatier 20.08.3 20.12.3: KDE Bomberman game
-kde-apps/grantlee-editor 20.12.2 20.12.3: Utilities and tools to manage themes in KDE PIM applications
-kde-apps/grantleetheme 20.12.2 20.12.3: Library for Grantlee plugins
-kde-apps/gwenview 20.08.3 20.12.3: Image viewer by KDE
-kde-apps/incidenceeditor 20.12.2 20.12.3: Incidence editor for korganizer
-kde-apps/juk 20.08.3 20.12.3: Jukebox and music manager by KDE
-kde-apps/k3b 20.08.3 20.12.3: Full-featured burning and ripping application based on KDE Frameworks
-kde-apps/kaccounts-integration 20.08.3 20.12.3: Administer web accounts for the sites and services across the Plasma desktop
-kde-apps/kaccounts-providers 20.08.3 20.12.3-r1: KDE accounts providers
-kde-apps/kaddressbook 20.12.2 20.12.3: Address book application based on KDE Frameworks
-kde-apps/kajongg 20.08.3 20.12.3: Classical Mah Jongg for four players
-kde-apps/kalarm 20.12.2 20.12.3: Application to manage alarms and other timer based alerts for the desktop
-kde-apps/kalarmcal 20.12.2 20.12.3: Client library to access and handling of KAlarm calendar data
-kde-apps/kalgebra 20.08.3 20.12.3: MathML-based 2D and 3D graph calculator by KDE
-kde-apps/kalzium 20.08.3 20.12.3: Periodic table of the elements
-kde-apps/kamera 20.08.3 20.12.3: Plasma integration for gphoto2 cameras
-kde-apps/kamoso 20.08.3 20.12.3: Application to take pictures and videos from your webcam by KDE
-kde-apps/kanagram 20.08.3 20.12.3: Game based on anagrams of words
-kde-apps/kapman 20.08.3 20.12.3: Pac-Man clone by KDE
-kde-apps/kapptemplate 20.08.3 20.12.3: Shell script to create the necessary framework to develop KDE applications
-kde-apps/kate 20.08.3 20.12.3: Multi-document editor with network transparency, Plasma integration and more
-kde-apps/katomic 20.08.3 20.12.3: KDE Atomic Entertainment Game
-kde-apps/kbackup 20.08.3 20.12.3: Program that lets you back up any directories or files
-kde-apps/kblackbox 20.08.3 20.12.3: Game of hide and seek played on a grid of boxes
-kde-apps/kblocks 20.08.3 20.12.3: Single-player Tetris-like KDE game
-kde-apps/kbounce 20.08.3 20.12.3: KDE Bounce Ball Game
-kde-apps/kbreakout 20.08.3 20.12.3: Breakout-like game by KDE
-kde-apps/kbruch 20.08.3 20.12.3: Educational application to learn calculating with fractions
-kde-apps/kcachegrind 20.08.3 20.12.3: Frontend for Cachegrind by KDE
-kde-apps/kcalc 20.08.3 20.12.3: KDE calculator
-kde-apps/kcalutils 20.12.2 20.12.3: Library providing utility functions for the handling of calendar data
-kde-apps/kcharselect 20.08.3 20.12.3: KDE character selection utility
-kde-apps/kcolorchooser 20.08.3 20.12.3: KDE color selector/editor
-kde-apps/kcron 20.08.3 20.12.3: KDE Task Scheduler
-kde-apps/kde-apps-meta 20.08.3 20.12.3: Meta package for the KDE Release Service collection
-kde-apps/kde-dev-scripts 20.08.3 20.12.3: KDE Development Scripts
-kde-apps/kde-dev-utils 20.08.3 20.12.3: KDE Development Utilities
+kde-apps/akonadi 20.12.3: Storage service for PIM data and libraries for PIM apps
+kde-apps/akonadi-calendar 20.12.3: Library for akonadi calendar integration
+kde-apps/akonadi-contacts 20.12.3: Library for akonadi contact integration
+kde-apps/akonadi-import-wizard 20.12.3: Assistant to import PIM data from other applications into Akonadi
+kde-apps/akonadi-mime 20.12.3: Library for akonadi mime types
+kde-apps/akonadi-notes 20.12.3: Library for akonadi notes integration
+kde-apps/akonadi-search 20.12.3: Libraries and daemons to implement searching in Akonadi
+kde-apps/akonadiconsole 20.12.3: Application for debugging Akonadi Resources
+kde-apps/akregator 20.12.3: News feed aggregator
+kde-apps/analitza 20.12.3: KDE library for mathematical features
+kde-apps/ark 20.12.3: File archiver by KDE
+kde-apps/artikulate 20.12.3: Language learning application that helps improving pronunciation skills
+kde-apps/audiocd-kio 20.12.3: kioslave for accessing audio CDs
+kde-apps/baloo-widgets 20.12.3: Widget library for baloo
+kde-apps/blinken 20.12.3: Memory enhancement game based on KDE Frameworks
+kde-apps/bomber 20.12.3: Single player arcade bombing game
+kde-apps/bovo 20.12.3: Five-in-a-row Board Game
+kde-apps/calendarjanitor 20.12.3: Tool to scan calendar data for buggy instances
+kde-apps/calendarsupport 20.12.3: Calendar support library
+kde-apps/cantor 20.12.3: Interface for doing mathematics and scientific computing
+kde-apps/cervisia 20.12.3: CVS frontend by KDE
+kde-apps/dolphin 20.12.3-r1: Plasma filemanager focusing on usability
+kde-apps/dolphin-plugins-dropbox 20.12.3: Dolphin plugin for Dropbox service integration
+kde-apps/dolphin-plugins-git 20.12.3: Dolphin plugin for Git integration
+kde-apps/dolphin-plugins-mercurial 20.12.3: Dolphin plugin for Mercurial integration
+kde-apps/dolphin-plugins-subversion 20.12.3: Dolphin plugin for Subversion integration
+kde-apps/dragon 20.12.3: Simple video player
+kde-apps/eventviews 20.12.3: Calendar viewer for KDE PIM
+kde-apps/ffmpegthumbs 20.12.3: FFmpeg based thumbnail generator for video files
+kde-apps/filelight 20.12.3: Visualise disk usage with interactive map of concentric, segmented rings
+kde-apps/granatier 20.12.3: KDE Bomberman game
+kde-apps/grantlee-editor 20.12.3: Utilities and tools to manage themes in KDE PIM applications
+kde-apps/grantleetheme 20.12.3: Library for Grantlee plugins
+kde-apps/gwenview 20.12.3: Image viewer by KDE
+kde-apps/incidenceeditor 20.12.3: Incidence editor for korganizer
+kde-apps/juk 20.12.3: Jukebox and music manager by KDE
+kde-apps/k3b 20.12.3: Full-featured burning and ripping application based on KDE Frameworks
+kde-apps/kaccounts-integration 20.12.3: Administer web accounts for the sites and services across the Plasma desktop
+kde-apps/kaccounts-providers 20.12.3-r1: KDE accounts providers
+kde-apps/kaddressbook 20.12.3: Address book application based on KDE Frameworks
+kde-apps/kajongg 20.12.3: Classical Mah Jongg for four players
+kde-apps/kalarm 20.12.3: Application to manage alarms and other timer based alerts for the desktop
+kde-apps/kalarmcal 20.12.3: Client library to access and handling of KAlarm calendar data
+kde-apps/kalgebra 20.12.3: MathML-based 2D and 3D graph calculator by KDE
+kde-apps/kalzium 20.12.3: Periodic table of the elements
+kde-apps/kamera 20.12.3: Plasma integration for gphoto2 cameras
+kde-apps/kamoso 20.12.3: Application to take pictures and videos from your webcam by KDE
+kde-apps/kanagram 20.12.3: Game based on anagrams of words
+kde-apps/kapman 20.12.3: Pac-Man clone by KDE
+kde-apps/kapptemplate 20.12.3: Shell script to create the necessary framework to develop KDE applications
+kde-apps/kate 20.12.3: Multi-document editor with network transparency, Plasma integration and more
+kde-apps/katomic 20.12.3: KDE Atomic Entertainment Game
+kde-apps/kbackup 20.12.3: Program that lets you back up any directories or files
+kde-apps/kblackbox 20.12.3: Game of hide and seek played on a grid of boxes
+kde-apps/kblocks 20.12.3: Single-player Tetris-like KDE game
+kde-apps/kbounce 20.12.3: KDE Bounce Ball Game
+kde-apps/kbreakout 20.12.3: Breakout-like game by KDE
+kde-apps/kbruch 20.12.3: Educational application to learn calculating with fractions
+kde-apps/kcachegrind 20.12.3: Frontend for Cachegrind by KDE
+kde-apps/kcalc 20.12.3: KDE calculator
+kde-apps/kcalutils 20.12.3: Library providing utility functions for the handling of calendar data
+kde-apps/kcharselect 20.12.3: KDE character selection utility
+kde-apps/kcolorchooser 20.12.3: KDE color selector/editor
+kde-apps/kcron 20.12.3: KDE Task Scheduler
+kde-apps/kde-apps-meta 20.12.3: Meta package for the KDE Release Service collection
+kde-apps/kde-dev-scripts 20.12.3: KDE Development Scripts
+kde-apps/kde-dev-utils 20.12.3: KDE Development Utilities
 kde-apps/kde-meta 20.08.3: Merge this to pull in all KDE Plasma and Applications packages
-kde-apps/kdeaccessibility-meta 20.08.3 20.12.3: kdeaccessibility - merge this to pull in all kdeaccessiblity-derived packages
-kde-apps/kdeadmin-meta 20.08.3 20.12.3: KDE administration tools - merge this to pull in all kdeadmin-derived packages
+kde-apps/kdeaccessibility-meta 20.12.3: kdeaccessibility - merge this to pull in all kdeaccessiblity-derived packages
+kde-apps/kdeadmin-meta 20.12.3: KDE administration tools - merge this to pull in all kdeadmin-derived packages
 kde-apps/kdebase-meta 20.08.3: Transitional package to pull in plasma-meta plus basic applications
-kde-apps/kdebugsettings 20.08.3 20.12.3: Application to enable/disable qCDebug
-kde-apps/kdecore-meta 20.08.3 20.12.3: kdecore - merge this to pull in the most basic applications
-kde-apps/kdeedu-data 20.08.3 20.12.3: Shared icons, artwork and data files for educational applications
-kde-apps/kdeedu-meta 20.08.3 20.12.3: KDE educational apps - merge this to pull in all kdeedu-derived packages
-kde-apps/kdegames-meta 20.08.3 20.12.3: kdegames - merge this to pull in all kdegames-derived packages
-kde-apps/kdegraphics-meta 20.08.3 20.12.3: kdegraphics - merge this to pull in all kdegraphics-derived packages
-kde-apps/kdegraphics-mobipocket 20.08.3 20.12.3: Library to support mobipocket ebooks
-kde-apps/kdemultimedia-meta 20.08.3 20.12.3: kdemultimedia - merge this to pull in all kdemultimedia-derived packages
-kde-apps/kdenetwork-filesharing 20.08.3 20.12.3: SMB filesharing config module for systemsettings
-kde-apps/kdenetwork-meta 20.08.3-r1 20.12.3: kdenetwork - merge this to pull in all kdenetwork-derived packages
-kde-apps/kdenlive 20.08.3 20.12.3: Non-linear video editing suite by KDE
-kde-apps/kdepim-addons 20.12.2 20.12.3: Plugins for KDE Personal Information Management Suite
-kde-apps/kdepim-meta 20.12.2 20.12.3: KDE PIM - merge this to pull in all kdepim-derived packages
-kde-apps/kdepim-runtime 20.12.2 20.12.3: Runtime plugin collection to extend the functionality of KDE PIM
-kde-apps/kdesdk-kioslaves 20.08.3 20.12.3: kioslaves from kdesdk package
-kde-apps/kdesdk-meta 20.08.3 20.12.3: KDE SDK - merge this to pull in all kdesdk-derived packages
-kde-apps/kdesdk-thumbnailers 20.08.3 20.12.3: Thumbnail generator for PO files
-kde-apps/kdeutils-meta 20.08.3 20.12.3: kdeutils - merge this to pull in all kdeutils-derived packages
-kde-apps/kdf 20.08.3 20.12.3: KDE free disk space utility
-kde-apps/kdialog 20.08.3 20.12.3: Can be used to show nice dialog boxes from shell scripts
-kde-apps/kdiamond 20.08.3 20.12.3: Single player three-in-a-row game
-kde-apps/keditbookmarks 20.08.3 20.12.3: Bookmarks editor based on KDE Frameworks
-kde-apps/kfind 20.08.3 20.12.3: File finder utility based on KDE Frameworks
-kde-apps/kfloppy 20.08.3 20.12.3: Straightforward graphical means to format 3.5" and 5.25" floppy disks
-kde-apps/kfourinline 20.08.3 20.12.3: KDE four-in-a-row game
-kde-apps/kgeography 20.08.3 20.12.3: Geography learning tool
-kde-apps/kget 20.08.3 20.12.3: Advanced download manager by KDE
-kde-apps/kgoldrunner 20.08.3 20.12.3: Game of action and puzzle solving by KDE
-kde-apps/kgpg 20.08.3 20.12.3: Frontend for GnuPG, a powerful encryption utility by KDE
-kde-apps/khangman 20.08.3 20.12.3: Classical hangman game by KDE
-kde-apps/khelpcenter 20.08.3 20.12.3: Application to read documentation for KDE Plasma, Applications, Utilities
-kde-apps/kidentitymanagement 20.12.2 20.12.3: Library for managing identitites
-kde-apps/kig 20.08.3 20.12.3: KDE Interactive Geometry tool
-kde-apps/kigo 20.08.3 20.12.3: Go game by KDE
-kde-apps/killbots 20.08.3 20.12.3: Kill the bots or they kill you!
-kde-apps/kimagemapeditor 20.08.3 20.12.3: Generator of HTML image maps
-kde-apps/kimap 20.12.2 20.12.3: Library for interacting with IMAP servers
-kde-apps/kio-extras 20.08.3-r1 20.12.3: KIO plugins present a filesystem-like view of arbitrary data
-kde-apps/kipi-plugins 20.08.3 20.12.3: Plugins for the KDE Image Plugin Interface
-kde-apps/kiriki 20.08.3 20.12.3: An addictive and fun dice game
-kde-apps/kiten 20.08.3 20.12.3: KDE Japanese dictionary and reference
-kde-apps/kitinerary 20.12.2 20.12.3: Data Model and Extraction System for Travel Reservation information
-kde-apps/kjumpingcube 20.08.3 20.12.3: Tactical one or two player game
-kde-apps/kldap 20.12.2 20.12.3: Library for interacting with LDAP servers
-kde-apps/kleopatra 20.12.2 20.12.3: Certificate manager and GUI for OpenPGP and CMS cryptography
-kde-apps/klettres 20.08.3 20.12.3: Alphabet learning application
-kde-apps/klickety 20.08.3 20.12.3: An adaptation of the Clickomania game
-kde-apps/klines 20.08.3 20.12.3: A little KDE game about balls and how to get rid of them
-kde-apps/kmag 20.08.3 20.12.3: KDE screen magnifier
-kde-apps/kmahjongg 20.08.3 20.12.3: A tile matching game for one or two players
-kde-apps/kmail 20.12.2 20.12.3: Email client, supporting POP3 and IMAP mailboxes.
-kde-apps/kmail-account-wizard 20.12.2 20.12.3: Assistant for KMail accounts configuration
-kde-apps/kmailtransport 20.12.2 20.12.3: Mail transport service
-kde-apps/kmbox 20.12.2 20.12.3: Library for accessing MBox format mail storages
-kde-apps/kmime 20.12.2 20.12.3: Libary for handling mail messages and newsgroup articles
-kde-apps/kmines 20.08.3 20.12.3: Classic mine sweeper game
-kde-apps/kmix 20.08.3 20.12.3: Volume control gui based on KDE Frameworks
-kde-apps/kmousetool 20.08.3 20.12.3: KDE program that clicks the mouse for you
-kde-apps/kmouth 20.08.3 20.12.3: Text-to-speech synthesizer front end
-kde-apps/kmplot 20.08.3 20.12.3: Mathematical function plotter
-kde-apps/knavalbattle 20.08.3 20.12.3: Battleship clone by KDE
-kde-apps/knetwalk 20.08.3 20.12.3: KDE version of the popular NetWalk game for system administrators
-kde-apps/knights 20.08.3 20.12.3: Simple chess board based on KDE Frameworks
-kde-apps/knotes 20.12.2 20.12.3: Note taking application
-kde-apps/kolf 20.08.3 20.12.3: Minigolf game by KDE
-kde-apps/kollision 20.08.3 20.12.3: Simple ball dodging game
-kde-apps/kolourpaint 20.08.3 20.12.3: Paint Program by KDE
-kde-apps/kompare 20.08.3 20.12.3: A program to view the differences between files
-kde-apps/konqueror 20.08.3 20.12.3: Web browser and file manager based on KDE Frameworks
-kde-apps/konquest 20.08.3 20.12.3: Galactic Strategy KDE Game
-kde-apps/konsole 20.08.3 20.12.3: KDE's terminal emulator
-kde-apps/konsolekalendar 20.12.2 20.12.3: Command line interface to KDE calendars
-kde-apps/kontact 20.12.2 20.12.3: Container application to unify several major PIM applications within one
-kde-apps/kontactinterface 20.12.2 20.12.3: Library for embedding KParts in a Kontact component
-kde-apps/kopete 20.08.3 20.12.3: Multi-protocol IM client based on KDE Frameworks
-kde-apps/korganizer 20.12.2 20.12.3: Organizational assistant, providing calendars and other similar functionality
-kde-apps/kpat 20.08.3 20.12.3: KDE patience game
-kde-apps/kpimtextedit 20.12.2 20.12.3: Extended text editor for PIM applications
-kde-apps/kpkpass 20.12.2 20.12.3: Library to deal with Apple Wallet pass files
-kde-apps/kqtquickcharts 20.08.3 20.12.3: Qt Quick plugin for beautiful and interactive charts
-kde-apps/krdc 20.08.3 20.12.3: Remote desktop connection (RDP and VNC) client
-kde-apps/kreversi 20.08.3 20.12.3: Board game by KDE
-kde-apps/krfb 20.08.3 20.12.3: VNC-compatible server to share Plasma desktops
-kde-apps/kross-interpreters 20.08.3 20.12.3: Kross interpreter plugins for programming languages
-kde-apps/kruler 20.08.3 20.12.3: Screen ruler for Plasma
-kde-apps/kshisen 20.08.3 20.12.3: Solitaire-like game played using the standard set of Mahjong tiles
-kde-apps/ksirk 20.08.3 20.12.3: Port of the board game risk
-kde-apps/ksmtp 20.12.2 20.12.3: Job-based library to send email through an SMTP server
-kde-apps/ksnakeduel 20.08.3 20.12.3: KDE Tron game
-kde-apps/kspaceduel 20.08.3 20.12.3: Space Game by KDE
-kde-apps/ksquares 20.08.3 20.12.3: KDE clone of the game squares
-kde-apps/ksudoku 20.08.3 20.12.3: Logic-based symbol placement puzzle by KDE
-kde-apps/ksystemlog 20.08.3 20.12.3: System log viewer by KDE
-kde-apps/kteatime 20.08.3 20.12.3: KDE timer for making a fine cup of tea
-kde-apps/ktimer 20.08.3 20.12.3: Little tool to execute programs after some time
-kde-apps/ktouch 20.08.3 20.12.3: Program that helps to learn and practice touch typing
-kde-apps/ktp-accounts-kcm 20.08.3 20.12.3: KDE Telepathy account management kcm
-kde-apps/ktp-approver 20.08.3 20.12.3: KDE Telepathy notification handler
-kde-apps/ktp-auth-handler 20.08.3 20.12.3: KDE Telepathy authentication handler
-kde-apps/ktp-common-internals 20.08.3 20.12.3: KDE Telepathy common library
-kde-apps/ktp-contact-list 20.08.3 20.12.3: KDE Telepathy contact list
-kde-apps/ktp-contact-runner 20.08.3 20.12.3: KDE Telepathy krunner plugin
-kde-apps/ktp-desktop-applets 20.08.3 20.12.3: KDE Telepathy contact, presence and chat Plasma applets
-kde-apps/ktp-filetransfer-handler 20.08.3 20.12.3: KDE Telepathy file transfer handler
-kde-apps/ktp-kded-module 20.08.3 20.12.3: KDE Telepathy workspace integration
-kde-apps/ktp-send-file 20.08.3 20.12.3: KDE Telepathy file manager plugin to send files to contacts
-kde-apps/ktp-text-ui 20.08.3 20.12.3: KDE Telepathy text chat window
-kde-apps/ktuberling 20.08.3 20.12.3: Potato game for kids by KDE
-kde-apps/kturtle 20.08.3 20.12.3: Educational programming environment using the Logo programming language
-kde-apps/kubrick 20.08.3 20.12.3: Game based on the "Rubik's Cube" puzzle by KDE
-kde-apps/kwalletmanager 20.08.3 20.12.3: Tool to manage the passwords on your system using KDE Wallet
-kde-apps/kwave 20.08.3 20.12.3: Sound editor built on KDE Frameworks 5 that can edit many types of audio files
-kde-apps/kwordquiz 20.08.3 20.12.3: Powerful flashcard and vocabulary learning program
-kde-apps/kwrite 20.08.3 20.12.3: Simple text editor based on KDE Frameworks
-kde-apps/libgravatar 20.12.2 20.12.3: Library for gravatar integration
-kde-apps/libkcddb 20.08.3 20.12.3: KDE library for CDDB
-kde-apps/libkcompactdisc 20.08.3 20.12.3: Library for playing & ripping CDs
-kde-apps/libkdcraw 20.08.3 20.12.3: Digital camera raw image library wrapper
-kde-apps/libkdegames 20.08.3 20.12.3: Base library common to many KDE games
-kde-apps/libkdepim 20.12.2 20.12.3: Common PIM libraries
-kde-apps/libkeduvocdocument 20.08.3 20.12.3: Library for reading/writing KVTML
-kde-apps/libkexiv2 20.08.3 20.12.3: Wrapper around exiv2 library
-kde-apps/libkgapi 20.12.2 20.12.3: Library for accessing Google calendar and contact resources
-kde-apps/libkipi 20.08.3 20.12.3: A library for image plugins accross KDE applications
-kde-apps/libkleo 20.12.2 20.12.3: Library for encryption handling
-kde-apps/libkmahjongg 20.08.3 20.12.3: Mahjongg library based on Qt/KDE Frameworks
-kde-apps/libkomparediff2 20.08.3 20.12.3: KDE library to compare files and strings
-kde-apps/libksane 20.08.3 20.12.3: SANE Library interface based on KDE Frameworks
-kde-apps/libksieve 20.12.2 20.12.3: Common PIM libraries
-kde-apps/libktnef 20.12.2 20.12.3: Library for handling TNEF data
-kde-apps/lokalize 20.08.3 20.12.3: Localization tool for KDE software and other free and open source software
-kde-apps/lskat 20.08.3 20.12.3: Skat game by KDE
-kde-apps/mailcommon 20.12.2 20.12.3: Common mail library
-kde-apps/mailimporter 20.12.2 20.12.3: Library to import mail from various sources
-kde-apps/marble 20.08.3 20.12.3: Virtual Globe and World Atlas to learn more about Earth
-kde-apps/mbox-importer 20.12.2 20.12.3: Import mbox email archives from various sources into Akonadi
-kde-apps/messagelib 20.12.2 20.12.3: Libraries for messaging functions
-kde-apps/minuet 20.08.3 20.12.3: Music Education software by KDE
-kde-apps/okular 20.08.3 20.12.3: Universal document viewer based on KDE Frameworks
-kde-apps/palapeli 20.08.3 20.12.3: Jigsaw puzzle game by KDE
-kde-apps/parley 20.08.3-r1 20.12.3: A vocabulary trainer to help you memorize things
-kde-apps/picmi 20.08.3 20.12.3: Nonogram logic game by KDE
-kde-apps/pim-data-exporter 20.12.2 20.12.3: Assistant to backup and archive PIM data and configuration
-kde-apps/pim-sieve-editor 20.12.2 20.12.3: Assistant for editing IMAP Sieve filters
-kde-apps/pimcommon 20.12.2 20.12.3: Common PIM libraries
-kde-apps/plasma-telepathy-meta 20.08.3 20.12.3: Plasma Telepathy client
-kde-apps/poxml 20.08.3 20.12.3: KDE utility to translate DocBook XML files using gettext po files
-kde-apps/print-manager 20.08.3 20.12.3: Manage print jobs and printers in Plasma
-kde-apps/rocs 20.08.3 20.12.3: Interface to work with Graph Theory
-kde-apps/signon-kwallet-extension 20.08.3 20.12.3: KWallet extension for signond
-kde-apps/spectacle 20.08.3 20.12.3: Screenshot capture utility
-kde-apps/step 20.08.3 20.12.3: Interactive physics simulator
-kde-apps/svgpart 20.08.3 20.12.3: Kpart for viewing SVGs
-kde-apps/sweeper 20.08.3 20.12.3: Privacy settings widget to clean unwanted traces on the system
-kde-apps/thumbnailers 20.08.3 20.12.3: Thumbnail generators for PDF/PS and RAW files
-kde-apps/umbrello 20.08.3 20.12.3: KDE UML Modeller
-kde-apps/yakuake 20.08.3 20.12.3: Quake-style terminal emulator based on konsole
-kde-apps/zeroconf-ioslave 20.08.3 20.12.3: DNSSD (DNS Service Discovery - part of Rendezvous) ioslave and kded module
+kde-apps/kdebugsettings 20.12.3: Application to enable/disable qCDebug
+kde-apps/kdecore-meta 20.12.3: kdecore - merge this to pull in the most basic applications
+kde-apps/kdeedu-data 20.12.3: Shared icons, artwork and data files for educational applications
+kde-apps/kdeedu-meta 20.12.3: KDE educational apps - merge this to pull in all kdeedu-derived packages
+kde-apps/kdegames-meta 20.12.3: kdegames - merge this to pull in all kdegames-derived packages
+kde-apps/kdegraphics-meta 20.12.3: kdegraphics - merge this to pull in all kdegraphics-derived packages
+kde-apps/kdegraphics-mobipocket 20.12.3: Library to support mobipocket ebooks
+kde-apps/kdemultimedia-meta 20.12.3: kdemultimedia - merge this to pull in all kdemultimedia-derived packages
+kde-apps/kdenetwork-filesharing 20.12.3: SMB filesharing config module for systemsettings
+kde-apps/kdenetwork-meta 20.12.3: kdenetwork - merge this to pull in all kdenetwork-derived packages
+kde-apps/kdenlive 20.12.3: Non-linear video editing suite by KDE
+kde-apps/kdepim-addons 20.12.3: Plugins for KDE Personal Information Management Suite
+kde-apps/kdepim-meta 20.12.3: KDE PIM - merge this to pull in all kdepim-derived packages
+kde-apps/kdepim-runtime 20.12.3: Runtime plugin collection to extend the functionality of KDE PIM
+kde-apps/kdesdk-kioslaves 20.12.3: kioslaves from kdesdk package
+kde-apps/kdesdk-meta 20.12.3: KDE SDK - merge this to pull in all kdesdk-derived packages
+kde-apps/kdesdk-thumbnailers 20.12.3: Thumbnail generator for PO files
+kde-apps/kdeutils-meta 20.12.3: kdeutils - merge this to pull in all kdeutils-derived packages
+kde-apps/kdf 20.12.3: KDE free disk space utility
+kde-apps/kdialog 20.12.3: Can be used to show nice dialog boxes from shell scripts
+kde-apps/kdiamond 20.12.3: Single player three-in-a-row game
+kde-apps/keditbookmarks 20.12.3: Bookmarks editor based on KDE Frameworks
+kde-apps/kfind 20.12.3: File finder utility based on KDE Frameworks
+kde-apps/kfloppy 20.12.3: Straightforward graphical means to format 3.5" and 5.25" floppy disks
+kde-apps/kfourinline 20.12.3: KDE four-in-a-row game
+kde-apps/kgeography 20.12.3: Geography learning tool
+kde-apps/kget 20.12.3: Advanced download manager by KDE
+kde-apps/kgoldrunner 20.12.3: Game of action and puzzle solving by KDE
+kde-apps/kgpg 20.12.3: Frontend for GnuPG, a powerful encryption utility by KDE
+kde-apps/khangman 20.12.3: Classical hangman game by KDE
+kde-apps/khelpcenter 20.12.3: Application to read documentation for KDE Plasma, Applications, Utilities
+kde-apps/kidentitymanagement 20.12.3: Library for managing identitites
+kde-apps/kig 20.12.3: KDE Interactive Geometry tool
+kde-apps/kigo 20.12.3: Go game by KDE
+kde-apps/killbots 20.12.3: Kill the bots or they kill you!
+kde-apps/kimagemapeditor 20.12.3: Generator of HTML image maps
+kde-apps/kimap 20.12.3: Library for interacting with IMAP servers
+kde-apps/kio-extras 20.12.3: KIO plugins present a filesystem-like view of arbitrary data
+kde-apps/kipi-plugins 20.12.3: Plugins for the KDE Image Plugin Interface
+kde-apps/kiriki 20.12.3: An addictive and fun dice game
+kde-apps/kiten 20.12.3: KDE Japanese dictionary and reference
+kde-apps/kitinerary 20.12.3: Data Model and Extraction System for Travel Reservation information
+kde-apps/kjumpingcube 20.12.3: Tactical one or two player game
+kde-apps/kldap 20.12.3: Library for interacting with LDAP servers
+kde-apps/kleopatra 20.12.3: Certificate manager and GUI for OpenPGP and CMS cryptography
+kde-apps/klettres 20.12.3: Alphabet learning application
+kde-apps/klickety 20.12.3: An adaptation of the Clickomania game
+kde-apps/klines 20.12.3: A little KDE game about balls and how to get rid of them
+kde-apps/kmag 20.12.3: KDE screen magnifier
+kde-apps/kmahjongg 20.12.3: A tile matching game for one or two players
+kde-apps/kmail 20.12.3: Email client, supporting POP3 and IMAP mailboxes.
+kde-apps/kmail-account-wizard 20.12.3: Assistant for KMail accounts configuration
+kde-apps/kmailtransport 20.12.3: Mail transport service
+kde-apps/kmbox 20.12.3: Library for accessing MBox format mail storages
+kde-apps/kmime 20.12.3: Libary for handling mail messages and newsgroup articles
+kde-apps/kmines 20.12.3: Classic mine sweeper game
+kde-apps/kmix 20.12.3: Volume control gui based on KDE Frameworks
+kde-apps/kmousetool 20.12.3: KDE program that clicks the mouse for you
+kde-apps/kmouth 20.12.3: Text-to-speech synthesizer front end
+kde-apps/kmplot 20.12.3: Mathematical function plotter
+kde-apps/knavalbattle 20.12.3: Battleship clone by KDE
+kde-apps/knetwalk 20.12.3: KDE version of the popular NetWalk game for system administrators
+kde-apps/knights 20.12.3: Simple chess board based on KDE Frameworks
+kde-apps/knotes 20.12.3: Note taking application
+kde-apps/kolf 20.12.3: Minigolf game by KDE
+kde-apps/kollision 20.12.3: Simple ball dodging game
+kde-apps/kolourpaint 20.12.3: Paint Program by KDE
+kde-apps/kompare 20.12.3: A program to view the differences between files
+kde-apps/konqueror 20.12.3: Web browser and file manager based on KDE Frameworks
+kde-apps/konquest 20.12.3: Galactic Strategy KDE Game
+kde-apps/konsole 20.12.3: KDE's terminal emulator
+kde-apps/konsolekalendar 20.12.3: Command line interface to KDE calendars
+kde-apps/kontact 20.12.3: Container application to unify several major PIM applications within one
+kde-apps/kontactinterface 20.12.3: Library for embedding KParts in a Kontact component
+kde-apps/kopete 20.12.3: Multi-protocol IM client based on KDE Frameworks
+kde-apps/korganizer 20.12.3: Organizational assistant, providing calendars and other similar functionality
+kde-apps/kpat 20.12.3: KDE patience game
+kde-apps/kpimtextedit 20.12.3: Extended text editor for PIM applications
+kde-apps/kpkpass 20.12.3: Library to deal with Apple Wallet pass files
+kde-apps/kqtquickcharts 20.12.3: Qt Quick plugin for beautiful and interactive charts
+kde-apps/krdc 20.12.3: Remote desktop connection (RDP and VNC) client
+kde-apps/kreversi 20.12.3: Board game by KDE
+kde-apps/krfb 20.12.3: VNC-compatible server to share Plasma desktops
+kde-apps/kross-interpreters 20.12.3: Kross interpreter plugins for programming languages
+kde-apps/kruler 20.12.3: Screen ruler for Plasma
+kde-apps/kshisen 20.12.3: Solitaire-like game played using the standard set of Mahjong tiles
+kde-apps/ksirk 20.12.3: Port of the board game risk
+kde-apps/ksmtp 20.12.3: Job-based library to send email through an SMTP server
+kde-apps/ksnakeduel 20.12.3: KDE Tron game
+kde-apps/kspaceduel 20.12.3: Space Game by KDE
+kde-apps/ksquares 20.12.3: KDE clone of the game squares
+kde-apps/ksudoku 20.12.3: Logic-based symbol placement puzzle by KDE
+kde-apps/ksystemlog 20.12.3: System log viewer by KDE
+kde-apps/kteatime 20.12.3: KDE timer for making a fine cup of tea
+kde-apps/ktimer 20.12.3: Little tool to execute programs after some time
+kde-apps/ktouch 20.12.3: Program that helps to learn and practice touch typing
+kde-apps/ktp-accounts-kcm 20.12.3: KDE Telepathy account management kcm
+kde-apps/ktp-approver 20.12.3: KDE Telepathy notification handler
+kde-apps/ktp-auth-handler 20.12.3: KDE Telepathy authentication handler
+kde-apps/ktp-common-internals 20.12.3: KDE Telepathy common library
+kde-apps/ktp-contact-list 20.12.3: KDE Telepathy contact list
+kde-apps/ktp-contact-runner 20.12.3: KDE Telepathy krunner plugin
+kde-apps/ktp-desktop-applets 20.12.3: KDE Telepathy contact, presence and chat Plasma applets
+kde-apps/ktp-filetransfer-handler 20.12.3: KDE Telepathy file transfer handler
+kde-apps/ktp-kded-module 20.12.3: KDE Telepathy workspace integration
+kde-apps/ktp-send-file 20.12.3: KDE Telepathy file manager plugin to send files to contacts
+kde-apps/ktp-text-ui 20.12.3: KDE Telepathy text chat window
+kde-apps/ktuberling 20.12.3: Potato game for kids by KDE
+kde-apps/kturtle 20.12.3: Educational programming environment using the Logo programming language
+kde-apps/kubrick 20.12.3: Game based on the "Rubik's Cube" puzzle by KDE
+kde-apps/kwalletmanager 20.12.3: Tool to manage the passwords on your system using KDE Wallet
+kde-apps/kwave 20.12.3: Sound editor built on KDE Frameworks 5 that can edit many types of audio files
+kde-apps/kwordquiz 20.12.3: Powerful flashcard and vocabulary learning program
+kde-apps/kwrite 20.12.3: Simple text editor based on KDE Frameworks
+kde-apps/libgravatar 20.12.3: Library for gravatar integration
+kde-apps/libkcddb 20.12.3: KDE library for CDDB
+kde-apps/libkcompactdisc 20.12.3: Library for playing & ripping CDs
+kde-apps/libkdcraw 20.12.3: Digital camera raw image library wrapper
+kde-apps/libkdegames 20.12.3: Base library common to many KDE games
+kde-apps/libkdepim 20.12.3: Common PIM libraries
+kde-apps/libkeduvocdocument 20.12.3: Library for reading/writing KVTML
+kde-apps/libkexiv2 20.12.3: Wrapper around exiv2 library
+kde-apps/libkgapi 20.12.3: Library for accessing Google calendar and contact resources
+kde-apps/libkipi 20.12.3: A library for image plugins accross KDE applications
+kde-apps/libkleo 20.12.3: Library for encryption handling
+kde-apps/libkmahjongg 20.12.3: Mahjongg library based on Qt/KDE Frameworks
+kde-apps/libkomparediff2 20.12.3: KDE library to compare files and strings
+kde-apps/libksane 20.12.3: SANE Library interface based on KDE Frameworks
+kde-apps/libksieve 20.12.3: Common PIM libraries
+kde-apps/libktnef 20.12.3: Library for handling TNEF data
+kde-apps/lokalize 20.12.3: Localization tool for KDE software and other free and open source software
+kde-apps/lskat 20.12.3: Skat game by KDE
+kde-apps/mailcommon 20.12.3: Common mail library
+kde-apps/mailimporter 20.12.3: Library to import mail from various sources
+kde-apps/marble 20.12.3: Virtual Globe and World Atlas to learn more about Earth
+kde-apps/mbox-importer 20.12.3: Import mbox email archives from various sources into Akonadi
+kde-apps/messagelib 20.12.3: Libraries for messaging functions
+kde-apps/minuet 20.12.3: Music Education software by KDE
+kde-apps/okular 20.12.3: Universal document viewer based on KDE Frameworks
+kde-apps/palapeli 20.12.3: Jigsaw puzzle game by KDE
+kde-apps/parley 20.12.3: A vocabulary trainer to help you memorize things
+kde-apps/picmi 20.12.3: Nonogram logic game by KDE
+kde-apps/pim-data-exporter 20.12.3: Assistant to backup and archive PIM data and configuration
+kde-apps/pim-sieve-editor 20.12.3: Assistant for editing IMAP Sieve filters
+kde-apps/pimcommon 20.12.3: Common PIM libraries
+kde-apps/plasma-telepathy-meta 20.12.3: Plasma Telepathy client
+kde-apps/poxml 20.12.3: KDE utility to translate DocBook XML files using gettext po files
+kde-apps/print-manager 20.12.3: Manage print jobs and printers in Plasma
+kde-apps/rocs 20.12.3: Interface to work with Graph Theory
+kde-apps/signon-kwallet-extension 20.12.3: KWallet extension for signond
+kde-apps/spectacle 20.12.3: Screenshot capture utility
+kde-apps/step 20.12.3: Interactive physics simulator
+kde-apps/svgpart 20.12.3: Kpart for viewing SVGs
+kde-apps/sweeper 20.12.3: Privacy settings widget to clean unwanted traces on the system
+kde-apps/thumbnailers 20.12.3: Thumbnail generators for PDF/PS and RAW files
+kde-apps/umbrello 20.12.3: KDE UML Modeller
+kde-apps/yakuake 20.12.3: Quake-style terminal emulator based on konsole
+kde-apps/zeroconf-ioslave 20.12.3: DNSSD (DNS Service Discovery - part of Rendezvous) ioslave and kded module
 kde-frameworks/attica 5.77.0 5.80.0: Framework providing access to Open Collaboration Services
 kde-frameworks/baloo 5.77.0-r1 5.80.0-r1: Framework for searching and managing metadata
 kde-frameworks/bluez-qt 5.77.0 5.80.0: Qt wrapper for Bluez 5 DBus API
@@ -12407,12 +12407,12 @@ kde-frameworks/syntax-highlighting 5.77.0-r3 5.80.0-r1: Framework for syntax hig
 kde-frameworks/threadweaver 5.77.0 5.80.0: Framework for managing threads using job and queue-based interfaces
 kde-misc/basket 2.49b: Multiple information organizer - a DropDrawers clone
 kde-misc/colord-kde 0.5.0-r2: Provides interfaces and session daemon to colord
-kde-misc/kdeconnect 20.08.3 20.12.3: Adds communication between KDE Plasma and your smartphone
+kde-misc/kdeconnect 20.12.3: Adds communication between KDE Plasma and your smartphone
 kde-misc/kdiff3 1.8.5: Frontend to diff3 based on KDE Frameworks
 kde-misc/kdirstat 3.2.1: GUI equivalent to the du command based on KDE Frameworks
 kde-misc/kimtoy 1.92_pre20190225: Input method frontend for Plasma
 kde-misc/kio-fuse 5.0.0-r1 5.0.1: FUSE interface for KIO
-kde-misc/kio-gdrive 20.08.3 20.12.3: KIO Slave for Google Drive service
+kde-misc/kio-gdrive 20.12.3: KIO Slave for Google Drive service
 kde-misc/kio-gopher 0.1.99-r1: Gopher Kioslave for Konqueror
 kde-misc/kio-locate 0.5.3-r3: Locate KIO slave
 kde-misc/kio-stash 1.0-r1: KIO Slave and daemon to stash discontinuous file selections
@@ -13855,7 +13855,7 @@ media-sound/drumstick 2.0.0 2.1.0: Qt/C++ wrapper for ALSA sequencer
 media-sound/dvda-author 10.06-r1: Author a DVD-Audio DVD
 media-sound/easytag 2.4.3-r1: GTK+ utility for editing MP2, MP3, MP4, FLAC, Ogg and other media tags
 media-sound/ecasound 2.9.3: a package for multitrack audio processing
-media-sound/elisa 20.08.3 20.12.3: Simple music player by KDE
+media-sound/elisa 20.12.3: Simple music player by KDE
 media-sound/entagged-tageditor 0.35: Open-source audiofile tagger
 media-sound/erec 2.2.0.1-r1: Shared audio recording server
 media-sound/exaile 4.1.0_alpha1 9999: GTK+ based media player aiming to be similar to Amarok
@@ -14812,7 +14812,7 @@ net-irc/iroffer-dinoex 3.30-r1 3.31 3.32: IRC fileserver using DCC
 net-irc/irssi 1.2.2-r1 9999: A modular textUI IRC client with IPv6 support
 net-irc/irssi-xmpp 0.54: An irssi plugin providing Jabber/XMPP support
 net-irc/irssistats 0.75-r1: Generates HTML IRC stats based on irssi logs
-net-irc/konversation 1.7.7-r1 20.12.3: User friendly IRC Client
+net-irc/konversation 20.12.3: User friendly IRC Client
 net-irc/kvirc 5.2_pre20200605155236 9999: Advanced IRC Client
 net-irc/limnoria 9999 20200124 20210326: Python based extensible IRC infobot and channel bot
 net-irc/muh 2.2a-r1: Persistent IRC bouncer
@@ -14916,7 +14916,7 @@ net-libs/libiio 0.21 9999: Library for interfacing with IIO devices
 net-libs/libircclient 1.10: Small but powerful library implementing the client-server IRC protocol
 net-libs/libiscsi 1.18.0 1.19.0 9999: iscsi client library and utilities
 net-libs/libisds 0.11.1 9999: Client library for accessing ISDS Soap services
-net-libs/libktorrent 2.2.0-r1 20.12.3: BitTorrent library based on KDE Frameworks
+net-libs/libktorrent 20.12.3: BitTorrent library based on KDE Frameworks
 net-libs/liblockfile 1.16: Implements functions designed to lock the standard mailboxes
 net-libs/libmbim 1.18.0 1.24.4 1.24.6: Mobile Broadband Interface Model (MBIM) modem protocol helper library
 net-libs/libmediawiki 5.37.0-r1: C++ interface for MediaWiki based web service as wikipedia.org
@@ -15519,7 +15519,7 @@ net-p2p/go-ipfs 0.7.0 0.8.0: Main implementation of IPFS
 net-p2p/go-ipfs-bin 0.4.22 0.7.0: Main implementation of IPFS
 net-p2p/gtk-gnutella 1.2.0-r1: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
-net-p2p/ktorrent 5.2.0-r1 20.12.3: Powerful BitTorrent client based on KDE Frameworks
+net-p2p/ktorrent 20.12.3: Powerful BitTorrent client based on KDE Frameworks
 net-p2p/litecoind 0.10.4.0: The offical daemon to run your own (full) Litecoin node
 net-p2p/mktorrent 1.1_p20180912: Simple command line utility to create BitTorrent metainfo files
 net-p2p/mldonkey 3.1.7-r1: Multi-network P2P application written in Ocaml, with Gtk, web & telnet interface
@@ -17271,7 +17271,7 @@ sys-block/open-iscsi 2.0.873-r1 2.0.875 2.1.3 2.1.4-r1: A performant, transport 
 sys-block/open-isns 0.98 0.99 0.100 0.101: iSNS server and client for Linux
 sys-block/parted 3.4: Create, destroy, resize, check, copy partitions and file systems
 sys-block/partimage 0.6.9-r1: Console-based application to efficiently save raw partition data to image file
-sys-block/partitionmanager 4.2.0 20.12.3: Utility for management of disks, partitions and file systems
+sys-block/partitionmanager 20.12.3: Utility for management of disks, partitions and file systems
 sys-block/perccli 7.5.007.0529 7.5.007.0529-r2: LINUX PERCCLI Utility For All Dell HBA/PERC Controllers
 sys-block/qla-fc-firmware 20101015: QLogic Linux Fibre Channel HBA Firmware for ql2xxx cards
 sys-block/raid-check 20140719-r1: Script to do "scrubbing" on software RAID systems
@@ -17689,7 +17689,7 @@ sys-libs/gdbm 1.18.1-r1 1.19: Standard GNU database libraries
 sys-libs/glibc 2.19-r2 2.25-r11 2.30-r9 2.31-r7 2.32-r6 2.32-r7 2.32-r8 2.33 9999: GNU libc C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 5.4.1-r1: Multi-platform helper library for other libraries
-sys-libs/kpmcore 4.2.0 20.12.3: Library for managing partitions
+sys-libs/kpmcore 20.12.3: Library for managing partitions
 sys-libs/ldb 2.1.4-r1 2.1.5 2.2.0-r2 2.2.1 2.3.0: LDAP-like embedded database
 sys-libs/libaal 1.0.7-r1 1.0.7-r2: library required by reiser4progs
 sys-libs/libapparmor 2.13.4 3.0.0 3.0.1: Library to support AppArmor userspace utilities
