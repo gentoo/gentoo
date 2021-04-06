@@ -42,6 +42,7 @@ DEPEND="
 		libressl? ( dev-libs/libressl:0= )
 	)
 	slz? ( dev-libs/libslz:= )
+	systemd? ( sys-apps/systemd )
 	zlib? ( sys-libs/zlib )
 	lua? ( dev-lang/lua:5.3 )
 	device-atlas? ( dev-libs/device-atlas-api-c )"
