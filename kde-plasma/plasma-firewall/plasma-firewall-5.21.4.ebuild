@@ -35,6 +35,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	${PYTHON_DEPS}
+	sys-apps/systemd
 	|| (
 		net-firewall/firewalld
 		net-firewall/ufw
