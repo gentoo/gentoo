@@ -1,5 +1,5 @@
---- a/ForceSelectWin.cpp.orig	2012-08-20 17:35:01.000000000 +0200
-+++ b/ForceSelectWin.cpp	2012-08-20 17:47:19.000000000 +0200
+--- a/ForceSelectWin.cpp
++++ b/ForceSelectWin.cpp
 @@ -1596,15 +1596,15 @@
  	fs::directory_iterator directoryEnd; // default construction yields past-the-end
  	for (fs::directory_iterator iter(sourcePath); iter != directoryEnd; ++iter) {
@@ -20,8 +20,8 @@
  		
  		fs::copy_file(*iter, destPath.string() + "/" + destFile);
  	}
---- a/Main.cpp.orig	2012-08-20 17:48:13.000000000 +0200
-+++ b/Main.cpp	2012-08-20 17:50:51.000000000 +0200
+--- a/Main.cpp
++++ b/Main.cpp
 @@ -339,12 +339,6 @@
  
  void GameInit(char* argv[]) {
@@ -35,8 +35,8 @@
  	
  	FindHomePath();
  	LoadSettings(argv);
---- a/Menu_Base.cpp.orig	2012-08-20 17:51:05.000000000 +0200
-+++ b/Menu_Base.cpp	2012-08-20 17:52:15.000000000 +0200
+--- a/Menu_Base.cpp
++++ b/Menu_Base.cpp
 @@ -206,7 +206,7 @@
  
  	fs::directory_iterator directoryEnd; // default construction yields past-the-end
@@ -64,8 +64,8 @@
  
  		if (filename.find('.') == filename.npos)
  			continue;
---- a/Stuff.cpp.orig	2012-08-20 17:52:36.000000000 +0200
-+++ b/Stuff.cpp	2012-08-20 17:53:11.000000000 +0200
+--- a/Stuff.cpp
++++ b/Stuff.cpp
 @@ -657,7 +657,7 @@
  	fs::directory_iterator directoryEnd; // default construction yields past-the-end
  	for (fs::directory_iterator iter(tempPath); iter != directoryEnd; ++iter) {

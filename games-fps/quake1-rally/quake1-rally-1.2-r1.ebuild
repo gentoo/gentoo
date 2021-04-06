@@ -1,38 +1,39 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils games
+EAPI=7
+
+inherit edos2unix
 
 DESCRIPTION="TC which turns Quake into a Rally racing game"
 HOMEPAGE="http://wiki.quakeworld.nu/Quake_Rally"
 SRC_URI="http://ehall.freeshell.org/quake/qr12.zip
 	http://ehall.freeshell.org/quake/qrlo1.zip"
+S="${WORKDIR}"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+
 RESTRICT="mirror bindist"
 
-RDEPEND=""
-DEPEND="app-arch/unzip"
-
-S=${WORKDIR}
+BDEPEND="app-arch/unzip"
 
 src_unpack() {
-	echo ">>> Unpacking qr12.zip to ${PWD}"
+	einfo "Unpacking qr12.zip to ${PWD}"
 	unzip -qoLL "${DISTDIR}"/qr12.zip || die "unpacking qr12.zip failed"
-	echo ">>> Unpacking qrlo1.zip to ${PWD}"
+
+	einfo "Unpacking qrlo1.zip to ${PWD}"
 	unzip -qoLL "${DISTDIR}"/qrlo1.zip || die "unpacking qrlo1.zip failed"
-	rm -f button.wav qrally.exe
-	cd rally
-	edos2unix $(find . -name '*.txt' -o -name '*.cfg')
-	mv rally{,.example}.cfg
+
+	rm -f button.wav qrally.exe || die
+	cd rally || die
+
+	edos2unix $(find . -name '*.txt' -o -name '*.cfg' || die)
+	mv rally{,.example}.cfg || die
 }
 
 src_install() {
-	insinto "${GAMES_DATADIR}/quake1"
+	insinto /usr/share/quake1
 	doins -r *
-	prepgamesdirs
 }
