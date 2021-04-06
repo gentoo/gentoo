@@ -1,0 +1,32 @@
+https://bugs.gentoo.org/780141
+https://github.com/SKS-Keyserver/sks-keyserver/commit/c3ba6d5abb525dcb84745245631c410c11c07ec1.patch
+
+From c3ba6d5abb525dcb84745245631c410c11c07ec1 Mon Sep 17 00:00:00 2001
+From: ygrek <ygrek@autistici.org>
+Date: Thu, 4 Feb 2021 15:31:02 -0500
+Subject: [PATCH] do not set DB_DBT_READONLY (fix #82)
+
+it is allowed only on keys, but sks is not using any bdb functions that
+might mutate keys, so it is easier to just avoid using it altogether
+---
+ bdb/bdb_stubs.c | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/bdb/bdb_stubs.c b/bdb/bdb_stubs.c
+index 864f0b2..959ee27 100644
+--- a/bdb/bdb_stubs.c
++++ b/bdb/bdb_stubs.c
+@@ -58,13 +58,8 @@ static void dbt_from_string(DBT *dbt, value v) {
+   // uninitialized stack-allocated DBT
+   zerob(dbt, sizeof(*dbt));
+ 
+-  // Cast away the lack of const: we set DB_DBT_READONLY to
+-  // indicate to bdb that it shouldn't modify this buffer
+   dbt->data = (void *)String_val(v);
+   dbt->size = string_length(v);
+-#ifdef DB_DBT_READONLY
+-  dbt->flags = DB_DBT_READONLY;
+-#endif
+ }
+ 
+ #if OCAML_VERSION < 40600
