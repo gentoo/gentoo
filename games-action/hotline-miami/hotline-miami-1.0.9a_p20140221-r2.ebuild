@@ -1,14 +1,14 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# TODO: unbundle Qt5
+EAPI=7
 
-EAPI=5
-inherit eutils games
+inherit desktop wrapper
 
 DESCRIPTION="High-octane action game overflowing with raw brutality"
 HOMEPAGE="http://www.devolverdigital.com/games/view/hotline-miami"
 SRC_URI="HotlineMiami_linux_1392944501.tar.gz"
+S="${WORKDIR}"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
@@ -16,11 +16,14 @@ KEYWORDS="~amd64 ~x86"
 IUSE="bundled-libs +launcher"
 RESTRICT="bindist fetch splitdebug"
 
-MYGAMEDIR=${GAMES_PREFIX_OPT}/${PN}
-QA_PREBUILT="${MYGAMEDIR#/}/lib/*
+MYGAMEDIR=opt/${PN}
+QA_PREBUILT="
+	${MYGAMEDIR#/}/lib/*
 	${MYGAMEDIR#/}/Hotline
-	${MYGAMEDIR#/}/hotline_launcher"
+	${MYGAMEDIR#/}/hotline_launcher
+"
 
+# TODO: unbundle Qt5
 RDEPEND="
 	amd64? (
 		>=x11-libs/libX11-1.6.2[abi_x86_32(-)]
@@ -53,9 +56,8 @@ RDEPEND="
 			x11-libs/libXrender
 			x11-libs/libxcb
 		)
-	)"
-
-S=${WORKDIR}
+	)
+"
 
 pkg_nofetch() {
 	einfo "Please buy & download ${SRC_URI} from:"
@@ -75,12 +77,10 @@ src_install() {
 	use launcher && doexe lib/libQt5*
 	use bundled-libs && doexe libCg* libopenal*
 
-	games_make_wrapper ${PN} "./Hotline" "${MYGAMEDIR}" "${MYGAMEDIR}/lib"
+	make_wrapper ${PN} "./Hotline" "${MYGAMEDIR}" "${MYGAMEDIR}/lib"
 	make_desktop_entry ${PN}
 	if use launcher ; then
-		games_make_wrapper ${PN}-launcher "./hotline_launcher" "${MYGAMEDIR}" "${MYGAMEDIR}/lib"
+		make_wrapper ${PN}-launcher "./hotline_launcher" "${MYGAMEDIR}" "${MYGAMEDIR}/lib"
 		make_desktop_entry ${PN}-launcher "${PN} (launcher)"
 	fi
-
-	prepgamesdirs
 }
