@@ -6,10 +6,10 @@ EAPI=7
 HOMEPAGE=https://developers.google.com/protocol-buffers/ https://github.com/protocolbuffers/protobuf
 INHERIT=java-pkg-2 java-pkg-simple
 IUSE=elibc_FreeBSD doc source elibc_FreeBSD
-KEYWORDS=amd64 ~arm ~arm64 ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-macos
+KEYWORDS=amd64 ~arm ~arm64 ppc64 x86 ~amd64-linux ~x86-linux ~x64-macos
 LICENSE=BSD
 RDEPEND=>=virtual/jre-1.7 !<dev-libs/protobuf-3[java(-)] >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
 SLOT=0/25
 SRC_URI=https://github.com/protocolbuffers/protobuf/archive/v3.14.0.tar.gz -> protobuf-3.14.0.tar.gz
 _eclasses_=java-utils-2	2440f41421207d084e5e3f1fb001b34e	java-pkg-2	45c44ec10db6affb3ebee1ac72039888	java-pkg-simple	c85bf2d75a5f53e7b39fc9104701ebfb
-_md5_=b73c250e209abe730f61b50ad93013f4
+_md5_=c3476713cc6cc07863b3cbac750a07a2
