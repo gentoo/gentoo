@@ -11165,10 +11165,10 @@ games-action/geki2-KXL 2.0.3-r3: 2D length scroll shooting game
 games-action/geki3-KXL 1.0.3-r3: 2D length scroll shooting game
 games-action/gltron 0.70-r2: 3d tron, just like the movie
 games-action/guacamelee 20140222: A Metroidvania-style action-platformer set in a magical Mexican-inspired world
-games-action/heretic2 1.06c-r1: Third-person classic magical action-adventure game
+games-action/heretic2 1.06c-r2: Third-person classic magical action-adventure game
 games-action/heretic2-demo 1.06a: Third-person classic magical action-adventure game
 games-action/heroes 0.21-r2: Heroes Enjoy Riding Over Empty Slabs: similar to Tron and Nibbles
-games-action/hotline-miami 1.0.9a_p20140221-r1: High-octane action game overflowing with raw brutality
+games-action/hotline-miami 1.0.9a_p20140221-r2: High-octane action game overflowing with raw brutality
 games-action/intrusion2 1.024-r1: Fast paced action sidescroller set in a sci-fi environment
 games-action/koth 0.8.0-r1: Multiplayer, networked game of little tanks with really big weapons
 games-action/lugaru 1.2: 3D arcade with unique fighting system and anthropomorphic characters
@@ -11192,7 +11192,7 @@ games-action/spacearyarya-kxl 1.0.2-r2: A 2D/3D shooting game
 games-action/super-hexagon 20160217: A minimal action game by Terry Cavanagh, with music by Chipzel
 games-action/supermariowar 2.0_beta1-r1: Fan-made multiplayer Super Mario Bros. style deathmatch game
 games-action/supertuxkart 1.1 1.2: A kart racing game starring Tux, the linux penguin (TuxKart fork)
-games-action/swordandsworcery 1.02: An exploratory action adventure game with an emphasis on audiovisual style
+games-action/swordandsworcery 1.02-r1: An exploratory action adventure game with an emphasis on audiovisual style
 games-action/teeworlds 0.7.5: Online multi-player platform 2D shooter
 games-action/towbowl-tactics 0.5-r1: Tow Bowl Tactics is a game based on Games Workshop's Blood Bowl
 games-action/transcend 0.3-r1: Retro-style, abstract, 2D shooter
@@ -11212,7 +11212,7 @@ games-arcade/alienwave 0.4.0-r1: An ncurses-based Xenon clone
 games-arcade/amphetamine 0.8.10-r1: A cool Jump'n Run game offering some unique visual effects
 games-arcade/aop 0.6-r2: Ambassador of Pain is a curses based game with only 64 lines of code
 games-arcade/apricots 0.2.6-r2: Fly a plane around bomb/shoot the enemy. Port of Planegame from Amiga
-games-arcade/aquaria 1.1.3-r1: A 2D scroller set in a massive ocean world
+games-arcade/aquaria 1.1.3-r2: A 2D scroller set in a massive ocean world
 games-arcade/ascii-invaders 0.1b-r1: Space invaders clone, using ncurses library
 games-arcade/asteroid 1.2.1: Modern version of the arcade classic that uses OpenGL
 games-arcade/balloonchase 0.9.6-r1: Fly a hot air balloon and try to blow the other player out of the screen
@@ -11503,7 +11503,7 @@ games-fps/quake2-icculus 0.16.1-r1: The icculus.org Linux port of iD's Quake 2 e
 games-fps/quake2-textures 0_beta8: High-resolution textures for Quake 2
 games-fps/quakeforge 0.7.2-r1: New 3d engine based off of id Softwares's Quake and QuakeWorld game engine
 games-fps/qudos 0.40.1: Enhanced Quake 2 engine
-games-fps/red-blue-quake2 0.1: red-blue Quake II ! play quake2 w/3d glasses !
+games-fps/red-blue-quake2 0.1-r1: Red-blue Quake II! Play quake2 with 3D glasses!
 games-fps/redeclipse 1.6.0-r3 2.0.0-r1: First-person ego-shooter, built as a total conversion of Cube Engine 2
 games-fps/rott 1.1.2-r1: Rise of the Triad for Linux!
 games-fps/sauerbraten 2013.02.03: Sauerbraten is a FOSS game engine (Cube 2) with freeware game data (Sauerbraten)
@@ -11757,7 +11757,7 @@ games-rpg/soltys 1.0-r2: Classic adventure game
 games-rpg/sumwars 0.5.8-r100: a multi-player, 3D action role-playing game
 games-rpg/to-the-moon 0-r1: Two doctors traversing the memories of a dying man to fulfill his last wish
 games-rpg/vendetta-online-bin 1.8.296-r1: Space-based MMORPG
-games-rpg/wasteland2 1.9.0.13: Sequel to 1988 Wasteland, post-apocalyptic computer RPG inspiration for Fallout
+games-rpg/wasteland2 1.9.0.13-r1: Sequel to 1988 Wasteland, post-apocalyptic computer RPG inspiration for Fallout
 games-rpg/wastesedge 0.3.8: Role playing game to showcase the adonthell engine
 games-rpg/xu4 0.9-r1: A remake of the computer game Ultima IV
 games-rpg/zsdx 1.9.0-r1: Free 2D Zelda fangame
@@ -11812,7 +11812,7 @@ games-strategy/crimson 0.5.3-r1: Tactical war game in the tradition of Battle Is
 games-strategy/darwinia 1.4.0_beta9-r1: the hyped indie game of the year. By the Uplink creators
 games-strategy/darwinia-demo 1.3.0-r2: Darwinia, the hyped indie game of the year. By the Uplink creators
 games-strategy/defcon-demo 1.60-r1: Global thermonuclear war simulation with multiplayer support
-games-strategy/dominions2 2.16: Dominions 2: The Ascension Wars is an epic turn-based fantasy strategy game
+games-strategy/dominions2 2.16-r1: Dominions 2: The Ascension Wars is an epic turn-based fantasy strategy game
 games-strategy/dopewars 1.6.1: Re-Write of the game Drug Wars
 games-strategy/dunelegacy 0.96.4: Updated clone of Westood Studios' Dune II
 games-strategy/freeciv 2.5.12 2.6.2: multiplayer strategy game (Civilization Clone)
@@ -15389,7 +15389,7 @@ net-misc/sipcalc 1.1.6 1.1.6-r1: Sipcalc is an advanced console-based IP subnet 
 net-misc/sipp 3.6.0 3.6.1: A free Open Source test tool / traffic generator for the SIP protocol
 net-misc/sipsak 0.9.8: small command line tool for testing SIP applications and devices
 net-misc/sitecopy 0.16.6-r1: Maintain remote web sites with ease
-net-misc/sks 1.1.6_p20200624: An OpenPGP keyserver which is decentralized with highly reliable synchronization
+net-misc/sks 1.1.6_p20200624 1.1.6_p20200624-r1: An OpenPGP keyserver which is decentralized with highly reliable synchronization
 net-misc/smb4k 3.0.6: Advanced network neighborhood browser
 net-misc/smbc 1.2.2-r3: Text mode (ncurses) SMB network commander. Features: resume and UTF-8
 net-misc/snarf 7.0-r4: Small and fast CLI resource grabber for http, gopher, finger, ftp

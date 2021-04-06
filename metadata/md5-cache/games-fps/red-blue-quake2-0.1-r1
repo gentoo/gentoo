@@ -1,0 +1,14 @@
+BDEPEND=app-arch/unzip
+DEFINED_PHASES=compile install prepare
+DEPEND=x11-libs/libX11
+DESCRIPTION=Red-blue Quake II! Play quake2 with 3D glasses!
+EAPI=7
+HOMEPAGE=https://www.jfedor.org/red-blue-quake2/
+INHERIT=toolchain-funcs
+KEYWORDS=~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libX11
+SLOT=0
+SRC_URI=mirror://idsoftware/source/q2source-3.21.zip https://www.jfedor.org/red-blue-quake2/red-blue-quake2-0.1.tar.gz
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=dec07a2a503cf11945ccd742d5e413a5

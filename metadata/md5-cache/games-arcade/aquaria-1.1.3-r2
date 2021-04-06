@@ -1,0 +1,14 @@
+BDEPEND=app-arch/unzip
+DEFINED_PHASES=install nofetch unpack
+DESCRIPTION=A 2D scroller set in a massive ocean world
+EAPI=7
+HOMEPAGE=http://www.bit-blot.com/aquaria/
+INHERIT=desktop unpacker wrapper
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=all-rights-reserved
+RDEPEND=>=media-libs/libsdl-1.2.15-r4[abi_x86_32(-)] >=media-libs/openal-1.15.1[abi_x86_32(-)]
+RESTRICT=strip fetch bindist
+SLOT=0
+SRC_URI=aquaria-lnx-humble-bundle.mojo.run
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	unpacker	517f16af48ee3ab88180dd58b5143213	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=98b7b00c81fe137545469d2eb23cad0b
