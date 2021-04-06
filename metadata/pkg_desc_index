@@ -16581,7 +16581,6 @@ sci-physics/geant-vmc 4.5.3 9999: Virtual Monte Carlo Geant4 implementation
 sci-physics/hepmc 2.06.09-r1: Event Record for Monte Carlo Generators
 sci-physics/heppdt 3.04.01-r1: Data about each particle from the Review of Particle Properties
 sci-physics/herwig 6.5.21-r1: High Energy Physics Event Generator
-sci-physics/herwig++ 2.7.1-r1: High-Energy Physics event generator
 sci-physics/jaxodraw 2.0.1-r1: Java program for drawing Feynman diagrams
 sci-physics/lammps 20200303: Large-scale Atomic/Molecular Massively Parallel Simulator
 sci-physics/lhapdf 6.2.3 6.3.0: Les Houches Parton Density Function unified library
