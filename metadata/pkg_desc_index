@@ -11154,7 +11154,7 @@ games-action/descent2-data 1.2: Data files for Descent 2
 games-action/descent2-demodata 1.0-r1: Demo data files for Descent 2
 games-action/descent2-freedata 1: Free content for games-action/d2x-rebirth
 games-action/descent2-vertigo 1.0: Data files for Descent 2: The Vertigo Series
-games-action/descent3 1.4.0b-r2: Descent 3 - 3-Dimensional indoor/outdoor spaceship combat
+games-action/descent3 1.4.0b-r3: Descent 3 - 3-Dimensional indoor/outdoor spaceship combat
 games-action/descent3-demo 1.4.0a-r1: Indoor/outdoor 3D combat with evil robotic mining spacecraft
 games-action/dxx-rebirth 0.61.0_pre20200615 9999: Descent Rebirth - enhanced Descent 1 & 2 engine
 games-action/extreme-tuxracer 0.7.5: High speed arctic racing game based on Tux Racer
@@ -11166,7 +11166,7 @@ games-action/geki3-KXL 1.0.3-r3: 2D length scroll shooting game
 games-action/gltron 0.70-r2: 3d tron, just like the movie
 games-action/guacamelee 20140222: A Metroidvania-style action-platformer set in a magical Mexican-inspired world
 games-action/heretic2 1.06c-r2: Third-person classic magical action-adventure game
-games-action/heretic2-demo 1.06a: Third-person classic magical action-adventure game
+games-action/heretic2-demo 1.06a-r1: Third-person classic magical action-adventure game
 games-action/heroes 0.21-r2: Heroes Enjoy Riding Over Empty Slabs: similar to Tron and Nibbles
 games-action/hotline-miami 1.0.9a_p20140221-r2: High-octane action game overflowing with raw brutality
 games-action/intrusion2 1.024-r1: Fast paced action sidescroller set in a sci-fi environment
@@ -11809,7 +11809,7 @@ games-strategy/0ad 0.0.24_alpha_pre20210116040036-r2 0.0.24b_alpha: A free, real
 games-strategy/colobot 0.1.12 9999: A real-time strategy game, where you can program your bots
 games-strategy/colobot-data 0.1.12: Data package for colobot (Colonize with Bots)
 games-strategy/crimson 0.5.3-r1: Tactical war game in the tradition of Battle Isle
-games-strategy/darwinia 1.4.0_beta9-r1: the hyped indie game of the year. By the Uplink creators
+games-strategy/darwinia 1.4.0_beta9-r2: The hyped indie game of the year - by the Uplink creators
 games-strategy/darwinia-demo 1.3.0-r2: Darwinia, the hyped indie game of the year. By the Uplink creators
 games-strategy/defcon-demo 1.60-r1: Global thermonuclear war simulation with multiplayer support
 games-strategy/dominions2 2.16-r1: Dominions 2: The Ascension Wars is an epic turn-based fantasy strategy game

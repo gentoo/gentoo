@@ -1,0 +1,15 @@
+DEFINED_PHASES=install postinst setup unpack
+DESCRIPTION=Descent 3 - 3-Dimensional indoor/outdoor spaceship combat
+EAPI=7
+HOMEPAGE=http://www.lokigames.com/products/descent3/
+INHERIT=cdrom desktop unpacker wrapper
+IUSE=nocd videos
+KEYWORDS=~amd64 ~x86
+LICENSE=LOKI-EULA
+PROPERTIES=interactive
+RDEPEND=media-libs/libsdl[abi_x86_32(-)] media-libs/smpeg[abi_x86_32(-)] sys-libs/glibc virtual/opengl[abi_x86_32(-)] x11-libs/libX11[abi_x86_32(-)] x11-libs/libXext[abi_x86_32(-)]
+RESTRICT=strip mirror bindist
+SLOT=0
+SRC_URI=mirror://lokigames/descent3/descent3-1.4.0a-x86.run mirror://lokigames/descent3/descent3-1.4.0b-x86.run
+_eclasses_=portability	c10bdc40668533b1faf15b1d89df0303	cdrom	dd6ba7b03316338a4fdd3ebbade8a719	desktop	c0d27bf73aa08ca05b663dbd31fbef28	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	unpacker	517f16af48ee3ab88180dd58b5143213	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=f6836421f677acf0c458ecb3d3f2f21d

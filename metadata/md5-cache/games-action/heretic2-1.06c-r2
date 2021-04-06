@@ -12,4 +12,4 @@ RESTRICT=strip mirror bindist
 SLOT=0
 SRC_URI=mirror://lokigames/heretic2/heretic2-1.06b-unified-x86.run mirror://lokigames/heretic2/heretic2-1.06c-unified-x86.run mirror://lokigames/heretic2/heretic2-maps-1.0.run
 _eclasses_=portability	c10bdc40668533b1faf15b1d89df0303	cdrom	dd6ba7b03316338a4fdd3ebbade8a719	desktop	c0d27bf73aa08ca05b663dbd31fbef28	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	unpacker	517f16af48ee3ab88180dd58b5143213	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=cdf20892779816d15d8a72e2bb7447cb
+_md5_=a1f179ff873107ffd9de644590ca4de2
