@@ -1,8 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils cdrom games
+EAPI=7
+
+inherit cdrom desktop wrapper
 
 DESCRIPTION="Dominions 2: The Ascension Wars is an epic turn-based fantasy strategy game"
 HOMEPAGE="http://www.illwinter.com/dom2/index.html"
@@ -22,6 +23,7 @@ LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"
+
 RESTRICT="bindist strip"
 
 RDEPEND="
@@ -36,10 +38,11 @@ RDEPEND="
 			virtual/opengl[abi_x86_32(-)]
 			virtual/glu[abi_x86_32(-)]
 		)
-	)"
+	)
+"
 
-dir=${GAMES_PREFIX_OPT}/${PN}
-Ddir=${D}/${dir}
+dir=opt/${PN}
+Ddir="${ED}"/${dir}
 
 src_unpack() {
 	mkdir -p "${S}"/patch || die
@@ -61,6 +64,7 @@ src_install() {
 	elif use ppc ; then
 		doexe "${CDROM_ROOT}"/bin_lin/ppc/dom2*
 	fi
+
 	insinto "${dir}"
 	doins -r "${CDROM_ROOT}"/dominions2.app/Contents/Resources/*
 	dodoc "${CDROM_ROOT}"/doc/*
@@ -75,7 +79,7 @@ src_install() {
 
 	if use doc; then
 		elog ""
-		elog "Installing extra documentation to '/usr/share/doc/${P}'"
+		elog "Installing extra documentation to '/usr/share/doc/${PF}'"
 		elog ""
 		elog "You may want to study 'DOM2_Walkthrough.pdf' carefully if"
 		elog "you are new to Dominions II."
@@ -86,17 +90,13 @@ src_install() {
 	doicon "${DISTDIR}"/${PN}.png
 
 	# update times
-	find "${D}" -exec touch '{}' \;
+	find "${D}" -exec touch '{}' \; || die
 
-	games_make_wrapper dominions2 ./dom2 "${dir}" "${dir}"
+	make_wrapper dominions2 ./dom2 "${dir}" "${dir}"
 	make_desktop_entry dominions2 "Dominions II" dominions2
-
-	prepgamesdirs
 }
 
 pkg_postinst() {
-	games_pkg_postinst
 	elog "To play the game run:"
 	elog " dominions2"
-	echo
 }
