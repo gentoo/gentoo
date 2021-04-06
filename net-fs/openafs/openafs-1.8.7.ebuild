@@ -3,6 +3,7 @@
 
 EAPI=7
 
+MODULES_OPTIONAL_USE="modules"
 inherit autotools linux-mod flag-o-matic pam systemd tmpfiles toolchain-funcs
 
 MY_PV=${PV/_/}
@@ -65,7 +66,6 @@ PATCHES=( "${WORKDIR}/gentoo/patches" )
 CONFIG_CHECK="~!AFS_FS KEYS"
 ERROR_AFS_FS="OpenAFS conflicts with the in-kernel AFS-support. Make sure not to load both at the same time!"
 ERROR_KEYS="OpenAFS needs CONFIG_KEYS option enabled"
-MODULES_OPTIONAL_USE="modules"
 
 QA_TEXTRELS_x86_fbsd="/boot/modules/libafs.ko"
 QA_TEXTRELS_amd64_fbsd="/boot/modules/libafs.ko"
