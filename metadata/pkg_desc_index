@@ -11479,7 +11479,7 @@ games-fps/duke3d-data 1.0-r5: Duke Nukem 3D (Atomic Edition) data files
 games-fps/eduke32 20210221.9314: An open source engine port of the classic PC first person shooter Duke Nukem 3D
 games-fps/etqw-bin 1.5-r3: Enemy Territory: Quake Wars
 games-fps/etqw-data 1.0-r1: Enemy Territory: Quake Wars data files
-games-fps/etqw-demo 2.0_p1-r2: Enemy Territory: Quake Wars demo
+games-fps/etqw-demo 2.0_p1-r3: Enemy Territory: Quake Wars demo
 games-fps/ezquake-bin 2.2-r1: Quakeworld client with mqwcl functionality and many more features
 games-fps/freedm 0.12.1: A 32-level game designed for competitive deathmatch play.
 games-fps/freedm-data 0.12.1: Game resources for FreeDM
