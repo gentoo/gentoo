@@ -1,15 +1,14 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# TODO: unbundle liblua-5.1 when available for multilib
+EAPI=7
 
-EAPI=5
-
-inherit eutils games
+inherit desktop
 
 DESCRIPTION="An exploratory action adventure game with an emphasis on audiovisual style"
 HOMEPAGE="http://www.swordandsworcery.com/"
 SRC_URI="${PN}_${PV}.tar.gz"
+S="${WORKDIR}"
 
 LICENSE="CAPYBARA-EULA LGPL-3"
 SLOT="0"
@@ -17,10 +16,13 @@ KEYWORDS="-* ~amd64 ~x86"
 IUSE="bundled-libs"
 RESTRICT="bindist fetch splitdebug"
 
-MYGAMEDIR=${GAMES_PREFIX_OPT}/${PN}
-QA_PREBUILT="${MYGAMEDIR#/}/bin/*
-	${MYGAMEDIR#/}/lib/*"
+MYGAMEDIR=opt/${PN}
+QA_PREBUILT="
+	${MYGAMEDIR#/}/bin/*
+	${MYGAMEDIR#/}/lib/*
+"
 
+# TODO: unbundle liblua-5.1 when available for multilib
 # linked to pulseaudio
 RDEPEND="
 	virtual/opengl
@@ -74,8 +76,6 @@ RDEPEND="
 		)
 	)"
 
-S=${WORKDIR}
-
 pkg_nofetch() {
 	einfo "Please buy & download ${SRC_URI} from:"
 	einfo "  ${HOMEPAGE}"
@@ -98,11 +98,11 @@ src_install() {
 	insinto "${MYGAMEDIR}"
 	doins -r bin lib res
 
-	dogamesbin "${T}"/${PN}
+	dobin "${T}"/${PN}
 	make_desktop_entry ${PN}
 
-	dohtml README.html
+	docinto html
+	dodoc README.html
 
 	fperms +x "${MYGAMEDIR}"/bin/${PN}
-	prepgamesdirs
 }
