@@ -1,5 +1,5 @@
---- src/unix/qsh_unix.c.orig	2011-10-22 17:46:37.665993357 -0500
-+++ src/unix/qsh_unix.c	2011-10-22 17:46:40.965972209 -0500
+--- a/src/unix/qsh_unix.c
++++ b/src/unix/qsh_unix.c
 @@ -17,6 +17,9 @@
   * Temple Place - Suite 330, Boston, MA  02111-1307, USA.
   *
