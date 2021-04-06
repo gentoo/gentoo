@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -148,7 +148,7 @@ src_configure() {
 		-DUSE_SHARED_ENET=ON
 		-DUSE_UPNP=$(usex upnp)
 
-		# Undo cmake-utils.eclass's defaults.
+		# Undo cmake.eclass's defaults.
 		# All dolphin's libraries are private
 		# and rely on circular dependency resolution.
 		-DBUILD_SHARED_LIBS=OFF
