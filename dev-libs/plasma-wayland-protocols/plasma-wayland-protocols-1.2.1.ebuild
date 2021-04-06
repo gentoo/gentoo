@@ -11,11 +11,10 @@ DESCRIPTION="Plasma Specific Protocols for Wayland"
 HOMEPAGE="https://invent.kde.org/libraries/plasma-wayland-protocols"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
+	SRC_URI="mirror://kde/stable/${PN}/${PN}-v${PV}.tar.xz"
+	S="${WORKDIR}/${PN}-v${PV}"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 fi
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-
-PATCHES=( "${FILESDIR}/${P}-version.patch" )
