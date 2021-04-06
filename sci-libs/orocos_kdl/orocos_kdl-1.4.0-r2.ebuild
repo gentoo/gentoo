@@ -77,5 +77,4 @@ src_install() {
 	# Need to have package.xml in our custom gentoo path
 	insinto /usr/share/ros_packages/${PN}
 	doins "${ED}/usr/share/${PN}/package.xml"
-	rm "${ED}/usr/share/${PN}/package.xml" || die
 }
