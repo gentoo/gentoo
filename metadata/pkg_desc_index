@@ -2403,7 +2403,7 @@ app-i18n/zinnia 0.06-r3: Zinnia - Online hand recognition system with machine le
 app-i18n/zinnia-tomoe 0.6.0_p20080911: Handwriting model files trained with Tomoe data
 app-laptop/dispad 0.3.1-r1: Daemon to disable trackpads while typing
 app-laptop/hdaps-gl 0.0.7: OpenGL visualization for HDAPS data
-app-laptop/hdapsd 20141203-r1 20141203-r2: IBM ThinkPad Hard Drive Active Protection System (HDAPS) daemon
+app-laptop/hdapsd 20141203-r2: IBM ThinkPad Hard Drive Active Protection System (HDAPS) daemon
 app-laptop/i8kutils 1.42 1.43: Dell Inspiron and Latitude utilities
 app-laptop/ibam 0.5.2-r4: Intelligent Battery Monitor
 app-laptop/laptop-mode-tools 1.72.2-r1 1.74: Linux kernel laptop_mode user-space utilities
@@ -12440,7 +12440,7 @@ kde-plasma/breeze 5.20.5 5.21.4: Breeze visual style for the Plasma desktop
 kde-plasma/breeze-grub 5.20.5 5.21.4: Breeze theme for GRUB
 kde-plasma/breeze-gtk 5.20.5 5.21.4: Official GTK+ port of Plasma's Breeze widget style
 kde-plasma/breeze-plymouth 5.20.5 5.21.4: Breeze theme for Plymouth
-kde-plasma/discover 5.20.5 5.20.5-r1 5.21.4: KDE Plasma resources management GUI
+kde-plasma/discover 5.20.5-r1 5.21.4: KDE Plasma resources management GUI
 kde-plasma/drkonqi 5.20.5 5.21.4: Plasma crash handler, gives the user feedback if a program crashed
 kde-plasma/kactivitymanagerd 5.20.5 5.21.4: System service to manage user's activities, track the usage patterns etc.
 kde-plasma/kde-cli-tools 5.20.5 5.21.4: Tools based on KDE Frameworks 5 to better interact with the system
@@ -15192,7 +15192,7 @@ net-misc/dhcp 4.4.2-r3: ISC Dynamic Host Configuration Protocol (DHCP) client/se
 net-misc/dhcpcd 8.1.9-r1 9.3.4 9.4.0 9.4.0-r1 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
 net-misc/dhcpcd-ui 0.7.8: Desktop notification and configuration for dhcpcd
 net-misc/dhcping 1.2: Utility to send DHCP requests to DHCP servers to see if responding
-net-misc/dibbler 1.0.1 1.0.1-r2 1.0.1-r3: Portable DHCPv6 implementation (server, client and relay)
+net-misc/dibbler 1.0.1-r3: Portable DHCPv6 implementation (server, client and relay)
 net-misc/dleyna-server 0.6.0: Service that allows to discover and manipulate DLNA Digital Media servers (DMS)
 net-misc/drive 0.3.9.1 0.3.9.1-r1: Google Drive client for the commandline
 net-misc/dropbear 2020.81-r2: small SSH 2 client/server designed for small memory environments
@@ -18290,7 +18290,7 @@ x11-base/xorg-drivers 1.20-r2 9999: Meta package containing deps on all xorg dri
 x11-base/xorg-proto 2020.1 2021.3 9999: X.Org combined protocol headers
 x11-base/xorg-server 1.20.10-r2 1.20.10-r3 9999: X.Org X servers
 x11-base/xorg-x11 7.4-r3: An X11 implementation maintained by the X.Org Foundation (meta package)
-x11-drivers/nvidia-drivers 390.141 390.141-r1 450.102.04 450.102.04-r1 460.39-r1 460.56 460.67 465.19.01: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 390.141 390.141-r1 450.102.04 450.102.04-r1 460.56 460.67 465.19.01: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-elographics 1.4.2: Elographics input driver
 x11-drivers/xf86-input-evdev 2.10.6: Generic Linux input driver
 x11-drivers/xf86-input-joystick 1.6.3: X.Org driver for joystick input devices
