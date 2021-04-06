@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cdrom multilib unpacker wrapper
+inherit cdrom desktop multilib unpacker wrapper
 
 DESCRIPTION="Third-person classic magical action-adventure game"
 HOMEPAGE="http://lokigames.com/products/heretic2/
