@@ -310,12 +310,6 @@ dev-ruby/i18n:0.7
 dev-ruby/pcaprub:0.12
 dev-ruby/pg:0
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2021-03-07)
-# Unresolved build issue since 2019, QA issues, bugs #697870 and #705236
-# Blocks cleanup of equally broken sci-physics/looptools-2.8, bug #770796
-# Masked for removal on 2021-04-06.
-sci-physics/herwig++
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-03-06)
 # Fails to build, multiple bugs, outdated, nontrival, unmaintained
 # Bug 729876 and several others; removal in 30days
