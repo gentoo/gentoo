@@ -1,6 +1,12 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-04-06)
+# Uses CoreAudio, IOKit respectively
+# Video _in theory_ could work with the dummy driver though.
+# This doesn't get us building all the way but it's progress.
+media-libs/libsdl -sound -joystick
+
 # Ulrich Müller <ulm@gentoo.org> (2020-11-29)
 # GCC's Objective-C compiler fails to build the Aqua/Cocoa interface.
 # Bug #757300
