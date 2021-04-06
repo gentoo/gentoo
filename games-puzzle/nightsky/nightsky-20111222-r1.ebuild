@@ -1,24 +1,28 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils gnome2-utils games
+inherit desktop gnome2-utils
 
 DESCRIPTION="Puzzle game that puts you inside and ambient and mysterious universe"
 HOMEPAGE="http://www.nicalis.com/nightsky/"
 SRC_URI="nightskyhd-linux-1324519044.tar.gz"
+S="${WORKDIR}"/NightSky
 
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE="bundled-libs"
+
 RESTRICT="bindist fetch splitdebug"
 
-MYGAMEDIR=${GAMES_PREFIX_OPT}/${PN}
-QA_PREBUILT="${MYGAMEDIR#/}/NightSky*
+MYGAMEDIR=opt/${PN}
+QA_PREBUILT="
+	${MYGAMEDIR#/}/NightSky*
 	${MYGAMEDIR#/}/lib/*
-	${MYGAMEDIR#/}/lib64/*"
+	${MYGAMEDIR#/}/lib64/*
+"
 
 RDEPEND="
 	virtual/glu
@@ -36,8 +40,6 @@ RDEPEND="
 		sys-libs/zlib
 	)"
 
-S=${WORKDIR}/NightSky
-
 pkg_nofetch() {
 	einfo "Please buy & download ${SRC_URI} from:"
 	einfo "  ${HOMEPAGE}"
@@ -45,12 +47,12 @@ pkg_nofetch() {
 }
 
 src_prepare() {
-	einfo "removing ${ARCH} unrelated files..."
+	einfo "Removing ${ARCH} unrelated files..."
 	rm -v NightSkyHD$(usex amd64 "" "_64") || die
 	rm -rv lib$(usex amd64 "" "64") || die
 
 	if ! use bundled-libs ; then
-		einfo "removing bundled libs..."
+		einfo "Removing bundled libs..."
 		rm -rv lib* || die
 	fi
 
@@ -58,12 +60,12 @@ src_prepare() {
 	rm -r Settings || die
 
 	sed \
-		-e "s#@GAMES_PREFIX_OPT@#${GAMES_PREFIX_OPT}#" \
+		-e "s#@GAMES_PREFIX_OPT@#/opt#" \
 		"${FILESDIR}"/${PN}-wrapper > "${T}"/${PN} || die
 }
 
 src_install() {
-	dogamesbin "${T}"/${PN}
+	dobin "${T}"/${PN}
 
 	insinto "${MYGAMEDIR}"
 	doins -r *
@@ -72,16 +74,13 @@ src_install() {
 	make_desktop_entry ${PN}
 
 	fperms +x "${MYGAMEDIR}"/NightSkyHD$(usex amd64 "_64" "")
-	prepgamesdirs
 }
 
 pkg_preinst() {
-	games_pkg_preinst
 	gnome2_icon_savelist
 }
 
 pkg_postinst() {
-	games_pkg_postinst
 	gnome2_icon_cache_update
 
 	echo
