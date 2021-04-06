@@ -56,7 +56,7 @@ src_prepare() {
 src_compile() {
 	tc-export CC
 
-	local GENTOO_INCLUDES="" GENTOO_DEFINES="-DUSE_GCU " GENTOO_LIBS="$($(tc_getPKG_CONFIG) ncurses --libs)"
+	local GENTOO_INCLUDES="" GENTOO_DEFINES="-DUSE_GCU " GENTOO_LIBS="$($(tc-getPKG_CONFIG) ncurses --libs)"
 
 	if use sdl || use X || use gtk || use Xaw3d; then
 		GENTOO_DEFINES="${GENTOO_DEFINES} -DUSE_EGO_GRAPHICS -DUSE_TRANSPARENCY \
@@ -86,9 +86,9 @@ src_compile() {
 	fi
 
 	if use gtk; then
-		GENTOO_INCLUDES="${GENTOO_INCLUDES} $($(tc_getPKG_CONFIG) gtk+-2.0 --cflags)"
+		GENTOO_INCLUDES="${GENTOO_INCLUDES} $($(tc-getPKG_CONFIG) gtk+-2.0 --cflags)"
 		GENTOO_DEFINES="${GENTOO_DEFINES} -DUSE_GTK2 "
-		GENTOO_LIBS="${GENTOO_LIBS} $($(tc_getPKG_CONFIG) gtk+-2.0 --libs) "
+		GENTOO_LIBS="${GENTOO_LIBS} $($(tc-getPKG_CONFIG) gtk+-2.0 --libs) "
 		GTK_SRC_FILE="main-gtk2.c"
 		GTK_OBJ_FILE="main-gtk2.o"
 	else
