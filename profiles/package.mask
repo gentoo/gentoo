@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergey Popov <pinkbyte@gentoo.org> (2021-04-06)
+# Ancient version, currently no consumers in main tree
+# The only one consumer was mail-client/roundcube
+# and now it uses bundled version
+# Masked for removal in 30 days.
+dev-php/PEAR-Net_LDAP3
+
 # Matt Turner <mattst88@gentoo.org> (2021-04-05)
 # Masked for testing and for dependence on masked pango
 gui-libs/gtk
