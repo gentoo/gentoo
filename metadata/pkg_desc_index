@@ -5277,7 +5277,7 @@ dev-lang/python-exec-conf 2.4.6: Configuration file for dev-lang/python-exec
 dev-lang/qu-prolog 10.6: Extended Prolog supporting quantifiers, object-variables and substitutions
 dev-lang/rakudo 2020.11 2020.12 2021.02 9999: A compiler for the Perl 6 programming language
 dev-lang/regina-rexx 3.9.1-r1: Portable Rexx interpreter
-dev-lang/ruby 2.5.8 2.5.8-r1 2.6.6-r2 2.6.6-r3 2.7.2 2.7.2-r1 3.0.0 3.0.0-r1 3.0.0-r2: An object-oriented scripting language
+dev-lang/ruby 2.5.8 2.5.8-r1 2.5.9 2.6.6-r2 2.6.6-r3 2.6.7 2.7.2 2.7.2-r1 2.7.3 3.0.0 3.0.0-r1 3.0.0-r2 3.0.1: An object-oriented scripting language
 dev-lang/rust 1.46.0 1.47.0-r2 1.48.0 1.49.0 1.50.0 1.51.0: Systems programming language from Mozilla
 dev-lang/rust-bin 1.46.0 1.47.0-r1 1.48.0 1.49.0 1.50.0 1.51.0: Systems programming language from Mozilla
 dev-lang/sassc 3.6.1: A libsass command line driver
@@ -10303,7 +10303,7 @@ dev-ruby/regexp_property_values 1.0.0: See which property values are supported b
 dev-ruby/request_store 1.5.0: Per-request global storage for Rack
 dev-ruby/rest-client 2.1.0: Simple Simple HTTP and REST client for Ruby
 dev-ruby/rexical 1.0.7: Rexical is a lexical scanner generator
-dev-ruby/rexml 3.2.4: An XML toolkit for Ruby
+dev-ruby/rexml 3.2.4 3.2.5: An XML toolkit for Ruby
 dev-ruby/rinku 2.0.6: A Ruby library that does autolinking
 dev-ruby/ritex 1.0.1: Converts expressions from WebTeX into MathML
 dev-ruby/rjb 1.6.1 1.6.2 1.6.4: Rjb is a Ruby-Java software bridge
