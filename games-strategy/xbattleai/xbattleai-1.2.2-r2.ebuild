@@ -1,8 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils
 
 DESCRIPTION="A multi-player game of strategy and coordination"
 HOMEPAGE="https://inf.ug.edu.pl/~piotao/xbattle/mirror/www.lysator.liu.se/XBattleAI/"
@@ -11,7 +10,6 @@ SRC_URI="https://inf.ug.edu.pl/~piotao/xbattle/mirror/www.lysator.liu.se/XBattle
 LICENSE="xbattle"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 # Since this uses similar code and the same binary name as the original XBattle,
 # we want to make sure you can't install both at the same time
