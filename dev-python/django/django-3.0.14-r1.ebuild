@@ -23,12 +23,15 @@ LICENSE+=" Apache-2.0"
 # admin icons, jquery, xregexp.js
 LICENSE+=" MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86 ~x64-macos"
+KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="doc sqlite test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	<dev-python/asgiref-3.3.2[${PYTHON_USEDEP}]
+	|| (
+		>=dev-python/asgiref-3.3.4[${PYTHON_USEDEP}]
+		<dev-python/asgiref-3.3.2[${PYTHON_USEDEP}]
+	)
 	dev-python/pytz[${PYTHON_USEDEP}]
 	>=dev-python/sqlparse-0.2.2[${PYTHON_USEDEP}]"
 BDEPEND="
@@ -47,11 +50,11 @@ BDEPEND="
 		!!<dev-python/ipython-7.21.0-r1
 		!!=dev-python/ipython-7.22.0-r0
 	)
-	verify-sig? ( >=app-crypt/openpgp-keys-django-20201201 )
+	verify-sig? ( app-crypt/openpgp-keys-django )
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.1-bashcomp.patch
+	"${FILESDIR}"/${PN}-3.0.6-bashcomp.patch
 )
 
 distutils_enable_sphinx docs --no-autodoc
@@ -67,6 +70,13 @@ src_unpack() {
 	fi
 
 	default
+}
+
+src_prepare() {
+	# do not bind to a specific version
+	# https://bugs.gentoo.org/750695
+	sed -i -e 's:asgiref ~= 3.2:asgiref:' setup.py || die
+	distutils-r1_src_prepare
 }
 
 python_test() {
