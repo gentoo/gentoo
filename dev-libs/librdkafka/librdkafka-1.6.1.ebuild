@@ -78,6 +78,10 @@ src_configure() {
 }
 
 src_test() {
+	# Simulate CI so we do not fail when tests are running longer than expected,
+	# https://github.com/edenhill/librdkafka/blob/v1.6.1/tests/0062-stats_event.c#L101-L116
+	local -x CI=true
+
 	emake -C tests run_local
 }
 
