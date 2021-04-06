@@ -94,6 +94,7 @@ BDEPEND="
 	>=dev-util/gdbus-codegen-2.48
 	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.20
+	dev-util/wayland-scanner
 	>=sys-devel/gettext-0.19.7
 	virtual/pkgconfig
 	gtk-doc? (
