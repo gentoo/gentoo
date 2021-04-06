@@ -4,8 +4,8 @@
 EAPI=7
 
 MODULES_OPTIONAL_USE="driver"
-inherit desktop linux-info linux-mod multilib-build \
-	optfeature systemd toolchain-funcs unpacker
+inherit desktop linux-info linux-mod multilib-build optfeature \
+	readme.gentoo-r1 systemd toolchain-funcs unpacker
 
 NV_KERNEL_MAX="5.10"
 NV_BIN_URI="https://download.nvidia.com/XFree86/Linux-"
@@ -81,6 +81,13 @@ DOCS=(
 	nvidia-settings/doc/{FRAMELOCK,NV-CONTROL-API}.txt
 )
 HTML_DOCS=( html/. )
+
+DISABLE_AUTOFORMATTING="yes"
+DOC_CONTENTS="Users should be in the 'video' group to use NVIDIA devices.
+You can add yourself by using: gpasswd -a my-user video
+
+For general information on using nvidia-drivers, please see:
+https://wiki.gentoo.org/wiki/NVIDIA/nvidia-drivers"
 
 pkg_setup() {
 	use driver || return
@@ -334,6 +341,7 @@ src_install() {
 	multilib_foreach_abi nvidia-drivers_libs_install
 
 	einstalldocs
+	readme.gentoo_create_doc
 }
 
 pkg_preinst() {
@@ -350,30 +358,21 @@ pkg_preinst() {
 pkg_postinst() {
 	use driver && linux-mod_pkg_postinst
 
+	readme.gentoo_print_elog
+
 	optfeature "wayland EGLStream with nvidia-drm.modeset=1" gui-libs/egl-wayland
 
 	if [[ -r /proc/driver/nvidia/version &&
 		$(grep -o '  [0-9.]*  ' /proc/driver/nvidia/version) != "  ${PV}  " ]]; then
 		ewarn "Currently loaded NVIDIA modules do not match the newly installed"
 		ewarn "libraries and will lead to GPU-using application issues."
-		use driver && ewarn "The easiest way to fix this is to reboot."
+		use driver && ewarn "The easiest way to fix this is usually to reboot."
 	fi
 
-	if ! [[ ${REPLACING_VERSIONS} && $(getent group video | cut -d: -f4) ]]; then
-		elog "***** WARNING *****"
-		elog "Users should be in the 'video' group to use NVIDIA devices."
-		elog "You can add yourself by using: gpasswd -a myuser video"
-	fi
-
-	if [[ ! ${REPLACING_VERSIONS} ]]; then
-		if use x86; then
-			elog "Note that NVIDIA is no longer offering support for the unified memory"
-			elog "module (nvidia-uvm) on x86 (32bit), as such the module was not built."
-			elog "This means OpenCL/CUDA (and related, like nvenc) cannot be used."
-			elog "Other functions, like OpenGL, will continue to work."
-			elog
-		fi
-		elog "For general information with using NVIDIA on Gentoo, please see:"
-		elog "https://wiki.gentoo.org/wiki/NVIDIA/nvidia-drivers"
+	if use x86 && [[ ! ${REPLACING_VERSIONS} ]]; then
+		elog "Note that NVIDIA is no longer offering support for the unified memory"
+		elog "module (nvidia-uvm) on x86 (32bit), as such the module was not built."
+		elog "This means OpenCL/CUDA (and related, like nvenc) cannot be used."
+		elog "Other functions, like OpenGL, will continue to work."
 	fi
 }
