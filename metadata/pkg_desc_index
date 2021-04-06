@@ -12175,8 +12175,8 @@ kde-apps/kdegames-meta 20.12.3: kdegames - merge this to pull in all kdegames-de
 kde-apps/kdegraphics-meta 20.12.3: kdegraphics - merge this to pull in all kdegraphics-derived packages
 kde-apps/kdegraphics-mobipocket 20.12.3: Library to support mobipocket ebooks
 kde-apps/kdemultimedia-meta 20.12.3: kdemultimedia - merge this to pull in all kdemultimedia-derived packages
-kde-apps/kdenetwork-filesharing 20.12.3: SMB filesharing config module for systemsettings
-kde-apps/kdenetwork-meta 20.12.3: kdenetwork - merge this to pull in all kdenetwork-derived packages
+kde-apps/kdenetwork-filesharing 20.12.3: Samba filesharing plugin for file properties
+kde-apps/kdenetwork-meta 20.12.3-r1: kdenetwork - merge this to pull in all kdenetwork-derived packages
 kde-apps/kdenlive 20.12.3: Non-linear video editing suite by KDE
 kde-apps/kdepim-addons 20.12.3: Plugins for KDE Personal Information Management Suite
 kde-apps/kdepim-meta 20.12.3: KDE PIM - merge this to pull in all kdepim-derived packages
