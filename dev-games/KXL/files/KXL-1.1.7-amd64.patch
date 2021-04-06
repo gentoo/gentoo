@@ -1,5 +1,5 @@
---- src/KXLsound.c.old	2007-05-13 21:59:27.000000000 +0200
-+++ src/KXLsound.c	2007-05-13 22:09:19.000000000 +0200
+--- a/src/KXLsound.c
++++ b/src/KXLsound.c
 @@ -4,6 +4,9 @@
  #include <sys/ioctl.h>
  #include <sys/time.h>
@@ -42,8 +42,8 @@
    // create pipe
    if (pipe(KXL_SoundData.Pipe) < 0) {
      fprintf(stderr, "KXL error message\npipe error\n");
---- src/KXL.h.old	2007-05-13 22:25:11.000000000 +0200
-+++ src/KXL.h	2007-05-13 22:25:47.000000000 +0200
+--- a/src/KXL.h
++++ b/src/KXL.h
 @@ -205,6 +205,7 @@
    KXL_Frame   *Frame;    // Pointer of frame structure
    GC           FontGC;   // GC of font
@@ -52,16 +52,16 @@
  } KXL_Window;
  // RGBE palette
  typedef struct {
---- src/KXLimage.c.old	2007-05-13 22:29:02.000000000 +0200
-+++ src/KXLimage.c	2007-05-13 22:29:33.000000000 +0200
+--- a/src/KXLimage.c
++++ b/src/KXLimage.c
 @@ -1,4 +1,5 @@
  #include <stdio.h>
 +#include <stdlib.h>
  #include "KXL.h"
  
  extern KXL_Window *KXL_Root;
---- src/KXLvisual.c.old	2007-05-13 22:22:34.000000000 +0200
-+++ src/KXLvisual.c	2007-05-13 22:28:39.000000000 +0200
+--- a/src/KXLvisual.c
++++ b/src/KXLvisual.c
 @@ -1,4 +1,6 @@
  #include <stdio.h>
 +#include <stdlib.h>
