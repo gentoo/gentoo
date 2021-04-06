@@ -8027,7 +8027,7 @@ dev-python/argon2-cffi 20.1.0: CFFI bindings to the Argon2 password hashing libr
 dev-python/argparse-manpage 1.4 1.5: Automatically build man-pages for your Python project
 dev-python/arpeggio 1.10.0: Parser interpreter based on PEG grammars
 dev-python/arrow 1.0.1 1.0.3: Better dates and times for Python
-dev-python/asgiref 3.3.1 3.3.2: ASGI utilities (successor to WSGI)
+dev-python/asgiref 3.3.1 3.3.2 3.3.4: ASGI utilities (successor to WSGI)
 dev-python/asn1crypto 1.4.0: Python ASN.1 library with a focus on performance and a pythonic API
 dev-python/asteval 0.9.21 0.9.22 0.9.23: Evaluator of Python expression using ast module
 dev-python/astor 0.8.1: Read/rewrite/write Python ASTs
@@ -8082,15 +8082,15 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7 1.0.8: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r4: Amazon Web Services API
-dev-python/boto3 1.17.17 1.17.22 1.17.27 1.17.33 1.17.39 1.17.40 1.17.41 1.17.42 1.17.43 1.17.44 1.17.45 9999: The AWS SDK for Python
-dev-python/botocore 1.20.17 1.20.22 1.20.27 1.20.33 1.20.39 1.20.40 1.20.41 1.20.42 1.20.43 1.20.44 1.20.45 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.17.17 1.17.22 1.17.27 1.17.33 1.17.39 1.17.40 1.17.41 1.17.42 1.17.43 1.17.44 1.17.45 1.17.46 9999: The AWS SDK for Python
+dev-python/botocore 1.20.17 1.20.22 1.20.27 1.20.33 1.20.39 1.20.40 1.20.41 1.20.42 1.20.43 1.20.44 1.20.45 1.20.46 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.21: Syntax highlighting and autocompletion for the Python interpreter
 dev-python/bracex 2.1.1: Bash style brace expansion for Python
 dev-python/braintree 4.6.0: Braintree Python Library
 dev-python/breathe 4.27.0 4.28.0: Sphinx Doxygen renderer
-dev-python/brotlicffi 1.0.9.1: Python binding to the Brotli library
+dev-python/brotlicffi 1.0.9.1 1.0.9.2: Python binding to the Brotli library
 dev-python/brotlipy 0.7.0-r3: Python binding to the Brotli library
 dev-python/brython 3.7.3 3.7.4: A Python 3 implementation for client-side web programming
 dev-python/bsddb3 6.2.9: Python bindings for Berkeley DB
@@ -8109,7 +8109,7 @@ dev-python/cbor 1.0.0-r1: RFC 7049 - Concise Binary Object Representation
 dev-python/cbor2 5.1.2 5.2.0: Pure Python CBOR (de)serializer with extensive tag support
 dev-python/certifi 10001-r1: Thin replacement for certifi using system certificate store
 dev-python/cffi 1.14.5: Foreign Function Interface for Python calling C code
-dev-python/cfn-python-lint 0.46.0 0.47.2 0.48.1: CloudFormation Linter
+dev-python/cfn-python-lint 0.46.0 0.47.2 0.48.1 0.48.2: CloudFormation Linter
 dev-python/cftime 1.4.1: Time-handling functionality from netcdf4-python
 dev-python/cgroup-utils 0.8: Tools and libraries for control groups of Linux
 dev-python/chai 1.1.2: Easy to use mocking, stubbing and spying framework
@@ -8201,10 +8201,10 @@ dev-python/dissononce 0.34.3-r1: A python implementation for Noise Protocol Fram
 dev-python/distlib 0.3.1-r1: Low-level components of distutils2/packaging
 dev-python/distro 1.5.0-r1: Reliable machine-readable Linux distribution information for Python
 dev-python/dj-database-url 0.5.0: Use Database URLs in your Django Application
-dev-python/django 2.2.19 2.2.20 3.0.13 3.0.14 3.1.7 3.1.8: High-level Python web framework
+dev-python/django 2.2.19 2.2.20 3.0.13 3.0.14-r1 3.1.7 3.1.8-r1 3.2: High-level Python web framework
 dev-python/django-allauth 0.42.0: Django 3rd party (social) account authentication
 dev-python/django-appconf 1.0.4: A helper class for handling configuration defaults of packaged apps gracefully.
-dev-python/django-auth-ldap 2.1.0 2.2.0 2.3.0: Django LDAP authentication backend
+dev-python/django-auth-ldap 2.1.0 2.2.0 2.3.0 2.4.0: Django LDAP authentication backend
 dev-python/django-cacheops 5.1: ORM cache with automatic granular event-driven invalidation for Django
 dev-python/django-compressor 2.4: Compresses linked and inline JavaScript or CSS into single cached files.
 dev-python/django-cors-headers 3.7.0: Django App that adds CORS (Cross-Origin Resource Sharing) headers to responses
@@ -8379,7 +8379,7 @@ dev-python/guzzle_sphinx_theme 0.7.11-r1: Sphinx theme used by Guzzle
 dev-python/h11 0.11.0 0.12.0: A pure-Python implementation of HTTP/1.1 inspired by hyper-h2
 dev-python/h5py 2.10.0-r1 3.2.1: Simple Python interface to HDF5 files
 dev-python/hacking 2.0.0: A client for the OpenStack Nova API
-dev-python/hcloud-python 1.10.0: Official Hetzner Cloud python library
+dev-python/hcloud-python 1.10.0 1.12.0: Official Hetzner Cloud python library
 dev-python/helpdev 0.7.1: Helping users and developers to get information about the environment
 dev-python/hiredis 1.1.0: Python extension that wraps hiredis
 dev-python/hpack 3.0.0 4.0.0: Pure-Python HPACK header compression
@@ -8428,7 +8428,7 @@ dev-python/intreehooks 1.0: Load a PEP 517 backend from inside the source tree
 dev-python/iocapture 0.1.2-r2: Capture stdout, stderr easily
 dev-python/ioflo 2.0.0 2.0.2: Automated Reasoning Engine and Flow Based Programming Framework
 dev-python/ipaddr 2.2.0-r1: Python IP address manipulation library
-dev-python/ipdb 0.10.3-r1 0.13.5 0.13.6 0.13.7: IPython-enabled pdb
+dev-python/ipdb 0.13.7: IPython-enabled pdb
 dev-python/ipy 1.01: Class and tools for handling of IPv4 and IPv6 addresses and networks
 dev-python/ipykernel 5.5.0 5.5.3: IPython Kernel for Jupyter
 dev-python/ipyparallel 6.3.0-r1: Interactive Parallel Computing with IPython
@@ -9415,7 +9415,7 @@ dev-python/xdoctest 0.15.4: A rewrite of Python's builtin doctest module but wit
 dev-python/xlrd 1.2.0 2.0.1: Library to extract data from Microsoft Excel spreadsheets
 dev-python/xlsxwriter 1.3.7 1.3.8: Python module for creating Excel XLSX files
 dev-python/xlwt 1.3.0-r1: Python library to create spreadsheet files compatible with Excel
-dev-python/xmlschema 1.5.3: An XML Schema validator and decoder
+dev-python/xmlschema 1.5.3 1.6.0: An XML Schema validator and decoder
 dev-python/xmltodict 0.12.0-r1: Makes working with XML feel like you are working with JSON
 dev-python/xvfbwrapper 0.2.9: Python wrapper for running a display inside X virtual framebuffer
 dev-python/xxhash 2.0.0: Python binding for the xxHash library
@@ -15228,7 +15228,7 @@ net-misc/gns3-gui 2.2.17 2.2.19: Graphical Network Simulator
 net-misc/gns3-server 2.2.17 2.2.19: GNS3 server to asynchronously manage emulators
 net-misc/gofish 1.2: Gofish gopher server
 net-misc/grdesktop 0.23-r2: Gtk3 frontend for rdesktop
-net-misc/grive 0.5.1_pre20171005 0.5.1 0.5.1-r1 0.5.2_pre20200205: An open source Linux client for Google Drive
+net-misc/grive 0.5.1-r1 0.5.2_pre20200205: An open source Linux client for Google Drive
 net-misc/gsasl 1.10.0: The GNU SASL client, server, and library
 net-misc/gsutil 4.59 4.60: command line tool for interacting with cloud storage services
 net-misc/gupnp-tools 0.10.0: Collection of developer-oriented UPnP tools
@@ -15458,7 +15458,7 @@ net-misc/x2goclient 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.1039_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.1432 0.4.1500 0.4.1520: utility to download media contents from the web
-net-misc/youtube-dl 2021.04.01 9999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2021.04.01 2021.04.07 9999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r2 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.6.3: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
