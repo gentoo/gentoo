@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install preinst prepare setup test
+DEPEND=>=virtual/jdk-1.8:* test? ( >=dev-java/commons-io-2.4:1 >=dev-java/commons-lang-3.4:3.4 >=dev-java/joda-time-2.10.10:0 >=dev-java/velocity-1.7:0 ) >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip ) test? ( dev-java/junit:4 )
+DESCRIPTION=YAML 1.1 parser and emitter for Java
+EAPI=7
+HOMEPAGE=https://bitbucket.org/asomov/snakeyaml
+INHERIT=java-pkg-2 java-pkg-simple
+IUSE=elibc_FreeBSD doc source test elibc_FreeBSD
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=>=virtual/jre-1.8:* >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
+RESTRICT=!test? ( test ) !test? ( test )
+SLOT=0
+SRC_URI=https://bitbucket.org/asomov/snakeyaml/get/snakeyaml-1.28.tar.gz -> asomov-snakeyaml-b28f0b4d87c6.tar.gz
+_eclasses_=java-utils-2	2440f41421207d084e5e3f1fb001b34e	java-pkg-2	45c44ec10db6affb3ebee1ac72039888	java-pkg-simple	c85bf2d75a5f53e7b39fc9104701ebfb
+_md5_=d2adee3c63b112ec81e604b9b08b93ec

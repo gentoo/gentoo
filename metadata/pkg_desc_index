@@ -2770,7 +2770,7 @@ app-office/kmymoney 5.1.1: Personal finance manager based on KDE Frameworks
 app-office/kraft 0.95: Software to manage quotes and invoices in small enterprises
 app-office/ktimetracker 5.0.1: Todo management and time tracker
 app-office/ledger 3.2.1: Double-entry accounting system with a command-line reporting interface
-app-office/libalkimia 8.0.4 8.1.0: Library with common classes and functionality used by KDE finance applications
+app-office/libalkimia 8.1.0: Library with common classes and functionality used by KDE finance applications
 app-office/libreoffice 6.4.7.2 7.0.5.2 7.1.2.2 7.1.9999 9999: A full office productivity suite
 app-office/libreoffice-bin 6.4.7.2_p3: A full office productivity suite. Binary package
 app-office/libreoffice-bin-debug 6.4.7.2_p3: LibreOffice, a full office productivity suite. Binary package, debug info
@@ -3108,7 +3108,7 @@ app-text/pep 2.8-r2: General purpose filter and file cleaning program
 app-text/pinfo 0.6.13 99999: Hypertext info and man viewer based on (n)curses
 app-text/po4a 0.57 0.62 0.63: Tools to ease the translation of documentation
 app-text/podofo 0.9.6_p20190928-r100: PoDoFo is a C++ library to work with the PDF file format
-app-text/poppler 20.11.0 21.02.0 21.03.0 21.04.0 9999: PDF rendering library based on the xpdf-3.0 code base
+app-text/poppler 21.02.0 21.03.0 21.04.0 9999: PDF rendering library based on the xpdf-3.0 code base
 app-text/poppler-data 0.4.10: Data files for poppler to support uncommon encodings without xpdfrc
 app-text/ps2eps 1.68: Generate Encapsulated Postscript Format files from one-page Postscript documents
 app-text/ps2pkm 1.8_p20200406 1.8_p20210325: Tool that converts a PostScript type1 font into a corresponding TeX PK font
@@ -5121,7 +5121,7 @@ dev-java/slf4j-ext 1.7.5 1.7.7 1.7.30: Extensions to the SLF4J API
 dev-java/slf4j-log4j12 1.7.7 1.7.30: SLF4J LOG4J-12 Binding
 dev-java/slf4j-nop 1.7.7 1.7.30: SLF4J NOP Binding
 dev-java/slf4j-simple 1.7.7 1.7.30: SLF4J Simple binding
-dev-java/snakeyaml 1.16: A YAML 1.1 parser and emitter for Java 5
+dev-java/snakeyaml 1.16 1.28: YAML 1.1 parser and emitter for Java
 dev-java/snappy 1.0.3_rc3 1.1.0.1: Snappy compressor/decompressor for Java
 dev-java/snip 0.11-r1: an Apache ANT optional task that extracts snippets of code from text files
 dev-java/spec-alpha 0.1.143 0.2.176 0.2.194: A Clojure library to describe the structure of data and functions
@@ -12539,8 +12539,8 @@ mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for 
 mail-client/roundcube 1.4.11 9999: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/s-nail 14.9.19 14.9.22: Enhanced mailx-compatible mail client based on Heirloom mailx (nail)
 mail-client/sylpheed 3.7.0-r1: A lightweight email client and newsreader
-mail-client/thunderbird 78.8.1 78.9.0: Thunderbird Mail Client
-mail-client/thunderbird-bin 78.8.1 78.9.0: Thunderbird Mail Client
+mail-client/thunderbird 78.9.0: Thunderbird Mail Client
+mail-client/thunderbird-bin 78.9.0: Thunderbird Mail Client
 mail-client/trojita 0.7-r6 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/afew 3.0.0 3.0.1: Initial tagging script for Notmuch
@@ -12907,7 +12907,7 @@ media-gfx/fim 0.5_rc3: Fbi-IMproved is a framebuffer image viewer based on Fbi a
 media-gfx/flam3 3.1.1: Tools and a library for creating flame fractal images
 media-gfx/flameshot 0.6.0: Powerful yet simple to use screenshot software
 media-gfx/fondu 20060102-r1: Utilities for converting between and manipulating mac fonts and unix fonts
-media-gfx/fontforge 20200314 20201107: postscript font editor and converter
+media-gfx/fontforge 20201107: postscript font editor and converter
 media-gfx/fotowall 1.0: Qt5 tool for creating wallpapers
 media-gfx/fotoxx 15.05: Program for improving image files made with a digital camera
 media-gfx/freecad 0.19.1 9999: QT based Computer Aided Design application
@@ -14921,7 +14921,7 @@ net-libs/liblockfile 1.16: Implements functions designed to lock the standard ma
 net-libs/libmbim 1.18.0 1.24.4 1.24.6: Mobile Broadband Interface Model (MBIM) modem protocol helper library
 net-libs/libmediawiki 5.37.0-r1: C++ interface for MediaWiki based web service as wikipedia.org
 net-libs/libmicrodns 0.1.2 9999: Minimal mDNS resolver (and announcer) library
-net-libs/libmicrohttpd 0.9.65-r1 0.9.68-r1 0.9.69 0.9.70-r1 0.9.71 0.9.72: Small C library to run an HTTP server as part of another application
+net-libs/libmicrohttpd 0.9.72: Small C library to run an HTTP server as part of another application
 net-libs/libmirisdr 9999: Software for the Mirics MSi2500 + MSi001 SDR platform
 net-libs/libmnl 1.0.4: Minimalistic netlink library
 net-libs/libmrss 0.19.2-r1: A C-library for parsing and writing RSS 0.91/0.92/1.0/2.0 files or streams
@@ -18120,8 +18120,8 @@ www-client/elinks 0.13.5-r100 9999: Advanced and well-established text-mode web 
 www-client/epiphany 3.34.4 3.36.4: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 78.8.0 78.9.0 86.0 86.0.1 87.0: Firefox Web Browser
-www-client/firefox-bin 78.8.0 78.9.0 86.0 86.0.1 87.0: Firefox Web Browser
+www-client/firefox 78.9.0 87.0: Firefox Web Browser
+www-client/firefox-bin 78.9.0 87.0: Firefox Web Browser
 www-client/google-chrome 89.0.4389.114: The web browser from Google
 www-client/google-chrome-beta 90.0.4430.51: The web browser from Google
 www-client/google-chrome-unstable 91.0.4464.5: The web browser from Google
