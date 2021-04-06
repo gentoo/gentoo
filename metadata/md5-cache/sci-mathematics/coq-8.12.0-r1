@@ -3,6 +3,7 @@ DEPEND=dev-ml/camlp5:=[ocamlopt?] || ( dev-ml/num <dev-lang/ocaml-4.09.0[ocamlop
 DESCRIPTION=Proof assistant written in O'Caml
 EAPI=7
 HOMEPAGE=http://coq.inria.fr/
+INHERIT=desktop multilib
 IUSE=gtk debug +ocamlopt doc
 KEYWORDS=amd64 x86
 LICENSE=LGPL-2.1
@@ -11,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/coq/coq/archive/V8.12.0.tar.gz -> coq-8.12.0.tar.gz
 _eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=1435cbc4a3fe356e7c0d971e65f62b74
+_md5_=1345b47241697e8acf9778b093d0cd96

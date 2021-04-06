@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/coq/coq/archive/V8.13.0.tar.gz -> coq-8.13.0.tar.gz
 _eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	findlib	197b318e28cee28e11c2b474328b50dd
-_md5_=fe020940e6d28a9f5b56f25fd781902c
+_md5_=1df475721d818781f764ea1537ed1af4
