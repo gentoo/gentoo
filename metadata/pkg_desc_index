@@ -5271,7 +5271,7 @@ dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.30.3 5.30.3-r1 5.30.3-r2 5.32.0-r1 5.32.1: Larry Wall's Practical Extraction and Report Language
 dev-lang/php 7.3.27 7.3.27-r1 7.4.15 7.4.16 8.0.3: The PHP language runtime engine
 dev-lang/polyml 5.8: Poly/ML is a full implementation of Standard ML
-dev-lang/python 2.7.18_p7 2.7.18_p8 3.6.13 3.6.13_p1 3.7.10 3.7.10_p1 3.8.8 3.8.8_p1 3.8.9 3.9.2 3.9.2_p1 3.9.3 3.9.4 3.10.0_alpha6-r2: An interpreted, interactive, object-oriented programming language
+dev-lang/python 2.7.18_p7 2.7.18_p8 3.6.13 3.6.13_p1 3.7.10 3.7.10_p1 3.8.8 3.8.8_p1 3.8.9 3.9.2 3.9.2_p1 3.9.3 3.9.4 3.10.0_alpha6-r2 3.10.0_alpha7: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6-r4: Python script wrapper
 dev-lang/python-exec-conf 2.4.6: Configuration file for dev-lang/python-exec
 dev-lang/qu-prolog 10.6: Extended Prolog supporting quantifiers, object-variables and substitutions
@@ -7973,7 +7973,7 @@ dev-python/APScheduler 3.6.3: In-process task scheduler with Cron-like capabilit
 dev-python/Babel 2.8.1 2.9.0: Collection of tools for internationalizing Python applications
 dev-python/BitVector 3.4.9 3.4.9-r1: A pure-Python memory-efficient packed representation for bit arrays
 dev-python/CppHeaderParser 2.7.4: Parse C++ header files and generate a data structure
-dev-python/Faker 5.6.5 6.4.1 6.5.1 6.6.0 6.6.1 6.6.2 6.6.3 7.0.1: A Python package that generates fake data for you
+dev-python/Faker 7.0.1 8.0.0: A Python package that generates fake data for you
 dev-python/GitPython 3.1.14: Library used to interact with Git repositories
 dev-python/GridDataFormats 0.5.0: Reading and writing of data on regular grids in Python
 dev-python/MechanicalSoup 0.12.0 1.0.0: A python library for automating interaction with websites
@@ -8027,7 +8027,7 @@ dev-python/argon2-cffi 20.1.0: CFFI bindings to the Argon2 password hashing libr
 dev-python/argparse-manpage 1.4 1.5: Automatically build man-pages for your Python project
 dev-python/arpeggio 1.10.0: Parser interpreter based on PEG grammars
 dev-python/arrow 1.0.1 1.0.3: Better dates and times for Python
-dev-python/asgiref 3.3.1: ASGI utilities (successor to WSGI)
+dev-python/asgiref 3.3.1 3.3.2: ASGI utilities (successor to WSGI)
 dev-python/asn1crypto 1.4.0: Python ASN.1 library with a focus on performance and a pythonic API
 dev-python/asteval 0.9.21 0.9.22 0.9.23: Evaluator of Python expression using ast module
 dev-python/astor 0.8.1: Read/rewrite/write Python ASTs
@@ -8047,7 +8047,7 @@ dev-python/autobahn 20.7.1 20.12.2 20.12.3 21.1.1 21.2.1 21.2.2 21.3.1: WebSocke
 dev-python/automat 20.2.0: Self-service finite-state machines for the programmer on the go
 dev-python/automaton 1.12.1 2.2.0: Friendly state machines for python.
 dev-python/autopep8 1.5.5 1.5.6 9999: Automatically formats Python code to conform to the PEP 8 style guide
-dev-python/autoprop 1.0.2 2.0.0 2.1.0 2.1.1: Infer properties from accessor methods
+dev-python/autoprop 1.0.2 2.0.0 2.1.0 2.1.1 2.2.0: Infer properties from accessor methods
 dev-python/aws-sam-translator 1.34.0 1.35.0: A library that transform SAM templates into AWS CloudFormation templates
 dev-python/aws-xray-sdk-python 2.6.0 2.7.0: AWS X-Ray SDK for Python
 dev-python/awscli 1.19.3: Universal Command Line Environment for AWS
@@ -8069,7 +8069,7 @@ dev-python/betamax 0.8.1: python-requests HTTP exchanges recorder
 dev-python/betamax-matchers 0.4.0: A group of experimental matchers for Betamax
 dev-python/bibtexparser 1.1.0: A BibTeX parser written in python
 dev-python/binaryornot 0.4.4-r2: Ultra-lightweight pure Python package to guess whether a file is binary or text
-dev-python/bitarray 1.7.0 1.7.1 1.8.1 1.8.2 1.9.0: efficient arrays of booleans -- C extension
+dev-python/bitarray 1.7.0 1.7.1 1.8.1 1.8.2 1.9.0 1.9.1: efficient arrays of booleans -- C extension
 dev-python/bitstring 3.1.7: A pure Python module for creation and analysis of binary data
 dev-python/black 20.8_beta1: The uncompromising Python code formatter
 dev-python/bleach 3.3.0: an easy whitelist-based HTML-sanitizing tool
@@ -8082,8 +8082,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7 1.0.8: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r4: Amazon Web Services API
-dev-python/boto3 1.17.17 1.17.22 1.17.27 1.17.33 1.17.39 1.17.40 1.17.41 1.17.42 1.17.43 1.17.44 9999: The AWS SDK for Python
-dev-python/botocore 1.20.17 1.20.22 1.20.27 1.20.33 1.20.39 1.20.40 1.20.41 1.20.42 1.20.43 1.20.44 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.17.17 1.17.22 1.17.27 1.17.33 1.17.39 1.17.40 1.17.41 1.17.42 1.17.43 1.17.44 1.17.45 9999: The AWS SDK for Python
+dev-python/botocore 1.20.17 1.20.22 1.20.27 1.20.33 1.20.39 1.20.40 1.20.41 1.20.42 1.20.43 1.20.44 1.20.45 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.21: Syntax highlighting and autocompletion for the Python interpreter
@@ -8331,7 +8331,7 @@ dev-python/freezegun 1.1.0: Let your Python tests travel through time
 dev-python/frozen-flask 0.15: Freezes a Flask application into a set of static files
 dev-python/frozendict 1.2: A simple immutable mapping for python
 dev-python/fs 2.4.12 2.4.13: Filesystem abstraction layer
-dev-python/fsspec 0.8.5 0.8.7: A specification that python filesystems should adhere to
+dev-python/fsspec 0.8.5 0.8.7 0.9.0: A specification that python filesystems should adhere to
 dev-python/fudge 1.1.1: Replace real objects with fakes (mocks, stubs, etc) while testing
 dev-python/funcparserlib 0.3.6-r1: Recursive descent parsing library based on functional combinators
 dev-python/funcy 1.15: A collection of fancy functional tools focused on practicality
@@ -8401,7 +8401,7 @@ dev-python/hvac 0.10.8 0.10.9: hashicorp vault client in python
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 21.0.0: A featureful, correct URL for Python
-dev-python/hypothesis 6.3.4 6.6.0 6.8.1 6.8.3 6.8.4: A library for property based testing
+dev-python/hypothesis 6.3.4 6.6.0 6.8.1 6.8.3 6.8.4 6.8.5: A library for property based testing
 dev-python/icalendar 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/idna 2.10-r1 3.0 3.1: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0-r1: Patch ssl.match_hostname for Unicode(idna) domains support
@@ -9069,7 +9069,7 @@ dev-python/python3-saml 1.9.0 1.10.0 1.10.1: OneLogin's SAML Python Toolkit
 dev-python/python_orocos_kdl 1.4.0-r1 9999: Python bindings for KDL
 dev-python/pythondialog 3.5.1: A Python module for making simple text/console-mode user interfaces
 dev-python/pytidylib 0.3.2-r1: Python wrapper for HTML Tidy (tidylib)
-dev-python/pytools 2021.1 2021.1.2 2021.2 2021.2.1 2021.2.2 9999: Collection of tools missing from the Python standard library
+dev-python/pytools 2021.1 2021.1.2 2021.2 2021.2.1 2021.2.2 2021.2.3 9999: Collection of tools missing from the Python standard library
 dev-python/pytrie 0.4.0: A pure Python implementation of the trie data structure
 dev-python/pytz 2021.1: World timezone definitions for Python
 dev-python/pytzdata 2020.1: The Olson timezone database for Python
@@ -9139,7 +9139,7 @@ dev-python/rich 9.11.1 9.12.4 9.13.0 10.0.0 10.0.1 10.1.0: Python library for re
 dev-python/rjsmin 1.1.0: Javascript minifier written in python.
 dev-python/robot-detection 0.4.0: Module to detect if a given HTTP User Agent is a web crawler.
 dev-python/roman 3.3: An Integer to Roman numerals converter
-dev-python/rope 0.18.0: Python refactoring library
+dev-python/rope 0.18.0 0.18.0-r1: Python refactoring library
 dev-python/ropemode 0.5: A helper for using rope refactoring library in IDEs
 dev-python/rosdistro 0.8.3 9999: Tools to work with catkinized rosdistro files
 dev-python/rospkg 1.2.8-r1 9999: Standalone Python library for the ROS package system
@@ -9230,7 +9230,7 @@ dev-python/sphinx-py3doc-enhanced-theme 2.3.2-r1: Enhanced Sphinx theme (based o
 dev-python/sphinx-testing 1.0.1-r1: Testing utility classes and functions for Sphinx extensions
 dev-python/sphinx_celery 2.0.0-r1: Celery Sphinx Theme and Utilities
 dev-python/sphinx_lv2_theme 1.0.0-r1: Minimal pure-CSS Sphinx theme using the LV2 plugin documentation style
-dev-python/sphinx_rtd_theme 0.5.1: ReadTheDocs.org theme for Sphinx
+dev-python/sphinx_rtd_theme 0.5.1 0.5.2: ReadTheDocs.org theme for Sphinx
 dev-python/sphinx_selective_exclude 1.0.3: Sphinx selective rendition extensions
 dev-python/sphinxcontrib-applehelp 1.0.2: Sphinx extension which outputs Apple help book
 dev-python/sphinxcontrib-asyncio 0.2.0-r2: sphinx extension to support coroutines in markup
@@ -9317,9 +9317,9 @@ dev-python/tldextract 2.2.1: Accurately separate the TLD from the registered dom
 dev-python/toml 0.10.2: Python library for handling TOML files
 dev-python/toolz 0.11.1: List processing tools and functional utilities
 dev-python/tooz 2.7.1: Library centralizing the most common distributed primitives
-dev-python/towncrier 19.2.0: Building newsfiles for your project
+dev-python/towncrier 19.2.0 19.9.0 21.3.0: Building newsfiles for your project
 dev-python/tox 3.23.0: virtualenv-based automation of test activities
-dev-python/tqdm 4.59.0: Add a progress meter to your loops in a second
+dev-python/tqdm 4.59.0 4.60.0: Add a progress meter to your loops in a second
 dev-python/traceback2 1.4.0-r1: Backports of the traceback module
 dev-python/traitlets 4.3.3 5.0.5: A configuration system for Python applications
 dev-python/transitions 0.8.7: A lightweight, object-oriented state machine implementation in Python
@@ -15582,7 +15582,7 @@ net-proxy/adzapper 20110915-r2: Redirector for squid to intercept advertising, p
 net-proxy/cntlm 0.93_beta5-r2: Cntlm is an NTLM/NTLMv2 authenticating HTTP proxy
 net-proxy/dante 1.4.1-r2: A free socks4,5 and msproxy implementation
 net-proxy/dnsproxy 1.17: The dnsproxy daemon is a proxy for DNS queries
-net-proxy/haproxy 1.8.28 1.8.29 2.0.14-r2 2.0.21 2.0.9999 2.1.4-r2 2.1.12 2.1.9999 2.2.5-r1 2.2.11 2.2.12 2.2.9999 2.3.7 2.3.8 2.3.9 2.3.9999: A TCP/HTTP reverse proxy for high availability environments
+net-proxy/haproxy 1.8.29 2.0.14-r2 2.0.21 2.0.9999 2.2.5-r1 2.2.12 2.2.13 2.2.9999 2.3.9 2.3.9999: A TCP/HTTP reverse proxy for high availability environments
 net-proxy/haproxy-dataplaneapi 2.2.0: haproxy dataplane api / sidecar
 net-proxy/hatop 0.8.0: Ncurses client and real-time monitoring and displaying of HAProxy status
 net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
