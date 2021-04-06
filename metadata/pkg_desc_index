@@ -3573,7 +3573,7 @@ dev-cpp/gtest 1.10.0_p20200702 9999: Google C++ Testing Framework
 dev-cpp/gtkmm 2.24.5-r1 3.24.2-r1 3.24.3 3.24.4: C++ interface for GTK+
 dev-cpp/gtksourceviewmm 2.10.3-r2 3.18.0-r1: C++ bindings for gtksourceview
 dev-cpp/htmlcxx 0.87: A simple non-validating CSS 1 and HTML parser for C++
-dev-cpp/kokkos 3.0.00 3.1.01: Kokkos C++ Performance Portability Programming EcoSystem
+dev-cpp/kokkos 3.0.00 3.1.01: C++ Performance Portability Programming EcoSystem
 dev-cpp/libcmis 0.5.2-r1 9999: C++ client library for the CMIS interface
 dev-cpp/libcutl 1.10.0: A collection of C++ libraries (successor of libcult)
 dev-cpp/libglademm 2.6.7-r2: C++ bindings for libglade
@@ -9016,7 +9016,7 @@ dev-python/python-jose 3.2.0-r1: A JavaScript Object Signing and Encryption (JOS
 dev-python/python-jsonrpc-server 0.4.0-r1: A Python 2 and 3 asynchronous JSON RPC server
 dev-python/python-jwt 1.2.0: JSON Web Token library for python 3
 dev-python/python-keystoneclient 4.1.1: Client Library for OpenStack Identity
-dev-python/python-language-server 0.36.2: An implementation of the Language Server Protocol for Python
+dev-python/python-language-server 0.36.2 0.36.2-r1: An implementation of the Language Server Protocol for Python
 dev-python/python-ldap 3.3.1 9999: Various LDAP-related Python modules
 dev-python/python-levenshtein 0.12.1: Functions for fast computation of Levenshtein distance, and edit operations
 dev-python/python-lhafile 0.2.2 0.3.0: LHA archive support for Python
@@ -9497,7 +9497,7 @@ dev-qt/qttranslations 5.15.2: Translation files for the Qt5 framework
 dev-qt/qtvirtualkeyboard 5.15.2: Customizable input framework and virtual keyboard for Qt
 dev-qt/qtwayland 5.15.2-r1: Wayland platform plugin for Qt
 dev-qt/qtwebchannel 5.15.2: Qt5 module for integrating C++ and QML applications with HTML/JavaScript clients
-dev-qt/qtwebengine 5.15.2_p20210224: Library for rendering dynamic web content in Qt5 C++ and QML applications
+dev-qt/qtwebengine 5.15.2_p20210224 5.15.2_p20210406: Library for rendering dynamic web content in Qt5 C++ and QML applications
 dev-qt/qtwebkit 5.212.0_pre20200309-r1: WebKit rendering library for the Qt5 framework (deprecated)
 dev-qt/qtwebsockets 5.15.2: Implementation of the WebSocket protocol for the Qt5 framework
 dev-qt/qtwebview 5.15.2-r1: Module for displaying web content in a QML application using the Qt5 framework
