@@ -83,7 +83,7 @@ src_test() {
 }
 
 src_install() {
-	emake STRIP="true" COQINSTALLPREFIX="${D}" install VERBOSE=1
+	emake STRIP="true" COQINSTALLPREFIX="${D}" install -j1 VERBOSE=1
 	dodoc README.md CREDITS
 
 	use gtk && make_desktop_entry "coqide" "Coq IDE" "${EPREFIX}/usr/share/coq/coq.png"
