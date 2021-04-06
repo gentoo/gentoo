@@ -3,8 +3,8 @@ darwin: __private_extern__ is an Apple-ism, we really don't want
 In particular FSF GCC barfs about this, which is much preferred over
 ancient gcc-apple (4.2.1).
 
---- compat/regex.c
-+++ compat/regex.c
+--- a/compat/regex.c
++++ b/compat/regex.c
 @@ -5539,9 +5539,6 @@
     It returns 0 if it succeeds, nonzero if it doesn't.  (See regex.h for
     the return codes and their meanings.)  */

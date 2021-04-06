@@ -1,5 +1,5 @@
---- states/hl/enscript.st.orig	2006-12-17 02:10:37.000000000 +0100
-+++ states/hl/enscript.st	2006-12-17 02:10:13.000000000 +0100
+--- a/states/hl/enscript.st
++++ b/states/hl/enscript.st
 @@ -489,6 +489,7 @@
    /\.idl$/					idl;
    /\.(hs|lhs|gs|lgs)$/				haskell;
