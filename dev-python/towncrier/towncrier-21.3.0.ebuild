@@ -26,6 +26,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-vcs/git
+		dev-python/mock[${PYTHON_USEDEP}]
 		>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
 	)"
 
