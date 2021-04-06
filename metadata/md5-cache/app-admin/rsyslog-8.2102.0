@@ -6,7 +6,7 @@ EAPI=7
 HOMEPAGE=https://www.rsyslog.com/
 INHERIT=autotools linux-info python-any-r1 systemd
 IUSE=clickhouse curl dbi debug doc elasticsearch +gcrypt gnutls imhttp impcap jemalloc kafka kerberos kubernetes libressl mdblookup mongodb mysql normalize omhttp omhttpfs omudpspoof +openssl postgres rabbitmq redis relp rfc3195 rfc5424hmac snmp +ssl systemd test usertools +uuid xxhash zeromq kernel_linux
-KEYWORDS=~amd64 ~arm ~arm64 ~hppa x86
+KEYWORDS=amd64 ~arm ~arm64 ~hppa x86
 LICENSE=GPL-3 LGPL-3 Apache-2.0
 RDEPEND=>=dev-libs/libfastjson-0.99.8:= >=dev-libs/libestr-0.1.9 >=sys-libs/zlib-1.2.5 curl? ( >=net-misc/curl-7.35.0 ) dbi? ( >=dev-db/libdbi-0.8.3 ) elasticsearch? ( >=net-misc/curl-7.35.0 ) gcrypt? ( >=dev-libs/libgcrypt-1.5.3:= ) imhttp? ( www-servers/civetweb ) impcap? ( net-libs/libpcap ) jemalloc? ( >=dev-libs/jemalloc-3.3.1:= ) kafka? ( >=dev-libs/librdkafka-0.9.0.99:= ) kerberos? ( virtual/krb5 ) kubernetes? ( >=net-misc/curl-7.35.0 ) mdblookup? ( dev-libs/libmaxminddb:= ) mongodb? ( >=dev-libs/mongo-c-driver-1.1.10:= ) mysql? ( dev-db/mysql-connector-c:= ) normalize? ( >=dev-libs/liblognorm-2.0.3:= ) clickhouse? ( >=net-misc/curl-7.35.0 ) omhttpfs? ( >=net-misc/curl-7.35.0 ) omudpspoof? ( >=net-libs/libnet-1.1.6 ) postgres? ( >=dev-db/postgresql-8.4.20:= ) rabbitmq? ( >=net-libs/rabbitmq-c-0.3.0:= ) redis? ( >=dev-libs/hiredis-0.11.0:= ) relp? ( >=dev-libs/librelp-1.2.17:= ) rfc3195? ( >=dev-libs/liblogging-1.0.1:=[rfc3195] ) rfc5424hmac? ( !libressl? ( >=dev-libs/openssl-0.9.8y:0= ) libressl? ( dev-libs/libressl:= ) ) snmp? ( >=net-analyzer/net-snmp-5.7.2 ) ssl? ( gnutls? ( >=net-libs/gnutls-2.12.23:0= ) openssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) ) systemd? ( >=sys-apps/systemd-234 ) uuid? ( sys-apps/util-linux:0= ) xxhash? ( dev-libs/xxhash:= ) zeromq? ( >=net-libs/czmq-4:=[drafts] )
 REQUIRED_USE=kubernetes? ( normalize ) ssl? ( || ( gnutls openssl ) )
@@ -14,4 +14,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://www.rsyslog.com/files/download/rsyslog/rsyslog-8.2102.0.tar.gz doc? ( https://www.rsyslog.com/files/download/rsyslog/rsyslog-doc-8.2102.0.tar.gz )
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	linux-info	30ded7f9adbdd03d3e848cdd74f6c395	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-any-r1	690a993463cd2ebcde40ccdf1bd9ba98	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6
-_md5_=a10c6105d2351249d6a009de48838813
+_md5_=0c1fe701faac6d8fff1b97fd0c97bf04
