@@ -86,6 +86,7 @@ pkg_setup() {
 	use driver || return
 
 	local CONFIG_CHECK="
+		PROC_FS
 		~DRM_KMS_HELPER
 		~SYSVIPC
 		~!AMD_MEM_ENCRYPT_ACTIVE_BY_DEFAULT
