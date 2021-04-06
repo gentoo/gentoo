@@ -1,13 +1,13 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-inherit linux-info systemd toolchain-funcs udev vcs-snapshot toolchain-funcs
+inherit linux-info systemd toolchain-funcs udev toolchain-funcs
 
 DESCRIPTION="Device mapper target autoconfig"
 HOMEPAGE="http://christophe.varoqui.free.fr/"
-SRC_URI="https://git.opensvc.com/?p=multipath-tools/.git;a=snapshot;h=${PV};sf=tgz -> ${P}.tar.gz"
+SRC_URI="https://github.com/opensvc/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -34,10 +34,7 @@ CONFIG_CHECK="~DM_MULTIPATH"
 RESTRICT="test"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.8.4-respect-flags.patch
-	"${FILESDIR}"/${PN}-0.8.3-no-gziped-docs.patch
-	"${FILESDIR}"/${PN}-0.8.3-json-c-0.14.patch
-	"${FILESDIR}"/${PN}-0.8.4-parallel_make_fix.patch
+	"${FILESDIR}"/${PN}-0.8.5-respect-flags.patch
 )
 
 get_systemd_pv() {
@@ -83,10 +80,12 @@ src_install() {
 	newinitd "${FILESDIR}"/multipath.rc multipath
 
 	einstalldocs
+
+	find "${ED}" -type f -name "*.la" -delete || die
 }
 
 pkg_postinst() {
-	if [[ -z ${REPLACING_VERSIONS} ]]; then
+	if [[ -z ${REPLACING_VERSIONS} ]] ; then
 		elog "If you need multipath on your system, you must"
 		elog "add 'multipath' into your boot runlevel!"
 	fi
