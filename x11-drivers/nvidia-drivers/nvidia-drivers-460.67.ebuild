@@ -85,9 +85,9 @@ pkg_setup() {
 	use driver || return
 
 	local CONFIG_CHECK="
+		PROC_FS
 		~DRM_KMS_HELPER
 		~SYSVIPC
-		~!AMD_MEM_ENCRYPT_ACTIVE_BY_DEFAULT
 		~!LOCKDEP
 		!DEBUG_MUTEXES"
 	local ERROR_DRM_KMS_HELPER="CONFIG_DRM_KMS_HELPER: is not set but needed for Xorg auto-detection
