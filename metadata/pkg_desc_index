@@ -9510,40 +9510,40 @@ dev-ros/actionlib_msgs 1.13.0 1.13.1 9999: Common messages to interact with an a
 dev-ros/actionlib_tools 1.13.2 9999: Tools for dealing with actionlib
 dev-ros/actionlib_tutorials 0.1.12 0.2.0 9999: Actionlib tutorials
 dev-ros/amcl 1.17.0 1.17.1 9999: Probabilistic localization system for a robot moving in 2D
-dev-ros/ament_cmake_copyright 0.9.5 0.10.0 0.10.1 9999: The auto-magic functions for ease to use of the ament linters
-dev-ros/ament_cmake_core 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 9999: The core of the ament buildsystem in CMake
-dev-ros/ament_cmake_cppcheck 0.9.5 0.10.0 0.10.1 9999: CMake API for ament_cppcheck to perform static code analysis on C/C++
-dev-ros/ament_cmake_cpplint 0.9.5 0.10.0 0.10.1 9999: CMake API for ament_cpplint to lint C / C++ code using cpplint
-dev-ros/ament_cmake_export_definitions 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 9999: Export definitions to downstream packages in the ament buildsystem
-dev-ros/ament_cmake_export_dependencies 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 9999: Export dependencies to downstream packages in the ament buildsystem in CMake
-dev-ros/ament_cmake_export_include_directories 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 9999: Export include directories to downstream packages in the ament buildsystem
-dev-ros/ament_cmake_export_interfaces 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 9999: Export interfaces to downstream packages in the ament buildsystem
-dev-ros/ament_cmake_export_libraries 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 9999: Export libraries to downstream packages in the ament buildsystem
-dev-ros/ament_cmake_export_link_flags 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 9999: Export link flags to downstream packages in the ament buildsystem
-dev-ros/ament_cmake_export_targets 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 9999: Export targets to downstream packages in the ament buildsystem
-dev-ros/ament_cmake_gmock 1.0.0 1.0.1 1.0.3 1.0.4 9999: The ability to add Google mock-based tests in the ament buildsystem
-dev-ros/ament_cmake_gtest 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 9999: The ability to add gtest-based tests in the ament buildsystem
-dev-ros/ament_cmake_include_directories 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 9999: Export include directories to downstream packages in the ament buildsystem
-dev-ros/ament_cmake_libraries 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 9999: The functionality to deduplicate libraries in the ament buildsystem
-dev-ros/ament_cmake_lint_cmake 0.9.5 0.10.0 0.10.1 9999: The CMake API for ament_lint_cmake to lint CMake code using cmakelint
-dev-ros/ament_cmake_pytest 1.0.0 1.0.1 1.0.3 1.0.4 9999: The ability to run Python tests using pytest in the ament buildsystem
-dev-ros/ament_cmake_python 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 9999: The ability to use Python in the ament buildsystem
+dev-ros/ament_cmake_copyright 0.9.5 0.10.0 0.10.1 0.10.4 9999: The auto-magic functions for ease to use of the ament linters
+dev-ros/ament_cmake_core 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 1.1.3 9999: The core of the ament buildsystem in CMake
+dev-ros/ament_cmake_cppcheck 0.9.5 0.10.0 0.10.1 0.10.4 9999: CMake API for ament_cppcheck to perform static code analysis on C/C++
+dev-ros/ament_cmake_cpplint 0.9.5 0.10.0 0.10.1 0.10.4 9999: CMake API for ament_cpplint to lint C / C++ code using cpplint
+dev-ros/ament_cmake_export_definitions 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 1.1.3 9999: Export definitions to downstream packages in the ament buildsystem
+dev-ros/ament_cmake_export_dependencies 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 1.1.3 9999: Export dependencies to downstream packages in the ament buildsystem in CMake
+dev-ros/ament_cmake_export_include_directories 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 1.1.3 9999: Export include directories to downstream packages in the ament buildsystem
+dev-ros/ament_cmake_export_interfaces 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 1.1.3 9999: Export interfaces to downstream packages in the ament buildsystem
+dev-ros/ament_cmake_export_libraries 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 1.1.3 9999: Export libraries to downstream packages in the ament buildsystem
+dev-ros/ament_cmake_export_link_flags 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 1.1.3 9999: Export link flags to downstream packages in the ament buildsystem
+dev-ros/ament_cmake_export_targets 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 1.1.3 9999: Export targets to downstream packages in the ament buildsystem
+dev-ros/ament_cmake_gmock 1.0.0 1.0.1 1.0.3 1.0.4 1.1.3 9999: The ability to add Google mock-based tests in the ament buildsystem
+dev-ros/ament_cmake_gtest 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 1.1.3 9999: The ability to add gtest-based tests in the ament buildsystem
+dev-ros/ament_cmake_include_directories 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 1.1.3 9999: Export include directories to downstream packages in the ament buildsystem
+dev-ros/ament_cmake_libraries 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 1.1.3 9999: The functionality to deduplicate libraries in the ament buildsystem
+dev-ros/ament_cmake_lint_cmake 0.9.5 0.10.0 0.10.1 0.10.4 9999: The CMake API for ament_lint_cmake to lint CMake code using cmakelint
+dev-ros/ament_cmake_pytest 1.0.0 1.0.1 1.0.3 1.0.4 1.1.3 9999: The ability to run Python tests using pytest in the ament buildsystem
+dev-ros/ament_cmake_python 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 1.1.3 9999: The ability to use Python in the ament buildsystem
 dev-ros/ament_cmake_ros 0.9.1 9999: ROS specific CMake bits in the ament buildsystem
-dev-ros/ament_cmake_target_dependencies 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 9999: Add defs, include dirs and libs to a target in the ament buildsystem
-dev-ros/ament_cmake_test 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 9999: The ability to add tests in the ament buildsystem
-dev-ros/ament_cmake_uncrustify 0.9.5 0.10.0 0.10.1 9999: The CMake API for ament_uncrustify to check code against styleconventions
-dev-ros/ament_cmake_version 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 9999: Override the exported package version in the ament buildsystem
-dev-ros/ament_cmake_xmllint 0.9.5 0.10.0 0.10.1 9999: he CMake API for ament_xmllint to check XML file using xmmlint
-dev-ros/ament_copyright 0.10.0 0.10.1 9999: The ability to check source files for copyright and license information.
-dev-ros/ament_cppcheck 0.10.0 0.10.1 9999: The ability to perform static code analysis on C/C++ code using Cppcheck
-dev-ros/ament_cpplint 0.10.0 0.10.1 9999: The ability to check code against the Google style conventions using cpplint
-dev-ros/ament_flake8 0.10.0 0.10.1 9999: The ability to check code for style and syntax conventions with flake8
-dev-ros/ament_lint 0.9.5 0.10.0 0.10.1 9999: Common API for ament linter packages
-dev-ros/ament_lint_auto 0.9.5 0.10.0 0.10.1 9999: The auto-magic functions for ease to use of the ament linters
-dev-ros/ament_lint_cmake 0.10.0 0.10.1 9999: Lint CMake code using cmakelint and generate xUnit test result files
-dev-ros/ament_pep257 0.10.0 0.10.1 9999: Checks code against style conventions in PEP 8 and generate test result files
-dev-ros/ament_uncrustify 0.10.0 0.10.1 9999: The ability to check code against style conventions using uncrustify
-dev-ros/ament_xmllint 0.10.0 0.10.1 9999: Checks XML files like the package manifest using xmllint
+dev-ros/ament_cmake_target_dependencies 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 1.1.3 9999: Add defs, include dirs and libs to a target in the ament buildsystem
+dev-ros/ament_cmake_test 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 1.1.3 9999: The ability to add tests in the ament buildsystem
+dev-ros/ament_cmake_uncrustify 0.9.5 0.10.0 0.10.1 0.10.4 9999: The CMake API for ament_uncrustify to check code against styleconventions
+dev-ros/ament_cmake_version 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 1.1.3 9999: Override the exported package version in the ament buildsystem
+dev-ros/ament_cmake_xmllint 0.9.5 0.10.0 0.10.1 0.10.4 9999: he CMake API for ament_xmllint to check XML file using xmmlint
+dev-ros/ament_copyright 0.10.0 0.10.1 0.10.4 9999: The ability to check source files for copyright and license information.
+dev-ros/ament_cppcheck 0.10.0 0.10.1 0.10.4 9999: The ability to perform static code analysis on C/C++ code using Cppcheck
+dev-ros/ament_cpplint 0.10.0 0.10.1 0.10.4 9999: The ability to check code against the Google style conventions using cpplint
+dev-ros/ament_flake8 0.10.0 0.10.1 0.10.4 9999: The ability to check code for style and syntax conventions with flake8
+dev-ros/ament_lint 0.9.5 0.10.0 0.10.1 0.10.4 9999: Common API for ament linter packages
+dev-ros/ament_lint_auto 0.9.5 0.10.0 0.10.1 0.10.4 9999: The auto-magic functions for ease to use of the ament linters
+dev-ros/ament_lint_cmake 0.10.0 0.10.1 0.10.4 9999: Lint CMake code using cmakelint and generate xUnit test result files
+dev-ros/ament_pep257 0.10.0 0.10.1 0.10.4 9999: Checks code against style conventions in PEP 8 and generate test result files
+dev-ros/ament_uncrustify 0.10.0 0.10.1 0.10.4 9999: The ability to check code against style conventions using uncrustify
+dev-ros/ament_xmllint 0.10.0 0.10.1 0.10.4 9999: Checks XML files like the package manifest using xmllint
 dev-ros/angles 1.9.13 9999: Set of simple math utilities to work with angles
 dev-ros/audio_capture 0.3.6 0.3.7 0.3.8 0.3.10 9999: Transports audio from a source to a destination
 dev-ros/audio_common_msgs 0.3.6 0.3.7 0.3.8 0.3.10 9999: Messages for transmitting audio via ROS
@@ -9785,12 +9785,12 @@ dev-ros/rqt_logger_level 0.4.11 9999: GUI plugin for configuring the logger leve
 dev-ros/rqt_moveit 0.5.9 9999: Assists monitoring tasks for MoveIt! motion planner
 dev-ros/rqt_msg 0.4.9 9999: Python GUI plugin for introspecting available ROS message types
 dev-ros/rqt_nav_view 0.5.7 9999: Provides a gui for viewing navigation maps and paths
-dev-ros/rqt_plot 0.4.12 9999: GUI plugin visualizing numeric values in a 2D plot
+dev-ros/rqt_plot 0.4.13 9999: GUI plugin visualizing numeric values in a 2D plot
 dev-ros/rqt_pose_view 0.5.10 9999: GUI plugin for visualizing 3D poses
 dev-ros/rqt_publisher 0.4.9 9999: GUI plugin for publishing arbitrary messages with fixed or computed field values
 dev-ros/rqt_py_common 0.5.2 9999: Common functionality for rqt plugins written in Python
 dev-ros/rqt_py_console 0.4.9 9999: Python GUI plugin providing an interactive Python console
-dev-ros/rqt_reconfigure 0.5.3 9999: Provides the way to view and edit the parameters from dynamic_reconfigure
+dev-ros/rqt_reconfigure 0.5.4 9999: Provides the way to view and edit the parameters from dynamic_reconfigure
 dev-ros/rqt_robot_dashboard 0.5.8 9999: Infrastructure for building robot dashboard plugins in rqt
 dev-ros/rqt_robot_monitor 0.5.13 9999: Displays messages that are published by diagnostic_aggregator
 dev-ros/rqt_robot_steering 0.5.12 9999: GUI plugin for steering a robot using Twist messages
@@ -9871,7 +9871,7 @@ dev-ros/visp_tracker 0.11.1 9999: Wraps the ViSP moving edge tracker provided by
 dev-ros/visualization_marker_tutorials 0.11.0 9999: Visualization marker tutorials
 dev-ros/visualization_msgs 1.12.7 1.13.0 1.13.1 9999: Messages used by higher level packages that deal in visualization-specific data.
 dev-ros/voxel_grid 1.16.6 1.17.0 1.17.1 9999: Implementation of an efficient 3D voxel grid
-dev-ros/xacro 1.14.5 9999: XML macro language
+dev-ros/xacro 1.14.6 9999: XML macro language
 dev-ros/xmlrpcpp 1.15.8 1.15.9 1.15.10 9999: C++ implementation of the XML-RPC protocol
 dev-ruby/GeoRuby 2.5.2-r1: Ruby data holder for OGC Simple Features
 dev-ruby/abstract 1.0.0-r3: Library which enable you to define abstract method in Ruby
@@ -12862,7 +12862,7 @@ media-gfx/apngdis 2.9: extract PNG frames from an APNG
 media-gfx/apngopt 1.4: optimize APNG images
 media-gfx/argyllcms 2.1.2-r1: Open source, ICC compatible color management system
 media-gfx/arss 0.2.3-r1: Analysis & Resynthesis Sound Spectrograph
-media-gfx/asymptote 2.68 2.69-r1: A vector graphics language that provides a framework for technical drawing
+media-gfx/asymptote 2.68 2.69-r1 2.70: A vector graphics language that provides a framework for technical drawing
 media-gfx/autopano-sift-C 2.5.1: SIFT algorithm for automatic panorama creation in C
 media-gfx/aview 1.3.0_rc1-r3: An ASCII Image Viewer
 media-gfx/blender 2.83.4-r1 2.83.10 2.83.12 2.90.1-r1 2.91.0 2.91.2: 3D Creation/Animation/Publishing System
@@ -15797,7 +15797,7 @@ perl-core/libnet 1.270.0: A URI Perl Module
 perl-core/parent 0.228-r1: Establish an ISA relationship with base classes at compile time
 perl-core/podlators 2.5.3: Format POD source into various output formats
 perl-core/version 0.990.800: Perl extension for Version Objects
-ros-meta/ament_cmake 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 9999: The entry point package for the ament buildsystem
+ros-meta/ament_cmake 0.9.6 1.0.0 1.0.1 1.0.3 1.0.4 1.1.3 9999: The entry point package for the ament buildsystem
 ros-meta/audio_common 0.3.6 0.3.7 0.3.8 0.3.10 9999: Common code for working with audio in ROS
 ros-meta/bond_core 1.8.5 1.8.6 9999: A bond allows two processes, A and B, to know when the other has terminated
 ros-meta/calibration 0.10.14 9999: Provides a toolchain running through the robot calibration process
@@ -16412,7 +16412,7 @@ sci-libs/openblas 0.3.12-r1 0.3.13 0.3.14: Optimized BLAS library based on GotoB
 sci-libs/opencascade 7.4.0-r4: Development platform for CAD/CAE, 3D surface/solid modeling and data exchange
 sci-libs/openlibm 0.7.4: High quality system independent, open source libm
 sci-libs/orocos-bfl 0.8.0: Bayesian Filtering Library
-sci-libs/orocos_kdl 1.4.0-r1 9999: Kinematics and Dynamics Library (KDL)
+sci-libs/orocos_kdl 1.4.0-r2 9999: Kinematics and Dynamics Library (KDL)
 sci-libs/p4est 2.2-r100 9999: Scalable Algorithms for Parallel Adaptive Mesh Refinement on Forests of Octrees
 sci-libs/parmetis 4.0.3-r1: Parallel (MPI) unstructured graph partitioning library
 sci-libs/pastix 5.2.2.22-r1 5.2.3: Parallel solver for very large sparse linear systems
