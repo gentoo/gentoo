@@ -7,8 +7,9 @@
   </maintainer>
   <use>
     <flag name="clang">
-      Provide integration with <pkg>sys-devel/clang</pkg> for autocompletion and inline 
-      errors
+      Provide integration with <pkg>sys-devel/clang</pkg> and 
+      <pkg>dev-util/bear</pkg> for autocompletion, inline errors and 
+      information about compilation units.
     </flag>
   </use>
 </pkgmetadata>
