@@ -51,13 +51,12 @@ src_configure() {
 		-DDIST="ON"
 		-DUBSAN="OFF"
 	)
-	cmake_src_configure
 
 	if [[ "${PV}" != 9999 ]] ; then
-		# Build system still doesn't reliably set release version
-		sed "/PROJECT_VERSION/s@-@${PV}@" -i "${BUILD_DIR}/config.h" \
-			|| die
+		mycmakeargs+=( -DVERSION_NUM="${PV}" )
 	fi
+
+	cmake_src_configure
 }
 
 pkg_postinst() {
