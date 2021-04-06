@@ -1,31 +1,34 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# TODO: - unbundle libmono for 64bit
-#       - unbundling libSDL_mixer breaks the game
-#       - provide icon
-#       - test useflags for libsdl on x86
+EAPI=7
 
-EAPI=5
+inherit desktop gnome2-utils wrapper
 
-inherit eutils gnome2-utils games
-
-DESCRIPTION="An open-world, sandbox game set in an infinite abstract universe"
-HOMEPAGE="http://murudai.com/solar/"
 GAMEBALL="${PN}-linux-${PV}.tar.gz"
 ICONFILE="https://dev.gentoo.org/~chewi/distfiles/${PN}.png"
+DESCRIPTION="An open-world, sandbox game set in an infinite abstract universe"
+HOMEPAGE="http://murudai.com/solar/"
 SRC_URI="${GAMEBALL} ${ICONFILE}"
+S="${WORKDIR}"/Solar2
 
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE="bundled-libs"
+
 RESTRICT="bindist fetch splitdebug"
 
-MYGAMEDIR=${GAMES_PREFIX_OPT}/${PN}
-QA_PREBUILT="${MYGAMEDIR#/}/lib/*
-	${MYGAMEDIR#/}/Solar2.bin.x86"
+MYGAMEDIR=opt/${PN}
+QA_PREBUILT="
+	${MYGAMEDIR#/}/lib/*
+	${MYGAMEDIR#/}/Solar2.bin.x86
+"
 
+# TODO: - unbundle libmono for 64bit
+#       - unbundling libSDL_mixer breaks the game
+#       - provide icon
+#       - test useflags for libsdl on x86
 RDEPEND="
 	virtual/opengl
 	amd64? (
@@ -53,8 +56,6 @@ RDEPEND="
 		)
 	)"
 
-S=${WORKDIR}/Solar2
-
 pkg_nofetch() {
 	einfo "Please buy and download ${GAMEBALL} from:"
 	einfo "  ${HOMEPAGE}"
@@ -79,24 +80,21 @@ src_prepare() {
 }
 
 src_install() {
-	insinto "${MYGAMEDIR}"
+	insinto ${MYGAMEDIR}
 	doins -r *
 
-	games_make_wrapper ${PN} "./Solar2.bin.x86" "${MYGAMEDIR}"
+	make_wrapper ${PN} "./Solar2.bin.x86" "${MYGAMEDIR}"
 	make_desktop_entry ${PN}
 	doicon -s 64 "${DISTDIR}"/${PN}.png
 
-	fperms +x "${MYGAMEDIR}"/Solar2.bin.x86
-	prepgamesdirs
+	fperms +x ${MYGAMEDIR}/Solar2.bin.x86
 }
 
 pkg_preinst() {
-	games_pkg_preinst
 	gnome2_icon_savelist
 }
 
 pkg_postinst() {
-	games_pkg_postinst
 	gnome2_icon_cache_update
 }
 
