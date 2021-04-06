@@ -1,8 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils gnome2-utils unpacker games
+EAPI=7
+
+inherit desktop gnome2-utils unpacker wrapper
 
 DESCRIPTION="Throw your toys into your fire, and play with them as they burn"
 HOMEPAGE="http://tomorrowcorporation.com/"
@@ -12,9 +13,10 @@ LICENSE="Gameplay-Group-EULA"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE="bundled-libs"
+
 RESTRICT="bindist fetch bundled-libs? ( splitdebug )"
 
-MYGAMEDIR=${GAMES_PREFIX_OPT}/${PN}
+MYGAMEDIR=opt/${PN}
 QA_PREBUILT="${MYGAMEDIR#/}/LittleInferno.bin.x86
 	${MYGAMEDIR#/}/lib/*"
 
@@ -25,8 +27,10 @@ RDEPEND="
 	!bundled-libs? (
 		>=media-libs/libogg-1.3.1[abi_x86_32(-)]
 		>=media-libs/libvorbis-1.3.3-r1[abi_x86_32(-)]
-		>=media-libs/openal-1.15.1-r1[abi_x86_32(-)] )"
-DEPEND="app-arch/xz-utils"
+		>=media-libs/openal-1.15.1-r1[abi_x86_32(-)]
+	)
+"
+BDEPEND="app-arch/xz-utils"
 
 src_unpack() {
 	unpack_makeself ${A}
@@ -42,31 +46,27 @@ src_unpack() {
 }
 
 src_prepare() {
-	if use !bundled-libs ; then
+	if ! use bundled-libs ; then
 		rm -rv lib || die
 	fi
 }
 
 src_install() {
-	insinto "${MYGAMEDIR}"
+	insinto ${MYGAMEDIR}
 	doins -r *
 
 	doicon -s 128 LittleInferno.png
 	make_desktop_entry ${PN} "Little Inferno" LittleInferno
-	games_make_wrapper ${PN} "./LittleInferno.bin.x86" "${MYGAMEDIR}" "${MYGAMEDIR}/lib"
+	make_wrapper ${PN} "./LittleInferno.bin.x86" "${MYGAMEDIR}" "${MYGAMEDIR}/lib"
 
-	fperms +x "${MYGAMEDIR}"/LittleInferno.bin.x86
-
-	prepgamesdirs
+	fperms +x ${MYGAMEDIR}/LittleInferno.bin.x86
 }
 
 pkg_preinst() {
-	games_pkg_preinst
 	gnome2_icon_savelist
 }
 
 pkg_postinst() {
-	games_pkg_postinst
 	gnome2_icon_cache_update
 }
 
