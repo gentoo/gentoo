@@ -3811,7 +3811,7 @@ dev-erlang/stringprep 1.0.20 1.0.22: Fast Stringprep implementation for Erlang a
 dev-erlang/stun 1.0.33 1.0.38: STUN and TURN library for Erlang and Elixir
 dev-erlang/xmpp 1.4.7 1.4.9: XMPP parsing and serialization library on top of Fast XML
 dev-erlang/yconf 1.0.1 1.0.4 1.0.7: YAML configuration processor
-dev-games/KXL 1.1.7-r2: Development Library for making games for X
+dev-games/KXL 1.1.7-r3: Development Library for making games for X
 dev-games/aseprite 1.1.6 1.1.9: Animated sprite editor & pixel art tool
 dev-games/cardpics 0.4-r1: set of free cards sets
 dev-games/cegui 0.8.7-r100: Crazy Eddie's GUI System
@@ -11134,7 +11134,7 @@ games-action/apotheon 1.26v: Heroic action game set within the vibrant world of 
 games-action/armagetronad 0.2.8.3.3-r1: Fast-paced 3D lightcycle game based on Tron
 games-action/assault-android-cactus+ 200507: Arcade style twin stick shooter set in a vivid sci-fi universe
 games-action/astromenace 1.4.1-r1: Hardcore 3D space scroll-shooter with spaceship upgrade possibilities
-games-action/atanks 6.4-r1 6.5: Worms and Scorched Earth-like game
+games-action/atanks 6.5: Worms and Scorched Earth-like game
 games-action/badland 121-r1: Atmospheric side-scrolling action adventure platformer set in a gorgeous forest
 games-action/barrage 1.0.4-r1: A violent point-and-click shooting game
 games-action/battalion 1.4b-r1: Be a rampaging monster and destroy the city
@@ -11157,7 +11157,7 @@ games-action/descent2-vertigo 1.0: Data files for Descent 2: The Vertigo Series
 games-action/descent3 1.4.0b-r2: Descent 3 - 3-Dimensional indoor/outdoor spaceship combat
 games-action/descent3-demo 1.4.0a-r1: Indoor/outdoor 3D combat with evil robotic mining spacecraft
 games-action/dxx-rebirth 0.61.0_pre20200615 9999: Descent Rebirth - enhanced Descent 1 & 2 engine
-games-action/extreme-tuxracer 0.7.4 0.7.5: High speed arctic racing game based on Tux Racer
+games-action/extreme-tuxracer 0.7.5: High speed arctic racing game based on Tux Racer
 games-action/fakk2 1.02-r1: 3D third-person action shooter based on the Heavy Metal comics/movies
 games-action/formido 1.0.1-r2: A shooting game in the spirit of Phobia games
 games-action/garden 1.0.9-r2: Multiplatform vertical shoot-em-up with non-traditional elements
@@ -11187,7 +11187,7 @@ games-action/shadowgrounds-bin 0_p1: an epic action experience combining modern 
 games-action/shadowgrounds-survivor-bin 0_p1: human survivors who battle against the ongoing alien onslaught
 games-action/shootingstar 1.2.0-r1: A topdown shooter
 games-action/snipes 1.0.4-r1: 2D scrolling shooter, resembles the old DOS game of same name
-games-action/solar2 1.10: An open-world, sandbox game set in an infinite abstract universe
+games-action/solar2 1.10-r1: An open-world, sandbox game set in an infinite abstract universe
 games-action/spacearyarya-kxl 1.0.2-r2: A 2D/3D shooting game
 games-action/super-hexagon 20160217: A minimal action game by Terry Cavanagh, with music by Chipzel
 games-action/supermariowar 2.0_beta1-r1: Fan-made multiplayer Super Mario Bros. style deathmatch game
@@ -11227,7 +11227,7 @@ games-arcade/bomns 0.99.2-r1: A fast-paced multiplayer deathmatch arcade game
 games-arcade/briquolo 0.5.7: Breakout with 3D representation based on OpenGL
 games-arcade/bumprace 1.5.3-r1: simple arcade racing game
 games-arcade/burgerspace 1.9.2-r1: Clone of the 1982 BurgerTime video game by Data East
-games-arcade/cavezofphear 0.5.1: A boulder dash / digger-like game for console using ncurses
+games-arcade/cavezofphear 0.5.1-r1: A boulder dash / digger-like game for console using ncurses
 games-arcade/cdogs-sdl 0.10.1: Classic overhead run-and-gun game
 games-arcade/ceferino 0.97.8-r2: Super-Pang clone (destroy bouncing balloons with your grapnel)
 games-arcade/circuslinux 1.0.3-r1: clone of the Atari 2600 game "Circus Atari"
@@ -11259,7 +11259,7 @@ games-arcade/insaneodyssey 000311-r1: Help West Muldune escape from a futuristic
 games-arcade/jardinains 2.0-r1: Arkanoid with Gnomes
 games-arcade/jazz2 0.6.6: Open source reimplementation of Jazz Jackrabbit 2
 games-arcade/jazz2-data 0-r20200327: Jazz Jackrabbit 2 data files imported for games-arcade/jazz2
-games-arcade/jumpnbump 1.50-r2 1.61: A funny multiplayer game about cute little fluffy bunnies
+games-arcade/jumpnbump 1.61: A funny multiplayer game about cute little fluffy bunnies
 games-arcade/jvgs 0.5-r100: An open-source platform game with a sketched and minimalistic look
 games-arcade/kajaani-kombat 0.7-r1: A rampart-like game set in space
 games-arcade/kobodeluxe 0.5.1-r2: An SDL port of xkobo, a addictive space shoot-em-up
@@ -11447,7 +11447,7 @@ games-emulation/vbam 2.1.4 9999: Game Boy, GBC, and GBA emulator forked from Vis
 games-emulation/vgba 4.8-r1: Gameboy Advance (GBA) emulator for Linux
 games-emulation/yabause 0.9.15: Sega Saturn emulator
 games-emulation/zinc 1.1-r1: An x86 binary-only emulator for Sony ZN-1, ZN-2, and Namco System 11 arcades
-games-emulation/zsnes 1.51-r8 1.51-r9: SNES (Super Nintendo) emulator that uses x86 assembly
+games-emulation/zsnes 1.51-r9: SNES (Super Nintendo) emulator that uses x86 assembly
 games-engines/box2d 2.4.1: C++ engine for simulating rigid bodies in 2D games
 games-engines/dMagnetic 0.30: A Magnetic Scrolls Interpreter for playing a collection of old text adventures
 games-engines/devilutionx 1.1.0-r2 1.2.0 9999: Diablo engine for modern operating systems
@@ -11477,15 +11477,15 @@ games-fps/doom-data 1.9: The IWAD used by the shareware version of Doom
 games-fps/doomsday 2.1.1-r1 2.3.0: A modern gaming engine for Doom, Heretic, and Hexen
 games-fps/duke3d-data 1.0-r5: Duke Nukem 3D (Atomic Edition) data files
 games-fps/eduke32 20210221.9314: An open source engine port of the classic PC first person shooter Duke Nukem 3D
-games-fps/etqw-bin 1.5-r2: Enemy Territory: Quake Wars
+games-fps/etqw-bin 1.5-r3: Enemy Territory: Quake Wars
 games-fps/etqw-data 1.0-r1: Enemy Territory: Quake Wars data files
 games-fps/etqw-demo 2.0_p1-r2: Enemy Territory: Quake Wars demo
-games-fps/ezquake-bin 2.2: Quakeworld client with mqwcl functionality and many more features
+games-fps/ezquake-bin 2.2-r1: Quakeworld client with mqwcl functionality and many more features
 games-fps/freedm 0.12.1: A 32-level game designed for competitive deathmatch play.
 games-fps/freedm-data 0.12.1: Game resources for FreeDM
 games-fps/freedoom 0.12.1: A complete free-content single-player focused game based on the Doom engine
 games-fps/freedoom-data 0.12.1: Game resources for Freedoom: Phase 1+2
-games-fps/glxquake-bin 0-r2: A binary that works with any 3D-graphics-card that supports the glx X-extension
+games-fps/glxquake-bin 0-r3: A binary that works with any 3D-graphics-card that supports the glx X-extension
 games-fps/gzdoom 4.5.0: A modder-friendly OpenGL source port based on the DOOM engine
 games-fps/industri 1.01: Quake/Tenebrae based, single player game
 games-fps/legends 0.4.1.43-r2: Fast-paced first-person-shooter online multiplayer game, similar to Tribes
@@ -11494,7 +11494,7 @@ games-fps/prboom-plus 2.6: An enhanced clone of the classic first-person shooter
 games-fps/quake1-data 2.40: iD Software's Quake 1 ... the data files
 games-fps/quake1-demodata 1.06: Demo data for Quake 1
 games-fps/quake1-killer 2.2z-r1: The Killer Quake Patch
-games-fps/quake1-rally 1.2: TC which turns Quake into a Rally racing game
+games-fps/quake1-rally 1.2-r1: TC which turns Quake into a Rally racing game
 games-fps/quake1-teamfortress 2.9: The classic Team Fortress Quake World mod
 games-fps/quake1-textures 20050820: Collection of graphical improvements for Quake 1
 games-fps/quake2-data 3.20: iD Software's Quake 2 ... the data files
@@ -11531,7 +11531,7 @@ games-fps/ut2004-demo 3334-r1: Demo for the critically-acclaimed first-person sh
 games-fps/wolfgl 0.93-r2: Wolfenstein and Spear of Destiny port using OpenGL
 games-fps/worldofpadman 1.6-r1: A cartoon style multiplayer first-person shooter
 games-fps/xonotic 0.8.2: Fork of Nexuiz, Deathmatch FPS based on DarkPlaces, an advanced Quake 1 engine
-games-fps/yamagi-quake2 7.43 7.45: Quake 2 engine focused on single player
+games-fps/yamagi-quake2 7.45: Quake 2 engine focused on single player
 games-kids/gcompris 1.0: Full featured educational application for children from 2 to 10
 games-kids/gmult 8.0-r1: Multiplication Puzzle emulates the multiplication game found in Emacs
 games-kids/lletters 0.1.95-r4: Game that helps young kids learn their letters and numbers
@@ -11543,7 +11543,7 @@ games-misc/ballerburg 1.2.0-r1: Linux port of the classical Atari ST game Baller
 games-misc/bsd-games 2.17_p28-r1 3.1-r1: collection of games from NetBSD
 games-misc/bsod 0.1-r1: This program will let you experience the authentic Microsoft Windows experience
 games-misc/c++robots 0-r1: ongoing 'King of the Hill' (KotH) tournament
-games-misc/cowsay 3.04: Configurable talking ASCII cow (and other characters)
+games-misc/cowsay 3.04-r1: Configurable talking ASCII cow (and other characters)
 games-misc/doge 3.6.0: wow very terminal doge
 games-misc/exult-sound 0-r2: Sound data for games-engines/exult
 games-misc/fortune-mod 1.99.1-r3: The notorious fortune program
@@ -11569,7 +11569,7 @@ games-misc/funny-manpages 1.3_rc5-r1 2.3: funny manpages collected from various 
 games-misc/gBhed 0.17-r1: An Al Bhed translator
 games-misc/games-envd 0: Environment file for gentoo games
 games-misc/gtklife 5.2: A Conway's Life simulator for Unix
-games-misc/little-inferno 20130509: Throw your toys into your fire, and play with them as they burn
+games-misc/little-inferno 20130509-r1: Throw your toys into your fire, and play with them as they burn
 games-misc/lolcat 90.8.8-r1 100.0.1 100.0.1-r1: Rainbows and unicorns!
 games-misc/lucidlife 0.9.2-r1: A Conway's Life simulator written in GTK+2 - fork from Gtklife
 games-misc/nyancat 1.5.1: Nyan Cat Telnet Server
@@ -11596,7 +11596,7 @@ games-mud/gmudix 1.0-r1: GTK+ MUD client with many features and an easy scriptin
 games-mud/gnome-mud 0.11.2-r2 9999: GNOME MUD client
 games-mud/kildclient 3.0.1-r1: Powerful MUD client with a built-in PERL interpreter
 games-mud/mudix 4.3-r2: A small, stable MUD client for the console
-games-mud/powwow 1.2.16-r1 1.2.22: PowWow Console MUD Client
+games-mud/powwow 1.2.22: PowWow Console MUD Client
 games-mud/tf 5.0_beta8_p8: A small, flexible, screen-oriented MUD client (aka TinyFugue)
 games-mud/tintin 2.01.8: (T)he k(I)cki(N) (T)ickin d(I)kumud clie(N)t
 games-mud/tkmoo 0.3.32-r1: MOO Client written in Tcl/Tk
@@ -11658,7 +11658,7 @@ games-puzzle/mirrormagic 2.0.2-r2: A game like Deflektor (C 64) or Mindbender (A
 games-puzzle/monsterz 0.7.1_p11: A little puzzle game, similar to the famous Bejeweled or Zookeeper
 games-puzzle/mures 0.5-r1: A clone of Sega's Chu Chu Rocket
 games-puzzle/neverball 1.6.0-r1: Clone of Super Monkey Ball using SDL/OpenGL
-games-puzzle/nightsky 20111222: Puzzle game that puts you inside and ambient and mysterious universe
+games-puzzle/nightsky 20111222-r1: Puzzle game that puts you inside and ambient and mysterious universe
 games-puzzle/nudoku 2.1.0: ncurses based sudoku game
 games-puzzle/numptyphysics 0.3.5 9999: Crayon Physics-like drawing puzzle game using the same excellent Box2D engine
 games-puzzle/pathological 1.1.3_p16-r1: An enriched clone of the game 'Logical' by Rainbow Arts
@@ -11675,13 +11675,13 @@ games-puzzle/scramble 0.9.5-r1: Create as many words as you can before the time 
 games-puzzle/sdl-jewels 1.1.1-r1: Swap and match 3 or more jewels in a line in order to score points
 games-puzzle/seatris 0.0.14-r1: A color ncurses tetris clone
 games-puzzle/sgt-puzzles 20190415 99999999: Simon Tatham's Portable Puzzle Collection
-games-puzzle/splice 20121120: An experimental and artistic puzzler set in a microbial world
+games-puzzle/splice 20121120-r1: An experimental and artistic puzzler set in a microbial world
 games-puzzle/swell-foop 3.34.1: Clear the screen by removing groups of colored and shaped tiles
 games-puzzle/tanglet 1.5.3: Single player word finding game based on Boggle
 games-puzzle/tetrinet 0.11-r2: Console based tetrinet inc. standalone server
 games-puzzle/textmaze 1.2-r1: An ncurses-based maze solving game written in Perl
 games-puzzle/tint 0.03b-r1: Tint Is Not Tetris, a ncurses based clone of the original Tetris(tm) game
-games-puzzle/tiny-and-big 1.4.1: Combines elements of adventure, jump&run and physical puzzles
+games-puzzle/tiny-and-big 1.4.1-r1: Combines elements of adventure, jump&run and physical puzzles
 games-puzzle/tod 0-r2: Tetanus On Drugs simulates playing Tetris under the influence of drugs
 games-puzzle/tong 1.2-r1: Tetris and Pong in the same place at the same time
 games-puzzle/toppler 1.1.6-r1: Reimplementation of Nebulous using SDL
@@ -11702,7 +11702,7 @@ games-puzzle/xtris 1.15-r1: A networked Tetris-like game
 games-puzzle/xwelltris 1.0.1: 2.5D tetris like game
 games-puzzle/xye 0.12.2: Free version of the classic game Kye
 games-puzzle/zaz 1.0.0-r1: A puzzle game where the player has to arrange balls in triplets
-games-roguelike/FTL 1.5.13: Faster Than Light: A spaceship simulation real-time roguelike-like game
+games-roguelike/FTL 1.5.13-r1: Faster Than Light: A spaceship simulation real-time roguelike-like game
 games-roguelike/FTL-gog 1.6.9.25330: Top-down roguelike space ship simulator
 games-roguelike/adom 1.1.1-r1 1.1.1-r2 3.3.3: Ancient Domains Of Mystery rogue-like game
 games-roguelike/angband 4.2.1 4.2.1-r1: A roguelike dungeon exploration game based on the books of J.R.R. Tolkien
@@ -11729,7 +11729,7 @@ games-rpg/coe2 2007-r2: Precursor to the Dominions series
 games-rpg/comi 1: The Curse of Monkey Island, the third game in the series
 games-rpg/costume-quest 2.0.0.3: A Halloween adventure from Tim Schafer's Double Fine Productions
 games-rpg/daimonin-client 0.10.8: A graphical 2D tile-based MMORPG
-games-rpg/dear-esther 20130608: Ghost story, told using first-person gaming technologies
+games-rpg/dear-esther 20130608-r1: Ghost story, told using first-person gaming technologies
 games-rpg/deponia-doomsday 1.2.0267: The fourth and final instalment of the Deponia point-and-click adventures
 games-rpg/deponia-tcj 3.3.0156: The Complete Journey: The first three Deponia point-and-click adventures
 games-rpg/draci-historie 2012-r1: Bert the little dragon searches for his father
@@ -11755,7 +11755,7 @@ games-rpg/pcgen 6.04.01-r1: D&D character generator
 games-rpg/queen 1-r1: Flight of the Amazon Queen - 2D point-and-click adventure game set in the 1940s
 games-rpg/soltys 1.0-r2: Classic adventure game
 games-rpg/sumwars 0.5.8-r100: a multi-player, 3D action role-playing game
-games-rpg/to-the-moon 0: Two doctors traversing the memories of a dying man to fulfill his last wish
+games-rpg/to-the-moon 0-r1: Two doctors traversing the memories of a dying man to fulfill his last wish
 games-rpg/vendetta-online-bin 1.8.296-r1: Space-based MMORPG
 games-rpg/wasteland2 1.9.0.13: Sequel to 1988 Wasteland, post-apocalyptic computer RPG inspiration for Fallout
 games-rpg/wastesedge 0.3.8: Role playing game to showcase the adonthell engine
@@ -11793,7 +11793,7 @@ games-simulation/singularity 1.0_alpha1-r2 1.00: Simulation of a true AI. Go fro
 games-simulation/sky-rogue 1.3: A fwooshy rogue-lite action flight simulator
 games-simulation/slime-rancher 1.4.1c_p34605: Cute game where you cultivate slimes on a distant planet
 games-simulation/train-valley 1.3.31403: Build railroads in order to connect cities, tunnels, and bridges
-games-sports/billardgl 1.75-r2: an OpenGL billards game
+games-sports/billardgl 1.75-r2: An OpenGL billards game
 games-sports/bygfoot 2.3.2-r1: GTK+2 Soccer Management Game
 games-sports/dustrac 1.13.0: Tile-based, cross-platform 2D racing game
 games-sports/foobillard 3.0a-r1: 8ball, 9ball, snooker and carambol game

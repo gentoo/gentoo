@@ -1,0 +1,14 @@
+DEFINED_PHASES=install nofetch prepare
+DESCRIPTION=Faster Than Light: A spaceship simulation real-time roguelike-like game
+EAPI=7
+HOMEPAGE=http://www.ftlgame.com/
+INHERIT=desktop wrapper
+IUSE=bundled-libs
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=all-rights-reserved Boost-1.0 free-noncomm MIT bundled-libs? ( FTL LGPL-2.1 ZLIB libpng )
+RDEPEND=sys-devel/gcc[cxx] virtual/opengl !bundled-libs? ( media-libs/devil[png] media-libs/freetype:2 media-libs/libsdl[X,sound,joystick,opengl,video] sys-libs/zlib )
+RESTRICT=fetch bindist splitdebug
+SLOT=0
+SRC_URI=FTL.1.5.13.tar.gz
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=fc544a644b12091e520421722df06910

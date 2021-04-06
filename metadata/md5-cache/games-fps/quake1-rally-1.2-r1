@@ -1,0 +1,13 @@
+BDEPEND=app-arch/unzip
+DEFINED_PHASES=install unpack
+DESCRIPTION=TC which turns Quake into a Rally racing game
+EAPI=7
+HOMEPAGE=http://wiki.quakeworld.nu/Quake_Rally
+INHERIT=edos2unix
+KEYWORDS=~amd64 ~x86
+LICENSE=all-rights-reserved
+RESTRICT=mirror bindist
+SLOT=0
+SRC_URI=http://ehall.freeshell.org/quake/qr12.zip http://ehall.freeshell.org/quake/qrlo1.zip
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773
+_md5_=5a5967924111e333094f153c0c26a78c

@@ -1,0 +1,14 @@
+DEFINED_PHASES=install nofetch postinst postrm preinst prepare
+DESCRIPTION=Puzzle game that puts you inside and ambient and mysterious universe
+EAPI=7
+HOMEPAGE=http://www.nicalis.com/nightsky/
+INHERIT=desktop gnome2-utils
+IUSE=bundled-libs
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=all-rights-reserved
+RDEPEND=virtual/glu virtual/opengl x11-libs/libX11 x11-libs/libXext x11-libs/libXi x11-libs/libXxf86vm !bundled-libs? ( media-libs/freealut media-libs/freeglut media-libs/libogg media-libs/libvorbis media-libs/openal sys-libs/zlib )
+RESTRICT=bindist fetch splitdebug
+SLOT=0
+SRC_URI=nightskyhd-linux-1324519044.tar.gz
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3
+_md5_=2b5fe8f57a0ed64786b2b06d3cad0553
