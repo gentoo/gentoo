@@ -74,11 +74,34 @@ HTML_DOCS=( {docs,VisualC}.html docs/{html,images,index.html} )
 
 src_prepare() {
 	default
+
+	if $(tc-is-gcc) && [[ ${CHOST} == *-darwin* ]] ; then
+		# GCC at least has no idea what -fpascal-strings is
+		sed -i -e '/EXTRA_CFLAGS="$EXTRA_CFLAGS -fpascal-strings"/d' configure.ac || die
+		# We have trouble building against Frameworks with GCC for now (no Blocks support, etc)
+		# error: unknown type name ‘CGImageSourceAnimationBlock’
+		sed -i \
+			-e '/EXTRA_CFLAGS="$EXTRA_CFLAGS -DTARGET_API_MAC_CARBON"/d' \
+			-e '/EXTRA_CFLAGS="$EXTRA_CFLAGS -DTARGET_API_MAC_OSX"/d' \
+			configure.ac || die
+	fi
+
 	AT_M4DIR="${EPREFIX}/usr/share/aclocal acinclude" eautoreconf
 }
 
 multilib_src_configure() {
 	local myconf=
+
+	if $(tc-is-gcc) && [[ ${CHOST} == *-darwin* ]] ; then
+		# We can't build against Cocoa because we lack Blocks + Objective C++ support in
+		# GCC (for now)
+		use video && myconf="${myconf} --disable-video-cocoa"
+		# CD support drags in audio
+		myconf="${myconf} --disable-cdrom"
+	else
+		myconf="${myconf} --enable-cdrom"
+	fi
+
 	if use !x86 && use !x86-linux ; then
 		myconf="${myconf} --disable-nasm"
 	else
@@ -96,7 +119,6 @@ multilib_src_configure() {
 		--disable-arts \
 		--disable-esd \
 		--enable-events \
-		--enable-cdrom \
 		--enable-threads \
 		--enable-timers \
 		--enable-file \
