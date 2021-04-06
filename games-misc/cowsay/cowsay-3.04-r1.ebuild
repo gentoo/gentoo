@@ -10,7 +10,7 @@ S="${WORKDIR}"/rank-amateur-${PN}-${P}
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~mips ~ppc64 ~x86 ~x64-solaris"
+KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~mips ~ppc64 ~x86 ~x64-macos ~x64-solaris"
 
 RDEPEND=">=dev-lang/perl-5"
 BDEPEND="${RDEPEND}"
