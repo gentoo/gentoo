@@ -1,31 +1,31 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils unpacker multilib games
+EAPI=7
+
+inherit desktop multilib unpacker wrapper
 
 DESCRIPTION="Third-person classic magical action-adventure game"
 HOMEPAGE="http://www.lokigames.com/products/heretic2/
 	http://www.hereticii.com/"
 SRC_URI="mirror://lokigames/loki_demos/${PN}.run"
+S="${WORKDIR}"
 
 LICENSE="LOKI-EULA"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
-RESTRICT="strip mirror bindist"
-QA_TEXTRELS="${GAMES_PREFIX_OPT:1}/heretic2-demo/ref_glx.so"
 
-DEPEND="games-util/loki_patch"
+RESTRICT="strip mirror bindist"
+
 RDEPEND="
 	x11-libs/libX11[abi_x86_32(-)]
-	x11-libs/libXext[abi_x86_32(-)]"
+	x11-libs/libXext[abi_x86_32(-)]
+"
+BDEPEND="games-util/loki_patch"
 
-S=${WORKDIR}
-
-dir=${GAMES_PREFIX_OPT}/${PN}
-Ddir=${D}/${dir}
+dir=opt/${PN}
 QA_PREBUILT="${dir:1}/*"
+QA_TEXTRELS="opt/heretic2-demo/ref_glx.so"
 
 src_install() {
 	ABI=x86
@@ -36,7 +36,7 @@ src_install() {
 	loki_patch patch.dat data/ || die
 
 	# Remove bad opengl library
-	rm -r "${demo}/gl_drivers/"
+	rm -r "${demo}/gl_drivers/" || die
 
 	# Change to safe default of 800x600 and option of normal opengl driver
 	sed -i \
@@ -44,14 +44,12 @@ src_install() {
 		-e "s:libGL:/usr/$(get_libdir)/libGL:" \
 		"${demo}"/base/default.cfg || die
 
-	insinto "${dir}"
-	exeinto "${dir}"
+	insinto ${dir}
+	exeinto ${dir}
 	doins -r "${demo}"/*
 	doexe "${demo}/${exe}"
 
-	games_make_wrapper ${PN} "./${exe}" "${dir}" "${dir}"
+	make_wrapper ${PN} "./${exe}" "${dir}" "${dir}"
 	newicon "${demo}"/icon.xpm ${PN}.xpm
 	make_desktop_entry ${PN} "Heretic 2 (Demo)" ${PN}
-
-	prepgamesdirs
 }
