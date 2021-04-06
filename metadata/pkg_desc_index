@@ -13308,7 +13308,7 @@ media-libs/libopenshot 0.2.4_pre20190609 0.2.5-r1: Video editing library used by
 media-libs/libopenshot-audio 0.1.9_pre20190502 0.2.0: Library for audio editing and playback used by OpenShot
 media-libs/libopusenc 0.2.1: High-level API for encoding .opus files
 media-libs/libpagemaker 0.0.4 9999: C++ Library that parses the file format of Aldus/Adobe PageMaker documents
-media-libs/libpano13 2.9.19: Helmut Dersch's panorama toolbox library
+media-libs/libpano13 2.9.19 2.9.20: Helmut Dersch's panorama toolbox library
 media-libs/libpgf 7.19.3 7.21.7: Library to load, handle and manipulate images in the PGF format
 media-libs/libplacebo 2.43.0 2.43.1 2.72.2 9999: Reusable library for GPU-accelerated image processing primitives
 media-libs/libpng 1.6.37-r2: Portable Network Graphics library
