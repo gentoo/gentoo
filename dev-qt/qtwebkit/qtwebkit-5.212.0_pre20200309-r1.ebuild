@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -86,6 +86,7 @@ CHECKREQS_DISK_BUILD="16G" # bug 417307
 PATCHES=(
 	"${FILESDIR}/${P}-bison-3.7.patch" # bug 736499
 	"${FILESDIR}/${P}-icu-68.patch" # bug 753260
+	"${FILESDIR}/${P}-python-3.9.patch" # bug 766303
 )
 
 _check_reqs() {
