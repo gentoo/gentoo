@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ EAPI=7
 #
 #CMAKE_MAKEFILE_GENERATOR="emake"
 
-inherit cmake desktop
+inherit cmake
 
 DESCRIPTION="Diablo engine for modern operating systems"
 HOMEPAGE="https://github.com/diasurgical/devilutionX"
@@ -39,34 +39,24 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-src_prepare() {
-	sed "/PROJECT_VERSION/s|@PROJECT_VERSION@|${PV}|" \
-		-i SourceS/config.h.in || die
-	sed 's/CharisSILB.ttf/CharisSIL-B.ttf/g' \
-		-i SourceX/DiabloUI/fonts.h || die
-	cmake_src_prepare
-}
+PATCHES=(
+	"${FILESDIR}/${PN}-1.2.0_pre-no_bundled_font.patch" #704508
+)
 
 src_configure() {
 	local mycmakeargs=(
 		-DASAN="OFF"
 		-DDEBUG="$(usex debug)"
+		-DDISABLE_LTO="$(usex !lto)"
 		-DDIST="ON"
-		-DFASTER="OFF"
-		-DLTO="$(usex lto)"
 		-DUBSAN="OFF"
 	)
+
+	if [[ "${PV}" != 9999 ]] ; then
+		mycmakeargs+=( -DVERSION_NUM="${PV}" )
+	fi
+
 	cmake_src_configure
-}
-
-src_install() {
-	dobin "${BUILD_DIR}/${PN}"
-
-	local size
-	for size in 32 48 ; do
-		newicon -s ${size} Packaging/resources/Diablo_${size}.png ${PN}.png
-	done
-	make_desktop_entry ${PN} "Diablo devolved" "/usr/share/icons/hicolor/48x48/apps/devilutionx.png"
 }
 
 pkg_postinst() {
