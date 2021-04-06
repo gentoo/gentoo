@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,6 +7,8 @@ ROS_REPO_URI="https://github.com/ros-visualization/qt_gui_core"
 KEYWORDS="~amd64"
 ROS_SUBDIR=${PN}
 
+# FIXME: fails to build with ninja
+CMAKE_MAKEFILE_GENERATOR=emake
 inherit ros-catkin
 
 DESCRIPTION="C++-bindings for qt_gui and creates bindings for every generator available"
@@ -32,6 +34,3 @@ PATCHES=(
 	"${FILESDIR}/libdir.patch"
 	"${FILESDIR}/rpaths.patch"
 )
-
-# FIXME: fails to build with ninja
-CMAKE_MAKEFILE_GENERATOR=emake
