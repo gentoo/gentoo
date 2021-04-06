@@ -6,7 +6,7 @@ EAPI=7
 CMAKE_MAKEFILE_GENERATOR="emake" # TODO RunCMake.LinkWhatYouUse fails consistently w/ ninja
 CMAKE_REMOVE_MODULES_LIST=( none )
 inherit bash-completion-r1 cmake elisp-common flag-o-matic multiprocessing \
-	toolchain-funcs virtualx xdg-utils
+	prefix toolchain-funcs virtualx xdg-utils
 
 MY_P="${P/_/-}"
 
@@ -151,6 +151,12 @@ src_prepare() {
 			Source/cmTimestamp.cxx
 		sed -i -e 's/^#if !defined(_POSIX_C_SOURCE) && !defined(_WIN32) && !defined(__sun)/& \&\& !defined(__APPLE__)/' \
 			Source/cmStandardLexer.h
+	fi
+	if use prefix; then
+		find Modules -name "*.cmake" -type f -print0 | \
+			while IFS= read -r -d '' filename; do
+				hprefixify ${filename}
+			done
 	fi
 
 	# Add gcc libs to the default link paths

@@ -5,7 +5,7 @@ EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="emake"
 CMAKE_REMOVE_MODULES_LIST=( none )
-inherit bash-completion-r1 cmake elisp-common flag-o-matic toolchain-funcs virtualx xdg-utils
+inherit bash-completion-r1 cmake elisp-common flag-o-matic prefix toolchain-funcs virtualx xdg-utils
 
 MY_P="${P/_/-}"
 
@@ -141,6 +141,12 @@ src_prepare() {
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		sed -i -e 's/__APPLE__/__DISABLED_APPLE__/' \
 			Source/cmGlobalXCodeGenerator.cxx || die
+	fi
+	if use prefix; then
+		find Modules -name "*.cmake" -type f -print0 | \
+			while IFS= read -r -d '' filename; do
+				hprefixify ${filename}
+			done
 	fi
 
 	# Add gcc libs to the default link paths
