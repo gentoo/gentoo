@@ -15,7 +15,7 @@ HOMEPAGE="https://apps.kde.org/en/spectacle"
 
 LICENSE="LGPL-2+ handbook? ( FDL-1.3 ) kipi? ( GPL-2+ )"
 SLOT="5"
-KEYWORDS="amd64 ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 arm64 ~ppc64 x86"
 IUSE="+annotate kipi share"
 
 # TODO: Qt5Svg leaking from media-libs/kimageannotator
