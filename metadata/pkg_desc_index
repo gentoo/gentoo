@@ -1859,7 +1859,7 @@ app-editors/nedit 5.6-r1 5.6-r2 5.7: Multi-purpose text editor for the X Window 
 app-editors/neovim 0.4.4-r100 9999: Vim-fork focused on extensibility and agility.
 app-editors/ng 1.5_beta1-r2: Emacs like micro editor Ng -- based on mg2a
 app-editors/notepadqq 2.0.0_beta 9999: Notepad++-like editor for Linux
-app-editors/okteta 0.26.4 0.26.5: Hex editor by KDE
+app-editors/okteta 0.26.5 0.26.6: Hex editor by KDE
 app-editors/padre 1.0.0-r1: Perl Application Development and Refactoring Environment
 app-editors/pluma 1.24.0 1.24.1: Pluma text editor for the MATE desktop
 app-editors/pyvim 3.0.2: An implementation of Vim in Python
@@ -13851,7 +13851,7 @@ media-sound/deinvert 9999: A voice inversion descrambler
 media-sound/denemo 2.3.0-r1: A music notation editor
 media-sound/din 49.1 50 50.1: a software musical instrument and audio synthesizer
 media-sound/dir2ogg 0.13-r1: Converts mp3, m4a, wma, and wav files to Ogg Vorbis format
-media-sound/drumstick 2.0.0 2.1.0: Qt/C++ wrapper for ALSA sequencer
+media-sound/drumstick 2.0.0 2.1.1: Qt/C++ wrapper for ALSA sequencer
 media-sound/dvda-author 10.06-r1: Author a DVD-Audio DVD
 media-sound/easytag 2.4.3-r1: GTK+ utility for editing MP2, MP3, MP4, FLAC, Ogg and other media tags
 media-sound/ecasound 2.9.3: a package for multitrack audio processing
