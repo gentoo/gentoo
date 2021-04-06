@@ -78,8 +78,6 @@ REQUIRED_USE="
 
 RESTRICT="test"
 
-PATCHES=( "${FILESDIR}/bash-completion-sudo.patch" )
-
 pkg_setup() {
 	if use kernel_linux && use test-suite; then
 		linux-info_pkg_setup
