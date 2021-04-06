@@ -1,12 +1,14 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools desktop flag-o-matic toolchain-funcs pax-utils
 
 DESCRIPTION="SNES (Super Nintendo) emulator that uses x86 assembly"
 HOMEPAGE="https://www.zsnes.com/ http://ipherswipsite.com/zsnes/"
 SRC_URI="mirror://sourceforge/zsnes/${PN}${PV//./}src.tar.bz2 -> ${P}-20071031.tar.bz2"
+S="${WORKDIR}/${PN}_${PV//./_}/src"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -21,12 +23,11 @@ RDEPEND="
 	opengl? ( virtual/opengl[abi_x86_32(-)] )
 	png? ( media-libs/libpng:0=[abi_x86_32(-)] )
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-lang/nasm
 	debug? ( virtual/pkgconfig )
 "
-
-S="${WORKDIR}/${PN}_${PV//./_}/src"
 
 PATCHES=(
 	# Fixing compilation without libpng installed
@@ -111,7 +112,7 @@ src_install() {
 	QA_TEXTRELS="usr/bin/zsnes"
 
 	dobin zsnes
-	pax-mark m "${ED}${GAMES_BINDIR}"/zsnes
+	pax-mark m "${ED}"/usr/bin/zsnes
 
 	newman linux/zsnes.1 zsnes.6
 
