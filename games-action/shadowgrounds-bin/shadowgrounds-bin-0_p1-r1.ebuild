@@ -1,25 +1,26 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit unpacker games eutils versionator
+EAPI=7
 
-DIST_PV=$(get_version_component_range 2)
+inherit desktop unpacker wrapper
 
-DESCRIPTION="an epic action experience combining modern technology with addictive playability"
+DIST_PV=$(ver_cut 2-)
+
+DESCRIPTION="An epic action experience combining modern technology with addictive playability"
 HOMEPAGE="http://shadowgroundsgame.com/"
 # FIXME: PV should perhaps be 0_p1, in which case a filter is in order
 SRC_URI="shadowgroundsUpdate${DIST_PV/p/}.run"
+S="${WORKDIR}"
 
 LICENSE="frozenbyte-eula"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE=""
 RESTRICT="fetch strip"
 
-DEPEND="app-arch/unzip"
-RDEPEND=">=sys-libs/glibc-2.4
+RDEPEND="
 	>=sys-devel/gcc-4.3.0
+	>=sys-libs/glibc-2.4
 	!amd64? (
 		gnome-base/libglade
 		sys-libs/zlib
@@ -27,11 +28,11 @@ RDEPEND=">=sys-libs/glibc-2.4
 	amd64? (
 		>=gnome-base/libglade-2.6.4-r1[abi_x86_32(-)]
 		sys-libs/zlib[abi_x86_32(-)]
-	)"
+	)
+"
+BDEPEND="app-arch/unzip"
 
-S=${WORKDIR}
-
-d="${GAMES_PREFIX_OPT}/${PN}"
+d="opt/${PN}"
 QA_TEXTRELS_x86="`echo ${d#/}/lib32/lib{avcodec.so.51,avformat.so.52,avutil.so.49,FLAC.so.8}`"
 QA_TEXTRELS_amd64=${QA_TEXTRELS_x86}
 
@@ -41,9 +42,9 @@ pkg_nofetch() {
 }
 
 src_unpack() {
-	# manually run unzip as the initial seek causes it to exit(1)
+	# Manually run unzip as the initial seek causes it to exit(1)
 	unpack_zip ${A}
-	rm lib*/lib{gcc_s,m,rt,selinux,z}.so.?
+	rm lib*/lib{gcc_s,m,rt,selinux,z}.so.? || die
 }
 
 src_install() {
@@ -54,7 +55,8 @@ src_install() {
 		bb="shadowgrounds-${b}"
 		exeinto ${d}
 		newexe ${bb} ${bb} || die
-		games_make_wrapper ${bb} "./${bb}" "${d}"
+
+		make_wrapper ${bb} "./${bb}" "${d}"
 		make_desktop_entry ${bb} "Shadowgrounds ${b}" Shadowgrounds
 	done
 
@@ -63,6 +65,4 @@ src_install() {
 
 	insinto ${d}
 	doins -r Config data Profiles *.fbz *.glade *-logo.png
-
-	prepgamesdirs
 }
