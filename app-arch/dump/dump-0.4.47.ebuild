@@ -26,9 +26,15 @@ RDEPEND="
 	>=sys-fs/e2fsprogs-1.27:=
 	>=sys-libs/e2fsprogs-libs-1.27:=
 	sys-apps/util-linux
-	bzip2? ( >=app-arch/bzip2-1.0.2:= )
+	bzip2? (
+		app-arch/bzip2:=
+		static? ( app-arch/bzip2[static-libs] )
+	)
 	zlib? ( >=sys-libs/zlib-1.1.4:= )
-	lzo? ( dev-libs/lzo:2= )
+	lzo? (
+		dev-libs/lzo:2=
+		static? ( dev-libs/lzo:2[static-libs] )
+	)
 	sqlite? ( dev-db/sqlite:3= )
 	ermt? ( dev-libs/openssl:0= )
 	ssl? ( dev-libs/openssl:0= )
