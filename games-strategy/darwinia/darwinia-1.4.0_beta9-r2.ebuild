@@ -1,19 +1,20 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
+
 CDROM_OPTIONAL="yes"
-inherit eutils unpacker cdrom games
+inherit cdrom desktop unpacker wrapper
 
 MY_PV=${PV/_beta/b}
-DESCRIPTION="the hyped indie game of the year. By the Uplink creators"
+DESCRIPTION="The hyped indie game of the year - by the Uplink creators"
 HOMEPAGE="http://www.darwinia.co.uk/support/linux.html"
 SRC_URI="http://www.introversion.co.uk/darwinia/downloads/${PN}-full-${MY_PV}.sh"
+S="${WORKDIR}"
 
 LICENSE="Introversion"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE=""
 RESTRICT="bindist mirror strip"
 
 RDEPEND="
@@ -21,11 +22,10 @@ RDEPEND="
 	media-libs/libsdl[abi_x86_32(-)]
 	media-libs/libvorbis[abi_x86_32(-)]
 	virtual/glu[abi_x86_32(-)]
-	virtual/opengl[abi_x86_32(-)]"
+	virtual/opengl[abi_x86_32(-)]
+"
 
-S=${WORKDIR}
-
-dir=${GAMES_PREFIX_OPT}/${PN}
+dir=opt/${PN}
 QA_PREBUILT="${dir:1}/lib/darwinia.bin.x86"
 
 src_unpack() {
@@ -50,9 +50,8 @@ src_install() {
 	dodoc README
 	newicon darwinian.png darwinia.png
 
-	games_make_wrapper darwinia ./darwinia "${dir}" "${dir}"
+	make_wrapper darwinia ./darwinia "${dir}" "${dir}"
 	make_desktop_entry darwinia "Darwinia"
-	prepgamesdirs
 }
 
 pkg_postinst() {
@@ -60,5 +59,4 @@ pkg_postinst() {
 		ewarn "To play the game, you need to copy main.dat and sounds.dat"
 		ewarn "from gamefiles/ on the game CD to ${dir}/lib/."
 	fi
-	games_pkg_postinst
 }
