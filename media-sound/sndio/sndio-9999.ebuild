@@ -13,11 +13,11 @@ if [[ "${PV}" == "9999" ]]; then
 	EGIT_MIN_CLONE_TYPE="single+tags"
 else
 	SRC_URI="http://www.sndio.org/${P}.tar.gz"
-	KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 LICENSE="ISC"
-SLOT="0/7.0"
+SLOT="0/7.1"
 IUSE="alsa"
 
 DEPEND="
