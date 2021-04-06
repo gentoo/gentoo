@@ -10825,7 +10825,7 @@ dev-util/duma 2.5.15-r2: DUMA (Detect Unintended Memory Access) is a memory debu
 dev-util/dwarves 1.20: pahole (Poke-a-Hole) and other DWARF2 utilities
 dev-util/dwdiff 2.1.3: diff-like program operating at word level instead of line level
 dev-util/edb-debugger 1.3.0 9999: edb is a cross platform x86/x86-64 debugger, inspired by Ollydbg
-dev-util/edi 0.8.0: An EFL-based IDE
+dev-util/edi 0.8.0 0.8.0-r1: An EFL-based IDE
 dev-util/editorconfig-geany 0.2: EditorConfig plugin for Geany
 dev-util/egypt 1.10: devilishly simple tool for creating call graphs of C programs
 dev-util/elfkickers 3.1a: collection of programs to manipulate ELF files: sstrip, rebind, elfls, elftoc
