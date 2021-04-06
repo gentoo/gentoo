@@ -19,13 +19,13 @@ KEYWORDS="-amd64 ~x86"
 RESTRICT="mirror bindist strip"
 
 DEPEND="
-	games-util/loki_patch
 	sys-libs/glibc
 "
 RDEPEND="
 	${DEPEND}
 	virtual/opengl
 "
+BDEPEND="games-util/loki_patch"
 
 dir=opt/${PN}
 Ddir="${ED}"/${dir}
