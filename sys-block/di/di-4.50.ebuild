@@ -5,12 +5,12 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="Disk Information Utility"
-HOMEPAGE="https://gentoo.com/di/"
-SRC_URI="https://gentoo.com/di/${P}.tar.gz"
+HOMEPAGE="https://diskinfo-di.sourceforge.io/"
+SRC_URI="mirror://sourceforge/diskinfo-di/${P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="nls"
 
 RESTRICT="test" #405205, #405471
