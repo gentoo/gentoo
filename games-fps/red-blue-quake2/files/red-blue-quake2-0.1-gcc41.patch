@@ -1,5 +1,5 @@
---- ../game/g_local.h.old	2006-05-07 00:27:45.000000000 +0200
-+++ ../game/g_local.h	2006-05-07 00:28:06.000000000 +0200
+--- a/game/g_local.h
++++ b/game/g_local.h
 @@ -458,11 +458,6 @@
  extern	int	sm_meat_index;
  extern	int	snd_fry;
@@ -12,8 +12,8 @@
  // means of death
  #define MOD_UNKNOWN			0
  #define MOD_BLASTER			1
---- ../ctf/g_local.h.old	2006-05-07 00:36:21.000000000 +0200
-+++ ../ctf/g_local.h	2006-05-07 00:36:38.000000000 +0200
+--- a/ctf/g_local.h
++++ b/ctf/g_local.h
 @@ -466,11 +466,6 @@
  extern	int	sm_meat_index;
  extern	int	snd_fry;

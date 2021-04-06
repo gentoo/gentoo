@@ -20,9 +20,9 @@ RESTRICT="fetch bindist splitdebug"
 
 QA_PREBUILT="opt/${PN}/${MY_PN}.bin*"
 if [[ ${ARCH} == "amd64" ]] ; then
-	QA_PREBUILT="${QA_PREBUILT} ${GAMES_PREFIX_OPT}/${PN}/lib64/*"
+	QA_PREBUILT="${QA_PREBUILT} opt/${PN}/lib64/*"
 else
-	QA_PREBUILT="${QA_PREBUILT} ${GAMES_PREFIX_OPT}/${PN}/lib/*"
+	QA_PREBUILT="${QA_PREBUILT} opt/${PN}/lib/*"
 fi
 
 # TODO: unbundling sdl-sound breaks the game
