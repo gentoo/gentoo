@@ -5157,7 +5157,7 @@ dev-java/tomcat-jstl-compat 1.2.5-r1: JSP Standard Tag Library (JSTL) - Compat j
 dev-java/tomcat-jstl-el 1.2.5-r1: JSP Standard Tag Library (JSTL) - EL jar
 dev-java/tomcat-jstl-impl 1.2.5-r1: JSP Standard Tag Library (JSTL) - Implementation jar
 dev-java/tomcat-jstl-spec 1.2.5-r1: JSP Standard Tag Library (JSTL) - Specification jar
-dev-java/tomcat-native 1.2.26: Allows Tomcat to use certain native resources for better performance
+dev-java/tomcat-native 1.2.26 1.2.28: Allows Tomcat to use certain native resources for better performance
 dev-java/tomcat-servlet-api 4.1.40 5.5.36 6.0.53-r1 7.0.108 8.5.63 8.5.64 9.0.43 9.0.44 10.0.2 10.0.4: Tomcat's Servlet API 5.0/JSP API 3.0/EL API 4.0 implementation
 dev-java/toolbar 1.1.0-r2: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22-r1: TouchGraph provides a set of interfaces for graph visualization
@@ -8403,7 +8403,7 @@ dev-python/hvac 0.10.8 0.10.9: hashicorp vault client in python
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 21.0.0: A featureful, correct URL for Python
-dev-python/hypothesis 6.3.4 6.6.0 6.8.1 6.8.3 6.8.4 6.8.5 6.8.6 6.8.7: A library for property based testing
+dev-python/hypothesis 6.3.4 6.6.0 6.8.1 6.8.3 6.8.4 6.8.5 6.8.6 6.8.7 6.8.8: A library for property based testing
 dev-python/icalendar 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/idna 2.10-r1 3.0 3.1: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0-r1: Patch ssl.match_hostname for Unicode(idna) domains support
@@ -18099,7 +18099,7 @@ www-apps/owncloud 10.5.0 10.6.0: Web-based storage application where all your da
 www-apps/phpBB 3.3.3: An open-source PHP-based bulletin board package
 www-apps/phpsysinfo 3.3.2: A customizable PHP script that displays information about your system nicely
 www-apps/piwigo 11.4.0: a photo gallery software for the web
-www-apps/postfixadmin 3.3.5 3.3.7 3.3.8: Web Based Management tool for Postfix style virtual domains and users
+www-apps/postfixadmin 3.3.8: Web Based Management tool for Postfix style virtual domains and users
 www-apps/prewikka 5.2.0: Graphical front-end analysis console for the Prelude Framework
 www-apps/radicale 3.0.6-r1: A simple CalDAV calendar server
 www-apps/redmine 4.1.1-r1: Flexible project management web application using the Ruby on Rails framework
