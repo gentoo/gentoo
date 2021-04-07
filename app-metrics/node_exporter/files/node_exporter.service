@@ -1,10 +1,13 @@
 [Unit]
 Description=Node Exporter
+Wants=network-online.target
+After=network-online.target
 
 [Service]
 User=node_exporter
-EnvironmentFile=/etc/sysconfig/node_exporter
-ExecStart=/usr/bin/node_exporter $OPTIONS
+Group=node_exporter
+Type=simple
+ExecStart=/usr/sbin/node_exporter
 
 [Install]
 WantedBy=multi-user.target
