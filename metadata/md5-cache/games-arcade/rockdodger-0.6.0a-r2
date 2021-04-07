@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=media-libs/libsdl[sound,video] media-libs/sdl-image[png] media-libs/sdl-mixer
+DESCRIPTION=Dodge the rocks for as long as possible until you die
+EAPI=7
+HOMEPAGE=http://spacerocks.sourceforge.net/
+INHERIT=desktop toolchain-funcs
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl[sound,video] media-libs/sdl-image[png] media-libs/sdl-mixer acct-group/gamestat
+SLOT=0
+SRC_URI=mirror://sourceforge/spacerocks/rockdodger-0.6.0a.tar.gz
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=3201c0d0f391ba0af752920c266ca8fa

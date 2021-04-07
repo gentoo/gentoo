@@ -1,0 +1,14 @@
+BDEPEND=app-arch/unzip
+DEFINED_PHASES=install
+DESCRIPTION=Save Princess Mariana through one-on-one battles with demonic barbarians
+EAPI=7
+HOMEPAGE=http://www.tdbsoft.com/
+INHERIT=desktop wrapper
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=CC-BY-NC-ND-2.0
+RDEPEND=acct-group/gamestat >=media-libs/libsdl-1.2.15-r4[abi_x86_32(-)] sys-libs/libstdc++-v3:5 amd64? ( sys-libs/libstdc++-v3:5[multilib] )
+RESTRICT=strip
+SLOT=0
+SRC_URI=http://www.pcpages.com/tomberrr/downloads/barbarian101_linux.zip
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=72e55d7d3eb3be2ae48d3c089e7ec119
