@@ -8508,7 +8508,6 @@ www-apps/nikola:server - Enable support for built-in web server using dev-python
 www-apps/nikola:watchdog - Use dev-python/watchdog to monitor file system events
 www-apps/nikola:webmedia - Use dev-python/micawber to extract metadata from web media links
 www-apps/postfixadmin:vacation - Install vacation.pl script and dependencies
-www-apps/radicale:bcrypt - Depend on passlib to enable bcrypt and md5 authentication methods
 www-apps/redmine:markdown - Enable support for Markdown
 www-apps/redmine:passenger - Enable support for www-apache/passenger
 www-apps/roundup:jinja - Enable Jinja2 support
