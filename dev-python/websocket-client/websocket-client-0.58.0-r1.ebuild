@@ -15,7 +15,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~ppc64 x86 ~x64-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~x64-macos"
 IUSE="examples"
 
 RDEPEND="
@@ -23,6 +23,11 @@ RDEPEND="
 "
 
 distutils_enable_tests setup.py
+
+src_prepare() {
+	sed -i -e '1i#!/usr/bin/env python' bin/wsdump.py || die
+	distutils-r1_src_prepare
+}
 
 python_install_all() {
 	if use examples; then
