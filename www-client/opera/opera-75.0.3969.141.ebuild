@@ -37,7 +37,7 @@ SRC_URI="${SRC_URI_BASE[@]/%//${PV}/linux/${MY_PN}_${PV}_amd64.deb}
 		https://dev.gentoo.org/~sultan/distfiles/www-client/opera/opera-ffmpeg-codecs-${FFMPEG_VERSION}.tar.xz
 	)"
 
-IUSE="+proprietary-codecs suid widevine"
+IUSE="+proprietary-codecs suid"
 RESTRICT="bindist mirror strip"
 
 RDEPEND="
@@ -67,7 +67,6 @@ RDEPEND="
 	x11-libs/libXfixes
 	x11-libs/libXrandr
 	x11-libs/pango
-	widevine? ( www-plugins/chrome-binary-plugins )
 "
 
 QA_PREBUILT="*"
@@ -124,13 +123,6 @@ src_install() {
 	rm "${OPERA_HOME}/resources/ffmpeg_preload_config.json" || die
 	if use proprietary-codecs; then
 		mv lib_extra "${OPERA_HOME}"
-	fi
-
-	# symlink widevine
-	rm "${OPERA_HOME}/resources/widevine_config.json" || die
-	if use widevine; then
-		echo "[\"${EPREFIX}/usr/$(get_libdir)/chromium-browser/WidevineCdm\"]" > \
-			"${OPERA_HOME}/resources/widevine_config.json" || die
 	fi
 
 	# pax mark opera, bug #562038
