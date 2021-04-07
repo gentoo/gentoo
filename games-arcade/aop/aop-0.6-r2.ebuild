@@ -11,7 +11,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
 
-RDEPEND="sys-libs/ncurses:0"
+RDEPEND="sys-libs/ncurses:0="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
