@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ia64 ppc x86"
 IUSE="doc examples"
 
-RDEPEND="sys-libs/ncurses"
+RDEPEND="sys-libs/ncurses:="
 DEPEND="${RDEPEND}"
 
 DOCS=( ChangeLog PLATFORMS NEWS AUTHORS README )
