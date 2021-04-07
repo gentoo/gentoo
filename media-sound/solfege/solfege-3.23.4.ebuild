@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -57,7 +57,7 @@ src_prepare() {
 	sed -i 's/charset=iso-8859-2/charset=utf-8/' po/hu.po.new || die
 	mv po/hu.po.new po/hu.po || die
 
-	sed -E 's|(PYTHON_INCLUDES=).+|\1"$(pkg-config --cflags-only-I python3)"|g' \
+	sed -E 's|(PYTHON_INCLUDES=).+|\1"$($(tc-getPKG_CONFIG) --cflags-only-I python3)"|g' \
 		-i acinclude.m4 || die
 
 	eautoreconf
