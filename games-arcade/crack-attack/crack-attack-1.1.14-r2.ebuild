@@ -34,7 +34,12 @@ PATCHES=(
 
 src_prepare() {
 	default
-	eautoreconf
+
+	# SDL macro not bundled
+	# bug #779745
+	cp "${FILESDIR}/sdl.m4" . || die
+	AT_M4DIR="." eautoreconf
+
 	sed -i 's/-lXmu//' src/gtk-gui/Makefile.in src/Makefile.in || die
 	touch -r . * */*
 }

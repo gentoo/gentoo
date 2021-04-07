@@ -43,11 +43,15 @@ src_unpack() {
 
 src_prepare() {
 	default
-	sed -i '/install/s/-s //' build || die "sed failed"
+
+	# Don't strip binaries
+	sed -i '/install/s/-s //' build || die
+	# Respect AR, RANLIB
+	sed -i 's/CC="${CC}"/& AR="${AR} clq" RANLIB="${RANLIB}"/' build || die
 }
 
 src_configure() {
-	tc-export CC
+	tc-export AR CC RANLIB
 }
 
 src_compile() {
@@ -55,7 +59,7 @@ src_compile() {
 }
 
 src_install() {
-	export DESTDIR="${D}" LIBDIR="$(get_libdir)"
+	export DESTDIR="${ED}" LIBDIR="$(get_libdir)"
 
 	./build install || die "install failed"
 
@@ -66,7 +70,7 @@ src_install() {
 	./build lang en || die "en failed"
 
 	local f
-	for f in "${ED}/usr/${LIBDIR}"/X11/app-defaults/* ; do
+	for f in "${ED}/usr/$(get_libdir)"/X11/app-defaults/* ; do
 		[[ -L ${f} ]] && continue
 		sed -i \
 			-e "s:/usr/games/lib/scrabble/:/usr/share/${PN}/:" \

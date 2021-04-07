@@ -22,6 +22,7 @@ RDEPEND="
 	media-libs/ftgl
 	media-libs/libsdl[video]
 	media-libs/sdl-image[png]
+	media-libs/sdl-mixer
 	${LUA_DEPS}
 "
 DEPEND="
