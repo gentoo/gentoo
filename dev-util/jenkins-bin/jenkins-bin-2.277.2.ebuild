@@ -36,10 +36,10 @@ src_install() {
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/${PN}-r1.logrotate ${PN/-bin/}
 
-	newinitd "${FILESDIR}"/${PN}.init2 jenkins
+	newinitd "${FILESDIR}"/${PN}-r2.init jenkins
 	newconfd "${FILESDIR}"/${PN}.confd jenkins
 
-	systemd_newunit "${FILESDIR}"/${PN}.service2 jenkins.service
+	systemd_newunit "${FILESDIR}"/${PN}-r2.service jenkins.service
 
 	fowners jenkins:jenkins /var/log/jenkins ${JENKINS_DIR} ${JENKINS_DIR}/home ${JENKINS_DIR}/backup
 }
