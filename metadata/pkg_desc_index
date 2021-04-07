@@ -1,6 +1,7 @@
 acct-group/abrt 0-r1: A group for the automatic bug detection and reporting tool
 acct-group/adm 0-r1: System group: adm
 acct-group/airdcppd 0-r1: Group for net-p2p/airdcpp-webclient
+acct-group/alertmanager 0: System group: alertmanager
 acct-group/amanda 0: System group: amanda
 acct-group/amavis 0-r1: Group for mail-filter/amavisd-new
 acct-group/amule 0-r1: Group for net-p2p/amule
@@ -313,6 +314,7 @@ acct-group/ziproxy 0: System group: ziproxy
 acct-group/znc 0-r1: Group for net-irc/znc
 acct-user/abrt 0-r1: A user for the automatic bug detection and reporting tool
 acct-user/airdcppd 0-r1: User for net-p2p/airdcpp-webclient
+acct-user/alertmanager 0: A user for alertmanager
 acct-user/alias 0-r1: alias user for qmail mail delivery
 acct-user/amanda 0: System user: amanda
 acct-user/amavis 0-r1: User for mail-filter/amavisd-new
