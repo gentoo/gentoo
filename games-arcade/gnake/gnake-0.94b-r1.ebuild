@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="sys-libs/ncurses:0"
+RDEPEND="sys-libs/ncurses:0="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
