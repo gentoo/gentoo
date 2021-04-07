@@ -31,7 +31,10 @@ RDEPEND="
 	x11-apps/xprop
 	x11-apps/xset
 "
-BDEPEND=">=app-text/xmlto-0.0.28-r5[text(+)]"
+BDEPEND="
+	>=app-text/xmlto-0.0.28-r5[text(+)]
+	virtual/awk
+"
 
 DOCS=( ChangeLog README RELEASE_NOTES TODO )
 
