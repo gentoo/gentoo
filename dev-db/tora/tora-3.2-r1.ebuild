@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -68,8 +68,8 @@ src_configure() {
 		-DWANT_INTERNAL_LOKI=OFF
 		-DWANT_INTERNAL_QSCINTILLA=OFF
 		-DWANT_RPM=OFF
-		-DLOKI_LIBRARY="$(pkg-config --variable=libdir ferrisloki)/libferrisloki.so"
-		-DLOKI_INCLUDE_DIR="$(pkg-config --variable=includedir ferrisloki)/FerrisLoki"
+		-DLOKI_LIBRARY="$($(tc-getPKG_CONFIG) --variable=libdir ferrisloki)/libferrisloki.so"
+		-DLOKI_INCLUDE_DIR="$($(tc-getPKG_CONFIG) --variable=includedir ferrisloki)/FerrisLoki"
 		$(cmake-utils_use_find_package doc Doxygen)
 		-DENABLE_ORACLE=$(usex oracle)
 		-DUSE_PCH=OFF
