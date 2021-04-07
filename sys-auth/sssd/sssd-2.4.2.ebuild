@@ -72,6 +72,7 @@ RDEPEND="${DEPEND}
 	"
 BDEPEND="${DEPEND}
 	>=sys-devel/autoconf-2.69-r5
+	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 	test? (
 		dev-libs/check

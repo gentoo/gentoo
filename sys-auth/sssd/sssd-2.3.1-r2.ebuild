@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -71,6 +71,7 @@ RDEPEND="${DEPEND}
 	"
 BDEPEND="${DEPEND}
 	>=sys-devel/autoconf-2.69-r5
+	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 	test? (
 		dev-libs/check
