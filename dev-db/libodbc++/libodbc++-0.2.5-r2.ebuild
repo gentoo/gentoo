@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,7 +15,7 @@ KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~x86"
 IUSE="static-libs"
 
 DEPEND="dev-db/unixODBC
-		sys-libs/ncurses"
+		sys-libs/ncurses:="
 RDEPEND="${DEPEND}"
 
 SB="${S}-build"
