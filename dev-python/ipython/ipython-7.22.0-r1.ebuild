@@ -36,6 +36,7 @@ BDEPEND="
 	test? (
 		app-text/dvipng[truetype]
 		>=dev-python/ipykernel-5.1.0[${PYTHON_USEDEP}]
+		dev-python/matplotlib[${PYTHON_USEDEP}]
 		dev-python/nbformat[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
 		>=dev-python/numpy-1.16[${PYTHON_USEDEP}]
