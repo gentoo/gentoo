@@ -4,6 +4,7 @@
 EAPI=7
 
 LUA_COMPAT=( lua5-{1,2,3} )
+WX_GTK_VER="3.0-gtk3"
 
 inherit autotools flag-o-matic lua-single readme.gentoo-r1 toolchain-funcs wxwidgets
 
@@ -52,7 +53,7 @@ RDEPEND="
 	readline? ( sys-libs/readline:0= )
 	libcerf? ( sci-libs/libcerf )
 	wxwidgets? (
-		x11-libs/wxGTK:3.0-gtk3[X]
+		x11-libs/wxGTK:${WX_GTK_VER}[X]
 		x11-libs/cairo
 		x11-libs/pango
 		x11-libs/gtk+:3 )
@@ -112,10 +113,7 @@ src_configure() {
 		sed -i -e '/SUBDIRS/s/LaTeX//' share/Makefile.in || die
 	fi
 
-	if use wxwidgets; then
-		WX_GTK_VER="3.0-gtk3"
-		setup-wxwidgets
-	fi
+	use wxwidgets && setup-wxwidgets
 
 	tc-export CC CXX			#453174
 	tc-export_build_env BUILD_CC
