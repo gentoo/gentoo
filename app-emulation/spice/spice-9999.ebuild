@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 inherit git-r3 meson python-any-r1 readme.gentoo-r1 xdg-utils
 
 DESCRIPTION="SPICE server"
@@ -37,7 +37,8 @@ RDEPEND="
 	)"
 DEPEND="${RDEPEND}
 	~app-emulation/spice-protocol-9999
-	smartcard? ( app-emulation/qemu[smartcard] )"
+	smartcard? ( app-emulation/qemu[smartcard] )
+	test? ( net-libs/glib-networking )"
 BDEPEND="${PYTHON_DEPS}
 	virtual/pkgconfig
 	$(python_gen_any_dep '
