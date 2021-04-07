@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 x86"
 
 BDEPEND="virtual/pkgconfig"
-DEPEND="sys-libs/ncurses"
+DEPEND="sys-libs/ncurses:="
 RDEPEND="${DEPEND}"
 
 DOCS=( AUTHORS BUGS NEWS README )
