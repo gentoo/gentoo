@@ -169,6 +169,7 @@ acct-group/nofiles 0-r1: System group: nofiles
 acct-group/nova 0-r1: System group: nova
 acct-group/nsd 0-r1: System group: nsd
 acct-group/nslcd 0-r1: System group: nslcd
+acct-group/ntopng 0: System group: ntopng
 acct-group/ntp 0-r1: System group: ntp
 acct-group/nzbget 0: Group for net-nntp/nzbget
 acct-group/oidentd 0-r1: System group: oidentd
@@ -467,6 +468,7 @@ acct-user/node_exporter 0-r1: node_exporter User
 acct-user/nova 0-r1: user for the openstack nova service
 acct-user/nsd 0-r1: user for nsd daemon
 acct-user/nslcd 0-r1: User for nss-pam-ldapd
+acct-user/ntopng 0: User for ntopng
 acct-user/ntp 0-r1: user for ntp daemon
 acct-user/nvpd 0: User for nvidia-persistenced
 acct-user/nzbget 0: User for net-nntp/nzbget
@@ -14477,7 +14479,7 @@ net-analyzer/nrpe 4.0.0 4.0.2 4.0.3: Nagios Remote Plugin Executor
 net-analyzer/nsat 1.5-r5: Network Security Analysis Tool, an application-level network security scanner
 net-analyzer/nsca 2.7.2-r103: Nagios Service Check Acceptor
 net-analyzer/nstats 0.4-r3: Displays statistics about ethernet traffic including protocol breakdown
-net-analyzer/ntopng 3.8.1-r4 4.0: Network traffic analyzer with web interface
+net-analyzer/ntopng 3.8.1-r4 4.0 4.2: Network traffic analyzer with web interface
 net-analyzer/nttcp 1.47-r3: Tool to test TCP and UDP throughput
 net-analyzer/nuttcp 8.1.4: Network performance measurement tool
 net-analyzer/odhcploc 20111021-r1: Open DHCP Locator
