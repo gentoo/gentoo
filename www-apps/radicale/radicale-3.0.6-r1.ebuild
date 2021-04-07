@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{7..9} )
@@ -15,7 +15,6 @@ SRC_URI="https://github.com/Kozea/Radicale/archive/refs/tags/${PV}.tar.gz -> ${P
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="+bcrypt"
 
 MY_P="Radicale-${PV}"
 
@@ -23,10 +22,10 @@ RDEPEND="
 	acct-user/radicale
 	acct-group/radicale
 	dev-python/defusedxml
+	dev-python/passlib[bcrypt,${PYTHON_USEDEP}]
 	>=dev-python/vobject-0.9.6[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-2.8.1[${PYTHON_USEDEP}]
 	sys-apps/util-linux
-	bcrypt? ( dev-python/passlib[bcrypt,${PYTHON_USEDEP}] )
 "
 
 S="${WORKDIR}/${MY_P}"
@@ -37,7 +36,7 @@ python_install_all() {
 	rm README* || die
 
 	# init file
-	newinitd "${FILESDIR}"/radicale-r2.init.d radicale
+	newinitd "${FILESDIR}"/radicale-r3.init.d radicale
 	systemd_dounit "${FILESDIR}/${PN}.service"
 
 	# directories
