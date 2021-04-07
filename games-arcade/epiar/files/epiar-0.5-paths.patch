@@ -1,5 +1,5 @@
---- src/input/input.c
-+++ src/input/input.c
+--- a/src/input/input.c
++++ b/src/input/input.c
 @@ -240,7 +240,10 @@
  *
  ******************************************************************************/
@@ -35,8 +35,8 @@
  	if (fp == NULL) {
  		fprintf(stdout, "Could not create '~/.epiar-input.ecf' to save keybindings\n");
  		return;
---- src/main.c
-+++ src/main.c
+--- a/src/main.c
++++ b/src/main.c
 @@ -16,7 +16,7 @@
  unsigned char view_mode = 0;
  int ship_to_follow = 0;
@@ -55,14 +55,14 @@
  	init(desired_bpp);
  
  	menu();
---- src/main.h
-+++ src/main.h
+--- a/src/main.h
++++ b/src/main.h
 @@ -1,2 +1,2 @@
  extern char epiar_version[6];
 -extern char *game_path;
 +extern const char * const game_path;
---- src/system/init.c
-+++ src/system/init.c
+--- a/src/system/init.c
++++ b/src/system/init.c
 @@ -89,9 +89,6 @@
  		main_eaf = NULL;
  	}
@@ -73,8 +73,8 @@
  
  	if (average_loop_time == 0) average_loop_time = 18; /* in case they quit on menu */
  #ifndef NDEBUG
---- src/system/path.c
-+++ src/system/path.c
+--- a/src/system/path.c
++++ b/src/system/path.c
 @@ -45,7 +45,7 @@
  }
  #endif

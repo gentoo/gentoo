@@ -6,7 +6,7 @@ EAPI=7
 LUA_COMPAT=( lua5-2 )
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit autotools flag-o-matic lua-single perl-module python-single-r1
+inherit autotools flag-o-matic lua-single perl-module python-single-r1 toolchain-funcs
 
 DESCRIPTION="Red Hat Package Management Utils"
 HOMEPAGE="https://rpm.org
@@ -20,7 +20,7 @@ KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 ~sparc x86 ~
 # Tests are broken. See bug 657500
 RESTRICT="test"
 
-IUSE="acl caps doc dbus lua nls python selinux test +zstd"
+IUSE="acl caps doc dbus lua nls openmp python selinux test +zstd"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -53,9 +53,15 @@ RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-rpm )
 "
 
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
 pkg_setup() {
 	use lua && lua-single_pkg_setup
 	use python && python-single-r1_pkg_setup
+
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 src_prepare() {
@@ -69,7 +75,6 @@ src_prepare() {
 	sed -i "s:@__PYTHON@:${PYTHON}:" macros.in || die "Fixing %__python failed"
 
 	eapply_user
-
 	eautoreconf
 
 	# Prevent automake maintainer mode from kicking in (#450448).
@@ -78,11 +83,16 @@ src_prepare() {
 
 src_configure() {
 	append-cppflags -I"${EPREFIX}/usr/include/nss" -I"${EPREFIX}/usr/include/nspr"
+	# NOTE: 4.16.0 warns:
+	# "configure: WARNING: Using the nss library with rpm is deprecated and support will be removed in a future release!"
+	# Only libgcrypt (default) and openssl are not deprecated. We should consider this.
+	# bug #780684
 	econf \
 		--without-selinux \
 		--with-crypto=nss \
 		$(use_enable python) \
 		$(use_enable nls) \
+		$(use_enable openmp) \
 		$(use_enable dbus inhibit-plugin) \
 		$(use_with lua) \
 		$(use_with caps cap) \

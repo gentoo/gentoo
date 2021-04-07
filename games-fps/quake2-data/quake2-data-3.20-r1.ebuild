@@ -1,30 +1,22 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit unpacker eutils cdrom games
+EAPI=7
+
+inherit cdrom unpacker
 
 DESCRIPTION="iD Software's Quake 2 ... the data files"
 HOMEPAGE="https://www.idsoftware.com/"
 SRC_URI="mirror://idsoftware/quake2/q2-${PV}-x86-full-ctf.exe"
+S="${WORKDIR}"
 
 LICENSE="Q2EULA"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~x86"
 IUSE="videos"
 
-DEPEND="app-arch/unzip"
-RDEPEND=""
-
-S=${WORKDIR}
-
-pkg_setup() {
-	games_pkg_setup
-	if has_version "games-fps/quake2-demodata[symlink]" ; then
-		eerror "The symlink for the demo data conflicts with the cdinstall data"
-		die "Unmerge games-fps/quake2-demodata to remove the conflict"
-	fi
-}
+RDEPEND="!games-fps/quake2-demodata[symlink]"
+BDEPEND="app-arch/unzip"
 
 src_unpack() {
 	export CDROM_NAME_SET=("Existing Install" "Ultimate Quake Edition" "Quake2 CD" "Quake4 Bonus DVD")
@@ -36,10 +28,11 @@ src_unpack() {
 src_install() {
 	dodoc DOCS/* 3.20_Changes.txt
 	newdoc ctf/readme.txt ctf-readme.txt
+
 	case ${CDROM_SET} in
-		0) dohtml -r "${CDROM_ROOT}"/Install/DOCS/quake2_manual/* ;;
-		1) dohtml -r "${CDROM_ROOT}"/Install/Docs/quake2_manual/* ;;
-		2) dohtml -r "${CDROM_ROOT}"/Install/DOCS/quake2_manual/* ;;
+		0) { docinto html && dodoc -r "${CDROM_ROOT}"/Install/DOCS/quake2_manual/* ; } ;;
+		1) { docinto html && dodoc -r "${CDROM_ROOT}"/Install/Docs/quake2_manual/* ; } ;;
+		2) { docinto html && dodoc -r "${CDROM_ROOT}"/Install/DOCS/quake2_manual/* ; } ;;
 		3) dodoc "${CDROM_ROOT}"/Docs/* ;;
 	esac
 
@@ -51,35 +44,34 @@ src_install() {
 		3) baseq2_cdpath=${CDROM_ROOT}/setup/Data/baseq2;;
 	esac
 
-	dodir "${GAMES_DATADIR}"/quake2/baseq2
+	dodir /usr/share/quake2/baseq2
 
 	if use videos ; then
-		insinto "${GAMES_DATADIR}"/quake2/baseq2/video
+		insinto /usr/share/quake2/baseq2/video
 		doins "${baseq2_cdpath}"/video/*
 	fi
 
-	insinto "${GAMES_DATADIR}"/quake2/baseq2
+	insinto /usr/share/quake2/baseq2
 	doins "${baseq2_cdpath}"/pak0.pak
 	doins baseq2/*.pak baseq2/maps.lst
-	dodir "${GAMES_DATADIR}"/quake2/baseq2/players
+
+	dodir /usr/share/quake2/baseq2/players
 	cp -R "${baseq2_cdpath}"/players/* baseq2/players/* \
-		"${D}/${GAMES_DATADIR}"/quake2/baseq2/players/ || die
+		"${ED}"/usr/share/quake2/baseq2/players/ || die
 
 	for mod in ctf rogue xatrix ; do
 		if [[ -d ${baseq2_cdpath}/../${mod} ]] ; then
 			if use videos && [[ -d ${baseq2_cdpath}/../${mod}/video ]] ; then
-				insinto "${GAMES_DATADIR}"/quake2/${mod}/video
+				insinto /usr/share/quake2/${mod}/video
 				doins "${baseq2_cdpath}"/../${mod}/video/* 2>/dev/null
 			fi
 			if [[ -n $(ls "${baseq2_cdpath}"/../${mod}/*.pak 2>/dev/null) ]] ; then
-				insinto "${GAMES_DATADIR}"/quake2/${mod}
+				insinto /usr/share/quake2/${mod}
 				doins "${baseq2_cdpath}"/../${mod}/*.pak
 			fi
 		fi
 	done
 
-	insinto "${GAMES_DATADIR}"/quake2/ctf
+	insinto /usr/share/quake2/ctf
 	doins ctf/*.{cfg,ico,pak}
-
-	prepgamesdirs
 }
