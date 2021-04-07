@@ -40,7 +40,7 @@ src_install() {
 	dodoc -r docs/*.html docs/www/* docs/ref
 
 	docinto examples
-	doins examples/*
+	dodoc -r examples/*
 
 	gunzip -v $(find "${ED}" -name '*.[0-9]*.gz') || die
 }
