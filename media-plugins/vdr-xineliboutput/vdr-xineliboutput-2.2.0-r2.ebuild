@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -61,7 +61,7 @@ pkg_setup() {
 	vdr-plugin-2_pkg_setup
 
 	if use xine; then
-		XINE_PLUGIN_DIR=$(pkg-config --variable=plugindir libxine)
+		XINE_PLUGIN_DIR=$($(tc-getPKG_CONFIG) --variable=plugindir libxine)
 		[ -z "${XINE_PLUGIN_DIR}" ] && die "Could not find xine plugin dir"
 	fi
 }
