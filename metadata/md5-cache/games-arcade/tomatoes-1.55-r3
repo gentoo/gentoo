@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=media-libs/libsdl[sound,video] media-libs/sdl-image[jpeg,png] media-libs/sdl-mixer[mod] virtual/opengl virtual/glu
+DESCRIPTION=How many tomatoes can you smash in ten short minutes?
+EAPI=7
+HOMEPAGE=http://tomatoes.sourceforge.net/about.html
+INHERIT=desktop toolchain-funcs
+KEYWORDS=~amd64 ~ppc64 ~x86
+LICENSE=ZLIB
+RDEPEND=media-libs/libsdl[sound,video] media-libs/sdl-image[jpeg,png] media-libs/sdl-mixer[mod] virtual/opengl virtual/glu acct-group/gamestat
+SLOT=0
+SRC_URI=mirror://sourceforge/tomatoes/tomatoes-linux-src-1.55.tar.bz2 mirror://sourceforge/tomatoes/tomatoes-linux-1.5.tar.bz2
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=4b1920e4ba4f4b70b6eaeb866b4ce2f4
