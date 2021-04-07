@@ -1,0 +1,11 @@
+BDEPEND=app-arch/unzip
+DEFINED_PHASES=install postinst
+DESCRIPTION=High-resolution textures for Quake 2
+EAPI=7
+HOMEPAGE=http://jdolan.tastyspleen.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=all-rights-reserved
+RESTRICT=bindist mirror
+SLOT=0
+SRC_URI=http://jdolan.tastyspleen.net/pak8.zip
+_md5_=0a9153383ab5631f58c645edf8fa239c

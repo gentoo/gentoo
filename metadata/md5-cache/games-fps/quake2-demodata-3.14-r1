@@ -1,0 +1,14 @@
+BDEPEND=app-arch/unzip
+DEFINED_PHASES=install postinst unpack
+DESCRIPTION=Demo data for Quake 2
+EAPI=7
+HOMEPAGE=https://en.wikipedia.org/wiki/Quake_II
+INHERIT=unpacker
+IUSE=symlink
+KEYWORDS=~alpha ~amd64 ~x86
+LICENSE=quake2-demodata
+RDEPEND=!games-fps/quake2-data
+SLOT=0
+SRC_URI=mirror://idsoftware/quake2/q2-314-demo-x86.exe
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	unpacker	517f16af48ee3ab88180dd58b5143213
+_md5_=ea5c39d8c947c53c910194b545a109f5

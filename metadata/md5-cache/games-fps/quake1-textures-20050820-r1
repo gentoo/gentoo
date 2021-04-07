@@ -1,0 +1,10 @@
+BDEPEND=app-arch/unzip || ( app-arch/unrar app-arch/rar )
+DEFINED_PHASES=install postinst unpack
+DESCRIPTION=Collection of graphical improvements for Quake 1
+EAPI=7
+HOMEPAGE=http://facelift.quakedev.com/
+KEYWORDS=~amd64 ~x86
+LICENSE=quake1-textures
+SLOT=0
+SRC_URI=http://facelift.quakedev.com/download/SKINSbmodels-48files-4-23-05.zip http://facelift.quakedev.com/download/textures-486files-8-20-05.rar
+_md5_=7abf53d876985d0cbd4d01bf36ef045a

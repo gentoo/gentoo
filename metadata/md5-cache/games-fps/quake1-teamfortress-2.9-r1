@@ -1,0 +1,12 @@
+BDEPEND=app-arch/unzip
+DEFINED_PHASES=install unpack
+DESCRIPTION=The classic Team Fortress Quake World mod
+EAPI=7
+HOMEPAGE=http://www.planetfortress.com/teamfortress/
+INHERIT=edos2unix
+KEYWORDS=~amd64 ~x86
+LICENSE=quake1-teamfortress
+SLOT=0
+SRC_URI=mirror://gentoo/tf28.zip mirror://gentoo/tf29qw.zip
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773
+_md5_=85cde82820dfd53f700605a893ed6845

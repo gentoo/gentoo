@@ -1,0 +1,15 @@
+BDEPEND=games-util/loki_patch
+DEFINED_PHASES=install postinst pretend setup unpack
+DESCRIPTION=First-person shooter based on the mercenary trade
+EAPI=7
+HOMEPAGE=http://www.lokigames.com/products/sof/
+INHERIT=cdrom check-reqs desktop unpacker wrapper
+KEYWORDS=~amd64 ~x86
+LICENSE=LOKI-EULA
+PROPERTIES=interactive
+RDEPEND=media-libs/libsdl[X,opengl,sound,abi_x86_32(-)] media-libs/smpeg[abi_x86_32(-)] sys-libs/glibc virtual/opengl[abi_x86_32(-)] x11-libs/libXrender[abi_x86_32(-)] x11-libs/libXrandr[abi_x86_32(-)] amd64? ( sys-libs/glibc[multilib] )
+RESTRICT=strip mirror bindist
+SLOT=0
+SRC_URI=mirror://lokigames/sof/sof-1.06a-cdrom-x86.run
+_eclasses_=portability	c10bdc40668533b1faf15b1d89df0303	cdrom	dd6ba7b03316338a4fdd3ebbade8a719	check-reqs	97b90bd8fb799993925e6b3a683184e5	desktop	c0d27bf73aa08ca05b663dbd31fbef28	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	unpacker	517f16af48ee3ab88180dd58b5143213	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=9f51e2871baa7e08478b5ac9651587d2

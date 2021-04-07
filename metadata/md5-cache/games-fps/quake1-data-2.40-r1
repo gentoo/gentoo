@@ -1,0 +1,13 @@
+BDEPEND=app-arch/lha
+DEFINED_PHASES=install unpack
+DESCRIPTION=iD Software's Quake 1 ... the data files
+EAPI=7
+HOMEPAGE=https://www.idsoftware.com/games/quake/quake/
+INHERIT=cdrom
+KEYWORDS=~amd64 ~x86
+LICENSE=all-rights-reserved
+PROPERTIES=interactive
+RDEPEND=!games-fps/quake1-demodata[symlink]
+SLOT=0
+_eclasses_=portability	c10bdc40668533b1faf15b1d89df0303	cdrom	dd6ba7b03316338a4fdd3ebbade8a719
+_md5_=222c83fa6e5bc014e151b39b6174f1cd

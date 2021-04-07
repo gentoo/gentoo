@@ -11183,8 +11183,8 @@ games-action/postalplus 1-r1: Ultraviolent and controversial game featuring the 
 games-action/powermanga 0.93.1-r1: An arcade 2D shoot-em-up game
 games-action/rive 1.15: Metal wrecking, robot hacking 360-degree shooter/platformer hybrid
 games-action/rrootage 0.23a-r1: Abstract shooter - defeat auto-created huge battleships
-games-action/shadowgrounds-bin 0_p1: an epic action experience combining modern technology with addictive playability
-games-action/shadowgrounds-survivor-bin 0_p1: human survivors who battle against the ongoing alien onslaught
+games-action/shadowgrounds-bin 0_p1-r1: An epic action experience combining modern technology with addictive playability
+games-action/shadowgrounds-survivor-bin 0_p1-r1: human survivors who battle against the ongoing alien onslaught
 games-action/shootingstar 1.2.0-r1: A topdown shooter
 games-action/snipes 1.0.4-r1: 2D scrolling shooter, resembles the old DOS game of same name
 games-action/solar2 1.10-r1: An open-world, sandbox game set in an infinite abstract universe
@@ -11241,7 +11241,7 @@ games-arcade/defendguin 0.0.12-r1: A clone of the arcade game Defender, but with
 games-arcade/digger 20140423-r1: Digger Remastered
 games-arcade/dynamitejack 1.0.23-r2: A stealth game with bombs in glorious 2D
 games-arcade/emilia-pinball 0.3.1-r2: SDL OpenGL pinball game
-games-arcade/epiar 0.5-r1: A space adventure/combat game
+games-arcade/epiar 0.5-r1 0.5.1: A space adventure/combat game
 games-arcade/excido 0.1.5c-r3: A fast paced action game
 games-arcade/fishsupper 0.1.6-r1: A simple arcade/puzzle game, loosely based on the retro classic Frogger
 games-arcade/frozen-bubble 2.2.1_beta1-r1: A Puzzle Bubble clone written in perl (now with network support)
@@ -11491,16 +11491,16 @@ games-fps/industri 1.01: Quake/Tenebrae based, single player game
 games-fps/legends 0.4.1.43-r2: Fast-paced first-person-shooter online multiplayer game, similar to Tribes
 games-fps/nexuiz 2.5.2-r1: Deathmatch FPS based on DarkPlaces, an advanced Quake 1 engine
 games-fps/prboom-plus 2.6: An enhanced clone of the classic first-person shooter Doom
-games-fps/quake1-data 2.40: iD Software's Quake 1 ... the data files
-games-fps/quake1-demodata 1.06: Demo data for Quake 1
+games-fps/quake1-data 2.40-r1: iD Software's Quake 1 ... the data files
+games-fps/quake1-demodata 1.06-r1: Demo data for Quake 1
 games-fps/quake1-killer 2.2z-r1: The Killer Quake Patch
 games-fps/quake1-rally 1.2-r1: TC which turns Quake into a Rally racing game
-games-fps/quake1-teamfortress 2.9: The classic Team Fortress Quake World mod
-games-fps/quake1-textures 20050820: Collection of graphical improvements for Quake 1
-games-fps/quake2-data 3.20: iD Software's Quake 2 ... the data files
-games-fps/quake2-demodata 3.14: Demo data for Quake 2
+games-fps/quake1-teamfortress 2.9-r1: The classic Team Fortress Quake World mod
+games-fps/quake1-textures 20050820-r1: Collection of graphical improvements for Quake 1
+games-fps/quake2-data 3.20-r1: iD Software's Quake 2 ... the data files
+games-fps/quake2-demodata 3.14-r1: Demo data for Quake 2
 games-fps/quake2-icculus 0.16.1-r1: The icculus.org Linux port of iD's Quake 2 engine
-games-fps/quake2-textures 0_beta8: High-resolution textures for Quake 2
+games-fps/quake2-textures 0_beta8-r1: High-resolution textures for Quake 2
 games-fps/quakeforge 0.7.2-r1: New 3d engine based off of id Softwares's Quake and QuakeWorld game engine
 games-fps/qudos 0.40.1: Enhanced Quake 2 engine
 games-fps/red-blue-quake2 0.1-r1: Red-blue Quake II! Play quake2 with 3D glasses!
@@ -11508,7 +11508,7 @@ games-fps/redeclipse 1.6.0-r3 2.0.0-r1: First-person ego-shooter, built as a tot
 games-fps/rott 1.1.2-r1: Rise of the Triad for Linux!
 games-fps/sauerbraten 2013.02.03: Sauerbraten is a FOSS game engine (Cube 2) with freeware game data (Sauerbraten)
 games-fps/serious-sam-tse 1_beta1-r1: Serious Sam: The Second Encounter
-games-fps/soldieroffortune 1.06a-r1: First-person shooter based on the mercenary trade
+games-fps/soldieroffortune 1.06a-r2: First-person shooter based on the mercenary trade
 games-fps/tenebrae 1.04-r1: Adds stencil shadows and per pixel lights to quake
 games-fps/transfusion-bin 1.01-r1: Blood remake
 games-fps/tribes2 25034: Tribes 2 - Team Combat on an Epic Scale
@@ -11527,7 +11527,7 @@ games-fps/ut2004-bonuspack-cbp2 1-r3: UT2004 Community Bonus Pack 2 Volume 1 and
 games-fps/ut2004-bonuspack-ece 1-r4: UT2004 Editor's Choice Edition - Editor's Choice Edition bonus pack
 games-fps/ut2004-bonuspack-mega 1-r3: UT2004 Megapack - Megapack bonus pack
 games-fps/ut2004-data 3186-r5: Unreal Tournament 2004 - This is the data portion of UT2004
-games-fps/ut2004-demo 3334-r1: Demo for the critically-acclaimed first-person shooter
+games-fps/ut2004-demo 3334-r2: Demo for the critically-acclaimed first-person shooter
 games-fps/wolfgl 0.93-r2: Wolfenstein and Spear of Destiny port using OpenGL
 games-fps/worldofpadman 1.6-r1: A cartoon style multiplayer first-person shooter
 games-fps/xonotic 0.8.2: Fork of Nexuiz, Deathmatch FPS based on DarkPlaces, an advanced Quake 1 engine
@@ -18671,7 +18671,7 @@ x11-misc/xdaliclock 2.44: Dali Clock is a digital clock. When a digit changes, i
 x11-misc/xdesktopwaves 1.4: A cellular automata setting the background of your X Windows desktop under water
 x11-misc/xdg-user-dirs 0.17: Tool to help manage 'well known' user directories
 x11-misc/xdg-user-dirs-gtk 0.10-r1: Integrates xdg-user-dirs into the Gnome desktop and Gtk+ applications
-x11-misc/xdg-utils 1.1.3-r1 1.1.3_p20200220 1.1.3_p20200220-r1: Portland utils for cross-platform/cross-toolkit/cross-desktop interoperability
+x11-misc/xdg-utils 1.1.3-r2 1.1.3_p20200220-r2 1.1.3_p20200220-r3: Portland utils for cross-platform/cross-toolkit/cross-desktop interoperability
 x11-misc/xdialog 2.3.1: Drop-in replacement for cdialog using GTK
 x11-misc/xdiskusage 1.52: user-friendly program to show you what is using up all your disk space
 x11-misc/xdo 0.5.7: Small X utility to perform elementary actions on windows

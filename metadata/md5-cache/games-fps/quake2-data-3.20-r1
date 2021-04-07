@@ -1,0 +1,15 @@
+BDEPEND=app-arch/unzip
+DEFINED_PHASES=install unpack
+DESCRIPTION=iD Software's Quake 2 ... the data files
+EAPI=7
+HOMEPAGE=https://www.idsoftware.com/
+INHERIT=cdrom unpacker
+IUSE=videos
+KEYWORDS=~alpha ~amd64 ~x86
+LICENSE=Q2EULA
+PROPERTIES=interactive
+RDEPEND=!games-fps/quake2-demodata[symlink]
+SLOT=0
+SRC_URI=mirror://idsoftware/quake2/q2-3.20-x86-full-ctf.exe
+_eclasses_=portability	c10bdc40668533b1faf15b1d89df0303	cdrom	dd6ba7b03316338a4fdd3ebbade8a719	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	unpacker	517f16af48ee3ab88180dd58b5143213
+_md5_=6a35995c8ed23cf61448d943ff0a6e49

@@ -1,0 +1,12 @@
+BDEPEND=app-arch/lha app-arch/unzip
+DEFINED_PHASES=install postinst setup unpack
+DESCRIPTION=Demo data for Quake 1
+EAPI=7
+HOMEPAGE=https://en.wikipedia.org/wiki/Quake_I
+IUSE=symlink
+KEYWORDS=~amd64 ~x86
+LICENSE=quake1-demodata
+RDEPEND=symlink? ( !games-fps/quake1-data )
+SLOT=0
+SRC_URI=mirror://idsoftware/quake/quake106.zip
+_md5_=6e232add510c3d6c17f2ba183cde3fa5
