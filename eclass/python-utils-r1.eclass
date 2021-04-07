@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
 # Based on work of: Krzysztof Pawlik <nelchael@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: Utility functions for packages with Python parts.
 # @DESCRIPTION:
 # A utility eclass providing functions to query Python implementations,
@@ -20,8 +20,8 @@
 # https://dev.gentoo.org/~mgorny/python-guide/
 
 case "${EAPI:-0}" in
-	[0-4]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
-	[5-7]) ;;
+	[0-5]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
+	[6-7]) ;;
 	*)     die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
 esac
 
@@ -31,7 +31,6 @@ fi
 
 if [[ ! ${_PYTHON_UTILS_R1} ]]; then
 
-[[ ${EAPI} == 5 ]] && inherit eutils multilib
 inherit toolchain-funcs
 
 # @ECLASS-VARIABLE: _PYTHON_ALL_IMPLS
@@ -1013,16 +1012,8 @@ python_is_python3() {
 python_is_installed() {
 	local impl=${1:-${EPYTHON}}
 	[[ ${impl} ]] || die "${FUNCNAME}: no impl nor EPYTHON"
-	local hasv_args=()
-
-	case ${EAPI} in
-		5|6)
-			hasv_args+=( --host-root )
-			;;
-		*)
-			hasv_args+=( -b )
-			;;
-	esac
+	local hasv_args=( -b )
+	[[ ${EAPI} == 6 ]] && hasv_args=( --host-root )
 
 	local PYTHON_PKG_DEP
 	_python_export "${impl}" PYTHON_PKG_DEP
@@ -1169,17 +1160,14 @@ python_fix_shebang() {
 		done < <(find -H "${path}" -type f -print0 || die)
 
 		if [[ ! ${any_fixed} ]]; then
-			local cmd=eerror
-			[[ ${EAPI} == 5 ]] && cmd=eqawarn
-
-			"${cmd}" "QA warning: ${FUNCNAME}, ${path#${D%/}} did not match any fixable files."
+			eerror "QA error: ${FUNCNAME}, ${path#${D%/}} did not match any fixable files."
 			if [[ ${any_correct} ]]; then
-				"${cmd}" "All files have ${EPYTHON} shebang already."
+				eerror "All files have ${EPYTHON} shebang already."
 			else
-				"${cmd}" "There are no Python files in specified directory."
+				eerror "There are no Python files in specified directory."
 			fi
 
-			[[ ${cmd} == eerror ]] && die "${FUNCNAME} did not match any fixable files (QA warning fatal in EAPI ${EAPI})"
+			die "${FUNCNAME} did not match any fixable files"
 		fi
 	done
 }
@@ -1282,15 +1270,11 @@ build_sphinx() {
 # Run pytest, passing the standard set of pytest options, followed
 # by user-specified options.
 #
-# This command dies on failure and respects nonfatal in EAPIs supporting
-# nonfatal die.
+# This command dies on failure and respects nonfatal.
 epytest() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	[[ -n ${EPYTHON} ]] || die "EPYTHON unset, invalid call context"
-
-	local die_args=()
-	[[ ${EAPI} != [45] ]] && die_args+=( -n )
 
 	local args=(
 		# verbose progress reporting and tracebacks
@@ -1304,7 +1288,7 @@ epytest() {
 	set -- "${EPYTHON}" -m pytest "${args[@]}" "${@}"
 
 	echo "${@}" >&2
-	"${@}" || die "${die_args[@]}" "pytest failed with ${EPYTHON}"
+	"${@}" || die -n "pytest failed with ${EPYTHON}"
 	return ${?}
 }
 
@@ -1314,20 +1298,16 @@ epytest() {
 # Run unit tests using dev-python/unittest-or-fail, passing the standard
 # set of options, followed by user-specified options.
 #
-# This command dies on failure and respects nonfatal in EAPIs supporting
-# nonfatal die.
+# This command dies on failure and respects nonfatal.
 eunittest() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	[[ -n ${EPYTHON} ]] || die "EPYTHON unset, invalid call context"
 
-	local die_args=()
-	[[ ${EAPI} != [45] ]] && die_args+=( -n )
-
 	set -- "${EPYTHON}" -m unittest_or_fail discover -v "${@}"
 
 	echo "${@}" >&2
-	"${@}" || die "${die_args[@]}" "Tests failed with ${EPYTHON}"
+	"${@}" || die -n "Tests failed with ${EPYTHON}"
 	return ${?}
 }
 
