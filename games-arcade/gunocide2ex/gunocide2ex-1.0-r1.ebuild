@@ -75,9 +75,9 @@ src_install() {
 	insinto /var/games/${PN}
 	newins hscore.dat ${PN}-hscore.dat
 
-    fperms 660 /var/games/${PN}/${PN}-hscore.dat
-    fowners -R root:gamestat /var/games/${PN}
-    fperms g+s /usr/bin/g2ex
+	fperms 660 /var/games/${PN}/${PN}-hscore.dat
+	fowners -R root:gamestat /var/games/${PN}
+	fperms g+s /usr/bin/g2ex
 
 	dodoc history doc/MANUAL_DE
 	docinto html
