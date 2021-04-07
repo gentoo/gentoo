@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit fortran-2 flag-o-matic toolchain-funcs
+inherit fortran-2 flag-o-matic multilib toolchain-funcs
 
 MYP=MUMPS_${PV}
 
