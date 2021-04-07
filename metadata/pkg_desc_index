@@ -813,7 +813,7 @@ app-admin/vault 1.5.6 1.5.7 1.6.1 1.6.3: A tool for managing secrets
 app-admin/verynice 1.1-r3: A tool for dynamically adjusting the nice-level of processes
 app-admin/watchfolder 0.3.3-r1: Watches directories and processes files
 app-admin/webalizer 2.23.08: Webserver log file analyzer
-app-admin/webapp-config 1.55-r1 9999: Gentoo's installer for web-based applications
+app-admin/webapp-config 1.55-r2 9999: Gentoo's installer for web-based applications
 app-admin/whowatch 1.8.6 99999: Displays information about users currently logged on in real time
 app-admin/xkcdpass 1.17.6-r1: Password generator inspired by XKCD 936
 app-admin/xstow 1.0.1 1.0.2: Replacement for GNU stow with extensions
@@ -8401,7 +8401,7 @@ dev-python/hvac 0.10.8 0.10.9: hashicorp vault client in python
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 21.0.0: A featureful, correct URL for Python
-dev-python/hypothesis 6.3.4 6.6.0 6.8.1 6.8.3 6.8.4 6.8.5: A library for property based testing
+dev-python/hypothesis 6.3.4 6.6.0 6.8.1 6.8.3 6.8.4 6.8.5 6.8.6: A library for property based testing
 dev-python/icalendar 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/idna 2.10-r1 3.0 3.1: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0-r1: Patch ssl.match_hostname for Unicode(idna) domains support
@@ -8603,7 +8603,7 @@ dev-python/nbclient 0.5.3: A client library for executing Jupyter notebooks
 dev-python/nbconvert 6.0.7: Converting Jupyter Notebooks
 dev-python/nbdime 2.0.0-r1: Diff and merge of Jupyter Notebooks
 dev-python/nbformat 5.1.2-r1 5.1.3: Reference implementation of the Jupyter Notebook format
-dev-python/nbsphinx 0.7.1-r1 0.8.2: Jupyter Notebook Tools for Sphinx
+dev-python/nbsphinx 0.8.2: Jupyter Notebook Tools for Sphinx
 dev-python/nbval 0.9.6: A py.test plugin to validate Jupyter notebooks
 dev-python/ndg-httpsclient 0.5.1: Provides enhanced HTTPS support for httplib and urllib2 using PyOpenSSL
 dev-python/neovim-remote 2.4.0 9999: A tool that helps control neovim processes
@@ -8621,7 +8621,7 @@ dev-python/nodeenv 1.3.5: Node.js virtual environment builder
 dev-python/nose 1.3.7-r7: Unittest extension with automatic test suite discovery and easy test authoring
 dev-python/nose-exclude 0.5.0-r1: Exclude specific directories from nosetests runs
 dev-python/nose-random 1.0.0: Nose plugin to facilitate randomized unit testing
-dev-python/nose2 0.9.2 0.10.0: Next generation unittest with plugins
+dev-python/nose2 0.10.0: Next generation unittest with plugins
 dev-python/nose_fixes 1.3: A plugin to make nose behave better
 dev-python/nose_warnings_filters 0.1.5-r3: A python module to inject warning filters during nosetest
 dev-python/notebook 6.2.0 6.3.0: Jupyter Interactive Notebook
@@ -8718,7 +8718,7 @@ dev-python/pendulum 2.1.2-r1: Drop-in replacement for the standard datetime clas
 dev-python/pep8 1.7.1: Python style guide checker
 dev-python/pexpect 4.8.0-r1: Python module for spawning child apps and responding to expected patterns
 dev-python/pgspecial 1.12.1: Python implementation of PostgreSQL meta commands
-dev-python/phonenumbers 8.12.18 8.12.19 8.12.20: Python port of Google's libphonenumber
+dev-python/phonenumbers 8.12.20: Python port of Google's libphonenumber
 dev-python/phply 1.2.5: Lexer and parser for PHP source implemented using PLY
 dev-python/picklemagic 0.0_pre20160415: A library for analysing python pickles safely
 dev-python/pickleshare 0.7.5: A small 'shelve' like datastore with concurrency support
@@ -8809,7 +8809,7 @@ dev-python/pycollada 0.7.1: Python library for reading and writing COLLADA docum
 dev-python/pycountry 20.7.3: Database of countries, subdivisions, languages, currencies and script
 dev-python/pycparser 2.20-r1: C parser and AST generator written in Python
 dev-python/pycryptodome 3.10.1: A self-contained cryptographic library for Python
-dev-python/pycson 0.8 0.8-r1: A python parser for the Coffeescript Object Notation (CSON)
+dev-python/pycson 0.8-r1: A python parser for the Coffeescript Object Notation (CSON)
 dev-python/pycuda 2019.1.2: Python wrapper for NVIDIA CUDA
 dev-python/pycups 1.9.73-r2: Python bindings for the CUPS API
 dev-python/pycurl 7.43.0.6: python binding for curl/libcurl
@@ -8908,7 +8908,7 @@ dev-python/pypy3-exe 7.3.3_p37_p1 7.3.3_p37_p2: PyPy3 executable (build from sou
 dev-python/pypy3-exe-bin 7.3.3_p37_p1 7.3.3_p37_p2: PyPy3 executable (pre-built version)
 dev-python/pyqrcode 1.2.1-r1: A pure Python QR code generator with SVG, EPS, PNG and terminal output
 dev-python/pyqt-distutils 0.7.3: distutils extension to work with PyQt applications and UI files
-dev-python/pyqtgraph 0.11.0_rc0 0.12.0: A pure-python graphics and GUI library built on PyQt and numpy
+dev-python/pyqtgraph 0.11.0_rc0 0.12.0 0.12.1: A pure-python graphics and GUI library built on PyQt and numpy
 dev-python/pyquery 1.4.3: A jQuery-like library for python
 dev-python/pyre2 1.0.7: Python bindings for dev-libs/re2
 dev-python/pyrfc3339 1.1: Generates and parses RFC 3339 timestamps
@@ -9048,7 +9048,7 @@ dev-python/python-senlinclient 2.1.1: A client for the OpenStack Senlin API
 dev-python/python-sense-hat 2.2.0-r2: Raspberry Pi Sense HAT python library
 dev-python/python-slip 0.6.5-r1: Miscellaneous convenience, extension and workaround code for Python
 dev-python/python-slugify 1.2.6 4.0.1: A Python Slugify application that handles Unicode
-dev-python/python-socks 1.2.1 1.2.2 1.2.3 1.2.4: SOCKS4, SOCKS5, HTTP tunneling functionality for Python
+dev-python/python-socks 1.2.2 1.2.4: SOCKS4, SOCKS5, HTTP tunneling functionality for Python
 dev-python/python-sshpubkeys 3.3.1: OpenSSH public key parser for Python
 dev-python/python-stdnum 1.16: A module to handle standardized numbers and codes
 dev-python/python-swiftclient 3.10.1: Python bindings to the OpenStack Object Storage API
@@ -9214,7 +9214,7 @@ dev-python/sortedcontainers 2.3.0: Python library to sort collections and contai
 dev-python/soupsieve 2.2 2.2.1: A modern CSS selector implementation for BeautifulSoup
 dev-python/sparql-wrapper 1.8.5: Wrapper around a SPARQL service
 dev-python/speaklater 1.3-r1: Lazy strings for Python
-dev-python/speg 0.3-r1 0.3-r2: A PEG-based parser interpreter with memoization
+dev-python/speg 0.3-r2: A PEG-based parser interpreter with memoization
 dev-python/sphinx 3.5.1 3.5.2 3.5.3: Python documentation generator
 dev-python/sphinx-aiohttp-theme 0.1.6: Sphinx theme for aiohttp
 dev-python/sphinx-bootstrap-theme 0.8.0: Sphinx theme integrates the Bootstrap CSS / JavaScript framework
@@ -9258,7 +9258,7 @@ dev-python/spyder-notebook 0.3.2: Jupyter notebook integration with Spyder
 dev-python/spyder-terminal 0.5.0: Run system terminals inside Spyder
 dev-python/spyder-unittest 0.4.1: Plugin for Spyder to run tests and view the results
 dev-python/spyder-vim 0_pre20201026: Plugin for Spyder to enable Vim keybindings
-dev-python/sqlalchemy 1.3.23 1.3.24 1.4.2 1.4.5: Python SQL toolkit and Object Relational Mapper
+dev-python/sqlalchemy 1.3.23 1.3.24 1.4.2 1.4.5 1.4.6: Python SQL toolkit and Object Relational Mapper
 dev-python/sqlalchemy-migrate 0.13.0: SQLAlchemy Schema Migration Tools
 dev-python/sqlalchemy-rqlite 1.1: A SQLAlchemy dialect for rqlite
 dev-python/sqlparse 0.3.1 0.4.1: A non-validating SQL parser module for Python
@@ -9288,7 +9288,7 @@ dev-python/taskflow 4.1.0 4.5.0: A library to do [jobs, tasks, flows] in a HA ma
 dev-python/tblib 1.7.0: Traceback fiddling library for Python
 dev-python/tempita 0.5.3-r3: A very small text templating language
 dev-python/tempora 4.0.1 4.0.2: Objects and routines pertaining to date and time
-dev-python/tenacity 6.2.0 7.0.0: General-purpose retrying library
+dev-python/tenacity 7.0.0: General-purpose retrying library
 dev-python/termcolor 1.1.0-r2: ANSII Color formatting for output in terminal
 dev-python/terminado 0.8.3 0.9.1 0.9.4: Terminals served to term.js using Tornado websockets
 dev-python/terminaltables 3.1.0 9999: Generate simple tables in terminals from a nested list of strings
@@ -9323,12 +9323,12 @@ dev-python/tqdm 4.59.0 4.60.0: Add a progress meter to your loops in a second
 dev-python/traceback2 1.4.0-r1: Backports of the traceback module
 dev-python/traitlets 4.3.3 5.0.5: A configuration system for Python applications
 dev-python/transitions 0.8.7: A lightweight, object-oriented state machine implementation in Python
-dev-python/translate-toolkit 3.3.2 3.3.3 3.3.4: Toolkit to convert between many translation formats
+dev-python/translate-toolkit 3.3.3 3.3.4: Toolkit to convert between many translation formats
 dev-python/tree-sitter 0.2.1 0.2.2 0.19.0: Python bindings to the Tree-sitter parsing library
 dev-python/treq 20.9.0 21.1.0: A requests-like API built on top of twisted.web's Agent
 dev-python/trustme 0.7.0: #1 quality TLS certs while you wait, for the discerning tester
 dev-python/tubes 0.2.0-r1: Flow control and backpressure for event-driven applications
-dev-python/tvdb_api 2.0-r1 3.0.2: Python interface to thetvdb.com API
+dev-python/tvdb_api 3.0.2: Python interface to thetvdb.com API
 dev-python/twine 3.3.0 3.4.0 3.4.1: Collection of utilities for publishing packages on PyPI
 dev-python/twisted 19.10.0 20.3.0 21.2.0: An asynchronous networking framework written in Python
 dev-python/twython 3.7.0: An easy way to access Twitter data with Python
@@ -9386,7 +9386,7 @@ dev-python/webassets 2.0: Asset management for Python web development
 dev-python/webcolors 1.11.1: Color names and value formats defined by the HTML and CSS specifications
 dev-python/webencodings 0.5.1-r1: Character encoding aliases for legacy web content
 dev-python/webob 1.8.7: WSGI request and response object
-dev-python/websocket-client 0.57.0 0.58.0: WebSocket client for python with hybi13 support
+dev-python/websocket-client 0.58.0: WebSocket client for python with hybi13 support
 dev-python/websockets 8.1: Library for building WebSocket servers and clients in Python
 dev-python/websockify 0.9.0 0.9.0-r1: WebSockets support for any application/server
 dev-python/webtest 2.0.35: Helper to test WSGI applications
@@ -15530,7 +15530,7 @@ net-p2p/qbittorrent 4.3.1 4.3.3 4.3.4.1 9999: BitTorrent client in C++ and Qt
 net-p2p/resilio-sync 2.6.1 2.6.3: Resilient, fast and scalable file synchronization tool
 net-p2p/retroshare 0.6.5-r2: P2P private sharing application
 net-p2p/rtorrent 0.9.7 0.9.7-r1 0.9.8: BitTorrent Client using libtorrent
-net-p2p/syncthing 1.10.0 1.13.1 1.14.0: Open Source Continuous File Synchronization
+net-p2p/syncthing 1.13.1 1.15.1: Open Source Continuous File Synchronization
 net-p2p/syrep 0.9: A generic file repository synchronization tool
 net-p2p/torrentinfo 1.8.6-r2: A torrent file parser
 net-p2p/transmission 3.00-r1 9999: A fast, easy, and free BitTorrent client
