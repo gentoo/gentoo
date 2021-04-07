@@ -1,5 +1,5 @@
---- quake2-r0.16.1.orig/Makefile
-+++ quake2-r0.16.1/Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -54,24 +54,26 @@ endif
  
  
@@ -74,8 +74,8 @@
   ifeq ($(strip $(BUILD_SVGA)),YES)
    $(warning Warning: SVGAlib support not supported for $(ARCH))
   endif
---- quake2-r0.16.1.orig/src/linux/sys_linux.c
-+++ quake2-r0.16.1/src/linux/sys_linux.c
+--- a/src/linux/sys_linux.c
++++ b/src/linux/sys_linux.c
 @@ -216,16 +216,18 @@ void *Sys_GetGameAPI (void *parms)
  	char	*path;
  	char	*str_p;
