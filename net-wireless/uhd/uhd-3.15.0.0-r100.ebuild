@@ -32,7 +32,7 @@ RDEPEND="${PYTHON_DEPS}
 	e300? ( virtual/udev )
 	usb? ( virtual/libusb:1 )
 	dev-libs/boost:=
-	sys-libs/ncurses:0[tinfo]
+	sys-libs/ncurses:0=[tinfo]
 	$(python_gen_cond_dep '
 	dev-python/numpy[${PYTHON_MULTI_USEDEP}]
 	dev-python/requests[${PYTHON_MULTI_USEDEP}]
