@@ -1,0 +1,33 @@
+get rid off call cc gcc directly
+disabled apple darwin check
+we are on gentoo!!!
+https://bugs.gentoo.org/show_bug.cgi?id=780462
+
+Signed-off-by: Joerg Bornkessel <hd_brummy@gentoo.org> ( 2021/April/07 )
+diff -Naur xineliboutput-2.2.0.orig/Makefile xineliboutput-2.2.0/Makefile
+--- xineliboutput-2.2.0.orig/Makefile	2021-04-07 20:28:54.667000000 +0200
++++ xineliboutput-2.2.0/Makefile	2021-04-07 20:29:31.558000000 +0200
+@@ -19,9 +19,9 @@
+ 
+ # check for Apple Darwin
+ ARCH_APPLE_DARWIN = no
+-ifeq ($(shell gcc -dumpmachine | grep -q 'apple-darwin' && echo "1" || echo "0"), 1)
+-    ARCH_APPLE_DARWIN = yes
+-endif
++#ifeq ($(shell gcc -dumpmachine | grep -q 'apple-darwin' && echo "1" || echo "0"), 1)
++#    ARCH_APPLE_DARWIN = yes
++#endif
+ 
+ #
+ # Override configuration here or in ../../../Make.config
+@@ -43,8 +43,8 @@
+ ### The C++ compiler and options:
+ ###
+ 
+-CXX      ?= g++
+-CC       ?= gcc 
++#CXX      ?= g++
++#CC       ?= gcc 
+ OPTFLAGS ?= 
+ 
+ ifeq ($(ARCH_APPLE_DARWIN), yes)
