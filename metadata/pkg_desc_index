@@ -13749,7 +13749,7 @@ media-plugins/vdr-vdrmanager 0.14: VDR Plugin: remote programming VDR using VDR-
 media-plugins/vdr-vompserver 0.4.1 0.4.1-r1 0.5.1: VDR Plugin: server part for MediaMVP device
 media-plugins/vdr-weatherng 0.0.8_pre3-r1: VDR plugin: show weather for specified place
 media-plugins/vdr-wirbelscan 0.0.7-r1 2018.11.04-r1: VDR Plugin: Scan for channels on DVB-? and on PVR*-Cards
-media-plugins/vdr-xineliboutput 2.2.0-r2 2.2.0-r3 9999: VDR Plugin: Xinelib PlugIn
+media-plugins/vdr-xineliboutput 2.2.0-r2 2.2.0-r4 9999: VDR Plugin: Xinelib PlugIn
 media-plugins/vdr-zappilot 0.0.5 0.0.5-r1: VDR Plugin: browse fast the EPG information without being forced to switch to a channel
 media-plugins/xsynth-dssi 0.9.4: A software synthesizer plugin for the DSSI Soft Synth Interface
 media-radio/KochMorse 3.4.0-r1: Morse-code tutor using the Koch method
