@@ -1,0 +1,37 @@
+From 74b0233e06365262ca6fc9bde1cfb70051acb83c Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 6 Apr 2021 23:38:53 +0000
+Subject: [PATCH 2/2] respect CC
+
+---
+ Makefile.linux | 2 +-
+ tools/Makefile | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.linux b/Makefile.linux
+index 903e392..aad4b49 100644
+--- a/Makefile.linux
++++ b/Makefile.linux
+@@ -18,7 +18,7 @@ timer.o target.o zoom.o r_ships.o warship.o maneuvers.o gate_defender.o
+ 
+ PLUGIN_OBJS=
+ 
+-CC=cc
++CC?=cc
+ 
+ default: $(OBJS)
+ 	echo Building Epiar 0.5.0 ...
+diff --git a/tools/Makefile b/tools/Makefile
+index 8491658..a3f940d 100644
+--- a/tools/Makefile
++++ b/tools/Makefile
+@@ -1,5 +1,5 @@
+ default:
+-	gcc -Wall main.c -o eaf_util
++	$(CC) -Wall main.c -o eaf_util
+ 
+ clean:
+ 	rm -rf eaf_util
+-- 
+2.31.1
+

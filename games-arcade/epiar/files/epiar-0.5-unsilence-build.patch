@@ -1,0 +1,445 @@
+From 5cc36cce65329d946140feb78f17fc3c91cc7496 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 6 Apr 2021 23:38:27 +0000
+Subject: [PATCH 1/2] unsilence build
+
+---
+ Makefile       |  20 ++---
+ Makefile.linux | 218 ++++++++++++++++++++++++-------------------------
+ 2 files changed, 119 insertions(+), 119 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index d0aa7a8..f2c4641 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,13 +1,13 @@
+ default:
+-	@echo "To build Epiar, please type the command that corresponds to your system:"
+-	@echo ""
+-	@echo "Linux   - make -f Makefile.linux"
+-	@echo "FreeBSD - make -f Makefile.freebsd"
+-	@echo "Windows - Documentation not available yet"
++	echo "To build Epiar, please type the command that corresponds to your system:"
++	echo ""
++	echo "Linux   - make -f Makefile.linux"
++	echo "FreeBSD - make -f Makefile.freebsd"
++	echo "Windows - Documentation not available yet"
+ 
+ clean:
+-	@echo "Please specify your system:"
+-	@echo ""
+-	@echo "Linux   - make -f Makefile.linux clean"
+-	@echo "FreeBSD - make -f Makefile.freebsd clean"
+-	@echo "Windows - Documentation not available yet"
++	echo "Please specify your system:"
++	echo ""
++	echo "Linux   - make -f Makefile.linux clean"
++	echo "FreeBSD - make -f Makefile.freebsd clean"
++	echo "Windows - Documentation not available yet"
+diff --git a/Makefile.linux b/Makefile.linux
+index 40ae1ff..903e392 100644
+--- a/Makefile.linux
++++ b/Makefile.linux
+@@ -21,290 +21,290 @@ PLUGIN_OBJS=
+ CC=cc
+ 
+ default: $(OBJS)
+-	@echo Building Epiar 0.5.0 ...
+-	@$(CC) $(CFLAGS) -I/usr/X11R6/lib/ $(OBJS) -o epiar $(LIBS)
+-	@echo Building plugins ...
+-	@$(MAKE) -f Makefile.linux plugin
+-	@echo Epiar 0.5.0 build complete.
+-	@echo
+-	@echo Type './epiar' to play.
++	echo Building Epiar 0.5.0 ...
++	$(CC) $(CFLAGS) -I/usr/X11R6/lib/ $(OBJS) -o epiar $(LIBS)
++	echo Building plugins ...
++	$(MAKE) -f Makefile.linux plugin
++	echo Epiar 0.5.0 build complete.
++	echo
++	echo Type './epiar' to play.
+ 
+ static:  $(OBJS)
+-	@echo Building Epiar 0.5.0 and linking statically ...
+-	@$(CC) $(CFLAGS) -L/usr/X11R6/lib -L/opt/gnome-2.1/lib $(OBJS) -o epiar $(STATIC_LIBS)
+-	@echo Building plugins ...
+-	@$(MAKE) plugin
+-	@echo Epiar 0.5.0 build complete.
+-	@echo
+-	@echo Type './epiar' to play.
++	echo Building Epiar 0.5.0 and linking statically ...
++	$(CC) $(CFLAGS) -L/usr/X11R6/lib -L/opt/gnome-2.1/lib $(OBJS) -o epiar $(STATIC_LIBS)
++	echo Building plugins ...
++	$(MAKE) plugin
++	echo Epiar 0.5.0 build complete.
++	echo
++	echo Type './epiar' to play.
+ 
+ clean:
+-	@rm -f $(OBJS)
+-	@rm -f plugins/*.so
+-	@rm -f *~
+-	@rm -f src/*~
+-	@rm -f src/system/*~
+-	@rm -f src/system/video/*~
+-	@rm -f src/audio/*~
+-	@rm -f epiar
++	rm -f $(OBJS)
++	rm -f plugins/*.so
++	rm -f *~
++	rm -f src/*~
++	rm -f src/system/*~
++	rm -f src/system/video/*~
++	rm -f src/audio/*~
++	rm -f epiar
+ 
+ main.o: src/main.c
+-	@$(CC) $(CFLAGS) -c src/main.c
++	$(CC) $(CFLAGS) -c src/main.c
+ 
+ init.o: src/system/init.c
+-	@$(CC) $(CFLAGS) -c src/system/init.c
++	$(CC) $(CFLAGS) -c src/system/init.c
+ 
+ video.o: src/system/video/video.c
+-	@$(CC) $(CFLAGS) -c src/system/video/video.c
++	$(CC) $(CFLAGS) -c src/system/video/video.c
+ 
+ backbuffer.o: src/system/video/backbuffer.c
+-	@$(CC) $(CFLAGS) -c src/system/video/backbuffer.c
++	$(CC) $(CFLAGS) -c src/system/video/backbuffer.c
+ 
+ debug.o: src/system/debug.c
+-	@$(CC) $(CFLAGS) -c src/system/debug.c
++	$(CC) $(CFLAGS) -c src/system/debug.c
+ 
+ audio.o: src/audio/audio.c
+-	@$(CC) $(CFLAGS) -c src/audio/audio.c
++	$(CC) $(CFLAGS) -c src/audio/audio.c
+ 
+ linux_video.o: src/osdep/linux/linux_video.c
+-	@$(CC) $(CFLAGS) -c src/osdep/linux/linux_video.c
++	$(CC) $(CFLAGS) -c src/osdep/linux/linux_video.c
+ 
+ sprite.o: src/sprite/sprite.c
+-	@$(CC) $(CFLAGS) -c src/sprite/sprite.c
++	$(CC) $(CFLAGS) -c src/sprite/sprite.c
+ 
+ menu.o: src/menu/menu.c
+-	@$(CC) $(CFLAGS) -c src/menu/menu.c
++	$(CC) $(CFLAGS) -c src/menu/menu.c
+ 
+ game.o: src/game/game.c
+-	@$(CC) $(CFLAGS) -c src/game/game.c
++	$(CC) $(CFLAGS) -c src/game/game.c
+ 
+ update.o: src/game/update.c
+-	@$(CC) $(CFLAGS) -c src/game/update.c
++	$(CC) $(CFLAGS) -c src/game/update.c
+ 
+ input.o: src/input/input.c
+-	@$(CC) $(CFLAGS) -c src/input/input.c
++	$(CC) $(CFLAGS) -c src/input/input.c
+ 
+ rander.o: src/system/rander.c
+-	@$(CC) $(CFLAGS) -c src/system/rander.c
++	$(CC) $(CFLAGS) -c src/system/rander.c
+ 
+ planet.o: src/sprite/planet.c src/sprite/planet.h
+-	@$(CC) $(CFLAGS) -c src/sprite/planet.c
++	$(CC) $(CFLAGS) -c src/sprite/planet.c
+ 
+ fire.o: src/sprite/fire.c src/sprite/fire.h
+-	@$(CC) $(CFLAGS) -c src/sprite/fire.c
++	$(CC) $(CFLAGS) -c src/sprite/fire.c
+ 
+ ai.o: src/ai/ai.c src/ai/ai.h
+-	@$(CC) $(CFLAGS) -c src/ai/ai.c
++	$(CC) $(CFLAGS) -c src/ai/ai.c
+ 
+ linux_misc.o: src/osdep/linux/linux_misc.c src/osdep/linux/linux_misc.h
+-	@$(CC) $(CFLAGS) -c src/osdep/linux/linux_misc.c
++	$(CC) $(CFLAGS) -c src/osdep/linux/linux_misc.c
+ 
+ flare.o: src/sprite/flare.c src/sprite/flare.h
+-	@$(CC) $(CFLAGS) -c src/sprite/flare.c
++	$(CC) $(CFLAGS) -c src/sprite/flare.c
+ 
+ particle.o: src/sprite/particle.c src/sprite/particle.h
+-	@$(CC) $(CFLAGS) -c src/sprite/particle.c
++	$(CC) $(CFLAGS) -c src/sprite/particle.c
+ 
+ music.o: src/audio/music.c src/audio/music.h
+-	@$(CC) $(CFLAGS) -c src/audio/music.c
++	$(CC) $(CFLAGS) -c src/audio/music.c
+ 
+ hud.o: src/hud/hud.c src/hud/hud.h
+-	@$(CC) $(CFLAGS) -c src/hud/hud.c
++	$(CC) $(CFLAGS) -c src/hud/hud.c
+ 
+ afont_base.o: src/system/afont_base.c src/system/afont.h
+-	@$(CC) $(CFLAGS) -c src/system/afont_base.c
++	$(CC) $(CFLAGS) -c src/system/afont_base.c
+ 
+ afont_sdl.o: src/system/afont_sdl.c src/system/afont_sdl.h
+-	@$(CC) $(CFLAGS) -c src/system/afont_sdl.c
++	$(CC) $(CFLAGS) -c src/system/afont_sdl.c
+ 
+ trig.o: src/system/trig.c src/system/trig.h
+-	@$(CC) $(CFLAGS) -c src/system/trig.c
++	$(CC) $(CFLAGS) -c src/system/trig.c
+ 
+ playlist.o: src/audio/playlist.c src/audio/playlist.h
+-	@$(CC) $(CFLAGS) -c src/audio/playlist.c
++	$(CC) $(CFLAGS) -c src/audio/playlist.c
+ 
+ options.o: src/menu/options.c src/menu/options.h
+-	@$(CC) $(CFLAGS) -c src/menu/options.c
++	$(CC) $(CFLAGS) -c src/menu/options.c
+ 
+ save.o: src/system/save.c src/system/save.h
+-	@$(CC) $(CFLAGS) -c src/system/save.c
++	$(CC) $(CFLAGS) -c src/system/save.c
+ 
+ land.o: src/land/land.c src/land/land.h
+-	@$(CC) $(CFLAGS) -c src/land/land.c
++	$(CC) $(CFLAGS) -c src/land/land.c
+ 
+ land_dlg.o: src/land/land_dlg.c src/land/land_dlg.h
+-	@$(CC) $(CFLAGS) -c src/land/land_dlg.c
++	$(CC) $(CFLAGS) -c src/land/land_dlg.c
+ 
+ math.o: src/system/math.c src/system/math.h
+-	@$(CC) $(CFLAGS) -c src/system/math.c
++	$(CC) $(CFLAGS) -c src/system/math.c
+ 
+ status.o: src/menu/status.c src/menu/status.h
+-	@$(CC) $(CFLAGS) -c src/menu/status.c
++	$(CC) $(CFLAGS) -c src/menu/status.c
+ 
+ shipyard.o: src/land/shipyard.c src/land/shipyard.h
+-	@$(CC) $(CFLAGS) -c src/land/shipyard.c
++	$(CC) $(CFLAGS) -c src/land/shipyard.c
+ 
+ gui_commdlg.o: src/gui/gui_commdlg.c src/gui/gui_commdlg.h
+-	@$(CC) $(CFLAGS) -c src/gui/gui_commdlg.c
++	$(CC) $(CFLAGS) -c src/gui/gui_commdlg.c
+ 
+ navigation.o: src/navigation/navigation.c src/navigation/navigation.h
+-	@$(CC) $(CFLAGS) -c src/navigation/navigation.c
++	$(CC) $(CFLAGS) -c src/navigation/navigation.c
+ 
+ gate.o: src/sprite/gate.c src/sprite/gate.h
+-	@$(CC) $(CFLAGS) -c src/sprite/gate.c
++	$(CC) $(CFLAGS) -c src/sprite/gate.c
+ 
+ comm.o: src/comm/comm.c src/comm/comm.h
+-	@$(CC) $(CFLAGS) -c src/comm/comm.c
++	$(CC) $(CFLAGS) -c src/comm/comm.c
+ 
+ plugin.o: src/system/plugin.c src/system/plugin.h
+-	@$(CC) $(CFLAGS) -c src/system/plugin.c
++	$(CC) $(CFLAGS) -c src/system/plugin.c
+ 
+ path.o: src/system/path.c src/system/path.h
+-	@$(CC) $(CFLAGS) -c src/system/path.c
++	$(CC) $(CFLAGS) -c src/system/path.c
+ 
+ tutorial.o: src/tutorial/tutorial.c src/tutorial/tutorial.h
+-	@$(CC) $(CFLAGS) -c src/tutorial/tutorial.c
++	$(CC) $(CFLAGS) -c src/tutorial/tutorial.c
+ 
+ defender.o: src/ai/defender.c src/ai/defender.h
+-	@$(CC) $(CFLAGS) -c src/ai/defender.c
++	$(CC) $(CFLAGS) -c src/ai/defender.c
+ 
+ missions.o: src/missions/missions.c src/missions/missions.h
+-	@$(CC) $(CFLAGS) -c src/missions/missions.c
++	$(CC) $(CFLAGS) -c src/missions/missions.c
+ 
+ trader.o: src/ai/trader.c src/ai/trader.h
+-	@$(CC) $(CFLAGS) -c src/ai/trader.c
++	$(CC) $(CFLAGS) -c src/ai/trader.c
+ 
+ explorer.o: src/ai/explorer.c src/ai/explorer.h
+-	@$(CC) $(CFLAGS) -c src/ai/explorer.c
++	$(CC) $(CFLAGS) -c src/ai/explorer.c
+ 
+ alliances.o: src/alliances/alliances.c src/alliances/alliances.h
+-	@$(CC) $(CFLAGS) -c src/alliances/alliances.c
++	$(CC) $(CFLAGS) -c src/alliances/alliances.c
+ 
+ summary.o: src/land/summary.c src/land/summary.h
+-	@$(CC) $(CFLAGS) -c src/land/summary.c
++	$(CC) $(CFLAGS) -c src/land/summary.c
+ 
+ employment.o: src/land/employment.c src/land/employment.h
+-	@$(CC) $(CFLAGS) -c src/land/employment.c
++	$(CC) $(CFLAGS) -c src/land/employment.c
+ 
+ bar.o: src/land/bar.c src/land/bar.h
+-	@$(CC) $(CFLAGS) -c src/land/bar.c
++	$(CC) $(CFLAGS) -c src/land/bar.c
+ 
+ track.o: src/racing/track.c src/racing/track.h
+-	@$(CC) $(CFLAGS) -c src/racing/track.c
++	$(CC) $(CFLAGS) -c src/racing/track.c
+ 
+ model.o: src/sprite/model.c src/sprite/model.h
+-	@$(CC) $(CFLAGS) -c src/sprite/model.c
++	$(CC) $(CFLAGS) -c src/sprite/model.c
+ 
+ force.o: src/force/force.c src/force/force.h
+-	@$(CC) $(CFLAGS) -c src/force/force.c
++	$(CC) $(CFLAGS) -c src/force/force.c
+ 
+ weapon.o: src/sprite/weapon.c src/sprite/weapon.h
+-	@$(CC) $(CFLAGS) -c src/sprite/weapon.c
++	$(CC) $(CFLAGS) -c src/sprite/weapon.c
+ 
+ asteroid.o: src/asteroid/asteroid.c src/asteroid/asteroid.h
+-	@$(CC) $(CFLAGS) -c src/asteroid/asteroid.c
++	$(CC) $(CFLAGS) -c src/asteroid/asteroid.c
+ 
+ network.o: src/network/network.c src/network/network.h
+-	@$(CC) $(CFLAGS) -c src/network/network.c
++	$(CC) $(CFLAGS) -c src/network/network.c
+ 
+ chunk.o: src/sprite/chunk.c src/sprite/chunk.h
+-	@$(CC) $(CFLAGS) -c src/sprite/chunk.c
++	$(CC) $(CFLAGS) -c src/sprite/chunk.c
+ 
+ gui_btab.o: src/gui/gui_btab.c src/gui/gui.h
+-	@$(CC) $(CFLAGS) -c src/gui/gui_btab.c
++	$(CC) $(CFLAGS) -c src/gui/gui_btab.c
+ 
+ gui_button.o: src/gui/gui_button.c src/gui/gui.h
+-	@$(CC) $(CFLAGS) -c src/gui/gui_button.c
++	$(CC) $(CFLAGS) -c src/gui/gui_button.c
+ 
+ gui.o: src/gui/gui.c src/gui/gui.h
+-	@$(CC) $(CFLAGS) -c src/gui/gui.c
++	$(CC) $(CFLAGS) -c src/gui/gui.c
+ 
+ gui_checkbox.o: src/gui/gui_checkbox.c src/gui/gui.h
+-	@$(CC) $(CFLAGS) -c src/gui/gui_checkbox.c
++	$(CC) $(CFLAGS) -c src/gui/gui_checkbox.c
+ 
+ gui_commondlg.o: src/gui/gui_commondlg.c src/gui/gui.h
+-	@$(CC) $(CFLAGS) -c src/gui/gui_commondlg.c
++	$(CC) $(CFLAGS) -c src/gui/gui_commondlg.c
+ 
+ gui_frame.o: src/gui/gui_frame.c src/gui/gui.h
+-	@$(CC) $(CFLAGS) -c src/gui/gui_frame.c
++	$(CC) $(CFLAGS) -c src/gui/gui_frame.c
+ 
+ gui_image.o: src/gui/gui_image.c src/gui/gui.h
+-	@$(CC) $(CFLAGS) -c src/gui/gui_image.c
++	$(CC) $(CFLAGS) -c src/gui/gui_image.c
+ 
+ gui_keybox.o: src/gui/gui_keybox.c
+-	@$(CC) $(CFLAGS) -c src/gui/gui_keybox.c
++	$(CC) $(CFLAGS) -c src/gui/gui_keybox.c
+ 
+ gui_label.o: src/gui/gui_label.c src/gui/gui.h
+-	@$(CC) $(CFLAGS) -c src/gui/gui_label.c
++	$(CC) $(CFLAGS) -c src/gui/gui_label.c
+ 
+ gui_scrollbar.o: src/gui/gui_scrollbar.c src/gui/gui.h
+-	@$(CC) $(CFLAGS) -c src/gui/gui_scrollbar.c
++	$(CC) $(CFLAGS) -c src/gui/gui_scrollbar.c
+ 
+ gui_session.o: src/gui/gui_session.c src/gui/gui.h
+-	@$(CC) $(CFLAGS) -c src/gui/gui_session.c
++	$(CC) $(CFLAGS) -c src/gui/gui_session.c
+ 
+ gui_tab.o: src/gui/gui_tab.c src/gui/gui.h
+-	@$(CC) $(CFLAGS) -c src/gui/gui_tab.c
++	$(CC) $(CFLAGS) -c src/gui/gui_tab.c
+ 
+ gui_textbox.o: src/gui/gui_textbox.c src/gui/gui.h
+-	@$(CC) $(CFLAGS) -c src/gui/gui_textbox.c
++	$(CC) $(CFLAGS) -c src/gui/gui_textbox.c
+ 
+ gui_text_entry.o: src/gui/gui_text_entry.c src/gui/gui.h
+-	@$(CC) $(CFLAGS) -c src/gui/gui_text_entry.c
++	$(CC) $(CFLAGS) -c src/gui/gui_text_entry.c
+ 
+ gui_window.o: src/gui/gui_window.c src/gui/gui.h
+-	@$(CC) $(CFLAGS) -c src/gui/gui_window.c
++	$(CC) $(CFLAGS) -c src/gui/gui_window.c
+ 
+ gui_listbox.o: src/gui/gui_listbox.c src/gui/gui.h
+-	@$(CC) $(CFLAGS) -c src/gui/gui_listbox.c
++	$(CC) $(CFLAGS) -c src/gui/gui_listbox.c
+ 
+ net_sprite.o: src/network/net_sprite.c
+-	@$(CC) $(CFLAGS) -c src/network/net_sprite.c
++	$(CC) $(CFLAGS) -c src/network/net_sprite.c
+ 
+ upgrade.o: src/sprite/upgrade.c
+-	@$(CC) $(CFLAGS) -c src/sprite/upgrade.c
++	$(CC) $(CFLAGS) -c src/sprite/upgrade.c
+ 
+ eaf.o: src/system/eaf.c src/system/eaf.h
+-	@$(CC) $(CFLAGS) -c src/system/eaf.c
++	$(CC) $(CFLAGS) -c src/system/eaf.c
+ 
+ scenario.o: src/game/scenario.c src/game/scenario.h
+-	@$(CC) $(CFLAGS) -c src/game/scenario.c
++	$(CC) $(CFLAGS) -c src/game/scenario.c
+ 
+ pirate.o: src/ai/pirate.c src/ai/pirate.h
+-	@$(CC) $(CFLAGS) -c src/ai/pirate.c
++	$(CC) $(CFLAGS) -c src/ai/pirate.c
+ 
+ outfit.o: src/outfit/outfit.c src/outfit/outfit.h
+-	@$(CC) $(CFLAGS) -c src/outfit/outfit.c
++	$(CC) $(CFLAGS) -c src/outfit/outfit.c
+ 
+ esf.o: src/system/esf.c src/system/esf.h
+-	@$(CC) $(CFLAGS) -c src/system/esf.c
++	$(CC) $(CFLAGS) -c src/system/esf.c
+ 
+ timer.o: src/system/timer.c src/system/timer.h
+-	@$(CC) $(CFLAGS) -c src/system/timer.c
++	$(CC) $(CFLAGS) -c src/system/timer.c
+ 
+ font.o: src/system/font.c src/system/font.h
+-	@$(CC) $(CFLAGS) -c src/system/font.c
++	$(CC) $(CFLAGS) -c src/system/font.c
+ 
+ target.o: src/sprite/target.c src/sprite/target.h
+-	@$(CC) $(CFLAGS) -c src/sprite/target.c
++	$(CC) $(CFLAGS) -c src/sprite/target.c
+ 
+ zoom.o: src/system/video/zoom.c src/system/video/zoom.h
+-	@$(CC) $(CFLAGS) -c src/system/video/zoom.c
++	$(CC) $(CFLAGS) -c src/system/video/zoom.c
+ 
+ r_ships.o: src/sprite/r_ships.c src/sprite/r_ships.h
+-	@$(CC) $(CFLAGS) -c src/sprite/r_ships.c
++	$(CC) $(CFLAGS) -c src/sprite/r_ships.c
+ 
+ warship.o: src/ai/warship.c src/ai/warship.h
+-	@$(CC) $(CFLAGS) -c src/ai/warship.c
++	$(CC) $(CFLAGS) -c src/ai/warship.c
+ 
+ gate_defender.o: src/ai/gate_defender.c src/ai/gate_defender.h
+-	@$(CC) $(CFLAGS) -c src/ai/gate_defender.c
++	$(CC) $(CFLAGS) -c src/ai/gate_defender.c
+ 
+ maneuvers.o: src/ai/maneuvers.c src/ai/maneuvers.h
+-	@$(CC) $(CFLAGS) -c src/ai/maneuvers.c
++	$(CC) $(CFLAGS) -c src/ai/maneuvers.c
+ 
+ plugin: $(PLUGIN_OBJS)
+-	@echo Plugins built.
++	echo Plugins built.
+ 
+ plugins/radar.so: src/plugins/radar.c
+-	@$(CC) $(CFLAGS) $(OBJS) -shared src/plugins/radar.c -o plugins/radar.so
++	$(CC) $(CFLAGS) $(OBJS) -shared src/plugins/radar.c -o plugins/radar.so
+-- 
+2.31.1
+
