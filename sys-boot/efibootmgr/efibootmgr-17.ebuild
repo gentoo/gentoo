@@ -18,6 +18,7 @@ RDEPEND="
 	>=sys-libs/efivar-37:=
 "
 DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/${P}-fix-efivar-37-conflict.patch"
