@@ -12,11 +12,15 @@ MY_PV_12=$(get_version_component_range 1-2)
 
 DESCRIPTION="SDRplay API/HW driver for all RSPs"
 HOMEPAGE="https://www.sdrplay.com"
-SRC_URI="http://www.sdrplay.com/software/SDRplay_RSP_API-Linux-${PV}.run"
+SRC_URI="
+	amd64? ( http://www.sdrplay.com/software/SDRplay_RSP_API-Linux-${PV}.run )
+	arm?   ( https://www.sdrplay.com/software/SDRplay_RSP_API-ARM32-${PV}.run )
+	arm64? ( https://www.sdrplay.com/software/SDRplay_RSP_API-ARM64-${PV}.run )
+"
 
 LICENSE="SDRplay"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64"
 IUSE=""
 
 DEPEND="virtual/libusb:1
