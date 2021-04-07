@@ -9,7 +9,7 @@ Thanks-to: dolphinling
 -AC_ARG_VAR([LINKS], [Name and path of the `elinks' browser.])
 -AC_PATH_PROG([LINKS], [elinks], [elinks])
 +AC_ARG_VAR([LINKS], [Name and path of the `links/elinks' browser.])
-+AC_PATH_PROG([LINKS], [links elinks], [links])
++AC_PATH_PROGS([LINKS], [links elinks], [links])
  
  AC_ARG_VAR([W3M], [Name and path of the `w3m' browser.])
  AC_PATH_PROG([W3M], [w3m], [w3m])
