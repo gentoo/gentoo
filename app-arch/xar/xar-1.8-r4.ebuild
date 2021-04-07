@@ -24,6 +24,7 @@ DEPEND="
 	dev-libs/libxml2[${MULTILIB_USEDEP}]
 "
 RDEPEND="${DEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.1-ext2.patch
@@ -65,8 +66,8 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	append-libs $(pkg-config --libs openssl)
-	use elibc_musl && append-libs $(pkg-config --libs fts-standalone)
+	append-libs $($(tc_getPKG_CONFIG) --libs openssl)
+	use elibc_musl && append-libs $($(tc-getPKG_CONFIG) --libs fts-standalone)
 	ECONF_SOURCE=${S} \
 	econf \
 		--disable-static
