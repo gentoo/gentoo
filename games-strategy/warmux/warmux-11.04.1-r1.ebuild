@@ -39,6 +39,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gcc47.patch
 	"${FILESDIR}"/${P}-stat.patch
 	"${FILESDIR}"/${P}-fix-c++14.patch
+	"${FILESDIR}"/${P}-respect-AR.patch
 )
 
 src_prepare() {
