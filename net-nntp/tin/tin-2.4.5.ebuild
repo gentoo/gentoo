@@ -23,7 +23,7 @@ RDEPEND="dev-libs/libpcre
 	nls? ( sys-devel/gettext )
 	sasl? ( virtual/gsasl )
 	socks5? ( net-proxy/dante )
-	sys-libs/ncurses:0[unicode?]
+	sys-libs/ncurses:0=[unicode?]
 	unicode? ( dev-libs/icu:= )"
 DEPEND="${RDEPEND}"
 
