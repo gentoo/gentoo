@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -109,7 +109,8 @@ COMMON_DEPEND="
 	)
 	>=dev-libs/libpcre-8.41-r1:3=
 "
-DEPEND="virtual/yacc
+DEPEND="virtual/pkgconfig
+	virtual/yacc
 	static? ( sys-libs/ncurses[static-libs] )
 	|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 )
 	server? ( extraengine? ( jdbc? ( >=virtual/jdk-1.6 ) ) )

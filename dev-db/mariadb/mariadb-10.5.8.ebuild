@@ -88,7 +88,9 @@ COMMON_DEPEND="
 		libressl? ( dev-libs/libressl:0= )
 	)
 "
-BDEPEND="virtual/yacc
+BDEPEND="
+	virtual/pkgconfig
+	virtual/yacc
 	|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 )
 "
 DEPEND="${COMMON_DEPEND}

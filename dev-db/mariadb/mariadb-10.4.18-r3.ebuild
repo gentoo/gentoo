@@ -82,7 +82,8 @@ COMMON_DEPEND="
 	)
 	>=dev-libs/libpcre-8.41-r1:3=
 "
-BDEPEND="virtual/yacc
+BDEPEND="virtual/pkgconfig
+	virtual/yacc
 	|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 )
 "
 DEPEND="static? ( sys-libs/ncurses[static-libs] )
