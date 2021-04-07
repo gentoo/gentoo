@@ -1,0 +1,41 @@
+From 99b92a9d29f61beae05227c4f10ed54c41c02b11 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 7 Apr 2021 00:29:01 +0000
+Subject: [PATCH 2/2] Fix bashisms
+
+---
+ configure.ac | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index b5a70d5..4d3d598 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -22,13 +22,13 @@ AC_PROG_RANLIB
+ AC_LANG(C++)
+ 
+ dnl Check for a C++ compiler
+-if test "$ac_cv_prog_cxx_g" == no
++if test "$ac_cv_prog_cxx_g" = no
+ then
+ 	AC_MSG_ERROR([Cannot find a working C++ compiler])
+ fi
+ 
+ dnl Set PKG_CONFIG if necessary
+-if test "$PKG_CONFIG" == ""
++if test "$PKG_CONFIG" = ""
+ then
+ 	PKG_CONFIG=`which pkg-config`
+ fi
+@@ -71,7 +71,7 @@ AC_CHECK_LIB(physfs, PHYSFS_init, have_physfs_lib=yes)
+ if test x$have_physfs_hdr = xyes -a x$have_physfs_lib = xyes; then
+ 	enable_physfs="yes"
+ else
+-dnl if test "$ac_cv_prog_cxx_g" == no
++dnl if test "$ac_cv_prog_cxx_g" = no
+ dnl then
+ 	AC_MSG_ERROR([Could not find PhysicsFS])
+ dnl fi
+-- 
+2.31.1
+
