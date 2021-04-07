@@ -1,7 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
+inherit toolchain-funcs
 
 DESCRIPTION="An ncurses-based Nibbles clone"
 HOMEPAGE="http://lightless.org/gnake"
@@ -20,7 +22,7 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${PN}"
 
 src_compile() {
-	emake LDLIBS="$(pkg-config ncurses --libs)" gnake
+	emake LDLIBS="$($(tc-getPKG_CONFIG) ncurses --libs)" gnake
 }
 
 src_install() {
