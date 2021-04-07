@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{7,8,9} )
 DISTUTILS_SINGLE_IMPL=yes
 DISTUTILS_USE_SETUPTOOLS=no
-inherit xdg distutils-r1 tmpfiles prefix
+inherit xdg distutils-r1 tmpfiles prefix udev
 
 DESCRIPTION="X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy"
 HOMEPAGE="https://xpra.org/"
@@ -156,4 +156,13 @@ python_configure_all() {
 	)
 
 	export XPRA_SOCKET_DIRS="${EPREFIX}/run/xpra"
+}
+
+python_install_all() {
+	distutils-r1_python_prepare_all
+
+	# Move udev dir to the right place.
+	local dir=$(get_udevdir)
+	dodir "${dir%/*}"
+	mv -vnT "${ED}"/usr/lib/udev "${ED}${dir}" || die
 }
