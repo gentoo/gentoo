@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop flag-o-matic multilib
+inherit desktop flag-o-matic multilib toolchain-funcs
 
 DESCRIPTION="Terminal Emulator for X Windows"
 HOMEPAGE="https://invisible-island.net/xterm/"
@@ -47,7 +47,7 @@ src_configure() {
 	# Workaround for ncurses[tinfo] until upstream fixes their buildsystem using
 	# something sane like pkg-config or ncurses5-config and stops guessing libs
 	# Everything gets linked against ncurses anyways, so don't shout
-	append-libs $(pkg-config --libs ncurses)
+	append-libs $($(tc-getPKG_CONFIG) --libs ncurses)
 
 	local myeconfargs=(
 		--disable-full-tgetent
