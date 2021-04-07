@@ -36,6 +36,7 @@ BDEPEND="
 	app-text/docbook-xml-dtd:4.5
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt:0
+	dev-util/gperf
 	>=dev-util/meson-0.46
 	>=dev-util/intltool-0.50
 	>=sys-apps/coreutils-8.16
