@@ -1,59 +1,56 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit autotools
 
-MY_P="${P/_/-}"
-
+EGIT_COMMIT="9816ebb3e6fd9f23e993b8b7fcbd56f92d9c9197"
 DESCRIPTION="Portland utils for cross-platform/cross-toolkit/cross-desktop interoperability"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/xdg-utils/"
-#SRC_URI="https://dev.gentoo.org/~johu/distfiles/${P}.tar.xz"
-#SRC_URI="https://people.freedesktop.org/~rdieter/${PN}/${MY_P}.tar.gz
-#	https://dev.gentoo.org/~ssuominen/${P}-patchset-1.tar.xz"
-SRC_URI="https://portland.freedesktop.org/download/${MY_P}.tar.gz"
+SRC_URI="
+	https://gitlab.freedesktop.org/xdg/xdg-utils/-/archive/${EGIT_COMMIT}/${P}.tar.bz2"
+S=${WORKDIR}/xdg-utils-${EGIT_COMMIT}
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
-IUSE="doc"
+IUSE="dbus doc gnome"
+REQUIRED_USE="gnome? ( dbus )"
 
 RDEPEND="
 	dev-util/desktop-file-utils
 	dev-perl/File-MimeInfo
-	dev-perl/Net-DBus
-	dev-perl/X11-Protocol
-	sys-apps/dbus
+	dbus? (
+		sys-apps/dbus
+		gnome? (
+			dev-perl/Net-DBus
+			dev-perl/X11-Protocol
+		)
+	)
 	x11-misc/shared-mime-info
 	x11-apps/xprop
 	x11-apps/xset
 "
-DEPEND=">=app-text/xmlto-0.0.26-r1[text(+)]"
+BDEPEND=">=app-text/xmlto-0.0.28-r5[text(+)]"
 
 DOCS=( ChangeLog README RELEASE_NOTES TODO )
 
-RESTRICT="test" # Disabled because of sandbox violation(s)
-
-PATCHES=(
-	"${FILESDIR}"/xdg-utils-1.1.3-xdg-open-pcmanfm.patch
-)
-
-#S=${WORKDIR}/${MY_P}
+# Tests run random system programs, including interactive programs
+# that block forever
+RESTRICT="test"
 
 src_prepare() {
 	default
 	# If you choose to do git snapshot instead of patchset, you need to remember
 	# to run `autoconf` in ./ and `make scripts-clean` in ./scripts/ to refresh
 	# all the files
-	if [[ -d "${WORKDIR}/patch" ]]; then
-		eapply "${WORKDIR}/patch"
-	fi
 	eautoreconf
 }
 
 src_configure() {
 	export ac_cv_path_XMLTO="$(type -P xmlto) --skip-validation" #502166
 	default
+	emake -C scripts scripts-clean
 }
 
 src_install() {
