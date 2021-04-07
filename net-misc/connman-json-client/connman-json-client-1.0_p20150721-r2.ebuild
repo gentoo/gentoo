@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ IUSE=""
 
 DEPEND="dev-libs/json-c:0=
 	>=sys-apps/dbus-1.4
-	sys-libs/ncurses:0"
+	sys-libs/ncurses:0="
 RDEPEND="${DEPEND}"
 
 PATCHES=( "${FILESDIR}"/cjc-fix-for-json-0.14.patch )
