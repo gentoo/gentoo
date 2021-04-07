@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -92,7 +92,7 @@ src_prepare() {
 	# Only additional CFLAGS optimization is the -march flag
 	local march=$(get-flag -march)
 	sed -i \
-		-e "s:-lasound:$(pkg-config --libs alsa):" \
+		-e "s:-lasound:$($(tc-getPKG_CONFIG) --libs alsa):" \
 		-e "/^CPUOPTIMIZATIONS/d" \
 		-e '/^OPTIM_RELEASE/s/=.*/=$(CFLAGS)/' \
 		-e '/^OPTIM_DEBUG/s/=.*/=$(CFLAGS)/' \
