@@ -17,7 +17,7 @@ KEYWORDS=""
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-DEPEND="sys-libs/ncurses:0"
+DEPEND="sys-libs/ncurses:0="
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
