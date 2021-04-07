@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 RDEPEND="acct-group/gamestat
-	sys-libs/ncurses:0"
+	sys-libs/ncurses:0="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
