@@ -13,7 +13,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 
-RDEPEND="sys-libs/ncurses"
+RDEPEND="sys-libs/ncurses:="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
