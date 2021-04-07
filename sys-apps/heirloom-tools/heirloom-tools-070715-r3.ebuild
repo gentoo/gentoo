@@ -1,18 +1,21 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Heirloom toolchest - original Unix tools"
 HOMEPAGE="http://heirloom.sourceforge.net/tools.html"
 SRC_URI="http://downloads.sourceforge.net/project/heirloom/heirloom/${PV}/heirloom-${PV}.tar.bz2"
+S="${WORKDIR}/heirloom-${PV}"
 
 LICENSE="CDDL GPL-2 LGPL-2.1 9base ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
+	sys-libs/ncurses:=
 	sys-libs/zlib
 "
 DEPEND=${RDEPEND}
@@ -21,7 +24,7 @@ BDEPEND="
 	sys-devel/bc
 	virtual/pkgconfig
 "
-S="${WORKDIR}/heirloom-${PV}"
+
 PATCHES=(
 	"${FILESDIR}"/${P}-major.patch
 	"${FILESDIR}"/${P}-makefile.patch
