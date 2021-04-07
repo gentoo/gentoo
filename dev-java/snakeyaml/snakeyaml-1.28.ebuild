@@ -47,6 +47,10 @@ RDEPEND="
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-test-check.patch"
+)
+
 JAVA_SRC_DIR="src/main/java"
 
 JAVA_TEST_GENTOO_CLASSPATH="commons-io-1,joda-time,junit-4,commons-lang-3.4,velocity"
@@ -78,6 +82,11 @@ JAVA_TEST_EXCLUDES=(
 
 	"org.pyyaml.PyImportTest"	# No tests found in org.pyyaml.PyImportTest
 )
+
+src_prepare() {
+	default
+	java-utils-2_src_prepare
+}
 
 src_test() {
 	export EnvironmentKey1="EnvironmentValue1"

@@ -1,0 +1,14 @@
+diff --git a/src/test/java/org/yaml/snakeyaml/issues/issue377/BillionLaughsAttackTest.java b/src/test/java/org/yaml/snakeyaml/issues/issue377/BillionLaughsAttackTest.java
+index e87f330..28c836b 100644
+--- a/src/test/java/org/yaml/snakeyaml/issues/issue377/BillionLaughsAttackTest.java
++++ b/src/test/java/org/yaml/snakeyaml/issues/issue377/BillionLaughsAttackTest.java
+@@ -69,7 +69,8 @@ public class BillionLaughsAttackTest {
+             map.toString();
+             fail("Expected overflow");
+         } catch (Throwable e) {
+-            assertTrue(e.getMessage().contains("heap"));
++            final String message = e.getMessage();
++            assertTrue(message == null || message.contains("heap"));
+         }
+     }
+ 
