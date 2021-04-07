@@ -10,7 +10,7 @@ GENTOO_VDR_CONDITIONAL=yes
 DESCRIPTION="VDR Plugin: Xinelib PlugIn"
 HOMEPAGE="https://sourceforge.net/projects/xineliboutput/"
 SRC_URI="mirror://sourceforge/${PN#vdr-}/${P}.tgz
-		http://vdr.websitec.de/download/${PN}/${P}_c++11.patch.bz2"
+		http://vdr.websitec.de/download/${PN}/${P}_clang.patch.bz2"
 
 SLOT="0"
 LICENSE="GPL-2+"
@@ -73,8 +73,9 @@ src_prepare() {
 	# bug 711978
 	sed -e "s:X11  opengl:X11  OpenGl:" -i configure || die
 
-	# bug 771036, fix compile llvm/clang 
-	eapply "${WORKDIR}/${P}_c++11.patch"
+	# bug 771036,780462 do not call cc directly
+	eapply "${FILESDIR}/${P}_no-gcc.patch"
+	eapply "${WORKDIR}/${P}_clang.patch"
 }
 
 src_configure() {
