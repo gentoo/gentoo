@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -65,7 +65,7 @@ src_configure() {
 		cd canuum
 		xmkmf -a || die
 		# workaround for sys-libs/ncurses[tinfo]
-		sed -i "/^TERMCAP_LIB/s:=.*:=$(pkg-config --libs ncurses):" Makefile
+		sed -i "/^TERMCAP_LIB/s:=.*:=$($(tc-getPKG_CONFIG) --libs ncurses):" Makefile
 		cd - > /dev/null
 	fi
 
