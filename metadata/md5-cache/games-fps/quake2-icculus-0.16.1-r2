@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst prepare setup
+DEPEND=aalib? ( media-libs/aalib ) alsa? ( media-libs/alsa-lib ) opengl? ( virtual/opengl ) sdl? ( media-libs/libsdl[sound,joystick?,video] ) X? ( x11-libs/libXxf86dga x11-libs/libXxf86vm ) X? ( x11-base/xorg-proto ) rogue? ( app-arch/sharutils ) xatrix? ( app-arch/sharutils )
+DESCRIPTION=The icculus.org Linux port of iD's Quake 2 engine
+EAPI=7
+HOMEPAGE=http://icculus.org/quake2/
+INHERIT=desktop toolchain-funcs
+IUSE=aalib alsa cdinstall dedicated demo ipv6 joystick opengl qmax rogue sdl X xatrix
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=aalib? ( media-libs/aalib ) alsa? ( media-libs/alsa-lib ) opengl? ( virtual/opengl ) sdl? ( media-libs/libsdl[sound,joystick?,video] ) X? ( x11-libs/libXxf86dga x11-libs/libXxf86vm ) cdinstall? ( games-fps/quake2-data ) demo? ( games-fps/quake2-demodata )
+SLOT=0
+SRC_URI=http://icculus.org/quake2/files/quake2-r0.16.1.tar.gz qmax? ( http://icculus.org/quake2/files/maxpak.pak ) rogue? ( mirror://idsoftware/quake2/source/roguesrc320.shar.Z ) xatrix? ( mirror://idsoftware/quake2/source/xatrixsrc320.shar.Z )
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=da414505391f59d4f1797337a52333e9

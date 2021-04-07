@@ -642,7 +642,7 @@ app-admin/augeas 1.11.0 1.11.0-r1 1.12.0: A library for changing configuration f
 app-admin/authbind 2.1.1 2.1.2: Bind sockets to privileged ports without root
 app-admin/aws-elb-tools 1.0.15.1-r1: Serves as the client interface to the Elastic Load Balancing web service
 app-admin/bastille 3.0.9-r2: Bastille-Linux is a security hardening tool
-app-admin/bitwarden-desktop-bin 1.23.1: Bitwarden password manager desktop client
+app-admin/bitwarden-desktop-bin 1.23.1 1.25.1: Bitwarden password manager desktop client
 app-admin/calamares 3.2.32.1: Distribution-independent installer framework
 app-admin/cancd 0.1.0-r4: CA NetConsole Daemon receives output from the Linux netconsole driver
 app-admin/ccze 0.2.1-r4: A flexible and fast logfile colorizer
@@ -11501,7 +11501,7 @@ games-fps/quake1-teamfortress 2.9-r1: The classic Team Fortress Quake World mod
 games-fps/quake1-textures 20050820-r1: Collection of graphical improvements for Quake 1
 games-fps/quake2-data 3.20-r1: iD Software's Quake 2 ... the data files
 games-fps/quake2-demodata 3.14-r1: Demo data for Quake 2
-games-fps/quake2-icculus 0.16.1-r1: The icculus.org Linux port of iD's Quake 2 engine
+games-fps/quake2-icculus 0.16.1-r2: The icculus.org Linux port of iD's Quake 2 engine
 games-fps/quake2-textures 0_beta8-r1: High-resolution textures for Quake 2
 games-fps/quakeforge 0.7.2-r1: New 3d engine based off of id Softwares's Quake and QuakeWorld game engine
 games-fps/qudos 0.40.1: Enhanced Quake 2 engine
