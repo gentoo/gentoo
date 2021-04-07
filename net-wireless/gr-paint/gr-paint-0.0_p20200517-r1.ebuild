@@ -14,7 +14,7 @@ else
 	S="${WORKDIR}/${PN}38-${COMMIT}"
 	KEYWORDS="~amd64"
 fi
-inherit cmake-utils python-single-r1
+inherit cmake python-single-r1
 
 DESCRIPTION="Paints monochrome images into the waterfall of a receiver"
 HOMEPAGE="https://github.com/drmpeg/gr-paint"
@@ -50,10 +50,10 @@ src_configure() {
 		-DENABLE_DOXYGEN=$(usex doc)
 		-DPYTHON_EXECUTABLE="${PYTHON}"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	python_optimize
 }
