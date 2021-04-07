@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,7 +21,7 @@ RDEPEND="
 	alsa? ( media-libs/alsa-lib )
 	dga? ( x11-libs/libXxf86dga )
 	flac? ( media-libs/flac )
-	ncurses? ( sys-libs/ncurses:0 )
+	ncurses? ( sys-libs/ncurses:0= )
 	png? ( media-libs/libpng:0 )
 	sdl? ( media-libs/libsdl[video] )
 	vorbis? (
