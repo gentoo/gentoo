@@ -29,7 +29,7 @@ CDEPEND="acct-group/clamav
 	dev-libs/tomsfastmath
 	>=sys-libs/zlib-1.2.2:=
 	bzip2? ( app-arch/bzip2 )
-	clamdtop? ( sys-libs/ncurses:0 )
+	clamdtop? ( sys-libs/ncurses:0= )
 	clamsubmit? ( net-misc/curl dev-libs/json-c:= )
 	elibc_musl? ( sys-libs/fts-standalone )
 	iconv? ( virtual/libiconv )
