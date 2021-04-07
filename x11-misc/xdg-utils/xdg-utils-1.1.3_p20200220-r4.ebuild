@@ -27,7 +27,7 @@ RDEPEND="
 	x11-apps/xset
 "
 BDEPEND="
-	>=app-text/xmlto-0.0.28-r5[text(+)]
+	>=app-text/xmlto-0.0.28-r3[text(+)]
 	virtual/awk
 "
 
