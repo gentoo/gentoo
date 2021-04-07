@@ -79,7 +79,7 @@ src_configure() {
 
 src_compile() {
 	export suffix="${LIVE_ABI_VERSION}.so"
-	local link_opts="$(usex ssl "$(pkg-config --libs libssl libcrypto)" '') -L. ${LDFLAGS}"
+	local link_opts="$(usex ssl "$($(tc-getPKG_CONFIG) --libs libssl libcrypto)" '') -L. ${LDFLAGS}"
 	local lib_suffix="${suffix#.}"
 
 	einfo "Beginning shared library build"
