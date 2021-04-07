@@ -1,33 +1,30 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils unpacker games
+EAPI=7
+
+inherit desktop unpacker wrapper
 
 MY_P="ut2004-lnx-demo${PV}.run"
 DESCRIPTION="Demo for the critically-acclaimed first-person shooter"
 HOMEPAGE="http://www.unrealtournament.com/"
 SRC_URI="mirror://gentoo/${MY_P}"
+S="${WORKDIR}"
 
 LICENSE="ut2003-demo"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 RESTRICT="strip"
-IUSE=""
 
-DEPEND=""
 RDEPEND="
 	sys-libs/libstdc++-v3:5
 	x11-libs/libX11[abi_x86_32(-)]
 	x11-libs/libXext[abi_x86_32(-)]
 	virtual/opengl[abi_x86_32(-)]
 "
-
-S=${WORKDIR}
-
-dir=${GAMES_PREFIX_OPT}/${PN}
-Ddir=${D}/${dir}
-QA_PREBUILT="${dir:1}/System/*"
+dir=opt/${PN}
+Ddir="${ED}"/${dir}
+QA_PREBUILT="${dir}/System/*"
 
 src_unpack() {
 	unpack_makeself
@@ -35,37 +32,31 @@ src_unpack() {
 }
 
 src_install() {
-	dodir "${dir}"
+	dodir ${dir}
 
 	tar xjf ut2004demo.tar.bz2 -C "${Ddir}" || die
 
-	if use x86
-	then
+	if use x86 ; then
 		tar xjf linux-x86.tar.bz2 || die
-	fi
-	if use amd64
-	then
+	elif use amd64 ; then
 		tar xjf linux-amd64.tar.bz2 || die
 	fi
 
-	insinto "${dir}"
+	insinto ${dir}
 	doins README.linux ut2004.xpm
 	newicon ut2004.xpm ut2004-demo.xpm
 
-	exeinto "${dir}"
+	exeinto ${dir}
 	doexe bin/ut2004-demo
 
-	exeinto "${dir}"/System
+	exeinto ${dir}/System
 	doexe System/{libSDL-1.2.so.0,openal.so,ucc-bin,ut2004-bin}
 
-	games_make_wrapper ut2004-demo ./ut2004-demo "${dir}" "${dir}"
+	make_wrapper ut2004-demo ./ut2004-demo "${dir}" "${dir}"
 	make_desktop_entry ut2004-demo "Unreal Tournament 2004 (Demo)" ut2004-demo
-
-	prepgamesdirs
 }
 
 pkg_postinst() {
-	games_pkg_postinst
 	echo
 	elog "For Text To Speech:"
 	elog "   1) emerge festival speechd"
