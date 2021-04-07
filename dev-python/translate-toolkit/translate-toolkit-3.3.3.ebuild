@@ -14,7 +14,7 @@ SRC_URI="https://github.com/translate/translate/releases/download/${PV}/${P}.tar
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 arm64 x86"
 IUSE="+html +ical +ini +subtitles +yaml"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
