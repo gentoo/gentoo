@@ -1,0 +1,15 @@
+BDEPEND=app-arch/unzip
+DEFINED_PHASES=install unpack
+DEPEND=games-fps/ut2003
+DESCRIPTION=Community Bonus Pack for UT2003
+EAPI=7
+HOMEPAGE=https://liandri.beyondunreal.com/Unreal_Tournament_2003
+INHERIT=unpacker
+KEYWORDS=~x86
+LICENSE=ut2003
+RDEPEND=games-fps/ut2003
+RESTRICT=bindist fetch mirror strip
+SLOT=1
+SRC_URI=https://downloads.unrealadmin.org/UT2003/BonusPack/cbp2003.zip
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	unpacker	517f16af48ee3ab88180dd58b5143213
+_md5_=3ef0c389896aa4ee275299a26d369814
