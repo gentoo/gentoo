@@ -1,5 +1,5 @@
---- src/linux/snd_alsa.c.old
-+++ src/linux/snd_alsa.c
+--- a/src/linux/snd_alsa.c
++++ b/src/linux/snd_alsa.c
 @@ -22,13 +22,22 @@
  	$Id: quake2-icculus-0.16.1-alsa.patch,v 1.2 2015/03/27 06:40:34 mr_bones_ Exp $
  */

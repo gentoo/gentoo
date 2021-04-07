@@ -1,5 +1,5 @@
---- src/linux/rw_x11.c.old
-+++ src/linux/rw_x11.c
+--- a/src/linux/rw_x11.c
++++ b/src/linux/rw_x11.c
 @@ -989,8 +989,8 @@
  	} 
  	else 
