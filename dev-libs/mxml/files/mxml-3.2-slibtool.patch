@@ -1,0 +1,26 @@
+From 4e2e31236f731c0b7e880078269d9f98f595bfd3 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Wed, 7 Apr 2021 09:17:52 -0700
+Subject: [PATCH] build: Don't use libtool.
+
+---
+ Makefile.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index 8c05daf..cdc3450 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -52,10 +52,10 @@ BUILDROOT	=	$(DSTROOT)
+ # Install commands...
+ #
+ 
+-INSTALL_BIN	=	$(LIBTOOL) $(INSTALL) -m 755
++INSTALL_BIN	=	$(INSTALL) -m 755
+ INSTALL_DATA	=	$(INSTALL) -m 644
+ INSTALL_DIR	=	$(INSTALL) -d
+-INSTALL_LIB	=	$(LIBTOOL) $(INSTALL) -m 755
++INSTALL_LIB	=	$(INSTALL) -m 755
+ INSTALL_MAN	=	$(INSTALL) -m 644
+ INSTALL_SCRIPT	=	$(INSTALL) -m 755
+ 
