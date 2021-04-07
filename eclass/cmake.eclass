@@ -130,6 +130,9 @@ if [[ ${PN} != cmake ]]; then
 	BDEPEND+=" dev-util/cmake"
 fi
 
+# Used in src_configure
+BDEPEND+=" virtual/pkgconfig"
+
 # @FUNCTION: cmake_run_in
 # @USAGE: <working dir> <run command>
 # @DESCRIPTION:
