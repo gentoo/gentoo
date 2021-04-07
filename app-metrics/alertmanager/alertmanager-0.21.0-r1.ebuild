@@ -25,6 +25,9 @@ BDEPEND="
 	acct-user/alertmanager
 "
 
+DEPEND=">=dev-lang/go-1.11
+	dev-util/promu"
+
 src_prepare() {
 	default
 	sed -i -e "s/{{.Revision}}/${GIT_COMMIT}/" .promu.yml || die
