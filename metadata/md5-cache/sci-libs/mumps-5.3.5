@@ -4,11 +4,12 @@ DEPEND=virtual/blas metis? ( || ( >=sci-libs/metis-5 >=sci-libs/parmetis-4 ) mpi
 DESCRIPTION=MUltifrontal Massively Parallel sparse direct matrix Solver
 EAPI=7
 HOMEPAGE=http://mumps.enseeiht.fr/
+INHERIT=fortran-2 flag-o-matic multilib toolchain-funcs
 IUSE=doc examples metis mpi +scotch static-libs
 KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=public-domain
 RDEPEND=virtual/blas metis? ( || ( >=sci-libs/metis-5 >=sci-libs/parmetis-4 ) mpi? ( >=sci-libs/parmetis-4 ) ) mpi? ( sci-libs/scalapack ) scotch? ( >=sci-libs/scotch-6.0.1:=[mpi=] ) virtual/fortran
 SLOT=0
 SRC_URI=http://mumps.enseeiht.fr/MUMPS_5.3.5.tar.gz
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	fortran-2	b4796813ccda91c9c0d3463fc90aa969	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=bd67b357b5a15beda87d522a11ab9e23
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	fortran-2	b4796813ccda91c9c0d3463fc90aa969	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741
+_md5_=6c13e03efb504d799f93e7d6f35e20b8
