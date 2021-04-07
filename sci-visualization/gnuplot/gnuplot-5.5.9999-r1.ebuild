@@ -119,8 +119,6 @@ src_configure() {
 	tc-export_build_env BUILD_CC
 	export CC_FOR_BUILD=${BUILD_CC}
 
-	use qt5 && append-cxxflags -std=c++11
-
 	econf \
 		--with-texdir="${TEXMF}/tex/latex/${PN}" \
 		--with-readline=$(usex readline gnu builtin) \
