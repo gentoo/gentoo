@@ -5158,7 +5158,7 @@ dev-java/tomcat-jstl-el 1.2.5-r1: JSP Standard Tag Library (JSTL) - EL jar
 dev-java/tomcat-jstl-impl 1.2.5-r1: JSP Standard Tag Library (JSTL) - Implementation jar
 dev-java/tomcat-jstl-spec 1.2.5-r1: JSP Standard Tag Library (JSTL) - Specification jar
 dev-java/tomcat-native 1.2.26 1.2.28: Allows Tomcat to use certain native resources for better performance
-dev-java/tomcat-servlet-api 4.1.40 5.5.36 6.0.53-r1 7.0.108 8.5.63 8.5.64 9.0.43 9.0.44 10.0.2 10.0.4: Tomcat's Servlet API 5.0/JSP API 3.0/EL API 4.0 implementation
+dev-java/tomcat-servlet-api 4.1.40 5.5.36 6.0.53-r1 7.0.108 8.5.63 8.5.64 9.0.43 9.0.44 10.0.2 10.0.4 10.0.5: Tomcat's Servlet API 5.0/JSP API 3.0/EL API 4.0 implementation
 dev-java/toolbar 1.1.0-r2: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22-r1: TouchGraph provides a set of interfaces for graph visualization
 dev-java/treelayout 1.0.2: Efficiently create compact tree layouts in Java
@@ -18195,7 +18195,7 @@ www-servers/servefile 0.5.1: Serve a single file via HTTP
 www-servers/sniproxy 0.6.0-r1: Proxies incoming HTTP and TLS connections based on the hostname
 www-servers/spawn-fcgi 1.6.4-r1: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thttpd 2.27.1 9999: Fork of thttpd, a small, fast, multiplexing webserver
-www-servers/tomcat 7.0.108 8.5.63 8.5.64 9.0.43 9.0.44 10.0.2 10.0.4: Tomcat Servlet-5.0/JSP-3.0/EL-4.0/WebSocket-2.0/JASIC-2.0 Container
+www-servers/tomcat 7.0.108 8.5.63 8.5.64 9.0.43 9.0.44 10.0.2 10.0.4 10.0.5: Tomcat Servlet-5.0/JSP-3.0/EL-4.0/WebSocket-2.0/JASIC-2.0 Container
 www-servers/tornado 6.0.4 6.1: Python web framework and asynchronous networking library
 www-servers/uwsgi 2.0.19.1-r100 2.0.19.1-r101: uWSGI server for Python web applications
 www-servers/varnish 6.0.6 6.3.2 6.4.0 6.5.0 6.5.1: Varnish is a state-of-the-art, high-performance HTTP accelerator
