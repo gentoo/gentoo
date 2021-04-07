@@ -2,9 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-inherit eutils flag-o-matic multilib
 
-IUSE=""
+inherit eutils flag-o-matic multilib toolchain-funcs
 
 MY_P="spice3f5sfix"
 DESCRIPTION="general-purpose circuit simulation program"
@@ -18,9 +17,9 @@ KEYWORDS="amd64 ~ppc x86"
 RDEPEND="sys-libs/ncurses:0=
 	x11-libs/libXaw
 	>=app-misc/editor-wrapper-3"
-
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
+BDEPEND="virtual/pkgconfig"
 
 S=${WORKDIR}/${MY_P}
 
@@ -46,10 +45,8 @@ src_prepare() {
 	sed -i -e "s:fgets(buf, BSIZE_SP:fgets(buf, sizeof(buf):g" \
 		src/lib/fte/misccoms.c || die
 
-	# fix missing libtinfo if ncurses compiled with USE=tinfo (bug #605718)
-	if has_version 'sys-libs/ncurses:0[tinfo]' ;then
-		sed -i -e "s:-lncurses:-lncurses -ltinfo:g" conf/linux || die
-	fi
+	# Fix missing libtinfo if ncurses compiled with USE=tinfo (bug #605718)
+	sed -i -e "s:-lncurses:$($(tc-getPKG_CONFIG) --libs ncurses):g" conf/linux || die
 
 	eapply_user
 }
