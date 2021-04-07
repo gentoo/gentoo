@@ -19,7 +19,8 @@ RESTRICT="test" #122603
 RDEPEND="selinux? ( sys-libs/libselinux )
 	net-libs/libnsl:0=
 	net-libs/libtirpc"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	virtual/pkgconfig"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-build.patch
