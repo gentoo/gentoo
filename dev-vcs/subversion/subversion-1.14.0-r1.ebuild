@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ DISTUTILS_OPTIONAL=1
 WANT_AUTOMAKE="none"
 GENTOO_DEPEND_ON_PERL="no"
 
-inherit autotools bash-completion-r1 db-use depend.apache flag-o-matic java-pkg-opt-2 libtool perl-module python-any-r1 ruby-single toolchain-funcs xdg-utils
+inherit autotools bash-completion-r1 db-use depend.apache flag-o-matic java-pkg-opt-2 libtool multilib perl-module python-any-r1 ruby-single toolchain-funcs xdg-utils
 
 MY_P="${P/_/-}"
 DESCRIPTION="Advanced version control system"
