@@ -1,8 +1,8 @@
 
 the x11 software renderer just needs some tweaks to get working
 
---- Makefile.old
-+++ Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -358,7 +358,7 @@
   endif
  
@@ -12,8 +12,8 @@ the x11 software renderer just needs some tweaks to get working
   endif
  
   ifeq ($(strip $(BUILD_GLX)),YES)
---- src/linux/rw_x11.c.old
-+++ src/linux/rw_x11.c
+--- a/src/linux/rw_x11.c
++++ b/src/linux/rw_x11.c
 @@ -53,7 +53,7 @@
  #include <X11/Xatom.h>
  #include <X11/keysym.h>
@@ -32,8 +32,8 @@ the x11 software renderer just needs some tweaks to get working
  #ifdef REDBLUE
  static PIXEL16 st2d_8to16table_s[2][256];
  static PIXEL24 st2d_8to24table_s[2][256];
---- src/ref_soft/r_poly.c.old
-+++ src/ref_soft/r_poly.c
+--- a/src/ref_soft/r_poly.c
++++ b/src/ref_soft/r_poly.c
 @@ -994,7 +994,7 @@
  		scale = yscale * pout->zi;
  		pout->v = (ycenter - scale * transformed[1]);
