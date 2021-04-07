@@ -61,6 +61,7 @@ pkg_setup() {
 	use lua && lua-single_pkg_setup
 	use python && python-single-r1_pkg_setup
 
+	# Added USE=openmp and this check for bug #779769
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
