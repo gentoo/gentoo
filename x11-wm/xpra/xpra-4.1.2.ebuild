@@ -6,17 +6,16 @@ EAPI=7
 PYTHON_COMPAT=( python3_{7,8,9} )
 DISTUTILS_SINGLE_IMPL=yes
 DISTUTILS_USE_SETUPTOOLS=no
-inherit xdg distutils-r1 tmpfiles prefix
+inherit xdg distutils-r1 tmpfiles prefix udev
 
-MY_P="${PN}-${PV%_p*}"
 DESCRIPTION="X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy"
 HOMEPAGE="https://xpra.org/"
-SRC_URI="https://xpra.org/src/${MY_P}.tar.xz"
+SRC_URI="https://xpra.org/src/${P}.tar.xz"
 
 LICENSE="GPL-2 BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="brotli +client +clipboard csc cups dbus ffmpeg jpeg +lz4 lzo minimal opengl pillow pulseaudio server sound test vpx webcam webp"
+IUSE="brotli +client +clipboard csc cups dbus doc ffmpeg jpeg +lz4 lzo minimal opengl pillow pulseaudio server sound test vpx webcam webp"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	|| ( client server )
@@ -86,6 +85,7 @@ BDEPEND="
 	$(python_gen_cond_dep '
 		>=dev-python/cython-0.16[${PYTHON_USEDEP}]
 	')
+	doc? ( app-text/pandoc )
 "
 
 RESTRICT="!test? ( test )"
@@ -94,10 +94,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.2_ignore-gentoo-no-compile.patch
 	"${FILESDIR}"/${PN}-3.0.2-ldconfig.patch
 	"${FILESDIR}"/${PN}-4.0.3-suid-warning.patch
-	"${FILESDIR}"/${PN}-4.0.6-r28363.patch
 )
-
-S="${WORKDIR}/${MY_P}"
 
 pkg_postinst() {
 	tmpfiles_process /usr/lib/tmpfiles.d/xpra.conf
@@ -109,6 +106,9 @@ python_prepare_all() {
 	hprefixify -w '/os.path/' setup.py
 	hprefixify tmpfiles.d/xpra.conf xpra/server/server_util.py \
 		xpra/platform{/xposix,}/paths.py xpra/scripts/server.py
+
+	sed -r -e "/\bdoc_dir =/s:/${PN}\":/${PF}/html\":" \
+		-i setup.py || die
 
 	if use minimal; then
 		sed -r -e 's/^(pam|scripts|xdg_open)_ENABLED.*/\1_ENABLED=False/' \
@@ -134,16 +134,15 @@ python_configure_all() {
 		$(use_with cups printing)
 		--without-debug
 		$(use_with dbus)
+		$(use_with doc docs)
 		$(use_with ffmpeg dec_avcodec2)
 		$(use_with ffmpeg enc_ffmpeg)
 		$(use_with ffmpeg enc_x264)
 		$(use_with ffmpeg enc_x265)
 		--with-gtk3
-		--without-html5
 		$(use_with jpeg jpeg_encoder)
 		$(use_with jpeg jpeg_decoder)
 		--without-mdns
-		--without-minify
 		$(use_with opengl)
 		$(use_with server shadow)
 		$(use_with server)
@@ -157,4 +156,13 @@ python_configure_all() {
 	)
 
 	export XPRA_SOCKET_DIRS="${EPREFIX}/run/xpra"
+}
+
+python_install_all() {
+	distutils-r1_python_prepare_all
+
+	# Move udev dir to the right place.
+	local dir=$(get_udevdir)
+	dodir "${dir%/*}"
+	mv -vnT "${ED}"/usr/lib/udev "${ED}${dir}" || die
 }
