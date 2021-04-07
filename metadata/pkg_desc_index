@@ -2244,7 +2244,7 @@ app-eselect/eselect-postgresql 2.4: Utility to select the default PostgreSQL slo
 app-eselect/eselect-python 20190417 20200719 99999999: Eselect module for management of multiple Python versions
 app-eselect/eselect-rails 0.24 0.25: Manages Ruby on Rails symlinks
 app-eselect/eselect-renpy 0.7: Manages renpy symlink
-app-eselect/eselect-repository 8 9: Manage repos.conf via eselect
+app-eselect/eselect-repository 8 9 10: Manage repos.conf via eselect
 app-eselect/eselect-ruby 20170723 20190121 20191222 20201225: Manages multiple Ruby versions
 app-eselect/eselect-rust 20200419: Eselect module for management of multiple Rust versions
 app-eselect/eselect-scala 0.1.1: Manages multiple Scala versions
@@ -5563,7 +5563,7 @@ dev-libs/libmaa 1.3.2: Library with low-level data structures which are helpful 
 dev-libs/libmanette 0.2.4 0.2.5: Simple GObject game controller library
 dev-libs/libmateweather 1.24.0-r1 1.24.1: MATE library to access weather information from online services
 dev-libs/libmaxminddb 1.5.2 9999: C library for the MaxMind DB file format
-dev-libs/libmba 0.9.1-r3: A library of generic C modules
+dev-libs/libmba 0.9.1-r4: A library of generic C modules
 dev-libs/libmcrypt 2.5.8-r4: libmcrypt provides uniform interface to access several encryption algorithms
 dev-libs/libmelf 0.4.0-r1: libmelf is a library interface for manipulating ELF object files
 dev-libs/libmemcached 1.0.18-r3: a C client library to the memcached server

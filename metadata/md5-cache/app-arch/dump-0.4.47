@@ -5,11 +5,11 @@ DESCRIPTION=Dump/restore ext2fs backup utilities
 EAPI=7
 HOMEPAGE=http://dump.sourceforge.net/
 IUSE=bzip2 debug ermt lzo readline selinux sqlite ssl static test uuid zlib
-KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ppc ppc64 ~sparc x86
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ppc ppc64 sparc x86
 LICENSE=BSD
 RDEPEND=>=sys-fs/e2fsprogs-1.27:= >=sys-libs/e2fsprogs-libs-1.27:= sys-apps/util-linux bzip2? ( app-arch/bzip2:= static? ( app-arch/bzip2[static-libs] ) ) zlib? ( >=sys-libs/zlib-1.1.4:= ) lzo? ( dev-libs/lzo:2= static? ( dev-libs/lzo:2[static-libs] ) ) sqlite? ( dev-db/sqlite:3= ) ermt? ( dev-libs/openssl:0= ) ssl? ( dev-libs/openssl:0= ) readline? ( sys-libs/readline:0= sys-libs/ncurses:= static? ( sys-libs/ncurses:=[static-libs] ) )
 REQUIRED_USE=ermt? ( ssl ) ssl? ( zlib ) test? ( sqlite? ( uuid ) )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://sourceforge/dump/dump-0.4b47.tar.gz
-_md5_=1bae4e24441ec2a6bbab2b7563aff330
+_md5_=a814d8508727372f7c3490c1728340e7
