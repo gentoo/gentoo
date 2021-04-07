@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit flag-o-matic systemd autotools
+inherit flag-o-matic multilib systemd autotools
 
 MY_PV=${PV/_rc/RC}
 DESCRIPTION="The PHP language runtime engine"
