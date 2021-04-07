@@ -83,6 +83,10 @@ src_prepare() {
 
 src_configure() {
 	append-cppflags -I"${EPREFIX}/usr/include/nss" -I"${EPREFIX}/usr/include/nspr"
+	# NOTE: 4.16.0 warns:
+	# "configure: WARNING: Using the nss library with rpm is deprecated and support will be removed in a future release!"
+	# Only libgcrypt (default) and openssl are not deprecated. We should consider this.
+	# bug #780684
 	econf \
 		--without-selinux \
 		--with-crypto=nss \
