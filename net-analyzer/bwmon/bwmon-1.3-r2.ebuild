@@ -9,13 +9,13 @@ DESCRIPTION="Simple ncurses bandwidth monitor"
 HOMEPAGE="http://bwmon.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
-BDEPEND="virtual/pkgconfig"
-RDEPEND="sys-libs/ncurses"
-DEPEND="${RDEPEND}"
-
 SLOT="0"
 LICENSE="GPL-2 public-domain"
 KEYWORDS="amd64 ~hppa ppc sparc x86"
+
+BDEPEND="virtual/pkgconfig"
+RDEPEND="sys-libs/ncurses:="
+DEPEND="${RDEPEND}"
 
 PATCHES=(
 		"${FILESDIR}"/${P}-build.patch
