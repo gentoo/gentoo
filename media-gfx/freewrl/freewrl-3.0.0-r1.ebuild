@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit autotools nsplugins eutils flag-o-matic java-pkg-opt-2 multilib
+inherit autotools nsplugins eutils flag-o-matic java-pkg-opt-2 multilib toolchain-funcs
 
 if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
@@ -85,8 +85,8 @@ src_configure() {
 			JAVASCRIPT_ENGINE_LIBS="-ljs"
 		fi
 		if has_version "dev-lang/spidermonkey:0[threadsafe]" ; then
-			JAVASCRIPT_ENGINE_CFLAGS+=" -DJS_THREADSAFE $(pkg-config --cflags nspr)"
-			JAVASCRIPT_ENGINE_LIBS="$(pkg-config --libs nspr) ${JAVASCRIPT_ENGINE_LIBS}"
+			JAVASCRIPT_ENGINE_CFLAGS+=" -DJS_THREADSAFE $($(tc-getPKG_CONFIG) --cflags nspr)"
+			JAVASCRIPT_ENGINE_LIBS="$($(tc-getPKG_CONFIG) --libs nspr) ${JAVASCRIPT_ENGINE_LIBS}"
 		fi
 		export JAVASCRIPT_ENGINE_CFLAGS
 		export JAVASCRIPT_ENGINE_LIBS
