@@ -1,7 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
+inherit toolchain-funcs
 
 DESCRIPTION="Space invaders clone, using ncurses library"
 HOMEPAGE="https://packages.gentoo.org/package/games-arcade/ascii-invaders"
@@ -24,7 +26,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake LDLIBS="$(pkg-config ncurses --libs)" invaders
+	emake LDLIBS="$($(tc-getPKG_CONFIG) ncurses --libs)" invaders
 }
 
 src_install() {
