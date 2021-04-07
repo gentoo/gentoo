@@ -4741,7 +4741,7 @@ dev-java/c3p0 0.9.5.1: JDBC drivers with JNDI-bindable DataSources
 dev-java/cal10n 0.8.1: java library for writing localized messages using resource bundle
 dev-java/cdegroot-db 0.08-r2: OO database written in Java
 dev-java/cdi-api 1.2 1.2-r1: Contexts and Dependency Injection for the Java EE platform
-dev-java/cglib 3.1 3.3.0: cglib is a powerful, high performance and quality Code Generation Library
+dev-java/cglib 3.3.0: cglib is a powerful, high performance and quality Code Generation Library
 dev-java/classmate 0.9.0-r1 1.0.0 1.1.0 1.2.0: Zero-dependency Java library for accurately introspecting type information
 dev-java/cldc-api 1.1-r1: Java ME Connected Limited Device Configuration API
 dev-java/codemodel 2.6: Java library for code generators
@@ -13229,7 +13229,7 @@ media-libs/libdvd-audio 1.0.0: library for extracting audio from DVD-Audio discs
 media-libs/libdvdcss 1.4.2-r1: A portable abstraction library for DVD decryption
 media-libs/libdvdnav 6.1.0 9999: Library for DVD navigation tools
 media-libs/libdvdread 6.1.1 9999: Library for DVD navigation tools
-media-libs/libebur128 1.2.4 1.2.6: Library implementing the EBU R128 loudness standard
+media-libs/libebur128 1.2.6: Library implementing the EBU R128 loudness standard
 media-libs/libemf 1.0.13: Library implementation of ECMA-234 API for the generation of enhanced metafiles
 media-libs/libeot 0.01 9999: Library for parsing Embedded OpenType files (Microsoft embedded font 'standard')
 media-libs/libepoxy 1.5.4 1.5.5 9999: Library for handling OpenGL function pointer management
