@@ -1,0 +1,12 @@
+DEFINED_PHASES=install unpack
+DEPEND=!dev-lang/julia app-arch/p7zip
+DESCRIPTION=High-performance programming language for technical computing
+EAPI=7
+HOMEPAGE=https://julialang.org/
+IUSE=elibc_glibc elibc_FreeBSD
+LICENSE=MIT
+PROPERTIES=live
+RDEPEND=!dev-lang/julia app-arch/p7zip
+RESTRICT=strip
+SLOT=9999
+_md5_=4e127277909aa968fb478e602094dd6c

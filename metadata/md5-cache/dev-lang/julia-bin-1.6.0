@@ -1,0 +1,13 @@
+DEFINED_PHASES=install
+DEPEND=!dev-lang/julia app-arch/p7zip
+DESCRIPTION=High-performance programming language for technical computing
+EAPI=7
+HOMEPAGE=https://julialang.org/
+IUSE=elibc_glibc
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=MIT
+RDEPEND=!dev-lang/julia app-arch/p7zip
+RESTRICT=strip
+SLOT=1.6
+SRC_URI=x86? ( https://julialang-s3.julialang.org/bin/linux/x86/1.6/julia-1.6.0-linux-i686.tar.gz ) amd64? ( elibc_glibc? ( https://julialang-s3.julialang.org/bin/linux/x64/1.6/julia-1.6.0-linux-x86_64.tar.gz ) elibc_musl? ( https://julialang-s3.julialang.org/bin/musl/x64/1.6/julia-1.6.0-musl-x86_64.tar.gz ) ) amd64-fbsd? ( https://julialang-s3.julialang.org/bin/freebsd/x64/1.6/julia-1.6.0-freebsd-x86_64.tar.gz ) arm64? ( https://julialang-s3.julialang.org/bin/linux/aarch64/1.6/julia-1.6.0-linux-aarch64.tar.gz ) ppc64? ( https://julialang-s3.julialang.org/bin/linux/ppc64le/1.6/julia-1.6.0-linux-ppc64le.tar.gz )
+_md5_=0d64620d9f89832f794d7708d99969c4
