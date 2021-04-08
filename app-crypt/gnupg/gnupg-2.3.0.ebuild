@@ -53,13 +53,13 @@ DOCS=(
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.1.20-gpgscm-Use-shorter-socket-path-lengts-to-improve-tes.patch"
-	#"${FILESDIR}/${PN}-2.3.0-sqlite_check.patch"
+	"${FILESDIR}/${PN}-2.3.0-sqlite_check.patch"
 )
 
 src_prepare() {
 	default
 
-	#eautoreconf
+	eautoreconf
 
 	# Inject SSH_AUTH_SOCK into user's sessions after enabling gpg-agent-ssh.socket in systemctl --user mode,
 	# idea borrowed from libdbus, see
