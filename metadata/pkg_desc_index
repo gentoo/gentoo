@@ -13612,7 +13612,7 @@ media-plugins/kodi-game-libretro-snes9x 1.60.0.16 9999: Snes9x GameClient for Ko
 media-plugins/kodi-game-libretro-twentyfortyeight 1.0.0.117 9999: 2048 for Kodi
 media-plugins/kodi-imagedecoder-heif 1.3.0 9999: HEIF image decoder for Kodi
 media-plugins/kodi-imagedecoder-raw 3.0.1 9999: RAW image decoder for Kodi
-media-plugins/kodi-inputstream-adaptive 2.6.8 9999: Kodi's Adaptive inputstream addon
+media-plugins/kodi-inputstream-adaptive 2.6.11 9999: Kodi's Adaptive inputstream addon
 media-plugins/kodi-inputstream-rtmp 3.1.1-r1 3.3.0 3.4.0 9999: Kodi's RTMP inputstream addon
 media-plugins/kodi-peripheral-joystick 1.7.0 1.7.1 9999: Libretro compatibility layer for the Kodi Game API
 media-plugins/kodi-peripheral-steamcontroller 9999: Steam controller driver for Kodi
@@ -17451,7 +17451,7 @@ sys-devel/libtool 2.4.6-r6 9999: A shared library tool for developers
 sys-devel/lld 10.0.1 10.0.1-r1 11.0.0 11.0.0-r1 11.0.1 11.0.1-r1 11.1.0 11.1.0-r1 12.0.0_rc2 12.0.0_rc3 12.0.0_rc4 12.0.0.9999 13.0.0.9999: The LLVM linker (link editor)
 sys-devel/llvm 10.0.1 11.0.0 11.0.1 11.1.0 12.0.0_rc2 12.0.0_rc3 12.0.0_rc4 12.0.0.9999 13.0.0.9999: Low Level Virtual Machine
 sys-devel/llvm-common 10.0.1 11.0.0 11.0.1 11.1.0 12.0.0_rc2 12.0.0_rc3 12.0.0_rc4 12.0.0.9999 13.0.0.9999: Common files shared between multiple slots of LLVM
-sys-devel/llvm-roc 3.7.0-r1 3.8.0 3.9.0 3.10.0 4.0.0 4.0.0-r2 4.0.1 4.1.0: Radeon Open Compute llvm,lld,clang
+sys-devel/llvm-roc 3.7.0-r1 3.8.0 3.9.0 3.10.0 4.0.0 4.0.0-r2 4.0.1 4.1.0 4.1.1: Radeon Open Compute llvm,lld,clang
 sys-devel/llvmgold 10 11 12 13: LLVMgold plugin symlink for autoloading
 sys-devel/m4 1.4.18-r2: GNU macro processor
 sys-devel/make 4.2.1-r4 4.3: Standard tool to compile source trees
