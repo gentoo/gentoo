@@ -76,26 +76,17 @@ _QT5_P=${QT5_MODULE}-everywhere-src-${PV}
 
 inherit estack flag-o-matic toolchain-funcs virtualx
 
-HOMEPAGE="https://www.qt.io/"
-LICENSE="|| ( GPL-2 GPL-3 LGPL-3 ) FDL-1.3"
-SLOT=5/$(ver_cut 1-2)
-
-case ${PV} in
-	5.15.9999)
-		# KDE upstream for 5.15 patches
-		HOMEPAGE+=" https://invent.kde.org/qt/qt/"
-		EGIT_BRANCH="kde/5.15"
-		;;
-	*)
+if [[ ${PN} != qtwebengine ]]; then
+	if [[ ${QT5_BUILD_TYPE} == live ]] || [[ -n ${KDE_ORG_COMMIT} ]]; then
+		# KDE Qt5PatchCollection
+		inherit kde.org
+	else
 		# official stable release
+		HOMEPAGE="https://www.qt.io/"
 		SRC_URI="https://download.qt.io/official_releases/qt/${PV%.*}/${PV}/submodules/${_QT5_P}.tar.xz"
 		S=${WORKDIR}/${_QT5_P}
-		;;
-esac
-
-EGIT_REPO_URI=( "https://invent.kde.org/qt/qt/${QT5_MODULE}.git" )
-
-[[ ${QT5_BUILD_TYPE} == live ]] && inherit git-r3
+	fi
+fi
 
 # @ECLASS-VARIABLE: QT5_BUILD_DIR
 # @OUTPUT_VARIABLE
@@ -103,6 +94,8 @@ EGIT_REPO_URI=( "https://invent.kde.org/qt/qt/${QT5_MODULE}.git" )
 # Build directory for out-of-source builds.
 : ${QT5_BUILD_DIR:=${S}_build}
 
+LICENSE="|| ( GPL-2 GPL-3 LGPL-3 ) FDL-1.3"
+SLOT=5/$(ver_cut 1-2)
 IUSE="debug test"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
@@ -121,23 +114,22 @@ fi
 
 ######  Phase functions  ######
 
-EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_install src_test pkg_postinst pkg_postrm
-
-# @FUNCTION: qt5-build_src_unpack
-# @DESCRIPTION:
-# Unpacks the sources.
-qt5-build_src_unpack() {
-	case ${QT5_BUILD_TYPE} in
-		live)    git-r3_src_unpack ;&
-		release) default ;;
-	esac
-}
+EXPORT_FUNCTIONS src_prepare src_configure src_compile src_install src_test pkg_postinst pkg_postrm
 
 # @FUNCTION: qt5-build_src_prepare
 # @DESCRIPTION:
 # Prepares the environment and patches the sources if necessary.
 qt5-build_src_prepare() {
 	qt5_prepare_env
+
+	if [[ -n ${KDE_ORG_COMMIT} ]]; then
+		# Upstream bumped version in 5.15 branch after 5.15.2 release but their
+		# 5.15.3 release is closed and this will never be more than a Qt 5.15.2
+		# with patches on top.
+		einfo "Preparing KDE Qt5PatchCollection snapshot at ${KDE_ORG_COMMIT}"
+		sed -e "/^MODULE_VERSION/s/5\.15\.3/5\.15\.2/" -i .qmake.conf || die
+		mkdir -p .git || die # need to fake a git repository for configure
+	fi
 
 	if [[ ${QT5_MODULE} == qtbase ]]; then
 		qt5_symlink_tools_to_build_dir
@@ -637,9 +629,11 @@ qt5_base_configure() {
 
 	# a forwarding header is no longer created since 5.8, causing the system
 	# config to always be used. bug 599636
-	# ${S}/include does not exist in live sources
+	# ${S}/include does not exist in live sources or kde.org snapshots
 	local basedir="${S}/"
-	[[ ${QT5_BUILD_TYPE} == live ]] && basedir=""
+	if [[ ${QT5_BUILD_TYPE} == live ]] || [[ -n ${KDE_ORG_COMMIT} ]]; then
+		basedir=""
+	fi
 	cp src/corelib/global/qconfig.h "${basedir}"include/QtCore/ || die
 
 	popd >/dev/null || die
