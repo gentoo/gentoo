@@ -18142,7 +18142,7 @@ www-client/opera-beta 75.0.3969.60: A fast and secure web browser
 www-client/opera-developer 76.0.3995.0 76.0.4009.0 76.0.4016.0: A fast and secure web browser
 www-client/otter 1.0.02 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
-www-client/qutebrowser 2.1.0 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
+www-client/qutebrowser 2.1.1 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
 www-client/seamonkey 2.53.6 2.53.7: Seamonkey Web Browser
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r3 99999: A fast unix command line interface to WWW
