@@ -24,7 +24,7 @@ fi
 LICENSE="BSD-2 CDDL MIT"
 # just libzfs soname major for now.
 # possible candidates: libuutil, libzpool, libnvpair. Those do not provide stable abi, but are considered.
-SLOT="0/4"
+SLOT="0/5"
 IUSE="custom-cflags debug kernel-builtin libressl minimal nls pam python +rootfs test-suite static-libs"
 
 DEPEND="
@@ -77,8 +77,6 @@ REQUIRED_USE="
 "
 
 RESTRICT="test"
-
-PATCHES=( "${FILESDIR}/bash-completion-sudo.patch" )
 
 pkg_setup() {
 	if use kernel_linux && use test-suite; then
