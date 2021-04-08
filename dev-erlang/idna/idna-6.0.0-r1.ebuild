@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,5 +21,5 @@ DOCS=( CHANGELOG README.md )
 S="${WORKDIR}/erlang-idna-${PV}"
 
 # Removes dependency to workaround for older erlang versions.
-# Patch from https://github.com/benoitc/erlang-idna/pull/31
-PATCHES=( "${FILESDIR}/idna-remove-unicode_util_compat.diff" )
+# Patch based on https://github.com/benoitc/erlang-idna/pull/31
+PATCHES=( "${FILESDIR}/0001-Remove-dependency-on-unicode_util_compat.patch" )
