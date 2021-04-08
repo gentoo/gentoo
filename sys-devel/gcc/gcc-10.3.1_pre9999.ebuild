@@ -3,8 +3,8 @@
 
 EAPI="7"
 
-PATCH_GCC_VER="10.2.0" # reuse subset of patches for latest for live ebuilds gcc
-PATCH_VER="2"
+PATCH_GCC_VER="10.3.0"
+PATCH_VER="1"
 
 inherit toolchain
 
@@ -16,12 +16,8 @@ BDEPEND="${CATEGORY}/binutils"
 
 src_prepare() {
 	local p upstreamed_patches=(
-		32_all_sparc_pie_TEXTREL.patch
-		33_all_lto-O0-mix-ICE-ipa-PR96291.patch
-		35_all_ipa-fix-bit-CP.patch
-		36_all_ipa-fix-bit-CP-p2.patch
+		# add them here
 	)
-
 	for p in "${upstreamed_patches[@]}"; do
 		rm -v "${WORKDIR}/patch/${p}" || die
 	done
