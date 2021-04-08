@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,16 +8,11 @@ inherit user
 DESCRIPTION="Gofish gopher server"
 HOMEPAGE="http://gofish.sourceforge.net"
 SRC_URI="mirror://sourceforge/gofish/${P}.tar.gz"
+S="${WORKDIR}/${PN}"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~ppc ~x86"
-IUSE=""
-
-DEPEND=""
-RDEPEND=""
-
-S=${WORKDIR}/${PN}
 
 pkg_setup() {
 	enewgroup gopher
@@ -25,9 +20,12 @@ pkg_setup() {
 }
 
 src_configure() {
-	econf \
-		--localstatedir=/var \
+	local myeconfargs=(
+		--localstatedir=/var
 		--disable-mmap-cache
+	)
+
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
