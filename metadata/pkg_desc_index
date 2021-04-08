@@ -8055,7 +8055,7 @@ dev-python/autopep8 1.5.5 1.5.6 9999: Automatically formats Python code to confo
 dev-python/autoprop 1.0.2 2.0.0 2.1.0 2.1.1 2.2.0: Infer properties from accessor methods
 dev-python/aws-sam-translator 1.34.0 1.35.0: A library that transform SAM templates into AWS CloudFormation templates
 dev-python/aws-xray-sdk-python 2.6.0 2.7.0: AWS X-Ray SDK for Python
-dev-python/awscli 1.19.3: Universal Command Line Environment for AWS
+dev-python/awscli 1.19.3 1.19.47: Universal Command Line Environment for AWS
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
 dev-python/backcall 0.2.0: Specifications for callback functions passed in to an API
 dev-python/backports-tempfile 1.0-r1: Backport of new features in Python's tempfile module
@@ -15529,7 +15529,7 @@ net-p2p/litecoind 0.10.4.0: The offical daemon to run your own (full) Litecoin n
 net-p2p/mktorrent 1.1_p20180912: Simple command line utility to create BitTorrent metainfo files
 net-p2p/mldonkey 3.1.7-r1: Multi-network P2P application written in Ocaml, with Gtk, web & telnet interface
 net-p2p/ncdc 1.22.1 9999: ncurses directconnect client
-net-p2p/nicotine+ 2.0.1-r1 2.1.2 2.2.0 2.2.2 3.0.2: A fork of nicotine, a Soulseek client in Python
+net-p2p/nicotine+ 2.2.2 3.0.2 3.0.4: A fork of nicotine, a Soulseek client in Python
 net-p2p/opendchub 0.8.2: hub software for Direct Connect
 net-p2p/qbittorrent 4.3.1 4.3.3 4.3.4.1 9999: BitTorrent client in C++ and Qt
 net-p2p/resilio-sync 2.6.1 2.6.3: Resilient, fast and scalable file synchronization tool
