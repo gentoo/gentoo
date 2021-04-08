@@ -7,6 +7,5 @@
 	</maintainer>
 	<use>
 		<flag name="proprietary-codecs">Enable codecs for patent-encumbered audio and video formats.</flag>
-		<flag name="widevine">Unsupported closed-source DRM capability (required by Netflix VOD)</flag>
 	</use>
 </pkgmetadata>
