@@ -23,6 +23,7 @@ PATCHES=(
 
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
+IUSE="debug"
 
 COMMON_DEPEND="sys-process/numactl
 	dev-libs/elfutils:="
@@ -43,4 +44,9 @@ src_prepare() {
 	sed -e "s:/opt/rocm/amdgcn/bitcode:/usr/lib/amdgcn/bitcode:" -i image/blit_src/CMakeLists.txt || die
 
 	cmake_src_prepare
+}
+
+src_configure() {
+	use debug || local mycmakeargs=(-DCMAKE_CXX_FLAGS='-DNDEBUG')
+	cmake_src_configure
 }
