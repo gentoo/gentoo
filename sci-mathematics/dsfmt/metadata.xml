@@ -2,8 +2,16 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
-		<email>sci-mathematics@gentoo.org</email>
-		<name>Gentoo Mathematics Project</name>
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>jeffrey@icurse.nl</email>
+		<name>Jeffrey Lin</name>
+	</maintainer>
+	<maintainer type="person" proxied="proxy">
+		<email>tamiko@gentoo.org</email>
+		<name>Matthias Maier</name>
 	</maintainer>
 	<longdescription lang="en">
 		The purpose of Double precision SIMD-oriented Fast Mersenne Twister (dSFMT)
