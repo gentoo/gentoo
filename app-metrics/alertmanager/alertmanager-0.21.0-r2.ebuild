@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit go-module
+inherit go-module systemd
 
 GIT_COMMIT=4c6c03eb
 MY_PV="${PV/_rc/-rc.}"
@@ -41,9 +41,10 @@ src_install() {
 	dobin bin/*
 	dodoc {README,CHANGELOG}.md
 	insinto /etc/alertmanager/
-	newins doc/examples/simple.yml config.yml.example
+	newins doc/examples/simple.yml config.yml
 	keepdir /var/lib/alertmanager /var/log/alertmanager
+	systemd_dounit "${FILESDIR}"/alertmanager.service
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
-	fowners ${PN}:${PN} /var/lib/alertmanager /var/log/alertmanager
+	fowners ${PN}:${PN} /etc/alertmanager /var/lib/alertmanager /var/log/alertmanager
 }
