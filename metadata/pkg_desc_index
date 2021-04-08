@@ -2222,7 +2222,7 @@ app-eselect/eselect-audicle 1.0.1-r1: Manages the /usr/bin/audicle symlink
 app-eselect/eselect-awk 0.3: Manages the {,/usr}/bin/awk symlink
 app-eselect/eselect-blas 0.1 0.2: BLAS/CBLAS module for eselect
 app-eselect/eselect-cblas 0.1: C-language BLAS module for eselect
-app-eselect/eselect-cdparanoia 0.1 0.1-r1: Manage /usr/bin/cdparanoia symlink
+app-eselect/eselect-cdparanoia 0.1-r1: Manage /usr/bin/cdparanoia symlink
 app-eselect/eselect-chuck 1.0.2: Manages the /usr/bin/chuck symlink
 app-eselect/eselect-ctags 1.18: Manages ctags implementations
 app-eselect/eselect-emacs 1.18: Manage multiple Emacs versions on one system
@@ -2237,7 +2237,7 @@ app-eselect/eselect-lib-bin-symlink 0.1.1-r1 9999: An eselect library to manage 
 app-eselect/eselect-lua 4-r1: Lua eselect module
 app-eselect/eselect-luajit 1: Manages LuaJIT symlinks
 app-eselect/eselect-miniaudicle 1.0.1-r2: Manages the /usr/bin/miniAudicle symlink
-app-eselect/eselect-mpg123 0.1 0.1-r1: Manage /usr/bin/mpg123 symlink
+app-eselect/eselect-mpg123 0.1-r1: Manage /usr/bin/mpg123 symlink
 app-eselect/eselect-notify-send 0.1: Manage /usr/bin/notify-send symlink
 app-eselect/eselect-oodict 20100228: Manages configuration of dictionaries for OpenOffice.Org
 app-eselect/eselect-opencascade 1: Manages opencascade env file
