@@ -62,6 +62,7 @@ python_install_all() {
 		      misc/userscripts/qute-bitwarden \
 		      misc/userscripts/qutedmenu \
 		      misc/userscripts/qute-keepass \
+		      misc/userscripts/qute-keepassxc \
 		      misc/userscripts/qute-lastpass \
 		      misc/userscripts/qute-pass \
 		      misc/userscripts/readability \
