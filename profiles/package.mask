@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # Lars Wendler <polynomial-c@gentoo.org> (2021-04-08)
+# Masked for testing and until revdeps have been fixed:
+# https://bugs.gentoo.org/781188
+>=dev-libs/icu-69.1
+>=dev-libs/icu-layoutex-69.1
+
+# Lars Wendler <polynomial-c@gentoo.org> (2021-04-08)
 # Masked for testing
 >=app-crypt/gnupg-2.3.0
 
