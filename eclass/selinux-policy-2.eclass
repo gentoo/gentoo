@@ -263,10 +263,15 @@ selinux-policy-2_pkg_postinst() {
 	local COMMAND
 
 	for i in ${POLICY_TYPES}; do
-		if [[ "${i}" == "strict" ]] && [[ "${MODS}" = "unconfined" ]]; then
-			einfo "Ignoring loading of unconfined module in strict module store.";
-			continue;
+		if [[ "${MODS}" = "unconfined" ]]; then
+			case ${i} in
+			strict|mcs|mls)
+				einfo "Ignoring loading of unconfined module in ${i} module store.";
+				continue
+				;;
+			esac
 		fi
+
 		einfo "Inserting the following modules into the $i module store: ${MODS}"
 
 		cd "${ROOT%/}/usr/share/selinux/${i}" || die "Could not enter /usr/share/selinux/${i}"
