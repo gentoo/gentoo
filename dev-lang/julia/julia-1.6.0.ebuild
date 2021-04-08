@@ -29,7 +29,6 @@ IUSE="+system-llvm"
 
 RDEPEND="
 	system-llvm? ( sys-devel/llvm:11=[llvm_targets_NVPTX(-)] )
-	!system-llvm? ( dev-util/cmake )
 "
 LLVM_MAX_SLOT=11
 
@@ -61,7 +60,8 @@ RDEPEND+="
 
 DEPEND="${RDEPEND}
 	dev-util/patchelf
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	!system-llvm? ( dev-util/cmake )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}"-1.1.0-fix_llvm_install.patch
