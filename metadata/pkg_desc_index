@@ -3633,7 +3633,7 @@ dev-db/gqlplus 1.16-r1: a front-end for Oracle program sqlplus with command-line
 dev-db/henplus 0.9.8-r1: Java-based multisession SQL shell for databases with JDBC support
 dev-db/hsqldb 1.8.1.3-r2: The leading SQL relational database engine written in Java
 dev-db/influxdb 1.5.1 1.6.3 1.6.4 1.8.0 1.8.0-r1 1.8.1 1.8.2 1.8.3: Scalable datastore for metrics, events, and real-time analytics
-dev-db/innotop 1.12.0: A text-mode MySQL and InnoDB monitor like mytop, but with many more features
+dev-db/innotop 1.12.0 1.13.0: A text-mode MySQL and InnoDB monitor like mytop, but with many more features
 dev-db/kdb 3.2.0: Database connectivity and creation framework for various vendors
 dev-db/kyotocabinet 1.2.77: A straightforward implementation of DBM
 dev-db/libdbi 0.9.0: A database-independent abstraction layer in C
@@ -10762,7 +10762,7 @@ dev-util/clinfo 3.0.21.02.21 9999: A tool to display info about the system's Ope
 dev-util/clion 2020.3.3: A complete toolset for C and C++ development
 dev-util/clippy 7.5.1: Standalone clippy tool built from FRR sources
 dev-util/cloc 1.84 1.86 1.88: Count Lines of Code
-dev-util/cmake 3.13.5 3.18.5 3.19.6 3.19.7 3.20.0: Cross platform Make
+dev-util/cmake 3.13.5 3.18.5 3.19.6 3.19.7 3.20.0 3.20.1: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
 dev-util/cmocka 1.1.5: Unit testing framework for C
 dev-util/codeblocks 17.12-r303 17.12-r304 20.03-r1 20.03-r2 9999: The open source, cross platform, free C, C++ and Fortran IDE
@@ -12914,7 +12914,7 @@ media-gfx/flameshot 0.6.0: Powerful yet simple to use screenshot software
 media-gfx/fondu 20060102-r1: Utilities for converting between and manipulating mac fonts and unix fonts
 media-gfx/fontforge 20201107: postscript font editor and converter
 media-gfx/fotowall 1.0: Qt5 tool for creating wallpapers
-media-gfx/fotoxx 15.05: Program for improving image files made with a digital camera
+media-gfx/fotoxx 15.05 21.40: Program for improving image files made with a digital camera
 media-gfx/freecad 0.19.1 9999: QT based Computer Aided Design application
 media-gfx/freepv 0.3.0-r5: Panorama viewer (Quicktime, PangeaVR, GLPanoView formats)
 media-gfx/freewrl 3.0.0-r1 9999: VRML97 and X3D compliant browser, library, and web-browser plugin
@@ -17350,7 +17350,7 @@ sys-cluster/crmsh 4.2.1: Pacemaker command line interface for management and con
 sys-cluster/csync2 2.0 2.0-r2: Cluster synchronization tool
 sys-cluster/drbd-utils 9.15.1-r1: mirror/replicate block-devices across a network-connection
 sys-cluster/fake 1.1.10: Switch in backup servers on a LAN
-sys-cluster/galera 25.3.28-r1 25.3.32 26.4.6 26.4.7: Synchronous multi-master replication engine that provides the wsrep API
+sys-cluster/galera 25.3.28-r1 25.3.32 26.4.6 26.4.7 26.4.8: Synchronous multi-master replication engine that provides the wsrep API
 sys-cluster/ganglia 3.7.1-r2: A scalable distributed monitoring system for clusters and grids
 sys-cluster/ganglia-web 3.7.3-r1: Web frontend for sys-cluster/ganglia
 sys-cluster/gasnet 1.26.4 1.26.4-r1 1.28.0 1.28.2 1.30.0: Networking middleware for partitioned global address space (PGAS) language
