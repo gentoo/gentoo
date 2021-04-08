@@ -1,5 +1,34 @@
+From 9c91cd33265f4706e5e614349b879c059ffaeaf9 Mon Sep 17 00:00:00 2001
+From: Florian Schmaus <flo@geekplace.eu>
+Date: Thu, 8 Apr 2021 19:43:43 +0200
+Subject: [PATCH] Remove dependency on unicode_util_compat
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Newer erlang versions, and this includes all dev-lang/erlang version
+currently in ::gentoo, do not require unicode_util_compat.
+
+This is based on
+https://github.com/benoitc/erlang-idna/pull/31/. Holger Weiß suggested
+to additionaly patch unicode_util_compat out of
+src/idna.app.src. Thanks Holger. :)
+
+Signed-off-by: Florian Schmaus <flo@geekplace.eu>
+Suggested-by: Holger Weiß <holger@zedat.fu-berlin.de>
+---
+ rebar.config         |  2 +-
+ rebar.config.script  | 11 -----------
+ rebar.lock           |  6 ------
+ src/idna.app.src     |  2 +-
+ src/idna.erl         | 10 +++++-----
+ src/idna_context.erl |  4 ++--
+ 6 files changed, 9 insertions(+), 26 deletions(-)
+ delete mode 100644 rebar.config.script
+ delete mode 100644 rebar.lock
+
 diff --git a/rebar.config b/rebar.config
-index 84fd954..cd02013 100644
+index 84fd954aea01..cd0201386367 100644
 --- a/rebar.config
 +++ b/rebar.config
 @@ -1,3 +1,3 @@
@@ -9,7 +38,7 @@ index 84fd954..cd02013 100644
 +{deps, []}.
 diff --git a/rebar.config.script b/rebar.config.script
 deleted file mode 100644
-index d2bce94..0000000
+index d2bce945b8b2..000000000000
 --- a/rebar.config.script
 +++ /dev/null
 @@ -1,11 +0,0 @@
@@ -26,7 +55,7 @@ index d2bce94..0000000
 -end.
 diff --git a/rebar.lock b/rebar.lock
 deleted file mode 100644
-index 15fc8a1..0000000
+index 15fc8a117070..000000000000
 --- a/rebar.lock
 +++ /dev/null
 @@ -1,6 +0,0 @@
@@ -36,8 +65,21 @@ index 15fc8a1..0000000
 -{pkg_hash,[
 - {<<"unicode_util_compat">>, <<"D869E4C68901DD9531385BB0C8C40444EBF624E60B6962D95952775CAC5E90CD">>}]}
 -].
+diff --git a/src/idna.app.src b/src/idna.app.src
+index a6a75374351b..d6475067c2ad 100644
+--- a/src/idna.app.src
++++ b/src/idna.app.src
+@@ -3,7 +3,7 @@
+   {vsn, "6.0.0"},
+   {modules, []},
+   {registered, []},
+-  {applications, [kernel, stdlib, unicode_util_compat]},
++  {applications, [kernel, stdlib]},
+ 
+   {maintainers, ["Benoit Chesneau"]},
+   {licenses, ["BSD"]},
 diff --git a/src/idna.erl b/src/idna.erl
-index 5f010b3..32b1745 100644
+index 3436dd995477..24d96b810ceb 100644
 --- a/src/idna.erl
 +++ b/src/idna.erl
 @@ -333,7 +333,7 @@ lowercase_list([], true) ->
@@ -80,7 +122,7 @@ index 5f010b3..32b1745 100644
      [CP|Str] -> [CP|characters_to_nfc_list(Str)];
      [] -> []
 diff --git a/src/idna_context.erl b/src/idna_context.erl
-index afcb814..a09ff1f 100644
+index afcb814956e3..a09ff1f92992 100644
 --- a/src/idna_context.erl
 +++ b/src/idna_context.erl
 @@ -28,7 +28,7 @@ valid_contextj(Label, Pos) ->
@@ -101,3 +143,6 @@ index afcb814..a09ff1f 100644
      #{ ccc := ?virama_combining_class } -> true;
      _ -> false
    end;
+-- 
+2.30.2
+
