@@ -8903,7 +8903,7 @@ dev-python/pypng 0.0.20: Pure Python PNG image encoder/decoder
 dev-python/pypowervm 1.1.24: Python binding for the PowerVM REST API
 dev-python/pyprof2calltree 1.4.4 1.4.5: convert python profile data to kcachegrind calltree form
 dev-python/pyproj 2.6.1_p1 3.0.1: Python interface to the PROJ library
-dev-python/pyproject2setuppy 10 11: Cheap setup.py hack to install flit & poetry-based projects
+dev-python/pyproject2setuppy 10 11 12: Cheap setup.py hack to install flit & poetry-based projects
 dev-python/pypugjs 5.9.5 5.9.8 5.9.9: Pug (Jade) syntax adapter for Django, Jinja2 and Mako templates
 dev-python/pypy 7.3.3_p2-r1: A fast, compliant alternative implementation of the Python language
 dev-python/pypy-exe 7.3.3_p2: PyPy executable (build from source)
