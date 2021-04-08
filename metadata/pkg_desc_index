@@ -18119,7 +18119,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.7: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 89.0.4389.114 90.0.4430.51 91.0.4464.5: Open-source version of Google Chrome web browser
+www-client/chromium 89.0.4389.114 90.0.4430.61 91.0.4464.5: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5-r3 3.1_pre20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.13.5-r100 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.34.4 3.36.4: GNOME webbrowser based on Webkit
@@ -18140,7 +18140,7 @@ www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.10-r4: a free, open source web browser
 www-client/opera 75.0.3969.141: A fast and secure web browser
-www-client/opera-beta 75.0.3969.60: A fast and secure web browser
+www-client/opera-beta 76.0.4017.5: A fast and secure web browser
 www-client/opera-developer 76.0.3995.0 76.0.4009.0 76.0.4016.0: A fast and secure web browser
 www-client/otter 1.0.02 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
