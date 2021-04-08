@@ -19,15 +19,10 @@ KEYWORDS="amd64 x86"
 
 RDEPEND="
 	dev-python/lxml[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	media-gfx/cairosvg[${PYTHON_USEDEP}]
-"
+	media-gfx/cairosvg[${PYTHON_USEDEP}]"
+
 BDEPEND="
-	test? (
-		dev-python/pyquery[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}]
-	)
-"
+	test? ( dev-python/pyquery[${PYTHON_USEDEP}] )"
 
 PATCHES=( "${FILESDIR}/${PV}-fix-tests.patch" )
 
