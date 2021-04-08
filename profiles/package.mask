@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (2021-04-08)
+# Masked for testing
+>=app-crypt/gnupg-2.3.0
+
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-04-06)
 # Last release of dev-java/cal10n in 2013, no consumer
 # in the tree except dev-java/slf4j-ext which is not
