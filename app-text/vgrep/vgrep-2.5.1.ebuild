@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -11,25 +11,20 @@ SRC_URI="https://github.com/vrothberg/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="BSD GPL-3+ MIT MIT-with-advertising"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
-# Uses golangci-lint
-RESTRICT="test"
+# golangci-lint is required to run tests which is not yet packaged
+RESTRICT="strip test"
 
 BDEPEND="dev-go/go-md2man"
 
 DOCS=( README.md )
-
-# go binary
-QA_PRESTRIPPED="usr/bin/vgrep"
 
 src_compile() {
 	emake build
 }
 
 src_install() {
-	local prefix="${D}/usr"
-	mkdir -p "${prefix}"/bin || die
-
-	emake PREFIX="${prefix}" install
+	emake PREFIX="${D}/usr" install
+	einstalldocs
 }
