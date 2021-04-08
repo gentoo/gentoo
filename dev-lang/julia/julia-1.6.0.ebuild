@@ -25,7 +25,7 @@ SRC_URI="
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="system-llvm"
+IUSE="+system-llvm"
 
 RDEPEND="
 	system-llvm? ( sys-devel/llvm:11=[llvm_targets_NVPTX(-)] )
