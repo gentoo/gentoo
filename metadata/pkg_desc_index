@@ -10980,7 +10980,7 @@ dev-util/rebar-bin 3.14.4: A sophisticated build-tool for Erlang projects that f
 dev-util/redo 0.42a 0.42c 99999: Smaller, easier, more powerful, and more reliable than make
 dev-util/regexxer 0.10-r1: An interactive tool for performing search and replace operations
 dev-util/rej 0.16-r1: A utility for solving diff/patch rejects
-dev-util/rizin 0.1.2: reverse engineering framework for binary analysis
+dev-util/rizin 0.1.2 0.2.0: reverse engineering framework for binary analysis
 dev-util/rocm-cmake 3.8.0 3.9.0 3.10.0 4.0.0 4.1.0 9999: Radeon Open Compute CMake Modules
 dev-util/rocm-smi 4.0.0 9999: ROCm System Management Interface
 dev-util/rocminfo 3.7.0 3.8.0 3.9.0 3.10.0 4.0.0 4.1.0 9999: ROCm Application for Reporting System Info
