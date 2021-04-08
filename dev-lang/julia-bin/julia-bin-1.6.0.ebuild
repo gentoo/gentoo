@@ -17,6 +17,7 @@ SRC_URI="
 	)
 	amd64-fbsd? ( ${BASE_SRC_URI}/freebsd/x64/${MY_PV}/${MY_P}-freebsd-x86_64.tar.gz )
 	arm64? ( ${BASE_SRC_URI}/linux/aarch64/${MY_PV}/${MY_P}-linux-aarch64.tar.gz )
+	ppc64? ( ${BASE_SRC_URI}/linux/ppc64le/${MY_PV}/${MY_P}-linux-ppc64le.tar.gz )
 "
 
 LICENSE="MIT"
@@ -49,7 +50,7 @@ src_install() {
 	dosym "../$(get_libdir)/${MY_P}/bin/${MY_PN}" "/usr/bin/${MY_PN}${SLOT}"
 
 	local revord=$(( 9999 - $(ver_cut 1) * 100 - $(ver_cut 2) )) # 1.6 -> 106
-	newenvd - "99${MY_PN}{revord}" <<-EOF
+	newenvd - 99${MY_PN}${revord} <<-EOF
 		PATH="${EROOT}/usr/$(get_libdir)/${MY_P}/bin"
 	EOF
 }
