@@ -1,12 +1,14 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils unpacker cdrom games
+EAPI=7
+
+inherit cdrom unpacker
 
 DESCRIPTION="Unreal Tournament 2003 - Sequel to the 1999 multi-player first-person shooter"
 HOMEPAGE="http://www.unrealtournament2003.com/"
 SRC_URI="https://dev.gentoo.org/~chewi/distfiles/UT2003CrashFix.zip" # MIT licensed (bug #754360)
+S="${WORKDIR}"
 
 LICENSE="ut2003 MIT"
 SLOT="0"
@@ -14,17 +16,15 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="bindist strip"
 
-RDEPEND=""
-DEPEND="app-arch/unzip
-	games-util/uz2unpack"
+BDEPEND="
+	app-arch/unzip
+	games-util/uz2unpack
+"
 
-S=${WORKDIR}
-
-dir=${GAMES_PREFIX_OPT}/ut2003
-Ddir=${D}/${dir}
+dir=opt/ut2003
+Ddir="${ED}"/${dir}
 
 pkg_setup() {
-	games_pkg_setup
 	ewarn "The installed game takes about 2.7GB of space!"
 }
 
@@ -35,6 +35,27 @@ src_unpack() {
 }
 
 src_install() {
+	# Inlined from games.eclass
+	_games_ut_unpack() {
+		local ut_unpack="$1"
+		local f=
+
+		if [[ -z ${ut_unpack} ]] ; then
+			die "You must provide an argument to games_ut_unpack"
+		fi
+
+		if [[ -f ${ut_unpack} ]] ; then
+			uz2unpack "${ut_unpack}" "${ut_unpack%.uz2}" || die "failed uncompressing file ${ut_unpack}"
+		fi
+
+		if [[ -d ${ut_unpack} ]] ; then
+			while read f ; do
+				uz2unpack "${ut_unpack}/${f}" "${ut_unpack}/${f%.uz2}" || die "failed uncompressing file ${f}"
+				rm -f "${ut_unpack}/${f}" || die "failed deleting compressed file ${f}"
+			done < <(find "${ut_unpack}" -maxdepth 1 -name '*.uz2' -printf '%f\n' 2>/dev/null)
+		fi
+	}
+
 	insinto "${dir}"
 	# Disk 1
 	einfo "Copying files from Disk 1..."
@@ -83,7 +104,7 @@ src_install() {
 	insinto "${dir}"/System
 	doins "${S}"/System/Def{ault,User}.ini
 
-	# install eula
+	# install EULA
 	insinto "${dir}"
 	doins "${S}"/eula/License.int
 
@@ -98,19 +119,19 @@ src_install() {
 	# uncompressing files
 	einfo "Uncompressing files... this may take a while..."
 	for j in {Animations,Maps,Sounds,StaticMeshes,Textures} ; do
-		games_ut_unpack "${Ddir}"/${j} || die "uncompressing files"
+		_games_ut_unpack "${Ddir}"/${j} || die "uncompressing files"
 	done
 
 	# installing documentation/icon
 	dodoc "${S}"/README.linux
-	newicon "${S}"/Unreal.xpm ut2003.xpm || die "copying icon"
+	newicon "${S}"/Unreal.xpm ut2003.xpm
 	doins "${S}"/README.linux "${S}"/Unreal.xpm
 	# copy ut2003/ucc
 	exeinto "${dir}"
 	doexe "${S}"/bin/ut2003 "${S}"/ucc
 
 	# Here we apply DrSiN's crash patch
-	cp "${S}"/CrashFix/System/crashfix.u "${Ddir}"/System
+	cp "${S}"/CrashFix/System/crashfix.u "${Ddir}"/System || die
 
 	ed "${Ddir}"/System/Default.ini >/dev/null 2>&1 <<EOT
 $
@@ -130,6 +151,4 @@ EOT
 	# be different ... that means portage will try to unmerge some files (!)
 	# we run touch on ${D} so as to make sure portage doesnt do any such thing
 	find "${Ddir}" -exec touch '{}' + || die
-
-	prepgamesdirs
 }
