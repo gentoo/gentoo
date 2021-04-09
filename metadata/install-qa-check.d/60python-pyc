@@ -1,10 +1,10 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # QA check: ensure that Python modules are compiled after installing
 # Maintainer: Python project <python@gentoo.org>
 
-if [[ ${EAPI} == [5-7] ]]; then
+if [[ ${EAPI} == [6-7] ]]; then
 	inherit python-utils-r1
 
 	python_pyc_check() {
