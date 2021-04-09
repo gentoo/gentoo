@@ -11789,7 +11789,7 @@ games-server/mednafen-server 0.5.2-r1: Server for Mednafen emulator
 games-server/minecraft-server 1.16.5: The official server for the sandbox video game
 games-server/monopd 0.10.2-r1: server for atlantik games
 games-server/mtavc 0.5-r2: dedicated server for GTA3 multiplayer
-games-server/pvpgn 1.8.5-r3: A gaming server for Battle.Net compatible clients
+games-server/pvpgn 1.8.5-r4 1.99.7.2.1-r1: A gaming server for Battle.Net compatible clients
 games-server/steamcmd 1.0-r3: This is the command-line version of the Steam client for dedicated servers
 games-server/ut2004-ded 3369.3-r2: Unreal Tournament 2004 Linux Dedicated Server
 games-simulation/bcs-demo 1.3-r1: design and build bridges and then stress test them with trains
@@ -17103,7 +17103,7 @@ sys-apps/pmount 0.9.99_alpha-r6: Policy based mounter that gives the ability to 
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
 sys-apps/pnputils 0.1: Plug and Play BIOS utilities
 sys-apps/policycoreutils 3.1-r2 3.2 9999: SELinux core utilities
-sys-apps/portage 2.3.99-r2 3.0.13 3.0.17-r2 3.0.18 9999: Portage is the package management and distribution system for Gentoo
+sys-apps/portage 3.0.13 3.0.17-r2 3.0.18 9999: Portage is the package management and distribution system for Gentoo
 sys-apps/powerpc-utils 1.1.3.18-r4: PowerPC utilities and additional OldWorld apps
 sys-apps/prctl 1.6-r1: Tool to query and modify process behavior
 sys-apps/preload 0.6.4-r3: Adaptive readahead daemon

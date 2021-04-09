@@ -12,5 +12,5 @@ RDEPEND=python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-
 REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_8 )
 SLOT=0
 SRC_URI=https://github.com/samcv/brainworkshop/archive/ea817f7e163c4fb07a60b2066c694cba92d23818.tar.gz -> brainworkshop-5_beta20200310.tar.gz
-_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-single-r1	c7de0087e87a282f2faec351822e097c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	2a0da9eb3f3fd923a42d92127685aa37	python-single-r1	d25ac9d5d91fe9d44fda6ec192aca11a	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
 _md5_=436875b4f3683c655266f5cc06c8c906
