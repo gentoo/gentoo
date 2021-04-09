@@ -237,6 +237,7 @@ acct-group/smtpd 0-r1: daemon group for smtpd
 acct-group/smtpq 0-r1: queue group for smtpd
 acct-group/snapserver 0: Server group for media-sound/snapcast
 acct-group/sniproxy 0: System group: sniproxy
+acct-group/snort 0: System group: snort
 acct-group/sobby 0: System group: sobby
 acct-group/sobexsrv 0: A group for sobexsrv: a secure OBEX server
 acct-group/sogo 0-r1: Group for gnustep-apps/sogo
@@ -541,6 +542,7 @@ acct-user/snapclient 0: Client user for media-sound/snapcast
 acct-user/snapserver 0: Server user for media-sound/snapcast
 acct-user/sndiod 0: Daemon user for sndio
 acct-user/sniproxy 0: System user: sniproxy
+acct-user/snort 0: User for snort
 acct-user/sobby 0: User for running sobby
 acct-user/sobexsrv 0: A user for sobexsrv: a secure OBEX server
 acct-user/sogo 0-r1: User for gnustep-apps/sogo
@@ -14536,7 +14538,7 @@ net-analyzer/sngrep 1.4.7: Ncurses SIP Messages flow viewer
 net-analyzer/sniffit 0.5: Interactive Packet Sniffer
 net-analyzer/snmpclitools 0.6.4: Pure-Python SNMP management tools, formerly pysnmp-apps
 net-analyzer/snmptt 1.4.2: SNMP Trap Translator
-net-analyzer/snort 2.9.15.1 2.9.16 2.9.16-r100: The de facto standard for intrusion detection/prevention
+net-analyzer/snort 2.9.16 2.9.16-r100 2.9.17: The de facto standard for intrusion detection/prevention
 net-analyzer/snortalog 2.4.3-r1: A powerful perl script that summarizes snort logs
 net-analyzer/snortsam 2.70: Snort plugin that allows automated blocking of IP addresses on several firewalls
 net-analyzer/softflowd 1.0.0: flow-based network traffic analyser capable of Cisco NetFlow data export
