@@ -35,7 +35,7 @@ RDEPEND="
 
 BDEPEND="
 	dev-python/polib
-	>=net-libs/nodejs-8.12.0
+	>=net-libs/nodejs-8.12.0[ssl]
 	>=sys-apps/yarn-1.15.2
 	virtual/pkgconfig
 	extras? (
