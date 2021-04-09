@@ -3,7 +3,7 @@
 
 EAPI="7"
 PYTHON_COMPAT=(python{3_7,3_8,3_9})
-DISTUTILS_USE_SETUPTOOLS="rdepend"
+DISTUTILS_USE_SETUPTOOLS="bdepend"
 
 inherit distutils-r1
 
@@ -23,8 +23,8 @@ else
 fi
 
 LICENSE="BSD"
-SLOT="0/23"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
+SLOT="0/26"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE=""
 
 BDEPEND="${PYTHON_DEPS}
@@ -55,11 +55,6 @@ python_configure_all() {
 	mydistutilsargs=(--cpp_implementation)
 }
 
-python_compile() {
-	python_is_python3 || local -x CXXFLAGS="${CXXFLAGS} -fno-strict-aliasing"
-	distutils-r1_python_compile
-}
-
 python_test() {
 	esetup.py test
 }
@@ -67,5 +62,5 @@ python_test() {
 python_install_all() {
 	distutils-r1_python_install_all
 
-	find "${D}" -name "*.pth" -type f -delete || die
+	find "${ED}" -name "*.pth" -type f -delete || die
 }

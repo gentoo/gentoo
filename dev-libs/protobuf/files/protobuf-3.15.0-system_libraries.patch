@@ -47,7 +47,7 @@
  AC_OUTPUT
 --- /src/Makefile.am
 +++ /src/Makefile.am
-@@ -711,19 +711,11 @@
+@@ -703,19 +703,11 @@
    google/protobuf/testing/file.cc                              \
    google/protobuf/testing/file.h
  
@@ -68,7 +68,7 @@
  # Disable optimization for tests unless the user explicitly asked for it,
  # since test_util.cc takes forever to compile with optimization (with GCC).
  # See configure.ac for more info.
-@@ -815,12 +807,8 @@
+@@ -807,12 +799,8 @@
  # Run cpp_unittest again with PROTOBUF_TEST_NO_DESCRIPTORS defined.
  protobuf_lazy_descriptor_test_LDADD = $(PTHREAD_LIBS) libprotobuf.la \
                        libprotoc.la                                   \
@@ -83,7 +83,7 @@
  protobuf_lazy_descriptor_test_CXXFLAGS = $(NO_OPT_CXXFLAGS)
  protobuf_lazy_descriptor_test_SOURCES =                        \
    google/protobuf/compiler/cpp/cpp_unittest.cc                 \
-@@ -841,11 +829,7 @@
+@@ -833,11 +821,7 @@
  # full runtime and we want to make sure this test builds without full
  # runtime.
  protobuf_lite_test_LDADD = $(PTHREAD_LIBS) libprotobuf-lite.la     \
@@ -96,7 +96,7 @@
  protobuf_lite_test_CXXFLAGS = $(NO_OPT_CXXFLAGS)
  protobuf_lite_test_SOURCES =                                           \
    google/protobuf/lite_unittest.cc                                     \
-@@ -857,11 +841,7 @@
+@@ -849,11 +833,7 @@
  # gtest when building the test internally our memory sanitizer doesn't detect
  # memory leaks (don't know why).
  protobuf_lite_arena_test_LDADD = $(PTHREAD_LIBS) libprotobuf-lite.la \
@@ -109,7 +109,7 @@
  protobuf_lite_arena_test_CXXFLAGS = $(NO_OPT_CXXFLAGS)
  protobuf_lite_arena_test_SOURCES =       \
    google/protobuf/lite_arena_unittest.cc \
-@@ -871,8 +851,7 @@
+@@ -863,8 +843,7 @@
  
  # Test plugin binary.
  test_plugin_LDADD = $(PTHREAD_LIBS) libprotobuf.la libprotoc.la \

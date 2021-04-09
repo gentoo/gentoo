@@ -21,8 +21,8 @@ else
 fi
 
 LICENSE="BSD"
-SLOT="0/23"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
+SLOT="0/26"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="emacs examples static-libs test zlib"
 RESTRICT="!test? ( test )"
 
@@ -33,9 +33,9 @@ RDEPEND="emacs? ( app-editors/emacs:* )
 	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.12.0-disable_no-warning-test.patch"
-	"${FILESDIR}/${PN}-3.12.0-system_libraries.patch"
-	"${FILESDIR}/${PN}-3.12.0-protoc_input_output_files.patch"
+	"${FILESDIR}/${PN}-3.15.0-disable_no-warning-test.patch"
+	"${FILESDIR}/${PN}-3.15.0-system_libraries.patch"
+	"${FILESDIR}/${PN}-3.15.0-protoc_input_output_files.patch"
 )
 
 DOCS=(CHANGES.txt CONTRIBUTORS.txt README.md)
@@ -46,8 +46,8 @@ src_prepare() {
 	# https://github.com/protocolbuffers/protobuf/issues/7413
 	sed -e "/^AC_PROG_CXX_FOR_BUILD$/d" -i configure.ac || die
 
-	# https://github.com/protocolbuffers/protobuf/issues/7682
-	sed -e "/^[[:space:]]*static_assert(alignof(T) <= 8, \"T is overaligned, see b\/151247138\");$/d" -i src/google/protobuf/arena.h || die
+	# https://github.com/protocolbuffers/protobuf/issues/8082
+	sed -e "/^TEST_F(IoTest, LargeOutput) {$/,/^}$/d" -i src/google/protobuf/io/zero_copy_stream_unittest.cc || die
 
 	eautoreconf
 }
