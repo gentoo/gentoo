@@ -8183,7 +8183,7 @@ dev-python/cryptography 3.3.2 3.4.7: Library providing cryptographic recipes and
 dev-python/css-parser 1.0.4-r1: A CSS Cascading Style Sheets library (fork of cssutils)
 dev-python/cssselect 1.1.0-r1: parses CSS3 Selectors and translates them to XPath 1.0
 dev-python/cssselect2 0.4.1: Parses CSS3 Selectors and translates them to XPath 1.0
-dev-python/cssutils 1.0.2-r2 2.0.0 2.2.0: A CSS Cascading Style Sheets library
+dev-python/cssutils 2.0.0 2.2.0: A CSS Cascading Style Sheets library
 dev-python/csv23 0.3.2-r1: Python 2/3 unicode CSV compatibility layer
 dev-python/ctypescrypto 0.5 9999: Python interface to some openssl function based on ctypes module
 dev-python/cursive 0.2.2-r1: Cursive implements OpenStack-specific validation of digital signatures.
@@ -8203,7 +8203,7 @@ dev-python/ddt 1.2.2 1.4.2: A library to multiply test cases
 dev-python/debtcollector 2.2.0: Python deprecation patterns and strategies that collect technical debt
 dev-python/decorator 4.4.2-r1 5.0.0 5.0.3 5.0.5 5.0.6: Simplifies the usage of decorators for the average programmer
 dev-python/deepmerge 0.1.1_p1 0.2.1: Tools to handle merging of nested data structures in python
-dev-python/defcon 0.6.0-r1 0.7.2 0.8.0 0.8.1: A set of UFO based objects for use in font editing applications
+dev-python/defcon 0.8.0 0.8.1: A set of UFO based objects for use in font editing applications
 dev-python/defusedxml 0.7.1: XML bomb protection for Python stdlib modules, an xml serialiser
 dev-python/denonavr 0.9.9 0.9.10 0.10.1 0.10.3 0.10.4 0.10.5: Automation Library for Denon AVR receivers
 dev-python/deprecated 1.2.11 1.2.12: Python @deprecated decorator to deprecate old API
@@ -8420,7 +8420,7 @@ dev-python/hvac 0.10.8 0.10.9: hashicorp vault client in python
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 21.0.0: A featureful, correct URL for Python
-dev-python/hypothesis 6.3.4 6.6.0 6.8.1 6.8.3 6.8.4 6.8.5 6.8.6 6.8.7 6.8.8 6.8.9: A library for property based testing
+dev-python/hypothesis 6.6.0 6.8.1 6.8.9: A library for property based testing
 dev-python/icalendar 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/idna 2.10-r1 3.0 3.1: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0-r1: Patch ssl.match_hostname for Unicode(idna) domains support
@@ -8431,7 +8431,7 @@ dev-python/imagesize 1.2.0: Pure Python module for getting image size from png/j
 dev-python/imapclient 2.2.0: easy-to-use, pythonic, and complete IMAP client library
 dev-python/iminuit 2.3.0 2.4.0: Minuit numerical function minimization in Python
 dev-python/immutables 0.14 0.15: A high-performance immutable mapping type for Python
-dev-python/importlib_metadata 3.7.0 3.7.2 3.7.3 3.8.2 3.10.0: Read metadata from Python packages
+dev-python/importlib_metadata 3.7.2 3.7.3 3.8.2 3.10.0: Read metadata from Python packages
 dev-python/importlib_resources 5.1.2: Read resources from Python packages
 dev-python/imread 0.7.3-r1: Read Image Files
 dev-python/incremental 21.3.0: Incremental is a small library that versions your Python projects
@@ -8508,7 +8508,7 @@ dev-python/kaptan 0.5.12-r1: Configuration manager in your pocket
 dev-python/kazoo 2.8.0: A high-level Python library that makes it easier to use Apache Zookeeper
 dev-python/kconfiglib 14.1.0: A flexible Python Kconfig implementation
 dev-python/keep 2.10.1: Personal shell command keeper and snippets manager
-dev-python/keyring 22.3.0 23.0.0 23.0.1: Provides access to the system keyring service
+dev-python/keyring 23.0.0 23.0.1: Provides access to the system keyring service
 dev-python/keystoneauth 4.2.1: This package contains tools for authenticating to an OpenStack-based cloud.
 dev-python/keystonemiddleware 9.1.0: A middleware for the OpenStack Keystone API
 dev-python/kiwisolver 1.3.1: An efficient C++ implementation of the Cassowary constraint solving algorithm
@@ -8856,7 +8856,7 @@ dev-python/pygame_sdl2 6.99.12.4-r5 7.3.5-r1 7.3.5-r2: Reimplementation of porti
 dev-python/pyghmi 1.5.22: A pure python implementation of IPMI protocol
 dev-python/pygit2 1.5.0: Python bindings for libgit2
 dev-python/pyglet 1.5.15: Cross-platform windowing and multimedia library for Python
-dev-python/pygments 2.8.0 2.8.1: Pygments is a syntax highlighting package written in Python
+dev-python/pygments 2.8.1: Pygments is a syntax highlighting package written in Python
 dev-python/pygments-github-lexers 0.0.5: Pygments Github custom lexers
 dev-python/pygobject 3.34.0-r1 3.36.1-r1 3.38.0 3.40.0: Python bindings for GObject Introspection
 dev-python/pygpgme 0.3-r3: A Python wrapper for the GPGME library
@@ -9235,7 +9235,7 @@ dev-python/soupsieve 2.2 2.2.1: A modern CSS selector implementation for Beautif
 dev-python/sparql-wrapper 1.8.5: Wrapper around a SPARQL service
 dev-python/speaklater 1.3-r1: Lazy strings for Python
 dev-python/speg 0.3-r2: A PEG-based parser interpreter with memoization
-dev-python/sphinx 3.5.1 3.5.2 3.5.3: Python documentation generator
+dev-python/sphinx 3.5.2 3.5.3: Python documentation generator
 dev-python/sphinx-aiohttp-theme 0.1.6: Sphinx theme for aiohttp
 dev-python/sphinx-bootstrap-theme 0.8.0: Sphinx theme integrates the Bootstrap CSS / JavaScript framework
 dev-python/sphinx-epytext 0.0.4: Sphinx epytext extension
@@ -9372,7 +9372,7 @@ dev-python/unittest2 1.1.0-r1: The new features in unittest backported to Python
 dev-python/uranium 4.8.0: A Python framework for building 3D printing related applications
 dev-python/urdf_parser_py 0.4.3: URDF parser for Python
 dev-python/uritemplate 3.0.1-r1: Python implementation of RFC6570, URI Template
-dev-python/urlgrabber 4.0.0-r1 4.1.0: Python module for downloading files
+dev-python/urlgrabber 4.1.0: Python module for downloading files
 dev-python/urllib3 1.26.4: HTTP library with thread-safe connection pooling, file post, and more
 dev-python/urwid 2.1.1: Curses-based user interface library for Python
 dev-python/urwidtrees 1.0.3: Tree widgets for urwid
@@ -9396,7 +9396,7 @@ dev-python/vncdotool 0.13.0 1.0.0: Command line VNC client
 dev-python/vobject 0.9.6.1-r2: Python package for parsing and generating vCard and vCalendar files
 dev-python/voluptuous 0.12.1: A Python data validation library.
 dev-python/vpython 7.6.1-r3: VPython for Jupyter notebook
-dev-python/waitress 1.4.4 2.0.0: A pure-Python WSGI server
+dev-python/waitress 2.0.0: A pure-Python WSGI server
 dev-python/wand 0.6.5 0.6.6: Ctypes-based simple ImageMagick binding for Python
 dev-python/warlock 1.3.3: Python object model built on JSON schema and JSON patch
 dev-python/watchdog 1.0.2 2.0.2: Python API and shell utilities to monitor file system events
@@ -14556,7 +14556,7 @@ net-analyzer/snort 2.9.16 2.9.16-r100 2.9.17: The de facto standard for intrusio
 net-analyzer/snortalog 2.4.3-r1: A powerful perl script that summarizes snort logs
 net-analyzer/snortsam 2.70: Snort plugin that allows automated blocking of IP addresses on several firewalls
 net-analyzer/softflowd 1.0.0: flow-based network traffic analyser capable of Cisco NetFlow data export
-net-analyzer/speedtest-cli 2.1.2-r1: Command line interface for testing internet bandwidth using speedtest.net
+net-analyzer/speedtest-cli 2.1.3: Command line interface for testing internet bandwidth using speedtest.net
 net-analyzer/sqlninja 0.2.6_p1-r1: A SQL Server injection & takeover tool
 net-analyzer/squid-graph 3.2-r1: Squid logfile analyzer and traffic grapher
 net-analyzer/squidsites 1.01-r2: A tool that parses Squid access log file and generates a report of the most visited sites
