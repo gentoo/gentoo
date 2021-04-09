@@ -136,7 +136,7 @@ case ${CMAKE_MAKEFILE_GENERATOR} in
 		BDEPEND="sys-devel/make"
 		;;
 	ninja)
-		BDEPEND="dev-util/ninja"
+		BDEPEND="${NINJA_DEPEND}"
 		;;
 	*)
 		eerror "Unknown value for \${CMAKE_MAKEFILE_GENERATOR}"
@@ -361,13 +361,6 @@ cmake_src_prepare() {
 		eerror "\"${CMAKE_USE_DIR}/CMakeLists.txt\""
 		eerror "Consider not inheriting the cmake eclass."
 		die "FATAL: Unable to find CMakeLists.txt"
-	fi
-
-	# if ninja is enabled but not installed, the build could fail
-	# this could happen if ninja is manually enabled (eg. make.conf) but not installed
-	if [[ ${CMAKE_MAKEFILE_GENERATOR} == ninja ]] && ! has_version -b dev-util/ninja; then
-		eerror "CMAKE_MAKEFILE_GENERATOR is set to ninja, but ninja is not installed."
-		die "Please install dev-util/ninja or unset CMAKE_MAKEFILE_GENERATOR."
 	fi
 
 	local modules_list
@@ -705,11 +698,7 @@ cmake_src_test() {
 cmake_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	_cmake_check_build_dir
-	pushd "${BUILD_DIR}" > /dev/null || die
-	DESTDIR="${D}" ${CMAKE_MAKEFILE_GENERATOR} install "$@" ||
-		die "died running ${CMAKE_MAKEFILE_GENERATOR} install"
-	popd > /dev/null || die
+	DESTDIR="${D}" cmake_build install "$@"
 
 	if [[ ${EAPI} == 7 ]]; then
 		pushd "${S}" > /dev/null || die
