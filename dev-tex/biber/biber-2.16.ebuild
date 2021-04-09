@@ -67,3 +67,10 @@ DEPEND="${RDEPEND}
 			dev-perl/Test-Differences )"
 
 mydoc="doc/biber.tex"
+
+src_prepare() {
+	#disable 64-bit only Tests on non 64-bit archs
+	use amd64 || use arm64 || eapply "${FILESDIR}/${P}-disable-64bit-only-tests.patch"
+
+	default
+}
