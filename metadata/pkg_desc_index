@@ -224,6 +224,7 @@ acct-group/sabnzbd 0-r1: SABnzbd program group
 acct-group/sagan 0: Group for the Sagan log monitoring system
 acct-group/sancp 0: gid for net-analyzer/sancp
 acct-group/sanlock 0-r1: shared storage lock manager
+acct-group/sauerbraten 0: Group for Sauerbraten (FOSS game engine (Cube 2))
 acct-group/scponly 0-r1: group for scponly
 acct-group/serf 0: A group for app-admin/serf
 acct-group/sgx 0: System group: sgx
@@ -530,6 +531,7 @@ acct-user/sabnzbd 0-r1: SABnzbd program user
 acct-user/sagan 0-r1: User for the Sagan log monitoring system
 acct-user/sancp 0: uid for net-analyzer/sancp
 acct-user/sanlock 0-r1: shared storage lock manager
+acct-user/sauerbraten 0: Group for Sauerbraten (FOSS game engine (Cube 2))
 acct-user/scponly 0-r1: user for chrooted scponly
 acct-user/serf 0: A user for app-admin/serf
 acct-user/shellinaboxd 0-r1: shellinabox user
@@ -11519,7 +11521,7 @@ games-fps/qudos 0.40.1: Enhanced Quake 2 engine
 games-fps/red-blue-quake2 0.1-r1: Red-blue Quake II! Play quake2 with 3D glasses!
 games-fps/redeclipse 1.6.0-r3 2.0.0-r1: First-person ego-shooter, built as a total conversion of Cube Engine 2
 games-fps/rott 1.1.2-r1: Rise of the Triad for Linux!
-games-fps/sauerbraten 2013.02.03: Sauerbraten is a FOSS game engine (Cube 2) with freeware game data (Sauerbraten)
+games-fps/sauerbraten 2013.02.03-r1: Sauerbraten is a FOSS game engine (Cube 2) with freeware game data (Sauerbraten)
 games-fps/serious-sam-tse 1_beta1-r1: Serious Sam: The Second Encounter
 games-fps/soldieroffortune 1.06a-r2: First-person shooter based on the mercenary trade
 games-fps/tenebrae 1.04-r1: Adds stencil shadows and per pixel lights to quake
@@ -11531,9 +11533,9 @@ games-fps/urbanterror-data 4.3.4: Data files for UrbanTerror
 games-fps/ut2003 2225-r6: Sequel to the 1999 Game of the Year multi-player first-person shooter
 games-fps/ut2003-bonuspack-cm 1-r1: Community Bonus Pack for UT2003
 games-fps/ut2003-bonuspack-de 1-r1: Digital Extremes Bonus Pack for UT2003
-games-fps/ut2003-bonuspack-epic 1: Epic Bonus Pack for UT2003
-games-fps/ut2003-data 2107: Unreal Tournament 2003 - Sequel to the 1999 multi-player first-person shooter
-games-fps/ut2003-demo 2206-r4: Demo for the sequel to the 1999 multi-player first-person shooter
+games-fps/ut2003-bonuspack-epic 1-r1: Epic Bonus Pack for UT2003
+games-fps/ut2003-data 2107-r1: Unreal Tournament 2003 - Sequel to the 1999 multi-player first-person shooter
+games-fps/ut2003-demo 2206-r5: Demo for the sequel to the 1999 multi-player first-person shooter
 games-fps/ut2004 3369.3-r3: Editor's Choice Edition plus Mega Pack for the well-known first-person shooter
 games-fps/ut2004-bonuspack-cbp1 1-r3: UT2003 Community Bonus Pack for UT2004 Volume 1
 games-fps/ut2004-bonuspack-cbp2 1-r3: UT2004 Community Bonus Pack 2 Volume 1 and 2
