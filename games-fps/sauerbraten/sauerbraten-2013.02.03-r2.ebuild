@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug dedicated server"
 
-RDEPEND="
+DEPEND="
 	sys-libs/zlib
 	>=net-libs/enet-1.3.6:1.3
 	!dedicated? (
@@ -25,8 +25,14 @@ RDEPEND="
 		media-libs/sdl-image[png,jpeg]
 		virtual/opengl
 		virtual/glu
-		x11-libs/libX11 )"
-DEPEND="${RDEPEND}"
+		x11-libs/libX11
+	)
+"
+RDEPEND="
+	${DEPEND}
+	acct-group/sauerbraten
+	dedicated? ( acct-user/sauerbraten )
+"
 
 PATCHES=(
 	# Patch makefile to use system enet instead of bundled
