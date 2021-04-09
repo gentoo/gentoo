@@ -11,5 +11,5 @@ RDEPEND=>=dev-libs/nspr-4.7.0 sys-libs/readline:0= x64-macos? ( dev-libs/jemallo
 RESTRICT=!test? ( test )
 SLOT=0/mozjs185
 SRC_URI=https://archive.mozilla.org/pub/js/js185-1.0.0.tar.gz https://dev.gentoo.org/~axs/distfiles/spidermonkey-slot0-patches-02.tar.xz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	python-utils-r1	2a0da9eb3f3fd923a42d92127685aa37	python-any-r1	17241a11501065ff3651350040875aa9	estack	055c42df72f76a4f45ec92b35e83cd56	versionator	d3fb3ba33acc3bbbdc4d7970227c100d	pax-utils	d3fc79d3d50544347e324864f95206e2
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-any-r1	17241a11501065ff3651350040875aa9	estack	055c42df72f76a4f45ec92b35e83cd56	versionator	d3fb3ba33acc3bbbdc4d7970227c100d	pax-utils	d3fc79d3d50544347e324864f95206e2
 _md5_=ad59235e0a2d56a2fdda42c7ca67e198

@@ -10,5 +10,5 @@ RDEPEND=>=dev-libs/dbus-glib-0.60 >=dev-libs/glib-2.30:2 >=net-libs/sofia-sip-1.
 RESTRICT=test
 SLOT=0
 SRC_URI=https://telepathy.freedesktop.org/releases/telepathy-rakia/telepathy-rakia-0.8.0.tar.gz https://patch-diff.githubusercontent.com/raw/TelepathyIM/telepathy-rakia/pull/1.patch -> telepathy-rakia-0.8.0-py3.patch
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	2a0da9eb3f3fd923a42d92127685aa37	python-any-r1	17241a11501065ff3651350040875aa9
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-any-r1	17241a11501065ff3651350040875aa9
 _md5_=d65e337fc7df7103df2bc0d880f9927e

@@ -9,5 +9,5 @@ LICENSE=BSD-2
 RDEPEND=dev-lang/python-exec-conf !<=dev-lang/python-2.7.18-r3:2.7
 SLOT=2
 SRC_URI=https://github.com/mgorny/python-exec/releases/download/v2.4.6/python-exec-2.4.6.tar.bz2
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	2a0da9eb3f3fd923a42d92127685aa37
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8
 _md5_=3f7f6860f3ed8b97014b98715bfcb5e0
