@@ -1,8 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit fcaps go-module user
+
+inherit fcaps go-module systemd
 
 EGO_PN=github.com/prometheus/blackbox_exporter
 MY_PV="v${PV/_rc/-rc.}"
@@ -15,18 +16,17 @@ SRC_URI="https://github.com/prometheus/blackbox_exporter/archive/${MY_PV}.tar.gz
 LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 
-BDEPEND="dev-util/promu"
+BDEPEND="
+	acct-group/blackbox_exporter
+	acct-user/blackbox_exporter
+"
+
+DEPEND="dev-util/promu"
 
 FILECAPS=(
 	cap_net_raw usr/bin/blackbox_exporter
 )
-
-pkg_setup() {
-	enewgroup ${PN}
-	enewuser ${PN} -1 -1 -1 ${PN}
-}
 
 src_prepare() {
 	default
@@ -40,11 +40,13 @@ src_compile() {
 
 src_install() {
 	dobin bin/*
+	dosym  ../../usr/bin/blackbox_exporter-${PV} /usr/bin/blackbox_exporter
 	dodoc {README,CONFIGURATION}.md blackbox.yml
 	insinto /etc/blackbox_exporter
-	newins example.yml blackbox.yml.example
+	newins example.yml blackbox.yml
 	keepdir /var/lib/blackbox_exporter /var/log/blackbox_exporter
 	fowners ${PN}:${PN} /var/lib/blackbox_exporter /var/log/blackbox_exporter
+	systemd_dounit "${FILESDIR}"/blackbox_exporter.service
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 	insinto /etc/logrotate.d
