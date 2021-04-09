@@ -8,6 +8,9 @@ inherit cmake kodi-addon
 DESCRIPTION="Kodi's Adaptive inputstream addon"
 HOMEPAGE="https://github.com/peak3d/inputstream.adaptive.git"
 SRC_URI=""
+PATCHES=(
+	"${FILESDIR}/${P}.patch"
+)
 
 case ${PV} in
 9999)
@@ -26,17 +29,29 @@ esac
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
+RESTRICT="!test? ( test )"
+IUSE="test"
 
-DEPEND="
+COMMON_DEPEND="
 	dev-libs/expat
 	=media-tv/kodi-19*
 	"
+DEPEND="
+	${COMMON_DEPEND}
+	test? ( dev-cpp/gtest )
+	"
 RDEPEND="
-	${DEPEND}
+	${COMMON_DEPEND}
 	"
 
 src_prepare() {
 	[ -d depends ] && rm -rf depends || die
 	cmake_src_prepare
+}
+
+src_configure() {
+	local mycmakeargs=(
+		-DBUILD_TESTING=$(usex test)
+	)
+	cmake_src_configure
 }
