@@ -18,7 +18,7 @@ IUSE="mysql postgres"
 
 DEPEND="
 	mysql? ( dev-db/mysql-connector-c:0= )
-	postgres? ( dev-db/postgresql[server] )
+	postgres? ( dev-db/postgresql:*[server] )
 "
 RDEPEND="
 	${DEPEND}
