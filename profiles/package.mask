@@ -35,7 +35,8 @@
 # Sam James <sam@gentoo.org> (2021-04-09)
 # Support package for games.eclass (which is now being last-rited). Please
 # port away from games.eclass and use general ebuild functions/helpers.
-# Removal on 9th May 2021.
+# No specific eclass is needed for general games installation.
+# Removal on 2021-05-09.
 games-misc/games-envd
 
 # Lars Wendler <polynomial-c@gentoo.org> (2021-04-08)
