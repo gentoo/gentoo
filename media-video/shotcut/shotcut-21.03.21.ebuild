@@ -15,6 +15,8 @@ else
 	EGIT_REPO_URI="https://github.com/mltframework/shotcut/"
 fi
 
+IUSE="debug"
+
 LICENSE="GPL-3+"
 SLOT="0"
 
@@ -48,10 +50,14 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 src_configure() {
-	eqmake5 \
-		PREFIX="${EPREFIX}/usr" \
-		SHOTCUT_VERSION="${PV}" \
+	local myqmakeargs=(
+		PREFIX="${EPREFIX}/usr"
+		SHOTCUT_VERSION="${PV}"
 		DEFINES+=SHOTCUT_NOUPGRADE
+	)
+	use debug || myqmakeargs+=(DEFINES+=NDEBUG)
+
+	eqmake5 "${myqmakeargs[@]}"
 }
 
 src_install() {
