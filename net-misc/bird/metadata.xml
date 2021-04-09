@@ -5,6 +5,14 @@
 		<email>chainsaw@gentoo.org</email>
 		<name>Tony Vroon</name>
 	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="person">
+		<name>Alarig Le Lay</name>
+		<email>alarig@swordarmor.fr</email>
+	</maintainer>
 	<use>
 		<flag name="client">Build the ncurses/readline full featured CLI</flag>
 		<flag name="libssh">
