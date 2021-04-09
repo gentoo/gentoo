@@ -1,0 +1,10 @@
+--- pidgin-2.14.3/libpurple/tests/check_libpurple.c
++++ pidgin-2.14.3/libpurple/tests/check_libpurple.c
+@@ -91,7 +91,6 @@
+ 	srunner_add_suite(sr, jabber_digest_md5_suite());
+ 	srunner_add_suite(sr, jabber_jutil_suite());
+ 	srunner_add_suite(sr, jabber_scram_suite());
+-	srunner_add_suite(sr, oscar_util_suite());
+ 	srunner_add_suite(sr, util_suite());
+ 	srunner_add_suite(sr, xmlnode_suite());
+ 
