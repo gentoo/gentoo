@@ -2624,7 +2624,7 @@ app-misc/mepl 0.45-r1: Self-employed-mode software for 3COM/USR message modems
 app-misc/mime-types 9: Provides /etc/mime.types file
 app-misc/mkcert 1.4.1: A zero-config tool to make locally trusted development certificates
 app-misc/mmv 1.01b_p18-r1 1.01b_p19: Move/copy/append/link multiple files according to a set of wildcard patterns
-app-misc/mosquitto 1.6.8 1.6.9 1.6.10 1.6.12: An Open Source MQTT v3 Broker
+app-misc/mosquitto 1.6.8 1.6.9 1.6.10 1.6.12 2.0.10: An Open Source MQTT v3 Broker
 app-misc/mouseremote 0.90-r2 0.90-r3: X10 MouseRemote
 app-misc/muttprint 0.73-r5: Script for pretty printing of your mails
 app-misc/mvcase 0.1-r2: A modified version of mv, used to convert filenames to lower/upper case
@@ -5343,6 +5343,7 @@ dev-libs/boxfort 0.0.1_pre20200110 0.0.1_pre20200902: Convenient & cross-platfor
 dev-libs/busybee 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
 dev-libs/c-blosc 1.21.0: Blocking, shuffling and lossless compression library
 dev-libs/c-capnproto 0.3: C library/compiler for the Cap'n Proto serialization/RPC protocol
+dev-libs/cJSON 1.7.14: Ultralightweight JSON parser in ANSI C
 dev-libs/caliper 1.5.0: Application Introspection System
 dev-libs/capnproto 0.7.0 0.8.0: RPC/Serialization system with capabilities support
 dev-libs/capstone 4.0.2-r2: disassembly/disassembler framework + bindings

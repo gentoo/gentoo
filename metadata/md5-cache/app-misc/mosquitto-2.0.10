@@ -1,0 +1,17 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=compile install prepare setup test
+DEPEND=|| ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 ) acct-user/mosquitto acct-group/mosquitto dev-libs/cJSON:= srv? ( net-dns/c-ares:= ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) tcpd? ( sys-apps/tcp-wrappers ) test? ( dev-util/cunit ) websockets? ( net-libs/libwebsockets[lejp] )
+DESCRIPTION=An Open Source MQTT v3 Broker
+EAPI=7
+HOMEPAGE=https://mosquitto.org/ https://github.com/eclipse/mosquitto
+INHERIT=python-any-r1 systemd toolchain-funcs
+IUSE=bridge examples libressl +persistence +srv ssl tcpd test websockets
+KEYWORDS=~amd64
+LICENSE=EPL-1.0
+RDEPEND=acct-user/mosquitto acct-group/mosquitto dev-libs/cJSON:= srv? ( net-dns/c-ares:= ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) tcpd? ( sys-apps/tcp-wrappers )
+REQUIRED_USE=test? ( bridge )
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://mosquitto.org/files/source/mosquitto-2.0.10.tar.gz
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-any-r1	690a993463cd2ebcde40ccdf1bd9ba98	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6
+_md5_=5412a6b4217d166a7a5a3a4e2822ac2f
