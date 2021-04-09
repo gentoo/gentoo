@@ -1,24 +1,21 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit cdrom check-reqs games
+EAPI=7
+
+CHECKREQS_DISK_BUILD="3G"
+CHECKREQS_DISK_USR="1G"
+inherit cdrom check-reqs
 
 DESCRIPTION="A port of Jagged Alliance 2 to SDL (data files)"
 HOMEPAGE="http://tron.homeunix.org/ja2/"
-SRC_URI=""
+S="${WORKDIR}"
 
 LICENSE="SIR-TECH"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE=""
 
-DEPEND="app-arch/unshield"
-
-S=${WORKDIR}
-
-CHECKREQS_DISK_BUILD="3G"
-CHECKREQS_DISK_USR="1G"
+BDEPEND="app-arch/unshield"
 
 src_unpack() {
 	export CDROM_NAME="INSTALL_CD"
@@ -31,8 +28,8 @@ src_unpack() {
 
 src_prepare() {
 	cd "${S}"/Ja2_Files/Data || die
-	local lower i
 
+	local lower i
 	# convert to lowercase
 	find . \( -iname "*.jsd" -o -iname "*.wav" -o -iname "*.sti" -o -iname "*.slf" \) \
 		-exec sh -c 'echo "${1}"
@@ -41,17 +38,15 @@ src_prepare() {
 	[ "${1}" = "${lower}" ] || mv "${1}" "${lower}"' - {} \;
 
 	# remove possible leftover
-	rm -r ./TILECACHE ./STSOUNDS
+	rm -r ./TILECACHE ./STSOUNDS || die
 }
 
 src_install() {
-	insinto "${GAMES_DATADIR}"/ja2/data
+	insinto /usr/share/ja2/data
 	doins -r "${S}"/Ja2_Files/Data/*
-	prepgamesdirs
 }
 
 pkg_postinst() {
-	games_pkg_postinst
 	elog "This is just the data portion of the game. You will need to install"
 	elog "games-strategy/ja2-stracciatella to play the game."
 }
