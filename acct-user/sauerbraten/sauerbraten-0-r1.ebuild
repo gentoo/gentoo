@@ -6,7 +6,7 @@ EAPI=7
 inherit acct-user
 
 DESCRIPTION="Group for Sauerbraten (FOSS game engine (Cube 2))"
-ACCT_USER_ID=298
+ACCT_USER_ID=286
 ACCT_USER_GROUPS=( sauerbraten )
 
 acct-user_add_deps
