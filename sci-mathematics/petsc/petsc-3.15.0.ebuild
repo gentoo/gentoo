@@ -14,7 +14,7 @@ SRC_URI="http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/${P}.tar.gz"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="afterimage boost complex-scalars cxx debug doc fftw
+IUSE="afterimage boost complex-scalars cxx debug fftw
 	fortran hdf5 hypre mpi metis mumps scotch sparse superlu threads X"
 
 # hypre and superlu curretly exclude each other due to missing linking to hypre
@@ -55,8 +55,6 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.7.0-disable-rpath.patch
 	"${FILESDIR}"/${PN}-3.13.0-fix_sandbox_violation.patch
-	"${FILESDIR}"/${PN}-3.13.0-make_hypre_configure.patch
-	"${FILESDIR}"/${PN}-3.13.0-do_not_run_mpiexec.patch
 )
 
 # petsc uses --with-blah=1 and --with-blah=0 to en/disable options
@@ -185,9 +183,4 @@ src_install() {
 		LDPATH=${EPREFIX}/usr/$(get_libdir)/petsc/lib
 	EOF
 	doenvd 99petsc
-
-	if use doc ; then
-		docinto html
-		dodoc -r docs/*.html docs/changes docs/manualpages
-	fi
 }

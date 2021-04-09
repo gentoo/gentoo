@@ -55,8 +55,6 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.7.0-disable-rpath.patch
 	"${FILESDIR}"/${PN}-3.13.0-fix_sandbox_violation.patch
-	"${FILESDIR}"/${PN}-3.13.0-make_hypre_configure.patch
-	"${FILESDIR}"/${PN}-3.13.0-do_not_run_mpiexec.patch
 )
 
 # petsc uses --with-blah=1 and --with-blah=0 to en/disable options
