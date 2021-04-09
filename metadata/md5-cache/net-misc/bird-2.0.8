@@ -1,0 +1,14 @@
+BDEPEND=sys-devel/bison sys-devel/flex sys-devel/m4 filecaps? ( sys-libs/libcap )
+DEFINED_PHASES=configure install postinst
+DESCRIPTION=A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 & IPv6
+EAPI=7
+HOMEPAGE=https://bird.network.cz
+INHERIT=fcaps
+IUSE=+client debug libssh +filecaps
+KEYWORDS=~amd64 ~arm64 ~x86 ~x64-macos
+LICENSE=GPL-2
+RDEPEND=client? ( sys-libs/ncurses:= ) client? ( sys-libs/readline:= ) filecaps? ( acct-group/bird acct-user/bird ) libssh? ( net-libs/libssh:= ) filecaps? ( sys-libs/libcap )
+SLOT=0
+SRC_URI=ftp://bird.network.cz/pub/bird/bird-2.0.8.tar.gz
+_eclasses_=fcaps	da689a8e04bbbb3518888ff668fee45b
+_md5_=9ab50cde8bbf2bd65b679728602fbc78
