@@ -11,7 +11,7 @@ S="${WORKDIR}"/UT2003-BonusPack
 LICENSE="ut2003"
 SLOT="1"
 KEYWORDS="~x86"
-RESTRICT="strip"
+RESTRICT="bindist mirror strip"
 
 RDEPEND="
 	acct-group/gamestat
