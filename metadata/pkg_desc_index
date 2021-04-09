@@ -224,7 +224,7 @@ acct-group/sabnzbd 0-r1: SABnzbd program group
 acct-group/sagan 0: Group for the Sagan log monitoring system
 acct-group/sancp 0: gid for net-analyzer/sancp
 acct-group/sanlock 0-r1: shared storage lock manager
-acct-group/sauerbraten 0: Group for Sauerbraten (FOSS game engine (Cube 2))
+acct-group/sauerbraten 0-r1: Group for Sauerbraten (FOSS game engine (Cube 2))
 acct-group/scponly 0-r1: group for scponly
 acct-group/serf 0: A group for app-admin/serf
 acct-group/sgx 0: System group: sgx
@@ -531,7 +531,7 @@ acct-user/sabnzbd 0-r1: SABnzbd program user
 acct-user/sagan 0-r1: User for the Sagan log monitoring system
 acct-user/sancp 0: uid for net-analyzer/sancp
 acct-user/sanlock 0-r1: shared storage lock manager
-acct-user/sauerbraten 0: Group for Sauerbraten (FOSS game engine (Cube 2))
+acct-user/sauerbraten 0-r1: Group for Sauerbraten (FOSS game engine (Cube 2))
 acct-user/scponly 0-r1: user for chrooted scponly
 acct-user/serf 0: A user for app-admin/serf
 acct-user/shellinaboxd 0-r1: shellinabox user
@@ -11837,7 +11837,7 @@ games-strategy/freesynd 0.7.5: Portable engine reimplementation for the classic 
 games-strategy/galaxyhack 1.74-r1: Multiplayer AI script based strategy game
 games-strategy/hedgewars 1.0.0-r100: A turn-based strategy, artillery, action and comedy game
 games-strategy/ja2-stracciatella 0.17.0: An improved, cross-platform, stable Jagged Alliance 2 runtime
-games-strategy/ja2-stracciatella-data 1: A port of Jagged Alliance 2 to SDL (data files)
+games-strategy/ja2-stracciatella-data 1-r1: A port of Jagged Alliance 2 to SDL (data files)
 games-strategy/julius 1.4.1: Feature-faithful open source re-implementation of Caesar III
 games-strategy/knights-demo 1.32-r2: Anglo-Saxon medieval army battles and resource management
 games-strategy/lgeneral 1.4.3: A Panzer General clone written in SDL

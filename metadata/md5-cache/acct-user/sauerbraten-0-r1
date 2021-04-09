@@ -6,4 +6,4 @@ KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sparc 
 RDEPEND=acct-group/sauerbraten
 SLOT=0
 _eclasses_=user-info	a2abd4e2f4c3b9b06d64bf1329359a02	user	26d8ce6329c43cbac965617f1c0627e2	acct-user	d32fbb1f9b68d1a1c2adf200d92350af
-_md5_=2f4e97cecbecea07a11b3f6cd0b4925f
+_md5_=00f3a0cd9853cef7878629be0ad7fb1d

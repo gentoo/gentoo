@@ -1,0 +1,12 @@
+BDEPEND=app-arch/unshield
+DEFINED_PHASES=install postinst prepare pretend setup unpack
+DESCRIPTION=A port of Jagged Alliance 2 to SDL (data files)
+EAPI=7
+HOMEPAGE=http://tron.homeunix.org/ja2/
+INHERIT=cdrom check-reqs
+KEYWORDS=~amd64 ~arm64 ~x86
+LICENSE=SIR-TECH
+PROPERTIES=interactive
+SLOT=0
+_eclasses_=portability	c10bdc40668533b1faf15b1d89df0303	cdrom	dd6ba7b03316338a4fdd3ebbade8a719	check-reqs	97b90bd8fb799993925e6b3a683184e5
+_md5_=1f8377e698efc9a6bf01d7429a5885bd
