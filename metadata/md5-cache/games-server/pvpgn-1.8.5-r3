@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst
+DEPEND=mysql? ( dev-db/mysql-connector-c:0= ) postgres? ( dev-db/postgresql[server] )
+DESCRIPTION=A gaming server for Battle.Net compatible clients
+EAPI=7
+HOMEPAGE=https://sourceforge.net/projects/pvpgn.berlios/
+INHERIT=toolchain-funcs
+IUSE=mysql postgres
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=mysql? ( dev-db/mysql-connector-c:0= ) postgres? ( dev-db/postgresql[server] ) acct-user/pvpgn acct-group/pvpgn
+SLOT=0
+SRC_URI=mirror://sourceforge/pvpgn.berlios/pvpgn-1.8.5.tar.bz2 mirror://sourceforge/pvpgn.berlios/pvpgn-support-1.3.tar.gz
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=630bd2ca6d325f18e5d1b6508d925b01
