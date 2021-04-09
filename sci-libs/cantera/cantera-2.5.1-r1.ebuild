@@ -28,10 +28,14 @@ REQUIRED_USE="
 RDEPEND="
 	${PYTHON_DEPS}
 	lapack? ( virtual/lapack )
+	cti? (
+		$(python_gen_cond_dep '
+			dev-python/ruamel-yaml[${PYTHON_MULTI_USEDEP}]
+		')
+	)
 	python? (
 		$(python_gen_cond_dep '
 			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
-			dev-python/ruamel-yaml[${PYTHON_MULTI_USEDEP}]
 		')
 	)
 	dev-cpp/yaml-cpp
