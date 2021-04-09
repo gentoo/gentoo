@@ -1,13 +1,15 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils flag-o-matic gnome2-utils games vcs-clean
+EAPI=7
+
+inherit desktop flag-o-matic gnome2-utils toolchain-funcs vcs-clean wrapper
 
 EDITION="collect_edition"
 DESCRIPTION="Sauerbraten is a FOSS game engine (Cube 2) with freeware game data (Sauerbraten)"
 HOMEPAGE="http://sauerbraten.org/"
 SRC_URI="mirror://sourceforge/sauerbraten/sauerbraten/2013_02_03/sauerbraten_${PV//./_}_${EDITION}_linux.tar.bz2"
+S="${WORKDIR}"/${PN}
 
 LICENSE="ZLIB freedist"
 SLOT="0"
@@ -26,29 +28,33 @@ RDEPEND="
 		x11-libs/libX11 )"
 DEPEND="${RDEPEND}"
 
-S=${WORKDIR}/${PN}
+PATCHES=(
+	# Patch makefile to use system enet instead of bundled
+	# respect CXXFLAGS, LDFLAGS
+	"${FILESDIR}"/${P}-{system-enet,QA}.patch
+)
 
 src_prepare() {
 	ecvs_clean
-	rm -rf sauerbraten_unix bin_unix src/{include,lib,vcpp}
+	rm -rf sauerbraten_unix bin_unix src/{include,lib,vcpp} || die
 
-	# Patch makefile to use system enet instead of bundled
-	# respect CXXFLAGS, LDFLAGS
-	epatch "${FILESDIR}"/${P}-{system-enet,QA}.patch
+	default
 
 	# Fix links so they point to the correct directory
 	sed -i -e 's:docs/::' README.html || die
 }
 
 src_compile() {
+	tc-export CXX
+
 	use debug && append-cppflags -D_DEBUG
 	emake -C src master $(usex dedicated "server" "$(usex server "server client" "client")")
 }
 
 src_install() {
-	local LIBEXECDIR="${GAMES_PREFIX}/lib"
-	local DATADIR="${GAMES_DATADIR}/${PN}"
-	local STATEDIR="${GAMES_STATEDIR}/${PN}"
+	local LIBEXECDIR="/usr/lib"
+	local DATADIR="/usr/share/${PN}"
+	local STATEDIR="/var/lib/${PN}"
 
 	if ! use dedicated ; then
 		# Install the game data
@@ -60,7 +66,7 @@ src_install() {
 		doexe src/sauer_client
 
 		# Install the client wrapper
-		games_make_wrapper "${PN}-client" "${LIBEXECDIR}/sauer_client -q\$HOME/.${PN} -r" "${DATADIR}"
+		make_wrapper "${PN}-client" "${LIBEXECDIR}/sauer_client -q\$HOME/.${PN} -r" "${DATADIR}"
 
 		# Create menu entry
 		newicon -s 256 data/cube.png ${PN}.png
@@ -76,42 +82,41 @@ src_install() {
 	doexe src/sauer_master
 	use dedicated || use server && doexe src/sauer_server
 
-	games_make_wrapper "${PN}-server" \
+	make_wrapper "${PN}-server" \
 		"${LIBEXECDIR}/sauer_server -k${DATADIR} -q${STATEDIR}"
-	games_make_wrapper "${PN}-master" \
+	make_wrapper "${PN}-master" \
 		"${LIBEXECDIR}/sauer_master ${STATEDIR}"
 
 	# Install the server init script
-	keepdir "${GAMES_STATEDIR}/run/${PN}"
+	keepdir /var/run/${PN}
 	cp "${FILESDIR}"/${PN}.init "${T}" || die
 	sed -i \
 		-e "s:%SYSCONFDIR%:${STATEDIR}:g" \
 		-e "s:%LIBEXECDIR%:${LIBEXECDIR}:g" \
-		-e "s:%GAMES_STATEDIR%:${GAMES_STATEDIR}:g" \
+		-e "s:%/var/lib/%:/var/run:g" \
 		"${T}"/${PN}.init || die
+
 	newinitd "${T}"/${PN}.init ${PN}
 	cp "${FILESDIR}"/${PN}.conf "${T}" || die
 	sed -i \
 		-e "s:%SYSCONFDIR%:${STATEDIR}:g" \
 		-e "s:%LIBEXECDIR%:${LIBEXECDIR}:g" \
-		-e "s:%GAMES_USER_DED%:${GAMES_USER_DED}:g" \
-		-e "s:%GAMES_GROUP%:${GAMES_GROUP}:g" \
+		-e "s:%GAMES_USER_DED%:sauerbraten:g" \
+		-e "s:%GAMES_GROUP%:sauerbraten:g" \
 		"${T}"/${PN}.conf || die
 	newconfd "${T}"/${PN}.conf ${PN}
 
 	dodoc src/*.txt docs/dev/*.txt
-	dohtml -r README.html docs/*
 
-	prepgamesdirs
+	docinto html
+	dodoc -r README.html docs/*
 }
 
 pkg_preinst() {
-	games_pkg_preinst
 	gnome2_icon_savelist
 }
 
 pkg_postinst() {
-	games_pkg_postinst
 	gnome2_icon_cache_update
 
 	elog "If you plan to use map editor feature copy all map data from ${DATADIR}"
