@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils eutils flag-o-matic multilib
+inherit cmake desktop xdg-utils eutils flag-o-matic multilib
 
 PATCHSET_VER="0"
 
@@ -33,8 +33,10 @@ RDEPEND="sys-libs/ncurses:=
 	java? ( >=virtual/jdk-1.7:= )
 	uuid? ( dev-libs/ossp-uuid )
 	qt5? (
-		dev-qt/qtwidgets:5
 		dev-qt/qtgui:5
+		dev-qt/qtwidgets:5
+		dev-util/desktop-file-utils
+		x11-misc/shared-mime-info
 	)
 	X? (
 		virtual/jpeg:0
@@ -64,7 +66,7 @@ src_prepare() {
 	sed -i -e "s|\(SWIPL_INSTALL_PREFIX\)   lib/.*)|\1   $(get_libdir)/swipl)|" CMakeLists.txt || die
 	sed -i -e "s|\(SWIPL_INSTALL_CMAKE_CONFIG_DIR\) lib/|\1   $(get_libdir)/|" CMakeLists.txt || die
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -88,17 +90,40 @@ src_configure() {
 		-DSWIPL_PACKAGES_TERM=$(if use libedit || use readline; then echo yes; else echo no; fi)
 		)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
 	XDG_CONFIG_DIRS="${HOME}" \
 	XDG_DATA_DIRS="${HOME}" \
-		cmake-utils_src_compile
+		cmake_src_compile
 }
 
 src_test() {
 	USE_PUBLIC_NETWORK_TESTS=false \
 	USE_ODBC_TESTS=false \
-		cmake-utils_src_test -V
+		cmake_src_test -V
+}
+
+src_install() {
+	cmake_src_install
+
+	if use qt5; then
+		doicon ./packages/swipl-win/swipl.png
+		make_desktop_entry swipl-win "SWI-Prolog" swipl "Development;Education;"
+	fi
+}
+
+pkg_postinst() {
+	if use qt5; then
+		xdg_icon_cache_update
+		xdg_desktop_database_update
+	fi
+}
+
+pkg_postrm() {
+	if use qt5; then
+		xdg_icon_cache_update
+		xdg_desktop_database_update
+	fi
 }
