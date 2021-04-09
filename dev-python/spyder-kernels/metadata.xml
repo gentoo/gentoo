@@ -5,6 +5,7 @@
     <remote-id type="pypi">spyder-kernels</remote-id>
     <remote-id type="github">spyder-ide/spyder-kernels</remote-id>
   </upstream>
+  <stabilize-allarches/>
   <maintainer type="person" proxied="yes">
     <email>andrewammerlaan@riseup.net</email>
     <name>Andrew Ammerlaan</name>

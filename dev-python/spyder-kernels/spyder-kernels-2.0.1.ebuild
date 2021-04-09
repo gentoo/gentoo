@@ -18,9 +18,11 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-python/cloudpickle[${PYTHON_USEDEP}]
+	<dev-python/decorator-5[${PYTHON_USEDEP}]
 	>=dev-python/ipykernel-5.3.0[${PYTHON_USEDEP}]
 	>=dev-python/ipython-7.6.0[${PYTHON_USEDEP}]
 	>=dev-python/jupyter_client-5.3.4[${PYTHON_USEDEP}]
+	<dev-python/jupyter_client-6.1.13[${PYTHON_USEDEP}]
 	>=dev-python/pyzmq-17[${PYTHON_USEDEP}]
 	>=dev-python/wurlitzer-1.0.3[${PYTHON_USEDEP}]
 "
@@ -28,6 +30,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/cython[${PYTHON_USEDEP}]
+		dev-python/dask[${PYTHON_USEDEP}]
 		dev-python/flaky[${PYTHON_USEDEP}]
 		dev-python/matplotlib[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
@@ -35,6 +38,7 @@ BDEPEND="
 		dev-python/pandas[${PYTHON_USEDEP}]
 		dev-python/scipy[${PYTHON_USEDEP}]
 		dev-python/xarray[${PYTHON_USEDEP}]
+		dev-python/pillow[${PYTHON_USEDEP}]
 	)"
 
 distutils_enable_tests pytest
