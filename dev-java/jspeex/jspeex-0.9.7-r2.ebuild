@@ -1,43 +1,49 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
 JAVA_PKG_IUSE="doc source test"
 
-inherit base java-pkg-2 java-ant-2
+inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Speex speech codec library for Java"
 HOMEPAGE="http://jspeex.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.zip"
+S="${WORKDIR}/${PN}"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 CDEPEND="dev-java/ant-core:0"
-
-RDEPEND="${CDEPEND}
-	>=virtual/jre-1.4"
-
-DEPEND="${CDEPEND}
-	>=virtual/jdk-1.4
+RDEPEND="
+	${CDEPEND}
+	>=virtual/jre-1.8:*
+"
+DEPEND="
+	${CDEPEND}
 	dev-java/junit:0
+	>=virtual/jdk-1.8:*
 	test? (
 		dev-java/ant-junit:0
-	)"
+	)
+"
+BDEPEND="app-arch/unzip"
 
 JAVA_ANT_REWRITE_CLASSPATH="true"
 EANT_GENTOO_CLASSPATH="ant-core"
 EANT_BUILD_TARGET="package"
 
-S="${WORKDIR}/${PN}"
+PATCHES=(
+	"${FILESDIR}"/${P}-remove-junit-report.patch
+	"${FILESDIR}"/${P}-remove-proguard-taskdef.patch
+)
 
-java_prepare() {
-	epatch "${FILESDIR}"/${P}-remove-junit-report.patch
-	epatch "${FILESDIR}"/${P}-remove-proguard-taskdef.patch
+src_prepare() {
+	default
 
-	find . -name "*.jar" -delete || die "Failed to remove bundled libraries."
+	java-pkg_clean
 
 	cd lib || die
 	java-pkg_jar-from --build-only junit
