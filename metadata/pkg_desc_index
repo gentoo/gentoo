@@ -8215,10 +8215,12 @@ dev-python/dissononce 0.34.3-r1: A python implementation for Noise Protocol Fram
 dev-python/distlib 0.3.1-r1: Low-level components of distutils2/packaging
 dev-python/distro 1.5.0-r1: Reliable machine-readable Linux distribution information for Python
 dev-python/dj-database-url 0.5.0: Use Database URLs in your Django Application
+dev-python/dj-email-url 1.0.2: Use an URL to configure email backend settings in your Django Application
 dev-python/django 2.2.19 2.2.20 3.0.13 3.0.14-r1 3.1.7 3.1.8-r1 3.2: High-level Python web framework
 dev-python/django-allauth 0.42.0: Django 3rd party (social) account authentication
 dev-python/django-appconf 1.0.4: A helper class for handling configuration defaults of packaged apps gracefully.
 dev-python/django-auth-ldap 2.1.0 2.2.0 2.3.0 2.4.0: Django LDAP authentication backend
+dev-python/django-cache-url 3.2.3: Use Cache URLs in your Django application
 dev-python/django-cacheops 5.1: ORM cache with automatic granular event-driven invalidation for Django
 dev-python/django-compressor 2.4: Compresses linked and inline JavaScript or CSS into single cached files.
 dev-python/django-cors-headers 3.7.0: Django App that adds CORS (Cross-Origin Resource Sharing) headers to responses
@@ -8277,6 +8279,7 @@ dev-python/empy 3.3.4: A powerful and robust templating system for Python
 dev-python/enrich 1.2.6: Extend rich functionality
 dev-python/entrypoint2 0.2.3 0.2.4: Easy to use command-line interface for python modules
 dev-python/entrypoints 0.3-r2: Discover and load entry points from installed packages
+dev-python/environs 9.3.2: Python library for simplified environment variable parsing
 dev-python/enzyme 0.4.1-r2 9999: Python video metadata parser
 dev-python/eradicate 2.0.0: Removes commented-out code from Python files
 dev-python/errorhandler 2.0.1: Logging framework handler
