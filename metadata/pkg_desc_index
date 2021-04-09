@@ -11056,7 +11056,7 @@ dev-util/valgrind 3.16.1 3.17.0 9999: An open-source memory debugger for GNU/Lin
 dev-util/vbindiff 3.0_beta5: Visual binary diff utility
 dev-util/vint 0.3.21: Lint tool for Vim script language
 dev-util/visual-regexp 3.0-r1 3.1: Type the regexp and visualize it on a sample of your choice
-dev-util/visualvm 1.4.1: Integrates commandline JDK tools and profiling capabilities
+dev-util/visualvm 1.4.1 2.0.6: Integrates commandline JDK tools and profiling capabilities
 dev-util/vmtouch 1.3.0 1.3.1: Virtual Memory Toucher, portable file system cache diagnostics and control
 dev-util/vtable-dumper 1.2: A tool to list content of virtual tables in a shared library
 dev-util/vulkan-headers 1.2.162 1.2.170 9999: Vulkan Header files and API registry
@@ -14208,7 +14208,7 @@ media-video/dvdstyler 3.0.4: A cross-platform free DVD authoring application
 media-video/dvgrab 3.5-r1: Digital Video (DV) grabber for GNU/Linux
 media-video/ffcast 2.4.8: Record screencasts using ffmpeg
 media-video/ffdiaporama 2.2_pre20140701-r2: Movie creator from photos and video clips
-media-video/ffmpeg 4.2.4 4.3.1 4.3.2 9999: Complete solution to record/convert/stream audio and video. Includes libavcodec
+media-video/ffmpeg 4.2.4 4.3.1 4.3.2 4.4 9999: Complete solution to record/convert/stream audio and video. Includes libavcodec
 media-video/ffmpeg2theora 0.30-r1: A simple converter to create Ogg Theora files
 media-video/ffmpegthumbnailer 2.2.0-r1 2.2.2: Lightweight video thumbnailer that can be used by file managers
 media-video/flvstreamer 2.1c: Open source command-line RTMP client intended to stream audio or video flash content
