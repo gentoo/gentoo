@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,6 +14,12 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
+
+src_prepare() {
+	cmake_src_prepare
+
+	sed -i -e '/-Werror/d' CMakeLists.txt || die
+}
 
 src_configure() {
 	local mycmakeargs=(
