@@ -48,7 +48,7 @@ inherit multiprocessing ninja-utils python-utils-r1 toolchain-funcs
 EXPORT_FUNCTIONS src_configure src_compile src_test src_install
 
 _MESON_DEPEND=">=dev-util/meson-0.59.4
-	>=dev-util/ninja-1.8.2
+	${NINJA_DEPEND}
 	dev-util/meson-format-array
 "
 
@@ -284,6 +284,8 @@ meson_feature() {
 # This is the meson_src_configure function.
 meson_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
+
+	[[ -n "${NINJA_DEPEND}" ]] || ewarn "Unknown value '${NINJA}' for \${NINJA}"
 
 	local BUILD_CFLAGS=${BUILD_CFLAGS}
 	local BUILD_CPPFLAGS=${BUILD_CPPFLAGS}
