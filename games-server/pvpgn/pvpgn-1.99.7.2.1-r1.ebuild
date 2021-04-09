@@ -3,22 +3,24 @@
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit cmake toolchain-funcs
 
 SUPPORTP="${PN}-support-1.3"
 DESCRIPTION="A gaming server for Battle.Net compatible clients"
-HOMEPAGE="https://sourceforge.net/projects/pvpgn.berlios/"
-SRC_URI="mirror://sourceforge/pvpgn.berlios/${PN}-${PV/_/}.tar.bz2
-	mirror://sourceforge/pvpgn.berlios/${SUPPORTP}.tar.gz"
+HOMEPAGE="https://pvpgn.pro"
+SRC_URI="https://github.com/pvpgn/pvpgn-server/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-server-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="mysql postgres"
+IUSE="mysql odbc postgres sqlite"
 
 DEPEND="
 	mysql? ( dev-db/mysql-connector-c:0= )
-	postgres? ( dev-db/postgresql[server] )
+	odbc? ( dev-db/libiodbc )
+	postgres? ( dev-db/postgresql:*[server] )
+	sqlite? ( dev-db/sqlite )
 "
 RDEPEND="
 	${DEPEND}
@@ -27,36 +29,39 @@ RDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${P}-fhs.patch
+	#"${FILESDIR}"/${PN}-1.8.5-fhs.patch
+	"${FILESDIR}"/${PN}-1.99.7.2.1-path.patch
 )
 
-src_configure() {
-	cd src || die
+src_prepare() {
+	sed -i \
+		-e 's/-O3 -march=native -mtune=native//' \
+		-e 's/-stdlib=libc++//' \
+		CMakeLists.txt || die
 
-	tc-export CC
-	# Was: "everything in GAMES_BINDIR (bug #63071)"
-	# Not anymore.
-	econf \
-		--sbindir="/usr/bin" \
-		$(use_with mysql) \
-		$(use_with postgres pgsql)
+	cmake_src_prepare
 }
 
-src_compile() {
-	emake -C src
+src_configure() {
+	tc-export CC
+
+	local mycmakeargs=(
+		-DWITH_MYSQL=$(usex mysql)
+		-DWITH_ODBC=$(usex odbc)
+		-DWITH_PGSQL=$(usex postgres)
+		-DWITH_SQLITE3=$(usex sqlite)
+	)
+
+	cmake_src_configure
 }
 
 src_install() {
 	local f
 
-	dodoc README README.DEV CREDITS BUGS TODO UPDATE version-history.txt
-	docinto docs
-	dodoc docs/*
+	cmake_src_install
 
-	emake -C src DESTDIR="${D}" install
-
-	insinto /usr/share/${PN}
-	doins "${WORKDIR}/${SUPPORTP}/"*
+	dolib.so "${BUILD_DIR}"/src/compat/libcompat.so
+	dolib.so "${BUILD_DIR}"/src/common/libcommon.so
 
 	# Was: "GAMES_USER_DED here instead of GAMES_USER (bug #65423)"
 	for f in bnetd d2cs d2dbs ; do
@@ -67,11 +72,15 @@ src_install() {
 				-e "s:GAMES_BINDIR:/usr/bin:g" \
 				-e "s:GAMES_USER:pvpgn:g" \
 				-e "s:GAMES_GROUP:pvpgn:g" \
-				"${D}/etc/${PN}/${f}.conf" \
-				"${D}/etc/init.d/${f}" || die
+				"${ED}/etc/${PN}/${f}.conf" \
+				"${ED}/etc/init.d/${f}" || die
 	done
 
 	keepdir $(find "${ED}/var/lib"/${PN} -type d -printf "/var/lib/${PN}/%P ") /var/lib/${PN}/log
+
+	keepdir /var/pvpgn/{bnmail,chanlogs,charinfo,charsave,clans,ladders}
+	keepdir /var/pvpgn/{reports,status,teams,userlogs,users,userscdb}
+	keepdir /var/pvpgn/bak/char{info,save}
 
 	chown -R pvpgn:pvpgn "${ED}/var/lib/${PN}" || die
 	fperms 0775 "/var/lib/${PN}/log"
