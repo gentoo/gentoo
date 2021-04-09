@@ -43,6 +43,7 @@ src_prepare() {
 
 	# TODO: is there a better way to override it in meson?
 	# Maybe we can inject something to '[binaries]'
+	# https://bugs.gentoo.org/781827
 	sed "s/py3_exe = import('python').find_installation('python3')/py3_exe = import('python').find_installation('${EPYTHON}')/" \
 		-i subprojects/sdb/meson.build || die
 
