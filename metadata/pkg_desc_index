@@ -16544,7 +16544,7 @@ sci-mathematics/octave-epstk 2.4: Graphical output functions for Matlab and Octa
 sci-mathematics/otter 3.3-r3: An Automated Deduction System
 sci-mathematics/pari 2.11.4 2.13.0: Computer-aided number theory C library and tools
 sci-mathematics/pari-data 20191216: Additional dataset packages for PARI
-sci-mathematics/petsc 3.13.1: Portable, Extensible Toolkit for Scientific Computation
+sci-mathematics/petsc 3.13.1 3.14.6 3.15.0: Portable, Extensible Toolkit for Scientific Computation
 sci-mathematics/planarity 3.0.0.5: The edge addition planarity suite of graph algorithms
 sci-mathematics/polymake 3.0_p2: research tool for polyhedral geometry and combinatorics
 sci-mathematics/prng 3.0.2-r2: Pseudo-Random Number Generator library
@@ -16558,7 +16558,7 @@ sci-mathematics/rstudio 1.3.1093: IDE for the R language
 sci-mathematics/rw 0.8-r3 0.9: Compute rank-width decompositions of graphs
 sci-mathematics/sha1-polyml 5.6_p1: implementation of SHA1 is taken from the GNU coreutils package
 sci-mathematics/singular 4.0.2 4.0.3 4.2.0_p1: Computer algebra system for polynomial computations
-sci-mathematics/slepc 3.13.1: Scalable Library for Eigenvalue Problem Computations
+sci-mathematics/slepc 3.13.1 3.14.2 3.15.0: Scalable Library for Eigenvalue Problem Computations
 sci-mathematics/spin 6.4.5: Tool for formal verification of distributed software systems
 sci-mathematics/sympow 2.023.6: Symmetric power elliptic curve L-functions
 sci-mathematics/topcom 0.17.7 0.17.8-r1: Computing Triangulations Of Point Configurations and Oriented Matroids

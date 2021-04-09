@@ -10,6 +10,6 @@ LICENSE=BSD-2
 RDEPEND=virtual/blas virtual/lapack afterimage? ( media-libs/libafterimage ) boost? ( dev-libs/boost ) fftw? ( sci-libs/fftw:3.0[mpi?] ) hdf5? ( sci-libs/hdf5[mpi?] ) hypre? ( >=sci-libs/hypre-2.18.0[mpi?] ) metis? ( >=sci-libs/parmetis-4 ) mpi? ( virtual/mpi[cxx?,fortran?] ) mumps? ( sci-libs/mumps[mpi?] sci-libs/scalapack ) scotch? ( sci-libs/scotch[mpi?] ) sparse? ( sci-libs/suitesparse >=sci-libs/cholmod-1.7.0 ) superlu? ( >=sci-libs/superlu-5 ) X? ( x11-libs/libX11 ) virtual/fortran
 REQUIRED_USE=afterimage? ( X ) complex-scalars? ( !hypre !superlu ) hdf5? ( mpi ) hypre? ( cxx mpi !superlu ) mumps? ( mpi scotch ) scotch? ( mpi ) superlu? ( !hypre )
 SLOT=0
-SRC_URI=http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-3.13.1.tar.gz
+SRC_URI=http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-3.14.6.tar.gz
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	fortran-2	b4796813ccda91c9c0d3463fc90aa969	python-utils-r1	543b53e4d003ebd889082f4673e52af5	python-any-r1	690a993463cd2ebcde40ccdf1bd9ba98
-_md5_=b42518be7719b50dc3b94d861b1a6293
+_md5_=7d2a6ed1ace00389d032a28062d287d4
