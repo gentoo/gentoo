@@ -21,8 +21,12 @@ BDEPEND="
 		dev-python/pytest-regressions[${PYTHON_USEDEP}]
 	)"
 
-RDEPEND="dev-python/sphinx[${PYTHON_USEDEP}]"
+# https://github.com/pydata/pydata-sphinx-theme/issues/367
+RDEPEND="
+	dev-python/sphinx[${PYTHON_USEDEP}]
+	<dev-python/docutils-0.17[${PYTHON_USEDEP}]
+"
 
-# ModuleNotFoundError: No module named 'plotly' even if dev-python/plotly is installed
-#distutils_enable_sphinx docs dev-python/commonmark dev-python/recommonmark dev-python/numpydoc dev-python/jupyter-sphinx dev-python/plotly
+# TODO: fix this: Sandbox violation to /usr/local/share
+#distutils_enable_sphinx docs dev-python/commonmark dev-python/recommonmark dev-python/numpydoc dev-python/jupyter-sphinx dev-python/plotly dev-python/xarray
 distutils_enable_tests pytest

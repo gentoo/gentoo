@@ -9,8 +9,8 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<upstream>
-		<remote-id type="pypi">spyder-memory-profiler</remote-id>
-	</upstream>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">sphinxcontrib-autoprogram</remote-id>
+	</upstream>
 </pkgmetadata>

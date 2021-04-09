@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 USE_RUBY="ruby25 ruby26"
 inherit depend.apache ruby-ng
@@ -19,7 +19,7 @@ DEPS="
 	fastcgi? ( dev-ruby/fcgi )
 	imagemagick? ( dev-ruby/mini_magick )
 	ldap? ( dev-ruby/ruby-net-ldap )
-	markdown? ( >=dev-ruby/redcarpet-3.5.0 )
+	markdown? ( >=dev-ruby/redcarpet-3.5.1 )
 	mysql? ( >=dev-ruby/mysql2-0.5.0:0.5 )
 	passenger? ( www-apache/passenger )
 	postgres? ( >=dev-ruby/pg-1.1.4:1 )
@@ -29,7 +29,7 @@ DEPS="
 	>=dev-ruby/mail-2.7.1
 	dev-ruby/mimemagic
 	>=dev-ruby/mini_mime-1.0.1
-	>=dev-ruby/nokogiri-1.10.0
+	>=dev-ruby/nokogiri-1.11.0
 	dev-ruby/rails:5.2
 	>=dev-ruby/rbpdf-1.20.0
 	dev-ruby/request_store:0
@@ -56,8 +56,8 @@ all_ruby_prepare() {
 
 	# newenvd not working here
 	cat > "${T}/50${PN}" <<-EOF || die
-		CONFIG_PROTECT="${EROOT%/}${REDMINE_DIR}/config"
-		CONFIG_PROTECT_MASK="${EROOT%/}${REDMINE_DIR}/config/locales ${EROOT%/}${REDMINE_DIR}/config/settings.yml"
+		CONFIG_PROTECT="${EROOT}/${REDMINE_DIR}/config"
+		CONFIG_PROTECT_MASK="${EROOT}/${REDMINE_DIR}/config/locales ${EROOT}/${REDMINE_DIR}/config/settings.yml"
 	EOF
 
 	# Fixing versions in Gemfile
@@ -132,8 +132,8 @@ all_ruby_install() {
 }
 
 pkg_postinst() {
-	if [[ -e "${EROOT%/}${REDMINE_DIR}/config/initializers/session_store.rb" \
-	|| -e "${EROOT%/}${REDMINE_DIR}/config/initializers/secret_token.rb" ]]
+	if [[ -e "${EROOT}/${REDMINE_DIR}/config/initializers/session_store.rb" \
+	|| -e "${EROOT}/${REDMINE_DIR}/config/initializers/secret_token.rb" ]]
 	then
 		elog "Execute the following command to upgrade environment:"
 		elog
@@ -144,7 +144,7 @@ pkg_postinst() {
 	else
 		elog "Execute the following command to initialize environment:"
 		elog
-		elog "# cd ${EROOT%/}${REDMINE_DIR}"
+		elog "# cd ${EROOT}/${REDMINE_DIR}"
 		elog "# cp config/database.yml.example config/database.yml"
 		elog "# \${EDITOR} config/database.yml"
 		elog "# chown redmine:redmine config/database.yml"
@@ -157,11 +157,11 @@ pkg_postinst() {
 
 pkg_config() {
 	# Remove old lock file
-	rm -f "${EROOT%/}${REDMINE_DIR}/Gemfile.lock"
+	rm -f "${EROOT}/${REDMINE_DIR}/Gemfile.lock"
 
-	if [[ ! -e "${EROOT%/}${REDMINE_DIR}/config/database.yml" ]]; then
-		eerror "Copy ${EROOT%/}${REDMINE_DIR}/config/database.yml.example to"
-		eerror "${EROOT%/}${REDMINE_DIR}/config/database.yml then edit this"
+	if [[ ! -e "${EROOT}/${REDMINE_DIR}/config/database.yml" ]]; then
+		eerror "Copy ${EROOT}/${REDMINE_DIR}/config/database.yml.example to"
+		eerror "${EROOT}/${REDMINE_DIR}/config/database.yml then edit this"
 		eerror "file in order to configure your database settings for"
 		eerror "\"production\" environment."
 		die
@@ -182,8 +182,8 @@ pkg_config() {
 	fi
 	local RUBY=${RUBY:-ruby}
 
-	cd "${EROOT%/}${REDMINE_DIR}" || die
-	if [[ -e "${EROOT%/}${REDMINE_DIR}/config/initializers/session_store.rb" ]]
+	cd "${EROOT}/${REDMINE_DIR}" || die
+	if [[ -e "${EROOT}/${REDMINE_DIR}/config/initializers/session_store.rb" ]]
 	then
 		einfo
 		einfo "Generating secret token."
@@ -191,7 +191,7 @@ pkg_config() {
 		rm config/initializers/session_store.rb || die
 		RAILS_ENV="${RAILS_ENV}" ${RUBY} -S rake generate_secret_token || die
 	fi
-	if [[ -e "${EROOT%/}${REDMINE_DIR}/config/initializers/secret_token.rb" ]]
+	if [[ -e "${EROOT}/${REDMINE_DIR}/config/initializers/secret_token.rb" ]]
 	then
 		einfo
 		einfo "Upgrading database."
@@ -219,12 +219,12 @@ pkg_config() {
 		RAILS_ENV="${RAILS_ENV}" ${RUBY} -S rake db:migrate || die
 		einfo "Populating database with default configuration data."
 		RAILS_ENV="${RAILS_ENV}" ${RUBY} -S rake redmine:load_default_data || die
-		chown redmine:redmine -R "${EROOT%/}/var/log/redmine/" || die
+		chown redmine:redmine -R "${EROOT}//var/log/redmine/" || die
 		einfo
 		einfo "If you use sqlite3, please do not forget to change the ownership"
 		einfo "of the sqlite files."
 		einfo
-		einfo "# cd \"${EROOT%/}${REDMINE_DIR}\""
+		einfo "# cd \"${EROOT}/${REDMINE_DIR}\""
 		einfo "# chown redmine:redmine db/ db/*.sqlite3"
 		einfo
 	fi
