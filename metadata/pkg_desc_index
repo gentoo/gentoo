@@ -9585,7 +9585,7 @@ dev-ros/console_bridge_vendor 1.2.2 9999: Wrapper around console_bridge
 dev-ros/control_msgs 1.5.2 9999: Base messages and actions useful for controlling robots
 dev-ros/control_toolbox 1.18.2 9999: Modules that are useful across all controllers
 dev-ros/controller_interface 0.19.1-r1 0.19.2 0.19.3 0.19.4 9999: Interface base class for controllers
-dev-ros/controller_manager 0.19.1 0.19.2 0.19.3 0.19.4 9999: The controller manager
+dev-ros/controller_manager 0.19.4 9999: The controller manager
 dev-ros/controller_manager_msgs 0.19.1 0.19.2 0.19.3 0.19.4 9999: The controller manager
 dev-ros/controller_manager_tests 0.19.1 0.19.2 0.19.3 0.19.4 9999: Tests for the controller manager
 dev-ros/convex_decomposition 0.1.12 9999: Convex Decomposition Tool for Robot Model
