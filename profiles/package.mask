@@ -37,6 +37,7 @@
 # port away from games.eclass and use general ebuild functions/helpers.
 # No specific eclass is needed for general games installation.
 # Removal on 2021-05-09.
+# bug #574082
 games-misc/games-envd
 
 # Lars Wendler <polynomial-c@gentoo.org> (2021-04-08)
