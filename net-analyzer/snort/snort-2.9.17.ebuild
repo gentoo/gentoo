@@ -3,49 +3,48 @@
 
 EAPI=7
 
-inherit autotools user systemd tmpfiles
+LUA_COMPAT=( luajit )
+
+inherit autotools lua-single systemd tmpfiles multilib
 
 DESCRIPTION="The de facto standard for intrusion detection/prevention"
 HOMEPAGE="https://www.snort.org"
 SRC_URI="https://www.snort.org/downloads/archive/${PN}/${P}.tar.gz"
+
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="static +gre +ppm +perfprofiling
-+non-ether-decoders control-socket file-inspect high-availability
-shared-rep side-channel sourcefire linux-smp-stats inline-init-failopen
-+threads debug +active-response reload-error-restart open-appid
-+react +flexresp3 large-pcap-64bit selinux +libtirpc"
 
-DEPEND=">=net-libs/libpcap-1.3.0
-	>=net-libs/daq-2.0.2
-	>=dev-libs/libpcre-8.33
+KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+IUSE="+active-response control-socket debug file-inspect +flexresp3 +gre
+high-availability inline-init-failopen large-pcap-64bit +libtirpc
+linux-smp-stats +non-ether-decoders open-appid +perfprofiling +ppm +react
+reload-error-restart selinux shared-rep side-channel sourcefire +threads"
+
+DEPEND="acct-user/snort
+	acct-group/snort
 	dev-libs/libdnet
+	>=dev-libs/libpcre-8.33
 	net-libs/libnsl:0=
+	>=net-libs/libpcap-1.3.0
 	sys-libs/zlib
 	!libtirpc? ( sys-libs/glibc[rpc(-)] )
 	libtirpc? ( net-libs/libtirpc )
-	open-appid? ( dev-lang/luajit:= )
-"
-
+	open-appid? ( ${LUA_DEPS} )"
+BDEPEND=">=net-libs/daq-2.0.2"
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-snort )"
 
-REQUIRED_USE="!kernel_linux? ( !shared-rep )"
+REQUIRED_USE="!kernel_linux? ( !shared-rep )
+	open-appid? ( ${LUA_REQUIRED_USE} )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.9.8.3-no-implicit.patch
-	"${FILESDIR}"/${PN}-2.9.8.3-rpc.patch
-	"${FILESDIR}"/${PN}-2.9.12-snort.pc.patch
-	"${FILESDIR}"/${PN}-2.9.15.1-fno-common.patch
+	"${FILESDIR}/${PN}-2.9.8.3-no-implicit.patch"
+	"${FILESDIR}/${PN}-2.9.8.3-rpc.patch"
+	"${FILESDIR}/${PN}-2.9.12-snort.pc.patch"
 )
 
 pkg_setup() {
-	# pre_inst() is a better place to put this
-	# but we need it here for the 'fowners' statements in src_install()
-	enewgroup snort
-	enewuser snort -1 -1 /dev/null snort
-
+	use open-appid && lua-single_pkg_setup
 }
 
 src_prepare() {
@@ -53,14 +52,15 @@ src_prepare() {
 
 	mv configure.{in,ac} || die
 
+	# USE=debug exposes a macro whose name apparently wasn't changed
+	sed -i -e 's/BEFORE_SRV_FAIL/BEFORE_SERVICE_FAIL/' \
+		src/dynamic-preprocessors/appid/appInfoTable.c || die
+
 	AT_M4DIR=m4 eautoreconf
 }
 
 src_configure() {
 	econf \
-		$(use_enable !static shared) \
-		$(use_enable static) \
-		$(use_enable static so-with-static-lib) \
 		$(use_enable gre) \
 		$(use_enable control-socket) \
 		$(use_enable file-inspect) \
@@ -93,7 +93,9 @@ src_configure() {
 		--disable-profile \
 		--disable-ppm-test \
 		--disable-intel-soft-cpm \
-		--disable-static-daq
+		--disable-static-daq \
+		--disable-static \
+		--disable-so-with-static-lib
 }
 
 src_install() {
@@ -155,8 +157,7 @@ src_install() {
 	rm "${ED}"/usr/share/doc/"${PF}"/Makefile* || die "Failed to remove doc make files"
 
 	# Remove unneeded .la files (Bug #382863)
-	rm -f "${ED}"/usr/$(get_libdir)/snort_dynamicengine/libsf_engine.la || die
-	rm -f "${ED}"/usr/$(get_libdir)/snort_dynamicpreprocessor/libsf_*_preproc.la || die "Failed to remove libsf_?_preproc.la"
+	find "${ED}" -name '*.la' -type f -delete || die
 
 	# Set the correct lib path for dynamicengine, dynamicpreprocessor, and dynamicdetection
 	sed -i -e 's|/usr/local/lib|/usr/'$(get_libdir)'|g' \
