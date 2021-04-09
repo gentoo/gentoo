@@ -5,11 +5,11 @@ EAPI=7
 HOMEPAGE=https://nextcloud.com/
 INHERIT=webapp
 IUSE=+curl +imagemagick mysql postgres +sqlite vhosts
-KEYWORDS=amd64 ~arm ~arm64 x86
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
 LICENSE=AGPL-3
 RDEPEND=<dev-lang/php-8[curl?,filter,gd,hash(+),intl,json,mysql?,pdo,posix,postgres?,session,simplexml,sqlite?,truetype,xmlreader,xmlwriter,zip] imagemagick? ( dev-php/pecl-imagick ) virtual/httpd-php >=app-admin/webapp-config-1.50.15
 REQUIRED_USE=|| ( mysql postgres sqlite )
-SLOT=20.0.5
-SRC_URI=https://download.nextcloud.com/server/releases/nextcloud-20.0.5.tar.bz2
+SLOT=19.0.10
+SRC_URI=https://download.nextcloud.com/server/releases/nextcloud-19.0.10.tar.bz2
 _eclasses_=webapp	990ad6a000cf18d1ef87117e8c7b0a54
-_md5_=2a094c91528dc6b7687fa45a37c0ae57
+_md5_=ada5b7b008320626c71b7bf99484af75
