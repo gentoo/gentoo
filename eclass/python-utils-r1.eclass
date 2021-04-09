@@ -19,6 +19,9 @@
 # For more information, please see the Python Guide:
 # https://dev.gentoo.org/~mgorny/python-guide/
 
+# NOTE: When dropping support for EAPIs here, we need to update
+# metadata/install-qa-check.d/60python-pyc
+# See bug #704286, bug #781878
 case "${EAPI:-0}" in
 	[0-5]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
 	[6-7]) ;;
