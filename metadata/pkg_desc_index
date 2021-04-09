@@ -22,6 +22,7 @@ acct-group/bedrock 0-r1: A group for the Minecraft Bedrock server
 acct-group/bind_exporter 0-r1: System group: bind_exporter
 acct-group/bitcoin 0-r1: A group for users with access to system-wide Bitcoin services
 acct-group/bitlbee 0-r1: System group: bitlbee
+acct-group/blackbox_exporter 0: System group: blackbox_exporter
 acct-group/boinc 0: Group for sci-misc/boinc
 acct-group/buildbot 0-r1: Buildbot program group
 acct-group/burp 0-r1: Group for the app-backup/burp server
@@ -337,6 +338,7 @@ acct-user/bedrock 0-r1: A user for the Minecraft Bedrock server
 acct-user/bind_exporter 0-r1: user for bind_exporter
 acct-user/bitcoin 0-r1: System-wide Bitcoin services user
 acct-user/bitlbee 0-r1: User for biltbee
+acct-user/blackbox_exporter 0: A user for blackbox_exporter
 acct-user/boinc 0: User for sci-misc/boinc
 acct-user/buildbot 0-r1: Buildbot program user
 acct-user/burp 0-r1: User for the app-backup/burp server
