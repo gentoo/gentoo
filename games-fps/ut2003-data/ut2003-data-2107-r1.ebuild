@@ -14,7 +14,7 @@ LICENSE="ut2003 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-RESTRICT="bindist strip"
+RESTRICT="bindist mirror strip"
 
 BDEPEND="
 	app-arch/unzip
