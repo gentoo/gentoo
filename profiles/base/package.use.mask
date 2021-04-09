@@ -6,6 +6,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Sam James <sam@gentoo.org> (2021-04-09)
+# Fails to build right now
+# bug #651740
+net-misc/openssh debug
+
 # Stephan Hartmann <sultan@gentoo.org> (2021-03-21)
 # Requires unreleased sys-devel/icu-69.1
 >=www-client/chromium-91 system-icu
