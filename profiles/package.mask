@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2021-04-09)
+# Support package for games.eclass (which is now being last-rited). Please
+# port away from games.eclass and use general ebuild functions/helpers.
+# Removal on 9th May 2021.
+games-misc/games-envd
+
 # Lars Wendler <polynomial-c@gentoo.org> (2021-04-08)
 # Masked for testing and until revdeps have been fixed:
 # https://bugs.gentoo.org/781188
@@ -166,8 +172,8 @@ app-office/ical
 net-p2p/xmr-stak
 
 # Jonas Stein <jstein@gentoo.org> (2021-03-29)
-# Depends on gtk-2, no release since 2010. 
-# Removal on 2021-05-01.  
+# Depends on gtk-2, no release since 2010.
+# Removal on 2021-05-01.
 # Bug #779148.
 app-editors/beaver
 
