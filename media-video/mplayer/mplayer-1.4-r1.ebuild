@@ -232,6 +232,7 @@ src_prepare() {
 	else
 		eapply "${FILESDIR}"/${PN}-1.3-CVE-2016-4352.patch
 	fi
+	eapply "${FILESDIR}"/ffmpeg44.patch
 	if [ ! -f VERSION ] ; then
 		[ -f "$svf" ] || die "Missing ${svf}. Did you generate your snapshot with prepare_mplayer.sh?"
 		local sv=$(<$svf)
