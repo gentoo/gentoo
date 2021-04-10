@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7..9} )
 inherit distutils-r1
 
 DESCRIPTION="Highly concurrent networking library"
@@ -18,7 +18,6 @@ IUSE="doc examples"
 RDEPEND="
 	>=dev-python/dnspython-1.15.0[${PYTHON_USEDEP}]
 	<dev-python/dnspython-2.0.0[${PYTHON_USEDEP}]
-	>=dev-python/monotonic-1.4[${PYTHON_USEDEP}]
 	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
 	virtual/python-greenlet[${PYTHON_USEDEP}]
 "
