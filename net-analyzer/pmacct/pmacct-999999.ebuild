@@ -22,7 +22,8 @@ REQUIRED_USE="
 	rabbitmq? ( jansson )
 "
 
-RDEPEND="net-libs/libpcap
+RDEPEND="dev-libs/libcdada
+	net-libs/libpcap
 	geoip? ( dev-libs/geoip )
 	geoipv2? ( dev-libs/libmaxminddb )
 	jansson? ( dev-libs/jansson )
