@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DIST_AUTHOR=IBB
 DIST_VERSION=0.08
@@ -15,7 +15,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND=""
-DEPEND="${RDEPEND}
+BEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		dev-perl/Test-Exception

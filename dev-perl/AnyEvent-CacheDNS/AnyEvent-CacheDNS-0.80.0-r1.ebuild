@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DIST_AUTHOR=POTYL
 DIST_VERSION=0.08
@@ -18,7 +18,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-perl/AnyEvent
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-File-Spec
 	>=dev-perl/Module-Build-0.400.0
 	test? ( virtual/perl-Test-Simple )
