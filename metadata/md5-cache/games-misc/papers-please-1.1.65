@@ -10,4 +10,4 @@ RESTRICT=fetch bindist
 SLOT=0
 SRC_URI=papers-please_1.1.65_i386.tar.gz
 _eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=f9445fc30e9b065dac720118e4cdfae0
+_md5_=c565758ae918a351d9acf1248e067ab5

@@ -10,4 +10,4 @@ RESTRICT=bindist fetch splitdebug
 SLOT=0
 SRC_URI=dynamitejack-1.0.23.tgz
 _eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=f2f269893f09c0a1f663b9b538566fea
+_md5_=6414a8c881468948f5ded15f9a331756

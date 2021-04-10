@@ -10,4 +10,4 @@ RESTRICT=bindist fetch splitdebug
 SLOT=0
 SRC_URI=splice-linux-1353389454.tar.gz
 _eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=5292e20a0ce4d839047314387ffbba31
+_md5_=697600d907bffb731f6f08db08c5e8bf

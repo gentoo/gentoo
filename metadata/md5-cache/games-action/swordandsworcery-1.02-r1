@@ -11,4 +11,4 @@ RESTRICT=bindist fetch splitdebug
 SLOT=0
 SRC_URI=swordandsworcery_1.02.tar.gz
 _eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28
-_md5_=87455b65d370fdea4bc939d58c647283
+_md5_=0e5c7f7ae989710a8c4aa9abe8ea168f
