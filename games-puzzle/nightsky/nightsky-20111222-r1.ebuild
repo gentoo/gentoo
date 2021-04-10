@@ -47,6 +47,8 @@ pkg_nofetch() {
 }
 
 src_prepare() {
+	default
+
 	einfo "Removing ${ARCH} unrelated files..."
 	rm -v NightSkyHD$(usex amd64 "" "_64") || die
 	rm -rv lib$(usex amd64 "" "64") || die
