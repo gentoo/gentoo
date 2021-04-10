@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2021-04-10)
+# Obsolete backport to Python < 3.4.  No reverse dependencies left.
+# Removal on 2021-05-10.  Bug #781902.
+dev-python/monotonic
+
 # Sam James <sam@gentoo.org> (2021-04-09)
 # Support package for games.eclass (which is now being last-rited). Please
 # port away from games.eclass and use general ebuild functions/helpers.
