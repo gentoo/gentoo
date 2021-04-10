@@ -2120,7 +2120,7 @@ app-emulation/containers-storage 1.18.1 1.20.2 1.23.3: containers/storage librar
 app-emulation/cri-o 1.17.1 1.18.3 1.19.0: OCI-based implementation of Kubernetes Container Runtime Interface
 app-emulation/cri-tools 1.18.0: CLI and validation tools for Kubelet Container Runtime (CRI)
 app-emulation/crossover-bin 20.0.4: Commercial version of app-emulation/wine with paid support
-app-emulation/crun 0.16 0.17: A fast and low-memory footprint OCI Container Runtime fully written in C
+app-emulation/crun 0.17 0.18: A fast and low-memory footprint OCI Container Runtime fully written in C
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 3.7.0 3.8.0 9999: Golden Disk Image builder.
 app-emulation/distrobuilder 1.1: System container image builder for LXC and LXD
@@ -3086,7 +3086,7 @@ app-text/lout 3.40: High-level language for document formatting
 app-text/lv 4.51-r4: Powerful Multilingual File Viewer
 app-text/mandoc 1.14.5 1.14.5-r1: Suite of tools compiling mdoc and man
 app-text/manpager 1: Enable colorization of man pages
-app-text/master-pdf-editor 5.7.20: A complete solution for viewing and editing PDF files
+app-text/master-pdf-editor 5.7.40: A complete solution for viewing and editing PDF files
 app-text/mathtex 1.04: Lets you easily embed LaTeX math in your own html pages, blogs, wikis, etc
 app-text/mecab 0.996-r1: Yet Another Part-of-Speech and Morphological Analyzer
 app-text/mpage 2.5.6-r1: Many to one page printing utility
@@ -3714,8 +3714,8 @@ dev-db/slony1 2.2.10: A replication system for the PostgreSQL Database Managemen
 dev-db/spatialite 4.3.0a 5.0.1: A complete Spatial DBMS in a nutshell built upon sqlite
 dev-db/spatialite-tools 4.3.0-r1 5.0.1-r1: A collection of CLI tools supporting SpatiaLite
 dev-db/sqlcipher 3.4.2 4.0.1: Full Database Encryption for SQLite
-dev-db/sqlcl-bin 20.4.1.351.1718: Oracle SQLcl is the new SQL*Plus
-dev-db/sqldeveloper 4.2.0.17.089.1709 20.2.0.175.1842 20.4.0.379.2205: Oracle SQL Developer is a graphical tool for database development
+dev-db/sqlcl-bin 20.4.2.35.2359: Oracle SQLcl is the new SQL*Plus
+dev-db/sqldeveloper 4.2.0.17.089.1709 20.4.1.407.0006: Oracle SQL Developer is a graphical tool for database development
 dev-db/sqlite 3.34.1 3.35.0 3.35.1 3.35.2 3.35.3 3.35.4: SQL database engine
 dev-db/sqlitebrowser 3.11.1-r1 3.12.1 9999: A light GUI editor for SQLite databases
 dev-db/sqliteman 1.2.2-r4: Powerful GUI manager for the Sqlite3 database
@@ -10703,7 +10703,7 @@ dev-util/android-sdk-update-manager 24.4.1: Open Handset Alliance's Android SDK
 dev-util/android-studio 4.0.1.0.193.6626763 4.1.0.19.201.6858069 4.1.1.0.201.6953283 4.1.2.0.201.7042882 4.1.3.0.201.7199119: Android development environment based on IntelliJ IDEA
 dev-util/android-tools 9.0.0_p3-r1: Android platform tools (adb, fastboot, and mkbootimg)
 dev-util/anjuta 3.34.0: A versatile IDE for GNOME
-dev-util/apitrace 9.0-r1: Tool for tracing, analyzing, and debugging graphics APIs
+dev-util/apitrace 9.0-r2: Tool for tracing, analyzing, and debugging graphics APIs
 dev-util/appdata-tools 0.1.8-r1: CLI designed to validate AppData descriptions for standards and style compliance
 dev-util/appinventor 1.1: MIT App Inventor Setup package
 dev-util/archdiff 1.1.6: Utility to view the differences between two source code archives
@@ -11100,7 +11100,7 @@ dev-vcs/git-crypt 0.6.0: transparent file encryption in git
 dev-vcs/git-deploy 6.0.1_p20131024-r1: make deployments so easy that you'll let new hires do them on their first day
 dev-vcs/git-extras 6.1.0 6.2.0: Git utilities -- repo summary, repl, changelog population, author commit percentages and more
 dev-vcs/git-flow 1.12.3: Git extensions to provide high-level repository operations
-dev-vcs/git-lfs 2.11.0 2.13.1 9999: Command line extension and specification for managing large files with git
+dev-vcs/git-lfs 2.11.0 2.13.3 9999: Command line extension and specification for managing large files with git
 dev-vcs/git-mailz 0.14: Send a collection of patches as emails
 dev-vcs/git-mantle 0.6: Generate an overview of changes on a branch
 dev-vcs/git-merge-changelog 20170131: Git merge driver for GNU style ChangeLog files
@@ -14720,7 +14720,7 @@ net-fs/nfs4-acl-tools 0.3.5 0.3.7: Commandline and GUI tools that deal directly 
 net-fs/openafs 1.8.7: The OpenAFS distributed file system
 net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS installation
 net-fs/s3backer 1.4.5: FUSE-based single file backing store via Amazon S3
-net-fs/s3fs 1.80 1.86: Amazon S3 mounting via fuse
+net-fs/s3fs 1.86 1.89: Amazon S3 mounting via fuse
 net-fs/samba 4.12.9-r1 4.12.11 4.12.12 4.12.14 4.13.4 4.13.5 4.13.7 4.14.0 4.14.2: Samba Suite Version 4
 net-fs/smbnetfs 0.6.3: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
@@ -14747,7 +14747,7 @@ net-ftp/uftpd 2.13: The no nonsense TFTP/FTP server
 net-ftp/vsftpd 3.0.3-r3: Very Secure FTP Daemon written with speed, size and security in mind
 net-ftp/yafc 1.3.7: Console ftp client with a lot of nifty features
 net-im/bitlbee 3.6-r1 9999: irc to IM gateway that support multiple IM protocols
-net-im/bitlbee-facebook 1.2.0 1.2.2 9999: Facebook protocol plugin for BitlBee
+net-im/bitlbee-facebook 1.2.2 9999: Facebook protocol plugin for BitlBee
 net-im/bitlbee-steam 1.4.2 9999: Steam protocol plugin for BitlBee
 net-im/centerim 5.0.1-r1: Ncurses ICQ/Yahoo!/AIM/IRC/MSN/Jabber/GaduGadu/RSS/LiveJournal client
 net-im/choqok 1.7.0: Free/Open Source micro-blogging client by KDE
@@ -15229,7 +15229,7 @@ net-misc/fatrat 1.2.0_beta2_p20161204: Qt5-based download/upload manager
 net-misc/felix 3.1.3: Calico's per-host agent, responsible for programming routes and security policy
 net-misc/freerdp 2.2.0 2.3.2 2.9999 9999: Free implementation of the Remote Desktop Protocol
 net-misc/frr 7.5.1-r2: The FRRouting Protocol Suite
-net-misc/gallery-dl 1.16.5 1.17.1 9999: Download image galleries and collections from several image hosting sites
+net-misc/gallery-dl 1.17.1 1.17.2 9999: Download image galleries and collections from several image hosting sites
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
 net-misc/geoipupdate 2.3.1 3.1.1 4.3.0: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
 net-misc/geomyidae 0.34: A daemon to serve the gopher protocol
@@ -15535,7 +15535,7 @@ net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta 
 net-p2p/ktorrent 20.12.3: Powerful BitTorrent client based on KDE Frameworks
 net-p2p/litecoind 0.10.4.0: The offical daemon to run your own (full) Litecoin node
 net-p2p/mktorrent 1.1_p20180912: Simple command line utility to create BitTorrent metainfo files
-net-p2p/mldonkey 3.1.7-r1: Multi-network P2P application written in Ocaml, with Gtk, web & telnet interface
+net-p2p/mldonkey 3.1.7-r2: Multi-network P2P application written in Ocaml, with Gtk, web & telnet interface
 net-p2p/ncdc 1.22.1 9999: ncurses directconnect client
 net-p2p/nicotine+ 2.2.2 3.0.2 3.0.4: A fork of nicotine, a Soulseek client in Python
 net-p2p/opendchub 0.8.2: hub software for Direct Connect

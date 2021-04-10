@@ -1,6 +1,6 @@
 BDEPEND=|| ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=compile configure install setup
-DEPEND=sys-kernel/linux-headers >=dev-libs/yajl-2.0.0 caps? ( sys-libs/libcap ) criu? ( >=sys-process/criu-3.13 ) seccomp? ( sys-libs/libseccomp ) systemd? ( sys-apps/systemd:= )
+DEPEND=sys-kernel/linux-headers >=dev-libs/yajl-2.0.0 caps? ( sys-libs/libcap ) criu? ( >=sys-process/criu-3.15 ) seccomp? ( sys-libs/libseccomp ) systemd? ( sys-apps/systemd:= )
 DESCRIPTION=A fast and low-memory footprint OCI Container Runtime fully written in C
 EAPI=7
 HOMEPAGE=https://github.com/containers/crun
@@ -8,9 +8,9 @@ INHERIT=autotools python-any-r1
 IUSE=+bpf +caps criu +seccomp systemd static-libs
 KEYWORDS=~amd64 ~arm ~arm64 ~ppc64
 LICENSE=GPL-2+ LGPL-2.1+
-RDEPEND=sys-kernel/linux-headers >=dev-libs/yajl-2.0.0 caps? ( sys-libs/libcap ) criu? ( >=sys-process/criu-3.13 ) seccomp? ( sys-libs/libseccomp ) systemd? ( sys-apps/systemd:= )
+RDEPEND=sys-kernel/linux-headers >=dev-libs/yajl-2.0.0 caps? ( sys-libs/libcap ) criu? ( >=sys-process/criu-3.15 ) seccomp? ( sys-libs/libseccomp ) systemd? ( sys-apps/systemd:= )
 RESTRICT=test
 SLOT=0
-SRC_URI=https://github.com/containers/crun/releases/download/0.16/crun-0.16.tar.gz
+SRC_URI=https://github.com/containers/crun/releases/download/0.18/crun-0.18.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-any-r1	17241a11501065ff3651350040875aa9
-_md5_=104fa741fa430dd8930ae0660847b067
+_md5_=6b0d04aed4be5366a903ad28131dda19
