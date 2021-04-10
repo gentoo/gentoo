@@ -14,12 +14,17 @@ KEYWORDS="-* ~amd64 ~x86"
 RESTRICT="strip"
 
 QA_PREBUILT="/opt/bin/zinc /usr/lib*/*.so"
+QA_EXECSTACK="
+	usr/lib*/libs11player.so
+	opt/bin/zinc
+"
 
 RDEPEND="
-	sys-libs/libstdc++-v3[abi_x86_32(-)]
 	x11-libs/libX11[abi_x86_32(-)]
 	x11-libs/libXext[abi_x86_32(-)]
 	virtual/opengl[abi_x86_32(-)]
+	amd64? ( sys-libs/libstdc++-v3:5[multilib] )
+	x86? ( sys-libs/libstdc++-v3:5 )
 "
 
 src_install() {
