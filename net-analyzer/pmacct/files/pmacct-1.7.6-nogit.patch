@@ -1,0 +1,16 @@
+diff --git a/configure.ac b/configure.ac
+index 34269bd9..c6dbe8ba 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1140,10 +1140,7 @@ dnl Git submodule Dependencies buid system
+ dnl --------------------------------------
+ 
+ dnl First check whether to build git submodule deps
+-WITH_EXTERNAL_DEPS_DEFAULT=yes
+-if [ test ! -f "$srcdir/src/external_libs/libcdada/include/cdada.h" ] && [ test -z `git rev-parse HEAD 2> /dev/null` ]; then
+-	WITH_EXTERNAL_DEPS_DEFAULT=no
+-fi
++WITH_EXTERNAL_DEPS_DEFAULT=no
+ 
+ AC_MSG_CHECKING([whether external dependencies (git submodules) should be compiled])
+ AC_ARG_WITH(external-deps,
