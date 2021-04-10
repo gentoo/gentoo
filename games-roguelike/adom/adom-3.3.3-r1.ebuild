@@ -16,6 +16,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 RESTRICT="strip" # The executable is pre-stripped
 
+QA_FLAGS_IGNORED="/opt/bin/adom"
+RDEPEND="sys-libs/ncurses-compat:5[abi_x86_32(-)]"
+
 DOCS=( "docs/adomfaq.txt" "docs/credits.txt" "docs/manual.txt" "docs/readme1st.txt" )
 
 src_install() {
