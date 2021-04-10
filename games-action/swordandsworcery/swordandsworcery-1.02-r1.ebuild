@@ -83,6 +83,8 @@ pkg_nofetch() {
 }
 
 src_prepare() {
+	default
+
 	if ! use bundled-libs ; then
 		einfo "removing bundled libs..."
 		rm -v lib/libcurl.so* lib/libSDL-1.2.so* \
