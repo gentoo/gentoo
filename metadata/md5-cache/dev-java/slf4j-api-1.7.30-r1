@@ -1,3 +1,4 @@
+BDEPEND=app-arch/zip
 DEFINED_PHASES=compile install preinst prepare setup test
 DEPEND=>=virtual/jdk-1.8:* >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip ) test? ( dev-java/junit:4 )
 DESCRIPTION=The slf4j API
@@ -12,4 +13,4 @@ RESTRICT=!test? ( test ) !test? ( test )
 SLOT=0
 SRC_URI=https://github.com/qos-ch/slf4j/archive/refs/tags/v_1.7.30.tar.gz -> slf4j-1.7.30-sources.tar.gz
 _eclasses_=java-utils-2	2440f41421207d084e5e3f1fb001b34e	java-pkg-2	45c44ec10db6affb3ebee1ac72039888	java-pkg-simple	c85bf2d75a5f53e7b39fc9104701ebfb
-_md5_=454a68a2e7db3fc61420ebeb4840c6ae
+_md5_=e7951a02518a6d9c3d04e21cc445f09f
