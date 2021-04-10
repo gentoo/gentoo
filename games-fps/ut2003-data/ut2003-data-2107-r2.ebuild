@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cdrom unpacker
+inherit desktop cdrom unpacker
 
 DESCRIPTION="Unreal Tournament 2003 - Sequel to the 1999 multi-player first-person shooter"
 HOMEPAGE="http://www.unrealtournament2003.com/"
@@ -37,7 +37,7 @@ src_unpack() {
 src_install() {
 	# Inlined from games.eclass
 	_games_ut_unpack() {
-		local ut_unpack="$1"
+		local ut_unpack="${1}"
 		local f=
 
 		if [[ -z ${ut_unpack} ]] ; then
