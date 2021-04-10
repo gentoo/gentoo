@@ -17230,7 +17230,7 @@ sys-auth/pam_ssh_agent_auth 0.10.3 9999: Simple module to authenticate users aga
 sys-auth/pam_u2f 1.0.8 1.1.0: PAM module for FIDO2 and U2F keys
 sys-auth/pam_yubico 2.26: Library for authenticating against PAM with a Yubikey
 sys-auth/pambase 20201103 20210201.1 999999999: PAM base configuration files
-sys-auth/passwdqc 1.4.0-r1 2.0.0 2.0.1: Password strength checking library (and PAM module)
+sys-auth/passwdqc 1.4.0-r1 2.0.0-r1 2.0.1-r1: Password strength checking library (and PAM module)
 sys-auth/polkit 0.116-r1 0.117 0.118: Policy framework for controlling privileges for system-wide services
 sys-auth/polkit-pkla-compat 0.1: Rules for polkit to add compatibility with pklocalauthority
 sys-auth/polkit-qt 0.113.0: Qt wrapper around polkit-1 client libraries
@@ -19137,7 +19137,7 @@ xfce-base/libxfce4util 4.16.0: A basic utility library for the Xfce desktop envi
 xfce-base/thunar 4.16.5 4.16.6 4.17.0 4.17.1: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.16.1: A tool to find and launch installed applications for the Xfce desktop
 xfce-base/xfce4-meta 4.14-r2 4.16 4.16-r2: The Xfce Desktop Environment (meta package)
-xfce-base/xfce4-panel 4.16.1 4.16.2: Panel for the Xfce desktop environment
+xfce-base/xfce4-panel 4.16.1-r1 4.16.2-r1: Panel for the Xfce desktop environment
 xfce-base/xfce4-session 4.16.0: A session manager for the Xfce desktop environment
 xfce-base/xfce4-settings 4.16.0: Configuration system for the Xfce desktop environment
 xfce-base/xfconf 4.16.0: A configuration management system for Xfce
