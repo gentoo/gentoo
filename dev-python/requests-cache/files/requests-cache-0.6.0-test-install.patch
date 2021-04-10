@@ -1,0 +1,25 @@
+From 430424bf43ad1f5979adbb2eabdbb23726465fde Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 10 Apr 2021 10:56:39 +0200
+Subject: [PATCH] Do not install "tests" package
+
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 5ca5b80..58d8e89 100644
+--- a/setup.py
++++ b/setup.py
+@@ -40,7 +40,7 @@ extras_require['dev'] = list(chain.from_iterable(extras_require.values()))
+ 
+ setup(
+     name='requests-cache',
+-    packages=find_packages(),
++    packages=find_packages(exclude=['tests*']),
+     version=__version__,
+     author='Roman Haritonov',
+     author_email='reclosedev@gmail.com',
+-- 
+2.31.1
+
