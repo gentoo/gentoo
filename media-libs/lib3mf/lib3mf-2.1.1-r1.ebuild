@@ -13,10 +13,10 @@ LICENSE="BSD"
 SLOT="0/2"
 # the included ACT binary is a statically x86_64 built one
 # see https://github.com/3MFConsortium/lib3mf/issues/199
-# no package available for ACT yet in Gentoo.
-# Keywords x86 and arm64 can be re-added after we have a package
-KEYWORDS="~amd64"
-IUSE="test"
+# Keyword arm64 can be re-added after we have dev-go/act
+# package keyworded
+KEYWORDS="~amd64 ~x86"
+IUSE="+system-act test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -27,6 +27,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
+	system-act? ( dev-go/act )
 	test? (
 		dev-cpp/gtest
 		dev-libs/openssl
@@ -36,6 +37,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.0-0001-Gentoo-specific-avoid-pre-stripping-library.patch
+	"${FILESDIR}"/${P}-0001-patch-to-use-system-provided-act-binary.patch
 )
 
 src_configure() {
@@ -44,6 +46,7 @@ src_configure() {
 		-DLIB3MF_TESTS=$(usex test)
 		-DUSE_INCLUDED_LIBZIP=OFF
 		-DUSE_INCLUDED_ZLIB=OFF
+		-DUSE_SYSTEM_ACT=$(usex system-act)
 	)
 
 	if use test; then
