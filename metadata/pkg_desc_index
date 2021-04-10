@@ -5135,7 +5135,7 @@ dev-java/slf4j-api 1.7.7 1.7.30-r1: The slf4j API
 dev-java/slf4j-ext 1.7.5 1.7.7 1.7.30: Extensions to the SLF4J API
 dev-java/slf4j-log4j12 1.7.7 1.7.30: SLF4J LOG4J-12 Binding
 dev-java/slf4j-nop 1.7.7 1.7.30: SLF4J NOP Binding
-dev-java/slf4j-simple 1.7.7 1.7.30: SLF4J Simple binding
+dev-java/slf4j-simple 1.7.7 1.7.30-r1: SLF4J Simple binding
 dev-java/snakeyaml 1.16 1.28: YAML 1.1 parser and emitter for Java
 dev-java/snappy 1.0.3_rc3 1.1.0.1: Snappy compressor/decompressor for Java
 dev-java/snip 0.11-r1: an Apache ANT optional task that extracts snippets of code from text files
@@ -17230,7 +17230,7 @@ sys-auth/pam_ssh_agent_auth 0.10.3 9999: Simple module to authenticate users aga
 sys-auth/pam_u2f 1.0.8 1.1.0: PAM module for FIDO2 and U2F keys
 sys-auth/pam_yubico 2.26: Library for authenticating against PAM with a Yubikey
 sys-auth/pambase 20201103 20210201.1 999999999: PAM base configuration files
-sys-auth/passwdqc 1.4.0-r1 2.0.0-r1 2.0.1-r1: Password strength checking library (and PAM module)
+sys-auth/passwdqc 1.4.0-r1 2.0.0-r1 2.0.1-r1 2.0.2: Password strength checking library (and PAM module)
 sys-auth/polkit 0.116-r1 0.117 0.118: Policy framework for controlling privileges for system-wide services
 sys-auth/polkit-pkla-compat 0.1: Rules for polkit to add compatibility with pklocalauthority
 sys-auth/polkit-qt 0.113.0: Qt wrapper around polkit-1 client libraries
