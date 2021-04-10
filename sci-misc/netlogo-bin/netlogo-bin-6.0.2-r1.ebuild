@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit desktop
 
@@ -15,15 +15,18 @@ SRC_URI="
 	amd64? ( http://ccl.northwestern.edu/netlogo/${PV}/${MY_P}-64.tgz )
 	x86? ( http://ccl.northwestern.edu/netlogo/${PV}/${MY_P}-32.tgz )
 "
+S="${WORKDIR}/${MY_PN} ${PV}"
+
 LICENSE="netlogo GPL-2 LGPL-2.1 LGPL-3 BSD Apache-2.0"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE=""
 
-DEPEND=""
-RDEPEND=">=virtual/jre-1.8"
-
-S="${WORKDIR}/${MY_PN} ${PV}"
+RDEPEND="
+	>=virtual/jre-1.8
+	x11-libs/libX11
+	x11-libs/libXrender
+	x11-libs/libXxf86vm
+"
 
 DOCS=( "NetLogo User Manual.pdf" app/docs/shapes.nlogo readme.md )
 HTML_DOCS=( app/docs app/behaviorsearch/documentation )
@@ -32,12 +35,13 @@ QA_PREBUILT="opt/netlogo/app/natives/linux-*/*.so"
 
 src_prepare() {
 	default
-	cp "${FILESDIR}"/netlogo-${PV}.sh netlogo.sh
-	cp "${FILESDIR}"/netlogo3d-${PV}.sh netlogo3d.sh
-	cp "${FILESDIR}"/behaviorsearch-${PV}.sh behaviorsearch.sh
-	cp "${FILESDIR}"/hubnetclient-${PV}.sh hubnetclient.sh
+	cp "${FILESDIR}"/netlogo-${PV}.sh netlogo.sh || die
+	cp "${FILESDIR}"/netlogo3d-${PV}.sh netlogo3d.sh || die
+	cp "${FILESDIR}"/behaviorsearch-${PV}.sh behaviorsearch.sh || die
+	cp "${FILESDIR}"/hubnetclient-${PV}.sh hubnetclient.sh || die
+
 	if use x86; then
-		sed -i -e 's/linux-amd64/linux-i586/g' netlogo3d.sh
+		sed -i -e 's/linux-amd64/linux-i586/g' netlogo3d.sh || die
 	fi
 }
 
@@ -45,11 +49,11 @@ src_install() {
 	einstalldocs
 
 	# Override the config files so they don't use the bundled java path
-	sed -i -e 's/app.runtime=.*/app.runtime=$JAVA_HOME/g' app/*.cfg
+	sed -i -e 's/app.runtime=.*/app.runtime=$JAVA_HOME/g' app/*.cfg || die
 
 	# Once docs are installed, remove them from the source so they don't get
 	# installed below
-	rm -rf app/docs app/behaviorsearch/documentation
+	rm -rf app/docs app/behaviorsearch/documentation || die
 	insinto /opt/netlogo
 	doins -r app/
 	doins -r "Mathematica Link"
