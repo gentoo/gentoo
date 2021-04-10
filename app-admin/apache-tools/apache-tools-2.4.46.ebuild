@@ -23,6 +23,7 @@ RDEPEND=">=dev-libs/apr-1.5.0:1=
 
 DEPEND="${RDEPEND}
 	sys-devel/libtool"
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/httpd-${PV}"
 
