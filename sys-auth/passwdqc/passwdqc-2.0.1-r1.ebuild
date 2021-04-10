@@ -56,6 +56,6 @@ src_compile() {
 }
 
 src_install() {
-	_emake DESTDIR="${ED}" all
+	_emake DESTDIR="${ED}" install_lib install_pam install_utils
 	dodoc README PLATFORMS INTERNALS
 }
