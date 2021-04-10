@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -60,7 +60,7 @@ src_configure() {
 			--testuser=test \
 			--testpassword=test"
 	fi
-	myconf+=" --${impl}_config=${EROOT}/usr/bin/${impl}_config"
+	myconf+=" --${impl}_config=${BROOT}/usr/bin/${impl}_config"
 	perl-module_src_configure
 }
 
