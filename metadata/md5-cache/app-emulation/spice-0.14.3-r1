@@ -6,11 +6,11 @@ EAPI=7
 HOMEPAGE=https://www.spice-space.org/
 INHERIT=autotools python-any-r1 readme.gentoo-r1 xdg-utils
 IUSE=libressl lz4 sasl smartcard static-libs gstreamer test
-KEYWORDS=amd64 arm64 ~ppc64 x86
+KEYWORDS=amd64 arm64 ppc64 x86
 LICENSE=LGPL-2.1
 RDEPEND=dev-lang/orc[static-libs(+)?] >=dev-libs/glib-2.22:2[static-libs(+)?] media-libs/opus[static-libs(+)?] sys-libs/zlib[static-libs(+)?] virtual/jpeg:0=[static-libs(+)?] >=x11-libs/pixman-0.17.7[static-libs(+)?] !libressl? ( dev-libs/openssl:0=[static-libs(+)?] ) libressl? ( dev-libs/libressl:0=[static-libs(+)?] ) lz4? ( app-arch/lz4:0=[static-libs(+)?] ) smartcard? ( >=app-emulation/libcacard-0.1.2 ) sasl? ( dev-libs/cyrus-sasl[static-libs(+)?] ) gstreamer? ( media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://www.spice-space.org/download/releases/spice-server/spice-0.14.3.tar.bz2
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-any-r1	17241a11501065ff3651350040875aa9	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=8be65229ecf0972dcee68f0ffad2818c
+_md5_=d6ce3d3380759004004c8d819eb0cc80
