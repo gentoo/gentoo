@@ -23,7 +23,7 @@ RDEPEND=">=dev-libs/glib-2.50
 	>=xfce-base/exo-0.11.2:=
 	>=xfce-base/garcon-0.5:=
 	>=xfce-base/libxfce4ui-4.15.8:=
-	>=xfce-base/libxfce4util-4.15.6:=[introspection?]
+	>=xfce-base/libxfce4util-4.15.6:=[introspection?,vala?]
 	>=xfce-base/xfconf-4.13:=
 	dbusmenu? ( >=dev-libs/libdbusmenu-16.04.0[gtk3] )
 	introspection? ( dev-libs/gobject-introspection:= )
