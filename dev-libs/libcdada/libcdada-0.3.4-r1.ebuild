@@ -12,8 +12,8 @@ SRC_URI="https://github.com/msune/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="test"
-RESTRICT="!test? ( test )"
+
+PATCHES=( "${FILESDIR}/${PN}-${PV}-Werror.patch" )
 
 src_prepare() {
 	default
@@ -30,5 +30,5 @@ src_configure() {
 
 src_install() {
 	default
-	find "${ED}" -name '*.la' -delete || die
+	find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
 }
