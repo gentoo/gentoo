@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Matthew Smith <matt@offtopica.uk> (2021-05-22)
+# Dead upstream, incompatible with new makeself, no rdeps left.
+# Removal on 2021-06-21.  Bug #781947.
+app-arch/unmakeself
+
 # Andrew Ammmerlaan <andrewammerlaan@gentoo.org> (2021-05-20)
 # dev-python/QtPy-1.9.0-r4 now uses USE flags to control if it uses
 # PySide2 or PyQt5. With the removal of -r3, this eselect module does
