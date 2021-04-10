@@ -64,6 +64,7 @@ BDEPEND="
 
 src_prepare() {
 	cmake_src_prepare
+
 	# set paths
 	sed \
 		-e "s#@BINDIR@#${EPREFIX}/usr/bin#g" \
