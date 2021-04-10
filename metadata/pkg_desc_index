@@ -9136,7 +9136,7 @@ dev-python/reportlab 3.5.60 3.5.63 3.5.64 3.5.65 3.5.66: Tools for generating pr
 dev-python/repoze-lru 0.7-r1: A tiny LRU cache implementation and decorator
 dev-python/repoze-sphinx-autointerface 0.8: Sphinx extension: auto-generates API docs from Zope interfaces
 dev-python/requests 2.25.1-r1: HTTP library for human beings
-dev-python/requests-cache 0.5.2: Persistent cache for requests library
+dev-python/requests-cache 0.5.2 0.6.0: Persistent cache for requests library
 dev-python/requests-credssp 1.1.1 1.2.0: HTTPS CredSSP authentication with the requests library
 dev-python/requests-file 1.4.3: File transport adapter for Requests
 dev-python/requests-kerberos 0.12.0-r1: A Kerberos authentication handler for python-requests
@@ -9373,6 +9373,7 @@ dev-python/unittest2 1.1.0-r1: The new features in unittest backported to Python
 dev-python/uranium 4.8.0: A Python framework for building 3D printing related applications
 dev-python/urdf_parser_py 0.4.3: URDF parser for Python
 dev-python/uritemplate 3.0.1-r1: Python implementation of RFC6570, URI Template
+dev-python/url-normalize 1.4.3: URL normalization for Python
 dev-python/urlgrabber 4.1.0: Python module for downloading files
 dev-python/urllib3 1.26.4: HTTP library with thread-safe connection pooling, file post, and more
 dev-python/urwid 2.1.1: Curses-based user interface library for Python
