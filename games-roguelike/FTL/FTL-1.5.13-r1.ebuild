@@ -41,6 +41,8 @@ pkg_nofetch() {
 }
 
 src_prepare() {
+	default
+
 	if ! use bundled-libs ; then
 		# no system lib for libbass available
 		find data/${ARCH}/lib -type f \! -name "libbass*" -delete || die
@@ -48,7 +50,7 @@ src_prepare() {
 }
 
 src_install() {
-	local dir=opt/${PN}
+	local dir=/opt/${PN}
 
 	insinto ${dir}
 	doins -r data/resources
