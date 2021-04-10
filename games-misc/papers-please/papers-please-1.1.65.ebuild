@@ -48,6 +48,8 @@ pkg_nofetch() {
 }
 
 src_prepare() {
+	default
+
 	rm -v launch.sh LICENSE || die
 	mv README "${T}"/README || die
 }
