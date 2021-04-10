@@ -27,24 +27,29 @@ DEPEND="
 RDEPEND="
 	>=virtual/jre-1.8:*
 "
+BDEPEND="app-arch/zip"
 
-S="${WORKDIR}"
+S="${WORKDIR}/slf4j-v_${PV}/${PN}"
 
-JAVA_SRC_DIR="slf4j-v_${PV}/${PN}/src/main/java"
-JAVA_RESOURCE_DIRS=(
-	"slf4j-v_${PV}/${PN}/src/main/resources"
-)
+JAVA_SRC_DIR="src/main/java"
+JAVA_RESOURCE_DIRS="src/main/resources"
 
 JAVA_TEST_GENTOO_CLASSPATH="junit-4"
-JAVA_TEST_SRC_DIR="slf4j-v_${PV}/${PN}/src/test/java"
+JAVA_TEST_SRC_DIR="src/test/java"
+
 JAVA_TEST_EXCLUDES=(
-	# This code should have never made it into slf4j-api.jar
-	"org.slf4j.NoBindingTest"	
-	# java.lang.InstantiationException
+	# java.lang.InstantiationException - not run by upstream anyway
 	"org.slf4j.helpers.MultithreadedInitializationTest"
 )
 
 src_prepare() {
 	default
 	java-pkg_clean
+}
+
+src_compile() {
+	java-pkg-simple_src_compile
+
+	# remove org/slf4j/impl/ from the jar file
+	zip -d ${PN}.jar org/slf4j/impl/\* || die "Failed to remove impl files"
 }
