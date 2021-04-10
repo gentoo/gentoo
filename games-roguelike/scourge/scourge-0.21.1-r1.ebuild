@@ -37,6 +37,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-automake-1.13.patch
 	"${FILESDIR}"/${P}-freetype_pkgconfig.patch
 	"${FILESDIR}"/${P}-Wc++11-narrowing.patch
+	"${FILESDIR}"/${PN}-0.21.1-respect-AR.patch
 )
 
 src_prepare() {
@@ -49,6 +50,7 @@ src_prepare() {
 	sed -i \
 		-e '/snprintf/s/tmp, 256/tmp, sizeof(tmp)/' \
 		src/scourgehandler.cpp || die
+
 	mv configure.{in,ac} || die
 	eautoreconf
 }
