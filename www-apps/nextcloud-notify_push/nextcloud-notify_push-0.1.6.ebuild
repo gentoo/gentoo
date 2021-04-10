@@ -321,6 +321,9 @@ SLOT="0"
 KEYWORDS=""
 RESTRICT="test"
 
+RDEPEND="acct-group/nobody
+	acct-user/nobody"
+
 S="${WORKDIR}/notify_push-${PV}"
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
