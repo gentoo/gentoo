@@ -8,7 +8,7 @@ DISTUTILS_USE_SETUPTOOLS=no
 
 inherit distutils-r1
 
-DESCRIPTION="efficient arrays of booleans -- C extension"
+DESCRIPTION="Efficient arrays of booleans -- C extension"
 HOMEPAGE="https://github.com/ilanschnell/bitarray https://pypi.org/project/bitarray/"
 SRC_URI="mirror://pypi/b/${PN}/${P}.tar.gz"
 

@@ -28,7 +28,6 @@ RDEPEND="${PYTHON_DEPS}
 	>=dev-python/google-reauth-python-0.1.0[${PYTHON_USEDEP}]
 	>=dev-python/httplib2-0.18[${PYTHON_USEDEP}]
 	>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
-	>=dev-python/monotonic-1.4[${PYTHON_USEDEP}]
 	>=dev-python/pyopenssl-0.13[${PYTHON_USEDEP}]
 	>=dev-python/retry-decorator-1.0.0[${PYTHON_USEDEP}]
 	>=dev-python/six-1.12.0[${PYTHON_USEDEP}]"
@@ -58,8 +57,10 @@ python_prepare_all() {
 	# failes to compile with py3
 	rm gslib/vendored/boto/tests/mturk/cleanup_tests.py || die
 
+	# monotonic is only used by bundled fasteners that we do not install
 	sed -i \
 		-e 's/mock==/mock>=/' \
+		-e '/monotonic/d' \
 		setup.py || die
 	# Sanity check we didn't miss any updates.
 	grep '==' setup.py && die "Need to update version requirements"
