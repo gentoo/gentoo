@@ -8,5 +8,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">py</remote-id>
+    <remote-id type="github">pytest-dev/py</remote-id>
   </upstream>
 </pkgmetadata>
