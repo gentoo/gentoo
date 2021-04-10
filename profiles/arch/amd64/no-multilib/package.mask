@@ -59,6 +59,7 @@ games-arcade/thinktanks-demo
 games-emulation/caps
 games-emulation/nestra
 games-emulation/pcsx2
+games-emulation/vgba
 games-emulation/zinc
 games-emulation/zsnes
 games-fps/avp

@@ -14,9 +14,9 @@ KEYWORDS="-* ~amd64 ~x86"
 RESTRICT="strip"
 
 RDEPEND="
-	x11-libs/libX11
-	x11-libs/libXext
-	sys-libs/zlib
+	x11-libs/libX11[abi_x86_32(-)]
+	x11-libs/libXext[abi_x86_32(-)]
+	sys-libs/zlib[abi_x86_32(-)]
 "
 
 QA_PREBUILT="/opt/bin/vgba"
