@@ -38,10 +38,7 @@ JAVA_TEST_GENTOO_CLASSPATH="junit-4"
 JAVA_TEST_SRC_DIR="src/test/java"
 
 JAVA_TEST_EXCLUDES=(
-	# This code should have never made it into slf4j-api.jar
-	"org.slf4j.NoBindingTest"
-
-	# java.lang.InstantiationException
+	# java.lang.InstantiationException - not run by upstream anyway
 	"org.slf4j.helpers.MultithreadedInitializationTest"
 )
 
