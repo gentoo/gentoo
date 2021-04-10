@@ -34,9 +34,10 @@ src_configure() {
 }
 
 src_test() {
-	# bugs: 680032
+	# sonnet-test_settings: bug 680032
+	# sonnet-test_autodetect: bug 779994
 	local myctestargs=(
-		-E "(sonnet-test_settings|sonnet-test_highlighter)"
+		-E "(sonnet-test_autodetect|sonnet-test_settings|sonnet-test_highlighter)"
 	)
 
 	ecm_src_test
