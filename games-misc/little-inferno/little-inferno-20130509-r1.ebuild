@@ -46,6 +46,8 @@ src_unpack() {
 }
 
 src_prepare() {
+	default
+
 	if ! use bundled-libs ; then
 		rm -rv lib || die
 	fi
