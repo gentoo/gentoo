@@ -9302,7 +9302,7 @@ dev-python/svgwrite 1.4 1.4.1: Python Package to write SVG files
 dev-python/swagger-spec-validator 2.7.3: validate Swagger specs against Swagger 1.1 or 2.0 specification
 dev-python/sybil 2.0.1: Automated testing for the examples in your documentation
 dev-python/symengine 0.6.1-r1 0.7.0 0.7.2: Python wrappers to the symengine C++ library
-dev-python/sympy 1.7.1-r1: Computer Algebra System in pure Python
+dev-python/sympy 1.7.1-r1 1.8: Computer Algebra System in pure Python
 dev-python/tabulate 0.8.9: Pretty-print tabular data
 dev-python/tagpy 2018.1-r1: Python Bindings for TagLib
 dev-python/tappy 3.0: Test Anything Protocol (TAP) tools
