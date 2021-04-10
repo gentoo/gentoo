@@ -19,7 +19,6 @@ RDEPEND="
 	>=dev-python/dnspython-1.15.0[${PYTHON_USEDEP}]
 	<dev-python/dnspython-2.0.0[${PYTHON_USEDEP}]
 	>=dev-python/greenlet-0.3[${PYTHON_USEDEP}]
-	>=dev-python/monotonic-1.4[${PYTHON_USEDEP}]
 	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]"
 DEPEND="doc? ( >=dev-python/python-docs-2.7.6-r1:2.7 )
 	test? ( ${RDEPEND}
