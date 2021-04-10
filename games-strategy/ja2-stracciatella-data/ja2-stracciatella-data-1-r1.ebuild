@@ -29,6 +29,8 @@ src_unpack() {
 src_prepare() {
 	cd "${S}"/Ja2_Files/Data || die
 
+	default
+
 	local lower i
 	# convert to lowercase
 	find . \( -iname "*.jsd" -o -iname "*.wav" -o -iname "*.sti" -o -iname "*.slf" \) \

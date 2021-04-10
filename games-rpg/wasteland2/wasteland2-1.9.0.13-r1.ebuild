@@ -50,7 +50,7 @@ pkg_nofetch() {
 }
 
 src_install() {
-	local dir=opt/${PN}
+	local dir=/opt/${PN}
 
 	# over 20GB of data
 	dodir ${dir}

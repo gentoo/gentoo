@@ -65,6 +65,8 @@ pkg_nofetch() {
 }
 
 src_prepare() {
+	default
+
 	# remove unused files
 	rm solar2.sh || die
 

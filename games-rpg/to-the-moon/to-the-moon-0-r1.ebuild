@@ -63,7 +63,7 @@ src_unpack() {
 }
 
 src_install() {
-	local dir=opt/${PN}
+	local dir=/opt/${PN}
 	local libsuffix=$(usex amd64 "64" "")
 	local arch=$(usex amd64 "x86_64" "x86")
 
