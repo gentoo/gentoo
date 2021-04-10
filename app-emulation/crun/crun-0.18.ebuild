@@ -20,7 +20,7 @@ DEPEND="
 	sys-kernel/linux-headers
 	>=dev-libs/yajl-2.0.0
 	caps? ( sys-libs/libcap )
-	criu? ( >=sys-process/criu-3.13 )
+	criu? ( >=sys-process/criu-3.15 )
 	seccomp? ( sys-libs/libseccomp )
 	systemd? ( sys-apps/systemd:= )
 "
