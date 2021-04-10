@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit rebar user
+inherit rebar
 
 DESCRIPTION="epam for ejabberd to help with PAM authentication support"
 HOMEPAGE="https://github.com/processone/epam"
@@ -14,15 +14,14 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
 
-DEPEND=">=dev-lang/erlang-17.1
-	sys-libs/pam"
+DEPEND="
+	acct-group/epam
+	>=dev-lang/erlang-17.1
+	sys-libs/pam
+"
 RDEPEND="${DEPEND}"
 
 DOCS=( CHANGELOG.md README.md )
-
-pkg_setup() {
-	enewgroup "${PN}"
-}
 
 src_install() {
 	rebar_src_install
