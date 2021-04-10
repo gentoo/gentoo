@@ -1,0 +1,24 @@
+From 44e8dd5b2252c7639021506202df60d6664153d7 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Sat, 10 Apr 2021 10:27:55 +0200
+Subject: [PATCH] fix CMakeLists.txt for distutils_cmake
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+---
+ distutils_cmake/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/distutils_cmake/CMakeLists.txt b/distutils_cmake/CMakeLists.txt
+index 976be6a..ccc54e4 100644
+--- a/distutils_cmake/CMakeLists.txt
++++ b/distutils_cmake/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ cmake_minimum_required(VERSION 3.5)
+-project(pivy_cmake_setup NONE)
++project(pivy_cmake_setup)
+ 
+ 
+ find_package(Coin CONFIG REQUIRED)
+-- 
+2.31.1
+
