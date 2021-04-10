@@ -5493,7 +5493,7 @@ dev-libs/libbulletml 0.0.6: A Library of Bullet Markup Language
 dev-libs/libburn 1.5.2_p1 1.5.4: Open-source library for reading, mastering and writing optical discs
 dev-libs/libbytesize 2.3 2.4 2.5: Tiny library providing a C "class" for working with arbitrary big sizes in bytes
 dev-libs/libcbor 0.8.0: CBOR protocol implementation for C and others
-dev-libs/libcdada 0.3.4: Basic data structures in C
+dev-libs/libcdada 0.3.4-r1: Basic data structures in C
 dev-libs/libcdio 2.0.0-r1 2.1.0-r1: A library to encapsulate CD-ROM reading and control
 dev-libs/libcdio-paranoia 0.93_p1-r1 0.94_p2-r2 2.0.0-r1 2.0.1: an advanced CDDA reader with error correction
 dev-libs/libcec 4.0.4-r1 4.0.7 6.0.2: Library for communicating with the Pulse-Eight USB HDMI-CEC Adaptor
