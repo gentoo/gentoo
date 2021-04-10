@@ -16,6 +16,10 @@ LICENSE="BSD"
 SLOT="0/3"
 KEYWORDS="~amd64"
 
+# 'check' target doesn't exist, nor do any actual tests
+# bug #779649
+RESTRICT="test"
+
 DEPEND="
 	sys-apps/miscfiles
 	sys-libs/ncurses:=
