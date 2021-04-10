@@ -103,8 +103,8 @@ media-video/vdrsync dvdr
 media-plugins/grilo-plugins chromaprint
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-02-16)
-# net-libs/libmediawiki, net-libs/libkvkontakte not stable anywhere.
-kde-apps/kipi-plugins mediawiki vkontakte
+# net-libs/libmediawiki not stable anywhere.
+kde-apps/kipi-plugins mediawiki
 
 # Mikle Kolyada <zlogene@gentoo.org> (2018-11-07)
 # sssd is only stable for amd64 and x86

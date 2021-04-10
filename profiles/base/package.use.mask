@@ -124,10 +124,6 @@ mail-mta/protonmail-bridge gui
 # libclangformat-ide is masked for removal.
 dev-qt/qt-creator clang
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-25)
-# Depends on masked net-libs/libkvkontakte
-kde-apps/kipi-plugins vkontakte
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-08)
 # USE=doc broken on 1.47.0 and later
 # error: unresolved link to `crate::os::unix::ffi::OsStrExt`
