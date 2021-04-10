@@ -6085,25 +6085,25 @@ dev-ml/xml-light 2.2-r3: Minimal Xml parser and printer for OCaml
 dev-ml/yojson 1.7.0: JSON parsing and pretty-printing library for OCaml
 dev-ml/zarith 1.11 1.12: Arithmetic and logic operations over arbitrary-precision integers
 dev-perl/Ace 1.920.0-r6: Object-Oriented Access to ACEDB Databases
-dev-perl/Acme-Damn 0.80.0: Module, that 'unblesses' Perl objects
+dev-perl/Acme-Damn 0.80.0-r1: Module, that 'unblesses' Perl objects
 dev-perl/Algorithm-Annotate 0.100.0-r2: Represent a series of changes in annotate form
-dev-perl/Algorithm-C3 0.100.0 0.110.0: A module for merging hierarchies using the C3 algorithm
+dev-perl/Algorithm-C3 0.110.0: A module for merging hierarchies using the C3 algorithm
 dev-perl/Algorithm-ClusterPoints 0.80.0-r1: Find clusters inside a set of points
 dev-perl/Algorithm-Dependency 1.112.0: Toolkit for implementing dependency systems
 dev-perl/Algorithm-Diff 1.190.300-r1 1.201.0: Compute intelligent differences between two files / lists
 dev-perl/Algorithm-Munkres 0.80.0-r2: Munkres solution to classical Assignment problem
 dev-perl/Alien-Base-ModuleBuild 1.150.0: A Module::Build subclass for building Alien:: modules and their libraries
-dev-perl/Alien-Build 2.230.0 2.320.0 2.330.0 2.380.0: Build external dependencies for use in CPAN
-dev-perl/Alien-Gnuplot 1.33.0: Find and verify functionality of the gnuplot executable
+dev-perl/Alien-Build 2.230.0 2.380.0: Build external dependencies for use in CPAN
+dev-perl/Alien-Gnuplot 1.33.0-r1: Find and verify functionality of the gnuplot executable
 dev-perl/Alien-LibGumbo 0.50.0-r2: Gumbo parser library
 dev-perl/Alien-Libxml2 0.160.0 0.170.0: Install the C libxml2 library on your system
 dev-perl/Alien-SDL 1.446.0-r1: building, finding and using SDL binaries
 dev-perl/Alien-wxWidgets 0.690.0-r2: Building, finding and using wxWidgets binaries
 dev-perl/Any-Moose 0.270.0: Use Moose or Mouse modules (DEPRECATED)
 dev-perl/AnyEvent 7.170.0: Provides a uniform interface to various event loops
-dev-perl/AnyEvent-CacheDNS 0.80.0: Simple DNS resolver with caching
+dev-perl/AnyEvent-CacheDNS 0.80.0-r1: Simple DNS resolver with caching
 dev-perl/AnyEvent-HTTP 2.250.0: Simple but non-blocking HTTP/HTTPS client
-dev-perl/AnyEvent-HTTPD 0.930.0: A simple lightweight event based web (application) server
+dev-perl/AnyEvent-HTTPD 0.930.0-r1: A simple lightweight event based web (application) server
 dev-perl/AnyEvent-I3 0.170.0: Communicate with the i3 window manager
 dev-perl/Apache-AuthCookie 3.300.0: Perl Authentication and Authorization via cookies
 dev-perl/Apache-CGI-Builder 1.300.0-r2: CGI::Builder and Apache2/mod_perl2 integration
