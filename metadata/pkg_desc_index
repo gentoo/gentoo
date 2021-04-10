@@ -9931,10 +9931,9 @@ dev-ruby/arel 9.0.0: Arel is a Relational Algebra for Ruby
 dev-ruby/arel-helpers 2.11.0 2.12.0: Tools to help construct database queries
 dev-ruby/ascii85 1.0.3 1.1.0: Methods for encoding/decoding Adobe's binary-to-text encoding of the same name
 dev-ruby/asciidoctor 2.0.10 2.0.11 2.0.12: Processor for converting AsciiDoc into HTML 5, DocBook 4.5 and other formats
-dev-ruby/asciidoctor-diagram 1.5.19 2.0.2 2.0.3 2.0.5: A set of Asciidoctor extensions that enable you to add diagrams
+dev-ruby/asciidoctor-diagram 1.5.19 2.0.5: A set of Asciidoctor extensions that enable you to add diagrams
 dev-ruby/asciimath 1.0.9 2.0.0 2.0.1 2.0.2: A pure Ruby AsciiMath parsing and conversion library
 dev-ruby/ast 2.4.0 2.4.1 2.4.2: A library for working with abstract syntax trees
-dev-ruby/astrolabe 1.3.1-r1: An object-oriented AST extension for Parser
 dev-ruby/async_sinatra 1.3.0: Asynchronous response API for Sinatra and Thin
 dev-ruby/atomic 1.1.101 1.1.101-r1: An atomic reference implementation for JRuby, Rubinius, and MRI
 dev-ruby/autoprefixer-rails 9.8.6.5 10.0.1.1 10.2.4.0: Add vendor prefixes to CSS rules using values from the Can I Use website
@@ -9967,7 +9966,7 @@ dev-ruby/bsearch 1.5.0-r2 1.5.0-r3: A binary search library for Ruby
 dev-ruby/bson 4.9.4 4.10.0 4.12.0: A Ruby BSON implementation for MongoDB. (Includes binary C-based extension.)
 dev-ruby/buftok 0.2.0-r1 0.3.0: Statefully split input data by a specifiable token
 dev-ruby/builder 3.2.3 3.2.4: A builder to facilitate programatic generation of XML markup
-dev-ruby/bundler 2.1.4 2.2.10 2.2.11 2.2.12 2.2.13 2.2.14 2.2.15: An easy way to vendor gem dependencies
+dev-ruby/bundler 2.1.4 2.2.10 2.2.11 2.2.12 2.2.13 2.2.14 2.2.15 2.2.16: An easy way to vendor gem dependencies
 dev-ruby/bundler-audit 0.7.0.1 0.8.0: Provides patch-level verification for Bundled apps
 dev-ruby/bunny 2.16.1 2.17.0: Another synchronous Ruby AMQP client
 dev-ruby/c21e 1.2.1: Run cross-platform executables
@@ -9996,7 +9995,7 @@ dev-ruby/colored2 3.1.2: Console coloring
 dev-ruby/colorize 0.8.1 0.8.1-r1: Adds methods to set color, background color and text effect on console easier
 dev-ruby/columnize 0.9.0 0.9.0-r1: Sorts an array in column order
 dev-ruby/combustion 1.3.0 1.3.1: Elegant Rails Engine Testing
-dev-ruby/commander 4.5.2: The complete solution for Ruby command-line executables
+dev-ruby/commander 4.5.2 4.6.0: The complete solution for Ruby command-line executables
 dev-ruby/compass 1.0.3-r1: Compass Stylesheet Authoring Framework
 dev-ruby/compass-core 1.0.3-r1: Compass Stylesheet Authoring Framework
 dev-ruby/compass-import-once 1.0.5: Speed up your Sass compilation by making @import only import each file once
@@ -10024,7 +10023,7 @@ dev-ruby/ddmetrics 1.0.1: Non-timeseries measurements for Ruby programs
 dev-ruby/ddplugin 1.0.2 1.0.3: Provides plugin management for Ruby projects
 dev-ruby/debug_inspector 0.0.3 1.0.0: A Ruby wrapper for the MRI 2.0 debug_inspector API
 dev-ruby/deep_merge 1.2.1: A simple set of utility functions for Hash
-dev-ruby/delayer 1.1.2: Delay the processing
+dev-ruby/delayer 1.1.2 1.2.0: Delay the processing
 dev-ruby/delayer-deferred 2.1.3 2.2.0: Ruby implementation of JSDeferred
 dev-ruby/dependor 1.0.1: Reduces duplication when doing manual dependency injection
 dev-ruby/deprecated 3.0.1-r2: A Ruby library for handling deprecated code
@@ -10057,7 +10056,6 @@ dev-ruby/facter 3.14.16-r1: A cross-platform ruby library for retrieving facts f
 dev-ruby/factory_girl 4.8.1: factory_girl provides a framework and DSL for defining and using factories
 dev-ruby/fakefs 0.19.2 0.20.1 1.2.1 1.2.2 1.2.3: A fake filesystem. Use it in your tests
 dev-ruby/faker 2.14.0 2.15.1 2.16.0: A library for generating fake data such as names, addresses, and phone numbers
-dev-ruby/fakeweb 1.3.0.20170806: Helper for faking web requests in Ruby
 dev-ruby/faraday 0.17.3 1.0.1 1.1.0 1.2.0: HTTP/REST API client library with pluggable components
 dev-ruby/faraday_middleware 0.14.0 1.0.0: Various middleware for Faraday
 dev-ruby/faraday_middleware-multi_json 0.0.6-r1: Response JSON parser using MultiJson and FaradayMiddleware
@@ -10124,7 +10122,7 @@ dev-ruby/http_parser_rb 0.6.0-r1: Simple callback-based HTTP request/response pa
 dev-ruby/httparty 0.17.3 0.18.1: Makes http fun! Also, makes consuming restful web services dead easy
 dev-ruby/httpauth 0.2.1: Library implementing the full HTTP Authentication protocol (RFC 2617)
 dev-ruby/httpclient 2.8.3: 'httpclient' gives something like the functionality of libwww-perl (LWP) in Ruby
-dev-ruby/i18n 0.7.0-r3 1.8.5 1.8.9 1.8.10: Add Internationalization support to your Ruby application
+dev-ruby/i18n 1.8.5 1.8.9 1.8.10: Add Internationalization support to your Ruby application
 dev-ruby/ice_nine 0.11.2: Deep Freeze Ruby Objects
 dev-ruby/idn-ruby 0.1.0: LibIDN Ruby Bindings
 dev-ruby/image_processing 1.10.3 1.11.0 1.12.0 1.12.1: High-level image processing helper methods with libvips and ImageMagick
@@ -10157,7 +10155,6 @@ dev-ruby/libusb 0.6.4: binding that gives Ruby programmers access to arbitrary U
 dev-ruby/liquid 4.0.3 5.0.0 5.0.1: Template engine for Ruby
 dev-ruby/liquid-c 4.0.0: Liquid performance extension in C
 dev-ruby/listen 1.3.1-r4 3.3.3 3.4.0 3.4.1 3.5.0 3.5.1: Listens to file modifications and notifies you about the changes
-dev-ruby/litc 1.0.3-r1: A tiny ruby module for Amazon EC2 intance metadata
 dev-ruby/little-plugger 1.1.4: Module that provides Gem based plugin management
 dev-ruby/locale 2.1.3: A pure ruby library which provides basic APIs for localization
 dev-ruby/lockfile 2.1.3: A ruby library for creating NFS safe lockfiles
@@ -10182,7 +10179,6 @@ dev-ruby/memoizable 0.4.2: Memoize method return values
 dev-ruby/memoize 1.3.1-r1: A Ruby library that lets you memoize methods
 dev-ruby/mercenary 0.4.0: Lightweight and flexible library for writing command-line apps
 dev-ruby/metaclass 0.0.4 0.0.4-r1: Adds a __metaclass__ method to all Ruby objects
-dev-ruby/metaid 1.0-r3: An aid to Ruby metaprogramming
 dev-ruby/metasm 1.0.4: cross-architecture assembler, disassembler, linker, and debugger
 dev-ruby/method_source 0.9.2 1.0.0: Retrieve the source code for a method
 dev-ruby/middleware 0.1.0: Generalized implementation of the middleware abstraction for Ruby
@@ -10190,7 +10186,7 @@ dev-ruby/mime-types 2.99.2 3.3.1: Provides a mailcap-like MIME Content-Type look
 dev-ruby/mime-types-data 3.2020.0512 3.2020.1104 3.2021.0212 3.2021.0225: Registry for information about MIME media type definitions
 dev-ruby/mimemagic 0.3.9 0.3.10: Fast mime detection by extension or content
 dev-ruby/mini_magick 4.10.1 4.11.0: Manipulate images with minimal use of memory
-dev-ruby/mini_mime 1.0.2 1.0.3: A lightweight mime type lookup toy
+dev-ruby/mini_mime 1.0.2 1.0.3 1.1.0: A lightweight mime type lookup toy
 dev-ruby/minispec-metadata 3.3.1: Define and access metadata in MiniTest::Spec descriptions and specs
 dev-ruby/minitar 0.9: Provides POSIX tarchive management from Ruby programs
 dev-ruby/minitest 4.7.5-r2 5.11.3 5.12.2 5.13.0 5.14.0 5.14.1 5.14.2 5.14.3 5.14.4: minitest/unit is a small and fast replacement for ruby's huge and slow test/unit
@@ -10230,7 +10226,6 @@ dev-ruby/net-ssh-gateway 2.0.0: A simple library to assist in enabling tunneled 
 dev-ruby/net-telnet 0.2.0: Provides telnet client functionality
 dev-ruby/netrc 0.11.0: This library reads and writes .netrc files
 dev-ruby/network_interface 0.0.2: network_interface layer from metasploit pcaprub
-dev-ruby/nexpose 7.2.1: API client for Nexpose vulnerability managment product
 dev-ruby/niceogiri 1.1.2: Some wrappers around and helpers for XML manipulation using Nokogiri
 dev-ruby/nio4r 2.5.4 2.5.5 2.5.5-r1 2.5.7: A high performance selector API for monitoring IO objects
 dev-ruby/nokogiri 1.11.1-r1 1.11.1-r2 1.11.2 1.11.3: Nokogiri is an HTML, XML, SAX, and Reader parser
@@ -10254,17 +10249,16 @@ dev-ruby/paint 2.2.0 2.2.1: Terminal painter
 dev-ruby/parallel 1.19.2 1.20.0 1.20.1: Run any code in parallel Processes or Threads
 dev-ruby/paramesan 0.1.1 1.0.1: Parameterized tests in Ruby
 dev-ruby/parser 2.7.1.5 2.7.2.0 2.7.2.0-r1 3.0.0.0 3.0.1.0: A production-ready Ruby parser written in pure Ruby
-dev-ruby/parslet 1.8.2: A small PEG based parser library
 dev-ruby/pastel 0.7.4 0.8.0: Terminal strings styling with intuitive and clean API
 dev-ruby/path_expander 1.1.0: Pre-process CLI arguments expanding directories into their constituent files
 dev-ruby/pathutil 0.16.2: Like Pathname but a little less insane
 dev-ruby/patron 0.13.1-r1 0.13.3: Patron is a Ruby HTTP client library based on libcurl
-dev-ruby/pcaprub 0.12.4 0.13.0: Libpcap bindings for ruby compat
+dev-ruby/pcaprub 0.13.0: Libpcap bindings for ruby compat
 dev-ruby/pdf-core 0.7.0 0.8.1 0.9.0: Implements low level PDF features for Prawn
 dev-ruby/pdf-inspector 1.3.0: A tool for analyzing PDF output
 dev-ruby/pdf-reader 1.4.1-r2 1.4.1-r3 2.4.0 2.4.1 2.4.2: PDF parser conforming as much as possible to the PDF specification from Adobe
 dev-ruby/permutation 0.1.8-r1: Library performing operations with permutations of sequences (strings, arrays)
-dev-ruby/pg 0.21.0 1.2.2: Ruby extension library providing an API to PostgreSQL
+dev-ruby/pg 1.2.2: Ruby extension library providing an API to PostgreSQL
 dev-ruby/pg_array_parser 0.0.9-r2: Simple library to parse PostgreSQL arrays into a array of strings
 dev-ruby/pkg-config 1.4.1 1.4.2 1.4.3 1.4.4 1.4.5: A pkg-config implementation by Ruby
 dev-ruby/plist 3.5.0 3.6.0: A library to manipulate Property List files, also known as plists
@@ -10386,7 +10380,6 @@ dev-ruby/ruby-libsecret 3.4.3: Ruby libsecret bindings
 dev-ruby/ruby-macho 2.2.0 2.3.0 2.5.0: A library for viewing and manipulating Mach-O files in Ruby
 dev-ruby/ruby-mp3info 0.8.10: A pure Ruby library for access to mp3 files (internal infos and tags)
 dev-ruby/ruby-net-ldap 0.16.2 0.16.3 0.17.0: Pure ruby LDAP client implementation
-dev-ruby/ruby-oci8 2.2.7 2.2.8: A Ruby library for Oracle OCI8
 dev-ruby/ruby-odbc 0.99999 0.999991: RubyODBC - For accessing ODBC data sources from the Ruby language
 dev-ruby/ruby-oembed 0.13.1 0.14.0 0.14.1 0.15.0: An oEmbed consumer library written in Ruby.
 dev-ruby/ruby-ole 1.2.12.2: Ruby library for easy read/write access to OLE compound documents
@@ -10436,11 +10429,9 @@ dev-ruby/semantic_puppet 1.0.2 1.0.3: Library of tools for working with Semantic
 dev-ruby/semver2 3.4.2: maintain versions as per http://semver.org
 dev-ruby/serialport 1.3.1: a library for serial port (rs232) access in ruby
 dev-ruby/serverengine 2.2.1 2.2.2 2.2.3: A framework to implement robust multiprocess servers
-dev-ruby/session 3.2.0: A set of classes to drive external programs via pipe
 dev-ruby/settingslogic 2.0.9: A simple configuration / settings solution that uses an ERB enabled YAML file
 dev-ruby/sexp_processor 4.15.0 4.15.1 4.15.2: Processor for s-expressions created as part of the ParseTree project
 dev-ruby/sfl 2.2-r1: Library providing spawn() which is almost perfectly compatible with ruby 1.9's
-dev-ruby/shorturl 1.0.0-r2: A very simple library to use URL shortening services such as TinyURL or RubyURL
 dev-ruby/shotgun 0.9.2: Forking implementation of rackup
 dev-ruby/shoulda 2.11.3-r2 2.11.3-r3 3.6.0 3.6.0-r1: Making tests easy on the fingers and eyes
 dev-ruby/shoulda-context 1.2.2: Context framework extracted from Shoulda
@@ -11123,7 +11114,6 @@ dev-vcs/gitg 3.32.1-r1: git repository viewer for GNOME
 dev-vcs/github-pages-publish 0.1.3: A script that commits files from a directory to Github Pages
 dev-vcs/gitolite 2.3.1-r1 3.6.11: Highly flexible server for git directory version tracker
 dev-vcs/gitolite-gentoo 2.3.1-r1 3.6.6.1-r1: Highly flexible server for git directory version tracker, Gentoo fork
-dev-vcs/gitsh 0.11.2: An interactive shell for git
 dev-vcs/gitstats 0_pre20201124: Statistics generator for git
 dev-vcs/gti 9999: A silly git launcher, basically. Inspired by sl
 dev-vcs/guilt 0.36-r1: A series of bash scripts which add a quilt-like interface to git
@@ -11276,7 +11266,7 @@ games-arcade/gnome-nibbles 3.36.1 3.38.2: Nibbles clone for GNOME
 games-arcade/gnome-robots 3.36.1 40.0: Avoid the robots and make them crash into each other
 games-arcade/gnujump 1.0.8-r1: Xjump clone with added features
 games-arcade/grande-KXL 0.6-r1: ZANAC type game
-games-arcade/gunocide2ex 1.0-r1: Fast-paced 2D shoot'em'up
+games-arcade/gunocide2ex 1.0-r2: Fast-paced 2D shoot'em'up
 games-arcade/holotz-castle 1.3.14-r1: 2D platform game
 games-arcade/insaneodyssey 000311-r1: Help West Muldune escape from a futuristic mental hospital
 games-arcade/jardinains 2.0-r2: Arkanoid with Gnomes
@@ -11542,7 +11532,7 @@ games-fps/ut2003 2225-r6: Sequel to the 1999 Game of the Year multi-player first
 games-fps/ut2003-bonuspack-cm 1-r1: Community Bonus Pack for UT2003
 games-fps/ut2003-bonuspack-de 1-r1: Digital Extremes Bonus Pack for UT2003
 games-fps/ut2003-bonuspack-epic 1-r1: Epic Bonus Pack for UT2003
-games-fps/ut2003-data 2107-r1: Unreal Tournament 2003 - Sequel to the 1999 multi-player first-person shooter
+games-fps/ut2003-data 2107-r2: Unreal Tournament 2003 - Sequel to the 1999 multi-player first-person shooter
 games-fps/ut2003-demo 2206-r5: Demo for the sequel to the 1999 multi-player first-person shooter
 games-fps/ut2004 3369.3-r3: Editor's Choice Edition plus Mega Pack for the well-known first-person shooter
 games-fps/ut2004-bonuspack-cbp1 1-r3: UT2003 Community Bonus Pack for UT2004 Volume 1
