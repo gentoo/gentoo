@@ -49,6 +49,8 @@ pkg_nofetch() {
 }
 
 src_prepare() {
+	default
+
 	rm run_me || die
 	mv LINUX.txt "${T}"/ || die
 }
