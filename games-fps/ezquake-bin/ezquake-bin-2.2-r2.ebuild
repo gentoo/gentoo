@@ -26,14 +26,15 @@ RESTRICT="strip mirror"
 
 DEPEND="cdinstall? ( games-fps/quake1-data )"
 RDEPEND="
-		${DEPEND}
-		virtual/opengl
-		x11-libs/libXxf86dga
-		x11-libs/libXxf86vm
+	${DEPEND}
+	virtual/opengl
+	x11-libs/libXpm
+	x11-libs/libXxf86dga
+	x11-libs/libXxf86vm
 "
 
 MY_DIR=opt/${PN}
-QA_PREBUILT="${MY_DIR:1}/ezquake*"
+QA_PREBUILT="${MY_DIR}/ezquake*"
 
 src_unpack() {
 	unpack ${A}
