@@ -40,6 +40,8 @@ pkg_nofetch() {
 }
 
 src_prepare() {
+	default
+
 	if ! use bundled-libs ; then
 		rm -v $(usex amd64 "bin64" "bin32")/libCg{,GL}.so || die "unbundling libs failed!"
 	fi
