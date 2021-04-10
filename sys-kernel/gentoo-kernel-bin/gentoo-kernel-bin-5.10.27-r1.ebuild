@@ -23,7 +23,7 @@ SRC_URI+="
 S=${WORKDIR}
 
 LICENSE="GPL-2"
-KEYWORDS="~arm64"
+KEYWORDS="arm64"
 
 RDEPEND="
 	!sys-kernel/gentoo-kernel:${SLOT}"
