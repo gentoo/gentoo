@@ -81,6 +81,7 @@ src_prepare() {
 		eapply "${FILESDIR}/${PN}-4.17-db4-configure.ac.patch"
 	fi
 
+	cd libs/rootcerts & autoupdate
 	eautoreconf
 }
 
