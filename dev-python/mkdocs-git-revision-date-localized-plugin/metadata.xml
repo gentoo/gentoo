@@ -13,4 +13,5 @@
     <remote-id type="github">timvink/mkdocs-git-revision-date-localized-plugin</remote-id>
     <remote-id type="pypi">mkdocs-git-revision-date-localized-plugin</remote-id>
   </upstream>
+  <stabilize-allarches/>
 </pkgmetadata>
