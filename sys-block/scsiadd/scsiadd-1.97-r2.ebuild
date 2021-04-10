@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit user toolchain-funcs flag-o-matic
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Add and remove SCSI devices from your Linux system during runtime"
 HOMEPAGE="https://llg.cubic.org/tools/"
@@ -14,47 +14,52 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="suid"
 
-pkg_setup() {
-	use suid && enewgroup scsi
-}
+RDEPEND="suid? ( acct-group/scsi )"
+BDEPEND="${RDEPEND}"
 
 src_prepare() {
 	default
-	# remove 'strip' command
-	sed -i -e "s:^\(.*strip.*\):#\1:g" Makefile.in || die
 
-	# convert docs to utf-8
+	# Remove 'strip' command, as portage handles this
+	sed -e "s:^\(.*strip.*\):#\1:g" -i Makefile.in || die
+
+	# Convert docs to UTF-8
 	if [ -x "$(type -p iconv)" ]; then
 		for X in NEWS README; do
-			iconv -f LATIN1 -t UTF8 -o "${X}~" "${X}" && mv -f "${X}~" "${X}" \
+			iconv -f LATIN1 -t UTF8 -o "${X}~" "${X}" \
+				&& mv -f "${X}~" "${X}" \
 				|| rm -f "${X}~" || die
 		done
 	fi
 }
 
 src_compile() {
-	# extra safety for suid
+	# Extra safety for suid
 	append-ldflags -Wl,-z,now
 
-	emake CC="$(tc-getCC)"
+	# Use system compiler
+	tc-export CC
+
+	default
 }
 
 src_install() {
 	dosbin scsiadd
+
 	if use suid; then
 		fowners root:scsi /usr/sbin/scsiadd
-		fperms  4710      /usr/sbin/scsiadd
+		fperms 4710 /usr/sbin/scsiadd
 	fi
-	dodoc NEWS README TODO
+
 	doman scsiadd.8
+
+	einstalldocs
 }
 
 pkg_postinst() {
 	if use suid; then
-		ewarn
 		ewarn "You have chosen to install ${PN} with the binary setuid root. This"
 		ewarn "means that if there any undetected vulnerabilities in the binary,"
 		ewarn "then local users may be able to gain root access on your machine."
-		ewarn
 	fi
 }
