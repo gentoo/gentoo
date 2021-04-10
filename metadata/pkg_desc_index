@@ -2808,7 +2808,7 @@ app-office/texmacs 1.99.11: Wysiwyg text processor with high-quality maths
 app-office/texmaker 5.0.3 5.0.4: A nice LaTeX-IDE
 app-office/texstudio 3.0.5-r1 3.1.0-r1 3.1.1 9999: Free cross-platform LaTeX editor (fork from texmakerX)
 app-office/unoconv 0.9.0: Convert between document formats supported by LibreOffice
-app-office/upwork 5.4.5.1: Project collaboration and tracking software for upwork.com
+app-office/upwork 5.4.5.1-r1: Project collaboration and tracking software for upwork.com
 app-office/worklog-assistant-bin 2.1.3580: Hassle-free time tracking for JIRA self-hosted and OnDemand
 app-office/wps-office 11.1.0.10161: WPS Office is an office productivity suite
 app-officeext/barcode 1.3.5.0-r1: Extension for reading barcodes
@@ -3552,7 +3552,7 @@ app-xemacs/zenirc 1.16 1.18: ZENIRC IRC Client
 dev-ada/asis 2016-r1 2019-r1: To develop tools for Ada software
 dev-ada/aunit 2019-r1 2020: Ada unit testing framework
 dev-ada/aws 2018-r2 2019-r1 2020: A complete Web development framework
-dev-ada/gnat-suite-bin 2016 2017 2018 2019: GNAT Ada suite
+dev-ada/gnat-suite-bin 2016-r1 2017-r1 2018-r1 2019-r1: GNAT Ada suite
 dev-ada/gnat_util 2017-r2 2018-r2 2019-r1: Provides access to GNAT compiler internals for AdaCore utilities
 dev-ada/gnatcoll-bindings 2019-r2 2020-r1: GNAT Component Collection
 dev-ada/gnatcoll-core 2019-r1 2020: GNAT Component Collection Core packages
@@ -11494,7 +11494,7 @@ games-fps/eduke32 20210404.9321: An open source engine port of the classic PC fi
 games-fps/etqw-bin 1.5-r3: Enemy Territory: Quake Wars
 games-fps/etqw-data 1.0-r1: Enemy Territory: Quake Wars data files
 games-fps/etqw-demo 2.0_p1-r3: Enemy Territory: Quake Wars demo
-games-fps/ezquake-bin 2.2-r1: Quakeworld client with mqwcl functionality and many more features
+games-fps/ezquake-bin 2.2-r2: Quakeworld client with mqwcl functionality and many more features
 games-fps/freedm 0.12.1: A 32-level game designed for competitive deathmatch play.
 games-fps/freedm-data 0.12.1: Game resources for FreeDM
 games-fps/freedoom 0.12.1: A complete free-content single-player focused game based on the Doom engine
@@ -16582,7 +16582,7 @@ sci-misc/h5utils 1.13.1: Utilities for visualization and conversion of HDF5 file
 sci-misc/lttoolbox 3.3.3: Toolbox for lexical processing, morphological analysis and generation of words
 sci-misc/nco 4.5.1-r2: Command line utilities for operating on netCDF files
 sci-misc/ncview 2.1.7: X-based viewer for netCDF files
-sci-misc/netlogo-bin 5.0.3-r1 6.0.2: Cross-platform multi-agent programmable modeling environment
+sci-misc/netlogo-bin 5.0.3-r1 6.0.2-r1: Cross-platform multi-agent programmable modeling environment
 sci-misc/oww 0.86.5: A one-wire weather station for Dallas Semiconductor
 sci-misc/tango 9.2.5a: Tango is an Open Source solution for SCADA and DCS
 sci-misc/vitables 3.0.0-r2: A graphical tool for browsing / editing files in both PyTables and HDF5 formats

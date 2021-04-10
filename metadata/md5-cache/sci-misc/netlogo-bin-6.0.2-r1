@@ -1,11 +1,12 @@
 DEFINED_PHASES=install prepare
 DESCRIPTION=Cross-platform multi-agent programmable modeling environment
-EAPI=6
+EAPI=7
 HOMEPAGE=http://ccl.northwestern.edu/netlogo/
+INHERIT=desktop
 KEYWORDS=-* ~amd64 ~x86
 LICENSE=netlogo GPL-2 LGPL-2.1 LGPL-3 BSD Apache-2.0
-RDEPEND=>=virtual/jre-1.8
+RDEPEND=>=virtual/jre-1.8 x11-libs/libX11 x11-libs/libXrender x11-libs/libXxf86vm
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~jlec/distfiles/netlogo.gif.tar amd64? ( http://ccl.northwestern.edu/netlogo/6.0.2/NetLogo-6.0.2-64.tgz ) x86? ( http://ccl.northwestern.edu/netlogo/6.0.2/NetLogo-6.0.2-32.tgz )
 _eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28
-_md5_=9d4b3b70a1ae708590b67d3a6fd9daf5
+_md5_=70347176cbb89a45465ef15b070e55a5
