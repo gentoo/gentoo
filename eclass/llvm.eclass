@@ -19,7 +19,7 @@
 #
 # Example use for a package supporting LLVM 5 to 7:
 # @CODE
-# inherit cmake-utils llvm
+# inherit cmake llvm
 #
 # RDEPEND="
 #	<sys-devel/llvm-8:=
@@ -42,7 +42,7 @@
 #
 # Example for a package needing LLVM+clang w/ a specific target:
 # @CODE
-# inherit cmake-utils llvm
+# inherit cmake llvm
 #
 # # note: do not use := on both clang and llvm, it can match different
 # # slots then. clang pulls llvm in, so we can skip the latter.
