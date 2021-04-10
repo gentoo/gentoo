@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit edos2unix toolchain-funcs unpacker
+inherit desktop edos2unix toolchain-funcs unpacker
 
 DESCRIPTION="Fast-paced 2D shoot'em'up"
 HOMEPAGE="http://g2ex.sourceforge.net/"
@@ -46,7 +46,7 @@ src_prepare() {
 		src/*.{h,cpp} || die
 
 	sed -i \
-		-e "s:/usr/local/games:${GAMES_DATADIR}:" \
+		-e "s:/usr/local/games:/usr/share:" \
 		src/*.{h,cpp} $(find gfx -name '*.txt') || die
 }
 
@@ -56,7 +56,7 @@ src_compile() {
 	tc-export CXX
 
 	emake \
-		CXXFLAGS="$CXXFLAGS $(sdl-config --cflags)" \
+		CXXFLAGS="${CXXFLAGS} $(sdl-config --cflags)" \
 		$(echo *.cpp | sed 's/\.cpp/.o/g')
 
 	$(tc-getCXX) ${CPPFLAGS} ${CXXFLAGS} ${LDFLAGS} -o ${PN} *.o -lpthread -lSDL -lSDL_ttf -lSDL_mixer || die
