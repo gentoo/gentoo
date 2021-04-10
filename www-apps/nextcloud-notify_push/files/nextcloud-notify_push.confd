@@ -74,7 +74,7 @@ SOCKET_PATH="/run/${SVCNAME}/notify_push.socket"
 
 # By default, a background service in OpenRC will produce no output.
 # Uncomment the following option to log output to a file.
-#output_log="/var/log/${SVCNAME}.log"
+#LOGFILE="/var/log/${SVCNAME}.log"
 
 # Configure service dependencies
 # notify_push needs to connect to same mysql and redis instance
