@@ -23,7 +23,7 @@ LICENSE+=" Apache-2.0"
 # admin icons, jquery, xregexp.js
 LICENSE+=" MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 arm64 ~ppc ~ppc64 x86"
 IUSE="doc sqlite test"
 RESTRICT="!test? ( test )"
 
