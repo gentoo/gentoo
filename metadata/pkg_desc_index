@@ -8221,7 +8221,7 @@ dev-python/distlib 0.3.1-r1: Low-level components of distutils2/packaging
 dev-python/distro 1.5.0-r1: Reliable machine-readable Linux distribution information for Python
 dev-python/dj-database-url 0.5.0: Use Database URLs in your Django Application
 dev-python/dj-email-url 1.0.2: Use an URL to configure email backend settings in your Django Application
-dev-python/django 2.2.19 2.2.20 3.0.13 3.0.14-r1 3.1.7 3.1.8-r1 3.2: High-level Python web framework
+dev-python/django 2.2.20 3.0.14-r1 3.1.8-r1 3.2: High-level Python web framework
 dev-python/django-allauth 0.42.0: Django 3rd party (social) account authentication
 dev-python/django-appconf 1.0.4: A helper class for handling configuration defaults of packaged apps gracefully.
 dev-python/django-auth-ldap 2.1.0 2.2.0 2.3.0 2.4.0: Django LDAP authentication backend
@@ -8925,7 +8925,7 @@ dev-python/pypugjs 5.9.5 5.9.8 5.9.9: Pug (Jade) syntax adapter for Django, Jinj
 dev-python/pypy 7.3.3_p2-r1 7.3.4: A fast, compliant alternative implementation of the Python language
 dev-python/pypy-exe 7.3.3_p2 7.3.4: PyPy executable (build from source)
 dev-python/pypy-exe-bin 7.3.3_p2 7.3.4: PyPy executable (pre-built version)
-dev-python/pypy3 7.3.3_p37_p1-r1 7.3.4: A fast, compliant alternative implementation of the Python (3.7) language
+dev-python/pypy3 7.3.3_p37_p1-r1 7.3.4 7.3.4_p1: A fast, compliant alternative implementation of the Python (3.7) language
 dev-python/pypy3-exe 7.3.3_p37_p1 7.3.3_p37_p2 7.3.4: PyPy3 executable (build from source)
 dev-python/pypy3-exe-bin 7.3.3_p37_p1 7.3.3_p37_p2 7.3.4: PyPy3 executable (pre-built version)
 dev-python/pyqrcode 1.2.1-r1: A pure Python QR code generator with SVG, EPS, PNG and terminal output
@@ -17668,8 +17668,8 @@ sys-kernel/cryptodev 1.11 1.12 9999: device that allows access to Linux kernel c
 sys-kernel/dracut 050-r2 051-r1 053 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 4.2.1-r1 9999: Gentoo automatic kernel building scripts
-sys-kernel/gentoo-kernel 5.4.105 5.4.106 5.4.108 5.4.109 5.4.110 5.10.24 5.10.26 5.10.27 5.10.28 5.11.5 5.11.6 5.11.7 5.11.9 5.11.10 5.11.11 5.11.12: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.105 5.4.105-r2 5.4.106 5.4.106-r1 5.4.108 5.4.108-r1 5.4.109 5.4.109-r1 5.4.110 5.4.110-r1 5.10.24 5.10.24-r1 5.10.26 5.10.26-r1 5.10.27 5.10.27-r1 5.10.28 5.10.28-r1 5.11.5 5.11.5-r1 5.11.6 5.11.6-r1 5.11.7 5.11.7-r1 5.11.9 5.11.9-r1 5.11.10 5.11.10-r1 5.11.11 5.11.11-r1 5.11.12 5.11.12-r1: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel 5.4.105 5.4.106 5.4.108 5.4.109 5.4.110 5.4.111 5.10.24 5.10.26 5.10.27 5.10.28 5.10.29 5.11.5 5.11.6 5.11.7 5.11.9 5.11.10 5.11.11 5.11.12 5.11.13: Linux kernel built with Gentoo patches
+sys-kernel/gentoo-kernel-bin 5.4.105 5.4.105-r2 5.4.106 5.4.106-r1 5.4.108 5.4.108-r1 5.4.109 5.4.109-r1 5.4.110 5.4.110-r1 5.4.111 5.10.24 5.10.24-r1 5.10.26 5.10.26-r1 5.10.27 5.10.27-r1 5.10.28 5.10.28-r1 5.10.29 5.11.5 5.11.5-r1 5.11.6 5.11.6-r1 5.11.7 5.11.7-r1 5.11.9 5.11.9-r1 5.11.10 5.11.10-r1 5.11.11 5.11.11-r1 5.11.12 5.11.12-r1 5.11.13: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.257 4.4.261 4.4.262 4.4.263 4.4.264 4.4.265 4.4.266 4.9.257 4.9.261 4.9.262 4.9.263 4.9.264 4.9.265 4.9.266 4.14.221 4.14.225 4.14.226 4.14.227 4.14.228 4.14.229 4.14.230 4.19.175 4.19.181 4.19.182 4.19.183 4.19.184 4.19.185 4.19.186 5.4.97 5.4.105 5.4.106 5.4.107 5.4.108 5.4.109 5.4.110 5.4.111 5.10.24 5.10.25 5.10.26 5.10.27 5.10.28 5.10.29 5.11.6 5.11.7 5.11.8-r1 5.11.9 5.11.10 5.11.11 5.11.12 5.11.13: Full sources including the Gentoo patchset for the 5.11 kernel tree
 sys-kernel/git-sources 5.12_rc2 5.12_rc3 5.12_rc4 5.12_rc5 5.12_rc6: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2 3: Gentoo fork of installkernel script from debianutils
@@ -17684,7 +17684,7 @@ sys-kernel/pf-sources 5.9_p7 5.10_p12 5.11_p1 5.11_p2 5.11_p3 5.11_p4 5.11_p5 5.
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.79_p20201201 5.10.11_p20210201 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.79_p20201201-r1 5.4.9999 5.10.11_p20210201: Raspberry Pi kernel sources
 sys-kernel/rt-sources 4.4.240_p209 4.4.245_p211 4.4.249_p212 4.9.240_p155 4.9.247_p162 4.14.206_p99 4.14.209_p101 4.14.214_p104 4.19.148_p64 4.19.160_p69 4.19.165_p70 5.4.70_p40 5.4.84_p47 5.10.1_p20 5.10.4_p22: Full Linux 5.10 kernel sources with the CONFIG_PREEMPT_RT patch
-sys-kernel/vanilla-kernel 5.4.105 5.4.106 5.4.108 5.4.109 5.4.110 5.10.24 5.10.26 5.10.27 5.10.28 5.11.5 5.11.6 5.11.7 5.11.9 5.11.10 5.11.11 5.11.12: Linux kernel built from vanilla upstream sources
+sys-kernel/vanilla-kernel 5.4.105 5.4.106 5.4.108 5.4.109 5.4.110 5.4.111 5.10.24 5.10.26 5.10.27 5.10.28 5.10.29 5.11.5 5.11.6 5.11.7 5.11.9 5.11.10 5.11.11 5.11.12 5.11.13: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-sources 4.4.266 4.9.266 4.14.230 4.19.186 5.4.111 5.10.29 5.11.13: Full sources for the Linux kernel
 sys-kernel/zen-sources 5.10.16 5.11: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
@@ -17863,7 +17863,7 @@ virtual/commonlisp 0: Virtual for Common Lisp
 virtual/cron 0-r2: Virtual for cron
 virtual/daemontools 0: Virtual for daemontools
 virtual/dev-manager 0-r2: Virtual for the device filesystem manager
-virtual/dist-kernel 5.4.105 5.4.106 5.4.108 5.4.109 5.4.110 5.10.24 5.10.26 5.10.27 5.10.28 5.11.5 5.11.6 5.11.7 5.11.9 5.11.10 5.11.11 5.11.12: Virtual to depend on any Distribution Kernel
+virtual/dist-kernel 5.4.105 5.4.106 5.4.108 5.4.109 5.4.110 5.4.111 5.10.24 5.10.26 5.10.27 5.10.28 5.10.29 5.11.5 5.11.6 5.11.7 5.11.9 5.11.10 5.11.11 5.11.12 5.11.13: Virtual to depend on any Distribution Kernel
 virtual/editor 0-r3: Virtual for editor
 virtual/eject 0-r1: Virtual for the eject command
 virtual/fam 0-r1: A virtual package to choose between gamin and fam
