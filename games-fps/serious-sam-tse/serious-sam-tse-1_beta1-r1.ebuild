@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -64,6 +64,8 @@ src_unpack() {
 }
 
 src_prepare() {
+	default
+
 	# Switch to dynamic executable - runs at sane speeds on modern hardware
 	sed -i -e 's;exec "./ssam_lnx";exec "./ssam_lnx.dynamic";' bin/${MY_PN} \
 		|| die "dynamic binary update failed"
