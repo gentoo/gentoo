@@ -14,7 +14,6 @@
 		<flag name="l2">Enable Layer-2 features and support</flag>
 		<flag name="ndpi">Enable support for nDPI through <pkg>net-libs/nDPI</pkg></flag>
 		<flag name="nflog">Enable support for NFLOG through uacctd</flag>
-		<flag name="plabel">Enable IP prefix labels</flag>
 		<flag name="rabbitmq">Enable support for RabbitMQ through <pkg>net-libs/rabbitmq-c</pkg></flag>
 		<flag name="st-bins">Link Streaming Telemetry daemon binaries</flag>
 		<flag name="traffic-bins">Link IPv4/IPv6 traffic accounting binaries</flag>
