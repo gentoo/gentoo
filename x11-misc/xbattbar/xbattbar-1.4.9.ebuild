@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit flag-o-matic multilib toolchain-funcs
+
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Advanced Power Management battery status display for X"
 HOMEPAGE="https://packages.qa.debian.org/x/xbattbar.html"
