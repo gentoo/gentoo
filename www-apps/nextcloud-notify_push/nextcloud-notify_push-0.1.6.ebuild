@@ -318,7 +318,7 @@ SRC_URI="https://github.com/nextcloud/notify_push/archive/refs/tags/v${PV}.tar.g
 	$(cargo_crate_uris ${CRATES})"
 LICENSE="MIT Apache-2.0 BSD GPL-3 ISC MPL-2.0"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 RESTRICT="test"
 
 RDEPEND="acct-group/nobody
