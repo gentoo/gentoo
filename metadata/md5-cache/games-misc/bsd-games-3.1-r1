@@ -8,7 +8,8 @@ INHERIT=toolchain-funcs
 KEYWORDS=~amd64
 LICENSE=BSD
 RDEPEND=sys-apps/miscfiles sys-libs/ncurses:= !games-misc/wtf !app-misc/banner !games-puzzle/hangman !games-misc/wumpus acct-group/gamestat
+RESTRICT=test
 SLOT=0/3
 SRC_URI=https://github.com/msharov/bsd-games/archive/refs/tags/v3.1.tar.gz -> bsd-games-3.1.tar.gz https://dev.gentoo.org/~sam/distfiles/games-misc/bsd-games/bsd-games-3.1-verbose-build.patch.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
-_md5_=8f2a637ada6af5f2b27d03f4f52ebc00
+_md5_=f19931e5515ff67d3540801fb896ede7
