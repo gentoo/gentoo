@@ -1,0 +1,4 @@
+Plex Media Server is now installed. Please check the configuration file.
+It can be found in /etc/plex/plexmediaserver to verify the default settings.
+To start the Plex Server, run 'rc-config start plex-media-server'
+You will then be able to access your library at http://localhost:32400/manage
