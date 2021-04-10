@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools readme.gentoo-r1 systemd user
+inherit autotools readme.gentoo-r1 systemd
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -32,13 +32,16 @@ COMMON_DEPEND="
 	x11-libs/libX11
 "
 
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="
+	${COMMON_DEPEND}
+	acct-group/bumblebee
 	virtual/opengl
 	x11-base/xorg-drivers[video_cards_nvidia?,video_cards_nouveau?]
 	bbswitch? ( sys-power/bbswitch )
 "
 
-DEPEND="${COMMON_DEPEND}
+DEPEND="
+	${COMMON_DEPEND}
 	sys-apps/help2man
 	virtual/pkgconfig
 "
@@ -51,10 +54,6 @@ PDEPEND="
 "
 
 REQUIRED_USE="|| ( video_cards_nouveau video_cards_nvidia )"
-
-pkg_setup() {
-	enewgroup bumblebee
-}
 
 src_prepare() {
 	default
