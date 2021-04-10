@@ -83,6 +83,13 @@ start_pre() {
 		export LOG
 	fi
 
+	# shellcheck disable=SC2154
+	if [ -n "${LOGFILE}" ] ; then
+		checkpath -q -f -o ${NOTIFY_PUSH_USER}:adm -m 0644 "${LOGFILE}"
+		output_log="${LOGFILE}"
+		error_log="${LOGFILE}"
+	fi
+
 	if [ -n "${METRICS_PORT}" ] ; then
 		export METRICS_PORT
 	fi
@@ -91,11 +98,6 @@ start_pre() {
 		checkpath -q -d -o ${NOTIFY_PUSH_USER}:${NOTIFY_PUSH_GROUP} -m 0770 "$(dirname "${METRICS_SOCKET_PATH}")"
 		service_set_value METRICS_SOCKET_PATH "${METRICS_SOCKET_PATH}"
 		export METRICS_SOCKET_PATH
-	fi
-
-	# shellcheck disable=SC2154
-	if [ -n "${output_log}" ] ; then
-		checkpath -q -f -o ${NOTIFY_PUSH_USER}:adm -m 0644 "${output_log}"
 	fi
 
 	if [ -n "${has_errors}" ] ; then
