@@ -3711,7 +3711,7 @@ dev-db/repmgr 5.1.0: PostgreSQL Replication Manager
 dev-db/rqlite 5.10.2: Replicated SQLite using the Raft consensus protocol
 dev-db/sadisplay 0.4.9: SqlAlchemy schema display script
 dev-db/slony1 2.2.10: A replication system for the PostgreSQL Database Management System
-dev-db/spatialite 4.3.0a 5.0.1: A complete Spatial DBMS in a nutshell built upon sqlite
+dev-db/spatialite 4.3.0a 5.0.1-r1: A complete Spatial DBMS in a nutshell built upon sqlite
 dev-db/spatialite-tools 4.3.0-r1 5.0.1-r1: A collection of CLI tools supporting SpatiaLite
 dev-db/sqlcipher 3.4.2 4.0.1: Full Database Encryption for SQLite
 dev-db/sqlcl-bin 20.4.2.35.2359: Oracle SQLcl is the new SQL*Plus
@@ -11718,7 +11718,7 @@ games-puzzle/xye 0.12.2: Free version of the classic game Kye
 games-puzzle/zaz 1.0.0-r1: A puzzle game where the player has to arrange balls in triplets
 games-roguelike/FTL 1.5.13-r1: Faster Than Light: A spaceship simulation real-time roguelike-like game
 games-roguelike/FTL-gog 1.6.9.25330: Top-down roguelike space ship simulator
-games-roguelike/adom 1.1.1-r1 1.1.1-r2 3.3.3: Ancient Domains Of Mystery rogue-like game
+games-roguelike/adom 1.1.1-r1 1.1.1-r2 3.3.3-r1: Ancient Domains Of Mystery rogue-like game
 games-roguelike/angband 4.2.1 4.2.1-r1: A roguelike dungeon exploration game based on the books of J.R.R. Tolkien
 games-roguelike/crossfire-client 1.71.0-r100: Client for the nethack-style but more in the line of UO
 games-roguelike/dwarf-fortress 0.44.12: A single-player fantasy game
@@ -16199,7 +16199,7 @@ sci-geosciences/liblas 1.8.1-r3: C/C++ library for manipulating the LAS LiDAR fo
 sci-geosciences/libtcd 2.2.7_p2: Library for reading and writing Tide Constituent Database (TCD) files
 sci-geosciences/mapserver 7.6.2-r1: Development environment for building spatially enabled webapps
 sci-geosciences/mc2bsbh 0.0.9: MapCal to BSBchart Header Utility
-sci-geosciences/merkaartor 0.18.4 9999: Qt based map editor for the openstreetmap.org project
+sci-geosciences/merkaartor 0.18.4 0.18.4_p20210410 9999: Qt based map editor for the openstreetmap.org project
 sci-geosciences/mtkbabel 0.8.3.1-r1: MTKBabel is a Perl program to operate the i-Blue 747 GPS data logger
 sci-geosciences/opencpn 5.0.0: a free, open source software for marine navigation
 sci-geosciences/opencpn-plugin-br24radar 2.1 9999: Navico (Simrad, Lowrance) Broadband BR24/3G/4G Radar Plugin for OpenCPN

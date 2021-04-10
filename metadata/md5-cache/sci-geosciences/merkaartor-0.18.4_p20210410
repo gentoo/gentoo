@@ -1,14 +1,15 @@
-BDEPEND=dev-qt/linguist-tools:5 virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=configure postinst postrm prepare unpack
+BDEPEND=dev-qt/linguist-tools:5 virtual/pkgconfig
+DEFINED_PHASES=configure postinst postrm prepare
 DEPEND=dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtsingleapplication[X,qt5(+)] dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 sci-libs/gdal:= sci-libs/proj:= sys-libs/zlib exif? ( media-gfx/exiv2:= ) gps? ( >=sci-geosciences/gpsd-3.17-r2:= ) libproxy? ( net-libs/libproxy ) webengine? ( dev-qt/qtwebengine:5[widgets] )
 DESCRIPTION=Qt based map editor for the openstreetmap.org project
 EAPI=7
 HOMEPAGE=http://www.merkaartor.be https://github.com/openstreetmap/merkaartor
-INHERIT=l10n qmake-utils xdg-utils git-r3
+INHERIT=l10n qmake-utils xdg-utils
 IUSE=debug exif gps libproxy webengine
+KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-PROPERTIES=live
 RDEPEND=dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtsingleapplication[X,qt5(+)] dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 sci-libs/gdal:= sci-libs/proj:= sys-libs/zlib exif? ( media-gfx/exiv2:= ) gps? ( >=sci-geosciences/gpsd-3.17-r2:= ) libproxy? ( net-libs/libproxy ) webengine? ( dev-qt/qtwebengine:5[widgets] )
 SLOT=0
-_eclasses_=l10n	8cdd85e169b835d518bc2fd59f780d8e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
-_md5_=1583568eaaff03942e4fbeacc83dec94
+SRC_URI=https://github.com/openstreetmap/merkaartor/archive/7ae76834bcba9934f38d85058f7372fc016c1d1c.tar.gz -> merkaartor-0.18.4_p20210410.tar.gz
+_eclasses_=l10n	8cdd85e169b835d518bc2fd59f780d8e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=add68de36b0eb17768f077a417479136
