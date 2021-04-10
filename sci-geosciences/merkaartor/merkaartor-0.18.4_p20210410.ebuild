@@ -7,7 +7,13 @@ PLOCALES="ar cs de en es et fr hr hu id_ID it ja nl pl pt_BR pt ru sk sv uk vi z
 inherit l10n qmake-utils xdg-utils
 
 if [[ ${PV} != *9999 ]] ; then
-	SRC_URI="https://github.com/openstreetmap/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	# Needed for new Proj API support
+	# bug #685234
+	COMMIT="7ae76834bcba9934f38d85058f7372fc016c1d1c"
+	SRC_URI="https://github.com/openstreetmap/merkaartor/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+	#SRC_URI="https://github.com/openstreetmap/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-${COMMIT}"
+
 	KEYWORDS="~amd64 ~x86"
 else
 	EGIT_REPO_URI="https://github.com/openstreetmap/merkaartor.git"
