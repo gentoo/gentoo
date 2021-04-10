@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -6,8 +6,8 @@ EAPI="7"
 MYP=gnat-gpl-${PV}
 DESCRIPTION="GNAT Ada suite"
 HOMEPAGE="http://libre.adacore.com/"
-SRC_URI="http://mirrors.cdn.adacore.com/art/5739cefdc7a447658e0b016b
-		-> ${MYP}-x86_64-linux-bin.tar.gz"
+# Extracted and repacked from http://mirrors.cdn.adacore.com/art/5b0d7bffa3f5d709751e3e04
+SRC_URI="https://dev.gentoo.org/~tupone/distfiles/${P}.txz"
 
 LICENSE="GPL-2 GPL-3"
 SLOT="${PV}"
@@ -17,9 +17,10 @@ IUSE=""
 DEPEND=""
 RDEPEND="${DEPEND}
 	sys-devel/binutils
-	sys-devel/gdb"
-
-S="${WORKDIR}"/${MYP}-x86_64-linux-bin
+	sys-devel/gdb
+	sys-libs/gdbm
+	sys-libs/ncurses-compat
+"
 
 PREFIX=/opt/${P}
 
@@ -35,7 +36,7 @@ src_prepare() {
 		other_languages/import_from_c/import_from_c.xml \
 		plugins/plugins.xml \
 		stream_io/stream_io.xml \
-		simple_project/simple.xml \
+		simple_project/simple_project.xml \
 		starter/starter.xml \
 		xml_stream/xml_stream.xml \
 		containers/anagram/anagram.xml \
@@ -55,26 +56,6 @@ src_prepare() {
 	sed -i \
 		-e "s:PREFIX:${PREFIX}:" \
 		gnat-examples.xml || die
-	cd ../../..
-
-	# Remove objects from binutils
-	cd bin
-	rm addr2line ar c++filt gprof nm objdump ranlib || die
-	cd ..
-	rm share/doc/gnat/info/{as,bfd,binutils,ld}.info || die
-
-	# Remove objects from gdb
-	cd bin
-	rm gdb gdbserver gcore || die
-	cd ..
-	rm -r include/gdb || die
-	rm lib*/libinproctrace.so || die
-	rm -r share/gdb-* || die
-	rm share/doc/gnat/info/gdb.info || die
-
-	basever=4.9.4
-	machine=x86_64-pc-linux-gnu
-	rm libexec//gcc/${machine}/${basever}/ld || die
 }
 
 src_install() {
@@ -84,6 +65,8 @@ src_install() {
 	doins -r etc include lib* share
 	insinto ${PREFIX}/share/gps/plug-ins
 	doins share/examples/gnat/gnat-examples.xml
+	basever=7.3.1
+	machine=x86_64-pc-linux-gnu
 	fperms 755 ${PREFIX}/libexec/gcc/${machine}/${basever}/cc1
 	fperms 755 ${PREFIX}/libexec/gcc/${machine}/${basever}/cc1plus
 	fperms 755 ${PREFIX}/libexec/gcc/${machine}/${basever}/collect2
