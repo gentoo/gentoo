@@ -20,12 +20,6 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 
-# slf4j-v_1.7.30/slf4j-simple/src/test/java/org/slf4j/helpers/SimpleLoggerMultithreadedInitializationTest.java:37: error: cannot find symbol
-# public class SimpleLoggerMultithreadedInitializationTest extends MultithreadedInitializationTest {
-#                                                                  ^
-#   symbol: class MultithreadedInitializationTest
-RESTRICT="test"
-
 # Common dependencies
 # POM: slf4j-v_${PV}/${PN}/pom.xml
 # org.slf4j:slf4j-api:1.7.30 -> >=dev-java/slf4j-api-1.7.30:0
@@ -49,23 +43,32 @@ DEPEND="
 
 RDEPEND="
 	>=virtual/jre-1.8:*
-	${CDEPEND}"
+	${CDEPEND}
+"
 
-S="${WORKDIR}"
+S="${WORKDIR}/slf4j-v_${PV}/${PN}"
 
 JAVA_GENTOO_CLASSPATH="slf4j-api"
-JAVA_SRC_DIR="slf4j-v_${PV}/${PN}/src/main/java"
-JAVA_RESOURCE_DIRS=(
-	"slf4j-v_${PV}/${PN}/src/main/resources"
-)
+JAVA_SRC_DIR="src/main/java"
+JAVA_RESOURCE_DIRS="src/main/resources"
 
 JAVA_TEST_GENTOO_CLASSPATH="junit-4,slf4j-api"
-JAVA_TEST_SRC_DIR="slf4j-v_${PV}/${PN}/src/test/java"
-JAVA_TEST_RESOURCE_DIRS=(
-	"slf4j-v_${PV}/${PN}/src/test/resources"
+JAVA_TEST_SRC_DIR="src/test/java"
+JAVA_TEST_RESOURCE_DIRS="src/test/resources"
+
+JAVA_TEST_EXCLUDES=(
+	# java.lang.InstantiationException
+	"org.slf4j.helpers.MultithreadedInitializationTest"
+
+	# java.lang.AssertionError: 1284 < 1263+16
+	"org.slf4j.helpers.SimpleLoggerMultithreadedInitializationTest"
 )
 
 src_prepare() {
 	default
 	java-pkg_clean
+	cp "../slf4j-api/src/test/java/org/slf4j/helpers/MultithreadedInitializationTest.java" \
+		"${JAVA_TEST_SRC_DIR}/org/slf4j/helpers/" || die
+	cp "../slf4j-api/src/test/java/org/slf4j/LoggerAccessingThread.java" \
+		"${JAVA_TEST_SRC_DIR}/org/slf4j/" || die
 }
