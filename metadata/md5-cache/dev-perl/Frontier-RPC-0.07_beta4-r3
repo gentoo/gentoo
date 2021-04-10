@@ -11,5 +11,5 @@ LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/XML-Parser dev-perl/libwww-perl dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/K/KM/KMACLEOD/Frontier-RPC-0.07b4.tar.gz http://perl-xml.sourceforge.net/xml-rpc/Frontier-RPC-0.07b4.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	ae176ff49e02bcbe576f6436b031c518
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	58b5d72d607014c48b5a1e106318d584
 _md5_=8b1f9eb4f95805c1d49f5b701dd4f950

@@ -12,5 +12,5 @@ RDEPEND=virtual/perl-Carp >=dev-perl/DateTime-1.450.0 >=dev-perl/DateTime-Format
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DR/DROLSKY/DateTime-Format-ISO8601-0.14.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	ae176ff49e02bcbe576f6436b031c518
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	58b5d72d607014c48b5a1e106318d584
 _md5_=c8de32e4c063d1fc899fa67ec01f9cd2

@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=dev-lang/perl virtual/perl-File-Path virtual/perl-File-Temp >=dev-vcs/git-1.6.6 !app-vim/gitolite-syntax !dev-vcs/gitolite-gentoo selinux? ( sec-policy/selinux-gitosis ) dev-perl/JSON dev-lang/perl:=
 SLOT=0
 SRC_URI=https://github.com/sitaramc/gitolite/archive/v3.6.11.tar.gz -> gitolite-3.6.11.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	ae176ff49e02bcbe576f6436b031c518	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	user	26d8ce6329c43cbac965617f1c0627e2	estack	055c42df72f76a4f45ec92b35e83cd56	versionator	d3fb3ba33acc3bbbdc4d7970227c100d
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	58b5d72d607014c48b5a1e106318d584	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	user	26d8ce6329c43cbac965617f1c0627e2	estack	055c42df72f76a4f45ec92b35e83cd56	versionator	d3fb3ba33acc3bbbdc4d7970227c100d
 _md5_=07e6fd59fe397c55bff8cec937c30ec0
