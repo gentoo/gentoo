@@ -48,7 +48,7 @@ src_unpack() {
 src_install() {
 	has_multilib_profile && ABI=x86
 
-	local dir=opt/${PN}
+	local dir=/opt/${PN}
 
 	cd "${CDROM_ROOT}" || die
 
