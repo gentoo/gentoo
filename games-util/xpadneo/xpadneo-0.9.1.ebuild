@@ -5,13 +5,20 @@ EAPI=7
 
 inherit linux-mod toolchain-funcs udev
 
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/atar-axis/xpadneo.git"
+	EGIT_MIN_CLONE_TYPE="single"
+else
+	SRC_URI="https://github.com/atar-axis/xpadneo/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+fi
+
 DESCRIPTION="Advanced Linux Driver for Xbox One Wireless Controller"
 HOMEPAGE="https://atar-axis.github.io/xpadneo/"
-SRC_URI="https://github.com/atar-axis/xpadneo/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 
 S+="/hid-${PN}"
 MODULE_NAMES="hid-${PN}(kernel/drivers/hid::src)"
@@ -20,18 +27,13 @@ BUILD_TARGETS="modules"
 
 CONFIG_CHECK="INPUT_FF_MEMLESS"
 
-src_prepare() {
-	default
-	sed -i "s/@DO_NOT_CHANGE@/v${PV}/" src/version.h || die
-}
-
 src_install() {
 	linux-mod_src_install
 
 	insinto /etc/modprobe.d
 	doins etc-modprobe.d/${PN}.conf
 
-	udev_dorules etc-udev-rules.d/98-${PN}.rules
+	udev_dorules etc-udev-rules.d/60-${PN}.rules
 
 	dodoc -r ../docs/{[^i]*.md,descriptors,reports} ../NEWS.md
 }
