@@ -24,7 +24,7 @@ fi
 
 LICENSE="LGPL-2.1 GPL-2 GPL-3"
 SLOT="0"
-IUSE="autotype browser ccache keeshare +network test yubikey"
+IUSE="doc autotype browser ccache keeshare +network test yubikey"
 
 RESTRICT="!test? ( test )"
 
@@ -59,6 +59,7 @@ DEPEND="
 "
 BDEPEND="
 	ccache? ( dev-util/ccache )
+	doc? ( dev-ruby/asciidoctor )
 "
 
 PATCHES=( "${FILESDIR}"/${PN}-2.6.4-quazip1.patch ) # pending upstream PR#5511
@@ -79,7 +80,7 @@ src_configure() {
 		-DWITH_GUI_TESTS=OFF
 		-DWITH_TESTS="$(usex test)"
 		-DWITH_XC_AUTOTYPE="$(usex autotype)"
-		-DWITH_XC_DOCS=OFF
+		-DWITH_XC_DOCS="$(usex doc)"
 		-DWITH_XC_BROWSER="$(usex browser)"
 		-DWITH_XC_FDOSECRETS=ON
 		-DWITH_XC_KEESHARE="$(usex keeshare)"
