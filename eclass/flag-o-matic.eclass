@@ -461,7 +461,25 @@ strip-flags() {
 	return 0
 }
 
+# @FUNCTION: test-flag-PROG
+# @USAGE: <compiler> <flag>
+# @INTERNAL
+# @DESCRIPTION:
+# Returns shell true if <flag> is supported by given <compiler>,
+# else returns shell false.
 test-flag-PROG() {
+	[[ ${EAPI} == [567] ]] ||
+		die "Internal function ${FUNCNAME} is not available in EAPI ${EAPI}."
+	_test-flag-PROG "$@"
+}
+
+# @FUNCTION: _test-flag-PROG
+# @USAGE: <compiler> <flag>
+# @INTERNAL
+# @DESCRIPTION:
+# Returns shell true if <flag> is supported by given <compiler>,
+# else returns shell false.
+_test-flag-PROG() {
 	local comp=$1
 	local lang=$2
 	shift 2
@@ -556,31 +574,31 @@ test-flag-PROG() {
 # @USAGE: <flag>
 # @DESCRIPTION:
 # Returns shell true if <flag> is supported by the C compiler, else returns shell false.
-test-flag-CC() { test-flag-PROG "CC" c "$@"; }
+test-flag-CC() { _test-flag-PROG CC c "$@"; }
 
 # @FUNCTION: test-flag-CXX
 # @USAGE: <flag>
 # @DESCRIPTION:
 # Returns shell true if <flag> is supported by the C++ compiler, else returns shell false.
-test-flag-CXX() { test-flag-PROG "CXX" c++ "$@"; }
+test-flag-CXX() { _test-flag-PROG CXX c++ "$@"; }
 
 # @FUNCTION: test-flag-F77
 # @USAGE: <flag>
 # @DESCRIPTION:
 # Returns shell true if <flag> is supported by the Fortran 77 compiler, else returns shell false.
-test-flag-F77() { test-flag-PROG "F77" f77 "$@"; }
+test-flag-F77() { _test-flag-PROG F77 f77 "$@"; }
 
 # @FUNCTION: test-flag-FC
 # @USAGE: <flag>
 # @DESCRIPTION:
 # Returns shell true if <flag> is supported by the Fortran 90 compiler, else returns shell false.
-test-flag-FC() { test-flag-PROG "FC" f95 "$@"; }
+test-flag-FC() { _test-flag-PROG FC f95 "$@"; }
 
 # @FUNCTION: test-flag-CCLD
 # @USAGE: <flag>
 # @DESCRIPTION:
 # Returns shell true if <flag> is supported by the C compiler and linker, else returns shell false.
-test-flag-CCLD() { test-flag-PROG "CC" c+ld "$@"; }
+test-flag-CCLD() { _test-flag-PROG CC c+ld "$@"; }
 
 test-flags-PROG() {
 	local comp=$1
