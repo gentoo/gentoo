@@ -5,11 +5,11 @@ EAPI=7
 HOMEPAGE=https://bitbucket.org/asomov/snakeyaml
 INHERIT=java-pkg-2 java-pkg-simple
 IUSE=elibc_FreeBSD doc source test elibc_FreeBSD
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 x86
 LICENSE=Apache-2.0
 RDEPEND=>=virtual/jre-1.8:* >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
 RESTRICT=!test? ( test ) !test? ( test )
 SLOT=0
 SRC_URI=https://bitbucket.org/asomov/snakeyaml/get/snakeyaml-1.28.tar.gz -> asomov-snakeyaml-b28f0b4d87c6.tar.gz
 _eclasses_=java-utils-2	2440f41421207d084e5e3f1fb001b34e	java-pkg-2	45c44ec10db6affb3ebee1ac72039888	java-pkg-simple	c85bf2d75a5f53e7b39fc9104701ebfb
-_md5_=157287d715e0be4a696d8e9a1423cbed
+_md5_=ca06b400571c8056729a7fc673a7e9a0
