@@ -15,7 +15,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND=""
-BEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		dev-perl/Test-Exception
