@@ -527,7 +527,7 @@ acct-user/ntp 0-r1: user for ntp daemon
 acct-user/nvpd 0: User for nvidia-persistenced
 acct-user/nzbget 0: User for net-nntp/nzbget
 acct-user/oidentd 0-r1: System user: oidentd
-acct-user/openct 0: User for dev-libs/openct
+acct-user/openctd 0: User for dev-libs/openct
 acct-user/opendkim 0-r1: User for OpenDKIM
 acct-user/openntpd 0-r1: user for openntpd daemon
 acct-user/openrct2 0-r1: A user for the OpenRCT2 dedicated server
@@ -5550,7 +5550,7 @@ dev-libs/libbulletml 0.0.6: A Library of Bullet Markup Language
 dev-libs/libburn 1.5.2_p1 1.5.4: Open-source library for reading, mastering and writing optical discs
 dev-libs/libbytesize 2.3 2.4 2.5: Tiny library providing a C "class" for working with arbitrary big sizes in bytes
 dev-libs/libcbor 0.8.0: CBOR protocol implementation for C and others
-dev-libs/libcdada 0.3.4-r1: Basic data structures in C
+dev-libs/libcdada 0.3.4-r2: Basic data structures in C
 dev-libs/libcdio 2.0.0-r1 2.1.0-r1: A library to encapsulate CD-ROM reading and control
 dev-libs/libcdio-paranoia 0.93_p1-r1 0.94_p2-r2 2.0.0-r1 2.0.1: an advanced CDDA reader with error correction
 dev-libs/libcec 4.0.4-r1 4.0.7 6.0.2: Library for communicating with the Pulse-Eight USB HDMI-CEC Adaptor
@@ -5784,8 +5784,8 @@ dev-libs/onigmo 6.1.3 6.2.0: Onigmo is a regular expressions library forked from
 dev-libs/oniguruma 6.9.6-r1 9999: Regular expression library for different character encodings
 dev-libs/opencl-clang 10.0.0.1-r1 10.0.0.2-r1 11.0.0 11.1.0_pre20201222: OpenCL-oriented thin wrapper library around clang
 dev-libs/opencl-icd-loader 2020.03.13-r1 2020.06.16: Official Khronos OpenCL ICD Loader
-dev-libs/opencryptoki 3.6.1: PKCS#11 provider cryptographic hardware
-dev-libs/openct 0.6.20-r4: library for accessing smart card terminals
+dev-libs/opencryptoki 3.6.1-r1: PKCS#11 provider cryptographic hardware
+dev-libs/openct 0.6.20-r4 0.6.20-r5: library for accessing smart card terminals
 dev-libs/openobex 1.7.2-r1 1.7.2-r2: Implementation of the OBEX protocol used for transferring data to mobile devices
 dev-libs/opensc 0.21.0 0.21.0-r1: Libraries and applications to access smartcards
 dev-libs/openspecfun 0.5.3: A collection of special mathematical functions
