@@ -11914,7 +11914,7 @@ games-util/xboxdrv 0.8.8_p20190118: Userspace Xbox 360 Controller driver
 games-util/xgame 1.7.1-r1: Run games in a separate X session
 games-util/xgame-gtk2 2.0.2-r1: Run games in a separate X session
 games-util/xgamer 0.6.2: A launcher for starting games in a second X session
-games-util/xpadneo 0.9 9999: Advanced Linux Driver for Xbox One Wireless Controller
+games-util/xpadneo 0.9.1 9999: Advanced Linux Driver for Xbox One Wireless Controller
 games-util/xqf 1.0.6.2: A server browser for many FPS games (frontend for qstat)
 gnome-base/dconf 0.34.0 0.36.0 0.40.0: Simple low-level configuration system
 gnome-base/dconf-editor 3.36.4 3.38.2: Graphical tool for editing the dconf configuration database
@@ -14880,7 +14880,7 @@ net-libs/farstream 0.2.8-r2 0.2.9: Audio/video conferencing framework specifical
 net-libs/freaklabs-chibiarduino 1.0.8_p20190329 9999: freaklabs fork of the lightweight wireless sensor library for Arduino
 net-libs/glib-networking 2.62.4 2.64.3 2.66.0 2.68.0: Network-related giomodules for glib
 net-libs/gloox 1.0.24: A portable high-level Jabber/XMPP library for C++
-net-libs/gnet 2.0.8-r2: A simple network library
+net-libs/gnet 2.0.8-r3: A simple network library
 net-libs/gnome-online-accounts 3.36.0: GNOME framework for accessing online accounts
 net-libs/gnutls 3.6.15 3.7.1: A secure communications library implementing the SSL, TLS and DTLS protocols
 net-libs/google-cloud-cpp 0.2.0-r1 0.5.0 0.9.0 0.10.0 0.10.0-r1: Google Cloud Client Library for C++
@@ -19142,7 +19142,7 @@ xfce-base/libxfce4util 4.16.0: A basic utility library for the Xfce desktop envi
 xfce-base/thunar 4.16.5 4.16.6 4.17.0 4.17.1: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.16.1: A tool to find and launch installed applications for the Xfce desktop
 xfce-base/xfce4-meta 4.14-r2 4.16 4.16-r2: The Xfce Desktop Environment (meta package)
-xfce-base/xfce4-panel 4.16.1-r1 4.16.2-r1: Panel for the Xfce desktop environment
+xfce-base/xfce4-panel 4.16.2-r1: Panel for the Xfce desktop environment
 xfce-base/xfce4-session 4.16.0: A session manager for the Xfce desktop environment
 xfce-base/xfce4-settings 4.16.0: Configuration system for the Xfce desktop environment
 xfce-base/xfconf 4.16.0: A configuration management system for Xfce
