@@ -4897,7 +4897,7 @@ dev-java/jackson-annotations 2.9.10: Annotations for the Java Jackson data proce
 dev-java/jacl 1.4.1-r1: Jacl is an implementation of Tcl written in Java
 dev-java/jacoco 0.7.9: Java Code Coverage library
 dev-java/jade 3.3-r3: JADE is FIPA-compliant Java Agent Development Environment
-dev-java/jakarta-oro 2.0.8-r3 2.0.8-r5: A set of text-processing Java classes
+dev-java/jakarta-oro 2.0.8-r5: A set of text-processing Java classes
 dev-java/jakarta-regexp 1.3-r5 1.4-r2 1.5: 100% Pure Java Regular Expression package
 dev-java/jakartaee-migration 0.2.0: Apache Tomcat tool for migration from Java EE 8 to Jakarta EE 9.
 dev-java/jal 20031117-r5: Partial port of the C++ Standard Template Library
