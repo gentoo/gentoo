@@ -59,7 +59,7 @@ get_erl_libs() {
 # directory is usually suffixed with version. It is matched to '<project_name>'
 # or '<project_name>-*'.
 _rebar_find_dep() {
-	local pn="$1"
+	local pn="${1}"
 	local p
 	local result
 
@@ -121,7 +121,7 @@ erebar() {
 rebar_fix_include_path() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local pn="$1"
+	local pn="${1}"
 	local rebar_config="${2:-rebar.config}"
 	local erl_libs="${EPREFIX}$(get_erl_libs)"
 	local p
