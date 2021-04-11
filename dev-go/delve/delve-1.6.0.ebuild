@@ -16,9 +16,9 @@ HOMEPAGE="https://github.com/go-delve/delve"
 LICENSE="MIT BSD BSD-2 Apache-2.0"
 SLOT="0"
 IUSE="test"
-RESTRICT="!test? ( test )"
 
-DEPEND="dev-lang/go:="
+# Needs network access to download more unspecified modules at least.
+RESTRICT="test"
 
 src_compile() {
 	go build -mod vendor -ldflags="-X main.Build=75485427957fba167a6eaca76b1ee9549d62916f" -o "${S}/dlv" ./cmd/dlv || die
