@@ -1,11 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PYTHON_COMPAT=( pypy3 python3_{7..9} )
 PYTHON_REQ_USE="xml(+)"
-DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
 
@@ -17,7 +16,10 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="media-libs/libmediainfo"
+RDEPEND="
+	$(python_gen_cond_dep 'dev-python/importlib_metadata[${PYTHON_USEDEP}]' pypy3 python3_7)
+	media-libs/libmediainfo
+"
 BDEPEND="dev-python/setuptools_scm[${PYTHON_USEDEP}]"
 
 distutils_enable_sphinx docs dev-python/alabaster
