@@ -10603,7 +10603,7 @@ dev-tcltk/tcl3d 0.5.0: Tcl bindings to OpenGL and other 3D libraries
 dev-tcltk/tcllib 1.20: Tcl Standard Library
 dev-tcltk/tclperl 3.2-r1: Perl package for Tcl
 dev-tcltk/tclpython 5.0: Python package for Tcl
-dev-tcltk/tclreadline 2.1.0-r5 2.3.8 2.3.8-r1: Readline extension to TCL
+dev-tcltk/tclreadline 2.1.0-r5 2.3.8-r1: Readline extension to TCL
 dev-tcltk/tclx 8.4.1 8.4.4: A set of extensions to TCL
 dev-tcltk/tclxml 3.2-r2 3.2.7: Pure Tcl implementation of an XML parser
 dev-tcltk/tdom 0.8.3-r4 0.9.1: A XML/DOM/XPath/XSLT Implementation for Tcl
@@ -16203,7 +16203,7 @@ sci-geosciences/liblas 1.8.1-r3: C/C++ library for manipulating the LAS LiDAR fo
 sci-geosciences/libtcd 2.2.7_p2: Library for reading and writing Tide Constituent Database (TCD) files
 sci-geosciences/mapserver 7.6.2-r1: Development environment for building spatially enabled webapps
 sci-geosciences/mc2bsbh 0.0.9: MapCal to BSBchart Header Utility
-sci-geosciences/merkaartor 0.18.4 0.18.4_p20210410 9999: Qt based map editor for the openstreetmap.org project
+sci-geosciences/merkaartor 0.18.4 0.18.4_p20210410-r1 9999: Qt based map editor for the openstreetmap.org project
 sci-geosciences/mtkbabel 0.8.3.1-r1: MTKBabel is a Perl program to operate the i-Blue 747 GPS data logger
 sci-geosciences/opencpn 5.0.0: a free, open source software for marine navigation
 sci-geosciences/opencpn-plugin-br24radar 2.1 9999: Navico (Simrad, Lowrance) Broadband BR24/3G/4G Radar Plugin for OpenCPN
