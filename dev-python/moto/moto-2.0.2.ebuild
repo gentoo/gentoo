@@ -65,10 +65,7 @@ python_prepare_all() {
 }
 
 python_test() {
-	local deselect=(
-		# network
-		tests/test_stepfunctions/test_stepfunctions.py::test_state_machine_creation_fails_with_invalid_names
-	)
-
-	epytest -m 'not network' ${deselect[@]/#/--deselect }
+	# pytest-django causes freezegun try to mangle stuff inside django
+	# which fails when django is not really used
+	epytest -p no:django -m 'not network'
 }
