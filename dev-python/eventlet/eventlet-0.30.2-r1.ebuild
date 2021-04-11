@@ -29,8 +29,9 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.25.1-tests.patch"
-	"${FILESDIR}/${PN}-0.30.0-tests-socket.patch"
+	"${FILESDIR}/eventlet-0.25.1-tests.patch"
+	"${FILESDIR}/eventlet-0.30.0-tests-socket.patch"
+	"${FILESDIR}/eventlet-0.30.2-test-timeout.patch"
 )
 
 distutils_enable_sphinx doc
@@ -45,16 +46,13 @@ python_prepare_all() {
 		sed -i "s|'https://docs.python.org/': None|'${PYTHON_DOC}': '${PYTHON_DOC_INVENTORY}'|" doc/conf.py || die
 	fi
 
-	# Prevent file collisions from teestsuite
-	sed -e "s:'tests', :'tests', 'tests.*', :" -i setup.py || die
-
 	distutils-r1_python_prepare_all
 }
 
 python_test() {
 	unset PYTHONPATH
 	export TMPDIR="${T}"
-	nosetests -v || die
+	nosetests -v -x || die
 }
 
 python_install_all() {
