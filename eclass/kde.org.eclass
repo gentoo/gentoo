@@ -7,8 +7,8 @@
 # @SUPPORTED_EAPIS: 7
 # @BLURB: Support eclass for packages that are hosted on kde.org infrastructure.
 # @DESCRIPTION:
-# This eclass is mainly providing facilities for the upstream release groups
-# Frameworks, Plasma, Release Service to assemble default SRC_URI for tarballs,
+# This eclass is mainly providing facilities for the three upstream release
+# groups (Frameworks, Plasma, Gear) to assemble default SRC_URI for tarballs,
 # set up git-r3.eclass for stable/master branch versions or restrict access to
 # unreleased (packager access only) tarballs in Gentoo KDE overlay, but it may
 # be also used by any other package hosted on kde.org.
@@ -87,11 +87,12 @@ readonly KDE_ORG_CATEGORIES
 # Name of the package as hosted on kde.org mirrors.
 : ${KDE_ORG_NAME:=$PN}
 
-# @ECLASS-VARIABLE: KDE_RELEASE_SERVICE
+# @ECLASS-VARIABLE: KDE_GEAR
 # @DESCRIPTION:
 # If set to "false", do nothing.
 # If set to "true", set SRC_URI accordingly and apply KDE_UNRELEASED.
-: ${KDE_RELEASE_SERVICE:=false}
+# Backward compatibility: Picks up KDE_RELEASE_SERVICE value if set.
+: ${KDE_GEAR:=${KDE_RELEASE_SERVICE:-false}}
 
 # @ECLASS-VARIABLE: KDE_SELINUX_MODULE
 # @PRE_INHERIT
@@ -121,7 +122,7 @@ HOMEPAGE="https://kde.org/"
 
 case ${CATEGORY} in
 	kde-apps)
-		KDE_RELEASE_SERVICE=true
+		KDE_GEAR=true
 		;;
 	kde-plasma)
 		HOMEPAGE="https://kde.org/plasma-desktop"
@@ -143,7 +144,7 @@ _kde.org_is_unreleased() {
 	for pair in "${KDE_UNRELEASED[@]}" ; do
 		if [[ "${pair}" = "${CATEGORY}-${PV}" ]]; then
 			return 0
-		elif [[ ${KDE_RELEASE_SERVICE} = true ]]; then
+		elif [[ ${KDE_GEAR} = true ]]; then
 			if [[ "${pair/kde-apps/${CATEGORY}}" = "${CATEGORY}-${PV}" ]]; then
 				return 0
 			fi
@@ -162,7 +163,7 @@ _kde.org_calculate_src_uri() {
 
 	local _src_uri="mirror://kde/"
 
-	if [[ ${KDE_RELEASE_SERVICE} = true ]]; then
+	if [[ ${KDE_GEAR} = true ]]; then
 		case ${PV} in
 			??.??.[6-9]? )
 				_src_uri+="unstable/release-service/${PV}/src/"
@@ -232,7 +233,7 @@ _kde.org_calculate_live_repo() {
 	# (anongit) with anything else you might want to use.
 	EGIT_MIRROR=${EGIT_MIRROR:=https://invent.kde.org/${KDE_ORG_CATEGORY}}
 
-	if [[ ${PV} == ??.??.49.9999 && ${KDE_RELEASE_SERVICE} = true ]]; then
+	if [[ ${PV} == ??.??.49.9999 && ${KDE_GEAR} = true ]]; then
 		EGIT_BRANCH="release/$(ver_cut 1-2)"
 	fi
 
@@ -279,8 +280,8 @@ kde.org_pkg_nofetch() {
 		kde-frameworks) sched_uri+="/Frameworks" ;;
 		kde-plasma) sched_uri+="/Plasma_5" ;;
 		*)
-			[[ ${KDE_RELEASE_SERVICE} = true ]] &&
-				sched_uri+="/release_service/$(ver_cut 1-2)_Release_Schedule"
+			[[ ${KDE_GEAR} = true ]] &&
+				sched_uri+="/KDE_Gear_$(ver_cut 1-2)_Schedule"
 			;;
 	esac
 
