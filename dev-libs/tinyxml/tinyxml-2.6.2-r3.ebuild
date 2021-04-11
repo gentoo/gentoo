@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit flag-o-matic toolchain-funcs multilib versionator
+inherit epatch flag-o-matic toolchain-funcs multilib versionator
 
 DESCRIPTION="Simple and small C++ XML parser"
 HOMEPAGE="http://www.grinninglizard.com/tinyxml/index.html"
@@ -14,7 +14,6 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~x64-macos"
 IUSE="debug doc static-libs +stl"
 
-RDEPEND=""
 DEPEND="doc? ( app-doc/doxygen )"
 
 S="${WORKDIR}/${PN}"
