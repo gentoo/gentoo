@@ -13380,7 +13380,7 @@ media-libs/lv2 1.18.2: A simple but extensible successor of LADSPA
 media-libs/lvtk 1.2.0-r1: A set of C++ wrappers around the LV2 C API
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
 media-libs/mesa 20.3.5 21.0.1 21.0.2 9999: OpenGL-like graphic library for Linux
-media-libs/mlt 6.24.0-r1: Open source multimedia framework for television broadcasting
+media-libs/mlt 6.24.0-r1 6.26.0: Open source multimedia framework for television broadcasting
 media-libs/munt-mt32emu 2.4.2 2.5.0: Library for emulating the Roland MT-32, CM-32L, CM-64 and LAPC-I
 media-libs/musicbrainz 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
 media-libs/mutagen 1.45.1: Audio metadata tag reader and writer implemented in pure Python
@@ -17705,7 +17705,7 @@ sys-libs/freeipmi 1.5.7 1.6.6 1.6.7: Provides Remote-Console and System Manageme
 sys-libs/fts-standalone 0.2-r1 1.2.7: Standalone fts library for use with musl
 sys-libs/gdbm 1.18.1-r1 1.19: Standard GNU database libraries
 sys-libs/glibc 2.19-r2 2.25-r11 2.30-r9 2.31-r7 2.32-r6 2.32-r7 2.32-r8 2.33 9999: GNU libc C library
-sys-libs/gpm 1.20.7-r2: Console-based mouse driver
+sys-libs/gpm 1.20.7-r2 1.20.7-r3: Console-based mouse driver
 sys-libs/gwenhywfar 5.4.1-r1: Multi-platform helper library for other libraries
 sys-libs/kpmcore 20.12.3: Library for managing partitions
 sys-libs/ldb 2.1.4-r1 2.1.5 2.2.0-r2 2.2.1 2.3.0: LDAP-like embedded database
