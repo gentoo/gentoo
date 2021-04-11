@@ -5,10 +5,12 @@ acct-group/alertmanager 0: System group: alertmanager
 acct-group/amanda 0: System group: amanda
 acct-group/amavis 0-r1: Group for mail-filter/amavisd-new
 acct-group/amule 0-r1: Group for net-p2p/amule
+acct-group/android 0: Group for dev-util/android-{ndk,sdk-update-manager}
 acct-group/anope 0-r1: Group for Anope IRC services
 acct-group/apache 0-r1: System group: apache
 acct-group/apt-cacher-ng 0: System group: apt-cacher-ng
 acct-group/argus 0: gid for net-analyzer/argus
+acct-group/artifactory 0: Group for dev-util/artifactory-bin
 acct-group/asterisk 0-r1: Group for asterisk
 acct-group/atheme-services 0-r1: Group for Atheme IRC services
 acct-group/audio 0-r1: System group: audio
@@ -16,6 +18,7 @@ acct-group/automatic 0: System group: automatic
 acct-group/automx2 0-r1: Group for net-mail/automx2
 acct-group/avahi 0-r1: group for avahi
 acct-group/avahi-autoipd 0-r1: group for avahi-autoipd
+acct-group/backuppc 0: Group for app-backup/backuppc
 acct-group/bacula 0-r1: A group for the bacula backup system
 acct-group/bareos 0-r1: Group for the bareos network backup suite
 acct-group/bedrock 0-r1: A group for the Minecraft Bedrock server
@@ -38,6 +41,7 @@ acct-group/cinder 0-r1: System group: cinder
 acct-group/clair 0-r1: System group: clair
 acct-group/clamav 0-r1: System group: clamav
 acct-group/cmd5checkpw 0-r1: System group: cmd5checkpw
+acct-group/cntlm 0: Group for net-proxy/cntlm
 acct-group/collectd 0: collectd program group
 acct-group/colord 0: System group: colord
 acct-group/consul 0-r1: System group: consul
@@ -59,6 +63,7 @@ acct-group/dictd 0: gid for app-text/dictd
 acct-group/dirsrv 0: Group for net-nds/389-ds-base
 acct-group/disk 0-r1: System group: disk
 acct-group/distcc 1: System group: distcc
+acct-group/dnrd 0: Group for net-dns/dnrd
 acct-group/dnscrypt-proxy 0-r1: Group for net-dns/dnscrypt-proxy
 acct-group/dnsdist 0-r1: A group for net-dns/dnsdist
 acct-group/dnsmasq 0-r1: System group: dnsmasq
@@ -72,7 +77,9 @@ acct-group/epmd 0-r1: Group for Erlang Portmapper Daemon
 acct-group/err 0: System group: err
 acct-group/etcd 0-r1: System group: etcd
 acct-group/exabgp 0-r1: System group: exabgp
+acct-group/ez-ipupd 0: Group for net-dns/ez-ipupdate
 acct-group/fax 0: A group for net-dialup/mgetty
+acct-group/fdm 0: Group for net-mail/fdm
 acct-group/fetchmail 0-r1: Group for net-mail/fetchmail
 acct-group/fhem 0-r1: A group for the FHEM perl server for house automation
 acct-group/fingerprint 0-r1: System group: fingerprint
@@ -94,13 +101,17 @@ acct-group/git 0-r1: System group: git
 acct-group/gkrellmd 0-r1: System group: gkrellmd
 acct-group/glance 0-r1: System group: glance
 acct-group/gluster 0-r1: System group: gluster
+acct-group/gnupg-pkcs11 0: Group for app-crypt/gnupg-pkcs11-scd
+acct-group/gnupg-pkcs11-scd-proxy 0: Group for app-crypt/gnupg-pkcs11-scd
 acct-group/gopher 0: System group: gopher
 acct-group/gpib 0-r1: System group: gpib
 acct-group/grafana 0-r1: grafana program group
 acct-group/graylog 0-r1: Graylog program group
 acct-group/greetd 0-r1: Group for gui-libs/greetd
+acct-group/groonga 0: Group for app-text/groonga
 acct-group/gvm 0-r1: Greenbone vulnerability management program group
 acct-group/haproxy 0-r1: System group: haproxy
+acct-group/havp 0: Group for net-proxy/havp
 acct-group/heat 0-r1: System group: heat
 acct-group/http 0: System group: http
 acct-group/i2p 0-r1: Group for system-wide net-vpn/i2p
@@ -129,9 +140,12 @@ acct-group/kvm 0-r1: System group: kvm
 acct-group/ldap 0: System group: ldap
 acct-group/libvirt 0-r1: System group: libvirt
 acct-group/lighttpd 0-r1: System group: lighttpd
+acct-group/litecoin 0: Group for net-p2p/litecoind
 acct-group/lldpd 0-r1: System group: lldpd
 acct-group/locate 0-r1: System group: locate
+acct-group/logcheck 0: Group for app-admin/logcheck
 acct-group/logstash 0-r1: Logstash program group
+acct-group/logsurfer 0: Group for app-admin/logsurfer
 acct-group/lp 0-r1: System group: lp
 acct-group/lpadmin 0-r1: System group: lpadmin
 acct-group/lxc 0: Group for app-emulation/lxc
@@ -143,6 +157,7 @@ acct-group/memcached 0-r1: System group: memcached
 acct-group/messagebus 0-r1: System group: messagebus
 acct-group/mgraph 0: Group for net-mail/mailgraph
 acct-group/milter-regex 0-r1: Group for mail-filter/milter-regex
+acct-group/minbif 0: Group for net-im/minbif
 acct-group/minecraft 0-r1: A group for the Minecraft server
 acct-group/minetest 0-r1: A group for the Minetest server
 acct-group/minidlna 0: System group: minidlna
@@ -170,6 +185,7 @@ acct-group/ngircd 0-r1: Group for ngircd (IRC daemon)
 acct-group/nobody 0: System group: nobody
 acct-group/node_exporter 0-r1: System group: node_exporter
 acct-group/nofiles 0-r1: System group: nofiles
+acct-group/notary 0: Group for app-misc/notary
 acct-group/nova 0-r1: System group: nova
 acct-group/nsd 0-r1: System group: nsd
 acct-group/nslcd 0-r1: System group: nslcd
@@ -191,10 +207,12 @@ acct-group/pcap 0: Group for capturing network traffic
 acct-group/pcscd 0-r1: System group: pcscd
 acct-group/pdns 0-r1: System group: pdns
 acct-group/pdnsd 0-r1: System group: pdnsd
+acct-group/pkcs11 0: Group for dev-libs/opencryptoki
 acct-group/placement 0-r1: System group: placement
 acct-group/plex 0-r1: Plex Media Server group
 acct-group/plugdev 0-r1: Group controlling access to removable media
 acct-group/polkitd 0-r1: System group: polkitd
+acct-group/polw 0: Group for mail-filter/policyd-weight
 acct-group/popa3d 0: Group for net-mail/popa3d
 acct-group/portage 0: System group: portage
 acct-group/postdrop 0-r1: System group: postdrop
@@ -204,6 +222,7 @@ acct-group/postgres 0-r1: PostgreSQL program group
 acct-group/postgrey 0: Group for the postgrey mail daemon
 acct-group/privoxy 0-r1: A privoxy: privacy oriented web proxy group
 acct-group/prometheus 0-r1: System group: prometheus
+acct-group/psybnc 0: Group for net-irc/psybnc
 acct-group/pulse 0: System group: pulse
 acct-group/pulse-access 0: System group: pulse-access
 acct-group/puppet 0-r1: System group: puppet
@@ -224,11 +243,13 @@ acct-group/root 0: System group: root
 acct-group/rspamd 0-r1: Group for rspamd - Rapid spam filtering system
 acct-group/rstudio-server 0-r1: group for sci-mathematics/rstudio
 acct-group/rtkit 0-r1: Group for the Realtime Policy and Watchdog Daemon
+acct-group/rwhoisd 0: Group for net-misc/rwhoisd
 acct-group/sabnzbd 0-r1: SABnzbd program group
 acct-group/sagan 0: Group for the Sagan log monitoring system
 acct-group/sancp 0: gid for net-analyzer/sancp
 acct-group/sanlock 0-r1: shared storage lock manager
 acct-group/sauerbraten 0-r1: Group for Sauerbraten (FOSS game engine (Cube 2))
+acct-group/scanner 0: Group for media-gfx/sane-backends
 acct-group/scponly 0-r1: group for scponly
 acct-group/scsi 0: System group: scsi
 acct-group/serf 0: A group for app-admin/serf
@@ -236,6 +257,7 @@ acct-group/sgx 0: System group: sgx
 acct-group/shellinaboxd 0-r1: shellinabox group
 acct-group/sigh 0: System group: sigh
 acct-group/simplevirt 0-r1: System group: simplevirt
+acct-group/sispmctl 0: Group for sys-power/sispmctl
 acct-group/sks 0: Group for SKS OpenPGP keyserver
 acct-group/slurm 0-r1: A group for the slurm - Highly Scalable Resource Manager
 acct-group/smmsp 0-r1: System group: smmsp
@@ -254,6 +276,8 @@ acct-group/spire 0-r1: System group: spire
 acct-group/sqlgrey 0-r1: Group for SQLGrey
 acct-group/squid 0-r1: System group: squid
 acct-group/sshd 0-r1: System group: sshd
+acct-group/ssmtp 0: Group for mail-mta/ssmtp
+acct-group/sstpc 0: Group for net-misc/sstp-client
 acct-group/stapdev 0: System group: stapdev
 acct-group/stapsys 0: System group: stapsys
 acct-group/stapusr 0: System group: stapusr
@@ -277,6 +301,7 @@ acct-group/systemd-timesync 0-r1: System group: systemd-timesync
 acct-group/tape 0-r1: System group: tape
 acct-group/teamspeak 0-r1: A group for the TeamSpeak server
 acct-group/telegraf 0-r1: System group: telegraf
+acct-group/tenshi 0: Group for app-admin/tenshi
 acct-group/tinyproxy 0: gid for net-proxy/tinyproxy
 acct-group/tomcat 0: Group for Apache Tomcat
 acct-group/tor 0-r1: group for tor daemon
@@ -314,11 +339,13 @@ acct-group/video 0-r1: System group: video
 acct-group/vpopmail 0-r1: System group: vpopmail
 acct-group/wesnoth 0-r1: System group: wesnoth
 acct-group/wheel 0-r1: System group: wheel
+acct-group/wwwoffle 0: Group for net-proxy/wwwoffle
 acct-group/x2goprint 0-r1: Group for net-misc/x2goserver
 acct-group/x2gouser 0-r1: Group for net-misc/x2goserver
 acct-group/xpra 0: group for x11-wm/xpra
 acct-group/xrootd 0-r1: Group for the XRootD server
 acct-group/zabbix 0: Group for Zabbix
+acct-group/zetcd 0: Group for sys-cluster/zetcd
 acct-group/ziproxy 0: System group: ziproxy
 acct-group/znc 0-r1: Group for net-irc/znc
 acct-user/abrt 0-r1: A user for the automatic bug detection and reporting tool
@@ -332,12 +359,14 @@ acct-user/anope 0-r1: User for Anope IRC services
 acct-user/apache 0-r1: System user: apache
 acct-user/apt-cacher-ng 0: User for apt-cacher-ng
 acct-user/argus 0: uid for net-analyzer/argus
+acct-user/artifactory 0: User for dev-util/artifactory-bin
 acct-user/asterisk 0-r1: User for asterisk
 acct-user/atheme-services 0-r1: User for Atheme IRC services
 acct-user/automatic 0: System user: automatic
 acct-user/automx2 0-r1: User for net-mail/automx2
 acct-user/avahi 0-r1: user for avahi
 acct-user/avahi-autoipd 0-r1: user for avahi-autoipd
+acct-user/backuppc 0: User for app-backup/backuppc
 acct-user/bacula 0-r1: A group for the bacula backup system
 acct-user/bareos 0-r1: User for the bareos network backup suite
 acct-user/bedrock 0-r1: A user for the Minecraft Bedrock server
@@ -358,6 +387,7 @@ acct-user/cinder 0-r1: user for the openstack cinder service
 acct-user/clair 0-r1: User for clair
 acct-user/clamav 0-r1: System user: clamav
 acct-user/cmd5checkpw 0-r1: User for cmd5checkpw
+acct-user/cntlm 0: User for net-proxy/cntlm
 acct-user/collectd 0: collectd program user
 acct-user/colord 0: User for running the colord service
 acct-user/consul 0-r1: User for consul
@@ -378,6 +408,7 @@ acct-user/dhcpcd 0-r1: user for dhcpcd client
 acct-user/dictd 0: uid for app-text/dictd
 acct-user/dirsrv 0: User for net-nds/389-ds-base
 acct-user/distcc 1: User used to run distcc daemon
+acct-user/dnrd 0: User for net-dns/dnrd
 acct-user/dnscrypt-proxy 0-r1: User for net-dns/dnscrypt-proxy
 acct-user/dnsdist 0-r1: A user for net-dns/dnsdist
 acct-user/dnsmasq 0-r1: User for net-dns/dnsmasq
@@ -391,11 +422,15 @@ acct-user/epmd 0-r1: User for Erlang Portmapper Daemon
 acct-user/err 0: System user: err
 acct-user/etcd 0-r1: User for etcd
 acct-user/exabgp 0-r1: User for net-misc/exabgp
+acct-user/ez-ipupd 0: User for net-dns/ez-ipupdate
 acct-user/fax 0: A user for net-dialup/mgetty
+acct-user/fdm 0: User for net-mail/fdm
 acct-user/fetchmail 0-r1: User for net-mail/fetchmail
 acct-user/fhem 0-r1: A user for the FHEM perl server for house automation
 acct-user/flatpak 0: System user: flatpak
 acct-user/flows 0: uid for net-analyzer/flow-tools
+acct-user/fnord 0: User for www-servers/fnord
+acct-user/fnordlog 0: User for www-servers/fnord
 acct-user/fp-multiuser 0: A user for net-vpn/fp-multiuser
 acct-user/freenet 0: User for net-p2p/freenet
 acct-user/frr 0: System user: frr
@@ -409,13 +444,16 @@ acct-user/git 0-r1: Git repository hosting user
 acct-user/gkrellmd 0-r1: user for gkrellm daemon
 acct-user/glance 0-r1: user for the glance openstack service
 acct-user/gluster 0-r1: System user: gluster
+acct-user/gnupg-pkcs11-scd-proxy 0: User for app-crypt/gnupg-pkcs11-scd
 acct-user/gopher 0: User for gofish
 acct-user/gpsd 0-r1: user for gpsd
 acct-user/grafana 0-r1: grafana program user
 acct-user/graylog 0-r1: Graylog program user
 acct-user/greetd 0-r1: User for gui-libs/greetd
+acct-user/groonga 0: User for app-text/groonga
 acct-user/gvm 0-r1: Greenbone vulnerability management program user
 acct-user/haproxy 0-r1: System user: haproxy
+acct-user/havp 0: User for net-proxy/havp
 acct-user/heat 0-r1: user for the heat openstack service
 acct-user/http 0: A user for www-servers/caddy
 acct-user/i2p 0-r1: User for system-wide net-vpn/i2p
@@ -439,8 +477,11 @@ acct-user/kube-controller-manager 0-r1: user for kube-controller-manager
 acct-user/kube-scheduler 0-r1: user for kube-scheduler
 acct-user/ldap 0: A user for ldap
 acct-user/lighttpd 0-r1: A user for lighttpd
+acct-user/litecoin 0: User for net-p2p/litecoind
 acct-user/lldpd 0-r1: User for net-misc/lldpd
+acct-user/logcheck 0: User for app-admin/logcheck
 acct-user/logstash 0-r1: Logstash program user
+acct-user/logsurfer 0: User for app-admin/logsurfer
 acct-user/lxc 0: User for app-emulation/lxc
 acct-user/mail 0-r1: Mail program user
 acct-user/man 1-r1: System user: man
@@ -449,6 +490,7 @@ acct-user/memcached 0-r1: User for the memcached service
 acct-user/messagebus 0-r1: System user: messagebus
 acct-user/mgraph 0: User for net-mail/mailgraph
 acct-user/milter-regex 0-r1: User for mail-filter/milter-regex
+acct-user/minbif 0: User for net-im/minbif
 acct-user/minecraft 0-r1: A user for the Minecraft server
 acct-user/minetest 0-r1 1-r1: A user for the Minetest server
 acct-user/minidlna 0: System user: minidlna
@@ -476,6 +518,7 @@ acct-user/nginx-vts-exporter 0-r1: user for nginx-vts-exporter
 acct-user/ngircd 0-r1: User for ngircd (IRC daemon)
 acct-user/nobody 0: System user: nobody
 acct-user/node_exporter 0-r1: node_exporter User
+acct-user/notary 0: User for app-misc/notary
 acct-user/nova 0-r1: user for the openstack nova service
 acct-user/nsd 0-r1: user for nsd daemon
 acct-user/nslcd 0-r1: User for nss-pam-ldapd
@@ -484,6 +527,7 @@ acct-user/ntp 0-r1: user for ntp daemon
 acct-user/nvpd 0: User for nvidia-persistenced
 acct-user/nzbget 0: User for net-nntp/nzbget
 acct-user/oidentd 0-r1: System user: oidentd
+acct-user/openct 0: User for dev-libs/openct
 acct-user/opendkim 0-r1: User for OpenDKIM
 acct-user/openntpd 0-r1: user for openntpd daemon
 acct-user/openrct2 0-r1: A user for the OpenRCT2 dedicated server
@@ -503,6 +547,7 @@ acct-user/pgbouncer 0: PgBouncer program user
 acct-user/placement 0-r1: User for the placement openstack service
 acct-user/plex 0-r1: Plex Media Server user
 acct-user/polkitd 0-r1: System user: polkitd
+acct-user/polw 0: User for mail-filter/policyd-weight
 acct-user/popa3d 0: User for net-mail/popa3d
 acct-user/portage 0: System user: portage
 acct-user/postfix 0-r1: user for postfix daemon
@@ -512,6 +557,7 @@ acct-user/postgrey 0: User for the postgrey mail daemon
 acct-user/postmaster 0-r1: Postmaster user
 acct-user/privoxy 0-r1: A privoxy: privacy oriented web proxy user
 acct-user/prometheus 0-r1: user for prometheus
+acct-user/psybnc 0: User for net-irc/psybnc
 acct-user/pulse 0: User for running the PulseAudio daemon as a system-wide instance
 acct-user/puppet 0-r1: user for puppet services
 acct-user/puppetdb 0-r1: User for the puppetdb service
@@ -535,12 +581,15 @@ acct-user/root 0-r1: System user: root
 acct-user/rspamd 0-r1: User for rspamd - Rapid spam filtering system
 acct-user/rstudio-server 0-r1: user for sci-mathematics/rstudio
 acct-user/rtkit 0-r1: User for the Realtime Policy and Watchdog Daemon
+acct-user/rwhoisd 0: User for net-misc/rwhoisd
 acct-user/sabnzbd 0-r1: SABnzbd program user
 acct-user/sagan 0-r1: User for the Sagan log monitoring system
 acct-user/sancp 0: uid for net-analyzer/sancp
+acct-user/saned 0: User for media-gfx/sane-backends
 acct-user/sanlock 0-r1: shared storage lock manager
 acct-user/sauerbraten 0-r1: Group for Sauerbraten (FOSS game engine (Cube 2))
 acct-user/scponly 0-r1: user for chrooted scponly
+acct-user/sendpage 0: User for net-dialup/sendpage
 acct-user/serf 0: A user for app-admin/serf
 acct-user/shellinaboxd 0-r1: shellinabox user
 acct-user/sigh 0: System user: sigh
@@ -564,6 +613,7 @@ acct-user/spire 0-r1: user for spiffe runtime environment
 acct-user/sqlgrey 0-r1: User for SQLGrey
 acct-user/squid 0-r1: A user for squid web proxy cache
 acct-user/sshd 0-r1: User for ssh
+acct-user/sstpc 0: User for net-misc/sstp-client
 acct-user/stdiscosrv 0-r1: User for the Syncthing discovery server
 acct-user/steamcmd 0-r1: A user for the SteamCMD server
 acct-user/strelaysrv 0-r1: User for the Syncthing relay server
@@ -581,6 +631,7 @@ acct-user/systemd-resolve 0-r1: System user: systemd-resolve
 acct-user/systemd-timesync 0-r1: System user: systemd-timesync
 acct-user/teamspeak 0-r1: A user for the TeamSpeak server
 acct-user/telegraf 0-r1: User for telegraf
+acct-user/tenshi 0: User for app-admin/tenshi
 acct-user/tinyproxy 0: uid for net-proxy/tinyproxy
 acct-user/tomcat 0: User for Apache Tomcat
 acct-user/tor 0-r1: user for tor daemon
@@ -610,10 +661,12 @@ acct-user/vboxguest 0-r1: user for virtualbox-guest-additions
 acct-user/vdradmin 0-r1: User for www-misc/vdradmin-am
 acct-user/vpopmail 0-r1: user for vpopmail
 acct-user/wesnoth 0-r1: user for games-strategy/wesnoth
+acct-user/wwwoffle 0: User for net-proxy/wwwoffle
 acct-user/x2goprint 0-r1: User for net-misc/x2goserver
 acct-user/x2gouser 0-r1: User for net-misc/x2goserver
 acct-user/xrootd 0-r1: User for the XRootD server
 acct-user/zabbix 0: User for Zabbix
+acct-user/zetcd 0: User for sys-cluster/zetcd
 acct-user/ziproxy 0: System user: ziproxy
 acct-user/znc 0-r1: User for net-irc/znc
 app-accessibility/accerciser 3.36.2 3.38.0: Interactive Python accessibility explorer
