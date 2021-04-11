@@ -3,11 +3,12 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic user
+inherit autotools flag-o-matic
 
 DESCRIPTION="PKCS#11 provider cryptographic hardware"
 HOMEPAGE="https://sourceforge.net/projects/opencryptoki"
 SRC_URI="mirror://sourceforge/opencryptoki/${PV}/${P}.tgz"
+S="${WORKDIR}/${PN}"
 
 # Upstream is looking into relicensing it into CPL-1.0 entirely; the CCA
 # token sources are under CPL-1.0 already.
@@ -16,10 +17,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~s390 ~x86"
 IUSE="debug libressl +tpm"
 
-RDEPEND="tpm? ( app-crypt/trousers )
+DEPEND="
+	tpm? ( app-crypt/trousers )
 	!libressl? ( >=dev-libs/openssl-1.1.0:0= )
-	libressl? ( >=dev-libs/libressl-2.7.0:0= )"
-DEPEND="${RDEPEND}"
+	libressl? ( >=dev-libs/libressl-2.7.0:0= )
+"
+RDEPEND="
+	${DEPEND}
+	acct-group/pkcs11
+"
 
 DOCS=(
 	README AUTHORS FAQ TODO
@@ -30,12 +36,6 @@ DOCS=(
 # test against an installed copy and would kill a running pcscd, all
 # things that we're not interested to.
 RESTRICT=test
-
-S="${WORKDIR}/${PN}"
-
-pkg_setup() {
-	enewgroup pkcs11
-}
 
 src_prepare() {
 	default
