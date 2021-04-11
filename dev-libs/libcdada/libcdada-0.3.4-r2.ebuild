@@ -3,7 +3,8 @@
 
 EAPI=7
 
-inherit autotools
+PYTHON_COMPAT=( python3_{7..9} )
+inherit autotools python-any-r1
 
 DESCRIPTION="Basic data structures in C"
 HOMEPAGE="https://github.com/msune/libcdada"
@@ -11,12 +12,23 @@ SRC_URI="https://github.com/msune/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
+IUSE="test"
+RESTRICT="!test? ( test )"
+
+BDEPEND="test? ( ${PYTHON_DEPS} )"
 
 PATCHES=( "${FILESDIR}/${PN}-${PV}-Werror.patch" )
 
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
+
 src_prepare() {
 	default
+	if ! use test; then
+		sed -ie "/SUBDIRS/s/test //" Makefile.am || die
+	fi
 	eautoreconf
 }
 
