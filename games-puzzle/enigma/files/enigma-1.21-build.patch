@@ -16,6 +16,31 @@
  	AC_MSG_RESULT(no)
  fi
  
+@@ -421,14 +421,17 @@
+ dnl ----------------------------------------------------------
+ 
+ AC_MSG_CHECKING(whether to use system enet)
+-AC_ARG_WITH(system-enet,
+-  AS_HELP_STRING(--with-system-enet, Use system enet), system_enet=$withval,
+-  system_enet=no
+-)
++AC_ARG_WITH([system-enet], [
++  AS_HELP_STRING([--with-system-enet], [Use system enet])], [
++  system_enet=$withval], [
++  system_enet=no])
++AC_MSG_RESULT([${system_enet}])
++
+ AM_CONDITIONAL([SYSTEM_ENET], [test "x$system_enet" = xyes])
+-AM_COND_IF([SYSTEM_ENET],
+-		   PKG_CHECK_MODULES(LIBENET, [libenet], ,AC_MSG_ERROR([libenet not found!])),
+-		   AC_CONFIG_SUBDIRS([lib-src/enet]))
++AM_COND_IF([SYSTEM_ENET], [
++  PKG_CHECK_MODULES([LIBENET], [libenet])], [
++  AC_CONFIG_SUBDIRS([lib-src/enet])
++])
+ 
+ 
+ 
 --- a/etc/enigma.desktop
 +++ b/etc/enigma.desktop
 @@ -1,5 +1,5 @@
