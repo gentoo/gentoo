@@ -10,7 +10,7 @@ inherit ecm kde.org
 DESCRIPTION="Framework providing data models to help with tasks such as sorting and filtering"
 
 LICENSE="LGPL-2+"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 IUSE="qml"
 
 RDEPEND="
