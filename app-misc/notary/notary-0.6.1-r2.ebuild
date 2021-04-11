@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit golang-vcs-snapshot golang-build user
+inherit golang-vcs-snapshot golang-build
 
 KEYWORDS="~amd64"
 DESCRIPTION="A project that allows anyone to have trust over arbitrary collections of data"
@@ -14,12 +14,12 @@ HOMEPAGE="https://github.com/theupdateframework/notary"
 SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE=""
 
-pkg_setup() {
-	enewgroup ${PN}
-	enewuser ${PN} -1 -1 -1 ${PN}
-}
+RDEPEND="
+	acct-group/notary
+	acct-user/notary
+"
+BDEPEND="${RDEPEND}"
 
 src_compile() {
 	pushd src/${EGO_PN} || die

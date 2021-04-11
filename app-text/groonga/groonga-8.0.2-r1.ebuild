@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit libtool user
+inherit libtool
 
 DESCRIPTION="An Embeddable Fulltext Search Engine"
 HOMEPAGE="https://groonga.org/"
@@ -13,8 +13,14 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="abort benchmark debug doc dynamic-malloc-change +exact-alloc-count examples fmalloc futex jemalloc libedit libevent lzo +mecab msgpack +nfkc sphinx static-libs uyield zeromq zlib zstd"
+REQUIRED_USE="
+	abort? ( dynamic-malloc-change )
+	fmalloc? ( dynamic-malloc-change )
+	sphinx? ( doc )
+"
 
-RDEPEND=">=dev-libs/onigmo-6.1.1:0=
+DEPEND="
+	>=dev-libs/onigmo-6.1.1:0=
 	benchmark? ( >=dev-libs/glib-2.8 )
 	jemalloc? ( dev-libs/jemalloc:0= )
 	libedit? ( >=dev-libs/libedit-3 )
@@ -25,23 +31,17 @@ RDEPEND=">=dev-libs/onigmo-6.1.1:0=
 	sphinx? ( >=dev-python/sphinx-1.0.1 )
 	zeromq? ( net-libs/zeromq:0= )
 	zlib? ( sys-libs/zlib:0= )
-	zstd? ( app-arch/zstd:0= )"
-DEPEND="${RDEPEND}"
+	zstd? ( app-arch/zstd:0= )
+"
+RDEPEND="
+	${DEPEND}
+	acct-group/groonga
+	acct-user/groonga
+"
 BDEPEND="
 	virtual/pkgconfig
 	sphinx? ( dev-python/sphinx )
 "
-
-REQUIRED_USE="
-	abort? ( dynamic-malloc-change )
-	fmalloc? ( dynamic-malloc-change )
-	sphinx? ( doc )
-"
-
-pkg_setup() {
-	enewgroup groonga
-	enewuser groonga -1 -1 -1 groonga
-}
 
 src_prepare() {
 	default
@@ -92,8 +92,6 @@ src_configure() {
 }
 
 src_install() {
-	local DOCS=( README.md )
-
 	default
 
 	find "${ED}" -name '*.la' -delete || die

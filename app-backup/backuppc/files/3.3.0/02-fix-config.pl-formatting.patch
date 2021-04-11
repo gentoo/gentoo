@@ -1,5 +1,5 @@
---- conf/config.pl.dist	2013-09-23 23:05:50.332064754 +0300
-+++ conf/config.pl	2013-09-23 23:07:44.110943607 +0300
+--- a/conf/config.pl.dist	2013-09-23 23:05:50.332064754 +0300
++++ b/conf/config.pl	2013-09-23 23:07:44.110943607 +0300
 @@ -355,7 +355,7 @@
  # needs to be a full path and you can't include shell syntax like
  # redirection and pipes; put that in a script if you need it.
