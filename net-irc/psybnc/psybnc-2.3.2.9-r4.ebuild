@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs user
+inherit toolchain-funcs
 
 MY_PV="$(ver_rs 3 -)"
 PSYBNC_HOME="/var/lib/psybnc"
@@ -19,15 +19,12 @@ KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="ipv6 ssl oidentd scripting multinetwork"
 
 DEPEND="
+	acct-group/psybnc
+	acct-user/psybnc
 	ssl? ( >=dev-libs/openssl-0.9.7d:= )
 	oidentd? ( >=net-misc/oidentd-2.0 )
 "
 RDEPEND="${DEPEND}"
-
-pkg_setup() {
-	enewgroup psybnc
-	enewuser psybnc -1 -1 ${PSYBNC_HOME} psybnc
-}
 
 src_unpack() {
 	unpack ${A}

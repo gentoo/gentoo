@@ -4,7 +4,7 @@
 EAPI=7
 
 [[ ${PV} == *9999 ]] && SCM="git-r3"
-inherit perl-module user ${SCM}
+inherit perl-module ${SCM}
 
 DESCRIPTION="qpsmtpd is a flexible smtpd daemon written in Perl"
 HOMEPAGE="https://smtpd.github.io/qpsmtpd/"
@@ -20,27 +20,23 @@ LICENSE="MIT"
 SLOT="0"
 IUSE="postfix ipv6 syslog"
 
-RDEPEND=">=dev-lang/perl-5.8.0
-	>=dev-perl/Net-DNS-0.690.0
-	virtual/perl-MIME-Base64
-	dev-perl/MailTools
-	dev-perl/IPC-Shareable
-	dev-perl/Socket6
+RDEPEND="
+	acct-group/smtpd
+	acct-user/smtpd
+	dev-lang/perl
 	dev-perl/Danga-Socket
+	dev-perl/IPC-Shareable
+	dev-perl/MailTools
+	dev-perl/Net-DNS
 	dev-perl/ParaDNS
+	dev-perl/Socket6
 	dev-perl/UNIVERSAL-isa
+	postfix? ( acct-group/postdrop )
+	virtual/inetd
+	virtual/perl-MIME-Base64
 	ipv6? ( dev-perl/IO-Socket-INET6 )
 	syslog? ( virtual/perl-Sys-Syslog )
-	virtual/inetd"
-
-pkg_setup() {
-	enewgroup smtpd
-	local additional_groups
-	if use postfix; then
-		additional_groups="${additional_groups},postdrop"
-	fi
-	enewuser smtpd -1 -1 /var/spool/qpsmtpd smtpd${additional_groups}
-}
+"
 
 src_unpack() {
 	if [[ ${PV} != *9999 ]]; then

@@ -6,17 +6,25 @@ EAPI=7
 MY_BETA="$(ver_cut 6-)"
 MY_PATCH="$(ver_cut 4-5)"
 MY_PV="$(ver_cut 1-3)${MY_BETA/beta/b}"
-inherit readme.gentoo-r1 systemd user
+
+inherit readme.gentoo-r1 systemd
 
 DESCRIPTION="Dynamic DNS client for lots of dynamic dns services"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
-SRC_URI="mirror://debian/pool/main/e/ez-ipupdate/${PN}_${MY_PV}.orig.tar.gz
-	mirror://debian/pool/main/e/ez-ipupdate/${PN}_${MY_PV}-${MY_PATCH}.diff.gz"
+SRC_URI="
+	mirror://debian/pool/main/e/ez-ipupdate/${PN}_${MY_PV}.orig.tar.gz
+	mirror://debian/pool/main/e/ez-ipupdate/${PN}_${MY_PV}-${MY_PATCH}.diff.gz
+"
 S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+
+RDEPEND="
+	acct-group/ez-ipupd
+	acct-user/ez-ipupd
+"
 
 DISABLE_AUTOFORMATTING="yes"
 DOC_CONTENTS="
@@ -91,11 +99,6 @@ src_install() {
 	dodoc ex*conf
 
 	readme.gentoo_create_doc
-}
-
-pkg_preinst() {
-	enewgroup ez-ipupd
-	enewuser ez-ipupd -1 -1 /var/cache/ez-ipupdate ez-ipupd
 }
 
 pkg_postinst() {
