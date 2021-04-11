@@ -2683,7 +2683,7 @@ app-misc/rioutil 1.5.4: A utility for accessing various Rio media players
 app-misc/rl 0.2.7-r1: Randomize lines from text files or stdin
 app-misc/rlwrap 0.42 0.42-r1 0.43: GNU readline wrapper
 app-misc/rox-filer 2.11: ROX-Filer a drag and drop spatial file manager
-app-misc/rpick 0.7.2 0.8.1: Helps you pick items from a list by various algorithms
+app-misc/rpick 0.8.1 0.8.2: Helps you pick items from a list by various algorithms
 app-misc/rq 1.0.2: A tool for doing record analysis and transformation
 app-misc/rtlamr 0.9.1: software defined radio receiver for utility smart meters
 app-misc/rundeck-bin 2.6.8: Job Scheduler and Runbook Automation
@@ -12937,7 +12937,7 @@ media-gfx/gif2apng 1.9-r1: create an APNG from a GIF
 media-gfx/gif2png 2.5.14: Converts images from gif format to png format
 media-gfx/gifsicle 1.92: Create, manipulate, and optimize GIF images and animations
 media-gfx/gimageview 0.2.27-r4: Powerful GTK+ based image & movie viewer
-media-gfx/gimp 2.10.22-r2 2.99.4 9999: GNU Image Manipulation Program
+media-gfx/gimp 2.10.22-r2 2.10.24 2.99.4 9999: GNU Image Manipulation Program
 media-gfx/gimp-arrow-brushes 20190407: Brushes for GIMP with the styles arrow, handpointer, button arrow and cursor
 media-gfx/gmic 2.9.4 2.9.5 2.9.6: GREYC's Magic Image Converter
 media-gfx/gnofract4d 4.3_p20201029: A program for drawing beautiful mathematically-based images known as fractals
@@ -13117,7 +13117,7 @@ media-libs/aubio 0.4.9: Library for audio labelling
 media-libs/audiofile 0.3.6-r4: An elegant API for accessing audio files
 media-libs/avidemux-core 2.7.6: Core libraries for simple video cutting, filtering and encoding tasks
 media-libs/avidemux-plugins 2.7.6: Plugins for the video editor media-video/avidemux
-media-libs/babl 0.1.84 9999: A dynamic, any to any, pixel format conversion library
+media-libs/babl 0.1.84 0.1.86 9999: A dynamic, any to any, pixel format conversion library
 media-libs/bcg729 1.1.1: Encoder and decoder of the ITU G729 Annex A/B speech codec
 media-libs/bio2jack 0.9-r2: A library for porting blocked I/O OSS/ALSA audio applications to JACK
 media-libs/blib 1.1.7-r2: blib is a library full of useful things to hack the Blinkenlights
@@ -13162,7 +13162,7 @@ media-libs/game-music-emu 0.6.2: Video game music file emulators
 media-libs/ganv 1.8.0: A GTK+ widget for interactive graph-like environments
 media-libs/gavl 1.4.0-r2: Library for handling uncompressed audio and video data
 media-libs/gd 2.3.0 2.3.1 2.3.2: Graphics library for fast image creation
-media-libs/gegl 0.4.26-r1 0.4.28 9999: A graph based image processing framework
+media-libs/gegl 0.4.26-r1 0.4.28 0.4.30 9999: A graph based image processing framework
 media-libs/gexiv2 0.12.1: GObject-based wrapper around the Exiv2 library
 media-libs/giblib 1.2.4-r1: a graphics library built on top of imlib2
 media-libs/giflib 5.2.1-r1: Library to handle, display and manipulate GIF images
