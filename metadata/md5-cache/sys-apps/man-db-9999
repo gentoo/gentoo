@@ -1,4 +1,4 @@
-BDEPEND=app-arch/xz-utils virtual/pkgconfig nls? ( >=app-text/po4a-0.45 sys-devel/gettext virtual/libiconv virtual/libintl ) virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=app-arch/xz-utils virtual/pkgconfig nls? ( >=app-text/po4a-0.45 sys-devel/gettext virtual/libiconv virtual/libintl ) virtual/pkgconfig sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-apps/gawk >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=configure install postinst preinst prepare setup unpack
 DEPEND=!sys-apps/man >=dev-libs/libpipeline-1.5.0 sys-apps/groff gdbm? ( sys-libs/gdbm:= ) !gdbm? ( berkdb? ( sys-libs/db:= ) ) !berkdb? ( !gdbm? ( sys-libs/gdbm:= ) ) seccomp? ( sys-libs/libseccomp ) zlib? ( sys-libs/zlib )
 DESCRIPTION=a man replacement that utilizes berkdb instead of flat files
@@ -11,5 +11,5 @@ PDEPEND=manpager? ( app-text/manpager )
 PROPERTIES=live
 RDEPEND=!sys-apps/man >=dev-libs/libpipeline-1.5.0 sys-apps/groff gdbm? ( sys-libs/gdbm:= ) !gdbm? ( berkdb? ( sys-libs/db:= ) ) !berkdb? ( !gdbm? ( sys-libs/gdbm:= ) ) seccomp? ( sys-libs/libseccomp ) zlib? ( sys-libs/zlib ) acct-group/man acct-user/man selinux? ( sec-policy/selinux-mandb )
 SLOT=0
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	gnuconfig	9f91b4b0c84e734a87492d4293f03de5	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	79023c161e8f625b0f1823715941c2da	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=5b268f178d71ddb28410d57317e9d199

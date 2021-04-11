@@ -3,6 +3,7 @@ DEPEND=client? ( media-libs/libsdl2:=[X,sound,joystick,opengl,video] mumble? ( m
 DESCRIPTION=Hollywood tactical shooter based on the ioquake3 engine
 EAPI=7
 HOMEPAGE=https://urbanterror.info https://github.com/mickael9/ioq3
+INHERIT=desktop flag-o-matic toolchain-funcs xdg-utils
 IUSE=+altgamma +client +curl debug mumble openal +opus server +skeetshootmod voip vorbis
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
@@ -10,5 +11,5 @@ RDEPEND=client? ( media-libs/libsdl2:=[X,sound,joystick,opengl,video] mumble? ( 
 REQUIRED_USE=|| ( client server ) voip? ( opus )
 SLOT=0
 SRC_URI=https://github.com/mickael9/ioq3/archive/0429c03056720523d27ca71d5a4aa3e8d00709e7.tar.gz -> urbanterror-4.3.4_p20210304.tar.gz
-_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	c0964e43ba712cb933da5f65b958fa88	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=19972e30b0d05d61ed9a343ecaf65026

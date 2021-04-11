@@ -1,4 +1,4 @@
-BDEPEND=sys-apps/help2man virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=sys-apps/help2man virtual/pkgconfig sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-apps/gawk
 DEFINED_PHASES=install prepare
 DEPEND=dev-libs/libinput:= virtual/libudev:= dev-libs/libevdev:=
 DESCRIPTION=libinput based console mouse daemon
@@ -10,5 +10,5 @@ LICENSE=GPL-2+ MIT
 RDEPEND=dev-libs/libinput:= virtual/libudev:= dev-libs/libevdev:=
 SLOT=0
 SRC_URI=https://salsa.debian.org/consolation-team/consolation/-/archive/consolation-0.0.7/consolation-consolation-0.0.7.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	gnuconfig	9f91b4b0c84e734a87492d4293f03de5	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	79023c161e8f625b0f1823715941c2da
 _md5_=11a73cb7f5141f2130883af07bbedf7a

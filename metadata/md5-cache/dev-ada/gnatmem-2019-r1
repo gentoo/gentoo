@@ -1,4 +1,4 @@
-BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-apps/gawk
 DEFINED_PHASES=compile install prepare setup
 DEPEND=ada_target_gnat_2016? ( dev-lang/gnat-gpl:4.9.4 ) ada_target_gnat_2017? ( dev-lang/gnat-gpl:6.3.0 ) ada_target_gnat_2018? ( dev-lang/gnat-gpl:7.3.1 ) ada_target_gnat_2019? ( dev-lang/gnat-gpl:8.3.1 ) dev-ada/gprbuild[ada_target_gnat_2016(-)?,ada_target_gnat_2017(-)?,ada_target_gnat_2018(-)?,ada_target_gnat_2019(-)?] sys-libs/binutils-libs:=
 DESCRIPTION=Monitors dynamic allocation and deallocation activity in a program
@@ -12,5 +12,5 @@ RDEPEND=ada_target_gnat_2016? ( dev-lang/gnat-gpl:4.9.4 ) ada_target_gnat_2017? 
 REQUIRED_USE=^^ ( ada_target_gnat_2016 ada_target_gnat_2017 ada_target_gnat_2018 ada_target_gnat_2019 )
 SLOT=0
 SRC_URI=http://mirrors.cdn.adacore.com/art/5cdf8e1431e87a8f1d425089 -> gnatmem-2019-20190429-19745-src.tar.gz
-_eclasses_=ada	2e62916779222e4f23755b01896c54af	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba
+_eclasses_=ada	2e62916779222e4f23755b01896c54af	multiprocessing	cac3169468f893670dac3e7cb940e045	gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	79023c161e8f625b0f1823715941c2da
 _md5_=6f138f524d2a45d9ba7ef037b6db7891

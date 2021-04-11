@@ -1,4 +1,4 @@
-BDEPEND=doc? ( app-text/asciidoc >=app-text/docbook2X-0.8.8-r4 ) virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+BDEPEND=doc? ( app-text/asciidoc >=app-text/docbook2X-0.8.8-r4 ) virtual/pkgconfig sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-apps/gawk virtual/pkgconfig
 DEFINED_PHASES=compile configure install postinst prepare setup
 DEPEND=>=net-libs/libmnl-1.0.4:0= gmp? ( dev-libs/gmp:0= ) json? ( dev-libs/jansson ) python? ( python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] ) readline? ( sys-libs/readline:0= ) >=net-libs/libnftnl-1.1.7:0= xtables? ( >=net-firewall/iptables-1.6.1 )
 DESCRIPTION=Linux kernel (3.13+) firewall, NAT and packet mangling tools
@@ -12,5 +12,5 @@ RDEPEND=>=net-libs/libmnl-1.0.4:0= gmp? ( dev-libs/gmp:0= ) json? ( dev-libs/jan
 REQUIRED_USE=python? ( || ( python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 ) )
 SLOT=0
 SRC_URI=https://netfilter.org/projects/nftables/files/nftables-0.9.6.tar.bz2
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	linux-info	30ded7f9adbdd03d3e848cdd74f6c395	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-r1	26e4ad0a4190b14f70973dc253e86535	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6
+_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	79023c161e8f625b0f1823715941c2da	linux-info	30ded7f9adbdd03d3e848cdd74f6c395	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-r1	26e4ad0a4190b14f70973dc253e86535	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6
 _md5_=2656565f83612e1338734a699c6f4933

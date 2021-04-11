@@ -1,4 +1,4 @@
-BDEPEND=app-arch/unzip doc? ( app-doc/doxygen ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=app-arch/unzip doc? ( app-doc/doxygen ) sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-apps/gawk
 DEFINED_PHASES=configure install prepare
 DESCRIPTION=Library to load, handle and manipulate images in the PGF format
 EAPI=7
@@ -9,5 +9,5 @@ KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=LGPL-2.1
 SLOT=0
 SRC_URI=https://downloads.sourceforge.net/project/libpgf/libpgf/7.21.7/libpgf.zip -> libpgf-7.21.7.zip
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	edos2unix	33e347e171066657f91f8b0c72ec8773
+_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	79023c161e8f625b0f1823715941c2da	edos2unix	33e347e171066657f91f8b0c72ec8773
 _md5_=cee407569de632958e5c323f934ab52b

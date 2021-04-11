@@ -1,4 +1,4 @@
-BDEPEND=dev-lang/python:2.7 test? ( || ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 ) ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) ~sys-devel/autoconf-2.13 >=sys-devel/libtool-2.4
+BDEPEND=dev-lang/python:2.7 test? ( || ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 ) ) sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) ~sys-devel/autoconf-2.13 >=sys-devel/libtool-2.4 sys-apps/gawk
 DEFINED_PHASES=compile configure install prepare pretend setup test
 DEPEND=>=dev-libs/icu-63.1:= >=dev-libs/nspr-4.21 sys-libs/readline:0= >=sys-libs/zlib-1.2.3
 DESCRIPTION=SpiderMonkey is Mozilla's JavaScript engine written in C and C++
@@ -12,5 +12,5 @@ RDEPEND=>=dev-libs/icu-63.1:= >=dev-libs/nspr-4.21 sys-libs/readline:0= >=sys-li
 RESTRICT=!test? ( test )
 SLOT=68
 SRC_URI=https://archive.mozilla.org/pub/firefox/releases/68.12.0esr/source/firefox-68.12.0esr.source.tar.xz https://dev.gentoo.org/~anarchy/mozilla/patchsets/firefox-68.0-patches-15.tar.xz https://dev.gentoo.org/~whissi/mozilla/patchsets/firefox-68.0-patches-15.tar.xz https://dev.gentoo.org/~polynomial-c/mozilla/patchsets/firefox-68.0-patches-15.tar.xz https://dev.gentoo.org/~axs/mozilla/patchsets/firefox-68.0-patches-15.tar.xz https://dev.gentoo.org/~whissi/mozilla/patchsets/spidermonkey-68.6.0-patches-04.tar.xz https://dev.gentoo.org/~polynomial-c/mozilla/patchsets/spidermonkey-68.6.0-patches-04.tar.xz https://dev.gentoo.org/~axs/mozilla/patchsets/spidermonkey-68.6.0-patches-04.tar.xz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	check-reqs	97b90bd8fb799993925e6b3a683184e5	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-any-r1	17241a11501065ff3651350040875aa9
+_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	79023c161e8f625b0f1823715941c2da	check-reqs	97b90bd8fb799993925e6b3a683184e5	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-any-r1	17241a11501065ff3651350040875aa9
 _md5_=4db9772300253d006506766ad24e1561

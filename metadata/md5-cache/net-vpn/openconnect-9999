@@ -1,4 +1,4 @@
-BDEPEND=virtual/pkgconfig doc? ( || ( dev-lang/python:3.9[xml] dev-lang/python:3.8[xml] dev-lang/python:3.7[xml] ) sys-apps/groff ) nls? ( sys-devel/gettext ) test? ( net-libs/socket_wrapper net-vpn/ocserv sys-libs/uid_wrapper ) >=dev-vcs/git-1.8.2.1[curl] >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=virtual/pkgconfig doc? ( || ( dev-lang/python:3.9[xml] dev-lang/python:3.8[xml] dev-lang/python:3.7[xml] ) sys-apps/groff ) nls? ( sys-devel/gettext ) test? ( net-libs/socket_wrapper net-vpn/ocserv sys-libs/uid_wrapper ) >=dev-vcs/git-1.8.2.1[curl] sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-apps/gawk
 DEFINED_PHASES=configure install prepare pretend setup test unpack
 DEPEND=dev-libs/libxml2 sys-libs/zlib !gnutls? ( >=dev-libs/openssl-1.0.1h:0= ) gnutls? ( app-crypt/trousers app-misc/ca-certificates dev-libs/nettle >=net-libs/gnutls-3.6.13:0= dev-libs/libtasn1:0= app-crypt/tpm2-tss ) gssapi? ( virtual/krb5 ) libproxy? ( net-libs/libproxy ) lz4? ( app-arch/lz4:= ) nls? ( virtual/libintl ) smartcard? ( sys-apps/pcsc-lite:0= ) stoken? ( app-crypt/stoken )
 DESCRIPTION=Free client for Cisco AnyConnect SSL VPN software
@@ -12,5 +12,5 @@ RDEPEND=dev-libs/libxml2 sys-libs/zlib !gnutls? ( >=dev-libs/openssl-1.0.1h:0= )
 RESTRICT=!test? ( test )
 SLOT=0/5
 SRC_URI=ftp://ftp.infradead.org/pub/vpnc-scripts/vpnc-scripts-20200226.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	linux-info	30ded7f9adbdd03d3e848cdd74f6c395	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-any-r1	17241a11501065ff3651350040875aa9	git-r3	b8e8c92aa5fe8df7187e466138eb4e52	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	linux-info	30ded7f9adbdd03d3e848cdd74f6c395	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-any-r1	17241a11501065ff3651350040875aa9	git-r3	b8e8c92aa5fe8df7187e466138eb4e52	gnuconfig	9f91b4b0c84e734a87492d4293f03de5	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	79023c161e8f625b0f1823715941c2da
 _md5_=52e4338657b8ff6a42eabf922e475b73

@@ -1,4 +1,4 @@
-BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=virtual/pkgconfig sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-apps/gawk
 DEFINED_PHASES=configure install postinst postrm preinst prepare
 DEPEND=dev-libs/glib:2= dev-libs/gmime:3.0= >=dev-libs/xapian-1.4:= emacs? ( >=app-editors/emacs-24.4:* ) guile? ( >=dev-scheme/guile-2.2:* ) mug? ( net-libs/webkit-gtk:4= x11-libs/gtk+:3= )
 DESCRIPTION=Set of tools to deal with Maildirs, in particular, searching and indexing
@@ -11,5 +11,5 @@ LICENSE=GPL-3+
 RDEPEND=dev-libs/glib:2= dev-libs/gmime:3.0= >=dev-libs/xapian-1.4:= emacs? ( >=app-editors/emacs-24.4:* ) guile? ( >=dev-scheme/guile-2.2:* ) mug? ( net-libs/webkit-gtk:4= x11-libs/gtk+:3= )
 SLOT=0
 SRC_URI=https://github.com/djcb/mu/archive/1.4.15.tar.gz -> mu-1.4.15.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	elisp-common	36f97076abd90f943a34f8bcd58b5bcc
+_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	79023c161e8f625b0f1823715941c2da	elisp-common	36f97076abd90f943a34f8bcd58b5bcc
 _md5_=da46169ba52b6b19ba49bd72e5a3e82c

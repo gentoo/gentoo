@@ -4,6 +4,7 @@ DEPEND=>=app-arch/brotli-1.0.5:= app-text/ghostscript-gpl dev-libs/kpathsea:= de
 DESCRIPTION=Converts DVI files to SVG
 EAPI=7
 HOMEPAGE=https://dvisvgm.de/
+INHERIT=toolchain-funcs flag-o-matic
 IUSE=test
 KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~s390 sparc x86 ~amd64-linux ~ppc-macos ~x64-macos
 LICENSE=GPL-3
@@ -11,5 +12,5 @@ RDEPEND=>=app-arch/brotli-1.0.5:= app-text/ghostscript-gpl dev-libs/kpathsea:= d
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/mgieseki/dvisvgm/releases/download/2.11/dvisvgm-2.11.tar.gz
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	09a8beb8e6a8e02dc1e1bd83ac353741	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	c0964e43ba712cb933da5f65b958fa88
 _md5_=a4614ea711c4d2ad6d53a2dc8622c316

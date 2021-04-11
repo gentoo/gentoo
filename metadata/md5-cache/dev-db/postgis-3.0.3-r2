@@ -1,4 +1,4 @@
-BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-apps/gawk
 DEFINED_PHASES=compile configure install postinst prepare setup test
 DEPEND=postgres_targets_postgres13? ( dev-db/postgresql:13=[server] ) postgres_targets_postgres12? ( dev-db/postgresql:12=[server] ) postgres_targets_postgres11? ( dev-db/postgresql:11=[server] ) postgres_targets_postgres10? ( dev-db/postgresql:10=[server] ) postgres_targets_postgres9_6? ( dev-db/postgresql:9.6=[server] ) postgres_targets_postgres9_5? ( dev-db/postgresql:9.5=[server] ) dev-libs/json-c:= dev-libs/libxml2:2 dev-libs/protobuf-c:= >=sci-libs/geos-3.6.0 >=sci-libs/proj-4.9.0:= >=sci-libs/gdal-1.10.0:= address-standardizer? ( dev-libs/libpcre ) gtk? ( x11-libs/gtk+:2 ) virtual/pkgconfig doc? ( app-text/docbook-xsl-stylesheets app-text/docbook-xml-dtd:4.5 dev-libs/libxslt virtual/imagemagick-tools[png] ) test? ( dev-util/cunit )
 DESCRIPTION=Geographic Objects for PostgreSQL
@@ -13,5 +13,5 @@ REQUIRED_USE=test? ( doc ) || ( postgres_targets_postgres13 postgres_targets_pos
 RESTRICT=test
 SLOT=0
 SRC_URI=https://download.osgeo.org/postgis/source/postgis-3.0.3.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	user	26d8ce6329c43cbac965617f1c0627e2	postgres	c90f34fec636bb31d36838ad7e11b37b	postgres-multi	45f967e4809b0f1162e4e2c726308439
+_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	79023c161e8f625b0f1823715941c2da	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	user	26d8ce6329c43cbac965617f1c0627e2	postgres	c90f34fec636bb31d36838ad7e11b37b	postgres-multi	45f967e4809b0f1162e4e2c726308439
 _md5_=5b834f2ee5f43693720f5d3ee5030f35

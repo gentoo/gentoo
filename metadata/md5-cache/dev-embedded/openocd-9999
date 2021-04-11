@@ -1,4 +1,4 @@
-BDEPEND=sys-apps/texinfo virtual/pkgconfig virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=sys-apps/texinfo virtual/pkgconfig virtual/pkgconfig sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-apps/gawk >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=configure install postinst prepare unpack
 DEPEND=acct-group/plugdev >=dev-lang/jimtcl-0.76:0= cmsis-dap? ( dev-libs/hidapi ) jlink? ( >=dev-embedded/libjaylink-0.2.0 ) usb? ( virtual/libusb:0 virtual/libusb:1 ) ftdi? ( dev-embedded/libftdi:= )
 DESCRIPTION=OpenOCD - Open On-Chip Debugger
@@ -11,5 +11,5 @@ PROPERTIES=live
 RDEPEND=acct-group/plugdev >=dev-lang/jimtcl-0.76:0= cmsis-dap? ( dev-libs/hidapi ) jlink? ( >=dev-embedded/libjaylink-0.2.0 ) usb? ( virtual/libusb:0 virtual/libusb:1 ) ftdi? ( dev-embedded/libftdi:= )
 RESTRICT=strip
 SLOT=0
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	udev	452708c3f55cf6e918b045adb949a9e6	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	6ff8412ccf96444868b310b0a28973ba	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	udev	452708c3f55cf6e918b045adb949a9e6	gnuconfig	9f91b4b0c84e734a87492d4293f03de5	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	79023c161e8f625b0f1823715941c2da	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=1763d26eddd692cfc8ffa3c2c7e93c51
