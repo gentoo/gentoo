@@ -67,10 +67,11 @@ QT5_MINOR_VERSION=$(ver_cut 2)
 readonly QT5_MINOR_VERSION
 
 case ${PV} in
-	5.??.9999)
-		# git stable branch
+	5.15.9999)
+		# KDE upstream for 5.15 patches
+		HOMEPAGE+=" https://invent.kde.org/qt/qt/"
 		QT5_BUILD_TYPE="live"
-		EGIT_BRANCH=${PV%.9999}
+		EGIT_BRANCH="kde/5.15"
 		;;
 	*_alpha*|*_beta*|*_rc*)
 		# development release
@@ -89,10 +90,8 @@ case ${PV} in
 esac
 readonly QT5_BUILD_TYPE
 
-EGIT_REPO_URI=(
-	"https://code.qt.io/qt/${QT5_MODULE}.git"
-	"https://github.com/qt/${QT5_MODULE}.git"
-)
+EGIT_REPO_URI=( "https://invent.kde.org/qt/qt/${QT5_MODULE}.git" )
+
 [[ ${QT5_BUILD_TYPE} == live ]] && inherit git-r3
 
 # @ECLASS-VARIABLE: QT5_BUILD_DIR
