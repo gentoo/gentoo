@@ -14827,7 +14827,7 @@ net-irc/ircmap 0.99-r1: Scripts to treate diagrams of IRC networks using the LIN
 net-irc/ircstats 1.2: IRCStats is a Linux log analyzer
 net-irc/irker 2.19: Submission tools for IRC notifications
 net-irc/iroffer-dinoex 3.30-r1 3.31 3.32: IRC fileserver using DCC
-net-irc/irssi 1.2.2-r1 9999: A modular textUI IRC client with IPv6 support
+net-irc/irssi 1.2.2-r1 1.2.3 9999: A modular textUI IRC client with IPv6 support
 net-irc/irssi-xmpp 0.54: An irssi plugin providing Jabber/XMPP support
 net-irc/irssistats 0.75-r1: Generates HTML IRC stats based on irssi logs
 net-irc/konversation 20.12.3: User friendly IRC Client
@@ -15238,7 +15238,7 @@ net-misc/gallery-dl 1.17.1 1.17.2 9999: Download image galleries and collections
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
 net-misc/geoipupdate 2.3.1 3.1.1 4.3.0: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
 net-misc/geomyidae 0.34: A daemon to serve the gopher protocol
-net-misc/gerbera 1.7.0 9999: UPnP Media Server
+net-misc/gerbera 1.8.0 9999: UPnP Media Server
 net-misc/getdate 1.2-r2: Network Date/Time Query and Set Local Date/Time Utility
 net-misc/gnome-online-miners 3.34.0: Crawls through your online content
 net-misc/gnome-remote-desktop 0.1.7 0.1.8 0.1.9: Remote desktop daemon for GNOME using pipewire
