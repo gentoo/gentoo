@@ -5,7 +5,7 @@ EAPI=5
 
 FORTRAN_NEEDED=fortran
 
-inherit fortran-2
+inherit epatch fortran-2
 
 MY_PV=${PV/_/}
 DESCRIPTION="A high performance and portable MPI implementation"
