@@ -32,7 +32,7 @@ BDEPEND="
 			dev-python/geventhttpclient[${PYTHON_USEDEP}]
 		) )
 		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/python-fastimport[${PYTHON_USEDEP}]
+		dev-python/fastimport[${PYTHON_USEDEP}]
 	)"
 
 distutils_enable_sphinx docs
