@@ -12,7 +12,7 @@ LICENSE="GPL-2"
 
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86 ~x64-macos"
-IUSE="+client debug libssh"
+IUSE="+client debug libssh +lto"
 
 RDEPEND="
 	client? ( sys-libs/ncurses:= )
@@ -39,7 +39,12 @@ src_configure() {
 		--localstatedir="${EPREFIX}/var" \
 		$(use_enable client) \
 		$(use_enable debug) \
-		$(use_enable libssh)
+		$(use_enable libssh) \
+		$(use !lto && echo bird_cv_c_lto=no)
+}
+
+src_compile() {
+	emake VERBOSE=1
 }
 
 src_install() {
