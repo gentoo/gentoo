@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -55,7 +55,8 @@ src_prepare() {
 		-e 's:AM_CONFIG_HEADER:AC_CONFIG_HEADERS:g' \
 		configure.ac || die
 
-	eautoreconf
+	# bug #672170
+	AT_M4DIR="macros" eautoreconf
 	gnome2_src_prepare
 }
 
