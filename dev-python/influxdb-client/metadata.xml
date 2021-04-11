@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>root@xakru.me</email>
+    <name>Ruslan Kh.</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription>
+    InfluxDB 2.0 python client library.
+    Use this client library with InfluxDB 2.x and InfluxDB 1.8+.
+    For connecting to InfluxDB 1.7 or earlier instances, use the 
+    dev-python/influxdb client library.
+    It is recommended to use ciso8601 with client for parsing dates.
+  </longdescription>
+  <use>
+    <flag name="ciso">Enable ciso8601 support. Faster than built-in Python datetime</flag>
+    <flag name="extra">Enable DataFrame support with pandas and numpy</flag>
+    <flag name="test">Enable support local unit and integration tests</flag>
+  </use>
+  <stabilize-allarches/>
+  <upstream>
+    <doc>https://influxdb-client.readthedocs.io/</doc>
+    <remote-id type="pypi">influxdb-client</remote-id>
+    <remote-id type="github">influxdata/influxdb-client-python</remote-id>
+  </upstream>
+</pkgmetadata>
