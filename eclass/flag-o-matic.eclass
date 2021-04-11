@@ -28,9 +28,23 @@ all-flag-vars() {
 	echo {ADA,C,CPP,CXX,CCAS,F,FC,LD}FLAGS
 }
 
+# @FUNCTION: setup-allowed-flags
+# @INTERNAL
+# @DESCRIPTION:
 # {C,CPP,CXX,CCAS,F,FC,LD}FLAGS that we allow in strip-flags
 # Note: shell globs and character lists are allowed
 setup-allowed-flags() {
+	[[ ${EAPI} == [567] ]] ||
+		die "Internal function ${FUNCNAME} is not available in EAPI ${EAPI}."
+	_setup-allowed-flags "$@"
+}
+
+# @FUNCTION: _setup-allowed-flags
+# @INTERNAL
+# @DESCRIPTION:
+# {C,CPP,CXX,CCAS,F,FC,LD}FLAGS that we allow in strip-flags
+# Note: shell globs and character lists are allowed
+_setup-allowed-flags() {
 	ALLOWED_FLAGS=(
 		-pipe -O '-O[12sg]' -mcpu -march -mtune
 		'-fstack-protector*' '-fsanitize*' '-fstack-check*' -fno-stack-check
@@ -414,7 +428,7 @@ strip-flags() {
 	local x y var
 
 	local ALLOWED_FLAGS
-	setup-allowed-flags
+	_setup-allowed-flags
 
 	set -f	# disable pathname expansion
 
