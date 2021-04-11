@@ -9,7 +9,7 @@ if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://git.zx2c4.com/password-store"
 	inherit git-r3
 else
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~x64-macos"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~x64-macos"
 	COMMIT_ID="918992c19231b33b3d4a3288a7288a620e608cb4"
 	SRC_URI="https://git.zx2c4.com/password-store/snapshot/password-store-${COMMIT_ID}.tar.xz"
 	S="${WORKDIR}/${PN}"
