@@ -1,0 +1,31 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -38,17 +38,13 @@
+ DEFS = @DEFS@
+ #INCLUDES = -I$(top_builddir) -I$(srcdir)
+ 
+-if GCC
+-MULTI_OS_DIRECTORY=$(shell $(CC) $(CFLAGS) -print-multi-os-directory)
+-else
+ MULTI_OS_DIRECTORY=.
+-endif
+ 
+ if GLIBC
+-LIBC_VERS = $(shell ls /lib/$(MULTI_OS_DIRECTORY)/libc-*.so | tail -n 1 | sed -e 's|.*libc-\(.*\)\.so|\1|')
++LIBC_VERS = $(shell ls @GENTOO_PORTAGE_EPREFIX@/lib/$(MULTI_OS_DIRECTORY)/libc-*.so | tail -n 1 | sed -e 's|.*libc-\(.*\)\.so|\1|')
+ NSS_LDAP_LIBC_VERSIONED = libnss_ldap-$(LIBC_VERS).so
+ 
+-NSS_VERS = $(shell ls /lib/$(MULTI_OS_DIRECTORY)/libnss_files.so.? | tail -n 1 | sed -e 's|.*libnss_files\.so\.\(.*\)|\1|')
++NSS_VERS = $(shell ls @GENTOO_PORTAGE_EPREFIX@/lib/$(MULTI_OS_DIRECTORY)/libnss_files.so.? | tail -n 1 | sed -e 's|.*libnss_files\.so\.\(.*\)|\1|')
+ NSS_LDAP_NSS_VERSIONED = libnss_ldap.so.$(NSS_VERS)
+ endif
+ 
+@@ -83,8 +79,6 @@
+ 	$(mkinstalldirs) $(DESTDIR)$(libdir)
+ 	$(INSTALL_PROGRAM) -o $(INST_UID) -g $(INST_GID) nss_ldap.so $(DESTDIR)$(libdir)/$(NSS_LDAP_LIBC_VERSIONED)
+ 	(cd $(DESTDIR)$(libdir); ln -sf $(NSS_LDAP_LIBC_VERSIONED) $(NSS_LDAP_NSS_VERSIONED))
+-	$(mkinstalldirs) $(DESTDIR)/usr$(libdir)
+-	(cd $(DESTDIR)/usr$(libdir); ln -sf ../..$(libdir)/$(NSS_LDAP_NSS_VERSIONED) .)
+ else
+ 	$(mkinstalldirs) $(DESTDIR)$(libdir)
+ if HPUX
