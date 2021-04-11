@@ -35,7 +35,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	ewarn "The sample config installed to ${ROOT}etc/tenshi/tenshi.conf"
+	ewarn "The sample config installed to ${ROOT}/etc/tenshi/tenshi.conf"
 	ewarn "monitors /var/log/messages which, by default, can not be read"
 	ewarn "by the tenshi user.  Make sure that the tenshi user has read"
 	ewarn "permission on all the files that you want tenshi to monitor."
