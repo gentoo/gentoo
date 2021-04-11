@@ -4,7 +4,7 @@
 EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR=emake
-inherit cmake desktop xdg
+inherit cmake desktop wrapper xdg
 
 DESCRIPTION="Free 2D Zelda fangame"
 HOMEPAGE="https://www.solarus-games.org/"
@@ -14,14 +14,13 @@ S="${WORKDIR}/${PN}-${PN}-${PV}"
 LICENSE="all-rights-reserved CC-BY-SA-3.0 GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 RESTRICT="mirror"
 
 RDEPEND="
 	>=games-engines/solarus-1.3.0
 	<games-engines/solarus-1.4.0
 "
-DEPEND="app-arch/zip"
+BDEPEND="app-arch/zip"
 
 DOCS=( ChangeLog readme.txt )
 
