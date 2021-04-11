@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -34,7 +34,7 @@ src_unpack() {
 
 	# have to use pregenerated EPS files required for the texinfo documentation,
 	# due to bug 664236 preventing even converting *to* eps.
-	mv scute-eps/*.eps "${S}"/doc/manual/ || die
+	mv scute-eps/*.eps "${S}"/doc/ || die
 }
 
 src_configure() {
@@ -48,5 +48,5 @@ src_install() {
 	default
 
 	# only building plugins
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }
