@@ -4,7 +4,7 @@
 EAPI=7
 
 PLOCALES="ar cs de en es et fr hr hu id_ID it ja nl pl pt_BR pt ru sk sv uk vi zh_CN zh_TW"
-inherit l10n qmake-utils xdg-utils
+inherit flag-o-matic l10n qmake-utils xdg-utils
 
 if [[ ${PV} != *9999 ]] ; then
 	SRC_URI="https://github.com/openstreetmap/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
