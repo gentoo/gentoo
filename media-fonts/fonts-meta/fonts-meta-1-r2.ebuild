@@ -12,7 +12,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+free +latin ms"
 
 LANGS="as bn bo brx doi dz gu hi ja km kn ko kok ks mai ml mr ne or pa
-	sa sat sd si syc ta te zh"
+	sa sat sd si syc ta te th zh"
 for lang in ${LANGS}; do
 	IUSE+=" l10n_${lang}"
 done
@@ -87,6 +87,7 @@ RDEPEND="media-libs/fontconfig
 			media-fonts/lohit-tamil-classical
 		)
 		l10n_te? ( media-fonts/lohit-telugu )
+		l10n_th? ( media-fonts/thaifonts-scalable )
 		l10n_zh? ( media-fonts/wqy-zenhei )
 	)
 	ms? (
