@@ -3,8 +3,6 @@
 
 EAPI=5
 
-inherit eutils
-
 DESCRIPTION="Crackle cracks BLE Encryption (AKA Bluetooth Smart)"
 HOMEPAGE="http://lacklustre.net/projects/crackle/"
 
