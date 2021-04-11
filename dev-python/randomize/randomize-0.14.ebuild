@@ -12,7 +12,6 @@ HOMEPAGE="https://github.com/nloadholtes/nose-randomize"
 SRC_URI="https://github.com/nloadholtes/nose-randomize/archive/master.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/nose-${PN}-master"
 
-
 LICENSE="GNU LGPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
