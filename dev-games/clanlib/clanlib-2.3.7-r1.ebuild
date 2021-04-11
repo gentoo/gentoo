@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic
+inherit autotools
 
 MY_P=ClanLib-${PV}
 DESCRIPTION="multi-platform game development library"
