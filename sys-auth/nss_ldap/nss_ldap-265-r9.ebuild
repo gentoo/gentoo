@@ -12,7 +12,7 @@ SRC_URI="http://www.padl.com/download/${P}.tar.gz"
 SLOT="0"
 LICENSE="LGPL-2"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux"
-IUSE="debug kerberos ssl sasl"
+IUSE="debug kerberos ssl sasl split-usr"
 
 DEPEND="
 	>=net-nds/openldap-2.4.38-r1[${MULTILIB_USEDEP}]
@@ -32,7 +32,7 @@ src_prepare() {
 	# eprefixify is safe on non-Prefix systems, so go unconditional
 	# Note: comment this out or make it conditional on 'use prefix'
 	# if needs rebasing. Don't remove.
-	eapply "${FILESDIR}"/${P}-installdir.patch
+	eapply "${FILESDIR}"/${P}-libdir.patch
 	eprefixify Makefile.am
 
 	# bug 438692
@@ -121,8 +121,8 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	# Dumb /usr/lib* -> /lib* symlinks gone wrong
-	rm -rf "${ED}"/usr/usr || die
+	use split-usr &&
+		dosym ../../$(get_libdir)/libnss_ldap.so.2 /usr/$(get_libdir)/libnss_ldap.so.2
 
 	insinto /etc
 	doins ldap.conf
@@ -138,7 +138,7 @@ multilib_src_install_all() {
 		CVSVersionInfo.txt README nsswitch.ldap certutil
 
 	docinto docs
-	dodoc doc/*
+	dodoc -r doc/.
 }
 
 pkg_postinst() {

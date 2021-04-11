@@ -4,7 +4,7 @@
 # @ECLASS: autotools.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Regenerates auto* build scripts
 # @DESCRIPTION:
 # This eclass is for safely handling autotooled software packages that need to
@@ -19,19 +19,23 @@ if [[ ${__AUTOTOOLS_AUTO_DEPEND+set} == "set" ]] ; then
 	# eclass at that point, but that adds overhead, and it's trivial
 	# to re-order inherit in eclasses/ebuilds instead.  #409611
 	if [[ ${__AUTOTOOLS_AUTO_DEPEND} != ${AUTOTOOLS_AUTO_DEPEND} ]] ; then
-		die "AUTOTOOLS_AUTO_DEPEND changed value between inherits; please inherit autotools.eclass first! ${__AUTOTOOLS_AUTO_DEPEND} -> ${AUTOTOOLS_AUTO_DEPEND}"
+		die "AUTOTOOLS_AUTO_DEPEND changed value between inherits; please inherit ${ECLASS} first! ${__AUTOTOOLS_AUTO_DEPEND} -> ${AUTOTOOLS_AUTO_DEPEND}"
 	fi
 fi
 
-if [[ -z ${_AUTOTOOLS_ECLASS} ]]; then
+if [[ -z ${_AUTOTOOLS_ECLASS} ]] ; then
 _AUTOTOOLS_ECLASS=1
 
-case ${EAPI:-0} in
-	0|1|2|3|4|5|6|7) ;;
+case ${EAPI} in
+	5|6)
+		# Needed for eqawarn
+		inherit eutils
+		;;
+	7) ;;
 	*) die "${ECLASS}: EAPI ${EAPI} not supported" ;;
 esac
 
-inherit libtool
+inherit gnuconfig libtool
 
 # @ECLASS-VARIABLE: WANT_AUTOCONF
 # @PRE_INHERIT
@@ -74,21 +78,14 @@ _LATEST_AUTOMAKE=( 1.16.2-r1:1.16 )
 
 _automake_atom="sys-devel/automake"
 _autoconf_atom="sys-devel/autoconf"
-if [[ -n ${WANT_AUTOMAKE} ]]; then
+if [[ -n ${WANT_AUTOMAKE} ]] ; then
 	case ${WANT_AUTOMAKE} in
 		# Even if the package doesn't use automake, we still need to depend
 		# on it because we run aclocal to process m4 macros.  This matches
 		# the autoreconf tool, so this requirement is correct, bug #401605.
 		none) ;;
-		latest)
-			# Use SLOT deps if we can.  For EAPI=0, we get pretty close.
-			if [[ ${EAPI:-0} != 0 ]] ; then
-				_automake_atom="|| ( `printf '>=sys-devel/automake-%s:%s ' ${_LATEST_AUTOMAKE[@]/:/ }` )"
-			else
-				_automake_atom="|| ( `printf '>=sys-devel/automake-%s ' ${_LATEST_AUTOMAKE[@]/%:*}` )"
-			fi
-			;;
-		*)      _automake_atom="=sys-devel/automake-${WANT_AUTOMAKE}*" ;;
+		latest) _automake_atom="|| ( `printf '>=sys-devel/automake-%s:%s ' ${_LATEST_AUTOMAKE[@]/:/ }` )" ;;
+		*) _automake_atom="=sys-devel/automake-${WANT_AUTOMAKE}*" ;;
 	esac
 	export WANT_AUTOMAKE
 fi
@@ -114,9 +111,16 @@ if [[ -n ${WANT_LIBTOOL} ]] ; then
 	export WANT_LIBTOOL
 fi
 
+# @ECLASS-VARIABLE: AUTOTOOLS_DEPEND
+# @INTERNAL
+# @DESCRIPTION:
+# Contains the combination of requested automake/autoconf/libtool
+# versions in *DEPEND format.
 AUTOTOOLS_DEPEND="${_automake_atom}
 	${_autoconf_atom}
-	${_libtool_atom}"
+	${_libtool_atom}
+	sys-apps/gawk
+"
 RDEPEND=""
 
 # @ECLASS-VARIABLE: AUTOTOOLS_AUTO_DEPEND
@@ -127,8 +131,8 @@ RDEPEND=""
 # their own DEPEND string.
 : ${AUTOTOOLS_AUTO_DEPEND:=yes}
 if [[ ${AUTOTOOLS_AUTO_DEPEND} != "no" ]] ; then
-	case ${EAPI:-0} in
-		0|1|2|3|4|5|6) DEPEND=${AUTOTOOLS_DEPEND} ;;
+	case ${EAPI} in
+		5|6) DEPEND=${AUTOTOOLS_DEPEND} ;;
 		7) BDEPEND=${AUTOTOOLS_DEPEND} ;;
 	esac
 fi
@@ -141,12 +145,14 @@ unset _automake_atom _autoconf_atom
 # @DESCRIPTION:
 # Additional options to pass to automake during
 # eautoreconf call.
+: ${AM_OPTS:=}
 
 # @ECLASS-VARIABLE: AT_NOEAUTOHEADER
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Don't run eautoheader command if set to 'yes'; only used to work around
 # packages that don't want their headers being modified.
+: ${AT_NOEAUTOHEADER:=}
 
 # @ECLASS-VARIABLE: AT_NOEAUTOMAKE
 # @DEFAULT_UNSET
@@ -154,6 +160,7 @@ unset _automake_atom _autoconf_atom
 # Don't run eautomake command if set to 'yes'; only used to workaround
 # broken packages.  Generally you should, instead, fix the package to
 # not call AM_INIT_AUTOMAKE if it doesn't actually use automake.
+: ${AT_NOEAUTOMAKE:=}
 
 # @ECLASS-VARIABLE: AT_NOELIBTOOLIZE
 # @DEFAULT_UNSET
@@ -161,6 +168,7 @@ unset _automake_atom _autoconf_atom
 # Don't run elibtoolize command if set to 'yes',
 # useful when elibtoolize needs to be ran with
 # particular options
+: ${AT_NOELIBTOOLIZE:=}
 
 # @ECLASS-VARIABLE: AT_M4DIR
 # @DEFAULT_UNSET
@@ -245,7 +253,7 @@ eautoreconf() {
 	done
 	${rerun_aclocal} && eaclocal
 
-	if [[ ${WANT_AUTOCONF} = 2.1 ]] ; then
+	if [[ ${WANT_AUTOCONF} == "2.1" ]] ; then
 		eautoconf
 	else
 		eautoconf --force
@@ -265,6 +273,7 @@ eautoreconf() {
 # @FUNCTION: _at_uses_pkg
 # @USAGE: <macros>
 # @INTERNAL
+# @DESCRIPTION:
 # See if the specified macros are enabled.
 _at_uses_pkg() {
 	if [[ -n $(autotools_check_macro "$@") ]] ; then
@@ -337,7 +346,7 @@ eaclocal() {
 _elibtoolize() {
 	local LIBTOOLIZE=${LIBTOOLIZE:-$(type -P glibtoolize > /dev/null && echo glibtoolize || echo libtoolize)}
 
-	if [[ $1 == "--auto-ltdl" ]] ; then
+	if [[ ${1} == "--auto-ltdl" ]] ; then
 		shift
 		_at_uses_libltdl && set -- "$@" --ltdl
 	fi
@@ -365,23 +374,26 @@ eautoconf() {
 		echo
 		die "No configure.{ac,in} present!"
 	fi
+
 	if [[ ${WANT_AUTOCONF} != "2.1" && -e configure.in ]] ; then
-		eqawarn "This package has a configure.in file which has long been deprecated.  Please"
-		eqawarn "update it to use configure.ac instead as newer versions of autotools will die"
-		eqawarn "when it finds this file.  See https://bugs.gentoo.org/426262 for details."
+		case ${EAPI} in
+			5|6|7)
+				eqawarn "This package has a configure.in file which has long been deprecated.  Please"
+				eqawarn "update it to use configure.ac instead as newer versions of autotools will die"
+				eqawarn "when it finds this file.  See https://bugs.gentoo.org/426262 for details."
+				;;
+			*)
+				# Move configure file to the new location only on newer EAPIs to ensure
+				# checks are done rather than retroactively breaking ebuilds.
+				einfo "Moving configure.in to configure.ac (bug #426262)"
+				mv configure.{in,ac} || die
+				;;
+		esac
 	fi
 
 	# Install config.guess and config.sub which are required by many macros
 	# in autoconf >=2.70.
-	local _gnuconfig
-	case ${EAPI:-0} in
-		0|1|2|3|4|5|6)
-			_gnuconfig="${EPREFIX}/usr/share/gnuconfig"
-		;;
-		*)
-			_gnuconfig="${BROOT}/usr/share/gnuconfig"
-		;;
-	esac
+	local _gnuconfig=$(gnuconfig_findnewest)
 	cp "${_gnuconfig}"/config.{guess,sub} . || die
 
 	autotools_run_tool --at-m4flags autoconf "$@"
@@ -409,7 +421,7 @@ eautomake() {
 	if [[ -z ${makefile_name} ]] ; then
 		_at_uses_automake || return 0
 
-	elif [[ -z ${FROM_EAUTORECONF} && -f ${makefile_name%.am}.in ]]; then
+	elif [[ -z ${FROM_EAUTORECONF} && -f ${makefile_name%.am}.in ]] ; then
 		local used_automake
 		local installed_automake
 
@@ -417,7 +429,7 @@ eautomake() {
 		used_automake=$(head -n 1 < ${makefile_name%.am}.in | \
 			sed -e 's:.*by automake \(.*\) from .*:\1:')
 
-		if [[ ${installed_automake} != ${used_automake} ]]; then
+		if [[ ${installed_automake} != ${used_automake} ]] ; then
 			ewarn "Automake used for the package (${used_automake}) differs from" \
 				"the installed version (${installed_automake})."
 			ewarn "Forcing a full rebuild of the autotools to workaround."
@@ -432,8 +444,8 @@ eautomake() {
 	# Older versions of automake do not support --force-missing.  But we want
 	# to use this whenever possible to update random bundled files, bug #133489.
 	case $(_automake_version) in
-	1.4|1.4[.-]*) ;;
-	*) extra_opts+=( --force-missing ) ;;
+		1.4|1.4[.-]*) ;;
+		*) extra_opts+=( --force-missing ) ;;
 	esac
 
 	autotools_run_tool automake --add-missing --copy "${extra_opts[@]}" "$@"
@@ -455,8 +467,8 @@ eautopoint() {
 config_rpath_update() {
 	local dst src
 
-	case ${EAPI:-0} in
-		0|1|2|3|4|5|6)
+	case ${EAPI} in
+		5|6)
 			src="${EPREFIX}/usr/share/gettext/config.rpath"
 			;;
 		*)
@@ -481,12 +493,12 @@ config_rpath_update() {
 autotools_env_setup() {
 	# We do the "latest" → version switch here because it solves
 	# possible order problems, see bug #270010 as an example.
-	if [[ ${WANT_AUTOMAKE} == "latest" ]]; then
+	if [[ ${WANT_AUTOMAKE} == "latest" ]] ; then
 		local pv
 		for pv in ${_LATEST_AUTOMAKE[@]/#*:} ; do
 			# Break on first hit to respect _LATEST_AUTOMAKE order.
 			local hv_args=""
-			case ${EAPI:-0} in
+			case ${EAPI} in
 				5|6)
 					hv_args="--host-root"
 					;;
@@ -511,24 +523,24 @@ autotools_env_setup() {
 autotools_run_tool() {
 	# Process our own internal flags first
 	local autofail=true m4flags=false missing_ok=false return_output=false
-	while [[ -n $1 ]] ; do
-		case $1 in
-		--at-no-fail) autofail=false;;
-		--at-m4flags) m4flags=true;;
-		--at-missing) missing_ok=true;;
-		--at-output)  return_output=true;;
-		# whatever is left goes to the actual tool
-		*) break;;
+	while [[ -n ${1} ]] ; do
+		case ${1} in
+			--at-no-fail) autofail=false ;;
+			--at-m4flags) m4flags=true ;;
+			--at-missing) missing_ok=true ;;
+			--at-output)  return_output=true ;;
+			# whatever is left goes to the actual tool
+			*) break ;;
 		esac
 		shift
 	done
 
-	if [[ ${EBUILD_PHASE} != "unpack" && ${EBUILD_PHASE} != "prepare" ]]; then
-		ewarn "QA Warning: running '$1' in ${EBUILD_PHASE} phase"
+	if [[ ${EBUILD_PHASE_FUNC} != "src_unpack" && ${EBUILD_PHASE_FUNC} != "src_prepare" ]] ; then
+		eqawarn "Running '${1}' in ${EBUILD_PHASE_FUNC} phase"
 	fi
 
 	if ${missing_ok} && ! type -P ${1} >/dev/null ; then
-		einfo "Skipping '$*' because '$1' not installed"
+		einfo "Skipping '$*' because '${1}' not installed"
 		return 0
 	fi
 
@@ -557,19 +569,19 @@ autotools_run_tool() {
 		return
 	fi
 
-	printf "***** $1 *****\n***** PWD: ${PWD}\n***** $*\n\n" > "${STDERR_TARGET}"
+	printf "***** ${1} *****\n***** PWD: ${PWD}\n***** $*\n\n" > "${STDERR_TARGET}"
 
-	ebegin "Running $@"
+	ebegin "Running '$@'"
 	"$@" >> "${STDERR_TARGET}" 2>&1
 	if ! eend $? && ${autofail} ; then
 		echo
-		eerror "Failed running '$1'!"
+		eerror "Failed running '${1}'!"
 		eerror
 		eerror "Include in your bug report the contents of:"
 		eerror
 		eerror "  ${STDERR_TARGET}"
 		echo
-		die "Failed running '$1'!"
+		die "Failed running '${1}'!"
 	fi
 }
 
@@ -642,7 +654,7 @@ _autotools_m4dir_include() {
 			# We handle it below
 			-${flag}) ;;
 			*)
-				[[ ! -d ${x} ]] && ewarn "autotools.eclass: '${x}' does not exist"
+				[[ ! -d ${x} ]] && ewarn "${ECLASS}: '${x}' does not exist"
 				include_opts+=" -${flag} ${x}"
 				;;
 		esac
