@@ -1,8 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools gnome2-utils
+EAPI=7
+
+inherit autotools xdg
 
 DESCRIPTION="Puzzle game similar to Oxyd"
 HOMEPAGE="http://www.nongnu.org/enigma/"
@@ -13,7 +14,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="nls"
 
-COMMON_DEPS="
+RDEPEND="
+	media-fonts/dejavu
 	media-libs/sdl-ttf
 	media-libs/libsdl[video]
 	media-libs/sdl-mixer
@@ -23,25 +25,22 @@ COMMON_DEPS="
 	net-misc/curl
 	|| ( >=dev-libs/xerces-c-3[icu] >=dev-libs/xerces-c-3[-icu,-iconv] )
 	net-libs/enet:=
-	nls? ( virtual/libintl )
-"
-DEPEND="${COMMON_DEPS}
+	nls? ( virtual/libintl )"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	sys-devel/gettext
-"
-RDEPEND="${COMMON_DEPS}
-	media-fonts/dejavu
-	x11-misc/xdg-utils
-"
+	virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-build.patch
+	"${FILESDIR}"/${P}-gcc6.patch
+)
 
 src_prepare() {
 	default
-	cp /usr/share/gettext/config.rpath .
-	eapply "${FILESDIR}"/${P}-build.patch \
-		"${FILESDIR}"/${P}-gcc6.patch
-	sed -i \
-		-e "s:DOCDIR:\"/usr/share/doc/${P}/html\":" \
-		src/main.cc || die
+
 	eautoreconf
+	config_rpath_update .
 }
 
 src_configure() {
@@ -51,25 +50,15 @@ src_configure() {
 }
 
 src_install() {
-	HTML_DOCS="doc/*" DOCS="ACKNOWLEDGEMENTS AUTHORS CHANGES README doc/HACKING" \
-		default
-	dosym \
-		/usr/share/fonts/dejavu/DejaVuSansCondensed.ttf \
-		/usr/share/${PN}/fonts/DejaVuSansCondensed.ttf
-	dosym \
-		/usr/share/fonts/dejavu/DejaVuSans.ttf \
-		/usr/share/${PN}/fonts/vera_sans.ttf
+	HTML_DOCS=( doc/.  )
+	DOCS=( ACKNOWLEDGEMENTS AUTHORS CHANGES README doc/HACKING )
+	default
 	doman doc/enigma.6
-}
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
-pkg_postinst() {
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
+	dosym \
+		../../fonts/dejavu/DejaVuSansCondensed.ttf \
+		/usr/share/enigma/fonts/DejaVuSansCondensed.ttf
+	dosym \
+		../../fonts/dejavu/DejaVuSans.ttf \
+		/usr/share/enigma/fonts/vera_sans.ttf
 }
