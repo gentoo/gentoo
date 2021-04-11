@@ -11,7 +11,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/gerbera/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 	S="${WORKDIR}/${P}"
 fi
 
@@ -24,7 +24,7 @@ IUSE="curl debug +exif exiv2 +ffmpeg ffmpegthumbnailer +javascript lastfm +magic
 
 DEPEND="
 	acct-user/gerbera
-	>=net-libs/libupnp-1.12.1:=[ipv6,reuseaddr]
+	>=net-libs/libupnp-1.14.0:=[ipv6,reuseaddr,-blocking-tcp]
 	>=dev-db/sqlite-3
 	dev-libs/spdlog:=
 	dev-libs/pugixml
