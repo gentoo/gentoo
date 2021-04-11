@@ -6,11 +6,11 @@ EAPI=7
 HOMEPAGE=https://pwr-solaar.github.io/Solaar/
 INHERIT=linux-info udev xdg distutils-r1
 IUSE=doc appindicator libnotify kernel_linux python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9
-KEYWORDS=~amd64 ~arm ~x86
+KEYWORDS=amd64 ~arm x86
 LICENSE=GPL-2
 RDEPEND=acct-group/plugdev python_single_target_python3_7? ( dev-python/psutil[python_targets_python3_7(-)] dev-python/pygobject:3[python_targets_python3_7(-)] dev-python/python-xlib[python_targets_python3_7(-)] >=dev-python/pyudev-0.13[python_targets_python3_7(-)] dev-python/pyyaml[python_targets_python3_7(-)] ) python_single_target_python3_8? ( dev-python/psutil[python_targets_python3_8(-)] dev-python/pygobject:3[python_targets_python3_8(-)] dev-python/python-xlib[python_targets_python3_8(-)] >=dev-python/pyudev-0.13[python_targets_python3_8(-)] dev-python/pyyaml[python_targets_python3_8(-)] ) python_single_target_python3_9? ( dev-python/psutil[python_targets_python3_9(-)] dev-python/pygobject:3[python_targets_python3_9(-)] dev-python/python-xlib[python_targets_python3_9(-)] >=dev-python/pyudev-0.13[python_targets_python3_9(-)] dev-python/pyyaml[python_targets_python3_9(-)] ) x11-libs/gtk+:3[introspection] appindicator? ( dev-libs/libappindicator:3[introspection] ) libnotify? ( x11-libs/libnotify[introspection] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_9? ( dev-lang/python:3.9 >=dev-lang/python-exec-2:=[python_targets_python3_9] )
 REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9 )
 SLOT=0
 SRC_URI=https://github.com/pwr-Solaar/Solaar/archive/1.0.5.tar.gz -> solaar-1.0.5.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	linux-info	30ded7f9adbdd03d3e848cdd74f6c395	udev	452708c3f55cf6e918b045adb949a9e6	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	multiprocessing	cac3169468f893670dac3e7cb940e045	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-single-r1	d25ac9d5d91fe9d44fda6ec192aca11a	distutils-r1	d8655e1387589a2e1930339b1627d5c1
-_md5_=d175e13818ce820f1eea2fd84ea1e585
+_md5_=113e242bcf90e836761cc8dbcf048c11
