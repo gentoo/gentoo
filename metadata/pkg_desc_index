@@ -8001,7 +8001,6 @@ dev-python/MechanicalSoup 0.12.0 1.0.0: A python library for automating interact
 dev-python/PyContracts 1.8.14-r1: Declare constraints on function parameters and return values
 dev-python/PyECLib 1.6.0: Messaging API for RPC and notifications over different messaging transports
 dev-python/PyGithub 1.54.1: Python library to access the Github API v3
-dev-python/PyICU 2.6: Python bindings for dev-libs/icu
 dev-python/PyPDF2 1.26.0-r1: Python library to work with pdf files
 dev-python/PyQt5 5.15.1 5.15.2: Python bindings for the Qt framework
 dev-python/PyQt5-sip 4.19.24 4.19.25: Private sip module for PyQt5
@@ -8018,7 +8017,7 @@ dev-python/WSME 0.10.0: Simplify the writing of REST APIs, and extend them with 
 dev-python/XenAPI 2.14: Xen API SDK, for communication with Citrix XenServer and Xen Cloud Platform
 dev-python/absl-py 0.10.0: Abseil Python Common Libraries
 dev-python/abydos 0.5.0 0.5.0-r1: Abydos NLP/IR library
-dev-python/aesara 2.0.1-r1 2.0.2 2.0.3 2.0.4 2.0.5: Library for operating on mathematical expressions with multi-dimensional arrays
+dev-python/aesara 2.0.1-r1 2.0.2 2.0.3 2.0.4 2.0.5 2.0.6: Library for operating on mathematical expressions with multi-dimensional arrays
 dev-python/aiodns 2.0.0-r1: Simple DNS resolver for asyncio
 dev-python/aiofiles 0.5.0 0.6.0: File support for asyncio
 dev-python/aiohttp 3.7.4: http client/server for asyncio
@@ -8052,7 +8051,7 @@ dev-python/asgiref 3.3.1 3.3.2 3.3.4: ASGI utilities (successor to WSGI)
 dev-python/asn1crypto 1.4.0: Python ASN.1 library with a focus on performance and a pythonic API
 dev-python/asteval 0.9.21 0.9.22 0.9.23: Evaluator of Python expression using ast module
 dev-python/astor 0.8.1: Read/rewrite/write Python ASTs
-dev-python/astroid 2.5 2.5.1 2.5.2: Abstract Syntax Tree for logilab packages
+dev-python/astroid 2.5 2.5.1 2.5.2 2.5.3: Abstract Syntax Tree for logilab packages
 dev-python/asttokens 2.0.4: Annotate Python AST trees with source text and token information
 dev-python/astunparse 1.6.3: Astun parser for python
 dev-python/async-lru 1.0.2_p20201029: Simple lru_cache for asyncio
@@ -8302,6 +8301,7 @@ dev-python/eyeD3 0.9.6: Module for manipulating ID3 (v1 + v2) tags in Python
 dev-python/fakeredis 1.4.5 1.5.0: Fake implementation of redis API for testing purposes
 dev-python/falcon 2.0.0: A supersonic micro-framework for building cloud APIs
 dev-python/fasteners 0.16-r1: Python package that provides useful locks
+dev-python/fastimport 0.9.8-r1 0.9.9: Library for parsing the fastimport VCS serialization format
 dev-python/fastjsonschema 2.15.0: Fast JSON schema validator for Python
 dev-python/fcl 0.0.12-r1: Python bindings for the Flexible Collision Library
 dev-python/feedgenerator 1.9.1-r1: Standalone version of django.utils.feedgenerator
@@ -8425,7 +8425,7 @@ dev-python/hvac 0.10.8 0.10.9: hashicorp vault client in python
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 21.0.0: A featureful, correct URL for Python
-dev-python/hypothesis 6.6.0 6.8.1 6.8.9: A library for property based testing
+dev-python/hypothesis 6.6.0 6.8.1 6.8.9 6.9.0: A library for property based testing
 dev-python/icalendar 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/idna 2.10-r1 3.0 3.1: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0-r1: Patch ssl.match_hostname for Unicode(idna) domains support
@@ -8600,7 +8600,7 @@ dev-python/mongoengine 0.22.1 0.23.0: A Python Object-Document-Mapper for workin
 dev-python/mongomock 3.22.1: Library to help testing Python code that interacts with MongoDB via Pymongo
 dev-python/monotonic 1.5-r1 1.6: An implementation of time.monotonic() for Python 2 & < 3.3
 dev-python/more-itertools 8.7.0: More routines for operating on iterables, beyond itertools
-dev-python/moto 1.3.14-r3 1.3.16-r1 2.0.0 2.0.1 2.0.2: Mock library for boto
+dev-python/moto 1.3.14-r3 1.3.16-r1 2.0.0 2.0.1 2.0.2 2.0.5: Mock library for boto
 dev-python/mpdlcd 0.5.2: A small tool to display the MPD status on a LCDproc server.
 dev-python/mpi4py 3.0.3: Message Passing Interface for Python
 dev-python/mpmath 1.2.1: Python library for arbitrary-precision floating-point arithmetic
@@ -8870,6 +8870,7 @@ dev-python/pygresql 5.2.2: A Python interface for the PostgreSQL database
 dev-python/pyh2o 1: Python API for sci-libs/libh2o
 dev-python/pyhamcrest 2.0.2: Hamcrest framework for matcher objects
 dev-python/pyhcl 0.4.4: HCL configuration parser for python
+dev-python/pyicu 2.6 2.7.1: Python bindings for dev-libs/icu
 dev-python/pyilmbase 2.5.5: IlmBase Python bindings
 dev-python/pyinotify 0.9.6: Python module used for monitoring filesystems events
 dev-python/pyjsparser 2.7.1_p20190421: Fast javascript parser based on esprima.js
@@ -8967,7 +8968,7 @@ dev-python/pytest-cache 1.0-r2: mechanisms for caching across test runs
 dev-python/pytest-cov 2.11.1: py.test plugin for coverage reporting
 dev-python/pytest-datadir 1.3.1: Pytest plugin for manipulating test data directories and files
 dev-python/pytest-describe 1.0.0: Describe-style plugin for pytest
-dev-python/pytest-django 4.1.0: A Django plugin for py.test
+dev-python/pytest-django 4.1.0 4.2.0: A Django plugin for py.test
 dev-python/pytest-expect 1.1.0-r1: py.test plugin that stores test expectations by saving the set of failing tests
 dev-python/pytest-faulthandler 1.6.0 2.0.1: Pytest plugin that activates the fault handler module for tests
 dev-python/pytest-fixture-config 1.7.0-r1: Virtualenv fixture for py.test
@@ -9028,7 +9029,6 @@ dev-python/python-email-validator 1.1.2: A robust email syntax and deliverabilit
 dev-python/python-engineio 3.12.1 4.0.1: Python implementation of the Engine.IO realtime server.
 dev-python/python-etcd 0.4.5-r1: A python client for etcd
 dev-python/python-evdev 1.4.0: Python library for evdev bindings
-dev-python/python-fastimport 0.9.8-r1: Library for parsing the fastimport VCS serialization format
 dev-python/python-gammu 2.11: Python bindings for Gammu
 dev-python/python-gflags 3.1.2-r1: Google's Python argument parsing library
 dev-python/python-glanceclient 3.2.2: A client for the OpenStack Glance API
