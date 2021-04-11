@@ -4,11 +4,12 @@ DEPEND=app-arch/bzip2 ~dev-games/irrlicht-headers-1.8.4 media-libs/libpng:0= sys
 DESCRIPTION=open source high performance realtime 3D engine written in C++
 EAPI=7
 HOMEPAGE=http://irrlicht.sourceforge.net/
+INHERIT=toolchain-funcs
 IUSE=debug doc static-libs
 KEYWORDS=amd64 x86
 LICENSE=ZLIB
 RDEPEND=app-arch/bzip2 ~dev-games/irrlicht-headers-1.8.4 media-libs/libpng:0= sys-libs/zlib virtual/jpeg:0 virtual/opengl x11-libs/libX11 x11-libs/libXxf86vm
 SLOT=0
 SRC_URI=mirror://sourceforge/irrlicht/irrlicht-1.8.4.zip https://dev.gentoo.org/~mgorny/dist/irrlicht-1.8.4-patchset.tar.bz2
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=f6870d795439ace4a2392b89ce1d20e2
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=e06a2f5ea0499743acfb915eb156301d
