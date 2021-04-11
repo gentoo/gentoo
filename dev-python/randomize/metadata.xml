@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>root@gentoo.org</email>
+    <email>root@xakru.me</email>
     <name>Ruslan Kh.</name>
   </maintainer>
   <stabilize-allarches/>

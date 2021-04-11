@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit distutils-r1
 
@@ -26,7 +26,8 @@ RDEPEND=">=dev-python/Rx-3.0.1[${PYTHON_USEDEP}]
 	>=dev-python/urllib3-1.15.1[${PYTHON_USEDEP}]
 	>=dev-python/pytz-2019.1[${PYTHON_USEDEP}]
 "
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+BDEPEND="${REDEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	extra? (
 		>=dev-python/pandas-0.25.3
 		dev-python/numpy
