@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>root@gentoo.org</email>
+    <name>Ruslan Kh.</name>
+  </maintainer>
+  <stabilize-allarches/>
+  <upstream>
+    <remote-id type="pypi">influxdb-client</remote-id>
+    <remote-id type="github">influxdata/influxdb-client-python</remote-id>
+  </upstream>
+</pkgmetadata>
