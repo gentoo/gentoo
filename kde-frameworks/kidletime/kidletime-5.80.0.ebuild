@@ -9,7 +9,7 @@ inherit ecm kde.org
 
 DESCRIPTION="Framework for detection and notification of device idle time"
 LICENSE="LGPL-2+"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 IUSE="X xscreensaver"
 
 REQUIRED_USE="xscreensaver? ( X )"
