@@ -60,6 +60,7 @@ DEPEND="${CDEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-1.1.8-fix-missing-scmp_sys-on-aarch64.patch"
 	"${FILESDIR}/${PN}-1.1.9-remove-asciidoctor-from-config.patch"
+	"${FILESDIR}/${PN}-1.2.0-move-newfstatat.patch"
 )
 
 WAF_BINARY="${S}/waf"
