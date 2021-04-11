@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6..9} )
 PYTHON_REQ_USE='threads(+)'
 DISTUTILS_USE_SETUPTOOLS=no
 
-inherit distutils-r1 flag-o-matic waf-utils systemd
+inherit epatch distutils-r1 flag-o-matic waf-utils systemd
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
