@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit pam toolchain-funcs user
+inherit epatch pam toolchain-funcs user
 
 COMMIT="f2afd55704bfe0a2d66e6b270d247e9b8a7b1664"
 
