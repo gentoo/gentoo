@@ -600,7 +600,25 @@ test-flag-FC() { _test-flag-PROG FC f95 "$@"; }
 # Returns shell true if <flag> is supported by the C compiler and linker, else returns shell false.
 test-flag-CCLD() { _test-flag-PROG CC c+ld "$@"; }
 
+# @FUNCTION: test-flags-PROG
+# @USAGE: <compiler> <flag> [more flags...]
+# @INTERNAL
+# @DESCRIPTION:
+# Returns shell true if <flags> are supported by given <compiler>,
+# else returns shell false.
 test-flags-PROG() {
+	[[ ${EAPI} == [567] ]] ||
+		die "Internal function ${FUNCNAME} is not available in EAPI ${EAPI}."
+	_test-flags-PROG "$@"
+}
+
+# @FUNCTION: _test-flags-PROG
+# @USAGE: <compiler> <flag> [more flags...]
+# @INTERNAL
+# @DESCRIPTION:
+# Returns shell true if <flags> are supported by given <compiler>,
+# else returns shell false.
+_test-flags-PROG() {
 	local comp=$1
 	local flags=()
 	local x
@@ -637,31 +655,31 @@ test-flags-PROG() {
 # @USAGE: <flags>
 # @DESCRIPTION:
 # Returns shell true if <flags> are supported by the C compiler, else returns shell false.
-test-flags-CC() { test-flags-PROG "CC" "$@"; }
+test-flags-CC() { _test-flags-PROG CC "$@"; }
 
 # @FUNCTION: test-flags-CXX
 # @USAGE: <flags>
 # @DESCRIPTION:
 # Returns shell true if <flags> are supported by the C++ compiler, else returns shell false.
-test-flags-CXX() { test-flags-PROG "CXX" "$@"; }
+test-flags-CXX() { _test-flags-PROG CXX "$@"; }
 
 # @FUNCTION: test-flags-F77
 # @USAGE: <flags>
 # @DESCRIPTION:
 # Returns shell true if <flags> are supported by the Fortran 77 compiler, else returns shell false.
-test-flags-F77() { test-flags-PROG "F77" "$@"; }
+test-flags-F77() { _test-flags-PROG F77 "$@"; }
 
 # @FUNCTION: test-flags-FC
 # @USAGE: <flags>
 # @DESCRIPTION:
 # Returns shell true if <flags> are supported by the Fortran 90 compiler, else returns shell false.
-test-flags-FC() { test-flags-PROG "FC" "$@"; }
+test-flags-FC() { _test-flags-PROG FC "$@"; }
 
 # @FUNCTION: test-flags-CCLD
 # @USAGE: <flags>
 # @DESCRIPTION:
 # Returns shell true if <flags> are supported by the C compiler and default linker, else returns shell false.
-test-flags-CCLD() { test-flags-PROG "CCLD" "$@"; }
+test-flags-CCLD() { _test-flags-PROG CCLD "$@"; }
 
 # @FUNCTION: test-flags
 # @USAGE: <flags>
