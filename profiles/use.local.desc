@@ -4956,6 +4956,10 @@ media-video/handbrake:nvenc - Adds support for NVIDIA Encoder (NVENC) API for ha
 media-video/handbrake:x265 - Support for encoding h265 using media-libs/x265.
 media-video/kino:gpac - Enable GPAC support when exporting to 3GPP format
 media-video/libva-utils:drm - Enables VA/DRM API support.
+media-video/libva-utils:examples - Build and install decode, encode, videoprocess and other VA-API examples.
+media-video/libva-utils:putsurface - Build and install putsurface tool.
+media-video/libva-utils:test_va_api - Install test_va_api tool for thorough testing of the installed VA-API.
+media-video/libva-utils:vainfo - Build and install vainfo tool.
 media-video/mjpegtools:sdlgfx - Enables y4mhist to display a graphical histogram
 media-video/mjpg-streamer:input-control - Plugin giving ability to control camera movement (only specific cameras)
 media-video/mjpg-streamer:input-file - Plugin that watches given directory and send it's content
