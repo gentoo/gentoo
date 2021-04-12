@@ -1,4 +1,4 @@
-# Copyright 2008-2020 Gentoo Authors
+# Copyright 2008-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,7 +28,8 @@ RDEPEND="${PYTHON_DEPS}
 	boost? ( dev-libs/boost )
 	lua? ( ${LUA_DEPS} )
 	nls? ( virtual/libintl )"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-util/intltool
 	sys-devel/autoconf-archive
 	virtual/pkgconfig
