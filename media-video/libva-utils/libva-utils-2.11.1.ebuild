@@ -45,7 +45,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=( "${FILESDIR}/${PN}-2.10.0_test_in_sandbox.patch" )
 
-# CONTRIBUTING.md and README.md are avaialbe only in .tar.gz tarballs and in git
+# CONTRIBUTING.md and README.md are available only in .tar.gz tarballs and in git
 DOCS=( NEWS CONTRIBUTING.md README.md )
 
 src_prepare() {
@@ -87,7 +87,6 @@ src_configure() {
 
 src_install() {
 	default
-
 	if ! use test_va_api ; then
 		if [[ -e "${ED}"/usr/bin/test_va_api ]] ; then
 			rm -f "${ED}"/usr/bin/test_va_api || die
