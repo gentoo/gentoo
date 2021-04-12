@@ -1848,7 +1848,7 @@ app-doc/casting-spels-emacs 19-r2: Casting SPELs in Lisp - A Comic Book (Emacs L
 app-doc/cppman 0.5.1: C++ man pages for Linux, with source from cplusplus.com and cppreference.com
 app-doc/csound-manual 6.15-r1: The Csound reference manual
 app-doc/devmanual 0_pre20200207 0_pre20210118 9999: The Gentoo Development Guide
-app-doc/diveintopython 3: 'Dive Into Python' by Mark Pilgrim - Python 3
+app-doc/diveintopython 3-r1: 'Dive Into Python' by Mark Pilgrim - Python 3
 app-doc/doxygen 1.8.17-r1 1.8.20 1.9.1 9999: Documentation system for most programming languages
 app-doc/e16-docs 0.16.8.0.2: The E16 online help
 app-doc/eclass-manpages 20200913 20210104 99999999: Collection of Gentoo eclass manpages
@@ -11881,7 +11881,7 @@ games-strategy/colobot 0.1.12 9999: A real-time strategy game, where you can pro
 games-strategy/colobot-data 0.1.12: Data package for colobot (Colonize with Bots)
 games-strategy/crimson 0.5.3-r1: Tactical war game in the tradition of Battle Isle
 games-strategy/darwinia 1.4.0_beta9-r2: The hyped indie game of the year - by the Uplink creators
-games-strategy/darwinia-demo 1.3.0-r2: Darwinia, the hyped indie game of the year. By the Uplink creators
+games-strategy/darwinia-demo 1.3.0-r3: Darwinia, the hyped indie game of the year. By the Uplink creators
 games-strategy/defcon-demo 1.60-r1: Global thermonuclear war simulation with multiplayer support
 games-strategy/dominions2 2.16-r1: Dominions 2: The Ascension Wars is an epic turn-based fantasy strategy game
 games-strategy/dopewars 1.6.1: Re-Write of the game Drug Wars
@@ -12735,7 +12735,7 @@ media-fonts/cronyx-fonts 2.3.8: Cronyx Cyrillic bitmap fonts for X
 media-fonts/croscorefonts 1.31.0: Open licensed fonts metrically compatible with MS corefonts
 media-fonts/crosextrafonts-caladea 20130214: Open licensed serif font metrically compatible with Cambria
 media-fonts/crosextrafonts-carlito 20130920: Open licensed sans-serif font metrically compatible with Calibri
-media-fonts/culmus 0.120-r5 0.133-r1: Hebrew Type1 fonts
+media-fonts/culmus 0.120-r6 0.133-r1: Hebrew Type1 fonts
 media-fonts/dejavu 2.37: DejaVu fonts, bitstream vera with ISO-8859-2 characters
 media-fonts/dina 2.93: Monospace bitmap font, primarily aimed at programmers
 media-fonts/droid 113-r5: Font family from Google's Android project
@@ -16669,7 +16669,7 @@ sci-physics/vmc 1.0_p3 9999: The Virtual Monte Carlo core library
 sci-physics/xfoil 6.99: Design and analysis of subsonic isolated airfoils
 sci-physics/yoda 1.8.5: Yet more Objects for (High Energy Physics) Data Analysis
 sci-visualization/circos 0.55-r1: Circular layout visualization of genomic and other data
-sci-visualization/epix 1.2.11-r2: 2- and 3-D plotter for creating images (to be used in LaTeX)
+sci-visualization/epix 1.2.11-r3: 2- and 3-D plotter for creating images (to be used in LaTeX)
 sci-visualization/fig2sxd 0.22.1: Utility to convert files in xfig format to OpenOffice.org Draw format
 sci-visualization/fityk 1.3.1-r100: General-purpose nonlinear curve fitting and data analysis
 sci-visualization/g3data 1.5.4: Tool for extracting data from graphs

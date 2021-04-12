@@ -7,4 +7,4 @@ KEYWORDS=amd64 ppc ppc64 x86
 LICENSE=CC-BY-SA-3.0
 SLOT=3
 SRC_URI=https://dev.gentoo.org/~monsieurp/packages/diveintopython-3.tar.gz pdf? ( https://dev.gentoo.org/~monsieurp/packages/diveintopython-3-pdf.tar.gz )
-_md5_=0b40a9f8b2ca1c1f7daa364bb492622a
+_md5_=fb24e49f0a7b90f6981cb8fa45333644
