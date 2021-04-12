@@ -8978,10 +8978,10 @@ dev-python/pyprof2calltree 1.4.4 1.4.5: convert python profile data to kcachegri
 dev-python/pyproj 2.6.1_p1 3.0.1: Python interface to the PROJ library
 dev-python/pyproject2setuppy 10 11 12: Cheap setup.py hack to install flit & poetry-based projects
 dev-python/pypugjs 5.9.5 5.9.8 5.9.9: Pug (Jade) syntax adapter for Django, Jinja2 and Mako templates
-dev-python/pypy 7.3.3_p2-r1 7.3.4: A fast, compliant alternative implementation of the Python language
+dev-python/pypy 7.3.3_p2-r1 7.3.3_p3 7.3.4: A fast, compliant alternative implementation of the Python language
 dev-python/pypy-exe 7.3.3_p2 7.3.4: PyPy executable (build from source)
 dev-python/pypy-exe-bin 7.3.3_p2 7.3.4: PyPy executable (pre-built version)
-dev-python/pypy3 7.3.3_p37_p1-r1 7.3.4 7.3.4_p1: A fast, compliant alternative implementation of the Python (3.7) language
+dev-python/pypy3 7.3.3_p37_p1-r1 7.3.3_p37_p3 7.3.4 7.3.4_p1: A fast, compliant alternative implementation of the Python (3.7) language
 dev-python/pypy3-exe 7.3.3_p37_p1 7.3.3_p37_p2 7.3.4: PyPy3 executable (build from source)
 dev-python/pypy3-exe-bin 7.3.3_p37_p1 7.3.3_p37_p2 7.3.4: PyPy3 executable (pre-built version)
 dev-python/pyqrcode 1.2.1-r1: A pure Python QR code generator with SVG, EPS, PNG and terminal output
