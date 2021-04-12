@@ -23,6 +23,7 @@ RDEPEND="
 	virtual/jpeg:0
 	mpi? ( virtual/mpi )"
 DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.1-fix_format_errors.patch
