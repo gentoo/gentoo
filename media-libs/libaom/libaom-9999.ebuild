@@ -10,7 +10,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://aomedia.googlesource.com/aom"
 else
-	SRC_URI="https://aomedia.googlesource.com/aom/+archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://dev.gentoo.org/~whissi/dist/libaom/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 fi
 
@@ -39,17 +39,6 @@ BDEPEND="abi_x86_32? ( dev-lang/yasm )
 
 # the PATENTS file is required to be distributed with this package bug #682214
 DOCS=( PATENTS )
-
-src_unpack() {
-	if [[ ${PV} == *9999* ]]; then
-		default
-	else
-		mkdir "${S}" || die
-		pushd "${S}" &>/dev/null || die
-		unpack ${P}.tar.gz
-		popd &>/dev/null || die
-	fi
-}
 
 multilib_src_configure() {
 	local mycmakeargs=(
