@@ -12,7 +12,7 @@ SRC_URI="https://github.com/zerotier/ZeroTierOne/archive/${PV}.tar.gz -> ${P}.ta
 LICENSE="BSL-1.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-IUSE="clang neon"
+IUSE="clang cpu_flags_arm_neon"
 
 S="${WORKDIR}/ZeroTierOne-${PV}"
 
