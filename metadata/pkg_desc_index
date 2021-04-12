@@ -6138,7 +6138,7 @@ dev-ml/xml-light 2.2-r3: Minimal Xml parser and printer for OCaml
 dev-ml/yojson 1.7.0: JSON parsing and pretty-printing library for OCaml
 dev-ml/zarith 1.11 1.12: Arithmetic and logic operations over arbitrary-precision integers
 dev-perl/Ace 1.920.0-r6: Object-Oriented Access to ACEDB Databases
-dev-perl/Acme-Damn 0.80.0-r1: Module, that 'unblesses' Perl objects
+dev-perl/Acme-Damn 0.80.0-r2: Module, that 'unblesses' Perl objects
 dev-perl/Algorithm-Annotate 0.100.0-r2: Represent a series of changes in annotate form
 dev-perl/Algorithm-C3 0.110.0: A module for merging hierarchies using the C3 algorithm
 dev-perl/Algorithm-ClusterPoints 0.80.0-r1: Find clusters inside a set of points
@@ -6692,7 +6692,7 @@ dev-perl/File-Path-Expand 1.20.0-r1 1.20.0-r2: Expand filenames
 dev-perl/File-ReadBackwards 1.50.0-r1 1.50.0-r2: Read a file backwards by lines
 dev-perl/File-Remove 1.570.0 1.580.0: Remove files and directories
 dev-perl/File-RsyncP 0.740.0 0.740.0-r1 0.760.0: An rsync perl module
-dev-perl/File-Scan-ClamAV 1.950.0: Connect to a local Clam Anti-Virus clamd service and send commands
+dev-perl/File-Scan-ClamAV 1.950.0-r1: Connect to a local Clam Anti-Virus clamd service and send commands
 dev-perl/File-SearchPath 0.70.0-r1: Search for a file in an environment variable path
 dev-perl/File-Share 0.250.0: Extend File::ShareDir to local libraries
 dev-perl/File-ShareDir 1.104.0 1.116.0: Locate per-dist and per-module shared files
@@ -8597,7 +8597,7 @@ dev-python/livereload 2.6.3: Python LiveReload is an awesome tool for web develo
 dev-python/llfuse 1.4.1: Python bindings for the low-level FUSE API
 dev-python/llvmlite 0.34.0 0.35.0 0.36.0: Python wrapper around the llvm C++ library
 dev-python/lmdb 1.1.1-r1: Python bindings for the Lightning Database
-dev-python/lmfit 1.0.1 1.0.2: Non-Linear Least-Squares Minimization and Curve-Fitting for Python
+dev-python/lmfit 1.0.1-r1 1.0.2: Non-Linear Least-Squares Minimization and Curve-Fitting for Python
 dev-python/locket 0.2.1: File-based locks for Python
 dev-python/lockfile 0.12.2-r2: Platform-independent file locking module
 dev-python/logbook 1.5.3: A logging replacement for Python
@@ -11890,7 +11890,7 @@ games-strategy/freeciv 2.5.12 2.6.2: multiplayer strategy game (Civilization Clo
 games-strategy/freecol 0.11.6-r1: An open source clone of the game Colonization
 games-strategy/freeorion 0.4.10.1-r1 9999: A free turn-based space empire and galactic conquest game
 games-strategy/freesynd 0.7.5: Portable engine reimplementation for the classic Bullfrog game Syndicate
-games-strategy/galaxyhack 1.74-r1: Multiplayer AI script based strategy game
+games-strategy/galaxyhack 1.74-r2: Multiplayer AI script based strategy game
 games-strategy/hedgewars 1.0.0-r100: A turn-based strategy, artillery, action and comedy game
 games-strategy/ja2-stracciatella 0.17.0: An improved, cross-platform, stable Jagged Alliance 2 runtime
 games-strategy/ja2-stracciatella-data 1-r1: A port of Jagged Alliance 2 to SDL (data files)
@@ -16109,7 +16109,7 @@ sci-calculators/tilp2 1.18: Communication program for Texas Instruments calculat
 sci-calculators/transcalc 0.14-r2: Microwave and RF transmission line calculator
 sci-calculators/units 2.21: Unit conversion program
 sci-calculators/wcalc 2.5: A flexible command-line scientific calculator
-sci-chemistry/GromacsWrapper 0.8.0: Python framework for Gromacs
+sci-chemistry/GromacsWrapper 0.8.0-r1: Python framework for Gromacs
 sci-chemistry/MDAnalysis 1.0.0: A python library to analyze and manipulate molecular dynamics trajectories
 sci-chemistry/aqua 3.2-r3: Program suite in this distribution calculates restraint violations
 sci-chemistry/autodock 4.2.6: A suite of automated docking tools
@@ -16473,7 +16473,7 @@ sci-libs/netcdf-cxx 4.2-r301 4.3.0 4.3.1: C++ library for netCDF
 sci-libs/netcdf-fortran 4.4.3: Scientific library and interface for array oriented data access
 sci-libs/nfft 3.5.2: library for nonequispaced discrete Fourier transformations
 sci-libs/nlopt 2.6.2-r1: Non-linear optimization library
-sci-libs/numkit 1.1.2: Numerical first aid kit (with numpy/scipy)
+sci-libs/numkit 1.1.2-r1: Numerical first aid kit (with numpy/scipy)
 sci-libs/o2scl 0.920: Object-oriented Scientific Computing Library
 sci-libs/oc 2.0: Network Data Access Protocol client C library
 sci-libs/oce 0.18.3-r2: Development platform for CAD/CAE, 3D surface/solid modeling and data exchange

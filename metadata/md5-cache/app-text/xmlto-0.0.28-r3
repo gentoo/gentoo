@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=>=app-text/docbook-xsl-stylesheets-1.62.0-r1 app-text/docbook-xml-dtd:4.2 app-shells/bash:0 dev-libs/libxslt sys-apps/sed >=sys-apps/coreutils-6.10-r1 || ( sys-apps/util-linux app-misc/getopt ) sys-apps/which text? ( || ( virtual/w3m www-client/lynx www-client/elinks ) ) latex? ( dev-texlive/texlive-formatsextra )
 SLOT=0
 SRC_URI=https://releases.pagure.org/xmlto/xmlto-0.0.28.tar.bz2
-_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	epatch	f62592ba170464d52e9a05f584161347
+_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	epatch	9f813bb3c47cf2e60619a663b87c5f4e
 _md5_=abbbebf74ae1b3269f76b524340e0f0b

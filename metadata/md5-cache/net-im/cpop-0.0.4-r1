@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/glib:2 x11-libs/gtk+:2
 SLOT=0
 SRC_URI=mirror://gentoo/cpop-0.0.4.tar.gz
-_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	epatch	f62592ba170464d52e9a05f584161347
+_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	epatch	9f813bb3c47cf2e60619a663b87c5f4e
 _md5_=d6c3eef002032bcae8dc24311a562622

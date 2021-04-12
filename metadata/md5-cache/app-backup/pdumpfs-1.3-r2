@@ -9,5 +9,5 @@ KEYWORDS=~amd64 ~ppc ~sparc ~x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://0xcc.net/pdumpfs/pdumpfs-1.3.tar.gz
-_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	epatch	f62592ba170464d52e9a05f584161347
+_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	epatch	9f813bb3c47cf2e60619a663b87c5f4e
 _md5_=4615bb7d02b2fa8dad5da0d824d27a2a

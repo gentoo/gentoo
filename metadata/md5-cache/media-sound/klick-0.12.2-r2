@@ -11,5 +11,5 @@ LICENSE=GPL-2+
 RDEPEND=media-libs/libsamplerate media-libs/libsndfile virtual/jack osc? ( media-libs/liblo ) rubberband? ( media-libs/rubberband )
 SLOT=0
 SRC_URI=http://das.nasophon.de/download/klick-0.12.2.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-any-r1	17241a11501065ff3651350040875aa9	multiprocessing	cac3169468f893670dac3e7cb940e045	scons-utils	0c3d02e3e56d99a17ac273db118e8a24
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-any-r1	17241a11501065ff3651350040875aa9	multiprocessing	cac3169468f893670dac3e7cb940e045	scons-utils	fc8e53815030125602cc608cd1bff857
 _md5_=e9267a2a38c6bc1f30acddd46b60b2c2

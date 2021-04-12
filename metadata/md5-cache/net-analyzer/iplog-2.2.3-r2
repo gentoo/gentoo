@@ -9,5 +9,5 @@ LICENSE=|| ( GPL-2 FDL-1.1 )
 RDEPEND=net-libs/libpcap
 SLOT=0
 SRC_URI=mirror://sourceforge/ojnk/iplog-2.2.3.tar.gz
-_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	epatch	f62592ba170464d52e9a05f584161347
+_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	epatch	9f813bb3c47cf2e60619a663b87c5f4e
 _md5_=2528ea2c82182ee0dcacc37b216d1627
