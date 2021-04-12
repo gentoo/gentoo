@@ -97,6 +97,7 @@ RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
 DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )
 	sys-apps/diffutils"
+BDEPEND="virtual/pkgconfig"
 RDEPEND+=" !internal-dmi? ( sys-apps/dmidecode )"
 
 _flashrom_enable() {
