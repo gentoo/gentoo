@@ -24,6 +24,7 @@ DEPEND="sys-libs/ncurses
 RDEPEND="app-misc/mime-types
 	sys-apps/debianutils
 	!app-misc/run-mailcap"
+BDEPEND="virtual/pkgconfig"
 
 S=${WORKDIR}/mm${MY_PV}/src
 
