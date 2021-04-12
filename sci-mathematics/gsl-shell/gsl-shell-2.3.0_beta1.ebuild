@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,7 +23,7 @@ RDEPEND="
 	sys-libs/readline:0=
 	|| ( media-fonts/ubuntu-font-family media-fonts/freefont media-fonts/dejavu )
 	fox? ( x11-libs/fox:1.6 )"
-DEPEND="${DEPEND}
+DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( dev-python/sphinx[latex] )"
 
