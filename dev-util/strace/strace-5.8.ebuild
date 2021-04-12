@@ -42,6 +42,7 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/strace-5.5-static.patch"
+	"${FILESDIR}/strace-5.8-remove-IPPROTO_MAX.patch"
 )
 
 src_prepare() {

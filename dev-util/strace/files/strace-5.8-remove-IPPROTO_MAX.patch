@@ -1,0 +1,85 @@
+musl-1.2.2 updated IPPROTO_MAX to 263 with respect to the addition of
+IPPROTO_MPTCP, which has a value of '262'. The issue has been fixed in
+strace-5.10 in commit 2c949e0d8204 ("xlat: remove IPPROTO_MAX").
+
+This patch extends the original change made only in
+xlat/inet_protocols.in to xlat/inet_protocols.h as it is part of the
+source files used in gentoo.
+
+Upstream-issue: https://github.com/strace/strace/issues/164
+
+diff --git a/xlat/inet_protocols.h b/xlat/inet_protocols.h
+index 9d37ec67..8708fdbd 100644
+--- a/xlat/inet_protocols.h
++++ b/xlat/inet_protocols.h
+@@ -234,13 +234,6 @@ DIAG_POP_IGNORE_TAUTOLOGICAL_COMPARE
+ #else
+ # define IPPROTO_RAW 255
+ #endif
+-#if defined(IPPROTO_MAX) || (defined(HAVE_DECL_IPPROTO_MAX) && HAVE_DECL_IPPROTO_MAX)
+-DIAG_PUSH_IGNORE_TAUTOLOGICAL_COMPARE
+-static_assert((IPPROTO_MAX) == (256), "IPPROTO_MAX != 256");
+-DIAG_POP_IGNORE_TAUTOLOGICAL_COMPARE
+-#else
+-# define IPPROTO_MAX 256
+-#endif
+ #if defined(IPPROTO_MPTCP) || (defined(HAVE_DECL_IPPROTO_MPTCP) && HAVE_DECL_IPPROTO_MPTCP)
+ DIAG_PUSH_IGNORE_TAUTOLOGICAL_COMPARE
+ static_assert((IPPROTO_MPTCP) == (262), "IPPROTO_MPTCP != 262");
+@@ -353,12 +346,9 @@ static const struct xlat_data inet_protocols_xdata[] = {
+  XLAT(IPPROTO_RAW),
+  #define XLAT_VAL_32 ((unsigned) (IPPROTO_RAW))
+  #define XLAT_STR_32 STRINGIFY(IPPROTO_RAW)
+- XLAT(IPPROTO_MAX),
+- #define XLAT_VAL_33 ((unsigned) (IPPROTO_MAX))
+- #define XLAT_STR_33 STRINGIFY(IPPROTO_MAX)
+  XLAT(IPPROTO_MPTCP),
+- #define XLAT_VAL_34 ((unsigned) (IPPROTO_MPTCP))
+- #define XLAT_STR_34 STRINGIFY(IPPROTO_MPTCP)
++ #define XLAT_VAL_33 ((unsigned) (IPPROTO_MPTCP))
++ #define XLAT_STR_33 STRINGIFY(IPPROTO_MPTCP)
+ };
+ const struct xlat inet_protocols[1] = { {
+  .data = inet_protocols_xdata,
+@@ -466,9 +456,6 @@ const struct xlat inet_protocols[1] = { {
+ #  endif
+ #  ifdef XLAT_VAL_33
+   | XLAT_VAL_33
+-#  endif
+-#  ifdef XLAT_VAL_34
+-  | XLAT_VAL_34
+ #  endif
+   ,
+  .flags_strsz = 0
+@@ -573,9 +560,6 @@ const struct xlat inet_protocols[1] = { {
+ #  endif
+ #  ifdef XLAT_STR_33
+   + sizeof(XLAT_STR_33)
+-#  endif
+-#  ifdef XLAT_STR_34
+-  + sizeof(XLAT_STR_34)
+ #  endif
+   ,
+ } };
+@@ -648,8 +632,6 @@ const struct xlat inet_protocols[1] = { {
+ #  undef XLAT_VAL_32
+ #  undef XLAT_STR_33
+ #  undef XLAT_VAL_33
+-#  undef XLAT_STR_34
+-#  undef XLAT_VAL_34
+ # endif /* !IN_MPERS */
+ 
+ #endif /* !XLAT_MACROS_ONLY */
+diff --git a/xlat/inet_protocols.in b/xlat/inet_protocols.in
+index c37508fa..89aa56ac 100644
+--- a/xlat/inet_protocols.in
++++ b/xlat/inet_protocols.in
+@@ -32,5 +32,4 @@ IPPROTO_UDPLITE		136
+ IPPROTO_MPLS		137
+ IPPROTO_ETHERNET	143
+ IPPROTO_RAW		255
+-IPPROTO_MAX		256
+ IPPROTO_MPTCP		262
+-- 
+2.26.3
+
