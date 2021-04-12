@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -21,7 +21,7 @@ RDEPEND="${DEPEND}"
 src_prepare() {
 	sed -i -e "/^JAYLINK_CFLAGS=/ s/ -Werror / /" configure.ac || die
 	eapply_user
-	eautoreconf || die
+	eautoreconf
 }
 
 src_configure() {
