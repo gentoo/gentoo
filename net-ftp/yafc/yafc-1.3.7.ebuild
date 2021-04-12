@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit bash-completion-r1 eutils
+inherit bash-completion-r1 epatch
 
 DESCRIPTION="Console ftp client with a lot of nifty features"
 HOMEPAGE="http://www.yafc-ftp.com/"
