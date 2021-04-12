@@ -5,7 +5,7 @@ EAPI="5"
 GCONF_DEBUG="yes"
 GNOME_TARBALL_SUFFIX="bz2"
 
-inherit autotools eutils gnome2
+inherit autotools epatch gnome2
 
 DESCRIPTION="A simple network library"
 HOMEPAGE="https://wiki.gnome.org/Projects/GNetLibrary"
