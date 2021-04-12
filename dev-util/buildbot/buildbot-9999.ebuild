@@ -96,10 +96,10 @@ src_compile() {
 
 	if use doc; then
 		einfo "Generation of documentation"
-		pushd docs > /dev/null
+		pushd docs > /dev/null || die
 		#'man' target is currently broken
 		emake html
-		popd > /dev/null
+		popd > /dev/null || die
 	fi
 }
 
