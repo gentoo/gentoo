@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils toolchain-funcs
+inherit epatch toolchain-funcs
 
 DESCRIPTION="The Tim Engler's Lexmark 1100 driver"
 HOMEPAGE="http://www.linuxprinting.org/show_driver.cgi?driver=lm1100"
@@ -12,13 +12,11 @@ SRC_URI="mirror://gentoo/${MY_P}.tar.gz
 	mirror://gentoo/${PN}maint.tar.gz"
 #http://www.linuxprinting.org/download/printing/${PN}/${PN}maint.tar.gz
 #http://www.linuxprinting.org/download/printing/${PN}/${MY_P}.tar.gz
+S="${WORKDIR}"/${MY_P}
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
-DEPEND=""
-S=${WORKDIR}/${MY_P}
 
 src_prepare() {
 	epatch "${FILESDIR}/${P}-fix-compile-gcc-3.4.patch"\
