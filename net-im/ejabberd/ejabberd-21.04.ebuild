@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~arm ~ia64 ~sparc ~x86"
 REQUIRED_USE="mssql? ( odbc )"
 # TODO: Add 'tools' flag.
 IUSE="captcha debug full-xml ldap mssql mysql odbc pam postgres redis
-	roster-gw sip sqlite +stun zlib"
+	roster-gw selinux sip sqlite +stun zlib"
 
 RESTRICT="test"
 
@@ -57,7 +57,9 @@ DEPEND=">=dev-lang/erlang-19.3[odbc?,ssl]
 	stun? ( >=dev-erlang/stun-1.0.43 )
 	zlib? ( >=dev-erlang/ezlib-1.0.9 )"
 RDEPEND="${DEPEND}
-	captcha? ( media-gfx/imagemagick[truetype,png] )"
+	captcha? ( media-gfx/imagemagick[truetype,png] )
+	selinux? ( sec-policy/selinux-jabber )
+"
 
 DOCS=( CHANGELOG.md README.md )
 PATCHES=( "${FILESDIR}/${PN}-19.08-ejabberdctl.patch"
