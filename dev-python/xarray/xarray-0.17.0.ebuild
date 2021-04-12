@@ -31,3 +31,12 @@ BDEPEND="
 	)"
 
 distutils_enable_tests pytest
+
+python_test() {
+	local deselect=(
+		# warning-targeted tests are fragile and not important to end users
+		xarray/tests/test_backends.py::test_no_warning_from_dask_effective_get
+	)
+
+	epytest ${deselect[@]/#/--deselect }
+}
