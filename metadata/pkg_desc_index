@@ -8694,7 +8694,7 @@ dev-python/nltk 3.5 3.6.1: Natural Language Toolkit
 dev-python/nltk-data 20200312-r1: Data files for NLTK
 dev-python/nnpy 1.4.2: cffi-based Python bindings for nanomsg
 dev-python/node-semver 0.8.0: Python version of node-semver, the semantic versioner for npm
-dev-python/nodeenv 1.3.5: Node.js virtual environment builder
+dev-python/nodeenv 1.3.5 1.6.0: Node.js virtual environment builder
 dev-python/nose 1.3.7-r7: Unittest extension with automatic test suite discovery and easy test authoring
 dev-python/nose-exclude 0.5.0-r1: Exclude specific directories from nosetests runs
 dev-python/nose-random 1.0.0: Nose plugin to facilitate randomized unit testing
