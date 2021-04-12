@@ -43,14 +43,55 @@ IUSE="accessibility +aio alsa bzip2 capstone +caps +curl debug +doc
 	usbredir vde +vhost-net vhost-user-fs virgl virtfs +vnc vte xattr xen
 	xfs zstd"
 
-COMMON_TARGETS="aarch64 alpha arm cris hppa i386 m68k microblaze microblazeel
-	mips mips64 mips64el mipsel nios2 or1k ppc ppc64 riscv32 riscv64 s390x
-	sh4 sh4eb sparc sparc64 x86_64 xtensa xtensaeb"
-IUSE_SOFTMMU_TARGETS="${COMMON_TARGETS}
-	avr lm32 moxie rx tricore unicore32"
-IUSE_USER_TARGETS="${COMMON_TARGETS}
-	aarch64_be armeb mipsn32 mipsn32el ppc64abi32 ppc64le sparc32plus
-	tilegx"
+COMMON_TARGETS="
+	aarch64
+	alpha
+	arm
+	cris
+	hppa
+	i386
+	m68k
+	microblaze
+	microblazeel
+	mips
+	mips64
+	mips64el
+	mipsel
+	nios2
+	or1k
+	ppc
+	ppc64
+	riscv32
+	riscv64
+	s390x
+	sh4
+	sh4eb
+	sparc
+	sparc64
+	x86_64
+	xtensa
+	xtensaeb
+"
+IUSE_SOFTMMU_TARGETS="
+	${COMMON_TARGETS}
+	avr
+	lm32
+	moxie
+	rx
+	tricore
+	unicore32
+"
+IUSE_USER_TARGETS="
+	${COMMON_TARGETS}
+	aarch64_be
+	armeb
+	hexagon
+	mipsn32
+	mipsn32el
+	ppc64abi32
+	ppc64le
+	sparc32plus
+"
 
 use_softmmu_targets=$(printf ' qemu_softmmu_targets_%s' ${IUSE_SOFTMMU_TARGETS})
 use_user_targets=$(printf ' qemu_user_targets_%s' ${IUSE_USER_TARGETS})
