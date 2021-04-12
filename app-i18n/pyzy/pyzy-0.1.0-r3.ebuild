@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -24,7 +24,8 @@ RDEPEND="dev-db/sqlite:3
 	sys-apps/util-linux
 	boost? ( dev-libs/boost )
 	opencc? ( app-i18n/opencc:= )"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	${PYTHON_DEPS}
 	sys-devel/autoconf-archive
 	doc? ( app-doc/doxygen )"
