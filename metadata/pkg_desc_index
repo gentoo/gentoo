@@ -8488,7 +8488,7 @@ dev-python/imageio 2.6.1: Python library for reading and writing image data
 dev-python/imagesize 1.2.0: Pure Python module for getting image size from png/jpeg/jpeg2000/gif files
 dev-python/imapclient 2.2.0: easy-to-use, pythonic, and complete IMAP client library
 dev-python/iminuit 2.3.0 2.4.0: Minuit numerical function minimization in Python
-dev-python/immutables 0.14 0.15: A high-performance immutable mapping type for Python
+dev-python/immutables 0.15: A high-performance immutable mapping type for Python
 dev-python/importlib_metadata 3.7.2 3.7.3 3.8.2 3.10.0: Read metadata from Python packages
 dev-python/importlib_resources 5.1.2: Read resources from Python packages
 dev-python/imread 0.7.3-r1: Read Image Files
@@ -8584,7 +8584,7 @@ dev-python/lesscpy 0.14.0: A compiler written in Python for the LESS language
 dev-python/libarchive-c 2.9: A Python interface to libarchive
 dev-python/libcloud 3.3.0: Unified Interface to the Cloud - python support libs
 dev-python/liblarch 3.0.1: Library to handle directed acyclic graphs
-dev-python/libnacl 1.6.1 1.7.2: Python ctypes wrapper for libsodium
+dev-python/libnacl 1.6.1 1.7.2-r1: Python ctypes wrapper for libsodium
 dev-python/libpillowfight 0.3.0: Small library containing various image processing algorithms
 dev-python/libpy_simdjson 0.4.0: Python bindings for simdjson using libpy
 dev-python/libsass 0.20.1: A straightforward binding of libsass for Python
