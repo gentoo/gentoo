@@ -26,6 +26,8 @@ DEPEND="${RDEPEND}
 	dev-ml/ocamlbuild
 	dev-lang/perl
 "
+BDEPEND="virtual/pkgconfig"
+
 PATCHES=( "${FILESDIR}/ounit2.patch" )
 
 QA_FLAGS_IGNORED='.*'
