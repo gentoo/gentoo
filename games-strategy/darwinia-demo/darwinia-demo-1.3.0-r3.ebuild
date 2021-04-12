@@ -38,7 +38,7 @@ src_install() {
 	doins lib/{sounds,main,language}.dat
 
 	insinto "${dir}"
-	dodoc README
+	doins README
 
 	exeinto "${dir}"
 	doexe bin/Linux/x86/darwinia
