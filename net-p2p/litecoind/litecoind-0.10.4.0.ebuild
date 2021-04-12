@@ -5,7 +5,7 @@ EAPI=5
 
 DB_VER="4.8"
 
-inherit autotools db-use eutils flag-o-matic systemd user
+inherit autotools db-use epatch flag-o-matic systemd user
 
 MyPV="${PV/_/-}"
 MyPN="litecoin"
