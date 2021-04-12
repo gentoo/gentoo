@@ -1,0 +1,11 @@
+DEFINED_PHASES=prepare
+DEPEND=dev-libs/http-fetcher !dev-perl/BTLib
+DESCRIPTION=HTTP download tool built atop the HTTP fetcher library
+EAPI=7
+HOMEPAGE=https://sourceforge.net/projects/fetch/
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=dev-libs/http-fetcher !dev-perl/BTLib
+SLOT=0
+SRC_URI=mirror://sourceforge/fetch/fetch-1.0.tar.gz
+_md5_=21401615becb204ee6713100d9efdbbe
