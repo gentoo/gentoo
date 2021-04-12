@@ -20,7 +20,7 @@ BDEPEND="
 CDEPEND="
 	media-libs/libsamplerate[${MULTILIB_USEDEP}]
 	sci-libs/fftw:3.0[${MULTILIB_USEDEP}]
-	jni? ( virtual/jdk:* )
+	jni? ( >=virtual/jdk-1.8:* )
 	ladspa? ( media-libs/ladspa-sdk )
 	programs? ( media-libs/libsndfile )
 	vamp? ( media-libs/vamp-plugin-sdk[${MULTILIB_USEDEP}] )
@@ -58,6 +58,6 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	! use jni && find ${ED} -name "*.a" -delete
+	! use jni && find "${ED}" -name "*.a" -delete
 	einstalldocs
 }
