@@ -20,13 +20,13 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+drm examples putsurface test test_va_api +vainfo wayland X"
+IUSE="+drm examples putsurface test test-va-api +vainfo wayland X"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	|| ( drm wayland X )
 	putsurface? ( || ( wayland X ) )
-	|| ( examples putsurface test_va_api vainfo )
+	|| ( examples putsurface test-va-api vainfo )
 "
 
 BDEPEND="virtual/pkgconfig"
@@ -76,7 +76,7 @@ src_configure() {
 		$(use_enable X x11)
 	)
 
-	if use test || use test_va_api ; then
+	if use test || use test-va-api ; then
 		myeconfargs+=( --enable-tests )
 	else
 		myeconfargs+=( --disable-tests )
@@ -87,7 +87,7 @@ src_configure() {
 
 src_install() {
 	default
-	if ! use test_va_api ; then
+	if ! use test-va-api ; then
 		if [[ -e "${ED}"/usr/bin/test_va_api ]] ; then
 			rm -f "${ED}"/usr/bin/test_va_api || die
 		fi
