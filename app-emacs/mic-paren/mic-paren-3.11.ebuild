@@ -1,12 +1,12 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit elisp
 
 DESCRIPTION="Advanced highlighting of matching parentheses"
-HOMEPAGE="http://www.gnuvola.org/software/j/mic-paren/
+HOMEPAGE="https://www.gnuvola.org/software/j/mic-paren/
 	https://www.emacswiki.org/emacs/MicParen"
 # taken from http://www.gnuvola.org/software/j/mic-paren/mic-paren.el
 SRC_URI="mirror://gentoo/${P}.el.xz"
