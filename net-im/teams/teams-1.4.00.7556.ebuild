@@ -76,24 +76,24 @@ src_install() {
 	fperms +x /usr/share/teams/teams
 
 	if use system-ffmpeg ; then
-		rm -f "${D}"/usr/share/teams/libffmpeg.so || die
+		rm -f "${ED}"/usr/share/teams/libffmpeg.so || die
 
 		cat > 99teams <<-EOF
-		LDPATH=${EROOT}/usr/$(get_libdir)/chromium
+		LDPATH="${EPREFIX}/usr/$(get_libdir)/chromium"
 		EOF
 		doenvd 99teams
 		elog "Using system ffmpeg. This is experimental and may lead to crashes."
 	fi
 
 	if use system-mesa ; then
-		rm -f "${D}"/usr/share/teams/libEGL.so || die
-		rm -f "${D}"/usr/share/teams/libGLESv2.so || die
-		rm -f "${D}"/usr/share/teams/swiftshader/libEGL.so || die
-		rm -f "${D}"/usr/share/teams/swiftshader/libGLESv2.so || die
+		rm -f "${ED}"/usr/share/teams/libEGL.so || die
+		rm -f "${ED}"/usr/share/teams/libGLESv2.so || die
+		rm -f "${ED}"/usr/share/teams/swiftshader/libEGL.so || die
+		rm -f "${ED}"/usr/share/teams/swiftshader/libGLESv2.so || die
 		elog "Using system mesa. This is experimental and may lead to crashes."
 	fi
 
-	rm -rf "${D}"/usr/share/teams/resources/app.asar.unpacked/node_modules/keytar3 || die
+	rm -rf "${ED}"/usr/share/teams/resources/app.asar.unpacked/node_modules/keytar3 || die
 
 	sed -i '/OnlyShowIn=/d' "${S}"/usr/share/applications/teams.desktop || die
 	domenu usr/share/applications/teams.desktop
