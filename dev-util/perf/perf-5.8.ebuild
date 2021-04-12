@@ -62,6 +62,7 @@ DEPEND="${RDEPEND}
 	${LINUX_PATCH+dev-util/patchutils}
 	sys-devel/bison
 	sys-devel/flex
+	virtual/pkgconfig
 	java? ( virtual/jdk )
 	doc? (
 		app-text/asciidoc
