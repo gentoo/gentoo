@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -52,9 +52,9 @@ src_install() {
 	emake DISTDIR="${D}" install
 
 	dodoc "${DOCS[@]}"
-	dodoc docs/*.txt lcptools/*.pdf || die "docs failed"
+	dodoc docs/*.txt lcptools/*.pdf
 
-	cd "${D}"
+	cd "${ED}"
 	mkdir -p usr/lib/tboot/ || die
 	mv boot usr/lib/tboot/ || die
 }
