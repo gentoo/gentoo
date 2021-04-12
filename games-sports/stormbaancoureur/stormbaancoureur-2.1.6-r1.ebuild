@@ -1,8 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils
+
+inherit desktop
 
 DESCRIPTION="Simulated obstacle course for automobiles"
 HOMEPAGE="http://www.stolk.org/stormbaancoureur/"
@@ -20,7 +21,7 @@ DEPEND="
 	>=media-libs/plib-1.8.4
 	virtual/glu
 	virtual/opengl"
-RDEPEND=${DEPEND}
+RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${P}/src-${PN}
 
