@@ -15,9 +15,12 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x
 IUSE="ccache doc pcre"
 RESTRICT="test"
 
-DEPEND="pcre? ( dev-libs/libpcre )
-	ccache? ( sys-libs/zlib )"
-RDEPEND="${DEPEND}"
+RDEPEND="
+	virtual/pkgconfig
+	pcre? ( dev-libs/libpcre )
+	ccache? ( sys-libs/zlib )
+"
+DEPEND="${RDEPEND}"
 
 DOCS=( ANNOUNCE CHANGES CHANGES.current README TODO )
 
