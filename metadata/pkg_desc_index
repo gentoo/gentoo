@@ -11036,7 +11036,7 @@ dev-util/qbs 1.16.0 1.18.0: Modern build tool for software projects
 dev-util/qdevicemonitor 1.0.1-r2 9999: Crossplatform log viewer for Android, iOS and text files
 dev-util/qstlink2 1.2.3: GUI and CLI ST-Link V2(Debugger/Programmer) client
 dev-util/quilt 0.66 0.66-r1 9999: quilt patch manager
-dev-util/radare2 4.5.1-r1 5.1.1 9999: unix-like reverse engineering framework and commandline tools
+dev-util/radare2 4.5.1-r1 5.1.1 5.2.0 9999: unix-like reverse engineering framework and commandline tools
 dev-util/ragel 6.10 7.0.0.12 7.0.3 7.0.4: Compiles finite state machines from regular languages into executable code
 dev-util/rats 2.4: RATS - Rough Auditing Tool for Security
 dev-util/rbtools 1.0.3 2.0: Command line tools for use with Review Board
@@ -13225,7 +13225,7 @@ media-libs/glm 0.9.9.5 0.9.9.7 0.9.9.8 0.9.9.8-r1: OpenGL Mathematics
 media-libs/glpng 1.46-r1: OpenGL PNG image library
 media-libs/glu 9.0.1 9999: The OpenGL Utility Library
 media-libs/glyr 1.0.10: Music related metadata searchengine, both with commandline interface and C API
-media-libs/gmmlib 20.2.2 20.2.5 20.3.2 20.4.1 9999: Intel Graphics Memory Management Library
+media-libs/gmmlib 20.2.2 20.2.5 20.3.2 20.4.1 21.1.1 9999: Intel Graphics Memory Management Library
 media-libs/gmtk 1.0.9: GTK+ widget and function libraries for gnome-mplayer
 media-libs/gnonlin 1.4.0-r1: Set of GStreamer elements to ease the creation of non-linear multimedia editors
 media-libs/graphene 1.10.2 1.10.2-r1: A thin layer of types for graphic libraries
@@ -18469,7 +18469,7 @@ x11-libs/libtinynotify-systemwide 0.1 9999: A system-wide notifications module f
 x11-libs/libva 2.5.0-r1 2.6.1 2.7.1 2.8.0 2.9.0 2.9.1 2.10.0 2.11.0 9999: Video Acceleration (VA) API for Linux
 x11-libs/libva-compat 1.8.3: Video Acceleration (VA) API for Linux
 x11-libs/libva-intel-driver 2.4.1 9999: HW video decode support for Intel integrated graphics
-x11-libs/libva-intel-media-driver 20.1.1-r2 20.2.0-r2 20.4.5 21.1.2_pre 9999: Intel Media Driver for VAAPI (iHD)
+x11-libs/libva-intel-media-driver 20.1.1-r2 20.2.0-r2 20.4.5 21.1.2_pre 21.1.3 9999: Intel Media Driver for VAAPI (iHD)
 x11-libs/libva-vdpau-driver 0.7.4-r5: VDPAU Backend for Video Acceleration (VA) API
 x11-libs/libvdpau 1.4 99999: VDPAU wrapper and trace libraries
 x11-libs/libwnck 2.31.0 2.31.0-r1 3.36.0: A window navigation construction kit

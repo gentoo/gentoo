@@ -1,3 +1,4 @@
+BDEPEND=virtual/pkgconfig
 DEFINED_PHASES=compile install postinst prepare
 DEPEND=x11-libs/libX11 x11-libs/libXft x11-libs/libXinerama x11-libs/libXtst x11-base/xorg-proto
 DESCRIPTION=Simple Virtual Keyboard
@@ -11,4 +12,4 @@ RDEPEND=x11-libs/libX11 x11-libs/libXft x11-libs/libXinerama x11-libs/libXtst
 SLOT=0
 SRC_URI=https://dl.suckless.org/tools/svkbd-0.2.1.tar.gz
 _eclasses_=portability	c10bdc40668533b1faf15b1d89df0303	savedconfig	0bc45cb0429003c9abc73bae24a0d5bd	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
-_md5_=1c4f9cea487648e96336ef379dc695bf
+_md5_=98a5dcc1a0667d070626539a9ebe2eab

@@ -1,3 +1,4 @@
+BDEPEND=virtual/pkgconfig
 DEFINED_PHASES=compile install
 DEPEND=sys-libs/ncurses:=
 DESCRIPTION=ncurses-based hex-editor with diff mode
@@ -10,4 +11,4 @@ RDEPEND=sys-libs/ncurses:=
 SLOT=0
 SRC_URI=https://www.dettus.net/dhex/dhex_0.69.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
-_md5_=f0ef937a489741d87ea7f2246bd4ec70
+_md5_=dfeb788fa8c65cdc09d011c95b1856c4

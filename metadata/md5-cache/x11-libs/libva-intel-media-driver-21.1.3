@@ -1,14 +1,16 @@
-BDEPEND=sys-devel/clang sys-devel/llvm virtual/pkgconfig dev-util/ninja dev-util/cmake
+BDEPEND=dev-util/ninja dev-util/cmake
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=!gnustep-base/libobjc2
-DESCRIPTION=A library for concurrent code execution on multicore hardware
+DEPEND=>=media-libs/gmmlib-21.1.1 >=x11-libs/libva-2.11.0[X?]
+DESCRIPTION=Intel Media Driver for VAAPI (iHD)
 EAPI=7
-HOMEPAGE=https://github.com/apple/swift-corelibs-libdispatch
+HOMEPAGE=https://github.com/intel/media-driver
 INHERIT=cmake
-KEYWORDS=~amd64 ~x86
-LICENSE=Apache-2.0
-RDEPEND=!gnustep-base/libobjc2
+IUSE=+custom-cflags set-as-default test X
+KEYWORDS=~amd64
+LICENSE=MIT BSD
+RDEPEND=>=media-libs/gmmlib-21.1.1 >=x11-libs/libva-2.11.0[X?]
+RESTRICT=!test? ( test )
 SLOT=0
-SRC_URI=https://github.com/apple/swift-corelibs-libdispatch/archive/swift-5.3.3-RELEASE.tar.gz -> libdispatch-5.3.3.tar.gz
+SRC_URI=https://github.com/intel/media-driver/archive/intel-media-21.1.3.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	c0964e43ba712cb933da5f65b958fa88	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	cmake	518e4c9a6a38dfd7afc54b6a7c5de3da
-_md5_=2042fb5f77f3721e3e5f3b94ae520bb5
+_md5_=4280973574be76cdbf821aba4184808a

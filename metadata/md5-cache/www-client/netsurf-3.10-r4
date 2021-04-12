@@ -1,4 +1,4 @@
-BDEPEND=duktape? ( app-editors/vim-core ) dev-libs/check dev-perl/HTML-Parser >=dev-util/netsurf-buildsystem-1.7-r1
+BDEPEND=duktape? ( app-editors/vim-core ) dev-libs/check dev-perl/HTML-Parser >=dev-util/netsurf-buildsystem-1.7-r1 virtual/pkgconfig
 DEFINED_PHASES=compile install prepare test
 DESCRIPTION=a free, open source web browser
 EAPI=7
@@ -12,4 +12,4 @@ REQUIRED_USE=|| ( fbcon gtk gtk2 ) duktape? ( javascript )
 SLOT=0
 SRC_URI=http://download.netsurf-browser.org/netsurf/releases/source/netsurf-3.10-src.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	netsurf	af8fe1901b583a379a6a32af919cea05	desktop	c0d27bf73aa08ca05b663dbd31fbef28
-_md5_=637d0b790265591f103be62abc1b3f42
+_md5_=c3107a1b10ff78b83274abd50980c782

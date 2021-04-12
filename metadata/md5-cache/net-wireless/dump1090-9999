@@ -1,4 +1,4 @@
-BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile install prepare unpack
 DEPEND=sys-libs/ncurses:=[tinfo] virtual/libusb:1 bladerf? ( net-wireless/bladerf:= ) rtlsdr? ( net-wireless/rtl-sdr:= )
 DESCRIPTION=simple Mode S decoder for RTLSDR devices
@@ -11,4 +11,4 @@ PROPERTIES=live
 RDEPEND=sys-libs/ncurses:=[tinfo] virtual/libusb:1 bladerf? ( net-wireless/bladerf:= ) rtlsdr? ( net-wireless/rtl-sdr:= )
 SLOT=0
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
-_md5_=c2fae47661dcf186af1aeda66edf9dfc
+_md5_=4ce7111fd7c0495c0d7172d7c58e1381

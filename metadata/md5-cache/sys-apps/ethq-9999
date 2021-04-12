@@ -1,4 +1,4 @@
-BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile install prepare test unpack
 DEPEND=sys-libs/ncurses:0
 DESCRIPTION=Ethernet NIC Queue stats viewer
@@ -12,4 +12,4 @@ RDEPEND=sys-libs/ncurses:0
 RESTRICT=!test? ( test )
 SLOT=0
 _eclasses_=git-r3	b8e8c92aa5fe8df7187e466138eb4e52	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
-_md5_=0b58a8fcc7913bb206056d04092ba90d
+_md5_=11f90f0bee02dbaa79ec52f7b311009f

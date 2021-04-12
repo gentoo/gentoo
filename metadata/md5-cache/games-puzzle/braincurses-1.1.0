@@ -1,10 +1,14 @@
+BDEPEND=virtual/pkgconfig
 DEFINED_PHASES=compile install
+DEPEND=sys-libs/ncurses:=
 DESCRIPTION=A version of the classic game Mastermind
 EAPI=7
 HOMEPAGE=https://github.com/bderrly/braincurses
+INHERIT=toolchain-funcs
 KEYWORDS=~amd64 ~ppc64 ~x86
 LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses:=
 SLOT=0
 SRC_URI=https://github.com/bderrly/braincurses/archive/1.1.0.tar.gz -> braincurses-1.1.0.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=bd6f36d468d8da207236b1331a3c4522
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=60a292f1033df3662fab7e06f90a92b1

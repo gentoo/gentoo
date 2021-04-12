@@ -1,4 +1,4 @@
-BDEPEND=app-arch/xz-utils sys-devel/flex
+BDEPEND=app-arch/xz-utils sys-devel/flex virtual/pkgconfig
 DEFINED_PHASES=compile configure install prepare test
 DEPEND=jbig? ( media-libs/jbigkit ) jpeg? ( virtual/jpeg:0 ) png? ( >=media-libs/libpng-1.4:0 ) postscript? ( app-text/ghostscript-gpl ) rle? ( media-libs/urt ) svga? ( media-libs/svgalib ) tiff? ( >=media-libs/tiff-3.5.5:0 ) xml? ( dev-libs/libxml2 ) zlib? ( sys-libs/zlib ) X? ( x11-libs/libX11 )
 DESCRIPTION=A set of utilities for converting to/from the netpbm (and related) formats
@@ -12,4 +12,4 @@ RDEPEND=jbig? ( media-libs/jbigkit ) jpeg? ( virtual/jpeg:0 ) png? ( >=media-lib
 SLOT=0
 SRC_URI=mirror://gentoo/netpbm-10.76.00.tar.xz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
-_md5_=851d927852fd25791d873a02584b3eb1
+_md5_=6516f91df18320c550ddd5a3fc385a05
