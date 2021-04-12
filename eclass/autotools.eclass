@@ -118,9 +118,7 @@ fi
 # versions in *DEPEND format.
 AUTOTOOLS_DEPEND="${_automake_atom}
 	${_autoconf_atom}
-	${_libtool_atom}
-	sys-apps/gawk
-"
+	${_libtool_atom}"
 RDEPEND=""
 
 # @ECLASS-VARIABLE: AUTOTOOLS_AUTO_DEPEND
