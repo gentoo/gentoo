@@ -23,6 +23,7 @@ DEPEND="
 	${RDEPEND}
 	x11-base/xorg-proto
 "
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
