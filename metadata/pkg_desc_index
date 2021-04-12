@@ -5660,7 +5660,7 @@ dev-libs/liborcus 0.15.4 0.16.1 9999: Standalone file import filter library for 
 dev-libs/libotf 0.9.16: Library for handling OpenType fonts (OTF)
 dev-libs/libowfat 0.31-r1 0.32-r1 0.32-r2: reimplement libdjb - excellent libraries from Dan Bernstein
 dev-libs/libp11 0.4.10 0.4.11: Abstraction layer to simplify PKCS#11 API
-dev-libs/libparserutils 0.2.4-r1 0.2.4-r3: C library for building efficient parsers
+dev-libs/libparserutils 0.2.4-r3: C library for building efficient parsers
 dev-libs/libpcre 8.44: Perl-compatible regular expression library
 dev-libs/libpcre-debian 8-r2: libpcre(posix).so.3 symlinks for compatibility with Debian
 dev-libs/libpcre2 10.35 10.36 10.36-r1: Perl-compatible regular expression library
@@ -5723,7 +5723,7 @@ dev-libs/libunistring 0.9.10-r1: Library for manipulating Unicode and C strings 
 dev-libs/libusb 1.0.23-r1 1.0.24-r1: Userspace access to USB devices
 dev-libs/libusb-compat 0.1.5-r2 0.1.5-r3: Userspace access to USB devices (libusb-0.1 compat wrapper)
 dev-libs/libusbhp 1.0.2: Usb Hotplug Library
-dev-libs/libutf8proc 2.2.0_p1-r1 2.4.0 2.5.0 2.6.1: A clean C Library for processing UTF-8 Unicode data
+dev-libs/libutf8proc 2.4.0 2.5.0 2.6.1: A clean C Library for processing UTF-8 Unicode data
 dev-libs/libuv 1.40.0 9999: Cross-platform asychronous I/O
 dev-libs/libvarlink 16 18 19: C implementation of the Varlink protocol and command line tool
 dev-libs/libverto 0.3.1-r1: Main event loop abstraction library
