@@ -74,6 +74,7 @@ DEPEND="
 	app-arch/zip
 	media-libs/alsa-lib
 	net-print/cups
+	virtual/pkgconfig
 	x11-base/xorg-proto
 	x11-libs/libX11
 	x11-libs/libXext
