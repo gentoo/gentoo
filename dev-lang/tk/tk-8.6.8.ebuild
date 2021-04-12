@@ -26,7 +26,9 @@ RDEPEND="
 		xscreensaver? ( >=x11-libs/libXScrnSaver-1.2.2-r1[${MULTILIB_USEDEP}] )
 	)
 	~dev-lang/tcl-${PV}:0=[${MULTILIB_USEDEP}]"
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
+	virtual/pkgconfig
 	!aqua? ( x11-base/xorg-proto )"
 
 # Not bumped to 8.6
