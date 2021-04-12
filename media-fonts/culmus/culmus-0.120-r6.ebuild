@@ -201,7 +201,7 @@ src_install() {
 			[[ -f ChangeLog ]] && newdoc ChangeLog{,.${font}}
 			newdoc README{,.${font}}
 			docinto ${font}
-			doins -r Samples
+			dodoc -r Samples
 
 			popd >/dev/null || die
 		done
