@@ -19,4 +19,4 @@ BDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 	>=dev-python/numpy-1.9[${PYTHON_USEDEP}]
 	>=dev-python/scipy-1.0[${PYTHON_USEDEP}]"
-RDEPEND="${DEPEND}"
+RDEPEND="${BDEPEND}"
