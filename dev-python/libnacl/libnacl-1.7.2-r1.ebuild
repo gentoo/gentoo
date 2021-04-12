@@ -17,6 +17,10 @@ KEYWORDS="amd64 ~arm ~x86"
 RDEPEND="dev-libs/libsodium"
 BDEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/libnacl-1.7.2-32bit.patch
+)
+
 python_test() {
 	"${EPYTHON}" -m unittest discover -v -p 'test_*.py' tests/ || die "Tests failed with ${EPYTHON}"
 }
