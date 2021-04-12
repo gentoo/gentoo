@@ -19,6 +19,8 @@ RDEPEND=">=app-benchmarks/acovea-5
 DEPEND="${RDEPEND}"
 
 src_prepare() {
+	default
+
 	use unicode && eapply "${FILESDIR}"/${P}-unicode.patch
 	eapply "${FILESDIR}"/${P}-{libbrahe,libsigc,gcc4.3}.patch
 	append-cxxflags -std=c++11
