@@ -9,6 +9,7 @@ inherit autotools elisp-common l10n xdg-utils
 DESCRIPTION="Extensible window manager using a Lisp-based scripting language"
 HOMEPAGE="https://sawfish.fandom.com/wiki/Main_Page"
 SRC_URI="https://download.tuxfamily.org/sawfish/${MY_P}.tar.xz"
+S="${WORKDIR}"/${MY_P}
 
 LICENSE="GPL-2 Artistic-2"
 SLOT="0"
@@ -16,13 +17,18 @@ KEYWORDS="~alpha amd64 ~ia64 ppc ~ppc64 sparc x86"
 IUSE="emacs kde nls xinerama"
 
 RDEPEND="
-	emacs? ( >=app-editors/emacs-23.1:* )
 	>=dev-libs/librep-0.92.1
 	>=x11-libs/rep-gtk-0.90.7
 	x11-libs/gdk-pixbuf-xlib
 	>=x11-libs/gdk-pixbuf-2.42.0:2
 	>=x11-libs/gtk+-2.24.0:2
+	x11-libs/libICE
+	x11-libs/libXext
+	x11-libs/libXft
+	x11-libs/libXrender
 	x11-libs/libXtst
+	x11-libs/pango[X]
+	emacs? ( >=app-editors/emacs-23.1:* )
 	kde? ( kde-frameworks/kdelibs4support )
 	nls? ( sys-devel/gettext )
 	xinerama? ( x11-libs/libXinerama )
@@ -31,7 +37,7 @@ DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
 "
-S="${WORKDIR}/${MY_P}"
+
 PATCHES=(
 	# From Fedora
 	"${FILESDIR}"/${PN}-1.12.0-desktop.patch
@@ -79,9 +85,8 @@ src_compile() {
 src_install() {
 	default
 
-	find "${D}" -name '*.la' -delete || die
-
-	find "${D}/usr/share/man" -name '*.gz' -exec gunzip {} \; || die
+	find "${ED}" -name '*.la' -delete || die
+	find "${ED}/usr/share/man" -name '*.gz' -exec gunzip {} \; || die
 
 	if use emacs; then
 		elisp-install ${PN} sawfish.{el,elc}
