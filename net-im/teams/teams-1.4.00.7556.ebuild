@@ -79,7 +79,7 @@ src_install() {
 		rm -f "${D}"/usr/share/teams/libffmpeg.so || die
 
 		cat > 99teams <<-EOF
-		LDPATH=${EROOT}/usr/$(get_libdir)/chromium
+		LDPATH="${EPREFIX}/usr/$(get_libdir)/chromium"
 		EOF
 		doenvd 99teams
 		elog "Using system ffmpeg. This is experimental and may lead to crashes."
