@@ -18,12 +18,11 @@ IUSE="+sync"
 DEPEND="
 	sync? ( net-libs/gnutls )
 "
-
 RDEPEND="${DEPEND}"
 
 src_prepare() {
 	# move test directory into source directory
-	mv "${WORKDIR}"/test "${WORKDIR}"/"$P" || die
+	mv "${WORKDIR}"/test "${WORKDIR}"/${P} || die
 
 	cmake_src_prepare
 
