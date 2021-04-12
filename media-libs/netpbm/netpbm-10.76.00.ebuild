@@ -14,8 +14,11 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc jbig jpeg png postscript rle cpu_flags_x86_sse2 static-libs svga tiff X xml zlib"
 
-BDEPEND="app-arch/xz-utils
-	sys-devel/flex"
+BDEPEND="
+	app-arch/xz-utils
+	sys-devel/flex
+	virtual/pkgconfig
+"
 RDEPEND="jbig? ( media-libs/jbigkit )
 	jpeg? ( virtual/jpeg:0 )
 	png? ( >=media-libs/libpng-1.4:0 )
