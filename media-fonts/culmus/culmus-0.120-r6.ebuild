@@ -188,8 +188,8 @@ src_install() {
 	if use ancient; then
 		pushd "${WORKDIR}/${MY_A_P}$(use fontforge || echo .TTF)/" || die
 
-		newdoc CHANGES{,.ancient} || die
-		newdoc README{,.ancient} || die
+		newdoc CHANGES{,.ancient}
+		newdoc README{,.ancient}
 
 		popd >/dev/null || die
 	fi
