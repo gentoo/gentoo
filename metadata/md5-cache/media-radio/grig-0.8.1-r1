@@ -10,4 +10,4 @@ RDEPEND=dev-libs/glib:2 x11-libs/gtk+:2 >=media-libs/hamlib-4:=
 SLOT=0
 SRC_URI=mirror://sourceforge/groundstation/grig-0.8.1.tar.gz
 _eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28
-_md5_=74a8a3013d3409a15defc3d080139358
+_md5_=db52568f0d0fc0633ca4bc7be0c8a09d
