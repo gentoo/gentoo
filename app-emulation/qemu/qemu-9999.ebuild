@@ -272,7 +272,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.2.0-strings.patch
 	"${FILESDIR}"/${PN}-5.2.0-cleaner-werror.patch
 	"${FILESDIR}"/${PN}-5.2.0-disable-keymap.patch
-	"${FILESDIR}"/${PN}-9999-fix-firmware-path.patch
 )
 
 QA_PREBUILT="
