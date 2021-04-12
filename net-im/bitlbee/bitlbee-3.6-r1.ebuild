@@ -64,6 +64,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.5-systemd-user.patch
 	"${FILESDIR}"/${PN}-3.5-libcheck.patch
 	"${FILESDIR}"/${PN}-3.5-libevent.patch
+	"${FILESDIR}"/${P}-disabled-plugins-use.patch
 )
 
 src_configure() {
