@@ -56,7 +56,7 @@ pkg_setup() {
 	else
 		tc-export CXX CC
 	fi
-	use neon || export ZT_DISABLE_NEON=1
+	use cpu_flags_arm_neon || export ZT_DISABLE_NEON=1
 }
 
 src_compile() {
