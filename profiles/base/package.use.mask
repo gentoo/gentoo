@@ -6,6 +6,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Joonas Niilola <juippis@gentoo.org> (2021-04-12)
+# Creates +130 GB worth of bindings, possibly Gentoo-related.
+# Upstream issue: https://phab.enlightenment.org/T8924
+dev-libs/efl mono
+
 # Sam James <sam@gentoo.org> (2021-04-09)
 # Crashes at runtime.
 # Mask LTO for now until issue with Qt
