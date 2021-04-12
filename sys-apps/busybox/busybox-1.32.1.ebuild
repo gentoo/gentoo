@@ -29,6 +29,7 @@ COMMON_DEPEND="!static? ( selinux? ( sys-libs/libselinux ) )
 	pam? ( sys-libs/pam )
 	virtual/libcrypt:="
 DEPEND="${COMMON_DEPEND}
+	virtual/pkgconfig
 	static? (
 		virtual/libcrypt[static-libs]
 		selinux? ( sys-libs/libselinux[static-libs(+)] )
