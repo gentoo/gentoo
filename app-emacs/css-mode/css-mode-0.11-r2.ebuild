@@ -1,19 +1,19 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit elisp
 
 DESCRIPTION="A major mode for editing Cascading Style Sheets (CSS)"
-HOMEPAGE="http://www.garshol.priv.no/download/software/css-mode/"
+HOMEPAGE="https://www.garshol.priv.no/download/software/css-mode/"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"
 
-ELISP_PATCHES="${P}-no-compat-kbd.patch"
+PATCHES=("${FILESDIR}"/${P}-no-compat-kbd.patch)
 SITEFILE="50${PN}-gentoo.el"
 
 src_prepare() {
@@ -24,5 +24,6 @@ src_prepare() {
 
 src_install() {
 	elisp_src_install
-	dohtml -A css doco.html standard.css
+	docinto html
+	dodoc doco.html standard.css
 }
