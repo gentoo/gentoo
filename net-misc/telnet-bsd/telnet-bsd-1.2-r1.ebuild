@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils autotools toolchain-funcs
+
+inherit autotools epatch toolchain-funcs
 
 DESCRIPTION="Telnet and telnetd ported from OpenBSD with IPv6 support"
 HOMEPAGE="ftp://ftp.suse.com/pub/people/kukuk/ipv6/"
