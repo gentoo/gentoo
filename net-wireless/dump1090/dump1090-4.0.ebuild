@@ -26,6 +26,7 @@ DEPEND="
 	bladerf? ( net-wireless/bladerf:= )
 	rtlsdr? ( net-wireless/rtl-sdr:= )"
 RDEPEND="${DEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
