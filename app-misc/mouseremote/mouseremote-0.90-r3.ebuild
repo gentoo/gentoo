@@ -11,7 +11,7 @@ SRC_URI="http://www4.pair.com/gribnif/ha/MouseRemote.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 
 DEPEND="virtual/perl-Time-HiRes"
 
