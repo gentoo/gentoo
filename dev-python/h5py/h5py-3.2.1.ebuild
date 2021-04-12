@@ -45,6 +45,10 @@ distutils_enable_sphinx docs \
 #	use mpi && export CC=mpicc
 #}
 
+PATCHES=(
+	"${FILESDIR}"/h5py-3.2.1-i686-types.patch
+)
+
 python_prepare_all() {
 	# avoid pytest-mpi dep, we do not use mpi anyway
 	sed -i -e 's:pytest-mpi::' pytest.ini || die
