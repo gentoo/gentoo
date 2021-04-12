@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,6 +18,6 @@ IUSE="pdf"
 
 src_install() {
 	insinto "/usr/share/doc/${PN}-${SLOT}"
-	use pdf && dodoc "${P}.pdf"
+	use pdf && doins "${P}.pdf"
 	doins -r *
 }
