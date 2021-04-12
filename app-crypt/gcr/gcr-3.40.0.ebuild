@@ -23,7 +23,7 @@ DEPEND="
 	>=dev-libs/glib-2.44.0:2
 	>=dev-libs/libgcrypt-1.2.2:0=
 	>=app-crypt/p11-kit-0.19.0
-	gtk? ( >=x11-libs/gtk+-3.12:3[X,introspection?] )
+	gtk? ( >=x11-libs/gtk+-3.22:3[introspection?] )
 	>=sys-apps/dbus-1
 	introspection? ( >=dev-libs/gobject-introspection-1.58:= )
 "
@@ -45,8 +45,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PV}-avoid-gnupg-circular-dep.patch
-	"${FILESDIR}"/${PV}-optional-vapi.patch
+	"${FILESDIR}"/3.38.0-optional-vapi.patch
 )
 
 pkg_setup() {

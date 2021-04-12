@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 VALA_MIN_API_VERSION="0.26"
 VALA_USE_DEPEND="vapigen"
 
@@ -14,27 +14,25 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Gedit"
 LICENSE="GPL-2+ CC-BY-SA-3.0"
 SLOT="0"
 
-IUSE="+introspection +python gtk-doc spell vala"
-REQUIRED_USE="python? ( introspection ${PYTHON_REQUIRED_USE} ) spell? ( python )"
+IUSE="+python gtk-doc spell"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 DEPEND="
-	>=dev-libs/glib-2.44:2
-	>=x11-libs/gtk+-3.22.0:3[introspection?]
-	>=x11-libs/gtksourceview-4.0.2:4[introspection?]
+	>=dev-libs/glib-2.64:2
 	>=dev-libs/libpeas-1.14.1[gtk]
-	>=dev-libs/libxml2-2.5.0:2
-	>=net-libs/libsoup-2.60:2.4
-	x11-libs/libX11
+	>=dev-libs/gobject-introspection-1.54:=
+	>=x11-libs/gtk+-3.22.0:3[introspection]
+	>=x11-libs/gtksourceview-4.0.2:4[introspection]
+	gui-libs/tepl:6
 
 	spell? ( >=app-text/gspell-0.2.5:0= )
-	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
-			>=dev-python/pygobject-3:3[cairo,${PYTHON_MULTI_USEDEP}]
+			dev-python/pycairo[${PYTHON_USEDEP}]
+			>=dev-python/pygobject-3:3[cairo,${PYTHON_USEDEP}]
 			dev-libs/libpeas[python,${PYTHON_SINGLE_USEDEP}]
 		')
 	)
@@ -54,7 +52,12 @@ BDEPEND="
 	virtual/pkgconfig
 "
 PATCHES=(
-	"${FILESDIR}"/3.32.2-make-spell-optional.patch
+	# Don't force off overlay scrollbars for dubious reasons that GNOME designers heavily
+	# disagree with; those wanting them off in general would set that globally for gtk
+	"${FILESDIR}"/restore-overlay-scrollbars.patch
+	# Make gspell and python optional
+	"${FILESDIR}"/3.38-make-gspell-optional.patch
+	"${FILESDIR}"/3.38-make-python-optional.patch
 )
 
 pkg_setup() {
@@ -62,18 +65,16 @@ pkg_setup() {
 }
 
 src_prepare() {
-	use vala && vala_src_prepare
+	vala_src_prepare
 	xdg_src_prepare
 }
 
 src_configure() {
 	local emesonargs=(
-		$(meson_use introspection)
-		$(meson_use vala vapi)
-		$(meson_use python plugins)
-		$(meson_use gtk-doc documentation)
-		-Denable-gvfs-metadata=yes
-		$(meson_use spell)
+		$(meson_use python)
+		$(meson_use gtk-doc gtk_doc)
+		-Duser_documentation=true
+		$(meson_feature spell)
 	)
 	meson_src_configure
 }

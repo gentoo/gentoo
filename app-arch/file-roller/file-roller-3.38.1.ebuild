@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,8 +9,8 @@ HOMEPAGE="https://wiki.gnome.org/Apps/FileRoller"
 
 LICENSE="GPL-2+ CC-BY-SA-3.0"
 SLOT="0"
-IUSE="libnotify nautilus packagekit"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+IUSE="libnotify nautilus"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 
 # gdk-pixbuf used extensively in the source
 # cairo used in eggtreemultidnd.c
@@ -25,7 +25,6 @@ RDEPEND="
 	x11-libs/pango
 	libnotify? ( >=x11-libs/libnotify-0.4.3:= )
 	nautilus? ( >=gnome-base/nautilus-3.28.0 )
-	packagekit? ( app-admin/packagekit-base )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -69,7 +68,7 @@ src_configure() {
 		-Drun-in-place=false
 		$(meson_use nautilus nautilus-actions)
 		$(meson_use libnotify notification)
-		$(meson_use packagekit)
+		-Dpackagekit=false
 		-Dlibarchive=true
 	)
 	meson_src_configure
