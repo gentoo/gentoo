@@ -212,7 +212,6 @@ app-arch/dump:uuid - Enable UUID support
 app-arch/engrampa:caja - Enable engrampa to integrate with mate-base/caja by providing entries in its context menu
 app-arch/engrampa:packagekit - Enable support for installing via Packagekit based on archive type
 app-arch/file-roller:nautilus - Build contextual menu extension for gnome-base/nautilus.
-app-arch/file-roller:packagekit - Enable support for the distro-neutral package manager GUI PackageKit
 app-arch/gzip:pic - disable optimized assembly code that is not PIC friendly
 app-arch/innoextract:debug - Enable debug logging and the --debug command-line option
 app-arch/innoextract:lzma - Enable support for extracting lzma-compressed installers using app-arch/xz-utils
@@ -5042,9 +5041,16 @@ media-video/orion:mpv - Use the media-video/mpv player (upstream default)
 media-video/orion:qtav - Use the media-libs/qtav player
 media-video/orion:qtmedia - Use the dev-qt/qtmultimedia
 media-video/peek:keybinder - Enable support for global hotkeys using dev-libs/keybinder
+media-video/pipewire:aac - AAC over Bluetooth (iPhone compatible headphones)
+media-video/pipewire:aptx - aptX (HD) over Bluetooth (many Android compatible headphones)
+media-video/pipewire:extra - Build pw-cat/pw-play/pw-record
+media-video/pipewire:ffmpeg - Builds an unsupported SPA (file a Gentoo bug if you need this)
 media-video/pipewire:jack - Enable SPA JACK plugin and emulation to be able to run JACK applications on top of PipeWire
+media-video/pipewire:jack-client - Install a plugin for running PipeWire as a JACK client
+media-video/pipewire:ldac - LDAC over Bluetooth (primarily Sony headphones)
+media-video/pipewire:pipewire-alsa - Replace PulseAudio's ALSA plugin with PipeWire's plugin
 media-video/pipewire:pulseaudio - Enable emulation to be able to run PulseAudio applications on top of PipeWire
-media-video/pipewire:vulkan - Enable vulkan spa plugin integration
+media-video/pipewire:vulkan - Uses Vulkan compute shaders to provide a CGI video source
 media-video/qmplay2:audiofilters - Build with AudioFilters module
 media-video/qmplay2:avdevice - Build FFmpeg module with libavdevice suport
 media-video/qmplay2:cdio - Build with AudioCD module

@@ -914,7 +914,7 @@ app-arch/duff 0.5.2: Command-line utility for quickly finding duplicates in a gi
 app-arch/dump 0.4.47: Dump/restore ext2fs backup utilities
 app-arch/engrampa 1.24.0-r1 1.24.1: Engrampa archive manager for MATE
 app-arch/fastjar 0.98-r3: A jar program written in C
-app-arch/file-roller 3.36.3 3.38.0: Archive manager for GNOME
+app-arch/file-roller 3.38.0 3.38.1: Archive manager for GNOME
 app-arch/funzix 1.0: unpacker for the bogus ZIX format
 app-arch/gcab 1.4: Library and tool for working with Microsoft Cabinet (CAB) files
 app-arch/gnome-autoar 0.3.1: Automatic archives creating and extracting library
@@ -1153,7 +1153,7 @@ app-crypt/ekeyd 1.1.5-r101: Entropy Key userspace daemon
 app-crypt/elettra 1.0: Plausible deniable file cryptography
 app-crypt/envchain 1.0.0 1.0.1: Save environment variables in a secret vault
 app-crypt/fcrackzip 1.0: a zip password cracker
-app-crypt/gcr 3.36.0 3.38.0 3.38.1: Libraries for cryptographic UIs and accessing PKCS#11 modules
+app-crypt/gcr 3.36.0 3.38.1 3.40.0: Libraries for cryptographic UIs and accessing PKCS#11 modules
 app-crypt/gentoo-keys 201901130136: A OpenPGP/GPG keyring of official Gentoo release media GPG keys
 app-crypt/gifshuffle 2.0-r1: GIF colourmap steganography
 app-crypt/glep63-check 9: GLEP 63 compliance checker for OpenPGP keys
@@ -1239,7 +1239,7 @@ app-crypt/sbsigntools 0.9.1-r1 0.9.2: Utilities for signing and verifying files 
 app-crypt/scdrand 0.3.5: Feed kernel entropy pool from smartcard's TRNG
 app-crypt/scrypt 1.3.1: A simple password-based encryption utility using scrypt key derivation function
 app-crypt/scute 1.7.0: A PKCS #11 module for OpenPGP smartcards
-app-crypt/seahorse 3.36.2 3.38.1: Manage your passwords and encryption keys
+app-crypt/seahorse 3.36.2 3.38.1 40.0: Manage your passwords and encryption keys
 app-crypt/seahorse-sharing 3.8.0_p20181216: Daemon for PGP public key sharing using DNS-SD and HKP
 app-crypt/shash 0.2.6-r3: Generate or check digests or MACs of files
 app-crypt/signify 23 24 29 30: Cryptographically sign and verify files
@@ -1373,7 +1373,7 @@ app-dicts/freedict-eng-ita 1.0: Freedict for language translation from English t
 app-dicts/freedict-eng-swe 1.0: Freedict for language translation from English to Swedish
 app-dicts/freedict-fra-eng 1.0: Freedict for language translation from French to English
 app-dicts/freedict-ita-eng 1.0: Freedict for language translation from Italian to English
-app-dicts/gnome-dictionary 3.26.1: Dictionary utility for GNOME
+app-dicts/gnome-dictionary 3.26.1 40.0: Dictionary utility for GNOME
 app-dicts/gwaei 3.6.2: Japanese-English Dictionary for GNOME
 app-dicts/ipadic 2.7.0-r2: Japanese dictionary for ChaSen
 app-dicts/kasumi 2.5-r1: Anthy dictionary maintenance tool
@@ -1898,8 +1898,8 @@ app-editors/ersatz-emacs 20060515-r1: A very minimal imitation of the famous GNU
 app-editors/fe 2.0: A small and easy to use folding editor
 app-editors/focuswriter 1.7.2 1.7.6: Fullscreen and distraction-free word processor
 app-editors/fte 20110708-r1: Lightweight text-mode editor
-app-editors/gedit 3.34.1 3.36.2 3.38.1: A text editor for the GNOME desktop
-app-editors/gedit-plugins 3.36.2 3.38.1: Collection of extra plugins for the gedit Text Editor
+app-editors/gedit 3.38.1 40.0: A text editor for the GNOME desktop
+app-editors/gedit-plugins 3.38.1 40.0: Collection of extra plugins for the gedit Text Editor
 app-editors/ghex 3.18.4-r1: GNOME hexadecimal editor
 app-editors/ghostwriter 1.8.1: Cross-platform, aesthetic, distraction-free markdown editor
 app-editors/gnome-latex 3.36.0 3.38.0: Integrated LaTeX environment for GNOME
@@ -2630,7 +2630,7 @@ app-misc/getopt 1.1.6-r1: getopt(1) replacement supporting GNU-style long option
 app-misc/glastree 1.04 1.04_p20150525: glastree is a poor mans snapshot utility using hardlinks written in perl
 app-misc/glcdprocdriver 0.1.2: A glue between the graphlcd-base library from the GraphLCD project
 app-misc/glimpse 4.18.6-r1: A index/query system to search a large set of files quickly
-app-misc/gnote 3.36.2 3.38.1: Desktop note-taking application
+app-misc/gnote 3.38.1 40.0: Desktop note-taking application
 app-misc/gnuit 4.9.5-r2: GNU Interactive Tools - increase speed and efficiency of most daily tasks
 app-misc/gnutu 2.9: GNU Student's Timetable for polish users
 app-misc/go-jira 1.0.23 1.0.26 1.0.27: A simple JIRA commandline client in Go
@@ -5389,7 +5389,7 @@ dev-libs/apr-util 1.6.1-r6: Apache Portable Runtime Utility Library
 dev-libs/argtable 2.13-r1: An ANSI C library for parsing GNU-style command-line options with minimal fuss
 dev-libs/atcore 1.0.0: API to manage the serial connection between the computer and 3D Printers
 dev-libs/atf 0.21-r2: Libraries to write tests in C, C++ and shell
-dev-libs/atk 2.34.1 2.36.0: GTK+ & GNOME Accessibility Toolkit
+dev-libs/atk 2.36.0: GTK+ & GNOME Accessibility Toolkit
 dev-libs/avro-c 1.9.1: c library for the apache avro data serialization system
 dev-libs/aws-c-cal 0.4.5: Crypto Abstraction Layer: Cross-Platform C99 wrapper for cryptography primitives
 dev-libs/aws-c-common 0.4.62 0.5.2: Core c99 package for AWS SDK for C
@@ -5563,7 +5563,7 @@ dev-libs/libcoyotl 3.1.0-r2: A collection of portable C++ classes
 dev-libs/libcroco 0.6.13: Generic Cascading Style Sheet (CSS) parsing and manipulation toolkit
 dev-libs/libcss 0.9.1-r1: CSS parser and selection engine, written in C
 dev-libs/libdaemon 0.14-r3: Simple library for creating daemon processes in C
-dev-libs/libdazzle 3.36.0 3.38.0: Experimental new features for GTK+ and GLib
+dev-libs/libdazzle 3.38.0 3.40.0: Experimental new features for GTK+ and GLib
 dev-libs/libdbh 5.0.19 5.0.22: A small library to create and manage 64-bit disk based hash tables
 dev-libs/libdbusmenu 16.04.0-r1: Library to pass menu structure across DBus
 dev-libs/libdbusmenu-qt 0.9.3_pre20160218-r3: Library providing Qt implementation of DBusMenu specification
@@ -5601,16 +5601,16 @@ dev-libs/libgamin 0.1.10-r6: Library providing the FAM File Alteration Monitor A
 dev-libs/libgaminggear 0.15.1: Provides functionality for gaming input devices
 dev-libs/libgcrypt 1.8.6 1.8.7 1.9.1-r1 1.9.2: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgcrypt-compat 1.5.6: Old version of libgcrypt needed by some binaries
-dev-libs/libgdata 0.17.12 0.17.13: GLib-based library for accessing online service APIs using the GData protocol
-dev-libs/libgee 0.20.3: GObject-based interfaces and classes for commonly used data structures
+dev-libs/libgdata 0.17.12 0.17.13 0.18.1: GLib-based library for accessing online service APIs using the GData protocol
+dev-libs/libgee 0.20.3 0.20.4: GObject-based interfaces and classes for commonly used data structures
 dev-libs/libgit2 1.1.0-r2: A linkable library for Git
 dev-libs/libgit2-glib 0.99.0.1-r2: Git library for GLib
-dev-libs/libgnome-games-support 1.6.1 1.8.0 1.8.1: Library for code common to GNOME games
+dev-libs/libgnome-games-support 1.6.1 1.8.1: Library for code common to GNOME games
 dev-libs/libgnt 2.14.0 2.14.1: Pidgin's GLib Ncurses Toolkit
 dev-libs/libgpg-error 1.38 1.41 1.42: Contains error handling functions used by GnuPG software
 dev-libs/libgpiod 1.1.1 1.4.1: C library and tools for interacting with the linux GPIO character device
 dev-libs/libgudev 233-r1 234: GObject bindings for libudev
-dev-libs/libgusb 0.3.3 0.3.5 0.3.6: GObject wrapper for libusb
+dev-libs/libgusb 0.3.5 0.3.6: GObject wrapper for libusb
 dev-libs/libgweather 3.36.1 3.36.2 40.0: Location and timezone database and weather-lookup library
 dev-libs/libhid 0.2.17: Provides a generic and flexible way to access and interact with USB HID devices
 dev-libs/libical 3.0.8 3.0.9: An implementation of basic iCAL protocols
@@ -5664,7 +5664,7 @@ dev-libs/libparserutils 0.2.4-r3: C library for building efficient parsers
 dev-libs/libpcre 8.44: Perl-compatible regular expression library
 dev-libs/libpcre-debian 8-r2: libpcre(posix).so.3 symlinks for compatibility with Debian
 dev-libs/libpcre2 10.35 10.36 10.36-r1: Perl-compatible regular expression library
-dev-libs/libpeas 1.26.0-r100 1.28.0-r100 1.30.0: A GObject plugins library
+dev-libs/libpeas 1.28.0-r100 1.30.0: A GObject plugins library
 dev-libs/libpfm 4.10.1-r1 4.11.0: Hardware-based performance monitoring interface for Linux
 dev-libs/libpipeline 1.5.2 1.5.3: a pipeline manipulation library
 dev-libs/libplatform 2.1.0.1-r1 9999: Platform support library used by libCEC and binary add-ons for Kodi
@@ -10932,8 +10932,8 @@ dev-util/gource 0.51: A software version control visualization tool
 dev-util/gperf 3.1: A perfect hash function generator
 dev-util/gprof2dot 2019.11.30 2021.02.21: Converts profiling output to dot graphs
 dev-util/gtk-builder-convert 2.24.32-r1: Converts Glade files to GtkBuilder XML format
-dev-util/gtk-doc 1.32-r1 1.32-r2 1.33.1-r3 1.33.1-r4: GTK+ Documentation Generator
-dev-util/gtk-doc-am 1.32 1.33.1: Automake files from gtk-doc
+dev-util/gtk-doc 1.33.1-r4: GTK+ Documentation Generator
+dev-util/gtk-doc-am 1.33.1: Automake files from gtk-doc
 dev-util/gtk-update-icon-cache 3.24.26: GTK update icon cache
 dev-util/gyp 20200512145953 99999999999999: GYP (Generate Your Projects) meta-build system
 dev-util/heaptrack 9999: Fast heap memory profiler
@@ -11094,7 +11094,7 @@ dev-util/stripe-mock 0.103.0: Mock HTTP server that responds like the real Strip
 dev-util/stubgen 2.08: A member function stub generator for C++
 dev-util/sysdig 0.27.0 0.27.1 0.27.1-r100: A system exploration and troubleshooting tool
 dev-util/sysdig-kmod 0.27.0 0.27.1: Kernel module for dev-util/sysdig
-dev-util/sysprof 3.36.0-r1 3.38.1: System-wide Linux Profiler
+dev-util/sysprof 3.38.1: System-wide Linux Profiler
 dev-util/sysprof-capture 3.36.0-r1 3.38.1-r1: Static library for sysprof capture data generation
 dev-util/sysprof-common 3.38.1: Static library for sysprof capture data generation
 dev-util/systemtap 4.0-r1 4.0-r2 4.4: A linux trace/probe tool
@@ -11453,7 +11453,7 @@ games-board/simsu 1.3.9: Basic sudoku game
 games-board/sjeng 11.2_p8_p1: Console based chess interface
 games-board/stockfish 10 13: Free UCI chess engine, claimed to be the strongest in the world
 games-board/tablebase-syzygy 0_pre20131213 0_pre20131213-r100: Syzygy chess endgame tablebases for up to 6 pieces
-games-board/tali 3.36.4 3.38.2 3.38.3 40.0: Beat the odds in a poker-style dice game
+games-board/tali 3.38.3 40.0: Beat the odds in a poker-style dice game
 games-board/tetzle 2.1.3: Jigsaw puzzle game that uses tetrominoes for the pieces
 games-board/xboard 4.9.1: GUI for gnuchess and for internet chess servers
 games-board/xfreecell 1.0.5b-r1: A freecell game for X
@@ -11705,7 +11705,7 @@ games-puzzle/gnome-klotski 3.36.3 3.38.2: Slide blocks to solve the puzzle
 games-puzzle/gnome-sudoku 3.36.0 40.0: Test your logic skills in this number grid puzzle
 games-puzzle/gnome-taquin 3.36.4 3.38.1: Move tiles so that they reach their places
 games-puzzle/gnome-tetravex 3.36.4 3.38.2: Complete the puzzle by matching numbered tiles
-games-puzzle/gnome2048 3.36.0 3.36.4 3.38.2: Move the tiles until you obtain the 2048 tile
+games-puzzle/gnome2048 3.38.2: Move the tiles until you obtain the 2048 tile
 games-puzzle/gnudoku 0.93-r1: A program for creating and solving Su Doku puzzles
 games-puzzle/gnurobbo 0.68: Robbo, a popular Atari XE/XL game ported to Linux
 games-puzzle/gottet 1.1.9: Tetris clone based on Qt5
@@ -11747,7 +11747,7 @@ games-puzzle/sdl-jewels 1.1.1-r1: Swap and match 3 or more jewels in a line in o
 games-puzzle/seatris 0.0.14-r1: A color ncurses tetris clone
 games-puzzle/sgt-puzzles 20190415 99999999: Simon Tatham's Portable Puzzle Collection
 games-puzzle/splice 20121120-r1: An experimental and artistic puzzler set in a microbial world
-games-puzzle/swell-foop 3.34.1: Clear the screen by removing groups of colored and shaped tiles
+games-puzzle/swell-foop 3.34.1 40.0: Clear the screen by removing groups of colored and shaped tiles
 games-puzzle/tanglet 1.5.3: Single player word finding game based on Boggle
 games-puzzle/tetrinet 0.11-r2: Console based tetrinet inc. standalone server
 games-puzzle/textmaze 1.2-r1: An ncurses-based maze solving game written in Perl
@@ -11969,8 +11969,8 @@ games-util/xgame-gtk2 2.0.2-r1: Run games in a separate X session
 games-util/xgamer 0.6.2: A launcher for starting games in a second X session
 games-util/xpadneo 0.9.1 9999: Advanced Linux Driver for Xbox One Wireless Controller
 games-util/xqf 1.0.6.2: A server browser for many FPS games (frontend for qstat)
-gnome-base/dconf 0.34.0 0.36.0 0.40.0: Simple low-level configuration system
-gnome-base/dconf-editor 3.36.4 3.38.2: Graphical tool for editing the dconf configuration database
+gnome-base/dconf 0.36.0 0.40.0: Simple low-level configuration system
+gnome-base/dconf-editor 3.36.4 3.38.3: Graphical tool for editing the dconf configuration database
 gnome-base/gconf 3.2.6-r5: GNOME configuration system and daemon
 gnome-base/gdm 3.36.3 3.36.4-r1: GNOME Display Manager for managing graphical display servers and user logins
 gnome-base/gnome 3.36.5: Meta package for GNOME 3, merge this package to install
@@ -12145,10 +12145,10 @@ gui-libs/gdk-pixbuf-loader-webp 0.0.2: WebP GDK Pixbuf Loader library
 gui-libs/greetd 0.6.1 0.7.0: ipc based login daemon
 gui-libs/gtk 4.2.0: Gimp ToolKit +
 gui-libs/gtk-layer-shell 0.1.0-r1: Library to create desktop components for Wayland using the Layer Shell protocol
-gui-libs/libhandy 0.0.13 1.0.2 1.0.3: Building blocks for modern adaptive GNOME apps
+gui-libs/libhandy 0.0.13 1.0.2 1.0.3 1.2.0: Building blocks for modern adaptive GNOME apps
 gui-libs/libwpe 1.8.0: Platform-agnostic interfaces for WPE WebKit
 gui-libs/neatvnc 0.4.0 9999: liberally licensed VNC server library with a clean interface
-gui-libs/tepl 4.4.0 5.0.1: GtkSourceView-based text editors and IDE helper library
+gui-libs/tepl 4.4.0 5.0.1 6.00.0: GtkSourceView-based text editors and IDE helper library
 gui-libs/wayfire-plugins-extra 0.6.0-r1 0.7.0 9999: extra plugins for wayfire
 gui-libs/wf-config 0.5.0 0.6.0 0.7.0 9999: library for managing wayfire configuration files
 gui-libs/wlroots 0.11.0 0.12.0 0.13.0 9999: Pluggable, composable, unopinionated modules for building a Wayland compositor
@@ -14321,7 +14321,7 @@ media-video/oxine 0.7.1-r2: OSD frontend for Xine
 media-video/parole 4.16.0: A simple Xfce4 media player using GStreamer
 media-video/peek 1.4.0-r1 1.5.1: Simple animated Gif screen recorder
 media-video/pgmfindclip 1.13: automatically find a clipping border for a sequence of pgm images
-media-video/pipewire 0.3.18 0.3.22 0.3.24: Multimedia processing graphs
+media-video/pipewire 0.3.18 0.3.22 0.3.24 0.3.25: Multimedia processing graphs
 media-video/pitivi 0.999-r3: A non-linear video editor using the GStreamer multimedia framework
 media-video/projectx 0.91.0.10-r2: Converts, splits and demuxes DVB and other MPEG recordings
 media-video/qmplay2 20.07.04 21.03.09 9999: A Qt-based video player, which can play most formats and codecs
