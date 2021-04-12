@@ -376,19 +376,9 @@ eautoconf() {
 	fi
 
 	if [[ ${WANT_AUTOCONF} != "2.1" && -e configure.in ]] ; then
-		case ${EAPI} in
-			5|6|7)
-				eqawarn "This package has a configure.in file which has long been deprecated.  Please"
-				eqawarn "update it to use configure.ac instead as newer versions of autotools will die"
-				eqawarn "when it finds this file.  See https://bugs.gentoo.org/426262 for details."
-			;;
-			*)
-				# Move configure file to the new location only on newer EAPIs to ensure
-				# checks are done rather than retroactively breaking ebuilds.
-				einfo "Moving configure.in to configure.ac (bug #426262)"
-				mv configure.{in,ac} || die
-			;;
-		esac
+		eqawarn "This package has a configure.in file which has long been deprecated.  Please"
+		eqawarn "update it to use configure.ac instead as newer versions of autotools will die"
+		eqawarn "when it finds this file.  See https://bugs.gentoo.org/426262 for details."
 	fi
 
 	# Install config.guess and config.sub which are required by many macros
