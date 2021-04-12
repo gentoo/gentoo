@@ -21,6 +21,7 @@ RDEPEND="${DEPEND}"
 BDEPEND="
 	sys-devel/clang
 	sys-devel/llvm
+	virtual/pkgconfig
 "
 
 S="${WORKDIR}/${MY_PN}-${MY_PV}"
