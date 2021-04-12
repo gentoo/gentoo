@@ -3890,7 +3890,7 @@ dev-games/cegui 0.8.7-r100: Crazy Eddie's GUI System
 dev-games/clanlib 0.8.1-r1 2.3.7-r1 4.0.0: Multi-platform game development library
 dev-games/flatzebra 0.1.6 0.1.7: Generic game engine for 2D double-buffering animation
 dev-games/freecell-solver 6.2.0-r1: C library for automatically solving Freecell and some other solitaire variants
-dev-games/goatee 0.3.1.2 0.4.0: A monadic take on a 2,500-year-old board game - library
+dev-games/goatee 0.4.0: A monadic take on a 2,500-year-old board game - library
 dev-games/guichan 0.8.2: A portable C++ GUI library designed for games using Allegro, SDL and/or OpenGL
 dev-games/hawknl 1.68-r3: A cross-platform network library designed for games
 dev-games/hdl_dump 0.8.6.20060901 0.9.2.20180722: Game installer for PlayStation 2 HD Loader and Open PS2 Loader
@@ -4222,7 +4222,7 @@ dev-haskell/haddock-library 1.8.0 1.9.0: Library exposing some functionality of 
 dev-haskell/hakyll 4.13.4.1: A static website compiler library
 dev-haskell/half 0.3-r1: Half-precision floating-point
 dev-haskell/hamlet 1.2.0: Haml-like template files that are compile-time checked (deprecated)
-dev-haskell/happstack-server 7.6.0 7.6.1: Web related tools and services
+dev-haskell/happstack-server 7.6.1: Web related tools and services
 dev-haskell/happy 1.19.12: Happy is a parser generator for Haskell
 dev-haskell/harp 0.4.3.2: HaRP allows pattern-matching with regular expressions
 dev-haskell/hashable 1.2.7.0: A class for types that can be converted to a hash value
@@ -4587,7 +4587,7 @@ dev-haskell/stringbuilder 0.5.1: A writer monad for multi-line string literals
 dev-haskell/stringprep 1.0.0: Implements the "StringPrep" algorithm
 dev-haskell/stringsearch 0.3.6.6-r1: Fast searching, splitting and replacing of ByteStrings
 dev-haskell/syb 0.7.1: Scrap Your Boilerplate
-dev-haskell/syb-with-class 0.6.1.11 0.6.1.13: Scrap Your Boilerplate With Class
+dev-haskell/syb-with-class 0.6.1.13: Scrap Your Boilerplate With Class
 dev-haskell/system-fileio 0.3.16.4: Consistent filesystem interaction across GHC versions (deprecated)
 dev-haskell/system-filepath 0.4.14: High-level, byte-based file and directory path manipulations (deprecated)
 dev-haskell/system-posix-redirect 1.1.0.1: A toy module to temporarily redirect a program's stdout
@@ -11140,7 +11140,7 @@ dev-vcs/colorcvs 1.4-r2: A tool based on colorgcc to beautify cvs output
 dev-vcs/colorsvn 0.3.3: Subversion output colorizer
 dev-vcs/cssc 1.4.1: The GNU Project's replacement for SCCS
 dev-vcs/cvs 1.12.12-r13: Concurrent Versions System - source code revision control tools
-dev-vcs/cvs-fast-export 1.55 1.56: fast-export history from a CVS repository or RCS collection
+dev-vcs/cvs-fast-export 1.56: fast-export history from a CVS repository or RCS collection
 dev-vcs/cvs2cl 2.71-r1: produces a GNU-style ChangeLog for CVS-controlled sources
 dev-vcs/cvsgraph 1.7.0: CVS/RCS repository grapher
 dev-vcs/cvsps 2.2_beta1-r1 3.13-r2: Generates patchset information from a CVS repository (supports fast-import)
