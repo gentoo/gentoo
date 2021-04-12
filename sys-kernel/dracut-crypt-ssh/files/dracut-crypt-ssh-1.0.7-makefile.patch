@@ -1,4 +1,5 @@
 # https://bugs.gentoo.org/726014
+# https://bugs.gentoo.org/781125
 --- a/modules/60crypt-ssh/helper/Makefile
 +++ b/modules/60crypt-ssh/helper/Makefile
 @@ -17,11 +17,11 @@ clean:
@@ -10,7 +11,7 @@
  
  unlock:	crypttab.o unlock.o
 -	$(CC) $(CFLAGS) -lblkid $^ -o $@
-+	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -lblkid $^ -o $@
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $^ -lblkid -o $@
  
  crypttab-test: crypttab-test.c crypttab.o crypttab-test-data
 -	$(CC) crypttab-test.c $(CFLAGS) crypttab.o -lblkid -o crypttab-test
