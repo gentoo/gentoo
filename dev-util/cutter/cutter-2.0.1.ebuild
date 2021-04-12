@@ -16,6 +16,7 @@ SRC_URI="https://github.com/rizinorg/cutter/archive/v${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="CC-BY-SA-3.0 GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="graphviz"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 COMMON_DEPEND="${PYTHON_DEPS}
@@ -24,7 +25,8 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-qt/qtnetwork:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
-	dev-util/rizin"
+	dev-util/rizin
+	graphviz? ( media-gfx/graphviz )"
 DEPEND="${COMMON_DEPEND}
 	dev-qt/linguist-tools:5"
 RDEPEND="${COMMON_DEPEND}"
@@ -42,9 +44,10 @@ src_configure() {
 		-DCMAKE_CXX_COMPILER="$(tc-getCXX)"
 		-DCMAKE_C_COMPILER="$(tc-getCC)"
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr"
-		-DCUTTER_ENABLE_GRAPHVIZ=OFF
+		-DCUTTER_ENABLE_GRAPHVIZ="$(usex graphviz)"
 		-DCUTTER_ENABLE_KSYNTAXHIGHLIGHTING=OFF
 		-DCUTTER_ENABLE_PYTHON=ON
+		-DCUTTER_USE_ADDITIONAL_RIZIN_PATHS=OFF
 		-DCUTTER_USE_BUNDLED_RIZIN=OFF
 	)
 
