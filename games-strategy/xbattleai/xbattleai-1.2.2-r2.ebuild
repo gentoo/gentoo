@@ -1,7 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
+inherit toolchain-funcs
 
 DESCRIPTION="A multi-player game of strategy and coordination"
 HOMEPAGE="https://inf.ug.edu.pl/~piotao/xbattle/mirror/www.lysator.liu.se/XBattleAI/"
@@ -18,11 +20,18 @@ RDEPEND="
 	dev-lang/tk:0
 	x11-libs/libX11
 	x11-libs/libXext
-	!games-strategy/xbattle"
-DEPEND="${RDEPEND}
+	!games-strategy/xbattle
+"
+DEPEND="
+	${RDEPEND}
+	x11-base/xorg-proto
+"
+BDEPEND="
 	app-text/rman
 	x11-misc/imake
-	x11-base/xorg-proto"
+"
+
+DOCS=( CONTRIBUTORS README README.AI TODO xbattle.dot )
 
 PATCHES=(
 	"${FILESDIR}"/${P}-sandbox.patch
@@ -31,10 +40,12 @@ PATCHES=(
 src_prepare() {
 	default
 	rm -f xbcs/foo.xbc~ || die
+	rm config.cache || die
+
+	tc-export CC
 }
 
 src_install() {
-	DOCS="CONTRIBUTORS README README.AI TODO xbattle.dot" \
-		default
-	mv "${D}/usr/bin/"{,xb_}gauntletCampaign || die
+	default
+	mv "${ED}/usr/bin/"{,xb_}gauntletCampaign || die
 }
