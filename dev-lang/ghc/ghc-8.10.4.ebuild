@@ -106,6 +106,7 @@ PREBUILT_BINARY_RDEPENDS="${PREBUILT_BINARY_DEPENDS}
 RDEPEND+="binary? ( ${PREBUILT_BINARY_RDEPENDS} )"
 
 DEPEND="${RDEPEND}
+	virtual/pkgconfig
 	doc? ( app-text/docbook-xml-dtd:4.2
 		app-text/docbook-xml-dtd:4.5
 		app-text/docbook-xsl-stylesheets
