@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -38,7 +38,8 @@ DEPEND="${RDEPEND}
 		${LIB_DEPEND_MINIMAL}
 		!minimal? ( ${LIB_DEPEND} )
 	)
-	app-crypt/trousers"
+	app-crypt/trousers
+	virtual/pkgconfig"
 
 S=${WORKDIR}
 
