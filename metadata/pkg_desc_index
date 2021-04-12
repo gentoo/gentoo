@@ -10655,7 +10655,7 @@ dev-tcltk/tablelist 6.8 6.12: Multi-Column Listbox Package
 dev-tcltk/tcl3d 0.5.0: Tcl bindings to OpenGL and other 3D libraries
 dev-tcltk/tcllib 1.20: Tcl Standard Library
 dev-tcltk/tclperl 3.2-r1: Perl package for Tcl
-dev-tcltk/tclpython 5.0: Python package for Tcl
+dev-tcltk/tclpython 5.0 5.0-r1: Python package for Tcl
 dev-tcltk/tclreadline 2.1.0-r5 2.3.8-r1: Readline extension to TCL
 dev-tcltk/tclx 8.4.1 8.4.4: A set of extensions to TCL
 dev-tcltk/tclxml 3.2-r2 3.2.7: Pure Tcl implementation of an XML parser
