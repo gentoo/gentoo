@@ -31,8 +31,9 @@ BDEPEND="$(vala_depend)
 		sys-apps/help2man
 	)
 	test? (
-		thunderbolt? ( dev-util/umockdev )
+		app-crypt/tpm2-tss
 		net-libs/gnutls[tools]
+		thunderbolt? ( dev-util/umockdev )
 	)
 "
 CDEPEND="${PYTHON_DEPS}
