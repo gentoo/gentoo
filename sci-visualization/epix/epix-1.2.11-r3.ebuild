@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -52,7 +52,7 @@ src_install() {
 	if use examples; then
 		cd samples || die
 		docinto examples
-		doins *.xp *.flx *c *h README
+		dodoc *.xp *.flx *c *h README
 	fi
 }
 
