@@ -537,7 +537,7 @@ qemu_src_configure() {
 		$(conf_notuser vhost-user-fs)
 		$(conf_tools vhost-user-fs virtiofsd)
 		$(conf_notuser virgl virglrenderer)
-		$(conf_notuser virtfs)
+		$(conf_softmmu virtfs)
 		$(conf_notuser vnc)
 		$(conf_notuser vte)
 		$(conf_notuser xen)
