@@ -954,7 +954,7 @@ app-arch/plzip 1.8 1.9: Parallel lzip compressor
 app-arch/pure-sfv 0.3-r1: utility to test and create .sfv files and create .par files
 app-arch/pxz 5.0_pre20151029 9999: parallel LZMA compressor (no parallel decompression!)
 app-arch/qpress 1.1: A portable file archiver using QuickLZ algorithm
-app-arch/rar 6.0.0_p20201201: RAR compressor/uncompressor
+app-arch/rar 6.0.0_p20201201 6.0.1_p20210407: RAR compressor/uncompressor
 app-arch/rpm 4.14.2.1-r1 4.16.0: Red Hat Package Management Utils
 app-arch/rpm2targz 9.0.0.5g-r2 2021.03.16: Convert a .rpm file to a .tar.gz archive
 app-arch/rzip 2.1-r3: Compression program for large files
@@ -973,7 +973,7 @@ app-arch/unadf 0.7.12-r1: Extract files from Amiga adf disk images
 app-arch/unar 1.10.7: Unpacker for various archiving formats, e.g. rar v3
 app-arch/unmakeself 1.1: Makeself archive extractor
 app-arch/unp 2.0_pre7_p1-r1 2.0_pre8 2.0_pre9: Script for unpacking various file formats
-app-arch/unrar 6.0.3 6.0.4: Uncompress rar files
+app-arch/unrar 6.0.3 6.0.4 6.0.5: Uncompress rar files
 app-arch/unrpa 2.3.0: Ren'Py's RPA data file extractor
 app-arch/unshield 1.4.3: InstallShield CAB file extractor
 app-arch/unzip 6.0_p25-r1 6.0_p26: unzipper for pkzip-compressed files
