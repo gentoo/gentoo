@@ -272,6 +272,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.2.0-strings.patch
 	"${FILESDIR}"/${PN}-5.2.0-cleaner-werror.patch
 	"${FILESDIR}"/${PN}-5.2.0-disable-keymap.patch
+	"${FILESDIR}"/${PN}-5.2.0-dce-locks.patch
 )
 
 QA_PREBUILT="
