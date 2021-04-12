@@ -24,10 +24,10 @@ RDEPEND="
 	gtk? ( x11-libs/gtk+:3 )
 "
 DEPEND="${RDEPEND}
-	sys-devel/autoconf-archive
 	test? ( sys-apps/dbus )
 "
 BDEPEND="
+	sys-devel/autoconf-archive
 	sys-devel/gettext
 	virtual/pkgconfig
 "

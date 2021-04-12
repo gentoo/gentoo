@@ -5,7 +5,7 @@ EAPI=6
 
 WX_GTK_VER=3.0-gtk3
 
-inherit autotools gnome2-utils linux-info systemd user wxwidgets
+inherit autotools desktop gnome2-utils linux-info systemd user wxwidgets
 
 DESCRIPTION="The Berkeley Open Infrastructure for Network Computing"
 HOMEPAGE="https://boinc.ssl.berkeley.edu/"

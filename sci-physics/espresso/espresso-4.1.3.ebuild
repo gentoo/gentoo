@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{7,8,9} )
 CMAKE_MAKEFILE_GENERATOR="emake"
 
-inherit cmake python-single-r1 savedconfig
+inherit cmake cuda python-single-r1 savedconfig
 
 DESCRIPTION="Extensible Simulation Package for Research on Soft matter"
 HOMEPAGE="http://espressomd.org"

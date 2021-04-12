@@ -14,8 +14,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~sparc ~x86"
 IUSE=""
 
-DEPEND="${DEPEND}
-	app-antivirus/clamav
+RDEPEND="app-antivirus/clamav"
+DEPEND="
+	${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 "
 

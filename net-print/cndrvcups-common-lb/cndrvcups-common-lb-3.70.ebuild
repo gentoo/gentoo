@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools toolchain-funcs
+inherit autotools multilib toolchain-funcs
 
 MY_PV="$(ver_rs 1- '')"
 SOURCES_NAME="linux-UFRII-drv-v${MY_PV}-uken"

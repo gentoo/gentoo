@@ -53,12 +53,12 @@ RDEPEND="${COMMON_DEPEND}
 "
 DEPEND="${COMMON_DEPEND}
 	app-text/iso-codes
-	sys-devel/autoconf-archive
 	x11-base/xorg-proto
 "
 BDEPEND="
 	dev-util/glib-utils
 	>=dev-util/intltool-0.40.1
+	sys-devel/autoconf-archive
 	>=sys-devel/gettext-0.17
 	virtual/pkgconfig
 "

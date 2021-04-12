@@ -389,7 +389,8 @@ epatch() {
 case ${EAPI:-0} in
 0|1|2|3|4|5)
 
-# @VARIABLE: EPATCH_USER_SOURCE
+# @ECLASS_VARIABLE: EPATCH_USER_SOURCE
+# @USER_VARIABLE
 # @DESCRIPTION:
 # Location for user patches, see the epatch_user function.
 # Should be set by the user. Don't set this in ebuilds.

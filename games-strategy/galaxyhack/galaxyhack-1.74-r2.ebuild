@@ -15,7 +15,7 @@ LICENSE="GPL-2 galaxyhack"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="
+DEPEND="
 	>=dev-libs/boost-1.34:=
 	media-libs/libsdl[video]
 	media-libs/sdl-image[png]
