@@ -37,6 +37,7 @@ RDEPEND="
 BDEPEND="
 	${PYTHON_DEPS}
 	sys-apps/coreutils
+	virtual/pkgconfig
 	systemtap? ( dev-util/systemtap )
 	test? ( net-misc/curl )
 "
