@@ -54,7 +54,7 @@ src_install() {
 	for b in bin launcher ; do
 		bb="shadowgrounds-${b}"
 		exeinto ${d}
-		newexe ${bb} ${bb} || die
+		newexe ${bb} ${bb}
 
 		make_wrapper ${bb} "./${bb}" "${d}"
 		make_desktop_entry ${bb} "Shadowgrounds ${b}" Shadowgrounds
