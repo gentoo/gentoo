@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils flag-o-matic libtool linux-info ltprune
+inherit epatch flag-o-matic libtool linux-info ltprune
 
 DESCRIPTION="Tools for ATM"
 HOMEPAGE="http://linux-atm.sourceforge.net/"
