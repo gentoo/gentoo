@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools flag-o-matic multilib-minimal toolchain-funcs
 
 MY_PN="CUnit"
@@ -19,7 +20,7 @@ IUSE="ncurses static-libs"
 
 RDEPEND="ncurses? ( >=sys-libs/ncurses-5.9-r3:0=[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}"
-BDEPEND=""
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
 

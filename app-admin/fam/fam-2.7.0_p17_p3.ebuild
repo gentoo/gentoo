@@ -29,6 +29,8 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 "
+BDEPEND="virtual/pkgconfig"
+
 DOCS=( AUTHORS ChangeLog INSTALL NEWS TODO README )
 
 PATCHES=(

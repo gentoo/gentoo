@@ -26,7 +26,10 @@ RDEPEND="
 		>=x11-drivers/nvidia-drivers-375.26[uvm(+)]
 		mpi? ( virtual/mpi )
 		)"
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	virtual/pkgconfig
+"
 
 RESTRICT="test"
 

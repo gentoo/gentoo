@@ -53,7 +53,9 @@ BDEPEND="
 	duktape? ( app-editors/vim-core )
 	dev-libs/check
 	dev-perl/HTML-Parser
-	>=dev-util/netsurf-buildsystem-1.7-r1"
+	>=dev-util/netsurf-buildsystem-1.7-r1
+	virtual/pkgconfig
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.9-conditionally-include-image-headers.patch"

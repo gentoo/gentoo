@@ -36,6 +36,7 @@ DEPEND="
 RDEPEND="${DEPEND}
 	dev-python/olefile[${PYTHON_USEDEP}]"
 BDEPEND="
+	virtual/pkgconfig
 	test? (
 		${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]

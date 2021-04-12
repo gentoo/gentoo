@@ -18,6 +18,7 @@ IUSE=""
 BDEPEND="
 	sys-devel/bison
 	sys-devel/flex
+	virtual/pkgconfig
 "
 
 S=${WORKDIR}/${MY_P}

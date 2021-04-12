@@ -17,6 +17,7 @@ IUSE=""
 
 DEPEND="sys-libs/ncurses:="
 RDEPEND="${DEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
 
