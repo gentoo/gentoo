@@ -13271,7 +13271,7 @@ media-libs/libaacplus 2.0.2-r3: HE-AAC+ v2 library, based on the reference imple
 media-libs/libaacs 0.11.0: Open implementation of the Advanced Access Content System (AACS) specification
 media-libs/libafterimage 1.20-r2 1.20-r3: Afterstep's standalone generic image manipulation library
 media-libs/libao 1.2.2-r1: The Audio Output library
-media-libs/libaom 1.0.0-r2 2.0.0 2.0.1 9999: Alliance for Open Media AV1 Codec SDK
+media-libs/libaom 1.0.0-r2 2.0.0 2.0.1 3.0.0 9999: Alliance for Open Media AV1 Codec SDK
 media-libs/libart_lgpl 2.3.21-r3: A LGPL version of libart
 media-libs/libass 0.15.0: Library for SSA/ASS subtitles rendering
 media-libs/libavif 0.8.4 0.9.0-r2 9999: Library for encoding and decoding .avif files
@@ -18192,7 +18192,7 @@ www-client/elinks 0.13.5-r100 9999: Advanced and well-established text-mode web 
 www-client/epiphany 3.34.4 3.36.4: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3 1.0-r4: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 78.9.0 87.0: Firefox Web Browser
+www-client/firefox 78.9.0 87.0 87.0-r1: Firefox Web Browser
 www-client/firefox-bin 78.9.0 87.0: Firefox Web Browser
 www-client/google-chrome 89.0.4389.114: The web browser from Google
 www-client/google-chrome-beta 90.0.4430.70: The web browser from Google
