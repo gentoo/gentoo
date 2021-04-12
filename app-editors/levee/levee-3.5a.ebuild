@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,9 +13,14 @@ SLOT="0"
 KEYWORDS="amd64 ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
 IUSE=""
 
-DEPEND="!app-text/lv
-	sys-libs/ncurses:0="
-RDEPEND="${DEPEND}"
+RDEPEND="
+	!app-text/lv
+	sys-libs/ncurses:0=
+"
+DEPEND="
+	${RDEPEND}
+	virtual/pkgconfig
+"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-3.4o-darwin.patch
