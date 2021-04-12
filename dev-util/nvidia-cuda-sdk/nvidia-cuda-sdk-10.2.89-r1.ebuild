@@ -25,8 +25,9 @@ RDEPEND="
 		media-libs/glew:0=
 		!prefix? ( >=x11-drivers/nvidia-drivers-${DRIVER_PV}[uvm(+)] )
 		mpi? ( virtual/mpi )
-		)"
+	)"
 DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 RESTRICT="test"
 
