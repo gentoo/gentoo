@@ -23,8 +23,6 @@ RESTRICT="test"
 DEPEND="
 	sys-apps/miscfiles
 	sys-libs/ncurses:=
-	!games-misc/wtf
-	!app-misc/banner
 	!games-puzzle/hangman
 	!games-misc/wumpus
 "
