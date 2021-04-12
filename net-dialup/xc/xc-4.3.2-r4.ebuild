@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils flag-o-matic multilib toolchain-funcs
+inherit epatch flag-o-matic multilib toolchain-funcs
 
 DESCRIPTION="Modem dialout & serial terminal program"
 HOMEPAGE="http://www.ibiblio.org/pub/Linux/apps/serialcomm/dialout/"
