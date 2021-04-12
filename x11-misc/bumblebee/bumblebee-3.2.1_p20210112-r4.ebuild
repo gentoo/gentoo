@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	COMMIT="8f3d307b6aabbc2cd8444c6e5a4360f3bf2915ec"
 	SRC_URI="https://github.com/Bumblebee-Project/Bumblebee/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="amd64 x86"
 
 	S="${WORKDIR}/Bumblebee-${COMMIT}"
 fi
