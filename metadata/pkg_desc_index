@@ -15346,7 +15346,7 @@ net-misc/linux-eoip 0.5: Linux support for proprietary MIkrotik EoIP protocol
 net-misc/linuxptp 2.0-r1: The Linux Precision Time Protocol (PTP) implementation
 net-misc/liveice 2000530-r2: Live Source Client For IceCast
 net-misc/lksctp-tools 1.0.18-r1: Tools for Linux Kernel Stream Control Transmission Protocol implementation
-net-misc/lldpd 1.0.7 1.0.9: Implementation of IEEE 802.1ab (LLDP)
+net-misc/lldpd 1.0.7 1.0.9 1.0.10: Implementation of IEEE 802.1ab (LLDP)
 net-misc/mcproxy 1.1.1-r1: A multicast proxy for IGMP/MLD
 net-misc/megatools 1.10.3: Command line tools and C library for accessing Mega cloud storage
 net-misc/memcached 1.6.9: High-performance, distributed memory object caching system
