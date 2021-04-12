@@ -31,8 +31,11 @@ IUSE="doc examples java ncurses static-libs"
 RDEPEND="
 	java? ( >=virtual/jre-1.5:= )
 	ncurses? ( sys-libs/ncurses:0= )
-	"
-DEPEND="${RDEPEND}"
+"
+DEPEND="
+	${RDEPEND}
+	ncurses? ( virtual/pkgconfig )
+"
 
 S="${WORKDIR}/${MY_P}-dist"
 
