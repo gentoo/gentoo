@@ -1,14 +1,14 @@
 BDEPEND=>=dev-util/meson-0.54.0 >=dev-util/ninja-1.8.2 dev-util/meson-format-array >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile configure install test unpack
-DEPEND=ssl? ( !libressl? ( >=dev-libs/openssl-1.1.0:0= ) libressl? ( dev-libs/libressl:0= ) )
-DESCRIPTION=lib that implements the client side of the SMTP protocol
+DEPEND=ssl? ( >=dev-libs/openssl-1.1.0:0= )
+DESCRIPTION=Lib that implements the client side of the SMTP protocol
 EAPI=7
 HOMEPAGE=https://libesmtp.github.io/
 INHERIT=meson git-r3
-IUSE=libressl ssl static-libs threads
+IUSE=ssl static-libs threads
 LICENSE=LGPL-2.1 GPL-2
 PROPERTIES=live
-RDEPEND=ssl? ( !libressl? ( >=dev-libs/openssl-1.1.0:0= ) libressl? ( dev-libs/libressl:0= ) )
+RDEPEND=ssl? ( >=dev-libs/openssl-1.1.0:0= )
 SLOT=0
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	meson	e43eef9331f54965a573ed380854ff47	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
-_md5_=8776c9009085c46c523c972da18bcb9d
+_md5_=eea39c4ad96aa1e3d3fa0cc13be68bd8
