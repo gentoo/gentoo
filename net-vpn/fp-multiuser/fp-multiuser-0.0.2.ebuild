@@ -271,7 +271,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 src_compile() {
-	emake all || die
+	emake all
 }
 
 src_install() {
