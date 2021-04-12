@@ -1,5 +1,5 @@
---- a/nfbtrans.c	2004-09-21 19:52:34.341784094 -0500
-+++ b/nfbtrans.c	2004-09-21 19:54:07.005727168 -0500
+--- a/NFBTRANS.C
++++ b/NFBTRANS.C
 @@ -6,7 +6,7 @@
  #define LINT_ARGS
  #define DOS
