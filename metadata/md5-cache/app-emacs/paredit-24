@@ -1,0 +1,13 @@
+BDEPEND=>=app-editors/emacs-23.1:*
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DESCRIPTION=Minor mode for performing structured editing of S-expressions
+EAPI=7
+HOMEPAGE=https://mumble.net/~campbell/emacs/ https://www.emacswiki.org/emacs/ParEdit
+INHERIT=elisp
+KEYWORDS=~amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-3+
+RDEPEND=>=app-editors/emacs-23.1:*
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~ulm/distfiles/paredit-24.el.xz https://dev.gentoo.org/~ulm/distfiles/paredit-23.html.xz
+_eclasses_=elisp-common	36f97076abd90f943a34f8bcd58b5bcc	elisp	023dd24ad9e6d5e62907e7007f548ca3
+_md5_=179c461c8c22baaa952b5bfcb8ca2adf

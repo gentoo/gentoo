@@ -1,13 +1,13 @@
 BDEPEND=>=app-editors/emacs-23.1:*
 DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
-DESCRIPTION=An Emacs major mode for editing Jasmin Java bytecode assembler files
+DESCRIPTION=A major mode for editing Cascading Style Sheets (CSS)
 EAPI=7
-HOMEPAGE=https://www.neilvandyke.org/jasmin-emacs/
+HOMEPAGE=https://www.garshol.priv.no/download/software/css-mode/
 INHERIT=elisp
-KEYWORDS=~alpha amd64 ~s390 x86
+KEYWORDS=amd64 ppc ppc64 x86
 LICENSE=GPL-2+
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
-SRC_URI=mirror://gentoo/jasmin-1.2.tar.gz
+SRC_URI=mirror://gentoo/css-mode-0.11.tar.bz2
 _eclasses_=elisp-common	36f97076abd90f943a34f8bcd58b5bcc	elisp	023dd24ad9e6d5e62907e7007f548ca3
-_md5_=69f3f31e55fe19d1ec00e20e32e1fece
+_md5_=96f2db1982cb5f28afd4312739e17287

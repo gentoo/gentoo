@@ -1,7 +1,7 @@
+BDEPEND=>=app-editors/emacs-23.1:*
 DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
-DEPEND=>=app-editors/emacs-23.1:*
 DESCRIPTION=An Emacs mode that reformats IETF RFCs for display
-EAPI=5
+EAPI=7
 HOMEPAGE=http://www.loveshack.ukfsn.org/emacs/ https://www.emacswiki.org/emacs/RfcView
 INHERIT=elisp
 KEYWORDS=~alpha amd64 x86
@@ -9,5 +9,5 @@ LICENSE=GPL-3+
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/rfcview-0.13.el.xz
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	36f97076abd90f943a34f8bcd58b5bcc	estack	055c42df72f76a4f45ec92b35e83cd56	epatch	9f813bb3c47cf2e60619a663b87c5f4e	elisp	023dd24ad9e6d5e62907e7007f548ca3
-_md5_=5d5f294b372141d0d61e20a4d9347474
+_eclasses_=elisp-common	36f97076abd90f943a34f8bcd58b5bcc	elisp	023dd24ad9e6d5e62907e7007f548ca3
+_md5_=7c30a40b350b44dcf6a33b05e6f95a21

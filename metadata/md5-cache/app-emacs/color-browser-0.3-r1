@@ -1,7 +1,8 @@
+BDEPEND=>=app-editors/emacs-23.1:*
 DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
-DEPEND=app-emacs/color-theme >=app-editors/emacs-23.1:*
+DEPEND=app-emacs/color-theme
 DESCRIPTION=A utility for designing Emacs color themes
-EAPI=5
+EAPI=7
 HOMEPAGE=https://www.emacswiki.org/emacs/KahlilHodgson
 INHERIT=elisp
 KEYWORDS=~amd64 ~ppc ~sparc ~x86
@@ -9,5 +10,5 @@ LICENSE=GPL-2+
 RDEPEND=app-emacs/color-theme >=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=mirror://gentoo/color-browser-0.3.tar.gz
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	36f97076abd90f943a34f8bcd58b5bcc	estack	055c42df72f76a4f45ec92b35e83cd56	epatch	9f813bb3c47cf2e60619a663b87c5f4e	elisp	023dd24ad9e6d5e62907e7007f548ca3
-_md5_=84f683ae4d80a8f1c9b7806d08654798
+_eclasses_=elisp-common	36f97076abd90f943a34f8bcd58b5bcc	elisp	023dd24ad9e6d5e62907e7007f548ca3
+_md5_=da98be9a193b675daac533c9c39f0637

@@ -1,13 +1,13 @@
+BDEPEND=>=app-editors/emacs-23.1:*
 DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
-DEPEND=>=app-editors/emacs-23.1:*
 DESCRIPTION=Emacs package for talking to a dictionary server
-EAPI=5
-HOMEPAGE=http://www.myrkr.in-berlin.de/dictionary/index.html
+EAPI=7
+HOMEPAGE=https://www.myrkr.in-berlin.de/dictionary/index.html
 INHERIT=elisp
 KEYWORDS=amd64 ppc x86
 LICENSE=GPL-2+
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
-SRC_URI=http://www.myrkr.in-berlin.de/dictionary/dictionary-1.10.tar.gz
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	36f97076abd90f943a34f8bcd58b5bcc	estack	055c42df72f76a4f45ec92b35e83cd56	epatch	9f813bb3c47cf2e60619a663b87c5f4e	elisp	023dd24ad9e6d5e62907e7007f548ca3
-_md5_=654aab74f3e37cd0b430041f780f3458
+SRC_URI=https://www.myrkr.in-berlin.de/dictionary/dictionary-1.10.tar.gz
+_eclasses_=elisp-common	36f97076abd90f943a34f8bcd58b5bcc	elisp	023dd24ad9e6d5e62907e7007f548ca3
+_md5_=14506c1dbe66f42bd3aa4b67e4f8dd79

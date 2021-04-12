@@ -1,13 +1,13 @@
 BDEPEND=>=app-editors/emacs-23.1:*
 DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
-DESCRIPTION=Visual insertion of tempo templates
+DESCRIPTION=Advanced highlighting of matching parentheses
 EAPI=7
-HOMEPAGE=https://nschum.de/src/emacs/tempo-snippets/ https://www.emacswiki.org/emacs/TempoSnippets
+HOMEPAGE=https://www.gnuvola.org/software/j/mic-paren/ https://www.emacswiki.org/emacs/MicParen
 INHERIT=elisp
 KEYWORDS=~amd64 ~x86
-LICENSE=GPL-2+
+LICENSE=GPL-3+
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
-SRC_URI=https://dev.gentoo.org/~ulm/distfiles/tempo-snippets-0.1.5.el.bz2
+SRC_URI=https://dev.gentoo.org/~ulm/distfiles/mic-paren-3.15.el.xz
 _eclasses_=elisp-common	36f97076abd90f943a34f8bcd58b5bcc	elisp	023dd24ad9e6d5e62907e7007f548ca3
-_md5_=52e360f6f6f36839a686d1149cc3a307
+_md5_=9ee791152bc6c21a60d11de0c10d1863

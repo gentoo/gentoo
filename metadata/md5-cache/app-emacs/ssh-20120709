@@ -1,7 +1,7 @@
+BDEPEND=>=app-editors/emacs-23.1:*
 DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
-DEPEND=>=app-editors/emacs-23.1:*
 DESCRIPTION=Support for SSH sessions in Emacs shell buffers
-EAPI=5
+EAPI=7
 HOMEPAGE=http://www.splode.com/~friedman/software/emacs-lisp/index.html#ssh
 INHERIT=elisp
 KEYWORDS=~amd64 ~ppc ~sparc ~x86
@@ -9,5 +9,5 @@ LICENSE=GPL-2+
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/ssh-20120709.el.xz
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	36f97076abd90f943a34f8bcd58b5bcc	estack	055c42df72f76a4f45ec92b35e83cd56	epatch	9f813bb3c47cf2e60619a663b87c5f4e	elisp	023dd24ad9e6d5e62907e7007f548ca3
-_md5_=6a02d9ef2357593fecc321e4831db3cb
+_eclasses_=elisp-common	36f97076abd90f943a34f8bcd58b5bcc	elisp	023dd24ad9e6d5e62907e7007f548ca3
+_md5_=b2f045a285858cebfeff26c45f702d5e
