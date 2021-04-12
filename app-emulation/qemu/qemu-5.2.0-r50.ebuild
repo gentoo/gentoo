@@ -234,6 +234,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.2.0-strings.patch
 	"${FILESDIR}"/${PN}-5.2.0-fix-firmware-path.patch
 	"${FILESDIR}"/${PN}-5.2.0-no-pie-ld.patch
+	"${FILESDIR}"/${PN}-5.2.0-dce-locks.patch
 )
 
 QA_PREBUILT="

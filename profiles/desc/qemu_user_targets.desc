@@ -11,6 +11,7 @@ alpha - userspace emulation target
 arm - ARM (little endian) userspace emulation target
 armeb - ARM (big endian) userspace emulation target
 cris - userspace emulation target
+hexagon - Qualcomm hexagon userspace emulation target
 hppa - userspace emulation target
 i386 - userspace emulation target
 m68k - userspace emulation target
