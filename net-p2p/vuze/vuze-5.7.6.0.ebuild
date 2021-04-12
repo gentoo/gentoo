@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 JAVA_PKG_IUSE="source"
 
-inherit eutils java-pkg-2 java-ant-2 xdg-utils desktop
+inherit desktop edos2unix java-pkg-2 java-ant-2 xdg-utils
 
 MY_PV=$(ver_rs 1- "")
 MY_SRC="Vuze_${MY_PV}"
