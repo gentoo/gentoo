@@ -8,6 +8,5 @@
 	</upstream>
 <use>
 	<flag name="clang">Use Clang compiler instead of GCC</flag>
-	<flag name="neon">Enable ARM32 neon-salsa2012-asm code</flag>
 </use>
 </pkgmetadata>
