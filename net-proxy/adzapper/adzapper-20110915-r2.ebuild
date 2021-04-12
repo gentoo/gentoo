@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 MY_P=${P/zapper/zap}
 
-inherit eutils
+inherit epatch
 
 DESCRIPTION="Redirector for squid to intercept advertising, page counters and web bugs"
 HOMEPAGE="http://adzapper.sourceforge.net/"
