@@ -34,6 +34,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	sys-apps/groff
+	virtual/pkgconfig
 	test? ( sys-process/time )
 "
 
