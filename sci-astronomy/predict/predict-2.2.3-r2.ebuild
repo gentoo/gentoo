@@ -23,7 +23,10 @@ RDEPEND="
 	gtk? ( x11-libs/gtk+:2 )
 	xforms? ( x11-libs/xforms )
 	xplanet? ( x11-misc/xplanet[truetype] )"
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	virtual/pkgconfig
+"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-earthtrack.patch
