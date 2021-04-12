@@ -60,6 +60,7 @@ BDEPEND="
 	sys-devel/gettext
 	sys-devel/clang
 	sys-devel/llvm
+	virtual/pkgconfig
 "
 
 PATCHES=(
