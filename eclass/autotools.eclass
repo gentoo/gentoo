@@ -85,7 +85,7 @@ if [[ -n ${WANT_AUTOMAKE} ]] ; then
 		# the autoreconf tool, so this requirement is correct, bug #401605.
 		none) ;;
 		latest) _automake_atom="|| ( `printf '>=sys-devel/automake-%s:%s ' ${_LATEST_AUTOMAKE[@]/:/ }` )" ;;
-		*) _automake_atom="=sys-devel/automake-${WANT_AUTOMAKE}*" ;;
+		*) _automake_atom="=sys-devel/automake-${WANT_AUTOMAKE}*";;
 	esac
 	export WANT_AUTOMAKE
 fi
@@ -381,13 +381,13 @@ eautoconf() {
 				eqawarn "This package has a configure.in file which has long been deprecated.  Please"
 				eqawarn "update it to use configure.ac instead as newer versions of autotools will die"
 				eqawarn "when it finds this file.  See https://bugs.gentoo.org/426262 for details."
-				;;
+			;;
 			*)
 				# Move configure file to the new location only on newer EAPIs to ensure
 				# checks are done rather than retroactively breaking ebuilds.
 				einfo "Moving configure.in to configure.ac (bug #426262)"
 				mv configure.{in,ac} || die
-				;;
+			;;
 		esac
 	fi
 
