@@ -1,0 +1,18 @@
+Fix CFLAGS=-Og build break. -Og fails because gcc does not enable dead
+code elimination (but does set __OPTIMIZE__ define).
+
+The fix avoids DCE reliance downstream entirely.
+
+Reported-by: Luke-Jr
+Bug: https://bugs.gentoo.org/782364
+--- a/include/qemu/lockable.h
++++ b/include/qemu/lockable.h
+@@ -28,7 +28,7 @@ struct QemuLockable {
+  * to QEMU_MAKE_LOCKABLE.  For optimized builds, we can rely on dead-code elimination
+  * from the compiler, and give the errors already at link time.
+  */
+-#if defined(__OPTIMIZE__) && !defined(__SANITIZE_ADDRESS__)
++#if defined(__OPTIMIZE__) && !defined(__SANITIZE_ADDRESS__) && defined(VALIDATE_LOCKS_VIA_DCE)
+ void unknown_lock_type(void *);
+ #else
+ static inline void unknown_lock_type(void *unused)
