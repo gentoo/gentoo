@@ -40,6 +40,7 @@ BDEPEND="
 	${LINUX_PATCH+dev-util/patchutils}
 	sys-devel/bison
 	sys-devel/flex
+	virtual/pkgconfig
 	doc? (
 		app-text/asciidoc
 		app-text/sgml-common
