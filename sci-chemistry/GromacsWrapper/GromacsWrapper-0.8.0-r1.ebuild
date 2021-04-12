@@ -25,14 +25,16 @@ LICENSE="GPL-3 LGPL-3"
 SLOT="0"
 IUSE=""
 
-BDEPEND="
+RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/matplotlib[${PYTHON_USEDEP}]
 	sci-libs/numkit[${PYTHON_USEDEP}]
+"
+BDEPEND="
+	${RDEPEND}
 	test? ( >=dev-python/pandas-0.17[${PYTHON_USEDEP}] )
 "
-RDEPEND="${DEPEND}"
 
 distutils_enable_tests pytest
 
