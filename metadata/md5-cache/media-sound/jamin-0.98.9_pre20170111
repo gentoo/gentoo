@@ -1,4 +1,4 @@
-BDEPEND=dev-util/intltool sys-devel/gettext virtual/pkgconfig sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-apps/gawk
+BDEPEND=dev-util/intltool sys-devel/gettext virtual/pkgconfig sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure postinst postrm preinst prepare
 DEPEND=dev-libs/atk dev-libs/glib dev-libs/libxml2 media-libs/libsndfile >=media-plugins/swh-plugins-0.4.6 sci-libs/fftw:3.0= x11-libs/cairo x11-libs/gdk-pixbuf x11-libs/gtk+:3 x11-libs/pango virtual/jack osc? ( >=media-libs/liblo-0.26 ) dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=Audio mastering interface for JACK Audio Connection Kit (JACK)
@@ -11,5 +11,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/atk dev-libs/glib dev-libs/libxml2 media-libs/libsndfile >=media-plugins/swh-plugins-0.4.6 sci-libs/fftw:3.0= x11-libs/cairo x11-libs/gdk-pixbuf x11-libs/gtk+:3 x11-libs/pango virtual/jack osc? ( >=media-libs/liblo-0.26 )
 SLOT=0
 SRC_URI=http://deb.debian.org/debian/pool/main/j/jamin/jamin_0.98.9~git20170111~199091~repack1.orig.tar.bz2 http://deb.debian.org/debian/pool/main/j/jamin/jamin_0.98.9~git20170111~199091~repack1-1.debian.tar.xz
-_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	79023c161e8f625b0f1823715941c2da	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
+_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
 _md5_=41e1fd4f5b61973385328d5ed8e4e6a6

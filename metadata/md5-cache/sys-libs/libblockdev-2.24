@@ -1,4 +1,4 @@
-BDEPEND=dev-util/gtk-doc-am gtk-doc? ( dev-util/gtk-doc ) introspection? ( >=dev-libs/gobject-introspection-1.3.0 ) sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-apps/gawk
+BDEPEND=dev-util/gtk-doc-am gtk-doc? ( dev-util/gtk-doc ) introspection? ( >=dev-libs/gobject-introspection-1.3.0 ) sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install prepare setup
 DEPEND=>=dev-libs/glib-2.42.2 dev-libs/libbytesize >=sys-apps/kmod-19 >=sys-apps/util-linux-2.27 >=sys-block/parted-3.1 cryptsetup? ( escrow? ( >=dev-libs/nss-3.18.0 dev-libs/volume_key ) >=sys-fs/cryptsetup-1.6.7:= ) device-mapper? ( sys-fs/lvm2 ) dmraid? ( sys-fs/dmraid sys-fs/lvm2 ) lvm? ( sys-fs/lvm2 virtual/udev ) vdo? ( dev-libs/libyaml ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_9? ( dev-lang/python:3.9 >=dev-lang/python-exec-2:=[python_targets_python3_9] )
 DESCRIPTION=A library for manipulating block devices
@@ -13,5 +13,5 @@ REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_8 
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/storaged-project/libblockdev/releases/download/2.24-1/libblockdev-2.24.tar.gz
-_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	79023c161e8f625b0f1823715941c2da	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-single-r1	d25ac9d5d91fe9d44fda6ec192aca11a	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-single-r1	d25ac9d5d91fe9d44fda6ec192aca11a	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=191d3ba485c02f2717d7c49eb1c2ba16

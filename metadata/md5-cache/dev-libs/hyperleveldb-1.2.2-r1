@@ -1,4 +1,4 @@
-BDEPEND=sys-devel/gnuconfig >=app-portage/elt-patches-20170815 =sys-devel/automake-1.11* >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-apps/gawk
+BDEPEND=sys-devel/gnuconfig >=app-portage/elt-patches-20170815 =sys-devel/automake-1.11* >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install prepare
 DEPEND=dev-libs/leveldb:=[snappy]
 DESCRIPTION=Hyperdex fork/extension of leveldb
@@ -10,5 +10,5 @@ LICENSE=BSD
 RDEPEND=dev-libs/leveldb:=[snappy]
 SLOT=0
 SRC_URI=http://hyperdex.org/src/hyperleveldb-1.2.2.tar.gz
-_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	79023c161e8f625b0f1823715941c2da
+_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354
 _md5_=54a8c2cf8a7b8198a47be50e82c733de

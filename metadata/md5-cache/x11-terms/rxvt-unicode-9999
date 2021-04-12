@@ -1,4 +1,4 @@
-BDEPEND=sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-apps/gawk dev-vcs/cvs
+BDEPEND=sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-vcs/cvs
 DEFINED_PHASES=compile configure install prepare unpack
 DEPEND=>=sys-libs/ncurses-5.7-r6:= media-libs/fontconfig x11-libs/libX11 x11-libs/libXrender gdk-pixbuf? ( x11-libs/gdk-pixbuf ) kernel_Darwin? ( dev-perl/Mac-Pasteboard ) perl? ( dev-lang/perl:= ) startup-notification? ( x11-libs/startup-notification ) xft? ( x11-libs/libXft ) virtual/pkgconfig x11-base/xorg-proto
 DESCRIPTION=rxvt clone with xft and unicode support
@@ -11,5 +11,5 @@ PROPERTIES=live
 RDEPEND=>=sys-libs/ncurses-5.7-r6:= media-libs/fontconfig x11-libs/libX11 x11-libs/libXrender gdk-pixbuf? ( x11-libs/gdk-pixbuf ) kernel_Darwin? ( dev-perl/Mac-Pasteboard ) perl? ( dev-lang/perl:= ) startup-notification? ( x11-libs/startup-notification ) xft? ( x11-libs/libXft )
 RESTRICT=test
 SLOT=0
-_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	79023c161e8f625b0f1823715941c2da	cvs	8f8740beb4ce1deaae8393cfc28d2ed1	desktop	c0d27bf73aa08ca05b663dbd31fbef28	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	prefix	de7d8e2b10085ed5ff09ad70e4753e5c
+_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354	cvs	8f8740beb4ce1deaae8393cfc28d2ed1	desktop	c0d27bf73aa08ca05b663dbd31fbef28	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	prefix	de7d8e2b10085ed5ff09ad70e4753e5c
 _md5_=0f824f95b26d8c8e8b85d58902de0b02

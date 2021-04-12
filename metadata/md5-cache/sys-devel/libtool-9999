@@ -1,4 +1,4 @@
-BDEPEND=sys-apps/help2man sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 sys-apps/gawk >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=sys-apps/help2man sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=configure install prepare unpack
 DEPEND=sys-devel/gnuconfig >=sys-devel/autoconf-2.69:* >=sys-devel/automake-1.13:* dev-libs/libltdl:0
 DESCRIPTION=A shared library tool for developers
@@ -10,5 +10,5 @@ LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=sys-devel/gnuconfig >=sys-devel/autoconf-2.69:* >=sys-devel/automake-1.13:* dev-libs/libltdl:0
 SLOT=2
-_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	79023c161e8f625b0f1823715941c2da	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
+_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=fb3c40fd5cb71f5d07a4ea57bed79991

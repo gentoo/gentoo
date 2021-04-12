@@ -1,4 +1,4 @@
-BDEPEND=dev-lang/go nls? ( sys-devel/gettext ) verify-sig? ( app-crypt/openpgp-keys-linuxcontainers ) sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-apps/gawk virtual/pkgconfig verify-sig? ( app-crypt/gnupg >=app-portage/gemato-16 )
+BDEPEND=dev-lang/go nls? ( sys-devel/gettext ) verify-sig? ( app-crypt/openpgp-keys-linuxcontainers ) sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig verify-sig? ( app-crypt/gnupg >=app-portage/gemato-16 )
 DEFINED_PHASES=compile configure install postinst prepare setup test unpack
 DEPEND=app-arch/xz-utils >=app-emulation/lxc-3.0.0[apparmor?,seccomp(+)] dev-libs/dqlite dev-libs/lzo dev-libs/raft net-dns/dnsmasq[dhcp,ipv6?]
 DESCRIPTION=Fast, dense and secure container management
@@ -11,5 +11,5 @@ LICENSE=Apache-2.0 BSD BSD-2 LGPL-3 MIT MPL-2.0
 RDEPEND=app-arch/xz-utils >=app-emulation/lxc-3.0.0[apparmor?,seccomp(+)] dev-libs/dqlite dev-libs/lzo dev-libs/raft net-dns/dnsmasq[dhcp,ipv6?] acct-group/lxd net-firewall/ebtables net-firewall/iptables[ipv6?] sys-apps/iproute2[ipv6?] sys-fs/fuse:0= sys-fs/lxcfs sys-fs/squashfs-tools[lzma] virtual/acl
 SLOT=0
 SRC_URI=https://linuxcontainers.org/downloads/lxd/lxd-4.0.4.tar.gz verify-sig? ( https://linuxcontainers.org/downloads/lxd/lxd-4.0.4.tar.gz.asc )
-_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	79023c161e8f625b0f1823715941c2da	bash-completion-r1	8e7c071081c68c2c398b77fe3a1d6908	linux-info	30ded7f9adbdd03d3e848cdd74f6c395	optfeature	a3678a005063e7c50aed4e37d04197ab	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	verify-sig	40b4f4f782cf67118f594ce604cc4c0a
+_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354	bash-completion-r1	8e7c071081c68c2c398b77fe3a1d6908	linux-info	30ded7f9adbdd03d3e848cdd74f6c395	optfeature	a3678a005063e7c50aed4e37d04197ab	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	verify-sig	40b4f4f782cf67118f594ce604cc4c0a
 _md5_=5acc761a5805490fa5b1259c98469d1a

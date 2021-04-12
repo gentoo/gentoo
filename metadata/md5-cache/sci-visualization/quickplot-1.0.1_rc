@@ -1,4 +1,4 @@
-BDEPEND=media-gfx/imagemagick[png] virtual/pkgconfig www-client/lynx sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-apps/gawk
+BDEPEND=media-gfx/imagemagick[png] virtual/pkgconfig www-client/lynx sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install prepare
 DEPEND=media-libs/libsndfile:= >=sys-libs/readline-0.6.2:0= x11-libs/gtk+:3
 DESCRIPTION=A fast interactive 2D plotter
@@ -10,5 +10,5 @@ LICENSE=GPL-3
 RDEPEND=media-libs/libsndfile:= >=sys-libs/readline-0.6.2:0= x11-libs/gtk+:3
 SLOT=0
 SRC_URI=https://github.com/lanceman2/quickplot/archive/quickplot-1.0.1rc.tar.gz
-_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	79023c161e8f625b0f1823715941c2da	desktop	c0d27bf73aa08ca05b663dbd31fbef28
+_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354	desktop	c0d27bf73aa08ca05b663dbd31fbef28
 _md5_=1a8cf3548a0e548fc748de3d3a772dc2

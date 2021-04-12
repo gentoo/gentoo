@@ -1,4 +1,4 @@
-BDEPEND=java? ( virtual/jdk ) virtual/pkgconfig sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-apps/gawk
+BDEPEND=java? ( virtual/jdk ) virtual/pkgconfig sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install prepare
 DEPEND=gmp? ( dev-libs/gmp:0= ) java? ( virtual/jdk ) test-openssl? ( dev-libs/openssl:0 )
 DESCRIPTION=Optimized C library for EC operations on curve secp256k1
@@ -13,5 +13,5 @@ REQUIRED_USE=asm? ( || ( amd64 arm ) arm? ( experimental ) ) ecdh? ( experimenta
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/bitcoin-core/secp256k1/archive/b19c000063be11018b4d1a6b0a85871ab9d0bdcf.tar.gz -> libsecp256k1-v0.1_pre20190401.tgz
-_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	79023c161e8f625b0f1823715941c2da
+_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354
 _md5_=4d2fddd6ed97d47498f064301a1a7bc7

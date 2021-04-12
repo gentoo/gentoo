@@ -1,4 +1,4 @@
-BDEPEND=app-arch/unzip sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-apps/gawk
+BDEPEND=app-arch/unzip sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install prepare
 DEPEND=sdl? ( >=media-libs/libsdl-1.2.0[opengl?,sound?,video] ) !sdl? ( sys-libs/ncurses:= ) readline? ( sys-libs/readline:= sys-libs/ncurses:= ) media-libs/libpng:= sys-libs/zlib
 DESCRIPTION=Atari 800 emulator
@@ -12,5 +12,5 @@ RDEPEND=sdl? ( >=media-libs/libsdl-1.2.0[opengl?,sound?,video] ) !sdl? ( sys-lib
 REQUIRED_USE=opengl? ( sdl )
 SLOT=0
 SRC_URI=https://github.com/atari800/atari800/releases/download/ATARI800_4_2_0/atari800-4.2.0-src.tgz https://sourceforge.net/projects/atari800/files/ROM/Original%20XL%20ROM/xf25.zip
-_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	79023c161e8f625b0f1823715941c2da
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354
 _md5_=4f249dc756272e7a2ef2ea4bcb7714af

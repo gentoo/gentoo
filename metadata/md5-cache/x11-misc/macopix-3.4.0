@@ -1,4 +1,4 @@
-BDEPEND=sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-apps/gawk
+BDEPEND=sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install prepare
 DEPEND=dev-libs/glib:2 media-libs/libpng:0= sys-devel/gettext gnutls? ( net-libs/gnutls ) !gnutls? ( dev-libs/openssl:0= ) x11-libs/gtk+:3 virtual/pkgconfig
 DESCRIPTION=MaCoPiX (Mascot Constructive Pilot for X) is a desktop mascot application
@@ -11,5 +11,5 @@ LICENSE=GPL-2 free-noncomm
 RDEPEND=dev-libs/glib:2 media-libs/libpng:0= sys-devel/gettext gnutls? ( net-libs/gnutls ) !gnutls? ( dev-libs/openssl:0= ) x11-libs/gtk+:3
 SLOT=0
 SRC_URI=http://rosegray.sakura.ne.jp/macopix/macopix-3.4.0.tar.gz http://rosegray.sakura.ne.jp/macopix/macopix-mascot-HxB-euc-ja-0.30.tar.gz http://rosegray.sakura.ne.jp/macopix/macopix-mascot-marimite-euc-ja-2.20.tar.gz http://rosegray.sakura.ne.jp/macopix/macopix-mascot-cosmos-euc-ja-1.02.tar.gz http://rosegray.sakura.ne.jp/macopix/macopix-mascot-mizuiro-euc-ja-1.02.tar.gz http://rosegray.sakura.ne.jp/macopix/macopix-mascot-pia2-euc-ja-1.02.tar.gz http://rosegray.sakura.ne.jp/macopix/macopix-mascot-tsukihime-euc-ja-1.02.tar.gz http://rosegray.sakura.ne.jp/macopix/macopix-mascot-triangle_heart-euc-ja-1.02.tar.gz http://rosegray.sakura.ne.jp/macopix/macopix-mascot-comic_party-euc-ja-1.02.tar.gz http://rosegray.sakura.ne.jp/macopix/macopix-mascot-kanon-euc-ja-1.02.tar.gz http://rosegray.sakura.ne.jp/macopix/macopix-mascot-one-euc-ja-1.02.tar.gz
-_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	79023c161e8f625b0f1823715941c2da
+_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354
 _md5_=ff9a6bb9dcab99cce23052d071f81a58

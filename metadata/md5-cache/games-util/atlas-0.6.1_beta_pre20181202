@@ -1,4 +1,4 @@
-BDEPEND=app-arch/unzip sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-apps/gawk
+BDEPEND=app-arch/unzip sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure postinst prepare
 DEPEND=media-libs/freeglut media-libs/glew:0= media-libs/libpng:0= net-misc/curl sys-libs/zlib virtual/glu virtual/jpeg:0 virtual/opengl >=dev-games/simgear-3.0.0 media-libs/plib
 DESCRIPTION=Chart Program to use with Flightgear Flight Simulator
@@ -10,5 +10,5 @@ LICENSE=GPL-2+
 RDEPEND=media-libs/freeglut media-libs/glew:0= media-libs/libpng:0= net-misc/curl sys-libs/zlib virtual/glu virtual/jpeg:0 virtual/opengl >=games-simulation/flightgear-3.0.0
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~reavertm/atlas-hgcode-d4e5360f8273823205d9dc066547f5077ffc13e2.zip
-_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	79023c161e8f625b0f1823715941c2da
+_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354
 _md5_=8f761dd23d4e0dcc8162372aaaea101c

@@ -1,4 +1,4 @@
-BDEPEND=sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-apps/gawk
+BDEPEND=sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=install prepare setup
 DEPEND=python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_9? ( dev-lang/python:3.9 >=dev-lang/python-exec-2:=[python_targets_python3_9] ) python_single_target_python3_7? ( dev-python/pygobject:3[python_targets_python3_7(-)] dev-python/matplotlib[python_targets_python3_7(-)] sci-libs/cartopy[python_targets_python3_7(-)] dev-python/scipy[python_targets_python3_7(-)] ) python_single_target_python3_8? ( dev-python/pygobject:3[python_targets_python3_8(-)] dev-python/matplotlib[python_targets_python3_8(-)] sci-libs/cartopy[python_targets_python3_8(-)] dev-python/scipy[python_targets_python3_8(-)] ) python_single_target_python3_9? ( dev-python/pygobject:3[python_targets_python3_9(-)] dev-python/matplotlib[python_targets_python3_9(-)] sci-libs/cartopy[python_targets_python3_9(-)] dev-python/scipy[python_targets_python3_9(-)] ) dev-python/cairocffi sci-electronics/voacapl app-text/yelp-tools app-text/rarian
 DESCRIPTION=Scripts to prepare and plot VOACAP propagation predictions
@@ -12,5 +12,5 @@ RDEPEND=python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-
 REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9 )
 SLOT=0
 SRC_URI=https://github.com/jawatson/pythonprop/archive/v0.30.tar.gz -> pythonprop-0.30.tar.gz
-_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	79023c161e8f625b0f1823715941c2da	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-single-r1	d25ac9d5d91fe9d44fda6ec192aca11a
+_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-single-r1	d25ac9d5d91fe9d44fda6ec192aca11a
 _md5_=64cfac7fac1505a533e4704ccb3a5bd1
