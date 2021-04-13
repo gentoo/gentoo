@@ -8638,11 +8638,11 @@ dev-python/miniupnpc 2.2.1 2.2.2: Python bindings for UPnP client library
 dev-python/misaka 2.1.1: A CFFI binding for Hoedown, a markdown parsing library
 dev-python/mistune 0.8.4-r1: The fastest markdown parser in pure Python
 dev-python/mkautodoc 0.1.0: Auto documentation for MkDocs
-dev-python/mkdocs 1.1.2: Project documentation with Markdown
+dev-python/mkdocs 1.1.2 1.1.2-r1: Project documentation with Markdown
 dev-python/mkdocs-bootstrap 1.1-r1: Bootstrap theme for MkDocs
 dev-python/mkdocs-bootswatch 1.1-r1: Bootswatch themes for MkDocs
 dev-python/mkdocs-git-revision-date-localized-plugin 0.8: Display the localized date of the last git modification of a markdown file
-dev-python/mkdocs-material 6.2.5 7.0.6 7.1.0: A Material Design theme for MkDocs
+dev-python/mkdocs-material 6.2.5 7.0.6 7.1.0 7.1.1: A Material Design theme for MkDocs
 dev-python/mkdocs-material-extensions 1.0.1: Extension pack for Python Markdown
 dev-python/mkdocs-minify-plugin 0.3.0 0.4.0: An MkDocs plugin to minify HTML and/or JS files prior to being written to disk
 dev-python/mkdocs-redirects 1.0.1: Plugin for Mkdocs page redirects
