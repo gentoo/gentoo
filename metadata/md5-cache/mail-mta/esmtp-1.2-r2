@@ -1,11 +1,14 @@
-DEFINED_PHASES=postinst
-DEPEND=>=net-libs/libesmtp-1.0.6_p20200824 dev-libs/openssl:0= sys-devel/flex
+BDEPEND=sys-devel/flex virtual/pkgconfig sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=postinst prepare
+DEPEND=dev-libs/openssl:0= >=net-libs/libesmtp-1.0.6_p20200824:= !mail-mta/courier !mail-mta/exim !mail-mta/mini-qmail !mail-mta/msmtp !mail-mta/netqmail !mail-mta/nullmailer !mail-mta/postfix !mail-mta/qmail-ldap !mail-mta/sendmail !mail-mta/ssmtp !mail-mta/opensmtpd
 DESCRIPTION=User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
 EAPI=7
 HOMEPAGE=http://esmtp.sourceforge.net/
+INHERIT=autotools
 KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
-RDEPEND=>=net-libs/libesmtp-1.0.6_p20200824 dev-libs/openssl:0= !mail-mta/courier !mail-mta/exim !mail-mta/mini-qmail !mail-mta/msmtp !mail-mta/netqmail !mail-mta/nullmailer !mail-mta/postfix !mail-mta/qmail-ldap !mail-mta/sendmail !mail-mta/ssmtp !mail-mta/opensmtpd
+RDEPEND=dev-libs/openssl:0= >=net-libs/libesmtp-1.0.6_p20200824:= !mail-mta/courier !mail-mta/exim !mail-mta/mini-qmail !mail-mta/msmtp !mail-mta/netqmail !mail-mta/nullmailer !mail-mta/postfix !mail-mta/qmail-ldap !mail-mta/sendmail !mail-mta/ssmtp !mail-mta/opensmtpd
 SLOT=0
 SRC_URI=mirror://sourceforge/esmtp/esmtp-1.2.tar.bz2
-_md5_=363c784dc7a5b4075ccb45836fd10253
+_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354
+_md5_=5f5f948490e5f77ad90a5196dac2776d
