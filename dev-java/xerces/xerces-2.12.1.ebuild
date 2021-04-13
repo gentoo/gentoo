@@ -4,7 +4,7 @@
 EAPI=7
 
 JAVA_PKG_IUSE="doc source"
-MAVEN_ID="xerces:xercesImpl:2.12.0"
+MAVEN_ID="xerces:xercesImpl:2.12.1"
 
 inherit java-pkg-2 java-pkg-simple
 
