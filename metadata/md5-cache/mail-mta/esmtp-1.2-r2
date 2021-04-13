@@ -1,0 +1,11 @@
+DEFINED_PHASES=postinst
+DEPEND=>=net-libs/libesmtp-1.0.6_p20200824 dev-libs/openssl:0= sys-devel/flex
+DESCRIPTION=User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
+EAPI=7
+HOMEPAGE=http://esmtp.sourceforge.net/
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=>=net-libs/libesmtp-1.0.6_p20200824 dev-libs/openssl:0= !mail-mta/courier !mail-mta/exim !mail-mta/mini-qmail !mail-mta/msmtp !mail-mta/netqmail !mail-mta/nullmailer !mail-mta/postfix !mail-mta/qmail-ldap !mail-mta/sendmail !mail-mta/ssmtp !mail-mta/opensmtpd
+SLOT=0
+SRC_URI=mirror://sourceforge/esmtp/esmtp-1.2.tar.bz2
+_md5_=363c784dc7a5b4075ccb45836fd10253

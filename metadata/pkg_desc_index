@@ -12665,7 +12665,7 @@ mail-filter/spf-engine 2.0.2-r1 2.9.2: Policy daemon and milter for Postfix SPF 
 mail-filter/sqlgrey 1.7.6-r2 1.8.0: A postfix policy service implementing a grey-listing policy
 mail-filter/zdkimfilter 1.8 2.1 2.2: DKIM filter for Courier-MTA
 mail-mta/courier 1.0.5 1.0.13 1.0.14 1.0.17 1.1.2: An MTA designed specifically for maildirs
-mail-mta/esmtp 1.2-r1: User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
+mail-mta/esmtp 1.2-r1 1.2-r2: User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
 mail-mta/exim 4.93.0.4-r2 4.94-r2: A highly configurable, drop-in replacement for sendmail
 mail-mta/msmtp 1.8.12 1.8.14 1.8.15: An SMTP client and SMTP plugin for mail user agents such as Mutt
 mail-mta/netqmail 1.06-r14: qmail -- a secure, reliable, efficient, simple message transfer agent
