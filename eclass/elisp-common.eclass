@@ -219,7 +219,9 @@ _ELISP_EMACS_VERSION=""
 # Output version of currently active Emacs.
 
 elisp-emacs-version() {
-	local version ret
+	local version ret tmout="timeout -k 5 55"
+	# Run without timeout if the command is not available
+	${tmout} true &>/dev/null || tmout=""
 	# The following will work for at least versions 18-24.
 	echo "(princ emacs-version)" >"${T}"/emacs-version.el
 	version=$(
@@ -228,7 +230,7 @@ elisp-emacs-version() {
 		# Redirecting stdin and unsetting TERM and DISPLAY will cause
 		# most of them to exit with an error.
 		unset TERM DISPLAY
-		${EMACS} ${EMACSFLAGS} -l "${T}"/emacs-version.el </dev/null
+		${tmout} ${EMACS} ${EMACSFLAGS} -l "${T}"/emacs-version.el </dev/null
 	)
 	ret=$?
 	rm -f "${T}"/emacs-version.el
