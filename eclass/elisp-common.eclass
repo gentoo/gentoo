@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: elisp-common.eclass
@@ -10,7 +10,7 @@
 # Mamoru Komachi <usata@gentoo.org>
 # Christian Faulhammer <fauli@gentoo.org>
 # Ulrich Müller <ulm@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Emacs-related installation utilities
 # @DESCRIPTION:
 #
@@ -165,8 +165,8 @@
 # Again, with optional Emacs support, you should prepend "use emacs &&"
 # to above calls of elisp-site-regen().
 
-case ${EAPI:-0} in
-	5|6) inherit eapi7-ver ;;
+case ${EAPI} in
+	6) inherit eapi7-ver ;;
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
@@ -360,10 +360,6 @@ elisp-install() {
 elisp-modules-install() {
 	local subdir="$1"
 	shift
-	# Don't bother inheriting multilib.eclass for get_libdir(), but
-	# error out in old EAPIs that don't support it natively.
-	[[ ${EAPI} == 5 ]] \
-		&& die "${ECLASS}: Dynamic modules not supported in EAPI ${EAPI}"
 	ebegin "Installing dynamic modules for GNU Emacs support"
 	( # subshell to avoid pollution of calling environment
 		exeinto "${EMACSMODULES//@libdir@/$(get_libdir)}/${subdir}"
@@ -391,12 +387,7 @@ elisp-site-file-install() {
 	sf="${T}/${sf}"
 	ebegin "Installing site initialisation file for GNU Emacs"
 	[[ $1 == "${sf}" ]] || cp "$1" "${sf}"
-	if [[ ${EAPI} == 5 ]]; then
-		grep -q "@EMACSMODULES@" "${sf}" \
-			&& die "${ECLASS}: Dynamic modules not supported in EAPI ${EAPI}"
-	else
-		modules=${EMACSMODULES//@libdir@/$(get_libdir)}
-	fi
+	modules=${EMACSMODULES//@libdir@/$(get_libdir)}
 	sed -i -e "1{:x;/^\$/{n;bx;};/^;.*${PN}/I!s:^:${header}\n\n:;1s:^:\n:;}" \
 		-e "s:@SITELISP@:${EPREFIX}${SITELISP}/${my_pn}:g" \
 		-e "s:@SITEETC@:${EPREFIX}${SITEETC}/${my_pn}:g" \
