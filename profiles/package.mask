@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2021-06-25)
+# Last release in 2015. Many open bugs. No reverse dependencies.
+# Bugs #312935, #341923, #629050, #739984, #775761, #777534
+# Removal on 2021-07-25
+media-gfx/ufraw
+
 # Marek Szuba <marecki@genoo.org> (2021-06-25)
 # Unslotted version conflicting with lua eclasses.
 # No revdeps left. EAPI 5. Removal in 30 days (Bug #798693)
