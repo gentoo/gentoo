@@ -1,0 +1,15 @@
+BDEPEND=>=app-editors/emacs-23.1:*
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DESCRIPTION=A redesign of Liece IRC client
+EAPI=7
+HOMEPAGE=https://www.nongnu.org/riece/
+INHERIT=elisp
+IUSE=l10n_ja
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=GPL-2+ FDL-1.1+
+RDEPEND=>=app-editors/emacs-23.1:*
+RESTRICT=test
+SLOT=0
+SRC_URI=https://download.savannah.gnu.org/releases/riece/riece-9.0.0.tar.gz
+_eclasses_=elisp-common	36f97076abd90f943a34f8bcd58b5bcc	elisp	023dd24ad9e6d5e62907e7007f548ca3
+_md5_=90e679b73e3471815a6c329c5003fdea

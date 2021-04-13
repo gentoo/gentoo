@@ -2006,7 +2006,7 @@ app-emacs/dircolors 1.0-r2: Provide the same facility of ls --color inside Emacs
 app-emacs/dired-sort-menu 1.26: Sort entries in Dired mode
 app-emacs/distel 4.1.1: Distributed Emacs Lisp for Erlang
 app-emacs/doctest-mode 0.4: An Emacs major mode for editing Python source
-app-emacs/doxymacs 1.8.0-r3: Doxygen editing minor mode
+app-emacs/doxymacs 1.8.0-r4: Doxygen editing minor mode
 app-emacs/dropdown-list 20120329: Drop-down menu interface
 app-emacs/dts-mode 0.1.0_pre20161103: Emacs major mode for devicetree sources
 app-emacs/ebuild-mode 1.51-r3 1.52: Emacs modes for editing ebuilds and other Gentoo specific files
@@ -2110,7 +2110,7 @@ app-emacs/regress 1.5.1: Regression test harness for Emacs Lisp code
 app-emacs/remember 2.0-r1: Simplify writing short notes in emacs
 app-emacs/revive 2.24: Resume Emacs
 app-emacs/rfcview 0.13: An Emacs mode that reformats IETF RFCs for display
-app-emacs/riece 9.0.0: A redesign of Liece IRC client
+app-emacs/riece 9.0.0-r1: A redesign of Liece IRC client
 app-emacs/rnc-mode 1.0.6: An Emacs mode for editing Relax NG compact schema files
 app-emacs/rpm-spec-mode 0.15: Emacs mode to ease editing of RPM spec files
 app-emacs/ruby-mode 2.5.5 2.6.3 2.7.0 3.0.0: Emacs major mode for editing Ruby code
@@ -2124,7 +2124,7 @@ app-emacs/scss-mode 0.5.0_p20150107 0.5.0_p20180123-r1: Major mode for editing S
 app-emacs/semi 1.14.6-r2 1.14.7_p20190517: A library to provide MIME feature for GNU Emacs
 app-emacs/session 2.4b: When you start Emacs, Session restores various variables from your last session
 app-emacs/setnu 1.06: Display line numbers in Emacs buffers
-app-emacs/slime 2.15 2.20 2.20-r1 2.21: SLIME, the Superior Lisp Interaction Mode (Extended)
+app-emacs/slime 2.21: SLIME, the Superior Lisp Interaction Mode (Extended)
 app-emacs/sml-mode 6.9: Emacs major mode for editing Standard ML
 app-emacs/sokoban 1.4.8: Implementation of Sokoban for Emacs
 app-emacs/ssh 20120709: Support for SSH sessions in Emacs shell buffers
@@ -10058,7 +10058,7 @@ dev-ruby/compass 1.0.3-r1: Compass Stylesheet Authoring Framework
 dev-ruby/compass-core 1.0.3-r1: Compass Stylesheet Authoring Framework
 dev-ruby/compass-import-once 1.0.5: Speed up your Sass compilation by making @import only import each file once
 dev-ruby/concurrent-ruby 1.0.5 1.1.7 1.1.8: Modern concurrency tools including agents, futures, promises, thread pools, more
-dev-ruby/connection_pool 2.2.2 2.2.3: Generic connection pooling for Ruby
+dev-ruby/connection_pool 2.2.2 2.2.3 2.2.4: Generic connection pooling for Ruby
 dev-ruby/contracts 0.16.0: provides contracts for Ruby
 dev-ruby/coolio 1.6.0 1.7.0 1.7.1: A high performance event framework for Ruby which uses the libev C library
 dev-ruby/countdownlatch 1.0.0-r1: Synchronization aid to allow threads to wait for operations in other threads
