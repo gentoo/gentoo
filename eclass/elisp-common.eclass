@@ -276,27 +276,6 @@ elisp-check-emacs-version() {
 	fi
 }
 
-# Test if the eselected Emacs version is at least the major version
-# of GNU Emacs specified as argument.
-# Return 0 if true, 1 if false, 2 if trouble.
-# Deprecated, use elisp-check-emacs-version instead.
-
-elisp-need-emacs() {
-	local need_emacs=$1 have_emacs
-	have_emacs=$(elisp-emacs-version) || return 2
-	einfo "Emacs version: ${have_emacs}"
-	if [[ ${have_emacs} =~ XEmacs|Lucid ]]; then
-		eerror "This package needs GNU Emacs."
-		return 1
-	fi
-	if ! [[ ${have_emacs%%.*} -ge ${need_emacs%%.*} ]]; then
-		eerror "This package needs at least Emacs ${need_emacs%%.*}."
-		eerror "Use \"eselect emacs\" to select the active version."
-		return 1
-	fi
-	return 0
-}
-
 # @FUNCTION: elisp-compile
 # @USAGE: <list of elisp files>
 # @DESCRIPTION:
