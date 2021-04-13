@@ -13,7 +13,7 @@ inherit check-reqs chromium-2 desktop flag-o-matic multilib ninja-utils pax-util
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://chromium.org/"
-PATCHSET="6"
+PATCHSET="7"
 PATCHSET_NAME="chromium-$(ver_cut 1)-patchset-${PATCHSET}"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
 	https://files.pythonhosted.org/packages/ed/7b/bbf89ca71e722b7f9464ebffe4b5ee20a9e5c9a555a56e2d3914bb9119a6/setuptools-44.1.0.zip
@@ -70,7 +70,6 @@ COMMON_DEPEND="
 	)
 	sys-apps/dbus:=
 	sys-apps/pciutils:=
-	<sys-libs/glibc-2.33
 	virtual/udev
 	x11-libs/cairo:=
 	x11-libs/gdk-pixbuf:2
@@ -236,6 +235,17 @@ src_prepare() {
 		"${FILESDIR}/chromium-89-EnumTable-crash.patch"
 		"${FILESDIR}/chromium-shim_headers.patch"
 	)
+
+	# seccomp sandbox is broken if compiled against >=sys-libs/glibc-2.33, bug #769989
+	if has_version -d ">=sys-libs/glibc-2.33"; then
+		ewarn "Adding experimental glibc-2.33 sandbox patch. Seccomp sandbox might"
+		ewarn "still not work correctly. In case of issues, try to disable seccomp"
+		ewarn "sandbox by adding --disable-seccomp-filter-sandbox to CHROMIUM_FLAGS"
+		ewarn "in /etc/chromium/default."
+		PATCHES+=(
+			"${FILESDIR}/chromium-glibc-2.33.patch"
+		)
+	fi
 
 	default
 
