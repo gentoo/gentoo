@@ -19,7 +19,7 @@ else
 fi
 
 LICENSE="LGPL-2.1 GPL-2"
-SLOT="0"
+SLOT="0/7"
 IUSE="ssl static-libs threads"
 
 RDEPEND="ssl? ( >=dev-libs/openssl-1.1.0:0= )"
