@@ -11,6 +11,7 @@ inherit fcaps flag-o-matic lua-single python-any-r1 qmake-utils xdg-utils cmake
 DESCRIPTION="A network protocol analyzer formerly known as ethereal"
 HOMEPAGE="https://www.wireshark.org/"
 SRC_URI="https://www.wireshark.org/download/src/all-versions/${P/_/}.tar.xz"
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-glib-2.68-patches.tar.gz"
 S="${WORKDIR}/${P/_/}"
 
 LICENSE="GPL-2"
@@ -102,6 +103,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.4.2-cmake-lua-version.patch
 	"${FILESDIR}"/${PN}-9999-ui-needs-wiretap.patch
 	"${FILESDIR}"/${P}-cmake-3.20.patch
+	# Temporary, bug #777690
+	"${WORKDIR}"/${P}-glib-2.68-patches
 )
 
 pkg_setup() {
