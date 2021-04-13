@@ -37,7 +37,6 @@ BDEPEND="
 		>=dev-python/bcrypt-3.1.5[${PYTHON_USEDEP}]
 		>=dev-python/cryptography-2.3.1[${PYTHON_USEDEP}]
 		>=dev-python/flask-mail-0.9.1[${PYTHON_USEDEP}]
-		>=dev-python/flask-mongoengine-0.9.5[${PYTHON_USEDEP}]
 		>=dev-python/flask-sqlalchemy-2.3[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		>=dev-python/mongomock-3.19.0[${PYTHON_USEDEP}]
@@ -50,6 +49,8 @@ BDEPEND="
 		$(python_gen_cond_dep '
 			>=dev-python/pony-0.7.11[${PYTHON_USEDEP}]
 		' python3_{6,7})
+		amd64? ( >=dev-python/flask-mongoengine-0.9.5[${PYTHON_USEDEP}] )
+		arm64? ( >=dev-python/flask-mongoengine-0.9.5[${PYTHON_USEDEP}] )
 	)"
 
 distutils_enable_tests pytest
