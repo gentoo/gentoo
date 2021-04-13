@@ -15100,7 +15100,7 @@ net-libs/telepathy-qt 0.9.8 9999: Qt bindings for the Telepathy D-Bus protocol
 net-libs/tox 0.2.11-r1 0.2.12-r1 9999: Encrypted P2P, messaging, and audio/video calling platform
 net-libs/udns 0.4: Async-capable DNS stub resolver library
 net-libs/uhttpmock 0.5.1 0.5.3: HTTP web service mocking library
-net-libs/usrsctp 0.9.3.0_p20201102: A cross-platform userland SCTP stack
+net-libs/usrsctp 0.9.3.0_p20201102 0.9.5.0: A cross-platform userland SCTP stack
 net-libs/wandio 4.2.3_p1-r1: C library for simple and efficient file IO
 net-libs/webkit-gtk 2.30.5: Open source web browser engine
 net-libs/wvstreams 4.6.1_p14-r1 99999: A network programming library in C++
