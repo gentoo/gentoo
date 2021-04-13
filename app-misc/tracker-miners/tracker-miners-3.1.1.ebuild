@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit gnome.org gnome2-utils meson python-any-r1 systemd xdg
 
@@ -10,8 +10,8 @@ DESCRIPTION="Collection of data extractors for Tracker/Nepomuk"
 HOMEPAGE="https://wiki.gnome.org/Projects/Tracker"
 
 LICENSE="GPL-2+ LGPL-2.1+"
-SLOT="0"
-IUSE="cue exif ffmpeg gif gsf +gstreamer iptc +iso +jpeg +pdf +playlist raw +rss seccomp test +tiff upower +xml xmp xps"
+SLOT="3"
+IUSE="cue exif ffmpeg gif gsf +gstreamer iptc +iso +jpeg networkmanager +pdf +playlist raw +rss seccomp test +tiff upower +xml xmp xps"
 
 REQUIRED_USE="cue? ( gstreamer )" # cue is currently only supported via gstreamer, not ffmpeg
 RESTRICT="!test? ( test )"
@@ -20,8 +20,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 # tracker-2.1.7 currently always depends on ICU (theoretically could be libunistring instead); so choose ICU over enca always here for the time being (ICU is preferred)
 RDEPEND="
-	>=dev-libs/glib-2.46:2
-	>=app-misc/tracker-2.2.0:=
+	>=dev-libs/glib-2.62:2
+	>=app-misc/tracker-3.0:0=
 	gstreamer? (
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
@@ -50,31 +50,49 @@ RDEPEND="
 	sys-libs/zlib:0
 	gif? ( media-libs/giflib:= )
 
+	networkmanager? ( net-misc/networkmanager:= )
+
 	rss? ( >=net-libs/libgrss-0.7:0 )
 	app-arch/gzip
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	app-text/asciidoc
+	dev-libs/libxslt
 	dev-util/glib-utils
 	dev-util/gdbus-codegen
 
-	>=dev-util/intltool-0.40.0
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
-	test? ( ${PYTHON_DEPS}
+	test? (
+		${PYTHON_DEPS}
+		$(python_gen_any_dep 'dev-python/tappy[${PYTHON_USEDEP}]')
 		gstreamer? (
 			media-libs/gstreamer:1.0[introspection]
-			|| ( media-plugins/gst-plugins-libav:1.0
-				media-plugins/gst-plugins-openh264:1.0 )
-	) )
+			|| (
+				media-plugins/gst-plugins-libav:1.0
+				media-plugins/gst-plugins-openh264:1.0
+			)
+		)
+	)
 "
-# intltool-merge manually called in meson.build in 2.2.2; might be properly gone by 2.3
+
+PATCHES=(
+	"${FILESDIR}"/${P}-Fix-asciidoc-manpage.xsl-location.patch
+)
+
+python_check_deps() {
+	has_version -b "dev-python/tappy[${PYTHON_USEDEP}]"
+}
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
 
 src_prepare() {
+	# https://gitlab.gnome.org/GNOME/tracker-miners/-/merge_requests/323
+	sed -i -e 's:environtment:env:' tests/libtracker-extract/meson.build || die
+
 	# Avoid gst-inspect calls that may trigger sandbox; instead assume the detection will succeed and add the needed test deps for that
 	if use gstreamer; then
 		sed -i -e 's:detect-h264-codec.sh:/bin/true:' tests/functional-tests/meson.build || die
@@ -96,24 +114,23 @@ src_configure() {
 	local emesonargs=(
 		-Dtracker_core=system
 
-		-Ddocs=true
+		-Dman=true
 		-Dextract=true
-		-Dfunctional_tests=false # currently broken, may fare better in 2.2.3 or 2.3; if re-enabled re-add dconf test dep
-		#$(meson_use test functional_tests)
+		$(meson_use test functional_tests)
+		$(meson_use test tests_tap_protocol)
 		-Dminer_fs=true
 		$(meson_use rss miner_rss)
 		-Dwriteback=true
 		-Dabiword=true
-		-Ddvi=true
 		-Dicon=true
 		-Dmp3=true
 		-Dps=true
 		-Dtext=true
 		-Dunzip_ps_gz_files=true # spawns gunzip
 
+		$(meson_feature networkmanager network_manager)
 		$(meson_feature cue)
 		$(meson_feature exif)
-		-Dflac=disabled # never use external flac extractor - gst-plugins-flac is for that; ffmpeg one is maybe worse, but that's non-default
 		$(meson_feature gif)
 		$(meson_feature gsf)
 		$(meson_feature iptc)
@@ -124,7 +141,6 @@ src_configure() {
 		-Dpng=enabled
 		$(meson_feature raw)
 		$(meson_feature tiff)
-		-Dvorbis=disabled # never use external vorbis extractor - gst-plugins-base[vorbis] is for that; ffmpeg one is maybe worse, but that's non-default
 		$(meson_feature xml)
 		$(meson_feature xmp)
 		$(meson_feature xps)
@@ -133,7 +149,7 @@ src_configure() {
 		-Dcharset_detection=icu # enca is a possibility, but right now we have tracker core always dep on icu and icu is preferred over enca
 		-Dgeneric_media_extractor=${media_extractor}
 		# gupnp gstreamer_backend is in bad state, upstream suggests to use discoverer, which is the default
-		-Dsystemd_user_services="$(systemd_get_userunitdir)"
+		-Dsystemd_user_services_dir="$(systemd_get_userunitdir)"
 	)
 	meson_src_configure
 }

@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit gnome.org gnome2-utils meson python-any-r1 systemd xdg
 
@@ -16,12 +16,12 @@ IUSE="cue exif ffmpeg gif gsf +gstreamer iptc +iso +jpeg +pdf +playlist raw +rss
 REQUIRED_USE="cue? ( gstreamer )" # cue is currently only supported via gstreamer, not ffmpeg
 RESTRICT="!test? ( test )"
 
-KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 # tracker-2.1.7 currently always depends on ICU (theoretically could be libunistring instead); so choose ICU over enca always here for the time being (ICU is preferred)
 RDEPEND="
 	>=dev-libs/glib-2.46:2
-	>=app-misc/tracker-2.2.0:=
+	>=app-misc/tracker-2.2.0:0=
 	gstreamer? (
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
@@ -68,7 +68,11 @@ BDEPEND="
 				media-plugins/gst-plugins-openh264:1.0 )
 	) )
 "
-# intltool-merge manually called in meson.build in 2.2.2; might be properly gone by 2.3
+# intltool-merge manually called in meson.build in 2.3.5
+
+PATCHES=(
+	"${FILESDIR}"/${PV}-fix-autostart-build.patch
+)
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
@@ -133,6 +137,7 @@ src_configure() {
 		-Dcharset_detection=icu # enca is a possibility, but right now we have tracker core always dep on icu and icu is preferred over enca
 		-Dgeneric_media_extractor=${media_extractor}
 		# gupnp gstreamer_backend is in bad state, upstream suggests to use discoverer, which is the default
+		-Dautostart=false # false to co-exist with tracker-miners-3
 		-Dsystemd_user_services="$(systemd_get_userunitdir)"
 	)
 	meson_src_configure
