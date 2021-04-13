@@ -5702,7 +5702,7 @@ dev-libs/libtar 1.2.20-r4: C library for manipulating tar archives
 dev-libs/libtasn1 4.13 4.15.0-r1 4.16.0: ASN.1 library
 dev-libs/libtecla 1.6.3: Tecla command-line editing library
 dev-libs/libtermkey 0.20 0.22: Library for easy processing of keyboard entry from terminal-based programs
-dev-libs/libthreadar 1.3.1: Threading library used by dar archiver
+dev-libs/libthreadar 1.3.1 1.3.2: Threading library used by dar archiver
 dev-libs/libtimezonemap 0.4.6: GTK+3 timezone map widget
 dev-libs/libtomcrypt 1.18.2-r2: LibTomCrypt is a comprehensive, modular and portable cryptographic toolkit
 dev-libs/libtomfloat 0.02-r1: library for floating point number manipulation
@@ -12635,7 +12635,7 @@ mail-filter/libsrs_alt 1.0-r1: Sender Rewriting Scheme library for use with Exim
 mail-filter/maildrop 3.0.0: Mail delivery agent/filter
 mail-filter/mailfilter 0.8.4: Mailfilter is a utility to get rid of unwanted spam mails
 mail-filter/mapson 3.3.1: A challenge/response-based white-list spam filter
-mail-filter/milter-regex 2.6 2.7: A milter-based regular expression filter
+mail-filter/milter-regex 2.7: A milter-based regular expression filter
 mail-filter/mimedefang 2.84: Antispam, antivirus and other customizable filters for MTAs with Milter support
 mail-filter/normalizemime 1.19: Helper program to normalize MIME encoded messages
 mail-filter/opendkim 2.10.3-r26: A milter providing DKIM signing and verification
@@ -12656,7 +12656,7 @@ mail-filter/rspamd 2.6-r100 2.7-r100 9999: Rapid spam filtering system
 mail-filter/scmail 1.3: a mail filter written in Scheme
 mail-filter/sieve-connect 0.90: Sieve Command Line Interface
 mail-filter/sigh 1607.1.6-r1: S/MIME signing milter
-mail-filter/spamassassin 3.4.4-r4 3.4.4-r5 3.4.5: An extensible mail filter which can identify and tag spam
+mail-filter/spamassassin 3.4.4-r4 3.4.4-r5 3.4.5 3.4.6: An extensible mail filter which can identify and tag spam
 mail-filter/spamassassin-botnet 0.8-r1: SpamAssassin plugin that attempts to detect messages sent by a botnet
 mail-filter/spamdyke 4.3.0 5.0.1: A drop-in connection-time spam filter for qmail
 mail-filter/spampd 2.42: spampd is a program to scan messages for Unsolicited Commercial E-mail content
@@ -15111,7 +15111,7 @@ net-libs/zmqpp 4.2.0: ZeroMQ 'highlevel' C++ bindings
 net-mail/altermime 0.3.11: alterMIME is a small program which is used to alter your mime-encoded mailpacks
 net-mail/amavis-logwatch 1.51.03-r5: A log analyzer for amavisd-new
 net-mail/asmail 2.1-r1: a small mail monitor similar to xbiff
-net-mail/automx2 2021.0 2021.2 2021.3.1: Email client autoconfiguration service
+net-mail/automx2 2021.2 2021.3.1: Email client autoconfiguration service
 net-mail/autorespond 2.0.4 2.0.5: Autoresponder add on package for qmailadmin
 net-mail/b4 0.6.1: Utility for fetching patchsets from public-inbox
 net-mail/checkpassword 0.90-r4: A uniform password checking interface for root applications
@@ -15158,7 +15158,7 @@ net-mail/mpack 1.6-r4: Command-line MIME encoding and decoding utilities
 net-mail/mpop 1.4.7: A small, fast, and portable POP3 client
 net-mail/mswatch 1.2.0-r1: A utility to watch mailstores for changes and initiate mailbox syncs
 net-mail/mu 1.4.15 1.4.15-r1: Set of tools to deal with Maildirs, in particular, searching and indexing
-net-mail/muchsync 5 6: Synchronizes mail messages and notmuch tags across machines
+net-mail/muchsync 6: Synchronizes mail messages and notmuch tags across machines
 net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
 net-mail/notmuch 0.29.3-r2 0.30-r1 0.31 0.31-r2 0.31.2 0.31.3: Thread-based e-mail indexer, supporting quick search and tagging
 net-mail/onionrouter 0.6.1 9999: .onion discovery via SRV DNS lookups for use with postfix
@@ -18257,7 +18257,7 @@ www-servers/lighttpd 1.4.55-r100 1.4.58: Lightweight high-performance web server
 www-servers/mongrel2 1.11.0-r1: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.6.9-r1 9999: A small, fast, and scalable web server
 www-servers/nginx 1.18.0-r2 1.19.2-r1 1.19.3 1.19.4 1.19.5 1.19.5-r1 1.19.6 1.19.6-r100 1.19.7 1.19.8 1.19.9: Robust, small and high performance http and reverse proxy server
-www-servers/nginx-unit 1.21.0 1.22.0: Dynamic web and application server
+www-servers/nginx-unit 1.22.0: Dynamic web and application server
 www-servers/pound 2.7f-r1: A http/https reverse-proxy and load-balancer
 www-servers/pshs 0.4.1: Pretty small HTTP server -- a command-line tool to share files
 www-servers/puma 3.12.5-r1 5.1.1 5.2.0 5.2.1 5.2.1-r1 5.2.2: a simple, fast, threaded, and highly concurrent HTTP 1.1 server for Ruby/Rack
