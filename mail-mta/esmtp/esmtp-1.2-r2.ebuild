@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit autotools
+
 DESCRIPTION="User configurable relay-only Mail Transfer Agent with a sendmail-like syntax"
 HOMEPAGE="http://esmtp.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
@@ -10,13 +12,10 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
-IUSE=""
 
-CDEPEND="
-	>=net-libs/libesmtp-1.0.6_p20200824
+RDEPEND="
 	dev-libs/openssl:0=
-"
-RDEPEND="${CDEPEND}
+	>=net-libs/libesmtp-1.0.6_p20200824:=
 	!mail-mta/courier
 	!mail-mta/exim
 	!mail-mta/mini-qmail
@@ -29,13 +28,21 @@ RDEPEND="${CDEPEND}
 	!mail-mta/ssmtp
 	!mail-mta/opensmtpd
 "
-DEPEND="${CDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	sys-devel/flex
+	virtual/pkgconfig
 "
 
-PATCHES=( "${FILESDIR}/esmtp-1.2-pkgconfig.patch" )
+PATCHES=( "${FILESDIR}/${PN}-1.2-pkgconfig.patch" )
+
 DOCS=( AUTHORS ChangeLog NEWS README TODO sample.esmtprc )
 
+src_prepare() {
+	default
+	eautoreconf
+}
+
 pkg_postinst() {
-	elog "A sample esmtprc file has been installed in /usr/share/doc/${P}"
+	elog "A sample esmtprc file has been installed in /usr/share/doc/${PF}"
 }
