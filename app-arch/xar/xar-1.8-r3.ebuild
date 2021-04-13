@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit flag-o-matic multilib-minimal multilib
+inherit flag-o-matic toolchain-funcs multilib-minimal multilib
 
 APPLE_PV=417.1
 DESCRIPTION="An easily extensible archive format"
