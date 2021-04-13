@@ -13,4 +13,4 @@ RESTRICT=bindist mirror
 SLOT=0/6.0
 SRC_URI=https://dl.ui.com/unifi/6.0.45-564eef1dda/UniFi.unix.zip -> unifi-6.0.45.zip
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6
-_md5_=2cd380737fcc1cf91ac81be1c6344335
+_md5_=3c8fbdd0578f113a24a5900825a6c606

@@ -5249,7 +5249,7 @@ dev-java/wsdl4j 1.6.2: Web Services Description Language for Java Toolkit (WSDL4
 dev-java/wstx 3.2.9-r1: Woodstox is a high-performance validating namespace-aware XML-processor
 dev-java/xalan 2.7.2-r1: Transforming XML documents into HTML, text, or other XML document types
 dev-java/xalan-serializer 2.7.2-r1: DOM Level 3 serializer from Apache Xalan, shared by Xalan and Xerces
-dev-java/xerces 2.12.0: Xerces Java XML parser
+dev-java/xerces 2.12.0 2.12.0-r1: Xerces Java XML parser
 dev-java/xerial-core 2.0.1: An open-source DBMS for XML/JSON/Relational data
 dev-java/xjavac 2.4.0: Xerses Java Parser
 dev-java/xml-commons 1.4.01: Apache XML Commons
@@ -15813,7 +15813,7 @@ net-wireless/suwidgets 0.1.0-r1: graphical library containing all SigDigger's cu
 net-wireless/tempestsdr 0.0_p20200221 9999: Remote video eavesdropping using a software-defined radio platform
 net-wireless/ubertooth 2018.12.1 2020.12.1 9999: open source wireless development platform suitable for Bluetooth experimentation
 net-wireless/uhd 3.15.0.0-r100 4.0.0.0: Universal Software Radio Peripheral (USRP) Hardware Driver
-net-wireless/unifi 6.0.45 6.1.71 6.2.12 6.2.13 6.2.16 6.2.17: A Management Controller for Ubiquiti Networks UniFi APs
+net-wireless/unifi 6.0.45 6.1.71 6.2.17: A Management Controller for Ubiquiti Networks UniFi APs
 net-wireless/urh 2.9.1 9999: Universal Radio Hacker: investigate wireless protocols like a boss
 net-wireless/wavemon 0.9.3: Ncurses based monitor for IEEE 802.11 wireless LAN cards
 net-wireless/wepattack 0.1.3-r5: WLAN tool for breaking 802.11 WEP keys
