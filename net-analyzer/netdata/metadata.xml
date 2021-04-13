@@ -6,6 +6,7 @@
     <name>Craig Andrews</name>
   </maintainer>
   <use>
+    <flag name="cloud">Enable Netdata Cloud support</flag>
     <flag name="compression">Enable compression via zlib</flag>
     <flag name="dbengine">Enable the Netdata database engine</flag>
     <flag name="ipmi">Install <pkg>sys-apps/ipmitool</pkg> required for monitoring IPMI sensors.</flag>
