@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="agent amt dell gtk-doc elogind minimal introspection +man nvme redfish synaptics systemd test thunderbolt tpm uefi"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	^^ ( elogind minimal systemd )
@@ -31,8 +31,8 @@ BDEPEND="$(vala_depend)
 		sys-apps/help2man
 	)
 	test? (
-		thunderbolt? ( dev-util/umockdev )
 		net-libs/gnutls[tools]
+		thunderbolt? ( dev-util/umockdev )
 	)
 "
 CDEPEND="${PYTHON_DEPS}
@@ -143,7 +143,7 @@ src_install() {
 
 	if ! use minimal ; then
 		sed "s@%SEAT_MANAGER%@elogind@" \
-			"${FILESDIR}"/${PN}-r1 \
+			"${FILESDIR}"/${PN}-r2 \
 			> "${T}"/${PN} || die
 		doinitd "${T}"/${PN}
 

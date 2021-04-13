@@ -12,13 +12,16 @@ SRC_URI="https://github.com/MongoEngine/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 
 RDEPEND="dev-python/blinker[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/pymongo[${PYTHON_USEDEP}]"
 BDEPEND="
-	test? ( dev-python/mongomock[${PYTHON_USEDEP}] )"
+	test? (
+		dev-db/mongodb
+		dev-python/mongomock[${PYTHON_USEDEP}]
+	)"
 
 distutils_enable_tests pytest
 
