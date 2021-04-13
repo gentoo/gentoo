@@ -68,11 +68,11 @@ src_configure() {
 
 	local dir
 	for dir in appUtil textEncoding utilPs bitmap docFont docBase docBuf ind drawMeta docRtf docEdit docLayout docHtml; do
-		cd "${S}"/${dir}
+		cd "${S}"/${dir} || die
 		econf --cache-file=../config.cache
 	done
 	for dir in appFrame; do
-		cd "${S}"/${dir}
+		cd "${S}"/${dir} || die
 		econf --cache-file=../config.cache --with-MOTIF
 	done
 }
