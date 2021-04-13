@@ -982,7 +982,7 @@ app-arch/upx-bin 3.96: Ultimate Packer for eXecutables, binary version with prop
 app-arch/vimball 0.5.1 9999: a command-line vimball archive extractor
 app-arch/wimlib 1.13.3: The open source Windows Imaging (WIM) library
 app-arch/xar 1.8-r2 1.8-r3 1.8-r4: An easily extensible archive format
-app-arch/xarchiver 0.5.4.15: A GTK+ archive manager that can be used with Thunar
+app-arch/xarchiver 0.5.4.15 0.5.4.17: A GTK+ archive manager that can be used with Thunar
 app-arch/xdms 1.3.2-r1: xDMS - Amiga DMS disk image decompressor
 app-arch/xz-utils 5.2.5 9999: utils for managing LZMA compressed files
 app-arch/zip 3.0-r4: Info ZIP (encryption support)
