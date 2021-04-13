@@ -5048,7 +5048,6 @@ media-video/pipewire:jack - Enable SPA JACK plugin and emulation to be able to r
 media-video/pipewire:jack-client - Install a plugin for running PipeWire as a JACK client
 media-video/pipewire:ldac - LDAC over Bluetooth (primarily Sony headphones)
 media-video/pipewire:pipewire-alsa - Replace PulseAudio's ALSA plugin with PipeWire's plugin
-media-video/pipewire:pulseaudio - Enable emulation to be able to run PulseAudio applications on top of PipeWire
 media-video/pipewire:vulkan - Uses Vulkan compute shaders to provide a CGI video source
 media-video/qmplay2:audiofilters - Build with AudioFilters module
 media-video/qmplay2:avdevice - Build FFmpeg module with libavdevice suport
