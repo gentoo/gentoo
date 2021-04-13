@@ -38,6 +38,5 @@ S="${WORKDIR}"
 src_prepare() {
 	default
 
-	eapply "${FILESDIR}/${P}-overrides.patch"
 	rm -rv "org/w3c" || die
 }
