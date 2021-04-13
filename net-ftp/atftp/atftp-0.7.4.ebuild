@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/atftp/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 arm ~ppc ppc64 ~s390 ~sparc x86"
+KEYWORDS="amd64 arm ppc ppc64 ~s390 ~sparc x86"
 IUSE="selinux tcpd readline pcre"
 
 DEPEND="tcpd? ( sys-apps/tcp-wrappers )
