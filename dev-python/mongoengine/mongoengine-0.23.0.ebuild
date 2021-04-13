@@ -14,7 +14,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 # TODO: make it run a local database server
-#RESTRICT="test"
+RESTRICT="test"
 
 RDEPEND="dev-python/blinker[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
