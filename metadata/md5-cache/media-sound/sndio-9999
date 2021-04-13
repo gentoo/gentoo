@@ -1,14 +1,14 @@
-DEFINED_PHASES=compile configure install prepare test
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile configure install prepare test unpack
 DEPEND=dev-libs/libbsd[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] alsa? ( media-libs/alsa-lib[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] )
 DESCRIPTION=small audio and MIDI framework part of the OpenBSD project
 EAPI=7
 HOMEPAGE=http://www.sndio.org/
-INHERIT=multilib-minimal toolchain-funcs
+INHERIT=multilib-minimal toolchain-funcs git-r3
 IUSE=alsa abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_s390_32 abi_s390_64
-KEYWORDS=amd64 arm arm64 ~hppa ~ia64 ppc ppc64 sparc x86
 LICENSE=ISC
+PROPERTIES=live
 RDEPEND=dev-libs/libbsd[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] alsa? ( media-libs/alsa-lib[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) acct-user/sndiod
-SLOT=0/7.0
-SRC_URI=http://www.sndio.org/sndio-1.7.0.tar.gz
-_eclasses_=multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib-build	ac696f0bea6c503f5980bfd5a0f312e5	multilib-minimal	8bddda43703ba94d8341f4e247f97566
-_md5_=f5a525a1fde006f5625b07a7fc6e9eba
+SLOT=0/7.1
+_eclasses_=multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib-build	ac696f0bea6c503f5980bfd5a0f312e5	multilib-minimal	8bddda43703ba94d8341f4e247f97566	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
+_md5_=05ee9f1b5b2fab8720c6cd92216424bb
