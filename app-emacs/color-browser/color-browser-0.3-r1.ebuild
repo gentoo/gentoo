@@ -16,5 +16,5 @@ KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 DEPEND="app-emacs/color-theme"
 RDEPEND="${DEPEND}"
 
-ELISP_PATCHES="${PV}-gentoo.patch"
+PATCHES=("${FILESDIR}"/${P}-gentoo.patch)
 SITEFILE="60${PN}-gentoo.el"
