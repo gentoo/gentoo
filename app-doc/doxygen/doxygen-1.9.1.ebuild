@@ -25,7 +25,7 @@ RESTRICT="!doc? ( test )"
 
 BDEPEND="sys-devel/bison
 	sys-devel/flex
-	doc? ( ${PYTHON_DEPS} )
+	${PYTHON_DEPS}
 "
 RDEPEND="app-text/ghostscript-gpl
 	dev-lang/perl
@@ -65,7 +65,7 @@ DOCS=( LANGUAGE.HOWTO README.md )
 
 pkg_setup() {
 	use clang && llvm_pkg_setup
-	use doc && python-any-r1_pkg_setup
+	python-any-r1_pkg_setup
 }
 
 src_prepare() {
