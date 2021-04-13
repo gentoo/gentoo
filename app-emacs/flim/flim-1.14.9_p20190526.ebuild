@@ -22,9 +22,7 @@ S="${WORKDIR}/${PN}-${GITHUB_SHA1}"
 SITEFILE="60${PN}-gentoo.el"
 
 src_compile() {
-	emake PREFIX="${ED}/usr" \
-		LISPDIR="${ED}/${SITELISP}" \
-		VERSION_SPECIFIC_LISPDIR="${ED}/${SITELISP}"
+	default
 }
 
 src_install() {
