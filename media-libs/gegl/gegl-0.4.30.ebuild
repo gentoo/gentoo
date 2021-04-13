@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{7..9} )
 # vala and introspection support is broken, bug #468208
 VALA_USE_DEPEND=vapigen
 
-inherit meson gnome2-utils optfeature python-any-r1 vala
+inherit meson optfeature python-any-r1 vala
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -103,13 +103,11 @@ src_prepare() {
 	# fix 'build'headers from *.cl on gentoo-hardened, bug 739816
 	pushd "${S}/opencl/" || die
 	for file in *.cl; do
-		if [ -f "$file" ]; then
+		if [[ -f ${file} ]]; then
 			"${EPYTHON}" cltostring.py "${file}" || die
 		fi
 	done
 	popd || die
-
-	gnome2_environment_reset
 
 	use vala && vala_src_prepare
 }

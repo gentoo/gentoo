@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{7..9} )
 VALA_USE_DEPEND=vapigen
 
-inherit meson gnome2-utils optfeature python-any-r1 vala
+inherit meson optfeature python-any-r1 vala
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -98,8 +98,6 @@ src_prepare() {
 	sed -e '/clones.xml/d' \
 		-e '/composite-transform.xml/d' \
 		-i tests/compositions/meson.build || die
-
-	gnome2_environment_reset
 
 	use vala && vala_src_prepare
 }
