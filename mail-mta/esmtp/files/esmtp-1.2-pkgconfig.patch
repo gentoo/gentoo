@@ -1,37 +1,29 @@
-diff -aurN a/configure b/configure
---- a/configure	2009-12-24 03:19:09.000000000 -0500
-+++ b/configure	2021-04-13 16:10:48.219870604 -0400
-@@ -4343,12 +4343,12 @@
- fi
- { $as_echo "$as_me:${as_lineno-$LINENO}: checking for libESMTP" >&5
- $as_echo_n "checking for libESMTP... " >&6; }
--if libesmtp-config --version > /dev/null 2>&1
-+if pkg-config libesmtp-1.0 --exists > /dev/null 2>&1
- then
- 	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
- $as_echo "yes" >&6; }
--	CFLAGS="$CFLAGS `libesmtp-config --cflags`"
--	LIBS="$LIBS `libesmtp-config --libs`"
-+	CFLAGS="$CFLAGS `pkg-config libesmtp-1.0 --cflags`"
-+	LIBS="$LIBS `pkg-config libesmtp-1.0 --libs`"
- else
- 	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
- $as_echo "no" >&6; }
-diff -aurN a/configure.ac b/configure.ac
---- a/configure.ac	2009-12-24 03:18:55.000000000 -0500
-+++ b/configure.ac	2021-04-13 16:11:51.419750462 -0400
-@@ -30,11 +30,11 @@
+https://bugs.gentoo.org/782709
+--- a/configure.ac
++++ b/configure.ac
+@@ -28,21 +28,14 @@ then
+ 	CPPFLAGS="$CPPFLAGS -I$with_libesmtp/include"
+ 	LDFLAGS="$LDFLAGS -L$with_libesmtp/lib"
  	AC_CHECK_HEADER(libesmtp.h, ,[AC_MSG_ERROR([libesmtp.h not found in $with_libesmtp])])
- fi    
- AC_MSG_CHECKING(for libESMTP)
+-fi    
+-AC_MSG_CHECKING(for libESMTP)
 -if libesmtp-config --version > /dev/null 2>&1
-+if pkg-config libesmtp-1.0 --exists > /dev/null 2>&1
- then
- 	AC_MSG_RESULT(yes)
+-then
+-	AC_MSG_RESULT(yes)
 -	CFLAGS="$CFLAGS `libesmtp-config --cflags`"
 -	LIBS="$LIBS `libesmtp-config --libs`"
-+	CFLAGS="$CFLAGS `pkg-config libesmtp-1.0 --cflags`"
-+	LIBS="$LIBS `pkg-config libesmtp-1.0 --libs`"
- else
- 	AC_MSG_RESULT(no)
- 	AC_MSG_ERROR(libESMTP library not found)
+-else
+-	AC_MSG_RESULT(no)
+-	AC_MSG_ERROR(libESMTP library not found)
+ fi
+ 
++PKG_CHECK_MODULES([libesmtp], [libesmtp-1.0])
++CFLAGS="$CFLAGS ${libesmtp_CFLAGS}"
++LIBS="$LIBS ${libesmtp_LIBS}"
++
+ jrf_FUNC_GETOPT
+ 
+ AC_CHECK_FUNCS([getuid geteuid])
+-		
+ AC_CONFIG_FILES([Makefile])
+ AC_OUTPUT
