@@ -58,7 +58,7 @@ DOCS=( AUTHORS NEWS README.md README-XPDF )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-20.12.1-qt5-deps.patch"
-	"${FILESDIR}/${PN}-20.12.0-respect-cflags.patch"
+	"${FILESDIR}/${PN}-21.04.0-respect-cflags.patch"
 	"${FILESDIR}/${PN}-0.57.0-disable-internal-jpx.patch"
 )
 
