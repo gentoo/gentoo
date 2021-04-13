@@ -8390,7 +8390,7 @@ dev-python/flask-paranoid 0.2.0-r1: Simple user session protection extension for
 dev-python/flask-principal 0.4.0-r1: Identity management for flask
 dev-python/flask-restful 0.3.8: Simple framework for creating REST APIs
 dev-python/flask-script 2.0.6: Flask support for writing external scripts
-dev-python/flask-security 3.4.4 3.4.5 4.0.0 4.0.1: Simple security for Flask apps
+dev-python/flask-security 3.4.5 4.0.0 4.0.1: Simple security for Flask apps
 dev-python/flask-sphinx-themes 1.0.2: Sphinx Themes for Flask related projects and Flask itself
 dev-python/flask-sqlalchemy 2.4.4-r1 2.5.1: SQLAlchemy support for Flask applications
 dev-python/flask-wtf 0.14.3: Simple integration of Flask and WTForms
@@ -17034,7 +17034,7 @@ sys-apps/flashrom 1.2-r3 9999: Utility for reading, writing, erasing and verifyi
 sys-apps/flatpak 1.10.0 1.10.2: Linux application sandboxing and distribution framework
 sys-apps/frandom 1.1-r1: Fast kernel-land pseudo-random number generator using the RC4 algorithm
 sys-apps/fwts 20.11.00: Firmware Test Suite
-sys-apps/fwupd 1.4.6 1.4.7 1.5.7-r1 1.5.8: Aims to make updating firmware on Linux automatic, safe and reliable
+sys-apps/fwupd 1.4.7 1.4.8 1.5.8 1.5.9: Aims to make updating firmware on Linux automatic, safe and reliable
 sys-apps/fxload 20081013-r1: USB firmware uploader
 sys-apps/gawk 4.2.1-r1 5.0.1 5.1.0: GNU awk pattern-matching language
 sys-apps/gcp 0.2.1: File copying utility with progress and I/O indicator
