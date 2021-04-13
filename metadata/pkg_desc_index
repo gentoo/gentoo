@@ -2026,7 +2026,7 @@ app-emacs/emms 4.4 5.3 5.4: The Emacs Multimedia System
 app-emacs/erobot 2.1.0-r1: Battle-bots for Emacs!
 app-emacs/eselect-mode 1.4.16 1.4.17 9999: Emacs major mode for editing eselect files
 app-emacs/ess 17.11 18.10.2-r1: Emacs Speaks Statistics
-app-emacs/evil 1.2.13 1.2.14: Extensible vi layer for Emacs
+app-emacs/evil 1.2.14 1.14.0: Extensible vi layer for Emacs
 app-emacs/expand-region 0.11.0-r1: Emacs extension to increase selected region by semantic units
 app-emacs/f 0.19.0 0.20.0: Modern API for working with files and directories in Emacs
 app-emacs/fff 20050517: Fast file finder for Emacs
@@ -11521,7 +11521,7 @@ games-emulation/zinc 1.1-r1: An x86 binary-only emulator for Sony ZN-1, ZN-2, an
 games-emulation/zsnes 1.51-r9: SNES (Super Nintendo) emulator that uses x86 assembly
 games-engines/box2d 2.4.1: C++ engine for simulating rigid bodies in 2D games
 games-engines/dMagnetic 0.30: A Magnetic Scrolls Interpreter for playing a collection of old text adventures
-games-engines/devilutionx 1.1.0-r2 1.2.0 9999: Diablo engine for modern operating systems
+games-engines/devilutionx 1.1.0-r2 1.2.0 1.2.1 9999: Diablo engine for modern operating systems
 games-engines/exult 1.6: an Ultima 7 game engine that runs on modern operating systems
 games-engines/frobtads 1.2.4: Curses-based interpreter and dev tools for TADS 2 and TADS 3 text adventures
 games-engines/frotz 2.52: Interpreter for Z-code based text games
