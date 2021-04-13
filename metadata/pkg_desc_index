@@ -13938,7 +13938,7 @@ media-sound/flack 2.0.6: edit FLAC tags from command line
 media-sound/flacon 5.5.1: Extracts audio tracks from an audio CD image to separate tracks
 media-sound/flake 0.11: An alternative to the FLAC reference encoder
 media-sound/fluid-soundfont 3.1: The Fluid R3 soundfont
-media-sound/fluidsynth 2.1.0 2.1.4 2.1.5: Software real-time synthesizer based on the Soundfont 2 specifications
+media-sound/fluidsynth 2.1.5: Software real-time synthesizer based on the Soundfont 2 specifications
 media-sound/fmdrv 1.0.7: Console mode MIDI player with builtin userland OPL2 driver
 media-sound/fmit 1.0.15-r3: Free Music Instrument Tuner
 media-sound/fmtools 2.0.7: A collection of programs for controlling v4l radio card drivers
@@ -18256,7 +18256,7 @@ www-servers/h2o 2.2.6 9999: H2O - the optimized HTTP/1, HTTP/2 server
 www-servers/lighttpd 1.4.55-r100 1.4.58: Lightweight high-performance web server
 www-servers/mongrel2 1.11.0-r1: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.6.9-r1 9999: A small, fast, and scalable web server
-www-servers/nginx 1.18.0-r2 1.19.2-r1 1.19.3 1.19.4 1.19.5 1.19.5-r1 1.19.6 1.19.6-r100 1.19.7 1.19.8 1.19.9: Robust, small and high performance http and reverse proxy server
+www-servers/nginx 1.18.0-r2 1.19.9 1.19.10: Robust, small and high performance http and reverse proxy server
 www-servers/nginx-unit 1.22.0: Dynamic web and application server
 www-servers/pound 2.7f-r1: A http/https reverse-proxy and load-balancer
 www-servers/pshs 0.4.1: Pretty small HTTP server -- a command-line tool to share files
