@@ -25,9 +25,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake PREFIX="${ED}/usr" \
-		LISPDIR="${ED}/${SITELISP}" \
-		VERSION_SPECIFIC_LISPDIR="${ED}/${SITELISP}"
+	default
 }
 
 src_install() {
