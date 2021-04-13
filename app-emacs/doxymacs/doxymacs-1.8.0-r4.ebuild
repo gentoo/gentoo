@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit elisp flag-o-matic
 
@@ -16,7 +16,7 @@ KEYWORDS="amd64 x86"
 DEPEND=">=dev-libs/libxml2-2.6.13"
 RDEPEND="${DEPEND}"
 
-ELISP_PATCHES="${P}-gcc7.patch"
+PATCHES=("${FILESDIR}"/${P}-gcc7.patch)
 SITEFILE="50${PN}-gentoo.el"
 
 src_configure() {
