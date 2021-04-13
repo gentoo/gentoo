@@ -11,11 +11,12 @@ SRC_URI="https://github.com/vmatare/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="atasmart nvidia +yaml"
 
 DEPEND="atasmart? ( dev-libs/libatasmart )
 	yaml? ( dev-cpp/yaml-cpp )"
+
 RDEPEND="${DEPEND}
 	nvidia? ( x11-drivers/nvidia-drivers )"
 
@@ -25,18 +26,16 @@ DOC_CONTENTS="
 "
 
 src_configure() {
-	local mycmakeargs=(
+	local mycmakeargs+=(
 		-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/${PF}
 		-DUSE_NVML="$(usex nvidia)"
 		-DUSE_ATASMART="$(usex atasmart)"
 		-DUSE_YAML="$(usex yaml)"
 	)
-
 	cmake_src_configure
 }
 
 src_install() {
 	cmake_src_install
-
 	readme.gentoo_create_doc
 }
