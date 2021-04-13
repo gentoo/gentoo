@@ -13,6 +13,7 @@
 		<email>gyakovlev@gentoo.org</email>
 		<name>Georgy Yakovlev</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription lang="en">
 		Argparse is a feature-rich command line parser for Lua inspired by argparse for Python.
 
