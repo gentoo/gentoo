@@ -5,4 +5,10 @@
 		<email>java@gentoo.org</email>
 		<name>Java</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">jaxen-xpath/jaxen</remote-id>
+		<doc>https://github.com/jaxen-xpath/jaxen/wiki/Jaxen-Wiki</doc>
+		<bugs-to>https://github.com/jaxen-xpath/jaxen/issues</bugs-to>
+		<changelog>https://github.com/jaxen-xpath/jaxen/wiki/Changelog</changelog>
+	</upstream>
 </pkgmetadata>
