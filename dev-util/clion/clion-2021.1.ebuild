@@ -33,15 +33,16 @@ RDEPEND="
 	media-libs/mesa
 	net-print/cups
 	sys-devel/gdb
-	x11-libs/libdrm
+	x11-libs/libXScrnSaver
 	x11-libs/libXcomposite
 	x11-libs/libXcursor
 	x11-libs/libXdamage
 	x11-libs/libXi
-	x11-libs/libXScrnSaver
 	x11-libs/libXrandr
 	x11-libs/libXtst
 	x11-libs/libXxf86vm
+	x11-libs/libdrm
+	x11-libs/libxkbcommon
 	x11-libs/pango"
 
 QA_PREBUILT="opt/${P}/*"
