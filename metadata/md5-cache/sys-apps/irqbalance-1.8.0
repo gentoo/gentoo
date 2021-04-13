@@ -6,10 +6,10 @@ EAPI=7
 HOMEPAGE=https://github.com/Irqbalance/irqbalance
 INHERIT=autotools systemd linux-info
 IUSE=caps +numa selinux tui kernel_linux
-KEYWORDS=amd64 ~arm ~arm64 ppc ~ppc64 x86
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
 LICENSE=GPL-2
 RDEPEND=dev-libs/glib:2 caps? ( sys-libs/libcap-ng ) numa? ( sys-process/numactl ) tui? ( sys-libs/ncurses:0=[unicode] ) selinux? ( sec-policy/selinux-irqbalance )
 SLOT=0
-SRC_URI=https://github.com/Irqbalance/irqbalance/archive/v1.6.0.tar.gz -> irqbalance-1.6.0.tar.gz
+SRC_URI=https://github.com/Irqbalance/irqbalance/archive/v1.8.0.tar.gz -> irqbalance-1.8.0.tar.gz
 _eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	linux-info	30ded7f9adbdd03d3e848cdd74f6c395
-_md5_=b0589242f2a73184303fa867e078235a
+_md5_=0e9c1ba871c7186df7c9a56e23ca8de6
