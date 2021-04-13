@@ -1,0 +1,25 @@
+https://bugs.gentoo.org/777660
+--- a/pv/data/decode/annotation.cpp
++++ b/pv/data/decode/annotation.cpp
+@@ -17,9 +17,7 @@
+  * along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+-extern "C" {
+ #include <libsigrokdecode/libsigrokdecode.h>
+-}
+ 
+ #include <cassert>
+ #include <vector>
+--- a/pv/views/trace/decodetrace.cpp
++++ b/pv/views/trace/decodetrace.cpp
+@@ -17,9 +17,7 @@
+  * along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+-extern "C" {
+ #include <libsigrokdecode/libsigrokdecode.h>
+-}
+ 
+ #include <limits>
+ #include <mutex>
