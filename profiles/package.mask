@@ -37,6 +37,7 @@
 >=app-misc/tracker-3
 >=app-misc/tracker-miners-3
 >=gnome-base/nautilus-40
+>=sys-process/gnome-usage-3.38
 
 # Michał Górny <mgorny@gentoo.org> (2021-04-10)
 # Obsolete backport to Python < 3.4.  No reverse dependencies left.
