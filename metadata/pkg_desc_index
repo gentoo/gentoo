@@ -1963,7 +1963,7 @@ app-emacs/actionscript-mode 7.2.2_p20180527: A major mode for GNU Emacs for edit
 app-emacs/adaptive-wrap 0.7: Smart line-wrapping with wrap-prefix
 app-emacs/analog 1.9.99: Monitor lists of files or command output
 app-emacs/apache-mode 2.2.0: Major mode for editing Apache configuration files
-app-emacs/apel 10.8-r1 10.8_p20190407: A Portable Emacs Library is a library for making portable Emacs Lisp programs
+app-emacs/apel 10.8_p20190407: A Portable Emacs Library is a library for making portable Emacs Lisp programs
 app-emacs/async 1.9.3: Simple library for asynchronous processing in Emacs
 app-emacs/atomic-chrome 2.0.0: Edit text area on Chrome with Emacs using Atomic Chrome
 app-emacs/auctex 11.92 12.2 12.3: Extensible package for writing and formatting TeX files in Emacs
@@ -2032,7 +2032,7 @@ app-emacs/f 0.19.0 0.20.0: Modern API for working with files and directories in 
 app-emacs/fff 20050517: Fast file finder for Emacs
 app-emacs/filladapt 2.12-r1 2.12-r2: Filladapt enhances the behavior of Emacs' fill functions
 app-emacs/flashcard 2.3.3: An Emacs Lisp package for drilling on questions and answers
-app-emacs/flim 1.14.9-r2 1.14.9_p20190526: A library to provide basic features about message representation or encoding
+app-emacs/flim 1.14.9_p20190526: A library to provide basic features about message representation or encoding
 app-emacs/folding 2019.0524.1621: A folding-editor-like Emacs minor mode
 app-emacs/ghub 3.2.0 3.3.0 3.4.1: Minuscule client library for the Git forge APIs
 app-emacs/gnuplot-mode 0.7.0 0.8.0: Gnuplot mode for Emacs
@@ -2121,7 +2121,7 @@ app-emacs/scala-mode 2.10.3: Scala mode for Emacs
 app-emacs/scheme-complete 0.9.8: Scheme tab-completion and word-completion for Emacs
 app-emacs/scim-bridge-el 0.8.2-r1: a SCIM-Bridge client for Emacs
 app-emacs/scss-mode 0.5.0_p20150107 0.5.0_p20180123-r1: Major mode for editing SCSS files in Emacs
-app-emacs/semi 1.14.6-r2 1.14.7_p20190517: A library to provide MIME feature for GNU Emacs
+app-emacs/semi 1.14.7_p20190517: A library to provide MIME feature for GNU Emacs
 app-emacs/session 2.4b: When you start Emacs, Session restores various variables from your last session
 app-emacs/setnu 1.06: Display line numbers in Emacs buffers
 app-emacs/slime 2.21: SLIME, the Superior Lisp Interaction Mode (Extended)
