@@ -1,0 +1,12 @@
+--- a/Makefile
++++ b/Makefile
+@@ -32,9 +32,6 @@ ifeq "$(build)" "debug"
+ else ifeq "$(build)" "sanitize"
+   CFLAGS += -pipe -g -fsanitize=address -fno-omit-frame-pointer
+   LDFLAGS += -fsanitize=address
+-else ifeq "$(build)" "release"
+-  CFLAGS += -O2
+-  LDFLAGS += -Wl,-s
+ endif
+ 
+ ifeq "$(HAVE_READLINE)" "yes"
