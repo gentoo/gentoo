@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,7 +26,7 @@ RDEPEND="${DEPEND}"
 BDEPEND=""
 
 src_compile() {
-	$(tc-getCC) -o fsync-mdc1200-decode ${CFLAGS} ${LDFLAGS} demod.c fsync_decode.c mdc_decode.c $(pkg-config --cflags --libs libpulse-simple)
+	$(tc-getCC) -o fsync-mdc1200-decode ${CFLAGS} ${LDFLAGS} demod.c fsync_decode.c mdc_decode.c $($(tc-getPKG_CONFIG) --cflags --libs libpulse-simple)
 }
 
 src_install() {

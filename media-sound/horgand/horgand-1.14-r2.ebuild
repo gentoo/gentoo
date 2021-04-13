@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,7 +28,7 @@ PATCHES=( "${FILESDIR}/${P}-overflow.patch" )
 
 src_compile() {
 	emake CXX="$(tc-getCXX)" CXXFLAGS="${CXXFLAGS} $(fltk-config --cxxflags) \
-		$(pkg-config --cflags jack) $(pkg-config --cflags sndfile)"
+		$($(tc-getPKG_CONFIG) --cflags jack) $($(tc-getPKG_CONFIG) --cflags sndfile)"
 }
 
 src_install() {

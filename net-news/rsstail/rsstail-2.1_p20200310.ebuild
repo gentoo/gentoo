@@ -23,7 +23,7 @@ src_compile() {
 	emake \
 		CC="$(tc-getCC)" \
 		CFLAGS="${CFLAGS} -DVERSION=\\\"\$(VERSION)\\\"" \
-		LDFLAGS="${LDFLAGS} $(pkg-config --libs mrss)"
+		LDFLAGS="${LDFLAGS} $($(tc-getPKG_CONFIG) --libs mrss)"
 }
 
 src_test() {
