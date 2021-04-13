@@ -1945,7 +1945,7 @@ app-editors/shed 1.15: Simple Hex EDitor
 app-editors/sublime-text 3_p3211-r1: Sophisticated text editor for code, markup and prose
 app-editors/tea 47.0.0: Small, lightweight Qt text editor
 app-editors/teco 36_p19940820: Classic TECO editor, Predecessor to EMACS
-app-editors/ted 2.23: X-based rich text editor
+app-editors/ted 2.23 2.23-r1: X-based rich text editor
 app-editors/texworks 0.6.5-r100 0.6.6: A simple interface for working with TeX documents
 app-editors/uemacs-pk 4.0.15_p20180117 4.0.15_p20180719: uEmacs/PK is an enhanced version of MicroEMACS
 app-editors/vile 9.8t: VI Like Emacs -- yet another full-featured vi clone
@@ -2484,7 +2484,7 @@ app-laptop/msi-keyboard 1.0: Control backlight of MSI laptop keyboards
 app-laptop/pbbuttonsd 0.8.1a: Handles power management and special keys on laptops
 app-laptop/pommed 1.39-r1: Manage screen and keyboard backlight on Apple MacBook Pro/PowerBook
 app-laptop/spicctrl 1.9-r1: tool for the sonypi-Device (found in Sony Vaio Notebooks)
-app-laptop/thinkfan 1.0.2: simple fan control program for thinkpads
+app-laptop/thinkfan 1.0.2 1.2.1: Simple fan control program for thinkpads
 app-laptop/tp_smapi 0.43-r1: IBM ThinkPad SMAPI BIOS driver
 app-laptop/tpacpi-bat 3.0-r1 3.1 9999: Control battery thresholds of recent ThinkPads, not supported by tp_smapi
 app-laptop/tpb 0.6.4-r1: IBM ThinkPad buttons utility
