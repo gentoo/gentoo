@@ -1,13 +1,13 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit elisp
 
 DESCRIPTION="A redesign of Liece IRC client"
-HOMEPAGE="http://www.nongnu.org/riece/"
-SRC_URI="http://download.savannah.gnu.org/releases/riece/${P}.tar.gz"
+HOMEPAGE="https://www.nongnu.org/riece/"
+SRC_URI="https://download.savannah.gnu.org/releases/riece/${P}.tar.gz"
 
 LICENSE="GPL-2+ FDL-1.1+"
 SLOT="0"
