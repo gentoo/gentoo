@@ -11,4 +11,4 @@ RDEPEND=app-emacs/color-theme >=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=mirror://gentoo/color-browser-0.3.tar.gz
 _eclasses_=elisp-common	36f97076abd90f943a34f8bcd58b5bcc	elisp	023dd24ad9e6d5e62907e7007f548ca3
-_md5_=da98be9a193b675daac533c9c39f0637
+_md5_=9198d4b279ec0d292d206c17f78a72ff
