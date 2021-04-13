@@ -13,7 +13,7 @@ SRC_URI="https://github.com/life4/textdistance/archive/v.${PV}.tar.gz -> ${P}.ta
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 BDEPEND="test? (
 	dev-python/abydos[${PYTHON_USEDEP}]
