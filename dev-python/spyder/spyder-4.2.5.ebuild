@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 # The warning that this is wrong is a false positive
 # Spyder has setuptools in install_requires
 DISTUTILS_USE_SETUPTOOLS=rdepend
