@@ -226,12 +226,12 @@ sys-devel/autoconf:2.71
 # Many reverse dependencies need to be ported due to changes in new glib
 # Masking until they've been updated, see tracker bug for details
 # bug #777675
-=dev-libs/gobject-introspection-common-1.68.0
-=dev-libs/gobject-introspection-1.68.0
-=dev-util/gdbus-codegen-2.68.0
-=dev-util/glib-utils-2.68.0
-=dev-libs/glib-2.68.0
-=net-libs/glib-networking-2.68.0
+>=dev-libs/gobject-introspection-common-1.68.0
+>=dev-libs/gobject-introspection-1.68.0
+>=dev-util/gdbus-codegen-2.68.0
+>=dev-util/glib-utils-2.68.0
+>=dev-libs/glib-2.68.0
+>=net-libs/glib-networking-2.68.0
 
 # Marek Szuba <marecki@gentoo.org> (2021-03-19)
 # Depends on bundled out-of-date Qt5 libraries, and even with those
