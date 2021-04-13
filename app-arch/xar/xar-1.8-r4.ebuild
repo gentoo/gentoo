@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit flag-o-matic multilib-minimal multilib
+inherit flag-o-matic toolchain-funcs multilib-minimal multilib
 
 APPLE_PV=417.1
 DESCRIPTION="An easily extensible archive format"
@@ -66,7 +66,7 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	append-libs $($(tc_getPKG_CONFIG) --libs openssl)
+	append-libs $($(tc-getPKG_CONFIG) --libs openssl)
 	use elibc_musl && append-libs $($(tc-getPKG_CONFIG) --libs fts-standalone)
 	ECONF_SOURCE=${S} \
 	econf \
