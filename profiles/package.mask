@@ -395,22 +395,6 @@ dev-lang/spark
 >=dev-libs/vala-common-0.49
 dev-lang/vala:0.50
 
-# Sam James <sam@gentoo.org> (2020-07-20)
-# Serious security vulnerabilities, including
-# remote code execution. Upstream have not yet
-# made a stable release in response to numerous
-# CVEs. Applying patches is not a workable
-# solution for now because of the fragility
-# of reverse dependencies.
-# Indefinitely masking until we have a solution
-# for this.
-# bug #719084
-# Furthermore, ntopng ebuilds depending directly on dev-lang/lua{,jit}
-# must be migrated to lua eclasses before unmasking (bug #752777).
-net-analyzer/ntopng
-net-analyzer/pmacct
-net-libs/nDPI
-
 # Mart Raudsepp <leio@gentoo.org> (2020-06-06)
 # Meson port does not handle multilib yet and has issues
 # regarding runstatedir (not using /run).
