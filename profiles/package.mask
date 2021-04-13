@@ -36,6 +36,7 @@
 # Masked for testing
 >=app-misc/tracker-3
 >=app-misc/tracker-miners-3
+>=gnome-base/nautilus-40
 
 # Michał Górny <mgorny@gentoo.org> (2021-04-10)
 # Obsolete backport to Python < 3.4.  No reverse dependencies left.
@@ -237,6 +238,7 @@ sys-devel/autoconf:2.71
 >=dev-util/glib-utils-2.68.0
 >=dev-libs/glib-2.68.0
 >=net-libs/glib-networking-2.68.0
+>=gnome-base/nautilus-40
 
 # Marek Szuba <marecki@gentoo.org> (2021-03-19)
 # Depends on bundled out-of-date Qt5 libraries, and even with those
