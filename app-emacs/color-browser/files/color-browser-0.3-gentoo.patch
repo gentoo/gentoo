@@ -1,5 +1,5 @@
---- color-browser.el.orig	2006-05-17 11:40:18.000000000 -0500
-+++ color-browser.el	2006-05-17 11:38:12.000000000 -0500
+--- a/color-browser.el
++++ b/color-browser.el
 @@ -1028,7 +1028,7 @@
  	  ;; make some adjustments
  
