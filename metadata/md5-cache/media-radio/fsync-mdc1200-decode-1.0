@@ -3,10 +3,11 @@ DEPEND=media-sound/pulseaudio:=
 DESCRIPTION=Linux Fleetsync / MDC1200 decoder
 EAPI=7
 HOMEPAGE=https://github.com/russinnes/fsync-mdc1200-decode
+INHERIT=toolchain-funcs
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2+
 RDEPEND=media-sound/pulseaudio:=
 SLOT=0
 SRC_URI=https://github.com/russinnes/fsync-mdc1200-decode/archive/1.0.tar.gz -> fsync-mdc1200-decode-1.0.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=acf6498009dde50f3dbc74a0c5cecc61
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=f715211ba1eedf80c5e5129edf787734

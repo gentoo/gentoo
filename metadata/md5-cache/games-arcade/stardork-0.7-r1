@@ -3,10 +3,11 @@ DEPEND=sys-libs/ncurses:0= virtual/pkgconfig
 DESCRIPTION=An ncurses-based space shooter
 EAPI=6
 HOMEPAGE=http://stardork.sourceforge.net/
+INHERIT=toolchain-funcs
 KEYWORDS=~amd64 ~ppc64 ~x86
 LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses:0=
 SLOT=0
 SRC_URI=mirror://sourceforge/stardork/stardork-0.7.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=13094b5bf3c82a83bca7e3766ec94508
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=222e5c54a29a82323f6bcf73cb5a24b8
