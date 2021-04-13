@@ -18,7 +18,10 @@ RDEPEND="dev-python/blinker[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/pymongo[${PYTHON_USEDEP}]"
 BDEPEND="
-	test? ( dev-python/mongomock[${PYTHON_USEDEP}] )"
+	test? (
+		dev-db/mongodb
+		dev-python/mongomock[${PYTHON_USEDEP}]
+	)"
 
 distutils_enable_tests pytest
 
