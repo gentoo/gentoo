@@ -107,6 +107,13 @@ src_prepare() {
 	# workaround.
 	perl_rm_files t/spamc_*.t
 
+	# Some tests need extra dependencies
+	# e.g. t/sql_based_whitelist.t needs DBD
+	# This is kinder than REQUIRED_USE for tests which hurts automation
+	if ! use mysql && ! use postgres && ! use sqlite ; then
+		perl_rm_files t/sql_based_whitelist.t
+	fi
+
 	# Disable plugin by default
 	sed -i -e 's/^loadplugin/\#loadplugin/g' \
 		"rules/init.pre" \
