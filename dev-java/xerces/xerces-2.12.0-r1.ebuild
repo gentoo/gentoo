@@ -19,9 +19,7 @@ LICENSE="Apache-2.0"
 SLOT="2"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
-CDEPEND="
-	dev-java/xjavac:1
-	dev-java/xml-commons-resolver:0"
+CDEPEND="dev-java/xml-commons-resolver:0"
 
 RDEPEND="
 	${CDEPEND}
@@ -33,9 +31,7 @@ DEPEND="
 
 JAVA_SRC_DIR="org"
 
-JAVA_GENTOO_CLASSPATH="
-	xjavac-1
-	xml-commons-resolver"
+JAVA_GENTOO_CLASSPATH="xml-commons-resolver"
 
 S="${WORKDIR}"
 
