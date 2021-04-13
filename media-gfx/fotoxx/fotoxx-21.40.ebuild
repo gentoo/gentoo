@@ -6,7 +6,7 @@ EAPI=7
 inherit optfeature xdg-utils
 
 DESCRIPTION="Program for improving image files made with a digital camera"
-HOMEPAGE="https://kornelix.net/fotoxx20/fotoxx.html"
+HOMEPAGE="https://kornelix.net/fotoxx/fotoxx.html"
 SRC_URI="https://kornelix.net/downloads/downloads/${P}.tar.gz"
 
 LICENSE="GPL-3+"
