@@ -5,8 +5,8 @@ EAPI=7
 
 inherit cmake readme.gentoo-r1
 
-DESCRIPTION="simple fan control program for thinkpads"
-HOMEPAGE="http://thinkfan.sourceforge.net"
+DESCRIPTION="Simple fan control program for thinkpads"
+HOMEPAGE="https://github.com/vmatare/thinkfan"
 SRC_URI="https://github.com/vmatare/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
