@@ -671,7 +671,7 @@ acct-user/ziproxy 0: System user: ziproxy
 acct-user/znc 0-r1: User for net-irc/znc
 app-accessibility/accerciser 3.36.2 3.38.0: Interactive Python accessibility explorer
 app-accessibility/at-spi2-atk 2.34.2 2.38.0: Gtk module for bridging AT-SPI to Atk
-app-accessibility/at-spi2-core 2.34.0 2.36.0 2.38.0: D-Bus accessibility specifications and registration daemon
+app-accessibility/at-spi2-core 2.34.0 2.36.0 2.38.0 2.40.0: D-Bus accessibility specifications and registration daemon
 app-accessibility/brltty 6.1: Daemon that provides access to the Linux/Unix console for a blind person
 app-accessibility/caribou 0.4.21-r2 0.4.21-r3: Input assistive technology intended for switch and pointer users
 app-accessibility/edbrowse 3.7.5.1-r1: Combination editor, browser, and mail client that is 100% text based
@@ -3067,7 +3067,7 @@ app-text/enchant 1.6.1-r1 2.2.8 2.2.15-r1: Spellchecker wrapping library
 app-text/enscript 1.6.6: Powerful text-to-postscript converter
 app-text/epspdf 0.6.3-r1: GUI and command-line converter for [e]ps and pdf
 app-text/epstool 3.09: Creates or extracts preview images in EPS files, fixes bounding boxes
-app-text/evince 3.36.7 3.36.9 3.36.10: Simple document viewer for GNOME
+app-text/evince 3.36.7 3.36.9 3.36.10 40.0: Simple document viewer for GNOME
 app-text/expander 2.0.5-r2: Expander is a utility that acts as a filter for text editors
 app-text/extract_url 1.6.2: extracts URLs from correctly-encoded MIME email messages or plain text
 app-text/fb2edit 0.1.0: Create and edit fb2 books
