@@ -14,8 +14,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86-linux ~sparc-solaris ~x86-solaris"
 
-CDEPEND="dev-java/xerces:2
-	dev-java/xml-commons-external:1.4"
+CDEPEND="dev-java/xerces:2"
 
 BDEPEND="app-arch/unzip"
 RDEPEND=">=virtual/jre-1.5
@@ -30,7 +29,7 @@ DEPEND=">=virtual/jdk-1.5
 
 S="${WORKDIR}/${P}-sources"
 
-EANT_GENTOO_CLASSPATH="xerces-2,xml-commons-external-1.4"
+EANT_GENTOO_CLASSPATH="xerces-2"
 EANT_BUILD_TARGET="package"
 EANT_JAVADOC_TARGET="javadoc"
 EANT_EXTRA_ARGS="-Dmaven.test.skip=true"
