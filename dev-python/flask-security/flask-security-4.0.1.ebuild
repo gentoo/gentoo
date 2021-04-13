@@ -38,7 +38,6 @@ BDEPEND="
 		>=dev-python/bcrypt-3.1.5[${PYTHON_USEDEP}]
 		>=dev-python/cryptography-2.3.1[${PYTHON_USEDEP}]
 		>=dev-python/flask-mail-0.9.1[${PYTHON_USEDEP}]
-		>=dev-python/flask-mongoengine-0.9.5[${PYTHON_USEDEP}]
 		>=dev-python/flask-sqlalchemy-2.3[${PYTHON_USEDEP}]
 		>=dev-python/mongomock-3.19.0[${PYTHON_USEDEP}]
 		>=dev-python/peewee-3.11.2[${PYTHON_USEDEP}]
@@ -48,6 +47,8 @@ BDEPEND="
 		>=dev-python/pymysql-0.9.3[${PYTHON_USEDEP}]
 		>=dev-python/pyqrcode-1.2[${PYTHON_USEDEP}]
 		>=dev-python/zxcvbn-4.4.28[${PYTHON_USEDEP}]
+		amd64? ( >=dev-python/flask-mongoengine-0.9.5[${PYTHON_USEDEP}] )
+		arm64? ( >=dev-python/flask-mongoengine-0.9.5[${PYTHON_USEDEP}] )
 	)"
 
 distutils_enable_tests pytest
