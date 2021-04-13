@@ -1,0 +1,15 @@
+Makefile calls imake again but with ignored CC/LD.
+Passing only if set rather than use defaults.
+--- a/xmkmf.cpp
++++ b/xmkmf.cpp
+@@ -56,7 +56,7 @@
+     echo "make Makefiles" &&
+-    make Makefiles &&
++    make ${CC:+CC="$CC"} ${LD:+LD="$LD"} Makefiles &&
+     echo "make includes" &&
+-    make includes &&
++    make ${CC:+CC="$CC"} ${LD:+LD="$LD"} includes &&
+     echo "make depend" &&
+-    make depend
++    make ${CC:+CC="$CC"} ${LD:+LD="$LD"} depend
+     ;;
