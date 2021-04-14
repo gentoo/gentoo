@@ -25,12 +25,14 @@ IUSE="debug ipv6 livecd make-symlinks math mdev pam selinux sep-usr static syslo
 REQUIRED_USE="pam? ( !static )"
 RESTRICT="test"
 
+# TODO: Could make pkgconfig conditional on selinux? bug #782829
 COMMON_DEPEND="!static? ( selinux? ( sys-libs/libselinux ) )
 	pam? ( sys-libs/pam )"
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	static? ( selinux? ( sys-libs/libselinux[static-libs(+)] ) )
 	>=sys-kernel/linux-headers-2.6.39"
+BDEPEND="virtual/pkgconfig"
 RDEPEND="${COMMON_DEPEND}
 	mdev? ( !<sys-apps/openrc-0.13 )"
 
