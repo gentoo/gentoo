@@ -1405,7 +1405,7 @@ app-dicts/myspell-hu 1.6.1: Hungarian dictionaries for myspell/hunspell
 app-dicts/myspell-ia 20140518: Interlingua dictionaries for myspell/hunspell
 app-dicts/myspell-id 2.0: Indonesian dictionaries for myspell/hunspell
 app-dicts/myspell-is 2012.09.01: Icelandic dictionaries for myspell/hunspell
-app-dicts/myspell-it 20081129-r1 20081129-r2: Italian dictionaries for myspell/hunspell
+app-dicts/myspell-it 20081129-r2: Italian dictionaries for myspell/hunspell
 app-dicts/myspell-kk 1.1.2: Kazakh dictionaries for myspell/hunspell
 app-dicts/myspell-km 1.6: Khmer dictionaries for myspell/hunspell
 app-dicts/myspell-ku 0.21: Kurdish dictionaries for myspell/hunspell
@@ -2422,7 +2422,7 @@ app-i18n/librime 1.5.3-r1 1.6.0 1.6.1 1.7.3: RIME (Rime Input Method Engine) cor
 app-i18n/librime-lua 20201011103348 99999999999999: Lua support for RIME
 app-i18n/libskk 1.0.2 1.0.5: GObject-based library to deal with Japanese kana-to-kanji conversion method
 app-i18n/libtabe 0.2.6.1.2: Libtabe provides bimsphone support for xcin-2.5+
-app-i18n/man-pages-it 4.00 5.06: A somewhat comprehensive collection of Italian Linux man pages
+app-i18n/man-pages-it 5.06: A somewhat comprehensive collection of Italian Linux man pages
 app-i18n/man-pages-ja 20171215 20180315: A collection of manual pages translated into Japanese
 app-i18n/man-pages-l10n 4.2.0-r1: A somewhat comprehensive collection of man page translations
 app-i18n/man-pages-ru 5.03.2390.2390.20191017: A collection of Russian translations of Linux manual pages
@@ -2476,7 +2476,7 @@ app-i18n/zinnia-tomoe 0.6.0_p20080911: Handwriting model files trained with Tomo
 app-laptop/dispad 0.3.1-r1: Daemon to disable trackpads while typing
 app-laptop/hdaps-gl 0.0.7: OpenGL visualization for HDAPS data
 app-laptop/hdapsd 20141203-r2: IBM ThinkPad Hard Drive Active Protection System (HDAPS) daemon
-app-laptop/i8kutils 1.42 1.43: Dell Inspiron and Latitude utilities
+app-laptop/i8kutils 1.43: Dell Inspiron and Latitude utilities
 app-laptop/ibam 0.5.2-r4: Intelligent Battery Monitor
 app-laptop/laptop-mode-tools 1.72.2-r1 1.74: Linux kernel laptop_mode user-space utilities
 app-laptop/mbpfan 2.1.1 2.2.1 9999: A simple daemon to control fan speed on all Macbook/Macbook Pros
@@ -13324,7 +13324,7 @@ media-libs/libgpod 0.8.3-r5: Shared library to access the contents of an iPod
 media-libs/libgroove 4.3.0-r1: Streaming audio processing library
 media-libs/libharu 2.3.0-r2: C/C++ library for PDF generation
 media-libs/libhdhomerun 20190621 20200521: SiliconDust HDHomeRun Utilties
-media-libs/libheif 1.9.1 1.10.0 1.11.0 9999: ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
+media-libs/libheif 1.11.0 9999: ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
 media-libs/libicns 0.8.1-r1: A library for manipulating MacOS X .icns icon format
 media-libs/libid3tag 0.15.1b-r4: The MAD id3tag library
 media-libs/libiec61883 1.2.0-r2: Library for capturing video (dv or mpeg2) over the IEEE 1394 bus
