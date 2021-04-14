@@ -27,8 +27,9 @@ RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	|| ( purple xmpp msn oscar )
-	xmpp? ( !nss )
+	purple? ( plugins )
 	test? ( plugins )
+	xmpp? ( !nss )
 "
 
 COMMON_DEPEND="
