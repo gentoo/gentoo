@@ -9,7 +9,7 @@ SRC_URI="https://jztkft.dl.sourceforge.net/project/ftplicity/${PN}%20%28simple%2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 BDEPEND="app-text/txt2man"
 RDEPEND="app-backup/duplicity"
