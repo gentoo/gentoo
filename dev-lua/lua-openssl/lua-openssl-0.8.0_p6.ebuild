@@ -15,7 +15,7 @@ inherit lua toolchain-funcs
 DESCRIPTION="OpenSSL binding for Lua"
 HOMEPAGE="https://github.com/zhaozg/lua-openssl"
 SRC_URI="
-	https://github.com/zhaozg/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/zhaozg/${PN}/archive/refs/tags/${MY_PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/zhaozg/${MY_PN_AUX}/archive/${EGIT_COMMIT_AUX}.tar.gz -> ${MY_PN_AUX}-${EGIT_COMMIT_AUX}.tar.gz
 	https://github.com/keplerproject/${MY_PN_COMPAT}/archive/v${MY_PV_COMPAT}.tar.gz -> ${MY_PN_COMPAT}-${MY_PV_COMPAT}.tar.gz
 "
