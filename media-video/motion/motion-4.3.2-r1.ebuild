@@ -17,6 +17,7 @@ IUSE="ffmpeg mariadb mmal mysql postgres sqlite v4l webp"
 RDEPEND="
 	acct-group/motion
 	acct-user/motion
+	net-libs/libmicrohttpd:=
 	virtual/jpeg:=
 	ffmpeg? ( media-video/ffmpeg:0= )
 	mariadb? ( dev-db/mariadb-connector-c )
@@ -27,7 +28,6 @@ RDEPEND="
 	webp? ( media-libs/libwebp:= )
 "
 DEPEND="${RDEPEND}
-	net-libs/libmicrohttpd
 	v4l? (
 		media-libs/libv4l
 		virtual/os-headers
