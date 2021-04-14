@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -33,7 +33,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	app-text/rman
 	x11-base/xorg-proto
-	x11-misc/imake"
+	>=x11-misc/imake-1.0.8-r1"
 
 #S="${WORKDIR}/${PN}-2.7.5-${VERS}"
 S="${WORKDIR}/RasMol-${PV}"
@@ -78,7 +78,8 @@ src_prepare() {
 	mv vector.c v_ector.c || die
 	mv vector.h v_ector.h || die
 
-	xmkmf -DGTKWIN || die "xmkmf failed with ${myconf}"
+	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
+		IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" xmkmf -DGTKWIN || die
 }
 
 src_compile() {
