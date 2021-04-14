@@ -4,6 +4,7 @@
 EAPI=7
 
 DOCS_BUILDER="doxygen"
+DOCS_DEPEND="dev-texlive/texlive-fontutils"
 DOCS_DIR="${S}/doc"
 
 LUA_REQ_USE="deprecated(+)"
