@@ -100,6 +100,10 @@ RESTRICT="test"
 
 S="${WORKDIR}"/${P}_2021-01-15_e86c870879
 
+PATCHES=(
+	"${FILESDIR}"/glib-2.67.3.patch
+)
+
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]] && use openmp; then
 		tc-has-openmp || die "Please switch to an openmp compatible compiler"
