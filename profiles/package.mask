@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-14)
+# java libraries not used by any other package,
+# masked for removal
+dev-java/odfdom
+dev-java/saaj
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-04-14)
 # QA: Mask sys-apps/openrc-0.43 because of bug 782808
 =sys-apps/openrc-0.43*
