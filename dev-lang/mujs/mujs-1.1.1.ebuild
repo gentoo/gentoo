@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic toolchain-funcs
+inherit flag-o-matic multilib toolchain-funcs
 
 DESCRIPTION="An embeddable JavaScript interpreter in C"
 HOMEPAGE="https://mujs.com/ https://github.com/ccxvii/mujs"
@@ -27,9 +27,15 @@ src_prepare() {
 
 	tc-export AR CC
 
+	append-cflags -fPIC
+
 	# library's ABI (and API) changes in ~each release:
 	# diff 'usr/includemujs.h' across releases to validate
-	append-cflags -fPIC -Wl,-soname=lib${PN}.so.${PV}
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		append-cflags -Wl,-install_name,"${EPREFIX}"/usr/$(get_libdir)/lib${PN}.${PV}.dylib
+	else
+		append-cflags -Wl,-soname=lib${PN}.so.${PV}
+	fi
 }
 
 src_compile() {
@@ -44,15 +50,21 @@ src_compile() {
 src_install() {
 	local myemakeargs=(
 		DESTDIR="${ED}"
+		VERSION=${PF}
 		libdir="/usr/$(get_libdir)"
-		prefix="/usr"
-		VERSION="${PV}"
+		prefix=/usr
 	)
 
 	emake "${myemakeargs[@]}" install-shared
 
-	mv -v "${ED}"/usr/$(get_libdir)/lib${PN}.so{,.${PV}} || die
-
-	dosym lib${PN}.so.${PV} /usr/$(get_libdir)/lib${PN}.so
-	dosym lib${PN}.so.${PV} /usr/$(get_libdir)/lib${PN}.so.${PV:0:1}
+	# TODO: Tidy up this logic, improve readability
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		mv -v "${ED}"/usr/$(get_libdir)/lib${PN}.so "${ED}"/usr/$(get_libdir)/lib${PN}.${PV}.dylib || die
+		dosym lib${PN}.${PV}.dylib /usr/$(get_libdir)/lib${PN}.dylib
+		dosym lib${PN}.${PV}.dylib /usr/$(get_libdir)/lib${PN}.${PV:0:1}.dylib
+	else
+		mv -v "${ED}"/usr/$(get_libdir)/lib${PN}.so{,.${PV}} || die
+		dosym lib${PN}.so.${PV} /usr/$(get_libdir)/lib${PN}.so
+		dosym lib${PN}.so.${PV} /usr/$(get_libdir)/lib${PN}.so.${PV:0:1}
+	fi
 }
