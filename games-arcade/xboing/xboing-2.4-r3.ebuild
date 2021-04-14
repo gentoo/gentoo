@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit flag-o-matic eutils
+inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="Blockout type game where you bounce a ball trying to destroy blocks"
 HOMEPAGE="http://www.techrescue.org/xboing/"
@@ -20,7 +20,7 @@ RDEPEND="acct-group/gamestat
 DEPEND="${RDEPEND}
 	app-text/rman
 	x11-misc/gccmakedep
-	x11-misc/imake
+	>=x11-misc/imake-1.0.8-r1
 "
 
 S=${WORKDIR}/${PN}
@@ -34,26 +34,29 @@ src_prepare() {
 }
 
 src_configure() {
-	xmkmf -a || die
 	sed -i -e "s:GENTOO_VER:${PF/${PN}-/}:" Imakefile || die
 	append-cflags -fcommon
+
+	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
+		IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" xmkmf -a || die
 }
 
 src_compile() {
 	emake \
-		CXXOPTIONS="${CXXFLAGS}" \
+		CC="$(tc-getCC)" \
 		CDEBUGFLAGS="${CFLAGS}" \
 		LOCAL_LDFLAGS="${LDFLAGS}" \
 		XBOING_DIR="/usr/share/${PN}"
 }
 
 src_install() {
-	make \
+	emake \
+		CC="$(tc-getCC)" \
 		PREFIX="${D}" \
 		BINDIR="${D}/usr/bin" \
 		LOCAL_LDFLAGS="${LDFLAGS}" \
 		XBOING_DIR="/usr/share/${PN}" \
-		install || die
+		install
 	newman xboing.man xboing.6
 	dodoc README docs/*.doc
 
