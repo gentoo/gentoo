@@ -23,11 +23,11 @@ RDEPEND="
 	x11-libs/libXt
 	x11-misc/xbitmaps
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	>=sys-apps/sed-4
 	x11-base/xorg-proto
-	x11-misc/imake
+	>=x11-misc/imake-1.0.8-r1
 "
 
 DOCS=( README defining.txt hierarchy.txt sgi-microsoft.txt )
@@ -46,7 +46,8 @@ src_prepare() {
 }
 
 src_configure() {
-	xmkmf || die
+	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
+		IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" xmkmf || die
 	sed -i \
 		-e "s,all:: xkeycaps.\$(MANSUFFIX).html,all:: ,g" \
 		Makefile || die
