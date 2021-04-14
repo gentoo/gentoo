@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -57,7 +57,7 @@ multilib_src_configure() {
 multilib_src_compile() {
 	# EXTRA_LDOPTIONS, SHLIBGLOBALSFLAGS #336564#c2
 	local emakeopts=(
-		AR="$(tc-getAR) clq"
+		AR="$(tc-getAR) cq"
 		AS="$(tc-getAS)"
 		CC="$(tc-getCC)"
 		CDEBUGFLAGS="${CFLAGS}"
