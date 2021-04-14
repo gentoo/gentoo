@@ -101,7 +101,7 @@ _emake() {
 	# [0] https://git.ghostscript.com/?p=mupdf.git;a=blob;f=Makethird;h=c4c540fa4a075df0db85e6fdaab809099881f35a;hb=HEAD#l9
 	# [1] https://www.ghostscript.com/doc/lcms2mt/doc/WhyThisFork.txt
 	emake \
-		GENTOO_PV=${PV} \
+		GENTOO_PV=${PF} \
 		HAVE_GLUT=$(usex opengl) \
 		HAVE_LIBCRYPTO=$(usex ssl) \
 		HAVE_X11=$(usex X) \
