@@ -700,7 +700,7 @@ app-admin/aerospike-amc-community 4.0.19-r1: Web UI based monitoring tool for Ae
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0.13: A webserver log analyzer
 app-admin/ansible 2.10.6 2.10.7 9999: Model-driven deployment, config management, and command execution framework
-app-admin/ansible-base 2.10.4 2.10.5 2.10.7: Model-driven deployment, config management, and command execution framework
+app-admin/ansible-base 2.10.4 2.10.5 2.10.7 2.10.8: Model-driven deployment, config management, and command execution framework
 app-admin/ansible-cmdb 1.28 1.30: Ansible Configuration Management Database
 app-admin/ansible-lint 4.0.1 4.1.0 5.0.2: Checks ansible playbooks for practices and behaviour that can be improved
 app-admin/ansible-modules-hashivault 4.6.2: Ansible module for hashicorp vault
