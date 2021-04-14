@@ -48,8 +48,9 @@ SRC_URI+="
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 SLOT="0"
 SYSTEM_IUSE=( +system-{av1,harfbuzz,icu,jpeg,libevent,libvpx,sqlite} )
-IUSE="+chatzilla +crypt dbus debug +gmp-autoupdate +ipc jack lto minimal neon
-pulseaudio +roaming selinux startup-notification ${SYSTEM_IUSE[@]} test wifi"
+IUSE="+chatzilla cpu_flags_arm_neon +crypt dbus debug +gmp-autoupdate +ipc jack
+lto minimal pulseaudio +roaming selinux startup-notification test wifi"
+IUSE+=" ${SYSTEM_IUSE[@]}"
 KEYWORDS="~amd64 ~ppc64 ~x86"
 
 RESTRICT="!test? ( test )"
@@ -343,7 +344,7 @@ src_configure() {
 	mozconfig_use_with system-av1
 
 	# Modifications to better support ARM, bug 553364
-	if use neon ; then
+	if use cpu_flags_arm_neon ; then
 		mozconfig_annotate '' --with-fpu=neon
 		mozconfig_annotate '' --with-thumb=yes
 		mozconfig_annotate '' --with-thumb-interwork=no
