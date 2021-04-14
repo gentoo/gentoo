@@ -18,17 +18,16 @@ RDEPEND="
 	x11-libs/libXext
 	x11-libs/libXt
 "
-DEPEND="
-	${RDEPEND}
-	x11-base/xorg-proto
-"
+DEPEND="${RDEPEND}"
 BDEPEND="
-	x11-misc/imake
+	x11-base/xorg-proto
+	>=x11-misc/imake-1.0.8-r1
 "
 S=${WORKDIR}/${PN}
 
 src_configure() {
-	xmkmf || die
+	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
+		IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" xmkmf || die
 }
 
 src_compile() {
