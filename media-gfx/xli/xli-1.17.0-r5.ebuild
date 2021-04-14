@@ -23,7 +23,7 @@ RDEPEND="app-arch/bzip2
 DEPEND="${RDEPEND}
 	app-text/rman
 	x11-base/xorg-proto
-	x11-misc/imake
+	>=x11-misc/imake-1.0.8-r1
 	!media-gfx/xloadimage"
 
 S=${WORKDIR}/${PN}-${SNAPSHOT}
@@ -53,8 +53,12 @@ src_prepare() {
 		"${FILESDIR}"/${P}-libpng14.patch
 }
 
+src_configure() {
+	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
+		IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" xmkmf || die
+}
+
 src_compile() {
-	xmkmf || die
 	emake CDEBUGFLAGS="${CFLAGS}" CC="$(tc-getCC)" EXTRA_LDOPTIONS="${LDFLAGS}"
 }
 
