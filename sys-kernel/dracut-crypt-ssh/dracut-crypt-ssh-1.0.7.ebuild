@@ -25,7 +25,7 @@ RDEPEND="${DEPEND}
 	)
 	net-misc/dropbear"
 
-PATCHES=( "${FILESDIR}"/${P}-ldflags.patch )
+PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
 
 src_configure() {
 	tc-export CC

@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,8 +6,8 @@ EAPI=7
 inherit desktop qmake-utils xdg-utils
 
 DESCRIPTION="Powerful yet simple to use screenshot software"
-HOMEPAGE="https://flameshot.js.org"
-SRC_URI="https://github.com/lupoDharkael/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://flameshot.org https://github.com/flameshot-org/flameshot"
+SRC_URI="https://github.com/flameshot-org/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="FreeArt GPL-3 Apache-2.0"
 SLOT="0"
