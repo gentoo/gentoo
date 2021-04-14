@@ -1,0 +1,25 @@
+From 616517f44ceeacb26592e50e2bf914aad2d93b90 Mon Sep 17 00:00:00 2001
+From: David Robillard <d@drobilla.net>
+Date: Fri, 17 Jul 2020 15:38:38 +0200
+Subject: [PATCH] Fix crash with optimized builds with GCC 10.1.0
+
+---
+ src/zix/btree.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/zix/btree.c b/src/zix/btree.c
+index 78a5a0d..d830008 100644
+--- a/src/zix/btree.c
++++ b/src/zix/btree.c
+@@ -689,7 +689,7 @@ zix_btree_begin(const ZixBTree* const t)
+ ZIX_API bool
+ zix_btree_iter_is_end(const ZixBTreeIter* const i)
+ {
+-	return !i || i->stack[0].node == NULL;
++	return !i || (i->level == 0 && i->stack[0].node == NULL);
+ }
+ 
+ ZIX_API void
+-- 
+GitLab
+
