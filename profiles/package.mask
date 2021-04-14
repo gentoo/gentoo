@@ -114,11 +114,6 @@ sci-biology/gatk
 # Bug #625492, removal in 30 days.
 sci-biology/diya
 
-# Michał Górny <mgorny@gentoo.org> (2021-04-04)
-# Reported to contain an unintentional ABI breakage leading to crashes
-# when loading extensions on 32-bit systems.
-=dev-lang/python-3.9.3
-
 # Mikle Kolyada <zlogene@gentoo.org> (2021-04-02)
 # TexLive 2021 mask
 # Only unmask these versions if you know what you are doing
