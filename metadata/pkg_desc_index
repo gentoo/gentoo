@@ -12558,20 +12558,20 @@ kde-plasma/sddm-kcm 5.20.5 5.21.4: KDE Plasma control module for SDDM
 kde-plasma/systemsettings 5.20.5 5.21.4: Control Center to configure KDE Plasma desktop
 kde-plasma/xdg-desktop-portal-kde 5.20.5 5.21.4: Backend implementation for xdg-desktop-portal that is using Qt/KDE Frameworks
 kde-plasma/xembed-sni-proxy 5.20.5 5.21.4: Legacy xembed tray icons support for SNI-only system trays
-lxde-base/lxappearance 0.6.3-r1 0.6.3-r2: LXDE GTK+ theme switcher
-lxde-base/lxappearance-obconf 0.2.3 0.2.3-r1: LXAppearance plugin for configuring OpenBox
-lxde-base/lxde-common 0.99.1 0.99.2-r1: LXDE Session default configuration files and nuoveXT2 iconset
-lxde-base/lxde-icon-theme 0.5.1 0.5.1-r1: nuoveXT2 iconset
-lxde-base/lxde-meta 0.5.5-r6 0.5.5-r7: Meta ebuild for LXDE, the Lightweight X11 Desktop Environment
+lxde-base/lxappearance 0.6.3-r2: LXDE GTK+ theme switcher
+lxde-base/lxappearance-obconf 0.2.3-r1: LXAppearance plugin for configuring OpenBox
+lxde-base/lxde-common 0.99.2-r1: LXDE Session default configuration files and nuoveXT2 iconset
+lxde-base/lxde-icon-theme 0.5.1-r1: nuoveXT2 iconset
+lxde-base/lxde-meta 0.5.5-r7: Meta ebuild for LXDE, the Lightweight X11 Desktop Environment
 lxde-base/lxdm 0.5.3-r2: LXDE Display Manager
-lxde-base/lxinput 0.3.5-r1 0.3.5-r2: LXDE keyboard and mouse configuration tool
+lxde-base/lxinput 0.3.5-r2: LXDE keyboard and mouse configuration tool
 lxde-base/lxlauncher 0.2.5 0.2.5-r1: Open source clone of the Asus launcher for EeePC
 lxde-base/lxmenu-data 0.1.5: Provides files needed for LXDE application menus
-lxde-base/lxpanel 0.10.0-r1 0.10.1: Lightweight X11 desktop panel for LXDE
-lxde-base/lxrandr 0.3.2 0.3.2-r1: LXDE GUI interface to RandR extention
-lxde-base/lxsession 0.5.4-r1 0.5.5: LXDE session manager
-lxde-base/lxtask 0.1.9 0.1.10: LXDE Task manager
-lxde-base/lxterminal 0.3.2 0.4.0: Lightweight vte-based tabbed terminal emulator for LXDE
+lxde-base/lxpanel 0.10.1: Lightweight X11 desktop panel for LXDE
+lxde-base/lxrandr 0.3.2-r1: LXDE GUI interface to RandR extention
+lxde-base/lxsession 0.5.5: LXDE session manager
+lxde-base/lxtask 0.1.10: LXDE Task manager
+lxde-base/lxterminal 0.4.0: Lightweight vte-based tabbed terminal emulator for LXDE
 lxde-base/menu-cache 1.1.0-r1: Library to create and utilize caches to speed up freedesktop application menus
 lxqt-base/liblxqt 0.16.0: Common base library for the LXQt desktop environment
 lxqt-base/libsysstat 0.4.4: Qt GUI for System Statistics
@@ -18195,7 +18195,7 @@ www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3 1.0-r4: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 78.9.0 87.0 87.0-r1: Firefox Web Browser
 www-client/firefox-bin 78.9.0 87.0: Firefox Web Browser
-www-client/google-chrome 89.0.4389.114: The web browser from Google
+www-client/google-chrome 89.0.4389.128: The web browser from Google
 www-client/google-chrome-beta 90.0.4430.70: The web browser from Google
 www-client/google-chrome-unstable 91.0.4469.4: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
@@ -18455,8 +18455,8 @@ x11-libs/libdmx 1.1.4: X.Org dmx library
 x11-libs/libdockapp 0.7.3: Window Maker Dock Applet Library
 x11-libs/libdrm 2.4.103 2.4.104 2.4.105 9999: X.Org libdrm library
 x11-libs/libfakekey 0.3-r1: Helper library for the x11-misc/matchbox-keyboard package
-x11-libs/libfm 1.3.1 1.3.2: Library for file management
-x11-libs/libfm-extra 1.3.1 1.3.2: Library for file management
+x11-libs/libfm 1.3.2: Library for file management
+x11-libs/libfm-extra 1.3.2: Library for file management
 x11-libs/libfm-qt 0.16.0: Qt Library for Building File Managers
 x11-libs/libfontenc 1.1.4: X.Org fontenc library
 x11-libs/libgxim 0.5.0: GObject-based XIM protocol library
@@ -18640,7 +18640,7 @@ x11-misc/openbox-menu 0.8.0 0.8.1: Another dynamic menu generator for Openbox
 x11-misc/oroborus-deskmenu 1.4.5-r1: root menu program for Oroborus
 x11-misc/oroborus-keylaunch 1.3.9-r1: utility for binding keys in Oroborus
 x11-misc/parcellite 1.2.1: A lightweight GTK+ based clipboard manager
-x11-misc/pcmanfm 1.3.1-r1 1.3.2: Fast lightweight tabbed filemanager
+x11-misc/pcmanfm 1.3.2: Fast lightweight tabbed filemanager
 x11-misc/pcmanfm-qt 0.16.0: Qt GUI Tabbed Filemanager
 x11-misc/peksystray 0.4.0: A system tray dockapp for window managers supporting docking
 x11-misc/picom 8-r1 8.2-r1 8.2-r2 9999: A lightweight compositor for X11 (previously a compton fork)
