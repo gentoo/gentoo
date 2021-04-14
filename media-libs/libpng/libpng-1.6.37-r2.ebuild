@@ -32,7 +32,7 @@ multilib_src_configure() {
 	local myeconfargs=(
 		$(use_enable cpu_flags_x86_sse intel-sse)
 		$(use_enable static-libs static)
-		--enable-arm-neon=$(usex cpu_flags_arm_neon)
+		$(use_enable cpu_flags_arm_neon arm-neon check)
 	)
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
