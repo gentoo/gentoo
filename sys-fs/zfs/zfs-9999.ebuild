@@ -11,14 +11,17 @@ inherit autotools bash-completion-r1 distutils-r1 flag-o-matic linux-info pam sy
 DESCRIPTION="Userland utilities for ZFS Linux kernel module"
 HOMEPAGE="https://github.com/openzfs/zfs"
 
-if [[ ${PV} == "9999" ]] ; then
+if [[ ${PV} == "9999" ]]; then
 	inherit git-r3 linux-mod
 	EGIT_REPO_URI="https://github.com/openzfs/zfs.git"
 else
 	MY_P="${P/_rc/-rc}"
 	SRC_URI="https://github.com/openzfs/${PN}/releases/download/${MY_P}/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~ppc64"
 	S="${WORKDIR}/${P%_rc?}"
+
+	if [[ ${PV} != *_rc* ]]; then
+		KEYWORDS="~amd64 ~arm64 ~ppc64"
+	fi
 fi
 
 LICENSE="BSD-2 CDDL MIT"
@@ -31,7 +34,6 @@ DEPEND="
 	net-libs/libtirpc[static-libs?]
 	sys-apps/util-linux[static-libs?]
 	sys-libs/zlib[static-libs(+)?]
-	virtual/awk
 	virtual/libudev[static-libs(-)?]
 	libressl? ( dev-libs/libressl:0=[static-libs?] )
 	!libressl? ( dev-libs/openssl:0=[static-libs?] )
@@ -50,10 +52,12 @@ BDEPEND="virtual/awk
 	)
 "
 
+# awk is used for some scripts, completions, and the Dracut module
 RDEPEND="${DEPEND}
 	!kernel-builtin? ( ~sys-fs/zfs-kmod-${PV} )
 	!prefix? ( virtual/udev )
 	sys-fs/udev-init-scripts
+	virtual/awk
 	rootfs? (
 		app-arch/cpio
 		app-misc/pax-utils
@@ -82,7 +86,7 @@ pkg_setup() {
 	if use kernel_linux && use test-suite; then
 		linux-info_pkg_setup
 
-		if  ! linux_config_exists; then
+		if ! linux_config_exists; then
 			ewarn "Cannot check the linux kernel configuration."
 		else
 			if use test-suite; then
@@ -172,7 +176,7 @@ src_install() {
 	use test-suite || { rm -r "${ED}/usr/share/zfs" || die ; }
 
 	if ! use static-libs; then
-		find "${ED}/" -name '*.la' -delete || die
+		find "${ED}" -name '*.la' -delete || die
 	fi
 
 	dobashcomp contrib/bash_completion.d/zfs
@@ -194,14 +198,14 @@ src_install() {
 pkg_postinst() {
 	if use rootfs; then
 		if ! has_version sys-kernel/genkernel && ! has_version sys-kernel/dracut; then
-			elog "root on zfs requires initramfs to boot"
-			elog "the following packages known to provide one and tested on regular basis:"
+			elog "Root on zfs requires an initramfs to boot"
+			elog "The following packages provide one and are tested on a regular basis:"
 			elog "  sys-kernel/dracut"
 			elog "  sys-kernel/genkernel"
 		fi
 	fi
 
-	if ! use kernel-builtin && [[ ${PV} = "9999" ]]; then
+	if ! use kernel-builtin && [[ ${PV} == "9999" ]]; then
 		einfo "Adding ${P} to the module database to ensure that the"
 		einfo "kernel modules and userland utilities stay in sync."
 		update_moduledb
