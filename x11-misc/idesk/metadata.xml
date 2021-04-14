@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
-		<remote-id type="sourceforge">idesk</remote-id>
+		<remote-id type="github">antonialoytorrens/idesk</remote-id>
 	</upstream>
 </pkgmetadata>
