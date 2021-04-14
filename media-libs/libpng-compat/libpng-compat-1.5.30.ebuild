@@ -5,7 +5,7 @@ EAPI=7
 
 # this ebuild is only for the libpng15.so.15 SONAME for ABI compat
 
-inherit eutils libtool multilib-minimal
+inherit libtool multilib-minimal
 
 MY_P="libpng-${PV}"
 DESCRIPTION="Portable Network Graphics library"
