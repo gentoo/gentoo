@@ -18,6 +18,8 @@ IUSE="apng cpu_flags_arm_neon cpu_flags_x86_sse static-libs"
 RDEPEND=">=sys-libs/zlib-1.2.8-r1:=[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
 
+DOCS=( ANNOUNCE CHANGES libpng-manual.txt README TODO )
+
 src_prepare() {
 	default
 	if use apng; then
@@ -30,15 +32,15 @@ src_prepare() {
 
 multilib_src_configure() {
 	local myeconfargs=(
+		$(use_enable cpu_flags_arm_neon arm-neon check)
 		$(use_enable cpu_flags_x86_sse intel-sse)
 		$(use_enable static-libs static)
-		--enable-arm-neon=$(usex cpu_flags_arm_neon)
 	)
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
 multilib_src_install_all() {
-	DOCS=( ANNOUNCE CHANGES libpng-manual.txt README TODO )
-	einstalldocs
+	default
+
 	find "${ED}" \( -type f -o -type l \) -name '*.la' -delete || die
 }
