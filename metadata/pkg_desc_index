@@ -5263,7 +5263,7 @@ dev-java/xmlrpc 3.1.3: Apache XML-RPC is a Java implementation of XML-RPC
 dev-java/xmlstreambuffer 1.5.3: A stream-based representation of an XML infoset in Java
 dev-java/xmlunit 1.6: XMLUnit extends JUnit and NUnit to enable unit testing of XML
 dev-java/xmpcore 5.1.2: Java library based on the Adobe C++ XMPCore library with a similar API
-dev-java/xom 1.2.10 1.3.2: XML Object Model
+dev-java/xom 1.2.10 1.3.2 1.3.7: XML Object Model
 dev-java/xp 0.5-r4: XP is an XML 1.0 parser written in Java
 dev-java/xpp2 2.1.10-r3: A streaming pull XML parser used to quickly process input elements
 dev-java/xpp3 1.1.4c-r3 1.1.4c-r4: An implementation of XMLPULL V1 API
@@ -5848,7 +5848,7 @@ dev-libs/skalibs 2.3.2.0 2.6.1.0 2.6.3.0 2.6.4.0 2.7.0.0 2.8.1.0 2.9.1.0 2.9.3.0
 dev-libs/smack 0.5.0: low-level IO storage which packs data into sorted compressed blobs
 dev-libs/snowball-stemmer 0.20140325: All you need to include the snowball stemming algorithms into a C project
 dev-libs/softhsm 2.6.1: A software PKCS#11 implementation
-dev-libs/sord 0.16.8 9999: Library for storing RDF data in memory
+dev-libs/sord 0.16.8-r1 9999: Library for storing RDF data in memory
 dev-libs/spdlog 1.8.2 9999: Very fast, header only, C++ logging library
 dev-libs/spsdeclib 5.1-r1: Kryoflux SPS Decoder Library
 dev-libs/squareball 0.2.0 9999: A general-purpose library for C99
