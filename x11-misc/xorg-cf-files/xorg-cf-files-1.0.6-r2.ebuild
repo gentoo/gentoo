@@ -21,6 +21,7 @@ RDEPEND=""
 DEPEND="${RDEPEND}"
 
 PATCHES=(
+	"${FILESDIR}"/${P}-no-ar-l.patch
 	"${WORKDIR}"/${PN}-1.0.6-solaris-prefix.patch
 )
 
