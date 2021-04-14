@@ -3,7 +3,7 @@
 
 EAPI=7
 
-JAVA_PKG_IUSE="doc source"
+JAVA_PKG_IUSE="doc source test"
 JAVA_TESTING_FRAMEWORKS="junit"
 
 inherit java-pkg-2 java-pkg-simple
