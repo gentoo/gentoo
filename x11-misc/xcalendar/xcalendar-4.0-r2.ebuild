@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ RDEPEND="x11-libs/libX11
 	x11-libs/libXext"
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto
-	x11-misc/imake
+	>=x11-misc/imake-1.0.8-r1
 	x11-misc/gccmakedep
 	motif? ( >=x11-libs/motif-2.3:0 )"
 
@@ -35,9 +35,16 @@ src_prepare() {
 		-i XCalendar.sed || die
 }
 
+src_configure() {
+	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
+		IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" xmkmf -a || die
+}
+
 src_compile() {
-	xmkmf -a || die
-	emake CC="$(tc-getCC)" CDEBUGFLAGS="${CFLAGS}" EXTRA_LDOPTIONS="${LDFLAGS}"
+	emake \
+		CC="$(tc-getCC)" \
+		CDEBUGFLAGS="${CFLAGS}" \
+		EXTRA_LDOPTIONS="${LDFLAGS}"
 }
 
 src_install() {
