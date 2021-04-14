@@ -254,11 +254,6 @@ sys-devel/autoconf:2.71
 # Removal in 30 days. Bug #768228.
 mail-mta/protonmail-bridge-bin
 
-# Joonas Niilola <juippis@gentoo.org> (2021-03-16)
-# A library without consumers, unbuildable for years, ebuilds not
-# touched in years either. Bugs #664776, #747592. Removal in ~30 days.
-dev-libs/zookeeper-c
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-03-15)
 # Unmaintained for >1 year, blocking cleanup of deprecated libraries.
 # Succeeded by LXQt many years ago (see also: lxqt-base/lxqt-meta).
