@@ -20,9 +20,10 @@ RDEPEND="x11-libs/libXpm
 	virtual/jpeg
 	media-libs/libpng
 	x11-apps/rgb"
-DEPEND="${RDEPEND}
-	x11-misc/imake
-	app-text/rman"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	app-text/rman
+	>=x11-misc/imake-1.0.8-r1"
 
 S=${WORKDIR}/${MY_P}
 
@@ -61,11 +62,6 @@ sed_Imakefile() {
 src_prepare() {
 	default
 
-	# Create wrapper for gcc, bug #720820
-	printf '#!/bin/sh\n%s ${*}\n' "$(tc-getCC)" > "${T}"/gcc
-	chmod +x "${T}"/gcc
-	export PATH="${T}:${PATH}"
-
 	find . -type f -exec chmod a-x '{}' \; || die
 	find . -name Makefile -delete || die
 
@@ -75,10 +71,13 @@ src_prepare() {
 	sed_Imakefile fig2dev/Imakefile fig2dev/dev/Imakefile
 }
 
-src_compile() {
-	xmkmf || die "xmkmf failed"
-	emake Makefiles
+src_configure() {
+	export IMAKECPP=${IMAKECPP:-$(tc-getCPP)}
+	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" xmkmf || die
+}
 
+src_compile() {
+	emake CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" Makefiles
 	emake CC="$(tc-getCC)" AR="$(tc-getAR) cq" RANLIB="$(tc-getRANLIB)" \
 		LOCAL_LDFLAGS="${LDFLAGS}" CDEBUGFLAGS="${CFLAGS}" \
 		USRLIBDIR="${EPREFIX}/usr/$(get_libdir)"
