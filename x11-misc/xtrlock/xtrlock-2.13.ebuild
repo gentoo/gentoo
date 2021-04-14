@@ -12,17 +12,19 @@ SLOT="0"
 LICENSE="GPL-3"
 KEYWORDS="amd64 ppc x86"
 
-RDEPEND="
-	x11-libs/libX11
-"
-DEPEND="
-	${RDEPEND}
+RDEPEND="x11-libs/libX11"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	x11-base/xorg-proto
-	x11-misc/imake
+	>=x11-misc/imake-1.0.8-r1
 "
 
+src_configure() {
+	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
+		IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" xmkmf || die
+}
+
 src_compile() {
-	xmkmf || die
 	emake CDEBUGFLAGS="${CFLAGS} -DSHADOW_PWD" CC="$(tc-getCC)" \
 		EXTRA_LDOPTIONS="${LDFLAGS}" xtrlock
 }
