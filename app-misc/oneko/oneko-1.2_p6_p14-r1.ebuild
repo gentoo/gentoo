@@ -28,7 +28,7 @@ DEPEND="
 BDEPEND="
 	app-text/rman
 	x11-misc/gccmakedep
-	x11-misc/imake
+	>=x11-misc/imake-1.0.8-r1
 "
 PATCHES=(
 	"${FILESDIR}"/${P/_p*}-include.patch
@@ -41,20 +41,17 @@ src_prepare() {
 	done
 
 	default
-
-	printf '#!/bin/sh\n%s ${*}\n' "$(tc-getLD)" > "${T}"/ld
-	chmod +x "${T}"/ld
-	export PATH="${T}:${PATH}"
 }
 
 src_configure() {
-	xmkmf -a || die
+	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
+		IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" xmkmf -a || die
 }
 
 src_compile() {
 	emake \
 		CC="$(tc-getCC)" \
-		CCOPTIONS="${CFLAGS}" \
+		CDEBUGFLAGS="${CFLAGS}" \
 		EXTRA_LDOPTIONS="${LDFLAGS}"
 }
 
