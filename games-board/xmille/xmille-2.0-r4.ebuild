@@ -34,7 +34,7 @@ src_configure() {
 
 src_compile() {
 	emake -j1 \
-		AR="$(tc-getAR) clq" \
+		AR="$(tc-getAR) cq" \
 		RANLIB="$(tc-getRANLIB)" \
 		CC="$(tc-getCC)" \
 		CDEBUGFLAGS="${CFLAGS}" \
