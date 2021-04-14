@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,8 +22,8 @@ src_install() {
 	dodoc ChangeLog THANKS
 
 	dodir /usr/share/nagtrap
-	cp -r {db,nagtrap} "${D}"/usr/share/nagtrap/
-	fperms 640 "${D}"/usr/share/nagtrap/nagtrap/etc/config.ini.php-dist
+	cp -r {db,nagtrap} "${ED}"/usr/share/nagtrap/ || die
+	fperms 640 /usr/share/nagtrap/nagtrap/etc/config.ini.php-dist
 
 	sed -i -e 's#use lib.*#use lib "/usr/lib/nagios/plugins";#g' \
 		plugin/check_snmptraps.pl || die "sed failed"
@@ -35,10 +35,10 @@ src_install() {
 
 pkg_postinst() {
 	elog "Before running NagTrap for the first time, you will need setup its configuration"
-	elog "/usr/share/nagtrap/nagtrap/etc/config.ini.php"
+	elog "${EROOT}/usr/share/nagtrap/nagtrap/etc/config.ini.php"
 	elog "A sample is installed in"
-	elog "/usr/share/nagtrap/nagtrap/etc/config.ini.php-sample"
+	elog "${EROOT}/usr/share/nagtrap/nagtrap/etc/config.ini.php-sample"
 	elog
 	elog "NagTrap requires snmptt to write traps into a MySQL database."
-	elog "A database schema is available in {$D}usr/share/nagtrap/db"
+	elog "A database schema is available in ${EROOT}/usr/share/nagtrap/db"
 }
