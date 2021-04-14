@@ -1,6 +1,11 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-04-14)
+# Supports 64-bit NEON
+# Note: libpng-compat 1.5.30 does NOT seem to.
+media-libs/libpng -cpu_flags_arm_neon
+
 # Mike Gilbert <floppym@gentoo.org> (2021-03-29)
 # Unmask TPM on supported archs.
 sys-apps/systemd -tpm
