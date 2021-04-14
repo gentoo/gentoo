@@ -31,7 +31,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	app-text/rman
-	x11-misc/imake
+	>=x11-misc/imake-1.0.8-r1
 	svg? ( virtual/pkgconfig )
 "
 
@@ -48,7 +48,9 @@ src_prepare() {
 }
 
 src_configure() {
-	xmkmf $(usex svg -DWITH_SVG_SUPPORT '') || die
+	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
+		IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" \
+		xmkmf $(usex svg -DWITH_SVG_SUPPORT '') || die
 }
 
 src_compile() {
