@@ -24,7 +24,9 @@ RDEPEND="sys-libs/zlib:=[${MULTILIB_USEDEP}]
 DEPEND="${RDEPEND}"
 BDEPEND="app-arch/xz-utils"
 
-DOCS=""
+# Don't install any docs here because we're literally just installing the
+# old library for compatibility. Use libpng for the full contents.
+DOCS=()
 
 pkg_setup() {
 	local _preserved_lib="${EROOT}/usr/$(get_libdir)/libpng15.so.15"
