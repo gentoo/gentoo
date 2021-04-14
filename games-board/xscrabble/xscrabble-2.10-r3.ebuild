@@ -23,7 +23,7 @@ RDEPEND="
 "
 BDEPEND="
 	x11-misc/gccmakedep
-	x11-misc/imake
+	>=x11-misc/imake-1.0.8-r1
 "
 
 PATCHES=(
@@ -51,7 +51,8 @@ src_prepare() {
 }
 
 src_configure() {
-	tc-export AR CC RANLIB
+	tc-export AR CC LD RANLIB
+	export IMAKECPP=${IMAKECPP:-$(tc-getCPP)}
 }
 
 src_compile() {
