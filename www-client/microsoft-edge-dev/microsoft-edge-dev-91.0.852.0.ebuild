@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit chromium-2 desktop pax-utils unpacker xdg-utils
+inherit chromium-2 desktop pax-utils unpacker xdg
 
 DESCRIPTION="The web browser from Microsoft"
 HOMEPAGE="https://www.microsoft.com/en-us/edge"
@@ -101,14 +101,4 @@ src_install() {
 	done
 
 	pax-mark m "${EDGE_HOME}/msedge"
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
-	xdg_desktop_database_update
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-	xdg_desktop_database_update
 }
