@@ -85,6 +85,10 @@ RDEPEND="${COMMON_DEPEND}
 
 SITEFILE="50${PN}-gentoo.el"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-glib-2.68.patch
+)
+
 pkg_setup() {
 	use emacs && elisp-check-emacs-version
 }
