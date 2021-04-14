@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -28,7 +28,7 @@ RDEPEND="x11-libs/libICE
 	freewnn? ( app-i18n/freewnn )"
 DEPEND="${RDEPEND}
 	x11-misc/gccmakedep
-	x11-misc/imake"
+	>=x11-misc/imake-1.0.8-r1"
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
@@ -47,12 +47,15 @@ src_prepare() {
 }
 
 src_configure() {
-	xmkmf -a || die
+	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
+		IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" xmkmf -a || die
 }
 
 src_compile() {
 	emake \
+		AR="$(tc-getAR) cq" \
 		CC="$(tc-getCC)" \
+		RANLIB="$(tc-getRANLIB)" \
 		CDEBUGFLAGS="${CFLAGS}" \
 		LOCAL_LDFLAGS="${LDFLAGS}" \
 		XAPPLOADDIR="${EPREFIX}/usr/share/X11/app-defaults"
