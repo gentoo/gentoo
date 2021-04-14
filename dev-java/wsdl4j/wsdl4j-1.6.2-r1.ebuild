@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,10 +22,10 @@ KEYWORDS="amd64 ~ppc64 x86"
 # tests fail with encoding errors
 RESTRICT="test"
 
-DEPEND=">=virtual/jdk-1.4
+DEPEND=">=virtual/jdk-1.8:*
 	test? ( dev-java/junit:0 )
 	app-arch/unzip"
-RDEPEND=">=virtual/jre-1.4"
+RDEPEND=">=virtual/jre-1.8:*"
 
 S="${WORKDIR}/${P//./_}"
 TCK_S="${WORKDIR}/${TCK}-${TCK_V//./_}"
