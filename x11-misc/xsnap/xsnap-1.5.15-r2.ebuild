@@ -24,12 +24,12 @@ RDEPEND="
 	${COMMON_DEPEND}
 	media-fonts/font-misc-misc
 "
-DEPEND="
-	${COMMON_DEPEND}
+DEPEND="${COMMON_DEPEND}"
+BDEPEND="
 	app-text/rman
 	dev-lang/perl
 	x11-base/xorg-proto
-	x11-misc/imake
+	>=x11-misc/imake-1.0.8-r1
 "
 DOCS=( AUTHORS Changelog README )
 PATCHES=( "${FILESDIR}"/${P}-root_name.patch )
@@ -46,21 +46,18 @@ src_prepare() {
 	sed -i \
 		-e '/^LOCALEDIR=/d' \
 		po/Makefile || die
+}
 
-	xmkmf || die
-
-	sed -i \
-		-e '/ CC = /d' \
-		-e '/ LD = /d' \
-		-e '/ CDEBUGFLAGS = /d' \
-		-e '/ CCOPTIONS = /d' \
-		-e 's|CPP = cpp|CPP = $(CC)|g' \
-		Makefile || die
+src_configure() {
+	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
+		IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" xmkmf || die
 }
 
 src_compile() {
-	tc-export CC
-	emake CCOPTIONS="${CFLAGS}" EXTRA_LDOPTIONS="${LDFLAGS}"
+	emake \
+		CC="$(tc-getCC)" \
+		CDEBUGFLAGS="${CFLAGS}" \
+		EXTRA_LDOPTIONS="${LDFLAGS}"
 }
 
 src_install() {
