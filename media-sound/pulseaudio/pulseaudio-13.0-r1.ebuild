@@ -114,6 +114,7 @@ RDEPEND="${RDEPEND}
 
 BDEPEND="
 	doc? ( app-doc/doxygen )
+	orc? ( >=dev-lang/orc-0.4.15 )
 	system-wide? ( dev-util/unifdef )
 	test? ( >=dev-libs/check-0.9.10 )
 	sys-devel/gettext
@@ -182,6 +183,7 @@ multilib_src_configure() {
 		$(multilib_native_use_with equalizer fftw)
 		$(multilib_native_use_with sox soxr)
 		$(multilib_native_usex gdbm '--with-database=gdbm' '--with-database=simple')
+		$(multilib_native_usex orc "ORCC=${BROOT}/usr/bin/orcc" '')
 		$(use_enable glib glib2)
 		$(use_enable asyncns)
 		$(use_enable cpu_flags_arm_neon neon-opt)
