@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,11 +18,11 @@ RDEPEND="media-fonts/font-misc-misc
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 	x11-misc/gccmakedep
-	x11-misc/imake"
+	>=x11-misc/imake-1.0.8-r1"
 
-src_prepare() {
-	default
-	xmkmf -a || die
+src_configure() {
+	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
+		IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" xmkmf -a || die
 }
 
 src_compile() {
