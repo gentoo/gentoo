@@ -33,4 +33,7 @@ src_prepare() {
 	# I fear though that removing those classes might bite us somewhere down
 	# the line...
 	rm -rv org/jaxen/{dom4j,jdom,xom} || die
+
+	# this is now part of jdk
+	rm -rv org/w3c || die
 }
