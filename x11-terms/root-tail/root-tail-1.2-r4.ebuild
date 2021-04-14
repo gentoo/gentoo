@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,10 +16,10 @@ IUSE="kde debug"
 
 RDEPEND="x11-libs/libXext
 	x11-libs/libX11"
-DEPEND="x11-misc/imake
+DEPEND="${RDEPEND}"
+BDEPEND=">=x11-misc/imake-1.0.8-r1
 	app-text/rman
 	x11-base/xorg-proto
-	x11-libs/libX11
 	x11-misc/gccmakedep"
 
 src_prepare() {
@@ -28,15 +28,16 @@ src_prepare() {
 }
 
 src_configure() {
-	xmkmf -a
+	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
+		IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" xmkmf -a || die
 }
 
 src_compile() {
 	sed -i 's:/usr/X11R6/bin:/usr/bin:' Makefile || die "sed Makefile failed"
 	use debug && append-flags -DDEBUG
 	emake \
-		CC=$(tc-getCC) \
-		CCOPTIONS="${CFLAGS}" \
+		CC="$(tc-getCC)" \
+		CDEBUGFLAGS="${CFLAGS}" \
 		EXTRA_LDOPTIONS="${LDFLAGS}"
 }
 
