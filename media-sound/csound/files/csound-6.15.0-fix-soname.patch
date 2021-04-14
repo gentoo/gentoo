@@ -1,0 +1,21 @@
+From 20daf5f4edbbf7291ad32dd623a335be1de0c54f Mon Sep 17 00:00:00 2001
+From: vlazzarini <victor.lazzarini@mu.ie>
+Date: Tue, 13 Apr 2021 21:04:05 +0100
+Subject: [PATCH] issue #1449
+
+---
+ interfaces/CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/interfaces/CMakeLists.txt b/interfaces/CMakeLists.txt
+index d72c4ffdc6..3da25b627a 100644
+--- a/interfaces/CMakeLists.txt
++++ b/interfaces/CMakeLists.txt
+@@ -216,6 +216,7 @@ if(BUILD_PYTHON_INTERFACE OR BUILD_JAVA_INTERFACE OR BUILD_LUA_INTERFACE)
+             ARCHIVE_OUTPUT_DIRECTORY ${BUILD_LIB_DIR})
+         if(${CMAKE_COMPILER_IS_GNUCC})
+             target_compile_options(_jcsound6 PRIVATE "-Wno-error")
++             target_link_options(_jcsound6 PRIVATE "-Wl,-soname,lib_jcsound.so.1")
+         endif()
+ 
+         install(TARGETS _jcsound6
