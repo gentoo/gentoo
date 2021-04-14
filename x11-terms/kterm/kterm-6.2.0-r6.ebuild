@@ -27,7 +27,7 @@ RDEPEND="app-text/rman
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	x11-misc/gccmakedep
-	x11-misc/imake
+	>=x11-misc/imake-1.0.8-r1
 "
 
 PATCHES=(
@@ -45,7 +45,8 @@ src_prepare() {
 }
 
 src_configure() {
-	xmkmf -a || die
+	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
+		IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" xmkmf -a || die
 }
 
 src_compile() {
