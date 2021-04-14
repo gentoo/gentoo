@@ -10,7 +10,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="XML Object Model"
 HOMEPAGE="https://xom.nu"
-SRC_URI="https://github.com/elharo/xom/releases/download/v1.3.7/xom-1.3.7-src.tar.gz"
+SRC_URI="https://github.com/elharo/${PN}/releases/download/v${PV}/${P}-src.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
@@ -57,10 +57,10 @@ src_prepare() {
 	mv -v XOM/data . || die
 	pushd XOM/src || die
 	for file in $(find -type f -name "*.java"); do
-		cp --parents -R ${file} ${WORKDIR}/${JAVA_SRC_DIR} || die
+		cp --parents -R ${file} "${WORKDIR}/${JAVA_SRC_DIR}" || die
 	done
 	for file in $(find -type f ! -name "*.java"); do
-		cp --parents -R ${file} ${WORKDIR}/${JAVA_RESOURCE_DIRS} || die
+		cp --parents -R ${file} "${WORKDIR}/${JAVA_RESOURCE_DIRS}" || die
 	done
 	popd
 }
