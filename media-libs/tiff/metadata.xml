@@ -10,6 +10,7 @@
 		support, but also used by GIS and other imaging tools.
 	</longdescription>
 	<upstream>
+		<remote-id type="gitlab">libtiff/libtiff</remote-id>
 		<remote-id type="cpe">cpe:/a:libtiff:libtiff</remote-id>
 		<remote-id type="cpe">cpe:/a:libtiff_project:libtiff</remote-id>
 	</upstream>
