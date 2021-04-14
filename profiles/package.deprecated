@@ -17,6 +17,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-14)
+# because of unmasking java 11, which does not support bytecode older
+# than 1.6, those are deprecated in the ebuild. also, as the lowest
+# java version we support is 1.8, the restriction is lifted even more.
+<virtual/jdk-1.8
+<virtual/jre-1.8
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-11-20)
 # dev-qt/qtwebkit is in the process of being removed, tracker bug #684580
 dev-qt/qtwebkit
