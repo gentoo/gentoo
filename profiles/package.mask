@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Jonas Stein <jstein@gentoo.org> (2021-04-14)
+# Open bugs, dead upstream.
+# Removal on 2021-06-01.  Bug #782730.
+x11-misc/superswitcher
+
+# Jonas Stein <jstein@gentoo.org> (2021-04-14)
 # dead upstream, no valid SRC_URI
 # Removal on 2021-06-01.  Bug #782727.
 x11-misc/xstroke
