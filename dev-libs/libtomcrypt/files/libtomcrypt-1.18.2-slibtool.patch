@@ -1,4 +1,6 @@
 https://github.com/libtom/libtomcrypt/pull/433
+(and then https://github.com/libtom/libtomcrypt/commit/4b3ef7890156a55889b6657e4b295a77907c1f0f)
+
 https://bugs.gentoo.org/777084
 
 From ccc18b9eda52c31cc70a3e46eb33b87b3c076d65 Mon Sep 17 00:00:00 2001
@@ -70,3 +72,46 @@ index 98ec2b501..c72f2ac8d 100644
  endef
  
  $(foreach demo, $(strip $(DEMOS)), $(eval $(call DEMO_template,$(demo))))
+From 4b3ef7890156a55889b6657e4b295a77907c1f0f Mon Sep 17 00:00:00 2001
+From: Steffen Jaeckel <s@jaeckel.eu>
+Date: Mon, 3 Jun 2019 09:32:06 +0200
+Subject: [PATCH] TGTLIBTOOL wasn't always defined
+
+---
+ makefile.shared | 17 ++++++++++-------
+ 1 file changed, 10 insertions(+), 7 deletions(-)
+
+diff --git a/makefile.shared b/makefile.shared
+index c72f2ac8d..e63d77032 100644
+--- a/makefile.shared
++++ b/makefile.shared
+@@ -18,19 +18,22 @@ PLATFORM := $(shell uname | sed -e 's/_.*//')
+ 
+ ifeq ($(LIBTOOL),rlibtool)
+   TGTLIBTOOL:=slibtool-shared
+-endif
+-
+-ifndef LIBTOOL
+-  ifeq ($(PLATFORM), Darwin)
+-    LIBTOOL:=glibtool
++else
++  ifndef LIBTOOL
++    ifeq ($(PLATFORM), Darwin)
++      TGTLIBTOOL:=glibtool
++    else
++      TGTLIBTOOL:=libtool
++    endif
+   else
+-    LIBTOOL:=libtool
++    TGTLIBTOOL=$(LIBTOOL)
+   endif
+-  TGTLIBTOOL=$(LIBTOOL)
+ endif
++
+ ifeq ($(PLATFORM), CYGWIN)
+   NO_UNDEFINED:=-no-undefined
+ endif
++
+ LTCOMPILE = $(TGTLIBTOOL) --mode=compile --tag=CC $(CC)
+ INSTALL_CMD = $(TGTLIBTOOL) --mode=install install
+ UNINSTALL_CMD = $(TGTLIBTOOL) --mode=uninstall rm
