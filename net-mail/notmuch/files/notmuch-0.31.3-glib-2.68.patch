@@ -1,0 +1,60 @@
+https://bugs.gentoo.org/777663
+
+From: David Bremner <david@tethera.net>
+Date: Mon, 15 Feb 2021 20:43:50 +0000 (-0400)
+Subject: fix build failure with glib 2.67
+X-Git-Tag: archive/debian/0.31.4-1~6
+X-Git-Url: https://git.notmuchmail.org/git?p=notmuch;a=commitdiff_plain;h=6db8b422d91a75b7c16f013f10f41d1109ce5866;hp=1692fe7aa8b137d02817bb11f248d204d6ab4048
+
+fix build failure with glib 2.67
+
+Based on a patch from Michael J Gruber [1].  As of glib 2.67 (more
+specifically [2]), including "gmime-extra.h" inside an extern "C"
+block causes build failures, because glib is using C++ features.
+
+Observing that "gmime-extra.h" is no longer needed in
+notmuch-private.h, which can simply delete that include, but
+we have to correspondingly move the includes which might include
+it (in particular crypto.h) out of the extern "C" block also.
+
+This seems less fragile than only moving gmime-extra, and relying on
+preprocessor sentinels to keep the deeper includes from happening.
+
+Move to the include to the outside of the extern block.
+
+[1]: id:aee618a3d41f7889a7449aa16893e992325a909a.1613055071.git.git@grubix.eu
+[2]: https://gitlab.gnome.org/GNOME/glib/-/merge_requests/1715
+---
+
+diff --git a/lib/notmuch-private.h b/lib/notmuch-private.h
+index 57ec7f72..41aff342 100644
+--- a/lib/notmuch-private.h
++++ b/lib/notmuch-private.h
+@@ -31,6 +31,12 @@
+ 
+ #include "notmuch.h"
+ 
++#include "xutil.h"
++#include "error_util.h"
++#include "string-util.h"
++#include "crypto.h"
++#include "repair.h"
++
+ NOTMUCH_BEGIN_DECLS
+ 
+ #include <stdlib.h>
+@@ -47,14 +53,6 @@ NOTMUCH_BEGIN_DECLS
+ 
+ #include <talloc.h>
+ 
+-#include "gmime-extra.h"
+-
+-#include "xutil.h"
+-#include "error_util.h"
+-#include "string-util.h"
+-#include "crypto.h"
+-#include "repair.h"
+-
+ #ifdef DEBUG
+ # define DEBUG_DATABASE_SANITY 1
+ # define DEBUG_THREADING 1
