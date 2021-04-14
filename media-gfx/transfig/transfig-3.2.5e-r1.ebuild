@@ -79,7 +79,7 @@ src_compile() {
 	xmkmf || die "xmkmf failed"
 	emake Makefiles
 
-	emake CC="$(tc-getCC)" AR="$(tc-getAR) clq" RANLIB="$(tc-getRANLIB)" \
+	emake CC="$(tc-getCC)" AR="$(tc-getAR) cq" RANLIB="$(tc-getRANLIB)" \
 		LOCAL_LDFLAGS="${LDFLAGS}" CDEBUGFLAGS="${CFLAGS}" \
 		USRLIBDIR="${EPREFIX}/usr/$(get_libdir)"
 }
