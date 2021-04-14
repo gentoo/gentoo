@@ -747,7 +747,7 @@ app-admin/emacs-updater 1.16: Rebuild Emacs packages
 app-admin/entr 4.6 4.8: Run arbitrary commands when files change
 app-admin/eselect 1.4.16 1.4.17 9999: Gentoo's multi-purpose configuration and management tool
 app-admin/evtxtools 1.1.1-r1: Read, decode and dump Windows Vista/2008/7 event log file
-app-admin/exo 1.27.1: Command-line tool for everything at Exoscale: compute, storage, dns.
+app-admin/exo 1.27.2: Command-line tool for everything at Exoscale: compute, storage, dns.
 app-admin/fam 2.7.0_p17_p3: FAM, the File Alteration Monitor
 app-admin/fetchlog 1.4-r1: Displays the last new messages of a logfile
 app-admin/fifo-cronolog 1.1.1-r1: cronolog wrapper for use with dumb daemons like squid, varnish and so on
@@ -17741,7 +17741,7 @@ sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.79_p2020120
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.79_p20201201-r1 5.4.9999 5.10.11_p20210201: Raspberry Pi kernel sources
 sys-kernel/rt-sources 4.4.240_p209 4.4.245_p211 4.4.249_p212 4.9.240_p155 4.9.247_p162 4.14.206_p99 4.14.209_p101 4.14.214_p104 4.19.148_p64 4.19.160_p69 4.19.165_p70 5.4.70_p40 5.4.84_p47 5.10.1_p20 5.10.4_p22: Full Linux 5.10 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/vanilla-kernel 5.4.105 5.4.106 5.4.108 5.4.109 5.4.110 5.4.111 5.10.24 5.10.26 5.10.27 5.10.28 5.10.29 5.11.5 5.11.6 5.11.7 5.11.9 5.11.10 5.11.11 5.11.12 5.11.13: Linux kernel built from vanilla upstream sources
-sys-kernel/vanilla-sources 4.4.266 4.9.266 4.14.230 4.19.186 5.4.111 5.10.29 5.11.13: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 4.4.266 4.9.266 4.14.230 4.19.187 5.4.112 5.10.30 5.11.14: Full sources for the Linux kernel
 sys-kernel/zen-sources 5.10.16 5.11: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
 sys-libs/binutils-libs 2.34-r2 2.35.1-r1 2.35.2 2.36.1: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
