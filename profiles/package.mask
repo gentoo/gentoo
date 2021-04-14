@@ -280,12 +280,6 @@ dev-libs/zookeeper-c
 # for transitioning out. Bug #776262.
 app-admin/lastpass-cli
 
-# Brian Evans <grknight@gentoo.org> (2021-03-08)
-# No longer consistently maintained, severely broken with PHP 8
-# No reverse dependencies, fails tests
-# Removal in 30 days.
-dev-php/PEAR-Config
-
 # Sam James <sam@gentoo.org> (2021-03-03)
 # Doesn't seem to sync clock correctly
 # in some cases.
