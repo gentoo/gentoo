@@ -1,9 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: eutils.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
+# @DEPRECATED: use split eclasses or built-ins as part of newer EAPIs
 # @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @BLURB: many extra (but common) functions that are used in ebuilds
 # @DESCRIPTION:
