@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-USE_PHP="php7-2 php7-3 php7-4"
+USE_PHP="php7-3 php7-4 php8-0"
 PHP_EXT_NAME="stomp"
 PHP_EXT_NEEDED_USE="ssl(-)?"
 DOCS=( CREDITS doc/classes.php doc/functions.php )
@@ -19,6 +19,8 @@ IUSE="examples ssl test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}/pecl-stomp-2.0.2-php8.patch" )
 
 src_configure() {
 	local PHP_EXT_ECONF_ARGS=(
