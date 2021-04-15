@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit libtool eutils ltprune
+
+inherit eutils libtool ltprune
 
 DESCRIPTION="Support library for syslog-ng"
 HOMEPAGE="http://www.balabit.com/products/syslog_ng/"
@@ -13,7 +14,7 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86"
 IUSE="static-libs"
 
-DEPEND=""
+DOCS=( AUTHORS CREDITS ChangeLog NEWS PORTS README )
 
 src_prepare() {
 	elibtoolize
@@ -24,7 +25,7 @@ src_configure() {
 }
 
 src_install() {
-	DOCS="AUTHORS CREDITS ChangeLog NEWS PORTS README" \
-		default
+	default
+	einstalldocs
 	prune_libtool_files
 }
