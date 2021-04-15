@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools eutils gnome2-utils xdg-utils
+
+inherit autotools gnome2-utils xdg-utils
 
 DESCRIPTION="Compositing window manager forked from Mutter for use with Cinnamon"
 HOMEPAGE="https://projects.linuxmint.com/cinnamon/"
