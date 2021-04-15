@@ -1,12 +1,11 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
-inherit flag-o-matic toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Japanese Kanji X Terminal"
-#HOMEPAGE="http://www.asahi-net.or.jp/~hc3j-tkg/kterm/"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="mirror://gentoo/${P}.tar.gz
 	mirror://gentoo/${P}-wpi.patch.gz
@@ -17,7 +16,8 @@ SLOT="0"
 KEYWORDS="-alpha amd64 ~ppc ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="Xaw3d"
 
-RDEPEND="app-text/rman
+RDEPEND="
+	app-text/rman
 	sys-libs/ncurses:=
 	x11-libs/libXaw
 	x11-libs/libXmu
@@ -26,11 +26,11 @@ RDEPEND="app-text/rman
 	Xaw3d? ( x11-libs/libXaw3d )
 	!<games-board/xgammon-0.98-r3
 	!<games-board/xscrabble-2.10-r4"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 	x11-misc/gccmakedep
-	>=x11-misc/imake-1.0.8-r1
-"
+	>=x11-misc/imake-1.0.8-r1"
 
 PATCHES=(
 	"${WORKDIR}"/${P}-wpi.patch		# wallpaper patch
@@ -52,25 +52,27 @@ src_configure() {
 }
 
 src_compile() {
-	emake \
-		CC="$(tc-getCC)" \
-		CDEBUGFLAGS="${CFLAGS}" \
-		LOCAL_LDFLAGS="${LDFLAGS}" \
-		TERMCAPLIB="$("$(tc-getPKG_CONFIG)" --libs ncurses)" \
+	local myemakeargs=(
+		CC="$(tc-getCC)"
+		CDEBUGFLAGS="${CFLAGS}"
+		LOCAL_LDFLAGS="${LDFLAGS}"
+		TERMCAPLIB="$("$(tc-getPKG_CONFIG)" --libs ncurses)"
 		XAPPLOADDIR="${EPREFIX}/usr/share/X11/app-defaults"
+	)
+	emake "${myemakeargs[@]}"
 }
 
 src_install() {
-	emake \
-		BINDIR="${EPREFIX}/usr/bin" \
-		XAPPLOADDIR="${EPREFIX}/usr/share/X11/app-defaults" \
-		DESTDIR="${D}" \
-		install
+	local myemakeargs=(
+		DESTDIR="${D}"
+		BINDIR="${EPREFIX}/usr/bin"
+		XAPPLOADDIR="${EPREFIX}/usr/share/X11/app-defaults"
+	)
+	emake "${myemakeargs[@]}" install
 	einstalldocs
 
-	# install man pages
 	newman ${PN}.man ${PN}.1
-	iconv -f ISO-2022-JP -t UTF-8 ${PN}.jman > ${PN}.ja.1
+	iconv -f ISO-2022-JP -t UTF-8 ${PN}.jman > ${PN}.ja.1 || die
 	doman ${PN}.ja.1
 
 	# remove link to avoid collision (bug #668892,706322)
