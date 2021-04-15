@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -9,7 +9,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="A seamless aspect-oriented extension to the Java programming language"
 HOMEPAGE="http://eclipse.org/aspectj/"
-SRC_URI="http://www.eclipse.org/downloads/download.php?file=/tools/aspectj/aspectj-1.7.3-src.jar&r=1 -> ${P}.jar"
+SRC_URI="http://www.eclipse.org/downloads/download.php?file=/tools/aspectj/${P}-src.jar&r=1 -> ${P}.jar"
 
 LICENSE="EPL-1.0"
 SLOT="0"
