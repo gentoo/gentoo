@@ -5468,7 +5468,7 @@ dev-libs/flatbuffers 1.12.0: Memory efficient serialization library
 dev-libs/folks 0.14.0: Library for aggregating people from multiple sources
 dev-libs/foma 0.9.18: A set of utilities for constructing finite-state automata and transducers
 dev-libs/freexl 1.0.5 1.0.6: Simple XLS data extraction library
-dev-libs/fribidi 1.0.9 1.0.10: A free implementation of the unicode bidirectional algorithm
+dev-libs/fribidi 1.0.10: A free implementation of the unicode bidirectional algorithm
 dev-libs/fstrm 0.6.0: Frame Streams implementation in C
 dev-libs/gdl 3.34.0: GNOME docking library
 dev-libs/geoip 1.6.12: GeoIP Legacy C API
@@ -18214,7 +18214,7 @@ www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r3 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.1 9999: Download manager using gtk+ and libcurl
 www-client/vivaldi 3.6.2165.40 3.7.2218.49 3.7.2218.52: A browser for our friends
-www-client/vivaldi-snapshot 3.8.2238.3 3.8.2254.3: A browser for our friends
+www-client/vivaldi-snapshot 3.8.2254.3 3.8.2259.3: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
 www-misc/awstats 7.8-r1: AWStats is short for Advanced Web Statistics
@@ -18397,7 +18397,7 @@ x11-libs/dnd 1.1-r3: OffiX' Drag'n'drop library
 x11-libs/fltk 1.3.5-r4 1.3.9999 1.4.9999: C++ user interface toolkit for X and OpenGL
 x11-libs/fox 1.6.57-r1 1.7.67: C++ Toolkit for developing Graphical User Interfaces easily and effectively
 x11-libs/fox-wrapper 3: wrapper for fox-config to manage multiple versions
-x11-libs/gdk-pixbuf 2.42.2 2.42.4: Image loading library for GTK+
+x11-libs/gdk-pixbuf 2.42.4: Image loading library for GTK+
 x11-libs/gdk-pixbuf-xlib 2.40.2: Deprecated Xlib integration for GdkPixbuf
 x11-libs/gl2ps 1.4.2: OpenGL to PostScript printing library
 x11-libs/gnome-pty-helper 0.40.2: GNOME Setuid helper for opening ptys
