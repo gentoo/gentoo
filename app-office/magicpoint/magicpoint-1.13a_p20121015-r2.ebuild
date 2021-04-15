@@ -1,70 +1,76 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit autotools elisp-common eutils toolchain-funcs
+inherit autotools elisp-common toolchain-funcs
 
 MY_SNAP="${PV/*_p}"
 MY_P="mgp-snap-${MY_SNAP}"
-DESCRIPTION="An X11 based presentation tool"
-SRC_URI="ftp://sh.wide.ad.jp/WIDE/free-ware/mgp-snap/${MY_P}.tar.gz"
+
+DESCRIPTION="X11 based presentation tool"
 HOMEPAGE="http://member.wide.ad.jp/wg/mgp/"
+SRC_URI="ftp://sh.wide.ad.jp/WIDE/free-ware/mgp-snap/${MY_P}.tar.gz"
+S="${WORKDIR}/kit"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="cjk contrib doc emacs examples fontconfig gif imlib m17n-lib mng nls png truetype"
-
 REQUIRED_USE="imlib? ( !gif !png )"
-S="${WORKDIR}/kit"
 
-COMMON_DEPEND="x11-libs/libICE
+COMMON_DEPEND="
+	x11-libs/libICE
 	x11-libs/libSM
-	x11-libs/libXrender
 	x11-libs/libXmu
+	x11-libs/libXrender
+	emacs? ( >=app-editors/emacs-23.1:* )
 	imlib? ( media-libs/imlib2[X] )
 	!imlib? (
 		gif? ( media-libs/giflib:= )
 		png? ( >=media-libs/libpng-1.4:0= )
 	)
-	truetype? (
-		x11-libs/libXft
-		media-libs/fontconfig
-	)
-	emacs? ( >=app-editors/emacs-23.1:* )
 	m17n-lib? (
 		dev-libs/m17n-lib[X]
 		fontconfig? ( media-libs/fontconfig )
 	)
-	mng? ( media-libs/libmng )"
-DEPEND="${COMMON_DEPEND}
-	sys-devel/autoconf
-	x11-base/xorg-proto
-	x11-libs/libxkbfile
-	app-text/rman
-	>=x11-misc/imake-1.0.8-r1"
-RDEPEND="${COMMON_DEPEND}
+	mng? ( media-libs/libmng:= )
+	truetype? (
+		x11-libs/libXft
+		media-libs/fontconfig
+	)"
+RDEPEND="
+	${COMMON_DEPEND}
 	contrib? ( dev-lang/perl )
 	nls? ( sys-devel/gettext )
 	truetype? ( cjk? ( media-fonts/sazanami ) )"
+DEPEND="
+	${COMMON_DEPEND}
+	x11-libs/libxkbfile"
+BDEPEND="
+	app-text/rman
+	x11-base/xorg-proto
+	>=x11-misc/imake-1.0.8-r1"
 
-SITEFILE=50${PN}-gentoo.el
+SITEFILE="50${PN}-gentoo.el"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.11b-gentoo.diff
+	"${FILESDIR}"/${PN}-1.13a_p20121015-fontconfig.patch
+	"${FILESDIR}"/${PN}-1.13a_p20121015-parse-empty.patch
+	"${FILESDIR}"/${PN}-1.13a_p20121015-draw-charset.patch
+	"${FILESDIR}"/${PN}-1.13a_p20121015-draw-stringtoolong.patch
+	"${FILESDIR}"/${PN}-1.13a_p20121015-implicit-declaration.patch
+	"${FILESDIR}"/${PN}-1.13a_p20121015-fno-common.patch
+)
 
 src_prepare() {
-	sed -i -e '/mgp_version =/s, (.*), ('${MY_SNAP}'),' mgp.c
+	default
 
-	epatch \
-		"${FILESDIR}"/${PN}-1.11b-gentoo.diff \
-		"${FILESDIR}"/${PN}-1.13a_p20121015-fontconfig.patch \
-		"${FILESDIR}"/${PN}-1.13a_p20121015-parse-empty.patch \
-		"${FILESDIR}"/${PN}-1.13a_p20121015-draw-charset.patch \
-		"${FILESDIR}"/${PN}-1.13a_p20121015-draw-stringtoolong.patch \
-		"${FILESDIR}"/${PN}-1.13a_p20121015-implicit-declaration.patch \
-		"${FILESDIR}"/${PN}-1.13a_p20121015-fno-common.patch
+	sed -i -e '/mgp_version =/s, (.*), ('${MY_SNAP}'),' mgp.c || die
 
 	if ! use imlib; then
-		epatch "${FILESDIR}"/${PN}-1.13a-libpng15.patch
+		eapply "${FILESDIR}"/${PN}-1.13a-libpng15.patch
 
 		# fix compability with libpng14
 		sed -i \
@@ -76,27 +82,30 @@ src_prepare() {
 			sed -i -e "s/ungif/gif/g" configure.in || die
 
 			# bug #486248
-			epatch "${FILESDIR}"/${PN}-1.13a_p20121015-any-giflib.patch
+			eapply "${FILESDIR}"/${PN}-1.13a_p20121015-any-giflib.patch
 
 			# fix use of uninitialized memory in error message
-			epatch "${FILESDIR}"/${PN}-1.13a_p20121015-gif-dimension.patch
+			eapply "${FILESDIR}"/${PN}-1.13a_p20121015-gif-dimension.patch
 		fi
 	fi
 
+	mv configure.{in,ac} || die
 	eautoreconf
 }
 
 src_configure() {
-	econf \
-		$(use_enable gif) \
-		$(use_enable imlib) \
-		$(use_enable nls locale) \
-		$(use_enable truetype xft2) \
-		$(use_with m17n-lib) \
-		--disable-vflib \
-		--disable-freetype \
-		--x-libraries=/usr/lib/X11 \
-		--x-includes=/usr/include/X11
+	local myeconfargs=(
+		$(use_enable gif)
+		$(use_enable imlib)
+		$(use_enable nls locale)
+		$(use_enable truetype xft2)
+		$(use_with m17n-lib)
+		--disable-freetype
+		--disable-vflib
+		--x-libraries="${ESYSROOT}/usr/$(get_libdir)"
+		--x-includes="${ESYSROOT}/usr/include"
+	)
+	econf "${myeconfargs[@]}"
 
 	export IMAKECPP="${IMAKECPP:-$(tc-getCPP)}"
 	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" xmkmf || die
@@ -104,59 +113,53 @@ src_configure() {
 
 src_compile() {
 	# no parallel build possible anywhere
-	emake -j1 Makefiles \
-		CC="$(tc-getBUILD_CC)" \
-		LD="$(tc-getLD)"
+	emake -j1 CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" Makefiles
 
-	emake -j1 \
-		AR="$(tc-getAR) cq" \
-		CC="$(tc-getCC)" \
-		RANLIB="$(tc-getRANLIB)" \
-		CDEBUGFLAGS="${CFLAGS}" \
-		LOCAL_LDFLAGS="${LDFLAGS}" \
-		BINDIR=/usr/bin \
-		LIBDIR=/etc/X11
+	local myemakeargs=(
+		AR="$(tc-getAR) cq"
+		CC="$(tc-getCC)"
+		RANLIB="$(tc-getRANLIB)"
+		CDEBUGFLAGS="${CFLAGS}"
+		LOCAL_LDFLAGS="${LDFLAGS}"
+		BINDIR="${EPREFIX}/usr/bin"
+		LIBDIR="${EPREFIX}/etc/X11"
+	)
+	emake -j1 "${myemakeargs[@]}"
 
 	if use emacs; then
-		pushd contrib || die
-		elisp-compile *.el || die
-		popd
+		pushd contrib >/dev/null || die
+		elisp-compile *.el
+		popd >/dev/null || die
 	fi
 }
 
 src_install() {
-	emake -j1 \
-		DESTDIR="${D}" \
-		BINDIR=/usr/bin \
-		LIBDIR=/etc/X11 \
-		install
-
-	emake -j1 \
-		DESTDIR="${D}" \
-		DOCHTMLDIR=/usr/share/doc/${PF} \
-		MANPATH=/usr/share/man \
-		MANSUFFIX=1 \
-		install.man
+	local myemakeargs=(
+		DESTDIR="${D}"
+		BINDIR="${EPREFIX}/usr/bin"
+		DOCHTMLDIR="${EPREFIX}/usr/share/doc/${PF}"
+		LIBDIR="${EPREFIX}/etc/X11"
+		MANPATH="${EPREFIX}/usr/share/man"
+		MANSUFFIX=1
+	)
+	emake -j1 "${myemakeargs[@]}" install install.man
 
 	use contrib && dobin contrib/mgp2{html,latex}.pl
 
 	if use emacs; then
-		pushd contrib || die
-		elisp-install ${PN} *.el *.elc || die
+		pushd contrib >/dev/null || die
+		elisp-install ${PN} *.el *.elc
 		elisp-site-file-install "${FILESDIR}/${SITEFILE}"
-		popd
+		popd >/dev/null || die
 	fi
 
 	dodoc FAQ README* RELNOTES SYNTAX TODO* USAGE*
 
 	if use examples; then
-		pushd sample || die
-		insinto /usr/share/doc/${PF}/examples
-		doins README* cloud.jpg dad.* embed*.mgp gradation*.mgp \
-			mgp-old*.jpg mgp.mng mgp3.xbm mgprc-sample \
-			multilingual.mgp sample*.mgp sendmail6*.mgp \
-			tutorial*.mgp v6*.mgp v6header.*
-		popd
+		# default and mgp[1-3].jpg are already installed
+		rm sample/{default.mgp,mgp{1,2,3}.jpg} || die
+		docinto examples
+		dodoc sample/[^IM]*
 	fi
 }
 
