@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7..9} )
 
-inherit pam python-r1 toolchain-funcs usr-ldscript
+inherit pam python-r1 usr-ldscript
 
 DESCRIPTION="Library for password quality checking and generating random passwords"
 HOMEPAGE="https://github.com/libpwquality/libpwquality"
