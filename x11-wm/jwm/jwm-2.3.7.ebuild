@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils
+
+inherit wrapper
 
 DESCRIPTION="Very fast and lightweight still powerful window manager for X"
 HOMEPAGE="http://joewing.net/projects/jwm/"
