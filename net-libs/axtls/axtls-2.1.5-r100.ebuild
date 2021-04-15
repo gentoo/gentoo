@@ -5,7 +5,7 @@ EAPI=7
 
 LUA_COMPAT=( lua5-{1..4} luajit )
 
-inherit lua-single multilib multilib-minimal savedconfig toolchain-funcs user
+inherit lua-single multilib-minimal savedconfig toolchain-funcs user
 
 ################################################################################
 # axtls CONFIG MINI-HOWTO
