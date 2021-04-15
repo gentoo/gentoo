@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools multilib
+
+inherit autotools
 
 DESCRIPTION="A library with SDR DSP primitives"
 HOMEPAGE="http://git.osmocom.org/libosmo-dsp/"
@@ -20,9 +21,11 @@ SLOT="0/${PV}"
 IUSE="doc static-libs"
 
 RDEPEND="sci-libs/fftw:3.0"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	doc? ( app-doc/doxygen )
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 src_prepare() {
 	default
