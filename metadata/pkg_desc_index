@@ -17668,7 +17668,7 @@ sys-fs/lufs 0.9.7-r4: User-mode filesystem implementation
 sys-fs/lvm2 2.02.187-r2 2.03.11: User-land utilities for LVM2 (device-mapper) software
 sys-fs/lxcfs 4.0.7: FUSE filesystem for LXC
 sys-fs/mac-fdisk 0.1_p18: Mac/PowerMac disk partitioning utility
-sys-fs/mdadm 4.1: Tool for running RAID systems - replacement for the raidtools
+sys-fs/mdadm 4.1 4.2_rc1: Tool for running RAID systems - replacement for the raidtools
 sys-fs/mergerfs 2.32.1 2.32.2 2.32.3 2.32.4: A featureful union filesystem
 sys-fs/mhddfs 0.1.39-r2: Fuse multi harddrive filesystem
 sys-fs/mp3fs 0.91-r1: a read-only FUSE filesystem which transcodes FLAC audio files to MP3 when read
