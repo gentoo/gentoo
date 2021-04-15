@@ -1,30 +1,27 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit autotools eutils
+
+inherit autotools
 
 MY_P=${PN}2-${PV}
 
 DESCRIPTION="a small library to create and manage 64-bit disk based hash tables"
 HOMEPAGE="https://www.gnu.org/software/libdbh/"
 SRC_URI="mirror://sourceforge/dbh/dbh/${PV}/${MY_P}.tar.gz"
+S="${WORKDIR}"/${MY_P}
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
-RDEPEND=""
-DEPEND="${RDEPEND}
+DEPEND="
 	dev-util/gtk-doc-am
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
-S="${WORKDIR}"/${MY_P}
-
-pkg_setup() {
-	DOCS=( AUTHORS ChangeLog NEWS README TODO )
-}
+DOCS=( AUTHORS ChangeLog NEWS README TODO )
 
 src_prepare() {
 	sed -i -e "s:-O2:${CFLAGS}:" m4/rfm-conditionals.m4 || die
@@ -37,5 +34,6 @@ src_configure() {
 
 src_install() {
 	default
+	einstalldocs
 	find "${ED}" -name '*.la' -delete || die
 }
