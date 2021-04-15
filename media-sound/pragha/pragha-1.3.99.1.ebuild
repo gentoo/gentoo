@@ -25,7 +25,7 @@ COMMON_DEPEND=">=dev-db/sqlite-3.4:3=
 		>=dev-libs/libcdio-paranoia-0.90:=
 		>=media-libs/libcddb-1.3.0:= )
 	glyr? ( >=media-libs/glyr-1.0.1:= )
-	grilo? ( media-libs/grilo:0.3[network] )
+	grilo? ( media-libs/grilo:0.3[network(+)] )
 	keybinder? ( >=dev-libs/keybinder-0.2.0:3 )
 	koel? ( dev-libs/json-glib )
 	lastfm? ( >=media-libs/libclastfm-0.5:= )
