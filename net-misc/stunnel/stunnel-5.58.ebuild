@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit multilib ssl-cert systemd tmpfiles
+inherit ssl-cert systemd tmpfiles
 
 DESCRIPTION="TLS/SSL - Port Wrapper"
 HOMEPAGE="https://www.stunnel.org/index.html"
