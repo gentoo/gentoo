@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils multilib multilib-minimal
+inherit multilib-minimal
 
 DESCRIPTION="C library and tools for interacting with the linux GPIO character device"
 HOMEPAGE="https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/"
