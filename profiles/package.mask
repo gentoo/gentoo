@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Jonas Stein <jstein@gentoo.org> (2021-04-15)
+# Depends on gtk2, which is EOL
+# Removal on 2021-06-01.  Bug #782904.
+x11-themes/gtk-engines-aurora
+
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-04-14)
 # java libraries not used by any other package,
 # masked for removal
