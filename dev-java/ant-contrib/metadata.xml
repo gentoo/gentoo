@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">ant-contrib</remote-id>
+		<remote-id type="github">cniweb/ant-contrib</remote-id>
 	</upstream>
 </pkgmetadata>
