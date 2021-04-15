@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ RDEPEND="
 	aac? ( media-libs/faad2 )
 	alsa? ( media-libs/alsa-lib )
 	flac? ( media-libs/flac )
-	fluidsynth? ( media-sound/fluidsynth )
+	fluidsynth? ( media-sound/fluidsynth:= )
 	fribidi? ( dev-libs/fribidi )
 	gtk? (
 		dev-libs/glib:2
@@ -56,6 +56,7 @@ S="${WORKDIR}/${P/_/}"
 
 PATCHES=(
 	"${FILESDIR}/${P}-ultima_engine_lua_dep.patch"
+	"${FILESDIR}/${P}-fluidsynth-2.2.patch"
 )
 
 src_prepare() {
