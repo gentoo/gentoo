@@ -13,6 +13,7 @@ SLOT="0"
 
 IUSE="afp archive bluray cdda elogind fuse google gnome-keyring gnome-online-accounts gphoto2 +http ios mtp nfs policykit samba systemd test +udev udisks zeroconf"
 RESTRICT="!test? ( test )"
+
 # elogind/systemd only relevant to udisks (in v1.38.1)
 REQUIRED_USE="
 	?? ( elogind systemd )
@@ -25,45 +26,47 @@ REQUIRED_USE="
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
 
 RDEPEND="
-	>=dev-libs/glib-2.57.2:2
-	>=gnome-base/gsettings-desktop-schemas-3.33.0
-	afp? ( >=dev-libs/libgcrypt-1.2.2:0= )
-	sys-apps/dbus
 	app-crypt/gcr:=
-	policykit? (
-		>=sys-auth/polkit-0.114
-		sys-libs/libcap )
-	http? (
-		dev-libs/libxml2:2
-		>=net-libs/libsoup-2.58.0:2.4 )
-	zeroconf? ( >=net-dns/avahi-0.6[dbus] )
-	udev? ( >=dev-libs/libgudev-147:= )
-	fuse? ( >=sys-fs/fuse-3.0.0:3 )
-	udisks? ( >=sys-fs/udisks-1.97:2 )
-	systemd? ( >=sys-apps/systemd-206:0= )
-	elogind? ( >=sys-auth/elogind-229:0= )
-	ios? (
-		>=app-pda/libimobiledevice-1.2:=
-		>=app-pda/libplist-1:= )
-	gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.17.1:= )
-	gnome-keyring? ( app-crypt/libsecret )
-	bluray? ( media-libs/libbluray:= )
-	mtp? (
-		virtual/libusb
-		>=media-libs/libmtp-1.1.15 )
-	samba? ( >=net-fs/samba-4[client] )
+	>=dev-libs/glib-2.65.1:2
+	>=gnome-base/gsettings-desktop-schemas-3.33.0
+	net-misc/openssh
+	sys-apps/dbus
+	afp? ( >=dev-libs/libgcrypt-1.2.2:0= )
 	archive? ( app-arch/libarchive:= )
+	bluray? ( media-libs/libbluray:= )
 	cdda? (
 		dev-libs/libcdio:0=
 		>=dev-libs/libcdio-paranoia-0.78.2 )
-	google? ( >=dev-libs/libgdata-0.17.11:=[crypt,gnome-online-accounts] )
+	elogind? ( >=sys-auth/elogind-229:0= )
+	fuse? ( >=sys-fs/fuse-3.0.0:3 )
+	gnome-keyring? ( app-crypt/libsecret )
+	gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.17.1:= )
+	google? ( >=dev-libs/libgdata-0.18.0:=[crypt,gnome-online-accounts] )
 	gphoto2? ( >=media-libs/libgphoto2-2.5.0:= )
+	http? (
+		>=net-libs/libsoup-2.58.0:2.4
+		dev-libs/libxml2:2 )
+	ios? (
+		>=app-pda/libimobiledevice-1.2:=
+		>=app-pda/libplist-1:= )
+	mtp? (
+		>=media-libs/libmtp-1.1.15
+		virtual/libusb:1= )
 	nfs? ( >=net-fs/libnfs-1.9.8 )
-	net-misc/openssh
+	policykit? (
+		>=sys-auth/polkit-0.114
+		sys-libs/libcap )
+	samba? ( >=net-fs/samba-4[client] )
+	systemd? ( >=sys-apps/systemd-206:0= )
+	udev? ( >=dev-libs/libgudev-147:= )
+	udisks? ( >=sys-fs/udisks-1.97:2 )
+	zeroconf? ( >=net-dns/avahi-0.6[dbus] )
 "
+
 DEPEND="${RDEPEND}"
+
 BDEPEND="
-	>=dev-util/meson-0.49
+	>=dev-util/meson-0.53
 	dev-util/glib-utils
 	app-text/docbook-xsl-stylesheets
 	app-text/docbook-xml-dtd:4.2
@@ -71,6 +74,7 @@ BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 	dev-util/gdbus-codegen
+	test? ( dev-libs/libgdata )
 "
 
 src_configure() {
@@ -113,6 +117,7 @@ src_configure() {
 		-Dgcrypt=${enable_gcrypt}
 		$(meson_use udev gudev)
 		$(meson_use gnome-keyring keyring)
+		$(meson_use test gvfs-all-tests)
 		-Dlogind=${enable_logind}
 		-Dlibusb=${enable_libusb}
 		-Ddevel_utils=false # wouldn't install any of it as of 1.38.1; some tests need it, but they aren't automated tests in v1.38.1
