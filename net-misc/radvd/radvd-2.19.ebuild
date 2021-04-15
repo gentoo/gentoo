@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit systemd user eutils readme.gentoo-r1 toolchain-funcs
+inherit systemd user readme.gentoo-r1 toolchain-funcs
 
 DESCRIPTION="Linux IPv6 Router Advertisement Daemon"
 HOMEPAGE="http://v6web.litech.org/radvd/"
