@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit autotools toolchain-funcs multilib-minimal
+inherit autotools multilib-minimal
 
 DESCRIPTION="Jemalloc is a general-purpose scalable concurrent allocator"
 HOMEPAGE="http://jemalloc.net/ https://github.com/jemalloc/jemalloc"
