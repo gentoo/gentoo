@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils linux-info toolchain-funcs
+inherit linux-info toolchain-funcs
 
 DESCRIPTION="A program for announcing VLANs using GVRP"
 HOMEPAGE="http://sokrates.mimuw.edu.pl/~sebek/gvrpcd/"
@@ -18,10 +18,9 @@ RDEPEND="${DEPEND}"
 
 CONFIG_CHECK="~VLAN_8021Q ~VLAN_8021Q_GVRP"
 
-src_prepare() {
-	eapply "${FILESDIR}/${PN}-respect-ldflags.patch"
-	eapply_user
-}
+PATCHES=(
+	"${FILESDIR}/${PN}-respect-ldflags.patch"
+)
 
 src_compile() {
 	emake CC="$(tc-getCC)"
