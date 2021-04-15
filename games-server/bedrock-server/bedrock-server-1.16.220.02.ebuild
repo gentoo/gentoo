@@ -6,6 +6,7 @@ EAPI=7
 DESCRIPTION="The official bedrock (non-java) based server for the sandbox video game"
 HOMEPAGE="https://www.minecraft.net/"
 SRC_URI="https://minecraft.azureedge.net/bin-linux/${P}.zip"
+S="${WORKDIR}"
 
 LICENSE="Mojang"
 SLOT="0"
@@ -17,27 +18,27 @@ RDEPEND="
 	app-misc/dtach
 	dev-libs/openssl:0/1.1
 	net-misc/curl[ssl]
+	sys-libs/zlib
 "
 
 BDEPEND="app-arch/unzip"
 
 RESTRICT="bindist mirror"
 
-S="${WORKDIR}"
-
 DOCS=(
 	"bedrock_server_how_to.html"
 	"release-notes.txt"
 )
 
-QA_PREBUILT="
-	opt/bedrock-server/bedrock_server
-	opt/bedrock-server/libCrypto.so
-"
+QA_PREBUILT="opt/bedrock-server/bedrock_server"
+
+src_compile() {
+	:;
+}
 
 src_install() {
 	exeinto /opt/bedrock-server
-	doexe bedrock_server libCrypto.so
+	doexe bedrock_server
 
 	insinto /opt/bedrock-server
 	doins {permissions,whitelist}.json server.properties
