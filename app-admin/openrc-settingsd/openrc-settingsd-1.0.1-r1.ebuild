@@ -28,6 +28,10 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.0.1-remove-bashisms.patch
+)
+
 src_prepare() {
 	default
 	sed -i -e 's:/sbin/runscript:/sbin/openrc-run:g' data/init.d/openrc-settingsd.in || die
