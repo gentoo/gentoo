@@ -1,0 +1,29 @@
+https://gitlab.gnome.org/GNOME/grilo-plugins/-/merge_requests/110
+
+From 62229a03614add0d3cb6e1087f241407f952de12 Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Wed, 14 Apr 2021 22:08:13 -0400
+Subject: [PATCH] build: Only run tracker3 test when enabled
+
+Previously -Denable-tracker3=no would not build the tracker3 plugin but
+if the dependency was found on the system the unit test would still be
+enabled (and would fail).
+---
+ tests/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/meson.build b/tests/meson.build
+index 97e196db..7ba2236b 100644
+--- a/tests/meson.build
++++ b/tests/meson.build
+@@ -39,6 +39,6 @@ if local_metadata_enabled and lua_factory_enabled
+     subdir('local-metadata')
+ endif
+ 
+-if tracker3_dep.found() and tracker3_testutils_dep.found()
++if get_option('enable-tracker3') != 'no' and tracker3_dep.found() and tracker3_testutils_dep.found()
+     subdir('tracker3')
+ endif
+-- 
+2.26.3
+

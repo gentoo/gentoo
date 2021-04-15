@@ -75,6 +75,7 @@ x11-misc/xstroke
 >=app-misc/tracker-miners-3
 >=gnome-base/nautilus-40
 >=sys-process/gnome-usage-3.38
+>=media-plugins/grilo-plugins-0.3.13
 
 # Michał Górny <mgorny@gentoo.org> (2021-04-10)
 # Obsolete backport to Python < 3.4.  No reverse dependencies left.
