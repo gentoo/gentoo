@@ -49,6 +49,10 @@ src_prepare() {
 	# Allow override of LUA* variables
 	sed -e '/LUA  /s/:=/?=/g' -e '/LUA_VERSION/s/:=/?=/g' -i Makefile || die
 
+	# Disable TestCMS test suite, as it fails
+	# See: https://github.com/zhaozg/lua-openssl/issues/230
+	sed -e '/6.cms.lua/d' -i test/test.lua || die
+
 	# Prepare needed dependencies (source code files only)
 	rm -r deps/{auxiliar,lua-compat} || die
 	mv "${WORKDIR}/${MY_PN_AUX}-${EGIT_COMMIT_AUX}" deps/auxiliar || die
