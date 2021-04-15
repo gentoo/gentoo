@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit libtool toolchain-funcs multilib-minimal usr-ldscript
+inherit libtool multilib-minimal usr-ldscript
 
 DESCRIPTION="GNU charset conversion library for libc which doesn't implement it"
 HOMEPAGE="https://www.gnu.org/software/libiconv/"
