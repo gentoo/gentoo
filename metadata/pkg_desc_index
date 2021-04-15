@@ -13981,7 +13981,7 @@ media-sound/jack-audio-connection-kit 0.125.0-r1: A low-latency audio server
 media-sound/jack-keyboard 2.7.2-r1: A virtual MIDI keyboard for JACK MIDI
 media-sound/jack-rack 1.4.8_rc1-r1: JACK Rack is an effects rack for the JACK low latency audio API
 media-sound/jack-smf-utils 1.0-r1: Utilities for MIDI streams and files using Jack MIDI
-media-sound/jack2 1.9.17 9999: Jackdmp jack implemention for multi-processor machine
+media-sound/jack2 1.9.17 1.9.18 9999: Jackdmp jack implemention for multi-processor machine
 media-sound/jack_capture 0.9.73 9999: JACK Recording utility
 media-sound/jalv 1.6.6: Simple but fully featured LV2 host for Jack
 media-sound/jamin 0.98.9_pre20170111: Audio mastering interface for JACK Audio Connection Kit (JACK)
@@ -15709,7 +15709,7 @@ net-vpn/nstx 1.1_beta6-r3: IP over DNS tunnel
 net-vpn/ocserv 1.0.1 1.1.1: Openconnect SSL VPN server
 net-vpn/openconnect 8.09-r1 8.09-r3 8.10 8.10-r1 9999: Free client for Cisco AnyConnect SSL VPN software
 net-vpn/openfortivpn 1.13.2 1.13.3 1.15.0 1.16.0: Fortinet compatible VPN client
-net-vpn/openvpn 2.4.9 2.5.0-r1 2.5.1 9999: Robust and highly flexible tunneling application compatible with many OSes
+net-vpn/openvpn 2.4.9 2.5.0-r1 2.5.1-r1 9999: Robust and highly flexible tunneling application compatible with many OSes
 net-vpn/pptpd 1.4.0-r3: Linux Point-to-Point Tunnelling Protocol Server
 net-vpn/protonvpn-cli 2.2.6: A VPN command-line tool from protonvpn - python rewrite
 net-vpn/strongswan 5.9.0 5.9.1 5.9.2: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
