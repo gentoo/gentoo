@@ -19,7 +19,7 @@ RESTRICT="!test? ( test )"
 # TODO: validate upnp-av dleyna deps
 RDEPEND="
 	>=dev-libs/glib-2.44:2
-	>=media-libs/grilo-0.3.8:${SLOT}=[network,playlist]
+	>=media-libs/grilo-0.3.8:${SLOT}=[network(+),playlist]
 	freebox? (
 		net-dns/avahi[dbus] )
 	>=dev-libs/gom-0.3.2-r1
