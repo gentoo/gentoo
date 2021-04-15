@@ -68,6 +68,7 @@ QA_PREBUILT="opt/Signal/signal-desktop
 	opt/Signal/swiftshader/libGLESv2.so
 	opt/Signal/resources/app.asar.unpacked/node_modules/curve25519-n/build/Release/curve.node
 	opt/Signal/resources/app.asar.unpacked/node_modules/libsignal-client/build/libsignal_client_linux.node
+	opt/Signal/resources/app.asar.unpacked/node_modules/libsignal-client/build/libsignal_client_linux_x64.node
 	opt/Signal/resources/app.asar.unpacked/node_modules/@journeyapps/sqlcipher/lib/binding/napi-v6-linux-x64/node_sqlite3.node
 	opt/Signal/resources/app.asar.unpacked/node_modules/zkgroup/node_modules/ref-napi/build/Release/binding.node
 	opt/Signal/resources/app.asar.unpacked/node_modules/ref-napi/build/Release/binding.node

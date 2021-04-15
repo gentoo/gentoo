@@ -27,8 +27,9 @@ RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	|| ( purple xmpp msn oscar )
-	xmpp? ( !nss )
+	purple? ( plugins )
 	test? ( plugins )
+	xmpp? ( !nss )
 "
 
 COMMON_DEPEND="
@@ -64,6 +65,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.5-systemd-user.patch
 	"${FILESDIR}"/${PN}-3.5-libcheck.patch
 	"${FILESDIR}"/${PN}-3.5-libevent.patch
+	"${FILESDIR}"/${P}-disabled-plugins-use.patch
 )
 
 src_configure() {
