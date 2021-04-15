@@ -2,30 +2,31 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit flag-o-matic toolchain-funcs
 
-MY_P=${PN}.${PV}
+inherit toolchain-funcs
 
-DESCRIPTION="A set of tools for creating TeX documents with graphics"
+MY_P="${PN}.${PV}"
+
+DESCRIPTION="Set of tools for creating TeX documents with graphics"
 HOMEPAGE="https://www.xfig.org/"
 SRC_URI="mirror://sourceforge/mcj/${MY_P}.tar.gz
 	mirror://gentoo/fig2mpdf-1.1.2.tar.bz2
 	https://dev.gentoo.org/~sultan/distfiles/media-gfx/transfig/${P}-gentoo-patchset-r1.tar.bz2"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris"
 
-RDEPEND="x11-libs/libXpm
-	virtual/jpeg
+RDEPEND="
 	media-libs/libpng
-	x11-apps/rgb"
+	virtual/jpeg
+	x11-apps/rgb
+	x11-libs/libXpm"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	app-text/rman
 	>=x11-misc/imake-1.0.8-r1"
-
-S=${WORKDIR}/${MY_P}
 
 PATCHES=(
 	"${WORKDIR}/${P}-gentoo-patchset/${PN}-3.2.5d-fig2mpdf-r1.patch"
@@ -78,16 +79,25 @@ src_configure() {
 
 src_compile() {
 	emake CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" Makefiles
-	emake CC="$(tc-getCC)" AR="$(tc-getAR) cq" RANLIB="$(tc-getRANLIB)" \
-		LOCAL_LDFLAGS="${LDFLAGS}" CDEBUGFLAGS="${CFLAGS}" \
+
+	local myemakeargs=(
+		CC="$(tc-getCC)"
+		AR="$(tc-getAR) cq"
+		RANLIB="$(tc-getRANLIB)"
+		CDEBUGFLAGS="${CFLAGS}"
+		LOCAL_LDFLAGS="${LDFLAGS}"
 		USRLIBDIR="${EPREFIX}/usr/$(get_libdir)"
+	)
+	emake "${myemakeargs[@]}"
 }
 
 src_install() {
-	emake DESTDIR="${D}" \
-		INSTDATFLAGS="-m 644" \
-		INSTMANFLAGS="-m 644" \
-		install install.man
+	local myemakeargs=(
+		DESTDIR="${D}"
+		INSTDATFLAGS="-m 644"
+		INSTMANFLAGS="-m 644"
+	)
+	emake "${myemakeargs[@]}" install install.man
 
 	dobin "${WORKDIR}/fig2mpdf/fig2mpdf"
 	doman "${WORKDIR}/fig2mpdf/fig2mpdf.1"
@@ -99,7 +109,7 @@ src_install() {
 
 	einstalldocs
 
-	rm -f "${ED}/usr/share/doc/${PF}/html/"{Makefile,*.lfig,*.pdf,*.tex} || die
+	rm "${ED}/usr/share/doc/${PF}/html/"{Makefile,*.lfig,*.pdf,*.tex} || die
 
 	mv "${ED}"/usr/bin/fig2ps2tex{.sh,} || die #338295
 }
