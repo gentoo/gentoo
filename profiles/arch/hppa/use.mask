@@ -199,7 +199,7 @@ networkmanager
 gcj
 
 # Samuli Suominen <drac@gentoo.org> (2007-03-02)
-# See https://bugs.gentoo.org/show_bug.cgi?id=157881#c3
+# See bug #157881#c3
 battery
 
 # Saleem Abdulrasool <compnerd@gentoo.org> (2006-08-18)
