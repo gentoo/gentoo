@@ -23,7 +23,9 @@ RDEPEND="app-text/rman
 	x11-libs/libXmu
 	x11-libs/libXpm
 	x11-libs/libxkbfile
-	Xaw3d? ( x11-libs/libXaw3d )"
+	Xaw3d? ( x11-libs/libXaw3d )
+	!<games-board/xgammon-0.98-r3
+	!<games-board/xscrabble-2.10-r4"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	x11-misc/gccmakedep
@@ -71,8 +73,8 @@ src_install() {
 	iconv -f ISO-2022-JP -t UTF-8 ${PN}.jman > ${PN}.ja.1
 	doman ${PN}.ja.1
 
-	# Remove link to avoid collision
-	rm -f "${ED}"/usr/lib/X11/app-defaults
+	# remove link to avoid collision (bug #668892,706322)
+	rm "${ED}"/usr/$(get_libdir)/X11/app-defaults || die
 }
 
 pkg_postinst() {
