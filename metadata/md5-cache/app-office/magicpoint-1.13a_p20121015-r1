@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare
-DEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libXrender x11-libs/libXmu imlib? ( media-libs/imlib2[X] ) !imlib? ( gif? ( media-libs/giflib:= ) png? ( >=media-libs/libpng-1.4:0= ) ) truetype? ( x11-libs/libXft media-libs/fontconfig ) emacs? ( >=app-editors/emacs-23.1:* ) m17n-lib? ( dev-libs/m17n-lib fontconfig? ( media-libs/fontconfig ) ) mng? ( media-libs/libmng ) sys-devel/autoconf x11-base/xorg-proto x11-libs/libxkbfile app-text/rman x11-misc/imake sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libXrender x11-libs/libXmu imlib? ( media-libs/imlib2[X] ) !imlib? ( gif? ( media-libs/giflib:= ) png? ( >=media-libs/libpng-1.4:0= ) ) truetype? ( x11-libs/libXft media-libs/fontconfig ) emacs? ( >=app-editors/emacs-23.1:* ) m17n-lib? ( dev-libs/m17n-lib fontconfig? ( media-libs/fontconfig ) ) mng? ( media-libs/libmng ) sys-devel/autoconf x11-base/xorg-proto x11-libs/libxkbfile app-text/rman >=x11-misc/imake-1.0.8-r1 sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=An X11 based presentation tool
 EAPI=5
 HOMEPAGE=http://member.wide.ad.jp/wg/mgp/
@@ -12,4 +12,4 @@ REQUIRED_USE=imlib? ( !gif !png )
 SLOT=0
 SRC_URI=ftp://sh.wide.ad.jp/WIDE/free-ware/mgp-snap/mgp-snap-20121015.tar.gz
 _eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	estack	055c42df72f76a4f45ec92b35e83cd56	epatch	9f813bb3c47cf2e60619a663b87c5f4e	l10n	8cdd85e169b835d518bc2fd59f780d8e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	preserve-libs	ef207dc62baddfddfd39a164d9797648	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	gnuconfig	9f91b4b0c84e734a87492d4293f03de5	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	36f97076abd90f943a34f8bcd58b5bcc
-_md5_=813d41c60a085f55b818185fc51ba55c
+_md5_=b8bc2067c752df617c5356d58af3142b

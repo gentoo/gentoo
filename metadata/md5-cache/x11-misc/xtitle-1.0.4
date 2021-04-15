@@ -1,10 +1,12 @@
-DEFINED_PHASES=compile install
-DEPEND=x11-misc/imake
+DEFINED_PHASES=configure install
+DEPEND=>=x11-misc/imake-1.0.8-r1
 DESCRIPTION=Set window title and icon name for an X11 terminal window
 EAPI=6
 HOMEPAGE=https://kinzler.com/me/xtitle/
+INHERIT=toolchain-funcs
 KEYWORDS=amd64 x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=https://kinzler.com/me/xtitle/xtitle-1.0.4.tgz
-_md5_=c367627c8d9b48764f2df9c761ed173b
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=6e2d1961cf1bbc063edac4246125330b

@@ -1,12 +1,13 @@
-DEFINED_PHASES=compile install
-DEPEND=x11-libs/libXaw x11-misc/imake app-text/rman
+DEFINED_PHASES=compile configure install
+DEPEND=x11-libs/libXaw >=x11-misc/imake-1.0.8-r1 app-text/rman
 DESCRIPTION=A simple hex calculator for X
 EAPI=6
 HOMEPAGE=ftp://ftp.x.org/R5contrib/
+INHERIT=toolchain-funcs
 KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=x11-libs/libXaw
 SLOT=0
 SRC_URI=mirror://gentoo/hexcalc-1.11.tar.Z
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=e4e05aa54b859060d6055ea886a80791
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=1d30d01dc662bfc61b12f22f1ee3cc50

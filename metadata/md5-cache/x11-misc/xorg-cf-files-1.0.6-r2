@@ -7,4 +7,4 @@ KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd
 LICENSE=MIT
 SLOT=0
 SRC_URI=https://www.x.org/releases/individual/util/xorg-cf-files-1.0.6.tar.bz2 https://dev.gentoo.org/~mattst88/distfiles/xorg-cf-files-1.0.6-solaris-prefix.patch.bz2
-_md5_=9aaab903619806d78f5e6e54eadf88a2
+_md5_=5860f73207c7e202be055fe07246806f

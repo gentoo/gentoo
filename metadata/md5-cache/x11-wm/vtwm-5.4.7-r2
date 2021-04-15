@@ -1,13 +1,15 @@
+BDEPEND=app-text/rman sys-devel/bison sys-devel/flex x11-base/xorg-proto >=x11-misc/imake-1.0.8-r1
 DEFINED_PHASES=compile configure install prepare
-DEPEND=x11-libs/libX11 x11-libs/libXmu x11-libs/libXt x11-libs/libXext x11-libs/libXpm rplay? ( media-sound/rplay ) app-text/rman sys-devel/bison sys-devel/flex x11-base/xorg-proto x11-misc/imake
+DEPEND=x11-libs/libX11 x11-libs/libXmu x11-libs/libXt x11-libs/libXext x11-libs/libXpm rplay? ( media-sound/rplay )
 DESCRIPTION=TWM descendant that implements a Virtual Desktop
 EAPI=7
 HOMEPAGE=http://www.vtwm.org/
+INHERIT=toolchain-funcs
 IUSE=rplay
 KEYWORDS=~alpha ~amd64 ppc sparc x86
 LICENSE=MIT
 RDEPEND=x11-libs/libX11 x11-libs/libXmu x11-libs/libXt x11-libs/libXext x11-libs/libXpm rplay? ( media-sound/rplay )
 SLOT=0
 SRC_URI=http://www.vtwm.org/downloads/vtwm-5.4.7.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=9959610b229cf5d08532d33e84f88677
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=9d014b897e13f2944f09ee2334ec03aa

@@ -1,13 +1,14 @@
-BDEPEND=app-text/rman x11-misc/imake
+BDEPEND=app-text/rman >=x11-misc/imake-1.0.8-r1
 DEFINED_PHASES=compile configure postinst
 DEPEND=x11-libs/libX11 x11-libs/libXaw x11-libs/libXt
 DESCRIPTION=very nice backgammon game for X
 EAPI=7
 HOMEPAGE=http://fawn.unibw-hamburg.de/steuer/xgammon/xgammon.html
+INHERIT=toolchain-funcs
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=x11-libs/libX11 x11-libs/libXaw x11-libs/libXt
 SLOT=0
 SRC_URI=http://fawn.unibw-hamburg.de/steuer/xgammon/Downloads/xgammon-0.98a.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=304ef905e0284cb98bf5111cae79f41a
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=e10950b286383489ff28c29cea30c24a
