@@ -19,29 +19,31 @@ IUSE="ciso extra test"
 
 DOCS="README.rst"
 
-RDEPEND=">=dev-python/Rx-3.0.1[${PYTHON_USEDEP}]
-	>=dev-python/certifi-14.05.14[${PYTHON_USEDEP}]
-	>=dev-python/six-1.10[${PYTHON_USEDEP}]
+RDEPEND=">=dev-python/certifi-14.05.14[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-2.5.3[${PYTHON_USEDEP}]
-	>=dev-python/urllib3-1.15.1[${PYTHON_USEDEP}]
 	>=dev-python/pytz-2019.1[${PYTHON_USEDEP}]
+	>=dev-python/Rx-3.0.1[${PYTHON_USEDEP}]
+	>=dev-python/six-1.10[${PYTHON_USEDEP}]
+	>=dev-python/urllib3-1.15.1[${PYTHON_USEDEP}]
 "
 BDEPEND="${REDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
+	ciso? (
+		>=dev-python/ciso8601-2.1.1
+	)
 	extra? (
 		>=dev-python/pandas-0.25.3
 		dev-python/numpy
 	)
 	test? (
 		>=dev-python/coverage-4.0.3[${PYTHON_USEDEP}]
+		>=dev-python/httpretty-1.0.2[${PYTHON_USEDEP}]
 		>=dev-python/nose-1.3.7[${PYTHON_USEDEP}]
 		>=dev-python/pluggy-0.3.1[${PYTHON_USEDEP}]
 		>=dev-python/py-1.4.31[${PYTHON_USEDEP}]
-		>=dev-python/randomize-0.13[${PYTHON_USEDEP}]
 		>=dev-python/pytest-5.0.0[${PYTHON_USEDEP}]
-		>=dev-python/httpretty-1.0.2[${PYTHON_USEDEP}]
-	)
-	ciso? (
-		>=dev-python/ciso8601-2.1.1
+		>=dev-python/randomize-0.13[${PYTHON_USEDEP}]
 	)
 "
+
+RESTRICT="!test? ( test )"

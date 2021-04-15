@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>root@xakru.me</email>
     <name>Ruslan Kh.</name>
   </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <use>
+	<flag name=ciso>Enable ciso8601 support. Faster than built-in Python datetime</flag>
+	<flag name=extra>Enable DataFrame support with pandas and numpy</flag>
+	<flag name=test>Enable support local unit and integration tests</flag>
+  </use>
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">influxdb-client</remote-id>
