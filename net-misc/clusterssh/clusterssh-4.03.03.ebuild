@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ MY_PN="App-ClusterSSH"
 MODULE_AUTHOR="DUNCS"
 MODULE_VERSION="4.01_05"
 
-inherit eutils perl-module versionator
+inherit perl-module
 
 DESCRIPTION="Concurrent Multi-Server Terminal Access"
 HOMEPAGE="https://github.com/duncs/clusterssh"
