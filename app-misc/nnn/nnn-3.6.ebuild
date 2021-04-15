@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit bash-completion-r1 toolchain-funcs
+inherit bash-completion-r1 toolchain-funcs xdg-utils
 
 DESCRIPTION="The missing terminal file browser for X"
 HOMEPAGE="https://github.com/jarun/nnn"
@@ -38,4 +38,12 @@ src_install() {
 	doins misc/auto-completion/zsh/_nnn
 
 	einstalldocs
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }
