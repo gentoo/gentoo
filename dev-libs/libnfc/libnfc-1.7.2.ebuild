@@ -1,9 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
-inherit toolchain-funcs
 
 DESCRIPTION="Near Field Communications (NFC) library"
 HOMEPAGE="http://www.libnfc.org/"
@@ -17,8 +15,8 @@ IUSE="doc pcsc-lite readline static-libs usb"
 RDEPEND="pcsc-lite? ( sys-apps/pcsc-lite )
 	readline? ( sys-libs/readline:0 )
 	usb? ( virtual/libusb:0 )"
-DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen )"
+DEPEND="${RDEPEND}"
+BDEPEND="doc? ( app-doc/doxygen )"
 
 src_configure() {
 	local drivers="arygon,pn532_uart,pn532_spi,pn532_i2c,acr122s"
