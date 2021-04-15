@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils multilib
+inherit epatch multilib
 
 DESCRIPTION="Minimal Xml parser and printer for OCaml"
 HOMEPAGE="http://tech.motion-twin.com/xmllight.html"
@@ -27,9 +27,11 @@ src_prepare() {
 
 src_compile() {
 	emake -j1
+
 	if use ocamlopt; then
 		emake -j1 opt
 	fi
+
 	if use doc;then
 		emake doc
 	fi
@@ -52,9 +54,11 @@ archive(byte)="xml-light.cma"
 EOF
 	if use ocamlopt; then
 		emake INSTALLDIR="${D}"/usr/$(get_libdir)/ocaml/${PN} installopt
-		echo 'archive(native)="xml-light.cmxa"' >> "${D}"/usr/$(get_libdir)/ocaml/${PN}/META
+		echo 'archive(native)="xml-light.cmxa"' >> "${ED}"/usr/$(get_libdir)/ocaml/${PN}/META || die
 	fi
+
 	dodoc README
+
 	if use doc; then
 		emake doc
 		dohtml doc/*
