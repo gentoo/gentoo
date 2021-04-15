@@ -13,5 +13,5 @@ REQUIRED_USE=^^ ( python_single_target_pypy3 python_single_target_python3_7 pyth
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/asciidoc-py/asciidoc-py/releases/download/9.0.2/asciidoc-9.0.2.tar.gz -> asciidoc-9.0.2.new.tar.gz
-_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354	optfeature	a3678a005063e7c50aed4e37d04197ab	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-single-r1	d25ac9d5d91fe9d44fda6ec192aca11a	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
+_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354	optfeature	2e90be23a14db1ea432d6b216eb2a81e	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-single-r1	d25ac9d5d91fe9d44fda6ec192aca11a	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
 _md5_=d93c1bb85a536c7a0d65238451bed67c

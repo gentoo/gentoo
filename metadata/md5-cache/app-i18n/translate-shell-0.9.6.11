@@ -11,5 +11,5 @@ RDEPEND=sys-apps/gawk
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/soimort/translate-shell/archive/v0.9.6.11.tar.gz -> translate-shell-0.9.6.11.tar.gz
-_eclasses_=optfeature	a3678a005063e7c50aed4e37d04197ab
+_eclasses_=optfeature	2e90be23a14db1ea432d6b216eb2a81e
 _md5_=27dc73f1cb0d95c988515aeee026b41c

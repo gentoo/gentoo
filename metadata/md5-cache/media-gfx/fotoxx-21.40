@@ -9,5 +9,5 @@ LICENSE=GPL-3+
 RDEPEND=media-libs/clutter media-libs/clutter-gtk media-libs/lcms:2 media-libs/libpng:0 media-libs/tiff:0 media-libs/libchamplain[gtk] virtual/jpeg x11-libs/gtk+:3 media-gfx/dcraw media-libs/exiftool x11-misc/xdg-utils
 SLOT=0
 SRC_URI=https://kornelix.net/downloads/downloads/fotoxx-21.40.tar.gz
-_eclasses_=optfeature	a3678a005063e7c50aed4e37d04197ab	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=optfeature	2e90be23a14db1ea432d6b216eb2a81e	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=f56e8e8bd70d4ae5313d5c39db0f78a8

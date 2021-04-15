@@ -9,5 +9,5 @@ LICENSE=GPL-2+
 RDEPEND=x11-wm/awesome
 SLOT=0
 SRC_URI=https://github.com/vicious-widgets/vicious/archive/v2.5.0.tar.gz -> vicious-2.5.0.tar.gz
-_eclasses_=optfeature	a3678a005063e7c50aed4e37d04197ab
+_eclasses_=optfeature	2e90be23a14db1ea432d6b216eb2a81e
 _md5_=87fe59b3f0fc3520bc8bae6cb85b8f1c
