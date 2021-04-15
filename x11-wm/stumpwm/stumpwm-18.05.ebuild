@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit common-lisp-3 autotools desktop elisp-common xdg-utils versionator
+inherit common-lisp-3 autotools desktop elisp-common xdg-utils
 
 DESCRIPTION="Stumpwm is a Window Manager written entirely in Common Lisp."
 HOMEPAGE="https://stumpwm.github.io/"
