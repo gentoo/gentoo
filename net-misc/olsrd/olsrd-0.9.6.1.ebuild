@@ -2,16 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils multilib toolchain-funcs versionator
+
+inherit toolchain-funcs versionator
 
 DESCRIPTION="An implementation of the Optimized Link State Routing protocol"
 HOMEPAGE="http://www.olsr.org/"
 SRC_URI="http://www.olsr.org/releases/$(get_version_component_range 1-2)/${P}.tar.bz2"
 
-SLOT="0"
 LICENSE="BSD LGPL-2.1"
+SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="gtk pud"
+
 DEPEND="
 	virtual/pkgconfig
 	gtk? (
@@ -24,10 +26,12 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 "
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.0.2-gtk.patch
 	"${FILESDIR}"/${PN}-0.9.6-gpsd.patch
 )
+
 src_prepare() {
 	default
 
@@ -64,6 +68,7 @@ src_compile() {
 		OLSRD_LDFLAGS="${LDFLAGS}" \
 		OS=linux \
 		build_all
+
 	if use gtk; then
 		emake -C gui/linux-gtk LIBDIR="/usr/$(get_libdir)/${PN}" CC="$(tc-getCC)"
 	fi
@@ -72,6 +77,7 @@ src_compile() {
 src_install() {
 	emake OS=linux LIBDIR="${D}/usr/$(get_libdir)/${PN}" \
 		DESTDIR="${D}" STRIP=true install_all
+
 	if use gtk; then
 		emake -C gui/linux-gtk \
 			LIBDIR="${D}/usr/$(get_libdir)/${PN}" DESTDIR="${D}" install
