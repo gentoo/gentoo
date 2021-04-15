@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install preinst prepare setup test
+DEPEND=>=virtual/jdk-11:* >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip ) test? ( dev-java/junit:4 )
+DESCRIPTION=Byte based encoding support library for java
+EAPI=7
+HOMEPAGE=https://github.com/jruby/jcodings
+INHERIT=java-pkg-2 java-pkg-simple
+IUSE=elibc_FreeBSD doc source test elibc_FreeBSD
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=>=virtual/jre-11:* >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
+RESTRICT=!test? ( test ) !test? ( test )
+SLOT=1
+SRC_URI=https://github.com/jruby/jcodings/archive/refs/tags/jcodings-1.0.55.tar.gz
+_eclasses_=java-utils-2	2440f41421207d084e5e3f1fb001b34e	java-pkg-2	45c44ec10db6affb3ebee1ac72039888	java-pkg-simple	c85bf2d75a5f53e7b39fc9104701ebfb
+_md5_=5b80043378748dde4ea3bb2a3e383bd1
