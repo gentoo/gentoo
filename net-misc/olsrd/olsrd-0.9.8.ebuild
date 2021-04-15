@@ -2,18 +2,19 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit multilib toolchain-funcs
+
+inherit toolchain-funcs
 
 DESCRIPTION="An implementation of the Optimized Link State Routing protocol"
 HOMEPAGE="http://www.olsr.org/"
 SRC_URI="https://github.com/OLSR/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-SLOT="0"
 LICENSE="BSD LGPL-2.1"
+SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="gtk pud"
+
 DEPEND="
-	virtual/pkgconfig
 	gtk? (
 		dev-libs/glib:2
 		x11-libs/gdk-pixbuf:2
@@ -24,10 +25,13 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 "
+BDEPEND="virtual/pkgconfig"
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.0.2-gtk.patch
 	"${FILESDIR}"/${PN}-0.9.6-gpsd.patch
 )
+
 src_prepare() {
 	default
 
@@ -57,6 +61,7 @@ src_configure() {
 
 src_compile() {
 	tc-export PKG_CONFIG
+
 	emake \
 		CC="$(tc-getCC)" \
 		LIBDIR="/usr/$(get_libdir)/${PN}" \
@@ -64,6 +69,7 @@ src_compile() {
 		OS=linux \
 		VERBOSE=1 \
 		build_all
+
 	if use gtk; then
 		emake -C gui/linux-gtk LIBDIR="/usr/$(get_libdir)/${PN}" CC="$(tc-getCC)"
 	fi
@@ -77,6 +83,7 @@ src_install() {
 		OS=linux \
 		STRIP=true \
 		install_all
+
 	if use gtk; then
 		emake -C gui/linux-gtk \
 			DESTDIR="${D}" \
