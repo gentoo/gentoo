@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="BitTorrent library written in C++ for *nix"
 HOMEPAGE="https://rakshasa.github.io/rtorrent/"
