@@ -126,57 +126,6 @@ sci-biology/gatk
 # Bug #625492, removal in 30 days.
 sci-biology/diya
 
-# Mikle Kolyada <zlogene@gentoo.org> (2021-04-02)
-# TexLive 2021 mask
-# Only unmask these versions if you know what you are doing
-# DO NOT report bugs until fully unmasked (work in progress)
-~app-text/dvipsk-2021.1_p20210325
-~app-text/ps2pkm-1.8_p20210325
-~app-text/ttf2pk2-2.0_p20210325
-~app-text/texlive-2021
-~app-text/texlive-core-2021
-~dev-libs/kpathsea-6.3.3_p20210325
-~dev-libs/ptexenc-1.3.9_p20210325
-~dev-tex/bibtexu-3.71_p20210325
-~dev-texlive/texlive-basic-2021
-~dev-texlive/texlive-bibtexextra-2021
-~dev-texlive/texlive-context-2021
-~dev-texlive/texlive-fontsextra-2021
-~dev-texlive/texlive-fontsrecommended-2021
-~dev-texlive/texlive-fontutils-2021
-~dev-texlive/texlive-formatsextra-2021
-~dev-texlive/texlive-games-2021
-~dev-texlive/texlive-humanities-2021
-~dev-texlive/texlive-langarabic-2021
-~dev-texlive/texlive-langchinese-2021
-~dev-texlive/texlive-langcjk-2021
-~dev-texlive/texlive-langcyrillic-2021
-~dev-texlive/texlive-langczechslovak-2021
-~dev-texlive/texlive-langenglish-2021
-~dev-texlive/texlive-langeuropean-2021
-~dev-texlive/texlive-langfrench-2021
-~dev-texlive/texlive-langgerman-2021
-~dev-texlive/texlive-langgreek-2021
-~dev-texlive/texlive-langitalian-2021
-~dev-texlive/texlive-langjapanese-2021
-~dev-texlive/texlive-langkorean-2021
-~dev-texlive/texlive-langother-2021
-~dev-texlive/texlive-langpolish-2021
-~dev-texlive/texlive-langportuguese-2021
-~dev-texlive/texlive-langspanish-2021
-~dev-texlive/texlive-latex-2021
-~dev-texlive/texlive-latexextra-2021
-~dev-texlive/texlive-latexrecommended-2021
-~dev-texlive/texlive-luatex-2021
-~dev-texlive/texlive-mathscience-2021
-~dev-texlive/texlive-metapost-2021
-~dev-texlive/texlive-music-2021
-~dev-texlive/texlive-pictures-2021
-~dev-texlive/texlive-plaingeneric-2021
-~dev-texlive/texlive-pstricks-2021
-~dev-texlive/texlive-publishers-2021
-~dev-texlive/texlive-xetex-2021
-
 # Michał Górny <mgorny@gentoo.org> (2021-03-31)
 # New versions remove PORTAGE_CONFIGROOT support, breaking a lot
 # of scripts.
