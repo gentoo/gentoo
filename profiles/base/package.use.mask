@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Matt Turner <mattst88@gentoo.org> (2021-04-14)
+# Was masked since 2014. Unmasked starting with 0.3.13.
+<media-plugins/grilo-plugins-0.3.13 lua
+
 # Joonas Niilola <juippis@gentoo.org> (2021-04-12)
 # Creates +130 GB worth of bindings, possibly Gentoo-related.
 # Upstream issue: https://phab.enlightenment.org/T8924
@@ -564,10 +568,6 @@ sys-devel/gcc sanitize
 # Rick Farina <zerochaos@gentoo.org> (2014-08-26)
 # mirisdr does not seem to like making releases
 <net-wireless/gr-osmosdr-9999 mirisdr
-
-# Pacho Ramos <pacho@gentoo.org> (2014-06-01)
-# Needs hardmasked lua-5.2
->=media-plugins/grilo-plugins-0.2.12 lua
 
 # Tom Wijsman <TomWij@gentoo.org> (2014-05-14)
 # Documentation generation needs APIviz which is not in the Portage tree yet.
