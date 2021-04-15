@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person" proxied="yes">
+		<email>v@0x0c.xyz</email>
+		<name>dm9pZCAq</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="fish-completion">Enable fish completion support</flag>
+	</use>
 	<longdescription lang="en">
 		exa is a modern replacement for ls.
 
@@ -16,6 +26,7 @@
 		exa is written in Rust, so it’s small, fast, and portable.
 	</longdescription>
 	<upstream>
+		<bugs-to>https://github.com/ogham/exa/issues</bugs-to>
 		<remote-id type="github">ogham/exa</remote-id>
 	</upstream>
 </pkgmetadata>
