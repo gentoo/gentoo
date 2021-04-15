@@ -3777,7 +3777,7 @@ dev-db/sqlitebrowser 3.11.1-r1 3.12.1 9999: A light GUI editor for SQLite databa
 dev-db/sqliteman 1.2.2-r4: Powerful GUI manager for the Sqlite3 database
 dev-db/sqlitestudio 3.2.1-r1: Powerful cross-platform SQLite database manager
 dev-db/textsearch_ja 9.0.0: Integrated Full-Text-Search for Japanese language using morphological analyze
-dev-db/timescaledb 2.0.1-r1 2.0.2 2.1.0: Open-source time-series SQL database
+dev-db/timescaledb 2.0.1-r1 2.0.2 2.1.0 2.1.1: Open-source time-series SQL database
 dev-db/tinycdb 0.77-r2 0.78: A very fast and simple package for creating and reading constant data bases
 dev-db/tokyocabinet 1.4.48-r1: A library of routines for managing a database
 dev-db/tora 3.2-r1 9999: SQL IDE for Oracle, MySQL and PostgreSQL dbs

@@ -6,11 +6,11 @@ EAPI=7
 HOMEPAGE=https://wiki.gnome.org/Apps/Accerciser
 INHERIT=gnome2 python-single-r1
 IUSE=python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9
-KEYWORDS=amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=BSD CC-BY-SA-3.0
 RDEPEND=>=app-accessibility/at-spi2-core-2.5.2:2 >=x11-libs/gtk+-3.1.13:3[introspection] python_single_target_python3_7? ( >=dev-python/pygobject-2.90.3:3[python_targets_python3_7(-)] >=dev-python/ipython-0.11[python_targets_python3_7(-)] >=dev-python/pyatspi-2.1.5[python_targets_python3_7(-)] dev-python/pycairo[python_targets_python3_7(-)] dev-python/python-xlib[python_targets_python3_7(-)] ) python_single_target_python3_8? ( >=dev-python/pygobject-2.90.3:3[python_targets_python3_8(-)] >=dev-python/ipython-0.11[python_targets_python3_8(-)] >=dev-python/pyatspi-2.1.5[python_targets_python3_8(-)] dev-python/pycairo[python_targets_python3_8(-)] dev-python/python-xlib[python_targets_python3_8(-)] ) python_single_target_python3_9? ( >=dev-python/pygobject-2.90.3:3[python_targets_python3_9(-)] >=dev-python/ipython-0.11[python_targets_python3_9(-)] >=dev-python/pyatspi-2.1.5[python_targets_python3_9(-)] dev-python/pycairo[python_targets_python3_9(-)] dev-python/python-xlib[python_targets_python3_9(-)] ) dev-libs/atk[introspection] >=dev-libs/glib-2.28:2 dev-libs/gobject-introspection:= x11-libs/gdk-pixbuf[introspection] x11-libs/libwnck:3[introspection] x11-libs/pango[introspection] gnome-base/librsvg[introspection] python_single_target_python3_7? ( dev-lang/python:3.7[xml] >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8[xml] >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_9? ( dev-lang/python:3.9[xml] >=dev-lang/python-exec-2:=[python_targets_python3_9] )
 REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9 )
 SLOT=0
 SRC_URI=mirror://gnome/sources/accerciser/3.38/accerciser-3.38.0.tar.xz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	gnome.org	df5c6c53843e1be0aad724138e78bbc3	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	gnome2-utils	c8e3fff820d850c0e003e22208d2eea3	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	gnome2	c156bb2ac81c822dd861424ce19bc168	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-single-r1	d25ac9d5d91fe9d44fda6ec192aca11a
-_md5_=30f484eaa9c763e0109cd0ca2c98585f
+_md5_=fdd7189af6e8969fe2363b66ea0ddf62
