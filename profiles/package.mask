@@ -75,6 +75,8 @@ x11-misc/xstroke
 >=app-misc/tracker-miners-3
 >=gnome-base/nautilus-40
 >=sys-process/gnome-usage-3.38
+>=media-plugins/grilo-plugins-0.3.13
+>=media-sound/gnome-music-40
 
 # Michał Górny <mgorny@gentoo.org> (2021-04-10)
 # Obsolete backport to Python < 3.4.  No reverse dependencies left.
@@ -119,6 +121,7 @@ gui-libs/gtk
 >=gnome-base/gnome-shell-40
 >=gnome-extra/gnome-shell-extensions-40
 >=x11-wm/mutter-40
+>=media-sound/gnome-music-40
 
 # David Seifert <soap@gentoo.org> (2021-04-05)
 # Completely broken, unmaintained, does not build. Newer version
