@@ -15073,7 +15073,7 @@ net-libs/ortp 0.23.0-r1: Open Real-time Transport Protocol (RTP, RFC3550) stack
 net-libs/pacparser 1.3.7-r1: Library to parse proxy auto-config files
 net-libs/phodav 2.2: WebDav server implementation using libsoup
 net-libs/pjproject 2.10-r1: Open source SIP, Media, and NAT Traversal Library
-net-libs/quiche 0.5.1 0.6.0 0.7.0 0.8.0 9999: Implementation of the QUIC transport protocol and HTTP/3
+net-libs/quiche 0.5.1 0.6.0 0.7.0 0.8.0 0.8.1 9999: Implementation of the QUIC transport protocol and HTTP/3
 net-libs/qxmpp 1.2.0 9999: A cross-platform C++ XMPP client library based on the Qt framework
 net-libs/rabbitmq-c 0.10.0: RabbitMQ C client
 net-libs/rest 0.8.1: Helper library for RESTful services
