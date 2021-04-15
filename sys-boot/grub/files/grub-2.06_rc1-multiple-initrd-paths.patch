@@ -1,0 +1,22 @@
+When parsing output from os-prober, grub replaces spaces with "^" and, for some
+variables such as LPARAMS, replaces "^" again with " ".  It doesn't do this
+with initrd.  Since Manjaro passes multiple paths to initrd, grub emits something
+like "initrd /boot/intel-ucode.img^/boot/amd-ucode.img^/boot/initramfs-5.11".
+Dual-booting Manjaro thus fails. This patch enables spaces in the initrd line to avoid
+this issue.
+
+Bug: https://bugzilla.suse.com/1101942
+     https://bugs.debian.org/820838
+     https://savannah.gnu.org/bugs/index.php?47681
+
+--- a/util/grub.d/30_os-prober.in
++++ b/util/grub.d/30_os-prober.in
+@@ -207,7 +207,7 @@ EOF
+         LBOOT="`echo ${LINUX} | cut -d ':' -f 2`"
+         LLABEL="`echo ${LINUX} | cut -d ':' -f 3 | tr '^' ' '`"
+         LKERNEL="`echo ${LINUX} | cut -d ':' -f 4`"
+-        LINITRD="`echo ${LINUX} | cut -d ':' -f 5`"
++        LINITRD="`echo ${LINUX} | cut -d ':' -f 5 | tr '^' ' '`"
+         LPARAMS="`echo ${LINUX} | cut -d ':' -f 6- | tr '^' ' '`"
+ 
+         if [ -z "${LLABEL}" ] ; then

@@ -40,6 +40,7 @@ PATCHES=(
 	"${FILESDIR}"/gfxpayload.patch
 	"${FILESDIR}"/grub-2.02_beta2-KERNEL_GLOBS.patch
 	"${FILESDIR}"/grub-2.06-test-words.patch
+	"${FILESDIR}"/grub-2.06_rc1-multiple-initrd-paths.patch
 )
 
 DEJAVU=dejavu-sans-ttf-2.37
