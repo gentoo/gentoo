@@ -15,6 +15,8 @@ LICENSE="PYTHON"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
+RDEPEND="dev-python/importlib_metadata[${PYTHON_USEDEP}]"
+
 PATCHES=(
 	# bug #491602
 	"${FILESDIR}/${PN}-6.5.3-buildsystem.patch"
