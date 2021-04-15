@@ -20,6 +20,7 @@ DEPEND="x11-libs/libXaw"
 RDEPEND="
 	${DEPEND}
 	acct-group/gamestat
+	!<x11-terms/kterm-6.2.0-r7
 "
 BDEPEND="
 	x11-misc/gccmakedep
