@@ -1,0 +1,66 @@
+--- a/compiler-rt/cmake/config-ix.cmake.ORIG	2021-01-29 09:54:20.880593534 +0100
++++ b/compiler-rt/cmake/config-ix.cmake	2021-01-29 09:58:49.595603555 +0100
+@@ -444,10 +444,7 @@
+     ${DARWIN_COMMON_LINK_FLAGS}
+     ${DARWIN_osx_MIN_VER_FLAG}=${SANITIZER_MIN_OSX_VERSION})
+ 
+-  if(DARWIN_osx_SYSROOT)
+-    list(APPEND DARWIN_osx_CFLAGS -isysroot ${DARWIN_osx_SYSROOT})
+-    list(APPEND DARWIN_osx_LINK_FLAGS -isysroot ${DARWIN_osx_SYSROOT})
+-  endif()
++  # Do not add -isysroot flag on Gentoo Prefix (search paths handled by cmake)
+ 
+   # Figure out which arches to use for each OS
+   darwin_get_toolchain_supported_archs(toolchain_arches)
+--- a/compiler-rt/cmake/base-config-ix.cmakeORIG	2021-01-29 09:54:20.880593534 +0100
++++ b/compiler-rt/cmake/base-config-ix.cmake	2021-01-29 09:59:41.087605475 +0100
+@@ -101,23 +101,8 @@
+ endif()
+ 
+ if(APPLE)
+-  # On Darwin if /usr/include/c++ doesn't exist, the user probably has Xcode but
+-  # not the command line tools (or is using macOS 10.14 or newer). If this is
+-  # the case, we need to find the OS X sysroot to pass to clang.
+-  if(NOT EXISTS /usr/include/c++)
+-    execute_process(COMMAND xcrun -sdk macosx --show-sdk-path
+-       OUTPUT_VARIABLE OSX_SYSROOT
+-       ERROR_QUIET
+-       OUTPUT_STRIP_TRAILING_WHITESPACE)
+-    if (NOT OSX_SYSROOT OR NOT EXISTS ${OSX_SYSROOT})
+-      message(WARNING "Detected OSX_SYSROOT ${OSX_SYSROOT} does not exist")
+-    else()
+-      message(STATUS "Found OSX_SYSROOT: ${OSX_SYSROOT}")
+-      set(OSX_SYSROOT_FLAG "-isysroot${OSX_SYSROOT}")
+-    endif()
+-  else()
+-    set(OSX_SYSROOT_FLAG "")
+-  endif()
++  # Do not add -isysroot flag on Gentoo Prefix (search paths handled by cmake)
++  set(OSX_SYSROOT_FLAG "")
+ 
+   option(COMPILER_RT_ENABLE_IOS "Enable building for iOS" On)
+   option(COMPILER_RT_ENABLE_WATCHOS "Enable building for watchOS - Experimental" Off)
+--- a/compiler-rt/cmake/Modules/CompilerRTDarwinUtils.cmake.ORIG	2021-01-29 09:54:20.879593534 +0100
++++ b/compiler-rt/cmake/Modules/CompilerRTDarwinUtils.cmake	2021-01-29 10:00:45.701607884 +0100
+@@ -273,7 +273,8 @@
+     ${ARGN})
+   set(libname "${name}.${suffix}_${LIB_ARCH}_${LIB_OS}")
+   add_library(${libname} STATIC ${LIB_SOURCES})
+-  if(DARWIN_${LIB_OS}_SYSROOT)
++  # Do not add -isysroot flag on Gentoo Prefix (search paths handled by cmake)
++  if(DARWIN_${LIB_OS}_SYSROOT AND NOT "${LIB_OS}" STREQUAL "osx")
+     set(sysroot_flag -isysroot ${DARWIN_${LIB_OS}_SYSROOT})
+   endif()
+ 
+--- a/compiler-rt/cmake/Modules/AddCompilerRT.cmake.ORIG	2021-01-29 09:54:20.879593534 +0100
++++ b/compiler-rt/cmake/Modules/AddCompilerRT.cmake	2021-01-29 10:01:40.267609919 +0100
+@@ -278,7 +278,8 @@
+       if(CMAKE_C_COMPILER_ID MATCHES Clang AND CMAKE_C_COMPILER_TARGET)
+         list(APPEND extra_cflags_${libname} "--target=${CMAKE_C_COMPILER_TARGET}")
+       endif()
+-      if(CMAKE_SYSROOT)
++      # Do not add --sysroot flag on Gentoo Prefix (search paths handled by cmake)
++      if(CMAKE_SYSROOT AND NOT APPLE)
+         list(APPEND extra_cflags_${libname} "--sysroot=${CMAKE_SYSROOT}")
+       endif()
+       string(REPLACE ";" " " extra_cflags_${libname} "${extra_cflags_${libname}}")
