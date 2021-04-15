@@ -1,24 +1,21 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils fixheadtails toolchain-funcs
-
-IUSE=""
+inherit fixheadtails toolchain-funcs
 
 MY_P=${PN}-${PV//./-}
 
 DESCRIPTION="Protocol definitions of l7-filter kernel modules"
 HOMEPAGE="http://l7-filter.sourceforge.net/protocols
 	https://l7-filter.clearos.com/docs/start"
-
 SRC_URI="mirror://sourceforge/l7-filter/${MY_P}.tar.gz"
+S="${WORKDIR}"/${MY_P}
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-S=${WORKDIR}/${MY_P}
 
 src_prepare() {
 	sed -e "s|gcc.*\-o|$(tc-getCC) ${CFLAGS} ${LDFLAGS} -o|" \
@@ -59,6 +56,7 @@ src_install() {
 	for dir in extra file_types malware ; do
 		newdoc ${dir}/README README.${dir}
 	done
+
 	rm -rf README CHANGELOG HOWTO LICENSE Makefile WANTED */README testing || die
 
 	dodir /etc/l7-protocols
