@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,11 +18,15 @@ RDEPEND="x11-libs/libXaw"
 DEPEND="${RDEPEND}
 	app-text/rman
 	x11-misc/gccmakedep
-	x11-misc/imake"
+	>=x11-misc/imake-1.0.8-r1"
+
+src_configure() {
+	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
+		IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" xmkmf -a || die
+}
 
 src_compile() {
-	xmkmf -a
-	emake CC=$(tc-getCC) CDEBUGFLAGS="${CFLAGS}" LOCAL_LDFLAGS="${LDFLAGS}"
+	emake CC="$(tc-getCC)" CDEBUGFLAGS="${CFLAGS}" LOCAL_LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {

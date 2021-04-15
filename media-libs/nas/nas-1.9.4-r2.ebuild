@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,13 +24,14 @@ RDEPEND="
 	x11-libs/libXmu
 	x11-libs/libXpm
 	>=x11-libs/libXt-1.1.4[${MULTILIB_USEDEP}]"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	app-text/rman
 	sys-devel/bison
 	sys-devel/flex
 	x11-base/xorg-proto
 	x11-misc/gccmakedep
-	x11-misc/imake"
+	>=x11-misc/imake-1.0.8-r1"
 
 DOCS=( BUILDNOTES FAQ HISTORY README RELEASE TODO )
 
@@ -51,13 +52,14 @@ multilib_src_configure() {
 	pushd config || die
 	econf
 	popd || die
-	xmkmf -a || die
+	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
+		IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" xmkmf -a || die
 }
 
 multilib_src_compile() {
 	# EXTRA_LDOPTIONS, SHLIBGLOBALSFLAGS #336564#c2
 	local emakeopts=(
-		AR="$(tc-getAR) clq"
+		AR="$(tc-getAR) cq"
 		AS="$(tc-getAS)"
 		CC="$(tc-getCC)"
 		CDEBUGFLAGS="${CFLAGS}"
@@ -82,7 +84,7 @@ multilib_src_compile() {
 			Makefile || die
 	fi
 
-	emake "${emakeopts[@]}" World
+	emake "${emakeopts[@]}"
 }
 
 multilib_src_install() {

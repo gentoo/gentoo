@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -43,7 +43,7 @@ DEPEND="${COMMON_DEPEND}
 	x11-base/xorg-proto
 	x11-libs/libxkbfile
 	app-text/rman
-	x11-misc/imake"
+	>=x11-misc/imake-1.0.8-r1"
 RDEPEND="${COMMON_DEPEND}
 	contrib? ( dev-lang/perl )
 	nls? ( sys-devel/gettext )
@@ -97,16 +97,21 @@ src_configure() {
 		--disable-freetype \
 		--x-libraries=/usr/lib/X11 \
 		--x-includes=/usr/include/X11
+
+	export IMAKECPP="${IMAKECPP:-$(tc-getCPP)}"
+	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" xmkmf || die
 }
 
 src_compile() {
-	xmkmf || die
 	# no parallel build possible anywhere
-	emake -j1 Makefiles
+	emake -j1 Makefiles \
+		CC="$(tc-getBUILD_CC)" \
+		LD="$(tc-getLD)"
 
-	tc-export CC
 	emake -j1 \
-		CC="${CC}" \
+		AR="$(tc-getAR) cq" \
+		CC="$(tc-getCC)" \
+		RANLIB="$(tc-getRANLIB)" \
 		CDEBUGFLAGS="${CFLAGS}" \
 		LOCAL_LDFLAGS="${LDFLAGS}" \
 		BINDIR=/usr/bin \
