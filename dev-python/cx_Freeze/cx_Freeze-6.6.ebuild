@@ -13,13 +13,16 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="PYTHON"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
-RDEPEND="dev-python/importlib_metadata[${PYTHON_USEDEP}]"
+RDEPEND="
+	dev-python/importlib_metadata[${PYTHON_USEDEP}]
+	dev-util/patchelf
+"
 
 PATCHES=(
 	# bug #491602
-	"${FILESDIR}/${PN}-6.5.3-buildsystem.patch"
+	"${FILESDIR}/${PN}-6.6-buildsystem.patch"
 )
 
 # bug #765385
