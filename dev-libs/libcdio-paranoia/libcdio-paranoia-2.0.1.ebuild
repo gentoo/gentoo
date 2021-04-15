@@ -5,7 +5,7 @@ EAPI=7
 
 MY_P=${PN}-10.2+${PV/_p/+}
 
-inherit autotools multilib-minimal flag-o-matic
+inherit autotools multilib-minimal
 
 DESCRIPTION="an advanced CDDA reader with error correction"
 HOMEPAGE="https://www.gnu.org/software/libcdio/"
