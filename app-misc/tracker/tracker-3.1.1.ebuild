@@ -67,7 +67,8 @@ function inotify_enabled() {
 }
 
 python_check_deps() {
-	use test && has_version -b "dev-python/tappy[${PYTHON_USEDEP}]"
+	use test || return 0
+	has_version -b "dev-python/tappy[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
