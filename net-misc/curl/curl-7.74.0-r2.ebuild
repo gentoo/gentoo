@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit autotools eutils prefix multilib-minimal
+inherit autotools prefix multilib-minimal
 
 DESCRIPTION="A Client that groks URLs"
 HOMEPAGE="https://curl.haxx.se/"
@@ -285,7 +285,7 @@ multilib_src_configure() {
 }
 
 multilib_src_install_all() {
-	einstalldocs
+	default
 	find "${ED}" -type f -name '*.la' -delete
 	rm -rf "${ED}"/etc/
 }
