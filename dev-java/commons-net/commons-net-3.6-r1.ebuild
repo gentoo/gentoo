@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 JAVA_PKG_IUSE="doc examples source"
 
@@ -13,8 +13,8 @@ DESCRIPTION="Client-oriented Java library to implement many Internet protocols"
 HOMEPAGE="https://commons.apache.org/net/"
 SRC_URI="https://repo1.maven.org/maven2/${PN}/${PN}/${PV}/${P}-sources.jar -> ${P}.jar"
 
-DEPEND=">=virtual/jdk-1.6"
-RDEPEND=">=virtual/jre-1.6"
+DEPEND=">=virtual/jdk-1.8:*"
+RDEPEND=">=virtual/jre-1.8:*"
 
 LICENSE="Apache-2.0"
 SLOT="0"
