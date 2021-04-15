@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit flag-o-matic git-r3 savedconfig toolchain-funcs
+
+inherit git-r3 savedconfig toolchain-funcs
 
 DESCRIPTION="X Obstinate Asymmetric Tiler"
 HOMEPAGE="https://github.com/seanpringle/xoat"
@@ -10,7 +11,6 @@ EGIT_REPO_URI="https://github.com/seanpringle/xoat"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
 
 DEPEND="
 	x11-libs/libX11
