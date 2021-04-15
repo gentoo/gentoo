@@ -9,8 +9,8 @@ IUSE=debug +gnutls ipv6 libevent libressl nss otr +plugins selinux test xinetd m
 LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=acct-group/bitlbee acct-user/bitlbee dev-libs/glib:2 purple? ( net-im/pidgin ) libevent? ( dev-libs/libevent:= ) otr? ( >=net-libs/libotr-4 ) gnutls? ( net-libs/gnutls:= ) !gnutls? ( nss? ( dev-libs/nss ) !nss? ( libressl? ( dev-libs/libressl:= ) !libressl? ( dev-libs/openssl:0= ) ) ) xinetd? ( sys-apps/xinetd )
-REQUIRED_USE=|| ( purple xmpp msn oscar ) xmpp? ( !nss ) test? ( plugins )
+REQUIRED_USE=|| ( purple xmpp msn oscar ) purple? ( plugins ) test? ( plugins ) xmpp? ( !nss )
 RESTRICT=!test? ( test )
 SLOT=0
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-any-r1	17241a11501065ff3651350040875aa9	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
-_md5_=bd2b69fa0c090ef1af1a21b161b1a477
+_md5_=26d2a244913437e8badb697750bee0bb

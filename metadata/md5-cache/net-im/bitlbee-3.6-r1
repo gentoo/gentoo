@@ -9,9 +9,9 @@ IUSE=debug +gnutls ipv6 libevent libressl nss otr +plugins selinux test xinetd m
 KEYWORDS=amd64 ppc ~ppc64 x86
 LICENSE=GPL-2
 RDEPEND=acct-group/bitlbee acct-user/bitlbee dev-libs/glib:2 purple? ( net-im/pidgin ) libevent? ( dev-libs/libevent:= ) otr? ( >=net-libs/libotr-4 ) gnutls? ( net-libs/gnutls:= ) !gnutls? ( nss? ( dev-libs/nss ) !nss? ( libressl? ( dev-libs/libressl:= ) !libressl? ( dev-libs/openssl:0= ) ) ) xinetd? ( sys-apps/xinetd )
-REQUIRED_USE=|| ( purple xmpp msn oscar ) xmpp? ( !nss ) test? ( plugins )
+REQUIRED_USE=|| ( purple xmpp msn oscar ) purple? ( plugins ) test? ( plugins ) xmpp? ( !nss )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://get.bitlbee.org/src/bitlbee-3.6.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-any-r1	17241a11501065ff3651350040875aa9	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6
-_md5_=85f46e8e53f86f490a95f87097f402ff
+_md5_=d16ead254fc409e3dc2b1f229162aa12

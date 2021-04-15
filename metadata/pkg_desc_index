@@ -2214,7 +2214,7 @@ app-emulation/grub-xen-host 1.0: Grub2 built as a PV grub per the Xen PV Boot Pr
 app-emulation/gxemul 0.6.2: A Machine Emulator, Mainly emulates MIPS, but supports other CPU types
 app-emulation/hercules 3.10 3.12 3.13: Hercules System/370, ESA/390 and zArchitecture Mainframe Emulator
 app-emulation/hyperd 0.7.0-r1: Hypervisor-based Runtime for OCI
-app-emulation/img 0.5.7-r1: Standalone daemon-less unprivileged Dockerfile and OCI container image builder
+app-emulation/img 0.5.7-r1 0.5.11: Standalone daemon-less unprivileged Dockerfile and OCI container image builder
 app-emulation/kompose 1.22.0: Tool to move from docker-compose to Kubernetes
 app-emulation/libcacard 2.6.0: virtual Common Access Card (CAC) library emulator
 app-emulation/libdsk 1.5.8: LIBDSK is a library for accessing discs and disc image files
@@ -14841,7 +14841,7 @@ net-im/qtox 1.16.3-r1 9999: Most feature-rich GUI for net-libs/tox using Qt5
 net-im/ricochet 1.1.4 9999: Privacy-focused instant messaging through Tor hidden services
 net-im/sendxmpp 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
 net-im/signal-cli-bin 0.7.4 0.8.0: Send and receive messages of Signal Messenger over a command line interface
-net-im/signal-desktop-bin 1.40.1: Allows you to send and receive messages of Signal Messenger on your computer
+net-im/signal-desktop-bin 5.0.0: Allows you to send and receive messages of Signal Messenger on your computer
 net-im/skype-dbus-mock 0_pre20181011: Mocked systemd dbus interface for skype 8.30+
 net-im/skypeforlinux 8.69.0.77: Instant messaging client, with support for audio and video
 net-im/slack 4.12.2 4.13.0 4.14.0: Team collaboration tool
@@ -18209,7 +18209,7 @@ www-client/opera-developer 76.0.4009.0 76.0.4016.0 77.0.4023.0: A fast and secur
 www-client/otter 1.0.02 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qutebrowser 2.1.1 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
-www-client/seamonkey 2.53.6 2.53.7: Seamonkey Web Browser
+www-client/seamonkey 2.53.6 2.53.7 2.53.7.1: Seamonkey Web Browser
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r3 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.1 9999: Download manager using gtk+ and libcurl
@@ -19148,7 +19148,7 @@ x11-wm/goomwwm 1.0.0-r1 9999: Get out of my way, Window Manager!
 x11-wm/herbstluftwm 0.7.2-r1 0.9.1 0.9.2 9999: A manual tiling window manager for X
 x11-wm/i3 4.18 4.18.3 4.19-r1 4.19.1 9999: An improved dynamic tiling window manager
 x11-wm/i3-gaps 4.18.2 4.19 4.19.1: i3 fork with gaps and some more features
-x11-wm/icewm 2.2.1 2.3.0 2.3.1: Ice Window Manager with Themes
+x11-wm/icewm 2.2.1 2.3.1 2.3.2: Ice Window Manager with Themes
 x11-wm/jwm 2.3.2 2.3.7: Very fast and lightweight still powerful window manager for X
 x11-wm/larswm 7.5.3-r2: Tiling window manager for X11, based on 9wm by David Hogan
 x11-wm/lumina 1.6.0 9999: Lumina desktop environment
