@@ -46,7 +46,7 @@ src_compile() {
 		CC="$(tc-getCC)" \
 		HAVE_NL=1 \
 		STATIC=${STATIC} \
-		POPT_LIB="$($(tc-getPKG_CONFIG)--libs popt)"
+		POPT_LIB="$($(tc-getPKG_CONFIG) --libs popt)"
 }
 
 src_install() {
