@@ -18229,7 +18229,7 @@ www-misc/monitorix 3.12.0 3.13.1: A lightweight system monitoring tool
 www-misc/multisort 1.1-r2: Merges httpd logfiles in the Common Log Format
 www-misc/profile-sync-daemon 5.75 6.31 6.35 9999: Symlinks and syncs browser profile dirs to RAM.
 www-misc/shellinabox 2.20-r4: Export command line tools to a web based terminal emulator
-www-misc/urlwatch 2.17 2.18-r1 2.21 2.22: A tool for monitoring webpages for updates
+www-misc/urlwatch 2.17 2.22 2.23: A tool for monitoring webpages for updates
 www-misc/vdradmin-am 3.6.10-r1 3.6.10-r2: WWW Admin for the Video Disk Recorder
 www-misc/visitors 0.7-r2: Fast web log analyzer
 www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution and page ordering
