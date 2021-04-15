@@ -10,15 +10,13 @@
  struct Pkt {
  	uchar		dst[6];
  	uchar		src[6];
-@@ -76,7 +79,7 @@ extern int errno;
- Shelf	tab[Ntab];
+@@ -77,5 +80,5 @@ extern int errno;
  int	ntab;
  uchar	contag;
 -extern 	int fd;		/* set in netopen */
 +int fd;		/* set in netopen */
  int	shelf;
  Shelf	*connp;
- char 	esc = '';
 --- a/cec.h
 +++ b/cec.h
 @@ -6,8 +6,8 @@ typedef unsigned char uchar;
