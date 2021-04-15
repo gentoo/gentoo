@@ -4,7 +4,7 @@
 EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="emake"
-inherit cmake flag-o-matic systemd toolchain-funcs
+inherit cmake systemd toolchain-funcs
 
 MY_PN="gsa"
 MY_DN="gsad"
