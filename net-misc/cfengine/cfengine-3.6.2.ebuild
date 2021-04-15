@@ -3,14 +3,13 @@
 
 EAPI="5"
 
-inherit autotools epatch flag-o-matic
+inherit autotools epatch
 
 MY_PV="${PV//_beta/b}"
 MY_PV="${MY_PV/_p/p}"
 MY_P="${PN}-${MY_PV}"
 
-DESCRIPTION="An automated suite of programs for configuring and maintaining
-Unix-like computers"
+DESCRIPTION="An automated suite of programs for configuring and maintaining Unix-like computers"
 HOMEPAGE="http://www.cfengine.org/"
 SRC_URI="http://cfengine.package-repos.s3.amazonaws.com/tarballs/${MY_P}.tar.gz
 	masterfiles? ( http://cfengine.package-repos.s3.amazonaws.com/tarballs/masterfiles-${MY_PV}.tar.gz -> ${PN}-masterfiles-${MY_PV}.tar.gz )"
