@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit multilib multilib-minimal
+inherit multilib-minimal
 
 DESCRIPTION="C library and tools for interacting with the linux GPIO character device"
 HOMEPAGE="https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/"
