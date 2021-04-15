@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit multilib toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Library to parse, pretty print, and evaluate CUDF documents"
 HOMEPAGE="http://www.mancoosi.org/cudf/"
