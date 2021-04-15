@@ -27,10 +27,11 @@ src_configure() {
 	econf --libexecdir=/usr/"$(get_libdir)"/misc \
 		--disable-installing-app-defaults
 	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
-		IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" xmkmf -a || die "xmkmf failed"
+		IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" xmkmf || die "xmkmf failed"
 }
 
 src_compile() {
+	emake includes
 	emake CC="$(tc-getCC)" CDEBUGFLAGS="${CFLAGS}"
 }
 
