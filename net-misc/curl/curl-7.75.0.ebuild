@@ -284,7 +284,7 @@ multilib_src_configure() {
 }
 
 multilib_src_install_all() {
-	einstalldocs
+	default
 	find "${ED}" -type f -name '*.la' -delete || die
 	rm -rf "${ED}"/etc/ || die
 }
