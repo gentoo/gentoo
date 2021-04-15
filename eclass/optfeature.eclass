@@ -52,11 +52,13 @@ _OPTFEATURE_DOHEADER=true
 # two optfeature calls. Then a custom header is set that is going to be
 # displayed in case dev-db/a or dev-db/b are not installed.
 # @CODE
+# pkg_postinst() {
 #	optfeature "foo support" app-misc/foo
 #	optfeature "bar support" app-misc/bar
 #	optfeature_header "Install optional database backends:"
 #	optfeature "a DB backend" dev-db/a
 #	optfeature "b DB backend" dev-db/b
+# }
 # @CODE
 optfeature_header() {
 	debug-print-function ${FUNCNAME} "$@"
@@ -74,9 +76,11 @@ optfeature_header() {
 # app-misc/bar or app-misc/baz[bar] for optional bar support
 # and either both app-misc/a and app-misc/b or app-misc/c for alphabet support.
 # @CODE
+# pkg_postinst() {
 #	optfeature "foo support" app-misc/foo
 #	optfeature "bar support" app-misc/bar app-misc/baz[bar]
 #	optfeature "alphabet support" "app-misc/a app-misc/b" app-misc/c
+# }
 # @CODE
 optfeature() {
 	debug-print-function ${FUNCNAME} "$@"
