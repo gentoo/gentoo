@@ -3,10 +3,11 @@
 
 EAPI=5
 
-inherit eutils
+inherit epatch
 
 DESCRIPTION="A source-based package manager for OCaml"
 HOMEPAGE="http://opam.ocaml.org/"
+
 LICENSE="LGPL-3-with-linking-exception"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
