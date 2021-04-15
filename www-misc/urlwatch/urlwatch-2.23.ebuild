@@ -1,11 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7,8} )
-# The package uses entry points but setup.py is weird
-# so the eclass doesn't detect it
-DISTUTILS_USE_SETUPTOOLS=manual
+
+DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit distutils-r1
 
@@ -25,24 +24,33 @@ RDEPEND="
 	dev-python/minidb[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
-		${RDEPEND}
-		dev-python/nose[${PYTHON_USEDEP}]
-		dev-python/pycodestyle[${PYTHON_USEDEP}]
+		dev-python/docutils[${PYTHON_USEDEP}]
 	)
 "
 
-# This will be in the next release
-# https://github.com/thp/urlwatch/commit/44e862282d39a6e23f67c3c0240a93cccbb41a55
-PATCHES=( "${FILESDIR}/${P}-pycodestyle-requirement.patch" )
-
 DOCS=( CHANGELOG.md README.md )
 
-distutils_enable_tests nose
+distutils_enable_sphinx docs/source dev-python/alabaster
+distutils_enable_tests pytest
+
+python_test() {
+	local skipped_tests=(
+		# Require the pdftotext module
+		"lib/urlwatch/tests/test_filter_documentation.py::test_url[https://example.net/pdf-test.pdf-job12]"
+		"lib/urlwatch/tests/test_filter_documentation.py::test_url[https://example.net/pdf-test-password.pdf-job13]"
+		# Require the pytesseract module
+		"lib/urlwatch/tests/test_filter_documentation.py::test_url[https://example.net/ocr-test.png-job26]"
+		"lib/urlwatch/tests/test_filter_documentation.py::test_url[https://example.net/ocr-test.png-job27]"
+		# Requires the jq module
+		"lib/urlwatch/tests/test_filter_documentation.py::test_url[https://example.net/jobs.json-job28]"
+		# Skip code quality check
+		"lib/urlwatch/tests/test_handler.py::test_pep8_conformance"
+	)
+	epytest ${skipped_tests[@]/#/--deselect }
+}
 
 pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
