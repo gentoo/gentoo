@@ -38,7 +38,7 @@ sys-libs/compiler-rt-sanitizers -profile
 
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2020-10-28)
 # dev-qt/linguist-tools-5.15.0 and 5.15.1 OOM with bad_alloc.
-# https://bugs.gentoo.org/751418
+# bug #751418
 >=sci-astronomy/stellarium-0.20.3 nls
 
 # Sam James <sam@gentoo.org> (2020-10-05)

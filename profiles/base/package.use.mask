@@ -452,7 +452,7 @@ app-emulation/libvirt openvz
 # rather sensitive when it comes to compiler flags, resulting in
 # black screens, hangs or crashes. The average joe should have no
 # need or even advantage to set custom compiler flags at all.
-# Example: https://bugs.gentoo.org/619628
+# Example: bug #619628
 sys-boot/gnu-efi custom-cflags
 sys-boot/refind custom-cflags
 
@@ -524,7 +524,7 @@ dev-java/icedtea cacao jamvm
 
 # Justin Lecher <jlec@gentoo.org> (2015-09-22)
 # Downloads files during installation
-# https://bugs.gentoo.org/show_bug.cgi?id=533876
+# bug #533876
 >=sci-libs/vtk-6.1.0 examples
 
 # James Le Cuirot <chewi@gentoo.org> (2015-08-18)
