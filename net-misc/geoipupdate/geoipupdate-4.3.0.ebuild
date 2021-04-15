@@ -5,7 +5,7 @@ EAPI=7
 
 EGO_PN="github.com/maxmind/${PN}"
 
-inherit eutils go-module
+inherit go-module
 
 DESCRIPTION="performs automatic updates of GeoIP2 and GeoIP Legacy binary databases"
 HOMEPAGE="https://github.com/maxmind/geoipupdate"
