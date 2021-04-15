@@ -4807,7 +4807,7 @@ dev-java/bsf 2.4.0-r2: Bean Script Framework
 dev-java/bsh 2.0_beta6-r1: A small embeddable Java source interpreter
 dev-java/btf 1.2: Generic interfaces to the classical builder pattern
 dev-java/byaccj 1.15-r2: A java extension of BSD YACC-compatible parser generator
-dev-java/bytelist 1.0.10: JRuby support library
+dev-java/bytelist 1.0.10 1.0.15: Byte array based container
 dev-java/c3p0 0.9.5.1: JDBC drivers with JNDI-bindable DataSources
 dev-java/cal10n 0.8.1: java library for writing localized messages using resource bundle
 dev-java/cdegroot-db 0.08-r2: OO database written in Java
@@ -4992,7 +4992,7 @@ dev-java/jcifs 1.3.17-r2 1.3.19: Library that implements the CIFS/SMB networking
 dev-java/jcip-annotations 1.0.1-r1: Clean room implementation of the JCIP Annotations
 dev-java/jclasslib 3.1: Java bytecode viewer
 dev-java/jcmdline 1.0.2-r2 2.0.0: Library for parsing/handling of command line parameters
-dev-java/jcodings 1.0.5 1.0.11: Byte-based encoding support library for Java
+dev-java/jcodings 1.0.5-r1 1.0.11-r1: Byte-based encoding support library for Java
 dev-java/jcommander 1.48: Command line parsing framework for Java
 dev-java/jcommon 1.0.23: A collection of useful classes used by JFreeChart, JFreeReport and others
 dev-java/jdbc-mssqlserver 6.2.2: JDBC driver for Microsoft SQL Server
@@ -15709,7 +15709,7 @@ net-vpn/nstx 1.1_beta6-r3: IP over DNS tunnel
 net-vpn/ocserv 1.0.1 1.1.1: Openconnect SSL VPN server
 net-vpn/openconnect 8.09-r1 8.09-r3 8.10 8.10-r1 9999: Free client for Cisco AnyConnect SSL VPN software
 net-vpn/openfortivpn 1.13.2 1.13.3 1.15.0 1.16.0: Fortinet compatible VPN client
-net-vpn/openvpn 2.4.9 2.5.0-r1 9999: Robust and highly flexible tunneling application compatible with many OSes
+net-vpn/openvpn 2.4.9 2.5.0-r1 2.5.1 9999: Robust and highly flexible tunneling application compatible with many OSes
 net-vpn/pptpd 1.4.0-r3: Linux Point-to-Point Tunnelling Protocol Server
 net-vpn/protonvpn-cli 2.2.6: A VPN command-line tool from protonvpn - python rewrite
 net-vpn/strongswan 5.9.0 5.9.1 5.9.2: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
