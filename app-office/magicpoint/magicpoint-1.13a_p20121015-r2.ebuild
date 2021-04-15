@@ -34,7 +34,7 @@ COMMON_DEPEND="x11-libs/libICE
 	)
 	emacs? ( >=app-editors/emacs-23.1:* )
 	m17n-lib? (
-		dev-libs/m17n-lib
+		dev-libs/m17n-lib[X]
 		fontconfig? ( media-libs/fontconfig )
 	)
 	mng? ( media-libs/libmng )"
