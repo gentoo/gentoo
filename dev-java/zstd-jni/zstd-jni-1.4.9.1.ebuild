@@ -11,8 +11,7 @@ inherit java-pkg-2 java-pkg-simple cmake
 DESCRIPTION="JNI bindings for Zstd native library"
 
 HOMEPAGE="https://github.com/luben/zstd-jni"
-SRC_URI="https://github.com/luben/${PN}/archive/v${MY_PV}.tar.gz"
-
+SRC_URI="https://github.com/luben/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="BSD"
