@@ -3,7 +3,6 @@
 
 EAPI=7
 
-inherit multilib
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3 autotools
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/mobile-broadband/libqmi.git"
