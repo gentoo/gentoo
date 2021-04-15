@@ -14,4 +14,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://build.openvpn.net/downloads/releases/openvpn-2.5.1.tar.gz
 _eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	c0964e43ba712cb933da5f65b958fa88	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	linux-info	30ded7f9adbdd03d3e848cdd74f6c395
-_md5_=0f27f95bbf252308ab2de9c0070ed273
+_md5_=cd58513d74b2ad2a5d92ca7a61201d37

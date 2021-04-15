@@ -7941,7 +7941,7 @@ dev-php/pear 1.10.3: PEAR - PHP Extension and Application Repository
 dev-php/pecl-amqp 1.10.2 1.11.0_beta: PHP Bindings for AMQP 0-9-1 compatible brokers
 dev-php/pecl-apcu 5.1.19 5.1.20: Stripped down version of APC supporting only user cache
 dev-php/pecl-apcu_bc 1.0.5: Provides APC backwards compatibility functions via APCu
-dev-php/pecl-crack 0.4-r7: PHP interface to the cracklib libraries
+dev-php/pecl-crack 0.4-r7 0.4-r8: PHP interface to the cracklib libraries
 dev-php/pecl-dbase 7.0.1 7.1.0_rc2: dBase database file access functions
 dev-php/pecl-dio 0.2.0-r1: Direct I/O functions for PHP
 dev-php/pecl-eio 2.0.4-r1: PHP wrapper for libeio library
