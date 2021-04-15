@@ -19,7 +19,7 @@ php7-2
 # Nothing depends on those ROS messages. dev-ros/geneus
 # is half broken in our setup where it looks for packages
 # on the filesystem and causes build failures.
-# See e.g. https://bugs.gentoo.org/741076
+# See e.g. bug #741076
 ros_messages_eus
 
 # Hans de Graaff <graaff@gentoo.org> (2020-06-13)

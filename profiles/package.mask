@@ -79,7 +79,7 @@ games-misc/games-envd
 
 # Lars Wendler <polynomial-c@gentoo.org> (2021-04-08)
 # Masked for testing and until revdeps have been fixed:
-# https://bugs.gentoo.org/781188
+# bug #781188
 >=dev-libs/icu-69.1
 >=dev-libs/icu-layoutex-69.1
 
@@ -325,7 +325,7 @@ www-apps/webmcp
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-30)
 # broken acl handling, possible broken chattr handling
 # needs more testing
-# https://bugs.gentoo.org/751739
+# bug #751739
 =sys-apps/opentmpfiles-0.3.1
 
 # Stephan Hartmann <sultan@gentoo.org> (2021-03-21)
@@ -419,7 +419,7 @@ net-misc/gnome-remote-desktop
 # Lars Wendler <polynomial-c@gentoo.org> (2019-11-14)
 # Breaks archives containing relative paths
 # when being called with --no-absolute-filenames
-# https://bugs.gentoo.org/700020
+# bug #700020
 =app-arch/cpio-2.13
 
 # Matt Turner <mattst88@gentoo.org> (2019-09-01)
