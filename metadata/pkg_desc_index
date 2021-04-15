@@ -18126,7 +18126,7 @@ www-apps/bugzilla 5.0.6-r1: Bugzilla is the Bug-Tracking System from the Mozilla
 www-apps/cgisysinfo 0.4.1: A small cgi utility to show basic system information
 www-apps/cgit 1.2.3-r100 1.2.3-r200 9999: a fast web-interface for git repositories
 www-apps/cgp 1_p20190510-r1: A graphical web-based front-end for visualizing RRD collected by collectd
-www-apps/chromedriver-bin 89.0.4389.23: WebDriver for Chrome
+www-apps/chromedriver-bin 90.0.4430.24: WebDriver for Chrome
 www-apps/cvsweb 3.0.6-r1: WWW interface to a CVS tree
 www-apps/davical 1.1.9.3 1.1.9.3-r1: A CalDAV and CardDAV Server
 www-apps/dokuwiki 20180422a 20180422b 20200729: DokuWiki is a simple to use Wiki aimed at a small company's documentation needs.
