@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ MY_PN="pcsc-${PN}"
 MY_PV="${PV/_p/final.SP}"
 MY_P="${MY_PN}_${MY_PV}"
 
-inherit autotools flag-o-matic toolchain-funcs udev
+inherit autotools toolchain-funcs udev
 
 DESCRIPTION="REINER SCT cyberJack USB chipcard reader user space driver"
 HOMEPAGE="https://www.reiner-sct.de/"
