@@ -11976,7 +11976,7 @@ gnome-base/gnome-common 3.18.0-r1: Common files for development of Gnome package
 gnome-base/gnome-control-center 3.38.5: GNOME's main interface to configure various aspects of the desktop
 gnome-base/gnome-core-apps 3.36.5: Sub-meta package for the core applications integrated with GNOME 3
 gnome-base/gnome-core-libs 3.36.4 3.36.5: Sub-meta package for the core libraries of GNOME 3
-gnome-base/gnome-desktop 3.38.3: Library with common API for various GNOME modules
+gnome-base/gnome-desktop 3.38.4: Library with common API for various GNOME modules
 gnome-base/gnome-extra-apps 3.36.5: Sub-meta package for the applications of GNOME 3
 gnome-base/gnome-flashback 3.36.4: GNOME Flashback session
 gnome-base/gnome-keyring 3.36.0: Password and keyring managing daemon
@@ -18204,7 +18204,7 @@ www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.10-r4: a free, open source web browser
 www-client/opera 75.0.3969.171: A fast and secure web browser
-www-client/opera-beta 76.0.4017.5: A fast and secure web browser
+www-client/opera-beta 76.0.4017.5 76.0.4017.40: A fast and secure web browser
 www-client/opera-developer 76.0.4009.0 76.0.4016.0 77.0.4023.0: A fast and secure web browser
 www-client/otter 1.0.02 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
