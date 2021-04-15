@@ -3,8 +3,6 @@
 
 EAPI=7
 
-inherit autotools
-
 DESCRIPTION="Light Unix download accelerator"
 HOMEPAGE="https://github.com/axel-download-accelerator/axel"
 SRC_URI="https://github.com/axel-download-accelerator/axel/releases/download/v${PV}/${P}.tar.xz"
