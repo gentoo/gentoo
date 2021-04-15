@@ -105,7 +105,7 @@ sys-block/fio python gnuplot
 # Craig Andrews <candrews@gentoo.org> (2019-10-08)
 # net-libs/quiche is not available on all arches
 # Track addition arch keywording of quiche at:
-# https://bugs.gentoo.org/694320
+# bug #694320
 net-misc/curl quiche
 
 # Craig Andrews <candrews@gentoo.org> (2019-10-08)

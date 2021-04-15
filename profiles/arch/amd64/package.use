@@ -3,7 +3,7 @@
 
 # Mike Gilbert <floppym@gentoo.org> (2016-11-17)
 # Enable both efi and pc by default.
-# https://bugs.gentoo.org/600110
+# bug #600110
 sys-boot/grub:2 grub_platforms_efi-64 grub_platforms_pc
 
 # Michał Górny <mgorny@gentoo.org> (2016-09-24)
