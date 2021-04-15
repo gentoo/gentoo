@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit eutils opam
+inherit opam
 
 DESCRIPTION="OCaml module to access monotonic wall-clock time"
 HOMEPAGE="https://erratique.ch/software/mtime https://github.com/dbuenzli/mtime"
@@ -15,8 +15,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-lang/ocaml:=[ocamlopt]
-"
+RDEPEND="dev-lang/ocaml:=[ocamlopt]"
 DEPEND="${RDEPEND}
 	dev-ml/topkg
 	dev-ml/ocamlbuild
