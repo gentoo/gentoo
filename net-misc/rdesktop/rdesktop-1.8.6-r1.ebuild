@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools eutils
+inherit autotools
 
 MY_PV=${PV/_/-}
 
@@ -32,7 +32,7 @@ RDEPEND="
 	xrandr? ( x11-libs/libXrandr )"
 DEPEND="${RDEPEND}
 	x11-libs/libXt"
-BDEPEND=virtual/pkgconfig
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.0-sound_configure.patch
