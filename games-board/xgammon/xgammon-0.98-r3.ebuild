@@ -16,7 +16,8 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="
 	x11-libs/libX11
 	x11-libs/libXaw
-	x11-libs/libXt"
+	x11-libs/libXt
+	!<x11-terms/kterm-6.2.0-r7"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	app-text/rman
@@ -41,6 +42,12 @@ src_compile() {
 		EXTRA_LDOPTIONS="${LDFLAGS}" \
 		CDEBUGFLAGS="${CFLAGS}" \
 		CC="$(tc-getCC)"
+}
+
+src_install() {
+	default
+	# remove link to avoid collision (bug #668892)
+	rm "${ED}"/usr/$(get_libdir)/X11/app-defaults || die
 }
 
 pkg_postinst() {
