@@ -3,10 +3,10 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic systemd linux-info systemd
+inherit autotools flag-o-matic systemd linux-info
 
 DESCRIPTION="Robust and highly flexible tunneling application compatible with many OSes"
-SRC_URI="https://build.openvpn.net/downloads/releases/${P}.tar.gz -> ${P}-r1.tar.gz"
+SRC_URI="https://build.openvpn.net/downloads/releases/${P}.tar.gz"
 HOMEPAGE="https://openvpn.net/"
 
 LICENSE="GPL-2"
