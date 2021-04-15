@@ -8,7 +8,7 @@ VALA_USE_DEPEND="vapigen"
 
 PYTHON_COMPAT=( python3_{7..9} )
 
-inherit desktop eutils meson python-any-r1 readme.gentoo-r1 vala xdg-utils
+inherit desktop meson python-any-r1 readme.gentoo-r1 vala xdg-utils
 
 DESCRIPTION="Set of GObject and Gtk objects for connecting to Spice servers and a client GUI"
 HOMEPAGE="https://www.spice-space.org https://cgit.freedesktop.org/spice/spice-gtk/"
