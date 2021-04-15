@@ -12,11 +12,11 @@ SRC_URI="https://github.com/olabini/jvyamlb/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~x86-solaris"
 
 CDEPEND="
 	dev-java/bytelist:0
-	dev-java/jcodings:0
+	dev-java/jcodings:1
 	dev-java/joda-time:0"
 
 RDEPEND="
@@ -29,7 +29,7 @@ DEPEND="
 	test? ( dev-java/ant-junit )"
 
 JAVA_ANT_REWRITE_CLASSPATH="true"
-EANT_GENTOO_CLASSPATH="bytelist jcodings joda-time"
+EANT_GENTOO_CLASSPATH="bytelist jcodings-1 joda-time"
 
 DOCS=( CREDITS README )
 
