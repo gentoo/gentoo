@@ -8,12 +8,12 @@ inherit cmake xdg
 
 DESCRIPTION="qTox is an instant messaging client using the encrypted p2p Tox protocol"
 HOMEPAGE="https://qtox.github.io/"
-SRC_URI="https://github.com/qTox/qTox/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/qTox/qTox/releases/download/v${PV}/v${PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="spellcheck notification test X"
+IUSE="notification spellcheck test X"
 
 RESTRICT="!test? ( test )"
 
@@ -24,29 +24,31 @@ BDEPEND="
 	virtual/pkgconfig
 "
 RDEPEND="
-	dev-qt/qtconcurrent:5
-	dev-qt/qtcore:5
 	|| (
 		dev-qt/qtgui:5[gif,jpeg,png,X(-)]
 		dev-qt/qtgui:5[gif,jpeg,png,xcb(-)]
 	)
+	dev-db/sqlcipher
+	dev-libs/libsodium:=
+	dev-qt/qtconcurrent:5
+	dev-qt/qtcore:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtopengl:5
+	dev-qt/qtsql:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
-	dev-qt/qtsql:5
-	dev-db/sqlcipher
-	dev-libs/libsodium:=
 	media-gfx/qrencode:=
 	media-libs/libexif:=
 	media-libs/openal
-	>=media-video/ffmpeg-2.6.3:=[webp,v4l]
+	media-video/ffmpeg:=[webp,v4l]
 	net-libs/tox:0/0.2[av]
-	spellcheck? ( kde-frameworks/sonnet:5 )
 	notification? ( x11-libs/snorenotify )
-	X? ( x11-libs/libX11
-		x11-libs/libXScrnSaver )
+	spellcheck? ( kde-frameworks/sonnet:5 )
+	X? (
+		x11-libs/libX11
+		x11-libs/libXScrnSaver
+	)
 "
 DEPEND="${RDEPEND}
 	test? ( dev-qt/qttest:5 )
