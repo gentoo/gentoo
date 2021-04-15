@@ -1,8 +1,8 @@
 http://aur.archlinux.org/packages.php?ID=1676
 http://archwyrm.net/~me/xli-libpng.diff
 
---- png.c
-+++ png.c
+--- a/png.c
++++ b/png.c
 @@ -27,7 +27,7 @@
  	if (ret != 8)
  		return 0;
