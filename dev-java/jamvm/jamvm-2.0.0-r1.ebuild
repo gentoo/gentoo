@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils flag-o-matic multilib java-vm-2 autotools toolchain-funcs
+inherit epatch flag-o-matic multilib java-vm-2 autotools toolchain-funcs
 
 DESCRIPTION="An extremely small and specification-compliant virtual machine"
 HOMEPAGE="http://jamvm.sourceforge.net/"
