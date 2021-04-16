@@ -16,5 +16,5 @@ src_install() {
 	local files=( ${A} )
 
 	insinto /usr/share/openpgp-keys
-	newins - nmap.asc < <(cat "${files[@]/#/${DISTDIR}/}")
+	newins - nmap.asc < <(cat "${files[@]/#/${DISTDIR}/}" || die)
 }
