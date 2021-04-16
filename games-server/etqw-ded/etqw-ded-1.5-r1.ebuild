@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils
+inherit wrapper
 
 DESCRIPTION="Enemy Territory: Quake Wars dedicated server"
 HOMEPAGE="https://www.splashdamage.com/content/et-quake-wars-standalone-server-linux"
