@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 MY_PV="${PV/_beta/b}"
 MY_P="${PN}-${MY_PV}"
