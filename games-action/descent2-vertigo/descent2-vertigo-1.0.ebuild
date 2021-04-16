@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit cdrom estack eutils
+inherit cdrom estack
 
 DESCRIPTION="Data files for Descent 2: The Vertigo Series"
 HOMEPAGE="http://www.interplay.com/games/descent.php"
