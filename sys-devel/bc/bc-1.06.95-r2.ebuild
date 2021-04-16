@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit epatch flag-o-matic toolchain-funcs
 
 DESCRIPTION="Handy console-based calculator utility"
 HOMEPAGE="https://www.gnu.org/software/bc/bc.html"
