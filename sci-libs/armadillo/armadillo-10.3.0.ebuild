@@ -5,7 +5,7 @@ EAPI=7
 
 CMAKE_IN_SOURCE_BUILD=1
 
-inherit cmake toolchain-funcs multilib eutils
+inherit cmake toolchain-funcs multilib
 
 DESCRIPTION="Streamlined C++ linear algebra library"
 HOMEPAGE="http://arma.sourceforge.net/"
