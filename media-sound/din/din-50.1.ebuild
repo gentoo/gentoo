@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools eutils xdg
+inherit autotools edos2unix xdg
 
 DESCRIPTION="a software musical instrument and audio synthesizer"
 HOMEPAGE="https://dinisnoise.org/"
