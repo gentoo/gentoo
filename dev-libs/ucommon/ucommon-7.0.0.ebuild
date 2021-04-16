@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/commoncpp/${P}.tar.gz"
 LICENSE="LGPL-3"
 SLOT="0/8" # soname version
 KEYWORDS="amd64 ~ppc ~ppc64 x86 ~amd64-linux"
-IUSE="doc static-libs +cxx debug libressl ssl gnutls"
+IUSE="doc +cxx debug libressl ssl gnutls"
 
 RDEPEND="
 	ssl? (
@@ -25,7 +25,8 @@ RDEPEND="
 		)
 	)"
 
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 "
@@ -60,6 +61,7 @@ src_configure() {
 	local myeconfargs=(
 		$(use_enable cxx stdcpp)
 		${myconf}
+		--disable-static
 		--enable-atomics
 		--with-pkg-config
 	)
