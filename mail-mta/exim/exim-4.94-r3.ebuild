@@ -5,7 +5,7 @@ EAPI="7"
 
 inherit db-use toolchain-funcs multilib pam systemd
 
-IUSE="arc +dane dcc +dkim dlfunc dmarc +dnsdb doc dovecot-sasl dsn elibc_glibc exiscan-acl gnutls idn ipv6 ldap libressl lmtp maildir mbx mysql nis pam perl pkcs11 postgres +prdr proxy radius redis sasl selinux spf sqlite srs +ssl syslog tcpd +tpda X"
+IUSE="arc +dane dcc +dkim dlfunc dmarc +dnsdb doc dovecot-sasl dsn elibc_glibc exiscan-acl gnutls idn ipv6 ldap libressl lmtp maildir mbx mysql nis pam perl pkcs11 postgres +prdr proxy radius redis sasl selinux spf sqlite srs-alt srs-native +ssl syslog tcpd +tpda X"
 REQUIRED_USE="
 	arc? ( dkim spf )
 	dane? ( ssl !gnutls )
@@ -14,7 +14,7 @@ REQUIRED_USE="
 	gnutls? ( ssl )
 	pkcs11? ( ssl )
 	spf? ( exiscan-acl )
-	srs? ( exiscan-acl )
+	srs-alt? ( exiscan-acl )
 "
 # NOTE on USE="gnutls dane", gnutls[dane] is masked in base, unmasked
 # for x86 and amd64 only, due to this, repoman won't allow depending on
@@ -68,7 +68,7 @@ COMMON_DEPEND=">=sys-apps/sed-4.0.5
 	redis? ( dev-libs/hiredis )
 	spf? ( >=mail-filter/libspf2-1.2.5-r1 )
 	dmarc? ( mail-filter/opendmarc )
-	srs? ( mail-filter/libsrs_alt )
+	srs-alt? ( mail-filter/libsrs_alt )
 	X? (
 		x11-libs/libX11
 		x11-libs/libXmu
@@ -434,10 +434,18 @@ src_configure() {
 	fi
 
 	# Sender Rewriting Scheme
-	if use srs; then
+	if use srs-alt; then
+		# This becomes EXPERIMENTAL_SRS_ALT in 4.95 based on master.
 		cat >> Makefile <<- EOC
 			EXPERIMENTAL_SRS=yes
 			EXTRALIBS_EXIM += -lsrs_alt
+		EOC
+	fi
+
+	if use srs-native; then
+		# This becomes SUPPORT_SRS in 4.95 based on master.
+		cat >> Makefile <<- EOC
+			EXPERIMENTAL_SRS_NATIVE=yes
 		EOC
 	fi
 
@@ -584,7 +592,7 @@ pkg_postinst() {
 		einfo "documentation at the bottom of this prerelease message:"
 		einfo "  http://article.gmane.org/gmane.mail.exim.devel/3579"
 	fi
-	use srs && einfo "SRS support is experimental"
+	! use srs-alt || ! use srs-native ||  einfo "SRS support is experimental"
 	use dsn && einfo "extra information in fail DSN message is experimental"
 	elog "The obsolete acl condition 'demime' is removed, the replacements"
 	elog "are the ACLs acl_smtp_mime and acl_not_smtp_mime"
