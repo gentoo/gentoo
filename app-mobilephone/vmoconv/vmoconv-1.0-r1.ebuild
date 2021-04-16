@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils autotools
+inherit epatch autotools
 
 DESCRIPTION="A tool that converts Siemens phones VMO and VMI audio files to gsm and wav"
 HOMEPAGE="http://triq.net/obex/"
