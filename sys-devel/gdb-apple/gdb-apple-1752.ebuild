@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 APPLE_PV=${PV}
 DESCRIPTION="Apple branch of the GNU Debugger, Developer Tools 4.3"
