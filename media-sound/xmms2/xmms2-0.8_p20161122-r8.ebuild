@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{7,8,9} )
 USE_RUBY="ruby24 ruby25 ruby26"
 
-inherit eutils multiprocessing perl-functions python-single-r1 ruby-single toolchain-funcs
+inherit multiprocessing perl-functions python-single-r1 ruby-single toolchain-funcs
 
 # generated as 'python2 ./utils/gen-tarball.py' from clean git tree
 MY_P="${P%_p*}DrO_o-949-gca15e830"
@@ -127,22 +127,22 @@ pkg_setup() {
 }
 
 # use_enable() is taken as proto
-# $1 - useflag
-# $2 - xmms2 option/plugin name (equals to $1 if not set)
+# ${1} - useflag
+# ${2} - xmms2 option/plugin name (equals to ${1} if not set)
 
 xmms2_flag() {
-	[[ -z $1 ]] && eerror "!!! empty arg. usage: xmms2_flag <USEFLAG> [<xmms2_flagname>]."
+	[[ -z ${1} ]] && eerror "!!! empty arg. usage: xmms2_flag <USEFLAG> [<xmms2_flagname>]."
 
-	local UWORD=${2:-$1}
+	local UWORD=${2:-${1}}
 
-	case $1 in
+	case ${1} in
 		ENABLED)
 			echo ",${UWORD}"
 			;;
 		DISABLED)
 			;;
 		*)
-			use $1 && echo ",${UWORD}"
+			use ${1} && echo ",${UWORD}"
 			;;
 	esac
 }
@@ -258,12 +258,12 @@ src_configure() {
 
 		local option
 		for option in "${option_map[@]}"; do
-			optionals+=$(xmms2_flag $option)
+			optionals+=$(xmms2_flag ${option})
 		done
 
 		local plugin
 		for plugin in "${plugin_map[@]}"; do
-			plugins+=$(xmms2_flag $plugin)
+			plugins+=$(xmms2_flag ${plugin})
 		done
 
 		if use perl; then
@@ -309,7 +309,7 @@ src_install() {
 	local m
 	for m in "${ED}"/usr/share/man/man1/*.gz; do
 		# For some combination of USEs no mans are installed.
-		if [[ -f $m ]]; then
+		if [[ -f ${m} ]]; then
 			einfo "Uncompressing '${m#${ED}}' back."
 			gzip -d "${m}" || die
 		fi
