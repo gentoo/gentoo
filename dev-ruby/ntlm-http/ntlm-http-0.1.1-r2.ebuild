@@ -11,7 +11,7 @@ RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_DOC_SOURCES="lib README"
 RUBY_FAKEGEM_EXTRADOC="README"
 
-inherit ruby-fakegem eutils
+inherit ruby-fakegem epatch
 
 DESCRIPTION="Ruby/NTLM HTTP provides NTLM authentication over http"
 HOMEPAGE="http://www.mindflowsolutions.net/"
