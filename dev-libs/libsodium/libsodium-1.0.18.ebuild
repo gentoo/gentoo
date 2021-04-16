@@ -6,8 +6,8 @@ EAPI=7
 inherit autotools multilib-minimal
 
 DESCRIPTION="A portable fork of NaCl, a higher-level cryptographic library"
-HOMEPAGE="https://github.com/jedisct1/libsodium"
-SRC_URI="http://download.libsodium.org/${PN}/releases/${P}.tar.gz"
+HOMEPAGE="https://libsodium.org"
+SRC_URI="https://download.libsodium.org/${PN}/releases/${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0/23"
