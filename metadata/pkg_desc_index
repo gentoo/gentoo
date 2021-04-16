@@ -1205,11 +1205,14 @@ app-crypt/nitrocli 0.3.4 0.3.5 0.4.0: A command line tool for interacting with N
 app-crypt/nitrokey-app 1.4.2 9999: Cross platform personalization tool for the Nitrokey
 app-crypt/nwipe 0.30: Securely erase disks using a variety of recognized methods
 app-crypt/onak 0.5.0: onak is an OpenPGP keyserver
+app-crypt/openpgp-keys-alexbarton 20210416: OpenPGP keys used by Alex Barton
 app-crypt/openpgp-keys-bcl 20210128: OpenPGP keys used by Brian C. Lane
 app-crypt/openpgp-keys-botan 20210416: OpenPGP keys used to sign Botan releases
+app-crypt/openpgp-keys-crypto++ 20210416: OpenPGP keys used to sign crypto++ releases
 app-crypt/openpgp-keys-django 20201105 20201201: OpenPGP keys used to sign Django releases
 app-crypt/openpgp-keys-gentoo-auth 20200704: Gentoo Authority Keys (GLEP 79)
 app-crypt/openpgp-keys-gentoo-release 20200704: OpenPGP keys used for Gentoo releases (snapshots, stages)
+app-crypt/openpgp-keys-jedisct1 20210416: OpenPGP keys used by Frank Denis (jedisct1)
 app-crypt/openpgp-keys-kernel 20201103: OpenPGP keys used to sign Linux kernel releases
 app-crypt/openpgp-keys-libvirt 20210401: OpenPGP keys used by libvirt
 app-crypt/openpgp-keys-linuxcontainers 20201014: OpenPGP keys used to sign LXC-related packages
@@ -5691,7 +5694,7 @@ dev-libs/libserialport 0.1.1 9999: Cross platform serial port access library
 dev-libs/libsigc++ 2.10.6 3.0.6: Typesafe callback system for standard C++
 dev-libs/libsigsegv 2.12-r1 2.13: Library for handling page faults in user mode
 dev-libs/libslz 1.1.0 1.2.0: stateless, zlib-compatible, and very fast compression library
-dev-libs/libsodium 1.0.18: A portable fork of NaCl, a higher-level cryptographic library
+dev-libs/libsodium 1.0.18 1.0.18_p20210508: A portable fork of NaCl, a higher-level cryptographic library
 dev-libs/libspnav 0.2.3 0.2.3-r1: libspnav is a replacement for the magellan library with a cleaner API
 dev-libs/libspt 1.1-r4: Library for handling root privilege
 dev-libs/libstrl 0.5.1-r1: Compat library for functions like strlcpy(), strlcat(), strnlen(), getline()
@@ -12042,7 +12045,7 @@ gnome-extra/gnome-shell-frippery 3.38.0 40.0: Unofficial extension pack providin
 gnome-extra/gnome-software 3.34.2 3.36.1: Gnome install & update software
 gnome-extra/gnome-system-monitor 3.38.0: The Gnome System Monitor
 gnome-extra/gnome-tweaks 3.34.1 40.0: Customize advanced GNOME 3 options
-gnome-extra/gnome-user-docs 3.36.6: GNOME end user documentation
+gnome-extra/gnome-user-docs 3.36.6 40.0: GNOME end user documentation
 gnome-extra/gnome-user-share 3.34.0: Personal file sharing for the GNOME desktop
 gnome-extra/gnome-utils 3.8.0: Meta package for utilities for the GNOME desktop
 gnome-extra/gnome-weather 3.36.1 40.0: A weather application for GNOME
