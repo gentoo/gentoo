@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 MY_P="${P/cluster-}"
-inherit autotools eutils flag-o-matic multilib user
+inherit autotools flag-o-matic multilib user
 
 DESCRIPTION="Library pack for Heartbeat / Pacemaker"
 HOMEPAGE="http://www.linux-ha.org/wiki/Cluster_Glue"
