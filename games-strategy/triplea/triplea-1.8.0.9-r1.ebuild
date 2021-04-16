@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils java-pkg-2 java-ant-2 versionator
+inherit desktop epatch java-pkg-2 java-ant-2 versionator
 
 MY_PV=$(replace_all_version_separators _)
 DESCRIPTION="An open source clone of the popular Axis and Allies boardgame"
