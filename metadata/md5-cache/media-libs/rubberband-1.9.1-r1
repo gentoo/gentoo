@@ -6,10 +6,10 @@ EAPI=7
 HOMEPAGE=https://www.breakfastquay.com/rubberband/
 INHERIT=meson multilib-minimal
 IUSE=ladspa jni static-libs +programs vamp abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_s390_32 abi_s390_64
-KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~ppc ppc64 ~sparc x86
+KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~sparc x86
 LICENSE=GPL-2
 RDEPEND=media-libs/libsamplerate[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] sci-libs/fftw:3.0[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] jni? ( >=virtual/jdk-1.8:* ) ladspa? ( media-libs/ladspa-sdk ) programs? ( media-libs/libsndfile ) vamp? ( media-libs/vamp-plugin-sdk[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] )
 SLOT=0
 SRC_URI=https://breakfastquay.com/files/releases/rubberband-1.9.1.tar.bz2
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	meson	e43eef9331f54965a573ed380854ff47	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib-build	ac696f0bea6c503f5980bfd5a0f312e5	multilib-minimal	8bddda43703ba94d8341f4e247f97566
-_md5_=4395431c37b6bfa196a040d59021229a
+_md5_=245db0e36e5b47dbd9b96170422c6151
