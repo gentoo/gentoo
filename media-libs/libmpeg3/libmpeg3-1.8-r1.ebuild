@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit epatch autotools toolchain-funcs multilib-minimal
+inherit autotools epatch multilib-minimal
 
 DESCRIPTION="An mpeg library for linux"
 HOMEPAGE="http://heroinewarrior.com/libmpeg3.php"
