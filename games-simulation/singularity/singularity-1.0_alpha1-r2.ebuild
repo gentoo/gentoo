@@ -4,13 +4,14 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{7,8} )
 
-inherit desktop eutils python-single-r1
+inherit desktop python-single-r1 wrapper
 
 MUSIC="endgame-${PN}-music-007"
 DESCRIPTION="Simulation of a true AI. Go from computer to computer, chased by the whole world"
 HOMEPAGE="http://www.emhsoft.com/singularity/ https://github.com/singularity/singularity"
 SRC_URI="https://github.com/singularity/singularity/releases/download/${P/_alpha/a}/${P/_alpha/a}.tar.gz
 	http://emhsoft.com/singularity/${MUSIC}.zip"
+S="${WORKDIR}"/${P/_alpha/a}
 
 LICENSE="GPL-2 CC-BY-SA-2.5"
 SLOT="0"
@@ -33,8 +34,6 @@ RDEPEND="
 	!sys-cluster/singularity
 "
 BDEPEND="app-arch/unzip"
-
-S="${WORKDIR}/${P/_alpha/a}"
 
 src_install() {
 	insinto /usr/share/${PN}
