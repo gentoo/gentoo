@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils prefix
+inherit epatch prefix
 
 DESCRIPTION="LSB version query program"
 HOMEPAGE="https://wiki.linuxfoundation.org/lsb/"
