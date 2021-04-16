@@ -15,7 +15,7 @@ LICENSE="ZLIB"
 SLOT="2.3"
 # Not big endian safe! #82779
 KEYWORDS="amd64 x86"
-IUSE="doc ipv6 mikmod opengl sound sqlite cpu_flags_x86_sse2 static-libs vorbis X"
+IUSE="doc ipv6 mikmod opengl sound sqlite cpu_flags_x86_sse2 vorbis X"
 REQUIRED_USE="opengl? ( X )"
 
 BDEPEND="
@@ -66,6 +66,7 @@ src_prepare() {
 src_configure() {
 	# Add -DPACKAGE_BUGREPORT?
 	local myeconfargs=(
+		--disable-static
 		$(use_enable doc docs)
 		$(use_enable cpu_flags_x86_sse2 sse2)
 		$(use_enable opengl clanGL)
