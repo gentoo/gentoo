@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Generates patchset information from a CVS repository (supports fast-import)"
 HOMEPAGE="http://www.catb.org/~esr/cvsps/"
