@@ -4,7 +4,7 @@
 EAPI="5"
 JAVA_PKG_IUSE="doc examples source"
 
-inherit java-pkg-2 eutils java-ant-2
+inherit java-pkg-2 epatch java-ant-2
 
 DESCRIPTION="Bean Script Framework"
 HOMEPAGE="http://commons.apache.org/bsf/"
