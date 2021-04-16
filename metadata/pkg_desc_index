@@ -12026,13 +12026,13 @@ gnome-extra/evolution-ews 3.38.4: Evolution module for connecting to Microsoft E
 gnome-extra/filemanager-actions 3.2.4 3.4: File manager extension which offers user configurable context menu actions
 gnome-extra/gconf-editor 3.0.1-r1: An editor to the GNOME config system
 gnome-extra/gnome-boxes 3.36.6: Simple GNOME 3 application to access remote or virtual systems
-gnome-extra/gnome-calculator 3.38.2: A calculator application for GNOME
+gnome-extra/gnome-calculator 3.38.2 40.0: A calculator application for GNOME
 gnome-extra/gnome-calendar 3.38.2 40.0: Manage your online calendars with simple and modern interface
 gnome-extra/gnome-characters 3.34.0 40.0: Unicode character map viewer and library
 gnome-extra/gnome-clocks 3.38.0 40.0: Clocks application for GNOME
 gnome-extra/gnome-color-manager 3.36.0: GNOME color profile tools
 gnome-extra/gnome-commander 1.10.3: A graphical, full featured, twin-panel file manager
-gnome-extra/gnome-contacts 3.38.1: GNOME contact management application
+gnome-extra/gnome-contacts 3.38.1 40.0: GNOME contact management application
 gnome-extra/gnome-directory-thumbnailer 0.1.11: Thumbnail generator for directories
 gnome-extra/gnome-documents 3.34.0: A document manager application for GNOME
 gnome-extra/gnome-dvb-daemon 0.2.90-r1: Setup your DVB devices, record and watch TV shows and browse EPG using GStreamer
