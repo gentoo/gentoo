@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils flag-o-matic toolchain-funcs user multilib
+inherit epatch flag-o-matic toolchain-funcs user multilib
 
 DESCRIPTION="A small, fast, and scalable web server"
 HOMEPAGE="http://www.monkey-project.com/"
