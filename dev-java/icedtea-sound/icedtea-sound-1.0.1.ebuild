@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Build written by Andrew John Hughes (gnu_andrew@member.fsf.org)
 
 EAPI="5"
 
-inherit eutils java-pkg-2 prefix
+inherit java-pkg-2 prefix
 
 DESCRIPTION="Plugins for javax.sound"
 HOMEPAGE="http://icedtea.classpath.org"
