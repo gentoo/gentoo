@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit flag-o-matic epatch linux-info
+inherit epatch linux-info
 
 DESCRIPTION="Resource manager and queuing system based on OpenPBS"
 HOMEPAGE="http://www.adaptivecomputing.com/products/open-source/torque"
