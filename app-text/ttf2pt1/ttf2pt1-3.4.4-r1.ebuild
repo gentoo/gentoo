@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils multilib toolchain-funcs
+inherit epatch multilib toolchain-funcs
 
 DESCRIPTION="True Type Font to Postscript Type 1 Converter"
 HOMEPAGE="http://ttf2pt1.sourceforge.net/"
