@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils toolchain-funcs multilib systemd
+inherit epatch toolchain-funcs multilib systemd
 
 DESCRIPTION="openvz tool and a library to control ploop block devices"
 HOMEPAGE="https://wiki.openvz.org/Download/ploop"
@@ -12,20 +12,19 @@ SRC_URI="https://download.openvz.org/utils/ploop/${PV}/src/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="debug static-libs"
+IUSE="debug"
 
 DEPEND="
 	dev-libs/libxml2
 	virtual/pkgconfig
-	"
-
+"
 RDEPEND="dev-libs/libxml2
 	!<sys-cluster/vzctl-4.8
 	sys-block/parted
 	sys-fs/e2fsprogs
 	sys-process/lsof
 	sys-apps/findutils
-	"
+"
 
 DOCS=( tools/README )
 
