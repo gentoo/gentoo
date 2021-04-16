@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils flag-o-matic autotools
+inherit flag-o-matic autotools
 
 DESCRIPTION="New 3d engine based off of id Softwares's Quake and QuakeWorld game engine"
 HOMEPAGE="http://www.quakeforge.net/"
