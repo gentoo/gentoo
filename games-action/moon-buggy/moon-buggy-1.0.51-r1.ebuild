@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils
+inherit autotools
 
 DESCRIPTION="A simple console game, where you drive a car across the moon's surface"
 HOMEPAGE="https://www.seehuhn.de/pages/moon-buggy.html"
