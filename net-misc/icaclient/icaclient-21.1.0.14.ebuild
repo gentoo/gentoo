@@ -3,8 +3,7 @@
 
 EAPI=7
 
-# eutils inherit required for make_wrapper call
-inherit desktop eutils multilib xdg-utils
+inherit desktop wrapper xdg-utils
 
 DESCRIPTION="ICA Client for Citrix Presentation servers"
 HOMEPAGE="https://www.citrix.com/"
