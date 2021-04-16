@@ -12017,9 +12017,9 @@ gnome-extra/filemanager-actions 3.2.4 3.4: File manager extension which offers u
 gnome-extra/gconf-editor 3.0.1-r1: An editor to the GNOME config system
 gnome-extra/gnome-boxes 3.36.6: Simple GNOME 3 application to access remote or virtual systems
 gnome-extra/gnome-calculator 3.38.2: A calculator application for GNOME
-gnome-extra/gnome-calendar 3.38.2: Manage your online calendars with simple and modern interface
-gnome-extra/gnome-characters 3.34.0: Unicode character map viewer and library
-gnome-extra/gnome-clocks 3.38.0: Clocks application for GNOME
+gnome-extra/gnome-calendar 3.38.2 40.0: Manage your online calendars with simple and modern interface
+gnome-extra/gnome-characters 3.34.0 40.0: Unicode character map viewer and library
+gnome-extra/gnome-clocks 3.38.0 40.0: Clocks application for GNOME
 gnome-extra/gnome-color-manager 3.36.0: GNOME color profile tools
 gnome-extra/gnome-commander 1.10.3: A graphical, full featured, twin-panel file manager
 gnome-extra/gnome-contacts 3.38.1: GNOME contact management application
@@ -12995,7 +12995,7 @@ media-gfx/gimp 2.10.22-r2 2.10.24 2.99.4 9999: GNU Image Manipulation Program
 media-gfx/gimp-arrow-brushes 20190407: Brushes for GIMP with the styles arrow, handpointer, button arrow and cursor
 media-gfx/gmic 2.9.4 2.9.5 2.9.6: GREYC's Magic Image Converter
 media-gfx/gnofract4d 4.3_p20201029: A program for drawing beautiful mathematically-based images known as fractals
-media-gfx/gnome-font-viewer 3.34.0: Font viewer utility for GNOME
+media-gfx/gnome-font-viewer 3.34.0 40.0: Font viewer utility for GNOME
 media-gfx/gnome-photos 3.34.2: Access, organize and share your photos on GNOME
 media-gfx/gnome-raw-thumbnailer 3.0.0-r1: A lightweight and fast raw image thumbnailer for GNOME
 media-gfx/gnome-screenshot 3.38.0 40.0: Screenshot utility for GNOME
