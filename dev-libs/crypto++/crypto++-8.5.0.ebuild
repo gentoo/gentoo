@@ -3,11 +3,13 @@
 
 EAPI=7
 
-inherit toolchain-funcs
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/crypto++.asc"
+inherit toolchain-funcs verify-sig
 
 DESCRIPTION="C++ class library of cryptographic schemes"
 HOMEPAGE="https://cryptopp.com"
 SRC_URI="https://www.cryptopp.com/cryptopp${PV//.}.zip"
+SRC_URI+=" verify-sig? ( https://cryptopp.com/cryptopp${PV//.}.zip.sig )"
 S="${WORKDIR}"
 
 LICENSE="Boost-1.0"
@@ -17,7 +19,10 @@ SLOT="0/8.5"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x64-macos"
 IUSE="+asm static-libs"
 
-BDEPEND="app-arch/unzip"
+BDEPEND="
+	app-arch/unzip
+	verify-sig? ( app-crypt/openpgp-keys-crypto++ )
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-8.2.0-musl-ldconfig.patch"
