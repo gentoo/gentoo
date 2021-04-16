@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit eutils flag-o-matic
+inherit epatch l10n flag-o-matic
 
 MY_P="${P/_/-}"
 DESCRIPTION="Tools to deal with shar archives"
