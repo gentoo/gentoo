@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -73,4 +73,10 @@ src_configure() {
 		$(use_enable nautilus) \
 		$(use_enable playlist) \
 		$(use_enable tracker search)
+}
+
+src_install() {
+	default
+	mv "${ED}"/usr/share/{appdata,metainfo} || die
+	find "${ED}" -type f -name "*.la" -delete || die
 }
