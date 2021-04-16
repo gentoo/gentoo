@@ -21,7 +21,7 @@ SRC_URI="https://bitbucket.org/asomov/${PN}/get/${P}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 # Compile dependencies
 # POM: pom.xml
@@ -35,7 +35,7 @@ DEPEND="
 	>=virtual/jdk-1.8:*
 	test? (
 		>=dev-java/commons-io-2.4:1
-		>=dev-java/commons-lang-3.4:3.4
+		dev-java/commons-lang:3.6
 		>=dev-java/joda-time-2.10.10:0
 		>=dev-java/velocity-1.7:0
 	)
