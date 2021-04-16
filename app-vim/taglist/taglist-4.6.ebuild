@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit vim-plugin eutils
+inherit vim-plugin epatch
 
 DESCRIPTION="vim plugin: ctags-based source code browser"
 HOMEPAGE="http://vim-taglist.sourceforge.net/"
