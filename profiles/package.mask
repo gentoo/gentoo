@@ -48,14 +48,6 @@ media-libs/libXcm
 media-libs/openicc
 media-libs/oyranos
 
-# David Seifert <soap@gentoo.org> (2021-04-16)
-# Does not build, no revdeps in Gentoo, uses GTK2 slot of
-# wxwidgets, blocks wxwidgets.eclass modernizing.
-# Bugs #777885, #781035, #781038, removal in 30 days.
-dev-haskell/wx
-dev-haskell/wxc
-dev-haskell/wxcore
-
 # Bernard Cafarelli <voyageur@gentoo.org> (2021-04-15)
 # Abandoned upstream, does not work with current API,
 # does not compile with current mpv
