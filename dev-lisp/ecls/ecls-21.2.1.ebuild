@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils multilib
+inherit multilib
 
 # test phase only works if ecls already installed #516876
 RESTRICT="test"
