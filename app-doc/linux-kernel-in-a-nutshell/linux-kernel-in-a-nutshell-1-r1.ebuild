@@ -3,8 +3,6 @@
 
 EAPI=6
 
-inherit eutils
-
 DESCRIPTION="Linux Kernel in a Nutshell: A Desktop Quick Reference"
 HOMEPAGE="http://www.kroah.com/lkn/"
 SRC_URI="https://www.kernel.org/pub/linux/kernel/people/gregkh/lkn/lkn_pdf.tar.bz2
