@@ -15,6 +15,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	${PYTHON_DEPS}
+	$(python_gen_cond_dep 'dev-python/lxml[${PYTHON_USEDEP}]')
 	>=dev-libs/libxml2-2.6.12
 	>=dev-libs/libxslt-1.1.8
 	dev-util/itstool
