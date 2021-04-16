@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 # source maintainers named it fxload-YYYY_MM_DD instead of fxload-YYYYMMDD
 MY_P="${PN}-${PV:0:4}_${PV:4:2}_${PV:6:2}"
