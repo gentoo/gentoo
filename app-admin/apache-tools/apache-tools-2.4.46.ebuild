@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit flag-o-matic eutils multilib toolchain-funcs
+inherit flag-o-matic multilib toolchain-funcs
 
 DESCRIPTION="Useful Apache tools - htdigest, htpasswd, ab, htdbm"
 HOMEPAGE="https://httpd.apache.org/"
