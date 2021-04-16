@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils flag-o-matic multilib toolchain-funcs
+inherit flag-o-matic multilib toolchain-funcs
 
 DESCRIPTION="the Utah Raster Toolkit is a library for dealing with raster images"
 HOMEPAGE="https://www.cs.utah.edu/gdc/projects/urt/"
