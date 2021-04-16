@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit eutils java-pkg-2 java-pkg-simple
+inherit epatch java-pkg-2 java-pkg-simple
 
 DESCRIPTION="A parser generator for many languages"
 HOMEPAGE="https://www.antlr3.org/"
