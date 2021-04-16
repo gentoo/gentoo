@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils flag-o-matic multilib-minimal multilib toolchain-funcs
+inherit flag-o-matic multilib-minimal multilib toolchain-funcs
 
 PV1="$(ver_cut 1)"
 PV2="$(ver_cut 2)"
