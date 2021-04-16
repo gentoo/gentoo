@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils ltprune
+inherit ltprune
 
 DESCRIPTION="WorldForge library primarily aimed at terrain"
 HOMEPAGE="https://www.worldforge.org/index.php/components/mercator/"
