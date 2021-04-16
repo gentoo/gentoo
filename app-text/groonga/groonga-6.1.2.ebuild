@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils libtool ltprune user
+inherit libtool ltprune user
 
 DESCRIPTION="An Embeddable Fulltext Search Engine"
 HOMEPAGE="https://groonga.org/"
