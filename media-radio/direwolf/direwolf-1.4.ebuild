@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils systemd
+inherit epatch systemd
 
 DESCRIPTION="Decoded Information from Radio Emissions for Windows Or Linux Fans"
 HOMEPAGE="https://github.com/wb2osz/direwolf/blob/master/README.md"
