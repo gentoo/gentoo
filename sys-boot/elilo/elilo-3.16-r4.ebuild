@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit toolchain-funcs eutils multilib
+inherit toolchain-funcs multilib
 
 DESCRIPTION="Linux boot loader for EFI-based systems such as IA-64"
 HOMEPAGE="https://sourceforge.net/projects/elilo/"
