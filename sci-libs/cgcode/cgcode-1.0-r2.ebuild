@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils fortran-2 flag-o-matic toolchain-funcs
+inherit epatch fortran-2 flag-o-matic toolchain-funcs
 
 DESCRIPTION="Conjugate gradient Codes for large sparse linear systems"
 HOMEPAGE="http://fetk.org/codes/cgcode/index.html"
