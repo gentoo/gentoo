@@ -43,6 +43,11 @@ BDEPEND="
 
 S="${WORKDIR}/nx-libs-${PV}"
 
+PATCHES=(
+	# https://github.com/ArcticaProject/nx-libs/pull/1012
+	"${FILESDIR}/${PN}-3.5.99.26-binutils-2.36.patch"
+)
+
 src_prepare() {
 	default
 
