@@ -7,7 +7,7 @@ USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
-inherit ruby-fakegem eutils versionator
+inherit ruby-fakegem versionator
 
 DESCRIPTION="Force SSL/TLS in your app"
 HOMEPAGE="https://github.com/josh/rack-ssl/"
