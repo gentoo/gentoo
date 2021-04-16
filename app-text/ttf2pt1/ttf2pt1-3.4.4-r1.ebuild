@@ -12,7 +12,6 @@ SRC_URI="mirror://sourceforge/ttf2pt1/${P}.tgz"
 LICENSE="ttf2pt1"
 SLOT="0"
 KEYWORDS="amd64 ppc sparc x86"
-IUSE=""
 
 DEPEND=">=media-libs/freetype-2.5.1:2"
 RDEPEND="${DEPEND}"
