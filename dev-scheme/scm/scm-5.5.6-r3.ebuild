@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit versionator eutils flag-o-matic
+inherit versionator flag-o-matic
 
 #version magic thanks to masterdriverz and UberLord using bash array instead of tr
 trarr="0abcdefghi"
