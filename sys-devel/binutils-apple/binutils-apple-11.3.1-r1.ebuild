@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit eutils flag-o-matic toolchain-funcs llvm prefix
+inherit epatch flag-o-matic toolchain-funcs llvm prefix
 
 # versions:
 # XCode-11.3.1                 ld64-530        cctools-949.0.1

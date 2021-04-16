@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit eutils flag-o-matic toolchain-funcs llvm prefix
+inherit epatch flag-o-matic toolchain-funcs llvm prefix
 
 LD64=ld64-274.2
 CCTOOLS_VERSION=895
