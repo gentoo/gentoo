@@ -11980,7 +11980,7 @@ gnome-base/gnome-core-libs 3.36.4 3.36.5: Sub-meta package for the core librarie
 gnome-base/gnome-desktop 3.38.4 40.0: Library with common API for various GNOME modules
 gnome-base/gnome-extra-apps 3.36.5: Sub-meta package for the applications of GNOME 3
 gnome-base/gnome-flashback 3.36.4: GNOME Flashback session
-gnome-base/gnome-keyring 3.36.0: Password and keyring managing daemon
+gnome-base/gnome-keyring 3.36.0 40.0: Password and keyring managing daemon
 gnome-base/gnome-light 3.34.4 3.36.5: Meta package for GNOME-Light, merge this package to install
 gnome-base/gnome-menus 3.36.0: Library and layout configuration for the Desktop Menu fd.o specification
 gnome-base/gnome-mime-data 2.18.0: MIME data for Gnome
@@ -12023,7 +12023,7 @@ gnome-extra/gnome-contacts 3.38.1: GNOME contact management application
 gnome-extra/gnome-directory-thumbnailer 0.1.11: Thumbnail generator for directories
 gnome-extra/gnome-documents 3.34.0: A document manager application for GNOME
 gnome-extra/gnome-dvb-daemon 0.2.90-r1: Setup your DVB devices, record and watch TV shows and browse EPG using GStreamer
-gnome-extra/gnome-getting-started-docs 3.36.3: Help a new user get started in GNOME
+gnome-extra/gnome-getting-started-docs 3.36.3 3.38.1: Help a new user get started in GNOME
 gnome-extra/gnome-integration-spotify 20140907-r1: GNOME integration for Spotify
 gnome-extra/gnome-logs 3.36.0: Log viewer for the systemd journal
 gnome-extra/gnome-power-manager 3.32.0: GNOME power statistics
@@ -12041,7 +12041,7 @@ gnome-extra/gnome-shell-extensions-topicons-plus 27: Moves legacy tray icons to 
 gnome-extra/gnome-shell-frippery 3.38.0 40.0: Unofficial extension pack providing GNOME 2-like features for GNOME 3
 gnome-extra/gnome-software 3.34.2 3.36.1: Gnome install & update software
 gnome-extra/gnome-system-monitor 3.38.0: The Gnome System Monitor
-gnome-extra/gnome-tweaks 3.34.1: Customize advanced GNOME 3 options
+gnome-extra/gnome-tweaks 3.34.1 40.0: Customize advanced GNOME 3 options
 gnome-extra/gnome-user-docs 3.36.6: GNOME end user documentation
 gnome-extra/gnome-user-share 3.34.0: Personal file sharing for the GNOME desktop
 gnome-extra/gnome-utils 3.8.0: Meta package for utilities for the GNOME desktop
