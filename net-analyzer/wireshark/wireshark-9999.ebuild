@@ -6,23 +6,28 @@ EAPI=7
 LUA_COMPAT=( lua5-{1..2} )
 PYTHON_COMPAT=( python3_{7..9} )
 
-inherit fcaps flag-o-matic git-r3 lua-single python-any-r1 qmake-utils xdg-utils cmake
+inherit fcaps flag-o-matic lua-single python-any-r1 qmake-utils xdg-utils cmake
 
 DESCRIPTION="A network protocol analyzer formerly known as ethereal"
 HOMEPAGE="https://www.wireshark.org/"
-EGIT_REPO_URI="https://gitlab.com/wireshark/wireshark"
-LICENSE="GPL-2"
 
+if [[ ${PV} == *9999* ]] ; then
+	EGIT_REPO_URI="https://gitlab.com/wireshark/wireshark"
+	inherit git-r3
+else
+	SRC_URI="https://www.wireshark.org/download/src/all-versions/${P/_/}.tar.xz"
+	S="${WORKDIR}/${P/_/}"
+
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc64 ~x86"
+fi
+
+LICENSE="GPL-2"
 SLOT="0/${PV}"
-KEYWORDS=""
-IUSE="
-	androiddump bcg729 brotli +capinfos +captype ciscodump +dftest doc dpauxmon
-	+dumpcap +editcap http2 ilbc kerberos libxml2 lto lua lz4 maxminddb
-	+mergecap +minizip +netlink opus +plugins plugin-ifdemo +pcap +qt5 +randpkt
-	+randpktdump +reordercap sbc selinux +sharkd smi snappy spandsp sshdump ssl
-	sdjournal test +text2pcap tfshark +tshark +udpdump zlib +zstd
-"
-S=${WORKDIR}/${P/_/}
+IUSE="androiddump bcg729 brotli +capinfos +captype ciscodump +dftest doc dpauxmon"
+IUSE+=" +dumpcap +editcap http2 ilbc kerberos libxml2 lto lua lz4 maxminddb"
+IUSE+=" +mergecap +minizip +netlink opus +plugins plugin-ifdemo +pcap +qt5 +randpkt"
+IUSE+=" +randpktdump +reordercap sbc selinux +sharkd smi snappy spandsp sshdump ssl"
+IUSE+=" sdjournal test +text2pcap tfshark +tshark +udpdump zlib +zstd"
 
 CDEPEND="
 	acct-group/pcap
@@ -94,7 +99,9 @@ REQUIRED_USE="
 	lua? ( ${LUA_REQUIRED_USE} )
 	plugin-ifdemo? ( plugins )
 "
-RESTRICT="!test? ( test )"
+
+RESTRICT="test"
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.6.0-redhat.patch
 	"${FILESDIR}"/${PN}-3.4.2-cmake-lua-version.patch
@@ -187,7 +194,12 @@ src_configure() {
 src_test() {
 	cmake_build test-programs
 
-	myctestargs=( --disable-capture --skip-missing-programs=all --verbose )
+	myctestargs=(
+		--disable-capture
+		--skip-missing-programs=all
+		--verbose
+	)
+
 	cmake_src_test
 }
 
@@ -212,8 +224,8 @@ src_install() {
 		wiretap
 		wsutil
 	)
-	for dir in "${dirs[@]}"
-	do
+
+	for dir in "${dirs[@]}" ; do
 		insinto /usr/include/wireshark/${dir}
 		doins ${dir}/*.h
 	done
@@ -235,8 +247,8 @@ src_install() {
 		done
 	fi
 
-	if [[ -d "${D}"/usr/share/appdata ]]; then
-		rm -r "${D}"/usr/share/appdata || die
+	if [[ -d "${ED}"/usr/share/appdata ]]; then
+		rm -r "${ED}"/usr/share/appdata || die
 	fi
 }
 

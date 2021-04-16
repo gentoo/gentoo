@@ -40,7 +40,7 @@ IUSE+=" ${CPU_USE[@]}"
 if [[ ${PV} == *_p* ]] ; then
 	IUSE+=" verify-sig"
 
-	BDEPEND+="app-crypt/minisign"
+	BDEPEND+=" verify-sig? ( app-crypt/minisign )"
 fi
 
 PATCHES=(
