@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DIST_AUTHOR=TURNSTEP
 DIST_VERSION=1.2.5
-inherit perl-module eutils
+inherit perl-module
 
 DESCRIPTION="Safer access to your database through a DBI database handle"
 
