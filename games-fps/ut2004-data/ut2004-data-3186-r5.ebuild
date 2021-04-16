@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cdrom desktop eutils portability unpacker xdg-utils
+inherit cdrom desktop portability unpacker xdg-utils
 
 DESCRIPTION="Unreal Tournament 2004 - This is the data portion of UT2004"
 HOMEPAGE="https://liandri.beyondunreal.com/Unreal_Tournament_2004"
