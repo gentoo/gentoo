@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils elisp-common
+inherit elisp-common
 
 MY_PV="${PV//./_}"
 MY_P="${PN}-v${MY_PV}"
