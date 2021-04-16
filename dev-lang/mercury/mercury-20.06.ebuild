@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools elisp-common eutils flag-o-matic java-pkg-opt-2 multilib vcs-clean xdg-utils
+inherit autotools elisp-common flag-o-matic java-pkg-opt-2 multilib vcs-clean xdg-utils
 
 PATCHSET_VER="1"
 MY_P=${PN}-srcdist-${PV}
