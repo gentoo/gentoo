@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils
+inherit epatch
 
 DESCRIPTION="Library for parsing mathematical expressions"
 HOMEPAGE="http://muparser.beltoforion.de/"
