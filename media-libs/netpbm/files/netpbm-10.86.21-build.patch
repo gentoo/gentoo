@@ -1,0 +1,64 @@
+- Don't install libnetpbm.a and libnetpbm.so into a sep link dir
+- Try to fix parallel building
+
+--- a/lib/Makefile
++++ b/lib/Makefile
+@@ -221,7 +221,7 @@
+ .PHONY: install.lib
+ ifeq ($(NETPBMLIBTYPE),unixshared)
+ # install a Unix-style shared library
+-install.lib: $(PKGDIR)/lib $(PKGDIR)/sharedlink
++install.lib: $(PKGDIR)/lib
+ 	cd $(PKGDIR)/lib ; rm -f libnetpbm.$(NETPBMLIBSUFFIX).$(MAJ).*
+ 	$(INSTALL) -c -m $(INSTALL_PERM_LIBD) \
+ 	  libnetpbm.$(NETPBMLIBSUFFIX).$(MAJ).$(MIN)  $(PKGDIR)/lib/
+@@ -263,29 +263,29 @@
+ 	  $(SRCDIR)/lib/$(@:%_installhdr=%) $(PKGDIR)/include/netpbm/
+ 
+ .PHONY: install.staticlib
+-install.staticlib: $(PKGDIR)/staticlink
++install.staticlib: $(PKGDIR)/lib
+ 	$(INSTALL) -c -m $(INSTALL_PERM_LIBS) libnetpbm.$(STATICLIBSUFFIX) \
+-	  $(PKGDIR)/staticlink
++	  $(PKGDIR)/lib
+ 
+ # Install a shared library stub -- the ".so" file used at link time to
+ # prepare a program for dynamically linking a library at run time 
+ .PHONY: install.sharedlibstub
+-install.sharedlibstub: $(PKGDIR)/sharedlink
++install.sharedlibstub: $(PKGDIR)/lib
+ ifeq ($(NETPBMLIBTYPE),unixshared)
+ # install the link-time (.so) links to the runtime libraries
+-	cd $(PKGDIR)/sharedlink ; \
++	cd $(PKGDIR)/lib ; \
+           rm -f libnetpbm.$(NETPBMLIBSUFFIX); \
+-          $(SYMLINK) ../lib/libnetpbm.$(NETPBMLIBSUFFIX).$(MAJ) \
++          $(SYMLINK) libnetpbm.$(NETPBMLIBSUFFIX).$(MAJ) \
+             libnetpbm.$(NETPBMLIBSUFFIX)
+ endif
+ ifeq ($(NETPBMLIBTYPE),dll)
+ 	$(INSTALL) -c -m $(INSTALL_PERM_LIBS) libnetpbm.dll.a \
+-	  $(PKGDIR)/sharedlink
++	  $(PKGDIR)/lib
+ endif
+ ifeq ($(NETPBMLIBTYPE),dylib)
+-	cd $(PKGDIR)/sharedlink/ ; \
++	cd $(PKGDIR)/lib/ ; \
+           rm -f libnetpbm.dylib; \
+-	$(SYMLINK) ../lib/libnetpbm.$(MAJ).$(MIN).dylib libnetpbm.dylib
++	$(SYMLINK) libnetpbm.$(MAJ).$(MIN).dylib libnetpbm.dylib
+ endif
+ 
+ distclean clean: localclean
+--- a/GNUmakefile
++++ b/GNUmakefile
+@@ -102,6 +102,9 @@
+ .PHONY: nonmerge
+ nonmerge: $(PRODUCT_SUBDIRS:%=%/all)
+ 
++$(PRODUCT_SUBDIRS:%=%/all): buildtools/all
++converter/all analyzer/all editor/all generator/all other/all: lib/all
++
+ # Completely parallel make (make --jobs) does not work because there are
+ # multiple targets somewhere in the Netpbm build that depend upon pm_config.h
+ # and similar targets, and the threads building those multiple targets might
