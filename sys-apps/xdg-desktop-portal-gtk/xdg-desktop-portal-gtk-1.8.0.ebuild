@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools systemd
+inherit systemd
 
 MY_PV="${PV//_pre*}"
 MY_P="${PN}-${MY_PV}"
