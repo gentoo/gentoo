@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools eutils multilib vcs-clean
+inherit autotools desktop vcs-clean
 
 DESCRIPTION="The Open Racing Car Simulator"
 HOMEPAGE="http://torcs.sourceforge.net/"
@@ -12,7 +12,6 @@ SRC_URI="mirror://sourceforge/torcs/${P}.tar.bz2"
 LICENSE="GPL-2 FreeArt"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="media-libs/freealut
 	media-libs/freeglut
