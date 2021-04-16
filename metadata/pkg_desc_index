@@ -1220,6 +1220,7 @@ app-crypt/openpgp-keys-miniupnp 20201006: OpenPGP keys used to sign miniupnp* pa
 app-crypt/openpgp-keys-mlichvar 20210416: OpenPGP keys used by Miroslav Lichvar
 app-crypt/openpgp-keys-nmap 20210416: OpenPGP keys used to sign Nmap releases
 app-crypt/openpgp-keys-python 20210121: OpenPGP keys used to sign CPython releases
+app-crypt/openpgp-keys-tcpdump 20210416: OpenPGP keys used to sign tcpdump releases
 app-crypt/openpgp-keys-terminator 20210306: OpenPGP keys used to sign x11-terms/terminator package
 app-crypt/openpgp-keys-voikko 20201013: OpenPGP keys used to sign voikko* packages
 app-crypt/ophcrack 3.8.0: A time-memory-trade-off-cracker
@@ -18153,7 +18154,7 @@ www-apps/jekyll-sass-converter 2.1.0: A basic Sass converter for Jekyll
 www-apps/jekyll-sitemap 1.4.0: Automatically generate a sitemap.xml for your Jekyll site
 www-apps/jekyll-watch 2.2.1 2.2.1-r1: Rebuild your Jekyll site when a file changes with the --watch switch
 www-apps/karma-bin 0.24 0.27 0.33 0.39 0.40 0.41 0.43: Alerts dashboard for Prometheus Alertmanager
-www-apps/kibana-bin 6.8.15 7.10.2 7.12.0: Analytics and search dashboard for Elasticsearch
+www-apps/kibana-bin 6.8.15 7.10.2 7.12.0-r1: Analytics and search dashboard for Elasticsearch
 www-apps/klaus 1.5.1 1.5.2: A simple, easy-to-set-up Git web viewer
 www-apps/liquid_feedback_core 2.2.6 3.0.4 3.2.2: Internet platforms for proposition development and decision making
 www-apps/liquid_feedback_frontend 2.2.7 3.0.6: Internet platforms for proposition development and decision making
