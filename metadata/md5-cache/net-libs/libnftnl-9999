@@ -4,7 +4,7 @@ DEPEND=>=net-libs/libmnl-1.0.4
 DESCRIPTION=Netlink API to the in-kernel nf_tables subsystem
 EAPI=7
 HOMEPAGE=https://netfilter.org/projects/nftables/
-INHERIT=autotools linux-info toolchain-funcs usr-ldscript git-r3
+INHERIT=autotools linux-info usr-ldscript git-r3
 IUSE=examples static-libs test kernel_linux split-usr
 LICENSE=GPL-2
 PROPERTIES=live
@@ -12,4 +12,4 @@ RDEPEND=>=net-libs/libmnl-1.0.4
 RESTRICT=!test? ( test )
 SLOT=0/11
 _eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354	linux-info	30ded7f9adbdd03d3e848cdd74f6c395	usr-ldscript	7c918d239d0f9098867d0c8e33348fc9	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
-_md5_=27ac9fd28ef7d1b6df0cc0a22785ba7f
+_md5_=4f7033c07c81f6be9cda3bcb39f40fb4

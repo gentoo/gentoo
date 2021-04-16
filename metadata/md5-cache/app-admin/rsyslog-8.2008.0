@@ -3,7 +3,7 @@ DEPEND=>=dev-libs/libfastjson-0.99.8:= >=dev-libs/libestr-0.1.9 >=sys-libs/zlib-
 DESCRIPTION=An enhanced multi-threaded syslogd with database support and more
 EAPI=6
 HOMEPAGE=https://www.rsyslog.com/
-INHERIT=autotools eutils linux-info ltprune python-any-r1 systemd
+INHERIT=autotools linux-info ltprune python-any-r1 systemd
 IUSE=curl dbi debug doc elasticsearch +gcrypt gnutls jemalloc kafka kerberos kubernetes libressl mdblookup mongodb mysql normalize clickhouse omhttp omhttpfs omudpspoof openssl postgres rabbitmq redis relp rfc3195 rfc5424hmac snmp ssl systemd test usertools +uuid xxhash zeromq kernel_linux
 KEYWORDS=amd64 arm ~arm64 ~hppa x86
 LICENSE=GPL-3 LGPL-3 Apache-2.0
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://www.rsyslog.com/files/download/rsyslog/rsyslog-8.2008.0.tar.gz doc? ( https://www.rsyslog.com/files/download/rsyslog/rsyslog-doc-8.2008.0.tar.gz )
 _eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	estack	055c42df72f76a4f45ec92b35e83cd56	epatch	9f813bb3c47cf2e60619a663b87c5f4e	l10n	8cdd85e169b835d518bc2fd59f780d8e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	preserve-libs	ef207dc62baddfddfd39a164d9797648	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	gnuconfig	9f91b4b0c84e734a87492d4293f03de5	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	linux-info	30ded7f9adbdd03d3e848cdd74f6c395	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-any-r1	17241a11501065ff3651350040875aa9	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6
-_md5_=13c438803e63a102f1607185cb0bcfeb
+_md5_=ad2f397c7f6d07d3451fcfa432919941

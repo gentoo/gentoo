@@ -3,7 +3,7 @@ DEPEND=>=dev-libs/apr-1.5.0:1= dev-libs/apr-util:1= dev-libs/expat dev-libs/libp
 DESCRIPTION=Useful Apache tools - htdigest, htpasswd, ab, htdbm
 EAPI=7
 HOMEPAGE=https://httpd.apache.org/
-INHERIT=flag-o-matic eutils multilib toolchain-funcs
+INHERIT=flag-o-matic multilib toolchain-funcs
 IUSE=libressl ssl
 KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc64-solaris ~x64-solaris
 LICENSE=Apache-2.0
@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://apache/httpd/httpd-2.4.43.tar.bz2
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	c0964e43ba712cb933da5f65b958fa88
-_md5_=9563da32386c89f2cb653327624d52b6
+_md5_=f4575e9856f31c88d88b8d0c6f7ec216
