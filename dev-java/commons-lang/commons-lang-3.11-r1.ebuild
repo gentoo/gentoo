@@ -14,7 +14,7 @@ DESCRIPTION="Commons components to manipulate core java classes"
 HOMEPAGE="https://commons.apache.org/lang"
 SRC_URI="mirror://apache/commons/lang/source/${MY_P}-src.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
-SLOT="3.11"
+SLOT="3.6"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris"
 
 CDEPEND="
