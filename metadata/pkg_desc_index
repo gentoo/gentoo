@@ -2558,7 +2558,7 @@ app-misc/brewtarget 2.3.1-r1: Application to create and manage beer recipes
 app-misc/btail 0.3-r1: Bayesian logfile filter
 app-misc/byobu 5.130-r1 5.133: A set of profiles for the GNU Screen console window manager (app-misc/screen)
 app-misc/c_rehash 1.7-r1: c_rehash script from OpenSSL
-app-misc/ca-certificates 20200601.3.53 20200601.3.60 20210119.3.62: Common CA Certificates PEM files
+app-misc/ca-certificates 20210119.3.64: Common CA Certificates PEM files
 app-misc/cadubi 1.3: An application that allows you to draw ASCII-Art images
 app-misc/calendar 0.9.1-r1: Standard unix calendar program for Linux, ported from OpenBSD
 app-misc/carbon-c-relay 3.5 3.6 3.7.2: Enhanced C version of Carbon relay, aggregator and rewriter
@@ -2935,7 +2935,7 @@ app-portage/layman 2.4.3 9999: Tool to manage Gentoo overlays
 app-portage/metagen 0.7.2 9999: metadata.xml generator for ebuilds
 app-portage/mgorny-dev-scripts 6 7 8: Handy scripts for ebuild development and more
 app-portage/mirrorselect 2.2.6-r2 9999: Tool to help select distfiles mirrors for Gentoo
-app-portage/nattka 0.2.11 0.2.12 9999: A New Arch Tester Toolkit -- open-source stable-bot replacement
+app-portage/nattka 0.2.11 0.2.11.1 0.2.12 9999: A New Arch Tester Toolkit -- open-source stable-bot replacement
 app-portage/no-distcc-env 9999: package.env files to disable distcc on a per-package basis
 app-portage/overlint 0.5.3-r2: Simple tool for static analysis of overlays
 app-portage/perl-info 0.16: Tool to gather relevant perl data useful for bugreport; 'emerge --info' for perl
@@ -5779,8 +5779,8 @@ dev-libs/newt 0.52.21-r1: Redhat's Newt windowing toolkit development files
 dev-libs/nmeap 0.3-r1: Extensible NMEA-0183 (GPS) data parser in standard C
 dev-libs/npth 1.6-r1: New GNU Portable Threads Library
 dev-libs/nsgenbind 0.8-r1: Generate Javascript-to-DOM bindings from w3c webidl files
-dev-libs/nspr 4.26 4.27 4.28 4.29 4.30: Netscape Portable Runtime
-dev-libs/nss 3.58-r2 3.62 3.63: Mozilla's Network Security Services library that implements PKI support
+dev-libs/nspr 4.30: Netscape Portable Runtime
+dev-libs/nss 3.63.1 3.64: Mozilla's Network Security Services library that implements PKI support
 dev-libs/nss-pem 1.0.5 1.0.6 1.0.7: PEM file reader for Network Security Services (NSS)
 dev-libs/nsync 1.20.1 1.24.0: C library that exports various synchronization primitives, such as mutexes
 dev-libs/ntl 11.4.3 11.4.4: High-performance and portable C++ number theory library
@@ -8601,7 +8601,7 @@ dev-python/lit 10.0.1 11.0.0 11.0.1 11.1.0 12.0.0 12.0.0.9999 13.0.0.9999: A sta
 dev-python/livereload 2.6.3: Python LiveReload is an awesome tool for web developers
 dev-python/llfuse 1.4.1: Python bindings for the low-level FUSE API
 dev-python/llvmlite 0.34.0 0.35.0 0.36.0: Python wrapper around the llvm C++ library
-dev-python/lmdb 1.1.1-r1 1.2.0: Python bindings for the Lightning Database
+dev-python/lmdb 1.1.1-r1 1.2.0-r1: Python bindings for the Lightning Database
 dev-python/lmfit 1.0.1-r1 1.0.2: Non-Linear Least-Squares Minimization and Curve-Fitting for Python
 dev-python/locket 0.2.1: File-based locks for Python
 dev-python/lockfile 0.12.2-r2: Platform-independent file locking module
