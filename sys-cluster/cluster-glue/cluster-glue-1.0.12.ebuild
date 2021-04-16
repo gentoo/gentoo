@@ -4,7 +4,7 @@
 EAPI=6
 
 MY_P="${P/cluster-}"
-inherit autotools eutils multilib user
+inherit autotools multilib user
 
 DESCRIPTION="Library pack for Heartbeat / Pacemaker"
 HOMEPAGE="http://www.linux-ha.org/wiki/Cluster_Glue"
