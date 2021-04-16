@@ -12,9 +12,8 @@ SRC_URI="http://files.digital-digest.com/downloads/files/encode/vStrip_${PV/./}.
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
 
-DEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}/${PN}"
 
