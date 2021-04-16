@@ -10922,7 +10922,7 @@ dev-util/global 6.6.4: tag system to find an object location in various sources
 dev-util/glslang 10.11.0.0_pre20201216 11.2.0 9999: Khronos reference front-end for GLSL and ESSL, and sample SPIR-V generator
 dev-util/gn 0.1726 0.1807: GN is a meta-build system that generates build files for Ninja
 dev-util/gnome-builder 3.38.2: An IDE for writing GNOME-based software
-dev-util/gnome-devel-docs 3.32.1: Documentation for developing for the GNOME desktop environment
+dev-util/gnome-devel-docs 3.32.1 40.0: Documentation for developing for the GNOME desktop environment
 dev-util/gob 2.0.20: Preprocessor for making GTK+ objects with inline C code
 dev-util/goland 2020.3.2: Golang IDE by JetBrains
 dev-util/google-perftools 2.7-r1 2.8: Fast, multi-threaded malloc() and nifty performance analysis tools
@@ -11974,7 +11974,7 @@ gnome-base/gdm 3.36.4-r1: GNOME Display Manager for managing graphical display s
 gnome-base/gnome 3.36.5: Meta package for GNOME 3, merge this package to install
 gnome-base/gnome-applets 3.36.4: Applets for the GNOME Flashback Panel
 gnome-base/gnome-common 3.18.0-r1: Common files for development of Gnome packages
-gnome-base/gnome-control-center 3.38.5: GNOME's main interface to configure various aspects of the desktop
+gnome-base/gnome-control-center 3.38.5 40.0: GNOME's main interface to configure various aspects of the desktop
 gnome-base/gnome-core-apps 3.36.5: Sub-meta package for the core applications integrated with GNOME 3
 gnome-base/gnome-core-libs 3.36.4 3.36.5: Sub-meta package for the core libraries of GNOME 3
 gnome-base/gnome-desktop 3.38.4 40.0: Library with common API for various GNOME modules
