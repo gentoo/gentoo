@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit elisp-common multilib eutils flag-o-matic
+inherit elisp-common multilib epatch flag-o-matic
 
 DESCRIPTION="Scheme48 is an implementation of the Scheme Programming Language"
 HOMEPAGE="http://www.s48.org/"
