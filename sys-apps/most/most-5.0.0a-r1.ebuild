@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils
+inherit epatch
 
 DESCRIPTION="Paging program that displays, one windowful at a time, the contents of a file"
 HOMEPAGE="ftp://space.mit.edu/pub/davis/most"
