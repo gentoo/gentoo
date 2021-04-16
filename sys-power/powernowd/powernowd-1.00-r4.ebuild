@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils linux-info systemd toolchain-funcs
+inherit epatch linux-info systemd toolchain-funcs
 
 DESCRIPTION="Daemon to control the speed and voltage of CPUs"
 HOMEPAGE="http://www.deater.net/john/powernowd.html https://github.com/clemej/powernowd"
