@@ -8187,6 +8187,7 @@ dev-python/cbor 1.0.0-r1: RFC 7049 - Concise Binary Object Representation
 dev-python/cbor2 5.1.2 5.2.0: Pure Python CBOR (de)serializer with extensive tag support
 dev-python/certifi 10001-r1: Thin replacement for certifi using system certificate store
 dev-python/cffi 1.14.5: Foreign Function Interface for Python calling C code
+dev-python/cfgv 3.2.0: Validate configuration and produce human-readable error messages
 dev-python/cfn-python-lint 0.47.2 0.48.1 0.48.2: CloudFormation Linter
 dev-python/cftime 1.4.1: Time-handling functionality from netcdf4-python
 dev-python/cgroup-utils 0.8: Tools and libraries for control groups of Linux
@@ -8333,6 +8334,7 @@ dev-python/easy-thumbnails 2.7 2.7.1: Easy thumbnails for Django
 dev-python/easyprocess 0.3 0.3-r1: Easy to use Python subprocess interface
 dev-python/ebuildtester 0.1.16 0.1.16-r1 0.1.27 0.1.29: A dockerized approach to test a Gentoo package within a clean stage3 container
 dev-python/ecdsa 0.16.1: ECDSA cryptographic signature library in pure Python
+dev-python/editdistance-s 1.0.0: Fast implementation of edit (Levenshtein) distance
 dev-python/editorconfig-core-py 0.12.0 0.12.3-r1: Clone of EditorConfig core written in Python
 dev-python/elasticsearch-curator 5.8.1-r2 5.8.1-r3 5.8.3: Tending time-series indices in Elasticsearch
 dev-python/elasticsearch-py 7.7.0-r1: Official Python low-level client for Elasticsearch
@@ -8485,6 +8487,7 @@ dev-python/hyperframe 5.2.0 6.0.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 21.0.0: A featureful, correct URL for Python
 dev-python/hypothesis 6.6.0 6.8.1 6.8.9 6.9.0 6.9.1 6.9.2: A library for property based testing
 dev-python/icalendar 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
+dev-python/identify 2.2.3: File identification library for Python
 dev-python/idna 2.10-r1 3.0 3.1: Internationalized Domain Names in Applications (IDNA)
 dev-python/idna-ssl 1.1.0-r1: Patch ssl.match_hostname for Unicode(idna) domains support
 dev-python/ifaddr 0.1.7: Enumerate IP addresses on the local network adapters
@@ -11189,6 +11192,7 @@ dev-vcs/lab 0.17.2 0.19.0: Lab wraps Git or Hub, making it simple to interact wi
 dev-vcs/mercurial 5.5.2 5.6.1-r1 5.7 9999: Scalable distributed SCM
 dev-vcs/mr 1.20170129 1.20171231 1.20180726 1.99999999: Multiple Repository management tool
 dev-vcs/notify-webhook 0.1.0: Git post-receive web hook notifier in Python.
+dev-vcs/pre-commit 2.12.0: A framework for managing and maintaining multi-language Git pre-commit hooks
 dev-vcs/python-gitlab 2.5.0 2.6.0: Python command line interface to gitlab API
 dev-vcs/qgit 2.9: Qt GUI for git repositories
 dev-vcs/rcs 5.9.3 5.9.4: Revision Control System
