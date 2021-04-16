@@ -1,9 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils
+inherit epatch
 DESCRIPTION="Linux Health Checker"
 HOMEPAGE="http://lnxhc.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
