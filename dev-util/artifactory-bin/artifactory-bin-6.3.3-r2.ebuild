@@ -8,9 +8,9 @@
 # Upstream now releases source and instructions (yay!), but most of artifactory's
 # dependencies are not in portage yet.
 
-EAPI=6
+EAPI=7
 
-inherit systemd user
+inherit java-pkg-2 systemd
 
 MY_P="${P/-bin}"
 MY_PN="${PN/-bin}"
@@ -19,22 +19,22 @@ MY_PV="${PV/-bin}"
 DESCRIPTION="The world's most advanced repository manager for maven"
 HOMEPAGE="http://www.jfrog.org/products.php"
 SRC_URI="https://bintray.com/artifact/download/jfrog/artifactory/jfrog-artifactory-oss-${MY_PV}.zip -> ${MY_P}.zip"
+S="${WORKDIR}/${MY_PN}-oss-${MY_PV}"
 
 LICENSE="AGPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="ssl"
 
-RDEPEND=">=virtual/jre-1.8"
-DEPEND=">=virtual/jdk-1.8
-		app-arch/unzip"
-
-S="${WORKDIR}/${MY_PN}-oss-${MY_PV}"
-
-pkg_setup() {
-	enewgroup artifactory
-	enewuser artifactory -1 /bin/sh -1 artifactory
-}
+DEPEND="
+	acct-group/artifactory
+	acct-user/artifactory
+"
+RDEPEND="
+	${DEPEND}
+	>=virtual/jre-1.8
+"
+BDEPEND="app-arch/unzip"
 
 limitsdfile=40-${MY_PN}.conf
 
@@ -70,12 +70,10 @@ src_install() {
 	local TOMCAT_HOME="${ARTIFACTORY_HOME}/tomcat"
 
 	insinto ${ARTIFACTORY_HOME}
-	doins -r etc logs misc tomcat webapps
+	doins -r etc misc tomcat webapps
 
 	dodir /etc/opt/jfrog
 	dosym ${ARTIFACTORY_HOME}/etc /etc/opt/jfrog/artifactory
-
-	dosym ${ARTIFACTORY_HOME}/logs /var/log/artifactory
 
 	exeinto ${ARTIFACTORY_HOME}/bin
 	doexe bin/*
