@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit flag-o-matic toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Zorro bus utility for Amigas running 2.1 and later kernels"
 HOMEPAGE="http://users.telenet.be/geertu/Download/#zorro"
