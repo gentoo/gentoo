@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils autotools
+inherit epatch autotools
 
 DESCRIPTION="HTML to ASCII converter programmed to handle incorrect html"
 HOMEPAGE="https://bhaak.net/vilistextum/"
