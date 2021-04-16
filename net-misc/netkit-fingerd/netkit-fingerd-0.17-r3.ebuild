@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit eutils toolchain-funcs
+inherit epatch toolchain-funcs
 
 MY_PN="${PN/netkit/bsd}"
 MY_PN="${MY_PN/rd/r}"
