@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cuda eutils flag-o-matic portability toolchain-funcs unpacker versionator
+inherit cuda epatch flag-o-matic portability toolchain-funcs unpacker versionator
 
 MYD=$(get_version_component_range 1-2)
 DRIVER_PV="375.26"
