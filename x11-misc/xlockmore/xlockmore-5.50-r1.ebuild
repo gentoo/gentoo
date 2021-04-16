@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils flag-o-matic pam
+inherit autotools flag-o-matic pam
 
 DESCRIPTION="Just another screensaver application for X"
 HOMEPAGE="https://www.sillycycle.com/xlockmore.html"
