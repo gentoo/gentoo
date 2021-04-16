@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils eutils multilib
+inherit cmake-utils multilib
 
 # deal.II uses its own FindLAPACK.cmake file that calls into the system
 # FindLAPACK.cmake module and does additional internal setup. Do not remove
