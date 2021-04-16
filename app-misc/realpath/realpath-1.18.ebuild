@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit epatch flag-o-matic multilib prefix toolchain-funcs
+inherit epatch flag-o-matic prefix
 
 DESCRIPTION="Return the canonicalized absolute pathname"
 HOMEPAGE="http://packages.debian.org/unstable/utils/realpath"
@@ -46,7 +46,7 @@ src_prepare() {
 
 src_compile() {
 	tc-export CC
-	use nls && use !elibc_glibc && append-libs -lintl
+	use nls && ! use elibc_glibc && append-libs -lintl
 	[[ ${CHOST} == *-mint* ]] && append-libs "-liconv"
 
 	local subdir
