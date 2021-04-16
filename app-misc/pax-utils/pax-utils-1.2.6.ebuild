@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit eutils python-single-r1 toolchain-funcs
+inherit python-single-r1 toolchain-funcs
 
 DESCRIPTION="ELF utils that can check files for security relevant properties"
 HOMEPAGE="https://wiki.gentoo.org/index.php?title=Project:Hardened/PaX_Utilities"
