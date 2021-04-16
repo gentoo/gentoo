@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils multilib toolchain-funcs
+inherit epatch multilib toolchain-funcs
 
 DESCRIPTION="Another implementation of the double description method"
 HOMEPAGE="http://www.ifor.math.ethz.ch/~fukuda/cdd_home/"
