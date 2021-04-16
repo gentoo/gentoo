@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit versionator eutils flag-o-matic toolchain-funcs
+inherit versionator epatch flag-o-matic toolchain-funcs
 
 # Columbia University only uses the third component, e.g. cku211.tar.gz for
 # what we would call 8.0.211.
