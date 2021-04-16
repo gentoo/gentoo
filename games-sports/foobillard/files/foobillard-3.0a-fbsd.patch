@@ -1,7 +1,5 @@
-Index: foobillard-3.0a/configure.in
-===================================================================
---- foobillard-3.0a.orig/configure.in
-+++ foobillard-3.0a/configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -13,7 +13,7 @@ dnl Checks for libraries.
  
  dnl Checks for header files.
@@ -11,10 +9,8 @@ Index: foobillard-3.0a/configure.in
  
  dnl Checks for typedefs, structures, and compiler characteristics.
  AC_C_CONST
-Index: foobillard-3.0a/src/billard3d.c
-===================================================================
---- foobillard-3.0a.orig/src/billard3d.c
-+++ foobillard-3.0a/src/billard3d.c
+--- a/src/billard3d.c
++++ b/src/billard3d.c
 @@ -24,7 +24,11 @@
  #include <string.h>
  #include <math.h>

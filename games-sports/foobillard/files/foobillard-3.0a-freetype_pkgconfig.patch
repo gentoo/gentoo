@@ -1,5 +1,5 @@
---- foobillard-3.0a/configure.in
-+++ foobillard-3.0a/configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -13,7 +13,7 @@
  
  dnl Checks for header files.
@@ -9,8 +9,8 @@
  
  dnl Checks for typedefs, structures, and compiler characteristics.
  AC_C_CONST
---- foobillard-3.0a/src/Makefile.am
-+++ foobillard-3.0a/src/Makefile.am
+--- a/src/Makefile.am
++++ b/src/Makefile.am
 @@ -50,7 +50,7 @@
  #CC     = gcc
  #CXXFLAGS = -O6 -s
