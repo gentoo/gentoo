@@ -3,10 +3,8 @@
 
 EAPI=7
 
-# Bug: https://github.com/ngircd/ngircd/issues/261
-WANT_AUTOMAKE=1.11.6
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/alexbarton.asc
-inherit autotools verify-sig
+inherit verify-sig
 
 DESCRIPTION="An IRC server written from scratch"
 HOMEPAGE="https://ngircd.barton.de/"
@@ -18,7 +16,6 @@ SLOT="0"
 KEYWORDS="amd64 ~arm arm64 x86 ~x64-macos"
 IUSE="debug gnutls ident irc-plus +ipv6 libressl pam +ssl strict-rfc tcpd test zlib"
 
-#RESTRICT="!test? ( test )"
 # Flaky test needs investigation (bug 719256)
 RESTRICT="test"
 
@@ -57,9 +54,9 @@ src_prepare() {
 			doc/sample-ngircd.conf.tmpl || die
 	fi
 
-	# Once https://github.com/ngircd/ngircd/pull/270 is in a release (ngircd 26), we can remove
-	# the eautomake/autotools machinery.
-	eautomake
+	# Note that if we need to use automake, we need a certain version (for now):
+	# https://github.com/ngircd/ngircd/issues/261
+	# eautomake
 }
 
 src_configure() {
