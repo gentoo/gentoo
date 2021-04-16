@@ -15273,7 +15273,7 @@ net-misc/dibbler 1.0.1-r3: Portable DHCPv6 implementation (server, client and re
 net-misc/dleyna-server 0.6.0: Service that allows to discover and manipulate DLNA Digital Media servers (DMS)
 net-misc/drive 0.3.9.1 0.3.9.1-r1: Google Drive client for the commandline
 net-misc/dropbear 2020.81-r2: small SSH 2 client/server designed for small memory environments
-net-misc/dropbox 118.4.460 119.4.1772: Dropbox daemon (pretends to be GUI-less)
+net-misc/dropbox 118.4.460 119.4.1772 120.4.4598: Dropbox daemon (pretends to be GUI-less)
 net-misc/dropbox-cli 2020.03.04 2020.03.04-r1: Cli interface for dropbox (python), part of nautilus-dropbox
 net-misc/econnman 1.1-r2: ConnMan User Interface written with EFL & python
 net-misc/efax 0.9a_p19_p1: A simple fax program for single-user systems
@@ -15680,7 +15680,7 @@ net-proxy/squidguard 1.6.0: Combined filter, redirector and access controller pl
 net-proxy/squirm 1.26-r1: A redirector for Squid
 net-proxy/sshuttle 1.0.5: Transparent proxy server that works as a poor man's VPN using ssh
 net-proxy/tayga 0.9.2-r1 0.9.2-r2 0.9.2-r3: out-of-kernel stateless NAT64 implementation based on TUN
-net-proxy/tinyproxy 1.11.0_rc1: A lightweight HTTP/SSL proxy
+net-proxy/tinyproxy 1.11.0_rc1 1.11.0: A lightweight HTTP/SSL proxy
 net-proxy/torsocks 2.2.0 2.3.0: Use most socks-friendly applications with Tor
 net-proxy/trojan 1.16.0-r2: An unidentifiable mechanism that helps you bypass GFW
 net-proxy/tsocks 1.8_beta5-r9: Transparent SOCKS v4 proxying library
