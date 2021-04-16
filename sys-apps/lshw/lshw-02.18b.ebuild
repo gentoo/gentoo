@@ -5,7 +5,7 @@ EAPI="5"
 
 PLOCALES='fr'
 
-inherit flag-o-matic eutils toolchain-funcs l10n
+inherit desktop flag-o-matic toolchain-funcs l10n
 
 MAJ_PV=${PV:0:${#PV}-1}
 MIN_PVE=${PV:0-1}
