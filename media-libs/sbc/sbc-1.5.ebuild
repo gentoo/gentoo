@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit multilib-minimal
 
 DESCRIPTION="Audio codec to connect bluetooth HQ audio devices as headphones or loudspeakers"
@@ -17,8 +18,7 @@ IUSE="static-libs"
 # .wav file to execute it
 RESTRICT="test"
 
-RDEPEND=""
-DEPEND="virtual/pkgconfig"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}/${P}-ifdef-builtin.patch" )
 
