@@ -3976,7 +3976,6 @@ media-gfx/geeqie:map - Enable items map display - experimental
 media-gfx/gimp:heif - Enable support for ISO/IEC 23008-12:2017 HEIF files
 media-gfx/gimp:vector-icons - Enable support for vector icons (experimental)
 media-gfx/gmic:cli - Build CLI interface
-media-gfx/gmic:digikam - Build media-gfx/digikam plugin
 media-gfx/gmic:krita - Build media-gfx/krita plugin
 media-gfx/gmic:opencv - Enable support for webcams using the OpenCV library
 media-gfx/gnome-photos:flickr - Ensure runtime Flickr support
