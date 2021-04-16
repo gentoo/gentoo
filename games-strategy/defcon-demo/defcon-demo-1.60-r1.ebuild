@@ -1,8 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils toolchain-funcs gnome2-utils
+
+inherit desktop toolchain-funcs gnome2-utils
 
 MY_PN=defcon
 MY_PV=${PV:0:3}
@@ -31,7 +32,6 @@ RDEPEND="
 	x11-libs/libXdmcp
 	x11-libs/libXext
 	system-libs? ( media-libs/libsdl[sound,video] )"
-DEPEND=""
 
 QA_PREBUILT="/opt/${PN}/lib/${MY_PN}.bin.x86"
 
@@ -61,17 +61,17 @@ src_prepare() {
 }
 
 src_compile() {
-	echo "$(tc-getCC) ${CFLAGS} ${LDFLAGS} -fPIC -shared -o lib/chdir.so chdir.c"
-	$(tc-getCC) ${CFLAGS} ${LDFLAGS} -fPIC -shared -o lib/chdir.so chdir.c || die
+	echo "$(tc-getCC) ${CPPFLAGS} ${CFLAGS} ${LDFLAGS} -fPIC -shared -o lib/chdir.so chdir.c"
+	$(tc-getCC) ${CPPFLAGS} ${CFLAGS} ${LDFLAGS} -fPIC -shared -o lib/chdir.so chdir.c || die
 }
 
 src_install() {
-	local dir="/opt/${PN}"
+	local dir=/opt/${PN}
 
-	insinto "${dir}/lib"
+	insinto ${dir}/lib
 	doins *.dat
 
-	exeinto "${dir}"/lib
+	exeinto ${dir}/lib
 	doexe lib/*.so
 	doexe ${MY_PN}.bin.x86
 
