@@ -5,7 +5,7 @@ EAPI=6
 
 DIST_AUTHOR=CAPTTOFU
 DIST_VERSION=4.044
-inherit eutils perl-module
+inherit perl-module
 
 DESCRIPTION="MySQL driver for the Perl5 Database Interface (DBI)"
 
