@@ -13,8 +13,13 @@ if [[ ${PV} == *9999* ]] ; then
 
 	EGIT_REPO_URI="https://github.com/the-tcpdump-group/tcpdump"
 else
-	SRC_URI="https://github.com/the-tcpdump-group/${PN}/archive/${P/_}.tar.gz"
-	S="${WORKDIR}/${PN}-${P/_}"
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/tcpdump.asc
+	inherit verify-sig
+
+	# Note: drop -upstream on bump, this is just because we switched to the official
+	# distfiles for verify-sig
+	SRC_URI="https://www.tcpdump.org/release/${P}.tar.gz -> ${P}-upstream.tar.gz"
+	SRC_URI+=" verify-sig? ( https://www.tcpdump.org/release/${P}.tar.gz.sig -> ${P}-upstream.tar.gz.sig )"
 
 	KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
 fi
@@ -52,6 +57,10 @@ DEPEND="
 	)
 "
 BDEPEND="drop-root? ( virtual/pkgconfig )"
+
+if [[ ${PV} != *9999* ]] ; then
+	BDEPEND+=" verify-sig? ( app-crypt/openpgp-keys-tcpdump )"
+fi
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-9999-libdir.patch
