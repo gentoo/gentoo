@@ -2,19 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit epatch multilib toolchain-funcs
 
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+inherit epatch multilib toolchain-funcs
 
 DESCRIPTION="Fast, reliable, simple package for creating and reading constant databases"
 HOMEPAGE="http://cr.yp.to/cdb.html"
 SRC_URI="http://cr.yp.to/cdb/${P}.tar.gz"
+
 LICENSE="public-domain"
 SLOT="0"
-IUSE=""
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
-DEPEND=">=sys-apps/sed-4
-		!dev-db/tinycdb"
+DEPEND="!dev-db/tinycdb"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
