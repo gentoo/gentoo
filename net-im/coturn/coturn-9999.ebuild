@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit eutils systemd tmpfiles
+inherit systemd tmpfiles
 DESCRIPTION="coturn TURN server project"
 HOMEPAGE="https://github.com/coturn/coturn"
 
