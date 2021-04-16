@@ -5158,7 +5158,7 @@ dev-java/osgi-enterprise-api 5.0.0: OSGi Enterprise Release 5 Companion Code
 dev-java/osgi-foundation 1.2.0-r1: OSGi R4 Foundation EE by Apache Felix
 dev-java/osgi-obr 1.0.2: OSGi Service OBR by Apache
 dev-java/pat 1.5.3-r1: Regular Expressions in Java
-dev-java/pdf-renderer 1.0.5: a 100% Java PDF renderer and viewer
+dev-java/pdf-renderer 1.0.5-r1: a 100% Java PDF renderer and viewer
 dev-java/pdfbox 1.8.15: Java library and utilities for working with PDF documents
 dev-java/piccolo 1.04: A small, extremely fast XML parser for Java
 dev-java/piccolo2d 3.0-r1: A Structured 2D Graphics Framework
@@ -11094,7 +11094,7 @@ dev-util/spirv-tools 2020.6 2021.0_pre20210327 9999: Provides an API and command
 dev-util/splint 3.1.2-r2: Check C programs for vulnerabilities and programming mistakes
 dev-util/squashdelta 0.1.1 0.1.2 9999: Efficient (partially uncompressed) SquashFS binary delta tool
 dev-util/squashmerge 0.1 9999: dev-util/squashdelta delta merge tool
-dev-util/src-cli 3.26.2: command line interface for the Sourcegraph code search tool
+dev-util/src-cli 3.26.2 3.26.3: command line interface for the Sourcegraph code search tool
 dev-util/statifier 1.7.4-r1: Statifier is a tool for creating portable, self-containing Linux executables
 dev-util/stepman 0.10.5: Step collection manager for Bitrise CLI
 dev-util/strace 5.8 5.10 5.11 9999: A useful diagnostic, instructional, and debugging tool
