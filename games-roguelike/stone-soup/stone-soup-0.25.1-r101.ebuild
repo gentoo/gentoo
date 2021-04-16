@@ -9,7 +9,7 @@ EAPI=7
 LUA_COMPAT=( lua5-{1..3} )
 PYTHON_COMPAT=( python3_{7,8,9} )
 VIRTUALX_REQUIRED="manual"
-inherit desktop python-any-r1 eutils lua-single xdg-utils toolchain-funcs
+inherit desktop python-any-r1 lua-single xdg-utils toolchain-funcs
 
 MY_P="stone_soup-${PV}"
 DESCRIPTION="Role-playing roguelike game of exploration and treasure-hunting in dungeons"
