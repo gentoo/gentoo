@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit epatch flag-o-matic toolchain-funcs
 
 DEB_PATCH_VER=${PV#*_p}
 MY_VER=${PV%_p*}
