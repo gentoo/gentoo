@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 MODULE_AUTHOR=KENTNL
 MODULE_VERSION=0.2.12
-inherit perl-module eutils prefix
+inherit perl-module epatch prefix
 
 DESCRIPTION="Portage abstraction layer for perl"
 HOMEPAGE="http://search.cpan.org/~kentnl/PortageXS"
