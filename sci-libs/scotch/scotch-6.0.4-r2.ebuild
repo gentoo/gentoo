@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils toolchain-funcs versionator flag-o-matic multilib
+inherit epatch toolchain-funcs versionator flag-o-matic multilib
 
 # use esmumps version to allow linking with mumps
 MYP="${PN}_${PV}_esmumps"
