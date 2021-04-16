@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit autotools elisp-common eutils
+inherit autotools elisp-common epatch
 
 DESCRIPTION="Bookmarks and browser for the shell builtin cd command"
 HOMEPAGE="http://www.skamphausen.de/cgi-bin/ska/CDargs"
