@@ -107,7 +107,7 @@ zstd-safe-2.0.5+zstd.1.4.5
 zstd-sys-1.4.17+zstd.1.4.5
 "
 
-inherit bash-completion-r1 cargo elisp-common eutils distutils-r1 flag-o-matic
+inherit bash-completion-r1 cargo elisp-common distutils-r1 flag-o-matic
 
 DESCRIPTION="Scalable distributed SCM"
 HOMEPAGE="https://www.mercurial-scm.org/"
