@@ -16,5 +16,5 @@ src_install() {
 	local files=( ${A} )
 
 	insinto /usr/share/openpgp-keys
-	newins - jedisct1.asc < <(cat "${files[@]/#/${DISTDIR}/}")
+	newins - jedisct1.asc < <(cat "${files[@]/#/${DISTDIR}/}" || die)
 }
