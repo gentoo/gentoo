@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils db flag-o-matic java-pkg-opt-2 autotools multilib multilib-minimal toolchain-funcs
+inherit epatch db flag-o-matic java-pkg-opt-2 autotools multilib multilib-minimal toolchain-funcs
 
 #Number of official patches
 #PATCHNO=`echo ${PV}|sed -e "s,\(.*_p\)\([0-9]*\),\2,"`
