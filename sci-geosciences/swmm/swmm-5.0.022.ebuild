@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils versionator toolchain-funcs
+inherit epatch versionator toolchain-funcs
 
 MY_PV=$(delete_all_version_separators)
 MY_SRC="swmm${MY_PV}_engine.zip"
