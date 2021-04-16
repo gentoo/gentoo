@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools eutils
+inherit autotools
 
 DESCRIPTION="Utility for controlling IPMI enabled devices."
 HOMEPAGE="http://ipmitool.sf.net/"
