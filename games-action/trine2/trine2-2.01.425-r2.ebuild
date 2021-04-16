@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,6 +12,7 @@ MY_PN="Trine 2"
 DESCRIPTION="Sidescrolling game of action, puzzles and platforming, Complete Story edition"
 HOMEPAGE="http://www.trine2.com/"
 SRC_URI="${MY_P}_humble_linux_full.zip"
+
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
@@ -21,7 +22,7 @@ RESTRICT="bindist fetch splitdebug"
 QA_PREBUILT="opt/${PN}/${PN}*
 	opt/${PN}/lib/*"
 
-DEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
 
 RDEPEND="
 	media-gfx/nvidia-cg-toolkit[abi_x86_32]
