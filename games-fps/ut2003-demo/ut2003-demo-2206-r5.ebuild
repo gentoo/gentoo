@@ -17,7 +17,6 @@ SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 RESTRICT="bindist mirror strip"
 
-DEPEND="app-arch/unzip"
 RDEPEND="
 	sys-devel/bc
 	sys-libs/libstdc++-v3:5
@@ -25,6 +24,7 @@ RDEPEND="
 	x11-libs/libX11[abi_x86_32(-)]
 	x11-libs/libXext[abi_x86_32(-)]
 "
+BDEPEND="app-arch/unzip"
 
 dir=opt/${PN}
 Ddir="${ED}"/${dir}
