@@ -5,12 +5,8 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
-	<use>
-		<flag name="cli">Build CLI interface</flag>
-		<flag name="krita">Build <pkg>media-gfx/krita</pkg> plugin</flag>
-		<flag name="opencv">Enable support for webcams using the OpenCV library</flag>
-	</use>
 	<upstream>
-		<remote-id type="github">dtschump/gmic</remote-id>
+		<remote-id type="github">MobileDynasty/pytest-env</remote-id>
+		<remote-id type="pypi">pytest-env</remote-id>
 	</upstream>
 </pkgmetadata>
