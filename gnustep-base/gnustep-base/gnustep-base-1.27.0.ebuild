@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit eutils gnustep-base toolchain-funcs
+inherit gnustep-base toolchain-funcs
 
 DESCRIPTION="A library of general-purpose, non-graphical Objective C objects"
 HOMEPAGE="http://www.gnustep.org"
