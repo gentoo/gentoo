@@ -5,7 +5,7 @@ EAPI=5
 
 MODULE_AUTHOR=GRANTM
 MODULE_VERSION=0.99
-inherit perl-module eutils
+inherit perl-module epatch
 
 DESCRIPTION="Perl module for using and building Perl SAX2 XML parsers, filters, and drivers"
 
