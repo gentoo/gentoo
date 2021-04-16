@@ -6,4 +6,4 @@ KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sp
 LICENSE=public-domain
 SLOT=0
 SRC_URI=https://www.tcpdump.org/release/signing-key.asc -> openpgp-keys-tcpdump-20210416.asc
-_md5_=d43357a68ce1c2debafaa29522f46d88
+_md5_=1bcdf9c02d1713fa3fe3a7a77410c24e
