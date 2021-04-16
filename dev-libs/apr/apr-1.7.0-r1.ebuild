@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools libtool multilib toolchain-funcs
+inherit autotools libtool toolchain-funcs
 
 DESCRIPTION="Apache Portable Runtime Library"
 HOMEPAGE="https://apr.apache.org/"

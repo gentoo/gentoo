@@ -7,7 +7,7 @@ EAPI=7
 
 MY_P="gettext-${PV}"
 
-inherit multilib-minimal toolchain-funcs libtool usr-ldscript
+inherit multilib-minimal libtool usr-ldscript
 
 DESCRIPTION="the GNU international library (split out of gettext)"
 HOMEPAGE="https://www.gnu.org/software/gettext/"
@@ -48,7 +48,7 @@ multilib_src_configure() {
 		# The gettext package provides this library.
 		--disable-c++
 		--disable-libasprintf
-		# No java until someone cares.
+		# No Java until someone cares.
 		--disable-java
 
 		$(use_enable static-libs static)

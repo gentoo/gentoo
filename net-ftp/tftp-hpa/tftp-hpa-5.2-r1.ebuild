@@ -3,9 +3,9 @@
 
 EAPI="5"
 
-inherit systemd eutils toolchain-funcs
+inherit systemd epatch toolchain-funcs
 
-DESCRIPTION="port of the OpenBSD TFTP server"
+DESCRIPTION="Port of the OpenBSD TFTP server"
 HOMEPAGE="https://www.kernel.org/pub/software/network/tftp/"
 SRC_URI="https://www.kernel.org/pub/software/network/tftp/${PN}/${P}.tar.xz"
 
