@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_7 python3_8 python3_9 )
 
-inherit distutils-r1 eutils multilib
+inherit distutils-r1 multilib
 
 DESCRIPTION="Messaging API for RPC and notifications over different messaging transports"
 HOMEPAGE="https://pypi.org/project/PyECLib/"
