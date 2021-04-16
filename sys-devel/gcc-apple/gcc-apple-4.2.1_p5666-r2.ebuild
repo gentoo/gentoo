@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit eutils toolchain flag-o-matic autotools prefix toolchain-funcs
+inherit epatch toolchain flag-o-matic autotools prefix toolchain-funcs
 
 GCC_VERS=${PV/_p*/}
 APPLE_VERS="${PV/*_p/}.3"
