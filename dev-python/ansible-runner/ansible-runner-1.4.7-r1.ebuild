@@ -15,6 +15,7 @@ KEYWORDS="~amd64"
 
 LICENSE="Apache-2.0"
 SLOT="0"
+IUSE="test"
 RDEPEND="
 	dev-python/pexpect[${PYTHON_USEDEP}]
 	dev-python/psutil[${PYTHON_USEDEP}]
@@ -23,6 +24,7 @@ RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
+BDEPEND="test? ( dev-python/mock[${PYTHON_USEDEP}] )"
 distutils_enable_tests pytest
 
 python_prepare_all() {
