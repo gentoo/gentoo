@@ -1,0 +1,16 @@
+BDEPEND=python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] || ( ( dev-lang/python:3.9 doc? ( dev-python/sphinx[python_targets_python3_9(-),-python_single_target_python3_9(-)] ) ) ( dev-lang/python:3.8 doc? ( dev-python/sphinx[python_targets_python3_8(-),-python_single_target_python3_8(-)] ) ) ( dev-lang/python:3.7 doc? ( dev-python/sphinx[python_targets_python3_7(-),-python_single_target_python3_7(-)] ) ) ) verify-sig? ( app-crypt/openpgp-keys-botan ) verify-sig? ( app-crypt/gnupg >=app-portage/gemato-16 )
+DEFINED_PHASES=configure install test unpack
+DEPEND=boost? ( >=dev-libs/boost-1.48:= ) bzip2? ( >=app-arch/bzip2-1.0.5:= ) lzma? ( app-arch/xz-utils:= ) python? ( python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] ) ssl? ( dev-libs/openssl:0=[bindist=] ) sqlite? ( dev-db/sqlite:3= ) zlib? ( >=sys-libs/zlib-1.2.3:= )
+DESCRIPTION=C++ crypto library
+EAPI=7
+HOMEPAGE=https://botan.randombit.net/
+INHERIT=python-r1 toolchain-funcs verify-sig
+IUSE=bindist doc boost bzip2 lzma python ssl static-libs sqlite zlib cpu_flags_arm_aes cpu_flags_arm_neon cpu_flags_ppc_altivec cpu_flags_x86_aes cpu_flags_x86_avx2 cpu_flags_x86_popcnt cpu_flags_x86_rdrand cpu_flags_x86_sse2 cpu_flags_x86_ssse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 verify-sig
+KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~ppc-macos
+LICENSE=BSD-2
+RDEPEND=boost? ( >=dev-libs/boost-1.48:= ) bzip2? ( >=app-arch/bzip2-1.0.5:= ) lzma? ( app-arch/xz-utils:= ) python? ( python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)] ) ssl? ( dev-libs/openssl:0=[bindist=] ) sqlite? ( dev-db/sqlite:3= ) zlib? ( >=sys-libs/zlib-1.2.3:= )
+REQUIRED_USE=python? ( || ( python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 ) )
+SLOT=2/2.18
+SRC_URI=https://botan.randombit.net/releases/Botan-2.18.0.tar.xz verify-sig? ( https://botan.randombit.net/releases/Botan-2.18.0.tar.xz.asc )
+_eclasses_=multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-r1	26e4ad0a4190b14f70973dc253e86535	verify-sig	40b4f4f782cf67118f594ce604cc4c0a
+_md5_=8af480692c780d82c8691db401204398

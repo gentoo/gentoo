@@ -1,0 +1,9 @@
+DEFINED_PHASES=install
+DESCRIPTION=OpenPGP keys used to sign Botan releases
+EAPI=7
+HOMEPAGE=https://botan.randombit.net https://botan.randombit.net/pgpkey.txt
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86
+LICENSE=public-domain
+SLOT=0
+SRC_URI=https://botan.randombit.net/pgpkey.txt -> openpgp-keys-botan-20210416.asc
+_md5_=63fd3c60f55106e3ac0115adfdb23f42

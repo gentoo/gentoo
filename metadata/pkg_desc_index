@@ -1206,6 +1206,7 @@ app-crypt/nitrokey-app 1.4.2 9999: Cross platform personalization tool for the N
 app-crypt/nwipe 0.30: Securely erase disks using a variety of recognized methods
 app-crypt/onak 0.5.0: onak is an OpenPGP keyserver
 app-crypt/openpgp-keys-bcl 20210128: OpenPGP keys used by Brian C. Lane
+app-crypt/openpgp-keys-botan 20210416: OpenPGP keys used to sign Botan releases
 app-crypt/openpgp-keys-django 20201105 20201201: OpenPGP keys used to sign Django releases
 app-crypt/openpgp-keys-gentoo-auth 20200704: Gentoo Authority Keys (GLEP 79)
 app-crypt/openpgp-keys-gentoo-release 20200704: OpenPGP keys used for Gentoo releases (snapshots, stages)
@@ -5404,7 +5405,7 @@ dev-libs/bitset 2.8.4-r1: A compressed bitset with supporting data structures an
 dev-libs/boehm-gc 8.0.4: The Boehm-Demers-Weiser conservative garbage collector
 dev-libs/boost 1.75.0: Boost Libraries for C++
 dev-libs/boost-mpl-cartesian_product 20161205: an extension to the Boost.MPL library
-dev-libs/botan 2.17.3: C++ crypto library
+dev-libs/botan 2.17.3 2.18.0: C++ crypto library
 dev-libs/boxfort 0.0.1_pre20200110 0.0.1_pre20200902: Convenient & cross-platform sandboxing C library
 dev-libs/busybee 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
 dev-libs/c-blosc 1.21.0: Blocking, shuffling and lossless compression library
@@ -11976,7 +11977,7 @@ gnome-base/gnome-common 3.18.0-r1: Common files for development of Gnome package
 gnome-base/gnome-control-center 3.38.5: GNOME's main interface to configure various aspects of the desktop
 gnome-base/gnome-core-apps 3.36.5: Sub-meta package for the core applications integrated with GNOME 3
 gnome-base/gnome-core-libs 3.36.4 3.36.5: Sub-meta package for the core libraries of GNOME 3
-gnome-base/gnome-desktop 3.38.4: Library with common API for various GNOME modules
+gnome-base/gnome-desktop 3.38.4 40.0: Library with common API for various GNOME modules
 gnome-base/gnome-extra-apps 3.36.5: Sub-meta package for the applications of GNOME 3
 gnome-base/gnome-flashback 3.36.4: GNOME Flashback session
 gnome-base/gnome-keyring 3.36.0: Password and keyring managing daemon
@@ -11984,7 +11985,7 @@ gnome-base/gnome-light 3.34.4 3.36.5: Meta package for GNOME-Light, merge this p
 gnome-base/gnome-menus 3.36.0: Library and layout configuration for the Desktop Menu fd.o specification
 gnome-base/gnome-mime-data 2.18.0: MIME data for Gnome
 gnome-base/gnome-panel 3.36.2: The GNOME Flashback Panel
-gnome-base/gnome-session 3.38.0-r1: Gnome session manager
+gnome-base/gnome-session 3.38.0-r1 40.0: Gnome session manager
 gnome-base/gnome-settings-daemon 3.38.1: Gnome Settings Daemon
 gnome-base/gnome-shell 3.36.7 3.38.4 40.0: Provides core UI functions for the GNOME 3 desktop
 gnome-base/gnome-vfs 2.24.4-r5: Gnome Virtual Filesystem
@@ -12044,7 +12045,7 @@ gnome-extra/gnome-tweaks 3.34.1: Customize advanced GNOME 3 options
 gnome-extra/gnome-user-docs 3.36.6: GNOME end user documentation
 gnome-extra/gnome-user-share 3.34.0: Personal file sharing for the GNOME desktop
 gnome-extra/gnome-utils 3.8.0: Meta package for utilities for the GNOME desktop
-gnome-extra/gnome-weather 3.36.1: A weather application for GNOME
+gnome-extra/gnome-weather 3.36.1 40.0: A weather application for GNOME
 gnome-extra/gtkhtml 4.10.0-r2: Lightweight HTML rendering/printing/editing engine
 gnome-extra/gucharmap 3.0.1-r200 13.0.4: Unicode character map viewer and library
 gnome-extra/libgda 5.2.9: GNOME database access library
@@ -12956,8 +12957,8 @@ media-gfx/ebdftopcf 2: Optimally generate PCF files from BDF files
 media-gfx/enblend 4.2.0_p20161007-r1: Image Blending with Multiresolution Splines
 media-gfx/engauge 10.6: Convert an image file showing a graph or map into numbers
 media-gfx/entangle 3.0: Tethered Camera Control & Capture
-media-gfx/eog 3.38.2: The Eye of GNOME image viewer
-media-gfx/eog-plugins 3.26.6: Eye of GNOME plugins
+media-gfx/eog 3.38.2 40.0: The Eye of GNOME image viewer
+media-gfx/eog-plugins 3.26.6 3.26.7: Eye of GNOME plugins
 media-gfx/eom 1.24.0-r2 1.24.1: The MATE image viewer
 media-gfx/ephoto 1.5: Enlightenment image viewer written with EFL
 media-gfx/esci-interpreter-gt-s80 0.2.1.1: Epson GT-S50 and GT-S80 scanner plugins for SANE 'epkowa' backend
