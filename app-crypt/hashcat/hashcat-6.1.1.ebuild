@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils pax-utils multilib
+inherit pax-utils multilib
 
 DESCRIPTION="World's fastest and most advanced password recovery utility"
 HOMEPAGE="https://github.com/hashcat/hashcat"
