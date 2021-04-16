@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils flag-o-matic ltprune
+inherit epatch flag-o-matic ltprune
 
 MY_P=${P/opensp/OpenSP}
 
