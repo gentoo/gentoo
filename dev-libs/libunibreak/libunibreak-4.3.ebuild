@@ -15,7 +15,7 @@ IUSE="doc +man static-libs"
 # Tests require internet access to www.unicode.org
 RESTRICT="test"
 
-DEPEND="man? ( app-doc/doxygen )"
+BDEPEND="man? ( app-doc/doxygen )"
 
 src_prepare() {
 	if use man; then
