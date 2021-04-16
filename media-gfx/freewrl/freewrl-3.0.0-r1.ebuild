@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit autotools nsplugins eutils flag-o-matic java-pkg-opt-2 multilib toolchain-funcs
+inherit autotools nsplugins epatch flag-o-matic java-pkg-opt-2 multilib toolchain-funcs
 
 if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
