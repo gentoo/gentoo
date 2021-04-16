@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils multilib versionator
+inherit epatch multilib versionator
 
 DESCRIPTION="A set of extensions to TCL"
 HOMEPAGE="http://tclx.sourceforge.net"
