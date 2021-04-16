@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit toolchain-funcs eutils
+inherit toolchain-funcs epatch
 
 DESCRIPTION="Manages various PaX related program header flags for Elf32, Elf64, binaries"
 HOMEPAGE="https://pax.grsecurity.net"
