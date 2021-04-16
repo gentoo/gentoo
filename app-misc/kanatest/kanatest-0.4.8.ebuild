@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit autotools eutils gnome2-utils
+inherit autotools epatch gnome2-utils
 
 DESCRIPTION="Visual flashcard tool for memorizing the Japanese Hiragana and Katakana alphabet"
 HOMEPAGE="http://www.clayo.org/kanatest"
