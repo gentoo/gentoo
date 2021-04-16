@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 MY_P="JDOM-${PV}"
 JAVA_PKG_IUSE="doc source"
 
-inherit eutils java-pkg-2 java-ant-2
+inherit epatch java-pkg-2 java-ant-2
 
 DESCRIPTION="Java API to manipulate XML data"
 SRC_URI="https://github.com/hunterhacker/${PN}/archive/${MY_P}.tar.gz"
