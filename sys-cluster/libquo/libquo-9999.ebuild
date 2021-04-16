@@ -21,14 +21,14 @@ HOMEPAGE="https://lanl.github.io/libquo/"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="fortran static-libs test"
+IUSE="fortran test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
 	virtual/mpi[fortran?]
 	sys-process/numactl
 	sys-apps/hwloc[numa,xml]
-	"
+"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
