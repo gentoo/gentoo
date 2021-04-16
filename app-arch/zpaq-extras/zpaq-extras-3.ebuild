@@ -1,7 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit toolchain-funcs
 
 DESCRIPTION="A set of additional compression profiles for app-arch/zpaq"
@@ -18,16 +19,14 @@ SRC_URI="http://mattmahoney.net/dc/bwt_j3.zip
 	http://mattmahoney.net/dc/lz1.zip
 	http://mattmahoney.net/dc/lazy100.zip
 	http://mattmahoney.net/dc/lazy210.zip"
+S="${WORKDIR}"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-DEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
 RDEPEND=">=app-arch/zpaq-6.19"
-
-S=${WORKDIR}
 
 src_unpack() {
 	local x
