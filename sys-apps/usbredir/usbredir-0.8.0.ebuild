@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit eutils flag-o-matic
+
+inherit flag-o-matic
 
 MY_PV=${PV/_p*/}
 
@@ -16,8 +17,8 @@ KEYWORDS="~alpha amd64 arm arm64 ~ia64 ppc ppc64 ~sparc x86"
 IUSE="static-libs"
 
 RDEPEND="virtual/libusb:1"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 
