@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic prefix systemd
+inherit prefix systemd
 
 DESCRIPTION="File transfer program to keep remote files into sync"
 HOMEPAGE="https://rsync.samba.org/"
