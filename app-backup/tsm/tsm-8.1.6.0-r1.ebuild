@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit versionator multilib eutils readme.gentoo-r1 rpm systemd pax-utils
+inherit versionator multilib readme.gentoo-r1 rpm systemd pax-utils
 
 DESCRIPTION="IBM Spectrum Protect (former Tivoli Storage Manager) Backup/Archive Client, API"
 HOMEPAGE="https://www.ibm.com/us-en/marketplace/data-protection-and-recovery"
