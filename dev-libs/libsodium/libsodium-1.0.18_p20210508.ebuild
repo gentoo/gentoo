@@ -32,7 +32,10 @@ fi
 LICENSE="ISC"
 SLOT="0/23"
 KEYWORDS="~amd64 ~ppc64"
-IUSE="+asm minimal static-libs +urandom cpu_flags_x86_sse4_1 cpu_flags_x86_aes"
+IUSE="+asm minimal static-libs +urandom"
+
+CPU_USE=( cpu_flags_x86_{aes,sse4_1} )
+IUSE+=" ${CPU_USE[@]}"
 
 if [[ ${PV} == *_p* ]] ; then
 	IUSE+=" verify-sig"
