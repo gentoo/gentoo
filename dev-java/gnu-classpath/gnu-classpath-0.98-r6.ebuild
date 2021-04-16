@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils java-pkg-2 multilib
+inherit epatch java-pkg-2 multilib
 
 MY_P=${P/gnu-/}
 DESCRIPTION="Free core class libraries for use with Java VMs and compilers"
