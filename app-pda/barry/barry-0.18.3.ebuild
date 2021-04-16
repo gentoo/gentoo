@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit bash-completion-r1 eutils flag-o-matic gnome2-utils ltprune udev
+
+inherit bash-completion-r1 desktop epatch flag-o-matic gnome2-utils ltprune udev
 
 DESCRIPTION="Sync, backup, program management, and charging for BlackBerry devices"
 HOMEPAGE="http://www.netdirect.ca/software/packages/barry/"
