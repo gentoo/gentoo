@@ -5,7 +5,7 @@ EAPI="7"
 
 JAVA_PKG_IUSE="doc source"
 
-inherit eutils check-reqs java-pkg-2
+inherit check-reqs java-pkg-2
 
 SV="$(ver_cut 1-2)"
 SBTV="0.13.18"
