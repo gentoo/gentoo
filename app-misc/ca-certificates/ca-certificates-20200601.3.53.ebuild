@@ -20,7 +20,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{7..9} )
 
-inherit eutils python-any-r1
+inherit python-any-r1
 
 if [[ ${PV} == *.* ]] ; then
 	# Compile from source ourselves.
