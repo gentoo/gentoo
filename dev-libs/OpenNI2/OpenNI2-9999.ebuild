@@ -9,7 +9,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	EGIT_REPO_URI="https://github.com/occipital/openni2"
 fi
 
-inherit ${SCM} toolchain-funcs eutils multilib java-pkg-opt-2 flag-o-matic
+inherit ${SCM} toolchain-funcs epatch multilib java-pkg-opt-2 flag-o-matic
 
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
