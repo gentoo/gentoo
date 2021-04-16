@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils systemd
+inherit systemd
 
 DESCRIPTION="Decoded Information from Radio Emissions for Windows Or Linux Fans"
 HOMEPAGE="https://github.com/wb2osz/direwolf/blob/master/README.md"
