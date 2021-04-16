@@ -5,7 +5,7 @@ EAPI="5"
 
 JAVA_PKG_IUSE="doc source test"
 
-inherit eutils java-pkg-2 java-ant-2 versionator
+inherit epatch java-pkg-2 java-ant-2 versionator
 
 DESCRIPTION="An optimized Java interface to libffi"
 HOMEPAGE="https://github.com/jnr/jffi"
