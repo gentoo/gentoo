@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,13 +9,12 @@ DESCRIPTION="COIN-OR dynamic simplex linear program solver"
 HOMEPAGE="https://github.com/coin-or/DyLP/"
 SRC_URI="https://github.com/coin-or/${MY_PN}/archive/releases/${PV}.tar.gz
 	-> ${P}.tar.gz"
-LICENSE="EPL-1.0"
 
+LICENSE="EPL-1.0"
 # major soname component
 SLOT="0/1"
-
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc examples static-libs test"
+IUSE="doc examples test"
 RESTRICT="!test? ( test )"
 
 # Fortran is NOT needed, but the ./configure scripts for all of the CoinOR
@@ -47,6 +46,7 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
+		--disable-static
 		--enable-dependency-linking
 		--with-coin-instdir="${ED}"/usr
 		$(use_with doc dot)
