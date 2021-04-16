@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit toolchain-funcs eutils
+inherit toolchain-funcs epatch
 
 # from 10.8
 MISC_VER=31
@@ -53,7 +53,7 @@ src_compile() {
 	)
 
 	local TS=${S}/misc_cmds-${MISC_VER}
-	# tsort is provided by coreutils
+	# tsort is provided by corepatch
 	for t in leave units calendar; do
 		cd "${TS}/${t}"
 		echo "in ${TS}/${t}:"
@@ -73,7 +73,7 @@ src_compile() {
 	$(tc-getCC) ${flags[@]} -o cal calendar.o easter.o ncal.o || die "failed to compile cal"
 
 	TS=${S}/shell_cmds-${SHELL_VER}
-	# only pick those tools not provided by coreutils, findutils
+	# only pick those tools not provided by corepatch, findutils
 	for t in \
 		apply getopt hostname jot kill killall \
 		lastcomm renice script shlock time whereis;
