@@ -13,7 +13,7 @@ LICENSE="Apple"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
 RDEPEND=">=virtual/jre-1.8:*"
 
 S=${WORKDIR}/AppleJavaExtensions
