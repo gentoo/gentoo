@@ -16,7 +16,6 @@ KEYWORDS="~alpha amd64 ~ppc ppc64 sparc x86"
 IUSE="sox"
 
 RDEPEND="sox? ( media-sound/sox )"
-DEPEND="sys-apps/sed"
 
 RESTRICT="test"
 
