@@ -9,8 +9,8 @@ DESCRIPTION="NTP client and server programs"
 HOMEPAGE="https://chrony.tuxfamily.org/ https://git.tuxfamily.org/chrony/chrony.git"
 
 if [[ ${PV} == "9999" ]]; then
-	inherit git-r3
 	EGIT_REPO_URI="https://git.tuxfamily.org/chrony/chrony.git"
+	inherit git-r3
 else
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/mlichvar.asc
 	inherit verify-sig
