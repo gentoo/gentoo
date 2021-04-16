@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 AUTOTOOLS_AUTORECONF=true
-inherit eutils autotools ltprune
+inherit autotools ltprune
 
 DESCRIPTION="A library for high quality time and pitch scale modification"
 HOMEPAGE="http://sbsms.sourceforge.net/"
