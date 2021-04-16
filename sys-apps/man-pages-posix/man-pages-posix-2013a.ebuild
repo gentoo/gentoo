@@ -3,8 +3,6 @@
 
 EAPI=5
 
-inherit eutils
-
 MY_P="${PN}-${PV:0:4}-${PV:0-1}"
 DESCRIPTION="POSIX man-pages (0p, 1p, 3p)"
 HOMEPAGE="https://www.kernel.org/doc/man-pages/"
