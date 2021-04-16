@@ -14,9 +14,7 @@ SRC_URI="amd64? ( https://dl.tvcdn.de/download/linux/version_${PV/\.*}x/${PN}_${
 LICENSE="TeamViewer MIT"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE=""
 
-DEPEND="sys-apps/sed"
 RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
