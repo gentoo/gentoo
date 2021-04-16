@@ -1,13 +1,13 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit multilib toolchain-funcs python-any-r1
+inherit toolchain-funcs python-any-r1
 
-DESCRIPTION="easy hugepage access"
+DESCRIPTION="Easy hugepage access"
 HOMEPAGE="https://github.com/libhugetlbfs/libhugetlbfs"
 SRC_URI="https://github.com/libhugetlbfs/libhugetlbfs/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~s390 ~x86"
 IUSE="static-libs test"
 RESTRICT="!test? ( test )"
 
-DEPEND="test? ( ${PYTHON_DEPS} )"
+BDEPEND="test? ( ${PYTHON_DEPS} )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.6-fixup-testsuite.patch
@@ -56,10 +56,10 @@ src_install() {
 }
 
 src_test_alloc_one() {
-	hugeadm="$1"
-	sign="$2"
-	pagesize="$3"
-	pagecount="$4"
+	hugeadm="${1}"
+	sign="${2}"
+	pagesize="${3}"
+	pagecount="${4}"
 	${hugeadm} \
 		--pool-pages-max ${pagesize}:${sign}${pagecount} \
 	&& \
@@ -71,7 +71,7 @@ src_test_alloc_one() {
 # die is NOT allowed in this src_test block after the marked point, so that we
 # can clean up memory allocation. You'll leak at LEAST 64MiB per run otherwise.
 src_test() {
-	[[ $UID -eq 0 ]] || die "Need FEATURES=-userpriv to run this testsuite"
+	[[ ${UID} -eq 0 ]] || die "Need FEATURES=-userpriv to run this testsuite"
 	einfo "Building testsuite"
 	emake -j1 tests
 
@@ -91,6 +91,7 @@ src_test() {
 		mkdir -p /var/lib/hugetlbfs/pagesize-${pagesize}
 		addwrite /var/lib/hugetlbfs/pagesize-${pagesize}
 	done
+
 	addwrite /proc/sys/vm/
 	addwrite /proc/sys/kernel/shmall
 	addwrite /proc/sys/kernel/shmmax
@@ -106,7 +107,9 @@ src_test() {
 	einfo "Starting allocation"
 	for pagesize in ${PAGESIZES} ; do
 		pagecount=$((${MIN_HUGEPAGE_RAM}/${pagesize}))
+
 		einfo "  ${pagecount} @ ${pagesize}"
+
 		addwrite /var/lib/hugetlbfs/pagesize-${pagesize}
 		src_test_alloc_one "${hugeadm}" "+" "${pagesize}" "${pagecount}"
 		rc=$?
@@ -123,6 +126,7 @@ src_test() {
 	if [[ -n "${allocated}" ]]; then
 		# All our allocations worked, so time to run.
 		einfo "Starting tests"
+
 		cd "${S}"/tests || die
 		local TESTOPTS="-t func"
 		case ${ARCH} in
@@ -133,6 +137,7 @@ src_test() {
 				TESTOPTS="${TESTOPTS} -b 32"
 				;;
 		esac
+
 		# This needs a bit of work to give a nice exit code still.
 		./run_tests.py ${TESTOPTS}
 		rc=$?
@@ -147,8 +152,9 @@ src_test() {
 	for alloc in ${allocated} ; do
 		pagesize="${alloc/:*}"
 		pagecount="${alloc/*:}"
+
 		einfo "  ${pagecount} @ ${pagesize}"
-		src_test_alloc_one "$hugeadm" "-" "${pagesize}" "${pagecount}"
+		src_test_alloc_one "${hugeadm}" "-" "${pagesize}" "${pagecount}"
 	done
 
 	# ---------------------------------------------------------
