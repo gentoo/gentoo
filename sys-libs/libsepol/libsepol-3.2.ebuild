@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit multilib toolchain-funcs multilib-minimal
+inherit toolchain-funcs multilib-minimal
 
 MY_PV="${PV//_/-}"
 MY_P="${PN}-${MY_PV}"
@@ -23,10 +23,6 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0/2"
-IUSE=""
-
-DEPEND=""
-RDEPEND=""
 
 # tests are not meant to be run outside of the full SELinux userland repo
 RESTRICT="test"
