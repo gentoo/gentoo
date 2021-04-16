@@ -4796,7 +4796,7 @@ dev-java/avalon-framework 4.1.5-r2 4.2.0-r2: Avalon Framework
 dev-java/avalon-logkit 2.1-r8: Easy-to-use Java logging toolkit
 dev-java/backport-util-concurrent 3.1-r1: A portability wrapper for java.util.concurrent API (jsr166) 6.0
 dev-java/batik 1.9: Java based SVG toolkit
-dev-java/bcel 6.5.0: Apache Commons Bytecode Engineering Library
+dev-java/bcel 6.5.0 6.5.0-r1: Apache Commons Bytecode Engineering Library
 dev-java/bcmail 1.38-r6 1.45-r5 1.50-r3 1.52-r3: Java cryptography APIs
 dev-java/bcpg 1.50-r1 1.50-r2 1.52-r1 1.52-r2: Java cryptography APIs
 dev-java/bcpkix 1.50-r2 1.52-r1: Java cryptography APIs
