@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-DEPEND="app-arch/xz-utils"
+BDEPEND="app-arch/xz-utils"
 RDEPEND="
 	x11-themes/gtk-engines-murrine
 "
