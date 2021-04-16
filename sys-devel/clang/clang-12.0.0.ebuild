@@ -258,6 +258,9 @@ multilib_src_configure() {
 		# furthermore, it provides only syntax checking
 		-DCLANG_DEFAULT_OPENMP_RUNTIME=libomp
 
+		# disable using CUDA to autodetect GPU, just build for all
+		-DCMAKE_DISABLE_FIND_PACKAGE_CUDA=ON
+
 		# override default stdlib and rtlib
 		-DCLANG_DEFAULT_CXX_STDLIB=$(usex default-libcxx libc++ "")
 		-DCLANG_DEFAULT_RTLIB=$(usex default-compiler-rt compiler-rt "")
