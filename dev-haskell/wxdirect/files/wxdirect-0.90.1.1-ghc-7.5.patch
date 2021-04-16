@@ -1,0 +1,38 @@
+--- wxdirect-0.90.1.1-orig/src/Classes.hs	2014-03-23 01:08:59.000000000 +1100
++++ wxdirect-0.90.1.1/src/Classes.hs	2014-03-23 15:43:57.402011540 +1100
+@@ -1,3 +1,4 @@
++{-# LANGUAGE CPP #-}
+ -----------------------------------------------------------------------------------------
+ {-| Module      :  Classes
+     Copyright   :  (c) Daan Leijen 2003
+@@ -24,6 +25,9 @@
+ 
+ import qualified Data.Set as Set
+ import qualified Data.Map as Map
++#if !MIN_VERSION_base(4,6,0)
++import Prelude hiding ( catch )
++#endif
+ import Text.Parsec.Prim hiding ( try )
+ import HaskellNames( haskellTypeName, isBuiltin )
+ import Types
+--- wxdirect-0.90.1.1-orig/src/CompileClasses.hs	2014-03-23 01:08:59.000000000 +1100
++++ wxdirect-0.90.1.1/src/CompileClasses.hs	2014-03-23 15:42:14.123894206 +1100
+@@ -96,7 +96,7 @@
+            (exportsStatic,exportsClassClasses,classCount) = exportDefs decls exportsClass []
+ 
+            methodCount  = length decls
+-           ghcoptions   = [ "{-# LANGUAGE ForeignFunctionInterface #-}"]
++           ghcoptions   = [ "{-# LANGUAGE CPP, ForeignFunctionInterface #-}"]
+ 
+            export   = concat  [ ["module " ++ moduleRoot ++ moduleName
+                                 , "    ( -- * Global" ]
+@@ -111,6 +111,9 @@
+                                 , "import Foreign.C.Types(CInt(..), CWchar(..), CChar(..), CDouble(..))"
+                                 , "import " ++ moduleRoot ++ "WxcTypes"
+                                 , "import " ++ moduleRoot ++ moduleClassTypesName
++                                , "#if (__GLASGOW_HASKELL__>=705)"
++                                , "import Foreign.C.Types(CDouble(..), CInt(..), CWchar(..))"
++                                , "#endif"
+                                 , ""
+                                 ]
+                               ]
