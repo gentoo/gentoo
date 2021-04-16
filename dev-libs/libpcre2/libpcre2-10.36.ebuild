@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic libtool multilib-minimal toolchain-funcs usr-ldscript
+inherit libtool multilib-minimal usr-ldscript
 
 PATCH_SET="${PN}-10.34-patchset-01.tar.xz"
 
