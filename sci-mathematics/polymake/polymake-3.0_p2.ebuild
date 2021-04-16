@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils flag-o-matic
+inherit flag-o-matic
 
 DESCRIPTION="research tool for polyhedral geometry and combinatorics"
 SRC_URI="https://polymake.org/lib/exe/fetch.php/download/polymake-3.0r2.tar.bz2"
