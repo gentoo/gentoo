@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils java-pkg-opt-2 multilib toolchain-funcs versionator
+inherit epatch java-pkg-opt-2 multilib toolchain-funcs versionator
 
 MY_DP="${PN}$(get_version_component_range 1)$(get_version_component_range 2)"
 MY_P="${MY_DP}_$(get_version_component_range 3)"
