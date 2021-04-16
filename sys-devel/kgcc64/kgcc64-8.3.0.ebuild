@@ -16,7 +16,7 @@ TOOLCHAIN_ALLOWED_LANGS="c"
 GCC_TARGET_NO_MULTILIB=true
 
 PATCH_VER="1.0"
-inherit eutils toolchain
+inherit toolchain
 
 DESCRIPTION="64bit kernel compiler"
 
