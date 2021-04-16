@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils autotools toolchain-funcs
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Popular filesystem benchmark"
 SRC_URI="https://www.samba.org/ftp/pub/tridge/dbench/${P}.tar.gz"
