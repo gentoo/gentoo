@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils flag-o-matic multilib prefix toolchain-funcs
+inherit epatch flag-o-matic multilib prefix toolchain-funcs
 
 DESCRIPTION="Return the canonicalized absolute pathname"
 HOMEPAGE="http://packages.debian.org/unstable/utils/realpath"
