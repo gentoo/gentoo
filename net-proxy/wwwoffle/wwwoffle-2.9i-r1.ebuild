@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils user
+inherit user
 
 DESCRIPTION="Web caching proxy suitable for non-permanent Internet connections"
 HOMEPAGE="https://www.gedanken.org.uk/software/wwwoffle/"
