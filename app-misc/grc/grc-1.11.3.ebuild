@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{3_7,3_8} )
 
-inherit eutils python-r1
+inherit python-r1
 
 DESCRIPTION="Generic Colouriser beautifies your logfiles or output of commands"
 HOMEPAGE="http://kassiopeia.juls.savba.sk/~garabik/software/grc.html"
