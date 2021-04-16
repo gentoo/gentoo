@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit toolchain-funcs eutils
+inherit toolchain-funcs epatch
 
 DESCRIPTION="Assembler and loader used to create kernel bootsector"
 HOMEPAGE="http://v3.sk/~lkundrak/dev86/"
