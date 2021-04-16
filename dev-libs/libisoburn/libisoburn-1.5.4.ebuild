@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn"
-HOMEPAGE="https://dev.lovelyhq.com/libburnia/web/wikis/home"
+HOMEPAGE="https://dev.lovelyhq.com/libburnia/web/wiki/Libisoburn"
 SRC_URI="http://files.libburnia-project.org/releases/${P}.tar.gz"
 
 LICENSE="GPL-2 GPL-3"
