@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit autotools eutils
+inherit autotools
 
 DESCRIPTION="Yet Another Part-of-Speech and Morphological Analyzer"
 HOMEPAGE="https://taku910.github.io/mecab/"
