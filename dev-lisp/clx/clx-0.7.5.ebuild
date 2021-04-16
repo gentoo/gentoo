@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit common-lisp-3 eutils
+inherit common-lisp-3
 
 DESCRIPTION="CLX is the Common Lisp interface to the X11 protocol primarily for SBCL."
 HOMEPAGE="http://www.cliki.net/CLX"
