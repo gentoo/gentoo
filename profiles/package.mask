@@ -32,6 +32,22 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-04-16)
+# Dubious usefulness in current Plasma 5, unmaintained upstream, depends on
+# even less maintained and chronically broken libraries with many open bugs.
+# media-gfx/icc-examin: Bug #740010
+# media-libs/libXcm: Bugs #525326, #724808
+# media-libs/oyranos: Bugs #702158, #705364, #780057
+# app-admin/elektra: Bugs #601992, #656168
+# Removal on 2021-05-16
+kde-misc/kolor-manager
+app-admin/elektra
+media-gfx/icc-examin
+media-gfx/synnefo
+media-libs/libXcm
+media-libs/openicc
+media-libs/oyranos
+
 # David Seifert <soap@gentoo.org> (2021-04-16)
 # Does not build, no revdeps in Gentoo, uses GTK2 slot of
 # wxwidgets, blocks wxwidgets.eclass modernizing.
