@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit autotools multilib eutils xdg-utils
+inherit autotools multilib xdg-utils
 
 DESCRIPTION="HTTrack Website Copier, Open Source Offline Browser"
 HOMEPAGE="https://www.httrack.com/"
