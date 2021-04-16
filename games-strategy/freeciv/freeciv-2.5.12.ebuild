@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils flag-o-matic gnome2-utils ltprune
+inherit autotools desktop flag-o-matic gnome2-utils ltprune
 
 DESCRIPTION="multiplayer strategy game (Civilization Clone)"
 HOMEPAGE="http://www.freeciv.org/"
@@ -58,7 +58,7 @@ DEPEND="${RDEPEND}
 	)"
 
 pkg_setup() {
-	if use !dedicated && use !server ; then
+	if ! use dedicated && ! use server ; then
 		ewarn "Disabling server USE flag will make it impossible"
 		ewarn "to start local games, but you will still be able to"
 		ewarn "join multiplayer games."
