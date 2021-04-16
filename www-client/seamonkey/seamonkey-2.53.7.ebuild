@@ -51,7 +51,7 @@ SYSTEM_IUSE=( +system-{av1,harfbuzz,icu,jpeg,libevent,libvpx,sqlite} )
 IUSE="+chatzilla cpu_flags_arm_neon +crypt dbus debug +gmp-autoupdate +ipc jack
 lto minimal pulseaudio +roaming selinux startup-notification test wifi"
 IUSE+=" ${SYSTEM_IUSE[@]}"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 x86"
 
 RESTRICT="!test? ( test )"
 
