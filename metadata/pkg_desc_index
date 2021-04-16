@@ -5199,7 +5199,7 @@ dev-java/slf4j-ext 1.7.5 1.7.7 1.7.30: Extensions to the SLF4J API
 dev-java/slf4j-log4j12 1.7.7 1.7.30: SLF4J LOG4J-12 Binding
 dev-java/slf4j-nop 1.7.7 1.7.30: SLF4J NOP Binding
 dev-java/slf4j-simple 1.7.7 1.7.30-r1: SLF4J Simple binding
-dev-java/snakeyaml 1.16 1.28: YAML 1.1 parser and emitter for Java
+dev-java/snakeyaml 1.16 1.28-r1: YAML 1.1 parser and emitter for Java
 dev-java/snappy 1.0.3_rc3 1.1.0.1: Snappy compressor/decompressor for Java
 dev-java/snip 0.11-r1: an Apache ANT optional task that extracts snippets of code from text files
 dev-java/spec-alpha 0.1.143 0.2.176 0.2.194: A Clojure library to describe the structure of data and functions
