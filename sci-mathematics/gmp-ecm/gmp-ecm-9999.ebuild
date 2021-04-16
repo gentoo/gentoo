@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ HOMEPAGE="http://ecm.gforge.inria.fr/"
 #SRC_URI="https://gforge.inria.fr/frs/download.php/30965/${P}.tar.gz"
 ESVN_REPO_URI="svn://scm.gforge.inria.fr/svnroot/ecm/trunk"
 
-inherit autotools eutils flag-o-matic subversion
+inherit autotools flag-o-matic subversion
 
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"
