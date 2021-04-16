@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils ltprune multilib-minimal
+inherit ltprune multilib-minimal
 
 DESCRIPTION="An optimised MPEG Audio Layer 2 (MP2) encoder"
 HOMEPAGE="https://www.twolame.org"
