@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit wrapper mono
+inherit mono wrapper
 
 DESCRIPTION="iCal clone for .NET"
 HOMEPAGE="http://www.monocalendar.com/"
@@ -13,7 +13,6 @@ S="${WORKDIR}/MonoCalendar"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 x86"
-IUSE=""
 
 DEPEND=">=dev-lang/mono-1.2.1"
 RDEPEND="${DEPEND}"
