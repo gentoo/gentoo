@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils linux-info ltprune multilib
+inherit linux-info ltprune multilib
 
 DESCRIPTION="library providing interface to extended accounting infrastructure"
 HOMEPAGE="https://netfilter.org/projects/libnetfilter_acct/"
