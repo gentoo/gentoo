@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils toolchain-funcs flag-o-matic
+inherit epatch toolchain-funcs flag-o-matic
 
 GIT_COMMIT="15a490b"
 DESCRIPTION="Command line media player for the Raspberry Pi"
