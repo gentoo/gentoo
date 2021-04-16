@@ -3,8 +3,6 @@
 
 EAPI=7
 
-inherit autotools
-
 DESCRIPTION="A tool to provide access to statistics about the system on which it's run"
 HOMEPAGE="https://www.i-scream.org/libstatgrab/"
 SRC_URI="https://www.mirrorservice.org/sites/ftp.i-scream.org/pub/i-scream/libstatgrab/${P}.tar.gz"
