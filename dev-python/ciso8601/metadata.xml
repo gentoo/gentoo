@@ -9,6 +9,9 @@
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
+  <use>
+    <flag name="test">Enable test support</flag>
+  </use>
   <longdescription>
     Converts ISO 8601 or RFC 3339 date time strings into Python datetime objects
     Since it’s written as a C module, it is much faster than other Python 
@@ -17,9 +20,6 @@
     popular subset. Supported subsets: 
     https://github.com/closeio/ciso8601#supported-subset-of-iso-8601
   </longdescription>
-  <use>
-    <flag name="test">Enable test support</flag>
-  </use>
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">ciso8601</remote-id>
