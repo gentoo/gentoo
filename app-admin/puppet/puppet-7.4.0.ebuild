@@ -4,14 +4,11 @@
 EAPI="6"
 
 USE_RUBY="ruby24 ruby25 ruby26 ruby27"
-
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
-
 RUBY_FAKEGEM_TASK_DOC="doc:all"
-
 RUBY_FAKEGEM_EXTRAINSTALL="locales"
 
-inherit eutils ruby-fakegem eapi7-ver
+inherit epatch ruby-fakegem
 
 DESCRIPTION="A system automation and configuration management software."
 HOMEPAGE="https://puppet.com/"
