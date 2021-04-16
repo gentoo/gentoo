@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils autotools
+inherit autotools
 
 DESCRIPTION="World Coordinate System library for astronomical FITS images"
 HOMEPAGE="http://tdc-www.harvard.edu/software/wcstools"
