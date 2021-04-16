@@ -25,7 +25,7 @@ KEYWORDS="~amd64"
 #     Ditto
 #  - tests/commands/install_uninstall_test.py::test_installed_from_venv
 #     "git commit" returns 1 instead of 0, again no details
-#RESTRICT="test"
+RESTRICT="test"
 
 RDEPEND="dev-vcs/git
 	$(python_gen_cond_dep '
