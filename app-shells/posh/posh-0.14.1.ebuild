@@ -17,8 +17,6 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE=""
 
-DEPEND="app-arch/xz-utils"
-
 src_prepare() {
 	default
 	eautoreconf
