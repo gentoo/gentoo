@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils versionator autotools
+inherit versionator autotools
 
 DESCRIPTION="pcc portable c compiler"
 HOMEPAGE="http://pcc.ludd.ltu.se"
