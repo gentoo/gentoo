@@ -1073,7 +1073,7 @@ app-cdr/b5i2iso 0.2-r1: Convert CD images from b5i (BlindWrite) to iso
 app-cdr/bashburn 3.1.0-r1: A shell script for burning optical media
 app-cdr/bchunk 1.2.2: Convert CD images from bin/cue to iso+wav/cdr
 app-cdr/bin2iso 19b-r2: converts RAW format (.bin/.cue) files to ISO/WAV format
-app-cdr/brasero 3.12.2-r1: CD/DVD burning application for the GNOME desktop
+app-cdr/brasero 3.12.2-r2: CD/DVD burning application for the GNOME desktop
 app-cdr/burncdda 1.8.3-r1: Console app for copying burning audio cds
 app-cdr/ccd2iso 0.3: Convert CD images from ccd (CloneCD) to iso
 app-cdr/cdck 0.7.0-r2: Measure the read time per sector on CD or DVD to check the quality
@@ -4763,7 +4763,7 @@ dev-java/ant-apache-resolver 1.10.9: Apache Ant's optional tasks depending on xm
 dev-java/ant-apache-xalan2 1.10.9: Apache Ant's optional tasks depending on xalan
 dev-java/ant-commons-logging 1.10.9: Apache Ant's optional tasks depending on commons-logging
 dev-java/ant-commons-net 1.10.9: Apache Ant's optional tasks depending on commons-net
-dev-java/ant-contrib 1.0_beta3-r2: A collection of tasks for Apache Ant
+dev-java/ant-contrib 1.0_beta3-r2 1.0_beta6_pre20201123: Ant-contrib tasks for Apache Ant
 dev-java/ant-core 1.10.9: Java-based build tool similar to 'make' that uses XML configuration files
 dev-java/ant-eclipse-ecj 4.4.2 4.5.1 4.10-r1 4.13 4.15: Ant Compiler Adapter for Eclipse Java Compiler
 dev-java/ant-ivy 1.4.1-r2 2.3.0-r3: Ivy is a free java based dependency manager
@@ -4850,7 +4850,7 @@ dev-java/commons-jxpath 1.3-r3 1.3-r4: Applies XPath expressions to graphs of ob
 dev-java/commons-lang 2.0-r3 2.6-r1 3.1 3.4-r1 3.6 3.11-r1 3.12.0: Commons components to manipulate core java classes
 dev-java/commons-launcher 1.1-r2: Java library to launch Java classes
 dev-java/commons-logging 1.2-r1 1.2-r2: An ultra-thin bridge between different Java logging libraries
-dev-java/commons-math 2.1-r2 3.2 3.6.1: Lightweight, self-contained mathematics and statistics components
+dev-java/commons-math 3.2-r1 3.6.1-r1: Lightweight, self-contained mathematics and statistics components
 dev-java/commons-net 3.2 3.6-r1 3.8.0: Client-oriented Java library to implement many Internet protocols
 dev-java/commons-pool 1.6 2.2: Provides general purpose object pooling API
 dev-java/commons-primitives 1.0-r3: The Jakarta-Commons Primitives Component
@@ -17239,7 +17239,7 @@ sys-apps/usbredir 0.8.0 0.9.0 9999: TCP daemon and set of libraries for usbredir
 sys-apps/usbutils 012 013 013-r1: USB enumeration utilities
 sys-apps/usermode-utilities 20070815-r4: Tools for use with Usermode Linux virtual machines
 sys-apps/utempter 0.5.5.6: App that allows non-privileged apps to write utmp (login) info
-sys-apps/util-linux 2.33.2 2.34-r3 2.35.2 2.36.1-r1 2.36.2 9999: Various useful Linux utilities
+sys-apps/util-linux 2.35.2 2.36.2 2.37_rc1 9999: Various useful Linux utilities
 sys-apps/vbetool 1.1: Run real-mode video BIOS code to alter hw state (i.e. reinitialize video card)
 sys-apps/watchdog 5.15 5.16: A software watchdog and /dev/watchdog daemon
 sys-apps/which 2.21: Prints out location of specified executables that are in your path

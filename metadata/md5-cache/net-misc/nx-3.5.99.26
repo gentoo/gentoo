@@ -12,4 +12,4 @@ RDEPEND=dev-libs/libxml2 >=media-libs/libpng-1.2.8:0= >=sys-libs/zlib-1.2.3 virt
 SLOT=0
 SRC_URI=https://github.com/ArcticaProject/nx-libs/archive/3.5.99.26.tar.gz -> nx-libs-3.5.99.26.tar.gz
 _eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354
-_md5_=efd2df3296470473f045085945d3e7c9
+_md5_=eb25ba0bf3a7e9e9fff52201ce624a86
