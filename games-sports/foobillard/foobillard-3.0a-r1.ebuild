@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools desktop flag-o-matic
+inherit autotools desktop flag-o-matic toolchain-funcs
 
 DESCRIPTION="8ball, 9ball, snooker and carambol game"
 HOMEPAGE="http://foobillard.sourceforge.net/"
@@ -39,6 +39,8 @@ src_prepare() {
 
 	mv configure.{in,ac} || die
 	rm aclocal.m4
+
+	tc-export PKG_CONFIG
 
 	eautoreconf
 }
