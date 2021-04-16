@@ -666,3 +666,8 @@ media-video/vlc directx
 # Since >=dev-games/ogre-1.11.2 is masked, mask contribovis USE to
 # make repoman happy
 media-libs/opencv contribovis
+
+# Tobias Klausmann <klausman@gentoo.org> (2021-04-16)
+# Newer (>=4.4.0) versions of Quodlibet have a different library structure, so
+# puddletag needs to be updated to handle that.
+media-sound/puddletag quodlibet

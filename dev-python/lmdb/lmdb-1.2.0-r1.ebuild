@@ -15,7 +15,11 @@ LICENSE="OPENLDAP"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
 
-RDEPEND=">=dev-db/lmdb-0.9.28:="
+RDEPEND="
+	>=dev-db/lmdb-0.9.28:=
+	$(python_gen_cond_dep '
+		dev-python/cffi[${PYTHON_USEDEP}]
+	' 'python*')"
 DEPEND="${RDEPEND}"
 
 distutils_enable_sphinx docs
