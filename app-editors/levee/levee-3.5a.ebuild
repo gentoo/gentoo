@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit toolchain-funcs eutils
+inherit toolchain-funcs epatch
 
 DESCRIPTION="Really tiny vi clone, for things like rescue disks"
 HOMEPAGE="http://www.pell.chi.il.us/~orc/Code/"
