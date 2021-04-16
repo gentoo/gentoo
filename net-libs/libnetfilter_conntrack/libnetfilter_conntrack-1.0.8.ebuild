@@ -12,7 +12,6 @@ SRC_URI="https://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE="static-libs"
 
 RDEPEND="
 	>=net-libs/libmnl-1.0.3
