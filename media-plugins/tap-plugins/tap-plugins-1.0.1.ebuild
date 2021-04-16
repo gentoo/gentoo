@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
