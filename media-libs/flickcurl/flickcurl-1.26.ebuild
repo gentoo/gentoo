@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit autotools eutils ltprune
+inherit autotools ltprune
 
 DESCRIPTION="C library for the Flickr API"
 HOMEPAGE="http://librdf.org/flickcurl/"
