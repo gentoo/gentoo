@@ -5943,7 +5943,7 @@ dev-lua/lua-term 0.7-r101: Terminal operations for Lua
 dev-lua/lua-utf8 0.1.3-r100: A UTF-8 support module for Lua and LuaJIT
 dev-lua/lua-zlib 1.2-r100: Simple streaming interface to zlib for Lua
 dev-lua/lua_cliargs 3.0_p2-r100: A command-line argument parsing module for Lua
-dev-lua/luacheck 0.23.0-r100 0.24.0: A tool for linting and static analysis of Lua code
+dev-lua/luacheck 0.24.0: A tool for linting and static analysis of Lua code
 dev-lua/luacov 0.14.0-r100: A simple coverage analyzer for Lua scripts
 dev-lua/luadbi 0.7.2-r102: A database interface library for Lua
 dev-lua/luaevent 0.4.6-r100: Binding of libevent for Lua
@@ -13006,7 +13006,7 @@ media-gfx/gimp-arrow-brushes 20190407: Brushes for GIMP with the styles arrow, h
 media-gfx/gmic 2.9.5 2.9.6 2.9.7: GREYC's Magic Image Converter
 media-gfx/gnofract4d 4.3_p20201029: A program for drawing beautiful mathematically-based images known as fractals
 media-gfx/gnome-font-viewer 3.34.0 40.0: Font viewer utility for GNOME
-media-gfx/gnome-photos 3.34.2: Access, organize and share your photos on GNOME
+media-gfx/gnome-photos 3.34.2 40.0: Access, organize and share your photos on GNOME
 media-gfx/gnome-raw-thumbnailer 3.0.0-r1: A lightweight and fast raw image thumbnailer for GNOME
 media-gfx/gnome-screenshot 3.38.0 40.0: Screenshot utility for GNOME
 media-gfx/gnuclad 0.2.4: Cladogram tree generator mainly used by the GNU/Linux distro timeline project
