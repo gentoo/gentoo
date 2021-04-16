@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils user
+inherit autotools user
 
 DESCRIPTION="A transparent ftp proxy"
 SRC_URI="http://frox.sourceforge.net/download/${P}.tar.bz2"
