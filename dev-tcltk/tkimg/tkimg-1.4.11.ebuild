@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools eutils multilib prefix toolchain-funcs virtualx
+inherit autotools edos2unix multilib prefix toolchain-funcs virtualx
 
 MYP=Img-${PV}-Source
 
