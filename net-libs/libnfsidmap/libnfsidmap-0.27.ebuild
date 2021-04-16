@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools multilib
+inherit autotools
 
 DESCRIPTION="NFSv4 ID <-> name mapping library"
 HOMEPAGE="http://www.citi.umich.edu/projects/nfsv4/linux/"
