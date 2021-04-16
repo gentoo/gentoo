@@ -5,7 +5,7 @@ EAPI=7
 USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
 # git-r3 goes after ruby-ng so that it overrides src_unpack properly
-inherit cmake eutils ruby-ng
+inherit cmake ruby-ng
 
 DESCRIPTION="A cross-platform ruby library for retrieving facts from operating systems"
 HOMEPAGE="http://www.puppetlabs.com/puppet/related-projects/facter/"
