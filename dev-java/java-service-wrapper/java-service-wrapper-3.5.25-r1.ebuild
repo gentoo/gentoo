@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-JAVA_PKG_IUSE="doc source test"
 
-inherit eutils java-pkg-2 java-ant-2 toolchain-funcs
+JAVA_PKG_IUSE="doc source test"
+inherit epatch java-pkg-2 java-ant-2 toolchain-funcs
 
 MY_PN="wrapper"
 MY_P="${MY_PN}_${PV}_src"
@@ -15,7 +15,6 @@ SRC_URI="http://${MY_PN}.tanukisoftware.org/download/${PV}/${MY_P}.tar.gz"
 LICENSE="tanuki-community"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
 RDEPEND="
 	>=virtual/jre-1.4"
