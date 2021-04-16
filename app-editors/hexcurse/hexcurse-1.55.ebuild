@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit autotools eutils
+inherit autotools epatch
 
 DESCRIPTION="ncurses based hex editor"
 HOMEPAGE="http://www.jewfish.net/description.php?title=HexCurse"
