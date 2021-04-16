@@ -25,8 +25,6 @@ KEYWORDS="~amd64"
 #     Ditto
 #  - tests/commands/install_uninstall_test.py::test_installed_from_venv
 #     "git commit" returns 1 instead of 0, again no details
-# even with the environment variables normally handled by pytest-env (which we haven't got in the tree yet)
-# explicitly declared in python_test().
 #RESTRICT="test"
 
 RDEPEND="dev-vcs/git
@@ -39,7 +37,10 @@ RDEPEND="dev-vcs/git
 		>=dev-python/virtualenv-20.0.8[${PYTHON_USEDEP}]
 	')"
 BDEPEND="test? (
-	$(python_gen_cond_dep 'dev-python/re-assert[${PYTHON_USEDEP}]')
+	$(python_gen_cond_dep '
+		dev-python/pytest-env[${PYTHON_USEDEP}]
+		dev-python/re-assert[${PYTHON_USEDEP}]
+	')
 )"
 
 DOCS=( CHANGELOG.md CONTRIBUTING.md README.md )
@@ -52,16 +53,4 @@ src_prepare() {
 	# These tests require a boatload of dependencies (e.g. Conda, Go, R and more) in order to run
 	# and while some of them do include "skip if not found" logic, most of them do not.
 	rm -rf tests/languages tests/repository_test.py
-}
-
-python_test() {
-	# TODO: add pytest-env to the tree so that these can be read from tox.ini
-	declare -x GIT_AUTHOR_NAME=test
-	declare -x GIT_COMMITTER_NAME=test
-	declare -x GIT_AUTHOR_EMAIL=test@example.com
-	declare -x GIT_COMMITTER_EMAIL=test@example.com
-	declare -x VIRTUALENV_NO_DOWNLOAD=1
-	declare -x PRE_COMMIT_NO_CONCURRENCY=1
-
-	distutils-r1_python_test
 }
