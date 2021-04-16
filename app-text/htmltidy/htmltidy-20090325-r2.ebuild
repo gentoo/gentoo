@@ -6,7 +6,7 @@ EAPI=5
 MY_PN="tidy"
 MY_P="${MY_PN}-${PV}"
 
-inherit eutils autotools
+inherit epatch autotools
 
 DESCRIPTION="Tidy the layout and correct errors in HTML and XML documents"
 HOMEPAGE="http://tidy.sourceforge.net/"
