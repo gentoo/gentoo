@@ -1,0 +1,16 @@
+BDEPEND=app-text/rman x11-base/xorg-proto >=x11-misc/imake-1.0.8-r1 sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=compile configure install postinst postrm prepare
+DEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libXmu x11-libs/libXrender emacs? ( >=app-editors/emacs-23.1:* ) imlib? ( media-libs/imlib2[X] ) !imlib? ( gif? ( media-libs/giflib:= ) png? ( >=media-libs/libpng-1.4:0= ) ) m17n-lib? ( dev-libs/m17n-lib[X] fontconfig? ( media-libs/fontconfig ) ) mng? ( media-libs/libmng:= ) truetype? ( x11-libs/libXft media-libs/fontconfig ) x11-libs/libxkbfile
+DESCRIPTION=X11 based presentation tool
+EAPI=7
+HOMEPAGE=http://member.wide.ad.jp/wg/mgp/
+INHERIT=autotools elisp-common toolchain-funcs
+IUSE=cjk contrib doc emacs examples fontconfig gif imlib m17n-lib mng nls png truetype
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libXmu x11-libs/libXrender emacs? ( >=app-editors/emacs-23.1:* ) imlib? ( media-libs/imlib2[X] ) !imlib? ( gif? ( media-libs/giflib:= ) png? ( >=media-libs/libpng-1.4:0= ) ) m17n-lib? ( dev-libs/m17n-lib[X] fontconfig? ( media-libs/fontconfig ) ) mng? ( media-libs/libmng:= ) truetype? ( x11-libs/libXft media-libs/fontconfig ) contrib? ( dev-lang/perl ) nls? ( sys-devel/gettext ) truetype? ( cjk? ( media-fonts/sazanami ) )
+REQUIRED_USE=imlib? ( !gif !png )
+SLOT=0
+SRC_URI=ftp://sh.wide.ad.jp/WIDE/free-ware/mgp-snap/mgp-snap-20121015.tar.gz
+_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354	elisp-common	36f97076abd90f943a34f8bcd58b5bcc
+_md5_=6bab6c6c05d240da0795522be22b648b

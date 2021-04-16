@@ -1,0 +1,15 @@
+BDEPEND=virtual/pkgconfig x11-misc/gccmakedep >=x11-misc/imake-1.0.8-r1
+DEFINED_PHASES=compile configure install postinst prepare
+DEPEND=app-text/rman sys-libs/ncurses:= x11-libs/libXaw x11-libs/libXmu x11-libs/libXpm x11-libs/libxkbfile Xaw3d? ( x11-libs/libXaw3d ) !<games-board/xgammon-0.98-r3 !<games-board/xscrabble-2.10-r4
+DESCRIPTION=Japanese Kanji X Terminal
+EAPI=7
+HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
+INHERIT=toolchain-funcs
+IUSE=Xaw3d
+KEYWORDS=-alpha amd64 ~ppc ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=MIT HPND XC
+RDEPEND=app-text/rman sys-libs/ncurses:= x11-libs/libXaw x11-libs/libXmu x11-libs/libXpm x11-libs/libxkbfile Xaw3d? ( x11-libs/libXaw3d ) !<games-board/xgammon-0.98-r3 !<games-board/xscrabble-2.10-r4
+SLOT=0
+SRC_URI=mirror://gentoo/kterm-6.2.0.tar.gz mirror://gentoo/kterm-6.2.0-wpi.patch.gz mirror://gentoo/kterm-6.2.0.ext02.patch.gz
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=6e9ab3c0ba1ceb46481989f2cf361035
