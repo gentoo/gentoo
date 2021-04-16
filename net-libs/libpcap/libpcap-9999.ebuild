@@ -12,8 +12,11 @@ if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/the-tcpdump-group/libpcap"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/the-tcpdump-group/${PN}/archive/${P/_pre/-bp}.tar.gz"
-	S="${WORKDIR}/${PN}-${P/_pre/-bp}"
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/tcpdump.asc
+	inherit verify-sig
+
+	SRC_URI="https://www.tcpdump.org/release/${P}.tar.gz"
+	SRC_URI+=" verify-sig? ( https://www.tcpdump.org/release/${P}.tar.gz.sig )"
 
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x86-solaris"
 fi
@@ -36,10 +39,13 @@ BDEPEND="
 	dbus? ( virtual/pkgconfig )
 "
 
+if [[ ${PV} != *9999* ]] ; then
+	BDEPEND+=" verify-sig? ( app-crypt/openpgp-keys-tcpdump )"
+fi
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.9.1-pcap-config.patch
 	"${FILESDIR}"/${PN}-1.10.0-usbmon.patch
-	"${FILESDIR}"/${PN}-9999-prefix-darwin.patch
 )
 
 src_prepare() {
