@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/quvi/${PV:0:3}/${P}.tar.xz"
 LICENSE="AGPL-3"
 SLOT="0/8" # subslot = libquvi soname version
 KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ppc64 sparc x86"
-IUSE="examples nls static-libs"
+IUSE="examples nls"
 
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
@@ -51,6 +51,7 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		$(use_enable nls)
+		--disable-static
 		--with-manual
 	)
 
