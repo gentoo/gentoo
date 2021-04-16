@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils toolchain-funcs
+inherit epatch toolchain-funcs
 
 DESCRIPTION="Command line MPEG audio/video/system file toolbox"
 SRC_URI="mirror://sourceforge/mpgtx/${P}.tar.gz"
