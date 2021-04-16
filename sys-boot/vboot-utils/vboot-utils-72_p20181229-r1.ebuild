@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 # This is the latest commit in the latest branch.
 GIT_SHA1="a32c930e8c46424a3bba3c296fd78b3e60f50aeb"
