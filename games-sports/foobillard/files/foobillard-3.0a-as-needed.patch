@@ -1,5 +1,5 @@
---- foobillard-3.0a.old/src/Makefile.am	2004-02-25 07:23:56.000000000 +0100
-+++ foobillard-3.0a/src/Makefile.am	2008-12-06 21:57:03.000000000 +0100
+--- a/src/Makefile.am
++++ b/src/Makefile.am
 @@ -83,6 +83,5 @@ AM_CFLAGS = -Wall `freetype-config --cfl
  
  #LIBS   = -L$(LIBDIR) -lglut -lGLU -lGL -lXext -lXaw -lm -lXi -lpng -lz
