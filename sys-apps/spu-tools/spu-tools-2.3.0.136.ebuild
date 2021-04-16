@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit epatch flag-o-matic toolchain-funcs
 
 MY_P=${P/_p/-}
 
