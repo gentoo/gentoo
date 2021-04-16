@@ -5,7 +5,7 @@ EAPI="7"
 
 FORTRAN_NEEDED="fortran"
 
-inherit autotools eutils fortran-2 flag-o-matic toolchain-funcs multilib prefix
+inherit autotools fortran-2 flag-o-matic toolchain-funcs multilib prefix
 
 MY_P="${PN}-${PV/_p/-patch}"
 MAJOR_P="${PN}-$(ver_cut 1-2)"
