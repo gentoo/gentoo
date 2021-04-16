@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils multilib multilib-minimal portability toolchain-funcs versionator
+inherit epatch multilib multilib-minimal portability toolchain-funcs versionator
 
 DESCRIPTION="A powerful light-weight programming language designed for extending applications"
 HOMEPAGE="http://www.lua.org/"
