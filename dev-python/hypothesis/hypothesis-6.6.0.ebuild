@@ -7,7 +7,7 @@ DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{7..9} pypy3 )
 PYTHON_REQ_USE="threads(+),sqlite"
 
-inherit distutils-r1 eutils multiprocessing optfeature
+inherit distutils-r1 multiprocessing optfeature
 
 DESCRIPTION="A library for property based testing"
 HOMEPAGE="https://github.com/HypothesisWorks/hypothesis https://pypi.org/project/hypothesis/"
