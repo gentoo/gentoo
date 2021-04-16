@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit eutils toolchain-funcs flag-o-matic versionator
+inherit epatch toolchain-funcs flag-o-matic versionator
 
 PATCH_VER="2"
 MY_PN="netkit-ftp"
