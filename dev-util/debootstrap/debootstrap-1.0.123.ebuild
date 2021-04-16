@@ -1,8 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit eutils
 
 DESCRIPTION="Debian/Ubuntu bootstrap scripts"
 HOMEPAGE="https://packages.qa.debian.org/d/debootstrap.html"
