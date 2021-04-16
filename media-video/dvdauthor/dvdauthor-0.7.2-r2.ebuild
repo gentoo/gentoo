@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils flag-o-matic toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="Tools for generating DVD files to be played on standalone DVD players"
 HOMEPAGE="http://dvdauthor.sourceforge.net/"
