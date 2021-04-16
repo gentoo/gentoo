@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,11 +9,10 @@ DESCRIPTION="COIN-OR Open Solver Interface"
 HOMEPAGE="https://github.com/coin-or/Osi/"
 SRC_URI="https://github.com/coin-or/${MY_PN}/archive/releases/${PV}.tar.gz
 	-> ${P}.tar.gz"
-LICENSE="EPL-1.0"
 
+LICENSE="EPL-1.0"
 # major soname component
 SLOT="0/1"
-
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
 # No USE=glpk because upstream only supports an ancient version of it. The
@@ -23,7 +22,7 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 #   * https://github.com/coin-or/Osi/issues/107
 #   * https://github.com/coin-or/Osi/issues/118
 #
-IUSE="doc examples static-libs test"
+IUSE="doc examples test"
 RESTRICT="!test? ( test )"
 
 # Fortran is NOT needed, but the ./configure scripts for all of the CoinOR
@@ -54,6 +53,7 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
+		--disable-static
 		--enable-dependency-linking
 		--with-coin-instdir="${ED}"/usr
 		$(use_with doc dot)
