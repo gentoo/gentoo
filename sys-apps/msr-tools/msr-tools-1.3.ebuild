@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 CONFIG_CHECK="~X86_MSR"
-inherit eutils linux-info toolchain-funcs
+inherit linux-info toolchain-funcs
 
 DESCRIPTION="Utilities allowing the read and write of CPU model-specific registers (MSR)"
 HOMEPAGE="https://01.org/msr-tools"
