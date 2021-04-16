@@ -15,7 +15,15 @@ KEYWORDS="~amd64"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-RDEPEND="dev-python/pyyaml[${PYTHON_USEDEP}]
+RDEPEND="dev-python/cryptography[${PYTHON_USEDEP}]
+	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
-	dev-python/urllib3[${PYTHON_USEDEP}]"
+	dev-python/urllib3[${PYTHON_USEDEP}]
+	dev-python/websocket-client[${PYTHON_USEDEP}]"
+DEPEND="${RDEPEND}"
 distutils_enable_tests pytest
+
+python_prepare_all() {
+	sed -e 's|websocket-client==[[:digit:]\.]*|websocket-client|' -i setup.py || die
+	distutils-r1_python_prepare_all
+}
