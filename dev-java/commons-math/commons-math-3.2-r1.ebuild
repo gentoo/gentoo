@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
 # Tests are currently broken due to nasty -lib argument.
 JAVA_PKG_IUSE="doc source" # test
@@ -19,7 +19,7 @@ LICENSE="Apache-2.0"
 SLOT="3"
 KEYWORDS="amd64 x86"
 
-DEPEND=">=virtual/jdk-1.5"
+DEPEND=">=virtual/jdk-1.8:*"
 
 # Tests are currently broken due to nasty -lib argument.
 # test? (
@@ -27,11 +27,13 @@ DEPEND=">=virtual/jdk-1.5"
 # 	dev-java/hamcrest-core:0
 # )"
 
-RDEPEND=">=virtual/jre-1.5"
+RDEPEND=">=virtual/jre-1.8:*"
 
 S="${WORKDIR}/${MY_P}-src"
 
-java_prepare() {
+src_prepare() {
+	default
+
 	cp "${FILESDIR}"/${P}-build.xml build.xml || die
 
 	sed -i 's/manifest=".*MANIFEST.MF"//g' build.xml || die
