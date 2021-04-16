@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools toolchain-funcs flag-o-matic systemd
+inherit autotools flag-o-matic systemd
 
 MY_P=${P/_p/p}
 DESCRIPTION="Network Time Protocol suite/programs"
