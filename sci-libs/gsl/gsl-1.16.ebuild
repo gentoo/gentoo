@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils flag-o-matic autotools toolchain-funcs
+inherit epatch flag-o-matic autotools toolchain-funcs
 
 DESCRIPTION="The GNU Scientific Library"
 HOMEPAGE="https://www.gnu.org/software/gsl/"
