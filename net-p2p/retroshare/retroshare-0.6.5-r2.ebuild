@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils qmake-utils xdg-utils
+inherit desktop edos2unix qmake-utils xdg-utils
 
 DESCRIPTION="P2P private sharing application"
 HOMEPAGE="https://retroshare.cc"
