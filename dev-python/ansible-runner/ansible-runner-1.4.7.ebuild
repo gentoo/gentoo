@@ -15,6 +15,14 @@ KEYWORDS="~amd64"
 
 LICENSE="Apache-2.0"
 SLOT="0"
+RDEPEND="
+	dev-python/pexpect[${PYTHON_USEDEP}]
+	dev-python/psutil[${PYTHON_USEDEP}]
+	dev-python/python-daemon[${PYTHON_USEDEP}]
+	dev-python/pyyaml[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]
+"
+DEPEND="${RDEPEND}"
 distutils_enable_tests pytest
 
 python_prepare_all() {
