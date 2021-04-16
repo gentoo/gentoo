@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit autotools eutils elisp-common flag-o-matic multilib prefix toolchain-funcs versionator
+inherit autotools epatch elisp-common flag-o-matic toolchain-funcs versionator
 
 MY_PN=Singular
 MY_PV=$(replace_all_version_separators '.')
