@@ -3274,7 +3274,7 @@ app-text/xmlto 0.0.28-r3 0.0.28-r6: Script for converting XML and DocBook docume
 app-text/xournal 0.4.8.2016 9999: An application for notetaking, sketching, and keeping a journal using a stylus
 app-text/xournalpp 1.0.20 9999: Handwriting notetaking software with PDF annotation support
 app-text/xpdf 4.03: The PDF viewer and tools
-app-text/yelp-tools 3.38.0: Collection of tools for building and converting documentation
+app-text/yelp-tools 3.38.0 40.0: Collection of tools for building and converting documentation
 app-text/yodl 4.03.00: Your Own Document Language: a pre-document language and tools to process it
 app-text/zathura 0.4.3 0.4.4 0.4.5 0.4.7 9999: A highly customizable and functional document viewer
 app-text/zathura-cb 0.1.8 9999: Comic book plug-in for zathura with 7zip, rar, tar and zip support
@@ -5632,7 +5632,7 @@ dev-libs/liblouis 3.13.0: An open-source braille translator and back-translator
 dev-libs/libltdl 2.4.6: A shared library tool for developers
 dev-libs/liblzw 0.2-r1 0.3: small C library for reading LZW compressed files (.Z)
 dev-libs/libmaa 1.3.2: Library with low-level data structures which are helpful for writing compilers
-dev-libs/libmanette 0.2.5: Simple GObject game controller library
+dev-libs/libmanette 0.2.5 0.2.6: Simple GObject game controller library
 dev-libs/libmateweather 1.24.0-r1 1.24.1: MATE library to access weather information from online services
 dev-libs/libmaxminddb 1.5.2 9999: C library for the MaxMind DB file format
 dev-libs/libmba 0.9.1-r4: A library of generic C modules
@@ -11994,7 +11994,7 @@ gnome-base/libglade 2.6.4-r3: Library to construct graphical interfaces at runti
 gnome-base/libgnomecanvas 2.30.3-r1: The Gnome 2 Canvas library
 gnome-base/libgnomekbd 3.26.1: Gnome keyboard configuration library
 gnome-base/libgtop 2.40.0-r1: A library that provides top functionality to applications
-gnome-base/librsvg 2.40.21 2.50.3: Scalable Vector Graphics (SVG) rendering library
+gnome-base/librsvg 2.40.21 2.50.3 2.50.4: Scalable Vector Graphics (SVG) rendering library
 gnome-base/nautilus 3.36.3 40.0: Default file manager for the GNOME desktop
 gnome-extra/chrome-gnome-shell 10-r4: GNOME Shell integration for Chrome/Chromium, Firefox, Vivaldi, Opera browsers
 gnome-extra/cinnamon 4.6.7 4.8.6: A fork of GNOME Shell with layout similar to GNOME 2
@@ -12060,8 +12060,8 @@ gnome-extra/polkit-gnome 0.105-r2: A dbus session bus service that is used to br
 gnome-extra/seahorse-nautilus 3.11.92: Nautilus extension for encrypting and decrypting files with GnuPG
 gnome-extra/sushi 3.38.0: A quick previewer for Nautilus, the GNOME file manager
 gnome-extra/synapse 0.2.99.4: A program launcher in the style of GNOME Do
-gnome-extra/yelp 3.38.3: Help browser for GNOME
-gnome-extra/yelp-xsl 3.38.3: XSL stylesheets for yelp
+gnome-extra/yelp 3.38.3 40.0: Help browser for GNOME
+gnome-extra/yelp-xsl 3.38.3 40.0: XSL stylesheets for yelp
 gnome-extra/zenity 3.32.0: Tool to display dialogs from the commandline and shell scripts
 gnustep-apps/aclock 0.4.0-r1: Analog dockapp clock for GNUstep
 gnustep-apps/addresses 0.4.8-r1: Apple Addressbook work alike (standalone and for GNUMail)
@@ -12994,7 +12994,7 @@ media-gfx/gnofract4d 4.3_p20201029: A program for drawing beautiful mathematical
 media-gfx/gnome-font-viewer 3.34.0: Font viewer utility for GNOME
 media-gfx/gnome-photos 3.34.2: Access, organize and share your photos on GNOME
 media-gfx/gnome-raw-thumbnailer 3.0.0-r1: A lightweight and fast raw image thumbnailer for GNOME
-media-gfx/gnome-screenshot 3.38.0: Screenshot utility for GNOME
+media-gfx/gnome-screenshot 3.38.0 40.0: Screenshot utility for GNOME
 media-gfx/gnuclad 0.2.4: Cladogram tree generator mainly used by the GNU/Linux distro timeline project
 media-gfx/gozer 0.7-r3: tool for rendering arbitrary text as graphics, using ttfs and styles
 media-gfx/gphoto2 2.5.26: Free, redistributable digital camera software application
@@ -15740,7 +15740,7 @@ net-wireless/crackle 0.1 9999: Crackle cracks BLE Encryption (AKA Bluetooth Smar
 net-wireless/crda 4.14: Central Regulatory Domain Agent for wireless networks
 net-wireless/cubicsdr 0.2.3-r2 9999: Cross-Platform and Open-Source Software Defined Radio Application
 net-wireless/dump1090 4.0 9999: simple Mode S decoder for RTLSDR devices
-net-wireless/gnome-bluetooth 3.34.3: Bluetooth graphical utilities integrated with GNOME
+net-wireless/gnome-bluetooth 3.34.3 3.34.5: Bluetooth graphical utilities integrated with GNOME
 net-wireless/gnuradio 3.8.2.0-r1 9999: Toolkit that provides signal processing blocks to implement software radios
 net-wireless/gobi_loader 0.7-r2: gobi_loader is a firmware loader for Qualcomm Gobi USB chipsets
 net-wireless/gqrx 2.14.4 9999: Software defined radio receiver powered by GNU Radio and Qt
@@ -19035,7 +19035,7 @@ x11-themes/gentoo-xcursors 0.3.2: A high quality set of animated mouse cursors
 x11-themes/gentoo10-backgrounds 20110309: Gentoo - 10 Years Compiling Background Artwork
 x11-themes/geramik 0.27-r1: GTK+1 and GTK+2 Geramik Themes
 x11-themes/gkrellm-themes 0.1-r1: A pack of ~200 themes for GKrellM
-x11-themes/gnome-backgrounds 3.38.0: A set of backgrounds packaged with the GNOME desktop
+x11-themes/gnome-backgrounds 3.38.0 40.0: A set of backgrounds packaged with the GNOME desktop
 x11-themes/gnome-colors-common 5.5.1-r1: Colorized icons shared between all gnome-colors iconsets
 x11-themes/gnome-colors-themes 5.5.1: Some gnome-colors iconsets including a Gentoo one
 x11-themes/gnome-icon-theme-extras 3.12.0: Extra GNOME icons for specific devices and file types
