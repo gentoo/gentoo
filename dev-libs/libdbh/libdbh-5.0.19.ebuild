@@ -3,7 +3,8 @@
 
 EAPI=5
 
-inherit autotools
+# eutils for einstalldocs in EAPI 5
+inherit autotools eutils
 
 MY_P=${PN}2-${PV}
 
