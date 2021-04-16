@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-inherit eutils systemd
+inherit systemd
 
 DESCRIPTION="A highly configurable replacement for syslogd/klogd"
 HOMEPAGE="http://metalog.sourceforge.net/"
