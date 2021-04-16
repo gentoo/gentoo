@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 MODULE_AUTHOR=PMQS
 MODULE_VERSION=0.55
-inherit perl-module eutils db-use
+inherit perl-module epatch db-use
 
 DESCRIPTION="This module provides Berkeley DB interface for Perl"
 
