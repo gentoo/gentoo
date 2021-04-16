@@ -25,22 +25,24 @@ RDEPEND="${DEPEND}"
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
-	"${FILESDIR}/"${PN}-0.8.2.patch
-	"${FILESDIR}/"${P}-soname.patch
-	"${FILESDIR}/"${P}-expat.patch
-	"${FILESDIR}/"${PN}-0.8.2-tnc.patch
-	"${FILESDIR}/"${P}-tcl8.6.patch
-	)
+	"${FILESDIR}"/${PN}-0.8.2.patch
+	"${FILESDIR}"/${P}-soname.patch
+	"${FILESDIR}"/${P}-expat.patch
+	"${FILESDIR}"/${PN}-0.8.2-tnc.patch
+	"${FILESDIR}"/${P}-tcl8.6.patch
+)
 
 src_prepare() {
 	tc-export AR
 	append-libs -lm
+
 	sed \
 		-e 's:-O2::g' \
 		-e 's:-pipe::g' \
 		-e 's:-fomit-frame-pointer::g' \
 		-e '/SHLIB_LD_LIBS/s:\"$: ${TCL_LIB_FLAG}":g' \
 		-i {.,extensions/tnc}/configure tclconfig/tcl.m4 || die
+
 	epatch "${PATCHES[@]}"
 	eautoreconf
 }
@@ -52,7 +54,7 @@ src_configure() {
 		--disable-tdomalloc
 		--with-expat
 		--with-tcl="${EPREFIX}"/usr/$(get_libdir)
-		)
+	)
 
 	cd "${S}"/unix && ECONF_SOURCE=".." econf ${myeconfargs}
 	cd "${S}"/extensions/tdomhtml &&	econf ${myeconfargs}

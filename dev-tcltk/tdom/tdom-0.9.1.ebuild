@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools flag-o-matic multilib toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 MY_P="tDOM-${PV}"
 
