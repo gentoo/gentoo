@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit autotools eutils rpm
+inherit autotools epatch rpm
 
 MY_R=${PR/r/}
 DESCRIPTION="RedHat's Bluecurve theme for GTK2, KDE, GDM, Metacity and Nautilus"
