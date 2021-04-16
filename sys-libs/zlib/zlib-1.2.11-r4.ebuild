@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-AUTOTOOLS_AUTO_DEPEND="no"
 
-inherit autotools toolchain-funcs multilib multilib-minimal usr-ldscript
+AUTOTOOLS_AUTO_DEPEND="no"
+inherit autotools multilib-minimal usr-ldscript
 
 CYGWINPATCHES=(
 	"https://github.com/cygwinports/zlib/raw/22a3462cae33a82ad966ea0a7d6cbe8fc1368fec/1.2.11-gzopen_w.patch -> ${PN}-1.2.11-cygwin-gzopen_w.patch"
