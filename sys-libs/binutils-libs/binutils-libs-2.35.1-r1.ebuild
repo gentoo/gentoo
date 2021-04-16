@@ -6,7 +6,7 @@ EAPI=7
 PATCH_VER=2
 PATCH_DEV=dilfridge
 
-inherit eutils libtool toolchain-funcs multilib-minimal
+inherit libtool toolchain-funcs multilib-minimal
 
 MY_PN="binutils"
 MY_P="${MY_PN}-${PV}"
