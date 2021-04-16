@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit meson multilib-minimal flag-o-matic udev python-any-r1
+PYTHON_COMPAT=( python3_{7,8,9} )
+inherit meson multilib-minimal udev python-any-r1
 
 DESCRIPTION="An interface for filesystems implemented in userspace"
 HOMEPAGE="https://github.com/libfuse/libfuse"
