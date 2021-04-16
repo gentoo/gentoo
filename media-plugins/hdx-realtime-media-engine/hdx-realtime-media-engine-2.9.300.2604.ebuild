@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="fetch mirror strip"
 
-DEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
 RDEPEND="
 	>=net-misc/icaclient-20.12.0.12-r1
 	|| (
