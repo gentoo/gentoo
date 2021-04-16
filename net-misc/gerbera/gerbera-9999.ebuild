@@ -3,11 +3,10 @@
 
 EAPI=7
 
-inherit cmake eutils linux-info systemd tmpfiles
+inherit cmake linux-info
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/gerbera/${PN}.git"
-	SRC_URI=""
 	inherit git-r3
 else
 	SRC_URI="https://github.com/gerbera/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
