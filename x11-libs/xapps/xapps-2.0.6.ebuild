@@ -17,7 +17,7 @@ S="${WORKDIR}/xapp-${PV}"
 KEYWORDS="~amd64 ~arm64 ~x86"
 
 SLOT="0"
-IUSE="gtk-doc introspection static-libs"
+IUSE="gtk-doc introspection"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
