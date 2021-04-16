@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 JAVA_PKG_IUSE="doc source"
 
-inherit eutils java-pkg-2 java-ant-2
+inherit epatch java-pkg-2 java-ant-2
 
 DESCRIPTION="Find Bugs in Java Programs"
 HOMEPAGE="http://findbugs.sourceforge.net/"
