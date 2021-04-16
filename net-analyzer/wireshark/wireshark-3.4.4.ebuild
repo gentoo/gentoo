@@ -15,7 +15,11 @@ if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://gitlab.com/wireshark/wireshark"
 	inherit git-r3
 else
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/wireshark.asc
+	inherit verify-sig
+
 	SRC_URI="https://www.wireshark.org/download/src/all-versions/${P/_/}.tar.xz"
+	SRC_URI+=" verify-sig? ( https://www.wireshark.org/download/SIGNATURES-${PV}.txt -> ${P}-signatures.txt )"
 	SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-glib-2.68-patches.tar.gz"
 	S="${WORKDIR}/${P/_/}"
 
@@ -101,6 +105,10 @@ REQUIRED_USE="
 	plugin-ifdemo? ( plugins )
 "
 
+if [[ ${PV} != *9999* ]] ; then
+	BDEPEND+=" verify-sig? ( app-crypt/openpgp-keys-wireshark )"
+fi
+
 RESTRICT="test"
 
 PATCHES=(
@@ -114,6 +122,21 @@ PATCHES=(
 
 pkg_setup() {
 	use lua && lua-single_pkg_setup
+}
+
+src_unpack() {
+	if [[ ${PV} == *9999* ]] ; then
+		git-r3_src_unpack
+	else
+		if use verify-sig ; then
+			verify-sig_verify_signed_checksums \
+				"${DISTDIR}"/${P}-signatures.txt \
+				sha256 \
+				"${DISTDIR}"/${P}.tar.xz
+		fi
+
+		default
+	fi
 }
 
 src_configure() {
