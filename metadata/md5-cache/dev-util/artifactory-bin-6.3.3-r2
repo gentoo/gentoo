@@ -1,0 +1,15 @@
+BDEPEND=app-arch/unzip virtual/pkgconfig
+DEFINED_PHASES=compile install preinst prepare setup
+DEPEND=acct-group/artifactory acct-user/artifactory >=dev-java/java-config-2.2.0-r3
+DESCRIPTION=The world's most advanced repository manager for maven
+EAPI=7
+HOMEPAGE=http://www.jfrog.org/products.php
+INHERIT=java-pkg-2 systemd
+IUSE=ssl elibc_FreeBSD
+KEYWORDS=~amd64 ~x86
+LICENSE=AGPL-3+
+RDEPEND=acct-group/artifactory acct-user/artifactory >=virtual/jre-1.8 >=dev-java/java-config-2.2.0-r3
+SLOT=0
+SRC_URI=https://bintray.com/artifact/download/jfrog/artifactory/jfrog-artifactory-oss-6.3.3.zip -> artifactory-6.3.3.zip
+_eclasses_=java-utils-2	2440f41421207d084e5e3f1fb001b34e	java-pkg-2	45c44ec10db6affb3ebee1ac72039888	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6
+_md5_=92d47a96b3cdcca7416e695cdd24bfa7
