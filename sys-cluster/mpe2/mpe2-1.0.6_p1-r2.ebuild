@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 FORTRAN_NEEDED=fortran
 
-inherit eutils fortran-2 java-pkg-opt-2 toolchain-funcs
+inherit epatch fortran-2 java-pkg-opt-2 toolchain-funcs
 
 MY_P=${P/_/}
 
