@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ gui? ( https://dev.gentoo.org/~asturm/distfiles/${PN}-bundled-${PV}.tar.xz )"
 LICENSE="GPL-2 gui? ( MIT Apache-2.0 OFL-1.1 )"
 SLOT="0/1"
 KEYWORDS="~amd64 ~x86"
-IUSE="gui +jupyter static-libs test"
+IUSE="gui +jupyter test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
