@@ -8090,7 +8090,7 @@ dev-python/amodem 1.15.1-r1: Transmit data between two computers using audio
 dev-python/aniso8601 9.0.1: A library for parsing ISO 8601 strings
 dev-python/ansi 0.2.0: ANSI cursor movement and graphics in Python
 dev-python/ansi2html 1.6.0: Convert text with ANSI color codes to HTML
-dev-python/ansible-runner 1.4.7: A tool and python library that helps when interfacing with Ansible
+dev-python/ansible-runner 1.4.7-r1: A tool and python library that helps when interfacing with Ansible
 dev-python/ansicolor 0.2.6-r1 9999: Produce ansi color output and colored highlighting and diffing
 dev-python/anyqt 0.0.8-r1: PyQt4/PyQt5 compatibility layer
 dev-python/aodhclient 1.2.0 2.1.1: A client for the OpenStack Aodh API
@@ -8128,7 +8128,7 @@ dev-python/autoprop 1.0.2 2.0.0 2.1.0 2.1.1 2.2.0: Infer properties from accesso
 dev-python/aws-sam-translator 1.35.0: A library that transform SAM templates into AWS CloudFormation templates
 dev-python/aws-xray-sdk-python 2.6.0 2.7.0: AWS X-Ray SDK for Python
 dev-python/awscli 1.19.3 1.19.47: Universal Command Line Environment for AWS
-dev-python/awxkit 19.0.0: Command line interface for Ansible AWX
+dev-python/awxkit 19.0.0-r1: Command line interface for Ansible AWX
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
 dev-python/backcall 0.2.0: Specifications for callback functions passed in to an API
 dev-python/backports-tempfile 1.0-r1: Backport of new features in Python's tempfile module
