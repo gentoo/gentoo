@@ -16,7 +16,11 @@ if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://gitlab.com/wireshark/wireshark"
 	inherit git-r3
 else
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/wireshark.asc
+	inherit verify-sig
+
 	SRC_URI="https://www.wireshark.org/download/src/all-versions/${P/_/}.tar.xz"
+	SRC_URI+=" verify-sig? ( https://www.wireshark.org/download/SIGNATURES-${PV}.txt -> ${P}-signatures.txt )"
 	S="${WORKDIR}/${P/_/}"
 
 	# 4.1.x is an experimental release until 4.2
@@ -130,6 +134,10 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-wireshark )
 "
 
+if [[ ${PV} != *9999* ]] ; then
+	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-wireshark )"
+fi
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.6.0-redhat.patch
 )
@@ -145,6 +153,23 @@ pkg_setup() {
 	use lua && lua-single_pkg_setup
 
 	python-any-r1_pkg_setup
+}
+
+src_unpack() {
+	if [[ ${PV} == *9999* ]] ; then
+		git-r3_src_unpack
+	else
+		if use verify-sig ; then
+			cd "${DISTDIR}" || die
+			verify-sig_verify_signed_checksums \
+				${P}-signatures.txt \
+				openssl-dgst \
+				${P}.tar.xz
+			cd "${WORKDIR}" || die
+		fi
+
+		default
+	fi
 }
 
 src_configure() {
