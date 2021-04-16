@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic
+inherit autotools
 
 GITID="f299bb5e5f661c345c4b85a3e8de9ad8615ad17a"
 DESCRIPTION="HTML to ASCII converter programmed to handle incorrect html"
