@@ -14,10 +14,12 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="amd64 ~arm x86"
-IUSE="static-libs"
 
-DEPEND="x11-libs/libXaw
-	x11-libs/libX11"
+RDEPEND="
+	x11-libs/libXaw
+	x11-libs/libX11
+"
+DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gcc47.patch
@@ -28,4 +30,8 @@ src_prepare() {
 	default
 
 	eautoreconf
+}
+
+src_configure() {
+	econf --disable-static
 }
