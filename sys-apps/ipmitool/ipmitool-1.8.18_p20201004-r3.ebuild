@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools eutils flag-o-matic systemd
+inherit autotools flag-o-matic systemd
 
 DESCRIPTION="Utility for controlling IPMI enabled devices."
 HOMEPAGE="http://ipmitool.sf.net/"
