@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8} )
 
-inherit eutils distutils-r1
+inherit distutils-r1
 
 DESCRIPTION="Required testing tools needed in the several Salt Stack projects"
 HOMEPAGE="https://saltstack.com/community/"
