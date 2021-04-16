@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools eutils
+inherit autotools
 
 MY_P="${PN}_${PV}"
 DESCRIPTION="GTK+/libglade/GNOME bindings for the librep Lisp environment"
