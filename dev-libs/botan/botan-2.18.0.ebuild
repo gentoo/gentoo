@@ -4,12 +4,14 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
-inherit python-r1 toolchain-funcs
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/botan.asc"
+inherit python-r1 toolchain-funcs verify-sig
 
 MY_P="Botan-${PV}"
 DESCRIPTION="C++ crypto library"
 HOMEPAGE="https://botan.randombit.net/"
 SRC_URI="https://botan.randombit.net/releases/${MY_P}.tar.xz"
+SRC_URI+=" verify-sig? ( https://botan.randombit.net/releases/${MY_P}.tar.xz.asc )"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD-2"
@@ -43,6 +45,7 @@ BDEPEND="
 	$(python_gen_any_dep '
 		doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	')
+	verify-sig? ( app-crypt/openpgp-keys-botan )
 "
 
 # NOTE: Considering patching Botan?
