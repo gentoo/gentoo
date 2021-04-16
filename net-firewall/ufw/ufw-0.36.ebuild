@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{7,8} )
 DISTUTILS_IN_SOURCE_BUILD=1
 DISTUTILS_USE_SETUPTOOLS=no
 
-inherit bash-completion-r1 distutils-r1 eutils linux-info systemd
+inherit bash-completion-r1 distutils-r1 linux-info systemd
 
 DESCRIPTION="A program used to manage a netfilter firewall"
 HOMEPAGE="https://launchpad.net/ufw"

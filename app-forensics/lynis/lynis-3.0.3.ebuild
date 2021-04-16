@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit eutils bash-completion-r1
+inherit bash-completion-r1
 
 DESCRIPTION="Security and system auditing tool"
 HOMEPAGE="https://cisofy.com/lynis/"

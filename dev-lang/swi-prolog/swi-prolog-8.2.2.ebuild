@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils eutils flag-o-matic multilib
+inherit cmake-utils flag-o-matic multilib
 
 PATCHSET_VER="0"
 

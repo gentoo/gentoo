@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools eutils fortran-2 toolchain-funcs
+inherit autotools fortran-2 toolchain-funcs
 
 DESCRIPTION="Matrix elements (integrals) evaluation over Cartesian Gaussian functions"
 HOMEPAGE="https://github.com/evaleev/libint"

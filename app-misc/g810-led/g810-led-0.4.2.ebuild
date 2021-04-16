@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils systemd toolchain-funcs udev
+inherit systemd toolchain-funcs udev
 
 DESCRIPTION="Led controller for Logitech G- Keyboards"
 HOMEPAGE="https://github.com/MatMoul/g810-led"

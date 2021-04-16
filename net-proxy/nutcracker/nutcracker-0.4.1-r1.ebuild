@@ -1,12 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit autotools eutils
+inherit autotools epatch
 
-DESCRIPTION="A fast, light-weight proxy for Memcached and Redis.
-(Twitter's Twemproxy)"
+DESCRIPTION="A fast, light-weight proxy for Memcached and Redis. (Twitter's Twemproxy)"
 HOMEPAGE="https://github.com/twitter/twemproxy"
 SRC_URI="https://github.com/twitter/twemproxy/archive/v0.4.1.tar.gz -> ${P}.tar.gz"
 
@@ -31,7 +30,7 @@ src_configure() {
 }
 
 src_install() {
-	default_src_install
+	default
 
 	insinto /etc/nutcracker
 	newins conf/nutcracker.yml nutcracker.yml.example

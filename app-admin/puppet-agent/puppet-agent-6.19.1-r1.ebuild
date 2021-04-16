@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit eutils systemd unpacker tmpfiles
+inherit systemd unpacker tmpfiles
 
 DESCRIPTION="general puppet client utils along with hiera and facter"
 HOMEPAGE="https://puppetlabs.com/"

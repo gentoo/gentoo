@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils multilib
+inherit multilib
 
 MY_P="${PN}${PV}"
 

@@ -288,7 +288,7 @@ KEYWORDS="~amd64"
 IUSE=""
 
 src_compile() {
-	emake all || die
+	emake all
 }
 
 src_install() {

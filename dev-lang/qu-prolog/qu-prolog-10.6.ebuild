@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools eutils multilib qmake-utils
+inherit autotools multilib qmake-utils
 
 MY_P=qp${PV}
 

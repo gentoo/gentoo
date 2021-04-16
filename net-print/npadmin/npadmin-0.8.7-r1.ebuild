@@ -1,9 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
-inherit eutils
 
 DESCRIPTION="Network printer command-line adminstration tool"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"

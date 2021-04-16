@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 JAVA_PKG_IUSE="doc source"
 
-inherit eutils java-pkg-2 java-ant-2
+inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Jdbm aims to be for Java what GDBM is for Perl, Python, C, ..."
 HOMEPAGE="http://jdbm.sourceforge.net/"

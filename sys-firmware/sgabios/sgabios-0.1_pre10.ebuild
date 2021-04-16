@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="serial graphics adapter bios option rom for x86"
 HOMEPAGE="https://code.google.com/p/sgabios/"

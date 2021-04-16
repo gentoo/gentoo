@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils linux-info multilib toolchain-funcs
+inherit linux-info multilib toolchain-funcs
 
 DESCRIPTION="Webcam app for sn9c10x based camera controllers (with optional MPEG4 support)"
 HOMEPAGE="http://www.stolk.org/sonic-snap/"

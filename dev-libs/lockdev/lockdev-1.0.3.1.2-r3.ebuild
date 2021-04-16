@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 GENTOO_DEPEND_ON_PERL="no"
-inherit toolchain-funcs perl-module eutils versionator autotools ltprune multilib-minimal
+inherit perl-module epatch versionator autotools ltprune multilib-minimal
 
 MAJOR=$(get_major_version)
 MY_PV=$(get_version_component_range 1-3)
@@ -18,21 +18,18 @@ SRC_URI="
 	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${MY_PV}.orig.tar.gz
 	mirror://debian/pool/main/${PN:0:1}/${PN}/${DEB_P}.diff.gz
 "
+S="${WORKDIR}"/${PN}-${MY_PV}
 
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~s390 ~sparc x86"
 IUSE="perl"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
-
 PATCHES=(
 	"${FILESDIR}/${MY_P}-add-autotools.patch"
 	"${FILESDIR}/${MY_P}-fix-perl.patch"
 )
 
-S=${WORKDIR}/${PN}-${MY_PV}
 PERL_S=./LockDev
 
 pkg_setup() {

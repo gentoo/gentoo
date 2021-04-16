@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-inherit toolchain-funcs eutils
+inherit epatch toolchain-funcs
 
-DESCRIPTION="a small mail monitor similar to xbiff"
+DESCRIPTION="A small mail monitor similar to xbiff"
 HOMEPAGE="http://www.tigr.net"
 SRC_URI="http://www.tigr.net/afterstep/download/${PN}/${P}.tar.gz"
 

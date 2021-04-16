@@ -4,7 +4,7 @@
 EAPI="6"
 GNOME2_LA_PUNT="yes"
 
-inherit eutils gnome2 multilib-minimal virtualx
+inherit gnome2 multilib-minimal virtualx
 
 DESCRIPTION="Helper library for RESTful services"
 HOMEPAGE="https://wiki.gnome.org/Projects/Librest"
@@ -34,7 +34,7 @@ DEPEND="${RDEPEND}
 multilib_src_configure() {
 	# gnome support only adds dependency on obsolete libsoup-gnome
 	# https://bugzilla.gnome.org/show_bug.cgi?id=758166
-	ECONF_SOURCE=${S} \
+	ECONF_SOURCE="${S}" \
 	gnome2_src_configure \
 		--disable-static \
 		--disable-gcov \

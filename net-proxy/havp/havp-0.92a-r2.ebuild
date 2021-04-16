@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit autotools eutils toolchain-funcs user
+inherit autotools epatch toolchain-funcs user
 
 DESCRIPTION="HTTP AntiVirus Proxy"
 HOMEPAGE="http://www.server-side.de/"

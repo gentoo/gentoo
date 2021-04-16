@@ -96,10 +96,10 @@ src_compile() {
 	# missing files, so skip building
 	if use doc; then
 		einfo "Generation of documentation"
-		pushd docs > /dev/null
+		pushd docs > /dev/null || die
 		#'man' target is currently broken
-		emake html || die "Docs generation failed"
-		popd > /dev/null
+		emake html
+		popd > /dev/null || die
 	fi
 }
 

@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools eutils
+inherit autotools
 
 # agedu-20151213.59b0ed3.ebuild is not a legitimate name
 # so we'll drop versionator and just set MY_P manually.

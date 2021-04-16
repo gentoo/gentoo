@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -45,7 +45,7 @@ each_ruby_configure() {
 }
 
 each_ruby_compile() {
-	emake V=1 -Cext/ruby_prof || die "build failed"
+	emake V=1 -Cext/ruby_prof
 
 	cp ext/ruby_prof/*$(get_modname) lib/ || die "copy of extension failed"
 }

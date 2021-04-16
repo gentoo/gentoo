@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit autotools eutils
+inherit autotools epatch
 
 DESCRIPTION="Toolkit for Internationalized Domain Names (IDN)"
 HOMEPAGE="https://www.nic.ad.jp/ja/idn/idnkit/download/"

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit eutils gnustep-base
+inherit gnustep-base
 
 DESCRIPTION="Cairo back-end component for the GNUstep GUI Library"
 HOMEPAGE="http://www.gnustep.org"

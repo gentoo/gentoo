@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ RUBY_FAKEGEM_TASK_DOC=""
 
 RUBY_FAKEGEM_EXTRADOC="History.txt README.md"
 
-inherit ruby-fakegem eutils
+inherit ruby-fakegem
 
 DESCRIPTION="Adds a streamy multipart form post capability to Net::HTTP"
 HOMEPAGE="https://github.com/nicksieger/multipart-post"

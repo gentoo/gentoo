@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils multilib
+inherit multilib
 
 # weird failures
 RESTRICT="test"

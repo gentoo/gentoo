@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 MY_P="${P/_beta/b}"
 DESCRIPTION="Generates patchset information from a CVS repository"

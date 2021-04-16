@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 VALA_USE_DEPEND="vapigen"
 
-inherit autotools eutils ltprune multilib-minimal vala xdg-utils
+inherit autotools ltprune multilib-minimal vala xdg-utils
 
 DESCRIPTION="A library to allow applications to export a menu into the Unity Menu bar"
 HOMEPAGE="https://launchpad.net/libappindicator"
@@ -59,7 +59,7 @@ multilib_src_configure() {
 		use introspection && vala_src_prepare && export VALA_API_GEN="${VAPIGEN}"
 	fi
 
-	ECONF_SOURCE=${S} \
+	ECONF_SOURCE="${S}" \
 	econf \
 		--disable-static \
 		--with-gtk=3 \

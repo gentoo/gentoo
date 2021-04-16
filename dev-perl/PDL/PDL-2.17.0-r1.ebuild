@@ -8,7 +8,7 @@ DIST_VERSION=2.017
 
 FORTRAN_NEEDED=fortran
 
-inherit perl-module eutils fortran-2
+inherit perl-module fortran-2
 
 DESCRIPTION="Perl Data Language for scientific computing"
 
