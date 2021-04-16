@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit autotools eutils
+inherit autotools epatch
 
 DESCRIPTION="View and edit files in hex or ASCII"
 HOMEPAGE="http://rigaux.org/hexedit.html"
