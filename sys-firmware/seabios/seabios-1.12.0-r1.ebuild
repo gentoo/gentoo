@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
 PYTHON_COMPAT=( python3_{7..9} )
 
-inherit eutils toolchain-funcs python-any-r1
+inherit toolchain-funcs python-any-r1
 
 # SeaBIOS maintainers sometimes don't release stable tarballs or stable
 # binaries to generate the stable tarball the following is necessary:
