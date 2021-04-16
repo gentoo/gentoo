@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ LICENSE="EPL-1.0"
 SLOT="0/1"
 
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc examples glpk metis mumps sparse static-libs test"
+IUSE="doc examples glpk metis mumps sparse test"
 RESTRICT="!test? ( test )"
 
 # Fortran is NOT needed, but the ./configure scripts for all of the CoinOR
@@ -69,10 +69,12 @@ src_configure() {
 	# There's a fix, but I'm not going to bother with a patch for an
 	# an experimental feature.
 	local myeconfargs=(
+		--disable-static
 		--enable-dependency-linking
 		--with-coin-instdir="${ED}"/usr
 		$(use_with doc dot)
 	)
+
 	if use glpk; then
 		myeconfargs+=(
 			--with-amd-incdir="${EPREFIX}"/usr/include
