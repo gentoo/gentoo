@@ -11,7 +11,7 @@ SRC_URI="https://github.com/chriso/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE="jemalloc static-libs tcmalloc"
+IUSE="jemalloc tcmalloc"
 KEYWORDS="amd64 ~arm x86"
 
 RDEPEND="
@@ -35,8 +35,9 @@ src_configure() {
 	has_version dev-util/google-perftools[minimal] && tcmalloc_lib_name='tcmalloc_minimal'
 
 	local myeconfargs=(
-		$(use_with jemalloc) \
-		$(use_with tcmalloc) \
+		--disable-static
+		$(use_with jemalloc)
+		$(use_with tcmalloc)
 		$(use_with tcmalloc tcmalloc-lib "${tcmalloc_lib_name}")
 	)
 
