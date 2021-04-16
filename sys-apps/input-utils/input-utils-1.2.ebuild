@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils
 
 MY_PN="input"
 MY_P="${MY_PN}-${PV}"
@@ -14,10 +13,6 @@ SRC_URI="https://www.kraxel.org/releases/input/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ppc x86"
-IUSE=""
-
-DEPEND=""
-RDEPEND=""
 
 S="${WORKDIR}/${MY_P}"
 
