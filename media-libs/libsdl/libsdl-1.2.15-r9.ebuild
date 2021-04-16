@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit autotools flag-o-matic ltprune multilib toolchain-funcs eutils multilib-minimal
+
+inherit autotools flag-o-matic ltprune multilib toolchain-funcs epatch multilib-minimal
 
 DESCRIPTION="Simple Direct Media Layer"
 HOMEPAGE="https://libsdl.org/"
