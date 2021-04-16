@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="High performance web server"
 HOMEPAGE="https://www.fefe.de/gatling/"
