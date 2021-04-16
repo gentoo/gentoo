@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit epatch toolchain-funcs autotools ltprune multilib-minimal
+
+inherit autotools epatch ltprune multilib-minimal
 
 MY_P=smpeg-${PV}
 DESCRIPTION="SDL MPEG Player Library"
