@@ -1,10 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils toolchain-funcs
 
-DESCRIPTION="graphical scanning frontend"
+inherit autotools desktop epatch l10n toolchain-funcs
+
+DESCRIPTION="Graphical scanning frontend"
 HOMEPAGE="http://www.xsane.org/"
 SRC_URI="
 	http://www.xsane.org/download/${P}.tar.gz
