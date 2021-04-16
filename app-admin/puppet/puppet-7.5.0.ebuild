@@ -4,14 +4,11 @@
 EAPI="6"
 
 USE_RUBY="ruby24 ruby25 ruby26 ruby27"
-
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
-
 RUBY_FAKEGEM_TASK_DOC="doc:all"
-
 RUBY_FAKEGEM_EXTRAINSTALL="locales"
 
-inherit eutils ruby-fakegem eapi7-ver
+inherit epatch ruby-fakegem
 
 DESCRIPTION="A system automation and configuration management software."
 HOMEPAGE="https://puppet.com/"
@@ -109,12 +106,14 @@ all_ruby_install() {
 	fowners -R :puppet /var/lib/puppet
 
 	if use ldap ; then
-		insinto /etc/openldap/schema; doins ext/ldap/puppet.schema
+		insinto /etc/openldap/schema
+		doins ext/ldap/puppet.schema
 	fi
 
 	# ext and examples files
 	for f in $(find ext examples -type f) ; do
-		docinto "$(dirname ${f})"; dodoc "${f}"
+		docinto "$(dirname ${f})"
+		dodoc "${f}"
 	done
 }
 
