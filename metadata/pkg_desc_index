@@ -5338,7 +5338,7 @@ dev-lang/mozart 2.0.1: Advanced development platform for intelligent, distribute
 dev-lang/mozart-stdlib 2.0.1: The Mozart Standard Library
 dev-lang/mujs 1.1.0 1.1.1: An embeddable JavaScript interpreter in C
 dev-lang/nasm 2.15.05: groovy little assembler
-dev-lang/nim 1.4.4: compiled, garbage-collected systems programming language
+dev-lang/nim 1.4.4 1.4.6: compiled, garbage-collected systems programming language
 dev-lang/nqp 2020.11 2020.12 2021.02 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
 dev-lang/nwcc 0.8.3: Nils Weller's C Compiler
 dev-lang/ocaml 4.05.0-r3 4.09.0 4.10.2 4.11.2: Programming language supporting functional, imperative & object-oriented styles
@@ -15824,7 +15824,7 @@ net-wireless/suwidgets 0.1.0-r1: graphical library containing all SigDigger's cu
 net-wireless/tempestsdr 0.0_p20200221 9999: Remote video eavesdropping using a software-defined radio platform
 net-wireless/ubertooth 2018.12.1 2020.12.1 9999: open source wireless development platform suitable for Bluetooth experimentation
 net-wireless/uhd 3.15.0.0-r100 4.0.0.0: Universal Software Radio Peripheral (USRP) Hardware Driver
-net-wireless/unifi 6.0.45 6.1.71 6.2.17: A Management Controller for Ubiquiti Networks UniFi APs
+net-wireless/unifi 6.0.45 6.1.71 6.2.17 6.2.19: A Management Controller for Ubiquiti Networks UniFi APs
 net-wireless/urh 2.9.1 9999: Universal Radio Hacker: investigate wireless protocols like a boss
 net-wireless/wavemon 0.9.3: Ncurses based monitor for IEEE 802.11 wireless LAN cards
 net-wireless/wepattack 0.1.3-r5: WLAN tool for breaking 802.11 WEP keys
@@ -17736,7 +17736,7 @@ sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh 
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 4.2.1-r1 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.109 5.4.111 5.4.112 5.10.27 5.10.29 5.10.30 5.11.13 5.11.14: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.109 5.4.109-r1 5.4.111 5.4.111-r1 5.4.112 5.10.27 5.10.27-r1 5.10.29 5.10.29-r1 5.10.30 5.11.13 5.11.13-r1 5.11.14: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.257 4.4.261 4.4.262 4.4.263 4.4.264 4.4.265 4.4.266 4.4.267 4.9.257 4.9.261 4.9.262 4.9.263 4.9.264 4.9.265 4.9.266 4.9.267 4.14.221 4.14.225 4.14.226 4.14.227 4.14.228 4.14.229 4.14.230 4.14.231 4.19.175 4.19.181 4.19.182 4.19.183 4.19.184 4.19.185 4.19.186 4.19.187 4.19.188 5.4.97 5.4.105 5.4.106 5.4.107 5.4.108 5.4.109 5.4.110 5.4.111 5.4.112 5.4.113 5.10.24 5.10.25 5.10.26 5.10.27 5.10.28 5.10.29 5.10.30 5.10.31 5.11.6 5.11.7 5.11.8-r1 5.11.9 5.11.10 5.11.11 5.11.12 5.11.13 5.11.14: Full sources including the Gentoo patchset for the 5.11 kernel tree
+sys-kernel/gentoo-sources 4.4.257 4.4.261 4.4.262 4.4.263 4.4.264 4.4.265 4.4.266 4.4.267 4.9.257 4.9.261 4.9.262 4.9.263 4.9.264 4.9.265 4.9.266 4.9.267 4.14.221 4.14.225 4.14.226 4.14.227 4.14.228 4.14.229 4.14.230 4.14.231 4.19.175 4.19.181 4.19.182 4.19.183 4.19.184 4.19.185 4.19.186 4.19.187 4.19.188 5.4.97 5.4.105 5.4.106 5.4.107 5.4.108 5.4.109 5.4.110 5.4.111 5.4.112 5.4.113 5.10.24 5.10.25 5.10.26 5.10.27 5.10.28 5.10.29 5.10.30 5.10.31 5.11.6 5.11.7 5.11.8-r1 5.11.9 5.11.10 5.11.11 5.11.12 5.11.13 5.11.14 5.11.15: Full sources including the Gentoo patchset for the 5.11 kernel tree
 sys-kernel/git-sources 5.12_rc2 5.12_rc3 5.12_rc4 5.12_rc5 5.12_rc6 5.12_rc7: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2 3: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
