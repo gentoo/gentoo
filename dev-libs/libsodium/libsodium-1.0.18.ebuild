@@ -3,16 +3,20 @@
 
 EAPI=7
 
-inherit autotools multilib-minimal
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/jedisct1.asc
+inherit autotools multilib-minimal verify-sig
 
 DESCRIPTION="A portable fork of NaCl, a higher-level cryptographic library"
-HOMEPAGE="https://github.com/jedisct1/libsodium"
-SRC_URI="http://download.libsodium.org/${PN}/releases/${P}.tar.gz"
+HOMEPAGE="https://libsodium.org"
+SRC_URI="https://download.libsodium.org/${PN}/releases/${P}.tar.gz"
+SRC_URI+=" verify-sig? ( https://download.libsodium.org/${PN}/releases/${P}.tar.gz.sig )"
 
 LICENSE="ISC"
 SLOT="0/23"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="+asm minimal static-libs +urandom cpu_flags_x86_sse4_1 cpu_flags_x86_aes"
+
+BDEPEND="verify-sig? ( app-crypt/openpgp-keys-jedisct1 )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.10-cpuflags.patch
