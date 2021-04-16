@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools eutils flag-o-matic pam user systemd
+inherit autotools flag-o-matic pam user systemd
 
 MY_P="${PN}_${PV}"
 
