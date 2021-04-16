@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils ltprune
+inherit epatch ltprune
 
 DESCRIPTION="A control application for Video 4 Linux (based on C and GTK+)"
 HOMEPAGE="http://fedorahosted.org/gtk-v4l/"
