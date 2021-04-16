@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # we only want this for binary-only packages, so we will only be installing
@@ -6,7 +6,7 @@
 
 EAPI="5"
 
-inherit eutils multilib toolchain-funcs multilib-minimal
+inherit epatch multilib toolchain-funcs multilib-minimal
 
 PATCHVER="2"
 
