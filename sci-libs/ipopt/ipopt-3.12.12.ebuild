@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ SRC_URI="http://www.coin-or.org/download/source/${MY_PN}/${MY_P}.tgz"
 LICENSE="EPL-1.0 hsl? ( HSL )"
 SLOT="0/1"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc examples hsl lapack mpi mumps static-libs test"
+IUSE="doc examples hsl lapack mpi mumps test"
 RESTRICT="test" # Fails to compile
 
 RDEPEND="
@@ -43,7 +43,9 @@ src_prepare() {
 src_configure() {
 	# needed for --with-coin-instdir
 	dodir /usr
+
 	local myeconfargs=(
+		--disable-static
 		--enable-dependency-linking
 		--with-blas-lib="$($(tc-getPKG_CONFIG) --libs blas)"
 		--with-coin-instdir="${ED%/}"/usr
