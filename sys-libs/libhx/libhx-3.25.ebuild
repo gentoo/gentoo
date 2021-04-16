@@ -14,8 +14,7 @@ SLOT="0/32" # soname version
 KEYWORDS="amd64 ppc x86"
 IUSE="doc"
 
-DEPEND="app-arch/xz-utils"
-RDEPEND=""
+BDEPEND="app-arch/xz-utils"
 
 S="${WORKDIR}/libHX-${PV}"
 
