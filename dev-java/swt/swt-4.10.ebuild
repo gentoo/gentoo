@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils flag-o-matic java-pkg-2 java-ant-2 toolchain-funcs java-osgi
+inherit flag-o-matic java-pkg-2 java-ant-2 toolchain-funcs java-osgi
 
 MY_PV="${PV/_rc/RC}"
 MY_DMF="http://download.eclipse.org/eclipse/downloads/drops4/R-${MY_PV}-201812060815"
