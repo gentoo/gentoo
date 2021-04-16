@@ -174,8 +174,8 @@ src_install() {
 		doman "${LIBDIR}"/node_modules/npm/man/man{1,5,7}/*
 
 		# Clean up
-		rm "${LIBDIR}"/node_modules/npm/{.mailmap,.npmignore,Makefile} || die
-		rm -rf "${LIBDIR}"/node_modules/npm/{doc,html,man} || die
+		rm -f "${LIBDIR}"/node_modules/npm/{.mailmap,.npmignore,Makefile}
+		rm -rf "${LIBDIR}"/node_modules/npm/{doc,html,man}
 
 		local find_exp="-or -name"
 		local find_name=()
