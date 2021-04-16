@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 
 RUBY_FAKEGEM_BINWRAP=""
 
-inherit ruby-fakegem eutils
+inherit ruby-fakegem
 
 DESCRIPTION="Manipulate images with minimal use of memory"
 HOMEPAGE="https://github.com/minimagick/minimagick"
