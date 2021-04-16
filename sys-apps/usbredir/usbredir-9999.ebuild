@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils flag-o-matic autotools git-r3
+inherit autotools flag-o-matic git-r3
 
 DESCRIPTION="TCP daemon and set of libraries for usbredir protocol (redirecting USB traffic)"
 HOMEPAGE="https://www.spice-space.org/usbredir.html"
@@ -11,12 +11,11 @@ EGIT_REPO_URI="https://anongit.freedesktop.org/git/spice/usbredir.git"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS=""
 IUSE="static-libs"
 
 RDEPEND="virtual/libusb:1"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 DOCS="README* TODO *.txt"
 
