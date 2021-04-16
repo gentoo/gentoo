@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils java-pkg-2 java-ant-2 java-osgi
+inherit java-pkg-2 java-ant-2 java-osgi
 
 MY_P="apache-${P/-servlet-api/}-src"
 DESCRIPTION="Tomcat's Servlet API 2.4/JSP API 2.0 implementation"

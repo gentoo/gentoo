@@ -5,7 +5,7 @@ EAPI=7
 
 JAVA_PKG_IUSE="source"
 
-inherit eutils java-pkg-2 java-pkg-simple
+inherit java-pkg-2 java-pkg-simple
 
 MY_A="apache-${PN}-${PV}-src"
 MY_P="${MY_A/-servlet-api/}"
