@@ -109,7 +109,7 @@ src_install() {
 
 	if use doc; then
 		# Strangely the Makefile doesn't install these.
-		insinto "/usr/${PN}-${SLOT}/share/classpath/api"
+		insinto /usr/${PN}-${SLOT}/share/classpath/api
 		doins -r doc/api/html/*
 	fi
 }
