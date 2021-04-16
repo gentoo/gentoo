@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils flag-o-matic libtool multilib multilib-minimal
+inherit epatch flag-o-matic libtool multilib multilib-minimal
 
 MY_P=pkg-config-${PV}
 
