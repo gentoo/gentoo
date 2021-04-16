@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils versionator toolchain-funcs
+inherit epatch versionator toolchain-funcs
 
 MY_PV=$(replace_version_separator 2 '_')
 
