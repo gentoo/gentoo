@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils autotools versionator
+inherit epatch autotools versionator
 
 MY_PV=$(get_version_component_range 1-3)
 MY_PATCH_MAJ=$(get_version_component_range 4)
