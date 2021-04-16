@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit eutils toolchain-funcs
+inherit epatch toolchain-funcs
 
 DESCRIPTION="Provides lockspool utility"
 HOMEPAGE="http://www.openbsd.org/"
