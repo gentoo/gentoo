@@ -5,6 +5,9 @@
 		<email>java@gentoo.org</email>
 		<name>Java</name>
 	</maintainer>
+	<use>
+		<flag name="dom4j">build the org.jaxen.dom4j.Dom4jXPath class</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">jaxen-xpath/jaxen</remote-id>
 		<doc>https://github.com/jaxen-xpath/jaxen/wiki/Jaxen-Wiki</doc>
