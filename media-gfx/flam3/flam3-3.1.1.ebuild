@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils
+inherit autotools
 
 DESCRIPTION="Tools and a library for creating flame fractal images"
 HOMEPAGE="https://flam3.com/"
