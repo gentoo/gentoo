@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ fi
 
 LICENSE="LGPL-2.1+ GPL-2"
 SLOT="0"
-IUSE="gtk-doc +introspection python static-libs test +vala"
+IUSE="gtk-doc +introspection python test +vala"
 REQUIRED_USE="
 	python? ( introspection ${PYTHON_REQUIRED_USE} )
 	test? ( python introspection )
