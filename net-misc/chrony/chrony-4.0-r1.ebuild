@@ -10,8 +10,8 @@ DESCRIPTION="NTP client and server programs"
 HOMEPAGE="https://chrony.tuxfamily.org/ https://git.tuxfamily.org/chrony/chrony.git"
 
 if [[ ${PV} == "9999" ]]; then
-	inherit git-r3
 	EGIT_REPO_URI="https://git.tuxfamily.org/chrony/chrony.git"
+	inherit git-r3
 else
 	SRC_URI="https://download.tuxfamily.org/${PN}/${P/_/-}.tar.gz"
 	SRC_URI+=" verify-sig? ( https://download.tuxfamily.org/chrony/${P}-tar-gz-asc.txt -> ${P}.tar.gz.asc )"
