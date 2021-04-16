@@ -2042,7 +2042,7 @@ app-emacs/flashcard 2.3.3: An Emacs Lisp package for drilling on questions and a
 app-emacs/flim 1.14.9_p20190526: A library to provide basic features about message representation or encoding
 app-emacs/folding 2019.0524.1621: A folding-editor-like Emacs minor mode
 app-emacs/ghub 3.2.0 3.3.0 3.4.1: Minuscule client library for the Git forge APIs
-app-emacs/gnuplot-mode 0.7.0 0.8.0: Gnuplot mode for Emacs
+app-emacs/gnuplot-mode 0.8.0: Gnuplot mode for Emacs
 app-emacs/gnuserv 3.12.8-r5: Attach to an already running Emacs
 app-emacs/go-mode 1.5.0: An improved Go mode for emacs
 app-emacs/google-c-style 20140929: Provides the google C/C++ coding style
