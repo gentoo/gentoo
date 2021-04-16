@@ -1,8 +1,8 @@
-# Copyright 2003-2019 Gentoo Authors
+# Copyright 2003-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit autotools eutils
+inherit autotools epatch
 
 DESCRIPTION="Utility for getting info out of DVDs"
 HOMEPAGE="https://sourceforge.net/projects/lsdvd/"
