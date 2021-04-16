@@ -6,7 +6,7 @@ EAPI=6
 MIRA_3RDPARTY_PV="06-07-2012"
 MY_PV="${PV/_}" # convert from mira-4.0_rc2 (Gentoo ebuild filename derived) to mira-4.0rc2 (upstream fromat)
 
-inherit autotools eutils multilib
+inherit autotools multilib
 
 DESCRIPTION="Whole Genome Shotgun and EST Sequence Assembler for Sanger, 454 and Illumina"
 HOMEPAGE="http://www.chevreux.org/projects_mira.html"
