@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools libtool pam
+inherit autotools pam
 
 DESCRIPTION="Utilities to deal with user accounts"
 HOMEPAGE="https://github.com/shadow-maint/shadow"
@@ -88,7 +88,7 @@ src_configure() {
 }
 
 set_login_opt() {
-	local comment="" opt=$1 val=$2
+	local comment="" opt=${1} val=${2}
 	if [[ -z ${val} ]]; then
 		comment="#"
 		sed -i \
