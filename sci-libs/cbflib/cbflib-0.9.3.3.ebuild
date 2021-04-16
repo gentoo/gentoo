@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 CMAKE_MAKEFILE_GENERATOR=emake
 
-inherit cmake-utils eutils flag-o-matic fortran-2 toolchain-funcs
+inherit cmake-utils flag-o-matic fortran-2 toolchain-funcs
 
 MY_P1="CBFlib-${PV}"
 #MY_P2="CBFlib_${PV}"
