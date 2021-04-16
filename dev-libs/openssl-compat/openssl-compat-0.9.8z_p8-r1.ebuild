@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # this ebuild is only for the libcrypto.so.0.9.8 and libssl.so.0.9.8 SONAME for ABI compat
 
 EAPI="6"
 
-inherit eutils flag-o-matic toolchain-funcs multilib multilib-minimal
+inherit flag-o-matic toolchain-funcs multilib-minimal
 
 #PLEVEL=$(printf "\\$(printf '%03o' $((${PV##*_p} + 96)))")
 PLEVEL='h' # _p8 -> tr '[1-9]' '[a-i]' -> 'h'
