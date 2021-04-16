@@ -53,7 +53,7 @@ PATCHES=(
 
 JAVA_SRC_DIR="src/main/java"
 
-JAVA_TEST_GENTOO_CLASSPATH="commons-io-1,joda-time,junit-4,commons-lang-3.4,velocity"
+JAVA_TEST_GENTOO_CLASSPATH="commons-io-1,joda-time,junit-4,commons-lang-3.6,velocity"
 JAVA_TEST_SRC_DIR="src/test/java"
 JAVA_TEST_RESOURCE_DIRS="src/test/resources"
 
