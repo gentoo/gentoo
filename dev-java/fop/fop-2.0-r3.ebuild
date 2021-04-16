@@ -9,7 +9,7 @@ EAPI="5"
 
 JAVA_PKG_IUSE="doc examples source test"
 
-inherit eutils java-pkg-2 java-ant-2
+inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Formatting Objects Processor is a print formatter driven by XSL"
 HOMEPAGE="https://xmlgraphics.apache.org/fop/"
