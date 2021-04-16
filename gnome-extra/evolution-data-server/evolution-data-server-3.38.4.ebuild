@@ -84,6 +84,7 @@ src_prepare() {
 	gnome2_src_prepare
 
 	eapply "${FILESDIR}"/3.36.5-gtk-doc-1.32-compat.patch
+	eapply "${FILESDIR}"/3.38-PrintableOptions.cmake-Correct-variable-name-compari.patch
 
 	# Make CMakeLists versioned vala enabled
 	sed -e "s;\(find_program(VALAC\) valac);\1 ${VALAC});" \
