@@ -12,7 +12,6 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 SLOT="0"
 LICENSE="GPL-3"
 KEYWORDS="amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
-IUSE="static-libs"
 
 RDEPEND="
 	media-libs/libsndfile
