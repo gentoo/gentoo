@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit epatch flag-o-matic toolchain-funcs
 
 RESTRICT="test" # the test suite will test what's installed.
 
