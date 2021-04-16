@@ -5,8 +5,6 @@ EAPI=6
 
 AT_M4DIR="config"
 
-inherit multilib
-
 DESCRIPTION="Provides Remote-Console and System Management Software as per IPMI v1.5/2.0"
 HOMEPAGE="https://www.gnu.org/software/freeipmi/"
 
