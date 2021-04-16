@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,12 +13,13 @@ VERSIONS=(
 DESCRIPTION="Single-user single-tasking operating system for 32-bit Atari computer emulators"
 HOMEPAGE="http://emutos.sourceforge.net"
 SRC_URI=$(printf "mirror://sourceforge/emutos/${PN}-%s-${PV}.zip\n" "${VERSIONS[@]}")
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
-DEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}"
 
