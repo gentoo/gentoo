@@ -1,5 +1,6 @@
+BDEPEND=doc? ( app-doc/doxygen )
 DEFINED_PHASES=compile configure install
-DEPEND=pcsc-lite? ( sys-apps/pcsc-lite ) readline? ( sys-libs/readline:0 ) usb? ( virtual/libusb:0 ) doc? ( app-doc/doxygen )
+DEPEND=pcsc-lite? ( sys-apps/pcsc-lite ) readline? ( sys-libs/readline:0 ) usb? ( virtual/libusb:0 )
 DESCRIPTION=Near Field Communications (NFC) library
 EAPI=7
 HOMEPAGE=http://www.libnfc.org/
@@ -9,5 +10,4 @@ LICENSE=LGPL-3
 RDEPEND=pcsc-lite? ( sys-apps/pcsc-lite ) readline? ( sys-libs/readline:0 ) usb? ( virtual/libusb:0 )
 SLOT=0
 SRC_URI=https://github.com/nfc-tools/libnfc/releases/download/libnfc-1.7.2/libnfc-1.7.2.tar.bz2
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=87f23c24088fe358a2aeb8b5a1ee5345
+_md5_=a282821e98d5dca38f841456bf3bbc14

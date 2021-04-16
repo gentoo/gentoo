@@ -3,12 +3,12 @@ DEPEND=>=virtual/jdk-1.8 >=dev-java/java-config-2.2.0-r3 >=dev-java/ant-core-1.8
 DESCRIPTION=Armed Bear Common Lisp is a Common Lisp implementation for the JVM.
 EAPI=7
 HOMEPAGE=http://common-lisp.net/project/armedbear/
-INHERIT=eutils java-pkg-2 java-ant-2
+INHERIT=java-pkg-2 java-ant-2
 IUSE=elibc_FreeBSD elibc_FreeBSD
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2-with-classpath-exception
 RDEPEND=>=virtual/jre-1.8 >=dev-java/java-config-2.2.0-r3
 SLOT=0
 SRC_URI=http://abcl.org/releases/1.8.0/abcl-src-1.8.0.tar.gz
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	java-utils-2	2440f41421207d084e5e3f1fb001b34e	java-pkg-2	45c44ec10db6affb3ebee1ac72039888	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	java-ant-2	51fb0a4707d58382310390ad47ab0ab0
-_md5_=9f54b85077a8e83e2aa6c5cfb17a00cb
+_eclasses_=java-utils-2	2440f41421207d084e5e3f1fb001b34e	java-pkg-2	45c44ec10db6affb3ebee1ac72039888	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	java-ant-2	51fb0a4707d58382310390ad47ab0ab0
+_md5_=aba8f2272108e997390bb85df5117d6f

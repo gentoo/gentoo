@@ -3,7 +3,7 @@ DEPEND=doc? ( virtual/texi2dvi dev-tex/latex2html app-text/texi2html ) >=gnustep
 DESCRIPTION=A library of general-purpose, non-graphical Objective C objects
 EAPI=7
 HOMEPAGE=http://www.gnustep.org
-INHERIT=eutils gnustep-base toolchain-funcs
+INHERIT=gnustep-base toolchain-funcs
 IUSE=+gnutls +icu +libffi zeroconf debug doc
 KEYWORDS=~alpha amd64 ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris
 LICENSE=GPL-2 LGPL-2.1
@@ -11,4 +11,4 @@ RDEPEND=doc? ( virtual/texi2dvi dev-tex/latex2html app-text/texi2html ) >=gnuste
 SLOT=0/1.27
 SRC_URI=ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-base-1.27.0.tar.gz
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	flag-o-matic	c0964e43ba712cb933da5f65b958fa88	gnustep-base	49f1b9591be3a4bf8eeb1f3a07605a2a
-_md5_=b35f280911f082857451cd99507ce55a
+_md5_=115646ac8808a76479adb2bbd1a5b0d4

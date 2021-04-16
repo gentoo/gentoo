@@ -4,7 +4,7 @@ DEPEND=python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-e
 DESCRIPTION=IEEE 802.11 wireless LAN sniffer
 EAPI=7
 HOMEPAGE=https://www.kismetwireless.net
-INHERIT=autotools eutils multilib python-single-r1 udev systemd git-r3
+INHERIT=autotools multilib python-single-r1 udev systemd git-r3
 IUSE=libusb lm-sensors networkmanager +pcre rtlsdr selinux +suid ubertooth udev python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9
 LICENSE=GPL-2
 PDEPEND=rtlsdr? ( python_single_target_python3_7? ( dev-python/numpy[python_targets_python3_7(-)] ) python_single_target_python3_8? ( dev-python/numpy[python_targets_python3_8(-)] ) python_single_target_python3_9? ( dev-python/numpy[python_targets_python3_9(-)] ) net-wireless/rtl-sdr )
@@ -13,5 +13,5 @@ RDEPEND=python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-
 REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9 )
 RESTRICT=strip
 SLOT=0/9999
-_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-single-r1	d25ac9d5d91fe9d44fda6ec192aca11a	udev	452708c3f55cf6e918b045adb949a9e6	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
-_md5_=6058a5f1693bea4c984dbe05cbe353c7
+_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-single-r1	d25ac9d5d91fe9d44fda6ec192aca11a	udev	452708c3f55cf6e918b045adb949a9e6	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
+_md5_=d4088e5f0a0eef33181e87d7649c7e67

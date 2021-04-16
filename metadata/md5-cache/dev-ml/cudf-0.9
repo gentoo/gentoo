@@ -4,7 +4,7 @@ DEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?] dev-ml/extlib:= dev-ml/findlib:= dev-l
 DESCRIPTION=Library to parse, pretty print, and evaluate CUDF documents
 EAPI=7
 HOMEPAGE=http://www.mancoosi.org/cudf/
-INHERIT=multilib toolchain-funcs
+INHERIT=toolchain-funcs
 IUSE=+ocamlopt test
 KEYWORDS=amd64 arm arm64 ppc ppc64 x86
 LICENSE=LGPL-3
@@ -12,5 +12,5 @@ RDEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?] dev-ml/extlib:= dev-ml/findlib:= dev-
 RESTRICT=!test? ( test )
 SLOT=0/0.9
 SRC_URI=https://gforge.inria.fr/frs/download.php/file/36602/cudf-0.9.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=186f78c20bb341454a0cf0c82a84be5c
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=72b6a8861bccc15c367b27fb75bb4d9a

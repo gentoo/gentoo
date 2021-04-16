@@ -4,7 +4,7 @@ DEPEND=>=dev-python/pycxx-7.0.2[python_targets_python3_7(-)?,python_targets_pyth
 DESCRIPTION=Object-oriented python bindings for subversion
 EAPI=7
 HOMEPAGE=https://pysvn.sourceforge.io/
-INHERIT=eutils distutils-r1 toolchain-funcs
+INHERIT=distutils-r1 toolchain-funcs
 IUSE=doc examples python_targets_python3_7 python_targets_python3_8
 KEYWORDS=amd64 ~arm ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris
 LICENSE=Apache-1.1
@@ -12,5 +12,5 @@ RDEPEND=>=dev-python/pycxx-7.0.2[python_targets_python3_7(-)?,python_targets_pyt
 REQUIRED_USE=|| ( python_targets_python3_7 python_targets_python3_8 )
 SLOT=0
 SRC_URI=mirror://sourceforge/project/pysvn/pysvn/V1.9.11/pysvn-1.9.11.tar.gz
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-r1	26e4ad0a4190b14f70973dc253e86535	distutils-r1	d8655e1387589a2e1930339b1627d5c1
-_md5_=b0bee82dd2e0974279614c11f1bf27ea
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-r1	26e4ad0a4190b14f70973dc253e86535	distutils-r1	d8655e1387589a2e1930339b1627d5c1
+_md5_=7290a88eb614aa7c323ec8625c2680df

@@ -3,10 +3,10 @@ DEPEND=>=dev-lang/go-1.4 >=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=CGO bindings for libusb
 EAPI=5
 HOMEPAGE=https://github.com/hanwen/usb
-INHERIT=git-r3 multilib
+INHERIT=git-r3
 LICENSE=BSD
 PROPERTIES=live
 RESTRICT=test
 SLOT=0
-_eclasses_=git-r3	b8e8c92aa5fe8df7187e466138eb4e52	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=593a85ee9257499a4ffc7652cd3529cd
+_eclasses_=git-r3	b8e8c92aa5fe8df7187e466138eb4e52
+_md5_=da3baa614f660d7987a30bf06a70603d

@@ -4,7 +4,7 @@ DEPEND=>=dev-python/pbr-2.0.0[python_targets_python3_7(-)?,python_targets_python
 DESCRIPTION=Cloud computing fabric controller
 EAPI=7
 HOMEPAGE=https://launchpad.net/nova
-INHERIT=distutils-r1 eutils linux-info multilib udev git-r3
+INHERIT=distutils-r1 linux-info multilib udev git-r3
 IUSE=+compute compute-only iscsi +memcached +mysql +novncproxy openvswitch postgres +rabbitmq sqlite python_targets_python3_7 python_targets_python3_8 kernel_linux
 LICENSE=Apache-2.0
 PROPERTIES=live
@@ -12,5 +12,5 @@ RDEPEND=>=dev-python/pbr-2.0.0[python_targets_python3_7(-)?,python_targets_pytho
 REQUIRED_USE=!compute-only? ( || ( mysql postgres sqlite ) ) compute-only? ( compute !rabbitmq !memcached !mysql !postgres !sqlite ) || ( python_targets_python3_7 python_targets_python3_8 )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~prometheanfire/dist/openstack/nova/victoria/nova.conf.sample -> nova.conf.sample-2020.2.9999
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-r1	26e4ad0a4190b14f70973dc253e86535	distutils-r1	d8655e1387589a2e1930339b1627d5c1	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	linux-info	30ded7f9adbdd03d3e848cdd74f6c395	udev	452708c3f55cf6e918b045adb949a9e6	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
-_md5_=429c7817517c9c772d7b3c9c173683b7
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-r1	26e4ad0a4190b14f70973dc253e86535	distutils-r1	d8655e1387589a2e1930339b1627d5c1	linux-info	30ded7f9adbdd03d3e848cdd74f6c395	udev	452708c3f55cf6e918b045adb949a9e6	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
+_md5_=c245a0534dc4fcfdd73ccb6a745aaea0

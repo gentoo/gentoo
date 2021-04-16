@@ -4,7 +4,7 @@ DEPEND=net-libs/libnsl:0= readline? ( sys-libs/readline:= ) erlang? ( dev-lang/e
 DESCRIPTION=Mercury is a modern general-purpose logic/functional programming language
 EAPI=7
 HOMEPAGE=https://www.mercurylang.org/index.html
-INHERIT=autotools elisp-common eutils flag-o-matic java-pkg-opt-2 multilib vcs-clean xdg-utils
+INHERIT=autotools elisp-common flag-o-matic java-pkg-opt-2 multilib vcs-clean xdg-utils
 IUSE=debug doc emacs erlang examples java mono profile readline threads trail elibc_FreeBSD java
 KEYWORDS=amd64 x86
 LICENSE=GPL-2 LGPL-2
@@ -12,4 +12,4 @@ RDEPEND=net-libs/libnsl:0= readline? ( sys-libs/readline:= ) erlang? ( dev-lang/
 SLOT=0
 SRC_URI=https://dl.mercurylang.org/release-20.06/mercury-srcdist-20.06.tar.gz https://dev.gentoo.org/~keri/distfiles/mercury/mercury-20.06-gentoo-patchset-1.tar.gz
 _eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354	elisp-common	36f97076abd90f943a34f8bcd58b5bcc	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	c0964e43ba712cb933da5f65b958fa88	java-utils-2	2440f41421207d084e5e3f1fb001b34e	java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=92546f607ad12c5df3471b602381460e
+_md5_=95c9a35a382b92aea4010d3207792908

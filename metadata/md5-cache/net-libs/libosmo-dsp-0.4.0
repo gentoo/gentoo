@@ -1,10 +1,10 @@
-BDEPEND=sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=doc? ( app-doc/doxygen ) virtual/pkgconfig sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install prepare
-DEPEND=sci-libs/fftw:3.0 doc? ( app-doc/doxygen ) virtual/pkgconfig
+DEPEND=sci-libs/fftw:3.0
 DESCRIPTION=A library with SDR DSP primitives
 EAPI=7
 HOMEPAGE=http://git.osmocom.org/libosmo-dsp/
-INHERIT=autotools multilib
+INHERIT=autotools
 IUSE=doc static-libs
 KEYWORDS=~amd64 ~arm ~x86
 LICENSE=GPL-2
@@ -12,4 +12,4 @@ RDEPEND=sci-libs/fftw:3.0
 SLOT=0/0.4.0
 SRC_URI=https://dev.gentoo.org/~zerochaos/distfiles/libosmo-dsp-0.4.0.tar.gz
 _eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354
-_md5_=fe6ca3e2a1b38af500210b3a0aaf0c3d
+_md5_=6a041f03d4f4cb8de50ba44198dc9a6c

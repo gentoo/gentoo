@@ -11,5 +11,4 @@ REQUIRED_USE=autocrypt? ( gpgme )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/neomutt/neomutt/archive/20210205.tar.gz -> neomutt-20210205.tar.gz test? ( https://github.com/neomutt/neomutt-test-files/archive/8629adab700a75c54e8e28bf05ad092503a98f75.tar.gz -> neomutt-test-files-8629adab700a75c54e8e28bf05ad092503a98f75.tar.gz )
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=bdcb9a53ac0c70580c0dccfbfa519185
+_md5_=c302f0ce6c4a0b5b314ee3ed84de76c7

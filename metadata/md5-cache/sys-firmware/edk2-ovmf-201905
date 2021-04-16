@@ -3,12 +3,12 @@ DEPEND=!binary? ( amd64? ( app-emulation/qemu >=dev-lang/nasm-2.0.7 >=sys-power/
 DESCRIPTION=UEFI firmware for 64-bit x86 virtual machines
 EAPI=7
 HOMEPAGE=https://github.com/tianocore/edk2
-INHERIT=eutils python-any-r1 readme.gentoo-r1
+INHERIT=python-any-r1 readme.gentoo-r1
 IUSE=+binary
 KEYWORDS=amd64 arm64 ~ppc ppc64 x86
 LICENSE=BSD-2 MIT
 REQUIRED_USE=!amd64? ( binary )
 SLOT=0
 SRC_URI=!binary? ( https://github.com/tianocore/edk2/archive/edk2-stable201905.tar.gz -> edk2-ovmf-201905.tar.gz https://dev.gentoo.org/~tamiko/distfiles/edk2-ovmf-201905-bundled.tar.xz ) binary? ( https://dev.gentoo.org/~tamiko/distfiles/edk2-ovmf-201905-bin.tar.xz )
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-any-r1	17241a11501065ff3651350040875aa9	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
-_md5_=f72a25e467557119756cc382c33f2b53
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-any-r1	17241a11501065ff3651350040875aa9	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
+_md5_=b8c9bbefc2e1f4598d3ae6b8a15ff82b

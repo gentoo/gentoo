@@ -10,5 +10,4 @@ RDEPEND=virtual/jpeg input-uvc? ( media-libs/libv4l )
 REQUIRED_USE=|| ( input-testpicture input-control input-file input-uvc ) || ( output-file output-udp output-http output-autofocus output-rtsp )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~aidecoe/distfiles/media-video/mjpg-streamer/mjpg-streamer-0_pre20120621.tar.bz2
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=5c9c0bbea8851b365d826d9baae22217
+_md5_=6a60afc5ca4e2a61aeba8d74b6e84e67

@@ -3,7 +3,7 @@ DEPEND=~dev-lang/mercury-20.06 cairo? ( >=x11-libs/cairo-1.10.0 ) gmp? ( dev-lib
 DESCRIPTION=Additional libraries and tools that are not part of the Mercury standard library
 EAPI=7
 HOMEPAGE=https://www.mercurylang.org/index.html
-INHERIT=eutils multilib toolchain-funcs vcs-clean
+INHERIT=multilib toolchain-funcs vcs-clean
 IUSE=cairo examples glut gmp iodbc ncurses odbc opengl ssl tk tommath X xml
 KEYWORDS=amd64 x86
 LICENSE=GPL-2 LGPL-2
@@ -11,5 +11,5 @@ RDEPEND=~dev-lang/mercury-20.06 cairo? ( >=x11-libs/cairo-1.10.0 ) gmp? ( dev-li
 REQUIRED_USE=?? ( odbc iodbc )
 SLOT=0
 SRC_URI=https://dl.mercurylang.org/release/mercury-srcdist-20.06.tar.gz https://dev.gentoo.org/~keri/distfiles/mercury-extras/mercury-extras-20.06-gentoo-patchset-0.tar.gz
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=73f33e44fad93b6fac2c762858dc82b2
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=9a9858393b57d1da00f7089dc096ee46

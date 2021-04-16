@@ -11,4 +11,4 @@ RDEPEND=sys-libs/gdbm:0=
 SLOT=0
 SRC_URI=mirror://sourceforge/sjeng/Sjeng-Free-11.2.tar.gz mirror://debian/pool/main/s/sjeng/sjeng_11.2-8.1.diff.gz
 _eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354	prefix	de7d8e2b10085ed5ff09ad70e4753e5c
-_md5_=f00b415c5172501bb304cf4cd5721b6f
+_md5_=89a12429d4834629a570c2a52f73df4c

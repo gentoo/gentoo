@@ -4,7 +4,7 @@ DEPEND=>=dev-lang/swig-1.3
 DESCRIPTION=Homology or comparative modeling of protein three-dimensional structures
 EAPI=7
 HOMEPAGE=https://salilab.org/modeller/
-INHERIT=distutils-r1 eutils multilib
+INHERIT=distutils-r1 multilib
 IUSE=doc examples python_targets_python3_7 python_targets_python3_8 python_targets_python3_9
 KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=modeller
@@ -13,5 +13,5 @@ REQUIRED_USE=|| ( python_targets_python3_7 python_targets_python3_8 python_targe
 RESTRICT=mirror
 SLOT=0
 SRC_URI=https://salilab.org/modeller/9.25/modeller-9.25.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-r1	26e4ad0a4190b14f70973dc253e86535	distutils-r1	d8655e1387589a2e1930339b1627d5c1	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e
-_md5_=6c2d57ce052105f589366e6b66b96530
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-r1	26e4ad0a4190b14f70973dc253e86535	distutils-r1	d8655e1387589a2e1930339b1627d5c1
+_md5_=75e9355e9b224443883e3703eb173b42

@@ -8073,7 +8073,7 @@ dev-python/WSME 0.10.0: Simplify the writing of REST APIs, and extend them with 
 dev-python/XenAPI 2.14: Xen API SDK, for communication with Citrix XenServer and Xen Cloud Platform
 dev-python/absl-py 0.10.0: Abseil Python Common Libraries
 dev-python/abydos 0.5.0 0.5.0-r1: Abydos NLP/IR library
-dev-python/aesara 2.0.1-r1 2.0.2 2.0.3 2.0.4 2.0.5 2.0.6: Library for operating on mathematical expressions with multi-dimensional arrays
+dev-python/aesara 2.0.1-r1 2.0.2 2.0.3 2.0.4 2.0.5 2.0.6 2.0.7: Library for operating on mathematical expressions with multi-dimensional arrays
 dev-python/aiodns 2.0.0-r1: Simple DNS resolver for asyncio
 dev-python/aiofiles 0.5.0 0.6.0: File support for asyncio
 dev-python/aiohttp 3.7.4: http client/server for asyncio
@@ -15116,7 +15116,7 @@ net-libs/zeromq 4.3.3-r1 4.3.4-r1: A brokerless kernel
 net-libs/zmqpp 4.2.0: ZeroMQ 'highlevel' C++ bindings
 net-mail/altermime 0.3.11: alterMIME is a small program which is used to alter your mime-encoded mailpacks
 net-mail/amavis-logwatch 1.51.03-r5: A log analyzer for amavisd-new
-net-mail/asmail 2.1-r1: a small mail monitor similar to xbiff
+net-mail/asmail 2.1-r1: A small mail monitor similar to xbiff
 net-mail/automx2 2021.2 2021.3.1: Email client autoconfiguration service
 net-mail/autorespond 2.0.4 2.0.5: Autoresponder add on package for qmailadmin
 net-mail/b4 0.6.1: Utility for fetching patchsets from public-inbox
@@ -15207,7 +15207,7 @@ net-mail/vpopmail 5.4.33-r6 5.4.33-r7: Collection of programs to manage virtual 
 net-mail/vqadmin 2.3.7: A web based control pannel to manage Virtual Qmail Domains
 net-mail/ytnef 1.9.3: Yeraze's TNEF Stream Reader - for winmail.dat files
 net-misc/AQtion 2.2.7-r1 2.3.1-r1 2.3.4-r1: Aquantia AQC multigigabit NIC linux driver (atlantic) - development preview
-net-misc/adjtimex 1.29-r2: display or set the kernel time variables
+net-misc/adjtimex 1.29-r2: Display or set the kernel time variables
 net-misc/aget 0.4.1-r2: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Perform two optimisations on a list of prefixes to reduce the length of the list
 net-misc/anydesk 5.5.6-r1 6.0.0-r1 6.0.1 6.1.0: Feature rich multi-platform remote desktop application
@@ -15534,7 +15534,7 @@ net-misc/x11-ssh-askpass 1.2.4.1-r2: X11-based passphrase dialog for use with Op
 net-misc/x2goclient 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.1039_p1: CLI to access Yandex Disk file storage service
-net-misc/you-get 0.4.1432 0.4.1500 0.4.1520: utility to download media contents from the web
+net-misc/you-get 0.4.1432 0.4.1500 0.4.1520: Utility to download media contents from the web
 net-misc/youtube-dl 2021.04.01 2021.04.07 9999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r2 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.6.3 1.6.4: A software-based managed Ethernet switch for planet Earth

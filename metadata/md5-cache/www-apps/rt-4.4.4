@@ -3,7 +3,7 @@ DEPEND=>=dev-lang/perl-5.10.1 >=dev-perl/Apache-Session-1.53 >=dev-perl/CGI-4 >=
 DESCRIPTION=RT is an enterprise-grade ticketing system
 EAPI=6
 HOMEPAGE=https://www.bestpractical.com/rt/
-INHERIT=webapp eutils depend.apache user
+INHERIT=webapp depend.apache user
 IUSE=mysql +postgres fastcgi lighttpd vhosts
 KEYWORDS=~amd64
 LICENSE=GPL-2
@@ -12,5 +12,5 @@ REQUIRED_USE=^^ ( mysql postgres )
 RESTRICT=test
 SLOT=4.4.4
 SRC_URI=https://download.bestpractical.com/pub/rt/release/rt-4.4.4.tar.gz
-_eclasses_=webapp	990ad6a000cf18d1ef87117e8c7b0a54	desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	estack	055c42df72f76a4f45ec92b35e83cd56	epatch	9f813bb3c47cf2e60619a663b87c5f4e	l10n	8cdd85e169b835d518bc2fd59f780d8e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	preserve-libs	ef207dc62baddfddfd39a164d9797648	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	depend.apache	d54e0d0bd6b36c476594edc2cee2e332	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	user	26d8ce6329c43cbac965617f1c0627e2
-_md5_=98036bf9ee1ec2041daa9741afabd546
+_eclasses_=webapp	990ad6a000cf18d1ef87117e8c7b0a54	depend.apache	d54e0d0bd6b36c476594edc2cee2e332	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	user	26d8ce6329c43cbac965617f1c0627e2
+_md5_=3a19e66735f9d24b873773ad84149f42

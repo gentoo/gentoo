@@ -4,7 +4,7 @@ DEPEND=acct-user/gpsd >=net-misc/pps-tools-0.0.20120407 bluetooth? ( net-wireles
 DESCRIPTION=GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
 EAPI=7
 HOMEPAGE=https://gpsd.gitlab.io/gpsd/
-INHERIT=eutils udev multilib distutils-r1 scons-utils toolchain-funcs git-r3
+INHERIT=udev multilib distutils-r1 scons-utils toolchain-funcs git-r3
 IUSE=+gpsd_protocols_aivdm +gpsd_protocols_ashtech +gpsd_protocols_earthmate +gpsd_protocols_evermore +gpsd_protocols_fury +gpsd_protocols_fv18 +gpsd_protocols_garmin +gpsd_protocols_garmintxt +gpsd_protocols_geostar +gpsd_protocols_gpsclock +gpsd_protocols_greis +gpsd_protocols_isync +gpsd_protocols_itrax +gpsd_protocols_mtk3301 +gpsd_protocols_navcom +gpsd_protocols_nmea0183 +gpsd_protocols_nmea2000 +gpsd_protocols_ntrip +gpsd_protocols_oceanserver +gpsd_protocols_oncore +gpsd_protocols_passthrough +gpsd_protocols_rtcm104v2 +gpsd_protocols_rtcm104v3 +gpsd_protocols_sirf +gpsd_protocols_skytraq +gpsd_protocols_superstar2 +gpsd_protocols_tnt +gpsd_protocols_tripmate +gpsd_protocols_tsip +gpsd_protocols_ublox bluetooth +cxx dbus debug ipv6 latency-timing ncurses ntp python qt5 +shm +sockets static test udev usb X python_targets_python3_7 python_targets_python3_8
 LICENSE=BSD
 PROPERTIES=live
@@ -12,5 +12,5 @@ RDEPEND=acct-user/gpsd >=net-misc/pps-tools-0.0.20120407 bluetooth? ( net-wirele
 REQUIRED_USE=X? ( python ) gpsd_protocols_nmea2000? ( gpsd_protocols_aivdm ) gpsd_protocols_isync? ( gpsd_protocols_ublox ) gpsd_protocols_ublox? ( python ) gpsd_protocols_greis? ( python ) python? ( || ( python_targets_python3_7 python_targets_python3_8 ) ) qt5? ( cxx )
 RESTRICT=!test? ( test )
 SLOT=0/27
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	udev	452708c3f55cf6e918b045adb949a9e6	multiprocessing	cac3169468f893670dac3e7cb940e045	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-r1	26e4ad0a4190b14f70973dc253e86535	distutils-r1	d8655e1387589a2e1930339b1627d5c1	scons-utils	fc8e53815030125602cc608cd1bff857	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
-_md5_=e1ccdd73dd42b34c9157972e3e12c5e5
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	udev	452708c3f55cf6e918b045adb949a9e6	multiprocessing	cac3169468f893670dac3e7cb940e045	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-r1	26e4ad0a4190b14f70973dc253e86535	distutils-r1	d8655e1387589a2e1930339b1627d5c1	scons-utils	fc8e53815030125602cc608cd1bff857	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
+_md5_=92fc9d94de6af8e896e5e7a75e7477c0

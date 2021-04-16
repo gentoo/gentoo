@@ -3,6 +3,7 @@ DEPEND=care? ( app-arch/libarchive:0= ) sys-libs/talloc care? ( dev-libs/uthash 
 DESCRIPTION=User-space implementation of chroot, mount --bind, and binfmt_misc
 EAPI=7
 HOMEPAGE=https://proot-me.github.io
+INHERIT=toolchain-funcs
 IUSE=care test
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
@@ -10,5 +11,5 @@ RDEPEND=care? ( app-arch/libarchive:0= ) sys-libs/talloc
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/proot-me/PRoot/archive/v5.1.0.tar.gz -> proot-5.1.0.tar.gz
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=2ed467c837769dc6da0d9350ca22d0d9
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=011573ddc5a41b777d4b5b02368b5924

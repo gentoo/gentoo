@@ -10,5 +10,4 @@ RDEPEND=>=dev-lang/ocaml-4.07:= !dev-ml/jbuilder
 RESTRICT=test
 SLOT=0/2.1.0
 SRC_URI=https://github.com/ocaml/dune/archive/2.1.0.tar.gz -> dune-2.1.0.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045
-_md5_=e40e4485f86cdad6b673738a430f842f
+_md5_=3130168325b90b743a828beece8ee5f2

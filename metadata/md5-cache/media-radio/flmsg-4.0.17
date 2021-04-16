@@ -8,5 +8,4 @@ LICENSE=GPL-3
 RDEPEND=media-radio/fldigi x11-libs/fltk:= x11-libs/libX11:=
 SLOT=0
 SRC_URI=mirror://sourceforge/fldigi/flmsg-4.0.17.tar.gz
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=306854a1784a7ac1607d95a361f09a1d
+_md5_=ba65b8dd8ae681371b93e2be517be838

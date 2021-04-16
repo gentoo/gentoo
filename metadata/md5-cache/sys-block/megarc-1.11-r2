@@ -3,6 +3,7 @@ DEPEND=app-arch/unzip doc? ( app-text/antiword )
 DESCRIPTION=LSI Logic MegaRAID Text User Interface management tool
 EAPI=5
 HOMEPAGE=http://www.avagotech.com/cs/Satellite?q=megacli&pagename=AVG2%2FsearchLayout&locale=avg_en&within=megacli&Search=megarc&srch-radio=new&Submit=Search
+INHERIT=multilib
 IUSE=doc
 KEYWORDS=~amd64 ~x86
 LICENSE=LSI
@@ -10,4 +11,4 @@ RESTRICT=mirror bindist
 SLOT=0
 SRC_URI=http://www.avagotech.com/docs-and-downloads/legacy-raid-controllers/legacy-raid-controllers-common-files/ut_linux_megarc_1-11.zip http://www.avagotech.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/README_FOR_ut_linux_megarc_1-11-zip.txt
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=44d54405fa1503af87a47c1621535f6a
+_md5_=5101de1aeb7e0854b3bb06b8be820b34

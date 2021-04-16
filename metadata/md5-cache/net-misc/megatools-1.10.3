@@ -1,14 +1,14 @@
-BDEPEND=sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=app-text/asciidoc virtual/pkgconfig sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure prepare
-DEPEND=dev-libs/glib:2 dev-libs/openssl:0= net-misc/curl virtual/pkgconfig app-text/asciidoc
+DEPEND=dev-libs/glib:2 dev-libs/openssl:0= net-libs/glib-networking[ssl] net-misc/curl
 DESCRIPTION=Command line tools and C library for accessing Mega cloud storage
 EAPI=7
 HOMEPAGE=https://megatools.megous.com
-INHERIT=autotools eutils
+INHERIT=autotools
 KEYWORDS=~amd64 ~arm ~x86
 LICENSE=GPL-2
-RDEPEND=dev-libs/glib:2 dev-libs/openssl:0= net-misc/curl net-libs/glib-networking[ssl]
+RDEPEND=dev-libs/glib:2 dev-libs/openssl:0= net-libs/glib-networking[ssl] net-misc/curl
 SLOT=0
 SRC_URI=https://megatools.megous.com/builds/megatools-1.10.3.tar.gz
-_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e
-_md5_=a9847277641332d0dca50de0bedc3275
+_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354
+_md5_=2c7e3a7ea853ccf8e24bf1228bdbe75e
