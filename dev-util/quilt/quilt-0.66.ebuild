@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit bash-completion-r1 eutils
+inherit bash-completion-r1
 
 DESCRIPTION="quilt patch manager"
 HOMEPAGE="https://savannah.nongnu.org/projects/quilt"
