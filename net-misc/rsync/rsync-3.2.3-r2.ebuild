@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit prefix systemd
+inherit autotools prefix systemd
 
 DESCRIPTION="File transfer program to keep remote files into sync"
 HOMEPAGE="https://rsync.samba.org/"
@@ -54,13 +54,16 @@ python_check_deps() {
 	has_version "dev-python/commonmark[${PYTHON_USEDEP}]"
 }
 
+PATCHES=(
+	"${FILESDIR}/${PN}-3.2.3-glibc-lchmod.patch"
+	"${FILESDIR}/${PN}-3.2.3-glibc-lchmod-better-fix.patch"
+)
+
 src_prepare() {
 	default
-	if [[ "${PV}" == *9999 ]] ; then
-		eaclocal -I m4
-		eautoconf -o configure.sh
-		eautoheader && touch config.h.in
-	fi
+	eaclocal -I m4
+	eautoconf -o configure.sh
+	eautoheader && touch config.h.in
 }
 
 src_configure() {

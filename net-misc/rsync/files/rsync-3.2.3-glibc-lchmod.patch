@@ -1,0 +1,28 @@
+From 85b8dc8abaca96fc3ea7421e09101b6ac41b6718 Mon Sep 17 00:00:00 2001
+From: Wayne Davison <wayne@opencoder.net>
+Date: Fri, 30 Oct 2020 15:51:24 -0700
+Subject: [PATCH] Force HAVE_LCHMOD off for Linux (for now).
+
+---
+ configure.ac | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index e469981b..46aaa819 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -860,6 +860,14 @@ AC_CHECK_FUNCS(waitpid wait4 getcwd chown chmod lchmod mknod mkfifo \
+     extattr_get_link sigaction sigprocmask setattrlist getgrouplist \
+     initgroups utimensat posix_fallocate attropen setvbuf nanosleep usleep)
+ 
++case "$host_os" in
++*linux*) # Work around a glibc bug. TODO eventually remove this?
++    ac_cv_func_lchmod=no
++    grep -v HAVE_LCHMOD confdefs.h >confdefs.h.new
++    mv confdefs.h.new confdefs.h
++    ;;
++esac
++
+ dnl cygwin iconv.h defines iconv_open as libiconv_open
+ if test x"$ac_cv_func_iconv_open" != x"yes"; then
+     AC_CHECK_FUNC(libiconv_open, [ac_cv_func_iconv_open=yes; AC_DEFINE(HAVE_ICONV_OPEN, 1)])
