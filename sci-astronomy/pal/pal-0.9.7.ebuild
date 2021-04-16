@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils ltprune
+inherit ltprune
 
 DESCRIPTION="Positional Astronomy Library"
 HOMEPAGE="https://github.com/Starlink/pal"
