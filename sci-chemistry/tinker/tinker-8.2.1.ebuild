@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils flag-o-matic fortran-2 java-pkg-opt-2 toolchain-funcs
+inherit flag-o-matic fortran-2 java-pkg-opt-2 toolchain-funcs
 
 DESCRIPTION="Molecular modeling package that includes force fields, such as AMBER and CHARMM"
 HOMEPAGE="http://dasher.wustl.edu/tinker/"
