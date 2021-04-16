@@ -24,7 +24,7 @@ K_FROM_GIT="yes"
 ETYPE="sources"
 
 # Inherit Eclasses
-inherit kernel-2 eutils eapi7-ver
+inherit kernel-2 epatch eapi7-ver
 detect_version
 
 # Version Data
