@@ -48,7 +48,7 @@ IUSE="httpd cgi-lua cgi-php static static-libs doc"
 
 # TODO: add ipv6, and c#, java, lua, perl bindings
 # Currently these all have some issue
-DEPEND="doc? ( app-doc/doxygen )"
+BDEPEND="doc? ( app-doc/doxygen )"
 RDEPEND="
 	httpd? (
 		cgi-lua? ( ${LUA_DEPS} )
