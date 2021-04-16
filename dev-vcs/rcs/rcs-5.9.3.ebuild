@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit eutils flag-o-matic
+inherit flag-o-matic
 
 DESCRIPTION="Revision Control System"
 HOMEPAGE="https://www.gnu.org/software/rcs/"
