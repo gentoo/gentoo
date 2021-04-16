@@ -7,7 +7,7 @@ EAPI="5"
 RESTRICT="test"
 JAVA_PKG_IUSE="doc examples source" # test
 
-inherit eutils java-pkg-2 java-ant-2 java-osgi
+inherit java-pkg-2 java-ant-2 java-osgi
 
 MY_P="${P}-src"
 
