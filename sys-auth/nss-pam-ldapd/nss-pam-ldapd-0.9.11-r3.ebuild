@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=(python3_{7..8})
-inherit eutils prefix python-r1 autotools multilib multilib-minimal systemd s6 tmpfiles
+inherit prefix python-r1 autotools multilib multilib-minimal systemd s6 tmpfiles
 
 DESCRIPTION="NSS module for name lookups using LDAP"
 HOMEPAGE="https://arthurdejong.org/nss-pam-ldapd/"
