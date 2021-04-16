@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils multilib
+inherit epatch multilib
 
 MY_P="Tix${PV}"
 DESCRIPTION="A widget library for Tcl/Tk"
