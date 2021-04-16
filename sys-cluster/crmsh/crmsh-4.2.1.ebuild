@@ -17,7 +17,7 @@ else
 	KEYWORDS="~amd64 ~hppa ~x86"
 fi
 
-inherit eutils python-r1
+inherit python-r1
 
 DESCRIPTION="Pacemaker command line interface for management and configuration"
 HOMEPAGE="https://crmsh.github.io/"
