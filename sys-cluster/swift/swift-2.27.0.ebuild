@@ -5,7 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_8 python3_9 )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit distutils-r1 eutils linux-info
+inherit distutils-r1 linux-info
 
 DESCRIPTION="A highly available, distributed, and eventually consistent object/blob store"
 HOMEPAGE="https://launchpad.net/swift"
