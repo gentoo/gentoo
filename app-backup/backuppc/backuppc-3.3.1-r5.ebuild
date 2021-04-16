@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit depend.apache eutils user systemd
+inherit depend.apache epatch user systemd
 
 MY_P="BackupPC-${PV}"
 
