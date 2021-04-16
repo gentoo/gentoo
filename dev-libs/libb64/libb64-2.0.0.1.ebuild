@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,9 +12,8 @@ LICENSE="CC-PD"
 # static library, so always rebuild
 SLOT="0/${PVR}"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-DEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
 
 src_compile() {
 	# override -O3, -Werror non-sense
