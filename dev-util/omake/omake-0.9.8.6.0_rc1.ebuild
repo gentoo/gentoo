@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit toolchain-funcs multilib versionator eutils
+inherit toolchain-funcs multilib versionator epatch
 
 MY_PV=$(replace_version_separator 5 '.' "$(replace_version_separator 4 '-' )")
 DESCRIPTION="Make replacement"
