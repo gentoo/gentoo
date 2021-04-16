@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools eutils multilib-minimal
+inherit autotools multilib-minimal
 
 DESCRIPTION="C library that resolves names asynchronously"
 HOMEPAGE="https://c-ares.haxx.se/"
