@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils multilib
+inherit multilib
 
 DESCRIPTION="Pure Tcl implementation of an XML parser"
 HOMEPAGE="http://tclxml.sourceforge.net/"
