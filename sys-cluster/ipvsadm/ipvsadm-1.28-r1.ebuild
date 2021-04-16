@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils linux-info toolchain-funcs
+inherit epatch linux-info toolchain-funcs
 
 DESCRIPTION="utility to administer the IP virtual server services"
 HOMEPAGE="http://linuxvirtualserver.org/"
