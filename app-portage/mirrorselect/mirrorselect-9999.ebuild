@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{7,8,9} )
 PYTHON_REQ_USE="xml"
 DISTUTILS_USE_SETUPTOOLS=no
 
-inherit eutils distutils-r1 git-r3 prefix
+inherit distutils-r1 git-r3 prefix
 
 EGIT_REPO_URI="git://anongit.gentoo.org/proj/mirrorselect.git"
 
