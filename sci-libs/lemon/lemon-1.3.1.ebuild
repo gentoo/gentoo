@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="https://lemon.cs.elte.hu/pub/sources/${P}.tar.gz"
 LICENSE="Boost-1.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="+coin doc glpk static-libs test"
+IUSE="+coin doc glpk test"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="|| ( coin glpk )"
