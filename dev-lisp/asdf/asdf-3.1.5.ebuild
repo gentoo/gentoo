@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils prefix
+inherit prefix
 
 DESCRIPTION="ASDF is Another System Definition Facility for Common Lisp"
 HOMEPAGE="http://common-lisp.net/project/asdf/"
