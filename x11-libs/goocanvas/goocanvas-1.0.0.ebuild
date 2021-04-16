@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
+
 GCONF_DEBUG=no
 GNOME2_LA_PUNT=yes
 GNOME_TARBALL_SUFFIX="bz2"
-
-inherit epatch gnome2 libtool
+inherit epatch gnome2
 
 DESCRIPTION="Canvas widget for GTK+ using the cairo 2D library for drawing"
 HOMEPAGE="https://wiki.gnome.org/Projects/GooCanvas"
