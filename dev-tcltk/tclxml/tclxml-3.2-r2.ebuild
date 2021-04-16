@@ -9,10 +9,10 @@ DESCRIPTION="Pure Tcl implementation of an XML parser"
 HOMEPAGE="http://tclxml.sourceforge.net/"
 SRC_URI="mirror://sourceforge/tclxml/${P}.tar.gz"
 
-IUSE="debug threads"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 ppc sparc x86"
+IUSE="debug threads"
 
 DEPEND="
 	>=dev-lang/tcl-8.2:0
