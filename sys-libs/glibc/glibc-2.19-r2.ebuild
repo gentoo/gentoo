@@ -5,7 +5,7 @@ EAPI=6
 
 TMPFILES_OPTIONAL=1
 
-inherit prefix eutils toolchain-funcs flag-o-matic gnuconfig \
+inherit prefix toolchain-funcs flag-o-matic gnuconfig \
 	multilib systemd multiprocessing tmpfiles
 
 DESCRIPTION="GNU libc C library"
