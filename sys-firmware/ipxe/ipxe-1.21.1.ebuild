@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit toolchain-funcs eutils savedconfig
+inherit toolchain-funcs savedconfig
 
 DESCRIPTION="Open source network boot (PXE) firmware"
 HOMEPAGE="https://ipxe.org/"
