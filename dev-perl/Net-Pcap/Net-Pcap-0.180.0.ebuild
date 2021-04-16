@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 DIST_AUTHOR=SAPER
 DIST_VERSION=0.18
 DIST_EXAMPLES=( "eg/*" )
-inherit perl-module eutils
+inherit perl-module
 
 DESCRIPTION="Interface to the pcap(3) LBL packet capture library"
 
