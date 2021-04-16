@@ -5,7 +5,7 @@ EAPI=5
 
 WANT_AUTOMAKE=1.13
 
-inherit autotools eutils multilib
+inherit autotools epatch multilib
 RESTRICT="test" # https://bugs.gentoo.org/show_bug.cgi?id=498250 https://bugs.launchpad.net/gentoo/+bug/1278023
 
 DESCRIPTION="a C client library to the memcached server"
