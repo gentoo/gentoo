@@ -12,4 +12,4 @@ RESTRICT=!test? ( test ) !test? ( test )
 SLOT=0
 SRC_URI=https://bitbucket.org/asomov/snakeyaml/get/snakeyaml-1.28.tar.gz -> asomov-snakeyaml-b28f0b4d87c6.tar.gz
 _eclasses_=java-utils-2	2440f41421207d084e5e3f1fb001b34e	java-pkg-2	45c44ec10db6affb3ebee1ac72039888	java-pkg-simple	c85bf2d75a5f53e7b39fc9104701ebfb
-_md5_=bb9813fc72ecfc5a70456f6e9f08ed42
+_md5_=3bdfe3a4687bcee2fb07aaeb82098325
