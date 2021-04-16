@@ -5,7 +5,7 @@ EAPI="6"
 
 JAVA_PKG_IUSE="doc source"
 
-inherit eutils check-reqs java-pkg-2 versionator
+inherit check-reqs java-pkg-2 versionator
 
 SV="$(get_version_component_range 1-2)"
 
