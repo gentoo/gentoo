@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils vim-plugin
+inherit vim-plugin
 
 DESCRIPTION="vim plugin: eselect syntax highlighting, filetype and indent settings"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
