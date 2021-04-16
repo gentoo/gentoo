@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit toolchain-funcs multilib eutils
+inherit toolchain-funcs multilib
 
 # The following works with both pre-releases and releases
 MY_P=${PN/-/_}.${PV/_/.}
