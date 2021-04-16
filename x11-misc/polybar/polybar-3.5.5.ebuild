@@ -15,7 +15,7 @@ SRC_URI="https://github.com/polybar/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/polybar/xpp/archive/${XPP_COMMIT}.tar.gz -> xpp-${XPP_COMMIT}.tar.gz
 	https://github.com/polybar/i3ipcpp/archive/${I3IPCPP_COMMIT}.tar.gz -> i3ipcpp-${I3IPCPP_COMMIT}.tar.gz"
 
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 LICENSE="MIT"
 SLOT="0"
 IUSE="alsa curl doc i3wm ipc mpd network pulseaudio"
