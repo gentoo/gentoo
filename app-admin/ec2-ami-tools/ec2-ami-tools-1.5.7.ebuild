@@ -10,12 +10,11 @@ DESCRIPTION="Command-line tools that serve as client interface to the Amazon EC2
 HOMEPAGE="https://aws.amazon.com/en/tools/"
 SRC_URI="http://s3.amazonaws.com/ec2-downloads/${P}.zip"
 
-LICENSE="Amazon
-|| ( Ruby GPL-2 )"
+LICENSE="Amazon || ( Ruby GPL-2 )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
 RDEPEND="
 	${RUBY_DEPS}
 	virtual/ruby-ssl
