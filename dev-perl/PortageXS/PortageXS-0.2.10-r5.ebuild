@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 MODULE_VERSION=0.02.10
-inherit perl-module eutils prefix
+inherit perl-module epatch prefix
 
 DESCRIPTION="Portage abstraction layer for perl"
 HOMEPAGE="http://download.mpsna.de/opensource/PortageXS/"
