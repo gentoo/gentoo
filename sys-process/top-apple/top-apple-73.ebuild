@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit toolchain-funcs eutils
+inherit toolchain-funcs epatch
 
 DESCRIPTION="Apple's top from Mac OS X Lion 10.7"
 HOMEPAGE="http://www.opensource.apple.com/"
