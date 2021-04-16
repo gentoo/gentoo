@@ -5,12 +5,13 @@ EAPI=7
 
 LUA_COMPAT=( lua5-3 )
 LUA_REQ_USE="deprecated"
-
-inherit autotools lua-single toolchain-funcs
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/nmap.asc
+inherit autotools lua-single toolchain-funcs verify-sig
 
 DESCRIPTION="Network exploration tool and security / port scanner"
 HOMEPAGE="https://nmap.org/"
 SRC_URI="https://nmap.org/dist/${P}.tar.bz2"
+SRC_URI+=" verify-sig? ( https://nmap.org/dist/sigs/${P}.tar.bz2.asc )"
 
 LICENSE="|| ( NPSL GPL-2 )"
 SLOT="0"
@@ -34,6 +35,7 @@ RDEPEND="
 	system-lua? ( ${LUA_DEPS} )
 "
 DEPEND="${RDEPEND}"
+BDEPEND+="verify-sig? ( app-crypt/openpgp-keys-nmap )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.10_beta1-string.patch
