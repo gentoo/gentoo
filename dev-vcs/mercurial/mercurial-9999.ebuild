@@ -8,7 +8,7 @@ PYTHON_REQ_USE="threads(+)"
 DISTUTILS_USE_SETUPTOOLS=no
 CARGO_OPTIONAL=1
 
-inherit bash-completion-r1 cargo elisp-common eutils distutils-r1 mercurial flag-o-matic
+inherit bash-completion-r1 cargo elisp-common distutils-r1 mercurial flag-o-matic
 
 DESCRIPTION="Scalable distributed SCM"
 HOMEPAGE="https://www.mercurial-scm.org/"
