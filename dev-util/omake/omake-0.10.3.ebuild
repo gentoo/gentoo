@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit toolchain-funcs multilib epatch
+inherit epatch
 
 DESCRIPTION="Make replacement"
 HOMEPAGE="http://projects.camlcity.org/projects/omake.html"
