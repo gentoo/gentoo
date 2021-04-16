@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit autotools eutils multilib python-single-r1 udev systemd
+inherit autotools multilib python-single-r1 udev systemd
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://www.kismetwireless.net/git/${PN}.git"
