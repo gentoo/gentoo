@@ -5,7 +5,7 @@ EAPI=6
 
 FORTRAN_STANDARD="77 90"
 
-inherit autotools eutils fortran-2 flag-o-matic ltprune
+inherit autotools fortran-2 flag-o-matic ltprune
 
 DESCRIPTION="Scientific library and interface for array oriented data access"
 HOMEPAGE="https://www.unidata.ucar.edu/software/netcdf/"
