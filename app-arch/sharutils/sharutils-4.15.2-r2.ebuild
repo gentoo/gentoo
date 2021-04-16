@@ -3,12 +3,13 @@
 
 EAPI="7"
 
-inherit eutils flag-o-matic
+inherit flag-o-matic l10n
 
 MY_P="${P/_/-}"
 DESCRIPTION="Tools to deal with shar archives"
 HOMEPAGE="https://www.gnu.org/software/sharutils/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
+S="${WORKDIR}"/${MY_P}
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -18,8 +19,6 @@ IUSE="nls"
 DEPEND="app-arch/xz-utils
 	sys-apps/texinfo
 	nls? ( >=sys-devel/gettext-0.10.35 )"
-
-S=${WORKDIR}/${MY_P}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.15.2-glibc228.patch
