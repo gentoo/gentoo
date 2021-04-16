@@ -4714,10 +4714,10 @@ dev-haskell/wl-pprint-annotated 0.1.0.1: Wadler/Leijen pretty printer with annot
 dev-haskell/wl-pprint-text 1.2.0.1: A Wadler/Leijen Pretty Printer for Text values
 dev-haskell/word8 0.1.3: Word8 library
 dev-haskell/wreq 0.5.3.2: An easy-to-use HTTP client library
-dev-haskell/wx 0.92.2.0: Portable and native GUI library built on wxWidgets
-dev-haskell/wxc 0.92.3.0: wxHaskell C++ wrapper
-dev-haskell/wxcore 0.92.3.0: wxHaskell core
-dev-haskell/wxdirect 0.92.3.0-r1: helper tool for building wxHaskell
+dev-haskell/wx 0.92.2.0 0.92.3.0-r1: A portable and native GUI library for Haskell built on top of wxWidgets
+dev-haskell/wxc 0.92.3.0 0.92.3.0-r1: wxHaskell C++ wrapper
+dev-haskell/wxcore 0.92.3.0 0.92.3.0-r1: wxHaskell core
+dev-haskell/wxdirect 0.92.3.0-r1 0.92.3.0-r2: helper tool for building wxHaskell
 dev-haskell/x11 1.9.2: A binding to the X11 graphics library
 dev-haskell/x11-xft 0.3.1-r1: Bindings to the Xft, X Free Type interface library, and some Xrender parts
 dev-haskell/x509 1.7.5: X509 reader and writer
@@ -13384,7 +13384,7 @@ media-libs/libogg 1.3.4: the Ogg media file format library
 media-libs/liboggz 1.1.1: Oggz provides a simple programming interface for reading and writing Ogg files and streams
 media-libs/libopenaptx 0.2.0 9999: Reverse-engineered aptX and aptX HD library
 media-libs/libopenglrecorder 0.1.0: Library for asynchronous OpenGL recording with audio
-media-libs/libopenmpt 0.5.7: Library to decode tracked music files (modules)
+media-libs/libopenmpt 0.5.8: Library to decode tracked music files (modules)
 media-libs/libopenraw 0.1.3: RAW image formats decoding library
 media-libs/libopenshot 0.2.4_pre20190609 0.2.5-r1: Video editing library used by OpenShot
 media-libs/libopenshot-audio 0.1.9_pre20190502 0.2.0: Library for audio editing and playback used by OpenShot
@@ -13444,7 +13444,7 @@ media-libs/lv2 1.18.2: A simple but extensible successor of LADSPA
 media-libs/lvtk 1.2.0-r1: A set of C++ wrappers around the LV2 C API
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
 media-libs/mesa 20.3.5 21.0.1 21.0.2 9999: OpenGL-like graphic library for Linux
-media-libs/mlt 6.24.0-r1 6.26.0: Open source multimedia framework for television broadcasting
+media-libs/mlt 6.24.0-r1 6.26.1: Open source multimedia framework for television broadcasting
 media-libs/munt-mt32emu 2.4.2 2.5.0: Library for emulating the Roland MT-32, CM-32L, CM-64 and LAPC-I
 media-libs/musicbrainz 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
 media-libs/mutagen 1.45.1: Audio metadata tag reader and writer implemented in pure Python
@@ -14070,7 +14070,7 @@ media-sound/normalize 0.7.7-r1: Audio file volume normalizer
 media-sound/ogg2mp3 0.6.1-r1: Perl script to convert Ogg Vorbis files to MP3 files
 media-sound/oggtst 0.0: A tool for calculating ogg-vorbis playing time
 media-sound/ogmtools 1.5-r2: Information, extraction or creation for OGG media streams
-media-sound/openmpt123 0.5.7: libopenmpt-based command line player for tracked music files (modules)
+media-sound/openmpt123 0.5.8: libopenmpt-based command line player for tracked music files (modules)
 media-sound/opus-tools 0.2: Royalty-free, highly versatile audio codec
 media-sound/orpheus 1.6-r3: Command line MP3 player
 media-sound/pamix 1.6 1.6-r1 9999: A PulseAudio NCurses mixer
@@ -16247,7 +16247,7 @@ sci-geosciences/dcw-gmt 1.1.4: Digital Chart of the World for GMT 5 or later
 sci-geosciences/foxtrotgps 1.2.0: Easy to use, fast and lightweight mapping application (fork of tangogps)
 sci-geosciences/geocode-glib 3.26.2: GLib helper library for geocoding services
 sci-geosciences/gmt 4.5.18-r1 5.4.4: Powerful map generator
-sci-geosciences/gnome-maps 3.36.6: A map application for GNOME
+sci-geosciences/gnome-maps 3.36.6 40.0: A map application for GNOME
 sci-geosciences/gpsbabel 1.5.4-r1 9999: GPS waypoints, tracks and routes converter
 sci-geosciences/gpscorrelate 1.6.1-r2: Tool for adjusting EXIF tags of your photos with a recorded GPS trace
 sci-geosciences/gpsd 3.21 9999: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
@@ -17051,7 +17051,7 @@ sys-apps/gawk 4.2.1-r1 5.0.1 5.1.0: GNU awk pattern-matching language
 sys-apps/gcp 0.2.1: File copying utility with progress and I/O indicator
 sys-apps/gentoo-functions 0.13 0.14 9999: base functions required by all Gentoo systems
 sys-apps/gentoo-systemd-integration 7 8 9 9999: systemd integration files for Gentoo
-sys-apps/gnome-disk-utility 3.38.2: Disk Utility for GNOME using udisks
+sys-apps/gnome-disk-utility 3.38.2 40.0: Disk Utility for GNOME using udisks
 sys-apps/gpet 0.4: GTK+ based TOMOYO policy editor
 sys-apps/gptfdisk 1.0.6-r1 1.0.7: GPT partition table manipulator for Linux
 sys-apps/gradm 3.1.201603152148 3.1.201607172312 3.1.201608131257 3.1.201708012022 3.1.201903191516: Administrative interface for the grsecurity Role Based Access Control system
@@ -19015,7 +19015,7 @@ x11-themes/adapta-gtk-theme 3.95.0.11: An adaptive Gtk+ theme based on Material 
 x11-themes/adwaita-icon-theme 3.32.0 3.38.0: GNOME default icon theme
 x11-themes/adwaita-qt 1.1.4 1.2.0 1.2.1: A style to bend Qt applications to look like they belong into GNOME Shell
 x11-themes/arc-icon-theme 20161122: Vertex icon theme
-x11-themes/arc-theme 20201013 20210127: A flat theme with transparent elements for GTK+3, GTK+2 and GNOME Shell
+x11-themes/arc-theme 20201013 20210127 20210412: A flat theme with transparent elements for GTK+3, GTK+2 and GNOME Shell
 x11-themes/blueglass-xcursors 0.4: A high quality set of Xfree 4.3.0 animated mouse cursors
 x11-themes/chameleon-xcursors 0.5-r1: Style neutral scalable cursor theme
 x11-themes/claws-mail-themes 20140629: Iconsets for Claws Mail
