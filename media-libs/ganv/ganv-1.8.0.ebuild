@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{7,8,9} )
 PYTHON_REQ_USE='threads(+)'
-inherit eutils flag-o-matic waf-utils python-any-r1
+inherit flag-o-matic waf-utils python-any-r1
 
 DESCRIPTION="A GTK+ widget for interactive graph-like environments"
 HOMEPAGE="http://drobilla.net/software/ganv/"
