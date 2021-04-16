@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="An MBR that can handle BIOS-based boot on GPT"
 MY_P="${PN}_${PV}"
