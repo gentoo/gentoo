@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic toolchain-funcs multilib-minimal preserve-libs usr-ldscript
+inherit toolchain-funcs multilib multilib-minimal preserve-libs usr-ldscript
 
 MY_PV="${PV:0:3}"
 MY_P="${PN}-${MY_PV}"
