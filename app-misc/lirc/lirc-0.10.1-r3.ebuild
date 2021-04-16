@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PYTHON_COMPAT=( python3_7 )
 
-inherit eutils flag-o-matic linux-info python-single-r1 systemd xdg-utils
+inherit flag-o-matic linux-info python-single-r1 systemd xdg-utils
 
 DESCRIPTION="decode and send infra-red signals of many commonly used remote controls"
 HOMEPAGE="https://www.lirc.org/"
