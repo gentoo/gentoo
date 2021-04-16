@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit toolchain-funcs multilib-minimal usr-ldscript
+inherit multilib-minimal usr-ldscript
 
 DESCRIPTION="Userspace access to USB devices (libusb-0.1 compat wrapper)"
 HOMEPAGE="http://libusb.sourceforge.net/"
@@ -30,7 +30,7 @@ MULTILIB_CHOST_TOOLS=(
 )
 
 multilib_src_configure() {
-	ECONF_SOURCE=${S} \
+	ECONF_SOURCE="${S}" \
 	econf \
 		$(use_enable static-libs static) \
 		$(use_enable debug debug-log)
