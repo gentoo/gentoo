@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils fortran-2 toolchain-funcs flag-o-matic
+inherit fortran-2 toolchain-funcs flag-o-matic
 
 # MIDVERS is actually used by MIDAS configuration scripts
 export MIDVERS="17FEBpl1.2"
