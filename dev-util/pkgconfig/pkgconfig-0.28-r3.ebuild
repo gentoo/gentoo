@@ -4,7 +4,7 @@
 EAPI=5
 
 # Do not inherit autotools in non-live ebuild - causes circular dependency, bug #550856
-inherit eutils flag-o-matic libtool multilib multilib-minimal
+inherit epatch flag-o-matic libtool multilib multilib-minimal
 
 MY_P=pkg-config-${PV}
 
