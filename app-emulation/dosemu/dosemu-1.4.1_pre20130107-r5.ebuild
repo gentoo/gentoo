@@ -1,9 +1,9 @@
-# Copyright 2002-2020 Gentoo Authors
+# Copyright 2002-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-inherit autotools eutils flag-o-matic pax-utils toolchain-funcs
+inherit autotools flag-o-matic pax-utils toolchain-funcs
 
 P_FD="dosemu-freedos-1.0-bin"
 COMMIT="15cfb41ff20a052769d753c3262c57ecb050ad71"
