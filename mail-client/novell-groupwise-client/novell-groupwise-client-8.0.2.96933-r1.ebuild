@@ -61,10 +61,10 @@ src_install() {
 	JRE_DIR="${WORKDIR}"/${PN}-${MY_PV}/opt/novell/groupwise/client/java;
 
 	# Undo Sun's funny-business with packed .jar's
-	for i in $JRE_DIR/lib/*.pack; do
-		i_b=`echo $i | sed 's/\.pack$//'`;
-		einfo "Unpacking `basename $i` -> `basename $i_b.jar`";
-		$JRE_DIR/bin/unpack200 $i $i_b.jar || die "Unpack failed";
+	for i in ${JRE_DIR}/lib/*.pack; do
+		i_b=`echo ${i} | sed 's/\.pack$//'`;
+		einfo "Unpacking `basename ${i}` -> `basename ${i_b}.jar`";
+		${JRE_DIR}/bin/unpack200 ${i} ${i_b}.jar || die "Unpack failed";
 	done;
 
 	domenu "${WORKDIR}"/${PN}-${MY_PV}/opt/novell/groupwise/client/gwclient.desktop
