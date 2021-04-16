@@ -8128,6 +8128,7 @@ dev-python/autoprop 1.0.2 2.0.0 2.1.0 2.1.1 2.2.0: Infer properties from accesso
 dev-python/aws-sam-translator 1.35.0: A library that transform SAM templates into AWS CloudFormation templates
 dev-python/aws-xray-sdk-python 2.6.0 2.7.0: AWS X-Ray SDK for Python
 dev-python/awscli 1.19.3 1.19.47: Universal Command Line Environment for AWS
+dev-python/awxkit 19.0.0: Command line interface for Ansible AWX
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
 dev-python/backcall 0.2.0: Specifications for callback functions passed in to an API
 dev-python/backports-tempfile 1.0-r1: Backport of new features in Python's tempfile module
@@ -14110,7 +14111,7 @@ media-sound/qtgain 1.0.0: Simple frontend to mp3gain, vorbisgain and metaflac
 media-sound/qtractor 0.9.20 0.9.21: Audio/MIDI multi-track sequencer written in C++ with the Qt framework
 media-sound/qtscrobbler 0.11_pre20130123: Updates last.fm profiles using information from supported portable music players
 media-sound/quimup 1.4.4: Qt5 client for the music player daemon (MPD)
-media-sound/quodlibet 4.3.0 4.3.0-r1 4.4.0: audio library tagger, manager, and player for GTK+
+media-sound/quodlibet 4.4.0: audio library tagger, manager, and player for GTK+
 media-sound/rawrec 0.9.991: CLI program to play and record audiofiles
 media-sound/rcenter 0.6.2: Rcenter - A program to control the EMU10K Remote Control
 media-sound/redoflacs 0.30: Bash commandline flac compressor, verifier, organizer, analyzer, retagger
@@ -14789,7 +14790,7 @@ net-fs/smbnetfs 0.6.3: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/sshfs 3.7.0 3.7.1: Fuse-filesystem utilizing the sftp service
 net-fs/wdfs 1.4.2-r2: WebDAV filesystem with special features for accessing subversion repositories
-net-ftp/atftp 0.7.2-r2 0.7.2-r3 0.7.4: Advanced TFTP implementation client/server
+net-ftp/atftp 0.7.4: Advanced TFTP implementation client/server
 net-ftp/cmdftp 0.9.8: Light weight, yet robust command line FTP client with shell-like functions.
 net-ftp/filezilla 3.53.1-r1: FTP client with lots of useful features and an intuitive interface
 net-ftp/frox 0.7.18-r6: A transparent ftp proxy
