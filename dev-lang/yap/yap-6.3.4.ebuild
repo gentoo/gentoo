@@ -7,7 +7,7 @@ MY_P=YAP-${PV}
 
 PYTHON_COMPAT=( python3_{7,8} )
 
-inherit cmake-utils eutils flag-o-matic multilib python-r1
+inherit cmake-utils flag-o-matic multilib python-r1
 
 PATCHSET_VER="0"
 
