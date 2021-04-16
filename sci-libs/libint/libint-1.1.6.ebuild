@@ -13,7 +13,6 @@ SRC_URI="https://github.com/evaleev/libint/archive/release-${MY_PV}.tar.gz -> ${
 LICENSE="GPL-2"
 SLOT="1"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
-IUSE="static-libs"
 
 S="${WORKDIR}/${PN}-release-${MY_PV}"
 
@@ -27,6 +26,7 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
+		--disable-static
 		--enable-deriv
 		--enable-r12
 		--with-cc=$(tc-getCC)
