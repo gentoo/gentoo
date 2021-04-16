@@ -12,7 +12,7 @@ SRC_URI="http://www.ant.uni-bremen.de/whomes/rinas/sinfo/download/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="ipv6 static-libs"
+IUSE="ipv6"
 
 RDEPEND="
 	!sys-cluster/slurm
@@ -37,7 +37,9 @@ src_prepare() {
 DOCS=( AUTHORS ChangeLog README )
 
 src_configure() {
-	econf $(use_enable ipv6 IPv6)
+	econf \
+		--disable-static \
+		$(use_enable ipv6 IPv6)
 }
 
 src_install() {
