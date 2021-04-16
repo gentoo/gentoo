@@ -5,11 +5,13 @@ EAPI=7
 
 # Bug: https://github.com/ngircd/ngircd/issues/261
 WANT_AUTOMAKE=1.11.6
-inherit autotools
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/alexbarton.asc
+inherit autotools verify-sig
 
 DESCRIPTION="An IRC server written from scratch"
 HOMEPAGE="https://ngircd.barton.de/"
 SRC_URI="https://arthur.barton.de/pub/${PN}/${P}.tar.gz"
+SRC_URI+=" verify-sig? ( https://arthur.barton.de/pub/${PN}/${P}.tar.gz.sig )"
 
 LICENSE="GPL-2"
 SLOT="0"
