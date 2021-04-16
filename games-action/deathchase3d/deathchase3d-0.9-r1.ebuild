@@ -1,8 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils
 
 DESCRIPTION="A remake of the Sinclair Spectrum game of the same name"
 HOMEPAGE="http://www.autismuk.freeserve.co.uk/"
