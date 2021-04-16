@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit autotools eutils flag-o-matic multilib toolchain-funcs
+inherit autotools epatch flag-o-matic multilib toolchain-funcs
 
 MY_V_SUFFIX="-8.5.2"
 
