@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 MY_P="${PN}-v${PV}-prod-src"
 
