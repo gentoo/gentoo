@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit perl-module eutils user
+inherit perl-module user
 
 MY_P=${PN}-1.001
 DESCRIPTION="Dialup alphapaging software"
