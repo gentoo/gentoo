@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils gnome2-utils xdg
+inherit gnome2-utils xdg
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/squentin/${PN}.git"
