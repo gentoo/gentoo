@@ -95,6 +95,8 @@ file from /usr/share/applications if you use a different browser)."
 src_prepare() {
 	cmake_src_prepare
 	gnome2_src_prepare
+
+	eapply "${FILESDIR}"/3.38-PrintableOptions.cmake-Correct-variable-name-compari.patch
 }
 
 src_configure() {
