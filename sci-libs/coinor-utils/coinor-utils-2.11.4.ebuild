@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,13 +11,12 @@ DESCRIPTION="COIN-OR Matrix, Vector and other utility classes"
 HOMEPAGE="https://github.com/coin-or/CoinUtils/"
 SRC_URI="https://github.com/coin-or/${MY_PN}/archive/releases/${PV}.tar.gz
 	-> ${P}.tar.gz"
-LICENSE="EPL-1.0"
 
+LICENSE="EPL-1.0"
 # major soname component
 SLOT="0/3"
-
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="bzip2 doc glpk blas lapack static-libs test zlib"
+IUSE="bzip2 doc glpk blas lapack test zlib"
 RESTRICT="!test? ( test )"
 
 # Fortran is NOT needed, but the ./configure scripts for all of the CoinOR
@@ -53,12 +52,14 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
+		--disable-static
 		--enable-dependency-linking
 		--with-coin-instdir="${ED}/usr"
 		$(use_enable zlib)
 		$(use_enable bzip2 bzlib)
 		$(use_with doc dot)
 	)
+
 	if use blas; then
 		myeconfargs+=( --with-blas-lib="$($(tc-getPKG_CONFIG) --libs blas)" )
 	else
