@@ -11,7 +11,7 @@ RTM_NAME="NSS_${PV//./_}_RTM"
 DESCRIPTION="Mozilla's Network Security Services library that implements PKI support"
 HOMEPAGE="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS"
 SRC_URI="https://archive.mozilla.org/pub/security/nss/releases/${RTM_NAME}/src/${P}.tar.gz
-	cacert? ( https://dev.gentoo.org/~axs/distfiles/${PN}-cacert-class1-class3.patch )"
+	cacert? ( https://dev.gentoo.org/~whissi/dist/ca-certificates/nss-cacert-class1-class3-r1.patch )"
 
 LICENSE="|| ( MPL-2.0 GPL-2 LGPL-2.1 )"
 SLOT="0"
@@ -42,13 +42,11 @@ PATCHES=(
 )
 
 src_prepare() {
-	if use cacert ; then #521462
-		PATCHES+=(
-			"${DISTDIR}/${PN}-cacert-class1-class3.patch"
-		)
-	fi
-
 	default
+
+	if use cacert ; then
+		eapply -p2 "${DISTDIR}"/nss-cacert-class1-class3-r1.patch
+	fi
 
 	pushd coreconf >/dev/null || die
 	# hack nspr paths
