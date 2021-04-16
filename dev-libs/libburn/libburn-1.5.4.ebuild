@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="Open-source library for reading, mastering and writing optical discs"
-HOMEPAGE="https://dev.lovelyhq.com/libburnia/web/wikis/home"
+HOMEPAGE="https://dev.lovelyhq.com/libburnia/web/wiki/Libburn"
 SRC_URI="http://files.libburnia-project.org/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
