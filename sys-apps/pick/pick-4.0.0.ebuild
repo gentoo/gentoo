@@ -3,20 +3,19 @@
 
 EAPI=7
 
-inherit autotools toolchain-funcs
+inherit toolchain-funcs
 
-DESCRIPTION="a fuzzy search tool for the command-line"
+DESCRIPTION="A fuzzy search tool for the command-line"
 HOMEPAGE="https://github.com/mptre/pick"
 SRC_URI="https://github.com/mptre/pick/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="sys-libs/ncurses:0="
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.0.0-tinfo.patch"
