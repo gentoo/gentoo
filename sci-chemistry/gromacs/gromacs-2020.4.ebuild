@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{7,8,9} )
 
 DISTUTILS_SINGLE_IMPL=1
 
-inherit bash-completion-r1 cmake cuda distutils-r1 eutils flag-o-matic multilib readme.gentoo-r1 toolchain-funcs xdg-utils
+inherit bash-completion-r1 cmake cuda distutils-r1 flag-o-matic multilib readme.gentoo-r1 toolchain-funcs xdg-utils
 
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="
