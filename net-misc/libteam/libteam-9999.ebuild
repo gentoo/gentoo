@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ HOMEPAGE="http://libteam.org"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-IUSE="dbus debug examples static-libs +syslog zmq"
+IUSE="dbus debug examples +syslog zmq"
 
 DEPEND=">=dev-libs/jansson-2.4
 	dev-libs/libdaemon
@@ -43,6 +43,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
+		--disable-static \
 		$(use_enable debug) \
 		$(use_enable syslog logging) \
 		$(use_enable dbus) \
