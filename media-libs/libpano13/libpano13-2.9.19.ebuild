@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit versionator java-pkg-opt-2 eutils ltprune
+inherit versionator java-pkg-opt-2 ltprune
 
 DESCRIPTION="Helmut Dersch's panorama toolbox library"
 HOMEPAGE="http://panotools.sourceforge.net/"
