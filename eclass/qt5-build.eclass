@@ -37,6 +37,13 @@ readonly QT5_BUILD_TYPE
 # SRC_URI and EGIT_REPO_URI. Must be set before inheriting the eclass.
 : ${QT5_MODULE:=${PN}}
 
+# @ECLASS-VARIABLE: _QT5_P
+# @INTERNAL
+# @DESCRIPTION:
+# The upstream package name of the module this package belongs to.
+# Used for SRC_URI and S.
+_QT5_P=${QT5_MODULE}-everywhere-src-${PV}
+
 # @ECLASS-VARIABLE: QT5_TARGET_SUBDIRS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -81,9 +88,8 @@ case ${PV} in
 		;;
 	*)
 		# official stable release
-		MY_P=${QT5_MODULE}-everywhere-src-${PV}
-		SRC_URI="https://download.qt.io/official_releases/qt/${PV%.*}/${PV}/submodules/${MY_P}.tar.xz"
-		S=${WORKDIR}/${MY_P}
+		SRC_URI="https://download.qt.io/official_releases/qt/${PV%.*}/${PV}/submodules/${_QT5_P}.tar.xz"
+		S=${WORKDIR}/${_QT5_P}
 		;;
 esac
 
