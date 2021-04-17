@@ -9,7 +9,7 @@ SRC_URI="https://github.com/NVIDIA/eglexternalplatform/archive/${PV}.tar.gz -> $
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64"
 
 src_prepare() {
 	default

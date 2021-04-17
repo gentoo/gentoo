@@ -11,7 +11,7 @@ SRC_URI="https://github.com/NVIDIA/egl-wayland/archive/${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64"
 
 RDEPEND="
 	dev-libs/wayland
@@ -48,5 +48,13 @@ pkg_postinst() {
 		elog "Can be accomplished by:"
 		elog "  echo 'options nvidia-drm modeset=1' > ${EROOT}/etc/modprobe.d/nvidia-drm.conf"
 		elog "...then reloading the module."
+		elog
+		elog "Note that EGLStream requires support from the wayland compositor and"
+		elog "is not currently supported by many popular options such as gui-wm/sway."
+	fi
+
+	if has_version "<x11-drivers/nvidia-drivers-391"; then
+		ewarn "<=nvidia-drivers-390.xx may not work properly with this version of"
+		ewarn "egl-wayland, it is recommended to use nouveau drivers for wayland."
 	fi
 }

@@ -4,7 +4,7 @@
 EAPI=7
 
 MODULES_OPTIONAL_USE="driver"
-inherit desktop linux-info linux-mod multilib-build optfeature \
+inherit desktop linux-info linux-mod multilib-build \
 	readme.gentoo-r1 systemd toolchain-funcs unpacker
 
 NV_KERNEL_MAX="5.10"
@@ -26,7 +26,7 @@ S="${WORKDIR}"
 
 LICENSE="GPL-2 MIT NVIDIA-r2"
 SLOT="0/${PV%%.*}"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 IUSE="+X +driver static-libs +tools"
 
 COMMON_DEPEND="
@@ -345,6 +345,8 @@ src_install() {
 }
 
 pkg_preinst() {
+	has_version "x11-drivers/nvidia-drivers[wayland]" && NV_HAD_WAYLAND=1
+
 	use driver || return
 	linux-mod_pkg_preinst
 
@@ -360,8 +362,6 @@ pkg_postinst() {
 
 	readme.gentoo_print_elog
 
-	optfeature "wayland EGLStream with nvidia-drm.modeset=1" gui-libs/egl-wayland
-
 	if [[ -r /proc/driver/nvidia/version &&
 		$(grep -o '  [0-9.]*  ' /proc/driver/nvidia/version) != "  ${PV}  " ]]; then
 		ewarn "Currently loaded NVIDIA modules do not match the newly installed"
@@ -374,5 +374,10 @@ pkg_postinst() {
 		elog "module (nvidia-uvm) on x86 (32bit), as such the module was not built."
 		elog "This means OpenCL/CUDA (and related, like nvenc) cannot be used."
 		elog "Other functions, like OpenGL, will continue to work."
+	fi
+
+	if [[ ${NV_HAD_WAYLAND} ]]; then
+		elog "Support for EGLStream (egl-wayland) is no longer offered with legacy"
+		elog "nvidia-drivers. It is recommended to use nouveau drivers for wayland."
 	fi
 }
