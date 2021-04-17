@@ -63,9 +63,6 @@ HOMEPAGE="https://www.qt.io/"
 LICENSE="|| ( GPL-2 GPL-3 LGPL-3 ) FDL-1.3"
 SLOT=5/$(ver_cut 1-2)
 
-QT5_MINOR_VERSION=$(ver_cut 2)
-readonly QT5_MINOR_VERSION
-
 case ${PV} in
 	5.15.9999)
 		# KDE upstream for 5.15 patches
