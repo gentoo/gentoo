@@ -31,7 +31,7 @@ RDEPEND="
 	dev-libs/libpcre2:=
 	dev-libs/pugixml:=
 	media-libs/flac:=
-	>=media-libs/libmatroska-1.6.0:=
+	>=media-libs/libmatroska-1.6.3:=
 	media-libs/libogg:=
 	media-libs/libvorbis:=
 	sys-apps/file
