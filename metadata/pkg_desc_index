@@ -3146,6 +3146,7 @@ app-text/linuxdoc-tools 0.9.73-r1: A toolset for processing LinuxDoc DTD SGML fi
 app-text/llpp 33: Graphical PDF viewer which aims to superficially resemble less(1)
 app-text/logmerge 0.5.2b: Small and powerful script to merge two or more logfiles
 app-text/lout 3.40: High-level language for document formatting
+app-text/lowdown 0.8.4: Markdown translator producing HTML5, roff documents in the ms and man formats
 app-text/lv 4.51-r4: Powerful Multilingual File Viewer
 app-text/mandoc 1.14.5 1.14.5-r1: Suite of tools compiling mdoc and man
 app-text/manpager 1: Enable colorization of man pages
