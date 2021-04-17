@@ -39,6 +39,7 @@ BDEPEND="
 	dev-util/itstool
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
+	gui-libs/libhandy[vala]
 	dev-libs/libgusb[vala]
 	colord? ( x11-misc/colord[vala] )
 "
