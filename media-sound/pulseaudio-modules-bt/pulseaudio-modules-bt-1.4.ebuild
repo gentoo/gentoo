@@ -54,9 +54,9 @@ load-module module-bluetooth-discover
 src_prepare() {
 	cmake_src_prepare
 
-        # pulseaudio headers needed to build
-        rmdir pa/ || die
-        ln -s ../pulseaudio-${PULSE_VER}/ pa || die
+	# pulseaudio headers needed to build
+	rmdir pa/ || die
+	ln -s ../pulseaudio-${PULSE_VER}/ pa || die
 }
 
 src_configure() {
