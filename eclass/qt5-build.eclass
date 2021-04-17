@@ -127,19 +127,6 @@ EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_install sr
 # @DESCRIPTION:
 # Unpacks the sources.
 qt5-build_src_unpack() {
-	# bug 307861
-	if [[ ${PN} == qtwebengine ]]; then
-		eshopts_push -s extglob
-		if is-flagq '-g?(gdb)?([1-9])'; then
-			ewarn
-			ewarn "You have enabled debug info (probably have -g or -ggdb in your CFLAGS/CXXFLAGS)."
-			ewarn "You may experience really long compilation times and/or increased memory usage."
-			ewarn "If compilation fails, please try removing -g/-ggdb before reporting a bug."
-			ewarn
-		fi
-		eshopts_pop
-	fi
-
 	case ${QT5_BUILD_TYPE} in
 		live)    git-r3_src_unpack ;&
 		release) default ;;
