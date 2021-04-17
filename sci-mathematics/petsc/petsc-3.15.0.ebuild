@@ -50,6 +50,7 @@ DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	virtual/pkgconfig
 	dev-util/cmake
+	sys-apps/which
 "
 
 PATCHES=(
