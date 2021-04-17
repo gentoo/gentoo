@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_7 )
+PYTHON_COMPAT=( python3_{7..9} )
 
 if [[ ${PV} = *9999* ]]; then
 	scm_eclass=git-r3
