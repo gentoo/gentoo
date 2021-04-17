@@ -86,6 +86,13 @@ readonly KDE_ORG_CATEGORIES
 # category on invent.kde.org, with "kde" as fallback value.
 : ${KDE_ORG_CATEGORY:=${KDE_ORG_CATEGORIES[${CATEGORY}]:-kde}}
 
+# @ECLASS-VARIABLE: KDE_ORG_COMMIT
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# If set, instead of a regular release tarball, pull tar.gz snapshot from an
+# invent.kde.org repository identified by KDE_ORG_CATEGORY and KDE_ORG_NAME
+# at the desired COMMIT ID.
+
 # @ECLASS-VARIABLE: KDE_ORG_NAME
 # @DESCRIPTION:
 # If unset, default value is set to ${PN}.
@@ -216,7 +223,13 @@ _kde.org_calculate_src_uri() {
 		esac
 	fi
 
-	SRC_URI="${_src_uri}${KDE_ORG_NAME}-${PV}.tar.xz"
+	if [[ -n ${KDE_ORG_COMMIT} ]]; then
+		SRC_URI="https://invent.kde.org/${KDE_ORG_CATEGORY}/${KDE_ORG_NAME}/-/"
+		SRC_URI+="archive/${KDE_ORG_COMMIT}/${KDE_ORG_NAME}-${KDE_ORG_COMMIT}.tar.gz"
+		SRC_URI+=" -> ${KDE_ORG_NAME}-${PV}-${KDE_ORG_COMMIT:0:8}.tar.gz"
+	else
+		SRC_URI="${_src_uri}${KDE_ORG_NAME}-${PV}.tar.xz"
+	fi
 
 	if _kde.org_is_unreleased ; then
 		RESTRICT+=" fetch"
@@ -262,13 +275,13 @@ case ${KDE_BUILD_TYPE} in
 	*)
 		_kde.org_calculate_src_uri
 		debug-print "${LINENO} ${ECLASS} ${FUNCNAME}: SRC_URI is ${SRC_URI}"
+		if [[ -n ${KDE_ORG_COMMIT} ]]; then
+			S=${WORKDIR}/${KDE_ORG_NAME}-${KDE_ORG_COMMIT}
+		else
+			S=${WORKDIR}/${KDE_ORG_NAME}-${PV}
+		fi
 		;;
 esac
-
-
-if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	S=${WORKDIR}/${KDE_ORG_NAME}-${PV}
-fi
 
 # @FUNCTION: kde.org_pkg_nofetch
 # @DESCRIPTION:
