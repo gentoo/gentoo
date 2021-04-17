@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_8 )
+PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="xml"
 
 CHROMIUM_LANGS="am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu he
@@ -13,7 +13,7 @@ inherit check-reqs chromium-2 desktop flag-o-matic multilib ninja-utils pax-util
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://chromium.org/"
-PATCHSET="4"
+PATCHSET="5"
 PATCHSET_NAME="chromium-$(ver_cut 1)-patchset-${PATCHSET}"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
 	https://files.pythonhosted.org/packages/ed/7b/bbf89ca71e722b7f9464ebffe4b5ee20a9e5c9a555a56e2d3914bb9119a6/setuptools-44.1.0.zip
@@ -40,8 +40,8 @@ COMMON_X_DEPEND="
 	x11-libs/libXrandr:=
 	x11-libs/libXrender:=
 	x11-libs/libXtst:=
-	x11-libs/libXScrnSaver:=
 	x11-libs/libxcb:=
+	x11-libs/libxshmfence:=
 	vaapi? ( >=x11-libs/libva-2.7:=[X,drm] )
 "
 
@@ -109,7 +109,6 @@ BDEPEND="
 	>=app-arch/gzip-1.7
 	app-arch/unzip
 	dev-lang/perl
-	dev-lang/python:2.7[xml]
 	>=dev-util/gn-0.1807
 	dev-vcs/git
 	>=dev-util/gperf-3.0.3
@@ -229,6 +228,8 @@ src_prepare() {
 	local PATCHES=(
 		"${WORKDIR}/patches"
 		"${FILESDIR}/chromium-89-EnumTable-crash.patch"
+		"${FILESDIR}/chromium-91-ThemeService-crash.patch"
+		"${FILESDIR}/chromium-91-system-icu.patch"
 		"${FILESDIR}/chromium-shim_headers.patch"
 	)
 
@@ -236,12 +237,6 @@ src_prepare() {
 
 	mkdir -p third_party/node/linux/node-linux-x64/bin || die
 	ln -s "${EPREFIX}"/usr/bin/node third_party/node/linux/node-linux-x64/bin/node || die
-
-	# adjust python interpreter versions
-	sed -i -e "s|\(^script_executable = \).*|\1\"${EPYTHON}\"|g" .gn || die
-	sed -i -e "s|python2|python2\.7|g" buildtools/linux64/clang-format || die
-	sed -i -e "s|python|python2\.7|g" \
-		third_party/dom_distiller_js/protoc_plugins/json_values_converter.py || die
 
 	local keeplibs=(
 		base/third_party/cityhash
@@ -330,6 +325,7 @@ src_prepare() {
 		third_party/flatbuffers
 		third_party/freetype
 		third_party/fusejs
+		third_party/highway
 		third_party/libgifcodec
 		third_party/liburlpattern
 		third_party/libzip
@@ -356,6 +352,7 @@ src_prepare() {
 		third_party/libavif
 		third_party/libgav1
 		third_party/libjingle
+		third_party/libjxl
 		third_party/libphonenumber
 		third_party/libsecret
 		third_party/libsrtp
@@ -413,7 +410,6 @@ src_prepare() {
 		third_party/qcms
 		third_party/rnnoise
 		third_party/s2cellid
-		third_party/schema_org
 		third_party/securemessage
 		third_party/shell-encryption
 		third_party/simplejson
