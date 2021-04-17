@@ -8189,7 +8189,7 @@ dev-python/cbor2 5.1.2 5.2.0: Pure Python CBOR (de)serializer with extensive tag
 dev-python/certifi 10001-r1: Thin replacement for certifi using system certificate store
 dev-python/cffi 1.14.5: Foreign Function Interface for Python calling C code
 dev-python/cfgv 3.2.0: Validate configuration and produce human-readable error messages
-dev-python/cfn-python-lint 0.47.2 0.48.1 0.48.2: CloudFormation Linter
+dev-python/cfn-python-lint 0.47.2 0.48.1 0.48.2 0.48.3: CloudFormation Linter
 dev-python/cftime 1.4.1: Time-handling functionality from netcdf4-python
 dev-python/cgroup-utils 0.8: Tools and libraries for control groups of Linux
 dev-python/chai 1.1.2: Easy to use mocking, stubbing and spying framework
@@ -8416,7 +8416,7 @@ dev-python/freezegun 1.1.0: Let your Python tests travel through time
 dev-python/frozen-flask 0.15: Freezes a Flask application into a set of static files
 dev-python/frozendict 1.2: A simple immutable mapping for python
 dev-python/fs 2.4.12 2.4.13: Filesystem abstraction layer
-dev-python/fsspec 0.8.5 0.8.7 0.9.0: A specification that python filesystems should adhere to
+dev-python/fsspec 0.8.5 0.8.7 0.9.0 2021.04.0: A specification that python filesystems should adhere to
 dev-python/fudge 1.1.1: Replace real objects with fakes (mocks, stubs, etc) while testing
 dev-python/funcparserlib 0.3.6-r1: Recursive descent parsing library based on functional combinators
 dev-python/funcy 1.15: A collection of fancy functional tools focused on practicality
@@ -8902,7 +8902,7 @@ dev-python/pycurl 7.43.0.6: python binding for curl/libcurl
 dev-python/pycurl-requests 0.2.0: Requests-compatible interface for PycURL
 dev-python/pycxx 7.1.2-r2: Set of facilities to extend Python with C++
 dev-python/pydantic 1.6.1 1.8.1: Data parsing and validation using Python type hints
-dev-python/pydata-sphinx-theme 0.4.3 0.5.1 0.5.2 0.6.0: Bootstrap-based Sphinx theme from the PyData community
+dev-python/pydata-sphinx-theme 0.4.3 0.5.1 0.5.2 0.6.0 0.6.1: Bootstrap-based Sphinx theme from the PyData community
 dev-python/pydecomp 0.3-r1 9999: A python library of common (de)compression and contents handling
 dev-python/pydiff 0.2-r1: Diffs two Python files at the bytecode level
 dev-python/pydispatcher 2.1.2: Multi-producer-multi-consumer signal dispatching mechanism
@@ -9347,7 +9347,7 @@ dev-python/spyder-notebook 0.3.2: Jupyter notebook integration with Spyder
 dev-python/spyder-terminal 0.5.0: Run system terminals inside Spyder
 dev-python/spyder-unittest 0.4.1: Plugin for Spyder to run tests and view the results
 dev-python/spyder-vim 0_pre20201026: Plugin for Spyder to enable Vim keybindings
-dev-python/sqlalchemy 1.3.23 1.3.24 1.4.2 1.4.5 1.4.6 1.4.7 1.4.8: Python SQL toolkit and Object Relational Mapper
+dev-python/sqlalchemy 1.3.23 1.3.24 1.4.2 1.4.5 1.4.6 1.4.7 1.4.8 1.4.9: Python SQL toolkit and Object Relational Mapper
 dev-python/sqlalchemy-migrate 0.13.0: SQLAlchemy Schema Migration Tools
 dev-python/sqlalchemy-rqlite 1.1: A SQLAlchemy dialect for rqlite
 dev-python/sqlparse 0.3.1 0.4.1: A non-validating SQL parser module for Python
@@ -9533,7 +9533,7 @@ dev-python/zope-schema 6.0.0 6.0.1 6.1.0: Zope schema Architecture
 dev-python/zope-testing 4.9: Zope testing helpers
 dev-python/zope-testrunner 5.2 5.3.0: Zope testrunner script
 dev-python/zstandard 0.14.0-r1 0.14.1 0.15.0 0.15.2-r1: Zstandard Bindings for Python
-dev-python/zstd 1.4.5.1: Simple python bindings to Yann Collet ZSTD compression library.
+dev-python/zstd 1.4.5.1 1.4.9.1: Simple python bindings to Yann Collet ZSTD compression library
 dev-python/zxcvbn 4.4.28: A realistic password strength estimator
 dev-qt/assistant 5.15.2: Tool for viewing on-line documentation in Qt help file format
 dev-qt/designer 5.15.2: WYSIWYG tool for designing and building graphical user interfaces with QtWidgets
@@ -15541,7 +15541,7 @@ net-misc/x2goclient 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.1039_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.1432 0.4.1500 0.4.1520: Utility to download media contents from the web
-net-misc/youtube-dl 2021.04.01 2021.04.07 9999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2021.04.01 2021.04.07 2021.04.17 9999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r2 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.6.3 1.6.4: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -17506,7 +17506,7 @@ sys-devel/binutils-hppa64 2.32-r1 2.33.1 2.34-r2 2.35.1-r1 2.35.2 2.36.1: Tools 
 sys-devel/bison 3.6.4 3.7.3 3.7.5 3.7.6: A general-purpose (yacc-compatible) parser generator
 sys-devel/bmake 20210206-r1 20210314 20210314-r1: NetBSD's portable make
 sys-devel/boost-m4 0.4_p20160328: Another set of autoconf macros for compiling against boost
-sys-devel/clang 10.0.1 11.0.0 11.0.1 11.1.0 12.0.0 12.0.0.9999 13.0.0.9999: C language family frontend for LLVM
+sys-devel/clang 10.0.1 11.0.0 11.0.1 11.1.0 12.0.0-r1 12.0.0.9999 13.0.0.9999: C language family frontend for LLVM
 sys-devel/clang-common 10.0.1 11.0.0 11.0.1 11.1.0 12.0.0 12.0.0.9999 13.0.0.9999: Common files shared between multiple slots of clang
 sys-devel/clang-runtime 10.0.1 11.0.0 11.0.1 11.1.0 12.0.0 12.0.0.9999 13.0.0.9999: Meta-ebuild for clang runtime libraries
 sys-devel/cons 2.3.0: Extensible perl-based build utility
