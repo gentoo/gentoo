@@ -8,5 +8,5 @@ LICENSE=GPL-3
 PROPERTIES=live
 RDEPEND=dev-libs/openssl:0 net-misc/curl net-misc/socat
 SLOT=0
-_eclasses_=git-r3	b8e8c92aa5fe8df7187e466138eb4e52	optfeature	2e90be23a14db1ea432d6b216eb2a81e
+_eclasses_=git-r3	b8e8c92aa5fe8df7187e466138eb4e52	optfeature	e142388219c7fee6ff016fe1c78a10a5
 _md5_=ee004e0718575e50827ee7f7b7bec29d

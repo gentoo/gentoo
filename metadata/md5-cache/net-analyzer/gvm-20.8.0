@@ -8,5 +8,5 @@ KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=>=net-analyzer/gvm-libs-20.8.0[extras?,ldap?,radius?] >=net-analyzer/gvmd-20.8.0[extras?] >=net-analyzer/openvas-scanner-20.8.0[cron?,extras?] cli? ( >=net-analyzer/gvm-tools-20.8.0 ) gsa? ( >=net-analyzer/greenbone-security-assistant-20.8.0[extras?] ) ospd? ( >=net-analyzer/ospd-20.8.0[extras?] )
 SLOT=0
-_eclasses_=optfeature	2e90be23a14db1ea432d6b216eb2a81e
+_eclasses_=optfeature	e142388219c7fee6ff016fe1c78a10a5
 _md5_=9b7d27a001f43e841f6dce973e9be98e
