@@ -57,18 +57,26 @@ distutils_use_setuptools_check() {
 		[[ ${#expected[@]} -eq 0 ]] && expected=( no )
 		# *+rdepend=rdepend
 		has rdepend "${expected[@]}" && expected=( rdepend )
-		# for the time being, entry points imply rdepend
-		has entry-point "${expected[@]}" && expected=( rdepend )
-		# at this point, expected should have exactly one value
-		[[ ${#expected[@]} -eq 1 ]] || die "integrity error"
 
-		if [[ ${DISTUTILS_USE_SETUPTOOLS} != ${expected} ]]; then
+		if has entry-point "${expected[@]}"; then
+			if [[ ${DISTUTILS_STRICT_ENTRY_POINTS} ]]; then
+				# option for devs to future-proof their packages
+				# please don't let ago enable it
+				expected=( bdepend )
+			else
+				# accept either rdepend or bdepend for the time being
+				# but suggest bdepend as the future-proof option
+				expected=( bdepend rdepend )
+			fi
+		fi
+
+		if ! has ${DISTUTILS_USE_SETUPTOOLS} "${expected[@]}"; then
 				local def=
 				[[ ${DISTUTILS_USE_SETUPTOOLS} == bdepend ]] && def=' (or unset)'
 
 				eqawarn "DISTUTILS_USE_SETUPTOOLS value is probably incorrect"
 				eqawarn "  have:     DISTUTILS_USE_SETUPTOOLS=${DISTUTILS_USE_SETUPTOOLS}${def}"
-				eqawarn "  expected: DISTUTILS_USE_SETUPTOOLS=${expected}"
+				eqawarn "  expected: DISTUTILS_USE_SETUPTOOLS=${expected[0]}"
 		fi
 	fi
 }
