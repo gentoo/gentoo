@@ -8,7 +8,7 @@ JAVA_PKG_IUSE="doc source test"
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="XML Java library"
-HOMEPAGE="http://dom4j.sourceforge.net/"
+HOMEPAGE="https://dom4j.github.io/"
 SRC_URI="
 	mirror://sourceforge/dom4j/${P}.tar.gz
 	mirror://gentoo/${P}-java5.patch.bz2"
