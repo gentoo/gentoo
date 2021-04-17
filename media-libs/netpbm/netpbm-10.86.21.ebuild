@@ -35,6 +35,7 @@ PATCHES=(
 	"${FILESDIR}"/netpbm-10.86.21-build.patch
 	"${FILESDIR}"/netpbm-10.86.21-test.patch #450530
 	"${FILESDIR}"/netpbm-10.86.21-misc-deps.patch
+	"${FILESDIR}"/netpbm-10.86.21-format-security.patch #517524
 )
 
 netpbm_libtype() {
