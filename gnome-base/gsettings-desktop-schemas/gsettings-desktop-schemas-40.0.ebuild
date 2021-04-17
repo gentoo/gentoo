@@ -2,7 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit gnome.org gnome2-utils meson xdg
+
+PYTHON_COMPAT=(python3_{6..9})
+inherit gnome.org gnome2-utils meson python-any-r1 xdg
 
 DESCRIPTION="Collection of GSettings schemas for GNOME desktop"
 HOMEPAGE="https://git.gnome.org/browse/gsettings-desktop-schemas"
@@ -17,12 +19,19 @@ BDEPEND="
 	dev-util/glib-utils
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
+	${PYTHON_DEPS}
 "
 
 PATCHES=(
 	# Revert change to 'Source Code Pro 10' and 'Cantarell 11' fonts back to generic sans and monospace aliases
 	"${FILESDIR}"/3.32.0-default-fonts.patch
 )
+
+src_prepare() {
+	default
+
+	python_fix_shebang build-aux/meson/post-install.py
+}
 
 src_configure() {
 	meson_src_configure $(meson_use introspection)
