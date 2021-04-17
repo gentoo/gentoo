@@ -5749,7 +5749,7 @@ dev-libs/libxml2 2.9.10-r4 2.9.10-r5: XML C parser and toolkit
 dev-libs/libxmlb 0.1.15 0.2.1 0.3.0: Library to help create and query binary XML blobs
 dev-libs/libxslt 1.1.34-r1: XSLT libraries and tools
 dev-libs/libyaml 0.2.2 0.2.5: YAML 1.1 parser and emitter written in C
-dev-libs/libzia 4.23 4.24 4.25: platform abstraction code for tucnak package
+dev-libs/libzia 4.25 4.27: platform abstraction code for tucnak package
 dev-libs/libzip 1.7.3: Library for manipulating zip archives
 dev-libs/light 1.2.2 1.2.2-r1: A program to control backlights (and other hardware lights)
 dev-libs/link-grammar 5.8.0: A Syntactic English parser
@@ -13853,7 +13853,7 @@ media-radio/qsstv 9.4.4 9.5.3: Amateur radio SSTV software
 media-radio/svxlink 17.12.1 17.12.2: Multi Purpose Voice Services System, including Qtel for EchoLink
 media-radio/tlf 1.4.1: Console-mode amateur radio contest logger
 media-radio/tqsl 2.5.1: ARRL Logbook of the World
-media-radio/tucnak 4.23 4.24 4.25: Amateur Radio VHF Contest Logbook
+media-radio/tucnak 4.25 4.27: Amateur Radio VHF Contest Logbook
 media-radio/unixcw 3.5.1-r1: A package of programs that fit together to form a morse code tutor program
 media-radio/wsjtx 2.2.2 2.3.0 2.3.1: Weak signal ham radio communication
 media-radio/xastir 2.1.6: X Amateur Station Tracking and Information Reporting
