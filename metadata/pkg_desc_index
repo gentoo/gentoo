@@ -5473,7 +5473,7 @@ dev-libs/fddl 20111124-r1: Free Decision Diagram Library
 dev-libs/ferrisloki 3.0.13-r2: Loki C++ library from Modern C++ Design
 dev-libs/ffcall 2.1: Build foreign function call interfaces in embedded interpreter
 dev-libs/flatbuffers 1.12.0: Memory efficient serialization library
-dev-libs/folks 0.14.0: Library for aggregating people from multiple sources
+dev-libs/folks 0.14.0 0.15.2: Library for aggregating people from multiple sources
 dev-libs/foma 0.9.18: A set of utilities for constructing finite-state automata and transducers
 dev-libs/freexl 1.0.5 1.0.6: Simple XLS data extraction library
 dev-libs/fribidi 1.0.10: A free implementation of the unicode bidirectional algorithm
@@ -12022,7 +12022,7 @@ gnome-extra/cinnamon-settings-daemon 4.6.4 4.8.5: Cinnamon's settings daemon
 gnome-extra/cinnamon-translations 4.6.2 4.8.3: Translation data for Cinnamon
 gnome-extra/cjs 4.6.0 4.8.2: Linux Mint's fork of gjs for Cinnamon
 gnome-extra/eiciel 0.9.12.1-r1: ACL editor for GNOME, with Nautilus extension
-gnome-extra/evolution-data-server 3.38.4: Evolution groupware backend
+gnome-extra/evolution-data-server 3.38.4 3.40.0: Evolution groupware backend
 gnome-extra/evolution-ews 3.38.4: Evolution module for connecting to Microsoft Exchange Web Services
 gnome-extra/filemanager-actions 3.2.4 3.4: File manager extension which offers user configurable context menu actions
 gnome-extra/gconf-editor 3.0.1-r1: An editor to the GNOME config system
