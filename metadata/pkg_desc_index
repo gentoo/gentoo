@@ -12654,7 +12654,7 @@ mail-filter/opendkim 2.10.3-r26: A milter providing DKIM signing and verificatio
 mail-filter/opendmarc 1.3.3: Open source DMARC implementation
 mail-filter/opensmtpd-filter-rspamd 0.1.6: OpenSMTPD filter for putting emails through rspamd
 mail-filter/policyd 1.82-r4: Policy daemon for postfix and other MTAs
-mail-filter/policyd-weight 0.1.15.2-r2: Weighted Policy daemon for Postfix
+mail-filter/policyd-weight 0.1.15.2-r3: Weighted Policy daemon for Postfix
 mail-filter/popfile 1.1.3-r1: Anti-spam bayesian filter
 mail-filter/postforward 1.1.0 1.1.1: Postfix Sender Rewriting Scheme forwarding agent
 mail-filter/postfwd 2.02: Versatile Postfix policy server with a flexible ruleset based configuration
@@ -12689,7 +12689,7 @@ mail-mta/protonmail-bridge 1.6.3 1.6.6: Serves ProtonMail to IMAP/SMTP clients
 mail-mta/protonmail-bridge-bin 1.4.5 1.5.0 1.5.2: Serves ProtonMail to IMAP/SMTP clients
 mail-mta/qpsmtpd 0.95-r1 9999: qpsmtpd is a flexible smtpd daemon written in Perl
 mail-mta/sendmail 8.15.2-r2 8.16.1: Widely-used Mail Transport Agent (MTA)
-mail-mta/ssmtp 2.64-r3: Extremely simple MTA to get mail off the system to a Mailhub
+mail-mta/ssmtp 2.64-r4: Extremely simple MTA to get mail off the system to a Mailhub
 mate-base/caja 1.24.0 1.24.0-r2: Caja file manager for the MATE desktop
 mate-base/libmatekbd 1.24.0-r1 1.24.1: MATE keyboard configuration library
 mate-base/mate 1.24: Meta ebuild for MATE, a traditional desktop environment
@@ -14692,7 +14692,7 @@ net-dialup/pptpclient 1.10.0: Linux client for PPTP
 net-dialup/radiusclient-ng 0.5.6-r1: RadiusClient NextGeneration - library for RADIUS clients
 net-dialup/rp-l2tp 0.4-r4: User-space implementation of L2TP for Linux and other UNIX systems
 net-dialup/rp-pppoe 3.12-r1 3.13 3.14: A user-mode PPPoE client and server suite for Linux
-net-dialup/sendpage 1.1.0-r3: Dialup alphapaging software
+net-dialup/sendpage 1.1.0-r4: Dialup alphapaging software
 net-dialup/sercd 3.0.0-r2: RFC2217-compliant serial port redirector
 net-dialup/speedtouch-usb 3.0.1.2-r3: Firmware and configuration instructions for Alcatel SpeedTouch USB modems
 net-dialup/wvdial 1.61: Excellent program to automatically configure PPP sessions
@@ -14841,7 +14841,7 @@ net-im/libcommuni 3.6.0: A cross-platform IRC framework written with Qt
 net-im/librvp 0.9.7: An RVP (Microsoft Exchange Instant Messaging) plugin for Pidgin
 net-im/mattermost-desktop-bin 4.6.2: Mattermost Desktop application
 net-im/mcabber 1.1.2 9999: A small Jabber console client with various features, like MUC, SSL, PGP
-net-im/minbif 1.0.5-r2: IRC gateway to IM networks
+net-im/minbif 1.0.5-r3: IRC gateway to IM networks
 net-im/neochat 1.1.1: Client for Matrix, the decentralized communication protocol
 net-im/openmittsu 0.9.13.46 0.9.15.0: An open source chat client for Threema-style end-to-end encrypted chat networks
 net-im/pidgin 2.14.1 2.14.2 2.14.3-r1: GTK Instant Messenger client
@@ -15454,7 +15454,7 @@ net-misc/remmina 1.4.11 1.4.12 1.4.13: A GTK+ RDP, SPICE, VNC, XDMCP and SSH cli
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/rsync 3.2.3-r2 9999: File transfer program to keep remote files into sync
 net-misc/rwbs 0.27-r2: Roger Wilco base station
-net-misc/rwhoisd 1.5.9.6: ARIN rwhois daemon
+net-misc/rwhoisd 1.5.9.6-r1: ARIN rwhois daemon
 net-misc/rygel 0.38.4: Rygel is an open source UPnP/DLNA MediaServer
 net-misc/s3cmd 2.1.0: Command line client for Amazon S3
 net-misc/s6-networking 2.3.0.2 2.3.0.3 2.3.0.4 2.3.1.1 2.3.2.0: Suite of small networking utilities for Unix systems
@@ -15490,7 +15490,7 @@ net-misc/ssh-chain 20131217: ssh via a chain of intermediary hosts
 net-misc/sshpass 1.06: Tool for noninteractively performing password authentication with ssh
 net-misc/sshrc 0.6.1 0.6.2: Bring your .bashrc, .vimrc, etc. from your local machine when you ssh
 net-misc/sslh 1.20-r1 1.21-r1 1.21b-r1 1.21c-r1 9999: Port multiplexer - accept both HTTPS and SSH connections on the same port
-net-misc/sstp-client 1.0.10-r1 1.0.12: A client implementation of Secure Socket Tunneling Protocol (SSTP)
+net-misc/sstp-client 1.0.12-r1: A client implementation of Secure Socket Tunneling Protocol (SSTP)
 net-misc/stargazer 2.408-r1: Billing system for small home and office networks
 net-misc/streamlink 1.3.1-r1 2.0.0 9999: CLI for extracting streams from websites to a video player of your choice
 net-misc/streamtuner 0.99.99-r5: Stream directory browser for browsing internet radio streams
@@ -15603,7 +15603,7 @@ net-p2p/go-ipfs-bin 0.4.22 0.7.0: Main implementation of IPFS
 net-p2p/gtk-gnutella 1.2.0-r1: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
 net-p2p/ktorrent 20.12.3: Powerful BitTorrent client based on KDE Frameworks
-net-p2p/litecoind 0.10.4.0: The offical daemon to run your own (full) Litecoin node
+net-p2p/litecoind 0.10.4.0-r1: The offical daemon to run your own (full) Litecoin node
 net-p2p/mktorrent 1.1_p20180912: Simple command line utility to create BitTorrent metainfo files
 net-p2p/mldonkey 3.1.7-r2: Multi-network P2P application written in Ocaml, with Gtk, web & telnet interface
 net-p2p/ncdc 1.22.1 9999: ncurses directconnect client
@@ -15662,13 +15662,13 @@ net-print/splix 2.0.0_p20130826-r1: A set of CUPS printer drivers for SPL (Samsu
 net-print/sshlpr 1: ssh-lpr backend for cups -- print to remote systems over ssh
 net-proxy/3proxy 0.9.0: A really tiny cross-platform proxy servers set
 net-proxy/adzapper 20110915-r2: Redirector for squid to intercept advertising, page counters and web bugs
-net-proxy/cntlm 0.93_beta5-r2: Cntlm is an NTLM/NTLMv2 authenticating HTTP proxy
+net-proxy/cntlm 0.93_beta5-r3: Cntlm is an NTLM/NTLMv2 authenticating HTTP proxy
 net-proxy/dante 1.4.1-r2: A free socks4,5 and msproxy implementation
 net-proxy/dnsproxy 1.17: The dnsproxy daemon is a proxy for DNS queries
 net-proxy/haproxy 1.8.29 1.8.30 2.0.14-r2 2.0.21 2.0.22 2.0.9999 2.2.5-r1 2.2.12 2.2.13 2.2.9999 2.3.9 2.3.9999: A TCP/HTTP reverse proxy for high availability environments
 net-proxy/haproxy-dataplaneapi 2.2.0: haproxy dataplane api / sidecar
 net-proxy/hatop 0.8.0: Ncurses client and real-time monitoring and displaying of HAProxy status
-net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
+net-proxy/havp 0.92a-r3: HTTP AntiVirus Proxy
 net-proxy/microsocks 1.0.2: Multithreaded, small, efficient SOCKS5 server
 net-proxy/mitmproxy 6.0.2: An interactive, SSL-capable, man-in-the-middle HTTP proxy
 net-proxy/nutcracker 0.4.1-r1: A fast, light-weight proxy for Memcached and Redis. (Twitter's Twemproxy)
@@ -15690,7 +15690,7 @@ net-proxy/tinyproxy 1.11.0_rc1 1.11.0: A lightweight HTTP/SSL proxy
 net-proxy/torsocks 2.2.0 2.3.0: Use most socks-friendly applications with Tor
 net-proxy/trojan 1.16.0-r2: An unidentifiable mechanism that helps you bypass GFW
 net-proxy/tsocks 1.8_beta5-r9: Transparent SOCKS v4 proxying library
-net-proxy/wwwoffle 2.9i-r1: Web caching proxy suitable for non-permanent Internet connections
+net-proxy/wwwoffle 2.9i-r2: Web caching proxy suitable for non-permanent Internet connections
 net-proxy/ziproxy 3.3.1-r2: A forwarding, non-caching, compressing web proxy server
 net-voip/sipvicious 0.3.0 0.3.3: SIPVicious is a SIP security package
 net-voip/telepathy-gabble 0.18.4-r2: A XMPP connection manager, handles single and multi user chats and voice calls
@@ -18261,7 +18261,7 @@ www-servers/boa 0.94.14_rc21-r2: A very small and very fast http daemon
 www-servers/bozohttpd 20190228: bozohttpd is a small and secure http server
 www-servers/caddy 2.0.0 2.2.3 2.3.0 2.3.0-r1: Fast, cross-platform HTTP/2 web server with automatic HTTPS
 www-servers/civetweb 1.11 1.12: Embedded C/C++ web server
-www-servers/fnord 1.11-r1: Yet another small httpd
+www-servers/fnord 1.11-r2: Yet another small httpd
 www-servers/gatling 0.16-r1: High performance web server
 www-servers/gunicorn 20.0.4 20.1.0: A WSGI HTTP Server for UNIX
 www-servers/h2o 2.2.6 9999: H2O - the optimized HTTP/1, HTTP/2 server

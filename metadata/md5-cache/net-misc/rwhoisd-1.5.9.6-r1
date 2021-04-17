@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst
+DEPEND=sys-devel/flex virtual/yacc
+DESCRIPTION=ARIN rwhois daemon
+EAPI=7
+HOMEPAGE=http://projects.arin.net/rwhois/
+INHERIT=flag-o-matic
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=acct-group/rwhoisd acct-user/rwhoisd
+SLOT=0
+SRC_URI=https://github.com/arineng/rwhoisd/archive/1.5.9.6.tar.gz -> rwhoisd-1.5.9.6.tar.gz
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	c0964e43ba712cb933da5f65b958fa88
+_md5_=561f7cb1202ee7bd7156f76734923d1d
