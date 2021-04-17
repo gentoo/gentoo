@@ -20,6 +20,16 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
+# @ECLASS-VARIABLE: QT5_BUILD_TYPE
+# @DESCRIPTION:
+# Default value is "release".
+# If PV matches "*9999*", this is automatically set to "live".
+QT5_BUILD_TYPE=release
+if [[ ${PV} == *9999* ]]; then
+	QT5_BUILD_TYPE=live
+fi
+readonly QT5_BUILD_TYPE
+
 # @ECLASS-VARIABLE: QT5_MODULE
 # @PRE_INHERIT
 # @DESCRIPTION:
@@ -67,18 +77,15 @@ case ${PV} in
 	5.15.9999)
 		# KDE upstream for 5.15 patches
 		HOMEPAGE+=" https://invent.kde.org/qt/qt/"
-		QT5_BUILD_TYPE="live"
 		EGIT_BRANCH="kde/5.15"
 		;;
 	*)
 		# official stable release
-		QT5_BUILD_TYPE="release"
 		MY_P=${QT5_MODULE}-everywhere-src-${PV}
 		SRC_URI="https://download.qt.io/official_releases/qt/${PV%.*}/${PV}/submodules/${MY_P}.tar.xz"
 		S=${WORKDIR}/${MY_P}
 		;;
 esac
-readonly QT5_BUILD_TYPE
 
 EGIT_REPO_URI=( "https://invent.kde.org/qt/qt/${QT5_MODULE}.git" )
 
