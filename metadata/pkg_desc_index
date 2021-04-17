@@ -3639,7 +3639,7 @@ dev-cpp/cairomm 1.14.2 1.16.0: C++ bindings for the Cairo vector graphics librar
 dev-cpp/catch 1.12.2 1.9999 2.13.4 9999: Modern C++ header-only framework for unit-tests
 dev-cpp/clucene 2.3.3.4-r6: High-performance, full-featured text search engine based off of lucene in C++
 dev-cpp/commoncpp2 1.8.1-r4: C++ library offering portable support for system-related services
-dev-cpp/cpp-hocon 0.2.1 0.3.0: Provides C++ support for the HOCON configuration file format
+dev-cpp/cpp-hocon 0.3.0: Provides C++ support for the HOCON configuration file format
 dev-cpp/cpp-taskflow 3.0.0: Modern C++ Parallel Task Programming
 dev-cpp/ctemplate 2.4: A simple but powerful template language for C++
 dev-cpp/eigen 3.3.7 3.3.7-r1 3.3.8-r1 3.3.9: C++ template library for linear algebra
@@ -17631,7 +17631,7 @@ sys-fs/dd-rescue 1.99.8-r1 1.99.9 1.99.10: Similar to dd but can copy from sourc
 sys-fs/ddrescue 1.24 1.25: Copy data from one file or block device to another with read-error recovery
 sys-fs/dfc 3.1.1: A simple CLI tool that display file system usage, with colors
 sys-fs/diskdev_cmds 332.14_p1-r4: HFS and HFS+ utils ported from OSX, supplies mkfs and fsck
-sys-fs/dislocker 0.7.1-r2 0.7.1-r3 9999: Dislocker is used to read BitLocker encrypted partitions.
+sys-fs/dislocker 0.7.1-r3 9999: Read BitLocker encrypted partitions
 sys-fs/dmg2img 1.6.7 1.6.7-r1: Converts Apple DMG files to standard HFS+ images
 sys-fs/dmraid 1.0.0_rc16-r5: Device-mapper RAID tool and library
 sys-fs/dosfstools 4.1 4.2: DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfat
