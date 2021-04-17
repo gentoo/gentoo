@@ -15,6 +15,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 DEPEND=">=dev-texlive/texlive-langcjk-2021
+>=dev-texlive/texlive-latexextra-2021
 !<dev-texlive/texlive-basic-2016
 "
 RDEPEND="${DEPEND} dev-lang/ruby
