@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2021-04-17)
+# Dead.  Upstream repo gone.  Requires obsolete dev-python/pep8.
+# No revdeps.
+# Removal on 2021-05-17.  Bug #783366.
+dev-python/pytest-pep8
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-04-16)
 # Dubious usefulness in current Plasma 5, unmaintained upstream, depends on
 # even less maintained and chronically broken libraries with many open bugs.
