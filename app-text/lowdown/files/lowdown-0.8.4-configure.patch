@@ -1,0 +1,19 @@
+diff --git a/configure b/configure
+index d1c16ab..941f185 100755
+--- a/configure
++++ b/configure
+@@ -92,12 +92,12 @@ LDADD_STATIC=
+ CPPFLAGS=
+ LDFLAGS=
+ DESTDIR=
+-PREFIX="/usr/local"
++PREFIX="/usr"
+ BINDIR=
+ SBINDIR=
+ INCLUDEDIR=
+ LIBDIR=
+-MANDIR=
++MANDIR="/usr/share/man"
+ SHAREDIR=
+ INSTALL="install"
+ INSTALL_PROGRAM=
