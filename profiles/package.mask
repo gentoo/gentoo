@@ -32,6 +32,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-08-02)
+# Two years after the tracker was opened it is time to mask dev-qt/qtwebkit
+# for good. No commits to upstream repository for >9 months, latest available
+# tarball still "alpha" with warning about known unpatched vulnerabilities.
+# Bugs: #684580, #685750, #709858, #740416
+dev-qt/qtwebkit:5
+app-text/fb2edit
+mail-client/trojita
+<media-video/openshot-2.5.1_p20210228
+
 # Sam James <sam@gentoo.org> (2021-08-01)
 # Broken with GCC 11, out of date, unmaintained in Gentoo.
 # bug #763651, bug #774009, bug #789027, bug #759988.
