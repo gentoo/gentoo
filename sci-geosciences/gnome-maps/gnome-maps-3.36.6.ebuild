@@ -20,7 +20,7 @@ RDEPEND="
 	>=x11-libs/gtk+-3.22:3[introspection]
 	>=app-misc/geoclue-0.12.99:2.0[introspection]
 	>=dev-libs/libgee-0.16:0.8[introspection]
-	>=dev-libs/folks-0.10
+	>=dev-libs/folks-0.10:=
 	>=sci-geosciences/geocode-glib-3.15.2[introspection]
 	>=media-libs/libchamplain-0.12.14:0.12[gtk,introspection]
 	dev-libs/libxml2:2
