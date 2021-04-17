@@ -1,61 +1,46 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
-inherit eutils user udev
+inherit desktop udev
 
+ANDROID_SDK_DIR="/opt/android-sdk-update-manager"
 MY_P="android-sdk_r${PV}-linux"
 
 DESCRIPTION="Open Handset Alliance's Android SDK"
 HOMEPAGE="https://developer.android.com"
 SRC_URI="https://dl.google.com/android/${MY_P}.tgz"
-IUSE=""
-RESTRICT="mirror"
+S="${WORKDIR}/android-sdk-linux"
 
 LICENSE="android"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+RESTRICT="mirror"
 
-DEPEND="app-arch/tar
-		app-arch/gzip"
-RDEPEND=">=virtual/jdk-1.5
-	>=dev-java/ant-core-1.6.5
+DEPEND="acct-group/android"
+RDEPEND="
+	${DEPEND}
+	dev-java/ant-core
 	dev-java/swt:3.7[cairo]
+	>=virtual/jdk-1.8
 	sys-libs/ncurses-compat:5[abi_x86_32(-)]
 	sys-libs/zlib[abi_x86_32(-)]
 "
 
-ANDROID_SDK_DIR="/opt/${PN}"
-QA_FLAGS_IGNORED_x86="
-	${ANDROID_SDK_DIR/\/}/tools/emulator
-	${ANDROID_SDK_DIR/\/}/tools/adb
-	${ANDROID_SDK_DIR/\/}/tools/mksdcard
-	${ANDROID_SDK_DIR/\/}/tools/sqlite3
-	${ANDROID_SDK_DIR/\/}/tools/hprof-conv
-	${ANDROID_SDK_DIR/\/}/tools/zipalign
-	${ANDROID_SDK_DIR/\/}/tools/dmtracedump
-"
-QA_FLAGS_IGNORED_amd64="${QA_FLAGS_IGNORED_x86}"
-
-QA_PREBUILT="${ANDROID_SDK_DIR/\/}/tools/*"
-
-S="${WORKDIR}/android-sdk-linux"
-
-pkg_setup() {
-	enewgroup android
-}
+QA_PREBUILT="*"
 
 src_prepare() {
-	rm -rf tools/lib/x86*
+	default
+	rm -rf tools/lib/x86* || die
 }
 
 src_install() {
 	dodoc tools/NOTICE.txt "SDK Readme.txt"
-	rm -f tools/NOTICE.txt "SDK Readme.txt"
+	rm -f tools/NOTICE.txt "SDK Readme.txt" || die
 
 	dodir "${ANDROID_SDK_DIR}/tools"
-	cp -pPR tools/* "${ED}${ANDROID_SDK_DIR}/tools" || die "failed to install tools"
+	cp -pPR tools/* "${ED}${ANDROID_SDK_DIR}/tools" || die
 
 	# Maybe this is needed for the tools directory too.
 	dodir "${ANDROID_SDK_DIR}"/{add-ons,build-tools,docs,extras,platforms,platform-tools,samples,sources,system-images,temp}
@@ -91,7 +76,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "The Android SDK now uses its own manager for the development	environment."
+	elog "The Android SDK now uses its own manager for the development      environment."
 	elog "Run 'android' to download the full SDK, including some of the platform tools."
 	elog "You must be in the android group to manage the development environment."
 	elog "Just run 'gpasswd -a <USER> android', then have <USER> re-login."
