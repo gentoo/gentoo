@@ -53,11 +53,11 @@ _OPTFEATURE_DOHEADER=true
 # displayed in case dev-db/a or dev-db/b are not installed.
 # @CODE
 # pkg_postinst() {
-#	optfeature "foo support" app-misc/foo
-#	optfeature "bar support" app-misc/bar
-#	optfeature_header "Install optional database backends:"
-#	optfeature "a DB backend" dev-db/a
-#	optfeature "b DB backend" dev-db/b
+# 	optfeature "foo support" app-misc/foo
+# 	optfeature "bar support" app-misc/bar
+# 	optfeature_header "Install optional database backends:"
+# 	optfeature "a DB backend" dev-db/a
+# 	optfeature "b DB backend" dev-db/b
 # }
 # @CODE
 optfeature_header() {
@@ -77,9 +77,9 @@ optfeature_header() {
 # and either both app-misc/a and app-misc/b or app-misc/c for alphabet support.
 # @CODE
 # pkg_postinst() {
-#	optfeature "foo support" app-misc/foo
-#	optfeature "bar support" app-misc/bar app-misc/baz[bar]
-#	optfeature "alphabet support" "app-misc/a app-misc/b" app-misc/c
+# 	optfeature "foo support" app-misc/foo
+# 	optfeature "bar support" app-misc/bar app-misc/baz[bar]
+# 	optfeature "alphabet support" "app-misc/a app-misc/b" app-misc/c
 # }
 # @CODE
 optfeature() {
