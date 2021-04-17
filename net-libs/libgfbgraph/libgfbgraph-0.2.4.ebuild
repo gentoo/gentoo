@@ -25,9 +25,11 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
+	dev-util/gtk-doc
 	>=dev-util/gtk-doc-am-1.14
 	virtual/pkgconfig
 "
+# gtk-doc needed for autoreconf
 
 src_prepare() {
 	# Test requires a credentials.ini file.
