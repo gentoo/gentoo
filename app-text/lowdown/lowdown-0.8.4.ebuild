@@ -28,6 +28,10 @@ src_configure() {
 	CC="$(tc-getCC)" ./configure || die "./configure failed"
 }
 
+src_compile() {
+	emake LDFLAGS="${LDFLAGS}" AR="$(tc-getAR)" $(usex elibc_musl UTF8_LOCALE=C.UTF-8 '')
+}
+
 src_test() {
 	emake regress
 }

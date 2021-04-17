@@ -12,7 +12,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/libgfbgraph/"
 
 LICENSE="LGPL-2.1+"
 SLOT="0.2"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="+introspection"
 
 DEPEND="
@@ -25,9 +25,11 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
+	dev-util/gtk-doc
 	>=dev-util/gtk-doc-am-1.14
 	virtual/pkgconfig
 "
+# gtk-doc needed for autoreconf
 
 src_prepare() {
 	# Test requires a credentials.ini file.
