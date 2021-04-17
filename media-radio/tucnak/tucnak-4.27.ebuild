@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ SRC_URI="http://tucnak.nagano.cz/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="alsa fftw gpm hamlib suid"
 
 RDEPEND="dev-libs/glib:2
@@ -20,7 +20,7 @@ RDEPEND="dev-libs/glib:2
 	alsa? ( media-libs/alsa-lib )
 	fftw? ( sci-libs/fftw:3.0 )
 	gpm? ( sys-libs/gpm )
-	hamlib? ( media-libs/hamlib )"
+	hamlib? ( media-libs/hamlib:= )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
