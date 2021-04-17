@@ -8875,7 +8875,7 @@ dev-python/pyalsa 1.1.6-r1: Python bindings for ALSA library
 dev-python/pyamg 4.0.0: Algebraic multigrid solvers in Python
 dev-python/pyasn1 0.4.8-r1: ASN.1 library for Python
 dev-python/pyasn1-modules 0.2.8-r1: pyasn1 modules
-dev-python/pyatspi 2.36.0: Python client bindings for D-Bus AT-SPI
+dev-python/pyatspi 2.36.0 2.38.1: Python client bindings for D-Bus AT-SPI
 dev-python/pyaudio 0.2.11-r1: Python bindings for PortAudio
 dev-python/pybind11 2.6.1 2.6.2: AST-based Python refactoring library
 dev-python/pybluez 0.23: Python bindings for Bluez Bluetooth Stack
