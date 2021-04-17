@@ -20,7 +20,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~
 
 # gdata-0.17.7 soft required for new gdata_feed_get_next_page_token API to handle more than 100 google tasks
 # berkdb needed only for migrating old addressbook data from <3.13 versions, bug #519512
-gdata_depend=">=dev-libs/libgdata-0.17.7:="
+gdata_depend=">=dev-libs/libgdata-0.17.7:=[vala?]"
 RDEPEND="
 	>=app-crypt/gcr-3.4
 	>=app-crypt/libsecret-0.5[crypt]
