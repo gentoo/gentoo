@@ -71,6 +71,7 @@ S="${WORKDIR}/${P/_/}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.6-use-trace.patch
 	"${FILESDIR}"/${P}-tinfow-segv.patch
+	"${FILESDIR}"/${P}-no-ncurses.patch
 )
 
 RESTRICT=test # Some tests are ran in chroot. Confuse sandbox.
