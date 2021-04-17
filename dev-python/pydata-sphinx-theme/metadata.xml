@@ -15,6 +15,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="github">pydata/pydata-sphinx-theme</remote-id>
 		<remote-id type="pypi">pydata-sphinx-theme</remote-id>
 	</upstream>
 </pkgmetadata>
