@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install setup
-DEPEND=virtual/blas virtual/lapack afterimage? ( media-libs/libafterimage ) boost? ( dev-libs/boost ) fftw? ( sci-libs/fftw:3.0[mpi?] ) hdf5? ( sci-libs/hdf5[mpi?] ) hypre? ( >=sci-libs/hypre-2.18.0[mpi?] ) metis? ( >=sci-libs/parmetis-4 ) mpi? ( virtual/mpi[cxx?,fortran?] ) mumps? ( sci-libs/mumps[mpi?] sci-libs/scalapack ) scotch? ( sci-libs/scotch[mpi?] ) sparse? ( sci-libs/suitesparse >=sci-libs/cholmod-1.7.0 ) superlu? ( >=sci-libs/superlu-5 ) X? ( x11-libs/libX11 ) || ( dev-lang/python:3.8 dev-lang/python:3.7 ) virtual/pkgconfig dev-util/cmake virtual/fortran
+DEPEND=virtual/blas virtual/lapack afterimage? ( media-libs/libafterimage ) boost? ( dev-libs/boost ) fftw? ( sci-libs/fftw:3.0[mpi?] ) hdf5? ( sci-libs/hdf5[mpi?] ) hypre? ( >=sci-libs/hypre-2.18.0[mpi?] ) metis? ( >=sci-libs/parmetis-4 ) mpi? ( virtual/mpi[cxx?,fortran?] ) mumps? ( sci-libs/mumps[mpi?] sci-libs/scalapack ) scotch? ( sci-libs/scotch[mpi?] ) sparse? ( sci-libs/suitesparse >=sci-libs/cholmod-1.7.0 ) superlu? ( >=sci-libs/superlu-5 ) X? ( x11-libs/libX11 ) || ( dev-lang/python:3.8 dev-lang/python:3.7 ) virtual/pkgconfig dev-util/cmake sys-apps/which virtual/fortran
 DESCRIPTION=Portable, Extensible Toolkit for Scientific Computation
 EAPI=7
 HOMEPAGE=https://www.mcs.anl.gov/petsc/
@@ -12,4 +12,4 @@ REQUIRED_USE=afterimage? ( X ) complex-scalars? ( !hypre !superlu ) hdf5? ( mpi 
 SLOT=0
 SRC_URI=http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-3.15.0.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	c0964e43ba712cb933da5f65b958fa88	fortran-2	b4796813ccda91c9c0d3463fc90aa969	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-any-r1	17241a11501065ff3651350040875aa9
-_md5_=c21b7d9d93c8562002164ae88318842b
+_md5_=9986667c37d7e3633870170fe0d735d4
