@@ -31,7 +31,7 @@ fi
 
 LICENSE="ISC"
 SLOT="0/23"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~ia64 ~ppc64"
 IUSE="+asm minimal static-libs +urandom"
 
 CPU_USE=( cpu_flags_x86_{aes,sse4_1} )
