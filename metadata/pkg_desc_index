@@ -6172,23 +6172,23 @@ dev-perl/Apache-Session 1.930.0-r1 1.940.0: A persistence framework for session 
 dev-perl/Apache-SizeLimit 0.970.0-r1 0.970.0-r2: Graceful exit for large children
 dev-perl/Apache-Test 1.420.0: Test.pm wrapper with helpers for testing Apache
 dev-perl/Apache2-AuthenNTLM 0.20.0-r2: Perform Microsoft NTLM and Basic User Authentication
-dev-perl/App-CLI 0.500.0 0.520.0: Dispatcher module for command line interface programs
-dev-perl/App-Cmd 0.331.0: write command line apps with less suffering
+dev-perl/App-CLI 0.520.0: Dispatcher module for command line interface programs
+dev-perl/App-Cmd 0.331.0 0.333.0: Write command line apps with less suffering
 dev-perl/App-FatPacker 0.10.8: pack your dependencies onto your script file
 dev-perl/App-Nopaste 1.13.0: Easy access to any pastebin
 dev-perl/App-cpanminus 1.704.400 9999: Get, unpack, build and install modules from CPAN
-dev-perl/App-perlbrew 0.880.0 0.890.0: Manage perl installations in your $HOME
+dev-perl/App-perlbrew 0.880.0 0.890.0 0.920.0: Manage perl installations in your $HOME
 dev-perl/App-pwhich 1.160.0: Perl-only 'which'
 dev-perl/AppConfig 1.710.0-r1: Perl5 module for reading configuration files and parsing command line arguments
 dev-perl/Archive-Any 0.94.600: Single interface to deal with file archives
 dev-perl/Archive-Extract 0.800.0 0.860.0: Generic archive extracting mechanism
 dev-perl/Archive-Tar-Stream 0.30.0-r1: pure perl IO-friendly tar file management
 dev-perl/Archive-Tar-Wrapper 0.380.0: API wrapper around the 'tar' utility
-dev-perl/Archive-Zip 1.640.0 1.680.0: A wrapper that lets you read Zip archive members as if they were files
+dev-perl/Archive-Zip 1.680.0: A wrapper that lets you read Zip archive members as if they were files
 dev-perl/Array-Compare 3.0.3 3.0.8: Perl extension for comparing arrays
 dev-perl/Array-RefElem 1.0.0-r3: Set up array elements as aliases
 dev-perl/Array-Window 1.20.0-r2: Calculate windows/subsets/pages of arrays
-dev-perl/Astro-FITS-Header 3.70.0-r1: Interface to FITS headers
+dev-perl/Astro-FITS-Header 3.70.0-r1 3.80.0: Interface to FITS headers
 dev-perl/AtExit 2.30.0: atexit() function to register exit-callbacks
 dev-perl/Audio-CD-disc-cover 0.05-r3: Perl Module needed for app-cdr/disc-cover
 dev-perl/Audio-DSP 0.20.0-r3: Perl interface to *NIX digital audio device
@@ -6204,7 +6204,7 @@ dev-perl/Authen-Libwrap 0.230.0-r2: A Perl access to the TCP Wrappers interface
 dev-perl/Authen-NTLM 1.90.0-r2: An NTLM authentication module
 dev-perl/Authen-OATH 2.0.1: OATH One Time Passwords
 dev-perl/Authen-PAM 0.160.0-r3: Interface to PAM library
-dev-perl/Authen-Radius 0.310.0: Communicate with a Radius server from Perl
+dev-perl/Authen-Radius 0.310.0 0.320.0: Communicate with a Radius server from Perl
 dev-perl/Authen-SASL 2.160.0-r2: A Perl SASL interface
 dev-perl/Authen-SASL-SASLprep 1.100.0: A Stringprep Profile for User Names and Passwords (RFC 4013)
 dev-perl/Authen-SCRAM 0.11.0-r1: Salted Challenge Response Authentication Mechanism (RFC 5802)
@@ -6271,7 +6271,7 @@ dev-perl/CPAN-DistnameInfo 0.120.0-r2: Extract distribution name and version fro
 dev-perl/CPAN-Meta-Check 0.14.0: Verify requirements in a CPAN::Meta object
 dev-perl/CPAN-Mini 1.111.16: Create a minimal mirror of CPAN
 dev-perl/CPAN-Mini-Inject 0.350.0: Inject modules into a CPAN::Mini mirror
-dev-perl/CPAN-Perl-Releases 5.202.4.280 5.202.9.200: Mapping Perl releases on CPAN to the location of the tarballs
+dev-perl/CPAN-Perl-Releases 5.202.4.280 5.202.9.200 5.202.103.200: Mapping Perl releases on CPAN to the location of the tarballs
 dev-perl/CPAN-Uploader 0.103.15: upload things to the CPAN
 dev-perl/CQL-Parser 1.130.0-r1: compiles CQL strings into parse trees of Node subtypes
 dev-perl/CSS-Minifier 0.10.0-r2: Perl extension for minifying CSS
@@ -6542,7 +6542,7 @@ dev-perl/Devel-Leak 0.30.0 0.30.0-r1: Utility for looking for perl objects that 
 dev-perl/Devel-LexAlias 0.50.0 0.50.0-r1: Alias lexical variables
 dev-perl/Devel-NYTProf 6.60.0 6.60.0-r1: Powerful feature-rich perl source code profiler
 dev-perl/Devel-OverloadInfo 0.4.0 0.5.0: Introspect overloaded operators
-dev-perl/Devel-PatchPerl 1.920.0 2.0.0: Patch perl source a la Devel::PPPort's buildperl.pl
+dev-perl/Devel-PatchPerl 1.920.0 2.0.0 2.80.0: Patch perl source a la Devel::PPPort's buildperl.pl
 dev-perl/Devel-REPL 1.3.28: A modern perl interactive shell
 dev-perl/Devel-Refactor 0.50.0-r2: Perl extension for refactoring Perl code
 dev-perl/Devel-SimpleTrace 0.80.0: See where you code warns and dies using stack traces

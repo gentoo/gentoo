@@ -1,0 +1,16 @@
+BDEPEND=>=dev-perl/Capture-Tiny-0.130.0 virtual/perl-Carp >=dev-perl/Class-Load-0.60.0 dev-perl/Data-OptList >=virtual/perl-Getopt-Long-2.390.0 >=dev-perl/Getopt-Long-Descriptive-0.84.0 dev-perl/IO-TieCombine dev-perl/Module-Pluggable dev-perl/String-RewritePrefix dev-perl/Sub-Exporter dev-perl/Sub-Install virtual/perl-parent virtual/perl-ExtUtils-MakeMaker test? ( !minimal? ( >=virtual/perl-CPAN-Meta-2.120.900 ) virtual/perl-Data-Dumper virtual/perl-File-Spec virtual/perl-IPC-Cmd dev-perl/Test-Fatal >=virtual/perl-Test-Simple-0.960.0 ) dev-lang/perl
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl
+DESCRIPTION=Write command line apps with less suffering
+EAPI=7
+HOMEPAGE=https://metacpan.org/release/App-Cmd
+INHERIT=perl-module
+IUSE=test minimal
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-perl/Capture-Tiny-0.130.0 virtual/perl-Carp >=dev-perl/Class-Load-0.60.0 dev-perl/Data-OptList >=virtual/perl-Getopt-Long-2.390.0 >=dev-perl/Getopt-Long-Descriptive-0.84.0 dev-perl/IO-TieCombine dev-perl/Module-Pluggable dev-perl/String-RewritePrefix dev-perl/Sub-Exporter dev-perl/Sub-Install virtual/perl-parent dev-lang/perl:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/R/RJ/RJBS/App-Cmd-0.333.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	58b5d72d607014c48b5a1e106318d584
+_md5_=1349fbb59311f0b9a93b5fefa9306407
