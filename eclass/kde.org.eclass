@@ -134,6 +134,11 @@ KDE_UNRELEASED=( )
 HOMEPAGE="https://kde.org/"
 
 case ${CATEGORY} in
+	dev-qt)
+		KDE_ORG_NAME=${QT5_MODULE:-${PN}}
+		HOMEPAGE="https://community.kde.org/Qt5PatchCollection
+			https://invent.kde.org/qt/qt/ https://www.qt.io/"
+		;;
 	kde-apps)
 		KDE_GEAR=true
 		;;
@@ -282,6 +287,7 @@ case ${KDE_BUILD_TYPE} in
 		debug-print "${LINENO} ${ECLASS} ${FUNCNAME}: SRC_URI is ${SRC_URI}"
 		if [[ -n ${KDE_ORG_COMMIT} ]]; then
 			S=${WORKDIR}/${KDE_ORG_NAME}-${KDE_ORG_COMMIT}
+			[[ ${CATEGORY} == dev-qt ]] && QT5_BUILD_DIR="${S}_build"
 		else
 			S=${WORKDIR}/${KDE_ORG_NAME}-${PV}
 		fi
